@@ -1,0 +1,193 @@
+<revisionlist>
+  <revision rev="1" vrev="15">
+    <srcmd5>cd742566c50834f838167f4685847e0c</srcmd5>
+    <version>2005.06.15</version>
+    <time>1168903046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="45">
+    <srcmd5>b2416b866b3c88d640bcc967a23b1e61</srcmd5>
+    <version>2005.06.15</version>
+    <time>1169584397</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="46">
+    <srcmd5>77d96645e29c4460f86f0fa23596f5a5</srcmd5>
+    <version>2005.06.15</version>
+    <time>1170786089</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3939cd8878a6611e1b7eb6b9e76c6236</srcmd5>
+    <version>2007.10.16</version>
+    <time>1192552614</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="82">
+    <srcmd5>3939cd8878a6611e1b7eb6b9e76c6236</srcmd5>
+    <version>2007.10.16</version>
+    <time>1192552614</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f70cffd2c8b749ccd039abfb5712acff</srcmd5>
+    <version>2008.11.13</version>
+    <time>1226937736</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f70cffd2c8b749ccd039abfb5712acff</srcmd5>
+    <version>2008.11.13</version>
+    <time>1226937736</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>525ae9c11dc61bf6875a1d8a8291d5df</srcmd5>
+    <version>2009.12.08</version>
+    <time>1260276158</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/indic-fonts based on submit request 26008 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>800198c3d2660419a2fa5b439c1e2634</srcmd5>
+    <version>2009.12.08</version>
+    <time>1268924014</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>b667032dab5add70370f77fbeacfac86</srcmd5>
+    <version>2009.12.08</version>
+    <time>1271370429</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/indic-fonts based on submit request 37506 from user tiwai
+</comment>
+    <requestid>37506</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>b667032dab5add70370f77fbeacfac86</srcmd5>
+    <version>2009.12.08</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>b667032dab5add70370f77fbeacfac86</srcmd5>
+    <version>2009.12.08</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>b667032dab5add70370f77fbeacfac86</srcmd5>
+    <version>2009.12.08</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>b667032dab5add70370f77fbeacfac86</srcmd5>
+    <version>2009.12.08</version>
+    <time>1319181987</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>01d58ef25b5ad2615b7a187ee5a86a7c</srcmd5>
+    <version>2009.12.08</version>
+    <time>1323191964</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>01d58ef25b5ad2615b7a187ee5a86a7c</srcmd5>
+    <version>2009.12.08</version>
+    <time>1340183460</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>f45aa19d97b423c023902f7cbe271458</srcmd5>
+    <version>2009.12.08</version>
+    <time>1348147871</time>
+    <user>coolo</user>
+    <comment>- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+- call spec-cleaner</comment>
+    <requestid>134686</requestid>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>f45aa19d97b423c023902f7cbe271458</srcmd5>
+    <version>2009.12.08</version>
+    <time>1359109079</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>732967c41cd00e891cd17c1cc0c59022</srcmd5>
+    <version>20130130</version>
+    <time>1365175686</time>
+    <user>coolo</user>
+    <comment>- url in source
+
+- adjusted description [bnc#812254]
+
+- updated Lohit fonts to 20130130:
+  * Released version 2.5.3 of All Lohit fonts with major enhancement 
+    and dropping Reserved Font Name.</comment>
+    <requestid>162101</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>732967c41cd00e891cd17c1cc0c59022</srcmd5>
+    <version>20130130</version>
+    <time>1379662667</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ed550c24ce90e720fe5c4f9efa1b12b5</srcmd5>
+    <version>20130612</version>
+    <time>1385653889</time>
+    <user>coolo</user>
+    <comment>- updated Lohit fonts to 20130612:
+  * Released Lohit Oriya with bug fixes against Harfbuzz NG.</comment>
+    <requestid>208640</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>72fcad8adfe6cb085ea2f1665df53e5d</srcmd5>
+    <version>20140220</version>
+    <time>1396452173</time>
+    <user>coolo</user>
+    <comment>- updated Lohit fonts to 20140220:
+  * Lohit Devanagari 2.94.0 release with number of improvements 
+    and bug fixes.
+  * Lohit Malayalam 2.92.0 (Beta-1) release with number of improvements 
+    and bug fixes.
+  * etc. see https://raw.github.com/pravins/lohit/master/RECENT-NEWS</comment>
+    <requestid>228310</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>72fcad8adfe6cb085ea2f1665df53e5d</srcmd5>
+    <version>20140220</version>
+    <time>1409301226</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ef54d752f8c62c9cb80bba1fa121280a</srcmd5>
+    <version>20160512</version>
+    <time>1464964494</time>
+    <user>dimstar_suse</user>
+    <comment>- gujrati fonts [bsc#977195]: remove hinting instructions for all 
+  letters except gujrati symbols in
+  * aakar medium
+  * padmaa Bold
+  * padmaa Medium
+  * Rekha medium
+  Fonts updated from:
+  https://github.com/kartikm/fonts-aakar
+  https://github.com/samyakbhuta/fonts-padmaa
+  https://github.com/kartikm/fonts-rekha</comment>
+    <requestid>398151</requestid>
+  </revision>
+</revisionlist>

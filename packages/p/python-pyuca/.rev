@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>89710cc021ccbd40ca0454abc940395b</srcmd5>
+    <version>1.1</version>
+    <time>1438750219</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>317036</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>88b9bfacddb664a889ac3eccc01867cb</srcmd5>
+    <version>1.2</version>
+    <time>1533292659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2 release:
+  * Unicode 8.0 support
+  * Python3 support
+- Switch to singlespec
+- Install license</comment>
+    <requestid>627016</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fa2e4bf53269d7456d5de66a5584d8cf</srcmd5>
+    <version>1.2</version>
+    <time>1559727632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707449</requestid>
+  </revision>
+</revisionlist>

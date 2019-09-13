@@ -1,0 +1,5 @@
+<package name="yast2-services-manager" project="openSUSE:Factory">
+  <title>YaST2 - Services Manager</title>
+  <description>Provides user interface and libraries to configure running services and the default target.</description>
+  <devel project="YaST:Head" package="yast2-services-manager"/>
+</package>

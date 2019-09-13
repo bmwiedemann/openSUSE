@@ -1,0 +1,368 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aad074e1e851520770d841d9f239300a</srcmd5>
+    <version>3.16.0</version>
+    <time>1427736626</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit with fixed license tag</comment>
+    <requestid>293288</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bb6b10df72812a602b8bfa4fc9d418dc</srcmd5>
+    <version>3.16.2</version>
+    <time>1429768973</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298477</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6b144e3dfcec2e9ad9dad64f26b9d88d</srcmd5>
+    <version>3.16.3</version>
+    <time>1432305396</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308336</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>91e9a2e64de00a6390f924b7509e7657</srcmd5>
+    <version>3.18.0</version>
+    <time>1444140925</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0 (forwarded request 332557 from dimstar)</comment>
+    <requestid>332610</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f7dea281cebc090fe34f712f8ab3024e</srcmd5>
+    <version>3.18.1</version>
+    <time>1446209004</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 341130 from Zaitor)</comment>
+    <requestid>341335</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>999283b32d88efea0c49041a761a0eba</srcmd5>
+    <version>3.20.0</version>
+    <time>1459255644</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 378447 from dimstar)</comment>
+    <requestid>378669</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6a7f8273fe3ea70e6e24830b497b6420</srcmd5>
+    <version>3.20.0</version>
+    <time>1459845809</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>383052</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>73f161d09401c46f55f6440fc93f3487</srcmd5>
+    <version>3.20.2</version>
+    <time>1462178685</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392956</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>03671055bd7b5626d19489c09e25f7b3</srcmd5>
+    <version>3.20.4</version>
+    <time>1462977458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394534</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7d8f44eef7b15bfd07572cd12a5f506f</srcmd5>
+    <version>3.20.4</version>
+    <time>1463652894</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396181</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e959556561abf1a66745f8e4e84dba56</srcmd5>
+    <version>3.20.4</version>
+    <time>1464014421</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397364</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>cd74b3b0294bcab614cd95f2ecb4ea7e</srcmd5>
+    <version>3.20.4</version>
+    <time>1464853166</time>
+    <user>dimstar_suse</user>
+    <comment>Sync package with SLE12SP2 - just for easier tracking (forwarded request 399183 from dimstar)</comment>
+    <requestid>399401</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>663ad846934daacdde340ff5d55e5006</srcmd5>
+    <version>3.20.4</version>
+    <time>1469081906</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412291</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3d3ac90c2d0ef2e8e1911855fbfcd073</srcmd5>
+    <version>3.22.0</version>
+    <time>1474623439</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.22.0 (forwarded request 428844 from dimstar)</comment>
+    <requestid>429125</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e626e226484f4877a374877519db2bc7</srcmd5>
+    <version>3.22.1</version>
+    <time>1476875652</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435898</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>606f000e96f12f16b374917cd384e6ea</srcmd5>
+    <version>3.22.2</version>
+    <time>1478377669</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438613</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7ceb197d7a8ee65bec4d43381aa5616a</srcmd5>
+    <version>3.22.2</version>
+    <time>1478958555</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop pkgconfig(gjs-1.0) and pkgconfig(gjs-internal-1.0)
+  BuildRequires: GJS Scripting support was dropped in version 3.20. (forwarded request 439604 from dimstar)</comment>
+    <requestid>439891</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>44a2e583dc71d662a46682603cc7d393</srcmd5>
+    <version>3.22.3</version>
+    <time>1481105495</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443615</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>aeffad9fe6211504b1e7cb87bddd8e86</srcmd5>
+    <version>3.22.4</version>
+    <time>1484041246</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449339</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4300d01937c460b2ca25a69fb4261f6c</srcmd5>
+    <version>3.24.0</version>
+    <time>1490220349</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.0 (forwarded request 481254 from dimstar)</comment>
+    <requestid>481365</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bdede498fbda021f9a4768e07017f273</srcmd5>
+    <version>3.24.2</version>
+    <time>1495132897</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494639</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c4b73bbca360bf8f3008154b2eecd261</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332435</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 523507 from dimstar)</comment>
+    <requestid>523651</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>47d0df90986f45bc31506ccea80bf86a</srcmd5>
+    <version>3.26.1</version>
+    <time>1507896273</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove filler wording from description. (forwarded request 532549 from jengelh)</comment>
+    <requestid>532849</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>944e20d6d41035336f2b6a744a94b0ed</srcmd5>
+    <version>3.26.1</version>
+    <time>1509104867</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct version dependencies on libdazzle and template-glib: we
+  requrie version 3.26.1. (forwarded request 536550 from dimstar)</comment>
+    <requestid>536619</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>b62216377349838e9521ab62abd7797e</srcmd5>
+    <version>3.26.1</version>
+    <time>1509394665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537405</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>022939918bee372623ef7e84d366ebb7</srcmd5>
+    <version>3.26.2</version>
+    <time>1509820051</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 538266 from badshah400)</comment>
+    <requestid>538274</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>398594615fa0623e4980132921fb609e</srcmd5>
+    <version>3.26.3</version>
+    <time>1516880291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.26.3:
+  + Various improvements to for developing against the host system
+    when running Builder from a flatpak.
+  + Builder will set more fallback environment variable when
+    running under flatpak to ensure subprocesses have a predictable
+    environment.
+  + Various fixes to the shortcut engine and how key-press are
+    captured.
+  + Fixes for invalid cast in LSP format provider.
+  + Various correctness and memory leak fixes.
+  + Symbol tree will try additional symbol resolvers if the first
+    one returned with an empty set.
+  + Updated translations. (forwarded request 567823 from iznogood)</comment>
+    <requestid>568068</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3c5cebe2204f6956b3effe1abb404562</srcmd5>
+    <version>3.26.4</version>
+    <time>1517668771</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 571978 from iznogood)</comment>
+    <requestid>572091</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>05d14ae29c5e60903d649c7969cd184f</srcmd5>
+    <version>3.27.92</version>
+    <time>1521051901</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583627 from dimstar)</comment>
+    <requestid>584789</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f696fc0bb9f6d17a495bf4695bcff590</srcmd5>
+    <version>3.28.0</version>
+    <time>1521053388</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0 (forwarded request 586760 from dimstar)</comment>
+    <requestid>587049</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>a62c0e77ebdbc903cbe74dca3b47c566</srcmd5>
+    <version>3.28.0</version>
+    <time>1521579200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588148</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2fe220280dca76b2782440ce61fa9ab1</srcmd5>
+    <version>3.28.1</version>
+    <time>1524144296</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.28.1. (forwarded request 595753 from luc14n0)</comment>
+    <requestid>596164</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e68386e92f5e254eb38d4fefe6d594ce</srcmd5>
+    <version>3.28.2</version>
+    <time>1527933350</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 612935 from iznogood)</comment>
+    <requestid>613059</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>04622892577ac61725137e593a6ae5e9</srcmd5>
+    <version>3.28.3</version>
+    <time>1530191353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618582</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c86f8d0887dc193a565674ebbba2e4d5</srcmd5>
+    <version>3.28.4</version>
+    <time>1533214068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625916</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1d63f2c395086d3b343eda6c266a3515</srcmd5>
+    <version>3.30.1</version>
+    <time>1539756930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638510</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>14f94a55d941ba595261cbb9ab0e9c8f</srcmd5>
+    <version>3.30.2</version>
+    <time>1541666809</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release</comment>
+    <requestid>647081</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a7051d966004f19c487b0f2a2018e2c5</srcmd5>
+    <version>3.30.3</version>
+    <time>1548537389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666342</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0d345b62aa6160be15636db64f8d4b67</srcmd5>
+    <version>3.32.1</version>
+    <time>1556914174</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695656 from dimstar)</comment>
+    <requestid>695676</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>b8cf2711ca59ff327b0b7c15c54c23cb</srcmd5>
+    <version>3.32.1</version>
+    <time>1557472555</time>
+    <user>dimstar_suse</user>
+    <comment>Drop environment.pickle again to make package build reproducible (forwarded request 701094 from bmwiedemann)</comment>
+    <requestid>701601</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a4f3e6f2bd0c0b67aa207badb6151907</srcmd5>
+    <version>3.32.2</version>
+    <time>1558129193</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 702112 from iznogood)</comment>
+    <requestid>703154</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a08125d81546ecf4afca6245f35c89c0</srcmd5>
+    <version>3.32.3</version>
+    <time>1561195258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710128</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>bfe8ffb0b789d50d71c231796088b806</srcmd5>
+    <version>3.32.3</version>
+    <time>1562590975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713238</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>6a303247bb17f936f17d05cab12bf06f</srcmd5>
+    <version>3.32.4</version>
+    <time>1563701461</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 715776 from iznogood)</comment>
+    <requestid>716273</requestid>
+  </revision>
+</revisionlist>

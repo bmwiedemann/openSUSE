@@ -1,0 +1,11 @@
+<package name="python-python-twitter" project="openSUSE:Factory">
+  <title>A Python wrapper around the Twitter API</title>
+  <description>This library provides a Python interface for the Twitter API &lt;https://dev.twitter.com/&gt;.
+
+Twitter &lt;http://twitter.com&gt; provides a service that allows people to connect via the web, IM, and SMS. Twitter exposes a web services API
+which can be used using this library.
+
+</description>
+  <devel project="devel:languages:python" package="python-python-twitter"/>
+  <url>https://github.com/bear/python-twitter</url>
+</package>

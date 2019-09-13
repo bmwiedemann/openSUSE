@@ -1,0 +1,9 @@
+<package name="python-parsel" project="openSUSE:Factory">
+  <title>Library to extract data from HTML and XML using XPath and CSS selectors</title>
+  <description>Parsel is a library to extract data from HTML and XML using XPath and CSS
+selectors.
+
+</description>
+  <devel project="devel:languages:python" package="python-parsel"/>
+  <url>http://github.com/scrapy/parsel</url>
+</package>

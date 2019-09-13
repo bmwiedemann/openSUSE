@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc56acb6a1b9899d287f67f2625d2310</srcmd5>
+    <version>1.0.2</version>
+    <time>1431668606</time>
+    <user>coolo</user>
+    <comment>New package</comment>
+    <requestid>306477</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bf70ac641bed6a7912e278672e8a6a9f</srcmd5>
+    <version>1.0.2</version>
+    <time>1433920572</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311284</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>05ebc89bf8969e44bee35f71e6c4d352</srcmd5>
+    <version>1.0.3</version>
+    <time>1447353692</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343919</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e12a0151b063c09a6bda910013ade2bf</srcmd5>
+    <version>1.0.4</version>
+    <time>1484041423</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.4:
+  * fixed zip module to correctly read archives with a lot of
+    files or very large files
+- Use pkgconfig() style requires</comment>
+    <requestid>447365</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ed4faa67a6440a8c7648304d3b00762d</srcmd5>
+    <version>1.0.5</version>
+    <time>1519145777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578264</requestid>
+  </revision>
+</revisionlist>

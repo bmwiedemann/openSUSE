@@ -1,0 +1,193 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a65b1e681a25ab07a3877218a3d8085a</srcmd5>
+    <version>0.0.13</version>
+    <time>1358666312</time>
+    <user>coolo</user>
+    <comment>Future OpenStack dependency</comment>
+    <requestid>148679</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a65b1e681a25ab07a3877218a3d8085a</srcmd5>
+    <version>0.0.13</version>
+    <time>1359110131</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>76acc26472ee4bac4890228f55996fe3</srcmd5>
+    <version>0.0.13</version>
+    <time>1366633051</time>
+    <user>coolo</user>
+    <comment>Add BuildRequires: python-extras (forwarded request 172645 from TheBlackCat)</comment>
+    <requestid>172646</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e5093fc3c90a4cd3fc767357339952c0</srcmd5>
+    <version>0.0.15</version>
+    <time>1367490956</time>
+    <user>coolo</user>
+    <comment>- add buildrequires to satisfy test suite run 
+
+- update to 0.0.15:
+  * Expects subunit v2 if the local library has v2 support in the subunit
+  library. This should be seamless if the system under test shares the
+  Python libraries. If it doesn't, either arrange to use ``subunit-2to1``
+  or upgrade the subunit libraries for the system under test. (forwarded request 173918 from dirkmueller)</comment>
+    <requestid>173928</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>479f02d8ec9a90771837f95766c8a5a8</srcmd5>
+    <version>0.0.15</version>
+    <time>1373655405</time>
+    <user>coolo</user>
+    <comment>- tighten runtime requires (forwarded request 182858 from dirkmueller)</comment>
+    <requestid>182874</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fd91ca160ba664b08b2825ffc4e25417</srcmd5>
+    <version>0.0.17</version>
+    <time>1374303810</time>
+    <user>coolo</user>
+    <comment>- update to 0.0.17:
+ * Restore the ability to import testrepository.repository.memory on Python 2.6.
+ * A new testr.conf option ``group_regex`` can be used for grouping
+   tests so that they get run in the same backend runner. (Matthew Treinish)
+ * Fix Python 3.* support for entrypoints; the initial code was Python3
+   incompatible. (Robert Collins, Clark Boylan, #1187192)
+ * Switch to using multiprocessing to determine CPU counts.
+  (Chris Jones, #1092276)
+ * The cli UI now has primitive differentiation between multiple stream types.
+   This is not yet exposed to the end user, but is sufficient to enable the
+   load command to take interactive input without it reading from the raw
+   subunit stream on stdin. (Robert Collins)
+ * The scheduler can now groups tests together permitting co-dependent tests to
+   always be scheduled onto the same backend. Note that this does not force
+   co-dependent tests to be executed, so partial test runs (e.g. --failing)
+   may still fail.  (Matthew Treinish, Robert Collins)
+ * When test listing fails, testr will now report an error rather than
+   incorrectly trying to run zero tests. A test listing failure is detected by
+   the returncode of the test listing process. (Robert Collins, #1185231) (forwarded request 183719 from dirkmueller)</comment>
+    <requestid>183753</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>fd91ca160ba664b08b2825ffc4e25417</srcmd5>
+    <version>0.0.17</version>
+    <time>1379664296</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>f3d42f16ed5b2cc88a47d462138d3206</srcmd5>
+    <version>0.0.17</version>
+    <time>1382693645</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204672</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f554c7e30983206431586d1193bf3b95</srcmd5>
+    <version>0.0.18</version>
+    <time>1385043975</time>
+    <user>coolo</user>
+    <comment>update to version 0.0.18 (forwarded request 207594 from posophe)</comment>
+    <requestid>207595</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0c25edec8583c4ecd23c2035fe4e74ac</srcmd5>
+    <version>0.0.18</version>
+    <time>1391082750</time>
+    <user>coolo</user>
+    <comment>- fix requires (forwarded request 215599 from dirkmueller)</comment>
+    <requestid>215600</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>09d669accf9c7f5a2f289d5fe897d6ca</srcmd5>
+    <version>0.0.18</version>
+    <time>1393394125</time>
+    <user>coolo</user>
+    <comment>- Implement update-alternatives</comment>
+    <requestid>222199</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>09d669accf9c7f5a2f289d5fe897d6ca</srcmd5>
+    <version>0.0.18</version>
+    <time>1409303003</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c089fae80c9f1a252a64c3742086462e</srcmd5>
+    <version>0.0.20</version>
+    <time>1410967617</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249857</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7fed0fe6d23d8b220ec9b3aac34c8a1f</srcmd5>
+    <version>0.0.20</version>
+    <time>1443684533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>331670</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>ea6cdbf19d557fdd21d2253384db3634</srcmd5>
+    <version>0.0.20</version>
+    <time>1452611597</time>
+    <user>dimstar_suse</user>
+    <comment>Add python-pbr dependency.</comment>
+    <requestid>353011</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>575511b10b5954958f066b4afb581837</srcmd5>
+    <version>0.0.20</version>
+    <time>1469382771</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>412605</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>275a92513019d1cdb1ee4df1ef57db86</srcmd5>
+    <version>0.0.20</version>
+    <time>1495442870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496807</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>47d8fd76a40fa07dc5177c7bd6b7227f</srcmd5>
+    <version>0.0.20</version>
+    <time>1499415405</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508304</requestid>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>d605be9dfbe97b93616f30fef77e6abb</srcmd5>
+    <version>0.0.20</version>
+    <time>1545866932</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659714</requestid>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>721b904aa5ffe6b3bb9318fab61c422f</srcmd5>
+    <version>0.0.20</version>
+    <time>1553888285</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove accidental runtime dep on python-dbm
+
+- The tests are failing in the release but work on the git
+  so lets hope there is some release in future that will allow
+  us to enable them
+
+- Fix the buildrequires to match up properly
+
+- Add missing dependencies pytz and dbm
+- Activate tests, currently broken
+- Fix %license</comment>
+    <requestid>688831</requestid>
+  </revision>
+</revisionlist>

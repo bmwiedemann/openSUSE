@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a5caffe263eead7b023a2622902eec0</srcmd5>
+    <version>0.1.3</version>
+    <time>1342082791</time>
+    <user>namtrac</user>
+    <comment>Please review, dependency for libee and rsyslog v6-stable 6.2.2 (home:AndreasStieger:rsyslog:v6-stable for Base:System)
+with feedback from SR#127042 implemented</comment>
+    <requestid>127686</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>91dc5aaa13a7bc4f8a9b83188ba11bbf</srcmd5>
+    <version>0.1.4</version>
+    <time>1348231184</time>
+    <user>coolo</user>
+    <comment>update to 0.1.4 (forwarded request 135192 from AndreasStieger)</comment>
+    <requestid>135194</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>91dc5aaa13a7bc4f8a9b83188ba11bbf</srcmd5>
+    <version>0.1.4</version>
+    <time>1359109264</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c5233966f6fbf2cbaf211ee381dfc9a2</srcmd5>
+    <version>0.1.5</version>
+    <time>1366472706</time>
+    <user>coolo</user>
+    <comment>update to 0.1.5</comment>
+    <requestid>172596</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0f264da2f43b6518c0a9d9c1e7a2df85</srcmd5>
+    <version>0.1.6</version>
+    <time>1379076284</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 0.1.6</comment>
+    <requestid>198788</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>0f264da2f43b6518c0a9d9c1e7a2df85</srcmd5>
+    <version>0.1.6</version>
+    <time>1379662938</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cfe88ebb4d9abc3b84bcbf7b2d6403b8</srcmd5>
+    <version>0.1.8</version>
+    <time>1382088803</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 0.1.8 - [bnc#846487] (forwarded request 203674 from AndreasStieger)</comment>
+    <requestid>203675</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9b19edf30af2f56ff48bde122c85dd7b</srcmd5>
+    <version>0.1.9</version>
+    <time>1383041031</time>
+    <user>scarabeus_factory</user>
+    <comment>update 0.1.9 [bnc#847968] (forwarded request 205052 from AndreasStieger)</comment>
+    <requestid>205053</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9b19edf30af2f56ff48bde122c85dd7b</srcmd5>
+    <version>0.1.9</version>
+    <time>1409301548</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dd91565dabc707a9e0b2ff19326da751</srcmd5>
+    <version>0.1.10</version>
+    <time>1418251496</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264600</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a17a5d1c7cac43f1cf8aa86d63f8832d</srcmd5>
+    <version>0.1.11</version>
+    <time>1541514010</time>
+    <user>dimstar_suse</user>
+    <comment>libestr 0.1.11 (forwarded request 645526 from AndreasStieger)</comment>
+    <requestid>645527</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="perl-Test-Needs" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Test-Needs"/>
+</package>

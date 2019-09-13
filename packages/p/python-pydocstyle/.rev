@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a08094adf420af20eacf718483513b3</srcmd5>
+    <version>2.1.1</version>
+    <time>1526371945</time>
+    <user>dimstar_suse</user>
+    <comment>Docstring format checker for python</comment>
+    <requestid>605974</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>73337bad7577cfb829a779357a8114d8</srcmd5>
+    <version>2.1.1</version>
+    <time>1528896988</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614993</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9aef2be92aeef586d50f1b45da0e0550</srcmd5>
+    <version>2.1.1</version>
+    <time>1548335656</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>667867</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e57d381e9e89bf04cd751b5cce94e908</srcmd5>
+    <version>2.1.1</version>
+    <time>1551468743</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>680462</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>30e9dc2e882cf3ff0b6d005611c186be</srcmd5>
+    <version>3.0.0</version>
+    <time>1552039214</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the changelog whitespace mess
+
+- Fix %check to run the tests from GitHub tarball, and use
+  integration-tests-invocation.patch to invoke pycodestyle using
+  sys.executable, and do not install and uninstall pip during tests.
+- Fix line endings and remove hashbangs
+- Update to v3.0.0
+  + Major Updates
+    * Support for Python 3.3 has been dropped
+    * Added support for Python 3.7
+  + New features
+    * Violations are now reported on the line where the docstring starts, not
+      the line of the def/class it corresponds to
+    * Updated description of pep257 and numpy conventions
+    * __all__ parsing is now done on a best-effort basis - if __all__ can't
+      be statically determined, it will be ignored
+  + Bug Fixes
+    * Fixed a false-positive recognition of section names causing D405 to be
+      reported
+    * Fixed a bug where functions that don't end with a newline will sometimes
+      raise an exception
+- Set six minimum version to v1.10.0</comment>
+    <requestid>681665</requestid>
+  </revision>
+</revisionlist>

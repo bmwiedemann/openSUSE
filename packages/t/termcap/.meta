@@ -1,0 +1,5 @@
+<package name="termcap" project="openSUSE:Factory">
+  <title>The Termcap Library</title>
+  <description>The termcap library.</description>
+  <devel project="Base:System" package="termcap"/>
+</package>

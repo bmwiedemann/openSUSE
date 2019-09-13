@@ -1,0 +1,13 @@
+<package name="tvheadend" project="openSUSE:Factory">
+  <title>A TV Streaming Server</title>
+  <description>A TV streaming server supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV,
+and Analog video (V4L) as input sources.
+
+It also comes with a powerful and easy to use web interface both used for
+configuration and day-to-day operations, such as searching the EPG and
+scheduling recordings.
+
+</description>
+  <devel project="multimedia:apps" package="tvheadend"/>
+  <url>https://tvheadend.org/</url>
+</package>

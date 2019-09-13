@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b54e109491a0fe1c94dbbe68cc0fea6</srcmd5>
+    <version>3.3.0</version>
+    <time>1516221703</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.3.0</comment>
+    <requestid>516118</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3c201ff007079dea49e7d376967fa33e</srcmd5>
+    <version>4.0.0</version>
+    <time>1523875636</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.0</comment>
+    <requestid>594803</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>68b9ee4ad5516622bca8f4bafd781cfc</srcmd5>
+    <version>4.1.0</version>
+    <time>1546535193</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.1.0</comment>
+    <requestid>659372</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a88b206f5604da1ec7163e58b9fb7956</srcmd5>
+    <version>4.2.0</version>
+    <time>1564667311</time>
+    <user>maxlin_factory</user>
+    <comment>submit new version 4.2.0</comment>
+    <requestid>714228</requestid>
+  </revision>
+</revisionlist>

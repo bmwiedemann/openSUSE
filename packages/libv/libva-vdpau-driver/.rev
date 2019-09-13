@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4f5d91b9b9283274be9f3e6dd5fd86c9</srcmd5>
+    <version>0.7.4</version>
+    <time>1426680449</time>
+    <user>dimstar_suse</user>
+    <comment>VDPAU backend for VA API, so e.g. users of NVIDIA's proprietary
+driver can make use of VDPAU acceleration even if the software
+only support libva support.</comment>
+    <requestid>291157</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5165368934a9cf425e33b16381c70340</srcmd5>
+    <version>0.7.4</version>
+    <time>1487768162</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459457</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>69e8ba7501372aef5ef43a7b7582cfa2</srcmd5>
+    <version>0.7.4</version>
+    <time>1511193911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542923</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a304533c330d49da5001b554c28577f3</srcmd5>
+    <version>0.7.4</version>
+    <time>1515623756</time>
+    <user>dimstar_suse</user>
+    <comment>- added &quot;%dir /usr/%_lib/dri&quot; to filelist in order to fix build
+  (probably required since Mesa/Mesa-drivers split)
+- no longer require Mesa-devel</comment>
+    <requestid>563056</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e03363d02feab883649cf78d9f74b0ac</srcmd5>
+    <version>0.7.4</version>
+    <time>1567849921</time>
+    <user>dimstar_suse</user>
+    <comment>- libva-vdpau-driver-0.7.4-type-fix.patch
+  * typefix needed</comment>
+    <requestid>728535</requestid>
+  </revision>
+</revisionlist>

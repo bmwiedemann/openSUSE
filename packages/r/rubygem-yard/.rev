@@ -1,0 +1,264 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>372e45a9242e778357b4f66d49b26128</srcmd5>
+    <version>0.7.2</version>
+    <time>1322567548</time>
+    <user>coolo</user>
+    <comment>new polkit</comment>
+    <requestid>94115</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e7063f6881fabe1d0c6a2b6ccaf173c6</srcmd5>
+    <version>0.7.2</version>
+    <time>1323194486</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4abe3865f2d9cf30d67a0194555a20a1</srcmd5>
+    <version>0.7.5</version>
+    <time>1336423909</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>115035</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4abe3865f2d9cf30d67a0194555a20a1</srcmd5>
+    <version>0.7.5</version>
+    <time>1340184183</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>62f3ad22afadce8742b4c08ff948d827</srcmd5>
+    <version>0.8.2.1</version>
+    <time>1348746222</time>
+    <user>coolo</user>
+    <comment>- update to 0.8.2.1:
+  * See ChangeLog for details (git log basically)
+- switch to new gem2rpm template</comment>
+    <requestid>136177</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1a60a9c6805014e3090e8d03ff1f85ee</srcmd5>
+    <version>0.8.3</version>
+    <time>1351020360</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139055</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1a60a9c6805014e3090e8d03ff1f85ee</srcmd5>
+    <version>0.8.3</version>
+    <time>1359110360</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6dbeb512a6eb79e9a2e64e461de7c5b4</srcmd5>
+    <version>0.8.5.2</version>
+    <time>1362984382</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>158151</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ed4d10012d23059e48a276f180afb005</srcmd5>
+    <version>0.8.6.1</version>
+    <time>1366633404</time>
+    <user>coolo</user>
+    <comment>- updated to version 0.8.6.1
+ **Added `--layout` to `yard display` command**
+
+- updated to version 0.8.6</comment>
+    <requestid>172673</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>55445f6264a9b3a99e6bb91559dbe7af</srcmd5>
+    <version>0.8.6.2</version>
+    <time>1373984610</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183105</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>212fa3444bd5e8d0b524029debef4d37</srcmd5>
+    <version>0.8.7</version>
+    <time>1375642494</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>185530</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>212fa3444bd5e8d0b524029debef4d37</srcmd5>
+    <version>0.8.7</version>
+    <time>1379664596</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9262a4fa9f7544b6c12108e7004055a0</srcmd5>
+    <version>0.8.7.1</version>
+    <time>1380298820</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200786</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b6239eaeba4ca9ab870c573435c4e0de</srcmd5>
+    <version>0.8.7.2</version>
+    <time>1383231585</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>204171</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>99da41d3747fa47f46409497a0a250bb</srcmd5>
+    <version>0.8.7.3</version>
+    <time>1385313291</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208110</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d74b29ab6f5a271f19ab2be810ff8103</srcmd5>
+    <version>0.8.7.4</version>
+    <time>1395750521</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>227179</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d74b29ab6f5a271f19ab2be810ff8103</srcmd5>
+    <version>0.8.7.4</version>
+    <time>1409303301</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>ec56c882910c16df101f73cf7f0319f3</srcmd5>
+    <version>0.8.7.4</version>
+    <time>1414776424</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256035</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e9158155fa486d7c607b21a68773fe4d</srcmd5>
+    <version>0.8.7.6</version>
+    <time>1422959883</time>
+    <user>dimstar_suse</user>
+    <comment>- add yard-do-not-record-timestamps.diff to avoid always changing
+  yast documentation
+
+- updated to version 0.8.7.6
+ - Support using `@option` tag on keyword arg splat parameter. (#729)
+ - Add `.stats_options` for `YardocTask`. (#800, #801)
+ 
+ # 0.8.7.5 - October 26, 2014
+ 
+ - Fix linking of methods in top level namespace in method listing. (#776)
+ - Support using C macros in function declarations. (#810)
+ - YARD will no longer group comment blocks starting on the same column if they
+   are preceded by code. (#798)
+ - Handle anonymous lambda calls in toplevel scope. (#774)
+ - Support I18n in `@overload` tags. (#794)
+ - Support `yard stats` for objects with no file property. (#792)
+ - Support for named arguments in Ruby &gt;= 2.1. (#785)
+ - Exclude README backup files from YARD generation. (#790)
+ - Turned on the lax spacing option in Redcarpet to comply with the
+   Markdown standard.
+ - Escape HTML in YARD server search placeholder template.
+ - Fix issue with `private_class_method` support. (#760, #767)
+ - Enable tables support by default in Redcarpet Markdown provider. (#765)</comment>
+    <requestid>283642</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>97998cbe2098466aa5db0c6775df6284</srcmd5>
+    <version>0.8.7.6</version>
+    <time>1460358640</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384792</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>87e0c33282bac44157c459dd39474a68</srcmd5>
+    <version>0.9.0</version>
+    <time>1468699898</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406918</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5f115707f5e5b31dac59a94727c8a9ca</srcmd5>
+    <version>0.9.5</version>
+    <time>1470851679</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415250</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c6bd1bf2d20f057ae097ac61d9e3a626</srcmd5>
+    <version>0.9.8</version>
+    <time>1484771490</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450511</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f4f5d0b18e10d42d02bc4e4cff280b4f</srcmd5>
+    <version>0.9.9</version>
+    <time>1495883464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497674</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>82d49613d6cea08c9b162e588710134b</srcmd5>
+    <version>0.9.9</version>
+    <time>1497518365</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501337</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1fd1e1e11d63f5f8434f6aed3f898b3e</srcmd5>
+    <version>0.9.12</version>
+    <time>1520329596</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>581517</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>72673cd6d5cbd9e9addf9b40bf47f256</srcmd5>
+    <version>0.9.14</version>
+    <time>1529666957</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614091</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7183a2c0db3b8d8ba05f9a0ceeb619c8</srcmd5>
+    <version>0.9.16</version>
+    <time>1536327703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633742</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>056529bc19efd1d219615047b00964cf</srcmd5>
+    <version>0.9.19</version>
+    <time>1560970896</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706036</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b41e27a4cc914ae5d8c6e006980b3b2c</srcmd5>
+    <version>0.9.20</version>
+    <time>1565097055</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>717327</requestid>
+  </revision>
+</revisionlist>

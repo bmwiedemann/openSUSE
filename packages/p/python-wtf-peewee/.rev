@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0412e8fe62c082e6f57c888f2dd35a5e</srcmd5>
+    <version>3.0.0</version>
+    <time>1540819248</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-wtf-peewee, which is required by python-flask-peewee, which is required by python-Flask-Security, which is required by pgadmin4</comment>
+    <requestid>644264</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0d9c094e548b5cba52b56665f4b24046</srcmd5>
+    <version>3.0.0</version>
+    <time>1541152354</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>645929</requestid>
+  </revision>
+</revisionlist>

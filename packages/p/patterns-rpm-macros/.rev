@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f1742e4cfe20fdcaa6e8c3def286119d</srcmd5>
+    <version>1.0</version>
+    <time>1493471961</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>491216</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f09a742e721d395baf25fedb22d9f982</srcmd5>
+    <version>1.0</version>
+    <time>1524400512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598500</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e2c4f58198e05f39d917f02a4ac05349</srcmd5>
+    <version>1.0</version>
+    <time>1530741113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619401</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c5c0f8b8836a6ac87b1fa84e55392d0b</srcmd5>
+    <version>1.0</version>
+    <time>1557832298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701954</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0d92d29d18bd270db58d7dffba1a115c</srcmd5>
+    <version>1.0</version>
+    <time>1567580537</time>
+    <user>dimstar_suse</user>
+    <comment>- introduce obsolete_legacy_pattern macro (forwarded request 727003 from lnussel)</comment>
+    <requestid>727240</requestid>
+  </revision>
+</revisionlist>

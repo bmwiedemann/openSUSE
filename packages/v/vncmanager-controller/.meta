@@ -1,0 +1,5 @@
+<package name="vncmanager-controller" project="openSUSE:Factory">
+  <title>VNC Manager Controller</title>
+  <description>This is configuration application to configure sharing and security from inside VNC session.</description>
+  <devel project="X11:XOrg" package="vncmanager-controller"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="robinhood" project="openSUSE:Factory">
+  <title>Robinhood policy engine</title>
+  <description>Robinhood Policy Engine is a versatile tool to manage contents of large file systems. It maintains a replicate of filesystem medatada in a database that can be queried at will. It makes it possible to schedule mass action on filesystem entries by defining attribute-based policies, provides fast 'find' and 'du' enhanced clones, gives to administrators an overall view of filesystem contents through its web UI and command line tools.
+It supports any POSIX filesystem and implements advanced features for Lustre filesystems (list/purge files per OST or pool, read MDT changelogs...)</description>
+  <devel project="network:cluster" package="robinhood"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="catcodec" project="openSUSE:Factory">
+  <title>CATCodec</title>
+  <description>CATCodec to en-/decode sound replacement files. Needed for openttd-opensfx (sound data)</description>
+  <devel project="games" package="catcodec"/>
+  <url>http://www.openttd.org/download-catcodec</url>
+</package>

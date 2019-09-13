@@ -1,0 +1,29 @@
+<package name="irc-otr" project="openSUSE:Factory">
+  <title>Off-The-Record Messaging plugin for various irc clients</title>
+  <description>This package provides modules which implement Off-The-Record (OTR) Messaging
+protocol for a number of popular IRC clients.
+
+OTR allows you to have private conversations over IM by providing:
+
+ - Encryption
+   - No one else can read your instant messages.
+ - Authentication
+   - You are assured the correspondent is who you think it is.
+ - Deniability
+   - The messages you send do _not_ have digital signatures that are
+     checkable by a third party.  Anyone can forge messages after a
+     conversation to make them look like they came from you.  However,
+     _during_ a conversation, your correspondent is assured the messages
+     he sees are authentic and unmodified.
+ - Perfect forward secrecy
+   - If you lose control of your private keys, no previous conversation
+     is compromised.
+
+Authors:
+--------
+    Ulim &lt;a.sporto+bee@gmail.com&gt;
+
+</description>
+  <devel project="server:irc" package="irc-otr"/>
+  <url>http://irssi-otr.tuxfamily.org/</url>
+</package>

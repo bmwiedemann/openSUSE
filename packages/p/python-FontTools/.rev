@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95d83cb98284053527dc236da9d025a0</srcmd5>
+    <version>3.24.1</version>
+    <time>1520778237</time>
+    <user>dimstar_suse</user>
+    <comment>This is a replacement for the fonttools package that provides python2 and python3 python modules for use by python packages, while still providing the &quot;fonttools&quot; package with executables based on the python3 version.
+
+This package provides both python2 and python3 versions.  The old package this replaces didn't have a python2 version. 
+
+And the leap 42.3 build cannot be fixed in any simply way.  It just doesn't have the necessary dependencies to build this. The package this is replacing also didn't build for leap 42.3, either: https://build.opensuse.org/package/show/M17N/fonttools
+
+This version fixes the conflict from the previous version.</comment>
+    <requestid>584509</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>21890cea3c582e3eb26ddc8f4a869890</srcmd5>
+    <version>3.29.0</version>
+    <time>1537018600</time>
+    <user>maxlin_factory</user>
+    <comment>- Upstream provided fix for the issue with big endian machines. Remove
+  fonttools-disable_failing_tests_bigendian.patch and replace with
+  349cd94d171cf4e1e7541884df0d12bb6d4e841a.patch
+- Upstream fix has a missing import; thus fix-missing-sys.patch
+- Update to 3.29.0:
+    too many changes to enlist here, complete list is on
+    https://github.com/fonttools/fonttools/releases
+- add fonttools-disable_failing_tests_bigendian.patch
+  disable two tests currently failing on bigendian archs 
+</comment>
+    <requestid>634622</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>595d01404d92b832766dd8933e7cb9be</srcmd5>
+    <version>3.39.0</version>
+    <time>1554189819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690425</requestid>
+  </revision>
+</revisionlist>

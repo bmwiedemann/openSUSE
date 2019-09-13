@@ -1,0 +1,10 @@
+<package name="armagetron" project="openSUSE:Factory">
+  <title>OpenGL Game Similar to the Film Tron</title>
+  <description>In this game, race against other players on a permanently moving
+lightcycle (virtual motorbike), which leaves a wall as a trace. The
+lightcycles can make 90 degree turns and accelerate when driven close
+to walls. The game is over if you hit a wall. The goal of the game is
+to try to make your enemies hit the walls, while you avoid doing the
+same. Unlike glTron, this program does not require 3D hardware support.</description>
+  <devel project="games" package="armagetron"/>
+</package>

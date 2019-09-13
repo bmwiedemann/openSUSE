@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c4a49ffd84f30b088d34cf32f55439d</srcmd5>
+    <version>0.0.0+git20161123.5070dac</version>
+    <time>1499292120</time>
+    <user>dimstar_suse</user>
+    <comment>Diff to previous SR: remove the emacs company related package</comment>
+    <requestid>508002</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6953e326844944d77d0178a0a7f38ce3</srcmd5>
+    <version>0.0.0+git20161123.5070dac</version>
+    <time>1500275365</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>509951</requestid>
+  </revision>
+</revisionlist>

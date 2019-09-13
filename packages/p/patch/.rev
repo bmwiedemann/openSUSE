@@ -1,0 +1,334 @@
+<revisionlist>
+  <revision rev="1" vrev="149">
+    <srcmd5>54afa37fa753e9c1634925d8b1e6ad08</srcmd5>
+    <version>2.5.9</version>
+    <time>1166483843</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="223">
+    <srcmd5>a319b16ccfe5181f5a1127200f92dfd4</srcmd5>
+    <version>2.5.9</version>
+    <time>1193996424</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="252">
+    <srcmd5>8ab3af3fc229be335a2f03880e5a7440</srcmd5>
+    <version>2.5.9</version>
+    <time>1208994554</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="287">
+    <srcmd5>8ab3af3fc229be335a2f03880e5a7440</srcmd5>
+    <version>2.5.9</version>
+    <time>1208994554</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="288">
+    <srcmd5>76adc40b1b455416b40416052aa2d017</srcmd5>
+    <version>2.5.9</version>
+    <time>1233703103</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="289">
+    <srcmd5>edfb2c948b82512c65d458be19efb802</srcmd5>
+    <version>2.5.9</version>
+    <time>1235668625</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2e9b1b32c8da76655fcbdf09c69b9b2d</srcmd5>
+    <version>2.5.9.70</version>
+    <time>1238690992</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6cf6874c4fa83793dd95699f6a7edf25</srcmd5>
+    <version>2.5.9.77</version>
+    <time>1239006740</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>526f039b79837e9a2829a83d2e502521</srcmd5>
+    <version>2.5.9.97</version>
+    <time>1239098321</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0d2116651e8d370b1b48b2573e576e60</srcmd5>
+    <version>2.5.9.104</version>
+    <time>1239145202</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>50a1907e3362647b88b4e8130706a6df</srcmd5>
+    <version>2.5.9.118</version>
+    <time>1245467505</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2179148ad540b6f99b5d739d8da52998</srcmd5>
+    <version>2.5.9.120</version>
+    <time>1248367271</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>18ca8397108dba1f9d7f7bd03936651e</srcmd5>
+    <version>2.5.9.122</version>
+    <time>1254533736</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/patch based on submit request 21490 from user agruen
+</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>18ca8397108dba1f9d7f7bd03936651e</srcmd5>
+    <version>2.5.9.122</version>
+    <time>1254533736</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/patch based on submit request 21490 from user agruen
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>32d0c0f1cdbf33592c9950badf81c72c</srcmd5>
+    <version>2.6</version>
+    <time>1261402352</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/patch based on submit request 27158 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5d900f28976e5c5d02bf48b04639dcbd</srcmd5>
+    <version>2.6.1</version>
+    <time>1262968315</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/patch based on submit request 27907 from user agruen
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fee58f60618a38e505ae625f312b61e3</srcmd5>
+    <version>2.6.1.9</version>
+    <time>1265271060</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/patch based on submit request 30879 from user agruen
+</comment>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>efc83bdcca4ef9d4900cea5d4750051d</srcmd5>
+    <version>2.6.1.9</version>
+    <time>1268925311</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5e745d1ab617ec05b4c9c2bc27f225e6</srcmd5>
+    <version>2.6.1.65</version>
+    <time>1272915540</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/patch based on submit request 39270 from user agruen
+</comment>
+    <requestid>39270</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5c3812c3210532855c9a394c0e5945c2</srcmd5>
+    <version>2.6.1.81</version>
+    <time>1273092678</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/patch based on submit request 39416 from user agruen
+</comment>
+    <requestid>39416</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5c3812c3210532855c9a394c0e5945c2</srcmd5>
+    <version>2.6.1.81</version>
+    <time>1278667375</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>5c3812c3210532855c9a394c0e5945c2</srcmd5>
+    <version>2.6.1.81</version>
+    <time>1278678608</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>e2d318ef2d9545bef730713678afebcf</srcmd5>
+    <version>2.6.1.81</version>
+    <time>1285595476</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/patch based on submit request 49168 from user coolo
+</comment>
+    <requestid>49168</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>e2d318ef2d9545bef730713678afebcf</srcmd5>
+    <version>2.6.1.81</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fda312d3d8a244d34d5ce880c515ff1a</srcmd5>
+    <version>2.6.1.116</version>
+    <time>1302163623</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66399 from user coolo
+</comment>
+    <requestid>66399</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>7a9766e60346bb2cb6fe6852a8a6a430</srcmd5>
+    <version>2.6.1.116</version>
+    <time>1302163652</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66399
+</comment>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>8d8de69b76c206f5708666555adacde7</srcmd5>
+    <version>2.6.1.116</version>
+    <time>1317912281</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %configure macro (forwarded request 86685 from uli_suse)</comment>
+    <requestid>86710</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>8d8de69b76c206f5708666555adacde7</srcmd5>
+    <version>2.6.1.116</version>
+    <time>1319182229</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>fe93fd54c89e34b7c14d65b98440ef31</srcmd5>
+    <version>2.6.1.116</version>
+    <time>1323192963</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5b1e480ff10e5439527ab65e87ed7f7d</srcmd5>
+    <version>2.6.1.136</version>
+    <time>1334216692</time>
+    <user>coolo</user>
+    <comment>- Revert broken upstream commit (bnc#755136).
+- Update to a less ancient alpha snapshot.</comment>
+    <requestid>113094</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>5b1e480ff10e5439527ab65e87ed7f7d</srcmd5>
+    <version>2.6.1.136</version>
+    <time>1340183778</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>ef559ba0067ab119418fbe4a7af741f2</srcmd5>
+    <version>2.6.1.136</version>
+    <time>1347512844</time>
+    <user>coolo</user>
+    <comment>- patch-stdio.in.patch:
+   Fix build with missing gets declaration (glibc 2.16)</comment>
+    <requestid>133232</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e7de193b161d2a21e6d1779d052ca7ab</srcmd5>
+    <version>2.7.1</version>
+    <time>1355138428</time>
+    <user>coolo</user>
+    <comment>Update to version 2.7.1.</comment>
+    <requestid>144605</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>e7de193b161d2a21e6d1779d052ca7ab</srcmd5>
+    <version>2.7.1</version>
+    <time>1359109577</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>e7de193b161d2a21e6d1779d052ca7ab</srcmd5>
+    <version>2.7.1</version>
+    <time>1379663511</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>bb5c342e49ca9479a74696a2d24ea4f5</srcmd5>
+    <version>2.7.1</version>
+    <time>1403121870</time>
+    <user>coolo</user>
+    <comment>- error-report-crash.patch: fix crash after reporting error during option
+  parsing (forwarded request 234823 from jdelvare)</comment>
+    <requestid>236123</requestid>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>bb5c342e49ca9479a74696a2d24ea4f5</srcmd5>
+    <version>2.7.1</version>
+    <time>1409302119</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="9">
+    <srcmd5>5c6c837fa69f71584b514a1043601db5</srcmd5>
+    <version>2.7.1</version>
+    <time>1416823680</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>262036</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d0a3616dcd70dc1c856fc11cb4ed99a3</srcmd5>
+    <version>2.7.4</version>
+    <time>1425217527</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>287342</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7e695dd43e52424c2be93a32bad55c75</srcmd5>
+    <version>2.7.5</version>
+    <time>1426485302</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290774</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f00d3bb650cd4291e2f469c008284de2</srcmd5>
+    <version>2.7.6</version>
+    <time>1522403713</time>
+    <user>dimstar_suse</user>
+    <comment>- Move COPYING from %doc to %license.
+- Add AUTHORS and COPYING to %doc.
+- fix-segfault-mangled-rename.patch: Fix segfault with mangled
+  rename patch (bsc#1080951, CVE-2018-6951, savannah#53132).
+- patch 2.7.6:
+  * Files specified on the command line are no longer verified to
+    be inside the current working directory, so commands like
+    &quot;patch -i foo.diff ../foo&quot; will work again
+  * Fixes CVE-2016-10713 (Out-of-bounds access within
+    pch_write_line() in pch.c could possibly lead to DoS via a
+    crafted input file; bsc#1080918)
+  * Various fixes
+</comment>
+    <requestid>590591</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>0c69c010190ab1872b4f3175d23bea70</srcmd5>
+    <version>2.7.6</version>
+    <time>1524400948</time>
+    <user>dimstar_suse</user>
+    <comment>Fix arbitrary command execution in ed-style patches (CVE-2018-1000156, bsc#1088420)
+</comment>
+    <requestid>597758</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>22680219f8f85c637174034f5ca74eb4</srcmd5>
+    <version>2.7.6</version>
+    <time>1526219623</time>
+    <user>dimstar_suse</user>
+    <comment>- ed-style-07-dont-leak-tmp-file.patch,
+  ed-style-08-dont-leak-tmp-file-multi.patch: Fix temporary file
+  leak when applying ed-style patches (bsc#1092500,
+  savannah#53820).
+</comment>
+    <requestid>605717</requestid>
+  </revision>
+</revisionlist>

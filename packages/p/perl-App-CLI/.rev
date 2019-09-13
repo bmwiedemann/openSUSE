@@ -1,0 +1,252 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4684ff825034353ec7dae1933e9bb209</srcmd5>
+    <version>0.07</version>
+    <time>1187750365</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="69">
+    <srcmd5>4684ff825034353ec7dae1933e9bb209</srcmd5>
+    <version>0.07</version>
+    <time>1187750365</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="70">
+    <srcmd5>8e98e9f2156cac7006c54ea625efa412</srcmd5>
+    <version>0.07</version>
+    <time>1245276826</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="71">
+    <srcmd5>e49606cd387101af691a1a322693f5a1</srcmd5>
+    <version>0.07</version>
+    <time>1251294929</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-App-CLI based on submit request 18816 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="5" vrev="73">
+    <srcmd5>e49606cd387101af691a1a322693f5a1</srcmd5>
+    <version>0.07</version>
+    <time>1251294929</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-App-CLI based on submit request 18816 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="6" vrev="74">
+    <srcmd5>4ed13d93d8a1843a3d5e13e71d21d1b4</srcmd5>
+    <version>0.07</version>
+    <time>1263303762</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-App-CLI based on submit request 28915 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a1f95d5af3b35a302c45435e1fd8c3ce</srcmd5>
+    <version>0.08</version>
+    <time>1266183511</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-App-CLI based on submit request 32539 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b7b0988b65416ad5d8fe8aa80bcaf188</srcmd5>
+    <version>0.08</version>
+    <time>1268925364</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>bc348347d3cb2a519b1a5e440c0df386</srcmd5>
+    <version>0.08</version>
+    <time>1274791920</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-App-CLI based on submit request 40557 from user coolo
+</comment>
+    <requestid>40557</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>bc348347d3cb2a519b1a5e440c0df386</srcmd5>
+    <version>0.08</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>bc348347d3cb2a519b1a5e440c0df386</srcmd5>
+    <version>0.08</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>ee934f75dec62e382b9a0bf696ea7eef</srcmd5>
+    <version>0.08</version>
+    <time>1291127600</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 54047 from user coolo
+</comment>
+    <requestid>54047</requestid>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>cefc6b3351e56e07983284bade79eb25</srcmd5>
+    <version>0.08</version>
+    <time>1291127607</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 54047
+</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>033757fe1923a18ab774a1312d6943f3</srcmd5>
+    <version>0.08</version>
+    <time>1291581310</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54464 from user coolo
+</comment>
+    <requestid>54464</requestid>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>2cb9670a0f6a862747825b1b82847dd7</srcmd5>
+    <version>0.08</version>
+    <time>1291581317</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54464
+</comment>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>2cb9670a0f6a862747825b1b82847dd7</srcmd5>
+    <version>0.08</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>41164b92eb2b8cefa01e02d574867c47</srcmd5>
+    <version>0.313</version>
+    <time>1300181558</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64132 from user coolo
+</comment>
+    <requestid>64132</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e5e0a6ee073bf272aff08db5b8914d7e</srcmd5>
+    <version>0.313</version>
+    <time>1300181578</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64132
+</comment>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>89333c1a452c5a4f3d229cf9dfe9a49f</srcmd5>
+    <version>0.313</version>
+    <time>1314188642</time>
+    <user>saschpe</user>
+    <comment>fix deps</comment>
+    <requestid>79601</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>3fc86c6600551db14c4c53020768a353</srcmd5>
+    <version>0.313</version>
+    <time>1314188651</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79601
+</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>3fc86c6600551db14c4c53020768a353</srcmd5>
+    <version>0.313</version>
+    <time>1319182240</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>915977244a2851335da0691cc9cb15ad</srcmd5>
+    <version>0.313</version>
+    <time>1321627567</time>
+    <user>coolo</user>
+    <comment>- use original tar</comment>
+    <requestid>91962</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>859e3d2c7ba782035520d4466a22370d</srcmd5>
+    <version>0.313</version>
+    <time>1323193048</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>859e3d2c7ba782035520d4466a22370d</srcmd5>
+    <version>0.313</version>
+    <time>1340183792</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>859e3d2c7ba782035520d4466a22370d</srcmd5>
+    <version>0.313</version>
+    <time>1359109596</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="14">
+    <srcmd5>859e3d2c7ba782035520d4466a22370d</srcmd5>
+    <version>0.313</version>
+    <time>1379663550</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="16">
+    <srcmd5>859e3d2c7ba782035520d4466a22370d</srcmd5>
+    <version>0.313</version>
+    <time>1409302158</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>11ba824208731cf649eb48c61e3beb36</srcmd5>
+    <version>0.45</version>
+    <time>1500670053</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509398</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9d98b0074ce115c8a2f79dd7d4897aa3</srcmd5>
+    <version>0.50</version>
+    <time>1539251652</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix autogenerated changes
+- updated to 0.50
+   see /usr/share/doc/packages/perl-App-CLI/Changes
+- updated to 0.49
+   see /usr/share/doc/packages/perl-App-CLI/Changes
+  0.49 
+  
+    * add files to MANIFEST missing from last release
+  
+  0.48 
+  
+    * fixed help output behaviour (patch from sunnavy)
+    * more rigorous testing of Help class
+    * minor documentation improvements
+    * add AppVeyor configuration
+  
+  0.47 
+  
+    * add missing prereqs
+    * add missing LICENSE file
+    * add POD tests
+    * fix utf8 error in POD
+  
+  0.46  
+  
+    * many documentation updates
+    * extended test suite
+    * fix several perlcritic issues
+    * mention package aliases in command list (José Joaquín Atria)
+    * add default version command (José Joaquín Atria)
+    * add a 'commands' command to list commands in app (José Joaquín Atria)
+    * multiple general improvements to the code (José Joaquín Atria)
+</comment>
+    <requestid>640761</requestid>
+  </revision>
+</revisionlist>

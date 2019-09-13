@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bea58398279eea28b71c9dadd1c278c9</srcmd5>
+    <version>0.20</version>
+    <time>1527583449</time>
+    <user>dimstar_suse</user>
+    <comment>Useful for profiling openQA web UI</comment>
+    <requestid>612250</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>748f8cc0bc15ee30b7618ef8e518e83b</srcmd5>
+    <version>0.20</version>
+    <time>1527684335</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename README.pod to README-NYTProf.pod to prevent file conflict
+  with perl-Mojolicious-Plugin-RenderFile 
+</comment>
+    <requestid>613003</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>243d41b09010059e3d8face89e7c04ea</srcmd5>
+    <version>0.21</version>
+    <time>1539589255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21
+  only rename pod file when it is installed
+</comment>
+    <requestid>641413</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6cee81087a3fcd710371e8207aa7d586</srcmd5>
+    <version>0.22</version>
+    <time>1562056773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712934</requestid>
+  </revision>
+</revisionlist>

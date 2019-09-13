@@ -1,0 +1,715 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea7cb1f6e2736d3104b5e57886380f45</srcmd5>
+    <version>R14B04</version>
+    <time>1321267816</time>
+    <user>coolo</user>
+    <comment>Please add, fixed bnc#728667</comment>
+    <requestid>90930</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dcdaf158a1e3aca2ca18dd3dad715b11</srcmd5>
+    <version>R14B04</version>
+    <time>1323191306</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>dcdaf158a1e3aca2ca18dd3dad715b11</srcmd5>
+    <version>R14B04</version>
+    <time>1340183310</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>c8e46e8fa6d636663e43b14213fb7b37</srcmd5>
+    <version>R14B04</version>
+    <time>1340971972</time>
+    <user>coolo</user>
+    <comment>- Fix build with OpenDJK7, -target parameter no longer sets 
+  -source so we have to do it manually. (forwarded request 126569 from namtrac)</comment>
+    <requestid>126576</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>78b0171fc8264529f6a72286c55fff3b</srcmd5>
+    <version>R14B04</version>
+    <time>1343632141</time>
+    <user>coolo</user>
+    <comment>- fix ppc architecture detection 
+link failure will be resolved automatically, as java will be fixed for ppc (forwarded request 128933 from k0da)</comment>
+    <requestid>129161</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>344db3aacc8ce57c22937cde0df3852b</srcmd5>
+    <version>R14B04</version>
+    <time>1349783321</time>
+    <user>coolo</user>
+    <comment>- Avoid shipping libraries with licensing issues (see bnc#728667)
+  + Neither ship 'diameter' source or binary and remove the corresponding
+    but useless man pages
+  + The xmerl binary (library) is safe to ship, but not it's sources
+    (fixes bnc#776060)
+
+- Add erlang-ppc.patch: Fix PPC architecture detection</comment>
+    <requestid>137485</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>556c32df26c6be477d5e8b2fba01884b</srcmd5>
+    <version>R14B04</version>
+    <time>1350150758</time>
+    <user>coolo</user>
+    <comment>- Install man-pages into /usr/share/man, not a erlang-private directory</comment>
+    <requestid>137842</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>49dc2484c6c6c3f28fe7833ad121eb02</srcmd5>
+    <version>R15B02</version>
+    <time>1353266727</time>
+    <user>namtrac</user>
+    <comment>Fixed man1 dir (forwarded request 141585 from matwey)</comment>
+    <requestid>141595</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c67ba620ce26034e78c399cbdceb32f3</srcmd5>
+    <version>R15B02</version>
+    <time>1353507104</time>
+    <user>coolo</user>
+    <comment>- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+
+The error is masked due to || : (forwarded request 141960 from dimstar)</comment>
+    <requestid>142029</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f0c0310d08d06d0661870708645dd439</srcmd5>
+    <version>R15B03</version>
+    <time>1354711847</time>
+    <user>namtrac</user>
+    <comment>update to R15B03 (including SSL accept timeout patch) (forwarded request 143982 from NicoK)</comment>
+    <requestid>143984</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>025282279eeab782f5c7076949f6bf08</srcmd5>
+    <version>R15B03</version>
+    <time>1355463465</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145060</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>2107218bd8c1c29c4823155c88be311f</srcmd5>
+    <version>R15B03</version>
+    <time>1357567527</time>
+    <user>coolo</user>
+    <comment>
+otp_src_R15B03.tar.gz has a lot of .beam files (which are compiled .erl), and they has been just repacked into rpms. we don't have any reasons not to trust Erlang/OTP maintainers, but it would be better to do clean and rebuild .beam from the sources.
+
+- add make clean before build. it clears .beam files bundled with
+  sources. our aim is to build everything from sources. (forwarded request 147242 from matwey)</comment>
+    <requestid>147366</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>fbea80e0210dda2590c846d891bbe89a</srcmd5>
+    <version>R15B03</version>
+    <time>1357811836</time>
+    <user>coolo</user>
+    <comment>temporary fix building for armv7 (forwarded request 147446 from matwey)</comment>
+    <requestid>147452</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>fbea80e0210dda2590c846d891bbe89a</srcmd5>
+    <version>R15B03</version>
+    <time>1359108856</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>113343243c5e0983767e42bf5f0419ca</srcmd5>
+    <version>R15B03_1</version>
+    <time>1361116603</time>
+    <user>coolo</user>
+    <comment>
+- Add macros.erlang with some RPM macros for erlang packaging. (forwarded request 154852 from matwey)</comment>
+    <requestid>155490</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>83927adc07d501d5e4677efe3fc2c382</srcmd5>
+    <version>R16B</version>
+    <time>1362730156</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157699</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>2a018e600eaeaa8add75c4184e6cdb65</srcmd5>
+    <version>R16B</version>
+    <time>1363899755</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159587</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>65779bc2627236e6b164615dccf8d3b7</srcmd5>
+    <version>R16B</version>
+    <time>1365948723</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>163678</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>a07253075a03f842641e6f903eb9df27</srcmd5>
+    <version>R16B</version>
+    <time>1369718983</time>
+    <user>coolo</user>
+    <comment> (forwarded request 176453 from matwey)</comment>
+    <requestid>176454</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>7be4c6599524e51108be9bef98217bb9</srcmd5>
+    <version>R16B</version>
+    <time>1371544231</time>
+    <user>coolo</user>
+    <comment>
+- dialyzer requires graphviz (see dialyzer_callgraph:to_ps/3)
+- move dialyzer binaries into separate package (forwarded request 179103 from matwey)</comment>
+    <requestid>179243</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4ea9a1061d5ffc4bac62d1316a79d104</srcmd5>
+    <version>R16B01</version>
+    <time>1372145040</time>
+    <user>coolo</user>
+    <comment>update to R16B01 (forwarded request 180516 from NicoK)</comment>
+    <requestid>180681</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>4ea9a1061d5ffc4bac62d1316a79d104</srcmd5>
+    <version>R16B01</version>
+    <time>1379662305</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d34de2deb891131ca4ad87022a4134f1</srcmd5>
+    <version>R16B02</version>
+    <time>1380121936</time>
+    <user>coolo</user>
+    <comment>update to R16B02 (forwarded request 199747 by matwey)</comment>
+    <requestid>200339</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>57871e53a46fa8acf0825e04f7a817af</srcmd5>
+    <version>R16B03</version>
+    <time>1388393513</time>
+    <user>coolo</user>
+    <comment>fix crypo.c compiling (forwarded request 211935 from matwey)</comment>
+    <requestid>211986</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>5301dbbbcb8b3fc2eddb277c74a11fcd</srcmd5>
+    <version>R16B03</version>
+    <time>1392731042</time>
+    <user>coolo</user>
+    <comment> (forwarded request 221128 from matwey)</comment>
+    <requestid>222545</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>ea3e2ca3b19252992007734b89d6340b</srcmd5>
+    <version>R16B03</version>
+    <time>1393935682</time>
+    <user>coolo</user>
+    <comment> (forwarded request 223188 from matwey)</comment>
+    <requestid>224452</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>10ad450dd19e32aca44d57788afc0477</srcmd5>
+    <version>R16B03</version>
+    <time>1395750051</time>
+    <user>coolo</user>
+    <comment> (forwarded request 227187 from matwey)</comment>
+    <requestid>227279</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>146f214e15b97ad279b0559808a7e0b5</srcmd5>
+    <version>R16B03</version>
+    <time>1396291364</time>
+    <user>coolo</user>
+    <comment> (forwarded request 228204 from matwey)</comment>
+    <requestid>228262</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d10577b161a16cff50a4ae26bbb4fc8b</srcmd5>
+    <version>17.0</version>
+    <time>1402946768</time>
+    <user>coolo</user>
+    <comment>Since, I've fixed erlang-rebar.
+erlang 17.0 is ready for factory, now. See changes in .changes</comment>
+    <requestid>237032</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>daa0c50ee7b1aef428c72c4dae5b86fc</srcmd5>
+    <version>17.1</version>
+    <time>1406661709</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>239870</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>7b5b7a2cda2a26242a660882ad6808ca</srcmd5>
+    <version>17.1</version>
+    <time>1409118414</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246549</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>7b5b7a2cda2a26242a660882ad6808ca</srcmd5>
+    <version>17.1</version>
+    <time>1409300839</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1ac0d4cfa45f719141ca38535213e5e6</srcmd5>
+    <version>17.3</version>
+    <time>1415016700</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>253521</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>a11be3147b5f291d0014b3fa75e40af3</srcmd5>
+    <version>17.3</version>
+    <time>1416347217</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>261880</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>72481ec42c3112964912d2e6abe041d0</srcmd5>
+    <version>17.3</version>
+    <time>1416823755</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262658</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>79aa061920a2e0cb563c85823f825735</srcmd5>
+    <version>17.4</version>
+    <time>1418737725</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265079</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>cd04fc91614a4d0c66e5dbd40b8c18a3</srcmd5>
+    <version>17.4</version>
+    <time>1425031823</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287992</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>69313627236064337173d2892f2e0142</srcmd5>
+    <version>17.5</version>
+    <time>1428652298</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294764</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e90edfbc25fbfe64f25e9b52ca0e438d</srcmd5>
+    <version>17.5.4</version>
+    <time>1435053500</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312739</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>bb3e9c80a5c7584d821b7f963adaff8b</srcmd5>
+    <version>17.5.6</version>
+    <time>1435652167</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 17.5.6:
+  * Fix broken relay counters
+  * Fix diameter_sctp listener race
+- fix build for SLE_12 (forwarded request 313649 from dirkmueller)</comment>
+    <requestid>313652</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6440e73726b6dd24e24694cb5389c33f</srcmd5>
+    <version>18.0.1</version>
+    <time>1437384114</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>315510</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4a7f1589bba9d244204929592ea4d836</srcmd5>
+    <version>18.0.2</version>
+    <time>1437549579</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>317608</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>b3e6dace1bca6c0a74186fa00811dc40</srcmd5>
+    <version>18.0.2</version>
+    <time>1438421857</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319115</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>11de8ae1da88cf447e39e2b13e32cbe0</srcmd5>
+    <version>18.0.3</version>
+    <time>1440743210</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327241</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>535f6aaa3fc7cdab04d31bdd751eb1e6</srcmd5>
+    <version>18.1.3</version>
+    <time>1448186419</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>344893</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>77cdf88ba91f3dd0146332b24ab6a75b</srcmd5>
+    <version>18.2.2</version>
+    <time>1453998292</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356279</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>add334e3c5b99a8d9fd615970f9da779</srcmd5>
+    <version>18.2.3</version>
+    <time>1456434487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361132</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a04ecca7c8396eef5c5f58a5ec3c0e70</srcmd5>
+    <version>18.3</version>
+    <time>1459002324</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>376584</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f4c884005d7bb321411b72dddbdf2d13</srcmd5>
+    <version>18.3.2</version>
+    <time>1464014385</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397298</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>c7c6948ce70e7db32d4c30c5fb2bc8b9</srcmd5>
+    <version>18.3.4</version>
+    <time>1467359919</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404837</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>37b467a17f6ed22247016412d51c1f84</srcmd5>
+    <version>19.1</version>
+    <time>1475359738</time>
+    <user>dimstar_suse</user>
+    <comment>update to 19.1 (this sr also fixes a minor formatting typo in the changelog)</comment>
+    <requestid>431524</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>651df2f01d018c3347988e5011a05d5d</srcmd5>
+    <version>19.2</version>
+    <time>1485383400</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451680</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>0b4a9acd2663b1097825318be989374f</srcmd5>
+    <version>19.2.2</version>
+    <time>1487149647</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456760</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>c148a5e5bbcec45a7e67c539dfdc39ef</srcmd5>
+    <version>19.2.2</version>
+    <time>1490026211</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480999</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>bb00deab140d5738aeb794a221dc0931</srcmd5>
+    <version>19.3.2</version>
+    <time>1495883907</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498229</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>60035201d28046cca1a92dfd920e8ffe</srcmd5>
+    <version>20.0.2</version>
+    <time>1503926059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518523</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2a36f50ecf10b66ae25f28db452822e0</srcmd5>
+    <version>20.0.4</version>
+    <time>1504521344</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520333</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>8018f553811e992c1f1aa0f4aebd5ea8</srcmd5>
+    <version>20.0.5</version>
+    <time>1506195351</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528212</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>d734e2089f142c43066aeb8ae64c8dbf</srcmd5>
+    <version>20.1.2</version>
+    <time>1510045057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538268</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>009d13d594d0139a0aacbb86c7e391be</srcmd5>
+    <version>20.1.2</version>
+    <time>1512140038</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>546724</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>89761b30cdb93ab7dc5ab04cd8b886a5</srcmd5>
+    <version>20.1.5</version>
+    <time>1512216768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547253</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>329f76ab26a8a0ed15843a4f3685df2b</srcmd5>
+    <version>20.2.2</version>
+    <time>1518514281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575784</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>a3192b655945077c692f4e7d1bbb767c</srcmd5>
+    <version>20.3.2</version>
+    <time>1523956714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597184</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>a44e36a439bb363a70a9e551dc7f39dd</srcmd5>
+    <version>20.3.8.6</version>
+    <time>1534543504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629576</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>1718f36af28669fa16bb45a3f5e6622d</srcmd5>
+    <version>20.3.8.9</version>
+    <time>1539013647</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640454</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>9c57358342fb2216d833185451cfcbd4</srcmd5>
+    <version>21.1.1</version>
+    <time>1541511233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646173</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>b1cd12be401630d7ba9ca5af860785ed</srcmd5>
+    <version>21.1.1</version>
+    <time>1541865707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647521</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>26d50e7b348394d8bf7b598d8ee6a8a1</srcmd5>
+    <version>21.1.2</version>
+    <time>1542889518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650577</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>0768adcc04f04280a50871a48578791d</srcmd5>
+    <version>21.1.2</version>
+    <time>1543592008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652813</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>cecf87f46cbabb19bbf69b391827f9f9</srcmd5>
+    <version>21.1.4</version>
+    <time>1544441411</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>656668</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>f56d03c41de198e4db6604a8700123a9</srcmd5>
+    <version>21.1.4</version>
+    <time>1544817297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657996</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>cc3e0c1ffe561cd9cda7a6e3a3df31dc</srcmd5>
+    <version>21.2.5</version>
+    <time>1550048632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673545</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>cfb005e7c39dfffdf088047b28349ebb</srcmd5>
+    <version>21.2.6</version>
+    <time>1551276457</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679501</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>2fc38272e761f2a47868e92510ab94ce</srcmd5>
+    <version>21.3</version>
+    <time>1552901905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685290</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>b3678387f1f204518b74a6f30a21fcaa</srcmd5>
+    <version>21.3.1</version>
+    <time>1553158374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686948</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>07f07d3087f382b029c23b067af5a4e5</srcmd5>
+    <version>21.3.2</version>
+    <time>1553700165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689059</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>e6068e34bcb014d39df9069900397b83</srcmd5>
+    <version>21.3.3</version>
+    <time>1554372401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690814</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>82b758f40d5be1d7ee9f42abe001acf4</srcmd5>
+    <version>21.3.4</version>
+    <time>1555488517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694594</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>d2a1421046a3b2c4cf35bb31c45cbc0e</srcmd5>
+    <version>21.3.5</version>
+    <time>1555928766</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696412</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>8a7ce908f06a7100f1029ba7ada703b8</srcmd5>
+    <version>21.3.6</version>
+    <time>1556312082</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698101</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>3dca02d27dd9df031292fea53f15f678</srcmd5>
+    <version>21.3.7</version>
+    <time>1556817403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699555</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>f25b4c58ccbd56d85a74974bc51b8a85</srcmd5>
+    <version>21.3.8.1</version>
+    <time>1558129462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703691</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>fd1b4eab52c5d8624a64768c5e9db7bf</srcmd5>
+    <version>22.0</version>
+    <time>1560800067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710305</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>bfd0890aa6d4a9dc43bfc8da67f8b690</srcmd5>
+    <version>22.0.4</version>
+    <time>1562056736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712820</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>c09059857b6e4d033c37b785f184db20</srcmd5>
+    <version>22.0.4</version>
+    <time>1562591435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713600</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>28fbfd501b808cd2c51df622fffdd926</srcmd5>
+    <version>22.0.7</version>
+    <time>1564994238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720216</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>b4e4be4ba833d6dc3c384fefd25781f3</srcmd5>
+    <version>22.0.7</version>
+    <time>1567581348</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>727982</requestid>
+  </revision>
+</revisionlist>

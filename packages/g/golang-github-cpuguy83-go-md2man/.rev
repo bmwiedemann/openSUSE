@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e47e660938a9b3dcfdb8c541174a89b</srcmd5>
+    <version>1.0.2+git20150617.e69ac41</version>
+    <time>1438431427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>319494</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>696f03eb6392ff73b443be8e7380d405</srcmd5>
+    <version>1.0.5+git20160104.2724a9c</version>
+    <time>1453416271</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354848</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3412d84921264ae3c885964eed3ede05</srcmd5>
+    <version>1.0.5+git20160104.2724a9c</version>
+    <time>1480786047</time>
+    <user>dimstar_suse</user>
+    <comment>fix for openSUSE_Factory
+This goes with sr#443064 and sr#443160</comment>
+    <requestid>443161</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>725071b9b1061d283ed4981db33d67f2</srcmd5>
+    <version>1.0.6+git20160904.a65d4d2</version>
+    <time>1490318198</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477405</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e2fea667d10858bf24c5d735f4650e8a</srcmd5>
+    <version>1.0.6+git20160904.a65d4d2</version>
+    <time>1517823951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571979</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>e78b47d7e0d6fc68e7b07eb802f21e00</srcmd5>
+    <version>1.0.6+git20160904.a65d4d2</version>
+    <time>1529322564</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616830</requestid>
+  </revision>
+</revisionlist>

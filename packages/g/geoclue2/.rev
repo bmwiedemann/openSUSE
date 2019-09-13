@@ -1,0 +1,286 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db887d4b202104688398f9c0ed9669c5</srcmd5>
+    <version>0.0.1</version>
+    <time>1376903650</time>
+    <user>scarabeus_factory</user>
+    <comment>New package; geoclue2 fork of geoclue; needed for gnome-maps</comment>
+    <requestid>186391</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b27c7259e4123fd0e0d26cb80449a90c</srcmd5>
+    <version>1.99.3</version>
+    <time>1378892155</time>
+    <user>coolo</user>
+    <comment>- Add COPYING to the package as %doc. (forwarded request 198180 from dimstar)</comment>
+    <requestid>198181</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>89735efaae28da571d921a2389141d44</srcmd5>
+    <version>1.99.3</version>
+    <time>1378990494</time>
+    <user>scarabeus_factory</user>
+    <comment>- Re-enable the D-Bus service, as the services have been white-
+  listed for Factory.
+
+together with https://build.opensuse.org/request/show/198521 this will build.
+So please don't worry for the build failure you see :) (forwarded request 198545 from dimstar)</comment>
+    <requestid>198575</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>71632303af0a873d889eaeb01dc8ba57</srcmd5>
+    <version>1.99.3</version>
+    <time>1379317264</time>
+    <user>coolo</user>
+    <comment>- Provide dbus(org.freedesktop.GeoClue2) instead of dbus(GeoClue2),
+  as this is much closer to reality. (forwarded request 199119 from dimstar)</comment>
+    <requestid>199159</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>71632303af0a873d889eaeb01dc8ba57</srcmd5>
+    <version>1.99.3</version>
+    <time>1379662414</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3acab583ba4575a63a40fde386e42af8</srcmd5>
+    <version>2.0.0</version>
+    <time>1380216801</time>
+    <user>coolo</user>
+    <comment>update to 2.0.0 (forwarded request 200439 from dimstar)</comment>
+    <requestid>200441</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>cbd9c1f650a01244fbd0e12004c0db11</srcmd5>
+    <version>2.0.0</version>
+    <time>1381229441</time>
+    <user>scarabeus_factory</user>
+    <comment>Create home directory for the dbus user. wanted for 13.1 (forwarded request 202563 from dimstar)</comment>
+    <requestid>202599</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1857ce3cb3478b9a8cb27c70d37e00fe</srcmd5>
+    <version>2.1.6</version>
+    <time>1396709216</time>
+    <user>coolo</user>
+    <comment>fixed rpmlintrc</comment>
+    <requestid>229069</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>fecc40f18fb05eab3e7397e4ee55f212</srcmd5>
+    <version>2.1.6</version>
+    <time>1397042020</time>
+    <user>coolo</user>
+    <comment>- Actually drop the rpmlintrc: the dbus service has been
+  authorized. (forwarded request 229102 from dimstar)</comment>
+    <requestid>229193</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d1be80fa076dfa4bc99cc5b01db75c95</srcmd5>
+    <version>2.1.9</version>
+    <time>1407912484</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244010</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d1be80fa076dfa4bc99cc5b01db75c95</srcmd5>
+    <version>2.1.9</version>
+    <time>1409300945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>35e02fbe78e7f5263bf0ba5536754fb2</srcmd5>
+    <version>2.1.10</version>
+    <time>1412625878</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253918</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d779fe600faafcc6ad6820edbb31c3ca</srcmd5>
+    <version>2.1.10</version>
+    <time>1424096696</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286023</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d54b3c24d4bdc88dcad522d847053be5</srcmd5>
+    <version>2.2.0</version>
+    <time>1429657997</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297707</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d8f949fa2bca776540da45ded98e60fd</srcmd5>
+    <version>2.3.0</version>
+    <time>1444833502</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334608</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3e6aef9d557ec63b5efae35c3e5792d4</srcmd5>
+    <version>2.3.0</version>
+    <time>1446989740</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342635</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>158d0d7bbe21fa623c03132af7f72dc0</srcmd5>
+    <version>2.4.0</version>
+    <time>1451177962</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350541</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>843f3d02849e6d505565dbfec66bf5f8</srcmd5>
+    <version>2.4.2</version>
+    <time>1456924778</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362465</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>54878f7a2b74a4313aa5c45c02f0b44a</srcmd5>
+    <version>2.4.3</version>
+    <time>1457353371</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>365499</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>5d4aa31d92e4d61001356ea492cac130</srcmd5>
+    <version>2.4.3</version>
+    <time>1464964673</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399507</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e6da55176af743c5f725658372ca6157</srcmd5>
+    <version>2.4.4</version>
+    <time>1473679451</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425773</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6265e126e008bea5cfd8750faab09eda</srcmd5>
+    <version>2.4.5</version>
+    <time>1485769495</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452992</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d48bdcb5025f1f0fb85f5542d90464a1</srcmd5>
+    <version>2.4.5</version>
+    <time>1486716640</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455273</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>9f0b9bbb8399b29d71627982f528cbdc</srcmd5>
+    <version>2.4.5</version>
+    <time>1488733003</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461648</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>21e4f34507860db09c298c0181e5c808</srcmd5>
+    <version>2.4.6</version>
+    <time>1491907213</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486367</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8e82c2f2752f072d6110be3b5478c1ad</srcmd5>
+    <version>2.4.7</version>
+    <time>1496821853</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499595</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>f17756c9d3dcab63917fafad240cf713</srcmd5>
+    <version>2.4.7</version>
+    <time>1520160779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581156</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6015b8daa269c4f151ba5a18e19fd353</srcmd5>
+    <version>2.4.8</version>
+    <time>1524400155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596196</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c846ec5da8454ebddc0f7b90231236d5</srcmd5>
+    <version>2.4.10</version>
+    <time>1525611644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603944</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>75e164cdd358ec1069812d23aa0ec505</srcmd5>
+    <version>2.4.10</version>
+    <time>1526219744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606084</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4b625f95b04071e316e789cc9f1c4f34</srcmd5>
+    <version>2.4.11</version>
+    <time>1533214109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625946</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7fa8c0bead8fb6562f96e9b64b70c92e</srcmd5>
+    <version>2.4.12</version>
+    <time>1539756562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629348</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>476e63881c484d6ca7a5bbdd4ad3cf76</srcmd5>
+    <version>2.5.1</version>
+    <time>1545866607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657673</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4293ac74a02cc11146a3cee7ef50b781</srcmd5>
+    <version>2.5.2</version>
+    <time>1547129794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663852</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4f774cf9bec38ea9c8a2cf8eeff3f1eb</srcmd5>
+    <version>2.5.3</version>
+    <time>1560337388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706209</requestid>
+  </revision>
+</revisionlist>

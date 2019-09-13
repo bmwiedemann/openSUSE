@@ -1,0 +1,267 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>64ef52b4fe6fd2e2f94f73a7cc932639</srcmd5>
+    <version>1.15</version>
+    <time>1168903906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="113">
+    <srcmd5>64ef52b4fe6fd2e2f94f73a7cc932639</srcmd5>
+    <version>1.15</version>
+    <time>1168903906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="114">
+    <srcmd5>dd1b06916fe5d0b9439c79ddca14f241</srcmd5>
+    <version>1.15</version>
+    <time>1245276959</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="116">
+    <srcmd5>dd1b06916fe5d0b9439c79ddca14f241</srcmd5>
+    <version>1.15</version>
+    <time>1245276959</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="117">
+    <srcmd5>c4c95e629f76e2dc6af60fd56d8aa639</srcmd5>
+    <version>1.15</version>
+    <time>1263225228</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-SQL-Statement based on submit request 28960 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>38a5518413cd45a098f6396659be5aa7</srcmd5>
+    <version>1.23</version>
+    <time>1265845989</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-SQL-Statement based on submit request 32011 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>962b9c6f946f8d20d5543cdafe45d89c</srcmd5>
+    <version>1.23</version>
+    <time>1268925602</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b0fd70612beb14045c29b4066b65387f</srcmd5>
+    <version>1.25</version>
+    <time>1270486136</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-SQL-Statement based on submit request 36930 from user computersalat
+</comment>
+    <requestid>36930</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>415ce2c7deb4beca7375a16ae5ac06f6</srcmd5>
+    <version>1.25</version>
+    <time>1274790239</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-SQL-Statement based on submit request 40554 from user coolo
+</comment>
+    <requestid>40554</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8d26abc608679c6bb95d0f04f0e42517</srcmd5>
+    <version>1.27</version>
+    <time>1277194921</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-SQL-Statement based on submit request 41837 from user coolo
+</comment>
+    <requestid>41837</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8d26abc608679c6bb95d0f04f0e42517</srcmd5>
+    <version>1.27</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8d26abc608679c6bb95d0f04f0e42517</srcmd5>
+    <version>1.27</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ba8d520d162e511efa28dff8c3989128</srcmd5>
+    <version>1.28</version>
+    <time>1279651750</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-SQL-Statement based on submit request 43510 from user computersalat
+</comment>
+    <requestid>43510</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2e90c6908a972b5d8293b935285c04dc</srcmd5>
+    <version>1.30</version>
+    <time>1281436795</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-SQL-Statement based on submit request 45250 from user computersalat
+</comment>
+    <requestid>45250</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d856b334b2e746f1a617ae247c72f2ba</srcmd5>
+    <version>1.31</version>
+    <time>1282571645</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-SQL-Statement based on submit request 46018 from user computersalat
+</comment>
+    <requestid>46018</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>2901fe537b0fb7ab530c891281dbc5de</srcmd5>
+    <version>1.31</version>
+    <time>1291583758</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54643 from user coolo
+</comment>
+    <requestid>54643</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>55895e4b12d74df6e600b15d274440f9</srcmd5>
+    <version>1.31</version>
+    <time>1291583767</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54643
+</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>55895e4b12d74df6e600b15d274440f9</srcmd5>
+    <version>1.31</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>49bdfdc6c41fe1ff57056c3e317729b0</srcmd5>
+    <version>1.33</version>
+    <time>1301655218</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65738 from user coolo
+</comment>
+    <requestid>65738</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>5e96269ad2a2f566b7029d620c5cb78c</srcmd5>
+    <version>1.33</version>
+    <time>1301655232</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65738
+</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>5e96269ad2a2f566b7029d620c5cb78c</srcmd5>
+    <version>1.33</version>
+    <time>1319182303</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>81c2af981aef55b81f4ccb61575a9700</srcmd5>
+    <version>1.33</version>
+    <time>1323193637</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>81c2af981aef55b81f4ccb61575a9700</srcmd5>
+    <version>1.33</version>
+    <time>1340183912</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>81c2af981aef55b81f4ccb61575a9700</srcmd5>
+    <version>1.33</version>
+    <time>1359109789</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ae6c2704582230212d554820462b9935</srcmd5>
+    <version>1.405</version>
+    <time>1371646573</time>
+    <user>coolo</user>
+    <comment>- updated to 1.405
+  [Bug fixes]
+  * INSERT now expands incomplete rows (Thanks to H.Merijn Brand)
+  
+  Version 1.404, released May 23, 2013
+  -------------------------------------------------
+  [Bug fixes]
+  * re-enable cleanup test_output* after test done
+  * recommend Text::Soundex and do soundex-test only when have it,
+    because it's going to be removed from core for Perl 5.19 (thank Merijn)
+  
+  Version 1.403, released May 22, 2013
+  -------------------------------------------------
+  [Bug fixes]
+  * fix documentation (rt#84889 - thanks Xavier Guimard and Florian,
+    rt#85257 - thanks Andreas Koenig)
+  
+  Version 1.402, released December 19, 2012
+  -------------------------------------------------
+  
+  [Misc]
+  * add Math::Complex 1.56 as recommendation (RT#81926, Sam Ferencik)
+  * add Math::BigInt 1.88 as recommendation (RT#81927, Sam Ferencik)
+  * clarify Test::Simple 1.90 is required for building (RT#81925, Sam Ferencik)
+  
+  [Bug fixes]
+  * fix leaking reference to open tables outside SQL::Statement::execute
+    (fixes RT#81523)
+  * looks_like_number identifies 'nan' as number sometimes (add regex to
+    t/06virtual.t)</comment>
+    <requestid>179403</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>ae6c2704582230212d554820462b9935</srcmd5>
+    <version>1.405</version>
+    <time>1379663831</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>ae6c2704582230212d554820462b9935</srcmd5>
+    <version>1.405</version>
+    <time>1409302470</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4d23af91709ea1a427c639fd3d4f2203</srcmd5>
+    <version>1.407</version>
+    <time>1447353634</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit, as deps are now resolved.</comment>
+    <requestid>343452</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>016964bb8deab65873a0b9a5f1677dc6</srcmd5>
+    <version>1.409</version>
+    <time>1460482509</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>386073</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6b013c3e72e77dc37c178a3611571fb8</srcmd5>
+    <version>1.410</version>
+    <time>1461335062</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389445</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>40541b6e99848b1c0f5f08752e6ba5ab</srcmd5>
+    <version>1.412</version>
+    <time>1492011363</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486676</requestid>
+  </revision>
+</revisionlist>

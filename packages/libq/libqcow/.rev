@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae9f01bf33844382a31ffb3a194928fb</srcmd5>
+    <version>0~20140729</version>
+    <time>1408957397</time>
+    <user>coolo</user>
+    <comment>New package - declined previously due to missing %doc line in python sub-package - corrected</comment>
+    <requestid>245478</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ae9f01bf33844382a31ffb3a194928fb</srcmd5>
+    <version>0~20140729</version>
+    <time>1409301672</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>0572a207d624aee4e23c8843a9b2e78d</srcmd5>
+    <version>0~20140729</version>
+    <time>1409761383</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>247139</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>78bdcdb428171960eedcf29428b6b768</srcmd5>
+    <version>0~20150105</version>
+    <time>1422626647</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282293</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aaa33ab5c86557f27bf1dff284e0e8bc</srcmd5>
+    <version>0~20160123</version>
+    <time>1455021134</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>357638</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3967d41bdc2128e8f7134fc763e65c82</srcmd5>
+    <version>0~20170222</version>
+    <time>1488479725</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460444</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8994716e984d573bfbf055bbc9c7c3d0</srcmd5>
+    <version>0~20170222</version>
+    <time>1515876423</time>
+    <user>dimstar_suse</user>
+    <comment>- fix upgrade issue caused by rename python-* to python2-*
+- remove unversioned Provides: pyqcow, 
+	depend on python{23}-libqcow instead
+</comment>
+    <requestid>563488</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cf657f517262f3d7f3d6f4ad685742a5</srcmd5>
+    <version>0~20181227</version>
+    <time>1560970966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706932</requestid>
+  </revision>
+</revisionlist>

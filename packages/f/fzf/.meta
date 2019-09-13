@@ -1,0 +1,5 @@
+<package name="fzf" project="openSUSE:Factory">
+  <title>A command-line fuzzy finder</title>
+  <description>fzf is an interactive Unix filter for the CLI for any list; files, command history, processes, hostnames, bookmarks, git commits, etc.</description>
+  <devel project="utilities" package="fzf"/>
+</package>

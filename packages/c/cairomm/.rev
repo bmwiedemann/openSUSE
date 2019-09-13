@@ -1,0 +1,334 @@
+<revisionlist>
+  <revision rev="1" vrev="27">
+    <srcmd5>6aec626a9acc4d4f385fbd1909cb5227</srcmd5>
+    <version>1.2.2</version>
+    <time>1168214238</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="30">
+    <srcmd5>bd28b273836350889af3d3b65eed49a8</srcmd5>
+    <version>1.2.2</version>
+    <time>1168614197</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>92ac4008556e577294778cc31f6120f5</srcmd5>
+    <version>1.4.8</version>
+    <time>1207168419</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="18">
+    <srcmd5>bf3de22765a9563ab3bc2fa1ba1febdf</srcmd5>
+    <version>1.4.8</version>
+    <time>1214104989</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7b23e7f5074124ed43465325ced97ecf</srcmd5>
+    <version>1.6.4</version>
+    <time>1223735728</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b3f4f0ab1d226e5959cee508681e4704</srcmd5>
+    <version>1.8.0</version>
+    <time>1234178889</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f8169a2083835f2a190b7f09a0b31a0a</srcmd5>
+    <version>1.8.2</version>
+    <time>1249059187</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f8169a2083835f2a190b7f09a0b31a0a</srcmd5>
+    <version>1.8.2</version>
+    <time>1249059187</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5ef77c1c49f99edd15040c3c007593fc</srcmd5>
+    <version>1.8.4</version>
+    <time>1260262785</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/cairomm based on submit request 25796 from user vuntz
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>323834724d3668e59594b291dc919ad4</srcmd5>
+    <version>1.8.4</version>
+    <time>1268923144</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>2db3742bd27f42fd187dfd4ff910380a</srcmd5>
+    <version>1.8.4</version>
+    <time>1276245009</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/cairomm based on submit request 41321 from user dimstar
+</comment>
+    <requestid>41321</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>2db3742bd27f42fd187dfd4ff910380a</srcmd5>
+    <version>1.8.4</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>2db3742bd27f42fd187dfd4ff910380a</srcmd5>
+    <version>1.8.4</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ee7f2f937e27ba0c1026b6be9631ce83</srcmd5>
+    <version>1.9.1</version>
+    <time>1281385729</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/cairomm based on submit request 45032 from user vuntz
+</comment>
+    <requestid>45032</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>dcd297f0ac39f56408ad1a70589f2ae1</srcmd5>
+    <version>unknown</version>
+    <time>1284198814</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/cairomm based on submit request 47724 from user vuntz
+</comment>
+    <requestid>47724</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>d771302b9b2ffc9dce6a75622b53cd5d</srcmd5>
+    <version>1.9.4</version>
+    <time>1288264484</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51469 from user vuntz
+</comment>
+    <requestid>51469</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9bb4cf5849f235e6ccb467981751a080</srcmd5>
+    <version>1.9.6</version>
+    <time>1290250413</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53456 from user vuntz
+</comment>
+    <requestid>53456</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>008e63cb0bfdf6025ce232e03a21ff30</srcmd5>
+    <version>1.9.8</version>
+    <time>1294653565</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57528 from user vuntz
+</comment>
+    <requestid>57528</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>dc2db6661534218c6d7e375a9a1aef84</srcmd5>
+    <version>1.9.8</version>
+    <time>1294653579</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57528
+</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>dc2db6661534218c6d7e375a9a1aef84</srcmd5>
+    <version>1.9.8</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>57f34e1c9216308dd478db072e61bd82</srcmd5>
+    <version>1.10.0</version>
+    <time>1306741657</time>
+    <user>saschpe</user>
+    <comment>Update to 1.10.0 (forwarded request 71752 from vuntz)</comment>
+    <requestid>71761</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>c536acd859c24ba32876d37a4dcb6c8b</srcmd5>
+    <version>1.10.0</version>
+    <time>1306741665</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71761
+</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>752f08e8b4ec3cf22200d6c7d8374b0c</srcmd5>
+    <version>1.10.0</version>
+    <time>1317541909</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85604</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>752f08e8b4ec3cf22200d6c7d8374b0c</srcmd5>
+    <version>1.10.0</version>
+    <time>1319181802</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>657b23d39abdcbc63f552ec13c022b9b</srcmd5>
+    <version>1.10.0</version>
+    <time>1323190945</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>657b23d39abdcbc63f552ec13c022b9b</srcmd5>
+    <version>1.10.0</version>
+    <time>1340183225</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="10">
+    <srcmd5>657b23d39abdcbc63f552ec13c022b9b</srcmd5>
+    <version>1.10.0</version>
+    <time>1359108729</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="11">
+    <srcmd5>20e1b1592c907daaee16bd7047244522</srcmd5>
+    <version>1.10.0</version>
+    <time>1364238915</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160403 from m_meister)</comment>
+    <requestid>160839</requestid>
+  </revision>
+  <revision rev="29" vrev="13">
+    <srcmd5>20e1b1592c907daaee16bd7047244522</srcmd5>
+    <version>1.10.0</version>
+    <time>1379662081</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="14">
+    <srcmd5>12c12808b3139e1c8784f83de3a8d595</srcmd5>
+    <version>1.10.0</version>
+    <time>1379938456</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>200133</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d4a44a7e3d35d4f0d79ee812f84b77d7</srcmd5>
+    <version>1.11.2</version>
+    <time>1399317251</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231668</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>d4a44a7e3d35d4f0d79ee812f84b77d7</srcmd5>
+    <version>1.11.2</version>
+    <time>1409300608</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>ff184a7664344eb35b9fcf9368f751b3</srcmd5>
+    <version>1.11.2</version>
+    <time>1431799610</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307301</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3f00de1a1a0e7e1869d60267a7de7aad</srcmd5>
+    <version>1.12.0</version>
+    <time>1459254400</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>364472</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>5ae11abd57cf3b13639d5544623608d4</srcmd5>
+    <version>1.12.0</version>
+    <time>1464964434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>399496</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c74fe14b39c02acfbe096e5e1e2b0bfd</srcmd5>
+    <version>1.12.2</version>
+    <time>1480073250</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441552</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>412b770125f203c9e11003dbc6a8d2c8</srcmd5>
+    <version>1.15.1</version>
+    <time>1481105465</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443599</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>800b59e9d051b1f707a68d69915970c0</srcmd5>
+    <version>1.15.2</version>
+    <time>1481794977</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445589</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>bf6a1858be960db77a4e3516e15e606c</srcmd5>
+    <version>1.15.3</version>
+    <time>1485383704</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452257</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4ea1973cbbf0518e567068864de0241e</srcmd5>
+    <version>1.15.4</version>
+    <time>1496327576</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498564</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9da54e02c0907ee2e76fa76f6d97716e</srcmd5>
+    <version>1.15.5</version>
+    <time>1504617527</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520925</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>ccaf128ab9d69b36331fecbe32f51341</srcmd5>
+    <version>1.15.5</version>
+    <time>1521052606</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583575 from dimstar)</comment>
+    <requestid>584739</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>486263dac8b95c92e390c1d82d4e69d7</srcmd5>
+    <version>1.15.5</version>
+    <time>1525779426</time>
+    <user>dimstar_suse</user>
+    <comment>- Export CXXFLAGS=&quot;-std=c++17&quot; until upstream fixes this. Requires,
+  as libsigc++-3.0 moved to C++17. (forwarded request 603951 from iznogood)</comment>
+    <requestid>603955</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>6f4c31de7b9a02e02562412fc1fa0b37</srcmd5>
+    <version>1.15.5</version>
+    <time>1555928826</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696526</requestid>
+  </revision>
+</revisionlist>

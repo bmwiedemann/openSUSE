@@ -1,0 +1,413 @@
+<revisionlist>
+  <revision rev="1" vrev="12">
+    <srcmd5>21e7894eb659f39f88740a0c8b632f55</srcmd5>
+    <version>2.8.7</version>
+    <time>1168903591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5b85bf7c64c1182c4b52d78cd749d20f</srcmd5>
+    <version>2.9.2</version>
+    <time>1173743979</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3fb237243e35e2cbec767df709b611e</srcmd5>
+    <version>2.9.5</version>
+    <time>1185828278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b882eff9b3fd1bc591c492ff132dc887</srcmd5>
+    <version>2.9.8</version>
+    <time>1194565029</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>39c89206269edf0c87e9bb18e1ecb0e6</srcmd5>
+    <version>2.9.9</version>
+    <time>1195136439</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7feb666bee65decfcd12a6571c982476</srcmd5>
+    <version>2.9.11</version>
+    <time>1219359714</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9f4f38d2f227c5e1edd1544f89a10a86</srcmd5>
+    <version>2.9.12</version>
+    <time>1241454637</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>afe4ecc07b550d6e21e0b3e18a50efb9</srcmd5>
+    <version>2.9.13</version>
+    <time>1247140634</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>027da3af5e4441ab518f4ae26a3c7685</srcmd5>
+    <version>2.9.13</version>
+    <time>1249513676</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>027da3af5e4441ab518f4ae26a3c7685</srcmd5>
+    <version>2.9.13</version>
+    <time>1249513676</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>b9b073718c69964e1d5e7e5d7906ff1c</srcmd5>
+    <version>2.9.13</version>
+    <time>1268925058</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>b9b073718c69964e1d5e7e5d7906ff1c</srcmd5>
+    <version>2.9.13</version>
+    <time>1278667370</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>b9b073718c69964e1d5e7e5d7906ff1c</srcmd5>
+    <version>2.9.13</version>
+    <time>1278678599</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>b9b073718c69964e1d5e7e5d7906ff1c</srcmd5>
+    <version>2.9.13</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0fcea257c30e73625f8a6e5a245b95c9</srcmd5>
+    <version>2.9.20</version>
+    <time>1298644092</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62796 from user sax2
+</comment>
+    <requestid>62796</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>6cc410d7fe580791f80e978382aff50e</srcmd5>
+    <version>2.9.20</version>
+    <time>1298644112</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62796
+</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>985229985f99630595f07dc6f807cc02</srcmd5>
+    <version>2.9.20</version>
+    <time>1301985163</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 65953 from user coolo
+</comment>
+    <requestid>65953</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>02b005717ce5bb8931ef9ec260af8f84</srcmd5>
+    <version>2.9.20</version>
+    <time>1301985171</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 65953
+</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>93f60eed42ff12afda4d61a420082a73</srcmd5>
+    <version>2.9.20</version>
+    <time>1316459686</time>
+    <user>lrupp</user>
+    <comment>- Install nbd-server.5 man page</comment>
+    <requestid>82465</requestid>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>93f60eed42ff12afda4d61a420082a73</srcmd5>
+    <version>2.9.20</version>
+    <time>1319182195</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>38ffbc861a075e0a7eca7ec35637526c</srcmd5>
+    <version>2.9.20</version>
+    <time>1323192680</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d12a01ad606e7b5a07ee6aaa20f2add1</srcmd5>
+    <version>2.9.25</version>
+    <time>1326121274</time>
+    <user>coolo</user>
+    <comment>update to 2.9.25 (forwarded request 99354 from tabraham1)</comment>
+    <requestid>99356</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8cc6132f38e4502cf849a40d2e9ab8fb</srcmd5>
+    <version>3.0</version>
+    <time>1330618878</time>
+    <user>coolo</user>
+    <comment>update to nbd-3.0 (forwarded request 107571 from tabraham1)</comment>
+    <requestid>107635</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c3cadf6496bac75cd9744e80ec0699da</srcmd5>
+    <version>3.1</version>
+    <time>1337667416</time>
+    <user>coolo</user>
+    <comment>update to 3.1 (forwarded request 121493 from tabraham1)</comment>
+    <requestid>121494</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>c3cadf6496bac75cd9744e80ec0699da</srcmd5>
+    <version>3.1</version>
+    <time>1340183724</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>73b239a41c01392a55a6de10ece2f2e2</srcmd5>
+    <version>3.1</version>
+    <time>1342082946</time>
+    <user>namtrac</user>
+    <comment>- Fix restart_on_update usage.
+This fixes:
+/var/tmp/rpm-tmp.xVimt9: line 9: /etc/init.d//etc/init.d/nbd-server: No such file or directory
+
+Should go into 12.2 as well. (forwarded request 127441 from a_jaeger)</comment>
+    <requestid>127455</requestid>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>73b239a41c01392a55a6de10ece2f2e2</srcmd5>
+    <version>3.1</version>
+    <time>1359109492</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>eb86cd549033baa5a3a07d8afce3bb9b</srcmd5>
+    <version>3.3</version>
+    <time>1366473042</time>
+    <user>coolo</user>
+    <comment>- update to 3.3:
+  * and various bugfixes, upgrading is strongly recommended
+  * Fix various nbd-server misbehave bugs (forwarded request 172379 from dirkmueller)</comment>
+    <requestid>172560</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>eb86cd549033baa5a3a07d8afce3bb9b</srcmd5>
+    <version>3.3</version>
+    <time>1379663347</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>eb86cd549033baa5a3a07d8afce3bb9b</srcmd5>
+    <version>3.3</version>
+    <time>1409301959</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>7ab3b88c6566108ceffa085035543df3</srcmd5>
+    <version>3.3</version>
+    <time>1415636932</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260621</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>117ae8ed2c317384dcd25f1a9672694a</srcmd5>
+    <version>3.9</version>
+    <time>1426680275</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290832</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7e9cd70a7da33fd3052a400cd11d4327</srcmd5>
+    <version>3.10</version>
+    <time>1429606309</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297885</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>14c12255c92c9a10cf11554ff009ca00</srcmd5>
+    <version>3.10</version>
+    <time>1431668586</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306333</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>812046eeb57c8594437f03da424e3131</srcmd5>
+    <version>3.11</version>
+    <time>1432888978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.11
+  * nbd-server: fix unsafe signal handling
+  * define error values as part of the protocol
+  * docs/proto: clarify NBD_CMD_FLUSH
+- Drop nbd_signaling_CVE-2015-0847.patch as fix is included in 
+  upstream</comment>
+    <requestid>309066</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7f82e93b9bb3c8d66cd734a84153d61f</srcmd5>
+    <version>3.12.1</version>
+    <time>1449686966</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347046</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6ba5483634e2e908667d05c3901507b6</srcmd5>
+    <version>3.13</version>
+    <time>1454352932</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355497</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>13f5e9108d7ac9e51dac895b3f4e776d</srcmd5>
+    <version>3.13</version>
+    <time>1454921280</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357975</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>4dbc591ab9790901b02f3c33b248fd0e</srcmd5>
+    <version>3.13</version>
+    <time>1455190655</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358364</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>180fae921ff7f50a8b693f48bb40df18</srcmd5>
+    <version>3.15.2</version>
+    <time>1491907118</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 3.15.2:</comment>
+    <requestid>482629</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>12e8a1dc7c1912bed432dbdb7046fcf4</srcmd5>
+    <version>3.16.1</version>
+    <time>1497687643</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.16.1:</comment>
+    <requestid>502029</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>f84c664c4677f7eba7374fae1d57e9d6</srcmd5>
+    <version>3.16.1</version>
+    <time>1505237836</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522301</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>d1898c2727acf4f6cf28c27f5c8dc6b8</srcmd5>
+    <version>3.16.1</version>
+    <time>1508769411</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533917</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>fdcdccad5a5d51cba78d6941b509724f</srcmd5>
+    <version>3.16.1</version>
+    <time>1512041818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544873</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a0cc52337d5760b60cb9c8ef628afff5</srcmd5>
+    <version>3.16.2</version>
+    <time>1516091061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16.2:
+  * Make the test suite less chatty
+  * Various build system improvements
+  * Fixes to the systemd unit to make it work again with recent
+    systemd
+  * Point to the nbd mailinglist, rather than to the maintainer's
+    personal email address, for bug reports.</comment>
+    <requestid>561881</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f680d7b5a7e4571735d1ad8b88c43dfd</srcmd5>
+    <version>3.17</version>
+    <time>1531469908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.17.0:
+  * proto: add xNBD command NBD_CMD_CACHE to the spec
+  * server: do not crash when handling child name
+  * server: Close socket pair when fork fails</comment>
+    <requestid>621736</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>7ada141db648b2562c9516075629fe38</srcmd5>
+    <version>3.17</version>
+    <time>1534774603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628877</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>bac3a2de94f884afcb812a92aecb9dbf</srcmd5>
+    <version>3.17</version>
+    <time>1537263727</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>633981</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>308012cc570373057323bb5262d2b3c8</srcmd5>
+    <version>3.18</version>
+    <time>1549311517</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.18.0:
+  * Client: Add the &quot;-g&quot; option to avoid even trying the NBD_OPT_GO
+    message
+  * Server: fixes to inetd mode
+  * Don't make gnutls and libnl automagic.
+  * Server: bugfixes in handling of some export names during verification.
+  * Server: clean supplementary groups when changing user.
+  * Client: when using the netlink protocol, only set a timeout
+    when there actually is a timeout, rather than defaulting to 0
+    seconds
+  * Improve documentation on the nbdtab file
+  * Minor improvements to some error messages
+  * Improvements to test suite so it works better on non-GNU
+    userland environments
+- Refresh 0001_fix_setgroup.patch</comment>
+    <requestid>666270</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>7831a0684ddbba1ab6732f47aeb60082</srcmd5>
+    <version>3.19</version>
+    <time>1560337463</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.19.0:
+  * Better error messages in case of unexpected disconnects
+  * Better compatibility with non-bash sh implementations
+    (for configure.sh)
+  * Fix for a segfault in NBD_OPT_INFO handling
+  * The ability to specify whether to listen on both TCP and Unix
+    domain sockets, rather than to always do so
+  * Various minor editorial and spelling fixes in the documentation.</comment>
+    <requestid>706327</requestid>
+  </revision>
+</revisionlist>

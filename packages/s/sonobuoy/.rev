@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee8a93bfaa76aff374911d7f0baf2be9</srcmd5>
+    <version>0.11.5</version>
+    <time>1533732728</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial commit (0.11.5)
+</comment>
+    <requestid>627842</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>43855ac5a52abfca0977b904fee6c742</srcmd5>
+    <version>0.11.5</version>
+    <time>1534543369</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>629405</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f5362c205b11f5a69912af06aea5e8ce</srcmd5>
+    <version>0.13.0</version>
+    <time>1551024642</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670360</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db3b7d2af70ebc8c8e5e306d3ad152ec</srcmd5>
+    <version>1.4</version>
+    <time>1527933945</time>
+    <user>dimstar_suse</user>
+    <comment>schema-based serialization and deserialization library</comment>
+    <requestid>612076</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e8c55620b8439eef1dea06d55a9d5889</srcmd5>
+    <version>1.4</version>
+    <time>1544726830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655392</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>353681fa75549eded40fe4b642a6e787</srcmd5>
+    <version>1.7.0</version>
+    <time>1551024825</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672756</requestid>
+  </revision>
+</revisionlist>

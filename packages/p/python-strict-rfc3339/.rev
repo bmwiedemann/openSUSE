@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>afa0e422d7a5dfe3a2624800a8db1dc4</srcmd5>
+    <version>0.7</version>
+    <time>1553888092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685004</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>91bff7669d1164150c151ad4cd35ea5d</srcmd5>
+    <version>0.7</version>
+    <time>1554372042</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim bias from descriptions.</comment>
+    <requestid>690288</requestid>
+  </revision>
+</revisionlist>

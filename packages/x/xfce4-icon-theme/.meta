@@ -1,0 +1,8 @@
+<package name="xfce4-icon-theme" project="openSUSE:Factory">
+  <title>Default icon theme for the Xfce desktop environment</title>
+  <description>This package contains the default icon theme for Xfce desktop environment.</description>
+  <devel project="X11:xfce" package="xfce4-icon-theme"/>
+  <build>
+    <disable/>
+  </build>
+</package>

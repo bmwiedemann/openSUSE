@@ -1,0 +1,11 @@
+<package name="omping" project="openSUSE:Factory">
+  <title>Omping (Open Multicast Ping) </title>
+  <description>Omping (Open Multicast Ping) is tool to test IP multicast functionality primarily in local network.
+
+Features:
+    Similar user experience as classic ping tool
+    Ping multiple hosts at once
+    Implementation of RFC Draft [http://tools.ietf.org/html/draft-ietf-mboned-ssmping-08]
+    Any-source and Source-specific Multicast</description>
+  <devel project="network:ha-clustering:Factory" package="omping"/>
+</package>

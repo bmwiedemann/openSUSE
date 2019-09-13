@@ -1,0 +1,10 @@
+<package name="acpid" project="openSUSE:Factory">
+  <title>Executes Actions at ACPI Events</title>
+  <description>ACPID is a completely flexible, totally extensible daemon for
+delivering ACPI events. It listens to a file (/proc/acpi/event) and,
+when an event occurs, executes programs to handle the event. The start
+script loads all needed modules.
+
+Configure it in /etc/sysconfig/powermanagement.</description>
+  <devel project="Base:System" package="acpid"/>
+</package>

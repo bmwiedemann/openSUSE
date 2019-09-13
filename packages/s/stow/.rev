@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f1c5ba7c6fdd422b04b5edab4108f96</srcmd5>
+    <version>2.2.0</version>
+    <time>1381139004</time>
+    <user>scarabeus_factory</user>
+    <comment>Addresses issues from #198646</comment>
+    <requestid>198715</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ebca0395442d4e5a03dfd4e92111298d</srcmd5>
+    <version>2.2.0</version>
+    <time>1407485436</time>
+    <user>lnussel</user>
+    <comment>- Rename rpmlintrc as per pkg guideline to %{name}-rpmlintrc
+  (SR #243198)
+- Remove old, unused stow.spec.quux</comment>
+    <requestid>243876</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ebca0395442d4e5a03dfd4e92111298d</srcmd5>
+    <version>2.2.0</version>
+    <time>1409303421</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d0708ad00d8919c7b1c271f70a8fe327</srcmd5>
+    <version>2.2.2</version>
+    <time>1447766576</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344634</requestid>
+  </revision>
+</revisionlist>

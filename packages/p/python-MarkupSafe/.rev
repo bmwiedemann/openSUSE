@@ -1,0 +1,180 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b78cce17f2e82c19504aefa328c604b</srcmd5>
+    <version>0.15</version>
+    <time>1314892270</time>
+    <user>darix</user>
+    <comment>Please add, replaces python-markupsafe</comment>
+    <requestid>80534</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1d478bddfce7ec5c2e7b23534cafdb8d</srcmd5>
+    <version>0.15</version>
+    <time>1314892281</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 80534
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fc8bd4b882a018d22a928f428ca0937c</srcmd5>
+    <version>0.15</version>
+    <time>1315863111</time>
+    <user>lrupp</user>
+    <comment>Fixed typo in description of python-MarkupSafe.spec (forwarded request 81621 from aturrini)</comment>
+    <requestid>81633</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>fc8bd4b882a018d22a928f428ca0937c</srcmd5>
+    <version>0.15</version>
+    <time>1319182379</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>67a9fc42681e4899892b4b776834fa87</srcmd5>
+    <version>0.15</version>
+    <time>1323194188</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>98298ab221aae11ff70a8053beaf5498</srcmd5>
+    <version>0.15</version>
+    <time>1337955516</time>
+    <user>coolo</user>
+    <comment>python3 package added
+minor spec improvement (forwarded request 121844 from HighwayStar)</comment>
+    <requestid>121858</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>98298ab221aae11ff70a8053beaf5498</srcmd5>
+    <version>0.15</version>
+    <time>1340184030</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>022d031badda136a22204f81d95e9732</srcmd5>
+    <version>0.15</version>
+    <time>1347347772</time>
+    <user>coolo</user>
+    <comment>Restore BuildRequires: python3  This package depends on hash algorithms that are only available if python3 is installed, python3-devel will not pull them in.  Building will fail if  BuildRequires: python3 is removed. (forwarded request 132980 from TheBlackCat)</comment>
+    <requestid>132981</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>022d031badda136a22204f81d95e9732</srcmd5>
+    <version>0.15</version>
+    <time>1359109979</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>555e8dc5edac4fffbac8cf74dec4fedc</srcmd5>
+    <version>0.15</version>
+    <time>1371651728</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179692</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a0b03376bef36580730423f10494f441</srcmd5>
+    <version>0.18</version>
+    <time>1372760902</time>
+    <user>coolo</user>
+    <comment>- update to 0.18:
+  + Fixed interpolation on tuples
+  + Varios Python 3.x fixes (forwarded request 180865 from dirkmueller)</comment>
+    <requestid>180877</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>a0b03376bef36580730423f10494f441</srcmd5>
+    <version>0.18</version>
+    <time>1379664107</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>4f648f04c69d05c8cc9d1cf407d34ace</srcmd5>
+    <version>0.18</version>
+    <time>1382692871</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204592</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1648ef5620f6933dd361ac68d8a6082a</srcmd5>
+    <version>0.19</version>
+    <time>1394901354</time>
+    <user>coolo</user>
+    <comment>- update to 0.19:
+  + Various Python 3.x fixes (forwarded request 225820 from Nijel)</comment>
+    <requestid>225826</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b466f6b80d9e97f105e1e114efec01ac</srcmd5>
+    <version>0.21</version>
+    <time>1399703543</time>
+    <user>coolo</user>
+    <comment>Update to 0.21 (forwarded request 233089 from TheBlackCat)</comment>
+    <requestid>233090</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9ccec747eb5c2f2f5cd754fbb5ad75cd</srcmd5>
+    <version>0.23</version>
+    <time>1405521434</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241048</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>9ccec747eb5c2f2f5cd754fbb5ad75cd</srcmd5>
+    <version>0.23</version>
+    <time>1409302793</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>27c0f90db1a033975c9ca694f405478b</srcmd5>
+    <version>1.0</version>
+    <time>1492618036</time>
+    <user>dimstar_suse</user>
+    <comment>- update source url
+- fix obs/prov to refer to old python
+- drop _speedups.c from installed directory
+
+- Add missing BuildRequires for python-rpm-macros
+
+- update to 1.0.0
+  + No upstream changelog
+- Switch to singlespec approach</comment>
+    <requestid>485684</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>a48a4cace238250f6118b7619afb956c</srcmd5>
+    <version>1.0</version>
+    <time>1548704761</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665998</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>162e08ac7ab14f92360f2b4132347dbd</srcmd5>
+    <version>1.1.1</version>
+    <time>1552039246</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * Fix segfault when __html__ method raises an exception when using the C speedups. The exception is now propagated correctly. (#109)
+
+- Update to v1.1.0
+  - Drop support for Python 2.6 and 3.3.
+  - Build wheels for Linux, Mac, and Windows, allowing systems without
+    a compiler to take advantage of the C extension speedups
+  - Use newer CPython API on Python 3, resulting in a 1.5x speedup
+  - ``escape`` wraps ``__html__`` result in ``Markup``, consistent with
+    documented behavior
+- Switch to using pytest in %check as setup.py test no longer works
+- Use more precise URL https://github.com/pallets/markupsafe
+- Add docs/ to %doc, including the changelog
+- Remove AUTHORS from %doc, removed upstream in 6247e015</comment>
+    <requestid>681854</requestid>
+  </revision>
+</revisionlist>

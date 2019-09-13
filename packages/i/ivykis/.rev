@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8330a175875dfb026eca9584044a4831</srcmd5>
+    <version>0.33</version>
+    <time>1346691342</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>132219</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e9c9bb0188164bdb09ecf3ea4e9bb22</srcmd5>
+    <version>0.34</version>
+    <time>1347832026</time>
+    <user>namtrac</user>
+    <comment>- Update to new upstream release 0.34
+* This release enables ELF symbol versioning, and adds various
+  optimizations and bugfixes.</comment>
+    <requestid>134439</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7cb8d1987df2ead3f51cffcf57e9f244</srcmd5>
+    <version>0.36</version>
+    <time>1354712034</time>
+    <user>namtrac</user>
+    <comment>- Update to new upstream release 0.36
+* Work around a kernel change in FreeBSD 9.0-STABLE where /dev/klog
+  has become pollable via kevent(), but returns -EINVAL if you try
+  to register an EVFILT_WRITE filter, which confused the
+  iv_fd_register_try() logic in iv_fd_kqueue.
+* Rework iv_timer to use less memory when only a small number of
+  timers is in use, and allow adding radix tree levels as needed
+  to remove the previous ~1M timer limit.
+- Update to new upstream release 0.35
+* Fix an abort on iv_work worker thread timeout introduced by the
+  race condition fix optimization that went into 0.32.
+* Two iv_event race condition fixes.</comment>
+    <requestid>144266</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>20d584b7465b697b4d0b5ce8a87042a9</srcmd5>
+    <version>0.37</version>
+    <time>1356703321</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146460</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>20d584b7465b697b4d0b5ce8a87042a9</srcmd5>
+    <version>0.37</version>
+    <time>1359109096</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c18926e833288e4c13fd0b6cd99b818f</srcmd5>
+    <version>0.39</version>
+    <time>1362745372</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157766</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1ad8e30d3f8142169469b1fc59480c69</srcmd5>
+    <version>0.38.g16</version>
+    <time>1370513283</time>
+    <user>coolo</user>
+    <comment>- Downgrade to 0.38+git16 to work around failure on PPC</comment>
+    <requestid>177788</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>1ad8e30d3f8142169469b1fc59480c69</srcmd5>
+    <version>0.38.g16</version>
+    <time>1379662691</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>1ad8e30d3f8142169469b1fc59480c69</srcmd5>
+    <version>0.38.g16</version>
+    <time>1409301256</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>926b470b8d90cb7de204d9e8c95f4817</srcmd5>
+    <version>0.40</version>
+    <time>1478517842</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>438937</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>31f9580e0a7dc5d5fea4eb1689a8b150</srcmd5>
+    <version>0.41</version>
+    <time>1488322279</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>460787</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2e0929c73216edda8dc10c92a33af63e</srcmd5>
+    <version>0.42.1</version>
+    <time>1505238948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.42.1</comment>
+    <requestid>523300</requestid>
+  </revision>
+</revisionlist>

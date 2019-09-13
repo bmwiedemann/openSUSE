@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6759288eaa05d2ddf0940a3ff94ca60c</srcmd5>
+    <version>4.6.3</version>
+    <time>1285596979</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/qt4-assistant-adp based on submit request 49212 from user dirkmueller
+</comment>
+    <requestid>49212</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>6759288eaa05d2ddf0940a3ff94ca60c</srcmd5>
+    <version>4.6.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>6759288eaa05d2ddf0940a3ff94ca60c</srcmd5>
+    <version>4.6.3</version>
+    <time>1319182418</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>9c8fcaa8a961aec791684be69866ec10</srcmd5>
+    <version>4.6.3</version>
+    <time>1323194338</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>9c8fcaa8a961aec791684be69866ec10</srcmd5>
+    <version>4.6.3</version>
+    <time>1340184130</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>9c8fcaa8a961aec791684be69866ec10</srcmd5>
+    <version>4.6.3</version>
+    <time>1359110264</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>4287481204604b59f31a60ad7bbc8a81</srcmd5>
+    <version>4.6.3</version>
+    <time>1363156393</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-LGPL-2.1-with-nokia-exception-1.1 or GPL-3.0
+See main.cpp (forwarded request 157645 from babelworx)</comment>
+    <requestid>157648</requestid>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>4287481204604b59f31a60ad7bbc8a81</srcmd5>
+    <version>4.6.3</version>
+    <time>1379664419</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>4287481204604b59f31a60ad7bbc8a81</srcmd5>
+    <version>4.6.3</version>
+    <time>1409303146</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4840165787a56f933dad45ba34e4cf4</srcmd5>
+    <version>0.0.12</version>
+    <time>1548335439</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.12:
+  * cc: use raw path generation for C++ validation files. (#129)
+  * Implement java ExplicitValidatorIndex (#121)
+  * Feature/java documentation (#123)
+  * Add java_package option to validate.proto (#120)
+  * Apply standard formatting to .bzl files. (#117)
+  * Bump Bazel go rules (#119)
+  * Implement Java validator generators (#108)
+  * enum: check enum and field package name (#118)
+- Initial release
+</comment>
+    <requestid>666677</requestid>
+  </revision>
+</revisionlist>

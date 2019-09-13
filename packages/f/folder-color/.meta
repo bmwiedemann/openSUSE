@@ -1,0 +1,5 @@
+<package name="folder-color" project="openSUSE:Factory">
+  <title>Change a directory colour in Caja and Nautilus</title>
+  <description>Change a directory colour, then get better visual layout.</description>
+  <devel project="X11:Utilities" package="folder-color"/>
+</package>

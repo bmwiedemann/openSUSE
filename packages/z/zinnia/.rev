@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c865fef75e9437d29b32245d2c2f48e4</srcmd5>
+    <version>0.06</version>
+    <time>1357894026</time>
+    <user>coolo</user>
+    <comment>New package: http://lists.opensuse.org/opensuse-factory/2013-01/msg00124.html</comment>
+    <requestid>147951</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c865fef75e9437d29b32245d2c2f48e4</srcmd5>
+    <version>0.06</version>
+    <time>1359110783</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>0479f24143ed34d2e6dbd1081999ea1c</srcmd5>
+    <version>0.06</version>
+    <time>1363341019</time>
+    <user>coolo</user>
+    <comment>- builds with automake 1.13
+  * automake-1.13.patch (forwarded request 159165 from pgajdos)</comment>
+    <requestid>159268</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>0479f24143ed34d2e6dbd1081999ea1c</srcmd5>
+    <version>0.06</version>
+    <time>1379665193</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>0479f24143ed34d2e6dbd1081999ea1c</srcmd5>
+    <version>0.06</version>
+    <time>1409303878</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>7fdc8e6f032bd4c2b55c43b47e3eb8fc</srcmd5>
+    <version>0.06</version>
+    <time>1466413623</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403033</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,344 @@
+<revisionlist>
+  <revision rev="1" vrev="18">
+    <srcmd5>3e2313cb25c62a808a8a32a69d52bb6f</srcmd5>
+    <version>0.9</version>
+    <time>1168903291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="60">
+    <srcmd5>60670e9fe2d670369a75ab756941ce0c</srcmd5>
+    <version>0.9</version>
+    <time>1175248898</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="63">
+    <srcmd5>d795dad75f4dff7fee641c1c71c9ad98</srcmd5>
+    <version>0.9</version>
+    <time>1177276866</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>18454a71a03cf758630b9ad22a1dfac2</srcmd5>
+    <version>0.99.beta13b</version>
+    <time>1214488514</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="47">
+    <srcmd5>6e60de88d12dc038489fea7671d4f91a</srcmd5>
+    <version>0.99.beta13b</version>
+    <time>1228488057</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="48">
+    <srcmd5>3699e8d133db3c1adc0636184842b3bf</srcmd5>
+    <version>0.99.beta13b</version>
+    <time>1233268260</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d35f172c8f7033dd3ec2163a54e1a32d</srcmd5>
+    <version>0.99.beta16</version>
+    <time>1237317204</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>d35f172c8f7033dd3ec2163a54e1a32d</srcmd5>
+    <version>0.99.beta16</version>
+    <time>1237317204</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>0317334d7ce0b4e67a2bef1e77e61ac3</srcmd5>
+    <version>0.99.beta16</version>
+    <time>1257844858</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libcaca based on submit request 23861 from user dimstar
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>f6e65961b757d3f472888485fe627e94</srcmd5>
+    <version>0.99.beta16</version>
+    <time>1268924512</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>f6e65961b757d3f472888485fe627e94</srcmd5>
+    <version>0.99.beta16</version>
+    <time>1278667357</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>f6e65961b757d3f472888485fe627e94</srcmd5>
+    <version>0.99.beta16</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>fdccae446fd1d9140a7fd27db0cf0e63</srcmd5>
+    <version>0.99.beta16</version>
+    <time>1283516396</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libcaca based on submit request 46749 from user elvigia
+</comment>
+    <requestid>46749</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>3bd624acefe13bf85f3b4400348b5516</srcmd5>
+    <version>0.99.beta16</version>
+    <time>1290250564</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53531 from user elvigia
+</comment>
+    <requestid>53531</requestid>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>bbb99701fcb822d0befd3cbdbf204cc4</srcmd5>
+    <version>0.99.beta16</version>
+    <time>1290250581</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53531
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f79cf8ae5bcf346570513b63463af38f</srcmd5>
+    <version>0.99.beta17</version>
+    <time>1296607015</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59404 from user plater
+</comment>
+    <requestid>59404</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>56882ea4f2c4cb92e8bfe47bb49c9717</srcmd5>
+    <version>0.99.beta17</version>
+    <time>1296607021</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59404
+</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>56882ea4f2c4cb92e8bfe47bb49c9717</srcmd5>
+    <version>0.99.beta17</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>a7bd2ed1786d99e8100d9aa59ec092ab</srcmd5>
+    <version>0.99.beta17</version>
+    <time>1306742056</time>
+    <user>saschpe</user>
+    <comment>Removed python bindings patches, after reading my comments in the spec file and finding them unnecessary. </comment>
+    <requestid>71825</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>6932f1fd5e7333964b822c2c9ac1c727</srcmd5>
+    <version>0.99.beta17</version>
+    <time>1306742068</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71825
+</comment>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>6932f1fd5e7333964b822c2c9ac1c727</srcmd5>
+    <version>0.99.beta17</version>
+    <time>1319182075</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>e8e08da7aaa3cf7e2b6c7f5f29ef543c</srcmd5>
+    <version>0.99.beta17</version>
+    <time>1321460313</time>
+    <user>coolo</user>
+    <comment> (forwarded request 91740 from coolo)</comment>
+    <requestid>91743</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>94957d090b8f07bd19eb21a94385d61f</srcmd5>
+    <version>0.99.beta18</version>
+    <time>1337196906</time>
+    <user>coolo</user>
+    <comment>- update to libcaca-0.99beta18
+  - new &quot;cacaclock&quot; utility
+  - improved FIGlet support
+  - improved Python and Ruby bindings
+  - numerous improvements and bugfixes
+- fix build with ruby 1.9 and re-enable python support (forwarded request 120907 from coolo)</comment>
+    <requestid>120908</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>3840ab47955e1e3c386176dee5b215a7</srcmd5>
+    <version>0.99.beta18</version>
+    <time>1338476765</time>
+    <user>coolo</user>
+    <comment>- fix build with automake-12.1 (forwarded request 122768 from puzel)</comment>
+    <requestid>122800</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>d8e3409e7d670db409e02dce6628017b</srcmd5>
+    <version>0.99.beta18</version>
+    <time>1338991654</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-WTFPL-2.0
+SPDX format (choose from http://www.spdx.org/licenses or the list linked at license.opensuse.org) (forwarded request 123767 from babelworx)</comment>
+    <requestid>123768</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>d8e3409e7d670db409e02dce6628017b</srcmd5>
+    <version>0.99.beta18</version>
+    <time>1340183567</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>d8e3409e7d670db409e02dce6628017b</srcmd5>
+    <version>0.99.beta18</version>
+    <time>1359109245</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>ce33f2a736b06028b04e941e5724b36b</srcmd5>
+    <version>0.99.beta18</version>
+    <time>1363947929</time>
+    <user>coolo</user>
+    <comment>- add buildconditional to build optionally without mono (forwarded request 159740 from dirkmueller)</comment>
+    <requestid>160181</requestid>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>be7e218c30305788bc89f1cea437f5a8</srcmd5>
+    <version>0.99.beta18</version>
+    <time>1370431716</time>
+    <user>coolo</user>
+    <comment>- fix build with different versions of ruby (forwarded request 176945 from -miska-)</comment>
+    <requestid>176976</requestid>
+  </revision>
+  <revision rev="30" vrev="11">
+    <srcmd5>be7e218c30305788bc89f1cea437f5a8</srcmd5>
+    <version>0.99.beta18</version>
+    <time>1379662907</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="12">
+    <srcmd5>b91819660d6cc15d58b4400832cba273</srcmd5>
+    <version>0.99.beta18</version>
+    <time>1393247532</time>
+    <user>coolo</user>
+    <comment>- remove SUSE prefix from license (forwarded request 223238 from coolo)</comment>
+    <requestid>223508</requestid>
+  </revision>
+  <revision rev="32" vrev="14">
+    <srcmd5>b91819660d6cc15d58b4400832cba273</srcmd5>
+    <version>0.99.beta18</version>
+    <time>1409301510</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="15">
+    <srcmd5>f87a6470df9e4a7ba8f43547f4e2b5c6</srcmd5>
+    <version>0.99.beta18</version>
+    <time>1413269949</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253831</requestid>
+  </revision>
+  <revision rev="34" vrev="16">
+    <srcmd5>d2837ad9ca3703e9092f5555aa8c11d2</srcmd5>
+    <version>0.99.beta18</version>
+    <time>1421777538</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281406</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>045a299d22208e2e6998147b7f26e524</srcmd5>
+    <version>0.99.beta19</version>
+    <time>1424430047</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286456</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>cf0284e511d96dff92dc0baae26fb333</srcmd5>
+    <version>0.99.beta19</version>
+    <time>1430980050</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>292565</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>cad266b73b2d261f99ad4ce92c7d2002</srcmd5>
+    <version>0.99.beta19</version>
+    <time>1442638340</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>328604</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>7e426b03c0042e7f57f4bfbd8ed7b454</srcmd5>
+    <version>0.99.beta19</version>
+    <time>1457952136</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369918</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7d45de8081c626f421f3e6f760854c5c</srcmd5>
+    <version>0.99.beta19+git20171002.da28e96</version>
+    <time>1516970259</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the py2 bindings they fail to build using rpm macros and
+  somehow ingnore LD_LIBRARY_PATH, anyway provide py3 variant and
+  stick with that
+
+- Switch to git repack service in order to get all the latest fixes
+  * like python3 porting of the bindings
+- Update to version 0.99.beta19+git20171002.da28e96:
+  * img2text.c: fix width arg case in example
+  * ruby: require 'caca' instead of 'caca.so'
+  * Only fail the check-copyright test if more than 10 files are affected.
+  * Try to run Coverity from Travis CI.
+  * Add some missing breaks (thanks coverity)
+  * Fix header copyright.
+  * Fix a bug into the autorepeat trigger.
+- Refresh patches:
+  * libcaca-ruby_am_cflags.patch
+  * libcaca-ruby_vendor_install.patch
+
+- Fix URL
+- Mention github repo containing more changes
+- Format with spec-cleaner
+- Remove support for older distros lets stick with latest only
+- Remove for years disabled mono and java integration code snippets
+- Use python macros to build python instead of waiting for autotools
+- Convert to pkgconfig style dependencies</comment>
+    <requestid>568742</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c42ec847bf3b1651f7af76d607cebc60</srcmd5>
+    <version>0.99.beta19.git20171003</version>
+    <time>1517668556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570917</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>cfa0f25485581d3098a108052e316521</srcmd5>
+    <version>0.99.beta19.git20171003</version>
+    <time>1549311782</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>667603</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>594ae49e79d49f891b97436ec6f120f8</srcmd5>
+    <version>0.99.beta19.git20171003</version>
+    <time>1565178992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720193</requestid>
+  </revision>
+</revisionlist>

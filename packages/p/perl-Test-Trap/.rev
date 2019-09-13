@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61d14765ec362b1ac784fc8529c86862</srcmd5>
+    <version>0.2.1</version>
+    <time>1325658552</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>98317</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b8b3df1875f0f48af827dc0b6701c29b</srcmd5>
+    <version>0.2.2</version>
+    <time>1338476926</time>
+    <user>coolo</user>
+    <comment>- updated to 0.2.2
+      Test::Trap::Builder::TempFile &amp; Test::Trap::Builder::SystemSafe:
+      - RT#61776: Remove temporary files at first opportunity;
+        thanks go to Ian Goodacre.
+      Documentation:
+      - RT#61773: return from trap function
+        Document what trap { ... } returns.
+      Tests:
+      - RT#75430: Failing tests in 06-layer.t
+        Convert a number of die_is to die_like, handling cases with
+        and without trailing comma from carp.
+      - Unset another taint-checked environment variable, CDPATH;
+        thanks go to CPAN testers.</comment>
+    <requestid>122891</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b8b3df1875f0f48af827dc0b6701c29b</srcmd5>
+    <version>0.2.2</version>
+    <time>1340183936</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>b8b3df1875f0f48af827dc0b6701c29b</srcmd5>
+    <version>0.2.2</version>
+    <time>1359109823</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>b8b3df1875f0f48af827dc0b6701c29b</srcmd5>
+    <version>0.2.2</version>
+    <time>1379663884</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>b8b3df1875f0f48af827dc0b6701c29b</srcmd5>
+    <version>0.2.2</version>
+    <time>1409302528</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>96e789d9061d8689ffb097d469854f2c</srcmd5>
+    <version>0.3.2</version>
+    <time>1429108037</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296701</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3109fdc7cab950d37398efc042f9b510</srcmd5>
+    <version>0.3.3</version>
+    <time>1504521426</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520449</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a90c4b66db133794214a37102f5fb267</srcmd5>
+    <version>0.3.4</version>
+    <time>1542122926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647335</requestid>
+  </revision>
+</revisionlist>

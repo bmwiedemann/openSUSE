@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6dae906dbf1f702a4057c62cf5465721</srcmd5>
+    <version>0.6.5</version>
+    <time>1548064784</time>
+    <user>dimstar_suse</user>
+    <comment>New package vorta, a GUI for borgbackup</comment>
+    <requestid>666933</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f091cc1f6e2fede229d0c7f9e31fd6de</srcmd5>
+    <version>0.6.5</version>
+    <time>1548335704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667985</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb4ba78c6fc77371e53c5fed8bc80153</srcmd5>
+    <version>0.6.7</version>
+    <time>1551113448</time>
+    <user>coolo</user>
+    <comment>- Set LANG to use UTF-8 and fix builds in Leap 15.1 (forwarded request 672698 from alarrosa)</comment>
+    <requestid>672699</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>62f74263492ef4ba7520cb1815624e03</srcmd5>
+    <version>0.6.10</version>
+    <time>1551386580</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679025</requestid>
+  </revision>
+</revisionlist>

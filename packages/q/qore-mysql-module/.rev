@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ad4f9796d22fa6abf83b09cb96bc3af</srcmd5>
+    <version>2.0.1</version>
+    <time>1408957431</time>
+    <user>coolo</user>
+    <comment>real fix for the license (thanks cdenicolo, I really apologise for the mess)</comment>
+    <requestid>245690</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7ad4f9796d22fa6abf83b09cb96bc3af</srcmd5>
+    <version>2.0.1</version>
+    <time>1409303135</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ccce44c5a60805c1ec4541b7230be271</srcmd5>
+    <version>2.0.1</version>
+    <time>1441054764</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328058</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6b7be08e3a0ee8b0f012c361a4a9bfcf</srcmd5>
+    <version>2.0.2.1</version>
+    <time>1535122770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621381</requestid>
+  </revision>
+</revisionlist>

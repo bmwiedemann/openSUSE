@@ -1,0 +1,5 @@
+<package name="R-base64enc" project="openSUSE:Factory">
+  <title></title>
+  <description>Tools for base64 encoding</description>
+  <devel project="devel:languages:R:released" package="R-base64enc"/>
+</package>

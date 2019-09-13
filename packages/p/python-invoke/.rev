@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e9ee958f3fce9daf126c6c9ec6e5a26</srcmd5>
+    <version>0.9.0</version>
+    <time>1485382958</time>
+    <user>dimstar_suse</user>
+    <comment>Python Invoke is required by python-ravello-sdk for Factory.</comment>
+    <requestid>444772</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>76e160b58c0d2724404080c6d4bc8acb</srcmd5>
+    <version>0.9.0</version>
+    <time>1486306153</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453990</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aede3a460c8e8f187d18a845f484184b</srcmd5>
+    <version>0.21.0</version>
+    <time>1509105623</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535233</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cebb9f32259f423a1e0d5765a2e2034b</srcmd5>
+    <version>0.22.1</version>
+    <time>1525121775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602274</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0999c9d3eddbff655d0cb6bd21c7038b</srcmd5>
+    <version>1.1.1</version>
+    <time>1534146873</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not use vendored libs:
+  * 0001-Make-test-fallback-to-system-modules-when-vendorized.patch
+- Remove unneeded deps
+- Remove the multibuild again as we no longer cycle
+
+- Update to 1.1.1:
+  * Various tweaks for pytest and new py releases support
+- Switch to multibuild to run tests</comment>
+    <requestid>628755</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9cf166bcefa7b85677617e31bd4b8954</srcmd5>
+    <version>1.2.0</version>
+    <time>1553636026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  * [Feature] #301: (via #414) Overhaul tab completion mechanisms so users can print a completion script which automatically matches the emitting binary’s configured names (compared to the previous hardcoded scripts, which only worked for inv/invoke by default). Thanks to Nicolas Höning for the foundational patchset.</comment>
+    <requestid>688747</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2e5b829ec98a2c4b9b59b863e1725c5a</srcmd5>
+    <version>1.2.0</version>
+    <time>1564484752</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests for now as they break with new pytest-relaxed
+- Add another patch fixing errors with new pytest:
+  * pytest4.patch
+
+- Restrict pytest5 and pytest4 for now upstream tests only with
+  pytest3...</comment>
+    <requestid>718087</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a10d060f01ca8538d796432373661031</srcmd5>
+    <version>1.3.0</version>
+    <time>1565962041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722793</requestid>
+  </revision>
+</revisionlist>

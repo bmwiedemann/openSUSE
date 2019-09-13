@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e4f0dcb7eeed3a17c3b1edb20fabe51</srcmd5>
+    <version>unknown</version>
+    <time>1558516153</time>
+    <user>dimstar_suse</user>
+    <comment>A Python/ThreeJS bridge utilizing the Jupyter widget infrastructure</comment>
+    <requestid>699893</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a01628ec7f894628de958cc58bcdc131</srcmd5>
+    <version>2.1.1</version>
+    <time>1565963428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723834</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5e5d511be6531d7776dc9a576bd43921</srcmd5>
+    <version>2.1.1</version>
+    <time>1566243517</time>
+    <user>dimstar_suse</user>
+    <comment>Drop python2 version</comment>
+    <requestid>724164</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,40 @@
+<package name="html-xml-utils" project="openSUSE:Factory">
+  <title>A number of simple utilities for manipulating HTML and XML files</title>
+  <description>HTML-XML-utils provides a number of simple utilities for manipulating and
+converting HTML and XML files in various ways. The suite consists of the
+following tools:
+
+asc2xml      -  convert from UTF-8 to &amp;\#nnn; entities
+xml2asc      -  convert from &amp;\#nnn; entities to UTF-8
+hxaddid      -  add IDs to selected elements
+hxcite       -  replace bibliographic references by hyperlinks
+hxcite-mkbib -  expand references and create bibliography
+hxclean      -  apply heuristics to correct an HTML file
+hxcopy       -  copy an HTML file while preserving relative links
+hxcount      -  count elements and attributes in HTML or XML files
+hxextract    -  extract selected elements
+hxincl       -  expand included HTML or XML files
+hxindex      -  create an alphabetically sorted index
+hxmkbib      -  create bibliography from a template
+hxmultitoc   -  create a table of contents for a set of HTML files
+hxname2id    -  move some ID= or NAME= from A elements to their parents
+hxnormalize  -  pretty-print an HTML file
+hxnsxml      -  convert output of hxxmlns back to normal XML
+hxnum        -  number section headings in an HTML file
+hxpipe       -  convert XML to a format easier to parse with Perl or AWK
+hxprintlinks -  number links &amp; add table of URLs at end of an HTML file
+hxprune      -  remove marked elements from an HTML file
+hxref        -  generate cross-references
+hxselect     -  extract elements that match a (CSS) selector
+hxtoc        -  insert a table of contents in an HTML file
+hxuncdata    -  replace CDATA sections by character entities
+hxunent      -  replace HTML predefined character entities to UTF-8
+hxunpipe     -  convert output of pipe back to XML format
+hxunxmlns    -  replace &quot;global names&quot; by XML Namespace prefixes
+hxwls        -  list links in an HTML file
+hxxmlns      -  replace XML Namespace prefixes by &quot;global names&quot;
+
+</description>
+  <devel project="utilities" package="html-xml-utils"/>
+  <url>https://www.w3.org/Tools/HTML-XML-utils/</url>
+</package>

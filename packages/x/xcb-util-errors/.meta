@@ -1,0 +1,5 @@
+<package name="xcb-util-errors" project="openSUSE:Factory">
+  <title>xcb-util-errors</title>
+  <description></description>
+  <devel project="X11:XOrg" package="xcb-util-errors"/>
+</package>

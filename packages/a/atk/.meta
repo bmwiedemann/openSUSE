@@ -1,0 +1,7 @@
+<package name="atk" project="openSUSE:Factory">
+  <title>An Accessibility ToolKit</title>
+  <description>The ATK library provides a set of accessibility interfaces. By
+supporting the ATK interfaces, an application or toolkit can be used
+with screen readers, magnifiers, and alternate input devices.</description>
+  <devel project="GNOME:Factory" package="atk"/>
+</package>

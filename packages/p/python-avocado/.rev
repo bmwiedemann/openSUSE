@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>acc86fc760e3cf0b305b66997a56b4bc</srcmd5>
+    <version>63.0</version>
+    <time>1543311628</time>
+    <user>dimstar_suse</user>
+    <comment>rename of already dropped avocado package</comment>
+    <requestid>650340</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eab73aaa7482e13c76cca95d4bf4a967</srcmd5>
+    <version>63.0</version>
+    <time>1548335677</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim not needed dependencies
+</comment>
+    <requestid>667879</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5c860c7024deef6e4fd866ef13aaa507</srcmd5>
+    <version>69.0</version>
+    <time>1553611222</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 69
+  * No upsteam changelog available</comment>
+    <requestid>682834</requestid>
+  </revision>
+</revisionlist>

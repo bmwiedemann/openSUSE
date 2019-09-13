@@ -1,0 +1,219 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0488f45a60f6bb583e36de064df2bc0</srcmd5>
+    <version>0.7.5</version>
+    <time>1297385658</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60305 from user ug
+</comment>
+    <requestid>60305</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6b5a8144bfb72fbfa36d2f06f97127b1</srcmd5>
+    <version>0.7.5</version>
+    <time>1297385667</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60305
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>6b5a8144bfb72fbfa36d2f06f97127b1</srcmd5>
+    <version>0.7.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>1acfe9eb8a6064361ff677f9650eea6f</srcmd5>
+    <version>0.7.5</version>
+    <time>1299577322</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 63285 from user saschpe
+</comment>
+    <requestid>63285</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>478edf858afc7f32ae27bbc06a7a9dc9</srcmd5>
+    <version>0.7.5</version>
+    <time>1299577329</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 63285
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5404b33e638b077a48f332c390612a5e</srcmd5>
+    <version>0.7.6</version>
+    <time>1316618409</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>83896</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5404b33e638b077a48f332c390612a5e</srcmd5>
+    <version>0.7.6</version>
+    <time>1319182397</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3eeebad63a5d10e2614486cf85a11c64</srcmd5>
+    <version>0.7.7</version>
+    <time>1338528178</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>123020</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>3eeebad63a5d10e2614486cf85a11c64</srcmd5>
+    <version>0.7.7</version>
+    <time>1340184070</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2647538f74a58a2c511a79ee39557ef4</srcmd5>
+    <version>0.7.10</version>
+    <time>1348562790</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135564</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>2647538f74a58a2c511a79ee39557ef4</srcmd5>
+    <version>0.7.10</version>
+    <time>1359110073</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>2647538f74a58a2c511a79ee39557ef4</srcmd5>
+    <version>0.7.10</version>
+    <time>1379664223</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>020f022018e01d6c6f39f8bb82e1b66c</srcmd5>
+    <version>0.7.10</version>
+    <time>1382692998</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204601</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>75371c91deac51c9457de864a4d9e781</srcmd5>
+    <version>0.7.11</version>
+    <time>1400682165</time>
+    <user>coolo</user>
+    <comment>- Update to 0.7.11:
+  * Performance of IPSet increased dramatically, implemented by
+      Stefan Nordhausen and Martijn van Oosterhout. As a side effect,
+      IPSet(IPNetwork(&quot;10.0.0.0/8&quot;)) is now as fast as you'd expect.
+  * Various performance improvements all over the place.
+  * netaddr is now hosted on PyPI and can be installed via pip.
+  * Doing &quot;10.0.0.42&quot; in IPNetwork(&quot;10.0.0.0/24&quot;) works now.
+  * IPSet has two new methods: iscontiguous() and iprange(), thanks to Louis des Landes.
+  * Re-added the IPAddress.netmask_bits() method that was accidently removed.
+  * Networks 128.0.0.0/16, 191.255.0.0/16, and 223.255.255.0/24 are not marked as
+      reserved IPv4 addresses any more. Thanks to marnickv for pointing that out.
+  * Various bug fixes contributed by Wilfred Hughes, 2*yo and Adam Goodman.
+  FIXED Issue 58: https://github.com/drkjam/netaddr/issues/58
+      - foo.bar doesn't throw AddrFormatError
+  FIXED Issue 57: https://github.com/drkjam/netaddr/issues/57
+      - netaddr packages not hosted on PyPI
+  FIXED Issue 56: https://github.com/drkjam/netaddr/issues/56
+      - Fix comparison with large IPSet()
+  FIXED Issue 55: https://github.com/drkjam/netaddr/pull/55
+      - Fix smallest_matching_cidr and all_matching_cidrs
+  FIXED Issue 53: https://github.com/drkjam/netaddr/issues/53
+      - Exclude 128.0.0.0/16 and possibly others from reserved range set?
+  FIXED Issue 51: https://github.com/drkjam/netaddr/issues/51
+      - Encoding errors in netaddr/eui/oui.txt
+  FIXED Issue 46: https://github.com/drkjam/netaddr/issues/46
+      - len(IPSet()) fails on python3
+  FIXED Issue 43: https://github.com/drkjam/netaddr/issues/43
+      - Method to check if IPSet is contiguous
+  FIXED Issue 38: https://github.com/drkjam/netaddr/issues/38
+      - netmask_bits is missing from the IPAddress (forwarded request 233654 from frispete)</comment>
+    <requestid>234700</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>75371c91deac51c9457de864a4d9e781</srcmd5>
+    <version>0.7.11</version>
+    <time>1409302923</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9cae18e8b9735da3aa951870593c597f</srcmd5>
+    <version>0.7.12</version>
+    <time>1410795659</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248991</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e316b218f599c4fdb920de10e0b67e2d</srcmd5>
+    <version>0.7.13</version>
+    <time>1420754564</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280205</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>37e0e5ab8b3aab91c4e4c638b267ae72</srcmd5>
+    <version>0.7.14</version>
+    <time>1429606423</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298177</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f058c6be5dc92e7f7ee4664d31b5e5cc</srcmd5>
+    <version>0.7.18</version>
+    <time>1443585151</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>334025</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c1c16a7a18bf890d1ea0967d26bc15da</srcmd5>
+    <version>0.7.19</version>
+    <time>1485383564</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.19:
+  * added a new SubnetSplitter class for those looking to divide up subnets.
+    Thanks alanwill and RyPeck and those on (Stack Overflow discussion).
+  * removed bundled pytest dependency code for &quot;python setup.py test&quot;.
+  * setup.py now uses setuptools only (no more distutils) and setup_egg.py removed.
+  * cleaned up INSTALL docs so they accurately reflect current Python packaging.
+  * fixed broken parsing, generating and reading of IEEE index files when switching
+    between Python 2.x and 3.x.
+  FIXED Issue 133: https://github.com/drkjam/netaddr/issues/133
+      - Splitting a single network into multiple prefixed networks
+  FIXED Issue 129: https://github.com/drkjam/netaddr/issues/129
+      - fix IPAddress().netmask_bits to return 0 for 0.0.0.0 and [::] addresses
+  FIXED Issue 117: https://github.com/drkjam/netaddr/issues/117
+      - (python setup.py test) failing with python3 &gt;= 3.5
+  FIXED Issue 137: https://github.com/drkjam/netaddr/issues/137
+      - API reference is broken on ReadTheDocs
+  FIXED Issue 143: https://github.com/drkjam/netaddr/issues/143
+      - Please refresh the bundled IANA and IEEE databases</comment>
+    <requestid>452046</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ab3c6028c21da9a7c118944c0480c174</srcmd5>
+    <version>0.7.19</version>
+    <time>1503593535</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516767</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>c8fda9917fe1c3e896e6e92e52181f7e</srcmd5>
+    <version>0.7.19</version>
+    <time>1545648006</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659508</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11c7d704cab0d99adb249d4a1b1f3781</srcmd5>
+    <version>1.05</version>
+    <time>1395148684</time>
+    <user>coolo</user>
+    <comment>New package: a requirement of ansible (see 225686).</comment>
+    <requestid>226315</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>11c7d704cab0d99adb249d4a1b1f3781</srcmd5>
+    <version>1.05</version>
+    <time>1409303413</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec8a2fe883766ab9541cfcb976d9275c</srcmd5>
+    <version>1.06</version>
+    <time>1481153481</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444114</requestid>
+  </revision>
+</revisionlist>

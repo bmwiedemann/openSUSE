@@ -1,0 +1,186 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8b00340fff7d4bf00c3bf3e3f9b167e9</srcmd5>
+    <version>0.46</version>
+    <time>1303211401</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66783 from user babelworx
+</comment>
+    <requestid>66783</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dedbef68b349a7a5fed4fc388564ab11</srcmd5>
+    <version>0.46</version>
+    <time>1303211411</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66783
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>dedbef68b349a7a5fed4fc388564ab11</srcmd5>
+    <version>0.46</version>
+    <time>1319182320</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5f05566c502313ef89888b9759e6954d</srcmd5>
+    <version>0.47</version>
+    <time>1324458174</time>
+    <user>coolo</user>
+    <comment>- update to 0.47
+  + Add : The new constant VMG_COMPAT_HASH_DELETE_NOUVAR_VOID evaluates
+          to true when &quot;delete $hash{key}&quot; does not call 'delete' uvar
+          magic in void context.
+  + Chg : The MAGIC tokens created by this module no longer use the
+          mg_private member for storing a &quot;magical&quot; signature.
+  + Fix : Triggering magic in a thread on a variable cloned from the main
+          interpreter, and when the wizard already went out of scope,
+          will not segfault anymore.
+  + Opt : The pointer table is no longer needed to ensure thread safety.
+          The size of the object code is about 8% smaller for threaded
+          perls.
+  + Tst : Threads tests will not fail anymore if resources constraints
+          prevent the system from creating all the required threads.</comment>
+    <requestid>97121</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f666a407c8127620d531a4fd7685eea3</srcmd5>
+    <version>0.48</version>
+    <time>1330619123</time>
+    <user>coolo</user>
+    <comment>- updated to 0.48
+   + Add : You can now pass a reference to undef as the magic callback in
+           order to install a no-op callback.
+           Thanks Florian Ragwitz for the suggestion.</comment>
+    <requestid>106860</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f666a407c8127620d531a4fd7685eea3</srcmd5>
+    <version>0.48</version>
+    <time>1340183949</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>f666a407c8127620d531a4fd7685eea3</srcmd5>
+    <version>0.48</version>
+    <time>1359109843</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4db27e984984a82b32734d925db4ef4e</srcmd5>
+    <version>0.52</version>
+    <time>1371147976</time>
+    <user>coolo</user>
+    <comment>- updated to 0.52
+         + Add : The new constant VMG_COMPAT_SCALAR_NOLEN evaluates to true
+                 when your perl does not call 'len' magic for scalars, which
+                 is the case for perl 5.17.4 and above.
+                 This fixes RT #80388.
+         + Tst : t/35-stash.t has been taught about perl 5.17.4.
+         + Tst : Author tests overhaul.
+         + Fix : It is now safe to call dispell() from inside 'free', 'copy' and
+                 'uvar' callbacks to dispell the magic currently in use.
+                 Thanks Clinton Gormley for reporting.
+         + Fix : Exceptions thrown from inside a 'free' callback are now always
+                 consistently propagated outside of the callback. They used to
+                 be lost when the 'free' callback was invoked at the end of an
+                 eval block or string.
+         + Fix : The 'reset RMG flag' workaroundn used to allow wizards with
+                 both 'uvar' and 'clear' magics to be cast onto a hash, has been
+                 made thread-safe.
+         + Fix : Less memory is leaked when a wizard is freed during global
+                 destruction, or when an exception is thrown from a 'free'
+                 callback.
+         + Fix : [RT #77991] : t/17-ctl.t fails on perl 5.14 and 5.16.
+                 This was actually an issue with ActivePerl, and this test
+                 has learned to cope with it.
+                 Thanks Gisle Aas for reporting.
+         + Tst : t/35-stash.t has been taught about perl 5.17.1.
+         + Doc : Many clarifications.
+         This is a maintenance release. The code contains no functional change.
+         Satisfied users of version 0.48 can skip this update.
+         + Fix : [RT #77644] : t/17_ctl.t fails in test 44 since 5.17.0.
+                 This test has been taught about perl 5.17.0.</comment>
+    <requestid>178332</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>4db27e984984a82b32734d925db4ef4e</srcmd5>
+    <version>0.52</version>
+    <time>1379663911</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9c719727957403b0730b1aedb62b820b</srcmd5>
+    <version>0.53</version>
+    <time>1381064179</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202230</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>9c719727957403b0730b1aedb62b820b</srcmd5>
+    <version>0.53</version>
+    <time>1409302560</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>434e586368916dcc4942e8133d82d68b</srcmd5>
+    <version>0.56</version>
+    <time>1429186423</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297018</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7b1f1f9d132d35b95f9040eaac140f5d</srcmd5>
+    <version>0.57</version>
+    <time>1429346469</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297815</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0119ec93de54213da5ea19e8a29141f7</srcmd5>
+    <version>0.58</version>
+    <time>1437657765</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317867</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1f5da2af78fa23287c541a022a9572db</srcmd5>
+    <version>0.59</version>
+    <time>1444636910</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>336699</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a0da2fc6bfdf6edc0dfad3818eae436d</srcmd5>
+    <version>0.60</version>
+    <time>1473349143</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425173</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>57771bb435548d4bed6261725ebd9287</srcmd5>
+    <version>0.61</version>
+    <time>1487261106</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457030</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0715cd4912badb1e4ae8bed11535d4bb</srcmd5>
+    <version>0.62</version>
+    <time>1510505776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539950</requestid>
+  </revision>
+</revisionlist>

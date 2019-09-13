@@ -1,0 +1,294 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e80944371460265f03b5e8b2b025a0b0</srcmd5>
+    <version>1.28</version>
+    <time>1189477879</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>49f031f1f11403756d2fac560291df0e</srcmd5>
+    <version>1.30</version>
+    <time>1200409796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2a3ac351c406cdf18d0e24f896e65a86</srcmd5>
+    <version>1.31.11</version>
+    <time>1203955623</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>36a11146d66db84419041eb1fa4bcd82</srcmd5>
+    <version>1.39</version>
+    <time>1221435313</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>efe25fb087f70e48727a2b1e4b2102ae</srcmd5>
+    <version>1.39</version>
+    <time>1223935115</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>efe25fb087f70e48727a2b1e4b2102ae</srcmd5>
+    <version>1.39</version>
+    <time>1223935115</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>52bd985cdbe59a47d6fca0e519739fe1</srcmd5>
+    <version>1.39</version>
+    <time>1267102105</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/espeak based on submit request 33141 from user msmeissn
+</comment>
+    <requestid>33141</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>c15f22adb9a6796cd0af4d74dfb0f12d</srcmd5>
+    <version>1.39</version>
+    <time>1268923482</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1843f04c8feda0d90941273f7ed5c178</srcmd5>
+    <version>1.43.03</version>
+    <time>1270722758</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/espeak based on submit request 37291 from user vuntz
+</comment>
+    <requestid>37291</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1843f04c8feda0d90941273f7ed5c178</srcmd5>
+    <version>1.43.03</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>1843f04c8feda0d90941273f7ed5c178</srcmd5>
+    <version>1.43.03</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>1843f04c8feda0d90941273f7ed5c178</srcmd5>
+    <version>1.43.03</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>07573861166fb6b17dd1ce8b71385af1</srcmd5>
+    <version>1.43.03</version>
+    <time>1300884733</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64984 from user licensedigger
+</comment>
+    <requestid>64984</requestid>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>68a08e70ce493f82f6459036730a023d</srcmd5>
+    <version>1.43.03</version>
+    <time>1300884740</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64984
+</comment>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>815663a227b38068df22a3fd24ff9418</srcmd5>
+    <version>1.43.03</version>
+    <time>1316515997</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines) (forwarded request 83452 from jengelh)</comment>
+    <requestid>83737</requestid>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>815663a227b38068df22a3fd24ff9418</srcmd5>
+    <version>1.43.03</version>
+    <time>1319181869</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>e733c8bdb59025b3fb543ce6d1c561fe</srcmd5>
+    <version>1.43.03</version>
+    <time>1323191309</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>e733c8bdb59025b3fb543ce6d1c561fe</srcmd5>
+    <version>1.43.03</version>
+    <time>1340183310</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>603445ddc04216801b8e5f59191cfc82</srcmd5>
+    <version>1.46.02</version>
+    <time>1342423201</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.46.02</comment>
+    <requestid>127677</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>93b936bb2bffa5730ce65fd6d3f86070</srcmd5>
+    <version>1.46.02</version>
+    <time>1347832006</time>
+    <user>namtrac</user>
+    <comment>- Use %{optflags}. (forwarded request 134442 from AndreasSchwab)</comment>
+    <requestid>134489</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>93b936bb2bffa5730ce65fd6d3f86070</srcmd5>
+    <version>1.46.02</version>
+    <time>1359108856</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>93b936bb2bffa5730ce65fd6d3f86070</srcmd5>
+    <version>1.46.02</version>
+    <time>1379662305</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d76174db67d9dff956f2e730ba6594a3</srcmd5>
+    <version>1.47.11</version>
+    <time>1387462106</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.47.11
+  + No changelog entry
+- Changes from 1.47.10
+  + Data change only.
+  + Revert 't' sound in Spanish to version 1.47.07.
+- Changes from 1.47.09
+  + Bug fix (lookup in *_list occasionally found the wrong word).
+- Changes from 1.47.08
+  + Automatically generate character names for subscript and superscript
+    characters.
+  + Use internal ctype data for character codes up to U+024F.
+  + Add API function  espeak_TextToPhonemes().
+  + Add test language az, Azerbaijani.
+- Changes from 1.47.07
+  + Language data changes only.
+- Changes from 1.47.06
+  + Fix for systems which have 44010Hz but not 22050Hz audio.
+  + Now runs OK in ARMv7 mode.
+- Changes from 1.47.05
+  + Bug fixes.
+  + Phoneme definitions: add conditions prev2PhW(), next3PhW().
+  + Added language: ms (Malay)
+    Command line:
+    --voices=&lt;directory&gt;  lists the voices in the specified subdirectory.
+- Changes from 1.47.03
+  + Bug fixes.
+- Changes from 1.47.01
+  + Added languages:
+    - an  Aragonese.
+    - fa  Farsi.
+    - ga  Irish.
+    - lt  Lithuanian.
+    - pa  Punjabi.
+  + Many language improvements, including American English, Danish,
+    Dutch, Portuguese, Tamil.
+  + Command-line program.  
+    - Added -version option.
+    - Added optional value to --ipa option.
+      --ipa=1 adds a 'tie' character to link letters in a multi-letter
+        phoneme name.
+      --ipa=2 adds a zero-width joiner to link letters in a 
+        multi-letter phoneme name.
+   -  -X option now lists the names of attributes from *_list files.
+  + Speak the names of Braille Dot characters, U+2800 to U+28FF.
+  + Speak names of characters in some non-native alphabets.
+  + Automatic switch to a different language for text in non-native
+    alphabets.
+  + Improved speaking of text from a non-native alphabet after
+    automatically switching to a different language voice.
+  + Break words with characters from different alphabets into
+    separate words.
+  + Ignore soft-hyphen (U+00AD) in text.
+  + Klatt vioices, improved nasal vowels.
+  + espeak-data can be compiled using a different sample rate than the
+    default 22050Hz.  eSpeak will then generate speech at that sample rate.
+  + Change the structure of the espeak-data/voices directory to use
+    subdirectories for europe, asia, and others.
+  + Add suffix option 'm' to allow multiplr suffixes to be removed from a word.
+  + Allow $text attribute when a text translation is given in a different alphabet.
+
+  + Phoneme definitions.
+    - Add NOT operator in conditions.
+    - Add prevVowel() and nextPh2W() 
+    - Ignore UTF8-BOM sequence at the start of phoneme definition files.
+  + espeakedit application.
+    - Use wxWidgets 2.8 on Linux.
+    - Use wxNotebook for prosody and vowel pages.
+    - Add an option to compile the phoneme data at a specified sample rate
+     (uses the 'sox' program for the conversion of WAV file data).
+- Add easpeak-fix-bufferoverflow-strncpy.patch; fix a bufferoverflow from
+  dictionnary sources files (forwarded request 211295 from posophe)</comment>
+    <requestid>211405</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>e7c63653486d3acd611a01055f797edc</srcmd5>
+    <version>1.47.11</version>
+    <time>1389610852</time>
+    <user>coolo</user>
+    <comment>- Remove voices/en directory to avoid cpio rename error that is
+  caused by dir -&gt; file conversion. This makes the package
+  updateable again. (forwarded request 213170 from scarabeus_iv)</comment>
+    <requestid>213335</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d05fa7baede52052258b7d2f9cf55e49</srcmd5>
+    <version>1.48.02</version>
+    <time>1393935249</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 224328 from posophe)</comment>
+    <requestid>224388</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>76a15ec23c06e97c454880e3aec4199d</srcmd5>
+    <version>1.48.04</version>
+    <time>1397330897</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 229490 from posophe)</comment>
+    <requestid>229757</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>76a15ec23c06e97c454880e3aec4199d</srcmd5>
+    <version>1.48.04</version>
+    <time>1409300840</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>5f813fdc11fe66ec22fcdb83e75449cf</srcmd5>
+    <version>1.48.04</version>
+    <time>1419331804</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266048</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>6e5042c5faff871d6c809c32ffc08cc0</srcmd5>
+    <version>1.48.04</version>
+    <time>1456924758</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362282</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>45c0aeb60caf8b361f226fe5796aed02</srcmd5>
+    <version>1.48.04</version>
+    <time>1464689358</time>
+    <user>dimstar_suse</user>
+    <comment>- gcc6-char-cast.patch: Fix GCC6 errors.</comment>
+    <requestid>397670</requestid>
+  </revision>
+</revisionlist>

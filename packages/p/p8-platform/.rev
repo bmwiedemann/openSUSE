@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb21439b457160df045ac19282c063e0</srcmd5>
+    <version>2.0.1</version>
+    <time>1454352937</time>
+    <user>dimstar_suse</user>
+    <comment>Replacement for libplatform</comment>
+    <requestid>355734</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7035438818a1aab6904fc301017b2483</srcmd5>
+    <version>2.1.0.1</version>
+    <time>1485862991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0.1
+  * No upstream changelog provided
+- Drop no longer needed p8-platform-install_noarch.patch</comment>
+    <requestid>453250</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a84bab07e7e460d29a3a4270de83d5b1</srcmd5>
+    <version>2.1.0.1</version>
+    <time>1520778229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update spec file with spec-cleaner
+- Install license</comment>
+    <requestid>584437</requestid>
+  </revision>
+</revisionlist>

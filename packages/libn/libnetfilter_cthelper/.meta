@@ -1,0 +1,5 @@
+<package name="libnetfilter_cthelper" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security:netfilter" package="libnetfilter_cthelper"/>
+</package>

@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7aba6058b3fe5b503e19f63a2715235a</srcmd5>
+    <version>0.3.9</version>
+    <time>1544727005</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial version 0.3.9
+</comment>
+    <requestid>657794</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7c4cab4f23774ca771f4d830c01fa2b9</srcmd5>
+    <version>0.3.10</version>
+    <time>1551784982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.10:
+  * no upstream changelog</comment>
+    <requestid>681399</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bfceed606dcd04cc8f95f4013300d98f</srcmd5>
+    <version>0.3.11</version>
+    <time>1557141751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694189</requestid>
+  </revision>
+</revisionlist>

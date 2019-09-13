@@ -1,0 +1,5 @@
+<package name="kopano" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:mail:kopano" package="kopano"/>
+</package>

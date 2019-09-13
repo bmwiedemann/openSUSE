@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d4d12d5b33a432c919dd9519a6c0fc8</srcmd5>
+    <version>0.6.0</version>
+    <time>1357128140</time>
+    <user>namtrac</user>
+    <comment>Terminal was renamed to xfce4-terminal</comment>
+    <requestid>146561</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2a240c76896871051695989ea92c28a4</srcmd5>
+    <version>0.6.1</version>
+    <time>1357633098</time>
+    <user>coolo</user>
+    <comment>- update to version 0.6.1:
+  - add drop-down window support with --drop-down parameter, this
+    allows xfce4-terminal to start 1 game-console like window
+  - rename Go menu to Tabs
+  - load default Alt+N accelerators on first startup
+  - make single tab accelerator insensitive again
+  - rename clear scrollbar to reset
+  - fix crash when showing toolbar 2nd time
+  - don't check for version and help in parameters parsing
+  - remove Report Bug menu entry
+  - hide search dialog on delete to avoid crash
+  - set minimum tab label size to 10 chars
+  - make right-click tab menu more functional
+  - stop activity timeout when destroying a screen
+  - rename $TERM to emulation and use new preference to avoid
+    migration crashes
+  - fix the tab re-use option when running from shortcut
+  - allow underscore and + in email address
+  - use new GPL license address
+  - allow setting the geometry in the preferences
+  - translation updates</comment>
+    <requestid>146849</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2a240c76896871051695989ea92c28a4</srcmd5>
+    <version>0.6.1</version>
+    <time>1359110637</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>aa2e7d656f14d9edea58b75206b71c87</srcmd5>
+    <version>0.6.1</version>
+    <time>1363083330</time>
+    <user>coolo</user>
+    <comment>- also obsolete Terminal-doc or you get an error on update (forwarded request 158242 from coolo)</comment>
+    <requestid>158249</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>da6b9a85849b84a717b810ec4b029332</srcmd5>
+    <version>0.6.2</version>
+    <time>1367827904</time>
+    <user>coolo</user>
+    <comment>- update to version 0.6.2:
+  - autotools updates
+  - fix toolbars -&gt; toolbar in docs
+  - check display for the real display, not display.screen
+  - display checking on drop-down windows
+  - fix format warning
+  - only call g_type_init on glib &lt; 2.36
+  - translation updates</comment>
+    <requestid>174594</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>da6b9a85849b84a717b810ec4b029332</srcmd5>
+    <version>0.6.2</version>
+    <time>1379665058</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>3e0d565e0f4ea048f187757ced486152</srcmd5>
+    <version>0.6.2</version>
+    <time>1382618494</time>
+    <user>scarabeus_factory</user>
+    <comment>This fixes a crash during the encoding menu creation (bxo#10395), please consider copying to 13.1</comment>
+    <requestid>204503</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6d92775daf5fa1254bbc62eff304d832</srcmd5>
+    <version>0.6.3</version>
+    <time>1388396890</time>
+    <user>coolo</user>
+    <comment>- update to version 0.6.3
+  - improve URL matching (bxo#7959, bxo#9800)
+  - fix encoding menu creation (bxo#10395)
+  - added light solarized colorscheme (bxo#10286)
+  - fixed wrong foreground color in solarized dark (bxo#10285)
+  - fix terminal session restore (bxo#9732)
+  - translation updates
+- drop obsolete
+  xfce4-terminal-fix-up-the-encoding-menu-creation.patch</comment>
+    <requestid>212336</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>6d92775daf5fa1254bbc62eff304d832</srcmd5>
+    <version>0.6.3</version>
+    <time>1409303742</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>96790f7aaf43e67ff357a6962827f01d</srcmd5>
+    <version>0.6.90</version>
+    <time>1471009417</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418709</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fade2dbff971df81a60c43275d3ad3c4</srcmd5>
+    <version>0.6.92</version>
+    <time>1476875685</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435918</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f681a2334f756c96fe04397cc31e5d33</srcmd5>
+    <version>0.8.0</version>
+    <time>1477511319</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437443</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5b7afc7b8aace66810002779a345fd09</srcmd5>
+    <version>0.8.1</version>
+    <time>1479151031</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440262</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>71de1f19cca8bf2eed0ced4704a9f256</srcmd5>
+    <version>0.8.3</version>
+    <time>1485383829</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452380</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8b2ed97f980dd7c56c2ec0ad942ac48e</srcmd5>
+    <version>0.8.5</version>
+    <time>1495442901</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497056</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9277ebee4d4f2306992e8f9fa0c6f6c7</srcmd5>
+    <version>0.8.5.1</version>
+    <time>1497687748</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504032</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d9c71d1e95ec4c24679b4361bd03cb85</srcmd5>
+    <version>0.8.6</version>
+    <time>1512042332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546356</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>829974cc7cfb6d3d68c1bc62c04c0438</srcmd5>
+    <version>0.8.6</version>
+    <time>1513110172</time>
+    <user>dimstar_suse</user>
+    <comment>add 0001-Revert-Fix-handling-email-addresses.patch (boo#1071961, bxo#14076) (forwarded request 556030 from seife)</comment>
+    <requestid>556031</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8d4da4b83045f41d9cfae7e5c92ff3e5</srcmd5>
+    <version>0.8.7</version>
+    <time>1520415233</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 0.8.7 (forwarded request 582273 from seife)</comment>
+    <requestid>582274</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c3c82515703afbd328826b068f18e34f</srcmd5>
+    <version>0.8.7.4</version>
+    <time>1527582983</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 0.8.7.4 (forwarded request 610948 from seife)</comment>
+    <requestid>610949</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ec79c4a22d159286f2ca3d1fbcb9f4ae</srcmd5>
+    <version>0.8.7.4</version>
+    <time>1550151183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674448</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cd0c6c348e1d4a74555aef6ef9b41a08</srcmd5>
+    <version>0.8.8</version>
+    <time>1562925596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714597</requestid>
+  </revision>
+</revisionlist>

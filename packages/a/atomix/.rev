@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c1323eb628c0328512eb8adaa7d145f</srcmd5>
+    <version>3.15.91</version>
+    <time>1425566475</time>
+    <user>dimstar_suse</user>
+    <comment>Re-introduction of the GNOME game atomix; it was resurrected by upstream after the last release being 2.14</comment>
+    <requestid>288701</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a2b9357eb9ff5de8d61cd70def5ca56b</srcmd5>
+    <version>3.15.92</version>
+    <time>1426680464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291177</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5f56a71153172acfab896f9a0d8d6446</srcmd5>
+    <version>3.16.0</version>
+    <time>1427736310</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292820 from dimstar)</comment>
+    <requestid>293012</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>923045cb2fbd8260cfb9defa44b595a7</srcmd5>
+    <version>3.16.0</version>
+    <time>1441296308</time>
+    <user>dimstar_suse</user>
+    <comment>Fix the appdata dir owning issue to get atomix building on openSUSE:42</comment>
+    <requestid>328725</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec42b9c491e01412d60c03428dffe7eb</srcmd5>
+    <version>3.18.0</version>
+    <time>1444141817</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0 (forwarded request 332802 from dimstar)</comment>
+    <requestid>332894</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e004df66a8bb1e0c9c6d079b618f29a8</srcmd5>
+    <version>3.20.0</version>
+    <time>1459255455</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 377361 from dimstar)</comment>
+    <requestid>377451</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>872d7d907e031cbd234cbc6700a10aa2</srcmd5>
+    <version>3.22.0</version>
+    <time>1474623415</time>
+    <user>dimstar_suse</user>
+    <comment>New stable (forwarded request 428796 from Zaitor)</comment>
+    <requestid>429111</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>06f84e24324b69ee1835834ae90f9b14</srcmd5>
+    <version>3.22.0</version>
+    <time>1521052614</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583598 from dimstar)</comment>
+    <requestid>584762</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>38c258755028ab9024ed544c476be59a</srcmd5>
+    <version>3.30.0.1</version>
+    <time>1538374565</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 635202 from luc14n0)</comment>
+    <requestid>637353</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>be692c5b4b3079c0d4885e4e6ce61e82</srcmd5>
+    <version>3.32.0</version>
+    <time>1554458394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689472</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fca286d576f3d9b259d192b451801f66</srcmd5>
+    <version>3.32.1</version>
+    <time>1565963341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723729</requestid>
+  </revision>
+</revisionlist>

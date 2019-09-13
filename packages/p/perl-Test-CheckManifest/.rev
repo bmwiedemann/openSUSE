@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d61d19e8f42bc1c8762e0e4a4b3d5134</srcmd5>
+    <version>1.31</version>
+    <time>1498485130</time>
+    <user>dimstar_suse</user>
+    <comment>new package for file::unpack</comment>
+    <requestid>503624</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>695d0747d1de8a9983af0c1d34005917</srcmd5>
+    <version>1.33</version>
+    <time>1518187620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573949</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ccf76852565f966c1bf6c658991c5d0a</srcmd5>
+    <version>1.39</version>
+    <time>1551024904</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677224</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5acaaf7595b1b65e28508692bcde63c4</srcmd5>
+    <version>1.41</version>
+    <time>1551468656</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>680362</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6229ae0586a4b6e826c7b94cc13317c7</srcmd5>
+    <version>1.42</version>
+    <time>1559375382</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705970</requestid>
+  </revision>
+</revisionlist>

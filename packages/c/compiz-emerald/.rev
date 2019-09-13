@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4034845665c7b700c5ef7e67b1332d21</srcmd5>
+    <version>0.8.9</version>
+    <time>1449384010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>346868</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c7c8f4950917296f5ff253f1e66f8e8f</srcmd5>
+    <version>0.8.9</version>
+    <time>1450856995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>349693</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>312b2a8d709ff33bff3e6ca983eedd25</srcmd5>
+    <version>0.8.12.1</version>
+    <time>1456434387</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>360731</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0c8ac7b59632a33ba0b1a949e632542c</srcmd5>
+    <version>0.8.12.3</version>
+    <time>1459002533</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>379332</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4f895ea917200e4bacb3965f72c99e14</srcmd5>
+    <version>0.8.12.4</version>
+    <time>1460028740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>384207</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>168e71cb1264c328fd3019e91434b683</srcmd5>
+    <version>0.8.14</version>
+    <time>1494938608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>494481</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0de3c2e6ea2e4ff8dc04d8eea3aeeab1</srcmd5>
+    <version>0.8.14</version>
+    <time>1495883792</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>497774</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>97d1c3866e4b12ed769823624c91df68</srcmd5>
+    <version>0.8.16</version>
+    <time>1543223919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.16.</comment>
+    <requestid>648271</requestid>
+  </revision>
+</revisionlist>

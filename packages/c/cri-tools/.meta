@@ -1,0 +1,7 @@
+<package name="cri-tools" project="openSUSE:Factory">
+  <title>CLI and validation tools for Kubelet Container Runtime Interface</title>
+  <description>cri-tools aims to provide a series of debugging and validation tools for Kubelet CRI, which includes:
+- crictl: CLI for kubelet CRI
+- critest: validation test suites for kubelet CRI</description>
+  <devel project="devel:kubic" package="cri-tools"/>
+</package>

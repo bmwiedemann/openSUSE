@@ -1,0 +1,183 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>626dc3c794f0b95637eaca6d00d70021</srcmd5>
+    <version>1.7</version>
+    <time>1268662529</time>
+    <user>autobuild</user>
+    <comment>Copy from SUSE:SUSEStudio/imagewriter based on submit request 34783 from user mbarringer
+</comment>
+    <requestid>34783</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>736477cdc1f66fb0cf4fc1945809f5d2</srcmd5>
+    <version>1.7</version>
+    <time>1268924005</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9f8786d23716ba1752742320f515bf7a</srcmd5>
+    <version>1.8</version>
+    <time>1269193046</time>
+    <user>autobuild</user>
+    <comment>Copy from SUSE:SUSEStudio/imagewriter based on submit request 35421 from user mbarringer
+</comment>
+    <requestid>35421</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9f8786d23716ba1752742320f515bf7a</srcmd5>
+    <version>1.8</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9f8786d23716ba1752742320f515bf7a</srcmd5>
+    <version>1.8</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9f8786d23716ba1752742320f515bf7a</srcmd5>
+    <version>1.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8be771d3ce175da9ac17894488216633</srcmd5>
+    <version>1.9</version>
+    <time>1302253262</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66251 from user coolo
+</comment>
+    <requestid>66251</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2436f0dfad28527169545ffdea7e40de</srcmd5>
+    <version>1.9</version>
+    <time>1302253269</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66251
+</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>2436f0dfad28527169545ffdea7e40de</srcmd5>
+    <version>1.9</version>
+    <time>1319181986</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>f2a3efa7515803d3c2015b54c5a32d0f</srcmd5>
+    <version>1.9</version>
+    <time>1329391381</time>
+    <user>coolo</user>
+    <comment>License change</comment>
+    <requestid>105184</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>a4428ead774d74e7700e07182e7f714a</srcmd5>
+    <version>1.9</version>
+    <time>1334641511</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 109758 from dimstar)</comment>
+    <requestid>113320</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>a4428ead774d74e7700e07182e7f714a</srcmd5>
+    <version>1.9</version>
+    <time>1340183458</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>4e1a72b201bdbfe976ca98f5b7d817ca</srcmd5>
+    <version>1.9</version>
+    <time>1342604851</time>
+    <user>coolo</user>
+    <comment>Add imagewriter-desktop-menu-exec.patch to fix imagewriter not  starting up from the desktop menus, because it requires root  privilege. (forwarded request 127948 from badshah400)</comment>
+    <requestid>128139</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>58defcd580920a4c3ecfee67beaf1910</srcmd5>
+    <version>1.10</version>
+    <time>1352907522</time>
+    <user>coolo</user>
+    <comment>- Updating to 1.10, which adds support for udisks2.
+  It also merges the two patches to the 1.9 package.</comment>
+    <requestid>141306</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>58defcd580920a4c3ecfee67beaf1910</srcmd5>
+    <version>1.10</version>
+    <time>1359109077</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>58defcd580920a4c3ecfee67beaf1910</srcmd5>
+    <version>1.10</version>
+    <time>1379662663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>0999358312f12ea1bf87783baeee42de</srcmd5>
+    <version>1.10</version>
+    <time>1389074026</time>
+    <user>coolo</user>
+    <comment>small spec file cleanup, rpmlint fixes and URL changed, sadly no tags on GitHub so no https://en.opensuse.org/SourceUrls :/ still a great tool, now with proper dependencies (forwarded request 211899 from Mailaender)</comment>
+    <requestid>212894</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>89e98f007837af9eadfd45bb65f6cbb9</srcmd5>
+    <version>1.10.1396965491.a4dcffa</version>
+    <time>1398278199</time>
+    <user>coolo</user>
+    <comment>- run as non-root and use udisks to get the file descriptor for the
+  usb device
+- generate from git via _service file (forwarded request 229999 from lnussel)</comment>
+    <requestid>231168</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>0a3fbf8e79bd5a89d80ff7347074cf84</srcmd5>
+    <version>1.10.1396965491.a4dcffa</version>
+    <time>1401184848</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235432</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>0a3fbf8e79bd5a89d80ff7347074cf84</srcmd5>
+    <version>1.10.1396965491.a4dcffa</version>
+    <time>1409301221</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c329e20ba018017f5775c8fd01a9c264</srcmd5>
+    <version>1.10.1417937728.7998f7c</version>
+    <time>1419546025</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266312</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d40eeeb40798db87f5210cee15493767</srcmd5>
+    <version>1.10.1420800585.134a9b3</version>
+    <time>1420927512</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to latest git release 134a9b3:
+ + fix bnc#871120: doesn't unmount partition
+ + fix bnc#882153 - disk imagewriter does not work with img (forwarded request 280603 from jordimassaguerpla)</comment>
+    <requestid>280605</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e76a9d3ef6c351cc7bdf634535fc96c8</srcmd5>
+    <version>1.10.1432200249.1d253d9</version>
+    <time>1526371773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603835</requestid>
+  </revision>
+</revisionlist>

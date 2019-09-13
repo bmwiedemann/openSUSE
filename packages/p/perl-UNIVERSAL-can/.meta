@@ -1,0 +1,20 @@
+<package name="perl-UNIVERSAL-can" project="openSUSE:Factory">
+  <title>Hack around people calling UNIVERSAL::can() as a function</title>
+  <description>The UNIVERSAL class provides a few default methods so that all objects can use
+them. Object orientation allows programmers to override these methods in
+subclasses to provide more specific and appropriate behavior.
+
+Some authors call methods in the UNIVERSAL class on potential invocants as
+functions, bypassing any possible overriding. This is wrong and you should not
+do it. Unfortunately, not everyone heeds this warning and their bad code can
+break your good code.
+
+This module replaces UNIVERSAL::can() with a method that checks to see if the
+first argument is a valid invocant has its own can() method. If so, it gives a
+warning and calls the overridden method, working around buggy code. Otherwise,
+everything works as you might expect.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-UNIVERSAL-can"/>
+  <url>http://search.cpan.org/dist/UNIVERSAL-can/</url>
+</package>

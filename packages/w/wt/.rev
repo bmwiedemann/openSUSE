@@ -1,0 +1,292 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f3f309b75a585b19481012e105a3465</srcmd5>
+    <version>3.1.0</version>
+    <time>1265383379</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/wt based on submit request 30857 from user poletti_marco
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5189fed5bfc288576ce23ca25974bc72</srcmd5>
+    <version>3.1.1</version>
+    <time>1267404662</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/wt based on submit request 33625 from user poletti_marco
+</comment>
+    <requestid>33625</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e4533eae867b7d806392c156287f01b4</srcmd5>
+    <version>3.1.1</version>
+    <time>1268926513</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>209008cc2cd2a34f1d2d2d78685935ff</srcmd5>
+    <version>3.1.2</version>
+    <time>1270058510</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/wt based on submit request 36138 from user poletti_marco
+</comment>
+    <requestid>36138</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ae7569048ab87c95136eadd7f119c938</srcmd5>
+    <version>3.1.3</version>
+    <time>1275656893</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/wt based on submit request 41065 from user poletti_marco
+</comment>
+    <requestid>41065</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ae7569048ab87c95136eadd7f119c938</srcmd5>
+    <version>3.1.3</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ae7569048ab87c95136eadd7f119c938</srcmd5>
+    <version>3.1.3</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1af27b0115d3eb8f4546009c0ba59772</srcmd5>
+    <version>3.1.5</version>
+    <time>1285282662</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/wt based on submit request 48801 from user prusnak
+</comment>
+    <requestid>48801</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a502b725b693fa6ed7b35190bb8d643b</srcmd5>
+    <version>3.1.7a</version>
+    <time>1294902247</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57881 from user poletti_marco
+</comment>
+    <requestid>57881</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a792ab59ff15732232fd61e37f21984c</srcmd5>
+    <version>3.1.7a</version>
+    <time>1294902274</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57881
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e5cefb201f02a3f7f8853d1646c8a177</srcmd5>
+    <version>3.1.8</version>
+    <time>1297388056</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60276 from user poletti_marco
+</comment>
+    <requestid>60276</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>75fcb9a7d5f4e72f18e2ad0840fe8f38</srcmd5>
+    <version>3.1.8</version>
+    <time>1297388073</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60276
+</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>75fcb9a7d5f4e72f18e2ad0840fe8f38</srcmd5>
+    <version>3.1.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>d68a8eda193e2a1f9c52861ded4671ac</srcmd5>
+    <version>3.1.8</version>
+    <time>1298308981</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62336 from user poletti_marco
+</comment>
+    <requestid>62336</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>cce07dc308140c50c52dbc162e98d422</srcmd5>
+    <version>3.1.8</version>
+    <time>1298308993</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62336
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f56e1a724cd23fd5ee69fb87718487df</srcmd5>
+    <version>3.1.10</version>
+    <time>1310472122</time>
+    <user>darix</user>
+    <comment>Update to 3.1.10.</comment>
+    <requestid>76084</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>76249ad2a4ba43df715cbe59ca0b5d57</srcmd5>
+    <version>3.1.10</version>
+    <time>1310472139</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 76084
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4383e006d2e75c17447435815239f9b7</srcmd5>
+    <version>3.1.11</version>
+    <time>1317049676</time>
+    <user>oertel</user>
+    <comment>Update wt to 3.1.11.
+I'm not sure how much frozen is 12.1 yet.
+This release includes a backward-incompatible change and deprecates many functionalities, so you may consider rejecting this request and wait for 12.1 to be released.</comment>
+    <requestid>84845</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>4383e006d2e75c17447435815239f9b7</srcmd5>
+    <version>3.1.11</version>
+    <time>1319182573</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>f7aef71c1d65e8bcd2df3ccb787ad4ff</srcmd5>
+    <version>3.1.11</version>
+    <time>1323195205</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9d2aa60bc05032a8de4f0f265c33089f</srcmd5>
+    <version>3.2.0</version>
+    <time>1329751185</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>105934</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>9d2aa60bc05032a8de4f0f265c33089f</srcmd5>
+    <version>3.2.0</version>
+    <time>1340184328</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>9d2aa60bc05032a8de4f0f265c33089f</srcmd5>
+    <version>3.2.0</version>
+    <time>1359110578</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>9d2aa60bc05032a8de4f0f265c33089f</srcmd5>
+    <version>3.2.0</version>
+    <time>1379664972</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a2b9cfccf3783972254f3e840c42e002</srcmd5>
+    <version>3.3.2</version>
+    <time>1398499928</time>
+    <user>coolo</user>
+    <comment>Added _constraints file to prevent out of memory issue (sr#229467). (forwarded request 230033 from DarkSS)</comment>
+    <requestid>230847</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>a2b9cfccf3783972254f3e840c42e002</srcmd5>
+    <version>3.3.2</version>
+    <time>1409303651</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d57851763e54b042a546abfaf09a1c79</srcmd5>
+    <version>3.3.3</version>
+    <time>1417809882</time>
+    <user>dimstar_suse</user>
+    <comment>- Add various missing dependencies and switches to ensure we build
+  against system libraries
+- add -dbo-* subpackages for db connectors, thus our core does not
+  pull in all various database providers
+- Cleanup with spec cleaner
+- Remove support for &lt; 12.3 as it failed to build there anyway
+- Use %cmake macro instead of directly calling %cmake
+- Version bump to 3.3.3:
+  * various bugfixes
+  * improved meta header support
+- Add patch to build on Factory with boost 5.16.0:
+  * wt-boost-1.56.0.patch</comment>
+    <requestid>264049</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b2d891e6e70190ac1f7a31b15091af10</srcmd5>
+    <version>3.3.4</version>
+    <time>1429769075</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298528</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>06eae5d78335ade7484096493faa96bd</srcmd5>
+    <version>3.3.4</version>
+    <time>1445860125</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340372</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>62900adc25e20df60f6e86007b3bef1c</srcmd5>
+    <version>3.3.5</version>
+    <time>1461855386</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391444</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>1e9b03743db3ac8fa920cb8760001c58</srcmd5>
+    <version>3.3.5</version>
+    <time>1486773795</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455732</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>5aa350d67e22d5f33f59179809dfb8c3</srcmd5>
+    <version>3.3.5</version>
+    <time>1512378092</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace openssl-devel (Build)Requires with pkgconfig(openssl):
+  allow OBS to pick openssl 1.0 if needed. (forwarded request 546458 from dimstar)</comment>
+    <requestid>546476</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c052c0a6fae968e53ae131eeb1f76048</srcmd5>
+    <version>4.0.2</version>
+    <time>1515623891</time>
+    <user>dimstar_suse</user>
+    <comment>upstream - see: https://redmine.emweb.be/issues/6198 -
+  added libboost-atomic-devel. (forwarded request 563251 from eeich)</comment>
+    <requestid>563254</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d45c984f90a4150b021c8edb2aff6992</srcmd5>
+    <version>4.0.5</version>
+    <time>1551883743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681823</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>d306fd09022ff88ca21d662daa9bf3bb</srcmd5>
+    <version>4.0.5</version>
+    <time>1554458417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689747</requestid>
+  </revision>
+</revisionlist>

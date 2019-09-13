@@ -1,0 +1,6 @@
+<package name="matrix-synapse" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:messaging:matrix" package="matrix-synapse"/>
+  <url>https://github.com/matrix-org/synapse</url>
+</package>

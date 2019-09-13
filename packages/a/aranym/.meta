@@ -1,0 +1,43 @@
+<package name="aranym" project="openSUSE:Factory">
+  <title>ARAnyM (Atari Running on Any Machine)</title>
+  <description>ARAnyM is a multiplatform virtual machine (a software layer) for
+running Atari ST/TT/Falcon TOS/GEM applications on any hardware with
+many host operating systems. The reason for writing ARAnyM is to
+provide Atari power users with faster and better machines. The ultimate
+goal is to create a new platform where TOS/GEM applications could
+continue to live forever.
+
+Features:
+
+* 68040 CPU (including MMU040)
+
+* 68040 and 68881/2 FPU
+
+* 14 MB ST-RAM and up to 3824 MB (configurable) of FastRAM
+
+* VIDEL, Blitter, MFP, ACIA, IKBD for highest possible compatibility
+
+* Sound (compatible with Atari XBIOS Sound subsystem, including
+   TimerA DMA IRQ)
+
+* Atari floppy DD/HD for connecting floppy image or real floppy
+   drive
+
+* Two IDE channels for connecting disk images, hard drives, or
+   CD-ROMs
+
+* Extended keyboard and mouse support (including mouse wheel)
+
+* Direct access to host file system via BetaDOS and MiNT xfs drivers
+
+* Networking using ethernet emulation with a driver for MiNT-Net
+
+* TOS 4.04, EmuTOS, or Linux as the booting operating system
+
+* Runs with FreeMiNT, MagiC, and any other operating system that
+   runs also on real Atari computers
+
+* Native CD-ROM access (under Linux, other OS: audio CD only) without
+scsi, ide, or other emulation</description>
+  <devel project="Emulators" package="aranym"/>
+</package>

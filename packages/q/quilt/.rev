@@ -1,0 +1,546 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>5814b154f3c6440bbc520235b73ff09d</srcmd5>
+    <version>0.46</version>
+    <time>1168904093</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="20">
+    <srcmd5>671277ebb7c9057b8593e652fccaea37</srcmd5>
+    <version>0.46</version>
+    <time>1171606695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="24">
+    <srcmd5>1d3850366dafbd1ce0eba6f0b1851c23</srcmd5>
+    <version>0.46</version>
+    <time>1174952812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="27">
+    <srcmd5>20e7e42df4818764a2b162508b7db921</srcmd5>
+    <version>0.46</version>
+    <time>1176914256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="31">
+    <srcmd5>b499f0d4ced626c8b828da74e3754ec3</srcmd5>
+    <version>0.46</version>
+    <time>1177800234</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="48">
+    <srcmd5>8e0fd8e4dcfd92cb6a6d57f7a2bee872</srcmd5>
+    <version>0.46</version>
+    <time>1185494919</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="63">
+    <srcmd5>871f1af20d78d4c2ec32cc637fa3214b</srcmd5>
+    <version>0.46</version>
+    <time>1192495010</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b6b595a17bb7c10178ff4db9b945dfa</srcmd5>
+    <version>0.46_cvs20071024</version>
+    <time>1193272239</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="67">
+    <srcmd5>23159393ad36ef5b7067b4716fe966c4</srcmd5>
+    <version>0.46</version>
+    <time>1193356293</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>489c9f385512dba8999c0cf20b9f47b0</srcmd5>
+    <version>0.46_cvs20071026</version>
+    <time>1193424743</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9ee98248acb760a79427149c84f99432</srcmd5>
+    <version>0.46_cvs20071029</version>
+    <time>1193703354</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ef64c6b3c444911d359ffec0c3fcae02</srcmd5>
+    <version>0.46_cvs20071105</version>
+    <time>1194305814</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="24">
+    <srcmd5>ce6ea94e01057815d1040eec33e37078</srcmd5>
+    <version>0.46_cvs20071105</version>
+    <time>1203035965</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>da7e1a79a9d7922a3724d3d2bae8e8ab</srcmd5>
+    <version>0.46_cvs20080326</version>
+    <time>1206676754</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6293824e7005af4940683fdccec55d58</srcmd5>
+    <version>0.46_cvs20080613</version>
+    <time>1214426717</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="20">
+    <srcmd5>f298a4781ab0d5f58e253b721f277927</srcmd5>
+    <version>0.46_cvs20080613</version>
+    <time>1218757960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="26">
+    <srcmd5>a30de440d6fbe932fac6ad77330ee98d</srcmd5>
+    <version>0.46_cvs20080613</version>
+    <time>1219092857</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>be85e0ad57ab362deaa583773471611f</srcmd5>
+    <version>0.47</version>
+    <time>1219431982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>3cf4537aae759a9e07d6140679dd54fa</srcmd5>
+    <version>0.47</version>
+    <time>1225150534</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>7bf17274fc14289924f9cdc7b6dbb50e</srcmd5>
+    <version>0.47</version>
+    <time>1225718375</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>d643bfaca4e6808c7271d5141efeafc2</srcmd5>
+    <version>0.47</version>
+    <time>1226940908</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>08036d2224b0d5a3255f18aede8ebb3a</srcmd5>
+    <version>0.48</version>
+    <time>1247079877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>dd570bbdc5972102af03b3b49eddb778</srcmd5>
+    <version>0.48</version>
+    <time>1249574959</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>64ae69048262beb54668fc8f37f08916</srcmd5>
+    <version>0.48</version>
+    <time>1253656221</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/quilt based on submit request 20707 from user jdelvare
+</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>64ae69048262beb54668fc8f37f08916</srcmd5>
+    <version>0.48</version>
+    <time>1253656221</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/quilt based on submit request 20707 from user jdelvare
+</comment>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>c18bbed644db2ac78fc814c24dd7f963</srcmd5>
+    <version>0.48</version>
+    <time>1259923020</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/quilt based on submit request 25288 from user jdelvare
+</comment>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>4ae66b980805e52d3a3cfbdb972fd50d</srcmd5>
+    <version>0.48</version>
+    <time>1265912393</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/quilt based on submit request 32321 from user coolo
+</comment>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>44e8c0e4d5933bd097b35be0ef9a344d</srcmd5>
+    <version>0.48</version>
+    <time>1268925947</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>9ab8d192c4f2381b009708c5e2bc5e6d</srcmd5>
+    <version>0.48</version>
+    <time>1274785992</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/quilt based on submit request 40331 from user puzel
+</comment>
+    <requestid>40331</requestid>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>652cfbd97987e27e80ba4142fc50d565</srcmd5>
+    <version>0.48</version>
+    <time>1277135596</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/quilt based on submit request 41831 from user jdelvare
+</comment>
+    <requestid>41831</requestid>
+  </revision>
+  <revision rev="31" vrev="12">
+    <srcmd5>652cfbd97987e27e80ba4142fc50d565</srcmd5>
+    <version>0.48</version>
+    <time>1278667386</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="32" vrev="13">
+    <srcmd5>652cfbd97987e27e80ba4142fc50d565</srcmd5>
+    <version>0.48</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="33" vrev="14">
+    <srcmd5>39c43a14f6e65d404bb3db9542c7236a</srcmd5>
+    <version>0.48</version>
+    <time>1290248396</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53433 from user coolo
+</comment>
+    <requestid>53433</requestid>
+  </revision>
+  <revision rev="34" vrev="15">
+    <srcmd5>c4cae7fd03d9eab75544adfdf4bcd269</srcmd5>
+    <version>0.48</version>
+    <time>1290248417</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53433
+</comment>
+  </revision>
+  <revision rev="35" vrev="18">
+    <srcmd5>c4cae7fd03d9eab75544adfdf4bcd269</srcmd5>
+    <version>0.48</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="36" vrev="19">
+    <srcmd5>bbb8965fc568880c7cd650f9a94b276b</srcmd5>
+    <version>0.48</version>
+    <time>1317941424</time>
+    <user>lrupp</user>
+    <comment>- inspect-shell-syntax-errors.patch: Quote strings in inspect
+  helper script to avoid flood of shell syntax errors during
+  quilt setup -v *.spec.</comment>
+    <requestid>86968</requestid>
+  </revision>
+  <revision rev="37" vrev="21">
+    <srcmd5>bbb8965fc568880c7cd650f9a94b276b</srcmd5>
+    <version>0.48</version>
+    <time>1319182420</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="38" vrev="22">
+    <srcmd5>31f884a6e3e78ab110711435dacdfd77</srcmd5>
+    <version>0.48</version>
+    <time>1320937441</time>
+    <user>coolo</user>
+    <comment>Make quilt work again with xz compressed files</comment>
+    <requestid>90927</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5d14304cdfda48a9dd5a0ec01eaaf7fb</srcmd5>
+    <version>0.50</version>
+    <time>1324475915</time>
+    <user>coolo</user>
+    <comment>Upgrade to version 0.50.</comment>
+    <requestid>96758</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>0244604c5cdfd07967deae406f42e3be</srcmd5>
+    <version>0.50</version>
+    <time>1327486131</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100927</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>798f60f4537639f9d2719d9cd9dbef23</srcmd5>
+    <version>0.51</version>
+    <time>1328261173</time>
+    <user>coolo</user>
+    <comment>Update to upstream version 0.51</comment>
+    <requestid>102386</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>b1443eed8529d52f908d12adcfea921a</srcmd5>
+    <version>0.51</version>
+    <time>1330434935</time>
+    <user>coolo</user>
+    <comment>make build output stable (forwarded request 106956 from msmeissn)</comment>
+    <requestid>107075</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a36e0e6546a3992490021b926339d40d</srcmd5>
+    <version>0.60</version>
+    <time>1331124317</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.60.
+- Fix interaction with vimdiff.</comment>
+    <requestid>108311</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>a36e0e6546a3992490021b926339d40d</srcmd5>
+    <version>0.60</version>
+    <time>1340184133</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>9aedbef32cba2e2727d9af670aaf1a07</srcmd5>
+    <version>0.60</version>
+    <time>1351265393</time>
+    <user>coolo</user>
+    <comment>Many improvements to &quot;quilt setup&quot;.</comment>
+    <requestid>139312</requestid>
+  </revision>
+  <revision rev="46" vrev="6">
+    <srcmd5>9aedbef32cba2e2727d9af670aaf1a07</srcmd5>
+    <version>0.60</version>
+    <time>1359110269</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="7">
+    <srcmd5>521f14225a37fc005676997dbf5bbdf3</srcmd5>
+    <version>0.60</version>
+    <time>1366274592</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162828 from namtrac)</comment>
+    <requestid>171337</requestid>
+  </revision>
+  <revision rev="48" vrev="9">
+    <srcmd5>521f14225a37fc005676997dbf5bbdf3</srcmd5>
+    <version>0.60</version>
+    <time>1379664426</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="49" vrev="10">
+    <srcmd5>f4d093b780f6f4d85f5fa036e0029cb1</srcmd5>
+    <version>0.60</version>
+    <time>1380609297</time>
+    <user>coolo</user>
+    <comment>- quilt-makefile-fix-find-perm-usage.patch: Makefile: Fix &quot;find
+  -perm&quot; usage.
+- quilt-makefile-fix-configure-with-xargs.patch: Makefile: Fix
+  support for &quot;./configure --with-xargs&quot;.
+- quilt-find-quoting-style.patch: delete.test: Cope with new
+  quoting style in find error message.</comment>
+    <requestid>201478</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>38f9d0a1125b664d15f46c2b866493b9</srcmd5>
+    <version>0.61</version>
+    <time>1386687808</time>
+    <user>coolo</user>
+    <comment>- Recompress the source archive with bzip2 (to remove a rpmlint warning.)
+- Change bzip2 from required to recommended. Quilt works just fine without it and xz compression if becoming more popular than bzip2.
+- update to 0.61
+</comment>
+    <requestid>210033</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>4f5ac79705a7e554867fc97578dfa522</srcmd5>
+    <version>0.61</version>
+    <time>1395750470</time>
+    <user>coolo</user>
+    <comment>- quilt requires less, unless PAGER is set
+
+also broken in SLE12:
+
+abuild@bax:/home/abuild/rpmbuild/BUILD/kernel-default-3.12.14/linux-obj&gt; quilt app
+/usr/share/quilt/scripts/patchfns: line 1021: less: command not found
+abuild@bax:/home/abuild/rpmbuild/BUILD/kernel-default-3.12.14/linux-obj&gt; env PAGER=/bin/cat quilt app
+patches/vrss.patch (forwarded request 226944 from jdelvare)</comment>
+    <requestid>227278</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>05f26b03f98fd0c36d056341c408b255</srcmd5>
+    <version>0.61</version>
+    <time>1398485181</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>231239</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>ed7a0475f9dc7db5fcdc826fcf01a032</srcmd5>
+    <version>0.61</version>
+    <time>1399377766</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>232517</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>afda85ba120f5c41ea7adf340da66cc2</srcmd5>
+    <version>0.63</version>
+    <time>1403176114</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>237536</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>60bf80ea3ad0678b06e188ad29b08116</srcmd5>
+    <version>0.63</version>
+    <time>1407912538</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>244185</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>60bf80ea3ad0678b06e188ad29b08116</srcmd5>
+    <version>0.63</version>
+    <time>1409303152</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>ce6981512e5087dc6df93de9a02c3d5f</srcmd5>
+    <version>0.63</version>
+    <time>1413048352</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>254707</requestid>
+  </revision>
+  <revision rev="58" vrev="6">
+    <srcmd5>cec7696504ef47c256f7a6f7f6fb731b</srcmd5>
+    <version>0.63</version>
+    <time>1414776425</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>257865</requestid>
+  </revision>
+  <revision rev="59" vrev="7">
+    <srcmd5>1d20422222a9265c01b8b49dba408fd4</srcmd5>
+    <version>0.63</version>
+    <time>1418840278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264682</requestid>
+  </revision>
+  <revision rev="60" vrev="8">
+    <srcmd5>c3a8a02528a8dcf5aac6321d0f11c477</srcmd5>
+    <version>0.63</version>
+    <time>1422658650</time>
+    <user>dimstar_suse</user>
+    <comment>- Update upstream references.
+- quilt-el-fix-tramp-support.patch: quilt-el: Fix tramp support.
+- quilt-el-fix-patch-select-completion.patch: quilt-el: Fix patch
+  select completion.
+- hackweek-11-13-setup-let-normalize_path-deal-with-dot.patch:
+  setup: Let normalize_path deal with &quot;.&quot;.
+- hackweek-11-14-setup-fix-link-creation.patch: setup: Fix link
+  creation.
+- dont-substitute-release.patch: mail: Don't include the release
+  number in User-Agent.</comment>
+    <requestid>283317</requestid>
+  </revision>
+  <revision rev="61" vrev="9">
+    <srcmd5>29e2ec765543be4930cb46d32662c5c6</srcmd5>
+    <version>0.63</version>
+    <time>1423812838</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>285522</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e81d7f184173e99317d5c9a5f1d77c49</srcmd5>
+    <version>0.64</version>
+    <time>1425031595</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>287372</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>2c0c37880d103b50a46ff434b1916e5b</srcmd5>
+    <version>0.64</version>
+    <time>1474475064</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>428090</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>4b20b2d842a802b4794552970c9b39ce</srcmd5>
+    <version>0.64</version>
+    <time>1475588795</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>431137</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>2ce8651264b9365b447b55e1522b96d5</srcmd5>
+    <version>0.65</version>
+    <time>1478871135</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.65</comment>
+    <requestid>439564</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>3e6d5d5ff54e0e484b51b21f934da184</srcmd5>
+    <version>0.65</version>
+    <time>1493363467</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>489824</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>fd944145619e6d8b2a50f12f83ca02e2</srcmd5>
+    <version>0.65</version>
+    <time>1496681457</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>501141</requestid>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>08c0d805c11e2574c5e4a1a552c249ba</srcmd5>
+    <version>0.65</version>
+    <time>1502186233</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512346</requestid>
+  </revision>
+  <revision rev="69" vrev="5">
+    <srcmd5>9793c50c473f339b5ece43f439a93fd1</srcmd5>
+    <version>0.65</version>
+    <time>1506955510</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528751</requestid>
+  </revision>
+  <revision rev="70" vrev="6">
+    <srcmd5>e3d31ff4a60ba4b2f5e0bec2b5798012</srcmd5>
+    <version>0.65</version>
+    <time>1525611617</time>
+    <user>dimstar_suse</user>
+    <comment>- quiltrc-support-all-patch-formats-by-default.patch: quiltrc:
+  Support all patch formats by default (bsc#1088281).
+</comment>
+    <requestid>603634</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>36a7730b89f139c892b22fede44e55eb</srcmd5>
+    <version>0.66</version>
+    <time>1554189398</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.66</comment>
+    <requestid>689914</requestid>
+  </revision>
+</revisionlist>

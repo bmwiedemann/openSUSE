@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d62df1f3b7d7ce5054661e7c769f3bef</srcmd5>
+    <version>0.41</version>
+    <time>1329823450</time>
+    <user>coolo</user>
+    <comment>please review, needed for software-center</comment>
+    <requestid>104769</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e6a0f40a921b97cf4265cf7a651497c0</srcmd5>
+    <version>0.41</version>
+    <time>1332416313</time>
+    <user>coolo</user>
+    <comment>add %perl_requires, libxslt1 for Factory and move ca and pl mandir directory to -lang</comment>
+    <requestid>110417</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>876c3b3346d435a0fa0be4ed46b927a9</srcmd5>
+    <version>0.41</version>
+    <time>1332752680</time>
+    <user>coolo</user>
+    <comment>Reflect changes on libxslt package (-tool subpackage created) (forwarded request 110848 from elchevive)</comment>
+    <requestid>110851</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d95eb151f3d3c1d516146f5836ca4fe2</srcmd5>
+    <version>0.42</version>
+    <time>1337578192</time>
+    <user>coolo</user>
+    <comment>update to new version released today (forwarded request 121308 from elchevive)</comment>
+    <requestid>121309</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d95eb151f3d3c1d516146f5836ca4fe2</srcmd5>
+    <version>0.42</version>
+    <time>1340184008</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>d95eb151f3d3c1d516146f5836ca4fe2</srcmd5>
+    <version>0.42</version>
+    <time>1359109935</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e809d16e9dce845719dc5b8f9934e4aa</srcmd5>
+    <version>0.44</version>
+    <time>1359466311</time>
+    <user>coolo</user>
+    <comment>- do not buildrequire texlive (forwarded request 150030 from coolo)</comment>
+    <requestid>150031</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>997b977ab923814af4036cbac886d2ba</srcmd5>
+    <version>0.44</version>
+    <time>1366183454</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164054 from namtrac)</comment>
+    <requestid>164075</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1310fb2e549662a165378f9b70b2ec7d</srcmd5>
+    <version>0.44</version>
+    <time>1372145856</time>
+    <user>coolo</user>
+    <comment>Fix build errors for perl &gt; 5.18 and now mentioning the patch added on .changes file.</comment>
+    <requestid>180786</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>1310fb2e549662a165378f9b70b2ec7d</srcmd5>
+    <version>0.44</version>
+    <time>1379664043</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>1310fb2e549662a165378f9b70b2ec7d</srcmd5>
+    <version>0.44</version>
+    <time>1409302720</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d3c7974696880c44eabf8a6cb7e5f0bb</srcmd5>
+    <version>0.45</version>
+    <time>1416824346</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262442</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3566b43196f76d69ff33d796a74ad830</srcmd5>
+    <version>0.48</version>
+    <time>1484132179</time>
+    <user>dimstar_suse</user>
+    <comment>another attempt to update po4a 0.48</comment>
+    <requestid>449398</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9717c0d7ae6ca712217fc96ec6217798</srcmd5>
+    <version>0.52</version>
+    <time>1504520487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519561</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f223bdb156f0263d749592fcfe7c6422</srcmd5>
+    <version>0.54</version>
+    <time>1534774652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628996</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ea76f1c1018bd265c45a2617ebf34b03</srcmd5>
+    <version>0.55</version>
+    <time>1549286621</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670632</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>54198ae3f8d4dfdadec444befee17db3</srcmd5>
+    <version>0.56</version>
+    <time>1561405714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709124</requestid>
+  </revision>
+</revisionlist>

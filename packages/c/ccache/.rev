@@ -1,0 +1,448 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>e78cf2b5bee9cf4f3407a394ac41d6ee</srcmd5>
+    <version>2.4</version>
+    <time>1168902398</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="137">
+    <srcmd5>e78cf2b5bee9cf4f3407a394ac41d6ee</srcmd5>
+    <version>2.4</version>
+    <time>1168902398</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="138">
+    <srcmd5>ac9f523823bb30383b227d003e9c6c06</srcmd5>
+    <version>2.4</version>
+    <time>1245259054</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="140">
+    <srcmd5>ac9f523823bb30383b227d003e9c6c06</srcmd5>
+    <version>2.4</version>
+    <time>1245259054</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="141">
+    <srcmd5>a864b9bdee35fd6fd3753a667e56f62e</srcmd5>
+    <version>2.4</version>
+    <time>1268923152</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="143">
+    <srcmd5>a864b9bdee35fd6fd3753a667e56f62e</srcmd5>
+    <version>2.4</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="144">
+    <srcmd5>a864b9bdee35fd6fd3753a667e56f62e</srcmd5>
+    <version>2.4</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>38f32aa9f862a4bd6aa4dc38e93fb84b</srcmd5>
+    <version>3.0.1</version>
+    <time>1279565602</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:building/ccache based on submit request 43323 from user puzel
+</comment>
+    <requestid>43323</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2fe99a11773a12335c2097df974334cb</srcmd5>
+    <version>3.1</version>
+    <time>1284763591</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:building/ccache based on submit request 48345 from user puzel
+</comment>
+    <requestid>48345</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>24d13c6d9c36eac55f0fdf46a909d0f7</srcmd5>
+    <version>3.1.1</version>
+    <time>1289224302</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52357 from user puzel
+</comment>
+    <requestid>52357</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e9d426e73b795c64a55b27320db39e25</srcmd5>
+    <version>3.1.2</version>
+    <time>1290426923</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53646 from user puzel
+</comment>
+    <requestid>53646</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7663d8864c6467a66b6acee32480412a</srcmd5>
+    <version>3.1.3</version>
+    <time>1291028119</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 54069 from user puzel
+</comment>
+    <requestid>54069</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>7663d8864c6467a66b6acee32480412a</srcmd5>
+    <version>3.1.3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>24a2824ec277b4cf77ef30447a08320e</srcmd5>
+    <version>3.1.4</version>
+    <time>1298810410</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62747 from user coolo
+</comment>
+    <requestid>62747</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5b481cfcbb37b47f642e155f7b907c50</srcmd5>
+    <version>3.1.4</version>
+    <time>1298810418</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62747
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f4774658c723360d14fbc4ddf410c810</srcmd5>
+    <version>3.1.5</version>
+    <time>1307430435</time>
+    <user>saschpe</user>
+    <comment>update to 3.1.5</comment>
+    <requestid>72789</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b8e65b48df19786c1765f258dab6d876</srcmd5>
+    <version>3.1.6</version>
+    <time>1314020217</time>
+    <user>saschpe</user>
+    <comment>update to ccache-3.1.6 (forwarded request 79457 from adra)</comment>
+    <requestid>79476</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>b8e65b48df19786c1765f258dab6d876</srcmd5>
+    <version>3.1.6</version>
+    <time>1319181804</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b47b1c0280e31d3aabf7ad7a485a06d5</srcmd5>
+    <version>3.1.7</version>
+    <time>1326122546</time>
+    <user>coolo</user>
+    <comment>update to 3.1.7</comment>
+    <requestid>99392</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>b47b1c0280e31d3aabf7ad7a485a06d5</srcmd5>
+    <version>3.1.7</version>
+    <time>1340183229</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b38822f7638d9893484887981fd2d72d</srcmd5>
+    <version>3.1.8</version>
+    <time>1344777841</time>
+    <user>namtrac</user>
+    <comment>- update to ccache-3.1.8 
+  - Made paths to dependency files relative in order to increase
+    cache hits.
+  - Added work-around to make ccache work with buggy GCC 4.1 when
+    creating a pre-compiled header.
+  - Clang plugins are now hashed to catch plugin upgrades.
+  - Fixed crash when the current working directory has been
+    removed.
+  - Fixed crash when stderr is closed.
+  - Corrected a corner case when parsing backslash escapes in
+    string literals.
+  - Paths are now correctly canonicalized when computing paths
+    relative to the base directory.
+  - Made git version macro work when compiling outside of the
+    source directory.
+  - Fixed `static_assert` macro definition clash with GCC 4.7.</comment>
+    <requestid>130648</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>9320002c4267bce2f717313373fed046</srcmd5>
+    <version>3.1.8</version>
+    <time>1352618089</time>
+    <user>coolo</user>
+    <comment>- Implement %check
+- Don't install INSTALL.* files (forwarded request 140742 from namtrac)</comment>
+    <requestid>140745</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>113c3d8204874de1f054239a68f132d2</srcmd5>
+    <version>3.1.8</version>
+    <time>1357648442</time>
+    <user>coolo</user>
+    <comment>- Add xclang.patch: support -Xclang option</comment>
+    <requestid>147487</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>113c3d8204874de1f054239a68f132d2</srcmd5>
+    <version>3.1.8</version>
+    <time>1359108735</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d4e20b74f0281e3a7aa3e29610836b4c</srcmd5>
+    <version>3.1.9</version>
+    <time>1361820796</time>
+    <user>coolo</user>
+    <comment>Update to 3.1.9 (forwarded request 156229 from adra)</comment>
+    <requestid>156244</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>409afe4d26db7f661d8f402f011a72a5</srcmd5>
+    <version>3.1.9</version>
+    <time>1372412940</time>
+    <user>coolo</user>
+    <comment>- fixed build with gcc 4.8
+  * ccache-gcc48.patch (forwarded request 180816 from pgajdos)</comment>
+    <requestid>180842</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>409afe4d26db7f661d8f402f011a72a5</srcmd5>
+    <version>3.1.9</version>
+    <time>1379662090</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>409afe4d26db7f661d8f402f011a72a5</srcmd5>
+    <version>3.1.9</version>
+    <time>1409300620</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b605eac990a382ef0ac61359fac71d27</srcmd5>
+    <version>3.2.1</version>
+    <time>1427445611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>292579</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5cfabb91187150d8144de0820468c91a</srcmd5>
+    <version>3.2.2</version>
+    <time>1432379312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>308407</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>4ae8b13886ce2c6d79d11ce58041ff4e</srcmd5>
+    <version>3.2.2</version>
+    <time>1432636554</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308677</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a307140cee4a57b754e986ca062e2596</srcmd5>
+    <version>3.2.3</version>
+    <time>1440480001</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325639</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fe48dbe27c15d04a76c8d47de6780a74</srcmd5>
+    <version>3.2.4</version>
+    <time>1444636954</time>
+    <user>coolo</user>
+    <comment>- Update to 3.2.4
+  * Fixed build error related to zlib on systems with older make 
+    versions (regression in ccache 3.2.3).
+  * Made conversion-to-bool explicit to avoid build warnings (and 
+    potential runtime errors) on legacy systems.
+  * Improved signal handling: Kill compiler on SIGTERM; wait for 
+    compiler to exit before exiting; die appropriately.
+  * Minor fixes related to Windows support.
+  * The correct compression level is now used if compression is 
+    requested.
+  * Fixed a bug where cache cleanup could be run too early for 
+    caches larger than 64 GiB on 32-bit systems.</comment>
+    <requestid>337328</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a3d81ee49709f1dd77a83ac44feec227</srcmd5>
+    <version>3.2.5</version>
+    <time>1461855454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.5
+  * Only pass clang-specific -stdlib= to the preprocessor.
+  * Improved handling of stale NFS handles.
+  * Made it harder to misinterpret documentation of boolean
+    environment settings' semantics.
+  * Corrected &quot;Performance&quot; section in the manual regarding __DATE_,
+    __TIME__ and __FILE__ macros.
+  * Don’t (try to) update manifest file in “read-only” and 
+    “read-only direct” modes.
+  * Fixed a bug in caching of stat system calls in “file_stat_matches
+    sloppiness mode”.
+  * Fixed bug in hashing of clang plugins, leading to unnecessary
+    cache misses.
+  * Fixed --print-config to show “pch_defines sloppiness”.</comment>
+    <requestid>391894</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>56d7f5e2079fc6ee086dc6acf69b414a</srcmd5>
+    <version>3.2.5</version>
+    <time>1468360342</time>
+    <user>dimstar_suse</user>
+    <comment>- Small spec file cleanup
+- Disable testsuite as it is not reliable in OBS</comment>
+    <requestid>407336</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>254e5b8baff99f7bde6938537a7cd413</srcmd5>
+    <version>3.2.7</version>
+    <time>1472246297</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423102</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a846fa23fa97862d00ecf28c8d2b6de8</srcmd5>
+    <version>3.3.1</version>
+    <time>1473679682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.1:</comment>
+    <requestid>426826</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>01dc06a11d48cd45129894855b2bf5a3</srcmd5>
+    <version>3.3.3</version>
+    <time>1485042686</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451556</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>b8d20c03e551e9d5073cd5180cb19c92</srcmd5>
+    <version>3.3.4</version>
+    <time>1491469389</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 3.3.4:</comment>
+    <requestid>485774</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>452d900847a7f1e97001747de471dfe5</srcmd5>
+    <version>3.3.6</version>
+    <time>1517931981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572526</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>5f12e845db26b09f72732a1b91684c92</srcmd5>
+    <version>3.4.2</version>
+    <time>1524489901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597541</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>3909a6f678bbfcfefb446605a9ad1f9f</srcmd5>
+    <version>3.4.2</version>
+    <time>1531813133</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable testsuite</comment>
+    <requestid>622434</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9b7a03a8704441d10293b0700db35c77</srcmd5>
+    <version>3.5</version>
+    <time>1541508645</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure bundled zlib is not used
+- Make building more verbose
+
+- Update to version 3.5
+  * Added a boolean debug (CCACHE_DEBUG) configuration option
+  * Renamed CCACHE_CC to CCACHE_COMPILER
+  * Added a new command-line option -k/--get-config
+  * Improved performance substantially when using hash_dir = false
+  * Renamed &quot;stats zero time&quot; to &quot;stats zeroed&quot;
+  * Added file_state_matches_ctime option to disable ctime check</comment>
+    <requestid>643637</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>066e013a1edaa7b6b9de550ec48e686b</srcmd5>
+    <version>3.6</version>
+    <time>1549624008</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670359</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>f09dd834747fac2268bf76023b0d10e3</srcmd5>
+    <version>3.7.1</version>
+    <time>1556915236</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix upstream urls
+
+- Update URLs in the .spec file
+- Update to version 3.7.1
+- Changes for version 3.7.1
+  * Fixed a problem when using the compiler option `-MF /dev/null`.
+  * Long commandlines are now handled gracefully on Windows by using 
+    the `@file` syntax to avoid hitting the commandline size limit.
+  * Fixed complaint from GCC 9’s `-Werror=format-overflow` when 
+    compiling ccache itself.
+- Changes for version 3.7
+  * Fixed crash when the debug mode is enabled and the output file is 
+    in a non-writable directory, e.g. when the output file is `/dev/null`.
+  * Fixed an issue when printing very large log messages to the debug 
+    log.
+  * Fixed bugs related to support for `-gsplit-dwarf`. Previously 
+    ccache could produce an incorrect link to the `.dwo` file in the 
+    `.o` file.
+  * Compilations with /dev/null as the input file are now cached.
+  * ccache has learned how to contruct the object filename if no `-o` 
+    option is given and the source filename does not include a `.` or 
+    ends with a `.`.
+  * Fixed a temporary file leak when the depend mode is enabled and 
+    the compiler produces standard error output.
+  * Fixed a bug in the depend mode where a manifest hash only could 
+    be associated with one set of header dependencies.
+  * Manifest files did not get marked as used on direct cache hits, 
+    so the LRU cache cleanup would incorrectly remove them eventually. 
+    This has been fixed.
+  * The rewriting of absolute paths into relative paths in the</comment>
+    <requestid>700046</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>04aea069f1309a2ae47f4cd6f3b76f92</srcmd5>
+    <version>3.7.3</version>
+    <time>1566914029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.3:
+  * The cache size (which is counted in “used disk blocks”) is now correct on filesystems that use more or less disk blocks than conventional filesystems, e.g. ecryptfs or btrfs/zfs with transparent compression. This also fixes a related problem with ccache’s own test suite when run on such file systems.
+Fixed a regression in 3.7.2 when using the compiler option “-Werror” and then “-Wno-error” later on the command line.
+- Changes n version 3.7.2:
+  * The compiler option -gdwarf* no longer forces “run_second_cpp = true”.
+  * Added verification that the value passed to the -o/--set-config option is valid.
+  * Fixed detection of precompiled headers in the depend mode.
+  * Bail out on too hard Clang option -ftime-trace.
+  * ccache now updates the correct stats file when adding/updating manifest files. This bug previously made the file and size statistics counters incorrect over time.
+  * Fixed warnings from Clang about unused arguments during preprocessing.
+  * Unknown manifest versions are now handled gracefully in --dump-manifest.
+  * Fixed make check with “funny” locales.</comment>
+    <requestid>726110</requestid>
+  </revision>
+</revisionlist>

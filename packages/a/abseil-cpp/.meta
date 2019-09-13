@@ -1,0 +1,6 @@
+<package name="abseil-cpp" project="openSUSE:Factory">
+  <title>abseil-cpp</title>
+  <description>C++11 compliant libraries which augment the C++ stdlib</description>
+  <devel project="devel:kubic" package="abseil-cpp"/>
+  <url>https://abseil.io/</url>
+</package>

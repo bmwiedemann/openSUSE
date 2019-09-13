@@ -1,0 +1,6 @@
+<package name="cross-avr-binutils" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="binutils"/>
+  <bcntsynctag>binutils</bcntsynctag>
+</package>

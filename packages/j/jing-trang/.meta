@@ -1,0 +1,8 @@
+<package name="jing-trang" project="openSUSE:Factory">
+  <title>Schema validation and conversion based on RELAX NG</title>
+  <description>Wrapper package for:
+
+jing:  Schema validator
+trang: Multi-format schema converter</description>
+  <devel project="Java:packages" package="jing-trang"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="dunelegacy" project="openSUSE:Factory">
+  <title>Dune Legacy</title>
+  <description>An effort by a handful of developers to revitalize the first-ever real-time strategy game.</description>
+  <devel project="games" package="dunelegacy"/>
+  <url>http://dunelegacy.sourceforge.net/</url>
+</package>

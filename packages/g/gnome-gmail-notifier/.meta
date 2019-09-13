@@ -1,0 +1,8 @@
+<package name="gnome-gmail-notifier" project="openSUSE:Factory">
+  <title>Gmail Notifier for GNOME</title>
+  <description>GNOME Gmail Notifier is an application that provides periodic updates
+that pertain to the user's gmail inbox. The Notifier presents itself
+as a system tray icon displaying a small balloon popup when the user
+receives new mail.</description>
+  <devel project="GNOME:Apps" package="gnome-gmail-notifier"/>
+</package>

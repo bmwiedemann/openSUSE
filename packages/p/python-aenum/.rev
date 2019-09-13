@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>112765820a596b28a69e847820c310b6</srcmd5>
+    <version>2.1.2</version>
+    <time>1527934267</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-csvkit.  See request 612101
+https://build.opensuse.org/request/show/612101</comment>
+    <requestid>613121</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>21aea3d561583a00cb581ce5fdcf50d4</srcmd5>
+    <version>2.1.2</version>
+    <time>1544631877</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653905</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>84cbd2710839988846b8e27dda6218bb</srcmd5>
+    <version>2.2.1</version>
+    <time>1564483131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719690</requestid>
+  </revision>
+</revisionlist>

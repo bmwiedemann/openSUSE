@@ -1,0 +1,7 @@
+<package name="krb5" project="openSUSE:Factory">
+  <title>MIT Kerberos5 Implementation--Libraries</title>
+  <description>Kerberos V5 is a trusted-third-party network authentication system,
+which can improve your network's security by eliminating the insecure
+practice of clear text passwords.</description>
+  <devel project="network" package="krb5"/>
+</package>

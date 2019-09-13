@@ -1,0 +1,14 @@
+<package name="python-libarchive" project="openSUSE:Factory">
+  <title>A libarchive wrapper for Python</title>
+  <description>A complete wrapper for the libarchive library generated using SWIG. Also included in the package are compatibility layers for the Python zipfile and tarfile modules.
+
+Libarchive supports the following:
+
+        Reads a variety of formats, including tar, pax, cpio, zip, xar, lha, ar, cab, mtree, rar, and ISO images.
+        Writes tar, pax, cpio, zip, xar, ar, ISO, mtree, and shar archives.
+        Automatically handles archives compressed with gzip, bzip2, lzip, xz, lzma, or compress.
+
+For information on using python-libarchive, see Examples
+</description>
+  <devel project="devel:languages:python" package="python-libarchive"/>
+</package>

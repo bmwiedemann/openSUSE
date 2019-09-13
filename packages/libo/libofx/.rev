@@ -1,0 +1,254 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>75f271b59498116c704af0da390075dc</srcmd5>
+    <version>0.8.2</version>
+    <time>1168903356</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="94">
+    <srcmd5>b7bd86049575ec07e449356201e497e7</srcmd5>
+    <version>0.8.2</version>
+    <time>1191537360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="109">
+    <srcmd5>9132b0db981570dc5857cb90dcc5f0e7</srcmd5>
+    <version>0.8.2</version>
+    <time>1194984995</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8623044c0146da94f395b3157eab59af</srcmd5>
+    <version>0.9.0</version>
+    <time>1202083332</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="90">
+    <srcmd5>8623044c0146da94f395b3157eab59af</srcmd5>
+    <version>0.9.0</version>
+    <time>1202083332</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="91">
+    <srcmd5>e8e6798f8b73bfce8dc6d75d3579305f</srcmd5>
+    <version>0.9.0</version>
+    <time>1232327407</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7dbd6102682963bbd1448b093f66bacb</srcmd5>
+    <version>0.9.1</version>
+    <time>1234459730</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7dbd6102682963bbd1448b093f66bacb</srcmd5>
+    <version>0.9.1</version>
+    <time>1234459730</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>ab89a93f82f01a18971a2d9677b66970</srcmd5>
+    <version>0.9.1</version>
+    <time>1257846611</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libofx based on submit request 23860 from user dimstar
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>fbde2ed0d3cf95a8a259739ece848cd8</srcmd5>
+    <version>0.9.1</version>
+    <time>1268924663</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>fbde2ed0d3cf95a8a259739ece848cd8</srcmd5>
+    <version>0.9.1</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>fbde2ed0d3cf95a8a259739ece848cd8</srcmd5>
+    <version>0.9.1</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>fbde2ed0d3cf95a8a259739ece848cd8</srcmd5>
+    <version>0.9.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8fea01d263fc2c586eff91e6844757c3</srcmd5>
+    <version>0.9.4</version>
+    <time>1304689513</time>
+    <user>saschpe</user>
+    <comment>New upstream release</comment>
+    <requestid>69773</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>21a67ad59a0d6cc8cd004a4174602d01</srcmd5>
+    <version>0.9.4</version>
+    <time>1304689522</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69773
+</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>7ea4dca52507d0eccaa8ac7d062a4292</srcmd5>
+    <version>0.9.4</version>
+    <time>1308302119</time>
+    <user>saschpe</user>
+    <comment>Drop _service (forwarded request 73953 from vuntz)</comment>
+    <requestid>73970</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>ca3348f53ef93f456579fc22c2ccd7fd</srcmd5>
+    <version>0.9.4</version>
+    <time>1308302129</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73970
+</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>ee10ba02132a7ec4525fa3c3ee3ae94a</srcmd5>
+    <version>0.9.4</version>
+    <time>1311851443</time>
+    <user>saschpe</user>
+    <comment>Fix build</comment>
+    <requestid>77321</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>a7d7bc28dbc5f54ed0be5fd5148b949c</srcmd5>
+    <version>0.9.4</version>
+    <time>1311851456</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77321
+</comment>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>a7d7bc28dbc5f54ed0be5fd5148b949c</srcmd5>
+    <version>0.9.4</version>
+    <time>1319182117</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>9b73f4dce49d1ecf0fe92308fbf21a93</srcmd5>
+    <version>0.9.4</version>
+    <time>1323192288</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>48c908d0e5f772d31ed8078943b63202</srcmd5>
+    <version>0.9.5</version>
+    <time>1326378638</time>
+    <user>coolo</user>
+    <comment>Update to 0.9.5 (forwarded request 99709 from dimstar)</comment>
+    <requestid>99712</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>097ebd04e5422af7fa9e8c4f8a3aa26a</srcmd5>
+    <version>0.9.5</version>
+    <time>1332239326</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 109346 from dimstar)</comment>
+    <requestid>109916</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>097ebd04e5422af7fa9e8c4f8a3aa26a</srcmd5>
+    <version>0.9.5</version>
+    <time>1340183614</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>097ebd04e5422af7fa9e8c4f8a3aa26a</srcmd5>
+    <version>0.9.5</version>
+    <time>1359109316</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>bb744c15a74090cf2621fa31318a5bb0</srcmd5>
+    <version>0.9.6</version>
+    <time>1364898314</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.9.6 (forwarded request 162048 from Zaitor)</comment>
+    <requestid>162063</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2364f82d90d32450b2a0fb470fc9d671</srcmd5>
+    <version>0.9.8</version>
+    <time>1368721046</time>
+    <user>coolo</user>
+    <comment>Update to 0.9.8 (forwarded request 175782 from dimstar)</comment>
+    <requestid>175869</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>2364f82d90d32450b2a0fb470fc9d671</srcmd5>
+    <version>0.9.8</version>
+    <time>1379663028</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8596df0fc5ecec16300741b40643a7ae</srcmd5>
+    <version>0.9.9</version>
+    <time>1387833390</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.9:
+  + Fix missing increment of SO_CURRENT number in libofx-0.9.6 to
+    avoid crashes when mixing this with older applications.
+  + bug#41: Fix a crash that occurs while importing a possibly
+    invalid OFX file.
+- Rename libofx5 subpackage to libofx6, following the soname bump.
+- Delete backup files that should not be in the tarball.
+
+Not sure I solved this one the best way possible, comments wanted. (forwarded request 212037 from Zaitor)</comment>
+    <requestid>212082</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>8596df0fc5ecec16300741b40643a7ae</srcmd5>
+    <version>0.9.9</version>
+    <time>1409301647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>13a668cf59a2f387def2fe8fc03374a3</srcmd5>
+    <version>0.9.10</version>
+    <time>1422636645</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283460</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>524bb8f5b5387271074cbbd9539ac36f</srcmd5>
+    <version>0.9.10</version>
+    <time>1457353608</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>364985</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>28066d733e3eca0fce3966dba61bf808</srcmd5>
+    <version>0.9.12</version>
+    <time>1522935152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593415</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>4fe561cfd9adca51210d888342a41a88</srcmd5>
+    <version>0.9.12</version>
+    <time>1524144767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598062</requestid>
+  </revision>
+</revisionlist>

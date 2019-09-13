@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>688cf05f389a42711c7f5b7d9ec4c98e</srcmd5>
+    <version>1.02</version>
+    <time>1311082341</time>
+    <user>saschpe</user>
+    <comment>depency from perl-HTML-FormHandler which is a depency for shutter</comment>
+    <requestid>76094</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>508f74572d4d6f0bc61d1fde97497fe2</srcmd5>
+    <version>1.02</version>
+    <time>1311082359</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76094
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>508f74572d4d6f0bc61d1fde97497fe2</srcmd5>
+    <version>1.02</version>
+    <time>1319182267</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>533a04586d6f2b376d99886b6ff8c4b8</srcmd5>
+    <version>1.03</version>
+    <time>1321627612</time>
+    <user>coolo</user>
+    <comment>- update to 1.03
+  - Upgraded to Module::Install 1.00</comment>
+    <requestid>92052</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8ae5a0ef5771711809837f79cbbb93fb</srcmd5>
+    <version>1.03</version>
+    <time>1323193287</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>8ae5a0ef5771711809837f79cbbb93fb</srcmd5>
+    <version>1.03</version>
+    <time>1340183841</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>8ae5a0ef5771711809837f79cbbb93fb</srcmd5>
+    <version>1.03</version>
+    <time>1359109668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>8ae5a0ef5771711809837f79cbbb93fb</srcmd5>
+    <version>1.03</version>
+    <time>1379663676</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>8ae5a0ef5771711809837f79cbbb93fb</srcmd5>
+    <version>1.03</version>
+    <time>1409302292</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cf54868d497a6440cdca7c5272a39dac</srcmd5>
+    <version>1.102</version>
+    <time>1429657622</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296210</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6caf81f65eaa1b3e8a77a63a1231e895</srcmd5>
+    <version>1.104</version>
+    <time>1499162127</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507473</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>948832b6f03606db09846216856f6e7f</srcmd5>
+    <version>1.108</version>
+    <time>1529322619</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617441</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e7262c695008c6935ad305279c55577e</srcmd5>
+    <version>1.112</version>
+    <time>1530740898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617826</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,205 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fbe35ff694ca09307688321c46bed48e</srcmd5>
+    <version>1.81</version>
+    <time>1168903782</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ba92828501ce9535be6adfdcf3974ca</srcmd5>
+    <version>1.82</version>
+    <time>1172442865</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f41385761a21e14afbad9525b8062254</srcmd5>
+    <version>1.83</version>
+    <time>1181860103</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3312411bc23c5e62b19f7cd2d90d6a40</srcmd5>
+    <version>1.84</version>
+    <time>1191839154</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>be9e5ea0dc7f95f2f51a1b86d3f7351a</srcmd5>
+    <version>1.85</version>
+    <time>1199670810</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5928a904b3f41b5c8301f6346feb3145</srcmd5>
+    <version>1.86</version>
+    <time>1202498452</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1fb98663389a4542daeb507c379d0f90</srcmd5>
+    <version>1.87</version>
+    <time>1221235599</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>1fb98663389a4542daeb507c379d0f90</srcmd5>
+    <version>1.87</version>
+    <time>1221235599</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>0b1ac999337aa2d01bfa049f34f8bf68</srcmd5>
+    <version>1.87</version>
+    <time>1263295397</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Apache-Session based on submit request 29223 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>84f69a4e2290b47b3c8a8cc029169458</srcmd5>
+    <version>1.87</version>
+    <time>1268925361</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>84f69a4e2290b47b3c8a8cc029169458</srcmd5>
+    <version>1.87</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>84f69a4e2290b47b3c8a8cc029169458</srcmd5>
+    <version>1.87</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>89b69fc99365335bfce2a2ae1e7f15b3</srcmd5>
+    <version>1.89</version>
+    <time>1285282090</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Apache-Session based on submit request 48971 from user anicka
+</comment>
+    <requestid>48971</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>159d3ef06363a86dc9d8d513dffe37c3</srcmd5>
+    <version>1.89</version>
+    <time>1291158857</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54187 from user coolo
+</comment>
+    <requestid>54187</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>06107fd9834ffeb5b5f71c58954e6388</srcmd5>
+    <version>1.89</version>
+    <time>1291158862</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54187
+</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>c86c0a2d6e2a3e0a315a2bd63b7ce3ed</srcmd5>
+    <version>1.89</version>
+    <time>1291581298</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54463 from user coolo
+</comment>
+    <requestid>54463</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>e4589810fb255743aedbc2c01e83dab7</srcmd5>
+    <version>1.89</version>
+    <time>1291581304</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54463
+</comment>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>e4589810fb255743aedbc2c01e83dab7</srcmd5>
+    <version>1.89</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>e4589810fb255743aedbc2c01e83dab7</srcmd5>
+    <version>1.89</version>
+    <time>1319182239</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>aed6da425744964b9b28b49b2bbdd15f</srcmd5>
+    <version>1.89</version>
+    <time>1321875309</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92342</requestid>
+  </revision>
+  <revision rev="21" vrev="12">
+    <srcmd5>41693562e8033bce8e034faa0361534c</srcmd5>
+    <version>1.89</version>
+    <time>1323193047</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="14">
+    <srcmd5>41693562e8033bce8e034faa0361534c</srcmd5>
+    <version>1.89</version>
+    <time>1340183791</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="16">
+    <srcmd5>41693562e8033bce8e034faa0361534c</srcmd5>
+    <version>1.89</version>
+    <time>1359109595</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>853072c180c162b0d84c8c8ce1217809</srcmd5>
+    <version>1.90</version>
+    <time>1370513929</time>
+    <user>coolo</user>
+    <comment>- updated to 1.90
+  - Allow specifying table for Oracle
+  - Use Test::Database for tests (forwarded request 177623 from coolo)</comment>
+    <requestid>177656</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>853072c180c162b0d84c8c8ce1217809</srcmd5>
+    <version>1.90</version>
+    <time>1379663548</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6f1e35f49ef6781a28d80b8dc36f8814</srcmd5>
+    <version>1.91</version>
+    <time>1393247539</time>
+    <user>coolo</user>
+    <comment>- updated to 1.91
+  - Add a test for RT#50896
+  - 99mysql.t will work more correctly in some corner cases</comment>
+    <requestid>223605</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>6f1e35f49ef6781a28d80b8dc36f8814</srcmd5>
+    <version>1.91</version>
+    <time>1409302157</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6fcec9d4a5f7929b54f4424fc86e9ac0</srcmd5>
+    <version>1.93</version>
+    <time>1429107860</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296113</requestid>
+  </revision>
+</revisionlist>

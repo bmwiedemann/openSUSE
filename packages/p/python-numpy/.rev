@@ -1,0 +1,705 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>956973addcb0efe256dad692f6bc3131</srcmd5>
+    <version>1.2.1</version>
+    <time>1234410779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0e507e7c5077ff14861454c0caf42d0b</srcmd5>
+    <version>1.3.0</version>
+    <time>1239747579</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0e507e7c5077ff14861454c0caf42d0b</srcmd5>
+    <version>1.3.0</version>
+    <time>1239747579</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>228baa6c0686f311724ebac8a975962e</srcmd5>
+    <version>1.3.0</version>
+    <time>1267801077</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-numpy based on submit request 34152 from user coolo
+</comment>
+    <requestid>34152</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7f4472533caf8ea8a5505400b39727d7</srcmd5>
+    <version>1.3.0</version>
+    <time>1268925868</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>89d51de0882f5cb6073f8e9e256ef94f</srcmd5>
+    <version>1.3.0</version>
+    <time>1275495088</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-numpy based on submit request 40894 from user coolo
+</comment>
+    <requestid>40894</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>89d51de0882f5cb6073f8e9e256ef94f</srcmd5>
+    <version>1.3.0</version>
+    <time>1278667384</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>89d51de0882f5cb6073f8e9e256ef94f</srcmd5>
+    <version>1.3.0</version>
+    <time>1278678614</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3e54b1bc6dd9c1944c827cbb041d47ee</srcmd5>
+    <version>1.5.0</version>
+    <time>1283765945</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-numpy based on submit request 47219 from user coolo
+</comment>
+    <requestid>47219</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>deab810082d1eb07182e352f97114d35</srcmd5>
+    <version>1.5.1</version>
+    <time>1296846723</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60094 from user matejcik
+</comment>
+    <requestid>60094</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>2ac2ece73ef4820dac7cbbca9bb986c8</srcmd5>
+    <version>1.5.1</version>
+    <time>1296846736</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 60094
+</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>2ac2ece73ef4820dac7cbbca9bb986c8</srcmd5>
+    <version>1.5.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fd068875fcf12c8a31280721439df556</srcmd5>
+    <version>1.6.1</version>
+    <time>1316681899</time>
+    <user>saschpe</user>
+    <comment>- Update to version 1.6.1:
+  * Please see http://downloads.sourceforge.net/project/numpy/NumPy/1.6.1/Changelog
+- Spec file cleanup:
+  * Set license to BSD-3-Clause (SPDX style)
+  * Removed testsuite from packages
+  * Removed rpmlintrc file and actually fixed the issues</comment>
+    <requestid>84189</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>917a12ef91d46c828a8c631c07187c88</srcmd5>
+    <version>1.6.1</version>
+    <time>1317740476</time>
+    <user>oertel</user>
+    <comment>scipy needs the static lib to build (forwarded request 85875 from behrisch)</comment>
+    <requestid>85899</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>917a12ef91d46c828a8c631c07187c88</srcmd5>
+    <version>1.6.1</version>
+    <time>1319182398</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>5ebd24d416d25207487004cab7104c4b</srcmd5>
+    <version>1.6.1</version>
+    <time>1323194198</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>49b4503a8bd54b22d1848ceeb3022d21</srcmd5>
+    <version>1.6.1</version>
+    <time>1334692861</time>
+    <user>coolo</user>
+    <comment>- Fix SLE_11 build 
+
+- Modify BuildRequires to match recent name changes of lapack and
+  blas in project. (forwarded request 113708 from namtrac)</comment>
+    <requestid>113730</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>c431bbe28faa8aab6a6a51fdde2aafd8</srcmd5>
+    <version>1.6.1</version>
+    <time>1336423817</time>
+    <user>coolo</user>
+    <comment>Removed tests for unsupported openSUSE versions (forwarded request 116087 from TheBlackCat)</comment>
+    <requestid>116088</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>93025971867a0820a1000e76b28f923e</srcmd5>
+    <version>1.6.1</version>
+    <time>1337580454</time>
+    <user>coolo</user>
+    <comment>Fix rpmlint warnings (forwarded request 121372 from TheBlackCat)</comment>
+    <requestid>121373</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cf80e781961df96c75d3b1f50704ee7d</srcmd5>
+    <version>1.6.2</version>
+    <time>1337674208</time>
+    <user>coolo</user>
+    <comment>Update to version 1.6.2 (forwarded request 121580 from TheBlackCat)</comment>
+    <requestid>121581</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5c91ccebc5ef88b6a388f029c7b14859</srcmd5>
+    <version>1.6.2</version>
+    <time>1339076374</time>
+    <user>coolo</user>
+    <comment>Add libatlas2 buildrequires.  This provides very highly tuned linear algebra handling. (forwarded request 123555 from TheBlackCat)</comment>
+    <requestid>123556</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>5c91ccebc5ef88b6a388f029c7b14859</srcmd5>
+    <version>1.6.2</version>
+    <time>1340184071</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>08cc763433f255c14a67b11514f449f8</srcmd5>
+    <version>1.6.2</version>
+    <time>1347883723</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134045</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>3a96b8015faa3aac01da3909b49fde86</srcmd5>
+    <version>1.6.2</version>
+    <time>1352880974</time>
+    <user>coolo</user>
+    <comment>- Add numpy-python33.patch to fix compilation with Python 3.3</comment>
+    <requestid>141145</requestid>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>d89dbddd403db864dc0197b7c678ea71</srcmd5>
+    <version>1.6.2</version>
+    <time>1353590105</time>
+    <user>coolo</user>
+    <comment>- Add numpy-fd15162.patch which should fix python3-scipy
+  See https://github.com/numpy/numpy/commit/fd15162fbff5dd68c548284947d39bb2a2481183</comment>
+    <requestid>142250</requestid>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>653af38cc1273c06f07ce3983a7ceda7</srcmd5>
+    <version>1.6.2</version>
+    <time>1354109626</time>
+    <user>coolo</user>
+    <comment>Removed openSUSE 11.4 spec file workarounds (forwarded request 142747 from TheBlackCat) (forwarded request 142789 from TheBlackCat)</comment>
+    <requestid>142801</requestid>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>559e60737abc88c00ed474994bf1c77d</srcmd5>
+    <version>1.6.2</version>
+    <time>1355478223</time>
+    <user>coolo</user>
+    <comment>- fixed using numpy with python 3.3.
+- matplot build fail (bnc#793557) fixed by these changes.
+- with python-bleeding edge repo still broken, fixed only for factory (forwarded request 145145 from HighwayStar)</comment>
+    <requestid>145171</requestid>
+  </revision>
+  <revision rev="28" vrev="11">
+    <srcmd5>559e60737abc88c00ed474994bf1c77d</srcmd5>
+    <version>1.6.2</version>
+    <time>1359110081</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="12">
+    <srcmd5>94071cfd968bf0961271deeab1af9f72</srcmd5>
+    <version>1.6.2</version>
+    <time>1362638042</time>
+    <user>coolo</user>
+    <comment>- add numpy-aarch64.diff:
+  * Fix build for AArch64 (forwarded request 157435 from dirkmueller)</comment>
+    <requestid>157542</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>bc7393d18c0dd84af432bfd4962ff65d</srcmd5>
+    <version>1.7.0</version>
+    <time>1363083305</time>
+    <user>coolo</user>
+    <comment>update to 1.7.0, version update details added.
+patches numpy-python33.patch, numpy-fd15162.patch and numpy-aarch64.diff now merged in upstream (forwarded request 158616 from HighwayStar)</comment>
+    <requestid>158631</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>31b583b06a2978273124f9bf39ba44fa</srcmd5>
+    <version>1.7.0</version>
+    <time>1365174311</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162834 from namtrac)</comment>
+    <requestid>162854</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>18bfa466e6133d8ded38468b28ce45a2</srcmd5>
+    <version>1.7.1</version>
+    <time>1367824034</time>
+    <user>coolo</user>
+    <comment>Update to 1.7.1 (forwarded request 174473 from TheBlackCat)</comment>
+    <requestid>174474</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>74377c35140012323ca5a6a61e352faf</srcmd5>
+    <version>1.7.1</version>
+    <time>1371652858</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179909</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>7ddffb0d86042963a53a65b79d4a6a7a</srcmd5>
+    <version>1.7.1</version>
+    <time>1375370070</time>
+    <user>coolo</user>
+    <comment>- The *.egg-info is a file, not a directory</comment>
+    <requestid>185432</requestid>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>7ddffb0d86042963a53a65b79d4a6a7a</srcmd5>
+    <version>1.7.1</version>
+    <time>1379664230</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>12f86bc97ed3b8c6e795a5e64899bc5a</srcmd5>
+    <version>1.8.0</version>
+    <time>1384415007</time>
+    <user>coolo</user>
+    <comment>Update to 1.8.0</comment>
+    <requestid>206776</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>f73400d49f212e77ec3116e0262fbaa4</srcmd5>
+    <version>1.8.0</version>
+    <time>1386528367</time>
+    <user>coolo</user>
+    <comment>fix for ppc64le, please forward to factory (forwarded request 209578 from adrianSuSE)</comment>
+    <requestid>209593</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>3459171f401d7ba9902f9bdfa16aff83</srcmd5>
+    <version>1.8.0</version>
+    <time>1391547023</time>
+    <user>coolo</user>
+    <comment>- add numpy-double-double-le.patch for ppc64le (forwarded request 220757 from k0da)</comment>
+    <requestid>220836</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>303f2aa40a5ee63b60b5a1c2d087be7d</srcmd5>
+    <version>1.8.1</version>
+    <time>1398266887</time>
+    <user>coolo</user>
+    <comment>update to 1.8.1, bugfix release (forwarded request 229948 from apersaud)</comment>
+    <requestid>230332</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f72be8d4fa0da792004857ca7ce79316</srcmd5>
+    <version>1.8.2</version>
+    <time>1407943194</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244202</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>f72be8d4fa0da792004857ca7ce79316</srcmd5>
+    <version>1.8.2</version>
+    <time>1409302929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>52d4d760bef37b7ac8030e11b880d58a</srcmd5>
+    <version>1.9.0</version>
+    <time>1410361325</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248212</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>cf8b5e989f77448b6beed937fac3b30d</srcmd5>
+    <version>1.9.1</version>
+    <time>1415636870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260050</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f65adc21d0fa263c9f3dfe4e1bd29ebd</srcmd5>
+    <version>1.9.2</version>
+    <time>1425565985</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288511</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>22da85062b2d452a5d64bd9f7b29bce9</srcmd5>
+    <version>1.9.3</version>
+    <time>1443694902</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>333114</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8225b3462c838b6079c5871cc1b193ca</srcmd5>
+    <version>1.10.1</version>
+    <time>1445350899</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>338365</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>5d1112076832b42755b5d58146f6d356</srcmd5>
+    <version>1.10.4</version>
+    <time>1452535835</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352549</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>7bc20de7fcacb323fdf76615d86b1125</srcmd5>
+    <version>1.10.4</version>
+    <time>1458121397</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369249</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>99f80fd2c129bce8072bdd054403dd31</srcmd5>
+    <version>1.11.0</version>
+    <time>1460358768</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>386196</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>de406d1e2ebe56180eaa0446245be0d7</srcmd5>
+    <version>1.11.1</version>
+    <time>1474115643</time>
+    <user>dimstar_suse</user>
+    <comment>- use pypi.io as Source URL
+
+- Don't include cblas-devel on SLES 12
+
+- update to 1.11.1:
+  - #7506 BUG: Make sure numpy imports on python 2.6 when nose is unavailable.
+  - #7530 BUG: Floating exception with invalid axis in np.lexsort.
+  - #7535 BUG: Extend glibc complex trig functions blacklist to glibc &lt; 2.18.
+  - #7551 BUG: Allow graceful recovery for no compiler.
+  - #7558 BUG: Constant padding expected wrong type in constant_values.
+  - #7578 BUG: Fix OverflowError in Python 3.x. in swig interface.
+  - #7590 BLD: Fix configparser.InterpolationSyntaxError.
+  - #7597 BUG: Make np.ma.take work on scalars.
+  - #7608 BUG: linalg.norm(): Don't convert object arrays to float.
+  - #7638 BLD: Correct C compiler customization in system_info.py.
+  - #7654 BUG: ma.median of 1d array should return a scalar.
+  - #7656 BLD: Remove hardcoded Intel compiler flag -xSSE4.2.
+  - #7660 BUG: Temporary fix for str(mvoid) for object field types.
+  - #7665 BUG: Fix incorrect printing of 1D masked arrays.
+  - #7670 BUG: Correct initial index estimate in histogram.
+  - #7671 BUG: Boolean assignment no GIL release when transfer needs API.
+  - #7676 BUG: Fix handling of right edge of final histogram bin.
+  - #7680 BUG: Fix np.clip bug NaN handling for Visual Studio 2015.
+  - #7724 BUG: Fix segfaults in np.random.shuffle.
+  - #7731 MAINT: Change mkl_info.dir_env_var from MKL to MKLROOT.</comment>
+    <requestid>426983</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>8ff99682c38935698096eec9a5f60e8d</srcmd5>
+    <version>1.11.1</version>
+    <time>1480018773</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441447</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>a1d6ee4095d3eae54f565ffe780272ee</srcmd5>
+    <version>1.12.0</version>
+    <time>1485380093</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451739</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>c1db9d14ed2422b3d3f1c3197f52b79f</srcmd5>
+    <version>1.12.1</version>
+    <time>1492618100</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>486233</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>38fcef84fce4e7ee9a1f320d033c30b6</srcmd5>
+    <version>1.12.1</version>
+    <time>1497949248</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>503339</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>6aba02821a77714132f754a1adef179c</srcmd5>
+    <version>1.12.1</version>
+    <time>1502367030</time>
+    <user>maxlin_factory</user>
+    <comment>- Add xlocale.patch:
+  xlocale.h: don't use obsolete &lt;xlocale.h&gt;</comment>
+    <requestid>514467</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8e7c0766eacb9b7c00e3f097a5958cef</srcmd5>
+    <version>1.13.1</version>
+    <time>1505989659</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527258</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>0d91fc592644ebad4a5ddaf4713444f5</srcmd5>
+    <version>1.13.3</version>
+    <time>1507391236</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530444</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>25d286323dab4a9ab8fe67dc6a303350</srcmd5>
+    <version>1.13.3</version>
+    <time>1508503135</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535006</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>a2c58f8d1c68d7921967fb226f75193d</srcmd5>
+    <version>1.13.3</version>
+    <time>1510232016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539352</requestid>
+  </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>7bfb5b5a91c5df5930dd67150dd218f5</srcmd5>
+    <version>1.13.3</version>
+    <time>1510911370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541237</requestid>
+  </revision>
+  <revision rev="61" vrev="5">
+    <srcmd5>4eb45270fd98bf27dbe3cae5a8f0635b</srcmd5>
+    <version>1.13.3</version>
+    <time>1511426051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544081</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0f313d9bb18043f94fb443153d7a7846</srcmd5>
+    <version>1.14.0</version>
+    <time>1516091177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563390</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>c3cf3eea72ddb3b3f7fdb1e2076a4165</srcmd5>
+    <version>1.14.0</version>
+    <time>1516546104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567770</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>aee4f7e5efa0a508a3f19d645331cb0b</srcmd5>
+    <version>1.14.0</version>
+    <time>1518187454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573260</requestid>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>b44eddedf04990dbf3254d1e362c35f4</srcmd5>
+    <version>1.14.0</version>
+    <time>1518513978</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574786</requestid>
+  </revision>
+  <revision rev="66" vrev="5">
+    <srcmd5>9eb1f5cf57250831d667f5e0d73913ea</srcmd5>
+    <version>1.14.0</version>
+    <time>1518813619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576265</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>cd5457f0c6f3e646744a1f53c78709c3</srcmd5>
+    <version>1.14.3</version>
+    <time>1525611340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602335</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>2e61734b5c6afc8a8a5173fcae076c9b</srcmd5>
+    <version>1.14.3</version>
+    <time>1526462510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606473</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>9be3784cd97f4ab34a0242fce456cd36</srcmd5>
+    <version>1.14.5</version>
+    <time>1529322527</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616702</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>af3030aafee989bf6fc62af7f4fb110a</srcmd5>
+    <version>1.15.2</version>
+    <time>1538502262</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.15.2
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.15.2-notes.rst
+- Update to version 1.15.1
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.15.1-notes.rst
+- Update to version 1.15.0
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.15.0-notes.rst
+- Update to version 1.14.6
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.14.6-notes.rst
+- Rebase numpy-1.9.0-remove-__declspec.patch
+- Rebase riscv.patch
+</comment>
+    <requestid>638249</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>8e9c4ce1287d784bb778d81324edaffa</srcmd5>
+    <version>1.15.3</version>
+    <time>1541666427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645034</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>0f8fe143d6462b44b7a50ccfa4e7fb68</srcmd5>
+    <version>1.15.4</version>
+    <time>1545996802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660931</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>c02b553fc9556349c12902e1e87749f1</srcmd5>
+    <version>1.16.1</version>
+    <time>1549630110</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672132</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>8c5126fffa259be45b9cb8f35e002557</srcmd5>
+    <version>1.16.1</version>
+    <time>1551468500</time>
+    <user>coolo</user>
+    <comment>- Do not bother with standard flavor, just make it default
+- Execute the tests only on standard package for now not hpc variants
+- Add constraints for testsuite to not run out of mem/disk space
+- Use %license macro
+- Enable testsuite
+</comment>
+    <requestid>679050</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>403f1ed4ed8a112e09f5fd297e955e6d</srcmd5>
+    <version>1.16.1</version>
+    <time>1551687190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680664</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>a0a2d2b025aa2fca39d975ef066dc850</srcmd5>
+    <version>1.16.2</version>
+    <time>1553262846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686968</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>1b2e58a2dd9e836f2e182c74978b3f70</srcmd5>
+    <version>1.16.2</version>
+    <time>1553699608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688183</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>0dbccfb10370ad6927226e1fb0bb4052</srcmd5>
+    <version>1.16.2</version>
+    <time>1554372082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690313</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>e14f5ef447d5327acdc0a43702ae67e7</srcmd5>
+    <version>1.16.3</version>
+    <time>1558515247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704153</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>17416af49398a2ebb7e6cf006ae78a67</srcmd5>
+    <version>1.16.4</version>
+    <time>1559481351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706488</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>e26f73ba7304ba39a6ca61e57a19744c</srcmd5>
+    <version>1.17.0</version>
+    <time>1566240506</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.17.0
+
+All packages broken by this update should be fixed now</comment>
+    <requestid>724139</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>7035eeaf6e36df5ffe08aff9f34666a1</srcmd5>
+    <version>1.17.1</version>
+    <time>1567420855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726872</requestid>
+  </revision>
+</revisionlist>

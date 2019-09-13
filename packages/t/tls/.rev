@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="17">
+    <srcmd5>78c8dabacc8a2a44bd8deb0582b92d24</srcmd5>
+    <version>1.5.1</version>
+    <time>1168904363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>de27867c7935448ecf020bb8bd37a0cc</srcmd5>
+    <version>1.6</version>
+    <time>1207266574</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>977248025df20c71beab0e87f3a94c4a</srcmd5>
+    <version>1.6</version>
+    <time>1208908338</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="42">
+    <srcmd5>977248025df20c71beab0e87f3a94c4a</srcmd5>
+    <version>1.6</version>
+    <time>1208908338</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="43">
+    <srcmd5>3b5d96269128a5184b91129cbca1c785</srcmd5>
+    <version>1.6</version>
+    <time>1245341343</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="44">
+    <srcmd5>b97c0a919da5e6e27285d4633a726710</srcmd5>
+    <version>1.6</version>
+    <time>1249680139</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="46">
+    <srcmd5>b97c0a919da5e6e27285d4633a726710</srcmd5>
+    <version>1.6</version>
+    <time>1249680139</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="47">
+    <srcmd5>a179a6636d0096e2c862e786515b7f4c</srcmd5>
+    <version>1.6</version>
+    <time>1268926351</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="49">
+    <srcmd5>a179a6636d0096e2c862e786515b7f4c</srcmd5>
+    <version>1.6</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="50">
+    <srcmd5>a179a6636d0096e2c862e786515b7f4c</srcmd5>
+    <version>1.6</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="53">
+    <srcmd5>a179a6636d0096e2c862e786515b7f4c</srcmd5>
+    <version>1.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="55">
+    <srcmd5>a179a6636d0096e2c862e786515b7f4c</srcmd5>
+    <version>1.6</version>
+    <time>1319182524</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="56">
+    <srcmd5>4b3354ca04a5edfaab2c3380299ec56a</srcmd5>
+    <version>1.6</version>
+    <time>1323194937</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="58">
+    <srcmd5>4b3354ca04a5edfaab2c3380299ec56a</srcmd5>
+    <version>1.6</version>
+    <time>1340184280</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="60">
+    <srcmd5>4b3354ca04a5edfaab2c3380299ec56a</srcmd5>
+    <version>1.6</version>
+    <time>1359110496</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="62">
+    <srcmd5>4b3354ca04a5edfaab2c3380299ec56a</srcmd5>
+    <version>1.6</version>
+    <time>1379664830</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="64">
+    <srcmd5>4b3354ca04a5edfaab2c3380299ec56a</srcmd5>
+    <version>1.6</version>
+    <time>1409303510</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="65">
+    <srcmd5>22eec792c10de887ee8f417dcff48124</srcmd5>
+    <version>1.6</version>
+    <time>1416994429</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262944</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5b02b9ebff645e46388be65c5809e757</srcmd5>
+    <version>1.6.3</version>
+    <time>1421777044</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282047</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7c352547717e43c7cf5d0c8365c90a74</srcmd5>
+    <version>1.6.7</version>
+    <time>1444636946</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.6.7 to incorporate the latest upstream fixes.
+  This obsoletes tls-ciphers.patch and tls-enable-tls1.patch.</comment>
+    <requestid>337282</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d38bc109ac7a0f89e4b140c2f659a60b</srcmd5>
+    <version>1.7.14</version>
+    <time>1517517085</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the logic to fail on unexpected testsuite failures.
+- Update to version 1.7.14 for compatibility with OpenSSL 1.1.
+- Add tls-fix-channel-state.patch to prevent implicit changes of
+  encoding, translation and blocking mode when importing a socket.
+  https://core.tcl.tk/tcltls/info/f798e2ea12</comment>
+    <requestid>571800</requestid>
+  </revision>
+</revisionlist>

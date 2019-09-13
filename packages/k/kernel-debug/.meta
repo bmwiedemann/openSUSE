@@ -1,0 +1,7 @@
+<package name="kernel-debug" project="openSUSE:Factory">
+  <title>A Debug Version of the Kernel</title>
+  <description>This kernel has several debug facilities enabled that hurt performance.
+Only use this kernel when investigating problems.</description>
+  <devel project="openSUSE:Factory" package="kernel-source"/>
+  <bcntsynctag>kernel-source</bcntsynctag>
+</package>

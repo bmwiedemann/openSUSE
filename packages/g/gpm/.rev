@@ -1,0 +1,374 @@
+<revisionlist>
+  <revision rev="1" vrev="312">
+    <srcmd5>74d66192a942b5236210206a4342c5d4</srcmd5>
+    <version>1.20.1</version>
+    <time>1166483801</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="341">
+    <srcmd5>91a1e200fbf1f3bd91a0ae6579e4dd6f</srcmd5>
+    <version>1.20.1</version>
+    <time>1167909080</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="346">
+    <srcmd5>ea3864277ac225971e4cc3c19b2a0e3a</srcmd5>
+    <version>1.20.1</version>
+    <time>1171559602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="348">
+    <srcmd5>1699df510578a15ba6c03f8f647161a8</srcmd5>
+    <version>1.20.1</version>
+    <time>1172782529</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="350">
+    <srcmd5>35418b9332fe3f36d9b72a794ad44719</srcmd5>
+    <version>1.20.1</version>
+    <time>1174592615</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="352">
+    <srcmd5>92060f86245fd2681dbc5b4fb7010fc6</srcmd5>
+    <version>1.20.1</version>
+    <time>1174951876</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="362">
+    <srcmd5>b2a058e211852ab8af36a6bb0b68a0dc</srcmd5>
+    <version>1.20.1</version>
+    <time>1180001914</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="379">
+    <srcmd5>d8452cadfd8ec0c0851683a54cf9cca1</srcmd5>
+    <version>1.20.1</version>
+    <time>1186680164</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="392">
+    <srcmd5>1cddcf272ae1a1f3a845dcd26f84f1ff</srcmd5>
+    <version>1.20.1</version>
+    <time>1197479448</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="405">
+    <srcmd5>d896969cdcc24850eb8dbe3fbc2f98a9</srcmd5>
+    <version>1.20.1</version>
+    <time>1203639965</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="414">
+    <srcmd5>4367ab5d9615cd6d1b516eed1a53c055</srcmd5>
+    <version>1.20.1</version>
+    <time>1207770502</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="415">
+    <srcmd5>4026d1af518808fc73109802d665616d</srcmd5>
+    <version>1.20.1</version>
+    <time>1207829869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="437">
+    <srcmd5>1246ecb54270c63e938372ab281fcb6e</srcmd5>
+    <version>1.20.1</version>
+    <time>1218487416</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="442">
+    <srcmd5>271b079280237bcf73f8980be88c64db</srcmd5>
+    <version>1.20.1</version>
+    <time>1219430301</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="451">
+    <srcmd5>ccd7d0c3c9f1a65526819c6a2e6899bc</srcmd5>
+    <version>1.20.1</version>
+    <time>1227881094</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="452">
+    <srcmd5>23f5ad4d7e77b8e6c26546e0d02d32d0</srcmd5>
+    <version>1.20.1</version>
+    <time>1229340858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="453">
+    <srcmd5>6bac691e7f5bdc741bd17fb22efbc405</srcmd5>
+    <version>1.20.1</version>
+    <time>1244816892</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="454">
+    <srcmd5>a704344bb7e914bc872e3590fccf83c4</srcmd5>
+    <version>1.20.1</version>
+    <time>1245445702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="456">
+    <srcmd5>a704344bb7e914bc872e3590fccf83c4</srcmd5>
+    <version>1.20.1</version>
+    <time>1245445702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="457">
+    <srcmd5>2482b3a8e8a1b2857919a3fe18075b10</srcmd5>
+    <version>1.20.1</version>
+    <time>1263478787</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpm based on submit request 28999 from user coolo
+</comment>
+  </revision>
+  <revision rev="21" vrev="458">
+    <srcmd5>0c2af4551005f90b454dfd01118039f6</srcmd5>
+    <version>1.20.1</version>
+    <time>1268923862</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="22" vrev="460">
+    <srcmd5>0c2af4551005f90b454dfd01118039f6</srcmd5>
+    <version>1.20.1</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="461">
+    <srcmd5>0c2af4551005f90b454dfd01118039f6</srcmd5>
+    <version>1.20.1</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="462">
+    <srcmd5>5731301969bff46126e81a114a6c96ca</srcmd5>
+    <version>unknown</version>
+    <time>1284036944</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpm based on submit request 47591 from user psmt
+</comment>
+    <requestid>47591</requestid>
+  </revision>
+  <revision rev="25" vrev="463">
+    <srcmd5>8e9d24aca4c1712b14a0e72edd6f4408</srcmd5>
+    <version>1.20.6</version>
+    <time>1288261286</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51438 from user coolo
+</comment>
+    <requestid>51438</requestid>
+  </revision>
+  <revision rev="26" vrev="464">
+    <srcmd5>cb002e9f2922f1fb9a825cf52f04f5b6</srcmd5>
+    <version>1.20.6</version>
+    <time>1288261291</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51438
+</comment>
+  </revision>
+  <revision rev="27" vrev="465">
+    <srcmd5>7a0008b256a4de05cfc16aca81990281</srcmd5>
+    <version>1.20.6</version>
+    <time>1296230636</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59275 from user psmt
+</comment>
+    <requestid>59275</requestid>
+  </revision>
+  <revision rev="28" vrev="466">
+    <srcmd5>717edf09401edb299f634bb12f5dec0d</srcmd5>
+    <version>1.20.6</version>
+    <time>1296230646</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59275
+</comment>
+  </revision>
+  <revision rev="29" vrev="469">
+    <srcmd5>717edf09401edb299f634bb12f5dec0d</srcmd5>
+    <version>1.20.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="30" vrev="470">
+    <srcmd5>fd77c2d14d8c5cc9b8e64209a8913784</srcmd5>
+    <version>1.20.6</version>
+    <time>1317756807</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: use %__cc macro</comment>
+    <requestid>86576</requestid>
+  </revision>
+  <revision rev="31" vrev="471">
+    <srcmd5>6a5119636b19d9ba552159a692e89ec6</srcmd5>
+    <version>1.20.6</version>
+    <time>1318761999</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequire to avoid a hidden require from projconfig (forwarded request 87949 from coolo)</comment>
+    <requestid>88031</requestid>
+  </revision>
+  <revision rev="32" vrev="473">
+    <srcmd5>6a5119636b19d9ba552159a692e89ec6</srcmd5>
+    <version>1.20.6</version>
+    <time>1319181940</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="33" vrev="474">
+    <srcmd5>55edde630d8a6d26d5f54153297585ce</srcmd5>
+    <version>1.20.6</version>
+    <time>1323191756</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="34" vrev="476">
+    <srcmd5>55edde630d8a6d26d5f54153297585ce</srcmd5>
+    <version>1.20.6</version>
+    <time>1340183408</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="35" vrev="477">
+    <srcmd5>5b7cf28ac1707c0a8484c4afe23065ee</srcmd5>
+    <version>1.20.6</version>
+    <time>1358664474</time>
+    <user>coolo</user>
+    <comment>- Remove obsolete/undesired tags/sections
+- Use more robust make install call (forwarded request 147893 from jengelh)</comment>
+    <requestid>149237</requestid>
+  </revision>
+  <revision rev="36" vrev="479">
+    <srcmd5>5b7cf28ac1707c0a8484c4afe23065ee</srcmd5>
+    <version>1.20.6</version>
+    <time>1359108997</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="480">
+    <srcmd5>151354259617cc89253d94f98f109dc2</srcmd5>
+    <version>1.20.6</version>
+    <time>1360950339</time>
+    <user>coolo</user>
+    <comment>- config-guess-sub-update.patch:
+  Update config.guess/sub for aarch64 (forwarded request 155177 from Andreas_Schwab)</comment>
+    <requestid>155489</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>40835f3c342cea6be7f393736c661ffa</srcmd5>
+    <version>1.20.7</version>
+    <time>1366213265</time>
+    <user>coolo</user>
+    <comment>Update to 1.20.7</comment>
+    <requestid>171122</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>2a3f0273f49550b874b2e88376b68846</srcmd5>
+    <version>1.20.7</version>
+    <time>1366633826</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+ and GPL-3.0+
+Scripts git-archive-tarbz2.sh and report_success.sh are GPL-3.0+ licensed (forwarded request 172830 from babelworx)</comment>
+    <requestid>172831</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>2a3f0273f49550b874b2e88376b68846</srcmd5>
+    <version>1.20.7</version>
+    <time>1379662549</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>808b909b746b0d04c9ba94119b4f938e</srcmd5>
+    <version>1.20.7</version>
+    <time>1386000118</time>
+    <user>coolo</user>
+    <comment>- don't buildrequire systemd, we just need the macros
+
+- Add systemd support and drop sysvinit support
+- Change pid directory for new standard one
+- Fix suse-wrong-suse-capitalisation rpmlint warning</comment>
+    <requestid>209142</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>73eb5e8a8154ac3543f22f29bb97b4b9</srcmd5>
+    <version>1.20.7</version>
+    <time>1396989423</time>
+    <user>coolo</user>
+    <comment>- Install gpm.service without executable bit. The service files are
+  never 'started'. This silences a warning in journal:
+  systemd[1]: Configuration file /usr/lib/systemd/system/gpm.service
+  is marked executable. Please remove executable permission bits.
+  Proceeding anyway (forwarded request 229116 from dimstar)</comment>
+    <requestid>229127</requestid>
+  </revision>
+  <revision rev="43" vrev="8">
+    <srcmd5>73eb5e8a8154ac3543f22f29bb97b4b9</srcmd5>
+    <version>1.20.7</version>
+    <time>1409301090</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="9">
+    <srcmd5>4d60db32b90998bb02ada2fdbbb62746</srcmd5>
+    <version>1.20.7</version>
+    <time>1430246485</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>303536</requestid>
+  </revision>
+  <revision rev="45" vrev="10">
+    <srcmd5>33c059f6638a5f4fe34e99f8d5d8fbd2</srcmd5>
+    <version>1.20.7</version>
+    <time>1437477873</time>
+    <user>coolo</user>
+    <comment>- Make libgpm able to handle ncurses ABI 6</comment>
+    <requestid>315782</requestid>
+  </revision>
+  <revision rev="46" vrev="11">
+    <srcmd5>bb4bad1440e3e6d3f01993eeb2d2d718</srcmd5>
+    <version>1.20.7</version>
+    <time>1453997877</time>
+    <user>dimstar_suse</user>
+    <comment>Remove requirement for aaa_base</comment>
+    <requestid>355404</requestid>
+  </revision>
+  <revision rev="47" vrev="12">
+    <srcmd5>4e496baaeac4fd862aec568e7aeeb3c5</srcmd5>
+    <version>1.20.7</version>
+    <time>1497602912</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503236</requestid>
+  </revision>
+  <revision rev="48" vrev="13">
+    <srcmd5>f57206373559a06cbfce33b80e5a2177</srcmd5>
+    <version>1.20.7</version>
+    <time>1503589111</time>
+    <user>dimstar_suse</user>
+    <comment>- decls.patch: fix missing declarations</comment>
+    <requestid>513698</requestid>
+  </revision>
+  <revision rev="49" vrev="14">
+    <srcmd5>4ee72f4a2e5eac5722d3b3bc023d47ba</srcmd5>
+    <version>1.20.7</version>
+    <time>1505919886</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523413</requestid>
+  </revision>
+  <revision rev="50" vrev="15">
+    <srcmd5>addace536b5250225317c81e00b22d67</srcmd5>
+    <version>1.20.7</version>
+    <time>1512041500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545037</requestid>
+  </revision>
+  <revision rev="51" vrev="16">
+    <srcmd5>1bd38a9dd950e4f9cc52f847187ec17c</srcmd5>
+    <version>1.20.7</version>
+    <time>1522832447</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license instead of %doc [bsc#1082318] (forwarded request 591532 from kukuk)</comment>
+    <requestid>591538</requestid>
+  </revision>
+</revisionlist>

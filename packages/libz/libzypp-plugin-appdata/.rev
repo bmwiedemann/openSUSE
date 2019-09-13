@@ -1,0 +1,218 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>127e198143f1f096008f1af3b067dcb3</srcmd5>
+    <version>1.0.1</version>
+    <time>1416048260</time>
+    <user>dimstar_suse</user>
+    <comment>Introduce libzypp-plugin-appdata as an independent package, split out of gnome-software; License upadted to be MIT in the .spec file</comment>
+    <requestid>259826</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>33dfb3d2f8ad422c0e9c5f8456fb94d5</srcmd5>
+    <version>1.0.1</version>
+    <time>1422134431</time>
+    <user>dimstar_suse</user>
+    <comment>- Preparations on the way to get AppStream metadata produced in a
+  more conform way.
+- Add new subpackages:
+  + openSUSE-appstream-extras:
+    - Contains additional appstream metadata to assist upstreams
+      not yet shipping their own .appdata.xml file.
+  + openSUSE-appstream-process:
+    - The processor is an attempt to be used by kiwi to produce
+      valid appstream metadata.
+
+- Update InstallAppdata.sh: the yast2 metadata structure got a
+  slight change with the switch to appstream-builder.</comment>
+    <requestid>282567</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ccb252b9fc67da7745bbce7f78fb2432</srcmd5>
+    <version>1.0.1</version>
+    <time>1426485294</time>
+    <user>dimstar_suse</user>
+    <comment>- Require openSUSE-appstream-extra by openSUSE-appstream-process:
+  Having the extra appstream metadata available will allow the
+  builder to get better results.</comment>
+    <requestid>290693</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>215b2075f76ca2770ab255a6d16bac60</srcmd5>
+    <version>1.0.1</version>
+    <time>1426680174</time>
+    <user>dimstar_suse</user>
+    <comment>- Pass --include-failed to appstream-builder (requires apb 0.3.5).</comment>
+    <requestid>291181</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>dda2ae906ddf569caf60653a2c79b8ad</srcmd5>
+    <version>1.0.1</version>
+    <time>1428064464</time>
+    <user>dimstar_suse</user>
+    <comment>- InstallAppdata.sh: pass --nonet to appstream-util when
+  validating appstream.xml.gz.
+
+- InstallAppdata.sh: only install AppStream metadata, that
+  validates.
+
+- Re-enable the actual libzypp plugin in place of shipping a static
+  version of appstream metadata (last updated for 13.2). We can do
+  this, as Tumbleweed now produces valid metadata. 3rd party repos
+  are not yet able to produce valid metadata it seems.</comment>
+    <requestid>294192</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>3c3201096fa94fa79193f59f1846fe1d</srcmd5>
+    <version>1.0.1</version>
+    <time>1428652024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>294755</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>7a40069d2054a544968138eb6d09a4e7</srcmd5>
+    <version>1.0.1</version>
+    <time>1429973224</time>
+    <user>coolo</user>
+    <comment>- No need to validate appdata.xml.gz in a yast2 repo: those are
+  created by kiwi, which in turn spanws appstream-builder: we can
+  trust that it creates valid enough metadata.</comment>
+    <requestid>298732</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>6ea95524a2b09639dfb0682d4253c638</srcmd5>
+    <version>1.0.1</version>
+    <time>1431668554</time>
+    <user>coolo</user>
+    <comment>- Fix installation of rpm-md provided metadata (expanding globs
+  inside quotes does not work).</comment>
+    <requestid>305970</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>17c91ce9f1b3b70fea246805a41383c8</srcmd5>
+    <version>1.0.1</version>
+    <time>1456622848</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361250</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>82c698df056531142bbd5ece4862db69</srcmd5>
+    <version>1.0.1</version>
+    <time>1462342728</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393451</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>dcdf589bdb7395b9a18acd2bb7c41129</srcmd5>
+    <version>1.0.1</version>
+    <time>1468580100</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408650</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>192bebb2e3baeb0d0e39cbd4eaa2f153</srcmd5>
+    <version>1.0+git.20150408</version>
+    <time>1498840753</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506830</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bcd99595c34da28f26db7744be88f33f</srcmd5>
+    <version>1.0.1+git.20170629</version>
+    <time>1500274798</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version to 1.0.1+git.20170629: We were originally at 1.0.1
+  before switching to a git based source service, then 'downgraded'
+  to 1.0+git, which was a mistake.</comment>
+    <requestid>510243</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>d2eece65de1de120f6a30e496fc888d8</srcmd5>
+    <version>1.0.1+git.20170629</version>
+    <time>1507110017</time>
+    <user>dimstar_suse</user>
+    <comment>Fix installation of yast2 based appdata.xml.gz files</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>a2d2ee511b7f618bfcbbb8a871727da5</srcmd5>
+    <version>1.0.1+git.20170629</version>
+    <time>1520502622</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581413 from dimstar)</comment>
+    <requestid>582902</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c10c4d98ca7ba2c92a53ebb5c9746819</srcmd5>
+    <version>1.0.1+git.20180321</version>
+    <time>1521904099</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.1+git.20180321:
+  * ZYpp AsHelper: install AS data into system cache: new python
+    helper to be a bit smarter (part of boo#996896). (forwarded request 590296 from dimstar)</comment>
+    <requestid>590704</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cc764dde61b409c0ec8518333a7752f8</srcmd5>
+    <version>1.0.1+git.20180327</version>
+    <time>1522403853</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.1+git.20180327:
+  * AsHelper: normalize the repo alias names
+- Start zypper lr with ZYPP_PLUGIN_APPDATA_FORCE_COLLECT=1 post
+  installation (boo#1009745).
+- Add relevant Requires(post) to ensure packages are installed in
+  the right order:
+  + appstream-glib &gt;= 0.3.6
+  + python3-cmdln
+  + python3-createrepo_c
+  + libzypp &gt;= 16.13.1
+  + zypper
+</comment>
+    <requestid>592387</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>5532ed5c401dc99ad0e7af981647c131</srcmd5>
+    <version>1.0.1+git.20180327</version>
+    <time>1524741729</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the post scriptlet attempting to fix boo#1009745: at the
+  time this script is executed on a fresh install, the repos are
+  not yet setup in the chroot, resulting in the zypper lr call to
+  fail and the AS data still not being initialzied. (forwarded request 600291 from dimstar)</comment>
+    <requestid>600294</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7aad7f2c23e06b0da494e60352b53d7f</srcmd5>
+    <version>1.0.1+git.20180426</version>
+    <time>1525121388</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.1+git.20180426:
+  * systemd-service: we only need local filesystem, no network.
+
+- Update to version 1.0.1+git.20180425:
+  * Rewrite InstallAppdata in python, having slightly better
+    control over the execution
+  * Add systemd service to resync the repodata cache (boo#1009745). (forwarded request 601507 from dimstar)</comment>
+    <requestid>601527</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b60fab0cbf9f701e2ceb4fdae9e0b5d7</srcmd5>
+    <version>1.0.1+git.20180426</version>
+    <time>1525697433</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch summary to a noun phrase. (forwarded request 602584 from jengelh)</comment>
+    <requestid>602998</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>2979c8e83d722a13754bec5e17f8b151</srcmd5>
+    <version>1.0.1+git.20180426</version>
+    <time>1554114726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689473</requestid>
+  </revision>
+</revisionlist>

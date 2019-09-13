@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eae12363e9943b827b4378ae47e83a09</srcmd5>
+    <version>4.14.1</version>
+    <time>1510232286</time>
+    <user>dimstar_suse</user>
+    <comment>- Have i3-gaps-devel conflict with i3-devel.
+- Fix Leap 42.x build
+- Drop _service file
+- Drop dead code in .spec file
+- Properly set &quot;Conflict&quot; to other providers of i3
+- bump to 4.14.1
+- Create _service file
+- Fix 32-bit ARM build
+- Bump to 4.14
+- Reformat spec file to match i3
+</comment>
+    <requestid>537780</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0444c27423b3fcc2a1e940d6c79e96f</srcmd5>
+    <version>4.15</version>
+    <time>1520933084</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.15
+  * i3-sensible-terminal: add “kitty”, “guake”, “tilda”
+  * i3-sensible-editor: add “gvim”
+  * dump-asy: add prerequisite checks
+  * dump-asy: fix warnings about empty container names
+  * i3-dump-log: enable shmlog on demand
+  * i3bar: add --release flag for bindsym in bar blocks
+  * i3bar: add relative coordinates in JSON for click events
+  * ipc: rename COMMAND to RUN_COMMAND for consistency
+  * ipc: implement tick event for less flaky tests
+  * ipc: add error reply to “focus &lt;window_mode&gt;”
+  * ipc: send success response for nop
+  * introduce “assign &lt;criteria&gt; [→] [workspace] [number] &lt;workspace&gt;”
+  * introduce “assign &lt;criteria&gt; [→] output left|right|up|down|primary|&lt;output&gt;”
+  * introduce a “focus_wrapping” option (subsumes “force_focus_wrapping”)
+  * introduce percentage point resizing for floating containers:
+    “resize set &lt;width&gt; [px | ppt] &lt;height&gt; [px | ppt]”
+  * introduce “resize set &lt;width&gt; ppt &lt;height&gt; ppt” for tiling windows
+  * rename “new_window” and “new_float” to “default_border” and
+    “default_floating_border” (the old names keep working)
+  * output names (e.g. “DP2”) can now be used as synonyms for
+    monitor names (e.g. “Dell UP2414Q”).
+  * the “swap” command now works with fullscreen windows
+  * raise floating windows to top when they are focused
+    programmatically
+  * _NET_ACTIVE_WINDOW: invalidate focus to force SetInputFocus call
+  * make focus handling consistent when changing focus between outputs
+  * round non-integer Xft.dpi values
+  * tiling resize: remove minimum size
+  * doc updates to ipc and userguide, some changes to default config
+  * i3bar: fix various memory leaks
+  * i3bar: fix crash when no status_command is provided
+  * fix incorrectly set up signal handling
+  * fix crash when specifying invalid con_id for “swap”
+  * fix crash upon restart with window marks
+  * fix crash when config file does not end in a newline
+  * fix crash in append_layout
+  * fix crash in layout toggle command
+  * fix crash when switching monitors
+  * fix use-after-free in randr_init error path
+  * fix move accidentally moving windows across outputs
+  * fix crash when floating window is tiled while being resized
+  * fix out-of-bounds memory read
+  * fix memory leak when config conversion fails
+  * fix layout toggle split, which didn’t work until enabling
+    tabbed/stack mode once
+  * move XCB event handling into xcb_prepare_cb
+  * avert endless loop on unexpected EOF in ipc messages
+  * perform proper cleanup for signals with Term action
+  * don’t match containers in the scratchpad with criteria
+  * fix “workspace show” related issues
+  * fix config file conversion with long variable names
+  * fix config file conversion memory initialization
+  * prevent access of freed workspace in _workspace_show
+  * disable fullscreen when required when programmatically
+    focusing windows
+  * free last_motion_notify
+  * don’t raise floating windows when focused because of
+    focus_follows_mouse
+  * correctly set EWMH atoms when closing a workspace
+  * don’t raise floating windows when workspace is shown
+  * keep focus order when encapsulating workspaces
+  * validate layout files before loading
+- cleanup with spec-cleaner
+</comment>
+    <requestid>586023</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>826c52ea314eac4cefa824406ff8ecf5</srcmd5>
+    <version>4.15.0.1</version>
+    <time>1521193488</time>
+    <user>dimstar_suse</user>
+    <comment>This actually fixes a bug in the 32 bit builds where it segfaults and refuses to start altogether.
+
+
+- update to 4.15.0.1
+  * minor: fix version so it's recognized as a release version.
+</comment>
+    <requestid>587604</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b816b636f31ba7ec210e18eaf206b3f6</srcmd5>
+    <version>4.15.0.1</version>
+    <time>1523875869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596765</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6328aa59ac00e5e2e8fddc312dd9ef96</srcmd5>
+    <version>4.16</version>
+    <time>1541511651</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.16
+  * see https://github.com/Airblader/i3/blob/4.16/RELEASE-NOTES-4.16
+    for bugs fixed, features added, etc
+  * drop i3-asciidoc-fix.patch (ascii for title bar has been fixed) (bsc#1075764)
+- switch to release tarball (drop auto* deps)
+</comment>
+    <requestid>646509</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ebf8345ecb654a64a11c69d763d3e80</srcmd5>
+    <version>4.16.1</version>
+    <time>1554965281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692721</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0cdd14308a1e8049c2537583969e1123</srcmd5>
+    <version>4.17</version>
+    <time>1565179239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721357</requestid>
+  </revision>
+</revisionlist>

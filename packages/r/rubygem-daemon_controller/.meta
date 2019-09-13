@@ -1,0 +1,6 @@
+<package name="rubygem-daemon_controller" project="openSUSE:Factory">
+  <title>A library for implementing daemon management capabilities</title>
+  <description>A library for robust daemon management.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-daemon_controller"/>
+  <url>http://github.com/FooBarWidget/daemon_controller/tree/master</url>
+</package>

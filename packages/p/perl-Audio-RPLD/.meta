@@ -1,0 +1,12 @@
+<package name="perl-Audio-RPLD" project="openSUSE:Factory">
+  <title>Module to control the RoarAudio PlayList Daemon (rpld)</title>
+  <description>Audio::RPLD is a Perl module to access the RoarAudio PlayList Daemon from
+within any Perl application.
+It supports most commands supported by the rpld.
+This included commands to control playback, the Main Queue, playlists
+and pointer mangement.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Audio-RPLD"/>
+  <url>http://roaraudio.keep-cool.org</url>
+</package>

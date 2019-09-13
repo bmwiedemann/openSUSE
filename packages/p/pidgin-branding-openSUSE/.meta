@@ -1,0 +1,14 @@
+<package name="pidgin-branding-openSUSE" project="openSUSE:Factory">
+  <title>Multiprotocol Instant Messaging Client -- openSUSE Default Configuration</title>
+  <description>Pidgin is a chat program which lets you log in to accounts on multiple
+chat networks simultaneously.
+
+Pidgin is compatible with the following chat networks out of the box:
+AIM, ICQ, Google Talk, Jabber/XMPP, MSN Messenger, Yahoo!, Bonjour,
+Gadu-Gadu, IRC, Novell GroupWise Messenger, QQ, Lotus Sametime, SILC,
+SIMPLE, MXit, MySpaceIM, and Zephyr. It can support many more with
+plugins.
+
+This package provides the openSUSE default configuration for Pidgin.</description>
+  <devel project="network:pidgin" package="pidgin-branding-openSUSE"/>
+</package>

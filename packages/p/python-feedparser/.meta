@@ -1,0 +1,6 @@
+<package name="python-feedparser" project="openSUSE:Factory">
+  <title>Universal Feed Parser Module for Python</title>
+  <description>A universal feed parser module for Python that handles RSS 0.9x, RSS 1.0, RSS
+2.0, CDF, Atom 0.3, Atom 1.0 feeds.</description>
+  <devel project="devel:languages:python" package="python-feedparser"/>
+</package>

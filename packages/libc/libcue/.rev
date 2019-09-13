@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3571818bb381e4726489438162b2c354</srcmd5>
+    <version>1.4.0</version>
+    <time>1327484270</time>
+    <user>coolo</user>
+    <comment>new dependency for gnome-factory</comment>
+    <requestid>100989</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3571818bb381e4726489438162b2c354</srcmd5>
+    <version>1.4.0</version>
+    <time>1340183572</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>3571818bb381e4726489438162b2c354</srcmd5>
+    <version>1.4.0</version>
+    <time>1359109253</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>3571818bb381e4726489438162b2c354</srcmd5>
+    <version>1.4.0</version>
+    <time>1379662922</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>3571818bb381e4726489438162b2c354</srcmd5>
+    <version>1.4.0</version>
+    <time>1409301527</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>96599f4c24cd10dc02366538b94cd1ff</srcmd5>
+    <version>1.4.0</version>
+    <time>1412589981</time>
+    <user>coolo</user>
+    <comment>- Use Source URLs; improve RPM group classification</comment>
+    <requestid>254072</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>908c12aff419838ed1a1351a91b2cdef</srcmd5>
+    <version>2.1.0</version>
+    <time>1468578555</time>
+    <user>dimstar_suse</user>
+    <comment>- update to new upstream release 2.1.0</comment>
+    <requestid>406951</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bfb35e56b6b0db8fcaf2835af13e827e</srcmd5>
+    <version>2.2.0</version>
+    <time>1518281673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.2.0</comment>
+    <requestid>573910</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ccf3393807022ec3965f008cbf40889f</srcmd5>
+    <version>2.2.1</version>
+    <time>1567852325</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.2.1</comment>
+    <requestid>727566</requestid>
+  </revision>
+</revisionlist>

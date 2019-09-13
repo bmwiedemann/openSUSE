@@ -1,0 +1,6 @@
+<package name="nh2ps" project="openSUSE:Factory">
+  <title>Hangul Text to Postscript Converter</title>
+  <description>Convert plain hangul text into postscript form. By Choi Jun Ho, the
+Junker &lt;junker@jazz.snu.ac.kr&gt;.</description>
+  <devel project="M17N" package="nh2ps"/>
+</package>

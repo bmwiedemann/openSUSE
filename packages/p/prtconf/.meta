@@ -1,0 +1,7 @@
+<package name="prtconf" project="openSUSE:Factory">
+  <title>SPARC OpenPROM dump utility</title>
+  <description>This utility will dump SPARC OpenPROM device tree in the format
+similar to Solaris prtconf, that is, in a nicely readable compact
+format.</description>
+  <devel project="Base:System" package="prtconf"/>
+</package>

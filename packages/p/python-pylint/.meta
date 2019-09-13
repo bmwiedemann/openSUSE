@@ -1,0 +1,5 @@
+<package name="python-pylint" project="openSUSE:Factory">
+  <title>python-pylint</title>
+  <description>analyzes Python source code looking for bugs and signs of poor quality.</description>
+  <devel project="devel:languages:python" package="python-pylint"/>
+</package>

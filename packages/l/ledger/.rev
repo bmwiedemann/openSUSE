@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e97eef28656453a73f8ce61d1411dba</srcmd5>
+    <version>3.1</version>
+    <time>1423258693</time>
+    <user>dimstar_suse</user>
+    <comment>My new cool package I want in Factory</comment>
+    <requestid>284499</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b2d765a7f87b5565560e851f1cb7d0a0</srcmd5>
+    <version>3.1</version>
+    <time>1438615338</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320091</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>df1b5b01fcfb30898ee6ffeef099db39</srcmd5>
+    <version>3.1.1</version>
+    <time>1453998289</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356267</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3ec53618a68fce153d68c2e39c838db0</srcmd5>
+    <version>3.1.1</version>
+    <time>1474016493</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427603</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4fe76d59a28fa89a16a9d9c98595e9bf</srcmd5>
+    <version>3.1.1</version>
+    <time>1486635405</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455241</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>47f011a3d3bd927f637820245746cca4</srcmd5>
+    <version>3.1.1</version>
+    <time>1534774747</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup specfile - install license as %license
+- boost_168.patch: fix building with Boost 1.68. Sha1 compatibility
+  header was removed from Uuid library (boo#1105084)</comment>
+    <requestid>629900</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>05b29399808edda73bcc2d5532868ed5</srcmd5>
+    <version>3.1.3</version>
+    <time>1560970520</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.3:
+  + Properly reject postings with a comment right after the flag (bug #1753)
+  + Make sorting order of lot information deterministic (bug #1747)
+  + Fix bug in tag value parsing (bug #1702)
+  + Remove the org command, which was always a hack to begin with (bug #1706)
+  + Provide Docker information in README
+  + Various small documentation improvements 
+
+- update to 3.1.2:
+  + Increase maximum length for regex from 255 to 4095 (bug #981)
+  + Initialize periods from from/since clause rather than earliest 
+    transaction date (bug #1159)
+  + Check balance assertions against the amount after the posting (bug #1147)
+  + Allow balance assertions with multiple posts to same account (bug #1187)
+  + Fix period duration of &quot;every X days&quot; and similar statements (bug #370)
+  + Make option --force-color not require --color anymore (bug #1109)
+  + Add quoted_rfc4180 to allow CVS output with RFC 4180 compliant quoting.
+  + Add support for --prepend-format in accounts command
+  + Fix handling of edge cases in trim function (bug #520)
+  + Fix auto xact posts not getting applied to account total during 
+    journal parse (bug #552)
+  + Transfer null_post flags to generated postings
+  + Fix segfault when using --market with --group-by
+  + Use amount_width variable for budget report
+  + Keep pending items in budgets until the last day they apply
+  + Fix bug where .total used in value expressions breaks totals
+  + Make automated transactions work with assertions (bug #1127)
+  + Improve parsing of date tokens (bug #1626)
+  + Don't attempt to invert a value if it's already zero (bug #1703)
+  + Do not parse user-specified init-file twice</comment>
+    <requestid>696489</requestid>
+  </revision>
+</revisionlist>

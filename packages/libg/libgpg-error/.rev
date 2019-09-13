@@ -1,0 +1,475 @@
+<revisionlist>
+  <revision rev="1" vrev="18">
+    <srcmd5>604d4dc1e2ad4da72a65f75b399c7093</srcmd5>
+    <version>1.4</version>
+    <time>1168903322</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>77b6e700a7c6b95a58a2af2cc71acba1</srcmd5>
+    <version>1.6</version>
+    <time>1195751162</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b444a1fdd140da45fe707bbac0161a79</srcmd5>
+    <version>1.6</version>
+    <time>1207830438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>fa4f96a72582978c827a90e52c444690</srcmd5>
+    <version>1.6</version>
+    <time>1210968630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>fa4f96a72582978c827a90e52c444690</srcmd5>
+    <version>1.6</version>
+    <time>1210968630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>072531739a5a03ded4e1d6ab171eff36</srcmd5>
+    <version>1.6</version>
+    <time>1225636978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>f6b09abcfa71b50da920a5b8a4ad387d</srcmd5>
+    <version>1.6</version>
+    <time>1229342974</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>be4df41bdb7016b7619dfae219bf036f</srcmd5>
+    <version>1.6</version>
+    <time>1233267333</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>37368fb08af785eaf1b6295d86fda864</srcmd5>
+    <version>1.6</version>
+    <time>1235390073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5a21de1a9e9c6b05d3d1110d3b67f557</srcmd5>
+    <version>1.7</version>
+    <time>1243938157</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b4c02f26ec250ce74de2995a2bad707f</srcmd5>
+    <version>1.7</version>
+    <time>1251474664</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libgpg-error based on submit request 18805 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>b4c02f26ec250ce74de2995a2bad707f</srcmd5>
+    <version>1.7</version>
+    <time>1251474664</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libgpg-error based on submit request 18805 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>5fe9edd2e5029ad7bf6272afa9c81192</srcmd5>
+    <version>1.7</version>
+    <time>1260978271</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libgpg-error based on submit request 26775 from user puzel
+</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>8f751c83b2c57fed3258cc6a3dd56209</srcmd5>
+    <version>1.7</version>
+    <time>1268924588</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>8f751c83b2c57fed3258cc6a3dd56209</srcmd5>
+    <version>1.7</version>
+    <time>1278667359</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>8f751c83b2c57fed3258cc6a3dd56209</srcmd5>
+    <version>1.7</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6e6f81a4fa6436857eb30bb579681b36</srcmd5>
+    <version>1.8</version>
+    <time>1282663084</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libgpg-error based on submit request 45681 from user puzel
+</comment>
+    <requestid>45681</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8deb047e260fb071222fd700aa2e5dee</srcmd5>
+    <version>1.8</version>
+    <time>1288689557</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51861 from user coolo
+</comment>
+    <requestid>51861</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>cd78b0e5ef3875d1e8cbe1f9833160c1</srcmd5>
+    <version>1.8</version>
+    <time>1288689568</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51861
+</comment>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>1564fe0f8b4c4699c820b3783165be89</srcmd5>
+    <version>1.9</version>
+    <time>1291586956</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54399 from user puzel
+</comment>
+    <requestid>54399</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>87ebb440c5190c9bfef6cf08c93de966</srcmd5>
+    <version>1.9</version>
+    <time>1291586962</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54399
+</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>87ebb440c5190c9bfef6cf08c93de966</srcmd5>
+    <version>1.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4c6b15720fd5f8ecb9b7026f7020eb46</srcmd5>
+    <version>1.10</version>
+    <time>1317626656</time>
+    <user>lrupp</user>
+    <comment>-  Update to version 1.10
+* Define GPG_ERR_ENABLE_ERRNO_MACROS.
+* Add GPG_ERR_NOT_INITIALIZED.
+* Add GPG_ERR_MISSING_ISSUER_CERT (forwarded request 86105 from elvigia)</comment>
+    <requestid>86108</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>4c6b15720fd5f8ecb9b7026f7020eb46</srcmd5>
+    <version>1.10</version>
+    <time>1319182099</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>b1c996dc33d1d1cea10b840e0ff468fa</srcmd5>
+    <version>1.10</version>
+    <time>1321886762</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92492 from coolo)</comment>
+    <requestid>92814</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>780c9d95d746745bba2df76afad6bbe5</srcmd5>
+    <version>1.10</version>
+    <time>1323192236</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>aec0309b6fea0c8d2e5217dfa09d8a27</srcmd5>
+    <version>1.10</version>
+    <time>1329318964</time>
+    <user>coolo</user>
+    <comment>- Move libraries back to %{_libdir}, /usr merge project (forwarded request 104175 from elvigia)</comment>
+    <requestid>104177</requestid>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>aec0309b6fea0c8d2e5217dfa09d8a27</srcmd5>
+    <version>1.10</version>
+    <time>1340183592</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>aec0309b6fea0c8d2e5217dfa09d8a27</srcmd5>
+    <version>1.10</version>
+    <time>1359109282</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9bf11db71649d8cc67ff0fd5ea97ebf9</srcmd5>
+    <version>1.11</version>
+    <time>1361890328</time>
+    <user>coolo</user>
+    <comment>1.11 (forwarded request 156357 from AndreasStieger)</comment>
+    <requestid>156396</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>4d56f5d8844ba75fe3cbfc084193a5ba</srcmd5>
+    <version>1.11</version>
+    <time>1371562100</time>
+    <user>coolo</user>
+    <comment>- remove gpg verification from bootstrap packages</comment>
+    <requestid>179394</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>8782ec93dbb75fb35ab7c7bb86238e14</srcmd5>
+    <version>1.12</version>
+    <time>1377085555</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 1.12 (forwarded request 195635 from AndreasStieger)</comment>
+    <requestid>195695</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>8782ec93dbb75fb35ab7c7bb86238e14</srcmd5>
+    <version>1.12</version>
+    <time>1379662966</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3a55bff6682b5fe4e39bec49fe380269</srcmd5>
+    <version>1.13</version>
+    <time>1399051321</time>
+    <user>coolo</user>
+    <comment>libgpg-error 1.13 (forwarded request 231581 from AndreasStieger)</comment>
+    <requestid>231810</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>3a55bff6682b5fe4e39bec49fe380269</srcmd5>
+    <version>1.13</version>
+    <time>1409301579</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3bafb624d4833fc0c156494111855c2a</srcmd5>
+    <version>1.15</version>
+    <time>1410968513</time>
+    <user>coolo</user>
+    <comment>- update to 1.15:
+ * This releases fixes problems with the use of off_t and ssize_t by
+   the estream functions introduced with 1.14.  Although this is
+   technically an ABI break on some platforms, we take this as a
+   simple bug fix for 1.14.  The new functions are very unlikely in
+   use by any code and thus no breakage should happen.  The 1.14
+   tarball will be removed from the archive.
+ * Add type gpgrt_off_t which is guaranteed to be 64 bit.
+ * Add type gpgrt_ssize_t to make use on Windows easier.  On Unix
+   platforms this is an alias for ssize_t.
+
+- update to 1.14:
+ * Added gpgrt_lock_trylock.
+ * Added the estream library under the name gpgrt and a set of macros
+   to use them with their &quot;es_&quot; names.
+ * Interface changes relative to the 1.13 release:
+   GPG_ERR_KEY_DISABLED         NEW.
+   gpgrt_*, GPGPT_*             NEW.</comment>
+    <requestid>249057</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4d3ea57a7a817c590007bd88fb89f3ac</srcmd5>
+    <version>1.16</version>
+    <time>1412155331</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252017</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7023802a365dad28936c84a98ef2c28d</srcmd5>
+    <version>1.17</version>
+    <time>1413616103</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256798</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1d1fcfa4a901308581e8755c61de5542</srcmd5>
+    <version>1.18</version>
+    <time>1422594702</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283126</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>d6e37f2592ab544ca2c9735707b5c895</srcmd5>
+    <version>1.18</version>
+    <time>1424622299</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libgpg-error-1.18-gcc5.patch to pass -P to the preprocessor
+  when generating files to deal with C preprocessor changes in GCC 4.9 and up. (forwarded request 286723 from rguenther)</comment>
+    <requestid>286724</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>845dc6243b5b1353598a910a70a7123d</srcmd5>
+    <version>1.18</version>
+    <time>1427313796</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292062</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f83c8c5e5e19b69dbb70230215395b14</srcmd5>
+    <version>1.19</version>
+    <time>1429606147</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295658</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>34aab5d45c8126e07951385f7db8ac8a</srcmd5>
+    <version>1.20</version>
+    <time>1440871412</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327219</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>559adcb889cb077b9860277e780a85e3</srcmd5>
+    <version>1.21</version>
+    <time>1450471791</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349064</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>066588319422326ff05e5cbe5ab3c9cd</srcmd5>
+    <version>1.22</version>
+    <time>1462447120</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392942</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>81b6dc37267ca2cf9255c5c0b9293ef0</srcmd5>
+    <version>1.23</version>
+    <time>1468359937</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402706</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>02f7a3d4ee3176234d9fb60f620683ee</srcmd5>
+    <version>1.24</version>
+    <time>1469628432</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412249</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d1e7595bb2b8e414ee8d7a51aabc3fd4</srcmd5>
+    <version>1.25</version>
+    <time>1479300426</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440358</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>48176d2dddfb9eb6c2edb504690a5a3c</srcmd5>
+    <version>1.27</version>
+    <time>1489178687</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477534</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>44510ecf65c06a79ccd5d4d47966c983</srcmd5>
+    <version>1.28</version>
+    <time>1521579177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586451</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>64947ab615d407335e23b954536cedd0</srcmd5>
+    <version>1.28</version>
+    <time>1521904147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590077</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>175549b857bea2e8f6ac5535139aaa14</srcmd5>
+    <version>1.29</version>
+    <time>1523875415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595555</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>7900e8eb7d7ccf6480588fe574133c6c</srcmd5>
+    <version>1.29</version>
+    <time>1524643064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598794</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>8001724450736ca1761d3e2aa0404188</srcmd5>
+    <version>1.31</version>
+    <time>1525611465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603224</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>df0a6b8e9133a2155cd841a87825ef96</srcmd5>
+    <version>1.31</version>
+    <time>1526370888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606634</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>5856fad3e50f5107231b5d081519cb6e</srcmd5>
+    <version>1.32</version>
+    <time>1531946156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622278</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>fd56bd8655bb3fbdd0ccd29a8e7fa44d</srcmd5>
+    <version>1.33</version>
+    <time>1544441045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656420</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>dc79eafdc0f76cfe67a7c2562d7ebde1</srcmd5>
+    <version>1.35</version>
+    <time>1548769545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668986</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>6e1f6f3cd62953b3a0cd658e95686a5f</srcmd5>
+    <version>1.36</version>
+    <time>1553435764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686404</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>6b4341cf1b52d608b68186cda4eba5bc</srcmd5>
+    <version>1.36</version>
+    <time>1566899984</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix buidling with gawk 5.0 and newer:
+  * gawk5.patch</comment>
+    <requestid>723926</requestid>
+  </revision>
+</revisionlist>

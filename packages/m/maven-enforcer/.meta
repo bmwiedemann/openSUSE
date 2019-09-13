@@ -1,0 +1,5 @@
+<package name="maven-enforcer" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="maven-enforcer"/>
+</package>

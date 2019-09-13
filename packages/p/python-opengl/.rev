@@ -1,0 +1,198 @@
+<revisionlist>
+  <revision rev="1" vrev="47">
+    <srcmd5>accfa8f5da9fa38736c0aa4240a3cf22</srcmd5>
+    <version>2.0.1.09</version>
+    <time>1168904050</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="50">
+    <srcmd5>2fe2d8452f0fe87ac969c0cfc20afe2b</srcmd5>
+    <version>2.0.1.09</version>
+    <time>1169849510</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="273">
+    <srcmd5>2fe2d8452f0fe87ac969c0cfc20afe2b</srcmd5>
+    <version>2.0.1.09</version>
+    <time>1169849510</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="274">
+    <srcmd5>93a16bff3cca1f2a8d7e540dc86c8c81</srcmd5>
+    <version>2.0.1.09</version>
+    <time>1244462647</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="275">
+    <srcmd5>db8b2ea1ef2209b847721b8810001bcb</srcmd5>
+    <version>2.0.1.09</version>
+    <time>1244646662</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>24dcf69da76bfe947aaf4dee46617675</srcmd5>
+    <version>3.0.0</version>
+    <time>1250124496</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-opengl based on submit request 17465 from user matejcik
+</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>24dcf69da76bfe947aaf4dee46617675</srcmd5>
+    <version>3.0.0</version>
+    <time>1250124496</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-opengl based on submit request 17465 from user matejcik
+</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>58302372ba691aad5ce10150696dbddf</srcmd5>
+    <version>3.0.0</version>
+    <time>1268925870</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>58302372ba691aad5ce10150696dbddf</srcmd5>
+    <version>3.0.0</version>
+    <time>1278667384</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>58302372ba691aad5ce10150696dbddf</srcmd5>
+    <version>3.0.0</version>
+    <time>1278678614</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>75df6a68914a56c5115fb89526e82920</srcmd5>
+    <version>unknown</version>
+    <time>1284469781</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-opengl based on submit request 48109 from user coolo
+</comment>
+    <requestid>48109</requestid>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>75df6a68914a56c5115fb89526e82920</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>75df6a68914a56c5115fb89526e82920</srcmd5>
+    <version>unknown</version>
+    <time>1319182399</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>9b6bdd6f6fd555e1e34f00eff76aa7b8</srcmd5>
+    <version>3.0.1</version>
+    <time>1323194211</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="16">
+    <srcmd5>9b6bdd6f6fd555e1e34f00eff76aa7b8</srcmd5>
+    <version>3.0.1</version>
+    <time>1340184073</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>9b6bdd6f6fd555e1e34f00eff76aa7b8</srcmd5>
+    <version>3.0.1</version>
+    <time>1359110085</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0a9760bc99010a223ea0969c4bc30e8d</srcmd5>
+    <version>3.0.2</version>
+    <time>1366473068</time>
+    <user>coolo</user>
+    <comment>- Update to 3.0.2
+- Add python 3 version (forwarded request 172483 from TheBlackCat)</comment>
+    <requestid>172484</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>70e8c78445d35762c57b816c8c5fba26</srcmd5>
+    <version>3.0.2</version>
+    <time>1371652877</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179917</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>70e8c78445d35762c57b816c8c5fba26</srcmd5>
+    <version>3.0.2</version>
+    <time>1379664235</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>93fb89a9423e577b5995cb3341665dbd</srcmd5>
+    <version>3.1.0</version>
+    <time>1405404068</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240927</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>93fb89a9423e577b5995cb3341665dbd</srcmd5>
+    <version>3.1.0</version>
+    <time>1409302933</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ac7169186a03f7bb5d1148285b1871f4</srcmd5>
+    <version>3.1.1a1</version>
+    <time>1496926954</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501314</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f651bb5157cfd1552654a76f9caaa37c</srcmd5>
+    <version>3.1.3b1</version>
+    <time>1541666837</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.3b1:
+  * no obvious changelog</comment>
+    <requestid>644634</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>ef3fbdb427f26a3b6084dcefc9375ae3</srcmd5>
+    <version>3.1.3b1</version>
+    <time>1545648033</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659524</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cfa0e22acfc3d699786e945d7a516c6d</srcmd5>
+    <version>3.1.3b2</version>
+    <time>1568066039</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to avoid buildcycle
+
+- Remove CFLAGS for noarch package
+- Use setuptools to build the package
+- Expand scope of fdupes to include egg-info
+- Activate test suite, disabled using bcond check on platforms
+  without test dependency pygame, and with test_buffer_api_basic
+  disabled on platforms other than x86_64 and aarch64 due to
+  failures caused by the installation of opengel-accelerate
+- Change optional dependencies tk and numpy to Recommends
+  instead of mandatory run time dependencies
+- Add missing python-tk to Recommends to complement tk
+- Change mtime adjustment algorithm to be more reflective of the
+  source date, based on OpenGL/__init__.py instead of .changes
+- Upgrade to 3.1.3b2
+  - Python 3.7 compatibility fixes</comment>
+    <requestid>729396</requestid>
+  </revision>
+</revisionlist>

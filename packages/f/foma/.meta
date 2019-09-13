@@ -1,0 +1,5 @@
+<package name="foma" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="LibreOffice:Factory" package="foma"/>
+</package>

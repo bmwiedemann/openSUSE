@@ -1,0 +1,540 @@
+<revisionlist>
+  <revision rev="1" vrev="14">
+    <srcmd5>e9d9a668f8efb0099ee39c74480b9f62</srcmd5>
+    <version>1.3.3.4</version>
+    <time>1168904187</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e6be4b18f23a113d4a92dff8cb60e3e</srcmd5>
+    <version>1.3.3.7</version>
+    <time>1170022147</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="7">
+    <srcmd5>02c66af448d5473b86d021259db411c0</srcmd5>
+    <version>1.3.3.7</version>
+    <time>1173373135</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>d77f6978bc55d7e5a76f223d49fba011</srcmd5>
+    <version>1.3.3.7</version>
+    <time>1173697346</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="15">
+    <srcmd5>d39b3c5b910a3638ff6c9009bc9527c7</srcmd5>
+    <version>1.3.3.7</version>
+    <time>1177323867</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aa91bdf943edcf03091056c14ee46e45</srcmd5>
+    <version>1.3.3.9</version>
+    <time>1182295871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3acbdd67a2424f3a93d566f574526a25</srcmd5>
+    <version>1.3.3.9</version>
+    <time>1183052465</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b567fe4ca8bc6331fb07cd0b4bb068ce</srcmd5>
+    <version>1.3.3.10</version>
+    <time>1199930817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe03e92e397e70ac527d8f38b669d9d4</srcmd5>
+    <version>1.3.3.11</version>
+    <time>1200310639</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="40">
+    <srcmd5>90ce269ee2e68d946d87b9be7f23bc99</srcmd5>
+    <version>1.3.3.11</version>
+    <time>1208203040</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d2f4675e6c6e4f1fdcd59cd659bd5bd1</srcmd5>
+    <version>1.3.3.12</version>
+    <time>1208363176</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>d4c8d6ff35955a52ad20a85d2ef3c73a</srcmd5>
+    <version>1.3.3.12</version>
+    <time>1212448493</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="72">
+    <srcmd5>d4c8d6ff35955a52ad20a85d2ef3c73a</srcmd5>
+    <version>1.3.3.12</version>
+    <time>1212448493</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="73">
+    <srcmd5>d764726cfe919a51e03ab99df56eec19</srcmd5>
+    <version>1.3.3.12</version>
+    <time>1223547006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="74">
+    <srcmd5>c4670e96c5289eb897814b8e61bbdf34</srcmd5>
+    <version>1.3.3.12</version>
+    <time>1228762071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5f364f646c711588ded9f3cf3e14b886</srcmd5>
+    <version>1.3.3.13</version>
+    <time>1248995364</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>eabc03379001bf2bfd11a1166c5fa237</srcmd5>
+    <version>1.3.3.13</version>
+    <time>1249068306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>eabc03379001bf2bfd11a1166c5fa237</srcmd5>
+    <version>1.3.3.13</version>
+    <time>1249068306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>31c6dc15fbb04efe1306b1c09aa0da83</srcmd5>
+    <version>1.3.3.13</version>
+    <time>1268926108</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>63a2128a543be75419c58106bcdbfb46</srcmd5>
+    <version>1.3.3.14</version>
+    <time>1270509760</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/scribus based on submit request 36975 from user wstephenson
+</comment>
+    <requestid>36975</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>63a2128a543be75419c58106bcdbfb46</srcmd5>
+    <version>1.3.3.14</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>63a2128a543be75419c58106bcdbfb46</srcmd5>
+    <version>1.3.3.14</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3df1a6b325c46cd9b564ee4c2f73e194</srcmd5>
+    <version>1.3.9</version>
+    <time>1292851568</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55906 from user mrdocs
+</comment>
+    <requestid>55906</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2df2a0370d4e7c8d04b24fa8467f8c26</srcmd5>
+    <version>1.3.9</version>
+    <time>1292851577</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55906
+</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>bc23118d668e70d1115ca4a9e0b3c673</srcmd5>
+    <version>1.3.9</version>
+    <time>1293579157</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56770 from user dirkmueller
+</comment>
+    <requestid>56770</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>e97433a408176d68fa46b9f432981949</srcmd5>
+    <version>1.3.9</version>
+    <time>1293579161</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56770
+</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>95de918857366d64c3cdcb2a65b0d915</srcmd5>
+    <version>1.3.9</version>
+    <time>1297093489</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60204 from user wstephenson
+</comment>
+    <requestid>60204</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>5de6774c109e120d54ae204169bb0960</srcmd5>
+    <version>1.3.9</version>
+    <time>1297093494</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60204
+</comment>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>5de6774c109e120d54ae204169bb0960</srcmd5>
+    <version>1.3.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f31b1cdba2604df36f0167297263b4f5</srcmd5>
+    <version>1.4.0.rc1</version>
+    <time>1298244233</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62129 from user mrdocs
+</comment>
+    <requestid>62129</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>1d29aec41cc193c477d3912bedc55875</srcmd5>
+    <version>1.4.0.rc1</version>
+    <time>1298244250</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62129
+</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1f38850e632f4a968d9494dbae758bf1</srcmd5>
+    <version>1.4.0.rc3</version>
+    <time>1302512198</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66641 from user coolo
+</comment>
+    <requestid>66641</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>473958b15d17d8e8da007f28772bb02a</srcmd5>
+    <version>1.4.0.rc3</version>
+    <time>1302512212</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66641
+</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c68c2b93c9081eb077d15aa6d9ca11a3</srcmd5>
+    <version>1.4.0.rc5</version>
+    <time>1308571408</time>
+    <user>saschpe</user>
+    <comment>update to rc5</comment>
+    <requestid>74176</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>96fe1939e91b2616457f53a16f0a85fa</srcmd5>
+    <version>1.4.0.rc5</version>
+    <time>1308571430</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74176
+</comment>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>4ef7dece2b14dfbd08d623eb00000321</srcmd5>
+    <version>1.4.0.rc5</version>
+    <time>1313399909</time>
+    <user>saschpe</user>
+    <comment>-Fixed language file identification
+-Removed redundant buildrequires
+-Cleaned up spec file formatting (forwarded request 78748 from TheBlackCat)</comment>
+    <requestid>78766</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>27e7e04e938644b077f2abba836a758d</srcmd5>
+    <version>1.4.0.rc5</version>
+    <time>1313399917</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78766
+</comment>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>29144a8391ef803b85cb496a90ad31e7</srcmd5>
+    <version>1.4.0.rc5</version>
+    <time>1314022509</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>79411</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>cbd0467b640795a466d6f7ad7a74ddc2</srcmd5>
+    <version>1.4.0.rc5</version>
+    <time>1314022523</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79411
+</comment>
+  </revision>
+  <revision rev="40" vrev="8">
+    <srcmd5>cbd0467b640795a466d6f7ad7a74ddc2</srcmd5>
+    <version>1.4.0.rc5</version>
+    <time>1319182458</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d3c1ae50688ccfba5cc370a95ec0c41a</srcmd5>
+    <version>1.4.0.rc6</version>
+    <time>1319636726</time>
+    <user>coolo</user>
+    <comment>- merged KDF again
+
+-updated to 1.4.0.rc6
+-last RC before 1.4.0 final
+ +documentation updates, bug fixes and translation updates
+ +http://scribus.net/svn/Scribus/branches/Version135/Scribus/ChangeLog
+  for versioned changelog</comment>
+    <requestid>89353</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d8b1bf32ab2d3c81c9b25078e8645911</srcmd5>
+    <version>1.4.1</version>
+    <time>1337955526</time>
+    <user>coolo</user>
+    <comment>Delete non-free colour swatches from the package (bnc#763586) (forwarded request 122102 from badshah400)</comment>
+    <requestid>122211</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>d8b1bf32ab2d3c81c9b25078e8645911</srcmd5>
+    <version>1.4.1</version>
+    <time>1340184203</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>fde9ac5a314f0ca0d66bd08e5e0c7c27</srcmd5>
+    <version>1.4.1</version>
+    <time>1340725061</time>
+    <user>coolo</user>
+    <comment>Install hi-res icons in the hicolor-icon directory for better appearance in desktop menus (forwarded request 125896 from mrdocs)</comment>
+    <requestid>125898</requestid>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>9977bd9703d232b9db6b09eb2958cc51</srcmd5>
+    <version>1.4.1</version>
+    <time>1347343186</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>133088</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>84e7ea004d473f80ad49931808681d05</srcmd5>
+    <version>1.4.2</version>
+    <time>1358415502</time>
+    <user>coolo</user>
+    <comment>update to 1.4.2  See .changes file for details (forwarded request 148496 from mrdocs)</comment>
+    <requestid>148499</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>84e7ea004d473f80ad49931808681d05</srcmd5>
+    <version>1.4.2</version>
+    <time>1359110389</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>896dcc3b1c7c5cc14ff9723edd4309fb</srcmd5>
+    <version>1.4.3</version>
+    <time>1377252087</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 1.4.3, details in .changes (forwarded request 196035 from mrdocs)</comment>
+    <requestid>196059</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>896dcc3b1c7c5cc14ff9723edd4309fb</srcmd5>
+    <version>1.4.3</version>
+    <time>1379664638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>114dab2037f86e5e0a27959930ec9333</srcmd5>
+    <version>1.4.3</version>
+    <time>1397812111</time>
+    <user>scarabeus_factory</user>
+    <comment>Added python_version.diff: fixes build with cmake 3.0</comment>
+    <requestid>230691</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>0a24cd9eb1cc07beec13fc8239602e4d</srcmd5>
+    <version>1.4.4</version>
+    <time>1401644490</time>
+    <user>coolo</user>
+    <comment>- Update to 1.4.4
+- Drop python-version.diff it is upstream. 
+ + PDF/X-1a export.
+
++ The Barcode plug-in has been updated to reflect
+  the latest changes in the underlying Barcode Writer 
+  in Pure PostScript (BWIPP).
+
++ The Autoquote script has been rewritten and enhanced.
+  It now provides more options and adds thin spaces to French texts
+  where appropriate.
+
++ A script to align images in frames has been added.
+
++ Full support of the OpenICC Directory Proposal
+  (http://www.oyranos.org/wiki/index.php?title=OpenIccDirectoryProposal). 
+
++ The handling of transparencies in Photoshop-generated TIFF files
+  has been improved.
+
++ Page borders can now act as guides (and thus be used for 
+  snapping of items).
+
++ The CMYK color palette created by the Newspaper Association
+  of America  (NAA) for newspaper advertisements has been 
+  integrated into Scribus.
+
++ A new color palette for professional geographers has been added.
+
++ Export to various bitmap formats has been re-enabled on Mac OS X.
+
++ Several issues related to the user interface and canvas display
+  have been resolved.
+
++ Adjustments for Windows 8.x.
+
++ An issue with the spellchecker, resulting in a crash, 
+  has been resolved.
+
++ Documentation and translation updates and improvements.
+
+ +For a complete list of changes see:
+  http://bugs.scribus.net/view_all_bug_page.php?filter=99610
+  and http://lists.scribus.net/pipermail/scribus-commit. (forwarded request 235762 from mrdocs)</comment>
+    <requestid>235938</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>0a24cd9eb1cc07beec13fc8239602e4d</srcmd5>
+    <version>1.4.4</version>
+    <time>1409303339</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>71c7475624ce9eac44023150e44398af</srcmd5>
+    <version>1.4.6</version>
+    <time>1452721574</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353402</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>28f05eeea61648e9d40716c32b9539a0</srcmd5>
+    <version>1.4.6</version>
+    <time>1459002255</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>375357</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>20a6bea61087f112dc11a0aa79a5365c</srcmd5>
+    <version>1.4.6</version>
+    <time>1470217451</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415946</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>eb56315344acf531695262d474c874cb</srcmd5>
+    <version>1.4.6</version>
+    <time>1470934423</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418659</requestid>
+  </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>18b3bd86d67e6118360da3b7f98b129b</srcmd5>
+    <version>1.4.6</version>
+    <time>1479299610</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440451</requestid>
+  </revision>
+  <revision rev="58" vrev="6">
+    <srcmd5>21fdc8d9eb78cd4db9debaf208630fce</srcmd5>
+    <version>1.4.6</version>
+    <time>1486390896</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454514</requestid>
+  </revision>
+  <revision rev="59" vrev="7">
+    <srcmd5>d9ddb7815c215b081a29aca952d2a7ec</srcmd5>
+    <version>1.4.6</version>
+    <time>1502629260</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516570</requestid>
+  </revision>
+  <revision rev="60" vrev="8">
+    <srcmd5>5eebcec7c09916d48d046c8874f4ec24</srcmd5>
+    <version>1.4.6</version>
+    <time>1515260954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561738</requestid>
+  </revision>
+  <revision rev="61" vrev="9">
+    <srcmd5>c15f6077d674366f000a62d0b1983c96</srcmd5>
+    <version>1.4.6</version>
+    <time>1522226046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591742</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>d87dbddccb19188cbeeda48498471471</srcmd5>
+    <version>1.4.7</version>
+    <time>1525779416</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602863</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>f1193ed4e442613ba015f31406465e62</srcmd5>
+    <version>1.4.7</version>
+    <time>1527934487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613493</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>f0a4eae4c02f7eda586b38a0f16c26ca</srcmd5>
+    <version>1.4.7</version>
+    <time>1543224705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651536</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>0c0f5a4e5c9a4d7e9b955389e321baa7</srcmd5>
+    <version>1.5.5</version>
+    <time>1568066165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729432</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>93be8f918a1618ead3cfcf02fa655ff6</srcmd5>
+    <version>1.5.5</version>
+    <time>1568190785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729582</requestid>
+  </revision>
+</revisionlist>

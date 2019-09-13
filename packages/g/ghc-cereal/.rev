@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51980d747b851dcdb5030f601552e4c2</srcmd5>
+    <version>0.4.1.1</version>
+    <time>1432190205</time>
+    <user>coolo</user>
+    <comment>A binary serialization library</comment>
+    <requestid>307798</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>64ce171107afd4e7c4f791372355715d</srcmd5>
+    <version>0.5.1.0</version>
+    <time>1453998219</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.1.0
+* Switch to using the builder provided by the ByteString package
+* Change the encoding of Float and Double with the Serialize class to use the 
+	Data.Serialize.IEEE754 module
+* Add support for encoding and decoding ShortByteString
+* New and improved test suite thanks to Kei Hibino
+* Fix two bugs involving the lookAhead combinator and partial chunks. (forwarded request 355938 from mimi_vx)</comment>
+    <requestid>355940</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1d958acd383d1de2186fb90e9daf4699</srcmd5>
+    <version>0.5.2.0</version>
+    <time>1464853205</time>
+    <user>dimstar_suse</user>
+    <comment>fix (forwarded request 399542 from mimi_vx)</comment>
+    <requestid>399543</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1b4381975b37bc0c84f4dc4b154c338c</srcmd5>
+    <version>0.5.2.0</version>
+    <time>1469080980</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411356</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fd1a588bfbde6b945da8cefd07b70f60</srcmd5>
+    <version>0.5.3.0</version>
+    <time>1477135208</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433372</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>80021301625a5ab24298a99227421f59</srcmd5>
+    <version>0.5.4.0</version>
+    <time>1481030660</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442846</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bfb6ff41c84d55bd67b626e92997482a</srcmd5>
+    <version>0.5.4.0</version>
+    <time>1505503551</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524262</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>589c193273d53df7e557aef34da13197</srcmd5>
+    <version>0.5.5.0</version>
+    <time>1527674636</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-cereal to the latest version.</comment>
+    <requestid>607764</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>be04e2086e012bd0220552bca84a58c7</srcmd5>
+    <version>0.5.5.0</version>
+    <time>1532445346</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+* Change the encoding of Float and Double with the Serialize class to use the
+        Data.Serialize.IEEE754 module
+- update to version 0.4.10</comment>
+    <requestid>623739</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>296f2bf4934292ace259083de01931c6</srcmd5>
+    <version>0.5.7.0</version>
+    <time>1534774803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update cereal to version 0.5.7.0.
+  0.5.7.0
+  =======
+  * Added `runPutMBuilder`
+  0.5.6.0
+  =======
+  * Added GSerializeGet and GSerializePut instances for V1
+  0.5.5.0
+  =======
+  * Added Semigroup instances</comment>
+    <requestid>630362</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>36040097539f2f33ee0727c6d3f33149</srcmd5>
+    <version>0.5.7.0</version>
+    <time>1540448590</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643364</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1b3be4f91a85dc77e4815d77bca3fa17</srcmd5>
+    <version>0.5.8.0</version>
+    <time>1548452587</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>667134</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8049a1e0b5531fc68e69ce4a3eec47ba</srcmd5>
+    <version>0.5.8.1</version>
+    <time>1560338308</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>709197</requestid>
+  </revision>
+</revisionlist>

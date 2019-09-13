@@ -1,0 +1,11 @@
+<package name="mpi-selector" project="openSUSE:Factory">
+  <title>Tool to provide defaults for which MPI implementation to use</title>
+  <description>A simple tool that allows system administrators to set a site-wide
+default for which MPI implementation is to be used, but also allow
+users to set their own defaults MPI implementation, thereby overriding
+the site-wide default.
+
+The default can be changed easily via the mpi-selector command --
+editing of shell startup files is not required.</description>
+  <devel project="science:HPC" package="mpi-selector"/>
+</package>

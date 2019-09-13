@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09a5671027620daf07001c9f8e063895</srcmd5>
+    <version>0.2.0</version>
+    <time>1401264106</time>
+    <user>coolo</user>
+    <comment>LO 4.3 libraries</comment>
+    <requestid>235203</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>09a5671027620daf07001c9f8e063895</srcmd5>
+    <version>0.2.0</version>
+    <time>1409301663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>66d7d8c0139ac491b6f8f6d1b32f98ac</srcmd5>
+    <version>0.2.0</version>
+    <time>1414776469</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259098</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>854c751e23bf5247eb044a457a948479</srcmd5>
+    <version>0.2.3</version>
+    <time>1470773697</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417225</requestid>
+  </revision>
+</revisionlist>

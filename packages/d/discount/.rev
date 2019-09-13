@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f65c4db04e4776f0b7b18e623650c44</srcmd5>
+    <version>2.1.5a</version>
+    <time>1368690666</time>
+    <user>coolo</user>
+    <comment>fixed the Copyright for correct format</comment>
+    <requestid>175198</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7f65c4db04e4776f0b7b18e623650c44</srcmd5>
+    <version>2.1.5a</version>
+    <time>1379662230</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7f65c4db04e4776f0b7b18e623650c44</srcmd5>
+    <version>2.1.5a</version>
+    <time>1409300767</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b312687afed738e90344151f3c9042f1</srcmd5>
+    <version>2.1.8a</version>
+    <time>1432636403</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308331</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a9ff7382a5323a8ddfd753dac8afa3b6</srcmd5>
+    <version>2.2.0</version>
+    <time>1462697122</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393353</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c6c7312557edd836cbd287b9b00735f7</srcmd5>
+    <version>2.2.1</version>
+    <time>1477990693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.1:
+  * No changelog provided
+- Refresh patches:
+  * discount-disable_ldconfig.patch
+  * discount-fix-compile-warings.diff</comment>
+    <requestid>435614</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4fde4956eea230713304f631821f5fb0</srcmd5>
+    <version>2.2.2</version>
+    <time>1486968558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.2:
+  * No changelog provided
+- Refresh patches:
+  * discount-disable_ldconfig.patch
+  * discount-fix-compile-warings.diff</comment>
+    <requestid>455798</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5050a34930cf3ef663d37aea8739752c</srcmd5>
+    <version>2.2.2</version>
+    <time>1509820171</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide virtual package markdown</comment>
+    <requestid>538623</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9e283c077956c48f5134bd20767798ec</srcmd5>
+    <version>2.2.3a</version>
+    <time>1530087421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.3a:
+  * No changelog provided
+- Refresh patches:
+  * discount-disable_ldconfig.patch
+  * discount-fix-compile-warings.diff</comment>
+    <requestid>618911</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8eea7bb164101422f9364c4cd172d5f6</srcmd5>
+    <version>2.2.4</version>
+    <time>1540319612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.4:
+  * No changelog provided</comment>
+    <requestid>642548</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7457a43ff473083a0e4025a521da04cc</srcmd5>
+    <version>2.2.4</version>
+    <time>1547554421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update changelog with references to security issues fixed
+
+  * fixes:
+    + boo#1094809 CVE-2018-11468 heap-based buffer over-read __mkd_trim_line function in mkdio.c
+    + boo#1098252 CVE-2018-12495 heap-based buffer over-read via a crafted file</comment>
+    <requestid>663373</requestid>
+  </revision>
+</revisionlist>

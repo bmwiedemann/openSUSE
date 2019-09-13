@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51ddb4f259d15006acfde52f7fceb3e6</srcmd5>
+    <version>2.3.99pre1</version>
+    <time>1296609417</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59393 from user jengelh
+</comment>
+    <requestid>59393</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9bb50de80c0efd9b18fbad45da6aaa15</srcmd5>
+    <version>2.3.99pre1</version>
+    <time>1296609425</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59393
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>9bb50de80c0efd9b18fbad45da6aaa15</srcmd5>
+    <version>2.3.99pre1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>9bb50de80c0efd9b18fbad45da6aaa15</srcmd5>
+    <version>2.3.99pre1</version>
+    <time>1319182598</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>0b27b58ea3aea2f389c7f6f9d2e3c757</srcmd5>
+    <version>2.3.99pre1</version>
+    <time>1323195353</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>0b27b58ea3aea2f389c7f6f9d2e3c757</srcmd5>
+    <version>2.3.99pre1</version>
+    <time>1340184365</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7c02e782b2ba12639bb5a950796ee237</srcmd5>
+    <version>2.4</version>
+    <time>1342083265</time>
+    <user>namtrac</user>
+    <comment>- Make it build with latest TeXLive 2012 with new package layout 
+
+- Update to new upstream release 2.4
+* No changelog provided (only moved from 2.4~pre1 to 2.4 anyway)</comment>
+    <requestid>127475</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7c02e782b2ba12639bb5a950796ee237</srcmd5>
+    <version>2.4</version>
+    <time>1359110645</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>7c02e782b2ba12639bb5a950796ee237</srcmd5>
+    <version>2.4</version>
+    <time>1379665070</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>35fb782c9c7baf162d38f8dd1a5fac3d</srcmd5>
+    <version>2.4</version>
+    <time>1380713665</time>
+    <user>coolo</user>
+    <comment>- Fix build for Factory and 13.1 (forwarded request 201451 from scarabeus_iv)</comment>
+    <requestid>201563</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>35fb782c9c7baf162d38f8dd1a5fac3d</srcmd5>
+    <version>2.4</version>
+    <time>1409303755</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>419b07d21e178aee499d1be349250a3b</srcmd5>
+    <version>2.4</version>
+    <time>1460101173</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>384531</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6650a9584055819889fa6e34ac6439ef</srcmd5>
+    <version>2.5.1</version>
+    <time>1509036255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.5.1
+  * Support for MikTeX.
+  * New language translations for Persian and Korean.
+  * Corrected sorting in Polytonik Greek, Vietnamese.
+  * By default, make-rules documentation is not created.
+  * texindy utf8 codepage for Latin scripts supported.
+- Drop fix-alphabets-doc-geometry.dpatch.diff,
+  fix-configure.dpatch.diff, fix-echo-expansion.dpatch.diff,
+  fix-entry-with-command.dpatch.diff (merged upstream)
+- Add 1000_Unescaped-left-brace-deprecated-in-regexps.diff
+- Re-copy fix-FHS.dpatch.diff, help-option.dpatch.diff from Debian.</comment>
+    <requestid>535046</requestid>
+  </revision>
+</revisionlist>

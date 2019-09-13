@@ -1,0 +1,6 @@
+<package name="python-twitter.common.rpc" project="openSUSE:Factory">
+  <title>python-twitter.common.rpc</title>
+  <description>Thrift helpers including finagle and SSL transports</description>
+  <devel project="devel:languages:python" package="python-twitter.common.rpc"/>
+  <url>https://github.com/twitter/commons</url>
+</package>

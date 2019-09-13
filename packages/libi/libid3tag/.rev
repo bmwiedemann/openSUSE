@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="46">
+    <srcmd5>9b3797235804b09a4ae6b286730d4a13</srcmd5>
+    <version>0.15.1b</version>
+    <time>1168903330</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="63">
+    <srcmd5>2d252bb5e1f1e794c02c806c920df4ca</srcmd5>
+    <version>0.15.1b</version>
+    <time>1175162612</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="130">
+    <srcmd5>f7f01af3c4ec0315ea8265a27486c241</srcmd5>
+    <version>0.15.1b</version>
+    <time>1210941450</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="158">
+    <srcmd5>f7f01af3c4ec0315ea8265a27486c241</srcmd5>
+    <version>0.15.1b</version>
+    <time>1210941450</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="159">
+    <srcmd5>881ccf286900d1ccfc1496feecc1dc05</srcmd5>
+    <version>0.15.1b</version>
+    <time>1245365996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="161">
+    <srcmd5>881ccf286900d1ccfc1496feecc1dc05</srcmd5>
+    <version>0.15.1b</version>
+    <time>1245365996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="162">
+    <srcmd5>12eb4407665e86305d18c1711ebf82b7</srcmd5>
+    <version>0.15.1b</version>
+    <time>1268924602</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="164">
+    <srcmd5>12eb4407665e86305d18c1711ebf82b7</srcmd5>
+    <version>0.15.1b</version>
+    <time>1278667359</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="165">
+    <srcmd5>12eb4407665e86305d18c1711ebf82b7</srcmd5>
+    <version>0.15.1b</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="168">
+    <srcmd5>12eb4407665e86305d18c1711ebf82b7</srcmd5>
+    <version>0.15.1b</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="169">
+    <srcmd5>9f1d76c688dfb122e68a3807ebd2d3eb</srcmd5>
+    <version>0.15.1b</version>
+    <time>1303116517</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67596 from user coolo
+</comment>
+    <requestid>67596</requestid>
+  </revision>
+  <revision rev="12" vrev="170">
+    <srcmd5>648454c2aa72d2ae53dde45d3b8207be</srcmd5>
+    <version>0.15.1b</version>
+    <time>1303116527</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67596
+</comment>
+  </revision>
+  <revision rev="13" vrev="172">
+    <srcmd5>648454c2aa72d2ae53dde45d3b8207be</srcmd5>
+    <version>0.15.1b</version>
+    <time>1319182102</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="173">
+    <srcmd5>a37f5611ac9c35855cb8a52c500ef694</srcmd5>
+    <version>0.15.1b</version>
+    <time>1321875280</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92529 from coolo)</comment>
+    <requestid>92546</requestid>
+  </revision>
+  <revision rev="15" vrev="174">
+    <srcmd5>e2a0820ce6f27354fabde60a5613c1e9</srcmd5>
+    <version>0.15.1b</version>
+    <time>1323192248</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="176">
+    <srcmd5>e2a0820ce6f27354fabde60a5613c1e9</srcmd5>
+    <version>0.15.1b</version>
+    <time>1340183596</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="177">
+    <srcmd5>df32de0352ff809641221b513e8980b7</srcmd5>
+    <version>0.15.1b</version>
+    <time>1353790167</time>
+    <user>coolo</user>
+    <comment>- libid3tag-visibility.patch: Hide all symbols that are not
+  part of the public API.
+- spec file: DO not inject bogus dependencies into the
+  system via pkgconfig files. (forwarded request 142516 from elvigia)</comment>
+    <requestid>142556</requestid>
+  </revision>
+  <revision rev="18" vrev="178">
+    <srcmd5>bc86148d4f4f57d3a878f18a1aa62ccc</srcmd5>
+    <version>0.15.1b</version>
+    <time>1354096233</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Employ shared library naming
+- Have makeinstall succeed on non-SUSE (forwarded request 142634 from jengelh)</comment>
+    <requestid>142921</requestid>
+  </revision>
+  <revision rev="19" vrev="180">
+    <srcmd5>bc86148d4f4f57d3a878f18a1aa62ccc</srcmd5>
+    <version>0.15.1b</version>
+    <time>1359109288</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="182">
+    <srcmd5>bc86148d4f4f57d3a878f18a1aa62ccc</srcmd5>
+    <version>0.15.1b</version>
+    <time>1379662979</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="184">
+    <srcmd5>bc86148d4f4f57d3a878f18a1aa62ccc</srcmd5>
+    <version>0.15.1b</version>
+    <time>1409301591</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="185">
+    <srcmd5>16f8885c0b65ace54baf3bb4b4c28e4f</srcmd5>
+    <version>0.15.1b</version>
+    <time>1435171164</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312292</requestid>
+  </revision>
+  <revision rev="23" vrev="186">
+    <srcmd5>36c1d5f6791e141baa84791677252459</srcmd5>
+    <version>0.15.1b</version>
+    <time>1495010810</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494754</requestid>
+  </revision>
+  <revision rev="24" vrev="187">
+    <srcmd5>86f2c307379bd7fe265e90cd023e2f84</srcmd5>
+    <version>0.15.1b</version>
+    <time>1508609992</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533375</requestid>
+  </revision>
+  <revision rev="25" vrev="188">
+    <srcmd5>8888298aedb262d6b6b453e25681e2b2</srcmd5>
+    <version>0.15.1b</version>
+    <time>1519307916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578699</requestid>
+  </revision>
+</revisionlist>

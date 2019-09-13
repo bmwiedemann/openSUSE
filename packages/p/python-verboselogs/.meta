@@ -1,0 +1,18 @@
+<package name="python-verboselogs" project="openSUSE:Factory">
+  <title>Verbose logging level for Python's logging module</title>
+  <description>The verboselogs_ package extends Python's logging_ module to add the log levels
+VERBOSE_, NOTICE_, and SPAM_:
+
+- The VERBOSE level sits between the predefined INFO and DEBUG levels.
+- The NOTICE level sits between the predefined WARNING and INFO levels.
+- The SPAM level sits between the predefined DEBUG and NOTSET levels.
+
+The code to do this is simple and short, but I still don't want to copy/paste
+it to every project I'm working on, hence this package. It's currently tested
+on Python 2.6, 2.7, 3.4, 3.5 and PyPy.
+
+
+</description>
+  <devel project="devel:languages:python" package="python-verboselogs"/>
+  <url>https://verboselogs.readthedocs.io</url>
+</package>

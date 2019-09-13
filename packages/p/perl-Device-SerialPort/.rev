@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7665ca7fec3a95d3962eb75af6b8234</srcmd5>
+    <version>1.04</version>
+    <time>1266508215</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Device-SerialPort based on submit request 32366 from user coolo
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1389ed3ca0560f79abc6498d83b7d849</srcmd5>
+    <version>1.04</version>
+    <time>1268925431</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1389ed3ca0560f79abc6498d83b7d849</srcmd5>
+    <version>1.04</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>1389ed3ca0560f79abc6498d83b7d849</srcmd5>
+    <version>1.04</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>f2bcdb8e8d4f2a1a6606d5f8984f6541</srcmd5>
+    <version>1.04</version>
+    <time>1287485609</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50976 from user coolo
+</comment>
+    <requestid>50976</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>5b7416fc92d3409ac2452971c23167b4</srcmd5>
+    <version>1.04</version>
+    <time>1287485622</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50976
+</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>cb36844a54a476fd7d9934e22af4f50b</srcmd5>
+    <version>1.04</version>
+    <time>1291582095</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54750 from user coolo
+</comment>
+    <requestid>54750</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>60be42d098a431c496f728a842447a60</srcmd5>
+    <version>1.04</version>
+    <time>1291582101</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54750
+</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>35b8eabddf7f0f0f3ad03abbb3cb50c1</srcmd5>
+    <version>1.04</version>
+    <time>1296694210</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59805 from user vitezslav_cizek
+</comment>
+    <requestid>59805</requestid>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>46dc5c124606e61ea3a32aff28a3f468</srcmd5>
+    <version>1.04</version>
+    <time>1296694220</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59805
+</comment>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>46dc5c124606e61ea3a32aff28a3f468</srcmd5>
+    <version>1.04</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>46dc5c124606e61ea3a32aff28a3f468</srcmd5>
+    <version>1.04</version>
+    <time>1319182261</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>1fecaf07439f395ac683ef33ad45b8a9</srcmd5>
+    <version>1.04</version>
+    <time>1321875557</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92130</requestid>
+  </revision>
+  <revision rev="14" vrev="18">
+    <srcmd5>4967693160a392ed7735d07f67b1f391</srcmd5>
+    <version>1.04</version>
+    <time>1323193236</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="20">
+    <srcmd5>4967693160a392ed7735d07f67b1f391</srcmd5>
+    <version>1.04</version>
+    <time>1340183832</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="22">
+    <srcmd5>4967693160a392ed7735d07f67b1f391</srcmd5>
+    <version>1.04</version>
+    <time>1359109650</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>4967693160a392ed7735d07f67b1f391</srcmd5>
+    <version>1.04</version>
+    <time>1379663650</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="26">
+    <srcmd5>4967693160a392ed7735d07f67b1f391</srcmd5>
+    <version>1.04</version>
+    <time>1409302263</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

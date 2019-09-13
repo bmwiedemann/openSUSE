@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>455f86bc331b1bdb56b5858f6b41c69c</srcmd5>
+    <version>20121119</version>
+    <time>1474476569</time>
+    <user>dimstar_suse</user>
+    <comment>dependency for new translate-toolkit version</comment>
+    <requestid>428683</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d4688fa742d6715cbcf716e209456b93</srcmd5>
+    <version>20181111</version>
+    <time>1552986022</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the fdupes call
+- Run the tests
+
+- updated to version 20181111
+	(unofficial, no changelog available)
+- update URLs, change source from zip to tar.gz and make it singlespec</comment>
+    <requestid>686040</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9ca983587de908582b86c059d7428fad</srcmd5>
+    <version>20181111</version>
+    <time>1554372473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update setuptools minimal version based on the upstream
+  Requirements</comment>
+    <requestid>691245</requestid>
+  </revision>
+</revisionlist>

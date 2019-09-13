@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>da4590d83d5321ce638a3d49751149cf</srcmd5>
+    <version>5.7</version>
+    <time>1461855194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>381078</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>328b3cf8b600abe58b3d40310324761f</srcmd5>
+    <version>5.8</version>
+    <time>1464595100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>398637</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb465a4b563fd8c231a2e57154ad9e39</srcmd5>
+    <version>5.10</version>
+    <time>1469628771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>414714</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fc278d3cecadce8b5337f644d9a9acfa</srcmd5>
+    <version>7.3</version>
+    <time>1496327496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>494556</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>40c706579d96919fc508fc3d02763a74</srcmd5>
+    <version>7.4</version>
+    <time>1511817335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544648</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2573590169a7ce77b5518135772492f4</srcmd5>
+    <version>7.5</version>
+    <time>1540451289</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.5.</comment>
+    <requestid>643568</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c408ef5fef248300411d4ec195922d89</srcmd5>
+    <version>7.5</version>
+    <time>1564137616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718354</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd6b521d6026e58d693cc1d8adfd0b61</srcmd5>
+    <version>1.48.1</version>
+    <time>1272214520</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/xdiskusage based on submit request 38522 from user johnberanek
+</comment>
+    <requestid>38522</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bd6b521d6026e58d693cc1d8adfd0b61</srcmd5>
+    <version>1.48.1</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bd6b521d6026e58d693cc1d8adfd0b61</srcmd5>
+    <version>1.48.1</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>bd6b521d6026e58d693cc1d8adfd0b61</srcmd5>
+    <version>1.48.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>f41c47b98cae427d3a3d449a31f63e58</srcmd5>
+    <version>1.48.1</version>
+    <time>1310974993</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>76319</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>abc7bc66b7e9d0a596ece09100ef3e0b</srcmd5>
+    <version>1.48.1</version>
+    <time>1310975007</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76319
+</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>abc7bc66b7e9d0a596ece09100ef3e0b</srcmd5>
+    <version>1.48.1</version>
+    <time>1319182582</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>b2ae8fef48fd507693fbb56edef070f2</srcmd5>
+    <version>1.48.1</version>
+    <time>1323195262</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>b2ae8fef48fd507693fbb56edef070f2</srcmd5>
+    <version>1.48.1</version>
+    <time>1340184340</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>26f610fd619f3fb3d311f1113f19e8d2</srcmd5>
+    <version>1.48.1</version>
+    <time>1348573652</time>
+    <user>coolo</user>
+    <comment>- Add xdiskusage-remove-glu.patch to remove unused GLU dependency
+- Remove GLU dependency for !openSUSE distros</comment>
+    <requestid>135851</requestid>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>26f610fd619f3fb3d311f1113f19e8d2</srcmd5>
+    <version>1.48.1</version>
+    <time>1359110601</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>26f610fd619f3fb3d311f1113f19e8d2</srcmd5>
+    <version>1.48.1</version>
+    <time>1379665007</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>26f610fd619f3fb3d311f1113f19e8d2</srcmd5>
+    <version>1.48.1</version>
+    <time>1409303691</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>200e82a1f588064bf9cd1e3eb171cfc5</srcmd5>
+    <version>1.51</version>
+    <time>1423812937</time>
+    <user>dimstar_suse</user>
+    <comment>Updated to upstream version 1.51, removed build patches which are no longer required due to use of 'fltk-config' in Makefile</comment>
+    <requestid>285872</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>07eb264ef6ee6c49634f3a7fbbfef9a2</srcmd5>
+    <version>1.51</version>
+    <time>1513677466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557727</requestid>
+  </revision>
+</revisionlist>

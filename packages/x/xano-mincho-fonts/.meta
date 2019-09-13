@@ -1,0 +1,6 @@
+<package name="xano-mincho-fonts" project="openSUSE:Factory">
+  <title>Japanese &quot;XANO-Mincho-U32&quot; TrueType font JIS X 0213:2004</title>
+  <description>Japanese &quot;XANO-Mincho-U32&quot; TrueType font JIS X 0213:2004
+</description>
+  <devel project="M17N:fonts" package="xano-mincho-fonts"/>
+</package>

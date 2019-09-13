@@ -1,0 +1,14 @@
+<package name="praat" project="openSUSE:Factory">
+  <title>Doing phonetics by computer</title>
+  <description>Praat is an open-software tool for the analysis of speech in phonetics.
+Through its graphical interface, several speech analysis functionalities
+are available: spectrograms, cochleograms, and pitch and formant extraction.
+Articulatory synthesis, as well as synthesis from pitch, formant, and
+intensity are also available. Other features are segmentation, labelling
+using the phonetic alphabet, and computation of statistics.
+Praat is configurable and extensible through its own scripting language and has
+provisions for communicating with other programs. 
+
+</description>
+  <devel project="science" package="praat"/>
+</package>

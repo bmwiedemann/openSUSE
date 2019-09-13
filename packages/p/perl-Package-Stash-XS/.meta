@@ -1,0 +1,8 @@
+<package name="perl-Package-Stash-XS" project="openSUSE:Factory">
+  <title>Faster and more correct implementation of the Package::Stash API</title>
+  <description>This is a backend for the Package::Stash manpage, which provides the
+functionality in a way that's less buggy and much faster. It will be used
+by default if it's installed, and should be preferred in all environments
+with a compiler.</description>
+  <devel project="devel:languages:perl" package="perl-Package-Stash-XS"/>
+</package>

@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>08b158b292c9a4c05d29a8f443fab109</srcmd5>
+    <version>0.9.902</version>
+    <time>1533732752</time>
+    <user>dimstar_suse</user>
+    <comment>Hi,
+
+I would like to re-add the libratbag package to Factory. For details see the mail I send to the Factory mailing list: https://lists.opensuse.org/opensuse-factory/2018-07/msg00200.html.
+
+The DBus-Service of the package has been whitelisted via boo#1076467.
+
+Kind Regards,
+Matthias</comment>
+    <requestid>627184</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a065b9591586f16b0b16f52d4d2a6b89</srcmd5>
+    <version>0.9.903</version>
+    <time>1539758603</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.903:
+  * Adds GetSvgFd() function on D-BUS required by Piper
+  * Add a --version commandline argument ratbagd
+  * Added support for the Steelseries Sensei Raw
+  * Added support for the Logitech G600
+  * Added support for the Logitech G302</comment>
+    <requestid>642494</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d8e286388e3441d2cc7a4acfe5d231f3</srcmd5>
+    <version>0.9.904</version>
+    <time>1549018002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.904:
+  * Added Devices:
+    + Logitech G PowerPlay
+    + Logitech G Pro
+    + Logitech G402
+    + Logitech G502 HERO
+    + Logitech MX Anywhere 2
+    + Logitech MX Anywhere 2S
+    + Logitech MX Master 2S
+    + Steelseries Rival 600
+  * Improved Devices:
+    + All supported Roccat Devices
+    + Logitech G102/203
+    + Logitech G502
+    + Logitech G600
+    + Logitech G603
+    + Logitech G903
+    + Logitech MX Master
+  * Improved error messages provided by the command line tools.</comment>
+    <requestid>670155</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>592bbb8b5ea5fa19d0ad3c841cce203c</srcmd5>
+    <version>0.9.905</version>
+    <time>1554115182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690173</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>df6a2f721b1d3df1162c221c1fe2ed94</srcmd5>
+    <version>0.10</version>
+    <time>1565694881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10:
+  * Switched back to &quot;normal&quot; version numbering
+  * Added APIVersion field to the DBus API
+  * Added Devices:
+    + Logitech MX Vertical
+  * G700s is now handled as G700. This may have side effects and
+    will be addressed in future versions.
+- Dropped no longer required patch no-git.diff.
+- Updated shebang-env.diff.
+- Updated install-daemon-into-sbindir.patch.
+- Dropped fix-broken-log-invocation.patch which is now fixed
+  upstream.
+
+- Update to version 0.9.906:
+  * Added Devices:
+    + Logitech G403 Wireless
+    + Logitech G403 Hero
+    + Logitech G703 Hero
+    + Logitech G903 Hero
+    + Logitech Marathon M705
+    + Logitech MX Anyhwere 2S Bluetooth
+    + Logitech MX Ergo
+    + Logitech MX518
+  * Improved Devices:
+    + Logitech G Pro
+    + Logitech G602
+    + Logitech G603
+    + Logitech G900
+    + Logitech MX Anyhwere 2
+  * Renamed Devices</comment>
+    <requestid>720731</requestid>
+  </revision>
+</revisionlist>

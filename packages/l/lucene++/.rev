@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14ca17e498789d153e625a7bddcfc17e</srcmd5>
+    <version>3.0.6</version>
+    <time>1413987823</time>
+    <user>coolo</user>
+    <comment>An up to date C++ port of the popular Java Lucene library, a high-performance, full-featured text search engine.
+
+A dependency for poedit 1.6.x</comment>
+    <requestid>257709</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5957961d18fbf9c9768e43c2e8e3baf6</srcmd5>
+    <version>3.0.7</version>
+    <time>1425566586</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288862</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a52c604d98ef5f402ffe53802b582393</srcmd5>
+    <version>3.0.7</version>
+    <time>1432158907</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308059</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>81d349d35e598a8140ff1ebf8fbbec93</srcmd5>
+    <version>3.0.7</version>
+    <time>1486218061</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454158</requestid>
+  </revision>
+</revisionlist>

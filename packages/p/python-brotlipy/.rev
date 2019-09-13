@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e26d84b7ec9dbb4ec1578825abf7e005</srcmd5>
+    <version>0.6.0</version>
+    <time>1492714159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>483327</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>43b52ddbee24637923756b1314adc320</srcmd5>
+    <version>0.7.0</version>
+    <time>1519746989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580059</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>61510a82d8692306d6604da8278771ed</srcmd5>
+    <version>0.7.0</version>
+    <time>1551468633</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>680141</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>445f410cb35ad0da684196e4e5abb485</srcmd5>
+    <version>0.7.0</version>
+    <time>1553264002</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing tests in OBS due to the speed of CPUs there</comment>
+    <requestid>687646</requestid>
+  </revision>
+</revisionlist>

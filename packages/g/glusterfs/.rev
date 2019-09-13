@@ -1,0 +1,212 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3dc29a5b187090ca2ce8fe70dc58e91</srcmd5>
+    <version>3.2.4</version>
+    <time>1317993579</time>
+    <user>lrupp</user>
+    <comment>We should definitely have this (cf. lwn.net articles)</comment>
+    <requestid>86849</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f3dc29a5b187090ca2ce8fe70dc58e91</srcmd5>
+    <version>3.2.4</version>
+    <time>1319181911</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>139460cefeef2778d8960c156a70a40e</srcmd5>
+    <version>3.2.4</version>
+    <time>1324483213</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>96745</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>139460cefeef2778d8960c156a70a40e</srcmd5>
+    <version>3.2.4</version>
+    <time>1340183372</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3becf0ec3a6dc9c730b87e0a7f3ba4b1</srcmd5>
+    <version>3.3.0</version>
+    <time>1349673093</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137373</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f0d8d87bcf010b8e6ce9a67dd05c1807</srcmd5>
+    <version>3.4.0~qa2</version>
+    <time>1354885767</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>144067</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f0d8d87bcf010b8e6ce9a67dd05c1807</srcmd5>
+    <version>3.4.0~qa2</version>
+    <time>1359108946</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>76c03ae242b74ddc9e3ad7a58b42a1c5</srcmd5>
+    <version>3.4.0~qa9</version>
+    <time>1362730189</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157961</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>76c03ae242b74ddc9e3ad7a58b42a1c5</srcmd5>
+    <version>3.4.0~qa9</version>
+    <time>1379662468</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2d60ef57b25c1322944aaf7680c4a640</srcmd5>
+    <version>3.5.0</version>
+    <time>1400006659</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>233657</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>804796544fcc4ff9bb1041c6e32ce730</srcmd5>
+    <version>3.5.1</version>
+    <time>1407391704</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>243788</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>38985f9c917df21cfad084851512de8f</srcmd5>
+    <version>3.5.2</version>
+    <time>1407485440</time>
+    <user>lnussel</user>
+    <comment>- Update to new upstream release 3.5.2
+  * NFS server crashes in _socket_read_vectored_request
+  * Can't write to quota enable folder
+  * nfs: reset command does not alter the result for nfs options earlier set
+  * features/gfid-access: stat on .gfid virtual directory return EINVAL
+  * creating symlinks generates errors on stripe volume
+  * Self-heal errors with &quot;afr crawl failed for child 0 with ret -1&quot; while performing rolling upgrade.
+  * [AFR] I/O fails when one of the replica nodes go down
+  * Fix inode leaks in gfid-access xlator
+  * NFS subdir authentication doesn't correctly handle multi-(homed,protocol,etc) network addresses
+  * nfs-utils should be installed as dependency while installing glusterfs-server
+  * Excessive logging in quotad.log of the kind 'null client'
+  * client_t clienttable cliententries are never expanded when all entries are used
+  * AFR : self-heal of few files not happening when a AWS EC2 Instance is back online after a restart
+  * Dist-geo-rep : deletion of files on master, geo-rep fails to propagate to slaves.
+  * Allow the usage of the wildcard character '*' to the options
+    &quot;nfs.rpc-auth-allow&quot; and &quot;nfs.rpc-auth-reject&quot;
+  * glfsheal: Improve the way in which we check the presence of replica volumes
+  * Resource cleanup doesn't happen for clients on servers after disconnect
+  * mounting a volume over NFS (TCP) with MOUNT over UDP fails
+  * backport 'gluster volume status --xml' issues
+  * Glustershd memory usage too high (forwarded request 243914 from scorot)</comment>
+    <requestid>243925</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>38985f9c917df21cfad084851512de8f</srcmd5>
+    <version>3.5.2</version>
+    <time>1409301005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>edf1fff940bf042607e62a24eda9f6aa</srcmd5>
+    <version>3.6.1</version>
+    <time>1421753563</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.6.1</comment>
+    <requestid>281513</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9a2f04e6d5a5e48e6c58d6d0f8335713</srcmd5>
+    <version>3.6.2</version>
+    <time>1428652505</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.6.2</comment>
+    <requestid>295247</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>04cd24ddc1564129b71f0e0476aeea33</srcmd5>
+    <version>3.6.4</version>
+    <time>1438899590</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.6.4 
+  * No ChangeLog available
+- Fix Url (forwarded request 320466 from scorot)</comment>
+    <requestid>320467</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3d5c0bdfc42cf4b295df280b340bf818</srcmd5>
+    <version>3.6.6</version>
+    <time>1448400052</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>343859</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>835f364da98c8556d164ef8a390d833d</srcmd5>
+    <version>3.8.15</version>
+    <time>1510321010</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly require python2 as python3 is not yet supported (forwarded request 538636 from pluskalm)</comment>
+    <requestid>538665</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>3d5407117609d811fb16cc99cf69cb59</srcmd5>
+    <version>3.8.15</version>
+    <time>1510837159</time>
+    <user>dimstar_suse</user>
+    <comment>- glusterfs-tirpc.diff: fallback to libtirpc if there is no sunrpc
+  support in glibc (forwarded request 541852 from kukuk)</comment>
+    <requestid>541860</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c310ddac40debe101b99ee580aebf802</srcmd5>
+    <version>3.12.3</version>
+    <time>1514027521</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>559163</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>12bf8ce639ab5507cf8d27f237b2170d</srcmd5>
+    <version>4.0.2</version>
+    <time>1531469647</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621057</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2a88621f40019a68a7a35da9166e8b36</srcmd5>
+    <version>5.3</version>
+    <time>1549311028</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream version 5.3 (4.0 is EOL)</comment>
+    <requestid>669027</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ab3ec296cd6efbc4dd9d2ba54672b835</srcmd5>
+    <version>5.5</version>
+    <time>1553699460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685813</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>0cd41bdf0e42719e9f35661463d6643a</srcmd5>
+    <version>5.5</version>
+    <time>1556311405</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697400</requestid>
+  </revision>
+</revisionlist>

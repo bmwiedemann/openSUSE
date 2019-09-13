@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6bae4b7511052a45d86e56b57e070cb</srcmd5>
+    <version>0.20.14</version>
+    <time>1558515928</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename to to match python package naming guidelines.
+- Use %license macro for license.
+- Update to 0.20.14
+  * No changelog
+- Update to 0.20.12
+  * No changelog
+- Update to 0.20.7
+  * No changelog
+- Initial version
+</comment>
+    <requestid>698306</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>75713c5cd6e7f4027aea66c0c084f987</srcmd5>
+    <version>0.23.0</version>
+    <time>1559375784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706397</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a0fe49f759d65f07cd6b20816e078866</srcmd5>
+    <version>0.24.2</version>
+    <time>1560459843</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.24.2
+  * Fix TypeError
+- Update to 0.24.1
+  * delay creating wrapper until we need to execute
+- Update to 0.24.0
+  * finish transition to pytest
+  * Finish updates to stream_handler
+  * remove local bash kernel and point to calysto_bash  
+</comment>
+    <requestid>709559</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>fd3d69ef002f6418b18afb6a1c942f37</srcmd5>
+    <version>0.24.2</version>
+    <time>1565695174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722218</requestid>
+  </revision>
+</revisionlist>

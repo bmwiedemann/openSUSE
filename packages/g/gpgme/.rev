@@ -1,0 +1,609 @@
+<revisionlist>
+  <revision rev="1" vrev="9">
+    <srcmd5>6aac2fd6e235ad84bf932ad558fe1a07</srcmd5>
+    <version>1.1.2</version>
+    <time>1168902934</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="41">
+    <srcmd5>889d35de92d716b0bdd599a6cc2b130d</srcmd5>
+    <version>1.1.2</version>
+    <time>1170632884</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1fc70a896bfa448e9365729c255d5f38</srcmd5>
+    <version>1.1.4</version>
+    <time>1173661130</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8de74345f131accefe11dbb38bb7c3ce</srcmd5>
+    <version>1.1.4</version>
+    <time>1173743586</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="17">
+    <srcmd5>43a5cf1f737bab65a3544e39f9140a12</srcmd5>
+    <version>1.1.4</version>
+    <time>1179325236</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>15a648b8eeec895db19d04a2d4b60427</srcmd5>
+    <version>1.1.5</version>
+    <time>1185541815</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>52692407dfe541776b73527696f4a5e3</srcmd5>
+    <version>1.1.5</version>
+    <time>1186436358</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>e46f91a0eb65b12fcefdaeda884f1f11</srcmd5>
+    <version>1.1.5</version>
+    <time>1186439540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>93db1aab7592041ee6edeee0b90443a7</srcmd5>
+    <version>1.1.5</version>
+    <time>1186527133</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="58">
+    <srcmd5>f0739668a211c35220fcd31d330feab1</srcmd5>
+    <version>1.1.5</version>
+    <time>1199136149</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c809fd50144c071bc77e42231e44f9a9</srcmd5>
+    <version>1.1.6</version>
+    <time>1202501895</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="25">
+    <srcmd5>f95e5eee67443189f7a64f07709d48ee</srcmd5>
+    <version>1.1.6</version>
+    <time>1207829863</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="96">
+    <srcmd5>f95e5eee67443189f7a64f07709d48ee</srcmd5>
+    <version>1.1.6</version>
+    <time>1207829863</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c73fdac50f31975df7d481cfcb288b71</srcmd5>
+    <version>1.1.7</version>
+    <time>1231869486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0a3c725607aef301ac46e71115dc3676</srcmd5>
+    <version>1.1.8</version>
+    <time>1235077876</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>98767b3b2181ecd3a482f2e5cf53b874</srcmd5>
+    <version>1.1.8</version>
+    <time>1243938795</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>812ab25ca8d07d7c4fea5430b8de5197</srcmd5>
+    <version>1.1.8</version>
+    <time>1244021804</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>7cfef084a4770a79b6457540b76088ce</srcmd5>
+    <version>1.1.8</version>
+    <time>1244821860</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>da3aeb5669297a61a0f34a7b3e6d64fc</srcmd5>
+    <version>1.2.0</version>
+    <time>1246287045</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>da3aeb5669297a61a0f34a7b3e6d64fc</srcmd5>
+    <version>1.2.0</version>
+    <time>1246287045</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>640674db9bd12d0f39c9d46115cf35ef</srcmd5>
+    <version>1.2.0</version>
+    <time>1265375809</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpgme based on submit request 31530 from user coolo
+</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>2f3175af5bebeb723d7c62384d834970</srcmd5>
+    <version>1.2.0</version>
+    <time>1268923857</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>75ae4b3b047c7fcad76efd561c87b59c</srcmd5>
+    <version>1.3.0</version>
+    <time>1270128574</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpgme based on submit request 36537 from user puzel
+</comment>
+    <requestid>36537</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>f738408eb653f7f63f8bc1edc3c07202</srcmd5>
+    <version>1.3.0</version>
+    <time>1270486757</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpgme based on submit request 36953 from user oertel
+</comment>
+    <requestid>36953</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>d127fe8a678020be34cf12a30e9e9720</srcmd5>
+    <version>1.3.0</version>
+    <time>1271370221</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpgme based on submit request 37977 from user dirkmueller
+</comment>
+    <requestid>37977</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>d127fe8a678020be34cf12a30e9e9720</srcmd5>
+    <version>1.3.0</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>d127fe8a678020be34cf12a30e9e9720</srcmd5>
+    <version>1.3.0</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>c1225ebbd1e81f6ee29bc3d59ebc0f18</srcmd5>
+    <version>1.3.0</version>
+    <time>1295013787</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58126 from user coolo
+</comment>
+    <requestid>58126</requestid>
+  </revision>
+  <revision rev="29" vrev="7">
+    <srcmd5>f417fded8a8e865af87392029f2bf2b0</srcmd5>
+    <version>1.3.0</version>
+    <time>1295013794</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58126
+</comment>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>48ac2517d3e4f1bb1ccb78497e38a92b</srcmd5>
+    <version>1.3.0</version>
+    <time>1296606828</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59568 from user elvigia
+</comment>
+    <requestid>59568</requestid>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>a744deb9da8e506b86d28d359d337e7a</srcmd5>
+    <version>1.3.0</version>
+    <time>1296606838</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59568
+</comment>
+  </revision>
+  <revision rev="32" vrev="10">
+    <srcmd5>0420d3a5eb083e8b95212a8a6eca5e6e</srcmd5>
+    <version>1.3.0</version>
+    <time>1296846875</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60085 from user sbrabec
+</comment>
+    <requestid>60085</requestid>
+  </revision>
+  <revision rev="33" vrev="11">
+    <srcmd5>3f236dfbbae8a70a43d7163eb3b138d5</srcmd5>
+    <version>1.3.0</version>
+    <time>1296846886</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 60085
+</comment>
+  </revision>
+  <revision rev="34" vrev="14">
+    <srcmd5>3f236dfbbae8a70a43d7163eb3b138d5</srcmd5>
+    <version>1.3.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="35" vrev="15">
+    <srcmd5>5d55332166577261c059b345c10aa19d</srcmd5>
+    <version>1.3.0</version>
+    <time>1304406540</time>
+    <user>saschpe</user>
+    <comment>Fix test failure with the new gnupg</comment>
+    <requestid>69198</requestid>
+  </revision>
+  <revision rev="36" vrev="16">
+    <srcmd5>8f0a3a42ae0154e7355e1d6894445b18</srcmd5>
+    <version>1.3.0</version>
+    <time>1304406551</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69198
+</comment>
+  </revision>
+  <revision rev="37" vrev="15">
+    <srcmd5>e60fd0d51647ad6f08088ccd57d27735</srcmd5>
+    <version>1.3.1</version>
+    <time>1312185644</time>
+    <user>saschpe</user>
+    <comment>update to 1.3.1</comment>
+    <requestid>77451</requestid>
+  </revision>
+  <revision rev="38" vrev="16">
+    <srcmd5>03bff5664b71032df5abd839dc7b51e4</srcmd5>
+    <version>1.3.1</version>
+    <time>1312185687</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77451
+</comment>
+  </revision>
+  <revision rev="39" vrev="17">
+    <srcmd5>bf0acf18413009c52bc196102db2f926</srcmd5>
+    <version>1.3.1</version>
+    <time>1316766928</time>
+    <user>saschpe</user>
+    <comment>+- Move gpg2 Requires from gpgme to libgpgme11 since it's the
++  library that will call the binary when it needs it.
++  Fix bnc#715963.
++- Add libgpgme11 Requires to gpgme as this package makes no sense
++  without the library.</comment>
+    <requestid>84556</requestid>
+  </revision>
+  <revision rev="40" vrev="18">
+    <srcmd5>45ddeb1cbb41fdfc3223ec20856246ac</srcmd5>
+    <version>1.3.1</version>
+    <time>1317626398</time>
+    <user>lrupp</user>
+    <comment>- Workaround qemu-arm bugs 
+- remove support for the &quot;pth&quot; library, which has not seen
+  mainteniance for around 5 years, native pthread support
+  should be just fine in linux too. (forwarded request 86071 from elvigia)</comment>
+    <requestid>86074</requestid>
+  </revision>
+  <revision rev="41" vrev="20">
+    <srcmd5>45ddeb1cbb41fdfc3223ec20856246ac</srcmd5>
+    <version>1.3.1</version>
+    <time>1319181939</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="42" vrev="21">
+    <srcmd5>5b258c90e2574063730ae94bd4393300</srcmd5>
+    <version>1.3.1</version>
+    <time>1324475806</time>
+    <user>coolo</user>
+    <comment>- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>97184</requestid>
+  </revision>
+  <revision rev="43" vrev="23">
+    <srcmd5>5b258c90e2574063730ae94bd4393300</srcmd5>
+    <version>1.3.1</version>
+    <time>1340183407</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>2072a17ef261e81653ff0577c1ad1d99</srcmd5>
+    <version>1.3.2</version>
+    <time>1353403603</time>
+    <user>coolo</user>
+    <comment>update to 1.3.2 (forwarded request 141603 from AndreasStieger)</comment>
+    <requestid>141695</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>2072a17ef261e81653ff0577c1ad1d99</srcmd5>
+    <version>1.3.2</version>
+    <time>1359108995</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>04dcaaf055aba944be037b6c26bbeca2</srcmd5>
+    <version>1.4.0</version>
+    <time>1362898196</time>
+    <user>coolo</user>
+    <comment>update to 1.4.0 (forwarded request 157160 from AndreasStieger)</comment>
+    <requestid>158127</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>c4f31e1b51ea185d58469391cdd8ee11</srcmd5>
+    <version>1.4.0</version>
+    <time>1363124239</time>
+    <user>coolo</user>
+    <comment>- gpgme-config --libs lists -lassuan, but libgpgme-devel did not 
+  require libassuan-devel [bnc#808882] (forwarded request 158744 from AndreasStieger)</comment>
+    <requestid>158759</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>16b85c90b8002e9c51b27dd182a0f879</srcmd5>
+    <version>1.4.0</version>
+    <time>1369719447</time>
+    <user>coolo</user>
+    <comment>license update: LGPL-2.1+ and GPL-3.0+
+See the HACKING file in the doc directory (forwarded request 176432 from babelworx)</comment>
+    <requestid>176516</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>4084b14187e141b9cbbada79be32bd65</srcmd5>
+    <version>1.4.3</version>
+    <time>1376911891</time>
+    <user>scarabeus_factory</user>
+    <comment>gpgme 1.4.3 (forwarded request 186940 from AndreasStieger)</comment>
+    <requestid>186968</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>4084b14187e141b9cbbada79be32bd65</srcmd5>
+    <version>1.4.3</version>
+    <time>1379662547</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>94c0d47538e14e0e14aa14d040ea0e18</srcmd5>
+    <version>1.5.0</version>
+    <time>1401184262</time>
+    <user>coolo</user>
+    <comment>gpgme 1.5.0 (forwarded request 234969 from AndreasStieger)</comment>
+    <requestid>235001</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>7ce322f80be567dc01e572cb00e372ce</srcmd5>
+    <version>1.5.1</version>
+    <time>1407265863</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243617</requestid>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>7ce322f80be567dc01e572cb00e372ce</srcmd5>
+    <version>1.5.1</version>
+    <time>1409301088</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>45801c73bd549b7dbaf091cfa2196a6f</srcmd5>
+    <version>1.5.2</version>
+    <time>1418978481</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264369</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>5b93a4a851d4ec449a0e7a7cfde9f42d</srcmd5>
+    <version>1.5.3</version>
+    <time>1420021310</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266599</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>3856ea8fbc9302fdd0bfc5b117aa4284</srcmd5>
+    <version>1.5.3</version>
+    <time>1423216541</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284168</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>aebc29d130f9b6c5c2c447516135c6c2</srcmd5>
+    <version>1.5.4</version>
+    <time>1429658072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297887</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>4d45f39e67e3158cd49b6e40ac17067b</srcmd5>
+    <version>1.5.5</version>
+    <time>1434133743</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311507</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>b53bc20132334663ae64225b52c57b16</srcmd5>
+    <version>1.5.5</version>
+    <time>1436111812</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312750</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>e0e5c57670b2167322369ee5c420ae72</srcmd5>
+    <version>1.6.0</version>
+    <time>1440871416</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327220</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>bdb77cf497d0d2867c0f00aafbbe54a2</srcmd5>
+    <version>1.6.0</version>
+    <time>1443071795</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331774</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>f745886187f8c1d7b8581fee14e0cac4</srcmd5>
+    <version>1.7.0</version>
+    <time>1476778127</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434682</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>4a44458303b1a3451df19108673cea80</srcmd5>
+    <version>1.7.1</version>
+    <time>1476997587</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436482</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>3d9f04d779536b72b4b20a02ce4cc492</srcmd5>
+    <version>1.7.1</version>
+    <time>1477649682</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436770</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>7256b265bb7fadd1717412f3b650a407</srcmd5>
+    <version>1.8.0</version>
+    <time>1479837396</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441107</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>939cf072a99365b82e14398dbe84fb62</srcmd5>
+    <version>1.8.0</version>
+    <time>1480025753</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441557</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>1c9a081ddad53559f9b7c81e1adc9e34</srcmd5>
+    <version>1.8.0</version>
+    <time>1487260119</time>
+    <user>dimstar_suse</user>
+    <comment>- Unconditionalize python and python3 builds
+- Unconditionalize c++ build
+
+- Fix RPM groups
+
+- Do not condition around the qt version as it breaks baselibs validator
+
+- gpgme-include_functional.patch: include &lt;functional&gt; where
+  needed, fix GCC7 build</comment>
+    <requestid>457046</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>dd4ee64eef672abf6b536aa87fe2a1e5</srcmd5>
+    <version>1.9.0</version>
+    <time>1491565947</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483280</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>db620c4358478b0428f9cda399a80f8c</srcmd5>
+    <version>1.9.0</version>
+    <time>1510659487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539778</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>4fb43941569af243229b98f970b4d0b5</srcmd5>
+    <version>1.10.0</version>
+    <time>1514027765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556535</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>61a52293556b5ac890b0f8bc5e0e1a9f</srcmd5>
+    <version>1.10.0</version>
+    <time>1516091436</time>
+    <user>dimstar_suse</user>
+    <comment>- Tweak up the python conditional to allow us finegraining and
+  selecting only py2 or py3 if needed</comment>
+    <requestid>562462</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>fc5d45810cdf44ee549a46632cfe4e72</srcmd5>
+    <version>1.10.0</version>
+    <time>1523956521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597146</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>2c8b5bb7c089e39204f8c5a0fca2029d</srcmd5>
+    <version>1.11.1</version>
+    <time>1524400580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599483</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>056c5dde30070a7fb9faea1a9ff20341</srcmd5>
+    <version>1.12.0</version>
+    <time>1539342505</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the build on ix86 as we disable one test there that should
+  not work, sadly just sed is employed as the infrastructure for
+  testing is not smart enough for comfy test filtering
+
+- Update to 1.12.0:
+ * Enhanced the JSON based interface tool gpgme-json to support Native
+   Messaging as well as new Javascript code to support the browser
+   site.  See lang/js/README for details.
+ * Major overhaul of the Python language bindings documentation
+ * Even for old versions of gpg a missing MDC will now lead to a
+   decryption failure
+ * Added context flag &quot;auto-key-locate&quot; to control the
+   behavior of GPGME_KEYLIST_MODE_LOCATE
+ * New data function to create a data object from an estream
+ * Add more interfaces to the C++ binding
+ * Improved error codes on decryption failure
+ * Lots of minor fixes
+ * Interface changes</comment>
+    <requestid>640833</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>f95e82a65bf5e03dac7cc01b64710f57</srcmd5>
+    <version>1.12.0</version>
+    <time>1547022500</time>
+    <user>dimstar_suse</user>
+    <comment>- Regen keys in Qt tests to not expire bsc#1121051:
+  * gpgme-key-expirity.patch</comment>
+    <requestid>664017</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>1b2d9c3152a0b61f3ab709ea5cf8d994</srcmd5>
+    <version>1.13.0</version>
+    <time>1554372003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690263</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>cbb315030e379ca65e067fa45992beb3</srcmd5>
+    <version>1.13.1</version>
+    <time>1560760210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710077</requestid>
+  </revision>
+</revisionlist>

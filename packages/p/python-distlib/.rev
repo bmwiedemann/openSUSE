@@ -1,0 +1,180 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>83789e4b34ed298b76d7b2548a4060e7</srcmd5>
+    <version>0.2.8</version>
+    <time>1552207233</time>
+    <user>coolo</user>
+    <comment>- Convert to single spec
+- Activate test suite
+- Change license to Python-2.0 to match sdist
+- Update URL to https://bitbucket.org/pypa/distlib
+- Remove unnecessary build dependency on python-devel
+- Add fdupes
+- Remove unnecessary backports with remove-backports.patch
+- Update to v0.2.8
+  * database
+    + Fixed #108: Updated metadata scan to look for the METADATA file as well
+      as the JSON formats.
+  * locators
+    + Handled wheel tags and platform-dependent downloads correctly
+      in SimpleScrapingLocator.
+  * metadata
+    + Updated documentation on testing to include information on
+      setting PYTHONHASHSEED.
+  * scripts
+    + Avoided unnecessary newlines in script preambles, which caused
+      problems with detecting encoding declarations.
+  * util
+    + Removed existing files (which might have been symlinks) before
+      overwriting.
+- from v0.2.7
+  * compat
+    + cache_from_source is now imported from importlib.util where
+      available.
+  * database
+    + InstalledDistributions now have a modules attribute which
+      is a list of top-level modules as read from top_level.txt, if that is in
+      the distribution info.
+  * locators
+    + Fixed #103: Thanks to Saulius Žemaitaitis for the patch.
+  * metadata
+    + Added support for PEP 566 / Metadata 1.3.
+  * scripts
+    + Updated launcher binaries.
+- from v0.2.6
+  * compat
+    + Updated to handle a case where sys.getfilesystemencoding()
+      returns None.
+  * database
+    + Eliminated a crash in EggInfoDistribution.list_distinfo_files()
+      which was caused by trying to open a non-existent file.
+    + Handled a case where an installed distribution didn't have 'Provides:'
+      metadata.
+  * locators
+    + SimpleScrapingLocator no longer fails prematurely when scraping
+      links due to invalid versions.
+  * markers
+    + Improved error messages issued when interpreting markers
+  * scripts
+    + Improved the shebangs written into installed scripts when the interpreter
+      path is very long or contains spaces (to cater for a limitation in shebang
+      line parsing on Linux)
+    + Updated launcher binaries.
+  * Numerous test refinements
+- from v0.2.5
+  * general
+    + Changed regular expressions to be compatible with 3.6 as regards escape
+      sequences.
+    + Closed some resource leaks related to XML-RPC proxies.
+    + Removed Python 2.6 from the support list.
+  * locators
+    + Made downloadability a factor in scoring URLs for preferences.
+  * markers
+    + Replaced the implementation with code which parses requirements in
+      accordance with PEP 508 and evaluates marker expressions according to
+      PEP 508.
+  * util
+    + Changed _csv_open to use utf-8 across all platforms on Python 3.x.
+  * wheel
+    + Changed to look for metadata in metadata.json as well as pydist.json.
+  * version
+    + Updated requirement parsing in version matchers to use the new
+      PEP 508-compliant code.
+  * Numerous test refinements
+- from v0.2.4
+  * compat
+    + Updated to not fail on import if SSL is unavailable.
+  * index
+    + Switch from using gpg in preference to gpg2 for signing. This is
+      to avoid gpg2's behaviour of prompting for passwords, which interferes
+      with the tests on some machines.
+  * locators
+    + Changed project name comparisons to follow PEP 503.
+    + Added errors queue to Locator.
+  * manifest
+    + Changed match logic to work under Python 3.6, due to differences in
+      how fnmatch.translate behaves.
+  * resources
+    + Updated finder registry logic to reflect changes in Python 3.6.
+  * scripts
+    + Fixed regular expression in generated script boilerplate.
+  * util
+    + Updated to not fail on import if SSL is unavailable.
+    + Added normalize_name for project name comparisons using PEP 503.
+  * tests
+    + Updated to skip certain tests if SSL is unavailable.
+    + Numerous other test refinements.
+- from v0.2.3
+  * util
+    + Changed get_executable to return Unicode rather than bytes.
+    + Fixed #84: Allow + character in output script names.
+    + Relaxed too-stringent test looking for application/json in headers.
+  * wheel
+    + sorted the entries in RECORD before writing to file.
+  * Numerous test refinements.
+- from v0.2.2
+  * database
+    + Added support for detecting distributions installed by wheel
+      versions &gt;= 0.23 (which use metadata.json rather than pydist.json).
+  * locators
+    + Updated default PyPI URL to https://pypi.python.org/pypi
+  * metadata
+    + Updated to use different formatting for description field for V1.1
+      metadata.
+    + Corrected &quot;classifier&quot; to &quot;classifiers&quot; in the mapping for V1.0
+      metadata.
+  * scripts
+    + Improved support for Jython when quoting executables in output scripts.
+  * util
+    + Made the internal URL used for extended metadata fetches
+      configurable via a module attribute.
+    + Improved entry point parsing to handle leading spaces in
+      ini-format files.
+  * docs
+    + Numerous documentation updates, not detailed further here.
+  * tests
+    + renamed environment variable SKIP_SLOW to SKIP_ONLINE in tests and
+      applied to some more tests.
+    + Numerous other test refinements.
+- from v0.2.1
+  * locators
+    + Return a Distribution instance or None from ``locate()``.
+    + Skipped special keys when looking for versions.
+    + Improved behaviour of PyPIJSONLocator to be analogous to that of other
+      locators.
+  * resource
+    + Added resource iterator functionality.
+  * scripts
+    + Updated launchers to decode shebangs using UTF-8. This allows
+      non-ASCII pathnames to be correctly handled.
+    + Ensured that the executable written to shebangs is normcased.
+    + Changed ScriptMaker to work better under Jython.
+  * util
+    + Changed the mode setting method to work better under Jython.
+    + Changed get_executable() to return a normcased value.
+  * wheel
+    + Handled multiple-architecture wheel filenames correctly.
+  * docs
+    + Numerous documentation updates, not detailed further here.
+  * Numerous test refinements.
+- Initial packaging of v0.2.0
+</comment>
+    <requestid>682878</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>40b4357a0f03380aafa2595e805d8d8b</srcmd5>
+    <version>0.2.8</version>
+    <time>1553611476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688209</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>26bba4366c976dda8b8b9d31250564de</srcmd5>
+    <version>0.2.8</version>
+    <time>1554384181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691517</requestid>
+  </revision>
+</revisionlist>

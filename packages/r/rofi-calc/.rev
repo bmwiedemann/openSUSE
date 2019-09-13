@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de00e22852143cc0a524e7468fe17a75</srcmd5>
+    <version>1.0</version>
+    <time>1552572055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0:
+  * Better dependency form 
+  * Check for cairo 
+  * Add qalculate version warning
+  * Use pluginsdir for installation 
+  * Do not hardcode rofi path
+- Import 0.1+20180729.f24ac5e from home:siegel
+</comment>
+    <requestid>684710</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5a13122ba51426b4611f2f6c8b44def6</srcmd5>
+    <version>1.0</version>
+    <time>1552643534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685154</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2578d6b10e21ad9439c2ae9d9123e614</srcmd5>
+    <version>1.1</version>
+    <time>1554115229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1:
+  * Add -calc-command to specify a shell command (#3)
+  * Execute with last_result from qalc when Ctrl+Enter is pressed (#3)</comment>
+    <requestid>690267</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b9f8c301244856ed5716a3dc2bec406</srcmd5>
+    <version>1.3</version>
+    <time>1554276482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3:
+  * Add -no-bold flag to disable bold results
+  * Implement -terse option</comment>
+    <requestid>690622</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>191fcdaa19b506f8fe112eb22b17b524</srcmd5>
+    <version>1.4</version>
+    <time>1556023018</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.4:
+  * Fix parsing result with -terse 
+  * Add history feature (#6)</comment>
+    <requestid>696928</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4e9b34b1a69913f835c4205e76c25907</srcmd5>
+    <version>1.5</version>
+    <time>1556622010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5:
+  * Fix invalid free in case rofi dir didn't already exist
+
+  * Fix parsing result with -terse
+  * Add history feature (#6)</comment>
+    <requestid>697393</requestid>
+  </revision>
+</revisionlist>

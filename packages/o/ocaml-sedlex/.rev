@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5436885478c57235fd7df15d7efd003</srcmd5>
+    <version>1.99.4</version>
+    <time>1530866382</time>
+    <user>dimstar_suse</user>
+    <comment>Unicode-friendly lexer generator.
+
+It is a dependency of the next version of Haxe(4.0.0).</comment>
+    <requestid>619897</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1a14d7d797368931aa67c1e4688bb519</srcmd5>
+    <version>1.99.4</version>
+    <time>1547211959</time>
+    <user>dimstar_suse</user>
+    <comment>Add ppx_tools_versioned-521.patch that fixes compatibility with ppx_tools_versioned 5.2.1.
+</comment>
+    <requestid>664426</requestid>
+  </revision>
+</revisionlist>

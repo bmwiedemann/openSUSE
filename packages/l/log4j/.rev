@@ -1,0 +1,201 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>26d62e688abc2a7f18ef18e95169918f</srcmd5>
+    <version>1.2.15</version>
+    <time>1210838129</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="2" vrev="14">
+    <srcmd5>4da2585303b8ff57e1346579064d8288</srcmd5>
+    <version>1.2.15</version>
+    <time>1214592742</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="26">
+    <srcmd5>dbda44120b367e28644caa9fef9ae25f</srcmd5>
+    <version>1.2.15</version>
+    <time>1216207215</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="103">
+    <srcmd5>f00c218ae1b8023a0a561c1dfbc64446</srcmd5>
+    <version>1.2.15</version>
+    <time>1245365802</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="105">
+    <srcmd5>f00c218ae1b8023a0a561c1dfbc64446</srcmd5>
+    <version>1.2.15</version>
+    <time>1245365802</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="106">
+    <srcmd5>01ee3132d2f1862583292613797c264e</srcmd5>
+    <version>1.2.15</version>
+    <time>1260536997</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/log4j based on submit request 26174 from user mvyskocil
+</comment>
+  </revision>
+  <revision rev="7" vrev="107">
+    <srcmd5>7c05fee5c9d5f60309c7ecfa266c8d87</srcmd5>
+    <version>1.2.15</version>
+    <time>1268924843</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="109">
+    <srcmd5>7c05fee5c9d5f60309c7ecfa266c8d87</srcmd5>
+    <version>1.2.15</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="110">
+    <srcmd5>7c05fee5c9d5f60309c7ecfa266c8d87</srcmd5>
+    <version>1.2.15</version>
+    <time>1278678594</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="113">
+    <srcmd5>7c05fee5c9d5f60309c7ecfa266c8d87</srcmd5>
+    <version>1.2.15</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="115">
+    <srcmd5>7c05fee5c9d5f60309c7ecfa266c8d87</srcmd5>
+    <version>1.2.15</version>
+    <time>1319182157</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="116">
+    <srcmd5>df71b6a4388563e723477b306ede961c</srcmd5>
+    <version>1.2.15</version>
+    <time>1323192424</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="117">
+    <srcmd5>637ef470ae255cd2e23ec90b08fabffe</srcmd5>
+    <version>1.2.15</version>
+    <time>1323192427</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="119">
+    <srcmd5>637ef470ae255cd2e23ec90b08fabffe</srcmd5>
+    <version>1.2.15</version>
+    <time>1340183671</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="121">
+    <srcmd5>637ef470ae255cd2e23ec90b08fabffe</srcmd5>
+    <version>1.2.15</version>
+    <time>1359109406</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="122">
+    <srcmd5>287aa3e83abdb35f7bb6cc3e2012468c</srcmd5>
+    <version>1.2.15</version>
+    <time>1378985259</time>
+    <user>scarabeus_factory</user>
+    <comment>- log4j and log4j-mini are in conflict 
+
+- Move from jpackage-utils to javapackage-tools
+
+- get rid of wrong dir modifier in filelist
+
+- log4j and log4j-mini are in conflict 
+
+- Move from jpackage-utils to javapackage-tools
+
+- get rid of wrong dir modifier in filelist</comment>
+    <requestid>198625</requestid>
+  </revision>
+  <revision rev="17" vrev="124">
+    <srcmd5>287aa3e83abdb35f7bb6cc3e2012468c</srcmd5>
+    <version>1.2.15</version>
+    <time>1379663185</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="126">
+    <srcmd5>287aa3e83abdb35f7bb6cc3e2012468c</srcmd5>
+    <version>1.2.15</version>
+    <time>1409301813</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>70d31119528615f76bb98ea860eda952</srcmd5>
+    <version>1.2.17</version>
+    <time>1425565968</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 1.2.17 latest 1.2 series:
+  * No short changelog provided - many small changes
+- Try to avoid cycle between log4j and apache-common-loggings
+- Remove obsoleted patch:
+  * log4j-jmx-Agent.patch
+- Refresh patch to apply to new source:
+  * log4j-mx4j-tools.patch
+
+- Cleanup with a spec-cleaner so I can understand what
+  is going around here.
+
+- Version bump to 1.2.17 latest 1.2 series:
+  * No short changelog provided - many small changes
+- Try to avoid cycle between log4j and apache-common-loggings
+- Remove obsoleted patch:
+  * log4j-jmx-Agent.patch
+- Refresh patch to apply to new source:
+  * log4j-mx4j-tools.patch
+
+- Cleanup with a spec-cleaner so I can understand what
+  is going around here.</comment>
+    <requestid>288471</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>5f4447b155216711ebe2c053270e0d8a</srcmd5>
+    <version>1.2.17</version>
+    <time>1505334503</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>523684</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>0c0a271a6baf2e8b2112ccbc21dea0ec</srcmd5>
+    <version>1.2.17</version>
+    <time>1515875686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563328</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>6a1af35c653b1b8168746aa0069dd982</srcmd5>
+    <version>1.2.17</version>
+    <time>1533627587</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>626866</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>e3809bbb2b5f5f67eedd7c4563602862</srcmd5>
+    <version>1.2.17</version>
+    <time>1541510152</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>644637</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>d8772779227da2b5263474454c2d2c79</srcmd5>
+    <version>1.2.17</version>
+    <time>1549140287</time>
+    <user>coolo</user>
+    <comment>Build against generic providers</comment>
+    <requestid>668996</requestid>
+  </revision>
+</revisionlist>

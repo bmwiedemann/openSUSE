@@ -1,0 +1,5 @@
+<package name="kproperty" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Extra" package="kproperty"/>
+</package>

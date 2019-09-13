@@ -1,0 +1,5 @@
+<package name="borgmatic" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Archiving:Backup" package="borgmatic"/>
+</package>

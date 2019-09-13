@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e68a1150c897482512de553a72f8a09c</srcmd5>
+    <version>1.3.1</version>
+    <time>1422521643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>282762</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a692c316ba6b94bff4b615a9f4892f2e</srcmd5>
+    <version>1.3.1</version>
+    <time>1425031770</time>
+    <user>dimstar_suse</user>
+    <comment>- new patch harminv_change_protos_with_harminv_complex.patch
+  required for ppc64 architecture to avoid make check error
+  while building meep package.</comment>
+    <requestid>287855</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0b42575fd41e5b252c630a7923625a9</srcmd5>
+    <version>1.4.1</version>
+    <time>1543224542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651311</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a68e958065fb06050789480eb623589c</srcmd5>
+    <version>1.0</version>
+    <time>1465596044</time>
+    <user>dimstar_suse</user>
+    <comment>conkeror is firefox/xulrunner based web browser with UI and controls reworked to mimic Emacs</comment>
+    <requestid>393914</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>62c5480727b292a65ff0d0de6d3fe293</srcmd5>
+    <version>1.0.3</version>
+    <time>1475242503</time>
+    <user>dimstar_suse</user>
+    <comment>- bump to 1.0.3 release
+- remove patches:
+   fix-for-old-make.patch
+- new patches:
+   0001-Use-new-nsIPermission-api.patch
+   0001-modules-download-manager.js-Fix-bug-preventing-compl.patch
+   0001-application.ini-Fix-Goanna-version-number.patch (forwarded request 431213 from sleep_walker)</comment>
+    <requestid>431214</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>407d9cd644b472141f4591471e5363a7</srcmd5>
+    <version>1.0.3</version>
+    <time>1476109444</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433759</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c75c2630d9df15567df12192c548a6db</srcmd5>
+    <version>1.0.4</version>
+    <time>1515505949</time>
+    <user>dimstar_suse</user>
+    <comment>improved changelog
+
+- bump to 1.0.4 release
+   Changes:
+     * use new nsIPermission API
+     * fix download manager
+     * fix Goanna version number in application.ini
+     * update seearch engines definitions
+     * eliminate strict mode warnings in keyword.js and key-kill.js
+     * fix request for password dialog in HTTP(S) auth
+- drop patches as they are already applied
+   0001-Use-new-nsIPermission-api.patch
+   0001-modules-download-manager.js-Fix-bug-preventing-compl.patch
+   0001-application.ini-Fix-Goanna-version-number.patch</comment>
+    <requestid>561635</requestid>
+  </revision>
+</revisionlist>

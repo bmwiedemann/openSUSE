@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a30bb6cb9d98b28aeab59a0e4c240d2</srcmd5>
+    <version>1.1.5</version>
+    <time>1503926112</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by several octave-forge packages that are already in openSUSE:Factory</comment>
+    <requestid>518591</requestid>
+  </revision>
+</revisionlist>

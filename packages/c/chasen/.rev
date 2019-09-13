@@ -1,0 +1,156 @@
+<revisionlist>
+  <revision rev="1" vrev="99">
+    <srcmd5>dacb4117291abd529c6777b6ca0401a9</srcmd5>
+    <version>2.3.3</version>
+    <time>1168902411</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6a6b5f9d5aeece0ffcb9150f1c0c5865</srcmd5>
+    <version>2.4.2</version>
+    <time>1197550881</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="31">
+    <srcmd5>d0f8e88df48460465e29091362c9be65</srcmd5>
+    <version>2.4.2</version>
+    <time>1214255161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="54">
+    <srcmd5>52d86ff9bbc875ed159cb1b031cf5a47</srcmd5>
+    <version>2.4.2</version>
+    <time>1245337468</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="55">
+    <srcmd5>d1361a85e2d4ed54c06c7717a9f0d56b</srcmd5>
+    <version>2.4.2</version>
+    <time>1248171844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="57">
+    <srcmd5>d1361a85e2d4ed54c06c7717a9f0d56b</srcmd5>
+    <version>2.4.2</version>
+    <time>1248171844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="58">
+    <srcmd5>fe8debbd53959e0ee96e61eb9f5f8e4c</srcmd5>
+    <version>2.4.2</version>
+    <time>1268923167</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="60">
+    <srcmd5>fe8debbd53959e0ee96e61eb9f5f8e4c</srcmd5>
+    <version>2.4.2</version>
+    <time>1278667339</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="61">
+    <srcmd5>fe8debbd53959e0ee96e61eb9f5f8e4c</srcmd5>
+    <version>2.4.2</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="62">
+    <srcmd5>d935d68147a78db3ff65c4e34ef65f6d</srcmd5>
+    <version>2.4.2</version>
+    <time>1292241843</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55646 from user coolo
+</comment>
+    <requestid>55646</requestid>
+  </revision>
+  <revision rev="11" vrev="63">
+    <srcmd5>ba7284d9030223a5c0e911a4b60bf10f</srcmd5>
+    <version>2.4.2</version>
+    <time>1292241848</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55646
+</comment>
+  </revision>
+  <revision rev="12" vrev="66">
+    <srcmd5>ba7284d9030223a5c0e911a4b60bf10f</srcmd5>
+    <version>2.4.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="67">
+    <srcmd5>f3450b19412cd2e333098453c2c72da3</srcmd5>
+    <version>2.4.2</version>
+    <time>1316619373</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 83080 from Lazy_Kent)</comment>
+    <requestid>83899</requestid>
+  </revision>
+  <revision rev="14" vrev="68">
+    <srcmd5>b59d0b2af55348fd64d7e2b6ddeff14f</srcmd5>
+    <version>2.4.2</version>
+    <time>1317626061</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85965 from coolo)</comment>
+    <requestid>86114</requestid>
+  </revision>
+  <revision rev="15" vrev="70">
+    <srcmd5>b59d0b2af55348fd64d7e2b6ddeff14f</srcmd5>
+    <version>2.4.2</version>
+    <time>1319181808</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="71">
+    <srcmd5>3f111a879f0da3aa15a43eb2d80819ca</srcmd5>
+    <version>2.4.2</version>
+    <time>1323190968</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>88d6231e55e6c0212f5b3e7a2e4eab65</srcmd5>
+    <version>2.4.4</version>
+    <time>1338902980</time>
+    <user>coolo</user>
+    <comment> (forwarded request 123325 from MargueriteSu)</comment>
+    <requestid>123326</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>88d6231e55e6c0212f5b3e7a2e4eab65</srcmd5>
+    <version>2.4.4</version>
+    <time>1340183233</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>88d6231e55e6c0212f5b3e7a2e4eab65</srcmd5>
+    <version>2.4.4</version>
+    <time>1359108741</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>88d6231e55e6c0212f5b3e7a2e4eab65</srcmd5>
+    <version>2.4.4</version>
+    <time>1379662103</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>88d6231e55e6c0212f5b3e7a2e4eab65</srcmd5>
+    <version>2.4.4</version>
+    <time>1409300634</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>0e97812ce514ca835b6f25824004736c</srcmd5>
+    <version>2.4.4</version>
+    <time>1510322281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540228</requestid>
+  </revision>
+</revisionlist>

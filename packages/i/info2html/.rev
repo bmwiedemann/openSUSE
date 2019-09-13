@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f879a90b9a7f6603c1d42a5c08ac9ae2</srcmd5>
+    <version>2.0</version>
+    <time>1168903047</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="104">
+    <srcmd5>5d4c3aa574824cadbbab4ecd4d6fa21d</srcmd5>
+    <version>2.0</version>
+    <time>1197925750</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="193">
+    <srcmd5>5d4c3aa574824cadbbab4ecd4d6fa21d</srcmd5>
+    <version>2.0</version>
+    <time>1197925750</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="194">
+    <srcmd5>b46d090677528437ce0dcd6e6349b4cc</srcmd5>
+    <version>2.0</version>
+    <time>1245364167</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="196">
+    <srcmd5>b46d090677528437ce0dcd6e6349b4cc</srcmd5>
+    <version>2.0</version>
+    <time>1245364167</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="197">
+    <srcmd5>4e1a423bc9c79ba4df10acddb5e5b84f</srcmd5>
+    <version>2.0</version>
+    <time>1268924015</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="199">
+    <srcmd5>4e1a423bc9c79ba4df10acddb5e5b84f</srcmd5>
+    <version>2.0</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="200">
+    <srcmd5>4e1a423bc9c79ba4df10acddb5e5b84f</srcmd5>
+    <version>2.0</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="201">
+    <srcmd5>6050953022a700dccae16a1f6245295a</srcmd5>
+    <version>2.0</version>
+    <time>1289866650</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53057 from user WernerFink
+</comment>
+    <requestid>53057</requestid>
+  </revision>
+  <revision rev="10" vrev="202">
+    <srcmd5>807b95fc4c8f2bed06461d3372f30f3d</srcmd5>
+    <version>2.0</version>
+    <time>1289866660</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53057
+</comment>
+  </revision>
+  <revision rev="11" vrev="203">
+    <srcmd5>32dbfb0614064c03ade84047fd1c7ca6</srcmd5>
+    <version>2.0</version>
+    <time>1290094747</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53308 from user WernerFink
+</comment>
+    <requestid>53308</requestid>
+  </revision>
+  <revision rev="12" vrev="204">
+    <srcmd5>463849838f2e656b8a5fbe4a9b9a9d04</srcmd5>
+    <version>2.0</version>
+    <time>1290094762</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53308
+</comment>
+  </revision>
+  <revision rev="13" vrev="207">
+    <srcmd5>463849838f2e656b8a5fbe4a9b9a9d04</srcmd5>
+    <version>2.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="209">
+    <srcmd5>463849838f2e656b8a5fbe4a9b9a9d04</srcmd5>
+    <version>2.0</version>
+    <time>1319181988</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="210">
+    <srcmd5>682e93759911f30c694ab0e423418eaa</srcmd5>
+    <version>2.0</version>
+    <time>1323191965</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="212">
+    <srcmd5>682e93759911f30c694ab0e423418eaa</srcmd5>
+    <version>2.0</version>
+    <time>1340183460</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="214">
+    <srcmd5>682e93759911f30c694ab0e423418eaa</srcmd5>
+    <version>2.0</version>
+    <time>1359109079</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="216">
+    <srcmd5>682e93759911f30c694ab0e423418eaa</srcmd5>
+    <version>2.0</version>
+    <time>1379662667</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="218">
+    <srcmd5>682e93759911f30c694ab0e423418eaa</srcmd5>
+    <version>2.0</version>
+    <time>1409301228</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="219">
+    <srcmd5>1f46ffdd01c5286e6977ffbfe2753d16</srcmd5>
+    <version>2.0</version>
+    <time>1502560772</time>
+    <user>maxlin_factory</user>
+    <comment>- Readd a fixed version of DirnameCheck() for security
+  that is allow access even if no path for the info files had
+  been requested
+
+- Avoid DirnameCheck() as it breaks the info2html (boo#1052383)
+- Avoid $* asignment with newer perl</comment>
+    <requestid>514964</requestid>
+  </revision>
+  <revision rev="21" vrev="220">
+    <srcmd5>3bf1bbdcaab20f6bf1c40ca9c08f2c58</srcmd5>
+    <version>2.0</version>
+    <time>1513162648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555982</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,617 @@
+<revisionlist>
+  <revision rev="1" vrev="16">
+    <srcmd5>b1e54088c56e428c7598037d744a5c18</srcmd5>
+    <version>0.4.9</version>
+    <time>1168904490</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6fa9f79962539a8121d46770dbdcb2b7</srcmd5>
+    <version>0.5.7</version>
+    <time>1173744430</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a4b5f79b3c8d85a5c3b5282dfd2d6c54</srcmd5>
+    <version>0.5.7</version>
+    <time>1174375871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bfdd6338adaaea4df827d83d19239196</srcmd5>
+    <version>0.5.8</version>
+    <time>1185321773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="51">
+    <srcmd5>74ef1ef53c37671240161f4297888a03</srcmd5>
+    <version>0.5.8</version>
+    <time>1194901186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="53">
+    <srcmd5>d3ec0f918ba21757783b7ed46b0e8515</srcmd5>
+    <version>0.5.8</version>
+    <time>1195048548</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="65">
+    <srcmd5>68b7dd2b5bcaf2a9acac6598a7009374</srcmd5>
+    <version>0.5.8</version>
+    <time>1198022938</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="79">
+    <srcmd5>4acd9fbb41429e4b05e9feaae5f3b7ee</srcmd5>
+    <version>0.5.8</version>
+    <time>1201910631</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7a0e4cbb3388b8458283421d04dd18b5</srcmd5>
+    <version>0.5.10</version>
+    <time>1205255481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>d55eeaddbec3110b5c0861537f41e227</srcmd5>
+    <version>0.5.10</version>
+    <time>1205776924</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="26">
+    <srcmd5>cbb87b4886908cfdf9013ee2182cfc04</srcmd5>
+    <version>0.5.10</version>
+    <time>1210031055</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e00cf414b7a48efb1bd328abfae8806d</srcmd5>
+    <version>0.6.3</version>
+    <time>1217847765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b8961400843394af356a593fffe1f733</srcmd5>
+    <version>0.6.4</version>
+    <time>1220350618</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>1ac45604f39431ad40c9308034ceccc8</srcmd5>
+    <version>0.6.4</version>
+    <time>1222211091</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>4c9d243caba774c31788b429a1b0b5e8</srcmd5>
+    <version>0.6.4</version>
+    <time>1222705538</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>5da2d92c073331bb21c23c3bf3272387</srcmd5>
+    <version>0.6.4</version>
+    <time>1223910072</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>3a91136cdc25f623c0b763ed8f2b8dc4</srcmd5>
+    <version>0.6.4</version>
+    <time>1226416234</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>cec4451d080b30eb3fc228bf6390d754</srcmd5>
+    <version>0.6.4</version>
+    <time>1228754225</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="18">
+    <srcmd5>5c82c1bc7e62455547dd3d84797b43b6</srcmd5>
+    <version>0.6.4</version>
+    <time>1232750186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>4ad8d1cce350d8cee0bdfb59d8f65565</srcmd5>
+    <version>0.6.4</version>
+    <time>1233188393</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="22">
+    <srcmd5>9b7a7fbfc9f398bcaa8a07a42ac1b751</srcmd5>
+    <version>0.6.4</version>
+    <time>1233704796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="24">
+    <srcmd5>929ee29dbb1afd217b3a0d2b6514a84a</srcmd5>
+    <version>0.6.4</version>
+    <time>1234198848</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="25">
+    <srcmd5>1c2b17d03fb7474c22cf9950f40d3bdf</srcmd5>
+    <version>0.6.4</version>
+    <time>1235953309</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f9bb5599e4dad7b5836c6ad1f957e052</srcmd5>
+    <version>0.6.9</version>
+    <time>1241628920</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>33f8b8ab8dba1621552d4a1ee93734c1</srcmd5>
+    <version>0.6.9</version>
+    <time>1242419830</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>524345ddd6f55e4ca961cb574b8274af</srcmd5>
+    <version>0.6.9</version>
+    <time>1252579956</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wpa_supplicant based on submit request 20144 from user vbotka
+</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>524345ddd6f55e4ca961cb574b8274af</srcmd5>
+    <version>0.6.9</version>
+    <time>1252579956</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wpa_supplicant based on submit request 20144 from user vbotka
+</comment>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>e0b64d64ed93c803a1754a25ddf69435</srcmd5>
+    <version>0.6.9</version>
+    <time>1261832379</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wpa_supplicant based on submit request 27542 from user coolo
+</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9e3170b3508467db7223d702e3b8550f</srcmd5>
+    <version>0.7.1</version>
+    <time>1265913855</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wpa_supplicant based on submit request 32313 from user coolo
+</comment>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>8945fc3018a6cfdc16bd69d33cac745a</srcmd5>
+    <version>0.7.1</version>
+    <time>1268926506</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>402685bc45b24a27dd12e8a736e99e66</srcmd5>
+    <version>0.7.1</version>
+    <time>1275322651</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wpa_supplicant based on submit request 40920 from user a_jaeger
+</comment>
+    <requestid>40920</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>402685bc45b24a27dd12e8a736e99e66</srcmd5>
+    <version>0.7.1</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>402685bc45b24a27dd12e8a736e99e66</srcmd5>
+    <version>0.7.1</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>83b51f6d21d7a47160af74a7191d68a5</srcmd5>
+    <version>0.7.3</version>
+    <time>1285085598</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wpa_supplicant based on submit request 48679 from user a_jaeger
+</comment>
+    <requestid>48679</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>83b51f6d21d7a47160af74a7191d68a5</srcmd5>
+    <version>0.7.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>af0e652cc186100ed695e1d5f70711ba</srcmd5>
+    <version>0.7.3</version>
+    <time>1303395600</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 68076 from user coolo
+</comment>
+    <requestid>68076</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>92c12e0a44d1bbbd407eb916950408bf</srcmd5>
+    <version>0.7.3</version>
+    <time>1314882913</time>
+    <user>saschpe</user>
+    <comment>ghost directive for /var/run/wpa_supplicant added for tmpfs (bnc 710281) (forwarded request 80378 from vbotka)</comment>
+    <requestid>80379</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>b64d498b911bf23e24649105de099043</srcmd5>
+    <version>0.7.3</version>
+    <time>1314882922</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80379
+</comment>
+  </revision>
+  <revision rev="39" vrev="8">
+    <srcmd5>5e0db11903c5cad452550bbebb820a52</srcmd5>
+    <version>0.7.3</version>
+    <time>1316448494</time>
+    <user>lrupp</user>
+    <comment>- Select libnl-1_1-devel (forwarded request 82471 from jengelh)</comment>
+    <requestid>82493</requestid>
+  </revision>
+  <revision rev="40" vrev="9">
+    <srcmd5>cef390959e35b377d19adf45f8c0c15c</srcmd5>
+    <version>0.7.3</version>
+    <time>1318345587</time>
+    <user>lrupp</user>
+    <comment>- use same exec line in fi.w1.wpa_supplicant1.service as in
+  fi.epitest.hostap.WPASupplicant.service
+- fix build on older distros
+- fix not using RPM_OPT_FLAGS
+- use %_smp_mflags (forwarded request 87271 from lnussel)</comment>
+    <requestid>87283</requestid>
+  </revision>
+  <revision rev="41" vrev="11">
+    <srcmd5>cef390959e35b377d19adf45f8c0c15c</srcmd5>
+    <version>0.7.3</version>
+    <time>1319182572</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="42" vrev="12">
+    <srcmd5>0ab5303e15a35dd6d9c34f3801076f4d</srcmd5>
+    <version>0.7.3</version>
+    <time>1323195197</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="43" vrev="13">
+    <srcmd5>72338897ba160acef5b9a4f1c0c39d7f</srcmd5>
+    <version>0.7.3</version>
+    <time>1326203498</time>
+    <user>coolo</user>
+    <comment>- Add wpa_supplicant-probed-cert-dbus-signal.patch to emit a D-Bus
+  signal when the AP returned the certificate of the RADIUS server
+  (bnc#574266) (forwarded request 99552 from gary_lin)</comment>
+    <requestid>99575</requestid>
+  </revision>
+  <revision rev="44" vrev="14">
+    <srcmd5>80f4d18515e1c20e5410a72c88b75aa0</srcmd5>
+    <version>0.7.3</version>
+    <time>1332239788</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 109843 from dimstar)</comment>
+    <requestid>109887</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>756cce5efb8589fd17517559ede1b62d</srcmd5>
+    <version>1.0</version>
+    <time>1337096566</time>
+    <user>coolo</user>
+    <comment>- Update to 1.0
+        * Delay STA entry removal until Deauth/Disassoc TX status
+          in AP mode. This allows the driver to use PS buffering of
+          Deauthentication and Disassociation frames when the STA
+          is in power save sleep. Only available with drivers that
+          provide TX status events for Deauth/Disassoc frames
+          (nl80211).
+        * Drop oldest unknown BSS table entries first. This makes
+          it less likely to hit connection issues in environments
+          with huge number of visible APs.
+        * Add systemd support.
+        * Add support for setting the syslog facility from the
+          config file at build time.
+        * atheros: Add support for IEEE 802.11w configuration.
+        * AP mode: Allow enable HT20 if driver supports it, by
+          setting the config parameter ieee80211n.
+        * Allow AP mode to disconnect STAs based on low ACK
+          condition (when the data connection is not working
+          properly, e.g., due to the STA going outside the range
+          of the AP).
+        * nl80211:
+         - Support GTK rekey offload.
+         - Support PMKSA candidate events. This adds support for
+           RSN pre-authentication with nl80211 interface and
+           drivers that handle roaming internally.
+        * Improved dbus interface
+        * New wpa_cli commands to setup the scan interval and
+          to support P2P and WPS/WPS ER
+        * AP mode: Add max_num_sta config option, which can be used
+          to limit the number of stations allowed to connect to the</comment>
+    <requestid>121034</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>756cce5efb8589fd17517559ede1b62d</srcmd5>
+    <version>1.0</version>
+    <time>1340184326</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>94292bc444ff57c974deb6781c440183</srcmd5>
+    <version>1.1</version>
+    <time>1355925076</time>
+    <user>coolo</user>
+    <comment>- Update to 1.1
+  * Fix EAPOL supplicant port authorization with PMKSA caching.
+  * Fix EAPOL processing when STA switches between multi-BSSes.
+  * Fix EAP-FAST with OpenSSL 1.0.1.
+  * EAP-pwd: Increase maximum number of hunting-and-pecking
+    iterations, which results in less authentication attempts
+    failing.
+  * Set state to DISCONNECTED on AP creation errors. Previously the
+    supplicant would stay in SCANNING state forever.
+  * Fix REMOVE_NETWORK to not run operations with invalid
+    current_ssid.
+  * EAP-SIM peer: Fix AT_COUNTER_TOO_SMALL use.
+  * Interworking: Fix PLMN matching with multiple entries to compare
+    all entries, not just the first one.
+  * Handle long configuration file lines more gracefully.
+  * Fix adding extra IEs in sched scan.
+  * PMKSA: Set cur_pmksa pointer during initial association.
+  * PMKSA: Do not evict the active cache entry when adding new ones.
+  * Set state consistently to DISCONNECTED on auth/assoc failures.
+  * Fix BSSID enforcement with driver-based BSS selection. Set BSSID
+    and channel when the network block has an explicit bssid
+    parameter to select which BSS is to be used.
+  * wpa_gui: Fix compilation with gcc/g++ 4.7.
+  * EAP-AKA'
+    - Update to RFC 5448 in the leading characters used in the
+      username. This will make EAP-AKA' not interoperate between the
+      earlier draft version and the new version.
+    - Fix SIM/USIM determination to support EAP-AKA'.
+  * dbus:
+    - Add global capabilities property.</comment>
+    <requestid>145628</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>94292bc444ff57c974deb6781c440183</srcmd5>
+    <version>1.1</version>
+    <time>1359110575</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>514bdbdd370bd68ecff675369ad39155</srcmd5>
+    <version>2.0</version>
+    <time>1366955226</time>
+    <user>coolo</user>
+    <comment>- Update to 2.0
+- Drop upstreamed wpa_supplicant-libnl3.patch
+- Disable obsolete Ralink driver (forwarded request 173111 from gary_lin)</comment>
+    <requestid>173359</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>91d2874a7261f01550d387db6b70418c</srcmd5>
+    <version>2.0</version>
+    <time>1378898689</time>
+    <user>coolo</user>
+    <comment>- Add systemd service file, to properly track wpa_supplicant in
+  its own systemd service (and not in dbus one).
+- Always enable systemd service, it is still dbus activated.</comment>
+    <requestid>198200</requestid>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>91d2874a7261f01550d387db6b70418c</srcmd5>
+    <version>2.0</version>
+    <time>1379664968</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>8b430bcf651f8fea3b7cc5dfb27ce3d5</srcmd5>
+    <version>2.0</version>
+    <time>1400783872</time>
+    <user>coolo</user>
+    <comment>- use _rundir macro (forwarded request 233011 from oertel)</comment>
+    <requestid>233442</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>7e466f3b3795947489844beb7a990664</srcmd5>
+    <version>2.2</version>
+    <time>1403176107</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237490</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>49d04dce48781939c91daccca569d72d</srcmd5>
+    <version>2.2</version>
+    <time>1403672279</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238068</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>94034f4f3e1bf716722b2b70511a73ca</srcmd5>
+    <version>2.2</version>
+    <time>1404972993</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239269</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>59b6dd83aa033242bbdc72da775ff5ac</srcmd5>
+    <version>2.2</version>
+    <time>1408957372</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245587</requestid>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>59b6dd83aa033242bbdc72da775ff5ac</srcmd5>
+    <version>2.2</version>
+    <time>1409303647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="58" vrev="7">
+    <srcmd5>696496c23c87f13be90da8b0ab4085f2</srcmd5>
+    <version>2.2</version>
+    <time>1411190798</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250102</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>994f9a38a1655c26f275c020256c356d</srcmd5>
+    <version>2.3</version>
+    <time>1414218747</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257723</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>b89a6d45993cbc88a196cb23f775c991</srcmd5>
+    <version>2.4</version>
+    <time>1429657927</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297197</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>4bb83f145e108ab6a0be0c39cf95d4d6</srcmd5>
+    <version>2.4</version>
+    <time>1430132309</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>303615</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>62ecdbb94873cfa41a08716a2558d843</srcmd5>
+    <version>2.4</version>
+    <time>1430891202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305206</requestid>
+  </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>20e91411ac729dbc66ec0d061b6aa528</srcmd5>
+    <version>2.4</version>
+    <time>1431248177</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305896</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>9cbfb2fa70e46b96b4f32f49df67dab0</srcmd5>
+    <version>2.5</version>
+    <time>1456821554</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362174</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>a681950c1b7eddf6250ea98f097b7065</srcmd5>
+    <version>2.5</version>
+    <time>1459238026</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>379092</requestid>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>b96dd318a62d1e85ec1950a930c81832</srcmd5>
+    <version>2.5</version>
+    <time>1470216967</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412666</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>20df96fd750613ae34c748d497b38ec0</srcmd5>
+    <version>2.6</version>
+    <time>1476409027</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433621</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>50935abe6a250ecc1eb8c93a029bd0d5</srcmd5>
+    <version>2.6</version>
+    <time>1482784810</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447508</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>c908e2ff8a9ebbd4083c147199120711</srcmd5>
+    <version>2.6</version>
+    <time>1497949089</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503688</requestid>
+  </revision>
+  <revision rev="70" vrev="4">
+    <srcmd5>ad62e4a51281869baa15b57f8ba4deb6</srcmd5>
+    <version>2.6</version>
+    <time>1508323859</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534370</requestid>
+  </revision>
+  <revision rev="71" vrev="5">
+    <srcmd5>fa6413c75def97fbe816eedfee94d139</srcmd5>
+    <version>2.6</version>
+    <time>1532361452</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624261</requestid>
+  </revision>
+  <revision rev="72" vrev="6">
+    <srcmd5>5614da4760a9c5b230acd85d2d8c34bc</srcmd5>
+    <version>2.6</version>
+    <time>1538377479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637020</requestid>
+  </revision>
+  <revision rev="73" vrev="7">
+    <srcmd5>0254d2b6aec6fcc1f8166be2640700e8</srcmd5>
+    <version>2.6</version>
+    <time>1540447820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643170</requestid>
+  </revision>
+  <revision rev="74" vrev="8">
+    <srcmd5>5169574656fc2a45c40911467d9b0316</srcmd5>
+    <version>2.6</version>
+    <time>1544441158</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653718</requestid>
+  </revision>
+  <revision rev="75" vrev="9">
+    <srcmd5>5dbae6ce27286cb2fb74452b551567a5</srcmd5>
+    <version>2.6</version>
+    <time>1564993761</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh spec-file via spec-cleaner and manual optimizations.
+  * Change URL and Source0 to actual project homepage.
+  * Remove macro %{?systemd_requires} and rm (not needed).
+  * Add %autopatch macro.
+  * Add %make_build macro.
+- Chenged patch wpa_supplicant-flush-debug-output.patch (to -p1).
+- Changed service-files for start after network (systemd-networkd).</comment>
+    <requestid>719803</requestid>
+  </revision>
+</revisionlist>

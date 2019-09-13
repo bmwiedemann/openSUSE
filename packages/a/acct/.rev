@@ -1,0 +1,346 @@
+<revisionlist>
+  <revision rev="1" vrev="696">
+    <srcmd5>081ade2cb6cdd02ac4b3ac434e24069d</srcmd5>
+    <version>6.3.5</version>
+    <time>1168901449</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="718">
+    <srcmd5>a978c5175cd72c247b1bbdbdf38aadb3</srcmd5>
+    <version>6.3.5</version>
+    <time>1171559384</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="817">
+    <srcmd5>a978c5175cd72c247b1bbdbdf38aadb3</srcmd5>
+    <version>6.3.5</version>
+    <time>1171559384</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="818">
+    <srcmd5>793fcb13cb8d5d7a43e7b08a443f4956</srcmd5>
+    <version>6.3.5</version>
+    <time>1224728769</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="820">
+    <srcmd5>793fcb13cb8d5d7a43e7b08a443f4956</srcmd5>
+    <version>6.3.5</version>
+    <time>1224728769</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="821">
+    <srcmd5>2011f6ac2318b702e7e1ffd724f05803</srcmd5>
+    <version>6.3.5</version>
+    <time>1261824295</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/acct based on submit request 27544 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="822">
+    <srcmd5>672266d85bf822434b4072676c711c10</srcmd5>
+    <version>6.3.5</version>
+    <time>1268922848</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="824">
+    <srcmd5>672266d85bf822434b4072676c711c10</srcmd5>
+    <version>6.3.5</version>
+    <time>1278667335</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="825">
+    <srcmd5>672266d85bf822434b4072676c711c10</srcmd5>
+    <version>6.3.5</version>
+    <time>1278678561</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="828">
+    <srcmd5>672266d85bf822434b4072676c711c10</srcmd5>
+    <version>6.3.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="829">
+    <srcmd5>afeeecbd99bbc12ee968509971488703</srcmd5>
+    <version>6.3.5</version>
+    <time>1299509113</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63476 from user elvigia
+</comment>
+    <requestid>63476</requestid>
+  </revision>
+  <revision rev="12" vrev="830">
+    <srcmd5>038f426d8fe6c9c08b3df84fbae4b9f8</srcmd5>
+    <version>6.3.5</version>
+    <time>1299509129</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63476
+</comment>
+  </revision>
+  <revision rev="13" vrev="831">
+    <srcmd5>c55f8e6ddc2b1c4880990451f604d5aa</srcmd5>
+    <version>6.3.5</version>
+    <time>1316503660</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82701 from jengelh)</comment>
+    <requestid>83649</requestid>
+  </revision>
+  <revision rev="14" vrev="832">
+    <srcmd5>86a0a5223d856c0f6f8f0a738fca3a39</srcmd5>
+    <version>6.3.5</version>
+    <time>1317625887</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85936 from coolo)</comment>
+    <requestid>86047</requestid>
+  </revision>
+  <revision rev="15" vrev="833">
+    <srcmd5>b91c6e9bf5c50c8bb6178df5cb61312f</srcmd5>
+    <version>6.3.5</version>
+    <time>1317744389</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc, %__cxx macros (forwarded request 86489 from uli_suse)</comment>
+    <requestid>86497</requestid>
+  </revision>
+  <revision rev="16" vrev="835">
+    <srcmd5>b91c6e9bf5c50c8bb6178df5cb61312f</srcmd5>
+    <version>6.3.5</version>
+    <time>1319181764</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="836">
+    <srcmd5>e974ce26bcae2b744ab0d8fe9b2f4dcd</srcmd5>
+    <version>6.3.5</version>
+    <time>1323190637</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="830">
+    <srcmd5>a14c59d2996645cfa2db4c1726df4e6b</srcmd5>
+    <version>6.5.5</version>
+    <time>1328622279</time>
+    <user>coolo</user>
+    <comment>Condense changes. (forwarded request 102597 from a_jaeger)</comment>
+    <requestid>102598</requestid>
+  </revision>
+  <revision rev="19" vrev="832">
+    <srcmd5>a14c59d2996645cfa2db4c1726df4e6b</srcmd5>
+    <version>6.5.5</version>
+    <time>1340183164</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="833">
+    <srcmd5>edcc0198635f5c305c44aeeca8e360c9</srcmd5>
+    <version>6.5.5</version>
+    <time>1343029941</time>
+    <user>coolo</user>
+    <comment>Fix build with missing gets declaration (glibc 2.16) (forwarded request 128611 from a_jaeger)</comment>
+    <requestid>128702</requestid>
+  </revision>
+  <revision rev="21" vrev="834">
+    <srcmd5>107b6b15fece210af35f9fce40b1c8cd</srcmd5>
+    <version>6.5.5</version>
+    <time>1346913758</time>
+    <user>coolo</user>
+    <comment>- drop useless acct-axp.patch (forwarded request 132618 from vitezslav_cizek)</comment>
+    <requestid>132739</requestid>
+  </revision>
+  <revision rev="22" vrev="835">
+    <srcmd5>619b9bc8f656ce356076487041957ac9</srcmd5>
+    <version>6.5.5</version>
+    <time>1357998615</time>
+    <user>coolo</user>
+    <comment>- remove suse_update_config</comment>
+    <requestid>148161</requestid>
+  </revision>
+  <revision rev="23" vrev="837">
+    <srcmd5>619b9bc8f656ce356076487041957ac9</srcmd5>
+    <version>6.5.5</version>
+    <time>1359108639</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="838">
+    <srcmd5>a86c8cd2babdd50fdee17753813ebfc7</srcmd5>
+    <version>6.5.5</version>
+    <time>1366983306</time>
+    <user>coolo</user>
+    <comment>- Added makeinfo BuildRequire to fix build with new automake (forwarded request 173442 from m_meister)</comment>
+    <requestid>173481</requestid>
+  </revision>
+  <revision rev="25" vrev="839">
+    <srcmd5>a1ef4395b0a03d6542cc77a25a899c23</srcmd5>
+    <version>6.5.5</version>
+    <time>1370788341</time>
+    <user>coolo</user>
+    <comment>- Converted rc file to systemd unit file.
+- Fixed a bug where the accounting file wasn't reopened after
+  logrotate, because force-reload isn't implemented. (forwarded request 177928 from marc_schuetz)</comment>
+    <requestid>177982</requestid>
+  </revision>
+  <revision rev="26" vrev="841">
+    <srcmd5>a1ef4395b0a03d6542cc77a25a899c23</srcmd5>
+    <version>6.5.5</version>
+    <time>1379661947</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="842">
+    <srcmd5>9f1915e680862592b38077c662a2c2c5</srcmd5>
+    <version>6.5.5</version>
+    <time>1382201559</time>
+    <user>scarabeus_factory</user>
+    <comment>Improvements (forwarded request 203864 from posophe)</comment>
+    <requestid>203870</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>42551cb9d94a7089fa457d13acd8e253</srcmd5>
+    <version>6.6.1</version>
+    <time>1387833801</time>
+    <user>coolo</user>
+    <comment>- update to 6.6.1
+  * Fixed vulnabilities, due to autmake. Thanks to Karl Berry
+    for pointing this out.
+  * Update gnulib to latest git.
+- dropped acct-stdio.h.patch (upstream)
+- add gpg verification (forwarded request 211966 from vitezslav_cizek)</comment>
+    <requestid>212088</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>1274ef9edbaeeb314d3da8f90b5e2a57</srcmd5>
+    <version>6.6.1</version>
+    <time>1395404907</time>
+    <user>coolo</user>
+    <comment>- cleanup of acct
+  * Add install section in service unit (bnc#867138)
+  * Add a simple script to create pacct file (forwarded request 226397 from WernerFink)</comment>
+    <requestid>226823</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>1274ef9edbaeeb314d3da8f90b5e2a57</srcmd5>
+    <version>6.6.1</version>
+    <time>1409300467</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>497b83b7d9c7daa1e3c87e31ab3de9f0</srcmd5>
+    <version>6.6.1</version>
+    <time>1409761376</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247115</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>636631aa5fb876ea6b46127a55861b3e</srcmd5>
+    <version>6.6.2</version>
+    <time>1419159910</time>
+    <user>coolo</user>
+    <comment>- Add back .keyring and .sig files; OBS verify them too
+
+- Update to version 6.6.2
+  + Link with -lm.
+  + Fix texi.
+  + The rest of fixes from 6.5.5 to 6.6.1.  
+- Update Url to new project home
+- Use download Url
+- Remove dependency on gpg-offline and keyring files; let OBS handle
+  source verification
+- Adapt acct-hz.patch to upstream changes
+  &gt; acct-6.6.2-hz.patch</comment>
+    <requestid>266006</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>03ab5434eb329b34f36d165a6c35309c</srcmd5>
+    <version>6.6.2</version>
+    <time>1425377726</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288464</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>0684a4f7fa20d7734fb1926db516fc7b</srcmd5>
+    <version>6.6.2</version>
+    <time>1431981023</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307692</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>8bb4ded405082774d65fa5612f4ffb9c</srcmd5>
+    <version>6.6.2</version>
+    <time>1435053642</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313116</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>81532edf3ba9bac874e5f8aebacbfcc7</srcmd5>
+    <version>6.6.2</version>
+    <time>1436331579</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315176</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>a3a03a10c2afb76b58ffe6525635ec14</srcmd5>
+    <version>6.6.2</version>
+    <time>1457533029</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367548</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>fed4fd7f1a799a3e3572cc858988f8a6</srcmd5>
+    <version>6.6.2</version>
+    <time>1468869819</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408554</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f95e9a299b9226aa3f11209a203bb168</srcmd5>
+    <version>6.6.3</version>
+    <time>1491896777</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486151</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>05f9020c954d11d8fbadd03c8ee3ce50</srcmd5>
+    <version>6.6.3</version>
+    <time>1493020131</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489313</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>46617b3687cfb74f4efbd2072d905230</srcmd5>
+    <version>6.6.4</version>
+    <time>1499880931</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509346</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>a23ca809b43b3fe09ca999a4ce33e665</srcmd5>
+    <version>6.6.4</version>
+    <time>1506108876</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528082</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>7469578f2bcfa9e0c356f7adbf5ceb12</srcmd5>
+    <version>6.6.4</version>
+    <time>1552902241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685961</requestid>
+  </revision>
+</revisionlist>

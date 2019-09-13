@@ -1,0 +1,6 @@
+<package name="python-openqa_review" project="openSUSE:Factory">
+  <title>python-openqa_review</title>
+  <description>A review helper script for openQA</description>
+  <devel project="devel:languages:python" package="python-openqa_review"/>
+  <url>https://github.com/okurz/openqa_review</url>
+</package>

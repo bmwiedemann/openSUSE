@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>398a5bd0baaa57c26ad9962159d6d2a1</srcmd5>
+    <version>0.2.0</version>
+    <time>1529667017</time>
+    <user>maxlin_factory</user>
+    <comment>Required by python-coala</comment>
+    <requestid>615024</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>76d4100e60b61c5f17c9b14de86ae92c</srcmd5>
+    <version>0.2.0</version>
+    <time>1544726512</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653992</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>01337c78166c9e9e50f402b60ee4adf1</srcmd5>
+    <version>0.3.0</version>
+    <time>1557142110</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.3.0
+  * Support for coverage 4.4.1+
+  * All logic moved into PluginBase and ConfigReloadPlugin
+    which is registered as a plugin using either noop or
+    configurer plugin types
+  * Tests for all coverage patch versions 4.0 - 5.0a,
+    CPython 2.7 and 3.4 - 3.7 and PyPy 6.0
+  * Add LICENSE to distributions</comment>
+    <requestid>700975</requestid>
+  </revision>
+</revisionlist>

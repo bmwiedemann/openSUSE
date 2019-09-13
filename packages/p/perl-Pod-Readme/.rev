@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69c98a8444f92402567531bfeb041132</srcmd5>
+    <version>0.11</version>
+    <time>1306415236</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66754</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ed7ed7fa5e9d6d42cd8f2c6c51bc5334</srcmd5>
+    <version>0.11</version>
+    <time>1306415244</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66754
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ed7ed7fa5e9d6d42cd8f2c6c51bc5334</srcmd5>
+    <version>0.11</version>
+    <time>1319182300</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>3c42d9c547c6fddd2f9feb6c15ae4cd6</srcmd5>
+    <version>0.11</version>
+    <time>1323193589</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>3c42d9c547c6fddd2f9feb6c15ae4cd6</srcmd5>
+    <version>0.11</version>
+    <time>1340183907</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>3c42d9c547c6fddd2f9feb6c15ae4cd6</srcmd5>
+    <version>0.11</version>
+    <time>1359109782</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>3c42d9c547c6fddd2f9feb6c15ae4cd6</srcmd5>
+    <version>0.11</version>
+    <time>1379663820</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>81e58c2b4291d6a3738f864968853487</srcmd5>
+    <version>0.11</version>
+    <time>1394866063</time>
+    <user>coolo</user>
+    <comment>fix for bnc#851647 (forwarded request 226023 from computersalat)</comment>
+    <requestid>226027</requestid>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>81e58c2b4291d6a3738f864968853487</srcmd5>
+    <version>0.11</version>
+    <time>1409302456</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>341929ccf3c2f41b856a91e1e2c230cc</srcmd5>
+    <version>1.1.2</version>
+    <time>1430113606</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>297076</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4e7c6af51acb703a28d36393b9366bab</srcmd5>
+    <version>1.1.2</version>
+    <time>1507065534</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530702</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2e39f7f6d826ff755cb874c6554ffba9</srcmd5>
+    <version>1.2.3</version>
+    <time>1562327325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691007</requestid>
+  </revision>
+</revisionlist>

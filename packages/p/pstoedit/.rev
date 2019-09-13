@@ -1,0 +1,244 @@
+<revisionlist>
+  <revision rev="1" vrev="9">
+    <srcmd5>8999260bde8111a53758d0bc2742b407</srcmd5>
+    <version>3.44</version>
+    <time>1168904015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="48">
+    <srcmd5>9b78c5558d2ffca6cc5083ab2b216e16</srcmd5>
+    <version>3.44</version>
+    <time>1172778268</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="82">
+    <srcmd5>8d09fb2ca07a80a6fe435e15b1a62e20</srcmd5>
+    <version>3.44</version>
+    <time>1184790250</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="231">
+    <srcmd5>a3dc0b8434f1264fef60934e276ce0d6</srcmd5>
+    <version>3.44</version>
+    <time>1219429411</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fc740b54c844f6fd2eecd59945b25f3d</srcmd5>
+    <version>3.45</version>
+    <time>1221300189</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2cbda48eb1ef868cb7cecf9cc9472841</srcmd5>
+    <version>3.45</version>
+    <time>1232410529</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>a975284bc5536c0f155ceec10a7a6a33</srcmd5>
+    <version>3.45</version>
+    <time>1244237695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b0cabb045231b1ea06a1d8178255e1b8</srcmd5>
+    <version>3.50</version>
+    <time>1250120368</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pstoedit based on submit request 17626 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b0cabb045231b1ea06a1d8178255e1b8</srcmd5>
+    <version>3.50</version>
+    <time>1250120368</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pstoedit based on submit request 17626 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>2b59fe9c387b61690488ce2cbac0e698</srcmd5>
+    <version>3.50</version>
+    <time>1266974726</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pstoedit based on submit request 33300 from user coolo
+</comment>
+    <requestid>33300</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>974bf1a84ebd53c02848503b08a63c16</srcmd5>
+    <version>3.50</version>
+    <time>1268925804</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>974bf1a84ebd53c02848503b08a63c16</srcmd5>
+    <version>3.50</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>974bf1a84ebd53c02848503b08a63c16</srcmd5>
+    <version>3.50</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>39a1ef02b3642effd5c533d956485ac8</srcmd5>
+    <version>3.50</version>
+    <time>1281659687</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pstoedit based on submit request 45287 from user sbrabec
+</comment>
+    <requestid>45287</requestid>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>39a1ef02b3642effd5c533d956485ac8</srcmd5>
+    <version>3.50</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>39a1ef02b3642effd5c533d956485ac8</srcmd5>
+    <version>3.50</version>
+    <time>1319182373</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>0a3a068d9db30905552a2bc7ed6fca63</srcmd5>
+    <version>3.50</version>
+    <time>1321886981</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92634 from coolo)</comment>
+    <requestid>92705</requestid>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>30a44c801d33f39cc6be44d7993c31bd</srcmd5>
+    <version>3.50</version>
+    <time>1323194021</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e315de010dbfa30d2c87ad0bc0b0bace</srcmd5>
+    <version>3.60</version>
+    <time>1327922888</time>
+    <user>coolo</user>
+    <comment>update to 3.60 (forwarded request 101906 from tabraham1)</comment>
+    <requestid>101909</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>f537463ff117fc0c9721410f2bfb5268</srcmd5>
+    <version>3.60</version>
+    <time>1334216797</time>
+    <user>coolo</user>
+    <comment>- fix buildrequires, ImageMagick-Magick++-devel
+  is now libMagick++-devel (forwarded request 113088 from oertel)</comment>
+    <requestid>113089</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>d29d777bb3b68ccfd45fa2ef21f0414a</srcmd5>
+    <version>3.60</version>
+    <time>1338582720</time>
+    <user>coolo</user>
+    <comment>- Build against libEMF on all platforms.</comment>
+    <requestid>122808</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>d29d777bb3b68ccfd45fa2ef21f0414a</srcmd5>
+    <version>3.60</version>
+    <time>1340184022</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>20e647db5ae40721824972e7d70f9adf</srcmd5>
+    <version>3.61</version>
+    <time>1352407925</time>
+    <user>namtrac</user>
+    <comment>- Update to version 3.61:
+  * fixed a bug in handling of -page option.
+  * improved support for 64-bit systems related to different
+    version of ghostscript
+  * added some features for supporting the LaOS project
+    (Laser Open Source Cutting, http://www.laoslaser.org/) (forwarded request 140577 from sbrabec)</comment>
+    <requestid>140578</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>20e647db5ae40721824972e7d70f9adf</srcmd5>
+    <version>3.61</version>
+    <time>1359109963</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>7346cf8de1ff4792025787643e863fd2</srcmd5>
+    <version>3.61</version>
+    <time>1366088118</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162882 from namtrac)</comment>
+    <requestid>162916</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>7346cf8de1ff4792025787643e863fd2</srcmd5>
+    <version>3.61</version>
+    <time>1379664083</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ac3f0d4824e7b02635a327e38ae411d2</srcmd5>
+    <version>3.62</version>
+    <time>1403672241</time>
+    <user>coolo</user>
+    <comment>- Version bump to 3.62:
+  * new backend generating PowerPoint pptx files
+  * improved handling of composite fonts
+  * fixed a bug in detecting rectangles.
+  * improved bounding box tracing in case of text (but it is still not perfect).
+  * changed the creation of filenames when using the -split option.
+  * fixed a bug in passing generic libplot arguments to the libplot drivers.
+  * improved support for 64-bit systems related the integration of pstoedit to gsview.
+  * include a version info resource in pstoedit's windows exe and DLLs.
+  * include a work-around for a Hurd specific problem with dlclose.
+- New patches to fix build behaviour:
+  * pstoedit-3.60-libdl.patch
+  * pstoedit-3.62-parallel.patch (forwarded request 235801 from scarabeus_iv)</comment>
+    <requestid>235869</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>ac3f0d4824e7b02635a327e38ae411d2</srcmd5>
+    <version>3.62</version>
+    <time>1409302762</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b9dec9eb92a7b33e0d4dc430d20f5ae7</srcmd5>
+    <version>3.70</version>
+    <time>1426485309</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290831</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>a432d1df8cfd49ddeef6ebf020145934</srcmd5>
+    <version>3.70</version>
+    <time>1457532992</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367554</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>6c15f304dc850c5eda803f47c938c1ff</srcmd5>
+    <version>3.70</version>
+    <time>1506340153</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528225</requestid>
+  </revision>
+</revisionlist>

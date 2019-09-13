@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>03b7411d7ad77f9498f2d87f9f5a45c4</srcmd5>
+    <version>0.00012</version>
+    <time>1395749972</time>
+    <user>coolo</user>
+    <comment>needed for openid support for openqa</comment>
+    <requestid>227096</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>03b7411d7ad77f9498f2d87f9f5a45c4</srcmd5>
+    <version>0.00012</version>
+    <time>1409302224</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>252eac6d8c2f35e607ac0f06cffe7506</srcmd5>
+    <version>0.00012</version>
+    <time>1508197894</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with perl 5.26</comment>
+    <requestid>533551</requestid>
+  </revision>
+</revisionlist>

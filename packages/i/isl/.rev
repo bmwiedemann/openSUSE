@@ -1,0 +1,175 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>398d96801f2263b9401171f3f84fc39b</srcmd5>
+    <version>0.10</version>
+    <time>1342713478</time>
+    <user>coolo</user>
+    <comment>New package required for upcoming GCC 4.8</comment>
+    <requestid>128215</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>64630cc657574e32c4a8f60d30003da6</srcmd5>
+    <version>0.10</version>
+    <time>1348925550</time>
+    <user>coolo</user>
+    <comment>- Add baselibs.conf, needed by cloog-isl-32bit (forwarded request 136184 from namtrac)</comment>
+    <requestid>136185</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0dd4d4f3c33eed785fed12baad977fee</srcmd5>
+    <version>0.11.1</version>
+    <time>1356703312</time>
+    <user>namtrac</user>
+    <comment>- Update to ISL version 0.11.1
+  * fixes endianess issue
+  * now comes with a LICENSE file
+
+- Update to ISL version 0.11 
+  * license change to MIT
+  * add support for code generation</comment>
+    <requestid>145853</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0dd4d4f3c33eed785fed12baad977fee</srcmd5>
+    <version>0.11.1</version>
+    <time>1359109092</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>54e333b67f469ad3756ca481064414a3</srcmd5>
+    <version>0.11.1</version>
+    <time>1362745237</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157765</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ca032cfa097ffcca84ca53827d7ff963</srcmd5>
+    <version>0.12</version>
+    <time>1372743343</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>181608</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ca032cfa097ffcca84ca53827d7ff963</srcmd5>
+    <version>0.12</version>
+    <time>1379662685</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>055d39a00836d1c19a7d1a076e5b8be8</srcmd5>
+    <version>0.12.2</version>
+    <time>1392638070</time>
+    <user>coolo</user>
+    <comment>- Update to ISL version 0.12.2
+  * isl_int has been replaced by isl_val
+  * some of the old functions are still available in isl/deprecated/*.h
+  but they will be removed in the future
+  * The functions isl_pw_qpolynomial_eval, isl_union_pw_qpolynomial_eval,
+  isl_pw_qpolynomial_fold_eval and isl_union_pw_qpolynomial_fold_eval have
+  been changed to return an isl_val instead of an isl_qpolynomial
+- Remove obsolete config-guess-sub-update.diff patch</comment>
+    <requestid>222189</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>055d39a00836d1c19a7d1a076e5b8be8</srcmd5>
+    <version>0.12.2</version>
+    <time>1409301250</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6dc6236c48649bddc12aa46ab800f616</srcmd5>
+    <version>0.14</version>
+    <time>1418251429</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to ISL version 0.14
+  * support IMath as an optional replacement for GMP
+  * minor AST generator improvements
+- Inherits changes from ISL version 0.13
+  * deprecate isl_int
+  * improved support for multi piecewise quasi-affine expressions
+  * allow the user to impose a bound on the number of low-level operations
+  * add isl_id_to_ast_expr and isl_id_to_pw_aff
+  * add isl_schedule_constraints
+  * hide internal structure of isl_vec
+  * remove support for piplib
+- Add isl-0.14-fixes.patch to fix function returning without value.</comment>
+    <requestid>264507</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9dc46335a3e61cb9e37b0f8316d6b13b</srcmd5>
+    <version>0.15</version>
+    <time>1454921234</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357068</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fc156707dc8ef65b4e19b8f13ee8ed7d</srcmd5>
+    <version>0.16.1</version>
+    <time>1456334927</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>359434</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1ad0724b19384e766b5eefc49c4170b9</srcmd5>
+    <version>0.18</version>
+    <time>1486305868</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18
+  * improve elimination of redundant existentially quantified variables
+  * improve coalescing
+  * improve parametric integer programming
+  * preserve isolate option in isl_schedule_node_band_split
+  * print AST nodes in YAML format
+  * minor improvements to Python bindings
+- Inherits update to 0.17.1
+  * fix bug in coalescing treatment
+- Inherits update to 0.17
+  * optionally combine SCCs incrementally in scheduler
+  * optionally maximize coincidence in scheduler
+  * optionally avoid loop coalescing in scheduler
+  * fix handling of nested integer divisions
+  * optionally detect min/max expressions during AST generation
+  * minor AST generator improvements
+  * simplify stride constraints
+  * improve support for expansions in schedule trees</comment>
+    <requestid>453638</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b199de99c3f7f2bb6797a03f43fddaeb</srcmd5>
+    <version>0.18</version>
+    <time>1518187266</time>
+    <user>dimstar_suse</user>
+    <comment>- Set shared library RPM group. Use %make_install. (forwarded request 571369 from jengelh)</comment>
+    <requestid>571371</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ccf5940bd42b8cf5d801909c464258fd</srcmd5>
+    <version>0.19</version>
+    <time>1520852739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19
+  * minor improvements to coalescing
+  * minor improvement to parametric integer programming
+  * try harder to avoid large coefficients in scheduler
+  * support kill accesses in dependence analysis
+  * drop deprecated isl_int
+  * drop deprecated band forests
+  * drop deprecated functions</comment>
+    <requestid>583958</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5e8b3466806b7c5e6b743cd2c902e7f7</srcmd5>
+    <version>0.20</version>
+    <time>1535122152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628775</requestid>
+  </revision>
+</revisionlist>

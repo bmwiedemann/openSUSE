@@ -1,0 +1,5 @@
+<package name="python-loguru" project="openSUSE:Factory">
+  <title>python-loguru</title>
+  <description>Python logging component with a simple interface</description>
+  <devel project="devel:languages:python" package="python-loguru"/>
+</package>

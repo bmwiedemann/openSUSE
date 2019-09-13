@@ -1,0 +1,9 @@
+<package name="deltafs" project="openSUSE:Factory">
+  <title>Delta Filesystem</title>
+  <description>Deltafs combines a read-only lower directory and a read-write upper
+directory into a new filesystem.  Currently it works very similarly to
+a union filesystem, where upon modification whole files are copied up
+to the upper layer.  There are plans to store differences more
+efficiently in the future.</description>
+  <devel project="filesystems" package="deltafs"/>
+</package>

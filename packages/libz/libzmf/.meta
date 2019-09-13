@@ -1,0 +1,5 @@
+<package name="libzmf" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="LibreOffice:Factory" package="libzmf"/>
+</package>

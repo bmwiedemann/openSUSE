@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40e46d231903d52d9870f42b169f8cca</srcmd5>
+    <version>0.9</version>
+    <time>1519486729</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial submit based on version 0.9, which uses Clang 5.0.
+- Add llvm-link.patch because openSUSE's libLLVM isn't split up.
+- Update mappings in iwyu_include_picker.patch.
+- Remove obsolete mapping files.
+- Add a manual page derived from the `--help` output.
+- Add section about mapping files to the man page.
+- Remove x86-specific code that is required to parse Microsoft
+  inline assembly. We don't need that, and it breaks the builds
+  on other architectures.
+- Add runtime dependency to clang, because we need the compiler-
+  specific headers, even when clang is not used for compilation.
+- Use GCC 6 on SLE 12. For some reason the build using Clang
+  segfaults, but with GCC 6 it doesn't.
+</comment>
+    <requestid>578557</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5a87d922d3f85a71a046b3f3960047ff</srcmd5>
+    <version>0.9</version>
+    <time>1521499219</time>
+    <user>dimstar_suse</user>
+    <comment>- Use tarball from website, where it is now available.
+  There should be no functional change.
+- Make tools package &quot;noarch&quot;, since it contains only scripts.</comment>
+    <requestid>588707</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c72ff75d838c92459bcfd482b773910f</srcmd5>
+    <version>0.10</version>
+    <time>1525960190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605646</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bec12a3128fe0712067528918011cff6</srcmd5>
+    <version>0.11</version>
+    <time>1553809746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689274</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c903b44f932cd8afc66da06ed96f4e5a</srcmd5>
+    <version>0.12</version>
+    <time>1561494143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711905</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>be9e1ca74786dea25f30ff930df78a52</srcmd5>
+    <version>0.12</version>
+    <time>1562843858</time>
+    <user>dimstar_suse</user>
+    <comment>Disable LTO, because -flto=&lt;number&gt; doesn't work with Clang.
+</comment>
+    <requestid>714306</requestid>
+  </revision>
+</revisionlist>

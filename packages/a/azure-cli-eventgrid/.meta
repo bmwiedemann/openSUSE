@@ -1,0 +1,11 @@
+<package name="azure-cli-eventgrid" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'eventgrid' Command Module</title>
+  <description>Microsoft Azure CLI 'eventgrid' Command Module
+
+This package is for the 'eventgrid' module.
+i.e. 'az eventgrid'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-eventgrid"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79384f9e3bf673cc9c8f3e6b205c4d64</srcmd5>
+    <version>0.9.2</version>
+    <time>1346831965</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>132451</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>79384f9e3bf673cc9c8f3e6b205c4d64</srcmd5>
+    <version>0.9.2</version>
+    <time>1359110029</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>79384f9e3bf673cc9c8f3e6b205c4d64</srcmd5>
+    <version>0.9.2</version>
+    <time>1379664176</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>79384f9e3bf673cc9c8f3e6b205c4d64</srcmd5>
+    <version>0.9.2</version>
+    <time>1409302869</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a17992603970cfc9f4a8b359066c834a</srcmd5>
+    <version>0.9.4</version>
+    <time>1430891363</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.4
+- point the source URL to pypi
+- pass -n to setup macro: source archive is now named fastimport
+- remove documentation: not provided anymore by upstream (forwarded request 305414 from benoit_monin)</comment>
+    <requestid>305424</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4c62dffb19c18cb7f41ba8da22c4fa60</srcmd5>
+    <version>0.9.8</version>
+    <time>1535704921</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to singlespec
+- Version update to 0.9.8:
+  * Support py3</comment>
+    <requestid>631077</requestid>
+  </revision>
+</revisionlist>

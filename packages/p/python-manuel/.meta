@@ -1,0 +1,5 @@
+<package name="python-manuel" project="openSUSE:Factory">
+  <title>Build tested documentation</title>
+  <description>Manuel lets you build tested documentation</description>
+  <devel project="devel:languages:python" package="python-manuel"/>
+</package>

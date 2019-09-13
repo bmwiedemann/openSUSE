@@ -1,0 +1,374 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e50b49e112696bfba8196cb4cd17873</srcmd5>
+    <version>1.23_0.0.6</version>
+    <time>1288974062</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52034 from user coolo
+</comment>
+    <requestid>52034</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>591f9f0d9129f2423d0039c0d78494bd</srcmd5>
+    <version>1.23_0.0.6</version>
+    <time>1288974068</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52034
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>591f9f0d9129f2423d0039c0d78494bd</srcmd5>
+    <version>1.23_0.0.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>44ee0f7860cf07b655e4b41c788514ea</srcmd5>
+    <version>1.23_0.1.2</version>
+    <time>1315232796</time>
+    <user>lrupp</user>
+    <comment>Update to dd_rhelp-0.1.2, Spec file updates, Removed dd_rhelp_src.diff patch (fixed upstream), Rebased the other patches to apply cleanly --- Also fixed bnc#714914 (from sr#80139)</comment>
+    <requestid>80856</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>44ee0f7860cf07b655e4b41c788514ea</srcmd5>
+    <version>1.23_0.1.2</version>
+    <time>1319181843</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>01c2779c72b90b601185d1fc43898150</srcmd5>
+    <version>1.24_0.1.2</version>
+    <time>1319205785</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>88914</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0ace0686231a006ccce9fb77f1a7707c</srcmd5>
+    <version>1.24_0.1.2</version>
+    <time>1328890365</time>
+    <user>coolo</user>
+    <comment>- place binaries in /usr tree (UsrMerge project)</comment>
+    <requestid>103409</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>75854fb2bc4d7b2089569d565454808d</srcmd5>
+    <version>1.25</version>
+    <time>1331986833</time>
+    <user>coolo</user>
+    <comment>Update to version 1.25, Spec file updates, Removed dd_rhelp from the package (a SR will follow for making dd_rhelp a separate package), Updated License to GPL-2.0 or GPL-3.0 (forwarded request 109005 from adra)</comment>
+    <requestid>109092</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>84cdc7b5c65cea1bd5b8d465e3040245</srcmd5>
+    <version>1.27</version>
+    <time>1337667160</time>
+    <user>coolo</user>
+    <comment>Update to version 1.27 (forwarded request 121539 from adra)</comment>
+    <requestid>121586</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>55aa517d5ab02518f2f59061410291b2</srcmd5>
+    <version>1.28</version>
+    <time>1338280390</time>
+    <user>coolo</user>
+    <comment>Update to version 1.28 (forwarded request 122478 from Zaitor)</comment>
+    <requestid>122505</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>55aa517d5ab02518f2f59061410291b2</srcmd5>
+    <version>1.28</version>
+    <time>1340183273</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>55aa517d5ab02518f2f59061410291b2</srcmd5>
+    <version>1.28</version>
+    <time>1359108803</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>829210a1933f9542141a7648d238bff0</srcmd5>
+    <version>1.31</version>
+    <time>1360002592</time>
+    <user>coolo</user>
+    <comment>- Update to dd_rescue-1.31:
+  * Some minor output cleanups.
+  * Implementation of safe triple overwrite (options -3 and -4) 
+    following BSI GSDS M7.15.
+- Update to dd_rescue-1.30:
+  * Fix issue with double free (1.29)
+  * Fix output to stdout (&quot;-&quot;)
+  * Rationalize messages a bit.
+  * Option to init PRNG from file (e.g. -Z /dev/urandom)
+  * Option -W to avoid writes (if output block is identical) 
+- Update to dd_rescue-1.29:
+  * Correctly handle last bytes before EOF when hardbs == softbs.
+  * New option -M (dont extend output file).
+  * New option -R (repeated output of one block, auto for dev/zero)
+  * New options -z x, -Z x to use userspace pseudo RNG to overwrite
+    disks / files with random data. (forwarded request 150905 from garloff)</comment>
+    <requestid>150920</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>32d3a9549f0f519eb50e4769107cdd16</srcmd5>
+    <version>1.32</version>
+    <time>1360576745</time>
+    <user>coolo</user>
+    <comment>- Update to dd_rescue-1.32:
+  * New option -x to append to outfile.
+  * New option -Y (can be used multiple times) to specify 2ndary
+    output files. (forwarded request 155068 from garloff)</comment>
+    <requestid>155075</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d2ea3a09988c4f59a927e1cc1b48742a</srcmd5>
+    <version>1.33</version>
+    <time>1370425694</time>
+    <user>coolo</user>
+    <comment>Update to version 1.33 (forwarded request 176607 from adra)</comment>
+    <requestid>176676</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ff5f1f0e4ac9890a6352ff42aa73bea8</srcmd5>
+    <version>1.34</version>
+    <time>1373312640</time>
+    <user>coolo</user>
+    <comment>Update to version 1.34 (forwarded request 182432 from adra)</comment>
+    <requestid>182482</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>820bc5b9997ea56abb377d3f6b23a9b9</srcmd5>
+    <version>1.36</version>
+    <time>1374776850</time>
+    <user>coolo</user>
+    <comment>- Update to dd_rescue-1.36:
+  * Fix overflow with avg.load display
+  * Enable SSE2 on (32bit)x86 with runtime detection
+  * Add optimized zero block detection on ARM (3x faster with asm ...)
+
+- Update to dd_rescue-1.35:
+  * Better readability for reports with (optional) colors and rate
+    limitation on progress updates.
+  * Simple rewrite logic.
+  * SSE2 optimized version for finding zero blocks (sparse detection). (forwarded request 184311 from garloff)</comment>
+    <requestid>184321</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d56cf9b264f9cf515e67c409e15b0797</srcmd5>
+    <version>1.38</version>
+    <time>1375594126</time>
+    <user>coolo</user>
+    <comment>- Update to dd_rescue-1.38:
+  * Further optimized SSE2 sparse detection. (Also added AVX2
+    version, not enabled by default though.)
+  * --force allows to ignore non-seekable output with non zero
+    output position.
+  * make check does some testing ...
+  * improved cur.rate and ETA calculation. (forwarded request 185683 from garloff)</comment>
+    <requestid>185686</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b03e51b04b6ed8605a0de3affa8fde7e</srcmd5>
+    <version>1.39</version>
+    <time>1376126291</time>
+    <user>scarabeus_factory</user>
+    <comment> (forwarded request 186383 from garloff)</comment>
+    <requestid>186424</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1f9fb785833b7ad51b479b22734dc244</srcmd5>
+    <version>1.40</version>
+    <time>1376991350</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 1.40: More tests, copy xattrs on -p and align with first write (forwarded request 195655 from garloff)</comment>
+    <requestid>195656</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>1f9fb785833b7ad51b479b22734dc244</srcmd5>
+    <version>1.40</version>
+    <time>1379662212</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>0c5f77a1d404d820c26b8f974a4ae5d2</srcmd5>
+    <version>1.40</version>
+    <time>1392270800</time>
+    <user>coolo</user>
+    <comment>disable SSE2 on i586 (bnc#860779) (forwarded request 221848 from bmwiedemann)</comment>
+    <requestid>221965</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>517e3949e9296fa68d3f576dc89030be</srcmd5>
+    <version>1.42</version>
+    <time>1394953493</time>
+    <user>coolo</user>
+    <comment>- dd_rescue-fix_insn_probe.diff: Brings dd_rescue to 1.42.1,
+  fixing the process' signal mask after SIGILL delivery (probing),
+  an issue related to the longjmp() signal handler return fix
+  to bnc#860779.
+- Update to dd_rescue-1.42:
+  * Addition of plugin interface
+  * MD5 plugin
+  * Use posix_fadvise() if available
+  * Short usage message rather than full help on error
+- Update to dd_rescue-1.41:
+  * Support for building against Andoid NDK
+  * Consistent use of (improved) int no formatting functions
+  * Fix off-by-one block dev size issue (cosmetic)
+  * Enable AVX2 optimized sparse block detection
+  * Refactored CPU feature detection and selection
+  * New option -u/--rmvtrim to delete output file and issue fstrim
+- Remove suboptimal fix for bnc#860779, it's fixed properly
+  upstream by returning with longjmp() from the signal handler. (forwarded request 225521 from garloff)</comment>
+    <requestid>225537</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b9370fb68f74b1f12f1f37f16aa4c253</srcmd5>
+    <version>1.44</version>
+    <time>1401092889</time>
+    <user>coolo</user>
+    <comment>- Changelog entry added to reflect deletion of patches
+- Update to next version (1.44) (forwarded request 235218 from garloff)</comment>
+    <requestid>235230</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>398a8fcc5ca863591c4a261270a417b4</srcmd5>
+    <version>1.45</version>
+    <time>1401641889</time>
+    <user>coolo</user>
+    <comment>- Update to dd_rescue-1.45:
+  * ddr_hash: Fix potential sha512/sha384 buffer overflow.
+  * ddr_hash: Support sha1
+  * ddr_hash: Support checking and storing hash in xattrs and
+    md5sum/sha256sum/... style files.
+  * New ddr_null plugin. (forwarded request 235545 from garloff)</comment>
+    <requestid>235546</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d59a90f8c81482da69f46e5d281cbc1c</srcmd5>
+    <version>1.46</version>
+    <time>1407912492</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244090</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d59a90f8c81482da69f46e5d281cbc1c</srcmd5>
+    <version>1.46</version>
+    <time>1409300747</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>fc74f3ec674c5381c6dd76e4ea38f4c8</srcmd5>
+    <version>1.46</version>
+    <time>1423216613</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284172</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>3110d6428ca7a49ccdf12762e0b0c507</srcmd5>
+    <version>1.46</version>
+    <time>1432380105</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308389</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f4025d74430dc1f51f5e1241cdb4eeb1</srcmd5>
+    <version>1.98</version>
+    <time>1433845461</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311109</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>4ce71ba4724d0e61d7f3cf2546869b75</srcmd5>
+    <version>1.98</version>
+    <time>1482418774</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446821</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d19a485d84be289709e1a31e0fd0961c</srcmd5>
+    <version>1.99.5</version>
+    <time>1483954324</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448441</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>00afce64c01fabb838925ac5b4952804</srcmd5>
+    <version>1.99.5</version>
+    <time>1497602862</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501669</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>5d3a13333a01dd7efeaf6928f35358d0</srcmd5>
+    <version>1.99.5</version>
+    <time>1502963345</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dd_rescue-i586-sse2.diff to fix dd_rescue compile and
+  runtime problems when GCC defaults to SSE2 also on i586
+  like with SLE-15. (forwarded request 515971 from matz2)</comment>
+    <requestid>516080</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>81f80f49705f7c9206f8730f6c50188f</srcmd5>
+    <version>1.99.6</version>
+    <time>1505331237</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523255</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4310a8d9c858682b784dfb6bd448d523</srcmd5>
+    <version>1.99.7</version>
+    <time>1510665748</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540708</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>022ab5f90e05bef8c2ff5f5a7894fd78</srcmd5>
+    <version>1.99.8</version>
+    <time>1512734060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548203</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>fe63d86f990cb6bece608b5322e36343</srcmd5>
+    <version>1.99.8</version>
+    <time>1524144063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597867</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>1068cf661164bf457e0c86aa640107c0</srcmd5>
+    <version>1.99.8</version>
+    <time>1526462480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606793</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>cde9daf616446ceec9d28cd2ff492595</srcmd5>
+    <version>1.99.8</version>
+    <time>1538377340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636911</requestid>
+  </revision>
+</revisionlist>

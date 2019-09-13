@@ -1,0 +1,175 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc3e2bf2f0c79d46ef3e72c52990bdf9</srcmd5>
+    <version>0.5</version>
+    <time>1467541657</time>
+    <user>dimstar_suse</user>
+    <comment>Introduce gnome-keysign version 0.5</comment>
+    <requestid>403359</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>006cce272fd959e837fa5ae9a38da859</srcmd5>
+    <version>0.6</version>
+    <time>1468869814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6:
+  * GetKey: Properly call TempKeyring, not TemporaryKeyring
+  * Using gi.require for Gtk, Gst, and GstVideo
+  * Increased py3k compatibilty
+- Add gnome-keysign-gpg-2.1-returncode.patch: Improve GPG 2.1
+  compatibility. Patch has been submitted to monkeysign upstream:
+  https://lists.riseup.net/www/arc/monkeysphere/2016-07/msg00000.html
+
+- Add python-requests Requires: manadatory dependency.</comment>
+    <requestid>408501</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>138bbbfe8f1f1096a3aef0254391b9da</srcmd5>
+    <version>0.9</version>
+    <time>1499291863</time>
+    <user>dimstar_suse</user>
+    <comment>Resub, updated package.</comment>
+    <requestid>500201</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6495e3417b123c96b4b37a63fe4a610b</srcmd5>
+    <version>0.9.5</version>
+    <time>1509722716</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.5:
+
+old: openSUSE:Factory/gnome-keysign
+new: GNOME:Apps/gnome-keysign rev None
+Index: _service
+===================================================================
+--- _service (revision 3)
++++ _service (revision 19)
+@@ -6,7 +6,7 @@
+     &lt;param name=&quot;versionformat&quot;&gt;@PARENT_TAG@&lt;/param&gt;
+     &lt;param name=&quot;submodules&quot;&gt;enable&lt;/param&gt;
+     &lt;param name=&quot;changesgenerate&quot;&gt;enable&lt;/param&gt;
+-    &lt;param name=&quot;revision&quot;&gt;refs/tags/0.9&lt;/param&gt;
++    &lt;param name=&quot;revision&quot;&gt;refs/tags/0.9.5&lt;/param&gt;
+   &lt;/service&gt;
+   &lt;service name=&quot;recompress&quot; mode=&quot;disabled&quot;&gt;
+     &lt;param name=&quot;file&quot;&gt;*.tar&lt;/param&gt;
+Index: _servicedata
+===================================================================
+--- _servicedata (revision 3)
++++ _servicedata (revision 19)
+@@ -1,4 +1,4 @@
+ &lt;servicedata&gt;
+ &lt;service name=&quot;tar_scm&quot;&gt;
+             &lt;param name=&quot;url&quot;&gt;https://github.com/GNOME-Keysign/gnome-keysign.git&lt;/param&gt;
+-          &lt;param name=&quot;changesrevision&quot;&gt;ad72a9f305894ea0e65e5f70e4067d722556b83e&lt;/param&gt;&lt;/service&gt;&lt;/servicedata&gt;
+\ No newline at end of file
++          &lt;param name=&quot;changesrevision&quot;&gt;8f4aa01eadbcfad1f588ebf49949f2af9638c0b0&lt;/param&gt;&lt;/service&gt;&lt;/servicedata&gt;
+\ No newline at end of file
+Index: gnome-keysign.changes
+===================================================================
+--- gnome-keysign.changes (revision 3)
++++ gnome-keysign.changes (revision 19)
+@@ -1,4 +1,19 @@
+ -------------------------------------------------------------------
++Tue Oct 03 11:43:51 UTC 2017 - tobiasmue@gnome.org
++
++- Update to version 0.9.5:
++  * Bluetooth support through BlueZ and Twisted
++  * Translation support with Babel
++  * Increased Python 3 compatibility
++  * default to gpgme instead of monkeysign
++  * Better resiliance for pathologic OpenPGP keys
++- Drop python-monkeysign Requires: we switched to gpgme.
++- Add python-Babel BuildRequires: new dependency for the
++  translations.
++- Add python-gpg, python-pybluez and python-twisted Requires: new
++  dependencies.
++
++-------------------------------------------------------------------
+ Fri May 26 15:24:14 UTC 2017 - jmatejek@suse.com
+ 
+ - Add version on python-monkeysign Requires, ease updates for
+Index: gnome-keysign.spec
+===================================================================
+--- gnome-keysign.spec (revision 3)
++++ gnome-keysign.spec (revision 19)
+@@ -17,7 +17,7 @@
+ 
+ 
+ Name:           gnome-keysign
+-Version:        0.9
++Version:        0.9.5
+ Release:        0
+ Summary:        GNOME OpenGPG key signing helper
+ License:        GPL-3.0+
+@@ -25,6 +25,7 @@
+ Url:            https://github.com/GNOME-Keysign/gnome-keysign
+ Source:         %{name}-%{version}.tar.xz
+ BuildRequires:  gobject-introspection
++BuildRequires:  python-Babel
+ BuildRequires:  python-setuptools
+ BuildRequires:  update-desktop-files
+ %ifarch x86_64
+@@ -37,10 +38,12 @@
+ Requires:       python-cairo
+ Requires:       python-gobject
+ Requires:       python-gobject-Gdk
+-Requires:       python-monkeysign &gt;= %{version}
++Requires:       python-gpg
++Requires:       python-pybluez
+ Requires:       python-qrcode
+ Requires:       python-requests
+ Requires:       python-setuptools
++Requires:       python-twisted
+ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ 
+ %description
+Index: gnome-keysign-0.9.5.tar.xz
+===================================================================
+Binary file gnome-keysign-0.9.5.tar.xz (revision 19) added
+Index: gnome-keysign-0.9.tar.xz
+===================================================================
+Binary file gnome-keysign-0.9.tar.xz (revision 3) deleted</comment>
+    <requestid>538064</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>da7bd4fc4ada4642a6e4bea68f5429b7</srcmd5>
+    <version>0.9.6</version>
+    <time>1515876487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.6:
+  * Appdata: Updated format to newer standard.
+  * added a primitive extract_desktop function to babelglade.
+  * babelglade: add Python 3 support.
+  * desktop extract: regard the desktop file spec for translatable
+    strings.
+  * removed our copy of monkeysign.
+  * rewrote babelglade using lxml instead of expat.
+  * send: avoid BT restart when back has been pressed.
+  * setup.py: Generate translated desktop file.
+  * setup.py: Let python setup.py test run &quot;nosetest tests&quot;.
+  * setup: group the catalogs in a separate function.
+  * test_bluetooth: Skip tests if pybluez is not available.
+  * test_gpgmks: skip the tests if mks is not available.
+  * tests: Avoid too broad exception clause.
+- Add python-lxml BuildRequires: new dependency used during
+  translation of the xml files.</comment>
+    <requestid>563671</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>324b3defc69cc8116fba2c44a232e05a</srcmd5>
+    <version>0.9.6</version>
+    <time>1526022841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600287</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>763d9e75b3533d20d715fa76133a0ba5</srcmd5>
+    <version>0.9.7.2</version>
+    <time>1530087702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618984</requestid>
+  </revision>
+</revisionlist>

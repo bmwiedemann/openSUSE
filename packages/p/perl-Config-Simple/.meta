@@ -1,0 +1,16 @@
+<package name="perl-Config-Simple" project="openSUSE:Factory">
+  <title>Simple configuration file class</title>
+  <description>Reading and writing configuration files is one of the most frequent tasks of
+any software design. Config::Simple is the library that helps you with it.
+
+Config::Simple is a class representing configuration file object. It supports
+several configuration file syntax and tries to identify the file syntax
+automatically. Library supports parsing, updating and creating configuration
+files.
+
+Author:
+-------
+    Sherzod B. Ruzmetov</description>
+  <devel project="devel:languages:perl" package="perl-Config-Simple"/>
+  <url>http://search.cpan.org/perldoc?Config::Simple</url>
+</package>

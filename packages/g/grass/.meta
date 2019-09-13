@@ -1,0 +1,6 @@
+<package name="grass" project="openSUSE:Factory">
+  <title>GRASS - Geographic Resources Analysis Support System</title>
+  <description>Commonly referred to as GRASS, this is a Geographic Information System (GIS) used for geospatial data management and analysis, image processing, graphics/maps production, spatial modeling, and visualization.</description>
+  <devel project="Application:Geo" package="grass"/>
+  <url>http://grass.osgeo.org/</url>
+</package>

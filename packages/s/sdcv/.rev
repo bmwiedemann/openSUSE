@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>397dd799f2491dafbc07ee7acb0a5857</srcmd5>
+    <version>0.5.0~beta2</version>
+    <time>1464204153</time>
+    <user>dimstar_suse</user>
+    <comment>sdcv is command line dictionary with StarDict format support</comment>
+    <requestid>394946</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2e6c84ecb6120c3619bb69c450261b9d</srcmd5>
+    <version>0.5.1</version>
+    <time>1501311698</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512764</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>24b04224c90a45e81c50cd36ecc2d68a</srcmd5>
+    <version>0.5.2</version>
+    <time>1505238823</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522036</requestid>
+  </revision>
+</revisionlist>

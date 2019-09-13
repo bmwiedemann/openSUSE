@@ -1,0 +1,5 @@
+<package name="adjtimex" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Base:System" package="adjtimex"/>
+</package>

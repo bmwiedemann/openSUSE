@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>988528700af30291c3b3eb8af287c5cb</srcmd5>
+    <version>0.4.2</version>
+    <time>1376295299</time>
+    <user>scarabeus_factory</user>
+    <comment>New package, part of the TILDE Editor</comment>
+    <requestid>186334</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>988528700af30291c3b3eb8af287c5cb</srcmd5>
+    <version>0.4.2</version>
+    <time>1379663107</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2000952c4a2e912857ed6986a160e9de</srcmd5>
+    <version>0.4.4</version>
+    <time>1392114490</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221725</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b4d980fe127d7b60e3691fa5cfd449bf</srcmd5>
+    <version>0.4.6</version>
+    <time>1406645308</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>242776</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b4d980fe127d7b60e3691fa5cfd449bf</srcmd5>
+    <version>0.4.6</version>
+    <time>1409301731</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>76015d5529509847b37eea43ceb3f878</srcmd5>
+    <version>0.4.7</version>
+    <time>1424430108</time>
+    <user>dimstar_suse</user>
+    <comment>Update (forwarded request 286830 from posophe)</comment>
+    <requestid>286839</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d23c3f59fea9ac77c1558614a305d435</srcmd5>
+    <version>0.5.2</version>
+    <time>1503593255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.5.2</comment>
+    <requestid>515078</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>464e21b12394ac2ee089f82018005e2b</srcmd5>
+    <version>1.0.3</version>
+    <time>1546946973</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.0.3</comment>
+    <requestid>663388</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d946f271367ac87de3217cf38a1bd1f8</srcmd5>
+    <version>1.0.6</version>
+    <time>1566551378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.0.6</comment>
+    <requestid>725408</requestid>
+  </revision>
+</revisionlist>

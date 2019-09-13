@@ -1,0 +1,8 @@
+<package name="geronimo-specs" project="openSUSE:Factory">
+  <title>Geronimo J2EE server J2EE specifications</title>
+  <description>Geronimo is Apache's ASF-licenced J2EE server project. These are the
+J2EE-Specifications Note: You should use the subpackages for the
+Specifications that you actually need.	The ones installed by the main
+package are deprecated and will disapear in future releases.</description>
+  <devel project="Java:packages" package="geronimo-specs"/>
+</package>

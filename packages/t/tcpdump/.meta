@@ -1,0 +1,6 @@
+<package name="tcpdump" project="openSUSE:Factory">
+  <title>A Packet Sniffer</title>
+  <description>This program can &quot;read&quot; all or only certain packets going over the
+ethernet. It can be used to debug specific network problems.</description>
+  <devel project="network:utilities" package="tcpdump"/>
+</package>

@@ -1,0 +1,1591 @@
+<revisionlist>
+  <revision rev="1" vrev="23">
+    <srcmd5>43f2ad61481be721d4f3e5b5ba221548</srcmd5>
+    <version>2.2.3</version>
+    <time>1166634075</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="26">
+    <srcmd5>86dce58caa012de2e9a67eda772788f9</srcmd5>
+    <version>2.2.3</version>
+    <time>1168255579</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>36ba1aec590623c7ebc73682cad78e46</srcmd5>
+    <version>2.2.4</version>
+    <time>1168448796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>abbfa9ab41ce28ff844c0ba69d6fe5eb</srcmd5>
+    <version>2.2.4</version>
+    <time>1168561019</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>ff2a0f295544e784f809cf25f947c751</srcmd5>
+    <version>2.2.4</version>
+    <time>1174349616</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>05cd26ed689cea744784b6e6cb88e989</srcmd5>
+    <version>2.2.4</version>
+    <time>1174386641</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>dd9ffbcd2f5b041399df5f9453bfb655</srcmd5>
+    <version>2.2.4</version>
+    <time>1174682452</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>127a5b171e98829c20289f0d77558f02</srcmd5>
+    <version>2.2.4</version>
+    <time>1175199359</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="44">
+    <srcmd5>792dc62919e213425d696e96dcc074a1</srcmd5>
+    <version>2.2.4</version>
+    <time>1185218840</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="57">
+    <srcmd5>3562dc4f38ae0f0cc791df2ad7ede3b0</srcmd5>
+    <version>2.2.4</version>
+    <time>1188228398</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="59">
+    <srcmd5>4ef38c3e6931945af3f579a39816929e</srcmd5>
+    <version>2.2.4</version>
+    <time>1188567379</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="61">
+    <srcmd5>2ac21300d747d38cfc6de06ff3620a96</srcmd5>
+    <version>2.2.4</version>
+    <time>1188836563</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="75">
+    <srcmd5>0e3453113614886a27a580459eeaeb7a</srcmd5>
+    <version>2.2.4</version>
+    <time>1193070327</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="88">
+    <srcmd5>70e702e88bbb6f1c5e77f22b37b7ca60</srcmd5>
+    <version>2.2.4</version>
+    <time>1197574332</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="89">
+    <srcmd5>0870be586e6bfaa1cdd325f08f817d77</srcmd5>
+    <version>2.2.4</version>
+    <time>1204810072</time>
+    <user>poeml</user>
+    <comment>test</comment>
+  </revision>
+  <revision rev="16" vrev="90">
+    <srcmd5>70e702e88bbb6f1c5e77f22b37b7ca60</srcmd5>
+    <version>2.2.4</version>
+    <time>1204810227</time>
+    <user>poeml</user>
+    <comment>reverse the test commit I just did</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e90c194f7e85597d2437738dc40e4be0</srcmd5>
+    <version>2.2.8</version>
+    <time>1205511675</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>ee364d07a242e3d6914dcfb5d3e05126</srcmd5>
+    <version>2.2.8</version>
+    <time>1207083731</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>ac2f3ed4672fae506c54be9fe46b0a4f</srcmd5>
+    <version>2.2.8</version>
+    <time>1208718217</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="24">
+    <srcmd5>35ca44852c3f8dee96577a12836cea9f</srcmd5>
+    <version>2.2.8</version>
+    <time>1211821545</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="49">
+    <srcmd5>e8fbcd98a48148701c8f00b959edacc6</srcmd5>
+    <version>2.2.8</version>
+    <time>1219620118</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="50">
+    <srcmd5>c1fc42b12e0e657523640c717e526dbc</srcmd5>
+    <version>2.2.8</version>
+    <time>1219881200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5bc86b26d9bd75457b87f90a11ad7e13</srcmd5>
+    <version>2.2.9</version>
+    <time>1221252439</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>fba744ea8d61794d47394c92f47c2c87</srcmd5>
+    <version>2.2.9</version>
+    <time>1222261164</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>6edc7abcd93d108f31ae2e5248bb03f2</srcmd5>
+    <version>2.2.9</version>
+    <time>1224859876</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e69471ad9c3c337e42ee71eccb96ee39</srcmd5>
+    <version>2.2.10</version>
+    <time>1225709756</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>5b528fcce78965659996d3230a7a4470</srcmd5>
+    <version>2.2.10</version>
+    <time>1227276687</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ab6db783c5d9ee546e654b534fe0dcde</srcmd5>
+    <version>2.2.11</version>
+    <time>1232750428</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>0971c60077299362225b5e5eb1446569</srcmd5>
+    <version>2.2.11</version>
+    <time>1235647584</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>a039be05814797b2cfb6e4ba62962cd1</srcmd5>
+    <version>2.2.11</version>
+    <time>1235953623</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>70e6a86c89fd8ed47091a1bc59ca92f5</srcmd5>
+    <version>2.2.11</version>
+    <time>1240736020</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>2cd336629656bd34f789c494c22a233c</srcmd5>
+    <version>2.2.11</version>
+    <time>1244564775</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6a1a8ee452bf86655852687eb4289ac0</srcmd5>
+    <version>2.2.12</version>
+    <time>1248873293</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e42fbae238fd9a9a1d745acbf7d26a18</srcmd5>
+    <version>2.2.13</version>
+    <time>1250865994</time>
+    <user>autobuild</user>
+    <comment>Copy from Apache/apache2 based on submit request 18192 from user coolo
+</comment>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>e42fbae238fd9a9a1d745acbf7d26a18</srcmd5>
+    <version>2.2.13</version>
+    <time>1250865994</time>
+    <user>autobuild</user>
+    <comment>Copy from Apache/apache2 based on submit request 18192 from user coolo
+</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9a5afc3d4815ff22ad6c92da491c6bc4</srcmd5>
+    <version>2.2.14</version>
+    <time>1263484472</time>
+    <user>autobuild</user>
+    <comment>Copy from Apache/apache2 based on submit request 28986 from user coolo
+</comment>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>11fb65489e0bfc26b5f9437698c09baa</srcmd5>
+    <version>2.2.14</version>
+    <time>1267801070</time>
+    <user>autobuild</user>
+    <comment>Copy from Apache/apache2 based on submit request 34123 from user coolo
+</comment>
+    <requestid>34123</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>75a3559921a96532f2d69351eaec7be8</srcmd5>
+    <version>2.2.14</version>
+    <time>1268922883</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5610064637beaf949296e6bcec5a6bd3</srcmd5>
+    <version>2.2.15</version>
+    <time>1268983954</time>
+    <user>autobuild</user>
+    <comment>Copy from Apache/apache2 based on submit request 35087 from user coolo
+</comment>
+    <requestid>35087</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>15f4558b23383855bd160111cb1311df</srcmd5>
+    <version>2.2.15</version>
+    <time>1273590977</time>
+    <user>autobuild</user>
+    <comment>Copy from Apache/apache2 based on submit request 39666 from user draht
+</comment>
+    <requestid>39666</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>0da1e417c125a75c9599f46e6fc28200</srcmd5>
+    <version>2.2.15</version>
+    <time>1273654049</time>
+    <user>autobuild</user>
+    <comment>Copy from Apache/apache2 based on submit request 39834 from user draht
+</comment>
+    <requestid>39834</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>0da1e417c125a75c9599f46e6fc28200</srcmd5>
+    <version>2.2.15</version>
+    <time>1278667336</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>0da1e417c125a75c9599f46e6fc28200</srcmd5>
+    <version>2.2.15</version>
+    <time>1278678563</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>7175773b74ceed05909165c1fcf4893b</srcmd5>
+    <version>2.2.16</version>
+    <time>1280498097</time>
+    <user>autobuild</user>
+    <comment>Copy from Apache/apache2 based on submit request 44223 from user coolo
+</comment>
+    <requestid>44223</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>60897e90607bef5fb7e2ae7b0747bdcd</srcmd5>
+    <version>2.2.16</version>
+    <time>1286400110</time>
+    <user>autobuild</user>
+    <comment>Copy from Apache/apache2 based on submit request 49853 from user coolo
+</comment>
+    <requestid>49853</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8732730046a630854c76aa4099e78b1f</srcmd5>
+    <version>2.2.17</version>
+    <time>1291138786</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54191 from user coolo
+</comment>
+    <requestid>54191</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>3b8ed7ec2d301f1152ef8750707eafab</srcmd5>
+    <version>2.2.17</version>
+    <time>1291138793</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54191
+</comment>
+  </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>3b8ed7ec2d301f1152ef8750707eafab</srcmd5>
+    <version>2.2.17</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="49" vrev="6">
+    <srcmd5>63390b0731fd9686f89ca93e79e4baf5</srcmd5>
+    <version>2.2.17</version>
+    <time>1306504359</time>
+    <user>saschpe</user>
+    <comment>- set sane default cipher string in apache2-vhost-ssl.template
+- remove useless example snakeoil certs
+- remove broken mkcert script
+
+- Tag boot script as interactive as systemd uses it
+
+- recommend the default mpm package (bnc#670027)</comment>
+    <requestid>70180</requestid>
+  </revision>
+  <revision rev="50" vrev="7">
+    <srcmd5>a6f00271d58733c96028a9c8f8cd4793</srcmd5>
+    <version>2.2.17</version>
+    <time>1306504381</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70180
+</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>00c0390326bc399ff6c58447009a0fe2</srcmd5>
+    <version>2.2.21</version>
+    <time>1316080694</time>
+    <user>saschpe</user>
+    <comment>- Update to 2.2.21. News therein:
+  * re-worked CVE-2011-3192 (byterange_filter.c) with a regression
+    fix. New config option: MaxRanges (PR 51748)
+  * multi fixes in mod_filter, mod_proxy_ajp, mod_dav_fs,
+    mod_alias, mod_rewrite. As always, see CHANGES file.
+- added httpd-%{realver}.tar.bz2.asc to source, along with
+  60C5442D.key which the tarball was signed with.
+
+- need to add %ghost /lib/systemd to satisfy distributions that
+  have no systemd yet.
+
+- Add apache2-systemd-ask-pass / apache2.service / start_apache2
+  and modify apache2-ssl-global.conf for systemd support
+  (bnc#697137).
+
+- Update to version 2.2.20, fix CVE-2011-3192 
+  mod_deflate D.o.S.
+
+-  Fix apache PR 45076 
+
+- Use SSL_MODE_RELEASE_BUFFERS to reduce mod_ssl memory usage
+
+- Add 2 patches from the &quot;low hanging fruit&quot; warnings in apache
+  STATUS page.
+ * mod_deflate: Stop compressing HEAD requests 
+  if there is not Content-Length header 
+ * mod_reqtimeout: Disable keep-alive after read timeout
+
+- Remove -fno-strict-aliasing from CFLAGS, no longer needed.</comment>
+    <requestid>82181</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>0b91600301a0bfb95eb168ac9f881cb7</srcmd5>
+    <version>2.2.21</version>
+    <time>1317541671</time>
+    <user>lrupp</user>
+    <comment>- Fix systemd files packaging, %ghost is not a good idea.
+- Use systemd rpm macros for openSUSE 12.1 and later. (forwarded request 85398 from fcrozat)</comment>
+    <requestid>85408</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>0b91600301a0bfb95eb168ac9f881cb7</srcmd5>
+    <version>2.2.21</version>
+    <time>1319181770</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>8d1d77904a20829c636ef5f910301394</srcmd5>
+    <version>2.2.21</version>
+    <time>1319550371</time>
+    <user>coolo</user>
+    <comment>2.0 turns 2.2 in Summary and Description. No other change intended.</comment>
+    <requestid>89271</requestid>
+  </revision>
+  <revision rev="55" vrev="6">
+    <srcmd5>7673b517c718e4dad64e72ee8b74d090</srcmd5>
+    <version>2.2.21</version>
+    <time>1327093585</time>
+    <user>coolo</user>
+    <comment>Fix building</comment>
+    <requestid>99421</requestid>
+  </revision>
+  <revision rev="56" vrev="7">
+    <srcmd5>f217c764753994d65eb3840cc1267955</srcmd5>
+    <version>2.2.21</version>
+    <time>1329318864</time>
+    <user>coolo</user>
+    <comment>- compile with pcre 8.30 - patch taken from apache bugzilla
+
+- enable mod_reqtimeout by default via APACHE_MODULES in
+  /etc/sysconfig/apache2, configuration 
+  /etc/apache2/mod_reqtimeout.conf .
+  Of course, the existing configuration remains unchanged.
+
+- add default vhost configs
+  * default-vhost.conf, default-vhost-ssl.conf, README.default-vhost</comment>
+    <requestid>104673</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>4bfd9a6b8eb38225deafab5a33640155</srcmd5>
+    <version>2.2.22</version>
+    <time>1329908524</time>
+    <user>saschpe</user>
+    <comment>regular 2.2.22 update</comment>
+    <requestid>106392</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>2f3e7b76842f59cb91b08647494f9e9f</srcmd5>
+    <version>2.2.22</version>
+    <time>1333356635</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>111808</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>e2d8a60f2eb73cd20e987a54655283f9</srcmd5>
+    <version>2.2.22</version>
+    <time>1338476546</time>
+    <user>coolo</user>
+    <comment>Add patch to enable npn for mod_spdy... specially advertise this capability... (forwarded request 114975 from dimstar)</comment>
+    <requestid>122701</requestid>
+  </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>e2d8a60f2eb73cd20e987a54655283f9</srcmd5>
+    <version>2.2.22</version>
+    <time>1340183174</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="61" vrev="6">
+    <srcmd5>0b8097f114b4e21f2eb3734023bc9623</srcmd5>
+    <version>2.2.22</version>
+    <time>1342082234</time>
+    <user>namtrac</user>
+    <comment>- modified apache2.2-mpm-itk-20090414-00.patch to fix
+  itk running as root. bnc#681176 / CVE-2011-1176 (forwarded request 127274 from msmeissn)</comment>
+    <requestid>127551</requestid>
+  </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>de23165a27f2b2743eff414b4e65e6cb</srcmd5>
+    <version>2.2.22</version>
+    <time>1343671873</time>
+    <user>coolo</user>
+    <comment>- gensslcert: Use 0400 permissions for generated SSL certificate files
+  instead of 0644 (forwarded request 128919 from saschpe)</comment>
+    <requestid>129084</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>351a4c349524985820be55ac5ed2f124</srcmd5>
+    <version>2.4.2</version>
+    <time>1344172421</time>
+    <user>coolo</user>
+    <comment>- Fix factory-auto (aka r2dbag) complains about URL.
+- Provide a symlink for apxs2 new location otherwise 
+  all buggy spec files of external modules will break. (forwarded request 129514 from elvigia)</comment>
+    <requestid>129515</requestid>
+  </revision>
+  <revision rev="64" vrev="8">
+    <srcmd5>e25c0a903f2f5190e236bb8468931e8a</srcmd5>
+    <version>2.2.22</version>
+    <time>1344330216</time>
+    <user>coolo</user>
+    <comment>revert back to rev 62</comment>
+  </revision>
+  <revision rev="65" vrev="9">
+    <srcmd5>0213ef40dbccbbea1a51d5316ffe696a</srcmd5>
+    <version>2.2.22</version>
+    <time>1359020593</time>
+    <user>coolo</user>
+    <comment>Fix build in Facotry - ignore the -devel branch which had the urge to move in time</comment>
+    <requestid>149660</requestid>
+  </revision>
+  <revision rev="66" vrev="11">
+    <srcmd5>0213ef40dbccbbea1a51d5316ffe696a</srcmd5>
+    <version>2.2.22</version>
+    <time>1359108655</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>7bed618ca46acd79dd4f9c83185c757f</srcmd5>
+    <version>2.4.3</version>
+    <time>1362732600</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157654</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>ef939b1e647f4f7b96d4c0e4204332ec</srcmd5>
+    <version>2.4.4</version>
+    <time>1372760412</time>
+    <user>coolo</user>
+    <comment>- apache-20-22-upgrade: still no cookie, module authn_file 
+  is ok and must not be disabled on update.
+  authn_core must however be enabled too. (forwarded request 179383 from elvigia)</comment>
+    <requestid>179384</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>281d17c014ce37ee322488512c9be98f</srcmd5>
+    <version>2.4.6</version>
+    <time>1375202234</time>
+    <user>coolo</user>
+    <comment>- provide and obsolete mod_macro 
+- upgrade: some people complain that log_config module 
+ is not enabled by default sometimes, fix that.
+- upgrade : &quot;SSLMutex&quot; no longer exists.
+- Toogle EnableSendfile on because now apache defaults to off
+  due to kernel bugs. that's a silly thing to do here 
+  as kernel bugs have to be fixed at their source, not worked around
+  in applications. (forwarded request 184902 from elvigia)</comment>
+    <requestid>184903</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>d3bd693a90939ff0321d5ef9195c2383</srcmd5>
+    <version>2.4.6</version>
+    <time>1375370064</time>
+    <user>coolo</user>
+    <comment>- Enable mod_proxy_html, mod_xml2enc and mod_lua (missed BuildRequires) (forwarded request 185347 from elvigia)</comment>
+    <requestid>185351</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>a7f563aa0ffcfc0647d6b89d8a540f45</srcmd5>
+    <version>2.4.6</version>
+    <time>1375627687</time>
+    <user>coolo</user>
+    <comment>- Make the default keysize in the sample gensslcerts 2048 bits to match
+  government recommendations. (forwarded request 185577 from msmeissn)</comment>
+    <requestid>185675</requestid>
+  </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>cd60aac03db7c797ea25177f7298f811</srcmd5>
+    <version>2.4.6</version>
+    <time>1378126529</time>
+    <user>coolo</user>
+    <comment>- Really use %requires_ge for libapr1 and libapr-util1 
+  mentioned but not implemented in the previous commit. (forwarded request 196847 from elvigia)</comment>
+    <requestid>196848</requestid>
+  </revision>
+  <revision rev="73" vrev="5">
+    <srcmd5>49ccab5606d11c857cb69553d56cfe8c</srcmd5>
+    <version>2.4.6</version>
+    <time>1378293413</time>
+    <user>coolo</user>
+    <comment>- Also fix subtle non-obvious systemd unit confusion
+  we really mean -DFOREGROUND not -DNO_DETACH the latter only 
+  inhibits the parent from forking, not quite the same as 
+  running in well.. the foreground as required. (forwarded request 197315 from elvigia)</comment>
+    <requestid>197316</requestid>
+  </revision>
+  <revision rev="74" vrev="7">
+    <srcmd5>49ccab5606d11c857cb69553d56cfe8c</srcmd5>
+    <version>2.4.6</version>
+    <time>1379661972</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="75" vrev="8">
+    <srcmd5>4ce33eb72460c5f6ed286842f3fa789b</srcmd5>
+    <version>2.4.6</version>
+    <time>1382011061</time>
+    <user>scarabeus_factory</user>
+    <comment>Fix SUSE spelling. (forwarded request 203323 from a_jaeger)</comment>
+    <requestid>203415</requestid>
+  </revision>
+  <revision rev="76" vrev="9">
+    <srcmd5>a72dc9998a2bf7a7a9aed84906452367</srcmd5>
+    <version>2.4.6</version>
+    <time>1382616445</time>
+    <user>scarabeus_factory</user>
+    <comment>- Correct build in old distros. 
+
+- disable (revert) mod_ssl changes in the previous
+  commit so it does not end in factory or 13.1 yet.
+
+- make mod_systemd static so scenarios described in 
+  [bnc#846897] do not happen again. (forwarded request 204342 from elvigia)</comment>
+    <requestid>204343</requestid>
+  </revision>
+  <revision rev="77" vrev="10">
+    <srcmd5>fd59e7388914b0b74915de0813b1e4dd</srcmd5>
+    <version>2.4.6</version>
+    <time>1383809625</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>205826</requestid>
+  </revision>
+  <revision rev="78" vrev="11">
+    <srcmd5>d45d86386780eaaa5b1aa22428c03a43</srcmd5>
+    <version>2.4.6</version>
+    <time>1384246180</time>
+    <user>coolo</user>
+    <comment>Removed obsolete directive DefaultType bnc#848146
+Changed access control to use new Require type directives (forwarded request 205788 from fdekruijf)</comment>
+    <requestid>206490</requestid>
+  </revision>
+  <revision rev="79" vrev="12">
+    <srcmd5>ba74c1ef6faeb7a625cbbe3de3e9f168</srcmd5>
+    <version>2.4.6</version>
+    <time>1384700280</time>
+    <user>coolo</user>
+    <comment>- httpd-mod_ssl_ephemeralkeyhandling.patch obsoletes
+ mod_ssl-2.4.x-ekh.diff this new patch is the final
+  form of the rework, merged for 2.4.7. (forwarded request 207095 from elvigia)</comment>
+    <requestid>207096</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>6fb8b3a1c82aa2be0420a7bf843de5c0</srcmd5>
+    <version>2.4.7</version>
+    <time>1392270782</time>
+    <user>coolo</user>
+    <comment>Correct apache2.changes, mention the drop of httpd-event-ssl.patch (forwarded request 214772 from aeneas_jaissle)</comment>
+    <requestid>221932</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>5c6450be11867bc8a13b89168dc794e5</srcmd5>
+    <version>2.4.7</version>
+    <time>1393453222</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223761</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>4ee4a5f10e94926689a35cc0c4a8065e</srcmd5>
+    <version>2.4.9</version>
+    <time>1396291386</time>
+    <user>coolo</user>
+    <comment>- version 2.4.9 
+* SECURITY: CVE-2014-0098
+* SECURITY: CVE-2013-6438
+* multiple bugfixes and improvements to mod_ssl, mod_lua,
+  mod_session and core, see CHANGES for details. (forwarded request 227796 from elvigia)</comment>
+    <requestid>227797</requestid>
+  </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>4ee4a5f10e94926689a35cc0c4a8065e</srcmd5>
+    <version>2.4.9</version>
+    <time>1409300497</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>4db05996d4e6df844b7ab21b98da97dc</srcmd5>
+    <version>2.4.10</version>
+    <time>1412851922</time>
+    <user>coolo</user>
+    <comment>- the following unused patches were removed from the package:
+  * apache2-mod_ssl_npn.patch
+  * httpd-2.0.49-log_server_status.dif 
+
+- 700 permissions for /usr/sbin/apache2-systemd-ask-pass and
+  /usr/sbin/start_apache2 [bnc#851627]
+
+- allow only TCP ports in Yast2 firewall files
+
+- more 2.2 -&gt; 2.4 [bnc#862058]
+
+- ServerSignature=Off and ServerTokens=Prod by request from 
+  security team [bnc#716495]
+
+- fix documentation links 2.2 -&gt; 2.4 [bnc#888163] (internal)
+
+- Update package Summary and Description. 
+- version 2.4.10
+* SECURITY: CVE-2014-0117 (cve.mitre.org)
+* SECURITY: CVE-2014-3523 (cve.mitre.org)
+* SECURITY: CVE-2014-0226 (cve.mitre.org)
+* SECURITY: CVE-2014-0118 (cve.mitre.org)
+* SECURITY: CVE-2014-0231 (cve.mitre.org)
+* Multiple bugfixes to mod_ssl, mod_cache, mod_deflate, mod_lua
+* mod_proxy_fcgi supports unix sockets.
+
+- provide httpd.service as alias for apache2.service for
+  compatibility reasons (bnc#888093)
+
+- move most ssl options to ssl-global.conf. There is usually no need</comment>
+    <requestid>254328</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>58223e6b8b9cc1256101224e722520ec</srcmd5>
+    <version>2.4.10</version>
+    <time>1413060105</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254981</requestid>
+  </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>5facc62f00acd4404c445fc1007773ce</srcmd5>
+    <version>2.4.10</version>
+    <time>1413403121</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255864</requestid>
+  </revision>
+  <revision rev="87" vrev="4">
+    <srcmd5>96bbd7d4c28e71dd3642abfad530d477</srcmd5>
+    <version>2.4.10</version>
+    <time>1414218741</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256900</requestid>
+  </revision>
+  <revision rev="88" vrev="5">
+    <srcmd5>24da7f51342dfe9730375fbe75964a7b</srcmd5>
+    <version>2.4.10</version>
+    <time>1415201203</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259182</requestid>
+  </revision>
+  <revision rev="89" vrev="6">
+    <srcmd5>7318d8d078e0d98909073c777328476e</srcmd5>
+    <version>2.4.10</version>
+    <time>1415866896</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260912</requestid>
+  </revision>
+  <revision rev="90" vrev="7">
+    <srcmd5>1ecece124ea01130ece85bb5bd9fb8ca</srcmd5>
+    <version>2.4.10</version>
+    <time>1417246768</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>263228</requestid>
+  </revision>
+  <revision rev="91" vrev="8">
+    <srcmd5>7e67e15b92352314b52956f03a424e59</srcmd5>
+    <version>2.4.10</version>
+    <time>1417810054</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263952</requestid>
+  </revision>
+  <revision rev="92" vrev="9">
+    <srcmd5>f4ecd18c1a9f70c4a8b8c10df58aeb56</srcmd5>
+    <version>2.4.10</version>
+    <time>1418113025</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264360</requestid>
+  </revision>
+  <revision rev="93" vrev="10">
+    <srcmd5>451f2785c3b3d1e030eb645c6186ccdd</srcmd5>
+    <version>2.4.10</version>
+    <time>1419896960</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266431</requestid>
+  </revision>
+  <revision rev="94" vrev="11">
+    <srcmd5>6b56ba75974f53c81cc0136a6764efae</srcmd5>
+    <version>2.4.10</version>
+    <time>1420318933</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266862</requestid>
+  </revision>
+  <revision rev="95" vrev="12">
+    <srcmd5>4377f506720c298405f68e234b1d42cb</srcmd5>
+    <version>2.4.10</version>
+    <time>1420927606</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280345</requestid>
+  </revision>
+  <revision rev="96" vrev="13">
+    <srcmd5>fac457f573e240a579c7cd9fbb5f0cc6</srcmd5>
+    <version>2.4.10</version>
+    <time>1421334042</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280888</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>eef0f04e2bc392851d843beee08f55ba</srcmd5>
+    <version>2.4.11</version>
+    <time>1421959696</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281538</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>0020f4c0ddbbfb5bc3c0f7c64c200910</srcmd5>
+    <version>2.4.11</version>
+    <time>1423214325</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283925</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>df28e708302514bfc061fcb503fb2e08</srcmd5>
+    <version>2.4.11</version>
+    <time>1424432586</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286604</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>fd9f54c49ef5d335ddc1b67119239b09</srcmd5>
+    <version>2.4.12</version>
+    <time>1425377437</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288480</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>c8832ee8f2383914e45258ca470c8837</srcmd5>
+    <version>2.4.12</version>
+    <time>1426174696</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290233</requestid>
+  </revision>
+  <revision rev="102" vrev="3">
+    <srcmd5>98e98cfadb579c779f92e289cf833560</srcmd5>
+    <version>2.4.12</version>
+    <time>1428790187</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295249</requestid>
+  </revision>
+  <revision rev="103" vrev="4">
+    <srcmd5>eb229183d78b76cc3ef47308e8488f0a</srcmd5>
+    <version>2.4.12</version>
+    <time>1430903890</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305456</requestid>
+  </revision>
+  <revision rev="104" vrev="5">
+    <srcmd5>3325e231139eff798b5964db685bb2b2</srcmd5>
+    <version>2.4.12</version>
+    <time>1431799643</time>
+    <user>coolo</user>
+    <comment>- add httpd-2.4.12-CVE-2015-0253.patch to fix SECURITY: CVE-2015-0253
+  (cve.mitre.org) core: Fix a crash introduced in with ErrorDocument
+  400 pointing to a local URL-path with the INCLUDES filter active,
+  introduced in 2.4.11. PR 57531. [Yann Ylavic]</comment>
+    <requestid>307348</requestid>
+  </revision>
+  <revision rev="105" vrev="6">
+    <srcmd5>59b3774b1117cf19486e549879c80dfa</srcmd5>
+    <version>2.4.12</version>
+    <time>1432799315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308683</requestid>
+  </revision>
+  <revision rev="106" vrev="7">
+    <srcmd5>48a59ee51ec8ce156870338a0317f928</srcmd5>
+    <version>2.4.12</version>
+    <time>1433920513</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311298</requestid>
+  </revision>
+  <revision rev="107" vrev="8">
+    <srcmd5>f5d104c3a492644035473377b727ac08</srcmd5>
+    <version>2.4.12</version>
+    <time>1434550498</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>311733</requestid>
+  </revision>
+  <revision rev="108" vrev="9">
+    <srcmd5>9b228f94b6370cd0c70e07e165396d3d</srcmd5>
+    <version>2.4.12</version>
+    <time>1436887252</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316598</requestid>
+  </revision>
+  <revision rev="109" vrev="10">
+    <srcmd5>dc1e4f7cfa4f95a4eca96d01fc00fc2a</srcmd5>
+    <version>2.4.12</version>
+    <time>1437384108</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317540</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>e0206b7d9c264cbfa16ac8b478a3c02b</srcmd5>
+    <version>2.4.16</version>
+    <time>1437657688</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317883</requestid>
+  </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>40ec37b3fc7eb61bdc6ae19aa251c10b</srcmd5>
+    <version>2.4.16</version>
+    <time>1438899502</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320254</requestid>
+  </revision>
+  <revision rev="112" vrev="3">
+    <srcmd5>9e9b73db50c41fe6f2e6c00c95d27e34</srcmd5>
+    <version>2.4.16</version>
+    <time>1439556353</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixup libdir in installed files (forwarded request 322437 from Andreas_Schwab)</comment>
+    <requestid>322488</requestid>
+  </revision>
+  <revision rev="113" vrev="4">
+    <srcmd5>c01af85a476c67fa82a0039b9a587a44</srcmd5>
+    <version>2.4.16</version>
+    <time>1445092589</time>
+    <user>coolo</user>
+    <comment>- start_apache2: reintroduce sysconfig.d, include it on
+  command line (not in httpd.conf) instead of individual directives
+  [bnc#949434] (internal), [bnc#941331] (forwarded request 338023 from pgajdos)</comment>
+    <requestid>338423</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>6f9eea777c1841011d4af8efa30f7861</srcmd5>
+    <version>2.4.17</version>
+    <time>1445860031</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to 2.4.17
+- Enable mod_http2/ BuildRequire nghttp2
+- MPMs: Support SO_REUSEPORT to create multiple duplicated listener
+  records for scalability
+- mod_ssl: Support compilation against libssl built with OPENSSL_NO_SSL3
+- For more changes see: http://www.apache.org/dist/httpd/CHANGES_2.4.17 (forwarded request 339571 from elvigia)</comment>
+    <requestid>339757</requestid>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>92a4f8249d1eca423faf71d99bde817a</srcmd5>
+    <version>2.4.17</version>
+    <time>1446764963</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>342041</requestid>
+  </revision>
+  <revision rev="116" vrev="3">
+    <srcmd5>da11f69f20991dabf4a0f241b0923306</srcmd5>
+    <version>2.4.17</version>
+    <time>1446989730</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342622</requestid>
+  </revision>
+  <revision rev="117" vrev="4">
+    <srcmd5>452004c39405932622b18e0e244c16ef</srcmd5>
+    <version>2.4.17</version>
+    <time>1448400599</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>345070</requestid>
+  </revision>
+  <revision rev="118" vrev="5">
+    <srcmd5>98aa7366c00dabca7f9a3ed12fa6beca</srcmd5>
+    <version>2.4.17</version>
+    <time>1449686031</time>
+    <user>dimstar_suse</user>
+    <comment>- systemd: Set TasksMax=infinity for current systemd releases.
+  The default limit of 512 is too small and prevents the creation of 
+  new server processes. Apache has its own runtime/harcoded limits. (forwarded request 347820 from elvigia)</comment>
+    <requestid>347918</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>648f9f856580f9975ce53285dd30e1bd</srcmd5>
+    <version>2.4.18</version>
+    <time>1450861012</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350216</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>4d6c1d59a5ca56c11035718aaba2b321</srcmd5>
+    <version>2.4.20</version>
+    <time>1460480287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.20 (2.4.19 was never released)
+* Drop httpd-2.4.18-missing-semicolon.patch now upstream
+- Big changelog available, see:
+  http://www.apache.org/dist/httpd/CHANGES_2.4.20 for details. (forwarded request 387252 from elvigia)</comment>
+    <requestid>387291</requestid>
+  </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>9d988911277673ea868fa472c369acba</srcmd5>
+    <version>2.4.20</version>
+    <time>1462865113</time>
+    <user>dimstar_suse</user>
+    <comment>- removed note about ulimits in sysconfig file [bsc#976711]
+
+- do not build mod_http2 for 13.2</comment>
+    <requestid>393785</requestid>
+  </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>1ed02efd5da877b4ebd65144a39dd1db</srcmd5>
+    <version>2.4.20</version>
+    <time>1463738093</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>396009</requestid>
+  </revision>
+  <revision rev="123" vrev="4">
+    <srcmd5>c6de0d40f281f81fd2b13cdea24a9e26</srcmd5>
+    <version>2.4.20</version>
+    <time>1464964523</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>399633</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>6903381f5e66816475bff79f654c8275</srcmd5>
+    <version>2.4.23</version>
+    <time>1468869784</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408555</requestid>
+  </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>31246b8a733ad4742d73c80ec827c95d</srcmd5>
+    <version>2.4.23</version>
+    <time>1471345380</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the omc xml config. It is useless nowdays (forwarded request 417081 from scarabeus_iv)</comment>
+    <requestid>417408</requestid>
+  </revision>
+  <revision rev="126" vrev="3">
+    <srcmd5>2adab5cf0ced58b37643266fd143271a</srcmd5>
+    <version>2.4.23</version>
+    <time>1474806515</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>429346</requestid>
+  </revision>
+  <revision rev="127" vrev="4">
+    <srcmd5>3284211d67b335dc70df6f6cb9212429</srcmd5>
+    <version>2.4.23</version>
+    <time>1481885647</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with new systemd
+  + amended httpd-2.4.3-mod_systemd.patch
+
+- Replace mixed indentation with predominant style.</comment>
+    <requestid>445398</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>9a294d176d41a01d8963ddf0021ae466</srcmd5>
+    <version>2.4.25</version>
+    <time>1484474576</time>
+    <user>dimstar_suse</user>
+    <comment>- Added new HTTP2 option to sysconfig to ease enabling http2
+- Added new protocols.conf which is included globally
+- Enable http2 also for Leap 42.2+ and SLE12_SP2+
+
+Sorry for the shifted lines: OBS/OSC or whatever always tends to shift lines around in the spec-file and to shorten lines like &quot;%doc %{_mandir}/man...&quot; to &quot;%{_mandir}/man...&quot;
+
+The spec's diff seems to be incomplete in the GUI (forwarded request 449682 from weberho)</comment>
+    <requestid>449698</requestid>
+  </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>0367b5208dd311a8488d10efa18ac9d8</srcmd5>
+    <version>2.4.25</version>
+    <time>1487767954</time>
+    <user>dimstar_suse</user>
+    <comment>- fix caching of forward proxy
+  + httpd-cache-forward-http-proxy.patch
+
+- Don't require insserv if we don't need it.</comment>
+    <requestid>459428</requestid>
+  </revision>
+  <revision rev="130" vrev="3">
+    <srcmd5>3ac5e28b5c81c0726f4ef0a3d42f1025</srcmd5>
+    <version>2.4.25</version>
+    <time>1488124936</time>
+    <user>dimstar_suse</user>
+    <comment>- revert an attempt to fix PR 60458
+  + httpd-cache-revert-svn1773397.patch</comment>
+    <requestid>460042</requestid>
+  </revision>
+  <revision rev="131" vrev="4">
+    <srcmd5>377da377bd5f5ba2849e9eaf65db692b</srcmd5>
+    <version>2.4.25</version>
+    <time>1489178708</time>
+    <user>dimstar_suse</user>
+    <comment>- start_apache2: include individual sysconfig.d files instead of
+  sysconfig.d dir, include sysconfig.d/include.conf after httpd.conf
+  is processed [bsc#1023616]</comment>
+    <requestid>477566</requestid>
+  </revision>
+  <revision rev="132" vrev="5">
+    <srcmd5>fe8ee976a06f3db0cab947a17311bd5c</srcmd5>
+    <version>2.4.25</version>
+    <time>1490786501</time>
+    <user>maxlin_factory</user>
+    <comment> (forwarded request 481458 from kukuk)</comment>
+    <requestid>481459</requestid>
+  </revision>
+  <revision rev="133" vrev="6">
+    <srcmd5>262294032e24226b6346977bd193904b</srcmd5>
+    <version>2.4.25</version>
+    <time>1496681326</time>
+    <user>dimstar_suse</user>
+    <comment>- server-tunning.conf: MaxClients was renamed to MaxRequestWorkers
+  [bsc#1037731]
+- gensslcert: use hostname when fqdn is too long [bsc#1035829]
+
+- remove apache-doc and apache-example-pages obsoletes/provides</comment>
+    <requestid>500571</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>87e435e6034b961aca046e949efdbdf0</srcmd5>
+    <version>2.4.26</version>
+    <time>1498045968</time>
+    <user>dimstar_suse</user>
+    <comment>-  remove /usr/bin/http2 symlink only during apache2 package
+  uninstall, not upgrade [bsc#1041830]
+
+- updated to 2.4.26: This release of Apache is a security, feature, 
+  and bug fix release. For details, see
+  http://httpd.apache.org/dev/dist/CHANGES_2.4.26
+- refreshed patches:
+  . httpd-2.4.12-lua-5.2.patch
+  . httpd-2.4.x-fate317766-config-control-two-protocol-options.diff
+- removed patches (upstreamed)
+  . httpd-cache-forward-http-proxy.patch
+  . httpd-cache-revert-svn1773397.patch</comment>
+    <requestid>505095</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>84d4d27c10b09213fc0485c55f0d05cd</srcmd5>
+    <version>2.4.27</version>
+    <time>1501406528</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.4.27:
+  *) COMPATIBILITY: mod_lua: Remove the undocumented exported 'apr_table'
+     global variable when using Lua 5.2 or later. This was exported as a
+     side effect from luaL_register, which is no longer supported as of
+     Lua 5.2 which deprecates pollution of the global namespace.
+     [Rainer Jung]
+  *) COMPATIBILITY: mod_http2: Disable and give warning when using Prefork.
+     The server will continue to run, but HTTP/2 will no longer be negotiated.
+     [Stefan Eissing]
+  *) COMPATIBILITY: mod_proxy_fcgi: Revert to 2.4.20 FCGI behavior for the
+     default ProxyFCGIBackendType, fixing a regression with PHP-FPM. PR 61202.
+     [Jacob Champion, Jim Jagielski]
+  *) mod_lua: Improve compatibility with Lua 5.1, 5.2 and 5.3.
+     PR58188, PR60831, PR61245. [Rainer Jung]
+  *) mod_http2: Simplify ready queue, less memory and better performance. Update
+     mod_http2 version to 1.10.7. [Stefan Eissing]
+  *) Allow single-char field names inadvertantly disallowed in 2.4.25.
+     PR 61220. [Yann Ylavic]
+  *) htpasswd / htdigest: Do not apply the strict permissions of the temporary
+     passwd file to a possibly existing passwd file. PR 61240. [Ruediger Pluem]
+  *) core: Avoid duplicate HEAD in Allow header.
+     This is a regression in 2.4.24 (unreleased), 2.4.25 and 2.4.26.
+     PR 61207. [Christophe Jaillet]
+- drop upstreamed patch: 
+  * httpd-2.4.12-lua-5.2.patch (see upstream's PR#58188 for details)
+
+- Adjust dependencies for rename apr/apr-util packages</comment>
+    <requestid>510917</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>02b05d36bc59af10c6539d6329d472e5</srcmd5>
+    <version>2.4.28</version>
+    <time>1507628267</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.4.28:
+  *) SECURITY: CVE-2017-9798 (cve.mitre.org)
+     Corrupted or freed memory access. &lt;Limit[Except]&gt; must now be used in the
+     main configuration file (httpd.conf) to register HTTP methods before the
+     .htaccess files.  [Yann Ylavic]
+  *) event: Avoid possible blocking in the listener thread when shutting down
+     connections. PR 60956.  [Yann Ylavic]
+  *) mod_speling: Don't embed referer data in a link in error page.
+     PR 38923 [Nick Kew]
+  *) htdigest: prevent a buffer overflow when a string exceeds the allowed max
+     length in a password file.
+     [Luca Toscano, Hanno Böck &lt;hanno hboeck de&gt;]
+  *) mod_proxy: loadfactor parameter can now be a decimal number (eg: 1.25).
+     [Jim Jagielski]
+  *) mod_proxy_wstunnel: Allow upgrade to any protocol dynamically.
+     PR 61142.
+  *) mod_watchdog/mod_proxy_hcheck: Time intervals can now be spefified
+     down to the millisecond. Supports 'mi' (minute), 'ms' (millisecond),
+     's' (second) and 'hr' (hour!) time suffixes. [Jim Jagielski]
+  *) mod_http2: Fix for stalling when more than 32KB are written to a
+     suspended stream.  [Stefan Eissing]
+  *) build: allow configuration without APR sources.  [Jacob Champion]
+  *) mod_ssl, ab: Fix compatibility with LibreSSL.  PR 61184.
+     [Bernard Spil &lt;brnrd freebsd.org&gt;, Michael Schlenker &lt;msc contact.de&gt;,
+      Yann Ylavic]
+  *) core/log: Support use of optional &quot;tag&quot; in syslog entries.
+     PR 60525. [Ben Rubson &lt;ben.rubson gmail.com&gt;, Jim Jagielski]
+  *) mod_proxy: Fix ProxyAddHeaders merging.  [Joe Orton]
+  *) core: Disallow multiple Listen on the same IP:port when listener buckets
+     are configured (ListenCoresBucketsRatio &gt; 0), consistently with the single</comment>
+    <requestid>532105</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>e42c1b690e216c4ada5a824410a3b5f1</srcmd5>
+    <version>2.4.29</version>
+    <time>1508769720</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.4.29:
+  *) mod_unique_id: Use output of the PRNG rather than IP address and
+     pid, avoiding sleep() call and possible DNS issues at startup,
+     plus improving randomness for IPv6-only hosts.  [Jan Kaluza]
+  *) mod_rewrite, core: Avoid the 'Vary: Host' response header when HTTP_HOST
+     is used in a condition that evaluates to true. PR 58231 [Luca Toscano]
+  *) mod_http2: v0.10.12, removed optimization for mutex handling in bucket
+     beams that could lead to assertion failure in edge cases.
+     [Stefan Eissing]
+  *) mod_proxy: Fix regression for non decimal loadfactor parameter introduced
+     in 2.4.28.  [Jim Jagielski]
+  *) mod_authz_dbd: fix a segmentation fault if AuthzDBDQuery is not set.
+     PR 61546.  [Lubos Uhliarik &lt;luhliari redhat.com&gt;]
+  *) mod_rewrite: Add support for starting External Rewriting Programs
+     as non-root user on UNIX systems by specifying username and group
+     name as third argument of RewriteMap directive.  [Jan Kaluza]
+  *) core: Rewrite the Content-Length filter to avoid excessive memory
+     consumption. Chunked responses will be generated in more cases
+     than in previous releases.  PR 61222.  [Joe Orton, Ruediger Pluem]
+  *) mod_ssl: Fix SessionTicket callback return value, which does seem to
+     matter with OpenSSL 1.1. [Yann Ylavic]
+
+- gensslcert:
+  * set also SAN [bsc#1045159]
+  * drop -C argument, it was not mapped to CN actually
+  * consider also case when hostname does return empty string or 
+    does not exist [bsc#1057406]
+  * do not consider environment ROOT variable</comment>
+    <requestid>535888</requestid>
+  </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>39f217abbf97673452abba53d6fc5354</srcmd5>
+    <version>2.4.29</version>
+    <time>1511426235</time>
+    <user>dimstar_suse</user>
+    <comment>- APACHE_MODULES now contains authn_core in default configuration
+  [bsc#1066661]</comment>
+    <requestid>543119</requestid>
+  </revision>
+  <revision rev="139" vrev="3">
+    <srcmd5>0d2cff1d6610c1c8ce548bf57e91086e</srcmd5>
+    <version>2.4.29</version>
+    <time>1512765986</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>548029</requestid>
+  </revision>
+  <revision rev="140" vrev="4">
+    <srcmd5>0676a6cdc11ae3cfea5bff3f765c789c</srcmd5>
+    <version>2.4.29</version>
+    <time>1515505072</time>
+    <user>dimstar_suse</user>
+    <comment>- build brotli module
+
+- Do not requires w3m, only recommends it.
+
+- do not build with nghttp2 for SLE-12-SP3
+
+- which was split after SLE11</comment>
+    <requestid>561062</requestid>
+  </revision>
+  <revision rev="141" vrev="5">
+    <srcmd5>dffc1d0e4bab3f4337d7b211dd92a6f2</srcmd5>
+    <version>2.4.29</version>
+    <time>1517823989</time>
+    <user>dimstar_suse</user>
+    <comment>- remove NameVirtualHost from documentation [bsc#1078557]
+
+- for older distros, still use SuSEFirewall2 [bsc#1071548c#7]
+
+- Replace SuSEFirewall2 by firewalld (fate#323460)</comment>
+    <requestid>572001</requestid>
+  </revision>
+  <revision rev="142" vrev="6">
+    <srcmd5>0793d6ea69dd0ead96654202acec572e</srcmd5>
+    <version>2.4.29</version>
+    <time>1518596391</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>575500</requestid>
+  </revision>
+  <revision rev="143" vrev="7">
+    <srcmd5>84b119334920c619e0d4f485f3cbcea7</srcmd5>
+    <version>2.4.29</version>
+    <time>1522057931</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace SuSEFirewall2 by firewalld II (fate#323460) [bsc#1083492]</comment>
+    <requestid>588443</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>2f2fded9a1361b01d6371d1f9ca6db8b</srcmd5>
+    <version>2.4.33</version>
+    <time>1524489875</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated description for SSLProtocol option. [bsc#1086854]
+- Updated description (PCI DSS) for SSLProtocol option. [bsc#1086854] (forwarded request 591690 from k_mikhail)</comment>
+    <requestid>591693</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>dd3ca74f9b722174e316576c3ffc110f</srcmd5>
+    <version>2.4.34</version>
+    <time>1532527431</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.4.34:
+  *) Introduce zh-cn and zh-tw (simplified and traditional Chinese) error
+     document translations. [CodeingBoy, popcorner]
+  *) event: avoid possible race conditions with modules on the child pool.
+     [Stefan Fritsch]
+  *) mod_proxy: Fix a corner case where the ProxyPassReverseCookieDomain or
+     ProxyPassReverseCookiePath directive could fail to update correctly
+     'domain=' or 'path=' in the 'Set-Cookie' header.  PR 61560.
+     [Christophe Jaillet]
+  *) mod_ratelimit: fix behavior when proxing content. PR 62362.
+     [Luca Toscano, Yann Ylavic]
+  *) core: Re-allow '_' (underscore) in hostnames.
+     [Eric Covener]
+  *) mod_authz_core: If several parameters are used in a AuthzProviderAlias
+     directive, if these parameters are not enclosed in quotation mark, only
+     the first one is handled. The other ones are silently ignored.
+     Add a message to warn about such a spurious configuration.
+     PR 62469 [Hank Ibell &lt;hwibell gmail.com&gt;, Christophe Jaillet]
+  *) mod_md: improvements and bugfixes
+     - MDNotifyCmd now takes additional parameter that are passed on to the called command.
+     - ACME challenges have better checks for interference with other modules
+     - ACME challenges are only handled for domains managed by the module, allowing
+       other ACME clients to operate for other domains in the server.
+     - better libressl integration
+  *) mod_proxy_wstunnel: Add default schema ports for 'ws' and 'wss'.
+     PR 62480. [Lubos Uhliarik &lt;luhliari redhat.com&gt;}
+  *) logging: Some early logging-related startup messages could be lost
+     when using syslog for the global ErrorLog. [Eric Covener]
+  *) mod_cache: Handle case of an invalid Expires header value RFC compliant
+     like the case of an Expires time in the past: allow to overwrite the</comment>
+    <requestid>623132</requestid>
+  </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>96a9c56d0942db822da53484217d48df</srcmd5>
+    <version>2.4.33</version>
+    <time>1532591379</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 2.4.33 - boo#1102698</comment>
+  </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>d433e3f346cb764178cef775f165f007</srcmd5>
+    <version>2.4.34</version>
+    <time>1533292181</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.4.34:
+  *) Introduce zh-cn and zh-tw (simplified and traditional Chinese) error
+     document translations. [CodeingBoy, popcorner]
+  *) event: avoid possible race conditions with modules on the child pool.
+     [Stefan Fritsch]
+  *) mod_proxy: Fix a corner case where the ProxyPassReverseCookieDomain or
+     ProxyPassReverseCookiePath directive could fail to update correctly
+     'domain=' or 'path=' in the 'Set-Cookie' header.  PR 61560.
+     [Christophe Jaillet]
+  *) mod_ratelimit: fix behavior when proxing content. PR 62362.
+     [Luca Toscano, Yann Ylavic]
+  *) core: Re-allow '_' (underscore) in hostnames.
+     [Eric Covener]
+  *) mod_authz_core: If several parameters are used in a AuthzProviderAlias
+     directive, if these parameters are not enclosed in quotation mark, only
+     the first one is handled. The other ones are silently ignored.
+     Add a message to warn about such a spurious configuration.
+     PR 62469 [Hank Ibell &lt;hwibell gmail.com&gt;, Christophe Jaillet]
+  *) mod_md: improvements and bugfixes
+     - MDNotifyCmd now takes additional parameter that are passed on to the called command.
+     - ACME challenges have better checks for interference with other modules
+     - ACME challenges are only handled for domains managed by the module, allowing
+       other ACME clients to operate for other domains in the server.
+     - better libressl integration
+  *) mod_proxy_wstunnel: Add default schema ports for 'ws' and 'wss'.
+     PR 62480. [Lubos Uhliarik &lt;luhliari redhat.com&gt;}
+  *) logging: Some early logging-related startup messages could be lost
+     when using syslog for the global ErrorLog. [Eric Covener]
+  *) mod_cache: Handle case of an invalid Expires header value RFC compliant
+     like the case of an Expires time in the past: allow to overwrite the</comment>
+    <requestid>626658</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>142a4c36851cd90a463f915d7fa9f028</srcmd5>
+    <version>2.4.35</version>
+    <time>1538377617</time>
+    <user>dimstar_suse</user>
+    <comment>updated to 2.4.35, successfully tested on Tumbleweed x86_64 (forwarded request 637678 from stroeder)</comment>
+    <requestid>637684</requestid>
+  </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>517cde1f31ae612cde10296090b650c8</srcmd5>
+    <version>2.4.35</version>
+    <time>1538672413</time>
+    <user>dimstar_suse</user>
+    <comment>- consider also patterns in APACHE_CONF_INCLUDE_DIRS as documentation
+  says (patch Juergen Gleiss)
+
+- relink /usr/sbin/httpd after apache2-MPM uninstall [bsc#1107930c#1]
+- simplify find_mpm function from script-helpers
+- /usr/sbin/httpd is now created depending on preference hardcoded
+  in find_mpm (script-helpers), not depending on alphabetical
+  order of MPMs
+- simplify spec file a bit</comment>
+    <requestid>639405</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>a3ad36af058ed3b9b6b7224dacee4860</srcmd5>
+    <version>2.4.37</version>
+    <time>1540818879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643962</requestid>
+  </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>00e15fcc268eb576a7034af51efbaae0</srcmd5>
+    <version>2.4.37</version>
+    <time>1541514868</time>
+    <user>dimstar_suse</user>
+    <comment>- the &quot;event&quot; MPM is fully supported since 2.4
+- configure an OCSP stapling cache by default (still requires enabling
+  SSLUseStapling in vhost) (forwarded request 644712 from adkorte)</comment>
+    <requestid>645904</requestid>
+  </revision>
+  <revision rev="152" vrev="3">
+    <srcmd5>42c7c7fb8d374a4e4b374f47b0e061b4</srcmd5>
+    <version>2.4.37</version>
+    <time>1547554579</time>
+    <user>dimstar_suse</user>
+    <comment>- do not create sysconfig.d when already exists [bsc#1121086]
+
+- use secure http sites by default in configs
+- Switch to DEFAULT_SUSE Cipher suite
+
+READ https://httpd.apache.org/docs/2.4/upgrading.html
+  at https://httpd.apache.org/docs/2.4/new_features_2_4.html</comment>
+    <requestid>664057</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>54ec385c41fe43fb13aa32acf69b3b19</srcmd5>
+    <version>2.4.38</version>
+    <time>1549311805</time>
+    <user>coolo</user>
+    <comment>- updated to 2.4.38
+  * mod_ssl: Clear retry flag before aborting client-initiated renegotiation.
+    PR 63052 [Joe Orton]
+  * mod_negotiation: Treat LanguagePriority as case-insensitive to match
+    AddLanguage behavior and HTTP specification. PR 39730 [Christophe Jaillet]
+  * mod_md: incorrect behaviour when synchronizing ongoing ACME challenges
+    have been fixed. [Michael Kaufmann, Stefan Eissing]
+  * mod_setenvif: We can have expressions that become true if a regex pattern
+    in the expression does NOT match. In this case val is NULL
+    and we should just set the value for the environment variable 
+    like in the pattern case. [Ruediger Pluem]
+  * mod_session: Always decode session attributes early. [Hank Ibell]
+  * core: Incorrect values for environment variables are substituted when
+    multiple environment variables are specified in a directive. [Hank Ibell]
+  * mod_rewrite: Only create the global mutex used by &quot;RewriteMap prg:&quot; when
+    this type of map is present in the configuration.  PR62311.  
+    [Hank Ibell &amp;lt;hwibell gmail.com&amp;gt;]
+  * mod_dav: Fix invalid Location header when a resource is created by
+    passing an absolute URI on the request line [Jim Jagielski]
+  * mod_session_cookie: avoid duplicate Set-Cookie header in the response.
+    [Emmanuel Dreyfus &amp;lt;manu@netbsd.org&amp;gt;, Luca Toscano]
+  * mod_ssl: clear *SSL errors before loading certificates and checking
+    afterwards. Otherwise errors are reported when other SSL using modules
+    are in play. Fixes PR 62880. [Michael Kaufmann]
+  * mod_ssl: Fix the error code returned in an error path of
+    'ssl_io_filter_handshake()'. This messes-up error handling performed
+    in 'ssl_io_filter_error()' [Yann Ylavic]
+  * mod_ssl: Fix $HTTPS definition for &quot;SSLEngine optional&quot; case, and fix
+    authz provider so &quot;Require ssl&quot; works correctly in HTTP/2.
+    PR 61519, 62654.  [Joe Orton, Stefan Eissing]
+  * mod_proxy: If ProxyPassReverse is used for reverse mapping of relative
+    redirects, subsequent ProxyPassReverse statements, whether they are
+    relative or absolute, may fail.  PR 60408.  [Peter Haworth &amp;lt;pmh1wheel gmail.com&amp;gt;]
+  * mod_lua: Now marked as a stable module [https://s.apache.org/Xnh1] (forwarded request 667015 from mmanu84)</comment>
+    <requestid>667841</requestid>
+  </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>22af843a1b33c3fbc66fbedfefaf2ed5</srcmd5>
+    <version>2.4.38</version>
+    <time>1551468383</time>
+    <user>coolo</user>
+    <comment>- added patches
+  fix https://github.com/icing/mod_h2/issues/167 [bsc#1125965]
+  + apache2-mod_http2-issue-167.patch
+
+- Replace old $RPM_* shell vars. Avoid old tar syntax.
+- Tag scriptlets as explicitly requiring bash.</comment>
+    <requestid>679836</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>77f029ebc9fd0c2299322e83a5e7bc05</srcmd5>
+    <version>2.4.39</version>
+    <time>1554379928</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.4.39
+  * mod_proxy/ssl: Cleanup per-request SSL configuration anytime a
+    backend connection is recycled/reused to avoid a possible crash
+    with some SSLProxy configurations in &lt;Location&gt; or &lt;Proxy&gt;
+    context. PR 63256. [Yann Ylavic]
+  * mod_ssl: Correctly restore SSL verify state after TLSv1.3 PHA
+    failure. [Michael Kaufmann &lt;mail michael-kaufmann.ch&gt;]
+  * mod_log_config: Support %{c}h for conn-hostname, %h for
+    useragent_host PR 55348
+  * mod_socache_redis: Support for Redis as socache storage
+    provider.
+  * core: new configuration option 'MergeSlashes on|off' that
+    controls handling of multiple, consecutive slash ('/')
+    characters in the path component of the request URL. [Eric
+    Covener]
+  * mod_http2: when SSL renegotiation is inhibited and a 403
+    ErrorDocument is in play, the proper HTTP/2 stream reset did
+    not trigger with H2_ERR_HTTP_1_1_REQUIRED. Fixed. [Michael
+    Kaufmann]
+  * mod_http2: new configuration directive: `H2Padding numbits` to
+    control padding of HTTP/2 payload frames. 'numbits' is a number
+    from 0-8, controlling the range of padding bytes added to a
+    frame. The actual number added is chosen randomly per frame.
+    This applies to HEADERS, DATA and PUSH_PROMISE frames equally.
+    The default continues to be 0, e.g. no padding. [Stefan
+    Eissing]
+  * mod_http2: ripping out all the h2_req_engine internal features
+    now that mod_proxy_http2 has no more need for it. Optional
+    functions are still declared but no longer implemented. While
+    previous mod_proxy_http2 will work with this, it is</comment>
+    <requestid>690621</requestid>
+  </revision>
+  <revision rev="156" vrev="2">
+    <srcmd5>745eac9119ca6f29f2f4db852d9a4d59</srcmd5>
+    <version>2.4.39</version>
+    <time>1558128982</time>
+    <user>dimstar_suse</user>
+    <comment>- revive apache-22-24-upgrade [bsc#1134294] (internal)
+- added sources
+  + apache-22-24-upgrade</comment>
+    <requestid>702763</requestid>
+  </revision>
+  <revision rev="157" vrev="3">
+    <srcmd5>e8d3e378bae7d6feef0fc653fc2fc9e0</srcmd5>
+    <version>2.4.39</version>
+    <time>1562590905</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>713174</requestid>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>2b02405d35243e9c5db8e6d42b87f683</srcmd5>
+    <version>2.4.41</version>
+    <time>1566664983</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.4.41 (forwarded request 723497 from stroeder)</comment>
+    <requestid>724999</requestid>
+  </revision>
+  <revision rev="159" vrev="2">
+    <srcmd5>ebb90e7c9aee71534a2fcd1b91e73a84</srcmd5>
+    <version>2.4.41</version>
+    <time>1567848311</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726493</requestid>
+  </revision>
+</revisionlist>

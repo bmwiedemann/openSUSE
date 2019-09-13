@@ -1,0 +1,11 @@
+<package name="python-akismet" project="openSUSE:Factory">
+  <title>A Python interface to the Akismet anti comment-spam API</title>
+  <description>A Python interface to the Akismet anti comment-spam API.
+
+Author:
+--------
+    Fuzzyman &lt;fuzzyman@voidspace.org.uk&gt;
+</description>
+  <devel project="devel:languages:python" package="python-akismet"/>
+  <url>http://www.voidspace.org.uk/python/modules.shtml#akismet</url>
+</package>

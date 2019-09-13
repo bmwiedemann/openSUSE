@@ -1,0 +1,5 @@
+<package name="birdie" project="openSUSE:Factory">
+  <title>Birdie</title>
+  <description>Twitter client designed for elementary OS.</description>
+  <devel project="X11:Pantheon:Apps" package="birdie"/>
+</package>

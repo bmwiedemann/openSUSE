@@ -1,0 +1,10 @@
+<package name="obexftp" project="openSUSE:Factory">
+  <title>ObexFTP Implements the Object Exchange (OBEX) Protocol's File Transfer Feature</title>
+  <description>ObexFTP works with all protocols supported by openobex (OpenOBEX).
+   Currently, these are: - irda (IrDA),
+
+- bluez-utils (BlueTooth)
+
+- setserial (Serial)</description>
+  <devel project="filesystems" package="obexftp"/>
+</package>

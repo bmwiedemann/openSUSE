@@ -1,0 +1,5 @@
+<package name="tealdeer" project="openSUSE:Factory">
+  <title>tealdeer</title>
+  <description>An implementation of tldr in Rust</description>
+  <devel project="utilities" package="tealdeer"/>
+</package>

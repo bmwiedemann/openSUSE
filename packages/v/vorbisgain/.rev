@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="8">
+    <srcmd5>1236af7564baa85336397d1a676279cf</srcmd5>
+    <version>0.34</version>
+    <time>1312362265</time>
+    <user>saschpe</user>
+    <comment>Please add the package hdjmod to Factory.
+
+I have posted a mail introducing the package to the mailing list. You can find it at http://lists.opensuse.org/opensuse-factory/2011-06/msg00663.html .</comment>
+    <requestid>74841</requestid>
+  </revision>
+  <revision rev="2" vrev="9">
+    <srcmd5>4369bc5feb426e20011c0b88c18a2fe2</srcmd5>
+    <version>0.34</version>
+    <time>1312362277</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74841
+</comment>
+  </revision>
+  <revision rev="3" vrev="10">
+    <srcmd5>9d4629e84c2398b711e3f60f5aeaf462</srcmd5>
+    <version>0.34</version>
+    <time>1312900361</time>
+    <user>saschpe</user>
+    <comment>fixed bnc#709981</comment>
+    <requestid>78347</requestid>
+  </revision>
+  <revision rev="4" vrev="11">
+    <srcmd5>3177fa249b8a96d8e983524bb8828321</srcmd5>
+    <version>0.34</version>
+    <time>1312900371</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78347
+</comment>
+  </revision>
+  <revision rev="5" vrev="13">
+    <srcmd5>3177fa249b8a96d8e983524bb8828321</srcmd5>
+    <version>0.34</version>
+    <time>1319182555</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="14">
+    <srcmd5>3a9b4632ae97c41cbf48776776971c5e</srcmd5>
+    <version>0.34</version>
+    <time>1323195133</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="16">
+    <srcmd5>3a9b4632ae97c41cbf48776776971c5e</srcmd5>
+    <version>0.34</version>
+    <time>1340184316</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="17">
+    <srcmd5>2badf1dd7829baa7da22a3f273ac8454</srcmd5>
+    <version>0.34</version>
+    <time>1354274866</time>
+    <user>coolo</user>
+    <comment>enable &quot;--recursive&quot; option (forwarded request 143495 from seife)</comment>
+    <requestid>143542</requestid>
+  </revision>
+  <revision rev="9" vrev="19">
+    <srcmd5>2badf1dd7829baa7da22a3f273ac8454</srcmd5>
+    <version>0.34</version>
+    <time>1359110551</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="21">
+    <srcmd5>2badf1dd7829baa7da22a3f273ac8454</srcmd5>
+    <version>0.34</version>
+    <time>1379664939</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="23">
+    <srcmd5>2badf1dd7829baa7da22a3f273ac8454</srcmd5>
+    <version>0.34</version>
+    <time>1409303617</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>509f512801361a56ad9b13f65068cf38</srcmd5>
+    <version>0.36</version>
+    <time>1503593684</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup with spec-cleaner
+
+- Updated to 0.36
+- Changed licence from &quot;GPL-2.0&quot; to &quot;LGPL-2.1&quot; to match the actual licence headers in the source files and COPYING file.  (Note that some licence headers reference &quot;the GNU General Public License, version 2.1&quot;.  I am assuming that the word &quot;Lesser&quot; has been mistakenly omitted between &quot;GNU&quot; and &quot;General&quot;, since there is an LGPL 2.1 but no GPL 2.1, and because the COPYING file is for the LGPL 2.1.  Note that some headers include the &quot;or later&quot; clause while others omit it.)
+- Reformatted the description
+- Removed obsolete Makefile patch
+- Removed unnecessary %clean
+- Replaced manual call to configure with %configure macro
+- Updated project and source URLs
+- Applied dos2unix on NEWS file
+- Remove merged patch vorbisgain_Makefile_tabs.patch</comment>
+    <requestid>517928</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c9371b1bbd16c3a6a034b7e5bdc9f692</srcmd5>
+    <version>0.37</version>
+    <time>1519041763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577867</requestid>
+  </revision>
+</revisionlist>

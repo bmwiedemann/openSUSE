@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57a7287c88ba7f97e1629cdf54bad971</srcmd5>
+    <version>2.1.6</version>
+    <time>1557653609</time>
+    <user>dimstar_suse</user>
+    <comment>- Activate the test suite
+- Add missing Requires python-six
+- Add Recommends and Suggests
+- Add fdupes
+- Update to v2.1.6
+- Use single spec style
+- Use %license
+- Add missing Requires python-Django
+- Update to v2.1.5
+- Update to version 1.2.2
+  + No changelog available
+- Use download url as source
+- Copy documentation from tarball
+- Update to 1.0.3:
+  - Sorry, no changelog atm.
+- Update to 1.0.2:
+  - Sorry, no changelog atm.
+- Update to 1.0.1:
+  - Sorry, no changelog atm.
+- Update to 1.0.0:
+  - Sorry, no changelog atm.
+- Update to 0.9:
+  - Sorry, no changelog atm.
+- Update to 0.8:
+  - Sorry, no changelog atm.
+- Update to 0.7.1:
+  - Sorry, no changelog atm.
+- Regenerate spec file with py2pack;
+- Bzip2 source code.
+- Update to 0.5;
+- Spec file cleaned with spec-cleaner;
+- Building as noarch for openSUSE &gt;= 11.2;
+- Fixed Author, Description, Summary and URL tags in spec file.
+</comment>
+    <requestid>692767</requestid>
+  </revision>
+</revisionlist>

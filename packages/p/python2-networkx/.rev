@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1099eb517410b543bf54cc07bde5af0b</srcmd5>
+    <version>2.2</version>
+    <time>1564414050</time>
+    <user>dimstar_suse</user>
+    <comment>- Implement python2-only version since the latest version does not support python2.</comment>
+    <requestid>717973</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2fff33d19dae9eab5add8f74d90c352c</srcmd5>
+    <version>2.2</version>
+    <time>1564483153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719716</requestid>
+  </revision>
+</revisionlist>

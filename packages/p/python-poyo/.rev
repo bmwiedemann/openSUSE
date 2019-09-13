@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c50a3b2aae98fc76824ddc06311da5b</srcmd5>
+    <version>0.4.1</version>
+    <time>1520329546</time>
+    <user>dimstar_suse</user>
+    <comment>- rename changes file to python-poyo.changes
+- Initial version
+</comment>
+    <requestid>580926</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>730299ad0c485e0c2f4ab994b4a21d14</srcmd5>
+    <version>0.4.1</version>
+    <time>1545648081</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659559</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a342f4968eeff89713995881253ab046</srcmd5>
+    <version>0.4.2</version>
+    <time>1553611544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688607</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b416f6758e3440e837a8582bdf25db53</srcmd5>
+    <version>0.5.0</version>
+    <time>1564576173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719839</requestid>
+  </revision>
+</revisionlist>

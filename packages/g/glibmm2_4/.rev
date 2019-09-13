@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>21bcd66fe9e0e07239eebe63021585d3</srcmd5>
+    <version>2.50.0</version>
+    <time>1481105531</time>
+    <user>dimstar_suse</user>
+    <comment>Rename of glibmm, which gets a new ABI</comment>
+    <requestid>443638</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7948e3c02ebcd7bba43fdf925564678e</srcmd5>
+    <version>2.50.1</version>
+    <time>1497272901</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 500041 from Zaitor)</comment>
+    <requestid>501745</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4c6adcb2aa8531c1dbb7f1165a27060a</srcmd5>
+    <version>2.52.0</version>
+    <time>1498840816</time>
+    <user>dimstar_suse</user>
+    <comment>New stable branch (forwarded request 506033 from Zaitor)</comment>
+    <requestid>506739</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>061b77901229a931eb4a20638f7d8419</srcmd5>
+    <version>2.52.1</version>
+    <time>1505502364</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526062</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>313934ad02794c532d842cbe7dd0283c</srcmd5>
+    <version>2.52.1</version>
+    <time>1519902434</time>
+    <user>dimstar_suse</user>
+    <comment>- Package COPYING as %license instead of %doc.
+
+- Add gcc8.patch: add missing address operator.</comment>
+    <requestid>580879</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>cb221e6ec2a830ea169d529c46447189</srcmd5>
+    <version>2.52.1</version>
+    <time>1520502204</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581063 from dimstar)</comment>
+    <requestid>582718</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00a48f5a09bde8c56d37b3ae617f404f</srcmd5>
+    <version>2.56.0</version>
+    <time>1522935042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592855</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bf9b89d8f7d3f1d3b8dae44bd293d87f</srcmd5>
+    <version>2.58.0</version>
+    <time>1545223668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657861</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7e4c0a76af6189aaf7867648f9f40488</srcmd5>
+    <version>2.60.0</version>
+    <time>1553611103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688440</requestid>
+  </revision>
+</revisionlist>

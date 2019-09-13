@@ -1,0 +1,427 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>b1d861572840d7f46ee80c4808474848</srcmd5>
+    <version>3.9.10</version>
+    <time>1168903555</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="58">
+    <srcmd5>9d6bef56e8e5cdd557a1be1b79de5e52</srcmd5>
+    <version>3.9.10</version>
+    <time>1177275058</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e807424585f31ceb3d515bc48f8031c9</srcmd5>
+    <version>3.9.11</version>
+    <time>1181054116</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="165">
+    <srcmd5>e807424585f31ceb3d515bc48f8031c9</srcmd5>
+    <version>3.9.11</version>
+    <time>1181054116</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="166">
+    <srcmd5>1c4d6c54f9a62cf479d45a037a2a5fbe</srcmd5>
+    <version>3.9.11</version>
+    <time>1224729623</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>30d77058a6d5846af815ea25e57f48f0</srcmd5>
+    <version>4.0.1</version>
+    <time>1231894204</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c5eac5e211bc535500683ca590a36b53</srcmd5>
+    <version>4.0.1</version>
+    <time>1232557844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f5334ab6a3856c4ff90e09797a22052d</srcmd5>
+    <version>4.0.10</version>
+    <time>1237318510</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>fddf6b228ffa8e8222e92025e8bb3469</srcmd5>
+    <version>4.0.10</version>
+    <time>1239841062</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>86c4d36cbfe027abcaf2734e4254ca90</srcmd5>
+    <version>4.0.10</version>
+    <time>1245365647</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>5b01e8449a9263bf3a3e46c29fc13c81</srcmd5>
+    <version>4.0.10</version>
+    <time>1253140320</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mtools based on submit request 20445 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>5b01e8449a9263bf3a3e46c29fc13c81</srcmd5>
+    <version>4.0.10</version>
+    <time>1253140320</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mtools based on submit request 20445 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>d3fe91abfb0d2a29308d94a38455a759</srcmd5>
+    <version>4.0.10</version>
+    <time>1256328516</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mtools based on submit request 22902 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c665efcf03913cf68ca7e56eb739c351</srcmd5>
+    <version>4.0.12</version>
+    <time>1259925739</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mtools based on submit request 25488 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f337593e86462a23351d763b239ee042</srcmd5>
+    <version>4.0.12</version>
+    <time>1260957301</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mtools based on submit request 26697 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>defb7849895b2232a4a04ec39bfb93ce</srcmd5>
+    <version>4.0.12</version>
+    <time>1268925011</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2b5ef689592a4467e3b88194774f93ca</srcmd5>
+    <version>4.0.13</version>
+    <time>1268986372</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mtools based on submit request 35264 from user coolo
+</comment>
+    <requestid>35264</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d1d34702f716b98ae006f7e5ea91fe63</srcmd5>
+    <version>4.0.13</version>
+    <time>1277831570</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mtools based on submit request 42280 from user pgajdos
+</comment>
+    <requestid>42280</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>d1d34702f716b98ae006f7e5ea91fe63</srcmd5>
+    <version>4.0.13</version>
+    <time>1278667369</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>d1d34702f716b98ae006f7e5ea91fe63</srcmd5>
+    <version>4.0.13</version>
+    <time>1278678599</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>578acee8d509fc7e65d571a4fe13e6b0</srcmd5>
+    <version>4.0.15</version>
+    <time>1290094036</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53141 from user pgajdos
+</comment>
+    <requestid>53141</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>c13c4eded055306ffec9ee625fa47a84</srcmd5>
+    <version>4.0.15</version>
+    <time>1290094044</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53141
+</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>c13c4eded055306ffec9ee625fa47a84</srcmd5>
+    <version>4.0.15</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>23498d782eaf1c90eabd2950296e3e8f</srcmd5>
+    <version>4.0.15</version>
+    <time>1300812926</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64870 from user licensedigger
+</comment>
+    <requestid>64870</requestid>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>10508d777617422c9427b8eb211e6ab5</srcmd5>
+    <version>4.0.15</version>
+    <time>1300812938</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64870
+</comment>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>ebea4215d7ed50a0a7c3797fca1f2a1d</srcmd5>
+    <version>4.0.16</version>
+    <time>1306221427</time>
+    <user>saschpe</user>
+    <comment>- updated to 4.0.16:
+  * fixed formatting of fat_size_calculation.tex document
+  * Make it clear that label is limited to 13 characters
+  * Fixed typo in initialization of FAT32 info sector
+- remove invalid-memory.diff</comment>
+    <requestid>71006</requestid>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>b3c509677e8c60f43579fffd69220d31</srcmd5>
+    <version>4.0.16</version>
+    <time>1306221438</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71006
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>81557bd07bdb33602384b8baa48b7d0c</srcmd5>
+    <version>4.0.17</version>
+    <time>1309530734</time>
+    <user>saschpe</user>
+    <comment>- updated to 4.0.17:
+  * mbadblocks now takes a list of bad blocks (either as sectors
+    or as clusters)
+  * mbadblocks now is able to do write scanning for bad blocks
+  * mshowfat can show cluster of specific offset
+  * Enable mtools to deal with very small sector sizes...
+  * Fixed encoding of all-lowercase names (no need to mangle
+    these)
+  * Consider every directory entry after an ENDMARK (0x00) to be deleted
+  * After writing a new entry at end of a directory, be sure to also add
+    an ENDMARK (0x00)
+  * Deal with possibility of a NULL pointer being returned by
+    localtime during timestamp conversion</comment>
+    <requestid>74922</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>81557bd07bdb33602384b8baa48b7d0c</srcmd5>
+    <version>4.0.17</version>
+    <time>1319182188</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>6e2e6768c4d3653adca0777458731924</srcmd5>
+    <version>4.0.17</version>
+    <time>1323192627</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>d2eed86f571d91cbf006a930aee14672</srcmd5>
+    <version>4.0.17</version>
+    <time>1324831024</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97624 from coolo)</comment>
+    <requestid>97876</requestid>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>d2eed86f571d91cbf006a930aee14672</srcmd5>
+    <version>4.0.17</version>
+    <time>1340183713</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>8005a54931e51731ee34e9d834a55b4c</srcmd5>
+    <version>4.0.17</version>
+    <time>1341316823</time>
+    <user>coolo</user>
+    <comment>license update: GPL-3.0+
+mtools is GPL-3.0+ licensed, not GPL-2.0+ (forwarded request 126894 from babelworx)</comment>
+    <requestid>126903</requestid>
+  </revision>
+  <revision rev="34" vrev="9">
+    <srcmd5>c6d0e620829b796c0dc8d4803e388c2d</srcmd5>
+    <version>4.0.17</version>
+    <time>1343205748</time>
+    <user>coolo</user>
+    <comment>- Make it build with texinfo/makeinfo split 
+
+- add texinfo as buildrequire</comment>
+    <requestid>128818</requestid>
+  </revision>
+  <revision rev="35" vrev="11">
+    <srcmd5>c6d0e620829b796c0dc8d4803e388c2d</srcmd5>
+    <version>4.0.17</version>
+    <time>1359109468</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8dc8cf44a2f3d6476125feaf302b5bca</srcmd5>
+    <version>4.0.18</version>
+    <time>1364473396</time>
+    <user>coolo</user>
+    <comment>- updated to 4.0.18:
+  * Fix for names of iconv encodings on AIX
+  * Fix mt_size_t on NetBSD
+  * Fixed compilation on Mingw
+  * Fixed doc (especially mformat)
+  * Fix mformat'ing of FAT12 filesystems with huge cluster sizes
+  * Minfo prints image file name in mformat command line if an image
+    file name was given
+  * Always generate gzip-compressed RPMs, in order to remain
+    compatible with older distributions
+  * Fixed buffer overflow with drive letter in mclasserase
+- extended fat-bits.patch: add fat_bits parameter again to fat_read()
+  and old_fat_read(); it is candidate to drop though</comment>
+    <requestid>161227</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>2759ab8467760e1a8f828939a7d10227</srcmd5>
+    <version>4.0.18</version>
+    <time>1366232998</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 171061 from namtrac)</comment>
+    <requestid>171243</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>2759ab8467760e1a8f828939a7d10227</srcmd5>
+    <version>4.0.18</version>
+    <time>1379663321</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>2759ab8467760e1a8f828939a7d10227</srcmd5>
+    <version>4.0.18</version>
+    <time>1409301938</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>6e75a049034a63d1d3691225ca40700c</srcmd5>
+    <version>4.0.18</version>
+    <time>1425377373</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287962</requestid>
+  </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>9acfc1b8a98b4732b91b317b85674cd4</srcmd5>
+    <version>4.0.18</version>
+    <time>1449995737</time>
+    <user>coolo</user>
+    <comment>- require glibc-locale [bnc#957007]</comment>
+    <requestid>346796</requestid>
+  </revision>
+  <revision rev="42" vrev="9">
+    <srcmd5>c178e85fcc6a9b2c44d4e25028938c02</srcmd5>
+    <version>4.0.18</version>
+    <time>1522403705</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not BuildRequire metapackage xorg-x11-devel (forwarded request 590399 from elvigia)</comment>
+    <requestid>590566</requestid>
+  </revision>
+  <revision rev="43" vrev="10">
+    <srcmd5>cb1f23a63f6d9ba7f3b97b520a70abe2</srcmd5>
+    <version>4.0.18</version>
+    <time>1525611367</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable floppyd support. Floppyd is a daemon allowing remote X
+  clients to access floppies attached to e.g. thin clients. As it
+  uses X authentication, it pulls in X libraries. (forwarded request 602109 from StefanBruens)</comment>
+    <requestid>602415</requestid>
+  </revision>
+  <revision rev="44" vrev="11">
+    <srcmd5>2d93308f26da53c819ce38efd25d556a</srcmd5>
+    <version>4.0.18</version>
+    <time>1532527451</time>
+    <user>dimstar_suse</user>
+    <comment>- do not build in parallel as it fails</comment>
+    <requestid>623135</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>442403f4de4bc12f28c00c1470c1750f</srcmd5>
+    <version>4.0.19</version>
+    <time>1541514299</time>
+    <user>dimstar_suse</user>
+    <comment>- patches unversioned; makes update and reviews easier
+  * mtools-4.0.18-fat-bits.diff -&gt; mtools-fat-bits.diff
+  * mtools-4.0.18-conf.diff -&gt; mtools-conf.diff
+  * mtools-4.0.18-aliasing.diff -&gt; mtools-aliasing.diff
+  * mtools-4.0.18-prototypes.diff -&gt; mtools-prototypes.diff
+  * mtools-4.0.18-autoconf.diff -&gt; mtools-autoconf.diff
+
+- Update to 4.0.19:
+  *  Fix for short file names starting with character 0xE5
+  * mpartition: Partition types closer to what Microsoft uses
+  * mformat: figure out LBA geometry as last resort if geometry is unspecified
+  * mformat: use same default cluster size as Microsoft for FAT32
+  * additional sanity checks
+  * document how clutser size is picked in mformat.c man page
+  * document how partition types are picked in mpartition.c man page</comment>
+    <requestid>645664</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>037942e694c4b7cb18cc8b45e6c8834f</srcmd5>
+    <version>4.0.20</version>
+    <time>1542748965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.20:
+	* initialize directory entries to 0
+    * bad message &quot;Too few sectors&quot; replaced with &quot;Too many sectors&quot;
+    * apostrophe in mlabel no longer causes generation of long entry
+    * option to fake system date for file creation using the 
+	SOURCE_DATE_EPOCH environment variables
+    * can now be compiled with &quot;clang&quot; compiler
+    * fallback function for strndup, for those platforms that don't have it
+    * fixed a number of -Wextra warnings
+    * new compressed archive formats for uz/lz
+    * allow to specify number of reserved sectors for FAT32.
+    * file/device locking with timeout (rather than immediate failure)
+    * fixed support for BPB-less legacy formats.
+    * removed check that disk must be an integer number of tracks.
+	* removed .eh/.oh macros from manual pages (forwarded request 649021 from mloviska)</comment>
+    <requestid>649482</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>11c4370536d627521ceb440b5facaced</srcmd5>
+    <version>4.0.22</version>
+    <time>1545222313</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase in summary.
+- Fix excessively large keyring. (forwarded request 657214 from jengelh)</comment>
+    <requestid>657398</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>25639a62fc25bcb6f18f9568bf1787d3</srcmd5>
+    <version>4.0.23</version>
+    <time>1546534981</time>
+    <user>dimstar_suse</user>
+    <comment>- mtools 4.0.23:
+  * Address lots of compiler warnings (assignments between different types)
+  * Network speedup fixes for floppyd (TCP_CORK)
+  * Typo fixes
+  * Explicitly pass available target buffer size for character
+  set conversions
+- refreshed:
+  % mtools-prototypes.diff</comment>
+    <requestid>661853</requestid>
+  </revision>
+</revisionlist>

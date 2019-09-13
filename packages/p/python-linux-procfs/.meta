@@ -1,0 +1,5 @@
+<package name="python-linux-procfs" project="openSUSE:Factory">
+  <title>Python API for the Linux /proc virtual filesystem</title>
+  <description>Python API for the Linux /proc virtual filesystem</description>
+  <devel project="devel:languages:python" package="python-linux-procfs"/>
+</package>

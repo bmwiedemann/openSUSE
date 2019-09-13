@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ac105855d1338c8aad521b03d10d200c</srcmd5>
+    <version>1.5.6</version>
+    <time>1486465181</time>
+    <user>dimstar_suse</user>
+    <comment>changed license as requested</comment>
+    <requestid>453327</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4259269bf5548876927694d1eecdc378</srcmd5>
+    <version>1.5.6</version>
+    <time>1487462533</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>457068</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e8a9dccbf0a45c312bca4468a3ed038e</srcmd5>
+    <version>1.5.6</version>
+    <time>1490318405</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479988</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b3fd73073080f29fb925f1e085f045da</srcmd5>
+    <version>1.0.0</version>
+    <time>1505416762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>526092</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1e63d1905e0c0129e4eb9742f570d492</srcmd5>
+    <version>1.1.0</version>
+    <time>1519683948</time>
+    <user>dimstar_suse</user>
+    <comment>* Pass output to output.make\_result() in stestr load
+* Remove 32bit windows testing CI config
+* Add functional test for analyze-isolation flag
+* Fetch the data from last run earlier
+* Fix the stestr run --analyze-isolation flag
+* Remove contributor docs for using reno
+* Fix stestr load from stdin
+* Add test\_return\_codes check for valid subunit output
+* Respect all selection mechanisms for discovery check
+* Fix .testr.conf parsing: test path follows discover
+* Fix if logic on output types in stestr load
+* Add a --abbreviate flag to stestr run and load
+* Add missing run command to stestr manual
+* Print just error message when no stestr repo
+* Fix whitelist arg usage in stestr run
+* Drop reno
+* Add missing home-page
+* Fix: pass the top\_dir parameter to the 'list' command
+* Fix: pass the test\_path parameter to the 'list' command
+* Update MANUAL.rst
+* Update the trove classifiers
+* Use context managers for file open()
+* Ensure we always close files in file repository
+* Create a Code of Conduct for the project
+* Fix coveralls collection</comment>
+    <requestid>580044</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a1d903b623b69c573d975d337000b6a8</srcmd5>
+    <version>2.1.0</version>
+    <time>1533549296</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * Uncap pbr
+  * Revert &quot;Cap pip version in windows ci&quot;
+  * Revert &quot;Uncap pbr&quot;
+  * Uncap pbr
+  * Clarify docs on group\_regex
+  * Remove Python 2.6 code
+  * Switch python doc reference from 2 to 3
+  * Cleanup manual section on configuration
+  * Fix abbreviate option in run subcommand
+  * Ignore errors on cleanup in test\_return\_codes
+  * Cap pip version in windows ci
+  * Add docs and helper script for building man page
+  * Add documentation for --suppress-attachments option
+  * Add option to suppress attachment printing on successful tests
+  * Add unit tests for return code from functions
+  * Remove windows skips for old subunit versions
+  * Cap PBR&lt;4.0.0
+  * Fixed manual page description
+  * Fix manpage generation
+  * Add issue description in template
+  * Add an issue template to project
+  * Add usage to manual docs page
+  * Fix the manual docs link in README
+  * Add alt texts for badges in README
+  * Use flat-square design badges on README
+  * Fix typos about whitelist/blacklist option in manual
+  * Fix a small mistake in manual about test selection
+  * Update the package summary in setup.cfg metadata
+  * Add functional tests for user config file</comment>
+    <requestid>627611</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>15f5daf64faa65e5984cf8df1f09296a</srcmd5>
+    <version>2.1.0</version>
+    <time>1533732852</time>
+    <user>dimstar_suse</user>
+    <comment>- fixtypo in last change
+
+- Update the Requires/BuildRequires to reflect requirements.txt</comment>
+    <requestid>627960</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1d7cc8140ecbf23cef8ab6885410696f</srcmd5>
+    <version>2.1.0</version>
+    <time>1535123608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631279</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>da60f706a66667399cd9e1a5dad88dd9</srcmd5>
+    <version>2.1.1</version>
+    <time>1542202847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646749</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d1b252f0d50eae5cd4328e471d5227c8</srcmd5>
+    <version>2.2.0</version>
+    <time>1544816861</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * Change title of project in readme
+  * Add a better description to README Overview section
+  * Fix discovery import error formatting on py3
+  * Cleanup unused parameters in \_run\_tests
+  * Enable doc8
+  * Add all stream to repo even if some tests fail
+  * Extract loading case code to \_load\_case() function
+  * Make test running serially when just loading
+  * Fix time measurement for load command too
+  * Use reported times instead of wall time in subunit-trace
+  * Add support for test class and method by path on no-discover</comment>
+    <requestid>656068</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2085065a7e7dbb465f3678653ae638d9</srcmd5>
+    <version>2.2.0</version>
+    <time>1548704753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664991</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8a8a4a17a89b4ec92f0fb71af555a9bd</srcmd5>
+    <version>2.3.1</version>
+    <time>1553888144</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with PyYAML 5.x series:
+  * pyyaml5.patch
+
+- Update to 2.3.1:
+  * tests expansion
+  * metadata updates
+  * minor bugfixes
+- Enable and run tests</comment>
+    <requestid>685817</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>23bb6698d606a919d08b725c6e47fd5d</srcmd5>
+    <version>2.4.0</version>
+    <time>1564484688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0:
+  * Discover python executable when discover is not used
+  * various bugfixes
+- Remove merged patch pyyaml5.patch</comment>
+    <requestid>717577</requestid>
+  </revision>
+</revisionlist>

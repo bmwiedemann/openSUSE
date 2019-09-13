@@ -1,0 +1,6 @@
+<package name="pam_radius" project="openSUSE:Factory">
+  <title>A PAM Module for User Authentication using a Radius Server</title>
+  <description>pam_radius is a PAM module which allows user authentication using a
+radius server.</description>
+  <devel project="Linux-PAM" package="pam_radius"/>
+</package>

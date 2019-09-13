@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12370f99272e85188b081c11b86bba2b</srcmd5>
+    <version>1.0.5</version>
+    <time>1560970682</time>
+    <user>dimstar_suse</user>
+    <comment>New package: zxing-cpp, a C++ port of the ZXing (&quot;zebra crossing&quot;) 1D and
+2D barcode parsing library.
+
+This is an officially-sanctioned fork of the original C++ port of ZXing
+(context: https://github.com/nu-book/zxing-cpp/issues/44)
+
+This is an optional  dependency of the &quot;kitinerary&quot; package, which uses
+zxing-cpp toprocess and parse barcodes from PDFs.</comment>
+    <requestid>704666</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>937f103d408bacf05e08c9225d0be780</srcmd5>
+    <version>1.0.5</version>
+    <time>1561049756</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>710964</requestid>
+  </revision>
+</revisionlist>

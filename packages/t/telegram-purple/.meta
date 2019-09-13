@@ -1,0 +1,5 @@
+<package name="telegram-purple" project="openSUSE:Factory">
+  <title>Telegram-Purple</title>
+  <description>Adds support for Telegram to Pidgin, Finch and other Libpurple based messengers.</description>
+  <devel project="network:pidgin" package="telegram-purple"/>
+</package>

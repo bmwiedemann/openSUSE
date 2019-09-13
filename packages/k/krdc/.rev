@@ -1,0 +1,672 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efad098c504cb26b5cf8e63602d7e57c</srcmd5>
+    <version>4.10.90</version>
+    <time>1373261234</time>
+    <user>coolo</user>
+    <comment>Update of krdc to 4.11 Beta 2. Keep krdc-devel for compatibility</comment>
+    <requestid>182140</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c816577192e577f7195c9f4c767030c7</srcmd5>
+    <version>4.10.95</version>
+    <time>1374506276</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.10.95</comment>
+    <requestid>183392</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3f72c4ea6a8ae8cb4909c063aff1a34d</srcmd5>
+    <version>4.10.95</version>
+    <time>1374757160</time>
+    <user>coolo</user>
+    <comment>BuildRequire only libkde4-devel, instead of kdebase4-workspace-devel, avoids rebuilds, and not required (forwarded request 184240 from sumski)</comment>
+    <requestid>184259</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8fc29ec58e97dd95a2c829926aa57576</srcmd5>
+    <version>4.10.97</version>
+    <time>1375193023</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE (RC2) 4.10.97</comment>
+    <requestid>184765</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9ee4f65b8192e5961f23cf9d4745b024</srcmd5>
+    <version>4.11.0</version>
+    <time>1376653605</time>
+    <user>scarabeus_factory</user>
+    <comment>Update KDE to KDE 4.11.0 Final</comment>
+    <requestid>187236</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>de0443e6c94584fd1401304cd25a9ce4</srcmd5>
+    <version>4.11.1</version>
+    <time>1378717861</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.11.1 Final</comment>
+    <requestid>197769</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>de0443e6c94584fd1401304cd25a9ce4</srcmd5>
+    <version>4.11.1</version>
+    <time>1379662831</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>fec385a13053fb0d52039acfaf9a2e3e</srcmd5>
+    <version>4.11.1</version>
+    <time>1380188799</time>
+    <user>coolo</user>
+    <comment>Enable Telepathy support for krdc package on openSUSE &gt;= 13.1 (depends on sr 199071) (forwarded request 199169 from sumski)</comment>
+    <requestid>199211</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>67669367d0d41b5ac647a255bb340ed6</srcmd5>
+    <version>4.11.2</version>
+    <time>1380808822</time>
+    <user>scarabeus_factory</user>
+    <comment>Update KDE to KDE 4.11.2 Final</comment>
+    <requestid>201815</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>02413160f6090d3378b68d65074f7f57</srcmd5>
+    <version>4.11.2</version>
+    <time>1380864253</time>
+    <user>coolo</user>
+    <comment>Enable telepathy support for &gt;= 13.2</comment>
+    <requestid>202060</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5ae9059b66c72fd0da9c64273914973a</srcmd5>
+    <version>4.11.90</version>
+    <time>1385984164</time>
+    <user>coolo</user>
+    <comment>Update to 4.12 Beta 2</comment>
+    <requestid>207288</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>32db7e07a52f30e4cd618f52942f233e</srcmd5>
+    <version>4.11.97</version>
+    <time>1386769001</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.11.97</comment>
+    <requestid>210288</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f2427bce1d806cabe9a878e8be739df2</srcmd5>
+    <version>4.12.0</version>
+    <time>1387455586</time>
+    <user>coolo</user>
+    <comment>KDE 4.12 Release</comment>
+    <requestid>211628</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>893acf6a56bb5dc3323dac0752654064</srcmd5>
+    <version>4.12.1</version>
+    <time>1390817934</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to KDE 4.12.1</comment>
+    <requestid>214949</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9931514061ad1a945f1c19e921d3d9aa</srcmd5>
+    <version>4.12.2</version>
+    <time>1392879443</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.12.2</comment>
+    <requestid>222982</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f30165cfe732449d6539827a1b884d66</srcmd5>
+    <version>4.12.90</version>
+    <time>1395159444</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.13 Beta 2</comment>
+    <requestid>226244</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f1c4c7f4023892f2d7569f1167b66751</srcmd5>
+    <version>4.12.97</version>
+    <time>1396158830</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.13 RC</comment>
+    <requestid>228006</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>908c6893d13cd2f6e6934f72050b0ce6</srcmd5>
+    <version>4.13.0</version>
+    <time>1397813442</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to KDE 4.13 final</comment>
+    <requestid>230665</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6ded11cdd2abe3398989bd44a4c25c55</srcmd5>
+    <version>4.13.1</version>
+    <time>1400734347</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.13.1</comment>
+    <requestid>234079</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e642443606397f212707386fbf0cdcc3</srcmd5>
+    <version>4.13.2</version>
+    <time>1403176673</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.13.2. Resolves wrong changelog</comment>
+    <requestid>237801</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>22e27a85a2180e9ce06dc3cc04f4d240</srcmd5>
+    <version>4.13.80</version>
+    <time>1405520278</time>
+    <user>coolo</user>
+    <comment>Update to 4.13.80</comment>
+    <requestid>240590</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ea2a86bb4ba4cb1b4699ee734cb868e3</srcmd5>
+    <version>4.14.0</version>
+    <time>1408957296</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.14.0 Final</comment>
+    <requestid>245454</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>ea2a86bb4ba4cb1b4699ee734cb868e3</srcmd5>
+    <version>4.14.0</version>
+    <time>1409301419</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cabbeff8febe9d008622bcfde9d468b3</srcmd5>
+    <version>4.14.1</version>
+    <time>1411020018</time>
+    <user>coolo</user>
+    <comment>Update to KDE SC 4.14.1 Bugfix release</comment>
+    <requestid>249825</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>61f18c1fac896d81800fe08fe989222a</srcmd5>
+    <version>4.14.2</version>
+    <time>1413476052</time>
+    <user>coolo</user>
+    <comment>Update to KDE SC 4.14.1 Bugfix release</comment>
+    <requestid>256501</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>eeb8838b8eaf0a0764b135b51a811a19</srcmd5>
+    <version>4.14.3</version>
+    <time>1416425011</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE 4.14.3. Bugfix release</comment>
+    <requestid>261139</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>66c3ef1cb19da0c2f76af54da0910649</srcmd5>
+    <version>14.12.0</version>
+    <time>1420755463</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 14.12</comment>
+    <requestid>266717</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d589f0d8836ef40fc2207ed7ee6be82c</srcmd5>
+    <version>14.12.1</version>
+    <time>1421874660</time>
+    <user>coolo</user>
+    <comment>Update to KDE Apps 14.12.1</comment>
+    <requestid>281187</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>7ffd6064840d5057b2709b9e0b31ae8f</srcmd5>
+    <version>14.12.2</version>
+    <time>1423669048</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Apps 14.12.2. Bugfix release</comment>
+    <requestid>284365</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>99716c125b84f8e156d1609eb74035b8</srcmd5>
+    <version>14.12.3</version>
+    <time>1426063897</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 14.12.3</comment>
+    <requestid>289470</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>48862796242e2b1f1b5f6c29f54e82cb</srcmd5>
+    <version>15.04.0</version>
+    <time>1431364444</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>303567</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e769a59f915d62a5c4910434e8d25652</srcmd5>
+    <version>15.04.1</version>
+    <time>1431676873</time>
+    <user>coolo</user>
+    <comment>Update to KDE Applications 15.04.1 bugfix release</comment>
+    <requestid>306919</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>47bef4e3afde77e7e98ca02aa2cab47a</srcmd5>
+    <version>15.04.2</version>
+    <time>1433409498</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 15.04.2</comment>
+    <requestid>309984</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>93897750666471667d32326423cfd63f</srcmd5>
+    <version>15.04.3</version>
+    <time>1436888207</time>
+    <user>coolo</user>
+    <comment>Update to KDE:Applications 15.04.3</comment>
+    <requestid>316169</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4bdbf3ebc2c01e1da7bcf91181d0d441</srcmd5>
+    <version>15.08.1</version>
+    <time>1443896587</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>332403</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c9428ef64c37f34bea8c6cb86b3587f2</srcmd5>
+    <version>15.08.2</version>
+    <time>1445287337</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 15.08.2</comment>
+    <requestid>338672</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c12aad2acc2ba971432e1a27c6eabe3b</srcmd5>
+    <version>15.08.3</version>
+    <time>1447587541</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applicationd 15.08.3</comment>
+    <requestid>343655</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>229364905f815b246964bc4f6b142df2</srcmd5>
+    <version>15.12.0</version>
+    <time>1452122545</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 15.12.0</comment>
+    <requestid>350048</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>665e8e6ce5a0888f96c6c15d577fc3b0</srcmd5>
+    <version>15.12.1</version>
+    <time>1453507734</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Apps 15.12.1. Please only accept no earlier then next week Wednesday. This to give us a chance to notify people and people to lock their packages as that we are starting to obsolete the kdepim4 suite</comment>
+    <requestid>354289</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e1b7945c44fb1cf5a952fc7c368427ab</srcmd5>
+    <version>15.12.2</version>
+    <time>1456132680</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Apps 15.12.2</comment>
+    <requestid>359785</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9ba52b7dd552602109ab7219a1038bce</srcmd5>
+    <version>15.12.3</version>
+    <time>1459001840</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 15.12.3</comment>
+    <requestid>378063</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>4007aaf8823fb825fdc89d0fbbe67f40</srcmd5>
+    <version>15.12.3</version>
+    <time>1460480271</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385659</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>14776bfbb52efc82380997fab9e5ee6b</srcmd5>
+    <version>16.04.1</version>
+    <time>1464689654</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.04.1</comment>
+    <requestid>395289</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8270f0c271d2741edea0c3e4fb76f68e</srcmd5>
+    <version>16.04.2</version>
+    <time>1466413335</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Apps 16.04.2</comment>
+    <requestid>402270</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>4803cd60d5d6137b4b6cc35c94340c96</srcmd5>
+    <version>16.04.2</version>
+    <time>1467541643</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405527</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a0f3872337838ff1056ed0fd5effb401</srcmd5>
+    <version>16.04.3</version>
+    <time>1469080072</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 16.04.3</comment>
+    <requestid>408099</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>6435ce4d077e5da26c3ea9d446ebc989</srcmd5>
+    <version>16.08.0</version>
+    <time>1472474634</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 16.08.0</comment>
+    <requestid>420214</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>65bf1f79070c6d742c3b7196c11d18b1</srcmd5>
+    <version>16.08.1</version>
+    <time>1473887696</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 16.08.1</comment>
+    <requestid>426477</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>d59216aa91f42fa59be1427d52393804</srcmd5>
+    <version>16.08.2</version>
+    <time>1476778914</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.08.2</comment>
+    <requestid>434924</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>02874b8e7f8d97158e523f80c478729b</srcmd5>
+    <version>16.08.3</version>
+    <time>1478954499</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.08.3</comment>
+    <requestid>439752</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>1d109d2a8921bfcb1ed45d9dc49bb6ed</srcmd5>
+    <version>16.12.0</version>
+    <time>1481968087</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applicatons 16.12.0</comment>
+    <requestid>446106</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>a341db44181a9c6ecce6f8c3bc89af0a</srcmd5>
+    <version>16.12.1</version>
+    <time>1485381765</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.12.1</comment>
+    <requestid>450802</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>c768ddd9708ed3308a59f30c024609c4</srcmd5>
+    <version>16.12.2</version>
+    <time>1486967230</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.12.2</comment>
+    <requestid>456252</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>4133b15691e8b8f9d48daf5ad3a11e34</srcmd5>
+    <version>16.12.3</version>
+    <time>1489535809</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.12.3</comment>
+    <requestid>478221</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a599da28cd0e0cef5a3f56a16abccda5</srcmd5>
+    <version>17.04.0</version>
+    <time>1494262516</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.04.0 final</comment>
+    <requestid>490465</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>a8168bbbc38a207a328c05c0430cf827</srcmd5>
+    <version>17.04.1</version>
+    <time>1495442536</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.04.1</comment>
+    <requestid>495993</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>64ed829a9a613a1a78647d672ecde406</srcmd5>
+    <version>17.04.2</version>
+    <time>1497273702</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.04.2</comment>
+    <requestid>502065</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a084446ee56bd4eaf37af867e17cac2c</srcmd5>
+    <version>17.04.3</version>
+    <time>1500975083</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.04.3</comment>
+    <requestid>510755</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>d6d01d73c4489052e5cb79f0465e7daa</srcmd5>
+    <version>17.08.0</version>
+    <time>1503589881</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 17.08.0</comment>
+    <requestid>516528</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>a337cc6f43c582c472dd94493ee3c108</srcmd5>
+    <version>17.08.1</version>
+    <time>1505238574</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.08.1</comment>
+    <requestid>522597</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>4a753cf08fe4b524dcdd944d1e261a40</srcmd5>
+    <version>17.08.2</version>
+    <time>1508769145</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.08.2</comment>
+    <requestid>534772</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>a01ecf2813a5cef29f6982b524d64a8b</srcmd5>
+    <version>17.08.3</version>
+    <time>1510838884</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.08.3</comment>
+    <requestid>540928</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>ca68cbe7b09b9a459eed586ce8680552</srcmd5>
+    <version>17.12.0</version>
+    <time>1513583575</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.12.0 final (release on 2017-12-14)</comment>
+    <requestid>556238</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>33f8fa4aa4e00a0671d88cb80159306b</srcmd5>
+    <version>17.12.1</version>
+    <time>1516222313</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.12.1</comment>
+    <requestid>564355</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>2718eb61bcfb93cb6ff631f1ea414783</srcmd5>
+    <version>17.12.2</version>
+    <time>1518597633</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.12.2</comment>
+    <requestid>575082</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>0f2b5966f58a8e5b20febfff1403b107</srcmd5>
+    <version>17.12.3</version>
+    <time>1521716398</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.12.3</comment>
+    <requestid>585613</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>3d5887915dc15ff18827e11c1040f3ca</srcmd5>
+    <version>18.04.0</version>
+    <time>1524837933</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.04.0</comment>
+    <requestid>599095</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>b1874b698e692982c050816e0365ff66</srcmd5>
+    <version>18.04.1</version>
+    <time>1526488832</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.04.1</comment>
+    <requestid>607223</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>59af8ccbe50a83ff20501deeae696340</srcmd5>
+    <version>18.04.2</version>
+    <time>1529066576</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Applications 18.04.2</comment>
+    <requestid>615581</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>dfdeaa60474f5e4901a0877210abf2b6</srcmd5>
+    <version>18.04.3</version>
+    <time>1532033607</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.04.3</comment>
+    <requestid>622716</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>cd2522571c109c1a5ec61d53fc05f5e6</srcmd5>
+    <version>18.08.0</version>
+    <time>1535123325</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 18.08.0</comment>
+    <requestid>630258</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>c2268e8d7605015d45a14c5227528ace</srcmd5>
+    <version>18.08.1</version>
+    <time>1537018319</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Applications 18.08.1</comment>
+    <requestid>634147</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>419fd70b019455a7bbbbcf1c9d618771</srcmd5>
+    <version>18.08.2</version>
+    <time>1539758151</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.08.2</comment>
+    <requestid>641552</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>5ebca5473050bf96d97f450eadca42e7</srcmd5>
+    <version>18.08.3</version>
+    <time>1542124243</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.08.3</comment>
+    <requestid>648079</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>2fc529a29fbf68f69d10ee85531b2a43</srcmd5>
+    <version>18.12.0</version>
+    <time>1546946537</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.12</comment>
+    <requestid>658449</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>964fdb445f4e56bb24e629a15c452fef</srcmd5>
+    <version>18.12.1</version>
+    <time>1548335309</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.12.1</comment>
+    <requestid>665197</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>247a203b8e259a10ea18ab9052e4f49b</srcmd5>
+    <version>18.12.2</version>
+    <time>1550221179</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.12.2</comment>
+    <requestid>673817</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>2d1ec1c13c0ce598e1d6aa40fd236541</srcmd5>
+    <version>18.12.3</version>
+    <time>1552308518</time>
+    <user>coolo</user>
+    <comment>KDE Applications 18.12.3</comment>
+    <requestid>683243</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>9cb3430f6ebcf4a39e26c7634201dcdb</srcmd5>
+    <version>19.04.0</version>
+    <time>1556474937</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Applications 19.04.0 (forwarded request 696164 from luca_b)</comment>
+    <requestid>696308</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>c04418c7c38b9a0d33fa09f7662c6edf</srcmd5>
+    <version>19.04.1</version>
+    <time>1557916268</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.04.1</comment>
+    <requestid>702285</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>7df1ecdfd2ad5dad2f1be4693a215e29</srcmd5>
+    <version>19.04.2</version>
+    <time>1560537155</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.04.2</comment>
+    <requestid>708656</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>97780c8a2aaa66f1d259bc73ab7d3e24</srcmd5>
+    <version>19.04.3</version>
+    <time>1563362279</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.04.3</comment>
+    <requestid>715165</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>6e8a9cb04dec5bf48876b7375fac6f9e</srcmd5>
+    <version>19.08.0</version>
+    <time>1565963253</time>
+    <user>dimstar_suse</user>
+    <comment>Applications 19.08.0 (forwarded request 723532 from cgiboudeaux)</comment>
+    <requestid>723701</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>9bd56330cd0579cfe4a218ba8316d3f5</srcmd5>
+    <version>19.08.1</version>
+    <time>1568190601</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.1 (forwarded request 728705 from luca_b)</comment>
+    <requestid>728884</requestid>
+  </revision>
+</revisionlist>

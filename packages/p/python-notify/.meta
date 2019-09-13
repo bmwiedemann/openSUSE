@@ -1,0 +1,5 @@
+<package name="python-notify" project="openSUSE:Factory">
+  <title>Python bindings for libnotify</title>
+  <description>Python bindings for libnotify.</description>
+  <devel project="devel:languages:python" package="python-notify"/>
+</package>

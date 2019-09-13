@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>19997603c81c76c25becf84c4e50abf1</srcmd5>
+    <version>0.9.18</version>
+    <time>1493235786</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>486533</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ed723a2ba7be995bd6f5e170faee046f</srcmd5>
+    <version>0.9.18</version>
+    <time>1494088217</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>492741</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b499f53288f487b7e325e906cce81620</srcmd5>
+    <version>0.9.18</version>
+    <time>1509105677</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536902</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea321e1a1d6b6ef1459e0b9cd94952d0</srcmd5>
+    <version>1.0~alpha0</version>
+    <time>1510232351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0-alpha0:
+  * mu4e: add mu4e-msg-changed-hook to mu4e-index-updated-hook globally
+  * mu4e: Fix outdated docstring for `mu4e-headers-actions'
+  * Add some improvements in attachment actions
+  * mu4e: killing instead of interrupting update process
+  * Use re-search-forward to find message signatures 
+  * mu4e: Add possibility to forward messages as attachments 
+  * mu: add 'tickle' command, for renaming messages
+  * mu4e: allow for message body rewriting
+  * mu4e: mu4e-message: allow for bodyless messages
+  * mu4e: show inline text/plain as attachment
+  * mu4e: don't require user-agent string 
+  * mu4e: Added new mu4e-split-view mode: single-window
+  * mu: include signers in signature report
+  * mu4e: display signers in signature header
+  * bug fixes and documentation updates</comment>
+    <requestid>537839</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b2c0a00d652bd883016619ed5cbbb504</srcmd5>
+    <version>1.0~alpha2</version>
+    <time>1510660631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0-alpha2:
+  * Ensure mu4e-view-mode-hook run after text insertion
+  * mu4e: fix bug preventing mu4e-headers-change-sorting to sort by list
+  * mu4e: add mu4e-query-rewrite-functio
+  * proc: ensure query string is utf-8
+  * documentation fixes</comment>
+    <requestid>541242</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ba944b6816a350b20301428baf90037</srcmd5>
+    <version>1.0~alpha3</version>
+    <time>1513677524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0-alpha3:
+  * parser: promote single value to a range for range-fields 
+  * mu: support 'raw' query (internally) 
+  * mu: handle funny msgids 
+  * mu4e: improve msgid quoting 
+  * mu4e: fix typo in mu4e~docid-msgid-param</comment>
+    <requestid>558069</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>50b155c88b549f2cda538f653983b1f4</srcmd5>
+    <version>1.0~alpha3</version>
+    <time>1516804268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568541</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>81975433dc8e508b533c4d79bcb7f936</srcmd5>
+    <version>1.0</version>
+    <time>1517932137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573001</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b284b6a47dca101d66f4c7ac82ddd4c1</srcmd5>
+    <version>1.0</version>
+    <time>1551883628</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1111950: Build lib in paralell the rest on one core</comment>
+    <requestid>681670</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>520a38e4023002c7df6e6703411a5c5b</srcmd5>
+    <version>1.2</version>
+    <time>1554749624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2:
+  mu:
+  * Substantial (algorithmic) speed-up of message-threading
+  * The query-parser now generates better queries for wildcard
+    searches, by using the Xapian machinery for that (when available)
+    rather than tranforming into regexp queries
+  * The perl backend is hardly used and will be removed; for now we
+    just disable it in the build
+  * Allow outputing messages in json format, closely following the sexp
+    output. This adds an (optional) dependency on the Json-Glib library
+  mu4e:
+  * Bump the minimal required emacs version to 24.4. This was already
+    de-facto true, now it is enforced
+  * In mu4e-bookmarks, allow the `:query` element to take a function
+    (or lambda) to dynamically generate the query string.
+  * There is a new message-view for mu4e, based on the Gnus' article-view.
+    This bring a lot of (but not all) of the very rich Gnus article-mode
+    feature-set to mu4e, such as S/MIME-support, syntax-highlighting.
+    Enable it with: (setq mu4e-view-use-gnus t)
+  * Bug fixes</comment>
+    <requestid>692237</requestid>
+  </revision>
+</revisionlist>

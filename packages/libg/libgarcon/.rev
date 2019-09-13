@@ -1,0 +1,299 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ceef45ea8973f03fd04adc41261e13c</srcmd5>
+    <version>0.1.4</version>
+    <time>1291587839</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54816 from user anubisg1
+</comment>
+    <requestid>54816</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>09f1bc902014360cadf3677704395309</srcmd5>
+    <version>0.1.4</version>
+    <time>1291587844</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54816
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>adff3991891a7e76db7de70493aae75a</srcmd5>
+    <version>0.1.4</version>
+    <time>1295010136</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57376 from user gberh
+</comment>
+    <requestid>57376</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>11193eba0072c01101014ab1e2ae79a3</srcmd5>
+    <version>0.1.4</version>
+    <time>1295010145</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57376
+</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>719b4367b106befabaad5bdf90ba4dcd</srcmd5>
+    <version>0.1.5</version>
+    <time>1295310808</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58589 from user gberh
+</comment>
+    <requestid>58589</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>be6c6f5633c5f385b4fe8b379b5320bd</srcmd5>
+    <version>0.1.5</version>
+    <time>1295310821</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58589
+</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>bcd94f9f4e8b8a283f5a37cd21f79a93</srcmd5>
+    <version>0.1.5</version>
+    <time>1296808498</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59991 from user gberh
+</comment>
+    <requestid>59991</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>36ff9ecca8e76877eb8512784df39ac6</srcmd5>
+    <version>0.1.5</version>
+    <time>1296808512</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59991
+</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>36ff9ecca8e76877eb8512784df39ac6</srcmd5>
+    <version>0.1.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5920f3830e9ee81fa71049fc69ba820d</srcmd5>
+    <version>0.1.6</version>
+    <time>1304349956</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67079</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>c20730091e434b14cf9d8f74544eda64</srcmd5>
+    <version>0.1.6</version>
+    <time>1304349965</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67079
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>720faf4fed3e191a01a709e46c9847c9</srcmd5>
+    <version>0.1.7</version>
+    <time>1305534600</time>
+    <user>saschpe</user>
+    <comment>- update to version 0.1.7
+  - respect XDG priorities when returning the menu file (bxo#7470)
+  - translation updates</comment>
+    <requestid>70199</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>4a1b93471a04e96d8774043c3a96216b</srcmd5>
+    <version>0.1.7</version>
+    <time>1305534618</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70199
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>63e19af01aea4c15a328fed34e5d43c9</srcmd5>
+    <version>0.1.8</version>
+    <time>1308558665</time>
+    <user>saschpe</user>
+    <comment>- update to version 0.1.8
+  - removed the science toplevel category
+  - handle local desktop file loading directly
+  - bugfixes
+  - translation updates</comment>
+    <requestid>74126</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fc2797b57d2b3f57f4357ea4235eb600</srcmd5>
+    <version>0.1.9</version>
+    <time>1316617821</time>
+    <user>saschpe</user>
+    <comment>- update to version 0.1.9
+  - rename Network category to Internet
+  - queue multiple reload-required signals
+  - speedup a number of critical code-paths
+  - use GSList instead of GList where possible
+  - Use XfceRc instead of GKeyFile, this makes garcon depend on
+    libxfce4util, but is faster and more memory efficient.
+  - return an error string instead of freeing it, causing a sefgault
+    in xfce4-panel
+  - do not decrement the internal refcount of items, this should
+    fixed the usage of &lt;OnlyUnallocated/&gt;
+  - translations updates</comment>
+    <requestid>84031</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>941773c2a00c4e398de5ef145cc9eee8</srcmd5>
+    <version>0.1.9</version>
+    <time>1318762371</time>
+    <user>lrupp</user>
+    <comment>- recommend -doc subpackage</comment>
+    <requestid>87893</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>941773c2a00c4e398de5ef145cc9eee8</srcmd5>
+    <version>0.1.9</version>
+    <time>1319182092</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>635b92a97d98d3240240e7c0fd3d9f32</srcmd5>
+    <version>0.1.9</version>
+    <time>1323192215</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>32cc833b0ef0cae3509c8bbb8ff03d2b</srcmd5>
+    <version>0.1.10</version>
+    <time>1329405475</time>
+    <user>coolo</user>
+    <comment>- update to version 0.1.10
+  - add hardware and personal directories
+  - support Link desktop types
+  - translation updates</comment>
+    <requestid>104752</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a4f0fc0271d4ad6633d23b2c86589516</srcmd5>
+    <version>0.1.11</version>
+    <time>1334692743</time>
+    <user>coolo</user>
+    <comment>- update to version 0.1.11
+  - use applications-science icon for education directory
+  - translation updates
+
+- correct build dependencies
+- split off -lang and -data subpackages and move unversioned menu
+  data to the latter</comment>
+    <requestid>112497</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1c58f3e2caa85482d596a5c90bda362d</srcmd5>
+    <version>0.2.0</version>
+    <time>1336470527</time>
+    <user>coolo</user>
+    <comment>- update to version 0.2.0
+  - updates for xfce4-run.desktop
+  - remove xfhelp4.desktop from the menu
+  - add debugging for file monitoring and reloading
+  - reduce signal emission on delete events
+  - translation updates
+- make libgarcon-1-0 depend on exo-tools, it uses exo-open for
+  Type=Link items
+- make libgarcon-branding-upstream depend on libxfce4ui-tools since
+  the included menu references xfce4-about.desktop
+
+- make the libgarcon-1-0 recommend -data which in turn requires
+  -branding rather than recommending -branding
+
+- make -branding packages depend on -data and not the other way
+  around
+- make libgarcon-1-0 recommend -branding
+
+- update to version 0.1.12
+  - add missing or fix incorrect licenses
+  - fix segfault if null is set
+  - translation updates</comment>
+    <requestid>116143</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>1c58f3e2caa85482d596a5c90bda362d</srcmd5>
+    <version>0.2.0</version>
+    <time>1340183585</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>1c58f3e2caa85482d596a5c90bda362d</srcmd5>
+    <version>0.2.0</version>
+    <time>1359109270</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>60be8a474366f7af2b90317ec75ea42f</srcmd5>
+    <version>0.2.1</version>
+    <time>1367828029</time>
+    <user>coolo</user>
+    <comment>- update to version 0.2.1
+  - g_thread_init is deprecated since glib 2.32
+  - remove unmaintained translations
+  - fix deprecating warnings in tests
+  - use new mutex locking api if available
+  - autotools updates
+  - translation updates</comment>
+    <requestid>174587</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>60be8a474366f7af2b90317ec75ea42f</srcmd5>
+    <version>0.2.1</version>
+    <time>1379662951</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>60be8a474366f7af2b90317ec75ea42f</srcmd5>
+    <version>0.2.1</version>
+    <time>1409301563</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f82deb2ec83d87291fbe6fb6442e82f8</srcmd5>
+    <version>0.4.0</version>
+    <time>1425892004</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.12</comment>
+    <requestid>289374</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>27db6879d5c7528a9051788c2f687b52</srcmd5>
+    <version>0.6.1</version>
+    <time>1503592896</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512212</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>067ec9895d6b3909f0e6bf57365f06e4</srcmd5>
+    <version>0.6.2</version>
+    <time>1546946846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662521</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>453bb030204fbc43f037ab33e5dd6c10</srcmd5>
+    <version>0.6.2</version>
+    <time>1552902122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685581</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>50b93cabd9db0ee7f61ba9199d8d8bc3</srcmd5>
+    <version>0.6.4</version>
+    <time>1564576269</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.6.4</comment>
+    <requestid>719859</requestid>
+  </revision>
+</revisionlist>

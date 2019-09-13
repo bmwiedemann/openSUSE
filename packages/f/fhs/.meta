@@ -1,0 +1,9 @@
+<package name="fhs" project="openSUSE:Factory">
+  <title>File System Hierarchy Standard</title>
+  <description>This standard consists of a set of requirements and guidelines for file
+and directory placement under UNIX-like operating systems.  The
+guidelines are intended to support application interoperability, system
+administration tools, development tools, and scripts as well as greater
+uniformity of documentation for these systems.</description>
+  <devel project="Base:System" package="fhs"/>
+</package>

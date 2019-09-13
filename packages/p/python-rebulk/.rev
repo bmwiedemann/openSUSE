@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>901c578c0396b252210f1333d9c6aeed</srcmd5>
+    <version>0.8.2</version>
+    <time>1493455944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>485767</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ba28c1dc4c5f53d8a5b8acdd0774fb6f</srcmd5>
+    <version>0.9.0</version>
+    <time>1536094574</time>
+    <user>dimstar_suse</user>
+    <comment>- Write up the tests syntax to match up rest python packages
+
+- Update to version 0.9.0
+  * Fix pylint issues
+  * Refactor Matches to_dict() method for better API 
+- Enabled tests</comment>
+    <requestid>632806</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>607fa2884b2ab588099c645e01f9bc86</srcmd5>
+    <version>0.9.0</version>
+    <time>1536833447</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634223</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aec44608bab970eb93cbce0a836635d6</srcmd5>
+    <version>1.0.0</version>
+    <time>1539589424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641808</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>11e7644adc3df63ea3446d2ca39e427e</srcmd5>
+    <version>1.0.0</version>
+    <time>1545648183</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659636</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a1f358648ca88fbcc259aad63ec8e2bb</srcmd5>
+    <version>1.0.1</version>
+    <time>1565695660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722962</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a8bbea78c0312a43b1373f26009041f7</srcmd5>
+    <version>1.0.1</version>
+    <time>1565721225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723044</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2e5576255cb3e231c01df787e98fb349</srcmd5>
+    <version>2.0.0</version>
+    <time>1567423538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727348</requestid>
+  </revision>
+</revisionlist>

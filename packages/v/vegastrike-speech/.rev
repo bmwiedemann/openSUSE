@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>83fa69ea441db95d596c549c56d97987</srcmd5>
+    <version>0.5.1.r1</version>
+    <time>1351265725</time>
+    <user>coolo</user>
+    <comment>Vega Strike is an open source game engine used in a few games: &quot;Vega Strike: upon the coldest sea&quot;, an original game by the same team, and &quot;Gemini Gold&quot;, a privateer remake, as the two biggest examples. This is the speech pack for UTCS. Not needed to play the game, but an important enhancement.
+
+It depends on another SR for vegastrike and vegastrike-data.
+
+http://vegastrike.sourceforge.net/
+
+Build for i586 is disabled since it's a fully noarch package.
+
+Changes from previous SR include removing services, and a license file as requested in bnc#759044, copied from vegastrike-data since all data files come from the same SVN repo covered by the same license:
+
+http://vegastrike.svn.sourceforge.net/viewvc/vegastrike/trunk/data/
+
+Resubmitted to reflect some specfile cleanups</comment>
+    <requestid>139204</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>83fa69ea441db95d596c549c56d97987</srcmd5>
+    <version>0.5.1.r1</version>
+    <time>1359110542</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>83fa69ea441db95d596c549c56d97987</srcmd5>
+    <version>0.5.1.r1</version>
+    <time>1379664920</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>83fa69ea441db95d596c549c56d97987</srcmd5>
+    <version>0.5.1.r1</version>
+    <time>1409303604</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>0bc9f5d358cb9e7b1634f5f782e53fc5</srcmd5>
+    <version>0.5.1.r1</version>
+    <time>1503308241</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude i586 so repocheker wouldn't complain here
+</comment>
+    <requestid>517590</requestid>
+  </revision>
+</revisionlist>

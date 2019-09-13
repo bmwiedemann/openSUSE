@@ -1,0 +1,222 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55b6533b3e80505b3c1e946935e40340</srcmd5>
+    <version>1.3.0</version>
+    <time>1450856936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>341898</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cd298f9a417f8ea4199710258b1c6815</srcmd5>
+    <version>1.6.1</version>
+    <time>1468999252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411691</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c452615f401621be73a928cb91b58dd6</srcmd5>
+    <version>1.6.1</version>
+    <time>1477904062</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435878</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>fe7b8c1eef12a70a0592f99d1b4feb0d</srcmd5>
+    <version>1.6.1</version>
+    <time>1484475406</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Fix-timeout-wrapper-version-detection.patch (bsc#1019600)</comment>
+    <requestid>449981</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>3abea23e87d53f9e8ebe76d6691dd1a6</srcmd5>
+    <version>1.6.1</version>
+    <time>1489759639</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479961</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>f9c5b37a75b93dcc05991b2652474c68</srcmd5>
+    <version>1.6.1</version>
+    <time>1492011197</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482931</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>572f8a93bdcb7b97a9abed0bc05ecf6d</srcmd5>
+    <version>1.6.2</version>
+    <time>1494345756</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.2:
+  * remove cap on pbr</comment>
+    <requestid>491817</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bda93b020505e8aa91322278ec415b58</srcmd5>
+    <version>1.6.2</version>
+    <time>1506453358</time>
+    <user>dimstar_suse</user>
+    <comment>- convert to singlespec</comment>
+    <requestid>528633</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>fe234e2acae4a41e73a7cf49ba442ce6</srcmd5>
+    <version>1.6.2</version>
+    <time>1526023088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606238</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>181133ac1ab02f4bad0adb6d2f509d45</srcmd5>
+    <version>2.3.0</version>
+    <time>1536327588</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * Allow control of verbose option for publish-over plugins
+  * Allow running only on one of nodes with label parameter
+  * branch-api: Support skip-rate-limit param
+  * ansicolor: Enforce valid types
+  * build-blocker: Refactor to increase code quality
+  * Avoid extra XML elements in views
+  * ant: Refactor code to improve readability
+  * Views require case insensitive sorting
+  * Add matching parameter to throttle concurrent jobs
+  * ssh-agent-credentials: Support ignore-missing-credentials param
+  * Add support for &quot;Invoke Nexus Policy Evaluation&quot;
+  * Fix pipeline view-type should be pipeline
+  * [view\_list] Update helpers import to common style
+  * [pipeline] Update helpers import to common style
+  * [wrappers] Update helpers import to common style
+  * [scm] Update helpers import to common style
+  * [Triggers] Update helpers import to common style
+  * Fix typo in anchor test
+  * [Maven] Update helpers import to common style
+  * [Workflow] Update helpers import to common style
+  * Refactor parameters.py
+  * Refactor email-ext in publishers.py
+  * Add support for filtering by name in git source
+  * Fix typo in test docstring
+  * Allow dashes in variable key names
+  * Add support for few of Extra Columns plugin' extra columns for ListView generator
+  * Add support for Basic Branch Build Strategies Plugin
+  * Refactor hipchat\_notif.py
+  * Refactor notifications.py</comment>
+    <requestid>633219</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8ed48d63ea901682e69a2f8c023c829b</srcmd5>
+    <version>2.3.0</version>
+    <time>1536679037</time>
+    <user>maxlin_factory</user>
+    <comment>- add 0001-Use-upstream-default-for-allNodesMatchingLabel.patch</comment>
+    <requestid>634352</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>4ac16c839da50c8901ff9a1b4b62845b</srcmd5>
+    <version>2.3.0</version>
+    <time>1537436522</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636323</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c36ef7b39b44c2224336353fc923e9a5</srcmd5>
+    <version>2.8.0</version>
+    <time>1543592017</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.0:
+  * Handle cancel-builds-on-update values from vars
+  * Remove random print
+  * Add support for All view-type
+  * Add missing 'release' stage for Nexus IQ
+  * Adds support for Disable GitHub Multibranch Status
+  * Add 'secret-token' parameter to gitlab trigger
+  * Add 'publish-over-cifs' to the builders module
+  * docker-pull-image: Pull Docker image from Docker Hub/Registry
+  * jclouds: Utilize convert\_mapping\_to\_xml
+  * Fix flake8 failures and make its execution more consistent
+  * Add .venv to .gitignore
+  * Add support for the &quot;Gitlab Logo Plugin&quot;
+  * Adds option to specify secret id for github
+  * Fix build-result trigger jobs list in examples
+  * Add support for the &quot;Disk Usage&quot; plugin
+  * Fix 'block-level' Build Blocker Plugin Property
+  * Make jjb-tox-cross-python-jenkins job voting
+  * Add update option to the JJB config sample
+  * docker-custom-build-env: Add support for new options
+  * docker-container: Improve support for more options
+  * gitlab-merge-request: Add support for 2.x
+  * email: Utilize convert\_mapping\_to\_xml
+  * Fix options.update is not 'all' if no config
+  * Add config options --jobs-only and --views-only
+  * Enable groovy sandbox for properties-inject
+  * Add support for docker-stop-container
+  * trig-param-build: Utilize convert\_mapping\_to\_xml
+  * hue-light: Add commas to mapping tuple
+  * jdepend: Add commas to mapping tuple</comment>
+    <requestid>652822</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a5f657d10166d087db6419b0b9db3f02</srcmd5>
+    <version>2.9.1</version>
+    <time>1549361940</time>
+    <user>coolo</user>
+    <comment>- update to 2.9.1:
+  * Fix default '0' being ignored
+  * Convert parameter default value to str
+  * Adds support for Property Strategies</comment>
+    <requestid>671249</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d51fd0372744e6df3130d088b3de57c8</srcmd5>
+    <version>2.9.1</version>
+    <time>1554749627</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Allow-pyyaml-5.patch
+  Needed for newer python-PyYAML versions</comment>
+    <requestid>692274</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>785569c061845f533ae0a6081f7e3b28</srcmd5>
+    <version>2.10.0</version>
+    <time>1558129418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703564</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e66d69958b7b269ed86cbba5d02956ae</srcmd5>
+    <version>3.0.0</version>
+    <time>1564994325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720469</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8e211631b0fb20864dccc9a3f16bbd93</srcmd5>
+    <version>3.0.1</version>
+    <time>1565695647</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.1:
+  * Revert &quot;Add support for rendering jinja template as yaml&quot;</comment>
+    <requestid>722910</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4f4fbd8cfc541341b06eda33c17ea641</srcmd5>
+    <version>3.0.2</version>
+    <time>1568379575</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 3.0.2:
+  * Added missing 'filters' parameters for rabbitmq trigger plugin
+  * Add support of &quot;disableDeferredWipeout&quot; option to workspace cleanup plugin
+  * Avoid ResourceWarning by closing file handlers when finished
+  * Add support for two new plugins, and a new version of one</comment>
+    <requestid>730188</requestid>
+  </revision>
+</revisionlist>

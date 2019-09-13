@@ -1,0 +1,5 @@
+<package name="ibus-table" project="openSUSE:Factory">
+  <title>The Table engine for IBus platform</title>
+  <description>The package contains general Table engine for IBus platform.</description>
+  <devel project="M17N" package="ibus-table"/>
+</package>

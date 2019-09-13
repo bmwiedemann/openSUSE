@@ -1,0 +1,20 @@
+<package name="syncthing-gtk" project="openSUSE:Factory">
+  <title>Syncthing Gtk3-based graphical interface</title>
+  <description>Graphical user interface with notification area icon for Syncthing based on Gtk3 and Python.
+
+Supported Syncthing features:
+ * Everything what WebUI can display.
+ * Adding / editing / deleting nodes.
+ * Adding / editing / deleting repositories.
+ * Restart / shutdown server.
+ * Editing daemon settings.
+
+Additional features:
+ * First run wizard for initial configuration.
+ * Running Syncthing daemon in background.
+ * Half-automatic setup for new nodes and repositories.
+ * Filesystem watching and instant synchronization using inotify.
+ * Caja, Nautilus, and Nemo file managers integration.
+ * Desktop notifications.</description>
+  <devel project="network" package="syncthing-gtk"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="perl-Parse-PMFile" project="openSUSE:Factory">
+  <title>perl-Parse-PMFile</title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Parse-PMFile"/>
+</package>

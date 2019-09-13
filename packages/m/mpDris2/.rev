@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8a3cb311389a757d37433867d06dc758</srcmd5>
+    <version>0.7</version>
+    <time>1505238923</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>523227</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>022ede69fa6a6e21bab0674d7cbd4770</srcmd5>
+    <version>0.7</version>
+    <time>1525960178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605495</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ac05712b18e90a49566a939cd7ad641e</srcmd5>
+    <version>0.7</version>
+    <time>1534774947</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing gobject-introspection-devel and python3-base BR, and switch python2-python-mpd2 Req to python3-python-mpd2 and python2 to python3 in the interprter.patch. And drop update-desktop-files. (forwarded request 630471 from luc14n0)</comment>
+    <requestid>630476</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1a0534d5315f84fe3bc5dd3514d3d4ff</srcmd5>
+    <version>0.7</version>
+    <time>1546246046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662115</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3443753648f045c9b04f884deefcb42f</srcmd5>
+    <version>0.8</version>
+    <time>1555322018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694161</requestid>
+  </revision>
+</revisionlist>

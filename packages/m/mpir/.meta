@@ -1,0 +1,7 @@
+<package name="mpir" project="openSUSE:Factory">
+  <title>MPIR is an open source multiprecision integer library derived from version 4.2.1 of the GMP</title>
+  <description>MPIR is an open source multiprecision integer library derived from version 4.2.1 of the GMP (GNU Multi Precision) project (which was licensed LGPL v2+).
+
+MPIR is constructed by a developer and vendor friendly community of professional and amateur mathematicians, computer scientists and hobbyists. </description>
+  <devel project="science" package="mpir"/>
+</package>

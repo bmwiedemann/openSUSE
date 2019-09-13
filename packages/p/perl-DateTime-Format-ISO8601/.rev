@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>737190b382c78f36eac4ad9b90bd6170</srcmd5>
+    <version>0.08</version>
+    <time>1507571033</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.08
+   see /usr/share/doc/packages/perl-DateTime-Format-ISO8601/Changes
+  0.08 
+      - rt.cpan.org #52645 : UTC offsets must be in the same format
+        (basic|extended) as the time as to which it is attached.
+* 
+- Initial package.
+</comment>
+    <requestid>532340</requestid>
+  </revision>
+</revisionlist>

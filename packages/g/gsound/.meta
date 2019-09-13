@@ -1,0 +1,7 @@
+<package name="gsound" project="openSUSE:Factory">
+  <title>GSound</title>
+  <description>GSound is a small library for playing system sounds. 
+It's designed to be used via GObject Introspection, 
+and is a thin wrapper around the libcanberra C library</description>
+  <devel project="GNOME:Factory" package="gsound"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="gnome-system-monitor" project="openSUSE:Factory">
+  <title>A Simple Process Monitor</title>
+  <description>GNOME-system-monitor is a simple process and system monitor for the
+GNOME Desktop.</description>
+  <devel project="GNOME:Factory" package="gnome-system-monitor"/>
+</package>

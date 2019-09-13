@@ -1,0 +1,7 @@
+<package name="perl-Net-HTTPServer" project="openSUSE:Factory">
+  <title>A simple perl Http Server</title>
+  <description>Net::HTTPServer basically turns a CGI script into a stand alone server.
+Useful for temporary services, mobile/local servers, or embedding an HTTP
+server into another program.</description>
+  <devel project="devel:languages:perl" package="perl-Net-HTTPServer"/>
+</package>

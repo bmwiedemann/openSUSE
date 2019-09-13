@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9553f363bf259ffd3cd2c23d65c0cb7</srcmd5>
+    <version>0.3.1</version>
+    <time>1530304489</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pkg-config for libcurl build dependency
+- Change group of libzipkin-cpp-opentracing0 package to
+  System/Libraries
+- Make use of %license macro
+- Fix ldconfig calls
+- Initial release
+</comment>
+    <requestid>619405</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>891b0d8ba6f04b25c9032e95868a508b</srcmd5>
+    <version>0.3.1</version>
+    <time>1568379621</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>730319</requestid>
+  </revision>
+</revisionlist>

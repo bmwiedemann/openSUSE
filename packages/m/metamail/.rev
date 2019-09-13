@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1038">
+    <srcmd5>4914d405619e929992aa1c0fc5aa28b4</srcmd5>
+    <version>2.7.19</version>
+    <time>1168903504</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1087">
+    <srcmd5>144618f5a3b1b947af8314f277c973c8</srcmd5>
+    <version>2.7.19</version>
+    <time>1175185255</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1112">
+    <srcmd5>a9c08ddfa5dfd9bbc8df5f83e5404768</srcmd5>
+    <version>2.7.19</version>
+    <time>1183052007</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1243">
+    <srcmd5>13b3f778b7f188bf43108a6f66eac12e</srcmd5>
+    <version>2.7.19</version>
+    <time>1221473712</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1244">
+    <srcmd5>9ef867523bbb97bdbe75939193854d7d</srcmd5>
+    <version>2.7.19</version>
+    <time>1221493955</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1245">
+    <srcmd5>95bcfa26caa1cadff765b7f646369b2f</srcmd5>
+    <version>2.7.19</version>
+    <time>1244454809</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1246">
+    <srcmd5>61e1cf5755ec2c138389b41dd424438c</srcmd5>
+    <version>2.7.19</version>
+    <time>1251747278</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/metamail based on submit request 19282 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="1248">
+    <srcmd5>61e1cf5755ec2c138389b41dd424438c</srcmd5>
+    <version>2.7.19</version>
+    <time>1251747278</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/metamail based on submit request 19282 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="1249">
+    <srcmd5>2e08a76676531849119376c556b43641</srcmd5>
+    <version>2.7.19</version>
+    <time>1256210266</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/metamail based on submit request 22835 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="10" vrev="1250">
+    <srcmd5>86d7728dc0c1f7eb554080ce7a1a54c3</srcmd5>
+    <version>2.7.19</version>
+    <time>1268924932</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="1252">
+    <srcmd5>86d7728dc0c1f7eb554080ce7a1a54c3</srcmd5>
+    <version>2.7.19</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1253">
+    <srcmd5>86d7728dc0c1f7eb554080ce7a1a54c3</srcmd5>
+    <version>2.7.19</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="1256">
+    <srcmd5>86d7728dc0c1f7eb554080ce7a1a54c3</srcmd5>
+    <version>2.7.19</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1258">
+    <srcmd5>86d7728dc0c1f7eb554080ce7a1a54c3</srcmd5>
+    <version>2.7.19</version>
+    <time>1319182176</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="1259">
+    <srcmd5>47cdf09101539f7533fc6bf053b97a36</srcmd5>
+    <version>2.7.19</version>
+    <time>1323192535</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="1261">
+    <srcmd5>47cdf09101539f7533fc6bf053b97a36</srcmd5>
+    <version>2.7.19</version>
+    <time>1340183697</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1263">
+    <srcmd5>47cdf09101539f7533fc6bf053b97a36</srcmd5>
+    <version>2.7.19</version>
+    <time>1359109442</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1265">
+    <srcmd5>47cdf09101539f7533fc6bf053b97a36</srcmd5>
+    <version>2.7.19</version>
+    <time>1379663284</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1267">
+    <srcmd5>47cdf09101539f7533fc6bf053b97a36</srcmd5>
+    <version>2.7.19</version>
+    <time>1409301889</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1268">
+    <srcmd5>451225f55f392e492257a6b7219a36aa</srcmd5>
+    <version>2.7.19</version>
+    <time>1413383192</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255848</requestid>
+  </revision>
+  <revision rev="21" vrev="1269">
+    <srcmd5>8fb744f461879855a8d913f61519e530</srcmd5>
+    <version>2.7.19</version>
+    <time>1424622362</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286693</requestid>
+  </revision>
+  <revision rev="22" vrev="1270">
+    <srcmd5>c3d48303aaa925670f0de0d0352cd8b0</srcmd5>
+    <version>2.7.19</version>
+    <time>1465750375</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400226</requestid>
+  </revision>
+  <revision rev="23" vrev="1271">
+    <srcmd5>97ba4b4d61c41d9929f8b755983934e9</srcmd5>
+    <version>2.7.19</version>
+    <time>1561195312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710241</requestid>
+  </revision>
+  <revision rev="24" vrev="1272">
+    <srcmd5>0856d51512621e366831a41b125422f9</srcmd5>
+    <version>2.7.19</version>
+    <time>1563259034</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace old mgrep script with new m(mime)grep written in hackweek</comment>
+    <requestid>714572</requestid>
+  </revision>
+</revisionlist>

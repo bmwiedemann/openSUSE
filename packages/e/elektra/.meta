@@ -1,0 +1,12 @@
+<package name="elektra" project="openSUSE:Factory">
+  <title>Elektra</title>
+  <description>Elektra provides a universal and secure framework to store configuration
+parameters in a hierarchical key-value pair mechanism, instead of each
+program using its own text configuration files. This allows any program
+to read and save its configuration with a consistent API, and allows
+them to be aware of other applications' configurations, permitting
+easy application integration. While architecturally similar to other OS
+registries, Elektra does not have most of the problems found in those
+implementations.</description>
+  <devel project="multimedia:color_management" package="elektra"/>
+</package>

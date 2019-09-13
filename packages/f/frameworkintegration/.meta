@@ -1,0 +1,5 @@
+<package name="frameworkintegration" project="openSUSE:Factory">
+  <title>frameworkintegration</title>
+  <description>Framework providing components to allow applications to integrate with a KDE Workspace</description>
+  <devel project="KDE:Frameworks5" package="frameworkintegration"/>
+</package>

@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5eae9e27503660eb991cfb2787eb8668</srcmd5>
+    <version>6.0.0</version>
+    <time>1522225888</time>
+    <user>dimstar_suse</user>
+    <comment>New LLVM major version.</comment>
+    <requestid>591111</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c9dc05aea870bf6ba0777161a6cd648a</srcmd5>
+    <version>6.0.0</version>
+    <time>1523127209</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593934</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cc90c05cd287c06335adc202ea6faa33</srcmd5>
+    <version>6.0.0</version>
+    <time>1523956369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595685</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>182a8d777e92ca3c2fbdf0b42077e248</srcmd5>
+    <version>6.0.0</version>
+    <time>1526219766</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build stage1 with debug info. It was accidentally added
+  with the use of %optflags. This should fix out of memory errors
+  on 32bit architectures and speed up build everywhere else.
+  (bsc#1092697)</comment>
+    <requestid>606102</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>cc400b7793427c412679ff2684c4a5ac</srcmd5>
+    <version>6.0.0</version>
+    <time>1527084414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610052</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>39cba4362c9a48aeee638c2f1147b305</srcmd5>
+    <version>6.0.0</version>
+    <time>1528195791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613475</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>0dd37d2640b414a03ab9873b47163e25</srcmd5>
+    <version>6.0.0</version>
+    <time>1529322589</time>
+    <user>maxlin_factory</user>
+    <comment>- Do not requires gcc6 for older sle versions.
+  * llvm6 is not built on &lt;= 12 SP3 and this was preventing build
+    on 12 SP4.</comment>
+    <requestid>616831</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>4406db693a473d69f5c4516df81e3040</srcmd5>
+    <version>6.0.0</version>
+    <time>1530993347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620159</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>72d634319ffd3cfa15ee50ae456a0a37</srcmd5>
+    <version>6.0.1</version>
+    <time>1532681663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to llvm 6.0.1
+  * This release contains bug-fixes for the LLVM 6.0.0 release. It
+    is API and ABI compatible with 6.0.0.
+- Remove no longer needed llvm6-fix-InstCombine.patch
+- Add lldb-fix-build-with-python-3.7.patch
+  * Fix build with python 3.7</comment>
+    <requestid>625304</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>96600a6be0b6bff6af28eb5091f885b6</srcmd5>
+    <version>6.0.1</version>
+    <time>1536678794</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>631810</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>7e06b287688709a8afa080f111fc25bc</srcmd5>
+    <version>6.0.1</version>
+    <time>1538502062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638745</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>d398f9b92d7e935bcdbce7cc7d680ad5</srcmd5>
+    <version>6.0.1</version>
+    <time>1541509126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643929</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>ae95e6ec07246de4508cccc33654266e</srcmd5>
+    <version>6.0.1</version>
+    <time>1545647724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660215</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>c065f4a6ce8a370828268de32e5540d5</srcmd5>
+    <version>6.0.1</version>
+    <time>1556915193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700032</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>8fd64bd7a1b19a99f891499219f29ce0</srcmd5>
+    <version>6.0.1</version>
+    <time>1567423597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727579</requestid>
+  </revision>
+</revisionlist>

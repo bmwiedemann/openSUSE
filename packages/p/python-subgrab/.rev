@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>82ff25714e708cf8421bdbfda235c759</srcmd5>
+    <version>0.17</version>
+    <time>1510960814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17
+- Converted to single-spec
+- Fixed source URL
+- Initial package (0.16) 
+</comment>
+    <requestid>541271</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bb2682d787904b135d5f348b01172820</srcmd5>
+    <version>0.17</version>
+    <time>1545648296</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659703</requestid>
+  </revision>
+</revisionlist>

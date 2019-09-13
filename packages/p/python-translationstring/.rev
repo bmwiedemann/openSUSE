@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bf4c0fb36e821eae39f21b3e073bd07</srcmd5>
+    <version>1.1</version>
+    <time>1388650133</time>
+    <user>coolo</user>
+    <comment>Utility library for i18n relied on by various Repoze and Pyramid packages
+
+New dependency of python-Pyramid</comment>
+    <requestid>211094</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0bf4c0fb36e821eae39f21b3e073bd07</srcmd5>
+    <version>1.1</version>
+    <time>1409303008</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9aa21eab00265edf8378ba6356a4d02b</srcmd5>
+    <version>1.3</version>
+    <time>1423258712</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284550</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>939daec5180e27c0972bc2f1ef8b7dd6</srcmd5>
+    <version>1.3</version>
+    <time>1458120869</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369213</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6ef4289595598ec528592c9971d6dda6</srcmd5>
+    <version>1.3</version>
+    <time>1506453166</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 508988 from alois)</comment>
+    <requestid>509011</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>67dda48eb625049f38eeeb6254d27e2d</srcmd5>
+    <version>1.3</version>
+    <time>1518697658</time>
+    <user>dimstar_suse</user>
+    <comment>- Add use_pylons_theme.patch
+  update docs to use pylons-sphinx-themes package instead of git
+  submodule update.  Based on:
+  * https://github.com/Pylons/translationstring/commit/bb4c396b23dca5ee0ec27c00ed3c49881b5c2245 (forwarded request 576828 from TheBlackCat)</comment>
+    <requestid>576836</requestid>
+  </revision>
+</revisionlist>

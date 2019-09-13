@@ -1,0 +1,245 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8cdddaba88dbaaa22f772d6a746cc400</srcmd5>
+    <version>0.1.2</version>
+    <time>1313057519</time>
+    <user>saschpe</user>
+    <comment>FATE #311419</comment>
+    <requestid>78190</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>31a10d0abe681932c233473c67c41acc</srcmd5>
+    <version>0.1.2</version>
+    <time>1313057532</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78190
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5126f814453e77975ce52359c1f50a58</srcmd5>
+    <version>0.1.2</version>
+    <time>1316504071</time>
+    <user>lrupp</user>
+    <comment>- add baselibs.conf and use original tar (forwarded request 82404 from coolo)</comment>
+    <requestid>82408</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5126f814453e77975ce52359c1f50a58</srcmd5>
+    <version>0.1.2</version>
+    <time>1319182145</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5198f64d9de1d692a37b24a05c54e919</srcmd5>
+    <version>0.1.3</version>
+    <time>1321273006</time>
+    <user>coolo</user>
+    <comment>- update to 0.1.3:
+  * Advanced decoding APIs.
+  * On-the-fly cropping and rescaling of images.
+  * SSE2 instructions for decoding performance optimizations on x86 based platforms.
+  * Support Multi-threaded decoding.
+  * 40% improvement in Decoding performance.
+  * Add support for RGB565, RGBA4444 &amp; ARGB image colorspace.
+  * Better handling of large picture encoding.</comment>
+    <requestid>90975</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bf4f0267c875f94769afab4b8db60f3f</srcmd5>
+    <version>0.1.3</version>
+    <time>1322073388</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93216 from coolo)</comment>
+    <requestid>93226</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>416b7100e6ca409b0166dbfc47881eb3</srcmd5>
+    <version>0.1.3</version>
+    <time>1328890660</time>
+    <user>coolo</user>
+    <comment>- Rename webp-tools to libwebp-tools to follow scheme of other
+  lib*-tools packages.</comment>
+    <requestid>103412</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>416b7100e6ca409b0166dbfc47881eb3</srcmd5>
+    <version>0.1.3</version>
+    <time>1340183653</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>30fccf712d31a9de8a00d9006e9bc810</srcmd5>
+    <version>0.2.0</version>
+    <time>1347283233</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.2.0:
+* Add support for ARGB -&gt; YUVA conversion for lossless decoder
+* Add stats for lossless and alpha encoding
+* Security related hardening: allocation and size checks
+* Add PAM output support to dwebp
+* Alpha channel encode/decode support
+* Lossless encoder/decoder
+* Add TIFF input support to cwebp
+* Incompatible changes:
+  - The encode ABI has been modified to support alpha encoding
+  - Deprecated function WebPINew() has been removed
+  - Decode function signatures have changed to consistently use
+    size_t over int/uint32_t
+  - decode_vp8.h is no longer installed system-wide
+  - cwebp will encode the alpha channel if present.
+* Add libtiff-devel BuildRequires for the new tiff input support.
+* Rename libwebp2 subpackage to libwebp4 (by changing lname
+  defines), following upstreams soname bump (incl. baselibs.conf).
+* No reason to run autogen</comment>
+    <requestid>132458</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3098f49fd124ff95856f37349db99bf1</srcmd5>
+    <version>0.2.1</version>
+    <time>1355474518</time>
+    <user>coolo</user>
+    <comment>update to latest version
+required for http://www.unvanquished.net/wiki/index.php/Compiling_the_source#openSUSE in games (forwarded request 144829 from Mailaender)</comment>
+    <requestid>144832</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>3098f49fd124ff95856f37349db99bf1</srcmd5>
+    <version>0.2.1</version>
+    <time>1359109374</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a5098a39579690a67b9f39c9891805a6</srcmd5>
+    <version>0.3.0</version>
+    <time>1366232716</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 0.3.0
+* WebPINewRGB/WebPINewYUVA accept being passed a NULL output buffer
+  and will perform auto-allocation.
+* Default filter option is now &quot;-strong -f 60&quot;
+* Encoding speed-up for lossy methods 3 to 6
+* Alpha encoding can be done in parallel to lossy using
+  `cwebp -mt ...`
+* Color profile, metadata (XMP/EXIF) and animation support in the
+  container was finalized.
+* Various NEON assembly additions
+- Tool updates / additions:
+* gif2webp added
+* vwebp given color profile &amp; animation support
+* cwebp can preserve color profile / metadata with &quot;-metadata&quot;</comment>
+    <requestid>171056</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2074567a7afbb823c07833d415d94c28</srcmd5>
+    <version>0.3.1</version>
+    <time>1372428261</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 0.3.1</comment>
+    <requestid>181091</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>2074567a7afbb823c07833d415d94c28</srcmd5>
+    <version>0.3.1</version>
+    <time>1379663130</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0fb7d0aea094072d45dbe72736a8f99a</srcmd5>
+    <version>0.4.0</version>
+    <time>1389953061</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214114</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0fb7d0aea094072d45dbe72736a8f99a</srcmd5>
+    <version>0.4.0</version>
+    <time>1409301759</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a1c46360e6d9eb55ac398f56c5ac7c46</srcmd5>
+    <version>0.4.1</version>
+    <time>1409407412</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>246172</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8edbc230976b3de570ccc9e2f10b975f</srcmd5>
+    <version>0.4.2</version>
+    <time>1414744766</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258812</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>525002bc88a3945c123720e968d2b6ba</srcmd5>
+    <version>0.4.3</version>
+    <time>1427983287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.4.3</comment>
+    <requestid>293614</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7357e07e52881c06261474782187a4e3</srcmd5>
+    <version>0.4.3</version>
+    <time>1434550536</time>
+    <user>coolo</user>
+    <comment>- remove aarch64-disable-neon.diff: compiler was fixed, neon
+  can be compiled now (forwarded request 311923 from dirkmueller)</comment>
+    <requestid>311924</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>2ac2c35b1cce076ee12d8e2c9cb3b6d3</srcmd5>
+    <version>0.4.3</version>
+    <time>1436111683</time>
+    <user>coolo</user>
+    <comment>- Add libwebp-devel to baselibs.conf [bnc#936417]</comment>
+    <requestid>314515</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f3d7de417d7936d270e257b11ccf0fc2</srcmd5>
+    <version>0.4.4</version>
+    <time>1450363963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.4</comment>
+    <requestid>347988</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c2de6401d37da11d16d5d8a5cbe82c13</srcmd5>
+    <version>0.5.0</version>
+    <time>1456733633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update baselibs.conf (forwarded request 359055 from pluskalm)</comment>
+    <requestid>359060</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5b6c6241c29994334f4f897951f6be78</srcmd5>
+    <version>1.0.0</version>
+    <time>1525343517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602244</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>92638a7e6d9a08d13646285f85cdc6ea</srcmd5>
+    <version>1.0.2</version>
+    <time>1562591070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713416</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6fedcf80d7555448d13e73c2e75a6e93</srcmd5>
+    <version>1.0.3</version>
+    <time>1567852282</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>727468</requestid>
+  </revision>
+</revisionlist>

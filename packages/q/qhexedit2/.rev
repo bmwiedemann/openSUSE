@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34c0652375b813117b938875417b0365</srcmd5>
+    <version>0.7.7</version>
+    <time>1468048962</time>
+    <user>dimstar_suse</user>
+    <comment>required for sqlitebrowser
+fixes bsc#984828</comment>
+    <requestid>406186</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a7bc57a91ae3003404f5dbecede3cb81</srcmd5>
+    <version>0.7.8</version>
+    <time>1470217517</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416534</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a433111f3d1bd3c7516a5f48a64c05b4</srcmd5>
+    <version>0.8.0</version>
+    <time>1478626082</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439098</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8b364d3f94776a10bc19b6fa29cfa64a</srcmd5>
+    <version>0.8.1</version>
+    <time>1479229283</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440277</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>feaf17cd17b211a7e43d5d72958c0817</srcmd5>
+    <version>0.8.2</version>
+    <time>1482418625</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447148</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>784b48e66098392bcd7fe9ab2ff2e8ad</srcmd5>
+    <version>0.8.3</version>
+    <time>1484132639</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449491</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b1e9ad676ea573543a62318c415681d2</srcmd5>
+    <version>0.8.3</version>
+    <time>1493819902</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492516</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d14698d93d94e7a7b185e3229682d892</srcmd5>
+    <version>0.8.5</version>
+    <time>1544632313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657524</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f5ad6e928260ce5f2b6457fd2fc2bc0b</srcmd5>
+    <version>0.8.6</version>
+    <time>1552902146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685603</requestid>
+  </revision>
+</revisionlist>

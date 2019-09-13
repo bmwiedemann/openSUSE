@@ -1,0 +1,8 @@
+<package name="froxlor" project="openSUSE:Factory">
+  <title>Froxlor Server Management Panel a php web-based administration software</title>
+  <description>A Server Management Panel is a php web-based administration software.
+Developed by experienced server administrators this open source (GPL) panel simplifies the effort of managing your hosting platform
+
+Froxlor can help you set up and manage a lot of system-services, like web-, mail- and ftpserver and it also brings some nice features such as a complete support-ticket system and an implementation of the Application Packaging Standard.</description>
+  <devel project="server:php:applications" package="froxlor"/>
+</package>

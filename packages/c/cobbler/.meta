@@ -1,0 +1,14 @@
+<package name="cobbler" project="openSUSE:Factory">
+  <title>Boot server configurator</title>
+  <description>Cobbler is a network install server.  Cobbler 
+supports PXE, virtualized installs, and 
+reinstalling existing Linux machines.  The last two 
+modes use a helper tool, 'koan', that 
+integrates with cobbler.  There is also a web interface
+'cobbler-web'.  Cobbler's advanced features 
+include importing distributions from DVDs and rsync 
+mirrors, kickstart templating, integrated yum 
+mirroring, and built-in DHCP/DNS Management.  Cobbler has 
+a XMLRPC API for integration with other applications.</description>
+  <devel project="systemsmanagement" package="cobbler"/>
+</package>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8efad18887d282c9c8dd9f31e50f789c</srcmd5>
+    <version>1.6</version>
+    <time>1527933444</time>
+    <user>dimstar_suse</user>
+    <comment>coverage plugin for nose</comment>
+    <requestid>606179</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>10db7bce077d7e4eec0c5459ab9eaa1b</srcmd5>
+    <version>1.6</version>
+    <time>1548335652</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>667865</requestid>
+  </revision>
+</revisionlist>

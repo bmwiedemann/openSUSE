@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e876b6fde2c2e99d7b5979b42159e27a</srcmd5>
+    <version>2.5.5</version>
+    <time>1440871456</time>
+    <user>coolo</user>
+    <comment>The new package as a part of Shibboleth project (fate#318304 for SLE12SP1)</comment>
+    <requestid>320366</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fc2cb5e9fdf56e4ee20a44cb81aaba46</srcmd5>
+    <version>2.5.5</version>
+    <time>1441726999</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>329285</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c3e9f57f19324bd2acbfb09736755fc2</srcmd5>
+    <version>2.5.5</version>
+    <time>1486635453</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455323</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1a1eae849106e0af79f7a515484d480a</srcmd5>
+    <version>2.5.5</version>
+    <time>1487149582</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456513</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e4d8b327fefdd1bde6d4537545fde5df</srcmd5>
+    <version>2.6.0</version>
+    <time>1507197390</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529915</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f5a8cbec9fed6c8128c1da1c112a07bd</srcmd5>
+    <version>2.6.1</version>
+    <time>1511817369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545294</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4144dd59ae852e08081970bb2c4fdacf</srcmd5>
+    <version>3.0.0</version>
+    <time>1543953250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652460</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9515be9deedd67d865ea17db9b21ad3b</srcmd5>
+    <version>3.0.1</version>
+    <time>1553263753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687306</requestid>
+  </revision>
+</revisionlist>

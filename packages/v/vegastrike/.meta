@@ -1,0 +1,5 @@
+<package name="vegastrike" project="openSUSE:Factory">
+  <title>3D OpenGL spaceflight simulator</title>
+  <description>Vega Strike is a GPL 3D OpenGL Action RPG space sim that allows a player to trade and bounty hunt. You start in an old beat up Wayfarer cargo ship, with endless possibility before you and just enough cash to scrape together a life. Yet danger lurks in the space beyond.</description>
+  <devel project="games" package="vegastrike"/>
+</package>

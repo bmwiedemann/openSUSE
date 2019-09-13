@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>888f56907be40d49e790d716ffd11519</srcmd5>
+    <version>1.2.0</version>
+    <time>1503592389</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed the source URL.</comment>
+    <requestid>507504</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3407dbefe3ef4bd15a7b7f19523862f3</srcmd5>
+    <version>1.2.0</version>
+    <time>1514569812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559708</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5e93bfcde8665acf58911594b241603d</srcmd5>
+    <version>1.2.0</version>
+    <time>1564483141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719699</requestid>
+  </revision>
+</revisionlist>

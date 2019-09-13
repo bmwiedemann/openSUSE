@@ -1,0 +1,266 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf692783a8c24bda77aea38603f3c118</srcmd5>
+    <version>0.98</version>
+    <time>1461855216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>386199</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>335aa63e920bb47e4182750c66f509c2</srcmd5>
+    <version>0.98</version>
+    <time>1462865259</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct package naming to be in line with shared library guideline
+- Remove unused systemd build and runtime dependencies (forwarded request 394096 from jengelh)</comment>
+    <requestid>394120</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8472bd2ac9c20ff31339ff96963ef78a</srcmd5>
+    <version>0.98</version>
+    <time>1470773716</time>
+    <user>dimstar_suse</user>
+    <comment>- added a systemd unit service file (FATE#315631)
+
+  (FATE#315631)
+  the group &quot;System/Libraries&quot;. (FATE#315631)</comment>
+    <requestid>417296</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bd39b16fa6b70e58e1464459a75c05b9</srcmd5>
+    <version>1.0</version>
+    <time>1487681400</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove --with-pic which is only for static libs.
+- Fix an improper Requires line.
+- Split libtcti* from libsapi0; these are independentlty
+  developable units. (forwarded request 458493 from jengelh)</comment>
+    <requestid>458831</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a29547a58ec01121cd1549e7169150ac</srcmd5>
+    <version>1.0</version>
+    <time>1488560087</time>
+    <user>dimstar_suse</user>
+    <comment>adds a line from SLES 
+- Remove type=forking from service file (bsc#995554)</comment>
+    <requestid>461867</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>dc6122f5b66ac85c665e6756166420b4</srcmd5>
+    <version>1.0</version>
+    <time>1493020105</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>489134</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>e2614367c8b8d8a20839702c44c2b5a4</srcmd5>
+    <version>1.0</version>
+    <time>1496534200</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498707</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>82e539d03eee569a8f8641703e05919c</srcmd5>
+    <version>1.1.0</version>
+    <time>1503308197</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer install the udev rule, it's now part of the new tpm2.0-abrmd
+  package.
+- fixed a warning regarding a missing dependency of the devel package to the
+  main package
+- correctly package library symlinks only in the devel package, the library
+  itself only in the library package. Was mixed up before.
+
+- removed tpm2-0-tss-configure.patch, it was just a hack, fixed by requiring
+  autoconf-archive, see https://github.com/01org/TPM2.0-TSS/issues/227.
+
+- Updated to upstream version 1.1.0
+  - With this version the resourcemgr daemon is dropped from this package. It
+    is replaced by a completely new implementation found in a new package
+    tpm2.0-abrmd. this package will only consist of the libraries any more.
+  - Changed
+    - tpmclient, disabled all tests that rely on the old resourcemgr.
+  - Fixed
+    - Fixed definition of PCR_LAST AND TRANSIENT_LAST macros.
+  - Removed
+    - tpmtest
+    - resourcemgr, replacement is in new repo: https://github.com/01org/tpm2-abrmd</comment>
+    <requestid>514212</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>250f792cfe8ebc83b1e0f4aa8af3b014</srcmd5>
+    <version>1.1.0</version>
+    <time>1504521285</time>
+    <user>dimstar_suse</user>
+    <comment>- fix the &quot;fix&quot;, turns out only the unversioned symlink's supposed to go into
+  -devel.</comment>
+    <requestid>520198</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>645d7433724acc85494433c0a1d3073f</srcmd5>
+    <version>1.3.0</version>
+    <time>1519683859</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream version 1.3.0:
+  - support for reproducable builds
+  - improved documentation / manual pages
+  - various stability bugfixes
+  - EncryptDecrypt2 command is now implemented
+- removed reproducible.patch. This is now included upstream.
+- added version_fix.patch to fix package config version numbers.
+
+submit requests for tpm2.0-tools and tpm2.0-abrmd will follow, they should go
+into the same staging project.</comment>
+    <requestid>578991</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8752cfff6e5d59d6a03df5a42d9c469c</srcmd5>
+    <version>1.3.0</version>
+    <time>1520503144</time>
+    <user>dimstar_suse</user>
+    <comment>- removed leftover comment from dropped reproducable.patch</comment>
+    <requestid>583943</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9f7006d36a46138e7f4e687188dd8e57</srcmd5>
+    <version>2.0.0</version>
+    <time>1530866953</time>
+    <user>dimstar_suse</user>
+    <comment>please handle together with tpm2.0-tools and tpm2.0-abrmd
+
+- added all librares to baselibs.conf to satisfy 32-bit dependencies of esys0
+  and sys0
+
+- Explicitly require udev to fix missing ownership for /usr/lib/udev.
+
+- update to new major version 2.0.0:
+  - version_fix.patch: removed, we're now using the distribution tarballs
+    where this problem shouldn't happen
+  - this update introduces an incompatible ABI to the previous version.
+    all libraries have been renamed so there is not really a relation to
+    the old version any more.
+  - upstream changelog:
+    ## [2.0.0] - 2018-06-20
+    ### Added
+    - Implementation of the Marshal/Unmarshal library (libtss2-mu)
+    - Implementation of the Enhanced System API (libtss2-esys aka ESAPI)
+    - New implemetation of the TPM Command Transmission Interface (TCTI) for:
+      - communication with Linux TPM2 device driver: libtss2-tcti-device
+      - communication with Microsoft software simulator: libtss2-tcti-mssim
+    - New directory layout (API break)
+    - Updated documentation with new doxygen and updated man pages
+    - Support for Windows build with Visual Studio and clang, currently limited
+    to libtss2-mu and libtss2-sys
+    - Implementation of the new Attached Component (AC) commands
+    - Implementation of the new TPM2_PolicyAuthorizeNV command
+    - Implementation of the new TPM2_CreateLoaded command
+    - Implementation of the new TPM2_PolicyTemplate command
+    - Addition of _Complete functions to all TPM commands
+    - New logging framework
+    - Added const qualifiers to API input pointers (API break)</comment>
+    <requestid>621176</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>959ebbfef0f09264fef29a48bfc3ff0d</srcmd5>
+    <version>2.0.0</version>
+    <time>1537360222</time>
+    <user>maxlin_factory</user>
+    <comment>- also process udev triggers for tpmrm subsystem, otherwise /dev/tpmrm0 isn't
+  properly updated (at least on SLES-12-SP4)</comment>
+    <requestid>636378</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f159957a757dc0d4c7139ac1a0d4acd8</srcmd5>
+    <version>2.0.1</version>
+    <time>1538117598</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream version 2.0.1:
+  - Fixed problems with doxygan failing make distcheck
+  - Fixed conversion of gcrypt mpi numbers to binary data
+  - Fixed an error in parsing socket address in MSSIM TCTI
+  - Fixed compilation error with --disable-tcti-mssim
+  - Added initialization function for gcrypt to suppress warning
+  - Fixed invalid type base type while marshaling TPMI_ECC_CURVE in Tss2_Sys_ECC_Parameters
+  - Fixed invalid RSA encryption with exponent equal to 0
+  - Fixed checking of return codes in ESAPI commands
+  - Added checks for programs required by the test harness @ configure time
+  - Fixed warning on TPM2_RC_INITIALIZE rc after a Startup in Esys_Startup
+  - Checked for 1.2 TPM type response
+  - Changed constants values in esys header file to unsigned</comment>
+    <requestid>638457</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0effff53d04563514e00bd56ad230944</srcmd5>
+    <version>2.0.1</version>
+    <time>1548064376</time>
+    <user>dimstar_suse</user>
+    <comment>incorporate FATE number in changes file for SLE-15-SP1 (bsc#1121860)</comment>
+    <requestid>665951</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b5b7f4bfc7391cebed6c03881c1e98fe</srcmd5>
+    <version>2.2.1</version>
+    <time>1551883904</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream version 2.2.1:
+  - changes from version 2.2.0:
+    - Fixed leak of hkey on success in iesys_cryptossl_hmac_start
+    - Fixed NULL ptr issues in Esys_HMAC_Start, Esys_HierarchyChangeAuth and Esys_NV_ChangeAuth
+    - Fixed NULL ptr issue in sequenceHandleNode
+    - Fixed NULL ptr auth handling in Esys_TR_SetAuth
+    - Fixed NULL auth handling in iesys_compute_session_value
+    - Fixed marshaling of TPM2Bs with sub types.
+    - Fixed NULL ptr session handling in Esys_TRSess_SetAttributes
+    - Fixed the way size of the hmac value of a session without authorization
+    - Added missing MU functions for TPM2_NT type
+    - Added missing MU functions for TPMA_ID_OBJECT type
+    - Added missing type TPM2_NT into tss2_tpm2_types.h
+    - Fixed wrong typename _ID_OBJECT in tss2_tpm2_types.h
+    - Fixed build breakage when --with-maxloglevel is not 'trace'
+    - Fixed build breakage in generated configure script when CFLAGS is set
+    - Fixed configure scritp ERROR_IF_NO_PROG macro
+    - Changed TPM2B type unmarshal to use sizeof of the dest buffer instead of dest
+    - Fixed unmarshaling of the TPM2B type with invalid size
+    - Removed dead code defect detected by coverity from Esys_TRSess_GetNonceTPM
+    - Added support for QNX build
+    - Added support for partial reads in device TCTI
+  - changes from version 2.1.1:
+    - Fixed leak of hkey on success in iesys_cryptossl_hmac_start
+    - Fixed NULL ptr issues in Esys_HMAC_Start, Esys_HierarchyChangeAuth and Esys_NV_ChangeAuth
+    - Fixed NULL ptr issue in sequenceHandleNode
+    - Fixed NULL ptr auth handling in Esys_TR_SetAuth
+    - Fixed NULL auth handling in iesys_compute_session_value
+    - Fixed marshaling of TPM2Bs with sub types.
+    - Fixed NULL ptr session handling in Esys_TRSess_SetAttributes</comment>
+    <requestid>682101</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7d776adf41c72eea5b867eeb2ea4f965</srcmd5>
+    <version>2.2.1</version>
+    <time>1556312103</time>
+    <user>maxlin_factory</user>
+    <comment>- bsc#1130588: Require shadow instead of old pwdutils (forwarded request 698141 from jubalh)</comment>
+    <requestid>698149</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>19e96312dad76a851c3d118f995a4cb6</srcmd5>
+    <version>2.2.3</version>
+    <time>1566894151</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream version 2.2.3:
+  - changes in version 2.2.3:
+    * Fix computation of session name
+    * Fixed PolicyPassword handling of session Attributes
+    * Fixed windows build from dist ball
+    * Fixed default tcti configure option
+    * Fixed nonce size calculation in ESYS sessions
+  - changes in version 2.2.2:
+    * Fixed wrong encryption flag in EncryptDecrypt
+    * Fixing openssl engine invocation</comment>
+    <requestid>726006</requestid>
+  </revision>
+</revisionlist>

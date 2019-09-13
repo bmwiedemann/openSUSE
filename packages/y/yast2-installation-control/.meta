@@ -1,0 +1,9 @@
+<package name="yast2-installation-control" project="openSUSE:Factory">
+  <title>YaST2 - RNG schema for installation control files</title>
+  <description>This package contains RNG schema for validating the installation control files.
+Also the control files for some base products and a language add-on is present.
+
+</description>
+  <devel project="YaST:Head" package="yast2-installation-control"/>
+  <url>https://github.com/yast/yast-installation-control</url>
+</package>

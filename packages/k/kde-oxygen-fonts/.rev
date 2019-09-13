@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>147dea80edab2a6f2af17967f1549eb7</srcmd5>
+    <version>0.2</version>
+    <time>1346398547</time>
+    <user>coolo</user>
+    <comment>oxygen fonts from kde project</comment>
+    <requestid>132005</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>147dea80edab2a6f2af17967f1549eb7</srcmd5>
+    <version>0.2</version>
+    <time>1359109143</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4fae4ef84d6c0b9c2c92166439d00052</srcmd5>
+    <version>0.3.99</version>
+    <time>1378295633</time>
+    <user>coolo</user>
+    <comment>Update to latest git snapshot (forwarded request 197164 from sumski)</comment>
+    <requestid>197171</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4fae4ef84d6c0b9c2c92166439d00052</srcmd5>
+    <version>0.3.99</version>
+    <time>1379662748</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3eb928f56bb4328b0f45ca9074a69711</srcmd5>
+    <version>0.4.0</version>
+    <time>1405520389</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241150</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>3eb928f56bb4328b0f45ca9074a69711</srcmd5>
+    <version>0.4.0</version>
+    <time>1409301321</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

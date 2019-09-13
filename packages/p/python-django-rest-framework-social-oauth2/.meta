@@ -1,0 +1,5 @@
+<package name="python-django-rest-framework-social-oauth2" project="openSUSE:Factory">
+  <title></title>
+  <description>Django rest framework support for python-social-auth and oauth2</description>
+  <devel project="devel:languages:python:django" package="python-django-rest-framework-social-oauth2"/>
+</package>

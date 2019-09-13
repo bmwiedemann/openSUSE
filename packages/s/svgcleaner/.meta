@@ -1,0 +1,7 @@
+<package name="svgcleaner" project="openSUSE:Factory">
+  <title></title>
+  <description>SVG Cleaner could help you to clean up your SVG files from unnecessary data. It has a lot of options for cleanup and optimization, works in batch mode, provides threaded processing on the multicore processors and basically does two things:
+- removing elements and attributes that don't contribute to the final rendering;
+- making those elements and attributes in use more compact.</description>
+  <devel project="Publishing" package="svgcleaner"/>
+</package>

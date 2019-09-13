@@ -1,0 +1,6 @@
+<package name="perl-Class-Accessor-Grouped" project="openSUSE:Factory">
+  <title>Lets you build groups of accessors</title>
+  <description>This class lets you build groups of accessors that will call different
+getters and setters.</description>
+  <devel project="devel:languages:perl" package="perl-Class-Accessor-Grouped"/>
+</package>

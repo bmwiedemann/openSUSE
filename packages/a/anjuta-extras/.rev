@@ -1,0 +1,273 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d154fb720cc140051a1c6a992b6f49d</srcmd5>
+    <version>2.30.1.0</version>
+    <time>1275065938</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/anjuta-extras based on submit request 40653 from user dimstar
+</comment>
+    <requestid>40653</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>22c5d691b5fdf36dee60a747109e3542</srcmd5>
+    <version>2.30.1.0</version>
+    <time>1275260511</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/anjuta-extras based on submit request 40828 from user dimstar
+</comment>
+    <requestid>40828</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c150f35f754cab071c3790d8ecdae0d6</srcmd5>
+    <version>2.30.1.0</version>
+    <time>1275734268</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/anjuta-extras based on submit request 41159 from user sbrabec
+</comment>
+    <requestid>41159</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c150f35f754cab071c3790d8ecdae0d6</srcmd5>
+    <version>2.30.1.0</version>
+    <time>1278667336</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c150f35f754cab071c3790d8ecdae0d6</srcmd5>
+    <version>2.30.1.0</version>
+    <time>1278678563</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7a48d63906736bc1270d711b8839292a</srcmd5>
+    <version>2.31.1.0</version>
+    <time>1281401173</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/anjuta-extras based on submit request 45024 from user vuntz
+</comment>
+    <requestid>45024</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>300899b1b0223b593e36aca144759c47</srcmd5>
+    <version>2.31.90.0</version>
+    <time>1282944953</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/anjuta-extras based on submit request 46429 from user vuntz
+</comment>
+    <requestid>46429</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8fa0383d4b293679fd4eb34d74b84311</srcmd5>
+    <version>unknown</version>
+    <time>1284196787</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/anjuta-extras based on submit request 47717 from user vuntz
+</comment>
+    <requestid>47717</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d8b4d52238acb8e7896081ee7e4a9dd2</srcmd5>
+    <version>2.31.92.0</version>
+    <time>1285282632</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/anjuta-extras based on submit request 48879 from user vuntz
+</comment>
+    <requestid>48879</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2f9de5419c523511476fa8523ad154f5</srcmd5>
+    <version>2.32.0.0</version>
+    <time>1287155301</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/anjuta-extras based on submit request 50643 from user vuntz
+</comment>
+    <requestid>50643</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f1d01abd74c48877e96e3694d4f26e5b</srcmd5>
+    <version>2.32.1.1</version>
+    <time>1294659197</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57526 from user vuntz
+</comment>
+    <requestid>57526</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>6cf58d729b0dceb103f719d4ee749dd3</srcmd5>
+    <version>2.32.1.1</version>
+    <time>1294659205</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57526
+</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>6cf58d729b0dceb103f719d4ee749dd3</srcmd5>
+    <version>2.32.1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6826614e749e29b4a1ece7041b23934f</srcmd5>
+    <version>3.1.3</version>
+    <time>1310380106</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F, including GNOME 3.1.3</comment>
+    <requestid>75700</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8e2e8b5605a2b61e6a61d8a9e1e3f99f</srcmd5>
+    <version>3.1.4</version>
+    <time>1312363590</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>77766</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3daa0c5aa11b25857f0d009e867e6ccd</srcmd5>
+    <version>3.2.0</version>
+    <time>1317541655</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85592</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>cc82f4a17696cee77ab07fa78dab20ba</srcmd5>
+    <version>3.2.0</version>
+    <time>1318527659</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>87627</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>cc82f4a17696cee77ab07fa78dab20ba</srcmd5>
+    <version>3.2.0</version>
+    <time>1319181769</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>4fc7c77c84172d5a8acb67a714deea83</srcmd5>
+    <version>3.2.0</version>
+    <time>1323190704</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>f2c3691d974169703b22833934773d52</srcmd5>
+    <version>3.2.0</version>
+    <time>1326104084</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>98973</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bee21ab46f27b1b8b4375ae0264151e7</srcmd5>
+    <version>3.3.4</version>
+    <time>1327582778</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>101586</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7a3fc1fcfe1b47eb55ac24e58a922b0e</srcmd5>
+    <version>3.3.90</version>
+    <time>1332500666</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>107235</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4217015a6de595bc973f83b84922da2d</srcmd5>
+    <version>3.4.0</version>
+    <time>1333355323</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111666</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>4217015a6de595bc973f83b84922da2d</srcmd5>
+    <version>3.4.0</version>
+    <time>1340183171</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e40ee4131540c901e74ed6d04d4d4edb</srcmd5>
+    <version>3.6.0</version>
+    <time>1349444879</time>
+    <user>a_jaeger</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136633</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>e40ee4131540c901e74ed6d04d4d4edb</srcmd5>
+    <version>3.6.0</version>
+    <time>1359108651</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d384ffb06b9a6aa1e758f4bafaf06154</srcmd5>
+    <version>3.8.0</version>
+    <time>1365175383</time>
+    <user>coolo</user>
+    <comment>Update to 3.8.0</comment>
+    <requestid>162132</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>48ef0ee00649efbfb7c769bd4d714d35</srcmd5>
+    <version>3.9.5</version>
+    <time>1376648877</time>
+    <user>scarabeus_factory</user>
+    <comment>push GNOME:Factory</comment>
+    <requestid>186844</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>48ef0ee00649efbfb7c769bd4d714d35</srcmd5>
+    <version>3.9.5</version>
+    <time>1379661965</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ba95769991aa44f0d0b2836e31a0033a</srcmd5>
+    <version>3.10.0</version>
+    <time>1380294383</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200877</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>ba95769991aa44f0d0b2836e31a0033a</srcmd5>
+    <version>3.10.0</version>
+    <time>1409300487</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>15c0271a6c615c69ebf51ef41e73d303</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332036</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 522927 from Zaitor)</comment>
+    <requestid>523023</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>d1533358f25a6fac36c85365d8372d1e</srcmd5>
+    <version>3.26.0</version>
+    <time>1521052605</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583574 from dimstar)</comment>
+    <requestid>584738</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>170517a5ee8825667dd2feb550cffe4c</srcmd5>
+    <version>3.26.0</version>
+    <time>1521716956</time>
+    <user>dimstar_suse</user>
+    <comment>t-u-u / boo#1086036 (forwarded request 589356 from dimstar)</comment>
+    <requestid>590043</requestid>
+  </revision>
+</revisionlist>

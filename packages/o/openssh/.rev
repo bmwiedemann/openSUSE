@@ -1,0 +1,1320 @@
+<revisionlist>
+  <revision rev="1" vrev="11">
+    <srcmd5>aeaeefa92c9a363d32c67347153c6fe3</srcmd5>
+    <version>4.5p1</version>
+    <time>1168187165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="16">
+    <srcmd5>f28e39ffdf221301f6e07a479d1a7787</srcmd5>
+    <version>4.5p1</version>
+    <time>1172151440</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="18">
+    <srcmd5>6e4e4083a24dc5898017f7d0a9ce48b3</srcmd5>
+    <version>4.5p1</version>
+    <time>1172783235</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="19">
+    <srcmd5>ffd06e8d849cbac9ecbe6863b38e1175</srcmd5>
+    <version>4.5p1</version>
+    <time>1173104893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bd477125b85965f22909098fd86be973</srcmd5>
+    <version>4.6p1</version>
+    <time>1173920187</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2d661fa79e429efe5abd5fefc529dba2</srcmd5>
+    <version>4.6p1</version>
+    <time>1174375711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="37">
+    <srcmd5>1c22af24a4d3fd46596afbd50052c7aa</srcmd5>
+    <version>4.6p1</version>
+    <time>1185494503</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="49">
+    <srcmd5>ccca19cc5370f679d2cf520c09f76b78</srcmd5>
+    <version>4.6p1</version>
+    <time>1187913183</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="53">
+    <srcmd5>3359e558b05f7486fec6a7068e6d82cb</srcmd5>
+    <version>4.6p1</version>
+    <time>1188321484</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="60">
+    <srcmd5>fc31447a4e55c7fc245f4cdac819cb8c</srcmd5>
+    <version>4.6p1</version>
+    <time>1189702437</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="67">
+    <srcmd5>b688f8d1c8cf4c0191719e88ea669afa</srcmd5>
+    <version>4.6p1</version>
+    <time>1191855028</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7f2485d197cb62410c9f3f4b52ae6aa3</srcmd5>
+    <version>4.7p1</version>
+    <time>1196954986</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>5033b882edba3a9518eb9edd69ec351e</srcmd5>
+    <version>4.7p1</version>
+    <time>1197329395</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>8b382cea82cf40571a09c2ca1ee044ed</srcmd5>
+    <version>4.7p1</version>
+    <time>1197893016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>d29c1f93b2e88183861536c384f52d6f</srcmd5>
+    <version>4.7p1</version>
+    <time>1199670799</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b079cfaf1943b3c503f3f8cffddd082e</srcmd5>
+    <version>5.0p1</version>
+    <time>1207772483</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>f0774e9f3ad121cd62cae699656a74ed</srcmd5>
+    <version>5.0p1</version>
+    <time>1208735319</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>19d3f35452d547cddcd9cdaa082923b7</srcmd5>
+    <version>5.1p1</version>
+    <time>1216952954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="24">
+    <srcmd5>0c95b97bdf63a5584693400c9348505c</srcmd5>
+    <version>5.1p1</version>
+    <time>1219447928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="27">
+    <srcmd5>e57f44cb04a9fd9c05a1aeea358eeae2</srcmd5>
+    <version>5.1p1</version>
+    <time>1219568143</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="35">
+    <srcmd5>1c5543c9f45c146324d5fc5e81456108</srcmd5>
+    <version>5.1p1</version>
+    <time>1220991513</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="39">
+    <srcmd5>3bb193c532766c5ce013a749f6eb99ea</srcmd5>
+    <version>5.1p1</version>
+    <time>1224861419</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="40">
+    <srcmd5>2d383a989b4bf93a072f526744de38d7</srcmd5>
+    <version>5.1p1</version>
+    <time>1226940056</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="41">
+    <srcmd5>0f65b4e4d10554abe2af65ccb479559b</srcmd5>
+    <version>5.1p1</version>
+    <time>1228318278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>52fbecac9606e3839c78904e7add5624</srcmd5>
+    <version>5.2p1</version>
+    <time>1236116565</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>45f65986d7dfcbc28deb8036d27f6592</srcmd5>
+    <version>5.2p1</version>
+    <time>1243472489</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>5f3340becd5eda0e2c0cfb95db9aeb2b</srcmd5>
+    <version>5.2p1</version>
+    <time>1244640329</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>f0799a04c9396890935331f9879b6304</srcmd5>
+    <version>5.2p1</version>
+    <time>1245456270</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>ab13a86f24dde0c54d5654bcb6ed2696</srcmd5>
+    <version>5.2p1</version>
+    <time>1247140710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>c6e0a104801abeed6fc50d2cf126a992</srcmd5>
+    <version>5.2p1</version>
+    <time>1247498570</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>0fe4b8556d0607f365765f21cccef497</srcmd5>
+    <version>5.2p1</version>
+    <time>1251411716</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 19015 from user coolo
+</comment>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>24bc9affe06613afc7bfd85020beb068</srcmd5>
+    <version>5.2p1</version>
+    <time>1253560925</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 20661 from user anicka
+</comment>
+  </revision>
+  <revision rev="33" vrev="10">
+    <srcmd5>24bc9affe06613afc7bfd85020beb068</srcmd5>
+    <version>5.2p1</version>
+    <time>1253560925</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 20661 from user anicka
+</comment>
+  </revision>
+  <revision rev="34" vrev="11">
+    <srcmd5>e37b98ce6523d61291180485e964de39</srcmd5>
+    <version>5.2p1</version>
+    <time>1261831265</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 27417 from user coolo
+</comment>
+  </revision>
+  <revision rev="35" vrev="12">
+    <srcmd5>8b396de78a1ac5b6a1cd06a42a79f382</srcmd5>
+    <version>5.2p1</version>
+    <time>1267104234</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 33253 from user anicka
+</comment>
+    <requestid>33253</requestid>
+  </revision>
+  <revision rev="36" vrev="13">
+    <srcmd5>706005ca7aa9f84c4986d460c4b8dbc2</srcmd5>
+    <version>5.2p1</version>
+    <time>1267404343</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 33622 from user prusnak
+</comment>
+    <requestid>33622</requestid>
+  </revision>
+  <revision rev="37" vrev="14">
+    <srcmd5>0ca92949e4c73db4ce7c822a653fadcd</srcmd5>
+    <version>5.2p1</version>
+    <time>1267752261</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 33756 from user coolo
+</comment>
+    <requestid>33756</requestid>
+  </revision>
+  <revision rev="38" vrev="15">
+    <srcmd5>d4d1a7976f329887df801b9b5e86efc2</srcmd5>
+    <version>5.2p1</version>
+    <time>1268925228</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c795e11866d80b464e1b1a5f9944c563</srcmd5>
+    <version>5.4p1</version>
+    <time>1269617354</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 35778 from user anicka
+</comment>
+    <requestid>35778</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>64121fcdef31d6b0de1618190e6845fa</srcmd5>
+    <version>5.4p1</version>
+    <time>1270056713</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 35865 from user dirkmueller
+</comment>
+    <requestid>35865</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>8504a6e0c5145e99d50ca7488874827f</srcmd5>
+    <version>5.4p1</version>
+    <time>1272043773</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 38569 from user anicka
+</comment>
+    <requestid>38569</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>27d429cc2d8e829b0fe0bf16c89b5f18</srcmd5>
+    <version>5.4p1</version>
+    <time>1273876186</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 40041 from user anicka
+</comment>
+    <requestid>40041</requestid>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>c79f8747d6acd26e7c155475e1e475ab</srcmd5>
+    <version>5.4p1</version>
+    <time>1274778170</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 40508 from user prusnak
+</comment>
+    <requestid>40508</requestid>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>2a723bcbbc69de73bc6d932061d27d29</srcmd5>
+    <version>5.4p1</version>
+    <time>1278078625</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 42332 from user msmeissn
+</comment>
+    <requestid>42332</requestid>
+  </revision>
+  <revision rev="45" vrev="9">
+    <srcmd5>2a723bcbbc69de73bc6d932061d27d29</srcmd5>
+    <version>5.4p1</version>
+    <time>1278667374</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="46" vrev="10">
+    <srcmd5>2a723bcbbc69de73bc6d932061d27d29</srcmd5>
+    <version>5.4p1</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>94bd9e244cd4112286077353985d52cc</srcmd5>
+    <version>5.5p1</version>
+    <time>1279898147</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 43758 from user anicka
+</comment>
+    <requestid>43758</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d9954712f26035060638dba0b6b20d35</srcmd5>
+    <version>5.6p1</version>
+    <time>1282663871</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 46105 from user anicka
+</comment>
+    <requestid>46105</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>63647116b7433891350271cc4de01854</srcmd5>
+    <version>5.6p1</version>
+    <time>1284750144</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssh based on submit request 48012 from user anicka
+</comment>
+    <requestid>48012</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>98ef6735261500a80b8b3cb09a480f94</srcmd5>
+    <version>5.6p1</version>
+    <time>1287448475</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50922 from user elvigia
+</comment>
+    <requestid>50922</requestid>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>cae817a079773777592fdab59d743e70</srcmd5>
+    <version>5.6p1</version>
+    <time>1287448481</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50922
+</comment>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>e6c439fa51fcd46ba734d28c72d3ca92</srcmd5>
+    <version>5.6p1</version>
+    <time>1288692155</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51843 from user coolo
+</comment>
+    <requestid>51843</requestid>
+  </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>7cfcc650335c0f72303e6a31468737c8</srcmd5>
+    <version>5.6p1</version>
+    <time>1288692163</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51843
+</comment>
+  </revision>
+  <revision rev="54" vrev="7">
+    <srcmd5>8da41551f9482e5ee6cb4e5d4a7cf2ee</srcmd5>
+    <version>5.6p1</version>
+    <time>1288710479</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51975 from user coolo
+</comment>
+    <requestid>51975</requestid>
+  </revision>
+  <revision rev="55" vrev="8">
+    <srcmd5>11389f315724e60b362ccf58b612e8a6</srcmd5>
+    <version>5.6p1</version>
+    <time>1288710490</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51975
+</comment>
+  </revision>
+  <revision rev="56" vrev="9">
+    <srcmd5>91148def254733e8650c60834d694a06</srcmd5>
+    <version>5.6p1</version>
+    <time>1290098704</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53215 from user dirkmueller
+</comment>
+    <requestid>53215</requestid>
+  </revision>
+  <revision rev="57" vrev="10">
+    <srcmd5>dcf1f2500fac3834baf47b4819a1b585</srcmd5>
+    <version>5.6p1</version>
+    <time>1290098717</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53215
+</comment>
+  </revision>
+  <revision rev="58" vrev="11">
+    <srcmd5>06685f46181d92f451ae20fcea46e454</srcmd5>
+    <version>5.6p1</version>
+    <time>1290248302</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53420 from user coolo
+</comment>
+    <requestid>53420</requestid>
+  </revision>
+  <revision rev="59" vrev="12">
+    <srcmd5>1092973111f10c72a6b8404e9bb5f373</srcmd5>
+    <version>5.6p1</version>
+    <time>1290248312</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53420
+</comment>
+  </revision>
+  <revision rev="60" vrev="13">
+    <srcmd5>1c750e846c50ed699d9f1f357ef425b6</srcmd5>
+    <version>5.6p1</version>
+    <time>1294965023</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57969 from user sbrabec
+</comment>
+    <requestid>57969</requestid>
+  </revision>
+  <revision rev="61" vrev="14">
+    <srcmd5>4623ebcd8c94b7ed4b2182c525429a6c</srcmd5>
+    <version>5.6p1</version>
+    <time>1294965034</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57969
+</comment>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>6b16f936b4c414000935c923e474ac2c</srcmd5>
+    <version>5.7p1</version>
+    <time>1296569646</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 59479 from user msmeissn
+</comment>
+    <requestid>59479</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>4f32934a05bf40f35e5deb60b4030640</srcmd5>
+    <version>5.7p1</version>
+    <time>1296569654</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 59479
+</comment>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>e0420bbf9b72da1fce48f3bf3a72056e</srcmd5>
+    <version>5.8p1</version>
+    <time>1297113035</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60194 from user msmeissn
+</comment>
+    <requestid>60194</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>d3888be0132e88377ec6b96e75a7f6b4</srcmd5>
+    <version>5.8p1</version>
+    <time>1297113044</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60194
+</comment>
+  </revision>
+  <revision rev="66" vrev="6">
+    <srcmd5>d3888be0132e88377ec6b96e75a7f6b4</srcmd5>
+    <version>5.8p1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>42b143fab043c6f958eb340be8d0b939</srcmd5>
+    <version>5.8p2</version>
+    <time>1315561715</time>
+    <user>saschpe</user>
+    <comment>-  Update to verison 5.8p2
+* Fixed vuln in systems without dev/random, we arenot affected
+* Fixes problems building with selinux enabled
+- Fix build with as-needed and no-add-needed
+
+- Enable libedit/autocompletion support in sftp (forwarded request 80152 from elvigia)</comment>
+    <requestid>81359</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>b18b2e4a94a36c08aca651471c7ca6da</srcmd5>
+    <version>5.8p2</version>
+    <time>1317830590</time>
+    <user>oertel</user>
+    <comment>- Avoid overriding libexecdir with %_lib (bnc#712025)
+- Clean up the specfile by request of Minh Ngo, details entail:
+* remove norootforbuild comments, redundant %clean section
+* run spec-beautifier over it
+- Add PIEFLAGS to compilation of askpass; fails otherwise (forwarded request 86032 from jengelh)</comment>
+    <requestid>86663</requestid>
+  </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>b18b2e4a94a36c08aca651471c7ca6da</srcmd5>
+    <version>5.8p2</version>
+    <time>1319182218</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>6a54adf06659c6312f5923470a2266a9</srcmd5>
+    <version>5.9p1</version>
+    <time>1324475865</time>
+    <user>coolo</user>
+    <comment>- Add systemd startup units 
+- finalising libexecdir change (bnc#726712)
+- Update to 5.9p1
+- fix for bnc#728002</comment>
+    <requestid>96795</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>46b0f68c2dbb7194a791986353c5cf3c</srcmd5>
+    <version>5.9p1</version>
+    <time>1325846770</time>
+    <user>coolo</user>
+    <comment>Fix building for openSUSE targets back to 10.2 (forwarded request 98019 from aljex)</comment>
+    <requestid>98217</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>ebc033bc0f6da4f8746bd8bde3976234</srcmd5>
+    <version>5.9p1</version>
+    <time>1329824370</time>
+    <user>coolo</user>
+    <comment>own the x11 app default dir</comment>
+    <requestid>106090</requestid>
+  </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>74defb78c2332cb3cca1f9110d7fc1cd</srcmd5>
+    <version>5.9p1</version>
+    <time>1334216643</time>
+    <user>coolo</user>
+    <comment>Fix factory build: add autoconf and automake BuildRequires for openssh-askpass-gnome</comment>
+    <requestid>112571</requestid>
+  </revision>
+  <revision rev="74" vrev="5">
+    <srcmd5>2a1892f5dfa334bf717bdfd5a6ad1c64</srcmd5>
+    <version>5.9p1</version>
+    <time>1337587278</time>
+    <user>coolo</user>
+    <comment>- By default openSSH checks at *runtime* if the openssl 
+  API version matches with the running library, that might
+  be good if you are compiling SSH yourself but it is a totally
+  insane way to check for binary/source compatibility in a distribution. (forwarded request 120648 from elvigia)</comment>
+    <requestid>121257</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>b9f5f5142b1cdf38b7d131e44c3eda0b</srcmd5>
+    <version>6.0p1</version>
+    <time>1338476852</time>
+    <user>coolo</user>
+    <comment>- use correct tarball url
+- update to 6.0p1.
+
+- use correct download url and tarball format.
+
+- Update to version 6.0, large list of changes, seen
+  http://www.openssh.org/txt/release-6.0 for detail.</comment>
+    <requestid>122848</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>b9f5f5142b1cdf38b7d131e44c3eda0b</srcmd5>
+    <version>6.0p1</version>
+    <time>1340183759</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>cb05ed17ba0ee3839f16f7674f67c75f</srcmd5>
+    <version>6.0p1</version>
+    <time>1340626782</time>
+    <user>coolo</user>
+    <comment>fixup the previous SR (forwarded request 125376 from coolo)</comment>
+    <requestid>125385</requestid>
+  </revision>
+  <revision rev="78" vrev="5">
+    <srcmd5>b75f25ef338ead5e8cb1dffc57a29d2b</srcmd5>
+    <version>6.0p1</version>
+    <time>1340890656</time>
+    <user>coolo</user>
+    <comment>- the gnome askpass does not require the x11 askpass - especially not
+  in the version of openssh (it's at 1.X) (forwarded request 126286 from coolo)</comment>
+    <requestid>126287</requestid>
+  </revision>
+  <revision rev="79" vrev="6">
+    <srcmd5>533ba609cd53856b26cf9dba7afa64c3</srcmd5>
+    <version>6.0p1</version>
+    <time>1347883279</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134088</requestid>
+  </revision>
+  <revision rev="80" vrev="7">
+    <srcmd5>d8817d1ed3265345740d0fd3a8073354</srcmd5>
+    <version>6.0p1</version>
+    <time>1351231113</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139103</requestid>
+  </revision>
+  <revision rev="81" vrev="8">
+    <srcmd5>f9afbcc0fbc6d10aa5459a9138b22efe</srcmd5>
+    <version>6.0p1</version>
+    <time>1351337065</time>
+    <user>coolo</user>
+    <comment>- explicit buildrequire groff, needed for man pages (forwarded request 139460 from coolo)</comment>
+    <requestid>139516</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>236bfde4ef5bb3df373caee2b0d5b2df</srcmd5>
+    <version>6.1p1</version>
+    <time>1352880915</time>
+    <user>coolo</user>
+    <comment>- Updated to 6.1p1, a bugfix release
+  Features:
+ * sshd(8): This release turns on pre-auth sandboxing sshd by default for
+   new installs, by setting UsePrivilegeSeparation=sandbox in sshd_config.
+ * ssh-keygen(1): Add options to specify starting line number and number of
+   lines to process when screening moduli candidates, allowing processing
+   of different parts of a candidate moduli file in parallel
+ * sshd(8): The Match directive now supports matching on the local (listen)
+   address and port upon which the incoming connection was received via
+   LocalAddress and LocalPort clauses.
+ * sshd(8): Extend sshd_config Match directive to allow setting AcceptEnv
+   and {Allow,Deny}{Users,Groups}
+ * Add support for RFC6594 SSHFP DNS records for ECDSA key types. bz#1978
+ * ssh-keygen(1): Allow conversion of RSA1 keys to public PEM and PKCS8
+ * sshd(8): Allow the sshd_config PermitOpen directive to accept &quot;none&quot; as
+   an argument to refuse all port-forwarding requests.
+ * sshd(8): Support &quot;none&quot; as an argument for AuthorizedPrincipalsFile
+ * ssh-keyscan(1): Look for ECDSA keys by default. bz#1971
+ * sshd(8): Add &quot;VersionAddendum&quot; to sshd_config to allow server operators
+   to append some arbitrary text to the server SSH protocol banner.
+ Bugfixes:
+ * ssh(1)/sshd(8): Don't spin in accept() in situations of file
+   descriptor exhaustion. Instead back off for a while.
+ * ssh(1)/sshd(8): Remove hmac-sha2-256-96 and hmac-sha2-512-96 MACs as
+   they were removed from the specification. bz#2023,
+ * sshd(8): Handle long comments in config files better. bz#2025
+ * ssh(1): Delay setting tty_flag so RequestTTY options are correctly
+   picked up. bz#1995
+ * sshd(8): Fix handling of /etc/nologin incorrectly being applied to root
+   on platforms that use login_cap.</comment>
+    <requestid>141129</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>4ecac2c29a28148e6f5ac0889d59f080</srcmd5>
+    <version>6.1p1</version>
+    <time>1357652111</time>
+    <user>coolo</user>
+    <comment>- use ssh-keygen(1) default keylengths in generating the host key
+  instead of hardcoding it (forwarded request 147497 from dirkmueller)</comment>
+    <requestid>147498</requestid>
+  </revision>
+  <revision rev="84" vrev="4">
+    <srcmd5>4ecac2c29a28148e6f5ac0889d59f080</srcmd5>
+    <version>6.1p1</version>
+    <time>1359109544</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="85" vrev="5">
+    <srcmd5>459df26d601cca9e50f67082756a79bb</srcmd5>
+    <version>6.1p1</version>
+    <time>1371756249</time>
+    <user>coolo</user>
+    <comment>- Recommend xauth, X11-forwarding won't work if it is not installed
+
+- sshd.service: Do not order after syslog.target, it is 
+ not required or recommended and that target does not even exist
+ anymore.</comment>
+    <requestid>180225</requestid>
+  </revision>
+  <revision rev="86" vrev="6">
+    <srcmd5>9e4fdadbc3aea045b615ef67f23e8ae7</srcmd5>
+    <version>6.1p1</version>
+    <time>1372839921</time>
+    <user>coolo</user>
+    <comment>- avoid the build cycle between curl, krb5, libssh2_org and openssh
+  by using krb5-mini-devel (forwarded request 181706 from coolo)</comment>
+    <requestid>181731</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>221dac0b3d83d084f32c657171a7903b</srcmd5>
+    <version>6.2p2</version>
+    <time>1375728551</time>
+    <user>coolo</user>
+    <comment>- Update for 6.2p2 
+
+- Update to version 6.2p2 
+* ssh(1)/sshd(8): Added support for AES-GCM authenticated encryption
+* ssh(1)/sshd(8): Added support for encrypt-then-mac (EtM) MAC modes
+* ssh(1)/sshd(8): Added support for the UMAC-128 MAC
+* sshd(8): Added support for multiple required authentication
+* sshd(8)/ssh-keygen(1): Added support for Key Revocation Lists
+* ssh(1): When SSH protocol 2 only is selected (the default), ssh(1)
+  now immediately sends its SSH protocol banner to the server without
+  waiting to receive the server's banner, saving time when connecting.
+* dozens of other changes, see http://www.openssh.org/txt/release-6.2 (forwarded request 185789 from elvigia)</comment>
+    <requestid>185890</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>9658643e963c2f3691e3dc8422292e8f</srcmd5>
+    <version>6.2p2</version>
+    <time>1378897084</time>
+    <user>coolo</user>
+    <comment>- fix the logic in openssh-nodaemon-nopid.patch which is broken
+  and pid_file therefore still being created. (forwarded request 198380 from elvigia)</comment>
+    <requestid>198435</requestid>
+  </revision>
+  <revision rev="89" vrev="4">
+    <srcmd5>9658643e963c2f3691e3dc8422292e8f</srcmd5>
+    <version>6.2p2</version>
+    <time>1379663430</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>cfe8dcff57a4b728c8874f8b7d200aaf</srcmd5>
+    <version>6.5p1</version>
+    <time>1392481056</time>
+    <user>coolo</user>
+    <comment>- Update of the underlying OpenSSH to 6.5p1
+
+- Update to 6.5p1
+  Features since 6.4p1:
+  * ssh(1), sshd(8): support for key exchange using ECDH in
+    Daniel Bernstein's Curve25519; default when both the client
+    and server support it.
+  * ssh(1), sshd(8): support for Ed25519 as a public key type fo
+    rboth server and client.  Ed25519 is an EC signature offering
+    better security than ECDSA and DSA and good performance.
+  * Add a new private key format that uses a bcrypt KDF to better
+    protect keys at rest. Used unconditionally for Ed25519 keys,
+    on demand for other key types via the -o ssh-keygen(1)
+    option.  Intended to become default in the near future.
+    Details documented in PROTOCOL.key.
+  * ssh(1), sshd(8): new transport cipher
+    &quot;chacha20-poly1305@openssh.com&quot; combining Daniel Bernstein's
+    ChaCha20 stream cipher and Poly1305 MAC to build an
+    authenticated encryption mode. Details documented
+    PROTOCOL.chacha20poly1305.
+  * ssh(1), sshd(8): refuse RSA keys from old proprietary clients
+    and servers that use the obsolete RSA+MD5 signature scheme.
+    It will still be possible to connect with these
+    clients/servers but only DSA keys will be accepted, and
+    OpenSSH will refuse connection entirely in a future release.
+  * ssh(1), sshd(8): refuse old proprietary clients and servers
+    that use a weaker key exchange hash calculation.
+  * ssh(1): increase the size of the Diffie-Hellman groups
+    requested for each symmetric key size. New values from NIST
+    Special Publication 800-57 with the upper limit specified by (forwarded request 222365 from pcerny)</comment>
+    <requestid>222366</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>eabab86ede3710359e3988a6c1bbeb8b</srcmd5>
+    <version>6.5p1</version>
+    <time>1393008749</time>
+    <user>coolo</user>
+    <comment>- openssh-6.5p1-seccomp_getuid.patch: re-enabling the seccomp sandbox
+  (allowing use of the getuid syscall) (bnc#864171)</comment>
+    <requestid>223064</requestid>
+  </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>1c09c84b8dda320105cf7b59928951c4</srcmd5>
+    <version>6.5p1</version>
+    <time>1393705210</time>
+    <user>coolo</user>
+    <comment>- re-enabling FIPS-enablement patch
+- enable X11 forwarding when IPv6 is present but disabled on server
+  (bnc#712683, FATE#31503; -X_forward_with_disabled_ipv6.patch) (forwarded request 224302 from pcerny)</comment>
+    <requestid>224303</requestid>
+  </revision>
+  <revision rev="93" vrev="4">
+    <srcmd5>471d93fe77f9a274e44907c5fa3875c1</srcmd5>
+    <version>6.5p1</version>
+    <time>1395156085</time>
+    <user>coolo</user>
+    <comment>- re-enabling the GSSAPI Key Exchange patch 
+!!! currently breaks anythng else than Factory (forwarded request 226334 from pcerny)</comment>
+    <requestid>226335</requestid>
+  </revision>
+  <revision rev="94" vrev="5">
+    <srcmd5>91f3e466bf9e2d9545a8f55362f98948</srcmd5>
+    <version>6.5p1</version>
+    <time>1396291381</time>
+    <user>coolo</user>
+    <comment>- Update openssh-6.5p1-audit4-kex_results.patch to ensure that
+  we don't pass a NULL string to buffer_put_cstring. This happens
+  when you have &quot;Ciphers chacha20-poly1305@openssh.com&quot; directive. (forwarded request 227423 from namtrac)</comment>
+    <requestid>227709</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>3aa31742cbde769fed1d9b6d4143daf0</srcmd5>
+    <version>6.6p1</version>
+    <time>1397738626</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update of the underlying OpenSSH to 6.6p1
+
+- Remove uneeded dependency on the OpenLDAP server (openldap2)
+  from openssh-helpers. openssh-helpers just depends on the 
+  openldap client libraries, which will be auto-generated by rpm.
+
+- update to 6.6p1
+  Security:
+  * sshd(8): when using environment passing with a sshd_config(5)
+    AcceptEnv pattern with a wildcard. OpenSSH prior to 6.6 could
+    be tricked into accepting any enviornment variable that
+    contains the characters before the wildcard character.
+  Features since 6.5p1:
+  * ssh(1), sshd(8): removal of the J-PAKE authentication code,
+    which was experimental, never enabled and has been
+    unmaintained for some time.
+  * ssh(1): skip 'exec' clauses other clauses predicates failed
+    to match while processing Match blocks.
+  * ssh(1): if hostname canonicalisation is enabled and results
+    in the destination hostname being changed, then re-parse
+    ssh_config(5) files using the new destination hostname. This
+    gives 'Host' and 'Match' directives that use the expanded
+    hostname a chance to be applied.
+  Bugfixes:
+  * ssh(1): avoid spurious &quot;getsockname failed: Bad file
+    descriptor&quot; in ssh -W. bz#2200, debian#738692
+  * sshd(8): allow the shutdown(2) syscall in seccomp-bpf and
+    systrace sandbox modes, as it is reachable if the connection
+    is terminated during the pre-auth phase.
+  * ssh(1), sshd(8): fix unsigned overflow that in SSH protocol 1</comment>
+    <requestid>230190</requestid>
+  </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>b22b8e7e45213ab776dc12c2c126932d</srcmd5>
+    <version>6.6p1</version>
+    <time>1398524522</time>
+    <user>coolo</user>
+    <comment>- curve25519 key exchange fix (-curve25519-6.6.1p1.patch)
+- patch re-ordering (-audit3-key_auth_usage-fips.patch,
+    -audit4-kex_results-fips.patch) (forwarded request 231427 from pcerny)</comment>
+    <requestid>231428</requestid>
+  </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>6befe3a42ef1f004225a86cc155ca8b0</srcmd5>
+    <version>6.6p1</version>
+    <time>1400742255</time>
+    <user>coolo</user>
+    <comment>- Remove tcpwrappers support now, This feature was removed
+  in upstream code at the end of April and the underlying
+  libraries are abandonware.
+  See: http://comments.gmane.org/gmane.linux.suse.general/348119 (forwarded request 234473 from elvigia)</comment>
+    <requestid>234675</requestid>
+  </revision>
+  <revision rev="98" vrev="4">
+    <srcmd5>3e7ca5440847f42d9f9f41b8cf976c1d</srcmd5>
+    <version>6.6p1</version>
+    <time>1406177903</time>
+    <user>coolo</user>
+    <comment>Do not depend on insserv if the package build with systemd support;
+  it's useless (forwarded request 241774 from posophe)</comment>
+    <requestid>241776</requestid>
+  </revision>
+  <revision rev="99" vrev="6">
+    <srcmd5>3e7ca5440847f42d9f9f41b8cf976c1d</srcmd5>
+    <version>6.6p1</version>
+    <time>1409302049</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="100" vrev="7">
+    <srcmd5>9061bdb70d761fa1496102d798c68682</srcmd5>
+    <version>6.6p1</version>
+    <time>1413285873</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255040</requestid>
+  </revision>
+  <revision rev="101" vrev="8">
+    <srcmd5>b273595d0dd6e5b970129d84e29018ae</srcmd5>
+    <version>6.6p1</version>
+    <time>1420021314</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266606</requestid>
+  </revision>
+  <revision rev="102" vrev="9">
+    <srcmd5>63cf76414e632a07c38353fce6a0d999</srcmd5>
+    <version>6.6p1</version>
+    <time>1422026353</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282346</requestid>
+  </revision>
+  <revision rev="103" vrev="10">
+    <srcmd5>08d108b4f6a16791688acd2e87473870</srcmd5>
+    <version>6.6p1</version>
+    <time>1452941744</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353732</requestid>
+  </revision>
+  <revision rev="104" vrev="11">
+    <srcmd5>082decd5370de3d8c834d000abf6ce17</srcmd5>
+    <version>6.6p1</version>
+    <time>1460480391</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>386262</requestid>
+  </revision>
+  <revision rev="105" vrev="12">
+    <srcmd5>7196ad29ec5fff974dbbb657d5c8c534</srcmd5>
+    <version>6.6p1</version>
+    <time>1462447088</time>
+    <user>dimstar_suse</user>
+    <comment>fix broken seccomp sandbox (forwarded request 392909 from pcerny)</comment>
+    <requestid>392910</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>98d2bb8689e9ae4a62c82ea50b69ae33</srcmd5>
+    <version>7.2p2</version>
+    <time>1469742311</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed url
+
+- upgrade to 7.2p2
+
+- changing license to 2-clause BSD to match source
+
+- added gpg signature 
+
+- enable support for SSHv1 protocol and discourage its usage
+  (bsc#983307)
+- enable DSA by default for backward compatibility and discourage
+  its usage (bsc#983784)
+  [openssh-7.2p2-allow_DSS_by_default.patch]
+
+- enable trusted X11 forwarding by default
+  [openssh-7.2p2-X11_trusted_forwarding.patch]
+- set UID for lastlog properly 
+  [openssh-7.2p2-lastlog.patch]
+- enable use of PAM by default 
+  [openssh-7.2p2-enable_PAM_by_default.patch]
+- copy command line arguments properly 
+  [openssh-7.2p2-saveargv-fix.patch]
+- do not use pthreads in PAM code 
+  [openssh-7.2p2-dont_use_pthreads_in_PAM.patch]
+- fix paths in documentation 
+  [openssh-7.2p2-eal3.patch]
+- prevent race consitions triggered by SIGALRM 
+  [openssh-7.2p2-blocksigalrm.patch]
+- do send and accept locale environment variables by default
+  [openssh-7.2p2-send_locale.patch]</comment>
+    <requestid>415094</requestid>
+  </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>1e564935181ada7811c5248c2d5ca4c0</srcmd5>
+    <version>7.2p2</version>
+    <time>1474976459</time>
+    <user>dimstar_suse</user>
+    <comment>- FIPS compatibility (no selfchecks, only crypto restrictions)
+  [openssh-7.2p2-fips.patch]
+- PRNG re-seeding
+  [openssh-7.2p2-seed-prng.patch]
+- preliminary version of GSSAPI KEX
+  [openssh-7.2p2-gssapi_key_exchange.patch] (forwarded request 428544 from pcerny)</comment>
+    <requestid>428545</requestid>
+  </revision>
+  <revision rev="108" vrev="3">
+    <srcmd5>567e57381252d4b3f647d636126ede50</srcmd5>
+    <version>7.2p2</version>
+    <time>1476113710</time>
+    <user>dimstar_suse</user>
+    <comment>- remaining patches that were still missing
+  since the update to 7.2p2 (FATE#319675):
+  [openssh-7.2p2-disable_openssl_abi_check.patch]
+- fix forwarding with IPv6 addresses in DISPLAY (bnc#847710)
+  [openssh-7.2p2-IPv6_X_forwarding.patch]
+- ignore PAM environment when using login
+  (bsc#975865, CVE-2015-8325)
+  [openssh-7.2p2-ignore_PAM_with_UseLogin.patch]
+- limit accepted password length (prevents possible DoS)
+  (bsc#992533, CVE-2016-6515)
+  [openssh-7.2p2-limit_password_length.patch]
+- Prevent user enumeration through the timing of password
+  processing (bsc#989363, CVE-2016-6210)
+  [openssh-7.2p2-prevent_timing_user_enumeration.patch]
+- Add auditing for PRNG re-seeding
+  [openssh-7.2p2-audit_seed_prng.patch] (forwarded request 433779 from pcerny)</comment>
+    <requestid>433780</requestid>
+  </revision>
+  <revision rev="109" vrev="4">
+    <srcmd5>e6da7ba3134703b305282bfee4286ba6</srcmd5>
+    <version>7.2p2</version>
+    <time>1488732920</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461303</requestid>
+  </revision>
+  <revision rev="110" vrev="5">
+    <srcmd5>563d4efb703524d241b9d6e4ac0afeb0</srcmd5>
+    <version>7.2p2</version>
+    <time>1496533713</time>
+    <user>dimstar_suse</user>
+    <comment>- require OpenSSL &amp;lt; 1.1 where that one is a default (forwarded request 500281 from pcerny)</comment>
+    <requestid>500282</requestid>
+  </revision>
+  <revision rev="111" vrev="6">
+    <srcmd5>6043d0db4c87fe84dd9e32ecccab0df5</srcmd5>
+    <version>7.2p2</version>
+    <time>1509193245</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536831</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>da77c4bed676620d2a15116d54c74808</srcmd5>
+    <version>7.6p1</version>
+    <time>1516092093</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace forgotten references to /var/adm/fillup-templates
+  with new %_fillupdir macro (boo#1069468)
+- tighten configuration access rights (forwarded request 563833 from pcerny)</comment>
+    <requestid>563834</requestid>
+  </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>21bdd6befac55b1807f331e248ee5809</srcmd5>
+    <version>7.6p1</version>
+    <time>1516633001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567941</requestid>
+  </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>4df4eba8f48a25206a4f4ebf39030989</srcmd5>
+    <version>7.6p1</version>
+    <time>1517606392</time>
+    <user>dimstar_suse</user>
+    <comment>- .spec file cleanup
+
+- upgrade to 7.6p1
+  see main package changelog for details
+
+- Add missing crypto hardware enablement patches for IBM mainframes
+  (FATE#323902)
+
+- add missing part of systemd integration (unit type) (forwarded request 571576 from pcerny)</comment>
+    <requestid>571577</requestid>
+  </revision>
+  <revision rev="115" vrev="4">
+    <srcmd5>9157a91b548cf6875a50466ee0e1095f</srcmd5>
+    <version>7.6p1</version>
+    <time>1520502845</time>
+    <user>dimstar_suse</user>
+    <comment>- add OpenSSL 1.0 to 1.1 shim to remove dependency on old OpenSSL
+  (update tracker: bsc#1080779)</comment>
+    <requestid>583081</requestid>
+  </revision>
+  <revision rev="116" vrev="5">
+    <srcmd5>f5962ab71f05376cd9a8f26511cb2571</srcmd5>
+    <version>7.6p1</version>
+    <time>1523127178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593882</requestid>
+  </revision>
+  <revision rev="117" vrev="6">
+    <srcmd5>d84ca5e60f155db8a539b6c5ab411b35</srcmd5>
+    <version>7.6p1</version>
+    <time>1525697488</time>
+    <user>dimstar_suse</user>
+    <comment>- Use TIRPC on suse_version &amp;gt;= 1500: sunrpc is deprecated and
+  should be replaced by TIRPC.
+
+This has several effects:
+* We get RPC support back... from build log in oS:F/standard:
+
+[   48s] checking rpc/types.h usability... no
+[   48s] checking rpc/types.h presence... no
+[   48s] checking for rpc/types.h... no
+
+vs this branch:
+[   50s] checking rpc/types.h usability... yes
+[   50s] checking rpc/types.h presence... yes
+[   50s] checking for rpc/types.h... yes
+
+AND as a side-effect, FALSE for ldapbody.c is now defined (not the
+  nicest of side-effects, but seems that ldap patch relies on RPC
+  headers to be included.
+
+So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded request 602971 from dimstar)</comment>
+    <requestid>603107</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>c07c87e4190f2c2a8591fea5b84fec83</srcmd5>
+    <version>7.7p1</version>
+    <time>1527276960</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 7.7p1 (bsc#1094068)
+
+- Upgrade to 7.7p1 (bsc#1094068)
+  Most important changes (more details below):
+  * Drop compatibility support for pre-2001 SSH implementations
+  * sshd(1) does not load DSA keys by default
+  Distilled upstream log:
+  ---- Potentially-incompatible changes
+  * ssh(1)/sshd(8): Drop compatibility support for some very old
+    SSH implementations, including ssh.com &amp;lt;=2.* and OpenSSH &amp;lt;=
+    3.*.  These versions were all released in or before 2001 and
+    predate the final SSH RFCs. The support in question isn't
+    necessary for RFC-compliant SSH implementations.
+  ---- New Features
+  * experimental support for PQC XMSS keys (Extended Hash-Based
+    Signatures), not compiled in by default.
+  * sshd(8): Add a &quot;rdomain&quot; criteria for the sshd_config Match
+    keyword to allow conditional configuration that depends on
+    which routing domain a connection was received on (currently
+    supported on OpenBSD and Linux).
+  * sshd_config(5): Add an optional rdomain qualifier to the
+    ListenAddress directive to allow listening on different
+    routing domains. This is supported only on OpenBSD and Linux
+    at present.
+  * sshd_config(5): Add RDomain directive to allow the
+    authenticated session to be placed in an explicit routing
+    domain. This is only supported on OpenBSD at present.
+  * sshd(8): Add &quot;expiry-time&quot; option for authorized_keys files
+    to allow for expiring keys.
+  * ssh(1): Add a BindInterface option to allow binding the (forwarded request 611002 from pcerny)</comment>
+    <requestid>611071</requestid>
+  </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>ad2a510308bbe77595a12d797d437b54</srcmd5>
+    <version>7.7p1</version>
+    <time>1530993213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620575</requestid>
+  </revision>
+  <revision rev="120" vrev="3">
+    <srcmd5>0216cd8faa1c08e5baec62ac616d2bf6</srcmd5>
+    <version>7.7p1</version>
+    <time>1536678681</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>631729</requestid>
+  </revision>
+  <revision rev="121" vrev="4">
+    <srcmd5>724a70a87642b661280493bf7cf6b337</srcmd5>
+    <version>7.7p1</version>
+    <time>1538377488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637027</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>0a72eec87edd4aede444fc5cb78d1bae</srcmd5>
+    <version>7.8p1</version>
+    <time>1540319630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.8p1:
+  * no actual changes for the askpass
+- Format with spec-cleaner
+- Respect cflags
+- Use gtk3 rather than gtk2 which is being phased out
+
+- Remove the mention of the SLE12 in the README.SUSE
+- Install firewall rules only when really needed (&amp;lt;SLE15)
+
+- Version update to 7.8p1:
+  * For most details see release notes file
+  * ssh-keygen(1): write OpenSSH format private keys by default
+    instead of using OpenSSL's PEM format
+- Rebase patches to apply on 7.8p1 release:
+  * openssh-7.7p1-fips.patch
+  * openssh-7.7p1-cavstest-kdf.patch
+  * openssh-7.7p1-fips_checks.patch
+  * openssh-7.7p1-gssapi_key_exchange.patch
+  * openssh-7.7p1-audit.patch
+  * openssh-7.7p1-openssl_1.1.0.patch
+  * openssh-7.7p1-ldap.patch
+  * openssh-7.7p1-IPv6_X_forwarding.patch
+  * openssh-7.7p1-sftp_print_diagnostic_messages.patch
+  * openssh-7.7p1-disable_short_DH_parameters.patch
+  * openssh-7.7p1-hostname_changes_when_forwarding_X.patch
+  * openssh-7.7p1-pam_check_locks.patch
+  * openssh-7.7p1-seed-prng.patch
+  * openssh-7.7p1-systemd-notify.patch
+  * openssh-7.7p1-X11_trusted_forwarding.patch
+- Dropped patches: (forwarded request 642573 from scarabeus_iv)</comment>
+    <requestid>642574</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>5809be0808b86576ad39e38a55dec5c8</srcmd5>
+    <version>7.9p1</version>
+    <time>1543399884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652023</requestid>
+  </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>1f052175a4c22d24e3b6fcb131a106bd</srcmd5>
+    <version>7.9p1</version>
+    <time>1545222468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657268</requestid>
+  </revision>
+  <revision rev="125" vrev="3">
+    <srcmd5>1c86a1351a4e4c9bc462f73cc4662f6c</srcmd5>
+    <version>7.9p1</version>
+    <time>1547211585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662751</requestid>
+  </revision>
+  <revision rev="126" vrev="4">
+    <srcmd5>4db78921c43385ebe38ccc45bb335cc6</srcmd5>
+    <version>7.9p1</version>
+    <time>1548061726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666632</requestid>
+  </revision>
+  <revision rev="127" vrev="5">
+    <srcmd5>92aab3767077f1ec9aa27e013729a787</srcmd5>
+    <version>7.9p1</version>
+    <time>1549311021</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>669023</requestid>
+  </revision>
+  <revision rev="128" vrev="6">
+    <srcmd5>4fcb7b20059f08546defd0a706a72223</srcmd5>
+    <version>7.9p1</version>
+    <time>1551113204</time>
+    <user>coolo</user>
+    <comment>- Supplement the openssh and libx11 together to ensure this package
+  is installed on machines where there is X stack
+
+- Handle brace expansion in scp when checking that filenames sent
+  by the server side match what the client requested [bsc#1125687]
+  * openssh-7.9p1-brace-expansion.patch
+
+- Updated security fixes:
+  * [bsc#1121816, CVE-2019-6109] Sanitize scp filenames via snmprintf
+    and have progressmeter force an update at the beginning and end
+    of each transfer. Added patches:
+    - openssh-CVE-2019-6109-sanitize-scp-filenames.patch
+    - openssh-CVE-2019-6109-force-progressmeter-update.patch
+  * [bsc#1121821, CVE-2019-6111] Check in scp client that filenames
+    sent during remote-&gt;local directory copies satisfy the wildcard
+    specified by the user. Added patch:
+    - openssh-CVE-2019-6111-scp-client-wildcard.patch
+  * Removed openssh-7.9p1-scp-name-validator.patch
+
+- Change the askpass wrapper to not use x11 interface:
+  * by default we use the -gnome UI (which is gtk3 only, no gnome dep)
+  * if desktop is KDE/LxQt we use ksshaskpass</comment>
+    <requestid>677282</requestid>
+  </revision>
+  <revision rev="129" vrev="7">
+    <srcmd5>cf21373d13d18ae5cc4527d9aaa05e0b</srcmd5>
+    <version>7.9p1</version>
+    <time>1551468439</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>680205</requestid>
+  </revision>
+  <revision rev="130" vrev="8">
+    <srcmd5>0efd7eb4f61971e25bfbcc2987ae89d4</srcmd5>
+    <version>7.9p1</version>
+    <time>1552571860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684354</requestid>
+  </revision>
+  <revision rev="131" vrev="9">
+    <srcmd5>838b306e66ce448d864eb329cb34616c</srcmd5>
+    <version>7.9p1</version>
+    <time>1553888005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689349</requestid>
+  </revision>
+  <revision rev="132" vrev="10">
+    <srcmd5>6033d1063ce960eb9c4311c427065ca1</srcmd5>
+    <version>7.9p1</version>
+    <time>1559642883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706737</requestid>
+  </revision>
+  <revision rev="133" vrev="11">
+    <srcmd5>5c12793ce90cbd607958df0237137a2d</srcmd5>
+    <version>7.9p1</version>
+    <time>1564413747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718211</requestid>
+  </revision>
+  <revision rev="134" vrev="12">
+    <srcmd5>a81f7d35595b67a1a94d6c10907b575b</srcmd5>
+    <version>7.9p1</version>
+    <time>1566912065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724538</requestid>
+  </revision>
+</revisionlist>

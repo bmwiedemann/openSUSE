@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>436599231ffaa67ac613a9b2171ded2b</srcmd5>
+    <version>2.1</version>
+    <time>1334215145</time>
+    <user>coolo</user>
+    <comment>Moving M17N/baekmuk to M17N:fonts/baekmuk-bitmap-fonts.</comment>
+    <requestid>112232</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a1f68db10008db1aba95023e0b0822b9</srcmd5>
+    <version>2.1</version>
+    <time>1338016905</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122113</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a1f68db10008db1aba95023e0b0822b9</srcmd5>
+    <version>2.1</version>
+    <time>1340183195</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e82965b513eb3d982aca393d3db71652</srcmd5>
+    <version>2.1</version>
+    <time>1347617667</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133919</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>e82965b513eb3d982aca393d3db71652</srcmd5>
+    <version>2.1</version>
+    <time>1359108690</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>e82965b513eb3d982aca393d3db71652</srcmd5>
+    <version>2.1</version>
+    <time>1379662022</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>67cba6afcd149ec17668823c68178d7e</srcmd5>
+    <version>2.1</version>
+    <time>1397625914</time>
+    <user>coolo</user>
+    <comment>fix typos in Obsoletes</comment>
+    <requestid>230172</requestid>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>67cba6afcd149ec17668823c68178d7e</srcmd5>
+    <version>2.1</version>
+    <time>1409300548</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>8a538cacacda982f958ce9a48ee52562</srcmd5>
+    <version>2.1</version>
+    <time>1493580244</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492129</requestid>
+  </revision>
+</revisionlist>

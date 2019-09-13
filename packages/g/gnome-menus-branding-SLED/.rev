@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>373306323871b03852113de6b2a3bc75</srcmd5>
+    <version>11.1</version>
+    <time>1220063608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="13">
+    <srcmd5>60c6ff8ff13fe2f074f9827385def05b</srcmd5>
+    <version>11.1</version>
+    <time>1223309027</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="14">
+    <srcmd5>abc34309157192012ceddf4989b316bf</srcmd5>
+    <version>11.1</version>
+    <time>1225816730</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="15">
+    <srcmd5>d8eea95f9a7ce3ea37f17360909bca4e</srcmd5>
+    <version>11.1</version>
+    <time>1233962501</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="16">
+    <srcmd5>c86d6f062f95f1d39ccc39f099073abe</srcmd5>
+    <version>11.1</version>
+    <time>1249061434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="18">
+    <srcmd5>c86d6f062f95f1d39ccc39f099073abe</srcmd5>
+    <version>11.1</version>
+    <time>1249061434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>04ea372fad388f1a375ebf2f9c11b1d6</srcmd5>
+    <version>unknown</version>
+    <time>1263830446</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-menus-branding-openSUSE based on submit request 29783 from user vuntz
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>04ea372fad388f1a375ebf2f9c11b1d6</srcmd5>
+    <version>unknown</version>
+    <time>1278667347</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>04ea372fad388f1a375ebf2f9c11b1d6</srcmd5>
+    <version>unknown</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>04ea372fad388f1a375ebf2f9c11b1d6</srcmd5>
+    <version>unknown</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>04ea372fad388f1a375ebf2f9c11b1d6</srcmd5>
+    <version>unknown</version>
+    <time>1319181920</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>04ea372fad388f1a375ebf2f9c11b1d6</srcmd5>
+    <version>unknown</version>
+    <time>1340183382</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>04ea372fad388f1a375ebf2f9c11b1d6</srcmd5>
+    <version>unknown</version>
+    <time>1359108960</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>04ea372fad388f1a375ebf2f9c11b1d6</srcmd5>
+    <version>unknown</version>
+    <time>1379662494</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="16">
+    <srcmd5>04ea372fad388f1a375ebf2f9c11b1d6</srcmd5>
+    <version>unknown</version>
+    <time>1409301030</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,15 @@
+<package name="python-py-radix" project="openSUSE:Factory">
+  <title>Radix tree implementation</title>
+  <description>Implements the radix tree data structure for the storage and
+retrieval of IPv4 and IPv6 network prefixes.
+
+The radix tree is commonly used for routing table lookups. It efficiently
+stores network prefixes of varying lengths and allows fast lookups of
+containing networks.
+
+This package includes the C-extension.
+
+</description>
+  <devel project="devel:languages:python" package="python-py-radix"/>
+  <url>https://github.com/mjschultz/py-radix</url>
+</package>

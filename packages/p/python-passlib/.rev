@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20d4ce04bd77dbd3b3d2c9ef517874fd</srcmd5>
+    <version>1.5.3</version>
+    <time>1323265191</time>
+    <user>coolo</user>
+    <comment>openstack</comment>
+    <requestid>94214</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>716ff72e500c6126fc0ed20771484892</srcmd5>
+    <version>1.5.3</version>
+    <time>1329476932</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103934</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7a71996c4dfcdf1808e158a5f25c1d00</srcmd5>
+    <version>1.5.3</version>
+    <time>1332239626</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>109670</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>deb8ca56605991b473834454ee6044d8</srcmd5>
+    <version>1.6</version>
+    <time>1340033664</time>
+    <user>coolo</user>
+    <comment>Update to 1.6 (forwarded request 125056 from poorboywilly)</comment>
+    <requestid>125069</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>deb8ca56605991b473834454ee6044d8</srcmd5>
+    <version>1.6</version>
+    <time>1340184075</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4d48c6a29e7c71a40337c06b20557aba</srcmd5>
+    <version>1.6.1</version>
+    <time>1347347797</time>
+    <user>coolo</user>
+    <comment>Update to 1.6.1 (forwarded request 133375 from poorboywilly)</comment>
+    <requestid>133454</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>4d48c6a29e7c71a40337c06b20557aba</srcmd5>
+    <version>1.6.1</version>
+    <time>1359110088</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>0111b86bd465902c8e894d0fd6cba208</srcmd5>
+    <version>1.6.1</version>
+    <time>1362732270</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157728</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>0111b86bd465902c8e894d0fd6cba208</srcmd5>
+    <version>1.6.1</version>
+    <time>1379664239</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>e184dce40320d02c432a9822dac14536</srcmd5>
+    <version>1.6.1</version>
+    <time>1382693110</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204610</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5e4468bd8627b9fcc96fb63ec2a56e62</srcmd5>
+    <version>1.6.2</version>
+    <time>1389799618</time>
+    <user>coolo</user>
+    <comment>- update to 1.6.2:
+ * Re-tuned the :attr:`~passlib.ifc.PasswordHash.default_rounds` values for all of the hashes.
+ * Added the new :doc:`bcrypt_sha256 &lt;lib/passlib.hash.bcrypt_sha256&gt;` hash,
+   which wraps BCrypt using SHA256 in order to work around BCrypt's password size limitations
+ * :doc:`passlib.hash.bcrypt &lt;lib/passlib.hash.bcrypt&gt;`:
+   Added support for the `bcrypt &lt;https://pypi.python.org/pypi/bcrypt&gt;`_ (forwarded request 213721 from dirkmueller)</comment>
+    <requestid>213776</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>5e4468bd8627b9fcc96fb63ec2a56e62</srcmd5>
+    <version>1.6.2</version>
+    <time>1409302940</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ff7815db731a9ab164e4329379fc0f42</srcmd5>
+    <version>1.6.5</version>
+    <time>1456924879</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360906</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5bdb5a6abf2ea3721279fc2b03ee8555</srcmd5>
+    <version>1.7.0</version>
+    <time>1485383532</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452041</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3696e3441dacb1bbcf254a5a95a32a8b</srcmd5>
+    <version>1.7.1</version>
+    <time>1486046495</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453639</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7cdca4ca77efad9bcdfbd30abdb70dc3</srcmd5>
+    <version>1.7.1</version>
+    <time>1495011292</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495349</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>ed2f5f1b1dba6c7f170f7c53cdf0dc0e</srcmd5>
+    <version>1.7.1</version>
+    <time>1545648397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660068</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>2bbc02ff275cbd940a5154aef2d2a7ae</srcmd5>
+    <version>1.7.1</version>
+    <time>1552986015</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix libxcrypt compatibility:
+  * python-passlib-1.7.1-libxcrypt-compat.patch
+
+- Do not use symlinks when creating fdupes</comment>
+    <requestid>686033</requestid>
+  </revision>
+</revisionlist>

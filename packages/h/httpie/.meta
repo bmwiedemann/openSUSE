@@ -1,0 +1,7 @@
+<package name="httpie" project="openSUSE:Factory">
+  <title>HTTPie - HTTP for Humans</title>
+  <description>Also known as cURL and wget command Alternative.
+The goal of HTTPie is to make CLI interaction with web services as human-friendly as possible.
+</description>
+  <devel project="network:utilities" package="httpie"/>
+</package>

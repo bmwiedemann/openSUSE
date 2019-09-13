@@ -1,0 +1,7 @@
+<package name="julia-compat" project="openSUSE:Factory">
+  <title>Julia</title>
+  <description>Julia is a high-level, high-performance dynamic programming language for technical computing, with syntax that is familiar to users of other technical computing environments. It provides a sophisticated compiler, distributed parallel execution, numerical accuracy, and an extensive mathematical function library. The library, largely written in Julia itself, also integrates mature, best-of-breed C and Fortran libraries for linear algebra, random number generation, signal processing, and string processing.</description>
+  <devel project="openSUSE:Factory" package="julia"/>
+  <url>http://julialang.org/</url>
+  <bcntsynctag>julia</bcntsynctag>
+</package>

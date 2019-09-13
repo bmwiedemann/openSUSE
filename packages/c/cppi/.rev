@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09de2352e24109d8bf4cbca5bab64461</srcmd5>
+    <version>1.15</version>
+    <time>1324457977</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>96864</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>02483e06b0061ddc915700aea86fd08e</srcmd5>
+    <version>1.15</version>
+    <time>1329823014</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104319 from coolo)</comment>
+    <requestid>106117</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>02483e06b0061ddc915700aea86fd08e</srcmd5>
+    <version>1.15</version>
+    <time>1340183250</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>02483e06b0061ddc915700aea86fd08e</srcmd5>
+    <version>1.15</version>
+    <time>1359108770</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>02483e06b0061ddc915700aea86fd08e</srcmd5>
+    <version>1.15</version>
+    <time>1379662152</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>02483e06b0061ddc915700aea86fd08e</srcmd5>
+    <version>1.15</version>
+    <time>1409300679</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>19462e21e757a12af176bc04b484e7d0</srcmd5>
+    <version>1.18</version>
+    <time>1422626929</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283447</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4159426de74487bdb16be37faca7d6ab</srcmd5>
+    <version>1.18</version>
+    <time>1461855320</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390835</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="folks" project="openSUSE:Factory">
+  <title>Library to create metacontacts from multiple sources</title>
+  <description>libfolks is a library that aggregates people from multiple sources (eg,
+Telepathy connection managers) to create metacontacts.</description>
+  <devel project="GNOME:Factory" package="folks"/>
+</package>

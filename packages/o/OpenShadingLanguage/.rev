@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c9101a974b3a3f96dcf63c777f99fb9</srcmd5>
+    <version>1.9.13</version>
+    <time>1548064100</time>
+    <user>dimstar_suse</user>
+    <comment>Spruce up descriptions a bit.
+Initial version 1.9.13 created for blender see boo#1120406</comment>
+    <requestid>664023</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1cf104e5a69f92bb0dd8fa5e17bbf2f5</srcmd5>
+    <version>1.9.13</version>
+    <time>1549361924</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671215</requestid>
+  </revision>
+</revisionlist>

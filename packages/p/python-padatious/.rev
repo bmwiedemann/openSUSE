@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ac003fec2393e7980e99873b5e9d4af</srcmd5>
+    <version>0.4.0</version>
+    <time>1521193177</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-padatious, required by mycroft-core</comment>
+    <requestid>582448</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>075c8c27d8cb871b160ae0744dc46230</srcmd5>
+    <version>0.4.3</version>
+    <time>1531232201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621747</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>869140a975fe5d8a35903636d576fd67</srcmd5>
+    <version>0.4.4</version>
+    <time>1534322262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629065</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>876961617c3078564296cbdd739bc1bb</srcmd5>
+    <version>0.4.5</version>
+    <time>1535367600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631621</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1900200dc08071beb31fe9455872c189</srcmd5>
+    <version>0.4.5</version>
+    <time>1545648041</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659530</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d81d3d98e5e9618c43fe4d85ba08a735</srcmd5>
+    <version>0.4.6</version>
+    <time>1551113509</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676943</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4c7fc60e970a66c805d3f5fd440a80fc</srcmd5>
+    <version>0.4.7</version>
+    <time>1557141913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694217</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90ab60e8aad877188f7af96ad47638b1</srcmd5>
+    <version>0.4</version>
+    <time>1495268014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>495854</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a76672620cd0f36598d6a8bac8f5a137</srcmd5>
+    <version>0.4</version>
+    <time>1496225996</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499649</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e56dad457b35322fbffbce319108c090</srcmd5>
+    <version>0.5</version>
+    <time>1503482154</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5
+  - Fix logger arguments</comment>
+    <requestid>518350</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a248dc2b738c31b4fa6d7092ff7f7376</srcmd5>
+    <version>1.0</version>
+    <time>1527583286</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0
+  * Skip health checker if emergency shell started by user
+  * Add GRUB2 fallback handling
+  * Adapt to new unified /var directory.
+  * Get basic version of rollback from initrd working</comment>
+    <requestid>611538</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a25a96ca5f835b2af52aed805bc85cbf</srcmd5>
+    <version>1.0</version>
+    <time>1535123515</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631170</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d2834ca724a9a2c9038ae040628c33c6</srcmd5>
+    <version>1.0</version>
+    <time>1545376903</time>
+    <user>dimstar_suse</user>
+    <comment>- Split the CaaSP plugin into a MicroOS and CaaSP part</comment>
+    <requestid>660008</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44d21d1d18d8664ccfc05f395ef93060</srcmd5>
+    <version>1.1</version>
+    <time>1549629951</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1
+  * new plugins for crio and kubelet
+- Add new sub-package with test cases for openSUSE Kubic</comment>
+    <requestid>671016</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f70848fed98ffc0ebe3d4a04f83ad45d</srcmd5>
+    <version>1.2</version>
+    <time>1551468390</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2
+  * Add hooks to send telemetrics events</comment>
+    <requestid>679841</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e1cf9c13465845f07132c3cb415f8c5f</srcmd5>
+    <version>1.2.1</version>
+    <time>1552989962</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1
+  * Make sure telmetrics payload is not empty in success case</comment>
+    <requestid>684856</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c18175cf6699e56fb08ac756a8759c29</srcmd5>
+    <version>1.2.2</version>
+    <time>1553262830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.2
+  * Fix product namings</comment>
+    <requestid>686921</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8e3f43d9051ad7d26ffc67b0300c13cd</srcmd5>
+    <version>1.2.3</version>
+    <time>1557472444</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.3
+  * Fix crio RPM name</comment>
+    <requestid>701115</requestid>
+  </revision>
+</revisionlist>

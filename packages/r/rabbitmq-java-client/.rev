@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cbd217ae4cc466e0a0253fdd9cfbba87</srcmd5>
+    <version>3.3.4</version>
+    <time>1405685042</time>
+    <user>coolo</user>
+    <comment>Another not submitted package in Java:packages</comment>
+    <requestid>241420</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>cbd217ae4cc466e0a0253fdd9cfbba87</srcmd5>
+    <version>3.3.4</version>
+    <time>1409303159</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d8c161e254c9ac4d35ed08aacdcce4e2</srcmd5>
+    <version>3.5.0</version>
+    <time>1426680309</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290945</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ec057a5f171747fb0cdd693010e42051</srcmd5>
+    <version>3.5.0</version>
+    <time>1496327535</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496732</requestid>
+  </revision>
+</revisionlist>

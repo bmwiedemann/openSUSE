@@ -1,0 +1,232 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9273f4919b6cebf856aa571d649cdd2a</srcmd5>
+    <version>0.8.4</version>
+    <time>1462342774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>389091</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3bf4c299e3c50575ec1fcce3ad16e447</srcmd5>
+    <version>0.8.5</version>
+    <time>1464014418</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.5:
+  * Trivial: Fix typo in update_port() comment
+  * Support client certificate/key
+  * Add network resource properties
+  * Updated from global requirements
+  * Properly handle overridden Body properties</comment>
+    <requestid>397361</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6666f6a682956f1c29311eef779933b4</srcmd5>
+    <version>0.9.7</version>
+    <time>1475242308</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>429736</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bb00c0f82df40ff9dc9f7ecd1a2638ec</srcmd5>
+    <version>0.9.5</version>
+    <time>1477135338</time>
+    <user>dimstar_suse</user>
+    <comment>- revert last change (go back to 0.9.5, which is Newton)</comment>
+    <requestid>434695</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d64dc15bb7b2387f57145242fed78c36</srcmd5>
+    <version>0.9.13</version>
+    <time>1487680857</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.13:
+  - Add QoS bandwidth limit rule object and CRUD commands.
+  - Add reset_state api for compute
+  - Add new function for router-gateway
+  - Add user_id in profile resource.
+  - Add more server operations based on Nova API
+  - Add filter &quot;user_id&quot; for cluster receiver list
+  - Modified DHCP/Network Resource
+  - Add QoS support to Network Port object.
+  - Add filters to the network proxy agents() method
+  - Fix error messages are not displayed correctly
+  - Generalize endpoint determination
+  - Fix Setting Quotas in Neutron
+  - Rebase telemetry resources to resource2/proxy2
+  - Add list method and query support for cinder volume and snapshot
+  - Rebase network resources onto resource2 (1)
+  - Support for node replace in cluster service
+  - Provide better fallback when finding id values
+  - Add QoS DSCP marking rule object and CRUD commands.
+  - avoid usage of keystoneauth1 sessions
+  - Chassis resource for bare-metal service
+  - Rebase network proxy to proxy2
+  - Update homepage with developer documentation page
+  - Fix cluster query mapping
+  - compute/v2/server: add ?all_tenants=bool to list
+  - Add QoS minimum bandwidth rule object and CRUD commands.
+  - Add filters provider-* to the network proxy networks() method
+  - Revert &quot;Event list can not display &quot;timestamp&quot;
+  - Add filter options to the network proxy address_scopes() method()
+  - Updated from global requirements</comment>
+    <requestid>456078</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>32c3ddaf02a44d07d7e64d27f6c1c169</srcmd5>
+    <version>0.9.17</version>
+    <time>1503927078</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.17
+  - Fix document warnings
+  - Add port property: trunk_details
+  - Introduce Base for Octavia (load balancing)
+  - Add compute support server migrate operation
+  - Remove discover from test-requirements
+  - Use https instead of http in cluster examples
+  - Add is_profile_only to Cluster resource
+  - Fix network quota test so it works on gate
+  - Add compute support server backup operation
+  - Cleanup various Sphinx warnings during doc build
+  - Add wait_for_xxx methods to cluster proxy
+  - Add new parameter &quot;is_default&quot; to Network QoS policy.
+  - Fix the network service provider test
+  - Filtering support by is_router_external to network resource
+  - Reorganize image docs
+  - Reorganize telemetry docs
+  - Add cluster_operation and node_operation
+  - Fix the agent add remove test
+  - Remove get_service method from compute
+  - Enable warnings_as_errors in doc enforcer
+  - Add StackFiles resource to orchestration v1
+  - Update the image used for functional tests
+  - Fix the network floating ip test for get
+  - Correct Network `ports` query parameters
+  - Fix the telemetry statistics test
+  - Updated from global requirements
+  - Remove two remaining doc warnings
+  - Add data plane status support to Network Port obj
+  - Add 'project_id' to Server query parameters</comment>
+    <requestid>514984</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>54b71bf0f45b6ae7444382a76f63e264</srcmd5>
+    <version>0.9.19</version>
+    <time>1516804046</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.19
+  - Update load_balancer for v2 API
+  - Introduce Member for Octavia (load balancing)
+  - Fix comment in services function
+  - Remove dead links about OpenStack RC file
+  - Fix stack_file function return body
+  - Cleanup test-requirements
+  - Fix title in Network Agent resource doc
+  - Add parameter_groups and conditions params for StackTemplate
+  - Introduce Health Monitor for Octavia
+  - fix the bug that cannot create a listener by openstacksdk
+  - Introduce L7Rule for Octavia (load balancing)
+  - Add required pool_id property to HealthMonitor
+  - Fix some typos
+  - Replace six.iteritems() with .items()
+  - Add doc8 rule and check doc/source files
+  - Add support for network quota details command
+  - Allow filtering network ports by fixed_ips
+  - Introduce Pool for Octavia (load balancing)
+  - Update links in README
+  - Update links in CONTRIBUTING.rst
+  - Introduce Listener for Octavia (load balancing)
+  - Fix octavia l7rules
+  - Update external links which have moved
+  - Introduce L7Policy for Octavia (load balancing)
+  - Unify style of 'domain' field
+  - Support to node-adopt and node-adopt-preview
+  - fix the bug that cannot create a pool by openstacksdk
+  - Add config param for cluster object
+  - Add getting of QoS rule type details</comment>
+    <requestid>567271</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5e3ebfd9e93c8a1c321b85aafafe6f50</srcmd5>
+    <version>0.11.3</version>
+    <time>1531232154</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template
+  - adds 0001-Let-enforcer.py-work-under-both-py2-and-py3.patch
+
+- update to version 0.11.3 (bsc#1078607)
+  - Fix image task uploads
+  - Remove self argument from connect helper function
+  - Add notes about moving forward
+  - Fix batching for floating ips and ports
+  - Remove openstack-tox-pypy jobs
+  - v2 image update fix
+  - Prefer links dicts for pagination
+  - Remove meter service
+  - Update for new docs PTI
+  - Add ability to register non-official services
+  - Fix py35 and pypy tox env
+  - Do not apply format expansions to passwords
+  - Provide compatibility for people passing raw sessions
+  - Move shade and os-client-config python content
+  - Remove metric service
+  - Add group parameter to create_server
+  - Remove use of tox-siblings role
+  - Remove -U from pip install
+  - Add tag support to create_stack
+  - Add helper property to get the current user id
+  - Add resource2/proxy2 wrappers with deprecations
+  - Add clustering guides cluster file, examples cluster code
+  - Rename resource2 and proxy2 to resource and proxy
+  - Add pools attribute to load balancer heath monitor
+  - Move profile helper method to openstack.profile
+  - Fix TypeError for overrided get methods</comment>
+    <requestid>621722</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2549b027e01916fdf38dbc3543941655</srcmd5>
+    <version>0.17.2</version>
+    <time>1536327504</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633088</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>42963f1e30115777e4fdd00cad230eb1</srcmd5>
+    <version>0.27.0</version>
+    <time>1556916241</time>
+    <user>dimstar_suse</user>
+    <comment>- added 0001-add-python-3.7-unit-test-job.patch
+- added 0001-baremetal-Add-support-for-mkisofs-and-xorrisofs-for-.patch
+
+- update to 0.27.0:
+  * Replace TaskManager with a keystoneauth concurrency
+  * Replace openstack.org git:// URLs with https://
+  * Update UPPER\_CONSTRAINTS\_FILE for stable/stein
+
+- update to version 0.26.0
+  - Fix query parameters of network.port_forwarding
+  - Transform server with munch before normalizing
+  - Add network segment range resource
+  - Return retries on HTTP CONFLICT to baremetal.attach_vif_to_node
+  - Fix bugs in debugging with Tox
+  - Use pagination detection by default
+  - Stop running grenade-py3
+  - Add possibility to override base_path for resource operations
+  - Remove unused Task classes
+  - Add block_storage v3 API support
+  - Fix syntax error with exception handling
+  - use overriden base_path in remaining CRUD operations
+  - Add wait functions to orchestration proxy
+  - Add support for octavia's resuorces quota
+  - Document &quot;Role Assignment Operations&quot;
+  - Rename compute.service.zone to availability_zone
+  - Update cirros version for functional tests
+  - Fix pagination key detection
+  - Drop self.conn from base.TestCase
+  - Test python2 with py27
+  - Make delete_unattached_floating_ips return a count</comment>
+    <requestid>693626</requestid>
+  </revision>
+</revisionlist>

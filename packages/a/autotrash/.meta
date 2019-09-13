@@ -1,0 +1,6 @@
+<package name="autotrash" project="openSUSE:Factory">
+  <title>Autotrash</title>
+  <description>Tool to automatically purge old trashed files</description>
+  <devel project="utilities" package="autotrash"/>
+  <url>https://github.com/bneijt/autotrash</url>
+</package>

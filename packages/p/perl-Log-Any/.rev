@@ -1,0 +1,195 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09f92d5068aa09e300ebd1b9b5ffe80b</srcmd5>
+    <version>0.12</version>
+    <time>1303198600</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66739 from user babelworx
+</comment>
+    <requestid>66739</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c0d29b97d80dabd03f598f6a22c04e4d</srcmd5>
+    <version>0.12</version>
+    <time>1303198613</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66739
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>71c2242acec20dae495cf43cb542a73e</srcmd5>
+    <version>0.12</version>
+    <time>1306917497</time>
+    <user>saschpe</user>
+    <comment>- regenerate with newer cpanspec</comment>
+    <requestid>72303</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>262ff59b8a9432c62f7f7f81632fe1a5</srcmd5>
+    <version>0.12</version>
+    <time>1306917505</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72303
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7d3529894aeb7eb0ec1d18884c9dcb77</srcmd5>
+    <version>0.13</version>
+    <time>1314187379</time>
+    <user>saschpe</user>
+    <comment>update to 0.13</comment>
+    <requestid>79598</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>7d3529894aeb7eb0ec1d18884c9dcb77</srcmd5>
+    <version>0.13</version>
+    <time>1319182283</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>262c28f434a6ba34ba2e9fad4a254f8a</srcmd5>
+    <version>0.14</version>
+    <time>1324458137</time>
+    <user>coolo</user>
+    <comment>- update to 0.14
+  * Fixes
+   - Fix version number in Log/Any.pm - Stephen Thirlwal</comment>
+    <requestid>97095</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>262c28f434a6ba34ba2e9fad4a254f8a</srcmd5>
+    <version>0.14</version>
+    <time>1340183868</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>262c28f434a6ba34ba2e9fad4a254f8a</srcmd5>
+    <version>0.14</version>
+    <time>1359109725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>262c28f434a6ba34ba2e9fad4a254f8a</srcmd5>
+    <version>0.14</version>
+    <time>1379663732</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1bb2c57d0093e016a18804d9486409b9</srcmd5>
+    <version>0.15</version>
+    <time>1386063776</time>
+    <user>coolo</user>
+    <comment>- updated to 0.15
+  * Fixes
+    - Hide 'package Log::Any::Adapter' from PAUSE/Module::Metadata - miyagawa
+- removed patches:
+  * noprovides.diff (now upstream)</comment>
+    <requestid>209049</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>1bb2c57d0093e016a18804d9486409b9</srcmd5>
+    <version>0.15</version>
+    <time>1409302359</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d3d58ce19c08b01b1c6679e097a0ebc7</srcmd5>
+    <version>1.032</version>
+    <time>1429107959</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296656</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ad68b34ec080546806f6aad9747952df</srcmd5>
+    <version>1.038</version>
+    <time>1455701121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359216</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2babad2bdd3bd935e0df4309c5c69581</srcmd5>
+    <version>1.040</version>
+    <time>1458120851</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368892</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e16ff0e5f9cf219d766c0928f9847a4d</srcmd5>
+    <version>1.042</version>
+    <time>1474886168</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424236</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6d8550825aae5123eaf24e210e123493</srcmd5>
+    <version>1.045</version>
+    <time>1479150941</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440138</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e553350809a6ba803d6c50856faa45e6</srcmd5>
+    <version>1.049</version>
+    <time>1491567657</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483266</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>eed1ac817fea0c022b04146e5118daff</srcmd5>
+    <version>1.700</version>
+    <time>1507065456</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530064</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4ced5761c1431b90fdaf45b2536d0cba</srcmd5>
+    <version>1.701</version>
+    <time>1507571100</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532519</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3f3d5dd1b684badf8af544a5b053fff1</srcmd5>
+    <version>1.703</version>
+    <time>1515505850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555056</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>baba5bb391bf0ce5ad140b71c521e1a5</srcmd5>
+    <version>1.705</version>
+    <time>1518187649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573985</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f35c3552aa290565a00f6b8bfdfa60ee</srcmd5>
+    <version>1.706</version>
+    <time>1532774373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623040</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>36bc680c1bb12c0da95c3a3b05f8737f</srcmd5>
+    <version>1.707</version>
+    <time>1535704977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631320</requestid>
+  </revision>
+</revisionlist>

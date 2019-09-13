@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54007986039372390cf911107ddaeb56</srcmd5>
+    <version>1.4.1</version>
+    <time>1520253797</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package for version 1.4.1
+</comment>
+    <requestid>582231</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>683b3e0dd3c5a43d5b540f77667b38fc</srcmd5>
+    <version>1.4.1</version>
+    <time>1545648259</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659686</requestid>
+  </revision>
+</revisionlist>

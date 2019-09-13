@@ -1,0 +1,387 @@
+<revisionlist>
+  <revision rev="1" vrev="10">
+    <srcmd5>f081796b5d27d0fc74d609e2729f9fb8</srcmd5>
+    <version>3.3.1</version>
+    <time>1168902947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="164">
+    <srcmd5>f081796b5d27d0fc74d609e2729f9fb8</srcmd5>
+    <version>3.3.1</version>
+    <time>1168902947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="165">
+    <srcmd5>85fd2a8f576bd4fe10888a6d4aef3935</srcmd5>
+    <version>3.3.1</version>
+    <time>1223459174</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="166">
+    <srcmd5>9b5d0b593ccce79e286a45ff3eb791e6</srcmd5>
+    <version>3.3.1</version>
+    <time>1231721844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="167">
+    <srcmd5>51b4748ccb12618e386da353643d57ef</srcmd5>
+    <version>3.3.1</version>
+    <time>1247846363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="169">
+    <srcmd5>51b4748ccb12618e386da353643d57ef</srcmd5>
+    <version>3.3.1</version>
+    <time>1247846363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="170">
+    <srcmd5>7db12497e1b3d8e4792a8d0c4ac70252</srcmd5>
+    <version>3.3.1</version>
+    <time>1268923875</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="172">
+    <srcmd5>7db12497e1b3d8e4792a8d0c4ac70252</srcmd5>
+    <version>3.3.1</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="173">
+    <srcmd5>7db12497e1b3d8e4792a8d0c4ac70252</srcmd5>
+    <version>3.3.1</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3c80d64e1080854910458ca286bb6b4d</srcmd5>
+    <version>4.5.1</version>
+    <time>1288710994</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51980 from user coolo
+</comment>
+    <requestid>51980</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>09dab2c21818fc6c8671599433d10e74</srcmd5>
+    <version>4.5.1</version>
+    <time>1288711001</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51980
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>df0ff68554df1c190015d6c6a75992e7</srcmd5>
+    <version>4.5.3</version>
+    <time>1290442758</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53680 from user anubisg1
+</comment>
+    <requestid>53680</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>27d73fc393b855c004eed847732e3842</srcmd5>
+    <version>4.5.3</version>
+    <time>1290442763</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53680
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>27d73fc393b855c004eed847732e3842</srcmd5>
+    <version>4.5.3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a32dd13e0e7826e6f565fdb75ff4de0b</srcmd5>
+    <version>4.5.4</version>
+    <time>1316460170</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>83035</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b5da03e5bfedd4e0a70c1bad7af084c3</srcmd5>
+    <version>4.5.5</version>
+    <time>1316681164</time>
+    <user>saschpe</user>
+    <comment>- Clean up spec file
+- Update to 4.5.5
+  - Improved pdb2gmx -chainsep option and reintroduced the -merge option.
+  - Fixed mdrun file appending truncating files to 0 bytes when
+    continuation runs stopped before writing new output.
+  - Fixed COM pulling with multiple constraints checking the
+    convergence of one constraint instead of all.
+  - Fixed some dihedrals in sugars in Gromos53a5/6 working on the
+    wrong atoms.
+  - AmberGS force field is now based on Amber94 instead of Amber96.
+  - Moved hydrogens in Charmm27 protein termini to separate charge
+    groups and added ACE and CT3 residue types.
+  - Many small fixes which avoid termination with fatal errors or
+    crashes in mdrun and tools.
+  - Many small updates to the manual pages of programs. (forwarded request 84299 from kwk)</comment>
+    <requestid>84316</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>b5da03e5bfedd4e0a70c1bad7af084c3</srcmd5>
+    <version>4.5.5</version>
+    <time>1319181944</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>e9c8c963c9924f2f4de87881bca95b00</srcmd5>
+    <version>4.5.5</version>
+    <time>1323191781</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>e9c8c963c9924f2f4de87881bca95b00</srcmd5>
+    <version>4.5.5</version>
+    <time>1340183412</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>02a0c2d67b6e441f1c153ea3fc666b61</srcmd5>
+    <version>4.5.5</version>
+    <time>1347618355</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134106</requestid>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>02a0c2d67b6e441f1c153ea3fc666b61</srcmd5>
+    <version>4.5.5</version>
+    <time>1359109005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8109a82cf95502cf3c543c29c7070549</srcmd5>
+    <version>4.6</version>
+    <time>1360005408</time>
+    <user>coolo</user>
+    <comment>- Update to 4.6
+  New features
+  - New Verlet non-bonded scheme which, by default, uses exact cut-off's
+    and a buffered pair-list.
+  - Multi-level hybrid parallelization (MPI + OpenMP + CUDA):
+    full OpenMP multithreading with the Verlet scheme;
+  - OpenMP mulitthreading for PME-only nodes with the group scheme;
+    native GPU acceleration using CUDA (supporte NVIDIA hardware).
+  - New x86 SIMD non-bonded kernels for the usual cut-off scheme, called
+    group scheme and the new verlet scheme, use x86 SIMD intrinsics (no
+    more assembly code):
+    SSE2
+    SSE4.1
+    AVX-128-FMA (for AMD Bulldozer/Piledriver)
+    AVX-256 (for Intel Sandy/Ivy Bridge)
+  - Automated OpenMP thread count choice to use all available cores.
+  - Automated CPU affinity setting: locking processes or threads to cores.
+  - Automated PP-PME (task) load-balancing: balancing non-bonded force and
+    PME mesh workload when the two are executed on different
+    compute-resources (i.e CPU and GPU or different CPUs). This enables
+    GPU-CPU and PP-PME process load balancing by shifting work from the
+    mesh to the non-bonded calculation.
+  - PPPM/P3M with analytical derivative at the same cost and with the same
+    features as PME.
+  - New, advanced free energy sampling techniques.
+  - AdResS adaptive resolution simulation support.
+  - Enforced rotation (&quot;rotational pulling&quot;)
+  - Build configuration now uses CMake, configure+autoconf/make no longer
+    supported. (The CMake build system features with a lot of automation
+    and cleverness under the hood and we know that the it might not always (forwarded request 150931 from kwk)</comment>
+    <requestid>150933</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a8f5411323452d57ee59bcbe9485566b</srcmd5>
+    <version>4.6.1</version>
+    <time>1362558959</time>
+    <user>coolo</user>
+    <comment>- Update to 4.6.1
+  Bugfix release
+  - increased shared object major version to 8, #1147
+  - updates to HTML manual, install guide, PDF manual, shell completions
+    copious minor bug fixes
+  - various build system upgrades and fixes #1143
+  - new and enhanced error messages
+  - fixes for AdResS bugs (neighbour list construction, flop accounting,
+    multiple tf tables)
+  - fixed PME timing counter issues #1125
+  - fixed PME load balance reporting
+  - fixed forcerec to work with tools like genion and g_disre #1136
+  - various GPU performance enhancements
+  - fixed sd integrator with OpenMP threading #1138
+  - various minor fixes for interacting with CUDA for GPUs
+  - fixes for g_tune_pme to cope with new mdrun behaviour and changed
+    command-line options (for both g_tune_pme and mdrun)
+  - more checks for system support for setting thread affinities
+  - removed inter-flag dependency in g_order
+  - fixed issues with free-energy pertubation soft-core and cut-offs #1146
+  - fixed issues with md-vv + nose-hoover + (nstcalcenergy &gt; nsttcouple)
+    #1129
+  - incorporated new changes from release 4.5.x branch
+  - prevented building with icc 11.1 and SSE4.1 because of known problems
+    #1126
+  - adding warning about not building with icc version &lt; 12 #1126
+  - fixed bug sorting atoms with GPUs introduced since 4.6 #1153
+  - fixed issues with automated download of regression tests #1150
+  - fixed bug with DD cut-off check and PME dynamic load balancing #1169 (forwarded request 157461 from kwk)</comment>
+    <requestid>157462</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>a8f5411323452d57ee59bcbe9485566b</srcmd5>
+    <version>4.6.1</version>
+    <time>1379662557</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>268996ca0f9b6ca55e69847506c86da5</srcmd5>
+    <version>4.6.5</version>
+    <time>1392113977</time>
+    <user>coolo</user>
+    <comment> (forwarded request 221740 from cjunghans)</comment>
+    <requestid>221759</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>268996ca0f9b6ca55e69847506c86da5</srcmd5>
+    <version>4.6.5</version>
+    <time>1409301103</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>bc9db4a904a61609d846b0410f64c509</srcmd5>
+    <version>5.0.1</version>
+    <time>1410204535</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247937</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6ccce7de29d16079c123e5ae4f7cb40c</srcmd5>
+    <version>5.0.2</version>
+    <time>1413476097</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>256827</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>085d520ff8084ba146051852dd3d5bc7</srcmd5>
+    <version>5.1</version>
+    <time>1445287884</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339016</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>95f439b8f980773a1a72810c8ae4cf23</srcmd5>
+    <version>2016</version>
+    <time>1472731354</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423167</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>13c3fb60cba9b14deadb432e84749b2b</srcmd5>
+    <version>2016.1</version>
+    <time>1478780338</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438899</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f0e3148261425a089862e4622335cef6</srcmd5>
+    <version>2016.3</version>
+    <time>1489653761</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479436</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>2a328531306bd9c27bc48a50e16ce9ec</srcmd5>
+    <version>2016.3</version>
+    <time>1494938607</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494476</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>0d87bd406c7513558ff21356df53f76d</srcmd5>
+    <version>2016.3</version>
+    <time>1502366766</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515274</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9656f6ff094568b1ab8c277bf727ada4</srcmd5>
+    <version>2016.4</version>
+    <time>1505680684</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526433</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>bdfc5fd9f9bbc4d81a12bd94b21ba650</srcmd5>
+    <version>2016.4</version>
+    <time>1508946535</time>
+    <user>dimstar_suse</user>
+    <comment>fixed build failure caused by openmpi</comment>
+    <requestid>536517</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>e4bc47e29caa2fd6d66eba20fdb6f3e1</srcmd5>
+    <version>2016.4</version>
+    <time>1510045082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538872</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3e9b8eb65d1777f6605f11706377cacb</srcmd5>
+    <version>2018</version>
+    <time>1516546158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567816</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fbb739fc267b9f83788628ab3b227b54</srcmd5>
+    <version>2018.1</version>
+    <time>1524237950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593844</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9a209b49b4f18132170d741fd39e5c36</srcmd5>
+    <version>2018.2</version>
+    <time>1533045406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624642</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>465ee3fb21045e1e393f4f3b9499e329</srcmd5>
+    <version>2018.4</version>
+    <time>1542124967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648638</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a0939677b5e760e928d97c979b243359</srcmd5>
+    <version>2019.2</version>
+    <time>1560970608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701640</requestid>
+  </revision>
+</revisionlist>

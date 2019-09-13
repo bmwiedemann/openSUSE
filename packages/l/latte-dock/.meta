@@ -1,0 +1,7 @@
+<package name="latte-dock" project="openSUSE:Factory">
+  <title>Latte Dock</title>
+  <description>Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids. It animates its contents by using parabolic zoom effect and trys to be there only when it is needed.
+
+&quot;Art in Coffee&quot;</description>
+  <devel project="KDE:Extra" package="latte-dock"/>
+</package>

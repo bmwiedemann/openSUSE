@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7cff2280ce51161875e042f7fed646b2</srcmd5>
+    <version>0.32.7</version>
+    <time>1476109203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>432597</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4f78812f8cf1014ec0f9d5c1da876c3d</srcmd5>
+    <version>0.32.9</version>
+    <time>1480018960</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441201</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c9acb26e154a3db31b1e19210061b46d</srcmd5>
+    <version>0.32.14</version>
+    <time>1504617286</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.32.14:
+  - Fixed drop_database version comparison
+  - Fixed a DeprecationWarning by using LargeBinary instead of Binary
+  - Added generic_repr decorator
+  - TimeZoneType support for static timezones
+  - Added SQLite support for PasswordType
+  - Added PhoneNumber as the python_type for PhoneNumberType
+  - Made auto_delete_orphans support backref tuples
+  - Added support for multi-column observers
+- convert to singlespec (forwarded request 518321 from tbechtold)</comment>
+    <requestid>518322</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a46d1a7b05f9acfb5d90d2fd15241129</srcmd5>
+    <version>0.32.16</version>
+    <time>1506524126</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528893</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>13dc8e589d0d6348a825d3c1e6e18cbf</srcmd5>
+    <version>0.32.18</version>
+    <time>1507571219</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532614</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7bc5928b302f014ce30d0a891b6c9608</srcmd5>
+    <version>0.32.19</version>
+    <time>1510150201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>536030</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>101ee50b3a0ef16af092c60f7a844c54</srcmd5>
+    <version>0.32.21</version>
+    <time>1510761487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541231</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>67368d06663a9228590b330ce7466501</srcmd5>
+    <version>0.33.0</version>
+    <time>1519145743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578202</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>828caf0abd5b43c3198c97510ae5ea51</srcmd5>
+    <version>0.33.1</version>
+    <time>1522062794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590818</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6b6c8bdeff93d2aef1eb5cb24d5a6acf</srcmd5>
+    <version>0.33.3</version>
+    <time>1525779528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605121</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>29acee69cf85f2c4ff92c5d03c52c938</srcmd5>
+    <version>0.33.4</version>
+    <time>1537263849</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636126</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d4c15014e4636c3279ff2a8fcc5e316b</srcmd5>
+    <version>0.33.5</version>
+    <time>1537964674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638277</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8726314af5dc5c9a9122b2b0d531add5</srcmd5>
+    <version>0.33.6</version>
+    <time>1539589603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641950</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4c7e597866cedfff9088673f5f3c6a27</srcmd5>
+    <version>0.33.8</version>
+    <time>1543224564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651323</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dc32878a3b1d135c876fb93bb52b2faa</srcmd5>
+    <version>0.33.9</version>
+    <time>1544441422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656753</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a0611af06c953951ff1a7193dadf929d</srcmd5>
+    <version>0.33.10</version>
+    <time>1546946944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663292</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6f07828dfc0bbda1ac30ed42aba6db86</srcmd5>
+    <version>0.33.11</version>
+    <time>1548064908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667299</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ca2b3f724f7b3040a445492af97440a4</srcmd5>
+    <version>0.34.0</version>
+    <time>1560760460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710134</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bca506394d2f2044cb5cc8a100b7563e</srcmd5>
+    <version>0.34.1</version>
+    <time>1563993395</time>
+    <user>dimstar_suse</user>
+    <comment>- Run fdupes
+- Add missing deps and recommends
+
+- update to version 0.34.1:
+  * Remove deprecation warnings (#379, pull request courtesy of
+    Le-Stagiaire)
+  * Drop py34 support</comment>
+    <requestid>718175</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2a23ef48671ee251b27d4d30de80f36c</srcmd5>
+    <version>0.34.2</version>
+    <time>1566894110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725981</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ac958ef05eab15ec466a4f260e5dea8</srcmd5>
+    <version>0.3</version>
+    <time>1343134931</time>
+    <user>coolo</user>
+    <comment>libotr based OTR plugins for irssi and xchat, please review</comment>
+    <requestid>128578</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bbb6507dc340f72cca157fecb04a1ed4</srcmd5>
+    <version>0.3</version>
+    <time>1353266751</time>
+    <user>namtrac</user>
+    <comment>The package currently does not build against libotr 4.0.0. For openSUSE Factory, build against older version of the library provided by libotr2, [bnc#789175] Just now builds against /standard, not /snapshot</comment>
+    <requestid>141202</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>bbb6507dc340f72cca157fecb04a1ed4</srcmd5>
+    <version>0.3</version>
+    <time>1359109089</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>bbb6507dc340f72cca157fecb04a1ed4</srcmd5>
+    <version>0.3</version>
+    <time>1379662682</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>bbb6507dc340f72cca157fecb04a1ed4</srcmd5>
+    <version>0.3</version>
+    <time>1409301245</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a3445f45265ceb295c0d0bb5a1e50e37</srcmd5>
+    <version>1.0.0</version>
+    <time>1409810169</time>
+    <user>coolo</user>
+    <comment>irssi-otr 1.0.0 with libotr 4, split out xchat-otr</comment>
+    <requestid>247462</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a5078540074ffcfe6b17bf12d566d10e</srcmd5>
+    <version>1.0.2</version>
+    <time>1483955694</time>
+    <user>dimstar_suse</user>
+    <comment>irssi-otr 1.0.2 boo#1016942</comment>
+    <requestid>447411</requestid>
+  </revision>
+</revisionlist>

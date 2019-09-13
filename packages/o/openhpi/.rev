@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5fc5f0281856a6a6bf0fe9fbbc933f95</srcmd5>
+    <version>3.8.0</version>
+    <time>1539593037</time>
+    <user>dimstar_suse</user>
+    <comment>First submit (fell off due a bad link in devel project or so,
+but is a needed in SLE15-SP1 due to a feature request).</comment>
+    <requestid>641310</requestid>
+  </revision>
+</revisionlist>

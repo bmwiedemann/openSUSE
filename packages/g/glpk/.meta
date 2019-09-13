@@ -1,0 +1,5 @@
+<package name="glpk" project="openSUSE:Factory">
+  <title>GNU Linear Programming Kit</title>
+  <description>The GLPK package is intended for solving large-scale linear programming, mixed integer programming, and other related problems. It is a set of routines written in ANSI C and organized in the form of a callable library.</description>
+  <devel project="science" package="glpk"/>
+</package>

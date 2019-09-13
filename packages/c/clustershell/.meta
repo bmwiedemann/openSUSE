@@ -1,0 +1,5 @@
+<package name="clustershell" project="openSUSE:Factory">
+  <title>ClusterShell</title>
+  <description>ClusterShell is a set of tools and a Python library to execute commands on cluster nodes in parallel depending on selected engine and worker mechanisms. Advanced node sets and node groups handling methods are provided to ease and improve the daily administration of large compute clusters or server farms. Command line utilities like clush, clubak and nodeset (or cluset) allow traditional shell scripts to take benefit of the features offered by the library.</description>
+  <devel project="network:cluster" package="clustershell"/>
+</package>

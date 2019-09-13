@@ -1,0 +1,213 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8aec46bfbee0f13227884086f01bfe5f</srcmd5>
+    <version>1.7.1</version>
+    <time>1511817333</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tilix-fix-1.7.1-build-on-32bits.patch to fix builds on i586 
+- Update to version 1.7.1
+  *  This release fixes a single issue with 1.7.0 where the default for the overlay scrollbar was set to false.
+- Run spec-cleaner
+- Remove buildignore for gcc-PIE not needed anymore.
+- Bump version of build dependency gtkd to 3.6.6 
+- Remove _service and add the specific source files
+- bump version to 1.6.4
+  * Dim option now dims the fonts and does not alter the background. The dim color option has been removed
+  * Added option to disable saving/restoring window state between invocations
+  * Added option to disable overlay scrollbar in favor of separate scrollbar widget
+  * Fixed problem with selecting non-existent bookmark causing a crash
+  * Enabled customizing keyboard shortcut for toggling local input synchronization
+  * Added abilitiy to specify window style from command line
+  * Added menu option to open CWD in file browser (i.e. Nautilus, etc)
+  * Fixed issue where opening a custom link could only be done once
+- bump version of build dependency gtkd to 3.6.5
+- spec-cleaner
+- add buildignore gcc-PIE to make this build for now are waiting for some fixes upstream:
+  https://github.com/dlang/phobos/pull/5586
+  
+- bump version to 1.5.6
+  * Added the ability to specify custom hyperlinks and triggers globally as well as in profiles
+  * Triggers now support executing a process and passing the output of the process to the terminal
+  * Fixed issue for CentOS and RHEL 7.x where it would not run on GTK 3.14
+  * Sidebar now ensures active session is shown when opening
+  * Removed the option to disable animation in quake mode, was causing other issues
+  * Fixed New Window options Split Down and Split Right
+  * Fixed various focus issues
+  * Added option to bookmarks to automatically insert line feed
+  * Fixed Wayland issue where dragging and dropping a terminal on the desktop did not create a new window like it does in X11
+- Upstream rename from terminix to tilix
+- bump version to 1.5.4
+  * Detaching terminal in Wayland by dropping it on desktop now works identically to X11
+  * Fixed issue with outdated LDC libraries on Fedora, this should allow COPR to work again
+  * Fixed issue with close dialog and long process names resulting in excessively wide dialog box
+  * Removed animation hint feature from quake mode as it was causing focus issues
+  * Fixed crash when loading multiple sessions from file
+- bump version to 1.5.2
+  * Removed Timeout from terminal to fix segfault with visual bell
+  * Fixed Nautilus plugin where it was crashing Nautilus for some users thanks to @bil-elmoussaoui
+  * Variables used in application title now resolve correctly.
+  * Fix version number
+- bump version to 1.5.0
+  * Added initial support for bookmarks
+  * Re-worked terminal menu to include bookmark and password options,
+    some lesser used options moved to a sub-menu
+  * Added a new feature to raise a notification if activity is
+    detected after a specified period of silence
+  * Search button now toggles depending if focused terminal has
+    search open
+  * Improved performance when using background images
+  * Added new Window Appearance preference
+  * Improved title editors in preferences to show available variables
+  * Re-worked -e option to fix some bugs, should work better across
+    more permutations
+  * Many bug fixes
+- update GtkD to 3.5.1
+- bump version to 1.4.2
+- add man page to files section
+- bump version 1.4.0
+- remove desktop.patch since this have been fixed upstream.
+- Modified %files section to include all files for package
+- initial packaging of version 0.59.0
+</comment>
+    <requestid>544481</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9b539363a17696dcc7c66daad7c159d1</srcmd5>
+    <version>1.7.1</version>
+    <time>1514569942</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>560441</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3dd191d4ec9b3fe70295e14379679d1</srcmd5>
+    <version>1.7.5</version>
+    <time>1516443998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564055</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>848598a0f8eea74e52f5d9121a34c8f4</srcmd5>
+    <version>1.7.7</version>
+    <time>1521193381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587078</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6c4f68fb649660d0d57220f04ee1efed</srcmd5>
+    <version>1.7.7</version>
+    <time>1523875770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596525</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ada2c10471259b24beda881856f9f16b</srcmd5>
+    <version>1.7.9</version>
+    <time>1526372083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606844</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>92541e43a48ebfb465e5baea94cbc1b7</srcmd5>
+    <version>1.8.1</version>
+    <time>1527583674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612431</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>af09c43185ccd04e4e2ba41edd4d3ab9</srcmd5>
+    <version>1.8.1</version>
+    <time>1533214696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626482</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fc6bba72ad77c6a0ac1d76ec30061d8e</srcmd5>
+    <version>1.8.3</version>
+    <time>1534940535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630818</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>30f1f153901f338f21cecfdcaca8852f</srcmd5>
+    <version>1.8.5</version>
+    <time>1535538424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632040</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f8eade70d71678b9d783f495255061d4</srcmd5>
+    <version>1.8.5</version>
+    <time>1538117617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638584</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>81319d34d31a44c7aa849ff84c0f799d</srcmd5>
+    <version>1.8.5</version>
+    <time>1543224511</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable build with ldc where dmd is not supported
+- Add patch to fix build with ldc:
+  * fix-ldc-link.patch
+</comment>
+    <requestid>651113</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>0a1ba47767460b89a540e3d984b1902f</srcmd5>
+    <version>1.8.5</version>
+    <time>1544441356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656168</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>900af765fb6f75e396c369e3b4d62250</srcmd5>
+    <version>1.8.9</version>
+    <time>1546946980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663426</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>47425a1a91b1d89623a976fb4bb05911</srcmd5>
+    <version>1.8.9</version>
+    <time>1548064597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666327</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a86ae5e0144514a19ba3ce7993f7ad8a</srcmd5>
+    <version>1.9.0</version>
+    <time>1552902228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685844</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dc76c98e3fd1b8b8348b10a1f57ab051</srcmd5>
+    <version>1.9.3</version>
+    <time>1559375477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706135</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>61b1bb832153b8202ce22d6bf6082a79</srcmd5>
+    <version>1.9.3</version>
+    <time>1559580660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706929</requestid>
+  </revision>
+</revisionlist>

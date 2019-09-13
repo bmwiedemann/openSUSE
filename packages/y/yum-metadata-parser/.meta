@@ -1,0 +1,5 @@
+<package name="yum-metadata-parser" project="openSUSE:Factory">
+  <title>A fast metadata parser for yum</title>
+  <description>Fast metadata parser for yum implemented in C.</description>
+  <devel project="system:packagemanager" package="yum-metadata-parser"/>
+</package>

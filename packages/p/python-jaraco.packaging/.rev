@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>565c379be79695b9e757904f28679f6e</srcmd5>
+    <version>4.1</version>
+    <time>1521193216</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-jaraco.packaging, required by python3-jaraco.itertools</comment>
+    <requestid>583891</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>11f2d3b36c253c1162642c98b0c53706</srcmd5>
+    <version>6.1</version>
+    <time>1551468351</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679740</requestid>
+  </revision>
+</revisionlist>

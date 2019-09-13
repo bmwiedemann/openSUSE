@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81241cfb05f3c3c0ab794ba10e2e7962</srcmd5>
+    <version>0.1.4</version>
+    <time>1367487738</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>173941</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>81241cfb05f3c3c0ab794ba10e2e7962</srcmd5>
+    <version>0.1.4</version>
+    <time>1379664266</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>81241cfb05f3c3c0ab794ba10e2e7962</srcmd5>
+    <version>0.1.4</version>
+    <time>1409302970</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a038fdf182815e9e38f596aae6ffd1b4</srcmd5>
+    <version>1.5.2</version>
+    <time>1481153413</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441393</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f6b0ec39e800cc1b88b2740ce8fa0b44</srcmd5>
+    <version>1.6.0</version>
+    <time>1491896481</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485020</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9671f065ea1c92295c24e948db1b9c6c</srcmd5>
+    <version>1.6.0</version>
+    <time>1494088284</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493137</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1a7cb6315370bca41a3e0275d133d53e</srcmd5>
+    <version>1.6.0</version>
+    <time>1535367237</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license to install License file</comment>
+    <requestid>629183</requestid>
+  </revision>
+</revisionlist>

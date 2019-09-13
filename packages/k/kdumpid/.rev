@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e0aaf3b43bceadf737d80782b69e711f</srcmd5>
+    <version>0.92</version>
+    <time>1375112520</time>
+    <user>coolo</user>
+    <comment>New package. See http://lists.opensuse.org/opensuse-factory/2013-07/msg00331.html</comment>
+    <requestid>184432</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e0aaf3b43bceadf737d80782b69e711f</srcmd5>
+    <version>0.92</version>
+    <time>1379662785</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>e0aaf3b43bceadf737d80782b69e711f</srcmd5>
+    <version>0.92</version>
+    <time>1409301352</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>00c20cbca332a34335a5c333fa4cb092</srcmd5>
+    <version>1.0</version>
+    <time>1415199299</time>
+    <user>coolo</user>
+    <comment>Upgrade to 1.0 and fix known regressions.</comment>
+    <requestid>259616</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6a03a38c6cf6b1edf2b512b07a072153</srcmd5>
+    <version>1.1</version>
+    <time>1454491190</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 1.1 (libkdumpfile-0.2.0 compatibility)</comment>
+    <requestid>357210</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ae5f99aa3f98f2819705c26e0014c488</srcmd5>
+    <version>1.2</version>
+    <time>1496225804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2:
+  * Switch to libkdumpfile-0.3.0</comment>
+    <requestid>494938</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f92881f8825234b538378f13dc22dbb8</srcmd5>
+    <version>1.2</version>
+    <time>1497944354</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502389</requestid>
+  </revision>
+</revisionlist>

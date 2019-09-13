@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>17b07c5536e86c5a9e8544ff005d8614</srcmd5>
+    <version>0~20130317</version>
+    <time>1366358133</time>
+    <user>coolo</user>
+    <comment>Joachim Metz has created a set of c libraries used by security tools.  The libxxx packages often include basic applications sub-packages which are useful by themselves.</comment>
+    <requestid>163816</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d945480c779f76112b19c98df0a77e84</srcmd5>
+    <version>0~20130317</version>
+    <time>1375284303</time>
+    <user>coolo</user>
+    <comment>Cleanup specfile
+Part of summer 2013 libyal refresh (forwarded request 185006 from gregfreemyer)</comment>
+    <requestid>185009</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d945480c779f76112b19c98df0a77e84</srcmd5>
+    <version>0~20130317</version>
+    <time>1379662944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9ffc57af6453904f9a5d8cb4185ddd80</srcmd5>
+    <version>0~20130904</version>
+    <time>1385386684</time>
+    <user>coolo</user>
+    <comment>version update to 20130904</comment>
+    <requestid>207807</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4874e23177538101a101682c576f6d25</srcmd5>
+    <version>0~20140105</version>
+    <time>1408089353</time>
+    <user>lnussel</user>
+    <comment>update to v0~20140105</comment>
+    <requestid>244717</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>4874e23177538101a101682c576f6d25</srcmd5>
+    <version>0~20140105</version>
+    <time>1409301555</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a858bc22f409ba480c1e1b22d732fb65</srcmd5>
+    <version>0~20150104</version>
+    <time>1420927506</time>
+    <user>dimstar_suse</user>
+    <comment>Part of libyal 2015 refresh - may need to go to staging D.  libcstring is a dependency and is currently in staging D.</comment>
+    <requestid>280466</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b23394a19ea8edf0ddcaee8d9e34603</srcmd5>
+    <version>0~20150507</version>
+    <time>1455021098</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356302</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ca755ae96e0a9abdf9dbb7596edf6072</srcmd5>
+    <version>0~20170902</version>
+    <time>1507197445</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0~20170902
+	* applied 2017 updates
+	* worked on tests
+	* improved handling of strings with invalid syntax
+</comment>
+    <requestid>530567</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>98c6075d1c9eb08b45bcda258f61fd2f</srcmd5>
+    <version>0~20180910</version>
+    <time>1560337690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695354</requestid>
+  </revision>
+</revisionlist>

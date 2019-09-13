@@ -1,0 +1,5 @@
+<package name="rds-tools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="science:HPC" package="rds-tools"/>
+</package>

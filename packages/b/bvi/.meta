@@ -1,0 +1,9 @@
+<package name="bvi" project="openSUSE:Factory">
+  <title>bvi</title>
+  <description>The bvi is a display-oriented editor for binary files,
+based on the vi texteditor. If you are familiar with vi,
+just start the editor and begin to edit! A bmore programm
+is also included in the package.  If you never heard about vi,
+maybe bvi is not the best choice for you.</description>
+  <devel project="editors" package="bvi"/>
+</package>

@@ -1,0 +1,9 @@
+<package name="meep" project="openSUSE:Factory">
+  <title>FDTD finite-difference time-domain solver</title>
+  <description>
+Meep (or MEEP) is a free finite-difference time-domain (FDTD)
+simulation software package developed at MIT to model electromagnetic
+systems.
+  </description>
+  <devel project="science" package="meep"/>
+</package>

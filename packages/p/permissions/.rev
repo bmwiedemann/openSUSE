@@ -1,0 +1,1071 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c929386f73ba16cd654145f48cd5bab3</srcmd5>
+    <version>2006.11.13</version>
+    <time>1166483848</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>71a9af7e07eb0c48fb598c624e4b8fe0</srcmd5>
+    <version>2007.1.10</version>
+    <time>1168448244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c3f5b01c2651cdbf8491a8b3555ec162</srcmd5>
+    <version>2007.1.18</version>
+    <time>1169081105</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b530df2bb10750fb6ad8a60407e62496</srcmd5>
+    <version>2007.2.25</version>
+    <time>1172442905</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cd3844266aa4a264180ce38af2a62b85</srcmd5>
+    <version>2007.4.18</version>
+    <time>1176914228</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5d2c1cd503f27f9aa69ad94c82a40bd2</srcmd5>
+    <version>2007.5.31</version>
+    <time>1180638610</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>51b026708ffdfe70497acc8540480804</srcmd5>
+    <version>2007.6.3</version>
+    <time>1180900861</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e789458de40262d36fd03f47c1fe7ba0</srcmd5>
+    <version>2007.6.12</version>
+    <time>1181666316</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9e2dd0c2b6c568b8edb406968126112a</srcmd5>
+    <version>2007.8.9</version>
+    <time>1186685594</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7eece884131866af48759c0756881c95</srcmd5>
+    <version>2007.8.10</version>
+    <time>1186731901</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>2115b8f731c1c4ff6b02db84ec74bf0b</srcmd5>
+    <version>2007.8.10</version>
+    <time>1186773764</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>08ccf810d47dca122024e8afd6eb1173</srcmd5>
+    <version>2007.10.12</version>
+    <time>1192227150</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>776b77728933f0f505275c7d1eede50f</srcmd5>
+    <version>2007.10.17</version>
+    <time>1192635309</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4875a336ddb7f53d8cfdead54fdc812a</srcmd5>
+    <version>2007.11.3</version>
+    <time>1194103022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7fff58dafb60d9c086419fb6c9d80a7c</srcmd5>
+    <version>2007.12.3</version>
+    <time>1196720994</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>aff57a25e20138941cfc0085ea78e9e6</srcmd5>
+    <version>2008.1.7</version>
+    <time>1199705822</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>38da05bc8f3bda481d7614566847e1df</srcmd5>
+    <version>2008.3.12</version>
+    <time>1205331811</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>89936be4dc152a7f4ab1dfff23c13868</srcmd5>
+    <version>2008.4.21</version>
+    <time>1208736223</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>3ae2246351d019ca9a58eda2be67bd77</srcmd5>
+    <version>2008.4.21</version>
+    <time>1208796697</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ae486d9a437242d9aab9d47215460f22</srcmd5>
+    <version>2008.5.7</version>
+    <time>1210197429</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e7f6892a74eab6ffa3cf0e7d34fee3a7</srcmd5>
+    <version>2008.6.2</version>
+    <time>1212447521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ade3a080c3bdd942fe332b79b6f8ad7b</srcmd5>
+    <version>2008.7.8</version>
+    <time>1215553528</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>aa085e7f75998dc956a9714a42a4f2d5</srcmd5>
+    <version>2008.7.15</version>
+    <time>1216156251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>14e0e02a66331ace6a6b5411249e018d</srcmd5>
+    <version>2008.9.13</version>
+    <time>1221281761</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8596666390969321e9c5a792b936464f</srcmd5>
+    <version>2008.9.26</version>
+    <time>1222434485</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d71c103b8901e159cf80197779c6d667</srcmd5>
+    <version>2008.10.22</version>
+    <time>1224693589</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1e52c65379e74923074089c92ea11ee3</srcmd5>
+    <version>2008.10.23</version>
+    <time>1224749475</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>93e5a881c27160dbbb3c953328332941</srcmd5>
+    <version>2008.11.7</version>
+    <time>1226068786</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>80093c2037665cd2df5b40f7ad5afc50</srcmd5>
+    <version>2008.11.25</version>
+    <time>1227626400</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8a5ff28eb43408ce645ea3665e0488c1</srcmd5>
+    <version>2009.3.2</version>
+    <time>1236005726</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>23c2a53e81c8dbc0b21083056c4317dd</srcmd5>
+    <version>2009.7.29</version>
+    <time>1248880459</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>744eb3b91bedb9834c9811ac6a1b68d4</srcmd5>
+    <version>2009.8.7</version>
+    <time>1249682676</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6e820dbd44eaa6956f73f867ac0d1af3</srcmd5>
+    <version>2009.8.13</version>
+    <time>1250122298</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/permissions based on submit request 17513 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f7b6a327cc96716a3166c07434c86bfc</srcmd5>
+    <version>2009.08.24.1152</version>
+    <time>1251300395</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/permissions based on submit request 18547 from user lnussel
+</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8d1eca5429c0b9cc34d78cbeb81b56d0</srcmd5>
+    <version>2009.08.27.1159</version>
+    <time>1251495773</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/permissions based on submit request 18957 from user lnussel
+</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>fbb8645cabda5230b431293c0c3fbed0</srcmd5>
+    <version>2009.10.07.1653</version>
+    <time>1254965649</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/permissions based on submit request 22021 from user lnussel
+</comment>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>fbb8645cabda5230b431293c0c3fbed0</srcmd5>
+    <version>2009.10.07.1653</version>
+    <time>1254965649</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/permissions based on submit request 22021 from user lnussel
+</comment>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>eedc5920127dea2ed2ae149a2de2b60b</srcmd5>
+    <version>2009.10.07.1653</version>
+    <time>1263034205</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/permissions based on submit request 28346 from user coolo
+</comment>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>4d4453e2ebe202c248f1e660a0e9acd4</srcmd5>
+    <version>2009.10.07.1653</version>
+    <time>1268925685</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c64606239acf7728272af1ecdf04fef9</srcmd5>
+    <version>2010.04.07.1644</version>
+    <time>1271723230</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/permissions based on submit request 38229 from user lnussel
+</comment>
+    <requestid>38229</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4556652489b59f1c5d2ed25929e19209</srcmd5>
+    <version>2010.04.23.1140</version>
+    <time>1272214104</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/permissions based on submit request 38579 from user lnussel
+</comment>
+    <requestid>38579</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>4556652489b59f1c5d2ed25929e19209</srcmd5>
+    <version>2010.04.23.1140</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>4556652489b59f1c5d2ed25929e19209</srcmd5>
+    <version>2010.04.23.1140</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>de9fa7184c5b3023003349ddc34474f1</srcmd5>
+    <version>2010.04.23.1140</version>
+    <time>1280741500</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/permissions based on submit request 44244 from user coolo
+</comment>
+    <requestid>44244</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>350de77e98ef95bb060330f90b6bf137</srcmd5>
+    <version>2010.09.22.1729</version>
+    <time>1285541190</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/permissions based on submit request 49053 from user lnussel
+</comment>
+    <requestid>49053</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>9c26ce8174200a172768ceed158ae781</srcmd5>
+    <version>2010.10.05.1532</version>
+    <time>1286314767</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/permissions based on submit request 49796 from user lnussel
+</comment>
+    <requestid>49796</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c52528203295ac8e606b46c3cebfe8ee</srcmd5>
+    <version>2010.10.18.1537</version>
+    <time>1288270330</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51485 from user lnussel
+</comment>
+    <requestid>51485</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>589bbac5b2940d7e634de30f5e005843</srcmd5>
+    <version>2010.10.18.1537</version>
+    <time>1288270337</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51485
+</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>e126fc3c3bcc82fe76d9256fa7efd827</srcmd5>
+    <version>2010.11.09.1206</version>
+    <time>1289417213</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52678 from user lnussel
+</comment>
+    <requestid>52678</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>236a95a28fb6c260799e0d2d4b979870</srcmd5>
+    <version>2010.11.09.1206</version>
+    <time>1289417223</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52678
+</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>161ed947b5debbc555dc491089cfe686</srcmd5>
+    <version>2010.11.16.1609</version>
+    <time>1289924595</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53202 from user lnussel
+</comment>
+    <requestid>53202</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>0509bb1839c43c9ac8964e69eb8d15a2</srcmd5>
+    <version>2010.11.16.1609</version>
+    <time>1289924605</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53202
+</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a36de9736a9f585536e1a808796055b0</srcmd5>
+    <version>2010.11.18.1151</version>
+    <time>1290096195</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53323 from user lnussel
+</comment>
+    <requestid>53323</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>5c47384ff9fcd23f68aa981d279aa672</srcmd5>
+    <version>2010.11.18.1151</version>
+    <time>1290096203</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53323
+</comment>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e6ed001f26d2bad7a1b2c851f0e9db41</srcmd5>
+    <version>2010.12.02.1122</version>
+    <time>1291303995</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54322 from user lnussel
+</comment>
+    <requestid>54322</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>d0792e5a7a24e4c1e17af1dfc9ffe86f</srcmd5>
+    <version>2010.12.02.1122</version>
+    <time>1291304004</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54322
+</comment>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>adb7034e3b6827cc68485f6649022c27</srcmd5>
+    <version>2011.02.09.1424</version>
+    <time>1297384106</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60423 from user lnussel
+</comment>
+    <requestid>60423</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>2390cf3812a36c6d15c5ca1b386561fb</srcmd5>
+    <version>2011.02.09.1424</version>
+    <time>1297384112</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60423
+</comment>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ac557807ba0ff685a5bfbe68d685d9b5</srcmd5>
+    <version>2011.02.14.0908</version>
+    <time>1297786630</time>
+    <user>darix</user>
+    <comment>Accepted submit request 61132 from user lnussel
+</comment>
+    <requestid>61132</requestid>
+  </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>ac557807ba0ff685a5bfbe68d685d9b5</srcmd5>
+    <version>2011.02.14.0908</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>e51d8884d222883fa595a4c9c37f35b9</srcmd5>
+    <version>2011.03.07.1608</version>
+    <time>1299591272</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63568 from user lnussel
+</comment>
+    <requestid>63568</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>65e459ee93e727aadbb9e4be1be8fb3a</srcmd5>
+    <version>2011.05.12.1347</version>
+    <time>1305551835</time>
+    <user>saschpe</user>
+    <comment>- change path to gnome-pty-helper (bnc#690202)</comment>
+    <requestid>70107</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>2a1d75e72df52e74ab7db6c7996e03f5</srcmd5>
+    <version>2011.05.26.1717</version>
+    <time>1306487764</time>
+    <user>saschpe</user>
+    <comment>- read /sys/kernel/fscaps for fscaps settings</comment>
+    <requestid>71529</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>7d8df306decc3df7f03d5d6710fd9541</srcmd5>
+    <version>2011.05.26.1717</version>
+    <time>1308561191</time>
+    <user>saschpe</user>
+    <comment>- disable fscaps by default as factory kernel still doesn't have the
+  required patch for auto detection</comment>
+    <requestid>74021</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>c3cffefd4ddf56e122c8fc986a4a6c03</srcmd5>
+    <version>2011.05.26.1717</version>
+    <time>1308561201</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74021
+</comment>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>8f589d868e73ac2501788285d69c9b01</srcmd5>
+    <version>2011.06.28.1452</version>
+    <time>1309269740</time>
+    <user>saschpe</user>
+    <comment>- remove setuid bit from opiesu (bnc#698772)</comment>
+    <requestid>74776</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>8ecf73345915e5267fa9822b33244459</srcmd5>
+    <version>2011.06.28.1452</version>
+    <time>1309269755</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74776
+</comment>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>251cbdcfddcc491630c67792e30ef868</srcmd5>
+    <version>2011.09.21.1000</version>
+    <time>1316618232</time>
+    <user>saschpe</user>
+    <comment>- fix typo in path
+
+- remove world writable /var/crash again (bnc#438041)
+- remove world writable permissions from /usr/src/packages (bnc#719217)
+
+- add chromium browser sandbox helper (bnc#718016)
+- don't offer PERMISSION_SECURITY in config anymore
+- remove setgid games bits (bnc#429882)</comment>
+    <requestid>84044</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>f60d5bfd0a33a78294c8eef3e0845fd6</srcmd5>
+    <version>2011.09.23.1037</version>
+    <time>1317024612</time>
+    <user>saschpe</user>
+    <comment>- set permission by default in SuSEconfig mode as permissions are
+  only set when called explicitly anyways (bnc#720010).</comment>
+    <requestid>84576</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>f60d5bfd0a33a78294c8eef3e0845fd6</srcmd5>
+    <version>2011.09.23.1037</version>
+    <time>1319182329</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>cc12bed4471f67f051ebe08b922fdfaf</srcmd5>
+    <version>2011.09.23.1037</version>
+    <time>1320672531</time>
+    <user>coolo</user>
+    <comment>- disable run time fscaps detection (bnc#728312)</comment>
+    <requestid>90216</requestid>
+  </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>172340bbc9b344e19c4b004f14ac19ed</srcmd5>
+    <version>2011.09.23.1037</version>
+    <time>1323193813</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>f2f0913cd08c8226f4ad9bfab02d13c1</srcmd5>
+    <version>2012.02.08.0914</version>
+    <time>1328712069</time>
+    <user>coolo</user>
+    <comment>- add duplicate entries for / and /usr (bnc#745622)
+
+- add scripts for automatic package sumission
+- drop zypp-refresh-wrapper (bnc#738677)</comment>
+    <requestid>103176</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>ba86bf527854d234b5a20c7ca4b8e6a6</srcmd5>
+    <version>2012.05.15.1646</version>
+    <time>1337955486</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121869</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>99edbcb1fc13aad5c1ba22c00c45d6ef</srcmd5>
+    <version>2012.05.31.1307</version>
+    <time>1338528168</time>
+    <user>coolo</user>
+    <comment>- Revert &quot;Use credentials from within the root file system&quot;
+  breaks use of --root option in brp-05-permissions</comment>
+    <requestid>123030</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>3f1a0e6d822f17f4a0f7bea8b2289927</srcmd5>
+    <version>2012.06.01.0923</version>
+    <time>1338582710</time>
+    <user>coolo</user>
+    <comment>- remove /var/cache/fonts (bnc#764885)
+- remove /var/lib/xemacs/lock/ (bnc#764887)</comment>
+    <requestid>123194</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>3f1a0e6d822f17f4a0f7bea8b2289927</srcmd5>
+    <version>2012.06.01.0923</version>
+    <time>1340183963</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>d8da6d21803da09cadb88a4e1100b6d2</srcmd5>
+    <version>2012.07.06.1059</version>
+    <time>1341820813</time>
+    <user>coolo</user>
+    <comment>- enable ecryptfs-utils setuid root mount wrapper (bnc#740110) in .easy (forwarded request 127268 from msmeissn)</comment>
+    <requestid>127291</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>81e24478d0e6eefb3c85bb30be0e0259</srcmd5>
+    <version>2012.09.25.1654</version>
+    <time>1348647056</time>
+    <user>coolo</user>
+    <comment>- no longer install SuSEconfig.permissions, SuSEconfig is gone. (forwarded request 135933 from msmeissn)</comment>
+    <requestid>135975</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>7cdba3367d4af91e1e04ad4a703f0521</srcmd5>
+    <version>2012.10.15.1348</version>
+    <time>1350364714</time>
+    <user>coolo</user>
+    <comment>- temporarily add su.core. workaround for the migration of su from
+  coreutils to util-linux needs to be reverted as soon as util-linux
+  is also in</comment>
+    <requestid>138189</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>3fbac9bf66bccda0082f3a45a0a4b0fb</srcmd5>
+    <version>2012.10.15.1348</version>
+    <time>1353600156</time>
+    <user>coolo</user>
+    <comment>- apply permissions settings in %post. During initial installation
+  some packages might be installed before the permissions package
+  due to dependency loops so we need to make sure their settings
+  are applied too. Also, on update of the permissions package
+  changed permission settings may need to be applied.</comment>
+    <requestid>142358</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>a868e07239ac725cf59d20989134dfed</srcmd5>
+    <version>2012.11.27.1640</version>
+    <time>1354529874</time>
+    <user>coolo</user>
+    <comment>- add /usr/bin/dumpcap to watchlist
+- make fscaps=1 the default on &quot;&quot;
+- added PERMISSION_FSCAPS to the sysconfig/security fillup template.
+- /bin/ping(6) was moved to /usr/bin/ping(6) /bin/eject was moved to /usr/bin/eject (forwarded request 143274 from msmeissn)</comment>
+    <requestid>143663</requestid>
+  </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>a868e07239ac725cf59d20989134dfed</srcmd5>
+    <version>2012.11.27.1640</version>
+    <time>1359109867</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>b13c746ca485db6a7ec446b278a1dc88</srcmd5>
+    <version>2013.01.29.1841</version>
+    <time>1359624523</time>
+    <user>coolo</user>
+    <comment>- Allow pcp to have stickybit worldwriteable directories (forwarded request 150329 from msmeissn)</comment>
+    <requestid>150430</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>f4c9ffcad3e10c05fa4a267f6008cb40</srcmd5>
+    <version>2013.05.04.1031</version>
+    <time>1367827874</time>
+    <user>coolo</user>
+    <comment>- cdrecord currently has no special permissions approved (bnc#550021)
+- append a / (forwarded request 174491 from msmeissn)</comment>
+    <requestid>174492</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>92d7da91e16745e06186c4d93558c143</srcmd5>
+    <version>2013.05.08.1626</version>
+    <time>1368450724</time>
+    <user>coolo</user>
+    <comment>- leave out readcd,cdda2wav,cdrecord until it is ready for the distro (bnc#550021) (forwarded request 174833 from msmeissn)</comment>
+    <requestid>174835</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>85d6635e01cf44b929d6401df5dc996d</srcmd5>
+    <version>2013.06.12.1309</version>
+    <time>1371148036</time>
+    <user>coolo</user>
+    <comment>- utempter helper binary moved in new version to /usr/lib/utempter/utempter (bnc#823302) (forwarded request 178641 from msmeissn)</comment>
+    <requestid>178642</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>8a34f88f191c1b5bb40952d03547f468</srcmd5>
+    <version>2013.08.21.1452</version>
+    <time>1377096437</time>
+    <user>scarabeus_factory</user>
+    <comment>- Chrome sandbox also allowed to be setuid root in secure mode now (bnc#718016)
+
+- use PERMISSION_FSCAPS
+
+- it is PERMISSIONS_FSCAPS (bnc#834790)
+- qemu-bridge-helper has no special privileges currently (bnc#765948) (forwarded request 195810 from msmeissn)</comment>
+    <requestid>195811</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>931556b3e645cf9fbc244cd122df6c25</srcmd5>
+    <version>2013.08.22.1339</version>
+    <time>1377248747</time>
+    <user>scarabeus_factory</user>
+    <comment>- do not use magic constants for strlen (bnc#834790 (forwarded request 195995 from msmeissn)</comment>
+    <requestid>195997</requestid>
+  </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>931556b3e645cf9fbc244cd122df6c25</srcmd5>
+    <version>2013.08.22.1339</version>
+    <time>1379663942</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>d79e15981c47842693906dba26451656</srcmd5>
+    <version>2013.10.28.1145</version>
+    <time>1383035611</time>
+    <user>coolo</user>
+    <comment>- GIT repo moved to GITHUB. (forwarded request 205002 from msmeissn)</comment>
+    <requestid>205003</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>055cfa7909100759b4d83e0c41c1a560</srcmd5>
+    <version>2014.03.24.1202</version>
+    <time>1395897319</time>
+    <user>coolo</user>
+    <comment>- permissions: incorporating capability for mtr, removing +s from ping
+  (bnc#865351) (forwarded request 227299 from msmeissn)</comment>
+    <requestid>227300</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>98edf7cced977f90d1dbe489b7a78b06</srcmd5>
+    <version>2014.04.15.1621</version>
+    <time>1397625904</time>
+    <user>coolo</user>
+    <comment>- duplicate /var/run entries to /run (bnc#873708) (forwarded request 230216 from msmeissn)</comment>
+    <requestid>230217</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>b0f2247e3c1c686c5cb805ebdcd16e80</srcmd5>
+    <version>2014.06.16.1345</version>
+    <time>1403121865</time>
+    <user>coolo</user>
+    <comment>- opiesu,wodim,vlock-main have no setuid root. (bnc#882035) (forwarded request 237512 from msmeissn)</comment>
+    <requestid>237513</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>64474968073925caf7f099a6d62a823b</srcmd5>
+    <version>2014.06.30.1743</version>
+    <time>1404307100</time>
+    <user>coolo</user>
+    <comment>- vlock_main lost its permission checking, so remove from here. (forwarded request 239152 from msmeissn)</comment>
+    <requestid>239153</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>c8ac01a09cce122e61b785affc86b469</srcmd5>
+    <version>2014.07.23.1321</version>
+    <time>1406272131</time>
+    <user>coolo</user>
+    <comment>- make innbind mode 4550  (bnc#876287)
+- permissions: Adding systemd-journal directory (bnc#888151)
+
+- permissions: Adding new kdesud path for KDE5 (bnc#872276)</comment>
+    <requestid>242030</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>69393ad09e8ff61494f8e5cdb89b529a</srcmd5>
+    <version>2014.08.01.1324</version>
+    <time>1407072935</time>
+    <user>coolo</user>
+    <comment>- append a / to /var/log/journal so the framework makes sure it is a directory bnc#888151 (forwarded request 243379 from msmeissn)</comment>
+    <requestid>243380</requestid>
+  </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>69393ad09e8ff61494f8e5cdb89b529a</srcmd5>
+    <version>2014.08.01.1324</version>
+    <time>1409302597</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>64aaed32bfa53a86fa7ab1f70dab3101</srcmd5>
+    <version>2014.08.26.1452</version>
+    <time>1409326938</time>
+    <user>coolo</user>
+    <comment>- Do not applies permissions from backup files (~ / .rpmsave / .rpmnew) (bnc#893370)
+- do not mention SuSEconfig anymore, long dead (bnc#843083) (forwarded request 246515 from msmeissn)</comment>
+    <requestid>246519</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>2234d400a9c1a5f5f91ec0b655e8bfdf</srcmd5>
+    <version>2014.11.05.1706</version>
+    <time>1415654119</time>
+    <user>dimstar_suse</user>
+    <comment>- %{_bindir}/get_printing_ticket turned to mode 700, setuid root no longer needed (bnc#685093)
+- permissions: incorporating squid changes from bnc#891268
+- hint that chkstat --system --set needs to be run after editing bnc#895647 (forwarded request 259902 from msmeissn)</comment>
+    <requestid>259903</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>21ce5daa04c5157e98334b8e0d053d19</srcmd5>
+    <version>2014.12.03.1512</version>
+    <time>1418251424</time>
+    <user>dimstar_suse</user>
+    <comment>- Added iouyap capabilities (bnc#904060) (forwarded request 263879 from msmeissn)</comment>
+    <requestid>263938</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>f517f5b1ad3a74cadee5e6b06f324ffc</srcmd5>
+    <version>2015.05.21.1505</version>
+    <time>1434003620</time>
+    <user>dimstar_suse</user>
+    <comment>- remove /usr/bin/get_printing_ticket; (bnc#906336) (forwarded request 311171 from msmeissn)</comment>
+    <requestid>311172</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>bd845dd20dabcabf22ac1b9737e96ed7</srcmd5>
+    <version>2015.09.28.1626</version>
+    <time>1444130597</time>
+    <user>dimstar_suse</user>
+    <comment>- adjusted radosgw to root:www mode 0750 (bsc#943471) (forwarded request 334552 from msmeissn)</comment>
+    <requestid>334554</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>b88a34a3ef9cd26ba54f93e509a0b190</srcmd5>
+    <version>2016.01.15.1451</version>
+    <time>1452941750</time>
+    <user>dimstar_suse</user>
+    <comment>- the apache folks renamed suexec2 to suexec with symlink. adjust both (bsc#962060) (forwarded request 353869 from msmeissn)</comment>
+    <requestid>353870</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>21a0201d83ca741817e558341400acab</srcmd5>
+    <version>20160413</version>
+    <time>1464299573</time>
+    <user>dimstar_suse</user>
+    <comment>- Introduce _service to easier update the package. For simplicity,
+  change the version from yyyy.mm.dd to yyyymmdd (which is eactly
+  %cd in the _service defintion). Upgrading is no problem.
+
+It's up to the maintainer if you prefer this method or whatever you
+currently use...
+
+the _service allows to do an update with those commands:
+===
+osc co Base:System permissions
+cd Base:System/permissions
+rm *xz
+osc service dr
+osc ar
+osc ci -m 'Update done'
+===
+
+It will add use the commit messages from git to formulate the .changelog in the form:
++ Update to version YYYYMMDD:
+  - Git commitlog 1
+  - Git commitlog 1
+
+Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
+    <requestid>397516</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>2158938d27787a7f41ecdc5321cff262</srcmd5>
+    <version>20160807</version>
+    <time>1471345250</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>419262</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>cd0eccaf1c02a17854b775ed5d60ffd0</srcmd5>
+    <version>20170602</version>
+    <time>1498201996</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildIgnore group(trusted): we don't really care for this group
+  in the buildroot and do not want to get system-users into the
+  bootstrap cycle as we can avoid it. (forwarded request 501680 from dimstar)</comment>
+    <requestid>501683</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>481135350b9ca6793e888eecb4abb788</srcmd5>
+    <version>20170913</version>
+    <time>1505502175</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20170913:
+  * Allow setuid for shadow newuidmap, newgidmap bsc#979282, bsc#1048645)
+
+- Update to version 20170906:
+  * permissions - copy dbus-daemon-launch-helper from / to /usr - bsc#1056764
+  * permissions: Adding suid bit for VBoxNetNAT (bsc#1033425)</comment>
+    <requestid>526050</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>ff35f8256879d0f78376ca0dce1a9c95</srcmd5>
+    <version>20170922</version>
+    <time>1506340236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20170922:
+  * Allow setuid root for singularity (group only) bsc#1028304</comment>
+    <requestid>528303</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>c80ec16c1e3252454f4947ec3d1b0725</srcmd5>
+    <version>20170928</version>
+    <time>1506869957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20170928:
+  * Fix invalid syntax bsc#1048645 bsc#1060738
+
+- Update to version 20170927:
+  * fix typos in manpages</comment>
+    <requestid>529130</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>e86517bfa5cad1e4a537f583b195ec3a</srcmd5>
+    <version>20171025</version>
+    <time>1509305010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20171025:
+  * Stricter permissions on cron directories (paranoid) and stricter permissions on sshd_config (secure/paranoid)</comment>
+    <requestid>536588</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>04d8142a2620d138c46ef26dd4ca4de5</srcmd5>
+    <version>20171106</version>
+    <time>1510406090</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20171106:
+  * Allow setuid root for singularity (group only) bsc#1028304</comment>
+    <requestid>539346</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>914b7a665fd037f1fae279a20dbd2b3d</srcmd5>
+    <version>20171129</version>
+    <time>1512546491</time>
+    <user>dimstar_suse</user>
+    <comment>- fillup is required for post, not pre installation (forwarded request 548215 from kukuk)</comment>
+    <requestid>548532</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>21ab9756a39d1f21ce890a6eddcc9886</srcmd5>
+    <version>20180125</version>
+    <time>1516970131</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180125:
+  * the eror should be reported for permfiles[i], not argv[i], as these are not the same files. (bsc#1047247)
+  * make btmp root:utmp (bsc#1050467)
+
+- Update to version 20180115:
+  * - polkit-default-privs: usbauth (bsc#1066877)</comment>
+    <requestid>569510</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>8fc4af9529a1d587a5272b79c6b8b492</srcmd5>
+    <version>20180508</version>
+    <time>1526219595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180508:
+  * Capabilities for usage of Wireshark for non-root (bsc#957624)</comment>
+    <requestid>605257</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>d800420070412c95a8ec81cbfd2d39cd</srcmd5>
+    <version>20180724</version>
+    <time>1533214054</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180724:
+  * Fix wrong file path in help string
+  * whitelisting: add spice-gtk usb helper setuid binary (bnc#1101420) (forwarded request 624972 from mgerstner)</comment>
+    <requestid>625020</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>e3e94408e5993459474b1880e0cff577</srcmd5>
+    <version>20180802</version>
+    <time>1533549165</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180802:
+  * whitelisting: added smc-tools LD_PRELOAD library (bsc#1102956)</comment>
+    <requestid>627117</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>ad32cc6a3f662a34029fd4d69c4b9067</srcmd5>
+    <version>20180827</version>
+    <time>1535440790</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180827:
+  * setuid whitelisting: add firejail binary (bsc#1059013)
+
+- Update to version 20180810:
+  * setuid whitelisting: add lxc-user-nic (bsc#988348)</comment>
+    <requestid>631726</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>cfe52c7fab8d58f5203567e4fb027967</srcmd5>
+    <version>20181030</version>
+    <time>1541454589</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20181030:
+  * capability whitelisting: allow cap_net_bind_service for ns-slapd from 389-ds
+
+- Update to version 20181029:
+  * setuid whitelisting: add fusermount3 (bsc#1111230)
+
+- Update to version 20181025:
+  * setuid whitelisting: add authbind binary (bsc#1111251)</comment>
+    <requestid>645523</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>e92241d2e928fe4c07b5a6acfdc0aedf</srcmd5>
+    <version>20181116</version>
+    <time>1543223573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20181116:
+  * zypper-plugin: new plugin to fix bsc#1114383
+
+- Update to version 20181112:
+  * singularity: remove -suid binaries that have been dropped since version
+  2.4 (bsc#1028304)</comment>
+    <requestid>649630</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>255aff34ccb78aa25a4b9165bbfbaeb3</srcmd5>
+    <version>20190212</version>
+    <time>1550580891</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>674669</requestid>
+  </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>e39b151e3a7ff67ee5cc794a5552b622</srcmd5>
+    <version>unknown</version>
+    <time>1557141578</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed versions. Removed set_version from _service file, doesn't
+  work with the new packaging. Call fix_version.sh to set current
+  date as version instead
+- Fixed requires for -config and -zypp-plugin
+
+- Update to version 20190429:
+  * removed entry for /var/cache/man. Conflicts with packaging and man:man is
+    the better setting anyway (bsc#1133678)
+  * fixed error in description of permissions.paranoid. Make it clear that this
+    is not a usable profile, but intended as a base for own developments
+
+- Fix RPM group, fix hard requirement on documentation.
+  Update description typography.
+
+- Created new subpackages -config, -doc and standalone package chkstat 
+  where we can start a better versioning scheme and require it from the 
+  original package</comment>
+    <requestid>700154</requestid>
+  </revision>
+  <revision rev="123" vrev="3">
+    <srcmd5>e7ff2b971d1f0981d1e84b66c24fcea3</srcmd5>
+    <version>unknown</version>
+    <time>1561557690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190521:
+  * singluarity: Add starter-suid for version 3.2.0
+  * adjust settings for amanda to current binary layout
+
+- Move BuildRequires: back to main package
+
+- Moved requires to subpackages (bsc#1137257)</comment>
+    <requestid>709714</requestid>
+  </revision>
+  <revision rev="124" vrev="4">
+    <srcmd5>31ba1e400d5854644286f23fadf36206</srcmd5>
+    <version>unknown</version>
+    <time>1563258517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190711:
+  * iputils: Add capability permissions for clockdiff (bsc#1140994)
+
+- Update to version 20190710:
+  * iputils/ping: Drop effective capability
+  * iputils/ping6: Remove definitions</comment>
+    <requestid>714806</requestid>
+  </revision>
+  <revision rev="125" vrev="5">
+    <srcmd5>494f58c3bf69f53ae17191d211539716</srcmd5>
+    <version>unknown</version>
+    <time>1568190278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190830:
+  * dumpcap: remove 'other' executable bit because of capabilities (boo#1148788, CVE-2019-3687)
+
+- Update to version 20190829:
+  * add one more missing slash for icinga2
+  * fix more missing slashes for directories
+
+- Update to version 20190820:
+  * cron directory permissions: add slashes</comment>
+    <requestid>727267</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>251e8f99b5454393c258b55ccebcfb3f</srcmd5>
+    <version>0.1</version>
+    <time>1461334974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>368514</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>919e99f1689bf70e01b4b638a7a7efa9</srcmd5>
+    <version>0.1</version>
+    <time>1509193335</time>
+    <user>dimstar_suse</user>
+    <comment>- Change dependency from lxqt-common to lxqt-themes
+</comment>
+    <requestid>537211</requestid>
+  </revision>
+</revisionlist>

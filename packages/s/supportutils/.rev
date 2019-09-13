@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69af5b26d5a81a18948ba87b82626e20</srcmd5>
+    <version>3.1</version>
+    <time>1515505876</time>
+    <user>dimstar_suse</user>
+    <comment>Primarily for SLE15, this has a 3.1 version change</comment>
+    <requestid>558627</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>de0b2e713d9d0b836409907bc9c087d4</srcmd5>
+    <version>3.1</version>
+    <time>1516359174</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>563938</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8b34fca20117b67eee6c27ab2772e296</srcmd5>
+    <version>3.1</version>
+    <time>1516634296</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed docker package detection (bsc#1069457) (forwarded request 567801 from jrecord)</comment>
+    <requestid>567802</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>88c44b30e17734e6e4a513cc9c1f4472</srcmd5>
+    <version>3.1</version>
+    <time>1516804327</time>
+    <user>dimstar_suse</user>
+    <comment>- Added transactional update with OPTION_TRANSACTIONAL=1
+- Updated supportconfig.conf.5 with OPTION_TRANSACTIONAL (forwarded request 568728 from jrecord)</comment>
+    <requestid>568729</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f54e0bf56972b6d90de7489128516c94</srcmd5>
+    <version>3.1</version>
+    <time>1517167941</time>
+    <user>dimstar_suse</user>
+    <comment>- Added os-release processing (bsc#1077758)
+- Removed invalid string tty string (bsc#1077681)
+- Added SLE15 taint values (bsc#1077683) (forwarded request 570002 from jrecord)</comment>
+    <requestid>570003</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1fd19f3287cd1739c4ee9baf9a372953</srcmd5>
+    <version>3.1</version>
+    <time>1517323456</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1077813 bsc#1071294 bsc#1077818 (forwarded request 570788 from jrecord)</comment>
+    <requestid>570789</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>9a870867348fd345c3537ed739ef12f9</srcmd5>
+    <version>3.1</version>
+    <time>1517824346</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1079137 bsc#1071545 bsc#1078638 bsc#1078318 bsc#1078168 (forwarded request 572116 from jrecord)</comment>
+    <requestid>572117</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>6de3e67072f15175876e3d828297d77f</srcmd5>
+    <version>3.1</version>
+    <time>1522702201</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license instead of %doc [bsc#1082318] (forwarded request 591129 from kukuk)</comment>
+    <requestid>593009</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>64414800fce4e39500aa61666c7f3e77</srcmd5>
+    <version>3.1</version>
+    <time>1550049417</time>
+    <user>dimstar_suse</user>
+    <comment>Updated from github</comment>
+    <requestid>670159</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>18bf7867cfb5f6ac21193afe50080799</srcmd5>
+    <version>3.1</version>
+    <time>1551027796</time>
+    <user>coolo</user>
+    <comment>Updates with security fixes</comment>
+    <requestid>677321</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>0450c4c0de89a8426b5b6cf15337e715</srcmd5>
+    <version>3.1</version>
+    <time>1551784626</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1120049 bsc#1094225 bsc#1127063 bsc#1121043 bsc#1109664 bsc#1127069</comment>
+    <requestid>679589</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>03bfd0c161e7013e481cf0641f687197</srcmd5>
+    <version>3.1.1</version>
+    <time>1552464452</time>
+    <user>dimstar_suse</user>
+    <comment>update for 15 sp1</comment>
+    <requestid>682306</requestid>
+  </revision>
+</revisionlist>

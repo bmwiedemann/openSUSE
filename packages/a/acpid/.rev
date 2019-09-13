@@ -1,0 +1,663 @@
+<revisionlist>
+  <revision rev="1" vrev="51">
+    <srcmd5>e9bb0d60f244c5836289cd2c532e7769</srcmd5>
+    <version>1.0.4</version>
+    <time>1168901450</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="63">
+    <srcmd5>ef4daf6640af56912cec48951c1ba02c</srcmd5>
+    <version>1.0.4</version>
+    <time>1175174892</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="65">
+    <srcmd5>3b7ef480f24b4845b167489385b28251</srcmd5>
+    <version>1.0.4</version>
+    <time>1176390002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="68">
+    <srcmd5>8aa713446c616c9135ca4145d0cc82c2</srcmd5>
+    <version>1.0.4</version>
+    <time>1177450022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="77">
+    <srcmd5>374b7abc3b3d6b19170eea756a6a86de</srcmd5>
+    <version>1.0.4</version>
+    <time>1180997071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="81">
+    <srcmd5>52d23e697e0d4137c7f2d0eb72f19893</srcmd5>
+    <version>1.0.4</version>
+    <time>1182294739</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>35d16db422d529651e948a7abc52bb44</srcmd5>
+    <version>1.0.6</version>
+    <time>1183588351</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>91fac3d1433445875f10c9f07cca78ee</srcmd5>
+    <version>1.0.6</version>
+    <time>1185814076</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>398adf367293d581694ae47f7fc6afd6</srcmd5>
+    <version>1.0.6</version>
+    <time>1185820631</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>b1e9e887dabc0712b33364e2d747ade7</srcmd5>
+    <version>1.0.6</version>
+    <time>1186673840</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>12a14902d69f09d5de077517f4bca73c</srcmd5>
+    <version>1.0.6</version>
+    <time>1189526729</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="46">
+    <srcmd5>0edba01a7613f782d9176d945f37d74a</srcmd5>
+    <version>1.0.6</version>
+    <time>1204159688</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="61">
+    <srcmd5>7758a755321cef1f17e06c825e1f2612</srcmd5>
+    <version>1.0.6</version>
+    <time>1211402303</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="65">
+    <srcmd5>46916392d8bf2f1d7a72ee78dbc530b6</srcmd5>
+    <version>1.0.6</version>
+    <time>1214179589</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="76">
+    <srcmd5>1e1a6a1ff1ac952f07bbc582ed243349</srcmd5>
+    <version>1.0.6</version>
+    <time>1219076216</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="81">
+    <srcmd5>2ead88c9d72d67ca015f0b5d441ce80b</srcmd5>
+    <version>1.0.6</version>
+    <time>1220288271</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="88">
+    <srcmd5>19cba7c29da1ffb465d43b44a528ad7f</srcmd5>
+    <version>1.0.6</version>
+    <time>1224689384</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="89">
+    <srcmd5>2182611b5774b4b2c50acccc5301c9b7</srcmd5>
+    <version>1.0.6</version>
+    <time>1226936226</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="90">
+    <srcmd5>f433e88e64075d13343ec6b52ae42fea</srcmd5>
+    <version>1.0.6</version>
+    <time>1233017628</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fbf70fa84f40ec0d1aafe51d66b72aa3</srcmd5>
+    <version>1.0.8</version>
+    <time>1233949679</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>d695c0718f3f412b366e7be830ba98d8</srcmd5>
+    <version>1.0.8</version>
+    <time>1239802251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ab34e027643e49ea08b3780d43ccd5e6</srcmd5>
+    <version>1.0.10</version>
+    <time>1240601031</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>08ce3863b7bfab9b4146a63077cd91c1</srcmd5>
+    <version>1.0.10</version>
+    <time>1247273756</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>fd5292b9aaf6b27fc86f84712bbd5b3a</srcmd5>
+    <version>1.0.10</version>
+    <time>1253649040</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/acpid based on submit request 20798 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>fd5292b9aaf6b27fc86f84712bbd5b3a</srcmd5>
+    <version>1.0.10</version>
+    <time>1253649040</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/acpid based on submit request 20798 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>c17a5026aebcbb14dad2db88777fd183</srcmd5>
+    <version>1.0.10</version>
+    <time>1268922851</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>c17a5026aebcbb14dad2db88777fd183</srcmd5>
+    <version>1.0.10</version>
+    <time>1278667335</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>c17a5026aebcbb14dad2db88777fd183</srcmd5>
+    <version>1.0.10</version>
+    <time>1278678561</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d53a736d45d1caddb2f2c950ccd9bc49</srcmd5>
+    <version>2.0.6</version>
+    <time>1286138600</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/acpid based on submit request 49672 from user elvigia
+</comment>
+    <requestid>49672</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>90966d5bae02abb478660734a2ba49c7</srcmd5>
+    <version>2.0.6</version>
+    <time>1287009851</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/acpid based on submit request 50420 from user a_jaeger
+</comment>
+    <requestid>50420</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>8ace73cb277d4ded919de1be17f0757f</srcmd5>
+    <version>2.0.6</version>
+    <time>1289419814</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52639 from user elvigia
+</comment>
+    <requestid>52639</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>8871c4912b9b8c6bdc14d7b73fbd6049</srcmd5>
+    <version>2.0.6</version>
+    <time>1289419821</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52639
+</comment>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>44edd62488745f429c7f93492c975369</srcmd5>
+    <version>2.0.6</version>
+    <time>1290435796</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53623 from user seife
+</comment>
+    <requestid>53623</requestid>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>f1d62d00e013999bd2810bc55ef1ebe1</srcmd5>
+    <version>2.0.6</version>
+    <time>1290435806</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53623
+</comment>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>74fd47fd07288dc74e8a580d214f1351</srcmd5>
+    <version>2.0.7</version>
+    <time>1293576850</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56604 from user dirkmueller
+</comment>
+    <requestid>56604</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>a41819d5b2e4b41d74c79d0bce9c7f1d</srcmd5>
+    <version>2.0.7</version>
+    <time>1293576862</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56604
+</comment>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>a41819d5b2e4b41d74c79d0bce9c7f1d</srcmd5>
+    <version>2.0.7</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>880ffd3c44c6c0942bfd4f2e81959268</srcmd5>
+    <version>2.0.8</version>
+    <time>1299757818</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63721 from user coolo
+</comment>
+    <requestid>63721</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>7e1f050c49ae87f858840ff0de53a0b9</srcmd5>
+    <version>2.0.8</version>
+    <time>1299757824</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63721
+</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ac2c6faf276357fa5b88115c4cec2111</srcmd5>
+    <version>2.0.9</version>
+    <time>1303382103</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67913 from user licensedigger
+</comment>
+    <requestid>67913</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a726be5a61ddb15b39270a6019d030d4</srcmd5>
+    <version>2.0.10</version>
+    <time>1308213991</time>
+    <user>saschpe</user>
+    <comment>- Version update to 2.0.10 for systemd support</comment>
+    <requestid>73781</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>b219543b40877170de23d446513518af</srcmd5>
+    <version>2.0.10</version>
+    <time>1308214002</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73781
+</comment>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>84a38d6e038b590841a0d559e91f4518</srcmd5>
+    <version>2.0.10</version>
+    <time>1314188908</time>
+    <user>saschpe</user>
+    <comment>Remove _service file. (forwarded request 79561 from a_jaeger)</comment>
+    <requestid>79562</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>d61925dfb4d1cd581009870676a83a22</srcmd5>
+    <version>2.0.10</version>
+    <time>1314188917</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79562
+</comment>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>554fdd11a12661368e1e2330012acf3f</srcmd5>
+    <version>2.0.10</version>
+    <time>1314262896</time>
+    <user>saschpe</user>
+    <comment>- Use systemd macros to enable acpid service.</comment>
+    <requestid>79717</requestid>
+  </revision>
+  <revision rev="46" vrev="6">
+    <srcmd5>fef5532132a4b39d42384763f7a1b446</srcmd5>
+    <version>2.0.10</version>
+    <time>1314262904</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79717
+</comment>
+  </revision>
+  <revision rev="47" vrev="7">
+    <srcmd5>59077e4087b4f00e238cc2ee1aabb7e8</srcmd5>
+    <version>2.0.10</version>
+    <time>1316515791</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82704 from jengelh)</comment>
+    <requestid>83655</requestid>
+  </revision>
+  <revision rev="48" vrev="8">
+    <srcmd5>78e397a342ff8eda7424ef321f6b10d0</srcmd5>
+    <version>2.0.10</version>
+    <time>1317024186</time>
+    <user>saschpe</user>
+    <comment>- Ensure acpid is enabled on initial install, under systemd (forwarded request 84622 from fcrozat)</comment>
+    <requestid>84628</requestid>
+  </revision>
+  <revision rev="49" vrev="9">
+    <srcmd5>c16997e0d3141d1c0f718bba3482ed26</srcmd5>
+    <version>2.0.10</version>
+    <time>1317211329</time>
+    <user>saschpe</user>
+    <comment>- Use latest systemd RPM macros. (forwarded request 85108 from fcrozat)</comment>
+    <requestid>85190</requestid>
+  </revision>
+  <revision rev="50" vrev="11">
+    <srcmd5>c16997e0d3141d1c0f718bba3482ed26</srcmd5>
+    <version>2.0.10</version>
+    <time>1319181765</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="51" vrev="12">
+    <srcmd5>80a7bdc9e4881d264e927e131e001b44</srcmd5>
+    <version>2.0.10</version>
+    <time>1323190644</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>2cf7989c80e3b9d93e06e16b82ef00d9</srcmd5>
+    <version>2.0.13</version>
+    <time>1324830766</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>97477</requestid>
+  </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>a00da3967a0f68e5dcd39ba009d55272</srcmd5>
+    <version>2.0.13</version>
+    <time>1325231117</time>
+    <user>coolo</user>
+    <comment>- Fix wrong size parameter in memset call (forwarded request 98272 from namtrac)</comment>
+    <requestid>98276</requestid>
+  </revision>
+  <revision rev="54" vrev="7">
+    <srcmd5>ae28a57ca45e3023b3bba5bc7c4aae5b</srcmd5>
+    <version>2.0.13</version>
+    <time>1325767651</time>
+    <user>coolo</user>
+    <comment>- Put acpid back in %{_sbindir} /usr is nowdays mounted by the 
+  initrd (forwarded request 98464 from elvigia)</comment>
+    <requestid>98822</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e9f83de84be91bb7f2c89bab771697aa</srcmd5>
+    <version>2.0.14</version>
+    <time>1327500059</time>
+    <user>coolo</user>
+    <comment>update to acpid-2.0.14 (forwarded request 100508 from tabraham1)</comment>
+    <requestid>100512</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>7075f0dd45a939d25f5fe4e9d37b8c14</srcmd5>
+    <version>2.0.15</version>
+    <time>1332239080</time>
+    <user>coolo</user>
+    <comment>update to 2.0.15 (forwarded request 109840 from tabraham1)</comment>
+    <requestid>109919</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5f11011c1f66909d2d9b4dfdcda4b6ff</srcmd5>
+    <version>2.0.16</version>
+    <time>1334215035</time>
+    <user>coolo</user>
+    <comment>update to 2.0.16 (forwarded request 112304 from tabraham1)</comment>
+    <requestid>112337</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>5f11011c1f66909d2d9b4dfdcda4b6ff</srcmd5>
+    <version>2.0.16</version>
+    <time>1340183165</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>f75d8567ec67816feb08201bbf823852</srcmd5>
+    <version>2.0.16</version>
+    <time>1345973435</time>
+    <user>namtrac</user>
+    <comment>- Improve systemd unit
+ * run in the foreground
+ * use netlink only as /proc/acpi files are deprecated. (forwarded request 131174 from elvigia)</comment>
+    <requestid>131363</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>ddd8552e6999289ad1a3d8c52ed69fee</srcmd5>
+    <version>2.0.17</version>
+    <time>1348668538</time>
+    <user>coolo</user>
+    <comment>- 2.0.17 release
+    (configure.ac)  (Ted Felix)
+  - Check for chmod.
+    (configure.ac)  (Ted Felix)
+  - Add support for tablet mode switch.  
+    (input_layer.c)  (Fabian Henze)
+  - Incorrect sizeof() usage for memset.  
+    (libnetlink.c)  (Auke Kok)
+  - Close some unclosed fd's.  
+    (acpid.c event.c ud_socket.c)  (Auke Kok)
+  - Do not create pid file when running in foreground.  
+    (acpid.c)  (Cristian Rodriguez)
+  - Free regular expression.  
+    (event.c)  (Cristian Rodriguez)
+- acpid-wrong-memset.patch removed, is upstream</comment>
+    <requestid>135934</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>ddd8552e6999289ad1a3d8c52ed69fee</srcmd5>
+    <version>2.0.17</version>
+    <time>1359108640</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>d6b710891901c2565c2c5ff4a5e3fb21</srcmd5>
+    <version>2.0.19</version>
+    <time>1370446691</time>
+    <user>coolo</user>
+    <comment>- Also remove After=syslog.target from unit file (target does 
+  not exists anymore) 
+
+- 2.0.19 release
+- README improvements  (README)  (Ted Felix)
+- man page additions  (acpid.8)  (Ted Felix)
+    (kacpimon/libnetlink.c)  (Ted Felix)
+- Add support for mic mute (KEY_MICMUTE).
+    (input_layer.c)  (Ted Felix)
+- Fix format of video/tabletmode event string.  CRITICAL.
+    (input_layer.c)  (Ted Felix)
+- Add how to kill acpid to kacpimon man page.
+    (kacpimon.8)  (Ted Felix)
+- Add info on logind.conf's HandlePowerKey to man page.
+    (acpid.8)  (Ted Felix) 
+- Remove ExecStop from systemd unit, not required. (forwarded request 177314 from elvigia)</comment>
+    <requestid>177670</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>1247794a6a7c9b979772b12a0d16f8e4</srcmd5>
+    <version>2.0.19</version>
+    <time>1375627679</time>
+    <user>coolo</user>
+    <comment>- Use sourceforge download as below http://tedfelix.com/linux/
+  the tar ball has been removed
+
+- remove power and sleep button handlers -- now handled by systemd
+  just keep them as examples in the documentation
+
+- remove obsolete thinkpad_acpi modprobe config (bnc#792172)</comment>
+    <requestid>185598</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>e59de88355a24535445c95d524610237</srcmd5>
+    <version>2.0.19</version>
+    <time>1376858612</time>
+    <user>scarabeus_factory</user>
+    <comment>- power_button: iterate systemd-logind sessions and do nothing if a
+  active X session found (bnc#810125) (forwarded request 186826 from michael-chang)</comment>
+    <requestid>187004</requestid>
+  </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>e59de88355a24535445c95d524610237</srcmd5>
+    <version>2.0.19</version>
+    <time>1379661949</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="66" vrev="6">
+    <srcmd5>80ec0b30bceb965703ee9f738920d898</srcmd5>
+    <version>2.0.19</version>
+    <time>1385099622</time>
+    <user>coolo</user>
+    <comment>Drop sysvinit dupport; acpid doesn't build for distributions which
+  use sysvinit (forwarded request 207065 from posophe)</comment>
+    <requestid>207829</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>6fedf00ea8d2366dbea9ac26a762236d</srcmd5>
+    <version>2.0.20</version>
+    <time>1386936096</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.0.20
+  - Improve build and release documentation.  
+    (README)  (Ted Felix)
+  - Fix for Debian bug #719659.  Improved handling of systems with
+    large numbers of input layer connections.  Better error handling.
+    (connection_list.h connection_list.c inotify_handler.c input_layer.c 
+    netlink.c proc.c sock.c acpid.c)  (Ted Felix, Ben Winslow)
+  - Update .gitignore for Eclipse.
+    (.gitignore)  (Ted Felix)
+- Remove unused rcacpid from sources
+- Change systemd for systemd-rpm-macros requirement; full systemd
+  environment is not needed to build
+- Rename README.SuSE in README.SUSE to fix suse-wrong-suse-capitalisation
+  rpmlint warning (forwarded request 210691 from posophe)</comment>
+    <requestid>210767</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>93d4b4397679a8541df1a7873f4fdda1</srcmd5>
+    <version>2.0.20</version>
+    <time>1392576435</time>
+    <user>coolo</user>
+    <comment>- correct pointer at further documentation in README (forwarded request 222304 from oneukum)</comment>
+    <requestid>222433</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>291330e95e3576473589ca08d2af89f5</srcmd5>
+    <version>2.0.22</version>
+    <time>1407912560</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244359</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>291330e95e3576473589ca08d2af89f5</srcmd5>
+    <version>2.0.22</version>
+    <time>1409300469</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>4990c34d9dc8b93accd1ed934cae2f3d</srcmd5>
+    <version>2.0.23</version>
+    <time>1418978322</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265779</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>8aaf03580d691cf4613d3f2227607550</srcmd5>
+    <version>2.0.25</version>
+    <time>1443585139</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333979</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>bc027e05d6df68bf6c0c581f8af52dc2</srcmd5>
+    <version>2.0.26</version>
+    <time>1456320327</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355406</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>fee66e27b3b54eb901d2ac3edcee421f</srcmd5>
+    <version>2.0.27</version>
+    <time>1461855430</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391726</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>66478653af68fdfe931d1f6aa73b92e7</srcmd5>
+    <version>2.0.27</version>
+    <time>1480420214</time>
+    <user>dimstar_suse</user>
+    <comment>Remove ExclusiveArch. At least some ARM boards emulate ACPI events with their
+  power button driver. At worst the daemon will be superfluous on some systems.
+  (bsc#1012325) (forwarded request 442486 from michals)</comment>
+    <requestid>442509</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>180e65256fab161808eee12e508e9e1c</srcmd5>
+    <version>2.0.28</version>
+    <time>1510322274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540220</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>8a7c39ec6d85930a4943083e7d63d80f</srcmd5>
+    <version>2.0.29</version>
+    <time>1529402714</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617434</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>76c78c2ed118d5457954fa7c6855e96b</srcmd5>
+    <version>2.0.29</version>
+    <time>1533045847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626643</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>9324dba522ec93df69664414e2aa9cad</srcmd5>
+    <version>2.0.30</version>
+    <time>1538502455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639331</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>526e12149e72b36f9dcf27f8b032ff95</srcmd5>
+    <version>2.0.31</version>
+    <time>1552206798</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682396</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>d2797fd801126200bd136749e4551fb2</srcmd5>
+    <version>2.0.31</version>
+    <time>1552902244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685962</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>2e5e3aa3ae4559234cffa347cc1fba3a</srcmd5>
+    <version>2.0.32</version>
+    <time>1566665116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725563</requestid>
+  </revision>
+</revisionlist>

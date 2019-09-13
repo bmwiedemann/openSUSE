@@ -1,0 +1,263 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>186f299d33d2bff720f3cc1444203d12</srcmd5>
+    <version>2.1.4</version>
+    <time>1349632474</time>
+    <user>coolo</user>
+    <comment>Percona Toolkit, formerly known as Maatkit</comment>
+    <requestid>136987</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5b0c58ddf7364e07ca1e0d17ab0aa071</srcmd5>
+    <version>2.1.5</version>
+    <time>1350590367</time>
+    <user>coolo</user>
+    <comment>2.1.5 (forwarded request 138430 from AndreasStieger)</comment>
+    <requestid>138432</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>dcc4485f18fb22c58ef2407400576a7f</srcmd5>
+    <version>2.1.5</version>
+    <time>1352732740</time>
+    <user>coolo</user>
+    <comment>- fix SLE 11 build by adding alternative perl macros (forwarded request 140846 from AndreasStieger)</comment>
+    <requestid>140847</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5cad9a344c61536e7a4aef11423dcdb4</srcmd5>
+    <version>2.1.6</version>
+    <time>1353404486</time>
+    <user>coolo</user>
+    <comment>2.1.6 (forwarded request 141908 from AndreasStieger)</comment>
+    <requestid>141911</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>05e2d66fec74dc806ab44941715b2d35</srcmd5>
+    <version>2.1.8</version>
+    <time>1357973740</time>
+    <user>coolo</user>
+    <comment>update to 2.1.8 (forwarded request 148053 from AndreasStieger)</comment>
+    <requestid>148054</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>05e2d66fec74dc806ab44941715b2d35</srcmd5>
+    <version>2.1.8</version>
+    <time>1359109590</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>edba553e0da34e97a6d935084cfae3ec</srcmd5>
+    <version>2.1.9</version>
+    <time>1361117539</time>
+    <user>coolo</user>
+    <comment>update to 2.1.9 [bnc#804102] (forwarded request 155572 from AndreasStieger)</comment>
+    <requestid>155573</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4decda43b14ec066a86e393d1d192fc5</srcmd5>
+    <version>2.2.1</version>
+    <time>1365618400</time>
+    <user>coolo</user>
+    <comment>update to 2.2.1 (forwarded request 163363 from AndreasStieger)</comment>
+    <requestid>163364</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>47a5fb047f1c1029f045213db39606d9</srcmd5>
+    <version>2.2.2</version>
+    <time>1367487081</time>
+    <user>coolo</user>
+    <comment>update to 2.2.2 (forwarded request 173842 from AndreasStieger)</comment>
+    <requestid>173843</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d560c519d87ea7cbe659b5c40548db44</srcmd5>
+    <version>2.2.3</version>
+    <time>1372925595</time>
+    <user>coolo</user>
+    <comment>update to 2.2.3 (forwarded request 181925 from AndreasStieger)</comment>
+    <requestid>181926</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d5d72f329118993fad34578d901cfc6c</srcmd5>
+    <version>2.2.4</version>
+    <time>1374247412</time>
+    <user>coolo</user>
+    <comment>update to 2.2.4</comment>
+    <requestid>183694</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>d5d72f329118993fad34578d901cfc6c</srcmd5>
+    <version>2.2.4</version>
+    <time>1379663540</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9e3f41f12817cfae2904e50d0ecbbf3a</srcmd5>
+    <version>2.2.5</version>
+    <time>1382035080</time>
+    <user>scarabeus_factory</user>
+    <comment>Percona Toolkit 2.2.5 (forwarded request 203612 from AndreasStieger)</comment>
+    <requestid>203613</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b2ac0a84ea028102d3b38a1897a2d2a3</srcmd5>
+    <version>2.2.5</version>
+    <time>1382351524</time>
+    <user>scarabeus_factory</user>
+    <comment>use re-released 2.2.5 tarball without backup files</comment>
+    <requestid>204027</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>017274bc8814bf34247115c11af7f8b7</srcmd5>
+    <version>2.2.6</version>
+    <time>1388395548</time>
+    <user>coolo</user>
+    <comment>update to 2.2.6 [bnc#856861] (forwarded request 212379 from AndreasStieger)</comment>
+    <requestid>212380</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>45b39fab33a82f67814eb786630f3f67</srcmd5>
+    <version>2.2.6</version>
+    <time>1392790934</time>
+    <user>coolo</user>
+    <comment>- disable automatic version check for all tools  [bnc#864194] (forwarded request 222522 from AndreasStieger)</comment>
+    <requestid>222523</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9acfbd29c9b819553c82997e04f9cb99</srcmd5>
+    <version>2.2.7</version>
+    <time>1393310025</time>
+    <user>coolo</user>
+    <comment>Percona Toolkit 2.2.7  [bnc#864194] CVE-2014-2029 (forwarded request 223755 from AndreasStieger)</comment>
+    <requestid>223756</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0d376f1f30b73a5d19e19e86a3e13396</srcmd5>
+    <version>2.2.8</version>
+    <time>1402058194</time>
+    <user>coolo</user>
+    <comment>Percona Toolkit 2.2.8</comment>
+    <requestid>236422</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>794803f536d07780b3bd0c40dd503620</srcmd5>
+    <version>2.2.9</version>
+    <time>1405178086</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240277</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7f9beda07b9361c6a2da43e91382fa5f</srcmd5>
+    <version>2.2.10</version>
+    <time>1407744466</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244106</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>7f9beda07b9361c6a2da43e91382fa5f</srcmd5>
+    <version>2.2.10</version>
+    <time>1409302147</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>19c1b7b9b271ea82d78d404a16396533</srcmd5>
+    <version>2.2.11</version>
+    <time>1411926838</time>
+    <user>coolo</user>
+    <comment>Percona Toolkit 2.2.11</comment>
+    <requestid>252468</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ce796f43b824931f67ada00ba3ee0c09</srcmd5>
+    <version>2.2.12</version>
+    <time>1416823702</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262099</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>82e06a4c114fe374b38b7d90f816108d</srcmd5>
+    <version>2.2.13</version>
+    <time>1422346167</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282915</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>95f626f88a63151d7b473605d14a50c7</srcmd5>
+    <version>2.2.13</version>
+    <time>1424827101</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287563</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>20b0bdcd34301e0952827b4066f29002</srcmd5>
+    <version>2.2.14</version>
+    <time>1429107890</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296444</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>df715bf26b73360df3fa52fb584b9493</srcmd5>
+    <version>2.2.15</version>
+    <time>1440871516</time>
+    <user>coolo</user>
+    <comment>Percona Toolkit 2.2.15 (forwarded request 327807 from AndreasStieger)</comment>
+    <requestid>327808</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0a0d0a845d6f40606cf1a8d817bd2ac2</srcmd5>
+    <version>2.2.16</version>
+    <time>1447766575</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344630</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3c9b46de41f113c289cd3f5d4a6d43db</srcmd5>
+    <version>2.2.17</version>
+    <time>1458228857</time>
+    <user>dimstar_suse</user>
+    <comment>Percona Toolkit 2.2.17</comment>
+    <requestid>370938</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>dffb4c30bf9f6e43a0468f7f0951a47c</srcmd5>
+    <version>2.2.18</version>
+    <time>1468579925</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407830</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>03c1a40c1bab78a1df25b7c2ad4300f4</srcmd5>
+    <version>2.2.20</version>
+    <time>1482143277</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>445318</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>db4b3134a0cb949785a48a5ccce503cd</srcmd5>
+    <version>3.0.11</version>
+    <time>1535370523</time>
+    <user>dimstar_suse</user>
+    <comment>Percona Toolkit 3.0.11: 3.x adds tools for MongoDB</comment>
+    <requestid>629926</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>700e18cd662e69d61c3a80173bf1f51f</srcmd5>
+    <version>3.0.12</version>
+    <time>1543224658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651380</requestid>
+  </revision>
+</revisionlist>

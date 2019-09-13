@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>5c0b0fb4a5c913924abecccd3916f470</srcmd5>
+    <version>20070409</version>
+    <time>1225856983</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>5c0b0fb4a5c913924abecccd3916f470</srcmd5>
+    <version>20070409</version>
+    <time>1225856983</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>a60ff9eb5a8c154cf849c1f3d6a1379a</srcmd5>
+    <version>20070409</version>
+    <time>1268926191</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="8">
+    <srcmd5>a60ff9eb5a8c154cf849c1f3d6a1379a</srcmd5>
+    <version>20070409</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>a60ff9eb5a8c154cf849c1f3d6a1379a</srcmd5>
+    <version>20070409</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="12">
+    <srcmd5>a60ff9eb5a8c154cf849c1f3d6a1379a</srcmd5>
+    <version>20070409</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="14">
+    <srcmd5>a60ff9eb5a8c154cf849c1f3d6a1379a</srcmd5>
+    <version>20070409</version>
+    <time>1319182475</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="15">
+    <srcmd5>6f34019625461847769c56b87221937e</srcmd5>
+    <version>20070409</version>
+    <time>1323194683</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>792f6010d444248f0b05fcff81262a36</srcmd5>
+    <version>20070409</version>
+    <time>1339619064</time>
+    <user>coolo</user>
+    <comment>- add zlib-devel into BuildRequires (forwarded request 124163 from pgajdos)</comment>
+    <requestid>124818</requestid>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>792f6010d444248f0b05fcff81262a36</srcmd5>
+    <version>20070409</version>
+    <time>1340184222</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="20">
+    <srcmd5>792f6010d444248f0b05fcff81262a36</srcmd5>
+    <version>20070409</version>
+    <time>1359110415</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="22">
+    <srcmd5>792f6010d444248f0b05fcff81262a36</srcmd5>
+    <version>20070409</version>
+    <time>1379664695</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="24">
+    <srcmd5>792f6010d444248f0b05fcff81262a36</srcmd5>
+    <version>20070409</version>
+    <time>1409303379</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

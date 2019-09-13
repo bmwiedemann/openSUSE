@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3adba11c3fdef7f831bd9e59fab3d8e5</srcmd5>
+    <version>1.0.14</version>
+    <time>1438421922</time>
+    <user>dimstar_suse</user>
+    <comment>This is a backport of the Python 3.x builtin ipaddress module.  It is needed by recent versions of python-cryptography, which is already in openSUSE:Factory.</comment>
+    <requestid>319489</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>67d6389781e7f691e556240606638a11</srcmd5>
+    <version>1.0.16</version>
+    <time>1468869771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.16:
+  * include license
+  * Customize warning when bytes are passed in</comment>
+    <requestid>407872</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>09bd7aa484a7c70f1f7df2b08d00990f</srcmd5>
+    <version>1.0.18</version>
+    <time>1490221019</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pypi.io as Source url
+
+- update to 1.0.18
+- add Provides for python2-ipaddress
+
+- Update to 1.0.17</comment>
+    <requestid>480665</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e9f0e20202b9cb4c33a79d07278233b8</srcmd5>
+    <version>1.0.19</version>
+    <time>1518813548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576015</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>47485d5799d05925dee3ca74e4b5cd4f</srcmd5>
+    <version>1.0.22</version>
+    <time>1524400270</time>
+    <user>dimstar_suse</user>
+    <comment>- Install license file
+
+- update to version v1.0.22:
+  * Avoid using assertRaises as a context manager</comment>
+    <requestid>597003</requestid>
+  </revision>
+</revisionlist>

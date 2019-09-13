@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c3ea948e87d838e58b05d662078e0ea0</srcmd5>
+    <version>1.20</version>
+    <time>1478871253</time>
+    <user>dimstar_suse</user>
+    <comment>required for paperwork</comment>
+    <requestid>438944</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b49413f178fffec64454fd6fb8686e8b</srcmd5>
+    <version>17.5.14</version>
+    <time>1506678966</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528994</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0fde4981e03e4a14c491b6c182fe2caf</srcmd5>
+    <version>18.12.8</version>
+    <time>1558514960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689774</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0fe6aa81e17f36a5daac9f167441c59d</srcmd5>
+    <version>19.7.15</version>
+    <time>1564484740</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.7.15:
+  * Updates for more countries and various fixes</comment>
+    <requestid>717841</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>877116292b5bfe1f687ca614cd915928</srcmd5>
+    <version>19.7.15</version>
+    <time>1566550989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723944</requestid>
+  </revision>
+</revisionlist>

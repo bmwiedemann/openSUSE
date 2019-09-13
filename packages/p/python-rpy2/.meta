@@ -1,0 +1,9 @@
+<package name="python-rpy2" project="openSUSE:Factory">
+  <title>Python interface to the R Programming Language</title>
+  <description>rpy2 is a very simple, yet robust, Python interface to the R Programming
+Language. It can manage all kinds of R objects and can execute arbitrary R
+functions (including the graphic functions). All errors from the R language
+areconverted to Python exceptions. Any module installed for the R system can
+be used from within Python. rpy2 is a redesign and rewrite of rpy.</description>
+  <devel project="devel:languages:python:numeric" package="python-rpy2"/>
+</package>

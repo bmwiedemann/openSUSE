@@ -1,0 +1,181 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b65dcc7777c42910025671414b7d51d7</srcmd5>
+    <version>2.2.4</version>
+    <time>1480957441</time>
+    <user>dimstar_suse</user>
+    <comment>I'd like to maintain the owncloud client in factory</comment>
+    <requestid>443520</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b5011039807f5ace993ae305489211fa</srcmd5>
+    <version>2.3.0</version>
+    <time>1489345314</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477267</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3a0c70661bdb616275612bb76510920c</srcmd5>
+    <version>2.3.1</version>
+    <time>1490965824</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483863</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9c226a3f1b747e11aa8511dbb8fa3f2c</srcmd5>
+    <version>2.3.1</version>
+    <time>1493456029</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491846</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8c10b49aa3bedb96e00ac41553969b7a</srcmd5>
+    <version>2.3.2</version>
+    <time>1494938668</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494644</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e4574c33dd9ee98f9fa3bb7ad628949d</srcmd5>
+    <version>2.3.3</version>
+    <time>1504617533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520937</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>30cdaa54ece084ded754efd39f7ba7e0</srcmd5>
+    <version>2.3.3</version>
+    <time>1504981583</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522126</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>ed314fba2cbb1d489f9f1fd63ce93421</srcmd5>
+    <version>2.3.3</version>
+    <time>1508770354</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535826</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9ffaefed291d2a3f8df09b0700242266</srcmd5>
+    <version>2.4.0</version>
+    <time>1516359138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561305</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a8a5ef901474105fdf7c9557c0d6632e</srcmd5>
+    <version>2.4.0</version>
+    <time>1519902488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581166</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>34b6d8276fedb718395f3d578f183b34</srcmd5>
+    <version>2.4.1</version>
+    <time>1521405916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588298</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7275aae61ebb0d3f9810ae478c99938a</srcmd5>
+    <version>2.4.2</version>
+    <time>1532593094</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 2.4.2
+  * Coming with some bugfixes, Changelog:
+    https://owncloud.org/changelog/desktop-client/
+- Added patch fix-systray-menu-pos.patch to fix a problem with 
+  older Qt versions. Applies only to versions Leap 15 and older,
+  fixes https://github.com/owncloud/client/issues/5968
+ 
+</comment>
+    <requestid>625315</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6e1029b328d169538550312935a62282</srcmd5>
+    <version>2.4.3</version>
+    <time>1534543348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 2.4.3
+  * OAuth2: Fix infinite loop when the refresh token is expired
+  * Nautilus: Guard against None state (#6643)
+</comment>
+    <requestid>629378</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>52fac46f9ec7701e7ef7f6156ca9b31b</srcmd5>
+    <version>2.5.0</version>
+    <time>1537971092</time>
+    <user>dimstar_suse</user>
+    <comment>- Really removed the rpath.diff file. 
+- update to upstream version 2.5.0
+  Changelog available at https://owncloud.org/changelog/desktop-client/
+  
+  * Removed patch rpath.diff as not longer required.
+  * Added some doc cleanup as the version installs too much.
+- Fixed patch fix-systray-menu-pos.patch to avoid segfault as
+  described in boo#1106103. Should be fixed with this. 
+</comment>
+    <requestid>636584</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>912a07e44d7b8537113291e662bad3d1</srcmd5>
+    <version>2.5.1.10973</version>
+    <time>1542012177</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream version 2.5.1 
+  Changelog available at https://owncloud.org/changelog/desktop-client/</comment>
+    <requestid>647667</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e4608438ac5e8d216eabbeec6b886d13</srcmd5>
+    <version>2.5.2</version>
+    <time>1549018118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 2.5.2
+  Changelog available at https://owncloud.org/changelog/desktop-client/
+- Added no_theme_icons.patch to avoid icon mix in the app</comment>
+    <requestid>670466</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>358e07573506194791f19fca93cd4987</srcmd5>
+    <version>2.5.3</version>
+    <time>1549624550</time>
+    <user>coolo</user>
+    <comment>- Update to upstream release 2.5.3:
+ * Connectivity: Add a noUnauthedRequests branding option
+ * Credentials: Warn in log if keychain-write jobs fail (#6776)
+ * Database: Move drop-index to after pragmas are set (#6881)
+ * Download: Ignore Content-length for compressed HTTP2/SPDY replies (#6885)</comment>
+    <requestid>672615</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d40822c07f06f96fbc2e20cd3cdb75cf</srcmd5>
+    <version>2.5.4</version>
+    <time>1553436069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream release 2.5.4 with various bugfixes
+  Details at https://github.com/owncloud/client/releases/tag/v2.5.4 
+</comment>
+    <requestid>687810</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>3df5d03dc0d18821341cab820625f422</srcmd5>
+    <version>2.5.4</version>
+    <time>1558427980</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly require zlib to build owncloud-client.</comment>
+    <requestid>704236</requestid>
+  </revision>
+</revisionlist>

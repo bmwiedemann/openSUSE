@@ -1,0 +1,5 @@
+<package name="ghc-rpm-macros" project="openSUSE:Factory">
+  <title>Fedora Haskell SIG RPM Macros</title>
+  <description>Adapted to openSUSE packaging guidelines.</description>
+  <devel project="devel:languages:haskell" package="ghc-rpm-macros"/>
+</package>

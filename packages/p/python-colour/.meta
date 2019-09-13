@@ -1,0 +1,17 @@
+<package name="python-colour" project="openSUSE:Factory">
+  <title>Converts between common color representations (RGB, HSL, web...)</title>
+  <description>Python module to convert between color representations:
+  * RGB, HSL, 6-digit hex, 3-digit hex, human color
+  * One object (Color) or several single purpose functions
+    (rgb2hex, hsl2rgb, ...)
+  * Web format which uses the smallest representation between
+    6-digit (e.g. #fa3b2c), 3-digit (e.g. #fbb), fully spelled
+    color (e.g. white), following W3C color naming for compatible
+    CSS or HTML color specifications
+  * Color scale generation choosing N color gradients
+  * It's possible to pick colors to identify objects of the
+    application being developed
+
+</description>
+  <devel project="devel:languages:python" package="python-colour"/>
+</package>

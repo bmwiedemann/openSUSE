@@ -1,0 +1,7 @@
+<package name="sblim-wbemcli" project="openSUSE:Factory">
+  <title>SBLIM WBEM Command Line Interface</title>
+  <description>WBEM Command Line Interface is a standalone, command line WBEM client.
+It is especially suited for basic systems management tasks as it can be
+used in scripts.</description>
+  <devel project="systemsmanagement:wbem" package="sblim-wbemcli"/>
+</package>

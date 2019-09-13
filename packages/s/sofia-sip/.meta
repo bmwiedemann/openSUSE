@@ -1,0 +1,12 @@
+<package name="sofia-sip" project="openSUSE:Factory">
+  <title>A RFC3261 compliant SIP User-Agent library</title>
+  <description>Sofia-SIP is an open-source SIP  User-Agent library, compliant with the
+IETF RFC3261 specification. It can be used as a building block for SIP
+client software for uses such as VoIP, IM, and many other real-time and
+person-to-person communication services. The primary target platform
+for Sofia-SIP is GNU/Linux. Sofia-SIP is based on a SIP stack developed
+at the Nokia Research Center.
+
+This package holds the cli tools what ship with sofia-sip.</description>
+  <devel project="GNOME:Factory" package="sofia-sip"/>
+</package>

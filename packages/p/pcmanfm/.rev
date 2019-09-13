@@ -1,0 +1,402 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c8952df641115a7819291829ab39c486</srcmd5>
+    <version>0.5.2</version>
+    <time>1262967852</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 28189 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8d0d18ee62ffddfebe7717312aaba678</srcmd5>
+    <version>0.9alpha+git20100301</version>
+    <time>1267463282</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 33660 from user anubisg1
+</comment>
+    <requestid>33660</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>afea5c6a1fd14da761afd3f7f99a81de</srcmd5>
+    <version>0.9alpha+git20100301</version>
+    <time>1267490580</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 33714 from user anubisg1
+</comment>
+    <requestid>33714</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ed046c5f4c44e1587b82cc3c8fdbb072</srcmd5>
+    <version>0.9.2alpha+git20100309</version>
+    <time>1268268578</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 34470 from user anubisg1
+</comment>
+    <requestid>34470</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>92a1027eed9f9a93e4b3a56b0aa13e38</srcmd5>
+    <version>0.9.2alpha+git20100309</version>
+    <time>1268925325</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7bff5bcfa2174abf7dc4f1e1e5612b8b</srcmd5>
+    <version>0.9.3beta+git20100317</version>
+    <time>1269168980</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 35399 from user anubisg1
+</comment>
+    <requestid>35399</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e31ff3b020f93c4353aac951697d89f6</srcmd5>
+    <version>0.9.3beta+git20100317</version>
+    <time>1269274111</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 35446 from user anubisg1
+</comment>
+    <requestid>35446</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>56c8d189c96857c58d7f863b154b7d8a</srcmd5>
+    <version>0.9.3beta+git20100324</version>
+    <time>1270057040</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 36219 from user anubisg1
+</comment>
+    <requestid>36219</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b88e9f8b085122bcafab484f97b7901f</srcmd5>
+    <version>0.9.3beta+git20100331</version>
+    <time>1270587375</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 37036 from user anubisg1
+</comment>
+    <requestid>37036</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a2a991698ed3af52fa7d466495ea9a33</srcmd5>
+    <version>0.9.3beta+git20100411</version>
+    <time>1271373381</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 37896 from user anubisg1
+</comment>
+    <requestid>37896</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0d91cb58eb58af3c4beaff2c22cb02d1</srcmd5>
+    <version>0.9.4beta+git20100419</version>
+    <time>1271669319</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 38172 from user anubisg1
+</comment>
+    <requestid>38172</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1b425e1687cfef8ce74e499c300ebe15</srcmd5>
+    <version>0.9.5beta+git20100427</version>
+    <time>1272488758</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 38978 from user anubisg1
+</comment>
+    <requestid>38978</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b143bc26881b98691f84fb27496fe9e9</srcmd5>
+    <version>0.9.5beta+git20100516</version>
+    <time>1274653223</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 40513 from user anubisg1
+</comment>
+    <requestid>40513</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f3c92d4ede69070404bd836decd110a8</srcmd5>
+    <version>0.9.7_rc1</version>
+    <time>1275260201</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 40845 from user anubisg1
+</comment>
+    <requestid>40845</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f3c92d4ede69070404bd836decd110a8</srcmd5>
+    <version>0.9.7_rc1</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>f3c92d4ede69070404bd836decd110a8</srcmd5>
+    <version>0.9.7_rc1</version>
+    <time>1278678608</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>73d46d55ebbedd99fc9e467a595eb4ec</srcmd5>
+    <version>0.9.8_rc2</version>
+    <time>1287353824</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/pcmanfm based on submit request 50858 from user anubisg1
+</comment>
+    <requestid>50858</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>7efa1be34e10fb37dccbaad6063647d0</srcmd5>
+    <version>0.9.8_rc2</version>
+    <time>1289417522</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52510 from user anubisg1
+</comment>
+    <requestid>52510</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f9ffc2a622af2407ce3b028fb327d4ce</srcmd5>
+    <version>0.9.8_rc2</version>
+    <time>1289417529</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52510
+</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>f9ffc2a622af2407ce3b028fb327d4ce</srcmd5>
+    <version>0.9.8_rc2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>d96954121f68377a185b5404882dd6a5</srcmd5>
+    <version>0.9.8_rc2</version>
+    <time>1304351499</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67113</requestid>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>19da1c356a5b570d53619bfef5a526be</srcmd5>
+    <version>0.9.8_rc2</version>
+    <time>1304351507</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67113
+</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>3ad6105198a834244e656f3471d1574d</srcmd5>
+    <version>0.9.9_rc3</version>
+    <time>1313151706</time>
+    <user>saschpe</user>
+    <comment>new upstream version 0.9.9_rc3</comment>
+    <requestid>78565</requestid>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>1c9aa3915911889bdd4d4fc2f71b6cb4</srcmd5>
+    <version>0.9.9_rc3</version>
+    <time>1313151716</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78565
+</comment>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>0f5ffa181412488cf5d4b6de29819964</srcmd5>
+    <version>0.9.9_rc3</version>
+    <time>1315816572</time>
+    <user>saschpe</user>
+    <comment>- fix build with newer ld (forwarded request 81800 from coolo)</comment>
+    <requestid>81842</requestid>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>bc4666de8de32c339c7bb9c1771398c7</srcmd5>
+    <version>0.9.9_rc3</version>
+    <time>1315816577</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81842
+</comment>
+  </revision>
+  <revision rev="27" vrev="12">
+    <srcmd5>bc4666de8de32c339c7bb9c1771398c7</srcmd5>
+    <version>0.9.9_rc3</version>
+    <time>1319182233</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>30bb0104b7f7cdfa88cac018022580b9</srcmd5>
+    <version>0.9.10</version>
+    <time>1323185019</time>
+    <user>coolo</user>
+    <comment>- fix version number
+- do not recompress tarball
+- specify build dependencies correctly and remove unneeded ones
+
+- added pcmanfm-0.9.10-libm.patch in order to correctly link
+  against libm
+
+- new upstream version 0.9.10 rc4
+  detailed changelog at: http://blog.lxde.org/?p=911 
+- removed pcmanfm-0.9.9-fix-no_return_in_non_void.patch and
+  fix-link.patch</comment>
+    <requestid>95254</requestid>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>0ebb5ce1bd684223578aa036519db458</srcmd5>
+    <version>0.9.10</version>
+    <time>1323192981</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="30" vrev="11">
+    <srcmd5>a5767548cbaa6bc8a9c4d0d86605e026</srcmd5>
+    <version>0.9.10</version>
+    <time>1339352308</time>
+    <user>coolo</user>
+    <comment>- fixed build with automake 1.12, inspired with fix for libfm (forwarded request 124084 from pgajdos)</comment>
+    <requestid>124102</requestid>
+  </revision>
+  <revision rev="31" vrev="13">
+    <srcmd5>a5767548cbaa6bc8a9c4d0d86605e026</srcmd5>
+    <version>0.9.10</version>
+    <time>1340183782</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2a294e072515822425d30a1f75e86835</srcmd5>
+    <version>1.0</version>
+    <time>1346399694</time>
+    <user>coolo</user>
+    <comment>new upstream stable version 1.0</comment>
+    <requestid>131267</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4d3478eceab2b896fe3c6b780be5e905</srcmd5>
+    <version>1.1.0</version>
+    <time>1357566448</time>
+    <user>coolo</user>
+    <comment>new upstream version</comment>
+    <requestid>145889</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>017f3a631f50e4b5f5fd80f2c7f88d08</srcmd5>
+    <version>1.1.0</version>
+    <time>1357834251</time>
+    <user>coolo</user>
+    <comment>Explicit menu-cache as runtime dependency</comment>
+    <requestid>147924</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>017f3a631f50e4b5f5fd80f2c7f88d08</srcmd5>
+    <version>1.1.0</version>
+    <time>1359109582</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9050b4ae1b412796d85e1ed52525ae0b</srcmd5>
+    <version>1.1.2</version>
+    <time>1378988486</time>
+    <user>scarabeus_factory</user>
+    <comment>update version 1.1.2 (forwarded request 198220 from MargueriteSu)</comment>
+    <requestid>198619</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>9050b4ae1b412796d85e1ed52525ae0b</srcmd5>
+    <version>1.1.2</version>
+    <time>1379663523</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>83c066805473a8ca4de23136ea74e60a</srcmd5>
+    <version>1.2.0</version>
+    <time>1393963161</time>
+    <user>coolo</user>
+    <comment>- New upstream version 1.2.0
+  * detailed changelog at http://blog.lxde.org/?p=1082
+- Removed build compatibility with discontinued versions (&lt;= 12.2)
+- Disabled debug on configure to improve performance
+- Built against GKT2 to override GTK3 issues
+  * in a conversation with one of the developers, we concluded that it is better to stick to GTK2 at the moment
+- Splitted devel package
+ (forwarded request 224357 from jcsl)</comment>
+    <requestid>224456</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>8c1e2b33b1d80fdcffc66996b8b0da71</srcmd5>
+    <version>1.2.0</version>
+    <time>1400055965</time>
+    <user>coolo</user>
+    <comment>fixed buildrequires to match the new libfm-gtk-devel subpackage</comment>
+    <requestid>233544</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>8f6dc4a99c19a866622c315a9c6ba5a3</srcmd5>
+    <version>1.2.1</version>
+    <time>1405264586</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239532</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>8f6dc4a99c19a866622c315a9c6ba5a3</srcmd5>
+    <version>1.2.1</version>
+    <time>1409302129</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>506bd74fef4eb7d63bded1b7ae8b7fc0</srcmd5>
+    <version>1.2.2</version>
+    <time>1410282009</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>248115</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>15e3688a96e83953732a048d99f10a71</srcmd5>
+    <version>1.2.3</version>
+    <time>1413528643</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256680</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>3ed10a492621dc79f2fe6109e0d75224</srcmd5>
+    <version>1.2.5</version>
+    <time>1489345124</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448636</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>fc5389b5a0cfb9eeb3d1d785f1e4f35d</srcmd5>
+    <version>1.3.0</version>
+    <time>1540451361</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim bias and history lesson from description.
+- new upstream release of pcmanfm 1.3.0
+  * Fixed potential access violation, use runtime user dir instead of tmp diri for single instance socket.
+  * Fixed an issue with losing icons on desktop, when file name has a ‘[‘ char.
+  * Added a missing tooltip for ‘New Window’ toolbar button.
+  * Fixed an issue when single instance socket directory did not exist (see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=874753).
+</comment>
+    <requestid>643914</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>eb56ce6b2ffd096009bdb821e6953318</srcmd5>
+    <version>1.3.1</version>
+    <time>1546245993</time>
+    <user>dimstar_suse</user>
+    <comment>- Use macro in URL
+
+- new upstream release of pcmanfm 1.3.1 
+  * fixed crash on reload while directory changes
+  * changed size of large thumbnails to 512
+  * added application/gzip to archivers.list
+  * added image/x-compressed-xcf to archivers.list
+  * allowed bigger sizes of icons and thumbnails</comment>
+    <requestid>661336</requestid>
+  </revision>
+</revisionlist>

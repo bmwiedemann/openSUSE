@@ -1,0 +1,5 @@
+<package name="monitoring-plugins-repomd" project="openSUSE:Factory">
+  <title>foo</title>
+  <description></description>
+  <devel project="server:monitoring" package="monitoring-plugins-repomd"/>
+</package>

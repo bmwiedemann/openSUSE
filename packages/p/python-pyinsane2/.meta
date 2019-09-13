@@ -1,0 +1,5 @@
+<package name="python-pyinsane2" project="openSUSE:Factory">
+  <title>PyInsane 2</title>
+  <description>Python library to access and use image scanners</description>
+  <devel project="devel:languages:python" package="python-pyinsane2"/>
+</package>

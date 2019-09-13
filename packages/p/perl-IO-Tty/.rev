@@ -1,0 +1,161 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6241af640a784b250df8ddf456e12100</srcmd5>
+    <version>1.07</version>
+    <time>1168903856</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="118">
+    <srcmd5>6241af640a784b250df8ddf456e12100</srcmd5>
+    <version>1.07</version>
+    <time>1168903856</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="119">
+    <srcmd5>99c2cd2455be62b30e9da981c047bd7c</srcmd5>
+    <version>1.07</version>
+    <time>1224729791</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fd1e9aa7ca6d558b7c7816dd81b6e1d1</srcmd5>
+    <version>1.08</version>
+    <time>1248728954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2352eeec71214eeea4db4d2e60e3dfc5</srcmd5>
+    <version>1.08</version>
+    <time>1251747708</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-IO-Tty based on submit request 19226 from user lrupp
+</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>2352eeec71214eeea4db4d2e60e3dfc5</srcmd5>
+    <version>1.08</version>
+    <time>1251747708</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-IO-Tty based on submit request 19226 from user lrupp
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>c0d06a800ecf12108e1482297710e82f</srcmd5>
+    <version>1.08</version>
+    <time>1268925502</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>c0d06a800ecf12108e1482297710e82f</srcmd5>
+    <version>1.08</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>c0d06a800ecf12108e1482297710e82f</srcmd5>
+    <version>1.08</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>ba6ae118bf059280610c7494c9b77038</srcmd5>
+    <version>1.08</version>
+    <time>1285596396</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-IO-Tty based on submit request 49165 from user coolo
+</comment>
+    <requestid>49165</requestid>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>d55b05518bd073141034679cf9e18222</srcmd5>
+    <version>1.08</version>
+    <time>1291582741</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54567 from user coolo
+</comment>
+    <requestid>54567</requestid>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>482ca8750525d0c84d6cc7620d7985ad</srcmd5>
+    <version>1.08</version>
+    <time>1291582749</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54567
+</comment>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>482ca8750525d0c84d6cc7620d7985ad</srcmd5>
+    <version>1.08</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>45b91c9c0b4fa6d3878c5c39dcec90ee</srcmd5>
+    <version>1.10</version>
+    <time>1301646610</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65718 from user coolo
+</comment>
+    <requestid>65718</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>ae6f12b59ad43b3098d82a0d8e8111d4</srcmd5>
+    <version>1.10</version>
+    <time>1301646624</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65718
+</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>ae6f12b59ad43b3098d82a0d8e8111d4</srcmd5>
+    <version>1.10</version>
+    <time>1319182279</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>5be91687804dd7f059402ea92369929c</srcmd5>
+    <version>1.10</version>
+    <time>1323193397</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>5be91687804dd7f059402ea92369929c</srcmd5>
+    <version>1.10</version>
+    <time>1340183860</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>5be91687804dd7f059402ea92369929c</srcmd5>
+    <version>1.10</version>
+    <time>1359109708</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>5be91687804dd7f059402ea92369929c</srcmd5>
+    <version>1.10</version>
+    <time>1379663715</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>5be91687804dd7f059402ea92369929c</srcmd5>
+    <version>1.10</version>
+    <time>1409302338</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>450e3fa41449b1638a2d6ec4292bd798</srcmd5>
+    <version>1.12</version>
+    <time>1429107839</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296068</requestid>
+  </revision>
+</revisionlist>

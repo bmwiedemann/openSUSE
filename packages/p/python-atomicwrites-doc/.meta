@@ -1,0 +1,6 @@
+<package name="python-atomicwrites-doc" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="python-atomicwrites"/>
+  <bcntsynctag>python-atomicwrites</bcntsynctag>
+</package>

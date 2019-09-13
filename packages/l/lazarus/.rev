@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>184a14fa35a8340baa5f200a72f33c29</srcmd5>
+    <version>1.6.2</version>
+    <time>1488479152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>458586</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e0a6d4b2d8fc337a3fa3aa96f29a4ac8</srcmd5>
+    <version>1.6.2</version>
+    <time>1494263006</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493215</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1a182767caeaf6d989a427c52f8d5936</srcmd5>
+    <version>1.8.0</version>
+    <time>1515505954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561724</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>773f0e82bd6be65adfda317ea5942ee4</srcmd5>
+    <version>1.8.2</version>
+    <time>1519902483</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.2
+  This is a bug fix release. For complete list of changes see
+  http://wiki.lazarus.freepascal.org/Lazarus_1.8.0_release_notes
+</comment>
+    <requestid>581089</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bf078dfe75547518ae26a4a8f9c7a457</srcmd5>
+    <version>1.8.4</version>
+    <time>1527583229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.4
+  This is a bugfix release. For a complete list of changes see:
+  http://wiki.freepascal.org/Lazarus_1.8_fixes_branch#Fixes_for_1.8.4_.28merged.29
+  
+</comment>
+    <requestid>611475</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>54f6b3b85da49a853f9c75b7cd858994</srcmd5>
+    <version>2.0.0</version>
+    <time>1551024730</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671898</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a55b957cf3157099eb4e72c3abec243b</srcmd5>
+    <version>2.0.2</version>
+    <time>1555488584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.2
+  This is a bugfix release. For a complete list of changes see:
+  http://wiki.freepascal.org/Lazarus_2.0_fixes_branch#Fixes_for_2.0.2_.28Merged.29
+</comment>
+    <requestid>694776</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2ee626cfbf647c9e432ed3340f036768</srcmd5>
+    <version>2.0.4</version>
+    <time>1565105243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721268</requestid>
+  </revision>
+</revisionlist>

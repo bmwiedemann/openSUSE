@@ -1,0 +1,6 @@
+<package name="vala-panel-extras" project="openSUSE:Factory">
+  <title>Vala Panel Extras is a set of applets for StatusNotifierItem</title>
+  <description>Vala Panel Extras is a set of small programs that can be used with any StatusNotifierItem implementation (appindicator).
+It contains applets that were stripped from Vala Panel, and necessary to install, if you want them.</description>
+  <devel project="X11:Utilities" package="vala-panel-extras"/>
+</package>

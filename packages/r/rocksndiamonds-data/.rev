@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b8bafcb5114c4e5b8b69bfdf66771c2</srcmd5>
+    <version>20141005</version>
+    <time>1413263444</time>
+    <user>coolo</user>
+    <comment>- Fix typo
+- Remove PreReq for shadow and pwdutils
+- Use check for openSUSE &gt; 12.2 for and use shadow else pwdutils
+- Initial package creation
+- fdupes is ineffective, please look
+  https://github.com/adrianlopezroche/fdupes/issues/
+
+Needed for rocksndiamonds Requests 255050</comment>
+    <requestid>255167</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>920c5557d4c23cd87d54c4bb91e1952e</srcmd5>
+    <version>20141005</version>
+    <time>1531947154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621605</requestid>
+  </revision>
+</revisionlist>

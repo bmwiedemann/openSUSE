@@ -1,0 +1,5 @@
+<package name="cpptasks" project="openSUSE:Factory">
+  <title>Compile and link task</title>
+  <description>This ant task can compile various source languages and produce executables, shared libraries and static libraries. Compiler adaptors are currently available for several C/C++ compilers, FORTRAN, MIDL and Windows Resource files.</description>
+  <devel project="Java:packages" package="cpptasks"/>
+</package>

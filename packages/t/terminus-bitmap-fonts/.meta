@@ -1,0 +1,16 @@
+<package name="terminus-bitmap-fonts" project="openSUSE:Factory">
+  <title>readable fixed width fonts for X11 and the Linux console</title>
+  <description>Terminus Font is designed for long (8 and more hours per day) work with
+computers. Version 4.03 contains 538 characters, covering code pages
+ISO8859-1/2/5/9/15/16, Windows-1250/1251/1252/1254,
+IBM-437/852/855/866, KOI8-R/U/E/F, Bulgarian-MIK, Paratype-PT154/PT254
+and Macintosh-Ukrainian, and also the vt100 and xterm pseudographic
+characters.
+
+The sizes and styles present are 8x14-normal, 8x14-bold,
+8x14-EGA/VGA-bold, 8x16-normal, 8x16-bold, 8x16-EGA/VGA-bold,
+10x20-normal, 10x20-bold, 12x24-normal, 12x24-bold and 14x28-normal
+(which's weight is actually between normal and bold).
+</description>
+  <devel project="M17N:fonts" package="terminus-bitmap-fonts"/>
+</package>

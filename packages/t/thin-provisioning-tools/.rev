@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fa0c4cf63da310ff9cbc79f8f24c991c</srcmd5>
+    <version>0.6.0</version>
+    <time>1454491059</time>
+    <user>dimstar_suse</user>
+    <comment>Split from lvm2 (sr#356423)</comment>
+    <requestid>356645</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dfc61b9bec45b40fb4fdff890ce50db4</srcmd5>
+    <version>0.6.1</version>
+    <time>1455032951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1
+  * enable builds with static cxx library
+- Make building more verbose</comment>
+    <requestid>358022</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>055a32ab5e94faa5f39900133f324fb6</srcmd5>
+    <version>0.6.1</version>
+    <time>1455701528</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358857</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bc84230518440cb1f0a3e41ae63b747f</srcmd5>
+    <version>0.6.2</version>
+    <time>1468869521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.2:
+  * Fix bug in thin_delta
+  * Fix recent regression in thin_repair.
+  * Force g++-98 dialect
+  * Fix bug in thin_trim</comment>
+    <requestid>407622</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>30c38e1f83f17f11ef95c00cd7e75a4c</srcmd5>
+    <version>0.6.3</version>
+    <time>1472025959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.3:
+  * Update documentation</comment>
+    <requestid>419988</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>82033557db97a0a6f720f36274dd1398</srcmd5>
+    <version>0.6.3</version>
+    <time>1486547052</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454252</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>30a473873055be631c38324b56a80eb2</srcmd5>
+    <version>0.7.0</version>
+    <time>1497602896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.0:
+  * boo#1043043 gh#jthornber/thin-provisioning-tools#79
+  * Needed for working with latest lvm2</comment>
+    <requestid>503019</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e8d4bbc14006e7beae2fd00cc5afb7f3</srcmd5>
+    <version>0.7.0</version>
+    <time>1498045818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies of scriplets (boo#1044823)</comment>
+    <requestid>504527</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fb68177ebe588169d4b12ed08ae69178</srcmd5>
+    <version>0.7.1</version>
+    <time>1504815098</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.1:
+  * Misc internal changes
+- Enable development tools building
+
+- Depend on coreutils for initrd macros (bsc#1055492).</comment>
+    <requestid>521084</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>342fd5f31fa6b98e84e5b6838ba2207c</srcmd5>
+    <version>0.7.2</version>
+    <time>1507391216</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.2:
+  * Misc internal changes
+  * Updated documentation and manpages</comment>
+    <requestid>530435</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c4395dd263d8fa8d75efde4c17231a01</srcmd5>
+    <version>0.7.3</version>
+    <time>1507896476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.3:
+  * Misc internal changes
+  * Updates to tests</comment>
+    <requestid>532718</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>33fd149e2b30daf9a0959bfe8c3a240e</srcmd5>
+    <version>0.7.4</version>
+    <time>1508769677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.4:
+  * No changes provided for this release</comment>
+    <requestid>534879</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a1a6a568eedd000ca673e6d7b1eab7e8</srcmd5>
+    <version>0.7.5</version>
+    <time>1513245046</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.5:
+  * Fix a bug that stopped cache_restore working with metadata
+    version 2.</comment>
+    <requestid>554865</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b7212c1cfca22b9e0c28c136a5dc3c5c</srcmd5>
+    <version>0.7.5</version>
+    <time>1521498659</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file with spec-cleaner</comment>
+    <requestid>586693</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>92d6199714e5a2b5db00fd49ec1d87b0</srcmd5>
+    <version>0.7.6</version>
+    <time>1528195744</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.6:
+  * Mostly internal changes</comment>
+    <requestid>613282</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>00f66bf056cfdb827db282625bcacf4e</srcmd5>
+    <version>0.7.6</version>
+    <time>1536147805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629935</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3f8c2fce0dd4575b742b12ee17c74e6d</srcmd5>
+    <version>0.8.3</version>
+    <time>1560337496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.3:
+  * Mostly internal changes</comment>
+    <requestid>706356</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>dab2b67cc4e5ded1a53e7e5fbf913c50</srcmd5>
+    <version>0.8.3</version>
+    <time>1565266930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721201</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8f6b57a0046ee91cb6abb736a67b0a9e</srcmd5>
+    <version>0.8.5</version>
+    <time>1565962233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.5
+  * Mostly internal changes</comment>
+    <requestid>723103</requestid>
+  </revision>
+</revisionlist>

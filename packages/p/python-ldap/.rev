@@ -1,0 +1,442 @@
+<revisionlist>
+  <revision rev="1" vrev="9">
+    <srcmd5>5fb46cbdae1aa0505fd3808313d0dc65</srcmd5>
+    <version>2.2.0</version>
+    <time>1168904044</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="23">
+    <srcmd5>2ea378e0cda3e2644375b6a4eb67982f</srcmd5>
+    <version>2.2.0</version>
+    <time>1169512036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a4f58b38ceb0b21901629857028ec335</srcmd5>
+    <version>2.3.1</version>
+    <time>1186090214</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7a1b4227d8cf6eb27aa34ffae61d2eab</srcmd5>
+    <version>2.3.4</version>
+    <time>1207266264</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>20d1531033d2744aebd18a7f3a00decd</srcmd5>
+    <version>2.3.5</version>
+    <time>1220663719</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6edfb7db3c4c20b57104240f7ba55a56</srcmd5>
+    <version>2.3.8</version>
+    <time>1241628673</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>daa8f4b74255f5c880009d6a8e4bd05c</srcmd5>
+    <version>2.3.9</version>
+    <time>1249678616</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>daa8f4b74255f5c880009d6a8e4bd05c</srcmd5>
+    <version>2.3.9</version>
+    <time>1249678616</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>766c5d5fa7ea617a7bafd4cf6647176d</srcmd5>
+    <version>2.3.9</version>
+    <time>1268925859</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>766c5d5fa7ea617a7bafd4cf6647176d</srcmd5>
+    <version>2.3.9</version>
+    <time>1278667384</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>766c5d5fa7ea617a7bafd4cf6647176d</srcmd5>
+    <version>2.3.9</version>
+    <time>1278678614</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>766c5d5fa7ea617a7bafd4cf6647176d</srcmd5>
+    <version>2.3.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3c84e898ca14058c9c225f81371f5d8b</srcmd5>
+    <version>2.3.13</version>
+    <time>1299576663</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 63283 from user saschpe
+</comment>
+    <requestid>63283</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d95950c4d9424a36de0761e094f92cfd</srcmd5>
+    <version>2.4.3</version>
+    <time>1318348750</time>
+    <user>lrupp</user>
+    <comment>- removed sasl.patch as it is no longer necessary
+- update to 2.4.3
+  * requires OpenLDAP 2.4.11 or higher
+  * improved documentation
+  * backwards-incompatible API for ldap.control
+  * a couple new features, e.g. support for OPT_X_TLS_PACKAGE
+  * improved LDAPv3 support</comment>
+    <requestid>87384</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>d95950c4d9424a36de0761e094f92cfd</srcmd5>
+    <version>2.4.3</version>
+    <time>1319182395</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>c62f16fa3566e456277a868d478c4e59</srcmd5>
+    <version>2.4.3</version>
+    <time>1323194174</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fc99da4b1473fee7cff1bdfb1dfec212</srcmd5>
+    <version>2.4.9</version>
+    <time>1332239614</time>
+    <user>coolo</user>
+    <comment>- Remove service
+- Spec file cleanup:
+  * Remove outdated sections
+  * Proper macro usage</comment>
+    <requestid>109730</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>26f51fca2482ad983ea8df2c4815b9e0</srcmd5>
+    <version>2.4.9</version>
+    <time>1333355449</time>
+    <user>coolo</user>
+    <comment>Added dependencies on other (recently submitted) packages python-pyasn1 and python-pyasn1-modules (forwarded request 110736 from stroeder)</comment>
+    <requestid>110796</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>020fdeb195e0dd02c41bf3e91b85d7e1</srcmd5>
+    <version>2.4.10</version>
+    <time>1339352341</time>
+    <user>coolo</user>
+    <comment>Update to upstream release 2.4.10 with fix to ReconnectLDAPObject and syncrepl demo.</comment>
+    <requestid>124112</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>020fdeb195e0dd02c41bf3e91b85d7e1</srcmd5>
+    <version>2.4.10</version>
+    <time>1340184064</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>020fdeb195e0dd02c41bf3e91b85d7e1</srcmd5>
+    <version>2.4.10</version>
+    <time>1359110063</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>d39b52b159fa00c24f28cff3dfeaed69</srcmd5>
+    <version>2.4.10</version>
+    <time>1371654220</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179881</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4cb7f3211226725d403cdd9e1da9eac3</srcmd5>
+    <version>2.4.13</version>
+    <time>1372687180</time>
+    <user>coolo</user>
+    <comment>Update to upstream release 2.4.13</comment>
+    <requestid>181188</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>4cb7f3211226725d403cdd9e1da9eac3</srcmd5>
+    <version>2.4.13</version>
+    <time>1379664209</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>242c61f902cda56063d8bfbd3a201d13</srcmd5>
+    <version>2.4.15</version>
+    <time>1396158968</time>
+    <user>coolo</user>
+    <comment>- Set license ot Python-2.0 (according to legal)
+
+- Update to upstream release 2.4.15
+  * Various fixes
+  * Support for subordinates search scope
+  * Support for select schema description extension</comment>
+    <requestid>228097</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>242c61f902cda56063d8bfbd3a201d13</srcmd5>
+    <version>2.4.15</version>
+    <time>1409302907</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7e74d2ce9164d6746cab1cb4a6c4e7bb</srcmd5>
+    <version>2.4.16</version>
+    <time>1410367894</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248359</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2121cdf39ff7d345624abb1a3ed1e230</srcmd5>
+    <version>2.4.18</version>
+    <time>1412851952</time>
+    <user>coolo</user>
+    <comment>Update to upstream release 2.4.18</comment>
+    <requestid>254811</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b488c63b88faa60c6985e95ddbd385c4</srcmd5>
+    <version>2.4.19</version>
+    <time>1421052604</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280784</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7c04f1112bf21a042af0672bd68c3cc9</srcmd5>
+    <version>2.4.20</version>
+    <time>1436331602</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315478</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>95c99c76d6535c6e6a161ad9ed82c6f8</srcmd5>
+    <version>2.4.21</version>
+    <time>1443336029</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333793</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e7803ed532d0b091350724efb270cac7</srcmd5>
+    <version>2.4.22</version>
+    <time>1445779096</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340768</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>aab4fa900a92e9318157dee007bf254a</srcmd5>
+    <version>2.4.25</version>
+    <time>1453799724</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>355856</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>8ccbfdc1a81707f145028db5f193a2e2</srcmd5>
+    <version>2.4.25</version>
+    <time>1455701068</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358761</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>d938b609b8159a648fe5d3b1a1c68829</srcmd5>
+    <version>2.4.25</version>
+    <time>1456434470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>361093</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2b176b4886f18189c6d98e5101bfc88d</srcmd5>
+    <version>2.4.27</version>
+    <time>1471009339</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.4.27</comment>
+    <requestid>416377</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e8be5809929cb97931ba0f2e46436204</srcmd5>
+    <version>2.4.28</version>
+    <time>1479503039</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440800</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>beb8a7a24cc2ef0ece6ea1c557c876c6</srcmd5>
+    <version>2.4.29</version>
+    <time>1485512230</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452487</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a76b2bdb3faa646df8940dad5da637f6</srcmd5>
+    <version>2.4.30</version>
+    <time>1486635512</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455460</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>fb08a97cc3d54830801ccc2852e468d3</srcmd5>
+    <version>2.4.39</version>
+    <time>1496327689</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500227</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b4d5f0fb0db5c1d20ce1509e1861ea91</srcmd5>
+    <version>2.4.40</version>
+    <time>1498639058</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506527</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>adb25f565184efa04a1180799882942b</srcmd5>
+    <version>2.4.41</version>
+    <time>1500275355</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.4.41</comment>
+    <requestid>509843</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b01ba8654c0e043ba26c53d30e2b2d89</srcmd5>
+    <version>2.4.42</version>
+    <time>1504617427</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream release 2.4.42
+  * small enhancements to test suite
+</comment>
+    <requestid>520806</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>dad88d2a721e895f689c01e5dda3e994</srcmd5>
+    <version>2.4.44</version>
+    <time>1504981601</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522190</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>9ddf095146e6ad81c3816233663f0d04</srcmd5>
+    <version>2.4.45</version>
+    <time>1507628568</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532814</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>0187500fa1639f2ecd7c609db8e13aa3</srcmd5>
+    <version>2.5.1</version>
+    <time>1510761752</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream release 2.5.1
+- adjusted BuildRequires to match upstream prerequisites
+Changes since 2.4.45:
+Mandatory prerequisites:
+- Python 2.7.x
+- pyasn1 0.3.7+ and pyasn1_modules 0.1.5+
+Modules/
+* removed unused code schema.c
+Lib/
+* ldap.__version__, ldap.__author__ and ldap.__license__ now
+  imported from new sub-module ldap.pkginfo also to setup.py
+* Added safety assertion when importing _ldap:
+  ldap.pkginfo.__version__ must match _ldap.__version__
+* removed stand-alone module dsml
+* slapdtest.SlapdObject.restart() just restarts slapd
+  without cleaning any data
+* Compability changes for pyasn1 0.3.x or newer
+  (thanks to Ilya Etingof and Christian Heimes)
+* The methods SSSResponseControl.decodeControlValue() and
+  VLVResponseControl.decodeControlValue() now follow the coding
+  convention to use camel-cased ASN.1 name as class attribute name.
+  The old class names are still set for back-ward compability
+  but should not be used in new code because they might be removed
+  in a later release.
+* removed SSSRequestControl from ldap.controls.KNOWN_RESPONSE_CONTROLS
+Tests/
+* added explicit reconnect tests for ReconnectLDAPObject
+</comment>
+    <requestid>541892</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>77a9088832897e77f66c9090ea42b229</srcmd5>
+    <version>2.5.2</version>
+    <time>1511274873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544080</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>e865cf17e24d8b08769443cdde8ba980</srcmd5>
+    <version>3.0.0b4</version>
+    <time>1516444075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567667</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>07b9605d2f6a00b163cc332519528718</srcmd5>
+    <version>3.1.0</version>
+    <time>1533887323</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream release 3.1.0:
+  * Long-deprecated functions `ldap.open()` and `ldap.init()` are removed
+  * `LDAPObject.compare_s()` and `compare_ext_s` return bool instead of 0 or 1
+  * Tons of changes see CHANGES file</comment>
+    <requestid>628063</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>a85e24507c9ca61830357962f104f196</srcmd5>
+    <version>3.1.0</version>
+    <time>1534322282</time>
+    <user>dimstar_suse</user>
+    <comment>- Require openldap2-client as some of the binaries are called
+  on the runtime</comment>
+    <requestid>629178</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>b70754510c6381bf85bf29fe9060fcf6</srcmd5>
+    <version>3.1.0</version>
+    <time>1544189985</time>
+    <user>dimstar_suse</user>
+    <comment>- Add this package to SLE wrt fate#325747
+- Do not add version dependency to devel requirement</comment>
+    <requestid>655978</requestid>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>8b6059c50d5b7e0e7f2a3be79b30bca9</srcmd5>
+    <version>3.1.0</version>
+    <time>1546535179</time>
+    <user>dimstar_suse</user>
+    <comment>- Reduce the runtime dependencies to match the actual needs
+  * User can use either openldap or 389-ds or anything else
+- Run the tests on the package
+- Fix the fdupes call</comment>
+    <requestid>656823</requestid>
+  </revision>
+</revisionlist>

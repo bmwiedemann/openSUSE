@@ -1,0 +1,8 @@
+<package name="perl-pcsc" project="openSUSE:Factory">
+  <title>Perl interface to Smart Card Reader</title>
+  <description>PC/SC represents an abstraction layer to smart card readers. It       
+provides a communication layer with a wide variety of smart card       
+readers through a standardized API.
+       </description>
+  <devel project="security:chipcard" package="perl-pcsc"/>
+</package>

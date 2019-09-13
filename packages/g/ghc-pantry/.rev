@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55df833a2b235ccf5fb2ab320f8e8a58</srcmd5>
+    <version>0.1.1.0</version>
+    <time>1564413946</time>
+    <user>dimstar_suse</user>
+    <comment>replaces ghc-pantry-tmp</comment>
+    <requestid>715404</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a11649574ae2ab97ce23f5c4718135fc</srcmd5>
+    <version>0.1.1.1</version>
+    <time>1565694904</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>721031</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>93f828cb1f5e8ac8898816a9e633a592</srcmd5>
+    <version>0.1.1.2</version>
+    <time>1567092248</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>726821</requestid>
+  </revision>
+</revisionlist>

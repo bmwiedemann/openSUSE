@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a06cbd6406904c193cb62c3e90b1150a</srcmd5>
+    <version>0.4.9</version>
+    <time>1545996856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.9
+  * Styled .rubberband style-class for .content-view class as well (Gtk+ 3.2x/4.0).
+  * Updated BriskMenuApplet window styling (Gtk+ 3.2x/4.0).
+  * Tweaked selected MenuCategoryButton shape (Cinnamon).
+  * Added solid borders for OSK keycaps (Gnome-shell/Cinnamon).
+  * Stopped drawing GtkMenuBar bottom border in FirefoxQuantom (Gtk+ 3.2x/4.0).
+  * Re-optimized GtkMenuBar bottom border colors for mixed variants (Gtk+ 3.2x/4.0).
+  * Added a workaround for preventing unwanted button node height jumping in Rhythmbox's alternate bottom toolbar (Gtk+ 3.2x/4.0).
+  * Unified 'key-enter' SVGs for all variants with suggested-action foreground color (Gnome-shell 3.26/3.32).
+  * Converted WorkspaceControls sizing/spacing from fixed to font-sensitive (Cinnamon).
+  * Converted Panel width/height from fixed to font-sensitive (Cinnamon).
+- Make sure we use correct sources for 0.4.8 version 
+- Update to version 0.4.8
+  * Reduced GtkCalendar label padding for preventing mis-aligned 'week-number' labels (Gtk+ 3.2x/4.0).
+  * Simplified and rounded 'selected day' label background (Gtk+ 3.2x/4.0).
+  * Check the binary 'xmllint' provided by libxml2 utilities package as well (Configure.ac).
+  * Added 'meaningless' 2px L/R edges to Metacity-2 titlebars for damned Marco (Metacity).
+  * Enhanced Budgie apps-menu popover design (Gtk+ 3.2x/4.0).
+  * Fixed unwanted double padding in Budgie ClockApplet popover's GtkStack with new upstream style-classes (Gtk+ 3.2x/4.0).
+  * Added some styling for upcoming Budgie Raven's audio apps/devices GtkListBox (Gtk+ 3.2x/4.0).
+- Corrected description for some of the sub-packages.
+- Initial packaging of version 0.4.7.1
+</comment>
+    <requestid>660608</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b95b0decf6f91917f5f7072d41a654bf</srcmd5>
+    <version>0.5.0</version>
+    <time>1546246009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661893</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d3e5739b33098bf97e7dd9f607484539</srcmd5>
+    <version>0.5.1</version>
+    <time>1546535245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662324</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>407ef2f05093f1a17569718ba73b8ed9</srcmd5>
+    <version>0.5.2</version>
+    <time>1547130037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663068</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4f802fa5f3689255ab4becce72617145</srcmd5>
+    <version>0.5.3</version>
+    <time>1547540216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664896</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a6752b050e0dc15094e182d4bd4f35b4</srcmd5>
+    <version>0.5.5</version>
+    <time>1548065269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667323</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>62d163fe4e0470c4cc77de3ae92792b6</srcmd5>
+    <version>0.5.7</version>
+    <time>1548704907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668819</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b229d9c7f4d8782a409e9f6ece1dc521</srcmd5>
+    <version>0.5.8</version>
+    <time>1549018108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670440</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>65b4d4cb54ad73b5c9ec33f8441bc29b</srcmd5>
+    <version>0.5.9</version>
+    <time>1550048891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674324</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>98b7481c8a8f860340b0c936c00ec6dd</srcmd5>
+    <version>0.6.1</version>
+    <time>1552380954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684117</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8940e3993853ccf8bf19509479c56dd9</srcmd5>
+    <version>0.7.2</version>
+    <time>1554281485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690782</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ba3cb72a0bd689b30a492da68cf39092</srcmd5>
+    <version>0.7.5</version>
+    <time>1555237416</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693904</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>af18a79e9801693469673af2230fd3a4</srcmd5>
+    <version>0.7.9</version>
+    <time>1556817597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699887</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>23c7702c7d122b14997f36e4de71b3f2</srcmd5>
+    <version>0.8.5</version>
+    <time>1560971574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710663</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bd3c81dd99d08a2c2066cb90ba90f1b7</srcmd5>
+    <version>0.8.9</version>
+    <time>1565864969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723361</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c05a09103ba56c4ac2fd8e4660171c8f</srcmd5>
+    <version>2.0</version>
+    <time>1424095300</time>
+    <user>coolo</user>
+    <comment>Previous subpackage of texinfo</comment>
+    <requestid>284512</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7e102a30b1e350d3af1c1b9f0ef80094</srcmd5>
+    <version>2.0</version>
+    <time>1568190848</time>
+    <user>dimstar_suse</user>
+    <comment>- Let it build again: add default return type for main() in
+  patch texi2roff-2.0.dif</comment>
+    <requestid>729701</requestid>
+  </revision>
+</revisionlist>

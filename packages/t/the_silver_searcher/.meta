@@ -1,0 +1,6 @@
+<package name="the_silver_searcher" project="openSUSE:Factory">
+  <title>the_silver_searcher</title>
+  <description>A code searching tool similar to ack, with a focus on speed.</description>
+  <devel project="utilities" package="the_silver_searcher"/>
+  <url>https://github.com/ggreer/the_silver_searcher</url>
+</package>

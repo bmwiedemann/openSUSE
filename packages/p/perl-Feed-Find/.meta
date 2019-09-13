@@ -1,0 +1,5 @@
+<package name="perl-Feed-Find" project="openSUSE:Factory">
+  <title>Syndication Feed Autodiscovery Module for Perl</title>
+  <description>Feed::Find implements feed auto-discovery for finding syndication feeds, given a URI.</description>
+  <devel project="devel:languages:perl" package="perl-Feed-Find"/>
+</package>

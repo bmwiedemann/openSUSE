@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a213d1e66634c39d7635d3f67541640</srcmd5>
+    <version>0.3.2+git.1385463523.dfec30c</version>
+    <time>1386063018</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208486</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0e5da69a31657cd4ebbf32d93664eff6</srcmd5>
+    <version>0.3.5+git.1386667973.d5e8213</version>
+    <time>1386693846</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.5+git.1386667973.d5e8213:
+  + Rework fuzz detection
+  + Pass --fuzz=0 to &quot;quilt setup&quot;
+  + Do not list twice patches in .changes entry
+  + Switch to C locale to avoid parsing localized output
+
+- Update to version 0.3.4.1+git.1386598065.93569e2:
+  + Support quilt on SLE_11
+
+- Update to version 0.3.4+git.1386595051.c3f87d4:
+  + Fix %pre section patch regex
+
+- Update to version 0.3.3+git.1385473723.13c63f4:
+  + Whitespaces handling in OSCRC_EMAIL regexp</comment>
+    <requestid>210319</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>64a21f6fa6468322b4459493d8246e38</srcmd5>
+    <version>0.3.6+git.1389964042.5343549</version>
+    <time>1390429214</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.6+git.1389964042.5343549:
+  + Introduce &quot;--ignorefuzz&quot; argument</comment>
+    <requestid>214188</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>11c3edfd10d096e4ec797cd301c0929f</srcmd5>
+    <version>0.3.6+git.1392041308.272e6ab</version>
+    <time>1392111608</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.6+git.1392041308.272e6ab:
+  + Adjust changes message for refreshed patches</comment>
+    <requestid>221647</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f72f09635c7230d4930a95c6fd994b64</srcmd5>
+    <version>0.3.7+git.1392213832.12f52e6</version>
+    <time>1392300149</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.7+git.1392213832.12f52e6:
+  + Disable positive notifications (be more quiet)
+  + Don't create entry for no changes</comment>
+    <requestid>222051</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>24c84c6cd5f0a15aa0e59f18c7bcb5a3</srcmd5>
+    <version>0.3.8+git.1392653668.565b745</version>
+    <time>1392731168</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.8+git.1392653668.565b745:
+  + Remove patches only after processing all specs</comment>
+    <requestid>222603</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>35d2bc4ba40ac14eb4618be4a99eda49</srcmd5>
+    <version>0.3.9+git.1394121974.21d4106</version>
+    <time>1394172342</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.9+git.1394121974.21d4106:
+  + Fix dropped_patches</comment>
+    <requestid>224898</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>35d2bc4ba40ac14eb4618be4a99eda49</srcmd5>
+    <version>0.3.9+git.1394121974.21d4106</version>
+    <time>1409302013</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>54784fec4325d98f2ef7ee6777ec7522</srcmd5>
+    <version>0.3.9+git.1537184752.d624424</version>
+    <time>1537264094</time>
+    <user>maxlin_factory</user>
+    <comment>Update to version 0.3.9+git.1537184752.d624424:
+  * Avoid parsing shell output (boo#1108189)</comment>
+    <requestid>636203</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b06a29f526e4a8bbc6799b65151642dd</srcmd5>
+    <version>0.3.9+git.1537184752.d624424</version>
+    <time>1538502467</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>639347</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>3e3b64a6838f84d617a88e640bf4392c</srcmd5>
+    <version>0.3.9+git.1537184752.d624424</version>
+    <time>1551276529</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679574</requestid>
+  </revision>
+</revisionlist>

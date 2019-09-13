@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f43fdf6c381a676fd8f8fd2a5284e88a</srcmd5>
+    <version>0.8</version>
+    <time>1447882468</time>
+    <user>dimstar_suse</user>
+    <comment>It would be great to have this awesome music player in openSUSE.
+Fixed plugin directory (problem mentioned in SR 342476).</comment>
+    <requestid>343189</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>45674a9b03f0a0f5e1265f6966e540d4</srcmd5>
+    <version>0.8.1</version>
+    <time>1454353053</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357088</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9e3e8d6546a90f7770285c905f88ac57</srcmd5>
+    <version>0.8.2</version>
+    <time>1461855253</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390289</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>97186bdae57c0ff74186d059919d5691</srcmd5>
+    <version>0.8.2.pre61qt5</version>
+    <time>1557084146</time>
+    <user>dimstar_suse</user>
+    <comment>Further clean up</comment>
+    <requestid>700859</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>55f56651068893dee0889b973a172409</srcmd5>
+    <version>0.8.2.pre61qt5</version>
+    <time>1557142082</time>
+    <user>dimstar_suse</user>
+    <comment>Remove %if..%endif guards that do not affect the build result.</comment>
+    <requestid>700959</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>7fac18740894888f51b9143ac658c920</srcmd5>
+    <version>0.8.2.pre61qt5</version>
+    <time>1557264020</time>
+    <user>dimstar_suse</user>
+    <comment>Fix vlc plugin build with 0001-vlc-phonon-plugins-update.patch Add 0001-pkg_check_lib-fix.patch from git.</comment>
+    <requestid>701341</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>bbf3c1702682891504aed257f9d6a8eb</srcmd5>
+    <version>0.8.2.pre61qt5</version>
+    <time>1558340927</time>
+    <user>dimstar_suse</user>
+    <comment>Removed fix-library-directory.patch and replaced with modified patch from git 0001-configurable-library-directory.patch. Removed unneeded build conditonals for phonon and vlc.</comment>
+    <requestid>703938</requestid>
+  </revision>
+</revisionlist>

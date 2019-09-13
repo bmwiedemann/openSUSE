@@ -1,0 +1,7 @@
+<package name="html-dtd" project="openSUSE:Factory">
+  <title>HTML DTDs (Document Type Definitions) and Documents</title>
+  <description>Document Type Definitions (DTDs) for HTML 2.0, HTML 3.2, HTML 4.0, and
+HTML 4.01.  This package also contains the documentation (located in
+/usr/share/doc/packages/html-dtd).</description>
+  <devel project="Publishing" package="html-dtd"/>
+</package>

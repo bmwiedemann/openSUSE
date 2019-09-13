@@ -1,0 +1,314 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>883438e3235b8d62662e3aaff6221549</srcmd5>
+    <version>0.10.6</version>
+    <time>1168903395</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f80bcb11d88dcd838b010da400ac2c3</srcmd5>
+    <version>0.12.4</version>
+    <time>1173050693</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>68c85e7e06f6eb2689c6ce38c58e3c8a</srcmd5>
+    <version>0.13.4</version>
+    <time>1174953296</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>064b674f62cef975cf8c62fee712c720</srcmd5>
+    <version>0.13.6</version>
+    <time>1178232681</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2751a2aac29aa71f5a8ad8c1a3f7a8fe</srcmd5>
+    <version>0.13.10</version>
+    <time>1192551668</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3b3d8752598a3d4f9a72040717ea3cca</srcmd5>
+    <version>0.13.12</version>
+    <time>1194262046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4de71321f25090a341011a2321c562f3</srcmd5>
+    <version>0.13.12</version>
+    <time>1204753084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>800c3d475539efb8d9f4e42d66ba4e92</srcmd5>
+    <version>0.13.12</version>
+    <time>1204926370</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>8b84e6a090b63bf752f50cd13df01b55</srcmd5>
+    <version>0.13.12</version>
+    <time>1205114333</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>8561d75fd8f6e3012a2d18eca226dd5e</srcmd5>
+    <version>0.13.12</version>
+    <time>1212503109</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>2ddd19810e2f24d4613c09f52756f197</srcmd5>
+    <version>2.0.2</version>
+    <time>1217152745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>0d3decfa9419cb844df52bb89a2aadaf</srcmd5>
+    <version>2.0.2</version>
+    <time>1217367269</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>976f717f537674d2580c59a76379f0d5</srcmd5>
+    <version>2.0.2</version>
+    <time>1218644243</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>23e8adccbb8529d3a285964cc02b8252</srcmd5>
+    <version>2.0.2</version>
+    <time>1226067611</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>319ada72269558260c450fa7c92214dd</srcmd5>
+    <version>2.0.2</version>
+    <time>1236012708</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>03b094f6e71487d2a5ce86c39ab08182</srcmd5>
+    <version>2.0.2</version>
+    <time>1245366299</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>03b094f6e71487d2a5ce86c39ab08182</srcmd5>
+    <version>2.0.2</version>
+    <time>1245366299</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>c387294db67c705ac88af8a6adeee4c3</srcmd5>
+    <version>2.0.2</version>
+    <time>1258378420</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libsmbios based on submit request 24434 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>d8be8d4132b7cca87f044a5c6da7c9d8</srcmd5>
+    <version>2.0.2</version>
+    <time>1268924730</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="19">
+    <srcmd5>d8be8d4132b7cca87f044a5c6da7c9d8</srcmd5>
+    <version>2.0.2</version>
+    <time>1278667363</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="20">
+    <srcmd5>d8be8d4132b7cca87f044a5c6da7c9d8</srcmd5>
+    <version>2.0.2</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="23">
+    <srcmd5>d8be8d4132b7cca87f044a5c6da7c9d8</srcmd5>
+    <version>2.0.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>31453bfa51bc981571c3402d8e4dd229</srcmd5>
+    <version>2.2.26</version>
+    <time>1300699101</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64549 from user elvigia
+</comment>
+    <requestid>64549</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>cee5521b05a768b97abf6f63c627f043</srcmd5>
+    <version>2.2.26</version>
+    <time>1300699113</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64549
+</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>1c68011681f2a4cc664846e059cc6d59</srcmd5>
+    <version>2.2.26</version>
+    <time>1305184729</time>
+    <user>azouhr</user>
+    <comment>- Fix build with GCC 4.6 (forwarded request 69937 from elvigia)</comment>
+    <requestid>69991</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>1c8fd4c181268bf8eb42176d72d3a7bb</srcmd5>
+    <version>2.2.26</version>
+    <time>1305184751</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 69991
+</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2b0fd6de087fe8400d4746ec01830c19</srcmd5>
+    <version>2.2.27</version>
+    <time>1305537900</time>
+    <user>saschpe</user>
+    <comment>Update to version 2.2.27, Spec file updates (forwarded request 70228 from adra)</comment>
+    <requestid>70232</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>953a041d7c404de6c97ab6d6b212f8dd</srcmd5>
+    <version>2.2.28</version>
+    <time>1309785304</time>
+    <user>saschpe</user>
+    <comment>Update to version 2.2.28, Spec file updates (forwarded request 75211 from adra)</comment>
+    <requestid>75257</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>953a041d7c404de6c97ab6d6b212f8dd</srcmd5>
+    <version>2.2.28</version>
+    <time>1319182136</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>bcccce65526cc8b382bd7c152e25ee50</srcmd5>
+    <version>2.2.28</version>
+    <time>1336541120</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+ or OSL-2.1
+SPDX format (http://www.spdx.org/licenses) (forwarded request 116746 from babelworx)</comment>
+    <requestid>116764</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>bcccce65526cc8b382bd7c152e25ee50</srcmd5>
+    <version>2.2.28</version>
+    <time>1340183637</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>bcccce65526cc8b382bd7c152e25ee50</srcmd5>
+    <version>2.2.28</version>
+    <time>1359109355</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="10">
+    <srcmd5>bcccce65526cc8b382bd7c152e25ee50</srcmd5>
+    <version>2.2.28</version>
+    <time>1379663091</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="12">
+    <srcmd5>bcccce65526cc8b382bd7c152e25ee50</srcmd5>
+    <version>2.2.28</version>
+    <time>1409301718</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="13">
+    <srcmd5>a4c755510328d6029ec35ad20d5320dc</srcmd5>
+    <version>2.2.28</version>
+    <time>1419897011</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266615</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c29125b6b862902d8b58ac7dbcaac589</srcmd5>
+    <version>2.3.0</version>
+    <time>1468482140</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407013</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a7e797896a14133d2981ce232775a393</srcmd5>
+    <version>2.3.2</version>
+    <time>1490786392</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>477961</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>3f4498413d33b90d82c6c02763e23b86</srcmd5>
+    <version>2.3.3</version>
+    <time>1509193018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.3
+  Shipping and new DellEMC systems may use dell_rbu driver to
+  perform BIOS updates on the system.
+  [fate#322804]</comment>
+    <requestid>535170</requestid>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>b59da6cc5a3c5f5b1e86e00ef218fb34</srcmd5>
+    <version>2.3.3</version>
+    <time>1510659591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540222</requestid>
+  </revision>
+  <revision rev="40" vrev="5">
+    <srcmd5>284417f9d809de3aecabcd061ce3743e</srcmd5>
+    <version>2.3.3</version>
+    <time>1511595612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544109</requestid>
+  </revision>
+  <revision rev="41" vrev="6">
+    <srcmd5>c2d8f0245ebd4c5255471e24f2e4b80f</srcmd5>
+    <version>2.3.3</version>
+    <time>1519902407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580537</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>18672a344f04a95793985949c7c23543</srcmd5>
+    <version>2.4.1</version>
+    <time>1522935093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593558</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>7f2e8ffaf3a9a31564ceaa679e8b95bb</srcmd5>
+    <version>2.4.1</version>
+    <time>1527276932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611700</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>86bfa6f3216689000a0599cdcdb6ccde</srcmd5>
+    <version>2.4.2</version>
+    <time>1543223662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650740</requestid>
+  </revision>
+</revisionlist>

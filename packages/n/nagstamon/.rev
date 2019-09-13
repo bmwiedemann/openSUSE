@@ -1,0 +1,188 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d222a1d639f3f40e6b43894e0cd74b2e</srcmd5>
+    <version>0.9.8</version>
+    <time>1320232096</time>
+    <user>coolo</user>
+    <comment>- used use 'python-distribute' instead of 'python-setuptools' for openSUSE
+- used 'GPL-2.0' as LICENSE
+- removed CFLAGS and --skip-build
+- leave %clean section by intention: needed by other distributions
+- removed authors from description, as requested - even if I never saw a
+  a new official policy announcement that forbits this on openSUSE</comment>
+    <requestid>89762</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c025ff997104c3b8d5e57927d00e4a9b</srcmd5>
+    <version>0.9.8</version>
+    <time>1323192654</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bee248e93a47728d79d07f224a80aba9</srcmd5>
+    <version>0.9.9.17</version>
+    <time>1332416148</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>110444</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4725d622d4de9781436778f5f7fa8643</srcmd5>
+    <version>0.9.9</version>
+    <time>1334641621</time>
+    <user>coolo</user>
+    <comment>- update to 0.9.9 (final):
+  + fixed popwin misplacement
+  + many fixes for the Windows port</comment>
+    <requestid>113417</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4725d622d4de9781436778f5f7fa8643</srcmd5>
+    <version>0.9.9</version>
+    <time>1340183721</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>4725d622d4de9781436778f5f7fa8643</srcmd5>
+    <version>0.9.9</version>
+    <time>1359109483</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>26a34b7227c3c512873e6b59de5d1681</srcmd5>
+    <version>0.9.9</version>
+    <time>1366233050</time>
+    <user>coolo</user>
+    <comment>- fix build on CentOS &gt; 5</comment>
+    <requestid>171262</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>04f92d38fa9ff3b9d2979a4fea3a551b</srcmd5>
+    <version>0.9.10</version>
+    <time>1373953067</time>
+    <user>coolo</user>
+    <comment>- update to 0.9.10:
+  + added fullscreen option
+  + added Thruk support
+  + added Check_MK cookie-based auth
+  + added new Centreon autologin option
+  + added configurable default sort order
+  + added filter for hosts in hard/soft state for Nagios, Icinga, 
+    Opsview and Centreon
+  + added $STATUS-INFO$ variable for custom actions
+  + added audio alarms also in fullscreen mode
+  + improved update interval set in seconds instead minutes
+  + improved Icinga JSON support
+  + improved Centreon 2.4 xml/broker support
+  + improved Nagios 3.4 pagination support
+  + improved nicer GTK theme Murrine on MacOSX
+  + fixed security bug
+  + fixed some memory leaks
+  + fixed superfluous passive icon for Check_MK
+  + fixed blocking of shutdown/reboot on MacOSX
+  + fixed saving converted pre 0.9.9 config immediately
+  + fixed statusbar position when offscreen
+  + fixed some GUI issues
+  + fixed update detection
+- this version fixes a security bug in the automatic update check 
+  (mentioned in CVE-2013-4114 and bnc #829217)</comment>
+    <requestid>182970</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e699591532affd881c5987c852c5bd1d</srcmd5>
+    <version>0.9.11</version>
+    <time>1378907138</time>
+    <user>coolo</user>
+    <comment>- update to 0.9.11:
+  + added libnotify desktop notification support
+  + added Centreon criticality support
+  + fixed broken authentication dialog
+  + fixed wrong OK state for Nagios and Icinga
+  + fixed Correct-Statusbar-Position-O-Matic
+  + fixed some Thruk issues
+  + fixed popup resizing artefact
+  + fixed some server edit dialog bugs
+  + fixed missing auth field in Icinga when credentials are wrong
+  + fixed quoting URLs for browser actions</comment>
+    <requestid>198488</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>e699591532affd881c5987c852c5bd1d</srcmd5>
+    <version>0.9.11</version>
+    <time>1379663340</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3115c3334c1ade141fec91d621af97b5</srcmd5>
+    <version>1.0</version>
+    <time>1406645304</time>
+    <user>coolo</user>
+    <comment>- update to 1.0:
+  + added custom event notification with custom commands
+  + added highlighting of new events
+  + added storage of passwords in OS keyring
+  + added optional tooltip for full status information
+  + added support for applying custom actions to specific monitor only
+  + added copy buttons for servers and actions dialogs
+  + added stopping notification if event already vanished
+  + added support for Op5Monitor 6.3 instead of Ninja
+  + added experimental Zabbix support
+  + added automatic refreshing after acknowledging
+  + added permanent hamburger menu
+  + unified layout of dialogs
+  + various Check_MK improvements
+  + fixed old regression not-staying-on-top-bug
+  + fixed Check_MK-Recheck-DOS-bug
+  + fixed pop window size calculation on multiple screens
+  + fixed following popup window on multiple screens
+  + fixed hiding dialogs in MacOSX
+  + fixed ugly statusbar font in MacOSX
+  + fixed use of changed colors
+  + fixed non-ascending default sort order
+  + fixed Opsview downtime dialog
+  + fixed sometimes not working context menu
+  + fixed some GUI glitches
+  + fixed password saving bug
+  + fixed Centreon language inconsistencies
+  + fixed regression Umlaut bug</comment>
+    <requestid>242754</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>3115c3334c1ade141fec91d621af97b5</srcmd5>
+    <version>1.0</version>
+    <time>1409301951</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1b0f74a27d006c6d9fded328228f83f3</srcmd5>
+    <version>1.0.1</version>
+    <time>1419809423</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.1:
+  + added option to disable system keyring storage to prevent crashes
+  + reverted default sorting order to &quot;Descending&quot;
+  + fixed too narrow fullscreen display</comment>
+    <requestid>266489</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1b9892063b192cbd534520a7a568e87b</srcmd5>
+    <version>2.0</version>
+    <time>1474016443</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>426143</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1359e937ce78b113785d2500b254dc69</srcmd5>
+    <version>2.0.1</version>
+    <time>1477904180</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>437507</requestid>
+  </revision>
+</revisionlist>

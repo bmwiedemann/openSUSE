@@ -1,0 +1,8 @@
+<package name="python-args" project="openSUSE:Factory">
+  <title>Command Arguments for Humans</title>
+  <description>This simple module gives you an elegant interface for your command line argumemnts.
+
+</description>
+  <devel project="devel:languages:python" package="python-args"/>
+  <url>https://github.com/kennethreitz/args</url>
+</package>

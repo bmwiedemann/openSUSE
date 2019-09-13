@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54a5d39f11f01b07719052d708bb9272</srcmd5>
+    <version>5.0</version>
+    <time>1554749516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691536</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9103b29c0a704da3755ce8998f0b28a6</srcmd5>
+    <version>5.0</version>
+    <time>1555488307</time>
+    <user>dimstar_suse</user>
+    <comment>- Correctly obsolete patterns-caasp-* version 4.0</comment>
+    <requestid>693223</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>814670298a467eec38c365645a8d0eec</srcmd5>
+    <version>5.0</version>
+    <time>1556915810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698272</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>50dfebef6c3035463eef3f89f9eeaef8</srcmd5>
+    <version>5.0</version>
+    <time>1557472486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701784</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6079b5ea7e9c1f0fc4543c1d5d9a0d2c</srcmd5>
+    <version>5.0</version>
+    <time>1557832414</time>
+    <user>dimstar_suse</user>
+    <comment>- Add multipath-tools to DVD for the case the installer needs it</comment>
+    <requestid>701998</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>8c4eedfae0b915395625b3c75c98dcfa</srcmd5>
+    <version>5.0</version>
+    <time>1559902591</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bcache-tools to DVD [bsc#1136815]</comment>
+    <requestid>707770</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>904f09f708c48dfcb282984e362e0478</srcmd5>
+    <version>5.0</version>
+    <time>1565876610</time>
+    <user>dimstar_suse</user>
+    <comment>- MicroOS base: remove update-checker, the only on openSUSE usefull
+  functionality (orphaned packages) does not work due a zypper bug.
+
+- Add zypper-needs-restarting to MicroOS base pattern</comment>
+    <requestid>722654</requestid>
+  </revision>
+</revisionlist>

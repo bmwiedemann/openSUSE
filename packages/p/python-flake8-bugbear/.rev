@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35009f7ec7fca65ceb5d359a0f55348e</srcmd5>
+    <version>18.2.0</version>
+    <time>1531379912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621905</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c4a27157a8e5dc50fcbbfbbae2234704</srcmd5>
+    <version>18.2.0</version>
+    <time>1531947431</time>
+    <user>dimstar_suse</user>
+    <comment>- This module requires py3.5+ thus restrict the build</comment>
+    <requestid>623630</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>789cd7e2272e955b9d312d9541081bcd</srcmd5>
+    <version>18.8.0</version>
+    <time>1541511453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646250</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>70be5983074a2fbbdb1c78f82e403b84</srcmd5>
+    <version>19.3.0</version>
+    <time>1554189777</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.3.0:
+  * allow 'mcs' for metaclass classmethod first arg (PyCharm default)
+  * Introduce B011
+  * Introduce B009 and B010
+  * Exclude immutable calls like tuple() and frozenset() from B008
+  * For B902, the first argument for metaclass class methods can be &quot;mcs&quot;, matching the name preferred by PyCharm.</comment>
+    <requestid>690380</requestid>
+  </revision>
+</revisionlist>

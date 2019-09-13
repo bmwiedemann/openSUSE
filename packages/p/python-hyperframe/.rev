@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f9f7fff2164e29bee0fd3330dae3ccc</srcmd5>
+    <version>4.0.2</version>
+    <time>1492169552</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>478025</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ed7039aa33fbce7431fb22b34e30d9d7</srcmd5>
+    <version>5.0.0</version>
+    <time>1493235832</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490324</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd464aac162890f7f1244ce94ad610e4</srcmd5>
+    <version>5.1.0</version>
+    <time>1519747112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580060</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5dc867bcbc0fa13ee5e70fed7660322d</srcmd5>
+    <version>5.1.0</version>
+    <time>1545866786</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659432</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ada8b78fe00bebcdf54064012a80bfbd</srcmd5>
+    <version>5.2.0</version>
+    <time>1553888275</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.0:
+  * Add a new ENABLE_CONNECT_PROTOCOL settings paramter.
+  * Fix collections.abc deprecation.</comment>
+    <requestid>688742</requestid>
+  </revision>
+</revisionlist>

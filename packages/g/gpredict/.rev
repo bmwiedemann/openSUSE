@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4517bb0f71be261abf70cbc4cdfec111</srcmd5>
+    <version>1.3_373</version>
+    <time>1489653729</time>
+    <user>dimstar_suse</user>
+    <comment>usefull software (for satelite tracking</comment>
+    <requestid>479122</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>32f2e02ba04b5aeebcab58834f25951d</srcmd5>
+    <version>1.4~git.20170714</version>
+    <time>1503593733</time>
+    <user>dimstar_suse</user>
+    <comment>- Change versioning scheme (prerelease):
+  * 1.3.0~git.20170714
+
+- Update to version 1.3.0+git.20170714
+  * No changelog provided
+- Further package cleanup</comment>
+    <requestid>518347</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>760f0cdbcf09132c9eb44d8ff50d0c59</srcmd5>
+    <version>2.2</version>
+    <time>1516359152</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop _services
+- Do not run post scriplets on Tumbleweed where they are not needed
+
+- update to 2.2
+  * details in NEWS file</comment>
+    <requestid>563616</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>07dd165beca8782eeb87a555dd7035e2</srcmd5>
+    <version>2.2.1</version>
+    <time>1516712012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568478</requestid>
+  </revision>
+</revisionlist>

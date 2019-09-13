@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c972ba91f67332aa7d38b26cc072ce38</srcmd5>
+    <version>0.1</version>
+    <time>1313053912</time>
+    <user>saschpe</user>
+    <comment>New package.</comment>
+    <requestid>78388</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4fb04324ce29a80225aad1aaaa647a21</srcmd5>
+    <version>0.1</version>
+    <time>1313053921</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78388
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4fb04324ce29a80225aad1aaaa647a21</srcmd5>
+    <version>0.1</version>
+    <time>1319182471</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e3d15b60e32c41dbd43801edb5819e3a</srcmd5>
+    <version>0.1</version>
+    <time>1323194660</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>e3d15b60e32c41dbd43801edb5819e3a</srcmd5>
+    <version>0.1</version>
+    <time>1340184218</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9007acf98749534c413bf0c336ee3a66</srcmd5>
+    <version>0.2</version>
+    <time>1340895590</time>
+    <user>coolo</user>
+    <comment>- Added README.
+- Support more products and libtool and autoconf versions.
+- Rewrite heuristic to be cross-compilation wise (bnc#736143).
+- Do not overwrite libexecdir specified by user.</comment>
+    <requestid>126244</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e2518ac6a5ad3b08739477811368f16b</srcmd5>
+    <version>0.2</version>
+    <time>1342713609</time>
+    <user>coolo</user>
+    <comment>There is no code change. Just adding BNC# to changes.
+- Do not overwrite libexecdir specified by user (bnc#758947).</comment>
+    <requestid>128234</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>e2518ac6a5ad3b08739477811368f16b</srcmd5>
+    <version>0.2</version>
+    <time>1359110409</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>e2518ac6a5ad3b08739477811368f16b</srcmd5>
+    <version>0.2</version>
+    <time>1379664684</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>e2518ac6a5ad3b08739477811368f16b</srcmd5>
+    <version>0.2</version>
+    <time>1409303370</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>3d3ebfc15e24f34dc8d979fd8e70b93b</srcmd5>
+    <version>0.2</version>
+    <time>1430980161</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305612</requestid>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>d3689729d7efe328f640f1f5449a4614</srcmd5>
+    <version>0.2</version>
+    <time>1439274407</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321575</requestid>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>0767330a4e11d0a3954103b57614db0a</srcmd5>
+    <version>0.2</version>
+    <time>1495883791</time>
+    <user>dimstar_suse</user>
+    <comment>- Update license information
+
+- Oops ... C-shells do use `setenv' for exporting variables (boo#1040211)</comment>
+    <requestid>497768</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>5f608b28fa442f9ad9f4b122cea418f7</srcmd5>
+    <version>0.2</version>
+    <time>1504617514</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520859</requestid>
+  </revision>
+</revisionlist>

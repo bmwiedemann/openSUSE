@@ -1,0 +1,178 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70408d3a0a9e69dd2bb1f3fe78163c85</srcmd5>
+    <version>1.7</version>
+    <time>1265913438</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/lcov based on submit request 31417 from user poletti_marco
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>301daf32b8726ac339af21beaa0d4886</srcmd5>
+    <version>1.8</version>
+    <time>1265919261</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/lcov based on submit request 32342 from user poletti_marco
+</comment>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bdda59892bc585616c0a41e41c3f67eb</srcmd5>
+    <version>1.8</version>
+    <time>1268924472</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bdda59892bc585616c0a41e41c3f67eb</srcmd5>
+    <version>1.8</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>bdda59892bc585616c0a41e41c3f67eb</srcmd5>
+    <version>1.8</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b17352316ddc5e8516085f3ae2b907d8</srcmd5>
+    <version>1.9</version>
+    <time>1294973594</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57813 from user poletti_marco
+</comment>
+    <requestid>57813</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9d1beb1eb77a43a16fcd454fee2017ff</srcmd5>
+    <version>1.9</version>
+    <time>1294973602</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57813
+</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>9d1beb1eb77a43a16fcd454fee2017ff</srcmd5>
+    <version>1.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>9d1beb1eb77a43a16fcd454fee2017ff</srcmd5>
+    <version>1.9</version>
+    <time>1319182065</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>2aa3092148b3a736ec03fd57cb3001cf</srcmd5>
+    <version>1.9</version>
+    <time>1323192143</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>2aa3092148b3a736ec03fd57cb3001cf</srcmd5>
+    <version>1.9</version>
+    <time>1340183548</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>d9e32675e1650864a3d14f9a8294a8cc</srcmd5>
+    <version>1.9</version>
+    <time>1358152980</time>
+    <user>coolo</user>
+    <comment>make lcov work with gcc-4.7 (forwarded request 148334 from vmiklos)</comment>
+    <requestid>148343</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dfa6ac472a4fa5023d783e47fcd0c4ea</srcmd5>
+    <version>1.10</version>
+    <time>1358412238</time>
+    <user>coolo</user>
+    <comment>update lcov to 1.10, one less patch (forwarded request 148408 from vmiklos)</comment>
+    <requestid>148478</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>dfa6ac472a4fa5023d783e47fcd0c4ea</srcmd5>
+    <version>1.10</version>
+    <time>1359109220</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>dfa6ac472a4fa5023d783e47fcd0c4ea</srcmd5>
+    <version>1.10</version>
+    <time>1379662861</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>dfa6ac472a4fa5023d783e47fcd0c4ea</srcmd5>
+    <version>1.10</version>
+    <time>1409301464</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0cc238063e4bef9823237e68b6ad1abf</srcmd5>
+    <version>1.11</version>
+    <time>1422636413</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283410</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>aa4a7996c95bbe0be5c8cbc6ed6d47a5</srcmd5>
+    <version>1.11</version>
+    <time>1430903884</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305447</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b8d435ae263366db54e47041be51c99f</srcmd5>
+    <version>1.12</version>
+    <time>1445675028</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>339208</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f2526025e749563530124f8628350e0d</srcmd5>
+    <version>1.13</version>
+    <time>1484475003</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>448204</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>80035d33dcf65a37a986c605e0e07383</srcmd5>
+    <version>1.14+git.20180307.a5dd952</version>
+    <time>1521579517</time>
+    <user>dimstar_suse</user>
+    <comment>- Port the package to git server and bump to current trunk in order
+  to add support for GCC 8.
+- Remove lcov-1.13-except-unreach.patch.
+</comment>
+    <requestid>587509</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c8db837e33952238cff7fdb5245b4224</srcmd5>
+    <version>1.14</version>
+    <time>1560970904</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706044</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7b2c2c2626e99dbf36c054305e9666ed</srcmd5>
+    <version>1.15+git.20190524.75fbae1</version>
+    <time>1561049796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711037</requestid>
+  </revision>
+</revisionlist>

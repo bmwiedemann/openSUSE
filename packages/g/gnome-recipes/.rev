@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fec43bf93b8a36dd0b4e479ad55f3b5b</srcmd5>
+    <version>0.22.0</version>
+    <time>1490220194</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.22.0</comment>
+    <requestid>479391</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8660e8031f9f74a045dd9ae2ef6679dc</srcmd5>
+    <version>1.6.2</version>
+    <time>1503593618</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517358</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f99064277f251d61f9d7fb58616b5a16</srcmd5>
+    <version>2.0.0</version>
+    <time>1510232544</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.0.0 (forwarded request 537575 from dimstar)</comment>
+    <requestid>538374</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fc4f3c2ddafdf8c467094b299210e335</srcmd5>
+    <version>2.0.2</version>
+    <time>1511517224</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.2:
+  + Fixes:
+    - A serious bug in version 2.0.0, which could cause all
+      ingredients to lose their amounts when editing a recipe.
+    - An issue where ingredients without amount would always get
+      displayed with an errant '1' as amount.
+  + Allow recipes to have long names.
+  + New recipes: Tzatziki, Soy Chicken, Rice Maize Apple Cake.
+  + Updated translations.
+- Replace pkgconfig(gio-2.0) with glib2-devel BuildRequires:
+  pkgconfig(*) glib-2.0 and gmodule-export-2.0 are native
+  dependencies, but glib-2.0 is not listed in meson.build as
+  dependency and gmodule-export-2.0 is but not used. And since 
+  gio-2.0, gio-unix-2.0, gmodule-2.0 and gobject-2.0 are being used
+  but not listed in meson.build is better to use glib2-devel. (forwarded request 541752 from dimstar)</comment>
+    <requestid>544206</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b66685c8ff1c5693bf4788b34a6d7b7d</srcmd5>
+    <version>2.0.2</version>
+    <time>1517424672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570903</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d2a49a09d16fd4e8ecc2713762a9ca91</srcmd5>
+    <version>2.0.2</version>
+    <time>1520588313</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581099 from dimstar)</comment>
+    <requestid>582741</requestid>
+  </revision>
+</revisionlist>

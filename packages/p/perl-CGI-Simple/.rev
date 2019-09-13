@@ -1,0 +1,204 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b7b5a1c262055d035d7e151e27bdb91</srcmd5>
+    <version>1.112</version>
+    <time>1252536781</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-CGI-Simple based on submit request 19870 from user coolo
+</comment>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6b7b5a1c262055d035d7e151e27bdb91</srcmd5>
+    <version>1.112</version>
+    <time>1252536781</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-CGI-Simple based on submit request 19870 from user coolo
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c00c1f57395df551c90f7ac1a1bc4481</srcmd5>
+    <version>1.112</version>
+    <time>1263229756</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-CGI-Simple based on submit request 28920 from user coolo
+</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7f0351a9d7fd30cee8b5ced6795ecb18</srcmd5>
+    <version>1.112</version>
+    <time>1268925378</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>7f0351a9d7fd30cee8b5ced6795ecb18</srcmd5>
+    <version>1.112</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>7f0351a9d7fd30cee8b5ced6795ecb18</srcmd5>
+    <version>1.112</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>4f0c0d09921c2816b68049b399abb176</srcmd5>
+    <version>1.112</version>
+    <time>1291581492</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54479 from user coolo
+</comment>
+    <requestid>54479</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>dc018d2f411b52d8e340af890f85ca69</srcmd5>
+    <version>1.112</version>
+    <time>1291581498</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54479
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4ce18303a7b3a8ce409dcca836d88dbf</srcmd5>
+    <version>1.113</version>
+    <time>1297113286</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60114 from user computersalat
+</comment>
+    <requestid>60114</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7b35afe689ae006c72e060fadfd15665</srcmd5>
+    <version>1.113</version>
+    <time>1297113293</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60114
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>7b35afe689ae006c72e060fadfd15665</srcmd5>
+    <version>1.113</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>c4464e794ac5b56277be7ebc52ed9e8e</srcmd5>
+    <version>1.113</version>
+    <time>1308567197</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>74152</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>fc665aa773b0111e4cc7a03fcfac74ab</srcmd5>
+    <version>1.113</version>
+    <time>1308567222</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74152
+</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>fc665aa773b0111e4cc7a03fcfac74ab</srcmd5>
+    <version>1.113</version>
+    <time>1319182243</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>ab644b14e512c7f2c04134ffdac88bd8</srcmd5>
+    <version>1.113</version>
+    <time>1321875350</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92135</requestid>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>f16be834f32a24a8851cdd70d0c3e916</srcmd5>
+    <version>1.113</version>
+    <time>1323193097</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>f16be834f32a24a8851cdd70d0c3e916</srcmd5>
+    <version>1.113</version>
+    <time>1340183798</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="15">
+    <srcmd5>f16be834f32a24a8851cdd70d0c3e916</srcmd5>
+    <version>1.113</version>
+    <time>1359109605</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>f16be834f32a24a8851cdd70d0c3e916</srcmd5>
+    <version>1.113</version>
+    <time>1379663566</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="19">
+    <srcmd5>f16be834f32a24a8851cdd70d0c3e916</srcmd5>
+    <version>1.113</version>
+    <time>1409302178</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f03ce1b1764e75c2b0d4a8e532da5c21</srcmd5>
+    <version>1.115</version>
+    <time>1429107750</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296011</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cc516ffdfc5de86b2118a7fd1c7546f0</srcmd5>
+    <version>1.15</version>
+    <time>1521904426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583230</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>76d7f652d550867057e728165682f476</srcmd5>
+    <version>1.16</version>
+    <time>1532774586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625591</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>e9d07dbab0265fe527de823a09e19016</srcmd5>
+    <version>1.16</version>
+    <time>1539013631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update URL, provide zero padded version number to satisfy version checks
+</comment>
+    <requestid>640407</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>120cc8570561ab81327ef17be8735101</srcmd5>
+    <version>1.21</version>
+    <time>1540319841</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.21
+   see /usr/share/doc/packages/perl-CGI-Simple/Changes
+- Avoid overly &quot;super duper&quot; summary.
+</comment>
+    <requestid>643565</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1750b22faec9ec5d972a1df3b16ffb7d</srcmd5>
+    <version>1.22</version>
+    <time>1568190895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729738</requestid>
+  </revision>
+</revisionlist>

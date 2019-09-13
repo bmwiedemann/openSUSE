@@ -1,0 +1,199 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49e031aac1c10f1a2a31b87586d6f784</srcmd5>
+    <version>0.4.2</version>
+    <time>1262861494</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxmusic based on submit request 27895 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ed88a7e5dc0910329a214c9b398e3bbe</srcmd5>
+    <version>0.4.3</version>
+    <time>1267490458</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxmusic based on submit request 33726 from user anubisg1
+</comment>
+    <requestid>33726</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>aa7afb38c08b6742c8206ee4a948d751</srcmd5>
+    <version>0.4.3</version>
+    <time>1268924877</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f648429eb03faf071621d9ff540bad96</srcmd5>
+    <version>0.4.3</version>
+    <time>1270598651</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxmusic based on submit request 37134 from user anubisg1
+</comment>
+    <requestid>37134</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>620ee20e25a789b06526e6aaa662eb51</srcmd5>
+    <version>0.4.4</version>
+    <time>1271372506</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxmusic based on submit request 37894 from user anubisg1
+</comment>
+    <requestid>37894</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b7b921539489ebe343f66de9d1363d0f</srcmd5>
+    <version>0.4.4</version>
+    <time>1271436999</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxmusic based on submit request 38059 from user anubisg1
+</comment>
+    <requestid>38059</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>abc21589dab1bfea9a924b4c145d4016</srcmd5>
+    <version>0.4.4</version>
+    <time>1271669336</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxmusic based on submit request 38173 from user anubisg1
+</comment>
+    <requestid>38173</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>64421b9c5d3df9497446b6a1292d6260</srcmd5>
+    <version>0.4.4</version>
+    <time>1273791985</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxmusic based on submit request 39895 from user anubisg1
+</comment>
+    <requestid>39895</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>64421b9c5d3df9497446b6a1292d6260</srcmd5>
+    <version>0.4.4</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>64421b9c5d3df9497446b6a1292d6260</srcmd5>
+    <version>0.4.4</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>64421b9c5d3df9497446b6a1292d6260</srcmd5>
+    <version>0.4.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>4aa0d724d3b3d9544d740b769a30ac87</srcmd5>
+    <version>0.4.4</version>
+    <time>1304352327</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67104</requestid>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>59626dba22194be7df05af9b4bfd0bc3</srcmd5>
+    <version>0.4.4</version>
+    <time>1304352335</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67104
+</comment>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>9035cd6aab14e7b896216b39b654a996</srcmd5>
+    <version>0.4.4</version>
+    <time>1304684682</time>
+    <user>saschpe</user>
+    <comment>fixed build failure because of libnotify new API</comment>
+    <requestid>69732</requestid>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>2610ec42359e83cee7d3ff9425e499ef</srcmd5>
+    <version>0.4.4</version>
+    <time>1304684692</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69732
+</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>d3cdb5bcb1db433703274540aabde357</srcmd5>
+    <version>0.4.4</version>
+    <time>1317543486</time>
+    <user>lrupp</user>
+    <comment>Fixed typos in lxmusic.spec (forwarded request 84337 from aturrini)</comment>
+    <requestid>85388</requestid>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>d3cdb5bcb1db433703274540aabde357</srcmd5>
+    <version>0.4.4</version>
+    <time>1319182164</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>b5a82fce70cd103ca79676aac6076305</srcmd5>
+    <version>0.4.4</version>
+    <time>1323773346</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 95942 from coolo)</comment>
+    <requestid>96016</requestid>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>b5a82fce70cd103ca79676aac6076305</srcmd5>
+    <version>0.4.4</version>
+    <time>1340183681</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a8913e0428092f7da9441442a6c7170c</srcmd5>
+    <version>0.4.5</version>
+    <time>1340723199</time>
+    <user>coolo</user>
+    <comment>- update to 0.4.5
+- drop lxmusic-0.4.4-no-gcc-warnings.patch
+- drop lxmusic-0.4.4-wrong-encoding-it-po.patch (forwarded request 125792 from mvyskocil)</comment>
+    <requestid>125847</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>a8913e0428092f7da9441442a6c7170c</srcmd5>
+    <version>0.4.5</version>
+    <time>1359109419</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>a8913e0428092f7da9441442a6c7170c</srcmd5>
+    <version>0.4.5</version>
+    <time>1379663230</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>a8913e0428092f7da9441442a6c7170c</srcmd5>
+    <version>0.4.5</version>
+    <time>1409301837</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5856f00784b4b713256c1f1e55c49f67</srcmd5>
+    <version>0.4.6</version>
+    <time>1410204544</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247999</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4f9266f03199b22c0e01d22ae6096fa6</srcmd5>
+    <version>0.4.7</version>
+    <time>1470413889</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417066</requestid>
+  </revision>
+</revisionlist>

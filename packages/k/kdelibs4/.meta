@@ -1,0 +1,9 @@
+<package name="kdelibs4" project="openSUSE:Factory">
+  <title>KDE Base Libraries</title>
+  <description>This package contains the basic packages of the K Desktop Environment.
+It contains the necessary libraries for the KDE desktop.
+
+This package is absolutely necessary for using graphical KDE
+applications.</description>
+  <devel project="KDE:Applications" package="kdelibs4"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="recode" project="openSUSE:Factory">
+  <title>recode</title>
+  <description></description>
+  <devel project="Base:System" package="recode"/>
+</package>

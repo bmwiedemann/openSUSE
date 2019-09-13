@@ -1,0 +1,8 @@
+<package name="python-ibus" project="openSUSE:Factory">
+  <title>Intelligent Input Bus for Linux OS</title>
+  <description>IBus means Intelligent Input Bus. It is a new input framework for Linux OS. It provides
+full featured and user friendly input method user interface. It also may help
+developers to develop input method easily.</description>
+  <devel project="openSUSE:Factory" package="ibus"/>
+  <bcntsynctag>ibus</bcntsynctag>
+</package>

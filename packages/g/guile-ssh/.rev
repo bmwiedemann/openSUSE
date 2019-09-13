@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aac2a0fe28e4767bfd8cd0a7c611c875</srcmd5>
+    <version>0.11.3</version>
+    <time>1532681712</time>
+    <user>dimstar_suse</user>
+    <comment>Build dependency of guix
+Fixes remarks in SR#622461
+</comment>
+    <requestid>623093</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3d595065c4c80e15921dcf84f247c29c</srcmd5>
+    <version>0.11.3</version>
+    <time>1536833561</time>
+    <user>maxlin_factory</user>
+    <comment>- don't link against libssh_threads anymore, as it gots removed in
+  libssh 0.8. gh#artyom-poptsov/guile-ssh#9
+  Add and use it on Tumbleweed and Factory:
+  * 0001-libguile-ssh-Remove-ssh_threads-from-LDFLAGS.patch
+
+Upstream doesn't have a solution yet, but I'll follow the issue there...
+</comment>
+    <requestid>635283</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ec21273fa7f8ca1b5ea9149479eb7693</srcmd5>
+    <version>0.11.3</version>
+    <time>1551113916</time>
+    <user>coolo</user>
+    <comment>- set libssh minimum version to 0.6.4 
+- enable the libssh_threads patch also on Leap/SLE 15.1, as
+  libssh_threads is there also in libssh
+</comment>
+    <requestid>678846</requestid>
+  </revision>
+</revisionlist>

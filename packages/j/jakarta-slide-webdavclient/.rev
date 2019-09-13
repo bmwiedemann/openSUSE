@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>3317716612fe68f5fd772b9aff817f53</srcmd5>
+    <version>2.1</version>
+    <time>1243564746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>3317716612fe68f5fd772b9aff817f53</srcmd5>
+    <version>2.1</version>
+    <time>1243564746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7f7fd23534888ca67ce23caa2f40386d</srcmd5>
+    <version>2.1</version>
+    <time>1268924109</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>7f7fd23534888ca67ce23caa2f40386d</srcmd5>
+    <version>2.1</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>7f7fd23534888ca67ce23caa2f40386d</srcmd5>
+    <version>2.1</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>7f7fd23534888ca67ce23caa2f40386d</srcmd5>
+    <version>2.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>7f7fd23534888ca67ce23caa2f40386d</srcmd5>
+    <version>2.1</version>
+    <time>1319182004</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>b90cde185ad7ccab8a3b853395826519</srcmd5>
+    <version>2.1</version>
+    <time>1323192022</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>b90cde185ad7ccab8a3b853395826519</srcmd5>
+    <version>2.1</version>
+    <time>1340183479</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>b90cde185ad7ccab8a3b853395826519</srcmd5>
+    <version>2.1</version>
+    <time>1359109106</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>7a52e533df425ffe0bf544c203442a48</srcmd5>
+    <version>2.1</version>
+    <time>1378998417</time>
+    <user>scarabeus_factory</user>
+    <comment>jpackage-utils collison fix</comment>
+    <requestid>198691</requestid>
+  </revision>
+  <revision rev="12" vrev="21">
+    <srcmd5>7a52e533df425ffe0bf544c203442a48</srcmd5>
+    <version>2.1</version>
+    <time>1379662700</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="22">
+    <srcmd5>28e2ac7785ad493d8d87f2b6f0ce6ca0</srcmd5>
+    <version>2.1</version>
+    <time>1379921655</time>
+    <user>coolo</user>
+    <comment>- and remove _mavendepmapfragdir from filelist 
+
+- really turn add_maven_depmap off</comment>
+    <requestid>199713</requestid>
+  </revision>
+  <revision rev="14" vrev="24">
+    <srcmd5>28e2ac7785ad493d8d87f2b6f0ce6ca0</srcmd5>
+    <version>2.1</version>
+    <time>1409301265</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="25">
+    <srcmd5>e1e247b2a8519814283151a83a9cc7dd</srcmd5>
+    <version>2.1</version>
+    <time>1427983000</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292621</requestid>
+  </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>56b710617f0e30250121f36d7bc183ac</srcmd5>
+    <version>2.1</version>
+    <time>1505920166</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527058</requestid>
+  </revision>
+</revisionlist>

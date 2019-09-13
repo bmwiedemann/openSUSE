@@ -1,0 +1,5 @@
+<package name="python-jsonref" project="openSUSE:Factory">
+  <title>An implementation of JSON Reference for Python</title>
+  <description>jsonref is a library for automatic dereferencing of JSON Reference objects for Python.</description>
+  <devel project="devel:languages:python" package="python-jsonref"/>
+</package>

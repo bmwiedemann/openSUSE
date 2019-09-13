@@ -1,0 +1,5 @@
+<package name="python-scikit-umfpack" project="openSUSE:Factory">
+  <title>A wrappers of UMFPACK sparse direct solver to SciPy</title>
+  <description>The umfpack scikit provides wrappers of UMFPACK sparse direct solver to SciPy.</description>
+  <devel project="devel:languages:python:numeric" package="python-scikit-umfpack"/>
+</package>

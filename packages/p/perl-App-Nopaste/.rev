@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c391fbc66e7a2fa15b88fa22cdf0b86d</srcmd5>
+    <version>0.33</version>
+    <time>1325006029</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>97589</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c391fbc66e7a2fa15b88fa22cdf0b86d</srcmd5>
+    <version>0.33</version>
+    <time>1340183792</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>341562be05a8e218d7c3b6564ddc9b13</srcmd5>
+    <version>0.35</version>
+    <time>1347618818</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134033</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>341562be05a8e218d7c3b6564ddc9b13</srcmd5>
+    <version>0.35</version>
+    <time>1359109597</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>874ab97518ef2aaea9b88478623105a7</srcmd5>
+    <version>0.92</version>
+    <time>1368696178</time>
+    <user>coolo</user>
+    <comment>- updated to 0.92
+     Fix the language mappins for Ubuntu's pastebin (Sergey Romanov)
+     Don't need to load Moose in the tests (Sergey Romanov)
+     Decode incoming text as utf8 (Jesse Luehrs)
+     Support for GITHUB_USER and GITHUB_PASS (Rafael Kitover)
+     Name the gist file `nopaste` not `nopaste.txt` for possible syntax highlighting (Rafael Kitover)
+     Use decode_json not a regular expression to decode Gist response body (Shawn M Moore)
+     Give a hint to perldoc App::Nopaste::Service::Gist on 401 (Shawn M Moore)
+     Port from Moose and MooseX::Getopt to Getopt::Long::Descriptive (frew)
+     App::Nopaste is not using any interesting Moose features,
+     so it doesn't make sense to pay the startup cost (even
+     though it's probably dominated by network latency)
+     Please report any regressions!</comment>
+    <requestid>175763</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>874ab97518ef2aaea9b88478623105a7</srcmd5>
+    <version>0.92</version>
+    <time>1379663551</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9728b84c225866dcb19a617264b3df4f</srcmd5>
+    <version>0.96</version>
+    <time>1392111748</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>221599</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9728b84c225866dcb19a617264b3df4f</srcmd5>
+    <version>0.96</version>
+    <time>1409302160</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a8940173648d7377d5799d0663e75e28</srcmd5>
+    <version>1.004</version>
+    <time>1429186390</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296973</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1dad2b4f24e001900db25e35f0b782b3</srcmd5>
+    <version>1.006</version>
+    <time>1464595030</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398539</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>634cf3506d0c40dfd4c5a3dd26a3c9a9</srcmd5>
+    <version>1.007</version>
+    <time>1475242276</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428409</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8b4e41bd14498a953cacf416be610ee3</srcmd5>
+    <version>1.008</version>
+    <time>1490707251</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>460883</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f2232d2ff6cc2d9d18b4c2b183909265</srcmd5>
+    <version>1.009</version>
+    <time>1494938017</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489029</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4328c59e36ae2f77720157e96ef5c784</srcmd5>
+    <version>1.010</version>
+    <time>1503593548</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516814</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e6cb0a50ad7e1ab41a85180d74c53b86</srcmd5>
+    <version>1.011</version>
+    <time>1504521433</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520452</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ce6b7b39134c69b280bd01be02b0ade5</srcmd5>
+    <version>1.012</version>
+    <time>1532774370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623039</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>22b4f4e7f171586c89639016f66d0866</srcmd5>
+    <version>1.013</version>
+    <time>1564137552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717907</requestid>
+  </revision>
+</revisionlist>

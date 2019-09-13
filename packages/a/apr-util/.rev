@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3de351a0691694c0611d3e81c576791</srcmd5>
+    <version>1.6.0</version>
+    <time>1501406489</time>
+    <user>dimstar_suse</user>
+    <comment>renaming of libar1-util</comment>
+    <requestid>510216</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9aadbbbf217e9cf7903ac200323aa46b</srcmd5>
+    <version>1.6.0</version>
+    <time>1502559559</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>514780</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fd180b821a6a32b534a0d745ddbbc4b3</srcmd5>
+    <version>1.6.0</version>
+    <time>1509193255</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536864</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a3c28e1e832dd06c2dbfabdbbeeca4c2</srcmd5>
+    <version>1.6.1</version>
+    <time>1510406098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539830</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fa132d7a9ce631294b4e94963b14f656</srcmd5>
+    <version>1.6.1</version>
+    <time>1512042237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544579</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f19d1accd52bd05779e911d15e13f516</srcmd5>
+    <version>1.6.1</version>
+    <time>1536678655</time>
+    <user>maxlin_factory</user>
+    <comment>- extend apr-util-mariadb-10.2.patch: Fix detection / build with
+  MariaDB 10.2. [bsc#1094754]</comment>
+    <requestid>631411</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>545e25b6abb3572ff0eee60fb4e2e874</srcmd5>
+    <version>1.6.1</version>
+    <time>1538377562</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing zlib-devel build dependency which used to be pulled in
+  by libopenssl-devel (forwarded request 637402 from vitezslav_cizek)</comment>
+    <requestid>637403</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>d1d298cbc794cbc51fecb7f1eb4e1b82</srcmd5>
+    <version>1.6.1</version>
+    <time>1552380611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683686</requestid>
+  </revision>
+</revisionlist>

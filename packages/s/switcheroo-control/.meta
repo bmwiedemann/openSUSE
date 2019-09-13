@@ -1,0 +1,8 @@
+<package name="switcheroo-control" project="openSUSE:Factory">
+  <title>D-Bus service to check the availability of dual-GPU</title>
+  <description>switcheroo-control is a D-Bus service to check the availability of dual-GPU.
+
+</description>
+  <devel project="hardware" package="switcheroo-control"/>
+  <url>https://github.com/hadess/switcheroo-control</url>
+</package>

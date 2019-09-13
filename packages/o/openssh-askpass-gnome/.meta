@@ -1,0 +1,7 @@
+<package name="openssh-askpass-gnome" project="openSUSE:Factory">
+  <title>A GNOME-Based Passphrase Dialog for OpenSSH</title>
+  <description>SSH (Secure Shell) is a program for logging into a remote machine and
+for executing commands on a remote machine. This package contains a
+GNOME-based passphrase dialog for OpenSSH.</description>
+  <devel project="openSUSE:Factory" package="openssh"/>
+</package>

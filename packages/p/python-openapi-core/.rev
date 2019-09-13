@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f8265174e26884cce937279b7364e013</srcmd5>
+    <version>0.5.0</version>
+    <time>1535538389</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github tarball to get tests
+- Run the tests
+- Initial release v0.5.0
+</comment>
+    <requestid>631929</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8e2020361ab6eb5e75f175228f2749de</srcmd5>
+    <version>0.10.0</version>
+    <time>1559837890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  * Various tests and support updates
+- Update requirements to match up upstream</comment>
+    <requestid>707880</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c471ab8eb2ad4b5eb564c768abf20285</srcmd5>
+    <version>0.11.0</version>
+    <time>1563914455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.0:
+  * End of Python 3.4 support (#136)
+  * Add support for one-of with any type (#133)
+  * Modify FlaskOpenAPIRequest to accommodate path variables (#141)
+  * Primitive types unmarshallers (#138)
+  * attr errors hashable fix (#143)
+  * Parameters on path item object support (#144)</comment>
+    <requestid>717909</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>39a5a0473b3de4286879cab85876f30d</srcmd5>
+    <version>0.11.1</version>
+    <time>1568379474</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 0.11.1:
+  * Path item parameter override (#145)
+  * Separate cast and unmarshal (#156)</comment>
+    <requestid>730065</requestid>
+  </revision>
+</revisionlist>

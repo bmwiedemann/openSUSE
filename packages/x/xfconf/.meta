@@ -1,0 +1,6 @@
+<package name="xfconf" project="openSUSE:Factory">
+  <title>Simple Configuration Storage for Xfce</title>
+  <description>Xfconf is a simple client-server configuration storage and query system for the
+Xfce desktop.</description>
+  <devel project="X11:xfce" package="xfconf"/>
+</package>

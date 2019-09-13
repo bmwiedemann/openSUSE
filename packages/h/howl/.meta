@@ -1,0 +1,6 @@
+<package name="howl" project="openSUSE:Factory">
+  <title>Howl Text Editor</title>
+  <description>Howl is a general purpose editor that aims to be both lightweight and fully customizable. It is built on top of the very fast LuaJIT runtime, and can be extended in either Lua or Moonscript. It has a minimalistic UI driven mainly by the keyboard.</description>
+  <devel project="devel:languages:lua" package="howl"/>
+  <url>http://howl.io/</url>
+</package>

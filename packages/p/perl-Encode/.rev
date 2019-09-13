@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e24edcba96973e8ed9169c62e3810fc</srcmd5>
+    <version>2.93</version>
+    <time>1507571132</time>
+    <user>dimstar_suse</user>
+    <comment>needed by bugzilla</comment>
+    <requestid>532524</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>67a3d0c00bd41c43c83252fc0d949f85</srcmd5>
+    <version>2.94</version>
+    <time>1516804162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568391</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8e6338cd71cb32b57a11edfd88879c32</srcmd5>
+    <version>2.96</version>
+    <time>1518813922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577178</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4303309668f02f64ea0b64953d7a2554</srcmd5>
+    <version>2.97</version>
+    <time>1519747061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579750</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9bfcfe40fa9f5c9557c0b3816515cb92</srcmd5>
+    <version>2.98</version>
+    <time>1524742669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599886</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>46dbaf592dae709c9cc39c21f1fd1425</srcmd5>
+    <version>2.99</version>
+    <time>1548704929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668907</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>65dc9b8c7bb5f9012526f2092dc58825</srcmd5>
+    <version>3.00</version>
+    <time>1549140617</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670634</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3ccd4e2eb9f466d17f8743787d7d52c9</srcmd5>
+    <version>3.01</version>
+    <time>1552572074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684719</requestid>
+  </revision>
+</revisionlist>

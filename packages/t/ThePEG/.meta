@@ -1,0 +1,5 @@
+<package name="ThePEG" project="openSUSE:Factory">
+  <title>ThePEG</title>
+  <description>Toolkit providing a common platform for event generators in C++</description>
+  <devel project="science" package="ThePEG"/>
+</package>

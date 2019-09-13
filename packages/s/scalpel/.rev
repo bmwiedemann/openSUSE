@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc22f32f42d9fed2a00e87d6d09cb9cf</srcmd5>
+    <version>2.0</version>
+    <time>1347376656</time>
+    <user>coolo</user>
+    <comment>New Package - Scalpel carves (recovers) files from dd images without using filesystem metadata.</comment>
+    <requestid>132838</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fc22f32f42d9fed2a00e87d6d09cb9cf</srcmd5>
+    <version>2.0</version>
+    <time>1359110380</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>fc22f32f42d9fed2a00e87d6d09cb9cf</srcmd5>
+    <version>2.0</version>
+    <time>1379664624</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>fc22f32f42d9fed2a00e87d6d09cb9cf</srcmd5>
+    <version>2.0</version>
+    <time>1409303325</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

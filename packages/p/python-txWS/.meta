@@ -1,0 +1,9 @@
+<package name="python-txWS" project="openSUSE:Factory">
+  <title>Twisted WebSockets wrapper</title>
+  <description>txWS (pronounced &quot;Twisted WebSockets&quot;) is a small, short, simple library for
+adding WebSockets server support to your favorite Twisted applications.
+
+</description>
+  <devel project="devel:languages:python" package="python-txWS"/>
+  <url>http://github.com/MostAwesomeDude/txWS</url>
+</package>

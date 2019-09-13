@@ -1,0 +1,175 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc56101c3ce28687d8f61a7df34ad181</srcmd5>
+    <version>1.8.1</version>
+    <time>1396160918</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>227562</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fc56101c3ce28687d8f61a7df34ad181</srcmd5>
+    <version>1.8.1</version>
+    <time>1409302924</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec5391b899729eed98f23ffc02fdebec</srcmd5>
+    <version>1.9</version>
+    <time>1410967613</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249853</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6ff1e8a0419ae1edc9137cebea8ed998</srcmd5>
+    <version>1.9</version>
+    <time>1414218800</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258231</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>37cb1e1cf2a32bfdd397a63601fcc9e1</srcmd5>
+    <version>1.9.1</version>
+    <time>1414943178</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259014</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>aeee5f54fb579650a473e6c20d95300e</srcmd5>
+    <version>1.9.1</version>
+    <time>1430595445</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304708</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>3fd718196efa578840e32009aad77fde</srcmd5>
+    <version>1.9.1</version>
+    <time>1438421817</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318748</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fdea20dff35e182264f49a98ef0084d9</srcmd5>
+    <version>1.10</version>
+    <time>1441955038</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.10:
+  * connected_components, weakly_connected_components, and
+    strongly_connected_components return now a generator of
+    sets of nodes. Previously the generator was of lists of
+    nodes. This PR also refactored the connected_components
+    and weakly_connected_components implementations making them
+    faster, especially for large graphs.
+  * The func_iter functions in Di/Multi/Graphs classes are slated
+    for removal in NetworkX 2.0 release. func will behave like func_iter
+    and return an iterator instead of list. These functions are deprecated
+    in NetworkX 1.10 release.
+  * A enumerate_all_cliques function is added in the clique package
+    (networkx.algorithms.clique) for enumerating all cliques
+    (including nonmaximal ones) of undirected graphs.
+  * A coloring package (networkx.algorithms.coloring) is created for graph
+    coloring algorithms. Initially, a greedy_color function is provided
+    for coloring graphs using various greedy heuristics.
+  * A new generator edge_dfs, added to networkx.algorithms.traversal, implements
+    a depth-first traversal of the edges in a graph. This complements
+    functionality provided by a depth-first traversal of the nodes in
+    a graph. For multigraphs, it allows the user to know precisely which
+    edges were followed in a traversal. All NetworkX graph types are
+    supported. A traversal can also reverse edge orientations or ignore them.
+  * A find_cycle function is added to the networkx.algorithms.cycles package
+    to find a cycle in a graph. Edge orientations can be optionally
+    reversed or ignored.
+  * Add a random generator for the duplication-divergence model.
+  * A new networkx.algorithms.dominance package is added for dominance/dominator
+    algorithms on directed graphs. It contains a immediate_dominators
+    function for computing immediate dominators/dominator trees and a (forwarded request 330044 from tbechtold)</comment>
+    <requestid>330047</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6c95e4def8097b593294bba28715526d</srcmd5>
+    <version>1.10</version>
+    <time>1459002285</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>376239</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>12eda4371c96aa8b3a505e7b37272986</srcmd5>
+    <version>1.11</version>
+    <time>1471504676</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419715</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f4d59d5616d8d2cbbc5a19d35f3bb89c</srcmd5>
+    <version>1.11</version>
+    <time>1494938620</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494504</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>218918e31aa8dab5f63bb56777dddee2</srcmd5>
+    <version>1.11</version>
+    <time>1502562396</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514815</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>aab44cf1af2a4ecfbbf9d870134433ae</srcmd5>
+    <version>2.0</version>
+    <time>1510232483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538121</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1ace71c69ed884418570427ed840f579</srcmd5>
+    <version>2.1</version>
+    <time>1536094580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632809</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6cdac7112820c4bb80012d4a02e5df7e</srcmd5>
+    <version>2.2</version>
+    <time>1546946843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662476</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>630dd8c76fdbf66ba539780490265cc7</srcmd5>
+    <version>2.2</version>
+    <time>1548335617</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off test_subgraph_centrality_big_graph test, as it leads to
+  crashes on i586, gh#networkx/networkx#3304.</comment>
+    <requestid>667798</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>eb0958d30bc3b867f4496d5beb801500</srcmd5>
+    <version>2.2</version>
+    <time>1549286726</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670905</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a96a6315b7e2fb7575db3ce816197f6a</srcmd5>
+    <version>2.3</version>
+    <time>1564301937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717963</requestid>
+  </revision>
+</revisionlist>

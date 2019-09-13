@@ -1,0 +1,13 @@
+<package name="kismet" project="openSUSE:Factory">
+  <title>An 802.11 Wireless Network Sniffer</title>
+  <description>Kismet is an 802.11 wireless network sniffer. This is different from a
+normal network sniffer (such as Ethereal or tcpdump) because it
+separates and identifies different wireless networks in the area.
+Kismet works with any 802.11b wireless card that is capable of
+reporting raw packets (rfmon support), which include any Prism2-based
+cards (Linksys, D-Link, Rangelan, and more), Cisco Aironet cards, and
+Orinoco-based cards. Kismet also supports the WSP100 802.11b remote
+sensor by Network Chemistry and is able to monitor 802.11a networks
+with cards that use the ar5k chipset.</description>
+  <devel project="network:utilities" package="kismet"/>
+</package>

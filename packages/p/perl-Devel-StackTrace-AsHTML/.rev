@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1502211062b3e0464f69a275a7c025a8</srcmd5>
+    <version>0.09</version>
+    <time>1306418875</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66716</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d59a28e8bb29e8d677a2ced253c0d30a</srcmd5>
+    <version>0.09</version>
+    <time>1306418884</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66716
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>16839fda6c6632cf8aa389e5e0d064a1</srcmd5>
+    <version>0.11</version>
+    <time>1306854009</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>72087</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f98b4f6fcf06c4a3d01fd5aeee4ede27</srcmd5>
+    <version>0.11</version>
+    <time>1306854022</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72087
+</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>f98b4f6fcf06c4a3d01fd5aeee4ede27</srcmd5>
+    <version>0.11</version>
+    <time>1319182260</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>e1500dc7a24c8a7aa2f52f1cbb76a0ba</srcmd5>
+    <version>0.11</version>
+    <time>1323193233</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>e1500dc7a24c8a7aa2f52f1cbb76a0ba</srcmd5>
+    <version>0.11</version>
+    <time>1340183831</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>e1500dc7a24c8a7aa2f52f1cbb76a0ba</srcmd5>
+    <version>0.11</version>
+    <time>1359109649</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a8284554125ae2ee749aa69bd12b805c</srcmd5>
+    <version>0.14</version>
+    <time>1370592447</time>
+    <user>coolo</user>
+    <comment>- updated to 0.14
+      - Get subroutine arguments from the next frame too
+      - Fixed the use of $frame-&gt;subroutine since it returns a subroutine that is *invoked* on that
+        call frame, rather than what the frame is *in*. Fixed to peek the next frame to get the
+        current subroutine. (Caelum) (forwarded request 177356 from coolo)</comment>
+    <requestid>177414</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a8284554125ae2ee749aa69bd12b805c</srcmd5>
+    <version>0.14</version>
+    <time>1379663647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>a8284554125ae2ee749aa69bd12b805c</srcmd5>
+    <version>0.14</version>
+    <time>1409302262</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5b844628646521d9860f0a1b927ddaca</srcmd5>
+    <version>0.15</version>
+    <time>1460482395</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384957</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>afba3bca8cee0c697c100d2a9f9fd940</srcmd5>
+    <version>2.1.1</version>
+    <time>1476350920</time>
+    <user>dimstar_suse</user>
+    <comment>Rename from jakarta-commons-dbcp</comment>
+    <requestid>431248</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f65ea902365fb068bd80f4ae1559b383</srcmd5>
+    <version>2.1.1</version>
+    <time>1478377497</time>
+    <user>dimstar_suse</user>
+    <comment>- Search for jta not jta-api as SLE has issues locating the api while
+  the jta is just simple symlink</comment>
+    <requestid>438029</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bf16fe4a401332510a0964136a451197</srcmd5>
+    <version>2.1.1</version>
+    <time>1532446221</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620748</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c70801610a9ff49676a29a71b8caa995</srcmd5>
+    <version>2.1.1</version>
+    <time>1545223706</time>
+    <user>dimstar_suse</user>
+    <comment>Add maven pom file</comment>
+    <requestid>658634</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7ad0b675f9999389749caa8020a094e6</srcmd5>
+    <version>2.1.1</version>
+    <time>1553809515</time>
+    <user>dimstar_suse</user>
+    <comment>Disregard the pom parent</comment>
+    <requestid>689046</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>bb85d968792e06298779f81cedf46a5d</srcmd5>
+    <version>2.1.1</version>
+    <time>1555588492</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against upcoming geronimo-specs</comment>
+    <requestid>694599</requestid>
+  </revision>
+</revisionlist>

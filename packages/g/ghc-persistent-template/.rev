@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07442389f7d5e2cc9605975b6a557363</srcmd5>
+    <version>2.1.4</version>
+    <time>1448553780</time>
+    <user>dimstar_suse</user>
+    <comment>persistent-template: Type-safe, non-relational, multi-backend persistence.</comment>
+    <requestid>345716</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>25d7194181d37a812c08252712d2a2c6</srcmd5>
+    <version>2.1.5</version>
+    <time>1451390394</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.5 (forwarded request 351026 from mimi_vx)</comment>
+    <requestid>351039</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7de4fa0ce13db20b731a406db2e172be</srcmd5>
+    <version>2.1.6</version>
+    <time>1458333672</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.6 (forwarded request 370917 from mimi_vx)</comment>
+    <requestid>370920</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5a45990d705df4775152f72e658afa9c</srcmd5>
+    <version>2.1.8</version>
+    <time>1461855424</time>
+    <user>dimstar_suse</user>
+    <comment>-update to 2.1.8
+* Support for GHC 8
+* aeson 0.11
+* transformers 0.5 (forwarded request 391625 from mimi_vx)</comment>
+    <requestid>391626</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ccd43470bafc5ae30c7ef6051c329c67</srcmd5>
+    <version>2.1.8.1</version>
+    <time>1463498158</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.8.1
+* fix a bad Eq instance /= definition for Key when mpsGenetric=True (forwarded request 395544 from mimi_vx)</comment>
+    <requestid>395545</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7e4e2ae644c0d0f8b42c671821db66e4</srcmd5>
+    <version>2.1.8.1</version>
+    <time>1469081767</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411954</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e49fc644998d615f5c1c1a48b6f980e5</srcmd5>
+    <version>2.5.1.6</version>
+    <time>1476997685</time>
+    <user>dimstar_suse</user>
+    <comment>Update openSUSE:Factory to LTS 7.x and GHC 8.0.1.</comment>
+    <requestid>433564</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8ac49b94ac8e2b33a9092c46a857558c</srcmd5>
+    <version>2.5.1.6</version>
+    <time>1489866633</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477463</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c57b617e8bf6518ebe1d55f523d668ed</srcmd5>
+    <version>2.5.2</version>
+    <time>1491896591</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485154</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5133b101d066a3390a6a0b87b8e708e6</srcmd5>
+    <version>2.5.2</version>
+    <time>1498046143</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504674</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>bbb197639763bd939fa985ef22400315</srcmd5>
+    <version>2.5.2</version>
+    <time>1505505864</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525154</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>169833248552d6d910f35abc852907e1</srcmd5>
+    <version>2.5.4</version>
+    <time>1527675097</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-persistent-template to the latest version.</comment>
+    <requestid>607858</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>098a8e555832d3c7e7f31d03e24e7b7b</srcmd5>
+    <version>2.5.4</version>
+    <time>1532445663</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Revise cabal build file to specify more accurate dependencies.
+
+- update to 2.1.6</comment>
+    <requestid>623831</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>f1a756aa2977058ea22dbd78727a05e8</srcmd5>
+    <version>2.5.4</version>
+    <time>1540450957</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643439</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>61fa41dd04ae4edd4ca4c52a8a348700</srcmd5>
+    <version>2.5.4</version>
+    <time>1544095042</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>653807</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1983b861f1e62ef259f4ea312bad8bd6</srcmd5>
+    <version>2.6.0</version>
+    <time>1550402422</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>674304</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>deb9f807436d648bdaa5d237e4e0c085</srcmd5>
+    <version>2.7.0</version>
+    <time>1556475205</time>
+    <user>maxlin_factory</user>
+    <comment>version update</comment>
+    <requestid>698558</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fcec983ee78170321f7ac55a0b1cb21d</srcmd5>
+    <version>2.7.1</version>
+    <time>1557653772</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>701772</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ecaef28b05ff614edcbf750c750ac72c</srcmd5>
+    <version>2.7.2</version>
+    <time>1565694918</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>721034</requestid>
+  </revision>
+</revisionlist>

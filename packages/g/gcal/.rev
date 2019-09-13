@@ -1,0 +1,211 @@
+<revisionlist>
+  <revision rev="1" vrev="555">
+    <srcmd5>335e4d29e090ebfe6519be8dfb69b099</srcmd5>
+    <version>3.01</version>
+    <time>1168902812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="615">
+    <srcmd5>3545db690532a08d7d787c9043d2baad</srcmd5>
+    <version>3.01</version>
+    <time>1168974053</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="618">
+    <srcmd5>3bf2d8036490bb791d21487cc63317c5</srcmd5>
+    <version>3.01</version>
+    <time>1171916955</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="620">
+    <srcmd5>81eb6a94424a640c117e3ecca5bbaa87</srcmd5>
+    <version>3.01</version>
+    <time>1172824298</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="625">
+    <srcmd5>fc16c3b1bdedc95b73199eab78717d59</srcmd5>
+    <version>3.01</version>
+    <time>1175628221</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="718">
+    <srcmd5>fc16c3b1bdedc95b73199eab78717d59</srcmd5>
+    <version>3.01</version>
+    <time>1175628221</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="719">
+    <srcmd5>bae5eaa84b60cb4c34e802108801968e</srcmd5>
+    <version>3.01</version>
+    <time>1244831304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="721">
+    <srcmd5>bae5eaa84b60cb4c34e802108801968e</srcmd5>
+    <version>3.01</version>
+    <time>1244831304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="722">
+    <srcmd5>bb98cc23785ac749fa681175b8492333</srcmd5>
+    <version>3.01</version>
+    <time>1268923621</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="724">
+    <srcmd5>bb98cc23785ac749fa681175b8492333</srcmd5>
+    <version>3.01</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="725">
+    <srcmd5>bb98cc23785ac749fa681175b8492333</srcmd5>
+    <version>3.01</version>
+    <time>1278678576</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>80da63ef4a3712a8cf4c1f85102d74f3</srcmd5>
+    <version>3.6</version>
+    <time>1290097053</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53186 from user hennevogel
+</comment>
+    <requestid>53186</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a0c8d4724d91f584f5e6b897faab9647</srcmd5>
+    <version>3.6</version>
+    <time>1290097061</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53186
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>a0c8d4724d91f584f5e6b897faab9647</srcmd5>
+    <version>3.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>a0c8d4724d91f584f5e6b897faab9647</srcmd5>
+    <version>3.6</version>
+    <time>1319181893</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>128d7d6082c17bbc3bb7297ed76d0ca5</srcmd5>
+    <version>3.6</version>
+    <time>1323191466</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>128d7d6082c17bbc3bb7297ed76d0ca5</srcmd5>
+    <version>3.6</version>
+    <time>1340183348</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>259b16d9e520d9295ba82253b05d481c</srcmd5>
+    <version>3.6</version>
+    <time>1343030388</time>
+    <user>coolo</user>
+    <comment>Fix build with missing gets declaration (glibc 2.16) (forwarded request 128603 from a_jaeger)</comment>
+    <requestid>128704</requestid>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>4276e7f183140f0e84a551c42aae4abf</srcmd5>
+    <version>3.6</version>
+    <time>1345630330</time>
+    <user>namtrac</user>
+    <comment>Updated gcal to version 3.6 (forwarded request 131032 from hennevogel)</comment>
+    <requestid>131055</requestid>
+  </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>4276e7f183140f0e84a551c42aae4abf</srcmd5>
+    <version>3.6</version>
+    <time>1359108903</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>4276e7f183140f0e84a551c42aae4abf</srcmd5>
+    <version>3.6</version>
+    <time>1379662385</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8fa170a149d1d09fd7cd8a338cdae91a</srcmd5>
+    <version>3.6.3</version>
+    <time>1387456381</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.6.3
+  * Remove duplicate for All Saints Day for DE_BY.
+  * Inherit some portability fixes from gnulib.
+- Changes from 3.6.2
+  * Report correctly the Christmas day in Canada.
+- Changes from 3.6.1
+  * Include All Saints' day in HU
+  * Fix build issue under solaris 10 / studio 12.1
+  * Unicode support
+  * Make --help a synonym for --long-help
+- Remove gcal-stdio.h.patch; fixed on upstream release
+- Add xz requirement to support tarball format
+- Add an Url tag
+- Remove redundant %clean section
+- Don't package ChangeLog in documentation; empty file
+- Add a language subpackage (forwarded request 211444 from posophe)</comment>
+    <requestid>211671</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>8fa170a149d1d09fd7cd8a338cdae91a</srcmd5>
+    <version>3.6.3</version>
+    <time>1409300922</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>2aa6a9f483f6c84cfbb8d43a43bb8375</srcmd5>
+    <version>3.6.3</version>
+    <time>1428652456</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295104</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3cad8c3fb2a4e70fa5e118dfb0533cb0</srcmd5>
+    <version>4</version>
+    <time>1438421671</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>317070</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f5778099856442769ef9b156d4345e32</srcmd5>
+    <version>4.1</version>
+    <time>1485682676</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452588</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>6cbf06428d84632e3fc70740abfcb67f</srcmd5>
+    <version>4.1</version>
+    <time>1551114066</time>
+    <user>coolo</user>
+    <comment>- add patches (parts of git commits from gnulib):
+  - gnulib-4af4a4a71827c0bc5e0ec67af23edef4f15cee8e-excerpt.patch
+  - gnulib-74d9d6a293d7462dea8f83e7fc5ac792e956a0ad-excerpt.patch
+  to fix compilation on current glibc
+  (fflush: adjust to glibc 2.28 libio.h removal)
+  (fflush: be more paranoid about libio.h change) (forwarded request 678927 from oertel)</comment>
+    <requestid>678928</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,283 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>925269ac22d29ed022fecf160bff1ffe</srcmd5>
+    <version>2.35</version>
+    <time>1168903839</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>98700346fcc66838259c22564750226b</srcmd5>
+    <version>2.39</version>
+    <time>1214261312</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2bc6ea2e1f0af62621b5a7c81e155d26</srcmd5>
+    <version>2.41</version>
+    <time>1221235844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c753a061d45c9a8d89f5bef338787b99</srcmd5>
+    <version>2.44</version>
+    <time>1248727597</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c753a061d45c9a8d89f5bef338787b99</srcmd5>
+    <version>2.44</version>
+    <time>1248727597</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>27134251129ea5b6306596890051a9c7</srcmd5>
+    <version>2.44</version>
+    <time>1263489204</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-GD based on submit request 29439 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>f3b141de53a672d369f04895b88bd606</srcmd5>
+    <version>2.44</version>
+    <time>1268925473</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>bdf9a060d6c5bdd11d351997777974b3</srcmd5>
+    <version>2.44</version>
+    <time>1270585434</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-GD based on submit request 37048 from user coolo
+</comment>
+    <requestid>37048</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>bdf9a060d6c5bdd11d351997777974b3</srcmd5>
+    <version>2.44</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>bdf9a060d6c5bdd11d351997777974b3</srcmd5>
+    <version>2.44</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>91b6fb0817f6ddf66a28c04e05fbd910</srcmd5>
+    <version>2.45</version>
+    <time>1279565519</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-GD based on submit request 43364 from user anicka
+</comment>
+    <requestid>43364</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4ee29a7a1497577d50a3339cbb7d4842</srcmd5>
+    <version>2.45</version>
+    <time>1291582441</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54543 from user coolo
+</comment>
+    <requestid>54543</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>03d2d101106ec16604c62457b6dfaa79</srcmd5>
+    <version>2.45</version>
+    <time>1291582446</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54543
+</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>03d2d101106ec16604c62457b6dfaa79</srcmd5>
+    <version>2.45</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c06a1e9709b29303e786f9c02c7d1f63</srcmd5>
+    <version>2.46</version>
+    <time>1305897015</time>
+    <user>saschpe</user>
+    <comment>- update to 2.46
+  Added a basic &quot;use&quot; test for GD::Simple
+  Corrected license to GPL+ or Artistic</comment>
+    <requestid>69355</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>4d673d95ff15f8ad919f4004e63fc673</srcmd5>
+    <version>2.46</version>
+    <time>1305897034</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69355
+</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>6ca75296fa0babce726957f9e441a602</srcmd5>
+    <version>2.46</version>
+    <time>1306486155</time>
+    <user>saschpe</user>
+    <comment>- do not add break perl structures in overwriting CCFLAGS with invalid
+  flags
+- regenerate with cpanspec 1.78.04</comment>
+    <requestid>71520</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>f2c348513914555621001fd04ffd8b4e</srcmd5>
+    <version>2.46</version>
+    <time>1306488635</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>f2c348513914555621001fd04ffd8b4e</srcmd5>
+    <version>2.46</version>
+    <time>1319182269</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>5d12555609df4e19681e22b68d5f4078</srcmd5>
+    <version>2.46</version>
+    <time>1323193311</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>5d12555609df4e19681e22b68d5f4078</srcmd5>
+    <version>2.46</version>
+    <time>1340183844</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>5d12555609df4e19681e22b68d5f4078</srcmd5>
+    <version>2.46</version>
+    <time>1359109676</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>5d12555609df4e19681e22b68d5f4078</srcmd5>
+    <version>2.46</version>
+    <time>1379663684</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f7192a147f2ca86f2b322cd9d0edebb1</srcmd5>
+    <version>2.50</version>
+    <time>1388504850</time>
+    <user>coolo</user>
+    <comment>- disable test suite - comparing the bits of pngs is not good enough,
+  debian and fedora have the same problem and no reaction upstream
+  (RT#85789)
+
+- updated to 2.50
+   Fix gdUseFontConfig so that it can be called as a class method.
+   Add GitHub information to README.
+   Fix compile crash on windows and strawberry (https://rt.cpan.org/Public/Bug/Display.html?id=67990).
+   Fix compilation on older perl's without the Newxz macros.
+- rebased GD-cflags.patch</comment>
+    <requestid>212481</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>515d47a8b0264fbfad1e8196d757f4aa</srcmd5>
+    <version>2.51</version>
+    <time>1392185099</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221864</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>515d47a8b0264fbfad1e8196d757f4aa</srcmd5>
+    <version>2.51</version>
+    <time>1409302305</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>18e1eba71c30efbfb3e62444a4c3a491</srcmd5>
+    <version>2.51</version>
+    <time>1415118492</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259104</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>85ccfc263eb0edf8f37e50ab828b12e2</srcmd5>
+    <version>2.56</version>
+    <time>1429989436</time>
+    <user>coolo</user>
+    <comment>- move /usr/bin/bdftogd to bdftogd.perl-gd to avoid conflict with
+  gd package 
+
+- updated to 2.56
+   see /usr/share/doc/packages/perl-GD/ChangeLog
+  2.56	* Fix Makefile.PL so that it works again.
+  2.55	* Great simplification of regression framework ought to fix make test problems.
+  	* Replace ExtUtils::MakeMaker script with Module::Build system 
+  	  (just in time for Module::Build to be deprecated).
+  	* Remove archaic qd.pl (for creating QuickDraw picts) from distribution.
+  2.54	Patch from yurly@unet.net to fix image corruption in rotate180 when image height is odd.
+  2.53	Points to Gabor Szabo's GD::Simple tutorial, and fix link to repository.
+  2.52    Fix regression tests to run on Ubuntu 12.04 64bit.</comment>
+    <requestid>297920</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>343c43d051dde36327bf76008fa14d68</srcmd5>
+    <version>2.66</version>
+    <time>1498551661</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.66
+   see /usr/share/doc/packages/perl-GD/ChangeLog
+  2.66    * throw proper error on newFrom* with not-existing file
+          * add t/transp.t from RT #40525
+          * Improve RT #54366 multiple gd.h warning
+          * better doc for GD::Simple-&gt;arc
+          * fix ANIMGIF with libgd 2.3.0-dev
+  2.65    * fix --gdlib_config_path to accept an argument (fperrad)
+  2.64    * Update doc for LIBGD_VERSION()
+          * Fix 5.6.2, which does not have float in its typemap
+  2.63    * renamed VERSION() to LIBGD_VERSION(), RT #121307.
+            It was treated magically by &quot;use GD 2.18&quot;
+  2.62    * fixed wrong &lt;5.14 code generated with ExtUtils::Constants
+            RT #121297. Don't generate const-xs.inc, only when missing.
+          * add -liconv on hpux also (our pkgconfig parser cannot handle it)
+  2.61    * add CONFIGURE_REQUIRES META
+          * add --gdlib_config_path
+          * add Image Filters: scatter, pixelate, negate, grayscale, brightness,
+            contrast, color, selectiveBlur, edgeDetectQuick, gaussianBlur, emboss,
+            meanRemoval, smooth, copyGaussianBlurred
+          * add palette methods: createPaletteFromTrueColor,
+            neuQuant (but discouraged), colorMatch.
+          * add interpolation methods: copyScale, copyRotateInterpolated,
+            interpolationMethod.
+          * add double GD::VERSION
+          * add all gd.h constants
+  2.60    * add missing methods newFromWBMP, newFromXbm,
+            (RT #68784) and some missing docs
+          * Add --lib_fontconfig_path, --fcgi options
+          * rewrote most of the XS code</comment>
+    <requestid>506103</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fe47b0113aee769adc5ebc23543dfb61</srcmd5>
+    <version>2.69</version>
+    <time>1537018740</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635486</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e63a055fb44b6612f939c96880bba09e</srcmd5>
+    <version>2.71</version>
+    <time>1560862719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710401</requestid>
+  </revision>
+</revisionlist>

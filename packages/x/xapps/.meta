@@ -1,0 +1,5 @@
+<package name="xapps" project="openSUSE:Factory">
+  <title>XApp library and common files</title>
+  <description>This project gathers the components which are common to multiple desktop environments and required to implement cross-DE solutions.</description>
+  <devel project="X11:Cinnamon:Factory" package="xapps"/>
+</package>

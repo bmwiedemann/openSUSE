@@ -1,0 +1,1343 @@
+<revisionlist>
+  <revision rev="1" vrev="10">
+    <srcmd5>4717c562616b9f7ebfe5c29b3398a84b</srcmd5>
+    <version>1.4.4</version>
+    <time>1168902920</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b705f92a4799074262c397ce436fb4ae</srcmd5>
+    <version>1.6.1</version>
+    <time>1176762793</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="8">
+    <srcmd5>42aad52562f6c1747a88650bf6d73c23</srcmd5>
+    <version>1.6.1</version>
+    <time>1178872582</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="25">
+    <srcmd5>cc0e29d52815f4b975d1ec33cc9b6285</srcmd5>
+    <version>1.6.1</version>
+    <time>1186151346</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="32">
+    <srcmd5>957d19d64a9be3462e4ce5eb025d5e1b</srcmd5>
+    <version>1.6.1</version>
+    <time>1188507133</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bfa3e3b5677960953f005eca331db843</srcmd5>
+    <version>2.0.1</version>
+    <time>1193328626</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1c3c3d426e1461ce57a65ff4030e14c5</srcmd5>
+    <version>2.2.1</version>
+    <time>1204160177</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8d1a0588d9bc485adf8b46f52ca36274</srcmd5>
+    <version>2.2.2</version>
+    <time>1207453825</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7213e6a4d0f313da5a2456d4374079a8</srcmd5>
+    <version>2.2.2</version>
+    <time>1207829851</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>0075b1fdd279da56aa4bf2186bc0fa92</srcmd5>
+    <version>2.2.2</version>
+    <time>1209504746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>9fb0c63b4736f0d954f22fb2cb7016c6</srcmd5>
+    <version>2.2.2</version>
+    <time>1210281223</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>232512ea60589ac2ced06a44e02708d7</srcmd5>
+    <version>2.2.2</version>
+    <time>1212502403</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>8d69902370c1ac412492b6c03dba7aa5</srcmd5>
+    <version>2.2.2</version>
+    <time>1214414704</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cd5a064b6f3bb8481dc25c218d2b0d65</srcmd5>
+    <version>2.4.1</version>
+    <time>1216939125</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>1f1071f117e5731d8681a85882e3aa84</srcmd5>
+    <version>2.4.1</version>
+    <time>1217802973</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="22">
+    <srcmd5>f922c96f7f115a3f80d615178766d41b</srcmd5>
+    <version>2.4.1</version>
+    <time>1225636895</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="23">
+    <srcmd5>5fd1de60e2f608531f12c26d5cf8b4b4</srcmd5>
+    <version>2.4.1</version>
+    <time>1227881162</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="24">
+    <srcmd5>d192e6aee41e12b149a753aabcf4cfcd</srcmd5>
+    <version>2.4.1</version>
+    <time>1229340856</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="25">
+    <srcmd5>4bc13b34ad39fb438d061827408dc1fc</srcmd5>
+    <version>2.4.1</version>
+    <time>1237573539</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="27">
+    <srcmd5>4bc13b34ad39fb438d061827408dc1fc</srcmd5>
+    <version>2.4.1</version>
+    <time>1237573539</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>97ad2ecd5b8d2813c79c64803251af06</srcmd5>
+    <version>2.8.5</version>
+    <time>1265375107</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gnutls based on submit request 31574 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1a08e1b1c4e3606500336a4f92198811</srcmd5>
+    <version>2.8.5</version>
+    <time>1268923841</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>0e5d55a9d8eb84ba344289f6e8f88418</srcmd5>
+    <version>2.8.5</version>
+    <time>1271370135</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gnutls based on submit request 37980 from user dirkmueller
+</comment>
+    <requestid>37980</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4d2a89ddcee0f291c5d43b3009a1a066</srcmd5>
+    <version>2.8.6</version>
+    <time>1272122557</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gnutls based on submit request 38750 from user coolo
+</comment>
+    <requestid>38750</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>4d2a89ddcee0f291c5d43b3009a1a066</srcmd5>
+    <version>2.8.6</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>4d2a89ddcee0f291c5d43b3009a1a066</srcmd5>
+    <version>2.8.6</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>4d2a89ddcee0f291c5d43b3009a1a066</srcmd5>
+    <version>2.8.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3eadc19038635af7e9fd09b455dea463</srcmd5>
+    <version>2.10.2</version>
+    <time>1308211012</time>
+    <user>saschpe</user>
+    <comment>- update to latest stable version 2.10.2
+  * tons of changes, see NEWS</comment>
+    <requestid>73777</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>ce3e4ba0efeaa76fa3a3f4c76e7ea566</srcmd5>
+    <version>2.10.2</version>
+    <time>1308211024</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73777
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2a9515677dca4da6824d390def0c537d</srcmd5>
+    <version>2.10.5</version>
+    <time>1309248615</time>
+    <user>saschpe</user>
+    <comment>update to stable version 2.10.5</comment>
+    <requestid>74710</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ce5fc33b8acc3aaa94c6f05cd3f10d42</srcmd5>
+    <version>3.0.0</version>
+    <time>1314186252</time>
+    <user>saschpe</user>
+    <comment>- Update to version 3.0.0. many fixes see NEWS for details This
+  changelog only describes important package changes or features.
+* Main reason for update is to support Intel AES-NI CPU extensions.
+* Bump sonames in the library package accordingly
+* C++ apps must now buildrequire libgnutls++-devel
+* Software using the openssl emulation must buildrequire 
+  libgnutls-openssl-devel or better use openssl directly.
+* Upstream no longer uses libgcrypt but libnettle.
+* Upstream now requires the use of p11-kit
+* Add post-release upstream patches critical for improving AES-NI
+  support. (forwarded request 79252 from elvigia)</comment>
+    <requestid>79281</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>2a7e332c20239ea3cc8ce85263398689</srcmd5>
+    <version>3.0.0</version>
+    <time>1314186263</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79281
+</comment>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>8a181689f60e55505a84e7b61a74e0a0</srcmd5>
+    <version>3.0.0</version>
+    <time>1314629141</time>
+    <user>saschpe</user>
+    <comment>- update baselibs.conf</comment>
+    <requestid>79999</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>39f45d40598ce3809e5769da2e743968</srcmd5>
+    <version>3.0.0</version>
+    <time>1314629160</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79999
+</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e8008cb1189d58ccf124d567485ef283</srcmd5>
+    <version>3.0.3</version>
+    <time>1316681150</time>
+    <user>saschpe</user>
+    <comment>Update to 3.0.3 -- fix some crashes in telepathy (forwarded request 83992 from vuntz)</comment>
+    <requestid>84235</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>b44ee586bfa473c89e9184e439454e21</srcmd5>
+    <version>3.0.3</version>
+    <time>1317024351</time>
+    <user>saschpe</user>
+    <comment>Add patch fixing connection issues with some xmpp servers (forwarded request 84657 from vuntz)</comment>
+    <requestid>84674</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>c509279ae24495a70ae38478f8714706</srcmd5>
+    <version>3.0.3</version>
+    <time>1318346178</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: configure with sysroot (forwarded request 86388 from uli_suse)</comment>
+    <requestid>87383</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>7af57a10849e7734ca9c12c8bda913aa</srcmd5>
+    <version>3.0.3</version>
+    <time>1318939735</time>
+    <user>saschpe</user>
+    <comment>Fix bnc#724421. (forwarded request 88217 from vuntz)</comment>
+    <requestid>88220</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>7af57a10849e7734ca9c12c8bda913aa</srcmd5>
+    <version>3.0.3</version>
+    <time>1319181933</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>01de57220c4a1e70f0523ac0b61d9934</srcmd5>
+    <version>3.0.3</version>
+    <time>1322839549</time>
+    <user>coolo</user>
+    <comment>Fix licenses (forwarded request 94646 from vuntz)</comment>
+    <requestid>94864</requestid>
+  </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>f7b9e69a2b9a9a19d0be2c37249d728a</srcmd5>
+    <version>3.0.3</version>
+    <time>1323191718</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="42" vrev="9">
+    <srcmd5>59de7877c1075cb92330c7c7b579f18c</srcmd5>
+    <version>3.0.3</version>
+    <time>1329824288</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106219</requestid>
+  </revision>
+  <revision rev="43" vrev="10">
+    <srcmd5>a48b90e19ce4bdfe5e0b242e204e43a8</srcmd5>
+    <version>3.0.3</version>
+    <time>1334927798</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>114560</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c3d63da9d4ea0e5ad35db09b33ff95b5</srcmd5>
+    <version>3.0.19</version>
+    <time>1337588722</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.0.19:
+  + libgnutls:
+    - When decoding a PKCS #11 URL the pin-source field
+      is assumed to be a file that stores the pin. Based on patch
+      by David Smith.
+    - gnutls_record_check_pending() no longer
+      returns unprocessed data, and thus ensure the non-blocking
+      of the next call to gnutls_record_recv().
+    - Added strict tests in Diffie-Hellman and
+      SRP key exchange public keys.
+    - in ECDSA and DSA TLS 1.2 authentication be less
+      strict in hash selection, and allow a stronger hash to
+      be used than the appropriate, to improve interoperability
+      with openssl.
+  + tests:
+    - Disabled floating point test, and corrections
+      in pkcs12 decoding tests.
+  + API and ABI modifications:
+    - No changes since last version.
+- Changes from version 3.0.18:
+  + certtool:
+    - Avoid a Y2K38 bug when generating certificates.
+      Patch by Robert Millan.
+  + libgnutls:
+    - Make sure that GNUTLS_E_PREMATURE_TERMINATION
+    - is returned on premature termination (and added unit test).
+    - Fixes for W64 API. Patch by B. Scott Michel.
+    - Corrected VIA padlock detection for old
+      VIA processors. Reported by Kris Karas.
+    - Updated assembler files.</comment>
+    <requestid>121255</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>9a86f86d840d8397105dde39493e5871</srcmd5>
+    <version>3.0.19</version>
+    <time>1337601642</time>
+    <user>coolo</user>
+    <comment>- let libgnutls-devel also provide gnutls-devel</comment>
+    <requestid>121624</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>dcdbbeea355baef2d00d2696ebb81e20</srcmd5>
+    <version>3.0.19</version>
+    <time>1337674289</time>
+    <user>coolo</user>
+    <comment>- add version and release to gnutls-devel provides</comment>
+    <requestid>121683</requestid>
+  </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>a137ced9840cc99ec33dfa7b7bc0186c</srcmd5>
+    <version>3.0.19</version>
+    <time>1337959998</time>
+    <user>coolo</user>
+    <comment>- backport gnutls_certificate_set_x509_system_trust() from git and
+  add support for trust store directories (bnc#761634) (forwarded request 122019 from lnussel)</comment>
+    <requestid>122231</requestid>
+  </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>20f07028b383bd7cc8eba6422d6276bc</srcmd5>
+    <version>3.0.19</version>
+    <time>1338476691</time>
+    <user>coolo</user>
+    <comment>- fix build with automake-1.12
+  - add: automake-1.12.patch (forwarded request 122744 from puzel)</comment>
+    <requestid>122844</requestid>
+  </revision>
+  <revision rev="49" vrev="7">
+    <srcmd5>20f07028b383bd7cc8eba6422d6276bc</srcmd5>
+    <version>3.0.19</version>
+    <time>1340183398</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>21be69db3e4ed770bb7c07bd917f2a9a</srcmd5>
+    <version>3.0.20</version>
+    <time>1340625465</time>
+    <user>coolo</user>
+    <comment>- Updated to version 3.0.20:
+  libgnutls: Corrected bug which prevented the parsing of
+  handshake packets spanning multiple records.
+  libgnutls: Check key identifiers when checking for an issuer.
+  libgnutls: Added gnutls_pubkey_verify_hash2()
+  libgnutls: Added gnutls_certificate_set_x509_system_trust()
+  that loads the trusted CA certificates from system locations
+  (e.g. trusted storage in windows and CA bundle files in other systems).
+  certtool: Added support for the URI subject alternative
+  name type in certtool.
+  certtool: Increase to 128 the maximum number of distinct options
+  (e.g. dns_names) allowed.
+  gnutls-cli: If --print-cert is given, print the certificate, 
+  even on verification failure.
+  ** API and ABI modifications:
+  gnutls_pk_to_sign: Added
+  gnutls_pubkey_verify_hash2: Added
+  gnutls_certificate_set_x509_system_trust: Added</comment>
+    <requestid>125757</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>85d67a9b9e9321ecfcabe61b2052d627</srcmd5>
+    <version>3.0.20</version>
+    <time>1341219142</time>
+    <user>coolo</user>
+    <comment>- merge am-1.12 patches into 1
+
+- fix 12.2 builds.
+  * replace depreciated am_prog_mkdir_p with ac_prog_mkdir_p.</comment>
+    <requestid>126824</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>d55b2f8e419e2ee959e7ff571ed48c4c</srcmd5>
+    <version>3.0.21</version>
+    <time>1349241818</time>
+    <user>coolo</user>
+    <comment>- update to latest stable version 3.0.21:
+  libgnutls: fixed bug in gnutls_x509_privkey_import()
+  that prevented the loading of EC private keys when DER
+  encoded. Reported by David Woodhouse.
+  libgnutls: In DTLS larger to mtu records result to
+  GNUTLS_E_LARGE_PACKET instead of being truncated.
+  libgnutls: gnutls_dtls_get_data_mtu() is more precise. Based
+  on patch by David Woodhouse.
+  libgnutls: Fixed memory leak in PKCS #8 key import.
+  libgnutls: Added support for an old version of the DTLS protocol
+  used by openconnect vpn client for compatibility with Cisco's AnyConnect
+  SSL VPN. It is marked as GNUTLS_DTLS0_9. Do not use it for newer protocols
+  as it has issues.
+  libgnutls: Corrected bug that prevented resolving PKCS #11 URLs
+  if only the label is specified. Patch by David Woodhouse.
+  libgnutls: When EMSGSIZE errno is seen then GNUTLS_E_LARGE_PACKET
+  is returned.
+  API and ABI modifications:
+  gnutls_dtls_set_data_mtu: Added
+  gnutls_session_set_premaster: Added</comment>
+    <requestid>136172</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>4c438b78b86cbf31cc64379abe94c75d</srcmd5>
+    <version>3.0.26</version>
+    <time>1354094975</time>
+    <user>coolo</user>
+    <comment>- include LGPL-3.0+ text in COPYING.LESSER
+- run regression tests, but move &quot;make check&quot; to %check section
+- add gnutls-3.0.26-skip-test-fwrite.patch to skip a failing test
+- no longer manipulate doc/examples tree in %install section, the 
+  deletion of Makefiles breaks &quot;make check&quot; in %check
+- install documentation, reference and examples in %install section
+  to fetch them for the package without unneccessary files (forwarded request 142825 from AndreasStieger)</comment>
+    <requestid>142850</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>6fe960f7dc9287a217638f20000585fd</srcmd5>
+    <version>3.0.26</version>
+    <time>1354523779</time>
+    <user>coolo</user>
+    <comment>- Test suite breaks on qemu-arm some calls not implemented. (forwarded request 143321 from elvigia)</comment>
+    <requestid>143744</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>6fe960f7dc9287a217638f20000585fd</srcmd5>
+    <version>3.0.26</version>
+    <time>1359108978</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>0b24f3175c6c621264a2220411e5e280</srcmd5>
+    <version>3.0.28</version>
+    <time>1360228828</time>
+    <user>coolo</user>
+    <comment>- Updated to GnuTLS 3.0.28
+  - libgnutls: Fixes in server side of DTLS-0.9.
+  - libgnutls: Corrected gnutls_cipher_decrypt2() when used with AEAD
+    ciphers (i.e., AES-GCM).
+  - libgnutls: Fixes in record padding parsing to prevent a timing
+    attack. Issue reported by Kenny Patterson and Nadhem Alfardan.
+    bnc#802184 
+  - libgnutls: DN variable 'T' was expanded to 'title'.
+
+- Updated to GnuTLS 3.0.27
+  - libgnutls: Fixed record padding parsing issue.
+  - libgnutls: Stricter RSA PKCS #1 1.5 encoding.
+  - libgnutls-guile: Fixed parallel compilation issue.
+  - API and ABI modifications: No changes since last version.</comment>
+    <requestid>151314</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>b0757321a1bc84cebebb640a1ed01803</srcmd5>
+    <version>3.0.28</version>
+    <time>1366984226</time>
+    <user>coolo</user>
+    <comment>- Added makeinfo BuildRequire to fix build with new automake (forwarded request 173444 from m_meister)</comment>
+    <requestid>173482</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>708a3e835a08ea3d34f64a468da50d41</srcmd5>
+    <version>3.2.1</version>
+    <time>1372686882</time>
+    <user>coolo</user>
+    <comment>- Disable all ECC algorithms.
+- gnutls-32bit.patch: upstream patch to make test
+  work with 32bit time_t.
+- gnutls-implement-trust-store-dir.diff
+  currently not yet forward ported.
+- Updated to GnuTLS 3.2.1
+  ** libgnutls: Allow ECC when in SSL 3.0 to work-around a bug in certain
+     openssl versions.
+  ** libgnutls: Fixes in interrupted function resumption. Report
+     and patch by Tim Kosse.
+  ** libgnutls: Corrected issue when receiving client hello verify
+     requests in DTLS.
+  ** libgnutls: Fixes in DTLS record overhead size calculations.
+  ** libgnutls: gnutls_handshake_get_last_in() was fixed. Reported by
+     Mann Ern Kang.
+- Updated to GnuTLS 3.2.0
+  ** libgnutls: Use nettle's elliptic curve implementation.
+  ** libgnutls: Added Salsa20 cipher
+  ** libgnutls: Added UMAC-96 and UMAC-128
+  ** libgnutls: Added ciphersuites involving Salsa20 and UMAC-96.
+     As they are not standardized they are defined using private ciphersuite numbers.
+  ** libgnutls: Added support for DTLS 1.2.
+  ** libgnutls: Added support for the Application Layer Protocol
+     Negotiation (ALPN) extension.
+  ** libgnutls: Removed support for the RSA-EXPORT ciphersuites.
+  ** libgnutls: Avoid linking to librt (that also avoids unnecessary
+     linking to pthreads if p11-kit isn't used).
+- Updated to GnuTLS 3.1.10 (released 2013-03-22)
+  ** certtool: When generating PKCS #12 files use by default the 
+  ARCFOUR (RC4) cipher to be compatible with devices that don't</comment>
+    <requestid>181378</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>5ca7edb8213d1bebbc90728f01f9e950</srcmd5>
+    <version>3.2.1</version>
+    <time>1373049427</time>
+    <user>coolo</user>
+    <comment>- use pkcs11 interface to fetch the system's CA certificates
+  (fate#314991). Add patch gnutls-3.2.1-pkcs11.diff to fix doing
+  that, obsoletes gnutls-implement-trust-store-dir.diff. (forwarded request 182303 from lnussel)</comment>
+    <requestid>182304</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>d59e3aef4bbc183d5a34499c5b7feaba</srcmd5>
+    <version>3.2.1</version>
+    <time>1373395794</time>
+    <user>coolo</user>
+    <comment>- Override broken configure checks (forwarded request 182594 from Andreas_Schwab)</comment>
+    <requestid>182656</requestid>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>40c0861f9b7f523c42254491cf45ff09</srcmd5>
+    <version>3.2.1</version>
+    <time>1375112494</time>
+    <user>coolo</user>
+    <comment>- revert to using certificate directory again until gnutls
+  understands the trust bits in pkcs11. Otherwise it would use
+  blacklisted certificates. (forwarded request 184442 from lnussel)</comment>
+    <requestid>184447</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>1be747ca1fa66bb8723fa69539233127</srcmd5>
+    <version>3.2.3</version>
+    <time>1375370114</time>
+    <user>coolo</user>
+    <comment>- Updated to 3.2.3
+  ** libgnutls: Fixes in parsing of priority strings. Patch by Stefan
+     Buehler.
+  ** libgnutls: Solve issue with received TLS packets that exceed 2^14.
+     (this fixes a bug that was accidentally introduced in 3.2.2)
+  ** libgnutls: Removed gnulib modules under LGPLv3 that could possibly
+     be used by the library.
+  ** libgnutls: Fixes in gnutls_record_send_range(). Report and initial
+     fix by Alfredo Pironti.
+- Updated to 3.2.2
+  ** libgnutls: Several optimizations in the related to packet processing
+     subsystems.
+  ** libgnutls: DTLS replay detection can now be disabled (to be used
+     in certain transport layers like SCTP).
+  ** libgnutls: Fixes in SRTP extension generation when MKI is being used.
+  ** libgnutls: Added ability to set hooks before or
+     after sending or receiving any handshake message with
+     gnutls_handshake_set_hook_function().
+- gnutls-3.2.3-noecc.patch: updated to disable ECC.
+- automake-1.12.patch: upstream, dropped
+- gnutls-32bit.patch: upstream, dropped
+- gnutls-3.2.1-pkcs11.diff: upstream, dropped</comment>
+    <requestid>185475</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>9a6e9ee448eb88b2951a1a38096b526c</srcmd5>
+    <version>3.2.3</version>
+    <time>1378126575</time>
+    <user>coolo</user>
+    <comment>- buildrequire valgrind on the same arch list that valgrind builds (forwarded request 196834 from oertel)</comment>
+    <requestid>196854</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>571a6f1d091435591a75bd22a6dad86a</srcmd5>
+    <version>3.2.4</version>
+    <time>1378295325</time>
+    <user>coolo</user>
+    <comment>- Don't run install-info on images (forwarded request 197168 from AndreasSchwab)</comment>
+    <requestid>197201</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>571a6f1d091435591a75bd22a6dad86a</srcmd5>
+    <version>3.2.4</version>
+    <time>1379662521</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>cab334526cc67c53db473ca577481126</srcmd5>
+    <version>3.2.5</version>
+    <time>1383051120</time>
+    <user>coolo</user>
+    <comment>- Upgrade to 3.2.5
+** libgnutls: Documentation and build-time fixes.
+** libgnutls: Allow the generation of DH groups of less than 700 bits.
+** libgnutls: Added several combinations of ciphersuites with SHA256 and
+SHA384 as MAC, as well as Camellia with GCM.
+** libdane: Added interfaces to allow initialization of dane_query_t
+from external DNS resolutions, and to allow direct verification of a
+certificate chain against a dane_query_t. Contributed by Christian Grothoff.
+** libdane: Fixed a buffer overflow in dane_query_tlsa(). This could be
+triggered by a DNS server supplying more than 4 DANE records. Report and
+fix by Christian Grothoff.
+** srptool: Fixed index command line option. Patch by Attila Molnar.
+** gnutls-cli: Added support for inline commands, using the
+--inline-commands-prefix and --inline-commands options. Patch by Raj Raman.	
+** certtool: pathlen constraint is now read correctly. Reported by
+Christoph Seitz.
+** API and ABI modifications:
+gnutls_certificate_get_crt_raw: Added
+dane_verify_crt_raw: Added
+dane_raw_tlsa: Added 
+Add files: make-obs-happy-with-gnutls_3.2.5.patch, gnutls-3.2.5.tar.xz,
+gnutls-3.2.5.tar.xz.sig, gnutls-3.2.5-noecc.patch
+Delete files: gnutls-3.2.4.tar.xz, gnutls-3.2.4.tar.xz.sig, 
+make-obs-happy-with-gnutls_3.2.4.patch, gnutls-3.2.4-noecc.patch</comment>
+    <requestid>205088</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>5f0dae8df91e03d6e29c36a387249d7f</srcmd5>
+    <version>3.2.6</version>
+    <time>1383573503</time>
+    <user>coolo</user>
+    <comment>Upgrade to 3.2.6 (forwarded request 205591 from shawn2012)</comment>
+    <requestid>205686</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a26e5b103660c7ecd4365c932223f493</srcmd5>
+    <version>3.2.8</version>
+    <time>1387798424</time>
+    <user>scarabeus_factory</user>
+    <comment>Upgrade to GNUTLS-3.2.8 (forwarded request 211991 from shawn2012)</comment>
+    <requestid>211992</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>701e1d7715cfb5574ce8493a7ea33075</srcmd5>
+    <version>3.2.11</version>
+    <time>1392797389</time>
+    <user>coolo</user>
+    <comment>- Upgraded to 3.2.11
+  ** libgnutls: Tolerate servers that send the SUPPORTED ECC extension.
+  ** libgnutls: Reduced the TLS and DTLS version requirements for all
+     ciphersuites that are not GCM.
+  ** libgnutls: When two initial keywords are specified then treat the
+     second as having the '+' modifier.
+  ** libgnutls:  When using a PKCS #11 module for verification ensure that
+     it has been marked a trusted policy module in p11-kit. Moreover, when an
+     empty (i.e., &quot;pkcs11:&quot;) URL is specified, then try all trusted modules
+     in the system for verification.
+     http://p11-glue.freedesktop.org/doc/p11-kit/pkcs11-conf.html
+  ** libgnutls: Fixed bug that prevented the rejection of v1 intermediate
+     CA certificates. Reported and investigated by Suman Jana.
+     CVE-2014-1959 / bnc#863989
+  ** certtool: Added the --ask-pass option.
+- gnutls-3.2.10-supported-ecc.patch: upstreamed
+- gnutls-fix-missing-ipv6.patch: upstreamed
+
+- Upgrade to 3.1.20 (released 2014-01-31)
+  ** libgnutls: fixed null pointer derefence when printing a certificate
+     DN and an LDAP description isn't present.
+  ** libgnutls: gnutls_db_check_entry_time will correctly report the time;
+     report and patch by Jonathan Roudiere.
+- Upgrade to 3.2.9 (released 2014-01-24)
+  ** libgnutls: The %DUMBFW option in priority string only
+     appends data to client hello if the expected size is in the
+     &quot;black hole&quot; range.
+  ** libgnutls: %COMPAT implies %DUMBFW.
+  ** libgnutls: gnutls_session_get_desc() returns a more compact
+     ciphersuite description.</comment>
+    <requestid>222335</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>b4e3d6439e529a6c668b693e14303057</srcmd5>
+    <version>3.2.11</version>
+    <time>1393935252</time>
+    <user>coolo</user>
+    <comment>Fix bug [ bnc#865804] gnutls: CVE-2014-0092, insufficient X.509 certificate verification; Add patch file: CVE-2014-0092.patch (forwarded request 224391 from shawn2012)</comment>
+    <requestid>224392</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>d8f94e88aa740fb575d74dd00d767ee3</srcmd5>
+    <version>3.2.12</version>
+    <time>1394129888</time>
+    <user>coolo</user>
+    <comment>Upgrade to 3.2.12.1; Delete files: CVE-2014-0092.patch( upstreamed), gnutls-3.2.11.tar.xz.sig, gnutls-3.2.11.tar.xz; Add files: gnutls-3.2.12.1.tar.xz, gnutls-3.2.12.1.tar.xz.sig (forwarded request 224729 from shawn2012)</comment>
+    <requestid>224736</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>71d3b5903e66b06baaaacb30817653a1</srcmd5>
+    <version>3.2.13</version>
+    <time>1397330926</time>
+    <user>coolo</user>
+    <comment>Upgrade to 3.2.13; Add files: gnutls-3.2.13.tar.xz, gnutls-3.2.13.tar.xz.sig; Delete files: gnutls-3.2.12.1.tar.xz, gnutls-3.2.12.1.tar.xz.sig (forwarded request 229542 from shawn2012)</comment>
+    <requestid>229559</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>793f2a99e9d9bafef641b0cb92724b1e</srcmd5>
+    <version>3.2.13</version>
+    <time>1400057425</time>
+    <user>coolo</user>
+    <comment>- Improvement after code audit (audit-improve.patch)
+  * Use unsigned type for encode()
+  * tolerate NULL in strdup()
+  Modify files: lib/gnutls_mem.c, lib/auth/srp_sb64.c</comment>
+    <requestid>233678</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>53d268b61050e71b5b464819389cccaa</srcmd5>
+    <version>3.2.15</version>
+    <time>1402058174</time>
+    <user>coolo</user>
+    <comment>- Version 3.2.15 (released 2014-05-30)
+  
+  ** libgnutls: Eliminated memory corruption issue in Server Hello parsing.
+  Issue reported by Joonas Kuorilehto of Codenomicon. (CVE-2014-3466 / bnc#880730)
+  ** libgnutls: Several memory leaks caused by error conditions were
+  fixed. The leaks were identified using valgrind and the Codenomicon
+  TLS test suite.
+  ** libgnutls: Increased the maximum certificate size buffer
+  in the PKCS #11 subsystem.
+  ** libgnutls: Check the return code of getpwuid_r() instead of relying
+  on the result value. That avoids issue in certain systems, when using
+  tofu authentication and the home path cannot be determined. Issue reported
+  by Viktor Dukhovni.
+  ** gnutls-cli: if dane is requested but not PKIX verification, then
+  only do verify the end certificate.
+  ** ocsptool: Include path in ocsp request. This resolves #108582
+  (https://savannah.gnu.org/support/?108582), reported by Matt McCutchen.
+- Version 3.2.14 (released 2014-05-06)
+  ** libgnutls: Fixed issue with the check of incoming data when two
+  different recv and send pointers have been specified. Reported and
+  investigated by JMRecio.
+  ** libgnutls: Fixed issue in the RSA-PSK key exchange, which would 
+  result to illegal memory access if a server hint was provided.
+  ** libgnutls: Fixed client memory leak in the PSK key exchange, if a
+  server hint was provided.
+  ** libgnutls: Several small bug fixes identified using valgrind and
+  the Codenomicon TLS test suite.
+  ** libgnutls: Several small bug fixes found by coverity.
+  ** libgnutls-dane: Accept a certificate using DANE if there is at least one 
+  entry that matches the certificate. Patch by simon [at] arlott.org.</comment>
+    <requestid>236129</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>73a1f3af7fd1a98caeff9581f232e4c1</srcmd5>
+    <version>3.2.16</version>
+    <time>1407943195</time>
+    <user>lnussel</user>
+    <comment>Upgrade to Version 3.2.16 (released 2014-07-23); delete files: gnutls-3.2.15.tar.xz, gnutls-3.2.15.tar.xz.sig, audit-improve.patch( already in upstream); Add files: gnutls-3.2.16.tar.xz, gnutls-3.2.16.tar.xz.sig (forwarded request 243536 from citypw)</comment>
+    <requestid>244206</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>73a1f3af7fd1a98caeff9581f232e4c1</srcmd5>
+    <version>3.2.16</version>
+    <time>1409301059</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>60651029ffe0e925faed2808335ab912</srcmd5>
+    <version>3.2.17</version>
+    <time>1409761287</time>
+    <user>coolo</user>
+    <comment>Upgrade to Version 3.2.17 (released 2014-08-24); Delete files: gnutls-3.2.16.tar.xz, gnutls-3.2.16.tar.xz.sig; Add files: gnutls-3.2.17.tar.xz, gnutls-3.2.17.tar.xz.sig (forwarded request 246980 from citypw)</comment>
+    <requestid>247074</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>06b5d8aeac9c68252653b4c26194e55a</srcmd5>
+    <version>3.2.18</version>
+    <time>1411721485</time>
+    <user>coolo</user>
+    <comment>Upgrade to GnuTLS 3.2.18; Delete files: gnutls-3.2.17.tar.xz, gnutls-3.2.17.tar.xz.sig; Add files: gnutls-3.2.18.tar.xz, gnutls-3.2.18.tar.xz.sig (forwarded request 251822 from citypw)</comment>
+    <requestid>251823</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>f40e8b0aee6c178a0498ff83a25ee49b</srcmd5>
+    <version>3.2.20</version>
+    <time>1417160764</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 3.2.20 (released 2014-11-10)
+  ** libgnutls: Removed superfluous random generator refresh on every
+     call of gnutls_deinit(). That reduces load and usage of /dev/urandom.
+  ** libgnutls: Corrected issue in export of ECC parameters to X9.63
+     format.  Reported by Sean Burford [GNUTLS-SA-2014-5].
+  (CVE-2014-8564 bnc#904603)
+- Updated to 3.2.19 (released 2014-10-13)
+  ** libgnutls: Fixes in the transparent import of PKCS #11 certificates.
+     Reported by Joseph Peruski.
+  ** libgnutls: Fixed issue with unexpected non-fatal errors resetting the
+     handshake's hash buffer, in applications using the heartbeat extension
+     or DTLS. Reported by Joeri de Ruiter.
+  ** libgnutls: fix issue in DTLS retransmission when session tickets were
+     in use; reported by Manuel Pégourié-Gonnard.
+  ** libgnutls: Prevent abort() in library if getrusage() fails. Try to
+     detect instead which of RUSAGE_THREAD and RUSAGE_SELF would work.
+  ** guile: new 'set-session-server-name!' procedure; see the manual
+     for details.</comment>
+    <requestid>262808</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>5393e5d21cc6addf74bafe7a2eed7902</srcmd5>
+    <version>3.2.21</version>
+    <time>1420318984</time>
+    <user>dimstar_suse</user>
+    <comment>- build with PIE for commandline tools
+
+- Updated to 3.2.21 (released 2014-12-11)
+  - libgnutls: Corrected regression introduced in 3.2.19 related to
+    session renegotiation. Reported by Dan Winship.
+  - libgnutls: Corrected parsing issue with OCSP responses. (forwarded request 266909 from msmeissn)</comment>
+    <requestid>266910</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>342d2644bfef151d3d0495b2a728f17f</srcmd5>
+    <version>3.3.13</version>
+    <time>1427736731</time>
+    <user>dimstar_suse</user>
+    <comment>some tweaks for your perusal (forwarded request 293171 from AndreasStieger)</comment>
+    <requestid>293173</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>76b452092b738f0976b5ffbce069f55e</srcmd5>
+    <version>3.3.14</version>
+    <time>1428391718</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.3.13 (released 2015-03-30)
+  ** libgnutls: When retrieving OCTET STRINGS from PKCS #12 ContentInfo
+  structures use BER to decode them (requires libtasn1 4.3). That allows
+  to decode some more complex structures.
+  ** libgnutls: When an end-certificate with no name is present and there
+  are CA name constraints, don't reject the certificate. This follows RFC5280
+  advice closely. Reported by Fotis Loukos.
+  ** libgnutls: Fixed handling of supplemental data with types &gt; 255.
+  Patch by Thierry Quemerais.
+  ** libgnutls: Fixed double free in the parsing of CRL distribution points certificate
+  extension. Reported by Robert Święcki.
+  ** libgnutls: Fixed a two-byte stack overflow in DTLS 0.9 protocol. That
+  protocol is not enabled by default (used by openconnect VPN).
+  ** libgnutls: The maximum user data send size is set to be the same for
+  block and non-block ciphersuites. This addresses a regression with wine:
+  https://bugs.winehq.org/show_bug.cgi?id=37500
+  ** libgnutls: When generating PKCS #11 keys, set CKA_ID, CKA_SIGN,
+  and CKA_DECRYPT when needed.
+  ** libgnutls: Allow names with zero size to be set using
+  gnutls_server_name_set(). That will disable the Server Name Indication.
+  Resolves issue with wine: https://gitlab.com/gnutls/gnutls/issues/2</comment>
+    <requestid>294011</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>f17758c0444d6d3e7b537d325714808b</srcmd5>
+    <version>3.4.0</version>
+    <time>1429346298</time>
+    <user>dimstar_suse</user>
+    <comment>
+- updated to 3.4.0 (released 2015-04-08)
+  ** libgnutls: Added support for AES-CCM and AES-CCM-8 (RFC6655 and RFC7251)
+  ciphersuites. The former are enabled by default, the latter need to be
+  explicitly enabled, since they reduce the overall security level.
+  ** libgnutls: Added support for Chacha20-Poly1305 ciphersuites following
+  draft-mavrogiannopoulos-chacha-tls-05 and draft-irtf-cfrg-chacha20-poly1305-10.
+  That is currently provided as technology preview and is not enabled by
+  default, since there are no assigned ciphersuite points by IETF and there 
+  is no guarrantee of compatibility between draft versions. The ciphersuite
+  priority string to enable it is &quot;+CHACHA20-POLY1305&quot;.
+  ** libgnutls: Added support for encrypt-then-authenticate in CBC
+  ciphersuites (RFC7366 -taking into account its errata text). This is
+  enabled by default and can be disabled using the %NO_ETM priority
+  string.
+  ** libgnutls: Added support for the extended master secret
+  (triple-handshake fix) following draft-ietf-tls-session-hash-02.
+  ** libgnutls: Added a new simple and hard to misuse AEAD API (crypto.h).
+  ** libgnutls: SSL 3.0 is no longer included in the default priorities
+  list. It has to be explicitly enabled, e.g., with a string like
+  &quot;NORMAL:+VERS-SSL3.0&quot;.
+  ** libgnutls: ARCFOUR (RC4) is no longer included in the default priorities
+  list. It has to be explicitly enabled, e.g., with a string like
+  &quot;NORMAL:+ARCFOUR-128&quot;.
+  ** libgnutls: DSA signatures and DHE-DSS are no longer included in the
+  default priorities list. They have to be explicitly enabled, e.g., with
+  a string like &quot;NORMAL:+DHE-DSS:+SIGN-DSA-SHA256:+SIGN-DSA-SHA1&quot;. The
+  DSA ciphersuites were dropped because they had no deployment at all
+  on the internet, to justify their inclusion.
+  ** libgnutls: The priority string EXPORT was completely removed. The string</comment>
+    <requestid>295655</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>5edb7d94b3d0be4305908bd637480519</srcmd5>
+    <version>3.4.0</version>
+    <time>1430246540</time>
+    <user>coolo</user>
+    <comment>- Disable buggy valgrind on armv7l (forwarded request 304053 from AndreasSchwab)</comment>
+    <requestid>304179</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>a9830bb6011f1853a1fd0c484f6898ad</srcmd5>
+    <version>3.4.1</version>
+    <time>1430903914</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 3.4.1 (released 2015-05-03)
+  ** libgnutls: gnutls_certificate_get_ours: will return the certificate even
+  if a callback was used to send it.
+  ** libgnutls: Check for invalid length in the X.509 version field. Without
+  the check certificates with invalid length would be detected as having an
+  arbitrary version. Reported by Hanno Böck.
+  ** libgnutls: Handle DNS name constraints with a leading dot. Patch by
+  Fotis Loukos.
+  ** libgnutls: Updated system-keys support for windows to compile in more
+  versions of mingw. Patch by Tim Kosse.
+  ** libgnutls: Fix for MD5 downgrade in TLS 1.2 signatures. Reported by
+  Karthikeyan Bhargavan [GNUTLS-SA-2015-2]. bsc#929690
+  ** libgnutls: Reverted: The gnutls_handshake() process will enforce a timeout
+  by default. That caused issues with non-blocking programs.
+  ** certtool: It can generate SHA256 key IDs.
+  ** gnutls-cli: fixed crash in --benchmark-ciphers. Reported by James Cloos.
+  ** API and ABI modifications: gnutls_x509_crt_get_pk_ecc_raw: Added
+- gnutls-fix-double-mans.patch: fixed upstream</comment>
+    <requestid>305469</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>168a027c3bf22b04245cb85ddcf4c304</srcmd5>
+    <version>3.4.1</version>
+    <time>1431753145</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306733</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>8af1e6ba117e9aa42838238dea631b77</srcmd5>
+    <version>3.4.4</version>
+    <time>1440479822</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324612</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>dbce103ce8aff466cc92a5700223ca72</srcmd5>
+    <version>3.4.8</version>
+    <time>1453507403</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.8
+  All changes since 3.4.4:
+  * libgnutls: Corrected memory leak in gnutls_pubkey_import_privkey()
+    when used with PKCS #11 keys.
+  * libgnutls: For DSA and ECDSA keys in PKCS #11 objects, import
+    their public keys from either a public key object or a certificate.
+    That is, because private keys do not contain all the required
+    parameters for a direct import.
+  * libgnutls: Fixed issue when writing ECDSA private keys in PKCS #11
+    tokens.
+  * libgnutls: Fixed out-of-bounds read in 
+    gnutls_x509_ext_export_key_usage()
+  * libgnutls: The CHACHA20-POLY1305 ciphersuites were updated to 
+    conform to draft-ietf-tls-chacha20-poly1305-02.
+  * libgnutls: Several fixes in PKCS #7 signing which improve 
+    compatibility with the MacOSX tools.
+  * libgnutls: The max-record extension not negotiated on DTLS. This
+    resolves issue with the max-record being negotiated but ignored.
+  * certtool: Added the --p7-include-cert and --p7-show-data options.
+  * libgnutls: Properly require TLS 1.2 in all CBC-SHA256 and CBC-SHA384
+    ciphersuites. This solves an interoperability issue with openssl.
+  * libgnutls: Corrected the setting of salt size in 
+    gnutls_pkcs12_mac_info().
+  * libgnutls: On a rehandshake allow switching from anonymous to ECDHE 
+    and DHE ciphersuites.
+  * libgnutls: Corrected regression from 3.3.x which prevented 
+    ARCFOUR128 from using arbitrary key sizes.
+  * libgnutls: Added GNUTLS_SKIP_GLOBAL_INIT macro to allow programs
+    skipping the implicit global initialization.
+  * gnutls.pc: Don't include libtool specific options to link flags. (forwarded request 354652 from namtrac)</comment>
+    <requestid>354655</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>cd66ab97e2c115f8a526579d52ac83b1</srcmd5>
+    <version>3.4.8</version>
+    <time>1456320315</time>
+    <user>dimstar_suse</user>
+    <comment>- follow the work in the unbound package and use the
+  libunbound-devel symbol for the buildrequires. we override it for
+  the distro build with libunbound-devel-mini to avoid build loops. (forwarded request 360179 from darix)</comment>
+    <requestid>360180</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>3c9dc699e469029d8f8ae2ca76fcf820</srcmd5>
+    <version>3.4.11</version>
+    <time>1460837219</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 3.4.11
+  * Version 3.4.11 (released 2016-04-11)
+  ** libgnutls: Fixes in gnutls_record_get/set_state() with DTLS. 
+     Reported by Fridolin Pokorny.
+  ** libgnutls: Fixes in DSA key generation under PKCS #11. Report and
+     patches by Jan Vcelak.
+  ** libgnutls: Corrected behavior of ALPN extension parsing during
+     session resumption. Report and patches by Yuriy M. Kaminskiy.
+  ** libgnutls: Corrected regression (since 3.4.0) in 
+     gnutls_server_name_set() which caused it not to accept non-null-
+     terminated hostnames. Reported by Tim Ruehsen.
+  ** libgnutls: Corrected printing of the IP Adress name constraints.
+  ** ocsptool: use HTTP/1.0 for requests. This avoids issue with servers
+     serving chunk encoding which ocsptool doesn't support. Reported by
+     Thomas Klute.
+  ** certtool: do not require a CA for OCSP signing tag. This follows the
+     recommendations in RFC6960 in 4.2.2.2 which allow a CA to delegate
+     OCSP signing to another certificate without requiring it to be a CA.
+     Reported by Thomas Klute.
+  * Version 3.4.10 (released 2016-03-03)
+  ** libgnutls: Eliminated issues preventing buffers more than 2^32 bytes
+     to be used with hashing functions.
+  ** libgnutls: Corrected leaks and other issues in
+     gnutls_x509_crt_list_import().
+  ** libgnutls: Fixes in DSA key handling for PKCS #11. Report and 
+     patches by Jan Vcelak.
+  ** libgnutls: Several fixes to prevent relying on undefined behavior
+     of C (found with libubsan).
+  * Version 3.4.9 (released 2016-02-03)
+  ** libgnutls: Corrected ALPN protocol negotiation. Before GnuTLS would</comment>
+    <requestid>387555</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>9ae8bb3d8b3c32aa2731b5058864e813</srcmd5>
+    <version>3.4.11</version>
+    <time>1462342649</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391813</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>88ec1d33001300ce0228232dca521e10</srcmd5>
+    <version>3.4.13</version>
+    <time>1468048874</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a problem with expired test certificate by using datefudge
+  (boo#987139)
+  * add 0001-tests-use-datefudge-in-name-constraints-test.patch (forwarded request 405618 from vitezslav_cizek)</comment>
+    <requestid>405821</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>d4cfdee87fa2acd2179ab4e4d61a02ed</srcmd5>
+    <version>3.4.14</version>
+    <time>1468869588</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407873</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>81fd7b93dd066aa0f02cba5f2516752b</srcmd5>
+    <version>3.4.15</version>
+    <time>1476108991</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.4.15 (forwarded request 432668 from ecsos)</comment>
+    <requestid>433003</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>b9176608f9dc452cb7d3929e794a8a29</srcmd5>
+    <version>3.5.7</version>
+    <time>1483047681</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447177</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>71e1fc7da836a21eef7f1bdd6ef3c9af</srcmd5>
+    <version>3.5.8</version>
+    <time>1484132256</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.5.8 (released 2016-01-09)
+  * libgnutls: Ensure that multiple calls to the gnutls_set_priority_*
+    functions will not leave the verification profiles field to an
+    undefined state. The last call will take precedence.
+  * libgnutls: Ensure that GNUTLS_E_DECRYPTION_FAIL will be returned
+    by PKCS#8 decryption functions when an invalid key is provided. This
+    addresses regression on decrypting certain PKCS#8 keys.
+  * libgnutls: Introduced option to override the default priority string
+    used by the library. The intention is to allow support of system-wide
+    priority strings (as set with --with-system-priority-file). The
+    configure option is --with-default-priority-string.
+  * libgnutls: Require a valid IV size on all ciphers for PKCS#8 decryption.
+    This prevents crashes when decrypting malformed PKCS#8 keys.
+  * libgnutls: Fix crash on the loading of malformed private keys with certain
+    parameters set to zero.
+  * libgnutls: Fix double free in certificate information printing. If the PKIX
+    extension proxy was set with a policy language set but no policy specified,
+    that could lead to a double free.
+  * libgnutls: Addressed memory leaks in client and server side error paths
+    (issues found using oss-fuzz project)
+  * libgnutls: Addressed memory leaks in X.509 certificate printing error paths
+    (issues found using oss-fuzz project)
+  * libgnutls: Addressed memory leaks and an infinite loop in OpenPGP certificate
+    parsing. Fixes by Alex Gaynor. (issues found using oss-fuzz project)
+  * libgnutls: Addressed invalid memory accesses in OpenPGP certificate parsing.
+    (issues found using oss-fuzz project)
+- security issues fixed: GNUTLS-SA-2017-1 GNUTLS-SA-2017-2</comment>
+    <requestid>449317</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>990041921a62a1e54d31b97550445466</srcmd5>
+    <version>3.5.9</version>
+    <time>1487767820</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459188</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>34cb210ddfbfe7ed3da727de5ef2f2ad</srcmd5>
+    <version>3.5.9</version>
+    <time>1494087905</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492632</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>5d59a25f015ee800a2aa43645f9f0fff</srcmd5>
+    <version>3.5.11</version>
+    <time>1495283311</time>
+    <user>dimstar_suse</user>
+    <comment>GnuTLS 3.5.11
+bsc#1038337
+CVE-2017-7869 bsc#1034173
+bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
+    <requestid>493998</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>d99bd65f8c2ec54f620ff04e61309cbb</srcmd5>
+    <version>3.5.11</version>
+    <time>1495283517</time>
+    <user>dimstar_suse</user>
+    <comment>- skip trust-store tests to avoid build cycle with
+  ca-certificates-mozilla, add gnutls-3.5.11-skip-trust-store-tests.patch (forwarded request 495815 from AndreasStieger)</comment>
+    <requestid>496936</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>f6adfb8d0946be06fe1eaed86a5dfdf9</srcmd5>
+    <version>3.5.13</version>
+    <time>1497602891</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502802</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>94056dab43105a1f0ee3b9627ebb2465</srcmd5>
+    <version>3.5.15</version>
+    <time>1503999638</time>
+    <user>dimstar_suse</user>
+    <comment>GnuTLS 3.5.15 (forwarded request 518746 from AndreasStieger)</comment>
+    <requestid>518750</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>e6c22ead0b25acaac589b57833a3fc13</srcmd5>
+    <version>3.5.15</version>
+    <time>1505237888</time>
+    <user>dimstar_suse</user>
+    <comment>- Buildrequire iproute2: the test suite calls /usr/bin/ss and as
+  such we have to ensure to pull it in. (forwarded request 523062 from dimstar)</comment>
+    <requestid>523074</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>ebb4d9c5aae8c690f5de9b7e126cde36</srcmd5>
+    <version>3.6.0</version>
+    <time>1506340229</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528289</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>f15a4c12717f98b5193fafb527516f1c</srcmd5>
+    <version>3.6.1</version>
+    <time>1510321223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539293</requestid>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>34db6049e7d4264c48444d9bcf2e1412</srcmd5>
+    <version>3.6.1</version>
+    <time>1518426542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574115</requestid>
+  </revision>
+  <revision rev="107" vrev="3">
+    <srcmd5>5b6ab7f1a6ae25c1a6bb8043f3883a32</srcmd5>
+    <version>3.6.1</version>
+    <time>1519844127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580155</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>c0e920f89d777a74a9a95ee3a9661186</srcmd5>
+    <version>3.6.2</version>
+    <time>1521192816</time>
+    <user>dimstar_suse</user>
+    <comment>- gnutls.keyring: Nikos key refreshed to be unexpired
+
+- GnuTLS 3.6.2:
+  * libgnutls: When verifying against a self signed certificate ignore issuer.
+    That is, ignore issuer when checking the issuer's parameters strength,
+    resolving issue #347 which caused self signed certificates to be
+    additionally marked as of insufficient security level.
+  * libgnutls: Corrected MTU calculation for the CBC ciphersuites. The data
+    MTU calculation now, it correctly accounts for the fixed overhead due to
+    padding (as 1 byte), while at the same time considers the rest of the
+    padding as part of data MTU.
+  * libgnutls: Address issue of loading of all PKCS#11 modules on startup
+    on systems with a PKCS#11 trust store (as opposed to a file trust store).
+    Introduced a multi-stage initialization which loads the trust modules, and
+    other modules are deferred for the first pure PKCS#11 request.
+  * libgnutls: The SRP authentication will reject any parameters outside
+    RFC5054. This protects any client from potential MitM due to insecure
+    parameters. That also brings SRP in par with the RFC7919 changes to
+    Diffie-Hellman.
+  * libgnutls: Added the 8192-bit parameters of SRP to the accepted parameters
+    for SRP authentication.
+  * libgnutls: Addressed issue in the accelerated code affecting
+    interoperability with versions of nettle &gt;= 3.4.
+  * libgnutls: Addressed issue in the AES-GCM acceleration under aarch64.
+  * libgnutls: Addressed issue in the AES-CBC acceleration under ssse3 (patch by
+    Vitezslav Cizek).
+  * srptool: the --create-conf option no longer includes 1024-bit parameters.
+  * p11tool: Fixed the deletion of objects in batch mode.
+- Dropped gnutls-check_aes_keysize.patch as it is included upstream now.</comment>
+    <requestid>587401</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>fe302bcba3efce9dc59c22b37f169d4d</srcmd5>
+    <version>3.6.2</version>
+    <time>1522403765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591143</requestid>
+  </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>907a7813cb0c0ddd06e51f11f02ff718</srcmd5>
+    <version>3.6.2</version>
+    <time>1523346518</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>593004</requestid>
+  </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>c8ebbc57229ad160b35632665d4520cb</srcmd5>
+    <version>3.6.2</version>
+    <time>1533292207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626682</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>4bb9a415ca35532f631ababc326b9dcd</srcmd5>
+    <version>3.6.3</version>
+    <time>1536678475</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>631024</requestid>
+  </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>c83f0d4203419eb7f21098a8d39a43a4</srcmd5>
+    <version>3.6.3</version>
+    <time>1537970469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636363</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>c15d37009b5fb802900f6e2f9442aa82</srcmd5>
+    <version>3.6.4</version>
+    <time>1540447876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642097</requestid>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>f04f3edf5bbd6f82932dcaae8c1d6b7a</srcmd5>
+    <version>3.6.4</version>
+    <time>1543828149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652451</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>5b1b03648dc1459a702ae204f38ab653</srcmd5>
+    <version>3.6.6</version>
+    <time>1549311911</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671140</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>97989776575003d706d9af34f924b981</srcmd5>
+    <version>3.6.7</version>
+    <time>1554930632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692241</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>24fc8132514ecae8ac13d12eaf6d15f3</srcmd5>
+    <version>3.6.9</version>
+    <time>1565178850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720093</requestid>
+  </revision>
+</revisionlist>

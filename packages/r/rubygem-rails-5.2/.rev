@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ce0f5afce1f3f0034a74472dc7d481d</srcmd5>
+    <version>5.2.0</version>
+    <time>1531946852</time>
+    <user>dimstar_suse</user>
+    <comment>init package</comment>
+    <requestid>617072</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>15c213efe8b0c8a16447929d7291bfea</srcmd5>
+    <version>5.2.1</version>
+    <time>1534099981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628577</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8bce1b6324c939fb03ad262485800c60</srcmd5>
+    <version>5.2.1.1</version>
+    <time>1544095063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655325</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2e8d6a4cdd36f2247a6ba5d374ed85b6</srcmd5>
+    <version>5.2.2</version>
+    <time>1548062709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656361</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d16a0d51c4d85fe5042d77d0d9cfc7c7</srcmd5>
+    <version>5.2.2</version>
+    <time>1549286692</time>
+    <user>coolo</user>
+    <comment>- Fix bsc#1102075 by readding recommends</comment>
+    <requestid>670866</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>e244ff33f5de93f706aeea220ef09d88</srcmd5>
+    <version>5.2.2</version>
+    <time>1549624298</time>
+    <user>coolo</user>
+    <comment>- Move the recommends to the proper (generated) package (facepalm)</comment>
+    <requestid>672149</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0418213926f0484c28f18464c0bdfde7</srcmd5>
+    <version>5.2.2.1</version>
+    <time>1552572175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684884</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8e6383202c7b37f4aea59f17db759f3a</srcmd5>
+    <version>5.2.3</version>
+    <time>1554114992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689699</requestid>
+  </revision>
+</revisionlist>

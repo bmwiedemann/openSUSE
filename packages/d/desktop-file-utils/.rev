@@ -1,0 +1,485 @@
+<revisionlist>
+  <revision rev="1" vrev="19">
+    <srcmd5>176eccebb5756bae30927bc774b46585</srcmd5>
+    <version>0.11</version>
+    <time>1168212871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="22">
+    <srcmd5>bd2d7007fb92d85c6d85fe8657236423</srcmd5>
+    <version>0.11</version>
+    <time>1168964047</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1bf8265ceb144b6b4bed3db4e1fe7582</srcmd5>
+    <version>0.12</version>
+    <time>1172442138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="8">
+    <srcmd5>42337996e43622ec66a815078d881ef3</srcmd5>
+    <version>0.12</version>
+    <time>1177010101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="11">
+    <srcmd5>a046f551e8d6ac92b2cd92f495159e5d</srcmd5>
+    <version>0.12</version>
+    <time>1177685022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="13">
+    <srcmd5>092deca737c0e425d8dbfcc51681db73</srcmd5>
+    <version>0.12</version>
+    <time>1178229269</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a2fbb3de0313a71a7a18309baa264c32</srcmd5>
+    <version>0.13</version>
+    <time>1181214780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>1f9a6e507d519917333ff565e49334b8</srcmd5>
+    <version>0.13</version>
+    <time>1184344873</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="33">
+    <srcmd5>591d5f4ecda11fcdf04226b5607dfa15</srcmd5>
+    <version>0.13</version>
+    <time>1189608463</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3cc1cd9fad57b20febf46680b8932aae</srcmd5>
+    <version>0.14</version>
+    <time>1193668668</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a3591342d76ab9970f1a5fe1302a5b20</srcmd5>
+    <version>0.15</version>
+    <time>1205167517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="82">
+    <srcmd5>a3591342d76ab9970f1a5fe1302a5b20</srcmd5>
+    <version>0.15</version>
+    <time>1205167517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="83">
+    <srcmd5>2e9467a5a11c487e035b29598861a236</srcmd5>
+    <version>0.15</version>
+    <time>1245337748</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="84">
+    <srcmd5>8cc5904307fee8377b4f61e7c2a58f55</srcmd5>
+    <version>0.15</version>
+    <time>1250865497</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-file-utils based on submit request 18328 from user Beineri
+</comment>
+  </revision>
+  <revision rev="15" vrev="85">
+    <srcmd5>e0b74a6dced0b2db20b9c21fa10716b7</srcmd5>
+    <version>0.15</version>
+    <time>1251500750</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-file-utils based on submit request 19171 from user coolo
+</comment>
+  </revision>
+  <revision rev="16" vrev="87">
+    <srcmd5>e0b74a6dced0b2db20b9c21fa10716b7</srcmd5>
+    <version>0.15</version>
+    <time>1251500750</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-file-utils based on submit request 19171 from user coolo
+</comment>
+  </revision>
+  <revision rev="17" vrev="88">
+    <srcmd5>1dc680833735f8ddf030ff0f9c09b1be</srcmd5>
+    <version>0.15</version>
+    <time>1260952777</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-file-utils based on submit request 26371 from user coolo
+</comment>
+  </revision>
+  <revision rev="18" vrev="89">
+    <srcmd5>3325670c77bc5140dbbcffe5510331c8</srcmd5>
+    <version>0.15</version>
+    <time>1266973182</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-file-utils based on submit request 32917 from user vuntz
+</comment>
+    <requestid>32917</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>015e7627339042570913090b6eeba81d</srcmd5>
+    <version>0.16</version>
+    <time>1268331447</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-file-utils based on submit request 34475 from user vuntz
+</comment>
+    <requestid>34475</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>eeae84195a4bab4c6b56df13cd5e7efc</srcmd5>
+    <version>0.16</version>
+    <time>1268923320</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>eeae84195a4bab4c6b56df13cd5e7efc</srcmd5>
+    <version>0.16</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>eeae84195a4bab4c6b56df13cd5e7efc</srcmd5>
+    <version>0.16</version>
+    <time>1278678571</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>9ce9a890b6c7e573355b74bfcad63dfc</srcmd5>
+    <version>unknown</version>
+    <time>1284123810</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-file-utils based on submit request 47693 from user vuntz
+</comment>
+    <requestid>47693</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>fdde92b5ddbeb28754b30442ba735644</srcmd5>
+    <version>0.17</version>
+    <time>1286791891</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-file-utils based on submit request 50170 from user coolo
+</comment>
+    <requestid>50170</requestid>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>8213fb6e77636f291cc5dbb97e1d5450</srcmd5>
+    <version>0.17</version>
+    <time>1287051233</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-file-utils based on submit request 50367 from user vuntz
+</comment>
+    <requestid>50367</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dbe06c809262f392aec265d0b0e463dc</srcmd5>
+    <version>0.18</version>
+    <time>1294964685</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58044 from user vuntz
+</comment>
+    <requestid>58044</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>67b58ae447735ae8afd95a65ca62238b</srcmd5>
+    <version>0.18</version>
+    <time>1294964694</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58044
+</comment>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>0f01ae32762ba02e4b03d95918640805</srcmd5>
+    <version>0.18</version>
+    <time>1295882095</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 58687 from user dirkmueller
+</comment>
+    <requestid>58687</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>b6eed9a19ec90ec8f7cad20dc2ccf9b0</srcmd5>
+    <version>0.18</version>
+    <time>1295882108</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 58687
+</comment>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>b6eed9a19ec90ec8f7cad20dc2ccf9b0</srcmd5>
+    <version>0.18</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="31" vrev="8">
+    <srcmd5>fb4c69b1b793ca49bc30528f0040cbd5</srcmd5>
+    <version>0.18</version>
+    <time>1298245841</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62144 from user vuntz
+</comment>
+    <requestid>62144</requestid>
+  </revision>
+  <revision rev="32" vrev="9">
+    <srcmd5>a75c49cca74991c4eccb99626624febd</srcmd5>
+    <version>0.18</version>
+    <time>1298245848</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62144
+</comment>
+  </revision>
+  <revision rev="33" vrev="10">
+    <srcmd5>535b2a369181c9321c1c7bc0d0a5e1cc</srcmd5>
+    <version>0.18</version>
+    <time>1311607320</time>
+    <user>saschpe</user>
+    <comment>Support Unity in .desktop files</comment>
+    <requestid>76973</requestid>
+  </revision>
+  <revision rev="34" vrev="11">
+    <srcmd5>9bb9d32b5a96fc4aa352b452b2fa4192</srcmd5>
+    <version>0.18</version>
+    <time>1311607333</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76973
+</comment>
+  </revision>
+  <revision rev="35" vrev="12">
+    <srcmd5>4a70f82707dc2654d6bfc71d5473593c</srcmd5>
+    <version>0.18</version>
+    <time>1317542173</time>
+    <user>lrupp</user>
+    <comment>Pushing X11:common:Factory changes</comment>
+    <requestid>85525</requestid>
+  </revision>
+  <revision rev="36" vrev="13">
+    <srcmd5>dfecf81f880da3d10be29a9ca844ad4f</srcmd5>
+    <version>0.18</version>
+    <time>1318939226</time>
+    <user>saschpe</user>
+    <comment>- Added MIME defaults heuristic (bnc#456026, fdo#30214). (forwarded request 87577 from sbrabec)</comment>
+    <requestid>88171</requestid>
+  </revision>
+  <revision rev="37" vrev="14">
+    <srcmd5>52c0001e42f3e1366ec3a014b215336e</srcmd5>
+    <version>0.18</version>
+    <time>1319043986</time>
+    <user>coolo</user>
+    <comment>Revert last changes; it should not have gone in as it's not ready (forwarded request 88736 from vuntz)</comment>
+    <requestid>88737</requestid>
+  </revision>
+  <revision rev="38" vrev="16">
+    <srcmd5>52c0001e42f3e1366ec3a014b215336e</srcmd5>
+    <version>0.18</version>
+    <time>1319181845</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="39" vrev="17">
+    <srcmd5>c3e4b1577b845c0867057760a1f7a431</srcmd5>
+    <version>0.18</version>
+    <time>1323191148</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>30386853beb83f8e1e02f8ad9b49ac93</srcmd5>
+    <version>0.19</version>
+    <time>1324457988</time>
+    <user>coolo</user>
+    <comment>Update to 0.19 (forwarded request 97257 from vuntz)</comment>
+    <requestid>97258</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>fc1823d1fdf292d26bb572cd1c00e187</srcmd5>
+    <version>0.20</version>
+    <time>1331147330</time>
+    <user>coolo</user>
+    <comment>Update to 0.20 (forwarded request 108131 from vuntz)</comment>
+    <requestid>108134</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>fc1823d1fdf292d26bb572cd1c00e187</srcmd5>
+    <version>0.20</version>
+    <time>1340183276</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>0b847995a6020a94e8496e9f7563aeb9</srcmd5>
+    <version>0.20</version>
+    <time>1349241053</time>
+    <user>coolo</user>
+    <comment>Import SuSEconfig script from glib2 here (forwarded request 136538 from vuntz)</comment>
+    <requestid>136577</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b3a759aaf054b74beb8f3318bf2f22d1</srcmd5>
+    <version>0.21</version>
+    <time>1350020533</time>
+    <user>coolo</user>
+    <comment>Update to 0.21 (forwarded request 137856 from vuntz)</comment>
+    <requestid>137861</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>b3a759aaf054b74beb8f3318bf2f22d1</srcmd5>
+    <version>0.21</version>
+    <time>1359108807</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ae3b2c984fb28474b42768e6d5ac1e30</srcmd5>
+    <version>0.22</version>
+    <time>1378294036</time>
+    <user>coolo</user>
+    <comment>Update to 0.22 (forwarded request 196932 from sumski)</comment>
+    <requestid>197272</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>ae3b2c984fb28474b42768e6d5ac1e30</srcmd5>
+    <version>0.22</version>
+    <time>1379662220</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>ae3b2c984fb28474b42768e6d5ac1e30</srcmd5>
+    <version>0.22</version>
+    <time>1409300756</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="49" vrev="6">
+    <srcmd5>dbe3e4623e8104ea7703c594cb8dc6bb</srcmd5>
+    <version>0.22</version>
+    <time>1419546102</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266315</requestid>
+  </revision>
+  <revision rev="50" vrev="7">
+    <srcmd5>1f426c683a6a29dbffac20c6b11ca18c</srcmd5>
+    <version>0.22</version>
+    <time>1426495068</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290497</requestid>
+  </revision>
+  <revision rev="51" vrev="8">
+    <srcmd5>500345ec41d4253ac690d1f4487cd73b</srcmd5>
+    <version>0.22</version>
+    <time>1427313802</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292103</requestid>
+  </revision>
+  <revision rev="52" vrev="9">
+    <srcmd5>3d8ec1bb0ac7676bf0508894224f22b7</srcmd5>
+    <version>0.22</version>
+    <time>1463738129</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396205</requestid>
+  </revision>
+  <revision rev="53" vrev="10">
+    <srcmd5>6b80ec10fadcebd9c5d5a281863ce5f0</srcmd5>
+    <version>0.22</version>
+    <time>1464864542</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397917</requestid>
+  </revision>
+  <revision rev="54" vrev="11">
+    <srcmd5>5f0bcb863f096011fb16455441740050</srcmd5>
+    <version>0.22</version>
+    <time>1473103059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424136</requestid>
+  </revision>
+  <revision rev="55" vrev="12">
+    <srcmd5>a8778156545222d0f50fd183b30b5e78</srcmd5>
+    <version>0.22</version>
+    <time>1477134039</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435512</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>c07b12eadcca0693a9185de229aab402</srcmd5>
+    <version>0.23</version>
+    <time>1478086177</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437699</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>c304d5611ed3b11258de8f47e71d55fb</srcmd5>
+    <version>0.23</version>
+    <time>1499152116</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507346</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>33b07860d8d90a634eaf4d1271773b90</srcmd5>
+    <version>0.23</version>
+    <time>1508316221</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533327</requestid>
+  </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>4e606ee34e9708330e0f967ef73d8369</srcmd5>
+    <version>0.23</version>
+    <time>1520415052</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582542</requestid>
+  </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>d1d488fc7de90897ed8356f728c86cd8</srcmd5>
+    <version>0.23</version>
+    <time>1558036917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703095</requestid>
+  </revision>
+  <revision rev="61" vrev="6">
+    <srcmd5>c642a9beb365e9248d15c8b3d272a4ed</srcmd5>
+    <version>0.23</version>
+    <time>1562073469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712751</requestid>
+  </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>8b3b63dd723c81fbe2333173d6deb341</srcmd5>
+    <version>0.23</version>
+    <time>1564301932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717947</requestid>
+  </revision>
+  <revision rev="63" vrev="8">
+    <srcmd5>895626b69122b876a29a779c494e65d5</srcmd5>
+    <version>0.23</version>
+    <time>1565362180</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequires: xz. Unpacking xz now works out of the box.
+- Mute %filetriggerpostun on uninstall.</comment>
+    <requestid>721850</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>925c6498781f3f138f51c12c77f467b0</srcmd5>
+    <version>0.24</version>
+    <time>1565962146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723054</requestid>
+  </revision>
+</revisionlist>

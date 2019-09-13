@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c006e3b672d3379f5d5a6b7180f4d508</srcmd5>
+    <version>unknown</version>
+    <time>1558516096</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+- Update to 4.0.0
+  * Update frontend dep
+  * Update publish script
+  * Cleanup tsconfig
+  * Add NDArraySource 
+  * Refactor NDArrayWidget on top of base class
+  * Add DataImage widget 
+  * Also export base model in JS
+  * Remove scaled datawidget
+- Update to 3.2.0
+  * Refactor scaled widget, add tests
+  * Scales external cleanup
+  * Fix nbval test
+  * Make ipyscales optional
+  * Test deprecated method to get 100% coverage
+  * Add py tests for compression, and fix bugs
+  * Add more serializer types
+  * Add docstrings for ndarray serializers
+  * Add support for compression
+- jupyterlab no longer supports python2 so don't BuildRequires
+  python2 version.
+- Update to 3.1.0
+  * Regen package lock
+  * Fix test for python 3.4
+  * Rebase onto trait_types 0.2.0
+- Initial version
+</comment>
+    <requestid>698542</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0416ce8e86aab905f0d8ef86b6588ecf</srcmd5>
+    <version>unknown</version>
+    <time>1564994555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720907</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3e80fe6ef7bd3d2b92138354a7fd7730</srcmd5>
+    <version>unknown</version>
+    <time>1566243502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724156</requestid>
+  </revision>
+</revisionlist>

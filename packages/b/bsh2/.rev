@@ -1,0 +1,278 @@
+<revisionlist>
+  <revision rev="1" vrev="19">
+    <srcmd5>c1e34809fb13c161aaaecbdd09b0f5cf</srcmd5>
+    <version>2.0</version>
+    <time>1168902383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="57">
+    <srcmd5>206349cdef170e674ceb255cd82fa003</srcmd5>
+    <version>2.0</version>
+    <time>1175248431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="316">
+    <srcmd5>206349cdef170e674ceb255cd82fa003</srcmd5>
+    <version>2.0</version>
+    <time>1175248431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="317">
+    <srcmd5>6f031458fe1742ae104edcf28823a683</srcmd5>
+    <version>2.0</version>
+    <time>1238022462</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="319">
+    <srcmd5>6f031458fe1742ae104edcf28823a683</srcmd5>
+    <version>2.0</version>
+    <time>1238022462</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c29854e6a9f79b3fd634f3ed18b864e9</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1259160851</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/bsh2 based on submit request 25023 from user mvyskocil
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f78041b549e1211b16140bb651fc0deb</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1268923122</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>f78041b549e1211b16140bb651fc0deb</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>f78041b549e1211b16140bb651fc0deb</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>38e2561bec480bcc3796382267ceb098</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1285283058</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/bsh2 based on submit request 48979 from user coolo
+</comment>
+    <requestid>48979</requestid>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>38e2561bec480bcc3796382267ceb098</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>d60db8888791a6bebc8fff994339f161</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1300096424</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63980 from user mvyskocil
+</comment>
+    <requestid>63980</requestid>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>53671115a69309a0f44455cb372dec59</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1300096433</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63980
+</comment>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>53671115a69309a0f44455cb372dec59</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1319181796</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>b9fdf6f192c798378441751e2e63e9f9</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1323190911</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>b9fdf6f192c798378441751e2e63e9f9</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1340183215</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="18">
+    <srcmd5>b9fdf6f192c798378441751e2e63e9f9</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1359108718</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="19">
+    <srcmd5>a38f5cb9688f144cf26389d0d7cd7941</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1374756813</time>
+    <user>coolo</user>
+    <comment>- Fix build on factory with new rpm.</comment>
+    <requestid>184308</requestid>
+  </revision>
+  <revision rev="19" vrev="20">
+    <srcmd5>c2a1338494975835b71171260bea6f55</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1378238517</time>
+    <user>coolo</user>
+    <comment>- use add_maven_depmap from javapackages-tools
+- unversioned javadoc dir</comment>
+    <requestid>196664</requestid>
+  </revision>
+  <revision rev="20" vrev="21">
+    <srcmd5>dee042efcb2849fef4e2142dd348b1a9</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1378899556</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198262</requestid>
+  </revision>
+  <revision rev="21" vrev="23">
+    <srcmd5>dee042efcb2849fef4e2142dd348b1a9</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1379662058</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="24">
+    <srcmd5>592a060019bfc3e612af4e00079fe50b</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1392814872</time>
+    <user>coolo</user>
+    <comment>- Fix license tag to SPL-1.0 or LGPL-2.0+ (bnc#862426)
+- Encure License.txt is part of main package (bnc#862426) (forwarded request 221134 from fcrozat)</comment>
+    <requestid>222830</requestid>
+  </revision>
+  <revision rev="23" vrev="25">
+    <srcmd5>7ec0210858e8915531b31b1259aacfbc</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1401184259</time>
+    <user>coolo</user>
+    <comment>disable bytecode and post-build-checks on SLE_11 (forwarded request 234221 from deadpoint)</comment>
+    <requestid>234924</requestid>
+  </revision>
+  <revision rev="24" vrev="26">
+    <srcmd5>23ce88bf752b793dff27cccdd59be460</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1405522158</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner.
+- Fix few rpmlint complaints
+- Kill src package as nothing seem to depend on it and it is pointless.
+
+- Change the bytecode stuff.</comment>
+    <requestid>241209</requestid>
+  </revision>
+  <revision rev="25" vrev="28">
+    <srcmd5>23ce88bf752b793dff27cccdd59be460</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1409300587</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="29">
+    <srcmd5>589586f3ed0c500d3fcf049fca50a607</srcmd5>
+    <version>2.0.0.b5</version>
+    <time>1427982885</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292608</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>34a6f0576e5f1fc17f422fa34219f724</srcmd5>
+    <version>2.0.0.b6</version>
+    <time>1456433493</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.0b6 bnc#967593 CVE-2016-2510
+  * Upstream developement moved to github
+  * No obvious changelog apart from the above
+- Refreshed/updated patches:
+  * bsh-2.0b5-docs.patch
+  * bsh2-ClassGeneratorUtil.patch
+  * bsh2-asm.patch
+  * bsh2-fix-tests.patch
+- Delete needless patch:
+  * bsh2-standard-script-api.patch
+- Update version in .pom files</comment>
+    <requestid>361161</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>bc1fb2031ce68a9f5ce307128c0d1db3</srcmd5>
+    <version>2.0.0.b6</version>
+    <time>1459001279</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>374103</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>9ab844a7cea62d9ce3fe33367f9d1e8d</srcmd5>
+    <version>2.0.0.b6</version>
+    <time>1496230094</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496514</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>6176ef9f0fcdad1bb977c9203f8d5991</srcmd5>
+    <version>2.0.0.b6</version>
+    <time>1505333966</time>
+    <user>dimstar_suse</user>
+    <comment>First step to buildability with jdk9</comment>
+    <requestid>522105</requestid>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>281b5c1026365e151d1b38b855907273</srcmd5>
+    <version>2.0.0.b6</version>
+    <time>1506523750</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527488</requestid>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>81ace9fb35cc86b60b4df3ccaa51b5d8</srcmd5>
+    <version>2.0.0.b6</version>
+    <time>1532446299</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620776</requestid>
+  </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>5347c97c6c5ea37aea8319d06c6809c6</srcmd5>
+    <version>2.0.0.b6</version>
+    <time>1541510788</time>
+    <user>dimstar_suse</user>
+    <comment>Don't depend on an VERY old asm version</comment>
+    <requestid>645923</requestid>
+  </revision>
+  <revision rev="34" vrev="8">
+    <srcmd5>5e03fa3ed4d7b5ccab4b8d0e219f06e2</srcmd5>
+    <version>2.0.0.b6</version>
+    <time>1549916240</time>
+    <user>dimstar_suse</user>
+    <comment>clean up the build requires</comment>
+    <requestid>672361</requestid>
+  </revision>
+  <revision rev="35" vrev="9">
+    <srcmd5>d25067c520c366f1d8b87884ed7ff213</srcmd5>
+    <version>2.0.0.b6</version>
+    <time>1555492924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694191</requestid>
+  </revision>
+</revisionlist>

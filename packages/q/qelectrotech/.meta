@@ -1,0 +1,9 @@
+<package name="qelectrotech" project="openSUSE:Factory">
+  <title>Application to design electric diagrams</title>
+  <description>QElectroTech is an application to design electric diagrams. It uses XML 
+files for elements and diagrams, and includes both a diagram editor and an 
+element editor.
+  </description>
+  <devel project="electronics" package="qelectrotech"/>
+  <url>http://qelectrotech.org/</url>
+</package>

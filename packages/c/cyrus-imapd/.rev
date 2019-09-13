@@ -1,0 +1,578 @@
+<revisionlist>
+  <revision rev="1" vrev="29">
+    <srcmd5>b6d681c0277066f3784efaf85ed40e00</srcmd5>
+    <version>2.2.13</version>
+    <time>1168447140</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bf0e4f4747ff41535090fa8b8626b568</srcmd5>
+    <version>2.3.8</version>
+    <time>1172401942</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f88f64816d0f91b29eff19e72dd81e91</srcmd5>
+    <version>2.3.8</version>
+    <time>1173969694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>78c68f0a9d51ebbb0b359d009bb16dae</srcmd5>
+    <version>2.3.8</version>
+    <time>1174951655</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="19">
+    <srcmd5>7385a020215c8a382eb402257d9f7122</srcmd5>
+    <version>2.3.8</version>
+    <time>1179925728</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5a618bb106321d1f3fc1598eaeb938be</srcmd5>
+    <version>2.3.10</version>
+    <time>1193789491</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="20">
+    <srcmd5>8f54b40ec721a33a65736fd1d05da79b</srcmd5>
+    <version>2.3.10</version>
+    <time>1201566928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="22">
+    <srcmd5>abe42b61dcf685636c69bfef311de5b5</srcmd5>
+    <version>2.3.10</version>
+    <time>1201897256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9c86eb42f1f460f4e43324103565d672</srcmd5>
+    <version>2.3.11</version>
+    <time>1202219163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>0ac66d6fac8e74d97916424c66173704</srcmd5>
+    <version>2.3.11</version>
+    <time>1204557766</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>c8d02ab79ffb3e7c1f12590417728cd5</srcmd5>
+    <version>2.3.11</version>
+    <time>1207819188</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="25">
+    <srcmd5>e97416c45b4a56cb167ba0592ab9f741</srcmd5>
+    <version>2.3.11</version>
+    <time>1210238098</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="48">
+    <srcmd5>7a3d819d676f938e7c139631cbbff876</srcmd5>
+    <version>2.3.11</version>
+    <time>1218833218</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="49">
+    <srcmd5>784abd9e53e1c70df54460dd365907f9</srcmd5>
+    <version>2.3.11</version>
+    <time>1219076615</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="60">
+    <srcmd5>4a3db115a261d2be20807a2fbf29e2ee</srcmd5>
+    <version>2.3.11</version>
+    <time>1223570052</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>86ac1aa33b98c45f14d2dce7d4f129c1</srcmd5>
+    <version>2.3.13</version>
+    <time>1232035271</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>933d753d4048e739b5104784d4b5fab2</srcmd5>
+    <version>2.3.14</version>
+    <time>1238622420</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>ea7b3ce58a536c859e063469126cb327</srcmd5>
+    <version>2.3.14</version>
+    <time>1246633829</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>8dd1690ad8aaee749e036a6d0a99e05c</srcmd5>
+    <version>2.3.14</version>
+    <time>1247610548</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>7aeba48d27cb5a81a27584fc0fdaa5b8</srcmd5>
+    <version>2.3.14</version>
+    <time>1252024273</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/cyrus-imapd based on submit request 19845 from user rhafer
+</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>fd504e0419cbed5a3a496f2bda77614c</srcmd5>
+    <version>2.3.14</version>
+    <time>1252581322</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/cyrus-imapd based on submit request 20098 from user rhafer
+</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>55e9855d4c1f1365464568fd1202a867</srcmd5>
+    <version>2.3.14</version>
+    <time>1253732907</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/cyrus-imapd based on submit request 20886 from user rhafer
+</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>e3d634c065b48ec27171f01639a40ffb</srcmd5>
+    <version>2.3.14</version>
+    <time>1254153296</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/cyrus-imapd based on submit request 21176 from user rhafer
+</comment>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>e3d634c065b48ec27171f01639a40ffb</srcmd5>
+    <version>2.3.14</version>
+    <time>1254153296</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/cyrus-imapd based on submit request 21176 from user rhafer
+</comment>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>657df83232d7c8a222c4ccd71464bc44</srcmd5>
+    <version>2.3.14</version>
+    <time>1258394803</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/cyrus-imapd based on submit request 24541 from user rhafer
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ce1088df6e63753fbe67b88135d7e4c6</srcmd5>
+    <version>2.3.16</version>
+    <time>1267802375</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/cyrus-imapd based on submit request 33251 from user rhafer
+</comment>
+    <requestid>33251</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e0a8713dcc101afc3d4d8250ab821f3e</srcmd5>
+    <version>2.3.16</version>
+    <time>1268923282</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>72da39fcb6962109f091f3c02082a6fd</srcmd5>
+    <version>2.3.16</version>
+    <time>1270026204</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/cyrus-imapd based on submit request 36099 from user rhafer
+</comment>
+    <requestid>36099</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>f106e15ae28b13766aefb854caa3bda4</srcmd5>
+    <version>2.3.16</version>
+    <time>1270058409</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/cyrus-imapd based on submit request 36458 from user rhafer
+</comment>
+    <requestid>36458</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>8c22ff282f87c8857952583da790bf32</srcmd5>
+    <version>2.3.16</version>
+    <time>1272925129</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/cyrus-imapd based on submit request 39304 from user rhafer
+</comment>
+    <requestid>39304</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>74751e39d01b50447b0281b87c68492f</srcmd5>
+    <version>2.3.16</version>
+    <time>1275323115</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/cyrus-imapd based on submit request 40917 from user rhafer
+</comment>
+    <requestid>40917</requestid>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>74751e39d01b50447b0281b87c68492f</srcmd5>
+    <version>2.3.16</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>74751e39d01b50447b0281b87c68492f</srcmd5>
+    <version>2.3.16</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>fe07d676a8d5fd3693080f1157c309a5</srcmd5>
+    <version>2.3.16</version>
+    <time>1285977693</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/cyrus-imapd based on submit request 49543 from user rhafer
+</comment>
+    <requestid>49543</requestid>
+  </revision>
+  <revision rev="35" vrev="11">
+    <srcmd5>0ced05bbd64cfd1fb205fe7df769858b</srcmd5>
+    <version>2.3.16</version>
+    <time>1290253009</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53387 from user rhafer
+</comment>
+    <requestid>53387</requestid>
+  </revision>
+  <revision rev="36" vrev="12">
+    <srcmd5>74fc10fe5575ee8351c24eb21206c470</srcmd5>
+    <version>2.3.16</version>
+    <time>1290253029</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53387
+</comment>
+  </revision>
+  <revision rev="37" vrev="13">
+    <srcmd5>2821d3a5cb1b9f1f77e56895a3f41eb0</srcmd5>
+    <version>2.3.16</version>
+    <time>1292006352</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55249 from user elvigia
+</comment>
+    <requestid>55249</requestid>
+  </revision>
+  <revision rev="38" vrev="14">
+    <srcmd5>8070b22bae063b2ffb0d40fbb41818d1</srcmd5>
+    <version>2.3.16</version>
+    <time>1292006358</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55249
+</comment>
+  </revision>
+  <revision rev="39" vrev="17">
+    <srcmd5>8070b22bae063b2ffb0d40fbb41818d1</srcmd5>
+    <version>2.3.16</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="40" vrev="18">
+    <srcmd5>d408991f19c3f1e7f8c81db24191f011</srcmd5>
+    <version>2.3.16</version>
+    <time>1306239539</time>
+    <user>saschpe</user>
+    <comment>bnc#694247 (forwarded request 71054 from rhafer)</comment>
+    <requestid>71055</requestid>
+  </revision>
+  <revision rev="41" vrev="19">
+    <srcmd5>08da5d39dc32790247efd3369a2e5db5</srcmd5>
+    <version>2.3.16</version>
+    <time>1306239553</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71055
+</comment>
+  </revision>
+  <revision rev="42" vrev="20">
+    <srcmd5>bb5d308edfd67533eb14b2a0f7923af2</srcmd5>
+    <version>2.3.16</version>
+    <time>1308571324</time>
+    <user>saschpe</user>
+    <comment>bnc#606710</comment>
+    <requestid>74177</requestid>
+  </revision>
+  <revision rev="43" vrev="21">
+    <srcmd5>263f38ac89f5c0ed4d4f19d5eebb3049</srcmd5>
+    <version>2.3.16</version>
+    <time>1308571338</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74177
+</comment>
+  </revision>
+  <revision rev="44" vrev="22">
+    <srcmd5>f6e15a98d449c92c4e357ba5ba85e64c</srcmd5>
+    <version>2.3.16</version>
+    <time>1315568070</time>
+    <user>saschpe</user>
+    <comment>bnc#715251 (forwarded request 81645 from rhafer)</comment>
+    <requestid>81660</requestid>
+  </revision>
+  <revision rev="45" vrev="23">
+    <srcmd5>23b557e8ce60b73a9d7b895d3c2fdd5d</srcmd5>
+    <version>2.3.16</version>
+    <time>1315568075</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81660
+</comment>
+  </revision>
+  <revision rev="46" vrev="24">
+    <srcmd5>9516ac0332a2389c93d543169f408428</srcmd5>
+    <version>2.3.16</version>
+    <time>1316515843</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 83165 from jengelh)</comment>
+    <requestid>83712</requestid>
+  </revision>
+  <revision rev="47" vrev="22">
+    <srcmd5>31bdc9108639e40c6181c30086836a97</srcmd5>
+    <version>2.3.17</version>
+    <time>1316617184</time>
+    <user>saschpe</user>
+    <comment>update to 2.3.17, bnc#718428 (forwarded request 84090 from rhafer)</comment>
+    <requestid>84093</requestid>
+  </revision>
+  <revision rev="48" vrev="23">
+    <srcmd5>941e3bcd625c6dd74bdf02e46dbc1921</srcmd5>
+    <version>2.3.17</version>
+    <time>1317542122</time>
+    <user>lrupp</user>
+    <comment>disable parallel make again, dependency chain not correct apparently (forwarded request 85135 from msmeissn)</comment>
+    <requestid>85853</requestid>
+  </revision>
+  <revision rev="49" vrev="22">
+    <srcmd5>364e952f6feecc8e8293af391fbb5c87</srcmd5>
+    <version>2.3.18</version>
+    <time>1317805677</time>
+    <user>lrupp</user>
+    <comment>bnc#719998 (forwarded request 86619 from rhafer)</comment>
+    <requestid>86622</requestid>
+  </revision>
+  <revision rev="50" vrev="24">
+    <srcmd5>364e952f6feecc8e8293af391fbb5c87</srcmd5>
+    <version>2.3.18</version>
+    <time>1319181839</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="51" vrev="25">
+    <srcmd5>62a10761e16c5d6803e9a0cf98021764</srcmd5>
+    <version>2.3.18</version>
+    <time>1325658220</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94951 from coolo)</comment>
+    <requestid>95061</requestid>
+  </revision>
+  <revision rev="52" vrev="27">
+    <srcmd5>62a10761e16c5d6803e9a0cf98021764</srcmd5>
+    <version>2.3.18</version>
+    <time>1340183267</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="53" vrev="28">
+    <srcmd5>67172e5f783826c674ff0605db58bdb2</srcmd5>
+    <version>2.3.18</version>
+    <time>1340617494</time>
+    <user>coolo</user>
+    <comment>- allocate the right size (reported by frerichs@rz.uni-kiel.de) (forwarded request 125434 from msmeissn)</comment>
+    <requestid>125591</requestid>
+  </revision>
+  <revision rev="54" vrev="30">
+    <srcmd5>67172e5f783826c674ff0605db58bdb2</srcmd5>
+    <version>2.3.18</version>
+    <time>1359108794</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="55" vrev="31">
+    <srcmd5>3b98ea10092f051679452d34a931565d</srcmd5>
+    <version>2.3.18</version>
+    <time>1360950094</time>
+    <user>coolo</user>
+    <comment>enable --with-ldap option (forwarded request 155507 from aeneas_jaissle)</comment>
+    <requestid>155523</requestid>
+  </revision>
+  <revision rev="56" vrev="32">
+    <srcmd5>71740405e3565d5ce69bf690b05bd08a</srcmd5>
+    <version>2.3.18</version>
+    <time>1370425521</time>
+    <user>coolo</user>
+    <comment>- Package perl-Cyrus-SIEVE-managesieve provides the sieveshell as
+  well as the package python-managesieve, therefore make them
+  conflicting
+
+- Added /var/lib/imap/ptclient to %files section</comment>
+    <requestid>176646</requestid>
+  </revision>
+  <revision rev="57" vrev="33">
+    <srcmd5>126fa9be5f7a251bef697d61f6b67610</srcmd5>
+    <version>2.3.18</version>
+    <time>1371456203</time>
+    <user>coolo</user>
+    <comment>Distinguish between db4 and db6 in mbox_compar function (forwarded request 179016 from jengelh)</comment>
+    <requestid>179073</requestid>
+  </revision>
+  <revision rev="58" vrev="35">
+    <srcmd5>126fa9be5f7a251bef697d61f6b67610</srcmd5>
+    <version>2.3.18</version>
+    <time>1379662199</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>636a903c82dd69f9b251dd49e91cce74</srcmd5>
+    <version>2.4.17</version>
+    <time>1394385715</time>
+    <user>coolo</user>
+    <comment>Update to 2.4.17, spec file cleanup, package splitting etc. (forwarded request 224723 from aeneas_jaissle)</comment>
+    <requestid>224885</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>636a903c82dd69f9b251dd49e91cce74</srcmd5>
+    <version>2.4.17</version>
+    <time>1409300733</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>729a9d4739fbd678ce940208f535b6bb</srcmd5>
+    <version>2.4.17</version>
+    <time>1416823743</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unused patch:
+  * KOLAB_cyrus-imapd-2.3.18_cross-domain-acls.patch 
+
+- Replace the TLS/POODLE patch with what was merged into the upstream
+  git repo:
+  * cyrus-imapd.tls_options.patch
+  * Obsoletes patches cyrus-imapd.tls_tlsonly.patch and
+    cyrus-imapd.tls_ec.patch
+- Add a default tls_versions settings to imapd.conf which disables
+  POODLE affected SSL versions.
+
+- Add two patches from Kristian Kraemmer Nielsen found on the info-cyrus mailing list 
+  (http://lists.andrew.cmu.edu/pipermail/info-cyrus/2014-October/037708.html)
+  * cyrus-imapd.tls_ec.patch		- adding tls_ec for Perfect Forward Secrecy
+  * cyrus-imapd.tls_tlsonly.patch	- add tlsonly config option to fix POODLE vulnerability</comment>
+    <requestid>262574</requestid>
+  </revision>
+  <revision rev="62" vrev="5">
+    <srcmd5>ca29c2044267be6502665f6ca54b3793</srcmd5>
+    <version>2.4.17</version>
+    <time>1418737754</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265315</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>62f62adb8ca4012692acca8152ca6c6f</srcmd5>
+    <version>2.4.18</version>
+    <time>1441727160</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329673</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>217e952cd788c7444f3c79be0ac54886</srcmd5>
+    <version>2.4.18</version>
+    <time>1447766572</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344608</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>dee6ec8d11a1f1e604120771f7d28848</srcmd5>
+    <version>2.4.18</version>
+    <time>1466681756</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403593</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>28f532f9173af5757f86baba1bd33eca</srcmd5>
+    <version>2.4.19</version>
+    <time>1498120846</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505525</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>f6bad9ab980397ce48874005219cdb3e</srcmd5>
+    <version>2.4.19</version>
+    <time>1498485403</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506147</requestid>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>410f6aab1612248ce062fcd3b004a3fe</srcmd5>
+    <version>2.4.19</version>
+    <time>1499754451</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509141</requestid>
+  </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>a2d0405bc91321f51accbdb9286899a9</srcmd5>
+    <version>2.4.19</version>
+    <time>1509461010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>536505</requestid>
+  </revision>
+  <revision rev="70" vrev="5">
+    <srcmd5>76b21d1970bb14e2c7b3b964ef47ad85</srcmd5>
+    <version>2.4.19</version>
+    <time>1511595783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545099</requestid>
+  </revision>
+  <revision rev="71" vrev="6">
+    <srcmd5>8cf2e27b352c5183ddc9dab87a95c03b</srcmd5>
+    <version>2.4.19</version>
+    <time>1543953319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653579</requestid>
+  </revision>
+  <revision rev="72" vrev="7">
+    <srcmd5>e558b2ebb2558256df33284c6d63a51e</srcmd5>
+    <version>2.4.19</version>
+    <time>1548064648</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1119629 cyrus-imapd.service contains bogus User and Groupi 
+    specification
+- bsc#1115999 Please convert SysV init scripts by cyrus-imapd 
+    into native systemd services
+  - Removed User and Group from the service file
+
+- Avoid repeated emission of the %service_* boilerplate.</comment>
+    <requestid>666435</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>abea67783307c7bc2b36b0b959b82cc6</srcmd5>
+    <version>2.4.20</version>
+    <time>1548452720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.20</comment>
+    <requestid>668460</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>fe18a5e696482738b6326d98976ea23b</srcmd5>
+    <version>2.4.20</version>
+    <time>1564994483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720715</requestid>
+  </revision>
+</revisionlist>

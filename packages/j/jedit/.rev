@@ -1,0 +1,250 @@
+<revisionlist>
+  <revision rev="1" vrev="20">
+    <srcmd5>ba33d98027e979dbc956032765e287e5</srcmd5>
+    <version>4.2</version>
+    <time>1168903135</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="56">
+    <srcmd5>501ae2c778d70c529f7b02f860ccd3f9</srcmd5>
+    <version>4.2</version>
+    <time>1173567253</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="196">
+    <srcmd5>3564369f10bc1a8af053394d55c70fe6</srcmd5>
+    <version>4.2</version>
+    <time>1201663217</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="282">
+    <srcmd5>7f83cc6c7c40caf0ee102ce09b9a1f9b</srcmd5>
+    <version>4.2</version>
+    <time>1218154122</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="309">
+    <srcmd5>33a83bcbbca657a0299a262e4f151056</srcmd5>
+    <version>4.2</version>
+    <time>1236646435</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="311">
+    <srcmd5>33a83bcbbca657a0299a262e4f151056</srcmd5>
+    <version>4.2</version>
+    <time>1236646435</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="312">
+    <srcmd5>1516ccc2c4eb98d8e179e0ec0852d4ae</srcmd5>
+    <version>4.2</version>
+    <time>1260975047</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/jedit based on submit request 26601 from user mvyskocil
+</comment>
+  </revision>
+  <revision rev="8" vrev="313">
+    <srcmd5>3d6d624035cda5b90f5acdddcfcbacde</srcmd5>
+    <version>4.2</version>
+    <time>1268924129</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="315">
+    <srcmd5>3d6d624035cda5b90f5acdddcfcbacde</srcmd5>
+    <version>4.2</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="316">
+    <srcmd5>3d6d624035cda5b90f5acdddcfcbacde</srcmd5>
+    <version>4.2</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a8cda978f0fa857b3c826cd6a4b85e87</srcmd5>
+    <version>4.3.2</version>
+    <time>1281660147</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/jedit based on submit request 45384 from user mvyskocil
+</comment>
+    <requestid>45384</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>a8cda978f0fa857b3c826cd6a4b85e87</srcmd5>
+    <version>4.3.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>f0346b58664d81328f5de2b4a07047d3</srcmd5>
+    <version>4.3.2</version>
+    <time>1306501757</time>
+    <user>saschpe</user>
+    <comment>Don't hardcode docbook-xsl-stylesheet version (forwarded request 71076 from namtrac)</comment>
+    <requestid>71180</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>72167a84514ca1ebf5f2948f18b900f3</srcmd5>
+    <version>4.3.2</version>
+    <time>1306501767</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71180
+</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>72167a84514ca1ebf5f2948f18b900f3</srcmd5>
+    <version>4.3.2</version>
+    <time>1319182010</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>dddf47635b4b101477f96fd2739ab5d6</srcmd5>
+    <version>4.3.2</version>
+    <time>1323192035</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3ce6a94fa44df1fa064aa80d9c780098</srcmd5>
+    <version>4.4.2</version>
+    <time>1334745271</time>
+    <user>coolo</user>
+    <comment>update to 4.4.2</comment>
+    <requestid>102056</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fa57758b30690b7bef3b6f54b1df62a0</srcmd5>
+    <version>4.5.0</version>
+    <time>1340023912</time>
+    <user>coolo</user>
+    <comment>- adding deps.sh as source
+
+- Update to 4.5.0
+  * Performance improvements.
+  * Elastic tabstop option now available.
+  * Lots of old deprecated API's were removed.
+  * Choose color ordering for subpixel antialising.
+  * Desktop system tray icon added.
+  * It is now possible to change look &amp; feel without restarting jEdit.
+  * It is now possible to specify a FILE_NAME_GLOB for an edit mode
+    based on the full path.
+  * File System Browser can now open files in desktop, using filename
+    associations to launch another program.
+  * Plugin Manager enhancements, filter field, bugs fixed.</comment>
+    <requestid>125211</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>fa57758b30690b7bef3b6f54b1df62a0</srcmd5>
+    <version>4.5.0</version>
+    <time>1340183485</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>857c362cd24be39c3a5a8fd617d9b934</srcmd5>
+    <version>4.5.1</version>
+    <time>1340976039</time>
+    <user>coolo</user>
+    <comment>- update to 4.5.1 (bugfix release)
+- build it from source and don't bundle everything in a tarball
+- strip documentation build and install as it's extremly complicated and needs
+  a lot of dependencies
+- reworked launcher script</comment>
+    <requestid>126322</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>857c362cd24be39c3a5a8fd617d9b934</srcmd5>
+    <version>4.5.1</version>
+    <time>1359109121</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c213f16894e37178a2d0d34371557846</srcmd5>
+    <version>5.0.0</version>
+    <time>1363067771</time>
+    <user>coolo</user>
+    <comment>- updated build to use openSUSE-packaged dependencies
+
+- update to 5.0.0
+- fixed java version incompatability with openSUSE 12.1
+- many bug fixes, API changes, editing and UI updates
+- added missing documentation
+- full changelog here: www.jedit.org/CHANGES50.txt</comment>
+    <requestid>158012</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>c213f16894e37178a2d0d34371557846</srcmd5>
+    <version>5.0.0</version>
+    <time>1379662712</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>ef74f1b59bab9cd3a2b6cf2fa283fa2c</srcmd5>
+    <version>5.0.0</version>
+    <time>1380556559</time>
+    <user>scarabeus_factory</user>
+    <comment>[FOR-OPENSUSE-13.1] - I'd say it fails there too
+- fix a build, added missing commons-logging and junit</comment>
+    <requestid>201461</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>795023066cf073cf6ed985af9e47416b</srcmd5>
+    <version>5.1.0</version>
+    <time>1404996917</time>
+    <user>coolo</user>
+    <comment>- Version bump to 5.1.0:
+  * Various updates all raound the place
+  * Few api changes
+  * http://www.jedit.org/CHANGES51.txt
+
+- Cleanup with spec-cleaner
+
+- Fix jedit build with new xml-common-apis</comment>
+    <requestid>239774</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>795023066cf073cf6ed985af9e47416b</srcmd5>
+    <version>5.1.0</version>
+    <time>1409301278</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>f98490466ad44b182b0e50ce6f77ba6c</srcmd5>
+    <version>5.1.0</version>
+    <time>1505920206</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527187</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>799eea9cedc9727f75bc90afbb668fab</srcmd5>
+    <version>5.1.0</version>
+    <time>1514028068</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk10</comment>
+    <requestid>559396</requestid>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>9d2a776219fb77d31c86c8675cad729c</srcmd5>
+    <version>5.1.0</version>
+    <time>1541865533</time>
+    <user>dimstar_suse</user>
+    <comment>Depend on newer bsh2 and not on the old bsh</comment>
+    <requestid>645930</requestid>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>7abd95575f0286270a3aa838f199c9c4</srcmd5>
+    <version>5.1.0</version>
+    <time>1544539740</time>
+    <user>dimstar_suse</user>
+    <comment>Build against the generic provider xml-apis instead of xerces-j2-xml-apis</comment>
+    <requestid>656913</requestid>
+  </revision>
+</revisionlist>

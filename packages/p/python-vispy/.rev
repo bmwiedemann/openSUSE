@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>32c0e67889599bcfc7e95ab6d304c91b</srcmd5>
+    <version>0.5.2</version>
+    <time>1520588191</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-holoviews, already in openSUSE:Factory.</comment>
+    <requestid>581985</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6b0d0206374feccffb0a4ae4a67e8c5f</srcmd5>
+    <version>0.5.2</version>
+    <time>1525426202</time>
+    <user>dimstar_suse</user>
+    <comment>- Compact description.
+</comment>
+    <requestid>603212</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8bf276b7b5288d01feb4f642d5aa91cd</srcmd5>
+    <version>0.5.3</version>
+    <time>1541152386</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.3
+  * Workaround matplotlib 2.2 dropping _cntr private module
+  * Try appveyor SSL settings for fixing https download
+  * Fix buffer due to unsupported numpy feature
+</comment>
+    <requestid>645934</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f1be9797eff4f56eb391a589d56ab829</srcmd5>
+    <version>0.5.3</version>
+    <time>1555574249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695344</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e96dd2b514e2c1cb105d3e1340644d8</srcmd5>
+    <version>0.6.1</version>
+    <time>1564994467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720692</requestid>
+  </revision>
+</revisionlist>

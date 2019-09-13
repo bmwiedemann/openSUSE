@@ -1,0 +1,254 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a77baf612a9ea4f6a3bb5f64b879335d</srcmd5>
+    <version>3.3.0</version>
+    <time>1518426948</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure neutrality of description.
+- Fix unknown RPM category group.
+- Replace old $RPM_ variables with macros.
+- Avoid %__-type macro indirections.
+- Do not let fdupes cross partitions.
+- Branch package from piwik,
+  because piwik renamed to matomo.
+- update to 3.3.0
+  See https://matomo.org/changelog/matomo-3-3-0/
+- update to 3.2.1
+  see https://piwik.org/changelog/piwik-3-2-1/
+- update to 3.2.0
+  see https://piwik.org/changelog/piwik-3-2-0/
+- update to 3.1.1
+  see https://piwik.org/changelog/piwik-3-1-1/
+  
+- update to 3.1.0
+  This release is rated important, two XSS issues have bin fixed.
+  Also 120 tickets closed.
+  see https://piwik.org/changelog/piwik-3-1-0/
+- fix spec to use php7 too
+- fix errors in piwik.conf
+- update to 3.0.4
+  see https://piwik.org/changelog/piwik-3-0-4/
+- update to 3.0.3
+  see https://piwik.org/changelog/piwik-3-0-3/
+- update to 3.0.2
+  see https://piwik.org/changelog/piwik-3-0-2/
+- update to 3.0.1
+  see https://piwik.org/changelog/piwik-3-0-1/
+- update to 3.0.0
+  see https://piwik.org/changelog/piwik-3-0-0/
+- update to 2.17.1
+  see https://piwik.org/changelog/piwik-2-17-1/
+- update to 2.17.0
+  see https://piwik.org/changelog/piwik-2-17-0/
+- update to 2.16.5
+  see https://piwik.org/changelog/piwik-2-16-5/
+- update to 2.16.4
+  see https://piwik.org/changelog/piwik-2-16-4/
+- update to 2.16.3 
+  see https://piwik.org/changelog/piwik-2-16-3/
+  - This is a security release
+- update to 2.16.2
+  see https://piwik.org/changelog/piwik-2-16-2/
+  - This is a security release
+- update to 2.16.1
+  see http://piwik.org/changelog/piwik-2-16-1/
+  - This is a security release
+- Drop piwik-manifest_unneeded_files.patch: It's now in upstream
+- update to 2.16.0
+  see http://piwik.org/changelog/piwik-2-16-0/
+  
+- update to 2.15.0
+  see http://piwik.org/changelog/piwik-2-15-0/
+- insert attention mark for php caches in README.SUSE
+- activate and update manifest patch
+- update to 2.14.3
+  - #8439 Install of 2.14.2 blocked by permissions check on 
+    piwik/config path [by @mnapoli]
+  - #8431 Overlay improvements [by @sgiehl, @tsteur]
+  - #8352 In Page Overlay sidebar, add icon to let me 
+    “Open segmented visitor log” [by @sgiehl]
+  - #8403 Improve design of Trusted Piwik Hostname setting 
+    [by @barbushin, @tsteur]
+  - #7835 Rename “Widgets &amp; Dashboard” selector or change the 
+    selector [by @tsteur]
+  - #8293 Piwik errors logged in server error log should not have 
+    HTML [by @mnapoli]
+  - #8252 New config entry to set email name in email FROM field 
+    [by @tsteur]
+  - #8472 Fix bug in notification angular directive, do not use 
+    data-binding for noclear attribute… [by @diosmosis]
+  - #8285 UserCountryMap plugin shows wrong options in countries 
+    select [by @mnapoli]
+  - #8432 [automatic translation update] Updated 195 strings in 
+    32 languages (sk, ar, de, ja, nl, nb, sv, be, bg, ca, cs, da, 
+    el, es, fa, fi, fr, hi, hu, id, it, ko, pl, pt, ro, ru, sq, sr, 
+    th, tl, uk, vi) [by @sgiehl]
+  - #8474 [automatic translation update] Updated 254 strings in 
+    37 languages (gl, nb, cs, it, sk, de, el, fr, lt, ar, bg, ca, 
+    da, es, et, fa, fi, he, hi, hr, id, ja, ko, nl, nn, pl, ro, ru,
+    sl, sq, sr, sv, ta, th, tl, tr, vi) [by @sgiehl]
+- update to 2.14.2
+  - #8304 Column not found: 1054 Unknown column 
+    ‘log_visit.location_browser_lang’ in ‘field list'” [by @tsteur]
+  - #8365 renderer format is not valid – fatal php error after 
+    2.14.0
+  - #8316 URL parameter for core:archive console command is ignored 
+    [by @diosmosis, @mattab]
+  - #8307 Limit notifications of not authenticated sessions 
+    [by @tsteur]
+  - #8370 Can’t update GrabGravatar plugin [by @tsteur]
+  - #8346 node.className.split is not a function on tracking click 
+    on/near SVG element [by @dandv, @tsteur]
+  - #8294 CLI plugin generator doesn’t intercept plugin description 
+    [by @tsteur]
+  - #8257 Site Search report does not display tooltips with metrics 
+    documentation
+  - #7768 Browser info tooltip doesn’t hide
+  - #8411 Add System check that checks that shell_exec function is 
+    enabled [by @mattab]
+  - #8407 The string General_Cancel was not loaded in javascript 
+    [by @tsteur]
+  - #8400 Fix emails validation with unknown TLD 
+    [by @barbushin, @mnapoli]
+  - #8379 Travis system extraction part 1 [by @diosmosis]
+  - #8374 Tweaks to .travis.yml generator [by @diosmosis]
+  - #8376 [automatic translation update] Updated 661 strings in 
+    8 languages (nl, sv, de, es, ja, lt, pl, nb) [by @sgiehl]
+- initial version 2.13.1
+</comment>
+    <requestid>575404</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dc90e2725d4ad23090962291dba168b6</srcmd5>
+    <version>3.4.0</version>
+    <time>1523447875</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594656</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b388f5e5a761a0b15638db9df692738c</srcmd5>
+    <version>3.5.0</version>
+    <time>1526022861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605633</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>21d198939702e4933df4898fe1f1350c</srcmd5>
+    <version>3.5.1</version>
+    <time>1527583518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612374</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>04cf9dbbb2ba26c57963768f92de6fcd</srcmd5>
+    <version>3.6.0</version>
+    <time>1535705259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632252</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>22d2282eb25444871c57507a86334f3c</srcmd5>
+    <version>3.6.1</version>
+    <time>1540200242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643164</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6271987ce07651a859da5972015194c6</srcmd5>
+    <version>3.7.0</version>
+    <time>1543224690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651455</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ae965f5c4442caef9818463b12a63dc4</srcmd5>
+    <version>3.7.0</version>
+    <time>1543400118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652221</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0898f857f13238d52ff962efaa0cd819</srcmd5>
+    <version>3.8.0</version>
+    <time>1548335614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667791</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b130dc8d57d031497e9d5e557b3b11df</srcmd5>
+    <version>3.8.0</version>
+    <time>1548452682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668330</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3cb72b2505da8ace4af0e4d85a9c5327</srcmd5>
+    <version>3.8.1</version>
+    <time>1549017900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669467</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>711eee3949e594b6c4069b81ba8fcf55</srcmd5>
+    <version>3.9.0</version>
+    <time>1553084562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686903</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>64d918bb3563823829c5de7241d932de</srcmd5>
+    <version>3.9.1</version>
+    <time>1553263941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.1
+  * This release addresses a couple of issues and errors discovered
+    in Matomo 3.9.0. 4 tickets have been closed by 2 contributors.
+    - #14229 Notice – unserialize(): Error at offset 0 of 53988 
+      bytes
+    - #14226 open_basedir restriction AND Support multiple plugin 
+      paths [by @sgiehl]
+    - #14227 One-click upgrade sometimes fails with errors such as 
+      “Call to undefined method 
+      Piwik\Plugin\Manager::getPluginDirectory() ” 
+      (fails only once, works after a refresh)
+    - #14240 Do not send password changed email for automated use 
+      cases. [by @diosmosis, @sgiehl]
+</comment>
+    <requestid>687585</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2df7583c618aa22ac90d6df40bd4accf</srcmd5>
+    <version>3.10.0</version>
+    <time>1562056779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712941</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7c7a3f3e37b2e5fd773096803553ae07</srcmd5>
+    <version>3.10.0</version>
+    <time>1562247855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713357</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7ddaceaf7f3b1fb58ca0d6256832eaab</srcmd5>
+    <version>3.11.0</version>
+    <time>1564137745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718589</requestid>
+  </revision>
+</revisionlist>

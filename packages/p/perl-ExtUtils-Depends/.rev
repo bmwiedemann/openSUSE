@@ -1,0 +1,245 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2630a6b2d98eb53a1d4de76a49235fa2</srcmd5>
+    <version>0.205</version>
+    <time>1168903830</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8250d8e0de0a316a309db134b6a52570</srcmd5>
+    <version>0.300</version>
+    <time>1207180391</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cfec5b4765cc5cb29073881c4f447668</srcmd5>
+    <version>0.301</version>
+    <time>1221235826</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>71890d3b4431f4e32a9cd06576181b37</srcmd5>
+    <version>0.302</version>
+    <time>1249318334</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>71890d3b4431f4e32a9cd06576181b37</srcmd5>
+    <version>0.302</version>
+    <time>1249318334</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>dfacedeafac11f67b0d6aeb73aa25014</srcmd5>
+    <version>0.302</version>
+    <time>1263293638</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-ExtUtils-Depends based on submit request 29190 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>c7a84cc2cb8ecd418cd3819c1ed56005</srcmd5>
+    <version>0.302</version>
+    <time>1268925455</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>c7a84cc2cb8ecd418cd3819c1ed56005</srcmd5>
+    <version>0.302</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>c7a84cc2cb8ecd418cd3819c1ed56005</srcmd5>
+    <version>0.302</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>e0839f999aab19e2f947c0d66cc23d5c</srcmd5>
+    <version>0.302</version>
+    <time>1287485653</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50983 from user coolo
+</comment>
+    <requestid>50983</requestid>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>6e0ff05c3cf2ae0023795ac7a7f04263</srcmd5>
+    <version>0.302</version>
+    <time>1287485671</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50983
+</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>47443b6c8a82acd6bd3c8e443c677771</srcmd5>
+    <version>0.302</version>
+    <time>1290788657</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53913 from user computersalat
+</comment>
+    <requestid>53913</requestid>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>1d35928cab36bd7b3269f17bda3f7af7</srcmd5>
+    <version>0.302</version>
+    <time>1290788663</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53913
+</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>f37acff8b372e436379857a5bb50b65c</srcmd5>
+    <version>0.303</version>
+    <time>1291303295</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54329 from user anicka
+</comment>
+    <requestid>54329</requestid>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>233a8e019b3beb026014b81857881ea6</srcmd5>
+    <version>0.303</version>
+    <time>1291303302</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54329
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>412321354d77b05d7a102c6ee56172ac</srcmd5>
+    <version>0.304</version>
+    <time>1296607073</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59257 from user vitezslav_cizek
+</comment>
+    <requestid>59257</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b376c1b6330111233d95a5ff29d1eb39</srcmd5>
+    <version>0.304</version>
+    <time>1296607086</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59257
+</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>b376c1b6330111233d95a5ff29d1eb39</srcmd5>
+    <version>0.304</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>b376c1b6330111233d95a5ff29d1eb39</srcmd5>
+    <version>0.304</version>
+    <time>1319182265</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>f160037924566fa3adb1f154de2bd7f9</srcmd5>
+    <version>0.304</version>
+    <time>1323193267</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>f160037924566fa3adb1f154de2bd7f9</srcmd5>
+    <version>0.304</version>
+    <time>1340183837</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>f160037924566fa3adb1f154de2bd7f9</srcmd5>
+    <version>0.304</version>
+    <time>1359109659</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>f160037924566fa3adb1f154de2bd7f9</srcmd5>
+    <version>0.304</version>
+    <time>1379663667</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>865cbedb895861c5175c523e6f3276d3</srcmd5>
+    <version>0.306</version>
+    <time>1381474826</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202758</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>865cbedb895861c5175c523e6f3276d3</srcmd5>
+    <version>0.306</version>
+    <time>1409302278</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0c076942bae750ff23299802d305abfc</srcmd5>
+    <version>0.401</version>
+    <time>1411220949</time>
+    <user>coolo</user>
+    <comment>- updated to 0.401
+     - Add README changes created by 'make dist' from the POD
+     - Rename test modules
+     - Test old/new schemes with .pm files
+     - Move old/new scheme tests from middle of other stuff to end
+     - Rename test packages to 8.3 unique
+ 
+ 0.400 Sun Aug 10 13:58:24 CEST 2014
+     - In addition to the package variables $inc, $libs and @typemaps, write an
+       'Inline' method to &lt;package&gt;::Install::Files for easier interoperability
+       with the Inline module.
+     - Accompany the 'Inline' method with a 'deps' method in
+       &lt;package&gt;::Install::Files in addition to the @deps package variable.
+     - Make ExtUtils::Depends-&gt;load use the 'Inline' and 'deps' methods by
+       default, falling back to the package variables if the methods are not
+       defined.
+     - Make the docs recommend the 'Inline' and 'deps' approach for creating
+       &lt;package&gt;::Install::Files manually, without
+       ExtUtils::Depends::save_config.
+ 
+ 0.309 Sat Aug  2 15:23:03 PDT 2014
+     - Depends.pm: use $DLEXT instead of $SO for library filename extensions
+     - MANIFEST: remove MYMETA.* files
+     - use DynaLoader::mod2fname if available
+     - Added Android support
+ 
+ 0.308 Sun May 18 16:22:11 PDT 2014
+     - Fix win32 test failure in t/02_save_load.t (closes RT#95301)
+ 
+ 0.307 Mon Apr 28 22:04:38 PDT 2014</comment>
+    <requestid>250227</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ae6baca082db15870bf5894dce26fefd</srcmd5>
+    <version>0.404</version>
+    <time>1423214614</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284220</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>dd4bff62d19cdb296d1d26418f0952bb</srcmd5>
+    <version>0.405</version>
+    <time>1449687059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347370</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>09a25968bb68cefb0302665c131fc84b</srcmd5>
+    <version>0.8000</version>
+    <time>1555053235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692957</requestid>
+  </revision>
+</revisionlist>

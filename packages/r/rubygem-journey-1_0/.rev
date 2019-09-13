@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>66f850abc5c7ea7ad38eeefc2e37e6aa</srcmd5>
+    <version>1.0.1</version>
+    <time>1332752803</time>
+    <user>coolo</user>
+    <comment>Rails-3.2 requirement</comment>
+    <requestid>110741</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>620ec1f85d4bfa05835fb879082b06a6</srcmd5>
+    <version>1.0.3</version>
+    <time>1334216977</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.3
+   * lib/journey/formatter.rb: reject non-truthy parameters parts.
+     Fixes rails ticket #4587 (forwarded request 112466 from coolo)</comment>
+    <requestid>113091</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5211a8a71be089b7af6a4161eb9abe61</srcmd5>
+    <version>1.0.3</version>
+    <time>1337578316</time>
+    <user>coolo</user>
+    <comment>- fix provides (forwarded request 120927 from coolo)</comment>
+    <requestid>121236</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5211a8a71be089b7af6a4161eb9abe61</srcmd5>
+    <version>1.0.3</version>
+    <time>1340184165</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b8903d1cdbeae0c7963a35ddfa5f3d7</srcmd5>
+    <version>1.0.4</version>
+    <time>1342426204</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>127935</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>486563d071a9bc0acda5bee350b6e743</srcmd5>
+    <version>1.0.4</version>
+    <time>1344066007</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>129755</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>486563d071a9bc0acda5bee350b6e743</srcmd5>
+    <version>1.0.4</version>
+    <time>1359110324</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>486563d071a9bc0acda5bee350b6e743</srcmd5>
+    <version>1.0.4</version>
+    <time>1379664533</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>486563d071a9bc0acda5bee350b6e743</srcmd5>
+    <version>1.0.4</version>
+    <time>1409303241</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>ab0b477724654829cf4a0666679fa2f6</srcmd5>
+    <version>1.0.4</version>
+    <time>1414140493</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>258188</requestid>
+  </revision>
+</revisionlist>

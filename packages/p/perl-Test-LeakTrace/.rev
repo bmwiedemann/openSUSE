@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fff4e7324984f44e5f1af6c797dcb49a</srcmd5>
+    <version>0.10</version>
+    <time>1289421246</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52569 from user coolo
+</comment>
+    <requestid>52569</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>61f8bf991ef9d225c76c452a20922dad</srcmd5>
+    <version>0.10</version>
+    <time>1289421251</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52569
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c2c2c8a6d0aaa09616af2e5c14b8a09b</srcmd5>
+    <version>0.10</version>
+    <time>1291584068</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54661 from user coolo
+</comment>
+    <requestid>54661</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c5e3f8ef9ae011389d647208c2f23caa</srcmd5>
+    <version>0.10</version>
+    <time>1291584074</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54661
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>c5e3f8ef9ae011389d647208c2f23caa</srcmd5>
+    <version>0.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>414c1a03d21915e75fb263a2fe8d2f9d</srcmd5>
+    <version>0.10</version>
+    <time>1301572007</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65613 from user coolo
+</comment>
+    <requestid>65613</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>cd54e211a6ed77b807f88605a44454e1</srcmd5>
+    <version>0.10</version>
+    <time>1301572021</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65613
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bd1a7b3352d85ad601df0e928cf276b8</srcmd5>
+    <version>0.13</version>
+    <time>1306841799</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>72102</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1e80955fe71f520280f31117c9980477</srcmd5>
+    <version>0.13</version>
+    <time>1306841809</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72102
+</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>1e80955fe71f520280f31117c9980477</srcmd5>
+    <version>0.13</version>
+    <time>1319182311</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>456074dd01b0035b624827820ba3ab25</srcmd5>
+    <version>0.14</version>
+    <time>1321876048</time>
+    <user>coolo</user>
+    <comment>- update to 0.14
+    - Fix Test::Valgrind failures (thanks to @shohex)</comment>
+    <requestid>92773</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>77b18e6d32751e4c1f1df59c87141e95</srcmd5>
+    <version>0.14</version>
+    <time>1323193695</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>77b18e6d32751e4c1f1df59c87141e95</srcmd5>
+    <version>0.14</version>
+    <time>1340183931</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>77b18e6d32751e4c1f1df59c87141e95</srcmd5>
+    <version>0.14</version>
+    <time>1359109815</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>77b18e6d32751e4c1f1df59c87141e95</srcmd5>
+    <version>0.14</version>
+    <time>1379663872</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>77b18e6d32751e4c1f1df59c87141e95</srcmd5>
+    <version>0.14</version>
+    <time>1409302515</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>aeb569fd259cd046f7957888ec214c5a</srcmd5>
+    <version>0.15</version>
+    <time>1429108025</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296693</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b34d627ffe5fac090ec816ec3c84b817</srcmd5>
+    <version>0.16</version>
+    <time>1498120500</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504928</requestid>
+  </revision>
+</revisionlist>

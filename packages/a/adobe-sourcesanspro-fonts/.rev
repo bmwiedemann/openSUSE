@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a9aa770c8c896c9dac19ed45946e7b5a</srcmd5>
+    <version>1.038</version>
+    <time>1351869059</time>
+    <user>coolo</user>
+    <comment>New font package, similar to adobe-sourcecodepro-fonts. Will replace SourceSansPro-fonts due to naming conventions, see FATE #313035.</comment>
+    <requestid>139550</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a9aa770c8c896c9dac19ed45946e7b5a</srcmd5>
+    <version>1.038</version>
+    <time>1359108641</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>035675b9564803e109b6212bc398a575</srcmd5>
+    <version>1.040</version>
+    <time>1365617543</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.040
+- improvement: Adds Zero_Width_Non_Breaking_Space character (ZWNBS, U+FEFF) to address GitHub issue #20 (forwarded request 163384 from nawalter)</comment>
+    <requestid>163385</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e23e826fd226959418c58a89658eacd</srcmd5>
+    <version>1.050</version>
+    <time>1367932228</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.050
+  * Coordinated the vertical alignment of the tops of the letters
+    across all the styles at the various sizes. (forwarded request 174651 from Dmitry_R)</comment>
+    <requestid>174667</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>91d2ecc5580a9c615cc13eb17d517aa4</srcmd5>
+    <version>1.050</version>
+    <time>1370877065</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>178300</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>91d2ecc5580a9c615cc13eb17d517aa4</srcmd5>
+    <version>1.050</version>
+    <time>1379661951</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4a528fb41747289706e78200a98ce8a3</srcmd5>
+    <version>2.010</version>
+    <time>1404973055</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239970</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4a528fb41747289706e78200a98ce8a3</srcmd5>
+    <version>2.010</version>
+    <time>1409300472</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>70ee53faaa484105c28edfe880e82338</srcmd5>
+    <version>2.020</version>
+    <time>1444636952</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>337315</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>caa71efb7255904630e250cb6a506726</srcmd5>
+    <version>2.045</version>
+    <time>1560337326</time>
+    <user>dimstar_suse</user>
+    <comment>- Update source url
+- Update to version 2.045 (Roman) and 1.095 (Italic):
+  * Bugfixes (too many to name here)
+- Run through spec cleaner
+- Only package the (better) otf fonts (following the Source Code
+  Pro package)
+</comment>
+    <requestid>706159</requestid>
+  </revision>
+</revisionlist>

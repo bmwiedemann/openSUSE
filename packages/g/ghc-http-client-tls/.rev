@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e1f44cba692d2d5a30b19cd104b2b31</srcmd5>
+    <version>0.2.2</version>
+    <time>1432190225</time>
+    <user>coolo</user>
+    <comment>Http-client backend using the connection package and tls library</comment>
+    <requestid>307876</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cf03e7f1257fabe31709399689da810b</srcmd5>
+    <version>0.2.4</version>
+    <time>1461335103</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.4
+* Global manager
+
+- update to 0.2.3
+* Exception catching cleanup (forwarded request 390426 from mimi_vx)</comment>
+    <requestid>390427</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d7b22ae7bf92dc2adbf5ba95553d20e6</srcmd5>
+    <version>0.2.4.1</version>
+    <time>1466814058</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.4.1 (forwarded request 403548 from mimi_vx)</comment>
+    <requestid>403549</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>eac3abef251153a2d5252f7cb4c65e92</srcmd5>
+    <version>0.2.4.1</version>
+    <time>1468999142</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411376</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>37083f178c64decef5db2f8fa09dace4</srcmd5>
+    <version>0.2.4.1</version>
+    <time>1476780061</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434622</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b2fae1ad9d3ddceadc9403614144cb99</srcmd5>
+    <version>0.3.4</version>
+    <time>1490026042</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477452</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>725b5be31bf67cd5c505429754cbf76e</srcmd5>
+    <version>0.3.4.1</version>
+    <time>1494442173</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491476</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>759d96496cda3c01c5bc5480e74021c4</srcmd5>
+    <version>0.3.4.2</version>
+    <time>1496534262</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>499708</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c0ba378474505276e2cee5833ec56654</srcmd5>
+    <version>0.3.5</version>
+    <time>1498120673</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504078</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c6d4a74766a4a0557b2ea18b0fdb4421</srcmd5>
+    <version>0.3.5.1</version>
+    <time>1499292063</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>506995</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>52ddeab0cc1fd3ce6a5f73292d680e9f</srcmd5>
+    <version>0.3.5.1</version>
+    <time>1505505034</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524817</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f77841f27565100414dc96acff018a40</srcmd5>
+    <version>0.3.5.3</version>
+    <time>1527674989</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-http-client-tls to the latest version.</comment>
+    <requestid>607821</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1f0fc4d5b0ce931cdd3f3494c9a6d584</srcmd5>
+    <version>0.3.5.3</version>
+    <time>1532161205</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 0.2.4.1
+- initial commit</comment>
+    <requestid>623794</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>1ac6792f074bdf70bb296207c2d07ec1</srcmd5>
+    <version>0.3.5.3</version>
+    <time>1540448786</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643407</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>a643d9082340a4740bbec7e7469e2f2e</srcmd5>
+    <version>0.3.5.3</version>
+    <time>1560971451</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710629</requestid>
+  </revision>
+</revisionlist>

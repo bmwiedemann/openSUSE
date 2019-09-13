@@ -1,0 +1,197 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a9730004ab5f121311240f45438611c2</srcmd5>
+    <version>1.0.1git20120911</version>
+    <time>1349853517</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>136085</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b52d177bf0b3a74beb0d5fb85acce024</srcmd5>
+    <version>1.0.1git20120911</version>
+    <time>1357648475</time>
+    <user>coolo</user>
+    <comment>Add runtime dependence: python-gtk (forwarded request 147470 from hillwood)</comment>
+    <requestid>147474</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b52d177bf0b3a74beb0d5fb85acce024</srcmd5>
+    <version>1.0.1git20120911</version>
+    <time>1359108805</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>a430e273221c4825f43f7f7f14b0bfab</srcmd5>
+    <version>1.0.1git20120911</version>
+    <time>1363899745</time>
+    <user>coolo</user>
+    <comment>- Bug fix
+  
+  * fix bnc#808258 (forwarded request 159979 from douglarek)</comment>
+    <requestid>160182</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>a430e273221c4825f43f7f7f14b0bfab</srcmd5>
+    <version>1.0.1git20120911</version>
+    <time>1379662216</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f7d145c4c59830ee9ee75b5e778faa14</srcmd5>
+    <version>2.0git20130802</version>
+    <time>1380171810</time>
+    <user>coolo</user>
+    <comment> (forwarded request 196110 from hillwood)</comment>
+    <requestid>196111</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bd96653635220d46ca992d34e1ce685d</srcmd5>
+    <version>2.0git20140505</version>
+    <time>1401184784</time>
+    <user>coolo</user>
+    <comment>- Update to 2.0git20140505.
+  Feature update. (forwarded request 235386 from hillwood)</comment>
+    <requestid>235394</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0fd9500e293408c3971119285e0583e9</srcmd5>
+    <version>2.0git20140505</version>
+    <time>1404996910</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239691</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>0fd9500e293408c3971119285e0583e9</srcmd5>
+    <version>2.0git20140505</version>
+    <time>1409300752</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6bd5c3c6a93e602a850db6652157358b</srcmd5>
+    <version>2.0git20150204</version>
+    <time>1424255980</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286503</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d627142b11e69ecf98252eff4d856f7c</srcmd5>
+    <version>2.90.0+git20150617.bb7889c</version>
+    <time>1441173228</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>325793</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>0ae0b198e2a1e158975d10979991f25a</srcmd5>
+    <version>2.90.0+git20150617.bb7889c</version>
+    <time>1447454164</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344065</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0541691a23dc04502dbbc409a986cc72</srcmd5>
+    <version>3.0.1</version>
+    <time>1489759608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>479736</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9d93b436b364e36845c3e5b5c43a8532</srcmd5>
+    <version>3.1.7.2</version>
+    <time>1514841439</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545677</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>3290e3cdf0c7d1ac7ac7990f33da9bc3</srcmd5>
+    <version>3.1.7.2</version>
+    <time>1518281925</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build for Leap 15.0
+  * Set BuildRequires tag for python. (forwarded request 574686 from hillwood)</comment>
+    <requestid>574689</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>7c88e3aa1dd1a94d3ecab2b4c4511270</srcmd5>
+    <version>3.1.7.2</version>
+    <time>1522225954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591498</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cc264066ff116a9b7c296ab5f1a0fed9</srcmd5>
+    <version>3.1.15</version>
+    <time>1553611140</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 3.1.15
+  * Fix wrong path when last import path is empty
+  * Fix avoid using dpkg-parsechangelog
+  * Fix last opened path check
+  * Fix avoid set a empty path to QFileDialog
+  * support X-Deepin-Vendor
+  * support the recent file spec
+  * support sliber animation
+  * auto resize progress
+  * hide custom sort from menu
+  * keep sound hint when clicked
+  * sync progress on close
+  * use DThemeManger
+  * add manual id
+  * add VERSION configure option to define app version
+- Remove useless BuildRequires tags.
+
+- Update version to  3.1.7.2
+  * Fix avoid set a empty path to QFileDialog
+  * support X-Deepin-Vendor
+  * support the recent file spec
+  * Fix pull tx failed
+  * Fix write datebase error
+  * Fix extrend close button area
+  * disable keyboardSearch
+  * Fix refactor
+  * Fix update mpris status
+  * Fix dock not support group
+  * fav status disappear
+  * trash file with dde-file-manager dbus in flatpak (forwarded request 681582 from hillwood)</comment>
+    <requestid>681583</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d54d4a2e8f85c8c091b6fd5330ab8355</srcmd5>
+    <version>3.1.15</version>
+    <time>1554372541</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 691416 from hillwood)</comment>
+    <requestid>691417</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5d83a068cf6bfec54730c77db14b3887</srcmd5>
+    <version>3.1.17.1</version>
+    <time>1556622179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 3.1.17.1
+  * Fix shuffle is not random
+  * do init MPRIS first
+  * Update missing i18n text in settings dialog
+  * chore: auto pull translation files from transifex
+  * chore: correct a typo (forwarded request 697533 from hillwood)</comment>
+    <requestid>697663</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>30ed4eef30d1d64c51f6cb92719a66c8</srcmd5>
+    <version>3.1.18</version>
+    <time>1560760463</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 710100 from hillwood)</comment>
+    <requestid>710175</requestid>
+  </revision>
+</revisionlist>

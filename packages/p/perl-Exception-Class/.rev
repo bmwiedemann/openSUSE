@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24b14885ada56ec7a4b3e37aa972abea</srcmd5>
+    <version>1.29</version>
+    <time>1292763619</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 55215 from user rjschwei
+</comment>
+    <requestid>55215</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>04ca13b891ba4af174a86bdb93d4ce5e</srcmd5>
+    <version>1.29</version>
+    <time>1292763627</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 55215
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>04ca13b891ba4af174a86bdb93d4ce5e</srcmd5>
+    <version>1.29</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>04ca13b891ba4af174a86bdb93d4ce5e</srcmd5>
+    <version>1.29</version>
+    <time>1319182264</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>642b42c5ebce86ac3d44b792823b07c3</srcmd5>
+    <version>1.32</version>
+    <time>1321886939</time>
+    <user>coolo</user>
+    <comment>- update to 1.32
+ - Removed Test::Most dependency, which was causing a circular dependency
+   chain. Reported by Burak Gursoy. RT #58889.
+ - Made it possible to use Exception::Class::Base without loading
+   Exception::Class. Reported by Alex Peters. RT #57269.
+ - Added the ability to create light weight exceptions, which don't record a
+   stack trace or any other context info (time, pid, etc.). This is done by
+   setting $class-&gt;NoContextInfo to a true value for the exception class. Based
+   on a patch by Graham Barr. RT #54826.
+
+- use original .tar.gz</comment>
+    <requestid>92722</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>68a2bf3dc34a681d022f63bd038ef9eb</srcmd5>
+    <version>1.32</version>
+    <time>1324547659</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>97158</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>68a2bf3dc34a681d022f63bd038ef9eb</srcmd5>
+    <version>1.32</version>
+    <time>1340183836</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>68a2bf3dc34a681d022f63bd038ef9eb</srcmd5>
+    <version>1.32</version>
+    <time>1359109657</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>57a9871b460649c9b6cdd7896afdf8f3</srcmd5>
+    <version>1.37</version>
+    <time>1369641413</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176072</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>57a9871b460649c9b6cdd7896afdf8f3</srcmd5>
+    <version>1.37</version>
+    <time>1379663663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>57a9871b460649c9b6cdd7896afdf8f3</srcmd5>
+    <version>1.37</version>
+    <time>1409302274</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>131fea368c4cb055d3ad16b709595d6e</srcmd5>
+    <version>1.39</version>
+    <time>1429948332</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>297300</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f100d09bd77b2fb04b7d8ffda1a5df65</srcmd5>
+    <version>1.40</version>
+    <time>1456434097</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358291</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f4ca077b1a4c7422a58b81c0e84e77b8</srcmd5>
+    <version>1.41</version>
+    <time>1481391008</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445083</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4036190cb0b9c0222f7eab28cb9a95f0</srcmd5>
+    <version>1.42</version>
+    <time>1484132728</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449579</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6e2e1158669c19cf9d096b722c6a42df</srcmd5>
+    <version>1.43</version>
+    <time>1500274870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509387</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5426319370a637b343f6fc7092ea3451</srcmd5>
+    <version>1.44</version>
+    <time>1513162607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555882</requestid>
+  </revision>
+</revisionlist>

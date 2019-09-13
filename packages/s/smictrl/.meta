@@ -1,0 +1,6 @@
+<package name="smictrl" project="openSUSE:Factory">
+  <title>SMI Register Manipulation Tool</title>
+  <description>smictrl is able to manipulate various SMI registers on various chipsets
+(by today only Intel chipsets).</description>
+  <devel project="devel:LLDC" package="smictrl"/>
+</package>

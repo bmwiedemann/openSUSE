@@ -1,0 +1,5 @@
+<package name="alsa-tools" project="openSUSE:Factory">
+  <title>Various ALSA Tools</title>
+  <description>Various tools for ALSA including DSP loaders.</description>
+  <devel project="multimedia:libs" package="alsa-tools"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-azure-agent" project="openSUSE:Factory">
+  <title>Initialization of Azure and Azure-stack instances</title>
+  <description>Handle the initialization of instances running in Microsoft Azure public cloud or Microsoft Azure Stack private cloud</description>
+  <devel project="Cloud:Tools" package="python-azure-agent"/>
+</package>

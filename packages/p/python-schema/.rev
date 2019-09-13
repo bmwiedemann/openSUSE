@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>19b7742039f5eaad9f4f4c3a14f07f71</srcmd5>
+    <version>0.6.7</version>
+    <time>1526463758</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-experimentator</comment>
+    <requestid>607667</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eb199adfd3f674934c94a33045d8a3a3</srcmd5>
+    <version>0.6.7</version>
+    <time>1545648218</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659658</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4e6462f01df9984200ae3cf1da796b9a</srcmd5>
+    <version>0.7.0</version>
+    <time>1553636096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688869</requestid>
+  </revision>
+</revisionlist>

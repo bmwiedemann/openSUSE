@@ -1,0 +1,7 @@
+<package name="mingetty" project="openSUSE:Factory">
+  <title>Minimal Getty for Virtual Consoles Only</title>
+  <description>The mingetty program is a lightweight, minimalistic getty program for
+use on virtual consoles only. Mingetty is not suitable for serial lines
+(you should use the mgetty program for this purpose).</description>
+  <devel project="Base:System" package="mingetty"/>
+</package>

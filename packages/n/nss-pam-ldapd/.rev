@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae904c6f015e976368356219591ea5d5</srcmd5>
+    <version>0.9.6</version>
+    <time>1466326166</time>
+    <user>dimstar_suse</user>
+    <comment>good package and well perceived by many users</comment>
+    <requestid>402444</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>07af3bf856f7e59440be3f3e3df7eb09</srcmd5>
+    <version>0.9.6</version>
+    <time>1466814131</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403886</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>93fe387aa6926ec5e8bd9084c69240a5</srcmd5>
+    <version>0.9.7</version>
+    <time>1473548092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>426107</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8bc26b521703da42c1a6a8a7c1d47b52</srcmd5>
+    <version>0.9.7</version>
+    <time>1489482392</time>
+    <user>dimstar_suse</user>
+    <comment>drop SysV support / %insserv_cleanup, it breaks the package build</comment>
+    <requestid>479141</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>139057596c68cb859a2689acdb73c44b</srcmd5>
+    <version>0.9.8</version>
+    <time>1498639015</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506483</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f10ba70190d8bc5eaa84f6bbbf024921</srcmd5>
+    <version>0.9.9</version>
+    <time>1520778257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584637</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ca0d3433a803821ac505d7508074e082</srcmd5>
+    <version>0.9.10</version>
+    <time>1536094594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.10:
+  * add FreeBSD netgroup support (thanks HWLin and Mango Yen)
+  * make password expiry messages correct and consistent (thanks Têko Mihinto)
+  * add domain variable for use in pam_authz_search
+  * allow logging longer lines
+  * create nslcd socket after dropping privileges to avoid slow start-ups</comment>
+    <requestid>632824</requestid>
+  </revision>
+</revisionlist>

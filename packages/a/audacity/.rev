@@ -1,0 +1,779 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9f6d79c686af7f1142f9dea560c505d7</srcmd5>
+    <version>1.3.3</version>
+    <time>1180640563</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>31f7107dd37c06328b0b3929ec266050</srcmd5>
+    <version>1.3.3</version>
+    <time>1181146197</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="9">
+    <srcmd5>d2fa548a1741b77ea666f52d138e73f4</srcmd5>
+    <version>1.3.3</version>
+    <time>1182447915</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="21">
+    <srcmd5>63bb1b8fec4aedc6de90a4341f5a7506</srcmd5>
+    <version>1.3.3</version>
+    <time>1186092377</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="43">
+    <srcmd5>37301248f2ca7a6ada9bd634aa8bf286</srcmd5>
+    <version>1.3.3</version>
+    <time>1190220691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>700ccd907c93d7de651789532a5178c0</srcmd5>
+    <version>1.3.4</version>
+    <time>1200656126</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>c4737fd3850beb9bf2d6d6fd342a1467</srcmd5>
+    <version>1.3.4</version>
+    <time>1201278541</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="34">
+    <srcmd5>20471b03384ed2a7d8fa0864b07dc7c0</srcmd5>
+    <version>1.3.4</version>
+    <time>1207211799</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="51">
+    <srcmd5>d835a4a31266379538ad049df8da83c4</srcmd5>
+    <version>1.3.4</version>
+    <time>1210936711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>061de65abe14445a550236adb73ee6ca</srcmd5>
+    <version>1.3.5</version>
+    <time>1214181403</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="49">
+    <srcmd5>459f6b936835561a1280ab7c4e2215b5</srcmd5>
+    <version>1.3.5</version>
+    <time>1227190079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>485b4568afffaf97faa031775f645b46</srcmd5>
+    <version>1.3.6</version>
+    <time>1231464207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>51e5824d02bba4fc336d006a85d9dfe7</srcmd5>
+    <version>1.3.6</version>
+    <time>1231778920</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d1ce6c9afe716c1d64940d0a167b8f79</srcmd5>
+    <version>1.3.7</version>
+    <time>1233697180</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a304bfe7def86d6463ad2f6ef182f53a</srcmd5>
+    <version>1.3.7</version>
+    <time>1239729037</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>18b07a8a2b8eba928a68fca84e3646df</srcmd5>
+    <version>1.3.7</version>
+    <time>1242781844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>278425baad43acef59aa38d4e32b7073</srcmd5>
+    <version>1.3.7</version>
+    <time>1242815461</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>ecae6f6f94f0a0175321a1cf5955d08c</srcmd5>
+    <version>1.3.7</version>
+    <time>1243554342</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>5b4f998c2549163def4a15013786ab58</srcmd5>
+    <version>1.3.7</version>
+    <time>1244242580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8eb58453231c90e52939c69c49852b98</srcmd5>
+    <version>1.3.8</version>
+    <time>1248824250</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ed7ae7b4dbabc08bb215fdbf4eb4f51d</srcmd5>
+    <version>1.3.8</version>
+    <time>1249917591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>ed7ae7b4dbabc08bb215fdbf4eb4f51d</srcmd5>
+    <version>1.3.8</version>
+    <time>1249917591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f78b8343091d7738dd22e0150be4d520</srcmd5>
+    <version>1.3.9</version>
+    <time>1258390710</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/audacity based on submit request 24166 from user mseben
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8601fab2eaf1fdaf178ec6484308c1d4</srcmd5>
+    <version>1.3.10</version>
+    <time>1260548600</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/audacity based on submit request 26070 from user mseben
+</comment>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>a27894919a5f3bb4e895f898d125d15f</srcmd5>
+    <version>1.3.10</version>
+    <time>1261440659</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/audacity based on submit request 27370 from user mseben
+</comment>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>f2def82977a1efd9db58592bfaf36806</srcmd5>
+    <version>1.3.10</version>
+    <time>1263308415</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/audacity based on submit request 29120 from user mseben
+</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1447de10a90ee30b5b809c09f9817918</srcmd5>
+    <version>1.3.11</version>
+    <time>1264636922</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/audacity based on submit request 30442 from user mseben
+</comment>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>aa0a7e4d23dee1e66b484dcf9c9a6319</srcmd5>
+    <version>1.3.11</version>
+    <time>1268700692</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/audacity based on submit request 34846 from user coolo
+</comment>
+    <requestid>34846</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>24415d4f98c8bd0899a3fa1bc13b5a82</srcmd5>
+    <version>1.3.11</version>
+    <time>1268922953</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4c0eee8340cc1c764dbf4f1c80b207dc</srcmd5>
+    <version>1.3.12</version>
+    <time>1271368224</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/audacity based on submit request 37849 from user plater
+</comment>
+    <requestid>37849</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>12e249f3a917fea85a7ecc138782f9cc</srcmd5>
+    <version>1.3.12</version>
+    <time>1271629411</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/audacity based on submit request 38104 from user plater
+</comment>
+    <requestid>38104</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>f38abe2dc69437e413f87130047a914d</srcmd5>
+    <version>1.3.12</version>
+    <time>1275323152</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/audacity based on submit request 40720 from user prusnak
+</comment>
+    <requestid>40720</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>f38abe2dc69437e413f87130047a914d</srcmd5>
+    <version>1.3.12</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>f38abe2dc69437e413f87130047a914d</srcmd5>
+    <version>1.3.12</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>8fff90db4c594e40cbcc9c12ceac1425</srcmd5>
+    <version>1.3.12</version>
+    <time>1280957705</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/audacity based on submit request 44505 from user coolo
+</comment>
+    <requestid>44505</requestid>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>458d0c09b2433960faa2ca2eb15ee618</srcmd5>
+    <version>1.3.12</version>
+    <time>1286807836</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/audacity based on submit request 50181 from user coolo
+</comment>
+    <requestid>50181</requestid>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>cc04a531f8900387aa64a51e31c32903</srcmd5>
+    <version>1.3.12</version>
+    <time>1289532377</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="38" vrev="9">
+    <srcmd5>458d0c09b2433960faa2ca2eb15ee618</srcmd5>
+    <version>1.3.12</version>
+    <time>1289569341</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="39" vrev="10">
+    <srcmd5>7725d130b291429b6da10154b2c22f41</srcmd5>
+    <version>1.3.12</version>
+    <time>1295311037</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58573 from user plater
+</comment>
+    <requestid>58573</requestid>
+  </revision>
+  <revision rev="40" vrev="11">
+    <srcmd5>4ba6fd1ebfeaad8b7b6e9a61b6944230</srcmd5>
+    <version>1.3.12</version>
+    <time>1295311047</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58573
+</comment>
+  </revision>
+  <revision rev="41" vrev="14">
+    <srcmd5>4ba6fd1ebfeaad8b7b6e9a61b6944230</srcmd5>
+    <version>1.3.12</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3ce6fde3f1c46ce55f1ad728ac631ffe</srcmd5>
+    <version>1.3.13</version>
+    <time>1303381887</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67951 from user licensedigger
+</comment>
+    <requestid>67951</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>f29b6b30dc73164e81d848246ea782c9</srcmd5>
+    <version>1.3.13</version>
+    <time>1314023179</time>
+    <user>saschpe</user>
+    <comment>- Update Source tag for the new _service file-less Factory policy
+- Add audacity-1.3.13-ffmpeg.patch to compile with latest ffmpeg (forwarded request 79371 from RedDwarf)</comment>
+    <requestid>79415</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>c2f496030da5bf96c09ae66da2835e19</srcmd5>
+    <version>1.3.13</version>
+    <time>1314023188</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79415
+</comment>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>6711b6a2b4326411e125ffa565426d5c</srcmd5>
+    <version>1.3.13</version>
+    <time>1315410297</time>
+    <user>saschpe</user>
+    <comment>added patch audacity-1.3.13-div_by_zero_fix.patch to fix crash</comment>
+    <requestid>81187</requestid>
+  </revision>
+  <revision rev="46" vrev="5">
+    <srcmd5>0b2885406758fc8a1730b36977ad423a</srcmd5>
+    <version>1.3.13</version>
+    <time>1315410306</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81187
+</comment>
+  </revision>
+  <revision rev="47" vrev="6">
+    <srcmd5>0c1f307607f4d90cefe24753cf370616</srcmd5>
+    <version>1.3.13</version>
+    <time>1316616734</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82851 from jengelh)</comment>
+    <requestid>83971</requestid>
+  </revision>
+  <revision rev="48" vrev="8">
+    <srcmd5>0c1f307607f4d90cefe24753cf370616</srcmd5>
+    <version>1.3.13</version>
+    <time>1319181779</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="49" vrev="9">
+    <srcmd5>3f74e81879fa0eef594d277ddb5091ae</srcmd5>
+    <version>1.3.13</version>
+    <time>1323190783</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>ed3c37d70e2897302c1944836e0c5355</srcmd5>
+    <version>1.3.14</version>
+    <time>1325658207</time>
+    <user>coolo</user>
+    <comment>update to 1.3.14 (forwarded request 97213 from drcux)</comment>
+    <requestid>98617</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>6fa27210c84a551038da86c3cd8719a1</srcmd5>
+    <version>2.0.0</version>
+    <time>1332239140</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.0.0
+  * Bug fixes for:
+   - Interface:
+     - Fixed playback speed and synchronization problems when dragging
+       clips or tracks between tracks having different sample rates.
+     - Imports and Exports:
+       - Fixed crashes when changing the sample format of read-directly WAV
+         or AIFF files using the Track Drop-Down Menu.
+       - Fixed a crash importing MP3 files that had duplicate metadata tags
+         (this is a bug in current libsndfile which has been patched in
+         Audacity; MP3 files mislabeled as WAV which have duplicate tags
+         will still crash Audacity on Linux if Audacity has been compiled
+         against an affected version of system libsndfile).
+     - Fixed an issue where excessively high or corrupted sample values in
+       the audio could corrupt exports from the start of the problem for
+       the rest of the file, and could corrupt the rest of the project.
+    - Fixed Audacity could not be compiled against FFmpeg
+      0.7.x and 0.8.x.
+   - Effects and Analysis:
+     - Fixed crash on launch when using &quot;Ambisonic Decoders (PC)&quot; VST
+       plug-ins and other plug-ins that enable additional floating point
+       exceptions.
+     - Fixed Plot Spectrum background could be transparent on some machines.
+     - Bug fixes for Click Track, High Pass, Low Pass and Vocal Remover.
+     - Chirp, Tone and Silence generators now remember their settings.
+   - Other miscellaneous bug fixes.
+  * Changes and Improvements:
+   - New Interface preference to show the track name in the display (this
+     is off by default).
+   - Longer default Playback preference for effects preview and preview (forwarded request 109608 from RedDwarf)</comment>
+    <requestid>109636</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>6fa27210c84a551038da86c3cd8719a1</srcmd5>
+    <version>2.0.0</version>
+    <time>1340183186</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>966708923edb3dacf1f70b5340840aeb</srcmd5>
+    <version>2.0.2</version>
+    <time>1346691287</time>
+    <user>namtrac</user>
+    <comment>- Update to version 2.0.2
+  * A significant bug that caused clicks on split lines has been fixed
+  * There are improvements to several toolbars and to some Nyquist effects
+- Update to version 2.0.1
+  * Keyboard shortcuts can now be allocated to effects
+  * Nyquist plug-ins can be added to Chains
+- Run spec-cleaner
+- Use pkgconfig() style BuildRequires
+- Remove conditionals for unsupported openSUSE versions
+- Remove taglib build dependency. Not used any more
+- Remove libsamplerate dependency. Upstream prefers included libresample
+- Remove custom icon. Upstream already has a transparent version.
+- Add audacity-2.0.2-docdir.patch patch
+- Don't delete MIME type icon. Instead put it in %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-audacity-project.xpm
+- Add %icon_theme_cache_post, %mime_database_post and %desktop_database_post to %post
+- Recommend libmp3lame0, libavformat52, libavcodec52 and libavutil50 (forwarded request 132109 from RedDwarf)</comment>
+    <requestid>132139</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>61f8308f5a1081d9d59bb3c448c0676a</srcmd5>
+    <version>2.0.2</version>
+    <time>1351090921</time>
+    <user>coolo</user>
+    <comment>- explicitly disable SSE on non-x86 architectures (fixes ARM,
+  probably others) (forwarded request 139023 from uli_suse)</comment>
+    <requestid>139119</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>61f8308f5a1081d9d59bb3c448c0676a</srcmd5>
+    <version>2.0.2</version>
+    <time>1359108675</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>d6ef49ee785bdc1720b034540ddaa60e</srcmd5>
+    <version>2.0.3</version>
+    <time>1364808497</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.0.3
+  Bug fixes
+  * General
+    - Crash using Undo whilst time-shifting a track.
+    - Crash using Repair if the selection extended into an empty track.
+    - Export Multiple didn't prevent export if there was no audio or all
+      audio was muted. This allowed export of small invalid files.
+  * Time Track
+    - Loop Play of a speeded-up track inserted silence.
+    - Playback and rendering was significantly inaccurate, creating audible
+      and visual glitches.
+  * Accessibility
+    - The mnemonics character &quot;&amp;&quot; was read out by screen readers in most of
+       the Preferences choices.
+    - NVDA did not read static text in most dialogs. Text can now be read by
+      using INSERT + B.
+    - JAWS and Window-eyes misread the &quot;Duration&quot; control in Silence
+      Generator.
+    - Toolbar buttons could not be pressed by ENTER
+    - Other interface bug fixes.
+  Changes and Improvements
+  * Resampling
+    - The SoX Resampler library (libsoxr) has replaced libresample in
+      Audacity releases, offering both higher quality and greater speed.
+  * Time Tracks new features
+    - &quot;Set Range&quot; now changes only the range of the Time Track, preserving
+      the pitch/speed set by any existing warp points.
+    - Vertical scale added with options for linear and logarithmic display
+      and interpolation.
+    - Upper and lower speed limits will now be remembered when saving and (forwarded request 161716 from kwk)</comment>
+    <requestid>161871</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>d6ef49ee785bdc1720b034540ddaa60e</srcmd5>
+    <version>2.0.3</version>
+    <time>1379662002</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>8798cf56224c3ff332aea918a64feabe</srcmd5>
+    <version>2.0.4</version>
+    <time>1380171767</time>
+    <user>coolo</user>
+    <comment>- Update to 2.0.4:
+  * New &quot;Reverb&quot; effect to replace GVerb, based on the original &quot;Freeverb&quot;.
+  * New View &gt; Go to Selection Start and Go to Selection End commands.
+  * New Tracks &gt; Align End to End command to append existing tracks to each other.
+  * Change Tempo now supports fractional BPM.
+  * Plot Spectrum now supports FFT sizes up to 65536.
+  * WAV files now support &quot;Album Title&quot;, &quot;Track Number&quot; and &quot;Genre&quot;
+    LIST INFO tags and also support ID3 tags.
+  * Handle a bug in older iPods or some OS X applications that cause them
+    to refuse AIFF files whose metadata contains an uneven number of characters,
+  * CTRL + ALT can now be used to smooth samples in Draw Tool.
+  * Modules Preferences replaced with a dialog on launch of Audacity enabling
+    you to choose which modules to load.
+  * Many bug fixes. (forwarded request 199950 from Fisiu)</comment>
+    <requestid>200575</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>12d29ca309920e7cebc223dbefdedebc</srcmd5>
+    <version>2.0.5</version>
+    <time>1393309927</time>
+    <user>coolo</user>
+    <comment>- Update to 2.0.5:
+  * Audacity 2.0.4 to hang or the computer to crash. WDM-KS has been removed from Audacity 2.0.5 while we work on safely enabling this host.
+  * You can now navigate through an effect or other dialog using keyboard TAB.
+  * See more at http://wiki.audacityteam.org/wiki/Release_Notes_2.0.5 (forwarded request 223485 from DarkSS)</comment>
+    <requestid>223731</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>12d29ca309920e7cebc223dbefdedebc</srcmd5>
+    <version>2.0.5</version>
+    <time>1409300528</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>1b5f4bbfee2f08fe9c0678cb25539c62</srcmd5>
+    <version>2.0.6</version>
+    <time>1414744790</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258952</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>2c3f58fa9f1995669d272fa540f8e657</srcmd5>
+    <version>2.0.6</version>
+    <time>1425566624</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289339</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>5ae0b7882c67246f564651601351c033</srcmd5>
+    <version>2.1.0</version>
+    <time>1428652279</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294744</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>621f2a4a93e0857677cb58bb4e519fc4</srcmd5>
+    <version>2.1.0</version>
+    <time>1436112185</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315011</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>1a9b10c036408cbc22ae407d3ccbdd45</srcmd5>
+    <version>2.1.1</version>
+    <time>1437478060</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317634</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>dd155b8b3b2e3931c90967929b80a36b</srcmd5>
+    <version>2.1.1</version>
+    <time>1443336004</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333454</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>fc48d7b1940908bc8eaa6cac932a9fcb</srcmd5>
+    <version>2.1.1</version>
+    <time>1445860142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>340828</requestid>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>476c224e4d0b268d40033cea4ae29673</srcmd5>
+    <version>2.1.1</version>
+    <time>1461855395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>391493</requestid>
+  </revision>
+  <revision rev="69" vrev="5">
+    <srcmd5>c0b19af1e0e07d3cd692e40a2317a76d</srcmd5>
+    <version>2.1.1</version>
+    <time>1466413606</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402895</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>531a2237c83463ae66ec8e01a29ffa75</srcmd5>
+    <version>2.1.2</version>
+    <time>1467705190</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>406665</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>bea2b2f9df25429a1cdba0061f04de5e</srcmd5>
+    <version>2.1.3</version>
+    <time>1490026225</time>
+    <user>dimstar_suse</user>
+    <comment>Fix patches</comment>
+    <requestid>481032</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>9b66d72c779b888e2ac2a722ebf98fbd</srcmd5>
+    <version>2.1.3</version>
+    <time>1490965644</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482035</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>68e170ce9a8bd5afca0212657127b614</srcmd5>
+    <version>2.1.3</version>
+    <time>1499292256</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>508223</requestid>
+  </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>0578475bdf9013249af7cbd3ecbc57f9</srcmd5>
+    <version>2.1.3</version>
+    <time>1503927171</time>
+    <user>dimstar_suse</user>
+    <comment>- Restore conditionals for lame, mad and twolame.
+</comment>
+    <requestid>518795</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>95781006fb7e3e144d897cb1911d4dd9</srcmd5>
+    <version>2.2.0</version>
+    <time>1510045250</time>
+    <user>dimstar_suse</user>
+    <comment>Enabled mad, twolame and lame for 42.3
+Update to version 2.2.0
+Added audacity-no_return_in_nonvoid.patch
+  Improvements:
+  * Four Selectable themes provided, with new 'Light' theme as
+    default, plus option to customize
+  * Many menu changes:
+    + Menus Reorganized
+    + Extended menu bar provided
+    + New keyboard commands for working with clips
+  * Help buttons ? in Preferences, Effects, Generators and
+    Analyzers - and other places
+  * Non-Greying out of effects when no selection (and explanatory
+    dialog with help button)
+  * Playback of MIDI (and Allegro) files imported into Note Tracks
+    is now available.
+  * 'Center' option in Selection Toolbar
+  * Stem plots
+  * Major overhaul to documentation/manual including many new
+    images and streamlined text on landing pages for in-program
+    help.
+  Other Changes:
+  * Append-record is now the default (use Shift + Record for old
+    behavior, to record on a new track)
+  * The Esc key now cancels all click-and-drag actions. It also
+    chooses among overlapping mouse click targets, which is
+    especially useful in the Multi-Tool.
+  * Sync-Lock button removed (use menu item or keyboard shortcut
+    instead)
+  * New preferences and preference pages
+  * Overhaul of much code:
+    + Overhaul of envelope handling code to deal with some
+      anomalies
+    + Overhaul of exception handling for greater safety
+  * New Logo
+  Bug Fixes:
+  * Major work on bug fixing. 198 bugs that were in 2.1.3 fixed
+    for 2.2.0.
+    + The most serious bug fixed this time round was bug 437 which
+      was about what happens when Audacity is recording and runs
+      out of storage.
+    + The problems of incomplete support for macOs Sierra have
+      been resolved (including bug 290, bug 1567, bug 1702, and bug
+      1703).
+    + Most of the bugs fixed were more minor, such as bug 463
+      which was about a case in which the numbering on the timeline
+      could display incorrect times.
+</comment>
+    <requestid>539119</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>f2494790cd7a5fbd5f361182b0372276</srcmd5>
+    <version>2.2.1</version>
+    <time>1516222577</time>
+    <user>dimstar_suse</user>
+    <comment>Update to maintenance release version 2.2.1
+Upstream changes and fixes:
+  *Waveform colorways:
+   You can optionally change the colorway of the waveforms
+   displayed in your project. The setting is per track and not per
+   project so you can have multiple colorways in the same project. 
+  *&quot;Save Other&quot; reverts to &quot;Export&quot; in the File menu:
+   When we made the menu changes for 2.2.0 we introduced an entry
+   into the File menu called &quot;Save Other&quot; which led to a sub-menu
+   for exporting various audio formats.
+   Many users were confused by this change and found it hard to
+   find where they could export.
+  *Bug #1770 - Crash applying certain chain files
+  *Bug #1783 - Preview fails when selection extends before zero
+  *Bug #1787 - Auto-scroll stopped working in 2.2.0
+  *Bug #1765 - Using File &gt; Open to import audio gives wrong zoom
+   level and no scroll bar slider.
+</comment>
+    <requestid>564497</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>9c7fee71ef5ecc29ddc3bd12bfef5c2e</srcmd5>
+    <version>2.2.1</version>
+    <time>1516711972</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim redundant parts from summary.
+</comment>
+    <requestid>568197</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>ddc5869e51722f52d38983e1cb93d30e</srcmd5>
+    <version>2.2.1</version>
+    <time>1516970440</time>
+    <user>dimstar_suse</user>
+    <comment>Build with gcc7 for Leap:42.3 and -fstack-clash-protection
+</comment>
+    <requestid>569830</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>0e353f908154eeddd1b24aa128c976dd</srcmd5>
+    <version>2.2.2</version>
+    <time>1519396169</time>
+    <user>dimstar_suse</user>
+    <comment>Update to release version 2.2.2.
+Rebase audacity-no_buildstamp.patch.
+Removed incorporated audacity-fix-nonsense.patch.
+Added audacity-misc-errors.patch to fix various errors picked up by rpmlint.
+- Added to audacity-no_return_in_nonvoid.patch.
+- Upstream changes:
+  *Easier zooming in and out with mousewheel, new Zoom Toggle
+   command, and context menu for vertical rulers.
+  *Easy access to change keyboard bindings of menu commands
+   by holding Shift key.
+  *Detection of dropout errors while recording with
+   overburdened CPU.
+  *Improved contrasts in Light and Dark themes
+  *Half-wave display option
+  *Several bugs/annoyances in 2.2.1 are now fixed
+</comment>
+    <requestid>579014</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>bd93efad79307c4c2faba0183f5160d8</srcmd5>
+    <version>2.3.0</version>
+    <time>1539251409</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Fix-bug-1992.patch from git to fix issue 1992</comment>
+    <requestid>639770</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>d2293e1f766a216a4aba02cf7217e602</srcmd5>
+    <version>2.3.1</version>
+    <time>1552380964</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.3.1 and remove incorporated patch 0001-Fix-bug-1992.patch.</comment>
+    <requestid>684189</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>fc1013ca97a1146deb2f3469fe7795bd</srcmd5>
+    <version>2.3.2</version>
+    <time>1565179264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721448</requestid>
+  </revision>
+</revisionlist>

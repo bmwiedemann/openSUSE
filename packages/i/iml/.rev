@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a2648f3fe8ba38913ffac35864b6f08</srcmd5>
+    <version>1.0.5</version>
+    <time>1464853113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>398979</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff93d0f133762afac8437634e369aaa4</srcmd5>
+    <version>1.0.5</version>
+    <time>1505334764</time>
+    <user>dimstar_suse</user>
+    <comment>- For the BLAS implementation, switch from cblas to openblas.</comment>
+    <requestid>522836</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b2f9dd5a04fb8b1ecdd0652597f5890b</srcmd5>
+    <version>1.0.5</version>
+    <time>1534543365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629397</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d59f824cc2f099e4f6c6f8f083d03f07</srcmd5>
+    <version>1.0.5</version>
+    <time>1566893949</time>
+    <user>dimstar_suse</user>
+    <comment>- Specfile modernization.</comment>
+    <requestid>725842</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8bbb4500bea77c6515587a1f9c7204b9</srcmd5>
+    <version>0.5</version>
+    <time>1516634237</time>
+    <user>dimstar_suse</user>
+    <comment>gen is an OCaml library that provides simple and efficient iterators.
+
+It is a dependency of the next version of Haxe (v4.0.0).
+
+update: fixed license ID (used wrong casing)</comment>
+    <requestid>564453</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ca253c86f103d575442fdd2d607b6ae8</srcmd5>
+    <version>0.5.2</version>
+    <time>1558516561</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release (0.5.2)
+  * Transition to dune and opam 2.0.
+  * Explicitly support BuckleScript. 
+</comment>
+    <requestid>704395</requestid>
+  </revision>
+</revisionlist>

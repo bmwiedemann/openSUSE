@@ -1,0 +1,272 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4fd4df84d305c483de20e97359530bd4</srcmd5>
+    <version>2.2.8</version>
+    <time>1168902963</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cb480625b798078331930eec7a2d3ac1</srcmd5>
+    <version>2.3.99.2</version>
+    <time>1169081411</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bacf525806a5f15f819b9601fe96dd19</srcmd5>
+    <version>2.4.0</version>
+    <time>1169768655</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2018cdc22eaf0da9ec38020ee7287374</srcmd5>
+    <version>2.4.1</version>
+    <time>1176474888</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="14">
+    <srcmd5>ddd819326d5bc81a8d3d4610d94afbe1</srcmd5>
+    <version>2.4.1</version>
+    <time>1179839217</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="62">
+    <srcmd5>28af40a0cfad96d26f4cb393a9ec99d7</srcmd5>
+    <version>2.4.1</version>
+    <time>1193063981</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="70">
+    <srcmd5>db1ef5bab18698e5875bc839f63f87bd</srcmd5>
+    <version>2.4.1</version>
+    <time>1194900409</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7773b82944f31884a2637f2ffc80b51d</srcmd5>
+    <version>2.4.2</version>
+    <time>1196719825</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="97">
+    <srcmd5>7773b82944f31884a2637f2ffc80b51d</srcmd5>
+    <version>2.4.2</version>
+    <time>1196719825</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5d8d7d70b4e8ff1b6aa5bb6ea9e835bc</srcmd5>
+    <version>2.4.3</version>
+    <time>1225927708</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>135d1d5231d0c568cf41e851694bedbf</srcmd5>
+    <version>2.4.3</version>
+    <time>1227881487</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>834982c37d36022c39a395de03b9bb5f</srcmd5>
+    <version>2.6.0</version>
+    <time>1242693848</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>834982c37d36022c39a395de03b9bb5f</srcmd5>
+    <version>2.6.0</version>
+    <time>1242693848</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>6663cc1231581516390e7c84bd483062</srcmd5>
+    <version>2.6.0</version>
+    <time>1265381225</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/gtk-xfce-engine based on submit request 31374 from user prusnak
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>5dd19037cd010376c0b222923d547089</srcmd5>
+    <version>2.6.0</version>
+    <time>1268923893</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>5dd19037cd010376c0b222923d547089</srcmd5>
+    <version>2.6.0</version>
+    <time>1278667349</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>5dd19037cd010376c0b222923d547089</srcmd5>
+    <version>2.6.0</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>45bf884b7102cbdea30e19cc3bfba267</srcmd5>
+    <version>2.6.0</version>
+    <time>1291587727</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54769 from user anubisg1
+</comment>
+    <requestid>54769</requestid>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>b556148bdd089044e837ad3ecbdd35d4</srcmd5>
+    <version>2.6.0</version>
+    <time>1291587734</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54769
+</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>69a71770fd2120f5ca9ca04c6fd9c8f0</srcmd5>
+    <version>2.6.0</version>
+    <time>1294666299</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57374 from user gberh
+</comment>
+    <requestid>57374</requestid>
+  </revision>
+  <revision rev="21" vrev="12">
+    <srcmd5>ed98f87be1619a4722df8fc80a23912d</srcmd5>
+    <version>2.6.0</version>
+    <time>1294666308</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57374
+</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>ef4f14515a1548a00a01580982235ad8</srcmd5>
+    <version>2.8.0</version>
+    <time>1295310855</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58588 from user gberh
+</comment>
+    <requestid>58588</requestid>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>74d74bb9cc467052c76f10753cb05946</srcmd5>
+    <version>2.8.0</version>
+    <time>1295310873</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58588
+</comment>
+  </revision>
+  <revision rev="24" vrev="14">
+    <srcmd5>74d74bb9cc467052c76f10753cb05946</srcmd5>
+    <version>2.8.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>00f60890c0fa3ce045389e1606dcbf60</srcmd5>
+    <version>2.8.1</version>
+    <time>1304352853</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67077</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>00f60890c0fa3ce045389e1606dcbf60</srcmd5>
+    <version>2.8.1</version>
+    <time>1319181949</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>b6020ed6d29c8a1055522c2fc2c9c789</srcmd5>
+    <version>2.8.1</version>
+    <time>1323191851</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>7158d5483c9d59fa3090ee920c11b2cf</srcmd5>
+    <version>2.8.1</version>
+    <time>1334215537</time>
+    <user>coolo</user>
+    <comment>- specfile cleanup</comment>
+    <requestid>112502</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>79a988190207b9ec4685bbf7bd1d8c70</srcmd5>
+    <version>3.0.0</version>
+    <time>1336470522</time>
+    <user>coolo</user>
+    <comment>- update to version 3.0.0
+  - added px for border sizes
+  - corrected DETAIL names
+  - use the correct colors for options and checks
+  - more consistent extension rendering
+  - corrected class matching and alignments
+  - require Gtk 3.2
+  - tuned default theme for Gtk 3.2
+  - added Gtk 3.4 support to the engine
+  - default themes don't support Gtk+-3.4
+
+- update to version 2.99.3
+  - link against libm for floor() and ceil()
+  - reduce GtkComboBox padding
+
+- update to version 2.99.2
+  - improved menu theming
+  - theme gtk-tooltip
+  - scale radio and check boxes
+  - draw inset border around default button
+  - changed rendering of GtkSpinButton
+  - pixel align checkboxes in the Gtk+-3.0 engine
+  - link against libm (bug #6253)
+  - added Gtk+-3.0 theming engine
+  - changed drawing routines to use cairo</comment>
+    <requestid>116142</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>79a988190207b9ec4685bbf7bd1d8c70</srcmd5>
+    <version>3.0.0</version>
+    <time>1340183419</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>f7653b67ab8b37dfa5d9a07aa430f3cc</srcmd5>
+    <version>3.0.0</version>
+    <time>1345809094</time>
+    <user>namtrac</user>
+    <comment>- added gtk-xfce-engine-fix-memory-leak.patch which fixes a memory
+  leak in the cairo drawing code (bnc#771292)</comment>
+    <requestid>131505</requestid>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>f7653b67ab8b37dfa5d9a07aa430f3cc</srcmd5>
+    <version>3.0.0</version>
+    <time>1359109017</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>f7653b67ab8b37dfa5d9a07aa430f3cc</srcmd5>
+    <version>3.0.0</version>
+    <time>1379662575</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>f7653b67ab8b37dfa5d9a07aa430f3cc</srcmd5>
+    <version>3.0.0</version>
+    <time>1409301123</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e1a2136cf083ca64cda34ea3afcaab9b</srcmd5>
+    <version>3.2.0</version>
+    <time>1425892043</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.12</comment>
+    <requestid>289544</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf67dcab5ad86842b2f94c0b3cea0d00</srcmd5>
+    <version>3.0.0</version>
+    <time>1474016431</time>
+    <user>dimstar_suse</user>
+    <comment>Adding prewikka to factory.
+
+It needs SR 405816 for python-libpreludedb</comment>
+    <requestid>424727</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b929f49d85bd7297e9462263152e5372</srcmd5>
+    <version>3.0.0</version>
+    <time>1487462447</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455339</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c5f8cffb83da134349628093e86084c9</srcmd5>
+    <version>3.1.0</version>
+    <time>1490318512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481611</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c29b46922ceca0883594dc45bbde91a7</srcmd5>
+    <version>4.0.0</version>
+    <time>1510577986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538198</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>78f5a3b752cfe43a1ce15c17ecd07705</srcmd5>
+    <version>4.0.0</version>
+    <time>1518950724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577606</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>23a9ab316ef9d3a4c0c7059f5a3d1401</srcmd5>
+    <version>2.1.4</version>
+    <time>1168903349</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="32">
+    <srcmd5>b9ed416b5e6ac3d42089c0c266a87fd8</srcmd5>
+    <version>2.1.4</version>
+    <time>1177697548</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="33">
+    <srcmd5>292fdc4f9717964fc24187fe37ceee7a</srcmd5>
+    <version>2.1.4</version>
+    <time>1177763517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d272a5ec4d7699346c73ab384daaf546</srcmd5>
+    <version>2.1.5</version>
+    <time>1185494567</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>78a884bb687fbadfc9d17e3f8cff2eef</srcmd5>
+    <version>2.1.5</version>
+    <time>1185749496</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>bbc7630b31e54c434d74e53400cdaec3</srcmd5>
+    <version>2.1.5</version>
+    <time>1199705506</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>83a66d6ef433848441b9fa41b9e34d3c</srcmd5>
+    <version>2.1.5</version>
+    <time>1219347081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>83a66d6ef433848441b9fa41b9e34d3c</srcmd5>
+    <version>2.1.5</version>
+    <time>1219347081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>619ef226ab3b6635537991526a532b6b</srcmd5>
+    <version>2.1.5</version>
+    <time>1262129162</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libmusicbrainz based on submit request 27742 from user tiwai
+</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>06e6ad27ac62616efe8e5ec3e236af38</srcmd5>
+    <version>2.1.5</version>
+    <time>1268924641</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>06e6ad27ac62616efe8e5ec3e236af38</srcmd5>
+    <version>2.1.5</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>06e6ad27ac62616efe8e5ec3e236af38</srcmd5>
+    <version>2.1.5</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>06e6ad27ac62616efe8e5ec3e236af38</srcmd5>
+    <version>2.1.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>7b440455e3f71c4079e7778f0b31751a</srcmd5>
+    <version>2.1.5</version>
+    <time>1303112359</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67593 from user coolo
+</comment>
+    <requestid>67593</requestid>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>be0b10e49321fa36ac7a4c93e2e02068</srcmd5>
+    <version>2.1.5</version>
+    <time>1303112367</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67593
+</comment>
+  </revision>
+  <revision rev="16" vrev="19">
+    <srcmd5>be0b10e49321fa36ac7a4c93e2e02068</srcmd5>
+    <version>2.1.5</version>
+    <time>1319182113</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>12a4a4832e5d9b481f538727b04979c5</srcmd5>
+    <version>2.1.5</version>
+    <time>1321886821</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 92549 from coolo)</comment>
+    <requestid>92573</requestid>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>5bdc54edca2ad4296417fff9bc573583</srcmd5>
+    <version>2.1.5</version>
+    <time>1323192280</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>5bdc54edca2ad4296417fff9bc573583</srcmd5>
+    <version>2.1.5</version>
+    <time>1340183608</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="25">
+    <srcmd5>5bdc54edca2ad4296417fff9bc573583</srcmd5>
+    <version>2.1.5</version>
+    <time>1359109308</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="27">
+    <srcmd5>5bdc54edca2ad4296417fff9bc573583</srcmd5>
+    <version>2.1.5</version>
+    <time>1379663012</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="29">
+    <srcmd5>5bdc54edca2ad4296417fff9bc573583</srcmd5>
+    <version>2.1.5</version>
+    <time>1409301630</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="30">
+    <srcmd5>982b0d3d6c8c9747d2de85ddd5d26a54</srcmd5>
+    <version>2.1.5</version>
+    <time>1464689446</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch gcc6-fix-errors.patch to remove errors seen by GCC6.</comment>
+    <requestid>397948</requestid>
+  </revision>
+</revisionlist>

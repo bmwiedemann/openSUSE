@@ -1,0 +1,10 @@
+<package name="python-avocado-plugins-vt" project="openSUSE:Factory">
+  <title>Avocado Virt Test Plugin</title>
+  <description>Avocado Virt Test is a plugin that lets you execute virt-tests
+with all the avocado convenience features, such as HTML report,
+Xunit output, among others.
+
+</description>
+  <devel project="devel:languages:python:avocado" package="python-avocado-plugins-vt"/>
+  <url>https://avocado-framework.readthedocs.org/</url>
+</package>

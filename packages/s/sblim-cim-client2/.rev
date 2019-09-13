@@ -1,0 +1,290 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>e21a3b6db92285d262fe0ade23594830</srcmd5>
+    <version>2.0.7</version>
+    <time>1220842408</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>78c8be073f6ca3bf8af64a7ae9a5a96c</srcmd5>
+    <version>2.0.9.1</version>
+    <time>1243940772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>78c8be073f6ca3bf8af64a7ae9a5a96c</srcmd5>
+    <version>2.0.9.1</version>
+    <time>1243940772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>79104fbe043cf549bbee17cdfb042619</srcmd5>
+    <version>2.1.3</version>
+    <time>1263501263</time>
+    <user>autobuild</user>
+    <comment>Copy from systemsmanagement:wbem/sblim-cim-client2 based on submit request 29334 from user -miska-
+</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>bc5670ce9c2f582bf295f573f90d21cb</srcmd5>
+    <version>2.1.3</version>
+    <time>1268926058</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>bc5670ce9c2f582bf295f573f90d21cb</srcmd5>
+    <version>2.1.3</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>bc5670ce9c2f582bf295f573f90d21cb</srcmd5>
+    <version>2.1.3</version>
+    <time>1278678617</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>bc5670ce9c2f582bf295f573f90d21cb</srcmd5>
+    <version>2.1.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9a88533c2cac929269aa9a50ee309cf2</srcmd5>
+    <version>2.1.9</version>
+    <time>1316088789</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>82094</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a52c4a399eab02146ba5b0df5a52c98a</srcmd5>
+    <version>2.1.9</version>
+    <time>1316088795</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82094
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ad769a9a58963092909647913a3ffeb9</srcmd5>
+    <version>2.1.10</version>
+    <time>1316465821</time>
+    <user>lrupp</user>
+    <comment>- Version 2.1.10
+  Bugfix release
+  - 3409691 2.1.10 packaging issues: rpmbuild broken on Red Hat
+  - 3406275 HEAD branch ONLY: sync with Experimental branch
+  - 3400209 Highlighted Static Analysis (PMD) issues
+  - 3397922 support OctetString
+  - 3390724 Problem with Reliable Indication support in the Listener
+  - 3374012 Sblim client CIMObjectPath class defect for LLA format URL
+  - 3376657 Get reliable indication properties once
+  - 3374206 NullPointerException caused by Indication
+  - 3323310 Need the ability to override certain Global Properties</comment>
+    <requestid>82295</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>ad769a9a58963092909647913a3ffeb9</srcmd5>
+    <version>2.1.10</version>
+    <time>1319182446</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>84c9ec522e3b2b64d23f5f43170b1a7f</srcmd5>
+    <version>2.1.11</version>
+    <time>1325658683</time>
+    <user>coolo</user>
+    <comment>- Version 2.1.11
+  Bugfix release
+  - 3459036 Linked list for RI queue not efficient for many LDs
+  - 3444912 Client delay during SSL handshake
+  - 3423064 Add UpdateExpiredPassword Header for Reqs from Java Client
+  - 3411944 createJavaObject exception with hex uint
+  - 3411879 TCK: CIM element value must match type
+  - 3410126 TCK: CIM element name cannot be null
+
+- fix license to be in spdx.org format</comment>
+    <requestid>97025</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>78a3dc8d4e253c8082c80acb12f0f3c1</srcmd5>
+    <version>2.1.12</version>
+    <time>1332831545</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>111092</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>78a3dc8d4e253c8082c80acb12f0f3c1</srcmd5>
+    <version>2.1.12</version>
+    <time>1340184189</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>6016626d4557546be328d3bfb948edc2</srcmd5>
+    <version>2.1.12</version>
+    <time>1345118950</time>
+    <user>namtrac</user>
+    <comment>- Fix build failure.
+- Fix CentOS, RHEL and Fedora builds
+- License is EPL-1.0</comment>
+    <requestid>130783</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0ddb56fdf0688410b0e6b01505bc094d</srcmd5>
+    <version>2.2.0</version>
+    <time>1348427627</time>
+    <user>coolo</user>
+    <comment>- Update to Version 2.2.0
+  PLEASE NOTE: Version 2.2.0 is fully compliant with the final
+  JSR48 1.0.0 specification.  In order to meet this requirement,
+  several changes occurred which may be disruptive to applications
+  that work with previous (2.1.x) versions.  Please see the following
+  for more details:
+  http://sblim.sourceforge.net/cim-client2-v22-doc/org/sblim/cimclient/doc-files/history.html
+  Detailed changes
+  ================
+  3567429 Update detailed release history HTML for 2.2.0
+  3555752 Sync up javax.* javadoc with JSR48 1.0.0 Final IV
+  3565581 TCK: remove unnecessary overriding methods
+  3562235 LogAndTraceBrokerTest breaks unit test tracing
+  3536399 Add client/listener peer authentication properties
+  3529151 TCK: CIMInstance property APIs include keys from COP
+  3536398 Update HTML to reflect secure indication support
+  3554738 dump CIM xml by LogAndTraceBroker.trace()
+  3553858 Append duplicate HTTP header fields instead of replace
+  3535383 HashDoS fix 3498482
+  3545797 Support new error code of SFCB
+  3529066 Add Jsr48IndicationTester
+  3524050 Improve WWW-Authenticate in HTTPClient.java
+  3529065 Enable WBEMListener get/setProperty
+  3529062 WBEMListenerFactory should return new instance
+  3527580 WBEMClient should not throw IllegalArgumentException
+  3526681 CIMError valid status codes out-of-date
+  3526679 DOM parser ignores ERROR node CODE
+  3526675 Unit test fails on Java 7
+  3525914 TCK: SetPropertyTest.testSetProperty failing
+  3521157 JSR48 1.0.0: PROP_ENABLE_*_LOGGING is Level, not 0/1</comment>
+    <requestid>135381</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f7397e81f58d66885ac486ac6b01cc1c</srcmd5>
+    <version>2.2.1</version>
+    <time>1356731353</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146280</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f7397e81f58d66885ac486ac6b01cc1c</srcmd5>
+    <version>2.2.1</version>
+    <time>1359110370</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0b0f7dc31fa74d1dad3b1b2b0119ee61</srcmd5>
+    <version>2.2.2</version>
+    <time>1364277747</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160868</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1a43c6d55906680ce1bdc5a522a8fbfb</srcmd5>
+    <version>2.2.3</version>
+    <time>1370453708</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.3
+  New features
+  * A new Java property - sblim.wbem.listenerMaxQueuedEvents - can
+    be used to set the maximum number of queued events awaiting
+    dispatch to a listener. (#2628)
+  * Two new Java properties - sblim.wbem.listenerHttpHeaderTimeout
+    and sblim.wbem.listenerHttpMaxAllowedTimeouts - can be used to
+    help prevent Denial of Service attacks on an indication listener
+    via the slowloris approach (#2635)
+  * Two new private APIs - WBEMListenerSBLIM.getBlockedIPs and
+    setBlockedIPs can be used to control the IPs of incoming
+    connections that are to be ignored by an indication
+    listener (#2635)
+  * Two new Java properties - sblim.wbem.sslClientCipherSuitesToDisable
+    and sblim.wbem.sslListenerCipherSuitesToDisable - can be used
+    to disable a list of cipher suites when connecting via an SSL
+    socket as either a client or listener. (#2642)
+  Version 2.2.3 also contains several changes that might affect
+  existing applications:
+  * The internal ChunkedInputStream constructors now require a
+    second parameter, a String representing the names of the trailer
+    fields (from HTTP Trailer header). (#2621)
+  * The internal MessageReader constructor now requires a second
+    parameter, a long representing the HTTP header timeout (#2635)
+  * The internal HttpConnectionHandler constructor now requires
+    a second parameter, a WBEMConfiguration representing the
+    configuration properties (#2635)
+  * The Java property sblim.wbem.sslCipherSuitesToDisable has
+    been deleted, use sblim.wbem.sslClientCipherSuitesToDisable
+    and/or sblim.wbem.sslListenerCipherSuitesToDisable instead (#2642)</comment>
+    <requestid>177116</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>1a43c6d55906680ce1bdc5a522a8fbfb</srcmd5>
+    <version>2.2.3</version>
+    <time>1379664617</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8770500c55992398bedbd1d56ebd4334</srcmd5>
+    <version>2.2.4</version>
+    <time>1380299383</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200806</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8baf931a165be88d30ab644f49b9e4e0</srcmd5>
+    <version>2.2.5</version>
+    <time>1387271163</time>
+    <user>coolo</user>
+    <comment>Updated to the latest upstream version.
+
+FATE#315790: Update SBLIM JSR48 CIM Client to latest version (sblim-cim-client2)</comment>
+    <requestid>210821</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>8baf931a165be88d30ab644f49b9e4e0</srcmd5>
+    <version>2.2.5</version>
+    <time>1409303319</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>dc7650375ce92db0967abcc95fe7dba5</srcmd5>
+    <version>2.2.5</version>
+    <time>1435172176</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313255</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>3bc190c6bc5d3b121308055a5e1b78d1</srcmd5>
+    <version>2.2.5</version>
+    <time>1435652190</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313804</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>61b303de3edcb615d269c3130a44bb93</srcmd5>
+    <version>2.2.5</version>
+    <time>1512734347</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>554790</requestid>
+  </revision>
+</revisionlist>

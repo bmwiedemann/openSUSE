@@ -1,0 +1,9 @@
+<package name="osmosdr" project="openSUSE:Factory">
+  <title>SDR (Software Defined Radio) project</title>
+  <description>OsmoSDR is a 100% Free Software based small form-factor inexpensive
+SDR (Software Defined Radio) project.
+
+</description>
+  <devel project="hardware:sdr" package="osmosdr"/>
+  <url>http://sdr.osmocom.org/trac/</url>
+</package>

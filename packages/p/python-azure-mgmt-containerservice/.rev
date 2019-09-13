@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42d5dd7d15228c0513a50508b7b760a4</srcmd5>
+    <version>1.0.0</version>
+    <time>1507755517</time>
+    <user>dimstar_suse</user>
+    <comment>breaking up the Azure SDK</comment>
+    <requestid>531826</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bac6b2271f4da8ce4d70604390e6266e</srcmd5>
+    <version>1.0.0</version>
+    <time>1508198051</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>534247</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2d7034f56cbfd25d6235587a8b236f53</srcmd5>
+    <version>1.0.0</version>
+    <time>1509820213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538832</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0924c6c87910c4778886a604bd64cf45</srcmd5>
+    <version>3.0.0</version>
+    <time>1518596630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571047</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e9f2cfc92266e2a1f156c4f31993bd4c</srcmd5>
+    <version>3.0.1</version>
+    <time>1524144616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597440</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d36c7c55f8e05c41fc7f769acf7175ba</srcmd5>
+    <version>4.2.2</version>
+    <time>1537971228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>637952</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a1e677d587edf88052b8761714d78c29</srcmd5>
+    <version>4.4.0</version>
+    <time>1557833584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694282 from glaubitz)</comment>
+    <requestid>694402</requestid>
+  </revision>
+</revisionlist>

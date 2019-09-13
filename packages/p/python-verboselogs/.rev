@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd75a2b33a8ec768d92025f6b38a2d68</srcmd5>
+    <version>1.7</version>
+    <time>1527933565</time>
+    <user>dimstar_suse</user>
+    <comment>Verbose logging level for Python's logging module</comment>
+    <requestid>612037</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2995968cee05d58a561886feed2dc723</srcmd5>
+    <version>1.7</version>
+    <time>1533045672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626384</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b8b41b3e0ccd19869219acc6091db60d</srcmd5>
+    <version>1.7</version>
+    <time>1537787539</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with new pylint-2.0:
+  * verboselogs-pylint2.patch
+
+- Update the URL to point to the active github</comment>
+    <requestid>636888</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3bfd79962ab9445467fa1c4e9ee2cca3</srcmd5>
+    <version>1.7</version>
+    <time>1545648349</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659743</requestid>
+  </revision>
+</revisionlist>

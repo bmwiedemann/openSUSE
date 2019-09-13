@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4912f35e6097b82d6c018c67a1e34608</srcmd5>
+    <version>1.7.81</version>
+    <time>1505416630</time>
+    <user>dimstar_suse</user>
+    <comment>- initial support for openSUSE
+- fix condition for ghost groups symlink
+- move vim extensions into the clustershell package
+- use Requires: vim-filesystem instead of vim-common
+- define upgrade path for vim-clustershell
+- create separate packages for python2 and python3 modules
+- update to 1.7.81 (1.8 beta1)
+- update to 1.7.3
+- update to 1.7.2
+- update to 1.7.1
+- update to 1.7
+- update to 1.6.96
+- update to 1.6
+- update to 1.5.1
+- update to 1.5
+- update to 1.4.3
+- update to 1.4.2
+- update to 1.4.1
+- update to 1.4
+- update to 1.3.3
+- renamed Vim subpackage to vim-clustershell
+- update to 1.3.2
+- added -vim subpackage for .vim files
+- removed -n from setup line
+- own clustershell config directory for proper uninstall
+- install vim syntax addons in vimfiles, thus avoiding vim version detection
+- update to 1.3.1
+- fixed BuildRoot tag in accordance with EPEL guidelines
+- python_sitelib definition: prefer global vs define
+- preserve timestamps and fix permissions when installing files
+- use a full URL to the package in Source0
+- various improvements per first review request
+- initial build candidate for Fedora
+</comment>
+    <requestid>526011</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24956f8b6c3b9b6b4a48c5f808e071ce</srcmd5>
+    <version>1.8</version>
+    <time>1509105704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8:
+  * added Python 3 support (3.4+)
+  * support for Python 2.5 and below has been dropped
+  * new EventHandler API (backward compatible)
+  * task.shell() has a new stdin (boolean) argument
+  * NodeSet/nodeset/cluset can now handle numeric node names
+  * clush now use slightly different colors that are legible on
+    dark backgrounds</comment>
+    <requestid>536956</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0cd9ea2c1a1f992675e45a284e15d72</srcmd5>
+    <version>1.8.1</version>
+    <time>1543953222</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream release 1.8.1:
+  * support offline gateways in Tree mode
+  * CLI: added --conf and --groupsconf command line options
+  * NodeSet: speed-up nodeset parsing
+  * EventHandler: reinstate ev_error and ev_timeout as deprecated
+  * nodeset/cluset CLI: allow litteral new line in -S
+  * nodeset/cluset CLI: handle multiline shell arguments in options
+</comment>
+    <requestid>652069</requestid>
+  </revision>
+</revisionlist>

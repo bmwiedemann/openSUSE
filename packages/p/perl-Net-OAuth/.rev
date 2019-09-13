@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f45ab0ebdfcb931c342f2eb1de4d567d</srcmd5>
+    <version>0.27</version>
+    <time>1311591104</time>
+    <user>saschpe</user>
+    <comment>indirect dep of hermes</comment>
+    <requestid>76473</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>39e30bb2da8b61d4791621fbc9b2ad58</srcmd5>
+    <version>0.27</version>
+    <time>1311591114</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76473
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>39e30bb2da8b61d4791621fbc9b2ad58</srcmd5>
+    <version>0.27</version>
+    <time>1319182292</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>2b8fa54ab5b0ab00cd0aadce5e853963</srcmd5>
+    <version>0.27</version>
+    <time>1323193517</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>2b8fa54ab5b0ab00cd0aadce5e853963</srcmd5>
+    <version>0.27</version>
+    <time>1340183891</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>2b8fa54ab5b0ab00cd0aadce5e853963</srcmd5>
+    <version>0.27</version>
+    <time>1359109762</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9292b3a22ff6e5de500c888c0a674378</srcmd5>
+    <version>0.28</version>
+    <time>1371140323</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 178052 from coolo)</comment>
+    <requestid>178266</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9292b3a22ff6e5de500c888c0a674378</srcmd5>
+    <version>0.28</version>
+    <time>1379663793</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>9292b3a22ff6e5de500c888c0a674378</srcmd5>
+    <version>0.28</version>
+    <time>1409302427</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

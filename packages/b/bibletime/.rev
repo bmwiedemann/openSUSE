@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>742a01da5bcf315c83afd5ecb554db81</srcmd5>
+    <version>2.9.1</version>
+    <time>1358418074</time>
+    <user>coolo</user>
+    <comment>An easy to use Bible study tool</comment>
+    <requestid>148228</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>742a01da5bcf315c83afd5ecb554db81</srcmd5>
+    <version>2.9.1</version>
+    <time>1359108699</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4b1de3afb1038d760a524ad15cfad5b2</srcmd5>
+    <version>2.9.1</version>
+    <time>1368448975</time>
+    <user>coolo</user>
+    <comment>- Added fix-movetoanchor-for-qt5.patch, fixes non visible text when
+  used with libQtWebkit 2.3 (forwarded request 174477 from sumski)</comment>
+    <requestid>174823</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>927c8e819583d5fa3e21ad42f0f51031</srcmd5>
+    <version>2.9.2</version>
+    <time>1370513227</time>
+    <user>coolo</user>
+    <comment>- update to 2.9.2:
+  + Fixed settings dialog tab contents not being translated
+  + Fix crash when closing window with tab
+  + Fix bug 14 - Headers displayed as plain text in some modules
+  + Fix problem with text not displaying when using QtWebKit 2.3
+  + added changes needed for Qt5
+  + Fix multi-arch path issue in FindCLucene.cmake
+- removed fix-movetoanchor-for-qt5.patch (upstream)</comment>
+    <requestid>177536</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>927c8e819583d5fa3e21ad42f0f51031</srcmd5>
+    <version>2.9.2</version>
+    <time>1379662033</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>043300ea425283d12727c69c9e1002b4</srcmd5>
+    <version>2.10.0</version>
+    <time>1389334568</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>213054</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>42ae66f63d86debcebf0dff4eb3c0175</srcmd5>
+    <version>2.10.1</version>
+    <time>1405404070</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>240959</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>42ae66f63d86debcebf0dff4eb3c0175</srcmd5>
+    <version>2.10.1</version>
+    <time>1409300560</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>cbd6c5c53fc7c0b8052b8c29b1cbf16e</srcmd5>
+    <version>2.10.1</version>
+    <time>1429606257</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294970</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>dfb671a1b188e07c39d6ef5a5bfb7003</srcmd5>
+    <version>2.10.1</version>
+    <time>1486046796</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454052</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e05a7c866e1c1060bc1754352bad5ba4</srcmd5>
+    <version>2.11.1</version>
+    <time>1513245287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555045</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cd60bee7828226b3c330ad837cf69952</srcmd5>
+    <version>2.11.2</version>
+    <time>1537436547</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636620</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>253e4b75c0a4de6985d5dd3c8bfd815a</srcmd5>
+    <version>2.11.2</version>
+    <time>1537787622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637188</requestid>
+  </revision>
+</revisionlist>

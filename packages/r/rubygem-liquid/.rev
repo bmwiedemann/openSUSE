@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d66b9164dc98d5d40bd07ab1b423e769</srcmd5>
+    <version>3.0.6</version>
+    <time>1468579839</time>
+    <user>dimstar_suse</user>
+    <comment>needed by jekyll</comment>
+    <requestid>407392</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5d49d39eef816deca33b9a5d3082fb1c</srcmd5>
+    <version>4.0.0</version>
+    <time>1483047948</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447123</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>58fbd75a16abe47e91ae1f4e3b5ae381</srcmd5>
+    <version>4.0.1</version>
+    <time>1548062727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656368</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>15645c4c2033c6dfcb931bbb7aef7d2c</srcmd5>
+    <version>4.0.3</version>
+    <time>1553699883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685132</requestid>
+  </revision>
+</revisionlist>

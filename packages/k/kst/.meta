@@ -1,0 +1,24 @@
+<package name="kst" project="openSUSE:Factory">
+  <title>Real-Time Data Viewing and Plotting Tool with Basic Data Analysis Functionality</title>
+  <description>Kst is a data plotting and viewing program. Some of the features
+   include: - Robust plotting of live &quot;streaming&quot; data
+
+- Powerful keyboard and mouse plot manipulation
+
+- Powerful plug-in and extension support
+
+- Large selection of built-in plotting and data manipulation
+   functions, such as histograms, equations, and power spectra
+
+- Color mapping and contour mapping capabilities for
+   three-dimensional data
+
+- Monitoring of events and notification support
+
+- Built-in filtering and curve fitting capabilities
+
+- Convenient command line interface
+
+- Powerful graphical user interface</description>
+  <devel project="KDE:Extra" package="kst"/>
+</package>

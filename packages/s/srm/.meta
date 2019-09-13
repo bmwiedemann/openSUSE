@@ -1,0 +1,5 @@
+<package name="srm" project="openSUSE:Factory">
+  <title>A secure replacement for rm</title>
+  <description>A secure replacement for rm</description>
+  <devel project="security" package="srm"/>
+</package>

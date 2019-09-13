@@ -1,0 +1,6 @@
+<package name="vlan" project="openSUSE:Factory">
+  <title>802.1q VLAN Implementation for Linux</title>
+  <description>An 802.1q vlan implementation for Linux. See
+http://www.candelatech.com/~greear/vlan.html for more information.</description>
+  <devel project="network:utilities" package="vlan"/>
+</package>

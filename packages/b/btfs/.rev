@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>97d4663c62a51ce73dc9e72494a37c09</srcmd5>
+    <version>2.15</version>
+    <time>1503061366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>514507</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>02e55c7bcc3143d13b34d70e49345b57</srcmd5>
+    <version>2.16</version>
+    <time>1503593763</time>
+    <user>dimstar_suse</user>
+    <comment>- 2.16
+  * Implement listxattr and getxattr
+  * Return IS_BTFS xattr on all files and directories
+  * Add btfsstat program
+</comment>
+    <requestid>518425</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8d2b0838e7c703349e41741fae73e1df</srcmd5>
+    <version>2.17</version>
+    <time>1505238858</time>
+    <user>dimstar_suse</user>
+    <comment>- 2.17
+  * Adjust to libtorrent 1.2 API changes
+    + Session flags changed type.
+    + Remove flags changed type.
+  * Silence warning about deprecated flags in libtorrent 1.2
+  * Tweak configure.ac
+  * Handle read_piece_alert errors
+    + Fixes segfault, upstream bug #42
+  * Set request timeout
+</comment>
+    <requestid>522946</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d4249e55010a36af034b4f43f298eb92</srcmd5>
+    <version>2.18</version>
+    <time>1511817546</time>
+    <user>dimstar_suse</user>
+    <comment>- 2.18
+  * Force DHT announce when bootstrap completes
+  * Don't set file priority to 0 at start
+  * Fix delete-on-unmount
+  * Remove unneeded debug prints
+  * Fix a potential null pointer deref
+  * Silence warning on libtorrent 1.2
+</comment>
+    <requestid>546040</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>159cd7e255e765c6027ab1a106a2a6b7</srcmd5>
+    <version>2.19</version>
+    <time>1555321972</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernize spec file
+- 2.19
+  * Add option to set data directory
+</comment>
+    <requestid>694069</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>014c7103628255910d6d90762429bbc1</srcmd5>
+    <version>2.20</version>
+    <time>1567092265</time>
+    <user>dimstar_suse</user>
+    <comment>- 2.20
+  * btplay: Change shebang to python3</comment>
+    <requestid>726824</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e084d390d761f1bb176afe6092a6a8cf</srcmd5>
+    <version>1.0</version>
+    <time>1330434920</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>107154</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e084d390d761f1bb176afe6092a6a8cf</srcmd5>
+    <version>1.0</version>
+    <time>1340184043</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>8df38af502cec0a6cfc045bf413b50a0</srcmd5>
+    <version>1.0</version>
+    <time>1343633857</time>
+    <user>coolo</user>
+    <comment>- don't stutter static on BigEndian (forwarded request 129055 from k0da)</comment>
+    <requestid>129070</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>291d6aea0c49bfd0787eff4544dad160</srcmd5>
+    <version>3.3</version>
+    <time>1358168875</time>
+    <user>coolo</user>
+    <comment>update to 3.3 (forwarded request 148114 from saschpe)</comment>
+    <requestid>148395</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>291d6aea0c49bfd0787eff4544dad160</srcmd5>
+    <version>3.3</version>
+    <time>1359110011</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>10db1a5fd868dd7a2a1d8fc117542e40</srcmd5>
+    <version>3.3</version>
+    <time>1366633902</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>172819</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>10db1a5fd868dd7a2a1d8fc117542e40</srcmd5>
+    <version>3.3</version>
+    <time>1379664154</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>10db1a5fd868dd7a2a1d8fc117542e40</srcmd5>
+    <version>3.3</version>
+    <time>1409302844</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>d9f518fb84403fd758af4edd6de05a1d</srcmd5>
+    <version>3.3</version>
+    <time>1501840792</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512487</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1f07d2ce9e3a1b11603580327c43aa5c</srcmd5>
+    <version>3.3.4</version>
+    <time>1530304307</time>
+    <user>dimstar_suse</user>
+    <comment>Clean SPEC file (forwarded request 618310 from mcepl)</comment>
+    <requestid>618311</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4be24f35bb3554685f1e0979e9c324f5</srcmd5>
+    <version>3.3.4</version>
+    <time>1531135637</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620962</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>57f1f4be8dd1cf861957b39439ca793e</srcmd5>
+    <version>3.3.4</version>
+    <time>1532361774</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix i586 build</comment>
+    <requestid>624711</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>0351707d6ddcce39109c592013933515</srcmd5>
+    <version>3.3.4</version>
+    <time>1532681835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625424</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>f279a9ede299aa0a3deea541cddded3a</srcmd5>
+    <version>3.3.4</version>
+    <time>1542012122</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated 0001-don-t-stutter-static-on-BigEndian.patch from personal
+  communication with the upstream developer to make test suite pass
+  completely on Big Endian machines.
+</comment>
+    <requestid>647595</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>42566dfa3adde3d31649583472c978f2</srcmd5>
+    <version>3.4.1</version>
+    <time>1552380832</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.1:
+  * various small fixes around
+- Merged patches:
+  * 0001-don-t-stutter-static-on-BigEndian.patch
+  * reproducible.patch</comment>
+    <requestid>682846</requestid>
+  </revision>
+</revisionlist>

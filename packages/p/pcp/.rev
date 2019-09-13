@@ -1,0 +1,507 @@
+<revisionlist>
+  <revision rev="1" vrev="14">
+    <srcmd5>3e972951d1f62b0e150436219b91a50a</srcmd5>
+    <version>2.5.0</version>
+    <time>1168903761</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="43">
+    <srcmd5>1ad1845170a7d27c228181cacb58bfc3</srcmd5>
+    <version>2.5.0</version>
+    <time>1175213375</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="51">
+    <srcmd5>1cabf27677e7fa9ea6ef7a3cf31392f9</srcmd5>
+    <version>2.5.0</version>
+    <time>1184345793</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="71">
+    <srcmd5>0c8ba711f88e1c7d01d1592911bdc9f0</srcmd5>
+    <version>2.5.0</version>
+    <time>1196900327</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="116">
+    <srcmd5>37de6fc5c6cddf9c0bbde90b13265197</srcmd5>
+    <version>2.5.0</version>
+    <time>1219971623</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="125">
+    <srcmd5>8c78cc7f49033d939348f9c2a4aa4825</srcmd5>
+    <version>2.5.0</version>
+    <time>1223460384</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="126">
+    <srcmd5>70607f861626594c9123f407ba0d36eb</srcmd5>
+    <version>2.5.0</version>
+    <time>1225992432</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="127">
+    <srcmd5>377b642b2804f0973b74238e14cdc8ad</srcmd5>
+    <version>2.5.0</version>
+    <time>1235668757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="128">
+    <srcmd5>70ff565238b70f35a414ac78a664d2e2</srcmd5>
+    <version>2.5.0</version>
+    <time>1244562947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="129">
+    <srcmd5>dcdcbf8404efe5a7a3e8ee583f1dc6e0</srcmd5>
+    <version>2.5.0</version>
+    <time>1244624589</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="131">
+    <srcmd5>dcdcbf8404efe5a7a3e8ee583f1dc6e0</srcmd5>
+    <version>2.5.0</version>
+    <time>1244624589</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="132">
+    <srcmd5>174b7c4895792ca21712645465182ad7</srcmd5>
+    <version>2.5.0</version>
+    <time>1266974625</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pcp based on submit request 33138 from user msmeissn
+</comment>
+    <requestid>33138</requestid>
+  </revision>
+  <revision rev="13" vrev="133">
+    <srcmd5>86316cb3ac097db8ff76dcbbf6cf451f</srcmd5>
+    <version>2.5.0</version>
+    <time>1268925327</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="135">
+    <srcmd5>86316cb3ac097db8ff76dcbbf6cf451f</srcmd5>
+    <version>2.5.0</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="136">
+    <srcmd5>86316cb3ac097db8ff76dcbbf6cf451f</srcmd5>
+    <version>2.5.0</version>
+    <time>1278678608</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="139">
+    <srcmd5>86316cb3ac097db8ff76dcbbf6cf451f</srcmd5>
+    <version>2.5.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>80e8f33169f462517cf5a57c28b6ec0a</srcmd5>
+    <version>3.5.8</version>
+    <time>1313413380</time>
+    <user>saschpe</user>
+    <comment>- Update to pcp-3.5.8.
+  + Rework rsyslog PMDA to remove Switch use, very odd behaviour
+    observed on RHEL5.2 (mysteriously failing to compile).
+  + Add in Kens scripting defenses against dodgey toolchains.
+
+- Update to pcp-3.5.7.
+  + Fix build issue on SLES11 SP1 IA64 systems.
+  + Improved rsyslog PMDA handling of queue metrics.
+  + Add open file-descriptor count metric to the Linux PMDA.
+  + Implement logger PMDA line-oriented event mode.
+  + Add regular expression based event filtering in logger PMDA.
+  + The default pmcd.conf now has an access control section, and
+    all remote store operations are blocked by default.
+
+- Update to pcp-3.5.6.
+  + Fix warning from pmie_daily with some /bin/pwd versions.
+  + Numerous Debian packaging updates for lintian cleanliness.
+  + Fixed typos in several man pages.
+  + Added ElasticSearch PMDA.
+  + Fix build on RHEL4 with older sys/queue.h variant.
+
+- Update to pcp-3.5.5.
+  + Resolve Debian packaging issues preventing new uploads.
+  + Fix warnings from pmie_check with some /bin/pwd versions.
+- Update to pcp-3.5.4.
+  + Fix warnings from pmlogger_check with some /bin/pwd versions.
+- Update to pcp-3.5.3.
+  + Remove reliance on a cpp binary being installed locally.
+  + Ensure compressed pmie log files are also cleaned up daily.
+  + Extend the event store mechanism to be more generally useful. (forwarded request 78537 from dmdiss)</comment>
+    <requestid>78620</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>bea498ad007677f346bd92d8d8280fe4</srcmd5>
+    <version>3.5.8</version>
+    <time>1313413392</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78620
+</comment>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>ac97c01cce2d0845fb6821e83d781d6c</srcmd5>
+    <version>3.5.8</version>
+    <time>1314693154</time>
+    <user>saschpe</user>
+    <comment>- Add .so version to library package name
+- Simplify package file lists (forwarded request 79984 from dmdiss)</comment>
+    <requestid>80131</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>5985cdbaf2342da953f99cd10424839f</srcmd5>
+    <version>3.5.8</version>
+    <time>1314693177</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80131
+</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>5985cdbaf2342da953f99cd10424839f</srcmd5>
+    <version>3.5.8</version>
+    <time>1319182233</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>ba33fa428964371993de628b71bb3740</srcmd5>
+    <version>3.5.8</version>
+    <time>1324831065</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>97494</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>6d05b5a8dd205882afe7c13085f7fe88</srcmd5>
+    <version>3.5.8</version>
+    <time>1329823358</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106221</requestid>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>6d05b5a8dd205882afe7c13085f7fe88</srcmd5>
+    <version>3.5.8</version>
+    <time>1340183782</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>caa1fa0365a837e5bc5505ebd163c2e1</srcmd5>
+    <version>3.6.4</version>
+    <time>1341148484</time>
+    <user>coolo</user>
+    <comment>- Remove invalid cpan/PMDA manifest entry. 
+- Update to pcp-3.6.4.
+  + Fix build on s390x platform (thanks to Dan Horak)
+  + Rethink order of PATH setting for pcp start scripts, to ensure
+    binaries from other packages with names that conflict with pcp
+    binaries are not found ahead of the same-named pcp binary. (forwarded request 125460 from dmdiss)</comment>
+    <requestid>125467</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>cea18edd9fc15555e8b774037f42e72b</srcmd5>
+    <version>3.6.4</version>
+    <time>1341344550</time>
+    <user>coolo</user>
+    <comment>- Remove fix_cpan_pmda_manifest.patch, no longer needed with fixed
+  upstream tarball. 
+- Mention bnc#732763 in changelog (forwarded request 127010 from dmdiss)</comment>
+    <requestid>127011</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>5ec754c4bdd907ee9101399d8cc4e31b</srcmd5>
+    <version>3.6.4</version>
+    <time>1343734662</time>
+    <user>coolo</user>
+    <comment>- use addFilter for rpmlintrc, setBadness is not acceptable for Factory. (forwarded request 129316 from dmdiss)</comment>
+    <requestid>129317</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d10fe5b3f5c08cfbbe676932a861fc3d</srcmd5>
+    <version>3.6.5</version>
+    <time>1347883298</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133904</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>d10fe5b3f5c08cfbbe676932a861fc3d</srcmd5>
+    <version>3.6.5</version>
+    <time>1359109583</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>04da1b183d5681d052ee4e0c1a02fc84</srcmd5>
+    <version>3.6.10</version>
+    <time>1360230337</time>
+    <user>coolo</user>
+    <comment>minor update with fix for CVE-2012-5530 (bnc#782967): tmpfile flaws</comment>
+    <requestid>150580</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>807c555621074af65add9a34cb9892b5</srcmd5>
+    <version>3.6.10</version>
+    <time>1366233303</time>
+    <user>coolo</user>
+    <comment>- Move configure run into the %build section.
+
+This is needed so that the rpm hack to update config.sub works (forwarded request 163504 from Andreas_Schwab)</comment>
+    <requestid>163513</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>807c555621074af65add9a34cb9892b5</srcmd5>
+    <version>3.6.10</version>
+    <time>1379663525</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>560a0b69d797c9f76bdf263e3bcc951a</srcmd5>
+    <version>3.6.10</version>
+    <time>1400783874</time>
+    <user>coolo</user>
+    <comment>- use %_rundir if available (forwarded request 233446 from coolo)</comment>
+    <requestid>233455</requestid>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>560a0b69d797c9f76bdf263e3bcc951a</srcmd5>
+    <version>3.6.10</version>
+    <time>1409302131</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>a070e3c192e9a4cc02d2160b1a1d1c3c</srcmd5>
+    <version>3.6.10</version>
+    <time>1415866775</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260714</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>74f1190c55cc7d9c6df3db1eb0452753</srcmd5>
+    <version>3.10.2</version>
+    <time>1425377516</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix perl-PCP-LogImport requires version for pcp-import-sar2pcp.
+- Require pcp-conf with libpcp3 on [open]SUSE platforms.
+- Update to 3.10.2
+  See http://git.pcp.io/cgi-bin/gitweb.cgi?p=pcp/pcp.git;a=blob_plain;f=CHANGELOG;hb=HEAD
+  for details
+- new patches
+  0007-Honor-CFLAGS-in-qmake.patch
+  0008-SUSE-fy-pmsnap-control-path.patch
+  0009-pmsnap-control-var-www-srv-www.patch
+- renamed patches
+  + pcp-xenbuild.patch to 0001-Fix-XEN-build.patch
+  + static_lib_perms.diff to
+    0002-Install-libraries-without-exec-permission.patch
+  + pcp_legacy_init_lsb.patch to 0003-pcp-legacy-init-lsb.patch
+  + remove_cpan_rpaths.patch to 0004-Remove-CPAN-rpaths.patch
+  + rm_init_script_runlevel_4.patch to
+    0005-Remove-runlevel-4-from-init-scripts.patch
+  + create-pmlogger-and-pmie-logdirs-during-install.patch
+    to 0006-create-pmlogger-and-pmie-logdirs-during-install.patch
+- Update to 3.10.1
+  See http://git.pcp.io/cgi-bin/gitweb.cgi?p=pcp/pcp.git;a=blob_plain;f=CHANGELOG;hb=HEAD
+  for details
+- new sub-packages
+  * pcp-doc
+  * pcp-gui
+  * python3-pcp
+  * python-pcp
+  * pmda-infiniband
+  * pmda-perfevent
+  * pmda-papi
+  * import-collectl2pcp
+- drop fix_pmie_pmlogger_startup_races.patch, upstream
+  drop pcp-3.6.10-gcc5-reservedword.patch, obsolete
+- fix gcc5 C99 reserved issue problems with patch
+  pcp-3.6.10-gcc5-reservedword.patch</comment>
+    <requestid>288085</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5289a1aa75f04a0b73e95a9618b03ccd</srcmd5>
+    <version>3.10.3</version>
+    <time>1425891644</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288769</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>4ef0255c3ab185731968bed0eb2405a2</srcmd5>
+    <version>3.10.3</version>
+    <time>1427983347</time>
+    <user>dimstar_suse</user>
+    <comment>with 293389 now merged to fix MakeMaker, 0004-Remove-CPAN-rpaths.patch can be removed</comment>
+    <requestid>293682</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1cea9a803a8f4acab4be0e80bb78af3a</srcmd5>
+    <version>3.10.4</version>
+    <time>1429657880</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297154</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5223cdbc2852d07539f1b31b82bbdb45</srcmd5>
+    <version>3.11.9</version>
+    <time>1498286055</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505504</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>39f0a7dd49a7844aba4eb58027c932b5</srcmd5>
+    <version>3.11.9</version>
+    <time>1504520857</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable QT5 builds for Factory (suse_version &gt; 1320); (bsc#1056477).
+
+- Ensure sysconfig files are populated from templates during installation;
+  (bsc#1056397).
+
+- Add weak pcp dependency to pmdas that were split out from the base package
+  in the 3.10-&gt;3.11 update; (bsc#1055503).</comment>
+    <requestid>519807</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>a7fae19c862527e1dfeecb0705e7d073</srcmd5>
+    <version>3.11.9</version>
+    <time>1511949108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545113</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>01b9658ad7119734d39627fc19b682f9</srcmd5>
+    <version>3.11.9</version>
+    <time>1534321934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627824</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>72b2dbdfa2debd1e131f0a39f415e72b</srcmd5>
+    <version>4.1.1</version>
+    <time>1538672366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>634472</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>9ed0f60ef124d9821013978e79cb46aa</srcmd5>
+    <version>4.2.0</version>
+    <time>1547554553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663756</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b01d52e3f6a46d38d106c7da59f726bf</srcmd5>
+    <version>4.3.0</version>
+    <time>1548769514</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop conflicting dstat symlink; (bsc#1122502).
+
+- Package missing PMDA binaries; (bsc#1121920).
+  + refresh 0001-Install-libraries-without-exec-permission.patch
+- Don't package pmns .NeedRebuild flag; (bsc#1092160).
+  + add 0010-pmns-don-t-package-.NeedRebuild-for-SUSE-distros.patch
+
+- Upgrade to 4.3.0; (bsc#1121914).
+- Refreshed patches
+  0001-Install-libraries-without-exec-permission.patch
+  0007-pmie-add-systemd-timers-as-cron-alternative.patch
+  0008-pmlogger_daily-add-systemd-timers-as-cron-alternativ.patch
+  0009-pmlogger_daily_report-add-systemd-timers-as-cron-alt.patch</comment>
+    <requestid>666983</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>80a529e8ade693b75affab0515b77194</srcmd5>
+    <version>4.3.0</version>
+    <time>1549458305</time>
+    <user>coolo</user>
+    <comment>- Drop distribution-release build dependency completely; (bsc#1123311).
+  + modify 0010-pmns-don-t-package-.NeedRebuild-for-SUSE-distros.patch
+
+- Replace openSUSE/sles-release build dependency; (bsc#1123311).</comment>
+    <requestid>670357</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>bcdaaa8cba0edc231488daffa0899a7b</srcmd5>
+    <version>4.3.1</version>
+    <time>1551468612</time>
+    <user>coolo</user>
+    <comment>- Upgrade to 4.3.1; (bsc#1127437).
+  + Add proper systemd timer service dependency tracking
+  + pmrep: fix a dynamic header corner case with missing values
+  + pmie: fix for segv and bad sum_inst() use
+  + pmview: fix a missing timeout slot connection
+- Drop upstreamed patches:
+  0004-create-pmlogger-and-pmie-logdirs-during-install.patch
+  0007-pmie-add-systemd-timers-as-cron-alternative.patch
+  0008-pmlogger_daily-add-systemd-timers-as-cron-alternativ.patch
+  0009-pmlogger_daily_report-add-systemd-timers-as-cron-alt.patch
+  0010-pmns-don-t-package-.NeedRebuild-for-SUSE-distros.patch
+
+- Drop python2 support for Factory and SLES15-SP1; (bsc#1077777).
+
+- export PACKAGE_DISTRIBUTION=&quot;suse&quot; for build; (bsc#1123311).</comment>
+    <requestid>680548</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>62591043fac518e51f16216e120c9bf7</srcmd5>
+    <version>4.3.1</version>
+    <time>1552571572</time>
+    <user>dimstar_suse</user>
+    <comment>Supersedes 683607:
+- Drop (incorrect) pcp-libs Requires from pcp-pmda-lmsensors,
+  pcp-export-pcp2zabbix and pcp-pmda-prometheus.
+  + %{lib_pkg} Requires is inherited via python*-pcp dependency
+
+- Split out zeroconf, pmda-haproxy, pmda-smart, pmda-prometheus,
+  pcp2elasticsearch, pcp2json, pcp2spark, and pmlogger_daily_report files
+  into separate packages, matching upstream; (bsc#1128523).
+- Fix incorrect dependencies for rewritten monitoring agents; (bsc#1128606).
+- Ensure symlink sources and targets are in the same package; (bsc#1127978).
+- Move pcp-dstat into the pcp-system-tools package; (bsc#1127978).
+
+- drop unreproducible perfevent_coverage program (boo#1040589)
+- override build date to make package build reproducible (boo#1047218)</comment>
+    <requestid>683832</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>6e7b7177e29462a846961f90cf736f50</srcmd5>
+    <version>4.3.1</version>
+    <time>1557141515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699832</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>78a23d56a7ec69332cd5a44a408d0dff</srcmd5>
+    <version>4.3.4</version>
+    <time>1566893718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725348</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>1bff9c71298763f5c63e1251c471c894</srcmd5>
+    <version>4.3.4</version>
+    <time>1567852468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727813</requestid>
+  </revision>
+</revisionlist>

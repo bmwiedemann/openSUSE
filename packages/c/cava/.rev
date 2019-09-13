@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4de6d4d8013fe6c1c1466dd172c149a2</srcmd5>
+    <version>0.4.2</version>
+    <time>1491567641</time>
+    <user>maxlin_factory</user>
+    <comment>Please check if the brequires on kbd is correct.</comment>
+    <requestid>483255</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8ff44ee0df7916f2760ff384a4607fe7</srcmd5>
+    <version>0.4.3</version>
+    <time>1493580228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>491963</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>844b10292655486585b806bb34453a9c</srcmd5>
+    <version>0.5.0</version>
+    <time>1503393002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  new features:
+  * gradient
+  bugfixes:
+  * memory leak
+  * increased config reload speed
+  * raw output not goint to /dev/stdout
+</comment>
+    <requestid>517924</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b42791261b2e9a69f31289472a8e3e6</srcmd5>
+    <version>0.6.0</version>
+    <time>1503999925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * Autosens of low values (dynamic range)
+  * Removed config parameter 'overshoot'
+  * Removed config parameter 'mode'
+  * New config parameter 'waves'
+  * Changed config parameter 'style' to 'channels' (was either 'mono' or 'stereo' anyway)
+  * Parameters 'integral' and 'gravity' are now in percentage</comment>
+    <requestid>519129</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f11fc6358970b1b3a525127f299a5091</srcmd5>
+    <version>0.6.1</version>
+    <time>1525611761</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  new features:
+  * sndio backend
+  bug fixes:
+  * Fix fftw_complex usage, drastically improving visualization
+  * better cleanup and exiting
+  * added a check to see if pulseaudio is running
+  * fixed bug preventing color in noncurses mode from working
+  * Fix build errors and warnings if not using ncurses
+  * Generally improved fifo input and raw output</comment>
+    <requestid>604592</requestid>
+  </revision>
+</revisionlist>

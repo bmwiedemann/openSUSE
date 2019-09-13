@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7960ab7c5214cc388d5c5b7ffa506044</srcmd5>
+    <version>3.2.2</version>
+    <time>1418737673</time>
+    <user>dimstar_suse</user>
+    <comment>Initial commit</comment>
+    <requestid>264134</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b3855c0d01d504b563453ad224a04cf3</srcmd5>
+    <version>3.4</version>
+    <time>1430595580</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>304889</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c2a19da5e96bf3a707262f31b31ac001</srcmd5>
+    <version>3.4</version>
+    <time>1434456364</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312240</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>890ff36f03f59bdb21cabd89791390d5</srcmd5>
+    <version>3.4.1</version>
+    <time>1435652290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314070</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5d692e3e6a8cea673d40a44d837734bf</srcmd5>
+    <version>3.4.2</version>
+    <time>1466501434</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403365</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>eedd76b894a30e91335a584cfff5c977</srcmd5>
+    <version>3.4.2</version>
+    <time>1468999163</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411488</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ebcc45fede63a34c730bde20b960d8be</srcmd5>
+    <version>3.5</version>
+    <time>1486046572</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453830</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2d1931def595fb4e321991699d12dc7c</srcmd5>
+    <version>3.5.1</version>
+    <time>1488932180</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.5.1</comment>
+    <requestid>477357</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>52204e85047be7416304cb50500f3997</srcmd5>
+    <version>3.5.1</version>
+    <time>1498485406</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506199</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>85816a20aa9c63b85507275eddd203e4</srcmd5>
+    <version>3.5.1</version>
+    <time>1500275538</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510324</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>6f0371f068c1fe1b127e39ccd128ea40</srcmd5>
+    <version>3.5.1</version>
+    <time>1522935319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593736</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="python-brotlipy" project="openSUSE:Factory">
+  <title>Python binding to the Brotli library</title>
+  <description>This library contains Python bindings for the reference Brotli encoder/decoder.
+This allows Python software to use the Brotli compression algorithm directly from Python code.
+
+</description>
+  <devel project="devel:languages:python" package="python-brotlipy"/>
+</package>

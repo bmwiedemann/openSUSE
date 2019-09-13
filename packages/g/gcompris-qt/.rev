@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8fbb92f446aafea70713a4e77c1c0d60</srcmd5>
+    <version>0.61</version>
+    <time>1473888857</time>
+    <user>dimstar_suse</user>
+    <comment>Correct revision from devel-repository</comment>
+    <requestid>418693</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e7cd791728299403f0a31e73bdc6d13b</srcmd5>
+    <version>0.61</version>
+    <time>1479662395</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440995</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>320a0b09de8f320e557cca569429ee41</srcmd5>
+    <version>0.61</version>
+    <time>1480341915</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441692</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>884745d8e8d6397aa2450ea3b9d2834f</srcmd5>
+    <version>0.70</version>
+    <time>1483048217</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447645</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e9f897e8574c60fc7be12c3caf895719</srcmd5>
+    <version>0.70</version>
+    <time>1487260959</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456859</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>502b494396d683070ef4793ad651fbe8</srcmd5>
+    <version>0.80</version>
+    <time>1503926309</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519046</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5696c3f2e624949b13badc60e22f7121</srcmd5>
+    <version>0.81</version>
+    <time>1507570873</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530470</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1991dac83071f7f10a66325daeb708df</srcmd5>
+    <version>0.90</version>
+    <time>1521579537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587814</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>545a02b9ad61fe0f05aa14d81434a4cd</srcmd5>
+    <version>0.90</version>
+    <time>1524238136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597551</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9bb35f1cfc79dc17d612785b6c454833</srcmd5>
+    <version>0.91</version>
+    <time>1527582887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610788</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>65ea87a891e0d9716b37165c447d57bb</srcmd5>
+    <version>0.91</version>
+    <time>1529402121</time>
+    <user>maxlin_factory</user>
+    <comment>This fix build on Factory.
+- Backport upstream fix qt5_use_modules is deprecated in Qt 5.11
+  https://cgit.kde.org/gcompris.git/patch/?id=35278731
+  35278731_0.91_backport.patch
+
+- Really fix 42.3 with defined %mail_build 
+- Fix broken build Leap 42.3 by defining %make_build if not exist</comment>
+    <requestid>616023</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6488eee932866ca909f4fa5d0dca7a59</srcmd5>
+    <version>0.95</version>
+    <time>1548063967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662859</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5df742e8569404028684fff053335a29</srcmd5>
+    <version>0.96</version>
+    <time>1551785137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681543</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2e31ded9307c700d31385c0050cbb2d3</srcmd5>
+    <version>0.96</version>
+    <time>1568025465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729326</requestid>
+  </revision>
+</revisionlist>

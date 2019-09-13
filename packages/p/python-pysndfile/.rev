@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>067aeed777b9bcd3b0dc6299cf942e24</srcmd5>
+    <version>1.1.0</version>
+    <time>1525960184</time>
+    <user>dimstar_suse</user>
+    <comment>reading/writing soundfiles in python</comment>
+    <requestid>605515</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b6297afbfd56063319c558a05b37105c</srcmd5>
+    <version>1.3.2</version>
+    <time>1534100137</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the test condition, run them always
+
+- Update to version 1.3.2
+  * No obvious changelog</comment>
+    <requestid>628717</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a2d2542a301641930fcce9d85f73b49f</srcmd5>
+    <version>1.3.2</version>
+    <time>1549624555</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672627</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>91cea62046a30cb791f181a03e60ab59</srcmd5>
+    <version>1.3.2</version>
+    <time>1552206857</time>
+    <user>coolo</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>682427</requestid>
+  </revision>
+</revisionlist>

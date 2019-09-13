@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="340">
+    <srcmd5>1cef78df1596f42d21a5f5b7b57bad95</srcmd5>
+    <version>0.5.1</version>
+    <time>1168902839</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>32e4dbe12fcb341f796471d04b42a524</srcmd5>
+    <version>0.5.2</version>
+    <time>1185321996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="74">
+    <srcmd5>32e4dbe12fcb341f796471d04b42a524</srcmd5>
+    <version>0.5.2</version>
+    <time>1185321996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="75">
+    <srcmd5>45726f462e0a8270615a9916575534ad</srcmd5>
+    <version>0.5.2</version>
+    <time>1245363587</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="77">
+    <srcmd5>45726f462e0a8270615a9916575534ad</srcmd5>
+    <version>0.5.2</version>
+    <time>1245363587</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="78">
+    <srcmd5>cfc1013fc3fc3d7684dacb71156fa1b6</srcmd5>
+    <version>0.5.2</version>
+    <time>1268923696</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="80">
+    <srcmd5>cfc1013fc3fc3d7684dacb71156fa1b6</srcmd5>
+    <version>0.5.2</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="81">
+    <srcmd5>cfc1013fc3fc3d7684dacb71156fa1b6</srcmd5>
+    <version>0.5.2</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="84">
+    <srcmd5>cfc1013fc3fc3d7684dacb71156fa1b6</srcmd5>
+    <version>0.5.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="85">
+    <srcmd5>0c7aa29528f2e9fc06b8dc5cc01b6877</srcmd5>
+    <version>0.5.2</version>
+    <time>1317744639</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86387 from uli_suse)</comment>
+    <requestid>86413</requestid>
+  </revision>
+  <revision rev="11" vrev="87">
+    <srcmd5>0c7aa29528f2e9fc06b8dc5cc01b6877</srcmd5>
+    <version>0.5.2</version>
+    <time>1319181900</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="88">
+    <srcmd5>64cbf2f6387af3361bebe7503d2f4b5e</srcmd5>
+    <version>0.5.2</version>
+    <time>1323191525</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="90">
+    <srcmd5>64cbf2f6387af3361bebe7503d2f4b5e</srcmd5>
+    <version>0.5.2</version>
+    <time>1340183360</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="92">
+    <srcmd5>64cbf2f6387af3361bebe7503d2f4b5e</srcmd5>
+    <version>0.5.2</version>
+    <time>1359108920</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="94">
+    <srcmd5>64cbf2f6387af3361bebe7503d2f4b5e</srcmd5>
+    <version>0.5.2</version>
+    <time>1379662413</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="96">
+    <srcmd5>64cbf2f6387af3361bebe7503d2f4b5e</srcmd5>
+    <version>0.5.2</version>
+    <time>1409300944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="97">
+    <srcmd5>2cc3bdb539a286ef7bd1aa6ad4aa0084</srcmd5>
+    <version>0.5.2</version>
+    <time>1412690421</time>
+    <user>coolo</user>
+    <comment>- fix source URL
+
+- Remove ancient/unused spec tags/sections
+- Use Source URLs and update the description</comment>
+    <requestid>254318</requestid>
+  </revision>
+  <revision rev="18" vrev="98">
+    <srcmd5>c5ddfa189d7aede9259bd184b6bc7bed</srcmd5>
+    <version>0.5.2</version>
+    <time>1429658362</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file with spec-cleaner (forwarded request 298200 from pluskalm)</comment>
+    <requestid>298274</requestid>
+  </revision>
+</revisionlist>

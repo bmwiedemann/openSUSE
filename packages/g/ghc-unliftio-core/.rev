@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7268fbbe98c76c73bf6f9ed8f9c1f2c</srcmd5>
+    <version>0.1.1.0</version>
+    <time>1527675337</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-unliftio-core to the latest version.</comment>
+    <requestid>607917</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e67e5bd87ce2cf5d808a9c28cd556493</srcmd5>
+    <version>0.1.1.0</version>
+    <time>1532161457</time>
+    <user>dimstar_suse</user>
+    <comment>- Add unliftio-core at version 0.1.1.0.</comment>
+    <requestid>623887</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>afa083251b3e0aeec1d0e74b1f589b17</srcmd5>
+    <version>0.1.2.0</version>
+    <time>1535963706</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>632492</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e35a449875ee6a88568f18fb49d34a5c</srcmd5>
+    <version>0.1.2.0</version>
+    <time>1540448491</time>
+    <user>dimstar_suse</user>
+    <comment>trivial version update</comment>
+    <requestid>643204</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>492ba1b7d7934dc7c4656f21e5ff1c89</srcmd5>
+    <version>0.1.2.0</version>
+    <time>1560971540</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710647</requestid>
+  </revision>
+</revisionlist>

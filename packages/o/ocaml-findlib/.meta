@@ -1,0 +1,9 @@
+<package name="ocaml-findlib" project="openSUSE:Factory">
+  <title>OCaml Library Manager</title>
+  <description>
+Findlib is a library manager for Objective Caml. It provides a convention how to store libraries, and a file format (&quot;META&quot;) to describe the properties of libraries. There is also a tool (ocamlfind) for interpreting the META files, so that it is very easy to use libraries in programs and scripts. 
+Findlib is the de-facto standard for library management in OCaml.
+  </description>
+  <devel project="devel:languages:ocaml" package="ocaml-findlib"/>
+  <url>http://projects.camlcity.org/projects/findlib.html</url>
+</package>

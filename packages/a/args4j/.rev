@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f7e340981128420bf9a16479929f658</srcmd5>
+    <version>2.0.9</version>
+    <time>1406914002</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>241485</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0f7e340981128420bf9a16479929f658</srcmd5>
+    <version>2.0.9</version>
+    <time>1409300508</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>19c3f3e3391169ae87647ceb8898f276</srcmd5>
+    <version>2.0.9</version>
+    <time>1467705099</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405988</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>a49ba2594898eea4c8aac7f151f82b51</srcmd5>
+    <version>2.0.9</version>
+    <time>1505507507</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>526301</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>a56de72bd59c0b7fd7bab4f99ac8da36</srcmd5>
+    <version>2.0.9</version>
+    <time>1530993542</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620762</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>b0be3e95fd0c98a7bf3c048642902bc1</srcmd5>
+    <version>2.0.9</version>
+    <time>1540819333</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>644924</requestid>
+  </revision>
+</revisionlist>

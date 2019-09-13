@@ -1,0 +1,13 @@
+<package name="rubygem-rubyforge" project="openSUSE:Factory">
+  <title>A simplistic script which automates a limited set of rubyforge operations</title>
+  <description>A simplistic script which automates a limited set of rubyforge operations
+
+
+Authors:
+--------
+    Ara T. Howard &lt;ara.t.howard@noaa.gov&gt;
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-rubyforge"/>
+  <url>http://rubyforge.org/projects/codeforpeople/</url>
+</package>

@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>5595505b3f80ec70c7fd36878707ee6b</srcmd5>
+    <version>0.8.4</version>
+    <time>1410967485</time>
+    <user>coolo</user>
+    <comment>I want to maintain compizconfig-settings-manager in factory and would like to use X11:Compiz as development base. rev55. The factory link was removed, but I did find out the reason. Perhaps by accdent. So this is a readd of the package to factory.</comment>
+    <requestid>248838</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dbdc8f1536f21469180d1f3106f066d2</srcmd5>
+    <version>0.8.9</version>
+    <time>1448553653</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>344909</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>21f08ab6845c737e835d97a2bc8b6b95</srcmd5>
+    <version>0.8.9</version>
+    <time>1450856993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>349692</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6ea301d34c52657a976d6abf3dda159f</srcmd5>
+    <version>0.8.12.1</version>
+    <time>1456434637</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>361305</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>58825210a81c6af0bce3ac984f876fd7</srcmd5>
+    <version>0.8.12.2</version>
+    <time>1459002547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>379482</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0eac986b7a09df4bdf2400fd7e648c66</srcmd5>
+    <version>0.8.12.3</version>
+    <time>1459255841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>380751</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>15b1672f2ffcb4e6b8a4943b697114c4</srcmd5>
+    <version>0.8.12.3</version>
+    <time>1462865236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>394034</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9d5347169f01224110cae3ae24a58082</srcmd5>
+    <version>0.8.12.4</version>
+    <time>1464484401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>398347</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7ff0eeda56db70af57ae9287fc50e20d</srcmd5>
+    <version>0.8.14</version>
+    <time>1494938257</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491338</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>02448d296bbf37a7eee94e7b6dd126d0</srcmd5>
+    <version>0.8.16</version>
+    <time>1543223932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.16.</comment>
+    <requestid>648275</requestid>
+  </revision>
+</revisionlist>

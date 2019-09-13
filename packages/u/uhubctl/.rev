@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db7398933c78ac6dce776a9444322990</srcmd5>
+    <version>2.0.0+git20180615.1709413</version>
+    <time>1530304129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0+git20180615.1709413:
+  * j5create JUH470 only works in USB2 mode
+  * Add D-Link DUB H7 rev D1 (black) as supported device
+  * Add Renesas uPD720202 PCIe USB 3.0 host controller as supported device
+  * Add Raspberry Pi Model 3 B+ as supported device
+  * Add columns for port count and USB version into device table
+  * Code formatting cleanups
+  * Fixed displaying duplicate hubs in status output
+  * Add Moxa Uport-407 as supported device
+  * Remove mention of building libusb 1.0.22 from head
+  * move action to outer loop and hub to inner loop (fixes #86)
+- Run spec-cleaner
+- Update to version 0+git20170520.e537110:
+  * Bump copyright year
+  * Add AmazonBasics 7 port USB 3.0 hub as supported device
+  * Add Asus Z87-PLUS as supported device
+  * Add Rosewill RHUB-210 as supported device
+  * Add support for FreeBSD and MacPorts on Mac
+  * Add information about release and EOL years for supported hubs
+  * add option to reset hub after operation
+  * Add Sunix SHB4200MA as compatible device
+  * fix docs for -R (from #30)
+- initial commit.
+</comment>
+    <requestid>617493</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>23540861f4b7635b97297ff7cc30fb3c</srcmd5>
+    <version>2.1.0</version>
+    <time>1567679683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728040</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cbcefbf4eab0c527251ee54f3a611ce8</srcmd5>
+    <version>1.3.1.1</version>
+    <time>1432190153</time>
+    <user>coolo</user>
+    <comment>Contravariant functors</comment>
+    <requestid>307781</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1fd20044a8ebe1aa9e203bd8621b997e</srcmd5>
+    <version>1.3.2</version>
+    <time>1438750315</time>
+    <user>coolo</user>
+    <comment>- update to 1.3.2
+* Add ($&lt;) operator</comment>
+    <requestid>320295</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>068aa64248f449379a349477a8d912b4</srcmd5>
+    <version>1.3.3</version>
+    <time>1442474353</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.3
+* Add instance Monoid m =&gt; Divisible (Const m)</comment>
+    <requestid>330756</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d1f638a2c7980e60de773bdd416b3ad8</srcmd5>
+    <version>1.4</version>
+    <time>1453998222</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4
+* Improved the performance of Deciding at the cost of downgrading it to Trustworthy.
+* Support for transformers 0.5 (forwarded request 355947 from mimi_vx)</comment>
+    <requestid>355948</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>12c1f6ed0ffe59b2355c6174b21c1b14</srcmd5>
+    <version>1.4</version>
+    <time>1469081016</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411363</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>bb4847af55ba5c5d70452ea747b6a905</srcmd5>
+    <version>1.4</version>
+    <time>1505503713</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524331</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>30c6b1e40b1f127db3a25cdda9757261</srcmd5>
+    <version>1.4.1</version>
+    <time>1527674726</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-contravariant to the latest version.</comment>
+    <requestid>607773</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>80f399a3e5133f47c8522576e3743a25</srcmd5>
+    <version>1.5</version>
+    <time>1532445385</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update contravariant to version 1.5.
+  1.5 [2018.07.01]
+  ----------------
+  * Support building with GHC 8.6, where `Data.Functor.Contravariant` has been
+    moved into `base`.
+
+- initial commit</comment>
+    <requestid>623747</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6c22b84396ee8f87f83db93e80965771</srcmd5>
+    <version>1.5</version>
+    <time>1540448630</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643372</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>963aeb704f78a44c47e91c6e1c29e767</srcmd5>
+    <version>1.5.1</version>
+    <time>1557653687</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>701762</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5e4bf18d3d3c000547d887acaa965ad2</srcmd5>
+    <version>1.5.2</version>
+    <time>1560338311</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>709198</requestid>
+  </revision>
+</revisionlist>

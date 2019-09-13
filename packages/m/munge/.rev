@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3f67756c97f8058c6850c93b17c05cac</srcmd5>
+    <version>0.5.12</version>
+    <time>1477644360</time>
+    <user>dimstar_suse</user>
+    <comment>Package is needed for SLE 12 HPC module.
+Therefore, it will be maintained.
+It should be included in openSUSE:Factory
+as well.</comment>
+    <requestid>435752</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2eaad5268f82f6e74a51278c1180846e</srcmd5>
+    <version>0.5.12</version>
+    <time>1481390938</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444967</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>50b653c9c274ff961c57e1de02ee6ec5</srcmd5>
+    <version>0.5.12</version>
+    <time>1484660142</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450095</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>36b0a3355c4326a77759a51fbf35175c</srcmd5>
+    <version>0.5.12</version>
+    <time>1487029702</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456422</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bb6434cb6a76af163b70d59d4a25668a</srcmd5>
+    <version>0.5.13</version>
+    <time>1513941528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.13:
+  * Added support for OpenSSL 1.1.0.
+  * Added support for UID/GID values &gt;= 2^31.
+  * Added support for getentropy() and getrandom().
+  * Added --trusted-group cmdline opt to munged.
+  * Added --log-file and --seed-file cmdline opts to munged.
+  * Changed default MAC algorithm to SHA-256.
+  * Fixed autoconf installation directory variable substitution.
+  * Fixed all gcc, clang, and valgrind warnings.
+  * Improved resilience and unpredictability of PRNG.
+  * Improved hash table performance.
+  * Removed libmissing dependency from libmunge.
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)</comment>
+    <requestid>554960</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>34a77e7b064f41f640b52461efd5c055</srcmd5>
+    <version>0.5.13</version>
+    <time>1521405895</time>
+    <user>dimstar_suse</user>
+    <comment>- added README.SUSE file  (bsc#1085665) (forwarded request 587902 from mslacken)</comment>
+    <requestid>587905</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7757e7dcfde3c8120f627fd749c74fd3</srcmd5>
+    <version>0.5.13</version>
+    <time>1528897231</time>
+    <user>maxlin_factory</user>
+    <comment>- Switch to user 'munge', group 'munge'.
+
+- Adding to SLE12 SP2 FATE#321706.</comment>
+    <requestid>616091</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>1444bd0637b4181db6ab48a9feb7a84e</srcmd5>
+    <version>0.5.13</version>
+    <time>1529501472</time>
+    <user>maxlin_factory</user>
+    <comment>- Handle license file using %license where applicable.
+
+- Package sysconfig.munge only on non-systemd systems.
+- Fix group settings for non-systemd systems in spec file:
+  group 'munge' is used there as well.
+- Some macro cleanup.</comment>
+    <requestid>617651</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>7ee7bbbb21f57942d3f36ffa22e57ddc</srcmd5>
+    <version>0.5.13</version>
+    <time>1538374528</time>
+    <user>dimstar_suse</user>
+    <comment>- Add coreutils to the Requires(post/postun). (forwarded request 637211 from eeich)</comment>
+    <requestid>637212</requestid>
+  </revision>
+</revisionlist>

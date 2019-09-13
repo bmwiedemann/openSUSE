@@ -1,0 +1,338 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df7044e620ffc840f2350a7e9b3a746d</srcmd5>
+    <version>1.59</version>
+    <time>1168903934</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6026f68ce43ace91b6a27a0e1c3b9e5c</srcmd5>
+    <version>1.66</version>
+    <time>1202501307</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="53">
+    <srcmd5>35932234fba1111261cc5e314a4de0bb</srcmd5>
+    <version>1.66</version>
+    <time>1222790821</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="54">
+    <srcmd5>35932234fba1111261cc5e314a4de0bb</srcmd5>
+    <version>1.66</version>
+    <time>1222790821</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1c16184cbffed11ef0129459d0207a76</srcmd5>
+    <version>1.68</version>
+    <time>1232640454</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1c16184cbffed11ef0129459d0207a76</srcmd5>
+    <version>1.68</version>
+    <time>1232640454</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>12182306d26026d706ee94a191544559</srcmd5>
+    <version>1.68</version>
+    <time>1263297443</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-LibXSLT based on submit request 28951 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>81423e346999962755c68fa294550acb</srcmd5>
+    <version>1.70</version>
+    <time>1263835064</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-LibXSLT based on submit request 29672 from user anicka
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a6f93fd9dc6ef184c84eb903ff0c6998</srcmd5>
+    <version>1.70</version>
+    <time>1268925658</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>a6f93fd9dc6ef184c84eb903ff0c6998</srcmd5>
+    <version>1.70</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>a6f93fd9dc6ef184c84eb903ff0c6998</srcmd5>
+    <version>1.70</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>3e3495fec96eb4c0958ee2ada7c6d89a</srcmd5>
+    <version>1.70</version>
+    <time>1291134472</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54126 from user coolo
+</comment>
+    <requestid>54126</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>3d952867ddee841734c9abf90ced19af</srcmd5>
+    <version>1.70</version>
+    <time>1291134481</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54126
+</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>eabb4871d8c9e513d3eb29e294cb2b4b</srcmd5>
+    <version>1.70</version>
+    <time>1291584520</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54696 from user coolo
+</comment>
+    <requestid>54696</requestid>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>7c334760bf2af8bce945dcd74a91a3bb</srcmd5>
+    <version>1.70</version>
+    <time>1291584527</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54696
+</comment>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>7c334760bf2af8bce945dcd74a91a3bb</srcmd5>
+    <version>1.70</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>04808529a3c6d72392d97e44e7c017d1</srcmd5>
+    <version>1.71</version>
+    <time>1316447973</time>
+    <user>lrupp</user>
+    <comment>- corrected licence to same as Perl
+- update to 1.71
+    - Fixed https://rt.cpan.org/Ticket/Display.html?id=50487 :
+        - add a blacklist for libxslt-1.1.25 which has a deadlock that
+        hangs a test.
+    - Fixed https://rt.cpan.org/Ticket/Display.html?id=52422 :
+        - Unexpected webserver dependency in test
+    - Updated the version control instructions in the README to bitbucket.org.</comment>
+    <requestid>81971</requestid>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>04808529a3c6d72392d97e44e7c017d1</srcmd5>
+    <version>1.71</version>
+    <time>1319182322</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>f2c85649730e21692fb0ee1b64dd09c9</srcmd5>
+    <version>1.74</version>
+    <time>1319718877</time>
+    <user>coolo</user>
+    <comment>- update to 1.74
+    - Convert some test scripts from Test.pm to Test::More
+    - In the process made &quot;Encode&quot; and perl-5.8.1. pre-requisites of this
+    distribution.
+    - Add the &quot;make runtest&quot; and &quot;make distruntest&quot; targets to test using
+    Test-Run.
+
+- update to 1.73
+    - Possible fix for https://rt.cpan.org/Ticket/Display.html?id=71456 :
+        - made the port reservation on t/14security.t for the non-existent
+        URL more robust.
+1.72            Thu Oct  6 13:37:13 IST 2011
+    - Moved the benchmarking code under benchmark/ so it won't be indexed
+    by CPAN (Tim Brody).
+    - Avoid leaking memory inside extension elements by cleaning up on 
+    stylesheet DESTROY (Tim Brody).
+    - xsltInit() and xsltCleanupGlobals() to avoid leaking memory on 
+    init/shutdown (Tim Brody).
+    - Added support for stylesheet context functions via a 
+    $stylesheet-&gt;register_function() method with the same arguments as 
+    XML::LibXSLT-&gt;register_function(). (Tim Brody)
+    - Added support for register_element() on stylesheet objects. The callback
+    may leak memory though - nothing frees the _private attributes of the
+    node + document owner for the passed arguments? (Tim Brody)</comment>
+    <requestid>89535</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>7cd73736beb24bb5a0accde94c683dfb</srcmd5>
+    <version>1.75</version>
+    <time>1320232516</time>
+    <user>coolo</user>
+    <comment>- update to 1.75
+    - Convert the following test scripts from Test.pm to Test::More :
+        - t/03input.t
+    - Fix for https://rt.cpan.org/Public/Bug/Display.html?id=71345 by Tim
+    Brody:
+        - «segfault in free()»
+        - Thanks, Tim!</comment>
+    <requestid>89785</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>815a864a20044acf4253263726a8ab85</srcmd5>
+    <version>1.75</version>
+    <time>1323193787</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>dfd29fefd7b33ce71faf217e1691614c</srcmd5>
+    <version>1.76</version>
+    <time>1329221388</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103910</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>dfd29fefd7b33ce71faf217e1691614c</srcmd5>
+    <version>1.76</version>
+    <time>1340183953</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>dfd29fefd7b33ce71faf217e1691614c</srcmd5>
+    <version>1.76</version>
+    <time>1359109851</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>932ca70aa583b6783877e9b669ea2af8</srcmd5>
+    <version>1.80</version>
+    <time>1370516299</time>
+    <user>coolo</user>
+    <comment>- updated to 1.80
+     - Bump the minimum version of libxslt2 to 1.1.28.
+         - due to failures such as http://www.cpantesters.org/cpan/report/6f5029ee-639a-11e2-8465-2a97270fb964
+ 
+     - Die when libxslt is 1.1.27.
+         - Due to this bug - https://bugzilla.gnome.org/show_bug.cgi?id=684564
+ 
+     - Add output_method method, update documentation of media_type
+     (dorian@cpan).
+         - Thanks, Dorian!
+ 
+     - Apply a patch from Michael Ludwig clarifying the quoting of string
+     parameters to the XSLT transformation.
+         - Thanks, Michael! (forwarded request 177551 from coolo)</comment>
+    <requestid>177559</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3eeddf61063b81f7302a24dc8d1512cc</srcmd5>
+    <version>1.81</version>
+    <time>1375204265</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184813</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>3eeddf61063b81f7302a24dc8d1512cc</srcmd5>
+    <version>1.81</version>
+    <time>1379663920</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5ba7f4833594f38fc096a4eff1d68bc9</srcmd5>
+    <version>1.82</version>
+    <time>1385473338</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208476</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a9955342f7c22826be26090bccb334e3</srcmd5>
+    <version>1.87</version>
+    <time>1392222726</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221872</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>860ca4b31741e33f5cac09022127fb99</srcmd5>
+    <version>1.88</version>
+    <time>1393605985</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223870</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>28293a9839c9295109259bf3b55f9110</srcmd5>
+    <version>1.92</version>
+    <time>1406645276</time>
+    <user>coolo</user>
+    <comment>- updated to 1.92
+     - Add scripts/tag-release.pl .
+ 
+ 1.91    2014-04-12
+     - t/cpan-changes.t : minimum version of Test::CPAN::Changes.
+         - This is to avoid test failures such as:
+             - http://www.cpantesters.org/cpan/report/5af7d5eb-6bfa-1014-b84e-eb85912f2992
+ 
+ 1.90    2014-04-10
+     - Handle $Config{dlext} correctly on Windows.
+         - https://rt.cpan.org/Ticket/Display.html?id=94516
+         - Thanks to kmx for the report and fix.
+     - Add t/pod.t .
+         - Fix some POD problems.
+     - Add t/cpan-changes.t and convert Changes to CPAN::Changes format.
+     - Add t/style-trailing-space.t.
+         - Remove trailing whitespace.
+ 
+ 1.89    2014-03-05
+     - Fix memory management of node-sets returned from extension functions.
+       Without calling xsltExtensionInstructionResultRegister, node-sets
+       could be freed too early, leading to strange errors or segfaults.
+         - https://bugzilla.gnome.org/show_bug.cgi?id=562302
+         - https://rt.cpan.org/Ticket/Display.html?id=93349
+         - Thanks to Alexander Schepanovski for the report.
+     - Document input_callbacks methods
+     - Don't register libxml2 input callbacks twice
+         - https://rt.cpan.org/Public/Bug/Display.html?id=60313
+     - Fix memory leak with extension functions returning node lists
+         - https://rt.cpan.org/Public/Bug/Display.html?id=55623</comment>
+    <requestid>242652</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>28293a9839c9295109259bf3b55f9110</srcmd5>
+    <version>1.92</version>
+    <time>1409302571</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>aedc15813283278801d3ea2668ecd54a</srcmd5>
+    <version>1.94</version>
+    <time>1423668725</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284750</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e43b5411b308cca4e06c4338e555d8e4</srcmd5>
+    <version>1.95</version>
+    <time>1513245023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554844</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>279b439edd6cf9b97cf44fb10c1b35ff</srcmd5>
+    <version>1.96</version>
+    <time>1522404075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591954</requestid>
+  </revision>
+</revisionlist>

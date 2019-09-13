@@ -1,0 +1,5 @@
+<package name="ephoto" project="openSUSE:Factory">
+  <title>ephoto</title>
+  <description>EFL image viewer/editor/manipulator/slideshow creator</description>
+  <devel project="X11:Enlightenment:Factory" package="ephoto"/>
+</package>

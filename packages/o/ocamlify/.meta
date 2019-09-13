@@ -1,0 +1,11 @@
+<package name="ocamlify" project="openSUSE:Factory">
+  <title>include files in OCaml code</title>
+  <description>OCamlify allows to create OCaml source code by including whole files
+into OCaml string or string list. The code generated can be compiled as
+a standard OCaml file. It allows embedding external resources as OCaml
+code.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocamlify"/>
+  <url>http://forge.ocamlcore.org/projects/ocamlify/</url>
+</package>

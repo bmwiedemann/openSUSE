@@ -1,0 +1,12 @@
+<package name="python-azure-cognitiveservices-nspkg" project="openSUSE:Factory">
+  <title>Microsoft Azure Cognitive Services namespace package</title>
+  <description>This is the Microsoft Azure Cognitive Services namespace package.
+
+This package is not intended to be installed directly by the end user.
+
+It provides the necessary files for other packages to extend the azure.cognitiveservices namespace.
+
+</description>
+  <devel project="devel:languages:python:azure" package="python-azure-cognitiveservices-nspkg"/>
+  <url>https://github.com/Azure/azure-sdk-for-python</url>
+</package>

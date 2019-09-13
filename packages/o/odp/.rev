@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f181878234c4420ebba5c99741089b2c</srcmd5>
+    <version>1.11.0.0</version>
+    <time>1489653375</time>
+    <user>dimstar_suse</user>
+    <comment>This is a new package to enable OpenDataPlane (ODP)</comment>
+    <requestid>477160</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>90c9c7de754d1ab86504562b98bef789</srcmd5>
+    <version>1.11.0.0</version>
+    <time>1498485133</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>505192</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ae62c8477037d742f7556069ed4c69eb</srcmd5>
+    <version>1.11.0.0</version>
+    <time>1506340688</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed examples sub-package</comment>
+    <requestid>527722</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bfe3217b3c7d443e1fabe56ba012447c</srcmd5>
+    <version>1.11.0.0</version>
+    <time>1510150302</time>
+    <user>dimstar_suse</user>
+    <comment>- Bug 1066963: address build with libopenssl-1_1_0
+  * Patch file: 0002-fix_libopenssl.patch</comment>
+    <requestid>539789</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>47a28637bb32526db649d9a6a991a357</srcmd5>
+    <version>1.11.0.0</version>
+    <time>1519396252</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequires just libopenssl-devel</comment>
+    <requestid>579194</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1c64aa520b2bd223e10ca042b806d3e9</srcmd5>
+    <version>1.11.0.1</version>
+    <time>1521499084</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed 0002-fix_libopenssl.patch since fix in upstream code
+- Upgraded to latest monarch release 1.11.0.1
+</comment>
+    <requestid>587938</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,706 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>da550de44359df81c3bb74d6a71d1fd9</srcmd5>
+    <version>1.0.1.5.g82e47d0+git.1355912775.82e47d0</version>
+    <time>1358413055</time>
+    <user>coolo</user>
+    <comment>New packages needed by new version of OpenStack</comment>
+    <requestid>148083</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>da550de44359df81c3bb74d6a71d1fd9</srcmd5>
+    <version>1.0.1.5.g82e47d0+git.1355912775.82e47d0</version>
+    <time>1359110002</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b1b5d95e1bed4ecc60955076c9d7d461</srcmd5>
+    <version>1.0.1.5.g82e47d0+git.1355912775.82e47d0</version>
+    <time>1362731985</time>
+    <user>coolo</user>
+    <comment>Update to latest Folsom + fixes to make things really work</comment>
+    <requestid>157843</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>acf35e1360dadf3f234d5880f99b58bb</srcmd5>
+    <version>1.0.1.5.g82e47d0+git.1355912775.82e47d0</version>
+    <time>1365160237</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>162612</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d6aa4744156d0d977f0c0a12d0214aa6</srcmd5>
+    <version>1.0.3</version>
+    <time>1367237802</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.3:
+  + Released version of the tarball 
+- Drop +git.$TIMESTAMP.$COMMITHASH version suffix
+--------------------------------------------------------------------
+- Update to version 1.0.2.26+git.1361537879.458ff24:
+  + Allow requests 0.8 and greater
+  + Avoid UnicodeEncodeError exception on exception
+  + Handle metadata args the same for all calls.
+  + Fix upload-to-image volume_id help
+  + adding v2 support to cinderclient
+  + Fix typo breaking --debug option to cinder client
+- Drop patches (merged upstream):
+  + print-exceptions.patch
+  + support-requests-1.0.patch
+
+- BuildRequire openstack-suse-macros instead of openstack-macros
+
+- Update support-requests-1.0.patch:
+  + Use alternative version from upstream
+
+- Fix requires of test package
+--------------------------------------------------------------------
+- Update to version 1.0.2.17+git.1360595430.c5cd7e4:
+  + Correct parsing of volume metadata
+  + Update to latest oslo version code.
+  + Re-add setuptools-git to setup.py.
+
+- Add print-exceptions.patch:
+  Fix printing of exceptions
+- Add support-requests-1.0.patch</comment>
+    <requestid>173344</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0f54621ed830f2c3f7081ed5fc0c732e</srcmd5>
+    <version>1.0.3</version>
+    <time>1371152184</time>
+    <user>coolo</user>
+    <comment>Update to latest Grizzly</comment>
+    <requestid>178481</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4c12e793b14c6e2e27afbcd20df73742</srcmd5>
+    <version>1.0.4.49</version>
+    <time>1372863157</time>
+    <user>coolo</user>
+    <comment>- update requires 
+
+- Add new build dependencies:
+  + python-pbr
+  + python-d2to1
+
+- update requires to python-PrettyTable
+  + Released version of the tarball</comment>
+    <requestid>181574</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>52c658bdde9f9c3fd85555f8abf4d9b7</srcmd5>
+    <version>1.0.4.56</version>
+    <time>1373470234</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.4.56:
+  + Implement ability to extend volume.
+  + Enable ability to reset state on snapshots.
+
+- Update to version 1.0.4.52:
+  + Use exceptions from oslo
+
+- Update to version 1.0.4.50:
+  + Fix volume info display error on create with v2.</comment>
+    <requestid>182640</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>024d706847ba39acf7f1048fafef33c9</srcmd5>
+    <version>1.0.4.66</version>
+    <time>1374161634</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.4.62:
+  + Update to latest openstack/requirements.
+
+- Update to version 1.0.4.61:
+  + Fix wrong method call for extend subcommand
+  + Sync install_venv_common from oslo
+  + Implement ability to extend volume for v1.</comment>
+    <requestid>183607</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1372d85fc2d5ef4bd245825feb96fb39</srcmd5>
+    <version>1.0.5.16</version>
+    <time>1376858399</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 1.0.5.16:
+  + Updated from global requirements
+  + python3: Fix tox requirements
+  + Add timeout parameter in requests
+  + Sync strutils from oslo
+  + Add print for &quot;backup-create&quot; command
+
+- Update to version 1.0.5.7:
+  + Add commandline option --metadata for cinder list
+
+- Update to version 1.0.5.5:
+  + Add missing babel dependency
+  + convert third-party exception to ConnectionError
+
+- Update to version 1.0.5.1:
+  + Add support for multiple cinder endpoints
+
+- Update to version 1.0.4.86:
+  + Provide cinder CLI man page.
+  + Sync with global requirements
+  + Add a couple more things to index before release</comment>
+    <requestid>188170</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2ffbc3c6fdf6517157c386194f0ef733</srcmd5>
+    <version>1.0.5.18</version>
+    <time>1377248701</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>196049</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6443807348ce63c780123f8e7042bcc0</srcmd5>
+    <version>1.0.5.23</version>
+    <time>1379328267</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.5.23:
+  + Add volume encryption metadata to cinderclient
+
+- Update to version 1.0.5.21:
+  + Add update_snapshot_metadata action
+  + Fixing erroneous clearing of test callstack</comment>
+    <requestid>197420</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fa80bde03d0064c4d2a6e25b988fca20</srcmd5>
+    <version>1.0.5.25</version>
+    <time>1379341725</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.5.25:
+  + Implement ability to migrate volume
+
+- Update to version 1.0.5.24:
+  + Don't need to init testr explicitly</comment>
+    <requestid>199239</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>fa80bde03d0064c4d2a6e25b988fca20</srcmd5>
+    <version>1.0.5.25</version>
+    <time>1379664141</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>431cf08c053309e08b56958cda2f8480</srcmd5>
+    <version>1.0.5.29</version>
+    <time>1380713559</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.5.29:
+  + Fix help messages for name arguments
+  + Add volume name arguments</comment>
+    <requestid>201603</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>10268c873dd24076a2d9be67517fb3d1</srcmd5>
+    <version>1.0.6</version>
+    <time>1382088871</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 1.0.6:
+  + Replace OpenStack LLC with OpenStack Foundation
+  + Use v2 endpoint with v2 shell for migration
+  + Implement qos support
+  + Fix find volume for migrate command
+  + Synch up with OSLO-Incubator
+  + Error if arguments are not supplied for rename commands
+  + Update docs/index.rst with release info for 1.0.6</comment>
+    <requestid>203661</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>a66fe5570f869a26d782433feb3a7c32</srcmd5>
+    <version>1.0.6</version>
+    <time>1384942905</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>207585</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>193f16eacd8f012f065aaa7e91d90b5d</srcmd5>
+    <version>1.0.7</version>
+    <time>1390200896</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>214221</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e6a5c9c8bac89e862afb09ae4af4f7a5</srcmd5>
+    <version>1.0.7</version>
+    <time>1394387056</time>
+    <user>coolo</user>
+    <comment>- Replace git_tarballs source service with download_files and set_version
+  + Use upstream URL as source (enables verification)
+- Only require argparse on SLE
+
+- Add refresh_patches source service</comment>
+    <requestid>225072</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4e87e6e11d35ffaf21e31a9c9ed6cf1d</srcmd5>
+    <version>1.0.8</version>
+    <time>1397063391</time>
+    <user>coolo</user>
+    <comment>- switch to released version (1.0.8) 
+
+- Update to version python-cinderclient-1.0.8.23.g7240040:
+  * Allow list_extensions to work in cinderclient v2
+  * Remove vim header
+
+- Update to version python-cinderclient-1.0.8.19.g98dade0:
+  * Update service function name for service enable
+  * Remove call to undefined install.post_process()
+
+- Update to version python-cinderclient-1.0.8.15.gbd98d32:
+  * Updated from global requirements
+  * Import access module from keystoneclient to handle V3 endpoints
+  * Update doc string for service disable
+
+- Update to version python-cinderclient-1.0.8.10.gde4f9c4:
+  * Client support for export and import backup service metadata
+
+- Update to version python-cinderclient-1.0.8.8.g3ec28c3:
+  * Fix type-delete to allow deletion by name and ID
+
+- Update to version python-cinderclient-1.0.8.7.gea8c955:
+  * Fix typos in the volumes and snapshots docstrings
+  * Set v2 commands available for v2 service_type
+
+- Update to version python-cinderclient-1.0.8.4.g0b9e2f5:
+  * Updated from global requirements
+
+- Update to version python-cinderclient-1.0.8.3.g6fd8d8e:
+  * Require ctrl_location for encryption-type-create</comment>
+    <requestid>229488</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>4e87e6e11d35ffaf21e31a9c9ed6cf1d</srcmd5>
+    <version>1.0.8</version>
+    <time>1409302831</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0274ca8ba7eb73d5c9866309daf40b05</srcmd5>
+    <version>1.1.0</version>
+    <time>1414943187</time>
+    <user>coolo</user>
+    <comment>- add rpmlintrc as a source 
+- update to 1.1.0:
+  * Make &lt;volume-types&gt; required option for create cg
+  * Update index file for release of 1.1.0
+  * Cinder Client for Consistency Groups
+  * Use adapter from keystoneclient
+  * Updated from global requirements
+  * Add client support in Cinder for volume replication
+  * convert availability zone tests to requests-mock
+  * Convert snapshot tests to requests-mock
+  * Replace httpretty with requests-mock
+  * Fix order of arguments in assertEqual
+  * Avoid extra lookups in extra-specs-list
+  * Support pagination for volume list
+  * Mask passwords in client debug output
+  * Move debug logging to shell
+  * Quotaset update does not return result
+  * Fix the return code of the command reset-state
+  * Update theme for docs
+  * Change &quot;Connection refused&quot; to &quot;Connection error&quot;
+  * Add a tox job for generating docs
+  * Retry when connection to cinder is refused
+  * Add commands for managing and unmanaging volumes
+  * sync latest strutils to python-cinderclient
+  * Optional size parameter for volume creation
+  * Use suitable assert
+  * Fix version discovery and auth_plugins
+  * Add tenant uuid when running cinder list --all-tenants
+  * Remove deprecated command-line args
+  * Updated from global requirements</comment>
+    <requestid>259137</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f57a475c12767def84969e485a434fd2</srcmd5>
+    <version>1.1.1</version>
+    <time>1440658476</time>
+    <user>coolo</user>
+    <comment>- Use %{version} in source
+
+- Switch to version 1.1.1
+
+- Update to version python-cinderclient-1.2.0.post2:
+  * Add support to incremental backups in cinder
+  1.2.0
+  * Enable version discovery
+  * Remove print statement in unit test
+  * Add ability to specify path var to testr
+  * cinder list now supports filter by tenant
+
+- Update to version python-cinderclient-1.1.1.post97:
+  * Uncap library requirements for liberty
+
+- Update to version python-cinderclient-1.1.1.post96:
+  * Allow cinderclient to handle exception response
+
+- Update to version python-cinderclient-1.1.1.post95:
+  * Move unit tests into test directory
+
+- Update to version python-cinderclient-1.1.1.post94:
+  * bash_completion now shows only subcommands when subcommand is &quot;help&quot;
+  * cinder list now prints dash '-' when data is None
+
+- Update to version python-cinderclient-1.1.1.post91:
+  * Update to change name for volume type client
+  * cinderclient accepts arguments after metadata without -- separator
+
+- Update to version python-cinderclient-1.1.1.post88:</comment>
+    <requestid>318397</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>16f89c3febf24fcf06823b4f81794eb8</srcmd5>
+    <version>1.3.1</version>
+    <time>1441727096</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.1:
+  * Prep for 1.3.0
+  * Updated from global requirements
+  * Revert &quot;Enable version discovery&quot;
+  * Fix typo in comment message
+  * Add set_management_url to cinderclient.client
+  * cinderclient does not honor --os-region-name or ENV[OS_REGION_NAME]
+  * Add encryption-type-update to cinderclient
+  * Set max volume size limit for the tenant
+  * Add tests for python-cinderclient and style fix
+  * The is_public filter in VolumeTypeManager.list broke the find in VolumeTypeAccessManager, which caused all commands which should have taken a volume_type name to fail. I have choosen to fix this by effectively removing the filter in the client (and the --all argument to type-list). This is OK, since Cinder implements the filtering by user anyway. The consequence of this change is that the Admin user will always see the entire list (including private types) every time they execute type-list
+  * Add volume multi attach support
+  * Fix functional post test_hook
+  * Fix condition in CheckSizeArgForCreate parser action
+  * Support host-attach of volumes
+  * Bump hacking to &gt;=0.10.0,&lt;0.11 to fix failure of gate pep8
+  * Fix functional readonly_cli tests
+  * Add findall server side filtering
+  * Fix functional tests and tox 2.0 errors
+  * Fixed typos and repeated docstrings
+  * cinderclient deprecated endpoint_type needs dest=
+  * cinderclient no longer honors --endpoint-type
+  * Add functional post test_hook
+  * Add --os-endpoint-type to match other services
+  * Find resource refactoring
+  * Avoid _get_keystone_session() if auth_plugin
+  * Update release notes for 1.2.0 and 1.2.1
+  * Add CLI read-only functional tests
+  * Change --force parameter into boolean
+  * Add search_opts into the method list() for qos specs</comment>
+    <requestid>329495</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c276c8d99046f582481f8393abeb31b6</srcmd5>
+    <version>1.4.0</version>
+    <time>1446208966</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0:
+  * Updated from global requirements
+  * Update path to subunit2html in post_test_hook
+  * Adds command to fetch specified backend capabilities
+  * Volume status management for volume migration
+  * Fixed test_password_prompted
+  * Fix help message for reset-state commands
+  * Add functional tests for python-cinderclient
+  * Add support '--all-tenants' for cinder backup-list
+  * CLI: Non-disruptive backup
+  * Add tests for python-cinderclient
+  * Replace assertEqual(None, *) with assertIsNone in tests
+  * CLI: Clone CG
+  * Fix ClientException init when there is no message on py34
+  * Fixes table when there are multiline in result data
+  * Set default OS_VOLUME_API_VERSION to '2'
+  * Add commands for modifying image metadata
+  * Updated from global requirements
+  * Remove H302
+  * Show backup and volume info in backup_restore
+  * Add response message when volume delete
+  * Implement reset-state for attach_status and migration_status
+  * Add more details for replication
+  * New mock release(1.1.0) broke unit/function tests
+  * Remove unnecessary check for tenant information
+  * Remove redundant statement and refactor
+- Adjust Requires according to requirements.txt</comment>
+    <requestid>337167</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3876b7123e6a2f84b97c57cfb39f5c9c</srcmd5>
+    <version>1.6.0</version>
+    <time>1462342756</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * Remove replication v2 calls
+  * Update minimum tox version to 1.8
+  * snapshot-list now supports filtering by tenant
+  * Fix return type in consistencygroups docstring
+  * Updated from global requirements
+  * Use instanceof instead of type
+  * Don't print HTTP codes for non-HTTP errors
+  * Add replication v2.1 (cheesecake) calls
+  * Add release notes for return-request-id-to-caller
+  * Remove pypy from tox environment list
+  * Extra 'u' in output of cinder cli commands
+  * Add extra_specs_list test
+  * Add request_ids attribute to resource objects
+  * Fix return type in backup docstring
+  * Fix omission of request_ids returned to user
+  * Eliminate unnecessary character
+  * Avoid logging sensitive info in http requests
+  * Add request_ids attribute to resource objects
+  * Add request_ids attribute to resource objects
+  * Provide consistency for Wrapper classes
+  * Allow &quot;cinder backup-delete&quot; to delete multiple backups in one request
+  * Updated from global requirements
+  * Fix some flake8 violations
+  * Bootable filter for listening volumes from CLI
+  * Remove debug statement
+  * is_public=N/A in output of cinder type-update
+  * Return wrapper classes with request_ids attribute
+  * Pass insecure option to HTTPClient
+  * Add Wrapper classes for list, dict, tuple</comment>
+    <requestid>384360</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7d9a55ccbb45c0e75edb2192c707a447</srcmd5>
+    <version>1.9.0</version>
+    <time>1475242207</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 1.9.0
+  * Fix Unicode error printing extra-specs
+  * Fix batch deleting issue in volume_type.unset_keys()
+  * List manageable volumes and snapshots
+  * base.Resource not define __ne__() built-in function
+  * Make Resource class's function can be wraped by api_version
+  * Add group types and group specs
+  * Fix Service.__repr__ to remove the undefined attribute
+  * Wrap group type and group spec with api_version
+  * Wrap volume_backup's update function with api_version
+  * Fix _get_rate_limit when resp is None
+  * Make __repr__ print encryption_id for VolumeEncryptionType class
+  * Fixing parsing problem of cascade in client
+  * Fix useless api_version of Manager class
+  * Add cluster related commands
+  * Add Negative tests for cinder volume extend command
+  * Fix python 2,3 compatibility issue with six
+  * Use 'six' instead of oslo_utils.strutils.six
+  * Add generic volume groups
+  * Support for snapshot force delete
+  * Add backup-update
+  * Add Python3.5 classifier and venv
+  * OS_TENANT_NAME is not required when we have OS_PROJECT_NAME
+  * Wrap cluster related function with api_version
+  * Fix argument order for assertEqual to (expected, observed)
+  * Make APIVersion's null check more pythonic
+  * Switch to keystoneauth
+  * Fix output error for type-show command
+  * Support name option for volume restore
+  * Replace OpenStack LLC with OpenStack Foundation</comment>
+    <requestid>425289</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6e083636401697b5bcf1e4536a7eeeac</srcmd5>
+    <version>1.11.0</version>
+    <time>1487680983</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.11.0:
+  - Replace 'MagicMock' with 'Mock'
+  - Fix test_auth_with_keystone_v3 test
+  - Fix the optional argument of cinder api
+  - Enable coverage report in console output
+  - Move old oslo-incubator code out of openstack/common
+  - add an alternative way of authenticating client
+  - Metadata based snapshop filtering
+  - Move trace ID print statement to finally
+  - _human_id_cache or _uuid_cache error about completion_cache
+  - Enable release notes translation
+  - Use 'ostestr {posargs}' to run functional tests
+  - stop adding log handler
+  - x-openstack-request-id logged twice in logs
+  - Volume detail support glance_metadata in CLI
+  - Fix volume type 'is_public' flag update
+  - Update release notes information for reno
+  - Remove discover from test-requirements
+  - Update hacking version
+  - Update reno for stable/newton
+  - Refactor v2 and v3 APIs support
+  - TrivialFix: Removed redundant 'the'
+  - Fix typos in the files
+  - Fix typo in set unicode metadata key
+  - Show team and repo badges on README
+  - Update to current version of hacking
+  - Help msg and output info should support il8n.
+  - Fix error during set unicode metadata key
+  - AttributeError when print service object
+  - Handle error response for webob&gt;=1.6.0</comment>
+    <requestid>456729</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ddaf00b29dfc1caf30b1b3e526b927f5</srcmd5>
+    <version>3.1.0</version>
+    <time>1503926996</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.1.0
+  - Dynamic log level support
+  - Update visibility help message
+  - Fix simple parameter comment error
+  - Add doc for noauth usage
+  - Add pagination for snapshots, backups
+  - Unicode value support for &quot;--filters&quot;
+  - Handle AttributeError in _get_server_version_range
+  - Eliminate function redefined pylint error
+  - Fix client `retries` default value.
+  - Add cinder tests for cinder snapshot create commands with parameters
+  - Cleared type restrictions for metadata option
+  - Make --profile load from environment variables
+  - Update README.rst to remain consistent with python-cinderclient.
+  - Add release note for get_highest_client_server_version return type change
+  - Group show command should be in V3
+  - Replace http with https
+  - Remove explicit global_request_id from keystoneauth subclass
+  - Update reno for stable/ocata
+  - import content from cli-reference in openstack-manuals
+  - Enabled like filter support in client
+  - Add cinder tests for cinder volume create commands with parameters
+  - Add a missing left bracket in help message
+  - support global_request_id in constructor
+  - Rearrange existing documentation to fit the new standard layout
+  - Add print_function import
+  - Handle dashes in encryption-type-create arguments
+  - Fix attribute errors in os-auth-* settings
+  - Replace uuid.uuid4().hex with uuidutils.generate_uuid()
+  - static method to get_highest_client_server_version</comment>
+    <requestid>514863</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2106f01808e6ea6ccb6154313d1e2682</srcmd5>
+    <version>3.4.0</version>
+    <time>1516804247</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.4.0
+  - Remove 'end_version' parameter in backup update
+  - Remove setting of version/release from releasenotes
+  - Removed unnecessary parameters from group and group_snapshots create APIs
+  - Follow the new PTI for document build
+  - Fix the way to get backup metadata
+  - Deprecate multiattach flag on volume create
+  - Backup create is not available from 3.0 to 3.42
+  - Updated from global requirements
+- Drop 0001-Fix-man-page-build.patch . Applied upstream.
+
+- update to version 3.3.0
+  - Implement metadata for backup create/update
+  - Support skip-validation for quota update
+  - Bump Max API version to 3.48
+  - Enable H306
+  - Avoid tox_install.sh for constraints support
+  - Enable F811, F821
+  - Remove unused attribute when updating quota_class
+  - Fix attachment_id returned by create and show volume
+  - Bump Max version to 3.46
+  - Bump MAX version of client to 3.45
+  - Update old url for cinderclient's document
+  - Add api_version_wraps to attachment-complete
+  - Let keystoneauth set the microversion header
+  - Support create volume from backup in client
+  - Explicitly set 'builder' option
+  - Added missing column 'Allocated'
+  - Fix method/module redefinition errors
+  - Revert &quot;Bump MAX version of client to 3.45&quot;</comment>
+    <requestid>568513</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2add244646676452b9f9e7400f9ccef1</srcmd5>
+    <version>3.5.0</version>
+    <time>1518601823</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.5.0 (bsc#1078607)
+  - Updated from global requirements
+  - Bump API microversion to 3.50
+  - Add api_version wraps for generic volume groups
+  - Add service cleanup command
+  - Fix 'cluster' paramter using for v3 volume manage
+  - Migrate to keystoneauth identity cli opts.
+  - Removes unicode 'u' response for &quot;cinder get-capabilities&quot;
+  - Add snapshot_id param note for backup-create
+  - Support for reporting backend state in service list
+  - Fix v2 volume unit tests
+  - Add cluster support in manage listings</comment>
+    <requestid>575931</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>5d8111f338e6bb1e29c5e313d6d77086</srcmd5>
+    <version>3.5.0</version>
+    <time>1521498861</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583292</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0e71acb67894ff2c858d6cf1d12e2fe1</srcmd5>
+    <version>4.0.1</version>
+    <time>1536327416</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633062</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3467fe77f80bc587cbe7fd38a9a47e70</srcmd5>
+    <version>4.1.0</version>
+    <time>1556916003</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.0
+  - refactor the getid method base.py
+  - Fix functional error check for invalid volume create size
+  - [Optimize] Update help text for hint argument
+  - Fix backwards compat for volume transfer &lt; 3.55
+  - add lib-forward-testing-python3 test job
+  - Default help output to include MV updates
+  - update wrong link
+  - Fix encoding of query parameters
+  - Update reno for stable/rocky
+  - __repr__ crashes when empty dict passed
+  - Fix endpoint identification for api-version query
+  - switch documentation job to new PTI
+  - [Trivial] Add backup-id to 'size' param info
+  - add python 3.6 unit test job
+  - import zuul job settings from project-config
+  - Use templates for cover and lower-constraints</comment>
+    <requestid>692818</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8752dd0f675d2e69cd2126fb602e2076</srcmd5>
+    <version>4.2.0</version>
+    <time>1560338159</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.2.0
+  - More shell completion cache additions
+  - Fix: cinder group-list not working with non-admin user
+  - Update .gitreview for stable/stein
+  - Add Python 3.6 classifier to setup.cfg
+  - Re-enable shell UUID completion cache
+  - Remove i18n.enable_lazy() translation
+  - Fix doc build error
+  - Add support for backup user ID
+  - Add dependency on requests lib
+  - Change openstack-dev to openstack-discuss
+  - Cleanup the home page
+  - Fix max version handling for help output
+  - Replace openstack.org git:// URLs with https://
+  - Replace assertRaisesRegexp with assertRaisesRegex
+  - Raise API max version for Stein updates
+  - Don't quote {posargs} in tox.ini
+  - Fix incorrect punctuation
+  - OpenDev Migration Patch
+  - Raise API max version for Rocky updates
+  - Change bash completion dir permissions to 0750
+  - Update UPPER_CONSTRAINTS_FILE for stable/stein</comment>
+    <requestid>709041</requestid>
+  </revision>
+</revisionlist>

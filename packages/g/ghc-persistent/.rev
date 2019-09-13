@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>94e91b31a06243a865e13ee0b8d99d54</srcmd5>
+    <version>2.2.2.1</version>
+    <time>1448553776</time>
+    <user>dimstar_suse</user>
+    <comment>persistent: Type-safe, multi-backend data serialization.</comment>
+    <requestid>345714</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb8e22181ff9d6fd6b631abc8cb169ce</srcmd5>
+    <version>2.2.3</version>
+    <time>1449687169</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.3
+* PersistField instance for Natural
+* better oracle support in odbc</comment>
+    <requestid>347741</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>313ee001123b7f3cf35726736b6a53ce</srcmd5>
+    <version>2.2.4</version>
+    <time>1450857011</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.4
+* Workaround for side-exiting transformers in runSqlConn (forwarded request 350158 from mimi_vx)</comment>
+    <requestid>350159</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9a2e37aaa07cdfe3d0a28871f7247c86</srcmd5>
+    <version>2.2.4.1</version>
+    <time>1459238174</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.4.1 (forwarded request 370899 from mimi_vx)</comment>
+    <requestid>370902</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1e95acdb0e9f34b68313fee59d41c7c5</srcmd5>
+    <version>2.2.4.1</version>
+    <time>1469081757</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411952</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>04d9167704680ac4c209be9f1d94e5bf</srcmd5>
+    <version>2.6</version>
+    <time>1476780063</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434624</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b1845582030b7426f35dd68e54c9d4f0</srcmd5>
+    <version>2.6.1</version>
+    <time>1491896583</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485151</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f0a1445fbd9e4e856f27a8f195b04976</srcmd5>
+    <version>2.7.0</version>
+    <time>1504205871</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513449</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6493ffc5632545e357ad73d7d5a0d7f9</srcmd5>
+    <version>2.7.0</version>
+    <time>1505505849</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525148</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>957c4203dc719704a014bfcbc3b7395d</srcmd5>
+    <version>2.8.2</version>
+    <time>1527675091</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-persistent to the latest version.</comment>
+    <requestid>607856</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>40ef640efccdf7c78f113d69785c327c</srcmd5>
+    <version>2.8.2</version>
+    <time>1532161330</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 2.2.4.1</comment>
+    <requestid>623829</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ea4aa6b1a25469a4212c31f323431640</srcmd5>
+    <version>2.9.0</version>
+    <time>1540448273</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642887</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d1216c8277904ccc05db7e244cb73e7c</srcmd5>
+    <version>2.9.0</version>
+    <time>1544095029</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>653449</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>624b6980abb1546763cedab85b997abf</srcmd5>
+    <version>2.9.1</version>
+    <time>1548452606</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>667140</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c372fbacae89ec08920ee04be679e6b3</srcmd5>
+    <version>2.10.0</version>
+    <time>1556475197</time>
+    <user>maxlin_factory</user>
+    <comment>version update</comment>
+    <requestid>698556</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>07833a0f6c101ec70f2fec9331839686</srcmd5>
+    <version>2.10.1</version>
+    <time>1565721887</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>723077</requestid>
+  </revision>
+</revisionlist>

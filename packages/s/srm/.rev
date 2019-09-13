@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>01359fa9e5355066ef27c8e13c13fca7</srcmd5>
+    <version>1.2.11</version>
+    <time>1349251826</time>
+    <user>coolo</user>
+    <comment>new package
+srm is a secure rm which overwrites files prior to rm.  Removed unused patch.</comment>
+    <requestid>136121</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>01359fa9e5355066ef27c8e13c13fca7</srcmd5>
+    <version>1.2.11</version>
+    <time>1359110435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>01359fa9e5355066ef27c8e13c13fca7</srcmd5>
+    <version>1.2.11</version>
+    <time>1379664728</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>01359fa9e5355066ef27c8e13c13fca7</srcmd5>
+    <version>1.2.11</version>
+    <time>1409303411</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bc95b1800c5bfc8ab28d420bf1d2fc60</srcmd5>
+    <version>1.2.13</version>
+    <time>1409725816</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247180</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dee36f4b15162b67095396864c5edfea</srcmd5>
+    <version>1.2.15</version>
+    <time>1427445711</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293353</requestid>
+  </revision>
+</revisionlist>

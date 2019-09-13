@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2dd0b76d72bba17fad7716482b2ff3d8</srcmd5>
+    <version>0.7.1</version>
+    <time>1492618165</time>
+    <user>dimstar_suse</user>
+    <comment>requirement of python-html5lib</comment>
+    <requestid>486552</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7f93cdd0ab7ed6595383b1a2bd3e5c48</srcmd5>
+    <version>0.7.1</version>
+    <time>1493369570</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490797</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4a49bb030426367e562c0b5a4586ca11</srcmd5>
+    <version>0.7.1</version>
+    <time>1521903876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587594</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>be881bc6bbb6a28fd9054084f675a292</srcmd5>
+    <version>0.7.1</version>
+    <time>1527605181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612266</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>957a75b434d1740adce71a9e9cd14089</srcmd5>
+    <version>0.7.1</version>
+    <time>1552042763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681249</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9846bef6a1572c3de195ec51e3009dac</srcmd5>
+    <version>0.7.1</version>
+    <time>1553888253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688135</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7fec2c494386ecfa80d7dd4884ffd92a</srcmd5>
+    <version>0.8</version>
+    <time>1564575223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718476</requestid>
+  </revision>
+</revisionlist>

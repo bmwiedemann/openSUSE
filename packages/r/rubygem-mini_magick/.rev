@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b30228a233d5b04489a29ae651acd802</srcmd5>
+    <version>4.5.1</version>
+    <time>1473798183</time>
+    <user>dimstar_suse</user>
+    <comment>Required for software_oo</comment>
+    <requestid>414801</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3ed4aebe1d65235f530768e1552417cc</srcmd5>
+    <version>4.6.0</version>
+    <time>1481885777</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>446309</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3fa011bb9f30a310a18e593ce1fcf244</srcmd5>
+    <version>4.7.0</version>
+    <time>1491896432</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484842</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4810cfb7f1fa34e54982e4b2ba6a8b0c</srcmd5>
+    <version>4.7.1</version>
+    <time>1499677625</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505386</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9b57b304fa6282ef49e7addffc2bc40a</srcmd5>
+    <version>4.8.0</version>
+    <time>1503308202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515054</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b4092fedb9702d1a0c42810d9fc8c56a</srcmd5>
+    <version>4.9.2</version>
+    <time>1548062720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656366</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fb457d7dd0c986d86d090577c02bb14c</srcmd5>
+    <version>4.9.3</version>
+    <time>1560970823</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706005</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9493fb07fe10b272605273432ce7530b</srcmd5>
+    <version>4.9.5</version>
+    <time>1565096995</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>717307</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c143e11a1973c3595f99d502cd96916a</srcmd5>
+    <version>0.42</version>
+    <time>1557170216</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency of perl-WWW-OpenSearch needed for https://build.opensuse.org/request/show/694894</comment>
+    <requestid>696906</requestid>
+  </revision>
+</revisionlist>

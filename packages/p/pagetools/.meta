@@ -1,0 +1,6 @@
+<package name="pagetools" project="openSUSE:Factory">
+  <title>Automatic deskew and bounding box determination for scanned page images  </title>
+  <description>This program determines the skew angle for text, and works with black/white images in TIFF or PBM format. To achieve this, it uses an original algorithm based on a fast implementation of the Radon transform. This program is part of the Page Layout Detection Tools project, which aims to automate the layout detection in scanned page images.
+  </description>
+  <devel project="graphics" package="pagetools"/>
+</package>

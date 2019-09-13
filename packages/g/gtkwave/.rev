@@ -1,0 +1,319 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2116a10181278be3c65f063d99772a00</srcmd5>
+    <version>3.3.40</version>
+    <time>1349372397</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>136975</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4f03d642533683d26728fdedfcfa8050</srcmd5>
+    <version>3.3.41</version>
+    <time>1351874193</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3.41
+  * Fix for gtkwave::addSignalsFromList when encountering
+    signals of form a.b.MyBus[7:0] and a.b.MyBus[15:8] such
+    that brackets aren't stripped.
+  * Added experimental highlight_wavewindow rc variable which
+    allows signals also to be highlighted in the wave window
+    using the value for color_grid.
+  * Added use_standard_trace_select rc variable and related
+    menu option.</comment>
+    <requestid>139886</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2bd61d4a70a6bed175198259f0b13691</srcmd5>
+    <version>3.3.42</version>
+    <time>1357127834</time>
+    <user>namtrac</user>
+    <comment>Update to version 3.3.42</comment>
+    <requestid>146760</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>2bd61d4a70a6bed175198259f0b13691</srcmd5>
+    <version>3.3.42</version>
+    <time>1359109029</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>26faae4d9f4da048bce863bab4b6bf0d</srcmd5>
+    <version>3.3.44</version>
+    <time>1362730379</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157806</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ec2b97e0a46a57ffd7940c9c77ff4e64</srcmd5>
+    <version>3.3.45</version>
+    <time>1364158573</time>
+    <user>coolo</user>
+    <comment>update to version 3.3.45</comment>
+    <requestid>160644</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e1def46d0c872bac322d5ac5b46245fe</srcmd5>
+    <version>3.3.46</version>
+    <time>1367485836</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3.46
+  * Fixed as of yet undetected hdr_incomplete bug when running off
+    end of FST file.
+  * Fixed problem with is_gtkw_save_file getting wiped out on
+    reload.</comment>
+    <requestid>173844</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>313deedb9f57d2806ba4a1a736ee98b1</srcmd5>
+    <version>3.3.47</version>
+    <time>1371134551</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3.47
+  * Fix for crash in 64-bit mode with array accesses in deprecated
+    loader.
+  * Partial VCD loader fix for small files.
+  * Added preliminary do-nothing generate support in vermin.
+  * Fixed minmax_valid for partial VCD loader: affects scaling
+    on floating-point traces.
+- Fix gcc warning no-return-in-nonvoid-function
+  * gtkwave-3.3.47-no-return-in-nonvoid-function.patch</comment>
+    <requestid>178571</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d313e5f866d14972f30661b92c9c9db2</srcmd5>
+    <version>3.3.48</version>
+    <time>1378632970</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3.48
+  * Fixed infinite loop hang on various helpers executables when
+    extra arguments are specified.
+  * Delete changed marker name if it exists when marker is removed.
+  * Added &quot;Open Hierarchy&quot; option that will expand the SST and
+    select the hierarchy for a given signal selected in the
+    Signals window.
+  * Added preliminary support for FsdbReader.
+  * FSDB fix for generate created hierarchies.
+  * FSDB fix for new debug info output style to be parsed.
+  * Added generate as scope type to VCD/FST/FSDB.
+  * Preliminary add for module port direction for FSDB and FST.
+  * Display signal direction column in SST if not all signals are 
+    declared as FST_VD_IMPLICIT.
+  * Fixed GTK warning when hide_sst is enabled and SST is opened
+    then closed.
+  * Added extraction of in/out/inout from FSDB into FST with
+    vcd2fst helper executable.  (It also converts FSDB to FST.)
+  * Added support for SV structures, unions, classes, packages,
+    programs, and interfaces.
+  * Updated signal parsing in FST/FSDB to handle NC declarations
+    for arrays in VCD.  (i.e., bitranges are missing)  Use vcd2fst
+    or the -o option to read NC VCD files with arrays properly.
+  * Preliminary support for SV datatypes of bit, logic, int,
+    shortint, longint, byte, enum, and shortreal in VCD and FST.
+  * Added sparse array datatype to FST (currently unused by gtkwave).
+  * Added support for attribute begin/end in FST.  (Currently
+    unused by gtkwave.)  This allows embedding of various data
+    inside the structure tree.
+  * Added autoraise on entry window on keystrokes or periodically</comment>
+    <requestid>197801</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d313e5f866d14972f30661b92c9c9db2</srcmd5>
+    <version>3.3.48</version>
+    <time>1379662590</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>74f982a80c3e82a143d04cb571cf53c9</srcmd5>
+    <version>3.3.57</version>
+    <time>1392576811</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3.57
+  * Fix for Electric Fence crash in vlist_freeze().
+  * Updated LZ4 for version r113.
+
+- Update to version 3.3.56
+  * Fix to regex search to remove duplicate signal names because of
+    faulty dumpers.
+  * Valgrind fix on deallocated context: old GLOBALS pointer could
+    be examined in set_GLOBALS_x().
+  * Minor cleanup in treesearch_gtk2.c: removed redundant show
+    widget invocation.
+  * Added missing compressBound() for compress2() dest mallocs.</comment>
+    <requestid>222422</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0190e2ec4b3dab472a483ed795a03bfd</srcmd5>
+    <version>3.3.58</version>
+    <time>1395475628</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3.58
+  * Added /Data Format/Popcnt function for ones counting.
+  * Warnings fixes from new Clang 3.4 scan-build.
+  * Updated VCD ID generation in various helpers to use a faster,
+    equivalent algorithm.
+  * Change [1] at end of struct to C99 [] notation with appropriate
+    allocation size modification. (forwarded request 227070 from Dmitry_R)</comment>
+    <requestid>227071</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b163ad4ce911716ffecf902d930c90f4</srcmd5>
+    <version>3.3.59</version>
+    <time>1398785599</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3.59
+  * Use Duff's Device for 8 byte -&gt; 1 byte binary value compression 
+    algorithm in FST writer.
+  * Updated man page for gtkwave.1 indicating that XID is in hex.
+  * Allow decimal conversions on popcnt filtered vectors that are
+    greater than 64 bits (they will never overflow).</comment>
+    <requestid>231993</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>daac7164a076b04ccc041b40b263956f</srcmd5>
+    <version>3.3.60</version>
+    <time>1402946789</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3.60
+  * Harden fsdb reader against xtags that move backward in time.</comment>
+    <requestid>236914</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9bcdeaea3a75a3c19e31048c34ed04dc</srcmd5>
+    <version>3.3.61</version>
+    <time>1405661530</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3.61
+  * Parameterized number of named markers
+  * Updated LZ4 for version r118.</comment>
+    <requestid>241399</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>9bcdeaea3a75a3c19e31048c34ed04dc</srcmd5>
+    <version>3.3.61</version>
+    <time>1409301137</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a6655a0c6282fb2772f67fd2920d6298</srcmd5>
+    <version>3.3.62</version>
+    <time>1409761347</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3.62
+  * bugfix release, see included ChangeLog file for details
+- Move documentation and examples to separate packages
+- Delete gtkwave-rpmlintrc</comment>
+    <requestid>246910</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6caa29e907acc3bdad31434b3f32035f</srcmd5>
+    <version>3.3.63</version>
+    <time>1415636921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.63
+  * bugfix release, see included ChangeLog file for details</comment>
+    <requestid>260322</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fc8278f9b3a8f0ef9e63909f5e7cb82d</srcmd5>
+    <version>3.3.64</version>
+    <time>1417031745</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.64
+  * bugfix release, see included ChangeLog file for details</comment>
+    <requestid>263126</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bd60cde4c148cf3594fd29a5d276a4d8</srcmd5>
+    <version>3.3.65</version>
+    <time>1429186426</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.65
+  * minor changes, see included ChangeLog file for details</comment>
+    <requestid>297023</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9aa7f4263779076e2c56ca5c238f448b</srcmd5>
+    <version>3.3.66</version>
+    <time>1436331603</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315490</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cec3cb373e140c242d65b71dbe5892b8</srcmd5>
+    <version>3.3.67</version>
+    <time>1443684576</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335034</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>64fce69af06f0e7b67af8fe9aa7f1c5a</srcmd5>
+    <version>3.3.68</version>
+    <time>1448553695</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345423</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>007c84a1bc4163b4aa33f978fef2fe77</srcmd5>
+    <version>3.3.70</version>
+    <time>1456335785</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361276</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8092d3b630675a0716530a21d2079b10</srcmd5>
+    <version>3.3.72</version>
+    <time>1461335142</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390636</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>216bac596897f38f95ae4dd89f7bf408</srcmd5>
+    <version>3.3.73</version>
+    <time>1465750533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401342</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0c192a87cf789cfe6ea88de2ff8f1fd1</srcmd5>
+    <version>3.3.76</version>
+    <time>1472478380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423575</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8e6a6351c5c9f5c983d74475affa4ab7</srcmd5>
+    <version>3.3.78</version>
+    <time>1477990784</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438077</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bf4e67eff5d2103f55492003592375a3</srcmd5>
+    <version>3.3.79</version>
+    <time>1483956144</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449216</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>70895dff079cae1fb8879aeda1b42169</srcmd5>
+    <version>3.3.101</version>
+    <time>1567010153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726555</requestid>
+  </revision>
+</revisionlist>

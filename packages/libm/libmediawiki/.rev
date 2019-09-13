@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b86891fca58ed85cf62b7186f72530cb</srcmd5>
+    <version>5.37.0</version>
+    <time>1504521196</time>
+    <user>dimstar_suse</user>
+    <comment>New package, to be used by digikam/kipi-plugins
+
+- Update to Qt5/KF5-based version 5.37.0:
+  * Bugfixes
+</comment>
+    <requestid>519933</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0de30bd4bcb3f808f87d8269c0aa9084</srcmd5>
+    <version>5.37.0</version>
+    <time>1504815280</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521106</requestid>
+  </revision>
+</revisionlist>

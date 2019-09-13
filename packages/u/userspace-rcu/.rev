@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e45f7aba4388bd9f565f600407d8f21f</srcmd5>
+    <version>0.7.4</version>
+    <time>1346400140</time>
+    <user>coolo</user>
+    <comment>needed by server:dns/knot</comment>
+    <requestid>131951</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e45f7aba4388bd9f565f600407d8f21f</srcmd5>
+    <version>0.7.4</version>
+    <time>1359110531</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec9a8fa49efafcfebc33da3e1afe0848</srcmd5>
+    <version>0.7.6</version>
+    <time>1365140594</time>
+    <user>coolo</user>
+    <comment>- updated to 0.7.6:
+  * Discourage use of pthread_atfork() for call_rcu handlers
+  * Fix call_rcu fork handling
+  * test: fork handling
+  * Fix TLS detection: test with linker, add --disable-compiler-tls
+  * Cleanup: cast pthread_self() return value to unsigned long
+  * Fallback mechanism not working on platform where TLS is unsupported (forwarded request 161318 from pgajdos)</comment>
+    <requestid>161423</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7f773ac408382590cb99b19f25cbfe64</srcmd5>
+    <version>0.8.0</version>
+    <time>1378898613</time>
+    <user>coolo</user>
+    <comment>- updated to 0.8.0:
+  * Fix: hash table growth (for small tables) should be limited
+  * Fix: doc/examples cross-build
+  * Introduce URCU_INLINE_SMALL_FUNCTIONS
+  * etc., see ChangeLog
+- gpg-offline (forwarded request 198035 from pgajdos)</comment>
+    <requestid>198199</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7f773ac408382590cb99b19f25cbfe64</srcmd5>
+    <version>0.8.0</version>
+    <time>1379664899</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>812fc65e6f595b065dfdae503d623399</srcmd5>
+    <version>0.8.1</version>
+    <time>1385723136</time>
+    <user>coolo</user>
+    <comment>- updated to 0.8.1:
+  * tls-compat: fix comment typo
+  * Keep ABI compatible with already compiled LGPL applications
+  * Fix: tls-compat multi-lib conflict
+  * Use cross compiler for doc examples
+  * gcc warning fixes: -Wsign-compare and -Wextra
+  * Fix: urcu-qsbr: reversed logic on RCU_DEBUG
+  * Fix: urcu-bp segfault in glibc pthread_kill()
+  * Fix urcu-bp: don't move registry
+  * Fix: compat futex duplicated lock and completion
+  * Fix: i386 compat code duplicated mutex instances
+  * Fix: urcu-bp: Bulletproof RCU arena resize bug
+  * Fix: test_mutex.c uninitialized mutex</comment>
+    <requestid>208539</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d68f35793d6d1c73d03d936644534455</srcmd5>
+    <version>0.8.1</version>
+    <time>1386276107</time>
+    <user>coolo</user>
+    <comment>- Fix build on ppc64le platform
+- added patches:
+  * userspace-rcu-ppc64le.patch (forwarded request 209303 from k0da)</comment>
+    <requestid>209375</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4cae6e4ca85c2ccf5068101454920597</srcmd5>
+    <version>0.8.4</version>
+    <time>1396020515</time>
+    <user>coolo</user>
+    <comment>- updated to 0.8.4:
+        * Fix: move wait loop increment before first conditional block
+        * Fix: high cpu usage in synchronize_rcu with long RCU read-side C.S.
+        * Fix: out of tree build: doc/examples
+        * Fix: out of tree build tests/common
+        * tests/unit: use lib rather than source
+        * automake: Rename INCLUDES to AM_CPPFLAGS (new name)
+        * tests regressions: use lib rather than recompile from source
+        * tests: use common lib rather than recompile compat sources
+        * urcu tests: use lib rather than compile from source
+        * urcu mb tests: use lib rather than recompile from source
+        * urcu signal tests: use library rather than recompile source
+        * tests: move yield debug to common test library
+        * tests urcu bp: use lib rather than recompile source
+        * test_urcu_defer: link on urcu lib rather than recompile source
+        * tests/benchmark: use urcu qsbr lib rather than recompile from source
+        * Pass the CC variable to the example Makefiles
+        * Fix: urcu-bp interaction with threads vs constructors/destructors
+        * Fix undefined NULL pointer arithmetic
+        * Blacklist ARM gcc 4.8.0, 4.8.1, 4.8.2
+        * rculfhash: document max_nr_buckets = 0</comment>
+    <requestid>228058</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>4cae6e4ca85c2ccf5068101454920597</srcmd5>
+    <version>0.8.4</version>
+    <time>1409303586</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>540c2a8d947433dae317297df85c8db8</srcmd5>
+    <version>0.8.6</version>
+    <time>1417643316</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263883</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>42eac0570bae42ffc5ca0fa55be55411</srcmd5>
+    <version>0.8.7</version>
+    <time>1443684567</time>
+    <user>dimstar_suse</user>
+    <comment>- remove dependency on gpg-offline, is done by source validator
+- drop userspace-rcu-ppc64le.patch, included in
+  userspace-rcu-aarch64.patch
+
+- add userspace-rcu-aarch64.patch (fate#318370)
+  enables build for aarch64
+
+- Update to version 0.8,7 (FATE#319273)
+  Changelog 0.8.7:
+    * Fix: deadlock when thread join is issued in read-side C.S.
+    * Fix: rename RCU_DEBUG to DEBUG_RCU in urcu-qsbr.h
+    * Mark braced-groups within expressions with __extension__
+    * Fix: compat_futex_noasync race condition
+    * Fix: documentation: urcu-pointer.h: s/rcu_dereference_pointer/rcu_dereference/
+    * Fix: call rcu should call internal RCU API</comment>
+    <requestid>334861</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>105d6a3eb008b99a3723ba7ac1eef1d8</srcmd5>
+    <version>0.8.7</version>
+    <time>1458228912</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373383</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bfa4c116c5862884e2b657975322a21d</srcmd5>
+    <version>0.10.0</version>
+    <time>1504814987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520250</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3dc10b1c72749348cbbd2b28fd2f926a</srcmd5>
+    <version>0.10.0</version>
+    <time>1513109769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548044</requestid>
+  </revision>
+</revisionlist>

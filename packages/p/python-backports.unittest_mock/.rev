@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dbdf050496e1e5f3aed9a160d53fcba1</srcmd5>
+    <version>1.1.1</version>
+    <time>1493369183</time>
+    <user>dimstar_suse</user>
+    <comment>New package needed by python-CherryPy in Staging:E</comment>
+    <requestid>489865</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8edfbae4ea937978586ff336b7570e66</srcmd5>
+    <version>1.1.1</version>
+    <time>1496392219</time>
+    <user>dimstar_suse</user>
+    <comment>- do not build docs, they are available in official Python
+  documentation
+- (this prevents build loop with tempora)</comment>
+    <requestid>497996</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c907f90cc5384a22981b1a33ab00e339</srcmd5>
+    <version>1.3</version>
+    <time>1502365347</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>509798</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b3391abba64d5bddf50b08a6e6d2b940</srcmd5>
+    <version>1.3</version>
+    <time>1522316869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590716</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4f9c49302640cfc2df4124fe6a561b7b</srcmd5>
+    <version>1.3</version>
+    <time>1544094846</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653939</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4cee5e349ed106d530fa48e633c56aa8</srcmd5>
+    <version>1.4</version>
+    <time>1551687052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4:
+  * Add pytest trove classifier</comment>
+    <requestid>680463</requestid>
+  </revision>
+</revisionlist>

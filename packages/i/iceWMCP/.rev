@@ -1,0 +1,128 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b49794ff7855615e41310e673f137785</srcmd5>
+    <version>3.2</version>
+    <time>1168903021</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="22">
+    <srcmd5>0162867e3829a3e0820cc601f789d0f2</srcmd5>
+    <version>3.2</version>
+    <time>1171191861</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="83">
+    <srcmd5>e69c976aa1a58e93fd256e8d67b5ea06</srcmd5>
+    <version>3.2</version>
+    <time>1205693500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="121">
+    <srcmd5>e69c976aa1a58e93fd256e8d67b5ea06</srcmd5>
+    <version>3.2</version>
+    <time>1205693500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="122">
+    <srcmd5>cf3c52c9b17b0f437035de91389f6a4c</srcmd5>
+    <version>3.2</version>
+    <time>1244830954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="123">
+    <srcmd5>aa3e972497ecfebc8d7c4c4feb348e14</srcmd5>
+    <version>3.2</version>
+    <time>1249062910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="125">
+    <srcmd5>aa3e972497ecfebc8d7c4c4feb348e14</srcmd5>
+    <version>3.2</version>
+    <time>1249062910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="126">
+    <srcmd5>d6bcdb47102f5435475c32fab58a9837</srcmd5>
+    <version>3.2</version>
+    <time>1268923970</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="128">
+    <srcmd5>d6bcdb47102f5435475c32fab58a9837</srcmd5>
+    <version>3.2</version>
+    <time>1278667351</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="129">
+    <srcmd5>d6bcdb47102f5435475c32fab58a9837</srcmd5>
+    <version>3.2</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="132">
+    <srcmd5>d6bcdb47102f5435475c32fab58a9837</srcmd5>
+    <version>3.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="134">
+    <srcmd5>d6bcdb47102f5435475c32fab58a9837</srcmd5>
+    <version>3.2</version>
+    <time>1319181981</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="135">
+    <srcmd5>0423b2b2255798f2bc599becc8ead5a8</srcmd5>
+    <version>3.2</version>
+    <time>1321980450</time>
+    <user>coolo</user>
+    <comment>Drop gnome-utils Recommends (forwarded request 91635 from vuntz)</comment>
+    <requestid>92917</requestid>
+  </revision>
+  <revision rev="14" vrev="136">
+    <srcmd5>7715a91f9b1006b408c8132e6141e338</srcmd5>
+    <version>3.2</version>
+    <time>1323191939</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="138">
+    <srcmd5>7715a91f9b1006b408c8132e6141e338</srcmd5>
+    <version>3.2</version>
+    <time>1340183451</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="140">
+    <srcmd5>7715a91f9b1006b408c8132e6141e338</srcmd5>
+    <version>3.2</version>
+    <time>1359109067</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="142">
+    <srcmd5>7715a91f9b1006b408c8132e6141e338</srcmd5>
+    <version>3.2</version>
+    <time>1379662649</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="144">
+    <srcmd5>7715a91f9b1006b408c8132e6141e338</srcmd5>
+    <version>3.2</version>
+    <time>1409301205</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="145">
+    <srcmd5>106b092a8d561be3186e3e2a0d4cafbf</srcmd5>
+    <version>3.2</version>
+    <time>1413403145</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256688</requestid>
+  </revision>
+</revisionlist>

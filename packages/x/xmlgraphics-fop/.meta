@@ -1,0 +1,10 @@
+<package name="xmlgraphics-fop" project="openSUSE:Factory">
+  <title>Formatter for Printing XSLT Processed XML Files</title>
+  <description>FOP (Formatting Objects Processor) is driven by XSL formatting objects
+(XSL-FO). It is a Java application that reads a formatting object (FO)
+tree and renders the resulting pages to one of the following output
+formats: PDF (primary output target), PCL, PS, SVG, XML (area tree
+representation), Print, AWT, MIF, and TXT.</description>
+  <devel project="Java:packages" package="xmlgraphics-fop"/>
+  <url>http://xml.apache.org/fop/</url>
+</package>

@@ -1,0 +1,342 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>901591d0f0608ebd7790146c7d0cf873</srcmd5>
+    <version>0.4.1</version>
+    <time>1168902922</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="36">
+    <srcmd5>0ae626dfdc6463553833d5fc46568bf3</srcmd5>
+    <version>0.4.1</version>
+    <time>1173871690</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="75">
+    <srcmd5>ea9185c8f609193fe59c721fcb2b9ccd</srcmd5>
+    <version>0.4.1</version>
+    <time>1181254573</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2adfc85b457d3c8aa6f352b1ed2c8ef4</srcmd5>
+    <version>0.4.4</version>
+    <time>1186169983</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>68ec424a103d181cec547d2d93b240e6</srcmd5>
+    <version>0.4.4</version>
+    <time>1186679931</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="18">
+    <srcmd5>17a079ad3353372e0b1554b60dac0900</srcmd5>
+    <version>0.4.4</version>
+    <time>1188854173</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="39">
+    <srcmd5>53b76e3f52c6f9bfd22ddfd1a1ff3557</srcmd5>
+    <version>0.4.4</version>
+    <time>1192129167</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="66">
+    <srcmd5>5d3497639066fbe7b9898d877437e49f</srcmd5>
+    <version>0.4.4</version>
+    <time>1194560846</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6aec029df7a0660f7f2ec29d80c9b347</srcmd5>
+    <version>0.4.6</version>
+    <time>1207174597</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1c007804535fabb61429a1017f16ebf9</srcmd5>
+    <version>0.4.6</version>
+    <time>1207265376</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>af8fa1a0b6e21b15fc29f8b71ff2ddbb</srcmd5>
+    <version>0.4.7</version>
+    <time>1221277189</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9ef4b42bb8dcacdc76c46c0afe48a183</srcmd5>
+    <version>0.4.9</version>
+    <time>1233966921</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f5f14d5e1483b1a4540f77176c485820</srcmd5>
+    <version>0.4.9</version>
+    <time>1245363790</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ff58be167d20a0d90d460d4507b0e4a6</srcmd5>
+    <version>0.4.92</version>
+    <time>1249062355</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>195d1066d12ec4296fe7d14145f71365</srcmd5>
+    <version>0.4.92</version>
+    <time>1252011914</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gobby based on submit request 19740 from user vuntz
+</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>195d1066d12ec4296fe7d14145f71365</srcmd5>
+    <version>0.4.92</version>
+    <time>1252011914</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gobby based on submit request 19740 from user vuntz
+</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>3f5bd5c9f130832c79a8fa355c648c66</srcmd5>
+    <version>0.4.92</version>
+    <time>1260268253</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gobby based on submit request 25838 from user vuntz
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3367d071906381150ad1a54692febe17</srcmd5>
+    <version>0.4.93</version>
+    <time>1261824891</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gobby based on submit request 27408 from user vuntz
+</comment>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>76a5c9701e1eb77b22612a511cb425e3</srcmd5>
+    <version>0.4.93</version>
+    <time>1268923843</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>76a5c9701e1eb77b22612a511cb425e3</srcmd5>
+    <version>0.4.93</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>76a5c9701e1eb77b22612a511cb425e3</srcmd5>
+    <version>0.4.93</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>ab7a864c49f7f4dbb90861cc9a78e4bf</srcmd5>
+    <version>0.4.93</version>
+    <time>1287154950</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gobby based on submit request 50620 from user vuntz
+</comment>
+    <requestid>50620</requestid>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>f0b54a22f96ed0b9509dfea5d8074266</srcmd5>
+    <version>0.4.93</version>
+    <time>1292852954</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56071 from user vuntz
+</comment>
+    <requestid>56071</requestid>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>ebb613fac210c4302539c1dd30c04c13</srcmd5>
+    <version>0.4.93</version>
+    <time>1292852961</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56071
+</comment>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>9738223086b51c26e62baccb55b7ad6a</srcmd5>
+    <version>0.4.93</version>
+    <time>1297643301</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60951 from user vuntz
+</comment>
+    <requestid>60951</requestid>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>a1995c92d2f1ca4e7b2b0375844211e8</srcmd5>
+    <version>0.4.93</version>
+    <time>1297643306</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60951
+</comment>
+  </revision>
+  <revision rev="27" vrev="13">
+    <srcmd5>a1995c92d2f1ca4e7b2b0375844211e8</srcmd5>
+    <version>0.4.93</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>25bb655fe3a479e73adc93fad1b4ceaa</srcmd5>
+    <version>0.4.94</version>
+    <time>1305897424</time>
+    <user>saschpe</user>
+    <comment>Fix build for Factory</comment>
+    <requestid>70747</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>0bc53ae507fd298d04f91596ba109f98</srcmd5>
+    <version>0.4.94</version>
+    <time>1306849037</time>
+    <user>saschpe</user>
+    <comment>Pushing G:A packages with a build fix</comment>
+    <requestid>71942</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>66828bfc9ecd850c1a0199e272009a63</srcmd5>
+    <version>0.4.94</version>
+    <time>1306849046</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71942
+</comment>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>66828bfc9ecd850c1a0199e272009a63</srcmd5>
+    <version>0.4.94</version>
+    <time>1319181935</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>0a058d95c8da2a7f7ea029b05b15fdd8</srcmd5>
+    <version>0.4.94</version>
+    <time>1323191721</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>d30a39da92b5f991f1f50b19bcd648fe</srcmd5>
+    <version>0.4.94</version>
+    <time>1329317837</time>
+    <user>coolo</user>
+    <comment>Fix build w/ glibmm 2.31 (forwarded request 103681 from dimstar)</comment>
+    <requestid>103698</requestid>
+  </revision>
+  <revision rev="34" vrev="9">
+    <srcmd5>d30a39da92b5f991f1f50b19bcd648fe</srcmd5>
+    <version>0.4.94</version>
+    <time>1340183401</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="35" vrev="11">
+    <srcmd5>d30a39da92b5f991f1f50b19bcd648fe</srcmd5>
+    <version>0.4.94</version>
+    <time>1359108984</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="12">
+    <srcmd5>858df6f28ec01c392b9b4d661ba78825</srcmd5>
+    <version>0.4.94</version>
+    <time>1362991775</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 157058 from vuntz)</comment>
+    <requestid>157264</requestid>
+  </revision>
+  <revision rev="37" vrev="13">
+    <srcmd5>398a0b984ce7fada7b386f180f9d0e90</srcmd5>
+    <version>0.4.94</version>
+    <time>1366358297</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+
+No indication of GPL-2.0 &quot;only&quot; code and certainly no indication of aggregation (forwarded request 163389 from babelworx)</comment>
+    <requestid>163478</requestid>
+  </revision>
+  <revision rev="38" vrev="14">
+    <srcmd5>2951d08088bdd3272489657a4ce3a11b</srcmd5>
+    <version>0.4.94</version>
+    <time>1366378461</time>
+    <user>coolo</user>
+    <comment>Fix build with gtksourceview 3.8 - I don't even bother reporting it anymore... gobby seems to be abandonware (forwarded request 172416 from Zaitor)</comment>
+    <requestid>172428</requestid>
+  </revision>
+  <revision rev="39" vrev="16">
+    <srcmd5>2951d08088bdd3272489657a4ce3a11b</srcmd5>
+    <version>0.4.94</version>
+    <time>1379662530</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="18">
+    <srcmd5>2951d08088bdd3272489657a4ce3a11b</srcmd5>
+    <version>0.4.94</version>
+    <time>1409301071</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bffa02a8938e4becb4a8591746011197</srcmd5>
+    <version>0.5.0</version>
+    <time>1413616124</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256946</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>52d7f0530b898610317e889c5216b112</srcmd5>
+    <version>0.5.1+20170204.e5c2d14</version>
+    <time>1503927215</time>
+    <user>dimstar_suse</user>
+    <comment>- Change License to &quot;ISC AND GPL-2.0+&quot; following legal review.
+- Change Group to Productivity/Other.
+
+- Trim irrelevant parts from description.
+
+- Update to version 0.5.1+20170204.e5c2d14:
+  + Add C++11 macros into m4/ to fix the travis build.
+  + Remove no longer used configure flags from travis config.
+  + Fix typo in header guard.
+  + Replace margin start/end with left/right.
+  + Add missing giomm/menu.h include to
+    browser-context-commands.cpp.
+  + Fix possible crash when opening popup menu on browser.
+  + Add license title.
+  + Fix setting of font preferences.
+  + Updated translations.
+- Run spec-cleaner.
+- Switch to service version git checkout.
+- Following the above, add gnome-common BuildRequires and pass
+  NOCONFIGUE=1 autogen.sh to configure, bootstrap gitcheckout.
+- Replace pkgconfig(libinfinity-0.6) with
+  pkgconfig(libinfinity-0.7) BuildRequires following upstream
+  changes.
+- Drop obsolete posttrans section.
+- Drop gobby-add-missing-return.patch: Fixed upstream.</comment>
+    <requestid>519102</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>a68fe055cae68ddff9ffa84b76022f4f</srcmd5>
+    <version>0.5.1+20170204.e5c2d14</version>
+    <time>1504103089</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519650</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>fb678ef6ee918e550e4646e5d1a9cf9d</srcmd5>
+    <version>0.5.1+20170204.e5c2d14</version>
+    <time>1505990089</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527113</requestid>
+  </revision>
+</revisionlist>

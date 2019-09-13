@@ -1,0 +1,6 @@
+<package name="qore-pgsql-module" project="openSUSE:Factory">
+  <title>PostgreSQL Module for the Qore Programming Language</title>
+  <description>PostgreSQL DBI driver module for the Qore Programming Language (&quot;pgsql&quot;). The PostgreSQL driver is character set aware, supports multithreading, transaction management, stored prodedure and function execution, etc.
+</description>
+  <devel project="devel:languages:misc" package="qore-pgsql-module"/>
+</package>

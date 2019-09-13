@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a6ca5feaf9008e6fe5d6e4698dda4c0</srcmd5>
+    <version>4.9.0</version>
+    <time>1535705098</time>
+    <user>dimstar_suse</user>
+    <comment>Needs to go with python-redis update to build</comment>
+    <requestid>632094</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2d72cbae85a592e02315346b42e98ffb</srcmd5>
+    <version>4.9.0</version>
+    <time>1535963758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632621</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c7cf69cd09b2dc9071c47f8295022a06</srcmd5>
+    <version>4.10.0</version>
+    <time>1544539796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.10.0:
+  * support for redis-py 3.0</comment>
+    <requestid>657155</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5467f4aa0120fd62d7dcf6023edd1b84</srcmd5>
+    <version>4.10.0</version>
+    <time>1551024944</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677660</requestid>
+  </revision>
+</revisionlist>

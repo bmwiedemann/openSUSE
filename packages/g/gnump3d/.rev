@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c8f9413d1cc2294a22c52d1bf7af40e</srcmd5>
+    <version>2.9.8</version>
+    <time>1168902910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="40">
+    <srcmd5>429603d882feef70ea7ef3e4e0c75ac5</srcmd5>
+    <version>2.9.8</version>
+    <time>1175213333</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7c1c0486feeb08d04818420439d5e13</srcmd5>
+    <version>3.0</version>
+    <time>1196723521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9c4988b5dc55959c4daa8c2e4584607e</srcmd5>
+    <version>3.0</version>
+    <time>1196793082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="77">
+    <srcmd5>9c4988b5dc55959c4daa8c2e4584607e</srcmd5>
+    <version>3.0</version>
+    <time>1196793082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="78">
+    <srcmd5>9a4d3bd6e5b4bd688a41f2cee73e514b</srcmd5>
+    <version>3.0</version>
+    <time>1245363761</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="79">
+    <srcmd5>b422ad22b8a72337a60ab008cfa34f1e</srcmd5>
+    <version>3.0</version>
+    <time>1251297965</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/gnump3d based on submit request 18789 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="8" vrev="80">
+    <srcmd5>f5922b487dafe2af38721fcb530d2097</srcmd5>
+    <version>3.0</version>
+    <time>1251749577</time>
+    <user>autobuild</user>
+    <comment>Copy from home:coolo:branches:openSUSE:Factory/gnump3d based on submit request 19260 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="82">
+    <srcmd5>f5922b487dafe2af38721fcb530d2097</srcmd5>
+    <version>3.0</version>
+    <time>1251749577</time>
+    <user>autobuild</user>
+    <comment>Copy from home:coolo:branches:openSUSE:Factory/gnump3d based on submit request 19260 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="83">
+    <srcmd5>ad2e5a0ec86a026be239b76f226e2945</srcmd5>
+    <version>3.0</version>
+    <time>1268923839</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="84">
+    <srcmd5>3560ec669f1dca6a93049e07088b706c</srcmd5>
+    <version>3.0</version>
+    <time>1271437288</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/gnump3d based on submit request 38051 from user plater
+</comment>
+    <requestid>38051</requestid>
+  </revision>
+  <revision rev="12" vrev="86">
+    <srcmd5>3560ec669f1dca6a93049e07088b706c</srcmd5>
+    <version>3.0</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="87">
+    <srcmd5>3560ec669f1dca6a93049e07088b706c</srcmd5>
+    <version>3.0</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="90">
+    <srcmd5>3560ec669f1dca6a93049e07088b706c</srcmd5>
+    <version>3.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="92">
+    <srcmd5>3560ec669f1dca6a93049e07088b706c</srcmd5>
+    <version>3.0</version>
+    <time>1319181933</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="93">
+    <srcmd5>a51b4f12ee6226c7b81a276387b4b9bf</srcmd5>
+    <version>3.0</version>
+    <time>1323191716</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="95">
+    <srcmd5>a51b4f12ee6226c7b81a276387b4b9bf</srcmd5>
+    <version>3.0</version>
+    <time>1340183396</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="96">
+    <srcmd5>14b957b24f3a1312ccf2a963ffcec97b</srcmd5>
+    <version>3.0</version>
+    <time>1347618196</time>
+    <user>namtrac</user>
+    <comment>- use perl_requires (forwarded request 133889 from coolo)</comment>
+    <requestid>133891</requestid>
+  </revision>
+  <revision rev="19" vrev="98">
+    <srcmd5>14b957b24f3a1312ccf2a963ffcec97b</srcmd5>
+    <version>3.0</version>
+    <time>1359108977</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="99">
+    <srcmd5>f1b7b8cd5c550cbc0d600bfb9607c5d8</srcmd5>
+    <version>3.0</version>
+    <time>1370435432</time>
+    <user>coolo</user>
+    <comment>- Add systemd support (forwarded request 177024 from elvigia)</comment>
+    <requestid>177066</requestid>
+  </revision>
+  <revision rev="21" vrev="101">
+    <srcmd5>f1b7b8cd5c550cbc0d600bfb9607c5d8</srcmd5>
+    <version>3.0</version>
+    <time>1379662520</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="103">
+    <srcmd5>f1b7b8cd5c550cbc0d600bfb9607c5d8</srcmd5>
+    <version>3.0</version>
+    <time>1409301057</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="104">
+    <srcmd5>86e925a22a09b4fc345066a827de775d</srcmd5>
+    <version>3.0</version>
+    <time>1490026119</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479683</requestid>
+  </revision>
+</revisionlist>

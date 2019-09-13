@@ -1,0 +1,5 @@
+<package name="vnote" project="openSUSE:Factory">
+  <title>A Vim-inspired note-taking application, especially for Markdown</title>
+  <description>VNote is a cross-platform, free note-taking application, designed especially for Markdown. VNote provides both simple note management and pleasant Markdown edit experience.</description>
+  <devel project="Documentation:Tools" package="vnote"/>
+</package>

@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>17568c72e259fffba29ac1da48a29a0e</srcmd5>
+    <version>12.10.1+13.10.20130920</version>
+    <time>1395495920</time>
+    <user>coolo</user>
+    <comment>Lib for MATE KDE; add patches to changes file</comment>
+    <requestid>226968</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>17568c72e259fffba29ac1da48a29a0e</srcmd5>
+    <version>12.10.1+13.10.20130920</version>
+    <time>1409301498</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d07241a5349b981d3d9b5ed35e6ca864</srcmd5>
+    <version>12.10.1+13.10.20130920</version>
+    <time>1426064333</time>
+    <user>dimstar_suse</user>
+    <comment>allow building without mono</comment>
+    <requestid>290137</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49817059c2738734b5558e530fa4b11f</srcmd5>
+    <version>12.10.1+bzr20141110</version>
+    <time>1434456324</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312147</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1d5e10fc272d02d660c97c2a61dd8d87</srcmd5>
+    <version>12.10.1+bzr20141110</version>
+    <time>1465938497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>401609</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>dbd3a05bf95069544ebe286de6781ecc</srcmd5>
+    <version>12.10.1+bzr20141110</version>
+    <time>1468482290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407110</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6b6603eac8b5219fe80940488c5562f0</srcmd5>
+    <version>12.10.1+bzr20170215</version>
+    <time>1493819600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>491919</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>22ccd84462a074113fc87a5c095891f4</srcmd5>
+    <version>12.10.1+bzr20170215</version>
+    <time>1505331751</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520914</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>99763f279542957abe12ef669237c19d</srcmd5>
+    <version>12.10.1+bzr20170215</version>
+    <time>1521051964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585321</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>ef6bcf37605cbcdebf12e97b5407581c</srcmd5>
+    <version>12.10.1+bzr20170215</version>
+    <time>1549311425</time>
+    <user>coolo</user>
+    <comment>- Change the activate-support patch to signal an &quot;activate-event&quot; so users can create callbacks themselves.</comment>
+    <requestid>665366</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>45ef8540fe0c32211b72e7ce0cd2e538</srcmd5>
+    <version>12.10.1+bzr20170215</version>
+    <time>1561405632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708939</requestid>
+  </revision>
+</revisionlist>

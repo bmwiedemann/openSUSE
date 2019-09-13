@@ -1,0 +1,14 @@
+<package name="perl-prefork" project="openSUSE:Factory">
+  <title>Optimized module loading for forking or non-forking processes</title>
+  <description>The &quot;prefork&quot; pragma is intended to allow module writers to optimise
+module loading for both scenarios with as little additional code as
+possible.
+
+prefork.pm is intended to serve as a central and optional marshalling
+point for state detection (are we running in compile-time or run-time
+mode) and to act as a relatively light-weight module loader.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-prefork"/>
+  <url>http://search.cpan.org/dist/prefork</url>
+</package>

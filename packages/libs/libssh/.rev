@@ -1,0 +1,571 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>4ab31f32f67bc743bd4dfbca70ec0314</srcmd5>
+    <version>0.2</version>
+    <time>1226288346</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>dc73af2ee4d398399112b0de53d4a570</srcmd5>
+    <version>0.2</version>
+    <time>1226941399</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a04feafee92428481b22a57c7ec55ee1</srcmd5>
+    <version>0.3.0</version>
+    <time>1243477358</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5821a9e6f35e954f880b5690ab8a16da</srcmd5>
+    <version>0.3.2</version>
+    <time>1249676969</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b91c1d920a3352a00367423b003a5d8c</srcmd5>
+    <version>0.3.3</version>
+    <time>1250866139</time>
+    <user>autobuild</user>
+    <comment>Copy from network/libssh based on submit request 18365 from user jmcdough
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b72c737f30726464aff8e500e72e1472</srcmd5>
+    <version>0.3.4</version>
+    <time>1253136356</time>
+    <user>autobuild</user>
+    <comment>Copy from network/libssh based on submit request 20531 from user jmcdough
+</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b72c737f30726464aff8e500e72e1472</srcmd5>
+    <version>0.3.4</version>
+    <time>1253136356</time>
+    <user>autobuild</user>
+    <comment>Copy from network/libssh based on submit request 20531 from user jmcdough
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>742c75984dbb12db6ad8390465a5b1f7</srcmd5>
+    <version>0.3.92</version>
+    <time>1261338000</time>
+    <user>autobuild</user>
+    <comment>Copy from network/libssh based on submit request 27227 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6e6556f69134a2418db760bd8df32875</srcmd5>
+    <version>0.3.92</version>
+    <time>1268924736</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8b1469040b1e597f95b20bb70d7fa366</srcmd5>
+    <version>0.4.2</version>
+    <time>1270246383</time>
+    <user>autobuild</user>
+    <comment>Copy from network:synchronization:files/libssh based on submit request 36827 from user jmcdough
+</comment>
+    <requestid>36827</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8b1469040b1e597f95b20bb70d7fa366</srcmd5>
+    <version>0.4.2</version>
+    <time>1278667363</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8b1469040b1e597f95b20bb70d7fa366</srcmd5>
+    <version>0.4.2</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>a53ec58edd8d30197fee74d7c75dc725</srcmd5>
+    <version>unknown</version>
+    <time>1283787838</time>
+    <user>autobuild</user>
+    <comment>Copy from network:synchronization:files/libssh based on submit request 47233 from user gladiac
+</comment>
+    <requestid>47233</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>5d3af27cbe9b5d4935136fc4193223ad</srcmd5>
+    <version>0.4.8</version>
+    <time>1295350193</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58675 from user gladiac
+</comment>
+    <requestid>58675</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>61df59961bd3c1d5a50ee574c337ac6d</srcmd5>
+    <version>0.4.8</version>
+    <time>1295350219</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58675
+</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>61df59961bd3c1d5a50ee574c337ac6d</srcmd5>
+    <version>0.4.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b06e168732ca88d777acaff4d8504095</srcmd5>
+    <version>0.5.0</version>
+    <time>1307710780</time>
+    <user>saschpe</user>
+    <comment>Update to libssh 0.5.0</comment>
+    <requestid>72498</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>74d9b498a3165738e388f081791686b9</srcmd5>
+    <version>0.5.0</version>
+    <time>1307710789</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72498
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ff18687f5c5c4b9e36a78846ba61d2ff</srcmd5>
+    <version>0.5.1</version>
+    <time>1315316133</time>
+    <user>saschpe</user>
+    <comment>- Build with OPENSSL_LOAD_CONF so we respect user's choice
+  of which  &quot;openssl engine&quot; to use for crypto (aes-ni,intel-accel) (forwarded request 81044 from elvigia)</comment>
+    <requestid>81084</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>295cfa23790f8fc6ae52c5d3e8657fc9</srcmd5>
+    <version>0.5.1</version>
+    <time>1315316139</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81084
+</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>295cfa23790f8fc6ae52c5d3e8657fc9</srcmd5>
+    <version>0.5.1</version>
+    <time>1319182138</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9645dcd7f9f2b5709891851cd1b9ea1c</srcmd5>
+    <version>0.5.2</version>
+    <time>1328890644</time>
+    <user>coolo</user>
+    <comment>- Ensure pkgconfig symbols are provided
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+- Make pkgconfig provides available
+- Add patch to work around compilation problems on SLES11SP1
+
+- Update to version 0.5.2
+  * Increased window size x10.
+  * Fixed SSHv1.
+  * Fixed bugged lists.
+  * Fixed use-after-free + inconsistent callbacks call in poll.
+  * Fixed scp documentation.
+  * Fixed possible infinite loop in channel_read().
+  * Fixed handling of short reads of sftp_async_read().
+  * Fixed handling request service timeout in blocking mode.
+  * Fixed ssh_auth_list() documentation.
+  * Fixed incorrect return values in ssh_channel_write().
+  * Fixed an infinite loop in the termination callback.
+  * Fixed handling of SSH_AGAIN in channel_open().
+  * Fixed &quot;status -5 inflating zlib packet&quot;</comment>
+    <requestid>103121</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>9645dcd7f9f2b5709891851cd1b9ea1c</srcmd5>
+    <version>0.5.2</version>
+    <time>1340183640</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6c277cf4c7650ac29cd2de18353c661d</srcmd5>
+    <version>0.5.3</version>
+    <time>1353438904</time>
+    <user>coolo</user>
+    <comment>Security update to 0.5.3</comment>
+    <requestid>142129</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>6c277cf4c7650ac29cd2de18353c661d</srcmd5>
+    <version>0.5.3</version>
+    <time>1359109359</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>24481515fa094542a848644f297f6e28</srcmd5>
+    <version>0.5.4</version>
+    <time>1362730922</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157802</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>6002a7d5d887b727a9fac22047503f52</srcmd5>
+    <version>0.5.4</version>
+    <time>1374932848</time>
+    <user>coolo</user>
+    <comment>Add two patches (which will be in libssh 0.5.5) to properly handle 
+ProxyCommand parsing in ssh configuration files:
+
+- Add fix-proxycomand-parsing1.diff: fix ProxyCommand parsing in 
+  libssh (upstream libssh bug 103)
+- Add fix-proxy-command-none.diff: fix ProxyCommand when it is
+  &quot;none&quot; (upstream libssh bug 103) (forwarded request 184365 from luca_b)</comment>
+    <requestid>184375</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>89199ff937c91b3cb9afbaf6ee273733</srcmd5>
+    <version>0.5.5</version>
+    <time>1375177234</time>
+    <user>coolo</user>
+    <comment>Update to 0.5.5.</comment>
+    <requestid>184894</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>89199ff937c91b3cb9afbaf6ee273733</srcmd5>
+    <version>0.5.5</version>
+    <time>1379663099</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>28412b43477bedf44ad3dc83264737b2</srcmd5>
+    <version>0.5.90</version>
+    <time>1387485513</time>
+    <user>coolo</user>
+    <comment>- Remove remove-pedantic-errors.diff, does not apply anymore and is
+  not needed anymore. (forwarded request 211685 from kukuk)</comment>
+    <requestid>211688</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>17961e33da6a9c673fdb821786bc5d91</srcmd5>
+    <version>0.6.0</version>
+    <time>1389277813</time>
+    <user>coolo</user>
+    <comment>update to libssh 0.6.0</comment>
+    <requestid>213274</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>cde88e3b317098aa2d821bcb51eb3474</srcmd5>
+    <version>0.6.3</version>
+    <time>1394103698</time>
+    <user>coolo</user>
+    <comment>Fix CVE-2014-0017.</comment>
+    <requestid>224658</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>cde88e3b317098aa2d821bcb51eb3474</srcmd5>
+    <version>0.6.3</version>
+    <time>1409301726</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b8773f959da4003d859d2e124bd69b89</srcmd5>
+    <version>0.6.4</version>
+    <time>1422594114</time>
+    <user>dimstar_suse</user>
+    <comment>- removing argument from popd
+- add baselibs.conf as source
+
+- Update to version 0.6.4
+  * Fixed CVE-2014-8132.
+  * Added SHA-2 for session ID signing with ECDSA keys.
+  * Added support for ECDSA host keys.
+  * Added support for more ECDSA hostkey algorithms.
+  * Added ssh_pki_key_ecdsa_name() API.
+  * Fixed setting the bindfd only after successful listen.
+  * Fixed issues with user created sockets.
+  * Fixed several issues in libssh C++ wrapper.
+  * Fixed several documentation issues.
+  * Fixed channel exit-signal request.
+  * Fixed X11 request screen number in messages.
+  * Fixed several memory leaks.</comment>
+    <requestid>282297</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b8cbe1080e286a9bebe9519f058d41e7</srcmd5>
+    <version>0.6.5</version>
+    <time>1430983213</time>
+    <user>coolo</user>
+    <comment>Update to 0.6.5 to address CVE-2015-3146
+</comment>
+    <requestid>304835</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>df1301b162b9640dad1d29dd3b54bbe1</srcmd5>
+    <version>0.6.5</version>
+    <time>1431248072</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305703</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0f711000e9fdd6d437fabdbbcd35df95</srcmd5>
+    <version>0.7.0</version>
+    <time>1432070012</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>307748</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c9edbd1becb74c69abddbe60ea06a949</srcmd5>
+    <version>0.7.1</version>
+    <time>1436111720</time>
+    <user>coolo</user>
+    <comment>Update to libssh 0.7.1</comment>
+    <requestid>314557</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>7f7593a4c8e7436564271057e664f906</srcmd5>
+    <version>0.7.1</version>
+    <time>1437657730</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317785</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>55b2b7f4d42e2d5c8ef11ecaf6f45308</srcmd5>
+    <version>0.7.2</version>
+    <time>1444833837</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>338793</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>7826fbb7df63ca83c8dbd361d2a953d1</srcmd5>
+    <version>0.7.2</version>
+    <time>1481459099</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444859</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6e506ddf82177d6ea1dde4bdf7ed68c2</srcmd5>
+    <version>0.7.4</version>
+    <time>1486773329</time>
+    <user>dimstar_suse</user>
+    <comment>Update to libssh 0.7.4</comment>
+    <requestid>455519</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>36d36642ea3bb9e0dd90ad10e90495ea</srcmd5>
+    <version>0.7.5</version>
+    <time>1492516065</time>
+    <user>dimstar_suse</user>
+    <comment>Update to libssh-0.7.5</comment>
+    <requestid>487843</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>e0e1bd3c8e7e822abc1bf1b2ebc10168</srcmd5>
+    <version>0.7.5</version>
+    <time>1501666245</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>513154</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>584be0619782cdf4e2735ca2197ea0ba</srcmd5>
+    <version>0.7.5</version>
+    <time>1506955846</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528606</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>07e94a385d82651227614b905e402e82</srcmd5>
+    <version>0.7.5</version>
+    <time>1514840951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560272</requestid>
+  </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>93d89048ae24a9f8322ece553f514880</srcmd5>
+    <version>0.7.5</version>
+    <time>1520932923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585127</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b8fc6939e0be2684b7642326e9f1258c</srcmd5>
+    <version>0.8.2</version>
+    <time>1536094000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.2
+  * Added sha256 fingerprints for pubkeys
+  * Improved compiler flag detection
+  * Fixed race condition in reading sftp messages
+  * Fixed doxygen generation and added modern style
+  * Fixed library initialization on Windows
+  * Fixed __bounded__ attribute detection
+  * Fixed a bug in the options parser
+  * Fixed documentation for new knwon_hosts API
+- Added patch: 0001-poll-Fix-size-types-in-ssh_event_free.patch
+  * Fix compiler warning on SLE12
+- Add missing zlib-devel dependency which was previously pulled in
+  by libopenssl-devel
+- Remove the libssh_threads.so symlink
+- Update to version 0.8.1
+  * Fixed version number in the header
+  * Fixed version number in pkg-config and cmake config
+  * Fixed library initialization
+  * Fixed attribute detection
+- Update to version 0.8.0
+  * Removed support for deprecated SSHv1 protocol
+  * Added new connector API for clients
+  * Added new known_hosts parsing API
+  * Added support for OpenSSL 1.1
+  * Added support for chacha20-poly1305 cipher
+  * Added crypto backend for mbedtls crypto library
+  * Added ECDSA support with gcrypt backend
+  * Added advanced client and server testing using cwrap.org
+  * Added support for curve25519-sha256 alias
+  * Added support for global known_hosts file
+  * Added support for symbol versioning
+  * Improved ssh_config parsing
+  * Improved threading support
+- Removed 0001-libcrypto-Remove-AES_ctr128_encrypt.patch
+- Removed 0001-libcrypto-Introduce-a-libcrypto-compat-file.patch
+- Removed 0001-libcrypto-Use-newer-API-for-HMAC.patch
+- Removed 0001-libcrypto-Use-a-pointer-for-EVP_MD_CTX.patch
+- Removed 0001-libcrypto-Use-a-pointer-for-EVP_CIPHER_CTX.patch
+- Removed 0001-pki_crypto-Use-getters-and-setters-for-opaque-keys-a.patch
+- Removed 0001-threads-Use-new-API-call-for-OpenSSL-CRYPTO-THREADID.patch
+- Removed 0001-cmake-Use-configure-check-for-CRYPTO_ctr128_encrypt.patch
+- Removed 0001-config-Bugfix-Dont-skip-unseen-opcodes.patch
+</comment>
+    <requestid>632446</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>e6dd45a480be276e685e8431134075bb</srcmd5>
+    <version>0.8.3</version>
+    <time>1538377460</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.3
+  * Added support for rsa-sha2
+  * Added support to parse private keys in openssh container format
+    (other than ed25519)
+  * Added support for diffie-hellman-group18-sha512 and
+    diffie-hellman-group16-sha512
+  * Added ssh_get_fingerprint_hash()
+  * Added ssh_pki_export_privkey_base64()
+  * Added support for Match keyword in config file
+  * Improved performance and reduced memory footprint for sftp
+  * Fixed ecdsa publickey auth
+  * Fixed reading a closed channel
+  * Added support to announce posix-rename@openssh.com and
+    hardlink@openssh.com in the sftp server
+- Removed patch: 0001-poll-Fix-size-types-in-ssh_event_free.patch
+</comment>
+    <requestid>637016</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6862e54a9f323607b7add556d75c9147</srcmd5>
+    <version>0.8.4</version>
+    <time>1540319598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642373</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5bf5a97d8141ef3a7a231e68668dc011</srcmd5>
+    <version>0.8.5</version>
+    <time>1541666496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.5
+  * Added support to get known_hosts locations with ssh_options_get()
+  * Fixed preferred algorithm for known hosts negotiations
+  * Fixed KEX with some server implementations (e.g. Cisco)
+  * Fixed issues with MSVC
+  * Fixed keyboard-interactive auth in server mode
+    (regression from CVE-2018-10933)
+  * Fixed gssapi auth in server mode (regression from CVE-2018-10933)
+  * Fixed socket fd handling with proxy command
+  * Fixed a memory leak with OpenSSL
+</comment>
+    <requestid>645218</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>a98fa2e8f74c3852ca973b927a8645d8</srcmd5>
+    <version>0.8.6</version>
+    <time>1546535075</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.6
+  * Fixed compilation issues with different OpenSSL versions
+  * Fixed StrictHostKeyChecking in new knownhosts API
+  * Fixed ssh_send_keepalive() with packet filter
+  * Fixed possible crash with knownhosts options
+  * Fixed issus with rekeying
+  * Fixed strong ECDSA keys
+  * Fixed some issues with rsa-sha2 extentions
+  * Fixed access violation in ssh_init() (static linking)
+  * Fixed ssh_channel_close() handling
+</comment>
+    <requestid>662084</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>2b0785171c8ece3329538f6642594048</srcmd5>
+    <version>0.8.6</version>
+    <time>1547554559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663779</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>7c4df8d4edcd791a05405ba44f25abcb</srcmd5>
+    <version>0.8.6</version>
+    <time>1551023954</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673374</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>77f19d87dc9453d876fc890d9aec7c28</srcmd5>
+    <version>0.8.7</version>
+    <time>1551468599</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>680032</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>ae6a0af436eebaf488fe4dfd6e492387</srcmd5>
+    <version>0.8.7</version>
+    <time>1558784076</time>
+    <user>dimstar_suse</user>
+    <comment>Add support for new AES-GCM ciphers; (bsc#1134193)</comment>
+    <requestid>705071</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>458c0f82f2499c9e52f2c1437a09ceb8</srcmd5>
+    <version>0.8.7</version>
+    <time>1560337490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706350</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>de8d6ecf07466252cbabc39953501b3f</srcmd5>
+    <version>0.9.0</version>
+    <time>1563017752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714399</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="nautilus-terminal" project="openSUSE:Factory">
+  <title>Integrated Terminal for the Nautilus File Browser</title>
+  <description>Nautilus Terminal is an integrated terminal for the Nautilus file browser.</description>
+  <devel project="GNOME:Apps" package="nautilus-terminal"/>
+</package>

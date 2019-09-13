@@ -1,0 +1,738 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>91365f22c2cee4f9c6c940fcf0c501c0</srcmd5>
+    <version>3.2.3</version>
+    <time>1351055704</time>
+    <user>coolo</user>
+    <comment>package rename squid3 -&gt; squid, update to 3.2.3, squid3 can now be deleted.</comment>
+    <requestid>139037</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>269c158aed2ac8b3278af5a475b08d9d</srcmd5>
+    <version>3.2.3</version>
+    <time>1353266822</time>
+    <user>namtrac</user>
+    <comment>Fix build with glibc 2.17 (forwarded request 141616 from a_jaeger)</comment>
+    <requestid>141620</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa65a49182d02fe3e2b6c4029f315a6a</srcmd5>
+    <version>3.2.5</version>
+    <time>1357199046</time>
+    <user>a_jaeger</user>
+    <comment>update to 3.2.5 (forwarded request 146698 from computersalat)</comment>
+    <requestid>146699</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fa96caeee1dfe9c404ab502ddde23fd2</srcmd5>
+    <version>3.2.6</version>
+    <time>1358153385</time>
+    <user>coolo</user>
+    <comment>update to 3.2.6, fix for CVE-2012-5643 (forwarded request 148340 from computersalat)</comment>
+    <requestid>148341</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7103b1ef14f0356c1aa7af81deac5dd7</srcmd5>
+    <version>3.2.6</version>
+    <time>1358161421</time>
+    <user>coolo</user>
+    <comment>fix changes file</comment>
+    <requestid>148381</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>7103b1ef14f0356c1aa7af81deac5dd7</srcmd5>
+    <version>3.2.6</version>
+    <time>1359110432</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a9458ebdaf6d4e94fc2637710e5a39c2</srcmd5>
+    <version>3.2.7</version>
+    <time>1361548965</time>
+    <user>coolo</user>
+    <comment>- Updated to squid-3.2.7 (01 Feb 2013) (forwarded request 155939 from edssvirt)</comment>
+    <requestid>156005</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>37ba7b73d6a089d233232c0bb9e0a552</srcmd5>
+    <version>3.2.9</version>
+    <time>1364240738</time>
+    <user>coolo</user>
+    <comment>Fixed squid.service file (sorry for the previous mess), Commented patch line removed. Ready for factory, and have patchinfo for 12.3 (forwarded request 160810 from bruno_friedmann)</comment>
+    <requestid>160840</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bb4ef3ab77400b699d5abfd5580fbdb4</srcmd5>
+    <version>3.2.11</version>
+    <time>1368452238</time>
+    <user>coolo</user>
+    <comment>- Changes for squid 3.2.11 release (29 April 2013)
+	- Fix enter_suid/leave_suid build errors in ip/Intercept.cc
+	- GNU Hurd: define MAP_NORESERVE as no-op when missing
+	- Bug #3833: Option '-k' is not present in squidclient man page
+	- Bug #3817: Memory leak in SSL cert validate for alt_name peer certs
+	- Bug #3822: Locate LDAP and SASL headers in /usr/local/include for BSD support
+	- Bug #3825: basic_ncsa_auth segfaulting with glibc-2.17
+	- Bug #3774: -k reconfigure drops rock
+	- Bug #3565: Resuming postponed accept kills Squid
+	- HTTP/1.1: partial support for no-cache and private controls with parameters
+	- ssl_crtd: helpers dying during startup on ARM
+	- Updated copyright for icons/SN.png
+	- Revert r11810 - tools.h does not exist in 3.2 (forwarded request 173973 from bruno_friedmann)</comment>
+    <requestid>174905</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>8cdbf5aea3f5e7e0c5b8ba5f326b1857</srcmd5>
+    <version>3.2.11</version>
+    <time>1374756409</time>
+    <user>coolo</user>
+    <comment>- Add patch squid-fix-pod2man-check.patch solving building with
+  new perl.</comment>
+    <requestid>184303</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>51ed68218a33338f2710d10b168d2e80</srcmd5>
+    <version>3.2.13</version>
+    <time>1375195704</time>
+    <user>coolo</user>
+    <comment>Upgrade to last bugfix upstream release, Make version and date vars in description, Refreshed REALEASENOTE.html file (forwarded request 184541 from bruno_friedmann)</comment>
+    <requestid>184553</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>54b11718e5a5bd0df34f69cc5e63bb56</srcmd5>
+    <version>3.3.8</version>
+    <time>1378749126</time>
+    <user>coolo</user>
+    <comment>update to 3.3.8 (forwarded request 197900 from computersalat)</comment>
+    <requestid>197903</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>54b11718e5a5bd0df34f69cc5e63bb56</srcmd5>
+    <version>3.3.8</version>
+    <time>1379664725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7c1880821ccb71905a80874d24833541</srcmd5>
+    <version>3.3.9</version>
+    <time>1380469998</time>
+    <user>coolo</user>
+    <comment>update to 3.3.9 (forwarded request 201324 from computersalat)</comment>
+    <requestid>201325</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>be9efec833aeeb0ce8455c32b55bde8b</srcmd5>
+    <version>3.3.11</version>
+    <time>1388396658</time>
+    <user>coolo</user>
+    <comment>update to 3.3.11 (forwarded request 212267 from computersalat)</comment>
+    <requestid>212269</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dd3540b06b8dcc82d492d87e84fa2b99</srcmd5>
+    <version>3.4.2</version>
+    <time>1390395642</time>
+    <user>coolo</user>
+    <comment>update to 3.4.2 (forwarded request 214646 from computersalat)</comment>
+    <requestid>214647</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f0a10789de47abc413fc2dcb80622838</srcmd5>
+    <version>3.4.4</version>
+    <time>1395148023</time>
+    <user>coolo</user>
+    <comment>update to 3.4.4</comment>
+    <requestid>226329</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>2bbece07b86b2ab3b68447d1bfb4e8e3</srcmd5>
+    <version>3.4.4</version>
+    <time>1396709303</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>229070</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>2bbece07b86b2ab3b68447d1bfb4e8e3</srcmd5>
+    <version>3.4.4</version>
+    <time>1409303407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>aa164dc36800c776d6e6fa87d74cdd9f</srcmd5>
+    <version>3.4.10</version>
+    <time>1420833052</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>280566</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2b9a3a09bc5e0c3cec811f0749e4595f</srcmd5>
+    <version>3.4.11</version>
+    <time>1426064204</time>
+    <user>dimstar_suse</user>
+    <comment>remove obsolete RELEASENOTES (forwarded request 286698 from computersalat)</comment>
+    <requestid>286699</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>487e3af38bbfcdd5ed1b697dc147791a</srcmd5>
+    <version>3.5.3</version>
+    <time>1430132712</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304039</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>92946f999fdb307a975e60affe8ee189</srcmd5>
+    <version>3.5.3</version>
+    <time>1430214430</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>304326</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>871d4a33971576e6ce87c0af278ca3f8</srcmd5>
+    <version>3.5.3</version>
+    <time>1430907047</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305549</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>673bb7af5c96e02de0df82d87db92fce</srcmd5>
+    <version>3.5.4</version>
+    <time>1432379278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308403</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b73910e48c744cc107bc05faf7bb376c</srcmd5>
+    <version>3.5.5</version>
+    <time>1433577243</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310390</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6c1756df2315225183b4c10716a7580b</srcmd5>
+    <version>3.5.6</version>
+    <time>1437549592</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317787</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>36033b81aa00a3415aa78306d023dfa7</srcmd5>
+    <version>3.5.7</version>
+    <time>1438899870</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.5.7 (forwarded request 320787 from computersalat)</comment>
+    <requestid>320788</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>8d5f0330fb747345f2c19eb9d3bc55c2</srcmd5>
+    <version>3.5.7</version>
+    <time>1439274419</time>
+    <user>dimstar_suse</user>
+    <comment>- Move update logic to proper scriptlet
+  * Replace 'etc' with %{_sysconfdir} macro</comment>
+    <requestid>321598</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>bae880471d73c152485944f1b231d888</srcmd5>
+    <version>3.5.8</version>
+    <time>1441726758</time>
+    <user>dimstar_suse</user>
+    <comment>- Changes to squid-3.5.8 (02 Sep 2015):
+  * Regression Bug 4306: build portability fix in Kerberos helpers
+  * Bug 4302: IPFilter v5 transparent interception
+  * Bug 4301: compile errors with IPFilter interception
+  * Bug 4285 partial: %us is not supported in access.log
+  * Bug 4278: Docs: typo in the refresh_pattern freshness algorithm
+  * Bug 4242: compile errors with eCAP using clang-3.6
+  * Bug 3696: crash when client delay pools are activated
+  * Bug 3553: cache_swap_high ignored and maxCapacity used instead
+  * Regression Fix: FtpServer.cc:1024: &quot;reply != NULL&quot; assertion
+  * Fix ignore of impossible SSL bumping actions, as intended and documented
+  * Fix memory leak in Surrogate-Capability header detection
+  * Fix truncated body length when RESPMOD service aborts
+  * Reject non-chunked HTTP messages with conflicting Content-Length values
+  * Support splice for SSLv3 and TLSv1 sessions that start with an SSLv2 Hello
+  * ... and several portability and compile fixes
+  * ... and several documentation updates</comment>
+    <requestid>328804</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>35a4beed6f92cb2a47c007ba5277acd4</srcmd5>
+    <version>3.5.8</version>
+    <time>1442474484</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>331084</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>81574e00d60917dfdf206d75392f4879</srcmd5>
+    <version>3.5.10</version>
+    <time>1444636943</time>
+    <user>coolo</user>
+    <comment>- Changes to squid-3.5.10 (01 Oct 2015):
+  * Regression Fix cache_peer login=PASS(THRU) after CVE-2015-5400
+  * Regression Bug 4326: base64 binary encoder rejects data beginning with nil byte
+  * Bug 4323: Netfilter broken cross-includes with Linux 4.2
+  * Bug 4328: %un format code does not work for external ACLs in credentials-fetching rules
+  * Bug 4208: more than one port in wccp2_service_info line causes error
+  * Bug 4304: PeerConnector.cc:743 &quot;!callback&quot; assertion.
+  * Bug 4330: Do not use SSL_METHOD::put_cipher_by_char to determine size of SSL hello ciphers
+  * Relicense ntlm_fake_auth.pl to GPLv2+
+  * Relicense smb_lm auth helper to GPLv2+
+  * Relicense SSPI helper to GPLv2+
+  * ... and several minor performance optimizations</comment>
+    <requestid>337274</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>5f031a8486070401e69c5020f1a71e0c</srcmd5>
+    <version>3.5.10</version>
+    <time>1445287924</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix rpmlint errors / warnings
+  * systemd-service-without-service_add_pre
+    moved service_add_pre to %pre
+  * non-etc-or-var-file-marked-as-conffile
+    moved mib.txt to /usr/share/snmp/mibs/SQUID-MIB.txt
+    idea taken from Fedora package</comment>
+    <requestid>339261</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8e76b33a9be48974795fa70858cf6314</srcmd5>
+    <version>4.0.3</version>
+    <time>1449687277</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348054</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>af9bd074952493a692a6d3402c5eabdd</srcmd5>
+    <version>3.5.13</version>
+    <time>1453998194</time>
+    <user>dimstar_suse</user>
+    <comment>squid 4 is Beta, revert to 3.5.x, update to 3.5.13, fix ChangeLog (forwarded request 355747 from computersalat)</comment>
+    <requestid>355748</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>45052742484b6d7e422545bc7ebd830c</srcmd5>
+    <version>3.5.15</version>
+    <time>1457533050</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367812</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f64c8c8332036fcf7bd2a841892eeaf7</srcmd5>
+    <version>3.5.16</version>
+    <time>1459936341</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>383787</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>cd054286e8788a2cddd7ca393179cecd</srcmd5>
+    <version>3.5.19</version>
+    <time>1462977454</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394490</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>26ef37bb94e85385689747af18f64371</srcmd5>
+    <version>3.5.20</version>
+    <time>1468482453</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407564</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>2d87e6512e780e988246c1d968b6b805</srcmd5>
+    <version>3.5.20</version>
+    <time>1470217376</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>415075</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>71b3b85cb549ff922cd7854faeb4cc70</srcmd5>
+    <version>3.5.22</version>
+    <time>1476351162</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434591</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6f54fb83963c1a7298de79abdef00606</srcmd5>
+    <version>3.5.23</version>
+    <time>1485682852</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452995</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>00696b38f203d364cbdf85112db0219d</srcmd5>
+    <version>3.5.24</version>
+    <time>1485863315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453450</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>fbbef31a4d32f5e1d232376ca0303b29</srcmd5>
+    <version>3.5.24</version>
+    <time>1490318571</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>482005</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>ba97a067b74f4cb30b503090b289f427</srcmd5>
+    <version>3.5.25</version>
+    <time>1492170043</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487028</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2559a61c93103ae46f5d8f592a6521d9</srcmd5>
+    <version>3.5.26</version>
+    <time>1498046073</time>
+    <user>dimstar_suse</user>
+    <comment>- Packaging cleanup
+- Dropped:
+  * squid-brokenad.patch
+  * squid-config.patch
+  * squid.init squid.init.rh
+  * squid-old-kerberos.patch
+  * squid-rpmlintrc
+- Update description and url
+
+- Update Squid to 3.5.26
+  * SubjectAlternativeNames missing in some generated certificates
+    Previous releases of Squid were not able to generate valid
+    mimic certificates from AltName server certificate field only.
+  * Fix ignoring http_access deny with client-first bumping mode
+  * ssl_crtd: now returns non-zero on failure
+  * Fix FTP directory listings display issues
+  * OpenSSL support better compliance with license requirements
+    This release of Squid will now include the required OpenSSL
+    advertisement on builds -v output where features are displayed.</comment>
+    <requestid>504589</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>f4212d426283e6fe3b1eaa484f74ad16</srcmd5>
+    <version>3.5.26</version>
+    <time>1499415468</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508585</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>a484d1d10d7f801adf17406676757054</srcmd5>
+    <version>3.5.26</version>
+    <time>1501406860</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>513028</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f8db5a8f12a109f61c01e5e305d2d1c9</srcmd5>
+    <version>3.5.27</version>
+    <time>1506340696</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528110</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>1ca31fa5875bcc3482245a5b20255bdf</srcmd5>
+    <version>3.5.27</version>
+    <time>1507571290</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on TW (forwarded request 532824 from dimstar)</comment>
+    <requestid>532831</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>9e9387888e17ea2406c21050a9adc606</srcmd5>
+    <version>3.5.27</version>
+    <time>1511517321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544867</requestid>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>976d32359aec6e1e3fa1583da90f9a2a</srcmd5>
+    <version>3.5.27</version>
+    <time>1512433832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548098</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f40254d8b2151ca076a813ae4a157e9e</srcmd5>
+    <version>4.0.22</version>
+    <time>1515623815</time>
+    <user>dimstar_suse</user>
+    <comment>- Update download url
+
+- Update Squid to 4.0.22 (fate#324583, bnc#1073089)
+  * re-enable building with default openssl-devel
+  * Helper changes since 3.5.27:
+    + basic_msnt_multi_domain_auth removed - basic_smb_lm_auth
+      helper performs the same functionality
+    + cert_valid.pl testing helper renamed to
+      security_fake_certverify
+    + ssl_crtd renamed to security_file_certgen
+  For complete set of release notes and changes since squid 3.5 see
+  http://www.squid-cache.org/Versions/v4/squid-4.0.22-RELEASENOTES.html
+- Updated squid.keyring using current keyring file from upstream
+- missing_installs.patch: install manpages for installed helpers</comment>
+    <requestid>563122</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>d687c39918806127f0567df6d3b778ec</srcmd5>
+    <version>4.0.23</version>
+    <time>1516804337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568822</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>dbcc82c3a85e2858a10554a66db6b123</srcmd5>
+    <version>4.0.23</version>
+    <time>1517932057</time>
+    <user>dimstar_suse</user>
+    <comment>- Change default error pages symlink from German to English.
+
+  (bnc#1077003, CVE-2018-1000024)
+  (bnc#1077006, CVE-2018-1000027)</comment>
+    <requestid>572519</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>a7ae1edaeeccfba4a5b7d37866a3b107</srcmd5>
+    <version>4.0.23</version>
+    <time>1519145771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578257</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5c113424838cb583adb1bb7010a30a38</srcmd5>
+    <version>4.0.24</version>
+    <time>1522404465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592192</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>1416f51911f2bb6c4c5ae1f5075848ec</srcmd5>
+    <version>4.0.24</version>
+    <time>1526463712</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix package configure, allowing it to build in factory
+- correct version in changelog</comment>
+    <requestid>607436</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>d992061aa2e820a6a45991085161e9d5</srcmd5>
+    <version>4.0.24</version>
+    <time>1528492604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614573</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>e1d3a089430ba0cfc67f1860c36bca80</srcmd5>
+    <version>4.0.25</version>
+    <time>1529501491</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617654</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>94446e819c7430460a29034ffaeea81a</srcmd5>
+    <version>4.1</version>
+    <time>1531135852</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621672</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>f11f94e944127c49d678eeec14aa894d</srcmd5>
+    <version>4.2</version>
+    <time>1534322194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628977</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>f042cc2c7f8e40e8fe106262622d74f4</srcmd5>
+    <version>4.3</version>
+    <time>1538672544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639903</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>56d32c3cd09c7edf649c278289df8fd3</srcmd5>
+    <version>4.3</version>
+    <time>1540320133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643975</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>84dd0ce7f079e08d27d76844c6201293</srcmd5>
+    <version>4.4</version>
+    <time>1540988068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645296</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>8b45f0be517396e08fb3e2fd106fda02</srcmd5>
+    <version>4.4</version>
+    <time>1543953459</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653729</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>f1d3514d38084fe4baa5e471e8fa848b</srcmd5>
+    <version>4.5</version>
+    <time>1546535286</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to squid 4.5: 
+  + Squid crashes when ICAPS and a sslcrtvalidator used together (#328)
+  + ssl_bump prevents from accessing some web contents (#304) 
+  + Docs: improved lexgrog compatibility (#340)
+  + Redesign forward_max_tries count TCP connection attempts
+  + Fix client_connection_mark ACL handling of clientless transactions
+  + Fix netdb exchange with a TLS cache peer
+  + Update netdb when tunneling requests
+  + Use pkg-config for detecting libxml2
+  + Misc doc updates
+  + Misc code compile fixes
+ 
+</comment>
+    <requestid>662383</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>97337b70e180fee5650ba1e788fdcd7f</srcmd5>
+    <version>4.5</version>
+    <time>1550574050</time>
+    <user>maxlin_factory</user>
+    <comment>- Revert whitespace deletions of .changes as it makes diffs a pain.
+
+- Do not hide errors from useradd. Make scriptlets
+  plain sh compatible.</comment>
+    <requestid>677001</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>22e82eb359b221bfdc704e33bfb31553</srcmd5>
+    <version>4.6</version>
+    <time>1551113821</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678651</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>6a2978047349a9783fd774c4de0ab3a2</srcmd5>
+    <version>4.7</version>
+    <time>1557321466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to squid 4.7: (jsc#SLE-5648)
+  + Fix stack-based buffer-overflow when parsing SNMP messages
+  + Fixed squidclient authentication
+  + Add support for buffer-size= to UDP logging
+  + Trust intermediate CAs from trusted stores
+  + Bug #4928: Cannot convert non-IPv4 to IPv4
+  + Bug #4796: comm.cc !isOpen(conn-&gt;fd) assertion when rotating logs
+  + Bug #4823: assertion failed: &quot;lowestOffset () &lt;= target_offset&quot;
+    (bsc#1133089)
+  + Bug #4942: --with-filedescriptors does not do anything
+
+- Syncronize bug and CVE references between 3.x and 4.x squid changelog
+  versions. These bugs were fixed here either without properly referencing
+  them during the fix or 4.x branch was never affected by them.
+  (bsc#1090089, CVE-2018-1172, bsc#979008, CVE-2016-4556,
+   bsc#938715, CVE-2015-5400, bsc#949942, CVE-2014-9749,
+   bsc#1016169, CVE-2016-10003, bsc#1016168, CVE-2016-10002,
+   bsc#979011, CVE-2016-4555, bsc#979010, CVE-2016-4554,
+   bsc#979009, CVE-2016-4553, bsc#976556, CVE-2016-4054,
+   bsc#976553, CVE-2016-4051, bsc#973783, CVE-2016-3948,
+   bsc#973782, CVE-2016-3947, bsc#968395, CVE-2016-2572,
+   bsc#968394, CVE-2016-2571, bsc#968393, CVE-2016-2570,
+   bsc#968392, CVE-2016-2569, bsc#967011, CVE-2016-2390,
+   bsc#959290, CVE-2016-4052, CVE-2016-4053)
+
+  + Fix memory leak when parsing SNMP packet
+    (bsc#1113669, CVE-2018-19132)
+    before displaying them (bsc#1113668, CVE-2018-19131)</comment>
+    <requestid>701549</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>266e44a44369b56ef56ee994c14bcc9e</srcmd5>
+    <version>4.7</version>
+    <time>1557916434</time>
+    <user>dimstar_suse</user>
+    <comment>Adding few more bug numbers that were missing
+from the squid 3.x changelog</comment>
+    <requestid>702817</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>991fc41070ac1d7c579674bdff858943</srcmd5>
+    <version>4.8</version>
+    <time>1563456023</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to squid 4.8:
+  + Ignore ECONNABORTED in accept(2)
+  + RFC 7230 forbids generation of userinfo subcomponent of https URL
+  + cachemgr.cgi: unallocated memory access resulting in a potential
+    denial of service. (bsc#1141442, CVE-2019-12854)
+  + terminating c-strings beyond BASE64_DECODE_LENGTH
+  + Replace uudecode with libnettle base64 decoder fixing a denial
+    of service vulnerability (bsc#1141329, CVE-2019-12529)
+  + fix to_localhost does not include ::
+  + Fix GCC-9 build issues
+  + Fix Digest auth parameter parsing preventing a potential
+    denial of service (bsc#1141332, CVE-2019-12525)
+  + Update HttpHeader::getAuth to SBuf which prevents a potential
+    heap overflowing allowing a possible remote code execution
+    attack when processing HTTP Authentication credentials
+    (bsc#1141330, CVE-2019-12527)
+  + Add the NO_TLSv1_3 option to available tls-options values
+  + Fix handling of tiny invalid responses
+  + Fix Memory leak when http_reply_access uses external_acl
+  + Fix Multiple XSS issues in cachemgr.cgi
+    (bsc#1140738, CVE-2019-13345)
+- use unbundled version of libnettle
+- disable LTO as a workaround to tests failing</comment>
+    <requestid>715745</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>d42c283ebb70170a47710e0fe16ba003</srcmd5>
+    <version>4.8</version>
+    <time>1564137740</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>718583</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>9941833d821dbee83eca9b1a6b46f3d0</srcmd5>
+    <version>4.8</version>
+    <time>1565267013</time>
+    <user>dimstar_suse</user>
+    <comment>- fix_configuration_error.patch: Fix compilation with -Wreturn-type
+- old_nettle_compat.patch: Update to actually use older version</comment>
+    <requestid>721533</requestid>
+  </revision>
+</revisionlist>

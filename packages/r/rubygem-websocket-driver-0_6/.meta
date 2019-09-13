@@ -1,0 +1,5 @@
+<package name="rubygem-websocket-driver-0_6" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-websocket-driver-0_6"/>
+</package>

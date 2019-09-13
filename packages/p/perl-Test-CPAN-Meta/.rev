@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>23acc571406ed4e5c4e048202d6e1ecf</srcmd5>
+    <version>0.17</version>
+    <time>1306414319</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66772</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>29ca06d416efe755e957fa9dcb057e9d</srcmd5>
+    <version>0.17</version>
+    <time>1306414328</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66772
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce3682ad69087a8c2d6d2b9288a444cc</srcmd5>
+    <version>0.18</version>
+    <time>1306853382</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>72100</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e9ab1fc49c2bcb274294fc5c997ccec4</srcmd5>
+    <version>0.18</version>
+    <time>1306853391</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72100
+</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>e9ab1fc49c2bcb274294fc5c997ccec4</srcmd5>
+    <version>0.18</version>
+    <time>1319182309</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>08392eee339c773fe93514ca87a766a2</srcmd5>
+    <version>0.18</version>
+    <time>1323193679</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>08392eee339c773fe93514ca87a766a2</srcmd5>
+    <version>0.18</version>
+    <time>1340183927</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>08392eee339c773fe93514ca87a766a2</srcmd5>
+    <version>0.18</version>
+    <time>1359109810</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>865774322176bd0ec82e83d1b6faab1a</srcmd5>
+    <version>0.23</version>
+    <time>1370515538</time>
+    <user>coolo</user>
+    <comment>- updated to 0.23
+       - updated INSTALL instructions.
+       - added minimum perl version (5.006).
+       - reworked Makefile.PL for clarity.
+       - implemented Perl::Critic suggestions.
+       - added meta_yaml_ok test and example.
+       - several Version.pm updates, including new() parameter name change:
+         'yaml' is now 'data'.
+       - RT#76609: further spelling fix. (Florian Schlichting).
+       - removed DSLIP info.
+       - RT#76609: spelling fix. (Florian Schlichting &amp; Gregor Herrmann).
+       - RT#74317: imported url validation from CPAN::Meta (Alex Hartmaier).
+       - RT#66692: updated license type (Paul Howarth).
+       - updates to examples. (forwarded request 177483 from coolo)</comment>
+    <requestid>177510</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>865774322176bd0ec82e83d1b6faab1a</srcmd5>
+    <version>0.23</version>
+    <time>1379663862</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>865774322176bd0ec82e83d1b6faab1a</srcmd5>
+    <version>0.23</version>
+    <time>1409302508</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>35b2152db217c086424be05aefadbb47</srcmd5>
+    <version>0.24</version>
+    <time>1429107777</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296040</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9235a1be5ebad67c8fe0831614345c92</srcmd5>
+    <version>0.25</version>
+    <time>1431247627</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305901</requestid>
+  </revision>
+</revisionlist>

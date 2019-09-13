@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="18">
+    <srcmd5>58ebc27e10594fde183979e3e4ecedda</srcmd5>
+    <version>1.2</version>
+    <time>1168903638</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="53">
+    <srcmd5>a807d188d870697d08e2af6f442bc82e</srcmd5>
+    <version>1.2</version>
+    <time>1175211408</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="92">
+    <srcmd5>5673a3296fd6be6953178790bcf6c669</srcmd5>
+    <version>1.2</version>
+    <time>1190119062</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="240">
+    <srcmd5>5673a3296fd6be6953178790bcf6c669</srcmd5>
+    <version>1.2</version>
+    <time>1190119062</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="241">
+    <srcmd5>7895ca419611f0ec59e61d38cdae86ff</srcmd5>
+    <version>1.2</version>
+    <time>1245276540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="243">
+    <srcmd5>7895ca419611f0ec59e61d38cdae86ff</srcmd5>
+    <version>1.2</version>
+    <time>1245276540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="244">
+    <srcmd5>ddb3d0b1e02d8b06954f835b7e567ea4</srcmd5>
+    <version>1.2</version>
+    <time>1268925133</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="246">
+    <srcmd5>ddb3d0b1e02d8b06954f835b7e567ea4</srcmd5>
+    <version>1.2</version>
+    <time>1278667371</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="247">
+    <srcmd5>ddb3d0b1e02d8b06954f835b7e567ea4</srcmd5>
+    <version>1.2</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="250">
+    <srcmd5>ddb3d0b1e02d8b06954f835b7e567ea4</srcmd5>
+    <version>1.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="252">
+    <srcmd5>ddb3d0b1e02d8b06954f835b7e567ea4</srcmd5>
+    <version>1.2</version>
+    <time>1319182208</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="253">
+    <srcmd5>72820a0c94d26134481b44a119277806</srcmd5>
+    <version>1.2</version>
+    <time>1323192788</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="255">
+    <srcmd5>72820a0c94d26134481b44a119277806</srcmd5>
+    <version>1.2</version>
+    <time>1340183742</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="257">
+    <srcmd5>72820a0c94d26134481b44a119277806</srcmd5>
+    <version>1.2</version>
+    <time>1359109523</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="259">
+    <srcmd5>72820a0c94d26134481b44a119277806</srcmd5>
+    <version>1.2</version>
+    <time>1379663396</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="260">
+    <srcmd5>131cd1e539f68ba682a9e2a8c00f0fb5</srcmd5>
+    <version>1.2</version>
+    <time>1380217136</time>
+    <user>coolo</user>
+    <comment>- Build with gcc-java as openjdk7 (1.7.0_40) fails to build it</comment>
+    <requestid>200712</requestid>
+  </revision>
+  <revision rev="17" vrev="262">
+    <srcmd5>131cd1e539f68ba682a9e2a8c00f0fb5</srcmd5>
+    <version>1.2</version>
+    <time>1409302010</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="263">
+    <srcmd5>4281b37c6f0be77b9e9e553e9de58853</srcmd5>
+    <version>1.2</version>
+    <time>1507280134</time>
+    <user>dimstar_suse</user>
+    <comment>Don't depend on java-gcj-compat</comment>
+    <requestid>531103</requestid>
+  </revision>
+</revisionlist>

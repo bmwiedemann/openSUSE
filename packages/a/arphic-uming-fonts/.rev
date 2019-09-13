@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="89">
+    <srcmd5>0468d48451dfe85a10348182e37dc2eb</srcmd5>
+    <version>0.2.20080216.1</version>
+    <time>1334818109</time>
+    <user>coolo</user>
+    <comment>Moving M17N/ttf-arphic-uming to M17N:fonts/arphic-uming-fonts.</comment>
+    <requestid>112149</requestid>
+  </revision>
+  <revision rev="2" vrev="90">
+    <srcmd5>6977d12cbeb1300cfa8b8663278b7594</srcmd5>
+    <version>0.2.20080216.1</version>
+    <time>1338016901</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122112</requestid>
+  </revision>
+  <revision rev="3" vrev="92">
+    <srcmd5>6977d12cbeb1300cfa8b8663278b7594</srcmd5>
+    <version>0.2.20080216.1</version>
+    <time>1340183180</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="93">
+    <srcmd5>2264084774a51430a48fb8313a318808</srcmd5>
+    <version>0.2.20080216.1</version>
+    <time>1347617612</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133918</requestid>
+  </revision>
+  <revision rev="5" vrev="95">
+    <srcmd5>2264084774a51430a48fb8313a318808</srcmd5>
+    <version>0.2.20080216.1</version>
+    <time>1359108666</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="97">
+    <srcmd5>2264084774a51430a48fb8313a318808</srcmd5>
+    <version>0.2.20080216.1</version>
+    <time>1379661987</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="99">
+    <srcmd5>2264084774a51430a48fb8313a318808</srcmd5>
+    <version>0.2.20080216.1</version>
+    <time>1409300513</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93baa85c19e97968fccf726f54188630</srcmd5>
+    <version>1.0.5</version>
+    <time>1331900535</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>109059</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>93baa85c19e97968fccf726f54188630</srcmd5>
+    <version>1.0.5</version>
+    <time>1340184045</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>93baa85c19e97968fccf726f54188630</srcmd5>
+    <version>1.0.5</version>
+    <time>1359110014</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>93baa85c19e97968fccf726f54188630</srcmd5>
+    <version>1.0.5</version>
+    <time>1379664157</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b473a21e43ec32dcbca8c60001c02a37</srcmd5>
+    <version>2.0</version>
+    <time>1380475711</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 201118 from posophe)</comment>
+    <requestid>201122</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b473a21e43ec32dcbca8c60001c02a37</srcmd5>
+    <version>2.0</version>
+    <time>1409302847</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b21896d496728cb0009b433780eb18a4</srcmd5>
+    <version>4.1.0</version>
+    <time>1546535372</time>
+    <user>dimstar_suse</user>
+    <comment>- Sadly the tests are working only under django 1.11 thus
+  skip them on py3
+
+- Update to 4.1.0:
+  * py3 support
+  * new django 1.11 and 2.0 support</comment>
+    <requestid>662607</requestid>
+  </revision>
+</revisionlist>

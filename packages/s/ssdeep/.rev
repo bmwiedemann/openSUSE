@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f43121831d725284737941a460ca2de</srcmd5>
+    <version>2.7</version>
+    <time>1344618197</time>
+    <user>namtrac</user>
+    <comment>ssdeep is a tool for computing piecemeal hashes of files.  Useful in malware detection.</comment>
+    <requestid>130346</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a61a16458f05c26f373c6484405649ef</srcmd5>
+    <version>2.7</version>
+    <time>1345973690</time>
+    <user>namtrac</user>
+    <comment>Let's not pretend to use libfuzz.so.2 when in fact ssdeep is statically built. This is after all also the reason why --disable-static failed in the end. (forwarded request 131121 from dimstar)</comment>
+    <requestid>131123</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a61a16458f05c26f373c6484405649ef</srcmd5>
+    <version>2.7</version>
+    <time>1359110435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>a61a16458f05c26f373c6484405649ef</srcmd5>
+    <version>2.7</version>
+    <time>1379664729</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>a61a16458f05c26f373c6484405649ef</srcmd5>
+    <version>2.7</version>
+    <time>1409303412</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d7adc25a8299e51a54f89c50deecbecc</srcmd5>
+    <version>2.12</version>
+    <time>1414613367</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258325</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>706842b2fae2b7355a820529b172862b</srcmd5>
+    <version>2.13</version>
+    <time>1430387440</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304357</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3001de1048ea1f21e660750e7463b04a</srcmd5>
+    <version>2.14.1</version>
+    <time>1510837319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541791</requestid>
+  </revision>
+</revisionlist>

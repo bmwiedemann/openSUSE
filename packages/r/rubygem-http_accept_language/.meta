@@ -1,0 +1,5 @@
+<package name="rubygem-http_accept_language" project="openSUSE:Factory">
+  <title>Parse the HTTP Accept Language Header</title>
+  <description>Find out which locale the user preferes by reading the languages they specified in their browser</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-http_accept_language"/>
+</package>

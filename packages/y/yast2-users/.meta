@@ -1,0 +1,5 @@
+<package name="yast2-users" project="openSUSE:Factory">
+  <title>YaST2 - User and Group Configuration</title>
+  <description>This package provides GUI for maintenance of linux users and groups.</description>
+  <devel project="YaST:Head" package="yast2-users"/>
+</package>

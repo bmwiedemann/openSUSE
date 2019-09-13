@@ -1,0 +1,271 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c5da695ddf266351f55a9761a1c07c7</srcmd5>
+    <version>1.4.0</version>
+    <time>1440658638</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>326478</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8b029cbac2297439d79c4610bb28ee70</srcmd5>
+    <version>1.6.3</version>
+    <time>1441173248</time>
+    <user>coolo</user>
+    <comment>- update to 1.6.3:
+  * Revert &quot;Use the correct auth_plugin for token authentication&quot;
+  * Ignore infra CI env vars
+  * Use the correct auth_plugin for token authentication
+  * Align to generic password auth-type
+  * Clarify floating ip use for vendors
+  * Add per-service endpoint overrides
+  * Remove requirements.txt from tox.ini
+  * Remove py26 and py33 from tox.ini
+  * Rename 'endpoint_type' to 'interface'
+  * Have service name default to None
+  * Remove region list from single cloud
+  * Fix set_default() when used before config init
+  * Specify the config file with environment variable
+  * Add support for configuring region lists with yaml
+  * Fix rendering issue in Readme
+  * Clean up vendor data
+  * Add support for indicating preference for IPv6
+  * Normalize project_name aliases</comment>
+    <requestid>328098</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7110f26f796d9b676b0b0bb5a4ab3074</srcmd5>
+    <version>1.7.5</version>
+    <time>1446208954</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.5:
+  * Fix a little error with the None auth type
+  * Change ignore-errors to ignore_errors
+  * Handle ksa opt with no deprecated field
+  * Fall back to keystoneclient arg processing
+  * Fix typo in ovh region names
+  * Move plugin loader creation to try block
+  * Convert auth kwargs '-' to '_'
+  * Properly handle os- prefixed args in fix_args
+  * Test kwargs passing not just argparse
+  * Allow configuring domain id once
+  * Add internap to the vendor list
+  * Fix typo in comment - we use ksa not ksc
+  * Defer plugin validation to keystoneauth
+  * Remove an extra line
+  * Add Datacentred to the vendor list
+  * Add ultimum to list of vendors
+  * Add Enter Cloud Suite to vendors list
+  * Add elastx to vendor support matrix
+  * Switch the image default to v2
+  * Update auro auth_url and region information
+  * Add citycloud to the vendors list
+  * Return keystoneauth plugins based on auth args
+  * Remove duplicate lines that are the same as default
+  * Add default version number for heat
+  * Update OVH public cloud information
+  * Handle empty defaults.yaml file
+  * Do not treat project_name and project_id the same
+  * Revert &quot;Revert &quot;Use the correct auth_plugin for token authentication&quot;&quot;</comment>
+    <requestid>337160</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2bb1000ccef3b80810adbc353080a294</srcmd5>
+    <version>1.14.0</version>
+    <time>1462342772</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to .spec from rpm-packaging upstream project
+
+- update to 1.14.0:
+  * Fix a precedence problem with auth arguments
+  * Return empty dict instead of None for lack of file
+  * Pass version arg by name not position
+  * Use _get_client in make_client helper function
+  * Add barbicanclient support
+  * Remove openstack-common.conf
+  * Add IBM Public Cloud
+  * Replace assertEqual(None, *) with assertIsNone in tests
+  * Update auth urls and identity API versions
+  * Stop hardcoding compute in simple_client
+  * Update volume API default version from v1 to v2
+  * Debug log a deferred keystone exception, else we mask some useful diag
+  * Fix README.rst, add a check for it to fit PyPI rules
+  * Use reno for release notes
+  * add URLs for release announcement tools
+  * Allow filtering clouds on command line
+
+- update to 1.13.1:
+  * Munge region_name to '' if set to None
+  * Fix some README typos
+  * Fix token_endpoint usage
+  * remove python 2.6 os-client-config classifier
+  * If cloud doesn't list regions expand passed name
+  * Fix glance endpoints with endpoint_override
+  * Allow passing in explicit version for legacy_client
+  * Pass endpoint override to constructors
+  * Support backwards compat for _ args</comment>
+    <requestid>387873</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>79d4d08337789f2595f2133da2d20a51</srcmd5>
+    <version>1.21.1</version>
+    <time>1475242152</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425266</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>608866dda4c866431cce296b3d7f5c71</srcmd5>
+    <version>1.26.0</version>
+    <time>1487680780</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.26.0:
+  - Revert &quot;Split auth plugin loading into its own method&quot;
+  - Add docutils contraint on 0.13.1 to fix building
+  - Fix interface_key for identity clients
+  - Use upper-constraints for tox envs
+  - Update ECS image_api_version to 1
+  - Enable release notes translation
+  - Update swift constructor to be Session aware
+  - Remove validate_auth_ksc
+  - Fix AttributeError in `get_config`
+  - Update reno for stable/newton
+  - Revert &quot;Fix interface_key for identity clients&quot;
+  - Normalize cloud config before osc-lib call
+  - List py35 in the default tox env list
+  - Show team and repo badges on README
+  - Fix a bunch of tests
+  - Add setter for session constructor
+  - Don't create envvars cloud if cloud or region are set
+  - Using assertIsNone() instead of assertEqual(None, ...)
+  - Magnum's service_type is container_infra
+  - cloud_config:get_session_endpoint: catch Keystone EndpointNotFound
+  - modify the home-page info with the developer documentation
+  - Add OpenTelekomCloud to the vendors
+  - Split auth plugin loading into its own method
+  - Update homepage with developer documentation page
+  - Support token_endpoint as an auth_type
+  - Add fuga.io to vendors
+  - Add support for Murano
+  - Add ability to configure Session constructor
+  - Remove 3.4 from tox envlist</comment>
+    <requestid>456054</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3858c94fa49de56c437fb8e1a1905a4e</srcmd5>
+    <version>1.28.0</version>
+    <time>1503926997</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.28.0
+  - Revert &quot;Use interface not endpoint_type for keystoneclient&quot;
+  - Fix interactions with keystoneauth from newton
+  - modify test-requirement according to requirements project
+  - Add ability to skip yaml loading
+  - rearrange existing documentation to follow the new standard layout
+  - Make _fix_argv() somewhat compatible with Argparse action='append'
+  - Add support for overriding mistral service type
+  - [Fix gate]Update test requirement
+  - Update reno for stable/ocata
+  - Docs: add a note about rackspace API keys
+  - Keep a singleton to support multiple get_config calls
+  - use openstackdocstheme html context
+  - Use interface not endpoint_type for keystoneclient
+  - Add helper scripts to print version discovery info
+  - OVH supports qcow2
+  - Add support for bailing on invalid service versions
+  - Pass ironic microversion through from api_version
+  - Remove out of date comment
+  - Add support for indicating required floating IPs
+  - Add ability to pass in user_agent
+  - fix location of team tags in README
+  - Remove the keystoneclient auth fallback
+  - Add helper method to fetch service catalog
+  - Add ironicclient to constructors list
+  - Revert &quot;Revert &quot;Use interface not endpoint_type for keystoneclient&quot;&quot;
+  - Don't pop from os.environ
+  - Stop special-casing idenity catalog lookups
+  - switch from oslosphinx to openstackdocstheme
+  - Add designateclient to constructors list</comment>
+    <requestid>514866</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>37c5a298c631194edcf65753a81377ed</srcmd5>
+    <version>1.28.0</version>
+    <time>1516092116</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to singlespec version</comment>
+    <requestid>546001</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>75f32641c9a7c7bbee71253d6f2a2875</srcmd5>
+    <version>1.29.0</version>
+    <time>1518601874</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.29.0
+  - Update make_rest_client to work with version discovery
+  - Update globals safely
+  - Protect against p_opt not having prompt attribute
+  - Split docs requirements and update tox.ini
+  - Fix doc typo
+  - Add shade-tox-tips jobs
+  - Make the get_service_type() overrides tolernat of no defaults
+  - Remove osc devstack tips jobs
+  - Do not apply format expansions to passwords
+  - Add shade-functional-tips jobs
+  - Update the documentation link for doc migration
+  - Updates for stestr
+  - Manually sync with g-r
+  - Fix requires_floating_ip
+  - Treat clouds.yaml with one cloud like envvars
+  - DataCentred supports Keystone V3 and Glance V2.
+  - Add betacloud to the vendors
+  - Consume the osc-functional-devstack-tips job
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - Remove OSIC
+  - Updated from global requirements
+  - Added nat_source flag for networks.</comment>
+    <requestid>576033</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>51b7eca57612bd4bb9e3ca2a8bd72ac9</srcmd5>
+    <version>1.29.0</version>
+    <time>1521498922</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583329</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8c9b2d04529f5f63dd09aa1d8b2d6402</srcmd5>
+    <version>1.31.2</version>
+    <time>1536327506</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633090</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1d4486ff0c2b701e59faed1db10a8fd1</srcmd5>
+    <version>1.32.0</version>
+    <time>1556916105</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.32.0
+  - Change openstack-dev to openstack-discuss
+  - fix bug link in readme
+  - Update links in README
+  - Add release note link in README
+  - Remove setup.py check from pep8 job
+  - add lib-forward-testing-python3 test job
+  - Fix the conflict of urlparse between python2 and python3
+  - Shift Limestone Networks profile to openstacksdk
+  - Use template for lower-constraints
+  - Update reno for stable/rocky
+  - Update min tox version to 2.0
+  - switch documentation job to new PTI
+  - Change python3.5 job to python3.7 job on Stein+
+  - add python 3.6 unit test job
+  - Invalid link of doc reference
+  - import zuul job settings from project-config
+  - Applying the HTTPS protocal in configuration.rst</comment>
+    <requestid>692849</requestid>
+  </revision>
+</revisionlist>

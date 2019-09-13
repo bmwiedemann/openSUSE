@@ -1,0 +1,6 @@
+<package name="pidgin-gnome-keyring" project="openSUSE:Factory">
+  <title>Save pidgin passwords to the system keyring instead of as plaintext</title>
+  <description>Pidgin usually stores passwords as plaintext.
+This plugin instead saves all passwords to the system keyring, which some would argue is a more secure form of password storage.</description>
+  <devel project="network:pidgin" package="pidgin-gnome-keyring"/>
+</package>

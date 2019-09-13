@@ -1,0 +1,5 @@
+<package name="inn" project="openSUSE:Factory">
+  <title>InterNetNews</title>
+  <description>Rich Salz's InterNetNews news transport system.</description>
+  <devel project="server:mail" package="inn"/>
+</package>

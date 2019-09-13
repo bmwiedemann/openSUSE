@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bcc24a353c7b773b9518b114ec07ca7</srcmd5>
+    <version>2.3.8</version>
+    <time>1543223903</time>
+    <user>dimstar_suse</user>
+    <comment>It can be probably needed because of fate#323817 and fate#324447</comment>
+    <requestid>645516</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9f6bd2047df07475efc29df5901ddb41</srcmd5>
+    <version>2.3.8</version>
+    <time>1543953348</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653617</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>70c17dd47dca8cfce217b4ade2082d1d</srcmd5>
+    <version>2.3.8</version>
+    <time>1549018085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670308</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b4b190296664f2122d1a9854f31ffa33</srcmd5>
+    <version>2.3.10.2</version>
+    <time>1550668512</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677627</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0db12987e0da9b77c9f52da9d196d7b4</srcmd5>
+    <version>2.3.11</version>
+    <time>1553084395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.11
+  Features
+  * dynamically pass query params to the authorization request
+   + using OIDCAuthRequestParams foo=# and/or OIDCPathAuthRequestParams foo=#
+  * add session expiry info to session info hook response
+    + session inactivity key is timeout now (was exp)
+    + session expiry key is exp
+  Other
+  * allow compilation without memcache support on older platforms
+    not providing apr_memcache.h (forwarded request 684786 from mnhauke)</comment>
+    <requestid>686338</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e8dfe55d78891cc2f6dae5bcf2253f39</srcmd5>
+    <version>2.4.0</version>
+    <time>1566665107</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.4.0 (forwarded request 725421 from stroeder)</comment>
+    <requestid>725544</requestid>
+  </revision>
+</revisionlist>

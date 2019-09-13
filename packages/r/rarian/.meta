@@ -1,0 +1,8 @@
+<package name="rarian" project="openSUSE:Factory">
+  <title>Rarian is designed to be a replacement for scrollkeeper</title>
+  <description>Rarian is designed to be a replacement for scrollkeeper.  It is
+currently undergoing heavy development.  As of writing, rarian can be
+installed in place of scrollkeeper and everything will work okay (as
+far as my testing indicates)</description>
+  <devel project="GNOME:Factory" package="rarian"/>
+</package>

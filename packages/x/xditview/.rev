@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>229324ba05177d2b639ab6ccd1eb0f40</srcmd5>
+    <version>1.0.2</version>
+    <time>1336471263</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115407</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>229324ba05177d2b639ab6ccd1eb0f40</srcmd5>
+    <version>1.0.2</version>
+    <time>1340184340</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a8d024e19117d494243699d6cec5e47</srcmd5>
+    <version>1.0.3</version>
+    <time>1358874323</time>
+    <user>coolo</user>
+    <comment>Update to version 1.0.3 (forwarded request 149207 from Zaitor)</comment>
+    <requestid>149362</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5a8d024e19117d494243699d6cec5e47</srcmd5>
+    <version>1.0.3</version>
+    <time>1359110601</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5a8d024e19117d494243699d6cec5e47</srcmd5>
+    <version>1.0.3</version>
+    <time>1379665008</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>5a8d024e19117d494243699d6cec5e47</srcmd5>
+    <version>1.0.3</version>
+    <time>1409303691</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7054f0a9d8b1d2b9d129026e7cb271f9</srcmd5>
+    <version>1.0.4</version>
+    <time>1429948440</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.4:
+  * Close file leak when fdopen() fails in OpenFile()
+  * Convert sprintf calls to snprintf
+  * config: Add missing AC_CONFIG_SRCDIR
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Const cleanup
+  * unifdef -UNOTDEF -UNOTUSED
+  * Remove #if 0 code
+  * Combine usage message strings
+  * Remove CVS/RCS $Id tags
+  * Use SEEK_* names instead of raw numbers for fseek whence argument</comment>
+    <requestid>303665</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6bb2489a0a3db584b348f3f5d37544dc</srcmd5>
+    <version>1.0.5</version>
+    <time>1551784903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.5:
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * make sure filename is a regular file.
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>681283</requestid>
+  </revision>
+</revisionlist>

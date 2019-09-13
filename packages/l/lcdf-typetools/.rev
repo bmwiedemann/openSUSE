@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5a764128e5219d42a8abe42b994b9061</srcmd5>
+    <version>2.85</version>
+    <time>1289225331</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52304 from user mrdocs
+</comment>
+    <requestid>52304</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>10b5c06a27872e003d927e4b05d675ff</srcmd5>
+    <version>2.85</version>
+    <time>1289225338</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52304
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>10b5c06a27872e003d927e4b05d675ff</srcmd5>
+    <version>2.85</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6f5736e12ae5cc7ded3363749f5cda6b</srcmd5>
+    <version>2.88</version>
+    <time>1305184647</time>
+    <user>azouhr</user>
+    <comment>update to 2.88 (forwarded request 70044 from mrdocs)</comment>
+    <requestid>70045</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4d506b6016d512d7d5cba325c8713954</srcmd5>
+    <version>2.88</version>
+    <time>1305184660</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 70045
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a9cde35e4aca81a39e8eb3fba564bfc3</srcmd5>
+    <version>2.91</version>
+    <time>1310043436</time>
+    <user>saschpe</user>
+    <comment>update to 2.91 - minor fixes in the source (forwarded request 75522 from mrdocs)</comment>
+    <requestid>75523</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>de6c61555b2122798807ba2e42266cca</srcmd5>
+    <version>2.91</version>
+    <time>1310043458</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75523
+</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>de6c61555b2122798807ba2e42266cca</srcmd5>
+    <version>2.91</version>
+    <time>1319182065</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>daa97332cbaf35ae133c49e52849ad79</srcmd5>
+    <version>2.91</version>
+    <time>1338582677</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>123125</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>daa97332cbaf35ae133c49e52849ad79</srcmd5>
+    <version>2.91</version>
+    <time>1340183547</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>daa97332cbaf35ae133c49e52849ad79</srcmd5>
+    <version>2.91</version>
+    <time>1359109220</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6501e17e352f8c878482b8f7764dcf39</srcmd5>
+    <version>2.98</version>
+    <time>1370431712</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>176908</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8e431310a25a13570dde3e90d1ae1500</srcmd5>
+    <version>2.99</version>
+    <time>1376513116</time>
+    <user>scarabeus_factory</user>
+    <comment>Just a version bump, which fixes a bug. (forwarded request 187126 from sebschub)</comment>
+    <requestid>187266</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>8e431310a25a13570dde3e90d1ae1500</srcmd5>
+    <version>2.99</version>
+    <time>1379662860</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>acafebbb0cc0e30c81085c4ac8b8a85a</srcmd5>
+    <version>2.100</version>
+    <time>1395148493</time>
+    <user>coolo</user>
+    <comment>update to 2.100 (forwarded request 226312 from mrdocs)</comment>
+    <requestid>226331</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>acafebbb0cc0e30c81085c4ac8b8a85a</srcmd5>
+    <version>2.100</version>
+    <time>1409301463</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3dc0507eb644e67512e425fe69009e24</srcmd5>
+    <version>2.104</version>
+    <time>1422790200</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283543</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ea14288d1e90be8b91561d6ea0f463b6</srcmd5>
+    <version>2.105</version>
+    <time>1448260218</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345629</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3c814a24b6cf2bd9f7e3f99671d81e6d</srcmd5>
+    <version>2.106</version>
+    <time>1516222546</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>558702</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="mate-tweak" project="openSUSE:Factory">
+  <title>MATE desktop tweak tool</title>
+  <description>Configures some aspects of the MATE desktop.</description>
+  <devel project="X11:MATE:Factory" package="mate-tweak"/>
+</package>

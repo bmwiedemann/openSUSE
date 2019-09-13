@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7eb441d87267b56f39620ddf6d0aac98</srcmd5>
+    <version>0.11.0</version>
+    <time>1377717290</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>195697</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7eb441d87267b56f39620ddf6d0aac98</srcmd5>
+    <version>0.11.0</version>
+    <time>1379662614</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7eb441d87267b56f39620ddf6d0aac98</srcmd5>
+    <version>0.11.0</version>
+    <time>1409301167</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f1f3430a86c595fc51aea07b01667971</srcmd5>
+    <version>0.12.1</version>
+    <time>1425377756</time>
+    <user>dimstar_suse</user>
+    <comment>New version 0.12.1</comment>
+    <requestid>288570</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f6981f99f8126fd5d7b6ba09ecfc2dfe</srcmd5>
+    <version>0.12.1</version>
+    <time>1425566457</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288693</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>151fc0c2d4bcd8b8a72b8c822513d031</srcmd5>
+    <version>0.13.3</version>
+    <time>1448553718</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.3</comment>
+    <requestid>345674</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d63b8c0aac1ef5253582ad255762f1e2</srcmd5>
+    <version>1.8.2</version>
+    <time>1527933795</time>
+    <user>dimstar_suse</user>
+    <comment>Parse strings using a specification based on the Python format() syntax.</comment>
+    <requestid>612063</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cf6b55b2f2fff44e544ad4fddf57a35f</srcmd5>
+    <version>1.8.2</version>
+    <time>1533045692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626398</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c6f79963b79c3dec51ef94b394a0c999</srcmd5>
+    <version>1.8.2</version>
+    <time>1545648046</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659534</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>31e03b0fc9ec8a09aefbc719467da6af</srcmd5>
+    <version>1.11.1</version>
+    <time>1551284889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674910</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>52b551f54e4bbb5402af409e62cf47d4</srcmd5>
+    <version>1.12.0</version>
+    <time>1556475080</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697869</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8ce98809c116bc8e28f5b012f80ef71c</srcmd5>
+    <version>1.12.1</version>
+    <time>1568379468</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 1.12.1:
+  * no upstream changelog</comment>
+    <requestid>730060</requestid>
+  </revision>
+</revisionlist>

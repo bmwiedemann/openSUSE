@@ -1,0 +1,221 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8abfdd7e58ea74ad7b0c2261be91af18</srcmd5>
+    <version>6</version>
+    <time>1271372711</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/media-player-info based on submit request 37382 from user vuntz
+</comment>
+    <requestid>37382</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8abfdd7e58ea74ad7b0c2261be91af18</srcmd5>
+    <version>6</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8abfdd7e58ea74ad7b0c2261be91af18</srcmd5>
+    <version>6</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8cb0de3d0820cccb6a5d586888a99470</srcmd5>
+    <version>10</version>
+    <time>1286803898</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/media-player-info based on submit request 50154 from user vuntz
+</comment>
+    <requestid>50154</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ba51d2ce1a89fb087b56b5cebb70cec4</srcmd5>
+    <version>11</version>
+    <time>1291815612</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55116 from user vuntz
+</comment>
+    <requestid>55116</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>98927bb0e6ccdcc74cc851f0708532d6</srcmd5>
+    <version>12</version>
+    <time>1294663784</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57592 from user vuntz
+</comment>
+    <requestid>57592</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1d6de4886b0532ba28b0ad2e19ac06cc</srcmd5>
+    <version>12</version>
+    <time>1294663793</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57592
+</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>1d6de4886b0532ba28b0ad2e19ac06cc</srcmd5>
+    <version>12</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>88ef88e756997ded6b5f2198cc54a000</srcmd5>
+    <version>14</version>
+    <time>1304602379</time>
+    <user>saschpe</user>
+    <comment>Update to 14 (forwarded request 69328 from vuntz)</comment>
+    <requestid>69336</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>12b4f7b9f1b864e7c41e264e567e8d72</srcmd5>
+    <version>14</version>
+    <time>1304602392</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69336
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>be11d4ba9bcf82222b133b4121bee3a7</srcmd5>
+    <version>15</version>
+    <time>1317805742</time>
+    <user>lrupp</user>
+    <comment>Update to 15; add support for more devices</comment>
+    <requestid>86617</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>be11d4ba9bcf82222b133b4121bee3a7</srcmd5>
+    <version>15</version>
+    <time>1319182175</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c40bbcb11b75bbe723e7416c0c5c10f2</srcmd5>
+    <version>16</version>
+    <time>1330952548</time>
+    <user>coolo</user>
+    <comment>Clarify license (forwarded request 104931 from vuntz)</comment>
+    <requestid>104932</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>c40bbcb11b75bbe723e7416c0c5c10f2</srcmd5>
+    <version>16</version>
+    <time>1340183695</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>82a19a0765f3fb0bd9c6b17c164447ef</srcmd5>
+    <version>16</version>
+    <time>1343031277</time>
+    <user>coolo</user>
+    <comment>- change buildrequires of udev to expect the pkg-config file</comment>
+    <requestid>128631</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>017766c6068e322da820be052d9397d6</srcmd5>
+    <version>17</version>
+    <time>1349632381</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137355</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ff69e24d113424db8751960cdd43359b</srcmd5>
+    <version>17</version>
+    <time>1351091598</time>
+    <user>coolo</user>
+    <comment>- Fix build with older openSUSE releases.
+
+- move udev rules to /usr (forwarded request 138918 from dimstar)</comment>
+    <requestid>139125</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>ff69e24d113424db8751960cdd43359b</srcmd5>
+    <version>17</version>
+    <time>1359109439</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2641a698c0d29c39b28935af31d93828</srcmd5>
+    <version>21</version>
+    <time>1375779840</time>
+    <user>coolo</user>
+    <comment>Update to version 21 (forwarded request 184460 from dimstar)</comment>
+    <requestid>185990</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>2641a698c0d29c39b28935af31d93828</srcmd5>
+    <version>21</version>
+    <time>1379663279</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>88b857c0712a73be13bbb9e9d89e0bb7</srcmd5>
+    <version>21</version>
+    <time>1380608317</time>
+    <user>coolo</user>
+    <comment>- Add fix-udev-rules-creator.patch: fix missing eol causing udev
+  warning (git).
+- Ensure udev is notified when package is installed / updated /
+  uninstalled. (forwarded request 201466 from fcrozat)</comment>
+    <requestid>201514</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>f88a390a5f16b5d57112c2aca7819881</srcmd5>
+    <version>21</version>
+    <time>1399032057</time>
+    <user>coolo</user>
+    <comment>- buildrequire systemd to avoid a conflict with systemd-mini
+  (actually a short coming the way post requires are added
+  to the buildenv without checking for conflicts with previous
+  build requires) (forwarded request 231564 from coolo)</comment>
+    <requestid>232262</requestid>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>f88a390a5f16b5d57112c2aca7819881</srcmd5>
+    <version>21</version>
+    <time>1409301883</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e3930f3e9fb13141e034e3d53c27695b</srcmd5>
+    <version>22</version>
+    <time>1419159893</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265812</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>1aaba84af71581e7fb96a223bd2d8ce3</srcmd5>
+    <version>22</version>
+    <time>1495267602</time>
+    <user>dimstar_suse</user>
+    <comment>Add reproducible.patch to make build fully reproducible</comment>
+    <requestid>494352</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0f90888d6b599f40b8877b2744ab3c0e</srcmd5>
+    <version>23</version>
+    <time>1557388947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700390</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>86f86d9047a56d48af39b0b113288f14</srcmd5>
+    <version>23</version>
+    <time>1560760316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709666</requestid>
+  </revision>
+</revisionlist>

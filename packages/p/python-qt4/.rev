@@ -1,0 +1,763 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6c1b337e049c92b922f4afb52899921f</srcmd5>
+    <version>4.1.1</version>
+    <time>1173872241</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="10">
+    <srcmd5>8ba4ba3e297f6abefa7779ee6a0a53fe</srcmd5>
+    <version>4.1.1</version>
+    <time>1175812104</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e09999b022dbcd2ef076dbdcad985ff8</srcmd5>
+    <version>4.2</version>
+    <time>1176394480</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b3ca9a7e94e12ae7f0fb4b4330686560</srcmd5>
+    <version>4.2</version>
+    <time>1176627093</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fc8d13c7e2a62ef138820ebde0b3d814</srcmd5>
+    <version>4.3</version>
+    <time>1186101544</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>8e409307de3d94510710293069c7219a</srcmd5>
+    <version>4.3</version>
+    <time>1186911839</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e619534ae4055012faa92901f3290920</srcmd5>
+    <version>4.3.3</version>
+    <time>1197573816</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>a0451e62b03ed3222389db5514621f9a</srcmd5>
+    <version>4.3.3</version>
+    <time>1203426998</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="26">
+    <srcmd5>23686d4a922d9e3f327198080ebc5257</srcmd5>
+    <version>4.3.3</version>
+    <time>1206070281</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f9c90e7884bcb9adaf3b1d9f7df6fd86</srcmd5>
+    <version>4.4.2</version>
+    <time>1211897542</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="44">
+    <srcmd5>b04db19a9e2595ef2a5de2766cc79621</srcmd5>
+    <version>4.3.3</version>
+    <time>1211916173</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0af3c8be6b6e7bdf0abf59d945001358</srcmd5>
+    <version>4.4.2</version>
+    <time>1212447473</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>069d254b2c6c7cd4cf8ca536958ca6f0</srcmd5>
+    <version>4.4.2</version>
+    <time>1214844670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fc8470e1e755a7f1de2396ec9104ee99</srcmd5>
+    <version>4.4.3</version>
+    <time>1218493345</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b5ead022f913cd3dc7bf3f339a791176</srcmd5>
+    <version>4.4.4</version>
+    <time>1228489161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>15e5984938b127fa7633b46387c02ab7</srcmd5>
+    <version>4.4.4</version>
+    <time>1236423259</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7b9e3f7febb370a32e346b34bc0ed2f6</srcmd5>
+    <version>4.5.snapshot.20090507</version>
+    <time>1242771833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7c754902ac7a03e4a1897543a782ea96</srcmd5>
+    <version>4.4.90.snapshot.20090601</version>
+    <time>1244236801</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3cca9e1d06d94bef808eda394ca93ab2</srcmd5>
+    <version>4.5</version>
+    <time>1244498190</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9ff1d394f6d006d53ad92f1338e9d9be</srcmd5>
+    <version>4.5.1</version>
+    <time>1245281953</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c5f144eed7ce85bb68b1f93c9e83cf61</srcmd5>
+    <version>4.5.1</version>
+    <time>1247129454</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9438c488629edd5f95ffbb613db737ba</srcmd5>
+    <version>4.5.2</version>
+    <time>1248364131</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c87e7040c4f2b556a824bcd939d69a77</srcmd5>
+    <version>4.5.4</version>
+    <time>1249318115</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>e0efc81ba61225d5d2f70b368f9a6471</srcmd5>
+    <version>4.5.4</version>
+    <time>1249940509</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>e780b421fe25c061150296caae530fc4</srcmd5>
+    <version>4.5.4</version>
+    <time>1250591526</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-qt4 based on submit request 18079 from user Beineri
+</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>e780b421fe25c061150296caae530fc4</srcmd5>
+    <version>4.5.4</version>
+    <time>1250591526</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-qt4 based on submit request 18079 from user Beineri
+</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f7e4f6fab698b5f808f388be8efdabdf</srcmd5>
+    <version>4.6.1</version>
+    <time>1256573138</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-qt4 based on submit request 23118 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5023be47e6531955ef9f6d472e0340d3</srcmd5>
+    <version>4.6.2</version>
+    <time>1259157465</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-qt4 based on submit request 24909 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5e3fc9078374183c9fbdb682d2816be9</srcmd5>
+    <version>4.7</version>
+    <time>1265751972</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-qt4 based on submit request 31799 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>b1f033530732182a44619e875c1a6e9d</srcmd5>
+    <version>4.7</version>
+    <time>1268925883</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f4a305ebf1a55c43da34b15714365ed5</srcmd5>
+    <version>4.7.2</version>
+    <time>1270057927</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-qt4 based on submit request 35885 from user dirkmueller
+</comment>
+    <requestid>35885</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>1e09ea0fc34cb53785fc1f626b44e0e3</srcmd5>
+    <version>4.7.2</version>
+    <time>1274789463</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-qt4 based on submit request 40480 from user prusnak
+</comment>
+    <requestid>40480</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>508420393e2cbca9c468aa19f826b0e6</srcmd5>
+    <version>4.7.3</version>
+    <time>1276528251</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-qt4 based on submit request 41421 from user dirkmueller
+</comment>
+    <requestid>41421</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>508420393e2cbca9c468aa19f826b0e6</srcmd5>
+    <version>4.7.3</version>
+    <time>1278667385</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>508420393e2cbca9c468aa19f826b0e6</srcmd5>
+    <version>4.7.3</version>
+    <time>1278678614</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a74423dff58b9af4f50caf9896c79e75</srcmd5>
+    <version>4.7.5</version>
+    <time>1283516509</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-qt4 based on submit request 46896 from user dirkmueller
+</comment>
+    <requestid>46896</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b4c7629a69fc94905d9da42dcc4dc3c7</srcmd5>
+    <version>4.7.7</version>
+    <time>1286138223</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-qt4 based on submit request 49691 from user dirkmueller
+</comment>
+    <requestid>49691</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>bad7a0b9fe06306afa7bff6a85d93501</srcmd5>
+    <version>4.7.7</version>
+    <time>1286314734</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-qt4 based on submit request 49768 from user coolo
+</comment>
+    <requestid>49768</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>90b19bedc7863e2931a78f69e41b1f76</srcmd5>
+    <version>4.8</version>
+    <time>1290251103</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53435 from user dirkmueller
+</comment>
+    <requestid>53435</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>35368f88468bf5e1bc4f4c5be7005e13</srcmd5>
+    <version>4.8</version>
+    <time>1290251108</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53435
+</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b6832bd59e6f91eb2279cbec15be1bea</srcmd5>
+    <version>4.8.2</version>
+    <time>1294821433</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57845 from user dirkmueller
+</comment>
+    <requestid>57845</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>3a1181aa8fd5041ca6e9280101ce3dc4</srcmd5>
+    <version>4.8.2</version>
+    <time>1294821443</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57845
+</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9750b1133f6edb3b7dedd5ce34135f34</srcmd5>
+    <version>4.8.3</version>
+    <time>1297508244</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60598 from user wstephenson
+</comment>
+    <requestid>60598</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>c1b9da41dc92087c4ced381d2307cc2d</srcmd5>
+    <version>4.8.3</version>
+    <time>1297508252</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60598
+</comment>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>c1b9da41dc92087c4ced381d2307cc2d</srcmd5>
+    <version>4.8.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e586e9fc043749ab1d32a6adc5437a7f</srcmd5>
+    <version>4.8.4</version>
+    <time>1304510774</time>
+    <user>saschpe</user>
+    <comment>fix x86-64 build issue (forwarded request 69469 from gregkh)</comment>
+    <requestid>69480</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>cb04458ad9218c887b9411eb2d7571ff</srcmd5>
+    <version>unknown</version>
+    <time>1315235558</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 79052
+</comment>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>f37b340a68253f1598eee51a8300717f</srcmd5>
+    <version>unknown</version>
+    <time>1316513448</time>
+    <user>coolo</user>
+    <comment>converted link to branch</comment>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>ee2b8ffc18d93ab92a385031c9f5af6d</srcmd5>
+    <version>4.8.5</version>
+    <time>1316513477</time>
+    <user>coolo</user>
+    <comment>gone</comment>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>ee2b8ffc18d93ab92a385031c9f5af6d</srcmd5>
+    <version>4.8.5</version>
+    <time>1319182404</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="51" vrev="7">
+    <srcmd5>b191a51eeb0bfd5122cf9d49bbd104e8</srcmd5>
+    <version>4.8.5</version>
+    <time>1319207245</time>
+    <user>coolo</user>
+    <comment>Added phonon-devel to BuildRequires so python-qt4 supports Phonon. This is needed by programs like OpenLP.org. Changelog entries now in .changes instead of .spec as requested. (forwarded request 88588 from jdmulloy)</comment>
+    <requestid>88646</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>9e7232a8d6cc959a46dacf1f6415ca12</srcmd5>
+    <version>4.8.6</version>
+    <time>1322481399</time>
+    <user>coolo</user>
+    <comment>Use %make_install instead of 'make install' (forwarded request 93674 from cgiboudeaux)</comment>
+    <requestid>93694</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d9bdf4f8b3d25d7160c67972b892559b</srcmd5>
+    <version>4.9</version>
+    <time>1324831930</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.9
+  * Fixed %PickleCode for QByteArray for Python v3.
+  * Completed the support for QPainter.drawPixmapFragments().
+  * pyuic4 now makes sure that a module implementing a resource file is only
+    imported once.
+  * Fixed a regression in the handling of translated strings by pyuic4.
+  * QDBusArgument now handles QStringList explicitly so that it can be used with
+    QString v2 API.
+  * Renamed QDBusArgument.write() to add().
+  * Changed QDBusArgument.write() to use a QMetaType.Type to specify the integer
+    sub-type to be consistent with beginArray() and beginMap().
+  * Implemented QDBusArgument.write().
+  * DBus dicts are now demarshalled to Python dicts.
+  * Added support for demarshalling DBus basic types, variants and arrays.
+  * QDBusObjectPath, QDBusSignal and QDBusVariant instances are now demarshalled
+    automatically.
+  * DBus structures are now demarshalled to tuples.
+  * Added the missing cornerWidget() and setCornerWidget() methods to QMenuBar.
+- See include ChangeLog for complete change list.
+
+- Update to version 4.9
+  * Fixed %PickleCode for QByteArray for Python v3.
+  * Completed the support for QPainter.drawPixmapFragments().
+  * pyuic4 now makes sure that a module implementing a resource file is only
+    imported once.
+  * Fixed a regression in the handling of translated strings by pyuic4.
+  * QDBusArgument now handles QStringList explicitly so that it can be used with
+    QString v2 API.
+  * Renamed QDBusArgument.write() to add().
+  * Changed QDBusArgument.write() to use a QMetaType.Type to specify the integer</comment>
+    <requestid>98145</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>41d7c908e00c29bab6480f98285da97f</srcmd5>
+    <version>4.9.1</version>
+    <time>1338991776</time>
+    <user>coolo</user>
+    <comment>- Update license 
+
+- Fix files list 
+  * Added pyqtconfig.py back
+
+- Update to version 4.9.1
+  * Bugfixes
+- Spec file cleanups
+- Fixed licenses
+
+- Update license 
+
+- Update to version 4.9.1
+  * Bugfixes
+- Spec file cleanups
+- Fixed licenses</comment>
+    <requestid>123427</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>41d7c908e00c29bab6480f98285da97f</srcmd5>
+    <version>4.9.1</version>
+    <time>1340184088</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3204dfb9c76341e0a3fcda3da5717916</srcmd5>
+    <version>4.9.4</version>
+    <time>1341821037</time>
+    <user>coolo</user>
+    <comment>- update to version 4.9.4:
+  * bug fixes
+- require the sip api version it was built against (bnc#768499)
+
+- Update to version 4.9.2
+  * Added support for Qt v4.8.2.
+  * Added support for Qt v5-alpha (QtCore and QtGui only).
+  * Added support for Python v3.3.
+  * bool(QPyNullVariant(...)) now returns False rather than True to mimic the behaviour of None.
+  * Exposed the pyqtBoundSignal type object in the QtCore module.
+  * Added the signal attribute to pyqtBoundSignal containing the signature that would be returned by SIGNAL().
+  * Added the optional package argument to uic.loadUi() to properly handle relative imports.
+  * pyuic4 now supports themed icons.
+  * Added the spreadsheet example from Hans-Peter Jansen.
+
+- require the sip version it built against (bnc#768499)
+- Update to version 4.9.4:
+  * bug fixes
+
+- Update to version 4.9.2
+  * Added support for Qt v4.8.2.
+  * Added support for Qt v5-alpha (QtCore and QtGui only).
+  * Added support for Python v3.3.
+  * bool(QPyNullVariant(...)) now returns False rather than True to mimic the behaviour of None.
+  * Exposed the pyqtBoundSignal type object in the QtCore module.
+  * Added the signal attribute to pyqtBoundSignal containing the signature that would be returned by SIGNAL().
+  * Added the optional package argument to uic.loadUi() to properly handle relative imports.
+  * pyuic4 now supports themed icons.
+  * Added the spreadsheet example from Hans-Peter Jansen.</comment>
+    <requestid>127209</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>1319db967faf506f2f52ac46fca95874</srcmd5>
+    <version>4.9.5</version>
+    <time>1349253521</time>
+    <user>coolo</user>
+    <comment>Update to the latest upstream version.
+
+- Update to the latest upstream version:
+  - Added support for Qt v4.8.3.
+  - Added support for Qt v5-beta1 (QtCore, QtGui, QtHelp, QtNetwork, QtSql,
+    QtSvg, QtWebKit and QtXml only).
+  - Implemented __str__ and __unicode__ for QChar.
+  - Added the missing QPointF operator*(qreal, QPointF).
+  - Added the customcompleter.py example.
+  - SIP v4.14 is now required.
+
+- Updated to the latest upstream version:
+  - Added support for Qt v4.8.3.
+  - Added support for Qt v5-beta1 (QtCore, QtGui, QtHelp, QtNetwork, QtSql,
+    QtSvg, QtWebKit and QtXml only).
+  - Implemented __str__ and __unicode__ for QChar.
+  - Added the missing QPointF operator*(qreal, QPointF).
+  - Added the customcompleter.py example.
+  - SIP v4.14 is now required. (forwarded request 136484 from luca_b)</comment>
+    <requestid>136576</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>29ec97ec519af6a0fae507f8cde8643f</srcmd5>
+    <version>4.9.6</version>
+    <time>1355478291</time>
+    <user>coolo</user>
+    <comment>- Update to 4.9.6:
+  - Added the missing constBits() and constScanLine() methods to QImage.
+  - A QPoint can now be specified whenever a QPointF is expected.
+  - Added support for Qt v4.8.4.
+  - Added support for Qt v5.0-rc1 (QtCore, QtGui, QtHelp, QtNetwork, QtSql,
+    QtSvg, QtWebKit and QtXml only).
+  - Added the --no-deprecated option to configure.py.
+  - SIP v4.14.2 is now required.
+
+The original package had not specific SIP requires, so I bumped the 
+BuildRequires (the SIP API version did not change) (forwarded request 144848 from luca_b)</comment>
+    <requestid>144858</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>755c7116283d41200fa4d481c976c508</srcmd5>
+    <version>4.9.6</version>
+    <time>1357576648</time>
+    <user>coolo</user>
+    <comment>Removed openSUSE 11.4 spec file workarounds (forwarded request 142757 from TheBlackCat) (forwarded request 142773 from TheBlackCat)</comment>
+    <requestid>147119</requestid>
+  </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>755c7116283d41200fa4d481c976c508</srcmd5>
+    <version>4.9.6</version>
+    <time>1359110111</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>31caa5f4ecb7ad9552c0280d017b684e</srcmd5>
+    <version>4.10</version>
+    <time>1362901140</time>
+    <user>coolo</user>
+    <comment>update to 4.10 (forwarded request 157967 from mlin7442)</comment>
+    <requestid>157986</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>2566e5e98f9959f78bdf9b38060bcd31</srcmd5>
+    <version>4.10</version>
+    <time>1366088142</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164034 from namtrac)</comment>
+    <requestid>164100</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>6a1c88b2b59ddd1205de42f699b315c0</srcmd5>
+    <version>4.10.2</version>
+    <time>1373655377</time>
+    <user>coolo</user>
+    <comment>- Update to 4.10.2
+  * Bug fixes.
+- Update to 4.10.1
+  * Added support for QtCore.pyqtSetPickleProtocol() and
+    QtCore.pyqtPickleProtocol() to set and get the protocol used to pickle
+    Python objects when serialising them for Qt.
+  * Added support for the --resource-suffix option to pyuic4.
+  * Added a new build system (configure-ng.py) which will be compatible with
+    SIP v5 and will eventually support cross-compilation.
+  * Added support for Qt v5.0.2.
+  * Bug fixes.
+- remove disable-rpaths.diff
+
+- Update to 4.10.2
+  * Bug fixes.
+- Update to 4.10.1
+  * Added support for QtCore.pyqtSetPickleProtocol() and
+    QtCore.pyqtPickleProtocol() to set and get the protocol used to pickle
+    Python objects when serialising them for Qt.
+  * Added support for the --resource-suffix option to pyuic4.
+  * Added a new build system (configure-ng.py) which will be compatible with
+    SIP v5 and will eventually support cross-compilation.
+  * Added support for Qt v5.0.2.
+  * Bug fixes.</comment>
+    <requestid>182910</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>00c4d0d411bc761115d12656499426a8</srcmd5>
+    <version>4.10.3</version>
+    <time>1377856091</time>
+    <user>coolo</user>
+    <comment>Update to 4.10.3 (forwarded request 196489 from termim)</comment>
+    <requestid>196655</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>888ecbee7c2a52b41fcfd855afbfc5d3</srcmd5>
+    <version>4.10.2</version>
+    <time>1378238657</time>
+    <user>coolo</user>
+    <comment>Revert back to the older version because of the required downgrade of python-sip</comment>
+    <requestid>196934</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>f209ff6c8dc5576d9ef810f9553f62c9</srcmd5>
+    <version>4.10.3</version>
+    <time>1378999619</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to the latest version</comment>
+    <requestid>198710</requestid>
+  </revision>
+  <revision rev="67" vrev="4">
+    <srcmd5>f209ff6c8dc5576d9ef810f9553f62c9</srcmd5>
+    <version>4.10.3</version>
+    <time>1379664272</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="68" vrev="5">
+    <srcmd5>020242ed5d60ff193c458d2ab3440cf0</srcmd5>
+    <version>4.10.3</version>
+    <time>1385391777</time>
+    <user>coolo</user>
+    <comment>Sync with sr207541. Fix for bnc#848953 (forwarded request 207878 from sumski)</comment>
+    <requestid>208250</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>15523108a2b5e5cd95ab9f0adfa6a3d8</srcmd5>
+    <version>4.10.4</version>
+    <time>1395750434</time>
+    <user>coolo</user>
+    <comment>Update to 4.10.4. This will resolve the build error in Factory</comment>
+    <requestid>227241</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>42b73aeb18599f8406574486862dddb1</srcmd5>
+    <version>4.11</version>
+    <time>1403762274</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237503</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>57dc5bf2cd53610f2bb76fe4c3639eac</srcmd5>
+    <version>4.11.1</version>
+    <time>1406896460</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243229</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>57dc5bf2cd53610f2bb76fe4c3639eac</srcmd5>
+    <version>4.11.1</version>
+    <time>1409302975</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>cd8db88f5c479b474901a59b71941894</srcmd5>
+    <version>4.11.1</version>
+    <time>1411485411</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250460</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>4dd81039b115e52312d1c620a77bfa2a</srcmd5>
+    <version>4.11.2</version>
+    <time>1413285878</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255131</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>48989c830efae1513d919e71d7138c77</srcmd5>
+    <version>4.11.3</version>
+    <time>1422611970</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283069</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>20c3ccd939e5a49ed2c4504c5a6e19b8</srcmd5>
+    <version>4.11.4</version>
+    <time>1434550560</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>311989</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>8b1d00372a99a48c046b99e1add9eb42</srcmd5>
+    <version>4.11.4</version>
+    <time>1439631512</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322746</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>bdd72a0478ca931c2dbdcaa63cfff487</srcmd5>
+    <version>4.12</version>
+    <time>1484818814</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449546</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>81d97218954f167d7ba3a14bf0a0e26d</srcmd5>
+    <version>4.12</version>
+    <time>1487680587</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458592</requestid>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>53ca964e2958109285dc45270a232940</srcmd5>
+    <version>4.12</version>
+    <time>1493368943</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489450</requestid>
+  </revision>
+  <revision rev="81" vrev="4">
+    <srcmd5>95661ce10e6bbe312d2d1c400d730f12</srcmd5>
+    <version>4.12</version>
+    <time>1494441276</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492938</requestid>
+  </revision>
+  <revision rev="82" vrev="5">
+    <srcmd5>45eb2c6dff725876946ecf93922c2121</srcmd5>
+    <version>4.12</version>
+    <time>1496326984</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495456</requestid>
+  </revision>
+  <revision rev="83" vrev="6">
+    <srcmd5>acea2d254d7d833a98e1372cab0c5309</srcmd5>
+    <version>4.12</version>
+    <time>1497273971</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502724</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>0b1016cb7a9070ae6708f0f0b60fff94</srcmd5>
+    <version>4.12.1</version>
+    <time>1504520390</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519472</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>75faca2f2873e98d7e910df40af765f5</srcmd5>
+    <version>4.12.1</version>
+    <time>1512433547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547670</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>a171fde74529721ccc756376b00632d2</srcmd5>
+    <version>4.12.3</version>
+    <time>1544441363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656234</requestid>
+  </revision>
+</revisionlist>

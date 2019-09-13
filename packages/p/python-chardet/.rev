@@ -1,0 +1,205 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>28bb3623c85eeecf5e2c9b39e1d8b372</srcmd5>
+    <version>2.0.1</version>
+    <time>1275062005</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-chardet based on submit request 40436 from user jnweiger
+</comment>
+    <requestid>40436</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>28bb3623c85eeecf5e2c9b39e1d8b372</srcmd5>
+    <version>2.0.1</version>
+    <time>1278667383</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>28bb3623c85eeecf5e2c9b39e1d8b372</srcmd5>
+    <version>2.0.1</version>
+    <time>1278678613</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>28bb3623c85eeecf5e2c9b39e1d8b372</srcmd5>
+    <version>2.0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>c3afbad3d3c82b73b4abadc31c4d2978</srcmd5>
+    <version>2.0.1</version>
+    <time>1301579563</time>
+    <user>darix</user>
+    <comment>Accepted submit request 65631 from user coolo
+</comment>
+    <requestid>65631</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>a7c5eabb56e90aefdcc58a1ba32c51f3</srcmd5>
+    <version>2.0.1</version>
+    <time>1301579572</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 65631
+</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>a7c5eabb56e90aefdcc58a1ba32c51f3</srcmd5>
+    <version>2.0.1</version>
+    <time>1319182383</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>454010c90604e2bda95ec5ab612b1414</srcmd5>
+    <version>2.0.1</version>
+    <time>1329340910</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103920</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>454010c90604e2bda95ec5ab612b1414</srcmd5>
+    <version>2.0.1</version>
+    <time>1340184039</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5b062e080528073c6cbc256c901d4580</srcmd5>
+    <version>1.1</version>
+    <time>1348412917</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134037</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>59f65ebdad79b9b9083dc07c9b123ce3</srcmd5>
+    <version>2.1.1</version>
+    <time>1349783620</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137549</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>59f65ebdad79b9b9083dc07c9b123ce3</srcmd5>
+    <version>2.1.1</version>
+    <time>1359110002</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>59f65ebdad79b9b9083dc07c9b123ce3</srcmd5>
+    <version>2.1.1</version>
+    <time>1379664140</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>ada26260e3f1291a8de3df5f6538c444</srcmd5>
+    <version>2.1.1</version>
+    <time>1382692722</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204532</requestid>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>ada26260e3f1291a8de3df5f6538c444</srcmd5>
+    <version>2.1.1</version>
+    <time>1409302831</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e58092234b2213ce0a74d597285ce32b</srcmd5>
+    <version>2.3.0</version>
+    <time>1424255969</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286465</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e471e62ef611c6cc609e4da5fc6550ff</srcmd5>
+    <version>2.3.0</version>
+    <time>1432071736</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307804</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>c5fff090c27cd0afd8fcddcc595b1ceb</srcmd5>
+    <version>2.3.0</version>
+    <time>1486635434</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>455265</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>1e0e905ae3991f325254908d1eb5b2f8</srcmd5>
+    <version>2.3.0</version>
+    <time>1492714157</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>483137</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a2d3bc33fb7723c24d20d0ff1fabcc44</srcmd5>
+    <version>3.0.4</version>
+    <time>1499162177</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507075</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>e7f4adf8b8bc963e91495eb9a9bec7b0</srcmd5>
+    <version>3.0.4</version>
+    <time>1504520371</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519333</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>5c100e52d3720e17b3ac796c3ffd32f2</srcmd5>
+    <version>3.0.4</version>
+    <time>1506340439</time>
+    <user>dimstar_suse</user>
+    <comment>- add update-alternatives post-requires</comment>
+    <requestid>527624</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>5845ba53108f0cade1fc9a09d8e185ac</srcmd5>
+    <version>3.0.4</version>
+    <time>1527084281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607708</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>57ce4001686ee9742e31ab91fb95e8c8</srcmd5>
+    <version>3.0.4</version>
+    <time>1545866755</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659382</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>c4afe594ac36f0d76a76c8ae63105ce2</srcmd5>
+    <version>3.0.4</version>
+    <time>1551215765</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to avoid buildcycles</comment>
+    <requestid>679159</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>c04419e98d9c8e4c9527be5f68d8410c</srcmd5>
+    <version>3.0.4</version>
+    <time>1562327296</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with pytest4:
+  * pytest4.patch</comment>
+    <requestid>713178</requestid>
+  </revision>
+</revisionlist>

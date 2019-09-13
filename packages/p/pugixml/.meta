@@ -1,0 +1,17 @@
+<package name="pugixml" project="openSUSE:Factory">
+  <title>Light-weight C++ XML Processing Library</title>
+  <description>
+pugixml is a light-weight C++ XML processing library. It features:
+
+- DOM-like interface with rich traversal/modification capabilities
+- Extremely fast non-validating XML parser which constructs the DOM tree from
+  an XML file/buffer
+- XPath 1.0 implementation for complex data-driven tree queries
+- Full Unicode support with Unicode interface variants and automatic encoding
+  conversions
+
+The library is extremely portable and easy to integrate and use.
+</description>
+  <devel project="devel:libraries:c_c++" package="pugixml"/>
+  <url>http://pugixml.org/</url>
+</package>

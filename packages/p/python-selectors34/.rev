@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9fd32cc2cdf95612785692cdb4839c86</srcmd5>
+    <version>1.2</version>
+    <time>1527933637</time>
+    <user>dimstar_suse</user>
+    <comment>Backport of the selectors module from Python 3.4</comment>
+    <requestid>612049</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44d76d34c5f626faff17cc23c05793b5</srcmd5>
+    <version>1.2</version>
+    <time>1545648224</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659662</requestid>
+  </revision>
+</revisionlist>

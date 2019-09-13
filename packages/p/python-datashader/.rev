@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>078de1e1888d13c67b41ab5593824b00</srcmd5>
+    <version>0.6.5</version>
+    <time>1528022002</time>
+    <user>dimstar_suse</user>
+    <comment>Plotting tool for enormous amounts</comment>
+    <requestid>603732</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0780220a5a7c50449205269678cf3823</srcmd5>
+    <version>0.6.5</version>
+    <time>1528897087</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615177</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cdf4f9786d02253db63a0da9cd8d2ce9</srcmd5>
+    <version>0.6.7</version>
+    <time>1533045503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625838</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0e5414dd40a6cdde2aaf3f70a0e368d8</srcmd5>
+    <version>0.6.7</version>
+    <time>1534322219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629019</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6c5ad5af3977f1b3fda6ef6f19567354</srcmd5>
+    <version>0.6.8</version>
+    <time>1540988070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.8
+  + New features:
+    * Added Strange Attractors example (#632)
+    * Major speedup: optimized dask datashape detection (#634)
+  + Bugfixes and compatibility:
+    * Silenced inappropriate warnings (#631)
+    * Fixed various other bugs, including #644
+    * Added handling for zero data and zero range (#612, #648)
+- Switch to pypi sources
+</comment>
+    <requestid>645327</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4eb2d3f1c6db1ec08afefa406af3c746</srcmd5>
+    <version>0.6.8</version>
+    <time>1543224505</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patch to fix broken test_dask tests.
+  * python-datashader-dask-api-change-fix.patch
+  Upstream URL: https://github.com/pyviz/datashader/pull/667</comment>
+    <requestid>651108</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1f758dceb501badb9455a0d1616dba48</srcmd5>
+    <version>0.6.9</version>
+    <time>1550151367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674721</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>382fe611d65f078ec584591ee6fa95e0</srcmd5>
+    <version>0.7.0</version>
+    <time>1559837798</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable python2 builds.
+  This requires xarray, which requires python3 now.
+- Update to version 0.7.0
+  + New features:
+    * Simplified Panel-based dashboard using new Param features; now only 48 lines with fewer new concepts (#707)
+    * Added pandas ExtensionArray and Dask support for storing homogeneous ragged arrays (#687)
+    * Added SpatialPointsFrame and updated census, osm-1billion, and osm examples to use it (#702, #706, #708)
+    * Expanded 8_Geography.ipynb to document other geo-related functions
+    * Added Dask support for trimesh rendering, though computing the mesh initially still requires vertices and simplicies to fit into memory (#696)
+    * Add zero-copy rendering of row-oriented line coordinates, using a new axis argument (#694)
+  + Bugfixes and compatibility:
+    * Added lnglat_to_meters to geo module; new code should import it from there (#708)
+</comment>
+    <requestid>707280</requestid>
+  </revision>
+</revisionlist>

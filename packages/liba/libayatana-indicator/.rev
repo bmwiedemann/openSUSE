@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0d68b63a3f226ed3e4ce3b78632c51c</srcmd5>
+    <version>0.6.2</version>
+    <time>1521904455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589719</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>304686dce7a6d1b87ccb1a9d576da3d1</srcmd5>
+    <version>0.6.2</version>
+    <time>1560338156</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid mate-common for some openSUSE-specific reasons.
+</comment>
+    <requestid>709007</requestid>
+  </revision>
+</revisionlist>

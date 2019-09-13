@@ -1,0 +1,11 @@
+<package name="python-precis-i18n" project="openSUSE:Factory">
+  <title>Internationalised Usernames and Passwords</title>
+  <description>The PRECIS framework makes internationalised user names and passwords safer for use by applications.
+PRECIS profiles transform unicode strings into a canonical form, suitable for comparison.
+
+This module implements the PRECIS Framework as described in:
+ - PRECIS Framework: Preparation, Enforcement, and Comparison of Internationalised Strings in Application Protocols (RFC 8264).
+ - Preparation, Enforcement, and Comparison of Internationalised Strings Representing Usernames and Passwords (RFC 8265).
+ - Preparation, Enforcement, and Comparison of Internationalised Strings Representing Nicknames (RFC 8266).</description>
+  <devel project="devel:languages:python" package="python-precis-i18n"/>
+</package>

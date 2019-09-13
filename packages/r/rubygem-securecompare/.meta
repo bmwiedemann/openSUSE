@@ -1,0 +1,5 @@
+<package name="rubygem-securecompare" project="openSUSE:Factory">
+  <title>securecompare</title>
+  <description>securecompare borrows the secure_compare private method from ActiveSupport::MessageVerifier which lets you do safely compare strings without being vulnerable to timing attacks. Useful for Basic HTTP Authentication in your rack/rails application.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-securecompare"/>
+</package>

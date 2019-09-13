@@ -1,0 +1,7 @@
+<package name="subversion" project="openSUSE:Factory">
+  <title>A Concurrent Versioning system similar to but better than CVS</title>
+  <description>Subversion does the same thing cvs (CVS (Concurrent Versioning System))
+but has major enhancements compared to CVS. The name of the cmdline
+client is svn.</description>
+  <devel project="devel:tools:scm:svn" package="subversion"/>
+</package>

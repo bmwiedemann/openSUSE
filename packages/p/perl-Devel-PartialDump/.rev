@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e28778e6aac51bc23d15f922bc62c9c</srcmd5>
+    <version>0.15</version>
+    <time>1324831122</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>97512</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8e28778e6aac51bc23d15f922bc62c9c</srcmd5>
+    <version>0.15</version>
+    <time>1340183831</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>8e28778e6aac51bc23d15f922bc62c9c</srcmd5>
+    <version>0.15</version>
+    <time>1359109648</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>8e28778e6aac51bc23d15f922bc62c9c</srcmd5>
+    <version>0.15</version>
+    <time>1379663645</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>76fd1d0be39491cffc292d0b540aabec</srcmd5>
+    <version>0.16</version>
+    <time>1386569631</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208404</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>36bf17863e71198336e0456dded225c1</srcmd5>
+    <version>0.17</version>
+    <time>1386843639</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210532</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>36bf17863e71198336e0456dded225c1</srcmd5>
+    <version>0.17</version>
+    <time>1409302260</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cb45c81cce8da0a364541cec1136006c</srcmd5>
+    <version>0.18</version>
+    <time>1440658593</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325702</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3cd29ff7581df74559e32cb05b1fdb24</srcmd5>
+    <version>0.19</version>
+    <time>1499677664</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508896</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f25cdee2de321a85dcbe8d7ef137ee9c</srcmd5>
+    <version>0.20</version>
+    <time>1500670023</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509389</requestid>
+  </revision>
+</revisionlist>

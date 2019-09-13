@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eead561068898c45f2865c9aaa1a34ee</srcmd5>
+    <version>0.0.0</version>
+    <time>1384435339</time>
+    <user>scarabeus_factory</user>
+    <comment>New pkg for lo4.2</comment>
+    <requestid>205522</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>99fab4e719fc472a14fbcc3183dfbcd4</srcmd5>
+    <version>0.0.0</version>
+    <time>1390298997</time>
+    <user>coolo</user>
+    <comment>- build with -fvisibility-inlines-hidden, modest reduction
+ in the exported symbol table as the library is already small. (forwarded request 214349 from elvigia)</comment>
+    <requestid>214373</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f9632bf0394472623180155d1600e3b4</srcmd5>
+    <version>0.1.0</version>
+    <time>1406479627</time>
+    <user>coolo</user>
+    <comment>- Upgrade to upstream version 0.1.0
+  * ABI change
+  * Remove dependency on libwpd-devel and libwpg-devel
+  * Add dependency on librevenge-devel</comment>
+    <requestid>242317</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f9632bf0394472623180155d1600e3b4</srcmd5>
+    <version>0.1.0</version>
+    <time>1409301560</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>55a3225d7f9862b8e306e3dc1d8e5c8f</srcmd5>
+    <version>0.1.1</version>
+    <time>1434550494</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>311661</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a520155abaa94a3bfdb1587f4fc262eb</srcmd5>
+    <version>0.1.2</version>
+    <time>1505757125</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.1.2:
+  * Fix several hangs and leaks when reading damaged files found with the
+    help of american-fuzzy-lop.
+  * Fix build with recent clang.
+  * Make --help output of all command-line tools more help2man-friendly.
+  * Require C++11 for build.
+  * Parse more features:
+    * text on path
+    * more text attributes
+    * stroke patterns
+    * arrows
+    * paragraph attributes
+    * custom line and fill styles
+    * text effects
+  * Write correct rotation center of a textbox.
+  * Fix an issue found by oss-fuzz.
+  * Fix several issues found by Coverity.
+  * Various code cleanups and other small improvements.</comment>
+    <requestid>526486</requestid>
+  </revision>
+</revisionlist>

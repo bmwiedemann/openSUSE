@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fdf4bdf7b74e1d56e102e2e3caba3c83</srcmd5>
+    <version>0.312</version>
+    <time>1324831077</time>
+    <user>coolo</user>
+    <comment>new perl module</comment>
+    <requestid>97500</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4e0e063d962dc487f6c6f3e3bb762911</srcmd5>
+    <version>0.316</version>
+    <time>1329823364</time>
+    <user>coolo</user>
+    <comment>- updated to 0.316
+       fix the test of &quot;echo&quot; on Win32 (thanks, Chris Williams)
+       totally worthless release made by mistake
+       adds App::Cmd::Tester::CaptureExternal to capture output from
+       external subcommands (thanks, David Golden)
+       if there's no Pod =head1 NAME, a Pod::Weaver-esque #ABSTRACT will be
+       respected (thanks, Andreas Hernitscheck)
+       don't load Text::Abbrev until it's needed (thanks, Olivier Mengué)</comment>
+    <requestid>106259</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cf65bf6a271c2e665983ddfc95a01859</srcmd5>
+    <version>0.317</version>
+    <time>1333356674</time>
+    <user>coolo</user>
+    <comment>- updated to 0.317
+       App::Cmd::Tester now reports exit code 1 for unknown commands, as
+       App::Cmd would exit(1) in that case; addresses
+       https://rt.cpan.org/Public/Bug/Display.html?id=73084 reported by
+       David Golden</comment>
+    <requestid>112063</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>65bb1cbac7fd1e0ab33d979997abb1ff</srcmd5>
+    <version>0.318</version>
+    <time>1338284496</time>
+    <user>coolo</user>
+    <comment>- updated to 0.318
+     App::Cmd::Tester treats undef code as 0 now (thanks, David Golden)
+     piles of documentation improvement also by David Golden</comment>
+    <requestid>122591</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>65bb1cbac7fd1e0ab33d979997abb1ff</srcmd5>
+    <version>0.318</version>
+    <time>1340183792</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>65bb1cbac7fd1e0ab33d979997abb1ff</srcmd5>
+    <version>0.318</version>
+    <time>1359109596</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>103bb8b118cbcf87e0b39bfa8238eeea</srcmd5>
+    <version>0.320</version>
+    <time>1370447252</time>
+    <user>coolo</user>
+    <comment>- updated to 0.320
+         when answering &quot;Unknown subcommand,&quot; the commands list is sent ot
+         STDERR (#75652)
+         tests for using Params::Validate callback and not getting nasty stack
+         trace (thanks, Adam Prime)
+         Enable --help option for App::Cmd::Simple (thanks, Ryan Thompson!)
+         add the ability to ignore non-commands (Thanks, Kent Fredric!)
+         many improvements to tutorial (thanks, mokko!) (forwarded request 177236 from coolo)</comment>
+    <requestid>177343</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>103bb8b118cbcf87e0b39bfa8238eeea</srcmd5>
+    <version>0.320</version>
+    <time>1379663550</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ae5ce0651fe40fd170fc0c8263e420ce</srcmd5>
+    <version>0.322</version>
+    <time>1385490149</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208403</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6e375fe3bfb350c0d1953836bf09bf64</srcmd5>
+    <version>0.323</version>
+    <time>1386843536</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210526</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>6e375fe3bfb350c0d1953836bf09bf64</srcmd5>
+    <version>0.323</version>
+    <time>1409302159</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b5986e230f184fa15b9bc954ede64063</srcmd5>
+    <version>0.327</version>
+    <time>1429107859</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296112</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cbb9c47e7f9a109690900ab2b8cc5f8e</srcmd5>
+    <version>0.328</version>
+    <time>1441726984</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329205</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ada22959c825411fc8e1ca0ebb7beb2e</srcmd5>
+    <version>0.329</version>
+    <time>1445287763</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337596</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4b611854d5e758f44e0677ae35b44723</srcmd5>
+    <version>0.330</version>
+    <time>1446208993</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340769</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7440cfe1ceadc3bde3119ef96d333837</srcmd5>
+    <version>0.331</version>
+    <time>1468999565</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411859</requestid>
+  </revision>
+</revisionlist>

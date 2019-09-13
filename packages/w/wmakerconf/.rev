@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="363">
+    <srcmd5>931ec4e6f73bfb29b742f13bff5dad19</srcmd5>
+    <version>2.9</version>
+    <time>1168904482</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="507">
+    <srcmd5>6ff1c435fad14205104192f5453855d7</srcmd5>
+    <version>2.9</version>
+    <time>1203958116</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="524">
+    <srcmd5>7e6dea55085e9f774fbd5fa1698171ca</srcmd5>
+    <version>2.9</version>
+    <time>1209335779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="580">
+    <srcmd5>7e6dea55085e9f774fbd5fa1698171ca</srcmd5>
+    <version>2.9</version>
+    <time>1209335779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="581">
+    <srcmd5>fad4f1b7f3d8c797fdc243c52d5452c2</srcmd5>
+    <version>2.9</version>
+    <time>1245363695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="583">
+    <srcmd5>fad4f1b7f3d8c797fdc243c52d5452c2</srcmd5>
+    <version>2.9</version>
+    <time>1245363695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f555b9b40d007e243299a784f99c2351</srcmd5>
+    <version>2.12</version>
+    <time>1262892568</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:windowmanagers/wmakerconf based on submit request 28255 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f6f350d923b716523f600514501b5e0e</srcmd5>
+    <version>2.12</version>
+    <time>1268926500</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>f6f350d923b716523f600514501b5e0e</srcmd5>
+    <version>2.12</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>f6f350d923b716523f600514501b5e0e</srcmd5>
+    <version>2.12</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>f6f350d923b716523f600514501b5e0e</srcmd5>
+    <version>2.12</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>f6f350d923b716523f600514501b5e0e</srcmd5>
+    <version>2.12</version>
+    <time>1319182570</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>4e5ac76ce89f491efbb751f31b45e8df</srcmd5>
+    <version>2.12</version>
+    <time>1324913395</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97746 from coolo)</comment>
+    <requestid>98201</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>5c13d2b0fc3ee373975b0aea990dfd6e</srcmd5>
+    <version>2.12</version>
+    <time>1336472958</time>
+    <user>coolo</user>
+    <comment>fix build for new wmaker-0.95 (forwarded request 115889 from computersalat)</comment>
+    <requestid>116510</requestid>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>5c13d2b0fc3ee373975b0aea990dfd6e</srcmd5>
+    <version>2.12</version>
+    <time>1340184325</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>5c13d2b0fc3ee373975b0aea990dfd6e</srcmd5>
+    <version>2.12</version>
+    <time>1359110573</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="18">
+    <srcmd5>5c13d2b0fc3ee373975b0aea990dfd6e</srcmd5>
+    <version>2.12</version>
+    <time>1379664964</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="20">
+    <srcmd5>5c13d2b0fc3ee373975b0aea990dfd6e</srcmd5>
+    <version>2.12</version>
+    <time>1409303643</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="21">
+    <srcmd5>df1fa92a184e6b7278a6f2c991a3babf</srcmd5>
+    <version>2.12</version>
+    <time>1458333753</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>374172</requestid>
+  </revision>
+  <revision rev="20" vrev="22">
+    <srcmd5>8fc13b241c895e0e953fb4688873f998</srcmd5>
+    <version>2.12</version>
+    <time>1462697114</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390594</requestid>
+  </revision>
+  <revision rev="21" vrev="23">
+    <srcmd5>e1d0a4e182d56cb6f7a4b5dfac353384</srcmd5>
+    <version>2.12</version>
+    <time>1491896406</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484764</requestid>
+  </revision>
+  <revision rev="22" vrev="24">
+    <srcmd5>afa1a77690458e2614431fe17edeaa01</srcmd5>
+    <version>2.12</version>
+    <time>1493020128</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489274</requestid>
+  </revision>
+  <revision rev="23" vrev="25">
+    <srcmd5>0116fed6dfbc7da3bc7730871033cc3b</srcmd5>
+    <version>2.12</version>
+    <time>1512547190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548538</requestid>
+  </revision>
+</revisionlist>

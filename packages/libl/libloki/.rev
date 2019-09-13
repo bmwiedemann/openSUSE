@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e70d75e83905f3bd831e97a9c3f140a</srcmd5>
+    <version>0.1.7</version>
+    <time>1317744797</time>
+    <user>oertel</user>
+    <comment>Fixes to follow specfile guidelines</comment>
+    <requestid>86502</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8e70d75e83905f3bd831e97a9c3f140a</srcmd5>
+    <version>0.1.7</version>
+    <time>1319182108</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>187cc9df9ef91b15056ada69c293befa</srcmd5>
+    <version>0.1.7</version>
+    <time>1323192265</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e32bdc781c1fa73186edfe3c0f016215</srcmd5>
+    <version>0.1.7</version>
+    <time>1329242548</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103983</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>e32bdc781c1fa73186edfe3c0f016215</srcmd5>
+    <version>0.1.7</version>
+    <time>1340183602</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>e32bdc781c1fa73186edfe3c0f016215</srcmd5>
+    <version>0.1.7</version>
+    <time>1359109299</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>e32bdc781c1fa73186edfe3c0f016215</srcmd5>
+    <version>0.1.7</version>
+    <time>1379662997</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>e32bdc781c1fa73186edfe3c0f016215</srcmd5>
+    <version>0.1.7</version>
+    <time>1409301612</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

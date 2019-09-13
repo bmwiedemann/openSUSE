@@ -1,0 +1,12 @@
+<package name="dnsmasq" project="openSUSE:Factory">
+  <title>Lightweight, Easy-to-Configure DNS Forwarder and DHCP Server</title>
+  <description>Dnsmasq is a lightweight, easy-to-configure DNS forwarder and DHCP
+server. It is designed to provide DNS and, optionally, DHCP, to a small
+network. It can serve the names of local machines that are not in the
+global DNS. The DHCP server integrates with the DNS server and allows
+machines with DHCP-allocated addresses to appear in DNS with names
+configured either in each host or in a central configuration file.
+Dnsmasq supports static and dynamic DHCP leases and BOOTP for network
+booting of diskless machines.</description>
+  <devel project="network" package="dnsmasq"/>
+</package>

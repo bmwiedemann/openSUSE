@@ -1,0 +1,358 @@
+<revisionlist>
+  <revision rev="1" vrev="21">
+    <srcmd5>3efe846f72bc2830743a316330606d1f</srcmd5>
+    <version>12.1</version>
+    <time>1166483824</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>59f3cbffe5ddea15990e08692b912397</srcmd5>
+    <version>12.2</version>
+    <time>1176849616</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="141">
+    <srcmd5>59f3cbffe5ddea15990e08692b912397</srcmd5>
+    <version>12.2</version>
+    <time>1176849616</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="142">
+    <srcmd5>a6ea6162377fbb58173302f0b7e2b356</srcmd5>
+    <version>12.2</version>
+    <time>1224729573</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="144">
+    <srcmd5>a6ea6162377fbb58173302f0b7e2b356</srcmd5>
+    <version>12.2</version>
+    <time>1224729573</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="145">
+    <srcmd5>966f36c2c91ce0591278f9608ca43130</srcmd5>
+    <version>12.2</version>
+    <time>1257844573</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/mailx based on submit request 23998 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="7" vrev="146">
+    <srcmd5>ca397eb2a2cc64afef1d1cbe5664f461</srcmd5>
+    <version>12.2</version>
+    <time>1263484029</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/mailx based on submit request 29161 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="147">
+    <srcmd5>6351b21d1b55ab41fb9f5facdf3bcff7</srcmd5>
+    <version>12.2</version>
+    <time>1268924895</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="148">
+    <srcmd5>70bf9d2c3f423c4e51734a8ebc74eb12</srcmd5>
+    <version>12.2</version>
+    <time>1271722079</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/mailx based on submit request 38304 from user coolo
+</comment>
+    <requestid>38304</requestid>
+  </revision>
+  <revision rev="10" vrev="149">
+    <srcmd5>c6d6bf145fb132d3037b57645fdb8210</srcmd5>
+    <version>12.2</version>
+    <time>1276834254</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/mailx based on submit request 41423 from user coolo
+</comment>
+    <requestid>41423</requestid>
+  </revision>
+  <revision rev="11" vrev="151">
+    <srcmd5>c6d6bf145fb132d3037b57645fdb8210</srcmd5>
+    <version>12.2</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="152">
+    <srcmd5>c6d6bf145fb132d3037b57645fdb8210</srcmd5>
+    <version>12.2</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="153">
+    <srcmd5>c6f7f5fb11dc7c64e0570ad9f50ccd52</srcmd5>
+    <version>12.2</version>
+    <time>1296766537</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59913 from user WernerFink
+</comment>
+    <requestid>59913</requestid>
+  </revision>
+  <revision rev="14" vrev="154">
+    <srcmd5>99e01f576e69839fd9a522f09399eca0</srcmd5>
+    <version>12.2</version>
+    <time>1296766545</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59913
+</comment>
+  </revision>
+  <revision rev="15" vrev="157">
+    <srcmd5>99e01f576e69839fd9a522f09399eca0</srcmd5>
+    <version>12.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="158">
+    <srcmd5>d34ab88130d0d0847e00102bb57adceb</srcmd5>
+    <version>12.2</version>
+    <time>1302505284</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66605 from user coolo
+</comment>
+    <requestid>66605</requestid>
+  </revision>
+  <revision rev="17" vrev="159">
+    <srcmd5>1f467a2d11352285e92cb7e1543c3278</srcmd5>
+    <version>12.2</version>
+    <time>1302505292</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66605
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>95a8c99e51dc799ce74223b334ba7d1d</srcmd5>
+    <version>12.5</version>
+    <time>1305530746</time>
+    <user>saschpe</user>
+    <comment>- Update to heirloom mailx 12.5
+  * Better detection of base64 encoded text if acrossed a line
+  * A null pointer dereference that lead to a segmentation fault
+    when the user hit return at a yes/no question has been fixed
+  * When both standard input and standard output refer to a
+    terminal, ignore SIGPIPE 
+  * With the &quot;-E&quot; command line option or if the &quot;skipemptybody&quot;
+    variable is set, outgoing messages that contain no text in
+    their first or only part are not sent but silently discarded.
+  * When an attachment that would have a &quot;text/something&quot; content
+    type contains illegal byte sequences, it is now reliably sent
+    out with the &quot;application/octet-stream&quot; content type instead 
+  * Fixed a bug that caused messages to be truncated with IMAP servers that
+    use LF as line ending in message data, such as Google Mail (reported by 
+    Matthew L. Shobe).
+  * Do not run filename expansion for IMAP or POP3 mailboxes names, making
+    it possible to select mailboxes that contain both brackets and spaces
+    in their names (reported by Matthew L. Shobe).
+  * Fixed the format of the timezone in &quot;Date&quot; header fields for zones in
+    the Western Hemisphere whose offsets are not an integral number of hours
+    (patch by Matthew Fischer).
+  * Fixed a message corruption that occurred when the &quot;inc&quot; command was used
+    with a mbox format mailbox after encrypted messages had been viewed
+    (reported by Martin Neitzel).
+  * Fixed a condition that caused mailx to hang when looking at a message,
+    copying that message, and issuing a &quot;z&quot; command evaluating an uncached
+    portion of an IMAP folder.
+  * Make it compile with OpenSSL 1.0.0-beta2
+  * For RFC 2047 MIME &quot;encoded-word&quot; parts in headers, assume that the end of
+    each word resets the conversion state (Yedidyah Bar-David).</comment>
+    <requestid>70185</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>95a8c99e51dc799ce74223b334ba7d1d</srcmd5>
+    <version>12.5</version>
+    <time>1319182168</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>7691c5f44edfcadad89afc49ff244b5d</srcmd5>
+    <version>12.5</version>
+    <time>1323192487</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>fcd3e5c6902478f6c6d04cb2d58ea7a5</srcmd5>
+    <version>12.5</version>
+    <time>1334692777</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113803</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>fcd3e5c6902478f6c6d04cb2d58ea7a5</srcmd5>
+    <version>12.5</version>
+    <time>1340183686</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>7eb9b803af68177bb5511d9aeecbdaed</srcmd5>
+    <version>12.5</version>
+    <time>1347883216</time>
+    <user>coolo</user>
+    <comment>- Add BuildRequires on man to fix build for Factory (forwarded request 134364 from namtrac)</comment>
+    <requestid>134541</requestid>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>7eb9b803af68177bb5511d9aeecbdaed</srcmd5>
+    <version>12.5</version>
+    <time>1359109426</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="11">
+    <srcmd5>528520280be26b4fca1538764dbbec11</srcmd5>
+    <version>12.5</version>
+    <time>1371135403</time>
+    <user>coolo</user>
+    <comment>license update: BSD-4-Clause and MPL-1.1
+See COPYING. Fedora also uses this license designation (forwarded request 178463 from babelworx)</comment>
+    <requestid>178589</requestid>
+  </revision>
+  <revision rev="26" vrev="12">
+    <srcmd5>c6f83c863946f0a99cabdcffa8ae75c4</srcmd5>
+    <version>12.5</version>
+    <time>1372325922</time>
+    <user>coolo</user>
+    <comment>- buildrequire groff explicitly (forwarded request 180866 from coolo)</comment>
+    <requestid>181024</requestid>
+  </revision>
+  <revision rev="27" vrev="13">
+    <srcmd5>0f0926bcb0baac32f816099c64719b70</srcmd5>
+    <version>12.5</version>
+    <time>1372839878</time>
+    <user>coolo</user>
+    <comment>- Do not pseudo detect Latin nor UTF-8 in binary attachments (bnc#827010)
+- Add patch mailx-12.5-parentheses.dif, that is try to tranquilize
+  gcc due warning about parentheses (please check!)</comment>
+    <requestid>181762</requestid>
+  </revision>
+  <revision rev="28" vrev="15">
+    <srcmd5>0f0926bcb0baac32f816099c64719b70</srcmd5>
+    <version>12.5</version>
+    <time>1379663244</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="16">
+    <srcmd5>18221e8baf26a1404aa00942e2d7f091</srcmd5>
+    <version>12.5</version>
+    <time>1386077180</time>
+    <user>coolo</user>
+    <comment>- Add patch mailx-12.5-ipv6.dif to enable mailx to parse IPv6 addresses
+  including a port.  We do only support the [ipv6]:port syntax (bnc#853246)</comment>
+    <requestid>209230</requestid>
+  </revision>
+  <revision rev="30" vrev="17">
+    <srcmd5>53f44a653a57287468988931c0dc62b4</srcmd5>
+    <version>12.5</version>
+    <time>1386275997</time>
+    <user>coolo</user>
+    <comment>- Crop off the brackets of an ipv6 addresse if found (bnc#853246)</comment>
+    <requestid>209396</requestid>
+  </revision>
+  <revision rev="31" vrev="18">
+    <srcmd5>9baae3fcacfd2dac3863560dfd6ed689</srcmd5>
+    <version>12.5</version>
+    <time>1387174078</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210794</requestid>
+  </revision>
+  <revision rev="32" vrev="19">
+    <srcmd5>f17e1f9b23f759a4752e3d5f12acd697</srcmd5>
+    <version>12.5</version>
+    <time>1399017102</time>
+    <user>coolo</user>
+    <comment>- Build with -DOPENSSL_NO_SSL_INTERN asserting that this 
+  package does not (and should not) use openSSL internals
+  that are subject to binary incompatible changes. (forwarded request 230862 from elvigia)</comment>
+    <requestid>231473</requestid>
+  </revision>
+  <revision rev="33" vrev="21">
+    <srcmd5>f17e1f9b23f759a4752e3d5f12acd697</srcmd5>
+    <version>12.5</version>
+    <time>1409301847</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="22">
+    <srcmd5>cbcc6b42e31f3022dd6e62f0ac8bbd94</srcmd5>
+    <version>12.5</version>
+    <time>1418978294</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches
+  0001-outof-Introduce-expandaddr-flag.patch
+  0002-unpack-Disable-option-processing-for-email-addresses.patch
+  0003-fio.c-Unconditionally-require-wordexp-support.patch
+  0004-globname-Invoke-wordexp-with-WRDE_NOCMD-CVE-2004-277.patch
+  to fix bsc#909208 -- CVE-2004-2771, CVE-2014-7844: mailx: shell
+  command injection via crafted email addresses
+
+- Correct comment in spec file</comment>
+    <requestid>265561</requestid>
+  </revision>
+  <revision rev="35" vrev="23">
+    <srcmd5>38ca0762f3681dbfc3000e10a7905454</srcmd5>
+    <version>12.5</version>
+    <time>1426794532</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch mailx-12.5-mime.dif to allow Form Feed as valid
+  characters within mail messages (bsc#922543)</comment>
+    <requestid>291153</requestid>
+  </revision>
+  <revision rev="36" vrev="24">
+    <srcmd5>d73c5429ff346a95451494e6d68a5a01</srcmd5>
+    <version>12.5</version>
+    <time>1462051652</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>390221</requestid>
+  </revision>
+  <revision rev="37" vrev="25">
+    <srcmd5>9a26c0f3f47e096a5ce246e9dbb85493</srcmd5>
+    <version>12.5</version>
+    <time>1495267621</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494520</requestid>
+  </revision>
+  <revision rev="38" vrev="26">
+    <srcmd5>0968f5ca80ca41966f36f95053255be0</srcmd5>
+    <version>12.5</version>
+    <time>1497687448</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch mailx-12.5-openssl-1.1.0f.patch
+  Avoid deprecated/unavailable openSSL client methods (boo#1042663)</comment>
+    <requestid>503073</requestid>
+  </revision>
+  <revision rev="39" vrev="27">
+    <srcmd5>757d202582c09c74c8c43889c1f8ade9</srcmd5>
+    <version>12.5</version>
+    <time>1529066115</time>
+    <user>maxlin_factory</user>
+    <comment>- Remove redundant %clean section.
+- Replace old $RPM_* shell vars by macros. (forwarded request 615839 from jengelh)</comment>
+    <requestid>615953</requestid>
+  </revision>
+  <revision rev="40" vrev="28">
+    <srcmd5>5091a26128f4670704610402decdc05b</srcmd5>
+    <version>12.5</version>
+    <time>1542579578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648674</requestid>
+  </revision>
+  <revision rev="41" vrev="29">
+    <srcmd5>7c9b6dc4f4ce715a7cfc3e8a55960339</srcmd5>
+    <version>12.5</version>
+    <time>1542749436</time>
+    <user>dimstar_suse</user>
+    <comment>- Repair ghost links used by update-alternatives</comment>
+    <requestid>650161</requestid>
+  </revision>
+</revisionlist>

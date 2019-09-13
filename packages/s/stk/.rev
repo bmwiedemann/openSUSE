@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>601757ebc5c63faaca13630502ad5818</srcmd5>
+    <version>4.4.3</version>
+    <time>1337195422</time>
+    <user>coolo</user>
+    <comment>License issues from bnc#760936 fixed</comment>
+    <requestid>121106</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>601757ebc5c63faaca13630502ad5818</srcmd5>
+    <version>4.4.3</version>
+    <time>1340184241</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>fb5e9e87ccc117fb454b81881283811b</srcmd5>
+    <version>4.4.3</version>
+    <time>1343634408</time>
+    <user>coolo</user>
+    <comment>- fix ppc64 build (forwarded request 128936 from k0da)</comment>
+    <requestid>128946</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>992a2764fc82f3c241a6a64cd83dc37c</srcmd5>
+    <version>4.4.4</version>
+    <time>1345983744</time>
+    <user>namtrac</user>
+    <comment>* Update to 4.4.4
+  - New FreeVerb class (thanks to Greg Burlet)
+  - New Guitar class
+  - New electric guitar project
+  - Updated versions of RtAudio and RtMidi
+  - Cleaned / revised Shakers class
+  - Bug fix in LentPitShift
+  - Bug fix in Echo constructor
+  - Bug fix in FileWvIn (file size when chunking)
+  - Bug fix in StkFrames copy constructor
+* Remove README.openSUSE, the license issue has been fixed upstream</comment>
+    <requestid>131694</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>992a2764fc82f3c241a6a64cd83dc37c</srcmd5>
+    <version>4.4.4</version>
+    <time>1359110444</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>b1c489dda8c79cbbbc5eef4f1d9436f2</srcmd5>
+    <version>4.4.4</version>
+    <time>1370432302</time>
+    <user>coolo</user>
+    <comment>- fixed hardcoded automake path to any newer automakes (forwarded request 176810 from m_meister)</comment>
+    <requestid>176917</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>b1c489dda8c79cbbbc5eef4f1d9436f2</srcmd5>
+    <version>4.4.4</version>
+    <time>1379664737</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1eafc41f77db615ac81724a7af40aa91</srcmd5>
+    <version>4.5.0</version>
+    <time>1400682664</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.0
+  * New iOS project files (thanks to Ariel Elkin)
+  * Bug fix in FreeVerb that could cause crackling for stereo input
+  * Various bug fixes and updates to minimize compiler warnings
+  * ADSR fix for decay/release time calculations
+  * Various updates to build system 
+- Use %make_install
+- Add the LICENSE file (forwarded request 233600 from RedDwarf)</comment>
+    <requestid>234698</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1eafc41f77db615ac81724a7af40aa91</srcmd5>
+    <version>4.5.0</version>
+    <time>1409303419</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>8737c0cf8f214b39ecd737d939f559d5</srcmd5>
+    <version>4.5.0</version>
+    <time>1450955848</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350490</requestid>
+  </revision>
+</revisionlist>

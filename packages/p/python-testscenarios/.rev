@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>91da3d5b1b5b15c64d1fe4755ebb7270</srcmd5>
+    <version>0.4</version>
+    <time>1370432164</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>174637</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>40f9c56e1e80b715f18ed5ef2d53ccc0</srcmd5>
+    <version>0.4</version>
+    <time>1371650409</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>180029</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>40f9c56e1e80b715f18ed5ef2d53ccc0</srcmd5>
+    <version>0.4</version>
+    <time>1379664297</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>40f9c56e1e80b715f18ed5ef2d53ccc0</srcmd5>
+    <version>0.4</version>
+    <time>1409303005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>29718cedfde23df9b4bd240f7fb64dc0</srcmd5>
+    <version>0.5.0</version>
+    <time>1431753286</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307344</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>14feda7fc054ab361d255e99d51d6783</srcmd5>
+    <version>0.5.0</version>
+    <time>1494088027</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489512</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ca0cfb62a6a94a5e99452080ba32ac2e</srcmd5>
+    <version>0.5.0</version>
+    <time>1545866960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659824</requestid>
+  </revision>
+</revisionlist>

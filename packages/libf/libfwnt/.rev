@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea30508edddf817a98e129e513c3f1c5</srcmd5>
+    <version>0~20150104</version>
+    <time>1422626389</time>
+    <user>dimstar_suse</user>
+    <comment>new package - part of libyal 2015 refresh</comment>
+    <requestid>280823</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24755cadd627f4c0ba2944df4fcab244</srcmd5>
+    <version>0~20151206</version>
+    <time>1454628722</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357454</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa009559e2b4f039dcc769b6f540eb5c</srcmd5>
+    <version>0~20160418</version>
+    <time>1475359635</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427426</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8b82ee93feef07e1e1b6ee400cfcbbc7</srcmd5>
+    <version>0~20170115</version>
+    <time>1487681226</time>
+    <user>dimstar_suse</user>
+    <comment>2017 update</comment>
+    <requestid>458538</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6347011bab5ab129a6d5e124d7bcfc90</srcmd5>
+    <version>0~20170115</version>
+    <time>1509722600</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535312</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0b82a663a6743594b37339dfa774608c</srcmd5>
+    <version>0~20181227</version>
+    <time>1560337709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695358</requestid>
+  </revision>
+</revisionlist>

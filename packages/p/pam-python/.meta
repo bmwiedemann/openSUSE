@@ -1,0 +1,5 @@
+<package name="pam-python" project="openSUSE:Factory">
+  <title></title>
+  <description>Pam-python is a PAM Module that runs the Python interpreter, thus allowing PAM Modules to be written in Python.</description>
+  <devel project="security" package="pam-python"/>
+</package>

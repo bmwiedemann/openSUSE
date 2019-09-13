@@ -1,0 +1,7 @@
+<package name="rubygem-libyui-rake" project="openSUSE:Factory">
+  <title>Rake tasks that provide basic work-flow for libyui development</title>
+  <description>Rake tasks that support work-flow of libyui developer. It allows packaging repo,
+send it to build service, create submit request to target repo or run client
+from git repo. Heavily inspired in yast-rake.</description>
+  <devel project="devel:libraries:libyui" package="rubygem-libyui-rake"/>
+</package>

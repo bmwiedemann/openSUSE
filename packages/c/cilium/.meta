@@ -1,0 +1,5 @@
+<package name="cilium" project="openSUSE:Factory">
+  <title> Linux Native, HTTP Aware Networking and Security for Containers</title>
+  <description>Cilium is open source software for providing and transparently securing network connectivity and loadbalancing between application containers and services deployed using Linux container management platforms like Docker and Kubernetes.</description>
+  <devel project="devel:kubic" package="cilium"/>
+</package>

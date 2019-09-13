@@ -1,0 +1,440 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b8d9bccb5baf6e56e29a551cc37a0add</srcmd5>
+    <version>20130222</version>
+    <time>1363096792</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>157835</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>88f0c4fff2e6d66847631d04e8624b4f</srcmd5>
+    <version>20130422</version>
+    <time>1368694671</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 20130422
+- Ship license file and do tarball signature verification</comment>
+    <requestid>175197</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>822818c77c58ee785a59bec91708526b</srcmd5>
+    <version>20130422</version>
+    <time>1372145173</time>
+    <user>coolo</user>
+    <comment>- add fix-pod-syntax.diff to fix build with perl 5.18 (forward from coolo)</comment>
+    <requestid>180372</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dff79077fd09958f430cc6f785fdd2d2</srcmd5>
+    <version>20130622</version>
+    <time>1372412986</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 20130522</comment>
+    <requestid>181085</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9781d3b11fc53135fcda42d2927dbfd4</srcmd5>
+    <version>20130722</version>
+    <time>1377248918</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195966</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9781d3b11fc53135fcda42d2927dbfd4</srcmd5>
+    <version>20130722</version>
+    <time>1379662516</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>38b73096c1c1d86085b2fc80700beaf9</srcmd5>
+    <version>20130922</version>
+    <time>1381222134</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202577</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cf2ba36116cefeb5daf5dd0d29d1aa23</srcmd5>
+    <version>20131022</version>
+    <time>1383825102</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>205893</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>83200b27744fdf5e1f8b73afe8c86364</srcmd5>
+    <version>20131122</version>
+    <time>1385829306</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208959</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>814be5edab9e1ac68b24874344905303</srcmd5>
+    <version>20140522</version>
+    <time>1401899976</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>236114</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8321fece8f44409cedbc78681165783b</srcmd5>
+    <version>20140722</version>
+    <time>1407744463</time>
+    <user>lnussel</user>
+    <comment>- Update to new upstream release 20140722</comment>
+    <requestid>244095</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8321fece8f44409cedbc78681165783b</srcmd5>
+    <version>20140722</version>
+    <time>1409301054</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4f706a88b00608efdbe5345c6d402ce7</srcmd5>
+    <version>20141122</version>
+    <time>1418054210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20141122</comment>
+    <requestid>264364</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5d2fe057e2e193f75147995de131c949</srcmd5>
+    <version>20150222</version>
+    <time>1425892165</time>
+    <user>dimstar_suse</user>
+    <comment>- GNU parallel 20150222</comment>
+    <requestid>289600</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c495bc828df5c27a9744e0e1ff6fe9c8</srcmd5>
+    <version>20150322</version>
+    <time>1427313963</time>
+    <user>dimstar_suse</user>
+    <comment>- GNU parallel 20150322</comment>
+    <requestid>293089</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f9587eb7378e34265c06519e78f58598</srcmd5>
+    <version>20150422</version>
+    <time>1430165327</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>304160</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b087e3871b41344243db9b1cecca8476</srcmd5>
+    <version>20150522</version>
+    <time>1432488862</time>
+    <user>dimstar_suse</user>
+    <comment>GNU parallel 20150522 [boo#932143] (forwarded request 308471 from AndreasStieger)</comment>
+    <requestid>308476</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2f757a914e70cf6ebd95055f6dcbc3ab</srcmd5>
+    <version>20150722</version>
+    <time>1438076583</time>
+    <user>dimstar_suse</user>
+    <comment>GNU parallel 20150722 (forwarded request 318494 from AndreasStieger)</comment>
+    <requestid>318499</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>42cd2235b4db8019558678c8068f3ca4</srcmd5>
+    <version>20150822</version>
+    <time>1441822875</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329820</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b82b9a67156f2b2d69eeef7430386ef2</srcmd5>
+    <version>20150922</version>
+    <time>1443068139</time>
+    <user>coolo</user>
+    <comment>- Update to 20150922
+  * Bug fixes and man page updates. (forwarded request 332828 from pluskalm)</comment>
+    <requestid>332843</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8eec08d459a7c716ff275cbbd81adf0f</srcmd5>
+    <version>20151022</version>
+    <time>1445779092</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340753</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7c931b8f1111ae8ee836d18ee517e0fa</srcmd5>
+    <version>20151122</version>
+    <time>1448553823</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20151122</comment>
+    <requestid>345864</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b54306cab799cb3fddf47ea6cc2b3b4b</srcmd5>
+    <version>20151222</version>
+    <time>1450955840</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20151222
+  * --transfer is now an alias for --transferfile {}.
+  * --transferfile works like --transfer, but takes an argument 
+    like --return. This makes it possible to combine transferring 
+    files with multiple input sources: 
+    parallel -S server --tf {1} wc {2} {1} ::: * ::: -l -w -c
+  * Bug fixes and man page updates. (forwarded request 350467 from pluskalm)</comment>
+    <requestid>350468</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4fb2bc15d1715ce29cb27b3c1f0fdde8</srcmd5>
+    <version>20160122</version>
+    <time>1453998174</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20160122 (forwarded request 355532 from pluskalm)</comment>
+    <requestid>355539</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>55fa3880f7a4a9cf734c911148357fe1</srcmd5>
+    <version>20160222</version>
+    <time>1456434421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20160222
+  * Bug fixes and man page updates. (forwarded request 361006 from pluskalm)</comment>
+    <requestid>361010</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b10a9cb9aaddb1c303ff23bb55dae5b4</srcmd5>
+    <version>20160322</version>
+    <time>1459422203</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>381402</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2cc37738049acf2ebf8595b1ad1f81f6</srcmd5>
+    <version>20160422</version>
+    <time>1462428756</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>392030</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5ea8fe2f8ff14b378a4efd9b807c92ff</srcmd5>
+    <version>20160522</version>
+    <time>1464595140</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>398770</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5f13357eebf800c4c8483451e054f7a0</srcmd5>
+    <version>20160622</version>
+    <time>1467359999</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>405410</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b41a1309f1c38986c57756c0456c644e</srcmd5>
+    <version>20160722</version>
+    <time>1470773733</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>417370</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>99f10d33ebc7a11b0fbe3063e76f8743</srcmd5>
+    <version>20160822</version>
+    <time>1472595082</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20160822</comment>
+    <requestid>423778</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b23f9e4bd044cf45c84f7063c3127022</srcmd5>
+    <version>20161022</version>
+    <time>1477410259</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20161022:
+  * First command no longer gets stdin as it causes unpredictable
+    issues.
+  * Bug fixes and man page updates.
+- Changes for version 20160922
+  * parcat - cat files or fifos in parallel (forwarded request 437198 from pluskalm)</comment>
+    <requestid>437208</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4548ec1e02ecfa6e2687917c3601a283</srcmd5>
+    <version>20161222</version>
+    <time>1485042469</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20161222</comment>
+    <requestid>448422</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>84a6e99d2b96c105ff726520908cfe7c</srcmd5>
+    <version>20170122</version>
+    <time>1485250846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20170122</comment>
+    <requestid>451907</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>054557bc93d8f63cf24d6263a34c953d</srcmd5>
+    <version>20170422</version>
+    <time>1494345822</time>
+    <user>dimstar_suse</user>
+    <comment>update to 20170422 (forwarded request 493450 from AndreasStieger)</comment>
+    <requestid>493452</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>917b1adc9d841924b08fb15bbdf10c2e</srcmd5>
+    <version>20170622</version>
+    <time>1499510120</time>
+    <user>dimstar_suse</user>
+    <comment>20170622 (forwarded request 508837 from AndreasStieger)</comment>
+    <requestid>508843</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1fab57ba3d1eb2b3a9ea0b6ccd52a5ef</srcmd5>
+    <version>20170722</version>
+    <time>1501572318</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 20170722:
+  * Bug fixes and man page updates (forwarded request 513079 from AndreasStieger)</comment>
+    <requestid>513085</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a393821ab02ed1077350a05b281f5cdd</srcmd5>
+    <version>20170822</version>
+    <time>1504981545</time>
+    <user>dimstar_suse</user>
+    <comment>gnu_parallel 20170822 (forwarded request 521791 from AndreasStieger)</comment>
+    <requestid>521825</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2a41e16995a21be1dd8e7798d3c4a7b1</srcmd5>
+    <version>20170922</version>
+    <time>1507280671</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20170922:
+  * Use '--limit myprog' to make a dynamic job limit. Just return 0
+    to spawn another job, 1 to not spawn another job, and 2 to kill
+    the youngest job.
+  * PARALLEL_RSYNC_OPTS and --rsync-opts sets the options for rsync
+    (Default: -rlDzR).
+  * Download all of humble bundle books in parallel
+    https://til.hashrocket.com/posts/ggt1jaes4y-download-all-of-humble-bundle-books-in-parallel (forwarded request 531722 from riafarov)</comment>
+    <requestid>531728</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>09d8731c50713215d646af082d079e72</srcmd5>
+    <version>20171022</version>
+    <time>1508770414</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20171022:
+  * Initial support for XDG Base Directory $XDG_* environment
+    variables (forwarded request 535889 from AndreasStieger)</comment>
+    <requestid>535926</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f3e82ec179191dc9f27bda424171e12c</srcmd5>
+    <version>20171222</version>
+    <time>1514569826</time>
+    <user>dimstar_suse</user>
+    <comment>gnu_parallel 20171222 (forwarded request 559707 from AndreasStieger)</comment>
+    <requestid>559744</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d822c8a131d9a8ec0ee2eb21bb64dc96</srcmd5>
+    <version>20180222</version>
+    <time>1520588659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20180222</comment>
+    <requestid>584113</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5a562446b4d705e3acb11c5858870bb1</srcmd5>
+    <version>20180322</version>
+    <time>1522503451</time>
+    <user>dimstar_suse</user>
+    <comment>gnu_parallel 20180322 (forwarded request 592647 from AndreasStieger)</comment>
+    <requestid>592684</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>7c22ee3b9fd3efee7486187aaf198d60</srcmd5>
+    <version>20180422</version>
+    <time>1524576887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600297</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>4831b3b6b4c60ab23bb2943bda02f81f</srcmd5>
+    <version>20180522</version>
+    <time>1527583497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612311</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>db6e7f89ac53e9a7975910e1b16f43fc</srcmd5>
+    <version>20180622</version>
+    <time>1529919728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618649</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>df5e19cf53284de745f2dac26dd24414</srcmd5>
+    <version>20180722</version>
+    <time>1535122845</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20180722</comment>
+    <requestid>628208</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>015d0e7e8253764b318910baa633a314</srcmd5>
+    <version>20180822</version>
+    <time>1535367556</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20180822</comment>
+    <requestid>631505</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>841878bb10103c1276c43705b367ea81</srcmd5>
+    <version>20181022</version>
+    <time>1542282091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20181022</comment>
+    <requestid>649072</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b5b809323c698a9e70eb3b0d10c759fe</srcmd5>
+    <version>20181122</version>
+    <time>1543224680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20181122</comment>
+    <requestid>651434</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>cbfd164b19b11865f4119f2ab1c6246f</srcmd5>
+    <version>20190422</version>
+    <time>1556916443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700253</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>5c2687752d397f0ffa87a6bc8dcb4812</srcmd5>
+    <version>20190822</version>
+    <time>1567423594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release 20190822</comment>
+    <requestid>727568</requestid>
+  </revision>
+</revisionlist>

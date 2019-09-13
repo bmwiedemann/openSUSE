@@ -1,0 +1,5 @@
+<package name="python-zeep" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-zeep"/>
+</package>

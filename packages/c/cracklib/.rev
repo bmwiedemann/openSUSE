@@ -1,0 +1,426 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8990df618dc62b09dae9364b44f2bad1</srcmd5>
+    <version>2.8.9</version>
+    <time>1166483730</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eb982a4deb1d99501297791b9c3ec9af</srcmd5>
+    <version>2.8.10</version>
+    <time>1176762619</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1d9bfc7e186570f03ce04a8a8b0f068e</srcmd5>
+    <version>2.8.10</version>
+    <time>1177362946</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>0db2c1638c51f9fcd3b581a611b3222a</srcmd5>
+    <version>2.8.10</version>
+    <time>1178231303</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="15">
+    <srcmd5>91c26621f0ddebb9f5533170edcdd6f5</srcmd5>
+    <version>2.8.10</version>
+    <time>1181214777</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="30">
+    <srcmd5>1e276539269bab5ee25645e0fc42fb7e</srcmd5>
+    <version>2.8.10</version>
+    <time>1187910005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="33">
+    <srcmd5>f4c02f2fb9d9c3c8af2a0e725cb9795b</srcmd5>
+    <version>2.8.10</version>
+    <time>1188567481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="38">
+    <srcmd5>ed7279c518cb23b12cc9da65de43cd1b</srcmd5>
+    <version>2.8.10</version>
+    <time>1191365398</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8cc6adef0bb6479c4e4e8ee7f9ec4d81</srcmd5>
+    <version>2.8.12</version>
+    <time>1203034681</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>721a278cdc589b54a27010dc31fc8e5f</srcmd5>
+    <version>2.8.12</version>
+    <time>1206067873</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>74c7d0fceff9c37d6fc8d0e4cf692227</srcmd5>
+    <version>2.8.12</version>
+    <time>1207825889</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>39f611dab4041ab876a148be263d986e</srcmd5>
+    <version>2.8.12</version>
+    <time>1209131268</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>f7e1829f1908839c08dc6afd27792c69</srcmd5>
+    <version>2.8.12</version>
+    <time>1210370457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="25">
+    <srcmd5>ee91d11d88ba2e7f29b303f2a8ffcbb1</srcmd5>
+    <version>2.8.12</version>
+    <time>1212764715</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="27">
+    <srcmd5>c7d62046e72ff06e06270ab65c181aee</srcmd5>
+    <version>2.8.12</version>
+    <time>1214187681</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="46">
+    <srcmd5>dd978dc40e4de63cab0f2fa81240e5a7</srcmd5>
+    <version>2.8.12</version>
+    <time>1220638529</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="52">
+    <srcmd5>c3d1f08ed66acd26a78a411b4c5e17cd</srcmd5>
+    <version>2.8.12</version>
+    <time>1225636624</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="53">
+    <srcmd5>7ce77d3e3a0c20968089f9bc0f6d25e3</srcmd5>
+    <version>2.8.12</version>
+    <time>1226066734</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="54">
+    <srcmd5>1aea84e6f091c4b0f2007d07f4cb7d5a</srcmd5>
+    <version>2.8.12</version>
+    <time>1227276890</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="55">
+    <srcmd5>2319ece49ef73e0034edc631536fb177</srcmd5>
+    <version>2.8.12</version>
+    <time>1229340167</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="57">
+    <srcmd5>2454fe536e4a027151cea85e5ee29cef</srcmd5>
+    <version>2.8.12</version>
+    <time>1233953718</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="58">
+    <srcmd5>6da5663b0445c116f20c613f3a7d2031</srcmd5>
+    <version>2.8.12</version>
+    <time>1240511085</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bdf2e93628718f252c7989cd93ac21e7</srcmd5>
+    <version>2.8.13</version>
+    <time>1243462848</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>bdf2e93628718f252c7989cd93ac21e7</srcmd5>
+    <version>2.8.13</version>
+    <time>1243462848</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>58c37ca4ab39049a93c896a359811856</srcmd5>
+    <version>2.8.13</version>
+    <time>1260950344</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/cracklib based on submit request 26631 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>03d7693c9f628bc860d8fab77e6eeb85</srcmd5>
+    <version>2.8.16</version>
+    <time>1267750983</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/cracklib based on submit request 34075 from user mcalmer
+</comment>
+    <requestid>34075</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>95621a84fb2e3b8294f387b76785b27a</srcmd5>
+    <version>2.8.16</version>
+    <time>1267801024</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/cracklib based on submit request 34111 from user coolo
+</comment>
+    <requestid>34111</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>5105938a6be0a295f655d90885f574b1</srcmd5>
+    <version>2.8.16</version>
+    <time>1268923251</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>ab66eb8c3f3dc07b252f98ce9f2f815b</srcmd5>
+    <version>2.8.16</version>
+    <time>1277491263</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/cracklib based on submit request 42075 from user dirkmueller
+</comment>
+    <requestid>42075</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>ab66eb8c3f3dc07b252f98ce9f2f815b</srcmd5>
+    <version>2.8.16</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>ab66eb8c3f3dc07b252f98ce9f2f815b</srcmd5>
+    <version>2.8.16</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>529f41856af967bc5ba102d2bc7976f4</srcmd5>
+    <version>2.8.16</version>
+    <time>1279649771</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/cracklib based on submit request 43442 from user coolo
+</comment>
+    <requestid>43442</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>851eb85e7e5054d77af32db11e23ba61</srcmd5>
+    <version>2.8.18</version>
+    <time>1287958878</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51254 from user elvigia
+</comment>
+    <requestid>51254</requestid>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>6477f1a539b3b5b43321171f669e3a7e</srcmd5>
+    <version>2.8.18</version>
+    <time>1287958886</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51254
+</comment>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>6477f1a539b3b5b43321171f669e3a7e</srcmd5>
+    <version>2.8.18</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="36" vrev="9">
+    <srcmd5>7384a015b28eddce027c324090c9edbe</srcmd5>
+    <version>2.8.18</version>
+    <time>1298622213</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62762 from user elvigia
+</comment>
+    <requestid>62762</requestid>
+  </revision>
+  <revision rev="37" vrev="10">
+    <srcmd5>68f36916ba243ea27c9caa97c2cbc0b3</srcmd5>
+    <version>2.8.18</version>
+    <time>1298622222</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62762
+</comment>
+  </revision>
+  <revision rev="38" vrev="11">
+    <srcmd5>cf1db1b1e6190ec0bb962137b8b0b3e4</srcmd5>
+    <version>2.8.18</version>
+    <time>1299506258</time>
+    <user>saschpe</user>
+    <comment>Copy from IBS home:dec16180:ldig:branches:SUSE:Factory:Head/cracklib based on submit request 11037 from user dec16180
+</comment>
+  </revision>
+  <revision rev="39" vrev="12">
+    <srcmd5>5bb7d931414c1a1490c8dfaf27bfa5ec</srcmd5>
+    <version>2.8.18</version>
+    <time>1305788404</time>
+    <user>saschpe</user>
+    <comment>fix ppc64 build (forwarded request 70530 from msmeissn)</comment>
+    <requestid>70589</requestid>
+  </revision>
+  <revision rev="40" vrev="13">
+    <srcmd5>6d2a8f8d72e88f174b916a229e97156c</srcmd5>
+    <version>2.8.18</version>
+    <time>1305788415</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70589
+</comment>
+  </revision>
+  <revision rev="41" vrev="15">
+    <srcmd5>6d2a8f8d72e88f174b916a229e97156c</srcmd5>
+    <version>2.8.18</version>
+    <time>1319181825</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="42" vrev="16">
+    <srcmd5>17ccd511d667d05c228f91de00c03188</srcmd5>
+    <version>2.8.18</version>
+    <time>1319205690</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>88912</requestid>
+  </revision>
+  <revision rev="43" vrev="17">
+    <srcmd5>c44060adf1856b3c890fea2d51dee346</srcmd5>
+    <version>2.8.18</version>
+    <time>1322814369</time>
+    <user>coolo</user>
+    <comment>- add automake and libtool as buildrequire to avoid implicit dependency (forwarded request 94461 from coolo)</comment>
+    <requestid>94523</requestid>
+  </revision>
+  <revision rev="44" vrev="18">
+    <srcmd5>146730e90118bd4d471922850d20de20</srcmd5>
+    <version>2.8.18</version>
+    <time>1323191063</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="45" vrev="19">
+    <srcmd5>8ca43f12c3e27cd8a2549df8a8097469</srcmd5>
+    <version>2.8.18</version>
+    <time>1325846604</time>
+    <user>coolo</user>
+    <comment>- fix broken chinese translation (bnc#726059)
+
+- do not run update-po to make build-compare work.
+  (Likely added for translation-update-upstream, but this should just
+   change the .po files, no need for a .pot change?)</comment>
+    <requestid>98876</requestid>
+  </revision>
+  <revision rev="46" vrev="21">
+    <srcmd5>8ca43f12c3e27cd8a2549df8a8097469</srcmd5>
+    <version>2.8.18</version>
+    <time>1340183251</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="47" vrev="23">
+    <srcmd5>8ca43f12c3e27cd8a2549df8a8097469</srcmd5>
+    <version>2.8.18</version>
+    <time>1359108771</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>e0d80ef6b2dd03c038ed77dfe90a35e4</srcmd5>
+    <version>2.8.22</version>
+    <time>1362736129</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157656</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>eff9c22ff09fc26a49c8a5ba9ec54783</srcmd5>
+    <version>2.9.0</version>
+    <time>1371221048</time>
+    <user>coolo</user>
+    <comment>- update to version 2.9.0
+  * add new FascistCheckUser function
+- remove translation-fix.dif
+  * text changed - get translation via translation-update-upstream</comment>
+    <requestid>178064</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>eff9c22ff09fc26a49c8a5ba9ec54783</srcmd5>
+    <version>2.9.0</version>
+    <time>1379662154</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>eff9c22ff09fc26a49c8a5ba9ec54783</srcmd5>
+    <version>2.9.0</version>
+    <time>1409300680</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>127faa3bb3cbc8285ce0b4030cda2002</srcmd5>
+    <version>2.9.2</version>
+    <time>1420927487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280036</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>ca46713836361d372e802ecb51db58d9</srcmd5>
+    <version>2.9.2</version>
+    <time>1429186259</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295102</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>124c6f88ee68a591ac60fcd8616b96d7</srcmd5>
+    <version>2.9.5</version>
+    <time>1441726573</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328930</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>ca1783db3d413c3e1aa360111690ede7</srcmd5>
+    <version>2.9.5</version>
+    <time>1472245930</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch 0004-overflow-processing-long-words.patch
+  to fix a new buffer overflow identified together with bsc#992966.
+
+- Relabel patches:
+  cracklib-magic.diff -&amp;gt; 0001-cracklib-magic.diff
+  cracklib-2.9.2-visibility.patch -&amp;gt; 0002-cracklib-2.9.2-visibility.patch
+- Add patch 0003-overflow-processing-gecos.patch
+  to fix a buffer overflow in GECOS parser (bsc#992966 CVE-2016-6318) (forwarded request 419768 from guohouzuo)</comment>
+    <requestid>420987</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>5fb7f3abde96d781822eb60ef666c8ac</srcmd5>
+    <version>2.9.5</version>
+    <time>1482420811</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446547</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>e89a6268410e4f09d8c0b028a523ccaf</srcmd5>
+    <version>2.9.6</version>
+    <time>1510911378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541257</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>e0b8f14f5f1c4402af5295c4f12a66d5</srcmd5>
+    <version>2.9.6</version>
+    <time>1519844175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580257</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,14 @@
+<package name="perl-Lexical-Persistence" project="openSUSE:Factory">
+  <title>Persistent lexical variable values for arbitrary calls</title>
+  <description>Lexical::Persistence does a few things, all related. Note that all the
+behaviors listed here are the defaults. Subclasses can override nearly every
+aspect of Lexical::Persistence's behavior.
+
+Lexical::Persistence lets your code access persistent data through lexical
+variables. This example prints &quot;some value&quot; because the value of $x perists in
+the $lp object between setter() and getter().
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Lexical-Persistence"/>
+  <url>http://search.cpan.org/dist/Lexical-Persistence/</url>
+</package>

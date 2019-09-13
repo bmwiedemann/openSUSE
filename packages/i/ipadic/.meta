@@ -1,0 +1,5 @@
+<package name="ipadic" project="openSUSE:Factory">
+  <title>Standard Japanese Dictionary for ChaSen</title>
+  <description>Standard Japanese dictionary for ChaSen.</description>
+  <devel project="M17N" package="ipadic"/>
+</package>

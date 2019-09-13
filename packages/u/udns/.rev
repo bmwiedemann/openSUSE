@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90568b5a06a354ca174f3a9155266d68</srcmd5>
+    <version>0.4</version>
+    <time>1506108884</time>
+    <user>dimstar_suse</user>
+    <comment>This is needed (at least) by server:messaging/jabberd and server:proxy/simple-obfs, so it is probably better to have it in Factory.</comment>
+    <requestid>528085</requestid>
+  </revision>
+</revisionlist>

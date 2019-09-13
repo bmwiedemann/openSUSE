@@ -1,0 +1,408 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb81153f2fdd1bff09fa097e067e437c</srcmd5>
+    <version>10.2.2+git.1466113786.b5a7c56</version>
+    <time>1466814036</time>
+    <user>dimstar_suse</user>
+    <comment>Ring 2 package, needs recompile of libvirt plus the following dependencies need to be moved to Ring 2: leveldb, xmlstarlet, gperftools-devel, FastCGI-devel</comment>
+    <requestid>402874</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0616eec47ac166fc0d583ead640c2797</srcmd5>
+    <version>10.2.2+git.1466113786.b5a7c56</version>
+    <time>1468482587</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407910</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>451b56669d9cc8b2b1fe8aaa6f220f12</srcmd5>
+    <version>10.2.2+git.1468935528.7232e18</version>
+    <time>1469081861</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412242</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c1349732952b8fbcd55bef0de0c1870b</srcmd5>
+    <version>10.2.2+git.1470069142.b15328c</version>
+    <time>1470413807</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416458</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>94759dc1e35e9997f030791e4caec903</srcmd5>
+    <version>10.2.2+git.1470776886.38cd6cb</version>
+    <time>1471428306</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419378</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>963cdd04c6127cd52bc35183a043b6de</srcmd5>
+    <version>10.2.2+git.1471622341.b446b70</version>
+    <time>1471853249</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>420579</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f59880dba5f86bbfa450c0e05ed3d0c0</srcmd5>
+    <version>11.0.0+git.1472455009.a17726c</version>
+    <time>1472595038</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423609</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8ac626e15a99875d1ab6324f51808093</srcmd5>
+    <version>12.0.0+git.1489159457.410e200</version>
+    <time>1489415462</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478533</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ce1a642cc9f457d68876997f95bfb35c</srcmd5>
+    <version>12.0.1+git.1491557762.4e47e9f</version>
+    <time>1491895818</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486365</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>af02e8c805c1d3043cc1b7a26d135f89</srcmd5>
+    <version>12.0.2+git.1493295295.8c88dc6</version>
+    <time>1493880706</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491634</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>154088fb1b30748c3c0e301af97002da</srcmd5>
+    <version>12.0.3+git.1495798013.23dd2b67dc</version>
+    <time>1495883378</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498461</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>12d4d06fe8da59cac69e16c969d0223f</srcmd5>
+    <version>12.0.3+git.1496909744.9f667dc335</version>
+    <time>1497603170</time>
+    <user>dimstar_suse</user>
+    <comment>drop old tarball (forwarded request 501861 from smithfarm)</comment>
+    <requestid>501862</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>75bc65bcaad2dec413f650ce462c9106</srcmd5>
+    <version>12.0.3+git.1498202776.b806032985</version>
+    <time>1498286061</time>
+    <user>dimstar_suse</user>
+    <comment>SES5 Milestone 7 (forwarded request 505854 from smithfarm)</comment>
+    <requestid>505855</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7285c8b5f5b5169f75da1edf619a0e0e</srcmd5>
+    <version>12.1.0+git.1498654198.20d6a47cc9</version>
+    <time>1498840885</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate several python build deps (forwarded request 506875 from smithfarm)</comment>
+    <requestid>506876</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9e059abcdbfad896a29180c74a7957e0</srcmd5>
+    <version>12.1.0+git.1499090920.2c11b88d14</version>
+    <time>1499754783</time>
+    <user>dimstar_suse</user>
+    <comment>latest upstream master (forwarded request 507944 from smithfarm)</comment>
+    <requestid>507945</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>13a98fac361268032e2d8ee816ff10b1</srcmd5>
+    <version>12.1.1+git.1500447879.e5aac115d7</version>
+    <time>1501406718</time>
+    <user>dimstar_suse</user>
+    <comment>Upstream 12.1.1 release (forwarded request 511396 from smithfarm)</comment>
+    <requestid>511397</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a1c3fd0f0a8a38e1f30ee5fe724beb67</srcmd5>
+    <version>12.1.2+git.1501684697.aa6b0153ef</version>
+    <time>1502367024</time>
+    <user>maxlin_factory</user>
+    <comment>upstream v12.1.2 release candidate (forwarded request 514103 from smithfarm)</comment>
+    <requestid>514104</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>688afe9ef750cbf96924ff8d531ede8b</srcmd5>
+    <version>12.1.4+git.1502953626.155adb5253</version>
+    <time>1503481986</time>
+    <user>dimstar_suse</user>
+    <comment>ceph.spec: provide libxio 1.7 and obsolete libxio &amp;lt;= 1.7 (forwarded request 517309 from smithfarm)</comment>
+    <requestid>517310</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>780b5aac8ffabef1a7ae88efe77b3491</srcmd5>
+    <version>12.2.0+git.1504118058.706f78da1a</version>
+    <time>1504520207</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1053836 (forwarded request 519721 from smithfarm)</comment>
+    <requestid>519722</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4e1b30829f37d90026b3de175056aa4d</srcmd5>
+    <version>12.2.0+git.1505141259.1264bae1a8</version>
+    <time>1505331252</time>
+    <user>dimstar_suse</user>
+    <comment>Various bugfixes (forwarded request 523297 from smithfarm)</comment>
+    <requestid>523298</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>87730505587314557acd96cfb8e2f2d2</srcmd5>
+    <version>12.2.1+git.1507226092.b783a015b9</version>
+    <time>1507391292</time>
+    <user>dimstar_suse</user>
+    <comment>msg: reimplement sigpipe blocking (forwarded request 531976 from smithfarm)</comment>
+    <requestid>531977</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>531accb20c8a4f902322407012e170d7</srcmd5>
+    <version>12.2.1+git.1507910930.aea79b8b7a</version>
+    <time>1509035914</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535775</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9e06fc39115b4bf9425e407a4f10f31f</srcmd5>
+    <version>12.2.1+git.1509128342.9347aa6662</version>
+    <time>1510321083</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>538841</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>157b5c28da9d480751339b73cd3d5352</srcmd5>
+    <version>12.2.1+git.1510221942.af9ea5e715</version>
+    <time>1511086159</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>542252</requestid>
+  </revision>
+  <revision rev="25" vrev="3535">
+    <srcmd5>53a78ad3bcaef1cc249bdd6ff2c65b8b</srcmd5>
+    <version>13.0.0</version>
+    <time>1513109738</time>
+    <user>dimstar_suse</user>
+    <comment>13.0.0 (forwarded request 545706 from smithfarm)</comment>
+    <requestid>545707</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c8d5fdc25ab46c699f294aea6e5906c4</srcmd5>
+    <version>13.0.0.5171+g4d4101fe78</version>
+    <time>1517668659</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1076403 (forwarded request 570618 from smithfarm)</comment>
+    <requestid>570620</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e4214e1135e42ba15c00395c600b2f3a</srcmd5>
+    <version>13.0.1.1567+gae149ea5f9</version>
+    <time>1518426733</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>574620</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>325bd70e4d101e3efdb39da46f11ec17</srcmd5>
+    <version>13.0.1.1987+g4a523803f8</version>
+    <time>1518950378</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1080758 (forwarded request 577275 from smithfarm)</comment>
+    <requestid>577276</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>81b2cd093bfefd278c9bd4da76975138</srcmd5>
+    <version>13.0.1.2078+g85df538001</version>
+    <time>1519218560</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1081836 (forwarded request 578435 from smithfarm)</comment>
+    <requestid>578436</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5958e956eb6c0b2d35c59a340e2ef443</srcmd5>
+    <version>13.0.1.3023+g71b0480e48</version>
+    <time>1521405761</time>
+    <user>dimstar_suse</user>
+    <comment>mimic-dev2 (forwarded request 588027 from smithfarm)</comment>
+    <requestid>588028</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6b9dc5bd6e26c6adfc9ede2fe47b3e6c</srcmd5>
+    <version>13.0.1.3204+g17e0216271</version>
+    <time>1522058827</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1086017 (forwarded request 589595 from smithfarm)</comment>
+    <requestid>589596</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3f301ca1d1058b0c4eb8331eeeeafc31</srcmd5>
+    <version>13.0.2.984+g852d3f1411</version>
+    <time>1524400260</time>
+    <user>dimstar_suse</user>
+    <comment>13.0.2-984 (forwarded request 597000 from smithfarm)</comment>
+    <requestid>597001</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>310930fbd91dba728cb1938a03635b8d</srcmd5>
+    <version>13.0.2.1874+ge31585919b</version>
+    <time>1525208404</time>
+    <user>dimstar_suse</user>
+    <comment>13.0.2-1874 (forwarded request 601838 from smithfarm)</comment>
+    <requestid>601839</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8993de5d8f70e307f72fbbb51c986886</srcmd5>
+    <version>13.2.0.39+geb7f429568</version>
+    <time>1528492132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614486</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d73e254e378c2496564e37aecaa913eb</srcmd5>
+    <version>13.2.0.210+g0e990e900d</version>
+    <time>1531946093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v13.2.0-210-g0e990e900d:
+  + based on upstream mimic 4ed78ecf2f27aae1e9eb27f83611285ec7445ebd
+    * bsc#1099162, CVE-2018-10861
+    * bsc#1096748, CVE-2018-1128, CVE-2018-1129 
+  + increase memory constraint for build workers after builds started
+    failing on workers with exactly 8G of RAM (&quot;free -h&quot; reports
+    7.8 GiB for these workers) (forwarded request 622021 from smithfarm)</comment>
+    <requestid>622065</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>01d79812d5f89f2db30bedc29b80981b</srcmd5>
+    <version>14.0.0.4389+g4c34d15e48</version>
+    <time>1541666557</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1113946 - please test in openSUSE:Factory:Staging:C (forwarded request 645861 from smithfarm)</comment>
+    <requestid>645862</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>25f1fb2485a015a61f6c8562627893d1</srcmd5>
+    <version>14.0.1.1555+g42662f72f4</version>
+    <time>1545222452</time>
+    <user>dimstar_suse</user>
+    <comment>mention bsc#1118611 in changes file (forwarded request 657241 from smithfarm)</comment>
+    <requestid>657242</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>21e6d5e8c277a577c1c4972a1397954d</srcmd5>
+    <version>14.0.1.3346+g0364ec8d2f</version>
+    <time>1549311876</time>
+    <user>coolo</user>
+    <comment>SES6 M8 (forwarded request 670292 from smithfarm)</comment>
+    <requestid>670293</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>68d3d7713b85ddc7a4fb76428295f816</srcmd5>
+    <version>14.1.0.559+gf1a72cff25</version>
+    <time>1552048090</time>
+    <user>dimstar_suse</user>
+    <comment>revert spec file munging (forwarded request 681477 from smithfarm)</comment>
+    <requestid>681478</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e3b27972bfd2d885d17a5fe1828cd84b</srcmd5>
+    <version>14.2.0.300+gacd2f2b9e1</version>
+    <time>1553435836</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1129921 (forwarded request 687167 from smithfarm)</comment>
+    <requestid>687168</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>be7d3db0112ce686646b469bf64b215d</srcmd5>
+    <version>14.2.0.465+gdfed19b089</version>
+    <time>1555053068</time>
+    <user>dimstar_suse</user>
+    <comment>M13 candidate (forwarded request 692560 from smithfarm)</comment>
+    <requestid>692562</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>55965052c04a237640393474b2724a46</srcmd5>
+    <version>14.2.1.345+g040ffffe0e</version>
+    <time>1556914956</time>
+    <user>dimstar_suse</user>
+    <comment>M14 candidate (forwarded request 699730 from smithfarm)</comment>
+    <requestid>699731</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>bcb53a6a82937f60e56d908ac3ee424f</srcmd5>
+    <version>14.2.1.431+gd032e5dd80</version>
+    <time>1558426941</time>
+    <user>dimstar_suse</user>
+    <comment>M15 candidate (forwarded request 702843 from smithfarm)</comment>
+    <requestid>702844</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e54289239d16f4a1472f27d3697c82d8</srcmd5>
+    <version>14.2.1.448+g1bd10a856f</version>
+    <time>1558783218</time>
+    <user>dimstar_suse</user>
+    <comment>M16 candidate (forwarded request 704485 from smithfarm)</comment>
+    <requestid>704486</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>306ad89ad5dc3d3967c83fce817c8140</srcmd5>
+    <version>14.2.1.463+g99339b576a</version>
+    <time>1559481447</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1124957 (forwarded request 706653 from smithfarm)</comment>
+    <requestid>706654</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6655c784d50767916030f9584e07f047</srcmd5>
+    <version>14.2.1.468+g994fd9e0cc</version>
+    <time>1560337633</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1136110 (forwarded request 707781 from smithfarm)</comment>
+    <requestid>707782</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>264b0644b30672128ad4e2b120bd76e9</srcmd5>
+    <version>14.2.1.469+g454d851f0a</version>
+    <time>1562925550</time>
+    <user>dimstar_suse</user>
+    <comment>add ceph-dashboard-e2e subpackage, drop redundant systemd BuildRequires (forwarded request 714461 from smithfarm)</comment>
+    <requestid>714462</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a44db97183e47dedff400a2049e784aa</srcmd5>
+    <version>14.2.1.475+g83b977ffbd</version>
+    <time>1563259193</time>
+    <user>dimstar_suse</user>
+    <comment>remove SuSEfirewall2 (forwarded request 714891 from smithfarm)</comment>
+    <requestid>714892</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>da2fea07e2eca7b517942b2924bdfe73</srcmd5>
+    <version>14.2.2.348+gf6da3d1d18</version>
+    <time>1564575324</time>
+    <user>dimstar_suse</user>
+    <comment>Upstream v14.2.2 release (forwarded request 718804 from smithfarm)</comment>
+    <requestid>718805</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6908419a80b7595ef6ed4555acde4c85</srcmd5>
+    <version>14.2.2.354+g8878cf2360</version>
+    <time>1567423356</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1145093, bsc#1137189 (forwarded request 727038 from smithfarm)</comment>
+    <requestid>727039</requestid>
+  </revision>
+</revisionlist>

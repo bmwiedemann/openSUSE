@@ -1,0 +1,196 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e61ba633a4edec2d1d27dad04741449</srcmd5>
+    <version>0.1.1</version>
+    <time>1261831222</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxtask based on submit request 26290 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fd54b16f5e0f19c847869ba54b9fe223</srcmd5>
+    <version>0.1.1</version>
+    <time>1268924882</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e1f8d2b128b894a7d43ce8ecbb1bee6f</srcmd5>
+    <version>0.1.2</version>
+    <time>1270599469</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxtask based on submit request 37140 from user anubisg1
+</comment>
+    <requestid>37140</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>222248e3775dc2b234292adcf2f66c7e</srcmd5>
+    <version>0.1.3</version>
+    <time>1271372517</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxtask based on submit request 37810 from user anubisg1
+</comment>
+    <requestid>37810</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>55ec640379c7da8387ef256173e5aac6</srcmd5>
+    <version>0.1.3</version>
+    <time>1276468954</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxtask based on submit request 41370 from user anubisg1
+</comment>
+    <requestid>41370</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>55ec640379c7da8387ef256173e5aac6</srcmd5>
+    <version>0.1.3</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>55ec640379c7da8387ef256173e5aac6</srcmd5>
+    <version>0.1.3</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>55ec640379c7da8387ef256173e5aac6</srcmd5>
+    <version>0.1.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9064c57dea362a4518d9780f5ead7575</srcmd5>
+    <version>0.1.4</version>
+    <time>1304351853</time>
+    <user>darix</user>
+    <comment>New upstream version</comment>
+    <requestid>68802</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d1bf6b12ff621c587e562db760a98d60</srcmd5>
+    <version>0.1.4</version>
+    <time>1304351863</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 68802
+</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>f86c75f1ddda9fb54d3533e068b1f409</srcmd5>
+    <version>0.1.4</version>
+    <time>1317049514</time>
+    <user>oertel</user>
+    <comment>Fixed typos in lxtask.spec (forwarded request 84364 from aturrini)</comment>
+    <requestid>84832</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>bd4ae43a64eb3836fbccadb99118e466</srcmd5>
+    <version>0.1.4</version>
+    <time>1317049518</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 84832
+</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>bd4ae43a64eb3836fbccadb99118e466</srcmd5>
+    <version>0.1.4</version>
+    <time>1319182165</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>1e09f961a34306766ba6da8f39a8d7cb</srcmd5>
+    <version>0.1.4</version>
+    <time>1323175948</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94820 from coolo)</comment>
+    <requestid>94825</requestid>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>60e9430b1b1f8fc21289b5fabcaeb90d</srcmd5>
+    <version>0.1.4</version>
+    <time>1323192454</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>e7a53fcfcadee0b5c6464f7ef0f9aacb</srcmd5>
+    <version>0.1.4</version>
+    <time>1339352281</time>
+    <user>coolo</user>
+    <comment>- add libtool into BuildRequires
+
+- build with automake 1.12 (forwarded request 123944 from pgajdos)</comment>
+    <requestid>123947</requestid>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>e7a53fcfcadee0b5c6464f7ef0f9aacb</srcmd5>
+    <version>0.1.4</version>
+    <time>1340183683</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>e7a53fcfcadee0b5c6464f7ef0f9aacb</srcmd5>
+    <version>0.1.4</version>
+    <time>1359109421</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="15">
+    <srcmd5>ba3f794ffd58bda222d2d9f4fa5666df</srcmd5>
+    <version>0.1.4</version>
+    <time>1368450516</time>
+    <user>coolo</user>
+    <comment>- lxtask-automake-1.12.diff: allow future automake versions 
+  by simply not checking them in autogen.sh (forwarded request 174332 from elvigia)</comment>
+    <requestid>174935</requestid>
+  </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>ba3f794ffd58bda222d2d9f4fa5666df</srcmd5>
+    <version>0.1.4</version>
+    <time>1379663234</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="19">
+    <srcmd5>ba3f794ffd58bda222d2d9f4fa5666df</srcmd5>
+    <version>0.1.4</version>
+    <time>1409301839</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d687185f7381ba40c644fc0bb6ca6332</srcmd5>
+    <version>0.1.5</version>
+    <time>1410967636</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>249906</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3df17ce5f52f73f9fd6584951a4ee378</srcmd5>
+    <version>0.1.6</version>
+    <time>1414140483</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258147</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7aafb638433a36e51a6bdb08cdd7a6ff</srcmd5>
+    <version>0.1.7</version>
+    <time>1484232975</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448644</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3de7e1fa37a8076bd551ed1259a10224</srcmd5>
+    <version>0.1.8</version>
+    <time>1540544984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644510</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,704 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>9630ffffd89b831e694278d4db990dd3</srcmd5>
+    <version>4.1.9</version>
+    <time>1197517764</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>263256703e934a79360366980082e05b</srcmd5>
+    <version>4.1.11</version>
+    <time>1203427022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ba8be0dd5fdf2505adecd6e5058b3bd</srcmd5>
+    <version>4.2.1</version>
+    <time>1209134818</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="8">
+    <srcmd5>ff3022e2264753aa36622aea172abd2c</srcmd5>
+    <version>4.2.1</version>
+    <time>1211424113</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="16">
+    <srcmd5>c047f43d52993f4a066c5a32912694e4</srcmd5>
+    <version>4.2.1</version>
+    <time>1215807359</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d516e27b5fb47a2e84a64ba73f78eec</srcmd5>
+    <version>4.2.6</version>
+    <time>1219921043</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ebe57be9ebcdb8094487fd17d998883c</srcmd5>
+    <version>4.2.6</version>
+    <time>1219967502</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>f49c41ba5fcf5a18c84fc02b087c3f05</srcmd5>
+    <version>4.2.6</version>
+    <time>1224005061</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4c964fba3b70d53349eb2328c8ef7e26</srcmd5>
+    <version>4.2.8</version>
+    <time>1224694236</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3a7930c43cccf9bc06e2f9a990c5006f</srcmd5>
+    <version>4.2.14</version>
+    <time>1238691098</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>134441d45e698121776da07bc9714f64</srcmd5>
+    <version>4.2.14</version>
+    <time>1244408463</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0076de5159c708cf8f7fb8b899f8ee50</srcmd5>
+    <version>4.2.14</version>
+    <time>1244451850</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b13aedb79352a875c0939f1111102039</srcmd5>
+    <version>4.3.2</version>
+    <time>1247608597</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d12281d3596d5db46f3a2fda27920d52</srcmd5>
+    <version>4.3.3</version>
+    <time>1248987609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5378100e474694bc2066fb7e03614a10</srcmd5>
+    <version>4.3.4</version>
+    <time>1251910796</time>
+    <user>autobuild</user>
+    <comment>Copy from network/strongswan based on submit request 19338 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>144870d7856a60e370179d91ecbe1478</srcmd5>
+    <version>4.3.4</version>
+    <time>1252024038</time>
+    <user>autobuild</user>
+    <comment>Copy from network/strongswan based on submit request 19857 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>520c8d70ce0b31cf178fb69d1a90786e</srcmd5>
+    <version>4.3.4</version>
+    <time>1253733500</time>
+    <user>autobuild</user>
+    <comment>Copy from network/strongswan based on submit request 20845 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>520c8d70ce0b31cf178fb69d1a90786e</srcmd5>
+    <version>4.3.4</version>
+    <time>1253733500</time>
+    <user>autobuild</user>
+    <comment>Copy from network/strongswan based on submit request 20845 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>205262ae0f7bb287aae641f1e5365ec7</srcmd5>
+    <version>4.3.6</version>
+    <time>1267786288</time>
+    <user>autobuild</user>
+    <comment>Copy from network:vpn/strongswan based on submit request 33800 from user mtomaschewski
+</comment>
+    <requestid>33800</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>4bea70e538ab420b61743ddebf348e63</srcmd5>
+    <version>4.3.6</version>
+    <time>1268926241</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fab35d93b96671eb85a5f87776ec6257</srcmd5>
+    <version>4.4.0</version>
+    <time>1275322957</time>
+    <user>autobuild</user>
+    <comment>Copy from network:vpn/strongswan based on submit request 40896 from user mtomaschewski
+</comment>
+    <requestid>40896</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>fcb39cdf80a6e648725db5949d5aebc3</srcmd5>
+    <version>4.4.0</version>
+    <time>1278082038</time>
+    <user>autobuild</user>
+    <comment>Copy from network:vpn/strongswan based on submit request 42417 from user mtomaschewski
+</comment>
+    <requestid>42417</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>fcb39cdf80a6e648725db5949d5aebc3</srcmd5>
+    <version>4.4.0</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>fcb39cdf80a6e648725db5949d5aebc3</srcmd5>
+    <version>4.4.0</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>80371d344cd099d88f49db17245ec9b2</srcmd5>
+    <version>4.4.0</version>
+    <time>1281660058</time>
+    <user>autobuild</user>
+    <comment>Copy from network:vpn/strongswan based on submit request 45248 from user mtomaschewski
+</comment>
+    <requestid>45248</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fff08a8ee3c47ae8123947ba324ba44d</srcmd5>
+    <version>4.5.0</version>
+    <time>1290095786</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53144 from user mtomaschewski
+</comment>
+    <requestid>53144</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>7e621ec1a382c5a20a0e5d36905e49a0</srcmd5>
+    <version>4.5.0</version>
+    <time>1290095791</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53144
+</comment>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>dfcdd42088e75b7638404e993a96ff9d</srcmd5>
+    <version>4.5.0</version>
+    <time>1290427174</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53641 from user mtomaschewski
+</comment>
+    <requestid>53641</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>0f6643c891d35ef8d32b4059b518236e</srcmd5>
+    <version>4.5.0</version>
+    <time>1290427185</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 53641
+</comment>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>0f6643c891d35ef8d32b4059b518236e</srcmd5>
+    <version>4.5.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1eaab4d108e8bf7fba7eabe1130387ed</srcmd5>
+    <version>4.5.2</version>
+    <time>1309253110</time>
+    <user>saschpe</user>
+    <comment>update to current version</comment>
+    <requestid>74669</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>0cfd60a94b3df65d1db0c971349eae2e</srcmd5>
+    <version>4.5.2</version>
+    <time>1309253123</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74669
+</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4e74716c4a4b2b4943d987ba0fd3c35c</srcmd5>
+    <version>4.5.3</version>
+    <time>1315564014</time>
+    <user>saschpe</user>
+    <comment>update to 4.5.3</comment>
+    <requestid>81608</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>e2d3df3bff74854afd41d609a119cc7c</srcmd5>
+    <version>4.5.3</version>
+    <time>1315564027</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81608
+</comment>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>0fafa6f261834594cd6440df0c03684e</srcmd5>
+    <version>4.5.3</version>
+    <time>1315909946</time>
+    <user>saschpe</user>
+    <comment>- remove _service file, too fragile
+
+- Fixed version in last changelog entry
+
+- Updated to strongSwan 4.5.3 release, changes overview since 4.5.2:</comment>
+    <requestid>81895</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>5bd62c33ae9cd50f458b92f6297ee9ec</srcmd5>
+    <version>4.5.3</version>
+    <time>1315909954</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81895
+</comment>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>5bd62c33ae9cd50f458b92f6297ee9ec</srcmd5>
+    <version>4.5.3</version>
+    <time>1319182493</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>846882d8c704d4dd7a917ef0cad34465</srcmd5>
+    <version>4.5.3</version>
+    <time>1323194771</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="39" vrev="8">
+    <srcmd5>84168a3073f824a94a0b0ba843a6ac34</srcmd5>
+    <version>4.5.3</version>
+    <time>1324831311</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97737 from coolo)</comment>
+    <requestid>97889</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c64b0c43e92ded9cd4e84d416691ecef</srcmd5>
+    <version>4.6.1</version>
+    <time>1329400903</time>
+    <user>coolo</user>
+    <comment>update to 4.6.1, fixed glib.h build error</comment>
+    <requestid>105223</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>92aa42a2dd18ac48d6eb9b26c079730a</srcmd5>
+    <version>4.6.2</version>
+    <time>1331900775</time>
+    <user>coolo</user>
+    <comment>update to 4.6.2 (fwd of rq 107821)</comment>
+    <requestid>109123</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c1186df9a177a35f33383551e3c877c6</srcmd5>
+    <version>4.6.3</version>
+    <time>1336653258</time>
+    <user>coolo</user>
+    <comment>update to strongswan-4.6.3</comment>
+    <requestid>120579</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>876cd7db9b53f1175cf80103caf476b4</srcmd5>
+    <version>4.6.4</version>
+    <time>1338528256</time>
+    <user>coolo</user>
+    <comment>update to 4.6.4 / bnc#761325, CVE-2012-2388</comment>
+    <requestid>123120</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>876cd7db9b53f1175cf80103caf476b4</srcmd5>
+    <version>4.6.4</version>
+    <time>1340184243</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>7c137551f7e061c7e2b7e049bd7cf24d</srcmd5>
+    <version>4.6.4</version>
+    <time>1347348014</time>
+    <user>coolo</user>
+    <comment>charon keying daemon start failure with openssl (bnc#779038)</comment>
+    <requestid>133236</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5ca1de212ebfec0906d1668726c4cadc</srcmd5>
+    <version>5.0.1</version>
+    <time>1352408044</time>
+    <user>namtrac</user>
+    <comment>- Updated to strongSwan 5.0.1 release. Changes digest:
+  - Introduced the sending of the standard IETF Assessment Result
+    PA-TNC attribute by all strongSwan Integrity Measurement Verifiers.
+  - Extended PTS Attestation IMC/IMV pair to provide full evidence of
+    the Linux IMA measurement process. All pertinent file information
+    of a Linux OS can be collected and stored in an SQL database.
+  - The PA-TNC and PB-TNC protocols can now process huge data payloads.
+  - The xauth-pam backend can authenticate IKEv1 XAuth and Hybrid
+    authenticated clients against any PAM service.
+  - The new unity plugin brings support for some parts of the IKEv1
+    Cisco Unity Extensions.
+  - The kernel-netlink plugin supports the new strongswan.conf option
+    charon.install_virtual_ip_on.
+  - Job handling in controller_t was fixed, which occasionally caused
+    crashes on ipsec up/down.
+  - Fixed transmission EAP-MSCHAPv2 user name if it contains a domain
+    part.
+  Changes digest from strongSwan 5.0.0 version:
+  * The charon IKE daemon gained experimental support for the IKEv1
+    protocol. Pluto has been removed from the 5.x series.
+  * The NetworkManager charon plugin of previous releases is now
+    provided by a separate executable (charon-nm) and it should work
+    again with NM 0.9.
+  * scepclient was updated and it now works fine with Windows Server
+    2008 R2.
+- Adopted spec file, enabled several plugins, e.g.: ccm, certexpire,
+  coupling, ctr, duplicheck, eap-dynamic, eap-peap, eap-tls, eap-tnc,
+  eap-ttls, gcm, nonce, radattr, tnc, tnccs, unity, xauth-eap and pam.
+- Changed to install strongswan.service with alias to ipsec.service
+  instead of the /etc/init.d/ipsec init script on openSUSE &gt; 12.2.</comment>
+    <requestid>139871</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>9139a30e03e585a28a39000a35de6c3c</srcmd5>
+    <version>5.0.1</version>
+    <time>1353266830</time>
+    <user>namtrac</user>
+    <comment>- Fix systemd unit dir (forwarded request 141529 from elvigia)</comment>
+    <requestid>141625</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>ce4a80c03dbd755cb84e3f6435bc4a0c</srcmd5>
+    <version>5.0.1</version>
+    <time>1355480287</time>
+    <user>coolo</user>
+    <comment>Verify GPG signature: Perform build-time offline GPG verification.
+Please verify that included keyring matches your needs.
+For manipulation with the offline keyring, please use gpg-offline tool from openSUSE:Factory, devel-tools-building or Base:System.
+See the man page and/or /usr/share/doc/packages/gpg-offline/PACKAGING.HOWTO.
+
+If you need to build your package for older products and don't want to mess spec file with ifs, please follow PACKAGING.HOWTO:
+you can link or aggregate gpg-offline from
+devel:tools:building or use following trick with &quot;osc meta prjconf&quot;:
+
+--- Cut here ----
+%if 0%{?suse_version} &amp;lt;= 1220
+Substitute: gpg-offline
+%endif
+
+Macros:
+%gpg_verify(dnf) \
+%if 0%{?suse_version} &amp;gt; 1220\
+echo &quot;WARNING: Using %%gpg_verify macro from prjconf, not from gpg-offline package.&quot;\
+gpg-offline --directory=&quot;%{-d:%{-d*}}%{!-d:%{_sourcedir}}&quot; --package=&quot;%{-n:%{-n*}}%{!-n:%{name}}&quot;&quot;%{-f: %{-f*}}&quot; --verify %{**}\
+%else\
+echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping %{**} GPG signature verification!&quot;\
+%endif\
+%nil
+----------------- (forwarded request 143934 from sbrabec)</comment>
+    <requestid>144037</requestid>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>ce4a80c03dbd755cb84e3f6435bc4a0c</srcmd5>
+    <version>5.0.1</version>
+    <time>1359110446</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>1472bc1632a91b6dd9827afb4f3bbe56</srcmd5>
+    <version>5.0.4</version>
+    <time>1367488895</time>
+    <user>coolo</user>
+    <comment>- Updated to strongSwan 5.0.4 release (bnc#815236, CVE-2013-2944):
+  - Fixed a security vulnerability in the openssl plugin which was
+    reported by Kevin Wojtysiak.  The vulnerability has been registered
+    as CVE-2013-2944. Before the fix, if the openssl plugin's ECDSA
+    signature verification was used, due to a misinterpretation of the
+    error code returned by the OpenSSL ECDSA_verify() function, an empty
+    or zeroed signature was accepted as a legitimate one. Refer to our
+    blog for details.
+  - The handling of a couple of other non-security relevant OpenSSL
+    return codes was fixed as well.
+  - The tnc_ifmap plugin now publishes virtual IPv4 and IPv6 addresses
+    via its TCG TNC IF-MAP 2.1 interface.
+  - The charon.initiator_only strongswan.conf option causes charon to
+    ignore IKE initiation requests.
+  - The openssl plugin can now use the openssl-fips library.
+  The version 5.0.3 provides new ipseckey plugin, enabling authentication
+  based on trustworthy public keys stored as IPSECKEY resource records in
+  the DNS and protected by DNSSEC and new openssl plugin using the AES-NI
+  accelerated version of AES-GCM if the hardware supports it.
+  See http://wiki.strongswan.org/projects/strongswan/wiki/Changelog50
+  for a list of all changes since the 5.0.1 release.</comment>
+    <requestid>173989</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>8d5aa6d4815486143d8a98011c672532</srcmd5>
+    <version>5.1.0</version>
+    <time>1375728910</time>
+    <user>coolo</user>
+    <comment>- Updated to strongSwan 5.1.0 release (bnc#833278, CVE-2013-5018)</comment>
+    <requestid>185964</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>8d5aa6d4815486143d8a98011c672532</srcmd5>
+    <version>5.1.0</version>
+    <time>1379664740</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>1b7f9b3083b986e8e38383740c8fa852</srcmd5>
+    <version>5.1.1</version>
+    <time>1383324260</time>
+    <user>scarabeus_factory</user>
+    <comment>- Updated to strongSwan 5.1.1 minor release addressing two security
+  fixes (bnc#847506,CVE-2013-6075, bnc#847509,CVE-2013-6076):
+  - Fixed a denial-of-service vulnerability and potential authorization
+    bypass triggered by a crafted ID_DER_ASN1_DN ID payload. The cause
+    is an insufficient length check when comparing such identities. The
+    vulnerability has been registered as CVE-2013-6075.
+  - Fixed a denial-of-service vulnerability triggered by a crafted IKEv1
+    fragmentation payload. The cause is a NULL pointer dereference. The
+    vulnerability has been registered as CVE-2013-6076.
+  - The lean stand-alone pt-tls-client can set up a RFC 6876 PT-TLS
+    session with a strongSwan policy enforcement point which uses the
+    tnc-pdp charon plugin.
+  - The new TCG TNC SWID IMC/IMV pair supports targeted SWID requests
+    for either full SWID Tag or concise SWID Tag ID inventories.
+  - The XAuth backend in eap-radius now supports multiple XAuth
+    exchanges for different credential types and display messages.
+    All user input gets concatenated and verified with a single
+    User-Password RADIUS attribute on the AAA. With an AAA supporting
+    it, one for example can implement Password+Token authentication with
+    proper dialogs on iOS and OS X clients.  - charon supports IKEv1 Mode
+    Config exchange in push mode. The ipsec.conf modeconfig=push option
+    enables it for both client and server, the same way as pluto used it.
+  - Using the &quot;ah&quot; ipsec.conf keyword on both IKEv1 and IKEv2
+    connections, charon can negotiate and install Security Associations
+    integrity-protected by the Authentication Header protocol. Supported
+    are plain AH(+IPComp) SAs only, but not the deprecated RFC2401 style
+    ESP+AH bundles.
+  [...]
+- Adjusted file lists: this version installs the pki utility and manuals
+  in common /usr directories and additional ipsec/pt-tls-client helper.</comment>
+    <requestid>205541</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>eb53dc0a909ca7cbf9ce3640e751a5f8</srcmd5>
+    <version>5.1.3</version>
+    <time>1397736587</time>
+    <user>scarabeus_factory</user>
+    <comment>- Updated to strongSwan 5.1.3 providing the following changes:
+  - Fixed an authentication bypass vulnerability triggered by rekeying
+    an unestablished IKEv2 SA while it gets actively initiated. This
+    allowed an attacker to trick a peer's IKE_SA state to established,
+    without the need to provide any valid authentication credentials.
+    (CVE-2014-2338, bnc#870572).
+  - The acert plugin evaluates X.509 Attribute Certificates. Group
+    membership information encoded as strings can be used to fulfill
+    authorization checks defined with the rightgroups option.
+    Attribute Certificates can be loaded locally or get exchanged in
+    IKEv2 certificate payloads.
+  - The pki command gained support to generate X.509 Attribute
+    Certificates using the --acert subcommand, while the --print
+    command supports the ac type. The openac utility has been removed
+    in favor of the new pki functionality.
+  - The libtls TLS 1.2 implementation as used by EAP-(T)TLS and other
+    protocols has been extended by AEAD mode support, currently limited
+    to AES-GCM.
+  - Fixed an issue where CRL/OCSP trustchain validation broke enforcing
+    CA constraints
+  - Limited OCSP signing to specific certificates to improve performance
+  - authKeyIdentifier is not added to self-signed certificates anymore
+  - Fixed the comparison of IKE configs if only the cipher suites were
+    different
+
+- Updated to strongSwan 5.1.2 providing the following changes:
+  - A new default configuration file layout is introduced. The new
+    default strongswan.conf file mainly includes config snippets from
+    the strongswan.d and strongswan.d/charon directories (the latter
+    containing snippets for all plugins). The snippets, with commented
+    defaults, are automatically generated and installed, if they don't
+    exist yet. Also installed in $prefix/share/strongswan/templates so
+    existing files can be compared to the current defaults.</comment>
+    <requestid>230123</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>8ed223a669cbf041848ab8c548c52eff</srcmd5>
+    <version>5.1.3</version>
+    <time>1404157522</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238850</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>b74c0ffc132ee677689f4e9c56dcf64b</srcmd5>
+    <version>5.1.3</version>
+    <time>1405971628</time>
+    <user>coolo</user>
+    <comment>- disable gcrypt plugin by default, so it will only use openssl
+  fate#316931 [+strongswan-fips-disablegcrypt.patch]
+- enable fips mode 2</comment>
+    <requestid>241746</requestid>
+  </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>b74c0ffc132ee677689f4e9c56dcf64b</srcmd5>
+    <version>5.1.3</version>
+    <time>1409303423</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="58" vrev="6">
+    <srcmd5>ba7dd4daa3d2cead92d35613c2b8f058</srcmd5>
+    <version>5.1.3</version>
+    <time>1416994433</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated strongswan-hmac package description (bsc#856322).
+
+- Disabled explicit gpg validation; osc source_validator does it.
+- Guarded fipscheck and hmac package in the spec file for &gt;13.1.
+
+- Added generation of fips hmac hash files using fipshmac utility
+  and a _fipscheck script to verify binaries/libraries/plugings
+  shipped in the strongswan-hmac package.
+  With enabled fips in the kernel, the ipsec script will call it
+  before any action or in a enforced/manual &quot;ipsec _fipscheck&quot; call.
+  Added config file to load openssl and kernel af-alg plugins, but
+  not all the other modules which provide further/alternative algs.
+  Applied a filter disallowing non-approved algorithms in fips mode.
+  (fate#316931,bnc#856322).
+  [+ strongswan_fipscheck.patch, strongswan_fipsfilter.patch]
+- Fixed file list in the optional (disabled) strongswan-test package.
+- Fixed build of the strongswan built-in integrity checksum library
+  and enabled building it only on architectures tested to work.
+- Fix to use bug number 897048 instead 856322 in last changes entry.
+- Applied an upstream patch reverting to store algorithms in the
+  registration order again as ordering them by identifier caused
+  weaker algorithms to be proposed first by default (bsc#897512).
+  [+0001-restore-registration-algorithm-order.bug897512.patch]
+
+- Re-enabled gcrypt plugin and reverted to not enforce fips again
+  as this breaks gcrypt and openssl plugins when the fips pattern
+  option is not installed (fate#316931,bnc#856322).
+  [- strongswan-fips-disablegcrypt.patch]
+- Added empty strongswan-hmac package supposed to provide fips hmac
+  files and enforce fips compliant operation later (bnc#856322).</comment>
+    <requestid>262968</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>fc9e64c86278b0d19a22c907fb3677a7</srcmd5>
+    <version>5.2.2</version>
+    <time>1425031178</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>287701</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>8e68322ddd5a2b219a89b735f36c438b</srcmd5>
+    <version>5.2.2</version>
+    <time>1433232725</time>
+    <user>dimstar_suse</user>
+    <comment>- Applied upstream fix for a DoS and potential remote code execution
+  vulnerability through payload type (bsc#931272,CVE-2015-3991)
+  [+ strongswan-5.2.2-5.3.0_unknown_payload.patch]</comment>
+    <requestid>309675</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>8eb8102de5659d65f3b19ae3761a7496</srcmd5>
+    <version>5.2.2</version>
+    <time>1433832575</time>
+    <user>dimstar_suse</user>
+    <comment>- Applied upstream fix for a rogue servers vulnerability, that may
+  enable rogue servers able to authenticate itself with certificate
+  issued by any CA the client trusts, to gain user credentials from
+  a client in certain IKEv2 setups (bsc#933591,CVE-2015-4171).
+  [+ 0006-strongswan-5.1.0-5.3.1_enforce_remote_auth.patch]
+- Fix to apply unknown_payload patch if fips is disabled (&lt;= 13.1)
+  and renamed it to use number prefix corresponding with patch nr.
+  [- strongswan-5.2.2-5.3.0_unknown_payload.patch,
+   + 0005-strongswan-5.2.2-5.3.0_unknown_payload.patch]</comment>
+    <requestid>311158</requestid>
+  </revision>
+  <revision rev="62" vrev="4">
+    <srcmd5>299dc03b87409292d57884b5baeffbd6</srcmd5>
+    <version>5.2.2</version>
+    <time>1447766591</time>
+    <user>dimstar_suse</user>
+    <comment>- Applied upstream fix for a authentication bypass vulnerability
+  in the eap-mschapv2 plugin (CVE-2015-8023,bsc#953817).
+  [+ 0007-strongswan-4.4.0-5.3.3_eap_mschapv2_state.patch]</comment>
+    <requestid>344762</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>7736e097ecd2012c260b6fa95fe1ac24</srcmd5>
+    <version>5.3.5</version>
+    <time>1480420228</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442527</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>7c66e97bd99b49f5c5fde49766dc6a15</srcmd5>
+    <version>5.5.3</version>
+    <time>1503593153</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514549</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>28641c786dd5ab028772fb179c64f27c</srcmd5>
+    <version>5.6.0</version>
+    <time>1504815313</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521289</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>7ce2724c7b81b5a8b0672080fda207ed</srcmd5>
+    <version>5.6.0</version>
+    <time>1518025270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update summaries and descriptions. Trim filler words and
+  author list.
+- Drop %if..%endif guards that are idempotent and do not affect
+  the build result.
+- Replace old $RPM_ shell variables. (forwarded request 534431 from jengelh)</comment>
+    <requestid>573411</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>f92a3731ddafe2f1875eb18a88efd0a7</srcmd5>
+    <version>5.6.0</version>
+    <time>1521904516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590079</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>ac66f5efe42bc83d44fdefe91942dc6b</srcmd5>
+    <version>5.6.2</version>
+    <time>1528492407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613646</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>90f093ecf61e18de12dbe2ab60e28716</srcmd5>
+    <version>5.6.3</version>
+    <time>1532161506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624096</requestid>
+  </revision>
+</revisionlist>

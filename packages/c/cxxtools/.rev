@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7e74c5332b8636cd81ce318b56152b5</srcmd5>
+    <version>2.2.1</version>
+    <time>1431668576</time>
+    <user>coolo</user>
+    <comment>Usefull package</comment>
+    <requestid>306083</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d376f3724851220277b31441eded7602</srcmd5>
+    <version>2.2.1</version>
+    <time>1484660107</time>
+    <user>dimstar_suse</user>
+    <comment>- set atomictype to pthread for aarch64
+
+- set atomictype on s390x to pthread</comment>
+    <requestid>449787</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>15270817f27fb64f1b12ff16d499be01</srcmd5>
+    <version>2.2.1</version>
+    <time>1567010112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726479</requestid>
+  </revision>
+</revisionlist>

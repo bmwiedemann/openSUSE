@@ -1,0 +1,160 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>618bfed2ed4ab4dc960b59e8dd0b69e1</srcmd5>
+    <version>0.5b1</version>
+    <time>1366793714</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>173004</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b7ec67643d9c4fc28d02abfd6bbc9709</srcmd5>
+    <version>0.5b2</version>
+    <time>1367487900</time>
+    <user>coolo</user>
+    <comment>- update to 0.5b2: 
+  * Changed the way datas of complex types are stored. In previous
+  versions, an attribute was added to the type for each attribute,
+  its name being the attribute name prefixed with ‘_’.
+  Starting with this version, a single attribute _wsme_dataholder
+  is added to the instance.
+  * Add a special type ‘HostRequest’ that allow a function to 
+  ask for the host framework request object in its arguments.
+  * Pecan adapter: Debug mode (which returns the exception 
+  tracebacks to the client) can be enabled by the pecan 
+  application configuration.
+  * Fix: the cornice adapter was not usable.
+  * Fix: Submodules of wsmeext were missing in the packages.
+  * Fix: The demo app was still depending on the WSME-Soap package (which has been merged into WSME in 0.5b1).
+  * Fix: A function with only on ‘body’ parameter would fail when being called.
+  * Fix: Missing arguments were poorly reported by the frameworks adapters. (forwarded request 173723 from dirkmueller)</comment>
+    <requestid>173782</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8041646551159c58db4317c4292dcad0</srcmd5>
+    <version>0.5b2</version>
+    <time>1378238774</time>
+    <user>coolo</user>
+    <comment>- add six-14-support.diff:
+  * Add support for Six 1.4+ (forwarded request 197135 from dirkmueller)</comment>
+    <requestid>197210</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8041646551159c58db4317c4292dcad0</srcmd5>
+    <version>0.5b2</version>
+    <time>1379664121</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>334e96645952b9bf02721e7c6c83c3c4</srcmd5>
+    <version>0.5b5</version>
+    <time>1380172474</time>
+    <user>coolo</user>
+    <comment>- (Build)Require python-ordereddict on SP3
+
+- update to 0.5b5:
+  * More packaging fixes.
+  * Allow non-default status code return with the pecan adapter
+  * Fix returning objects with object attributes set to None on rest-json
+  * Allow error details to be set on the Response object (experimental !).
+  * Fix: Content-Type header is not set anymore when the return type is None
+    on the pecan adapter.
+  * Use pbr instead of d2to1 (Julien Danjou).
+  * six &gt;= 1.4.0 support (Julien Danjou).
+- Drop six-14-support.diff: Merged upstream</comment>
+    <requestid>200581</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2e227c752616860e13673be2c6364c54</srcmd5>
+    <version>0.5b6</version>
+    <time>1382549184</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 0.5b6:
+  + Add improved support for HTTP response codes in cornice apps.
+  + Handle mandatory attributes
+  + Fix error code returned when None is used in an Enum
+  + Handle list and dict for body type in REST protocol
+  + Fix Sphinx for Python 3
+  + Add custom error code to ClientSideError
+  + Return a ClientSideError if unable to convert data
+  + Validate body when using Pecan
+- BuildRequire setuptools instead of distribute after upstream merge</comment>
+    <requestid>204315</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6aab9329365453833dcd76acd5e7bddb</srcmd5>
+    <version>0.6</version>
+    <time>1393394108</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>222237</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6aab9329365453833dcd76acd5e7bddb</srcmd5>
+    <version>0.6</version>
+    <time>1409302809</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b5574524f747b53f273d2b7d692a897b</srcmd5>
+    <version>0.6.1</version>
+    <time>1410795687</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249198</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>676e18742650920315632b9e63f3fd6b</srcmd5>
+    <version>0.6.4</version>
+    <time>1420833030</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280441</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0062431d14c8c42744e80ffc9d41e603</srcmd5>
+    <version>0.7.0</version>
+    <time>1433314158</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309864</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>39add6614711fefbeff8964f28fc4d3f</srcmd5>
+    <version>0.8.0</version>
+    <time>1441955069</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330315</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c35baabee0dd50c4754f929cc59e0bbd</srcmd5>
+    <version>0.9.2</version>
+    <time>1503999876</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518974</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>75dfb5926f7155b09112fb46987cb0b2</srcmd5>
+    <version>0.9.3</version>
+    <time>1536327598</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.3:
+  * Improve handling of :module: in wsme documenters
+  * Change flask restful module name
+  * fix a typo in documentation
+  * Fix (some) tests for modern flask and pep8</comment>
+    <requestid>633482</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>45b65bd22b4d83ee68b99f09390cc502</srcmd5>
+    <version>0.9.3</version>
+    <time>1544726710</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654070</requestid>
+  </revision>
+</revisionlist>

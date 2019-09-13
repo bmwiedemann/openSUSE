@@ -1,0 +1,18 @@
+<package name="perl-Data-Tumbler" project="openSUSE:Factory">
+  <title>Dynamic generation of nested combinations of variants</title>
+  <description>The tumble() method calls a sequence of 'provider' code references each of which returns a hash. The first provider is called and then, for each hash item it returns, the tumble() method recurses to call the next provider.
+
+The recursion continues until there are no more providers to call, at which point the consumer code reference is called. Effectively the providers create a tree of combinations and the consumer is called at the leafs of the tree.
+
+If a provider returns no items then that part of the tree is pruned. Further providers, if any, are not called and the consumer is not called.
+
+During a call to tumble() three values are passed down through the tree and into the consumer: path, context, and payload.
+
+The path and context are derived from the names and values of the hashes returned by the providers. Typically the path define the current &quot;path&quot; through the tree of combinations.
+
+The providers are passed the current path, context, and payload. The payload is cloned at each level of recursion so that any changes made to it by providers are only visible within the scope of the generated sub-tree.
+
+Note that although the example above shows the path, context and payload as array references, the tumbler code makes no assumptions about them. They can be any kinds of values.</description>
+  <devel project="devel:languages:perl" package="perl-Data-Tumbler"/>
+  <url>https://metacpan.org/release/Data-Tumbler</url>
+</package>

@@ -1,0 +1,310 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>b3ebe118567e9d3b84ebf1f0640840aa</srcmd5>
+    <version>1.41</version>
+    <time>1210387367</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="36">
+    <srcmd5>ca92d44bd00407d9c4c454a24d071cef</srcmd5>
+    <version>1.41</version>
+    <time>1219357607</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="50">
+    <srcmd5>8c745ffe9c3ced8752e4c867cdb7df6c</srcmd5>
+    <version>1.41</version>
+    <time>1221569391</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="51">
+    <srcmd5>1af844cee34cc7bd38883b6a882730bd</srcmd5>
+    <version>1.41</version>
+    <time>1222297484</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="52">
+    <srcmd5>c8bfb5a973f7ed6a0fe90af439105e7e</srcmd5>
+    <version>1.41</version>
+    <time>1229609617</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>47e22eb760c84504d2bc9cee1e322b30</srcmd5>
+    <version>1.45</version>
+    <time>1232842795</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7c8a303398d1562dba9fc3bd95d467b6</srcmd5>
+    <version>1.49</version>
+    <time>1246705870</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e3cf678338f2914a098423c25e96be79</srcmd5>
+    <version>1.49</version>
+    <time>1254798632</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/laptop-mode-tools based on submit request 21696 from user seife
+</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>e3cf678338f2914a098423c25e96be79</srcmd5>
+    <version>1.49</version>
+    <time>1254798632</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/laptop-mode-tools based on submit request 21696 from user seife
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>47b934ae731e61471a12d338ba7f09aa</srcmd5>
+    <version>1.53</version>
+    <time>1267142912</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/laptop-mode-tools based on submit request 33473 from user oertel
+</comment>
+    <requestid>33473</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8641e432b9ec8cf418ba4e30528ffc62</srcmd5>
+    <version>1.53</version>
+    <time>1268924462</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>8641e432b9ec8cf418ba4e30528ffc62</srcmd5>
+    <version>1.53</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>8641e432b9ec8cf418ba4e30528ffc62</srcmd5>
+    <version>1.53</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>6f84053613492d0d2a35f99df200d6c0</srcmd5>
+    <version>1.53</version>
+    <time>1292005894</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55205 from user msmeissn
+</comment>
+    <requestid>55205</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>8049d3aebc5bdea2cb645212399f7296</srcmd5>
+    <version>1.53</version>
+    <time>1292005904</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55205
+</comment>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>8049d3aebc5bdea2cb645212399f7296</srcmd5>
+    <version>1.53</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>daa5eae6e9d47f7bade3c1dbaabf7c0b</srcmd5>
+    <version>1.57</version>
+    <time>1311319228</time>
+    <user>saschpe</user>
+    <comment>Update to 1.57, works without hal and with kernel 3.x (forwarded request 76574 from a_jaeger)</comment>
+    <requestid>76644</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>24e09ac29fbff48e42bcf2af3b941301</srcmd5>
+    <version>1.57</version>
+    <time>1311319238</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76644
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e7ba80968df04564417a7f135406824b</srcmd5>
+    <version>1.59</version>
+    <time>1316766938</time>
+    <user>saschpe</user>
+    <comment>update to 1.59</comment>
+    <requestid>84557</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>e7ba80968df04564417a7f135406824b</srcmd5>
+    <version>1.59</version>
+    <time>1319182064</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>3aae6cabc4cf29cdde3fc912ad5b4eb3</srcmd5>
+    <version>1.59</version>
+    <time>1323192137</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2006e5e6115a45c5db83da3a236bfdf3</srcmd5>
+    <version>1.60</version>
+    <time>1334641541</time>
+    <user>coolo</user>
+    <comment>- update to 1.60:
+   * Check for block device's existence. Thanks to Simon Que.
+   * Add suspend/resume helper tools: pm-helper, pm-suspend, pm-hibernate.
+   * What laptop-mode-tools is stopped from init, also kill polling daemon.
+   * Reliable and much better locking mechanics.
+   * Make polling dameon lock safe.
+   * Make lmt-udev distro neutral. Thanks to Simon Que.
+   * Change Intel HDA Audio's default power save timeout to 2 seconds. (forwarded request 113734 from rmilasan)</comment>
+    <requestid>113735</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>2006e5e6115a45c5db83da3a236bfdf3</srcmd5>
+    <version>1.60</version>
+    <time>1340183545</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>b3856dc858d58ed72b6422912f2d0322</srcmd5>
+    <version>1.60</version>
+    <time>1343632402</time>
+    <user>coolo</user>
+    <comment>- Local variables can only be used in a function. 
+  add: laptop-mode-1.60-local-can-only-be-used-in-a-function.patch</comment>
+    <requestid>128954</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>b3856dc858d58ed72b6422912f2d0322</srcmd5>
+    <version>1.60</version>
+    <time>1359109218</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>09114145ce1c0662f4c51bff9f7c6ab6</srcmd5>
+    <version>1.62</version>
+    <time>1360059355</time>
+    <user>coolo</user>
+    <comment>Update to 1.62 (forwarded request 150934 from wstephenson)</comment>
+    <requestid>151080</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>792fde88a3fdfa7adfe0b2eb9e3b6b64</srcmd5>
+    <version>1.62</version>
+    <time>1362773643</time>
+    <user>coolo</user>
+    <comment>- laptop-mode-1.62-customize-installation-of-udev-systemd-files.patch:
+  introduce $LIB_D in install.sh so we can customize the installation
+  of systemd/udev files. 
+- drop laptop-mode-1.60-local-can-only-be-used-in-a-function.patch:
+  not need it anymore as 1.62 version has the fix. (forwarded request 158042 from rmilasan)</comment>
+    <requestid>158043</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>bc6efc380e0cfaba18ab519312b951ae</srcmd5>
+    <version>1.62</version>
+    <time>1376315443</time>
+    <user>scarabeus_factory</user>
+    <comment>fix build by owning /usr/lib/pm-utils/* (forwarded request 186659 from seife)</comment>
+    <requestid>186727</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>bc6efc380e0cfaba18ab519312b951ae</srcmd5>
+    <version>1.62</version>
+    <time>1379662856</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>bc6efc380e0cfaba18ab519312b951ae</srcmd5>
+    <version>1.62</version>
+    <time>1409301458</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>492a27eb72a0ab6dfad449178bce1c46</srcmd5>
+    <version>1.64</version>
+    <time>1435053540</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312841</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>465b4349fb730aa28e2e90c8ab435432</srcmd5>
+    <version>1.64</version>
+    <time>1437478033</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>317253</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>574310e127a68c1e4e8169f897db8e71</srcmd5>
+    <version>1.64</version>
+    <time>1438421768</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318587</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2e762b0d1845b7b73451034d8ac180a1</srcmd5>
+    <version>1.67</version>
+    <time>1447146190</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342897</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>76c119c47662d54234c75ddb6771ebd2</srcmd5>
+    <version>1.67</version>
+    <time>1452027326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351905</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8a028e618ea93d7492b88c20a46771cc</srcmd5>
+    <version>1.68.1</version>
+    <time>1456127831</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358799</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>649009714e8642a39cfd000e46a922ce</srcmd5>
+    <version>1.69.1</version>
+    <time>1459002513</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>379215</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>69b5627fdf39b80db1c964c660ced94c</srcmd5>
+    <version>1.69.2</version>
+    <time>1461855311</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390802</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d291f6a03d076311d541f49940e0d575</srcmd5>
+    <version>1.72.2</version>
+    <time>1538672529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639877</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>1e19d7f70caf29f0c413c5ae100aafa2</srcmd5>
+    <version>1.72.2</version>
+    <time>1561557882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712069</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,216 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e0b741bfc7f02b7c42bf63d918f1f87</srcmd5>
+    <version>1.2</version>
+    <time>1168902377</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e142b622423c5a340e33372ee9880c8</srcmd5>
+    <version>1.4</version>
+    <time>1199912027</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="23">
+    <srcmd5>886fa5f70af40bc0e4a3ae1a396c5397</srcmd5>
+    <version>1.4</version>
+    <time>1210092848</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="54">
+    <srcmd5>886fa5f70af40bc0e4a3ae1a396c5397</srcmd5>
+    <version>1.4</version>
+    <time>1210092848</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="55">
+    <srcmd5>7b4faa0b7422521b81e22e2b9faf10be</srcmd5>
+    <version>1.4</version>
+    <time>1245337371</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="57">
+    <srcmd5>7b4faa0b7422521b81e22e2b9faf10be</srcmd5>
+    <version>1.4</version>
+    <time>1245337371</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="58">
+    <srcmd5>08d4f3b19221d886f6090291aef0a93d</srcmd5>
+    <version>1.4</version>
+    <time>1263224660</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/bridge-utils based on submit request 29023 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="59">
+    <srcmd5>743dfa8c944ede6fcfc7039baed468d7</srcmd5>
+    <version>1.4</version>
+    <time>1268923112</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="61">
+    <srcmd5>743dfa8c944ede6fcfc7039baed468d7</srcmd5>
+    <version>1.4</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="62">
+    <srcmd5>743dfa8c944ede6fcfc7039baed468d7</srcmd5>
+    <version>1.4</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="65">
+    <srcmd5>743dfa8c944ede6fcfc7039baed468d7</srcmd5>
+    <version>1.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fe540d5421a48939d150e3acde1d8ca2</srcmd5>
+    <version>1.5</version>
+    <time>1312186537</time>
+    <user>saschpe</user>
+    <comment>%make_install won't build with SLE10 SLE11 and SLE11-SP1
++ %make_install
+/var/tmp/rpm-tmp.71410: line 23: fg: no job control
+error: Bad exit status from /var/tmp/rpm-tmp.71410 (%install)
+and now the spec is the same as it was 1.4.
+I updated it to 1.5 and changed the spec using the spec template provided by bridge-utils source tarball.
+Now due to bug 707837, I reverted the spec file.
+as for the header file and lib, it's always been packaged into the bridge-utils at lease back in the 1.4 time, and we never had a package called bridge-utils-devel, so I'm packaging them also in 1.5, Thanks (forwarded request 77393 from CFM56)</comment>
+    <requestid>77497</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>80fbca98a017bf0bbd9ece9553b39846</srcmd5>
+    <version>1.5</version>
+    <time>1312186562</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77497
+</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>aea18eb772384789858989168f269fb6</srcmd5>
+    <version>1.5</version>
+    <time>1314779853</time>
+    <user>saschpe</user>
+    <comment>Removed duplicated &quot;Authors:&quot; from description of bridge-utils.spec (forwarded request 80256 from aturrini)</comment>
+    <requestid>80271</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>4c2b0687346a6916681835f6486d4df7</srcmd5>
+    <version>1.5</version>
+    <time>1314779862</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80271
+</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>05f330caefaa2401a32f8ffce4f90959</srcmd5>
+    <version>1.5</version>
+    <time>1316515802</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82922 from jengelh)</comment>
+    <requestid>83734</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>05f330caefaa2401a32f8ffce4f90959</srcmd5>
+    <version>1.5</version>
+    <time>1319181794</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>008ba2f32832f5050584cc5c4d3f2f90</srcmd5>
+    <version>1.5</version>
+    <time>1323340047</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94943 from coolo)</comment>
+    <requestid>95174</requestid>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>fe41d8c034ef48d56ecd14cd55145bad</srcmd5>
+    <version>1.5</version>
+    <time>1328540066</time>
+    <user>coolo</user>
+    <comment>usrMerge project - binary in /usr</comment>
+    <requestid>102526</requestid>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>fe41d8c034ef48d56ecd14cd55145bad</srcmd5>
+    <version>1.5</version>
+    <time>1340183213</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>fe41d8c034ef48d56ecd14cd55145bad</srcmd5>
+    <version>1.5</version>
+    <time>1359108715</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="14">
+    <srcmd5>a611d6e3b1ddc80eca10c39ff3dfd512</srcmd5>
+    <version>1.5</version>
+    <time>1363946459</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160390 from m_meister)</comment>
+    <requestid>160396</requestid>
+  </revision>
+  <revision rev="23" vrev="15">
+    <srcmd5>c0c921260407e90fffdd47344a5258a7</srcmd5>
+    <version>1.5</version>
+    <time>1369718889</time>
+    <user>coolo</user>
+    <comment>- added missing include to fix build in factory
+  bridge-utils-1.5-ip6.patch (forwarded request 176677 from -miska-)</comment>
+    <requestid>176750</requestid>
+  </revision>
+  <revision rev="24" vrev="17">
+    <srcmd5>c0c921260407e90fffdd47344a5258a7</srcmd5>
+    <version>1.5</version>
+    <time>1379662055</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="19">
+    <srcmd5>c0c921260407e90fffdd47344a5258a7</srcmd5>
+    <version>1.5</version>
+    <time>1409300582</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="20">
+    <srcmd5>2bb4ba261412a9cc42d7e63e3cca362c</srcmd5>
+    <version>1.5</version>
+    <time>1449687038</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup with spec-cleaner
+- Remove the /sbin/ link, it should not be needed.
+  Lets see what breaks, people should migrate to bridge anwyay</comment>
+    <requestid>347284</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c22b3ec98e6adecc2040b0d5199ab513</srcmd5>
+    <version>1.6</version>
+    <time>1476997764</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.6:
+  * Various tiny fixes, nothing ground breaking
+- Refresh patch bridge-utils-1.5-ip6.patch (fuzz)</comment>
+    <requestid>435924</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>c132b6b2317c7f907838ccd317cd155d</srcmd5>
+    <version>1.6</version>
+    <time>1568191272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729988</requestid>
+  </revision>
+</revisionlist>

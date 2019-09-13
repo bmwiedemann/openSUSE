@@ -1,0 +1,5 @@
+<package name="yast2-usbauth" project="openSUSE:Factory">
+  <title>yast2-usbauth</title>
+  <description>YaST2 component for usbauth configuration. It helps to create an usbauth firewall configuration file.</description>
+  <devel project="YaST:Head" package="yast2-usbauth"/>
+</package>

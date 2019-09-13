@@ -1,0 +1,720 @@
+<revisionlist>
+  <revision rev="1" vrev="22">
+    <srcmd5>f8ca91711c9d31aef6f6f0a170032a8c</srcmd5>
+    <version>2.0.2</version>
+    <time>1168902906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="39">
+    <srcmd5>172c5f1ed67c98743e73503f39c46ca3</srcmd5>
+    <version>2.0.2</version>
+    <time>1168974464</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dc33d83f177371325918e8668b01b01f</srcmd5>
+    <version>2.0.4</version>
+    <time>1171652634</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>89ca23112f6dc16e1ff6b0af0f744fcb</srcmd5>
+    <version>2.0.5</version>
+    <time>1172442410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>56ff0f9b75e511ccca18780d7c8c65ab</srcmd5>
+    <version>2.0.5</version>
+    <time>1172922457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9f3e40a1a4e5cc4e484df32c3945ded0</srcmd5>
+    <version>2.0.5</version>
+    <time>1174951855</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="29">
+    <srcmd5>674fa592f6376ebb575249a9f5c2edd3</srcmd5>
+    <version>2.0.5</version>
+    <time>1181082537</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>67e94164dbf7c02d971ee158a060be8e</srcmd5>
+    <version>2.2.0</version>
+    <time>1185541797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>8a822964e4b94c51f8a42bf96aad6308</srcmd5>
+    <version>2.2.0</version>
+    <time>1186701643</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>0a0a774d5c9bd6a226ea81bca6590e37</srcmd5>
+    <version>2.2.0</version>
+    <time>1187910519</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="39">
+    <srcmd5>45180ce559d00212808e642984c2410c</srcmd5>
+    <version>2.2.0</version>
+    <time>1192129079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="62">
+    <srcmd5>2f773880958edab5a2ae924bc535197f</srcmd5>
+    <version>2.2.0</version>
+    <time>1196186471</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="81">
+    <srcmd5>f3bc2acee92a9f745fdb7f9d0b640038</srcmd5>
+    <version>2.2.0</version>
+    <time>1202494047</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e2d657c21d720c03224513bccef78766</srcmd5>
+    <version>2.2.3</version>
+    <time>1204217906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5f21ff8ec4ac1ef04cba69e72d5e9b02</srcmd5>
+    <version>2.2.4</version>
+    <time>1207174400</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="88">
+    <srcmd5>5f21ff8ec4ac1ef04cba69e72d5e9b02</srcmd5>
+    <version>2.2.4</version>
+    <time>1207174400</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="89">
+    <srcmd5>854deba61678a0548e976f0d8d332726</srcmd5>
+    <version>2.2.4</version>
+    <time>1223309380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3fae69edcdf2b118ec1e77aa9b038f62</srcmd5>
+    <version>2.2.7</version>
+    <time>1225122826</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>743d497ade1efdb8384dbc5f93ed4d27</srcmd5>
+    <version>2.2.8</version>
+    <time>1233966649</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7abdcb02cc3875bed894787683d67aa8</srcmd5>
+    <version>2.2.9</version>
+    <time>1241453481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>4068d95c2ed9756300109d8e9dd7d8ea</srcmd5>
+    <version>2.2.9</version>
+    <time>1254798410</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnucash based on submit request 21782 from user vuntz
+</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>4068d95c2ed9756300109d8e9dd7d8ea</srcmd5>
+    <version>2.2.9</version>
+    <time>1254798410</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnucash based on submit request 21782 from user vuntz
+</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>c4adb1a5648c71d098ddd747adb0f510</srcmd5>
+    <version>2.2.9</version>
+    <time>1268923832</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>c4adb1a5648c71d098ddd747adb0f510</srcmd5>
+    <version>2.2.9</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>c4adb1a5648c71d098ddd747adb0f510</srcmd5>
+    <version>2.2.9</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>9de59c49b9503cc76129c0fb794061c8</srcmd5>
+    <version>2.2.9</version>
+    <time>1279921007</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gnucash based on submit request 43864 from user dimstar
+</comment>
+    <requestid>43864</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6a982b9d28c516b602bf2972afc6d49b</srcmd5>
+    <version>2.3.17</version>
+    <time>1292011241</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55545 from user vuntz
+</comment>
+    <requestid>55545</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>5b2058462424e6d90c979256d2161e54</srcmd5>
+    <version>2.3.17</version>
+    <time>1292852962</time>
+    <user>darix</user>
+    <comment>Accepted submit request 56129 from user vuntz
+</comment>
+    <requestid>56129</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>fc3d2af3a85cd7fe1cfa01d3fb1442d3</srcmd5>
+    <version>2.3.17</version>
+    <time>1292852970</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 56129
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8da073dbe9af0f3ea80138db2048f1d5</srcmd5>
+    <version>2.4.0</version>
+    <time>1294658306</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57516 from user vuntz
+</comment>
+    <requestid>57516</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>1f5224f4aa09ce0ce01baece1a9fb6d1</srcmd5>
+    <version>2.4.0</version>
+    <time>1294658314</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57516
+</comment>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>3439a63a8daed3594f21eb6cc922fc98</srcmd5>
+    <version>2.4.0</version>
+    <time>1297643316</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60949 from user vuntz
+</comment>
+    <requestid>60949</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>c18e03cda1d4dcea69d83a599f1d2a07</srcmd5>
+    <version>2.4.0</version>
+    <time>1297643323</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60949
+</comment>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>c18e03cda1d4dcea69d83a599f1d2a07</srcmd5>
+    <version>2.4.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>52e4f0071a972148823bf9b983aa71c5</srcmd5>
+    <version>2.4.5</version>
+    <time>1307356383</time>
+    <user>saschpe</user>
+    <comment>Pushing from G:A</comment>
+    <requestid>72595</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b1616b154cbab0bcc1b923c8e888c6c5</srcmd5>
+    <version>2.4.7</version>
+    <time>1312453251</time>
+    <user>saschpe</user>
+    <comment>Update to 2.4.7 (+ tweak for previous change) (forwarded request 77895 from vuntz)</comment>
+    <requestid>77952</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>abf4087d5d941760a75dc54d6536c909</srcmd5>
+    <version>2.4.7</version>
+    <time>1317542932</time>
+    <user>lrupp</user>
+    <comment>Pushing G:A</comment>
+    <requestid>85558</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>abf4087d5d941760a75dc54d6536c909</srcmd5>
+    <version>2.4.7</version>
+    <time>1319181931</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>ecaa87e12936c150729bd9711876b268</srcmd5>
+    <version>2.4.7</version>
+    <time>1323191699</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>3034386972d67254036654f6c9b8fd01</srcmd5>
+    <version>2.4.7</version>
+    <time>1325787139</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98921</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7822ad2013d532f546c2cda8e618c9df</srcmd5>
+    <version>2.4.8</version>
+    <time>1326118621</time>
+    <user>coolo</user>
+    <comment>Update to 2.4.8 + fix build against new glib (forwarded request 99268 from vuntz)</comment>
+    <requestid>99281</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>642437d26a0d09cd13e76b7ca0cdb777</srcmd5>
+    <version>2.4.10</version>
+    <time>1331324574</time>
+    <user>coolo</user>
+    <comment>Update to 2.4.10 (forwarded request 106785 from vuntz)</comment>
+    <requestid>106886</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>642437d26a0d09cd13e76b7ca0cdb777</srcmd5>
+    <version>2.4.10</version>
+    <time>1340183395</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>57e7a0499c98f9d0dee4fae816fe7316</srcmd5>
+    <version>2.4.10</version>
+    <time>1342962871</time>
+    <user>coolo</user>
+    <comment>gnucash fixes for tips of the day / gcc 4.7 issue. Should enter 12.2 (forwarded request 128565 from dimstar)</comment>
+    <requestid>128566</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0c9a081cb56179b992e954ba3db2e200</srcmd5>
+    <version>2.4.11</version>
+    <time>1344319647</time>
+    <user>coolo</user>
+    <comment>Only require guile1 on 12.2, not libguile1-devel... (forwarded request 130011 from dimstar)</comment>
+    <requestid>130012</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>0c9a081cb56179b992e954ba3db2e200</srcmd5>
+    <version>2.4.11</version>
+    <time>1359108974</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d2ae393a68f7eec264c36345181c49aa</srcmd5>
+    <version>2.4.12</version>
+    <time>1365425459</time>
+    <user>coolo</user>
+    <comment>Update to 2.4.12 - Did you see? So far openSUSE:12.3 does not have any gnucash bugs! That's a first (forwarded request 162660 from Zaitor)</comment>
+    <requestid>163115</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>33a63b88877f67e7e4c59c655045e43c</srcmd5>
+    <version>2.4.13</version>
+    <time>1366632304</time>
+    <user>coolo</user>
+    <comment>Update to 2.4.13 (forwarded request 172663 from Zaitor)</comment>
+    <requestid>172693</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>33a63b88877f67e7e4c59c655045e43c</srcmd5>
+    <version>2.4.13</version>
+    <time>1379662518</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8c63f613ffac1d350fc9b667c5359f15</srcmd5>
+    <version>2.6.0</version>
+    <time>1390380084</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.6.0 (bnc#858502):
+  + New Major release, see
+    http://gnucash.org/2.6-release-tour.phtml for a tour through
+    the new features.
+  + Preferences have been migrated from GConf to GSettings.
+  + New date handling which allows GnuCash to use dates after March
+    2038.
+  + Guile-2 compatibility: GnuCash now requires either Guile-1.8 or
+    Guile-2.0.
+  + Documents outside of GnuCash, images of receipts for example,
+    can now be linked to transactions, with the facility of opening
+    them in the default application for the document type.
+  + Cutsom Reports can now be saved without renaming the report,
+    and modifications can overwrite an existing report.
+  + The import assistant now finishes much more quickly after
+    assigning contra-accounts.
+  + GnuCash now requires Gtk+-2.24.0 and GLib-2.26.0. Most of the
+    dependencies on obsolete libraries have been removed; only
+    libgnomecanvas remains. Unfortunately the effort to rewrite
+    the register code to use GtkTreeModel wasn't completed in time,
+    so GnuCash is not on the cusp of converting to Gtk3.
+  + The Business Module has been substantially revamped, including
+    support for Credit Notes and import of customers and vendors
+    from a CSV file.
+  + The Num field in the register display is now optionally
+    per-split, so for example a check number can be entered for the
+    checking account split and an invoice number for the expense
+    account split.
+  + GnuCash can now open locked books read-only so that more than
+    one user can view a file. GnuCash still does not support (forwarded request 214444 from Zaitor)</comment>
+    <requestid>214473</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>d4346a09e8cd28e58428ac50d7275c09</srcmd5>
+    <version>2.6.0</version>
+    <time>1391100061</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>215639</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>f9facecb908b37db332a32522c781ce3</srcmd5>
+    <version>2.6.1</version>
+    <time>1391422373</time>
+    <user>coolo</user>
+    <comment>Update to 2.6.1 (forwarded request 220618 from dimstar)</comment>
+    <requestid>220622</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>01ae4102a57294c4ccf5bea83f6375c8</srcmd5>
+    <version>2.6.2</version>
+    <time>1394901394</time>
+    <user>coolo</user>
+    <comment>Now I've too have touched the package that must not be touched.
+
+- Update to version 2.6.2:
+  + Advanced Portfolio Report have been reworked.
+  + Bugs Fixed: bgo#497831, bgo#721472, bgo#721677, bgo#722123,
+    bgo#722903, bgo#723051, bgo#723373, bgo#723644, bgo#724211,
+    bgo#724426, bgo#724427, bgo#724578, bgo#724753, bgo#725131.
+  + Updated translations. (forwarded request 225894 from Zaitor)</comment>
+    <requestid>225943</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>3d94b3dc1e963d92bb5233a597f59e31</srcmd5>
+    <version>2.6.3</version>
+    <time>1396452150</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.6.3:
+  + Fix resizing of columns in budget view.
+  + Fix guile 2 stack overflow errors for large reports.
+  + Fix basis calculation for FIFO or LIFO when less than one lot
+    is sold.
+  + Update Window and Menu item from &quot;Preconfigured-&quot; to &quot;Saved-&quot;
+    Report and add lables to the dialog with help texts.
+  + Aqbanking: SEPA transfer improvements - fix origin labels and
+    add possibility to edit sender's name.
+  + Bugs fixed: bgo#721196, bgo#721654, bgo#723975, bgo#724995,
+    bgo#711567, bgo#726430, bgo#726891.
+  + Updated translations.</comment>
+    <requestid>228723</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>192eb33576a03b0c3d63bdd22cf48a61</srcmd5>
+    <version>2.6.3</version>
+    <time>1405573087</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240786</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>192eb33576a03b0c3d63bdd22cf48a61</srcmd5>
+    <version>2.6.3</version>
+    <time>1409301055</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>7f03b9a21d685a5ea86a987b8947c986</srcmd5>
+    <version>2.6.4</version>
+    <time>1412533926</time>
+    <user>coolo</user>
+    <comment>- Update gnucash-libdbi-0.9.patch: fix usage of internal function
+  _gnucash-libdbi-0.9.patch (boo#898974).
+
+- Update to version 2.6.4:
+  + Add business lot scrubbing to Check &amp; Repair-&gt;All/This
+    transaction(s).
+  + Add context to generic translatable string.
+  + Add scrub function to reduce the amount of lot links used.
+  + Add some date format checking and make sure generated dates are
+    the correct user selected format, not always locale format.
+  + Allow the ability to skip rows when importing transactions.
+  + Always use the price we display to calculate the current value
+    of an account.
+  + Better period totals formatting in Invoices.
+  + CSV Export: factor out function to generate regular expression.
+  + CSV Import transform macro into function.
+  + Convert ISO-8859-1 account chart templates to UTF-8.
+  + Correct txf output to use a minus sign, rather than
+    parenthesis.
+  + Fix document type dispay for credit notes on owner report.
+  + Fix test-backend-dbi segfault with libdbi-0.9.0.
+  + Handle the case of scrubbing a lot link between two
+    non-document lots.
+  + Lots of refactoring.
+  + Chart-of-Account Templates Updated.
+  + Bugs fixed: bgo#120199, bgo#434462, bgo#509263, bgo#610202,
+    bgo#630638, bgo#671615, bgo#688965, bgo#692249, bgo#695240,
+    bgo#707243, bgo#711440, bgo#711567, bgo#719457, bgo#719457,
+    bgo#720427, bgo#720934, bgo#722140, bgo#722200, bgo#723145,
+    bgo#723442, bgo#725054, bgo#725366, bgo#726449, bgo#726888,</comment>
+    <requestid>253932</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>76e4f11cc478a190df88893c50e7a885</srcmd5>
+    <version>2.6.5</version>
+    <time>1422636559</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283293</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>f4a8114bb58d9aba4a35b67e3edc0647</srcmd5>
+    <version>2.6.6</version>
+    <time>1428652326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294839</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>958bc0c8a4ca0982124a63948fc259f9</srcmd5>
+    <version>2.6.7</version>
+    <time>1436888635</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315902</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>f014d08351dfdf3e72a550289cbd1163</srcmd5>
+    <version>2.6.7</version>
+    <time>1441822861</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on Leap 42.1</comment>
+    <requestid>329427</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>d2b58d08c2fa8785a083e65da83f9257</srcmd5>
+    <version>2.6.11</version>
+    <time>1452850863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353287</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>97c00f4436b398189c2d290a3a77f0b2</srcmd5>
+    <version>2.6.11</version>
+    <time>1453998299</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356366</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>ab59bf4442f10858c3419353ba994eb2</srcmd5>
+    <version>2.6.12</version>
+    <time>1467360057</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405604</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>901fe603f97856d5e1b1f7c227585b32</srcmd5>
+    <version>2.6.14</version>
+    <time>1478289719</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438612</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>1a1914c2cb1a909d9145cb74f311f0f8</srcmd5>
+    <version>2.6.15</version>
+    <time>1488408243</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream rel, supersede</comment>
+    <requestid>461321</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>fd6f09fa10ab62f99b86c27c2601dd5f</srcmd5>
+    <version>2.6.15</version>
+    <time>1489653790</time>
+    <user>dimstar_suse</user>
+    <comment>Resub with tweaked changes, done earlier, but sub forgotten..</comment>
+    <requestid>479476</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>f9dfd0699b097eb877fce767221b707c</srcmd5>
+    <version>2.6.16</version>
+    <time>1493363569</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.6.16 (forwarded request 483448 from sfalken)</comment>
+    <requestid>490215</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>ee171cdfc71fd33604982413f15b9096</srcmd5>
+    <version>2.6.17</version>
+    <time>1500975574</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511899</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>04fd8e06c875dc7f88db0b79f419491f</srcmd5>
+    <version>2.6.18</version>
+    <time>1510045376</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.6.18 (forwarded request 539129 from badshah400)</comment>
+    <requestid>539272</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>ef065c1bd9ad3ed32f1ddfd4df6265e9</srcmd5>
+    <version>2.6.19</version>
+    <time>1514028050</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.6.19 (forwarded request 558999 from luc14n0)</comment>
+    <requestid>559369</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>ce7aa19a201bf5086c3b6d757c485d3a</srcmd5>
+    <version>3.0</version>
+    <time>1523350465</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594077</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>7ba46611365120af51d265bc5cf3938c</srcmd5>
+    <version>3.1</version>
+    <time>1528492343</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 603934 from dimstar)</comment>
+    <requestid>607010</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>cb2375f5e9eb97af9941c2ed6499223b</srcmd5>
+    <version>3.1</version>
+    <time>1529322641</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616332</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>6405f46ca6270f93cfcc0c7bbdd671f1</srcmd5>
+    <version>3.2</version>
+    <time>1530304501</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.2</comment>
+    <requestid>619535</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>6ed49613d4a5cecd02301f79a463fedb</srcmd5>
+    <version>3.3</version>
+    <time>1540447928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3:
+  + Set toolbar buttons to show both icon and text.
+  + Add preference for forcing prices to decimal display.
+  + Revert the &quot;Average Cost&quot; pricing changes made in 2.6.17.
+  + Allow saving to xml over an existing sqlite3 file and the other
+    way around.
+  + Add customer/vendor ID in client section of invoices.
+  + Change the default filter for General Ledger.
+  + Fix grk accelerator mixups by explicitly disabling actions
+    that are not relevant.
+  + [job-report] Prevent Crash if there is no AR account.
+  + Add the ability to cascade the account colors in account tree.
+  + Speed up loading the preference dialog by blocking register
+    updates until the dialog is fully loaded.
+  + Update change_tax_code.py add basic test for python query.
+  + Simplify GNCQueryView's data model.
+  + Open customer/vendor/employee report when double-clicking the
+    respective owner on the customer/vendor/employee overview page.
+  + Update Overview of README.
+  + Many new tests for reports.
+  + Some substantial speedups when loading large amounts of
+    business transactions from a SQL backend.
+  + Clean up a lot of memory leaks.
+  + Remove all use of Timespec in the program. Provide deprecated
+    wrapper functions supporting timespecs for custom reports;
+    users should update the reports as soon as possible.
+  + Bugs fixed: bgco#771667, bgco#784420, bgco#786708, bgco#787439,
+    bgco#789594, bgco#792446, bgco#794755, bgco#794870,
+    bgco#796756, bgco#795821, bgco#796054, bgco#796137,
+    bgco#796248, bgco#796759, bcgo#796474, bgco#796509,
+    bgco#796579, bgco#795248, bgco#796762, bgco#796474,
+    bgco#796509, bgco#796579, bgco#796665, bgco#796766,
+    bgco#796669, bgco#796724, bgco#796725, bgco#796734,
+    bgco#796777, bgco#796737, bgco#796739, bgco#796751,
+    bgco#796755, bgco#796788, bgco#796792, bgco#796812,
+    bgco#796813, bgco#796814, bgco#796816, bgco#796819,
+    bgco#796820, bgco#796833, bgco#796839, bgco#796858.
+  + Updated translations.
+</comment>
+    <requestid>642209</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>f3865c57d4cd616fe83a7bf9d21a30df</srcmd5>
+    <version>3.4</version>
+    <time>1548064005</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release</comment>
+    <requestid>663094</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>4c6b9fd102ad878e1c94920e40e0c323</srcmd5>
+    <version>3.5</version>
+    <time>1556916233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v3.5 (github.com/Gnucash/gnucash/releases/tag/3.5):
+  + bugs fixed: bgo#639049, bgo#748431, bgo#787401, bgo#795729,
+    bgo#796498, bgo#796530, bgo#796687, bgo#796826, bgo#796827,
+    bgo#796829, bgo#796831, bgo#796877, bgo#796946, bgo#796952,
+    bgo#796956, bgo#796965, bgo#796989, bgo#797002, bgo#797011,
+    bgo#797013, bgo#797029, bgo#797030, bgo#797031, bgo#797041,
+    bgo#797046, bgo#797067, bgo#797074, bgo#797098, bgo#797105,
+    bgo#797136 
+  + various fixes for i18n, gui, importing and online banking, 
+    reports
+  + performance improvement
+  + deprecated some scheme (forwarded request 692811 from polslinux)</comment>
+    <requestid>693282</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>ec2c49aff8aa1ceec6a3dcaa436f9779</srcmd5>
+    <version>3.5</version>
+    <time>1563456041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715806</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>0ff717f30ac47612954a57368a1404f6</srcmd5>
+    <version>3.6</version>
+    <time>1568190879</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Fix-CMakeLists-error.patch to fix a build error. (forwarded request 729722 from cgiboudeaux)</comment>
+    <requestid>729730</requestid>
+  </revision>
+</revisionlist>

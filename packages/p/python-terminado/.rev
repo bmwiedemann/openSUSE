@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c70f30b2ce2247a97d71df25bea91684</srcmd5>
+    <version>0.5</version>
+    <time>1440135635</time>
+    <user>dimstar_suse</user>
+    <comment>This is needed by the newest version of IPython, which is already in openSUSE:Factory</comment>
+    <requestid>323076</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2b9057738a5d3f3f2f5dfe4fc04834af</srcmd5>
+    <version>0.6</version>
+    <time>1494262946</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490870</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a077c81c2afa94c7303713643c657325</srcmd5>
+    <version>0.7</version>
+    <time>1511426697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544491</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5ee02647faf7aa97bf4c6c766af24259</srcmd5>
+    <version>0.8.1</version>
+    <time>1514502172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546697</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>aecc61f04c899b741851a583ad272d02</srcmd5>
+    <version>0.8.1</version>
+    <time>1518601956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576403</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>31ae719b45628939ba0c1f6a6a37eed2</srcmd5>
+    <version>0.8.2</version>
+    <time>1560459817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709550</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d292e615ad0540921340e99d7d4b9ef4</srcmd5>
+    <version>0.8.2</version>
+    <time>1565695180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722222</requestid>
+  </revision>
+</revisionlist>

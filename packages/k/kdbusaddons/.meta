@@ -1,0 +1,5 @@
+<package name="kdbusaddons" project="openSUSE:Factory">
+  <title>kdbusaddons</title>
+  <description>KDBusAddons</description>
+  <devel project="KDE:Frameworks5" package="kdbusaddons"/>
+</package>

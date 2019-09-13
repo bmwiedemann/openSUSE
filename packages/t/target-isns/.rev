@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc29b0313fccc6d5f13fd2e2ed59acd7</srcmd5>
+    <version>0.3</version>
+    <time>1418251461</time>
+    <user>dimstar_suse</user>
+    <comment>This new package is needed to add iSNS support
+to the targetcli iSCSI target package. I have
+tested it with targetcli and open-isns on
+Factory and 13.2.
+
+Changes since last (declined) submission:
+- Cleaned up spec file: no more rpmlint errors
+  - using more macros, including ext_man
+  - no longer &quot;own&quot; common directories
+- Added &quot;rcPACKAGE&quot; symlink, as requested
+
+Changes since first (declined) submission:
+- Removed README.me from top-level directory
+  and spec file, since already in tarball
+- Cleaned up the spec file
+- Added %doc for 3 top-level doc files to spec</comment>
+    <requestid>264204</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c6245b6accb8e8523d561d211c639a1a</srcmd5>
+    <version>0.3</version>
+    <time>1439385247</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321963</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cb90f7a36f9ff3eb483f7477f12ac5cd</srcmd5>
+    <version>0.3</version>
+    <time>1445796788</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340318</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b483b63583d41569efd143d716b90ec0</srcmd5>
+    <version>0.6.2</version>
+    <time>1447454166</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344068</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>589a9d2bbb8cd83f853ce5b4ebb33cbb</srcmd5>
+    <version>0.6.2</version>
+    <time>1502892807</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515818</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1529db5cd6efbeeee86ce78694522d76</srcmd5>
+    <version>0.6.3</version>
+    <time>1504521212</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520025</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>85f1b0168b10c20c3e62966ff5e9d530</srcmd5>
+    <version>0.6.4</version>
+    <time>1529402653</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617250</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ff849c0277aa20ea949cee903811522a</srcmd5>
+    <version>0.6.5</version>
+    <time>1541865326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644727</requestid>
+  </revision>
+</revisionlist>

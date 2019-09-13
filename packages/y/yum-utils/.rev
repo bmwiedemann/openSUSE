@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>b0ae5db78854c04849de9afc64864e80</srcmd5>
+    <version>1.1.13</version>
+    <time>1297385621</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60477 from user ug
+</comment>
+    <requestid>60477</requestid>
+  </revision>
+  <revision rev="2" vrev="48">
+    <srcmd5>e33e973cd73bc231539552240fbc28a6</srcmd5>
+    <version>1.1.13</version>
+    <time>1297385626</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60477
+</comment>
+  </revision>
+  <revision rev="3" vrev="51">
+    <srcmd5>e33e973cd73bc231539552240fbc28a6</srcmd5>
+    <version>1.1.13</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="53">
+    <srcmd5>e33e973cd73bc231539552240fbc28a6</srcmd5>
+    <version>1.1.13</version>
+    <time>1319182645</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="54">
+    <srcmd5>559657dcc86bc313b0a16abeba5ace78</srcmd5>
+    <version>1.1.13</version>
+    <time>1323195670</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="56">
+    <srcmd5>559657dcc86bc313b0a16abeba5ace78</srcmd5>
+    <version>1.1.13</version>
+    <time>1340184418</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="58">
+    <srcmd5>559657dcc86bc313b0a16abeba5ace78</srcmd5>
+    <version>1.1.13</version>
+    <time>1359110776</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="60">
+    <srcmd5>559657dcc86bc313b0a16abeba5ace78</srcmd5>
+    <version>1.1.13</version>
+    <time>1379665188</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="62">
+    <srcmd5>559657dcc86bc313b0a16abeba5ace78</srcmd5>
+    <version>1.1.13</version>
+    <time>1409303872</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

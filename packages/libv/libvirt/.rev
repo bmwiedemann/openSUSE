@@ -1,0 +1,3387 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f38ac2aab8d6913c72042933a5059215</srcmd5>
+    <version>0.1.10</version>
+    <time>1168476276</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1076423d597cec18d681dcfdfef5d5b9</srcmd5>
+    <version>0.2.0</version>
+    <time>1172442580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>998af6c5802447e89598dca6ced191e6</srcmd5>
+    <version>0.2.0</version>
+    <time>1173304119</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0ed015f5d66ea37b417b6ea03b0d0ffd</srcmd5>
+    <version>0.2.2</version>
+    <time>1178053125</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="12">
+    <srcmd5>0be73e5b09e38e7c4c0bf2e02e7e499d</srcmd5>
+    <version>0.2.2</version>
+    <time>1179934648</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>03699fec96f3012a4b829919fb67b55c</srcmd5>
+    <version>0.2.3</version>
+    <time>1181828285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ef4475bc04adeabb3511f86730b19d7</srcmd5>
+    <version>0.3.0</version>
+    <time>1185233536</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="15">
+    <srcmd5>0c6d79a34af35979a193babcb364b224</srcmd5>
+    <version>0.3.0</version>
+    <time>1187656642</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eecbea173319eef2e480105c70e80a48</srcmd5>
+    <version>0.3.3</version>
+    <time>1191968267</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>08d6514c238d0230cb39bce24161e312</srcmd5>
+    <version>0.4.0</version>
+    <time>1199719877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>98d865208d344e4dc279d828c73f6831</srcmd5>
+    <version>0.4.0</version>
+    <time>1199972513</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="38">
+    <srcmd5>62c2d23209316cb4ea5aa238fd758a77</srcmd5>
+    <version>0.4.0</version>
+    <time>1207859306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="43">
+    <srcmd5>d1dd26e28174cb6899841c9042857168</srcmd5>
+    <version>0.4.0</version>
+    <time>1209133875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="48">
+    <srcmd5>3f49a1b49d3c64e500625426135201a8</srcmd5>
+    <version>0.4.0</version>
+    <time>1210030663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="51">
+    <srcmd5>c2fa22343d2a0a4997b83406b940a3c4</srcmd5>
+    <version>0.4.0</version>
+    <time>1210367978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>944956bc203ea61b1a99220ac1a89920</srcmd5>
+    <version>0.4.4</version>
+    <time>1215547355</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>55acddfd6e7560caf661f9f596eaf6bd</srcmd5>
+    <version>0.4.4</version>
+    <time>1218324706</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>7b3f5cf171576161d59f92912370c002</srcmd5>
+    <version>0.4.4</version>
+    <time>1218665023</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="21">
+    <srcmd5>cce74128c06cdb04c6f8ab1778332767</srcmd5>
+    <version>0.4.4</version>
+    <time>1219446673</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="28">
+    <srcmd5>03513479cd9af8cf04240b498313d934</srcmd5>
+    <version>0.4.4</version>
+    <time>1220281567</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>eb34d1f6ee4e930ca6291e97b816a993</srcmd5>
+    <version>0.4.6</version>
+    <time>1223483032</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>2f579a29be02695cabc1d8bc949f2f3e</srcmd5>
+    <version>0.4.6</version>
+    <time>1223910504</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>dfd9881a125f2ae0b2fb8f1cbe210114</srcmd5>
+    <version>0.4.6</version>
+    <time>1224692253</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>5857e0d36f5b1951e51631133701e071</srcmd5>
+    <version>0.4.6</version>
+    <time>1224854307</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>dd579576c62fe8668369abf89450d2b7</srcmd5>
+    <version>0.4.6</version>
+    <time>1224975194</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>4dfaf6ca90a06ce1ae909c00cb771e68</srcmd5>
+    <version>0.4.6</version>
+    <time>1226018425</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>98936b938fe13364a8a21f2ccd65237f</srcmd5>
+    <version>0.4.6</version>
+    <time>1226067628</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>e76bee388a1f2e609339de67349e7963</srcmd5>
+    <version>0.4.6</version>
+    <time>1227277970</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>c17c4eaf239165ed5163a2ab2509c746</srcmd5>
+    <version>0.4.6</version>
+    <time>1227556298</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>9dde8736b5acc02266c9295ae3ae53d8</srcmd5>
+    <version>0.4.6</version>
+    <time>1227882535</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="11">
+    <srcmd5>595dc49ec8fb3fc2aaadebed891e61e3</srcmd5>
+    <version>0.4.6</version>
+    <time>1228267149</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="12">
+    <srcmd5>dd7a6a98b50f5b3cb4bd156c80b0b877</srcmd5>
+    <version>0.4.6</version>
+    <time>1228564852</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="13">
+    <srcmd5>148600c7669b44249ae5c265f601b0cb</srcmd5>
+    <version>0.4.6</version>
+    <time>1229610971</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="14">
+    <srcmd5>faf597a864a073b941a3a4f4d3341a1c</srcmd5>
+    <version>0.4.6</version>
+    <time>1231722334</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5de18fda34cf27c155ac2557b3e6bdd7</srcmd5>
+    <version>0.5.1</version>
+    <time>1233189762</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>ce917144612de2218ee5681df88028c7</srcmd5>
+    <version>0.5.1</version>
+    <time>1233698304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>357a083ec3fe6d243c57a89dfaa3500f</srcmd5>
+    <version>0.5.1</version>
+    <time>1240265116</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0918b82ac023056260c828deb3c2377f</srcmd5>
+    <version>0.6.2</version>
+    <time>1240607755</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a73b9be62bb8217689303e3bba95c3a0</srcmd5>
+    <version>0.6.5</version>
+    <time>1248392188</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>cfc3ad23727b1599f89fd2b2f234c72c</srcmd5>
+    <version>0.7.0</version>
+    <time>1251909753</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 19439 from user jfehlig
+</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ea0f6d0f018fd51b8d6ea643786621d1</srcmd5>
+    <version>0.7.1</version>
+    <time>1254002998</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 21133 from user jfehlig
+</comment>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>d236ba5803cd6b93ef5631de81a22747</srcmd5>
+    <version>0.7.1</version>
+    <time>1254529993</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 21362 from user jfehlig
+</comment>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>20335334e7b0fc3fbba53e7844ec6a78</srcmd5>
+    <version>0.7.1</version>
+    <time>1255447003</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 22307 from user jfehlig
+</comment>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>20335334e7b0fc3fbba53e7844ec6a78</srcmd5>
+    <version>0.7.1</version>
+    <time>1255447003</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 22307 from user jfehlig
+</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>f4de602fbc2f881dd3b2d7b3fe23d5c2</srcmd5>
+    <version>0.7.2</version>
+    <time>1256080997</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 22606 from user jfehlig
+</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>0daf6fd63133fc5670ccc83ce30dba0e</srcmd5>
+    <version>0.7.4</version>
+    <time>1260544770</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 26061 from user jfehlig
+</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>7ac690dc6e42df548433dcd054b45306</srcmd5>
+    <version>0.7.5</version>
+    <time>1262911025</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 28268 from user jfehlig
+</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>af1e6aa59e69d502c2e5720dc8c43b56</srcmd5>
+    <version>0.7.6</version>
+    <time>1265376864</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 31582 from user jfehlig
+</comment>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>97631635a330f517b9ab41a1497c19a8</srcmd5>
+    <version>0.7.6</version>
+    <time>1267404181</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 33594 from user jfehlig
+</comment>
+    <requestid>33594</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>a7ed7d1dab2863ba0d04f3723ba65f1d</srcmd5>
+    <version>0.7.6</version>
+    <time>1268924755</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f54ff9000bcf079692eddb6d8a7ac6de</srcmd5>
+    <version>0.7.7</version>
+    <time>1269273965</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 35434 from user jfehlig
+</comment>
+    <requestid>35434</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>33cde893d89fcae569871432d3c1332b</srcmd5>
+    <version>0.8.0</version>
+    <time>1271372215</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 37869 from user jfehlig
+</comment>
+    <requestid>37869</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>870051d81ee27e7998bfca48fa723197</srcmd5>
+    <version>0.8.1</version>
+    <time>1273790732</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 39879 from user jfehlig
+</comment>
+    <requestid>39879</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>71a46a13248e460b558a9c8cbb0b99c9</srcmd5>
+    <version>0.8.1</version>
+    <time>1275735111</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 41177 from user jfehlig
+</comment>
+    <requestid>41177</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>048f4c8a5984c81c596d2c64ecdafabd</srcmd5>
+    <version>0.8.1</version>
+    <time>1277718245</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 42077 from user jfehlig
+</comment>
+    <requestid>42077</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>048f4c8a5984c81c596d2c64ecdafabd</srcmd5>
+    <version>0.8.1</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>048f4c8a5984c81c596d2c64ecdafabd</srcmd5>
+    <version>0.8.1</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a797377a9fac44d4da7d467d40a96259</srcmd5>
+    <version>0.8.3</version>
+    <time>1281313188</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 44796 from user jfehlig
+</comment>
+    <requestid>44796</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>a7b58830d980e6023d322331f641c692</srcmd5>
+    <version>0.8.4</version>
+    <time>1285973208</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/libvirt based on submit request 49431 from user jfehlig
+</comment>
+    <requestid>49431</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>e66e8b15ab05c2cf81501c2a03b70083</srcmd5>
+    <version>0.8.4</version>
+    <time>1287486445</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50931 from user jfehlig
+</comment>
+    <requestid>50931</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>11ecea8a96fe31c014d7e280e2513135</srcmd5>
+    <version>0.8.4</version>
+    <time>1287486450</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50931
+</comment>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>a24f7376cf4b2a4294c3c7d95d087468</srcmd5>
+    <version>0.8.5</version>
+    <time>1288701056</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51940 from user jfehlig
+</comment>
+    <requestid>51940</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>7ffbd975448f88cb9947f58511569b4b</srcmd5>
+    <version>0.8.6</version>
+    <time>1292318199</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55880 from user jfehlig
+</comment>
+    <requestid>55880</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>719bde4ab7a61808ff4e5274b868021b</srcmd5>
+    <version>0.8.7</version>
+    <time>1295056496</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58315 from user jfehlig
+</comment>
+    <requestid>58315</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>9f215814ac9c6779cd6ba6140b6fac62</srcmd5>
+    <version>0.8.7</version>
+    <time>1295056510</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58315
+</comment>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>e67cf9fcfd061a7593563880e798761e</srcmd5>
+    <version>0.8.7</version>
+    <time>1295946633</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 58709 from user jfehlig
+</comment>
+    <requestid>58709</requestid>
+  </revision>
+  <revision rev="67" vrev="4">
+    <srcmd5>f0d49f6b3845a898444ce02f3f037f5d</srcmd5>
+    <version>0.8.7</version>
+    <time>1295946648</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 58709
+</comment>
+  </revision>
+  <revision rev="68" vrev="5">
+    <srcmd5>78a6df20306a6a24b24e1d23c9486646</srcmd5>
+    <version>0.8.7</version>
+    <time>1296607555</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59534 from user jfehlig
+</comment>
+    <requestid>59534</requestid>
+  </revision>
+  <revision rev="69" vrev="6">
+    <srcmd5>3e24836ff414b55075ea4c3e8e06d301</srcmd5>
+    <version>0.8.7</version>
+    <time>1296607562</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59534
+</comment>
+  </revision>
+  <revision rev="70" vrev="9">
+    <srcmd5>3e24836ff414b55075ea4c3e8e06d301</srcmd5>
+    <version>0.8.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>9ac2f4659ac8938243d8ae962554231e</srcmd5>
+    <version>0.8.8</version>
+    <time>1298227819</time>
+    <user>lrupp</user>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>b423c0a3e8ec21afc88d7be4ae058bd4</srcmd5>
+    <version>0.8.8</version>
+    <time>1298810853</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62865 from user jfehlig
+</comment>
+    <requestid>62865</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>95d4fa64e55527bbc2aae24ee927426f</srcmd5>
+    <version>0.8.8</version>
+    <time>1298810864</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62865
+</comment>
+  </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>8435bc00852d09211fd34d7eef81c25b</srcmd5>
+    <version>0.8.8</version>
+    <time>1300983847</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65096 from user licensedigger
+</comment>
+    <requestid>65096</requestid>
+  </revision>
+  <revision rev="75" vrev="5">
+    <srcmd5>ee2ce30d94535c4d68d27b325a75ffff</srcmd5>
+    <version>0.8.8</version>
+    <time>1300983854</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65096
+</comment>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>32b1c2a3599879249432e83d27d2dae8</srcmd5>
+    <version>0.9.1</version>
+    <time>1305537228</time>
+    <user>saschpe</user>
+    <comment>- Update to libvirt 0.9.1
+  - support various persistent domain updates
+  - improvements on memory APIs
+  - Add virDomainEventRebootNew
+  - various improvements to libxl drive
+  - Spice: support audio, images and stream compression
+
+- Move libvirt-iohelper from client to base package
+
+- fix baselibs.conf not to requires source 32bit
+
+- Install log dir for libxl
+  f7e9b448-libxl-build.patch
+
+- Update to libvirt 0.9.0 final
+  - Support cpu usage tuning
+  - Add public APIs for storage volume upload/download
+  - Add public API for setting migration speed on the fly
+  - Add libxenlight driver
+  - qemu: support migration to fd
+  - add virDomain{Get,Set}BlkioParameters
+  - introduce a new libvirt API (virDomainSetMemoryFlags)
+  - Expose event loop implementation as a public API
+  - Dump the debug buffer to libvirtd.log on fatal signal
+  - Audit support
+  - Numerous enhancements and bug fixes
+
+- Update to libvirt 0.9.0 RC3</comment>
+    <requestid>69990</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>0cb46f52d9db147e56e2c1ebb61b5951</srcmd5>
+    <version>0.9.1</version>
+    <time>1305537241</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69990
+</comment>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>a234c5f0ae806a83e09abd4909ad026c</srcmd5>
+    <version>0.9.2</version>
+    <time>1308212150</time>
+    <user>saschpe</user>
+    <comment>Update Factory to libvirt 0.9.2
+
+- fate#311371 Enhance yast to configure live migration for
+  Xen and KVM
+  add firewall service file for libvirt
+
+- Invoke qemu instances as user:group qemu:qemu by default
+  bnc#694883
+
+- Update to libvirt 0.9.2
+  - Framework for lock manager plugins
+  - API for network config change transactions (netcf required)
+  - flags for setting memory parameters
+  - virDomainGetState public API
+  - qemu: allow blkstat/blkinfo calls during migration
+  - Introduce migration v3 API
+  - Defining the Screenshot public API
+  - public API for NMI injection
+- spec file: Adjust some directory attributes to support running
+  non-privileged qemu instances
+
+- Remove vi_VN locale if suse_version &lt; 11.3
+
+- Enable cap_ng when building lxc support.</comment>
+    <requestid>73792</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>a46c785fa96e132891557a25fb1f1d7a</srcmd5>
+    <version>0.9.2</version>
+    <time>1308212163</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73792
+</comment>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>5babda73359d41b752e73bc99b61a6e1</srcmd5>
+    <version>0.9.2</version>
+    <time>1309764809</time>
+    <user>saschpe</user>
+    <comment>- Create qemu user:group if necessary at package installation.
+  More fallout from bnc#694883
+
+- VUL-0: libvirt: integer overflow in VirDomainGetVcpus
+  774b21c1-CVE-2011-2511.patch
+  bnc#703084
+
+- Enable building libvirt with audit support
+  bnc#694891</comment>
+    <requestid>75033</requestid>
+  </revision>
+  <revision rev="81" vrev="4">
+    <srcmd5>c5f14822cc5b0a7c1a99d225f3e8e53e</srcmd5>
+    <version>0.9.2</version>
+    <time>1309764822</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75033
+</comment>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>0b4a9556fcfe978bb8eeb15f76d8a446</srcmd5>
+    <version>0.9.4</version>
+    <time>1312735990</time>
+    <user>saschpe</user>
+    <comment>New libvirt 0.9.4 package for Factory/12.1
+
+- Update to libvirt 0.9.4
+ - bandwidth QoS control
+ - Add new API virDomainBlockPull*
+ - save: new API to manipulate save file images
+ - CPU bandwidth limits support
+ - allow to send NMI and key event to guests
+ - new API virDomainUndefineFlags
+ - Implement code to attach to external QEMU instances
+ - various missing python binding
+ - bios: Add support for SGA
+ - Numerous improvements and documentation / bug fixes
+
+- Add some upstream patches to fix memory leaks and some bugs
+  in new rpc code
+  c2ddd536-cert-key-order.patch 3e5d48ef-rpc-1.patch
+  927dfcf6-rpc-2.patch 2c85644b-rpc-3.patch afe8839f-rpc-4.patch
+  3cfdc57b-rpc-5.patch 7518ad75-remote-mem-leak.patch
+  a34e193f-statstest.patch 41828514-skip-xen-tests.patch
+  eb314315-pv-kernel-cmdline.patch 00d3c5a6-remove-dead-code.patch
+  b8adfcc6-fix-polkit0-build.patch b2534529-unused-param.patch
+
+- Update to libvirt 0.9.3
+  - vcpupin: introduce the new libvirt API (virDomainGetVcpupinInfo)
+  - Add TXT record support for virtual DNS service
+  - Support reboots with the QEMU driver
+  - Introduce virDomainGetControlInfo API
+  - virNodeGetMemoryStats: Expose new API
+  - virNodeGetCPUTime: Implement public API
+  - send-key: Defining the public API
+  - vcpupin: introduce a new libvirt API (virDomainPinVcpuFlags)</comment>
+    <requestid>78144</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>3d339c6e74c1ae82946f99b5025bc78f</srcmd5>
+    <version>0.9.4</version>
+    <time>1312735998</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78144
+</comment>
+  </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>847321850cb09276d5fe175117a1cb2f</srcmd5>
+    <version>0.9.4</version>
+    <time>1314610073</time>
+    <user>saschpe</user>
+    <comment>- Add cgconfig to Should-{Start,Stop} in libvirtd init script
+  bnc#712245
+
+- Fix apparmor profile location and content
+  update install-apparmor-profiles.patch
+  bnc#705668
+
+- Fix libvirtd SIGHUP handler
+  9e093f0b-libvirtd-sighup.patch
+
+- add baselibs.conf to sources
+
+- Enable apparmor security dirver, SLES bnc#705668
+  install-apparmor-profiles.patch</comment>
+    <requestid>79898</requestid>
+  </revision>
+  <revision rev="85" vrev="4">
+    <srcmd5>ec6b95db9f7e865fed189f0a40cad69e</srcmd5>
+    <version>0.9.4</version>
+    <time>1314610084</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79898
+</comment>
+  </revision>
+  <revision rev="86" vrev="5">
+    <srcmd5>2be8b11de0627836d95e972aa90df1a4</srcmd5>
+    <version>0.9.4</version>
+    <time>1316460211</time>
+    <user>lrupp</user>
+    <comment>Updated libvirt package for Factory...
+
+- Enable building with libnetcontrol
+
+- Select libnl-1_1-devel
+
+- Set qemu migration speed unlimited when migrating to file
+  7e5f6a51-rpc-generator.patch b12354be-mig-speed-1.patch
+  1282bd80-mig-speed-2.patch 6f84e110-mig-speed-3.patch
+  829bce17-mig-speed-4.patch 8fc40c51-mig-speed-5.patch
+  ef1065cf-mig-speed-6.patch 0257ba8f-mig-speed-7.patch
+  bnc#706436
+
+- Increase max size of buffer used to receive xend response
+  57c95175-xend-buff-size.patch
+- Don't overwrite useful error messages in legacy xen driver
+  32620dab-fix-xen-err-msg.patch
+  bnc#711096
+
+- Add upstream patches to stop excessive logging
+  7f2498ef-no-log-invalid.patch 6ff9fc26-quiet-libxl-logging.patch
+
+- Add 'Conflicts: kvm &lt; 0.14.1' to ensure libvirt is using a
+  kvm package that creates qemu user:group.  Remove user:group
+  creation from libvirt
+  bnc#694883
+- Add libvirt group at package installation
+  bnc#694885
+
+- Explicitly add 'BuildRequires: libgcrypt-devel' since it is no
+ longer required by libgnutls-devel</comment>
+    <requestid>82564</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>7c55311c6db994a0ab6dc8149114b704</srcmd5>
+    <version>0.9.6</version>
+    <time>1317543413</time>
+    <user>lrupp</user>
+    <comment>- Revert upstream commit f84aedad, which is not needed since
+  affected SUSE kvm packages have the necessary qemu fix
+  f84aedad-revert.patch
+
+- Update to libvirt 0.9.6
+  - Fix shutdown regression with buggy qemu
+
+- Fixed typos in libvirt.spec
+
+- Update to libvirt 0.9.5
+  - many snapshot improvements
+  - latency: Define new public API and structure
+  - USB2 and various USB improvements
+  - storage: Add fs pool formatting
+  - Add public API for getting migration speed
+  - Add basic driver for Microsoft Hyper-V
+  - Many bug fixes and improvements</comment>
+    <requestid>85580</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>077f9fa6010faf97abe52ec0bb5d2403</srcmd5>
+    <version>0.9.6</version>
+    <time>1319024276</time>
+    <user>coolo</user>
+    <comment>- Add AHCI controller support to qemu driver
+  c1bc3d89-qemu-add-ahci.patch
+- Set security driver to 'none' in /etc/libvirt/qemu.conf.  Users
+  must opt-in for Apparmor confinement of qemu instances.
+  suse-qemu-conf.patch</comment>
+    <requestid>88632</requestid>
+  </revision>
+  <revision rev="89" vrev="4">
+    <srcmd5>077f9fa6010faf97abe52ec0bb5d2403</srcmd5>
+    <version>0.9.6</version>
+    <time>1319182144</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>874d21ae98317267802300f78c1f03d9</srcmd5>
+    <version>0.9.7</version>
+    <time>1322583352</time>
+    <user>coolo</user>
+    <comment>- Handle empty strings in s-expression returned by xend
+  a495365d-sexpr-empty-str.patch
+  bnc#731344
+- Allow libvirtd to access libvirt_{io,part}helper when confined
+  by apparmor
+  Update install-apparmor-profiles.patch
+  bnc#730435
+
+- Accommodate Xen domctl version 8
+  xen-domctl-ver8.patch
+
+- add libtool as buildrequire to avoid implicit dependency
+
+- Fix build when using older PolicyKit
+  d47ab3fe-polkit0.patch
+
+- Update to libvirt 0.9.7
+  - esx: support vSphere 5.x
+  - vbox: support for VirtualBox 4.1
+  - Introduce the virDomainOpenGraphics API
+  - Add AHCI support to qemu driver
+  - snapshot: many improvements and 2 new APIs
+  - api: Add public api for 'reset'</comment>
+    <requestid>94176</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>de48263b47f2736befc1b7025a07e7df</srcmd5>
+    <version>0.9.7</version>
+    <time>1322738659</time>
+    <user>coolo</user>
+    <comment>- Allow qemu driver (and hence libvirtd) to load when qemu
+  user:group does not exist.  The kvm or qemu package, which may
+  not exist on a xen host, creates qemu user:group.
+  relax-qemu-usergroup-check.patch</comment>
+    <requestid>94598</requestid>
+  </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>b7feb3677619c3a0fb07100a00a5a262</srcmd5>
+    <version>0.9.7</version>
+    <time>1323192369</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>b3cc1438a2435c542a762c4990499dba</srcmd5>
+    <version>0.9.8</version>
+    <time>1325767886</time>
+    <user>coolo</user>
+    <comment>- Fixup systemd support as per openSUSE systemd packaging
+  guidelines.
+
+- Use %fdupes for duplicate file checking instead of hand-rolled
+  function
+
+- CVE-2011-4600: unintended firewall port exposure after restarting
+  libvirtd when defining a bridged forward-mode network
+  ae1232b2-CVE-2011-4600.patch
+  bnc#736082
+- Post-0.9.8 upstream systemd patches
+  10404671-systemd-build-fix.patch 478a4d07-systemd-build-fix.patch
+  
+- Update to libvirt 0.9.8
+  - Add support for QEMU 1.0
+  - Add first parts of PPC cpu driver
+  - Add new API virDomain{Set, Get}BlockIoTune
+  - block_resize: Define the new API
+  - Add a public API to invoke suspend/resume on the host
+  - Various improvements for LXC containers
+  - Define keepalive protocol and add virConnectIsAlive API
+  - Add support for STP and VLANfiltering
+  - Numerous bug fixes and improvements
+
+- Add support for QEMU 1.0
+  dd8e8956-qemu-1.0.patch
+  bnc#736569</comment>
+    <requestid>98823</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>2aa173ad46882c3933c35b5ba88ab31e</srcmd5>
+    <version>0.9.9</version>
+    <time>1326962601</time>
+    <user>coolo</user>
+    <comment>- During configure, libvirt checks for availability of iptables
+  binary and doesn't actually use anything from iptables-devel
+  package, hence only need 'BuildRequires: iptables'.
+
+- Update to libvirt 0.9.9
+  - Add new API virDomain{S,G}etInterfaceParameters
+  - Add new API virDomain{G,S}etNumaParameters
+  - Add support for ppc64 qemu
+  - Support Xen domctl v8</comment>
+    <requestid>100461</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>7ed4a87549235fcef03c88faff075e52</srcmd5>
+    <version>0.9.10</version>
+    <time>1329476514</time>
+    <user>coolo</user>
+    <comment>- Add a note in /etc/libvirt/qemu.conf describing administrator
+  vigilance required when enabling a lock manager such as sanlock
+
+- Recommend dmidecode if suse_version &gt; 1110.  dmidecode is used
+  by virConnectGetSysinfo.
+
+- Add upstream patches to fix issues with older PolicyKit
+  c05ec920-polkit0-build.patch
+  fcdfa31f-polkit0-auth.patch
+
+- Update to libvirt 0.9.10
+  - Add support for sVirt in the LXC driver
+  - Add new API virDomainBlockRebase
+  - Add api to set and get domain metadata
+  - virDomainGetDiskErrors public API
+  - Add rawio attribute to disk element of domain XML
+  - Introduce virDomainPMSuspendForDuration API
+  - Add virStorageVolResize() API
+  - Add a virt-host-validate command to sanity check HV config
+  - Add new virDomainShutdownFlags API
+  - QEMU guest agent support
+
+- Fix libvirtd apparmor profile to work with libxenlight toolstack
+  Updated install-apparmor-profiles.patch
+  bnc#745890
+
+- Fix init script packaging after enabling systemd support
+
+- Fix %files after enabling sanlock support</comment>
+    <requestid>105602</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>0f4809635ff29912e620c3c2e2d28635</srcmd5>
+    <version>0.9.11</version>
+    <time>1335190280</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>114994</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>eb771ec9c189ba5637930a24eda2dfdf</srcmd5>
+    <version>0.9.11</version>
+    <time>1336468501</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116336</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>250be3e7f285ce818d499cbd1e33a216</srcmd5>
+    <version>0.9.11.3</version>
+    <time>1338528058</time>
+    <user>coolo</user>
+    <comment>- Add capability 'audit_write' to libvirtd apparmor profile
+  update install-apparmor-profiles.patch
+  bnc#764388
+- Update to libvirt 0.9.11.3 stable release</comment>
+    <requestid>123118</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>250be3e7f285ce818d499cbd1e33a216</srcmd5>
+    <version>0.9.11.3</version>
+    <time>1340183649</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>8da56360c2fde8ea25f3edb3497d7207</srcmd5>
+    <version>0.9.11.4</version>
+    <time>1342082890</time>
+    <user>namtrac</user>
+    <comment>- libvirtd.service: ensure libvirtd starts after network
+  4036aa91-systemd.patch
+  bnc#767932
+
+- Add upstream patch to fix ref count of virNetServer object
+  9c77bf04-fix-virnetserver-refcnt.patch
+
+- Fix libvirtd deadlock on shutdown
+  0dda594d-libvirtd-shutdown-deadlock.patch
+  bnc#767797
+
+- Fix segfault in libvirt_lxc
+  57349ffc-lxc-ctrl.patch
+  bnc#767448
+
+- Fix build on i586
+  revert-d8978c90.patch
+
+- Update to libvirt 0.9.11.4 stable release
+
+- VUL-1: Fix hotplug support for usb devices with same vendorID,
+  productID
+  9914477e-usb-search-funcs.patch
+  05abd150-usb-improve-hotplug.patch
+  bnc#766559</comment>
+    <requestid>127535</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>57ea4ab483a8d119a92c1ea9ae181f2a</srcmd5>
+    <version>0.9.11.4</version>
+    <time>1344079366</time>
+    <user>coolo</user>
+    <comment>- daemon: Fix crash in virTypedParameterArrayClear
+  CVE-2012-3445
+  6039a2cb-CVE-2012-3445.patch
+  bnc#773955</comment>
+    <requestid>129611</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>178bf3f0f64847ba4adcab15b7e8aa75</srcmd5>
+    <version>0.9.13</version>
+    <time>1345638995</time>
+    <user>namtrac</user>
+    <comment>- Update to libvirt 0.9.13
+  - S390: support for s390(x)
+  - snapshot: implement new APIs for esx and vbox
+  - snapshot: new query APIs and many improvements
+  - virsh: Allow users to reedit rejected XML
+  - nwfilter: add DHCP snooping
+  - storage backend: Add RBD (RADOS Block Device) support
+  - sVirt support for LXC domains inprovement
+  - Drop upstream patches
+    0dda594d-libvirtd-shutdown-deadlock.patch
+    9c77bf04-fix-virnetserver-refcnt.patch
+    57349ffc-lxc-ctrl.patch
+    revert-d8978c90.patch
+
+_ Update to libvirt 0.9.12
+  - qemu: allow snapshotting of sheepdog and rbd disks
+  - blockjob: add new AP
+  - many bug fixes and improvements</comment>
+    <requestid>131251</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>8d9c81e6e2fc06c50a8c32468cc43109</srcmd5>
+    <version>0.9.13</version>
+    <time>1346488321</time>
+    <user>namtrac</user>
+    <comment>- Fix xen driver following changes to make it stateful
+  f781e276-xen-driver-fix.patch
+  bnc#778006</comment>
+    <requestid>132204</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>5704a2b70952e2487e286c0c8e837afb</srcmd5>
+    <version>0.10.2</version>
+    <time>1348646880</time>
+    <user>coolo</user>
+    <comment>- Temporarily disable building libxl driver.  The current
+  implementation does not support libxl in Xen 4.2.
+
+- Update to libvirt 0.10.2
+  - network: define new API virNetworkUpdate
+  - add support for QEmu sandbox support
+  - blockjob: add virDomainBlockCommit
+  - node_memory: Define the APIs to get/set memory parameters
+  - list: Define new API virConnectListAllSecrets
+  - list: Define new API virConnectListAllNWFilter
+  - list: Define new API virConnectListAllNodeDevices
+  - list: Define new API virConnectListAllInterfaces
+  - list: Define new API virConnectListAllNetworks
+  - list: Define new API virStoragePoolListAllVolumes
+  - list: Define new API virStorageListAllStoragePools
+  - parallels: add support of containers to the driver
+  - Add PMSUSPENDED life cycle event
+  - Add per-guest S3/S4 state configuration
+  - qemu: Support for Block Device IO Limits
+
+- Update to libvirt 0.10.1
+  - Bug fix release for critical bugs in 0.10.0
+  - Drop upstream patch f781e276-xen-driver-fix.patch
+
+- Update to libvirt 0.10.0
+  - agent: add qemuAgentArbitraryCommand()
+  - Introduce virDomainPinEmulator and virDomainGetEmulatorPinInfo
+  - network: use firewalld instead of iptables, when available
+  - network: make network driver vlan-aware
+  - esx: Implement network driver</comment>
+    <requestid>136014</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>5b0f6b2bddfa96748dd8ef10849c3f87</srcmd5>
+    <version>0.10.2</version>
+    <time>1348925609</time>
+    <user>coolo</user>
+    <comment>- Fix build when using -werror
+  416eca18-xenstore-header-fix.patch
+
+- Support Xen sysctl version 9
+  371ddc98-xen-sysctl-9.patch
+  bnc#781425</comment>
+    <requestid>136275</requestid>
+  </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>48e6e2638f8e02abf904b77069872ef4</srcmd5>
+    <version>0.10.2</version>
+    <time>1350622192</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138728</requestid>
+  </revision>
+  <revision rev="107" vrev="4">
+    <srcmd5>da29b6b8fe12d25a08127f54c1c448a7</srcmd5>
+    <version>0.10.2</version>
+    <time>1351264425</time>
+    <user>coolo</user>
+    <comment>- Fix Xen sysctl version 9 support
+  9785f2b6-fix-xen-sysctl9.patch</comment>
+    <requestid>139173</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>ceb4197e22474c8ca3b5ca7fcdcef065</srcmd5>
+    <version>1.0.1</version>
+    <time>1357651951</time>
+    <user>coolo</user>
+    <comment>- Update to libvirt 1.0.1
+  - Introduce virtlockd daemon
+  - parallels: add disk and network device support
+  - Add virDomainSendProcessSignal API
+  - Introduce virDomainFSTrim() public API
+  - add fuse support for libvirt lxc
+  - Add Gluster protocol as supported network disk backend
+  - various snapshot improvements
+- Add upstream patches to fix bugs in 1.0.1
+  66ff2ddc-virtlockd-systemd-file-perms.patch,
+  462a6962-script-fixes1.patch, cb854b8f-script-fixes2.patch,
+  5ec4b22b-script-fixes3.patch, a1fd56cb-script-fixes4.patch,
+  68e7bc45-libxl-link-fix.patch
+- Rework SUSE patches for the various init scripts
+  Dropped use-init-script-redhat.patch and added
+  libvirtd-init-script.patch, libvirt-guests-init-script.patch,
+  and virtlockd-init-script.patch
+
+- Update to libvirt 1.0.0
+  - virNodeGetCPUMap: Define public API
+  - Add systemd journal support
+  - Add a qemu capabilities cache manager
+  - USB migration support
+  - various improvement and fixes when using QMP QEmu interface
+  - Support for Xen 4.2 in legacy xen driver
+  - Lot of localization enhancements
+  - Drop upstream patches: 371ddc98-xen-sysctl-9.patch,
+    416eca18-xenstore-header-fix.patch,
+    f644361b-virCommand-env.patch, 2b32735a-virCommand-env.patch,
+    9785f2b6-fix-xen-sysctl9.patch</comment>
+    <requestid>147454</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>8d8c033223cc9c761c9c4e60fa0346ba</srcmd5>
+    <version>1.0.1</version>
+    <time>1359019449</time>
+    <user>coolo</user>
+    <comment>- Unconditionally build sanlock support
+  bnc#799262
+
+- Fix interface management functions that were broken when
+  rebasing libvirt-suse-netcontrol.patch
+  bnc#799444 (SLES bug that affect Factory too)</comment>
+    <requestid>149603</requestid>
+  </revision>
+  <revision rev="110" vrev="4">
+    <srcmd5>8d8c033223cc9c761c9c4e60fa0346ba</srcmd5>
+    <version>1.0.1</version>
+    <time>1359109370</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>38aff97f9fb89d27376385295c4e18df</srcmd5>
+    <version>1.0.2</version>
+    <time>1359997212</time>
+    <user>coolo</user>
+    <comment>Supersedes SR#150760.  Added note in changelog that the update
+to 1.0.2 fixes CVE-2013-0170, bnc#800976.  I hope this update
+can be applied to Factory and 12.3.
+
+- Update to libvirt 1.0.2
+  - LXC improvements
+  - S390 architecture improvements
+  - Power architecture improvements
+  - large Coverity report cleanups and associated bug fixes
+  - virTypedParams* APIs to help with those data structures
+  - libxenlight driver improvements
+  - Fixes CVE-2013-0170, bnc#800976
+  - Drop upstream patches: 68e7bc45-libxl-link-fix.patch,
+    462a6962-script-fixes1.patch, cb854b8f-script-fixes2.patch,
+    5ec4b22b-script-fixes3.patch, a1fd56cb-script-fixes4.patch,
+    66ff2ddc-virtlockd-systemd-file-perms.patch</comment>
+    <requestid>150767</requestid>
+  </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>3b5bc2d010ff1054ff4d0c9a6f92a958</srcmd5>
+    <version>1.0.2</version>
+    <time>1360059485</time>
+    <user>coolo</user>
+    <comment>- Require modutils instead of module-init-tools. (forwarded request 150880 from elvigia)</comment>
+    <requestid>151199</requestid>
+  </revision>
+  <revision rev="113" vrev="3">
+    <srcmd5>b790d41a97ae9521dfb51bf659de60af</srcmd5>
+    <version>1.0.2</version>
+    <time>1360401177</time>
+    <user>coolo</user>
+    <comment>Updated libvirt package for Factory to fix bnc#802619.  coolo, can
+this be copied to 12.3 as well?  That is a nasty bug in the python
+bindings :(.  Thanks!
+
+- Fix error handling in python bindings
+  a6b8bae5-python-generator-fix1.patch
+  25ea8e47-python-generator-fix2.patch
+  bnc#802619</comment>
+    <requestid>154941</requestid>
+  </revision>
+  <revision rev="114" vrev="4">
+    <srcmd5>6458424be702d1ff4b9c11c48babfc77</srcmd5>
+    <version>1.0.2</version>
+    <time>1361888232</time>
+    <user>coolo</user>
+    <comment>Collection of bug fixes for libvirt 1.0.2 package.  Please copy
+to 12.3 if that is still an option.  Thanks!
+
+- Fix detach of managed PCI devices from inactive domains.
+  Detected while running test cases for FATE #313570.
+  Modified xen-name-for-devid.patch
+
+- spec: Fix installation of default network
+
+- Fix default setting of backend field of libxl_device_disk
+  567779e5-libxl-default-disk-backend.patch
+  rhb#912488
+
+- Fix build on IA64
+  Modified clone.patch</comment>
+    <requestid>156381</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>b690a408e22c613ccca8c954ae443b3c</srcmd5>
+    <version>1.0.3</version>
+    <time>1363511231</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159618</requestid>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>8c752bd4f970c1ad21f82c3cd689db4d</srcmd5>
+    <version>1.0.3</version>
+    <time>1364240267</time>
+    <user>coolo</user>
+    <comment>add libvirt-iptables-1.4.18.diff, fix masquerading with iptables v1.4.18 (forwarded request 160819 from seife)</comment>
+    <requestid>160822</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>c1f16bbad05827b02e7f8f6548f73307</srcmd5>
+    <version>1.0.5</version>
+    <time>1369641143</time>
+    <user>coolo</user>
+    <comment>New libvirt package for Factory.
+
+- fix leak after listing all volumes - CVE-2013-1962
+  ca697e90-CVE-2013-1962.patch
+  bnc#820397
+- Fix iohelper usage with streams opened for read
+  a2214c52-iohelper.patch
+- Cope with missing swap cgroup controls
+  f493d83f-cgroup-swap-control.patch
+  bnc#819976
+- Fix cgroup handling when setting VCPU BW
+  0471637d-cgroups-vcpu-bw.patch
+  rhb#963592
+- Escape a leading '.' with '_' in the cgroup names
+  0ced83dc-cgroup-escape-dot.patch
+- Add missing documentation on new cgroup layout
+  486a86eb-cgroups-docs.patch
+- Another fix related to systems with no cgroups
+  c2cf5f1c-no-cgroups-fix.patch
+  bnc#819963
+
+- Fix botched backport of commit bbe97ae9
+
+- Fix starting domains when kernel has no cgroups support
+  bbe97ae9-no-cgroups.patch
+
+- Update to libvirt 1.0.5
+  - PPC64: Add NVRAM device
+  - Add XML config for resource partitions
+  - Add support for TPM
+  - NPIV storage migration support
+  - Many incremental improvements and bug fixes, see</comment>
+    <requestid>176049</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>82c71a2fb6a76f72438ac7e65c8597c6</srcmd5>
+    <version>1.0.5.1</version>
+    <time>1370431768</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176897</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>ca3c25480edf33293c9b292776d3b708</srcmd5>
+    <version>1.0.6</version>
+    <time>1370925364</time>
+    <user>coolo</user>
+    <comment>Superseds SR#178013
+
+V3: Remove rpmlintrc lameness and fix build for SLE11 SP2
+V2: fix devel subpackage
+
+Along with an update to version 1.0.6, this SR includes a
+significant change in the package structure.  The libvirt
+daemon is decomposed into virtualizer-specific subpackages,
+which e.g. alleviates the need for xen-libs to be installed
+on a KVM host.  Please review and provide any feedback.  I'd
+like to get this accepted for the next 13.1 milestone to
+get greater test exposure.  Thanks!
+- Fix build for SLE11 SP2
+
+- Add a README to the empty packages.  Provides some info about
+  their purpose and satisfies suse-filelist-empty check.
+  Drop rpmlintrc
+
+- Fix typo in spec file: devel package requires doc package, not
+  docs
+
+- Add rpmlintrc to get around suse-filelist-empty error on
+  older distros.
+
+- Refactor libvirt spec file to create subpackages for the various
+  libvirtd components.  This allows installing a libvirtd tailored
+  for the underlying virtualizer.  E.g. on a KVM/QEMU virtualizer
+  only the libvirt-daemon-qemu package needs installed.
+  Similarly, only libvirt-daemon-xen on a Xen virtualizer and 
+  libvirt-daemon-lxc on LXC.
+
+- Update to libvirt 1.0.6
+  - Move VirtualBox driver into libvirtd
+  - Support for static routes on a virtual bridge
+  - Various improvement for hostdev SCSI support
+  - Switch to VIR_STRDUP and VIR_STRNDUP
+  - Various cleanups and improvement in Xen and LXC drivers
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: f493d83f-cgroup-swap-control.patch,
+    486a86eb-cgroups-docs.patch, 0ced83dc-cgroup-escape-dot.patch,
+    bbe97ae9-no-cgroups.patch, c2cf5f1c-no-cgroups-fix.patch,</comment>
+    <requestid>178413</requestid>
+  </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>631a496bf3ce9e8a47221149c339cae4</srcmd5>
+    <version>1.0.6</version>
+    <time>1371645992</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>179633</requestid>
+  </revision>
+  <revision rev="121" vrev="3">
+    <srcmd5>365b962a6269a39bdc7778ea33e06129</srcmd5>
+    <version>1.0.6</version>
+    <time>1372743556</time>
+    <user>coolo</user>
+    <comment>Updated libvirt package to fix CVE-2013-2218.  I still have some
+packaging issues to resolve before submitting libvirt 1.1.0, but
+wanted to get this CVE fix submitted to Factory in the meantime.
+
+- CVE-2013-2218: Fix crash listing network interfaces with filters
+  244e0b8c-CVE-2013-2218.patch</comment>
+    <requestid>181642</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>a19227b52beb0bc07141d98ceed94221</srcmd5>
+    <version>1.1.0</version>
+    <time>1373874486</time>
+    <user>coolo</user>
+    <comment>New libvirt package for Factory.
+
+- CVE-2013-2230: Fix crash when multiple event callbacks were
+  registered
+  f38c8185-CVE-2013-2230.patch
+  bnc#827801
+
+- Update to libvirt 1.1.0
+  - Extensible migration APIs
+  - Add a policy kit access control driver
+  - various improvements in the Xen and libxl drivers
+  - improve networking support on BSD
+  - agent based vCPU hotplug support
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: 244e0b8c-CVE-2013-2218.patch
+
+- Only require lzop if suse_version &gt; 1210
+
+- Fix typo in spec file
+
+- Enable support for netcontrol by default
+- Only require libvirt-daemon-driver-interface when building the
+  interface driver</comment>
+    <requestid>182939</requestid>
+  </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>3c876fb4737f2b21c1bf3d454f940487</srcmd5>
+    <version>1.1.0</version>
+    <time>1374387058</time>
+    <user>coolo</user>
+    <comment>Fix libvirt to work with the old xen toolstack.  Reported by
+a community user.
+
+- Fix legacy xen driver with Xen 4.3
+  fd2e3c4c-xen-sysctl-domctl.patch</comment>
+    <requestid>183784</requestid>
+  </revision>
+  <revision rev="124" vrev="3">
+    <srcmd5>391e1a0f22cd0cc7a49ae44d818b4d86</srcmd5>
+    <version>1.1.0</version>
+    <time>1374755696</time>
+    <user>coolo</user>
+    <comment>Updated libvirt 1.1.0 package to fix two CVE's.
+
+- CVE-2013-4153: Fix double free of returned JSON array in
+  qemuAgentGetVCPUs()
+  dfc69235-CVE-2013-4153.patch
+- CVE-2013-4154: Prevent crash of libvirtd without guest agent
+  configuration
+  96518d43-CVE-2013-4154.patch
+  bnc#830498</comment>
+    <requestid>184015</requestid>
+  </revision>
+  <revision rev="125" vrev="4">
+    <srcmd5>bc88566205e2899f9be1500f3af55e79</srcmd5>
+    <version>1.1.0</version>
+    <time>1375177314</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184904</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>8e294163dc81e645225051abc9c0b8d0</srcmd5>
+    <version>1.1.1</version>
+    <time>1375596026</time>
+    <user>coolo</user>
+    <comment>New libvirt package for Factory...
+
+- Backport upstream patch implementing domainOpenConsole in the
+  libxl driver.  Allows 'virsh console dom-name' to work with
+  Xen libxl toolstack.
+  bcef0f01-libxl-console.patch
+
+- Update to libvirt 1.1.1
+  - Adding device removal or deletion events
+  - Introduce new domain create APIs to pass pre-opened FDs to LXC
+  - Add interface versions for Xen 4.3
+  - Add new public API virDomainSetMemoryStatsPeriod
+  - Various LXC improvements
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: f38c8185-CVE-2013-2230.patch,
+    fd2e3c4c-xen-sysctl-domctl.patch, dfc69235-CVE-2013-4153.patch,
+    96518d43-CVE-2013-4154.patch, fe89fd3b-storage-pool-deadlock.patch
+  - Drop relax-qemu-usergroup-check.patch - no longer needed
+    after hypervisor-specific daemon package split</comment>
+    <requestid>185687</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>b43d004938955b4ff6a616d72fe43241</srcmd5>
+    <version>1.1.1</version>
+    <time>1376565758</time>
+    <user>scarabeus_factory</user>
+    <comment>Updated libvirt 1.1.1 package for Factory, primarily to 
+fix CVE-2013-4239.
+
+- Fix memory corruption in legacy Xen driver
+  0e671a16-CVE-2013-4239.patch
+  bnc#834598
+- Upstream patches to fix dumpxml in legacy Xen driver
+  9d0557b9-legacy-xen-double-free.patch,
+  d7a45bf2-legacy-xen-dumpxml.patch</comment>
+    <requestid>186975</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>90c416cffb9ce12ea1bcad35ff604cb8</srcmd5>
+    <version>1.1.2</version>
+    <time>1378532162</time>
+    <user>coolo</user>
+    <comment>- Update to libvirt 1.1.2
+  - various improvements to libxl driver
+  - systemd integration improvements
+  - Add flag to BaselineCPU API to return detailed CPU features
+  - Introduce a virt-login-shell binary
+  - conf: add startupPolicy attribute for harddisk
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: bcef0f01-libxl-console.patch,
+    9d0557b9-legacy-xen-double-free.patch,
+    d7a45bf2-legacy-xen-dumpxml.patch, 0e671a16-CVE-2013-4239.patch
+  - Includes fixes for bnc#837530, bnc#837531, bnc#837999
+
+Note: above bug fixes are CVE-2013-4291, CVE-2013-4292, and
+CVE-2013-5651 respectively.</comment>
+    <requestid>197361</requestid>
+  </revision>
+  <revision rev="129" vrev="3">
+    <srcmd5>90c416cffb9ce12ea1bcad35ff604cb8</srcmd5>
+    <version>1.1.2</version>
+    <time>1379663124</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="130" vrev="4">
+    <srcmd5>6f1d3a7445ca0cc46bb09015a2e19dd8</srcmd5>
+    <version>1.1.2</version>
+    <time>1380809093</time>
+    <user>scarabeus_factory</user>
+    <comment>Updated libvirt package for Factory/13.1 that fixes several
+CVEs.  Please copy to 13.1 as well, or let me know if I need
+an explicit SR for that.  Thanks!
+
+- CVE-2013-4311: Add support for using 3-arg pkcheck syntax for
+  process
+  db7a5688-CVE-2013-4311.patch, e65667c0-CVE-2013-4311.patch,
+  922b7fda-CVE-2013-4311.patch, e4697b92-CVE-2013-4311.patch
+  bnc#836931
+
+- CVE-2013-4296: Fix crash in remoteDispatchDomainMemoryStats
+  e7f400a1-CVE-2013-4296.patch
+  bnc#838638
+- CVE-2013-4297: Fix crash in virFileNBDDeviceAssociate
+  2dba0323-CVE-2013-4297.patch
+  bnc#838642</comment>
+    <requestid>201962</requestid>
+  </revision>
+  <revision rev="131" vrev="5">
+    <srcmd5>4783bd88b479f051515da3fde1804556</srcmd5>
+    <version>1.1.2</version>
+    <time>1381474502</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202896</requestid>
+  </revision>
+  <revision rev="132" vrev="6">
+    <srcmd5>0d96f74e251050853eda009775a79160</srcmd5>
+    <version>1.1.2</version>
+    <time>1381826549</time>
+    <user>scarabeus_factory</user>
+    <comment>Updated libvirt package for Factory/13.1 fixing various bugs
+and security issues.  Please copy to 13.1 or let me know if
+an explicit SR is needed for 13.1.  Thanks!
+
+- Move virt-login-shell to new subpackage libvirt-login-shell,
+  requiring users to opt-in for this setuid binary.  Note: For now,
+  virt-login-shell will not have setuid permissions, pending
+  resolution of bnc#837609
+
+- qemu: Fix seamless SPICE migration
+  484cc321-fix-spice-migration.patch
+  bnc#842301
+
+- CVE-2013-4399: Fix crash in libvirtd when events are registered
+  and ACLs active
+  8294aa0c-CVE-2013-4399.patch
+  bnc#844052, bnc#842300
+
+- Update the stale gettext BuildRequires and Requires dependencies
+  in the spec file
+  bnc#841325
+
+- virt-aa-helper apparmor profile was denying read access to
+  /proc/$PID/*.  Give read accesss to these files.
+  Updated install-apparmor-profiles.patch
+  bnc#841720
+
+- libvirtd apparmor profile was denying access to
+  /usr/lib/xen/bin/qemu-system-i386, which is now the default
+  emulator used with Xen guests
+  Updated install-apparmor-profiles.patch
+  bnc#845648</comment>
+    <requestid>203343</requestid>
+  </revision>
+  <revision rev="133" vrev="7">
+    <srcmd5>2831fb8bf7da648eb37ca8dcd663ce78</srcmd5>
+    <version>1.1.2</version>
+    <time>1383035201</time>
+    <user>coolo</user>
+    <comment>Sorry for the delay.  Quite some work to get libvirt in shape for RC2.
+Lots of bug fixes, and most importantly fixes for CVE-2013-{4400,4401}.
+Pretty please copy to 13.1 :)
+
+- libxl driver: fix initialization of VNC and SDL info for
+  HVM domains
+  libxl-hvm-vnc.patch
+  bnc#847566
+- Allow libvirtd apparmor profile to access /etc/xen/scripts/*
+
+- Fix file descriptor passing in python bindings
+  e350826c-python-fix-fd-passing.patch
+  rhb#1021434
+
+- Have systemd terminate the machine as a workaround of fdo#68370
+  bd773e74-lxc-terminate-machine.patch
+  bnc#842834
+
+- Spec file fixes to only package libvirt-login-shell when
+  building the LXC driver
+
+- CVE-2013-4400: Unsantized use of env variables allows privilege
+  escalation via virt-login-shell
+  ae53e5d1-CVE-2013-4400.patch, 8c3586ea-CVE-2013-4400.patch,
+  b7fcc799a-CVE-2013-4400.patch, 3e2f27e1-CVE-2013-4400.patch,
+  5a0ea4b7-CVE-2013-4400.patch, 843bdb2f-CVE-2013-4400.patch
+  bnc#837609
+- CVE-2013-4401: Fix perms for virConnectDomainXML{To,From}Native
+  57687fd6-CVE-2013-4401.patch
+  bnc#845704
+
+- Move hypervisor-specific files out of libvirt-daemon package
+  and into libvirt-daemon-&lt;hypervisor&gt; subpackage
+  bnc#845851</comment>
+    <requestid>204842</requestid>
+  </revision>
+  <revision rev="134" vrev="8">
+    <srcmd5>e49b6bc536114eccc22424e79a0cf860</srcmd5>
+    <version>1.1.2</version>
+    <time>1383230703</time>
+    <user>coolo</user>
+    <comment>Fix unfortunate typo in the libvirtd apparmor profile, found via
+bnc#848216.  If it is not too late, please copy to 13.1.  Thanks!
+
+- Fix typo in libvirtd apparmor profile which prevented the profile
+  from loading
+  bnc#848216</comment>
+    <requestid>205242</requestid>
+  </revision>
+  <revision rev="135" vrev="9">
+    <srcmd5>6be92aca36e1f39bbc1d4bbb50eeac74</srcmd5>
+    <version>1.1.2</version>
+    <time>1383810026</time>
+    <user>coolo</user>
+    <comment>This fixes a nasty bug in Factory/13.1 RC2 that prevents using emulated
+NICs in Xen HVM guests, e.g. preventing PXE boot.  It would be really
+nice to get this in 13.1 GM, so please copy to 13.1 if that is possible.
+Thanks!
+
+- Fix initialization of libxl NIC devices
+  libxl-hvm-nic.patch
+  bnc#848918</comment>
+    <requestid>205796</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>e3915b805309735990faf87672f63aa6</srcmd5>
+    <version>1.2.0</version>
+    <time>1389124710</time>
+    <user>coolo</user>
+    <comment>- Ignore 'make check' on older, code 11 base</comment>
+    <requestid>212580</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>e08ddf486d93ca9f7eea5cc4c2d02120</srcmd5>
+    <version>1.2.1</version>
+    <time>1390482201</time>
+    <user>coolo</user>
+    <comment>Updated libvirt package for Factory.  The update to 1.2.1 fixes
+several CVE's noted below.
+
+- Add CAP_SYS_PACCT capability to libvirtd AppArmor profile
+  Modified install-apparmor-profiles.patch
+  bnc#817407
+
+- Fix build on code 11
+- Fix rpmlint warning
+
+- Following the upstream pattern, introduce the
+  daemon-config-network subpackage to handle defining the default
+  network
+  bnc#859041
+
+- Update to libvirt 1.2.1
+  - CVE-2014-0028, CVE-2014-1447, CVE-2013-6458, CVE-2013-6457,
+    CVE-2013-6436
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped upstream patches: 5e397d9c-test-fix-dbus-crash.patch,
+    78af457e-fix-virnettlscontexttest.patch,
+    9faf3f29-LXC-memtune.patch, f8c1cb90-CVE-2013-6436.patch,
+    libxl-hvm-nic.patch</comment>
+    <requestid>214742</requestid>
+  </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>b0a74a8a5bf8110db40657b41840be4d</srcmd5>
+    <version>1.2.1</version>
+    <time>1391680173</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221056</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>bfac4a6aaf92dfe237ed3de39d45b032</srcmd5>
+    <version>1.2.2</version>
+    <time>1393937114</time>
+    <user>coolo</user>
+    <comment>- Update to libvirt 1.2.2
+  - add LXC from native conversion tool
+  - vbox: add support for v4.2.20+ and v4.3.4+
+  - CVE-2013-6456 (bnc#857490)
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: 37564b47-xend-parse-response.patch,
+    4f20084-fix-apparmor-install-patch.patch
+  - Add local disable-virCgroupGetPercpuStats-test.patch to disable
+    failing virCgroupGetPercpuStats test in 'make check'
+
+- daemon-qemu: Require qemu instead of kvm to align with
+  recent changes to the qemu package structure
+
+- spec: fix dependencies of daemon-config-network and
+  daemon-config-nwfilter subpackages.  Influenced by upstream
+  commits cf76c4b3 and dca5ce4c 
+
+- Remove libvirtd, virtlockd, and libvirt-guests init scripts when
+  using systemd
+  bnc#863540  
+
+- Fix the path to libvirtd AppArmor template profile</comment>
+    <requestid>224371</requestid>
+  </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>5be4e68f223982b04daa69732a9cc818</srcmd5>
+    <version>1.2.2</version>
+    <time>1394635549</time>
+    <user>coolo</user>
+    <comment>Fixed spec file:
+  * Added missing apparmor-parser requires
+  * Removed explicit libcgroup1 requires (forwarded request 225657 from cbosdonnat)</comment>
+    <requestid>225658</requestid>
+  </revision>
+  <revision rev="141" vrev="3">
+    <srcmd5>f7103ca4141a023d35033bd70a2a06a8</srcmd5>
+    <version>1.2.2</version>
+    <time>1395475731</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>227066</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>4f922f49eb00e14f0a1e0a34406b4d16</srcmd5>
+    <version>1.2.3</version>
+    <time>1396709243</time>
+    <user>coolo</user>
+    <comment>cleanup after upgrade to 1.2.3 (forwarded request 229020 from cbosdonnat)</comment>
+    <requestid>229021</requestid>
+  </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>2b5ce412ae6a9f8c6a7e9b5834ab0dbf</srcmd5>
+    <version>1.2.3</version>
+    <time>1397626022</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>230245</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>f7769a1d6cfbe1abdf959b9cc1768254</srcmd5>
+    <version>1.2.4</version>
+    <time>1399545544</time>
+    <user>coolo</user>
+    <comment>- Update to libvirt 1.2.4
+  - Primarily a bug-fix release.  See http://libvirt.org/news.html
+    for a detailed list of bug fixes and improvements
+  - Drop upstream patches:
+    0e0c1a74-domid-fix.patch, 7a1452f5-libxl-empty-cdrom.patch
+- libxl: Support ACPI shutdown event
+  b98bf811-add-paravirt-shutdown-flag.patch,
+  c4fe29f8-use-shutdown-flag.patch, da744120-use-reboot-flag.patch
+  bnc#872777
+- libx: Support migration
+  libxl-migration-support.patch
+  bnc#875193
+
+- CVE-2014-0179: Don't expand entities when parsing XML
+  d6b27d3e-CVE-2014-0179.patch
+  bnc#873705</comment>
+    <requestid>232966</requestid>
+  </revision>
+  <revision rev="145" vrev="2">
+    <srcmd5>11dd6668f42d64d18c4663a3ab0ffea4</srcmd5>
+    <version>1.2.4</version>
+    <time>1400681979</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234768</requestid>
+  </revision>
+  <revision rev="146" vrev="3">
+    <srcmd5>c2c946a341adcc32176fda182e5045b9</srcmd5>
+    <version>1.2.4</version>
+    <time>1400825315</time>
+    <user>coolo</user>
+    <comment>- blacklist one more unit test for qemu_linux_user builds (forwarded request 235109 from dirkmueller)</comment>
+    <requestid>235117</requestid>
+  </revision>
+  <revision rev="147" vrev="4">
+    <srcmd5>562f2698c57eb501513e3ec34d335b79</srcmd5>
+    <version>1.2.4</version>
+    <time>1401644440</time>
+    <user>coolo</user>
+    <comment>- Fix the build breakers brought by libselinux 2.3.
+  libselinux-build-fix.patch (forwarded request 235677 from cbosdonnat)</comment>
+    <requestid>235678</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>0a69b63fd6abc74eb774c0ba8e0ba7a9</srcmd5>
+    <version>1.2.5</version>
+    <time>1401899951</time>
+    <user>coolo</user>
+    <comment>- Update to libvirt 1.2.5
+  - Introduce virDomain{Get,Set}Time APIs
+  - Introduce virDomainFSFreeze() and virDomainFSThaw() public API
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches:
+    b98bf811-add-paravirt-shutdown-flag.patch,
+    c4fe29f8-use-shutdown-flag.patch,
+    da744120-use-reboot-flag.patch,
+    d6b27d3e-CVE-2014-0179.patch,
+    fd43d1f8-libxl-iface-hostdev.patch,
+    99f50208-managed-hostdev-iface.patch,
+    292d3f2d-libselinux-build-fix1.patch,
+    b109c097-libselinux-build-fix2.patch (forwarded request 235993 from jfehlig)</comment>
+    <requestid>235994</requestid>
+  </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>d17c63fcc0551c511bb0cbec89b41011</srcmd5>
+    <version>1.2.5</version>
+    <time>1402403910</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236507</requestid>
+  </revision>
+  <revision rev="150" vrev="3">
+    <srcmd5>f94e8d2747dce34675eaf9ba5849265a</srcmd5>
+    <version>1.2.5</version>
+    <time>1403724031</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238659</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>3e954e6cedc67a14e011b86d1ef652ec</srcmd5>
+    <version>1.2.6</version>
+    <time>1404487117</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239390</requestid>
+  </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>913c71611f0e31d5c868dc06d5916a47</srcmd5>
+    <version>1.2.6</version>
+    <time>1405573102</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241236</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>f5188a66fac7eab9eecb9c43bf28ccf7</srcmd5>
+    <version>1.2.7</version>
+    <time>1407227068</time>
+    <user>coolo</user>
+    <comment>Supersedes 243626, fixing a copy and paste error in the latest
+changelog entry.
+
+- Update to libvirt 1.2.7
+  - Introduce virConnectGetDomainCapabilities
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: dba3432b-virt-lxc-convert-fix.patch,
+    9b1e4cd5-skip-useless-apparmor-files.patch,
+    9265f8ab-apparmor-lxc-rework.patch,
+    add-nocow-to-vol-xml.patch,
+    lxc-keep-caps-feature.patch,
+    lxc-keep-caps-feature-conversion.patch,
+    lxc-keep-caps-feature-doc.patch,
+    lxc-net-target-name.patch,
+    lxc-net-target-name-conversion.patch,
+    lxc-net-target-name-doc.patch</comment>
+    <requestid>243627</requestid>
+  </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>ebf3ae6f6b24ebe553a660b9aa928aa0</srcmd5>
+    <version>1.2.7</version>
+    <time>1408196282</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>244865</requestid>
+  </revision>
+  <revision rev="155" vrev="3">
+    <srcmd5>6f3e19e66280018c7d067411f3680284</srcmd5>
+    <version>1.2.7</version>
+    <time>1408957435</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245701</requestid>
+  </revision>
+  <revision rev="156" vrev="5">
+    <srcmd5>6f3e19e66280018c7d067411f3680284</srcmd5>
+    <version>1.2.7</version>
+    <time>1409301752</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>b95cfa466278a51f4be8dfeb9f1fe2e2</srcmd5>
+    <version>1.2.8</version>
+    <time>1409761397</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247246</requestid>
+  </revision>
+  <revision rev="158" vrev="2">
+    <srcmd5>6e63d7ee0692f0a3fd887e416bff691d</srcmd5>
+    <version>1.2.8</version>
+    <time>1411020048</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>249992</requestid>
+  </revision>
+  <revision rev="159" vrev="3">
+    <srcmd5>c63c05eccd1bee37e768774860614352</srcmd5>
+    <version>1.2.8</version>
+    <time>1411462003</time>
+    <user>coolo</user>
+    <comment>Fix for public CVE-2014-3633.
+
+- CVE-2014-3633: Use correct definition when looking up disk in
+  qemu blkiotune
+  3e745e8f-CVE-2014-3633.patch
+  bnc#897783</comment>
+    <requestid>251486</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>b29449f0fc5e00e4d45b5d6c85c14e71</srcmd5>
+    <version>1.2.9</version>
+    <time>1412533909</time>
+    <user>coolo</user>
+    <comment>Use source services to validate package tarball instead of
+calling gpg verify in %prep.
+
+- spec: Remove gpg-offline build dependency and use of gpg_verify
+  to verify tarball since this task can be performed by source
+  services
+
+- Update to libvirt 1.2.9
+  - Introduce virNodeAllocPages
+  - event: introduce new event for tunable values
+  - Add support for fetching statistics of completed jobs
+  - CVE-2014-3657: domain_conf: fix domain deadlock
+  - CVE-2014-3633: qemu: blkiotune: Use correct definition when
+    looking up disk
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: 3e745e8f-CVE-2014-3633.patch,
+    libvirt-guests-wait-for-ntp.patch
+- Verify tarball with associated .asc file
+  Add: libvirt.keyring, libvirt-1.2.9.tar.gz.asc
+  Use upstream .gz tarball instead of locally generated .bz2</comment>
+    <requestid>253806</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>af450a6a5c1228082caf331998ba4b7b</srcmd5>
+    <version>1.2.10</version>
+    <time>1415118610</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259574</requestid>
+  </revision>
+  <revision rev="162" vrev="2">
+    <srcmd5>cdf2074c4d13d2a59c21f386f8c9d6d4</srcmd5>
+    <version>1.2.10</version>
+    <time>1415866653</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for  CVE-2014-7823 for Factory.
+
+- CVE-2014-7823: dumpxml: security hole with migratable flag
+  b1674ad5-CVE-2014-7823.patch
+  bsc#904176</comment>
+    <requestid>260934</requestid>
+  </revision>
+  <revision rev="163" vrev="3">
+    <srcmd5>9a795b4e6c603fd14bcf518b04c2686f</srcmd5>
+    <version>1.2.10</version>
+    <time>1416347234</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262067</requestid>
+  </revision>
+  <revision rev="164" vrev="4">
+    <srcmd5>f5825c89aa8ac57d703c66830c1c4fc0</srcmd5>
+    <version>1.2.10</version>
+    <time>1416994436</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262986</requestid>
+  </revision>
+  <revision rev="165" vrev="5">
+    <srcmd5>f0da9d4c04479ffe4c287cdc50ae382f</srcmd5>
+    <version>1.2.10</version>
+    <time>1417643311</time>
+    <user>dimstar_suse</user>
+    <comment>- qemu: Fix crash in tunnelled migration
+  52691f99-qemu-mig-crash.patch
+  boo#908008</comment>
+    <requestid>263831</requestid>
+  </revision>
+  <revision rev="166" vrev="6">
+    <srcmd5>8e5f85692039f9ef27b2b38a5b6b4eef</srcmd5>
+    <version>1.2.10</version>
+    <time>1418251511</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264663</requestid>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>29ade7b56d45d301ed5b3866bf702024</srcmd5>
+    <version>1.2.11</version>
+    <time>1418737745</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265257</requestid>
+  </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>03546ef8198918e776e5e54c1dda43fb</srcmd5>
+    <version>1.2.11</version>
+    <time>1419896986</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266548</requestid>
+  </revision>
+  <revision rev="169" vrev="3">
+    <srcmd5>d8a3f2c938d27e76c7e99d7b1888f5a9</srcmd5>
+    <version>1.2.11</version>
+    <time>1420619931</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>279992</requestid>
+  </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>d2d0db8f46a9c5f600d72a90d8c870af</srcmd5>
+    <version>1.2.12</version>
+    <time>1423038652</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283072</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>68040e05fc49c331948f1a3a5870a9cf</srcmd5>
+    <version>1.2.13</version>
+    <time>1425377755</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288566</requestid>
+  </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>654bddd087af103a322483239f075f77</srcmd5>
+    <version>1.2.13</version>
+    <time>1426680363</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291048</requestid>
+  </revision>
+  <revision rev="173" vrev="3">
+    <srcmd5>4d2657cf5b99ea4c48b4dfcfccdf8a3d</srcmd5>
+    <version>1.2.13</version>
+    <time>1426796408</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291346</requestid>
+  </revision>
+  <revision rev="174" vrev="4">
+    <srcmd5>8b8f41548d02d3cd1452dce75d84cef6</srcmd5>
+    <version>1.2.13</version>
+    <time>1427445632</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293121</requestid>
+  </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>e0651502be50296e1a4e794c063954ed</srcmd5>
+    <version>1.2.14</version>
+    <time>1428652480</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295137</requestid>
+  </revision>
+  <revision rev="176" vrev="2">
+    <srcmd5>9638845059e441740dc0a14290a3d89e</srcmd5>
+    <version>1.2.14</version>
+    <time>1429658326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298242</requestid>
+  </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>8c11994ad2837fb392ea806a6564e7ae</srcmd5>
+    <version>1.2.15</version>
+    <time>1430891377</time>
+    <user>dimstar_suse</user>
+    <comment>Supersedes SR#305345.  Update to libvirt 1.2.15 and fix
+bsc#875216.
+
+- libxl: support virtual sound devices in HVM domains
+  c0d3f608-libxl-soundhw.patch
+  bsc#875216
+
+- Update to libvirt 1.2.15
+  - Implement virDomainAddIOThread and virDomainDelIOThread
+  - libxl: Introduce configuration file for libxl driver
+  - Add VIR_DOMAIN_EVENT_ID_DEVICE_ADDED event
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches da33a1ac-lxc-init-statedir.patch and
+    open-ns-files-readonly.patch
+- spec file fixups for building --without-driver-modules</comment>
+    <requestid>305479</requestid>
+  </revision>
+  <revision rev="178" vrev="2">
+    <srcmd5>89552cfe73dce4b5ae865102e6ef0683</srcmd5>
+    <version>1.2.15</version>
+    <time>1431668657</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>307065</requestid>
+  </revision>
+  <revision rev="179" vrev="3">
+    <srcmd5>e8a1f70ae7589102643b72326ca6949d</srcmd5>
+    <version>1.2.15</version>
+    <time>1432799842</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>308950</requestid>
+  </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>8aeb23a0ef0214c5b1a539177baaef2b</srcmd5>
+    <version>1.2.16</version>
+    <time>1434006633</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>311498</requestid>
+  </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>574985ce4ed9b33166f2e7f1ce9c8d79</srcmd5>
+    <version>1.2.17</version>
+    <time>1436112164</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314915</requestid>
+  </revision>
+  <revision rev="182" vrev="2">
+    <srcmd5>b9742ccc0699a03420ea6a237cfa0f90</srcmd5>
+    <version>1.2.17</version>
+    <time>1436888641</time>
+    <user>coolo</user>
+    <comment>Add libxl driver fixes from SLE12 SP1 work.
+
+- libxl: set dom0 state to running
+  4ffb21c8-libxl-dom0-state-fix.patch
+  bsc#937316
+- libxl: support management of dom0
+  45697fe5-libxl-support-dom0.patch
+  bsc#937316
+- libxl: libxl: fix setting state of virDomainObj
+  e9c27344-libxl-fix-virDomainObj-state.patch
+  bsc#934937
+
+- Fixed virt-aa-helper bugs preventing virt-sandbox to work.
+  24f3c2f-virt-aa-helper-fix-caps.patch
+  61dab0f-virt-aa-helper-renaming.patch
+  a55a5e7-virt-aa-helper-log.patch
+  e44bcae-virt-aa-helper-trailing-slash.patch
+  bsc#936841
+- Fixed crasher due to uninitialized values
+  qemu-nbd-cleanup-fix.patch bsc#936841</comment>
+    <requestid>315975</requestid>
+  </revision>
+  <revision rev="183" vrev="3">
+    <srcmd5>3b7f2ef37af99b8e8f478a5128d63897</srcmd5>
+    <version>1.2.17</version>
+    <time>1438548362</time>
+    <user>dimstar_suse</user>
+    <comment>Add a fix from SLE12 SP1 libvirt package.
+
+- Fix crash in libxl driver on receiving side
+  0003-libxl-fix-ref-counting-of-libxlMigrationDstArgs.patch
+  0004-libxl-don-t-attempt-to-resume-domain-when-suspend-fa.patch
+  0005-libxl-acquire-a-job-when-receiving-a-migrating-domai.patch
+  bsc#936185</comment>
+    <requestid>319854</requestid>
+  </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>b74346177889b934fc887e3ce957ac4f</srcmd5>
+    <version>1.2.18</version>
+    <time>1439385156</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libvirt 1.2.18
+  - libxl: support dom0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped upstream patches:
+    e44bcae-virt-aa-helper-trailing-slash.patch,
+    a55a5e7-virt-aa-helper-log.patch,
+    61dab0f-virt-aa-helper-renaming.patch,
+    24f3c2f-virt-aa-helper-fix-caps.patch,
+    45697fe5-libxl-support-dom0.patch,
+    e9c27344-libxl-fix-virDomainObj-state.patch,
+    4ffb21c8-libxl-dom0-state-fix.patch,
+    qemu-nbd-cleanup-fix.patch</comment>
+    <requestid>321766</requestid>
+  </revision>
+  <revision rev="185" vrev="2">
+    <srcmd5>9b1f4011c526537f0418b40aed927ef3</srcmd5>
+    <version>1.2.18</version>
+    <time>1440658642</time>
+    <user>coolo</user>
+    <comment>Updated libvirt package for Factory to fix bsc#942085.
+Fix will also be submitted for SLE12 SP1 beta3. Once in
+Factory, I plan to submit to Leap as well.
+
+- storage: only run safezero if allocation is &gt; 0
+  269d39af-storage-allocation-fix.patch
+  bsc#942085</comment>
+    <requestid>326482</requestid>
+  </revision>
+  <revision rev="186" vrev="3">
+    <srcmd5>36a1b7a317706e172d647cc996188e06</srcmd5>
+    <version>1.2.18</version>
+    <time>1440871515</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327806</requestid>
+  </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>2686ae8bf55199e39f7a404ec648811c</srcmd5>
+    <version>1.2.19</version>
+    <time>1441955097</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>330425</requestid>
+  </revision>
+  <revision rev="188" vrev="2">
+    <srcmd5>b32789bbedda30be5ab32bf85f407037</srcmd5>
+    <version>1.2.19</version>
+    <time>1442474486</time>
+    <user>dimstar_suse</user>
+    <comment>- libxl: set driver log level to the log_level specified in
+  libvirtd.conf
+  ba25c214-libxl-log-level.patch
+  bsc#945796
+
+- CVE-2015-5247 - denial of service through root-squash NFS storage
+  bsc#945645
+  3468542f-virFileUnlink.patch
+  8b1d84e6-refreshVol-failure.patch
+  e0025d29-storage-mode-check.patch</comment>
+    <requestid>331093</requestid>
+  </revision>
+  <revision rev="189" vrev="3">
+    <srcmd5>1c80e4ffe16c7f2212431e4d5fe6a9b4</srcmd5>
+    <version>1.2.19</version>
+    <time>1443068042</time>
+    <user>coolo</user>
+    <comment>Add a SLE12 SP1 bug fix and refresh patches.
+
+- bsc#945962: SLES12 SP1 Beta3 - Pass-through NIC device via virsh
+  not available to VM.
+  56945e13-libxl-AttachDeviceConfig-hostdev.patch</comment>
+    <requestid>331841</requestid>
+  </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>5231004263795174c26ea75709259496</srcmd5>
+    <version>1.2.20</version>
+    <time>1444636972</time>
+    <user>coolo</user>
+    <comment>Add a SLE12 SP1 bug fix to Factory too.
+
+- spec: the libvirt apparmor profiles #include files from the
+  apparmor-profiles package, thus should have a dependency on it
+  bsc#949793
+
+- Remove Wants=xencommons.service from libvirtd.service
+  xencommons is already enabled by a global preset, and the
+  absence of xen-tools.rpm causes a systemd warning
+
+- Update to libvirt 1.2.20
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped upstream patches:
+    3468542f-virFileUnlink.patch,
+    8b1d84e6-refreshVol-failure.patch,
+    e0025d29-storage-mode-check.patch,
+    ba25c214-libxl-log-level.patch,
+    56945e13-libxl-AttachDeviceConfig-hostdev.patch</comment>
+    <requestid>337509</requestid>
+  </revision>
+  <revision rev="191" vrev="2">
+    <srcmd5>6176c05f9c226964e3360349674d1a8b</srcmd5>
+    <version>1.2.20</version>
+    <time>1445287910</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339232</requestid>
+  </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>b6adf70347d83868f69b74eae58cbc0e</srcmd5>
+    <version>1.2.21</version>
+    <time>1446719759</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342483</requestid>
+  </revision>
+  <revision rev="193" vrev="2">
+    <srcmd5>9478721e7ae81017d7c936662c34df43</srcmd5>
+    <version>1.2.21</version>
+    <time>1447234285</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343284</requestid>
+  </revision>
+  <revision rev="194" vrev="3">
+    <srcmd5>285be3ee784e62d5ddb52340b75ffa5d</srcmd5>
+    <version>1.2.21</version>
+    <time>1448186422</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>344926</requestid>
+  </revision>
+  <revision rev="195" vrev="4">
+    <srcmd5>93d042b2637e7e3fe01d1265dccdac2b</srcmd5>
+    <version>1.2.21</version>
+    <time>1449687072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347416</requestid>
+  </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>1d17719965abf3cea1ad8f2be62dd898</srcmd5>
+    <version>1.3.0</version>
+    <time>1451674092</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>351143</requestid>
+  </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>c10d763779772e3f64fecea8cd3ae35f</srcmd5>
+    <version>1.3.1</version>
+    <time>1453998301</time>
+    <user>dimstar_suse</user>
+    <comment>Supersedes sr#355837 to add a fix for bug#961853.
+
+- qemu: set /usr/share/qemu/ovmf-x86_64-ms-{code,vars}.bin as
+  default UEFI firmwares for x86_64
+  bsc#961853
+
+- Update to libvirt 1.3.1
+  - CVE-2015-5313
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches: 034e47c3-CVE-2015-5313.patch,
+    ace1ee22-qemuxml2argv-test.patch, add-with-login-shell.patch,
+    virt-aa-helper-rw-mounts.patch</comment>
+    <requestid>356412</requestid>
+  </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>bc513d9a9c1978f5a6e3a45a4008aeff</srcmd5>
+    <version>1.3.2</version>
+    <time>1457353651</time>
+    <user>dimstar_suse</user>
+    <comment>Sorry, but another libvirt submission for Factory/Tumbleweed,
+this time superseding #364991. It adds a patch from the SLE12 SP2
+libvirt package for FATE#320638.
+
+- libxl: advertise system qemu instead of qemu-xen in caps
+  libxl-qemu-emulator-caps.patch
+  FATE#320638
+
+- Update to libvirt 1.3.2
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+
+- libxl: Add support for block-{dmmd,drbd,npiv} scripts
+  libxl-support-block-script.patch
+  bsc#954872</comment>
+    <requestid>365718</requestid>
+  </revision>
+  <revision rev="199" vrev="2">
+    <srcmd5>c9516a7862339ad277db282d1766f1ff</srcmd5>
+    <version>1.3.2</version>
+    <time>1459002581</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>379941</requestid>
+  </revision>
+  <revision rev="200" vrev="3">
+    <srcmd5>9bc70c32b0bec90f4664c27c19c10e96</srcmd5>
+    <version>1.3.2</version>
+    <time>1460101167</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384426</requestid>
+  </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>725ec4fe2081b7c1d1d25c72989e5d79</srcmd5>
+    <version>1.3.3</version>
+    <time>1461335059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>388410</requestid>
+  </revision>
+  <revision rev="202" vrev="2">
+    <srcmd5>a2463f24101fad7aec9c3027989c11d7</srcmd5>
+    <version>1.3.3</version>
+    <time>1462051804</time>
+    <user>dimstar_suse</user>
+    <comment>Updated libvirt package fixing a few bugs found by
+VT test automation.
+
+- qemu: perf: Fix crash/memory corruption on failed VM start
+  03e8d5fb-qemu-perf-memory-corruption.patch
+  bsc#977131
+
+- Fix setting implicit video devices as primary
+  6d8b6d28-mark-implicit-video-primary.patch
+  bsc#977150</comment>
+    <requestid>391594</requestid>
+  </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>947e28b10fd37e93be784ab40546ffd2</srcmd5>
+    <version>1.3.4</version>
+    <time>1463221401</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394498</requestid>
+  </revision>
+  <revision rev="204" vrev="2">
+    <srcmd5>d87c564ff1295248a39f352ebde640ec</srcmd5>
+    <version>1.3.4</version>
+    <time>1464014333</time>
+    <user>dimstar_suse</user>
+    <comment>Add some bug fixes and improvements from SLE12 SP2.
+
+- spec: Remove %defattr usage
+  Inspired by upstream commit 90f9193c
+
+- libxl: support Xen migration stream V2
+  fccf2725-libxl-API-4.4.patch,
+  5325123d-libxl-migv2-save-restore.patch,
+  f9edcfa4-libxl-migv2-migration.patch
+  bsc#978361
+
+- Fix default video RAM setting
+  e4d131b8-mv-virDomainDefPostParseInternal.patch,
+  3e428670-post-parse-implicit-video.patch,
+  538012c8-default-vram.patch, 96b21fb0-vram-tests.patch,
+  400e716d-libxl-noprope-emulator.patch,
+  b90c4b5f-tests-use-qemu-xen.patch
+  bsc#979397</comment>
+    <requestid>396699</requestid>
+  </revision>
+  <revision rev="205" vrev="3">
+    <srcmd5>e8d059b1d7ed909207f51baf1bb1cb1d</srcmd5>
+    <version>1.3.4</version>
+    <time>1464484358</time>
+    <user>dimstar_suse</user>
+    <comment>Yet nother bug fix for the Factory and SLE12 SP2 libvirt package.
+
+-  libxl: add domainInterfaceAddresses API
+   ba566428-libxl-dom-iface-addrs.patch
+   bsc#979425
+
+- libxl: default to qemu driver for network disks
+  a1c9a81a-libxl-rbd-fix.patch
+  boo#981094</comment>
+    <requestid>398051</requestid>
+  </revision>
+  <revision rev="206" vrev="4">
+    <srcmd5>025fd8bf35fd34f948138cd237fbdb5f</srcmd5>
+    <version>1.3.4</version>
+    <time>1464853140</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399249</requestid>
+  </revision>
+  <revision rev="207" vrev="1">
+    <srcmd5>0cb5aec749ce53e858659570976e8217</srcmd5>
+    <version>1.3.5</version>
+    <time>1465938433</time>
+    <user>dimstar_suse</user>
+    <comment>Latest libvirt release for Factory/Tumbleweed.
+
+- apparmor: Don't scrub environment of virtlogd process
+  apparmor-dont-scrub-environment-of-virtlogd-process.patch
+  boo#980441
+
+- Update to libvirt 1.3.5
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    e4d131b8-mv-virDomainDefPostParseInternal.patch,
+    3e428670-post-parse-implicit-video.patch,
+    538012c8-default-vram.patch, 96b21fb0-vram-tests.patch,
+    400e716d-libxl-noprope-emulator.patch,
+    b90c4b5f-tests-use-qemu-xen.patch,
+    fccf2725-libxl-API-4.4.patch,
+    5325123d-libxl-migv2-save-restore.patch,
+    f9edcfa4-libxl-migv2-migration.patch,
+    a1c9a81a-libxl-rbd-fix.patch,
+    ba566428-libxl-dom-iface-addrs.patch
+- spec: simplify and cleanup by removing many conditionals that
+  are never toogled. Also drop conditionals for suse_version &lt;
+  1310</comment>
+    <requestid>400902</requestid>
+  </revision>
+  <revision rev="208" vrev="2">
+    <srcmd5>c525b029ffb6561c8c8220aaaf3f1e9e</srcmd5>
+    <version>1.3.5</version>
+    <time>1466501429</time>
+    <user>dimstar_suse</user>
+    <comment>Incremental update of libvirt package fixing a few bugs.
+
+- xenconfig: fix conversion of &lt;driver&gt; to backendtype
+  e33cd67a-xenconfig-backendtype-fix.patch
+  bsc#984798
+
+- Advertise aarch64 UEFI firmware paths
+  - adjust spec file to include aarch64 paths in
+    '--with-loader-nvram=' configure option
+  - adjust qemu.conf 'nvram' option to include the SUSE paths
+  bsc#981836, bsc#983747</comment>
+    <requestid>402821</requestid>
+  </revision>
+  <revision rev="209" vrev="3">
+    <srcmd5>7b83ce611388ef721bb24183cde2ee31</srcmd5>
+    <version>1.3.5</version>
+    <time>1467205828</time>
+    <user>dimstar_suse</user>
+    <comment>More improvements to the spec file, allowing common usage
+between openSUSE and SLE. Also add some SLE patches missing
+in openSUSE.
+
+- spec: Recent simplification allows using a common spec file for
+  SLE and openSUSE
+- Add SLE patches missing in openSUSE
+  libxl-dom-reset.patch, libxl-set-migration-constraints.patch,
+  libxl-set-cach-mode.patch</comment>
+    <requestid>404539</requestid>
+  </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>0def874ec9960108e0072ffdd0df0d84</srcmd5>
+    <version>2.0.0</version>
+    <time>1468482613</time>
+    <user>dimstar_suse</user>
+    <comment>Add fix for boo#987668. Supercedes request #405937.
+
+- systemd: fix ready notification on abstract socket
+  c8f08e48-systemd-notify-fix.patch
+  boo#987668
+
+- Update to libvirt 2.0.0
+  - Change version scheme to match libvirt's time-driven release
+    schedule. &lt;major&gt; will be incremented on first release of
+    new calendar year, &lt;minor&gt; on each monthly release, and
+    &lt;micro&gt; on stable branch maintenance release
+  - Include libvirt-admin utility and API
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    apparmor-dont-scrub-environment-of-virtlogd-process.patch,
+    e33cd67a-xenconfig-backendtype-fix.patch</comment>
+    <requestid>407950</requestid>
+  </revision>
+  <revision rev="211" vrev="2">
+    <srcmd5>bc3e6f7bc144735488ec48acdb9d8034</srcmd5>
+    <version>2.0.0</version>
+    <time>1469080747</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408968</requestid>
+  </revision>
+  <revision rev="212" vrev="3">
+    <srcmd5>55a1a58219270a66982938bdc53c0356</srcmd5>
+    <version>2.0.0</version>
+    <time>1470773695</time>
+    <user>dimstar_suse</user>
+    <comment>Another bug fix for Factory found during SLE12 SP2 testing.
+
+- cpu_x86: fix libvirtd segfault when host cpu is 'qemu64'
+  cpumodel-vendor-crash-fix.patch
+  bsc#992425
+
+- bsc#988279. Move the qemu-bridge-helper apparmor profile from the
+  qemu abstraction to the usr.sbin.libvirtd profile.
+  apparmor-qemu-bridge-helper.patch
+
+- spec: minor improvements to logic enabling numactl and numad
+  support and fix nested if indentation
+  FATE#319979
+
+- Update patches providing support for driver_override sysfs
+  interface with latest upstream variant. Dropped
+  pci-simplify-stub.patch and updated
+  pci-use-driver-override-sysfs.patch
+  bsc#986718
+
+- spec: enable numactl and numad support for aarch64
+  FATE#319979, bsc#991377</comment>
+    <requestid>417209</requestid>
+  </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>e524d3e0ce186ad587d21c7b5d8bf251</srcmd5>
+    <version>2.1.0</version>
+    <time>1472477656</time>
+    <user>dimstar_suse</user>
+    <comment>Add a few SLE12 SP2 bug fixes to the Factory libvirt package.
+
+- libxl: allow vendor/product addressing for USB hostdevs
+  virHostdevFindUSBDevice-privsyms.patch, libxl-usb-vendor.patch
+  bsc#989646
+- qemu: fix auth for rbd network disks
+  d53d4650-qemu-rbd-auth.patch
+  bsc#988998
+- Replace cpumodel-vendor-crash-fix.patch with upstream variant
+  541e9ae6-cpu-vendor-crash-fix.patch
+  bsc#992425
+
+- Update to libvirt 2.1.0
+  - New subpackages libvirt-libs and libvirt-admin
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    c8f08e48-systemd-notify-fix.patch
+- qemu: fix qemu.conf security_driver regression in 2.1.0 release
+  856965b3-qemu-secdriver.patch</comment>
+    <requestid>420737</requestid>
+  </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>38ade73ddffb8c12bf7e1126234cc407</srcmd5>
+    <version>2.2.0</version>
+    <time>1473679612</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>426208</requestid>
+  </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>28dc9bcbc07246bfba1f8946ab2ede51</srcmd5>
+    <version>2.3.0</version>
+    <time>1476109255</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433499</requestid>
+  </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>195967d1a5522cf64da0f4080fcb49b6</srcmd5>
+    <version>2.4.0</version>
+    <time>1478780100</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439206</requestid>
+  </revision>
+  <revision rev="217" vrev="2">
+    <srcmd5>717a3394bc167aef937e49bb4f1250f2</srcmd5>
+    <version>2.4.0</version>
+    <time>1479502789</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440645</requestid>
+  </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>4a4e5d62a8771267fefcb6eb9538061f</srcmd5>
+    <version>2.5.0</version>
+    <time>1481458969</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444357</requestid>
+  </revision>
+  <revision rev="219" vrev="2">
+    <srcmd5>2e19fb3c4785ce10c69ffc00458a734f</srcmd5>
+    <version>2.5.0</version>
+    <time>1483953852</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448203</requestid>
+  </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>e04d8928d8f6bbc9aa6644f28d798b04</srcmd5>
+    <version>3.0.0</version>
+    <time>1485862049</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453026</requestid>
+  </revision>
+  <revision rev="221" vrev="2">
+    <srcmd5>c44d25cbd03e5bda24ca2ec55d44db6a</srcmd5>
+    <version>3.0.0</version>
+    <time>1486716321</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454333</requestid>
+  </revision>
+  <revision rev="222" vrev="3">
+    <srcmd5>5882e76a396f9d55438516ebedd68c1e</srcmd5>
+    <version>3.0.0</version>
+    <time>1487767737</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459156</requestid>
+  </revision>
+  <revision rev="223" vrev="1">
+    <srcmd5>14bc8799a9f37b2579abc909278f64f3</srcmd5>
+    <version>3.1.0</version>
+    <time>1489241872</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>476768</requestid>
+  </revision>
+  <revision rev="224" vrev="2">
+    <srcmd5>8788cc0ee85d10148a0228bb4a4547cc</srcmd5>
+    <version>3.1.0</version>
+    <time>1490132667</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480655</requestid>
+  </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>e4d1e4e50a90c9e324f113e632460e1f</srcmd5>
+    <version>3.2.0</version>
+    <time>1491567522</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484776</requestid>
+  </revision>
+  <revision rev="226" vrev="2">
+    <srcmd5>0fd12609a2caa52048b613114038e589</srcmd5>
+    <version>3.2.0</version>
+    <time>1492714070</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487722</requestid>
+  </revision>
+  <revision rev="227" vrev="1">
+    <srcmd5>b0bf1e19957602fb63e7d09e1feae9d1</srcmd5>
+    <version>3.3.0</version>
+    <time>1493880850</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491888</requestid>
+  </revision>
+  <revision rev="228" vrev="2">
+    <srcmd5>ed65eb40ecc7adb9152025f829b650a4</srcmd5>
+    <version>3.3.0</version>
+    <time>1495133077</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495126</requestid>
+  </revision>
+  <revision rev="229" vrev="3">
+    <srcmd5>180440ee8d93a0aa9fd6196eaca9a97f</srcmd5>
+    <version>3.3.0</version>
+    <time>1496327338</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497373</requestid>
+  </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>f3947eb2880f302172a66f2e262c04e2</srcmd5>
+    <version>3.4.0</version>
+    <time>1497949123</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>503752</requestid>
+  </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>8425841800b3e7c557638d557baf1de0</srcmd5>
+    <version>3.5.0</version>
+    <time>1499754895</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508398</requestid>
+  </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>334fdc659f57a955882a5760067dfe0b</srcmd5>
+    <version>3.6.0</version>
+    <time>1502365474</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514265</requestid>
+  </revision>
+  <revision rev="233" vrev="2">
+    <srcmd5>2bb9d2a3016980eb3743949d6fe06a11</srcmd5>
+    <version>3.6.0</version>
+    <time>1504520213</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519736</requestid>
+  </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>f736a5fdbbdeea6af79160cb7eddba32</srcmd5>
+    <version>3.7.0</version>
+    <time>1505757086</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526416</requestid>
+  </revision>
+  <revision rev="235" vrev="2">
+    <srcmd5>dc8b13a28c277b2dfde4132b7869ebb3</srcmd5>
+    <version>3.7.0</version>
+    <time>1506340427</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527593</requestid>
+  </revision>
+  <revision rev="236" vrev="3">
+    <srcmd5>3d62247dff8086f019ba397b8b99ee93</srcmd5>
+    <version>3.7.0</version>
+    <time>1506678682</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528890</requestid>
+  </revision>
+  <revision rev="237" vrev="1">
+    <srcmd5>943c5725f7fa56aa60f203342799b9ba</srcmd5>
+    <version>3.8.0</version>
+    <time>1507628286</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532351</requestid>
+  </revision>
+  <revision rev="238" vrev="2">
+    <srcmd5>5a455943cc4b7979706f6152ccdf6f07</srcmd5>
+    <version>3.8.0</version>
+    <time>1508610050</time>
+    <user>dimstar_suse</user>
+    <comment>Another libvirt submission to supersede #534321. Fixes
+last changelog entry by adding patch name.
+
+- qemu: ensure TLS clients always verify the server certificate
+  CVE-2017-1000256
+  441d3eb6-qemu-tls-client-verify-server-cert.patch
+  bsc#1062563
+
+- Do not ignore errors from useradd/groupadd.
+- Invoke/expand %service_* just once per scriptlet.
+- Replace some old macros.
+
+- spec: libvirt-daemon-qemu requires libvirt-daemon-driver-storage
+  bsc#1062620
+
+- spec: reload libvirtd Apparmor profile in %post
+  bsc#1060860</comment>
+    <requestid>534485</requestid>
+  </revision>
+  <revision rev="239" vrev="1">
+    <srcmd5>65afd70b041c35af2bfffef7b89c285d</srcmd5>
+    <version>3.9.0</version>
+    <time>1510321109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540061</requestid>
+  </revision>
+  <revision rev="240" vrev="2">
+    <srcmd5>de21f5daaa3b628b34e481c973880a4f</srcmd5>
+    <version>3.9.0</version>
+    <time>1511274174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542717</requestid>
+  </revision>
+  <revision rev="241" vrev="3">
+    <srcmd5>fa65b2b5013273ecc1a367e34acc2415</srcmd5>
+    <version>3.9.0</version>
+    <time>1512041884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545094</requestid>
+  </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>df3015ffda76b7af50409715b40d3b33</srcmd5>
+    <version>3.10.0</version>
+    <time>1512377972</time>
+    <user>dimstar_suse</user>
+    <comment>libvirt 3.10.0 rc2 for Factory and SLE15 beta2. I will resubmit libvirt
+3.10.0 final if it is released before beta4 submission deadline.
+
+- Update to libvirt 3.10.0 RC2
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    8056721c-qemu-null-storage-source.patch,
+    74a13be4-xdr-flags.patch,
+    apparmor-rules-for-new-mediation-features.patch,
+    apparmor-fine-grained-mount-rules.patch
+  - bsc#1070285, bsc#1070478, FATE#323473, FATE#324479
+
+- spec: remove use of 'systemctl enable'
+  bsc#1038401
+
+- spec: enable firewalld support for SLE15, Leap15, and Tumbleweed
+  FATE#320794</comment>
+    <requestid>547322</requestid>
+  </revision>
+  <revision rev="243" vrev="2">
+    <srcmd5>49d2c1c8c4acd4eec0f31ec3666d8acc</srcmd5>
+    <version>3.10.0</version>
+    <time>1512734070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548220</requestid>
+  </revision>
+  <revision rev="244" vrev="3">
+    <srcmd5>e5b254e9a1626b9b6542a408dceb41e5</srcmd5>
+    <version>3.10.0</version>
+    <time>1513676931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558241</requestid>
+  </revision>
+  <revision rev="245" vrev="4">
+    <srcmd5>e64c3b69488d29d9082082d2ef36b5a7</srcmd5>
+    <version>3.10.0</version>
+    <time>1514569639</time>
+    <user>dimstar_suse</user>
+    <comment>- Close clients before drivers are cleaned up to avoid crash at
+  libvirtd stop (bsc#1073730)
+  daemon-close-crasher.patch
+- Set a hostname on lxc containers based on guest's name.
+  lxc-hostname.patch
+- Enhance apparmor rules for virt-aa-helper (bsc#1070916)
+  0f33025a-virt-aa-helper-handle-more-disk-images.patch</comment>
+    <requestid>558920</requestid>
+  </revision>
+  <revision rev="246" vrev="5">
+    <srcmd5>968c3e7139505152a92e5db2cedefe27</srcmd5>
+    <version>3.10.0</version>
+    <time>1515260791</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix apparmor rules for virt-aa-helper (bsc#1074265)
+  fix-virt-aa-helper-profile.patch
+- Lift VirtualBox dependency version to include 5.2.x
+- Update upstreamed patches
+  Removed patches:
+  * daemon-close-crasher.patch
+  * lxc-hostname.patch
+  Added patches:
+  * 2089ab21-netserver-close-clients-before-stopping-all-drivers.patch
+  * b475a91b-add-virStringFilterChars-string-utility.patch
+  * faec1958-lxc-set-hostname-based-on-container-name.patch</comment>
+    <requestid>561423</requestid>
+  </revision>
+  <revision rev="247" vrev="6">
+    <srcmd5>2b44728e59d59ed8d53f1bf002ac73ef</srcmd5>
+    <version>3.10.0</version>
+    <time>1516092054</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563670</requestid>
+  </revision>
+  <revision rev="248" vrev="1">
+    <srcmd5>0a161ff8fc4f3a49c75b1ad2105d1749</srcmd5>
+    <version>4.0.0</version>
+    <time>1516880111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568386</requestid>
+  </revision>
+  <revision rev="249" vrev="2">
+    <srcmd5>a7d943fd25a987ff3d1cb4fa8b266a20</srcmd5>
+    <version>4.0.0</version>
+    <time>1517323115</time>
+    <user>dimstar_suse</user>
+    <comment>Hopefully the python changes are acceptable. I loath this
+py2 vs py3 crap. I just want to use python!
+
+- qemu: Support setting OEM strings in SMBIOS
+  68eed56b-conf-smbios-oem-strings.patch,
+  76977061-qemu-smbios-oem-strings.patch
+  FATE#323624
+- libxl: resume lock process after failed migration
+  0c710a37-libxl-resume-lock-on-mig-failure.patch
+  bsc#1076861
+
+- qemu hook: Change shebang to /usr/bin/python3
+- spec: Require python lxml in daemon-hooks subpackage</comment>
+    <requestid>569998</requestid>
+  </revision>
+  <revision rev="250" vrev="3">
+    <srcmd5>e0c5048ce99afeec8c882bd14060a00a</srcmd5>
+    <version>4.0.0</version>
+    <time>1518514024</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove all uses of python2 during the build (bsc#1080034)
+    6b3d716e-keycodemap-py3.patch
+    apibuild-py3.patch
+- Determine hostname early to avoid code injection
+  in lxc driver. (bsc#1080042)
+    759b4d1b-virlog-determine-the-hostname-on-startup-CVE-2018-67.patch
+    c2dc6698-fix-deadlock-obtaining-hostname.patch
+- Add basic support of connectGetAllDomainStats for lxc driver
+  (fate#323742)
+    0001-Extract-stats-functions-from-the-qemu-driver.patch
+    0002-lxc-implement-connectGetAllDomainStats.patch</comment>
+    <requestid>575802</requestid>
+  </revision>
+  <revision rev="251" vrev="4">
+    <srcmd5>3d068a02d33bdcbe215eeabeb980817e</srcmd5>
+    <version>4.0.0</version>
+    <time>1519307856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578846</requestid>
+  </revision>
+  <revision rev="252" vrev="5">
+    <srcmd5>e9732e2c188c517899a4ff77500b7adc</srcmd5>
+    <version>4.0.0</version>
+    <time>1519554745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579671</requestid>
+  </revision>
+  <revision rev="253" vrev="1">
+    <srcmd5>2fe94d73b297e2d464f4c19f3fc81772</srcmd5>
+    <version>4.1.0</version>
+    <time>1520502861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583091</requestid>
+  </revision>
+  <revision rev="254" vrev="2">
+    <srcmd5>450338b8c3ca8cbf5f184b62ca090208</srcmd5>
+    <version>4.1.0</version>
+    <time>1521498782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587706</requestid>
+  </revision>
+  <revision rev="255" vrev="3">
+    <srcmd5>ede77e1406fa25bb363ea4e6620868d9</srcmd5>
+    <version>4.1.0</version>
+    <time>1521904116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589841</requestid>
+  </revision>
+  <revision rev="256" vrev="1">
+    <srcmd5>d63649a2994b959a76124998ebebe99c</srcmd5>
+    <version>4.2.0</version>
+    <time>1523127171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593872</requestid>
+  </revision>
+  <revision rev="257" vrev="1">
+    <srcmd5>85cdfa150537502a98ecd342dc2c32b5</srcmd5>
+    <version>4.3.0</version>
+    <time>1525611573</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603330</requestid>
+  </revision>
+  <revision rev="258" vrev="2">
+    <srcmd5>5c76602a585714185cecbd2aec06c885</srcmd5>
+    <version>4.3.0</version>
+    <time>1526030850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605206</requestid>
+  </revision>
+  <revision rev="259" vrev="3">
+    <srcmd5>80aa46607392fa6927f4234b26f2fa76</srcmd5>
+    <version>4.3.0</version>
+    <time>1527276847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611364</requestid>
+  </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>2c0b9d7df8c12ddb20d5224c9255c30e</srcmd5>
+    <version>4.4.0</version>
+    <time>1529065890</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614409</requestid>
+  </revision>
+  <revision rev="261" vrev="2">
+    <srcmd5>27284bdb937284dc87517c278478bbac</srcmd5>
+    <version>4.4.0</version>
+    <time>1530993274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620644</requestid>
+  </revision>
+  <revision rev="262" vrev="1">
+    <srcmd5>47e58903cf87dcfcd024ced053a0484d</srcmd5>
+    <version>4.5.0</version>
+    <time>1532681467</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>623170</requestid>
+  </revision>
+  <revision rev="263" vrev="1">
+    <srcmd5>23f2fb134907f350ebf5ef1896cc17ff</srcmd5>
+    <version>4.6.0</version>
+    <time>1533631836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627773</requestid>
+  </revision>
+  <revision rev="264" vrev="2">
+    <srcmd5>64b682c697be9e68c11f8038624bebb4</srcmd5>
+    <version>4.6.0</version>
+    <time>1535370361</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert switch to jansson
+  boo#1104820
+  - Dropped:
+    temp-build-fix.patch
+  - Added:
+    9ed59012--revert-jansson1.patch,
+    54f2b5e3-revert-jansson2.patch,
+    b56950fd-revert-jansson3.patch,
+    6c3d66ac-revert-jansson4.patch,
+    8e373e6d-revert-jansson5.patch,
+    6f99de31-revert-jansson6.patch,
+    f204cf51-revert-jansson7.patch,
+    5a58b5ed-revert-jansson8.patch,
+    63f6e0e9-revert-jansson9.patch,
+    8687eba-revert-jansson10.patch,
+    e96e71d8-revert-jansson11.patch,
+    d99a8959-revert-jansson12.patch,
+    074a7e14-revert-jansson13.patch,
+    86db0db9-revert-jansson14.patch
+
+- spec: don't restart libvirt-guests when updating libvirt-client
+  bsc#1104662</comment>
+    <requestid>629267</requestid>
+  </revision>
+  <revision rev="265" vrev="1">
+    <srcmd5>f0428945a9c931bbe12fd40492e6f8a6</srcmd5>
+    <version>4.7.0</version>
+    <time>1538377635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637737</requestid>
+  </revision>
+  <revision rev="266" vrev="1">
+    <srcmd5>d723e27422ab485fd62dd0aeb82d013f</srcmd5>
+    <version>4.8.0</version>
+    <time>1539250875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639819</requestid>
+  </revision>
+  <revision rev="267" vrev="1">
+    <srcmd5>8f8c55797f8d1edd156950bf532ec3fa</srcmd5>
+    <version>4.9.0</version>
+    <time>1541509350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646460</requestid>
+  </revision>
+  <revision rev="268" vrev="2">
+    <srcmd5>d1d653efc28159629f061ba71e8df368</srcmd5>
+    <version>4.9.0</version>
+    <time>1542122576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647057</requestid>
+  </revision>
+  <revision rev="269" vrev="1">
+    <srcmd5>e960d38db7f32c4490c33ca1aedf3878</srcmd5>
+    <version>4.10.0</version>
+    <time>1544441285</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655918</requestid>
+  </revision>
+  <revision rev="270" vrev="2">
+    <srcmd5>e920be8ec254c41336cc2db39cf284a3</srcmd5>
+    <version>4.10.0</version>
+    <time>1546946307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662508</requestid>
+  </revision>
+  <revision rev="271" vrev="1">
+    <srcmd5>6b54285a35c2904ef5a3e58f21682fc5</srcmd5>
+    <version>5.0.0</version>
+    <time>1549311832</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>668191</requestid>
+  </revision>
+  <revision rev="272" vrev="2">
+    <srcmd5>b42991cbbb98043106945e1f8ddd636a</srcmd5>
+    <version>5.0.0</version>
+    <time>1549916202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>672890</requestid>
+  </revision>
+  <revision rev="273" vrev="3">
+    <srcmd5>d2d08da5b8a997d0a6ead33df314a0d3</srcmd5>
+    <version>5.0.0</version>
+    <time>1551023610</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677537</requestid>
+  </revision>
+  <revision rev="274" vrev="4">
+    <srcmd5>0619b9b419d5d54e6fa02e1cd08b42a8</srcmd5>
+    <version>5.0.0</version>
+    <time>1551455175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>679973</requestid>
+  </revision>
+  <revision rev="275" vrev="1">
+    <srcmd5>e2697e80b779402cb29a3c040055cf29</srcmd5>
+    <version>5.1.0</version>
+    <time>1552380524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684124</requestid>
+  </revision>
+  <revision rev="276" vrev="2">
+    <srcmd5>88c215732a2abe0a5cd09b7d3ce281d9</srcmd5>
+    <version>5.1.0</version>
+    <time>1552990126</time>
+    <user>dimstar_suse</user>
+    <comment>- supportconfig: collect rotated logs in /var/log/libvirt/*
+  Modified libvirt-supportconfig
+  bsc#1124667
+
+- hook: encode incoming XML to UTF-8 before passing to lxml etree
+  fromstring method
+  Modifed suse-qemu-domain-hook.py
+  boo#1123642
+
+- libxl: change autoballooning default to disabled
+  suse-libxl-disable-autoballoon.patch
+  jsc#SLE-3059
+
+- conf: add new 'xenbus' controller type
+  09eb1ae0-conf-add-xenbus-controller.patch
+- libxl: support Xen's max_grant_frames setting with maxGrantFrames
+  attribute on the xenbus controller
+  fb059757-libxl-add-xenbus-controller.patch,
+  ec5a1191-libxl-support-max-grant-frames.patch,
+  5a64c202-xenconfig-support-max-grant-frames.patch
+  bsc#1126325
+
+- Replace patches with upstream variants
+  Old:
+  0001-apparmor-Check-libvirtd-profile-status-by-name.patch,
+  0001-qemu-Fix-query-cpus-fast-target-architecture-detecti.patch
+  New:
+  411cdaf8-apparmor-check-profile-name.patch,
+  696239ba-qemu-fix-query-cpus-fast.patch</comment>
+    <requestid>685486</requestid>
+  </revision>
+  <revision rev="277" vrev="3">
+    <srcmd5>a225fb4ce214e10201e3a8f29916bd92</srcmd5>
+    <version>5.1.0</version>
+    <time>1553611072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687772</requestid>
+  </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>02b74adcfb625e530bb59d1e487911d7</srcmd5>
+    <version>5.2.0</version>
+    <time>1555329543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693775</requestid>
+  </revision>
+  <revision rev="279" vrev="2">
+    <srcmd5>9bddb6030a8ea26807beba9c6dc9769e</srcmd5>
+    <version>5.2.0</version>
+    <time>1555830216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696100</requestid>
+  </revision>
+  <revision rev="280" vrev="3">
+    <srcmd5>6935b18ddd22b5aaa7b52d42b67e426d</srcmd5>
+    <version>5.2.0</version>
+    <time>1556621808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697980</requestid>
+  </revision>
+  <revision rev="281" vrev="1">
+    <srcmd5>35715595c7af082b67d056e5c16df563</srcmd5>
+    <version>5.3.0</version>
+    <time>1557472237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701642</requestid>
+  </revision>
+  <revision rev="282" vrev="2">
+    <srcmd5>0cab7f7c6d7ed16ec06a75facf86f7b1</srcmd5>
+    <version>5.3.0</version>
+    <time>1558427742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704323</requestid>
+  </revision>
+  <revision rev="283" vrev="3">
+    <srcmd5>48153066c87a8462310691132de497b3</srcmd5>
+    <version>5.3.0</version>
+    <time>1558515184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704537</requestid>
+  </revision>
+  <revision rev="284" vrev="4">
+    <srcmd5>087b6170a9522c6ad65c73379aa52469</srcmd5>
+    <version>5.3.0</version>
+    <time>1558784084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705076</requestid>
+  </revision>
+  <revision rev="285" vrev="1">
+    <srcmd5>e164cd8105eba355b6dbc3679afe0e80</srcmd5>
+    <version>5.4.0</version>
+    <time>1559902664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707330</requestid>
+  </revision>
+  <revision rev="286" vrev="2">
+    <srcmd5>dff65e6ba38f5c65bc4884828434d862</srcmd5>
+    <version>5.4.0</version>
+    <time>1561557722</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes for various CVEs made public today.
+
+- api: disallow virConnect*HypervisorCPU,
+  virConnectGetDomainCapabilities, virDomainManagedSaveDefineXML,
+  and virDomainSaveImageGetXMLDesc on read-only connections
+  aed6a032-CVE-2019-10161.patch, db0b7845-CVE-2019-10166.patch,
+  8afa68ba-CVE-2019-10167.patch, bf6c2830-CVE-2019-10168.patch
+  CVE-2019-10161, CVE-2019-10166, CVE-2019-10167, CVE-2019-10168
+  bsc#1138301, bsc#1138302, bsc#1138303, bsc#1138305
+
+- Drop systemd BuildRequires: there is already pkgconfig(systemd)
+  present, which is the same package.</comment>
+    <requestid>711170</requestid>
+  </revision>
+  <revision rev="287" vrev="1">
+    <srcmd5>818669927a9808b6f7fc3efaada0fbd0</srcmd5>
+    <version>5.5.0</version>
+    <time>1564575140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718339</requestid>
+  </revision>
+  <revision rev="288" vrev="1">
+    <srcmd5>ca0f054c5567f9eac41482f85515f4fa</srcmd5>
+    <version>5.6.0</version>
+    <time>1565962247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723846</requestid>
+  </revision>
+  <revision rev="289" vrev="1">
+    <srcmd5>9245f8fd5eeb2f2ea693307705a00877</srcmd5>
+    <version>5.7.0</version>
+    <time>1568190215</time>
+    <user>dimstar_suse</user>
+    <comment>Updated libvirt package for Factory.
+
+- Add apparmor-abstractions as a required package for daemon
+  bsc#1142992
+
+- Update to libvirt 5.7.0
+  - Experimental split of libvirtd into separate daemons
+  - bsc#1145440, bsc#1145586
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    93c1d5fe-network-fix-ability-to-use-openvswitch-with-vlans.patch,
+    blockcopy-check-dst-identical-device.patch,
+    suse-libvirtd-service-xen.patch</comment>
+    <requestid>728994</requestid>
+  </revision>
+</revisionlist>

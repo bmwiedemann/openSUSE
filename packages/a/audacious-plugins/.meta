@@ -1,0 +1,5 @@
+<package name="audacious-plugins" project="openSUSE:Factory">
+  <title>Plugins for Audacious</title>
+  <description>Plugins for the Audacious audio player.</description>
+  <devel project="multimedia:apps" package="audacious-plugins"/>
+</package>

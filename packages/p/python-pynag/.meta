@@ -1,0 +1,9 @@
+<package name="python-pynag" project="openSUSE:Factory">
+  <title>Python modules for Nagios plugins and configuration</title>
+  <description>Python modules and utilities for pragmatically handling Nagios configuration
+file maintenance, status information, log file parsing and plug-in development.
+
+</description>
+  <devel project="devel:languages:python" package="python-pynag"/>
+  <url>http://pynag.org/</url>
+</package>

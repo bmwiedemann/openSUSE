@@ -1,0 +1,12 @@
+<package name="base64coder" project="openSUSE:Factory">
+  <title>Base64 encoder/decoder Java library</title>
+  <description>Base64Coder is a Base64 encoder/decoder class.
+
+There is no Base64 encoder/decoder in the standard Java SDK class
+library.  The undocumented classes sun.misc.BASE64Encoder and
+sun.misc.BASE64Decoder should not be used.
+
+</description>
+  <devel project="Java:packages" package="base64coder"/>
+  <url>http://www.source-code.biz/%{name}/java/</url>
+</package>

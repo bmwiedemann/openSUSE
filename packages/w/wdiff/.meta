@@ -1,0 +1,9 @@
+<package name="wdiff" project="openSUSE:Factory">
+  <title>Display Word Differences Between Text Files</title>
+  <description>wdiff compares two files and finds which words have been deleted or
+added to old_file to get new_file. A word is considered to be anything
+between whitespace.
+
+Xwdiff is a handy X Window System front-end, based on Tcl/Tk.</description>
+  <devel project="devel:tools" package="wdiff"/>
+</package>

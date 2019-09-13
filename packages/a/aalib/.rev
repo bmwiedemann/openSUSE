@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="311">
+    <srcmd5>204bc6c671cba5704d9efd5bceda379e</srcmd5>
+    <version>1.4.0</version>
+    <time>1168901447</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="344">
+    <srcmd5>0f9c7c2c72fbc498343249823223d119</srcmd5>
+    <version>1.4.0</version>
+    <time>1175169410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="428">
+    <srcmd5>796e2ea9c9c5395731dd1bb1f1e511c0</srcmd5>
+    <version>1.4.0</version>
+    <time>1207825481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="474">
+    <srcmd5>796e2ea9c9c5395731dd1bb1f1e511c0</srcmd5>
+    <version>1.4.0</version>
+    <time>1207825481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="475">
+    <srcmd5>db0769a50d2d4e73628e138164562357</srcmd5>
+    <version>1.4.0</version>
+    <time>1225636251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="476">
+    <srcmd5>236fbf00bf602a020887b8b75a8e2aea</srcmd5>
+    <version>1.4.0</version>
+    <time>1229338600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="477">
+    <srcmd5>bb1f24507b57ead950f31b6330aecf2f</srcmd5>
+    <version>1.4.0</version>
+    <time>1240524840</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="479">
+    <srcmd5>bb1f24507b57ead950f31b6330aecf2f</srcmd5>
+    <version>1.4.0</version>
+    <time>1240524840</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="480">
+    <srcmd5>70c4970963f2dae437bdfaebc7abd1f9</srcmd5>
+    <version>1.4.0</version>
+    <time>1258374148</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/aalib based on submit request 24447 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="10" vrev="481">
+    <srcmd5>96757581620842019291c9c0e3ec00d3</srcmd5>
+    <version>1.4.0</version>
+    <time>1265749489</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/aalib based on submit request 31720 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="11" vrev="482">
+    <srcmd5>b57d384a72e9ae8ed4ca0809eed9c72a</srcmd5>
+    <version>1.4.0</version>
+    <time>1268922843</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="484">
+    <srcmd5>b57d384a72e9ae8ed4ca0809eed9c72a</srcmd5>
+    <version>1.4.0</version>
+    <time>1278667334</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="485">
+    <srcmd5>b57d384a72e9ae8ed4ca0809eed9c72a</srcmd5>
+    <version>1.4.0</version>
+    <time>1278678561</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="486">
+    <srcmd5>1449e439f96abcb736af5d55b4865990</srcmd5>
+    <version>unknown</version>
+    <time>1284124182</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/aalib based on submit request 47608 from user prusnak
+</comment>
+    <requestid>47608</requestid>
+  </revision>
+  <revision rev="15" vrev="489">
+    <srcmd5>1449e439f96abcb736af5d55b4865990</srcmd5>
+    <version>unknown</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="490">
+    <srcmd5>8c8ac74e4fe42c26668e57d0a4effb53</srcmd5>
+    <version>1.4.0</version>
+    <time>1315232041</time>
+    <user>lrupp</user>
+    <comment>- fix build with newer ld (forwarded request 80900 from coolo)</comment>
+    <requestid>80902</requestid>
+  </revision>
+  <revision rev="17" vrev="491">
+    <srcmd5>5c70746c1c3fc98ba297402f4943dbb4</srcmd5>
+    <version>1.4.0</version>
+    <time>1315232052</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80902
+</comment>
+  </revision>
+  <revision rev="18" vrev="492">
+    <srcmd5>e6d5ec8ae06b047d1c565f0dfb0a2b64</srcmd5>
+    <version>1.4.0</version>
+    <time>1317744382</time>
+    <user>oertel</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85935 from coolo)</comment>
+    <requestid>86045</requestid>
+  </revision>
+  <revision rev="19" vrev="494">
+    <srcmd5>e6d5ec8ae06b047d1c565f0dfb0a2b64</srcmd5>
+    <version>1.4.0</version>
+    <time>1319181763</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="495">
+    <srcmd5>c2bada93ef1f2e1fdd1b3c63dccdd834</srcmd5>
+    <version>1.4.0</version>
+    <time>1323290426</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 95713 from coolo)</comment>
+    <requestid>95715</requestid>
+  </revision>
+  <revision rev="21" vrev="496">
+    <srcmd5>c92c0a5b191321cf54bdd6f704d42219</srcmd5>
+    <version>1.4.0</version>
+    <time>1329750389</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>105932</requestid>
+  </revision>
+  <revision rev="22" vrev="498">
+    <srcmd5>c92c0a5b191321cf54bdd6f704d42219</srcmd5>
+    <version>1.4.0</version>
+    <time>1340183163</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="500">
+    <srcmd5>c92c0a5b191321cf54bdd6f704d42219</srcmd5>
+    <version>1.4.0</version>
+    <time>1359108637</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="501">
+    <srcmd5>f301ca1cb679331246dc73a24371e784</srcmd5>
+    <version>1.4.0</version>
+    <time>1363946374</time>
+    <user>coolo</user>
+    <comment>- Replace Source with Link to source (forwarded request 159800 from m_meister)</comment>
+    <requestid>159802</requestid>
+  </revision>
+  <revision rev="25" vrev="502">
+    <srcmd5>96337f1ba28f82459edee3a13d00209e</srcmd5>
+    <version>1.4.0</version>
+    <time>1364157130</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160566 from m_meister)</comment>
+    <requestid>160567</requestid>
+  </revision>
+  <revision rev="26" vrev="504">
+    <srcmd5>96337f1ba28f82459edee3a13d00209e</srcmd5>
+    <version>1.4.0</version>
+    <time>1379661944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="506">
+    <srcmd5>96337f1ba28f82459edee3a13d00209e</srcmd5>
+    <version>1.4.0</version>
+    <time>1409300464</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="507">
+    <srcmd5>9d92507f7a2f11e23eb93121ecb3b10c</srcmd5>
+    <version>1.4.0</version>
+    <time>1410981818</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249572</requestid>
+  </revision>
+  <revision rev="29" vrev="508">
+    <srcmd5>87d05e618e5891bdedee2add7a13cd45</srcmd5>
+    <version>1.4.0</version>
+    <time>1432156786</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307620</requestid>
+  </revision>
+  <revision rev="30" vrev="509">
+    <srcmd5>57bf078084a5f9440b205d72da544a52</srcmd5>
+    <version>1.4.0</version>
+    <time>1442638355</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>330012</requestid>
+  </revision>
+  <revision rev="31" vrev="510">
+    <srcmd5>ee4a52ce73224f10c63fa703565dc1d4</srcmd5>
+    <version>1.4.0</version>
+    <time>1445705729</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>339513</requestid>
+  </revision>
+</revisionlist>

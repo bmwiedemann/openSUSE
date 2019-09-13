@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>29b2528b7bdf12e80c4486f815ffeed7</srcmd5>
+    <version>0~20140727</version>
+    <time>1409118355</time>
+    <user>coolo</user>
+    <comment>New package - declined due to wrong license previously - corrected</comment>
+    <requestid>245692</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>29b2528b7bdf12e80c4486f815ffeed7</srcmd5>
+    <version>0~20140727</version>
+    <time>1409302842</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>80f975ece788c2fdfe03542678ea763e</srcmd5>
+    <version>0~20140727</version>
+    <time>1409998687</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>247355</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e29d458b122f3893cde14edf9d559228</srcmd5>
+    <version>0~20141220</version>
+    <time>1419331859</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266222</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8235ee59c2431aa9bad189d5e029b641</srcmd5>
+    <version>0~20150303</version>
+    <time>1427736773</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest version.  Depends on SR#293184</comment>
+    <requestid>293432</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d5a97b71fb6e1fa84b98dee7f85c96e</srcmd5>
+    <version>0~20150708</version>
+    <time>1440153769</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>324735</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>819cedd089b610110c6ac0a376b33e95</srcmd5>
+    <version>0~20160108</version>
+    <time>1453998207</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 20160108 v</comment>
+    <requestid>355860</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>35af67cfcf8b84e28c87a4312b3c83ad</srcmd5>
+    <version>0~20160918</version>
+    <time>1475359655</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>430655</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e88ff67a70a042fab0d66089d0f71429</srcmd5>
+    <version>0~20160918</version>
+    <time>1488560160</time>
+    <user>dimstar_suse</user>
+    <comment>Minor specfile fixes associated with 2017 update</comment>
+    <requestid>461999</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>48477559d3912539b61aaf8119b11c84</srcmd5>
+    <version>0~20170723</version>
+    <time>1510232154</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0~20170723
+  * worked on internal test structure
+- add python3 support
+- implement python singlespec syntax
+- In Requires: lines for libyal python bindings, use the python-lib* variant of the package
+	Python singlespec automatically converts that to python2 / python3 as appropriate
+- remove Requres: python-protobuf.  It has been replaced by a JSON solution
+- adopt upstream name of python{23}-tsk3
+</comment>
+    <requestid>533533</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3e51683f6e7212dbdf5b92938ea67850</srcmd5>
+    <version>0~20171230</version>
+    <time>1516222570</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0~20171230
+  * add more python3 support (even though openSUSE package doesn't use it)
+  * bug fixes
+  * compatible with plaso 20171231
+- revert effort to use Python singlespec.  It's just not working smoothly.</comment>
+    <requestid>564457</requestid>
+  </revision>
+</revisionlist>

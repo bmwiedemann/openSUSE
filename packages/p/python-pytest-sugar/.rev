@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ccbfc1644d1f6dbea8645f15abdd4717</srcmd5>
+    <version>0.9.0</version>
+    <time>1515505813</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package 
+</comment>
+    <requestid>542057</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e627eee05d8a9959c39998a6496c99db</srcmd5>
+    <version>0.9.0</version>
+    <time>1515623740</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>562899</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cef104a547a25256a15f06aeab2b5cb7</srcmd5>
+    <version>0.9.1</version>
+    <time>1519041786</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.1
+  + Fix incompatibility with pytest 3.4 (forwarded request 577890 from mimi_vx)</comment>
+    <requestid>577891</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>370ab586ae1ffcd7cc95bb22bac4ccae</srcmd5>
+    <version>0.9.2</version>
+    <time>1551024277</time>
+    <user>coolo</user>
+    <comment>- Update to 0.9.2:
+  * Fix incompatibility with pytest 3.10 (thanks @Natim)
+  * Double colons for verbose output (thanks @albertodonato)
+  * Fix &quot;Wrong count with items modified in pytest_collection_modifyitems&quot; (thanks @blueyed)
+  * Defer registration of xdist hook (thanks @blueyed)
+- Add patch from upstream to fix build with pytest 4.2+:
+  * pytest4.patch</comment>
+    <requestid>674169</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c182ae088e0a2f2c3a12a19b8966f935</srcmd5>
+    <version>0.9.2</version>
+    <time>1564484771</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing pytest5 checks that need tweaking upstream</comment>
+    <requestid>718214</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="lximage-qt" project="openSUSE:Factory">
+  <title>Image Viewer and Thumbnail Generator for lxqt and pcmanfm-qt</title>
+  <description>Image Viewer and Thumbnail Generator for lxqt and pcmanfm-qt
+</description>
+  <devel project="X11:LXQt" package="lximage-qt"/>
+</package>

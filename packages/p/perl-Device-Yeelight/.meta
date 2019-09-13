@@ -1,0 +1,5 @@
+<package name="perl-Device-Yeelight" project="openSUSE:Factory">
+  <title>perl-Device-Yeelight</title>
+  <description>Perl module for controlling Yeelight WiFi Smart devices.</description>
+  <devel project="devel:languages:perl" package="perl-Device-Yeelight"/>
+</package>

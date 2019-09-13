@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07e7e238481065574351e906b077da4e</srcmd5>
+    <version>2.9.3</version>
+    <time>1476874886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>427239</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>09dd59e193b3392743d90b79318f2da8</srcmd5>
+    <version>2.10</version>
+    <time>1493020056</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>484372</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d9d1f246a456dca8e2066de3b38d5a10</srcmd5>
+    <version>2.10</version>
+    <time>1497518343</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498496</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>75833734a27d5af3ef57a3d5849be4e9</srcmd5>
+    <version>2.10.2</version>
+    <time>1517424590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570358</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d4a43ed0ae42dd9f3c3492fd9d751a11</srcmd5>
+    <version>2.10.4</version>
+    <time>1524144636</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove source URL for now to work around SourceForge's unreliable
+  mirroring</comment>
+    <requestid>597479</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f657e3f1d766ce0b785b4f424b6d0a85</srcmd5>
+    <version>2.10.8</version>
+    <time>1540319916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643697</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>39d57e39338c48a2720385d0d355938b</srcmd5>
+    <version>2.10.8</version>
+    <time>1541746451</time>
+    <user>dimstar_suse</user>
+    <comment>- Add reproducible.patch to sort input file list to make package
+  build reproducible (boo#1041090)
+</comment>
+    <requestid>647097</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ced9eb9520154191f0716652ecdfaac2</srcmd5>
+    <version>2.11.1</version>
+    <time>1556474457</time>
+    <user>maxlin_factory</user>
+    <comment>- Drop qscintilla-qt4 and python-qscintilla-qt4.
+- Re-sync the changelog files.</comment>
+    <requestid>694761</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4149e5fdad548859b2c721604c723ad8</srcmd5>
+    <version>2.11.2</version>
+    <time>1563259222</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.11.2</comment>
+    <requestid>714847</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4df6d45a39479e7aaa44f10f6756f655</srcmd5>
+    <version>2.11.2</version>
+    <time>1567168939</time>
+    <user>dimstar_suse</user>
+    <comment>- Co-own designer directory in Qt's plugins directory, as libqt5-qttools
+  is no longer pulled in implicitly. (forwarded request 727159 from Vogtinator)</comment>
+    <requestid>727160</requestid>
+  </revision>
+</revisionlist>

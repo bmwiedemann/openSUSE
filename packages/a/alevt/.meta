@@ -1,0 +1,8 @@
+<package name="alevt" project="openSUSE:Factory">
+  <title>Teletext and Videotext Decoder for the BTTV Driver</title>
+  <description>AleVT is a teletext and videotext decoder and browser for the BTTV
+driver (/dev/vbi) and the X Window System.  It features multiple
+windows, a page cache, regexp searching, a built-in manual, and more.
+There is also a program to get the time from teletext.</description>
+  <devel project="multimedia:apps" package="alevt"/>
+</package>

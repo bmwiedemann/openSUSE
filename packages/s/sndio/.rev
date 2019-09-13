@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f91ca37619b90d619eb181508e8a9be</srcmd5>
+    <version>1.0.1</version>
+    <time>1452941812</time>
+    <user>dimstar_suse</user>
+    <comment>moved API documentation man pages to -devel</comment>
+    <requestid>353420</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>aa4600ec48d3a795050afda2c04b78f2</srcmd5>
+    <version>1.0.1</version>
+    <time>1454628681</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354814</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4f5f605b51e7a5f276c3f33afb21d362</srcmd5>
+    <version>1.0.1</version>
+    <time>1468482458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407575</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4fcdf559e49658b0c87fa99f557dfb8b</srcmd5>
+    <version>1.5.0</version>
+    <time>1539093290</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the libname to have devel package again installable
+
+- Update to version 1.5.0
+  + No changelog available</comment>
+    <requestid>640808</requestid>
+  </revision>
+</revisionlist>

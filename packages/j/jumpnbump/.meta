@@ -1,0 +1,8 @@
+<package name="jumpnbump" project="openSUSE:Factory">
+  <title>Funny Game with Cute Little Bunnies</title>
+  <description>You are a cute little bunny and you have to avoid the other bunnies
+trying to stomp on you and at the same time try to stomp on as many
+opponents as possible. Jump &amp; bump is multiplayer game only with up to
+four players simultaneously. Gather the local crew and have a blast.</description>
+  <devel project="games" package="jumpnbump"/>
+</package>

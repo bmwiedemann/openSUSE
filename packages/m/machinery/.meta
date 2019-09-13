@@ -1,0 +1,5 @@
+<package name="machinery" project="openSUSE:Factory">
+  <title>Machinery is a systems management toolkit for Linux.</title>
+  <description>It supports configuration discovery, system validation, and service migration.</description>
+  <devel project="systemsmanagement:machinery" package="machinery"/>
+</package>

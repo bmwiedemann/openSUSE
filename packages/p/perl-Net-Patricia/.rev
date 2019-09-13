@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1728acf0f79d9541e30261bef67210f</srcmd5>
+    <version>1.22</version>
+    <time>1392791026</time>
+    <user>coolo</user>
+    <comment>Could you please review minor things in one step and not one after the other. Making submit requests to Factory is actually so much bureaucratic overhead that I usually ovoid it. And then there are always calls to participate in factory - that does not match!</comment>
+    <requestid>222723</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4a1f2c49a2093b156f46c708bff30b27</srcmd5>
+    <version>1.22</version>
+    <time>1405931746</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>241680</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4a1f2c49a2093b156f46c708bff30b27</srcmd5>
+    <version>1.22</version>
+    <time>1409302428</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>327e5c7d5702827fc0553717db952ecb</srcmd5>
+    <version>1.22</version>
+    <time>1519684009</time>
+    <user>dimstar_suse</user>
+    <comment>- New systems requires explicit libnsl-devel for building
+</comment>
+    <requestid>580243</requestid>
+  </revision>
+</revisionlist>

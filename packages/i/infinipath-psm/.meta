@@ -1,0 +1,12 @@
+<package name="infinipath-psm" project="openSUSE:Factory">
+  <title>QLogic PSM Libraries</title>
+  <description>
+    The PSM Messaging API, or PSM API, is QLogic's low-level
+    user-level communications interface for the Truescale
+    family of products. PSM users are enabled with mechanisms
+    necessary to implement higher level communications
+    interfaces in parallel environments.
+   </description>
+  <devel project="science:HPC" package="infinipath-psm"/>
+  <url>ttp://www.qlogic.com/</url>
+</package>

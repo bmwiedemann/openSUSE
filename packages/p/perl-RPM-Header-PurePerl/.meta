@@ -1,0 +1,11 @@
+<package name="perl-RPM-Header-PurePerl" project="openSUSE:Factory">
+  <title>A Perl only implementation of a RPM header reader</title>
+  <description>
+RPM::Header::PurePerl is a clone of RPM::Header written in only Perl, so it
+provides a way to read a rpm package on systems where rpm is not installed. 
+RPM::Header::PurePerl can be used as a drop in replacement for RPM::Header,
+if needed also the other way round.
+  </description>
+  <devel project="devel:languages:perl" package="perl-RPM-Header-PurePerl"/>
+  <url>PUT_UPSTREAM_URL_HERE</url>
+</package>

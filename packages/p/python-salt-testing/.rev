@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d571103bb92f1be834286f706d174e4</srcmd5>
+    <version>0.5.1</version>
+    <time>1380609200</time>
+    <user>coolo</user>
+    <comment>Please accept this package in factory,
+it is needed to for salt 0.17.0 and up</comment>
+    <requestid>201385</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>afd874f6a6bec3fe15a282b7861e7653</srcmd5>
+    <version>0.5.2</version>
+    <time>1382693473</time>
+    <user>scarabeus_factory</user>
+    <comment>updates salt-testing package to 0.5.2 (forwarded request 204727 from aboe76)</comment>
+    <requestid>204728</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>230855c162aecf8a653fb680cf34a7a7</srcmd5>
+    <version>0.5.3</version>
+    <time>1384266168</time>
+    <user>coolo</user>
+    <comment>New version 0.5.3 (forwarded request 206586 from aboe76)</comment>
+    <requestid>206587</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>34d532f831f813151d02a58ba3e6cd29</srcmd5>
+    <version>0.5.4</version>
+    <time>1388757027</time>
+    <user>scarabeus_factory</user>
+    <comment>update salt-testing to 0.5.4 (forwarded request 212665 from aboe76)</comment>
+    <requestid>212666</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9d2d0356162c20faf0b64770fe42ec0d</srcmd5>
+    <version>2014.4.24</version>
+    <time>1399032184</time>
+    <user>coolo</user>
+    <comment>Updated salt-testing to 2014.4.24
+new date based versioning. (forwarded request 231554 from aboe76)</comment>
+    <requestid>231555</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1153997ad183101593e3a6ac1132b55d</srcmd5>
+    <version>2014.8.5</version>
+    <time>1407318153</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243715</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1153997ad183101593e3a6ac1132b55d</srcmd5>
+    <version>2014.8.5</version>
+    <time>1409302985</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a7fb9eddd8e16a617a0a687e17eec0e4</srcmd5>
+    <version>2015.2.16</version>
+    <time>1423812938</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285877</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>679600934034e7d8572150fbc35736fd</srcmd5>
+    <version>2015.7.10</version>
+    <time>1445092744</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>338502</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cd154eed9cf43fead1eda69b231b4d92</srcmd5>
+    <version>2016.9.7</version>
+    <time>1475242394</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>430699</requestid>
+  </revision>
+</revisionlist>

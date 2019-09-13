@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>159ff52afbcd574e605ed889edee1d60</srcmd5>
+    <version>1.0.0</version>
+    <time>1332416181</time>
+    <user>coolo</user>
+    <comment>upstream fixed bnc#752036</comment>
+    <requestid>109260</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eafb458c1ceae5682aaab620d538da7b</srcmd5>
+    <version>1.0.0</version>
+    <time>1333109993</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.0.0
+* add support for XML output</comment>
+    <requestid>111439</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>eafb458c1ceae5682aaab620d538da7b</srcmd5>
+    <version>1.0.0</version>
+    <time>1340183732</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f7d9496eb9a5b76637309a755c4dc167</srcmd5>
+    <version>1.0.0</version>
+    <time>1355475136</time>
+    <user>coolo</user>
+    <comment>- Verify GPG signature</comment>
+    <requestid>144976</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>f7d9496eb9a5b76637309a755c4dc167</srcmd5>
+    <version>1.0.0</version>
+    <time>1359109503</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>995b82503bc399862a48cfdeda14ef9d</srcmd5>
+    <version>1.0.1</version>
+    <time>1362745529</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.0.1</comment>
+    <requestid>157936</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>995b82503bc399862a48cfdeda14ef9d</srcmd5>
+    <version>1.0.1</version>
+    <time>1379663367</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>995b82503bc399862a48cfdeda14ef9d</srcmd5>
+    <version>1.0.1</version>
+    <time>1409301978</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>0e55fd116b3e932e277ce85e8c1dfd73</srcmd5>
+    <version>1.0.1</version>
+    <time>1411721513</time>
+    <user>coolo</user>
+    <comment>- Drop gpg-offline build-time requirement</comment>
+    <requestid>251744</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>34438f271a3bbb25f38a456db9bd1b7a</srcmd5>
+    <version>1.0.2</version>
+    <time>1472379482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.0.2</comment>
+    <requestid>421160</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,297 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>cb27108b51c1e6b7bdbfdf0aeb5f1455</srcmd5>
+    <version>0.7.0</version>
+    <time>1168901511</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="27">
+    <srcmd5>b1da9320719d93120cd2df8ec9dc9fb7</srcmd5>
+    <version>0.7.0</version>
+    <time>1169511160</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="48">
+    <srcmd5>1cb724a61a8a5339dd5847249417054c</srcmd5>
+    <version>0.7.0</version>
+    <time>1182447815</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="96">
+    <srcmd5>1c572a5d8aea11ea6686a090f4408799</srcmd5>
+    <version>0.7.0</version>
+    <time>1207265081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="125">
+    <srcmd5>4996b81fe115816604bdc92e5c31468b</srcmd5>
+    <version>0.7.0</version>
+    <time>1219441688</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="132">
+    <srcmd5>f66ae5bae963c46a4470dd36b35dd9ff</srcmd5>
+    <version>0.7.0</version>
+    <time>1221253084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="134">
+    <srcmd5>f66ae5bae963c46a4470dd36b35dd9ff</srcmd5>
+    <version>0.7.0</version>
+    <time>1221253084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="135">
+    <srcmd5>50bec6c0f53047550b676eec04cf4406</srcmd5>
+    <version>0.7.0</version>
+    <time>1268922947</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="137">
+    <srcmd5>50bec6c0f53047550b676eec04cf4406</srcmd5>
+    <version>0.7.0</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="138">
+    <srcmd5>50bec6c0f53047550b676eec04cf4406</srcmd5>
+    <version>0.7.0</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="139">
+    <srcmd5>57bff5e6273ce9abfff4f699a651999b</srcmd5>
+    <version>0.7.0</version>
+    <time>1285283068</time>
+    <user>autobuild</user>
+    <comment>Copy from network/atftp based on submit request 48802 from user prusnak
+</comment>
+    <requestid>48802</requestid>
+  </revision>
+  <revision rev="12" vrev="140">
+    <srcmd5>8b45099e84abfb28a00df0ddbf7b1ae6</srcmd5>
+    <version>0.7.0</version>
+    <time>1295349561</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57944 from user puzel
+</comment>
+    <requestid>57944</requestid>
+  </revision>
+  <revision rev="13" vrev="141">
+    <srcmd5>876267f0dec01cf5882dcf86a3e52ec9</srcmd5>
+    <version>0.7.0</version>
+    <time>1295349573</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57944
+</comment>
+  </revision>
+  <revision rev="14" vrev="144">
+    <srcmd5>876267f0dec01cf5882dcf86a3e52ec9</srcmd5>
+    <version>0.7.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="145">
+    <srcmd5>969f8c0387d856f7247c7540e4c9bc3e</srcmd5>
+    <version>0.7.0</version>
+    <time>1315559262</time>
+    <user>saschpe</user>
+    <comment>- added missing PreReq: pwdutils (bnc#683140) (forwarded request 81088 from vitezslav_cizek)</comment>
+    <requestid>81360</requestid>
+  </revision>
+  <revision rev="16" vrev="146">
+    <srcmd5>49b6df02bcfe0a42dd19740d4b62ec3e</srcmd5>
+    <version>0.7.0</version>
+    <time>1315559272</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81360
+</comment>
+  </revision>
+  <revision rev="17" vrev="148">
+    <srcmd5>49b6df02bcfe0a42dd19740d4b62ec3e</srcmd5>
+    <version>0.7.0</version>
+    <time>1319181778</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="149">
+    <srcmd5>30ea954db818ffd5e04cf7de2363f61d</srcmd5>
+    <version>0.7.0</version>
+    <time>1322144801</time>
+    <user>coolo</user>
+    <comment>- licence in spdx format
+- fixed the &quot;Sorcerer's Apprentice Syndrome&quot; bug
+  (bnc#727843) (forwarded request 93259 from vitezslav_cizek)</comment>
+    <requestid>93323</requestid>
+  </revision>
+  <revision rev="19" vrev="150">
+    <srcmd5>2d060e8eace9f09a11f32482640e61ae</srcmd5>
+    <version>0.7.0</version>
+    <time>1325658203</time>
+    <user>coolo</user>
+    <comment>- added autoconf as BuildRequires (forwarded request 98549 from vitezslav_cizek)</comment>
+    <requestid>98614</requestid>
+  </revision>
+  <revision rev="20" vrev="152">
+    <srcmd5>2d060e8eace9f09a11f32482640e61ae</srcmd5>
+    <version>0.7.0</version>
+    <time>1340183185</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="153">
+    <srcmd5>faa5f9f2c977c67092838c3c293a2233</srcmd5>
+    <version>0.7.0</version>
+    <time>1347617655</time>
+    <user>namtrac</user>
+    <comment>- added rules for SuSEfirewall2 (bnc#729793) 
+
+- use the &quot;su&quot; logrotate directive (bnc#677335) 
+
+- prevent the sorcerer's apprentice syndrome situation only when
+  explicitly specified by the user (bnc#774376)
+  (added a new command line option --prevent-sas to turn it on)
+
+- fix a race condition where two server threads pick up a single
+  client, which causes the transported file being overwritten
+  (bnc#599856) (forwarded request 133636 from vitezslav_cizek)</comment>
+    <requestid>134139</requestid>
+  </revision>
+  <revision rev="22" vrev="155">
+    <srcmd5>faa5f9f2c977c67092838c3c293a2233</srcmd5>
+    <version>0.7.0</version>
+    <time>1359108673</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="156">
+    <srcmd5>e450351130eb004a5acdb276e51309e0</srcmd5>
+    <version>0.7.0</version>
+    <time>1360870399</time>
+    <user>coolo</user>
+    <comment>- create capabilites provided by both tftp and atftp
+  (bnc#801481 or bnc#725378)
+
+- change ownership of /srv/tftpboot, because atftpd running as
+  tftp:tftp can't write to that directory
+- create pid directory on service start
+- manpage changes:
+  * substitute /tftpboot with /srv/tftpboot
+  * default user is now tftp:tftp
+  * added patches:
+    atftp-0.7-default_user_man.patch
+    atftp-0.7-default_dir_man.patch
+
+- use Vladimir Nadvornik's heuristic for packet retransmission
+  by default (see bnc#774376)
+  The RFC1350 compliant behaviour stays optional.
+  (added atftp-0.7-ack_heuristic.patch)
+- merged the two sorcerer's apprentice syndrome patches to one
+  (removed atftp-0.7-prevent-sas.patch) (forwarded request 155400 from vitezslav_cizek)</comment>
+    <requestid>155404</requestid>
+  </revision>
+  <revision rev="24" vrev="158">
+    <srcmd5>e450351130eb004a5acdb276e51309e0</srcmd5>
+    <version>0.7.0</version>
+    <time>1379661999</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="159">
+    <srcmd5>df1076a8cd8c09d8bf1cb5234ce35013</srcmd5>
+    <version>0.7.0</version>
+    <time>1384530954</time>
+    <user>scarabeus_factory</user>
+    <comment>rebase patches, remove 'ghost /var/run/atftp' from spec (forwarded request 206687 from computersalat)</comment>
+    <requestid>206996</requestid>
+  </revision>
+  <revision rev="26" vrev="161">
+    <srcmd5>df1076a8cd8c09d8bf1cb5234ce35013</srcmd5>
+    <version>0.7.0</version>
+    <time>1409300524</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="162">
+    <srcmd5>d7234dc2009f9a557d10072643c96d07</srcmd5>
+    <version>0.7.0</version>
+    <time>1424117687</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286334</requestid>
+  </revision>
+  <revision rev="28" vrev="163">
+    <srcmd5>32eff45b274bd41b5874f81d5e65f8eb</srcmd5>
+    <version>0.7.0</version>
+    <time>1427109491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292104</requestid>
+  </revision>
+  <revision rev="29" vrev="164">
+    <srcmd5>898fc8a20766e045040a2264bde2ff11</srcmd5>
+    <version>0.7.0</version>
+    <time>1433577240</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308707</requestid>
+  </revision>
+  <revision rev="30" vrev="165">
+    <srcmd5>1125a439009bbcba95c00e069aab5894</srcmd5>
+    <version>0.7.0</version>
+    <time>1433832571</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311138</requestid>
+  </revision>
+  <revision rev="31" vrev="166">
+    <srcmd5>d762853c5c4ff2944d43a9e89bb050d1</srcmd5>
+    <version>0.7.0</version>
+    <time>1434456366</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312241</requestid>
+  </revision>
+  <revision rev="32" vrev="167">
+    <srcmd5>19887662234f54fc4398e5fffd5f4f7b</srcmd5>
+    <version>0.7.0</version>
+    <time>1483554624</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>444806</requestid>
+  </revision>
+  <revision rev="33" vrev="168">
+    <srcmd5>d27b39634c411a5321cd046e43edb61c</srcmd5>
+    <version>0.7.0</version>
+    <time>1507197191</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522873</requestid>
+  </revision>
+  <revision rev="34" vrev="169">
+    <srcmd5>524dbe38c473d7e93cc2929954f20d9b</srcmd5>
+    <version>0.7.0</version>
+    <time>1511948978</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545048</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0e8ffe0bca7b3735037953dd7b186cff</srcmd5>
+    <version>0.7.2</version>
+    <time>1556915738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698121</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>b025676a54671dc4b670c0d5045365a0</srcmd5>
+    <version>0.7.2</version>
+    <time>1562590862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713630</requestid>
+  </revision>
+</revisionlist>

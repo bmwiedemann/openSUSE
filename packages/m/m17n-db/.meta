@@ -1,0 +1,5 @@
+<package name="m17n-db" project="openSUSE:Factory">
+  <title>Database Needed by the m17n Library m17n-lib</title>
+  <description>Database that is needed by the m17n library &quot;m17n-lib&quot;.</description>
+  <devel project="M17N" package="m17n-db"/>
+</package>

@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2271c504c3ecad1f0c33a9d358cd66d4</srcmd5>
+    <version>2.3.0_pre10</version>
+    <time>1518025227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571814</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4d9a8f4992084a45bfa9bee2dab4104</srcmd5>
+    <version>2.3.0_pre10</version>
+    <time>1529667314</time>
+    <user>maxlin_factory</user>
+    <comment>- Modernise spec file a bit
+
+- Properly handle upgrade from old renamed hub gem</comment>
+    <requestid>618222</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6643f97e77d03aa3b765d29ee7536615</srcmd5>
+    <version>2.10.0</version>
+    <time>1552985871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682043</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9a812e0d137dd585a19e4c1348bd1770</srcmd5>
+    <version>2.10.1</version>
+    <time>1553809738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689269</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cb7d9c074aaa07bfa9729300bc97897f</srcmd5>
+    <version>2.11.1</version>
+    <time>1554977792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692925</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aa2f28b0f3f1a33ee0ec86e070a0b4c9</srcmd5>
+    <version>2.12.2</version>
+    <time>1563259239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714979</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0869c3f72c74f4806e8b4284fe311361</srcmd5>
+    <version>2.12.4</version>
+    <time>1568025475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729344</requestid>
+  </revision>
+</revisionlist>

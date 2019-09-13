@@ -1,0 +1,5 @@
+<package name="awesome-shifty" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:windowmanagers" package="awesome-shifty"/>
+</package>

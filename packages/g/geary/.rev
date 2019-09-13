@@ -1,0 +1,440 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61afc0f7d635833b2313b1d6d98d55e2</srcmd5>
+    <version>0.2.2</version>
+    <time>1352358251</time>
+    <user>coolo</user>
+    <comment>New lightweight mail client</comment>
+    <requestid>140555</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>61afc0f7d635833b2313b1d6d98d55e2</srcmd5>
+    <version>0.2.2</version>
+    <time>1359108916</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>7485dd0621ae952ac932fc4d11ad94ee</srcmd5>
+    <version>0.2.2</version>
+    <time>1363104731</time>
+    <user>coolo</user>
+    <comment>push staged updates from GNOME:Apps</comment>
+    <requestid>158674</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5277f52478d5e78aa2b7fbf289105e1c</srcmd5>
+    <version>0.3.0</version>
+    <time>1364066338</time>
+    <user>coolo</user>
+    <comment>... forgot to add the patch to changes (forwarded request 160516 from Zaitor)</comment>
+    <requestid>160581</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>de26af9af9cc6ef07dfc782c4a87f39b</srcmd5>
+    <version>0.3.1</version>
+    <time>1372527567</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.3.1, still fails for GF+GA, but we should have the latest version anyway. (forwarded request 181064 from dimstar)</comment>
+    <requestid>181420</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>eeba7dd5591df2419526790dab14f239</srcmd5>
+    <version>0.3.1</version>
+    <time>1377628874</time>
+    <user>coolo</user>
+    <comment>Add a recommends on the lang package. (forwarded request 196311 from Zaitor)</comment>
+    <requestid>196313</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>eeba7dd5591df2419526790dab14f239</srcmd5>
+    <version>0.3.1</version>
+    <time>1379662408</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f354f685f94766ab5f47404682627133</srcmd5>
+    <version>0.4.3</version>
+    <time>1387205914</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.4.3:
+  + Fix &quot;squished&quot; conversation list when used with certain themes.
+  + Compile-time support for WebKitGTK 2.0.
+- Add geary-vala-workaround.patch: Work around vala issues which
+  causes invalid int to pointer and pointer to int conversions.
+- Export CFLAGS=&quot;%{optflags} -w&quot; in order to work around
+  bgo#682526.
+
+- Update to version 0.4.2:
+  + Compile with Vala 0.22.1.
+- Changes from version 0.4.1:
+  + Compile-time support for WebKitGTK 2.2.
+  + Fixes IMAP STARTTLS failure to connect bug.
+  + Works around LIST bug in IceWarp IMAP servers (crasher).
+  + Solves crash when IMAP connect fails due to timeout.
+  + CamelCased MIME types now handled properly (prevents blank
+    emails).
+  + Adds missing RTL icons.
+  + Updated translations.
+- Changes from version 0.4.0:
+  + Per-account full text search.
+  + Automatic save to draft.
+  + Refreshed user interface.
+  + Per-folder unread email count.
+  + Experimental support for Outlook.com.
+  + Enhanced &quot;show external images&quot; preference.
+  + Find bar for locating text within a conversation (Ctrl+F).
+  + Improved handling of attachments.
+  + Malicious link checker.
+  + Passwords stored with libsecret instead of GNOME Keyring. (forwarded request 210895 from Zaitor)</comment>
+    <requestid>210936</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2bcec438926f743aa13de8367a69ece2</srcmd5>
+    <version>0.6.0</version>
+    <time>1395750093</time>
+    <user>coolo</user>
+    <comment>Update to 0.6.0 - stable branch (forwarded request 226723 from Zaitor)</comment>
+    <requestid>227268</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fd18c1fc19b6546b41bb3eb38f9e2c5c</srcmd5>
+    <version>0.6.1</version>
+    <time>1405404058</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240879</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>270cf3e5e2ad1e6ccf5b9635ecadcfad</srcmd5>
+    <version>0.6.2</version>
+    <time>1408957458</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245813</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>270cf3e5e2ad1e6ccf5b9635ecadcfad</srcmd5>
+    <version>0.6.2</version>
+    <time>1409300940</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>07b740532ad3f6aa6da2074495a00ac5</srcmd5>
+    <version>0.6.3</version>
+    <time>1410361339</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248252</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2fb029c02ac86dc116246a5f4dd48407</srcmd5>
+    <version>0.8.0</version>
+    <time>1411370652</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250469</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b26008e83c7927e683a7ce28b0cd8dcc</srcmd5>
+    <version>0.8.0</version>
+    <time>1412155400</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253223</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4827d77ef428bc859b59b5e35bd27c2b</srcmd5>
+    <version>0.8.1</version>
+    <time>1413048369</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.8.1:
+  + Display properly-scaled icons under GTK+ 3.14.
+  + Don't show composer close/detach buttons twice with GTK+ 3.14.
+  + Fix code analysis errors reported by newest Vala.
+  + gcr-3 minimum version requirement not specified.
+  + Properly install French online help.
+  + Czech online help added.
+  + Updated translations.
+- Drop patch geary-fix-toolbar-icons.patch: fixed upstream.</comment>
+    <requestid>254657</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>82f50552e489f6a74b27c85153caa4be</srcmd5>
+    <version>0.8.2</version>
+    <time>1416347148</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261757</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b76f649e7998d64493e2aeedecec64dd</srcmd5>
+    <version>0.8.3</version>
+    <time>1419331855</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266185</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ce92db8a4ce95f75358f77919b0ad9ba</srcmd5>
+    <version>0.8.3</version>
+    <time>1422960000</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283656</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f8e78eecb4a45ad09a86e2e18833683e</srcmd5>
+    <version>0.9.1</version>
+    <time>1427735491</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME:Apps - without pcheck</comment>
+    <requestid>291875</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>78290f2efc90933ca626ec5b1e97a73c</srcmd5>
+    <version>0.10.0</version>
+    <time>1427983443</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293895</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a80d5b6676054b69a0e4519573e7ccb6</srcmd5>
+    <version>0.11.0</version>
+    <time>1463652897</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396186</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5ae9f98c0f4572c10611fe44371b3574</srcmd5>
+    <version>0.11.1</version>
+    <time>1467360054</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405602</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>448eeb6b7d0e52463758553d2957225e</srcmd5>
+    <version>0.11.1</version>
+    <time>1471010221</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Apps</comment>
+    <requestid>418949</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d4510d3e45ea31ba6c3e22ddfeee1c12</srcmd5>
+    <version>0.11.2</version>
+    <time>1472646702</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423859</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>bbeffef437ac95b1fd0a61ac9b155a92</srcmd5>
+    <version>0.11.2</version>
+    <time>1474623531</time>
+    <user>dimstar_suse</user>
+    <comment>- Add geary-vala-0.34.patch: Fix build with vala 0.34. Patch taken
+  from git master. (forwarded request 428845 from dimstar)</comment>
+    <requestid>429178</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e67a0abacaed18ee1c88fca18176906d</srcmd5>
+    <version>0.11.3</version>
+    <time>1484041885</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449337</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>dfd4cb5c4f857b98b0960de84c3ab3ce</srcmd5>
+    <version>0.11.3+20170222</version>
+    <time>1487980470</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460077</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1e3dcc8cbacca77f4f5acc2cc413b18c</srcmd5>
+    <version>0.11.3+20170228</version>
+    <time>1488479961</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461125</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5c8ca33ff577d79b51a9de9068f43e9e</srcmd5>
+    <version>0.11.3+20170306</version>
+    <time>1489759602</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479359</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ef178eb21a54a843fb24bfca16bda171</srcmd5>
+    <version>0.11.3+20170621</version>
+    <time>1498742148</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506758</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6fbc22d5afd4a3935eb4ede63a904feb</srcmd5>
+    <version>0.11.3+20170626</version>
+    <time>1503593691</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518075</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>f2750c0577cd85530df6f0cd00f799fc</srcmd5>
+    <version>0.12.0</version>
+    <time>1507197807</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop _service: no longer needed, since upstream is back in
+  releasing tarballs mode.
+
+- Update to version 0.12.0:
+  + Enhancements included:
+    - Improvements in:
+      . Inserting links in rich text messages (interface).
+      . Displaying conversations (interface).
+      . Moving and labelling conversations (interface).
+      . Support for right-to-left languages.
+      . Keyboard navigation for conversations.
+      . Security when displaying messages.
+    - Insert images inline when composing rich text messages.
+    - Added in-application keyboard shortcut help (Ctrl + ?).
+    - Choose multiple spell-checker languages when composing
+      messages.
+    - Support message archiving for Yahoo! Mail and Outlook.com.
+    - Automatically unfold starred messages in a conversation.
+    - Support saving remote inline images.
+    - Support for distribution via Flatpak.
+    - Numerous bug fixes and minor user interface improvements.
+  + Updated manual translations.
+  + Updated translations.
+- Drop %desktop_database_*, %icon_theme_cache_* and
+  %glib2_gsettings_schema_* post/postun/requires: functionality now
+  covered by file triggers. (forwarded request 531260 from dimstar)</comment>
+    <requestid>531389</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b87c75d59dcd7fecc78be63733cdc9be</srcmd5>
+    <version>0.12.1</version>
+    <time>1519145720</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.12.1 (forwarded request 576329 from dimstar)</comment>
+    <requestid>578044</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>ba0016ec435723799be8ac9ce88bb71c</srcmd5>
+    <version>0.12.1</version>
+    <time>1520503029</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581050 from dimstar)</comment>
+    <requestid>582683</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>01b3cfc21e4643d0a9ba8e654c099f7c</srcmd5>
+    <version>0.12.2</version>
+    <time>1525121610</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 601129 from dimstar)</comment>
+    <requestid>601530</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>19dc6c75d55458f7bc0d771b64406ff2</srcmd5>
+    <version>0.12.2</version>
+    <time>1525343579</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim filler wording of description. (forwarded request 602587 from jengelh)</comment>
+    <requestid>602993</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>915b29d1d73e8afef26b616bdd78bc03</srcmd5>
+    <version>0.12.3</version>
+    <time>1531813342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623089</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>f25d60197de7dc8e7270d9696553558c</srcmd5>
+    <version>0.12.3</version>
+    <time>1534322266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629085</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>8de75141561fd15feeb6af10826bd2ce</srcmd5>
+    <version>0.12.4</version>
+    <time>1535963747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632526</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>b5fe32621c3a1b7da1d6bed6efb6dc1c</srcmd5>
+    <version>0.12.4</version>
+    <time>1545866992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660935</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>356e3f268873b5339df23f5b65a131be</srcmd5>
+    <version>0.12.4</version>
+    <time>1548064621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666338</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4ace7084ff32c47138d85c5730fd6bd8</srcmd5>
+    <version>0.13.1</version>
+    <time>1551386514</time>
+    <user>coolo</user>
+    <comment>New stable release (forwarded request 677938 from iznogood)</comment>
+    <requestid>677980</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ef71eb4276938c699e05528ac1cd897f</srcmd5>
+    <version>0.13.2</version>
+    <time>1552207068</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682616</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>334b12d65a937a22a1c731d3bf374c99</srcmd5>
+    <version>3.32.0</version>
+    <time>1553611404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686193</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>926b6100fd9dccac2352d288e9818e1a</srcmd5>
+    <version>3.32.1</version>
+    <time>1556817424</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 698901 from iznogood)</comment>
+    <requestid>699598</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>fd262df109f25524608998275a43d6f5</srcmd5>
+    <version>3.32.2</version>
+    <time>1565009488</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.32.2:
+  + Bug fixes and server compatibility improvements.
+  + Updated translations. (forwarded request 720862 from iznogood)</comment>
+    <requestid>721003</requestid>
+  </revision>
+</revisionlist>

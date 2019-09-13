@@ -1,0 +1,199 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b3f4e39e4dbcfed63d5b3b5f33e042a9</srcmd5>
+    <version>1.008004</version>
+    <time>1324485067</time>
+    <user>coolo</user>
+    <comment>new perl dep</comment>
+    <requestid>97237</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b3f4e39e4dbcfed63d5b3b5f33e042a9</srcmd5>
+    <version>1.008004</version>
+    <time>1340183961</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>b3f4e39e4dbcfed63d5b3b5f33e042a9</srcmd5>
+    <version>1.008004</version>
+    <time>1359109865</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>082c40be7b87859f217586372e0e0ac6</srcmd5>
+    <version>1.008010</version>
+    <time>1371138394</time>
+    <user>coolo</user>
+    <comment>- updated to 1.008010
+       - Fix a split on undefined value warning (David Golden -- see
+         https://github.com/gugod/App-perlbrew/issues/305)
+       - Remove Carp::Always dep
+       - Fix putting arch path in PERL5LIB
+       - Refactor Win32 path handling out of ensure_dir_structure_for()
+       - Fix activate_paths when PERL_LOCAL_LIB_ROOT starts with :
+       - Fix ~/perl5/bin missing in $PATH
+       - Back to 1.008004 with Carp fix since subsequent releases were botched
+       - Avoid issue where PERL5LIB Carp is older than local::lib one</comment>
+    <requestid>178579</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5570883c88b604a2b0e92301cd2fc615</srcmd5>
+    <version>1.008011</version>
+    <time>1375178772</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184842</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>5570883c88b604a2b0e92301cd2fc615</srcmd5>
+    <version>1.008011</version>
+    <time>1379663939</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0ca2a92b66f1ee941721997e6f8a3c18</srcmd5>
+    <version>1.008018</version>
+    <time>1381062690</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.008018
+       - print out actual paths in more test cases, for helping to diagnose
+         mysterious failures
+       - avoid &quot;Unrecognized escape \s passed through&quot; errors on win32
+         (again)
+       - avoid &quot;Unrecognized escape \s passed through&quot; errors on win32
+       - fix new test to use alternate path representations on windows, to
+         handle potential space issues (regression since 1.008012)
+       - fix undef value errors when not installing into a local::lib
+       - now handling using -Mlocal::lib in a taintperl environment, by
+         ensuring that all libs in PERL_LOCAL_LIB_ROOT are properly added to
+         @INC (RT#76661, Karen Etheridge)</comment>
+    <requestid>202279</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ec10cd9d94fee7a8e4f916709e042ac7</srcmd5>
+    <version>1.008026</version>
+    <time>1386398863</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208401</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e09103f464b8bde3e3c5b110306b9430</srcmd5>
+    <version>2.000008</version>
+    <time>1395147476</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226060</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>e09103f464b8bde3e3c5b110306b9430</srcmd5>
+    <version>2.000008</version>
+    <time>1409302592</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>496613111d0763229f07df33a57e278b</srcmd5>
+    <version>2.000014</version>
+    <time>1410967559</time>
+    <user>coolo</user>
+    <comment>- updated to 2.000014
+  - fix taint-mode test in some cases on case insensitive filesystems
+ 
+ 2.000013 - 2014-08-16
+  - fix test failure in ActiveState perl
+  - better test diagnostics
+  - fix quoting of spaces for fish shell (rt#95268)
+  - improve quoting for use with cmd.exe
+  - fix quoting any arbitrary character when contructing strings for bash
+  - skip testing use with shells if the shell doesn't work at all
+ 
+ 2.000012 - 2014-05-12
+  - restore build_activate_environment_vars_for,
+    build_deactivate_environment_vars_for, build_deact_all_environment_vars_for
+    methods for perlbrew compatibility
+  - fix transforming relative paths to absolute paths in older perls
+  - fix quoting for fish shell
+ 
+ 2.000011 - 2014-04-02
+  - more fixes for issue where PERL5LIB Carp is not the same version as in the
+    local-lib
+ 
+ 2.000010 - 2014-03-28
+  - fix shell test on cygwin
+ 
+ 2.000_009 - 2014-03-15
+  - no longer loads File::Spec, so an upgraded version installed inside a local
+    lib dir can be used by scripts</comment>
+    <requestid>249367</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>728de5dd59ff7f4fd5d4cefda444a05f</srcmd5>
+    <version>2.000015</version>
+    <time>1423392183</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.000015
+  - Avoid using += in Makefile when bootstrapping for portability (RT#100797)
+  - adjust quoting of paths with spaces to work with ExtUtils::MakeMaker 7.0,
+    and bump our EUMM prereq to 7.0.
+  - fix shell test for shells where we can't prevent some rc files from being
+    loaded, like zsh (RT#99819).</comment>
+    <requestid>284723</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>73030975e0f52f0ead1f0cedefc357b6</srcmd5>
+    <version>2.000018</version>
+    <time>1448400837</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>345970</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a4a2894b3a0b02ae0c70814480ce584d</srcmd5>
+    <version>2.000019</version>
+    <time>1464204434</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.00019
+ - fix bootstrapping into directory with spaces (PR#4)
+ - fix variable interpolation to work when used with sh -u (RT#112711)
+ - author test enhancements</comment>
+    <requestid>396905</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>168b0b7a31402f67f76b7a52022826f7</srcmd5>
+    <version>2.000023</version>
+    <time>1499754282</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.000023
+   see /usr/share/doc/packages/perl-local-lib/Changes
+  2.000023 - 2017-06-07
+   - fix use of 'note' in test for compatibilty with old Test::More
+  
+  2.000022 - 2017-06-07
+   - releasing as stable
+  
+  2.000_021 - 2017-04-23
+   - account for an empty SHELL variable when detecting shell
+   - author test cleanups
+   - bootstrapping option --no-manpages now affects bootstrapping process, not
+     just later module installs
+   - cope with home directories with spaces when bootstrapping with old CPAN.pm
+  
+  2.000_020 - 2016-10-18
+   - fix handling of inc_version_list
+   - don't load strict or warnings outside author mode
+   - load and use Cwd when we're printing and exiting
+   - use loaded Cwd/Win32::Cwd if it's available
+   - handle relative paths in current executable
+   - don't try to run current executable in embedded perl
+   - handle relative directories better
+   - fix shell test for powershell 1 and group policy restricted environments
+   - avoid user init files in shell test
+   - use safer format to check environment in shell test
+   - many test cleanups</comment>
+    <requestid>506099</requestid>
+  </revision>
+</revisionlist>

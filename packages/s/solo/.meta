@@ -1,0 +1,5 @@
+<package name="solo" project="openSUSE:Factory">
+  <title>Support for the Solo and Solo Tap security keys</title>
+  <description></description>
+  <devel project="hardware" package="solo"/>
+</package>

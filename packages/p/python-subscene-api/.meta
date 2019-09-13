@@ -1,0 +1,7 @@
+<package name="python-subscene-api" project="openSUSE:Factory">
+  <title>Python wrapper for Subscene subtitle database</title>
+  <description>Exposes the Subscene subtitle database API to Python.
+
+</description>
+  <devel project="devel:languages:python" package="python-subscene-api"/>
+</package>

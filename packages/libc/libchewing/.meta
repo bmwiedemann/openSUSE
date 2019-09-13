@@ -1,0 +1,5 @@
+<package name="libchewing" project="openSUSE:Factory">
+  <title>Intelligent Phonetic Input Method Library for Traditional Chinese</title>
+  <description>Intelligent phonetic input method library for traditional Chinese.</description>
+  <devel project="M17N" package="libchewing"/>
+</package>

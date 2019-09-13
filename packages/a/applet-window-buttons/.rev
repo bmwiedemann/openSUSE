@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9cb14160fe68ac6802ec206637cbd2dc</srcmd5>
+    <version>0.4</version>
+    <time>1561641971</time>
+    <user>dimstar_suse</user>
+    <comment>see Factory mailinglist</comment>
+    <requestid>712120</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>885da5883a6a30436048d53e8a243007</srcmd5>
+    <version>0.4</version>
+    <time>1561970660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712637</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ed12df4aa7576a2af2a302d4d0fcc77</srcmd5>
+    <version>0.5.0</version>
+    <time>1563018638</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0:
+  * provide a relevant background for window buttons in configuration
+    window to fix contrast issues
+  * support new Latte v0.9 Communicator API
+  * support new Latte v0.9 Windows Tracking interface when in Latte
+    dock/panel</comment>
+    <requestid>714931</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9eb875006f0579baced2df06a7077e79</srcmd5>
+    <version>0.6.0</version>
+    <time>1567423614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update source URL
+
+- Update to version 0.6.1:
+  * new visibility mode: At least one window is shown
+  * option to draw buttons in inactive state (for both c++ and
+    aurorae decorations)
+  * fix the current buttons decoration discovery, the user can now
+    change between different decorations and the buttons style is
+    updated runtime
+  * hide when the last maximized window is closed and the visibility
+    mode is ActiveMaximized
+  * fix multi-screens behavior for Latte panels
+  * fix typo that broke builds at some systems</comment>
+    <requestid>727630</requestid>
+  </revision>
+</revisionlist>

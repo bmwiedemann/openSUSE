@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93486253dfdf6677ae87b59a0e702c06</srcmd5>
+    <version>0.11.0</version>
+    <time>1444130671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>334742</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>15f4660a42b513acecf8e6904ead64be</srcmd5>
+    <version>0.11.1</version>
+    <time>1448186447</time>
+    <user>coolo</user>
+    <comment>Update to 0.11.1</comment>
+    <requestid>345360</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d8e979aaf5b271fa5d904e2bc429f9d0</srcmd5>
+    <version>0.11.2</version>
+    <time>1460363294</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384114</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92823285c56d37ed59a5a09d33683c47</srcmd5>
+    <version>0.11.3</version>
+    <time>1463652929</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396594</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3be1a7c3a18ee8092fcd0d2c2c870722</srcmd5>
+    <version>0.12.1</version>
+    <time>1471010226</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Apps</comment>
+    <requestid>418952</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b51e4845fbae34b7f1b937b7735c1986</srcmd5>
+    <version>0.12.1</version>
+    <time>1473103358</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424409</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d1a55d2183ab178504b5202fd69eba97</srcmd5>
+    <version>0.12.1</version>
+    <time>1473548063</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424917</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1211f966097797b9d6536114d9b5b44a</srcmd5>
+    <version>0.13.1</version>
+    <time>1491469250</time>
+    <user>maxlin_factory</user>
+    <comment>New upstream release.</comment>
+    <requestid>482670</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a15a191993c995737359d2fa685fecd7</srcmd5>
+    <version>0.13.3</version>
+    <time>1505507524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.3:
+  + Fix hiding notifications during pomodoro
+  + Update sound file in canberra cache
+  + Simplify Utils.Patch class
+  + Update and add translations
+  + Mark as compatible with GNOME 3.26
+- Remove fedora conditions
+- Remove not needed macros like %icon_theme_cache_postun (forwarded request 526331 from jubalh)</comment>
+    <requestid>526338</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>af503652d8be9e2d28354c11138b9f9e</srcmd5>
+    <version>0.13.4</version>
+    <time>1511346137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.4:
+  + Add and update various translations.
+  + Fix hiding notifications during pomodoro.
+  + Update sound file in canberra cache.
+  + Log timer entries in database.
+  + Simple blur effect for the notification dialog.
+  + Display screen notification timer only on primary monitor.
+  + Display notifications despite timer being paused.
+  + gnome: Use Shell D-Bus instead of gsettings.
+  + Wait for plugins capabilities during startup.
+  + Various bugfixes.
+
+  + Fix hiding notifications during pomodoro.
+  + Update sound file in canberra cache.
+  + Simplify Utils.Patch class.
+  + Update and add translations.
+  + Mark as compatible with GNOME 3.26.</comment>
+    <requestid>544187</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>45ab0e71bf2956cca62d8976e5d9e7a5</srcmd5>
+    <version>0.13.4</version>
+    <time>1513245277</time>
+    <user>dimstar_suse</user>
+    <comment>- Require appstream-glib &amp;gt;= 0.7.3: This version changed the default
+  location for the appdata file from /usr/share/appdata to
+  /usr/share/mimeinfo. Since this package needs to be bootstrapped
+  we need to know what we end up with. (forwarded request 554624 from dimstar)</comment>
+    <requestid>554715</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ec4f919d36c7ac2e8c3556dda1113331</srcmd5>
+    <version>0.14.0</version>
+    <time>1543953313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653553</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>04d4f8a06ab298a28d8c853923f536cb</srcmd5>
+    <version>0.15.1</version>
+    <time>1556916224</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.1:
+  + Minor code cleanups to support ES6 syntax
+  + Support for GNOME Shell 3.32
+  + Fix for build with vala 0.44.1
+  + Updated German translation
+  + Fix for handle error recreating existing folder
+  + Minor code cleanups (forwarded request 692228 from jubalh)</comment>
+    <requestid>693279</requestid>
+  </revision>
+</revisionlist>

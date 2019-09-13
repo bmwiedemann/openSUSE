@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>762d5de713a769ac4ff6acd8befed019</srcmd5>
+    <version>0.1.8</version>
+    <time>1504102873</time>
+    <user>dimstar_suse</user>
+    <comment>Vendor tooling for Rust</comment>
+    <requestid>502751</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4d2170f53d0ca49cab95ebfb10db2f73</srcmd5>
+    <version>0.1.11</version>
+    <time>1504815365</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521581</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3726ecf5886ff2a1fa980ed410e052af</srcmd5>
+    <version>0.1.12</version>
+    <time>1509193314</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535739</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>09b2272d5d92ab3ac16ad5b329788c0f</srcmd5>
+    <version>0.1.13</version>
+    <time>1516359195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566505</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cc3db4014509583736c07c9e7576e2e7</srcmd5>
+    <version>0.1.15</version>
+    <time>1533292716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627113</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e9dbd6c59f8172099ca507f4ec7612e5</srcmd5>
+    <version>0.1.21</version>
+    <time>1543224165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649825</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5a65c1b80081bd43b3561306b54255ea</srcmd5>
+    <version>0.1.23</version>
+    <time>1551284895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>676262</requestid>
+  </revision>
+</revisionlist>

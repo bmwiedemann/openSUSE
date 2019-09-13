@@ -1,0 +1,7 @@
+<package name="visualjackm" project="openSUSE:Factory">
+  <title>Connects ProjectM Visualization with Jack</title>
+  <description>This application lets you connect projectM visualization to jack.
+
+</description>
+  <devel project="multimedia:apps" package="visualjackm"/>
+</package>

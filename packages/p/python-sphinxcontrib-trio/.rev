@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b956a928e8f0a0578b5d696fe820704d</srcmd5>
+    <version>1.0.1</version>
+    <time>1524238013</time>
+    <user>dimstar_suse</user>
+    <comment>sphinx-trio plugin</comment>
+    <requestid>595935</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e744a8465a93c61a7e9e321a2f21668</srcmd5>
+    <version>1.0.1</version>
+    <time>1541511102</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646023</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4132088ff17b67e2b0732b590bb29b84</srcmd5>
+    <version>1.0.1</version>
+    <time>1551215751</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove no longer needed avoid_contextlib2.patch
+</comment>
+    <requestid>679039</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c7660f9bd78cf5912283a30453da8914</srcmd5>
+    <version>1.0.2</version>
+    <time>1556311400</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697383</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>718b702ca088e530de34934f07a63d57</srcmd5>
+    <version>1.1.0</version>
+    <time>1560862042</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Support for new sphinx</comment>
+    <requestid>708151</requestid>
+  </revision>
+</revisionlist>

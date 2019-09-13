@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5bc4325d020807040992292867936f67</srcmd5>
+    <version>1.0.6</version>
+    <time>1520415380</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-PyMsgBox, required by mycroft-core</comment>
+    <requestid>583116</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>67e699275c106b9c5ab5bfb78a396d57</srcmd5>
+    <version>1.0.6</version>
+    <time>1525779391</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim description to relevant parts.
+- Initial release of python-PyMsgBox 1.0.6
+</comment>
+    <requestid>603084</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>88c52ef04f549efe5278e7d3a4362232</srcmd5>
+    <version>1.0.6</version>
+    <time>1548334965</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659287</requestid>
+  </revision>
+</revisionlist>

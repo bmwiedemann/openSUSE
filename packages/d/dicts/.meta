@@ -1,0 +1,50 @@
+<package name="dicts" project="openSUSE:Factory">
+  <title>Ispell Dictionary Files</title>
+  <description>This package contains sources for 14 ispell dictionaries:
+
+for German	 (already compiled for ispell in package ispell-german)
+
+for Danish	 (already compiled for ispell in package ispell-danish)
+
+for Spanish	 (already compiled for ispell in package
+ispell-spanish)
+
+for French	 (already compiled for ispell in package ispell-french)
+
+for Italian	 (already compiled for ispell in package
+ispell-italian)
+
+for Dutch	 (already compiled for ispell in package ispell-dutch)
+
+for Swedish	 (already compiled for ispell in package
+ispell-swedish)
+
+for Norwegian	 (already compiled for ispell in package ispell-norsk)
+
+for Portuguese	 (already compiled for ispell in package
+ispell-portuguese)
+
+for Catalan	 (already compiled for ispell in package
+ispell-catalan)
+
+for Czech	 (already compiled for ispell in package ispell-czech)
+
+for Polish	 (already compiled for ispell in package ispell-polish)
+
+for Greek	 (already compiled for ispell in package ispell-greek)
+
+for Russian	 (already compiled for ispell in package
+ispell-russian)
+
+for Brazilian	 (already compiled for ispell in package
+ispell-brazilian)
+
+for Finnish	 (already compiled for ispell in package
+ispell-finnish)
+
+for Estonian	 (already compiled for ispell in package
+ispell-estonian)
+
+Read the READMEs under /usr/src/dicts.</description>
+  <devel project="Base:System" package="dicts"/>
+</package>

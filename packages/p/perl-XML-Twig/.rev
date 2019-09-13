@@ -1,0 +1,282 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c27cbb3f725ac346a774597eab7caf3</srcmd5>
+    <version>3.29</version>
+    <time>1193193765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1d34b7200c9ecb1b3928817dec84cbef</srcmd5>
+    <version>3.32</version>
+    <time>1195682390</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="57">
+    <srcmd5>1d34b7200c9ecb1b3928817dec84cbef</srcmd5>
+    <version>3.32</version>
+    <time>1195682390</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="58">
+    <srcmd5>63b27214a151103901db9c31719e780e</srcmd5>
+    <version>3.32</version>
+    <time>1245338220</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="60">
+    <srcmd5>63b27214a151103901db9c31719e780e</srcmd5>
+    <version>3.32</version>
+    <time>1245338220</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0ffe23491927764862891a705b9d0502</srcmd5>
+    <version>3.34</version>
+    <time>1264613596</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Twig based on submit request 30402 from user anicka
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c3b4ccae13ba9f0093c01f775625eafc</srcmd5>
+    <version>3.34</version>
+    <time>1268925669</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>c3b4ccae13ba9f0093c01f775625eafc</srcmd5>
+    <version>3.34</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>c3b4ccae13ba9f0093c01f775625eafc</srcmd5>
+    <version>3.34</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b58006de7e7ffe2307b18297544cff49</srcmd5>
+    <version>3.35</version>
+    <time>1279544731</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Twig based on submit request 43058 from user anicka
+</comment>
+    <requestid>43058</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>94fcfaa6285402059db8443d3f726a31</srcmd5>
+    <version>3.36</version>
+    <time>1286802733</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Twig based on submit request 50096 from user anicka
+</comment>
+    <requestid>50096</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>632d134536da878f799d7292af9d18c3</srcmd5>
+    <version>3.36</version>
+    <time>1291132870</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54120 from user coolo
+</comment>
+    <requestid>54120</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>d6113143e23b0e8efe1aef140d8180e6</srcmd5>
+    <version>3.36</version>
+    <time>1291132877</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54120
+</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>c47d5ea27bd924eec43ee577a8ee6377</srcmd5>
+    <version>3.36</version>
+    <time>1292000122</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55377 from user coolo
+</comment>
+    <requestid>55377</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>01834e3a503722e7bb6720995cba276e</srcmd5>
+    <version>3.36</version>
+    <time>1292000131</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55377
+</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>2d3d06fab7809628b3c3ac39aff6d314</srcmd5>
+    <version>3.37</version>
+    <time>1292765962</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56199 from user anicka
+</comment>
+    <requestid>56199</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>0ef334c919fa0b88b87240be60a8c248</srcmd5>
+    <version>3.37</version>
+    <time>1292765976</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56199
+</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>0ef334c919fa0b88b87240be60a8c248</srcmd5>
+    <version>3.37</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a970168665f5e3a8fe7b339376178545</srcmd5>
+    <version>3.38</version>
+    <time>1299506969</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63536 from user vitezslav_cizek
+</comment>
+    <requestid>63536</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>c227e018b76e989a8872e31e0da67729</srcmd5>
+    <version>3.38</version>
+    <time>1299506982</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63536
+</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>c227e018b76e989a8872e31e0da67729</srcmd5>
+    <version>3.38</version>
+    <time>1319182324</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7b9f274283bc4bbd0fa8363df383eac2</srcmd5>
+    <version>3.39</version>
+    <time>1321278033</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>91029</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>79212277035387365042ddf3f16cce73</srcmd5>
+    <version>3.39</version>
+    <time>1323193797</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>79212277035387365042ddf3f16cce73</srcmd5>
+    <version>3.39</version>
+    <time>1340183956</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>79212277035387365042ddf3f16cce73</srcmd5>
+    <version>3.39</version>
+    <time>1359109856</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ff74a30fde0c35f72d246d0039c585ed</srcmd5>
+    <version>3.42</version>
+    <time>1366709889</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+- update to 3.42
+  * fixed: bug, elements created with XML::Twig::Elt
+  * added: some tests
+- passed the spec file through spec cleaner
+- strip %clean section (not needed on BS)</comment>
+    <requestid>172808</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>aa52069da8b3686a61e53edcdd8a8b2f</srcmd5>
+    <version>3.44</version>
+    <time>1370523988</time>
+    <user>coolo</user>
+    <comment>- updated to 3.44
+  # minor maintenance release
+  added: XML::Twig::Elt new method now acccepts literal content, eg
+         my $e= XML::Twig::Elt-&gt;new( '&lt;div&gt;&lt;p&gt;foo&lt;/p&gt;&lt;p&gt;bar&lt;/p&gt;&lt;/div&gt;');
+  fixed: merge had some problems dealing with embedded comments
+  improved: more tests
+  
+  improved: docs for parse, see RT #78877
+         https://rt.cpan.org/Ticket/Display.html?id=78877
+  fixed: xml_pp -i now preserves the permissions of the
+         original file, see RT #81165
+         https://rt.cpan.org/Ticket/Display.html?id=81165 
+         reported by Alberto Simoes
+  fixed: RT #80503 Newlines in attribute values
+         https://rt.cpan.org/Ticket/Display.html?id=80503
+         reported (and explained) by Ambrus Zsban: \r, \n
+         and \n explicitely set in attribute values should
+         be escaped (with &amp;#x&lt;nb&gt;;) when output (forwarded request 177553 from coolo)</comment>
+    <requestid>177560</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>aa52069da8b3686a61e53edcdd8a8b2f</srcmd5>
+    <version>3.44</version>
+    <time>1379663926</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>97c1ddfa0d1e3f2dded6ba1fe861b4fd</srcmd5>
+    <version>3.46</version>
+    <time>1395495940</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226065</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>97c1ddfa0d1e3f2dded6ba1fe861b4fd</srcmd5>
+    <version>3.46</version>
+    <time>1409302577</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2add9f62d6683779f2fd390dccea0a39</srcmd5>
+    <version>3.48</version>
+    <time>1410967472</time>
+    <user>coolo</user>
+    <comment>- updated to 3.48
+ - fixed: missing entities when parsing HTML
+   RT #93604 https://rt.cpan.org/Public/Bug/Display.html?id=93604
+ 
+ - fixed: tests failed when using a version of HTML::TreeBuilder with a non-numeric version
+ 
+ - fixed in twig_handlers, '=' in regexps on attributes are turned into 'eq'
+   RT #94295 https://rt.cpan.org/Public/Bug/Display.html?id=94295
+ 
+ - fixed: test failed on Windows</comment>
+    <requestid>249352</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6cb55660072ee1ce5210737378e8dcd4</srcmd5>
+    <version>3.49</version>
+    <time>1429989342</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>297007</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>daa8d40c5440ee4d33998c7bedd28a78</srcmd5>
+    <version>3.52</version>
+    <time>1480073137</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441936</requestid>
+  </revision>
+</revisionlist>

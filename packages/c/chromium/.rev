@@ -1,0 +1,2557 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>743858ad7d72aeed7ecc64ac1ec01c17</srcmd5>
+    <version>16.0.880.0</version>
+    <time>1316469592</time>
+    <user>lrupp</user>
+    <comment>Resubmission of Chromium. This build currently has the sandbox disabled, so that there is no need for the SETUID bit. This will be changed based on the bugreport for the security validation (bnc#718016). All other issues should be resolved</comment>
+    <requestid>82427</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0cc8d95dc3fb8a7f1de1027a06f73dd1</srcmd5>
+    <version>16.0.880.0</version>
+    <time>1316469612</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 82427
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e92e06ce60fd15b1f6b95e330a331d03</srcmd5>
+    <version>16.0.891.0</version>
+    <time>1317049354</time>
+    <user>oertel</user>
+    <comment>Update to Chromium version 16.0.891. This update contains the newer version, but also some updates in the spec-file related to the chromium setuid sandbox. bnc#718016 was filed to get the approval of the security team on the setuid bit on the chrome_sandbox. This was approved, but the spec-file needed some work to make it also happen on older releases. The method used now is the one confirmed by Ludwig (stated in the bugreport). At this moment the chromium package in 11.3:Contrib and 11.4:Contrib are links to the package in Factory, therefore the necessity to have it build for older versions.</comment>
+    <requestid>84818</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cd231734d83683111c02534492d81491</srcmd5>
+    <version>16.0.891.0</version>
+    <time>1317049366</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 84818
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f99849f8efa5a81057e99fb1ad1500d6</srcmd5>
+    <version>16.0.898.0</version>
+    <time>1317740102</time>
+    <user>oertel</user>
+    <comment>Update to chromium 16.0.898</comment>
+    <requestid>86254</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>12f7ca7d94833a8f40237d83cab78cf7</srcmd5>
+    <version>16.0.904.0</version>
+    <time>1318200476</time>
+    <user>lrupp</user>
+    <comment>Update to 16.0.904. With this version it is now easy to synchronize bookmarks, settings, passwords, etc with your google/gmail account. This time there is no v8 update</comment>
+    <requestid>87190</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6f44b0f5dc6912ab3ff6fa80f7a54f0b</srcmd5>
+    <version>16.0.910.0</version>
+    <time>1318939094</time>
+    <user>saschpe</user>
+    <comment>Update to 16.0.910</comment>
+    <requestid>88109</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6f44b0f5dc6912ab3ff6fa80f7a54f0b</srcmd5>
+    <version>16.0.910.0</version>
+    <time>1319181810</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ec9030feda36003cf7da8a03ab97f05e</srcmd5>
+    <version>17.0.922.0</version>
+    <time>1320230895</time>
+    <user>coolo</user>
+    <comment>Regular update of V8 and Chromium</comment>
+    <requestid>89830</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>31f4b0cb1cbe9b4ed07b6c0e0679253d</srcmd5>
+    <version>17.0.945.0</version>
+    <time>1321886705</time>
+    <user>coolo</user>
+    <comment>Update to 17.0.945</comment>
+    <requestid>92751</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>438f8e6d27d42bd95e78514437f4bd2c</srcmd5>
+    <version>18.0.975.0</version>
+    <time>1324457970</time>
+    <user>coolo</user>
+    <comment>Nothing provides libudev - the proper library name is libudev0, chromium is uninstallable otherwise. (forwarded request 97162 from zawel1)</comment>
+    <requestid>97163</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4898055c14bd0ad860b21fa9cb170ab3</srcmd5>
+    <version>18.0.1022.0</version>
+    <time>1328001571</time>
+    <user>coolo</user>
+    <comment>Update for Chromium. Resolves the following bugs:  bunc#735629, bnc#739126, bnc#740493, bnc#743319, bnc#743158</comment>
+    <requestid>102128</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a62edd862859875d8194679b969d3f85</srcmd5>
+    <version>19.0.1031.0</version>
+    <time>1328890307</time>
+    <user>coolo</user>
+    <comment>Update to newer version. Security fixes. New icon-set.</comment>
+    <requestid>103219</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>445df642f63dee9214ede1857b0112ac</srcmd5>
+    <version>19.0.1046.0</version>
+    <time>1330363993</time>
+    <user>coolo</user>
+    <comment>Update for Chromium. Security and other fixes</comment>
+    <requestid>106940</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bdac4c82ca492e6ba56fce5ac444572b</srcmd5>
+    <version>19.0.1060.0</version>
+    <time>1331124100</time>
+    <user>coolo</user>
+    <comment>Update to a newer version</comment>
+    <requestid>108214</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>15f0b442a195ca6e40eb498dcde9094d</srcmd5>
+    <version>19.0.1066.0</version>
+    <time>1331627531</time>
+    <user>coolo</user>
+    <comment>Update of v8. Required for Chromium (bnc#750407 and bnc#751466)</comment>
+    <requestid>108842</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9435bc77c5dbe9937a67690338cd4cf0</srcmd5>
+    <version>20.0.1096.0</version>
+    <time>1334215227</time>
+    <user>coolo</user>
+    <comment>Added libgnome as requires for desktop-gnome subpackage to solve bnc#756222 (forwarded request 113006 from simontol)</comment>
+    <requestid>113007</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dedbdf7fee403017ed4424adc734ff27</srcmd5>
+    <version>20.0.1106.0</version>
+    <time>1335190165</time>
+    <user>coolo</user>
+    <comment>Update of chromium to a newer version. Introduces also a new package that contains the ChromeDriver standalone server</comment>
+    <requestid>114569</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>29772d0487546aaae9eb251089f0487d</srcmd5>
+    <version>20.0.1119.0</version>
+    <time>1336423461</time>
+    <user>coolo</user>
+    <comment>Update to a newer version</comment>
+    <requestid>115816</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fbb35a3fbe23e1bc85305992ad047a04</srcmd5>
+    <version>21.0.1137.0</version>
+    <time>1337195158</time>
+    <user>coolo</user>
+    <comment>Update to a newer snapshot</comment>
+    <requestid>120974</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2a0d822a8919a0e50c0eec010658d98c</srcmd5>
+    <version>21.0.1145.0</version>
+    <time>1338476572</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122682</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f92055ecce36025a7cd117e073e04f9f</srcmd5>
+    <version>21.0.1158.0</version>
+    <time>1338582620</time>
+    <user>coolo</user>
+    <comment>Update to a newer version</comment>
+    <requestid>123158</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>c048235142ce244295f7cc0875824410</srcmd5>
+    <version>21.0.1158.0</version>
+    <time>1339823198</time>
+    <user>coolo</user>
+    <comment>fix build without the version update</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>c048235142ce244295f7cc0875824410</srcmd5>
+    <version>21.0.1158.0</version>
+    <time>1340183235</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>ac39d3190b9b519b56098b6f71d7b8ca</srcmd5>
+    <version>21.0.1158.0</version>
+    <time>1340958768</time>
+    <user>coolo</user>
+    <comment>manual merge the build fix</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>78f489f1841c445d514314264f03372f</srcmd5>
+    <version>22.0.1190.0</version>
+    <time>1341147578</time>
+    <user>coolo</user>
+    <comment>Update to a newer version</comment>
+    <requestid>126677</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>781c535addc8f2c03552f68d07ad5a26</srcmd5>
+    <version>22.0.1221.0</version>
+    <time>1343734082</time>
+    <user>coolo</user>
+    <comment>Fix build with glibc 2.16 (struct siginfo is not exported anymore). (forwarded request 129328 from a_jaeger)</comment>
+    <requestid>129341</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>552ef7c47ee50f1f1189b69ca17a9ccc</srcmd5>
+    <version>22.0.1226.0</version>
+    <time>1345118826</time>
+    <user>namtrac</user>
+    <comment>Forwarding because titti seems to be away.</comment>
+    <requestid>131024</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e3d3da9fc521ddf295d113046b6130bd</srcmd5>
+    <version>23.0.1255.0</version>
+    <time>1346913929</time>
+    <user>coolo</user>
+    <comment>Update to newer version. V8 is no longer a dependency as that Chromium is now build with the full scale of internal libraries. </comment>
+    <requestid>132633</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>289b4fea45c880b031b87b8646f175fb</srcmd5>
+    <version>23.0.1269.0</version>
+    <time>1348558303</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135582</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8f8e2df1ec58382efcc5afaea4e4ae17</srcmd5>
+    <version>24.0.1290.0</version>
+    <time>1349783282</time>
+    <user>coolo</user>
+    <comment>Update to newer version 24.0.1290. Includes security fixes (bnc#782257)</comment>
+    <requestid>137559</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>01cc2cbc2642621daf3baaa7fe69b718</srcmd5>
+    <version>24.0.1290.0</version>
+    <time>1350415883</time>
+    <user>coolo</user>
+    <comment>- add explicit buildrequire on libbz2-devel (forwarded request 138367 from coolo)</comment>
+    <requestid>138376</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>84e4524eb6c34a32fc96e62a666dcee1</srcmd5>
+    <version>24.0.1308.0</version>
+    <time>1351881526</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140007</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6706e71921090d46c23aa3d0b76931f5</srcmd5>
+    <version>25.0.1329.0</version>
+    <time>1353786204</time>
+    <user>coolo</user>
+    <comment>Update to 25.0.1329. This build is now building the libffmpegsumo.so library based on the included ffmpeg codecs. The buildflags are set in such a way that only the Chromium codecs are build and not the ones for Chrome (like e.g. H.264 is only included with the Chrome build). This in accordance with the discussion with lnussel, coolo and cartman</comment>
+    <requestid>142223</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ca88926f3d529bde6607ffe9d144061e</srcmd5>
+    <version>25.0.1343.0</version>
+    <time>1354523389</time>
+    <user>coolo</user>
+    <comment>Update to a newer version. Also resolves the issue around the functionality regarding the chromium-ffmpeg package from packman to support proprietary codecs</comment>
+    <requestid>143750</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>6b0537d996afe93a325b8a0881e3c065</srcmd5>
+    <version>25.0.1352.0</version>
+    <time>1354888756</time>
+    <user>namtrac</user>
+    <comment>Update to newer version</comment>
+    <requestid>144602</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>bb8b795d3d2557068633f0328978d257</srcmd5>
+    <version>25.0.1362.0</version>
+    <time>1355910563</time>
+    <user>coolo</user>
+    <comment>Security fixes.</comment>
+    <requestid>145653</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e7271a2688a003890df8f0113eb95d5b</srcmd5>
+    <version>26.0.1371.0</version>
+    <time>1357127722</time>
+    <user>namtrac</user>
+    <comment>Update to newer version</comment>
+    <requestid>146773</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>e7271a2688a003890df8f0113eb95d5b</srcmd5>
+    <version>26.0.1371.0</version>
+    <time>1359108745</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>72b64b037a54cde4cb339970fc92ee09</srcmd5>
+    <version>26.0.1393.0</version>
+    <time>1359457441</time>
+    <user>coolo</user>
+    <comment>Update of chromium which fixes some strange bug which affected bugs.kde.org (example). Also we are building now against a number of system libraries.</comment>
+    <requestid>150249</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>47254bf9d5ad1312188a8e84f39ed625</srcmd5>
+    <version>26.0.1411.0</version>
+    <time>1361116582</time>
+    <user>coolo</user>
+    <comment>Update</comment>
+    <requestid>155627</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>56395be63500e2d71ccb9ff3bb5f0a45</srcmd5>
+    <version>27.0.1425.0</version>
+    <time>1362414316</time>
+    <user>coolo</user>
+    <comment>Bugfixes and security Updates</comment>
+    <requestid>157073</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9f163800128a2b3bd384a7fd528aaa6f</srcmd5>
+    <version>27.0.1447.0</version>
+    <time>1364408551</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161289</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b8587cd973ff9533dc7b8f46eee351e5</srcmd5>
+    <version>27.0.1452.0</version>
+    <time>1364808527</time>
+    <user>coolo</user>
+    <comment>Update to 27.0.1452</comment>
+    <requestid>161501</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>bbbe4a81b336cef8fb7c51f38d806f3e</srcmd5>
+    <version>28.0.1468.0</version>
+    <time>1365618085</time>
+    <user>coolo</user>
+    <comment>Update to 28.0.1468. Bugfixes</comment>
+    <requestid>163375</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>bbbe4a81b336cef8fb7c51f38d806f3e</srcmd5>
+    <version>28.0.1468.0</version>
+    <time>1365618089</time>
+    <user>coolo</user>
+    <comment>Update to 28.0.1468. Bugfixes</comment>
+    <requestid>163375</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>daeb0be9aa77267e3adacac7364d308f</srcmd5>
+    <version>28.0.1493.0</version>
+    <time>1367238198</time>
+    <user>coolo</user>
+    <comment>Update to a newer version</comment>
+    <requestid>173706</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>4764e2cfc5683063d33d8bf26758c419</srcmd5>
+    <version>28.0.1500.0</version>
+    <time>1368690235</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>175204</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>55ae3765c60f0b331334e008fa5065dd</srcmd5>
+    <version>29.0.1521.0</version>
+    <time>1370425339</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>177300</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a3c4e39de6ac16caebb4ae2bbfd21d04</srcmd5>
+    <version>29.0.1530.0</version>
+    <time>1371133155</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>178825</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c6b021ad194f604a67801922b7e9f3a5</srcmd5>
+    <version>29.0.1541.0</version>
+    <time>1371456179</time>
+    <user>coolo</user>
+    <comment>Update to 29.0.1541. Fixes also the build issue with the latest nss libraries</comment>
+    <requestid>179237</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>c0a02ce1e4a154e77d5ae2b715e3a18c</srcmd5>
+    <version>29.0.1548.0</version>
+    <time>1372508613</time>
+    <user>coolo</user>
+    <comment>Update to 29.0.1548</comment>
+    <requestid>181396</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>9197795280482113a64558fb4e1a1b12</srcmd5>
+    <version>30.0.1553.0</version>
+    <time>1373395655</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>182558</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>b3403852b467841e18ef6f5815918031</srcmd5>
+    <version>30.0.1567.0</version>
+    <time>1374669673</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184128</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>456af99ab59af47b09e03f58fbd8edac</srcmd5>
+    <version>30.0.1575.0</version>
+    <time>1375448482</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>185558</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>d44a63d5877adea57fa867d267b1d01a</srcmd5>
+    <version>31.0.1601.0</version>
+    <time>1376593069</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to chromium 31.0.1604</comment>
+    <requestid>188227</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>9ec2a8cce66e36068a6df90147b17320</srcmd5>
+    <version>31.0.1611.0</version>
+    <time>1377628744</time>
+    <user>coolo</user>
+    <comment>require mozilla-nss-devel &gt;= 3.14 and mozilla-nspr-devel &gt;= 4.10
+update patch tagging for [bnc#836059] (forwarded request 196484 from AndreasStieger)</comment>
+    <requestid>196502</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>9ec2a8cce66e36068a6df90147b17320</srcmd5>
+    <version>31.0.1611.0</version>
+    <time>1379662108</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>39797fe7923882c5ec60b10e0f81507a</srcmd5>
+    <version>31.0.1640.0</version>
+    <time>1380368292</time>
+    <user>coolo</user>
+    <comment>Two major changes are incorporated. First is that I am no longer using a svn snapshot to build chromium, but an official released tarball. This would allow us to start tracking Beta or Dev channel. 
+
+Another change is that the same package is used to build the chromium-ffmpeg on packman. This means everything is merged into a single spec-file and based on its location it will build either chromium or chromium-ffmpeg. This would ensure that we always have correct versions. 
+
+Furthermore I have added a _constraints file to reduce the number of failed builds due to build host issues. </comment>
+    <requestid>201256</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>ec7a3f9696dcb9bb7d6893ff8990947d</srcmd5>
+    <version>31.0.1650.8</version>
+    <time>1381062372</time>
+    <user>scarabeus_factory</user>
+    <comment>Update Chromium to an official Chrome Beta channel tarball. With this SR the conversion from SVN snapshot to following the Beta channel is completed. Changelog updated based on comments from mvyskocil</comment>
+    <requestid>202156</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>604c21093bd51f29deb013e43bbf8571</srcmd5>
+    <version>31.0.1650.11</version>
+    <time>1382259132</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>203873</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>039ae428c5e47e4ae297b4a4b1fb869b</srcmd5>
+    <version>31.0.1650.57</version>
+    <time>1385817595</time>
+    <user>coolo</user>
+    <comment>Update of Chromium and removing not-allowed codecs</comment>
+    <requestid>208773</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>c390a7040db8b39835de14bee602d489</srcmd5>
+    <version>31.0.1650.63</version>
+    <time>1386843388</time>
+    <user>coolo</user>
+    <comment>Update of the Chromium stable channel. Includes the requested changes for the excludearch</comment>
+    <requestid>210470</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>8531283f860b2d5a8aed7c4fa1563e0d</srcmd5>
+    <version>32.0.1700.77</version>
+    <time>1390380039</time>
+    <user>coolo</user>
+    <comment>New Stable channel release</comment>
+    <requestid>214642</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>4c40fe03331b386de345f32e18c9761f</srcmd5>
+    <version>32.0.1700.102</version>
+    <time>1391665620</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>220897</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>1f9fcfa4ea59b082a3d84d59d5281c34</srcmd5>
+    <version>33.0.1750.117</version>
+    <time>1393138000</time>
+    <user>coolo</user>
+    <comment>Stable channel update</comment>
+    <requestid>223512</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>99fbfa40c4d984a7042909f8746490fd</srcmd5>
+    <version>33.0.1750.152</version>
+    <time>1396008912</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>228037</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>23648aaec497278b21c14c006bd02fb9</srcmd5>
+    <version>33.0.1750.152</version>
+    <time>1396965933</time>
+    <user>coolo</user>
+    <comment>No more fixed required versipn for the ffmpegsumo package. This is what the users want (bnc#872271)</comment>
+    <requestid>229186</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>852ea5186d8e0cf85b2dd21ca57e2a58</srcmd5>
+    <version>34.0.1847.116</version>
+    <time>1397284027</time>
+    <user>coolo</user>
+    <comment>Update to chromium stable channel 34.0.1847.116  (bnc#872805)</comment>
+    <requestid>229746</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>46713fc88cae13559a16da65da950ef5</srcmd5>
+    <version>34.0.1847.116</version>
+    <time>1398267089</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>230840</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>c41de99619069a2780c7f6b846ca14fb</srcmd5>
+    <version>34.0.1847.132</version>
+    <time>1399390676</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>232665</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>c48b1d9ab868529e2077d10b94e6bad8</srcmd5>
+    <version>35.0.1916.114</version>
+    <time>1400825300</time>
+    <user>coolo</user>
+    <comment>Update to Chromium 35 Stable</comment>
+    <requestid>235121</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>5784d4244661f1d38b68dd5d65364e9a</srcmd5>
+    <version>35.0.1916.114</version>
+    <time>1401644477</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235819</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>c3113f7c6dba5daceb7fa4d7eee6774c</srcmd5>
+    <version>35.0.1916.153</version>
+    <time>1403176812</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>237973</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>41555ad042dc7a162c9fa57d29c54664</srcmd5>
+    <version>36.0.1985.125</version>
+    <time>1406272145</time>
+    <user>coolo</user>
+    <comment>Update to latest stable release.</comment>
+    <requestid>242213</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>33233ef81967599444c13d7584aed524</srcmd5>
+    <version>36.0.1985.125</version>
+    <time>1407942505</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>244491</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>56a892c89e985109d325e50c1830b649</srcmd5>
+    <version>36.0.1985.143</version>
+    <time>1408630556</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>245486</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>56a892c89e985109d325e50c1830b649</srcmd5>
+    <version>36.0.1985.143</version>
+    <time>1409300640</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>4257e1c151aae473c88734c18d469591</srcmd5>
+    <version>37.0.2062.94</version>
+    <time>1410204527</time>
+    <user>coolo</user>
+    <comment>- Update to Chromium 37.0.2062.94 - Security Fixes (bnc#893720). Also enable ARM build again as that we switched to shared libraries which should reduce the memory required for final linking</comment>
+    <requestid>247427</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>1123773ab5a28e314d4bfac5da0b2907</srcmd5>
+    <version>37.0.2062.120</version>
+    <time>1411020052</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>250020</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>6bf5a217ebca9ef1dbcd58017ad263be</srcmd5>
+    <version>38.0.2125.104</version>
+    <time>1413739681</time>
+    <user>coolo</user>
+    <comment>Update to 38.0.2125.104</comment>
+    <requestid>257508</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>7d1c744216dc2031364116a6bb0f02fd</srcmd5>
+    <version>38.0.2125.111</version>
+    <time>1415199301</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>259662</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>9f05544b03a87375a324eb459594cca9</srcmd5>
+    <version>39.0.2171.65</version>
+    <time>1416505409</time>
+    <user>dimstar_suse</user>
+    <comment>Update of Chromium Stable channel</comment>
+    <requestid>262439</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>92c511013976b4b85668626dcde5db64</srcmd5>
+    <version>39.0.2171.71</version>
+    <time>1417643263</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263568</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>8f967637a86156daa9a9ab4a0f695604</srcmd5>
+    <version>39.0.2171.95</version>
+    <time>1418840158</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>265532</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>70355aa19e5c688ad1e937d396073aa3</srcmd5>
+    <version>39.0.2171.99</version>
+    <time>1421959767</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282347</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>bb200e9e6e332653648cc29f6ea49485</srcmd5>
+    <version>40.0.2214.94</version>
+    <time>1423397042</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284687</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>af4e4850134a9411e1566c3697ca5ff6</srcmd5>
+    <version>40.0.2214.111</version>
+    <time>1424119621</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>286265</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>072464a56b2b3289b293d6f7611bb83f</srcmd5>
+    <version>40.0.2214.115</version>
+    <time>1425031177</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>287689</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>402ab44d80d68e1041c6c3a4f5f96949</srcmd5>
+    <version>40.0.2214.115</version>
+    <time>1425377696</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288339</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>ef1b30ab701ededfcd77c0b1c71f00f1</srcmd5>
+    <version>41.0.2272.76</version>
+    <time>1425892149</time>
+    <user>dimstar_suse</user>
+    <comment>update to Chromium 41.0.2272.76 (bnc#920825)</comment>
+    <requestid>289538</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>e01088a17f7d56fc627792925f634080</srcmd5>
+    <version>41.0.2272.89</version>
+    <time>1426796801</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>291589</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>3aba36876c43238bc910f3d621601429</srcmd5>
+    <version>41.0.2272.101</version>
+    <time>1427564342</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>293527</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>035da71b21392584ca77890d9438b82f</srcmd5>
+    <version>41.0.2272.118</version>
+    <time>1428192229</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium Stable update (boo#925713,boo#925714)</comment>
+    <requestid>294257</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>bcaf960c4382d1cd20a457d4807fd7f4</srcmd5>
+    <version>42.0.2311.90</version>
+    <time>1429606388</time>
+    <user>dimstar_suse</user>
+    <comment>Update to the latest stable release</comment>
+    <requestid>298136</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>79c46a8226ea193443e8ac6efc3eaeb6</srcmd5>
+    <version>42.0.2311.135</version>
+    <time>1430980142</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>305554</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>3da420804def603c185d96a786fe3867</srcmd5>
+    <version>43.0.2357.65</version>
+    <time>1432190355</time>
+    <user>coolo</user>
+    <comment>Update Stable Chromium (boo#931660, boo#931661, boo#931663, boo#931664, boo#931659, boo#931665, boo#931666, boo#931667, boo#931668, boo#931669, boo#931670, boo#931671, boo#931672, boo#931673, boo#931674)</comment>
+    <requestid>308153</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>9623e974e1277a4835d389b1a042298c</srcmd5>
+    <version>43.0.2357.81</version>
+    <time>1433401505</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>310138</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>41acfa266532e22adff72b22a3bb1d2d</srcmd5>
+    <version>43.0.2357.125</version>
+    <time>1435053379</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes the Gcc5 failing build and prevents downloading a binary blob when the users starts chromiume</comment>
+    <requestid>312454</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>96ec12f77c0ed88e85d113d8d23eb62d</srcmd5>
+    <version>43.0.2357.130</version>
+    <time>1435172577</time>
+    <user>dimstar_suse</user>
+    <comment>Update to a newer version of Chromium Stable channel</comment>
+    <requestid>313377</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>b84544970a7e9e128c2501e8c2c7dce1</srcmd5>
+    <version>44.0.2403.89</version>
+    <time>1438421727</time>
+    <user>dimstar_suse</user>
+    <comment>Update to a new stable release</comment>
+    <requestid>317945</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>c154a7e09adbe1524b6bf82c37d1b23a</srcmd5>
+    <version>44.0.2403.130</version>
+    <time>1439482231</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>322072</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>a63b73f7c791b5ebb9be4fac1ce419d9</srcmd5>
+    <version>45.0.2454.85</version>
+    <time>1442392649</time>
+    <user>dimstar_suse</user>
+    <comment>Update of chromium stable channel. boo#944144</comment>
+    <requestid>330707</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>5db09a6c7037a404f891991a7974f6dc</srcmd5>
+    <version>45.0.2454.99</version>
+    <time>1443587860</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>334765</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>09989744b0f72e396712b248993a08ab</srcmd5>
+    <version>45.0.2454.101</version>
+    <time>1444636986</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>337847</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>2248bc4870245a0f16c011ff7162ac67</srcmd5>
+    <version>46.0.2490.71</version>
+    <time>1445287962</time>
+    <user>dimstar_suse</user>
+    <comment>New Stable release</comment>
+    <requestid>339508</requestid>
+  </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>31dc991f02c0f7bde5f7dfdaf325f86d</srcmd5>
+    <version>46.0.2490.71</version>
+    <time>1445511566</time>
+    <user>dimstar_suse</user>
+    <comment>Make use of the new homepage</comment>
+    <requestid>340146</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>55f38cc1f311d77f5f0049ef6662d1b3</srcmd5>
+    <version>46.0.2490.86</version>
+    <time>1447587997</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344210</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>800c5762896053f466de7991768e50fb</srcmd5>
+    <version>47.0.2526.80</version>
+    <time>1450084450</time>
+    <user>coolo</user>
+    <comment>Update for Chromium</comment>
+    <requestid>348492</requestid>
+  </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>4e479c4de452610df90e527923cfe045</srcmd5>
+    <version>47.0.2526.80</version>
+    <time>1450284181</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348838</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>7bccebbdebc5c8c89a89c5e9754aac4f</srcmd5>
+    <version>47.0.2526.106</version>
+    <time>1450695911</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349881</requestid>
+  </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>4bec3bbe81490419b767e206a4279619</srcmd5>
+    <version>47.0.2526.106</version>
+    <time>1451674108</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351270</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>bf274d2856bea87c6c32772c73e3e59a</srcmd5>
+    <version>48.0.2564.82</version>
+    <time>1453998177</time>
+    <user>dimstar_suse</user>
+    <comment>Update of Chromium</comment>
+    <requestid>355575</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>625a4acf8782041659fa3bef22025f3c</srcmd5>
+    <version>48.0.2564.103</version>
+    <time>1455021146</time>
+    <user>dimstar_suse</user>
+    <comment>New Stable release</comment>
+    <requestid>358254</requestid>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>2b6546b4595e704e40185229c6c078cb</srcmd5>
+    <version>48.0.2564.103</version>
+    <time>1455272551</time>
+    <user>dimstar_suse</user>
+    <comment>Correct version number and disable building against certain system libraries. This could cause potentially issues. </comment>
+    <requestid>358717</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>6f84a549f799d9d13592ca5d5db597e6</srcmd5>
+    <version>48.0.2564.109</version>
+    <time>1455790025</time>
+    <user>dimstar_suse</user>
+    <comment>Update to a new chromium release (boo#965999)</comment>
+    <requestid>359504</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>395c2add9bfd5751a1eb3b52198ef961</srcmd5>
+    <version>48.0.2564.116</version>
+    <time>1456243035</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360443</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>15a2d2f472ebd87601154f549ad0085b</srcmd5>
+    <version>49.0.2623.75</version>
+    <time>1457426347</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Chromium 49 Stable</comment>
+    <requestid>366543</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>4fdca8a3296812bccb00b8cdbff22c51</srcmd5>
+    <version>49.0.2623.87</version>
+    <time>1458228935</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>373626</requestid>
+  </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>41d6857964ef24ecf89c121340c7e919</srcmd5>
+    <version>49.0.2623.87</version>
+    <time>1458333772</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>374664</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>aa0b4065f02ce367dd3fed3758943a40</srcmd5>
+    <version>49.0.2623.110</version>
+    <time>1459717624</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>382365</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>7d47fe6599e310b8deae627d5a2975bc</srcmd5>
+    <version>49.0.2623.112</version>
+    <time>1460358870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>386253</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>a1538005221103c1a485e2d0d332df9b</srcmd5>
+    <version>50.0.2661.75</version>
+    <time>1461335084</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390205</requestid>
+  </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>894c24ed6779590ff64dde9469b2e25f</srcmd5>
+    <version>50.0.2661.75</version>
+    <time>1462051887</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391920</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>e05f319b8e6840a135d4787ed0873618</srcmd5>
+    <version>50.0.2661.94</version>
+    <time>1462697126</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393394</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>446dd876373e22b662e4d5ff8a2216df</srcmd5>
+    <version>50.0.2661.102</version>
+    <time>1463652920</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396556</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>decdd6f1a0178c2af82cdb9bdfe7fe84</srcmd5>
+    <version>51.0.2704.63</version>
+    <time>1464484396</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398297</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>0819e88c52c26f853dca8c5ed61f2b3b</srcmd5>
+    <version>51.0.2704.79</version>
+    <time>1464964723</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399649</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>468b973c961ea24cbf93a52def4882d9</srcmd5>
+    <version>51.0.2704.103</version>
+    <time>1466333596</time>
+    <user>dimstar_suse</user>
+    <comment>Update to newer version</comment>
+    <requestid>403396</requestid>
+  </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>3dcb23f5b577f000e4d3c89fef965f41</srcmd5>
+    <version>51.0.2704.103</version>
+    <time>1466716944</time>
+    <user>dimstar_suse</user>
+    <comment>Add. GCC6 fixes that should resolve the crashes experienced in Factory/Tumbleweed</comment>
+    <requestid>404250</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>b10cdb2152f125a6fa24c1f651045132</srcmd5>
+    <version>51.0.2704.106</version>
+    <time>1468869801</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408119</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>0d3668f34583d64cff65391f8635e8c3</srcmd5>
+    <version>52.0.2743.116</version>
+    <time>1472026634</time>
+    <user>dimstar_suse</user>
+    <comment>This is with the new build system and moving back to a static binary. The number of ninja processes for the main build have been reduced to 4, which should help controlling the memory. I hope that this would resolve the issues in staging.  The build is failing for 13.2 and arm, but hopefully I get that resolved or through a newer version </comment>
+    <requestid>421190</requestid>
+  </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>5737270bdc9b5f0d5f95d7ba29f1efb9</srcmd5>
+    <version>52.0.2743.116</version>
+    <time>1472595061</time>
+    <user>dimstar_suse</user>
+    <comment>We are one step closer to get it build on ARM, but this should also resolve the main issue reported in b00#996061. Main issue was the gcc60-fixes patch that changed the wrong file. </comment>
+    <requestid>423721</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>2a295ac8948efe654024602f72d9050f</srcmd5>
+    <version>53.0.2785.89</version>
+    <time>1473103278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424144</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>05c10313a0331b171b64c12f8d05e803</srcmd5>
+    <version>53.0.2785.92</version>
+    <time>1473349167</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425342</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>cdb165a20661a5b9b56e906fcd30fd63</srcmd5>
+    <version>53.0.2785.101</version>
+    <time>1473798256</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable widevine build again bnc#998328
+
+- Stable channel update to  53.0.2785.101
+  * SPDY crasher fixes
+  * Disable NV12 DXGI video on AMD
+  * Forward --password-store switch to os_crypt
+  * Tell the kernel to discard USB requests when they time out.</comment>
+    <requestid>426963</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>818f979903c41697e6dc153c764ea32b</srcmd5>
+    <version>53.0.2785.116</version>
+    <time>1474016565</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update stable channel 53.0.2785.116
+  * Just smal bugfixes around
+
+- Version update to 53.0.2785.113 bnc#998743:
+  * CVE-2016-5170 Use after free in Blink
+  * CVE-2016-5171 Use after free in Blink
+  * CVE-2016-5172 Arbitrary Memory Read in v8
+  * CVE-2016-5173 Extension resource access
+  * CVE-2016-5174 Popup not correctly suppressed
+  * CVE-2016-5175 Various fixes from internal audits</comment>
+    <requestid>427938</requestid>
+  </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>8d4db9b5dc10818a29a5123c17454039</srcmd5>
+    <version>53.0.2785.116</version>
+    <time>1474370792</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply sandbox patch to fix crashers on tumbleweed bnc#999091
+  * chromium-sandbox.patch</comment>
+    <requestid>428376</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>b6214fa418671b86626de7c2b752b957</srcmd5>
+    <version>53.0.2785.143</version>
+    <time>1475359667</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 53.0.2785.143 bnc#1002140:
+  * CVE-2016-5177: Use after free in V8
+  * CVE-2016-5178: Various fixes from internal audits
+
+- Export GDK_BACKEND=x11 before starting chromium, ensuring that
+  it's started as an Xwayland client (boo#1001135).</comment>
+    <requestid>431468</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>97bb8819a1f71beef380f3cc55b54d4f</srcmd5>
+    <version>54.0.2840.59</version>
+    <time>1476875602</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 435104 from scarabeus_iv)</comment>
+    <requestid>435110</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>a99ad68c8ba7e14bc2acf1d9c2500a57</srcmd5>
+    <version>54.0.2840.71</version>
+    <time>1477135414</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 54.0.2840.71:
+  * Few fixes around</comment>
+    <requestid>436672</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>6bbe34bcb646da995a8e101598d1a92f</srcmd5>
+    <version>55.0.2883.75</version>
+    <time>1480952007</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 55.0.2883.75 bnc#1013236:
+  CVE-2016-9651 CVE-2016-5208 CVE-2016-5207 CVE-2016-5206 CVE-2016-5205
+  CVE-2016-5204 CVE-2016-5209 CVE-2016-5203 CVE-2016-5210 CVE-2016-5212
+  CVE-2016-5211 CVE-2016-5213 CVE-2016-5214 CVE-2016-5216 CVE-2016-5215
+  CVE-2016-5217 CVE-2016-5218 CVE-2016-5219 CVE-2016-5221 CVE-2016-5220
+  CVE-2016-5222 CVE-2016-9650 CVE-2016-5223 CVE-2016-5226 CVE-2016-5225
+  CVE-2016-5224 CVE-2016-9652
+- Switch to system libraries: harfbuzz, zlib, ffmpeg, ...
+- Refreshed patches:
+  * chromium-system-ffmpeg-r3.patch
+  * chromium-system-jinja-r13.patch
+- Use system ffmpeg unless on 13.2 that didn't include it
+  * chromium-54-ffmpeg2compat.patch
+  * Remove upstreamed chromium-more-codec-aliases.patch
+
+- Chromium 54.0.2840.100:
+  * CVE-2016-5199: Heap corruption in FFmpeg (boo#1009892)
+  * CVE-2016-5200: out of bounds memory access in v8 (boo#1009893)
+  * CVE-2016-5201: info leak in extensions (boo#1009894)
+  * CVE-2016-5202: various fixes from internal audits (boo#1009895)
+
+- Add patch chromium-prop-codecs.patch and set properly the codecs
+  variable in main scope to allow ffmpeg passthrough
+  bnc#1008725
+
+- Update to 54.0.2840.90:
+  * Few fixes and tweaks
+  * Fixes CVE-2016-5198 bsc#1008274</comment>
+    <requestid>443536</requestid>
+  </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>a4a1b911842602c3ee20456030abf4dd</srcmd5>
+    <version>55.0.2883.75</version>
+    <time>1481272703</time>
+    <user>dimstar_suse</user>
+    <comment>- record minimum version for harfbuzz, incuding runtime
+  Chromium will crash with harfbuzz &lt; 1.3.0</comment>
+    <requestid>444341</requestid>
+  </revision>
+  <revision rev="144" vrev="3">
+    <srcmd5>2cf37271249d4e3d6403ed31b2f609aa</srcmd5>
+    <version>55.0.2883.75</version>
+    <time>1481885754</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete ffmpeg and ffmpegsumo package in addition to conflict
+
+- Remove bookmarks override as discussed with artwork simply just set
+  homepage to our openSUSE one and that is all</comment>
+    <requestid>445393</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>b11145b577935d4c9e6687037082d78d</srcmd5>
+    <version>55.0.2883.87</version>
+    <time>1482418661</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447332</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>e3b2f99264773ddb81df3b5887825eb4</srcmd5>
+    <version>56.0.2924.76</version>
+    <time>1485939250</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 56.0.2924.76:
+  - CVE-2017-5007: Universal XSS in Blink
+  - CVE-2017-5006: Universal XSS in Blink
+  - CVE-2017-5008: Universal XSS in Blink
+  - CVE-2017-5010: Universal XSS in Blink
+  - CVE-2017-5011: Unauthorised file access in Devtools
+  - CVE-2017-5009: Out of bounds memory access in WebRTC
+  - CVE-2017-5012: Heap overflow in V8
+  - CVE-2017-5013: Address spoofing in Omnibox
+  - CVE-2017-5014: Heap overflow in Skia
+  - CVE-2017-5015: Address spoofing in Omnibox
+  - CVE-2017-5019: Use after free in Renderer
+  - CVE-2017-5016: UI spoofing in Blink
+  - CVE-2017-5017: Uninitialised memory access in webm video
+  - CVE-2017-5018: Universal XSS in chrome://apps
+  - CVE-2017-5020: Universal XSS in chrome://downloads
+  - CVE-2017-5021: Use after free in Extensions
+  - CVE-2017-5022: Bypass of Content Security Policy in Blink
+  - CVE-2017-5023: Type confusion in metrics
+  - CVE-2017-5024: Heap overflow in FFmpeg
+  - CVE-2017-5025: Heap overflow in FFmpeg
+  - CVE-2017-5026: UI spoofing. Credit to Ronni Skansing
+- Add conditional to switch between system and bundled icu
+- Raise dependency on harfbuzz to 1.3.1
+- Also refresh patches:
+  chromium-prop-codecs.patch chromium-linker-memory.patch 
+
+- Added patch chromium-enable-vaapi-on-suse.patch to enable
+  VAAPI hardware accelerated video decoding.</comment>
+    <requestid>453619</requestid>
+  </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>ed72f0383b94f55db864e09c5c3270e5</srcmd5>
+    <version>56.0.2924.76</version>
+    <time>1486046537</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453776</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>94f39bee76c80ae8c0bd1387fb42afa4</srcmd5>
+    <version>56.0.2924.87</version>
+    <time>1486218193</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 56.0.2924.87:
+  * Various small fixes
+  * Disabled option to enable/disable plugins in the chrome://plugins</comment>
+    <requestid>454415</requestid>
+  </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>aef0c410c8d5c5556cd500a75445f9dd</srcmd5>
+    <version>56.0.2924.87</version>
+    <time>1488479335</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>460037</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>41ecc6bbb0942d4cd597a3b6ff5580ff</srcmd5>
+    <version>57.0.2987.98</version>
+    <time>1489653688</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 57.0.2987.98 bsc#1028848:
+  CVE-2017-5030 CVE-2017-5031 CVE-2017-5032 CVE-2017-5029 CVE-2017-5034
+  CVE-2017-5035 CVE-2017-5036 CVE-2017-5037 CVE-2017-5039 CVE-2017-5040
+  CVE-2017-5041 CVE-2017-5033 CVE-2017-5042 CVE-2017-5038 CVE-2017-5043
+  CVE-2017-5044 CVE-2017-5045 CVE-2017-5046
+- Refresh patches
+  * fix-gn-bootstrap.diff
+  * chromium-linker-memory.patch
+- Remove obsolete patches:
+  * chromium-sandbox.patch
+  * chromium-54-ffmpeg2compat.patch
+- Remove vaapi patch which broke rendering on non-intel cards:
+  * chromium-enable-vaapi-on-suse.patch
+- From this release onwards i586 build is disabled</comment>
+    <requestid>478469</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>3ef949cf8fc384a7ca63378bef7ebe1c</srcmd5>
+    <version>57.0.2987.110</version>
+    <time>1490026234</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use gcc5 and newer as the compat was fixed again
+- Update to 57.0.2987.110 with various other small tweaks</comment>
+    <requestid>481049</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>ae9271d2b66674dc6f3bfaea46cf4324</srcmd5>
+    <version>57.0.2987.133</version>
+    <time>1491210315</time>
+    <user>lnussel_factory</user>
+    <comment>- Version update to 57.0.2987.133 bsc#1031677:
+  * Critical CVE-2017-5055: Use after free in printing. Credit to Wadih Matar
+  * High CVE-2017-5054: Heap buffer overflow in V8. Credit to Nicolas Trippar of Zimperium zLabs
+  * High CVE-2017-5052: Bad cast in Blink. Credit to JeongHoon Shin
+  * High CVE-2017-5056: Use after free in Blink. Credit to anonymous
+  * High CVE-2017-5053: Out of bounds memory access in V8. Credit to Team Sniper (Keen Lab and PC Mgr) reported through ZDI (ZDI-CAN-4587)
+
+- Drop the browser(npapi) provide which is not true
+
+- Add patch to build with gcc4
+  * chromium-57-gcc4.patch</comment>
+    <requestid>483829</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>dc45d05d773b2a75d354023583ebae8b</srcmd5>
+    <version>58.0.3029.81</version>
+    <time>1493456010</time>
+    <user>dimstar_suse</user>
+    <comment>- Use bundled jinja2, system one changed in 2.9 too much to work
+  * It is at least used only during build
+
+- Version update to 58.0.3029.81 bsc#1035103:
+  * High CVE-2017-5057: Type confusion in PDFium. Credit to Guang Gong of Alpha Team, Qihoo 360
+  * High CVE-2017-5058: Heap use after free in Print Preview. Credit to Khalil Zhani
+  * High CVE-2017-5059: Type confusion in Blink. Credit to SkyLined working with Trend Micro's Zero Day Initiative
+  * Medium CVE-2017-5060: URL spoofing in Omnibox. Credit to Xudong Zheng
+  * Medium CVE-2017-5061: URL spoofing in Omnibox. Credit to Haosheng Wang (@gnehsoah)
+  * Medium CVE-2017-5062: Use after free in Chrome Apps. Credit to anonymous
+  * Medium CVE-2017-5063: Heap overflow in Skia. Credit to Sweetchip
+  * Medium CVE-2017-5064: Use after free in Blink. Credit to Wadih Matar
+  * Medium CVE-2017-5065: Incorrect UI in Blink. Credit to Khalil Zhani
+  * Medium CVE-2017-5066: Incorrect signature handing in Networking. Credit to chenchu
+  * Medium CVE-2017-5067: URL spoofing in Omnibox. Credit to Khalil Zhani
+  * Low CVE-2017-5069: Cross-origin bypass in Blink. Credit to Michael Reizelman
+- Refresh patch fix-gn-bootstrap.diff
+- Refresh patch chromium-system-jinja-r13.patch
+- Remove obsolete patch chromium-57-gcc4.patch</comment>
+    <requestid>491735</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>381bdc0b36b6a6829c45b495aa0d3c9a</srcmd5>
+    <version>58.0.3029.96</version>
+    <time>1494262964</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 58.0.3029.96:
+  * Fixes bsc#1037594 CVE-2017-5068</comment>
+    <requestid>492857</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>24bae21f5dafbca3dfdbf17a7a6e7501</srcmd5>
+    <version>58.0.3029.110</version>
+    <time>1494938575</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 58.0.3029.110:
+  * Various small bugfixes</comment>
+    <requestid>494234</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>25614164fd2ae90e2faaccac69b76337</srcmd5>
+    <version>59.0.3071.86</version>
+    <time>1496822129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 59.0.3071.86 bsc#1042833:
+  * CVE-2017-5070: Type confusion in V8. Reported by Zhao Qixun(@S0rryMybad) of Qihoo 360 Vulcan Team on 2017-05-16
+  * CVE-2017-5071: Out of bounds read in V8. Reported by Choongwoo Han on 2017-04-26
+  * CVE-2017-5072: Address spoofing in Omnibox. Reported by Rayyan Bijoora on 2017-04-07
+  * CVE-2017-5073: Use after free in print preview. Reported by Khalil Zhani on 2017-04-28
+  * CVE-2017-5074: Use after free in Apps Bluetooth. Reported by anonymous on 2017-03-09
+  * CVE-2017-5075: Information leak in CSP reporting. Reported by Emmanuel Gil Peyrot on 2017-01-05
+  * CVE-2017-5086: Address spoofing in Omnibox. Reported by Rayyan Bijoora on 2017-05-16
+  * CVE-2017-5076: Address spoofing in Omnibox. Reported by Samuel Erb on 2017-05-06
+  * CVE-2017-5077: Heap buffer overflow in Skia. Reported by Sweetchip on 2017-04-28
+  * CVE-2017-5078: Possible command injection in mailto handling. Reported by Jose Carlos Exposito Bueno on 2017-04-12
+  * CVE-2017-5079: UI spoofing in Blink. Reported by Khalil Zhani on 2017-04-20
+  * CVE-2017-5080: Use after free in credit card autofill. Reported by Khalil Zhani on 2017-04-05
+  * CVE-2017-5081: Extension verification bypass. Reported by Andrey Kovalev (@L1kvID) Yandex Security Team on 2016-12-07
+  * CVE-2017-5082: Insufficient hardening in credit card editor. Reported by Nightwatch Cybersecurity Research on 2017-05-11
+  * CVE-2017-5083: UI spoofing in Blink. Reported by Khalil Zhani on 2017-04-24
+  * CVE-2017-5085: Inappropriate javascript execution on WebUI pages. Reported by Zhiyang Zeng of Tencent security platform department on 2017-02-15
+- Add patch to fix build with system dma:
+  * chromium-dma-buf.patch
+- Drop no longer needed patches:
+  * chromium-linker-memory.patch
+  * chromium-system-jinja-r13.patch
+- Refresh patches:
+  * chromium-gcc7.patch
+  * chromium-system-ffmpeg-r3.patch
+  * fix-gn-bootstrap.diff
+- Use bundled libxml
+  * Upstream unfortunately uses git snapshot that is not api/abi compatible
+
+- Add patch to build with gcc7:</comment>
+    <requestid>501295</requestid>
+  </revision>
+  <revision rev="157" vrev="2">
+    <srcmd5>8ad9f0d3950a11b850ae479b89d9c15a</srcmd5>
+    <version>59.0.3071.86</version>
+    <time>1497603292</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>503976</requestid>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>253ab537041d578ced32bd1a1b42f79e</srcmd5>
+    <version>59.0.3071.104</version>
+    <time>1497687762</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504207</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>6d75d1693be9bab14a7dd67dea746f8b</srcmd5>
+    <version>59.0.3071.109</version>
+    <time>1498286088</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505970</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>70bfa787401b672b72b759d0f7cba383</srcmd5>
+    <version>60.0.3112.78</version>
+    <time>1501146771</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 60.0.3112.78 bsc#1050537:
+  * CVE-2017-5091: Use after free in IndexedDB
+  * CVE-2017-5092: Use after free in PPAPI
+  * CVE-2017-5093: UI spoofing in Blink
+  * CVE-2017-5094: Type confusion in extensions
+  * CVE-2017-5095: Out-of-bounds write in PDFium
+  * CVE-2017-5096: User information leak via Android intents
+  * CVE-2017-5097: Out-of-bounds read in Skia
+  * CVE-2017-5098: Use after free in V8
+  * CVE-2017-5099: Out-of-bounds write in PPAPI
+  * CVE-2017-5100: Use after free in Chrome Apps
+  * CVE-2017-5101: URL spoofing in OmniBox
+  * CVE-2017-5102: Uninitialized use in Skia
+  * CVE-2017-5103: Uninitialized use in Skia
+  * CVE-2017-5104: UI spoofing in browser
+  * CVE-2017-7000: Pointer disclosure in SQLite
+  * CVE-2017-5105: URL spoofing in OmniBox
+  * CVE-2017-5106: URL spoofing in OmniBox
+  * CVE-2017-5107: User information leak via SVG
+  * CVE-2017-5108: Type confusion in PDFium
+  * CVE-2017-5109: UI spoofing in browser
+  * CVE-2017-5110: UI spoofing in payments dialog
+  * Various fixes from internal audits, fuzzing and other initiatives
+- Add patch chromium-override.patch
+- Remove patches chromium-fpermissive.patch chromium-system-ffmpeg-r3.patch
+- Rebase patches:
+  * chromium-dma-buf.patch
+  * chromium-gcc7.patch
+  * chromium-last-commit-position-r0.patch
+  * fix-gn-bootstrap.diff</comment>
+    <requestid>512664</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>966dfc8916714bbc7d233fdbf8554980</srcmd5>
+    <version>60.0.3112.90</version>
+    <time>1501840812</time>
+    <user>maxlin_factory</user>
+    <comment>- Version update to 60.0.3112.90:
+  * Various usability bugfixes</comment>
+    <requestid>514222</requestid>
+  </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>69d2a43a8521fb82c0259927a1f22157</srcmd5>
+    <version>60.0.3112.101</version>
+    <time>1502893158</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 60.0.3112.101:
+  * various usability bugfixes</comment>
+    <requestid>517025</requestid>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>feed13ce431bb183d04516902ec7bfb0</srcmd5>
+    <version>60.0.3112.113</version>
+    <time>1504102943</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519269</requestid>
+  </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>86adfc0b1072cf5d9289a6498bf7ca4d</srcmd5>
+    <version>61.0.3163.79</version>
+    <time>1505238864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 61.0.3163.79 bsc#1057364:
+  * CVE-2017-5111: Use after free in PDFium.
+  * CVE-2017-5112: Heap buffer overflow in WebGL.
+  * CVE-2017-5113: Heap buffer overflow in Skia.
+  * CVE-2017-5114: Memory lifecycle issue in PDFium.
+  * CVE-2017-5115: Type confusion in V8.
+  * CVE-2017-5116: Type confusion in V8.
+  * CVE-2017-5117: Use of uninitialized value in Skia.
+  * CVE-2017-5118: Bypass of Content Security Policy in Blink.
+  * CVE-2017-5119: Use of uninitialized value in Skia.
+  * CVE-2017-5120: Potential HTTPS downgrade during redirect navigation.
+- Rebase patch:
+  * fix-gn-bootstrap.diff
+- Remove patches:
+  * chromium-gcc7.patch
+  * chromium-override.patch
+- Add new patches:
+  * chromium-atk.patch
+  * chromium-gcc5.patch
+  * chromium-mojo-dep.patch
+- Gtk3 is hard required from now on
+- Version some of the required dependencies</comment>
+    <requestid>522997</requestid>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>484a6cb06edee4c4b120597669591cfd</srcmd5>
+    <version>61.0.3163.91</version>
+    <time>1505680720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 61.0.3163.91:
+  * Various bugfixes</comment>
+    <requestid>526505</requestid>
+  </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>37cff5aad9d5ed63c72f450db051af27</srcmd5>
+    <version>61.0.3163.100</version>
+    <time>1506195454</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528321</requestid>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>6343dfed6d80bc2dbf991232c4502192</srcmd5>
+    <version>62.0.3202.75</version>
+    <time>1509193331</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 62.0.3202.75 bsc#1065405 CVE-2017-15396
+  * CVE-2017-15396: Stack overflow in V8
+
+- BuildRequire nodejs6 required for polymer-bundler.js
+
+- Try to export properly CXX/CC variable to fix leap builds
+
+- Apply patch to fix building crc32 with gcc7:
+  * chromium-62.0.3202.62-correct-cplusplus-check.patch
+
+- Update to 62.0.3202.62 bsc#1064066:
+  * CVE-2017-5124: UXSS with MHTML.
+  * CVE-2017-5125: Heap overflow in Skia.
+  * CVE-2017-5126: Use after free in PDFium. 
+  * CVE-2017-5127: Use after free in PDFium. 
+  * CVE-2017-5128: Heap overflow in WebGL.
+  * CVE-2017-5129: Use after free in WebAudio.  
+  * CVE-2017-5132: Incorrect stack manipulation in WebAssembly. 
+  * CVE-2017-5130: Heap overflow in libxml2. 
+  * CVE-2017-5131: Out of bounds write in Skia. 
+  * CVE-2017-5133: Out of bounds write in Skia.  
+  * CVE-2017-15386: UI spoofing in Blink. 
+  * CVE-2017-15387: Content security bypass.
+  * CVE-2017-15388: Out of bounds read in Skia.
+  * CVE-2017-15389: URL spoofing in OmniBox. 
+  * CVE-2017-15390: URL spoofing in OmniBox. 
+  * CVE-2017-15391: Extension limitation bypass in Extensions. 
+  * CVE-2017-15392: Incorrect registry key handling in PlatformIntegration. 
+  * CVE-2017-15393: Referrer leak in Devtools. 
+  * CVE-2017-15394: URL spoofing in extensions UI.</comment>
+    <requestid>537047</requestid>
+  </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>89116ca28a19709e832ab9c11e024375</srcmd5>
+    <version>62.0.3202.75</version>
+    <time>1509394711</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix sandbox crashes wrt bsc#1064298
+  * chromium-sandbox.patch</comment>
+    <requestid>537391</requestid>
+  </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>8af45ef5ae3e06b38da5512ced251838</srcmd5>
+    <version>62.0.3202.89</version>
+    <time>1510150248</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 62.0.3202.89 bsc#1066851:
+  * CVE-2017-15398: Stack buffer overflow in QUIC
+  * CVE-2017-15399: Use after free in V8
+- Drop upstream merged chromium-sandbox.patch
+
+- Restrict the version on jpeg to not waste build power
+
+  * CVE-2017-5126: Use after free in PDFium.
+  * CVE-2017-5127: Use after free in PDFium.</comment>
+    <requestid>539479</requestid>
+  </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>33f9a0143bb30ddb3f7e8e191aa0c737</srcmd5>
+    <version>62.0.3202.94</version>
+    <time>1511193882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542084</requestid>
+  </revision>
+  <revision rev="171" vrev="2">
+    <srcmd5>77cd90c3f90f1c4f30973953036f4a5f</srcmd5>
+    <version>62.0.3202.94</version>
+    <time>1511426645</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire nodejs8 instead of nodejs6 for suse_version &gt;= 1330</comment>
+    <requestid>544382</requestid>
+  </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>34dbede01639d61986dd7657fd3ddc87</srcmd5>
+    <version>63.0.3239.84</version>
+    <time>1512734410</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 63.0.3239.84 bsc#1071691:
+  * Critical CVE-2017-15407: Out of bounds write in QUIC.
+  * High CVE-2017-15408: Heap buffer overflow in PDFium.
+  * High CVE-2017-15409: Out of bounds write in Skia.
+  * High CVE-2017-15410: Use after free in PDFium.
+  * High CVE-2017-15411: Use after free in PDFium.
+  * High CVE-2017-15412: Use after free in libXML.
+  * High CVE-2017-15413: Type confusion in WebAssembly.
+  * Medium CVE-2017-15415: Pointer information disclosure in IPC call.
+  * Medium CVE-2017-15416: Out of bounds read in Blink.
+  * Medium CVE-2017-15417: Cross origin information disclosure in Skia.
+  * Medium CVE-2017-15418: Use of uninitialized value in Skia.
+  * Medium CVE-2017-15419: Cross origin leak of redirect URL in Blink.
+  * Medium CVE-2017-15420: URL spoofing in Omnibox.
+  * Medium CVE-2017-15422: Integer overflow in ICU.
+  * Low CVE-2017-15423: Issue with SPAKE implementation in BoringSSL.
+  * Low CVE-2017-15424: URL Spoof in Omnibox.
+  * Low CVE-2017-15425: URL Spoof in Omnibox.
+  * Low CVE-2017-15426: URL Spoof in Omnibox.
+  * Low CVE-2017-15427: Insufficient blocking of JavaScript in Omnibox.
+- Rebase fix-gn-bootstrap.diff
+- Drop merged patches:
+  * chromium-gcc5.patch
+  * chromium-60.0.3112.113-breakpad-ucontext.patch
+  * chromium-62.0.3202.62-correct-cplusplus-check.patch
+- Add new patches:
+  * chromium-non-void-return.patch
+  * chromium-gcc.patch</comment>
+    <requestid>554957</requestid>
+  </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>e88da57f254ee991c06ad0f89163d82f</srcmd5>
+    <version>63.0.3239.108</version>
+    <time>1513454013</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 63.0.3239.108 bsc#1072976:
+  * CVE-2017-15429: UXSS in V8
+  * Various fuzzing fixes</comment>
+    <requestid>557288</requestid>
+  </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>d4f5c12620875823b71ba7db07aaa70c</srcmd5>
+    <version>63.0.3239.132</version>
+    <time>1515260997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561799</requestid>
+  </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>040f18a7f9584cf13371d113701dd208</srcmd5>
+    <version>64.0.3282.119</version>
+    <time>1517167901</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable ozone stuff conditions for now as the headless mode
+  breaks up runtime bsc#1077722
+
+- Switch to gcc7 on Leap builds
+
+- Version update to 64.0.3282.119 bsc#1077571:
+  * High CVE-2018-6031: Use after free in PDFium. Reported by Anonymous on 2017-11-01
+  * High CVE-2018-6032: Same origin bypass in Shared Worker. Reported by Jun Kokatsu (@shhnjk) on 2017-11-20
+  * High CVE-2018-6033: Race when opening downloaded files. Reported by Juho Nurminen on 2017-12-09
+  * Medium CVE-2018-6034: Integer overflow in Blink. Reported by Tobias Klein (www.trapkit.de) on 2017-11-12
+  * Medium CVE-2018-6035: Insufficient isolation of devtools from extensions. Reported by Rob Wu on 2017-12-23
+  * Medium CVE-2018-6036: Integer underflow in WebAssembly. Reported by The UK's National Cyber Security Centre (NCSC) on 2017-11-30
+  * Medium CVE-2018-6037: Insufficient user gesture requirements in autofill. Reported by Paul Stone of Context Information Security on 2017-08-09
+  * Medium CVE-2018-6038: Heap buffer overflow in WebGL. Reported by cloudfuzzer on 2017-10-12
+  * Medium CVE-2018-6039: XSS in DevTools. Reported by Juho Nurminen on 2017-10-17
+  * Medium CVE-2018-6040: Content security policy bypass. Reported by WenXu Wu of Tencent's Xuanwu Lab on 2017-10-26
+  * Medium CVE-2018-6041: URL spoof in Navigation. Reported by Luan Herrera on 2017-08-29
+  * Medium CVE-2018-6042: URL spoof in OmniBox. Reported by Khalil Zhani on 2017-10-12
+  * Medium CVE-2018-6043: Insufficient escaping with external URL handlers. Reported by 0x09AL on 2017-11-16
+  * Medium CVE-2018-6045: Insufficient isolation of devtools from extensions. Reported by Rob Wu on 2017-12-23
+  * Medium CVE-2018-6046: Insufficient isolation of devtools from extensions. Reported by Rob Wu on 2017-12-31
+  * Medium CVE-2018-6047: Cross origin URL leak in WebGL. Reported by Masato Kinugawa on 2018-01-08
+  * Low CVE-2018-6048: Referrer policy bypass in Blink. Reported by Jun Kokatsu (@shhnjk) on 2017-09-08
+  * Low CVE-2017-15420: URL spoofing in Omnibox. Reported by Drew Springall (@_aaspring_) on 2017-10-05
+  * Low CVE-2018-6049: UI spoof in Permissions. Reported by WenXu Wu of Tencent's Xuanwu Lab on 2017-10-13
+  * Low CVE-2018-6050: URL spoof in OmniBox. Reported by Jonathan Kew on 2017-10-15
+  * Low CVE-2018-6051: Referrer leak in XSS Auditor. Reported by Antonio Sanso (@asanso) on 2014-12-11
+  * Low CVE-2018-6052: Incomplete no-referrer policy implementation. Reported by Tanner Emek on 2016-05-28
+  * Low CVE-2018-6053: Leak of page thumbnails in New Tab Page. Reported by Asset Kabdenov on 2017-08-23
+  * Low CVE-2018-6054: Use after free in WebUI. Reported by Rob Wu on 2017-12-24</comment>
+    <requestid>569875</requestid>
+  </revision>
+  <revision rev="176" vrev="2">
+    <srcmd5>a67bbe6ac6322ce40421a1de96fcfc72</srcmd5>
+    <version>64.0.3282.119</version>
+    <time>1517323386</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix default page to not point to 404
+
+- Install swiftshader objects too as they are needed</comment>
+    <requestid>570606</requestid>
+  </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>0bf165e14591f6eddee568dcd746ea94</srcmd5>
+    <version>64.0.3282.140</version>
+    <time>1517606555</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 64.0.3282.140 bsc#1079021:
+  * Various asan fixes bsc#1078463 CVE-2018-6406
+
+- Eliminate build dependency on procps: we only used it to run
+  'free', in order to find out how much RAM we have available. We
+  can get this information directly from the kernel, from
+  /proc/meminfo.</comment>
+    <requestid>571997</requestid>
+  </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>6d468c364de3b4af6ca04c586cecbd65</srcmd5>
+    <version>64.0.3282.167</version>
+    <time>1518697559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576498</requestid>
+  </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>5d75e815160f72ef1381d5a44f942976</srcmd5>
+    <version>64.0.3282.186</version>
+    <time>1519555644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579832</requestid>
+  </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>4a069b44ff2a91f1ade6a3c6324c5807</srcmd5>
+    <version>65.0.3325.146</version>
+    <time>1520588686</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 65.0.3325.146 bsc#1084296:
+  * High CVE-2017-11215: Use after free in Flash.
+  * High CVE-2017-11225: Use after free in Flash.
+  * High CVE-2018-6060: Use after free in Blink.
+  * High CVE-2018-6061: Race condition in V8.
+  * High CVE-2018-6062: Heap buffer overflow in Skia.
+  * High CVE-2018-6057: Incorrect permissions on shared memory.
+  * High CVE-2018-6063: Incorrect permissions on shared memory.
+  * High CVE-2018-6064: Type confusion in V8.
+  * High CVE-2018-6065: Integer overflow in V8.
+  * Medium CVE-2018-6066: Same Origin Bypass via canvas.
+  * Medium CVE-2018-6067: Buffer overflow in Skia.
+  * Medium CVE-2018-6068: Object lifecycle issues in Chrome Custom Tab.
+  * Medium CVE-2018-6069: Stack buffer overflow in Skia.
+  * Medium CVE-2018-6070: CSP bypass through extensions.
+  * Medium CVE-2018-6071: Heap bufffer overflow in Skia.
+  * Medium CVE-2018-6072: Integer overflow in PDFium.
+  * Medium CVE-2018-6073: Heap bufffer overflow in WebGL.
+  * Medium CVE-2018-6074: Mark-of-the-Web bypass.
+  * Medium CVE-2018-6075: Overly permissive cross origin downloads.
+  * Medium CVE-2018-6076: Incorrect handling of URL fragment identifiers in Blink.
+  * Medium CVE-2018-6077: Timing attack using SVG filters.
+  * Medium CVE-2018-6078: URL Spoof in OmniBox.
+  * Medium CVE-2018-6079: Information disclosure via texture data in WebGL.
+  * Medium CVE-2018-6080: Information disclosure in IPC call.
+  * Low CVE-2018-6081: XSS in interstitials.
+  * Low CVE-2018-6082: Circumvention of port blocking.
+  * Low CVE-2018-6083: Incorrect processing of AppManifests.
+- Add new patches:
+  * chromium-compiler.patch</comment>
+    <requestid>584220</requestid>
+  </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>6a4c29ae8d0614a2683eb32d476b25bd</srcmd5>
+    <version>65.0.3325.162</version>
+    <time>1521193308</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 65.0.3325.162:
+  * Various stability fixes only
+
+- Bundle the harfbuzz on &lt; 15.0 release as we would have to
+  use requires_ge for the library itself later on otherwise
+
+- Make sure to require gcc7
+- Add patch chromium-drm.patch to make sure to build with Leap 42.3
+  variant of libdrm</comment>
+    <requestid>586972</requestid>
+  </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>3e88b8204eb9b5c16e0a779ffb0ec388</srcmd5>
+    <version>65.0.3325.181</version>
+    <time>1521716737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589657</requestid>
+  </revision>
+  <revision rev="183" vrev="2">
+    <srcmd5>c2ae1d2665de52e47417aa89b999b6c2</srcmd5>
+    <version>65.0.3325.181</version>
+    <time>1523447831</time>
+    <user>maxlin_factory</user>
+    <comment>- Add vaapi patches:
+  * chromium-vaapi-init.patch
+  * chromium-vaapi.patch
+
+- Use memory-constraints package to limit threads as needed</comment>
+    <requestid>594640</requestid>
+  </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>5fb36ae406fcfc7fd9c32b640b6f7711</srcmd5>
+    <version>66.0.3359.117</version>
+    <time>1524238193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598009</requestid>
+  </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>0d7ad0cc3ddc8d1c45670bc3be1b6e8a</srcmd5>
+    <version>66.0.3359.139</version>
+    <time>1525023460</time>
+    <user>dimstar_suse</user>
+    <comment>- chromium 66.0.3359.139:
+  * CVE-2018-6118: Use after free in Media Cache (bsc#1091288)
+  * drop add-missing-blink-tools.patch, now in tarball again
+</comment>
+    <requestid>602242</requestid>
+  </revision>
+  <revision rev="186" vrev="2">
+    <srcmd5>71f20c158358ef536f74183543655686</srcmd5>
+    <version>66.0.3359.139</version>
+    <time>1525960200</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch chromium-skia-system-fontconfig.patch to fix
+  bsc#1092272
+
+- Enable build on AArch64
+- Fix build on AArch64:
+  * set target_cpu to arm64
+  * disable tcmalloc and swiftshader for aarch64
+  * Add new patches:
+    - chromium-65.0.3325.162-skia-aarch64-buildfix.patch
+    - chromium-skia-neon.patch</comment>
+    <requestid>605680</requestid>
+  </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>fb7193a3f4a5f8213e151c90e3357026</srcmd5>
+    <version>66.0.3359.170</version>
+    <time>1526220327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606437</requestid>
+  </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>cfbe64058d44df4e5d10b63d5bc3d619</srcmd5>
+    <version>66.0.3359.181</version>
+    <time>1526573051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>609024</requestid>
+  </revision>
+  <revision rev="189" vrev="2">
+    <srcmd5>e55e8e9bc93244ceb45686e73f5ff2f3</srcmd5>
+    <version>66.0.3359.181</version>
+    <time>1527583676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612440</requestid>
+  </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>94e30c950fac49711b3cbdb2dc766c4f</srcmd5>
+    <version>67.0.3396.87</version>
+    <time>1530473195</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build under gcc8:
+  * chromium-gcc8.patch
+
+- Chromium 67.0.3396.87:
+  * CVE-2018-6149: Out of bounds write in V8 (boo#1097452)
+
+- Chromium 67.0.3396.79: 
+  * CVE-2018-6148: Incorrect handling of CSP header (boo#1096508)
+
+- Require ffmpeg &gt;= 4.0 bsc#1095545
+
+- Update to 67.0.3396.62 bsc#1095163
+  * CVE-2018-6123: Use after free in Blink.
+  * CVE-2018-6124: Type confusion in Blink.
+  * CVE-2018-6125: Overly permissive policy in WebUSB.
+  * CVE-2018-6126: Heap buffer overflow in Skia.
+  * CVE-2018-6127: Use after free in indexedDB.
+  * CVE-2018-6128: uXSS in Chrome on iOS.
+  * CVE-2018-6129: Out of bounds memory access in WebRTC.
+  * CVE-2018-6130: Out of bounds memory access in WebRTC.
+  * CVE-2018-6131: Incorrect mutability protection in WebAssembly.
+  * CVE-2018-6132: Use of uninitialized memory in WebRTC.
+  * CVE-2018-6133: URL spoof in Omnibox.
+  * CVE-2018-6134: Referrer Policy bypass in Blink.
+  * CVE-2018-6135: UI spoofing in Blink.
+  * CVE-2018-6136: Out of bounds memory access in V8.
+  * CVE-2018-6137: Leak of visited status of page in Blink.
+  * CVE-2018-6138: Overly permissive policy in Extensions.
+  * CVE-2018-6139: Restrictions bypass in the debugger extension API.
+  * CVE-2018-6140: Restrictions bypass in the debugger extension API.</comment>
+    <requestid>619743</requestid>
+  </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>7ebc9739bc229b44309639d9b17bf8e4</srcmd5>
+    <version>67.0.3396.99</version>
+    <time>1531379881</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 67.0.3396.99:
+  * Various small feature fixes, no security</comment>
+    <requestid>621880</requestid>
+  </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>b1de9759bf6261d2e9e6a26852b676de</srcmd5>
+    <version>68.0.3440.75</version>
+    <time>1532681769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625371</requestid>
+  </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>bd4b7080f85ea7c8d282698c68f318d5</srcmd5>
+    <version>68.0.3440.84</version>
+    <time>1533214756</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 68.0.3440.84:
+  * Various small feature fixes only</comment>
+    <requestid>626880</requestid>
+  </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>f25756718e440d7072295a6f42d299f8</srcmd5>
+    <version>68.0.3440.106</version>
+    <time>1535123544</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631186</requestid>
+  </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>0ad9266081c77f21dee6779c08096e44</srcmd5>
+    <version>69.0.3497.81</version>
+    <time>1536327708</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix mojo build on 32bit:
+  * chromium-gcc8-alignof.patch
+
+- Split out the gn from this package, obsoletes patches:
+  * fix-gn-bootstrap.patch
+  * chromium-last-commit-position-r0.patch
+
+- Version update to 69.0.3497.81 bsc#1107235:
+  * CVE-2018-16065: Out of bounds write in V8
+  * CVE-2018-16066:Out of bounds read in Blink
+  * CVE-2018-16067: Out of bounds read in WebAudio
+  * CVE-2018-16068: Out of bounds write in Mojo
+  * CVE-2018-16069:Out of bounds read in SwiftShader
+  * CVE-2018-16070: Integer overflow in Skia
+  * CVE-2018-16071: Use after free in WebRTC
+  * CVE-2018-16073: Site Isolation bypass after tab restore
+  * CVE-2018-16074: Site Isolation bypass using Blob URLS
+  * Out of bounds read in Little-CMS
+  * CVE-2018-16075: Local file access in Blink
+  * CVE-2018-16076: Out of bounds read in PDFium
+  * CVE-2018-16077: Content security policy bypass in Blink
+  * CVE-2018-16078: Credit card information leak in Autofill
+  * CVE-2018-16079: URL spoof in permission dialogs
+  * CVE-2018-16080: URL spoof in full screen mode
+  * CVE-2018-16081: Local file access in DevTools
+  * CVE-2018-16082: Stack buffer overflow in SwiftShader
+  * CVE-2018-16083: Out of bounds read in WebRTC
+  * CVE-2018-16084: User confirmation bypass in external protocol handling
+  * CVE-2018-16085: Use after free in Memory Instrumentation
+- Added patches:</comment>
+    <requestid>633746</requestid>
+  </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>54b6f1419820f921ebb59b676a2028ae</srcmd5>
+    <version>69.0.3497.92</version>
+    <time>1537018677</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635349</requestid>
+  </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>3b9fdae4b56d6b6b8f37434487e1eeeb</srcmd5>
+    <version>69.0.3497.100</version>
+    <time>1537360163</time>
+    <user>maxlin_factory</user>
+    <comment>- Keep blank line after autopatch to make SLE12 rpm macros happy
+
+- Update to 69.0.3497.100 bsc#1108774
+  * Fixes from internal audits, fuzzing and other initiatives</comment>
+    <requestid>636344</requestid>
+  </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>68cb3db917eb1da51c04f0b4b698577a</srcmd5>
+    <version>70.0.3538.67</version>
+    <time>1540319998</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch trying to get the pkg to build with libva 1.x releases:
+  * chromium-libva1.patch
+- Update chromium-old-glibc.patch to contain more tweaked locations
+
+- Add back chromium-old-glibc.patch to make sure we build on 42.3
+- Reduce the merge number on jumbo files to reduce memory usage bit
+
+- remove trigger word from spec that trips up legal-auto
+
+- Update to 70.0.3538.67 bsc#1112111:
+  * CVE-2018-17462: Sandbox escape in AppCache
+  * CVE-2018-17463: Remote code execution in V8
+  * CVE to be assigned: Heap buffer overflow in Little CMS in PDFium
+  * CVE-2018-17464: URL spoof in Omnibox
+  * CVE-2018-17465: Use after free in V8
+  * CVE-2018-17466: Memory corruption in Angle
+  * CVE-2018-17467: URL spoof in Omnibox
+  * CVE-2018-17468: Cross-origin URL disclosure in Blink
+  * CVE-2018-17469: Heap buffer overflow in PDFium
+  * CVE-2018-17470: Memory corruption in GPU Internals
+  * CVE-2018-17471: Security UI occlusion in full screen mode
+  * CVE-2018-17472: iframe sandbox escape on iOS
+  * CVE-2018-17473: URL spoof in Omnibox
+  * CVE-2018-17474: Use after free in Blink
+  * CVE-2018-17475: URL spoof in Omnibox
+  * CVE-2018-17476: Security UI occlusion in full screen mode
+  * CVE-2018-5179: Lack of limits on update() in ServiceWorker
+  * CVE-2018-17477: UI spoof in Extensions
+- Added patches:
+  * chromium-gcc8-constexpr.patch</comment>
+    <requestid>643766</requestid>
+  </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>74ef16ac6173d5e0bc4af1d82e9f684d</srcmd5>
+    <version>70.0.3538.77</version>
+    <time>1540988000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 70.0.3538.77:
+  * Few feature fixes only
+- Do not meintion armv6 and armv7 in the constraints
+- Update patch chromium-non-void-return.patch</comment>
+    <requestid>645243</requestid>
+  </revision>
+  <revision rev="200" vrev="2">
+    <srcmd5>19b93c62872ffa916dea77ab85e24be6</srcmd5>
+    <version>70.0.3538.77</version>
+    <time>1541511360</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646249</requestid>
+  </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>7c21e01d499ba88c4275b428d3ae5815</srcmd5>
+    <version>70.0.3538.102</version>
+    <time>1542281988</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 70.0.3538.102 bsc#1115537 CVE-2018-17478
+  * CVE-2018-17478: Out of bounds memory access in V8</comment>
+    <requestid>648895</requestid>
+  </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>0eaff0562a0289aa0f30f2856110cecd</srcmd5>
+    <version>70.0.3538.110</version>
+    <time>1542889521</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 70.0.3538.110 bsc#1116608:
+  * CVE-2018-17479: Use-after-free in GPU</comment>
+    <requestid>650585</requestid>
+  </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>5db1a5360e6c41dc3963989b3b72d606</srcmd5>
+    <version>71.0.3578.80</version>
+    <time>1544539639</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 71.0.3578.80 bsc#1118529:
+  - CVE-2018-17480: Out of bounds write in V8
+  - CVE-2018-17481: Use after frees in PDFium
+  - CVE-2018-18335: Heap buffer overflow in Skia
+  - CVE-2018-18336: Use after free in PDFium
+  - CVE-2018-18337: Use after free in Blink
+  - CVE-2018-18338: Heap buffer overflow in Canvas
+  - CVE-2018-18339: Use after free in WebAudio
+  - CVE-2018-18340: Use after free in MediaRecorder
+  - CVE-2018-18341: Heap buffer overflow in Blink
+  - CVE-2018-18342: Out of bounds write in V8
+  - CVE-2018-18343: Use after free in Skia
+  - CVE-2018-18344: Inappropriate implementation in Extensions
+  - Multiple issues in SQLite via WebSQL
+  - CVE-2018-18345: Inappropriate implementation in Site Isolation
+  - CVE-2018-18346: Incorrect security UI in Blink
+  - CVE-2018-18347: Inappropriate implementation in Navigation
+  - CVE-2018-18348: Inappropriate implementation in Omnibox
+  - CVE-2018-18349: Insufficient policy enforcement in Blink
+  - CVE-2018-18350: Insufficient policy enforcement in Blink
+  - CVE-2018-18351: Insufficient policy enforcement in Navigation
+  - CVE-2018-18352: Inappropriate implementation in Media
+  - CVE-2018-18353: Inappropriate implementation in Network Authentication
+  - CVE-2018-18354: Insufficient data validation in Shell Integration
+  - CVE-2018-18355: Insufficient policy enforcement in URL Formatter
+  - CVE-2018-18356: Use after free in Skia
+  - CVE-2018-18357: Insufficient policy enforcement in URL Formatter
+  - CVE-2018-18358: Insufficient policy enforcement in Proxy.
+  - CVE-2018-18359: Out of bounds read in V8
+  - Inappropriate implementation in PDFium</comment>
+    <requestid>655692</requestid>
+  </revision>
+  <revision rev="204" vrev="2">
+    <srcmd5>caf87f231cf1e26ea840f2a9e8ebd5ba</srcmd5>
+    <version>71.0.3578.80</version>
+    <time>1544632204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657329</requestid>
+  </revision>
+  <revision rev="205" vrev="1">
+    <srcmd5>ab489981fc2393bdac1d31438d580779</srcmd5>
+    <version>71.0.3578.98</version>
+    <time>1544817233</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 71.0.3578.98 bsc#1119364:
+  * CVE-2018-17481: Use after free in PDFium
+- Redo chromium-old-libva.patch</comment>
+    <requestid>657844</requestid>
+  </revision>
+  <revision rev="206" vrev="2">
+    <srcmd5>c3f4b34f728153ab92179af0123b0f18</srcmd5>
+    <version>71.0.3578.98</version>
+    <time>1545223882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659336</requestid>
+  </revision>
+  <revision rev="207" vrev="3">
+    <srcmd5>3aa9064660e94409ed726968251cea9f</srcmd5>
+    <version>71.0.3578.98</version>
+    <time>1546535263</time>
+    <user>dimstar_suse</user>
+    <comment>- Tweak fix_building_widevinecdm_with_chromium.patch to make it
+  work again bsc#1120429</comment>
+    <requestid>662377</requestid>
+  </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>f127ffa7669e462cd9c9f4272650fc01</srcmd5>
+    <version>72.0.3626.81</version>
+    <time>1549624151</time>
+    <user>coolo</user>
+    <comment>- Update to 72.0.3626.81 bsc#1123641:
+  * CVE-2019-5754: Inappropriate implementation in QUIC Networking. Reported by Klzgrad on 2018-12-12
+  * CVE-2019-5782:  Inappropriate implementation in V8. Reported by Qixun Zhao of Qihoo 360 Vulcan Team via Tianfu Cup on 2018-11-16
+  * CVE-2019-5755: Inappropriate implementation in V8. Reported by Jay Bosamiya on 2018-12-10
+  * CVE-2019-5756: Use after free in PDFium. Reported by Anonymous on 2018-10-14   
+  * CVE-2019-5757: Type Confusion in SVG. Reported by Alexandru Pitis, Microsoft Browser Vulnerability Research on 2018-12-15
+  * CVE-2019-5758: Use after free in Blink. Reported by Zhe Jin（金哲），Luyao Liu(刘路遥) from Chengdu Security Response Center of Qihoo 360 Technology Co. Ltd on 2018-12-11
+  * CVE-2019-5759: Use after free in HTML select elements. Reported by Almog Benin on 2018-12-05
+  * CVE-2019-5760: Use after free in WebRTC. Reported by Zhe Jin（金哲），Luyao Liu(刘路遥) from Chengdu Security Response Center of Qihoo 360 Technology Co. Ltd on 2018-12-05
+  * CVE-2019-5761: Use after free in SwiftShader. Reported by Zhe Jin（金哲），Luyao Liu(刘路遥) from Chengdu Security Response Center of Qihoo 360 Technology Co. Ltd on 2018-11-13
+  * CVE-2019-5762: Use after free in PDFium. Reported by Anonymous on 2018-10-31   
+  * CVE-2019-5763: Insufficient validation of untrusted input in V8. Reported by Guang Gong of Alpha Team, Qihoo 360 on 2018-12-13
+  * CVE-2019-5764: Use after free in WebRTC. Reported by Eyal Itkin from Check Point Software Technologies on 2018-12-09
+  * CVE-2019-5765: Insufficient policy enforcement in the browser. Reported by Sergey Toshin (@bagipro) on 2019-01-16
+  * CVE-2019-5766: Insufficient policy enforcement in Canvas. Reported by David Erceg on 2018-11-20
+  * CVE-2019-5767: Incorrect security UI in WebAPKs. Reported by Haoran Lu, Yifan Zhang, Luyi Xing, and Xiaojing Liao from Indiana University Bloomington on 2018-11-06
+  * CVE-2019-5768: Insufficient policy enforcement in DevTools. Reported by Rob Wu on 2018-01-24
+  * CVE-2019-5769: Insufficient validation of untrusted input in Blink. Reported by Guy Eshel on 2018-12-11
+  * CVE-2019-5770: Heap buffer overflow in WebGL. Reported by  hemidallt@ on 2018-11-27
+  * CVE-2019-5771: Heap buffer overflow in SwiftShader. Reported by Zhe Jin（金哲），Luyao Liu(刘路遥) from Chengdu Security Response Center of Qihoo 360 Technology Co. Ltd on 2018-11-12
+  * CVE-2019-5772: Use after free in PDFium. Reported by Zhen Zhou of NSFOCUS Security Team on 2018-11-26
+  * CVE-2019-5773: Insufficient data validation in IndexedDB. Reported by Yongke Wang of Tencent's Xuanwu Lab (xlab.tencent.com) on 2018-12-24
+  * CVE-2019-5774: Insufficient validation of untrusted input in SafeBrowsing. Reported by Junghwan Kang (ultract) and Juno Im on 2018-11-11
+  * CVE-2019-5775: Insufficient policy enforcement in Omnibox. Reported by evi1m0 of Bilibili Security Team on 2018-10-18
+  * CVE-2019-5776: Insufficient policy enforcement in Omnibox. Reported by Lnyas Zhang on 2018-07-14
+  * CVE-2019-5777: Insufficient policy enforcement in Omnibox. Reported by Khalil Zhani on 2018-06-04
+  * CVE-2019-5778: Insufficient policy enforcement in Extensions. Reported by David Erceg on 2019-01-02
+  * CVE-2019-5779: Insufficient policy enforcement in ServiceWorker. Reported by David Erceg on 2018-11-11
+  * CVE-2019-5780: Insufficient policy enforcement. Reported by Andreas Hegenberg (folivora.AI GmbH) on 2018-10-03
+  * CVE-2019-5781: Insufficient policy enforcement in Omnibox. Reported by evi1m0 of Bilibili Security Team on 2018-10-18</comment>
+    <requestid>670076</requestid>
+  </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>139de31bfbd19394b1ed799b0ecea72a</srcmd5>
+    <version>72.0.3626.96</version>
+    <time>1549916906</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 72.0.3626.96 bsc#1124936:
+  * CVE-2019-5784: Inappropriate implementation in V8
+
+- Provide web_browser so chromium can be installed instead of firefox.</comment>
+    <requestid>673252</requestid>
+  </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>b990d052c6066a9692349312f7917bd8</srcmd5>
+    <version>72.0.3626.109</version>
+    <time>1551024965</time>
+    <user>coolo</user>
+    <comment>- Update to 72.0.3626.109:
+  * This is just feature fixes update</comment>
+    <requestid>677755</requestid>
+  </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>5860bf737a2c2d9c63d169a48aacade6</srcmd5>
+    <version>72.0.3626.119</version>
+    <time>1551215977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 72.0.3626.119:
+  * Feature fixes update only</comment>
+    <requestid>678887</requestid>
+  </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>192f1f714872805e1168182489d7d094</srcmd5>
+    <version>72.0.3626.121</version>
+    <time>1551784862</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop direct dependency on libgsm, we just need the devel
+
+- Update to 72.0.3626.121:
+  * fixes bsc#1127602 CVE-2019-5786</comment>
+    <requestid>681244</requestid>
+  </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>2b9e50b5dee469c6d373fd82aa7fdd12</srcmd5>
+    <version>73.0.3683.75</version>
+    <time>1552571940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 73.0.3683.75 bsc#1129059:
+  * CVE-2019-5787: Use after free in Canvas.
+  * CVE-2019-5788: Use after free in FileAPI.
+  * CVE-2019-5789: Use after free in WebMIDI.
+  * CVE-2019-5790: Heap buffer overflow in V8.
+  * CVE-2019-5791: Type confusion in V8.
+  * CVE-2019-5792: Integer overflow in PDFium.
+  * CVE-2019-5793: Excessive permissions for private API in Extensions.
+  * CVE-2019-5794: Security UI spoofing.
+  * CVE-2019-5795: Integer overflow in PDFium.
+  * CVE-2019-5796: Race condition in Extensions.
+  * CVE-2019-5797: Race condition in DOMStorage.
+  * CVE-2019-5798: Out of bounds read in Skia.
+  * CVE-2019-5799: CSP bypass with blob URL.
+  * CVE-2019-5800: CSP bypass with blob URL.
+  * CVE-2019-5801: Incorrect Omnibox display on iOS.
+  * CVE-2019-5802: Security UI spoofing.
+  * CVE-2019-5803: CSP bypass with Javascript URLs'.
+  * CVE-2019-5804: Command line command injection on Windows.
+- Update patches:
+  * chromium-buildname.patch
+  * chromium-non-void-return.patch
+  * chromium-old-glibc.patch
+  * chromium-old-libva.patch
+  * chromium-vaapi.patch
+- Removed patches:
+  * chromium-crashpad-fix_aarch64.patch
+  * chromium-webrtc-includes.patch
+- Added patches:
+  * chromium-gcc.patch</comment>
+    <requestid>684661</requestid>
+  </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>81270d08ea6309156f5f9f0534fc4ab8</srcmd5>
+    <version>73.0.3683.86</version>
+    <time>1553700030</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch for pipewire build:
+  * chromium-73.0.3683.75-pipewire-cstring-fix.patch
+
+- Update to 73.0.3683.86:
+  * Just feature fixes around
+- Refresh patch:
+  * chromium-non-void-return.patch
+
+- Update conditions to use system harfbuzz on TW+
+- Require java during build
+- Enable using pipewire when available
+- Rebase chromium-vaapi.patch to match up the Fedora one</comment>
+    <requestid>688615</requestid>
+  </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>1827e1b149df09d0624000a433b442d9</srcmd5>
+    <version>73.0.3683.103</version>
+    <time>1554712527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 73.0.3686.103:
+  * Various feature fixes</comment>
+    <requestid>691759</requestid>
+  </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>c25f1c9aad2dd95d55bbe999ef8bb653</srcmd5>
+    <version>74.0.3729.108</version>
+    <time>1556817440</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 74.0.3729.108 bsc#1133313:
+  * CVE-2019-5805: Use after free in PDFium
+  * CVE-2019-5806: Integer overflow in Angle
+  * CVE-2019-5807: Memory corruption in V8
+  * CVE-2019-5808: Use after free in Blink
+  * CVE-2019-5809: Use after free in Blink
+  * CVE-2019-5810: User information disclosure in Autofill
+  * CVE-2019-5811: CORS bypass in Blink
+  * CVE-2019-5813: Out of bounds read in V8
+  * CVE-2019-5814: CORS bypass in Blink
+  * CVE-2019-5815: Heap buffer overflow in Blink
+  * CVE-2019-5818: Uninitialized value in media reader
+  * CVE-2019-5819: Incorrect escaping in developer tools
+  * CVE-2019-5820: Integer overflow in PDFium
+  * CVE-2019-5821: Integer overflow in PDFium
+  * CVE-2019-5822: CORS bypass in download manager
+  * CVE-2019-5823: Forced navigation from service worker
+  * CVE-2019-5812: URL spoof in Omnibox on iOS
+  * CVE-2019-5816: Exploit persistence extension on Android
+  * CVE-2019-5817: Heap buffer overflow in Angle on Windows
+- Add patches:
+  * 00-basevalue.patch
+  * 01-basevalue.patch
+  * 02-basevalue.patch
+  * 03-basevalue.patch
+  * 04-basevalue.patch
+  * 05-basevalue.patch
+  * 06-basevalue.patch
+  * old-libva.patch
+  * quic.patch</comment>
+    <requestid>699638</requestid>
+  </revision>
+  <revision rev="217" vrev="2">
+    <srcmd5>8383e8463eb5c20402c866b56d9a8585</srcmd5>
+    <version>74.0.3729.108</version>
+    <time>1557654191</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build on aarch64:
+  * chromium-fix-crc32-for-aarch64.patch
+</comment>
+    <requestid>701987</requestid>
+  </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>49feaba8e912d1556f35bed598eddee2</srcmd5>
+    <version>74.0.3729.157</version>
+    <time>1558427858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704156</requestid>
+  </revision>
+  <revision rev="219" vrev="1">
+    <srcmd5>6dfcd7d995ae40d73438cd630fc0eb13</srcmd5>
+    <version>74.0.3729.169</version>
+    <time>1559727599</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>707415</requestid>
+  </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>9e55b2f435a9c31af48d33baf62382df</srcmd5>
+    <version>75.0.3770.80</version>
+    <time>1560338170</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with kernel 5.2 and avoid runtime crash due to pure virtual
+  declaration:
+  * chromium-75.0.3770.80-SIOCGSTAMP.patch
+  * chromium-75.0.3770.80-pure-virtual-crash-fix.patch
+
+- Update old-libva.patch to make sure we build on Leap 42.3
+
+- Update to 75.0.3770.80 bsc#1137332:
+  * CVE-2019-5828: Use after free in ServiceWorker
+  * CVE-2019-5829: Use after free in Download Manager
+  * CVE-2019-5830: Incorrectly credentialed requests in CORS
+  * CVE-2019-5831: Incorrect map processing in V8
+  * CVE-2019-5832: Incorrect CORS handling in XHR
+  * CVE-2019-5833: Inconsistent security UI placemen
+  * CVE-2019-5835: Out of bounds read in Swiftshader
+  * CVE-2019-5836: Heap buffer overflow in Angle
+  * CVE-2019-5837: Cross-origin resources size disclosure in Appcache
+  * CVE-2019-5838: Overly permissive tab access in Extensions
+  * CVE-2019-5839: Incorrect handling of certain code points in Blink
+  * CVE-2019-5840: Popup blocker bypass
+  * Various fixes from internal audits, fuzzing and other initiatives
+  * CVE-2019-5834: URL spoof in Omnibox on iOS
+- Remove merged patchsets:
+  * 00-basevalue.patch
+  * 01-basevalue.patch
+  * 02-basevalue.patch
+  * 03-basevalue.patch
+  * 04-basevalue.patch
+  * 05-basevalue.patch
+  * 06-basevalue.patch</comment>
+    <requestid>709055</requestid>
+  </revision>
+  <revision rev="221" vrev="1">
+    <srcmd5>705c839c845a26ae38854af38d3a3963</srcmd5>
+    <version>75.0.3770.90</version>
+    <time>1560760401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 75.0.3770.90 bsc#1137332 bsc#1138287:
+  * CVE-2019-5842: Use-after-free in Blink.</comment>
+    <requestid>709956</requestid>
+  </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>48a7b6aff7ce568db5c3d1473f05f589</srcmd5>
+    <version>75.0.3770.100</version>
+    <time>1561049692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 75.0.3770.100:
+  * This is just feature fixes update</comment>
+    <requestid>710898</requestid>
+  </revision>
+  <revision rev="223" vrev="1">
+    <srcmd5>b4f52c1b97e689ae1e23a11dac7dab88</srcmd5>
+    <version>75.0.3770.142</version>
+    <time>1564576108</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use lto flags from prjconf, we need to set them using
+  gn buildsystem
+
+- Drop patch chromium-non-void-return.patch and just pass
+  a cxxflags disabler for the check
+
+- Update gcc-enable-lto.patch to work on systems without the
+  lto
+
+- Update to 75.0.3770.142 bsc#1141649:
+  * CVE-2019-5847: V8 sealed/frozen elements cause crash
+  * CVE-2019-5848: Font sizes may expose sensitive information
+- Add patch chromium-renderprocess-crash.patch to hopefully fix
+  bsc#1141102
+
+- Enable LTO for x86_64 - add gcc-enable-lto.patch and
+  gcc-lto-rsp-clobber.patch patches.
+
+- Install manpage
+
+- Update to 72.0.3626.109 bsc#1120892 CVE-2018-20073:</comment>
+    <requestid>719830</requestid>
+  </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>58810a67ebba2eff28a6f435fd4d9c22</srcmd5>
+    <version>76.0.3809.87</version>
+    <time>1564994381</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 76.0.3809.87:
+  * CVE-2019-5850: Use-after-free in offline page fetcher
+  * CVE-2019-5860: Use-after-free in PDFium
+  * CVE-2019-5853: Memory corruption in regexp length check
+  * CVE-2019-5851: Use-after-poison in offline audio context
+  * CVE-2019-5859: res: URIs can load alternative browsers
+  * CVE-2019-5856: Insufficient checks on filesystem: URI permissions
+  * CVE-2019-5855: Integer overflow in PDFium
+  * CVE-2019-5865: Site isolation bypass from compromised renderer
+  * CVE-2019-5858: Insufficient filtering of Open URL service parameters
+  * CVE-2019-5864: Insufficient port filtering in CORS for extensions
+  * CVE-2019-5862: AppCache not robust to compromised renderers
+  * CVE-2019-5861: Click location incorrectly checked
+  * CVE-2019-5857: Comparison of -0 and null yields crash
+  * CVE-2019-5854: Integer overflow in PDFium text rendering
+  * CVE-2019-5852: Object leak of utility functions
+  * Various fixes from internal audits, fuzzing and other initiatives
+  * Not affected:
+    + CVE-2019-5863: Use-after-free in WebUSB on Windows
+- Added patches:
+  * chromium-76-gcc-ambiguous-nodestructor.patch
+  * chromium-76-gcc-blink-constexpr.patch
+  * chromium-76-gcc-blink-namespace1.patch
+  * chromium-76-gcc-blink-namespace2.patch
+  * chromium-76-gcc-gl-init.patch
+  * chromium-76-gcc-include.patch
+  * chromium-76-gcc-noexcept.patch
+  * chromium-76-gcc-private.patch
+  * chromium-76-gcc-pure-virtual.patch
+  * chromium-76-gcc-uint32.patch</comment>
+    <requestid>720561</requestid>
+  </revision>
+  <revision rev="225" vrev="2">
+    <srcmd5>8aae4f552f00f7f72c77a3cc67d8eb0b</srcmd5>
+    <version>76.0.3809.87</version>
+    <time>1565362354</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to fix few compilation issues:
+  * chromium-angle-inline.patch
+  * chromium-fix-char_traits.patch bsc#1144625
+- Remove not properly applying old-glibc patch:
+  * chromium-old-glibc.patch
+- Disable various gcc warnings as upstream does not care and it
+  just bloats the buildlog (from debian)
+
+- Update to 76.0.3809.87 bsc#1143492:</comment>
+    <requestid>721717</requestid>
+  </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>94343e08b77acfb25b9ded544e24c523</srcmd5>
+    <version>76.0.3809.100</version>
+    <time>1565695421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 76.0.3809.100 bsc#1145242:
+  * CVE-2019-5868: Use-after-free in PDFium ExecuteFieldAction
+  * CVE-2019-5867: Out-of-bounds read in V8</comment>
+    <requestid>722784</requestid>
+  </revision>
+  <revision rev="227" vrev="2">
+    <srcmd5>71872b01e6414cd3d6ed38c4fe7ed770</srcmd5>
+    <version>76.0.3809.100</version>
+    <time>1566464095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725085</requestid>
+  </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>4bc10097f2a88fea0144fe27927ca558</srcmd5>
+    <version>76.0.3809.132</version>
+    <time>1567582486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 76.0.3809.132 bsc#1149143 CVE-2019-5869:
+  * CVE-2019-5869: Use-after-free in Blink
+  * Various fixes from internal audits, fuzzing and other initiatives
+- Refresh patch chromium-76-gcc-ambiguous-nodestructor.patch</comment>
+    <requestid>728057</requestid>
+  </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>debc794fa2f84ad0f4d0c33ab2ade373</srcmd5>
+    <version>77.0.3865.75</version>
+    <time>1568379629</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to chromium 77.0.3865.75 bsc#1150425:
+  * CVE-2019-5870: Use-after-free in media
+  * CVE-2019-5871: Heap overflow in Skia
+  * CVE-2019-5872: Use-after-free in Mojo
+  * CVE-2019-5874: External URIs may trigger other browsers
+  * CVE-2019-5875: URL bar spoof via download redirect
+  * CVE-2019-5876: Use-after-free in media
+  * CVE-2019-5877: Out-of-bounds access in V8
+  * CVE-2019-5878: Use-after-free in V8
+  * CVE-2019-5879: Extension can bypass same origin policy
+  * CVE-2019-5880: SameSite cookie bypass
+  * CVE-2019-5881: Arbitrary read in SwiftShader
+  * CVE-2019-13659: URL spoof
+  * CVE-2019-13660: Full screen notification overlap
+  * CVE-2019-13661: Full screen notification spoof
+  * CVE-2019-13662: CSP bypass
+  * CVE-2019-13663: IDN spoof
+  * CVE-2019-13664: CSRF bypass
+  * CVE-2019-13665: Multiple file download protection bypass
+  * CVE-2019-13666: Side channel using storage size estimate
+  * CVE-2019-13667: URI bar spoof when using external app URIs
+  * CVE-2019-13668: Global window leak via console
+  * CVE-2019-13669: HTTP authentication spoof
+  * CVE-2019-13670: V8 memory corruption in regex
+  * CVE-2019-13671: Dialog box fails to show origin
+  * CVE-2019-13673: Cross-origin information leak using devtools
+  * CVE-2019-13674: IDN spoofing
+  * CVE-2019-13675: Extensions can be disabled by trailing slash
+  * CVE-2019-13676: Google URI shown for certificate warning
+  * CVE-2019-13677: Chrome web store origin needs to be isolated</comment>
+    <requestid>730345</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+<package name="libdv" project="openSUSE:Factory">
+  <title>The Quasar DV Codec</title>
+  <description>The Quasar DV codec (libdv) is a software codec for DV video, the
+encoding format used by most digital camcorders, typically those that
+support the IEEE 1394 (FireWire or i.Link) interface. Libdv was
+developed according to the official standards for DV video: IEC 61834
+and SMPTE 314M.
+
+There are two sample applications included with libdv: playdv and
+encode.</description>
+  <devel project="multimedia:libs" package="libdv"/>
+</package>

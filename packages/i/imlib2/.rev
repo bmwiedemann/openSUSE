@@ -1,0 +1,324 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>c6ff07d798efd33d19c1e225a692faa3</srcmd5>
+    <version>1.3.0</version>
+    <time>1168903042</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="48">
+    <srcmd5>1bf56889b99d5e5e3742492ded1bae88</srcmd5>
+    <version>1.3.0</version>
+    <time>1185149382</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="56">
+    <srcmd5>fc953b1e8a6c3e8a90fd95ec94f79484</srcmd5>
+    <version>1.3.0</version>
+    <time>1187910710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5a668e6a1e6e76d1f1682c0858bab06</srcmd5>
+    <version>1.4.0</version>
+    <time>1193424141</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>64915c6f207a664e0c2ea616b7b0e9ff</srcmd5>
+    <version>1.4.1</version>
+    <time>1215808973</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>726312fa7814e30f1cf3e4af389808df</srcmd5>
+    <version>1.4.2</version>
+    <time>1224691414</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5a8826aa2e8dec2d1860c0057b1a09b4</srcmd5>
+    <version>1.4.2</version>
+    <time>1227279870</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8d6505bd86541485d4423dffcd6aed8a</srcmd5>
+    <version>1.4.2</version>
+    <time>1247755886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>8d6505bd86541485d4423dffcd6aed8a</srcmd5>
+    <version>1.4.2</version>
+    <time>1247755886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>0e2f49e820817f710a7a7afa8dddd89f</srcmd5>
+    <version>1.4.2</version>
+    <time>1263483609</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/imlib2 based on submit request 28360 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>bd8a157b0ae6ff841c09290cf1ef8425</srcmd5>
+    <version>1.4.2</version>
+    <time>1268924013</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c4c16120fc2550100841bd2399d2380d</srcmd5>
+    <version>1.4.3</version>
+    <time>1271370425</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/imlib2 based on submit request 37985 from user msmeissn
+</comment>
+    <requestid>37985</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1aca5c66652d113f8b8db1e137b0e437</srcmd5>
+    <version>1.4.3</version>
+    <time>1272583085</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/imlib2 based on submit request 39148 from user msmeissn
+</comment>
+    <requestid>39148</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>713af45052c03badc8316073dc8aab8f</srcmd5>
+    <version>1.4.3</version>
+    <time>1276834100</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/imlib2 based on submit request 41608 from user prusnak
+</comment>
+    <requestid>41608</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>713af45052c03badc8316073dc8aab8f</srcmd5>
+    <version>1.4.3</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>713af45052c03badc8316073dc8aab8f</srcmd5>
+    <version>1.4.3</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>9d293a8a81c9d20abe9fc79b2f35fd75</srcmd5>
+    <version>1.4.4</version>
+    <time>1290093011</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53275 from user msmeissn
+</comment>
+    <requestid>53275</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>0443e764261cd7c133b523eae674ff92</srcmd5>
+    <version>1.4.4</version>
+    <time>1290093023</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53275
+</comment>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>0443e764261cd7c133b523eae674ff92</srcmd5>
+    <version>1.4.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4ae4c1d574bcb33e8c70477703188b4d</srcmd5>
+    <version>1.4.5</version>
+    <time>1313564652</time>
+    <user>saschpe</user>
+    <comment>update to 1.4.5</comment>
+    <requestid>79046</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>6e2819558477a60203df9293c472aa79</srcmd5>
+    <version>1.4.5</version>
+    <time>1313564659</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79046
+</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>d01612973955a40aa2ad149fc66eb05e</srcmd5>
+    <version>1.4.5</version>
+    <time>1318762212</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequire to avoid a hidden require from projconfig (forwarded request 87941 from coolo)</comment>
+    <requestid>87995</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>d01612973955a40aa2ad149fc66eb05e</srcmd5>
+    <version>1.4.5</version>
+    <time>1319181987</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>220b2554766452ed257d2383f8f32a57</srcmd5>
+    <version>1.4.5</version>
+    <time>1321980454</time>
+    <user>coolo</user>
+    <comment>- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Employ shlib policy (forwarded request 92944 from jengelh)</comment>
+    <requestid>92976</requestid>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>061581af8b64485fe5f9467dafcdd9a4</srcmd5>
+    <version>1.4.5</version>
+    <time>1323191963</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>4369119ae365d4aab1717e6c5a802e64</srcmd5>
+    <version>1.4.5</version>
+    <time>1326292610</time>
+    <user>coolo</user>
+    <comment>- Cleanup total dependency madness here:
+ * Add explicit BuildRequires on libjpeg-devel,zlib-devel,
+  libid3tag-devel.
+  * Do not use catch-all xorg-x11-devel, but only
+    xorg-x11-libX11-devel, xorg-x11-libXext-devel
+  * imlib2-devel only requires xorg-x11-libX11-devel 
+  * Axe all &quot;la&quot; files, there is no libltdl usage.
+  * cleanup imlib-config script at build time.
+  * This will certainly break build of  dependenant packages
+    with broken BuildRequires, drop me a note if you find
+    any problem. (forwarded request 99534 from elvigia)</comment>
+    <requestid>99537</requestid>
+  </revision>
+  <revision rev="27" vrev="10">
+    <srcmd5>4369119ae365d4aab1717e6c5a802e64</srcmd5>
+    <version>1.4.5</version>
+    <time>1340183459</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="11">
+    <srcmd5>f52148379d821e68fa6ba8b4327fe630</srcmd5>
+    <version>1.4.5</version>
+    <time>1357649460</time>
+    <user>coolo</user>
+    <comment>- imlib2-bswap.patch -&gt; USe byteswap.h instead of custom code 
+- imlib2-giflib5.patch  --&gt; Fix build failure with new giflib (forwarded request 147467 from elvigia)</comment>
+    <requestid>147472</requestid>
+  </revision>
+  <revision rev="29" vrev="13">
+    <srcmd5>f52148379d821e68fa6ba8b4327fe630</srcmd5>
+    <version>1.4.5</version>
+    <time>1359109079</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="14">
+    <srcmd5>59ad084677f7bdc69dd35b28ef09e6b4</srcmd5>
+    <version>1.4.5</version>
+    <time>1364896444</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161560 from m_meister)</comment>
+    <requestid>161561</requestid>
+  </revision>
+  <revision rev="31" vrev="16">
+    <srcmd5>59ad084677f7bdc69dd35b28ef09e6b4</srcmd5>
+    <version>1.4.5</version>
+    <time>1379662666</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="18">
+    <srcmd5>59ad084677f7bdc69dd35b28ef09e6b4</srcmd5>
+    <version>1.4.5</version>
+    <time>1409301225</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="19">
+    <srcmd5>4108bce0fbcb49b110faf3c9d9b95783</srcmd5>
+    <version>1.4.5</version>
+    <time>1410236474</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247048</requestid>
+  </revision>
+  <revision rev="34" vrev="20">
+    <srcmd5>eafef7de147eda854be00c846e178a8b</srcmd5>
+    <version>1.4.5</version>
+    <time>1415199279</time>
+    <user>coolo</user>
+    <comment>- disable autoreconf in SLE11, it is too old and causes syntax errors (forwarded request 259477 from olh)</comment>
+    <requestid>259488</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>baa014bed23989191a98bd98a8c8b724</srcmd5>
+    <version>1.4.6</version>
+    <time>1427652896</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file with spec-cleaner
+- Update to 1.4.6
+  * TGA loader: Fix for corrupt RLE format.
+  * Fix drawing of closed polygons in certain situations.
+  * Set warning options when using gcc.
+  * Silence compiler warnings.
+  * Don't set -std=gnu99.
+  * XPM loader: Simplify and fix certain case of cpp &gt; 2.</comment>
+    <requestid>293097</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9109622c6e5964b8d431aa0ad6f23b6b</srcmd5>
+    <version>1.4.7</version>
+    <time>1430387396</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304321</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>830a4ea7bde623c7fd08ba5790f79093</srcmd5>
+    <version>1.4.7</version>
+    <time>1431676516</time>
+    <user>coolo</user>
+    <comment>- run autoreconf unconditional. PMBS got a fixed version for SLE_11 (forwarded request 306493 from olh)</comment>
+    <requestid>306496</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c972a159205bea7ae0635b43d8577684</srcmd5>
+    <version>1.4.8</version>
+    <time>1458470870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373209</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>437a8a7c4dd49abcd803d9e28f2eaefe</srcmd5>
+    <version>1.4.9</version>
+    <time>1462447143</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393227</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5e35582f2c16f0fa8717d8b7c2ecf653</srcmd5>
+    <version>1.4.10</version>
+    <time>1495267577</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493989</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>8522e2e949ba040c32ccd53f0bc19a76</srcmd5>
+    <version>1.5.1</version>
+    <time>1539590680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640034</requestid>
+  </revision>
+</revisionlist>

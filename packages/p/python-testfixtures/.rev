@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b78e08f53cc52319b905a947219edde</srcmd5>
+    <version>5.2.0</version>
+    <time>1513245449</time>
+    <user>dimstar_suse</user>
+    <comment>This package is needed by python-pykwalify in Staging:adi:60
+(which is needed by borgmatic)</comment>
+    <requestid>555905</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9a189d449ae935db40d8cbf7c64b5f31</srcmd5>
+    <version>5.3.1</version>
+    <time>1515261058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561827</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a1dd9b5bc8dd9a724c70327650e210e3</srcmd5>
+    <version>5.3.1</version>
+    <time>1545648304</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659711</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>bab2907e534db7fd2e619975a6654d97</srcmd5>
+    <version>5.3.1</version>
+    <time>1549464493</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671951</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>247aa701cedfca98d864b284638e7b6e</srcmd5>
+    <version>6.5.0</version>
+    <time>1551284874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674881</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c6eba647dcd7160de714e50ad08d9b84</srcmd5>
+    <version>6.6.2</version>
+    <time>1553888555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689260</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5fcc0b8552122628a406cb81d544f7c1</srcmd5>
+    <version>6.7.0</version>
+    <time>1555928783</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696466</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6a86001f8afd63d4c760322ceadbe7c9</srcmd5>
+    <version>6.8.2</version>
+    <time>1558516533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704380</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a2bba44821ed7fce616a83b259847dd4</srcmd5>
+    <version>6.9.0</version>
+    <time>1560862679</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710324</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3e2699750101215b5c72dd3ed1f9ced0</srcmd5>
+    <version>6.10.0</version>
+    <time>1563808790</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.10.0:
+  * Better feedback where objects do not :func:`compare` equal but do have the same representation.</comment>
+    <requestid>717575</requestid>
+  </revision>
+</revisionlist>

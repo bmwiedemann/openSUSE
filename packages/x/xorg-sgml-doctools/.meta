@@ -1,0 +1,5 @@
+<package name="xorg-sgml-doctools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:XOrg" package="xorg-sgml-doctools"/>
+</package>

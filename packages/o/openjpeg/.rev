@@ -1,0 +1,162 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>01baee67113432adf74ef4eaf4ccc7c3</srcmd5>
+    <version>1.4</version>
+    <time>1323175962</time>
+    <user>coolo</user>
+    <comment>New package: openjpeg - An open-source JPEG 2000 codec. openjpeg can be used by Calligra KDE office suite package (currently in KDE:Distro:Factory) - Resubmission based on bnc#733009</comment>
+    <requestid>94884</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>575dbef5adabbbad8345806b9626f4dc</srcmd5>
+    <version>1.4</version>
+    <time>1323290454</time>
+    <user>coolo</user>
+    <comment>license update: BSD-2-Clause
+SPDX format (forwarded request 95537 from babelworx)</comment>
+    <requestid>95581</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>77472d0a485fe8c354e12f616a3a9421</srcmd5>
+    <version>1.5.0</version>
+    <time>1330520959</time>
+    <user>coolo</user>
+    <comment>Update to version 1.5.0, Removed/Replaced/Added some patches, Spec file updates, No need to provide a crippled source anymore (the Sun proprietary code was removed from the package) (forwarded request 107473 from adra)</comment>
+    <requestid>107474</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>77472d0a485fe8c354e12f616a3a9421</srcmd5>
+    <version>1.5.0</version>
+    <time>1340183755</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d93d2e4c4f02014949cac81aa9405e49</srcmd5>
+    <version>1.5.0</version>
+    <time>1340958094</time>
+    <user>coolo</user>
+    <comment>Added a patch to fix heap corruption when processing certain Gray16 TIFF images - (CVE-2009-5030), (bnc#757260) (forwarded request 126484 from adra)</comment>
+    <requestid>126485</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>9ec025d9422bb76c5154fc7775033607</srcmd5>
+    <version>1.5.0</version>
+    <time>1342082988</time>
+    <user>namtrac</user>
+    <comment>Added a patch to fix heap-based buffer overflow when processing JPEG2000 images - (CVE-2012-3358), (bnc#770649) (forwarded request 127679 from adra)</comment>
+    <requestid>127680</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>39a755d9c33d360b8ceaf87cac051fb0</srcmd5>
+    <version>1.5.0</version>
+    <time>1342625832</time>
+    <user>coolo</user>
+    <comment>- Add baselibs.conf</comment>
+    <requestid>128105</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>ce41f2ec588870730615b8eb932128f0</srcmd5>
+    <version>1.5.0</version>
+    <time>1347512621</time>
+    <user>coolo</user>
+    <comment>Added a patch to fix heap-based buffer overflow when processing JPEG2000 images - (CVE-2012-3535), (bnc#777445) (forwarded request 133689 from adra)</comment>
+    <requestid>133705</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>118b683ea89de5050eb0f1cd0c520605</srcmd5>
+    <version>1.5.0</version>
+    <time>1348149622</time>
+    <user>coolo</user>
+    <comment>Another attempt. Fixes Fedora build, harmless for other distros. Used
+in X11:Enlightenment:Nightly.
+
+- fix fedora build (forwarded request 134732 from sleep_walker)</comment>
+    <requestid>134796</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61cd74345d8af9f39a433d3d71dd8e6f</srcmd5>
+    <version>1.5.1</version>
+    <time>1350590331</time>
+    <user>coolo</user>
+    <comment>Update to version 1.5.1, Removed/Added some patches (forwarded request 138238 from adra)</comment>
+    <requestid>138239</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d3c0e52d507cf9222f26b01aa0df1007</srcmd5>
+    <version>1.5.1</version>
+    <time>1353413410</time>
+    <user>coolo</user>
+    <comment>- do fdupes only for SUSE distributions (forwarded request 141983 from sleep_walker)</comment>
+    <requestid>141989</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>d3c0e52d507cf9222f26b01aa0df1007</srcmd5>
+    <version>1.5.1</version>
+    <time>1359109539</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>d3c0e52d507cf9222f26b01aa0df1007</srcmd5>
+    <version>1.5.1</version>
+    <time>1379663424</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>1c05bcdb244f1b2812155491c84f179c</srcmd5>
+    <version>1.5.1</version>
+    <time>1389953108</time>
+    <user>coolo</user>
+    <comment>Fix bnc#853838 //updated changes with problem description (forwarded request 213700 from vpereirabr)</comment>
+    <requestid>213761</requestid>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>26227a74aae89f7e8eccc99339a33b01</srcmd5>
+    <version>1.5.1</version>
+    <time>1392481051</time>
+    <user>coolo</user>
+    <comment>Added some security patches, modified openjpeg-1.5.1-cve-2013-6045-1.patch (forwarded request 222092 from adra)</comment>
+    <requestid>222106</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>88718ba3ce1622b485f104eff4142a36</srcmd5>
+    <version>1.5.2</version>
+    <time>1407912487</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244051</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>88718ba3ce1622b485f104eff4142a36</srcmd5>
+    <version>1.5.2</version>
+    <time>1409302037</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>921ffd7bda3323c41f3642880dc2b254</srcmd5>
+    <version>1.5.2</version>
+    <time>1425377637</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288427</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>6ebc5edf236014b2e870aa3857f7219a</srcmd5>
+    <version>1.5.2</version>
+    <time>1486547431</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454599</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>01d2537444e01b2beff43b3d6daacb13</srcmd5>
+    <version>1.5.2</version>
+    <time>1506340416</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527553</requestid>
+  </revision>
+</revisionlist>

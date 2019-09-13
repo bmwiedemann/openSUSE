@@ -1,0 +1,161 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>84b880125b31430326cb629ec66e4419</srcmd5>
+    <version>0.7.2</version>
+    <time>1316459476</time>
+    <user>lrupp</user>
+    <comment>knemo is a well known network monitor for KDE. Additional information can be found in it's introduction on the factory mailing list.</comment>
+    <requestid>82336</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c8ff579735ea1ab1c7bc59573490a926</srcmd5>
+    <version>0.7.2</version>
+    <time>1316681230</time>
+    <user>saschpe</user>
+    <comment>- Select libnl-1_1-devel for Factory
+- Cleanup spec file
+
+- license update: GPL-2.0+
+  Use SPDX syntax (http://www.spdx.org/licenses)</comment>
+    <requestid>84175</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c8ff579735ea1ab1c7bc59573490a926</srcmd5>
+    <version>0.7.2</version>
+    <time>1319182051</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>dbe8603a88f6def17eec0083fcb0fdaf</srcmd5>
+    <version>0.7.2</version>
+    <time>1323192113</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>33b4dde9b0434194ca34bec21852aad1</srcmd5>
+    <version>0.7.3</version>
+    <time>1327674016</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>101753</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>33b4dde9b0434194ca34bec21852aad1</srcmd5>
+    <version>0.7.3</version>
+    <time>1340183532</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>247e62b9251c672025d57ee19f751d21</srcmd5>
+    <version>0.7.4</version>
+    <time>1352357110</time>
+    <user>coolo</user>
+    <comment>- Fix build for arm
+
+- Update to version 0.7.4
+  * Add monochrome icon theme contributed by Vinícius Sabino.
+  * Port to libnl3
+  * Remove support for the legacy system tray icon
+  * Transition from deprecated KCalendarSystem calls
+  * Drop embedded plotter code in favor of libksignalplotter
+  * Several fixes for FreeBSD (forwarded request 140498 from tittiatcoke)</comment>
+    <requestid>140499</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d9468c744db7ec184c0ab2b3d6770041</srcmd5>
+    <version>0.7.5</version>
+    <time>1352716949</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.7.5 
+  * Fix building on ARM architecture
+  * Version 0.7.4 failed to create tables in new statistics databases. Fix that.
+  * Possibly fix a plotter crash
+- Remove knemo-arm.patch, because fixed upstream (forwarded request 140781 from hgraeber)</comment>
+    <requestid>140835</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5b81318508d7622982112d8bcd829fa9</srcmd5>
+    <version>0.7.6</version>
+    <time>1354887065</time>
+    <user>namtrac</user>
+    <comment>- update to version 0.7.6
+  * Tweak the dialogs to make them a bit more compact
+  * Make the traffic plotter widgets behave more like those in the KDE
+    System Monitor
+  * Fix a few minor bugs that gave us wrong values in the traffic plotter
+    range (forwarded request 144360 from hgraeber)</comment>
+    <requestid>144365</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5b81318508d7622982112d8bcd829fa9</srcmd5>
+    <version>0.7.6</version>
+    <time>1359109196</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>5b81318508d7622982112d8bcd829fa9</srcmd5>
+    <version>0.7.6</version>
+    <time>1379662822</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>cfd00363161210562da7748914d054f2</srcmd5>
+    <version>0.7.6</version>
+    <time>1406869679</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243232</requestid>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>cfd00363161210562da7748914d054f2</srcmd5>
+    <version>0.7.6</version>
+    <time>1409301405</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>a6238ddc31511d28991140ae5e35c8a3</srcmd5>
+    <version>0.7.6</version>
+    <time>1411019778</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249317</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>77ca499db6e5eaa6c4297a3752e9c639</srcmd5>
+    <version>0.7.7</version>
+    <time>1440479986</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325331</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>6106a23fe98af9c84d5a529186ccecf7</srcmd5>
+    <version>0.7.7</version>
+    <time>1480584487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442652</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>519ecf239a8c2f7a07a217c545b01e46</srcmd5>
+    <version>0.7.7git.20170520T005915~f3afe2e</version>
+    <time>1513245553</time>
+    <user>dimstar_suse</user>
+    <comment>- Split out translations in a separate lang package
+- Update to latest snapshot of the &quot;frameworks&quot; git branch (using
+  Qt5 and KDE Frameworks 5), the KDE4 version cannot be built or
+  installed anymore on Tumbleweed and Leap 15 as QtWebKit4 is to be
+  dropped and parts needed to build knemo have been stripped from
+  kdebase4-workspace therefore
+- Add knemo-translations.tar.xz containing the translations from
+  the 0.7.7 version
+- Revert kde4_runtime_requires change
+</comment>
+    <requestid>556155</requestid>
+  </revision>
+</revisionlist>

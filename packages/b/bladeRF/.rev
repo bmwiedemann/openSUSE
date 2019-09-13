@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6da8a8f6e2119789f60918039e6d7272</srcmd5>
+    <version>unknown</version>
+    <time>1489653722</time>
+    <user>dimstar_suse</user>
+    <comment>SDR related package</comment>
+    <requestid>479116</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>700c876b444b0dffa10b6fa86e9f0b01</srcmd5>
+    <version>unknown</version>
+    <time>1492011227</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483996</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2e8a87c00ca2fae2a0058f413d3babf9</srcmd5>
+    <version>unknown</version>
+    <time>1495637210</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>492740</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a7f69e25e771de862b8d0141aed89ac0</srcmd5>
+    <version>unknown</version>
+    <time>1496392454</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch:
+  * bladeRF-add-cflag-Wno-format-truncation.patch (boo#1041192)</comment>
+    <requestid>500456</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>bdb4d716515e7b8aee2461e92c7f9eb4</srcmd5>
+    <version>unknown</version>
+    <time>1504617592</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix cmake syntax error:
+  * bladeRF-cmake_syntax.patch</comment>
+    <requestid>521025</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>3442c6553881785a543a541e9235af26</srcmd5>
+    <version>unknown</version>
+    <time>1537018477</time>
+    <user>maxlin_factory</user>
+    <comment>- Clarify license status
+
+- Update to version 2018.08
+  libbladeRF
+  * Added support for Automatic Gain Control
+  * Added bladeRF.conf config option file
+  * Refactor to support for multiple product lines
+  * Add support for the bladeRF Micro product
+  * API: replace bladerf_module with bladerf_channel, a reverse-compatible
+  * change to handle products with multiple independent RF paths in the same
+  * direction
+  * API: BREAKING CHANGE - on bladerf_set_frequency, et al, the frequency
+  * parameter is now uint64_t instead of unsigned int
+  * Add typedefs for common param types, e.g. bladerf_frequency -&gt; uint64_t
+  bladeRF-cli
+  * Added support for Automatic Gain Control
+  * No longer initializes the bladeRF before loading a new FPGA image, to
+  * avoid potential catch-22 problems
+  * bladeRF 2.0 Micro support
+  * Support for MIMO RX and TX using &quot;channel=&quot; parameter on rx/tx config
+  * Various code quality fixups
+- Remove patches: (fixed upstream)
+  * bladeRF-add-cflag-Wno-format-truncation.patch
+  * bladeRF-cmake_syntax.patch</comment>
+    <requestid>634211</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>dfd7563307508df64cfbf018b3d98d50</srcmd5>
+    <version>unknown</version>
+    <time>1566894519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726303</requestid>
+  </revision>
+</revisionlist>

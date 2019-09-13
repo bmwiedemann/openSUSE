@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35f6074abd329038d77847cd25e01b3e</srcmd5>
+    <version>3.4.1</version>
+    <time>1532445930</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename devel packages to include the library version, otherwise
+  these are not visible by the OBS resolver but shadowed by the
+  highest version.
+- Add Conflicts: OpenSceneGraph-examples to examples subpackage
+- Add Provides: OpenSceneGraph-plugins to plugins subpackage, to
+  provide a generic resolvable
+- Drop Requires: libOpenThreads-devel in OSG devel subpackage, it
+  is autoreq'ed via the pkgconfig file.
+- Add Conflicts: OpenSceneGraph, multiple versions are only
+  installable for the library subpackages 
+- Create OpenSceneGraph34 package from OpenSceneGraph packge. OSG
+  changes API and ABI between minor versions. While this is already
+  covered for the built libraries, the devel package has been
+  available only for the latest version.
+- update to 3.4.1
+ * Improves to GLES support across platforms
+ * Full support for osgText and on screen stats across all platfroms
+ * Build fixes to allow compilation against recent
+     3rd party depdendency changes
+ * Range of runtime fixes
+- Switch to QT5, as QT4 is dead.
+- Remove manual requires on -devel package.
+- Add 8e26ebd23ef9_Fixed_coverity_detected_defect_OOB_read.patch
+  Fix out-of-bound-read, also required for the next patch to apply
+- Add 01c712e85195_Explicit_signed_char_declarations.patch
+  Fix compilation on architectures where char is unsigned
+- Trim description
+- Fixed source url, required for factory submission
+- Rectify shared library package name
+- Fixed BuildRequires (libjasper, and gdal).
+- Update to 3.4.0
+- Removed OpenSceneGraph-gcc43.patch, not more needed
+- Removed OpenSceneGraph-libgif6.patch, fixed upstream
+- Removed OpenSceneGraph-giflib.patch, patched upstream 
+- Update to 3.2.3
+- fixes building osgearth 2.7.0 
+- Update to 3.2.1:
+  * no changelog provided by upstream
+- Fix building with recent giflib (OpenSceneGraph-giflib.patch)
+- update to 3.2.0 stable release
+  see http://svn.openscenegraph.org/osg/OpenSceneGraph/tags/OpenSceneGraph-3.2.1-rc1/ChangeLog
+- updated _opt_so_nr from 12 to 13
+- packaging 
+	make verbose 1 
+	use C(XX)_FLAGS_RELEASE for applying optflags correctly
+	fix some rpmlint warnings 
+- removed patches:
+  * OpenSceneGraph-xine12.patch : merged upstream
+- modified patches:
+  * OpenSceneGraph-libgif6.patch : partially merged upstream
+    First part redone against 3.2.0
+- libOpenThreads-devel does not have a huge dependency
+- Created OpenSceneGraph-libgif6.patch
+  Used Raymond Wooninck kdelibs patch as a template
+  https://git.reviewboard.kde.org/r/109478/ 
+- Dropped gtk-glext install dependency for openSUSE factory
+- Dropped gtk-glext dependency for openSUSE factory
+- Removed obsolete openSUSE versions from spec file
+- Patch to compile with libxine &gt;= 1.2.0
+- Remove redundant tags/sections from specfile
+- Kill build-time dependency on XUL; it is nowhere referenced
+- Remove illegal Obsoletes/Provides (see shlib pol.)
+- Ensure pkgconfig symbols are generated
+- update to 3.0.1 
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+- update to 2.8.3
+- added docs
+- added ffmpeg based plugins
+- added gdal based plugins
+- split-off viewers (FLTK, QT, SDL, WX) to keep dependencies smaller
+- new sonames ==&gt; libOpenSceneGraph65
+- update to 2.8.2
+- update to 2.8.1
+- update to 2.8.0
+- new sonames ==&gt; libOpenSceneGraph55
+- update to 2.6.1
+- new sonames ==&gt; libOpenSceneGraph48
+- update to 2.6.0
+- new sonames ==&gt; libOpenThreads11, libOpenSceneGraph44
+- update to 2.4.0
+- new sonames ==&gt; libOpenThreads10, libOpenSceneGraph35
+- initial version 2.2
+</comment>
+    <requestid>624899</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>37dba80d7f07dbaf829018cb2e1d496d</srcmd5>
+    <version>3.4.1</version>
+    <time>1562843672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713162</requestid>
+  </revision>
+</revisionlist>

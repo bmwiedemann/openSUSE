@@ -1,0 +1,8 @@
+<package name="python-spec" project="openSUSE:Factory">
+  <title>Specification-style output for nose</title>
+  <description>spec is a Python testing tool that provides colorized, specification style output, colorized tracebacks and summary, optional timing display and enables some non-default options of nose.
+
+</description>
+  <devel project="devel:languages:python" package="python-spec"/>
+  <url>https://github.com/bitprophet/spec</url>
+</package>

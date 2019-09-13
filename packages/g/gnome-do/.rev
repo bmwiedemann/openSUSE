@@ -1,0 +1,364 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ecf8f77719558d62e1f50a7dca09cb90</srcmd5>
+    <version>0.3.1</version>
+    <time>1205206450</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2a55b283f2bec7fb3ac7f7edcc925a8c</srcmd5>
+    <version>0.3.2.1</version>
+    <time>1205251381</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="10">
+    <srcmd5>225712b0e8425f5af2711d1fbc6f187e</srcmd5>
+    <version>0.3.2.1</version>
+    <time>1206544321</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3331ac72181ebd00bcc6cbe88b1a2990</srcmd5>
+    <version>0.4.0.1</version>
+    <time>1206667230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a84f02526590f680e0672b3bc9a23ff3</srcmd5>
+    <version>0.5.0.1</version>
+    <time>1216238255</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="32">
+    <srcmd5>0af8e607ccce91674142a3544f9f97a9</srcmd5>
+    <version>0.5.0.1</version>
+    <time>1218790107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f65a2ecfbd463e0d1ae75cd080b8f73e</srcmd5>
+    <version>0.6.0.0</version>
+    <time>1219797705</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5af5b0fffaf3897f736dea63b137637b</srcmd5>
+    <version>0.6.0.0</version>
+    <time>1220229139</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>026af0c95e84a9b61764fc67e1977442</srcmd5>
+    <version>0.6.0.0</version>
+    <time>1221262620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>500c8f33bce7b5ce87b73db808d73c9b</srcmd5>
+    <version>0.6.1.0</version>
+    <time>1231460866</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cf074ae46555348cb8037babc5a56772</srcmd5>
+    <version>0.8.0</version>
+    <time>1233961328</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8545758ca03779e91124a3c2e2146116</srcmd5>
+    <version>0.8.1</version>
+    <time>1242856645</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8c03c6d58315ba316f6dca5188a816ee</srcmd5>
+    <version>0.8.2</version>
+    <time>1249061319</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>43b80c286688c6a0a4b6ac22bb2aa6a0</srcmd5>
+    <version>0.8.2</version>
+    <time>1250514073</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-do based on submit request 17868 from user vuntz
+</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>43b80c286688c6a0a4b6ac22bb2aa6a0</srcmd5>
+    <version>0.8.2</version>
+    <time>1250514073</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-do based on submit request 17868 from user vuntz
+</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>482238373d435c228fd876054979a39b</srcmd5>
+    <version>0.8.2</version>
+    <time>1256302081</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-do based on submit request 22852 from user dimstar
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>edd482fe2e52f3d1953aa4ce68167979</srcmd5>
+    <version>0.8.3</version>
+    <time>1260544832</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-do based on submit request 26066 from user vuntz
+</comment>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8c04f8f28f4a5404005b831dafa803af</srcmd5>
+    <version>0.8.3</version>
+    <time>1268923766</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>8c04f8f28f4a5404005b831dafa803af</srcmd5>
+    <version>0.8.3</version>
+    <time>1278667347</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>8c04f8f28f4a5404005b831dafa803af</srcmd5>
+    <version>0.8.3</version>
+    <time>1278678578</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>64df1d5ade0b452d7cf832f00c195e75</srcmd5>
+    <version>0.8.3</version>
+    <time>1285529472</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gnome-do based on submit request 49090 from user vuntz
+</comment>
+    <requestid>49090</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>714e7b7deefd6366a13d5d98c3059928</srcmd5>
+    <version>0.8.3</version>
+    <time>1291127127</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54158 from user dimstar
+</comment>
+    <requestid>54158</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>6388a892dbc227cbd9792a0c976ce10d</srcmd5>
+    <version>0.8.3</version>
+    <time>1291127136</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54158
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8134c6595de5c4c41c50b187cfd0501d</srcmd5>
+    <version>0.8.4</version>
+    <time>1292009953</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55582 from user vuntz
+</comment>
+    <requestid>55582</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>a55658f4eaf820164eb136420ce934b6</srcmd5>
+    <version>0.8.4</version>
+    <time>1292241809</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55661 from user vuntz
+</comment>
+    <requestid>55661</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>771dbaccc25a2a8bdbbd20fe1a0ef22c</srcmd5>
+    <version>0.8.4</version>
+    <time>1292241816</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55661
+</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>e3e5d3f5c941b2ff671e7d2380a8e1a8</srcmd5>
+    <version>0.8.4</version>
+    <time>1297642544</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60941 from user vuntz
+</comment>
+    <requestid>60941</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>a01f1a08d1e65e17392c2c92f54aac31</srcmd5>
+    <version>0.8.4</version>
+    <time>1297642551</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60941
+</comment>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>a01f1a08d1e65e17392c2c92f54aac31</srcmd5>
+    <version>0.8.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="30" vrev="9">
+    <srcmd5>a3946788a55f8d55557da6eb30595b0d</srcmd5>
+    <version>0.8.4</version>
+    <time>1298030609</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61428 from user dimstar
+</comment>
+    <requestid>61428</requestid>
+  </revision>
+  <revision rev="31" vrev="10">
+    <srcmd5>c8c189dbb8d796394feff9929c2b5464</srcmd5>
+    <version>0.8.4</version>
+    <time>1298030614</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61428
+</comment>
+  </revision>
+  <revision rev="32" vrev="11">
+    <srcmd5>4017c46117dd49e62bd3cd319373a4fb</srcmd5>
+    <version>0.8.4</version>
+    <time>1298380936</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62434 from user dimstar
+</comment>
+    <requestid>62434</requestid>
+  </revision>
+  <revision rev="33" vrev="12">
+    <srcmd5>d889adcac69fd492ddfe6bd4e176b978</srcmd5>
+    <version>0.8.4</version>
+    <time>1298380946</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 62434
+</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>dbc04f32344ed6bc141a72e3625c305c</srcmd5>
+    <version>0.8.5</version>
+    <time>1308302522</time>
+    <user>saschpe</user>
+    <comment>Update to 0.8.5 (forwarded request 73935 from vuntz)</comment>
+    <requestid>73960</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>201f049d589902e89934f804d9986d23</srcmd5>
+    <version>0.8.5</version>
+    <time>1311078783</time>
+    <user>saschpe</user>
+    <comment>Fix build (forwarded request 76391 from vuntz)</comment>
+    <requestid>76412</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>dec22ed06de8bb62d5075801a761be83</srcmd5>
+    <version>0.8.5</version>
+    <time>1311078793</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76412
+</comment>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>444353b08fba9ecbe77b31db9e26cb92</srcmd5>
+    <version>0.8.5</version>
+    <time>1318761941</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequire to avoid a hidden require from projconfig (forwarded request 87948 from coolo)</comment>
+    <requestid>87977</requestid>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>444353b08fba9ecbe77b31db9e26cb92</srcmd5>
+    <version>0.8.5</version>
+    <time>1319181917</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>b8e9e1cadafce47eb704ec9c2723c24e</srcmd5>
+    <version>0.8.5</version>
+    <time>1325787102</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98913</requestid>
+  </revision>
+  <revision rev="40" vrev="8">
+    <srcmd5>d5f4cff38592036053ff51afb7d46512</srcmd5>
+    <version>0.8.5</version>
+    <time>1327490304</time>
+    <user>coolo</user>
+    <comment>fix build (forwarded request 101094 from vuntz)</comment>
+    <requestid>101319</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>2e84ebcd292a6b21712a315643b4f431</srcmd5>
+    <version>0.9</version>
+    <time>1336035371</time>
+    <user>coolo</user>
+    <comment>Pushing G:A bits</comment>
+    <requestid>115586</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>2e84ebcd292a6b21712a315643b4f431</srcmd5>
+    <version>0.9</version>
+    <time>1340183378</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>0adadfa1bead79e5109b11ecc7b7f551</srcmd5>
+    <version>0.9</version>
+    <time>1357813294</time>
+    <user>coolo</user>
+    <comment>Fix build with mono 3 (forwarded request 147729 from vuntz)</comment>
+    <requestid>147773</requestid>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>0adadfa1bead79e5109b11ecc7b7f551</srcmd5>
+    <version>0.9</version>
+    <time>1359108954</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="8">
+    <srcmd5>0adadfa1bead79e5109b11ecc7b7f551</srcmd5>
+    <version>0.9</version>
+    <time>1379662482</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>06d40ebf329faa46c94576be5eebf51a</srcmd5>
+    <version>0.95.1</version>
+    <time>1394739796</time>
+    <user>coolo</user>
+    <comment>Updaye to 0.95.1</comment>
+    <requestid>225417</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>06d40ebf329faa46c94576be5eebf51a</srcmd5>
+    <version>0.95.1</version>
+    <time>1409301019</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>c5e77c999f35fed1926e5bebb17deeae</srcmd5>
+    <version>0.95.1</version>
+    <time>1413616122</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256938</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>dab3d7c780afe064e255ca8e95c84bc5</srcmd5>
+    <version>0.95.3</version>
+    <time>1422612034</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283383</requestid>
+  </revision>
+</revisionlist>

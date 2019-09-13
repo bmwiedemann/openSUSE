@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>91ea27eb084cc4783c65d9d933a3346c</srcmd5>
+    <version>1.2</version>
+    <time>1417160906</time>
+    <user>dimstar_suse</user>
+    <comment>gns3 1.0 dependency</comment>
+    <requestid>262976</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4cd71545f62fbaa7ea99957083fa7e9c</srcmd5>
+    <version>1.2.1</version>
+    <time>1417809896</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264140</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>edc87b04c1b7c0bbc36b72aaf1d67c06</srcmd5>
+    <version>1.2.1</version>
+    <time>1418054202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264274</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6e1749c669cad440c97abf9d6cdaa24a</srcmd5>
+    <version>1.2.1</version>
+    <time>1420833047</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280542</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>599a4d0035296bf52bdc3c9b1265f73d</srcmd5>
+    <version>1.2.3</version>
+    <time>1421753664</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281593</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4e51576e138a3478fa608871a2a47738</srcmd5>
+    <version>1.3.1</version>
+    <time>1429107695</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295563</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fdf45dcee6d578048002410d10cc4bf8</srcmd5>
+    <version>1.3.9</version>
+    <time>1447409871</time>
+    <user>lrupp</user>
+    <comment>1</comment>
+    <requestid>321423</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b9320423203b0af5e57250d2ea0ed21</srcmd5>
+    <version>1.4.6</version>
+    <time>1462178652</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392056</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2d217a16a06371ae923cd40fc6041f29</srcmd5>
+    <version>2.0.0</version>
+    <time>1495034305</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492645</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ffa55d6a555cea3f200957051d5cfc9d</srcmd5>
+    <version>2.0.3</version>
+    <time>1502186335</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>511359</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2c89b8b0a525d96e0dce2c7718522b91</srcmd5>
+    <version>2.1.16</version>
+    <time>1560337839</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim name repetition from summary. (rpmlint would warn about this)
+- Use find &quot;-exec +&quot; mode and remove wrong backslash. (forwarded request 695822 from jengelh)</comment>
+    <requestid>697356</requestid>
+  </revision>
+</revisionlist>

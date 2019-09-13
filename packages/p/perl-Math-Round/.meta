@@ -1,0 +1,8 @@
+<package name="perl-Math-Round" project="openSUSE:Factory">
+  <title>Perl extension for rounding numbers</title>
+  <description>*Math::Round* supplies functions that will round numbers in different ways.
+The functions *round* and *nearest* are exported by default; others are
+available as described below. &quot;use ... qw(:all)&quot; exports all functions.</description>
+  <devel project="devel:languages:perl" package="perl-Math-Round"/>
+  <url>http://search.cpan.org/dist/Math-Round/</url>
+</package>

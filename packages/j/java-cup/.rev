@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>b58165fdb8522fb2fcb3018c2a77efbe</srcmd5>
+    <version>0.11</version>
+    <time>1242700683</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>61406aea4282e59d3d52f6bff318072c</srcmd5>
+    <version>0.11</version>
+    <time>1245260736</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>61406aea4282e59d3d52f6bff318072c</srcmd5>
+    <version>0.11</version>
+    <time>1245260736</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>7c1a958762670cf7089fd53bee5e07db</srcmd5>
+    <version>0.11</version>
+    <time>1268924118</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>7c1a958762670cf7089fd53bee5e07db</srcmd5>
+    <version>0.11</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>7c1a958762670cf7089fd53bee5e07db</srcmd5>
+    <version>0.11</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>3a3b4a858ccf57efe9cbcdc56f413017</srcmd5>
+    <version>0.11</version>
+    <time>1289840040</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52367 from user mvyskocil
+</comment>
+    <requestid>52367</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>ce4de2f5b9dfea2d9209906bc9c1a7d0</srcmd5>
+    <version>0.11</version>
+    <time>1289840052</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52367
+</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>ce4de2f5b9dfea2d9209906bc9c1a7d0</srcmd5>
+    <version>0.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>ce4de2f5b9dfea2d9209906bc9c1a7d0</srcmd5>
+    <version>0.11</version>
+    <time>1319182006</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>ce4de2f5b9dfea2d9209906bc9c1a7d0</srcmd5>
+    <version>0.11</version>
+    <time>1340183481</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>dc71b3e805e119a5687838573c509717</srcmd5>
+    <version>0.11</version>
+    <time>1350589798</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>138355</requestid>
+  </revision>
+  <revision rev="13" vrev="21">
+    <srcmd5>dc71b3e805e119a5687838573c509717</srcmd5>
+    <version>0.11</version>
+    <time>1359109112</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="22">
+    <srcmd5>65756adc1e090e5ecf2cb369c82d8af8</srcmd5>
+    <version>0.11</version>
+    <time>1359541005</time>
+    <user>coolo</user>
+    <comment>- sync licenses (forwarded request 149950 from coolo)</comment>
+    <requestid>150267</requestid>
+  </revision>
+  <revision rev="15" vrev="23">
+    <srcmd5>253304c3ebde7fe9b88d07be20e71415</srcmd5>
+    <version>0.11</version>
+    <time>1378238555</time>
+    <user>coolo</user>
+    <comment>- Add conflicts for each variant
+- Sync .changes
+- Drop weird jpackage-prepare script and use standard pre_checkin.sh
+
+- Disable build of javadoc 
+  * drop java-cup-javadoc.patch
+
+- license update: HPND
+  SPDX syntax
+
+- Add conflicts for each variant
+- Sync .changes
+- Drop weird jpackage-prepare script and use standard pre_checkin.sh
+
+- Disable build of javadoc 
+  * drop java-cup-javadoc.patch
+
+- sync licenses</comment>
+    <requestid>196730</requestid>
+  </revision>
+  <revision rev="16" vrev="25">
+    <srcmd5>253304c3ebde7fe9b88d07be20e71415</srcmd5>
+    <version>0.11</version>
+    <time>1379662704</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="27">
+    <srcmd5>253304c3ebde7fe9b88d07be20e71415</srcmd5>
+    <version>0.11</version>
+    <time>1409301271</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>9fd6196dd4e888a44d2a097bb25e0b96</srcmd5>
+    <version>0.11</version>
+    <time>1505757062</time>
+    <user>dimstar_suse</user>
+    <comment>Remove dependency on java-gcj-compat</comment>
+    <requestid>526360</requestid>
+  </revision>
+  <revision rev="19" vrev="29">
+    <srcmd5>4a3d628835457bcfe314717844b416a0</srcmd5>
+    <version>0.11</version>
+    <time>1549464404</time>
+    <user>coolo</user>
+    <comment>fix build cycle</comment>
+    <requestid>670621</requestid>
+  </revision>
+</revisionlist>

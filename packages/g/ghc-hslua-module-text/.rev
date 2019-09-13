@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc990ec6ca7c8b072116cab5d6ee93ab</srcmd5>
+    <version>0.1.2.1</version>
+    <time>1527674929</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-hslua-module-text to the latest version.</comment>
+    <requestid>607813</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0a5190ca102a6fa3f710d972b267b25a</srcmd5>
+    <version>0.1.2.1</version>
+    <time>1532445575</time>
+    <user>dimstar_suse</user>
+    <comment>- Add hslua-module-text at version 0.1.2.1.</comment>
+    <requestid>623787</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d64e612a7812f26161d3d32bf380d2ee</srcmd5>
+    <version>0.2.0</version>
+    <time>1540448196</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642864</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1dd9360888efe0d9ace8a59392dcac65</srcmd5>
+    <version>0.2.1</version>
+    <time>1557653737</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>701768</requestid>
+  </revision>
+</revisionlist>

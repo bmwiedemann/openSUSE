@@ -1,0 +1,161 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a9825ccfd6ff85ea5a07ee6467c05f9</srcmd5>
+    <version>0.8.3</version>
+    <time>1367559621</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>174305</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0854c0d3703443f7635c80ae2ff032b8</srcmd5>
+    <version>0.8.5</version>
+    <time>1372509403</time>
+    <user>coolo</user>
+    <comment>- update to 0.8.5:
+ - Fix runner multisegment imports in some Python 2 revisions (see
+   https://github.com/Pylons/waitress/pull/34).
+ - For compatibility, WSGIServer is now an alias of TcpWSGIServer. The
+   signature of BaseWSGIServer is now compatible with WSGIServer pre-0.8.4.
+ - Add a command-line runner called ``waitress-serve`` to allow Waitress
+   to run WSGI applications without any addional machinery. This is
+   essentially a thin wrapper around the ``waitress.serve()`` function.
+ - Allow parallel testing (e.g., under ``detox`` or ``nosetests --processes``)
+   using PID-dependent port / socket for functest servers.
+ - Fix integer overflow errors on large buffers. Thanks to Marcin Kuzminski
+   for the patch.  See: https://github.com/Pylons/waitress/issues/22
+ - Add support for listening on Unix domain sockets. (forwarded request 180848 from dirkmueller)</comment>
+    <requestid>180862</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>624f0fbb70d962142ffd3e00977be58a</srcmd5>
+    <version>0.8.6</version>
+    <time>1376562621</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 0.8.6:
+ - Do alternate type of checking for UNIX socket support, instead of checking
+   for platform == windows.
+ 
+ - Functional tests now use multiprocessing module instead of subprocess module,
+   speeding up test suite and making concurrent execution more reliable.
+ 
+ - Runner now appends the current working directory to ``sys.path`` to support
+   running WSGI applications from a directory (i.e., not installed in a
+   virtualenv). (forwarded request 186925 from saschpe)</comment>
+    <requestid>186944</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>adf6b1daa7874357b55a0980122ed989</srcmd5>
+    <version>0.8.7</version>
+    <time>1379076381</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 0.8.7:
+  - The HTTP version of the response returned by waitress when it catches an
+  exception will now match the HTTP request version.
+  - Fix: CONNECTION header will be HTTP_CONNECTION and not CONNECTION_TYPE
+  (see https://github.com/Pylons/waitress/issues/13) (forwarded request 198597 from dirkmueller)</comment>
+    <requestid>198878</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>adf6b1daa7874357b55a0980122ed989</srcmd5>
+    <version>0.8.7</version>
+    <time>1379664310</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>adf6b1daa7874357b55a0980122ed989</srcmd5>
+    <version>0.8.7</version>
+    <time>1409303019</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1bb624be94ed98e3f1121980a797520a</srcmd5>
+    <version>0.8.9</version>
+    <time>1418737722</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265068</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d646b7c86f66cc24e6fa311d2976b7ea</srcmd5>
+    <version>0.9.0</version>
+    <time>1464484403</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>398357</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6d8c8c29eb1fc463c64a71ad7a81aca2</srcmd5>
+    <version>1.0.1</version>
+    <time>1479299603</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440450</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d50cd71e5c9e23ed6fbcadce89b47dd2</srcmd5>
+    <version>1.0.2</version>
+    <time>1494262999</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493201</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>23c3ade887b913a89ba3ddbf80678c48</srcmd5>
+    <version>1.1.0</version>
+    <time>1508316845</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534388</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d5841730dc93db0d43cd61be0b85bc5f</srcmd5>
+    <version>1.1.0</version>
+    <time>1545648359</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659749</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cc8519c95eae71309abebf4988b75f1e</srcmd5>
+    <version>1.2.1</version>
+    <time>1551468522</time>
+    <user>coolo</user>
+    <comment>- Add fetch-intersphinx-inventories.sh to sources
+- Add local-intersphinx-inventories.patch for generating the docs
+  correctly
+
+- update to version 1.2.1:
+  too many changes to list here, see:
+  https://github.com/Pylons/waitress/blob/master/CHANGES.txt
+  or even:
+  https://github.com/Pylons/waitress/commits/master</comment>
+    <requestid>679188</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3ae40de08dabb3b69846076d02c1330d</srcmd5>
+    <version>1.2.1</version>
+    <time>1553888180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687121</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2ba136b8b3d668b385961178e31478d7</srcmd5>
+    <version>1.3.0</version>
+    <time>1557263574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701058</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>db1d1cc90503fbbd17fd41bdd01033cb</srcmd5>
+    <version>1.3.1</version>
+    <time>1567580206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727098</requestid>
+  </revision>
+</revisionlist>

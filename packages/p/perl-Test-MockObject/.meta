@@ -1,0 +1,18 @@
+<package name="perl-Test-MockObject" project="openSUSE:Factory">
+  <title>Perl extension for emulating troublesome interfaces</title>
+  <description>It's a simple program that doesn't use any other modules, and those are easy to
+test. More often, testing a program completely means faking up input to another
+module, trying to coax the right output from something you're not supposed to
+be testing anyway.
+
+Testing is a lot easier when you can control the entire environment. With
+Test::MockObject, you can get a lot closer.
+
+Test::MockObject allows you to create objects that conform to particular
+interfaces with very little code. You don't have to reimplement the behavior,
+just the input and the output.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Test-MockObject"/>
+  <url>http://search.cpan.org/dist/Test-MockObject/</url>
+</package>

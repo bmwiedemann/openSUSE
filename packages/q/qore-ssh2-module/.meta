@@ -1,0 +1,6 @@
+<package name="qore-ssh2-module" project="openSUSE:Factory">
+  <title>Qore SSH2 Module</title>
+  <description>This module provides access to ssh2 sessions and the sftp protocol via libssh2 (http://www.libssh2.org) in the Qore programming language.
+</description>
+  <devel project="devel:languages:misc" package="qore-ssh2-module"/>
+</package>

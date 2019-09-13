@@ -1,0 +1,5 @@
+<package name="felix-shell" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="felix-shell"/>
+</package>

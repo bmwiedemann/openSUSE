@@ -1,0 +1,6 @@
+<package name="bazel-rules-proto" project="openSUSE:Factory">
+  <title>bazel-rules-proto</title>
+  <description>Bazel build rules for Protocol Buffers and gRPC</description>
+  <devel project="devel:tools:building" package="bazel-rules-proto"/>
+  <url>https://github.com/stackb/rules_proto</url>
+</package>

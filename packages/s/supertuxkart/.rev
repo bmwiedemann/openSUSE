@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b8fbaf7adf4faaca27a4bd9ebcf9ca0</srcmd5>
+    <version>0.8</version>
+    <time>1361439972</time>
+    <user>coolo</user>
+    <comment>Addition of supertuxkart to the stock repositories.
+Well maintained game, reasonable release cycles.</comment>
+    <requestid>155927</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3b8fbaf7adf4faaca27a4bd9ebcf9ca0</srcmd5>
+    <version>0.8</version>
+    <time>1379664744</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bd2a1eea97e201e39545877e6f8f9845</srcmd5>
+    <version>0.8.1</version>
+    <time>1385723126</time>
+    <user>coolo</user>
+    <comment>Update to 0.8.1</comment>
+    <requestid>208854</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a93630fc1a5c9d84a665b55cfce7ecd5</srcmd5>
+    <version>0.8.1</version>
+    <time>1389026772</time>
+    <user>scarabeus_factory</user>
+    <comment>- Use Mesa provided glext.h and glxext.h When building against
+  Mesa 10.0. The needed fixes (and more) are part of Mesa by now.</comment>
+    <requestid>212877</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1dddd92cb1090fa162506c19555e2737</srcmd5>
+    <version>0.8.1</version>
+    <time>1394393228</time>
+    <user>coolo</user>
+    <comment>- Add supertuxkart.appdata.xml (from upstream git) as source. This
+  will allow STK to show up in gnome-software.</comment>
+    <requestid>225148</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>1dddd92cb1090fa162506c19555e2737</srcmd5>
+    <version>0.8.1</version>
+    <time>1409303427</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>bc682ad65bb50f6ce64cc5c3098f6ccb</srcmd5>
+    <version>0.8.1</version>
+    <time>1411926861</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252631</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>dbdc511750237af3e57c89be0cdbc28e</srcmd5>
+    <version>0.8.1</version>
+    <time>1427274068</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292527</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bd917f89c8d4d825b60f9e24ec2e0e30</srcmd5>
+    <version>0.9</version>
+    <time>1429948351</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298641</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d97693e2d332d2ebfad5e24160f0023d</srcmd5>
+    <version>0.9</version>
+    <time>1439631581</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323136</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f77a0ee3fc01a4792f2db6da6e1192a0</srcmd5>
+    <version>0.9.1</version>
+    <time>1445675360</time>
+    <user>coolo</user>
+    <comment>Update to 0.9.1</comment>
+    <requestid>340287</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6f233b5a764a8505f1b872b37f2f136b</srcmd5>
+    <version>0.9.2~rc1</version>
+    <time>1466327302</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.9.2-rc1 (forwarded request 402752 from dimstar)</comment>
+    <requestid>402753</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f923985cb11956e7d374651f6c685e73</srcmd5>
+    <version>0.9.2</version>
+    <time>1467705132</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406187</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2266cbdc406c8427b15285027a40c8cc</srcmd5>
+    <version>0.9.3~rc1</version>
+    <time>1510232269</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.9.3-rc1</comment>
+    <requestid>537572</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6a89f434825de7e93cd9d9066e8abad3</srcmd5>
+    <version>0.9.3</version>
+    <time>1511274963</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.9.3 final</comment>
+    <requestid>544130</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>9bc110be5068ae9ce858e7cdd65f65f1</srcmd5>
+    <version>0.9.3</version>
+    <time>1525779481</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable post/postun scriptlets on suse_version &gt;= 1500: the
+  functionality of desktop_database_post/postun and
+  icon_theme_cache has been migrated to file triggers.</comment>
+    <requestid>605094</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>70b84b0028b72e9290c1099a29516709</srcmd5>
+    <version>0.9.3</version>
+    <time>1547130166</time>
+    <user>dimstar_suse</user>
+    <comment>- Add supertuxkart-mesa-18.3.patch: Fix build against Mesa 18.3
+  (boo#1120986).</comment>
+    <requestid>664031</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1cf24c5e946f1ea75cc4392da7f3a46f</srcmd5>
+    <version>1.0</version>
+    <time>1557084057</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.0</comment>
+    <requestid>700192</requestid>
+  </revision>
+</revisionlist>

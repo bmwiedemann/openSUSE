@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eeb7fb40ddb50f0937fd7d372e62ec77</srcmd5>
+    <version>1.0.0</version>
+    <time>1524144531</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.0
+  * update readme
+  * Update config file and provide an example one
+- update to version 0.1.2
+  * protect against a timeout while deleting
+  * improve error message on wrong/invalid credentials
+  * add more tests
+- First 0.1 version
+</comment>
+    <requestid>595967</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c604532c3e715115500470f3ca1ca895</srcmd5>
+    <version>1.0.0</version>
+    <time>1544726894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656082</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58c49aad3cbeeae30b21e44b9fe5aacd</srcmd5>
+    <version>0.10.0.svn20080724</version>
+    <time>1516359033</time>
+    <user>dimstar_suse</user>
+    <comment>- fix license to SPDX form
+- Fix build with GCC6. gcc6.patch.
+  https://issues.apache.org/jira/browse/LOGCXX-463
+- Remove redundant sections (cf. specfile guidelines)
+- Fixed building on openSUSE:Factory
+- Cleaned up spec file formatting
+- Moved to .changes file
+- Added pkg-config buildrequires (fix for RMPLINT warning)
+- Changed license naming to conform to SPDX convention (fix for RMPLINT warning)
+- Fixed group (fix for RMPLINT warning)
+- Fixed broken builds
+</comment>
+    <requestid>560271</requestid>
+  </revision>
+</revisionlist>

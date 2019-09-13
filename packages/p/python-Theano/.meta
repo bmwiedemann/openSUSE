@@ -1,0 +1,14 @@
+<package name="python-Theano" project="openSUSE:Factory">
+  <title>A scientific python library</title>
+  <description>Theano is a Python library that allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently. 
+Theano features:
+* tight integration with numpy - Use numpy.ndarray in Theano-compiled functions.
+* transparent use of a GPU - Perform data-intensive calculations up to 140x faster than with CPU.(float32 only)
+* symbolic differentiation - Let Theano do your derivatives.
+* speed and stability optimizations - Get the right answer for log(1+x) even when x is really tiny.
+* dynamic C code generation - Evaluate expressions faster.
+* extensive unit-testing and self-verification - Detect and diagnose many types of mistake.
+
+Theano has been powering large-scale computationally intensive scientific investigations since 2007. But it is also approachable enough to be used in the classroom (IFT6266 at the University of Montreal).</description>
+  <devel project="devel:languages:python:numeric" package="python-Theano"/>
+</package>

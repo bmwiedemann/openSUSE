@@ -1,0 +1,5 @@
+<package name="python-brewer2mpl" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:numeric" package="python-brewer2mpl"/>
+</package>

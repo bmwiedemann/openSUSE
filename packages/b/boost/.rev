@@ -1,0 +1,1150 @@
+<revisionlist>
+  <revision rev="1" vrev="25">
+    <srcmd5>157734dbe607f33d96d3166d96c2d964</srcmd5>
+    <version>1.33.1</version>
+    <time>1168902369</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="58">
+    <srcmd5>3390068baf3637efa578f1f83606b9f3</srcmd5>
+    <version>1.33.1</version>
+    <time>1174762307</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="87">
+    <srcmd5>bce6d67eaf7f3671e338439a30360df2</srcmd5>
+    <version>1.33.1</version>
+    <time>1184573783</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7a8c384654cb4fef46265154b4f546f9</srcmd5>
+    <version>1.34.1</version>
+    <time>1186758005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1b47f7b887109eb3d6be5a9124eb3fdc</srcmd5>
+    <version>1.34.1</version>
+    <time>1186846619</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="95">
+    <srcmd5>bd3e0118abb8533391ae0fd7437079b4</srcmd5>
+    <version>1.33.1</version>
+    <time>1187100964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="116">
+    <srcmd5>39b425d315f9b1a27249c283b7ada4e6</srcmd5>
+    <version>1.33.1</version>
+    <time>1193269704</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="134">
+    <srcmd5>5e075c735f1a824968cb4f23a12f08c4</srcmd5>
+    <version>1.33.1</version>
+    <time>1200420087</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="135">
+    <srcmd5>39b425d315f9b1a27249c283b7ada4e6</srcmd5>
+    <version>1.33.1</version>
+    <time>1200454053</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="136">
+    <srcmd5>04dce30a3bc57ac3809b94f84dd4e9db</srcmd5>
+    <version>1.33.1</version>
+    <time>1200678215</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>06a591bcddb925b56ee7bf1a78cd3260</srcmd5>
+    <version>1.34.1</version>
+    <time>1201712159</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="29">
+    <srcmd5>87c354b4584efbfdb2e2e73656be4b63</srcmd5>
+    <version>1.34.1</version>
+    <time>1207825763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="44">
+    <srcmd5>a310e63333ea015bc647f1c273825815</srcmd5>
+    <version>1.34.1</version>
+    <time>1214182070</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="45">
+    <srcmd5>8f036a56d960fc1b3f77c88bb2f27972</srcmd5>
+    <version>1.34.1</version>
+    <time>1214495419</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9d840571a13ac52ac99fbdd1473277b5</srcmd5>
+    <version>1.36.0</version>
+    <time>1223765810</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>c92da8b9fe3584177533e7e27e54b078</srcmd5>
+    <version>1.36.0</version>
+    <time>1224690117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>ab8d31eb62e03319a6757cac442aaacd</srcmd5>
+    <version>1.36.0</version>
+    <time>1224774379</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>c16515f922e3c1ececbc054482483ac6</srcmd5>
+    <version>1.36.0</version>
+    <time>1224853151</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>8a8f1d1a1f291af6f779bb3e00e6ac52</srcmd5>
+    <version>1.36.0</version>
+    <time>1225122128</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>64f3cb808e60fb997fecc1506f9002c5</srcmd5>
+    <version>1.36.0</version>
+    <time>1226936698</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>882a2d91729f502db9fe44778c8862a7</srcmd5>
+    <version>1.36.0</version>
+    <time>1227190642</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>98e82b34260718620dfeedd63f356176</srcmd5>
+    <version>1.36.0</version>
+    <time>1227885745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>c48160ec249e7bef0239b03e136fd102</srcmd5>
+    <version>1.36.0</version>
+    <time>1229340058</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>5bb69c94d7636f2f06e2c4d29b566749</srcmd5>
+    <version>1.36.0</version>
+    <time>1231521801</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5795a3f78bf64ec9201bae3be5bbb358</srcmd5>
+    <version>1.38.0</version>
+    <time>1234789696</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>cf305f40c9631d7e64f5dc035212b0de</srcmd5>
+    <version>1.38.0</version>
+    <time>1235162907</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>488541d83583f1ba5e4c05097298bf40</srcmd5>
+    <version>1.38.0</version>
+    <time>1235389230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>fb9b3bebea1ed3baef5534c1925652d8</srcmd5>
+    <version>1.38.0</version>
+    <time>1236113683</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>8c86a70a65ec5938d33e46b6ffb8b88d</srcmd5>
+    <version>1.38.0</version>
+    <time>1237572970</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>87e950498c4d5343af9289d3d70a2940</srcmd5>
+    <version>1.38.0</version>
+    <time>1240055571</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>a863f331bdbeb1a05954723720392483</srcmd5>
+    <version>1.38.0</version>
+    <time>1245337347</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>26b4644c68034f269ecb813d174d50ac</srcmd5>
+    <version>1.39.0</version>
+    <time>1248956913</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>6b4e65df89ce9392f5f4aa124338fc42</srcmd5>
+    <version>1.39.0</version>
+    <time>1250177775</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 17446 from user psmt
+</comment>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>6b4e65df89ce9392f5f4aa124338fc42</srcmd5>
+    <version>1.39.0</version>
+    <time>1250177775</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 17446 from user psmt
+</comment>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>bbbfed31ba94f4486d842f8930caa6fa</srcmd5>
+    <version>1.39.0</version>
+    <time>1256076310</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 22582 from user psmt
+</comment>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>3b73e6fa6814e1bfcde1fd3e350a8d04</srcmd5>
+    <version>1.39.0</version>
+    <time>1263481017</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 29087 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="37" vrev="7">
+    <srcmd5>a7763bd4b164e465b1c673139b58e143</srcmd5>
+    <version>1.39.0</version>
+    <time>1268923102</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3b55155b0e160c0290daa15465457678</srcmd5>
+    <version>1.42.0</version>
+    <time>1270654450</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 37247 from user coolo
+</comment>
+    <requestid>37247</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>0b82d7677db40573479f0fc6e4902a69</srcmd5>
+    <version>1.42.0</version>
+    <time>1272486431</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 38813 from user psmt
+</comment>
+    <requestid>38813</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>6f4ec159f9af4769f5683d41e9df665d</srcmd5>
+    <version>1.42.0</version>
+    <time>1272914529</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 39078 from user psmt
+</comment>
+    <requestid>39078</requestid>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>a0ecbb404f8a412fbbbfa959d6c950db</srcmd5>
+    <version>1.42.0</version>
+    <time>1274791396</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 40623 from user prusnak
+</comment>
+    <requestid>40623</requestid>
+  </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>f00bf7bb2b61ae4900536daaa7be56f8</srcmd5>
+    <version>1.42.0</version>
+    <time>1276244859</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 41314 from user coolo
+</comment>
+    <requestid>41314</requestid>
+  </revision>
+  <revision rev="43" vrev="6">
+    <srcmd5>2c60612e857d9c9d7304afe26e131d55</srcmd5>
+    <version>1.42.0</version>
+    <time>1276833948</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 41601 from user psmt
+</comment>
+    <requestid>41601</requestid>
+  </revision>
+  <revision rev="44" vrev="7">
+    <srcmd5>2c60612e857d9c9d7304afe26e131d55</srcmd5>
+    <version>1.42.0</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="45" vrev="8">
+    <srcmd5>2c60612e857d9c9d7304afe26e131d55</srcmd5>
+    <version>1.42.0</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="46" vrev="9">
+    <srcmd5>053c02422d9755de8f14bca82470f816</srcmd5>
+    <version>1.42.0</version>
+    <time>1280955576</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 44509 from user coolo
+</comment>
+    <requestid>44509</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>159716ee2660afa4c6f31e819efd2b7f</srcmd5>
+    <version>1.44.0</version>
+    <time>1283529164</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 47068 from user psmt
+</comment>
+    <requestid>47068</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>6e38428151f718b4489e678b20770d07</srcmd5>
+    <version>1.44.0</version>
+    <time>1285971036</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/boost based on submit request 49487 from user coolo
+</comment>
+    <requestid>49487</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>de884d00eaa7cfa4981578f570bc95d1</srcmd5>
+    <version>1.44.0</version>
+    <time>1288022305</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51332 from user coolo
+</comment>
+    <requestid>51332</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>747e0ca41f38b0e8e67001b6202dcb1d</srcmd5>
+    <version>1.44.0</version>
+    <time>1288022311</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51332
+</comment>
+  </revision>
+  <revision rev="51" vrev="7">
+    <srcmd5>747e0ca41f38b0e8e67001b6202dcb1d</srcmd5>
+    <version>1.44.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>5a6503547c1491dc8227c00ce257fb78</srcmd5>
+    <version>1.46.0</version>
+    <time>1300276541</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64297 from user psmt
+</comment>
+    <requestid>64297</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>2e4ab2616719b6461620034546f300a5</srcmd5>
+    <version>1.46.0</version>
+    <time>1300276552</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64297
+</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>271c90ac05c446fe2311ccd4ac8a1fa5</srcmd5>
+    <version>1.46.1</version>
+    <time>1300716479</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64624 from user psmt
+</comment>
+    <requestid>64624</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>05a19aff6db99e73b767f7ca5dfd5cd1</srcmd5>
+    <version>1.46.1</version>
+    <time>1300716494</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64624
+</comment>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>3fd255dd4c6c5a843a90ffbc29554526</srcmd5>
+    <version>1.46.1</version>
+    <time>1302019279</time>
+    <user>darix</user>
+    <comment>Accepted submit request 66040 from user coolo
+</comment>
+    <requestid>66040</requestid>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>24eefdf71afd88cc77e4ec7ecd37769b</srcmd5>
+    <version>1.46.1</version>
+    <time>1302019291</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 66040
+</comment>
+  </revision>
+  <revision rev="58" vrev="5">
+    <srcmd5>f5b72d26a5809e2e63db04a9e8f78d65</srcmd5>
+    <version>1.46.1</version>
+    <time>1303299708</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67874 from user coolo
+</comment>
+    <requestid>67874</requestid>
+  </revision>
+  <revision rev="59" vrev="6">
+    <srcmd5>3b01555946f5697995fd60a03acbf14f</srcmd5>
+    <version>1.46.1</version>
+    <time>1303299718</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67874
+</comment>
+  </revision>
+  <revision rev="60" vrev="7">
+    <srcmd5>bb6564e01b342eff5ad67a8731fee5b5</srcmd5>
+    <version>1.46.1</version>
+    <time>1317805652</time>
+    <user>lrupp</user>
+    <comment>- disable openmpi on %%arm</comment>
+    <requestid>86227</requestid>
+  </revision>
+  <revision rev="61" vrev="9">
+    <srcmd5>bb6564e01b342eff5ad67a8731fee5b5</srcmd5>
+    <version>1.46.1</version>
+    <time>1319181792</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="62" vrev="10">
+    <srcmd5>41fab1423cfd8297952fc3825a59da8d</srcmd5>
+    <version>1.46.1</version>
+    <time>1323705360</time>
+    <user>coolo</user>
+    <comment>Do not package NEWS and LICENSE twice. (forwarded request 95648 from a_jaeger)</comment>
+    <requestid>95649</requestid>
+  </revision>
+  <revision rev="63" vrev="11">
+    <srcmd5>1c16bc768577a121bcb640e2af83fe91</srcmd5>
+    <version>1.46.1</version>
+    <time>1329405060</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104302 from coolo)</comment>
+    <requestid>104959</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>46a1c844f2b13c49bee69c13762d5469</srcmd5>
+    <version>1.49.0</version>
+    <time>1332500681</time>
+    <user>coolo</user>
+    <comment>Update to latest version 1.49.0 ... Let the fun begin</comment>
+    <requestid>109546</requestid>
+  </revision>
+  <revision rev="65" vrev="12">
+    <srcmd5>e14759f34618a02abd399be1249f19a3</srcmd5>
+    <version>1.46.1</version>
+    <time>1332530442</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:home:coolo:branches:openSUSE:Factory package:boost revision:2</comment>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>9ee560a1f5d5953e6cf682268c00d155</srcmd5>
+    <version>1.49.0</version>
+    <time>1332763238</time>
+    <user>coolo</user>
+    <comment>- Adjust Require for new libxslt-tools (forwarded request 110957 from jengelh)</comment>
+    <requestid>110962</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>9a24ef6ec272988c4e71189ee2206f69</srcmd5>
+    <version>1.49.0</version>
+    <time>1336608440</time>
+    <user>oertel</user>
+    <comment>- fixing baselibs.conf after version bump (forwarded request 117051 from coolo)</comment>
+    <requestid>117132</requestid>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>c5ea3a2ba8cb4ddd4fd4b12c6146c188</srcmd5>
+    <version>1.49.0</version>
+    <time>1337004660</time>
+    <user>coolo</user>
+    <comment>- fixing the previous fix</comment>
+    <requestid>120674</requestid>
+  </revision>
+  <revision rev="69" vrev="5">
+    <srcmd5>facac0520b02932cad7829d062429ebc</srcmd5>
+    <version>1.49.0</version>
+    <time>1337580473</time>
+    <user>coolo</user>
+    <comment>Fix timer post script, it used the comment as content. (forwarded request 121368 from a_jaeger)</comment>
+    <requestid>121374</requestid>
+  </revision>
+  <revision rev="70" vrev="7">
+    <srcmd5>facac0520b02932cad7829d062429ebc</srcmd5>
+    <version>1.49.0</version>
+    <time>1340183210</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="71" vrev="8">
+    <srcmd5>93101ae4cbfc686604d820dc1237f8f0</srcmd5>
+    <version>1.49.0</version>
+    <time>1344319341</time>
+    <user>coolo</user>
+    <comment>Fix compilation with glibc 2.16 with upstream patch. (forwarded request 129654 from a_jaeger)</comment>
+    <requestid>129700</requestid>
+  </revision>
+  <revision rev="72" vrev="9">
+    <srcmd5>35cb5d63ddadc430ccb94306e62076f5</srcmd5>
+    <version>1.49.0</version>
+    <time>1347283229</time>
+    <user>coolo</user>
+    <comment>license update: BSL-1.0
+Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/licenses as BSL-1.0 (forwarded request 132975 from babelworx)</comment>
+    <requestid>132982</requestid>
+  </revision>
+  <revision rev="73" vrev="10">
+    <srcmd5>70bd8fdf0d2859a79644c29654f952fb</srcmd5>
+    <version>1.49.0</version>
+    <time>1357853240</time>
+    <user>coolo</user>
+    <comment>- Add boost-asio-export-symbols.patch: boost#6688 (forwarded request 147934 from Fisiu)</comment>
+    <requestid>147949</requestid>
+  </revision>
+  <revision rev="74" vrev="11">
+    <srcmd5>c318c18311a1202d29bee22c868e7fbf</srcmd5>
+    <version>1.49.0</version>
+    <time>1357986143</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:boost revision:72</comment>
+  </revision>
+  <revision rev="75" vrev="13">
+    <srcmd5>c318c18311a1202d29bee22c868e7fbf</srcmd5>
+    <version>1.49.0</version>
+    <time>1359108711</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="76" vrev="14">
+    <srcmd5>e7183667a97cd9a0ecd1faa09d814e4b</srcmd5>
+    <version>1.49.0</version>
+    <time>1359534585</time>
+    <user>coolo</user>
+    <comment>Same as request 148711 but after resolving change file conflict. (forwarded request 149581 from BSiposRKF)</comment>
+    <requestid>150270</requestid>
+  </revision>
+  <revision rev="77" vrev="15">
+    <srcmd5>67c6a91e900cf1d0c29f08c6e1a46f91</srcmd5>
+    <version>1.49.0</version>
+    <time>1362118479</time>
+    <user>coolo</user>
+    <comment>- build without openmpi on aarch64 for now (forwarded request 156735 from dirkmueller)</comment>
+    <requestid>156810</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>d82ac8fa23235db443aa9a4f4a5563cc</srcmd5>
+    <version>1.53.0</version>
+    <time>1369645757</time>
+    <user>coolo</user>
+    <comment>It seems that last time it was declined because of service error:
+&gt; The previous request 163547 was declined 2 weeks ago by  factory-repo-checker with the following message: waiting for libzypp.</comment>
+    <requestid>173587</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>44289e441c1347df1f3aae431d63e4e3</srcmd5>
+    <version>1.53.0</version>
+    <time>1370924650</time>
+    <user>coolo</user>
+    <comment>- Build context library only on supported architectures
+- Reenable mpi on aarch64
+- Avoid duplication between %build and %install</comment>
+    <requestid>178313</requestid>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>c1cf10711d578f0b25d5703f3a1dfa88</srcmd5>
+    <version>1.53.0</version>
+    <time>1376902522</time>
+    <user>scarabeus_factory</user>
+    <comment>- Fix build with updated glibc:
+  * boost-glibc-2.18.patch - taken from upstream scm</comment>
+    <requestid>195572</requestid>
+  </revision>
+  <revision rev="81" vrev="5">
+    <srcmd5>c1cf10711d578f0b25d5703f3a1dfa88</srcmd5>
+    <version>1.53.0</version>
+    <time>1379662049</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>f0c1265a10247249bc69eca51bc856b5</srcmd5>
+    <version>1.54.0</version>
+    <time>1379938415</time>
+    <user>coolo</user>
+    <comment>Boost 1.54 to resolve qbittorrent build issue.</comment>
+    <requestid>200066</requestid>
+  </revision>
+  <revision rev="83" vrev="6">
+    <srcmd5>0f0d0b12a0482aa1fcd825acc022968a</srcmd5>
+    <version>1.53.0</version>
+    <time>1380468364</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:boost revision:81</comment>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>0d87cc26724bd60fc6b1e3e5403ce5f1</srcmd5>
+    <version>1.54.0</version>
+    <time>1387456311</time>
+    <user>coolo</user>
+    <comment>staging looked ok</comment>
+    <requestid>211669</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>34c32984f96d146f600f550730c52874</srcmd5>
+    <version>1.54.0</version>
+    <time>1389111539</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>213049</requestid>
+  </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>fa844a2ab862d165a8009639d650f8b1</srcmd5>
+    <version>1.54.0</version>
+    <time>1392115162</time>
+    <user>coolo</user>
+    <comment>Add missing post and postun for libboost_libboost_graph_parallel</comment>
+    <requestid>221427</requestid>
+  </revision>
+  <revision rev="87" vrev="5">
+    <srcmd5>e16a016abdbe4ea85472dbebc47be8c2</srcmd5>
+    <version>1.54.0</version>
+    <time>1392806291</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>222621</requestid>
+  </revision>
+  <revision rev="88" vrev="6">
+    <srcmd5>9ca141369c145e6b2d0430c5f0db112a</srcmd5>
+    <version>1.54.0</version>
+    <time>1393935246</time>
+    <user>coolo</user>
+    <comment>- remove broken python module mpi.so
+- trying to make the build more reliable: 
+  * use -fno-var-tracking in cxxflags as recommended by richi
+  * disable parallel build on low memory</comment>
+    <requestid>224413</requestid>
+  </revision>
+  <revision rev="89" vrev="7">
+    <srcmd5>8330adbb37a0fa3d999fc6009c4a9e62</srcmd5>
+    <version>1.54.0</version>
+    <time>1396761013</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>228393</requestid>
+  </revision>
+  <revision rev="90" vrev="8">
+    <srcmd5>cb8ecd950deb55b7f6d636524d7904ca</srcmd5>
+    <version>1.54.0</version>
+    <time>1399703526</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>232977</requestid>
+  </revision>
+  <revision rev="91" vrev="9">
+    <srcmd5>eca37aa9449f8709b5226e9a09c4ad70</srcmd5>
+    <version>1.54.0</version>
+    <time>1406836139</time>
+    <user>coolo</user>
+    <comment>- add baselibs.conf as source
+
+- Ensure there is enough disk space available for build.
+
+- use only JOBS=2 to avoid gcc being killed with OOM when memory is
+  between 4G and 7G.</comment>
+    <requestid>242934</requestid>
+  </revision>
+  <revision rev="92" vrev="11">
+    <srcmd5>eca37aa9449f8709b5226e9a09c4ad70</srcmd5>
+    <version>1.54.0</version>
+    <time>1409300576</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>adae68a02e2a72c10fa8e4d47196a324</srcmd5>
+    <version>1.56.0</version>
+    <time>1417643386</time>
+    <user>dimstar_suse</user>
+    <comment>fixed libzypp and liborcus are in Factory</comment>
+    <requestid>263290</requestid>
+  </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>68f5ff44f9daae16b6c8b6d69a902dbc</srcmd5>
+    <version>1.56.0</version>
+    <time>1417869938</time>
+    <user>dimstar_suse</user>
+    <comment>Submit py3 revert to Factory - fix all fallouts except hugin</comment>
+    <requestid>264122</requestid>
+  </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>09ef8a704b0c2e91364686484c263dce</srcmd5>
+    <version>1.56.0</version>
+    <time>1425031688</time>
+    <user>dimstar_suse</user>
+    <comment>- Use $RPM_OPT_FLAGS for building, force use of the GCC toolset.
+  Be more verbose and fail building with the first error.
+- Add boost-gcc5.patch to use -std=c++11 when building the coroutines
+  module which fixes build with GCC 5. (forwarded request 287338 from rguenther)</comment>
+    <requestid>287358</requestid>
+  </revision>
+  <revision rev="96" vrev="4">
+    <srcmd5>58b742cda1130d1732891a3506e55f49</srcmd5>
+    <version>1.56.0</version>
+    <time>1426680133</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>291066</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>1420c725ce561d6d7bd06a3726db70b2</srcmd5>
+    <version>1.58.0</version>
+    <time>1432158220</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.58.0:
+  boost docs remain at 1.56 since upstream hasn't updated yet
+  * New Libraries: Endian, Sort.
+  * Updated Libraries: Asio, Chrono, Container, Context, Conversion,
+  DateTime, Flyweight, Function, Functional/Factory, Fusion, Geometry,
+  Hash, Interprocess, Intrusive, Lexical Cast, Log, Math, Move,
+  Multi-index Containers, Multiprecision, Optional, Phoenix,
+  Predef, Random, Thread, TypeErasure, TypeIndex, Units,
+  Unordered, Variant.
+  See http://www.boost.org/users/history/version_1_58_0.html
+- add 0001-Fix-exec_file-for-Python-3-3.4.patch ,
+  0002-Fix-a-regression-with-non-constexpr-types.patch: Fixes regressions
+  in 1.58
+- drop bjam-alignment.patch, boost-gcc5.patch: Already fixed upstream
+  differently
+- add boost-rpmoptflags-only.patch: Build only with optflags
+- add boost-aarch64-flags.patch: Avoid using -m64
+- add boost-uuid-comparison.patch: Fix regression in UUID operator&lt;
+- add boost-disable-pch-on-aarch64.patch: Disable pch on math library
+  to avoid compiler segfault</comment>
+    <requestid>306182</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>0ae8be1bbf5529146c901283e2be10c5</srcmd5>
+    <version>1.58.0</version>
+    <time>1432796543</time>
+    <user>dimstar_suse</user>
+    <comment>- boost-unrecognized-option.patch: remove unrecognized option -m32</comment>
+    <requestid>308672</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>16f2628226dbb96dcd25b38d6ea7d3f9</srcmd5>
+    <version>1.58.0</version>
+    <time>1434136508</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded dependency on xorg-x11-devel</comment>
+    <requestid>311555</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>870f4a7675d2524a9bcd9336acdd474f</srcmd5>
+    <version>1.59.0</version>
+    <time>1448400041</time>
+    <user>coolo</user>
+    <comment>Please put into same staging with libabw, libcdr, libe-book, librevenge and libvisio
+
+- Updated to version 1.59.0:
+  * New libraries: Convert, Coroutine2
+  * Updated Libraries: Container, Context, Coroutine, Fusion,
+    Geometry, Interprocess, Intrusive, Lexical Cast, Log, Move,
+    Multi-index Containers, Predef, Program Options, Property Tree,
+    Boost.Test v3, TypeIndex, Variant
+  * See http://www.boost.org/users/history/version_1_59_0.html for
+    complete changelog.
+- context now builds on aarch64
+- Import two patches from Fedora: boost-1.59-python-make_setter.patch,
+  boost-1.59-test-fenv.patch
+- Drop 0001-Fix-exec_file-for-Python-3-3.4.patch, 
+  0002-Fix-a-regression-with-non-constexpr-types.patch, 
+  boost-uuid-comparison.patch, boost-unrecognized-option.patch.
+  Fixed upstream.</comment>
+    <requestid>343836</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>05f0643e5b71ac434e073948c0f8b516</srcmd5>
+    <version>1.59.0</version>
+    <time>1449689621</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>347331</requestid>
+  </revision>
+  <revision rev="102" vrev="3">
+    <srcmd5>0482b3828e8710d86c1efa5754efd5da</srcmd5>
+    <version>1.59.0</version>
+    <time>1450364047</time>
+    <user>dimstar_suse</user>
+    <comment>Fix visibility of class members</comment>
+    <requestid>348231</requestid>
+  </revision>
+  <revision rev="103" vrev="4">
+    <srcmd5>ab528f31ca1519f087861980972d75ca</srcmd5>
+    <version>1.59.0</version>
+    <time>1451177941</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350702</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>b3bc8a1b2b1f69946e397502272cc766</srcmd5>
+    <version>1.60.0</version>
+    <time>1452122372</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the following patches from Fedora to fix underlinking in
+  boost::python code
+  * boost-1.57.0-python-abi_letters.patch
+  * boost-1.57.0-python-libpython_dep.patch
+  * boost-1.55.0-python-test-PyImport_AppendInittab.patch
+
+- Updated to version 1.60.0
+  * New library: VMD.
+  * Updated libraries: Atomic, Chrono, Container, Context, Core,
+    Filesystem, Flyweight, Fusion, Interprocess, Intrusive, Lexical
+    Cast, Locale, log, Move, Multi-index Containers, odeint,
+    Optional, Predef, Test, Thread, UUID
+  * See http://www.boost.org/users/history/version_1_60_0.html for
+    complete changelog.
+- Modified patch:
+  * boost-disable-pch-on-aarch64.patch
+    - rediff to a new context
+- Removed patch:
+  * boost-1.59-python-make_setter.patch
+    - integrated upstream
+- Add libboost_type_erasure subpackage
+
+  * New library: python3</comment>
+    <requestid>351914</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>69c67987451f12b643aad91deb0cf3a3</srcmd5>
+    <version>1.60.0</version>
+    <time>1454491113</time>
+    <user>dimstar_suse</user>
+    <comment>- Add boost-deprecated-type_traits.patch to fix deprecated
+  type_traits usage in boost/graph/adjacency_matrix.hpp header.</comment>
+    <requestid>354602</requestid>
+  </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>fcde3b29119f4d9cfcbad6572926f4bf</srcmd5>
+    <version>1.60.0</version>
+    <time>1456821498</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>360726</requestid>
+  </revision>
+  <revision rev="107" vrev="4">
+    <srcmd5>94afc00e566a6d8503f0847fbbfacff2</srcmd5>
+    <version>1.60.0</version>
+    <time>1459717480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>381531</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>cf298d5a0182b7d67be7efe2190c7dce</srcmd5>
+    <version>1.61.0</version>
+    <time>1471508472</time>
+    <user>dimstar_suse</user>
+    <comment>use otherproviders</comment>
+    <requestid>419572</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>2d9b8ba8a604130395555ac5a2ef5490</srcmd5>
+    <version>1.61.0</version>
+    <time>1472111528</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 420002 from jubalh)</comment>
+    <requestid>421232</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>71fccc3ff2196cfae854062cea364613</srcmd5>
+    <version>1.62.0</version>
+    <time>1476874737</time>
+    <user>dimstar_suse</user>
+    <comment>- package boost-jam
+- add missing ldconfig for libboost_type_erasure
+- fix EOL encoding for documentation files
+
+- update to version 1.62.0
+  * new library: fiber: framework for userland-threads/fibers
+  * new library: QVM: library for working with quaternions,
+        vectors and matrices of static size
+  * see http://www.boost.org/users/history/version_1_62_0.html
+    for complete changelog
+- remove boost-fix_include_config.patch - upstreamed
+- gcc_path.patch - fix GCC search paths (bnc#996917)
+  Boost assumes /usr/include/c++/x.y.z/ existence for GCC 4.x
+  onward while our version of GCC only has /usr/include/c++/x.y
+  for 4.x GCC and /usr/include/c++/x/ for 5.x onward.
+- migrate to using %bcond_ instead of hardcoding macros
+  for different Boost features
+- better way to limit max number of compilation units than
+  by reading /proc/meminfo and guesstimating.</comment>
+    <requestid>434344</requestid>
+  </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>29d1cbaba9b3f2d4d5a1d537d3ece631</srcmd5>
+    <version>1.62.0</version>
+    <time>1478871187</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439326</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>ead49e3cf293f40cb16f9f7464b9e830</srcmd5>
+    <version>1.63.0</version>
+    <time>1485938968</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependency typos. 
+
+- test_lowcase.patch: downcase Boost::Test usage of uppercase
+  variables. VERSION was clashing with GNU Autotools define
+  resulting in compilation errors of various packages.
+- recombine headers from various devel subpackages under the
+  libboost_headers-devel package. Not all usage of headers that
+  have compiled parts pull in their associated compiled symbols.
+- general cleanup of the spec file from old, commented stuffs
+
+- remove non-existent dependency in the boost mpi python package
+
+- update to version 1.63.0
+  * updated libraries: atomic, container, context, fiber,
+    fusion, geometry, hash, interprocess, intrusive, lexical cast,
+    log, metaparse, move, optional, phoenix, python, test,
+    typeindex, units, unordered
+  * see http://www.boost.org/users/history/version_1_63_0.html
+    for complete list of changes
+- refresh patches
+  * boost-1.55.0-python-test-PyImport_AppendInittab.patch
+  * boost-strict_aliasing.patch, and enable -fno-strict-aliasing
+    for python module
+- baselibs.conf:
+  * add libboost_locale
+  * rename python to include new soname
+- remove python-2059618.patch, not needed
+- make build condition --without buil_mpi work
+- allow building without python3 bindings, for SLE11SP4
+- remove versioned build dependency on libicu-devel, apparently</comment>
+    <requestid>452414</requestid>
+  </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>05a409e10e087d6e16179f5dc5833f0f</srcmd5>
+    <version>1.63.0</version>
+    <time>1486138045</time>
+    <user>dimstar_suse</user>
+    <comment>- baselibs.conf: (re)add python 2.7 and 3.x libraries</comment>
+    <requestid>454451</requestid>
+  </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>dd83cfbda2c360a86cb519d7d48b0de3</srcmd5>
+    <version>1.63.0</version>
+    <time>1487461527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>457579</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>e27d5f9fa50715f0492d6f1b09ee6958</srcmd5>
+    <version>1.64.0</version>
+    <time>1493579383</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489818</requestid>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>61e39026234b48ffe0b004aea5f92abd</srcmd5>
+    <version>1.64.0</version>
+    <time>1494937832</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493683</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>74084840c402a5b1c740adba98805ef5</srcmd5>
+    <version>1.65.1</version>
+    <time>1507197101</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527660</requestid>
+  </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>8e86954637678bb879ab02f04198fa3b</srcmd5>
+    <version>1.65.1</version>
+    <time>1507896626</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532726</requestid>
+  </revision>
+  <revision rev="119" vrev="3">
+    <srcmd5>e2fb1a5e497850893f87e1da1e19ae2f</srcmd5>
+    <version>1.65.1</version>
+    <time>1512546516</time>
+    <user>dimstar_suse</user>
+    <comment>- re-enable Python 2 by default. It's still conditional, but
+  remains enabled by default. This can be disabled in project
+  config.
+- build Python 2 conditionally
+- Use multibuild setup - build no-dependency libraries in the
+  base package and build the rest of the compiled libraries in
+  the main variant. This should speed up bootstrapping.
+- boost-devel not built by default anymore.
+- libboost_headers-devel now provides boost-devel for legacy
+  dependencies. If you need compiled boost libraries depend on
+  the current compiled devel subpackage.
+- run %fdupes only on the header files and documentation
+- drop build dependencies on gcc-fortran, chrpath.
+</comment>
+    <requestid>546444</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>b776a885878b95c8253aa05e81e03f14</srcmd5>
+    <version>1.66.0</version>
+    <time>1513851944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558304</requestid>
+  </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>c4ea17016ee9fbfc80a9ddcc1173ea1e</srcmd5>
+    <version>1.66.0</version>
+    <time>1516546079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567726</requestid>
+  </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>4d07f892593e94aef14d374288e18594</srcmd5>
+    <version>1.66.0</version>
+    <time>1523029488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593447</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>e6f121fa7d9d54a8367e87c87c7dfbca</srcmd5>
+    <version>1.67.0</version>
+    <time>1529065869</time>
+    <user>maxlin_factory</user>
+    <comment>- fix packaging of Boost.Contract on s390 and other platforms
+  without Boost.Context support.
+- fix build on older SLE SP by owning /usr/share/licenses directory
+
+- Update to version 1.67.0
+  New libraries:
+  * Contract: Contract programming for C++. All contract
+    programming features are supported: Subcontracting, class
+    invariants, postconditions (with old and return values),
+    preconditions, customizable actions on assertion failure (e.g.,
+    terminate or throw), optional compilation and checking of
+    assertions, etc, from Lorenzo Caminiti.
+  * HOF: Higher-order functions for C++, from Paul Fultz II.
+  Breaking changes in updated libraries:
+  * atomic: Breaking change: Changed the result of the
+    (op)_and_test operations added in Boost 1.66 to the opposite -
+    the functions now return true if the operation result is
+    non-zero. This is consistent with other test methods in
+    Boost.Atomic and the C++ standard library. Users can define
+    BOOST_ATOMIC_DETAIL_HIGHLIGHT_OP_AND_TEST when compiling their
+    code to emit warnings on every use of the changed functions.
+    This way users can locate the code that needs to be updated.
+  * multiprecission: When converting a multiprecision integer to a
+    narrower type, if the value is too large (or negative) to fit
+    in the smaller type, then the result is either the maximum (or
+    minimum) value of the target type. This was always the intended
+    behaviour, but was somewhat haphazardly enforced before. If you
+    really do want just the low order N bits of a value, then you
+    will need to mask these out prior to the case, for example:
+    static_cast&lt;unsigned&gt;(~static_cast&lt;unsigned&gt;(0) &amp; my_value).
+    Note that technically (to avoid undefined behaviour) you should
+    do the same thing with built in integer types too.
+  * spirit: Removed `with_context`
+    utility: &lt;boost/utility.hpp&gt; header no longer includes
+    boost::next and boost::prior as they have been moved to the
+    iterator module. Instead include &lt;boost/next_prior.hpp&gt;. Other
+    uses of &lt;boost/utility.hpp&gt; are discouraged, it's better to use
+    the header for the specific functionality instead.
+  * uuid: random_generator is no longer copyable
+  Libraries that were updated: Asio, Atomic, Beast, ContainerHash,
+  Context, Core, Coroutine2, DateTime, DLL, Fiber, Filesystem,
+  Fusion, Locale, Log, Math, Multi-index Containers,
+  Multiprecission, Optional, Phoenix, PolyCollection, Python,
+  Spirit, Stacktrace, Test, TypeIndex, TypeTraits, Utility,
+  Unordered, Units, Uuid, and Variant. For complete list of
+  changes, see,
+  https://www.boost.org/users/history/version_1_67_0.html
+- refreshed patches:
+  * boost-strict_aliasing.patch
+  * boost-aarch64-flags.patch
+- python_library_name.patch: adapted to not append version number
+  to library names, like new boost is doing.
+- disable python2 builds by default
+- use regular Requires for libboost_header dependency</comment>
+    <requestid>611205</requestid>
+  </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>7e1c64bfa928d80f842e73a19ec288e0</srcmd5>
+    <version>1.67.0</version>
+    <time>1530741265</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable python2 module build by default. Still too many things
+  depend on it.</comment>
+    <requestid>620453</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>27b71f477eed9a54f1ea769fa4a82e07</srcmd5>
+    <version>1.68.0</version>
+    <time>1536327236</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631177</requestid>
+  </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>15fdbcd59497b4e55216066c04e3acce</srcmd5>
+    <version>1.68.0</version>
+    <time>1538377414</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>636892</requestid>
+  </revision>
+  <revision rev="127" vrev="3">
+    <srcmd5>cdefd41c18bc8c3431466fe1e3cecba5</srcmd5>
+    <version>1.68.0</version>
+    <time>1538672295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639401</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>2ac65071d6fcdd85e2d40ed2582f4fc2</srcmd5>
+    <version>1.69.0</version>
+    <time>1552380657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683004</requestid>
+  </revision>
+</revisionlist>

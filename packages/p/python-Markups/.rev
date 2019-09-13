@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2688675c0953b3f47870e638c07535ea</srcmd5>
+    <version>0.2.4</version>
+    <time>1360401330</time>
+    <user>coolo</user>
+    <comment>New dependency for retext 4.0</comment>
+    <requestid>154869</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2688675c0953b3f47870e638c07535ea</srcmd5>
+    <version>0.2.4</version>
+    <time>1379664108</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>2688675c0953b3f47870e638c07535ea</srcmd5>
+    <version>0.2.4</version>
+    <time>1409302794</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>60155a8cbc959e1a264115567d172a8a</srcmd5>
+    <version>0.6.1</version>
+    <time>1431668624</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306662</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>942f29999b39e29075fafa3257ca4eee</srcmd5>
+    <version>2.0.1</version>
+    <time>1504521231</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520062</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79290d3906feee223a7b36d729d63f13</srcmd5>
+    <version>3.0.0</version>
+    <time>1547540151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662466</requestid>
+  </revision>
+</revisionlist>

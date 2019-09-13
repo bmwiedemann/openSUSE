@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ee4f1861925fc7c4d382dd868135b01</srcmd5>
+    <version>2.0.5</version>
+    <time>1515623568</time>
+    <user>dimstar_suse</user>
+    <comment>new package, dependency of scrapy</comment>
+    <requestid>559200</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c96bae4d62f87e737784d901e33a8d2a</srcmd5>
+    <version>2.0.5</version>
+    <time>1548334958</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659282</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,309 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be3eb4151dc92f7e5686dd71b924122b</srcmd5>
+    <version>1.3.5</version>
+    <time>1327403792</time>
+    <user>coolo</user>
+    <comment>new package, needed by gnome-color-manager
+
+(fix license tag)</comment>
+    <requestid>100862</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>13d5d3875364adbbc0124ac54b38634a</srcmd5>
+    <version>1.3.5</version>
+    <time>1327582785</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>101513</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>726b833e4eb4d8d30dfa56f1072085a6</srcmd5>
+    <version>1.3.5</version>
+    <time>1327696006</time>
+    <user>coolo</user>
+    <comment>- Fix ColorHug support with new firmware
+
+The spec file changes were made by obs-service-format_spec_file... (forwarded request 101804 from Nijel)</comment>
+    <requestid>101828</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>726b833e4eb4d8d30dfa56f1072085a6</srcmd5>
+    <version>1.3.5</version>
+    <time>1340183179</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>42af613986b39a72035ef5b5630fc9bf</srcmd5>
+    <version>1.4.0</version>
+    <time>1340889354</time>
+    <user>coolo</user>
+    <comment>- Add new upstream version of SG_header.txt, to prevent any legal
+  misunderstanding (bnc#768826).
+
+- Release 1.4.0:
+  + various bug fixes
+  + add support for ICC profiles in embedded JPEG
+  + fix CVE-2012-1616 (bnc#768322)
+- drop autotools patches, switch back to original Jam based build
+- add ajam (argyll patched version of Jam, BSD-license) to source
+  package (needed only for build)
+- drop shared libraries and corresponding subpackages, not used by
+  anything.
+- drop cologhug patch, merged upstream.
+- Add argyllcms-fixbuild.patch: fix build with system tiff/jpeg
+  libraries
+- Add ajam-include.patch: add missing headers
+- Add argyllcms-1.4.0-warnings.patch: fix gcc warnings
+- Add bison as BuildRequires (needed to build ajam)
+- Compile with -f-no-strict-aliasing to prevent potential issues
+  with gcc 4.7</comment>
+    <requestid>126192</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b15434e86246dcbbe0fcc4c5d0f0aa50</srcmd5>
+    <version>1.4.0</version>
+    <time>1350363582</time>
+    <user>coolo</user>
+    <comment>- replace jam with ./jam</comment>
+    <requestid>138178</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>e7a18325657fbf28aaa52ef8ac8054f9</srcmd5>
+    <version>1.4.0</version>
+    <time>1351263493</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139258</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>e7a18325657fbf28aaa52ef8ac8054f9</srcmd5>
+    <version>1.4.0</version>
+    <time>1359108663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a7e4f8980427cd3349dc29ab0c44badd</srcmd5>
+    <version>1.5.1</version>
+    <time>1375363215</time>
+    <user>coolo</user>
+    <comment>- Release 1.5.1:
+  + Many bug fixes
+  + add support for i1pro Rev E (i1pro2)
+  + improved support for ColorMunki and i1pro
+  + spotread can interactively query refresh rate
+  + spyd2en, spyd4en and i1d3ccss was been merged in one tool named
+    oeminst.
+  + No longer uses libusb, talk directly to USB device through
+    kernel devices.
+  + Add support for ColorCheckerPassport in scanin.
+  + -V (adaptative mode) is deprecated in dispcal, dispread and
+    ccxxmake, since it is the default. Use -ZA flag to disable.
+  + ColorHug support is enabled by default.
+  + Added automatic adjustement of patch reading for i1d3.
+- Drop argyllcms-fixbuild.patch (merged)
+- Rename argyllcms-1.3.0-udev151.patch to argyllcms-udev151.patch.
+- Add argyllcms-udev-builtin.patch for udev usb-db builtin
+  (openSUSE 12.2/12.3) and argyllcms-udev-hwdb.patch (openSUSE 13.1
+  and later) for udev hwdb.
+- Update argyllcms-1.4.0-warnings.patch (partially merged)
+- Drop SG_header.txt, merged upstream. (forwarded request 185360 from fcrozat)</comment>
+    <requestid>185361</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f0db2a668725d3d772578b5f80bf2df0</srcmd5>
+    <version>1.6.0</version>
+    <time>1377167333</time>
+    <user>scarabeus_factory</user>
+    <comment>- Release 1.6.0:
+  + Added support for JETI specbos 1211 and 1201.
+  + Added Video profiling &amp; 3dLut creation support for eeColor and
+    MadVR.
+  + Linux profile installation will use colord.
+  + Fix ColorHug driver.
+  + Changed instlib API ambient XYZ and spectral units to Lux.
+  + For those instruments that support it, made ambient readings
+    honor refresh mode measurements.
+  + Changed spotread -ew mode to be Bradford chromatic transform
+    rather than XYZ scaling.
+  + Added support to xicclu to lookup colors though CAL files.
+  + Added -Y R:rate option to spotread, dispcal, dispread &amp;
+    ccxxmake.
+  + By default printtarg will create PS and EPS files with a CUPS
+    job ticket to disable color management.
+  + Added display update delay calibration support to i1pro and
+    ColorMunki.
+  + Changed dispcal &amp; dispread so that they wait up to 0.5 seconds
+    when reading dark patches after light ones to allow for display
+    fall time.
+  + Changed dispwin daemon loader mode option from -E to -X.
+  + Changed dispcal verify option from -E to -z.
+  + Added -E option to to dispread to encode test patch colors in
+    Video 16-235 range.
+  + Changed CIECAM02 Flare model to distinguish between Flare from
+    the image itself, and Glare from ambient light.
+  + Improved i1pro hi-res mode to improve accuracy.
+  + Added Body Centered Cubic grid option to targen.
+  + Added -Yn flag to dispcal and dispread.
+  + Improve robustness of i1d3 display update measurement code.
+  + Added support for applying calibration curves in collink.
+  + Changed spotread so that it won't fall back to emissive spot
+    mode if an ambient reading is requested.
+  + Turned off B2A table clip map smoothing.
+  + Fixed crash in ucmm/ucmm.c when loading certain profiles using
+    dispwin.
+  + Fixed gamut mapping intent &quot;rl&quot; to really use relative L*a*b*
+  + Fix bug in cicam02 in V1.5.0 that causes some mapping problems
+    in the red for collink -ir or -ila. 
+  + Changed cctiff so that it does lossless JPEG copy when there is
+    no color transformation
+  + Fix xicclu so that it works with device links.
+  + Fixed bug in shaper/matrix profile curves that caused random
+    bumpy black behaviour.
+  + Don't add colorant tag to .tiff files in cctiff unless it is a
+    non-standard space, as Photoshop will barf on such files.
+  + Fix bug with Spyder not being able to break out of dispcal
+    adjustment loop.
+  + Fix bug in xicc/xicclu, -K flag not being recognised.
+  + Fix bug in xicc/xmatrix.c introduced that prevents matrix only
+    profiles from being created.
+  + libusb 1.0 is now deprecated in favor of native USB drivers. (forwarded request 195745 from sbrabec)</comment>
+    <requestid>195854</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>f0db2a668725d3d772578b5f80bf2df0</srcmd5>
+    <version>1.6.0</version>
+    <time>1379661984</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>48c40a08bf45c9d68f477c5f809b5a26</srcmd5>
+    <version>1.6.2</version>
+    <time>1387823463</time>
+    <user>coolo</user>
+    <comment>- Release 1.6.2:
+ + Added &quot;dark region emphasis&quot; -V parameter to targen and colprof.
+ + Fixed bug and tweaked dispcal black point optimization to err on
+   the black side. Added -v3 for even more debugging information.
+ + Changed i1d3 driver to be more forgiving of EEProm checksum
+   calculation (support for &quot;&quot;A-02&quot;&quot; release).
+ + Fixed problem with TV encoded output and dispread -E -k/-K.
+ + Fixed minor bug in DE94 in icclib.
+ + Fixed major bug in illumread - result was being corrupted.
+ + Fixed &quot;edges don't match&quot; bug in printarg when -iCM -h -s/-S
+   used.
+ + Fix bug in -H flag in ccxxmake, chartread, dispcal, dispread,
+   illumread &amp; spotread so that it works once again.
+- Bugfix update from 1.6.1:
+ + Fix bug in &quot;average -m&quot;
+ + Fix oeminst to work with a wider range of i1d3 install files.
+ + Fix ColorMunki reflective measurement accuracy, particularly for
+   reflective readings.
+- Remove argyllcms-stringcompare.patch, argyllcms-void.patch:
+  merged upstream. (forwarded request 211874 from fcrozat)</comment>
+    <requestid>211877</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2462f88cd474b72968d7f2e928f12ebf</srcmd5>
+    <version>1.6.3</version>
+    <time>1391243991</time>
+    <user>coolo</user>
+    <comment>- Release 1.6.3:
+  + Added ProPhoto.icm and ProPhotoLin.icm to ref profiles.
+  + Fix bug in xicclu -py conversion.
+  + Added code to minimize ICC rounding error on matrix profile
+    white point accuracy. Re-generated all reference profiles with
+    this change.
+  + Changed i1d3 driver to completely ignore any EEPROM checksum
+    errors for non &quot;A-01&quot; rev. instruments.
+  + Made transplot handle RGB-&gt;RGB device link.
+  + Removed colprof -y option. Use &quot;profcheck -v2&quot; instead, as it
+    is more developed.
+  + Fixed bug in dispcal - it was not using the final measurement
+    pass to update the calibration curves.
+  + Fixed bug in spotread, dispcal &amp; dispread for CCSS capable
+    instruments where refresh display types was being ignored if a
+    custom observer was used, and/or the custom observer as being
+    ignored, and/or a  CCMX was being ignored.
+  + Renamed verify to colverify to avoid clash with MSWin program
+    of the same name. Made it print the patch location for -v2 if
+    it is present in the file.
+  + Changed targen to ensure that -V and -p options effects are
+    reflected in the resulting expected CIE values of the .ti1
+    file.
+  + Changed targen so that -V parameter also affects single
+    channel, grey wedge, grid &amp; body centered grid point
+    distribution.
+  + Changed colprof to deal with variable grid distribution in a
+    more neuanced way, to reduce overshoot artifacts when the -V
+    parameter is used.
+  + Changed colprof to used a power_like function for the grid (forwarded request 220491 from fcrozat)</comment>
+    <requestid>220524</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>2462f88cd474b72968d7f2e928f12ebf</srcmd5>
+    <version>1.6.3</version>
+    <time>1409300509</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>20ed4a02649e2a4dfc83f19539bcc098</srcmd5>
+    <version>1.6.3</version>
+    <time>1423668667</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284510</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>990a6eef4e984aa2d6dc7011947a9597</srcmd5>
+    <version>1.6.3</version>
+    <time>1425031747</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287640</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5befaeef312151dc6b44a8025e7fe421</srcmd5>
+    <version>1.8.3</version>
+    <time>1462051416</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389759</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4d86ea019f8bc04a239bfaba10b70714</srcmd5>
+    <version>1.9.2</version>
+    <time>1489866518</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479859</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>fd64b9f970d6b94b64c8beaddca7da59</srcmd5>
+    <version>1.9.2</version>
+    <time>1513342850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556472</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>8a61b9c4fbca9f07ac66bc044d85c387</srcmd5>
+    <version>1.9.2</version>
+    <time>1558129133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702868</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>618ee8489b8e7e732f5c63700d9d5539</srcmd5>
+    <version>1.9.2</version>
+    <time>1561194315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710692</requestid>
+  </revision>
+</revisionlist>

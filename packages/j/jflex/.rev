@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>b66cf0d9adb0fd3c87fde6d818656d11</srcmd5>
+    <version>1.4.3</version>
+    <time>1242873469</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>11e7279db5763887a178cf2159319b84</srcmd5>
+    <version>1.4.3</version>
+    <time>1242943076</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>11e7279db5763887a178cf2159319b84</srcmd5>
+    <version>1.4.3</version>
+    <time>1242943076</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>97708504882dd72fa3622fbec31d118e</srcmd5>
+    <version>1.4.3</version>
+    <time>1268924133</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>97708504882dd72fa3622fbec31d118e</srcmd5>
+    <version>1.4.3</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>97708504882dd72fa3622fbec31d118e</srcmd5>
+    <version>1.4.3</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>97708504882dd72fa3622fbec31d118e</srcmd5>
+    <version>1.4.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>96eda3a61476765385783f878e65debf</srcmd5>
+    <version>1.4.3</version>
+    <time>1298028330</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61538 from user oertel
+</comment>
+    <requestid>61538</requestid>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>26a27b1e9e5870817ee140e546c1c093</srcmd5>
+    <version>1.4.3</version>
+    <time>1298028357</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61538
+</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>26a27b1e9e5870817ee140e546c1c093</srcmd5>
+    <version>1.4.3</version>
+    <time>1319182011</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>c0cb033cd472699228aeb831e85a022d</srcmd5>
+    <version>1.4.3</version>
+    <time>1323192038</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>f083be259ad14811b61eb25bd58d2c4d</srcmd5>
+    <version>1.4.3</version>
+    <time>1323192039</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>f083be259ad14811b61eb25bd58d2c4d</srcmd5>
+    <version>1.4.3</version>
+    <time>1340183486</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="22">
+    <srcmd5>f083be259ad14811b61eb25bd58d2c4d</srcmd5>
+    <version>1.4.3</version>
+    <time>1359109123</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="23">
+    <srcmd5>48f2bc1b74ac52a8b87ed9de75e8aee4</srcmd5>
+    <version>1.4.3</version>
+    <time>1378899516</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198289</requestid>
+  </revision>
+  <revision rev="16" vrev="25">
+    <srcmd5>48f2bc1b74ac52a8b87ed9de75e8aee4</srcmd5>
+    <version>1.4.3</version>
+    <time>1379662715</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="26">
+    <srcmd5>0163f2d9ecfa316b153f80df8e96b362</srcmd5>
+    <version>1.4.3</version>
+    <time>1386058007</time>
+    <user>coolo</user>
+    <comment>- conflicts with non-bootstrap variant
+
+- Fix build with junit 4
+  * jflex-junit4.patch
+
+- conflicts with bootstrap variant
+
+- Fix build with junit 4
+  * jflex-junit4.patch</comment>
+    <requestid>209151</requestid>
+  </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>0163f2d9ecfa316b153f80df8e96b362</srcmd5>
+    <version>1.4.3</version>
+    <time>1409301281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="29">
+    <srcmd5>460a1d73a0fcd874cf8fa5e97563845b</srcmd5>
+    <version>1.4.3</version>
+    <time>1507280119</time>
+    <user>dimstar_suse</user>
+    <comment>Don't depend on java-gcj-compat</comment>
+    <requestid>531061</requestid>
+  </revision>
+</revisionlist>

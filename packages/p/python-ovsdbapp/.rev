@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e0e0d02280cc01249a515efa4a55cb36</srcmd5>
+    <version>0.12.2</version>
+    <time>1544264515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656069</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>96681893966175894eb7b8e5178f4209</srcmd5>
+    <version>0.12.3</version>
+    <time>1551952185</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.12.3
+  - Allow read-only Commands to bypass txns in execute()
+  - Convert base commands to ReadOnlyCommand
+  - Move ovsdbapp jobs to its tree</comment>
+    <requestid>682023</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>46a43fec6dc2734db647b69ceff5d6ad</srcmd5>
+    <version>0.15.0</version>
+    <time>1556916186</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.15.0
+  - Update home-page
+  - Check for oslo library usage
+  - Pass posargs to pylint, not flake8
+  - Fix functional tests timeout race condition
+  - Expand retry behavior to cover other python-ovs methods
+  - update pylint to 1.9.2
+  - import zuul job settings from project-config
+  - NBDB API: Add param if_exists for methods using db_remove()
+  - Change openstack-dev to openstack-discuss
+  - Add Gateway_Chassis support
+  - Update reno for stable/rocky
+  - Attempt to fetch the schema from any remote
+  - Fix a typo in docstring
+  - add python 3.6 unit test job
+  - Add WaitEvent to the API
+  - Ensure timeout on queueing transaction
+  - Remove the oslo-utils dependency
+  - Group tests in same class to run in same group
+  - Move ovsdbapp jobs to its tree
+  - Convert base commands to ReadOnlyCommand
+  - fix tox python3 overrides
+  - Allow read-only Commands to bypass txns in execute()
+  - Migrate tempest job to zuul v3 native
+  - ut: Patch get_ident for race transaction test
+  - Make nested transaction thread aware</comment>
+    <requestid>692873</requestid>
+  </revision>
+</revisionlist>

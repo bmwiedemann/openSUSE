@@ -1,0 +1,5 @@
+<package name="kicad-packages3D" project="openSUSE:Factory">
+  <title>3D models for rendering and MCAD integration, for use with KiCAD EDA software.</title>
+  <description>This repository contains 3D models for rendering and MCAD integration, for use with KiCAD EDA software. The model needs a mechanical model source (a manually-modelled or script-generated file); its WRL counterpart file must be obtained as a conversion from the MCAD model.</description>
+  <devel project="electronics" package="kicad-packages3D"/>
+</package>

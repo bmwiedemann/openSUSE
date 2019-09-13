@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b55eae0a1f723d7d9f7411f87b271cc</srcmd5>
+    <version>4.3</version>
+    <time>1304074237</time>
+    <user>saschpe</user>
+    <comment>please add premake4 to factory</comment>
+    <requestid>68121</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a4315cd9b08b603a5cf4c7b4a3ed66eb</srcmd5>
+    <version>4.3</version>
+    <time>1304074255</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68121
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a4315cd9b08b603a5cf4c7b4a3ed66eb</srcmd5>
+    <version>4.3</version>
+    <time>1319182370</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5feca94f3d9953959968c06acbff244f</srcmd5>
+    <version>4.3</version>
+    <time>1323193987</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>57453ddb994ccdb744674512ad0edb0e</srcmd5>
+    <version>4.3</version>
+    <time>1329215180</time>
+    <user>coolo</user>
+    <comment>- use lua51 for factory (forwarded request 103612 from coolo)</comment>
+    <requestid>103623</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>57453ddb994ccdb744674512ad0edb0e</srcmd5>
+    <version>4.3</version>
+    <time>1340184017</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>57453ddb994ccdb744674512ad0edb0e</srcmd5>
+    <version>4.3</version>
+    <time>1359109954</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>57453ddb994ccdb744674512ad0edb0e</srcmd5>
+    <version>4.3</version>
+    <time>1379664071</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea0ef1c65d8ae9d702de6a1eae156d22</srcmd5>
+    <version>4.4beta4</version>
+    <time>1383842276</time>
+    <user>coolo</user>
+    <comment> (forwarded request 205790 from Mailaender)</comment>
+    <requestid>206063</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>ea0ef1c65d8ae9d702de6a1eae156d22</srcmd5>
+    <version>4.4beta4</version>
+    <time>1409302748</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>ee29e6e5da9938efced4533a33b29680</srcmd5>
+    <version>4.4beta4</version>
+    <time>1450955794</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349635</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>2c7a22eddb9f0ac116721f61fe1e27e8</srcmd5>
+    <version>4.4beta4</version>
+    <time>1459845873</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>383634</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>df73e5986d78c5de9ef92ee8e279bed9</srcmd5>
+    <version>4.4beta4</version>
+    <time>1503482098</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518139</requestid>
+  </revision>
+</revisionlist>

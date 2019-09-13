@@ -1,0 +1,13 @@
+<package name="perl-Digest-JHash" project="openSUSE:Factory">
+  <title>Perl extension for 32 bit Jenkins Hashing Algorithm</title>
+  <description>The 'Digest::JHash' module allows you to use the fast JHash hashing
+algorithm developed by Bob Jenkins from within Perl programs. The algorithm
+takes as input a message of arbitrary length and produces as output a
+32-bit &quot;message digest&quot; of the input in the form of an unsigned long
+integer.
+
+Call it a low calorie version of MD5 if you like.
+
+See http://burtleburtle.net/bob/hash/doobs.html for more information.</description>
+  <devel project="devel:languages:perl" package="perl-Digest-JHash"/>
+</package>

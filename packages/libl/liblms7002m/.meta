@@ -1,0 +1,8 @@
+<package name="liblms7002m" project="openSUSE:Factory">
+  <title>Compact LMS7002 library suitable for MCU</title>
+  <description>Compact LMS7002 library suitable for MCU.
+
+</description>
+  <devel project="hardware:sdr" package="liblms7002m"/>
+  <url>http://xtrx.io</url>
+</package>

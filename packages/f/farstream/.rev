@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a9f96ace7616b29bbd5eb8a5cc360d8b</srcmd5>
+    <version>0.1.1</version>
+    <time>1331986854</time>
+    <user>coolo</user>
+    <comment>New package, needed by empathy, license fixed</comment>
+    <requestid>109366</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2248e3761f393ed5f59c6d2ebdfae6c6</srcmd5>
+    <version>0.1.2</version>
+    <time>1333013934</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111691</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2248e3761f393ed5f59c6d2ebdfae6c6</srcmd5>
+    <version>0.1.2</version>
+    <time>1340183320</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1ce21113bf1e32163aeb2db6df83f96f</srcmd5>
+    <version>0.2.0</version>
+    <time>1349454720</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136661</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7bf0cb16e2cab12ac341d17a30cef51a</srcmd5>
+    <version>0.2.1</version>
+    <time>1349944796</time>
+    <user>coolo</user>
+    <comment>Update to 0.2.1 (forwarded request 137226 from Zaitor)</comment>
+    <requestid>137646</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4f701118694f7f02825596fd27fde91c</srcmd5>
+    <version>0.2.2</version>
+    <time>1353402951</time>
+    <user>coolo</user>
+    <comment>Update to 0.2.2 (forwarded request 141498 from Zaitor)</comment>
+    <requestid>141748</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>4f701118694f7f02825596fd27fde91c</srcmd5>
+    <version>0.2.2</version>
+    <time>1359108866</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d652eba42906cb701627e70abf5638df</srcmd5>
+    <version>0.2.3</version>
+    <time>1366983726</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.8.1 to Factory - mostly small bug fixes over the existing 3.8.0 we have</comment>
+    <requestid>173220</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d652eba42906cb701627e70abf5638df</srcmd5>
+    <version>0.2.3</version>
+    <time>1379662324</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>699181d2c4449e5cc4ec2672ffae9bbd</srcmd5>
+    <version>0.2.4</version>
+    <time>1399810578</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 233288 from Zaitor)</comment>
+    <requestid>233363</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>699181d2c4449e5cc4ec2672ffae9bbd</srcmd5>
+    <version>0.2.4</version>
+    <time>1409300856</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>a6d47a432e46fea1dec1df217996358a</srcmd5>
+    <version>0.2.4</version>
+    <time>1411017126</time>
+    <user>coolo</user>
+    <comment>- Add baselibs.conf: provide multi-arch packages.</comment>
+    <requestid>248407</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c396b9558b3dcec6e259a0656de8e194</srcmd5>
+    <version>0.2.6</version>
+    <time>1416347169</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.14.2</comment>
+    <requestid>261774</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3a7299d52ded050753f68ab35f7cb70d</srcmd5>
+    <version>0.2.7</version>
+    <time>1422790135</time>
+    <user>dimstar_suse</user>
+    <comment>Lets try this once more :P (forwarded request 283423 from Zaitor)</comment>
+    <requestid>283426</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4fafef75312092cce915cf4eb12fc8a0</srcmd5>
+    <version>0.2.7</version>
+    <time>1428272755</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294309</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fee394f73128202a402d19c117d9d9d6</srcmd5>
+    <version>0.2.8</version>
+    <time>1458470865</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373194</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>cd12cd1f33b8dc9265c8e0aba1e4f2c3</srcmd5>
+    <version>0.2.8</version>
+    <time>1521051867</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583586 from dimstar)</comment>
+    <requestid>584749</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>8a06de9202e22fea42ed6a1546914a03</srcmd5>
+    <version>0.2.8</version>
+    <time>1545223562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657456</requestid>
+  </revision>
+</revisionlist>

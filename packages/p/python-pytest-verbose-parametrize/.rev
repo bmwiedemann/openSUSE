@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb797e0cead93f67d4e380d5278b2d69</srcmd5>
+    <version>1.5.1</version>
+    <time>1553263741</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v1.5.1
+</comment>
+    <requestid>687304</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>de604c2a5b7dd052549b0a637bca7dfe</srcmd5>
+    <version>1.7.0</version>
+    <time>1559581012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * support pytest 4</comment>
+    <requestid>707086</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>55d85aaff59c6d750520777f4f5f2601</srcmd5>
+    <version>1.7.0</version>
+    <time>1566479154</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip integration tests</comment>
+    <requestid>725258</requestid>
+  </revision>
+</revisionlist>

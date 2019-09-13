@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40852948e89d2cbe285f6251f55f379f</srcmd5>
+    <version>1.4+svn108</version>
+    <time>1405520373</time>
+    <user>coolo</user>
+    <comment>optional dependency of: openvpn, mysql, squashfs, dovecot.. upcoming systemd-journal versions</comment>
+    <requestid>239750</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a9ba5a36c7b084348999f93a1d9bc9a1</srcmd5>
+    <version>1.2.0.r119</version>
+    <time>1405611109</time>
+    <user>coolo</user>
+    <comment>- Update to svn revision 119</comment>
+    <requestid>241281</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a9ba5a36c7b084348999f93a1d9bc9a1</srcmd5>
+    <version>1.2.0.r119</version>
+    <time>1409301841</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6d8e08cc6fddc14ec765b6b97a8e8701</srcmd5>
+    <version>1.3.1+svn123</version>
+    <time>1412533864</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.3.1+svn123</comment>
+    <requestid>253633</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>54e001a4c7165e3ea3eab327f9a87a50</srcmd5>
+    <version>1.4.0+svn124</version>
+    <time>1417809846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4+svn124</comment>
+    <requestid>263956</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5dc6de34aac97d9f4f5b0a383836fc84</srcmd5>
+    <version>131</version>
+    <time>1460028947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 131 (library 1.7) (boo#973735)
+* slightly improved decoding speed
+* lz4frame API is included in liblz4
+* new -m command line option to compress multiple files
+* new lz4 and lz4hc compression API (old one retained)</comment>
+    <requestid>383424</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>44ed0202a7586a36defa95ea3f353f59</srcmd5>
+    <version>131</version>
+    <time>1484559262</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf: provide liblz4-1_7 as -32bit compatibility
+  package, required by systemd-32bit. (forwarded request 450469 from dimstar)</comment>
+    <requestid>450474</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3dac39a1ee1e21af7d8ae1000f3beef6</srcmd5>
+    <version>1.7.5</version>
+    <time>1500892375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstrema release 1.7.5 (2017-01-03)</comment>
+    <requestid>508431</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9aba7a59681159e4132beff9e34deddb</srcmd5>
+    <version>1.7.5</version>
+    <time>1503392724</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517316</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0ac79cd3f0f9aa55425c8010fc2d0c36</srcmd5>
+    <version>1.8.0</version>
+    <time>1503999644</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8.0</comment>
+    <requestid>518774</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>63a270058155c3bd39914877ec9ff332</srcmd5>
+    <version>1.8.1.2</version>
+    <time>1518281664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8.1.2</comment>
+    <requestid>573842</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>674f03a76c373237973c36d067b29a8e</srcmd5>
+    <version>1.8.2</version>
+    <time>1530567044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619839</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9b015eee8b200c16ee0d54cbf7f24698</srcmd5>
+    <version>1.8.3</version>
+    <time>1540447860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641834</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4ccb27e50b5213d67681578560610586</srcmd5>
+    <version>1.9.1</version>
+    <time>1561195289</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>710139</requestid>
+  </revision>
+</revisionlist>

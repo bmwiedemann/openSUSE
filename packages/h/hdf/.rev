@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38dc4db6f43a3a8b3fdb0ea86b12bf83</srcmd5>
+    <version>4.2.11</version>
+    <time>1440337368</time>
+    <user>coolo</user>
+    <comment>This includes libraries and executables to read and write HDF version 4 files.  This is one of the standard open file formats for scientific data.  The netcdf package, which is already in openSUSE:Factory, has build-time support for this file format, which in turn provides support to many user-facing programs and libraries.  Once this package is accepted a new version of the netcdf package built with support for this format will be submitted.</comment>
+    <requestid>319008</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>714c373be8618186078ed96ac4d4c27e</srcmd5>
+    <version>4.2.11</version>
+    <time>1440658619</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325776</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b5b8ec4caab7f1d943783666f5fc199c</srcmd5>
+    <version>4.2.11</version>
+    <time>1446209034</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341551</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>03077f8190395258323317ca6eaf396c</srcmd5>
+    <version>4.2.11</version>
+    <time>1455790031</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359663</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9fe783c352d1224427da2fb9c8db22de</srcmd5>
+    <version>4.2.11</version>
+    <time>1469382749</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412490</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>56dfef505425923abd5a251f682c1d51</srcmd5>
+    <version>4.2.11</version>
+    <time>1470413785</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416248</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>39881cbc05939e35d636a3092ddfe23e</srcmd5>
+    <version>4.2.11</version>
+    <time>1504814895</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519909</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>0ec3d0f8ddfa94560bf4ad6add6fee4a</srcmd5>
+    <version>4.2.11</version>
+    <time>1508197824</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533182</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>752bf618dd72aa7bf0ca59db48573c98</srcmd5>
+    <version>4.2.11</version>
+    <time>1511273986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542675</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>6575a25539602556e033d0f38907ae46</srcmd5>
+    <version>4.2.11</version>
+    <time>1521499122</time>
+    <user>dimstar_suse</user>
+    <comment>- add hdf-ppc64le.patch (bsc#1085754)
+  properly detect ppc64le as a little endian platform (forwarded request 588136 from oertel)</comment>
+    <requestid>588449</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>d40397c76eda9cdf7309542f0a4f440e</srcmd5>
+    <version>4.2.11</version>
+    <time>1568025397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729261</requestid>
+  </revision>
+</revisionlist>

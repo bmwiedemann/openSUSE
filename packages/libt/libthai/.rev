@@ -1,0 +1,296 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d899743d251251a6b57d4dbf38af150e</srcmd5>
+    <version>0.1.4</version>
+    <time>1168903403</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>055278c7a34474adc60e16915d510bb8</srcmd5>
+    <version>0.1.9</version>
+    <time>1207693182</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="9">
+    <srcmd5>5f453a9ed2c4f2044efc28aadfbec558</srcmd5>
+    <version>0.1.9</version>
+    <time>1211414446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="37">
+    <srcmd5>5f453a9ed2c4f2044efc28aadfbec558</srcmd5>
+    <version>0.1.9</version>
+    <time>1211414446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="38">
+    <srcmd5>ce90ebae35de835095eb0f64d0efd643</srcmd5>
+    <version>0.1.9</version>
+    <time>1232327456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="40">
+    <srcmd5>ce90ebae35de835095eb0f64d0efd643</srcmd5>
+    <version>0.1.9</version>
+    <time>1232327456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>77765e7153f8953c6d8a6920e3264d4e</srcmd5>
+    <version>0.1.13</version>
+    <time>1266507103</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libthai based on submit request 32420 from user vuntz
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>03d08da5bcfb1737065f2b011eb132b6</srcmd5>
+    <version>0.1.14</version>
+    <time>1267751354</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libthai based on submit request 33974 from user dimstar
+</comment>
+    <requestid>33974</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d847e6a6c42e52df664214748a51c2cd</srcmd5>
+    <version>0.1.14</version>
+    <time>1268924744</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>d847e6a6c42e52df664214748a51c2cd</srcmd5>
+    <version>0.1.14</version>
+    <time>1278667363</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>d847e6a6c42e52df664214748a51c2cd</srcmd5>
+    <version>0.1.14</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>d847e6a6c42e52df664214748a51c2cd</srcmd5>
+    <version>0.1.14</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>05d35bfd4068334c71b97dc1fa75076d</srcmd5>
+    <version>0.1.14</version>
+    <time>1298402784</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62507 from user vuntz
+</comment>
+    <requestid>62507</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>f4d7624f5a543d1a10efa0b7253d387f</srcmd5>
+    <version>0.1.14</version>
+    <time>1298402796</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62507
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d8b032fa77ddb1a0980815bf121a18a8</srcmd5>
+    <version>0.1.15</version>
+    <time>1304405984</time>
+    <user>saschpe</user>
+    <comment>Update to 0.1.15 (forwarded request 68873 from dimstar)</comment>
+    <requestid>69296</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1d18f03c2690c964a75da2f0e8927caa</srcmd5>
+    <version>0.1.15</version>
+    <time>1304405998</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69296
+</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>4ecc3ca7ddd85361606726ffefd12f5d</srcmd5>
+    <version>0.1.15</version>
+    <time>1310116369</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F, including GNOME 3.1.3</comment>
+    <requestid>75778</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>06e448ac5a15d75cd42f1738501916a2</srcmd5>
+    <version>0.1.15</version>
+    <time>1310116383</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75778
+</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>42fc4fe0ab020d043357ffa41049174c</srcmd5>
+    <version>0.1.15</version>
+    <time>1310128566</time>
+    <user>saschpe</user>
+    <comment>Forward, with type fixed</comment>
+    <requestid>75837</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>de29c07b407c8ada05fe3dd004eea116</srcmd5>
+    <version>0.1.15</version>
+    <time>1310128586</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75837
+</comment>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>de29c07b407c8ada05fe3dd004eea116</srcmd5>
+    <version>0.1.15</version>
+    <time>1319182140</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>7a77a64a908d190b310c5cd3f9e51bd5</srcmd5>
+    <version>0.1.15</version>
+    <time>1323192355</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d951de93b66bef29404eb665c1bedd6b</srcmd5>
+    <version>0.1.16</version>
+    <time>1327093658</time>
+    <user>coolo</user>
+    <comment>Pushing small bits of G:F</comment>
+    <requestid>100719</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>20fa871ea949c6837640a01614f2cf3e</srcmd5>
+    <version>0.1.17</version>
+    <time>1330453486</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>107283</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>20fa871ea949c6837640a01614f2cf3e</srcmd5>
+    <version>0.1.17</version>
+    <time>1340183643</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>436149cd591f4287018be126a0548aed</srcmd5>
+    <version>0.1.18</version>
+    <time>1340626453</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.1.18:
+  + Updated word break dictionary.</comment>
+    <requestid>125580</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>436149cd591f4287018be126a0548aed</srcmd5>
+    <version>0.1.18</version>
+    <time>1359109363</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0a8fd53a4bb1e41dfcd16024ef7b700c</srcmd5>
+    <version>0.1.19</version>
+    <time>1364240224</time>
+    <user>coolo</user>
+    <comment>Push parts from GNOME:Factory</comment>
+    <requestid>160895</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>0a8fd53a4bb1e41dfcd16024ef7b700c</srcmd5>
+    <version>0.1.19</version>
+    <time>1379663111</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c63983aa4158fdf9887b4449ad5a2442</srcmd5>
+    <version>0.1.20</version>
+    <time>1388395175</time>
+    <user>coolo</user>
+    <comment>Update to 0.1.20 - OOOLD hanging in G:Next.. time to move on (forwarded request 212224 from Zaitor)</comment>
+    <requestid>212278</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>c63983aa4158fdf9887b4449ad5a2442</srcmd5>
+    <version>0.1.20</version>
+    <time>1409301734</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>aa3951363b8f35d6c0c6479874926777</srcmd5>
+    <version>0.1.21</version>
+    <time>1412098583</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.13.90 for staging and openQA - DO NOT CHECKING - PRERELEASE SOFTWARE</comment>
+    <requestid>246234</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9566d0dcef29246c030d1efcb62b11d9</srcmd5>
+    <version>0.1.22</version>
+    <time>1431753227</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307253</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>39ca9b039428ad4796e77bbdcb3921e3</srcmd5>
+    <version>0.1.23</version>
+    <time>1447882255</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344274</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f3bd1ff157c872c2890cffed7b4bca99</srcmd5>
+    <version>0.1.24</version>
+    <time>1449383146</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346818</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>be80448b0a35a0ac426f9ac620ff744b</srcmd5>
+    <version>0.1.25</version>
+    <time>1468482156</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407218</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>89d899f5ddbfbffa3616a7ac41f1b74b</srcmd5>
+    <version>0.1.26</version>
+    <time>1482784998</time>
+    <user>lnussel_factory</user>
+    <comment>Resub with sourceurl pointing to https, seems the &quot;translation&quot; is a bit to slow for the obs to be happy</comment>
+    <requestid>447055</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>24122f951767b45be16780315a4d0ede</srcmd5>
+    <version>0.1.27</version>
+    <time>1509732350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.27:
+  + Fix another reproducibility issue in the generated
+    documentation, caught by Debian Reproducible.
+  + Updated word break dictionary. (forwarded request 538032 from zhangxiaofei)</comment>
+    <requestid>538070</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>2dc09ebff7e00a7f241c931face95213</srcmd5>
+    <version>0.1.27</version>
+    <time>1520502723</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SRPM group. Update descriptions. (forwarded request 583019 from jengelh)</comment>
+    <requestid>583046</requestid>
+  </revision>
+</revisionlist>

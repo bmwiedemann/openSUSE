@@ -1,0 +1,7 @@
+<package name="silo" project="openSUSE:Factory">
+  <title>Bootloader for SPARC systems</title>
+  <description>SILO, the Sparc Improved boot LOader, is a booting loader program
+that runs from the PROM of SPARC (32-bit) and UltraSPARC (64-bit)
+based systems.</description>
+  <devel project="Base:System" package="silo"/>
+</package>

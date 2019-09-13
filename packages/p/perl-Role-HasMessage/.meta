@@ -1,0 +1,7 @@
+<package name="perl-Role-HasMessage" project="openSUSE:Factory">
+  <title></title>
+  <description>
+
+  </description>
+  <devel project="devel:languages:perl" package="perl-Role-HasMessage"/>
+</package>

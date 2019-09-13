@@ -1,0 +1,5 @@
+<package name="python-ebcdic" project="openSUSE:Factory">
+  <title>python-ebcdic</title>
+  <description>Additional EBCDIC codecs for Python</description>
+  <devel project="devel:languages:python" package="python-ebcdic"/>
+</package>

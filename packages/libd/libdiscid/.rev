@@ -1,0 +1,264 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c905ed70d356beeaf837e08d5bd67df9</srcmd5>
+    <version>0.1.1</version>
+    <time>1192329392</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>711c1dc4e070f45e998e031f371db7ea</srcmd5>
+    <version>0.1.1</version>
+    <time>1196899613</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3707a5a2845c875d0ab7cb74d45f4a22</srcmd5>
+    <version>0.2.1</version>
+    <time>1218754507</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3707a5a2845c875d0ab7cb74d45f4a22</srcmd5>
+    <version>0.2.1</version>
+    <time>1218754507</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>05fe01f25f1c7ff595554d059affa86e</srcmd5>
+    <version>0.2.1</version>
+    <time>1262129059</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libdiscid based on submit request 27753 from user tiwai
+</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>78818ab7493fa404b2d9dc77bd9fe014</srcmd5>
+    <version>0.2.1</version>
+    <time>1268924537</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>78818ab7493fa404b2d9dc77bd9fe014</srcmd5>
+    <version>0.2.1</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>78818ab7493fa404b2d9dc77bd9fe014</srcmd5>
+    <version>0.2.1</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>78818ab7493fa404b2d9dc77bd9fe014</srcmd5>
+    <version>0.2.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>afbfa443b361c3bf53f62813280dd87c</srcmd5>
+    <version>0.2.1</version>
+    <time>1305901384</time>
+    <user>saschpe</user>
+    <comment>- Added 32bit compatibility libraries
+- Fixed spec file line breaks
+- Added BuildRequires:  pkg-config (fix for RPMLINT warning)
+
+The line break problem is breaking the &quot;diff and submit&quot; web interface, so I am submitting it this way. (forwarded request 69476 from TheBlackCat)</comment>
+    <requestid>70805</requestid>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>a152de6fa3a330854d8a652eb33a0aff</srcmd5>
+    <version>0.2.1</version>
+    <time>1305901394</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70805
+</comment>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>a152de6fa3a330854d8a652eb33a0aff</srcmd5>
+    <version>0.2.1</version>
+    <time>1319182084</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bb956d2bda59c92c057cda080313a8f3</srcmd5>
+    <version>0.2.2</version>
+    <time>1325231154</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>98331</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ed7a0b45fbdbb23a2ff773b5c0a5b6a6</srcmd5>
+    <version>0.2.2</version>
+    <time>1327922796</time>
+    <user>coolo</user>
+    <comment>- fix baselibs.conf</comment>
+    <requestid>101896</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>ed7a0b45fbdbb23a2ff773b5c0a5b6a6</srcmd5>
+    <version>0.2.2</version>
+    <time>1340183575</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>ee34202520d706736fd3e6c5b8147aef</srcmd5>
+    <version>0.2.2</version>
+    <time>1343734453</time>
+    <user>coolo</user>
+    <comment>- autotools fixes, all C files must include config.h
+- Use openSSL for crypto, we have waay too many internal
+  implementations of common digest algos.
+- Run make check (forwarded request 129383 from elvigia)</comment>
+    <requestid>129399</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4608dddbeb8930bb4e0a11b7f8f4586e</srcmd5>
+    <version>0.3.0</version>
+    <time>1358664918</time>
+    <user>coolo</user>
+    <comment>- updated to 0.3.0
+  - Fixed reading of 99 track CDs on Mac OS X.
+  - Added API for reading ISRCs and MCNs (implemented on Windows and Mac OS X).
+  - Added Solaris, OpenBSD and kFreeBSD support.
+- libdiscid-visibility.patch, libdiscid-no-crypto.patch
+  Adapted to the 0.3 release</comment>
+    <requestid>148807</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>4608dddbeb8930bb4e0a11b7f8f4586e</srcmd5>
+    <version>0.3.0</version>
+    <time>1359109258</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2749972f91e63e307913fc167e781ef8</srcmd5>
+    <version>0.3.2</version>
+    <time>1360762732</time>
+    <user>coolo</user>
+    <comment>updated to libdiscid 0.3.2
+
+Hopefully the changelog is somewhat correct this time.
+I finally managed to use osc, rather than changing everything &quot;online&quot;. (forwarded request 155252 from JonnyJD)</comment>
+    <requestid>155298</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>00df7e97d32b54e33e9bca027f76c7e5</srcmd5>
+    <version>0.4.1</version>
+    <time>1362900197</time>
+    <user>coolo</user>
+    <comment>- updated to 0.4.1
+ - LIB-23: add has_feature() and get_feature_list() to API (platform check)
+ - add get_version_string() to API
+ - CMake : add FreeBSD, NetBSD, OpenBSD -&gt; all platforms supported
+ - LIB-32: change libtool from -version-info to -version-name (forwarded request 158049 from JonnyJD)</comment>
+    <requestid>158055</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>af6de28dec39cdb66669090007b19f72</srcmd5>
+    <version>0.5.0</version>
+    <time>1366214300</time>
+    <user>coolo</user>
+    <comment>- update to version 0.5.0:
+ - LIB-29: add read_sparse() for faster reading again
+ - LIB-35: add HAVE_SPARSE_READ and VERSION_* defines
+ - LIB-36: hide internal symbols on Linux/Unix
+- libdiscid-visibility.patch removed (implemented upstream)
+- libdiscid-no-crypto.patch:
+ - refreshed via quilt
+ - provided meta information: no upstream, opensuse feature (forwarded request 171085 from JonnyJD)</comment>
+    <requestid>171157</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d081679f3f4cad94ae854ff99a1d109d</srcmd5>
+    <version>0.5.2</version>
+    <time>1375728392</time>
+    <user>coolo</user>
+    <comment>- update to version 0.5.2:
+ - LIB-40: discid_get_webservice_url() (web service version 1) is deprecated
+           please use libmusicbrainz to gather metadata by disc ID
+ - LIB-7:  rewrote data track handling, releases with multiple data tracks
+           This also fixes LIB-18 (no ID for DVDs) and LIB-9 (PS/PS2 CDs)
+ - LIB-44: fix invalid disc IDs on first read of multi-session discs
+ - LIB-26: add a better test suite, including valgrind memcheck target
+ - LIB-37: Autotools optimization (non-recursive build etc.)
+ - print time information in the discid example
+- libdiscid-no-crypto.patch: refreshed via quilt (forwarded request 185592 from JonnyJD)</comment>
+    <requestid>185933</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>d081679f3f4cad94ae854ff99a1d109d</srcmd5>
+    <version>0.5.2</version>
+    <time>1379662928</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>d081679f3f4cad94ae854ff99a1d109d</srcmd5>
+    <version>0.5.2</version>
+    <time>1409301536</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6ecf5b97ee69e9525ad10e272215d676</srcmd5>
+    <version>0.6.1</version>
+    <time>1424430052</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf as source 
+
+- Update to version 0.6.1
+  * LIB-59: windows: fix bug preventing ISRC reads
+- Changes from version 0.6.0
+  * LIB-41: add discid_get_troc_string() for fuzzy toc lookup
+  * LIB-54: add libmusicbrainz example with fuzzy toc lookup
+  * LIB-43: windows: the default drive is the first cd drive letter
+  * LIB-45: Linux/BSD/Solaris: try several possible default device names
+  * LIB-28: Mac: allow drive numbers as devices, default now &quot;1&quot;
+  * LIB-55, LIB-56: allow drive numbers for Windows and Linux
+  * LIB-53: discid_get_submission_url() returns the new NGS url
+    currently no functional change, the old url was redirected
+  * LIB-52: more validation for parameters of discid_put()
+  * LIB-48: assert successful read/put when API is used
+  * the discisrc example prints the name of the device used
+- Add pkgconfig(libmusicbrainz5) build require; new upstream dependency
+- Update libdiscid-no-crypto.patch</comment>
+    <requestid>286474</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>eae0d34222b2519fc2f936a8eabd9f97</srcmd5>
+    <version>0.6.1</version>
+    <time>1468869530</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407715</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>96c0666244dcfdf35ab9e0dfd98dc46b</srcmd5>
+    <version>0.6.1</version>
+    <time>1491907109</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482528</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>93e85650bd8c919782a8147a8557ef2f</srcmd5>
+    <version>0.6.2</version>
+    <time>1499880673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.2:
+  * ISRC and MCN support on BSD
+  * LIB-60: fix make check for default device on generic/unknown platform
+  * make Doxygen output reproducible (no timestamps)
+  * remove newline for Linux device &quot;1&quot; from proc
+- Refresh patch libdiscid-no-crypto.patch (forwarded request 508746 from scarabeus_iv)</comment>
+    <requestid>508747</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="SDLmm" project="openSUSE:Factory">
+  <title>Simple DirectMedia Layer Glue for C++</title>
+  <description>SDLmm aims to stay as close as possible to the C API while taking
+advantage of native C++ features like object oriented programming. It
+also aims to be as platform independent as possible. In other words, it
+tries to support every platform that SDL supports.</description>
+  <devel project="games" package="SDLmm"/>
+</package>

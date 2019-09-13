@@ -1,0 +1,31 @@
+<package name="filezilla" project="openSUSE:Factory">
+  <title>A GUI FTP and SFTP Client</title>
+  <description>FileZilla is a modern and powerful FTP client for Windows and Linux.
+FileZilla development focuses on high usability while also supporting
+as many useful features as possible. FileZilla is &quot;Open Source&quot; under
+the GPL license.
+
+Some of the main features are: * Continuing interrupted
+   up-/downloads
+
+* Managing different FTP sites
+
+* Modifiable Commands
+
+* Keep-Alive-System
+
+* Timeout detection
+
+* Firewall support
+
+* SOCKS4/5 and HTTP 1.1 proxy support
+
+* SSL support (secure connections)
+
+* SFTP support
+
+* Upload/Download queue
+
+* Drag&amp;Drop support</description>
+  <devel project="network" package="filezilla"/>
+</package>

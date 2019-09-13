@@ -1,0 +1,5 @@
+<package name="etcd" project="openSUSE:Factory">
+  <title>etcd</title>
+  <description>Distributed reliable key-value store for the most critical data of a distributed system https://coreos.com/etcd/docs/latest/</description>
+  <devel project="devel:kubic" package="etcd"/>
+</package>

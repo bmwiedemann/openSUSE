@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b83043c07acd7c8ab4024255d8985dc</srcmd5>
+    <version>4.1.2</version>
+    <time>1332500992</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>109035</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9b83043c07acd7c8ab4024255d8985dc</srcmd5>
+    <version>4.1.2</version>
+    <time>1340184089</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>9b83043c07acd7c8ab4024255d8985dc</srcmd5>
+    <version>4.1.2</version>
+    <time>1359110115</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ca96819168b54bec00624cfe55c1aebf</srcmd5>
+    <version>4.2.0</version>
+    <time>1359466461</time>
+    <user>coolo</user>
+    <comment>Made required changes (forwarded request 149859 from posophe)</comment>
+    <requestid>149860</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4126405dd687fd9ea05b954de862f2c5</srcmd5>
+    <version>4.2.1</version>
+    <time>1360577608</time>
+    <user>coolo</user>
+    <comment>Update  (forwarded request 154999 from posophe)</comment>
+    <requestid>155084</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8f8e146484b97b313dcd14501ccbb9e1</srcmd5>
+    <version>4.2.1</version>
+    <time>1365140215</time>
+    <user>coolo</user>
+    <comment>added a python3 spec file. Still needs a linkpac in dpl for the python3 package. (forwarded request 161673 from apersaud)</comment>
+    <requestid>161689</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>57831010d292664109c6e9601a2401a1</srcmd5>
+    <version>4.2.1</version>
+    <time>1371650036</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179994</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>57831010d292664109c6e9601a2401a1</srcmd5>
+    <version>4.2.1</version>
+    <time>1379664275</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>483d7c5dbd9ccca0250bd14a94525bf1</srcmd5>
+    <version>4.2.1</version>
+    <time>1383035704</time>
+    <user>coolo</user>
+    <comment>- Don't install global &quot;tests&quot; module into python_sitelib
+
+- Require python-setuptools instead of distribute (upstreams merged)</comment>
+    <requestid>205010</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5ba28e654f7d0d6de73d3074b6f8c931</srcmd5>
+    <version>4.2.2</version>
+    <time>1385391820</time>
+    <user>coolo</user>
+    <comment>update + sphinx (forwarded request 208169 from posophe)</comment>
+    <requestid>208170</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>5ba28e654f7d0d6de73d3074b6f8c931</srcmd5>
+    <version>4.2.2</version>
+    <time>1409302982</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>0faecf410ed6f7bfae8c7ad0b44d20d6</srcmd5>
+    <version>4.2.2</version>
+    <time>1518187943</time>
+    <user>dimstar_suse</user>
+    <comment>- Set PYTHONPATH to fix doc build</comment>
+    <requestid>574450</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>7b4a9512e6f35cf98fc4e98a2ca3c5c4</srcmd5>
+    <version>4.2.2</version>
+    <time>1533412462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627313</requestid>
+  </revision>
+</revisionlist>

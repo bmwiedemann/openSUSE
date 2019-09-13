@@ -1,0 +1,6 @@
+<package name="texlive-cjk-latex-extras" project="openSUSE:Factory">
+  <title>Extra fonts and scripts for CJK LaTeX</title>
+  <description>This package contains some extra font setup files and scripts to
+automatically generate fonts and setup files to use with CJK LaTeX.</description>
+  <devel project="M17N" package="texlive-cjk-latex-extras"/>
+</package>

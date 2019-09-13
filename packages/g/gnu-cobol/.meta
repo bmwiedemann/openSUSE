@@ -1,0 +1,5 @@
+<package name="gnu-cobol" project="openSUSE:Factory">
+  <title>GNU COBOL</title>
+  <description>GNU Cobol (formerly OpenCOBOL) is a free COBOL compiler. cobc translates COBOL to executable using intermediate C sources, providing full access to nearly all C libraries.</description>
+  <devel project="devel:languages:misc" package="gnu-cobol"/>
+</package>

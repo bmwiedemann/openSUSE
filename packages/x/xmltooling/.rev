@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c399686d1d4e3905ea1f673dcbe8b6cf</srcmd5>
+    <version>1.5.5</version>
+    <time>1440871461</time>
+    <user>coolo</user>
+    <comment>The new package as a part of Shibboleth project (fate#318304 for SLE12SP1)</comment>
+    <requestid>320369</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b3cd56ca5bd601a3d99d64cefce79b7</srcmd5>
+    <version>1.5.6</version>
+    <time>1441727110</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329545</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b859ac521ba14c5d4100ae4408999684</srcmd5>
+    <version>1.5.6</version>
+    <time>1486635459</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455324</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>06900af67dda790584a5a0e42cd470f9</srcmd5>
+    <version>1.5.6</version>
+    <time>1487149578</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456510</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a439265b4ad556bfd7a6f9737d68354f</srcmd5>
+    <version>1.6.0</version>
+    <time>1507197395</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529916</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9a0ca1d516f60e65146c3c4ac5d2490c</srcmd5>
+    <version>1.6.0</version>
+    <time>1510322330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540429</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b9555c95a2956e9fd1f59952353c6e1e</srcmd5>
+    <version>1.6.2</version>
+    <time>1511817367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545293</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>61f9a538d017006c40abfc1e7089e7c7</srcmd5>
+    <version>1.6.3</version>
+    <time>1516634435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568061</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>812ea2d9516c7958e47ca64a2cd99f94</srcmd5>
+    <version>1.6.4</version>
+    <time>1519844593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580972</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4a467b61d5ef829d58f8070c7ffb1764</srcmd5>
+    <version>3.0.2</version>
+    <time>1543953248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652459</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>82220dec2babf54562845198dea76f1d</srcmd5>
+    <version>3.0.3</version>
+    <time>1549916934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673396</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0cd8004645f3fb31471d45e02d2860b6</srcmd5>
+    <version>3.0.4</version>
+    <time>1553263749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687305</requestid>
+  </revision>
+</revisionlist>

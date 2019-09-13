@@ -1,0 +1,294 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a40fb2f13379a3cf222b6e53c2748820</srcmd5>
+    <version>0.9.3</version>
+    <time>1168903014</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="41">
+    <srcmd5>a7949be402f8e1a3a5bf13888c156a21</srcmd5>
+    <version>0.9.3</version>
+    <time>1169134236</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="52">
+    <srcmd5>7b28eb001069aa27f2ff6639c8530896</srcmd5>
+    <version>0.9.3</version>
+    <time>1176716438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="58">
+    <srcmd5>2e03efe88ab7d4679a57ba179696db96</srcmd5>
+    <version>0.9.3</version>
+    <time>1178167389</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="61">
+    <srcmd5>dad88864d21ee1b578a9749c9b274ced</srcmd5>
+    <version>0.9.3</version>
+    <time>1178230515</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="63">
+    <srcmd5>7863fc7b3f6acb753de99f08ff11e535</srcmd5>
+    <version>0.9.3</version>
+    <time>1178541529</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="78">
+    <srcmd5>95b8af0669b5262482b7e3aa618032e4</srcmd5>
+    <version>0.9.3</version>
+    <time>1180997282</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="128">
+    <srcmd5>dc4e8988624c810c1ae67bac4fde9211</srcmd5>
+    <version>0.9.3</version>
+    <time>1193064008</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="248">
+    <srcmd5>dc4e8988624c810c1ae67bac4fde9211</srcmd5>
+    <version>0.9.3</version>
+    <time>1193064008</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="249">
+    <srcmd5>ad104a3a91bc0fbd483843fec6337e2a</srcmd5>
+    <version>0.9.3</version>
+    <time>1242693736</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="251">
+    <srcmd5>ad104a3a91bc0fbd483843fec6337e2a</srcmd5>
+    <version>0.9.3</version>
+    <time>1242693736</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="252">
+    <srcmd5>4d5c2919b6ee003b1ea45a51537b3039</srcmd5>
+    <version>0.9.3</version>
+    <time>1268923960</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="253">
+    <srcmd5>11b341939951127b6d3d4844c3227973</srcmd5>
+    <version>0.9.3</version>
+    <time>1270028188</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/hydrogen based on submit request 36009 from user coolo
+</comment>
+    <requestid>36009</requestid>
+  </revision>
+  <revision rev="14" vrev="255">
+    <srcmd5>11b341939951127b6d3d4844c3227973</srcmd5>
+    <version>0.9.3</version>
+    <time>1278667350</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="256">
+    <srcmd5>11b341939951127b6d3d4844c3227973</srcmd5>
+    <version>0.9.3</version>
+    <time>1278678582</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="259">
+    <srcmd5>11b341939951127b6d3d4844c3227973</srcmd5>
+    <version>0.9.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0dc1072a6d8990549d1ed8d7e0898727</srcmd5>
+    <version>0.9.5</version>
+    <time>1301646164</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65713 from user coolo
+</comment>
+    <requestid>65713</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>7da8784257c7b89a2432d9de41450535</srcmd5>
+    <version>0.9.5</version>
+    <time>1301646180</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65713
+</comment>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>cac4b89d2bef7a5700e055138a062755</srcmd5>
+    <version>0.9.5</version>
+    <time>1313491066</time>
+    <user>saschpe</user>
+    <comment>- make it build even if python reports platform as linux3 (forwarded request 78833 from oertel)</comment>
+    <requestid>78975</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>95ea48698de7b9bf7d55821712ef65b2</srcmd5>
+    <version>0.9.5</version>
+    <time>1313491074</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78975
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d886394ee9275b97295a53b0d0ff7e14</srcmd5>
+    <version>0.9.6</version>
+    <time>1318939808</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>87754</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>d886394ee9275b97295a53b0d0ff7e14</srcmd5>
+    <version>0.9.6</version>
+    <time>1319181976</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>67200fbf9e2753cd34fc36d2d8d09c00</srcmd5>
+    <version>0.9.6</version>
+    <time>1319652996</time>
+    <user>coolo</user>
+    <comment>- fix another link into %buildroot
+
+- Changed build to release due to the default debug build being
+  sluggish.
+
+- Gave libhydrogen-core.so a SONAME and fixed the &lt;= 11.4 build 
+  which needed Qt webkit to have QtXmlPatterns with
+  BuildRequires: pkgconfig(QtXmlPatterns) (forwarded request 89389 from coolo)</comment>
+    <requestid>89390</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>a146fcf16df30e21c8ab15f9348e94ce</srcmd5>
+    <version>0.9.6</version>
+    <time>1323191914</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>987c9341ef6fe0f7de6d8b91065ba8ac</srcmd5>
+    <version>0.9.6</version>
+    <time>1332239265</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 109837 from dimstar)</comment>
+    <requestid>109860</requestid>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>987c9341ef6fe0f7de6d8b91065ba8ac</srcmd5>
+    <version>0.9.6</version>
+    <time>1340183444</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="10">
+    <srcmd5>987c9341ef6fe0f7de6d8b91065ba8ac</srcmd5>
+    <version>0.9.6</version>
+    <time>1359109057</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="11">
+    <srcmd5>56215a4f69f26d7dd5b639d95587292b</srcmd5>
+    <version>0.9.6</version>
+    <time>1370431690</time>
+    <user>coolo</user>
+    <comment>- remove build requirements subversion and rsync (forwarded request 177190 from AndreasStieger)</comment>
+    <requestid>177276</requestid>
+  </revision>
+  <revision rev="29" vrev="13">
+    <srcmd5>56215a4f69f26d7dd5b639d95587292b</srcmd5>
+    <version>0.9.6</version>
+    <time>1379662628</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="14">
+    <srcmd5>7c6fc932aaf985c51625a5fbcb3f9b56</srcmd5>
+    <version>0.9.6</version>
+    <time>1385290988</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.6-beta3, adapt patches
+- Upstream changes:
+  * Release 0.9.6
+  * new build system (cmake)
+  * add undo for song/pattern editor
+  * jack-session support
+  * jack-midi support
+  * several bug fixes
+  * tabbed interface
+  * several small changes to the GUI
+  * improve ExportSong add use of TimeLineBPM,
+    RubberbandBatch processor and different types of resample interpolation
+ (forwarded request 208032 from wolfi323)</comment>
+    <requestid>208040</requestid>
+  </revision>
+  <revision rev="31" vrev="16">
+    <srcmd5>7c6fc932aaf985c51625a5fbcb3f9b56</srcmd5>
+    <version>0.9.6</version>
+    <time>1409301186</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="17">
+    <srcmd5>c4e8816026ae46abf85e5657a53e1551</srcmd5>
+    <version>0.9.6</version>
+    <time>1410967504</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249244</requestid>
+  </revision>
+  <revision rev="33" vrev="18">
+    <srcmd5>5c870a23a5c18af4d10eaf049604c74a</srcmd5>
+    <version>0.9.6</version>
+    <time>1415636927</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260610</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>88d65a9c3705f645ad24473774880806</srcmd5>
+    <version>0.9.7</version>
+    <time>1485383385</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>451567</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>8632ff6121c87a9129ce725241b410f9</srcmd5>
+    <version>0.9.7</version>
+    <time>1485682614</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452545</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>8216409cd56eb9afff053f68b6fada34</srcmd5>
+    <version>0.9.7</version>
+    <time>1492417643</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487600</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>3a6cb55e11158270dc7cd8266ccfbf89</srcmd5>
+    <version>0.9.7</version>
+    <time>1520415605</time>
+    <user>dimstar_suse</user>
+    <comment>Remove lash dependency and enable pulse audio support.
+</comment>
+    <requestid>583753</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>29e72870a56e68cad50964bf0b783d60</srcmd5>
+    <version>0.9.9pre1</version>
+    <time>1554712824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692148</requestid>
+  </revision>
+</revisionlist>

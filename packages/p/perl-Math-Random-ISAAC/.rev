@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>103737ae12008015f9f29243b4f7bd21</srcmd5>
+    <version>1.004</version>
+    <time>1507570930</time>
+    <user>dimstar_suse</user>
+    <comment>required for bugzilla adi:39</comment>
+    <requestid>531175</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f6c9f17f1b2f60e8ee1934f43f716284</srcmd5>
+    <version>1.004</version>
+    <time>1516970338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569357</requestid>
+  </revision>
+</revisionlist>

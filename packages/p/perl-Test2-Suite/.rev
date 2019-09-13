@@ -1,0 +1,419 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>971f941faae3a606f91b5b525cff6944</srcmd5>
+    <version>0.000070</version>
+    <time>1496327666</time>
+    <user>dimstar_suse</user>
+    <comment>needed for Params::ValidationCompiler</comment>
+    <requestid>500216</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f1b95c35d7cc4f3068cd5ad6ffc03672</srcmd5>
+    <version>0.000072</version>
+    <time>1498046242</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504927</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2b22a263211b9f3b9411d39c988025f9</srcmd5>
+    <version>0.000077</version>
+    <time>1506110342</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526779</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>833dd8b484b0785960a917c3abeae600</srcmd5>
+    <version>0.000083</version>
+    <time>1513109942</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.000083
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000083  2017-10-25 08:12:18-07:00 America/Los_Angeles
+  
+      - Mark a float ests TODO until the PR author can fix it
+- updated to 0.000082
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000082  2017-10-20 07:11:08-07:00 America/Los_Angeles
+  
+      - No Changes since last trial
+  
+  0.000081  2017-10-19 09:09:14-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add Test2::Compare::Float to handle floating point comparison issues with
+        representation error.
+      - Add float() to Test2::Utils::Compare and import Test2::Compare::Float
+      - Import and Export Test2::Utils::Compare::float in Test2::V0
+      - Documentation fixes
+      - Better 5.10.0/utf8 fix
+      - VSTRING comparisons
+      - Bag compare now handles duplicates better
+- updated to 0.000080
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000080  2017-10-15 10:13:30-07:00 America/Los_Angeles
+  
+      - No changes since last trial
+  
+  0.000079  2017-10-14 20:18:51-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - (Colin Newell) Fix UTF8 issue with perl 5.10.0
+  
+  0.000078  2017-10-14 20:15:21-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix for TODO + new ok style
+- updated to 0.000077
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000077  2017-09-12 07:49:16-07:00 America/Los_Angeles
+  
+      - No changes since last TRIAL release
+  
+  0.000076  2017-09-11 15:21:07-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add Test2::Tools::GenTemp
+- updated to 0.000075
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000075  2017-09-10 21:22:17-07:00 America/Los_Angeles
+  
+      - Add version to Test2::Event::Times
+  
+  0.000074  2017-08-31 20:37:47-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add Test2::Event::Times
+      - Fix some tests that were failing in yath
+  
+  0.000073  2017-08-30 23:11:28-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add Test2::Plugin::Times
+- updated to 0.000072
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000072  2017-06-17 21:48:14-07:00 America/Los_Angeles
+  
+      - No change since last trial
+  
+  0.000071  2017-06-10 13:40:27-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Introduce Test2::V# bundles
+      - Deprecate Test2::Bundle::Extended
+      - Test2::V0 added
+      - Fix Test2::Mock doesn't accept non-ref values (Mike Raynham)
+      - Fix isa_ok overload issue (Mike Raynham)
+- updated to 0.000070
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000070  2017-03-19 13:34:25-07:00 America/Los_Angeles
+  
+      - Revert Boolean overload fixes from djerius until they can be fixed
+      - Do not mention Term::ReadKey in docs
+      - Add Term::Size::Any to test report
+  
+  0.000069  2017-03-16 20:57:43-07:00 America/Los_Angeles
+  
+      - No changes from trial
+  
+  0.000068  2017-03-08 20:22:23-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Set the term size for all tests that use tables
+      - Boolean overload fixes from djerius
+  
+  0.000067  2017-01-03 19:41:52-08:00 America/Los_Angeles
+  
+      - No changes
+  
+  0.000066  2016-12-23 15:16:18-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Move sub_info to Sub::Info
+  
+  0.000065  2016-12-19 19:46:47-08:00 America/Los_Angeles
+  
+      - AUTHOR_TESTING a fragile test
+  
+  0.000064  2016-12-19 11:56:28-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Move Test2::Util::Table to Term::Table
+- updated to 0.000063
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000063  2016-12-17 12:11:39-08:00 America/Los_Angeles
+  
+      - No notable changes since the last trial release.
+  
+  0.000062  2016-12-03 14:03:44-08:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - An event without a trace object throw would an exception when using
+        Test2::Compare::Event and the comparison failed
+      - Fix tests for small terminals (#106)
+      - Enhance the table library
+      - UTF8 plugin does not set STDERR/STDOUT
+- updated to 0.000061
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000061  2016-11-26 12:39:14-08:00 America/Los_Angeles
+  
+      - Fix mocked objects so that they respond properly to -&gt;can when using AUTOLOAD.
+      - Fix some meta-files
+      - Small build improvements
+      - Minor fixes
+- updated to 0.000060
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000060  2016-09-25 12:38:43-07:00 America/Los_Angeles
+  
+      - Fix some docs
+      - Fix defer.t to work in windows
+      - Fix stack stomping bug triggered by certain Term::Readkey conditions
+  
+  0.000059  2016-09-15 13:00:03-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Create Test2::Compare::Negatable
+      - Add bool() for deep comparisons
+      - Implicit end() for checks inside is()
+      - Add try_ok to Tools/Exception
+      - Export convert() in Test2::Compare
+      - Make convert more flexible
+      - Document how to write a compare tool with custom behavior
+- updated to 0.000058
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000058  2016-08-13 13:06:10-07:00 America/Los_Angeles
+  
+  0.000057  2016-08-10 22:13:39-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add contact info to docs
+  
+  0.000056  2016-08-09 14:09:17-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make sure Test2::Compare::convert loads deps
+- updated to 0.000055
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000055  2016-07-30 13:18:13-07:00 America/Los_Angeles
+  
+      - Spelling fix from Debian (Thanks gregor herrmann)
+      - Fix \d -&gt; [0-9] in several places (Thanks Mark F.)
+- updated to 0.000054
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000054  2016-07-28 07:10:34-07:00 America/Los_Angeles
+  
+      - No changes from last trial
+  
+  0.000053  2016-07-22 22:51:37-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make bag check fail when given an empty array
+      - Clean up bag diagnostics
+- updated to 0.000052
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000052  2016-07-18 09:07:25-07:00 America/Los_Angeles
+  
+      - No changes from last TRIAL
+  
+  0.000051  2016-07-13 18:00:17-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Switch Extended bundle to use Importer
+      - Add meta_check as alias for meta
+- updated to 0.000050
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000050  2016-07-09 16:58:59-07:00 America/Los_Angeles
+  
+      - No Changes since trial
+  
+  0.000049  2016-07-07 22:02:24-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Doc fixes
+      - Add U() quick check to Test2::Tools::Compare
+- updated to 0.000048
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000048  2016-07-02 22:08:10-07:00 America/Los_Angeles
+  
+  0.000047  2016-07-01 18:09:26-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix global destruction warning
+      - Minor test fix to keep 5.8 working
+  
+  0.000046  2016-07-01 17:31:23-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - ref-ref's can be used in deep comparisons
+      - Fix mocking to override a base class's method
+  
+  0.000045  2016-07-01 09:30:09-07:00 America/Los_Angeles
+  
+      - Spelling and POD fixes
+  
+  0.000044  2016-06-29 15:48:33-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add DF() shortcut (JBerger)
+  
+  0.000043  2016-06-28 06:23:46-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Restructure Delta.pm to try and solve read-only problem
+  
+  0.000042  2016-06-27 21:37:22-07:00 America/Los_Angeles
+  
+      - Change Encoding.t to spit out debug message without failing
+  
+  0.000041  2016-06-27 09:00:46-07:00 America/Los_Angeles
+  
+      - Add perltidy rc to dist
+      - Documentation fixes (Thanks petdance)
+      - revert &quot;Attempt a fix to Delta #29&quot;
+  
+  0.000039  2016-06-25 13:44:03-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Stop leaking temp files
+      - clean up STDERR
+      - Fix #28
+- updated to 0.000038
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000038  2016-06-25 13:20:07-07:00 America/Los_Angeles
+  
+      - No Changes from last TRIAL release
+  
+  0.000037  2016-06-24 14:03:52-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add all_keys() to Compare tools
+      - add all_vals() to Compare tools
+      - add all_items() to Compare tools
+      - Fix in_set(DNE) (#10)
+      - Add E()
+      - Proper line reporting for shortcuts.
+  
+  0.000036  2016-06-24 05:58:51-07:00 America/Los_Angeles
+  
+      - Better comments in SRAND (#7)
+  
+  0.000035  2016-06-23 14:48:54-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make it possible to provide a name to isa_ok, can_ok, and DOES_ok
+      - Add some regression tests for previous fixes
+      - Allow 'tests' and 'skip_all' prefixes support to plan() #25
+  
+  0.000034  2016-06-22 11:30:00-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Bump minimum Test2 version
+  
+  0.000033  2016-06-22 08:41:22-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix ClassicCompare to load deps (#23)
+- updated to 0.000032
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+  0.000032  2016-06-17 06:58:17-07:00 America/Los_Angeles
+  
+      - Add 'bag' comparison (dakkar)
+      - Add 'call_list()' for DSL (dakkar)
+      - Add 'call_hash()' for DSL (dakkar)
+  
+  0.000031  2016-06-15 21:32:05-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix TODO to use pre-filters
+- initial package 0.000030
+ * created by cpanspec 1.78.08
+</comment>
+    <requestid>554833</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4c406b3b2cacdbb384e77e118172cd81</srcmd5>
+    <version>0.000097</version>
+    <time>1513676876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557292</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2c8ce4f6e0617cb2ff1c832ac8a8453e</srcmd5>
+    <version>0.000100</version>
+    <time>1519218380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577187</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba9790bc82e66492aac78556b4042f5d</srcmd5>
+    <version>0.000102</version>
+    <time>1520415025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582478</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fb5ee0387417fafde9099a271173ac4c</srcmd5>
+    <version>0.000111</version>
+    <time>1521579119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587596</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bb0f706512c3c3fe4c0279d0514007c5</srcmd5>
+    <version>0.000114</version>
+    <time>1525697443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603051</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>20233d30cd91362302bdc9eb8349c991</srcmd5>
+    <version>0.000115</version>
+    <time>1531946253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623035</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>96d953eb50f45cc94c777f6be7e01cfa</srcmd5>
+    <version>0.000117</version>
+    <time>1544264432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655836</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e5be8036d685d58342ca7a1917ec7ed8</srcmd5>
+    <version>0.000118</version>
+    <time>1549017833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668910</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1eba9f1e34e52185018ee1b1f241c255</srcmd5>
+    <version>0.000119</version>
+    <time>1554189464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689732</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0b80121cd6c89de96c350ca5e90b0dc5</srcmd5>
+    <version>0.000120</version>
+    <time>1556915851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698644</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ad7c3547b0a1d96d51cb336cbca0a538</srcmd5>
+    <version>0.000121</version>
+    <time>1558128912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702479</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>549501db0447c57a40476df0cba5cfba</srcmd5>
+    <version>0.000122</version>
+    <time>1558515222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704068</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>24dabd33ea4945c8a2d4cb5f9619dba7</srcmd5>
+    <version>0.000125</version>
+    <time>1566664797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725007</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c8e577b6757218e7cd840257e634da18</srcmd5>
+    <version>0.000126</version>
+    <time>1567423279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726992</requestid>
+  </revision>
+</revisionlist>

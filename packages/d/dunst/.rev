@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4f2ff254a11c60e1ec8aa4a69f6cd814</srcmd5>
+    <version>1.1.0</version>
+    <time>1435870023</time>
+    <user>dimstar_suse</user>
+    <comment>A customizable and lightweight notification-daemon</comment>
+    <requestid>312532</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2caed69c784b55efd5ddc2e73a23788e</srcmd5>
+    <version>1.1.0</version>
+    <time>1485383512</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452019</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e256997505e7a5157c7e97287678c509</srcmd5>
+    <version>1.2.0</version>
+    <time>1503592991</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>513053</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6ba98ec85bf57a0d1a93c58e75257221</srcmd5>
+    <version>1.3.1</version>
+    <time>1519218738</time>
+    <user>dimstar_suse</user>
+    <comment>- add makefile.patch to fix service installation (forwarded request 578407 from mimi_vx)</comment>
+    <requestid>578408</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d45fa88653377ffb5d5cb39ebf4ed94a</srcmd5>
+    <version>1.3.2</version>
+    <time>1525779526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605118</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2190d6c466deee1852be6d484f027751</srcmd5>
+    <version>1.4.0</version>
+    <time>1559375241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705822</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>86a3d4621af50dbd9583647aecb86653</srcmd5>
+    <version>1.4.1</version>
+    <time>1562159727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.1
+ * max_icon_size not working with dynamic width
+ * Failure to parse color strings with trailing comments in the config
+ * Negative width in geometry being ignored
+ * Incorrect handling of the argument terminator -- in dunstify
+ * Crash when changing DPI while no notifications are displayed
+ * Fullscreen status change not being detected in some cases (forwarded request 713212 from mimi_vx)</comment>
+    <requestid>713213</requestid>
+  </revision>
+</revisionlist>

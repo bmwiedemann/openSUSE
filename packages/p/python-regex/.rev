@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ccfc1a3355d481d148589064af504ab</srcmd5>
+    <version>2017.06.07</version>
+    <time>1499152160</time>
+    <user>dimstar_suse</user>
+    <comment>Package need for upcomming calibre.</comment>
+    <requestid>504565</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>839c4b161a8e34278df35394032d405b</srcmd5>
+    <version>2017.07.28</version>
+    <time>1504617381</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520560</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1d8058823bae67a91a841d9b54cb9a3a</srcmd5>
+    <version>2018.06.21</version>
+    <time>1530866428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620101</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>58729a3b3b9c139a4d97c76eddc77c71</srcmd5>
+    <version>2019.04.14</version>
+    <time>1557916454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2019.04.14:
+  * no upstream changelog provided</comment>
+    <requestid>702916</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cd415ba432549142a54d81985c73ba97</srcmd5>
+    <version>2019.06.05</version>
+    <time>1559837835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707816</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6fb911c707c939d36583ff2ae3101a9e</srcmd5>
+    <version>2019.06.08</version>
+    <time>1563808804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2019.06.08:
+  * minor fixes</comment>
+    <requestid>717583</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e823999e75f9d1ab19a32b9ef28d6e46</srcmd5>
+    <version>2019.08.19</version>
+    <time>1568190952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2019.08.19:
+  * minor fixes</comment>
+    <requestid>729801</requestid>
+  </revision>
+</revisionlist>

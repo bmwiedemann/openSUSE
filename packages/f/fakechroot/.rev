@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69b4e2d232f32747b96453aed24a812b</srcmd5>
+    <version>2.19</version>
+    <time>1516359101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560891</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>887ccdd30ff6b58c6e971df8db9fe3a3</srcmd5>
+    <version>2.19</version>
+    <time>1568379484</time>
+    <user>lnussel_factory</user>
+    <comment>- Use modern macros
+
+- Update the license tag.
+- Disable lto before building fakechroot.
+
+- Update description. Use noun phrase in summary.
+
+- Make build and tests run in verbose mode.</comment>
+    <requestid>730079</requestid>
+  </revision>
+</revisionlist>

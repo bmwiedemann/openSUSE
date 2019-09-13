@@ -1,0 +1,10 @@
+<package name="python-qt4" project="openSUSE:Factory">
+  <title>PyQt - python bindings for Qt 4</title>
+  <description>PyQt is a set of Python bindings for Trolltech's Qt application
+framework and runs on all platforms supported by Qt including Windows,
+MacOS/X and Linux. There are two sets of bindings: PyQt v4 supports Qt
+v4; and the older PyQt v3 supports Qt v3 and earlier. The bindings are
+implemented as a set of Python modules and contain over 300 classes and
+nearly 6,000 functions and methods.</description>
+  <devel project="KDE:Qt" package="python-qt4"/>
+</package>

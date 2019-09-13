@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7122513e67f296b544fe558f02d534f5</srcmd5>
+    <version>1.01</version>
+    <time>1293579008</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56534 from user coolo
+</comment>
+    <requestid>56534</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b29e7705fd794355b971ed47c6f311b2</srcmd5>
+    <version>1.01</version>
+    <time>1293579014</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56534
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>b29e7705fd794355b971ed47c6f311b2</srcmd5>
+    <version>1.01</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>b29e7705fd794355b971ed47c6f311b2</srcmd5>
+    <version>1.01</version>
+    <time>1319182300</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>b87a65eb9ddea49a221908d840490b13</srcmd5>
+    <version>1.01</version>
+    <time>1323193589</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>b87a65eb9ddea49a221908d840490b13</srcmd5>
+    <version>1.01</version>
+    <time>1340183907</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>b87a65eb9ddea49a221908d840490b13</srcmd5>
+    <version>1.01</version>
+    <time>1359109782</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>fc4af08228cb5c3ffe9995faf832d09f</srcmd5>
+    <version>1.01</version>
+    <time>1362120217</time>
+    <user>coolo</user>
+    <comment>ciaran wants it with 'or' now</comment>
+    <requestid>156738</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9dbace79d15400f3bf612be09dcb6eec</srcmd5>
+    <version>1.04</version>
+    <time>1371146913</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 178319 from coolo)</comment>
+    <requestid>178330</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>569329e48b3b7147bd9742075326fb57</srcmd5>
+    <version>1.05</version>
+    <time>1375185846</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184838</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>569329e48b3b7147bd9742075326fb57</srcmd5>
+    <version>1.05</version>
+    <time>1379663820</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a2fc240c6ca7e2f263ec22305f4a4ef3</srcmd5>
+    <version>1.10</version>
+    <time>1382361274</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202228</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b973095246903a85ffc8db5ec4950975</srcmd5>
+    <version>1.13</version>
+    <time>1385490635</time>
+    <user>coolo</user>
+    <comment>- updated to 1.13
+      - fix encoding issues issues in pod for perldoc
+      - improve documentation
+      - fix shebang to /usr/bin/perl for EUMM replacment GH #13 (dolmen)</comment>
+    <requestid>208442</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b973095246903a85ffc8db5ec4950975</srcmd5>
+    <version>1.13</version>
+    <time>1409302457</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2eb58b5cf7ebbeedf5c515be489d76a2</srcmd5>
+    <version>1.15</version>
+    <time>1410967547</time>
+    <user>coolo</user>
+    <comment>- updated to 1.15
+      - Convert to strict mode of File::ShareDir::ProjectDistDir (KENTNL)
+      - change to use Path::Tiny-&gt;lines_utf8
+      - Discontinue use of File::Slurp, use Path::Tiny-&gt;lines instead
+        GH #15 ( Ether )</comment>
+    <requestid>249355</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4c994ede5372e901c05c5ef0be14f5fe</srcmd5>
+    <version>1.17</version>
+    <time>1429108000</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296679</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5975e8bbdb57879b29f95c0d7f3877b3</srcmd5>
+    <version>1.19</version>
+    <time>1456434379</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360713</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d995037e2d4aade8e3343c226b281b48</srcmd5>
+    <version>1.20</version>
+    <time>1462977474</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394625</requestid>
+  </revision>
+</revisionlist>

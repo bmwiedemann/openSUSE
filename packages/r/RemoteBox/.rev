@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7517c7a6ff48febb5026dd6bc769e371</srcmd5>
+    <version>1.8.1</version>
+    <time>1403642762</time>
+    <user>coolo</user>
+    <comment>RemoteBox is a VirtualBox client. In essence, you can remotely administer (ie over the network) an installation of VirtualBox on a server, including its guests and interact with them as if they were running locally.</comment>
+    <requestid>238072</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cc73c1fc5d9c2d6005ae0f8a1110da2a</srcmd5>
+    <version>1.8.1</version>
+    <time>1408353842</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244979</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>cc73c1fc5d9c2d6005ae0f8a1110da2a</srcmd5>
+    <version>1.8.1</version>
+    <time>1409300443</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bea1683e0978c6d9ba897454911eb2e4</srcmd5>
+    <version>1.9</version>
+    <time>1414613386</time>
+    <user>coolo</user>
+    <comment>Update version to 1.9</comment>
+    <requestid>258436</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>581a83b17f12fc366053573976c30d83</srcmd5>
+    <version>1.9</version>
+    <time>1415636895</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>260052</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>da32d1c1f491bf92138bfecc0f775abd</srcmd5>
+    <version>1.9</version>
+    <time>1427736845</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293675</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>796e569a4ecb319ac4dfd0f757469b7d</srcmd5>
+    <version>1.9</version>
+    <time>1428391762</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294305</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>31b1f5703dae698da5800e75d0b20dab</srcmd5>
+    <version>2.0</version>
+    <time>1436888662</time>
+    <user>coolo</user>
+    <comment>Update version to 2.0, support for virtualbox 5.0</comment>
+    <requestid>316250</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a0f31510241b475b609a2e120bf1d87a</srcmd5>
+    <version>2.1</version>
+    <time>1470413887</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>417045</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>29fc250cdc0eb27935121d9ae01de46a</srcmd5>
+    <version>2.2</version>
+    <time>1472026136</time>
+    <user>dimstar_suse</user>
+    <comment>Updated to version 2.2</comment>
+    <requestid>421149</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dcffa56e1e84e354ec29f43b5ebdd629</srcmd5>
+    <version>2.3</version>
+    <time>1497274098</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>498634</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>97258ff84b55df86dc5715fdc2fff793</srcmd5>
+    <version>2.4</version>
+    <time>1522062821</time>
+    <user>dimstar_suse</user>
+    <comment>-Update to 2.4 version 
+-RemoteBox now requires VirtualBox 5.2.x
+-Updated guest icons
+-Added option to enable/disable audio output from a guest
+-Added option to enable/disable audio input to a guest
+-Added option to record audio from the guest when capturing a video
+-Added support for exporting appliances to Oracle Public Cloud 
+Format 1.0
+-Added ability to select a connection profile to use for 
+automatically logging in when starting up RemoteBox.
+-Added option 'Release Keys' to clear any held keys in the case 
+where a host and guest's keyboard status may become out of sync.
+-New guests now automatically have their audio output enabled
+-Fixed: You now can't set video RAM to zero, even though VirtualBox
+reports this as a valid minimum, the guest won't start.
+- env-script-interpreter.patch fix pearl interpreter script
+</comment>
+    <requestid>590843</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a21e05ae3e241fa4ee6774afa7b00663</srcmd5>
+    <version>2.5</version>
+    <time>1527582880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610787</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>184043b6ddd2c717fb118bde1a4edbe8</srcmd5>
+    <version>2.6</version>
+    <time>1552902177</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6 version
+- Removed old version of env-script-interpreter.patch
+- Added RemoteBox-2.6_fix-env-script-interpreter.patch
+- RemoteBox now requires VirtualBox 6.0.x
+- Added additional screen modes for video capture and video hinting
+- Added option to select between Video and Audio, Video Only or 
+  Audio Only when screen capturing
+- Added support for VirtualBox VGA card with VMware SVGA II 
+  extensions
+- Added support for having no graphics card in the guest. Note 
+  however, you cannot connect to the guest with RDP/VNC without a 
+  virtual graphics card.
+- Added support for setting the emulated serial UART type
+- The Audio Input and Audio Output options can now also be set 
+  while the guest is running
+- Added support to the VMM (Virtual Media Manager) for compaction 
+  of hard disk images to reduce their physical size
+- Added support to the VMM (Virtual Media Manager) for resizing 
+  hard disk images
+- Added ability to save a guest log to a local text file
+- Added refresh button to reload the guest logs in the log viewer
+- Added cancel button to the VirtualBox Preferences dialog
+- Removed Host-Only-Network and NAT Network configuration from 
+  the VirtualBox preferences dialog and created the Host Network 
+  Manager dialog accessible from the file menu
+- Significantly updated the RemoteBox icon set and added 
+  additional decals
+- To work around a VirtualBox bug, when changing a shared folder 
+  the guest settings are now explicitly saved. This includes 
+  adding, editing and deleting
+- Optimised a lot of the settings retrieval code which should 
+  improve latency especially for those on slower systems and 
+  networks.
+- Fixed the Edit Shared Folder dialog not correctly showing a 
+  share's Permanent Status, when editing the shared folder.
+- Various code cleanups
+ 
+</comment>
+    <requestid>685769</requestid>
+  </revision>
+</revisionlist>

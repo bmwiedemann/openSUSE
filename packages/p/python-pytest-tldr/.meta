@@ -1,0 +1,5 @@
+<package name="python-pytest-tldr" project="openSUSE:Factory">
+  <title></title>
+  <description>pytest plugin that limits the output to just the things you need</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-tldr"/>
+</package>

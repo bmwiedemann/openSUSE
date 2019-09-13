@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e3b0bf84f3a119dac60fe342412eff9</srcmd5>
+    <version>1.0.1</version>
+    <time>1490026161</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>480322</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d7e69b8a7460805357e3044439ddb2d4</srcmd5>
+    <version>1.0.1</version>
+    <time>1492714549</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487960</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3fd5a65c1cc428539424c487d30b0e79</srcmd5>
+    <version>1.0.2</version>
+    <time>1504205275</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513402</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>448480cb76afaf79cc07f0530313f2e7</srcmd5>
+    <version>1.0.2</version>
+    <time>1505505126</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524862</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6fd559a97d37081cb2209da7f91157b4</srcmd5>
+    <version>1.0.2.1</version>
+    <time>1527675012</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-integer-logarithms to the latest version.</comment>
+    <requestid>607829</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>918840e8f4362748e22f1c3b6d9c5232</srcmd5>
+    <version>1.0.2.1</version>
+    <time>1532161223</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623801</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c54c9215700bddb2ba657b327f83061b</srcmd5>
+    <version>1.0.2.2</version>
+    <time>1540448218</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642869</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a75b2529ff7ba8421afc3f3511f432ec</srcmd5>
+    <version>1.0.3</version>
+    <time>1556475187</time>
+    <user>maxlin_factory</user>
+    <comment>version update</comment>
+    <requestid>698553</requestid>
+  </revision>
+</revisionlist>

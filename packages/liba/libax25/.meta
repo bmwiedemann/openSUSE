@@ -1,0 +1,10 @@
+<package name="libax25" project="openSUSE:Factory">
+  <title>AX.25 data link layer protocol library</title>
+  <description>Libraries for AX.25. AX.25 (Amateur X.25) is a data link layer
+protocol derived from the X.25 protocol suite and designed for use by
+amateur radio operators.
+
+</description>
+  <devel project="hardware:sdr" package="libax25"/>
+  <url>http://www.linux-ax25.org/wiki/LinuxAX25</url>
+</package>

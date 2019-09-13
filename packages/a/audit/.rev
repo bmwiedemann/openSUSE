@@ -1,0 +1,743 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>69ea4c4c24b1d0f4b319b7e7d5d5422e</srcmd5>
+    <version>1.2.9</version>
+    <time>1168901514</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb939b31b3d88f73f8cccf075967032d</srcmd5>
+    <version>1.5.3</version>
+    <time>1178464242</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3cdcc4cd08b9d01994a06112cde174a8</srcmd5>
+    <version>1.5.3</version>
+    <time>1178665045</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f60b5db6a45dce6c4e5788ebeea7244c</srcmd5>
+    <version>1.5.4</version>
+    <time>1184202097</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>287c8de87bd6f06af40c7f3be73d637b</srcmd5>
+    <version>1.5.4</version>
+    <time>1184359146</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c701f31a2fd231d8506a86e9e9350d18</srcmd5>
+    <version>1.5.5</version>
+    <time>1185491927</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7bbf65d879b0600a6a9605f4f3290bdb</srcmd5>
+    <version>1.6.2</version>
+    <time>1192121248</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>156fd2ea069cfdd55a3f965425a73901</srcmd5>
+    <version>1.6.2</version>
+    <time>1193829851</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5f183cf4f24a43ac521106e586966878</srcmd5>
+    <version>1.6.8</version>
+    <time>1204918526</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="42">
+    <srcmd5>528d6f1b8e7a734da6314bcd9175019f</srcmd5>
+    <version>1.6.2</version>
+    <time>1205578855</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="44">
+    <srcmd5>e1bc4dafb14978feb2f0742b768765df</srcmd5>
+    <version>1.6.2</version>
+    <time>1205924251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2d2a014666e7438436d3aaf27225649d</srcmd5>
+    <version>1.6.8</version>
+    <time>1206715519</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>bbd561971f00c4b0c85b981997bb3fb5</srcmd5>
+    <version>1.6.8</version>
+    <time>1207825645</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>572fb3b00bed34db2e853ca433e2f4eb</srcmd5>
+    <version>1.6.8</version>
+    <time>1208697791</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>5011a0102a5324fdd26b3e519a78d9b7</srcmd5>
+    <version>1.6.8</version>
+    <time>1209130364</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>ffc743393a1bbb0d4473d9717fe60b26</srcmd5>
+    <version>1.6.8</version>
+    <time>1214181771</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f3dd4987c9576cbfb4883e206aff2609</srcmd5>
+    <version>1.7.4</version>
+    <time>1214412834</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e916a3080789fe35ed87a8d5620e2d3a</srcmd5>
+    <version>1.7.4</version>
+    <time>1217637388</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>cf4d6fd32d933f71a8591274a5ae2410</srcmd5>
+    <version>1.7.4</version>
+    <time>1217979660</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>064379130814fef68b9b10d627aa121b</srcmd5>
+    <version>1.7.7</version>
+    <time>1222702110</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>311b72db4af03953bc08dcffa9d83a03</srcmd5>
+    <version>1.7.7</version>
+    <time>1225636438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>41fd482d788ab4feb9c042775f579522</srcmd5>
+    <version>1.7.7</version>
+    <time>1227276783</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>2a430640daf933a79de6c5ce3b92f55b</srcmd5>
+    <version>1.7.7</version>
+    <time>1228485877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>d0112951872bacc67dbae58e841130ff</srcmd5>
+    <version>1.7.7</version>
+    <time>1229338776</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>35c29efa17bb16c0b26d26f7238026e1</srcmd5>
+    <version>1.7.7</version>
+    <time>1240510972</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5ea081267f71172d25b0381a68cb23d2</srcmd5>
+    <version>1.7.13</version>
+    <time>1244234193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>642b1da2bfe8bdbb4aaaadae385db353</srcmd5>
+    <version>1.7.13</version>
+    <time>1245446455</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>4cd7bafaf9f46c0cd8a203cdffff0b3f</srcmd5>
+    <version>1.7.13</version>
+    <time>1246278699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>4cd7bafaf9f46c0cd8a203cdffff0b3f</srcmd5>
+    <version>1.7.13</version>
+    <time>1246278699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>42c24a6d91300f4eb0726f63c2af3562</srcmd5>
+    <version>1.7.13</version>
+    <time>1258361813</time>
+    <user>autobuild</user>
+    <comment>Copy from security/audit based on submit request 24465 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>c902ca4389fbedd6547921986831e04f</srcmd5>
+    <version>1.7.13</version>
+    <time>1263479116</time>
+    <user>autobuild</user>
+    <comment>Copy from security/audit based on submit request 29108 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>d0556b8ecfc9a875ab4819efac835a4b</srcmd5>
+    <version>1.7.13</version>
+    <time>1268922956</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5515f8e878ca1c92f9348e0b6cb05718</srcmd5>
+    <version>2.0.4</version>
+    <time>1273084884</time>
+    <user>autobuild</user>
+    <comment>Copy from security/audit based on submit request 39398 from user jones_tony
+</comment>
+    <requestid>39398</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>5296b10a4897f54db5ef2b253d4b00fd</srcmd5>
+    <version>2.0.4</version>
+    <time>1277491319</time>
+    <user>autobuild</user>
+    <comment>Copy from security/audit based on submit request 42072 from user prusnak
+</comment>
+    <requestid>42072</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>0d567f2c012704b65529e1630349d795</srcmd5>
+    <version>2.0.4</version>
+    <time>1278075321</time>
+    <user>autobuild</user>
+    <comment>Copy from security/audit based on submit request 42082 from user jones_tony
+</comment>
+    <requestid>42082</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>0d567f2c012704b65529e1630349d795</srcmd5>
+    <version>2.0.4</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>0d567f2c012704b65529e1630349d795</srcmd5>
+    <version>2.0.4</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>8fd0ab0d30fd10707420a053e7368b5e</srcmd5>
+    <version>2.0.4</version>
+    <time>1280486084</time>
+    <user>autobuild</user>
+    <comment>Copy from security/audit based on submit request 44227 from user coolo
+</comment>
+    <requestid>44227</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>06bf2668fde680e2d6f327d3054d3ab8</srcmd5>
+    <version>2.0.5</version>
+    <time>1286493137</time>
+    <user>autobuild</user>
+    <comment>Copy from security/audit based on submit request 50024 from user jones_tony
+</comment>
+    <requestid>50024</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>58808934709e2a93bc33077ba0cd4f8d</srcmd5>
+    <version>2.0.5</version>
+    <time>1291991778</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55251 from user elvigia
+</comment>
+    <requestid>55251</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>abb7e7db4014af6578c3d78a226ed54a</srcmd5>
+    <version>2.0.5</version>
+    <time>1291991783</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55251
+</comment>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>abb7e7db4014af6578c3d78a226ed54a</srcmd5>
+    <version>2.0.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>870f81e408b29240cf4841f45697fc92</srcmd5>
+    <version>2.0.5</version>
+    <time>1298296422</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62286 from user msmeissn
+</comment>
+    <requestid>62286</requestid>
+  </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>c9c76d6a135c5e88bfabbea5c15a92d8</srcmd5>
+    <version>2.0.5</version>
+    <time>1298296429</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62286
+</comment>
+  </revision>
+  <revision rev="45" vrev="7">
+    <srcmd5>1c8ef9d9c0835a86b38b34f058596528</srcmd5>
+    <version>2.1.1</version>
+    <time>1304330848</time>
+    <user>saschpe</user>
+    <comment>update to version 2.1.1</comment>
+    <requestid>68728</requestid>
+  </revision>
+  <revision rev="46" vrev="8">
+    <srcmd5>d1d76bdca3d9f56b972eca02d7267bfc</srcmd5>
+    <version>2.1.1</version>
+    <time>1304330864</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68728
+</comment>
+  </revision>
+  <revision rev="47" vrev="9">
+    <srcmd5>2a09f4cce5b4c1c899f0abd2f2eade47</srcmd5>
+    <version>2.1.1</version>
+    <time>1305182930</time>
+    <user>azouhr</user>
+    <comment></comment>
+    <requestid>70068</requestid>
+  </revision>
+  <revision rev="48" vrev="10">
+    <srcmd5>e62b83aef3ec010381e42b286c94fdb4</srcmd5>
+    <version>2.1.1</version>
+    <time>1305182939</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 70068
+</comment>
+  </revision>
+  <revision rev="49" vrev="11">
+    <srcmd5>33c7af126fdd8109916f05421c7b8471</srcmd5>
+    <version>2.1.1</version>
+    <time>1306144669</time>
+    <user>saschpe</user>
+    <comment> (forwarded request 70848 from jones_tony)</comment>
+    <requestid>70849</requestid>
+  </revision>
+  <revision rev="50" vrev="12">
+    <srcmd5>8219d9babf2cac1a4a4a73e895dbfaa9</srcmd5>
+    <version>2.1.1</version>
+    <time>1306144682</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70849
+</comment>
+  </revision>
+  <revision rev="51" vrev="13">
+    <srcmd5>e3c6c29a23091e16a769843b21aaa339</srcmd5>
+    <version>2.1.1</version>
+    <time>1317541772</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Add audit-devel to baselibs (forwarded request 82852 from jengelh)</comment>
+    <requestid>85512</requestid>
+  </revision>
+  <revision rev="52" vrev="14">
+    <srcmd5>75f12085ac261c360a18537076336f61</srcmd5>
+    <version>2.1.1</version>
+    <time>1317625990</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85948 from coolo)</comment>
+    <requestid>86089</requestid>
+  </revision>
+  <revision rev="53" vrev="16">
+    <srcmd5>75f12085ac261c360a18537076336f61</srcmd5>
+    <version>2.1.1</version>
+    <time>1319181779</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="54" vrev="17">
+    <srcmd5>674af4bbea323d25bd99a130eac1ec73</srcmd5>
+    <version>2.1.1</version>
+    <time>1323190784</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="55" vrev="18">
+    <srcmd5>fc0dd70746ceee562f0f369792376b51</srcmd5>
+    <version>2.1.1</version>
+    <time>1323190785</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>e5a859ba9795f4ba0cd8b3a56630df7e</srcmd5>
+    <version>2.1.3</version>
+    <time>1331147314</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108328</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>e5a859ba9795f4ba0cd8b3a56630df7e</srcmd5>
+    <version>2.1.3</version>
+    <time>1340183187</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>0215295424ee45f75ad4fce61caff266</srcmd5>
+    <version>2.2.1</version>
+    <time>1350150651</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.1, see audit's changes
+
+- update to 2.2.1, upstream changelog:
+  2.2.1
+  - Add more interpretations in auparse for syscall parameters 
+  - Add some interpretations to ausearch for syscall parameters
+  - In ausearch/report and auparse, allocate extra space for node names
+  - Update syscall tables for the 3.3.0 kernel
+  - Update libev to 4.0.4
+  - Reduce the size of some applications
+  - In auditctl, check usage against euid rather than uid
+  
+  2.2
+  - Correct all rules for clock_settime
+  - Fix possible segfault in auparse library
+  - Handle malformed socket addresses better
+  - Improve performance in audit_log_user_message() 
+  - Improve performance in writing to the log file in auditd
+  - Syscall update for accept4 and recvmmsg
+  - Update autrace resource usage mode syscall list
+  - Improved sample rules for recent syscalls
+  - Add some debug info to audisp-remote startup and shutdown
+  - Make compiling with Python optional
+  - In auditd, if disk_error_action is ignore, don't syslog anything
+  - Fix some memory leaks
+  - If audispd is stopping, don't restart children
+  - Add support in auditctl for shell escaped filenames (Alexander)
+  - Add search support for virt events (Marcelo Cerri)
+  - Update interpretation tables
+  - Sync auparse's auditd config parser with auditd's parser (forwarded request 137972 from coolo)</comment>
+    <requestid>137974</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>07e668a1fce05546324504463bd9ce97</srcmd5>
+    <version>2.2.1</version>
+    <time>1358889605</time>
+    <user>coolo</user>
+    <comment>- Executing autoreconf requires autoconf (forwarded request 149539 from jengelh)</comment>
+    <requestid>149556</requestid>
+  </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>07e668a1fce05546324504463bd9ce97</srcmd5>
+    <version>2.2.1</version>
+    <time>1359108676</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9a128417531c3791f08def3b6989158e</srcmd5>
+    <version>2.2.2</version>
+    <time>1359639706</time>
+    <user>coolo</user>
+    <comment>** Please send to 12.3 because starting the audit daemon is broken with systemd ****
+
+- remove old tarball and update -secondary spec 
+
+- Audit 2.2.2 , the purpose of this update is too add compatibility
+ with systemd for 12.3
+- In auditd, tcp_max_per_addr was allowing 1 more connection than specified
+- In ausearch, fix matching of object records
+- Auditctl was returning -1 when listing rules filtered on a key field
+- Add interpretations for CAP_BLOCK_SUSPEND and CAP_COMPROMISE_KERNEL
+- Add armv5tejl, armv5tel, armv6l and armv7l machine types (Nathaniel Husted) 
+- Updates for the 3.6 kernel
+- Add auparse_feed_has_data function to libauparse
+- Update audisp-prelude to use auparse_feed_has_data
+- Add support to conditionally build auditd network listener (Tyler Hicks)
+- In auditd, reset a flag after receiving USR1 signal info when rotating logs
+- Add optional systemd init script support
+- Add support for SECCOMP event type
+- Don't interpret aN_len field in EXECVE records (#869555)
+- In audisp-remote, do better job of draining queue
+- Fix capability parsing in ausearch/auparse
+- Interpret BPRM_FCAPS capability fields
+- Add ANOM_LINK event type (forwarded request 150497 from elvigia)</comment>
+    <requestid>150561</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>916987710d8d127ea4c7239b3b23879b</srcmd5>
+    <version>2.2.2</version>
+    <time>1364158505</time>
+    <user>coolo</user>
+    <comment>- remove sysvinit scripts. (forwarded request 160635 from elvigia)</comment>
+    <requestid>160662</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>839c44945fa9a923024575445d507afd</srcmd5>
+    <version>2.2.3</version>
+    <time>1364308087</time>
+    <user>coolo</user>
+    <comment>- Buildrequires cap-ng library 
+
+- --with-libcap-ng=yes has no effect if libcap-ng is not 
+buildrequired and the lack of those requires causes a broken
+configure script after autoreconf add pkgconfig(libcap-ng)
+to both audit and audit-secondary, cap-ng is actually only
+use in the latter.
+
+- Version 2.2.3
+- Code cleanups
+- In spec file, don't own lib64/audit
+- Update man pages
+- Aureport no longer reads auditd.conf when stdin is used
+- Don't let systemd kill auditd if auditctl errors out
+- Update syscall table for 3.7 and 3.8 kernels
+- Add interpretation for setns and unshare syscalls
+- Code cleanup (Tyler Hicks)
+- Documentation cleanups (Laurent Bigonville)
+- Add dirfd interpretation to the *at functions
+- Add termination signal to clone flags interpretation
+- Update stig.rules
+- In auditctl, when listing rules don't print numeric value of dir fields
+- Add support for rng resource type in auvirt
+- Fix aulast bad login output (#922508)
+- In ausearch, allow negative numbers for session and auid searches
+- In audisp-remote, if disk_full_action is stop then stop sending (#908977) (forwarded request 161029 from elvigia)</comment>
+    <requestid>161113</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>f64ce91eefd4b52f96608c637084f8fb</srcmd5>
+    <version>2.2.3</version>
+    <time>1367501357</time>
+    <user>coolo</user>
+    <comment>- audit-no_m4_dir.patch: Removed AC_CONFIG_MACRO_DIR([m4]) from
+  configure.ac to fix build with new automake
+
+  buildrequired and the lack of those requires causes a broken
+  configure script after autoreconf add pkgconfig(libcap-ng)
+  to both audit and audit-secondary, cap-ng is actually only
+  use in the latter.</comment>
+    <requestid>173998</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>d451b9253cdf8cd4b41a095f586c6f81</srcmd5>
+    <version>2.2.3</version>
+    <time>1372527402</time>
+    <user>coolo</user>
+    <comment>- Eliminate build cycles. audit.spec now builds only libs/devel.
+  Remainder (including daemon) built from audit-secondary.spec
+- Add patch 'audit-fix-implicit-defn.patch' to fix implicit definition
+  warning.
+
+- remove libcap-ng too from audit.spec as it's only needed for plugins
+  (and libcap-ng itself needs python to build bindings)
+
+- Eliminate build cycles. audit.spec now builds only libs/devel.
+  Remainder (including daemon) built from audit-secondary.spec</comment>
+    <requestid>181250</requestid>
+  </revision>
+  <revision rev="66" vrev="5">
+    <srcmd5>d451b9253cdf8cd4b41a095f586c6f81</srcmd5>
+    <version>2.2.3</version>
+    <time>1379662003</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="67" vrev="6">
+    <srcmd5>8d7e291d27c89999b78d6aec63c4cce5</srcmd5>
+    <version>2.2.3</version>
+    <time>1381482202</time>
+    <user>scarabeus_factory</user>
+    <comment>- (re-)add rcauditd as symlink to /usr/sbin/service</comment>
+    <requestid>202940</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>665ef0a0623b8833dc626d1f17b8e7b6</srcmd5>
+    <version>2.3.2</version>
+    <time>1386222487</time>
+    <user>coolo</user>
+    <comment> (forwarded request 209366 from jones_tony)</comment>
+    <requestid>209367</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>285e3b813933e0901527c82d46d08312</srcmd5>
+    <version>2.3.3</version>
+    <time>1391948249</time>
+    <user>scarabeus_factory</user>
+    <comment> (forwarded request 221023 from jones_tony)</comment>
+    <requestid>221024</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>d93037791a2896e086d88e439d8baf3f</srcmd5>
+    <version>2.3.3</version>
+    <time>1393682128</time>
+    <user>coolo</user>
+    <comment> (forwarded request 224270 from jones_tony)</comment>
+    <requestid>224271</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>eee9fdee136222ce04e56693c8752110</srcmd5>
+    <version>2.3.3</version>
+    <time>1396158908</time>
+    <user>coolo</user>
+    <comment>- fix systemd warning: 
+  &quot;Configuration file /usr/lib/systemd/system/auditd.service 
+  is marked world-inaccessible. 
+  This has no effect as configuration data is accessible 
+  via APIs without restrictions&quot;
+* indeed restricting access to unit files using filesystem
+  permissions is non-sense. (forwarded request 227625 from elvigia)</comment>
+    <requestid>227642</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>7afb107793c5b2cdc37ec8aa56d27461</srcmd5>
+    <version>2.3.6</version>
+    <time>1398145343</time>
+    <user>coolo</user>
+    <comment> (forwarded request 230410 from jones_tony)</comment>
+    <requestid>230411</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>50f14aa74bfb9c29fa29a7e5a36e6fa4</srcmd5>
+    <version>2.3.6</version>
+    <time>1406005065</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240712</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>c1cb4deadf775539ce81d5fc00c5c607</srcmd5>
+    <version>2.3.6</version>
+    <time>1408964384</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245613</requestid>
+  </revision>
+  <revision rev="75" vrev="5">
+    <srcmd5>c1cb4deadf775539ce81d5fc00c5c607</srcmd5>
+    <version>2.3.6</version>
+    <time>1409300530</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>08171873fc64b1bd9a1a6a38b9f701d6</srcmd5>
+    <version>2.4</version>
+    <time>1410081097</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247316</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>d640c397f94001f6a1976917525d8d70</srcmd5>
+    <version>2.4.1</version>
+    <time>1417643240</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263884</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>5b33d0278d2069d96a4a3fc85010d5ad</srcmd5>
+    <version>2.4.4</version>
+    <time>1441954795</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>329230</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>4eac7e57f278f7b66603a86ef3f64290</srcmd5>
+    <version>2.4.4</version>
+    <time>1449995648</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>347322</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>4b08da15aa68f3f197ed51abd929f833</srcmd5>
+    <version>2.5</version>
+    <time>1460363250</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>383796</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>d5ceca0b2a7bbe9a1bf430bc53010e15</srcmd5>
+    <version>2.7.7</version>
+    <time>1500892154</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511711</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>5d13fd1f569b571ded22161984e688b1</srcmd5>
+    <version>2.7.7</version>
+    <time>1502186193</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514176</requestid>
+  </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>2ac9e59c824c5b7d9147f6d1aa6d3d51</srcmd5>
+    <version>2.7.7</version>
+    <time>1503589236</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517818</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>6c033434d3ff2a884f4bf5b650cb9eb4</srcmd5>
+    <version>2.8.1</version>
+    <time>1510760956</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename python binding packages to match current python packaging
+  standards
+- Update python build dependencies to resolve future split of
+  python2/3 (forwarded request 540272 from pluskalm)</comment>
+    <requestid>540279</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>2529e18574473c70ef2c678d561ee05e</srcmd5>
+    <version>2.8.1</version>
+    <time>1516970004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567005</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>3b9d3fe0749d12ba67b35f29d552df98</srcmd5>
+    <version>2.8.2</version>
+    <time>1522057913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588035</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>085b00c74406b52ade639476ca47f1ba</srcmd5>
+    <version>2.8.4</version>
+    <time>1530993107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619464</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>56200b4320f32146541b33d80fdb29c1</srcmd5>
+    <version>2.8.4</version>
+    <time>1561557547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708766</requestid>
+  </revision>
+</revisionlist>

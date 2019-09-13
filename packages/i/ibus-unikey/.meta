@@ -1,0 +1,6 @@
+<package name="ibus-unikey" project="openSUSE:Factory">
+  <title>Vietnamese engine for IBus input platform</title>
+  <description>A Vietnamese engine for IBus input platform that uses Unikey.</description>
+  <devel project="M17N" package="ibus-unikey"/>
+  <url>https://code.google.com/p/ibus-unikey/</url>
+</package>

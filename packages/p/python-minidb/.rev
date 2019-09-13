@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>99138ffad71870377b301d82d9c501c8</srcmd5>
+    <version>2.0.2</version>
+    <time>1505334712</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-minidb</comment>
+    <requestid>522414</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>782c80e0e14fa6a56ecf17d5072b6869</srcmd5>
+    <version>2.0.2</version>
+    <time>1507896950</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533139</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9bf93ff21b7b2ff2ffe761b973af8a53</srcmd5>
+    <version>2.0.2</version>
+    <time>1545647981</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659494</requestid>
+  </revision>
+</revisionlist>

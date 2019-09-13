@@ -1,0 +1,400 @@
+<revisionlist>
+  <revision rev="1" vrev="80">
+    <srcmd5>e97c2753c5e349a8b066e75541860eca</srcmd5>
+    <version>3.2.4</version>
+    <time>1168904378</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="123">
+    <srcmd5>2675a12189025412180ef25dd6fa67f4</srcmd5>
+    <version>3.2.4</version>
+    <time>1177077650</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="134">
+    <srcmd5>30b47c97608446d0af976e05b458a845</srcmd5>
+    <version>3.2.4</version>
+    <time>1179396012</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a5c23fa6812753d0d6d809cde4151adb</srcmd5>
+    <version>3.2.5</version>
+    <time>1185495173</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="43">
+    <srcmd5>21ca6d41d2decabd23808823b18c5782</srcmd5>
+    <version>3.2.5</version>
+    <time>1194306068</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="99">
+    <srcmd5>64b64bd166a5fd2839cdda72bd342cff</srcmd5>
+    <version>3.2.5</version>
+    <time>1209134987</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="159">
+    <srcmd5>64b64bd166a5fd2839cdda72bd342cff</srcmd5>
+    <version>3.2.5</version>
+    <time>1209134987</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="160">
+    <srcmd5>b95e6a3cad943fec6d9adb916f3ada70</srcmd5>
+    <version>3.2.5</version>
+    <time>1223764181</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="161">
+    <srcmd5>86518b1d4e79bd5853914f29e317fb99</srcmd5>
+    <version>3.2.5</version>
+    <time>1251291927</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/transfig based on submit request 18828 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="10" vrev="163">
+    <srcmd5>86518b1d4e79bd5853914f29e317fb99</srcmd5>
+    <version>3.2.5</version>
+    <time>1251291927</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/transfig based on submit request 18828 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="11" vrev="164">
+    <srcmd5>9be3c1d65294d9891f9522430593a8e9</srcmd5>
+    <version>3.2.5</version>
+    <time>1256573475</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/transfig based on submit request 23129 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>981d0bd089b87902ee9fe29e0a1deae6</srcmd5>
+    <version>3.2.5a</version>
+    <time>1260979361</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/transfig based on submit request 26737 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5a11512e0b5ba721e21675456f6000e4</srcmd5>
+    <version>3.2.5a</version>
+    <time>1261140277</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/transfig based on submit request 26898 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>ebfdaa1aa958c519f322ca20aaa03ab1</srcmd5>
+    <version>3.2.5a</version>
+    <time>1268926368</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>a683a1dbbd42f2114ef1cacf96d1f8d6</srcmd5>
+    <version>3.2.5a</version>
+    <time>1271722125</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/transfig based on submit request 38300 from user coolo
+</comment>
+    <requestid>38300</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>fe21c30d724a96bb71d35ca444271ac8</srcmd5>
+    <version>3.2.5a</version>
+    <time>1271807625</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/transfig based on submit request 38368 from user WernerFink
+</comment>
+    <requestid>38368</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>fe21c30d724a96bb71d35ca444271ac8</srcmd5>
+    <version>3.2.5a</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>fe21c30d724a96bb71d35ca444271ac8</srcmd5>
+    <version>3.2.5a</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>fe21c30d724a96bb71d35ca444271ac8</srcmd5>
+    <version>3.2.5a</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>98f162d369eb962b65f8f7d1dd2df3b8</srcmd5>
+    <version>3.2.5a</version>
+    <time>1309333559</time>
+    <user>saschpe</user>
+    <comment>-Add URL due bnc#676463</comment>
+    <requestid>74797</requestid>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>f867048dfbcdd54a0e17ffb3078437f1</srcmd5>
+    <version>3.2.5a</version>
+    <time>1309333567</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74797
+</comment>
+  </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>f867048dfbcdd54a0e17ffb3078437f1</srcmd5>
+    <version>3.2.5a</version>
+    <time>1319182528</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="16">
+    <srcmd5>f5786c5e1149de7fd28dbea340f493e0</srcmd5>
+    <version>3.2.5a</version>
+    <time>1323194951</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="18">
+    <srcmd5>f5786c5e1149de7fd28dbea340f493e0</srcmd5>
+    <version>3.2.5a</version>
+    <time>1340184284</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="19">
+    <srcmd5>731a8799c748a744793c3f27cf057db4</srcmd5>
+    <version>3.2.5a</version>
+    <time>1342083227</time>
+    <user>namtrac</user>
+    <comment>- Make it build with latest TeXLive 2012 with new package layout</comment>
+    <requestid>127472</requestid>
+  </revision>
+  <revision rev="26" vrev="20">
+    <srcmd5>21efde81ea9384196df87d4ca43c323e</srcmd5>
+    <version>3.2.5a</version>
+    <time>1343139111</time>
+    <user>coolo</user>
+    <comment>- Add missed fonts</comment>
+    <requestid>128835</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0ca0ffa47ddd5caaa95b3da1722a9dbb</srcmd5>
+    <version>3.2.5d</version>
+    <time>1351055897</time>
+    <user>coolo</user>
+    <comment>- Update to transfig version 3.2.5d
+  * made PostScript output DSC 3.0 compliant to work with CUPS 
+    patch from Ian Dall (see https://bugzilla.redhat.com/558380)
+  * Changed STOCK_LAST from 17 to 19 in fig2dev/dev/genemf.c
+  * Questionable copy of one data type to another in genemf.c
+  * Changed definition of command for short slanted lines in genlatex.c
+  * Added check for existance of arrows in SVG line generator
+  * Removed %%Page: directive from included JPEG files in PostScript/EPS output
+  * bound.c was passing pointers to int instead of double to arc_tangent
+  * put_msg function uses proper varargs now
+  * Option for debug comments in GBX output is &quot;yes&quot; or &quot;no&quot;, not &quot;on&quot; or &quot;off&quot;
+  * Added help (-h)  info for GBX output
+  * In version 1.4 of the PNG library dither was removed so fig2dev now uses
+    quantize when importing PNG images with palettes
+  * put_msg was declared twice (fig2dev/dev/genemf.c)
+  * Added xlink namespace for images in SVG export
+  * SVG output for imported images didn't form href link properly
+  * New PSTricks driver from Gene Ressler (see man fig2dev for info)
+  * transfig command was hardwired for &quot;tex&quot; for &quot;make all&quot; directive and
+    removing files with &quot;make clean&quot; directive in creating Makefile
+  * -a option added to PostScript and PICTeX languages to NOT include user's
+    login name in output
+  * Gerber (RS-247-X for CAD drawings for printed circuits) export language from Edward Gr</comment>
+    <requestid>138798</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>0ca0ffa47ddd5caaa95b3da1722a9dbb</srcmd5>
+    <version>3.2.5d</version>
+    <time>1359110503</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>99a257c1c54b82494773b5e3f8c824ed</srcmd5>
+    <version>3.2.5d</version>
+    <time>1360590914</time>
+    <user>coolo</user>
+    <comment>- User original patches from Debian
+
+- Add xfig.3.2.5b-mediaboxrealnb.dif to fix regarding pdf import,
+  reported by Loic Le Guyader compare with Debian bug #530898</comment>
+    <requestid>154913</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>3927687dbba2d1fde3f53e588c28f5cb</srcmd5>
+    <version>3.2.5d</version>
+    <time>1365496074</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+- Use original patches from Debian (forwarded request 162752 from namtrac)</comment>
+    <requestid>162890</requestid>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>3927687dbba2d1fde3f53e588c28f5cb</srcmd5>
+    <version>3.2.5d</version>
+    <time>1379664841</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b61fb03e1bbeb5e304f496afdb16f9db</srcmd5>
+    <version>3.2.5e</version>
+    <time>1386775460</time>
+    <user>coolo</user>
+    <comment>- Update to transfig version 3.2.5e
+  * HTML map output was limited to 100 links.
+    Fix by Jan van Dijk
+  * Updated for compatibility to PNG 1.5
+    From Matthias Scheler
+  * Was adding &quot;showpage&quot; command when producing bitmap formats from intermediate EPS.
+    This produced &quot;illegal&quot; PNG and JPEG files with extra, blank image.
+  * Maximum width of included image in PS/EPS output increased from 8192 to 16384
+  * Precision of some PIC objects increased from %.2f to %.3f
+  * Double close of output file when ghostscript fails. Original bug report from
+    https://bugzilla.redhat.com/728825
+- Change out patch sets to fit 3.2.5e</comment>
+    <requestid>210385</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>b61fb03e1bbeb5e304f496afdb16f9db</srcmd5>
+    <version>3.2.5e</version>
+    <time>1409303523</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>1789e04fd60322971aa7e19fc045af73</srcmd5>
+    <version>3.2.5e</version>
+    <time>1429658139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>298075</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>448fd4eb7a30bb020796646e5bdd580d</srcmd5>
+    <version>3.2.6a</version>
+    <time>1486465589</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix now failing download source service, that is don't do this
+
+- Update to fig2dev version 3.2.6a (Patchlevel 6a (January 2017))
+  NEW FEATURES:
+    o Distribute transfig.pdf. No need to build it from the TeX sources.
+    o Enable reproducible build for svg output.
+    o Set the creator to fig2dev, not to the path by which fig2dev is
+      invoked.
+  BUGS FIXED:
+    Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+    o The svg output now produces correct patterns and pie-wege arcs.
+      Property names instead of style attributes are used. Hollow arrow
+      heads are really hollow, not filled with white. In the PostScript
+      output, this might also clip a bit of the filling underneath an arrow.
+    o tikz output: Re-use \dimen \XFigu if it is already defined. Ticket #3.
+    o tikz output: A pattern in an object with line width zero and the
+      stroke color equal to the fill color would produce a white fill.
+      The tikz output now does not try to be smart and puts a pattern, even
+      if the result is equal to a solid fill. Ticket #1.
+    o pict2e output: Standalone tex-files always include color.sty. #2.
+    o pict2e output: A pattern with stroke color equal to fill color is
+      rendered as a solid fill.
+    o Compiles when gnu iconv and standard iconv are present.
+
+- Update to fig2dev version 3.2.6 (the successor of transfig)
+  o Add compile switch --enable-versioning and script update-version_m4,
+    to create version string from source control system
+  o tikz output: Support -G (grid) option. Make \XFigwidth and \XFigheight
+    only scale coordinates, not line widths; Do not set unnecessarily
+    \color{black} on text.</comment>
+    <requestid>454942</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>990b22f762f4965fe3f69936bd4008a4</srcmd5>
+    <version>3.2.6a</version>
+    <time>1513676999</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patches
+  * fig2dev-3.2.6a-RGBFILE.patch to let rgb.txt be located via
+    environment variable FIG2DEV_RGBFILE
+  * fig2dev-3.2.6a-man-typo.patch to fix simple typo in manual page
+  * fig2dev-3.2.6a-input-sanitizing.patch to do some input
+    sanitizing when reading FIG files (bsc#1069257, CVE-2017-16899)
+  * fig2dev-3.2.6a-style-overflow.patch</comment>
+    <requestid>544416</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>f133a047677f437c01969822c9939f18</srcmd5>
+    <version>3.2.6a</version>
+    <time>1520164284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582071</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4ac4a8424485191e6fc049bfdd68c394</srcmd5>
+    <version>3.2.7a</version>
+    <time>1525779475</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to fig2dev version 3.2.7a (Patchlevel 7a (April 2018))
+  o  Language         previous option         current option
+    ------------------------------------------------------------
+     cgm              -b dummy                -a
+     epic             -A scale                -d scale
+     eepic            -A scale                -d scale
+     eepicemu         -A scale                -d scale
+     gbx              -i on|off               -v
+     ibmgl            -m mag,xoff,yoff        -m mag -x xoff -y yoff
+     mp               -I file                 -d file
+     ps               -S dummy                -o
+  o Print language-specific help text by using fig2dev -L lang -h.
+  o Add option -M, multipage, for MetaPost output language.
+  o Add option -P, pagemode, and -z to choose a pagesize for pdf output.
+  o Add option -W (scaling of figures not possible) for tikz.
+  o Add option -b, border width, for LaTeX output language.
+  o Add option -f for pstex_t and pdftex_t output language.
+  o Add uk_UA and ru_RU encodings for PostScript output. Ticket #12.
+  o Fix regression whereupon flipped ellipses were not read. Ticket #23.
+  o Distribute i18n files ru_RU.CP1251.ps and uk_UA.KOI8-U.ps.
+  o Make test &quot;survive debian bug #890016&quot; succeed on 32 bit systems.
+  o Distribute the X bitmaps files within fig2dev, no need to install
+    these files. The files were needed for Tk and Perl/Tk output.
+  o Add option -w, wrap (create stand-alone perl file) for Perl/Tk output.
+  o Update help text: Output help for dxf and textyl output language,
+    add description of -g option for Tk/Tcl and Perl/Tk output, allow -f
+    option for pstex_t and pdftex_t output language.
+  o Sanitize input. Do not segfault on malformed input files. Fixes debian
+    bugs 881143, 881144, 881396, 890015, 890016, 882021 and also 882022.
+  o Do not put an %%Orientation: comment into PostScript output. Some</comment>
+    <requestid>605087</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>f399cd1c4f4b997ddc02fb3dc9e60b25</srcmd5>
+    <version>3.2.7a</version>
+    <time>1536094085</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch transfig-e0c4b024.patch from upstream commit e0c4b024
+  to fix bsc#1106531 with CVE-2018-16140</comment>
+    <requestid>632307</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>799981c2c341bb0cb8a2e29a249b08f1</srcmd5>
+    <version>3.2.7a</version>
+    <time>1566240538</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch transfig-03ea4578.patch from upstream commit 03ea4578
+  to fix bsc#1143650 with CVE-2019-14275</comment>
+    <requestid>723457</requestid>
+  </revision>
+</revisionlist>

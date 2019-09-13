@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07240c43d4e0fca318f7de15f8c6164c</srcmd5>
+    <version>1.1.1</version>
+    <time>1530304001</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-openmdao</comment>
+    <requestid>616891</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7ebd39bbc7ce13ab31fe88987e38350c</srcmd5>
+    <version>1.1.2</version>
+    <time>1548335033</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2
+  * Include LICENSE in manifest
+  * Avoided unicode-characters to be able to support py2
+- Remove upstream-included fix_unicode.patch
+</comment>
+    <requestid>662897</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bcf1703a7c2acabbc03e24b497598cb3</srcmd5>
+    <version>1.2.0</version>
+    <time>1563915384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718000</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>16e617e6a535d6973da106b9592294b4</srcmd5>
+    <version>1.2.1</version>
+    <time>1564302132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718979</requestid>
+  </revision>
+</revisionlist>

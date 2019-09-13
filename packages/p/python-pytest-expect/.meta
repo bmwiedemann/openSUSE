@@ -1,0 +1,6 @@
+<package name="python-pytest-expect" project="openSUSE:Factory">
+  <title>py.test plugin to store test expectations and mark tests based on them</title>
+  <description>A py.test plugin that stores test expectations by saving the set of failing tests, allowing them to be marked as xfail when running them in future. The tests expectations are stored such that they can be distributed alongside the tests. However, note that test expectations can only be reliably shared between Python 2 and Python 3 if they only use ASCII characters in their node ids: this likely isn’t a limitation if tests are using the normal Python format, as Python 2 only allows ASCII characters in identifiers.
+</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-expect"/>
+</package>

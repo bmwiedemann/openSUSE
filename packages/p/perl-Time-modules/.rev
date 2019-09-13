@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>59114a8218d7dcee404f53d5b0d3ddba</srcmd5>
+    <version>2006.0814</version>
+    <time>1168903923</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="123">
+    <srcmd5>59114a8218d7dcee404f53d5b0d3ddba</srcmd5>
+    <version>2006.0814</version>
+    <time>1168903923</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="124">
+    <srcmd5>f001e2bc3e657d3f3ebd797bed6ab477</srcmd5>
+    <version>2006.0814</version>
+    <time>1245276986</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="126">
+    <srcmd5>f001e2bc3e657d3f3ebd797bed6ab477</srcmd5>
+    <version>2006.0814</version>
+    <time>1245276986</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="127">
+    <srcmd5>8c7679a2dd8690d841709e6705a78cc6</srcmd5>
+    <version>2006.0814</version>
+    <time>1263297706</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Time-modules based on submit request 29256 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="128">
+    <srcmd5>1a8c451d2295dabbaac9a19f91ebf594</srcmd5>
+    <version>2006.0814</version>
+    <time>1268925644</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="130">
+    <srcmd5>1a8c451d2295dabbaac9a19f91ebf594</srcmd5>
+    <version>2006.0814</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="131">
+    <srcmd5>1a8c451d2295dabbaac9a19f91ebf594</srcmd5>
+    <version>2006.0814</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="132">
+    <srcmd5>15949bd19eb175b6a2e710f4ec585bcd</srcmd5>
+    <version>2006.0814</version>
+    <time>1287580884</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51077 from user coolo
+</comment>
+    <requestid>51077</requestid>
+  </revision>
+  <revision rev="10" vrev="133">
+    <srcmd5>63f946ee0d375c32db53e436d8f16861</srcmd5>
+    <version>2006.0814</version>
+    <time>1287580889</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51077
+</comment>
+  </revision>
+  <revision rev="11" vrev="134">
+    <srcmd5>28f6fc0457cc5df597f96e87fe9b8672</srcmd5>
+    <version>2006.0814</version>
+    <time>1291584330</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54681 from user coolo
+</comment>
+    <requestid>54681</requestid>
+  </revision>
+  <revision rev="12" vrev="135">
+    <srcmd5>6eb964baad599bcf90e32da1b2038b96</srcmd5>
+    <version>2006.0814</version>
+    <time>1291584336</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54681
+</comment>
+  </revision>
+  <revision rev="13" vrev="138">
+    <srcmd5>6eb964baad599bcf90e32da1b2038b96</srcmd5>
+    <version>2006.0814</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="133">
+    <srcmd5>14bddd5371c29038337b9e6c06b04892</srcmd5>
+    <version>2011.0517</version>
+    <time>1305731919</time>
+    <user>saschpe</user>
+    <comment>- update to 2011.0517
+	Bugfix from Sophie Hamilton: call tzset() when changing timezones.
+	Bugfix: bail out of tests cleanly when tzset doesn't work.
+- license changed
+
+- update to 2011.0505
+	Bugfix: make sure $ampm is defined so no undefined string warnings
+	are issued.
+	Honor the GMT flag when parsing time specs.  Patch from
+	kris at shannon.id.au.
+	Bugfix: RT#31477 noon &amp; midnight would match in the middle of strings.
+	Added %v conversion for Time::CTime
+	Added tests to disprove invalid bug reports.</comment>
+    <requestid>70545</requestid>
+  </revision>
+  <revision rev="15" vrev="134">
+    <srcmd5>e334a110f9c767e28feec4d88c050523</srcmd5>
+    <version>2011.0517</version>
+    <time>1305731927</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70545
+</comment>
+  </revision>
+  <revision rev="16" vrev="136">
+    <srcmd5>e334a110f9c767e28feec4d88c050523</srcmd5>
+    <version>2011.0517</version>
+    <time>1319182318</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="137">
+    <srcmd5>380624f783aa0aa100197574c3238e96</srcmd5>
+    <version>2011.0517</version>
+    <time>1337578179</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-Permissive
+Choose a license from the list linked at license.opensuse.org (forwarded request 121221 from babelworx)</comment>
+    <requestid>121225</requestid>
+  </revision>
+  <revision rev="18" vrev="139">
+    <srcmd5>380624f783aa0aa100197574c3238e96</srcmd5>
+    <version>2011.0517</version>
+    <time>1340183945</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="140">
+    <srcmd5>53dbfaf591ec76db8a9922f07c447ccb</srcmd5>
+    <version>2011.0517</version>
+    <time>1352124087</time>
+    <user>coolo</user>
+    <comment>- explicit buildequire timezone for the test suite</comment>
+    <requestid>140156</requestid>
+  </revision>
+  <revision rev="20" vrev="142">
+    <srcmd5>53dbfaf591ec76db8a9922f07c447ccb</srcmd5>
+    <version>2011.0517</version>
+    <time>1359109835</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="144">
+    <srcmd5>53dbfaf591ec76db8a9922f07c447ccb</srcmd5>
+    <version>2011.0517</version>
+    <time>1379663904</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="146">
+    <srcmd5>53dbfaf591ec76db8a9922f07c447ccb</srcmd5>
+    <version>2011.0517</version>
+    <time>1409302550</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>66962aa6e01b177257895fe59ffc2dec</srcmd5>
+    <version>2013.0912</version>
+    <time>1537263799</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635694</requestid>
+  </revision>
+</revisionlist>

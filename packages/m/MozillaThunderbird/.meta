@@ -1,0 +1,8 @@
+<package name="MozillaThunderbird" project="openSUSE:Factory">
+  <title>The Stand-Alone Mozilla Mail Component</title>
+  <description>Mozilla Thunderbird is a redesign of the Mozilla Mail component. It is
+written using the XUL user interface language and designed to be
+cross-platform. It is a stand-alone application instead of part of the
+Mozilla application suite.</description>
+  <devel project="mozilla:Factory" package="MozillaThunderbird"/>
+</package>

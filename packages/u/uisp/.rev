@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="36">
+    <srcmd5>96a92ad8ddbac40e0dc9786cb10c5c12</srcmd5>
+    <version>20050207suse</version>
+    <time>1168877624</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="43">
+    <srcmd5>79c9b709c865ac92549572ed9e7d2e2b</srcmd5>
+    <version>20050207suse</version>
+    <time>1175265219</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="76">
+    <srcmd5>7a664d00b0bcd892b698916b51f3e23a</srcmd5>
+    <version>20050207suse</version>
+    <time>1191366906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="139">
+    <srcmd5>7a664d00b0bcd892b698916b51f3e23a</srcmd5>
+    <version>20050207suse</version>
+    <time>1191366906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="140">
+    <srcmd5>1a6ace66f68d49ffc1f69cc65b353e15</srcmd5>
+    <version>20050207suse</version>
+    <time>1245363446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="142">
+    <srcmd5>1a6ace66f68d49ffc1f69cc65b353e15</srcmd5>
+    <version>20050207suse</version>
+    <time>1245363446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="143">
+    <srcmd5>889712267852a78212401bdadc40904a</srcmd5>
+    <version>20050207suse</version>
+    <time>1268926408</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="145">
+    <srcmd5>889712267852a78212401bdadc40904a</srcmd5>
+    <version>20050207suse</version>
+    <time>1278667393</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="146">
+    <srcmd5>889712267852a78212401bdadc40904a</srcmd5>
+    <version>20050207suse</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="149">
+    <srcmd5>889712267852a78212401bdadc40904a</srcmd5>
+    <version>20050207suse</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="150">
+    <srcmd5>ce198dcdd8126f1037e06f06e546055f</srcmd5>
+    <version>20050207suse</version>
+    <time>1314962269</time>
+    <user>saschpe</user>
+    <comment>- fix build with GCC 4.6</comment>
+    <requestid>80445</requestid>
+  </revision>
+  <revision rev="12" vrev="151">
+    <srcmd5>3f68092393a367d17b8f30349f724f4a</srcmd5>
+    <version>20050207suse</version>
+    <time>1314962279</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80445
+</comment>
+  </revision>
+  <revision rev="13" vrev="152">
+    <srcmd5>43cdfec95511d55d6cfb34ae308125c8</srcmd5>
+    <version>20050207suse</version>
+    <time>1317027046</time>
+    <user>saschpe</user>
+    <comment>rename modprobe.conf file to avoid errors from newer modprobe</comment>
+    <requestid>84536</requestid>
+  </revision>
+  <revision rev="14" vrev="154">
+    <srcmd5>43cdfec95511d55d6cfb34ae308125c8</srcmd5>
+    <version>20050207suse</version>
+    <time>1319182536</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="155">
+    <srcmd5>6aca3593306a7194f190e3685e70dea9</srcmd5>
+    <version>20050207suse</version>
+    <time>1323341544</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95040 from coolo)</comment>
+    <requestid>95528</requestid>
+  </revision>
+  <revision rev="16" vrev="157">
+    <srcmd5>6aca3593306a7194f190e3685e70dea9</srcmd5>
+    <version>20050207suse</version>
+    <time>1340184295</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="159">
+    <srcmd5>6aca3593306a7194f190e3685e70dea9</srcmd5>
+    <version>20050207suse</version>
+    <time>1359110521</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="161">
+    <srcmd5>6aca3593306a7194f190e3685e70dea9</srcmd5>
+    <version>20050207suse</version>
+    <time>1379664879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="163">
+    <srcmd5>6aca3593306a7194f190e3685e70dea9</srcmd5>
+    <version>20050207suse</version>
+    <time>1409303566</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="164">
+    <srcmd5>b3cf697917874d81e5206b5d11787c50</srcmd5>
+    <version>20050207suse</version>
+    <time>1491896203</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483763</requestid>
+  </revision>
+  <revision rev="21" vrev="165">
+    <srcmd5>f154a9d9d869af9846961adbcb643aec</srcmd5>
+    <version>20050207suse</version>
+    <time>1521499067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587836</requestid>
+  </revision>
+  <revision rev="22" vrev="166">
+    <srcmd5>c79d9a6bd590eaa6e0b0ad20c92b29b7</srcmd5>
+    <version>20050207suse</version>
+    <time>1530866563</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620734</requestid>
+  </revision>
+  <revision rev="23" vrev="167">
+    <srcmd5>81e5aff081a113a712c79d5619117027</srcmd5>
+    <version>20050207suse</version>
+    <time>1533214713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626683</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="xorg-x11-libs" project="openSUSE:Factory">
+  <title>Remaining X.Org libraries</title>
+  <description>This package contains the remaining X.Org libraries.</description>
+  <devel project="X11:XOrg" package="xorg-x11-libs"/>
+</package>

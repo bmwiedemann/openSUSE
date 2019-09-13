@@ -1,0 +1,5 @@
+<package name="udp2raw-tunnel" project="openSUSE:Factory">
+  <title>udp2raw-tunnel</title>
+  <description></description>
+  <devel project="network:utilities" package="udp2raw-tunnel"/>
+</package>

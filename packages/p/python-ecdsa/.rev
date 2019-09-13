@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>544e944b9ca450456720d564006d8699</srcmd5>
+    <version>0.9</version>
+    <time>1386063133</time>
+    <user>coolo</user>
+    <comment>new dependency of python-paramiko</comment>
+    <requestid>208518</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>70c25884c452ac98ca16ec20cd3d6762</srcmd5>
+    <version>0.10</version>
+    <time>1389799608</time>
+    <user>coolo</user>
+    <comment>- update to 0.10:
+  * Make the secp256k1 available (forwarded request 213718 from dirkmueller)</comment>
+    <requestid>213775</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>740c3698fcb5e8a6598c1de07946daa3</srcmd5>
+    <version>0.10</version>
+    <time>1398499855</time>
+    <user>coolo</user>
+    <comment>- include in SLE 12 (FATE #315990) (forwarded request 230782 from rjschwei)</comment>
+    <requestid>231086</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>740c3698fcb5e8a6598c1de07946daa3</srcmd5>
+    <version>0.10</version>
+    <time>1409302864</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>26f2cbecbb5dddc332f74c83584b530f</srcmd5>
+    <version>0.11</version>
+    <time>1410967518</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249302</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c633e2597241c09dddf93190c8a1fbf1</srcmd5>
+    <version>0.13</version>
+    <time>1424779355</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287330</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9eb992e4a506e6f3e64a2063d5ae3275</srcmd5>
+    <version>0.13</version>
+    <time>1494345761</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491843</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>60425a34d5021db875fa05370f6b272a</srcmd5>
+    <version>0.13</version>
+    <time>1544726876</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655720</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>53b6dd80e9549ae4a2e421bec9b1d35d</srcmd5>
+    <version>0.13.2</version>
+    <time>1558128989</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.2
+- enable tests
+- fix requires
+ * python packaging fixes</comment>
+    <requestid>702768</requestid>
+  </revision>
+</revisionlist>

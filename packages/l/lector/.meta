@@ -1,0 +1,12 @@
+<package name="lector" project="openSUSE:Factory">
+  <title>Qt based ebook reader</title>
+  <description>Currently supports:
+
+* pdf
+* epub
+* mobi
+* azw / azw3 / azw4
+* cbr / cbz
+</description>
+  <devel project="Documentation:Tools" package="lector"/>
+</package>

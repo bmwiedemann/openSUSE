@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1fed0033c6a2529c2009924e5a7824cd</srcmd5>
+    <version>2.1.0</version>
+    <time>1525779389</time>
+    <user>dimstar_suse</user>
+    <comment>Rename from pymol</comment>
+    <requestid>603083</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3c35e4b39857fd5f0f394c408914f6ed</srcmd5>
+    <version>2.1.0</version>
+    <time>1529667001</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614549</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6d8227d4f1ed2fd70b6e6002179073d3</srcmd5>
+    <version>2.2.0</version>
+    <time>1535704928</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.2.0:
+  * Switch devel links to github
+  * No finegraned news file see ChangeLog for commit info
+- Rebase patch no-o3.patch
+
+- Fix fdupes call
+- Install license and docu files</comment>
+    <requestid>631103</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6526836f1dd96dac7e769f07115068e5</srcmd5>
+    <version>2.2.0+git.1544795767.c481a7c1</version>
+    <time>1546695752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1544795767.c481a7c1:
+  * fix SettingUniqueFromPyList w/ float3
+  * remove pymol::Image::Image(T&amp;&amp; vec, ...)
+  * refactor: pymol::Image tweaks
+  * rewrite &quot;get_raw_alignment&quot;
+  * refactor: pymol::vla::operator-&gt;() usage
+  * fix #16 pymol::vla::operator[] for VS2015 32bit
+  * fix pymol::vla::operator+ for VS2015
+  * pymol::Image::pixels()
+  * fix build
+  * fix macOS build
+- Switch off msgpackc as we don't have mmtf-cpp packaged.
+</comment>
+    <requestid>662740</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a4a498887ba2d661e19e72a5494cf41f</srcmd5>
+    <version>2.3.0</version>
+    <time>1549916944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673407</requestid>
+  </revision>
+</revisionlist>

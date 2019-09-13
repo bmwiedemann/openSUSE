@@ -1,0 +1,1181 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7a17d4f647b4eb9394ec771b1247c1f</srcmd5>
+    <version>2.27.1</version>
+    <time>1249125119</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d43a9ea9e25920a672dc2afcfd7c9ef8</srcmd5>
+    <version>2.27.1</version>
+    <time>1249423337</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>71603010b769342f4ea42699658ebd58</srcmd5>
+    <version>2.27.2</version>
+    <time>1250514853</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 17896 from user vuntz
+</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>83cfc59e9ebada596d4fb23da2b8c681</srcmd5>
+    <version>2.27.3</version>
+    <time>1251996163</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 19767 from user vuntz
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>046d55cc7510c013445a83f26e9e8be1</srcmd5>
+    <version>2.27.4</version>
+    <time>1253654988</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 20788 from user dimstar
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>db90b11522dbc2ab6fea72a4bc8323b9</srcmd5>
+    <version>2.27.5</version>
+    <time>1254792472</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 21817 from user vuntz
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>69dbcbbc9e8c399808e6b7d894e97aaf</srcmd5>
+    <version>2.28.0</version>
+    <time>1255358596</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 22120 from user vuntz
+</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>69dbcbbc9e8c399808e6b7d894e97aaf</srcmd5>
+    <version>2.28.0</version>
+    <time>1255358596</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 22120 from user vuntz
+</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>aaec2bbcb2927625cae0f2a2aae4ab05</srcmd5>
+    <version>2.28.0</version>
+    <time>1260270055</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 25885 from user vuntz
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>cbc4ffa9703fcfdadfd5c975db5a00f3</srcmd5>
+    <version>2.28.0</version>
+    <time>1265918351</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 32291 from user vuntz
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>133ee1cf85f25ed214fb22455f8baf4e</srcmd5>
+    <version>2.29.0</version>
+    <time>1267530178</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 33769 from user dimstar
+</comment>
+    <requestid>33769</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>46c827487613a9b48b89dcba7514af73</srcmd5>
+    <version>2.29.0</version>
+    <time>1268925019</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7e073fcbfd84f21f3fcc143d1ce8286b</srcmd5>
+    <version>2.29.1</version>
+    <time>1270130665</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 36384 from user vuntz
+</comment>
+    <requestid>36384</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7e073fcbfd84f21f3fcc143d1ce8286b</srcmd5>
+    <version>2.29.1</version>
+    <time>1278667369</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>7e073fcbfd84f21f3fcc143d1ce8286b</srcmd5>
+    <version>2.29.1</version>
+    <time>1278678599</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>839dc7a04644ba163a57e57844fecd67</srcmd5>
+    <version>unknown</version>
+    <time>1284376791</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 47794 from user vuntz
+</comment>
+    <requestid>47794</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>a84caa2a5b7de0879431748ae8a3c686</srcmd5>
+    <version>2.31.5</version>
+    <time>1285281569</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 48950 from user vuntz
+</comment>
+    <requestid>48950</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>83ce1c7b8155c2ab5fd8511aa6e16e63</srcmd5>
+    <version>2.91.0</version>
+    <time>1287154421</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/mutter based on submit request 50768 from user vuntz
+</comment>
+    <requestid>50768</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>83c255e06b4609c6e6f94015c812761e</srcmd5>
+    <version>2.91.2</version>
+    <time>1290252222</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53503 from user vuntz
+</comment>
+    <requestid>53503</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c8196f4efedfdbd14b058ce1ae07db64</srcmd5>
+    <version>2.91.3</version>
+    <time>1291999095</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55409 from user vuntz
+</comment>
+    <requestid>55409</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>531f25736cfc8aae045e710583f62c4f</srcmd5>
+    <version>2.91.4</version>
+    <time>1295021163</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58234 from user vuntz
+</comment>
+    <requestid>58234</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>c3e2e3c8a99b57410f582f8e401d839d</srcmd5>
+    <version>2.91.4</version>
+    <time>1295021170</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58234
+</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2899e20287d1999aca9af4acbd8f70c9</srcmd5>
+    <version>2.91.5</version>
+    <time>1295056869</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58274 from user vuntz
+</comment>
+    <requestid>58274</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>7472d12cc4d5f9d1d73d438ab6d7a982</srcmd5>
+    <version>2.91.5</version>
+    <time>1295056880</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58274
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>692e3b29b6092fde23bac077a979bbe3</srcmd5>
+    <version>2.91.6</version>
+    <time>1297642535</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61098 from user vuntz
+</comment>
+    <requestid>61098</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>692e3b29b6092fde23bac077a979bbe3</srcmd5>
+    <version>2.91.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>d4907725fc580c73162aa82cd2be3fe1</srcmd5>
+    <version>2.91.6</version>
+    <time>1298030153</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61396 from user vuntz
+</comment>
+    <requestid>61396</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>fe67547f620df63d240806bf2575aa22</srcmd5>
+    <version>2.91.6</version>
+    <time>1298030168</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61396
+</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5217d2d17cdbec7ab4374dbf6d1618aa</srcmd5>
+    <version>3.0.1</version>
+    <time>1304606690</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69125</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f3ea5d69d4a0951b78ecedee592bea31</srcmd5>
+    <version>3.0.2.1</version>
+    <time>1306848951</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>72012</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>7da15f124ba955696e21e80b1a7777ff</srcmd5>
+    <version>3.0.2.1</version>
+    <time>1306914669</time>
+    <user>saschpe</user>
+    <comment>Minor fixup in an old .changelog entry. mis-aligned with last checkin'
+</comment>
+    <requestid>72280</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>a188e870de148b789025d8bba4fcf145</srcmd5>
+    <version>3.0.2.1</version>
+    <time>1306914676</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72280
+</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8e42223753507280036eaafd41e0bf76</srcmd5>
+    <version>3.1.3.1</version>
+    <time>1310131323</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F, including GNOME 3.1.3</comment>
+    <requestid>75783</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a57accc4dc78873e0cc0e35b682d3d67</srcmd5>
+    <version>3.1.4</version>
+    <time>1312384288</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>77812</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>67514eeb8ae71a7f0ba51d1be22a6423</srcmd5>
+    <version>3.1.90.1</version>
+    <time>1315563764</time>
+    <user>saschpe</user>
+    <comment>Update to 3.1.90.1</comment>
+    <requestid>81651</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>53640376f43a59ffc5cb99770698973f</srcmd5>
+    <version>3.2.0</version>
+    <time>1317740421</time>
+    <user>oertel</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85705</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>90cd68f86cadb286d8c07e734a09f200</srcmd5>
+    <version>3.2.1</version>
+    <time>1319028070</time>
+    <user>coolo</user>
+    <comment>Pushing missing G:F bits</comment>
+    <requestid>88677</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>90cd68f86cadb286d8c07e734a09f200</srcmd5>
+    <version>3.2.1</version>
+    <time>1319182189</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>dacb151d385370097a87bee7ac75acc1</srcmd5>
+    <version>3.3.3</version>
+    <time>1326118787</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99112</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5ebc88c7a868b5f6d7ded16455454cbb</srcmd5>
+    <version>3.3.4</version>
+    <time>1327583186</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>101613</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6788908d04d8b578e7fd5f3613dfd77e</srcmd5>
+    <version>3.3.5</version>
+    <time>1329391450</time>
+    <user>coolo</user>
+    <comment>Pushing most G:F bits</comment>
+    <requestid>105145</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>d8a85b3cace5a8675247e95ae4b22e1e</srcmd5>
+    <version>3.3.5</version>
+    <time>1329823331</time>
+    <user>coolo</user>
+    <comment>Add missing BuildRequires (forwarded request 106058 from dimstar)</comment>
+    <requestid>106141</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4e1cee6c352a8dcbb12644f15a203cc7</srcmd5>
+    <version>3.3.90</version>
+    <time>1330692546</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>107286</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b491d59103120dc50d6d8ec1c96fa1cd</srcmd5>
+    <version>3.4.0</version>
+    <time>1333022583</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111768</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3c7da12b1039215079d6d0f94c8a26f3</srcmd5>
+    <version>3.4.1</version>
+    <time>1334927924</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>114676</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>fcf63e3391fb55a194d21cbc1cbd61c7</srcmd5>
+    <version>3.4.1</version>
+    <time>1336452416</time>
+    <user>coolo</user>
+    <comment>Added patch to fix upstream bug with extensions in some cases - Now includes a .changes entery... (forwarded request 116476 from dimstar)</comment>
+    <requestid>116527</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>53e4c29373ebe12a243dbdcfab2d312d</srcmd5>
+    <version>3.4.1</version>
+    <time>1339352297</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>123649</requestid>
+  </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>53e4c29373ebe12a243dbdcfab2d312d</srcmd5>
+    <version>3.4.1</version>
+    <time>1340183716</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f763fbc2599044284b0de0e12d4876ec</srcmd5>
+    <version>3.6.0</version>
+    <time>1349368875</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136761</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>d2257b0cce17b393c4dd9b925c30e7b1</srcmd5>
+    <version>3.6.1</version>
+    <time>1350646432</time>
+    <user>coolo</user>
+    <comment>Update to 3.6.1 (forwarded request 138330 from dimstar)</comment>
+    <requestid>138592</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>b95ff8e87ed0d596a9903c8e8344192f</srcmd5>
+    <version>3.6.2</version>
+    <time>1353845353</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>142476</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>a95afd3d9a692ee00e173c18871560e1</srcmd5>
+    <version>3.6.2</version>
+    <time>1358872626</time>
+    <user>coolo</user>
+    <comment>Add patch to fix bug, Stop windows from jumping spontaneously from one monitor to another. Wanted for 12.3 (forwarded request 149497 from Zaitor)</comment>
+    <requestid>149520</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>a95afd3d9a692ee00e173c18871560e1</srcmd5>
+    <version>3.6.2</version>
+    <time>1359109472</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>f51175916324892f475628ebd6537701</srcmd5>
+    <version>3.6.2</version>
+    <time>1360503422</time>
+    <user>coolo</user>
+    <comment>Add patch from upstream git to fix a window redirecting issue (bgo#693042). (forwarded request 154957 from Zaitor)</comment>
+    <requestid>154975</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e0d1fb727e969fd347243b8b85ca1597</srcmd5>
+    <version>3.6.3</version>
+    <time>1360950452</time>
+    <user>coolo</user>
+    <comment>Update to 3.6.3 - GNOME 3.6 stable branch.
+Effectively, this bumps the version to 3.6.3, which is not really different from what we had now as 3.6.2 + patches... it's just 'clearer' for future bug reports (to upstream) about what version we provide...
+Recommended for 12.3 for this reason.</comment>
+    <requestid>155479</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8f2607c01120b69a8f3c1d48305b9881</srcmd5>
+    <version>3.8.0</version>
+    <time>1365140142</time>
+    <user>coolo</user>
+    <comment>Push G:Factory</comment>
+    <requestid>162194</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>701822366a50e37447d6c8e04fb591a9</srcmd5>
+    <version>3.8.1</version>
+    <time>1366984338</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.8.1 to Factory - mostly small bug fixes over the existing 3.8.0 we have</comment>
+    <requestid>173271</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f3e46a52c0179ed646b9d6cb1659e4c5</srcmd5>
+    <version>3.9.1</version>
+    <time>1369719680</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.1 - been running it for a while now.</comment>
+    <requestid>176670</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>41abe9d6b8a13de4ab121e98cfa5c894</srcmd5>
+    <version>3.9.3</version>
+    <time>1372527782</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.3, as announced</comment>
+    <requestid>181302</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>788c02077b311b9b2dc9af231addccb2</srcmd5>
+    <version>3.9.4</version>
+    <time>1373982707</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.4 - hopefully in the for #oSC13</comment>
+    <requestid>183180</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>67cdd29812b90240233e8e71bfea7b42</srcmd5>
+    <version>3.9.5</version>
+    <time>1376648504</time>
+    <user>scarabeus_factory</user>
+    <comment>push GNOME:Factory</comment>
+    <requestid>186910</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>db77f0ca509f1789c5c25e789a5591e3</srcmd5>
+    <version>3.9.90</version>
+    <time>1377875868</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.90</comment>
+    <requestid>196269</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>541d33bb036918d95da4f802da818d00</srcmd5>
+    <version>3.9.91</version>
+    <time>1378996983</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.9.91</comment>
+    <requestid>198126</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>541d33bb036918d95da4f802da818d00</srcmd5>
+    <version>3.9.91</version>
+    <time>1379663326</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>76879ba04f8b7b44b374a862df7f42db</srcmd5>
+    <version>3.9.92</version>
+    <time>1379925121</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.92</comment>
+    <requestid>200034</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>5e280dfe91fb01d055d22479810a3ef0</srcmd5>
+    <version>3.10.0.1</version>
+    <time>1380296847</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200968</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>ed8028f8784c03879586d763cf0218d3</srcmd5>
+    <version>3.10.1.1</version>
+    <time>1382012621</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.10.1 - GNOME Stable branch - Bugfixes only (forwarded request 203460 from Zaitor)</comment>
+    <requestid>203513</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>68465612e5016539330edb7792fe9965</srcmd5>
+    <version>3.10.2</version>
+    <time>1384518520</time>
+    <user>coolo</user>
+    <comment>Update to GNOME 3.10.2 (forwarded request 206931 from Zaitor)</comment>
+    <requestid>206946</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>8a235a46b861279117989e9961c0ed4e</srcmd5>
+    <version>3.10.3</version>
+    <time>1390818229</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 3.10.3 (forwarded request 214333 from Zaitor)</comment>
+    <requestid>214343</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>6528846c44b733fe2709884cb9f7eae5</srcmd5>
+    <version>3.10.4</version>
+    <time>1392989148</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.10.4:
+  + Fix CSD titlebars being placed off-screen (bgo#719772).
+  + Expose MetaWindow:skip-taskbar property (bgo#723307).
+  + Fix legacy tray icons showing up blank (bgo#721596).
+  + Fix configuration of cloned monitors (bgo#710610).
+  + Use correct output property for backlight control (bgo#723606).
+  + Bugs fixed: bgo#720630, bgo#723468, bgo#724258, bgo#724364.
+  + Updated translations.</comment>
+    <requestid>223299</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>611e153f0cc54c4a18494c4c4968d442</srcmd5>
+    <version>3.12.1</version>
+    <time>1399317422</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231795</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>044cd2656af31ba8c2b25473a12a4ba2</srcmd5>
+    <version>3.12.2</version>
+    <time>1400588712</time>
+    <user>coolo</user>
+    <comment>Stable update (forwarded request 234408 from Zaitor)</comment>
+    <requestid>234528</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>044cd2656af31ba8c2b25473a12a4ba2</srcmd5>
+    <version>3.12.2</version>
+    <time>1409301944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>9d3a195e06cf26b30ab0ab614534085a</srcmd5>
+    <version>3.14.0</version>
+    <time>1412098657</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251943 from Zaitor)</comment>
+    <requestid>252055</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>61661e1b0f12145e3dc4bf0876ec6c7f</srcmd5>
+    <version>3.14.1</version>
+    <time>1413463997</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256587</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>e57bbff27151f07ee1d284dcc5cfcf4c</srcmd5>
+    <version>3.14.2</version>
+    <time>1416347058</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.14.2</comment>
+    <requestid>261816</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>e9686ee23ad432fa1cc3186e199480ef</srcmd5>
+    <version>3.14.2</version>
+    <time>1418840373</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265368</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>8033c9e4ce9653848885c7c7c53462be</srcmd5>
+    <version>3.14.3</version>
+    <time>1419159736</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265955</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>6b032a163c788e350a4b67e3408beca3</srcmd5>
+    <version>3.16.0</version>
+    <time>1427736432</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292847 from dimstar)</comment>
+    <requestid>293031</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>1a286e71caa25d99935b5e414794ab9d</srcmd5>
+    <version>3.16.0</version>
+    <time>1428272761</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>294312</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>1823e2e9b4401dc896f5f3cfe6a7d56d</srcmd5>
+    <version>3.16.1.1</version>
+    <time>1429768952</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298474</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>34328062c8fdbe13f8932c1d4098875d</srcmd5>
+    <version>3.16.2</version>
+    <time>1431980024</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307216</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>793b546cd9af01868c3076abda904558</srcmd5>
+    <version>3.16.3</version>
+    <time>1437059887</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314941</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>177e512ad78734ae5b9f48a40a7510f5</srcmd5>
+    <version>3.16.3</version>
+    <time>1440743034</time>
+    <user>coolo</user>
+    <comment>Patches that help users of older Nvidia cards (when using the blob driver).</comment>
+    <requestid>325378</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>5ae2f04694aa7b69a70ba393c895fb3e</srcmd5>
+    <version>3.18.0</version>
+    <time>1444141895</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0 (forwarded request 332816 from dimstar)</comment>
+    <requestid>332907</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>cf0c7881132e737aac18a08aeb0bfa7a</srcmd5>
+    <version>3.18.0</version>
+    <time>1444833777</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 336330 from Zaitor)</comment>
+    <requestid>336742</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>f6fa62c69bb3d1c32aeca4626133498f</srcmd5>
+    <version>3.18.1</version>
+    <time>1445796691</time>
+    <user>coolo</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 339452 from Zaitor)</comment>
+    <requestid>339870</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>542b536ee670cb576c5d77fb7d987c24</srcmd5>
+    <version>3.18.2</version>
+    <time>1449145789</time>
+    <user>dimstar_suse</user>
+    <comment>Stable update, please make sure gdm, gnome-shell, mutter and gnome-shell-extensions get the same staging</comment>
+    <requestid>344075</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>af9b3980bc8f7c1f76bffe67874dee4f</srcmd5>
+    <version>3.20.0</version>
+    <time>1459255546</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 378360 from dimstar)</comment>
+    <requestid>378630</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>177753e2284435c359479b4d67f7cd55</srcmd5>
+    <version>3.20.1</version>
+    <time>1460739938</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390155</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>28f474aefa59de878cd3fdee6e7131d7</srcmd5>
+    <version>3.20.2</version>
+    <time>1463738049</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>395502</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>23ca19a1818a8defc9345e41f5a76da3</srcmd5>
+    <version>3.20.3</version>
+    <time>1468360126</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405438</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>541b3fd388bd22d2842461e85960b249</srcmd5>
+    <version>3.20.3</version>
+    <time>1472379447</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423056</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>899fdbe3988b93c97559a8fb3f36784a</srcmd5>
+    <version>3.22.0</version>
+    <time>1474475980</time>
+    <user>dimstar_suse</user>
+    <comment>New stable (forwarded request 428856 from Zaitor)</comment>
+    <requestid>429128</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>01a4fdd00fcbaa0e717969cc9943713c</srcmd5>
+    <version>3.22.0</version>
+    <time>1474723163</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mutter-screeenshot-coords.patch: yet another fix to take
+  screenshots of a specific area. (forwarded request 429309 from dimstar)</comment>
+    <requestid>429344</requestid>
+  </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>cee9d8dbf6b683e0928060c6817757f5</srcmd5>
+    <version>3.22.0</version>
+    <time>1475480079</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 430458 from Zaitor)</comment>
+    <requestid>430469</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>833a1510f89d6a431d67ec79796dd152</srcmd5>
+    <version>3.22.1</version>
+    <time>1476779730</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 435421 from Zaitor)</comment>
+    <requestid>435468</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>b6b9cc70d17ce1db56e0f0d11de298df</srcmd5>
+    <version>3.22.1</version>
+    <time>1478289035</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438600</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>17b326b003dc3c417e7e6d41f333a6a0</srcmd5>
+    <version>3.22.1</version>
+    <time>1478871125</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439496</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>a9f0d22852495677817b1a9dbd98c978</srcmd5>
+    <version>3.22.2</version>
+    <time>1478958673</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.22.2 (forwarded request 439857 from dimstar)</comment>
+    <requestid>439904</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>d22dbe5fac800ae2211712d7e8f6d1ed</srcmd5>
+    <version>3.22.2</version>
+    <time>1480860335</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mutter-x11-meta.patch: Don't try setting unavailable scroll
+  methods; libinput acts really bad on it (bgo#775337, bgo#771744,
+  boo#1011356). (forwarded request 443042 from dimstar)</comment>
+    <requestid>443049</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>aea36c817a86284959711b1d93616495</srcmd5>
+    <version>3.22.3</version>
+    <time>1487597329</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458736</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>91e4cf606e8f08d3825d3022943fd190</srcmd5>
+    <version>3.24.0</version>
+    <time>1490220643</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.0 (forwarded request 481565 from dimstar)</comment>
+    <requestid>481596</requestid>
+  </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>566913163d66a702ce58f75e12c9a4c1</srcmd5>
+    <version>3.24.0</version>
+    <time>1490306314</time>
+    <user>dimstar_suse</user>
+    <comment>Emergency fix for boo#1030759</comment>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>ed097c904a26827ba833e20293360c97</srcmd5>
+    <version>3.24.1</version>
+    <time>1493455744</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 489126 from Zaitor)</comment>
+    <requestid>490203</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>61f9e6eeebda1cadd1f609691cc3786c</srcmd5>
+    <version>3.24.2</version>
+    <time>1496225618</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496408</requestid>
+  </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>98d559058fc6861a77a678428fdb44a0</srcmd5>
+    <version>3.24.2</version>
+    <time>1497687493</time>
+    <user>dimstar_suse</user>
+    <comment>Resub, one patch was missed</comment>
+    <requestid>503459</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>536cf9a4dd3a5ece029cf903baa6991d</srcmd5>
+    <version>3.24.3</version>
+    <time>1498485066</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505902</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>fb9866708816e5c67107accef746ed04</srcmd5>
+    <version>3.24.3</version>
+    <time>1500274762</time>
+    <user>dimstar_suse</user>
+    <comment>Support RGB16_565 format for 16-bit depth sessions (FATE#323412, bgo#781704, bsc#1024748) (forwarded request 508713 from vliaskovitis)</comment>
+    <requestid>509982</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>3da50e1b20f8814c0442873fc571f5ec</srcmd5>
+    <version>3.24.4</version>
+    <time>1500892320</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511826</requestid>
+  </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>e61f835b3ea78c0215a5c6a16ea80333</srcmd5>
+    <version>3.24.4</version>
+    <time>1503061121</time>
+    <user>dimstar_suse</user>
+    <comment>- libinput is needed also without wayland, so buildrequire
+  it unconditionally (forwarded request 515230 from coolo)</comment>
+    <requestid>516864</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>6ccc760c1dae48a9a4ce43a413e3b9c2</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332611</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 523831 from dimstar)</comment>
+    <requestid>523833</requestid>
+  </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>31a75d9d4a6b94a6d6b99851cfbd4e10</srcmd5>
+    <version>3.26.0</version>
+    <time>1505502453</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop SLE12 / Leap42 conditionals and build with wayland
+  unconditionally. (forwarded request 526292 from zhangxiaofei)</comment>
+    <requestid>526327</requestid>
+  </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>3efe37bd680a99d8111902555deacf59</srcmd5>
+    <version>3.26.0</version>
+    <time>1505757092</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 526393 from Zaitor)</comment>
+    <requestid>526427</requestid>
+  </revision>
+  <revision rev="115" vrev="4">
+    <srcmd5>907e0708924df71d6cd7e9d977b63138</srcmd5>
+    <version>3.26.0</version>
+    <time>1506453109</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528723</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>799e195056d9dd031b70bfad9aa8b520</srcmd5>
+    <version>3.26.1</version>
+    <time>1507280433</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 531474 from Zaitor)</comment>
+    <requestid>531578</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>338ea819b22351b874357b39d3a59a8d</srcmd5>
+    <version>3.26.1</version>
+    <time>1508508748</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 533079 from Zaitor)</comment>
+    <requestid>533691</requestid>
+  </revision>
+  <revision rev="118" vrev="3">
+    <srcmd5>098b31e9199edb6250229a0a38a823b3</srcmd5>
+    <version>3.26.1</version>
+    <time>1508609814</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mutter-handle-no-to-no-monitor.patch: fix possible crash when
+  turning monitor off and on while logged in (bgo#788607).
+- Add mutter-preferred-mode.patch: fix a crash on some ATI (radeon)
+  configurations (bgo#789153).
+
+Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (forwarded request 535472 from mgorse)</comment>
+    <requestid>535494</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>0d60479dfd9535ca29e56219168f4e9a</srcmd5>
+    <version>3.26.2</version>
+    <time>1510321188</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.26.2 (forwarded request 538949 from luc14n0)</comment>
+    <requestid>539261</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>170d6d0ed015cb5a2306489aab914f62</srcmd5>
+    <version>3.26.2+20171231.0bd1d7cf0</version>
+    <time>1516091154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562365</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>9ecb198b39d964545b2fa6cb53b7399b</srcmd5>
+    <version>3.26.2+20180127.d32d358a6</version>
+    <time>1517668747</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.26.2+20180127.d32d358a6:
+  + monitor: Set MINIMUM_LOGICAL_HEIGHT to 480.
+  + Don't attempt to get monitor geometry on non-existent monitors.
+  + wayland:
+    - Shortcuts inhibitor requires a window.
+    - Ensure wl_shell_surfaces are set reactive.
+    - Only send full sequences of touch events to clients.
+  + input-settings/x11: Fix tap-and-drag libinput property name
+  + clutter/evdev: Ignore unknown touch points
+  + Revert &quot;window: Raise and lower tile match in tandem&quot;
+  + Updated translations.
+- Update _service url to new gitlab home. (forwarded request 571571 from iznogood)</comment>
+    <requestid>572086</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>1552dd6024605e24adcd672440bce065</srcmd5>
+    <version>3.26.2+20180207.4b2d21ff0</version>
+    <time>1519218487</time>
+    <user>dimstar_suse</user>
+    <comment>Should we get these 3 bug fix commits as we have not pushed GN to GF yet?
+
+- Update to version 3.26.2+20180207.4b2d21ff0:
+  + renderer/x11: Enable GPU memory purge error extension if
+    available (bgo#739178).
+  + cogl/x11/renderer: Silence introspection warning (bgo#739178).
+  + backends/x11: Preserve XI1 XDevice throughout
+    ClutterInputDevice lifetime (glgo#mutter#7). (forwarded request 577897 from iznogood)</comment>
+    <requestid>578037</requestid>
+  </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>7c3f1686a63907c24fc7ee0ed69ae864</srcmd5>
+    <version>3.26.2+20180207.4b2d21ff0</version>
+    <time>1519844471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580965</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>36a8602c18f8457dd1ee58e5ffe07693</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052409</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mutter-xwayland-use-gdm-auth-file.patch (bsc#1084737): If
+  an Xauthority file was created for us by the display manager,
+  pass it to Xwayland -auth. (forwarded request 586752 from dimstar)</comment>
+    <requestid>586756</requestid>
+  </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>2f7d83824a93533a0a22b680cb86fdbf</srcmd5>
+    <version>3.28.0</version>
+    <time>1522061833</time>
+    <user>dimstar_suse</user>
+    <comment>- Retire mutter-xwayland-use-gdm-auth-file.patch in favor of
+  mutter-xwayland-create-xauthority.patch (bsc#1084737). We now
+  create the cookie in mutter itself. (forwarded request 590608 from dimstar)</comment>
+    <requestid>590863</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>b3b9d90ac6ca5403b9302aa3763aad7f</srcmd5>
+    <version>3.28.1+20180416.d3d5eb8e1</version>
+    <time>1524400633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.28.1+20180416.d3d5eb8e1:
+  + idle-monitor: Add ResetIdletime API, for testing purposes
+  + backend: Reset idle when lid is opened or resuming from suspend
+  + idle-monitor: Take idle inhibition into account
+  + x11: Allow XTest and core events to reset idletime
+  + backends: Remove X11 idle-monitor backend
+  + wayland: Plug surface pending state contents leak
+  + monitor-manager: fix output ids returned by GetResources
+  + native: Disable the use of KMS modifiers by default
+  + Updated translations.
+- Switch back to using git-checkout via source-service, upstream
+  seems unable to produce tarballs.
+- Following the above, add libtool BuildRequires and pass
+  autogen.sh to bootstrap. (forwarded request 597765 from iznogood)</comment>
+    <requestid>598585</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>fbc4f243a23bc6cd8b9cd4da3a10b477</srcmd5>
+    <version>3.28.2+20180507.41303bc01</version>
+    <time>1527001177</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel, not buildtested (forwarded request 605833 from iznogood)</comment>
+    <requestid>606938</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>398a825c25127bfb466d2cead58da0d6</srcmd5>
+    <version>3.28.2+20180526.abc7ad8e9</version>
+    <time>1527933329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.28.2+20180526.abc7ad8e9:
+  + wayland: Don't reset input focus on text commit.
+  + frames: Allow for unknown mouse buttons.
+  + wayland: update enter/leave output after effects.
+  + window-actor: add new signal &quot;effects-completed&quot;.
+  + wayland: Compare geometries after chaining up.
+  + frames: Handle touch events.
+  + frames: Make 1st button/motion handlers take generic events.
+  + clutter/evdev: Don't ignore CAPS lock as modifier.
+  + clutter/evdev: ignore injected events from IM.
+  + wayland: Use cursor position in logical monitor.
+
+- Pass --enable-gles2=yes to configure, build gles2 support in
+  cogl, disabled by default from upstream. We already had the
+  needed pkgconfig(glesv2) BuildRequires in place.</comment>
+    <requestid>612870</requestid>
+  </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>f7781cf3ae6225fcc60635edfc4a0298</srcmd5>
+    <version>3.28.2+20180526.abc7ad8e9</version>
+    <time>1531379729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621485</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>634d57780d50f4fbc25cfac0cc2ca6fb</srcmd5>
+    <version>3.28.3+20180719.62660bbd1</version>
+    <time>1533045337</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 625009 from iznogood)</comment>
+    <requestid>625068</requestid>
+  </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>5288f0f3b8ec602caf842c68f194e4b4</srcmd5>
+    <version>3.28.3+20180719.62660bbd1</version>
+    <time>1535441006</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mutter-left-right-rotation-fix.patch to fix blank screen
+  when rotating it left/right (boo#1105268,
+  glgo#gnome/mutter#216); patch taken from upstream bug report.
+</comment>
+    <requestid>630956</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>4f9e96cc80f7bcccee31e4dd40a88ca6</srcmd5>
+    <version>3.30.1</version>
+    <time>1539757364</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 640831 from dimstar)</comment>
+    <requestid>641194</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>b709e785029fe305c5d0cdff1d50b32a</srcmd5>
+    <version>3.30.2</version>
+    <time>1542579911</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildtested (forwarded request 648870 from iznogood)</comment>
+    <requestid>648881</requestid>
+  </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>0507c1178a11d10fb568f9149b20f51c</srcmd5>
+    <version>3.30.2</version>
+    <time>1551386041</time>
+    <user>coolo</user>
+    <comment>- Add bug fix patches from upstream stable branch:
+  + mutter-Avoid_double-free_crash.patch: cogl-auto-texture: Avoid
+    a double-free crash.
+  + mutter-clutter-offscreen-effect-fix.patch:
+    clutter-offscreen-effect: Disable if no texture.
+  + mutter-clutter-Avoid-rounding-compensation.patch: clutter:
+    Avoid rounding compensation when invalidating 2D actors.
+  + mutter-Fix-monitor-recording-on-HiDPI.patch: screen-cast: Fix
+    monitor recording on HiDPI.
+  + mutter-monitor-manager-Dont-use_switch-config.patch:
+    monitor-manager: Don't use switch-config when ensuring
+    configuration.
+- Add mutter-Lower-HIDPI_LIMIT-to-144.patch: mutter will set
+  scaling factor to 2 when the monitor's dpi is greater than 144
+  (96*1.5) to keep GNOME's behavior consistent with YaST Installer
+  (fate#326682, bsc#1125467).
+</comment>
+    <requestid>678971</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>1be0f926e2d894740acd8a65954f6185</srcmd5>
+    <version>3.32.1</version>
+    <time>1556914770</time>
+    <user>dimstar_suse</user>
+    <comment>Disable LTO (boo#1133121). (forwarded request 697427 from marxin)</comment>
+    <requestid>699590</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>ae7f0a65678270256175fe7c61d4312a</srcmd5>
+    <version>3.32.2</version>
+    <time>1559481286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706723</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>60d8c7f342c7a5a53561d3f951f08cf1</srcmd5>
+    <version>3.32.2+43</version>
+    <time>1564575353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718875</requestid>
+  </revision>
+</revisionlist>

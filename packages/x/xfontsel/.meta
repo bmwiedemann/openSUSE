@@ -1,0 +1,7 @@
+<package name="xfontsel" project="openSUSE:Factory">
+  <title></title>
+  <description>
+
+  </description>
+  <devel project="X11:XOrg" package="xfontsel"/>
+</package>

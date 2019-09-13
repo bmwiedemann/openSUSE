@@ -1,0 +1,8 @@
+<package name="x86info" project="openSUSE:Factory">
+  <title>Show x86 CPU Information</title>
+  <description>Unlike other 'cpuinfo' tools which just parse /proc/cpuinfo, x86info
+probes the CPU registers to find out more information. It can discover
+the contents of model-specific registers, discover CPU silicon
+revisions, and more.</description>
+  <devel project="Base:System" package="x86info"/>
+</package>

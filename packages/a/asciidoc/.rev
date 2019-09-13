@@ -1,0 +1,277 @@
+<revisionlist>
+  <revision rev="1" vrev="13">
+    <srcmd5>e9c46868e8bcf6e67d05c081629e8b2f</srcmd5>
+    <version>8.0.0</version>
+    <time>1168901497</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9a43edefe890cc222da713595303bb0b</srcmd5>
+    <version>8.1.0</version>
+    <time>1175622398</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd86eece08f6d1ca51a5f8367c662a95</srcmd5>
+    <version>8.2.1</version>
+    <time>1179851605</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2ec658b802eb9cce7c0a06c5a1d6e126</srcmd5>
+    <version>8.2.4</version>
+    <time>1195171941</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec3f8d9363d0792da79721948b75631c</srcmd5>
+    <version>8.2.5</version>
+    <time>1200097183</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bffcad704abb6038ed7bb8e5864d6d25</srcmd5>
+    <version>8.2.5</version>
+    <time>1200342713</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>a6d0d94275b46c8afd234c52eb306389</srcmd5>
+    <version>8.2.5</version>
+    <time>1201202187</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>20156a492c3115ddbe69de0538ff4a1e</srcmd5>
+    <version>8.2.5</version>
+    <time>1201276009</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>b57116d69b4ce504947f6defe7a3bdb0</srcmd5>
+    <version>8.2.5</version>
+    <time>1201726925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="27">
+    <srcmd5>d3a9435088bb0dada1713d64bb9c19a3</srcmd5>
+    <version>8.2.5</version>
+    <time>1210030387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>55398d8116a0f90e8dcea7ad16aa349f</srcmd5>
+    <version>8.2.6</version>
+    <time>1214180542</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4ac2657397f3a90e9daba2028b09cf9e</srcmd5>
+    <version>8.2.7</version>
+    <time>1215525548</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>41863d820a3a958f3aa0534ccbde066c</srcmd5>
+    <version>8.2.7</version>
+    <time>1216935565</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>b9cf2a21281352a3e1a9c540ceb81713</srcmd5>
+    <version>8.2.7</version>
+    <time>1217802638</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="29">
+    <srcmd5>660fde8b748abcc06629493493e3ff5b</srcmd5>
+    <version>8.2.7</version>
+    <time>1225709737</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a25ac9ac63207eb5084f2ddd946755be</srcmd5>
+    <version>8.3.3</version>
+    <time>1231422647</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3d21a9b919979be3258a8783e6805ad2</srcmd5>
+    <version>8.3.3</version>
+    <time>1233266870</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>a67b56aaf322f1b0c5666ccb24504e6b</srcmd5>
+    <version>8.3.3</version>
+    <time>1233697332</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e7fa565bd9c5ebaae87c005e7b91c9cb</srcmd5>
+    <version>8.4.4</version>
+    <time>1242421937</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2b353984cc9ceae68615f28204c61ba2</srcmd5>
+    <version>8.4.5</version>
+    <time>1248362455</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>2b353984cc9ceae68615f28204c61ba2</srcmd5>
+    <version>8.4.5</version>
+    <time>1248362455</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>7469c8e69d7bb0d486a3d37c053e5163</srcmd5>
+    <version>8.4.5</version>
+    <time>1268922930</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>7469c8e69d7bb0d486a3d37c053e5163</srcmd5>
+    <version>8.4.5</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>7469c8e69d7bb0d486a3d37c053e5163</srcmd5>
+    <version>8.4.5</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>7469c8e69d7bb0d486a3d37c053e5163</srcmd5>
+    <version>8.4.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>49beb1be2ac0be76cc6a374ddba42027</srcmd5>
+    <version>8.4.5</version>
+    <time>1316439537</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82838 from jengelh)</comment>
+    <requestid>83351</requestid>
+  </revision>
+  <revision rev="27" vrev="13">
+    <srcmd5>49beb1be2ac0be76cc6a374ddba42027</srcmd5>
+    <version>8.4.5</version>
+    <time>1319181775</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>32677a12bf68b1d25ffe868d16d711e5</srcmd5>
+    <version>8.6.6</version>
+    <time>1320230821</time>
+    <user>coolo</user>
+    <comment>Update to 8.6.6 (forwarded request 89683 from Yareg)</comment>
+    <requestid>89700</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>5b221051003ebad77bbfc82d0e337572</srcmd5>
+    <version>8.6.6</version>
+    <time>1320677507</time>
+    <user>coolo</user>
+    <comment>- Add missing dependency on python-xml. (forwarded request 90239 from michal-m)</comment>
+    <requestid>90247</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>ef3ec9cfa97bb4512ab83a902e477ced</srcmd5>
+    <version>8.6.6</version>
+    <time>1323190750</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>ef3ec9cfa97bb4512ab83a902e477ced</srcmd5>
+    <version>8.6.6</version>
+    <time>1340183182</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1a2c3f15e96e800a1c517db4968bb383</srcmd5>
+    <version>8.6.8</version>
+    <time>1351537312</time>
+    <user>coolo</user>
+    <comment>Updated to 8.6.8 (forwarded request 139552 from thomas-schraitle)</comment>
+    <requestid>139553</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>1a2c3f15e96e800a1c517db4968bb383</srcmd5>
+    <version>8.6.8</version>
+    <time>1359108668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>13558f1b68c8babe44bb15596664a6aa</srcmd5>
+    <version>8.6.8</version>
+    <time>1363946407</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160233 from m_meister)</comment>
+    <requestid>160359</requestid>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>13558f1b68c8babe44bb15596664a6aa</srcmd5>
+    <version>8.6.8</version>
+    <time>1379661991</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="8">
+    <srcmd5>13558f1b68c8babe44bb15596664a6aa</srcmd5>
+    <version>8.6.8</version>
+    <time>1409300516</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5fa6c716ccd11de7ddb4f0c8be8b51a2</srcmd5>
+    <version>8.6.9</version>
+    <time>1426485417</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289958</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>dbce09533d9c5ddafbe9e76911dd0aab</srcmd5>
+    <version>8.6.9</version>
+    <time>1473547918</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424648</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>c5b3fed347c54064956f4cbbd1ac8655</srcmd5>
+    <version>8.6.9</version>
+    <time>1499880686</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508754</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>6a4455be084ed040bb9a6ec4f8bf6685</srcmd5>
+    <version>8.6.10</version>
+    <time>1507628252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532093</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>7db0e6edfc9f92b8928cce3b99bce7b2</srcmd5>
+    <version>8.6.10</version>
+    <time>1510321341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539511</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="sca-appliance-agent" project="openSUSE:Factory">
+  <title>Supportconfig Analysis Appliance Agent</title>
+  <description>Analyzes supportconfig archives using the Support Advisor patterns. The results are
+posted in a MySQL database and can be posted or emailed as an html report.</description>
+  <devel project="Novell:NTS:Unstable" package="sca-appliance-agent"/>
+</package>

@@ -1,0 +1,1492 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>cb79a7c4080663ab1d59aea6faf8a642</srcmd5>
+    <version>3.2</version>
+    <time>1166202239</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="12">
+    <srcmd5>9a01b1c866e4cdf8e7f59928b1aa21af</srcmd5>
+    <version>3.2</version>
+    <time>1172777812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="13">
+    <srcmd5>bea54c9b2284a46ba378db28ea552ecd</srcmd5>
+    <version>3.2</version>
+    <time>1173228330</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="17">
+    <srcmd5>cf3ff8d2339981921fd1d90ee4acefc1</srcmd5>
+    <version>3.2</version>
+    <time>1175120291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="18">
+    <srcmd5>3170a88010035c8ee636d869b40da896</srcmd5>
+    <version>3.2</version>
+    <time>1175169424</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="20">
+    <srcmd5>97ee34fe75648c89b79bd77b98c4925a</srcmd5>
+    <version>3.2</version>
+    <time>1177024583</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="42">
+    <srcmd5>3a8e0d499cef5d1cdddea82c44aea3ab</srcmd5>
+    <version>3.2</version>
+    <time>1186155000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="43">
+    <srcmd5>97062629221583639a839f9503a3f563</srcmd5>
+    <version>3.2</version>
+    <time>1186163585</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="44">
+    <srcmd5>52bcde55d1409c9b85e93c54cfb200f0</srcmd5>
+    <version>3.2</version>
+    <time>1186209321</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="49">
+    <srcmd5>2c8d1a55f9e9f46629dad5dfd227e195</srcmd5>
+    <version>3.2</version>
+    <time>1187202120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="54">
+    <srcmd5>c690cabca82a53ac0a7cdb2f0ee614f3</srcmd5>
+    <version>3.2</version>
+    <time>1188227233</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="59">
+    <srcmd5>6200872c0546fae9d64bc5b7499c47d7</srcmd5>
+    <version>3.2</version>
+    <time>1190383063</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="70">
+    <srcmd5>2ecb21099f159fc3f34afd7013bac74b</srcmd5>
+    <version>3.2</version>
+    <time>1196894724</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="72">
+    <srcmd5>a3eb12ed746c9549314a2dda85973886</srcmd5>
+    <version>3.2</version>
+    <time>1197493661</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="75">
+    <srcmd5>94e7b5b5199fbfe9d4f271bc1c964c2e</srcmd5>
+    <version>3.2</version>
+    <time>1200102035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="81">
+    <srcmd5>b1828c52e6fca704b0c6b360d706ab1c</srcmd5>
+    <version>3.2</version>
+    <time>1201566718</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="88">
+    <srcmd5>5ba183e1ac61c5329ae2715f826080f0</srcmd5>
+    <version>3.2</version>
+    <time>1204320439</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="95">
+    <srcmd5>6bac7a52e8bf4c325bc8bf2a87d4ca1c</srcmd5>
+    <version>3.2</version>
+    <time>1207156326</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="98">
+    <srcmd5>d5126a73efb53f4d465fec1f7d90d868</srcmd5>
+    <version>3.2</version>
+    <time>1207825705</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="101">
+    <srcmd5>0151a0d0306130b0fa89ecb959110bb4</srcmd5>
+    <version>3.2</version>
+    <time>1209130445</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="103">
+    <srcmd5>ccb94182aab2446bccae220349617aad</srcmd5>
+    <version>3.2</version>
+    <time>1209390748</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="106">
+    <srcmd5>e8395b62e0824180f653a4651031f192</srcmd5>
+    <version>3.2</version>
+    <time>1210093364</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="109">
+    <srcmd5>51b36c0f302c4a025a3e93c4ed52a47f</srcmd5>
+    <version>3.2</version>
+    <time>1211050990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="114">
+    <srcmd5>857096434f56bbab986af0d1a5ce63fd</srcmd5>
+    <version>3.2</version>
+    <time>1214093317</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="119">
+    <srcmd5>24bd5b8c845d1a553503e927795d9d5b</srcmd5>
+    <version>3.2</version>
+    <time>1216929751</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="134">
+    <srcmd5>39009319283f14c11f887ba14ae554b4</srcmd5>
+    <version>3.2</version>
+    <time>1220637276</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="141">
+    <srcmd5>03f8673a597c838036b22bb641c13106</srcmd5>
+    <version>3.2</version>
+    <time>1225709812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="142">
+    <srcmd5>83a515db7bd19ced318b52d6f476d87c</srcmd5>
+    <version>3.2</version>
+    <time>1228317531</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="143">
+    <srcmd5>3a8ea059ea79711bc7a5b745c28bcf12</srcmd5>
+    <version>3.2</version>
+    <time>1231951662</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="148">
+    <srcmd5>062c64ada0a5be57a45acd3a42e66e3d</srcmd5>
+    <version>3.2</version>
+    <time>1235062331</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>218066e992d122db26377ff07361720b</srcmd5>
+    <version>4.0</version>
+    <time>1236100373</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>d2c832cba27a3561c49463b5e59fd8cc</srcmd5>
+    <version>4.0</version>
+    <time>1236174745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>a8dd3356e7f59f80d5867bed9845892c</srcmd5>
+    <version>4.0</version>
+    <time>1236175797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>18f1011fd7d9a37e64be8bcf9c47dd53</srcmd5>
+    <version>4.0</version>
+    <time>1236554256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>51cd98e48b3ad5f42c17c3faf5e71317</srcmd5>
+    <version>4.0</version>
+    <time>1237572258</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="8">
+    <srcmd5>e76d99271beca53b8d55e6aa6002a7a7</srcmd5>
+    <version>4.0</version>
+    <time>1240505452</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="9">
+    <srcmd5>9a04ed8648a4c202913a94db2026b7cd</srcmd5>
+    <version>4.0</version>
+    <time>1240957315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="10">
+    <srcmd5>c13ca894081a856f5a1b2a27bb645649</srcmd5>
+    <version>4.0</version>
+    <time>1242415319</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="11">
+    <srcmd5>2c99c221fe36be17f2e538439a318ff6</srcmd5>
+    <version>4.0</version>
+    <time>1244233956</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="12">
+    <srcmd5>d6afe7dc01c10faca99235d40728b491</srcmd5>
+    <version>4.0</version>
+    <time>1244818308</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="13">
+    <srcmd5>cd3a83dee9eda4fb4c2973b1b719d751</srcmd5>
+    <version>4.0</version>
+    <time>1247079113</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="14">
+    <srcmd5>9eb82a27ee0f5e682bc93c20e5ef941b</srcmd5>
+    <version>4.0</version>
+    <time>1248880732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="15">
+    <srcmd5>f3d62a2f840409b92b3ea16c79701aae</srcmd5>
+    <version>4.0</version>
+    <time>1251474357</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 18772 from user coolo
+</comment>
+  </revision>
+  <revision rev="44" vrev="16">
+    <srcmd5>9ed85f2f87e74b198759e24f19e5035e</srcmd5>
+    <version>4.0</version>
+    <time>1252579165</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 20239 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="45" vrev="17">
+    <srcmd5>923bc20b07fc7002822501308e681d10</srcmd5>
+    <version>4.0</version>
+    <time>1254518346</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 21411 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="46" vrev="19">
+    <srcmd5>923bc20b07fc7002822501308e681d10</srcmd5>
+    <version>4.0</version>
+    <time>1254518346</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 21411 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="47" vrev="20">
+    <srcmd5>49fbc8801144645f9144a0650e322efb</srcmd5>
+    <version>4.0</version>
+    <time>1260272852</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 25564 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="48" vrev="21">
+    <srcmd5>7af79e4b1c09029647afe7dabf02a06c</srcmd5>
+    <version>4.0</version>
+    <time>1260950230</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 26685 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="49" vrev="22">
+    <srcmd5>6cd708cfaa5669fb967aef224e6ca4e6</srcmd5>
+    <version>4.0</version>
+    <time>1261136001</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 26846 from user coolo
+</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4ef1997c438cebad00e3b028496d1f16</srcmd5>
+    <version>4.1</version>
+    <time>1266491849</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 32844 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>75fcc398fa4de90edce6c41b10a81068</srcmd5>
+    <version>4.1</version>
+    <time>1267092702</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 33340 from user WernerFink
+</comment>
+    <requestid>33340</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>bdc90fdd2ace8f68def7086da0d187f2</srcmd5>
+    <version>4.1</version>
+    <time>1267715168</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 34010 from user WernerFink
+</comment>
+    <requestid>34010</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>3377d22d330e8d0a4eadf6fd0bcd8107</srcmd5>
+    <version>4.1</version>
+    <time>1268410549</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 34438 from user WernerFink
+</comment>
+    <requestid>34438</requestid>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>071e073dfd086d97db708deed661a274</srcmd5>
+    <version>4.1</version>
+    <time>1268922992</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="55" vrev="6">
+    <srcmd5>c11bda40571e76b8cfe0e850c7e72a58</srcmd5>
+    <version>4.1</version>
+    <time>1271186411</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 37741 from user WernerFink
+</comment>
+    <requestid>37741</requestid>
+  </revision>
+  <revision rev="56" vrev="7">
+    <srcmd5>91c909e90b6b33248ec7793de22d5f37</srcmd5>
+    <version>4.1</version>
+    <time>1274788678</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 40621 from user WernerFink
+</comment>
+    <requestid>40621</requestid>
+  </revision>
+  <revision rev="57" vrev="9">
+    <srcmd5>91c909e90b6b33248ec7793de22d5f37</srcmd5>
+    <version>4.1</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="58" vrev="10">
+    <srcmd5>91c909e90b6b33248ec7793de22d5f37</srcmd5>
+    <version>4.1</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="59" vrev="11">
+    <srcmd5>057e4857c492e6cd4ffc99b40cd34917</srcmd5>
+    <version>4.1</version>
+    <time>1279538561</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 43232 from user WernerFink
+</comment>
+    <requestid>43232</requestid>
+  </revision>
+  <revision rev="60" vrev="12">
+    <srcmd5>0b797a76302884ddeefe58b0d2d14bf3</srcmd5>
+    <version>4.1</version>
+    <time>1280485908</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 44201 from user WernerFink
+</comment>
+    <requestid>44201</requestid>
+  </revision>
+  <revision rev="61" vrev="13">
+    <srcmd5>f550c05b6746671c154052aaa8174ca5</srcmd5>
+    <version>4.1</version>
+    <time>1281736734</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 45552 from user WernerFink
+</comment>
+    <requestid>45552</requestid>
+  </revision>
+  <revision rev="62" vrev="14">
+    <srcmd5>8d3009f007561df399c0b5f622db4ba5</srcmd5>
+    <version>4.1</version>
+    <time>1282662793</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 45640 from user WernerFink
+</comment>
+    <requestid>45640</requestid>
+  </revision>
+  <revision rev="63" vrev="15">
+    <srcmd5>052ce43344038d1ac42d45200b57c029</srcmd5>
+    <version>unknown</version>
+    <time>1284036362</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 47126 from user elvigia
+</comment>
+    <requestid>47126</requestid>
+  </revision>
+  <revision rev="64" vrev="16">
+    <srcmd5>c5293e43669c837faabcfe0b6b620d2f</srcmd5>
+    <version>4.1</version>
+    <time>1287061577</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/bash based on submit request 50573 from user WernerFink
+</comment>
+    <requestid>50573</requestid>
+  </revision>
+  <revision rev="65" vrev="17">
+    <srcmd5>1b5e2f77ae892a5bb4151f258784c268</srcmd5>
+    <version>4.1</version>
+    <time>1287580733</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50902 from user WernerFink
+</comment>
+    <requestid>50902</requestid>
+  </revision>
+  <revision rev="66" vrev="18">
+    <srcmd5>fd6e76cd402226c76e65438a5e3df693</srcmd5>
+    <version>4.1</version>
+    <time>1287580741</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50902
+</comment>
+  </revision>
+  <revision rev="67" vrev="21">
+    <srcmd5>fd6e76cd402226c76e65438a5e3df693</srcmd5>
+    <version>4.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="68" vrev="22">
+    <srcmd5>ae2b731f5655331a7cc4c11ee94fdcc1</srcmd5>
+    <version>unknown</version>
+    <time>1298026251</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61575 from user WernerFink
+</comment>
+    <requestid>61575</requestid>
+  </revision>
+  <revision rev="69" vrev="23">
+    <srcmd5>aeef9255ce327f0ef40daacdc71254ee</srcmd5>
+    <version>unknown</version>
+    <time>1298026313</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61575
+</comment>
+  </revision>
+  <revision rev="70" vrev="24">
+    <srcmd5>33f0d7a810dc705af26763b1985c744a</srcmd5>
+    <version>unknown</version>
+    <time>1298809895</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62831 from user WernerFink
+</comment>
+    <requestid>62831</requestid>
+  </revision>
+  <revision rev="71" vrev="25">
+    <srcmd5>fb74a779d75a6657ac7b8945c5662414</srcmd5>
+    <version>unknown</version>
+    <time>1298809901</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62831
+</comment>
+  </revision>
+  <revision rev="72" vrev="26">
+    <srcmd5>111b408633100c28aa52ccddd9c10fc8</srcmd5>
+    <version>unknown</version>
+    <time>1299658804</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63648 from user WernerFink
+</comment>
+    <requestid>63648</requestid>
+  </revision>
+  <revision rev="73" vrev="27">
+    <srcmd5>83c1b35ca5c188f480abe4af531baea9</srcmd5>
+    <version>unknown</version>
+    <time>1299673110</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63708 from user WernerFink
+</comment>
+    <requestid>63708</requestid>
+  </revision>
+  <revision rev="74" vrev="28">
+    <srcmd5>b8f46a5c737c943cac98e5cf93ad86bb</srcmd5>
+    <version>unknown</version>
+    <time>1299673121</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63708
+</comment>
+  </revision>
+  <revision rev="75" vrev="29">
+    <srcmd5>8fb730161b322c9fde787061681a5546</srcmd5>
+    <version>unknown</version>
+    <time>1300266662</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64208 from user WernerFink
+</comment>
+    <requestid>64208</requestid>
+  </revision>
+  <revision rev="76" vrev="30">
+    <srcmd5>6a0c7612c07a00c71e5ecebad7e55c85</srcmd5>
+    <version>unknown</version>
+    <time>1300266669</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64208
+</comment>
+  </revision>
+  <revision rev="77" vrev="31">
+    <srcmd5>4c51e45329983d41608c7141336357a1</srcmd5>
+    <version>unknown</version>
+    <time>1300812666</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64832 from user licensedigger
+</comment>
+    <requestid>64832</requestid>
+  </revision>
+  <revision rev="78" vrev="32">
+    <srcmd5>9ef7f79ad363f4e417be8fe23730f773</srcmd5>
+    <version>unknown</version>
+    <time>1300812674</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64832
+</comment>
+  </revision>
+  <revision rev="79" vrev="33">
+    <srcmd5>4962c489a66871012de0c6e24caae6bd</srcmd5>
+    <version>unknown</version>
+    <time>1308732386</time>
+    <user>saschpe</user>
+    <comment>- Add fix from upstream mailing list to avoid crash
+
+- use original source URLs
+
+- Fix the fix for bug bnc#681286 to be able to avoid both a not 
+  expanding glob as well as the infinit loop in multi byte locale
+
+- Update bash 4.2 to patch level 10
+- Add patch from upstream to avoid loosing quoted-nulls
+- Add modified patch to avod endless loop in UTF-8 locale</comment>
+    <requestid>74276</requestid>
+  </revision>
+  <revision rev="80" vrev="34">
+    <srcmd5>e613460c52dc162913798dce6e21639a</srcmd5>
+    <version>unknown</version>
+    <time>1308732398</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74276
+</comment>
+  </revision>
+  <revision rev="81" vrev="35">
+    <srcmd5>d7be415be605e0f89881e894c89b3db5</srcmd5>
+    <version>4.2</version>
+    <time>1316459021</time>
+    <user>lrupp</user>
+    <comment>- remove autoreqprov and author lists</comment>
+    <requestid>83604</requestid>
+  </revision>
+  <revision rev="82" vrev="37">
+    <srcmd5>d7be415be605e0f89881e894c89b3db5</srcmd5>
+    <version>4.2</version>
+    <time>1319181785</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="83" vrev="38">
+    <srcmd5>8cb9caa2660995c00cead6d2c4af774b</srcmd5>
+    <version>unknown</version>
+    <time>1319635235</time>
+    <user>coolo</user>
+    <comment>- Add direxpand patch from upstream (bnc#725657)
+
+- Add patch from upstream mailing list to avoid memory leak by
+  reassigning associative array variable</comment>
+    <requestid>89301</requestid>
+  </revision>
+  <revision rev="84" vrev="39">
+    <srcmd5>2a63b86acd8fff6c2ceabe65450bc193</srcmd5>
+    <version>unknown</version>
+    <time>1320230840</time>
+    <user>coolo</user>
+    <comment>- Disable last patch as it seems a bit broken (bnc#725657)</comment>
+    <requestid>89909</requestid>
+  </revision>
+  <revision rev="85" vrev="40">
+    <srcmd5>8b37fb6f39caa5165e911b2f2b703a93</srcmd5>
+    <version>unknown</version>
+    <time>1321267783</time>
+    <user>coolo</user>
+    <comment>- Avoid memory mapped /var/run/nscd/passwd at shutdown by simply
+  unmapping this only used area if parent is systemd or SysVinit
+
+- Always close get(pw|gr)func with endpw() respectivly with endgr()
+  to avoid memory mapped passwd/groups of cache files from nscd</comment>
+    <requestid>90996</requestid>
+  </revision>
+  <revision rev="86" vrev="41">
+    <srcmd5>7ed681422115bbf03d9bcac145804d9a</srcmd5>
+    <version>unknown</version>
+    <time>1321460214</time>
+    <user>coolo</user>
+    <comment>- Use libtinfo if available otherwise libncurses, this avoids
+  linkage against libncursesw of libreadline (required due
+  bnc #729226)</comment>
+    <requestid>91781</requestid>
+  </revision>
+  <revision rev="87" vrev="42">
+    <srcmd5>27a2a6bb8b94dfe4d846204aca1b39a4</srcmd5>
+    <version>unknown</version>
+    <time>1321875258</time>
+    <user>coolo</user>
+    <comment>- Enforce bind references to global function symbols to the
+  definition within libreadline</comment>
+    <requestid>92268</requestid>
+  </revision>
+  <revision rev="88" vrev="43">
+    <srcmd5>b672ca87303175254f535efc0bfa98e4</srcmd5>
+    <version>unknown</version>
+    <time>1321980439</time>
+    <user>coolo</user>
+    <comment>- Disable endpwent() in rl_username_completion_function() as this
+  cause a deadlock in a futex of the glibc (bnc#731556)</comment>
+    <requestid>92891</requestid>
+  </revision>
+  <revision rev="89" vrev="44">
+    <srcmd5>3f9242c37d0acf178c97d67a76e51a20</srcmd5>
+    <version>unknown</version>
+    <time>1322481182</time>
+    <user>coolo</user>
+    <comment>- Make build check quiet
+
+- Update bash 4.2 to patch level 20
+- Update readline 6.2 to patch level 2</comment>
+    <requestid>93690</requestid>
+  </revision>
+  <revision rev="90" vrev="45">
+    <srcmd5>2abaf175f6840e9b17d8b6e929bf1e53</srcmd5>
+    <version>unknown</version>
+    <time>1323190824</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="91" vrev="46">
+    <srcmd5>bc29cf398f02e871fa76112f1b642e80</srcmd5>
+    <version>unknown</version>
+    <time>1324457964</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97319 from coolo)</comment>
+    <requestid>97325</requestid>
+  </revision>
+  <revision rev="92" vrev="47">
+    <srcmd5>211d456ed7f4b9c660dfa501eef25ebd</srcmd5>
+    <version>unknown</version>
+    <time>1331147325</time>
+    <user>coolo</user>
+    <comment>- Add small patch for be able to use nanoseconds in comparision
+  of time stamps of files (bnc#750640)
+
+- Reenable patch for bnc#725657 with latest change from latest
+  git repository of the patch.</comment>
+    <requestid>108164</requestid>
+  </revision>
+  <revision rev="93" vrev="48">
+    <srcmd5>46bae76851b43958313ea065ca7ac854</srcmd5>
+    <version>unknown</version>
+    <time>1331538803</time>
+    <user>coolo</user>
+    <comment>- Avoid endless loop in user completion caused by endpw patches</comment>
+    <requestid>108671</requestid>
+  </revision>
+  <revision rev="94" vrev="49">
+    <srcmd5>cf37536a64241fccf0af9d91bcd17ddf</srcmd5>
+    <version>unknown</version>
+    <time>1331899846</time>
+    <user>coolo</user>
+    <comment>- Update bash 4.2 to patch level 24</comment>
+    <requestid>109071</requestid>
+  </revision>
+  <revision rev="95" vrev="50">
+    <srcmd5>88f6d4fb2b5d8203651a5607438e1eac</srcmd5>
+    <version>unknown</version>
+    <time>1334215175</time>
+    <user>coolo</user>
+    <comment>- Remove not required patch (was a fix for bnc#141394) which now
+  cause a wrong behaviour if applied (bnc#755453)</comment>
+    <requestid>112694</requestid>
+  </revision>
+  <revision rev="96" vrev="52">
+    <srcmd5>88f6d4fb2b5d8203651a5607438e1eac</srcmd5>
+    <version>unknown</version>
+    <time>1340183197</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="97" vrev="53">
+    <srcmd5>95e7adf386e4ff05519fcc38f5ff0cfd</srcmd5>
+    <version>unknown</version>
+    <time>1340725499</time>
+    <user>coolo</user>
+    <comment>license update: GPL-3.0+
+Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded request 126173 from babelworx)</comment>
+    <requestid>126183</requestid>
+  </revision>
+  <revision rev="98" vrev="54">
+    <srcmd5>6326bec84a8e21eaf2265aa2abf01133</srcmd5>
+    <version>unknown</version>
+    <time>1342082409</time>
+    <user>namtrac</user>
+    <comment>- Update bash 4.2 to patch level 36 
+  * Patch 25: When used in a shell function,
+    `declare -g -a array=(compound assignment)' creates a local
+    variable instead of a global one.
+  * Patch 26: The `lastpipe' option does not behave correctly on
+    machines where the open file limit is less than 256.
+  * Patch 27: When the `extglob' shell option is enabled, pattern
+    substitution does not work correctly in the presence of
+    multibyte characters.
+  * Patch 28: When using a word expansion for which the right hand
+    side is evaluated, certain expansions of quoted null strings
+    include spurious ^? characters.
+  * Patch 29: Bash-4.2 tries to leave completed directory names as
+    the user typed them, without expanding them to a full pathname.
+    One effect of this is that shell variables used in pathnames
+    being completed (e.g., $HOME) are left unchanged, but the `$'
+    is quoted by readline because it is a special character to the shell.
+  * Patch 30: When attempting to glob strings in a multibyte locale,
+    and those strings contain invalid multibyte characters that cause
+    mbsnrtowcs to return 0, the globbing code loops infinitely.
+  * Patch 31: A change between bash-4.1 and bash-4.2 to prevent the
+    readline input hook from being called too frequently had the side
+    effect of causing delays when reading pasted input on systems such
+    as Mac OS X.  This patch fixes those delays while retaining the
+    bash-4.2 behavior.
+  * Patch 32: Bash-4.2 has problems with DEL characters in the
+    expanded value of variables used in the same quoted string as
+    variables that expand to nothing.
+  * Patch 33: Bash uses a static buffer when expanding the /dev/fd
+    prefix for the test and conditional commands, among other uses,</comment>
+    <requestid>127401</requestid>
+  </revision>
+  <revision rev="99" vrev="55">
+    <srcmd5>67a5cb99ede46d534525fecc1a8e8987</srcmd5>
+    <version>unknown</version>
+    <time>1342624326</time>
+    <user>coolo</user>
+    <comment>- libreadlib: try to avoid to bind references of the symbols
+  rl_instream and rl_outstream
+- libreadlib: make private symbols really private
+
+- Increase buffer for libreadline messsages if required
+- Include stdio.h in libreadline header files to get the declaration
+  of FILES correct.</comment>
+    <requestid>128214</requestid>
+  </revision>
+  <revision rev="100" vrev="56">
+    <srcmd5>b30d7a615fe1d5d1d8c321656b4c2f1e</srcmd5>
+    <version>unknown</version>
+    <time>1343030015</time>
+    <user>coolo</user>
+    <comment>- Update bash 4.2 to patch level 37
+  * Attempting to redo (using `.') the vi editing mode `cc', `dd',
+    or `yy' commands leads to an infinite loop.
+
+- Do not mask internal _rl symbols as internal as there are many
+  tools out there which uses them (gdb as an example) 
+
+- Update bash 4.2 to patch level 36</comment>
+    <requestid>128462</requestid>
+  </revision>
+  <revision rev="101" vrev="57">
+    <srcmd5>0ab963350842d51c2bb3a8d2c02d5a88</srcmd5>
+    <version>unknown</version>
+    <time>1345973453</time>
+    <user>namtrac</user>
+    <comment>- Add patch from upstream mailing list to avoids crash</comment>
+    <requestid>131527</requestid>
+  </revision>
+  <revision rev="102" vrev="58">
+    <srcmd5>18c3e91aef8473027025d6324a092ea8</srcmd5>
+    <version>unknown</version>
+    <time>1350567607</time>
+    <user>coolo</user>
+    <comment>- Do not mix xmalloc/xfree of libreadline and bash by making the
+  libreadline version weak symbols instead of private symbols</comment>
+    <requestid>138510</requestid>
+  </revision>
+  <revision rev="103" vrev="59">
+    <srcmd5>97a49ff34482cc01af33b9d85e85058e</srcmd5>
+    <version>unknown</version>
+    <time>1352562848</time>
+    <user>coolo</user>
+    <comment>- Update bash 4.2 to patch level 39
+  * Official fix for the last crash fix
+  * Avoid variable expansion in arithmetic expressions when
+    evaluation is being suppressed</comment>
+    <requestid>140210</requestid>
+  </revision>
+  <revision rev="104" vrev="60">
+    <srcmd5>34dea6348a7edd0faef5457e709a2602</srcmd5>
+    <version>unknown</version>
+    <time>1357916026</time>
+    <user>coolo</user>
+    <comment>- Avoid autoconf on older products 
+- Apply audit patch variant to readline as well as we use a shared
+  libreadline
+- Avoid bash-devel on older products as older GNU make do not have
+  a realpath builtin
+
+- Do not trigger the export of COLUMNS or LINES due enforced
+  checkwinsize (bnc#793536)
+
+- Update bash 4.2 to patch level 42
+  * Missing I/O errors if output redirection applied to builtin
+    commands when the file descriptor was closed
+  * Process substitution incorrectly inherited a flag that
+    inhibited using the temporary environment for variable lookups
+    if it was providing the filename to a redirection.
+  * Compilation failed after specifying the `minimal config' option</comment>
+    <requestid>147710</requestid>
+  </revision>
+  <revision rev="105" vrev="62">
+    <srcmd5>34dea6348a7edd0faef5457e709a2602</srcmd5>
+    <version>unknown</version>
+    <time>1359108692</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="106" vrev="63">
+    <srcmd5>188111e25381966768c846c8b70219a2</srcmd5>
+    <version>unknown</version>
+    <time>1360687295</time>
+    <user>coolo</user>
+    <comment>- config-guess-sub-update.patch:
+  Update config.guess/sub for aarch64
+- Fix check for negated warning switch (forwarded request 155178 from Andreas_Schwab)</comment>
+    <requestid>155228</requestid>
+  </revision>
+  <revision rev="107" vrev="64">
+    <srcmd5>e70e036c6c1ebdf5ef223cb266ff25db</srcmd5>
+    <version>unknown</version>
+    <time>1363946446</time>
+    <user>coolo</user>
+    <comment>- Add patch from upstream mailing list to speed up array handling 
+- Add patch from upstream mailing list to avoid fdleaks
+- Use lsdiff to determine the depth of the leading slashes in a
+  patch file
+
+- Disable workaround for bnc#382214 due bnc#806628, let's see when
+  the old bug will be up again.
+- Update bash 4.2 to patch level 45
+  * When SIGCHLD is trapped, and a SIGCHLD trap handler runs when
+    a pending `read -t' invocation times out and generates SIGALRM,
+    bash can crash with a segmentation fault.
+  * When converting a multibyte string to a wide character string
+    as part of pattern matching, bash does not handle the end of
+    the string correctly, causing the search for the NUL to go
+    beyond the end of the string and reference random memory.
+    Depending on the contents of that memory, bash can produce
+    errors or crash. 
+  * The &lt;&amp;n- and &gt;&amp;n- redirections, which move one file descriptor
+    to another, leave the file descriptor closed when applied to
+    builtins or compound commands.
+- Use screen to provide a controlling terminal for running the
+  test suite</comment>
+    <requestid>160437</requestid>
+  </revision>
+  <revision rev="108" vrev="65">
+    <srcmd5>28a10ac83d7b17d91d4c44813e67a2f2</srcmd5>
+    <version>unknown</version>
+    <time>1370425179</time>
+    <user>coolo</user>
+    <comment>- add a conflict between readline5 and readline6-32bit
+
+- Do not restart the sighandler after a trap is reset (bnc#820149)</comment>
+    <requestid>177600</requestid>
+  </revision>
+  <revision rev="109" vrev="66">
+    <srcmd5>e6a5d25ba54f2ada6029ed4bcf4d8303</srcmd5>
+    <version>unknown</version>
+    <time>1373542039</time>
+    <user>coolo</user>
+    <comment>- Add bash-4.2-strcpy.patch from upstream mailing list to patch
+  collection tar ball to avoid when using \w in the prompt and
+  changing the directory outside of HOME the a strcpy work on
+  overlapping memory areas.</comment>
+    <requestid>182487</requestid>
+  </revision>
+  <revision rev="110" vrev="67">
+    <srcmd5>a3b67f4463467b1aecd7327ea3086eae</srcmd5>
+    <version>unknown</version>
+    <time>1373654539</time>
+    <user>coolo</user>
+    <comment>- Reintroduce patch bash-4.2-winch.dif to solve bnc#828877
+  accordingly to my test and upstream (search on bug-bash@gnu.org
+  for message-id &lt;51DFEB10.8080302@case.edu&gt;)</comment>
+    <requestid>182923</requestid>
+  </revision>
+  <revision rev="111" vrev="69">
+    <srcmd5>a3b67f4463467b1aecd7327ea3086eae</srcmd5>
+    <version>unknown</version>
+    <time>1379662025</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="112" vrev="70">
+    <srcmd5>dd5d0827d400de9b2e044525407d430f</srcmd5>
+    <version>unknown</version>
+    <time>1391244012</time>
+    <user>coolo</user>
+    <comment>- Add upstream patch bash-4.2-prompt-dirtrim.patch
+  bash patch tar ball to solve some some cases strange output
+  displayed in the prompt if PROMPT_DIRTRIM i sset.</comment>
+    <requestid>220503</requestid>
+  </revision>
+  <revision rev="113" vrev="71">
+    <srcmd5>78278731dc4261dce5b0300e9312ce0e</srcmd5>
+    <version>unknown</version>
+    <time>1395233860</time>
+    <user>coolo</user>
+    <comment>- CVE-2014-2524: bash,readline: temporary file misuse in _rl_tropen (bnc#868822)
+  Even if used only by developers to debug readline library do not
+  open temporary files from public location without O_EXCL</comment>
+    <requestid>226577</requestid>
+  </revision>
+  <revision rev="114" vrev="72">
+    <srcmd5>a26998e3c8dd230f91feb301bca80de8</srcmd5>
+    <version>unknown</version>
+    <time>1396770850</time>
+    <user>coolo</user>
+    <comment>- Add bash upstream patch 46 to fix a problem introduced by patch
+  32 a problem with &quot;$@&quot; and arrays expanding empty positional
+  parameters or array elements when using substring expansion,
+  pattern substitution, or case modfication.  The empty parameters
+  or array elements are removed instead of expanding to empty
+  strings (&quot;&quot;).
+- Add readline upstream patch 5: The readline shared library
+  helper script needs to be updated for Mac OS X 10.9</comment>
+    <requestid>228434</requestid>
+  </revision>
+  <revision rev="115" vrev="73">
+    <srcmd5>340841496027bafacb34bf82cbb42358</srcmd5>
+    <version>unknown</version>
+    <time>1398434818</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>231049</requestid>
+  </revision>
+  <revision rev="116" vrev="74">
+    <srcmd5>bf72a55df057b3e28a15a181cd3720d5</srcmd5>
+    <version>unknown</version>
+    <time>1405760666</time>
+    <user>coolo</user>
+    <comment>- Don't use outdated C standard (forwarded request 241275 from AndreasSchwab)</comment>
+    <requestid>241291</requestid>
+  </revision>
+  <revision rev="117" vrev="76">
+    <srcmd5>bf72a55df057b3e28a15a181cd3720d5</srcmd5>
+    <version>unknown</version>
+    <time>1409300552</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="118" vrev="77">
+    <srcmd5>3eb75a85ba558277be754a5e88e14ad3</srcmd5>
+    <version>unknown</version>
+    <time>1411926826</time>
+    <user>coolo</user>
+    <comment>- Add bash-4.2-CVE-2014-6271.patch
+  to fix CVE-2014-6271, the unexpected code execution with
+  environment variables (bnc#896776)
+
+- Add patch bash-4.2-error-getpwd.patch
+  which is the backport of the corrected german error message for
+  a failing getpwd (bnc#895475)</comment>
+    <requestid>251830</requestid>
+  </revision>
+  <revision rev="119" vrev="78">
+    <srcmd5>5abb3a76df308079ed776f87f73d58e1</srcmd5>
+    <version>unknown</version>
+    <time>1411987244</time>
+    <user>coolo</user>
+    <comment>- Add patches
+  bash-4.2-BSC898604.patch for bsc#898604: functions via environment
+  hardening
+  bash-4.2-CVE-2014-7169.patch for bsc#898346, CVE-2014-7169:
+  incremental parsing fix for function environment issue
+  bash-4.2-CVE-2014-7187.patch for bsc#898603, CVE-2014-7186,
+  CVE-2014-7187: bad handling of HERE documents and for loop issue</comment>
+    <requestid>252744</requestid>
+  </revision>
+  <revision rev="120" vrev="79">
+    <srcmd5>136fe981adf611c778d54bfc1fa8b8f7</srcmd5>
+    <version>unknown</version>
+    <time>1413382767</time>
+    <user>coolo</user>
+    <comment>- Replace patches bash-4.2-heredoc-eof-delim.patch and
+  bash-4.2-parse-exportfunc.patch with the official upstream
+  patch levels bash42-052 and bash42-053
+
+- Replace patch bash-4.2-CVE-2014-7187.patch with upstream patch
+  level bash42-051
+
+- Add patches
+  bash-4.2-heredoc-eof-delim.patch for bsc#898812, CVE-2014-6277:
+  more troubles with functions
+  bash-4.2-parse-exportfunc.patch for bsc#898884, CVE-2014-6278:
+  code execution after original 6271 fix
+
+- Make bash-4.2-extra-import-func.patch an optional patch due
+  instruction
+
+- Remove and replace patches
+  bash-4.2-CVE-2014-6271.patch
+  bash-4.2-BSC898604.patch
+  bash-4.2-CVE-2014-7169.patch
+  with bash upstream patch 48, patch 49, and patch 50
+- Add patch bash-4.2-extra-import-func.patch which is based on the
+  BSD patch of Christos.  As further enhancements the option
+  import-functions is mentioned in the manual page and a shopt
+  switch is added to enable and disable import-functions on the fly</comment>
+    <requestid>254104</requestid>
+  </revision>
+  <revision rev="121" vrev="80">
+    <srcmd5>eafa29028348f628e22dc24c052939f7</srcmd5>
+    <version>unknown</version>
+    <time>1425571464</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>287711</requestid>
+  </revision>
+  <revision rev="122" vrev="81">
+    <srcmd5>3c6030b012f8fc9f886790a8a1ac8b64</srcmd5>
+    <version>unknown</version>
+    <time>1427109130</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291558</requestid>
+  </revision>
+  <revision rev="123" vrev="82">
+    <srcmd5>8403f5c18ab9427ad6e171e9ed142911</srcmd5>
+    <version>unknown</version>
+    <time>1432156526</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307691</requestid>
+  </revision>
+  <revision rev="124" vrev="83">
+    <srcmd5>413167cd8d25eef3d8dd4bf607d3349e</srcmd5>
+    <version>unknown</version>
+    <time>1432981970</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch bash43-034
+  If neither the -f nor -v options is supplied to unset, and a name argument is
+  found to be a function and unset, subsequent name arguments are not treated as
+  variables before attempting to unset a function by that name.
+- Add upstream patch bash43-035
+  A locale with a long name can trigger a buffer overflow and core dump.  This
+  applies on systems that do not have locale_charset in libc, are not using
+  GNU libiconv, and are not using the libintl that ships with bash in lib/intl.
+- Add upstream patch bash43-036
+  When evaluating and setting integer variables, and the assignment fails to
+  create a variable (for example, when performing an operation on an array
+  variable with an invalid subscript), bash attempts to dereference a null
+  pointer, causing a segmentation violation.
+- Add upstream patch bash43-037
+  If an associative array uses `@' or `*' as a subscript, `declare -p' produces
+  output that cannot be reused as input.
+- Add upstream patch bash43-038
+  There are a number of instances where `time' is not recognized as a reserved
+  word when the shell grammar says it should be.</comment>
+    <requestid>309045</requestid>
+  </revision>
+  <revision rev="125" vrev="84">
+    <srcmd5>24c45649b0c381716c7c3a62ab53559c</srcmd5>
+    <version>unknown</version>
+    <time>1437477808</time>
+    <user>coolo</user>
+    <comment> (forwarded request 314678 from coolo)</comment>
+    <requestid>314679</requestid>
+  </revision>
+  <revision rev="126" vrev="85">
+    <srcmd5>649b3308f717762f73cd99ee71aa8d67</srcmd5>
+    <version>unknown</version>
+    <time>1441954803</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>329522</requestid>
+  </revision>
+  <revision rev="127" vrev="86">
+    <srcmd5>7bd52ae63e6ec93e2e7a6b18656d5c6f</srcmd5>
+    <version>unknown</version>
+    <time>1446048910</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>341009</requestid>
+  </revision>
+  <revision rev="128" vrev="87">
+    <srcmd5>2ef3605766999234ff030bf3612943e2</srcmd5>
+    <version>unknown</version>
+    <time>1464299546</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396733</requestid>
+  </revision>
+  <revision rev="129" vrev="88">
+    <srcmd5>e73cfcc0ea3da97ced4329e44fe5143d</srcmd5>
+    <version>unknown</version>
+    <time>1468699778</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>406709</requestid>
+  </revision>
+  <revision rev="130" vrev="89">
+    <srcmd5>76d2c8856ed4f561fab424365429cb1e</srcmd5>
+    <version>unknown</version>
+    <time>1472111304</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>417861</requestid>
+  </revision>
+  <revision rev="131" vrev="90">
+    <srcmd5>478e194485e40207af755f264e16ff0b</srcmd5>
+    <version>unknown</version>
+    <time>1477481139</time>
+    <user>dimstar_suse</user>
+    <comment>- no-null-warning.patch: Don't warn about null bytes in command
+  substitution (forwarded request 437120 from Andreas_Schwab)</comment>
+    <requestid>437140</requestid>
+  </revision>
+  <revision rev="132" vrev="91">
+    <srcmd5>3ffbd2a58686eb0250ff3ed1a5bb7049</srcmd5>
+    <version>unknown</version>
+    <time>1480341757</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441826</requestid>
+  </revision>
+  <revision rev="133" vrev="92">
+    <srcmd5>5be38cb3451a2717a9dbb02c87be6e11</srcmd5>
+    <version>unknown</version>
+    <time>1481272205</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>443921</requestid>
+  </revision>
+  <revision rev="134" vrev="93">
+    <srcmd5>e25206d93194fd9c8d2d1d09af93e131</srcmd5>
+    <version>unknown</version>
+    <time>1482418755</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446820</requestid>
+  </revision>
+  <revision rev="135" vrev="94">
+    <srcmd5>6949be041e1fd00bc736d774fd486a0a</srcmd5>
+    <version>unknown</version>
+    <time>1486552302</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch readline70-002 which replace old one
+  There is a race condition in add_history() that can be triggered by a fatal
+  signal arriving between the time the history length is updated and the time
+  the history list update is completed. A later attempt to reference an
+  invalid history entry can cause a crash.
+- Add upstream patch readline70-003
+  Readline-7.0 uses pselect(2) to allow readline to handle signals that do not
+  interrupt read(2), such as SIGALRM, before reading another character.  The
+  signal mask used in the pselect call did not take into account signals the
+  calling application blocked before calling readline().
+
+- Add upstream patch bash44-006 
+  Out-of-range negative offsets to popd can cause the shell to crash
+  attempting to free an invalid memory block.
+- Remove patch popd-offset-overflow.patch to use bash44-006
+- Add upstream patch bash44-007 
+  When performing filename completion, bash dequotes the directory
+  name being completed, which can result in match failures and
+  potential unwanted expansion.
+- Duplicate bash44-007 as readline70-002 as it seems to be missed
+- Add upstream patch bash44-008 
+  Under certain circumstances, bash will evaluate arithmetic
+  expressions as part of reading an expression token even when
+  evaluation is suppressed. This happens while evaluating a
+  conditional expression and skipping over the failed branch of the
+  expression.
+- Add upstream patch bash44-009 
+  There is a race condition in add_history() that can be triggered
+  by a fatal signal arriving between the time the history length
+  is updated and the time the history list update is completed.</comment>
+    <requestid>453464</requestid>
+  </revision>
+  <revision rev="136" vrev="95">
+    <srcmd5>a304854e85b880f741c29c9b1984d9f2</srcmd5>
+    <version>unknown</version>
+    <time>1488732562</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>460239</requestid>
+  </revision>
+  <revision rev="137" vrev="96">
+    <srcmd5>7988696c5c5bf89e68485a1f30bab02c</srcmd5>
+    <version>unknown</version>
+    <time>1495010713</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify patch readline-5.2-conf.patch 
+
+- Do not throw info and manual pages away</comment>
+    <requestid>491274</requestid>
+  </revision>
+  <revision rev="138" vrev="97">
+    <srcmd5>9c503b493f5e07ea49b26479c824fbd2</srcmd5>
+    <version>unknown</version>
+    <time>1496392254</time>
+    <user>dimstar_suse</user>
+    <comment>Make build reproducible in spite of profile based optimizations (boo#1040589) (forwarded request 498339 from bmwiedemann)</comment>
+    <requestid>498391</requestid>
+  </revision>
+  <revision rev="139" vrev="98">
+    <srcmd5>181bd8eac9a51a32fa39f65dcb3c447f</srcmd5>
+    <version>unknown</version>
+    <time>1506955433</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch bash-4.4.dif to let bashline.h install as well as
+  this header file is included by general.h due to the same patch
+  (boo#1060069)</comment>
+    <requestid>528605</requestid>
+  </revision>
+  <revision rev="140" vrev="99">
+    <srcmd5>f697980c9bb636d5c9e63f4b3d2237d8</srcmd5>
+    <version>unknown</version>
+    <time>1513109955</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable multibyte characters by default</comment>
+    <requestid>555156</requestid>
+  </revision>
+  <revision rev="141" vrev="100">
+    <srcmd5>82d72756b2eada2bf0855a55fc7e404f</srcmd5>
+    <version>unknown</version>
+    <time>1517234097</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch bash-4.3-pathtemp.patch to avoid crash at full
+  file system (boo#1076909)</comment>
+    <requestid>569479</requestid>
+  </revision>
+  <revision rev="142" vrev="101">
+    <srcmd5>9f3b73e540d2253ba7a7cfde4f1f0078</srcmd5>
+    <version>unknown</version>
+    <time>1517668540</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches 13-18 to bash-4.4-patches.tar.bz2
+  * 13: If a here-document contains a command substitution, the
+    command substitution can get access to the file descriptor used
+    to write the here-document.
+  * 14: Under some circumstances, functions that return via the
+    `return' builtin do not clean up memory they allocated to keep
+    track of FIFOs.
+  * 15: Process substitution can leak internal quoting to the
+    parser in the invoked subshell.
+  * 16: Bash can perform trap processing while reading command
+    substitution output instead of waiting until the command
+    completes.
+  * 17: There is a memory leak when `read -e' is used to read a
+    line using readline.
+  * 18: Under certain circumstances (e.g., reading from /dev/zero),
+    read(2) will not return -1 even when interrupted by a signal.
+    The read builtin needs to check for signals in this case.
+- partial cleanup with spec-cleaner</comment>
+    <requestid>570849</requestid>
+  </revision>
+  <revision rev="143" vrev="102">
+    <srcmd5>856117d9ee4bab212e244f2bc774c4f1</srcmd5>
+    <version>unknown</version>
+    <time>1518281528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573586</requestid>
+  </revision>
+  <revision rev="144" vrev="103">
+    <srcmd5>3f81708a6fed1c333f34fd23a91eefd3</srcmd5>
+    <version>unknown</version>
+    <time>1520414900</time>
+    <user>dimstar_suse</user>
+    <comment>- Create readline-devel-static package to re-enable static libraries
+  again (boo#1082913)
+
+- Use %license (boo#1082318)</comment>
+    <requestid>580635</requestid>
+  </revision>
+  <revision rev="145" vrev="104">
+    <srcmd5>5545d84be955604377ddcfd56f8581c6</srcmd5>
+    <version>4.4</version>
+    <time>1521715953</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure that correct readline-devel version is used (current 7.0) 
+
+- Correct documentation path 
+
+- Due package split removed patches (for the bots)
+  * readline-6.2-xmalloc.dif
+  * readline-6.2-endpw.dif
+  * readline-6.3-destdir.patch
+  * readline-6.2-metamode.patch
+  * readline-7.0.dif
+  * readline-6.3-input.dif
+  * readline-5.2-conf.patch
+  * readline-6.3-rltrace.patch
+
+- Split readline off into its own package</comment>
+    <requestid>587961</requestid>
+  </revision>
+  <revision rev="146" vrev="105">
+    <srcmd5>9d54d9fc1fa28db7d28effc54948bf86</srcmd5>
+    <version>4.4</version>
+    <time>1524400533</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch bash-4.4-wait-sigint-handler.patch to fix bug bsc#1086247
+  that is repeating self inserting trap due external command in the
+  trap.</comment>
+    <requestid>598555</requestid>
+  </revision>
+  <revision rev="147" vrev="106">
+    <srcmd5>69820e6ea434d9097d3ea5f34b4908d3</srcmd5>
+    <version>4.4</version>
+    <time>1528895581</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614491</requestid>
+  </revision>
+  <revision rev="148" vrev="107">
+    <srcmd5>fd97e27ab704657150080499dada2669</srcmd5>
+    <version>4.4</version>
+    <time>1531812984</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bash-memmove.patch to make bash.html build reproducible (boo#1100488)
+
+- In patch bash-4.4.dif avoid setgroups(2) but use initgroups(3) (boo#1095670)</comment>
+    <requestid>621861</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>4039c7c89a36f1e25a01d97785897fc0</srcmd5>
+    <version>5.0</version>
+    <time>1548769093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to bash 5.0 (final)
+  a. Tilde expansion isn't performed on indexed array subscripts, even for
+     backwards compatibility.
+  b. The shell doesn't exit in posix mode if the eval builtin gets a parse
+     error when run by the command builtin.
+  c. Fixed a bug that caused a shell comment in an alias to not find the end
+     of the alias properly.
+  d. Reverted a change from April, 2018 that caused strings containing
+     backslashes to be flagged as glob patterns.
+- Modify patches
+  * bash-2.03-manual.patch
+  * bash-4.3-loadables.dif
+  * bash-5.0.dif
+
+- Update to bash 5.0 rc1
+  a. Fix to initial word completion detection code.
+  b. Fixed a bug that caused issues with assignment statements containing ^A in
+     the value assigned when IFS contains ^A.
+  c. Added a fallback to fnmatch() when strcoll can't correctly deal with
+     bracket expression character equivalence classes.
+  d. Fixed a bug that caused $BASH_COMMAND to contain the trap handler command
+     when running a trap handler containing [[ or (( commands.
+  e. Fixed a bug that caused nameref assignments in the temporary environment
+     to potentially create variables with invalid names.
+  f. Fixed a bug that caused `local -' to turn off alias expansion in scripts.
+  g. Fixed a parser issue with a command string containing EOF after an invalid
+     command as an argument to a special builtin not causing a posix-mode shell
+     to exit.
+  h. Made a slight change to the FNV-1 string hash algorithm used for associative
+     arrays (corrected the initial seed).</comment>
+    <requestid>664075</requestid>
+  </revision>
+  <revision rev="150" vrev="2">
+    <srcmd5>45c8f19ad101f64f38d3ff70a7fc4697</srcmd5>
+    <version>5.0</version>
+    <time>1550149851</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patches bash50-001 and bash50-002</comment>
+    <requestid>672490</requestid>
+  </revision>
+  <revision rev="151" vrev="3">
+    <srcmd5>60cfc990a649ae66aaeefffc11ef75a0</srcmd5>
+    <version>5.0</version>
+    <time>1552464283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update temporary patch from upstream to make sed testsuite
+  work again
+
+- Requires(postun) -&gt; Requires(preun)
+
+- Do not link /bin/sh as slave alternative to /usr/bin/sh
+
+- Add temporary patch from upstream to fix boo#1127700
+
+- Refine and harden update-alternatives work flow
+- Move header and Makefile from bash-loadables to bash-devel 
+
+- Make update-alternatives work flawless
+
+- Put &quot;sh&quot; under control of update-alternatives</comment>
+    <requestid>683701</requestid>
+  </revision>
+  <revision rev="152" vrev="4">
+    <srcmd5>6a59c534be55a478448074f3b93dad26</srcmd5>
+    <version>5.0</version>
+    <time>1552466861</time>
+    <user>dimstar_suse</user>
+    <comment>Revert /bin/sh handling, see https://bugzilla.opensuse.org/show_bug.cgi?id=1129036</comment>
+  </revision>
+  <revision rev="153" vrev="5">
+    <srcmd5>60cfc990a649ae66aaeefffc11ef75a0</srcmd5>
+    <version>5.0</version>
+    <time>1552901612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684640</requestid>
+  </revision>
+  <revision rev="154" vrev="6">
+    <srcmd5>16f8722b42f9111e386b60b2dde60626</srcmd5>
+    <version>5.0</version>
+    <time>1554712192</time>
+    <user>dimstar_suse</user>
+    <comment>- Add temporary fix from upstream for boo#1128936
+
+- Add patch assignment-preceding-builtin.patch from upstream
+  mailing list. Note that this break backward behaviour with
+  bash-4.4 but implies that POSIX mode is more correct 
+
+- Replace the temporary patch with official bash50-003</comment>
+    <requestid>691415</requestid>
+  </revision>
+  <revision rev="155" vrev="7">
+    <srcmd5>eadbd4b89664d18ccbd51f76165e1bfd</srcmd5>
+    <version>5.0</version>
+    <time>1556474202</time>
+    <user>maxlin_factory</user>
+    <comment>- Add official patch bash50-004
+  * In bash-5.0, the `wait' builtin without arguments waits for all children of the
+    shell. This includes children it `inherited' at shell invocation time. This
+    patch modifies the behavior to not wait for these inherited children, some
+    of which might be long-lived.
+- Add official patch bash50-005
+  * In certain cases, bash optimizes out a fork() call too early and prevents
+    traps from running.
+- Add official patch bash50-006
+  * Bash-5.0 did not build successfully if SYSLOG_HISTORY was defined without
+    also defining SYSLOG_SHOPT.
+- Add official patch bash50-007
+  * Running `exec' when job control was disabled, even temporarily, but after it
+    had been initialized, could leave the terminal in the wrong process group for
+    the executed process.</comment>
+    <requestid>697366</requestid>
+  </revision>
+  <revision rev="156" vrev="8">
+    <srcmd5>2f0aeb1a0acd3f3c88b0f2e2139d8910</srcmd5>
+    <version>5.0</version>
+    <time>1567848234</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>725335</requestid>
+  </revision>
+</revisionlist>

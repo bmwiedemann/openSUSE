@@ -1,0 +1,10 @@
+<package name="perl-Regexp-Common" project="openSUSE:Factory">
+  <title>Provide commonly requested regular expressions</title>
+  <description>By default, this module exports a single hash ('%RE') that stores or
+generates commonly needed regular expressions (see the &quot;List of available
+patterns&quot; manpage).
+
+There is an alternative, subroutine-based syntax described in the
+&quot;Subroutine-based interface&quot; manpage.</description>
+  <devel project="devel:languages:perl" package="perl-Regexp-Common"/>
+</package>

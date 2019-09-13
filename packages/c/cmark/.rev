@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e81b563b2ff642ed6ae5203a95fa18da</srcmd5>
+    <version>0.25.2</version>
+    <time>1460482315</time>
+    <user>dimstar_suse</user>
+    <comment>CommonMark parsing and rendering library and program in C</comment>
+    <requestid>381183</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24d320fde51809d84fa77a756f9b3bd7</srcmd5>
+    <version>0.26.1</version>
+    <time>1468999091</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.26.1
+* Removed unnecessary typedef that caused build failure on some platforms.
+* Use $(MAKE) in Makefile instead of hardcoded make (forwarded request 409117 from mimi_vx)</comment>
+    <requestid>409120</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cbe4114daca841dc28eb876889ddc7a4</srcmd5>
+    <version>0.26.1</version>
+    <time>1472731410</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424010</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ffdc93a39dd1e933e587e9da8739d976</srcmd5>
+    <version>0.26.1</version>
+    <time>1478087149</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435618</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2a4f16b54fd2e617ad95568d2dec9d6c</srcmd5>
+    <version>0.27.1</version>
+    <time>1479662417</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.27.1
+* Set policy for CMP0063 to avoid a warning
+* Use VERSION_GREATER to clean up cmake version test (forwarded request 441033 from mimi_vx)</comment>
+    <requestid>441034</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f2f9eb80707470b03f7ea25227b360e5</srcmd5>
+    <version>0.28.0</version>
+    <time>1506108900</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.28.0
+  * Update spec.
+  * Use unsigned integer when shifting
+  * Avoid memcpy'ing NULL pointers
+  * DeMorgan simplification of some tests in emphasis parser.
+  * Fixed undefined shift in commonmark writer
+  * latex writer:  fix memory overflow
+  * Check for NULL pointer in get_link_type
+  * Move fuzzing dictionary into single file
+  * Reset bytes after UTF8 proc
+  * Don't scan past an EOL
+  * Document cases where `get_` functions return `NULL`
+  * Properly handle backslashes in link destinations
+  * Fixed `cmark_node_get_list_start` to return 0 for bullet lists,
+    as documented
+  * Use `CMARK_NO_DELIM` for bullet lists
+  * Fixed code for freeing delimiter stack
+  * Removed abort outside of conditional (typo).
+  * Removed coercion in error message when aborting from buffer.
+  * Print message to stderr when we abort due to memory demands
+  * `libcmark.pc`: use `CMAKE_INSTALL_LIBDIR`
+  * Fixed buffer overflow error in `S_parser_feed`
+  * Update emphasis parsing for spec change.
+  * Fixes for the LaTeX renderer
+    + Don't double-output the link in latex-rendering.
+    + Prevent ligatures in dashes sensibly when rendering latex.
+      `\-` is a hyphenation, so it doesn't get displayed at all.
+  * Added a test for NULL when freeing `subj-&amp;gt;last_delim`.
+  * Cleaned up setting of lower bounds for openers.
+  * Fix #178, quadratic parsing bug.  Add pathological test. (forwarded request 528141 from mimi_vx)</comment>
+    <requestid>528142</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b9a32f3d11c3ee65ea5831972f694dea</srcmd5>
+    <version>0.28.0</version>
+    <time>1506870117</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529924</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b67aa5bae47463cf2df232135a8ed7fa</srcmd5>
+    <version>0.28.3</version>
+    <time>1509820196</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.28.3
+ * -smart: open quote can never occur right after ] or ) 
+ * Include GNUInstallDirs in src/CMakeLists.txt
+ * Fix quadratic behavior in finalize
+ * Don't use CMAKE_INSTALL_LIBDIR to create libcmark.pc
+ - drop cmark-install_libdir_is_abs.patch (forwarded request 538800 from mimi_vx)</comment>
+    <requestid>538801</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6b5e80c4926d9a70519c07f967f9cddc</srcmd5>
+    <version>0.29.0</version>
+    <time>1565097131</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.29.0
+  * Update spec to 0.29.
+  * Make rendering safe by default (#239, #273).
+    Adds `CMARK_OPT_UNSAFE` and make `CMARK_OPT_SAFE` a no-op (for API
+    compatibility).  The new default behavior is to suppress raw HTML and
+    potentially dangerous links.  The `CMARK_OPT_UNSAFE` option has to be set
+    explicitly to prevent this.
+    **NOTE:** This change will require modifications in bindings for cmark
+    and in most libraries and programs that use cmark.
+    Borrows heavily from @kivikakk's patch in github/cmark-gfm#123.
+  * Add sourcepos info for inlines (Yuki Izumi).
+  * Disallow more than 32 nested balanced parens in a link (Yuki Izumi).
+  * Resolve link references before creating setext header.
+    A setext header line after a link reference should not
+    create a header, according to the spec.
+  * commonmark renderer: improve escaping.
+    URL-escape special characters when escape mode is URL, and not otherwise.
+    Entity-escape control characters (&amp;lt; 0x20) in non-literal escape modes.
+  * render:  only emit actual newline when escape mode is LITERAL.
+    For markdown content, e.g., in other contexts we want some
+    kind of escaping, not a literal newline.
+  * Update code span normalization to conform with spec change.
+  * Allow empty `&amp;lt;&amp;gt;` link destination in reference link.
+  * Remove leftover includes of `memory.h` (#290).
+  * A link destination can't start with `&amp;lt;` unless it is
+    an angle-bracket link that also ends with `&amp;gt;` (#289).
+    (If your URL really starts with `&amp;lt;`, URL-escape it.)
+  * Allow internal delimiter runs to match if both have lengths that are
+    multiples of 3.  See commonmark/commonmark#528.
+  * Include `references.h` in `parser.h` (#287). (forwarded request 721248 from mimi_vx)</comment>
+    <requestid>721249</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+<package name="z" project="openSUSE:Factory">
+  <title>Frontend for compressing and uncompressing</title>
+  <description>Z is a simple, safe, and convenient frontend for the compress/uncompress,
+gzip, bzip2, tar, and zip/unzip utilities to compress and uncompress files
+and directories/
+
+</description>
+  <devel project="Archiving" package="z"/>
+  <url>http://www.cs.indiana.edu/~kinzler/z/</url>
+</package>

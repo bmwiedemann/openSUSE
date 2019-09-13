@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>073c759e1b3f3510548910c27f83969a</srcmd5>
+    <version>1.17</version>
+    <time>1431365598</time>
+    <user>coolo</user>
+    <comment>Corrected typelib packaging. </comment>
+    <requestid>305552</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2fa3cf0a7df524303ba8fb21a9b7a140</srcmd5>
+    <version>1.18</version>
+    <time>1445782239</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340152</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>26f0009cb11dc607a384b80d3211b3a6</srcmd5>
+    <version>1.18</version>
+    <time>1450605085</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349553</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b68846de07d2d711f5c24deeb9894e9</srcmd5>
+    <version>1.21</version>
+    <time>1464690095</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.04.1</comment>
+    <requestid>395479</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d28191aa4f6beb540fe90120aaab6719</srcmd5>
+    <version>1.23</version>
+    <time>1510240834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538858</requestid>
+  </revision>
+</revisionlist>

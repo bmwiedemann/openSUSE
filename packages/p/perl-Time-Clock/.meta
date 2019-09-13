@@ -1,0 +1,15 @@
+<package name="perl-Time-Clock" project="openSUSE:Factory">
+  <title>Twenty-four hour clock object with nanosecond precision.</title>
+  <description>A the Time::Clock manpage object is a twenty-four hour clock with
+nanosecond precision and wrap-around. It is a clock only; it has absolutely
+no concept of dates. Vagaries of date/time such as leap seconds and
+daylight savings time are unsupported.
+
+When a the Time::Clock manpage object hits 23:59:59.999999999 and at least
+one more nanosecond is added, it will wrap around to 00:00:00.000000000.
+This works in reverse when time is subtracted.
+
+the Time::Clock manpage objects automatically stringify to a user-definable
+format.</description>
+  <devel project="devel:languages:perl" package="perl-Time-Clock"/>
+</package>

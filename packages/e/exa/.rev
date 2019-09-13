@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fa2402ee8f99ef458e34222682de9aeb</srcmd5>
+    <version>0.8.0</version>
+    <time>1521904509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590052</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6966969c3f388ed089429b737fbaf37c</srcmd5>
+    <version>0.8.0</version>
+    <time>1526372130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606996</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7dad90d676370b526944265b20a4a6c1</srcmd5>
+    <version>0.9.0</version>
+    <time>1563914084</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.0:
+  Additions:
+  * Icon support with --icons (9497b30)
+  * New sort options .name and .Name which ignore a leading dot (a156d96)
+  * Support TIME_STYLE environment variable (9917810)
+  * New option to only display directories, --only-dirs (054cac6)
+  * Support 24-bit colours (dc2009a)
+  * Display if a file is ignored by Git (80b0d9d)
+  Changes:
+  * Replace the mi colour with bO overlay colour (59d9e90)
+  * Pre-release versions have their build number shown (c7497f3)
+  * Add --classify to man page (9c77a95)
+  * Highlighting for file types .zst (5fae489), Bazel and Ant (c635031), .ts (e711dbc), .m4v (9b446c0), and .jpf (9916742)
+  * Create worker threads only once for performance (8cbde76)
+  Fixes:
+  * Allow zero-padded numbers in $LS_COLORS (afc9657, ce3f05c)
+  * Make non-uppercase README files immediate (d9c9dbe)
+  * Highlight README~ as temporary, not immediate (57e4c08)
+  * Use more accurate time to fix inconsistent sorting (649744d)
+  * Prevent infinite loop with -aaR (e936d7e)
+  * Fix panic in certain timezones (9f76f94 and this fix)
+  * Fix sorting by created time (faed8f9)
+  * Fix Git status not working for paths containing ../ (f1a5b64)</comment>
+    <requestid>715592</requestid>
+  </revision>
+</revisionlist>

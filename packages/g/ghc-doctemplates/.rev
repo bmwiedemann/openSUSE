@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9021a7789ae2a805adfebaf5bf39b003</srcmd5>
+    <version>0.1.0.2</version>
+    <time>1490965663</time>
+    <user>maxlin_factory</user>
+    <comment>initial submission</comment>
+    <requestid>482197</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>162bfdb4fba1e05c07e7df707975b1d2</srcmd5>
+    <version>0.1.0.2</version>
+    <time>1505504187</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524436</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>85b737219393b5a0f4a8d245432d832b</srcmd5>
+    <version>0.2.2.1</version>
+    <time>1527674819</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-doctemplates to the latest version.</comment>
+    <requestid>607787</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2bfd7e2eeb2963fa66030abf8144e82e</srcmd5>
+    <version>0.2.2.1</version>
+    <time>1532445484</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623761</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1e23775af7f4c0c6288834da2a75a737</srcmd5>
+    <version>0.2.2.1</version>
+    <time>1540448688</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643385</requestid>
+  </revision>
+</revisionlist>

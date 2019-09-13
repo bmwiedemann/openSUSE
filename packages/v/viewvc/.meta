@@ -1,0 +1,13 @@
+<package name="viewvc" project="openSUSE:Factory">
+  <title>Browse a Subversion Repository with a Web Browser</title>
+  <description>ViewVC is a browser interface for CVS and Subversion version control
+repositories. It generates templatized HTML to present navigable
+directory, revision, and change log listings. It can display specific
+versions of files as well as diffs between those versions. Basically,
+ViewVC provides the bulk of the report-like functionality you expect
+out of your version control tool, but much prettier than the average
+textual command-line program output.
+
+ViewVC is the successor of ViewCVS.</description>
+  <devel project="devel:tools:scm:svn" package="viewvc"/>
+</package>

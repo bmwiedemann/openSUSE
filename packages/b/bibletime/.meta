@@ -1,0 +1,6 @@
+<package name="bibletime" project="openSUSE:Factory">
+  <title>A Bible study application for Linux</title>
+  <description>BibleTime is a Bible study application for Linux. It is based on the  K Desktop Environment  and uses the Sword  programming library to work with Bible texts, commentaries, dictionaries and books provided by the  Crosswire Bible Society  .</description>
+  <devel project="Education" package="bibletime"/>
+  <url>http://www.bibletime.info/</url>
+</package>

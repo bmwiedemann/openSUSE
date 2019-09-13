@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93f6394a5eb9b9bb68677c747096fba2</srcmd5>
+    <version>0.6.4</version>
+    <time>1485382602</time>
+    <user>dimstar_suse</user>
+    <comment>3D rally racing game</comment>
+    <requestid>423510</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ae8b25490d118bf2795e2f0c1d48be1a</srcmd5>
+    <version>0.6.5</version>
+    <time>1487768190</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459547</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>97ffa648f79bf94e551960281aeb4fe1</srcmd5>
+    <version>0.6.5</version>
+    <time>1531470056</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622087</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>83a5c69e44d86f4e54903fefbec4389c</srcmd5>
+    <version>0.6.6.1</version>
+    <time>1553635834</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.6.6.1:
+  * Optimized data for release
+  * Removed internal TinyXML-2 source from Trigger code tree
+  * Documented and reorganized physic engine code
+  * Different tuning: Fox offroad, Evo circuit, Cordo in between
+  * Wheel sinking on the different types of terrain
+  * New freely licensed font
+  * Wheel-ground contact is now computed along wheel plane, not just straight down
+  * Vehicle selection screen shows real values of the car
+  * Vehicles can have different friction of wheels defined in the .vehicle file
+  * Optimized .obj mesh loader
+  * Updated libPhysfs code
+  * Other fixes
+  * Added 2 new events and 20 new single races (36 new maps)
+  * Added many new vegetation sprites
+- Drop patch reproducible.patch (merged upstream)
+- Add dependency for tinyXML2
+- Refactor data package creation
+- Add dependency for data package
+- Use pkgconfig(physfs)
+</comment>
+    <requestid>687017</requestid>
+  </revision>
+</revisionlist>

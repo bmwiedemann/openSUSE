@@ -1,0 +1,9 @@
+<package name="python-typeshed" project="openSUSE:Factory">
+  <title>Static type information for python modules</title>
+  <description>Typeshed models function types for the Python standard library and Python builtins, as well as third party packages.
+
+This data can e.g. be used for static analysis, type checking or type inference.
+
+This package stores the typedata in /usr/share/typeshed</description>
+  <devel project="devel:languages:python" package="python-typeshed"/>
+</package>

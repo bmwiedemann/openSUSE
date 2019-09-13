@@ -1,0 +1,12 @@
+<package name="python-Arpeggio" project="openSUSE:Factory">
+  <title>Packrat parser interpreter</title>
+  <description>Arpeggio is a recursive descent parser with memoization based on PEG grammars
+(aka Packrat parser).
+
+For a higher level parsing/language tool (i.e., a nicer interface to
+Arpeggio) see textX
+
+</description>
+  <devel project="devel:languages:python" package="python-Arpeggio"/>
+  <url>http://igordejanovic.net/Arpeggio/</url>
+</package>

@@ -1,0 +1,8 @@
+<package name="phonon" project="openSUSE:Factory">
+  <title>Multimedia Platform Abstraction</title>
+  <description>Phonon is a cross-platform portable multimedia support abstraction,
+which allows you to play multiple audio or video formats with the same
+quality on all platforms, no matter which underlying architecture is
+used.</description>
+  <devel project="KDE:Distro:Factory" package="phonon"/>
+</package>

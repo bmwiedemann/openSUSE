@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>453ca95472cbe3cfdf13971cd62e0d78</srcmd5>
+    <version>1.5.6</version>
+    <time>1535705276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632315</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>258a975aebbb161d86253a1aa6caccff</srcmd5>
+    <version>1.6.2</version>
+    <time>1567581315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.2:
+  * Update time label only if time has changed.
+  * Various fixes or improvements for the build system
+  * Fixed pkg-config cflags
+  * Fixed failing unit test
+  * Fixed extern C declarations for C++
+  * Added Meson configuration message
+  * New or updated languages: es, hu, lt
+
+- Update to 1.6.1:
+* New: Automatic speech recognition (ASR) is now disabled by default
+  and it’s only shown, if parlatype is launched with the new parameter --with-asr
+* New: Parlatype can be built without ASR (build option asr=false)
+* New: libreoffice helpers’ AppStream ID renamed (hyphen instead of underscore)
+* Fix: Initialize i18n for library, fixes not shown translations in
+  Flatpak or non-standard prefixes
+* Fix: All memory leaks discovered with Valgrind in test suite
+* Fix: All issues discovered with Clang Static Analyzer
+* Add and update translations</comment>
+    <requestid>727961</requestid>
+  </revision>
+</revisionlist>

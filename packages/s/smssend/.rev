@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="17">
+    <srcmd5>d9ca76bcb1b6bdbe1cf55cd5e7c09fff</srcmd5>
+    <version>3.4</version>
+    <time>1168904252</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="49">
+    <srcmd5>9e335ba3633070bf39801cbcea9e693b</srcmd5>
+    <version>3.4</version>
+    <time>1175629552</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="155">
+    <srcmd5>9e335ba3633070bf39801cbcea9e693b</srcmd5>
+    <version>3.4</version>
+    <time>1175629552</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="156">
+    <srcmd5>05c89e2d35baaaaa423dab22e0aa3cf4</srcmd5>
+    <version>3.4</version>
+    <time>1245277552</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="158">
+    <srcmd5>05c89e2d35baaaaa423dab22e0aa3cf4</srcmd5>
+    <version>3.4</version>
+    <time>1245277552</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="159">
+    <srcmd5>b1fbb49f1cfd307b7db0f22768014a81</srcmd5>
+    <version>3.4</version>
+    <time>1268926196</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="161">
+    <srcmd5>b1fbb49f1cfd307b7db0f22768014a81</srcmd5>
+    <version>3.4</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="162">
+    <srcmd5>b1fbb49f1cfd307b7db0f22768014a81</srcmd5>
+    <version>3.4</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="165">
+    <srcmd5>b1fbb49f1cfd307b7db0f22768014a81</srcmd5>
+    <version>3.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="166">
+    <srcmd5>bc9937e17f3809460f17f1e4fba574c2</srcmd5>
+    <version>3.4</version>
+    <time>1314883830</time>
+    <user>saschpe</user>
+    <comment>- build with --no-copy-dt-needed-entries</comment>
+    <requestid>80367</requestid>
+  </revision>
+  <revision rev="11" vrev="167">
+    <srcmd5>2fb1e2ba98dac8a37e3fd8fd13c6675e</srcmd5>
+    <version>3.4</version>
+    <time>1314883840</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80367
+</comment>
+  </revision>
+  <revision rev="12" vrev="169">
+    <srcmd5>2fb1e2ba98dac8a37e3fd8fd13c6675e</srcmd5>
+    <version>3.4</version>
+    <time>1319182477</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="170">
+    <srcmd5>a507175202c1be53b3082679e7b2ab8f</srcmd5>
+    <version>3.4</version>
+    <time>1322481456</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93824 from coolo)</comment>
+    <requestid>93832</requestid>
+  </revision>
+  <revision rev="14" vrev="171">
+    <srcmd5>a49a0e317dd0cd034f0dfddcbc86d621</srcmd5>
+    <version>3.4</version>
+    <time>1329242926</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104059</requestid>
+  </revision>
+  <revision rev="15" vrev="173">
+    <srcmd5>a49a0e317dd0cd034f0dfddcbc86d621</srcmd5>
+    <version>3.4</version>
+    <time>1340184224</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="175">
+    <srcmd5>a49a0e317dd0cd034f0dfddcbc86d621</srcmd5>
+    <version>3.4</version>
+    <time>1359110417</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="177">
+    <srcmd5>a49a0e317dd0cd034f0dfddcbc86d621</srcmd5>
+    <version>3.4</version>
+    <time>1379664698</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="179">
+    <srcmd5>a49a0e317dd0cd034f0dfddcbc86d621</srcmd5>
+    <version>3.4</version>
+    <time>1409303381</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="kwin5" project="openSUSE:Factory">
+  <title>kwin5</title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="kwin5"/>
+</package>

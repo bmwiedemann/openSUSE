@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a11ea22df185c98bc8c96c4f272e1d4</srcmd5>
+    <version>2.4.3</version>
+    <time>1494345875</time>
+    <user>dimstar_suse</user>
+    <comment>Re-submitting again. The declined review makes no sense, IMHO. What is 'hsec 2.4'?</comment>
+    <requestid>493472</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1e07ebc6590d0180a9cc503ae31dd738</srcmd5>
+    <version>2.4.4</version>
+    <time>1504205784</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513389</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>30fb9871e999ed29ac656a6e0d029987</srcmd5>
+    <version>2.4.4</version>
+    <time>1505504984</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524792</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3d74904b24efb69c16c5ec5a21dd3a79</srcmd5>
+    <version>2.5.0</version>
+    <time>1527674941</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-hspec to the latest version.</comment>
+    <requestid>607814</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f1cb7e37d62ee9045dd06d3d28b25b70</srcmd5>
+    <version>2.5.5</version>
+    <time>1532445579</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update hspec to version 2.5.5.
+  ## Changes in 2.5.5
+    - Use `module[line:column]` instead of `module:line:column` as default label
+      for `describe`/`it` (fixes #366)
+
+- Update hspec to version 2.5.4.
+  - Show how to rerun individual spec items on test failures (see #205)
+  - Treat character escapes like `\NUL` as single tokens on `--diff` (see #351)
+  - Allow a `/` at the beginning and at the end of an absolute path that is
+    passed to `--match` or `--skip`
+  - Use module:line:column as default label for describe/it (see #250)
+  - Warn if user is affected by https://ghc.haskell.org/trac/ghc/ticket/13285 (see #329)
+  - Disable tests for Test.Hspec.Core.Timer (see #352)</comment>
+    <requestid>623788</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1a80cbf3832f68a09c148c168002d2f2</srcmd5>
+    <version>2.5.8</version>
+    <time>1540448199</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642865</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f8d5a436ea0dcb20a325b5602424eded</srcmd5>
+    <version>2.6.0</version>
+    <time>1541746318</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646354</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0abc77b9d47d8ac2bc7a0f4478d54b85</srcmd5>
+    <version>2.7.0</version>
+    <time>1548452595</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>667136</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>27b1849f4ae41f43f7ed2fd59409c60b</srcmd5>
+    <version>2.7.1</version>
+    <time>1554276443</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>690181</requestid>
+  </revision>
+</revisionlist>

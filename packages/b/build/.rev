@@ -1,0 +1,1113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49f0ed45dddab40020bb9bd061fdea6f</srcmd5>
+    <version>2006.11.24</version>
+    <time>1168902385</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9be3a509281b289a1152a712b3e18e43</srcmd5>
+    <version>2007.08.02</version>
+    <time>1186083745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f9458f45a8692c16510a383c5a221a67</srcmd5>
+    <version>2007.09.14</version>
+    <time>1189850741</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>81795e452cd10959feadc4d38e882910</srcmd5>
+    <version>2008.05.29</version>
+    <time>1212228508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b7c887c486ac915a419a468281434c4e</srcmd5>
+    <version>2008.06.03</version>
+    <time>1212523200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>03a6e10c4b903c3dd684ca1452c6bff5</srcmd5>
+    <version>2008.08.11</version>
+    <time>1218832581</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2ed24fb175b31d4dbbaaf0078c1850b4</srcmd5>
+    <version>2008.10.21</version>
+    <time>1224682316</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d28ea6dfdfb1da8cadf9404c401d5f6c</srcmd5>
+    <version>2008.10.21</version>
+    <time>1224768157</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6828188c65cee69b0e734c491ad4d98e</srcmd5>
+    <version>2008.11.13</version>
+    <time>1226593717</time>
+    <user>adrianSuSE</user>
+    <comment>Copy from openSUSE:Tools/build via accept of submit request 3751
+Request was accepted with message:
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d28ea6dfdfb1da8cadf9404c401d5f6c</srcmd5>
+    <version>2008.10.21</version>
+    <time>1226633274</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>317af12d6cddb84e0666b385f0f647eb</srcmd5>
+    <version>2008.11.13</version>
+    <time>1226919000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d635eaac8c7b61f0304a558661bfca1e</srcmd5>
+    <version>2008.11.28.r5747</version>
+    <time>1227885698</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e6f517333a287533dba617b59205c8e6</srcmd5>
+    <version>2008.12.03.r5793</version>
+    <time>1228317893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3c840b901d411982bd90445115330531</srcmd5>
+    <version>2008.12.04.r5809</version>
+    <time>1228485980</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5c898eb52aa96eda0048670efa1e97e4</srcmd5>
+    <version>2008.12.04.r5809</version>
+    <time>1228489084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4904c832874e610c0d5303a1a566fae5</srcmd5>
+    <version>2008.12.10.r5853</version>
+    <time>1229340025</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>4626ded1b53a067d8f6e7c85ac36d087</srcmd5>
+    <version>2009.01.27</version>
+    <time>1233143002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8afbec164c76ff64a4773906df67a363</srcmd5>
+    <version>2009.02.20</version>
+    <time>1235160151</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e19e26e4a738b1e39dc507c93f711975</srcmd5>
+    <version>2009.02.25</version>
+    <time>1235614097</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>43d3deb42a40c5f29630ea692a3a9e0a</srcmd5>
+    <version>2009.06.04</version>
+    <time>1245169230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>afa8b76037b34bb62e4ba377d0d19123</srcmd5>
+    <version>2009.07.27</version>
+    <time>1248712966</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>37cf4f23dc9dbd86f05ead9e3740e2c4</srcmd5>
+    <version>2009.09.23</version>
+    <time>1253732575</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 20891 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>37cf4f23dc9dbd86f05ead9e3740e2c4</srcmd5>
+    <version>2009.09.23</version>
+    <time>1253732575</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 20891 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>697f3d559d0b1c70b0430596b3b9f8f6</srcmd5>
+    <version>2010.01.13</version>
+    <time>1264076246</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 29635 from user adrianSuSE
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>597eab409d6544365e930d5343bae317</srcmd5>
+    <version>2010.02.19</version>
+    <time>1267060754</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 33317 from user coolo
+</comment>
+    <requestid>33317</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>504727df2797a18d2384d03ad53d24e0</srcmd5>
+    <version>2010.03.08</version>
+    <time>1268150341</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 34401 from user coolo
+</comment>
+    <requestid>34401</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>511a0733e6f1cbbfbd312bbb51044109</srcmd5>
+    <version>2010.03.08</version>
+    <time>1268923125</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3b88fd96cc704254ab8b687ebd050436</srcmd5>
+    <version>2010.03.10</version>
+    <time>1268991442</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 35137 from user coolo
+</comment>
+    <requestid>35137</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>7b2f181f19c80414af969afb24b57ff7</srcmd5>
+    <version>2010.04.15</version>
+    <time>1271368787</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 37998 from user adrianSuSE
+</comment>
+    <requestid>37998</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>2a53259e1d75246c7ebcecc1d6c655f7</srcmd5>
+    <version>2010.04.15</version>
+    <time>1271373262</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 38019 from user oertel
+</comment>
+    <requestid>38019</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>50d144a87f01584bc44b248ca7b481e5</srcmd5>
+    <version>2010.04.15</version>
+    <time>1271631749</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 38170 from user oertel
+</comment>
+    <requestid>38170</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1f359e209e442d6615e08d76c91410a4</srcmd5>
+    <version>2010.05.29</version>
+    <time>1276833672</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 41600 from user adrianSuSE
+</comment>
+    <requestid>41600</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c7cbf5fc42d5d0be81d123e6b432b6a8</srcmd5>
+    <version>2010.06.29</version>
+    <time>1277826488</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 42249 from user mlschroe
+</comment>
+    <requestid>42249</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>c7cbf5fc42d5d0be81d123e6b432b6a8</srcmd5>
+    <version>2010.06.29</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>c7cbf5fc42d5d0be81d123e6b432b6a8</srcmd5>
+    <version>2010.06.29</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>6aff42f0035a5df3104fd2d3943ab480</srcmd5>
+    <version>2010.07.08</version>
+    <time>1279565549</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 43143 from user adrianSuSE
+</comment>
+    <requestid>43143</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>62eb925cfade7e00a9979dd2027c6bcb</srcmd5>
+    <version>2010.07.28</version>
+    <time>1280742834</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 44228 from user coolo
+</comment>
+    <requestid>44228</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fa89f4a84192ac9e453d7a4380809c33</srcmd5>
+    <version>2010.10.12</version>
+    <time>1287153938</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build based on submit request 50809 from user adrianSuSE
+</comment>
+    <requestid>50809</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>7539b174d2e14f247d5a1b720a913277</srcmd5>
+    <version>unknown</version>
+    <time>1288272644</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51495 from user lnussel
+</comment>
+    <requestid>51495</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>880d7806e73bfeeccea90ade271f61de</srcmd5>
+    <version>2010.10.27</version>
+    <time>1288281731</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>72f73d4c93540006cda2808a8577ee8d</srcmd5>
+    <version>2010.10.27</version>
+    <time>1288281747</time>
+    <user>_service</user>
+    <comment>generated via source service</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8a0a193cee9bd48b6671ee08c023684c</srcmd5>
+    <version>2010.11.02</version>
+    <time>1289419501</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52673 from user lnussel
+</comment>
+    <requestid>52673</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>b1fdfdc65124d4f6d9bd60d863e716f1</srcmd5>
+    <version>2010.11.02</version>
+    <time>1289532456</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>8a669548967c7588bf60ec6c4319ecd0</srcmd5>
+    <version>2010.11.02</version>
+    <time>1289569342</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b90fa7d1ceb0b8f6fa9e0009a503fad1</srcmd5>
+    <version>2010.12.09</version>
+    <time>1292246288</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55726 from user coolo
+</comment>
+    <requestid>55726</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>dd67b8c9b0354b53833602ea02750b43</srcmd5>
+    <version>2010.12.09</version>
+    <time>1292246418</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55726
+</comment>
+  </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>dd67b8c9b0354b53833602ea02750b43</srcmd5>
+    <version>2010.12.09</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>cab81a4ab2a894da14787cc2c4433cf1</srcmd5>
+    <version>2011.01.20</version>
+    <time>1298902518</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63012 from user adrianSuSE
+</comment>
+    <requestid>63012</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>eb41853e4cd8a4094ed848271116ca4f</srcmd5>
+    <version>2011.01.20</version>
+    <time>1298902528</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63012
+</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>23a654064f2193bd7b3bbfb77e0aca5f</srcmd5>
+    <version>2011.05.24</version>
+    <time>1307372921</time>
+    <user>saschpe</user>
+    <comment>update for download_files</comment>
+    <requestid>71297</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>059867e40820feb83b55fa90402f9ee2</srcmd5>
+    <version>2011.05.24</version>
+    <time>1307373022</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71297
+</comment>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8e6122f3d4f2eb34bbd7bb7d79b2f3b2</srcmd5>
+    <version>2011.06.17</version>
+    <time>1308905145</time>
+    <user>saschpe</user>
+    <comment>update</comment>
+    <requestid>73992</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>ac0d5bebbb1ece4b0da9244d67a80dd2</srcmd5>
+    <version>2011.06.17</version>
+    <time>1308905158</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73992
+</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>0b56e4b59e5fe0b454876fee66b5755b</srcmd5>
+    <version>2011.07.01</version>
+    <time>1309532041</time>
+    <user>saschpe</user>
+    <comment>fix kiwi handling</comment>
+    <requestid>74947</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>fcf2e16dbdce8e85453108f78b09011e</srcmd5>
+    <version>2011.07.01</version>
+    <time>1309532067</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74947
+</comment>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>051094dde44e26f2b5bb32e8f40dfe63</srcmd5>
+    <version>2011.07.01</version>
+    <time>1312900738</time>
+    <user>saschpe</user>
+    <comment>The following screendump should say it all:
+
+----------------------------------------------------------------------
+# rpm -qi build
+[...]
+Description :
+This package provides a script for building RPMs for SUSE Linux in a
+chroot environment.
+
+
+Requires:       build-mkbaselibs
+Recommends:     build-mkdrpms
+Distribution: openSUSE:Tools / openSUSE_11.4
+----------------------------------------------------------------------
+
+Needless to say that rpm -q --requires / --recommends does not list 
+build-mkbaselibs and build-mkdrpms.
+
+This SR fixes this bug.
+
+Note: the Recommends is only enabled on distributions that support it. (forwarded request 78242 from cboltz)</comment>
+    <requestid>78371</requestid>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>04fa205a5f323c0c413f9ea6d37e65bd</srcmd5>
+    <version>2011.07.01</version>
+    <time>1312900751</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78371
+</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>d04706e5982046b469636e6a08e42b9a</srcmd5>
+    <version>2011.09.26</version>
+    <time>1317132474</time>
+    <user>saschpe</user>
+    <comment>fixed kvm, xen and qemu support</comment>
+    <requestid>84971</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>d04706e5982046b469636e6a08e42b9a</srcmd5>
+    <version>2011.09.26</version>
+    <time>1319181797</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>74b259892f558d4e488fbda63e1760cc</srcmd5>
+    <version>2012.03.17</version>
+    <time>1334745237</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+ and GPL-2.0
+See e.g. spec2changelog by Pascal Bleser. Also, there should be a copy of the GPL-2.0 license in the package (forwarded request 114174 from babelworx)</comment>
+    <requestid>114176</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9d8f5e9c9977a37b2652545e225a21f7</srcmd5>
+    <version>2012.04.24</version>
+    <time>1336452290</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116237</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>617c09a0b01e392486896a5850163ebf</srcmd5>
+    <version>2012.05.14</version>
+    <time>1337096414</time>
+    <user>coolo</user>
+    <comment>- work around command line size limit
+  mkbaselibs may fail on an excessive number of packages (bnc#761977)
+- improve build root owner setting
+- don't die at compile time if Archive::Tar is not available</comment>
+    <requestid>120967</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>4f03286a1a1c30d7d5717ab9ebe35714</srcmd5>
+    <version>2012.06.05</version>
+    <time>1338991542</time>
+    <user>coolo</user>
+    <comment>- update from git:
+   (mls) simplify debug package code so that it also works with --target
+
+- take care of prjconf target: definition for spec file parsing
+
+- support for breakages in Fedora:17
+  * support enforced ordering during preinstall and vminstall phase
+  * allow to extract files via symlinked directories</comment>
+    <requestid>123693</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>4f03286a1a1c30d7d5717ab9ebe35714</srcmd5>
+    <version>2012.06.05</version>
+    <time>1340183216</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>83ffc3a960d31e2785aea383883c46d5</srcmd5>
+    <version>2012.07.02</version>
+    <time>1341222599</time>
+    <user>coolo</user>
+    <comment>preinstall support and fixing the visible typo</comment>
+    <requestid>126873</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>d78865580bcc636522b1171e95f3c491</srcmd5>
+    <version>2012.07.19</version>
+    <time>1343030052</time>
+    <user>coolo</user>
+    <comment>fix build in factory. updating horrible outdated 12.2 config </comment>
+    <requestid>128305</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>777f71742bf838c750c23ddf3df57708</srcmd5>
+    <version>2012.08.24</version>
+    <time>1347617696</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134103</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>30402820c6b44532edbc2d0e1cf6920e</srcmd5>
+    <version>2012.09.24</version>
+    <time>1348558176</time>
+    <user>coolo</user>
+    <comment>- update to current git (03587016a7eca7788f404820642a2b5a1556aa0b)
+Adrian Schröter (1):
+      - use default MEMSIZE in check_for_ppc
+Anas Nashif (2):
+      pass --use-system-qemu option to init_buildsystem
+      Support https repositories
+Frank Lichtenheld (1):
+      init_buildsystem: fail early on reorder failure
+Martin Koegler (4):
+      Diff can't handle empty files
+      Refactor diff generation
+      Handle overriden files already present in the orig.tar.gz correctly in debtransform
+      Correct version number of binaries, if necessary
+Michael Schroeder (3):
+      - don't add self-provides for src packages
+      - support binary rpms with fo SOURCERPM header element
+      - drop '-o' bsdtar flag when unpacking preinstall images
+Werner Fink (1):
+      Make init_buildsystem able to use the features of newer rpm</comment>
+    <requestid>135697</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>1cf6d42334fefa752a855cfcef58062a</srcmd5>
+    <version>2012.09.25</version>
+    <time>1348668556</time>
+    <user>coolo</user>
+    <comment>- remove build-mkbaselibs-sle, the split is no longer necessary
+- remove default requires for devel-32bit
+
+- fix logic for cumulating packages</comment>
+    <requestid>135865</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>bd2fd5b29c8c162e1f4a6a8fa3c7df8b</srcmd5>
+    <version>20120927</version>
+    <time>1348734680</time>
+    <user>coolo</user>
+    <comment>- change to automatic date version in _service
+- update from git (4afd9f0ee03f9e51cf8db9a27fae4663e3f4dde6)
+Martin Koegler (1):
+      Bug fix: ignore links in orig tar files
+Michael Schroeder (1):
+      - be more verbose when the preinstallimage unpack fails
+Stephan Kulow (2):
+      the difference between openSUSE and SLE is outdated
+      do not cumulate packages with 12.2's rpm</comment>
+    <requestid>136164</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>1866779277c79e402bc5a1538f9d647b</srcmd5>
+    <version>20120927</version>
+    <time>1349720848</time>
+    <user>coolo</user>
+    <comment>fix current warning messages with new rpmlint</comment>
+    <requestid>137222</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>000e0644bb2157a1370eb269d8235249</srcmd5>
+    <version>20121123</version>
+    <time>1354711654</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143852</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>000e0644bb2157a1370eb269d8235249</srcmd5>
+    <version>20121123</version>
+    <time>1359108719</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>c62763864074fac50c2f896b1bc5343a</srcmd5>
+    <version>20130227</version>
+    <time>1362118514</time>
+    <user>coolo</user>
+    <comment>- ARM AArch64 support added
+- Generic system emulator support as VM added
+- s390 z/VM build environment support added
+- support collecting resource statistics during build (for OBS 2.4)
+- rpm5 fixes
+- kvm support for armv7l
+- mount /dev/pts with right permissions</comment>
+    <requestid>156671</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>f6caf2266cdc55c69094967564a3eba6</srcmd5>
+    <version>20130402</version>
+    <time>1364927182</time>
+    <user>coolo</user>
+    <comment>- add sl13.1.conf (openSUSE:Factory prjconf of 2013-03-29)
+- have ncurses-devel-32bit require ncurses-devel and not ncurses-32bit
+- do not put .socket files into the 32bit packages
+- unbreak kvm for x86_64</comment>
+    <requestid>162095</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>cf6eb3a0365085fb79b5e6d46eef38fb</srcmd5>
+    <version>20130517</version>
+    <time>1368861640</time>
+    <user>coolo</user>
+    <comment>critical updates. please drop the obsolete build-vminit container after accepting, it is a subpackage now</comment>
+    <requestid>175954</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>2cf5d722f8911ead91d125beeb6c4022</srcmd5>
+    <version>20130517</version>
+    <time>1370425244</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>177106</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>1c8b8fc09de916552239c2fb487d096a</srcmd5>
+    <version>20130517</version>
+    <time>1376381778</time>
+    <user>scarabeus_factory</user>
+    <comment>- add requires for Fedora (forwarded request 185684 from k0da)</comment>
+    <requestid>186781</requestid>
+  </revision>
+  <revision rev="79" vrev="5">
+    <srcmd5>1c8b8fc09de916552239c2fb487d096a</srcmd5>
+    <version>20130517</version>
+    <time>1379662060</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>babc460786b00a23fc16b1f8050ba4fe</srcmd5>
+    <version>20131015</version>
+    <time>1382014252</time>
+    <user>scarabeus_factory</user>
+    <comment>fixed 13.1 config and added a 13.2 one to fix build</comment>
+    <requestid>203381</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>c7ca7fd031a5588735ad8f17d3fa5d17</srcmd5>
+    <version>20131203</version>
+    <time>1386156131</time>
+    <user>coolo</user>
+    <comment>ppc64le support and distro kernel support</comment>
+    <requestid>209370</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>57e3e53708089786e4907cd00e96cf5f</srcmd5>
+    <version>20131205</version>
+    <time>1386319383</time>
+    <user>coolo</user>
+    <comment>fix ppc64le handling</comment>
+    <requestid>209520</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>2acf4cb075d06f24ed18c420663e5003</srcmd5>
+    <version>20140220</version>
+    <time>1393600896</time>
+    <user>scarabeus_factory</user>
+    <comment>bugfixes only</comment>
+    <requestid>223284</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>ffb15f4775ce742128ee26c1d7515295</srcmd5>
+    <version>20140424</version>
+    <time>1399051293</time>
+    <user>coolo</user>
+    <comment>refactored build script</comment>
+    <requestid>232384</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>ffb15f4775ce742128ee26c1d7515295</srcmd5>
+    <version>20140424</version>
+    <time>1409300589</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>a087ac6f44995a89f3eabcfb9adaa5e6</srcmd5>
+    <version>20141024</version>
+    <time>1415118448</time>
+    <user>coolo</user>
+    <comment>fix Ubuntu 14.10 builds</comment>
+    <requestid>258480</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>aa0be484c285f7bc47059a9816ba7ecd</srcmd5>
+    <version>20141120</version>
+    <time>1416994559</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>262866</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>2cdcd1869c210f6939cb4e7f30018ccf</srcmd5>
+    <version>20150115</version>
+    <time>1423392096</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>283413</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>f91deb7518cf718cfd4b0d144e8834ad</srcmd5>
+    <version>20150317</version>
+    <time>1427109122</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>291133</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>296a407815e31f994682c0cb575e5b76</srcmd5>
+    <version>20150615</version>
+    <time>1435053283</time>
+    <user>dimstar_suse</user>
+    <comment>fix test suite call</comment>
+    <requestid>312428</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>a5250e873f9598d2709160312aecb00b</srcmd5>
+    <version>20150903</version>
+    <time>1441295892</time>
+    <user>dimstar_suse</user>
+    <comment>third attempt, now with lua53</comment>
+    <requestid>328746</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>c90519209ecb326d728060059be3bc51</srcmd5>
+    <version>20150917</version>
+    <time>1444130572</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>333455</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>b366e3d604fe0ab10f89c23e8de4098a</srcmd5>
+    <version>20151006</version>
+    <time>1444833314</time>
+    <user>dimstar_suse</user>
+    <comment>forgot to do one change...</comment>
+    <requestid>338339</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>1d5eb8e59f5afd4cd37aaf45ea80e324</srcmd5>
+    <version>20151105</version>
+    <time>1447766355</time>
+    <user>dimstar_suse</user>
+    <comment>add leap config</comment>
+    <requestid>342576</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>b65f9dc0d0c52dede617c124e257f134</srcmd5>
+    <version>20160304</version>
+    <time>1457945783</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>366084</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>7c91d5b5e39ff6bf3e7fbb28795ca8ca</srcmd5>
+    <version>20160331</version>
+    <time>1461334546</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>390173</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>fdd661d0274d95d35ae7b541ec8d8b28</srcmd5>
+    <version>20160427</version>
+    <time>1462442950</time>
+    <user>dimstar_suse</user>
+    <comment>fix for armv7hl</comment>
+    <requestid>391842</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>9235316426312ed531ecb096c50f83cb</srcmd5>
+    <version>20160629</version>
+    <time>1468869385</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>407731</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>9f011be8b376dab5770be6e4f9c3b839</srcmd5>
+    <version>20160809</version>
+    <time>1472111336</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418678</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>43d7dc0f1da065d18311273cb0cac1b9</srcmd5>
+    <version>20161025</version>
+    <time>1477481154</time>
+    <user>dimstar_suse</user>
+    <comment>build failure is expected by Dimstar, don't decline it ;)</comment>
+    <requestid>437305</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>6f99648fd10d0425a13ab37ef4ef9f01</srcmd5>
+    <version>20161206</version>
+    <time>1481458897</time>
+    <user>dimstar_suse</user>
+    <comment>another update</comment>
+    <requestid>444326</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>0c069ff3e774faa364b4584b8dee78bc</srcmd5>
+    <version>20170112</version>
+    <time>1485938978</time>
+    <user>dimstar_suse</user>
+    <comment>fix haskell builds</comment>
+    <requestid>452453</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>d31751a490234e4ad7320b5255c7ee76</srcmd5>
+    <version>20170209</version>
+    <time>1488559033</time>
+    <user>dimstar_suse</user>
+    <comment>tumbleweed config update</comment>
+    <requestid>455767</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>6a7688a9bbd149b4b9aa196bdac710cd</srcmd5>
+    <version>20170320</version>
+    <time>1491210221</time>
+    <user>lnussel_factory</user>
+    <comment>fixes</comment>
+    <requestid>481818</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>37c9bb27213fe47aa274f78a6e6a2dad</srcmd5>
+    <version>20170804</version>
+    <time>1502706941</time>
+    <user>dimstar_suse</user>
+    <comment>- Temporary hack to aid liblua5_3 -&gt; liblua5_3-5 rename
+
+- switch baselibs scheme for debuginfo packages from
+  foo-debuginfo-32bit to foo-32bit-debuginfo [fate#323217]
+
+
+- Fix path to files
+
+- provide build-mkbaselibs so this can really be used 
+
+- fix build 
+
+- new package for SLE baselibsconf, including ia64 arch defaults</comment>
+    <requestid>514523</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>8f04e7c041db402eed2e279a23c7c5ee</srcmd5>
+    <version>20170918</version>
+    <time>1507196898</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530635</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>da4948d2769681c641e16ebd1ec17fac</srcmd5>
+    <version>20171012</version>
+    <time>1509193064</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535285</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>afa0463bcc9d65b5cdb6f5280f8da92a</srcmd5>
+    <version>20171023</version>
+    <time>1509722431</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>537597</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>22c9bd8f1fb8be152e5a81b6a64c922c</srcmd5>
+    <version>20171027</version>
+    <time>1510664509</time>
+    <user>dimstar_suse</user>
+    <comment>container support fixes, syntax error fix</comment>
+    <requestid>540259</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>08d9d08fa27cf760aaf6c22b6abf4a29</srcmd5>
+    <version>20171117</version>
+    <time>1511086059</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>542595</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>36da9f98c93d1f492a31c8ca28db1f49</srcmd5>
+    <version>20171128</version>
+    <time>1512041519</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>546366</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>21c81b838e0e73ea11bb3fdd44d126b2</srcmd5>
+    <version>20180124</version>
+    <time>1517234090</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix picking of right changes file for changelog generation (boo#1077145)
+
+- force use of bsdtar for VMs (bnc#665768, CVE-2010-4226)</comment>
+    <requestid>569349</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>4c4d1a6f347865e7d05961c4c6aac082</srcmd5>
+    <version>20180209</version>
+    <time>1518596232</time>
+    <user>dimstar_suse</user>
+    <comment>fixing changelog, includes also the SLE 11 change, you need to drop build-mkbaselibs-sle package link and prjconf entries. Also in Leap and SLE 15
+
+- add sysrq functionality for KVM builds
+- add initial SLES 15 config
+
+ 
+- add own baselibs config for SLE 11</comment>
+    <requestid>574760</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>44d3ed0fdca9332f1c7b2fb237d6e4c5</srcmd5>
+    <version>20180329</version>
+    <time>1523029264</time>
+    <user>dimstar_suse</user>
+    <comment>- KIWI: Support OBS-Profiles kiwi annotation
+        kiwi profile filtering
+- Switch to a little perl http server to get rid of the python2 dependency
+- Avoid Ubuntu 18.04 uncompress failure messages
+- Don't rely on AppImage's auto-detection for architecture
+- build-recipe-livebuild: count ONIE images as build results</comment>
+    <requestid>593183</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>e1907a7a5e985d4082a3e8e8f9b4ab51</srcmd5>
+    <version>20180629</version>
+    <time>1530993147</time>
+    <user>dimstar_suse</user>
+    <comment>- docker:
+  * use a correct prefixed label for disturl
+  * Support building multiple image types containing a docker image
+  * Set build user to root for docker/fissile builds
+  * Compress containers so that old kiwi versions can handle them
+  * Put obs-docker-support uninstall before the last user line
+  * Also pass arch and buildflavor when creating the containerinfo
+  * set disturl as container LABEL
+  * Uncompress kiwi generated containers
+  * build-vm-docker: type=bind instead of type=volume in --mount option
+- computeblocklists/extractbuild:
+  * Tweak verbose logging of directories in computeblocklists/extractbuild
+  * add support for FIEMAP ioctl
+  * don't use bare F for file
+  * document and use alternate ioctl numbers
+  * more tweaks and sanity checks
+  * Fallback to encode/decode helpers if perl does not support 'Q' in pack/unpack
+  * Use 'eval' when querying the blocklist
+- Misc:
+  * fix escaping in regexp
+  * log toplevel KIWI directories in verbose mode
+  * Split kiwi product parser in a separate function
+  * Always add extra dependencies when doing sysdeps expansion
+  * Fix REPOTYPE setting if the PKGCONFIG file is generated by a service
+  * support zypper's handling of versioned deps
+  * pam-modules got dropped on sles 15
+  * testing for build specific filesystem, which are more important then worker defaults
+  * mark lint option as obsolete
+  * Make sure that we know all pre/vminstalls
+</comment>
+    <requestid>619816</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>d88a3a1a8e4f2e42f0af8b42da234b96</srcmd5>
+    <version>20180816</version>
+    <time>1535122163</time>
+    <user>dimstar_suse</user>
+    <comment>- docker format: New podman/buildah build engine support
+- Support for full names in changes files
+- Set %url macro when seeing an Url:
+- pacman CLI updates
+- enable core dump generation in VM builds
+- Disable kpti on guest kernel for performance and correctness
+- support for e2fsprogs 1.43.1 with old kernels</comment>
+    <requestid>629607</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>506b3c18ceb6919d70f5661ff00c27e5</srcmd5>
+    <version>20180830</version>
+    <time>1536678417</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>633708</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>886b3a420d92efcedeabafff5097e92c</srcmd5>
+    <version>20181022</version>
+    <time>1541454451</time>
+    <user>dimstar_suse</user>
+    <comment>- require psmisc util for fuser
+- Start debian support for kiwi images/containers
+- Support building with unordered repositories for kiwi/docker builds
+- Write the package list of the base container in kiwi container builds
+- Support kiwi's &quot;additionaltags&quot; attribute (added in kiwi 9.15.3)
+- Add some substitutes for the extra container tags
+- Support &quot;OBS-AddTag&quot; directive to set multiple container tags in kiwi builds
+- Archlinux updates
+- SLE 12 SP4 config
+- Appimage: support source file parsing</comment>
+    <requestid>643708</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>1991fac5b1867aff21907da95e902610</srcmd5>
+    <version>20181206</version>
+    <time>1545222185</time>
+    <user>dimstar_suse</user>
+    <comment>- support jumping into KVM debug shells using &quot;--vm-type=kvm --shell&quot;
+- adapt to new containerd CLI syntax
+- Support a new 'UseOBSRepositories' flag
+- lxc 3 support
+- power9 fixes
+- Generate a .milestone artifact for kiwi product builds
+- Support rpm's new '^' separator in version comparison
+- Allow to specify extra image repos with &lt;!-- OBS-Imagerepo: --&gt;
+- Rework release handling of containers
+
+- Add Leap 15.1 config</comment>
+    <requestid>655732</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>7b29351188ec73b3b6dfb4bfb0b099e2</srcmd5>
+    <version>20190122</version>
+    <time>1548769142</time>
+    <user>dimstar_suse</user>
+    <comment>- update factory config for libreadline8 switch
+- cleanup 15.1 config with OBS specific stuff
+  * should not be used for plain build usage
+  * workarounds for kiwi should be fixed in packages</comment>
+    <requestid>667754</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>2cea783c3c2b65228a9b5bf26c324bd1</srcmd5>
+    <version>20190123</version>
+    <time>1551784603</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679571</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>fe0136d8a6a139a1055674be61365759</srcmd5>
+    <version>20190604</version>
+    <time>1560337607</time>
+    <user>dimstar_suse</user>
+    <comment>- configs/15.5.conf: remove brp-extract-appdata from support package
+- add &quot;-vv&quot; parameter in case of debbuild
+
+- Filter out 'MACRO' from Requires(pre)
+- Support createrepo_c's CREATEREPO_CHECKSUMS checksum cache
+- Skip unsupported GPG check on ArchLinux
+- Support #!BuildRequires dependencies
+- Collect more statistics
+- Install policy-rc.d to prevent services from starting on Debian
+
+- Improve file name check extractbuild (CVE-2017-14804, bsc#1069904)</comment>
+    <requestid>707419</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>f793ccf6f921f65448abd74f730c73cc</srcmd5>
+    <version>20190627</version>
+    <time>1563017675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713993</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>f8cac8284de4e05017e8cd9530cfb522</srcmd5>
+    <version>20190709</version>
+    <time>1563701378</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>715678</requestid>
+  </revision>
+</revisionlist>

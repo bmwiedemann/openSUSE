@@ -1,0 +1,302 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70a44ed2f9fee3773561ca9c7174b7fc</srcmd5>
+    <version>0.9.3</version>
+    <time>1416048074</time>
+    <user>dimstar_suse</user>
+    <comment>It would be good to have this package in factory</comment>
+    <requestid>260292</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>be56e6810c9781217c248696c3432d2a</srcmd5>
+    <version>0.10.0</version>
+    <time>1424255948</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286400</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8ca604719d775301787c737d1e8146d1</srcmd5>
+    <version>0.10.0</version>
+    <time>1425031825</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>287994</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6100ad94e2efbad31c8448b80ea60cff</srcmd5>
+    <version>0.10.1</version>
+    <time>1431753277</time>
+    <user>coolo</user>
+    <comment>- Update to 0.10.1
+  * no upstream changelog available</comment>
+    <requestid>307320</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dd1348ecce372577dd359364c5e518ee</srcmd5>
+    <version>0.10.2</version>
+    <time>1433232741</time>
+    <user>dimstar_suse</user>
+    <comment>- Build as PIC so that building does not fail with recent qt5
+- Move autoreconf to %prep
+- Enable verbose build
+- Use macro for systemd tmpfiles creation
+
+- Update to 0.10.2
+- Correct desktop file handling scriplets and their dependencies</comment>
+    <requestid>309694</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79e9b13f9c37cd5afe20fce4dd8048f0</srcmd5>
+    <version>0.11.0</version>
+    <time>1437384176</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>317549</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>54817b43af54ab594fac56ab1c59e9cd</srcmd5>
+    <version>0.11.0</version>
+    <time>1439190960</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321223</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e969c32385c678a1a7b56880da961026</srcmd5>
+    <version>0.11.1</version>
+    <time>1446465314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>341787</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>86b40a8fb77343556def92aeddbc3d90</srcmd5>
+    <version>0.11.1</version>
+    <time>1447353708</time>
+    <user>dimstar_suse</user>
+    <comment>- Refactor spec to allow for easy building of altcoins.
+  * drop bitcoin-fix-desktop-icon-name.patch</comment>
+    <requestid>344020</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>f9e1145407babdd2136182b42e7adc63</srcmd5>
+    <version>0.11.1</version>
+    <time>1447696280</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344180</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9025223291c82236b6d92221ca18b3c5</srcmd5>
+    <version>0.11.2</version>
+    <time>1449995989</time>
+    <user>coolo</user>
+    <comment>- Update to 0.11.2
+  * no upstream changelog provided</comment>
+    <requestid>348083</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2208e4c81edd0f1e3f5ebbaee5ddf8a1</srcmd5>
+    <version>0.12.0</version>
+    <time>1456243045</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0
+  * For a complete list of changes see provided release-notes
+- Small spec file cleanups
+  * remove old obsole/provides
+  * move icon handling scriplets to correct subpackage</comment>
+    <requestid>360683</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9257a75381c8dda22cf7bad7c1d3545c</srcmd5>
+    <version>0.12.0</version>
+    <time>1461855306</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>390763</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0b80a5d94fa7a3aad55eeae576238dcd</srcmd5>
+    <version>0.12.1</version>
+    <time>1462178697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>393087</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>3ca637726ffc58ee38a603bf1511da4a</srcmd5>
+    <version>0.12.1</version>
+    <time>1464594994</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary build dependencies</comment>
+    <requestid>398322</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>67cda985d4c2c6ad68d5d065044c4483</srcmd5>
+    <version>0.12.1</version>
+    <time>1467705079</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403844</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a89ef55cc41c076112b3228e5b0adbf7</srcmd5>
+    <version>0.13.0</version>
+    <time>1472477698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.0:
+  * For a complete list of changes see provided release-notes
+- Drop upstreamed patch:
+  * bitcoin_missing_ppc64le_in_ax_boost_base.m4.patch
+- Fail build on testsuite failure</comment>
+    <requestid>421770</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>1f4c93c16e39fbffd3c7ecdcd4e2b58e</srcmd5>
+    <version>0.13.0</version>
+    <time>1474370836</time>
+    <user>dimstar_suse</user>
+    <comment>- Speedup build/reduce it's memory consumption by using gold linker</comment>
+    <requestid>428447</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a0f87b7d049e603a70f305058ae29e43</srcmd5>
+    <version>0.13.1</version>
+    <time>1481794982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.1:
+  * For a complete list of changes see provided release-notes</comment>
+    <requestid>445685</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>5012efa9d660879e365d8ac475607100</srcmd5>
+    <version>0.13.1</version>
+    <time>1486135656</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453759</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>37b18257e18c9638239e9a00da1658bf</srcmd5>
+    <version>0.14.0</version>
+    <time>1490132935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>479285</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0d444a2d7f7fd884c34ac34ddf64920f</srcmd5>
+    <version>0.14.1</version>
+    <time>1496327617</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.1:
+  * For a complete list of changes see provided release-notes
+- Update unit file</comment>
+    <requestid>500033</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>946f76a10b265ce19f597b78036cf805</srcmd5>
+    <version>0.14.2</version>
+    <time>1497871427</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.2
+  * For a complete list of changes see provided release-notes</comment>
+    <requestid>504585</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8ba06a7c1e9148c3e78c632ec9bb513b</srcmd5>
+    <version>0.15.0</version>
+    <time>1505239069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.0
+  * For a complete list of changes see provided release-notes</comment>
+    <requestid>523611</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a4fa90cb356ddf404fe3f7fdfc4db655</srcmd5>
+    <version>0.15.0.1</version>
+    <time>1507897209</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533740</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>eda132ff2dc403016c295c8606ce3eb8</srcmd5>
+    <version>0.15.1</version>
+    <time>1515110384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561276</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>50e9a38e5435a198f00434d6424fb537</srcmd5>
+    <version>0.16.0</version>
+    <time>1520778318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585022</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9979700a0628efbd8e7ad6c9c8eb2b77</srcmd5>
+    <version>0.16.1</version>
+    <time>1529501219</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.16.1:
+  * For complete list of changes see release-notes-0.16.1.md</comment>
+    <requestid>617452</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>00cf710e5193a5465baad5f82778b884</srcmd5>
+    <version>0.16.3</version>
+    <time>1538117572</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.16.3:
+  * For complete list of changes see:
+    + release-notes-0.16.3.md
+    + release-notes-0.16.2.md
+- Resolves bsc#1108992 CVE-2018-17144</comment>
+    <requestid>638346</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e43cb76f614e3a2f193ae4ddaa6d1a72</srcmd5>
+    <version>0.17.0</version>
+    <time>1538672515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.0:
+  * For complete list of changes see:
+    + release-notes-0.17.0.md</comment>
+    <requestid>639868</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>29eaf8ca7b7a84554803a4d707e638d4</srcmd5>
+    <version>0.17.0.1</version>
+    <time>1541454786</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646028</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c2ee012af26d96af6036c0d577c24e6e</srcmd5>
+    <version>0.17.1</version>
+    <time>1550151396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674876</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7d043367bc1f963ef6d9573d45773996</srcmd5>
+    <version>0.18.0</version>
+    <time>1563018576</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix downloaded source
+
+- Update to version 0.18.0
+  See release-notes.md for complete list of changes
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html</comment>
+    <requestid>714687</requestid>
+  </revision>
+</revisionlist>

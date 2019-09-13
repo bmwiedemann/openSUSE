@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f12f63646b64afce6921d9044a4cb31d</srcmd5>
+    <version>0.02</version>
+    <time>1412098832</time>
+    <user>coolo</user>
+    <comment>needed for Sub::Name</comment>
+    <requestid>253144</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>770a961de291e9860e466a096a297d5a</srcmd5>
+    <version>0.03</version>
+    <time>1430581527</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304792</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e3288b4506f8457f3c8e8ef97cba58a2</srcmd5>
+    <version>0.04</version>
+    <time>1437657770</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317871</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-pytest-runner" project="openSUSE:Factory">
+  <title></title>
+  <description>cross-project testing tool for Python.</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-runner"/>
+</package>

@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa715965d8d0bde85bbb09108ae1d7db</srcmd5>
+    <version>3.6.4</version>
+    <time>1496533844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>492155</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>085a1f8b4494947192657d3dec1e9cbf</srcmd5>
+    <version>3.6.4</version>
+    <time>1498485288</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506038</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c26418ccd61bdd592560440704f5911</srcmd5>
+    <version>3.6.5</version>
+    <time>1503061566</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517430</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1397effee9a355252b37b47f8f3c2545</srcmd5>
+    <version>3.6.8</version>
+    <time>1523956678</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.6.8 (no changelog supplied)
+- Rebase clipgrab-qt5.patch
+</comment>
+    <requestid>597104</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5ea8c7c6c327703ca33db87a412eece7</srcmd5>
+    <version>3.7.1</version>
+    <time>1540819367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645052</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ea40d9fa425bfdb03dd95f23905aef13</srcmd5>
+    <version>3.7.2</version>
+    <time>1545996900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661442</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>570a31bee8f2cf395789c90d0dc297b7</srcmd5>
+    <version>3.8.0</version>
+    <time>1548335734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668171</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>23022d07af468a3244ec5fa879f45cd9</srcmd5>
+    <version>3.8.2</version>
+    <time>1557321456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701511</requestid>
+  </revision>
+</revisionlist>

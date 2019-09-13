@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>adaa88e20e9bc720632ca814d46d5bf3</srcmd5>
+    <version>0.61</version>
+    <time>1516359110</time>
+    <user>dimstar_suse</user>
+    <comment>removed fdupes alltogether</comment>
+    <requestid>561075</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>85c47fb3990ef8322e01bd87d1124b01</srcmd5>
+    <version>0.62</version>
+    <time>1553611244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683045</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>044e3b76e99b4ae94ea1d852c9e86613</srcmd5>
+    <version>0.63</version>
+    <time>1560970735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705569</requestid>
+  </revision>
+</revisionlist>

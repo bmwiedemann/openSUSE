@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>daa2a0dcfdec86ed6bf7ffa1c823c43d</srcmd5>
+    <version>4.1.1</version>
+    <time>1517234257</time>
+    <user>dimstar_suse</user>
+    <comment>This should fix (boo#1063781)</comment>
+    <requestid>569719</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d8061b0ecc10d567d466a8b0c8396697</srcmd5>
+    <version>4.3.1</version>
+    <time>1556022889</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>692480</requestid>
+  </revision>
+</revisionlist>

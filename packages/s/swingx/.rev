@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e0ab1a7c36032088cfe7e3b265accea9</srcmd5>
+    <version>0.9.4</version>
+    <time>1271629987</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/swingx based on submit request 36124 from user mvyskocil
+</comment>
+    <requestid>36124</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e0ab1a7c36032088cfe7e3b265accea9</srcmd5>
+    <version>0.9.4</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e0ab1a7c36032088cfe7e3b265accea9</srcmd5>
+    <version>0.9.4</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>e0ab1a7c36032088cfe7e3b265accea9</srcmd5>
+    <version>0.9.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>e0ab1a7c36032088cfe7e3b265accea9</srcmd5>
+    <version>0.9.4</version>
+    <time>1319182499</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>cb517cadfc9cf1ba108d91f6c533c41f</srcmd5>
+    <version>0.9.4</version>
+    <time>1323194803</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>cb517cadfc9cf1ba108d91f6c533c41f</srcmd5>
+    <version>0.9.4</version>
+    <time>1340184249</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>cb517cadfc9cf1ba108d91f6c533c41f</srcmd5>
+    <version>0.9.4</version>
+    <time>1359110454</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>51c687f7b50e47c3449490458af91d21</srcmd5>
+    <version>0.9.4</version>
+    <time>1378985194</time>
+    <user>scarabeus_factory</user>
+    <comment>- use add_maven_depmap from javapackages-tools
+
+- Move from jpackage-utils to javapackage-tools</comment>
+    <requestid>198429</requestid>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>51c687f7b50e47c3449490458af91d21</srcmd5>
+    <version>0.9.4</version>
+    <time>1379664751</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>6419d91712e7640acd4ce2ee9f2a00cb</srcmd5>
+    <version>0.9.4</version>
+    <time>1404161415</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238911</requestid>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>0d37b244db874d76285a82af140f7cd2</srcmd5>
+    <version>0.9.4</version>
+    <time>1405101962</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240362</requestid>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>0d37b244db874d76285a82af140f7cd2</srcmd5>
+    <version>0.9.4</version>
+    <time>1409303435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>f9e90c02a2fd6ca09eceb94cd24b7e26</srcmd5>
+    <version>0.9.4</version>
+    <time>1427983138</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292642</requestid>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>f9c1ee8a7b109b29253fd06ff4ca9901</srcmd5>
+    <version>0.9.4</version>
+    <time>1495442849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496695</requestid>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>ff5ad4621ddedd557a301a1e32271b36</srcmd5>
+    <version>0.9.4</version>
+    <time>1505920327</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527283</requestid>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>ba8f359b1bea4f5ad879a4f0a9dcdde2</srcmd5>
+    <version>0.9.4</version>
+    <time>1538672478</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk11</comment>
+    <requestid>639669</requestid>
+  </revision>
+</revisionlist>

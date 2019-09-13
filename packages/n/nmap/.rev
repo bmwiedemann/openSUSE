@@ -1,0 +1,497 @@
+<revisionlist>
+  <revision rev="1" vrev="33">
+    <srcmd5>45bb4edac9e56630d47c5fcbbab15190</srcmd5>
+    <version>4.11</version>
+    <time>1168213701</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>62ea44a9dc70626bbbc24f8b5b2efe31</srcmd5>
+    <version>4.20</version>
+    <time>1172442746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="8">
+    <srcmd5>c4dcd0ed1fcf72d3e0ed2c415ff55af1</srcmd5>
+    <version>4.20</version>
+    <time>1177013320</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>41fc8d9e71432d92b9ea186f32f129db</srcmd5>
+    <version>4.20</version>
+    <time>1177949647</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="36">
+    <srcmd5>0ef9fd556b369e4c5b2a21a386bfe28d</srcmd5>
+    <version>4.20</version>
+    <time>1185494413</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e69424fb777acdd9df81a4b9b12fbb90</srcmd5>
+    <version>4.53</version>
+    <time>1204466670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4826b882585377f881cf727b3b925663</srcmd5>
+    <version>4.60</version>
+    <time>1207212818</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6ac4515a7d1e862bb0edbd1a7656f395</srcmd5>
+    <version>4.68</version>
+    <time>1220883803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c1aacb021e671efeb24382c8574e1cc5</srcmd5>
+    <version>4.75</version>
+    <time>1221278448</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0293381c084d7631e0d8f6af63feb9d8</srcmd5>
+    <version>5.00</version>
+    <time>1250126186</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/nmap based on submit request 17615 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>47ed1ad56f86be60853cb9b35040ecba</srcmd5>
+    <version>5.00</version>
+    <time>1255352844</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/nmap based on submit request 22159 from user anicka
+</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>47ed1ad56f86be60853cb9b35040ecba</srcmd5>
+    <version>5.00</version>
+    <time>1255352844</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/nmap based on submit request 22159 from user anicka
+</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>d014cdbbe39be7be1a367900e41cd313</srcmd5>
+    <version>5.00</version>
+    <time>1268925098</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>ca7587b0a57c6313827d5a2080d5a377</srcmd5>
+    <version>5.00</version>
+    <time>1271867696</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/nmap based on submit request 38402 from user prusnak
+</comment>
+    <requestid>38402</requestid>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>ca7587b0a57c6313827d5a2080d5a377</srcmd5>
+    <version>5.00</version>
+    <time>1278667371</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>ca7587b0a57c6313827d5a2080d5a377</srcmd5>
+    <version>5.00</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b84cc729b593f816ad82a8504607833e</srcmd5>
+    <version>5.21</version>
+    <time>1282945413</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/nmap based on submit request 46405 from user anicka
+</comment>
+    <requestid>46405</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>b912e3bf657a40247982a5fba1be1a16</srcmd5>
+    <version>5.21</version>
+    <time>1288703562</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51689 from user mrdocs
+</comment>
+    <requestid>51689</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>121da30aa71ae65599969a6fdcaa7014</srcmd5>
+    <version>5.21</version>
+    <time>1288703566</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51689
+</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>e0afc01079fd20ac55e8bf0aefe79a96</srcmd5>
+    <version>5.21</version>
+    <time>1291221555</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54269 from user vitezslav_cizek
+</comment>
+    <requestid>54269</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>dc9108238dc863b0bfaee4d0972dfe13</srcmd5>
+    <version>5.21</version>
+    <time>1291221561</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54269
+</comment>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>dc9108238dc863b0bfaee4d0972dfe13</srcmd5>
+    <version>5.21</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>a22414acc1ac4d5e22774f526009be78</srcmd5>
+    <version>5.61</version>
+    <time>1318940605</time>
+    <user>saschpe</user>
+    <comment>- Update to nmap 5.61-xxx branch, changelog too long, see NEWS
+  for details.
+- Add a new subpackage &quot;nping&quot;
+- drop no-md2.patch already in upstream. (forwarded request 88102 from elvigia)</comment>
+    <requestid>88103</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>a22414acc1ac4d5e22774f526009be78</srcmd5>
+    <version>5.61</version>
+    <time>1319182202</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>030dc5b354cf9e2637e9f933025f7c50</srcmd5>
+    <version>5.61</version>
+    <time>1319552940</time>
+    <user>coolo</user>
+    <comment>Fixed a run Zenmap as sudo in KDE and GNOME (forwarded request 89077 from eugeneus)</comment>
+    <requestid>89108</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>8572834e5166427ea34b7b87b9dcbe81</srcmd5>
+    <version>5.61</version>
+    <time>1323192734</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>afaa1ec37d1632984db62fc1f6e22917</srcmd5>
+    <version>5.61</version>
+    <time>1332831431</time>
+    <user>coolo</user>
+    <comment>update to nmap-5.61TEST5 (forwarded request 111241 from AndreasStieger)</comment>
+    <requestid>111243</requestid>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>72f550b1b7136b2490e0572d423f09d1</srcmd5>
+    <version>5.61</version>
+    <time>1334641635</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113789</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c0bf05395955e64a759c7cdf6b319f78</srcmd5>
+    <version>6.00</version>
+    <time>1337667420</time>
+    <user>coolo</user>
+    <comment>- update to upstream 6.00
+- refresh nmap-4.00-libpcap-filter.diff (forwarded request 121716 from AndreasStieger)</comment>
+    <requestid>121717</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>c0bf05395955e64a759c7cdf6b319f78</srcmd5>
+    <version>6.00</version>
+    <time>1340183734</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d886a36032c0f714be6897273f7b401f</srcmd5>
+    <version>6.01</version>
+    <time>1340723328</time>
+    <user>coolo</user>
+    <comment>- update to upstream 6.0.1 (forwarded request 125840 from AndreasStieger)</comment>
+    <requestid>125841</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>ea912e404b541fadc887c19b0ab96ac2</srcmd5>
+    <version>6.01</version>
+    <time>1342625716</time>
+    <user>coolo</user>
+    <comment>- update manpages glob to fix Factory build (forwarded request 128074 from AndreasStieger)</comment>
+    <requestid>128075</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>321dbcee72d2eab2cfc0ce47387f25b0</srcmd5>
+    <version>6.25</version>
+    <time>1354528348</time>
+    <user>coolo</user>
+    <comment>6.25</comment>
+    <requestid>143816</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>95e4fc0af4a9fb1f73eab87729f0b6cd</srcmd5>
+    <version>6.25</version>
+    <time>1355156232</time>
+    <user>coolo</user>
+    <comment>- run available unit tests
+- add nmap-ncat-fail-test-addrset.patch to make ncat tests effective
+- add nmap-ncat-skip-network-tests.patch to skip tests requiring name resolution</comment>
+    <requestid>144698</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>95e4fc0af4a9fb1f73eab87729f0b6cd</srcmd5>
+    <version>6.25</version>
+    <time>1359109510</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>2151a02c0072d7d9b9f9409d72e74ce8</srcmd5>
+    <version>6.25</version>
+    <time>1363900244</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159747</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>bcad19eb1a90ab70c72529699176641a</srcmd5>
+    <version>6.40</version>
+    <time>1378296164</time>
+    <user>coolo</user>
+    <comment>nmap 6.40</comment>
+    <requestid>197349</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>bcad19eb1a90ab70c72529699176641a</srcmd5>
+    <version>6.40</version>
+    <time>1379663376</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>b018388cb499bee4adcd0b2e899a9c88</srcmd5>
+    <version>6.40</version>
+    <time>1386569328</time>
+    <user>coolo</user>
+    <comment>add missing python-gtk dependency for zenmap [bnc#752158] (forwarded request 209685 from AndreasStieger)</comment>
+    <requestid>209686</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>98616e1f92582d1c2155794031b846b3</srcmd5>
+    <version>6.45</version>
+    <time>1397387760</time>
+    <user>coolo</user>
+    <comment>Nmap 6.45 (forwarded request 229868 from AndreasStieger)</comment>
+    <requestid>229869</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>200e285b96325dd1c641f4a050d721f5</srcmd5>
+    <version>6.46</version>
+    <time>1398863385</time>
+    <user>coolo</user>
+    <comment>Nmap 6.46 (forwarded request 231523 from AndreasStieger)</comment>
+    <requestid>231524</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1413c5f30c21c6f29bb6653f68669293</srcmd5>
+    <version>6.47</version>
+    <time>1409151194</time>
+    <user>coolo</user>
+    <comment>Nmap 6.47</comment>
+    <requestid>246587</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>1413c5f30c21c6f29bb6653f68669293</srcmd5>
+    <version>6.47</version>
+    <time>1409301988</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>1bf26846f3c3c21e914554deeceff13b</srcmd5>
+    <version>6.47</version>
+    <time>1426064343</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290229</requestid>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>a07a97c7a51d0b81e1437d6dfbccfaf2</srcmd5>
+    <version>6.47</version>
+    <time>1438421949</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319685</requestid>
+  </revision>
+  <revision rev="46" vrev="6">
+    <srcmd5>0342cbb5d98516225fe343fae8600974</srcmd5>
+    <version>6.47</version>
+    <time>1444285488</time>
+    <user>coolo</user>
+    <comment>build fixes</comment>
+    <requestid>336591</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2d9236b4c1cad8a6571753e9c83b862f</srcmd5>
+    <version>7.00</version>
+    <time>1448553817</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345801</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>db55ab91a199abd29a17320120f84767</srcmd5>
+    <version>7.01</version>
+    <time>1450284189</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348889</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f04daab4f82ab8fa056ed5af98f110d7</srcmd5>
+    <version>7.10</version>
+    <time>1458560753</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>375963</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9f900d53b7d78b7464f4e3fc766e8abb</srcmd5>
+    <version>7.11</version>
+    <time>1459002493</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>379029</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>16f2268c47c86c381074c1a62f9d0363</srcmd5>
+    <version>7.12</version>
+    <time>1459845876</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>383646</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>3b3a5de3affe91d75d4a001071d11796</srcmd5>
+    <version>7.30</version>
+    <time>1476109452</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433768</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>c70ccbac803dd3c8ed71dbdc3bdefdd9</srcmd5>
+    <version>7.31</version>
+    <time>1477990706</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437854</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>3900865949ea5211807f442d081fdabc</srcmd5>
+    <version>7.40</version>
+    <time>1484232867</time>
+    <user>dimstar_suse</user>
+    <comment>- Nmap 7.40:
+  * Many added NSE scripts, OS fingerprints, service probes
+  * New option --defeat-icmp-ratelimit dramatically reduces UDP
+    scan times in exchange for labeling unresponsive 
+    (and possibly open) ports as &quot;closed|filtered&quot;.
+  * New NSE library, geoip.lua, provides a common framework for
+    storing and retrieving IP geolocation results.
+  * See https://nmap.org/changelog.html#7.40 for the complete
+    changelog.
+- Refresh nmap-5.61-desktop_files.patch as
+  nmap-7.40-desktop_files.patch
+
+  * Many added NSE scripts, OS fingerprints, service probes</comment>
+    <requestid>448141</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>38f7777e2a62896183434921da34340a</srcmd5>
+    <version>7.50</version>
+    <time>1499509990</time>
+    <user>dimstar_suse</user>
+    <comment>- Nmap 7.50:
+  * Integrated all of your service/version detection fingerprints
+    submitted from September to March (855 of them). The signature
+    count went up 2.9% to 11,418. We now detect 1193 protocols from
+    apachemq, bro, and clickhouse to jmon, slmp, and zookeeper.
+    Highlights: http://seclists.org/nmap-dev/2017/q2/140
+  * Many added NSE scripts, OS fingerprints, service probes
+  * See https://nmap.org/changelog.html#7.50 for the complete changelog.</comment>
+    <requestid>504146</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>1d10af1cbe3bb82a0d6c31fa23c1ce89</srcmd5>
+    <version>7.60</version>
+    <time>1503593028</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>513818</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>b2b7bfb55a5e1bd6787fa82d148d9a0e</srcmd5>
+    <version>7.70</version>
+    <time>1521904584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590599</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>2bfbf7d3770d812804da8ad6850ddc31</srcmd5>
+    <version>7.70</version>
+    <time>1526023141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606288</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>619dc4a88f464ab5eccd6e743d4e5599</srcmd5>
+    <version>7.70</version>
+    <time>1527583314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611655</requestid>
+  </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>b6c00612596a991c78c2d71e1b4ae12f</srcmd5>
+    <version>7.70</version>
+    <time>1556916489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700476</requestid>
+  </revision>
+  <revision rev="61" vrev="5">
+    <srcmd5>1fece7369a51f65ecf691dbe76d9c5c4</srcmd5>
+    <version>7.70</version>
+    <time>1564576092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719810</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>4d4b9620631854f8f469826c052983da</srcmd5>
+    <version>7.80</version>
+    <time>1567168951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727169</requestid>
+  </revision>
+</revisionlist>

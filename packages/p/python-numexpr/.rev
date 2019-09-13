@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>706f7a886c619a759f3838a60d796d21</srcmd5>
+    <version>2.4</version>
+    <time>1405611095</time>
+    <user>coolo</user>
+    <comment>I intend to submit python-pandas to openSUSE:Factory.  python-pandas is a tool that makes it easy to do complex data import, export, and manipulation.  It has become one of the critical tools for data analysis in python, like python-numpy, python-scipy, python-matplotlib, and IPython (all of which are in openSUSE:Factory).
+
+This is a dependency of python-pandas.
+
+This package is also useful on its own for greatly increasing the speed of python-numpy operations.  (I know I said the same thing about python-Bottleneck, both accelerate different types of numpy operations in different ways, that is why they are both used here).</comment>
+    <requestid>241241</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>706f7a886c619a759f3838a60d796d21</srcmd5>
+    <version>2.4</version>
+    <time>1409302929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d793ef152a40a53a98559735e7da0212</srcmd5>
+    <version>2.4.3</version>
+    <time>1431668632</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306667</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e5e7318c6022a010dfd7fbde39106c66</srcmd5>
+    <version>2.4.6</version>
+    <time>1454491183</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357122</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>08bde0f5504cf9924f978618f843f581</srcmd5>
+    <version>2.6.2</version>
+    <time>1493819701</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.6.2
+Implement single-spec version</comment>
+    <requestid>489486</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bd4de160d25abab0b4a89256938ff00f</srcmd5>
+    <version>2.6.4</version>
+    <time>1506594890</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528801</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>26da8caccefe367018e097cf755ca114</srcmd5>
+    <version>2.6.4</version>
+    <time>1507197524</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530885</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f93782d5a927a39ce8a3e2635f1f1bb6</srcmd5>
+    <version>2.6.6</version>
+    <time>1533627858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627751</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f4f3c2a71be3baf0167e99f49fc2fe30</srcmd5>
+    <version>2.6.8</version>
+    <time>1536094586</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.6.8:
+  * Add check to make sure that f_locals is not actually f_globals
+    when we do the f_locals clear to avoid the #310 memory leak issue.
+  * Compare NumPy versions using distutils.version.LooseVersion to
+    avoid issue #312 when working with NumPy development versions.
+  * As part of multibuild, wheels for Python 3.7 for Linux and MacOSX
+    are now available on PyPI.
+- changes from version 2.6.7:
+  * Thanks to Lehman Garrison for finding and fixing a bug that
+    exhibited memory leak-like behavior. The use in numexpr.evaluate
+    of sys._getframe combined with .f_locals from that frame object
+    results an extra refcount on objects in the frame that calls
+    numexpr.evaluate, and not evaluate's frame. So if the calling
+    frame remains in scope for a long time (such as a procedural
+    script where numexpr is called from the base frame) garbage
+    collection would never occur.
+  * Imports for the numexpr.test submodule were made lazy in the
+    numexpr module.</comment>
+    <requestid>632816</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>314cb6cdf3efc43d07992be5bab66461</srcmd5>
+    <version>2.6.9</version>
+    <time>1546946762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660789</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>14d7c26a0b16da5d6f4a559c4c295e3f</srcmd5>
+    <version>2.7.0</version>
+    <time>1567423563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727462</requestid>
+  </revision>
+</revisionlist>

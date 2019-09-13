@@ -1,0 +1,5 @@
+<package name="kdevelop5-plugin-python3" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Extra" package="kdevelop5-plugin-python3"/>
+</package>

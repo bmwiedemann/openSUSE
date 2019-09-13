@@ -1,0 +1,8 @@
+<package name="libxtrx" project="openSUSE:Factory">
+  <title>High level XTRX API</title>
+  <description>High level XTRX API.
+
+</description>
+  <devel project="hardware:sdr" package="libxtrx"/>
+  <url>http://xtrx.io</url>
+</package>

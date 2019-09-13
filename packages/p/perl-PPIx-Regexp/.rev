@@ -1,0 +1,421 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d37f1464122f6bb6061178af8f43b972</srcmd5>
+    <version>0.008</version>
+    <time>1292763841</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 55219 from user rjschwei
+</comment>
+    <requestid>55219</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a750946989ac59edb6a0c3a7dbf1194c</srcmd5>
+    <version>0.008</version>
+    <time>1292763846</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 55219
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>a750946989ac59edb6a0c3a7dbf1194c</srcmd5>
+    <version>0.008</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>095c138fae8a4c91b996045168985f12</srcmd5>
+    <version>0.015</version>
+    <time>1301571726</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65623 from user coolo
+</comment>
+    <requestid>65623</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7ec3d90d870ece04ffc9d07af6b25463</srcmd5>
+    <version>0.015</version>
+    <time>1301571739</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65623
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8e12d0586488a63ef29f50eec2035b8c</srcmd5>
+    <version>0.019</version>
+    <time>1301655280</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65736 from user coolo
+</comment>
+    <requestid>65736</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a7f59fc5896b21bfa28b4451216d4031</srcmd5>
+    <version>0.019</version>
+    <time>1301655297</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65736
+</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b405d6ea361bdb04c50692da545c97d7</srcmd5>
+    <version>0.019</version>
+    <time>1306765460</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>72054</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>13468cbcb7b3ab930ee77a2df08350a4</srcmd5>
+    <version>0.019</version>
+    <time>1306765467</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72054
+</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>13468cbcb7b3ab930ee77a2df08350a4</srcmd5>
+    <version>0.019</version>
+    <time>1319182296</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7f2521ae2c47182cf5c8362fa3ee2547</srcmd5>
+    <version>0.024</version>
+    <time>1324466308</time>
+    <user>coolo</user>
+    <comment>- updated to 0.024
+  Reinstate author test xt/author/manifest.t, which was clobbered
+    shortly before the release of 0.021_10.
+  Correct address of FSF in the version of the GPL distributed in
+    LICENSES/Copying. Thanks to Petr Pisar for picking this up.
+  Correct various documentation errors.
+  The default-modifier functionality is no longer considered
+    experimental.
+  Don't initialize effective modifiers with '^', since that wrongly
+    asserts that /d has been seen somewhere along the line.
+  Implement negation of match-semantic modifiers (e.g. 'no re /u;') by
+    setting the relevant datum to undef.
+  THE DEFAULT-MODIFIER FUNCTIONALITY IS EXPERIMENTAL, AND MAY BE CHANGED
+    WITHOUT NOTICE until the next production release.
+  Support for default modifiers. This includes:
+    * default_modifiers argument to new() in PPIx::Regexp,
+      PPIx::Regexp::Tokenizer, and PPIx::Regexp::Dumper
+    * Public method modifier_asserted() on PPIx::Regexp, to return
+      whether a given modifier is actually in effect. The results of the
+      modifier() method are unchanged.
+    THIS FUNCTIONALITY IS EXPERIMENTAL, AND MAY BE CHANGED OR REVOKED
+    WITHOUT WARNING.
+  Require Test::More 0.88 for installation. Eliminate all the 'eval
+    { require ... }' logic in favor of 'use Test::More 0.88'.
+  Have Makefile.PL make use of {BUILD_REQUIRES} if it is available.
+  Fix PPIx::Regexp::Token::Whitespace-&gt;can_be_quantified() to return
+    false.
+  Modified tokenizer to correctly handle a back slash used as a
+    delimiter. I believe.
+  PPIx::Regexp::Dumper now dumps the results of ppi() if that method is</comment>
+    <requestid>97063</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7d561010bb51b3b9054fab726ffcdebb</srcmd5>
+    <version>0.025</version>
+    <time>1329400802</time>
+    <user>coolo</user>
+    <comment>- updated to 0.025
+  Tolerate leading and trailing white space around the regular
+    expression.  These are still round-trip safe, since the white space
+    is tokenized.
+  Make Changes file conform to CPAN::Changes, and add
+    xt/author/changes.t to ensure continued compliance.</comment>
+    <requestid>105346</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b7e07729934f6a5fffdd603d10ca4dcc</srcmd5>
+    <version>0.026</version>
+    <time>1330364092</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>107110</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b7e07729934f6a5fffdd603d10ca4dcc</srcmd5>
+    <version>0.026</version>
+    <time>1340183898</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>b7e07729934f6a5fffdd603d10ca4dcc</srcmd5>
+    <version>0.026</version>
+    <time>1359109772</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5815bcaa4d8e731c61806a5533acf8af</srcmd5>
+    <version>0.034</version>
+    <time>1371147040</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 178273 from coolo)</comment>
+    <requestid>178290</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>5815bcaa4d8e731c61806a5533acf8af</srcmd5>
+    <version>0.034</version>
+    <time>1379663804</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3f9cc794954dad69be92aac13e52c808</srcmd5>
+    <version>0.035</version>
+    <time>1385723073</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208465</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>13fbae023ddc8df6aaf3602770493e7d</srcmd5>
+    <version>0.036</version>
+    <time>1392023856</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 0.036
+   Retract the &quot;Allow non-ASCII white space under /x&quot; change introduced
+     in version 0.033. I misread perl5170delta, and implemented early.
+   Change tp explicit character class to recognize white space under /x.
+     I was previously using \s, which matched too much.
+   Thanks to Nobuo Kumagai for finding and reporting this.</comment>
+    <requestid>221513</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>13fbae023ddc8df6aaf3602770493e7d</srcmd5>
+    <version>0.036</version>
+    <time>1409302441</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2227804a4496471f30264f47221a7274</srcmd5>
+    <version>0.039</version>
+    <time>1429108005</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296681</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6dac270377825af34768d6eb17ac3bbe</srcmd5>
+    <version>0.040</version>
+    <time>1433845510</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311232</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d67076b1bd109bd2f0f00b5b4a86b9ad</srcmd5>
+    <version>0.041</version>
+    <time>1436331578</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315162</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>96ce460eff6d8b25391aa0413a2404ce</srcmd5>
+    <version>0.042</version>
+    <time>1445287769</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337598</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>52d7cdd2bc6460d90537811ec464d59f</srcmd5>
+    <version>0.043</version>
+    <time>1448553869</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346218</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6ee847260648a53c69c9d272ca4553fa</srcmd5>
+    <version>0.044</version>
+    <time>1450695842</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>348382</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8928b7cd4c4fd00e0fd921b134b3f84c</srcmd5>
+    <version>0.045</version>
+    <time>1452027288</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351707</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c1b0f392e17f46441c9efc4a6a4c8353</srcmd5>
+    <version>0.046</version>
+    <time>1452850935</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353507</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1c72e8575591dae3ebafb7a1a37bd559</srcmd5>
+    <version>0.047</version>
+    <time>1456434085</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358284</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>040c7033c5edf83fceb5c6215c72e526</srcmd5>
+    <version>0.048</version>
+    <time>1458120845</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368874</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>61c7ef507a54dc57a8fb66bd60c142a6</srcmd5>
+    <version>0.050</version>
+    <time>1464204566</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397849</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>fba939226eb272d2fb5df3818326c78e</srcmd5>
+    <version>0.051</version>
+    <time>1487260987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456912</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5e49271259ba11bd805e0716f9678dab</srcmd5>
+    <version>0.052</version>
+    <time>1507628619</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532928</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>5f9f1c585b199c9a8ab12b92951c21e9</srcmd5>
+    <version>0.053</version>
+    <time>1510761212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539960</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ad354226f63e05bfbf11153255492e54</srcmd5>
+    <version>0.054</version>
+    <time>1518187636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573960</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2729c03abd4a027badc01e85f5034e30</srcmd5>
+    <version>0.055</version>
+    <time>1518813932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577183</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>221376b8818b8a89e63870e15288a32a</srcmd5>
+    <version>0.056</version>
+    <time>1521052692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585304</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d17bf7b7811f8a8b7330172e74ea0b98</srcmd5>
+    <version>0.057</version>
+    <time>1524643263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599326</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>48d35688a22cb46b7f4ee602333b77fd</srcmd5>
+    <version>0.058</version>
+    <time>1525343617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603046</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>eac474d40712e5053691b0eabced3f50</srcmd5>
+    <version>0.059</version>
+    <time>1527582721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610502</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>5a531704d99fd9e95dce6694c3bcb12a</srcmd5>
+    <version>0.060</version>
+    <time>1529501197</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617439</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>eeb2deaa239a9980ef1cc35d2983def6</srcmd5>
+    <version>0.061</version>
+    <time>1532774368</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623038</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>dc9b7f55bf2bd00aabe2d96f66b782d7</srcmd5>
+    <version>0.062</version>
+    <time>1535704996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631327</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f50b7be590e10eb6ec1168b770961270</srcmd5>
+    <version>0.063</version>
+    <time>1541865684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647507</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e01cc74f572a0027ed7d5c1382d3806d</srcmd5>
+    <version>0.064</version>
+    <time>1554379896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690512</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>87884ab800c896d2d9c3293a930da442</srcmd5>
+    <version>0.065</version>
+    <time>1559643030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706894</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>09d1abdd367ef70ecd279cffe55631d5</srcmd5>
+    <version>0.066</version>
+    <time>1566664770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724775</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>65b11680fb9e9f8ff3b932e9d7960973</srcmd5>
+    <version>0.067</version>
+    <time>1567848630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727962</requestid>
+  </revision>
+</revisionlist>

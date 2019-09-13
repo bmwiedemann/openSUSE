@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ee9900cd731da59700a79e44ee26e49</srcmd5>
+    <version>1.0.1</version>
+    <time>1456320330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>358251</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e1a4a078b98284299493d4442ec95197</srcmd5>
+    <version>1.0.2</version>
+    <time>1461855447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>391862</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>080c99f3c43a8ed66ec174a6c4430b87</srcmd5>
+    <version>1.0.3</version>
+    <time>1464484318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>397772</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cabbde1fe8116d1fcda8c42bad372853</srcmd5>
+    <version>1.0.4</version>
+    <time>1466681839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>404039</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>08d1c037939c5a0eed400d2b3b388a4f</srcmd5>
+    <version>1.0.5</version>
+    <time>1467359979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>405249</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ca4c8e83bb22246cb4046424f3efca2</srcmd5>
+    <version>1.0.6</version>
+    <time>1473798180</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>412848</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b28f63789623f1765043a686111137eb</srcmd5>
+    <version>1.2.1</version>
+    <time>1479229172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>439874</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3d85920f995d3bddf645a726e5bd37cc</srcmd5>
+    <version>1.2.2</version>
+    <time>1484041373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>446536</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>74e78f47f456a2ef86535f8ed5a24efe</srcmd5>
+    <version>1.4.2</version>
+    <time>1495883873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>498017</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bc1c4bcce5399681bd458e4df3f88507</srcmd5>
+    <version>1.4.3</version>
+    <time>1498742345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>506922</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>163c5ab27a4559682f7c6b265d311fcf</srcmd5>
+    <version>1.6.0</version>
+    <time>1510045121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538945</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9d2377a13b8be50d2d097e0d76086760</srcmd5>
+    <version>1.6.1</version>
+    <time>1511817380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545321</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0ea9ac25b9d1d03ee33e676571cf2528</srcmd5>
+    <version>1.6.1</version>
+    <time>1522225717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587691</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e88b1334f9070fed72ee35862e108a52</srcmd5>
+    <version>1.8.0</version>
+    <time>1525121803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602306</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f72b520a6bedfad442ff43b9739d9c0c</srcmd5>
+    <version>1.8.1</version>
+    <time>1527583583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612392</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b97ded6a9ef1f82f29796d5cdcae6456</srcmd5>
+    <version>2.2.0</version>
+    <time>1563455954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713819</requestid>
+  </revision>
+</revisionlist>

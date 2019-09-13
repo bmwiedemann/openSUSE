@@ -1,0 +1,357 @@
+<revisionlist>
+  <revision rev="1" vrev="33">
+    <srcmd5>690f9736558af325ff0acc71a0328e93</srcmd5>
+    <version>0.8.7</version>
+    <time>1168618426</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7e917085bd9b4c2b93dac18846279236</srcmd5>
+    <version>0.8.8</version>
+    <time>1168819151</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2aec89d6a7097826e68d855fdfda66e0</srcmd5>
+    <version>0.8.9</version>
+    <time>1174557358</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3ae1228069912a2e55bf70b6f0e7ac34</srcmd5>
+    <version>0.8.10</version>
+    <time>1182075016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c1a857dd8a91674a08b3518a97a3afc7</srcmd5>
+    <version>0.8.11</version>
+    <time>1191366308</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>94485847d3a7ea18e34d4e45968df2b8</srcmd5>
+    <version>0.8.12</version>
+    <time>1196106589</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>09e62e463f74de368ae8e75add23070f</srcmd5>
+    <version>0.8.14</version>
+    <time>1207444404</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b62e53006635f1d5ca085b4c633eb8ac</srcmd5>
+    <version>0.8.14</version>
+    <time>1217629706</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>1a2e1e0e4622788da6f9772c422448cb</srcmd5>
+    <version>0.8.14</version>
+    <time>1224718000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>1a2e1e0e4622788da6f9772c422448cb</srcmd5>
+    <version>0.8.14</version>
+    <time>1224718000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>f4387d463847cbf776aaf5a979a00fa0</srcmd5>
+    <version>0.8.14</version>
+    <time>1268924766</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>f4387d463847cbf776aaf5a979a00fa0</srcmd5>
+    <version>0.8.14</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>f4387d463847cbf776aaf5a979a00fa0</srcmd5>
+    <version>0.8.14</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b4b2c69293af27a6c723afc1f6c69aa7</srcmd5>
+    <version>0.9.0</version>
+    <time>1291814393</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55020 from user pmladek
+</comment>
+    <requestid>55020</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5752f7529680c04d4e48c2a48d73f5f6</srcmd5>
+    <version>0.9.0</version>
+    <time>1291814403</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55020
+</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>5752f7529680c04d4e48c2a48d73f5f6</srcmd5>
+    <version>0.9.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>90452da0abdd68bea5925d89057e18d4</srcmd5>
+    <version>0.9.0</version>
+    <time>1303385956</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 66936 from user dirkmueller
+</comment>
+    <requestid>66936</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>2a4f444f1077e6c56d941384f1431e9f</srcmd5>
+    <version>0.9.0</version>
+    <time>1303385967</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 66936
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a0609052743adc62717e43204cca4e1b</srcmd5>
+    <version>0.9.2</version>
+    <time>1304517044</time>
+    <user>saschpe</user>
+    <comment>- upgrade to version 0.9.2:
+    - Fix build with gcc 4.6.x (Caolan McNamara)
+    - Handle graciously corrupted WP6 prefix data (Fridrich)
+    - Initial conversion of Mac double byte script characters (Fridrich)
+    - Internally use UCS4 instead of UCS2 (Fridrich)
+    - Add Arabic character conversion for WP5 parser (Fridrich)
+    - Allow conversion of one WP character to a sequence of unicode
+      characters (Fridrich)
+    - Miscellaneous conversion fixes (Edward Mendelson, Fridrich)
+    - Parse correctly WP 2 for Mac documents without resource fork (Fridrich)
+    - Improvements in parsing of pictures in WP1 parser (Fridrich)
+    - Fix wrong sizes of some functions in WP1 and WP42 parsers (Fridrich)
+    - Fix handling of character attributes (Fridrich)</comment>
+    <requestid>69558</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>8210e01dc1a6e1b523537e918954dc17</srcmd5>
+    <version>0.9.2</version>
+    <time>1304517054</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69558
+</comment>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>e03f810638ec5312eec24437a0802f8a</srcmd5>
+    <version>0.9.2</version>
+    <time>1306221251</time>
+    <user>saschpe</user>
+    <comment>- Do not include build dates in docs, messes up build-compare (forwarded request 71083 from elvigia)</comment>
+    <requestid>71084</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>b67532e45051c26c177416c889c33e82</srcmd5>
+    <version>0.9.2</version>
+    <time>1306221263</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71084
+</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e4bd51849d9c65daa9f448d838078436</srcmd5>
+    <version>0.9.3</version>
+    <time>1314889938</time>
+    <user>saschpe</user>
+    <comment>Upgrade to 0.9.3 (forwarded request 80482 from fstrba)</comment>
+    <requestid>80488</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>1dadd347ceca1b71df7d1af4a9cac722</srcmd5>
+    <version>0.9.3</version>
+    <time>1314889946</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80488
+</comment>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>1dadd347ceca1b71df7d1af4a9cac722</srcmd5>
+    <version>0.9.3</version>
+    <time>1319182146</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>cd3b8baf8417f75a12a6eff19fe5a798</srcmd5>
+    <version>0.9.4</version>
+    <time>1322583365</time>
+    <user>coolo</user>
+    <comment>------------------------------------------------------------------
+- upgrade to version 0.9.4:
+  - Remove autopackage packaging that nobody uses (Fridrich)
+  - Don't output points as integer. This solves some rounding
+    issues along with the possibility of writing 10.5 point
+	font size (Fridrich)
+  - General improvement of code quality by buiding
+    with -Weffc++ option (Fridrich)
+  - Improvement of textbox code (Laurent Alonso)
+  - Fixes of autotools Windows build (Fridrich)
+- remove obsolete unnecessary patch
+------------------------------------------------------------------ (forwarded request 94235 from fstrba)</comment>
+    <requestid>94237</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>7125fd0b1743b2d9a6e69424d3dc32fa</srcmd5>
+    <version>0.9.4</version>
+    <time>1329405553</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103998</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>7125fd0b1743b2d9a6e69424d3dc32fa</srcmd5>
+    <version>0.9.4</version>
+    <time>1340183654</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3f3532819db6ce04ecbd8172522c4507</srcmd5>
+    <version>0.9.6</version>
+    <time>1349244239</time>
+    <user>coolo</user>
+    <comment>- upgrade to version 0.9.6:
+  - Experimental support of Zip storage along with Ole.
+  - Add WPX_SEEK_END enum member in order to speed up the Zip
+    operations.
+  - Numerous fixes of coverity and cppcheck warnings and errors.
+- upstream patch to really enable Zip stream.
+- package build depends on zlib-devel. (forwarded request 136290 from fstrba)</comment>
+    <requestid>136300</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>3f3532819db6ce04ecbd8172522c4507</srcmd5>
+    <version>0.9.6</version>
+    <time>1359109376</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8c47696fcdd497641e47e979612e8275</srcmd5>
+    <version>0.9.7</version>
+    <time>1366378915</time>
+    <user>coolo</user>
+    <comment>- upgrade to version 0.9.7:
+  - Added MPL 2.0+ as license
+  - Improvement of OLE stream classes
+- remove integrated patch (forwarded request 172398 from fstrba)</comment>
+    <requestid>172401</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>ab0a05ba4a3781f4bf6f9b130831baf3</srcmd5>
+    <version>0.9.7</version>
+    <time>1367222061</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>173578</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1f85313fca1456522bf92d10bc0c1a78</srcmd5>
+    <version>0.9.8</version>
+    <time>1368695399</time>
+    <user>coolo</user>
+    <comment>- upgrade to version 0.9.8
+  - Fix buffer allocation in WPXString::sprintf that can lead
+    to crash
+  - Fix crash reading invalid OLE stream
+  - Change source code layout so that public headers be in inc/
+    and its subdirectories
+  - libwpd.h and libwpd-stream.h are not generated headers anymore
+  - Change the way we get version from libwpd build
+- Fix some rpmlint warnings (forwarded request 175697 from fstrba)</comment>
+    <requestid>175699</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>dbdffad044d881bca7451164c8664a44</srcmd5>
+    <version>0.9.9</version>
+    <time>1377085524</time>
+    <user>scarabeus_factory</user>
+    <comment>- upgrade to version 0.9.8
+  - implement WPX_SEEK_END for WPXMemoryStream: fixes an infinite
+    loop in libmwaw when using WPXBinaryData over its stream
+    interface.
+
+    font size (Fridrich) (forwarded request 195771 from fstrba)</comment>
+    <requestid>195781</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>dbdffad044d881bca7451164c8664a44</srcmd5>
+    <version>0.9.9</version>
+    <time>1379663132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>a5a4ce9079f2819f0d02f60999d67866</srcmd5>
+    <version>0.9.9</version>
+    <time>1391077887</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner and noarch the documentation.</comment>
+    <requestid>215143</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>87a6bd11d0e9882d59451ce35156c741</srcmd5>
+    <version>0.10.0</version>
+    <time>1406479620</time>
+    <user>coolo</user>
+    <comment>Lo 4.3.0.3 submission</comment>
+    <requestid>242310</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>87a6bd11d0e9882d59451ce35156c741</srcmd5>
+    <version>0.10.0</version>
+    <time>1409301761</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>b9828fa7ebada70ca6815ce5e3e15089</srcmd5>
+    <version>0.10.1</version>
+    <time>1451895685</time>
+    <user>dimstar_suse</user>
+    <comment>0.10.1</comment>
+    <requestid>351350</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>146e06d26734a88ddf7a5b84052590fa</srcmd5>
+    <version>0.10.1</version>
+    <time>1456433650</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>360216</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>86ae8ce4b0d689ed995da9edd6a5ae44</srcmd5>
+    <version>0.10.2</version>
+    <time>1505757218</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 0.10.2 bsc#1058025 CVE-2017-14226:
+  * Require C++11 for build.
+  * Fix various crashes, leaks and hangs when reading damaged files found
+    by oss-fuzz.</comment>
+    <requestid>525821</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>16de5df715f135b1e524097d8899328e</srcmd5>
+    <version>0.10.2</version>
+    <time>1542579638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648709</requestid>
+  </revision>
+</revisionlist>

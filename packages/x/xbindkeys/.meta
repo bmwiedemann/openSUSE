@@ -1,0 +1,6 @@
+<package name="xbindkeys" project="openSUSE:Factory">
+  <title>Events Grabbing Program for X-Window</title>
+  <description>xbindkeys is a program that associates keys or mouse buttons to shell commands under X. After a little configuration, it can start many commands with the keyboard (e.g. control+alt+x starts an xterm) or with the mouse buttons.</description>
+  <devel project="X11:Utilities" package="xbindkeys"/>
+  <url>http://hocwp.free.fr/xbindkeys/xbindkeys.html</url>
+</package>

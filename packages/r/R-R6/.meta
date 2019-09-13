@@ -1,0 +1,5 @@
+<package name="R-R6" project="openSUSE:Factory">
+  <title></title>
+  <description>Classes with reference semantics</description>
+  <devel project="devel:languages:R:released" package="R-R6"/>
+</package>

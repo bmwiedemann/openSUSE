@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c6ebbd9216f1d8feadb37fbe739cc574</srcmd5>
+    <version>6.7</version>
+    <time>1353956146</time>
+    <user>coolo</user>
+    <comment>add .changes</comment>
+    <requestid>141581</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c6ebbd9216f1d8feadb37fbe739cc574</srcmd5>
+    <version>6.7</version>
+    <time>1359110273</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>c6ebbd9216f1d8feadb37fbe739cc574</srcmd5>
+    <version>6.7</version>
+    <time>1379664431</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>c6ebbd9216f1d8feadb37fbe739cc574</srcmd5>
+    <version>6.7</version>
+    <time>1409303161</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>095d5e222830e242d5de28f027411138</srcmd5>
+    <version>6.9</version>
+    <time>1426495127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.9</comment>
+    <requestid>290885</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9a3fb194d6b5c134163c80cddf7aecbc</srcmd5>
+    <version>7.0.0.6</version>
+    <time>1468482209</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>405663</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b6a03b5290a675a2d722112cc32cbb73</srcmd5>
+    <version>7.0.0.9</version>
+    <time>1480693312</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream 7.0.0.9</comment>
+    <requestid>442739</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>740071f5419b6392a54ab5780cb8c8f4</srcmd5>
+    <version>7.0.0.9</version>
+    <time>1489345551</time>
+    <user>dimstar_suse</user>
+    <comment>- Edited %files to explicitly package %{_docdir}/%{name} to clear
+  unpackaged files builderror in openSUSE:Factory (forwarded request 478787 from sfalken)</comment>
+    <requestid>478788</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4565901a8618e9b12c0d9160dd6b8714</srcmd5>
+    <version>7.0.0.10</version>
+    <time>1505238840</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 7.0.0.10
+  * No changelog was provided
+[colm now in the queue]</comment>
+    <requestid>522361</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>69b392a2ecd5c83b7daf03ef39c33fe4</srcmd5>
+    <version>7.0.0.11</version>
+    <time>1540819326</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 7.0.0.11</comment>
+    <requestid>644914</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ef4943b0889970f4956cbcd644400ab4</srcmd5>
+    <version>7.0.0.12</version>
+    <time>1566551365</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 7.0.0.12</comment>
+    <requestid>725395</requestid>
+  </revision>
+</revisionlist>

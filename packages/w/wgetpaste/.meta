@@ -1,0 +1,5 @@
+<package name="wgetpaste" project="openSUSE:Factory">
+  <title>wgetpaste</title>
+  <description>Paste to Paste sites from terminal.</description>
+  <devel project="devel:tools" package="wgetpaste"/>
+</package>

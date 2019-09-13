@@ -1,0 +1,5 @@
+<package name="twilio-utils" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:telephony" package="twilio-utils"/>
+</package>

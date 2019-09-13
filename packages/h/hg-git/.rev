@@ -1,0 +1,251 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3233cf92686843c471cd112eb6b0356a</srcmd5>
+    <version>0.3.1</version>
+    <time>1318428737</time>
+    <user>lrupp</user>
+    <comment>Please add hg-git</comment>
+    <requestid>87369</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3233cf92686843c471cd112eb6b0356a</srcmd5>
+    <version>0.3.1</version>
+    <time>1319181966</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>197b815481288c849429df0776101a0e</srcmd5>
+    <version>0.3.1</version>
+    <time>1323191879</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c67faac10449d97620a84a63ed3c4376</srcmd5>
+    <version>0.3.2</version>
+    <time>1337195260</time>
+    <user>coolo</user>
+    <comment>- update to version 0.3.2
+  - add support for the HTTP smart protocol when using Dulwich tip
+  - updated documentation
+  - support for newer dulwich and hg versions
+  - allow generating a git repo that has the same &quot;branch names&quot; as
+    an older hg repo that has named branches, and has had bookmarks
+    added in to mirror the branch names</comment>
+    <requestid>121169</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c67faac10449d97620a84a63ed3c4376</srcmd5>
+    <version>0.3.2</version>
+    <time>1340183435</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb43eddd8a58760e81083110e9570400</srcmd5>
+    <version>0.3.4</version>
+    <time>1357828707</time>
+    <user>coolo</user>
+    <comment>update to current version. It is working with Mercurial 2.4.1 and TortoiseHG 2.6.1. Changelog updated (forwarded request 147560 from tzotsos)</comment>
+    <requestid>147565</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>cb43eddd8a58760e81083110e9570400</srcmd5>
+    <version>0.3.4</version>
+    <time>1359109046</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dc09d780e65475971c0906c7b4d2fa27</srcmd5>
+    <version>0.4.0</version>
+    <time>1364408757</time>
+    <user>coolo</user>
+    <comment>- update to version 0.4.0
+  - Add test to show dulwich fault on invalid timezone data
+  - scrub bad timezone values before dulwich sees them
+  - push: provide better output about changed references
+  - push: add more output about what was added
+  - git_handler: add bookmark compatibility with new bmstore
+  - git_handler: defend against unexported revisions in tag
+    exporting
+  - tests: use fn_git_commit in test-encoding.t
+  - tests: make test-encoding.t compatible with git 1.8.0
+  - tests: remove filterhash from test-incoming.t
+  - tests: remove mercurial version check from test-incoming.t
+  - tests: remove mercurial version check from
+    test-pull-after-strip.t
+  - tests: convert echos to comments
+  - tests: avoid changing the current directory
+  - tests: extract git command-line client and dulwich requirements
+    into testutil
+  - tests: let git init create directories when applicable
+  - tests: add check for dulwich in test-url-parsing.py
+  - tests: extract commonly used commit/tag functions into testutil
+    library
+  - tests: extract extension configuration into a testutil library</comment>
+    <requestid>161241</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>dc09d780e65475971c0906c7b4d2fa27</srcmd5>
+    <version>0.4.0</version>
+    <time>1379662612</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>099186e31b2b14a95a2ad179ea475434</srcmd5>
+    <version>0.5.0</version>
+    <time>1387382027</time>
+    <user>coolo</user>
+    <comment>- update to version 0.5.0
+  - test-subrepos.t: hide output from newer hg versions about
+    active bookmarks
+  - testedwith: drop 2.3.1, which has at least one test failure
+  - testedwith: add 2.8.1
+  - gitignore: gate feature on dirstate having rootcache and ignore
+    having readpats
+  - git_handler: iterate over new refs in sorted order to stabilize
+    test output
+  - overlay: add kludge to make sure we only ever give hexshas to
+    dulwich
+  - test-timezone.t: add missing (but needed) trailing whitespace
+  - tests: dulwich is now smarter about sending fewer objects,
+    update output
+  - setup: bump dep on dulwich to 0.9.4
+  - git-handler: turn refs from None to {} so that empty git repos
+    can convert
+
+- bump version to 0.4.0_hg20131127
+
+- Update to 503d403fc040 to fix interface to python-dulwich 0.9.1
+  - Export Git objects from incremental Mercurial changes
+  - overlaymanifest: add iteritems(), used by recent hg versions
+  - Only export modified Git trees
+  - Fixes #54 | option branch_bookmark_suffix doesn't move bookmarks
+  - Make the path part of URL contain a leading slash only if it's not
+  - git_handler: skip exporting hg tags whose names are not valid as git
+  - test-tree-decomposition: work around git command format changes
+  - Update test output to handle 65d8a43b adding some more objects.
+  - test-subrepos: cope with unsorted output in .hgsub</comment>
+    <requestid>211187</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7993cb26ca524db8be3da2dd997c4515</srcmd5>
+    <version>0.6.0</version>
+    <time>1401184835</time>
+    <user>coolo</user>
+    <comment>- update to version 0.6.0
+  - no changelog provided, see
+    https://bitbucket.org/durin42/hg-git/commits/tag/0.6.0 for a
+    detailed list of changes</comment>
+    <requestid>235426</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>57cbe882466b21449a2550804b51ebb7</srcmd5>
+    <version>0.6.1</version>
+    <time>1408524664</time>
+    <user>lnussel</user>
+    <comment>- update to version 0.6.1
+  - no changelog provided, see
+    https://bitbucket.org/durin42/hg-git/commits/tag/0.6.0 for a
+    detailed list of changes</comment>
+    <requestid>245094</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>57cbe882466b21449a2550804b51ebb7</srcmd5>
+    <version>0.6.1</version>
+    <time>1409301163</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a9fd417ec4c1472e671333d05cb4f17c</srcmd5>
+    <version>0.7.0</version>
+    <time>1421776875</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281684</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e4f475b204d38aeb4b99f7d710691442</srcmd5>
+    <version>0.8.0</version>
+    <time>1423214633</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.8.0
+  - no changelog provided, see
+    https://bitbucket.org/durin42/hg-git/commits/tag/0.8.0 for a
+    detailed list of changes</comment>
+    <requestid>284240</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>cee4d9818c45da4ab7a6e578f3169677</srcmd5>
+    <version>0.8.0</version>
+    <time>1424827017</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287298</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>35e0cd8b876108df24bd8b2f8ea35ae6</srcmd5>
+    <version>0.8.2</version>
+    <time>1444130803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>336248</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dca1bfc106c5c27fc6abf9362e8702c3</srcmd5>
+    <version>0.8.3</version>
+    <time>1449687157</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347724</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bec838a13c632c7be13ee95934e7444f</srcmd5>
+    <version>0.8.5</version>
+    <time>1454628695</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357412</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>dd5a3dea91f7b3be74a1ecec864a65eb</srcmd5>
+    <version>0.8.5</version>
+    <time>1472111799</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>421086</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9ee1388ad68303a9bb81e585582da057</srcmd5>
+    <version>0.8.6</version>
+    <time>1493819886</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix download url
+
+- update to v0.8.6
+  * Support Mercurial 4.2-rc
+  * Bugfixes
+- enable tests back
+- source verification added</comment>
+    <requestid>492464</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a4af514e8889b4b7239271dcdcefcd2a</srcmd5>
+    <version>0.8.9</version>
+    <time>1503927179</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519049</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7c46d04b0e1410ae66d4a4266bebdec6</srcmd5>
+    <version>0.8.10</version>
+    <time>1510506636</time>
+    <user>dimstar_suse</user>
+    <comment>0.8.10</comment>
+    <requestid>541058</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="cal3d" project="openSUSE:Factory">
+  <title>Cal3D</title>
+  <description>Cal3D is a skeletal based 3D character animation library written in C++ in a platform-/graphic API-independent way. Originally designed to be used in a 3D client for Worldforge, it evolved into a stand-alone product which can be used in many different kinds of projects. It supports combining animations and actions through a &quot;mixer&quot; interface, and work is currently underway to integrate morph targets (interpolating between one mesh and another, using the same vertex sequence) easily into the system.
+
+For now, this is an aggregate of cal3d, but should be moved in the long run.</description>
+  <devel project="games" package="cal3d"/>
+</package>

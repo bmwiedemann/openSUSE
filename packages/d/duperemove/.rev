@@ -1,0 +1,204 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fcafb348af48ea0ea0bd2e08f8bdd361</srcmd5>
+    <version>0.04</version>
+    <time>1394901381</time>
+    <user>coolo</user>
+    <comment>New tool (filesystems:duperemove) to deliver userspace portion of deduplication on btrfs.</comment>
+    <requestid>225865</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8ac7fdc479758c64bde4b9dfe93b90af</srcmd5>
+    <version>0.06</version>
+    <time>1397215690</time>
+    <user>coolo</user>
+    <comment>- update to duperemove v0.06. This adds several fixes and features:
+        - fixes bnc#871804 (duperemove not looping on entire range)
+- also includes important usability fixes
+- updates hashing library to libgcrypt to reflect upstream (forwarded request 229675 from mfasheh)</comment>
+    <requestid>229677</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9beb17de910192bd72bcf22bb4e17553</srcmd5>
+    <version>0.07</version>
+    <time>1397387696</time>
+    <user>coolo</user>
+    <comment>- update to duperemove v0.07
+- fix usability of command line arguments
+- large documentation update (forwarded request 229768 from mfasheh)</comment>
+    <requestid>229769</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c4298a31bb628c289cd2c497af5dbd0d</srcmd5>
+    <version>0.08</version>
+    <time>1398418443</time>
+    <user>coolo</user>
+    <comment>- update to duperemove v0.08
+  - fixes many bugs
+  - a few more usability improvements
+  - adds fiemap support to better estimate space savings (forwarded request 230974 from mfasheh)</comment>
+    <requestid>231094</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c4298a31bb628c289cd2c497af5dbd0d</srcmd5>
+    <version>0.08</version>
+    <time>1409300796</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>559773a0ea76101adbbaaec2dab97549</srcmd5>
+    <version>0.09~beta1</version>
+    <time>1412098828</time>
+    <user>coolo</user>
+    <comment>Fixed package version after SR 252758, spec-only fix, tar naming unchanged.</comment>
+    <requestid>253065</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e6efdd7d6f1098a1f6e18ba4be4984a1</srcmd5>
+    <version>0.09~beta2</version>
+    <time>1414776476</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259151</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1c3fc954b6ba97a700938c247eb72fee</srcmd5>
+    <version>0.09~beta3</version>
+    <time>1416425202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262126</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0c05f55ebaca4839becc2795ffa313a7</srcmd5>
+    <version>0.09~beta5</version>
+    <time>1418112870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264496</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5a2cdbfecf0143d4301d6b05dc5ba4e9</srcmd5>
+    <version>0.09~beta5</version>
+    <time>1421777041</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup a bit with spec-cleaner and fix few tiny issues
+- Use install phase from upstream Makefile
+- Move csum-test to test progs to prevent its install:
+  * do-not-install-test-binary.patch</comment>
+    <requestid>282042</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1fa6a9a28898e1d2c57c91736d506739</srcmd5>
+    <version>0.09</version>
+    <time>1422626875</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283387</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cbbd9b09b7e160367690f466bbf0c74d</srcmd5>
+    <version>0.09.1</version>
+    <time>1427109418</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291620</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cd94f24dd3aa65433649ebd4e8c10f91</srcmd5>
+    <version>0.09.2</version>
+    <time>1427445709</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293348</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2678285ab45bf4cc9fe5976a731770e8</srcmd5>
+    <version>0.09.3</version>
+    <time>1428391810</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294670</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>70c82b8f5b39d2bbbdd32afda0139413</srcmd5>
+    <version>0.10.beta3</version>
+    <time>1436888643</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315979</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7a8a6a0158f4a8d58cfbff01352045cb</srcmd5>
+    <version>0.10.beta4</version>
+    <time>1437299146</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317206</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dba187faf86bf48f7d141ed7a0cce715</srcmd5>
+    <version>0.10</version>
+    <time>1444833923</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>338310</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>c8f0089ccc95b86e151e412fbc335476</srcmd5>
+    <version>0.10</version>
+    <time>1460101169</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384429</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>22b6ea596c4f0858907740554b2c13e8</srcmd5>
+    <version>0.11.beta1</version>
+    <time>1471105861</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419114</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4738db86a1c1f46a6461d8146dfbe6bd</srcmd5>
+    <version>0.11.beta2</version>
+    <time>1473548105</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426205</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>63276bc4e81eea8903673fb944de6483</srcmd5>
+    <version>0.11.beta3</version>
+    <time>1474116060</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428314</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d10b53d58f40c13b9be1fac2c3a5e3b1</srcmd5>
+    <version>0.11.beta4</version>
+    <time>1475242422</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431135</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>17b0fd71da6b6f265a3fd15eecf1d641</srcmd5>
+    <version>0.11.beta4</version>
+    <time>1475359764</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>432126</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>169be6a3d04f3a57044c87966ef72752</srcmd5>
+    <version>0.11.1</version>
+    <time>1543999577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>654118</requestid>
+  </revision>
+</revisionlist>

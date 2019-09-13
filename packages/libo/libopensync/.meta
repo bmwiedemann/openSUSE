@@ -1,0 +1,12 @@
+<package name="libopensync" project="openSUSE:Factory">
+  <title>A Platform and Distribution Independent Synchronization Framework</title>
+  <description>OpenSync is a synchronization framework that is platform and
+distribution independent. It consists of several plug-ins that can be
+used to connect to devices, a powerful sync engine, and the framework
+itself. The synchronization framework is kept very flexible and is
+capable of synchronizing any type of data, including contacts,
+calendar, tasks, notes, and files.
+
+To sync various sources, additionally install the plug-ins.</description>
+  <devel project="mobile:synchronization:FACTORY" package="libopensync"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="libappindicator" project="openSUSE:Factory">
+  <title>libappindicator</title>
+  <description></description>
+  <devel project="X11:Unity" package="libappindicator"/>
+</package>

@@ -1,0 +1,21 @@
+<package name="perl-Net-CIDR-Set" project="openSUSE:Factory">
+  <title>Manipulate sets of IP addresses</title>
+  <description>'Net::CIDR::Set' represents sets of IP addresses and allows standard set
+operations (union, intersection, membership test etc) to be performed on
+them.
+
+In spite of the name it can work with sets consisting of arbitrary ranges
+of IP addresses - not just CIDR blocks.
+
+Both IPv4 and IPv6 addresses are handled - but they may not be mixed in the
+same set. You may explicitly set the personality of a set:
+
+  my $ip4set = Net::CIDR::Set-&gt;new({ type =&gt; 'ipv4 }, '10.0.0.0/8');
+
+Normally this isn't necessary - the set will guess its personality from the
+first data that is added to it.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Net-CIDR-Set"/>
+  <url>http://search.cpan.org/dist/Net-CIDR-Set/</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-environmental-override" project="openSUSE:Factory">
+  <title>Override locals in a python file using environment variables</title>
+  <description>Environmental Override makes it easy to set configuration values using environment variables.</description>
+  <devel project="devel:languages:python" package="python-environmental-override"/>
+</package>

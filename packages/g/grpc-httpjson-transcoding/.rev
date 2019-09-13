@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4befb8e9b0b0077aef0011e7701a3145</srcmd5>
+    <version>20181128</version>
+    <time>1552299301</time>
+    <user>dimstar_suse</user>
+    <comment>- Add soname to all *.so* files.
+- Adjust to downgraded version of googleapis.
+- Update descriptions.
+- Update to version 20181128:
+  * bazel: Allow to distdir all dependencies
+  * travis: Update Bazel version to 0.19.2
+- Initial release - 20180530
+</comment>
+    <requestid>682556</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b6cb2f1ec9ae9f5c954e883464e3bc71</srcmd5>
+    <version>20181128</version>
+    <time>1553084470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686694</requestid>
+  </revision>
+</revisionlist>

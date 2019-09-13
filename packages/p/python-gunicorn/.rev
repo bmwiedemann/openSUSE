@@ -1,0 +1,191 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3a5aa3e07d1d55b1997bac993c1abdc3</srcmd5>
+    <version>0.14.1</version>
+    <time>1331900581</time>
+    <user>coolo</user>
+    <comment> </comment>
+    <requestid>108748</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2a5620db1fb14a844fb090018d4abcfb</srcmd5>
+    <version>0.14.2</version>
+    <time>1332500978</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.14.2
+  - add validate_class validator: allows to use a class or a method 
+    to initialize the app during in-code configuration
+  - add support for max_requests in tornado worker
+  - add support for disabling x_forwarded_for_header in tornado worker
+  - gevent_wsgi is now an alias of gevent_pywsgi
+  - Fix gevent_pywsgi worker (forwarded request 110557 from ammler)</comment>
+    <requestid>110670</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c58f504653f77beba3ee251493898db</srcmd5>
+    <version>0.14.3</version>
+    <time>1337955512</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121876</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3c58f504653f77beba3ee251493898db</srcmd5>
+    <version>0.14.3</version>
+    <time>1340184059</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>56c3e5e596bad09fa20fce2de7dd05bf</srcmd5>
+    <version>0.17.2</version>
+    <time>1358413176</time>
+    <user>coolo</user>
+    <comment>Update and python3 support (forwarded request 148493 from posophe)</comment>
+    <requestid>148571</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>56c3e5e596bad09fa20fce2de7dd05bf</srcmd5>
+    <version>0.17.2</version>
+    <time>1359110047</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>dd9850b1e40c147021d7b127c80d3ea9</srcmd5>
+    <version>0.17.2</version>
+    <time>1371652681</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179849</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>dd9850b1e40c147021d7b127c80d3ea9</srcmd5>
+    <version>0.17.2</version>
+    <time>1379664191</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>00a5022769939a3beb1d0e6bee92a62b</srcmd5>
+    <version>0.17.2</version>
+    <time>1382692652</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204568</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d2def959122a03143eeb56bfbfa483da</srcmd5>
+    <version>18.0</version>
+    <time>1386775271</time>
+    <user>coolo</user>
+    <comment>- Update to version 18.0
+  + new: add -e/--env command line argument to pass an environment
+    variables to gunicorn
+  + new: add --chdir command line argument to specified directory
+    before apps loading. - new: add wsgi.file_wrapper support in
+    async workers
+  + new: add --paste command line argument to set the paster config file
+  + deprecated: the command gunicorn_django is now deprecated. You
+    should now run your application with the WSGI interface installed 
+    with your project 
+    (see https://docs.djangoproject.com/en/1.4/howto/deployment/wsgi/gunicorn/)
+    for more infos.
+  + deprecated: the command gunicorn_paste is deprecated. You now should
+    use the new --paste argument to set the configuration file of your
+    paster application.
+  + fix: Removes unmatched leading quote from the beginning of the
+    default access log format string
+  + fix: null timeout
+  + fix: gevent worker
+  + fix: don’t reload the paster app when using pserve
+  + fix: after closing for error do not keep alive the connection
+  + fix: responses 1xx, 204 and 304 should not force the connection
+    to be closed
+- Changes from 17.5
+  + new: add signals documentation
+  + new: add post_worker_init hook for workers
+  + new: try to use gunicorn.conf.py in current folder as the default
+    config file.
+  + fix graceful timeout with the Eventlet worker
+  + fix: don’t raise an error when closing the socket if already closed
+  + fix: fix –settings parameter for django application and try to find
+    the django settings when using the gunicorn command.
+  + fix: give the initial global_conf to paster application
+  + New versionning: With this release, the versionning of Gunicorn is
+    changing. Gunicorn is stable since a long time and there is no point
+    to release a “1.0” now. It should have been done since a long time.
+    0.17 really meant it was the 17th stable version. From the beginning
+    we have only 2 kind of releases:
+    - major release: releases with major changes or huge features added
+      services releases: fixes and minor features added So from now we
+      will apply the following versionning &lt;major&gt;.&lt;service&gt;.
+      For example 17.5 is a service release.
+- Changes from 0.17.4
+  + fix unix socket address parsing
+- Changes from 0.17.3
+  + add systemd sockets support
+  + add python -m gunicorn.app.wsgiapp support
+  + improve logger class inheritance
+  + exit when the config file isn’t found
+  + add the -R option to enable stdio inheritance in daemon mode
+  + don’t close file descriptors &gt; 3 in daemon mode
+  + improve STDOUT/STDERR logging
+  + fix pythonpath option
+  + fix pidfile creation on Python 3
+  + fix gevent worker exit
+  + fix ipv6 detection when the platform isn’t supporting it (forwarded request 210375 from posophe)</comment>
+    <requestid>210376</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d2def959122a03143eeb56bfbfa483da</srcmd5>
+    <version>18.0</version>
+    <time>1409302883</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>77066ea0cbe12f0537fd2e8fb38a0247</srcmd5>
+    <version>19.1.1</version>
+    <time>1418737733</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265149</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1bfdfc606533c12b77008fdfd910b03b</srcmd5>
+    <version>19.3.0</version>
+    <time>1431247586</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305746</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2a4d09c90864c254d560f40c609f3c1e</srcmd5>
+    <version>19.7.1</version>
+    <time>1503061271</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509447</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4539c2bec41aabf2b6dc5482c80380a5</srcmd5>
+    <version>19.9.0</version>
+    <time>1540448032</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 19.9.0:
+  * Support python 3.7
+  * Tornado 5 support
+  * Eventlet 0.21 support</comment>
+    <requestid>642836</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>8b4b6fbdb2b74c0dce3db47fbe524c9b</srcmd5>
+    <version>19.9.0</version>
+    <time>1564484647</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work well with pytest5:
+  * pytest5.patch</comment>
+    <requestid>717468</requestid>
+  </revision>
+</revisionlist>

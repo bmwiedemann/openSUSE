@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0598caf439b2f553ea4270bcbe188ad1</srcmd5>
+    <version>0.9.6</version>
+    <time>1520588230</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-holoviews, which is already in openSUSE:Factory.</comment>
+    <requestid>581994</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5f94fbc0032a76a1ff50c2a149813d7a</srcmd5>
+    <version>0.9.6</version>
+    <time>1548334981</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659304</requestid>
+  </revision>
+</revisionlist>

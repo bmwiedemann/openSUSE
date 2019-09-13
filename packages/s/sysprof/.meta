@@ -1,0 +1,7 @@
+<package name="sysprof" project="openSUSE:Factory">
+  <title>Sysprof</title>
+  <description>A system-wide Linux profiler.
+
+</description>
+  <devel project="GNOME:Factory" package="sysprof"/>
+</package>

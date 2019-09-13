@@ -1,0 +1,8 @@
+<package name="libhtp" project="openSUSE:Factory">
+  <title>HTTP normalizer and parser</title>
+  <description>The HTP Library is an HTTP normalizer and parser written by Ivan Ristic of Mod Security fame for the OISF. This integrates and provides very advanced processing of HTTP streams for Suricata. The HTP library is required by the engine, but may also be used independently in a range of applications and tools.
+
+</description>
+  <devel project="server:monitoring" package="libhtp"/>
+  <url>http://www.openinfosecfoundation.org/</url>
+</package>

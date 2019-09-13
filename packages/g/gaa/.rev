@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e0dcea2e5dfd922b2a90547e551f8465</srcmd5>
+    <version>1.6.6</version>
+    <time>1317740237</time>
+    <user>oertel</user>
+    <comment>for factory inclusion</comment>
+    <requestid>85296</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e0dcea2e5dfd922b2a90547e551f8465</srcmd5>
+    <version>1.6.6</version>
+    <time>1319181891</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>60aa0cd302d2689006320cfa5d587521</srcmd5>
+    <version>1.6.6</version>
+    <time>1323191448</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>60aa0cd302d2689006320cfa5d587521</srcmd5>
+    <version>1.6.6</version>
+    <time>1340183346</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>60aa0cd302d2689006320cfa5d587521</srcmd5>
+    <version>1.6.6</version>
+    <time>1359108899</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>60aa0cd302d2689006320cfa5d587521</srcmd5>
+    <version>1.6.6</version>
+    <time>1379662379</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>60aa0cd302d2689006320cfa5d587521</srcmd5>
+    <version>1.6.6</version>
+    <time>1409300915</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>8e8715cb5ec8c03aaca9db9cfd74441e</srcmd5>
+    <version>1.6.6</version>
+    <time>1418112844</time>
+    <user>dimstar_suse</user>
+    <comment>- Use source URL and original tarball</comment>
+    <requestid>264351</requestid>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>26bc04cf59ad952278f848cc8732596b</srcmd5>
+    <version>1.6.6</version>
+    <time>1420833041</time>
+    <user>dimstar_suse</user>
+    <comment>- xz won't be needed for the build</comment>
+    <requestid>280525</requestid>
+  </revision>
+</revisionlist>

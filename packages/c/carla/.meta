@@ -1,0 +1,7 @@
+<package name="carla" project="openSUSE:Factory">
+  <title>An audio plugin host</title>
+  <description>Carla is an audio plugin host, with support for many audio drivers and plugin formats.
+It has some nice features like automation of parameters via MIDI CC and full OSC control.
+Currently supports LADSPA, DSSI, LV2, VST2/3 and AU plugin formats, plus GIG, SF2 and SFZ sounds banks.</description>
+  <devel project="multimedia:apps" package="carla"/>
+</package>

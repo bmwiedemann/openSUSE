@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2061f1e2141e53c3fee15c758cbdbbbc</srcmd5>
+    <version>0.3.3</version>
+    <time>1527582651</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-agate
+See request 605895
+https://build.opensuse.org/request/show/605895</comment>
+    <requestid>610407</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2a2eaeb71d1914b617fee20db750110c</srcmd5>
+    <version>0.3.3</version>
+    <time>1548335646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667862</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d24ed28462c14def205ec530ab0e9f21</srcmd5>
+    <version>0.3.3</version>
+    <time>1551276611</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github tarball for tests and license file</comment>
+    <requestid>679759</requestid>
+  </revision>
+</revisionlist>

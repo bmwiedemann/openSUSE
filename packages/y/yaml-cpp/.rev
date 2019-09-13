@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a587b682b86f46aed0cb8d265051e50f</srcmd5>
+    <version>0.3.0</version>
+    <time>1344080497</time>
+    <user>coolo</user>
+    <comment>dependency of librime</comment>
+    <requestid>129314</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a587b682b86f46aed0cb8d265051e50f</srcmd5>
+    <version>0.3.0</version>
+    <time>1359110707</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>10f45694f41b493a27dde3b8fa7c054a</srcmd5>
+    <version>0.5.1</version>
+    <time>1372527815</time>
+    <user>coolo</user>
+    <comment>update version 0.5.1 (forwarded request 181442 from MargueriteSu) (forwarded request 181444 from MargueriteSu)</comment>
+    <requestid>181445</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c4bfb6c169fdd60aeca35522390297aa</srcmd5>
+    <version>0.5.1</version>
+    <time>1372843306</time>
+    <user>coolo</user>
+    <comment>Added boost-devel in yaml-cpp-devel Requires: (forwarded request 181806 from adra)</comment>
+    <requestid>181809</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>c4bfb6c169fdd60aeca35522390297aa</srcmd5>
+    <version>0.5.1</version>
+    <time>1379665132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c4bfb6c169fdd60aeca35522390297aa</srcmd5>
+    <version>0.5.1</version>
+    <time>1409303819</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8d6886bfaf1cde85793c842cd750e44f</srcmd5>
+    <version>0.5.2</version>
+    <time>1438548371</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319951</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>285e566b020217490f5570209a7e2d50</srcmd5>
+    <version>0.5.2</version>
+    <time>1447696289</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344246</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ef66d00f13bd7febe353b492247be404</srcmd5>
+    <version>0.5.3</version>
+    <time>1455701110</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359135</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>476274ea5683ae18f12688110543933a</srcmd5>
+    <version>0.5.3</version>
+    <time>1468579902</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with updated cmake and wrong -fPIE parsing:
+  * yaml-cpp-disable-bundled-gmock.patch
+  * yaml-cpp-fix-pie.patch</comment>
+    <requestid>407762</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>efc17fce7bb5b85ec49d4b016067d2c8</srcmd5>
+    <version>0.5.3</version>
+    <time>1486389923</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454242</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6e6684b2e940d8e356c67cd621077adf</srcmd5>
+    <version>0.6.1</version>
+    <time>1517932028</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  * Just brownpaperbag over previous release
+
+- Update to version 0.6.0
+  * yaml-cpp no longer depends on Boost
+  * Requires C++11
+  * Some bug fixes and performance improvements
+- Dropped patch yaml-cpp-disable-bundled-gmock.patch since it can
+  be configured with the option YAML_CPP_BUILD_TESTS</comment>
+    <requestid>572095</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2b225a0b03a55e0af039b5bbeb66161b</srcmd5>
+    <version>0.6.1</version>
+    <time>1518697649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576821</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>da1bbf507014ff773b2205e3197fc6a6</srcmd5>
+    <version>0.6.2</version>
+    <time>1533887621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628498</requestid>
+  </revision>
+</revisionlist>

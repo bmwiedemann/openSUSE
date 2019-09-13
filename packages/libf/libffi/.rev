@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>539f1713f073c98946e9083bea31202e</srcmd5>
+    <version>3.2.1.git259</version>
+    <time>1489019660</time>
+    <user>dimstar_suse</user>
+    <comment>fix License tag</comment>
+    <requestid>460896</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c907903608ca0f703ffcd0cf3e4f996f</srcmd5>
+    <version>3.2.1.git259</version>
+    <time>1489481431</time>
+    <user>dimstar_suse</user>
+    <comment>Build libffi7-32bit</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9d8194f561d913c516323d33f1c50c9e</srcmd5>
+    <version>3.2.1.git259</version>
+    <time>1492516072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>487855</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7d91c73d9c94c874c562a3c1307498d2</srcmd5>
+    <version>3.2.1.git259</version>
+    <time>1506340352</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527478</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f4ba51406135119a7923e39ad76c87ff</srcmd5>
+    <version>3.2.1.git259</version>
+    <time>1519902362</time>
+    <user>dimstar_suse</user>
+    <comment>Use %license (boo#1082318). Please forward to SLE, if possible (forwarded request 580095 from favogt)</comment>
+    <requestid>580187</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e6e7a0e194bb559c1f44d7d6aadc2ce1</srcmd5>
+    <version>3.2.1.git259</version>
+    <time>1521579030</time>
+    <user>dimstar_suse</user>
+    <comment>- libffi-riscv.patch: add support for RISC-V (forwarded request 585950 from Andreas_Schwab)</comment>
+    <requestid>586039</requestid>
+  </revision>
+</revisionlist>

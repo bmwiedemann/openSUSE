@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fed662c1ee0d4f7eb89af54e659a8e4d</srcmd5>
+    <version>0.47</version>
+    <time>1306415334</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66750</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>49c13b95a4017a00943dc6ec9695250f</srcmd5>
+    <version>0.47</version>
+    <time>1306415344</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66750
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>49c13b95a4017a00943dc6ec9695250f</srcmd5>
+    <version>0.47</version>
+    <time>1319182295</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bccd2a58e446130e11448c8d532ec857</srcmd5>
+    <version>0.48</version>
+    <time>1322757503</time>
+    <user>coolo</user>
+    <comment>- update to 0.48
+   * Prefer MYMETA.yml over META.yml if possible.
+   * Try YAML implementations in different order (XS first).</comment>
+    <requestid>94386</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2e1e782a2a6ea2543a4490db68954478</srcmd5>
+    <version>0.48</version>
+    <time>1323193556</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>2e1e782a2a6ea2543a4490db68954478</srcmd5>
+    <version>0.48</version>
+    <time>1340183896</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>2e1e782a2a6ea2543a4490db68954478</srcmd5>
+    <version>0.48</version>
+    <time>1359109769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7188b9a554699aa821594c8b5288657c</srcmd5>
+    <version>0.49</version>
+    <time>1371221230</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 178271 from coolo)</comment>
+    <requestid>178289</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7188b9a554699aa821594c8b5288657c</srcmd5>
+    <version>0.49</version>
+    <time>1379663801</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>7188b9a554699aa821594c8b5288657c</srcmd5>
+    <version>0.49</version>
+    <time>1409302437</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

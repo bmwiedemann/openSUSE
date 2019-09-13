@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>082f97935262426072fe8adfc18776c9</srcmd5>
+    <version>4.0.8</version>
+    <time>1380217600</time>
+    <user>coolo</user>
+    <comment>needed by python-ZODB3, which replaced now-deleted python-zodb3</comment>
+    <requestid>200694</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>082f97935262426072fe8adfc18776c9</srcmd5>
+    <version>4.0.8</version>
+    <time>1409302778</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02efdcba745a154b06b5213966af26de</srcmd5>
+    <version>4.1.1</version>
+    <time>1423258709</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284548</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc0b1b609fe5fcd0e060e93af5c8d465</srcmd5>
+    <version>4.1.2</version>
+    <time>1430891383</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>305509</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>19482e7da196e71969533b1ac6ea2325</srcmd5>
+    <version>4.4.1</version>
+    <time>1500670013</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509207</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>249173a95593f2d0f5d2691a8033af2c</srcmd5>
+    <version>4.5.1</version>
+    <time>1549916850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v4.5.1
+  + Use pyproject.toml to specify build dependencies. This requires pip
+    18 or later to build from source.
+- 4.5.0
+  + Add support for Python 3.6 and 3.7, and drop support for Python 3.3.
+  + Raise an ``ImportError`` consistently on Python 3 if the C extension for
+    BTrees is used but the ``persistent`` C extension is not available.
+    Previously this could result in an odd ``AttributeError``.
+  + Fix the possibility of a rare crash in the C extension when
+    deallocating items.
+  + Respect the ``PURE_PYTHON`` environment variable at runtime even if
+    the C extensions are available.
+  + Always attempt to build the C extensions, but make their success
+    optional.
+  + Fix a ``DeprecationWarning`` that could come from I and L objects in
+    Python 2 in pure-Python mode.
+- Use %license (forwarded request 673139 from jayvdb)</comment>
+    <requestid>673140</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5d410a655903077cd992b78d3cc258d2</srcmd5>
+    <version>4.6.0</version>
+    <time>1565097109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721097</requestid>
+  </revision>
+</revisionlist>

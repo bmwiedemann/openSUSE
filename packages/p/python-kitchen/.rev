@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bcfb2bab860aa6f1c51b86e8a389b2f1</srcmd5>
+    <version>1.2.5</version>
+    <time>1518596878</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+ * fix check section to actually run the tests
+ * neutral description
+- Initial package
+</comment>
+    <requestid>573601</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>813e3bf975ff2e2edc32e307a2325062</srcmd5>
+    <version>1.2.5</version>
+    <time>1535705201</time>
+    <user>dimstar_suse</user>
+    <comment>- Attempt to fix some python 3.7 failures by exporting LANG</comment>
+    <requestid>632160</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d9b089090274da31d1e197770b615b11</srcmd5>
+    <version>1.2.5</version>
+    <time>1545647940</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659465</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>416ec5af1d1e1bcc4e2d02863e1e485b</srcmd5>
+    <version>1.2.5</version>
+    <time>1549624304</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672169</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>83bee525e85b0c01e56f31582f481e18</srcmd5>
+    <version>1.2.6</version>
+    <time>1563993372</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.6:
+  * various bugfixes</comment>
+    <requestid>718129</requestid>
+  </revision>
+</revisionlist>

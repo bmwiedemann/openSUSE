@@ -1,0 +1,6 @@
+<package name="qlipper" project="openSUSE:Factory">
+  <title>Cross-platform clipboard history applet</title>
+  <description>Lightweight and cross-platform clipboard history applet.</description>
+  <devel project="X11:LXQt" package="qlipper"/>
+  <url>https://github.com/pvanek/qlipper</url>
+</package>

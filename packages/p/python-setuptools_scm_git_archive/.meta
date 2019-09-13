@@ -1,0 +1,5 @@
+<package name="python-setuptools_scm_git_archive" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-setuptools_scm_git_archive"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-requests-futures" project="openSUSE:Factory">
+  <title>https://github.com/ross/requests-futures</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-requests-futures"/>
+</package>

@@ -1,0 +1,11 @@
+<package name="bogofilter" project="openSUSE:Factory">
+  <title>Fast Anti-Spam Filtering by Bayesian Statistical Analysis</title>
+  <description>Bogofilter is a Bayesian spam filter.  In normal operation, it takes an
+e-mail message or text from standard input, does a statistical check
+against lists of &quot;good&quot; and &quot;bad&quot; words, and returns a status code
+indicating whether the message is spam.  Bogofilter is designed with
+fast algorithms (including the Berkeley DB system), coded directly in
+C, and tuned for speed, so it can be used for production by sites that
+process a lot of mail.</description>
+  <devel project="server:mail" package="bogofilter"/>
+</package>

@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ad99fa7efad1573b8f7790cd6fb4d75</srcmd5>
+    <version>1.0.8</version>
+    <time>1429107867</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>296123</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>89574fa2d6b4e215b6434c58af78156c</srcmd5>
+    <version>1.0.8</version>
+    <time>1429186450</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>297071</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e494c237449f3e645ddce7287292687b</srcmd5>
+    <version>1.0.8</version>
+    <time>1467705096</time>
+    <user>dimstar_suse</user>
+    <comment>- Use url for source
+- Trim depencencies and cleanup spec file a bit</comment>
+    <requestid>405825</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>89c845c77174d97652ea7a7a43f544a9</srcmd5>
+    <version>1.0.8</version>
+    <time>1551883697</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches from gentoo:
+  * fix-automake-1.13.patch
+  * fix-format-security.patch
+  * fix-ncurses-tinfo.patch</comment>
+    <requestid>681756</requestid>
+  </revision>
+</revisionlist>

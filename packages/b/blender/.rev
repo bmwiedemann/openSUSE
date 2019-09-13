@@ -1,0 +1,920 @@
+<revisionlist>
+  <revision rev="1" vrev="59">
+    <srcmd5>e18710a366516eab8f13982052d68a20</srcmd5>
+    <version>2.3</version>
+    <time>1181615226</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="65">
+    <srcmd5>aa8c6f7a10ab5ebf0472f3f76512069c</srcmd5>
+    <version>2.3</version>
+    <time>1183925798</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="82">
+    <srcmd5>32a2a27db0298873134170de90e3a96a</srcmd5>
+    <version>2.3</version>
+    <time>1191423578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="94">
+    <srcmd5>a791e8b8db78b7ba3d5452d51f2cea56</srcmd5>
+    <version>2.3</version>
+    <time>1199704950</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="95">
+    <srcmd5>bbabcc7ea2408d3699f9ad64cd18708c</srcmd5>
+    <version>2.3</version>
+    <time>1201624453</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="96">
+    <srcmd5>3b4ff99916c73c77aedc1513acb028d4</srcmd5>
+    <version>2.3</version>
+    <time>1201624491</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="101">
+    <srcmd5>03672ed824f7cdf7eb0b30f7e2a3bbc0</srcmd5>
+    <version>2.3</version>
+    <time>1201624883</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="117">
+    <srcmd5>4e2f44a2d0ac5db5426a88d3d07bebf5</srcmd5>
+    <version>2.3</version>
+    <time>1209390190</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="122">
+    <srcmd5>fca3f8e2dee7f1f49ba4ae2b5d843189</srcmd5>
+    <version>2.3</version>
+    <time>1210937243</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="130">
+    <srcmd5>42e5d32d0573122a0193ab9748cabab2</srcmd5>
+    <version>2.3</version>
+    <time>1215621382</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="28">
+    <srcmd5>145958ac5b556f0091d5e347f5badcbc</srcmd5>
+    <version>2.46</version>
+    <time>1218832496</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>755814b1e8e235f8b1d223f7bf18192a</srcmd5>
+    <version>2.47</version>
+    <time>1220563558</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>ba7e472a796c231fcad67e0a93cdc397</srcmd5>
+    <version>2.47</version>
+    <time>1222705897</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ac3bf02479d4ea3d13a4270c65156243</srcmd5>
+    <version>2.48a</version>
+    <time>1225926782</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>38d54ea318bc3fa17c9e96e49bf0091a</srcmd5>
+    <version>2.48a</version>
+    <time>1226326195</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c7620ce8c34fb4c6a575bc5bb3218629</srcmd5>
+    <version>2.49a</version>
+    <time>1254154337</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/blender based on submit request 20473 from user plater
+</comment>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>46b60e92f953da90e495b144cffc8576</srcmd5>
+    <version>2.49a</version>
+    <time>1254882549</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>ed0f6e02ce6b03dac8d6a363aea1d4d0</srcmd5>
+    <version>2.49a</version>
+    <time>1255018404</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/blender based on submit request 21356 from user plater
+</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>ed0f6e02ce6b03dac8d6a363aea1d4d0</srcmd5>
+    <version>2.49a</version>
+    <time>1255018404</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/blender based on submit request 21356 from user plater
+</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>877d95fd740d65f56d3bd2273492ed5a</srcmd5>
+    <version>2.49a</version>
+    <time>1256211613</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/blender based on submit request 22831 from user plater
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4f046af1a23fc242360fbc958dc43b8e</srcmd5>
+    <version>2.49b</version>
+    <time>1257162051</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/blender based on submit request 23531 from user plater
+</comment>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>52dbbb89dd64ee620df144bd3c3bb49c</srcmd5>
+    <version>2.49b</version>
+    <time>1261401125</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/blender based on submit request 27270 from user plater
+</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>87302a1305b32edd28e3654102048de3</srcmd5>
+    <version>2.49b</version>
+    <time>1264696951</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/blender based on submit request 30664 from user plater
+</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>0a39f19ffd7271b2d490f287a9079ab9</srcmd5>
+    <version>2.49b</version>
+    <time>1268923086</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>5df56eb29ac3d92010e154a94d15d22a</srcmd5>
+    <version>2.49b</version>
+    <time>1277720846</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/blender based on submit request 42084 from user plater
+</comment>
+    <requestid>42084</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>5df56eb29ac3d92010e154a94d15d22a</srcmd5>
+    <version>2.49b</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>5df56eb29ac3d92010e154a94d15d22a</srcmd5>
+    <version>2.49b</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>96a90aa05291953d51d049f0910d07b6</srcmd5>
+    <version>2.55.33653</version>
+    <time>1293576973</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 55926 from user plater
+</comment>
+    <requestid>55926</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>2294555ee22c63e0acd70430acd92236</srcmd5>
+    <version>2.55.33653</version>
+    <time>1293576981</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 55926
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b9e94a2413055569e7e14fd017b75999</srcmd5>
+    <version>2.56.34000</version>
+    <time>1294405363</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57028 from user plater
+</comment>
+    <requestid>57028</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>5b9a26f879807200c77d88f98ba3ae3c</srcmd5>
+    <version>2.56.34000</version>
+    <time>1294405373</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57028
+</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>323f881ec1a78d572ceb773953281d2d</srcmd5>
+    <version>2.56.34784</version>
+    <time>1297644354</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60651 from user plater
+</comment>
+    <requestid>60651</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>1b947db01eeb760a63f95d8dabad953b</srcmd5>
+    <version>2.56.34784</version>
+    <time>1297644366</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60651
+</comment>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>1b947db01eeb760a63f95d8dabad953b</srcmd5>
+    <version>2.56.34784</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>c9f6c7e7b69f04a5f9a704c9d3c1e326</srcmd5>
+    <version>2.56.34784</version>
+    <time>1298032533</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61762 from user plater
+</comment>
+    <requestid>61762</requestid>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>f55949adadf4963c2f8287a9ec727f84</srcmd5>
+    <version>2.56.34784</version>
+    <time>1298032548</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61762
+</comment>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>3e357675d8dc2933f9d7fe786fa73d14</srcmd5>
+    <version>2.56.34784</version>
+    <time>1304353359</time>
+    <user>darix</user>
+    <comment>Fix gcc 4.6 compilation problem</comment>
+    <requestid>69225</requestid>
+  </revision>
+  <revision rev="38" vrev="9">
+    <srcmd5>ccd7358f3b69684ff4ee1f562d80f2d5</srcmd5>
+    <version>2.56.34784</version>
+    <time>1304353368</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 69225
+</comment>
+  </revision>
+  <revision rev="39" vrev="10">
+    <srcmd5>c25ff27d21f7db4b0b6d7d3131ca76fb</srcmd5>
+    <version>2.56.34784</version>
+    <time>1304929677</time>
+    <user>saschpe</user>
+    <comment>Bump library revision to 1 due to changes in the build system, relocated the headers to named directories in the devel sub package. The build system now links the libraries more efficiently. This needs to be checked in just ahead of blender.</comment>
+    <requestid>69872</requestid>
+  </revision>
+  <revision rev="40" vrev="11">
+    <srcmd5>4d5dd304488c654f378f1347e0b33f7b</srcmd5>
+    <version>2.56.34784</version>
+    <time>1304929689</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69872
+</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9729998bf4415987b2e422d08e528fa7</srcmd5>
+    <version>2.57b</version>
+    <time>1310465458</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>75290</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>96684a2cdc556a341b2eaf6b77ad548b</srcmd5>
+    <version>2.57b</version>
+    <time>1310465469</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75290
+</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7a61156ca91889a788d59cb9d7550085</srcmd5>
+    <version>2.59</version>
+    <time>1315562315</time>
+    <user>saschpe</user>
+    <comment>Fix python3 include directory for &lt;= 10.4 build (forwarded request 81619 from plater)</comment>
+    <requestid>81620</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>7a61156ca91889a788d59cb9d7550085</srcmd5>
+    <version>2.59</version>
+    <time>1319181789</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>e3b2542ebe2d81a4a423778bf2a3fa4b</srcmd5>
+    <version>2.59</version>
+    <time>1323190858</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="46" vrev="5">
+    <srcmd5>4dfa0010d9cdfc178917f580fc57e492</srcmd5>
+    <version>2.59</version>
+    <time>1334692644</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 113437 from dimstar)</comment>
+    <requestid>113438</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>bb0806b3a18a1edb8ef66f9420749a20</srcmd5>
+    <version>2.63a</version>
+    <time>1337588712</time>
+    <user>coolo</user>
+    <comment>Update to version 2.63a; lots of spec file cleanups; split out separate lang package with extra locales. (forwarded request 120841 from plater)</comment>
+    <requestid>120886</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>bb0806b3a18a1edb8ef66f9420749a20</srcmd5>
+    <version>2.63a</version>
+    <time>1340183203</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>a347df4a8b862d1537b3661216e86d27</srcmd5>
+    <version>2.63a</version>
+    <time>1343797173</time>
+    <user>coolo</user>
+    <comment>- just use default libjpeg on opensuse (forwarded request 129272 from plater)</comment>
+    <requestid>129388</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>c7e534426757d897ae9742d672b07e20</srcmd5>
+    <version>2.64a</version>
+    <time>1351687599</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.64a:
+  + See
+    http://www.blender.org/development/release-logs/blender-263/
+    for upstream changes.
+- Update fix-locale-files-path patch for 2.64 version
+- Remove unneeded fedora conditional macros
+- Add python3 version option on configure cmake
+- Add a patch to correct python development files on Factory
+- Fix build for Factory (forwarded request 139702 from plater)</comment>
+    <requestid>139754</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>b8b05ee0bb45b4f0586fbc3a0c3f4e89</srcmd5>
+    <version>2.64a</version>
+    <time>1352123657</time>
+    <user>coolo</user>
+    <comment>- fix big endian build (blender-2.64a-big-endian.patch) (forwarded request 140103 from plater)</comment>
+    <requestid>140154</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>406bdb18e7d86fda0bf48bb8ef2f8348</srcmd5>
+    <version>2.64a</version>
+    <time>1352391552</time>
+    <user>coolo</user>
+    <comment>This fixes build for SLES, by:
+
+- adding BuildRoot tag (is needed to comply with spec file styles anyway)
+- setting PYTHON flags for sles_version too
+- modifying desktop file install commands
+
+Used osc pull, resolved conflicts (only in .changes file)
+AFAICT this has the bigendian patch, *and* modifications for SLES builds correctly in (forwarded request 140213 from plater)</comment>
+    <requestid>140607</requestid>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>406bdb18e7d86fda0bf48bb8ef2f8348</srcmd5>
+    <version>2.64a</version>
+    <time>1359108702</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>7702f7314ac7c1e35756f20521407966</srcmd5>
+    <version>2.64a</version>
+    <time>1361348303</time>
+    <user>coolo</user>
+    <comment>- build also with libpng16
+  * libpng16.patch (forwarded request 155824 from pgajdos)</comment>
+    <requestid>155825</requestid>
+  </revision>
+  <revision rev="55" vrev="7">
+    <srcmd5>2eeb72598e711b2696255462a9f98412</srcmd5>
+    <version>2.64a</version>
+    <time>1362637112</time>
+    <user>coolo</user>
+    <comment>- Make compile commands visible to check_gcc_output (forwarded request 157295 from plater)</comment>
+    <requestid>157547</requestid>
+  </revision>
+  <revision rev="56" vrev="8">
+    <srcmd5>602c250ce290476c3d574d01e3f5016a</srcmd5>
+    <version>2.64a</version>
+    <time>1362992468</time>
+    <user>coolo</user>
+    <comment> (forwarded request 158245 from plater)</comment>
+    <requestid>158248</requestid>
+  </revision>
+  <revision rev="57" vrev="9">
+    <srcmd5>c6bc42bb3b5db0a9ec12c340c1865859</srcmd5>
+    <version>2.64a</version>
+    <time>1364296854</time>
+    <user>coolo</user>
+    <comment>- Build with $RPM_OPT_FLAGS (forwarded request 160816 from AndreasSchwab)</comment>
+    <requestid>160824</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>0ae00e1779763c91fd741937db4edbf8</srcmd5>
+    <version>2.66a</version>
+    <time>1367485556</time>
+    <user>coolo</user>
+    <comment>Update to 2.66a (forwarded request 174224 from plater)</comment>
+    <requestid>174225</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>fffe269dcfcd681d166c813a62bf0248</srcmd5>
+    <version>2.66a</version>
+    <time>1371132761</time>
+    <user>coolo</user>
+    <comment>- Fix build on Big Endian platforms (blender-2.66a-bigendian.patch) (forwarded request 176481 from k0da)</comment>
+    <requestid>176482</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>32e949192f7b51e3f03564529e77fa3c</srcmd5>
+    <version>2.67b</version>
+    <time>1371544119</time>
+    <user>coolo</user>
+    <comment>Update to version 2.67b.
+Build has succeeded on 12.3 and Factory, But I have
+not tried using. (forwarded request 179236 from plater)</comment>
+    <requestid>179346</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>32e949192f7b51e3f03564529e77fa3c</srcmd5>
+    <version>2.67b</version>
+    <time>1379662040</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="62" vrev="4">
+    <srcmd5>72a2753bcaee4b5fe717d3b0788c27a3</srcmd5>
+    <version>2.67b</version>
+    <time>1382355830</time>
+    <user>scarabeus_factory</user>
+    <comment>Disable sse2 instructions on non x86_64 arches, bnc#846545 (forwarded request 204073 from sumski)</comment>
+    <requestid>204078</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>358ff1fe2524d8365eead1e228774f7a</srcmd5>
+    <version>2.69</version>
+    <time>1384854285</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 2.69 (forwarded request 207310 from plater)</comment>
+    <requestid>207543</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>accaaf41e71b223985634dc338b0ad3c</srcmd5>
+    <version>2.69</version>
+    <time>1388774553</time>
+    <user>coolo</user>
+    <comment>- add constraints file to avoid building on low memory (needed for
+  x86_64, but it can't be limited to that arch)</comment>
+    <requestid>212577</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>a224530de80e2ed2c12b54a7cb71a3f7</srcmd5>
+    <version>2.70</version>
+    <time>1396536267</time>
+    <user>coolo</user>
+    <comment>update to version 2.70. Fixed building with Python 3.4 (forwarded request 228730 from plater)</comment>
+    <requestid>228820</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>0bfc8956584831b3acf3b2890003a5d9</srcmd5>
+    <version>2.70</version>
+    <time>1397387681</time>
+    <user>coolo</user>
+    <comment>fix desktop file / bnc#848910 (forwarded request 229389 from plater)</comment>
+    <requestid>229791</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>ae023834f76dc14edc52c454a464b2a3</srcmd5>
+    <version>2.70a</version>
+    <time>1398499177</time>
+    <user>coolo</user>
+    <comment>update to version 2.70a and increased constraints to remedy build failures (forwarded request 230948 from plater)</comment>
+    <requestid>231222</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>816d47769293fc8420acbc34674ab853</srcmd5>
+    <version>2.71</version>
+    <time>1404996910</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239721</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>816d47769293fc8420acbc34674ab853</srcmd5>
+    <version>2.71</version>
+    <time>1409300566</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>d6013b5f1761486de2667c2f587be15f</srcmd5>
+    <version>2.72b</version>
+    <time>1416347225</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261923</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>a178ccbac4d747b8d627807546fac456</srcmd5>
+    <version>2.72b</version>
+    <time>1416824353</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262743</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>9c2a6629d001ff79057061777309fdb6</srcmd5>
+    <version>2.72b</version>
+    <time>1419331863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266230</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>58a285e2b320613fd91429accff98301</srcmd5>
+    <version>2.73a</version>
+    <time>1425566548</time>
+    <user>dimstar_suse</user>
+    <comment>Removed freetype patch</comment>
+    <requestid>288795</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>4ac89ec217245b7cc462d18041b43540</srcmd5>
+    <version>2.73a</version>
+    <time>1428192242</time>
+    <user>dimstar_suse</user>
+    <comment>deleted #@*$## project.diff</comment>
+    <requestid>294316</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>aa362d47994db38c1320164ea1b32a99</srcmd5>
+    <version>2.74</version>
+    <time>1432158958</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308072</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>53829db4daa27182de6086c9c7274790</srcmd5>
+    <version>2.75a</version>
+    <time>1438794856</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320424</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>52129078d13848de715771b5dddceb30</srcmd5>
+    <version>2.76</version>
+    <time>1445511547</time>
+    <user>dimstar_suse</user>
+    <comment>build libmv separately to fix intermittent x86_64 out of memory build failures</comment>
+    <requestid>339954</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>4b59444717eef3355583ad2b2b94f204</srcmd5>
+    <version>2.76</version>
+    <time>1446049847</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341133</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>23970fcf5d9ecea281467303bcd16d51</srcmd5>
+    <version>2.76b</version>
+    <time>1446978419</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.76b and other spec file changes</comment>
+    <requestid>342744</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>4454fdd5a8c5f32d394bba1e3a0cd61e</srcmd5>
+    <version>2.76b</version>
+    <time>1449687103</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347574</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>971990b2025c384a2571064485c54f8c</srcmd5>
+    <version>2.76b</version>
+    <time>1450284186</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348880</requestid>
+  </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>9e5db02c0baa1cc387814ebb2833248a</srcmd5>
+    <version>2.76b</version>
+    <time>1450695900</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349556</requestid>
+  </revision>
+  <revision rev="83" vrev="5">
+    <srcmd5>36e3347dab2734f802c38c85a5d684b6</srcmd5>
+    <version>2.76b</version>
+    <time>1451390402</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351054</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>57288718a01e38bac60a92fc2ed6801d</srcmd5>
+    <version>2.77</version>
+    <time>1459002483</time>
+    <user>dimstar_suse</user>
+    <comment>Fix typos</comment>
+    <requestid>378957</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>71dfabb53f053c6f2bfe6f398baf1cc2</srcmd5>
+    <version>2.77a</version>
+    <time>1460632101</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389394</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>4782d98d1f61f261950e06a6f2373c8f</srcmd5>
+    <version>2.77a</version>
+    <time>1461855279</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390497</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>d7ba841480f235eb7951b74d7e85c61e</srcmd5>
+    <version>2.77a</version>
+    <time>1465336202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400329</requestid>
+  </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>6355c8e4b21d04621901d236e7ab4d8e</srcmd5>
+    <version>2.77a</version>
+    <time>1466333579</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403043</requestid>
+  </revision>
+  <revision rev="89" vrev="5">
+    <srcmd5>067376b23e9a2fc11250de3f5ea4afd3</srcmd5>
+    <version>2.77a</version>
+    <time>1471249899</time>
+    <user>dimstar_suse</user>
+    <comment>correct changes grammar</comment>
+    <requestid>419066</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>5e57696fe64c547f5d845d1ef9aa74bd</srcmd5>
+    <version>2.78</version>
+    <time>1475589532</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.78</comment>
+    <requestid>432434</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>bb478501a74dc460840c00bfe3deb4b1</srcmd5>
+    <version>2.78a</version>
+    <time>1478087303</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.78a</comment>
+    <requestid>438234</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>00beb58c51a74da4b67da54eee960d4a</srcmd5>
+    <version>2.78a</version>
+    <time>1479150926</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440111</requestid>
+  </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>a21570d9e5cc141344e113d27a3c958f</srcmd5>
+    <version>2.78a</version>
+    <time>1486306147</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453880</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>97626e263db22ca7fa4e6942616530ff</srcmd5>
+    <version>2.78b</version>
+    <time>1486968616</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456061</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>ba14549b69420e8c789b7bce7d525c93</srcmd5>
+    <version>2.78b</version>
+    <time>1487261090</time>
+    <user>dimstar_suse</user>
+    <comment>Build with system audaspace, needs latest audaspace=&gt;1.3.0</comment>
+    <requestid>456998</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>7834986a88c78af215b6eae24d596008</srcmd5>
+    <version>2.78c</version>
+    <time>1488408290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461505</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>c5b102f52aac2afea692b861dec9357c</srcmd5>
+    <version>2.78c</version>
+    <time>1489021413</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>476970</requestid>
+  </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>5207bb943abcf1ff6396e8c6f0bbf10c</srcmd5>
+    <version>2.78c</version>
+    <time>1492011305</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486301</requestid>
+  </revision>
+  <revision rev="99" vrev="4">
+    <srcmd5>749dde1908189e996b94825d277020f8</srcmd5>
+    <version>2.78c</version>
+    <time>1495133497</time>
+    <user>dimstar_suse</user>
+    <comment>Format changes and submit further changes from blender developer</comment>
+    <requestid>495822</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>7c8696d2c498c32f6cd632e358d9f6af</srcmd5>
+    <version>2.79</version>
+    <time>1507065624</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530857</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>cee3d1b3dd71ff4884010f6782914cd7</srcmd5>
+    <version>2.79a</version>
+    <time>1520021587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582007</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>d7277fedcf9a4bee6d2f469a18b490cf</srcmd5>
+    <version>2.79b</version>
+    <time>1522226031</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.79b</comment>
+    <requestid>591717</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>e9ec643bd601f87a66b57c818e34e876</srcmd5>
+    <version>2.79b</version>
+    <time>1527934495</time>
+    <user>dimstar_suse</user>
+    <comment>Fix boo#1094777</comment>
+    <requestid>613495</requestid>
+  </revision>
+  <revision rev="104" vrev="3">
+    <srcmd5>fb947c8dbd844ed2011d9555ef1d5500</srcmd5>
+    <version>2.79b</version>
+    <time>1528111321</time>
+    <user>dimstar_suse</user>
+    <comment>Only allow headers for x86_64 arch.
+</comment>
+    <requestid>613661</requestid>
+  </revision>
+  <revision rev="105" vrev="4">
+    <srcmd5>85ebdf738a4903fd009dbee0cc0bbb74</srcmd5>
+    <version>2.79b</version>
+    <time>1528196014</time>
+    <user>dimstar_suse</user>
+    <comment>Fix i586 installation issue</comment>
+    <requestid>614112</requestid>
+  </revision>
+  <revision rev="106" vrev="5">
+    <srcmd5>71805b4b23e24e47a2d2829a3448276a</srcmd5>
+    <version>2.79b</version>
+    <time>1529919632</time>
+    <user>dimstar_suse</user>
+    <comment>Fix gcc8 build</comment>
+    <requestid>618510</requestid>
+  </revision>
+  <revision rev="107" vrev="6">
+    <srcmd5>a49d576b21e65087d26236dac4f723e2</srcmd5>
+    <version>2.79b</version>
+    <time>1535441110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631867</requestid>
+  </revision>
+  <revision rev="108" vrev="7">
+    <srcmd5>a0dcc09eab2fcfccbaa187d9841cb621</srcmd5>
+    <version>2.79b</version>
+    <time>1535705094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632088</requestid>
+  </revision>
+  <revision rev="109" vrev="8">
+    <srcmd5>a701d270c98b654215b17dcbe474606f</srcmd5>
+    <version>2.79b</version>
+    <time>1548064103</time>
+    <user>dimstar_suse</user>
+    <comment>Depends on  OpenShadingLanguage see sr#664023
+Enable cycles-osl in build</comment>
+    <requestid>664052</requestid>
+  </revision>
+  <revision rev="110" vrev="9">
+    <srcmd5>97001196d8bc62f81b9009f9737cf773</srcmd5>
+    <version>2.79b</version>
+    <time>1549017880</time>
+    <user>dimstar_suse</user>
+    <comment>Remove %if 1 == 1</comment>
+    <requestid>669099</requestid>
+  </revision>
+  <revision rev="111" vrev="10">
+    <srcmd5>db4a368f28b9efc9d297060631af6e87</srcmd5>
+    <version>2.79b</version>
+    <time>1550048849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674131</requestid>
+  </revision>
+  <revision rev="112" vrev="11">
+    <srcmd5>20be9b742d6c2c4363b9f14e845374f7</srcmd5>
+    <version>2.79b</version>
+    <time>1550402452</time>
+    <user>coolo</user>
+    <comment>fix build with ffmpeg-4</comment>
+    <requestid>676330</requestid>
+  </revision>
+  <revision rev="113" vrev="12">
+    <srcmd5>b454836c223a8eaccd534fe28abaed59</srcmd5>
+    <version>2.79b</version>
+    <time>1553263888</time>
+    <user>dimstar_suse</user>
+    <comment>Enable spacenav input</comment>
+    <requestid>687553</requestid>
+  </revision>
+  <revision rev="114" vrev="13">
+    <srcmd5>9e86c4295b2fcdbd252ee8abe9fec59e</srcmd5>
+    <version>2.79b</version>
+    <time>1559375902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706615</requestid>
+  </revision>
+  <revision rev="115" vrev="14">
+    <srcmd5>f8ba19e6fd6a170cdd7ff7740b0d3686</srcmd5>
+    <version>2.79b</version>
+    <time>1563259246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715001</requestid>
+  </revision>
+  <revision rev="116" vrev="15">
+    <srcmd5>ab490dae3abd2071c185ba83ec73a6a7</srcmd5>
+    <version>2.79b</version>
+    <time>1564137674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718509</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>a96a97715248aff41820e96d31448005</srcmd5>
+    <version>2.80</version>
+    <time>1566464078</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.80 (forwarded request 725039 from plater)</comment>
+    <requestid>725041</requestid>
+  </revision>
+</revisionlist>

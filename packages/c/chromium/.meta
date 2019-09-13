@@ -1,0 +1,8 @@
+<package name="chromium" project="openSUSE:Factory">
+  <title>Google's opens source browser project</title>
+  <description>Chromium is the open-source project behind Google Chrome. We invite you to join us in our effort to help build a safer, faster, and more stable way for all Internet users to experience the web, and to create a powerful platform for developing a new generation of web applications.</description>
+  <devel project="network:chromium" package="chromium"/>
+  <debuginfo>
+    <disable/>
+  </debuginfo>
+</package>

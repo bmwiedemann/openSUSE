@@ -1,0 +1,5 @@
+<package name="phonon-backend-vlc" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Distro:Factory" package="phonon-backend-vlc"/>
+</package>

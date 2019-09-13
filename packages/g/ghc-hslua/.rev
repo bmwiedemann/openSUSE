@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b214f1dbe1dc4abc94c76b093a835d98</srcmd5>
+    <version>0.3.7</version>
+    <time>1396451958</time>
+    <user>coolo</user>
+    <comment>fix license tag</comment>
+    <requestid>227697</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b214f1dbe1dc4abc94c76b093a835d98</srcmd5>
+    <version>0.3.7</version>
+    <time>1409300964</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d3deec5262d2326ab2e27cc6c0805418</srcmd5>
+    <version>0.3.9</version>
+    <time>1428652322</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294837</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>72d99e45cb01505b8c1117fa291f740a</srcmd5>
+    <version>0.3.13</version>
+    <time>1431365915</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306077</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4d6e7426c48638fa5238874c7e988a85</srcmd5>
+    <version>0.4.0</version>
+    <time>1440337391</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324476</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>30b55b0ef96ba7c59419442bb343dba7</srcmd5>
+    <version>0.4.1</version>
+    <time>1442474363</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.1
+* Bugfix: tolist wasn't popping elements of the list from stack.</comment>
+    <requestid>330766</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f99ebe4d9e5be8038a5b570b625b3012</srcmd5>
+    <version>0.4.1</version>
+    <time>1469081075</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411374</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>af1604361b3cf8a8f488fe925d2cf35a</srcmd5>
+    <version>0.4.1</version>
+    <time>1503061553</time>
+    <user>dimstar_suse</user>
+    <comment>fix build to cope with recent lua refactoring</comment>
+    <requestid>517377</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>25a3aa163543dac8e15daf33a28500c2</srcmd5>
+    <version>0.9.5.2</version>
+    <time>1527674927</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-hslua to the latest version.</comment>
+    <requestid>607812</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>73cf5f8e2b629671eab95e1f5e984091</srcmd5>
+    <version>0.9.5.2</version>
+    <time>1532445568</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+    `String -&gt; Lua Status`.
+* Type errors in Haskell functions now propagated differently. See the Scripting.Lua
+* fixed upstream
+* license file contradicts license tag in cabal file
+- Use lua51. Pandoc needs 5.1 API.
+- use system provided lua library</comment>
+    <requestid>623786</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c9e0493a6a464c321097d9a402e79fc3</srcmd5>
+    <version>1.0.1</version>
+    <time>1540448194</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642863</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4aec2d5c367d3e9752ecde441309e4d6</srcmd5>
+    <version>1.0.2</version>
+    <time>1548452592</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>667135</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5509c2a5b9f86ed94a4a5399b8839539</srcmd5>
+    <version>1.0.3</version>
+    <time>1557653727</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>701767</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>43f0173949eb7efcf71fe6d5cec0c9d6</srcmd5>
+    <version>1.0.3.1</version>
+    <time>1558129368</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>703474</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f0d87377253eac5308cc4bda6e29fb00</srcmd5>
+    <version>1.0.3.2</version>
+    <time>1566665059</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>725520</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,14 @@
+<package name="qemu-testsuite" project="openSUSE:Factory">
+  <title>Universal CPU emulator</title>
+  <description>QEMU is an extremely well-performing CPU emulator that allows you to
+choose between simulating an entire system and running userspace
+binaries for different architectures under your native operating
+system. It currently emulates x86, ARM, PowerPC and SPARC CPUs as well
+as PC and PowerMac systems.</description>
+  <devel project="openSUSE:Factory" package="qemu"/>
+  <useforbuild>
+    <disable arch="aarch64"/>
+    <disable arch="armv6l"/>
+  </useforbuild>
+  <bcntsynctag>qemu</bcntsynctag>
+</package>

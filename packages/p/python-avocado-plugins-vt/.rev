@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>73ff80bc23e8bf7e6ac9770012d48bff</srcmd5>
+    <version>63.0</version>
+    <time>1543311597</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>635510</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d7244949a990fd3b57b232a83507a9a1</srcmd5>
+    <version>63.0</version>
+    <time>1543953411</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653699</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fb45712c3e387f25ef339745a2a2cd75</srcmd5>
+    <version>63.0</version>
+    <time>1551114073</time>
+    <user>coolo</user>
+    <comment>- Update package dependencies</comment>
+    <requestid>678930</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e8ae69c0889d2397902677d6429cf2d2</srcmd5>
+    <version>69.0</version>
+    <time>1553611225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 69
+sc 
+  * No upstream changelog available
+- Add make dependency, needed for following tests:
+  * type_specific.io
+  * github-autotest-qemu.qemu_cpu.cpuid.custom.vendor.normal.kvm.
+  * cpu_model_unset.host_cpu_vendor_unknown.qemu_flavor_unknown</comment>
+    <requestid>682836</requestid>
+  </revision>
+</revisionlist>

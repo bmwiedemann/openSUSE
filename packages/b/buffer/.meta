@@ -1,0 +1,8 @@
+<package name="buffer" project="openSUSE:Factory">
+  <title>Buffering stdin and stdout</title>
+  <description>This is a program designed to speed up writing tapes on remote tape
+drives.  When this program is put &quot;in the pipe,&quot; two processes are
+started.  One process reads from standard-in and the other writes to
+standard-out.  Both processes communicate via shared memory.</description>
+  <devel project="Base:System" package="buffer"/>
+</package>

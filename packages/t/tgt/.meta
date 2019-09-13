@@ -1,0 +1,10 @@
+<package name="tgt" project="openSUSE:Factory">
+  <title>Generic Linux target framework (tgt)</title>
+  <description>Linux target framework (tgt) aims to simplify various SCSI target
+driver (iSCSI, Fibre Channel, SRP, etc) creation and maintenance.
+
+Tgt consists of kernel modules, user-space daemon, and user-space
+tools. Some target drivers uses all of them and some use only
+user-space daemon and tools (i.e. they completely runs in user space).</description>
+  <devel project="Base:System" package="tgt"/>
+</package>

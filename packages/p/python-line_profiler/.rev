@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0dc64eeb24e918194ad6c891a7284807</srcmd5>
+    <version>2.1.2</version>
+    <time>1526371991</time>
+    <user>dimstar_suse</user>
+    <comment>A key python performance-tuning tool</comment>
+    <requestid>606244</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>336a80d34861ca92de6964a953dc301a</srcmd5>
+    <version>2.1.2</version>
+    <time>1533045395</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off tests (they are broken,
+  https://github.com/rkern/line_profiler/issues/128)</comment>
+    <requestid>624297</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a04f7284e946f3872e80eee2d0ed9d67</srcmd5>
+    <version>2.1.2</version>
+    <time>1541865437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645309</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bb38188274102e28e7c6ed9934f957e4</srcmd5>
+    <version>2.1.2</version>
+    <time>1546535318</time>
+    <user>dimstar_suse</user>
+    <comment>- Regenerate cython files to fix build under python 3.7</comment>
+    <requestid>662442</requestid>
+  </revision>
+</revisionlist>

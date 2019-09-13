@@ -1,0 +1,6 @@
+<package name="kdelibs4-apidocs" project="openSUSE:Factory">
+  <title>KDE 4 API documentation</title>
+  <description>This package includes the KDE 4 API documentation in HTML
+format for easy browsing.</description>
+  <devel project="openSUSE:Factory" package="kdelibs4"/>
+</package>

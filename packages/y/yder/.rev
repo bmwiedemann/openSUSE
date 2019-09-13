@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e384edd52f860e70856104a73b688a1b</srcmd5>
+    <version>1.3.4</version>
+    <time>1535122946</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain yder in Factory</comment>
+    <requestid>628429</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>94a4babd07c5767140c8ca445f18cb24</srcmd5>
+    <version>1.3.4</version>
+    <time>1535367537</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631409</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>457ecc00a684de4b69b6e00e4973e00d</srcmd5>
+    <version>1.4.4</version>
+    <time>1546946845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662498</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cdbbe058be5000626e3bbe8031972eb8</srcmd5>
+    <version>1.4.6</version>
+    <time>1562591502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713851</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ccc9e2097bc3f342604dc99221d60153</srcmd5>
+    <version>1.4.7</version>
+    <time>1563914155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717663</requestid>
+  </revision>
+</revisionlist>

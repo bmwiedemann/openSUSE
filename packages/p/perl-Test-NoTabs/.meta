@@ -1,0 +1,6 @@
+<package name="perl-Test-NoTabs" project="openSUSE:Factory">
+  <title>Check the presence of tabs in your project</title>
+  <description>This module scans your project/distribution for any perl files (scripts,
+modules, etc) for the presence of tabs.</description>
+  <devel project="devel:languages:perl" package="perl-Test-NoTabs"/>
+</package>

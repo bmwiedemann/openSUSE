@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>32f4d9f62d4260d586d957f15997406c</srcmd5>
+    <version>1.000</version>
+    <time>1348668855</time>
+    <user>coolo</user>
+    <comment>one more font</comment>
+    <requestid>135916</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>32f4d9f62d4260d586d957f15997406c</srcmd5>
+    <version>1.000</version>
+    <time>1359108793</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>32f4d9f62d4260d586d957f15997406c</srcmd5>
+    <version>1.000</version>
+    <time>1379662197</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3f1179f0f8f62b3cca58b3e2519db139</srcmd5>
+    <version>1.014</version>
+    <time>1404817324</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>239869</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3f1179f0f8f62b3cca58b3e2519db139</srcmd5>
+    <version>1.014</version>
+    <time>1409300732</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

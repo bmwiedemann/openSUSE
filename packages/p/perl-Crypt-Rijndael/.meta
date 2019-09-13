@@ -1,0 +1,6 @@
+<package name="perl-Crypt-Rijndael" project="openSUSE:Factory">
+  <title>Crypt::CBC compliant Rijndael encryption module</title>
+  <description>This module implements the Rijndael cipher, which has just been selected as
+the Advanced Encryption Standard.</description>
+  <devel project="devel:languages:perl" package="perl-Crypt-Rijndael"/>
+</package>

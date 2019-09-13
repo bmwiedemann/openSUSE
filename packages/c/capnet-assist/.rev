@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b0ea311941ef4314150656091bf8884</srcmd5>
+    <version>0.2.1</version>
+    <time>1502186302</time>
+    <user>maxlin_factory</user>
+    <comment>updated the license</comment>
+    <requestid>503466</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e032ea996a60a6e54e74909939077de5</srcmd5>
+    <version>2.2.2</version>
+    <time>1545648406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660351</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>85073f970aeec5c6b4c3784f2b777cc1</srcmd5>
+    <version>2.2.3</version>
+    <time>1556817741</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.3:
+  * Spelling: following URL in, + Copyright year updated (#43)
+  * Travis: Use Houston CI (#41) (forwarded request 681429 from awissu)</comment>
+    <requestid>700176</requestid>
+  </revision>
+</revisionlist>

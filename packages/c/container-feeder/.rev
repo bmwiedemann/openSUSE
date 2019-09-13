@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>555422df18f4a634e87411c036c302fc</srcmd5>
+    <version>0.0.0+20180131.git_r63_bdeeca8</version>
+    <time>1517516969</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for building velum</comment>
+    <requestid>571521</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8714a24fa12fa6204195c012731127a9</srcmd5>
+    <version>0.0.0+20180131.git_r63_bdeeca8</version>
+    <time>1520253964</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>582608</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0cf71ea249a4120bc5a22efe388b3648</srcmd5>
+    <version>0.0.0+20180315.git_r72_397c4cf</version>
+    <time>1521193460</time>
+    <user>dimstar_suse</user>
+    <comment>- Commit e44efd4 by Valentin Rothberg vrothberg@suse.com
+ vendor: update libpod to latest image-list fixes
+ 
+ Update github.com/projectatomic/libpod/libpod to the latest version, which
+ includes fixes for image listing, an API used by container-feeder.
+ 
+ Signed-off-by: Valentin Rothberg &lt;vrothberg@suse.com&gt; feature#crio
+ 
+ Commit 5c2f078 by Valentin Rothberg vrothberg@suse.com
+ debug: print images from local storage
+ 
+ Print the images found in the local container storage (e.g., docker, crio)
+ when run in debug mode.  This can be useful for debugging.
+ 
+ Signed-off-by: Valentin Rothberg &lt;vrothberg@suse.com&gt; feature#crio
+
+- Commit 2858df0 by Flavio Castelli fcastelli@suse.com
+ Fixed small typo
+ 
+ Commit 9ec4711 by Flavio Castelli fcastelli@suse.com
+ Don't fall back to docker when something goes wrong
+ 
+ We should exit immediately with an error message instead of falling back to
+ use the docker target.
+ 
+ Signed-off-by: Flavio Castelli &lt;fcastelli@suse.com&gt;
+
+- Commit 2fbe04d by Valentin Rothberg vrothberg@suse.com
+ update packaging</comment>
+    <requestid>587557</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>69e535d88095c37f3510f498a31b8959</srcmd5>
+    <version>0.0.0+20180316.git_r76_501cba1</version>
+    <time>1521499099</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>588048</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>de063bbe7e082bbc8d2e751b2ef20b48</srcmd5>
+    <version>0.0.0+20180321.git_r81_73dfe39</version>
+    <time>1521716882</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>589819</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bfc16b8df75cb9ad90005102d24e7f56</srcmd5>
+    <version>0.0.0+20180427.git_r83_bfb55a4</version>
+    <time>1524838209</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>601889</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a8a3fd4e822466d372a5c1c45f91c3e3</srcmd5>
+    <version>4.0.0+20180511.git_r85_5a29042</version>
+    <time>1526220357</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>606450</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1dcc7af1bef2d7c4dcf25a810288efb5</srcmd5>
+    <version>4.0.0+20180515.git_r86_5f6bccb</version>
+    <time>1527001364</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>611199</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c5623b36ec2a9032112b20bad91d381d</srcmd5>
+    <version>4.0.0+20180531.git_r88_0ab0669</version>
+    <time>1528195971</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>614018</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>875a9540ecef4b955754c5786072463f</srcmd5>
+    <version>4.0.0+20180531.git_r88_0ab0669</version>
+    <time>1534543601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629934</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1c5193b8094651ef7840dafdcc457853</srcmd5>
+    <version>4.0.0+20181105.git_r92_066ce53</version>
+    <time>1543953404</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653679</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a1fdfb569e12cca988d3b3e932bd0850</srcmd5>
+    <version>4.0.0+20181105.git_r92_066ce53</version>
+    <time>1545996840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660273</requestid>
+  </revision>
+</revisionlist>

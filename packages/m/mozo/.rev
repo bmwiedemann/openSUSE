@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c25ddc03b9debc08ba0f6a03c59420a</srcmd5>
+    <version>1.8.0</version>
+    <time>1395495904</time>
+    <user>coolo</user>
+    <comment>Push X11:M:N to X11:M:F; new libraries (external dependencies) and a lot of renamed packages</comment>
+    <requestid>225508</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3c25ddc03b9debc08ba0f6a03c59420a</srcmd5>
+    <version>1.8.0</version>
+    <time>1409301931</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9c971d3b770b67d07e4d537b279981de</srcmd5>
+    <version>1.10.0</version>
+    <time>1436112128</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314213</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>051f633e8bb88a448c18cf57d5004aaa</srcmd5>
+    <version>1.10.1</version>
+    <time>1437724743</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>318221</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8b702b100816b15fb4e48d2718272f5</srcmd5>
+    <version>1.12.0</version>
+    <time>1447234259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>342792</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>978eba7aaec4f470a512541c640e5125</srcmd5>
+    <version>1.12.0</version>
+    <time>1452611628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>353121</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>22e4dfdc5a104c114e8360b250ce6159</srcmd5>
+    <version>1.14.0</version>
+    <time>1460740293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>386874</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f9ac9eb8304b857e7a482305ba2282df</srcmd5>
+    <version>1.14.0</version>
+    <time>1463498096</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>394941</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>77cb1d224e98e24c01cc4affbdc6e7de</srcmd5>
+    <version>1.14.1</version>
+    <time>1472246255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>421878</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>89543568468e82afc3179f6f1773a509</srcmd5>
+    <version>1.16.0</version>
+    <time>1474807441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>429556</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6ba257f5f53bec956069b0744aef2ca2</srcmd5>
+    <version>1.18.0</version>
+    <time>1490026373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481146</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9ca4d44d538a5dff1997152aeae5cf61</srcmd5>
+    <version>1.20.0</version>
+    <time>1521579476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586607</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e628a813cb4ae579ca5944edfd29f524</srcmd5>
+    <version>1.20.1</version>
+    <time>1529919658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618547</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>f4e1848d3d01f74a0886ad356d17f0bd</srcmd5>
+    <version>1.20.1</version>
+    <time>1538502577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639581</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a79e7e7f6d0f3bdcf89c52a5c9901e05</srcmd5>
+    <version>1.20.2</version>
+    <time>1545996954</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.2.</comment>
+    <requestid>661668</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>43c8139b8f82be49558a495e345914eb</srcmd5>
+    <version>1.22.0</version>
+    <time>1558037100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0.</comment>
+    <requestid>682584</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>117deae3f577b12f2071bf2a33cf02ba</srcmd5>
+    <version>1.22.1</version>
+    <time>1560970700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.1.</comment>
+    <requestid>704758</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2c066c2e8ad5b7da91857fde3069bf76</srcmd5>
+    <version>1.23.0</version>
+    <time>1564576564</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>719971</requestid>
+  </revision>
+</revisionlist>

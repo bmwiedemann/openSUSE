@@ -1,0 +1,8 @@
+<package name="ifuse" project="openSUSE:Factory">
+  <title>Filesystem access for the iPhone, iPod Touch and iPad</title>
+  <description>iFuse is a FUSE filesystem driver which uses `libimobiledevice` to connect to
+devices without the need for a jailbreak.
+It is using the native Apple &quot;AFC&quot; protocol, over the normal USB cable in order
+to access the iPhone's, iPod Touch's or iPad's media files under Linux.</description>
+  <devel project="hardware" package="ifuse"/>
+</package>

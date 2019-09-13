@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>579693ebff14eb5242674081141f3b6c</srcmd5>
+    <version>1397618874.f2c20471488c</version>
+    <time>1428652242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>294707</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c28d348ac17b2e297b6d70abf678e6b</srcmd5>
+    <version>3.2.1</version>
+    <time>1469831193</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>414947</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>53ae4b0caffbb542bcf21c75a05486f8</srcmd5>
+    <version>3.2.1</version>
+    <time>1473888840</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>417195</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>62ba62ce3ee3e6d3ba825c6caabb5e38</srcmd5>
+    <version>4.1</version>
+    <time>1510045236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539101</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b219193238219dfc805f2c887419832a</srcmd5>
+    <version>4.1</version>
+    <time>1527605426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611705</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1d126ade9f48ccdfbc4adf69061b50a</srcmd5>
+    <version>4.1.2</version>
+    <time>1534100182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628748</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>112ee333475abf133534ad317afed688</srcmd5>
+    <version>4.2</version>
+    <time>1539013745</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2
+  * Added SIGHUP handling of listener processes
+  * Added an example bash_completion script
+  * Better cleanup handling of peer information
+</comment>
+    <requestid>640532</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f73179c2ae8908f45eef97c25fc80cbd</srcmd5>
+    <version>4.3</version>
+    <time>1549286755</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.3 
+  * Add --srv-service
+  * Change --adaptive behavior to better match ping -A
+  * Fix typos in manpage
+- Ran spec-cleaner
+- Fix rpmlint duplicate error with fdupes (forwarded request 670914 from elimat)</comment>
+    <requestid>670998</requestid>
+  </revision>
+</revisionlist>

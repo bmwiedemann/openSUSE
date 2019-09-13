@@ -1,0 +1,8 @@
+<package name="perl-Net-IPv4Addr" project="openSUSE:Factory">
+  <title>Net::IPv4Addr Module for Perl</title>
+  <description>Net::IPv4Addr provides functions for parsing IPv4 addresses both in
+traditional address/netmask format and in the new CIDR format. There
+are also methods for calculating the network and broadcast address and
+also to see check if a given address is in a specific network.</description>
+  <devel project="devel:languages:perl" package="perl-Net-IPv4Addr"/>
+</package>

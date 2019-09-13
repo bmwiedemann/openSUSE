@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4dd778fbb89ecdae1d87d9677dfdc936</srcmd5>
+    <version>1.0.4</version>
+    <time>1336471520</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115468</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4dd778fbb89ecdae1d87d9677dfdc936</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184370</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>4dd778fbb89ecdae1d87d9677dfdc936</srcmd5>
+    <version>1.0.4</version>
+    <time>1359110655</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>4dd778fbb89ecdae1d87d9677dfdc936</srcmd5>
+    <version>1.0.4</version>
+    <time>1379665081</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>a9b791dad0258f3d1a1b8e803cba4180</srcmd5>
+    <version>1.0.4</version>
+    <time>1391770606</time>
+    <user>scarabeus_factory</user>
+    <comment>- fixed license to X11 in specfile</comment>
+    <requestid>221092</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>a9b791dad0258f3d1a1b8e803cba4180</srcmd5>
+    <version>1.0.4</version>
+    <time>1409303767</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>103c1e312aea83c57dfe63e5ada44303</srcmd5>
+    <version>1.0.5</version>
+    <time>1551785014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681414</requestid>
+  </revision>
+</revisionlist>

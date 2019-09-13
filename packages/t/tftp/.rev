@@ -1,0 +1,296 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4860078f02f6b1888a61eb41614b1c76</srcmd5>
+    <version>0.46</version>
+    <time>1168361762</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1bc51fd93511fe3e520e7ad7fb6d9da5</srcmd5>
+    <version>0.48</version>
+    <time>1170428011</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="82">
+    <srcmd5>69bfe2f81df96ec8e3685abd8f664e0a</srcmd5>
+    <version>0.48</version>
+    <time>1216419187</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="90">
+    <srcmd5>37080b74674a155e295fc131941fb60d</srcmd5>
+    <version>0.48</version>
+    <time>1218065759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="98">
+    <srcmd5>588706c61a1531bc3a82c0f370cddd60</srcmd5>
+    <version>0.48</version>
+    <time>1219883021</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="101">
+    <srcmd5>8d0429a4b00564491ba93ff7c3d07b7c</srcmd5>
+    <version>0.48</version>
+    <time>1220276001</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="103">
+    <srcmd5>8d0429a4b00564491ba93ff7c3d07b7c</srcmd5>
+    <version>0.48</version>
+    <time>1220276001</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="104">
+    <srcmd5>978e9a10f77ecd1bb1e3c8f87a894b2f</srcmd5>
+    <version>0.48</version>
+    <time>1268926327</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="107">
+    <srcmd5>504f855da215154e2162f3a71e1f6f4e</srcmd5>
+    <version>0.48</version>
+    <time>1277824561</time>
+    <user>autobuild</user>
+    <comment>Copy from network/tftp based on submit request 42234 from user puzel
+</comment>
+    <requestid>42234</requestid>
+  </revision>
+  <revision rev="10" vrev="108">
+    <srcmd5>504f855da215154e2162f3a71e1f6f4e</srcmd5>
+    <version>0.48</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="109">
+    <srcmd5>504f855da215154e2162f3a71e1f6f4e</srcmd5>
+    <version>0.48</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="110">
+    <srcmd5>bbc8c432bc1c2666db68dcb01a0a339e</srcmd5>
+    <version>0.48</version>
+    <time>1285974777</time>
+    <user>autobuild</user>
+    <comment>Copy from network/tftp based on submit request 49622 from user puzel
+</comment>
+    <requestid>49622</requestid>
+  </revision>
+  <revision rev="13" vrev="110">
+    <srcmd5>25b715179f1278cefe9edb4cb7ac98c8</srcmd5>
+    <version>5.0</version>
+    <time>1292253274</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55794 from user puzel
+</comment>
+    <requestid>55794</requestid>
+  </revision>
+  <revision rev="14" vrev="111">
+    <srcmd5>f3e87abc122b1d66b14eb42375ed042d</srcmd5>
+    <version>5.0</version>
+    <time>1292253295</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55794
+</comment>
+  </revision>
+  <revision rev="15" vrev="114">
+    <srcmd5>f3e87abc122b1d66b14eb42375ed042d</srcmd5>
+    <version>5.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dff7b528046e26d1fd3661782cc7937e</srcmd5>
+    <version>5.1</version>
+    <time>1308902201</time>
+    <user>saschpe</user>
+    <comment>unbreak tftp by changing to user to run as in tftpd itself, not via xinetd (bnc#682340), update to version-5.1  (fixes bnc#699714, CVE-2011-2199)</comment>
+    <requestid>74432</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>81d735670befe3d7c47746f49e33f121</srcmd5>
+    <version>5.1</version>
+    <time>1308902213</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74432
+</comment>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>afaf78193913cccfc143d428c17f20e9</srcmd5>
+    <version>5.1</version>
+    <time>1315562119</time>
+    <user>saschpe</user>
+    <comment>- added missing PreReq: pwdutils
+- use 'tftp' instead of %name in %pre, 
+  just in case someone blindly copies this %pre to atfp.spec (forwarded request 81089 from vitezslav_cizek)</comment>
+    <requestid>81361</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>0f74ef6797c512031cc64c6d0d5bbd9e</srcmd5>
+    <version>5.1</version>
+    <time>1315562125</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81361
+</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>0f74ef6797c512031cc64c6d0d5bbd9e</srcmd5>
+    <version>5.1</version>
+    <time>1319182516</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>cadc5ef4f2ed6dd119ada81707ec4d29</srcmd5>
+    <version>5.1</version>
+    <time>1324913380</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97340 from coolo)</comment>
+    <requestid>98192</requestid>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>cadc5ef4f2ed6dd119ada81707ec4d29</srcmd5>
+    <version>5.1</version>
+    <time>1340184270</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7bbda993354ca38355dcfd97a0b16b22</srcmd5>
+    <version>5.2</version>
+    <time>1346915204</time>
+    <user>coolo</user>
+    <comment>- update to 5.2
+  - fixes a breakage with recent Linux kernel versions when a
+    single interface has multiple IP addresses (bnc#774861) (forwarded request 132540 from vitezslav_cizek)</comment>
+    <requestid>132582</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>20ba2650e4e975d68e48ddd155b387fb</srcmd5>
+    <version>5.2</version>
+    <time>1354978425</time>
+    <user>namtrac</user>
+    <comment>Install systemd service / socket (forwarded request 144351 from dimstar)</comment>
+    <requestid>144426</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>20ba2650e4e975d68e48ddd155b387fb</srcmd5>
+    <version>5.2</version>
+    <time>1359110485</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>a7349cdbf17a656f43a512d0acdfc292</srcmd5>
+    <version>5.2</version>
+    <time>1360872944</time>
+    <user>coolo</user>
+    <comment>- create capabilites provided by both tftp and atftp
+  (bnc#801481 or bnc#725378) (forwarded request 155399 from vitezslav_cizek)</comment>
+    <requestid>155403</requestid>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>3ab5fcc794f3660ac34c31a286d05bff</srcmd5>
+    <version>5.2</version>
+    <time>1366710037</time>
+    <user>coolo</user>
+    <comment>- change ownership of /srv/tftpboot to tftp:tftp, otherwise tftp
+  daemon can't write there (bnc#813226) (forwarded request 171384 from vitezslav_cizek)</comment>
+    <requestid>172607</requestid>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>3ab5fcc794f3660ac34c31a286d05bff</srcmd5>
+    <version>5.2</version>
+    <time>1379664810</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>b0bbb329946e922556c183f7df1e9332</srcmd5>
+    <version>5.2</version>
+    <time>1396291383</time>
+    <user>coolo</user>
+    <comment>- drop tftp-hpa-0.43_old-autoconf.diff not needed for any
+  product still in active maintenance.
+- Use correct systemd macros in %pre, %post..
+- config.h must be included *everywhere* (tftp-config_h.patch)
+- tftp.service: 
+   * This service needs to be started after network.target
+   * Use PrivateDevices=yes (forwarded request 227500 from elvigia)</comment>
+    <requestid>227743</requestid>
+  </revision>
+  <revision rev="30" vrev="11">
+    <srcmd5>b0bbb329946e922556c183f7df1e9332</srcmd5>
+    <version>5.2</version>
+    <time>1409303488</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="12">
+    <srcmd5>88382b076b965d28a1d9684fc14adea1</srcmd5>
+    <version>5.2</version>
+    <time>1443071869</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332042</requestid>
+  </revision>
+  <revision rev="32" vrev="13">
+    <srcmd5>53b598ab378dddbf80a25d092c3d3cea</srcmd5>
+    <version>5.2</version>
+    <time>1446765017</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342085</requestid>
+  </revision>
+  <revision rev="33" vrev="14">
+    <srcmd5>984d2963d67278d35851093e7a8c28f4</srcmd5>
+    <version>5.2</version>
+    <time>1498202202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504145</requestid>
+  </revision>
+  <revision rev="34" vrev="15">
+    <srcmd5>1b5fc92dd5ccb2fc62580322596436de</srcmd5>
+    <version>5.2</version>
+    <time>1507197173</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522872</requestid>
+  </revision>
+  <revision rev="35" vrev="16">
+    <srcmd5>96827a845dd1aeff2bf0e94300502ee6</srcmd5>
+    <version>5.2</version>
+    <time>1511948968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545047</requestid>
+  </revision>
+  <revision rev="36" vrev="17">
+    <srcmd5>b3d6fd814cb15affe41641368a1901fe</srcmd5>
+    <version>5.2</version>
+    <time>1531469982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621875</requestid>
+  </revision>
+  <revision rev="37" vrev="18">
+    <srcmd5>1b20c0f06bae2b261dc1f030f6a33f9c</srcmd5>
+    <version>5.2</version>
+    <time>1556915756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698145</requestid>
+  </revision>
+  <revision rev="38" vrev="19">
+    <srcmd5>40dfd56d44be40203985bc28b827833c</srcmd5>
+    <version>5.2</version>
+    <time>1563259045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714582</requestid>
+  </revision>
+</revisionlist>

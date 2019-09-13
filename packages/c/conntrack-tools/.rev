@@ -1,0 +1,265 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>642ade5009ec61e4d5ecaf40455d6ca4</srcmd5>
+    <version>0.9.14</version>
+    <time>1267529199</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/conntrack-tools based on submit request 33707 from user jengelh
+</comment>
+    <requestid>33707</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b4ea380de82a3312a60cfdee9471b359</srcmd5>
+    <version>0.9.14</version>
+    <time>1268923235</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b4ea380de82a3312a60cfdee9471b359</srcmd5>
+    <version>0.9.14</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>b4ea380de82a3312a60cfdee9471b359</srcmd5>
+    <version>0.9.14</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>94a0c57a839622bb6c1153f4d294de58</srcmd5>
+    <version>0.9.15</version>
+    <time>1285283022</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/conntrack-tools based on submit request 48982 from user coolo
+</comment>
+    <requestid>48982</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>94a0c57a839622bb6c1153f4d294de58</srcmd5>
+    <version>0.9.15</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>17dafa02964a2be99185b26288d5d75b</srcmd5>
+    <version>1.0.0</version>
+    <time>1312446043</time>
+    <user>saschpe</user>
+    <comment>- new upstream release 1.0.0
+* SYN_SENT2 support for the command line tool conntrack (which was
+  added in Linux kernel &gt;= 2.6.31).
+* allow to listen to update and destroy expectation events (it
+  requires a Linux kernel &gt;= 2.6.37).
+* conntrack timestamping support with -o ktimestamp (this support
+  requires the upcoming Linux 2.6.38).
+* one fix for conntrackd: two very consecutive commit invocations
+  with option -c may result in the hang of the second commit
+  invocation if the first commit did not finish yet. As a result the
+  second commit invocation required a manual SIGTERM.
+- Remove redundant %clean section</comment>
+    <requestid>77301</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2adf975e54bb5355197acd8130005f13</srcmd5>
+    <version>1.0.0</version>
+    <time>1312446053</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77301
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>484b005749e0003542d5a5470c61481a</srcmd5>
+    <version>1.0.0</version>
+    <time>1316440604</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile</comment>
+    <requestid>82921</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>484b005749e0003542d5a5470c61481a</srcmd5>
+    <version>1.0.0</version>
+    <time>1319181822</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>493e09750dc732ec8b0f6d6aee07466a</srcmd5>
+    <version>1.0.0</version>
+    <time>1323191043</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ac6e1025a67bb52fd3f5a327510bf0f4</srcmd5>
+    <version>1.0.1</version>
+    <time>1328890333</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.0.1
+* add support for mark masks</comment>
+    <requestid>103452</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>00fe59be4c0411adb4cd255d601c0f13</srcmd5>
+    <version>1.2.1</version>
+    <time>1338280382</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.2.1
+* Add support for NAT expectations, synchronization of expectation
+  class, helper names and expect functions. Filtering by mark is
+  now allowed.</comment>
+    <requestid>122514</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>d72e334abaee4f1c9539dea34a2a19fd</srcmd5>
+    <version>1.2.1</version>
+    <time>1338527986</time>
+    <user>coolo</user>
+    <comment>- Resolve compilation failure due to missing #include</comment>
+    <requestid>123055</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>d72e334abaee4f1c9539dea34a2a19fd</srcmd5>
+    <version>1.2.1</version>
+    <time>1340183248</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>00c8c23ddc9237c0ee35605ed72de908</srcmd5>
+    <version>1.2.2</version>
+    <time>1344074132</time>
+    <user>namtrac</user>
+    <comment>- Update to new upstream release 1.2.2
+* conntrackd: commit operation has to be synchronous
+* conntrackd: implement selective flushing for -t and -F commands</comment>
+    <requestid>129444</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e035694ac1986fbe18365a961fd01238</srcmd5>
+    <version>1.4.0</version>
+    <time>1350450784</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138218</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>de1c1007a547dba125ff98c7dc2c85d9</srcmd5>
+    <version>1.4.0</version>
+    <time>1355463422</time>
+    <user>coolo</user>
+    <comment>- Verify GPG signature</comment>
+    <requestid>144978</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>de1c1007a547dba125ff98c7dc2c85d9</srcmd5>
+    <version>1.4.0</version>
+    <time>1359108766</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6ae03d9115f8d283559636b2faee9139</srcmd5>
+    <version>1.4.1</version>
+    <time>1362744074</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.4.1</comment>
+    <requestid>157933</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8cae3a2edc391157b0f92cf789094f92</srcmd5>
+    <version>1.4.2</version>
+    <time>1377248874</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195953</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>8cae3a2edc391157b0f92cf789094f92</srcmd5>
+    <version>1.4.2</version>
+    <time>1379662144</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>8cae3a2edc391157b0f92cf789094f92</srcmd5>
+    <version>1.4.2</version>
+    <time>1409300673</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>20614acaae9276705f57a9f435a0398b</srcmd5>
+    <version>1.4.2</version>
+    <time>1411721517</time>
+    <user>coolo</user>
+    <comment>- Drop gpg-offline build-time requirement</comment>
+    <requestid>251750</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>baa7ac36211a40ea6fd319a568580aaf</srcmd5>
+    <version>1.4.2.g26</version>
+    <time>1420927521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new git snapshot 1.4.2.g26</comment>
+    <requestid>280644</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>9f2c0e6c6a3a6e12d06ba080ebe35e45</srcmd5>
+    <version>1.4.2.g26</version>
+    <time>1440658672</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>326639</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8f15174bfbf3f741adec09119a4fa87f</srcmd5>
+    <version>1.4.3</version>
+    <time>1441955051</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.4.3</comment>
+    <requestid>330263</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a500369af8208e7731849f92346f55db</srcmd5>
+    <version>1.4.4</version>
+    <time>1472379476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.4.4</comment>
+    <requestid>421145</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>966940bdd9279db823084f404818de48</srcmd5>
+    <version>1.4.4</version>
+    <time>1518281875</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>573850</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>c776c3449a35f5387aacac8a1b9ce298</srcmd5>
+    <version>1.4.4</version>
+    <time>1521405902</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tirpc for openSUSE 15 and onwards.</comment>
+    <requestid>588036</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7562bb957b1f4b3dbd7819eb929bdea3</srcmd5>
+    <version>1.4.5</version>
+    <time>1525779414</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.4.5</comment>
+    <requestid>602813</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>f7111025372ede558fe9f28712cb27f2</srcmd5>
+    <version>1.4.5</version>
+    <time>1565962025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722318</requestid>
+  </revision>
+</revisionlist>

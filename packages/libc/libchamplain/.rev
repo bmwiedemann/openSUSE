@@ -1,0 +1,452 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e62c2290caedc8335108e353fe65dd1d</srcmd5>
+    <version>0.3.3</version>
+    <time>1249915569</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>14a1e061f7fa1541355d3c95ea0b55f5</srcmd5>
+    <version>0.3.90</version>
+    <time>1250515902</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 17856 from user vuntz
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ffbe9937d63355406215c4f5fa1e9018</srcmd5>
+    <version>0.3.91</version>
+    <time>1252017616</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 19754 from user vuntz
+</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a178066dc1a46357bf3759517b7b8989</srcmd5>
+    <version>0.3.92</version>
+    <time>1252109914</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 19915 from user vuntz
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>507f856209a5810be9a0e8c58decb656</srcmd5>
+    <version>0.4.0</version>
+    <time>1254788287</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 21801 from user vuntz
+</comment>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>507f856209a5810be9a0e8c58decb656</srcmd5>
+    <version>0.4.0</version>
+    <time>1254788287</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 21801 from user vuntz
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>85b74f59602c31328a396f23fba83a9a</srcmd5>
+    <version>0.4.2</version>
+    <time>1260269363</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 25863 from user vuntz
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0619b38a486b5e76da9881cc3874e219</srcmd5>
+    <version>0.4.2</version>
+    <time>1262129003</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 27849 from user vuntz
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>48392f9c83104a7c4ab066a0b739eb2d</srcmd5>
+    <version>0.4.3</version>
+    <time>1263826524</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 29744 from user vuntz
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>389cbcc821c9c019b8200d5eacee8bb0</srcmd5>
+    <version>0.4.4</version>
+    <time>1265915835</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 32280 from user vuntz
+</comment>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d64c9e4d007fe2d95204f6b42c818a28</srcmd5>
+    <version>0.4.4</version>
+    <time>1268924524</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>767e8ba74fbec507ac6dd649e9bef702</srcmd5>
+    <version>0.4.5</version>
+    <time>1270085495</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 36357 from user vuntz
+</comment>
+    <requestid>36357</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>767e8ba74fbec507ac6dd649e9bef702</srcmd5>
+    <version>0.4.5</version>
+    <time>1278667357</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>767e8ba74fbec507ac6dd649e9bef702</srcmd5>
+    <version>0.4.5</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>918e5d8c957209cee993d44529009c84</srcmd5>
+    <version>0.4.5</version>
+    <time>1281391801</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 45106 from user vuntz
+</comment>
+    <requestid>45106</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4ccd9b5521180c4265fe377dfd8a53b9</srcmd5>
+    <version>0.7.1</version>
+    <time>1283163782</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 46559 from user vuntz
+</comment>
+    <requestid>46559</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b33d625aac21db7afd3229f7e87f5a24</srcmd5>
+    <version>unknown</version>
+    <time>1284374574</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 47778 from user vuntz
+</comment>
+    <requestid>47778</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>c1dbbc318a00721061d1ee8223e363bb</srcmd5>
+    <version>0.7.2</version>
+    <time>1285280861</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 48937 from user vuntz
+</comment>
+    <requestid>48937</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>12cfc90c6e6c3fa372745757bb82e6f1</srcmd5>
+    <version>0.8.0</version>
+    <time>1287154105</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libchamplain based on submit request 50743 from user vuntz
+</comment>
+    <requestid>50743</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>78b2446018cebd257c4d3bb50c92d480</srcmd5>
+    <version>0.8.0</version>
+    <time>1292770475</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56110 from user vuntz
+</comment>
+    <requestid>56110</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>b1c47a6912c95c3136121d3b84ad3f05</srcmd5>
+    <version>0.8.0</version>
+    <time>1292770483</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56110
+</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>b1c47a6912c95c3136121d3b84ad3f05</srcmd5>
+    <version>0.8.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a5a8edc393ac112d5ce9d0b345ce4f13</srcmd5>
+    <version>0.10.0</version>
+    <time>1304421400</time>
+    <user>darix</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69103</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>29b134b78b744f566b549d80fd2695c2</srcmd5>
+    <version>0.10.0</version>
+    <time>1313738433</time>
+    <user>saschpe</user>
+    <comment>Fix build on Factory - Likely not the really right fix</comment>
+    <requestid>79265</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>621776c17edeb50e54dfc66480dacab4</srcmd5>
+    <version>0.10.0</version>
+    <time>1313738443</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79265
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b1af62d02693daa34623e99d5de08e1f</srcmd5>
+    <version>0.11.0</version>
+    <time>1315561275</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81515</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7630dc0157ad304d011b5534806fe7bb</srcmd5>
+    <version>0.12.0</version>
+    <time>1317740335</time>
+    <user>oertel</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85692</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>7630dc0157ad304d011b5534806fe7bb</srcmd5>
+    <version>0.12.0</version>
+    <time>1319182078</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c178b5e9ab343cd5bdfe34de94484446</srcmd5>
+    <version>0.12.1</version>
+    <time>1326118678</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99088</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>b20e27c86659a45eca6a7b85d81d247c</srcmd5>
+    <version>0.12.1</version>
+    <time>1330692523</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>107301</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>abc56534aaedc35a597aa21f5673adbf</srcmd5>
+    <version>0.12.2</version>
+    <time>1332500762</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>109435</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>abc56534aaedc35a597aa21f5673adbf</srcmd5>
+    <version>0.12.2</version>
+    <time>1340183570</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e07a23222d0cedf1ec04de03849e7b04</srcmd5>
+    <version>0.12.3</version>
+    <time>1342625011</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.12.3 (forwarded request 127910 from dimstar)</comment>
+    <requestid>128058</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>e07a23222d0cedf1ec04de03849e7b04</srcmd5>
+    <version>0.12.3</version>
+    <time>1359109249</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d037cdb8787788870d11bbe3b815dcdc</srcmd5>
+    <version>0.12.4</version>
+    <time>1369641091</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.12.4:
+  + Add dependency on clutter 1.12 and fix all the deprecation
+    warnings.
+  + Many internal cleanups and minor improvements.
+  + Fix gtk and libsoup deprecation warnings.
+  + Deprecate CHAMPLAIN_MAP_SOURCE_OSM_OSMARENDER and
+    CHAMPLAIN_MAP_SOURCE_OAM which don't exist any more and remove
+    them from the factory.
+  + Deprecate ChamplainCustomMarker.
+  + Deprecate champlain_view_bin_layout_add().
+  + Fix blurry map when view resized.
+  + Use more neutral map background color.
+  + Add champlain_view_get_bounding_box() and
+    champlain_bounding_box_covers().
+  + Add a possibility to set a background texture.
+  + Add Mapquest Open Aerial map source.
+  + Added the possibility to use TMS correct y-axis.
+  + Minor fixes and improvements.</comment>
+    <requestid>176014</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>d037cdb8787788870d11bbe3b815dcdc</srcmd5>
+    <version>0.12.4</version>
+    <time>1379662915</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>49b3cc6c885919d7e17182967baf52cb</srcmd5>
+    <version>0.12.5</version>
+    <time>1379922061</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.92</comment>
+    <requestid>200028</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2d8f85bfa16ebdeb0247eee1e6d47d9d</srcmd5>
+    <version>0.12.6</version>
+    <time>1391665804</time>
+    <user>coolo</user>
+    <comment>Update to 0.12.6 (forwarded request 220865 from Zaitor)</comment>
+    <requestid>220995</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5dc9baf41f69ca89d440b99217c17e1c</srcmd5>
+    <version>0.12.7</version>
+    <time>1392110989</time>
+    <user>coolo</user>
+    <comment>Update to 0.12.7 (forwarded request 221190 from Zaitor)</comment>
+    <requestid>221358</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>be73f010783fb13be2ca50680ad44907</srcmd5>
+    <version>0.12.8</version>
+    <time>1404487109</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239331</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>be73f010783fb13be2ca50680ad44907</srcmd5>
+    <version>0.12.8</version>
+    <time>1409301519</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>9c34ff5216be712bf3e8866eee3c5b09</srcmd5>
+    <version>0.12.9</version>
+    <time>1412098667</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251932 from Zaitor)</comment>
+    <requestid>252065</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ebf66431537e2360522d7d2a687b1edf</srcmd5>
+    <version>0.12.10</version>
+    <time>1426795468</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291276</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b2e002acb665eaae463d2aae8a721da8</srcmd5>
+    <version>0.12.11</version>
+    <time>1443684466</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 332514 from dimstar)</comment>
+    <requestid>332560</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1898a0fe8e5bd30e98b476b58c639ecf</srcmd5>
+    <version>0.12.12</version>
+    <time>1450364072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348292</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>85f5e41ccfbace2587d9b253bf2b9b75</srcmd5>
+    <version>0.12.13</version>
+    <time>1459254447</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>364544</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>00200f4bdb867cd3f373165d7dce6700</srcmd5>
+    <version>0.12.13</version>
+    <time>1464964298</time>
+    <user>dimstar_suse</user>
+    <comment>Sync package with SLE12SP2 - just for easier tracking (forwarded request 399214 from dimstar)</comment>
+    <requestid>399421</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f13056af619d812eb17a8076cb9c0f1c</srcmd5>
+    <version>0.12.14</version>
+    <time>1474475318</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>426733</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>fd342bc57107de50fbec3e51e42cc75c</srcmd5>
+    <version>0.12.15</version>
+    <time>1490220118</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478746</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6aa55bc03a847aac85bc3e3bc0eae2c1</srcmd5>
+    <version>0.12.16</version>
+    <time>1505331804</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.12.16 (forwarded request 521852 from dimstar)</comment>
+    <requestid>521938</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>b01a0f3d79f304330609df80ba12091f</srcmd5>
+    <version>0.12.16</version>
+    <time>1517668711</time>
+    <user>dimstar_suse</user>
+    <comment>- Add
+  libchamplain-Fix-wrapping-champlain_view_x_to_longitude.patch:
+  Fix wrapping in champlain_view_x_to_longitude. Previous
+  implementation assumed that after using x_to_wrap_x further
+  wrapping would be needed only if x + priv-&amp;gt;viewport_x &amp;gt;= width.
+- Do minor spec cleanup, use autosetup, make_build and make_install
+  macros, drop obsolete and unused BUILD_FROM_VCS conditional
+  gnome-common and gtk-doc BuildRequires and autogen.sh call. (forwarded request 570604 from iznogood)</comment>
+    <requestid>572079</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>0b1c46f01ea6659e6b844b022e434d42</srcmd5>
+    <version>0.12.16</version>
+    <time>1520502410</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581214 from dimstar)</comment>
+    <requestid>582806</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>15acba677ded04284af15f1cd06e81b2</srcmd5>
+    <version>0.12.16</version>
+    <time>1548537378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666336</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>f391e62db430e425df6809e0e134eea7</srcmd5>
+    <version>0.12.19</version>
+    <time>1552042811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681423</requestid>
+  </revision>
+</revisionlist>

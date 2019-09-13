@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63a73d8c47c42d768d6812ad8110985b</srcmd5>
+    <version>1.4c</version>
+    <time>1334692639</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>114068</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dd5a29b033733a0db669acab7ef5ad4c</srcmd5>
+    <version>1.4c</version>
+    <time>1335165121</time>
+    <user>coolo</user>
+    <comment>Updated the configuration options for the initscript. (forwarded request 114466 from tokoyami)</comment>
+    <requestid>114494</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>dd5a29b033733a0db669acab7ef5ad4c</srcmd5>
+    <version>1.4c</version>
+    <time>1340183191</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>dd5a29b033733a0db669acab7ef5ad4c</srcmd5>
+    <version>1.4c</version>
+    <time>1359108681</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>e7651b2f79a293e71a9fe48fc392ec7a</srcmd5>
+    <version>1.4c</version>
+    <time>1364986036</time>
+    <user>coolo</user>
+    <comment>Adds support for starting multiple autossh instances from the init service. (forwarded request 161409 from tokoyami)</comment>
+    <requestid>161418</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>e7651b2f79a293e71a9fe48fc392ec7a</srcmd5>
+    <version>1.4c</version>
+    <time>1379662011</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>4b181701ea22cfd9b43ec54284470685</srcmd5>
+    <version>1.4c</version>
+    <time>1406479643</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242466</requestid>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>4b181701ea22cfd9b43ec54284470685</srcmd5>
+    <version>1.4c</version>
+    <time>1409300538</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0fd12f6de70db9ecc177231485ab7e4e</srcmd5>
+    <version>1.4d</version>
+    <time>1419159879</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265783</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3cdcde510418896e1d97205547c54539</srcmd5>
+    <version>1.4d</version>
+    <time>1431365960</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306268</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e495d3a0995880c4ebf01f2d25a1b260</srcmd5>
+    <version>1.4d</version>
+    <time>1431668659</time>
+    <user>coolo</user>
+    <comment>A couple more small cleanups for systemd</comment>
+    <requestid>307077</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d77957ec9f7208290f5fc29cbb4e7407</srcmd5>
+    <version>1.4e</version>
+    <time>1443585146</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>334004</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>74e1088df1bf808bbf3bcc067feada51</srcmd5>
+    <version>1.4e</version>
+    <time>1511817361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545265</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f9a208cb18c686abbf83d5326f97ddf2</srcmd5>
+    <version>1.4f</version>
+    <time>1539758498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4f
+  + Change behavior when ssh exits on signal.
+  + Fix order of arguments to kill().
+  + Ignore SIGPIPE. 
+  + Should accept the default -1 with AUTOSSH_MAXSTART
+  + memset() sigaction structure before use
+- autossh-makefile-destdir.patch: dropped</comment>
+    <requestid>642238</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7cb06bf13ca1d7f5b2b3d9f63cf54afe</srcmd5>
+    <version>1.4g</version>
+    <time>1553888568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689491</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e6d3ea5b1e8f2a60ebf1c598b56b3651</srcmd5>
+    <version>1.4g</version>
+    <time>1565695289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722419</requestid>
+  </revision>
+</revisionlist>

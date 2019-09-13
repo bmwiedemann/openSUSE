@@ -1,0 +1,9 @@
+<package name="celt051" project="openSUSE:Factory">
+  <title>CELT is a very low delay audio codec</title>
+  <description>CELT is a very low delay audio codec designed for high-quality communications.                      
+Its potential uses include video-conferencing and network music performance.                        
+                                                                                                    
+This is a maintained branch of the 0.5.1 prerelease of CELT.                                        </description>
+  <devel project="Virtualization" package="celt051"/>
+  <url>http://www.celt-codec.org/</url>
+</package>

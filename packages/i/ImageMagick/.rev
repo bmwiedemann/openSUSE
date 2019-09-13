@@ -1,0 +1,2299 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>1330ccc67bd74101ca89ed13b5c753dc</srcmd5>
+    <version>6.3.0.0</version>
+    <time>1168901354</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="30">
+    <srcmd5>5fbe295821665f1642fb4772ee4c70ec</srcmd5>
+    <version>6.3.0.0</version>
+    <time>1171914313</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="32">
+    <srcmd5>65c9df0f707c21c6a191474248b2c850</srcmd5>
+    <version>6.3.0.0</version>
+    <time>1172778678</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7a5b637fcf68fad3d1ac05892bb3c0ee</srcmd5>
+    <version>6.3.3.8</version>
+    <time>1177011990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8a7e6a1239373065dc7f6cb6f6ccc3d3</srcmd5>
+    <version>6.3.5.3</version>
+    <time>1185531094</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>830c98d4f9f6d832749ece301b0a7505</srcmd5>
+    <version>6.3.5.3</version>
+    <time>1185698968</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>6ae476f4207dc40ef24b855ecf2abe1c</srcmd5>
+    <version>6.3.5.3</version>
+    <time>1186171677</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0df1458b3f99139f26af96b5aab68fa4</srcmd5>
+    <version>6.3.5.10</version>
+    <time>1190747352</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>5903a12783e58fc539683b44af305fea</srcmd5>
+    <version>6.3.5.10</version>
+    <time>1191854838</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61f1e929b0eed4d715f89c0809ce0a95</srcmd5>
+    <version>6.3.7.2</version>
+    <time>1196607436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>915d7a2d456908ba2f935d2c806abad4</srcmd5>
+    <version>6.3.7.2</version>
+    <time>1196896844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dc2b2d712dfa00889408b6c8428f94e4</srcmd5>
+    <version>6.3.9.7</version>
+    <time>1206727030</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>75d89fc0d2718b7479182f30e95b1f6d</srcmd5>
+    <version>6.3.9.7</version>
+    <time>1206787482</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>131a2a2a2ece05dfdabeee4c3b23560f</srcmd5>
+    <version>6.3.9.7</version>
+    <time>1207691290</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1c435ffb39d6dd1731e53c66f7c4252c</srcmd5>
+    <version>6.4.0.4</version>
+    <time>1207770698</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5a500ac1e96b6ef8cd824a841e80c6a8</srcmd5>
+    <version>6.4.3.6</version>
+    <time>1221293928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>2bcd252dbc430e9f5491fd75897c734e</srcmd5>
+    <version>6.4.3.6</version>
+    <time>1223388048</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>26fd0961b7ba8d4b5beb391a0e81a5d5</srcmd5>
+    <version>6.4.3.6</version>
+    <time>1228150366</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>5621bcabfcdfbe304c042ed545d747e8</srcmd5>
+    <version>6.4.3.6</version>
+    <time>1228487414</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4a2c3f2c683c7616fc4255a231049051</srcmd5>
+    <version>6.5.3.2</version>
+    <time>1248871839</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>da6da483d477ededb1b5b3d6bca953f3</srcmd5>
+    <version>6.5.3.2</version>
+    <time>1249057075</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1dc0f89c89ea12f723f12e88d36860fc</srcmd5>
+    <version>6.5.4.8</version>
+    <time>1249653067</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>3ca0e06f0e4a4fe203498fda8c76dc70</srcmd5>
+    <version>6.5.4.8</version>
+    <time>1251483614</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 18567 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>3ca0e06f0e4a4fe203498fda8c76dc70</srcmd5>
+    <version>6.5.4.8</version>
+    <time>1251483614</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 18567 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>2d7b1a4e4bb99ba615a57cd6088e9385</srcmd5>
+    <version>6.5.4.8</version>
+    <time>1258540472</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 24630 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d16f36ac7f03d9b34b708066500cb8eb</srcmd5>
+    <version>6.5.7.9</version>
+    <time>1259923632</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 25497 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>1abc387c2242e991e4ccdddee694680b</srcmd5>
+    <version>6.5.7.9</version>
+    <time>1262968174</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 28236 from user coolo
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>20e5fb0763c0640e381d1a1d47ba9573</srcmd5>
+    <version>6.5.8.9</version>
+    <time>1263483463</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 29139 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>2cc2201035427accae689ab8170939d9</srcmd5>
+    <version>6.5.8.9</version>
+    <time>1265913687</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 31927 from user prusnak
+</comment>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>94c8a4362a91597f950307029faa58b2</srcmd5>
+    <version>6.5.8.9</version>
+    <time>1266485967</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 32663 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b4133f92310e1b0620677dd6190700b9</srcmd5>
+    <version>6.6.0.5</version>
+    <time>1268831146</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 34848 from user pgajdos
+</comment>
+    <requestid>34848</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>5aa649cbe6f1e5055e0a9b204c455164</srcmd5>
+    <version>6.6.0.5</version>
+    <time>1268922732</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ad284952c97e7f8219a5f04cdf69ff77</srcmd5>
+    <version>6.6.1.0</version>
+    <time>1270657105</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 37224 from user coolo
+</comment>
+    <requestid>37224</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>5a5cd59c4b1eeb6a682752c8d2e24013</srcmd5>
+    <version>6.6.1.0</version>
+    <time>1272297141</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 38821 from user pgajdos
+</comment>
+    <requestid>38821</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>e13e23d41f6a7559b1c3ec4b199be9a5</srcmd5>
+    <version>6.6.1.0</version>
+    <time>1273590576</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 39791 from user pgajdos
+</comment>
+    <requestid>39791</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>e13e23d41f6a7559b1c3ec4b199be9a5</srcmd5>
+    <version>6.6.1.0</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>e13e23d41f6a7559b1c3ec4b199be9a5</srcmd5>
+    <version>6.6.1.0</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>850d9726443b5c133bd0280e944f92c3</srcmd5>
+    <version>6.6.1.0</version>
+    <time>1279651466</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 43436 from user coolo
+</comment>
+    <requestid>43436</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7254fd871aaae7ed2e3b3bd4663ed916</srcmd5>
+    <version>6.6.3.1</version>
+    <time>1280497314</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 44196 from user pgajdos
+</comment>
+    <requestid>44196</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>af9df4a1f3b16987a82fbfdc434c5804</srcmd5>
+    <version>6.6.3.1</version>
+    <time>1280792802</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 44343 from user coolo
+</comment>
+    <requestid>44343</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f5e827aba87a419b5232402c3d039679</srcmd5>
+    <version>6.6.3.9</version>
+    <time>1282682193</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 46133 from user pgajdos
+</comment>
+    <requestid>46133</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>802a463a38053268ccb4d8d7b6d17b9a</srcmd5>
+    <version>unknown</version>
+    <time>1284123886</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 47348 from user pgajdos
+</comment>
+    <requestid>47348</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>92ddc6a04d1732cd95370c6e7884656e</srcmd5>
+    <version>6.6.4.8</version>
+    <time>1286482925</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 49765 from user pgajdos
+</comment>
+    <requestid>49765</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d17237a6c9c1a78ab26cd3ef57ca558e</srcmd5>
+    <version>6.6.5.0</version>
+    <time>1287143877</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ImageMagick based on submit request 50612 from user pgajdos
+</comment>
+    <requestid>50612</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>f04cec1b771a698142837a6405c17673</srcmd5>
+    <version>6.6.5.5</version>
+    <time>1288964392</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52129 from user pgajdos
+</comment>
+    <requestid>52129</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>6ce3f988ad651481e74a005ffa8a954b</srcmd5>
+    <version>6.6.5.5</version>
+    <time>1288964401</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52129
+</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>e4af8bc48ddf7462f593a897a7096868</srcmd5>
+    <version>6.6.5.8</version>
+    <time>1289831020</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53021 from user pgajdos
+</comment>
+    <requestid>53021</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>a4165fb2b09fbaf2c3d3fca0e7d46dde</srcmd5>
+    <version>6.6.5.8</version>
+    <time>1289831033</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53021
+</comment>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>b90e2efed997a06109ef135753ecc79a</srcmd5>
+    <version>6.6.5.8</version>
+    <time>1291634245</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 54836 from user coolo
+</comment>
+    <requestid>54836</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>1c4a64f790c9be8043c8122849e48569</srcmd5>
+    <version>6.6.5.8</version>
+    <time>1291634252</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 54836
+</comment>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>63398ee14a4f25bda8ed3f7a86753f0e</srcmd5>
+    <version>6.6.5.8</version>
+    <time>1297783565</time>
+    <user>darix</user>
+    <comment>Accepted submit request 61136 from user pgajdos
+</comment>
+    <requestid>61136</requestid>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>4f271e6e0d9d94d68304a8f5b85df919</srcmd5>
+    <version>6.6.5.8</version>
+    <time>1297783572</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 61136
+</comment>
+  </revision>
+  <revision rev="53" vrev="9">
+    <srcmd5>4f271e6e0d9d94d68304a8f5b85df919</srcmd5>
+    <version>6.6.5.8</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>2f2260e70c8452a7f65ff03e06d5c2e5</srcmd5>
+    <version>6.6.7.9</version>
+    <time>1298534459</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62673 from user pgajdos
+</comment>
+    <requestid>62673</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>c3db53ad79c7f95a4d235742c2b07df5</srcmd5>
+    <version>6.6.7.9</version>
+    <time>1298534469</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62673
+</comment>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>77445e8627cc99e0dac24c459015f65d</srcmd5>
+    <version>6.6.8.9</version>
+    <time>1302602417</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66846 from user coolo
+</comment>
+    <requestid>66846</requestid>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>01a306a2602f9c674086a6940b301257</srcmd5>
+    <version>6.6.8.9</version>
+    <time>1302602429</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66846
+</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>3a80eec30478ceb9608bb9643f741ed9</srcmd5>
+    <version>6.6.9.5</version>
+    <time>1303888755</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 68379 from user coolo
+</comment>
+    <requestid>68379</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>316ae575f28d38210f3a20fea90fc78e</srcmd5>
+    <version>6.6.9.5</version>
+    <time>1303888768</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68379
+</comment>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>d3254a00f7c7a432b62f10d4b55b8ea3</srcmd5>
+    <version>6.6.9.5</version>
+    <time>1305533829</time>
+    <user>saschpe</user>
+    <comment>created -devel-32bit for cross compiling (forwarded request 69997 from yecril71pl)</comment>
+    <requestid>70014</requestid>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>888cd6a3cc524db5d9c414138a2ddba8</srcmd5>
+    <version>6.6.9.5</version>
+    <time>1305533842</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70014
+</comment>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>b7abe7a88b336c1f51d925eff711e4b3</srcmd5>
+    <version>6.6.9.9</version>
+    <time>1306399910</time>
+    <user>saschpe</user>
+    <comment>- Require ImageMagick from -devel subpackage: Packages that depend
+  on the -devel package very likely use the tools too. (forwarded request 71202 from dimstar)</comment>
+    <requestid>71203</requestid>
+  </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>0e869f45178a2157d8b55676b8f9fead</srcmd5>
+    <version>6.6.9.9</version>
+    <time>1306399923</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71203
+</comment>
+  </revision>
+  <revision rev="64" vrev="5">
+    <srcmd5>0d43dc614c72510ddc9a0c4b3b0318a3</srcmd5>
+    <version>6.6.9.9</version>
+    <time>1306484000</time>
+    <user>saschpe</user>
+    <comment>- remove the -fuse-linker-plugin option, it's default in gcc 4.6
+  and only confuses scripts</comment>
+    <requestid>71438</requestid>
+  </revision>
+  <revision rev="65" vrev="6">
+    <srcmd5>24978526ec7a2743b2321278c7620b9b</srcmd5>
+    <version>6.6.9.9</version>
+    <time>1306488627</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="66" vrev="7">
+    <srcmd5>22dbf1c65c79e2f94ad08386b5e1fdd1</srcmd5>
+    <version>6.6.9.9</version>
+    <time>1306490481</time>
+    <user>saschpe</user>
+    <comment>- fix requires of -devel package</comment>
+    <requestid>71630</requestid>
+  </revision>
+  <revision rev="67" vrev="8">
+    <srcmd5>7994ee28bd3ac3565fda1a70ff9c55b4</srcmd5>
+    <version>6.6.9.9</version>
+    <time>1306490491</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71630
+</comment>
+  </revision>
+  <revision rev="68" vrev="6">
+    <srcmd5>ae0dfbec6a27d75b7f42388a80a27d29</srcmd5>
+    <version>6.7.0.8</version>
+    <time>1308738964</time>
+    <user>saschpe</user>
+    <comment>- updated to 6.7.0.8:
+  * added Initial implementation of Cylinder to/from Plane 3D Distorts
+    Includes deritive (scaled lookup), and anti-alised horizon (validity)
+    Currently can NOT handle extractions from full 360 cylinder panoramas.
+  * Fix transient error for composite over operator.
+  * Fix one-off bug in option parser.
+  * etc., see ChangeLog
+- adjusted inc-struct.diff</comment>
+    <requestid>74298</requestid>
+  </revision>
+  <revision rev="69" vrev="7">
+    <srcmd5>46bbe97279f48b576880933fbd2bf497</srcmd5>
+    <version>6.7.0.8</version>
+    <time>1308738976</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74298
+</comment>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>d73858d76144fe50a760ff95d96a5fab</srcmd5>
+    <version>6.7.1.0</version>
+    <time>1316465285</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82643 from jengelh)</comment>
+    <requestid>82654</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b9332cbcbace1f52fc0309b35995a936</srcmd5>
+    <version>6.7.2.7</version>
+    <time>1316616671</time>
+    <user>saschpe</user>
+    <comment>- update to 6.7.2.7:
+  * Fix memory leak in text annotation.
+  * The &quot;-strip&quot; option was excluding the PNG tRNS chunk.
+  * Caption now wraps properly for Chinese text.
+  * The PNG encoder would sometimes fail to respect the -define
+    PNG:color-type option when the incoming image was PseudoClass.
+  * Properly handled continued JPEG embedded profiles.
+  * Revert -colorspace sRGB option patch.
+  * Revert -type PaletteMatte option patch.
+  * etc. see ChangeLog.
+- obsoletes reason-error-message.patch</comment>
+    <requestid>84034</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>dd0c88f84bc884d1966f37923d6ac268</srcmd5>
+    <version>6.7.2.7</version>
+    <time>1317996357</time>
+    <user>lrupp</user>
+    <comment>- fixed [bnc#717871] -- imagemagick display wrong order
+  * scene.patch</comment>
+    <requestid>87029</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>90b4d18b91a56007c462756dec472878</srcmd5>
+    <version>6.7.2.7</version>
+    <time>1318761593</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequire to avoid a hidden require from projconfig (forwarded request 87955 from coolo)</comment>
+    <requestid>87993</requestid>
+  </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>f7a39bfedad162f79680d5c30dfb7899</srcmd5>
+    <version>6.7.2.7</version>
+    <time>1319026157</time>
+    <user>coolo</user>
+    <comment>- build against librsvg as recommended upstream [bnc#724222]</comment>
+    <requestid>88654</requestid>
+  </revision>
+  <revision rev="75" vrev="6">
+    <srcmd5>f7a39bfedad162f79680d5c30dfb7899</srcmd5>
+    <version>6.7.2.7</version>
+    <time>1319181751</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>26fc54f9332976385821b63913f77b8d</srcmd5>
+    <version>6.7.3.3</version>
+    <time>1321268027</time>
+    <user>coolo</user>
+    <comment>- update to 6.7.3.3:
+  * removed upstreamed scene.patch</comment>
+    <requestid>90971</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>2e34ecce03c26ea0c44beab978b2d3a8</srcmd5>
+    <version>6.7.3.3</version>
+    <time>1326965702</time>
+    <user>coolo</user>
+    <comment>- Add explicit libbz2-devel BuildRequires
+- Support LZMA
+- Use libcms2 now.
+- Cleanup huge dependency bloat in -devel package, this 
+  will likely cause build fails on dependant packages
+  the solution is to fix your BuildRequires. (forwarded request 100498 from elvigia)</comment>
+    <requestid>100582</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>29b698202342aacfe5a2542568e6887d</srcmd5>
+    <version>6.7.4.7</version>
+    <time>1327093640</time>
+    <user>coolo</user>
+    <comment>- update to 6.7.4.7:
+  * Fixed -black-threshold and -white-threshold so they work properly with
+    the -channels option
+  * Promote image depths 9-15 to 16 to avoid crashing in the PNG
+    encoder
+  * Fix problems with JNG encoder &quot;quality&quot;
+  * Fix memory leak in JP2 coder
+  * Use maximum bounds when rendering PDF
+  * etc. see ChangeLog</comment>
+    <requestid>100729</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>d44dcf6c8f5fd0b7aa88766a97401ce3</srcmd5>
+    <version>6.7.4.7</version>
+    <time>1329405399</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-ImageMagick
+Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license (e.g. like Fedora) (forwarded request 104919 from babelworx)</comment>
+    <requestid>104930</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>2581d0dd09336814c64c253f20cdfb09</srcmd5>
+    <version>6.7.6.1</version>
+    <time>1332999751</time>
+    <user>coolo</user>
+    <comment>- cleanup the package
+- updated to 6.7.6.1: fixes
+  * CVE-2012-0247 [bnc#746880]
+  * CVE-2012-0248 [bnc#746880]
+  * CVE-2012-1185 [bnc#752879]
+  * CVE-2012-1186 [bnc#752879]
+
+- moved the libtool archives to the main package
+- separated the bulk documentation
+- added a regression %check for the locale comma crash</comment>
+    <requestid>111463</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>ff3439604a2e654cf7b19576ce84cb74</srcmd5>
+    <version>6.7.6.9</version>
+    <time>1337959974</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122204</requestid>
+  </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>ff3439604a2e654cf7b19576ce84cb74</srcmd5>
+    <version>6.7.6.9</version>
+    <time>1340183151</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>0d1701a2b574479c3662d727c76d7aaf</srcmd5>
+    <version>6.7.8.8</version>
+    <time>1344369213</time>
+    <user>coolo</user>
+    <comment>- updated to 6.7.8.8:
+  * Added 2d named convolution kernel Binomial (for Fred Wienhaus)
+  * Clean up sigmoidal-contrast.
+  * Use ConcatenateString() for multi-block GIF comments.
+  * Caption no longer chops off text (reference
+    http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=21558).
+  * Support LUV colorspace.
+  * Support HCL colorspace.
+  * Don't transform the composite image colorspace, set it instead.
+  * Interpret -border 5% as 5% of width and 5% of height (reference
+    http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=21537).
+  * Don't normalize zero-sum kernels (reference
+    http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=21584).
+  * Transform grayscale to linear RGB if fill color is non-gray (reference
+    http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=21586).
+  etc. see ChangeLog</comment>
+    <requestid>130324</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>c7d95fe81d10122b3c0dec88dede29d0</srcmd5>
+    <version>6.7.8.8</version>
+    <time>1357973263</time>
+    <user>coolo</user>
+    <comment>- do not disable checking altogether.
+- disable-matlab-test.patch: disable the 1 MATLAB testcase that fails.
+
+- disable check for the moment, it breaks on Factory and 12.1, but
+  12.2
+
+- enable support for Pango markup
+  * this allows rendering formatted text with the pango:&quot;...&quot; syntax
+    see http://www.imagemagick.org/Usage/text/#pango for details
+  * to actually use this, libpango needs to be installed</comment>
+    <requestid>148031</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>f767320b1496ca03dccb76188387b968</srcmd5>
+    <version>6.7.8.8</version>
+    <time>1358412152</time>
+    <user>coolo</user>
+    <comment>- fix wrong mean-error output:
+  http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=22586
+  * dropped disable-matlab-test.patch
+  * added ImageMagick-uninitialized-memory.patch</comment>
+    <requestid>148633</requestid>
+  </revision>
+  <revision rev="86" vrev="5">
+    <srcmd5>f767320b1496ca03dccb76188387b968</srcmd5>
+    <version>6.7.8.8</version>
+    <time>1359108617</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>02eb63ba2c0dcee1bd209d7877e14fee</srcmd5>
+    <version>6.8.2.4</version>
+    <time>1363276382</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157781</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>053e16f5e08f03f2106b88127881a23f</srcmd5>
+    <version>6.8.2.4</version>
+    <time>1364158579</time>
+    <user>coolo</user>
+    <comment>forwarded with a minor fix</comment>
+    <requestid>160757</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>230af1d99cf7b0ea41456d4340ccafb4</srcmd5>
+    <version>6.8.4.0</version>
+    <time>1365140753</time>
+    <user>coolo</user>
+    <comment>- update to 6.8.4-0:
+  * dropped ImageMagick-6.8.2.4-revert-r9087-montage-signatures.patch,
+    issue is almost fixed -&gt; new test-signatures.patch,
+    see followups in 
+    http://www.imagemagick.org/discourse-server/viewtopic.php?f=2&amp;t=22479
+  * created rpath.patch
+  * created dont-build-in-install.patch
+- upstream changes
+  * Do not write zero-length TIFF tags
+  * Do not split words for caption
+  * The -blur, -guassian-blur, and -sharpen are now convenience methods
+    for -morphology convolve.
+  * etc. see ChangeLog</comment>
+    <requestid>162363</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>3de63acd236387e984664fb1226512d5</srcmd5>
+    <version>6.8.4.0</version>
+    <time>1365337758</time>
+    <user>coolo</user>
+    <comment>- add ImageMagick-6.8.4.0-fix-wand.pc.patch to fix build of e.g.
+  emacs and xine-lib, who rely on pkg-config --libs Wand returning
+  actually MagickWand and not MagickCore (looks like a copy&amp;paste
+  error of upstream) (forwarded request 163063 from coolo)</comment>
+    <requestid>163068</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>411c83f26e4f7b10730be492a16b21e8</srcmd5>
+    <version>6.8.5.6</version>
+    <time>1368711367</time>
+    <user>coolo</user>
+    <comment>- update to 6.8.5-6:
+  * fixed 'Sometimes an sRGB image is masquerading as grayscale'
+  * fixed 'The stream utility no longer faults when exporting float pixels'
+  * Labels no longer overflow
+  * Change the sample JPEG quantization table xml to something that works
+    really well with 2x2 Chroma subsampling around quality 75.
+  * Eliminate whitespace from image properties that hold PNG chunk data.
+  * etc. see ChangeLog
+- remove fix-wand.pc.patch, the issue is fixed upstream
+- remove test-signatures.patch, the issue is fixed upstream</comment>
+    <requestid>175829</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>5fa130a54c68705912a4460d06b763f9</srcmd5>
+    <version>6.8.5.7</version>
+    <time>1369719499</time>
+    <user>coolo</user>
+    <comment>- workaround: fix reading xpm which uses symbolic color names which
+  are said to be not XPMCompliant
+  * http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=23462
+
+- update to 6.8.5-7:
+  * fixes reading XPM</comment>
+    <requestid>176404</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>6aadfbe96c999dfc829dc65d905cd453</srcmd5>
+    <version>6.8.5.7</version>
+    <time>1370925223</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>178425</requestid>
+  </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>8c4e9986624bceaa0779e1e3c2cf4d95</srcmd5>
+    <version>6.8.5.7</version>
+    <time>1371561351</time>
+    <user>coolo</user>
+    <comment>- use AllCompliance instead of X11Compliance to cover also 'None'
+  [bnc#825151]
+  * adjusted no-XPMCompliance.patch</comment>
+    <requestid>179259</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>446721b0f257462de87bbf127a648509</srcmd5>
+    <version>6.8.6.7</version>
+    <time>1376310297</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 6.8.6-7
+  * Fix memory leak in CloneImageArtifacts and CloneImageProfiles.
+  * JPEG ICC color profile requires null after ICC tag 
+  * etc.
+- employ gpg-offline</comment>
+    <requestid>186110</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>9b4f49c8794d83e599e0203651a3516c</srcmd5>
+    <version>6.8.6.9</version>
+    <time>1378633127</time>
+    <user>coolo</user>
+    <comment>- updated to 6.8.6-9
+  * Fixed infinite loop with jpeg:extent.
+  * Fixed performance issue when converting jpeg to png.
+  * Added &quot;-define bmp:format=bmp2|bmp3|bmp4&quot; option.
+  * etc. see ChangeLog</comment>
+    <requestid>197499</requestid>
+  </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>9b4f49c8794d83e599e0203651a3516c</srcmd5>
+    <version>6.8.6.9</version>
+    <time>1379661909</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="98" vrev="4">
+    <srcmd5>20ab62d2180a81571e103e91cb8e5e98</srcmd5>
+    <version>6.8.6.9</version>
+    <time>1380560593</time>
+    <user>scarabeus_factory</user>
+    <comment>- setting quantum depth to 16 [bnc#840825]
+
+- fix build (find doesn't support -perm +mode)</comment>
+    <requestid>201484</requestid>
+  </revision>
+  <revision rev="99" vrev="5">
+    <srcmd5>7ce7836cfec4139ea707d552a06b60d5</srcmd5>
+    <version>6.8.6.9</version>
+    <time>1380777929</time>
+    <user>coolo</user>
+    <comment>- documentation back to -doc package (bnc#841472)
+
+- fix baselibs.conf for previous change (forwarded request 201922 from coolo)</comment>
+    <requestid>201983</requestid>
+  </revision>
+  <revision rev="100" vrev="6">
+    <srcmd5>4ea4a3b1393ca01d015474dcb6cc3e33</srcmd5>
+    <version>6.8.6.9</version>
+    <time>1380808088</time>
+    <user>scarabeus_factory</user>
+    <comment>- use fdupes -s [bnc#841472]</comment>
+    <requestid>201992</requestid>
+  </revision>
+  <revision rev="101" vrev="7">
+    <srcmd5>2184e97a5a968c49f6cbdc132af8de63</srcmd5>
+    <version>6.8.6.9</version>
+    <time>1381229521</time>
+    <user>scarabeus_factory</user>
+    <comment>build ImageMagick with openexr support by including openexr-devel as build requirement (forwarded request 202553 from derselbst)</comment>
+    <requestid>202592</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>3cd83bdc21c2c578ee9655c32ef57448</srcmd5>
+    <version>6.8.8.1</version>
+    <time>1389385175</time>
+    <user>coolo</user>
+    <comment>- updated to 6.8.8-1:
+  * Support points argument for draw MSL element.
+  * The -page option now correctly sets the image page offset.
+  * The -evaluate-sequence sum returns a proper alpha channel now.
+  * etc. see ChangeLog
+
+- really disable parallel build, don't just have a comment about it
+
+- updated to 6.8.7-10:
+  * fix crash when using -resize with GPU acceleration
+
+- updated to 6.8.7-9:
+  * fixed bug in coders/png.c that caused -define png:color-type=0 
+    to fail
+  * fixed bug in automatic selection of OpenCL device
+  * simplified interface to initialize the OpenCL environment
+  * Fix possible memory corruption when writing PSD image
+  * etc. see ChangeLog</comment>
+    <requestid>213285</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>dc979c3d24240bfbaca3d32172415818</srcmd5>
+    <version>6.8.8.1</version>
+    <time>1392481004</time>
+    <user>coolo</user>
+    <comment>- modified patches [bnc#843673]:
+  * disable_mat_test.patch -- rather than disable the test,
+    use upstream solution (increase threshold for mean error)
+    -- use this patch also for s390, s390x</comment>
+    <requestid>222224</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>0a722e220043ad7d577b1a90ae4bd2fe</srcmd5>
+    <version>6.8.8.7</version>
+    <time>1393681119</time>
+    <user>coolo</user>
+    <comment>- fix baselibs
+
+- update to 6.8.8-7
+- remove disable_mat_test.patch (fixed upstream)
+
+- updated to 6.8.8-6:
+  * build against openjpeg2
+  * identify -define identify:locate=maximum locates the position of the
+    maximum value
+  * Fix case where an image moment might have a mass of 0 or a Hu moment might
+    be 0.
+  * Enhance the TXT coder to read RGB percent values, e.g. 10.008%.
+  * etc. see ChangeLog</comment>
+    <requestid>224053</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>73110aa66f3a6be283bbe860a9912506</srcmd5>
+    <version>6.8.8.7</version>
+    <time>1394130567</time>
+    <user>coolo</user>
+    <comment>- directories in libMagickCore depends on %{clibver} and 
+  %{quantum_depth} [bnc#866442]</comment>
+    <requestid>224451</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>2098c978980deaad3e2d5660a66a9f66</srcmd5>
+    <version>6.8.9.3</version>
+    <time>1402947791</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>236957</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>e5e71e9a91da1c93194d15ac2d7e25d9</srcmd5>
+    <version>6.8.9.4</version>
+    <time>1403762275</time>
+    <user>coolo</user>
+    <comment>- updated to 6.8.9-4
+  * Support RMS argument for -evaluate-sequence and -statistic options.
+  * Pipe image to display program no longer reports an exception.
+  * Check that profile is non-NULL in coders/tiff.c.</comment>
+    <requestid>238571</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>ab6b8a131d70c08e900fe45b9a1cf2bb</srcmd5>
+    <version>6.8.9.5</version>
+    <time>1405931692</time>
+    <user>coolo</user>
+    <comment>- build against librsvg again
+
+- updated to 6.8.9-5
+  * Use -define profile:skip=icc, for example, to skip color profiles on read.
+  * Do not let libpng16 check ICC/sRGB profiles in non-debug runs; we do it 
+    ourselves anyway. Avoids emitting &quot;known incorrect profile&quot; warnings. 
+    For strict profile checking and warning, use &quot;-debug coder&quot;.
+  * Disabled OpenCL acceleration when image has a 'mask' or 'clip-mask'.</comment>
+    <requestid>241481</requestid>
+  </revision>
+  <revision rev="109" vrev="3">
+    <srcmd5>ab6b8a131d70c08e900fe45b9a1cf2bb</srcmd5>
+    <version>6.8.9.5</version>
+    <time>1409300431</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="110" vrev="4">
+    <srcmd5>7af85bcc386fb80b159996b7685af43e</srcmd5>
+    <version>6.8.9.5</version>
+    <time>1409550927</time>
+    <user>coolo</user>
+    <comment>- fix license for spdx 1.2 (forwarded request 246789 from coolo)</comment>
+    <requestid>246791</requestid>
+  </revision>
+  <revision rev="111" vrev="5">
+    <srcmd5>47697ce3123875b70e238f37d38db48b</srcmd5>
+    <version>6.8.9.5</version>
+    <time>1410326870</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247963</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>7e573fc4a6d4e72090a104e589fd3724</srcmd5>
+    <version>6.8.9.8</version>
+    <time>1411556937</time>
+    <user>coolo</user>
+    <comment>- update to 6.8.9-8
+  * JPEG library version &gt;= 80 is thread safe
+  * Added support for some legacy dds formats
+
+- updated to 6.8.9-7
+  * Fix off by one buglet when extracting profiles 8BIM.
+  * Fixed bug when reading 1 bit PSD.
+  * Fixed fill-rule in SVG clip path.
+  * Added support for R5G6B5, RGB5A1 and RGBA4 dds files.
+  * Write LAB pixels as percentages in the TXT image format.
+  * Throw exception when image morphology differs when comparing.
+  * Remove mogrify backup file.
+  * Read WEBP images from STDIN.</comment>
+    <requestid>250599</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>c894d42f213bb53a5afb3e993e436b9d</srcmd5>
+    <version>6.8.9.9</version>
+    <time>1415016686</time>
+    <user>coolo</user>
+    <comment>- update to 6.8.9-8
+  * Added sixel coder.
+  * Fixed buffer overflow in PCX and DCM coder.
+  * Added support for reading/writing the tIME chunk in the PNG coder.
+  * Added eps:fit-page option to the PS coder to set -dEPSFitPage.
+  * Support xyY colorspace.
+  * Reduce noise while preserving edges with the -kuwahara option.
+  * Off-by-one count when parsing an 8BIM profile.
+  * OpenCL no longer benchmarks are run on every initialization.
+  * Don't clone a 0x0 image.</comment>
+    <requestid>258974</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>c2387ea0bf68f55b88b5c87df39fd3ee</srcmd5>
+    <version>6.9.0.0</version>
+    <time>1416994529</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>262984</requestid>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>1838c809513063ecdf96f9650bdc3cb9</srcmd5>
+    <version>6.9.0.0</version>
+    <time>1418840117</time>
+    <user>dimstar_suse</user>
+    <comment>- do not use -march/-mtune [bnc#904545]</comment>
+    <requestid>265226</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>2f1f2e5a27323569d86660aa6ad71896</srcmd5>
+    <version>6.9.0.3</version>
+    <time>1421959692</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.9.0-3
+  * Don't read beyond the end of a tEXt keyword when checking for 
+    Raw profile.
+  * Fixed enabling alpha in 32-bit BMP files.
+  * Added support for writing 16-bit TGA files.
+  * Improved performance of dds.
+  * Fix ImageMagick crashes while read EXIF from TIFF.
+  * Don't handle a &quot;previous&quot; image in the PNG or JNG decoder.
+  * Don't override gamma with 1.0 when reading a grayscale PNG 
+    image.
+  * Update progress monitor for every PNG row instead of every pass.
+  * Reject input PNG with dimensions larger than specified with 
+    -limit width and -limit height.
+  * etc., see ChangeLog</comment>
+    <requestid>281534</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>730ebeffdb0e8ba1c4bd930bb3c948fd</srcmd5>
+    <version>6.9.0.9</version>
+    <time>1425565922</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.9.0-9
+  * Writing histograms / mpeg working again.
+  * The -linear-stretch option worked for Q16 but not Q32.
+
+- update to 6.9.0-7
+  * Line strokes appeared too thin.
+  * Keep text in caption area.
+  * A transient bug for the write MSL element.
+  * Fixed infinite loop in HDR reader.
+  * In the PNG codec, check status wherever a function returns it.
+  * Check lengths of certain MNG chunks before reading them.
+  * Small optimization to pixel cache.
+  * Additional coder sanity checks.
+  etc. see ChangeLog</comment>
+    <requestid>288437</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>27fc2c474c14678879f36173be4271f5</srcmd5>
+    <version>6.9.1.1</version>
+    <time>1431676508</time>
+    <user>coolo</user>
+    <comment>- update to 6.9.1-1
+  * Skip empty frames when comparing layers.
+  * Grayscale DPX image files are no longer skewed.
+  * Fix integer overflow when scaling a 1-bit sample to Q64.
+  * Account for differences in image size when comparing two images.
+  * Set an upper ceiling compression with -quality and jpeg:extent.</comment>
+    <requestid>306471</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>2ac154c4b462dd4cca87f016a5276a59</srcmd5>
+    <version>6.9.1.6</version>
+    <time>1437059592</time>
+    <user>coolo</user>
+    <comment>- update to 6.9.1-6
+  * Cache cloning on disk optimized with sendfile() (if available).
+  * Add an additional check for end-of-file for the RLE coder (reference
+    http://www.imagemagick.org/discourse-server/viewforum.php?f=3&amp;t=27870).
+  * Respect resource limits in AVS coder.
+  * Reverted change to 6.9.1-3 that skipped palette-building.
+- update to 6.9.1-5
+  * Use correct scale when interpretting alpha (e.g. rgba(0,0,0,1)).
+  * DrawGetVectorGraphics() now returns proper XML (reference
+    http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=27751).
+  * Support writing EXR files with different color types (reference
+    http://www.imagemagick.org/discourse-server/viewtopic.php?f=2&amp;t=27759).
+  * Prefer PKG_CHECK_MODULES() when searching for delegate libraries.
+  * Throw exception if frame option bevel exceeds to the image width / height.
+  * Resolve undefined behaviors (reference
+    http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=27811).
+- update to 6.9.1-4
+  * Support 'restrict' keyword under Windows.
+  * Added support for reading a user supplied layer mask in PSD files.
+  * Added support for reading photoshop layers in TIFF files.
+- update to 6.9.1-3
+  * Fixed transparency issue with 16-bit tga files (reference
+    http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=27469).
+  * Fixed writing label and comment in tiff images (reference
+    http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=25516).
+  * Jpeg images no longer have pixels per inch as a default value for density
+    units when the density is not set (reference
+    http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=27589).
+  * Added support for setting the font color with -fill to the pango coder.
+  * Fixed bug with &quot;-define png:format=x&quot; in png.c, introduced in version</comment>
+    <requestid>314958</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>0adb1d65fe19d0d9238dc4a2b9ac7547</srcmd5>
+    <version>6.9.1.10</version>
+    <time>1438794812</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>318979</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>7540d5c8e9aa2b25c37ab24baf08e619</srcmd5>
+    <version>6.9.2.4</version>
+    <time>1445350878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.9.2-4:
+  * Fixed accessing subimage in a TIFF photoshop layer.
+  * Fixed out of bounds error in -splice.
+  * Created Manhattan Interpolate method for -sparse-color.
+  * Don't round up for JPEG image resolution.
+  * Read the whole image @ image.jp2[0] or an individual 
+    tile @ image.jp2[1], image.jp2[2].
+  * The -caption option no longer fails for filenames with @ prefix.
+  * Honor $XDG_CONFIG_HOME and $XDG_CACHE_HOME.
+  * Added extra checks to avoid out of bounds error when parsing the 8bim 
+    profile
+  * Fixed size of memory allocation in RLE coder to avoid segfault.
+  * The -colorspace gray option no long leaves a ghostly shadow.
+  * Preserving image origin in TGA files.
+  * Support color compliance for TXT format.
+  * Limit -fx recursive to avoid stack overflow.
+  * Don't set image colorspace to gray for -alpha copy option.
+  * GetImageType() no longer has side-effects to match behavior of IMv7.
+  * Swap pixels for -spread command-line option.
+  * Fix ModulusAdd &amp; ModulusSubstract for HDRI compositing.
+  * Added &quot;-set colorspace:auto-grayscale false&quot; that will prevent automatic
+    conversion to grayscale inside coders that support grayscale.
+  * Fixed -list weight and the options for -weight.
+  * Added fontFamily, fontStyle, fontWeight and textUnderColor to the Image
+    class of Magick++.
+  * Fixed reading Photoshop layers of LSB TIFF files.</comment>
+    <requestid>337996</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>71b2f6ebbd610a333385f9a03808361f</srcmd5>
+    <version>6.9.2.8</version>
+    <time>1450695798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.9.2-8:
+  * Gray artifacts in large gif when using -layers optimize.
+  * The DICOM reader now handles the rescale intercept and slope.
+  * Added 'bmp3:alpha' option for including the alpha channel when 
+    writing an image in the BMP3 format.
+  * PixelColor off by one on i386.
+  * Added local contrast enhancement.
+  * Fixed bug in SetPixelCacheExtent that made images all black.
+  * Added 6dot variant for unicode and iso braille formats.
+  * Fixed alpha blending issue with semi-transparent pixels in the 
+    merged image of PSD files. This can be disabled by setting the 
+    option 'psd:alpha-unblend' to 'off'.
+  * Fixed issue in jpeg:extent that prevented it from working.
+  * Fixed memory leak when reading Photoshop layers in a TIFF file.
+  * Support gradient:bounding-box, gradient:vector, gradient:center, 
+    and gradient:radius to shape the gradient rendering.
+  * Recognize label:@- as stdin.
+  * Make commas optional for coordinates.</comment>
+    <requestid>349357</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>33422d8d1d061c33344c341f81e7fbe3</srcmd5>
+    <version>6.9.3.0</version>
+    <time>1452262942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.9.3-0:
+  * Don't break on euro-style numbers.
+  * 16-bit pnm images have a max value of 65535.
+  * Fixed compile error when POSIX threads are not defined.
+  * Fixed memory leak when reading incorrect PSD files.
+  * Enhance PDF to properly handle unicode titles.
+  * Fix memory leak in icon coder.</comment>
+    <requestid>352026</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>05243b8b5429e28c5d5280eb631c7678</srcmd5>
+    <version>6.9.3.8</version>
+    <time>1462051470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.9.3-8:
+  * Respect gravity when rendering text (e.g. convert -gravity center 
+    my.txt).
+  * Return empty string for %d property and no directory.
+  * Return filename for the %i property.
+  * Fixed lost pixels in frequency space.
+  * etc. see ChangeLog</comment>
+    <requestid>389963</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>e5721993cf50b6bb13e2fdd7e631575a</srcmd5>
+    <version>6.9.3.10</version>
+    <time>1462865160</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable insecure coders [bnc#978061]
+  * ImageMagick-6.8.8-1-disable-insecure-coders.patch
+  * CVE-2016-3714
+  * CVE-2016-3715
+  * CVE-2016-3716
+  * CVE-2016-3717
+  * CVE-2016-3718 (forwarded request 393905 from vitezslav_cizek)</comment>
+    <requestid>393906</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>b04c813dad4042933d3e35ef82e1cbeb</srcmd5>
+    <version>6.9.4.1</version>
+    <time>1464075221</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.9.4-1:
+  * Remove https delegate.
+  * Check for buffer overflow in magick/draw.c/DrawStrokePolygon().
+  * Replace show delegate title with image filename rather than label.
+  * Fix GetNextToken() off by one error.
+  * Remove support for internal ephemeral coder.
+- refreshed ImageMagick-6.8.8-1-disable-insecure-coders.patch
+- believe or not, correct license string is ImageMagick:
+  http://spdx.org/licenses/ImageMagick.html
+
+- rework ImageMagick-6.8.8-1-disable-insecure-coders.patch
+  * add new policy (TEXT, SHOW, WIN and PLT)
+- rebase patches (p0) 
+  * ImageMagick-6.6.8.9-doc.patch
+  * ImageMagick-6.6.8.9-examples.patch
+  * ImageMagick-6.7.6.1-no-dist-lzip.patch
+  * ImageMagick-6.8.4.0-dont-build-in-install.patch
+  * ImageMagick-6.8.4.0-rpath.patch
+  * ImageMagick-6.8.5.7-no-XPMCompliance.patch
+  * ImageMagick-6.8.8-1-disable-insecure-coders.patch</comment>
+    <requestid>396160</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>10affac64ed2d2856293dbbeb2ca65d2</srcmd5>
+    <version>6.9.4.5</version>
+    <time>1464964607</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.9.4-5:
+  * Most OpenCL operations are now executed asynchronous.
+  * Security improvements to TEXT coder broke it (reference
+    https://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=29754).
+  * Fix stroke offset problem for -annotate (reference
+    https://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=29626).
+  * Add additional checks to DCM reader to prevent data-driven faults (bug
+    report from Hanno Böck).
+  * Fixed proper placement of text annotation for east / west gravity.
+2016-05-15  6.9.4-3 Cristy  &lt;quetzlzacatenango@image...&gt;
+  * Fix pixel cache on disk regression (reference
+    https://github.com/ImageMagick/ImageMagick/issues/202).
+  * Quote passwords when passed to a delegate program.
+  * Can read geo-related EXIF metdata once-again (reference
+    https://github.com/ImageMagick/ImageMagick/issues/198).
+  * Sanitize all delegate emedded formatting characters.
+  * Don't sync pixel cache in AcquireAuthenticCacheView() (bug report from
+    Hanno Böck).
+
+- security update:
+  * CVE-2016-5118 [bsc#982178]
+    + ImageMagick-CVE-2016-5118.patch</comment>
+    <requestid>399075</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>6c32aa7fc3ec23e951f57cec1e9e2add</srcmd5>
+    <version>6.9.4.7</version>
+    <time>1465480594</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.9.4-7:
+  * Fix small memory leak (patch provided by Андрей Черный).
+  * Coder path traversal is not authorized (bug report provided by
+    Masaaki Chida).
+  * Turn off alpha channel for the compare difference image (reference
+    http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=29828).
+  * Support configure script --enable-pipes option to enable pipes (|) in
+    filenames.
+  * Support configure script --enable-indirect-reads option to enable
+    indirect reads (@) in filenames.
+- remove ImageMagick-CVE-2016-5118.patch, use --enable-pipes=no instead</comment>
+    <requestid>400176</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>5560e68a47a0655fb1c0e2453568cb1b</srcmd5>
+    <version>6.9.5.4</version>
+    <time>1470413601</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.9.5-4
+  * Prevent buffer overflow
+
+- updated to 6.9.5-3:
+  * Fix MVG stroke-opacity (reference
+    https://github.com/ImageMagick/ImageMagick/issues/229).
+  * Prevent possible buffer overflow when reading TIFF images (bug report from
+    Shi Pu of MS509 Team).
+  * To comply with the SVG standard, use stroke-opacity for transparent strokes.
+  * The histogram coder now returns the correct extent.
+  * Use CopyMagickString() rather than CopyMagickMemory() for strings.
+  * Correct for numerical instability (reference
+    https://github.com/ImageMagick/ImageMagick/issues/218).</comment>
+    <requestid>416363</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>74963caaa662ae59f2146a22e3f5e7d7</srcmd5>
+    <version>6.9.5.9</version>
+    <time>1474622845</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428408</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>bc9c4096f562c942de0b97cf0f24fd35</srcmd5>
+    <version>6.9.5.10</version>
+    <time>1475358289</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 6.9.5-10
+  * Added layer RLE compression to the PSD encoder.
+  * Added define 'psd:preserve-opacity-mask' to preserve the opacity mask
+    in a PSD file.
+  * Fixed issue where the display window was used instead of the data window
+    when reading EXR files (reference
+    https://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;p=137849).</comment>
+    <requestid>430383</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>1374d382fd4c8e1a4c0cb9f8843127b0</srcmd5>
+    <version>6.9.6.5</version>
+    <time>1480073169</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 6.9.6-5
+  * Web pages were broken when we moved to HTTPS protocol.
+  * Restore -sharpen / -convolve options to work with CMYK (reference
+    https://github.com/ImageMagick/ImageMagick/issues/299).
+  * Off by one memory allocation (reference
+    https://github.com/ImageMagick/ImageMagick/issues/296).
+  * Prevent fault in MSL interpreter (reference
+    https://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=30797).
+  * Added layer ZIP compression to the PSD encoder.
+  * Unit test pass again after small SUN image patch.
+  * Fixed incorrect RLE decoding when reading a DCM image that contains
+    multiple segments.
+  * Fixed incorrect RLE decoding when reading an SGI image (reference 
+    https://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=30514)</comment>
+    <requestid>441321</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>77444e9dc99c87b1bfa52a7dce67d3be</srcmd5>
+    <version>6.9.6.6</version>
+    <time>1480860373</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.9.6-6
+  * If a convenient line break is not found, force it for caption: (reference
+    https://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=30887).
+  * Off by 1 error when computing the standard deviation (reference
+    https://www.imagemagick.org/discourse-server/viewtopic.php?f=2&amp;t=30866).
+  * Apply Debian patches, (reference
+    https://github.com/ImageMagick/ImageMagick/issues/304).
+  * Permit EPT images with just a TIFF or EPS image, not both (reference
+    https://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=30921).
+  * The -clone option no longer leak memory.
+- turn on make check along perl test</comment>
+    <requestid>443143</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>cbcc0b4006689604670f32ddeb6ed383</srcmd5>
+    <version>6.9.7.5</version>
+    <time>1485597751</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.9.7-5
+  * Don't set background for transparent tiled images
+  * Added support for RGB555, RGB565, ARGB4444 and ARGB1555 to the
+    BMP encoder
+  * Fix memory leak in MPC image format.
+  * Increase memory allocation for TIFF pixels
+  * etc. see ChangeLog</comment>
+    <requestid>452162</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>a79a182c2176fe233d0279656382cc1b</srcmd5>
+    <version>6.9.7.7</version>
+    <time>1487259859</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.9.7-7
+  * Sanitize comments that include braces for the MIFF image format.
+  * Uninitialized data in MAT image format.
+  * see ChangeLog for full changelog</comment>
+    <requestid>456863</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>5008f60c067799d8ca55158d93b733b3</srcmd5>
+    <version>6.9.8.2</version>
+    <time>1490316767</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.8.8-2
+  * Support namespaces for the security policy.
+  * Respect throttle policy.
+  * Support the -authenticate option for PDF.
+  * Fix Spurious memory allocation message.
+  * Identical images should return inf for PSNR.
+  * Fixed fd leak for webp coder.
+  * Prevent random pixel data for corrupt JPEG image.
+  * Support pixel-cache and shred security policies.
+  * Fixed memory leak when creating nested exceptions in Magick++.
+  * Eliminate bogus assertion.
+  * Unbreak build without JPEG support.
++ ImageMagick-montage.t.patch</comment>
+    <requestid>481351</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>2588119159bbcd1958795a52872427dc</srcmd5>
+    <version>7.0.5.4</version>
+    <time>1491469182</time>
+    <user>maxlin_factory</user>
+    <comment>- updated to 7.0.5-4
+  * new branch, see
+    https://www.imagemagick.org/script/porting.php
+- deleted unneded patches
+  . ImageMagick-6.6.8.9-doc.patch
+  . ImageMagick-6.6.8.9-examples.patch
+  . ImageMagick-6.7.6.1-no-dist-lzip.patch
+  . ImageMagick-6.8.4.0-dont-build-in-install.patch
+  . ImageMagick-6.8.4.0-rpath.patch
+  . ImageMagick-montage.t.patch
+  . ImageMagick-6.8.5.7-no-XPMCompliance.patch
+- renamed patches
+  . ImageMagick-6.8.8-1-disable-insecure-coders.patch to
+    ImageMagick-disable-insecure-coders.patch</comment>
+    <requestid>483272</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>b2035c8f603d6bdcf73eace4f50638c1</srcmd5>
+    <version>7.0.5.5</version>
+    <time>1493880649</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.0.5-5
+  * Minimize buffer copies to improve OpenCL performance.
+  * Morphology thinning is no longer a no-op.
+  * Patch two PCD writer problems, corrupt output and dark pixels.
+  * Support ICC based PDF's.
+  * Fix improper EPS clip path rendering.
+- workaround failed test
+  + ImageMagick-relax-filter.t.patch</comment>
+    <requestid>491269</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>697ba992aa4dc44f5e60c7ca8ea0e74f</srcmd5>
+    <version>7.0.5.6</version>
+    <time>1495883536</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.0.5-6
+  * Revise DICOM window and rescale handling.
+  * Restore the -alpha Shape option.
+  * Fix transient PDF bug.
+  * The +opaque option now works on all channels.
+  * Ensure backwards compatibility for the -combine option.
+  * Check for EOF conditions for RLE image format.
+  * Reset histogram page geometry.</comment>
+    <requestid>496519</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>f140993a9fa59a3959121610378313fb</srcmd5>
+    <version>7.0.6.0</version>
+    <time>1499162103</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.0.6-0
+  * coders/png.c: Accept exIf chunks whose data segment
+    erroneously begins with &quot;Exif\0\0&quot;.
+  * Introduce SetMagickSecurityPolicy() (MagickCore) and
+    MagickSetSecurityPolicy() (MagickWand) to set the ImageMagick security
+    policy (reference https://github.com/ImageMagick/ImageMagick/issues/407).
+  * Removed experimental PNG zxIF chunk support; the proposal is dead.
+  * Fix choppy bitmap font rendering (reference
+    https://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=32071).
+  * The +opaque option is not longer a noop (reference
+    https://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=32081).
+  * Add support  for 'hex:' property.
+  * Transient error validating the JPEG-2000 image format (reference
+    https://github.com/ImageMagick/ImageMagick/issues/501).
+  * Properly allocate DCM image colormap (reference
+    https://www.imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=32063).
+  * Improper allocation of memory for IM instances without threads (reference
+    https://github.com/ImageMagick/ImageMagick/issues/497).
+  * Delete corrupt image from list (reference
+    https://github.com/ImageMagick/ImageMagick/issues/500).
+  * Support various image operators for the compare utility (reference
+    https://www.imagemagick.org/discourse-server/viewtopic.php?f=2&amp;t=31938).</comment>
+    <requestid>507404</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>53013b0044562429fe58d734ab718ed3</srcmd5>
+    <version>7.0.6.7</version>
+    <time>1502963382</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.0.7-7
+  * Improve EPS aliasing
+  * Added a new option called 'dds:fast-mipmaps'
+  * The mipmaps of a dds image can now be created from a list of images with
+    -define dds:mipmaps=fromlist
+  * Fixed numerous memory leaks
+  * Put UTC time in the PNG tIME chunk instead of local time
+  * Fixed numerous memory leaks
+  * Properly set image-&gt;colorspace in the PNG decoder (previously
+    it was setting image-&gt;gamma, but only setting image-&gt;colorspace
+    for grayscale and gray-alpha images.
+  * Fix improper use of NULL in the JNG decoder
+  * Added &quot;-define png:ignore-crc&quot; option to PNG decoder. When you know
+    your image has no CRC or ADLER32 errors, this can speed up decoding.
+    It is also helpful in debugging bug reports from &quot;fuzzers&quot;.
+  * Off by one error for gradient coder
+  * YUV coder no longer renders streaks
+  * Fixed numerous memory leaks
+  * Added experimental PNG orNT chunk, to store image-&gt;orientation.
+  * Removed vpAg chunk write support
+  * Fixed numerous memory leaks
+  * Fix memory leaks when reading a malformed JNG image
+  * Fixed numerous memory leaks
+  * The -monochrome option no longer returns a blank canvas
+  * coders/png.c: fixed memory leak of quantum_info
+  * coders/png.c: fixed NULL dereference when trying to write an empty MNG
+  * Added caNv, eXIf, and pHYs to the list of PNG chunks to be removed
+    by the &quot;-strip&quot; option.
+  * Implemented PNG eXIf chunk support
+  * Support new -auto-threshold option.  OTSU and Triangle methods are</comment>
+    <requestid>516791</requestid>
+  </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>567f5499c184eabf5a2d5b15c4c890eb</srcmd5>
+    <version>7.0.6.7</version>
+    <time>1504814901</time>
+    <user>dimstar_suse</user>
+    <comment>- fix previous submission
+- remove ghostscript recommends
+
+- Sort the header with spec-cleaner and convert the deps to .pc ones
+- Drop --with-pic, applies to static library only
+- Add --disable-silent-rules to see the compilation output in log
+- Fix graphviz/lcms options to match configure ones
+- Remove indirect-reads switch not present in configure.ac at all
+
+- another attempt to make a libMagickCore* version installable with
+  another version [bsc#1054659]
+  + ImageMagick-library-installable-in-parallel.patch</comment>
+    <requestid>519920</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>6ebe38d5d5ae0c937c3ec90a17f61d7d</srcmd5>
+    <version>7.0.7.1</version>
+    <time>1505501919</time>
+    <user>dimstar_suse</user>
+    <comment>-  updated to 7.0.7-1
+  * Fixed numerous memory leaks.
+  * Added -define tiff:write-layers=true to add support for writing 
+    layered tiff files.
+  * Don't overwrite symbolic links when the shred policy is enabled.
+  * Support -metric ssim, structual similarity index.
+  * Fixed thread safety issue inside the pango and librsvg decoder.
+  * Fixed bug with writing tIME chunk when timezone has a negative 
+    offset.
+  * Support CubicSpline resize filter.  Define the lobes with the
+    -define filter:lobes={2,3,4}.
+  * Prevent assertion failure when creating PDF thumbnail.
+
+- updated to 7.0.6-7</comment>
+    <requestid>522978</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>530a51a5c0b2dbecddddfd781000015c</srcmd5>
+    <version>7.0.7.4</version>
+    <time>1506678554</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.0.7-4
+  * Fixed numerous memory leaks.
+  * Maximum valid hour is 23, not 24, in the PNG tIME chunk, and maximum
+    valid minute is 59, not 60.
+  * Use signed integer arithmetic to calculate timezone corrections.
+
+- builds for sle11
+
+- builds for sle12</comment>
+    <requestid>528770</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>890101f5dc1f233b0cfae5e79f1fcccb</srcmd5>
+    <version>7.0.7.6</version>
+    <time>1507628120</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.0.7-6
+  * Reset the magick_list_initialized boolean when needed.
+  * Fixed numerous memory leaks.
+  * Support URW-base35 fonts.
+  * Removed &quot;ping_preserve_iCCP=MagickTrue;&quot; statement that was 
+    inadvertently added to coders/png.c.
+
+- %make_install only for sle12 and higher
+
+- Update package summaries and RPM groups.
+  Make use of %make_install.</comment>
+    <requestid>531538</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>de4ca138fe427f55bcc6ef2cd70db94a</srcmd5>
+    <version>7.0.7.8</version>
+    <time>1509035969</time>
+    <user>dimstar_suse</user>
+    <comment>- disable failing tests on s390x [bsc#1062932]
+  + ImageMagick-s390-disable-tests.patch
+
+- update to 7.0.7-8
+  * Return expected results for a percent 0 -chop option argument.
+  * Tweaks to OpenMP support within ImageMagick.
+  * Correct handling of GIF transparency.
+- recommend ghostscript [bsc#1054924c#25]</comment>
+    <requestid>535936</requestid>
+  </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>e40d9bd7c25d67291fabc573ddb47a52</srcmd5>
+    <version>7.0.7.10</version>
+    <time>1510321302</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.7-10
+  * Fixed a problem with resource bookkeeping in 
+    AcquireMatrixInfo().
+- update to 7.0.7-9
+  * Encode JSON control characters.
+  * Added support for reading mipmaps in dds images.
+- removed unneded ImageMagick-relax-filter.t.patch</comment>
+    <requestid>539321</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>0a782672fce6e2d14ffde5195bffc41d</srcmd5>
+    <version>7.0.7.11</version>
+    <time>1512041571</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.7-11
+  * no upstream change log in ChangeLog, as usually would be, except
+    Release ImageMagick version 7.0.7-11,
+    GIT revision 21635:0447c6b46:20171111</comment>
+    <requestid>544362</requestid>
+  </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>4fc0dd0036ce48a0fd568746ed9cbf29</srcmd5>
+    <version>7.0.7.11</version>
+    <time>1512766018</time>
+    <user>dimstar_suse</user>
+    <comment>- remove forgotten 'exit 0' from check phase</comment>
+    <requestid>548047</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>1c1e0d8e43f1efe3b4ecd79d1b6722f8</srcmd5>
+    <version>7.0.7.15</version>
+    <time>1514027812</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.7-15
+  * Overall standard deviation is the average of each pixel channel.
+  * Support Stereo composite operator.
+  * The -tint option no longer munges the alpha channel.
+  * Don't delete in-memory blob when reading an image.
+  * Support HDRI color profile management.</comment>
+    <requestid>557952</requestid>
+  </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>31e82e355e33ca164631d552720211fc</srcmd5>
+    <version>7.0.7.15</version>
+    <time>1514840766</time>
+    <user>dimstar_suse</user>
+    <comment>- readd ImageMagick-relax-filter.t.patch for SLE15 i586
+- enable ImageMagick-s390-disable-tests.patch also for s390, in
+  addition to s390x</comment>
+    <requestid>560071</requestid>
+  </revision>
+  <revision rev="152" vrev="3">
+    <srcmd5>23a0a1b65fb91ee69f15e9dcc483fa75</srcmd5>
+    <version>7.0.7.15</version>
+    <time>1515260809</time>
+    <user>dimstar_suse</user>
+    <comment>- enable ImageMagick-s390-disable-tests.patch also for ppc, ppc64 (forwarded request 561426 from Andreas_Schwab)</comment>
+    <requestid>561437</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>1764893d4a741527b062ad220ac92497</srcmd5>
+    <version>7.0.7.21</version>
+    <time>1516091523</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.7.21
+  * Fix some enum values in the OpenCL code.
+  * Fixed numerous memory leaks.
+  * Check for webpmux library version 0.4.4.
+  * Fix heap use after free error.
+  * Fix error reading multi-layer XCF image file.
+  * Fix possible stack overflow in WEBP reader.</comment>
+    <requestid>562785</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>a11df74608f4b9ddb5670e94c8ff8f8d</srcmd5>
+    <version>7.0.7.22</version>
+    <time>1516971403</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.7.22
+  * Support aspect ratio geometry, e.g. -crop 3:2.
+  * Add support for reading the HEIC image format (reference
+    https://github.com/ImageMagick/ImageMagick/issues/507).
+  * Fixed numerous memory leaks, credit to OSS Fuzz.</comment>
+    <requestid>568864</requestid>
+  </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>7e578133f4b3c6d4de8e6baeb0c07c9e</srcmd5>
+    <version>7.0.7.22</version>
+    <time>1517823969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571985</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>056d4a65ac40205b380a22c3df4ca0d9</srcmd5>
+    <version>7.0.7.23</version>
+    <time>1519557670</time>
+    <user>dimstar_suse</user>
+    <comment>- upstream fixes the test by changing the signature
+  - ImageMagick-820e636.patch
+  + ImageMagick-write.t-PICT-signature.patch
+
+- update to 7.0.7.23
+  * Fixed numerous use of uninitialized values, integer overflow,
+    memory exceeded, and timeouts (credit to OSS Fuzz).
+  * Add list-length policy to limit the maximum image sequence length.
+- added patches
+  + ImageMagick-montage.t-directory-exception.patch
+  + ImageMagick-820e636.patch
+
+- Add explicit buildrequires on: pkgconfig(libwebpmux), 
+  pkgconfig(cairo), pkgconfig(fontconfig), pkgconfig(libpng), 
+  pkgconfig(x11), pkgconfig(xext), pkgconfig(zlib). all
+  of them direct build dependencies but not included in 
+  the spec file</comment>
+    <requestid>579307</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>3ab877e2776cab820123537bfd62d297</srcmd5>
+    <version>7.0.7.24</version>
+    <time>1520160698</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.7-24
+  * Do not refer to page in OptimizeLayerFrames (reference
+    https://github.com/ImageMagick/ImageMagick/pull/987).
+  * PerlMagick unit tests pass again.
+  * Fixed numerous use of uninitialized values, integer overflow,
+    memory exceeded, and timeouts (credit to OSS Fuzz).
+- removed upstreamed
+  - ImageMagick-write.t-PICT-signature.patch
+  - ImageMagick-montage.t-directory-exception.patch</comment>
+    <requestid>580889</requestid>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>a328711a74befd231f7c3facd26ac5a4</srcmd5>
+    <version>7.0.7.25</version>
+    <time>1520415115</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.7-25
+  * Fixed numerous use of uninitialized values, integer overflow, 
+    memory exceeded, and timeouts (credit to OSS Fuzz).</comment>
+    <requestid>582614</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>7350e45954242ce5d3ef79bfca770063</srcmd5>
+    <version>7.0.7.28</version>
+    <time>1523029608</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequires on dcraw, it is not needed at buildtime. (forwarded request 593827 from fcrozat)</comment>
+    <requestid>593907</requestid>
+  </revision>
+  <revision rev="160" vrev="2">
+    <srcmd5>70e591d30ca5d8d044ec0be2b0d986fb</srcmd5>
+    <version>7.0.7.28</version>
+    <time>1523956516</time>
+    <user>dimstar_suse</user>
+    <comment>- security update (webp.c)
+  * CVE-2018-9135 [bsc#1087825]
+    + ImageMagick-CVE-2018-9135.patch
+
+- consider urw-base35-fonts [bsc#1088463]
+
+- Drop buildrequire on mupdf-devel-static, there is only one occurance
+  in all makefiles mentioning MUPDF_LIBS and it is always empty
+- Format with minimal run of spec-cleaner
+  * Use license
+  * Sort BRs alphabetically</comment>
+    <requestid>595596</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>2d444174b9a83ccf6342082e7d2405a6</srcmd5>
+    <version>7.0.7.29</version>
+    <time>1525697511</time>
+    <user>dimstar_suse</user>
+    <comment>- instead of disabling test, apply upstream fix introduced
+  few minutes after upstream report was made
+  - ImageMagick-filter.t-primitive-circle.patch
+  + ImageMagick-draw-circle-primitive.patch
+
+- update to 7.0.7-29:
+  * Fixed numerous use of uninitialized values, integer overflow, 
+    memory exceeded, and timeouts (credit to OSS Fuzz).
+- turn off drawing primitive 'circle' test:
+  + ImageMagick-filter.t-primitive-circle.patch
+- dropped patches (upstreamed):
+  - ImageMagick-CVE-2018-9135.patch
+  - ImageMagick-write.t-pict.patch</comment>
+    <requestid>603123</requestid>
+  </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>8d5f389792d9fe94c2c9a704e18d2d26</srcmd5>
+    <version>7.0.7.31</version>
+    <time>1526462555</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.7-31:
+  * Fixed numerous use of uninitialized values, integer overflow,
+    memory exceeded, and timeouts (credit to OSS Fuzz).
+  * Missing break when checking &quot;compliance&quot; element.
+- removed upstreamed ImageMagick-draw-circle-primitive.patch</comment>
+    <requestid>606527</requestid>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>99f17f0f73ab0e0d92ae7546975a6f2e</srcmd5>
+    <version>7.0.7.34</version>
+    <time>1527001292</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.7-34:
+  * Added support for reading eXIf chunks to the PNG coder.
+  * Fixed numerous use of uninitialized values, integer overflow, memory
+    exceeded, and timeouts (credit to OSS Fuzz).
+  * Improved clip / composite mask handling.
+  * Restore SetImageAlpha() behavior.
+  * Fix -clip and -mask options.
+- fixes [bsc#1093395]</comment>
+    <requestid>610887</requestid>
+  </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>86b4c10cd41e038a78ef83d9e250fb81</srcmd5>
+    <version>7.0.8.3</version>
+    <time>1530741208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620349</requestid>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>d5dd47910f229a1287cafcfdd1b57477</srcmd5>
+    <version>7.0.8.6</version>
+    <time>1532527491</time>
+    <user>dimstar_suse</user>
+    <comment>- enable i586 tests again, except t/montage.t
+
+- update to 7.0.8-6:
+  * Improve SVG support for tspan element.
+  * Add support for -fx image.extent.
+  * Fixed a few potential memory leaks.
+  * Fixed numerous use of uninitialized values, integer overflow, memory
+    exceeded, and timeouts (credit to OSS Fuzz).
+  * Support %B property, the image file size without any decorations.</comment>
+    <requestid>623239</requestid>
+  </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>f423cf1ee086cb8650356c4681fd7678</srcmd5>
+    <version>7.0.8.9</version>
+    <time>1534321818</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.8-9:
+  * XBM coder leaves the hex image data uninitialized if hex value of the
+    pixel is negative.
+  * More improvements to SVG text handling.
+  * New -range threshold option that combines hard and soft thresholding.
+  * Non-HDRI ScaleLongToQuantum() private method no longer adds a half interval.
+  * Fixed memset() negative-size-param (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1217).
+  * Fixed numerous use of uninitialized values, integer overflow, memory
+    exceeded, and timeouts (credit to OSS Fuzz).
+- fixed tests by ImageMagick-filter.t.patch
+  https://github.com/ImageMagick/ImageMagick/issues/1241</comment>
+    <requestid>627861</requestid>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>e756fe493f11645fc5f161b5f200a408</srcmd5>
+    <version>7.0.8.11</version>
+    <time>1537436381</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>634675</requestid>
+  </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>b70889cf5ba533505d3d958efd3a17a9</srcmd5>
+    <version>7.0.8.12</version>
+    <time>1538377537</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.8-12:
+  * Added support for arithmetic coding to the jpeg encoder:
+    -define jpeg:arithmetic-coding=true.
+  * Fixed numerous use of uninitialized values, integer overflow, memory
+    exceeded, and timeouts (credit to OSS Fuzz).</comment>
+    <requestid>637391</requestid>
+  </revision>
+  <revision rev="169" vrev="2">
+    <srcmd5>fc0bbedfe9456988b06df965807a2e46</srcmd5>
+    <version>7.0.8.12</version>
+    <time>1538672328</time>
+    <user>dimstar_suse</user>
+    <comment>- allow writing PS, PS2, PS3, XPS, EPS and PDF, disable reading
+  only by default security policy [bsc#1105592c#32]
+
+- also disable EPS coder in default policy.xml [bsc#1105592]
+  [bsc#1109976#c7]</comment>
+    <requestid>639725</requestid>
+  </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>74bdd5b546d068e74d6d131bcaf8b8d5</srcmd5>
+    <version>7.0.8.14</version>
+    <time>1541666549</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.8-14:
+  * Adding coder headers with magic.xml will no longer be supported.
+  * Adding coder aliases with coder.xml will no longer be supported.
+  * fixing oss-fuzz issues
+
+- asan_build: build ASAN included
+- debug_build: build more suitable for debugging</comment>
+    <requestid>645679</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>f97865005b110a213bbb56aff857b541</srcmd5>
+    <version>7.0.8.17</version>
+    <time>1545222511</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.8-17:
+  * Support -clahe clip limit with percentages (e.g. -clahe
+    50x50%+128+3).
+
+- update to 7.0.8-16:
+  * Add support for -clahe clip limit with percentages (e.g. -clahe 2x2+128+3%)
+  * Check for modulo underflow.
+  * Change SVG default DPI to 96 from 90 to meet recommendation of SVG2 &amp; CSS.
+  * Added support for the -clahe option: contrast limited adaptive histogram
+    equalization.
+  * Added support for GIMP 2.10 files (reference
+    https://github.com/ImageMagick/ImageMagick/pull/1381).</comment>
+    <requestid>659958</requestid>
+  </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>37eef9921f7f6556a02a6f5fb80c5a73</srcmd5>
+    <version>7.0.8.21</version>
+    <time>1546534987</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.8-21:
+  * Check to ensure SeekBlob() offset can be represented in an off_t.
+  * Cube image format returns a HALD image.
+  * CLAHE tiles overlapped are now centered relative to the image.</comment>
+    <requestid>661859</requestid>
+  </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>aa6f70f85d50e8cfa2b9307e779b7fd0</srcmd5>
+    <version>7.0.8.25</version>
+    <time>1549311870</time>
+    <user>coolo</user>
+    <comment>- update to 7.0.8-25:
+  * Eliminate spurious font warning (#1458)
+  * Support HEIC EXIF &amp;amp; XMP profiles.
+
+- changelog for 7.0.8-24:
+  * Support -clahe option real clip limit
+  * ShadeImage() kernels can return negative pixels, clamp to range (#1319)
+  * Annotate with negative offsets no longer renders slanted text (forwarded request 670282 from polslinux)</comment>
+    <requestid>670284</requestid>
+  </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>970b6b14e6798fb7142e3b63c10cc2bc</srcmd5>
+    <version>7.0.8.26</version>
+    <time>1549916263</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.8-26:
+  * Fixed a number of issues (reference
+    https://github.com/ImageMagick/ImageMagick/issues).</comment>
+    <requestid>672384</requestid>
+  </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>61e0a227906d6fb11516c682b5feb154</srcmd5>
+    <version>7.0.8.28</version>
+    <time>1551024452</time>
+    <user>coolo</user>
+    <comment>- updated to 7.0.8-28
+  * Fixed a number of issues (reference
+    https://github.com/ImageMagick/ImageMagick/issues).
+- deleted patches
+  - ImageMagick-test-FITS.patch (upstreamed)
+- deleted sources
+  - input.fits (not needed)
+- added patches
+  https://github.com/ImageMagick/ImageMagick/issues/1484
+  + ImageMagick-montage.t.patch
+
+- update to 7.0.8-27:
+  * Mod patch to properly handle subimage ranges (e.g. image.gif[2-3]).
+- added ImageMagick-test-FITS.patch and input.fits temporarily
+  https://github.com/ImageMagick/ImageMagick/issues/1478
+- remove ImageMagick-clamp-after-edge.patch, it is solved another
+  way (see [bsc#1106415c#10])</comment>
+    <requestid>677357</requestid>
+  </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>84e67a4292d64ce20008c84845f69c5f</srcmd5>
+    <version>7.0.8.34</version>
+    <time>1553699527</time>
+    <user>dimstar_suse</user>
+    <comment>- added temporary %pretrans to ImageMagick-config-upstream and
+  ImageMagick-config-SUSE [bsc#1122033comment#37]
+
+- version update to 7.0.8.34
+  * Associate one lock with each resource.
+  * Report exception if opening TIFF did not work out.
+  * Fixed numerous use of uninitialized values, integer overflow, memory
+    exceeded, and timeouts (credit to OSS Fuzz).
+
+- update to 7.0.8-33
+  * Fix SVG conversion infinite loop (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=35591).
+  * Initialize primitive drawing structure after resizing.
+  * Fix out-of-boundary LocaleLowerCase() @
+    https://github.com/ImageMagick/ImageMagick/issues/1495
+  *  -trim is no longer sensitive to the image virtual canvas.
+
+- update to 7.0.8-30
+  * Support define to remove additional background from an image during a
+    trim, e.g. -define trim:percent-background=0% -trim.
+  * Fixed a number of issues (reference
+    https://github.com/ImageMagick/ImageMagick/issues).
+  * Fixed numerous use of uninitialized values, integer overflow, memory
+    exceeded, and timeouts (credit to OSS Fuzz).
+- deleted patches
+  - ImageMagick-montage.t.patch (upstreamed)
+
+- provide two new (conflicting) packages with configuration
+  [bsc#1122033]:
+  * ImageMagick-config-upstream</comment>
+    <requestid>686103</requestid>
+  </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>37d224161ec897450af33ab399e9c51d</srcmd5>
+    <version>7.0.8.37</version>
+    <time>1554712298</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.8.37
+  * Fixed -virtual-pixel option (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=35789).
+  * -draw image DstOver is now responsive to the composite operator (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=1&amp;t=35650).
+  * Fixed a number of issues (reference
+    https://github.com/ImageMagick/ImageMagick/issues).</comment>
+    <requestid>691504</requestid>
+  </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>633699abd08745b0a560358947ea8a21</srcmd5>
+    <version>7.0.8.40</version>
+    <time>1555588652</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.8.40
+  * Fixed a number of issues (reference
+    https://imagemagick.org/discourse-server/viewforum.php?f=3).
+  * Fixed a number of issues (reference
+    https://github.com/ImageMagick/ImageMagick/issues).
+  * The -layers option compared pixels inocorrectly as opacity rather than
+    alpha.
+  * The -preview raise option now returns expected results.
+  * Initialise ghostscript instances with NULL (reference
+    https://github.com/ImageMagick/ImageMagick/pull/1538).
+  * Modulo off by one patch for -virtual-pixel option (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=35789).</comment>
+    <requestid>694797</requestid>
+  </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>c124d639b212b29f8de6864b92b94af4</srcmd5>
+    <version>7.0.8.41</version>
+    <time>1556311396</time>
+    <user>maxlin_factory</user>
+    <comment>- version update to 7.0.8.41
+  * Fixed a number of issues (reference
+    https://github.com/ImageMagick/ImageMagick/issues).
+  * Honor SOURCE_DATE_EPOCH environment variable (reference
+    https://github.com/ImageMagick/ImageMagick/pull/1496/).
+  * Standardize on UTC time for any image format timestamp.
+  * Add MagickAutoThresholdImage(), MagickCannyEdgeImage(),
+    MagickComplexImages(), MagickConnectedComponentsImage(),
+    MagickHoughLineImage(), MagickKuwaharaImage(), MagickLevelizeImageColors(),
+    MagickLevelImageColors(), MagickMeanShiftImage(), MagickPolynomialImage(),
+    MagickRangeThresholdImage(), MagickSetSeed(), MagickWaveletDenoiseImage()
+    methods to MagickWand API.
+
+-bsc#1133110 - Remove jasper dependency from ImageMagick</comment>
+    <requestid>697199</requestid>
+  </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>752b3d3de6f49040dcf1bff2baf8f4ae</srcmd5>
+    <version>7.0.8.42</version>
+    <time>1556817310</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.8.42
+  * Fixed a number of issues (reference
+    https://imagemagick.org/discourse-server/viewforum.php?f=3).
+  * Fixed a number of issues (reference
+    https://github.com/ImageMagick/ImageMagick/issues).</comment>
+    <requestid>699438</requestid>
+  </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>f32ee38f58f3bc122d048d7ee415949b</srcmd5>
+    <version>7.0.8.48</version>
+    <time>1560337536</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.8.48
+  * Fix transient convolution bug.
+- deleted patches
+  - ImageMagick-montage.t-failing.patch (upstreamed)
+
+- version update to 7.0.8.47
+  * Support 16 and 32 bit tiled float TIFF images.
+  * Convolve morphology alpha channel fix (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=36086).
+  * Text improvements to the internal SVG renderer.
+- disable failing averageImages test for i586
+- modified patches
+  disable also PCL [bsc#1136183]
+  % ImageMagick-configuration-SUSE.patch
+- added patches
+  https://github.com/ImageMagick/ImageMagick/issues/1580
+  + ImageMagick-montage.t-failing.patch
+
+- version update to 7.0.8.46
+  * Return HEIC images in the sRGB colorspace.
+  * Fix image signatures to ensure they are Q-depth invariant (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=1&amp;t=35970).
+  * Fixed a number of issues (reference
+    https://imagemagick.org/discourse-server/viewforum.php?f=3).
+  * Fixed a number of issues (reference
+    https://github.com/ImageMagick/ImageMagick/issues).
+
+- version update to 7.0.8.44
+  * Fixed a number of issues (reference
+    https://imagemagick.org/discourse-server/viewforum.php?f=3).</comment>
+    <requestid>707101</requestid>
+  </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>6719dc660ef687591e402ae7c85e95a4</srcmd5>
+    <version>7.0.8.49</version>
+    <time>1561557708</time>
+    <user>dimstar_suse</user>
+    <comment>- disable indirect reads [bsc#1138425]
+  (https://imagemagick.org/script/security-policy.php)
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)
+
+- version update to 7.0.8.49
+  * Add support for RGB565 image format (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=2&amp;t=36078).
+  * Use user defined allocator instead of `malloc` (reference
+    https://github.com/ImageMagick/ImageMagick6/pull/49/).
+  * Add static decorator to accelerator kernels (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1366).</comment>
+    <requestid>710588</requestid>
+  </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>e6fb021e43464eec4e2533a981d5ee84</srcmd5>
+    <version>7.0.8.53</version>
+    <time>1563366217</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.8.53
+  * Fix -fx parsing issue (reference
+     https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=36314).
+  * Eliminate buffer overflow in TranslateEvent() (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1621).
+  * Clone rather than copy X window name/icon.
+  * Optimize PDF reader.
+
+- version update to 7.0.8.50
+ * Added support for reading all images from a HEIC image (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1391).
+ * Heap-buffer-overflow in MagickCore/fourier.c (reference
+   https://github.com/ImageMagick/ImageMagick/issues/1588).
+  * Fixed a number of issues (reference
+    https://imagemagick.org/discourse-server/viewforum.php?f=3).
+  * Fixed a number of issues (reference
+    https://github.com/ImageMagick/ImageMagick/issues).</comment>
+    <requestid>715483</requestid>
+  </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>6cab540eac067c2adf06d7289bf4eca7</srcmd5>
+    <version>7.0.8.56</version>
+    <time>1564413802</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.8.56
+  * Unexpected -alpha shape results (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=36396).
+  * Converting from PDF to PBM inverts the image (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1643).
+  * Heap-buffer overflow (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1641
+  * PerlMagick test suite passes again (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1640)
+  * resolve division by zero  (reference
+     https://github.com/ImageMagick/ImageMagick/issues/1629).
+  * introducing MagickLevelImageColors() MagickWand method.
+  * Transient problem with text placement with gravity (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1633).
+  * Support TIM2 image format (reference
+    https://github.com/ImageMagick/ImageMagick/pull/1571).
+  * For -magnify option, specify an alternative scaling method with -define
+    magnify:method=method, choose from these methods: eagle2X, eagle3X,
+    eagle3XB, epb2X, fish2X, hq2X,  scale2X (default), scale3X, xbr2X.</comment>
+    <requestid>717533</requestid>
+  </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>52f995d136361233a5cba4f254a0607f</srcmd5>
+    <version>7.0.8.61</version>
+    <time>1566664971</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.8.61
+  * Issue with -background and -swirl (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=36512).
+  * Enable reading EXR image file from stdin.
+  * Module is a reserved keyword for C++ 20 (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1650).
+  * Improve GetNextToken() performance.
+  * Heap-buffer-overflow in Postscript coder (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1644).
+  * The -alpha shape option nondeteministic under OpenMP (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=36396).
+  * Correction to the ModulusAdd and ModulusSubtract composite op (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=2&amp;t=36413).</comment>
+    <requestid>724996</requestid>
+  </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>c3815d3c199e85447ee36cce36826123</srcmd5>
+    <version>7.0.8.63</version>
+    <time>1567852363</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.8.63
+  * Properly identify the DNG and AI image format (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=36581).
+  * Added option to limit the maximum point size with -define
+    caption:max-pointsize=pointsize.
+  * Corrected JP2 numresolution calculation (reference:
+    https://github.com/ImageMagick/ImageMagick/issues/1673)</comment>
+    <requestid>727702</requestid>
+  </revision>
+</revisionlist>

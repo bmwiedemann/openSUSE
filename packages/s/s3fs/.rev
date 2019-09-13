@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e43fd179371f353fc4020e48751940f0</srcmd5>
+    <version>1.73</version>
+    <time>1378296305</time>
+    <user>coolo</user>
+    <comment>- s3fs provides a machanism to mount an S3 bucket as a local filesystem using
+  FUSE</comment>
+    <requestid>196898</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e43fd179371f353fc4020e48751940f0</srcmd5>
+    <version>1.73</version>
+    <time>1379664602</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7fc1d0b1178eef59231cc29a1c072af0</srcmd5>
+    <version>1.74</version>
+    <time>1392238334</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.74
+  + Fixed bugs
+   - Fixed wrong printf format.
+   - Fixed a bug at changing umask.
+   - Fixed a bug at changing utimens.
+   - When changing object size, could not update stat cache.
+   - Fixed some memory leak.
+   - Fixed a bug about ftruncate(Issue 371).
+   - Fixed a bug about multipart post request(Issue 371).
+   - Fixed a bug about multipart post/head retrying(Issue 389).
+   - Fixed public_bucket option bug
+   - Fixed file size over flow on 32bit OS
+  + Changed codes
+   - Calling curl_global_init function once.
+   - Adds dynamic lock callback for OpenSSL.
+   - Checking strict for s3fs command parameters.
+   - Caches SSL session.
+   - Changes parallel count 500 to 20 for multipart head req.
+   - Adds --enable-nss-init configure option.
+   - Changes updating timing for object cache(Issue 368).
+   - Changes level for some debugging codes.
+   - Adds casting for curl_ott_t variables.
+   - Adds IAM role option.
+   - Adds function on utility mode for removing failed multipart req.</comment>
+    <requestid>221828</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7fc1d0b1178eef59231cc29a1c072af0</srcmd5>
+    <version>1.74</version>
+    <time>1409303306</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a48236060aa0b42453389bd256132834</srcmd5>
+    <version>1.78</version>
+    <time>1421959766</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282343</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>03c05b66bc41c43bbb771ac7d1faa109</srcmd5>
+    <version>1.79</version>
+    <time>1450605168</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>349547</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ccabbce68e1510721ecd03f4b9e355f6</srcmd5>
+    <version>1.82</version>
+    <time>1510761318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.82
+  + #597 - Not fallback to HTTP - #596
+- From 1.81
+  + #426 - Updated to correct ChangeLog
+  + #431 - fix typo s/controll/control/
+  + #432 - Include location constraint when creating bucket
+  + #433 - Correct search and replace typo
+  + #440 - Handled all curl error without exiting process - #437
+  + #443 - Fix for leaks during stat cache entry expiry / truncation (#340)
+  + #444 - Add mirror file logic for removing cache file
+  + #447 - added fuse package for mounting via /etc/fstab, fixes #417
+  + #449 - Accept mount options compatible with mtab
+  + #451 - Correct path in README
+  + #454 - Changed for accepting mount options compatible with mtab - #449
+  + #466 - Fixed a bug about could not copy file mode from org file
+  + #471 - Added use_xattr option for #467 and #460
+  + #477 - OS-specific correspondence of the extended attribute header
+  + #483 - Trim symbolic link original path in file
+  + #487 - Split header debugging onto multiple lines for easier reading
+  + #488 - Fixed searching Content-Length without case sensitive - #480
+  + #489 - Changed headers_t map using nocase compare function - #488
+  + #494 - Fix typo s/destroied/destroyed/
+  + #495 - Fix invalid V4 signature on multipart copy requests
+  + #498 - Upgrade to S3Proxy 1.5.1
+  + #502 - Fixed issue#435 branch codes for remaining bugs(2)
+  + #503 - Add missing call to mtime test
+  + #504 - Use describe helper function
+  + #505 - Correct typos
+  + #509 - Use server-provided ETag during complete upload
+  + #511 - Fixed a bug about uploading NULL to some part of the file contents</comment>
+    <requestid>540234</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9a6cda4b236634cf3cc7924d797deba9</srcmd5>
+    <version>1.83</version>
+    <time>1517824362</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572349</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>645309d10e3573a330da21fd6297c05b</srcmd5>
+    <version>1.84</version>
+    <time>1532445912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624792</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>de9d802d43229f8a2e417e9e3e4558d3</srcmd5>
+    <version>1.84</version>
+    <time>1539758471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642108</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff4be23cf4ab1e19f8cfd675a4e6f93c</srcmd5>
+    <version>1.85</version>
+    <time>1557263748</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688330</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,668 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec683c527621412c286707a874d47e2b</srcmd5>
+    <version>0.2.2.34</version>
+    <time>1323705579</time>
+    <user>coolo</user>
+    <comment>Migration from openSUSE:Contrib:Factory where it has been maintained for a while. Please review, especially the non-standard user/group tor. Package is based on a former package in SUSE/openSUSE.</comment>
+    <requestid>96277</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>787c00d54c10536d34b55355efbd5ede</srcmd5>
+    <version>0.2.2.35</version>
+    <time>1324458244</time>
+    <user>coolo</user>
+    <comment>- update to upstream 0.2.2.35, which fixes a critical heap-overflow 
+  security issue: CVE-2011-2778 For a full list of changes, see:
+  https://gitweb.torproject.org/tor.git/blob_plain/release-0.2.2:/ReleaseNotes
+------------------------------------------------------------------ (forwarded request 96888 from AndreasStieger)</comment>
+    <requestid>96898</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5fcf8107d1db44c5f70d932d70a33aef</srcmd5>
+    <version>0.2.2.35</version>
+    <time>1329242956</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104051</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d1aadea7a4b8abd6057939f7f2f148f5</srcmd5>
+    <version>0.2.2.36</version>
+    <time>1339352407</time>
+    <user>coolo</user>
+    <comment>- update to 0.2.2.36 (forwarded request 123970 from AndreasStieger)</comment>
+    <requestid>123971</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>51c0d7eebdbdccaccc41350e995f7914</srcmd5>
+    <version>0.2.2.37</version>
+    <time>1339705604</time>
+    <user>coolo</user>
+    <comment>- update to 0.2.2.37 (forwarded request 124882 from AndreasStieger)</comment>
+    <requestid>124883</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c4f83282f2ee3b46f0741ea432760c8a</srcmd5>
+    <version>0.2.2.37</version>
+    <time>1340024254</time>
+    <user>coolo</user>
+    <comment>- add tor-0.2.2.37-logrotate.patch : add su option to logrotate to
+  fix W: suse-logrotate-user-writable-log-dir in Factory (forwarded request 125160 from AndreasStieger)</comment>
+    <requestid>125161</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>c4f83282f2ee3b46f0741ea432760c8a</srcmd5>
+    <version>0.2.2.37</version>
+    <time>1340184282</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cc0218770046c3e20d11f54ff2b6d72c</srcmd5>
+    <version>0.2.2.38</version>
+    <time>1345728680</time>
+    <user>namtrac</user>
+    <comment>update to 0.2.2.38 [bnc#776642]</comment>
+    <requestid>131304</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>545237a8e80a0d3d37e9436b3734eb01</srcmd5>
+    <version>0.2.2.39</version>
+    <time>1347832093</time>
+    <user>namtrac</user>
+    <comment>0.2.2.39 [bnc#780620] CVE-2012-4419 (forwarded request 134419 from AndreasStieger)</comment>
+    <requestid>134421</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>fa2091446ce17a1240c671983c6f99fc</srcmd5>
+    <version>0.2.2.39</version>
+    <time>1348148916</time>
+    <user>coolo</user>
+    <comment>update CVE notes for [bnc#780620] CVE-2012-4922 CVE-2012-4419 (forwarded request 134716 from AndreasStieger)</comment>
+    <requestid>134717</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>bc80cfbf4f5368a8d6043d62bda24813</srcmd5>
+    <version>0.2.2.39</version>
+    <time>1353591117</time>
+    <user>coolo</user>
+    <comment>- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+
+Error is masked due to || : (forwarded request 142017 from dimstar)</comment>
+    <requestid>142031</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d07edc5654ad0766ce759b5a81cdd40c</srcmd5>
+    <version>0.2.3.25</version>
+    <time>1354118695</time>
+    <user>coolo</user>
+    <comment>0.2.3.25 (forwarded request 143366 from AndreasStieger)</comment>
+    <requestid>143367</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>d07edc5654ad0766ce759b5a81cdd40c</srcmd5>
+    <version>0.2.3.25</version>
+    <time>1359110500</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>33f22c57110115421525238a682678d5</srcmd5>
+    <version>0.2.3.25</version>
+    <time>1370431246</time>
+    <user>coolo</user>
+    <comment>- add systemd support
+- verify source tarball signature (forwarded request 176532 from AndreasStieger)</comment>
+    <requestid>176533</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>33f22c57110115421525238a682678d5</srcmd5>
+    <version>0.2.3.25</version>
+    <time>1379664836</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>04c8786a6f887da965c1e2116f911aa4</srcmd5>
+    <version>0.2.4.17</version>
+    <time>1381735873</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>203063</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>17d0e9b32a74f88803efece79e5a0d34</srcmd5>
+    <version>0.2.4.18</version>
+    <time>1386528597</time>
+    <user>coolo</user>
+    <comment>tor-0.2.4.18-rc (forwarded request 209727 from AndreasStieger)</comment>
+    <requestid>209728</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0e7fb1a7413ff2dfbec730091f30bb9e</srcmd5>
+    <version>0.2.4.19</version>
+    <time>1387174499</time>
+    <user>coolo</user>
+    <comment>Tor 0.2.4.19, the first stable release in the 0.2.4 branch</comment>
+    <requestid>210870</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1cbc1d3482365df0494c31283b6bf7cc</srcmd5>
+    <version>0.2.4.20</version>
+    <time>1388396815</time>
+    <user>coolo</user>
+    <comment>tor 0.2.4.20 (forwarded request 212373 from AndreasStieger)</comment>
+    <requestid>212374</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>2b4e89c69e12543e6956ae491027e9b1</srcmd5>
+    <version>0.2.4.20</version>
+    <time>1390284138</time>
+    <user>coolo</user>
+    <comment>- redaction of 0.2.4.20 changelog to include bug and CVE references
+  [bnc#859421] [CVE-2013-7295]</comment>
+    <requestid>214525</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f28541e0eb455ff2897ecede034a6147</srcmd5>
+    <version>0.2.4.21</version>
+    <time>1394393236</time>
+    <user>coolo</user>
+    <comment>tor 0.2.4.21, systemd work, cleanup</comment>
+    <requestid>224836</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>e30ea9b07961ae8fa711000d44844c68</srcmd5>
+    <version>0.2.4.21</version>
+    <time>1397986640</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add tor-fw-helper for UPnP port forwarding; not used by default
+
+This adds the tor firewall helper designed to aid in UPnP (and NAT-PMP)
+port forwarding.  It is not used by default; the user will need to set
+`PortForwarding 1` in their torrc to enable use of the extra executable.
+Its sole purpose it to configure home (NAT) routers to add tunnels to
+expose the tor-related ports.</comment>
+    <requestid>230848</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d052882a0741c02c0ec2a70e03362f6c</srcmd5>
+    <version>0.2.4.22</version>
+    <time>1400441821</time>
+    <user>coolo</user>
+    <comment>tor 0.2.4.22, logrotate fix</comment>
+    <requestid>234481</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>44a8ed71020477bf9f257972e4a098c0</srcmd5>
+    <version>0.2.4.22</version>
+    <time>1402403908</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236500</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1a6bfd9443ed5608716d22aefd4b477d</srcmd5>
+    <version>0.2.4.23</version>
+    <time>1406785316</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243087</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>63c2003fa79a5032a9197dd8e52af0a7</srcmd5>
+    <version>0.2.4.23</version>
+    <time>1409118384</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>246393</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>63c2003fa79a5032a9197dd8e52af0a7</srcmd5>
+    <version>0.2.4.23</version>
+    <time>1409303517</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>329b18b25e61bb3962cacc547b4f3767</srcmd5>
+    <version>0.2.4.23</version>
+    <time>1411370637</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250330</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>be6904c8d1f87a347a42f2158babf445</srcmd5>
+    <version>0.2.4.24</version>
+    <time>1411721519</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>251978</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2aa1f58ab6c5e0f52d54d8bef591edc9</srcmd5>
+    <version>0.2.4.25</version>
+    <time>1414140491</time>
+    <user>coolo</user>
+    <comment>tor 0.2.4.25 [boo#902476]</comment>
+    <requestid>258179</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9bce39644ac7e0cce4f16ae0a391a033</srcmd5>
+    <version>0.2.5.10</version>
+    <time>1414613368</time>
+    <user>coolo</user>
+    <comment>tor 0.2.5.10, the first stable release in the 0.2.5 series</comment>
+    <requestid>258327</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>7e4740468ad43adbbd4427e3c9262dd2</srcmd5>
+    <version>0.2.5.10</version>
+    <time>1422790197</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>283531</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>71d8cbe9a6542cdce289a3033c797f1c</srcmd5>
+    <version>0.2.5.11</version>
+    <time>1427109441</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.2.5.11 [boo#923284]</comment>
+    <requestid>291648</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c2cf7ae8c913d63a52e36ee491c829fd</srcmd5>
+    <version>0.2.6.6</version>
+    <time>1427736818</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.2.6.6 (forwarded request 293609 from AndreasStieger)</comment>
+    <requestid>293610</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0e6c73c881a6778838bb6acbe4af1b5f</srcmd5>
+    <version>0.2.6.7</version>
+    <time>1428391814</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.2.6.7 security update [boo#926097]</comment>
+    <requestid>294673</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c456b3bf11026c1b6736007e5830e0c1</srcmd5>
+    <version>0.2.6.8</version>
+    <time>1432488845</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.2.6.8 (forwarded request 308468 from AndreasStieger)</comment>
+    <requestid>308470</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b2397c31ed919e9c4d65ca0a44b56ff1</srcmd5>
+    <version>0.2.6.9</version>
+    <time>1434383328</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311810</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7b49e42105983878b88d6fe3711b5f8c</srcmd5>
+    <version>0.2.6.10</version>
+    <time>1436888671</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316321</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>a79132db5164efa5f578c019b608f627</srcmd5>
+    <version>0.2.6.10</version>
+    <time>1440743218</time>
+    <user>coolo</user>
+    <comment>- Malformed hostnames in socks5 requests were written to the log
+  regardless of SafeLogging option (CWE-532) [boo#943362]
+  add tor-0.2.6.10-malformed-hostname-safe-logging.patch (forwarded request 327252 from AndreasStieger)</comment>
+    <requestid>327258</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>5974603eaf831829a0852a56ebb7fc14</srcmd5>
+    <version>0.2.6.10</version>
+    <time>1445287878</time>
+    <user>dimstar_suse</user>
+    <comment>- fix Factory build (ignore missing systemd-tmpfiles)</comment>
+    <requestid>338808</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3abb0537e87dbc8dbf1b9d07a7059ee2</srcmd5>
+    <version>0.2.7.5</version>
+    <time>1448553857</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346125</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a7e2580345b6c76f835eea264513a218</srcmd5>
+    <version>0.2.7.6</version>
+    <time>1450284155</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348428</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>9e732e08ad71649f002890a19bfcf26a</srcmd5>
+    <version>0.2.7.6</version>
+    <time>1459002290</time>
+    <user>dimstar_suse</user>
+    <comment>adjust nologin shell for tor user boo#971872</comment>
+    <requestid>376281</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>cd3dfc27124eb4f5c4cf7038d6b6ae09</srcmd5>
+    <version>0.2.8.6</version>
+    <time>1471249907</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419183</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a691041f046290b10d93b18d60e79fbb</srcmd5>
+    <version>0.2.8.7</version>
+    <time>1472111902</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421869</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>05bed36d091424d07e075e9bc100a48c</srcmd5>
+    <version>0.2.8.8</version>
+    <time>1474807507</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>429948</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>19fc389d7b1e942e7b6635984406c44e</srcmd5>
+    <version>0.2.8.9</version>
+    <time>1476997775</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.2.8.9 boo#1005292</comment>
+    <requestid>436114</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>22e8e5a0202636496d38d00cf4592e29</srcmd5>
+    <version>0.2.8.10</version>
+    <time>1480786075</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.2.8.10 (forwarded request 443226 from AndreasStieger)</comment>
+    <requestid>443227</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>9940e8172239d2828ea72031bfba27ba</srcmd5>
+    <version>0.2.8.11</version>
+    <time>1481654014</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445337</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a46915c3146f398215fb328abd6a2502</srcmd5>
+    <version>0.2.9.8</version>
+    <time>1483555157</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>448473</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>b96582b6f39b1d8cc2d807afdca08125</srcmd5>
+    <version>0.2.9.9</version>
+    <time>1485250997</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452089</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>722859229a3eef90adc3e86ec4252b07</srcmd5>
+    <version>0.2.9.10</version>
+    <time>1488560021</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.2.9.10 boo#1027539 (forwarded request 461734 from AndreasStieger)</comment>
+    <requestid>461735</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a2db53f711a0b00dc8a9eb66a0882f9f</srcmd5>
+    <version>0.3.0.6</version>
+    <time>1493363653</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.3.0.6</comment>
+    <requestid>491410</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>bb54d5803b6f0aa189fe0be08d545233</srcmd5>
+    <version>0.3.0.7</version>
+    <time>1495268007</time>
+    <user>dimstar_suse</user>
+    <comment>0.3.0.7 bsc#1039211</comment>
+    <requestid>495128</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>902470579f502b655b5494b66648b58b</srcmd5>
+    <version>0.3.0.7</version>
+    <time>1496327623</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with GCC 7: warning-errors on implicit fallthrough
+  add tor-0.3.0.7-gcc7-fallthrough.patch bsc#1041262</comment>
+    <requestid>500053</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>135c9c0f22d33335570f545e562bb119</srcmd5>
+    <version>0.3.0.8</version>
+    <time>1497016656</time>
+    <user>dimstar_suse</user>
+    <comment>- tor 0.3.0.8 fixing a pair of bugs that would allow an attacker to
+  remotely crash a hidden service with an assertion failure
+  * CVE-2017-0375: remotely triggerable assertion failure when a
+    hidden service handles a malformed BEGIN cell (bsc#1043455)
+  * CVE-2017-0376: remotely triggerable assertion failure caused by
+    receiving a BEGIN_DIR cell on a hidden service rendezvous
+    circuit (bsc#1043456)</comment>
+    <requestid>502413</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>9a8e62b61235ccfd98f686ae68192624</srcmd5>
+    <version>0.3.0.9</version>
+    <time>1498840997</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.3.0.9 CVE-2017-0377 bsc#1046845 (forwarded request 507336 from AndreasStieger)</comment>
+    <requestid>507338</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>ec785a89929f7771ea72aeda92623cfe</srcmd5>
+    <version>0.3.0.10</version>
+    <time>1501840815</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514239</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>117cf3ac2ad2c9bb43d3397d4a78df01</srcmd5>
+    <version>0.3.1.7</version>
+    <time>1505990112</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.3.7.1 CVE-2017-0380 TROVE-2017-008, boo#1059194</comment>
+    <requestid>527563</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>1db7fa1d5b8fb3bcce376cdfb214b8d8</srcmd5>
+    <version>0.3.1.8</version>
+    <time>1509036272</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.3.1.8</comment>
+    <requestid>536570</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>5d3ffbfc28d6da54297138910083eecd</srcmd5>
+    <version>0.3.1.9</version>
+    <time>1513583842</time>
+    <user>dimstar_suse</user>
+    <comment>- tor 0.3.1.9 with the following security fixes that prevent some
+  traffic confirmation, DoS and other problems (bsc#1070849):
+  * CVE-2017-8819: Replay-cache ineffective for v2 onion services
+  * CVE-2017-8820: Remote DoS attack against directory authorities
+  * CVE-2017-8821: An attacker can make Tor ask for a password
+  * CVE-2017-8822: Relays can pick themselves in a circuit path
+  * CVE-2017-8823: Use-after-free in onion service v2 (forwarded request 547268 from AndreasStieger)</comment>
+    <requestid>547269</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>348a21fa0bdc0f9b759eefbaf450cd73</srcmd5>
+    <version>0.3.2.9</version>
+    <time>1516359235</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>567207</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>8e47e37af766e00face44dd6b0c54d71</srcmd5>
+    <version>0.3.2.10</version>
+    <time>1520588232</time>
+    <user>dimstar_suse</user>
+    <comment>- tor 0.3.2.10:
+  * CVE-2018-0490: remote crash vulnerability against directory
+    authorities (boo#1083845, TROVE-2018-001)
+  * CVE-2018-0491: remote relay crash (boo#1083846, TROVE-2018-002)
+  * New system for improved resistance to DoS attacks against relays
+  * Various other bug fixes</comment>
+    <requestid>582239</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>cebe8f7965a700b54d65f4769b643e45</srcmd5>
+    <version>0.3.3.6</version>
+    <time>1527583698</time>
+    <user>dimstar_suse</user>
+    <comment>- tor 0.3.3.6:
+  * new stable release series
+  * controller support and other improvements for v3 onion services
+  * official support for embedding Tor within other application
+  * Improvements to IPv6 support
+  * Relay option ReducedExitPolicy to configure a reasonable default
+  * Revent DoS via malicious protocol version string (boo#1094283)
+  * Many other other bug fixes and improvements</comment>
+    <requestid>612507</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>173d359a49bedbb7135db403b250d4d0</srcmd5>
+    <version>0.3.3.7</version>
+    <time>1529402232</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616357</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>b97765132ea0e8ab8d7c5ce840cbb9d6</srcmd5>
+    <version>0.3.3.8</version>
+    <time>1531232211</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.3.3.8</comment>
+    <requestid>621774</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>96edc51ce20c8c327381a05cbe3b50ea</srcmd5>
+    <version>0.3.3.9</version>
+    <time>1531813282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622849</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a8e47835477748e33dfd5e6cd03ebe9d</srcmd5>
+    <version>0.3.4.8</version>
+    <time>1537018646</time>
+    <user>maxlin_factory</user>
+    <comment>tor 0.3.4.8</comment>
+    <requestid>634782</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>e3fde614e56f6433d3f538a8f906b16a</srcmd5>
+    <version>0.3.4.9</version>
+    <time>1541511237</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.3.4.9 (forwarded request 646175 from AndreasStieger)</comment>
+    <requestid>646176</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>f502c40b6682cd4f36e933ffe48139d8</srcmd5>
+    <version>0.3.5.7</version>
+    <time>1547130049</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.3.5.7</comment>
+    <requestid>663471</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b6062f86a2ec16ea9d91b2ccd99beeab</srcmd5>
+    <version>0.3.5.8</version>
+    <time>1551216008</time>
+    <user>dimstar_suse</user>
+    <comment>- tor 0.3.5.8:
+  * CVE-2019-8955 prevent attackers from making tor run
+    out of memory and crash
+  * Allow SOCKS5 with empty username+password
+  * Update geoip and geoip6 to the February 5 2019 Maxmind
+    GeoLite2 Country database
+  * Select guards even if the consensus has expired, as long
+    as the consensus is still reasonably live</comment>
+    <requestid>678960</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>e26aeed044fa3189d39b5823e04c5474</srcmd5>
+    <version>0.4.0.5</version>
+    <time>1557751917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702484</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>5458df2c352cb8e0f8f0c2f499b024e9</srcmd5>
+    <version>0.4.0.5</version>
+    <time>1558428022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704260</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>c198351171ee5f253158ef3671cf63f4</srcmd5>
+    <version>0.4.1.5</version>
+    <time>1566464042</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.1.5
+  * Onion service clients now add padding cells at the start of their
+    INTRODUCE and RENDEZVOUS circuits to make it look like
+    Exit traffic
+  * Add a generic publish-subscribe message-passing subsystem
+  * Controller commands are now parsed using a generalized parsing
+    subsystem
+  * Implement authenticated SENDMEs as detailed in proposal 289
+  * Our node selection algorithm now excludes nodes in linear time
+  * Construct a fast secure pseudorandom number generator for
+    each thread, to use when performance is critical
+  * Consider our directory information to have changed when our list
+    of bridges changes
+  * Do not count previously configured working bridges towards our
+    total of working bridges
+  * When considering upgrading circuits from &quot;waiting for guard&quot; to
+    &quot;open&quot;, always ignore circuits that are marked for close
+  * Properly clean up the introduction point map when circuits change
+    purpose
+  * Fix an unreachable bug in which an introduction point could try to
+    send an INTRODUCE_ACK
+  * Clients can now handle unknown status codes from INTRODUCE_ACK
+    cells
+- Remove upstreamed tor-0.3.5.8-no-ssl-version-warning.patch
+- Compile without -Werror to build with LTO (boo#1146548)
+- Add fix-test.patch to workaround a LTO-induced test-failure
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html</comment>
+    <requestid>725000</requestid>
+  </revision>
+</revisionlist>

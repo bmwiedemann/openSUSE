@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>258f01b481355e75e03d9b5178049b21</srcmd5>
+    <version>1.4.14+git2</version>
+    <time>1265750726</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/silo based on submit request 31703 from user jengelh
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ad1c5a2ba9260d6a79ef0b50bc03845</srcmd5>
+    <version>1.4.14+git2</version>
+    <time>1268926168</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f9fd03280cf41fc6c2c91232aa65eb45</srcmd5>
+    <version>1.4.14+git8</version>
+    <time>1278081309</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/silo based on submit request 42353 from user jengelh
+</comment>
+    <requestid>42353</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f9fd03280cf41fc6c2c91232aa65eb45</srcmd5>
+    <version>1.4.14+git8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>f9fd03280cf41fc6c2c91232aa65eb45</srcmd5>
+    <version>1.4.14+git8</version>
+    <time>1319182470</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>0bffaead31e08ae922c6f6efdd2c59f1</srcmd5>
+    <version>1.4.14+git8</version>
+    <time>1323194649</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>0bffaead31e08ae922c6f6efdd2c59f1</srcmd5>
+    <version>1.4.14+git8</version>
+    <time>1340184217</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>0bffaead31e08ae922c6f6efdd2c59f1</srcmd5>
+    <version>1.4.14+git8</version>
+    <time>1359110407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>032e80d216f20ad41d6282638a80893c</srcmd5>
+    <version>1.4.14+git20</version>
+    <time>1373984636</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183081</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>032e80d216f20ad41d6282638a80893c</srcmd5>
+    <version>1.4.14+git20</version>
+    <time>1379664681</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>032e80d216f20ad41d6282638a80893c</srcmd5>
+    <version>1.4.14+git20</version>
+    <time>1409303368</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

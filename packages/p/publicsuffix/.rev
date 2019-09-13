@@ -1,0 +1,540 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bfaa54a381616ef29308a5ea34eb8db</srcmd5>
+    <version>20151112</version>
+    <time>1448400676</time>
+    <user>coolo</user>
+    <comment>The Public Suffic List (Mozilla).
+For libpsl -&gt; wget and others</comment>
+    <requestid>344681</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a4e0a309673cb99e21bc4b777d72e655</srcmd5>
+    <version>20151130</version>
+    <time>1449383634</time>
+    <user>dimstar_suse</user>
+    <comment>update to 20151130</comment>
+    <requestid>347068</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5f48c75e7b07b392fb06f3f464f177be</srcmd5>
+    <version>20151205</version>
+    <time>1450471927</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>348887</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9a896f98a4bd194c11d212673a8bc710</srcmd5>
+    <version>20160104</version>
+    <time>1452535817</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352506</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e4f43d709188cd4f82c8bf6cda173068</srcmd5>
+    <version>20160115</version>
+    <time>1453997968</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355259</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b02b0059e33abadc1910c5f81db8b465</srcmd5>
+    <version>20160130</version>
+    <time>1454628668</time>
+    <user>dimstar_suse</user>
+    <comment>Updated to latest version from git:
+  * add *.i.ng
+  * update ng reference URL
+  * sort entries alphabetically (forwarded request 357371 from psimons)</comment>
+    <requestid>357372</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ee1567731f8befee7931d46f9ac4b9fb</srcmd5>
+    <version>20160130</version>
+    <time>1456433734</time>
+    <user>dimstar_suse</user>
+    <comment>2016-02-19 update</comment>
+    <requestid>360487</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d47ad1bc1840f57e09131da3d6e83d1f</srcmd5>
+    <version>20160302</version>
+    <time>1457532935</time>
+    <user>dimstar_suse</user>
+    <comment>2016-03-02 update</comment>
+    <requestid>366936</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2a0606f33a21c62f7c3bcb6afd50b7fb</srcmd5>
+    <version>20160310</version>
+    <time>1458333246</time>
+    <user>dimstar_suse</user>
+    <comment>2016-03-10 update</comment>
+    <requestid>370416</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f5bf9ae324aee3c6b89d9fcf66490fcf</srcmd5>
+    <version>20160325</version>
+    <time>1459936227</time>
+    <user>dimstar_suse</user>
+    <comment>- 2016-03-15 update:
+  * add .xn--e1a4c, oy.lc
+  * add new gTLDs through 2016-03-25
+
+  * add new gTLDs up through 2016-03-01</comment>
+    <requestid>382635</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f983294f82378261f34a557fd10bd19f</srcmd5>
+    <version>20160420</version>
+    <time>1461855072</time>
+    <user>dimstar_suse</user>
+    <comment>2016-04-20 update</comment>
+    <requestid>391257</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8bd172964a974e9c9835c2b3c5b8971f</srcmd5>
+    <version>20160509</version>
+    <time>1463497614</time>
+    <user>dimstar_suse</user>
+    <comment>- 2016-05-09 update:
+  * Add new gTLDs up to 2016-05-09
+  * Add dnshome.de</comment>
+    <requestid>394626</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dbe3f501f8609b5c391a83e3585efd7a</srcmd5>
+    <version>20160525</version>
+    <time>1464864572</time>
+    <user>dimstar_suse</user>
+    <comment>2016-05-25 update</comment>
+    <requestid>398343</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0b5903f6a0a2b8d244a841d4f1a1777b</srcmd5>
+    <version>20160610</version>
+    <time>1465847542</time>
+    <user>dimstar_suse</user>
+    <comment>2016-06-10 update</comment>
+    <requestid>400942</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>155aed10b5461326c128c1b739127e18</srcmd5>
+    <version>20160703</version>
+    <time>1468359861</time>
+    <user>dimstar_suse</user>
+    <comment>2016-07-03 update</comment>
+    <requestid>406422</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>efc587abf80d288268b1ddda21f9b597</srcmd5>
+    <version>20160731</version>
+    <time>1470217135</time>
+    <user>dimstar_suse</user>
+    <comment>2016-07-31 update</comment>
+    <requestid>416341</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f3cb28e2dddaa0d37a240caccbd60003</srcmd5>
+    <version>20160805</version>
+    <time>1471853098</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>419412</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0cc99ed377c139529db4bcbc83b8a6ed</srcmd5>
+    <version>20160826</version>
+    <time>1473408904</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>425117</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>29797a3a41e8658ffc1e76f49bc96ad9</srcmd5>
+    <version>20161021</version>
+    <time>1477481219</time>
+    <user>dimstar_suse</user>
+    <comment>2016-10-21 update</comment>
+    <requestid>437135</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>16da0a72214cd28fb441c46535efef7c</srcmd5>
+    <version>20161110</version>
+    <time>1480584226</time>
+    <user>dimstar_suse</user>
+    <comment>introduce compact DAFSA format, depends on SR#441832
+Now with build cycle removed.</comment>
+    <requestid>441833</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1f41139c687df398d098a1eed6ad6c76</srcmd5>
+    <version>20161128</version>
+    <time>1481708935</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>445463</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3396f482ad863dd58278b0c339882ef2</srcmd5>
+    <version>20161211</version>
+    <time>1482784751</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446218</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2206b2bc3677de8ed973c54e0a978099</srcmd5>
+    <version>20170105</version>
+    <time>1484818624</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450324</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>42f06be96cdedd05dc64da721e7e22dd</srcmd5>
+    <version>20170206</version>
+    <time>1487029108</time>
+    <user>dimstar_suse</user>
+    <comment>publicsuffix 20170206</comment>
+    <requestid>455960</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>17690543682152187034bdfb33d40ac0</srcmd5>
+    <version>20170303</version>
+    <time>1489866553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20170303:
+  * Add new gTLDs up to 2017-02-23 (#405)
+  * adding storj.farm for Storj Labs Inc. (#400)</comment>
+    <requestid>479987</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8a8b9aa042f13aeafbc3e2d1605c39d8</srcmd5>
+    <version>20170331</version>
+    <time>1491895741</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485087</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>69102c9153752fc56ed77d2362a8a620</srcmd5>
+    <version>20170424</version>
+    <time>1495010763</time>
+    <user>dimstar_suse</user>
+    <comment>20170424</comment>
+    <requestid>493661</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>faeb471463be1d0ac4e488b894b3b3d3</srcmd5>
+    <version>20170608</version>
+    <time>1497687462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20170608:
+  * Add nom.nc (#305)
+  * Add definima domain suffix (#383)
+  * Sort by company
+  * Delete .ORIENTEXPRESS (#437)
+  * Add cloud.goog (#449)</comment>
+    <requestid>503084</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>36a1759b1673270d3a888076e317a7a0</srcmd5>
+    <version>20170622</version>
+    <time>1499677228</time>
+    <user>dimstar_suse</user>
+    <comment>20170622</comment>
+    <requestid>507782</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7e23426f3d32476fc90cde278264b276</srcmd5>
+    <version>20170713</version>
+    <time>1500892295</time>
+    <user>dimstar_suse</user>
+    <comment>publicsuffix 20170713</comment>
+    <requestid>511677</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7a99fcdbeeeaa7c9d470eb14e7abf0e8</srcmd5>
+    <version>20170910</version>
+    <time>1507896516</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20170910: (forwarded request 532751 from pluskalm)</comment>
+    <requestid>532753</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>8f9c22159465f93f127cd35a8bad6c8b</srcmd5>
+    <version>20171028</version>
+    <time>1510664747</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20171028:
+  * remove .htc TLD (#548)
+  * Delete &quot;REMOVED&quot; TLDs (#536)
+  * .br updated - 19 new 2nd level city domains (#546)</comment>
+    <requestid>539689</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>db1b43ef6a3f58b89c60a3ac25f12bad</srcmd5>
+    <version>20171228</version>
+    <time>1516091073</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20171228:
+  * Add Paris region (#579)
+  * Fixed alwaysdata.net. (#555)
+  * Add Combell domains (#565)
+  * Adding scrysec.com (#528)
+  * Add Fedora Openshift app domains (#533)
+  * Add resin.io device domains to list (#499)
+  * Add nh-serv.co.uk to list file (#491)
+  * Add 1Password domains (#562)
+  * Add s5y.io (#572)
+  * Add social domains - NIC.bo (#467)</comment>
+    <requestid>561890</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>825742f503a6b2d81b3f137e64ad208f</srcmd5>
+    <version>20180125</version>
+    <time>1517323027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180125:
+  * .br updated - 12 new 2nd level city domains
+  * Update .ke suffixes to include second-level domains
+  * Remove myfusion.cloud domain</comment>
+    <requestid>569837</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>85eaae7d23c4e90c778826fffa3c9947</srcmd5>
+    <version>20180218</version>
+    <time>1519557604</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20180218:
+  * Add YesCourse private entry for official.academy
+  * Add schokokeks.net
+  * Add 2038.io
+  * Adding cloud66.ws customer domain for Cloud66
+  * Add linkyard.cloud</comment>
+    <requestid>578371</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>88e684d03545546b8329660cebdea6f8</srcmd5>
+    <version>20180223</version>
+    <time>1520852748</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>583963</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>74c6066b3f519555fd38005ba6acfc2a</srcmd5>
+    <version>20180312</version>
+    <time>1521192995</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180312:
+  * Add Cloudeity customer subdomains
+  * Removed se.com
+  * .br updated - one new city domain barueri.br
+- use %license (bsc#1082318) (forwarded request 586473 from AndreasStieger)</comment>
+    <requestid>586506</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>39227fdd1f0789bac5158acdb9045d5c</srcmd5>
+    <version>20180328</version>
+    <time>1523127202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593932</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fa864e899c19f9ef601c533e75ce8848</srcmd5>
+    <version>20180523</version>
+    <time>1528021915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180523:
+  * Remove 1password domains (#632)
+  * Add cleverapps.io (Clever Cloud) (#634)
+  * Remove .BOOTS
+  * Add azurecontainer.io to Microsoft domains (#637)
+  * Change the patchnewgtlds tool for the updated .zw domain
+  * Add new gTLDs up to 2018-04-17 and new ccTLDs up to 2018-04-17
+  * cloud.muni.cz cloud subdomains (#622)
+  * Add YunoHost DynDns domains: nohost.me &amp; noho.st (#615)
+  * Use a custom token for the newGTLD list (#645)
+  * lug.org.uk (#514)
+  * Adding xnbay.com,u2.xnbay.com,u2-local.xnbay.com to public_suffix_list.dat. (#506)
+  * Adding customer.speedpartner.de (#585)
+  * Adding ravendb.net subdomains (#535)
+  * Adding own.pm (#544)
+  * pcloud.host (#531)
+  * Add additional Lukanet Ltd domains (#652)
+  * Add zone.id (#575)
+  * Add half.host (#571)
+  * Update 香港 TLD (#568)
+  * Add Now-DNS domains (#560)
+  * Added blackbaudcdn.net private domain to PSL (#558)
+  * Adding IServ GmbH domains (#552)
+  * Add FASTVPS EESTI OU domains (#541)
+  * nic.it - update regions and provinces (#524)
+  * Update Futureweb OG Private Domains (#520)
+  * add United Gameserver virtualuser domains (#600)
+  * Add Lightmaker Property Manager, Inc domains (#604)
+  * Update Uberspace domains (#616)
+  * Add Datto, Inc domains</comment>
+    <requestid>612789</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7664a8f6ed299f3f802661a673ac7a30</srcmd5>
+    <version>20180719</version>
+    <time>1532681442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180719:
+  * Remove .IWC
+  * Update Kuwait's ccTLD (.kw)
+  * htts://www.transip.nl =&gt; https://www.transip.nl
+  * Remove MEO and SAPO</comment>
+    <requestid>625061</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>05e5f4e764a780f3fbaf1ede64f8a6b4</srcmd5>
+    <version>20180813</version>
+    <time>1535370375</time>
+    <user>dimstar_suse</user>
+    <comment>publicsuffix 20180813</comment>
+    <requestid>629385</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>be6314e3e2653f8732b150b68c470202</srcmd5>
+    <version>20181003</version>
+    <time>1539869425</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20181003:
+  * Remove deleted TLDs (#710)
+  * Added apigee.io (#712)
+  * Add AWS ElasticBeanstalk Ningxia, CN region (#597)
+  * Add Github PULL REQUEST TEMPLATE (#699)
+  * Add ong.br 2nd level domain (#707)</comment>
+    <requestid>642064</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>775be35c0a27f24bb0df987dd7e28f57</srcmd5>
+    <version>20181030</version>
+    <time>1541514078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20181030:
+  * Add readthedocs.io (#722)
+  * Remove trailing whitespace from L11948 (#721)
+  * Add krasnik.pl, leczna.pl, lubartow.pl, lublin.pl, poniatowa.pl
+    and swidnik.pl domains to the Public Suffix List (#670)
+  * Add instantcloud.cn by Redstar Consultants (#696)
+  * Add Fermax and mydobiss.com domain (#706)
+  * Add shop.th &amp; online.th (#716)
+  * Add siteleaf.net (#655)
+  * Add wpcomstaging.com and go-vip.co to the PSL (#719)</comment>
+    <requestid>645529</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>20f2c82baaabb53e48f3eaae812bdc05</srcmd5>
+    <version>20181227</version>
+    <time>1547211673</time>
+    <user>dimstar_suse</user>
+    <comment>20181227</comment>
+    <requestid>663040</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>acbbc34714e8eb61bb7c3b9a057edb29</srcmd5>
+    <version>20181227</version>
+    <time>1548704813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666970</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8498b9e9347cee12fbea50dcec377cb7</srcmd5>
+    <version>20190205</version>
+    <time>1551024448</time>
+    <user>coolo</user>
+    <comment>- Update to version 20190205:
+  * Add domains of Individual Network Berlin e.V. (#711)
+  * Added bss.design to PSL (#685)
+  * Add fastly-terrarium.com (#729)
+  * Add Swisscom Application Cloud domains (#698)
+  * Update public_suffix_list.dat with api.stdlib.com (#751)
+  * Add regional domain for filegear.me (#713)
+  * Remove bv.nl (#758)
+  * Update public_suffix_list.dat
+
+- Link public_suffix_list.dat to effective_tld_names.dat for the
+  purpose of httpcomponents-client</comment>
+    <requestid>677138</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>642839b6f563dfe437975b62a4502e2d</srcmd5>
+    <version>20190529</version>
+    <time>1560337484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190529:
+  * Add Balena domains (#814)
+  * Add KingHost domains (#827)
+  * Add dyn53.io (#820)
+  * Add azimuth.network and arvo.network (#812)
+  * Update .rw domains per ccTLD (#821)
+  * Add b-data.io (#759)
+  * Add co.bn (#789)
+  * Add Zitcom domains (#817)
+  * Add Carrd suffixes (#816)
+  * Add Linode Suffixes (#810)
+  * Add lab.ms (#807)
+  * Add wafflecell.com (#805)
+  * Add hÃ¤kkinen.fi (#804)
+  * Add prvcy.page (#803)
+  * Add SRCF user domains: soc.srcf.net, user.srcf.net (#802)
+  * Add KaasHosting (#801)
+  * Adding cloud66.zone (#797)
+  * Add gehirn.ne.jp and usercontent.jp for Gehirn Inc. (#795)
+  * Add Clerk user domains (#791)
+  * Add loginline (.app, .dev, .io, .services, .site) (#790)
+  * Add wnext.app (#785)
+  * Add Hostbip Registry Domains (#770)
+  * Add glitch.me (#769)
+  * added thingdustdata.com (#767)
+  * Add dweb.link (#766)
+  * Add onred.one (#764)
+  * Add mo-siemens.io (#762)
+  * Add Render domains (#761)
+  * Add *.moonscale.io (#757)</comment>
+    <requestid>706348</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>23da0f9f9c0171da41f563e83e3d2d15</srcmd5>
+    <version>20190808</version>
+    <time>1565962226</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190808:
+  * tools: update newgtlds.go to filter removed gTLDs (#860)
+  * gTLD autopull: 2019-08-08 (#862)
+  * Remove non-public nuernberg.museum nuremberg.museum domains (#859)
+  * gTLD autopull: 2019-08-02 (#858)
+  * Update public_suffix_list.dat (#825)
+  * Update reference as per #855
+  * add nic.za
+  * Update contact for SymfonyCloud (#854)
+  * Add lelux.site (#849)
+  * Add *.webhare.dev (#847)
+  * Update Hostbip Section (#846)
+  * Add Yandex Cloud domains (#850)
+  * Add ASEINet domains (#844)
+  * Update nymnom section (#771)
+  * Add Handshake zones (#796)
+  * Add iserv.dev for IServ GmbH (#826)
+  * Add trycloudflare.com to Cloudflare's domains (#835)
+  * Add shopitsite.com (#838)
+  * Add pubtls.org (#839)
+  * Add qualifio.com domains (#840)
+  * Update newgtlds tooling &amp; associated gTLD data. (#834)
+  * Add web.app for Google (#830)
+  * Add iobb.net (#828)
+  * Add cloudera.site (#829)</comment>
+    <requestid>723100</requestid>
+  </revision>
+</revisionlist>

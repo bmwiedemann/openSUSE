@@ -1,0 +1,766 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c8633fa2e3cc35103fda61b19b64c9be</srcmd5>
+    <version>0.6.3</version>
+    <time>1366953133</time>
+    <user>coolo</user>
+    <comment>initial package</comment>
+    <requestid>172828</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>63fe8f8afb55592f4ed86f3e9d957052</srcmd5>
+    <version>0.6.3</version>
+    <time>1367932236</time>
+    <user>coolo</user>
+    <comment>support relative path for authorized_keys file, backport fix from upstream version 0.7.1 (bnc#818306)</comment>
+    <requestid>174647</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b1a9b67a111486759199e3f0d7f44e70</srcmd5>
+    <version>0.7.2</version>
+    <time>1371544163</time>
+    <user>coolo</user>
+    <comment>- add the distro specific handler for openSUSE
+  + patch openSUSEHandler.diff
+- fix syntax in SLE handler
+  + dict access uses [] not {}, duh (forwarded request 179074 from rjschwei)</comment>
+    <requestid>179244</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5ee217db8e021c81d28555748b5a79a5</srcmd5>
+    <version>0.7.2</version>
+    <time>1371645739</time>
+    <user>coolo</user>
+    <comment>- integrate changes from HP
+  + update the sles handler, do not modify the util code integrate
+    routines directky into the sles handler
+    ~ add patch slesHandler.patch
+    ~ remove patch openSUSEHandler.diff
+  + add python dependencies
+    ~ python-argparse
+    ~ python-configobj
+    ~ python-oauth
+  + update the cloud-init config file (forwarded request 179612 from rjschwei)</comment>
+    <requestid>179625</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9df34c113d91076e398413f81ee290ad</srcmd5>
+    <version>0.7.2</version>
+    <time>1374245475</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183655</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>66d9ffe3ceb1d2482bb8bf51d87ee619</srcmd5>
+    <version>0.7.2</version>
+    <time>1375627695</time>
+    <user>coolo</user>
+    <comment>- remove the &quot;nofail&quot; option for the ephemeral storage
+  + when using nofail an attempt is made to mount the filesystem twice
+    once via udev and once through localfs, this results in a hanging
+    system if fsck needs to run on the device</comment>
+    <requestid>185659</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>66d9ffe3ceb1d2482bb8bf51d87ee619</srcmd5>
+    <version>0.7.2</version>
+    <time>1379662118</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8324e849e5e599c68302c4c40877bb38</srcmd5>
+    <version>0.7.4</version>
+    <time>1389617370</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>213608</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>08cda8cdafbdbd27067c41988f485f36</srcmd5>
+    <version>0.7.4</version>
+    <time>1391090044</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>215317</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5dccfce94fc1dfebdc6c665740816602</srcmd5>
+    <version>0.7.4</version>
+    <time>1396954898</time>
+    <user>coolo</user>
+    <comment>- fix implementation of the openSUSE handler, properly read the configuration
+  from sysconfig
+
+- do not package any none SUSE/openSUSE templates bnc#839707
+- add patch openSUSEhostsTemplate.diff to add an openSUSE hosts template
+
+- enable growing of root partition by default bnc#861473
+
+- include the LICENSE
+
+- include in SLE 12 (FATE #315990, #315991, and 316167)
+- add patch azure_1269626.diff, fix for upstream bug 1269626
+  + Azure instance do not boot properly after a capture operation
+
+- add dependency on growpart to support root partition expansion</comment>
+    <requestid>228217</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0bb3d7ae2fb938e16fd931c738dab56e</srcmd5>
+    <version>0.7.5</version>
+    <time>1401899942</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>230970</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>32cf47ada378c6b307bd324ce9f16a2d</srcmd5>
+    <version>0.7.5</version>
+    <time>1404996923</time>
+    <user>coolo</user>
+    <comment>- fix &quot;typo&quot; the rhel_util module is imported as rhutil, use the
+  proper name when accessing (modifies suseIntegratedHandler.patch)
+
+- add rsyslog filter rule to send cloud-init messages to
+  /var/log/cloud-init.log
+
+- initialize variable in method setting the instance hostname (BNC #884392)
+  modifies: suseIntegratedHandler.patch
+
+- add the python magic for package build on SLE 11
+
+- add more dependencies to ensure commands used by the scripts are present
+- add dynamicInitCmd.diff
+  + support diffirent init systems across distribution versions for
+    service restart
+- add suseSetInitCmd.patch
+  + properly setup the init command to support proper service restart
+
+- integrate openSUSE and SLE handler code
+  + remove openSUSEHandler.diff
+  + add suseIntegratedHandler.patch</comment>
+    <requestid>239820</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>8f5830766019864053846725a20bce72</srcmd5>
+    <version>0.7.5</version>
+    <time>1407912548</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244242</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>8215ce7d2d52813c2c7b0a99b62f273e</srcmd5>
+    <version>0.7.5</version>
+    <time>1409151190</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>245117</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>8215ce7d2d52813c2c7b0a99b62f273e</srcmd5>
+    <version>0.7.5</version>
+    <time>1409300649</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>ae3f5097d6c998f0669057e74bc903b5</srcmd5>
+    <version>0.7.5</version>
+    <time>1417643279</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263690</requestid>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>8a2b5980618a9d0aa5106bf4637e9cc3</srcmd5>
+    <version>0.7.5</version>
+    <time>1423038729</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283920</requestid>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>58ff6204c13cb6747548f7def26dc1f8</srcmd5>
+    <version>0.7.5</version>
+    <time>1423812922</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>285781</requestid>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>0b4e3bc0aae62e2c1961116dbc0a5484</srcmd5>
+    <version>0.7.5</version>
+    <time>1425031145</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix (bnc#919305 &amp; bnc#918952)
+  - Properly handle persistent network device names for OpenNebula 
+    + add dataSourceOpenNebula.patch
+  - Properly set up network mode if interface config file 
+    + modified suseIntegratedHandler.patch</comment>
+    <requestid>287588</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5ffbf782d80f95f0a8a418b1c5d4d90c</srcmd5>
+    <version>0.7.6</version>
+    <time>1428949907</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 295648 from tbechtold)</comment>
+    <requestid>295726</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>6782ac4b4cfa63bf371f779b3792914b</srcmd5>
+    <version>0.7.6</version>
+    <time>1430891341</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>305308</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>b53842b877dd18f4d146038ce1ec04ef</srcmd5>
+    <version>0.7.6</version>
+    <time>1433145082</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>308957</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>a61adb4b58a455979bb5ab49a16b4305</srcmd5>
+    <version>0.7.6</version>
+    <time>1436888586</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>315241</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>76843153846949c8b6498f4d8dc21344</srcmd5>
+    <version>0.7.6</version>
+    <time>1445287876</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>338802</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>a21c08f4370730215f811e47982a8a9d</srcmd5>
+    <version>0.7.6</version>
+    <time>1459002432</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>378315</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>8a1ef05bf8036c6472252ad867d7655f</srcmd5>
+    <version>0.7.6</version>
+    <time>1463221409</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>394743</requestid>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>acdc4a7f2cb7b83a33a3bfbd22639faa</srcmd5>
+    <version>0.7.6</version>
+    <time>1465938521</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401664</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e92d980eccea4a3b89fbdbda66d248f5</srcmd5>
+    <version>0.7.8</version>
+    <time>1475359640</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>429511</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>11fe389a3a571319b164ab3ccc494569</srcmd5>
+    <version>0.7.8</version>
+    <time>1478952151</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>439242</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>1de611a71695815099bb93eab6896416</srcmd5>
+    <version>0.7.8</version>
+    <time>1479502908</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440711</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>a74b57dada3488371274d90886af74d6</srcmd5>
+    <version>0.7.8</version>
+    <time>1481390998</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445076</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>986ded04ea206d5b6e22f77f0bb5b907</srcmd5>
+    <version>0.7.8</version>
+    <time>1485041172</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445795</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>264726f158fcc0d39ec296bb03bfdabb</srcmd5>
+    <version>0.7.8</version>
+    <time>1485250978</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452043</requestid>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>f873e2d91ec162d2b4cdd97c01a0e5c2</srcmd5>
+    <version>0.7.8</version>
+    <time>1488479412</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460303</requestid>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>a19a5ab60eb25b2539db8d196366308c</srcmd5>
+    <version>0.7.8</version>
+    <time>1489345309</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477254</requestid>
+  </revision>
+  <revision rev="36" vrev="9">
+    <srcmd5>3ee2aec1e2dce1d8401cfa117217ec3a</srcmd5>
+    <version>0.7.8</version>
+    <time>1489653707</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479042</requestid>
+  </revision>
+  <revision rev="37" vrev="10">
+    <srcmd5>f2295733a2ceffcfbe6d72b1a3952863</srcmd5>
+    <version>0.7.8</version>
+    <time>1505238967</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop python-cheetah as requirement
+  + Cheetah is no maintained and cloud-init switches to Jinja2 as
+    templating engine if Cheetah is not available
+- Drop argparse as dependency for Py3 build
+  + argparse is built into Python
+
+- Modify cloud-init-finalbeforelogin.patch (bsc#1047363)
+  + Support user processes running in coud-init-final to consume a
+    large number of threads.
+- Modify cloud-init-service.patch (bsc#1055649)
+  + Start after dbus.service, needed by hotnamectl
+- Modify cloud-init-handle-not-implemented-query.patch
+  + print needs () for Python3
+- Add cloud-init-spceandtabs-clean.patch
+  + Fix inconsistent use of spaces and tabs in various files
+- Modify suseIntegratedHandler.patch
+  + Fix mode setting passed to function for file writing
+- Set packag up to build with Python 3 for distros later than SLE 12</comment>
+    <requestid>523370</requestid>
+  </revision>
+  <revision rev="38" vrev="11">
+    <srcmd5>e381927d36d10c4709d6434de4ada29c</srcmd5>
+    <version>0.7.8</version>
+    <time>1505835323</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527050</requestid>
+  </revision>
+  <revision rev="39" vrev="12">
+    <srcmd5>834609b253c59a972dd9a66632d354a1</srcmd5>
+    <version>0.7.8</version>
+    <time>1505920452</time>
+    <user>dimstar_suse</user>
+    <comment>- add skip-argparse-on-python3.patch: don't depend on argparse
+  for python3, it is builtin there (as of python 3.2, so the
+  patch should be good enough)</comment>
+    <requestid>527526</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a5216051eabc0e9f7b6d82c3a06aab08</srcmd5>
+    <version>17.1</version>
+    <time>1509722881</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix sed expression to set distro properly (boo#1063716)
+
+- Update to version 17.1 (bsc#1035106)
+  + Version numbering scheme change now YY.NUMBER_OF_RELESE_THAT_YEAR
+  + Remove cloud.cfg.suse, use generated default config file
+  + Remove addopenSUSEBase.patch, included upstream
+  + Remove suseIntegratedHandler.patch, included upstream
+  + Remove openSUSEhostsTemplate.diff, included upstream
+  + Remove cloud-init-handle-no-carrier.patch, included upstream
+  + Remove cloud-init-digital-ocean-datasource.patch,
+    use upstream implementation
+  + Remove cloud-init-digital-ocean-datasource-enable-by-default.patch,
+    use upstream implementation
+  + Remove cloud-init-fix-unicode-handling-binarydecode.patch,
+    included upstream
+  + Remove cloud-init-no-dmidecode-on-ppc64.patch, included upstream
+  + Remove dataSourceOpenNebula.patch, use upstream implementation
+  + Remove setupSUSEsysVInit.diff, included upstream
+  + Remove suseSysVInit.diff, included upstream
+  + Remove cloud-init-finalbeforelogin.patch, don't block login 
+  + Remove cloud-init-handle-not-implemented-query.patch, query option removed
+  + Remove cloud-init-spceandtabs-clean.patch, indentation fixed upstream
+  + Remove dynamicInitCmd.diff, different solution from upstream
+  + Added cloud-init-more-tasks.patch, (bsc#1047363)
+    replace cloud-init-finalbeforelogin.patch
+  + Forward port cloud-init-python2-sigpipe.patch
+  + Remove cloud-init-net-eni.patch, included upstream
+  + Remove cloud-init-service.patch, included upstream
+  + Forward port cloud-init-sysconfig-netpathfix.patch
+  + Remove cloud-init-net-sysconfig-lp1665441.patch, included upstream</comment>
+    <requestid>538365</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>992519fc4c09cc6fd6340184c4396d30</srcmd5>
+    <version>17.1</version>
+    <time>1511274832</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cloud-init-break-cycle-local-service.patch
+  + Let systemd pull in the default targets. This breaks a cycle
+
+- Fix variable name in cloud-init-translate-netconf-ipv4-keep-gw.patch
+
+- Add cloud-init-translate-netconf-ipv4-keep-gw.patch (boo#1064854)
+  + Properly insert the gateway information for v1 json network config data
+
+- Add cloud-init-ntp-conf-suse.patch
+  + ntp configuration was broken on sles and opensuse lp#1726572
+
+- Add cloud-init-hosts-template.patch (bsc#1064594)
+  + Properly expand the /etc/hosst file when manage_etc_hosts is set</comment>
+    <requestid>543937</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>6c34c44856883da6f336f23cc55d6f0f</srcmd5>
+    <version>17.1</version>
+    <time>1511949237</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cloud-init-resize-ro-btrfs.patch
+  + cc_resizefs fails if the current root is a read-only btrfs
+    subvolume, use an always writeable subvolume instead [bsc#1042913]</comment>
+    <requestid>546125</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>7f57b32d102725ef7b475eacd5167954</srcmd5>
+    <version>17.1</version>
+    <time>1513245785</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>556684</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>d1b737640ca7c99b32d11881db0498f8</srcmd5>
+    <version>17.1</version>
+    <time>1516222678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566429</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>2090a220d89b46a537096b1b00b8cdc3</srcmd5>
+    <version>17.1</version>
+    <time>1516880457</time>
+    <user>dimstar_suse</user>
+    <comment>- patch distribution detection until a fix is delivered to python3 (bsc#997614)
+  add cloud-init-add-variant-cloudcfg.patch</comment>
+    <requestid>569384</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>dff473be5ed4fa2d7aafbd9c5860a537</srcmd5>
+    <version>17.2</version>
+    <time>1517323567</time>
+    <user>dimstar_suse</user>
+    <comment>- drop dependency on boto (only used in examples, and
+  should really be ported to botocore/boto3 instead)
+
+- Update to version 17.2 (boo#1069635, bsc#1072811)
+  + Add cloud-init-skip-ovf-tests.patch
+  + Add cloud-init-no-python-linux-dist.patch
+  + Add 0001-switch-to-using-iproute2-tools.patch
+  + Add 0001-Support-chrony-configuration-lp-1731619.patch
+  + Add 0002-Disable-method-deprecation-warning-for-pylint.patch
+  + Add 0003-Distro-dependent-chrony-config-file.patch
+  + removed cloud-init-add-variant-cloudcfg.patch replaced by
+    cloud-init-no-python-linux-dist.patch
+  + removed zypp_add_repos.diff included upstream
+  + removed zypp_add_repo_test.patch included upstream
+  + removed cloud-init-hosts-template.patch included upstream
+  + removed cloud-init-more-tasks.patch included upstream
+  + removed cloud-init-final-no-apt.patch included upstream
+  + removed cloud-init-ntp-conf-suse.patch included upstream
+  + removed cloud-init-break-cycle-local-service.patch included upstream
+  + removed cloud-init-reproduce-build.patch included upstream
+  + For the complete changelog see https://launchpad.net/cloud-init/trunk/17.2</comment>
+    <requestid>571062</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>6cf21faae0116cfa0abb9ec621cbbc8c</srcmd5>
+    <version>17.2</version>
+    <time>1518601946</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix logfile permission settings (bsc#1080595)
+  + Add 0001-Set-syslog_fix_perms-for-SUSE-distro-addresses-bsc-1.patch</comment>
+    <requestid>576385</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>d9ee8661e4454f802081008e403afdbb</srcmd5>
+    <version>17.2</version>
+    <time>1518813986</time>
+    <user>dimstar_suse</user>
+    <comment>- update cloud-init-sysconfig-netpathfix.patch:
+  * skip checking for files in /etc/sysconfig that never exist
+  on a wickedd based system</comment>
+    <requestid>577256</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ee4111403697464d8ec752f841415709</srcmd5>
+    <version>18.1</version>
+    <time>1522226065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.1 (bsc#1085787, bsc#1084749)
+  + Forward port cloud-init-python2-sigpipe.patch
+  + Forward port 0003-Distro-dependent-chrony-config-file.patch
+    partial integration into 0001-Support-chrony-configuration-lp-1731619.patch
+  + Forward port cloud-init-no-python-linux-dist.patch
+  + Remove 0002-Disable-method-deprecation-warning-for-pylint.patch
+    use new cloud-init internal distro detection code
+  + Remove cloud-init-resize-ro-btrfs.patch included upstream
+  + Remove 0001-Set-syslog_fix_perms-for-SUSE-distro-addresses-bsc-1.patch
+    included upstream
+  + OVF: Fix VMware support for 64-bit platforms. [Sankar Tanguturi]
+  + ds-identify: Fix searching for iso9660 OVF cdroms. (LP: #1749980)
+  + SUSE: Fix groups used for ownership of cloud-init.log [Robert Schweikert]
+  + ds-identify: check /writable/system-data/ for nocloud seed.
+    (LP: #1747070)
+  + tests: run nosetests in cloudinit/ directory, fix py26 fallout.
+  + tools: run-centos: git clone rather than tar.
+  + tests: add support for logs with lxd from snap and future lxd 3.
+    (LP: #1745663)
+  + EC2: Fix get_instance_id called against cached datasource pickle.
+    (LP: #1748354)
+  + cli: fix cloud-init status to report running when before result.json
+    (LP: #1747965)
+  + net: accept network-config in netplan format for renaming interfaces
+    (LP: #1709715)
+  + Fix ssh keys validation in ssh_util [Tatiana Kholkina]
+  + docs: Update RTD content for cloud-init subcommands.
+  + OVF: Extend well-known labels to include OVFENV. (LP: #1698669)
+  + Fix potential cases of uninitialized variables. (LP: #1744796)
+  + tests: Collect script output as binary, collect systemd journal, fix lxd.</comment>
+    <requestid>591769</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2e8b7b711ca58c6785b24583ce539916</srcmd5>
+    <version>18.2</version>
+    <time>1526372158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.1 (bsc#1092637, bsc#1084509)
+  + Forward port cloud-init-python2-sigpipe.patch
+  + Forward port cloud-init-no-python-linux-dist.patch
+  + Add cloud-init-no-trace-empt-sect.patch
+  + Hetzner: Exit early if dmi system-manufacturer is not Hetzner.
+  + Add missing dependency on isc-dhcp-client to trunk ubuntu packaging.
+  + (LP: #1759307)
+  + FreeBSD: resizefs module now able to handle zfs/zpool.
+  + [Dominic Schlegel] (LP: #1721243)
+  + cc_puppet: Revert regression of puppet creating ssl and ssl_cert dirs
+  + Enable IBMCloud datasource in settings.py.
+  + IBMCloud: Initial IBM Cloud datasource.
+  + tests: remove jsonschema from xenial tox environment.
+  + tests: Fix newly added schema unit tests to skip if no jsonschema.
+  + ec2: Adjust ec2 datasource after exception_cb change.
+  + Reduce AzurePreprovisioning HTTP timeouts.
+  + [Douglas Jordan] (LP: #1752977)
+  + Revert the logic of exception_cb in read_url.
+  + [Kurt Garloff] (LP: #1702160, #1298921)
+  + ubuntu-advantage: Add new config module to support
+  + ubuntu-advantage-tools
+  + Handle global dns entries in netplan (LP: #1750884)
+  + Identify OpenTelekomCloud Xen as OpenStack DS.
+  + [Kurt Garloff] (LP: #1756471)
+  + datasources: fix DataSource subclass get_hostname method signature
+  + (LP: #1757176)
+  + OpenNebula: Update network to return v2 config rather than ENI.
+  + [Akihiko Ota]
+  + Add Hetzner Cloud DataSource
+  + net: recognize iscsi root cases without ip= on kernel command line.</comment>
+    <requestid>607053</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>686a38e54f29980388409f79682d958d</srcmd5>
+    <version>18.2</version>
+    <time>1526489213</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the generator (bsc#1089824, boo#1093501)
+  + The generator spawns a script called ds-identify which in turn calls
+    blkid. When the generator executes the environment may or may not be
+    ready. The generator speeds up the boot process in cases where
+    cloud-init is enabled but we are not in an environment where cloud-init
+    should run -&gt; Don't do that.
+
+- Update to version 18.2 (bsc#1092637, bsc#1084509)</comment>
+    <requestid>609843</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>15384a3a235e5b0056efc30fc93c7e57</srcmd5>
+    <version>18.2</version>
+    <time>1527084570</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-add generator (bsc#1089824, boo#1093501)
+  + Add cloud-init-setpath-dsitentify.patch, upstream solution to
+    hanle PATH issue
+  + Re-enable th egenerator to reduce effort in cloud-init configuration</comment>
+    <requestid>611409</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d74d867ca51df1c1f0d5aeaba69dd6da</srcmd5>
+    <version>18.4</version>
+    <time>1540819277</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.4 (bsc#1087331, bsc#1097388, boo#1111427, bsc#1095627)
+  + Remove cloud-init-no-user-lock-if-already-locked.patch
+    cloud-init 18.4 is not supported on SLE 11 code base
+  + Remove 0001-Support-chrony-configuration-lp-1731619.patch
+    Included upstream
+  + Remove 0003-Distro-dependent-chrony-config-file.patch
+    Included upstream
+  + Remove 0001-switch-to-using-iproute2-tools.patch
+    Included upstream
+  + Remove cloud-init-no-python-linux-dist.patch
+    Included upstream
+  + Remove cloud-init-no-trace-empt-sect.patch
+    Included upstream
+  + Remove cloud-init-setpath-dsitentify.patch
+    Included upstream
+  + Modify fix-default-systemd-unit-dir.patch
+    Use pkg-config, only modify the generator
+  + Remove cloud-init-sysconfig-netpathfix.patch
+    Fixed upstream
+  + Removed cloud-init-skip-ovf-tests.patch
+    Fixed upstream
+  + Removed cloud-init-translate-netconf-ipv4-keep-gw.patch
+    Fixed upstream
+  + Add cloud-init-template-py2.patch avoid Python 3 dependency when we build
+    for distros with Python 2 support
+  + Add 0001-Follow-the-ever-bouncing-ball-for-openSUSE-distribut.patch
+  + Add 0002-Add-tests-for-additional-openSUSE-distro-condition-m.patch
+  + Add cloud-init-sysconf-path.patch
+  + Add cloud-init-sysconf-ethsetup.patch
+  + Add 0001-Fix-the-service-order-for-SUSE-distributions.patch</comment>
+    <requestid>644740</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>78e2d70f3bb1a6e906534db03cace695</srcmd5>
+    <version>18.4</version>
+    <time>1541454885</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cloud-init-ostack-metadat-dencode.patch (bsc#1101894)
+
+- Add cloud-init-static-net.patch (boo#1114160)</comment>
+    <requestid>646077</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>5ae04eeea398bf286ab1898228a38b1d</srcmd5>
+    <version>18.5</version>
+    <time>1548335709</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cloud-init-no-empty-resolv.patch (bsc#1119397)
+
+- Update to version 18.5 (bsc#1121878, boo#1116767)
+  + Remove 
+    0001-Fix-the-service-order-for-SUSE-distributions.patch
+    0001-Follow-the-ever-bouncing-ball-for-openSUSE-distribut.patch
+    0002-Add-tests-for-additional-openSUSE-distro-condition-m.patch
+    included upstream
+  + Forward port cloud-init-sysconf-ethsetup.patch
+  + Add cloud-init-write-routes.patch
+  + Add cloud-init-handle-def-route-set.patch
+  + tests: add Disco release [Joshua Powers]
+  + net: render 'metric' values in per-subnet routes (LP: #1805871)
+  + write_files: add support for appending to files. [James Baxter]
+  + config: On ubuntu select cloud archive mirrors for armel, armhf, arm64.
+    (LP: #1805854)
+  + dhclient-hook: cleanups, tests and fix a bug on 'down' event.
+  + NoCloud: Allow top level 'network' key in network-config. (LP: #1798117)
+  + ovf: Fix ovf network config generation gateway/routes (LP: #1806103)
+  + azure: detect vnet migration via netlink media change event
+    [Tamilmani Manoharan]
+  + Azure: fix copy/paste error in error handling when reading azure ovf.
+  + [Adam DePue]
+  + tests: fix incorrect order of mocks in test_handle_zfs_root.
+  + doc: Change dns_nameserver property to dns_nameservers. [Tomer Cohen]
+  + OVF: identify label iso9660 filesystems with label 'OVF ENV'.
+  + logs: collect-logs ignore instance-data-sensitive.json on non-root user
+    (LP: #1805201)
+  + net: Ephemeral*Network: add connectivity check via URL
+  + azure: _poll_imds only retry on 404. Fail on Timeout (LP: #1803598)</comment>
+    <requestid>668094</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>698524cc583bb7b84f73f8dbee65df00</srcmd5>
+    <version>18.5</version>
+    <time>1549624018</time>
+    <user>coolo</user>
+    <comment>- Modify cloud-init-write-routes.patch (boo#1123694)
+  + Drop a '-' in the route file for the last column</comment>
+    <requestid>670422</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>3a5234253a29b5401ecd8b7cf5da8013</srcmd5>
+    <version>18.5</version>
+    <time>1551385467</time>
+    <user>coolo</user>
+    <comment>- Add cloud-init-trigger-udev.patch (bsc#1125950)
+  + When the user configures a new rules file for network devices
+    the rules may not apply immediately, trigger udevadm
+
+- Modify cloud-init-write-routes.patch (bsc#1125992)
+  + Fix the order of calls, the SUSE imaplementation of route config file
+    writing must clobber the default implementation.
+
+- Add cloud-init-proper-ipv6-varname.patch (bsc#1126101)
+  + Use the proper name to designate IPv6 addresses in ifcfg-* files</comment>
+    <requestid>678302</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>f81225bc27ce8489ec20a17d6a49336a</srcmd5>
+    <version>18.5</version>
+    <time>1556914987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update cloud-init-write-routes.patch (bsc#1132692)
+  + Properly accumulate all the defined routes for a given network device.
+    Previously only the last defined route was written to the routes file.
+
+- Update cloud-init-trigger-udev.patch (bsc#1125950)
+  + Write the udev rules to a different file than the default
+  + Settle udev if not all configured devices are in the device tree to
+    avoid race condition between udev and cloud-init
+
+  + Fix the order of calls, the SUSE implementation of route config file</comment>
+    <requestid>699769</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>62f566d5ac881e6986b9a77e7c1dfe89</srcmd5>
+    <version>19.1</version>
+    <time>1561405731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709158</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>c9bc5e742b5f389f9e3a55e72cb54205</srcmd5>
+    <version>19.1</version>
+    <time>1568190103</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>728523</requestid>
+  </revision>
+</revisionlist>

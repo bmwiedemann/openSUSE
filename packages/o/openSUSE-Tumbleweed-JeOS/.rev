@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>71fea9bc701eb09ce3d5d2112b617bfd</srcmd5>
+    <version>15.1.0</version>
+    <time>1540819300</time>
+    <user>dimstar_suse</user>
+    <comment>JeOS for TW! Just a draft for now</comment>
+    <requestid>644818</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f52a3e42ce5cf531cbdcf054cfe212b0</srcmd5>
+    <version>15.1.0</version>
+    <time>1541746518</time>
+    <user>dimstar_suse</user>
+    <comment>- Readd lost &quot;Add repos from control.xml&quot; section</comment>
+    <requestid>647309</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c88f4e09e3ae67bf0b982c1b6deb472f</srcmd5>
+    <version>15.1.0</version>
+    <time>1542202981</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not create ifcfg file for eth0</comment>
+    <requestid>648757</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b354a6c98f00dd6874f55a03c3fd301f</srcmd5>
+    <version>15.1.0</version>
+    <time>1543953511</time>
+    <user>dimstar_suse</user>
+    <comment>- Unify two packages sections for OBS WebUI friendliness</comment>
+    <requestid>653870</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3385b69cdc76e8024695bbcb8889c50f</srcmd5>
+    <version>15.1.0</version>
+    <time>1547211905</time>
+    <user>dimstar_suse</user>
+    <comment>- cron is not needed for btrfsmaintenance anymore (bsc#1121419)</comment>
+    <requestid>664320</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1c2f1939112e2eb6ffa17dd96b1ecc68</srcmd5>
+    <version>15.1.0</version>
+    <time>1548064793</time>
+    <user>dimstar_suse</user>
+    <comment>- Install chrony on all flavors (bsc#1119424)</comment>
+    <requestid>666947</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c3465354c02afefb63bb0dcda03d0ba7</srcmd5>
+    <version>15.1.0</version>
+    <time>1548452653</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't install firewall on OpenStack (fate#326778)
+- Remove obsolete baseStripRPM call</comment>
+    <requestid>668269</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>89b37be0103731f3599a35f01286c9f3</srcmd5>
+    <version>15.1.0</version>
+    <time>1550151202</time>
+    <user>dimstar_suse</user>
+    <comment>- Add wpa_supplicant for RPi WiFi support
+
+- include wireless-tools for RaspberryPi image, bsc#1119400</comment>
+    <requestid>674466</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>b3fa0e5609fc506e1d48036d9d28aaed</srcmd5>
+    <version>15.1.0</version>
+    <time>1552572081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684739</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>fa67fd4c7e5a176c62965824e63e5d7d</srcmd5>
+    <version>15.1.0</version>
+    <time>1554749658</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to glibc-locale-base for smaller footprint</comment>
+    <requestid>692335</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>b34d6209b14e7dae5d0bbc3e5b1d7993</srcmd5>
+    <version>15.1.0</version>
+    <time>1555574174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695017</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>280341e2fedb9dcd9ad7c1c7799e7085</srcmd5>
+    <version>15.1.0</version>
+    <time>1556202035</time>
+    <user>maxlin_factory</user>
+    <comment>- Also enable excludedocs for RPi
+
+- Enable btrfs_quota_groups here, jeos-firstboot can skip this now</comment>
+    <requestid>697811</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>8927f05eb0d31d2abf82eecdd2a52710</srcmd5>
+    <version>15.1.0</version>
+    <time>1556622390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699435</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>df08222edaf0b86b2c4a0e4eb6c31a8a</srcmd5>
+    <version>15.1.0</version>
+    <time>1558690339</time>
+    <user>dimstar_suse</user>
+    <comment>- Install now split jeos-firstboot-rpiwifi package</comment>
+    <requestid>704971</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>dd35ece1c72a748dabba3b16419dade5</srcmd5>
+    <version>15.1.0</version>
+    <time>1563994249</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't set DHCLIENT_SET_HOSTNAME here, jeos-firstboot does that now
+- Enable chrony-wait.service explicitly (bsc#1129730)</comment>
+    <requestid>718292</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>e186bdc684b71714c3d3f1f4091be55b</srcmd5>
+    <version>15.1.0</version>
+    <time>1565876631</time>
+    <user>dimstar_suse</user>
+    <comment>- Mount by-uuid instead of by-label (jsc#SLE-7327)</comment>
+    <requestid>723522</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+<package name="libsigc++2" project="openSUSE:Factory">
+  <title>Typesafe Signal Framework for C++</title>
+  <description>This library implements a full callback system for use in widget
+libraries, abstract interfaces, and general programming. It is the most
+complete library of its kind with the ability to connect an abstract
+callback to a class method, function, or function object. It contains
+adaptor classes for connection of dissimilar callbacks and has an ease
+of use unmatched by other C++ callback libraries.</description>
+  <devel project="GNOME:Factory" package="libsigc++2"/>
+</package>

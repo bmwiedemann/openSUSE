@@ -1,0 +1,237 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>5976c47ad142f2fe542c916942b000e2</srcmd5>
+    <version>1.0.1</version>
+    <time>1221273727</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="6">
+    <srcmd5>a003c5bdb2f69d45db0b7bae9be40c88</srcmd5>
+    <version>1.0.1</version>
+    <time>1233019120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="8">
+    <srcmd5>a003c5bdb2f69d45db0b7bae9be40c88</srcmd5>
+    <version>1.0.1</version>
+    <time>1233019120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>bcad57db05945b062b1044ca4665aad1</srcmd5>
+    <version>1.0.1</version>
+    <time>1268832373</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libservicelog based on submit request 35024 from user coolo
+</comment>
+    <requestid>35024</requestid>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>1de85501643b260ce4fc1408ab4a21b3</srcmd5>
+    <version>1.0.1</version>
+    <time>1268924723</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>c3d181c0e14fa0dbb05e3737a7c4d3ba</srcmd5>
+    <version>1.0.1</version>
+    <time>1271723120</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libservicelog based on submit request 38203 from user psmt
+</comment>
+    <requestid>38203</requestid>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>6f124f765ef52aba782c040b3f3f0dd8</srcmd5>
+    <version>1.0.1</version>
+    <time>1271866871</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libservicelog based on submit request 38392 from user coolo
+</comment>
+    <requestid>38392</requestid>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>6f124f765ef52aba782c040b3f3f0dd8</srcmd5>
+    <version>1.0.1</version>
+    <time>1278667363</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>6f124f765ef52aba782c040b3f3f0dd8</srcmd5>
+    <version>1.0.1</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>6f124f765ef52aba782c040b3f3f0dd8</srcmd5>
+    <version>1.0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="20">
+    <srcmd5>6f124f765ef52aba782c040b3f3f0dd8</srcmd5>
+    <version>1.0.1</version>
+    <time>1319182135</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>420e782b8aa88ab0d308dc1a92984930</srcmd5>
+    <version>1.1.11</version>
+    <time>1320672035</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.11
+  - new build requires librtas-devel pkg-config
+  - reworked patches
+  - Drop libservicelog.warnings.patch,
+	libservicelog.sqlite-include.patch
+	libservicelog-sqlite_fixes.patch 
+  - Fix package description typo
+  - ppc,ppc64 exclusive package as it is requires librtas (forwarded request 90023 from k0da)</comment>
+    <requestid>90031</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c88b9b9e88438f486ea2c7cdc23c3471</srcmd5>
+    <version>1.1.11</version>
+    <time>1323192340</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>a5f7d19c83a1aecc1af5e1665480b964</srcmd5>
+    <version>1.1.11</version>
+    <time>1328086681</time>
+    <user>coolo</user>
+    <comment>forward</comment>
+    <requestid>102271</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>a5f7d19c83a1aecc1af5e1665480b964</srcmd5>
+    <version>1.1.11</version>
+    <time>1340183636</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>9a2b78df1abd84be10bf7d45240b2939</srcmd5>
+    <version>1.1.11</version>
+    <time>1340969077</time>
+    <user>coolo</user>
+    <comment>Fix naming of shared library and package</comment>
+    <requestid>126460</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f5bfc01e08f2faa0b0adde3ea7a96f7e</srcmd5>
+    <version>1.1.12</version>
+    <time>1355474452</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.12
+  Upstream changelog:
+   Minor changes 
+- more printf types fixes (libservicelog-printf_types.patch) (forwarded request 145074 from k0da)</comment>
+    <requestid>145079</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>f5bfc01e08f2faa0b0adde3ea7a96f7e</srcmd5>
+    <version>1.1.12</version>
+    <time>1359109353</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>483f5ede706d4b5a93744d185ec5a699</srcmd5>
+    <version>1.1.13</version>
+    <time>1365175706</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.23
+- Legalize SQL insert command input string
+- Minor typo fix
+- repair_action : fix output format issue
+- drop libservicelog.install.patch
+- refresh libservicelog-printf_types.patch (forwarded request 161606 from k0da)</comment>
+    <requestid>162081</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>483f5ede706d4b5a93744d185ec5a699</srcmd5>
+    <version>1.1.13</version>
+    <time>1379663089</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>5cba798f7a8443e5ccbbf2030be0aaac</srcmd5>
+    <version>1.1.13</version>
+    <time>1386772859</time>
+    <user>coolo</user>
+    <comment>- enable ppc64le (forwarded request 210430 from k0da)</comment>
+    <requestid>210443</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7556d51f7acb75635bc642e7f0ee6acc</srcmd5>
+    <version>1.1.14</version>
+    <time>1390246977</time>
+    <user>coolo</user>
+    <comment>- version update to 1.1.14 (FATE#315456) 
+  include servicelog.db and bootstrap.sh file into compression file 
+  list
+- Prereq: groupadd for %post</comment>
+    <requestid>214199</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>7556d51f7acb75635bc642e7f0ee6acc</srcmd5>
+    <version>1.1.14</version>
+    <time>1409301713</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>66b733009dd0b053cc112bff21acfdfc</srcmd5>
+    <version>1.1.15</version>
+    <time>1410361333</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247633</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>56244bb140239f3ae1606886b3abcf6c</srcmd5>
+    <version>1.1.16</version>
+    <time>1459002429</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378300</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ee2e8f152f5b896eea2713430daa9f6e</srcmd5>
+    <version>1.1.17</version>
+    <time>1492169658</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482863</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e18316b0d6f93f04e48b05be294b7ee6</srcmd5>
+    <version>1.1.17</version>
+    <time>1503308287</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517820</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>500fa940673b22c760ef8e820963b229</srcmd5>
+    <version>1.1.18</version>
+    <time>1504102983</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519324</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>e07314772f3fce57ee78a6ab0ed37374</srcmd5>
+    <version>1.1.18</version>
+    <time>1542124858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648464</requestid>
+  </revision>
+</revisionlist>

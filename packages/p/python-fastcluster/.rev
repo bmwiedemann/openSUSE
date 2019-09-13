@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4da9980ddcc7719a0395986c20f2066</srcmd5>
+    <version>1.1.21</version>
+    <time>1479662312</time>
+    <user>dimstar_suse</user>
+    <comment>send in update so we can proceed</comment>
+    <requestid>438757</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0b2e6c769f29e78f5bd3d44a718fe8f</srcmd5>
+    <version>1.1.23</version>
+    <time>1494262969</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492895</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fee12ffca0adb78695ec3ce6c12d4993</srcmd5>
+    <version>1.1.24</version>
+    <time>1510322204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539581</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2948bcbe2b83f00f33b2142b3c557215</srcmd5>
+    <version>1.1.24</version>
+    <time>1531947464</time>
+    <user>dimstar_suse</user>
+    <comment>- Stricten version requirements on numpy to &gt;= 1.9</comment>
+    <requestid>623644</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9bcbe52405bfa2325118c21fa620dbe8</srcmd5>
+    <version>1.1.25</version>
+    <time>1537264200</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636250</requestid>
+  </revision>
+</revisionlist>

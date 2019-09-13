@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e6d19957274616d81ae27095879f106</srcmd5>
+    <version>4.3</version>
+    <time>1409118377</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>246372</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0e6d19957274616d81ae27095879f106</srcmd5>
+    <version>4.3</version>
+    <time>1409300585</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4c13db1fcb86e66e881f1222edf35764</srcmd5>
+    <version>4.3</version>
+    <time>1449687201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>347760</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e8ba0301a32ca4553258f9f301162a4e</srcmd5>
+    <version>4.3</version>
+    <time>1469831293</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bsdiff-fix-makefile.patch: patch Makefile instead of working
+  around it in the spec file.
+- Add bsdiff-fix-heap-vul.patch: fix heap vulnerability in bspatch
+  (bsc#990660, CVE-2014-9862), taken from
+  https://security.freebsd.org/patches/SA-16:25/bspatch.patch</comment>
+    <requestid>415543</requestid>
+  </revision>
+</revisionlist>

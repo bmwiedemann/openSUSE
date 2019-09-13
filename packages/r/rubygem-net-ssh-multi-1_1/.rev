@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>36413f450ff49ed1b3167c3015e5a2d3</srcmd5>
+    <version>1.1</version>
+    <time>1371457239</time>
+    <user>coolo</user>
+    <comment>needed for chef</comment>
+    <requestid>178451</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>36413f450ff49ed1b3167c3015e5a2d3</srcmd5>
+    <version>1.1</version>
+    <time>1379664550</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>36413f450ff49ed1b3167c3015e5a2d3</srcmd5>
+    <version>1.1</version>
+    <time>1409303260</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>23a6f7023db2e6cae919b81d654b963d</srcmd5>
+    <version>1.1</version>
+    <time>1414066832</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257995</requestid>
+  </revision>
+</revisionlist>

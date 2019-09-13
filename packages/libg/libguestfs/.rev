@@ -1,0 +1,814 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>41e7a2e8f50cf19eebf55adef5ad8ff2</srcmd5>
+    <version>1.20.10</version>
+    <time>1375901112</time>
+    <user>coolo</user>
+    <comment>dependency for libguestfs (fate#312159)</comment>
+    <requestid>186009</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8e5644625144edb077454cdbac23b898</srcmd5>
+    <version>1.22.5</version>
+    <time>1377073877</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 1.22.5
+  * full support for btrfs guests
+  * large performance improvements in virt-df and virt-alignment-scan tools
+  * many bug fixes
+  * full release notes: http://libguestfs.org/guestfs-release-notes.1.html</comment>
+    <requestid>195729</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2dea62dd15f1ffbb9a8daeaf8360024c</srcmd5>
+    <version>1.22.5</version>
+    <time>1377248741</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add network related modules to initrd (bnc#835949)
+- Remove supermin.d
+- Mount also /dev/pts in mount-rootfs-and-do-chroot.sh
+- Handle rw option in ext4.ko
+- Update libguestfs.mkinitrd.1210.patch to create /usr/*bin in 11.4</comment>
+    <requestid>196001</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>186b759a865f3a886ab812bc4c42f27f</srcmd5>
+    <version>1.22.5</version>
+    <time>1378134134</time>
+    <user>coolo</user>
+    <comment>- Add support for lvm (bnc#837595)</comment>
+    <requestid>196827</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>186b759a865f3a886ab812bc4c42f27f</srcmd5>
+    <version>1.22.5</version>
+    <time>1379662973</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3fe7ec8b8595fd17c9281a0c5734f34b</srcmd5>
+    <version>1.22.6</version>
+    <time>1380188892</time>
+    <user>coolo</user>
+    <comment>- Remove BuildRequires: qemu-tools
+
+- Add static 169.254.0.0/16 network addresses (bnc#835949)
+
+- Update to version 1.22.6
+  * Initialize CLEANUP_* stack variables with NULL in various places.
+  * daemon: sh: Fix missing initializer which caused segfault (RHBZ#1000121).
+  * fish: Document that guestfish --remote --add won't work as expected (RHBZ#998513).
+  * launch: direct: Don't try to wait for qemu if parent process forked (RHBZ#998482).
+  * list-filesystems: Don't fail if there are no filesystems found (RHBZ#995711).
+  * virt-list-filesystems: Fix to use $g-&gt;canonical_device_name instead of homebrew function.
+  * daemon: If /proc/modules doesn't exist, linuxmodules optgroup is disabled.
+  * launch: direct: Print \n after printing qemu command line.
+  * conn: Make sure we display all log messages when qemu goes away.
+  * lib: Turn 'random_chars' function used by libvirt backend into utility function.
+  * daemon: ldm: Don't return an error if /dev/mapper doesn't exist.
+  * daemon: Move all RESOLVE macros to daemon/stubs.c.
+  * proto: Fix --enable-packet-dump mode.
+  * daemon: Close augeas, hivex handles in unmount_all.
+  * Fix parsing of boot flag in do_part_get_bootable()
+  * Update gnulib to latest version.
+  * augeas: Improve error reporting.
+  * launch: direct: Add drives after machine parameters.
+  * fish: Fix guestfish so it can recognize sheepdog://... as a valid URI.
+  * resize: Move isatty_stdout function to separate module (TTY.isatty_stdout).
+  * daemon: cap-get-file: Return empty string if no capability on file (RHBZ#989356).
+  * src/file.c: Be sure to call guestfs___lazy_make_tmpdir before using g-&gt;tmpdir.
+  * generator: Fix the case where a daemon function has one FileIn/FileOut parameter and no other parameters.
+
+- Create symlink from /etc/mtab to /proc/self/mounts (bnc#840662)</comment>
+    <requestid>200193</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>31d8f4c490fa3a139f067ced1e8e221a</srcmd5>
+    <version>1.22.7</version>
+    <time>1382446353</time>
+    <user>scarabeus_factory</user>
+    <comment>after being unable to submit a specific revision to Factory, revert to the desired revision 242 before submitting to Factory. (forwarded request 204260 from olh)</comment>
+    <requestid>204261</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>91f459ccb2563d892f12b993f214fc78</srcmd5>
+    <version>1.24.1</version>
+    <time>1386156541</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>209253</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4d5ae969033a0014a5b2deccfd9f0eb6</srcmd5>
+    <version>1.24.2</version>
+    <time>1387451677</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.24.2
+  * launch: Print program and version as part of standard debug output when launching the handle.
+  * lua: Don't redefine lua_objlen if already defined.
+  * lib: Make sure -lselinux is used when linking libguestfs.so.
+  * daemon: btrfs: Upstream 'btrfs device add' command now needs '--force' option to work.
+  * perl: Give error instead of crashing if optarg is not an array reference.
+  * Avoid modulo bias in random password generation
+  * mllib: Add a utility function for safely reading from /dev/urandom.
+  * podwrapper: virt-install is not a libguestfs page.
+  * Update to latest gnulib to get hash relicensing change (thanks Jim Meyering).
+  * Fix fstab block device resolution for FreeBSD</comment>
+    <requestid>211296</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8bc5dc8c5edb46b0bc2882b0f68252b9</srcmd5>
+    <version>1.24.4</version>
+    <time>1389208070</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.24.4
+  * ruby: Fix .new method (RHBZ#1046509).
+  * RHEL 6: ruby: Fix fallback to rake/rdoctask for old rake.
+  * inspect: fix detection of newer CirrOS versions (RHBZ#1045450).
+  * launch: libvirt: Clearer message when libvirt screws up.
+  * fish: Fix memory leak in inspect/-i code (detected by valgrind).
+  * appliance: Create an /etc/resolv.conf file referring to qemu user network nameserver (RHBZ#1044585).
+  * fish: Move -d option parsing to common function.
+  * fish: Deprecate the -D option (prefer --no-dest-paths instead).
+  * daemon: Improve error message for readlink call.
+  * generator: Fix bug in documentation of guestfs_free_* functions.
+  * fish: Ensure print_inspect_prompt can only be called by guestfish.
+  * inspector: Ensure low-level inspection functions can only be called by virt-inspector.
+  * virt-cat, virt-filesystems, virt-ls don't use libconfig.
+  * resize: Move roundup64 function into common utilities.
+  * fuse: provide a stub &quot;flush&quot; implementation (RHBZ#660687).
+  * recipes: Use new style -a/-d options in virt-edit example.
+  * daemon: mkfs: Use -I option to force mkfs.fat to write a filesystem over a whole device (RHBZ#1039995).
+  * proto: Remove another error message which hides earlier error.
+  * proto: Remove error message which hides earlier error.
+  * lib: fix newline in error output (RHBZ#923355).
+  * recipes: Add a recipe for masking a systemd service.
+  * launch: direct: Pass -enable-fips option if qemu supports it.
+  * fish: improve the command error messages</comment>
+    <requestid>213063</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4864a73105428fbdef3e06ae2172c75f</srcmd5>
+    <version>1.24.4</version>
+    <time>1389953057</time>
+    <user>coolo</user>
+    <comment>- Include mkinitrd from 13.1 when building appliance for 13.2 or
+  later because dracut can not be used as replacement for mkinitrd
+  and supermin is not ready yet</comment>
+    <requestid>214131</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e79524f0e4e5c5562a0c654a6596a1b4</srcmd5>
+    <version>1.24.5</version>
+    <time>1390395185</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.24.4
+  * launch: Allow backend = &quot;appliance&quot; for backwards compatibility (RHBZ#1055452).
+  * daemon: Use wipefs_has_force_option to decide whether to add wipefs --force option.
+  * init: Display clocksource (only when debugging is enabled).
+  * launch: direct: Make sure we pass lpj= parameter when using TCG.
+  * Use recommended timer settings for KVM (RHBZ#1053847).
+  * fuse: clear stat structs (RHBZ#660687).
+  * fuse: remove extra trailing \n in debug messages
+
+- Include crypto modules in appliance to enable luks related commands
+
+- Resolve also library dependencies of libnss in mkinitrd (bnc#847785)
+- BuildRequire nfs-utils to get mount.nfs, for virt-rescue</comment>
+    <requestid>214552</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>da982d6a9fa3ec83cb0d4c1bf72aba7c</srcmd5>
+    <version>1.24.5</version>
+    <time>1390429159</time>
+    <user>coolo</user>
+    <comment>- add libguestfs-test subpackage, /usr/share/guestfs (fate#316275)
+  libguestfs.test.simple.run-libugestfs-test-tool.sh
+  libguestfs.test.simple.create-opensuse-guest.sh
+  libguestfs.test.simple.create-opensuse-guest-crypt-on-lvm.sh
+
+- Update to version 1.24.5</comment>
+    <requestid>214728</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>03014545f1af0d4bbcdef629ef6803b2</srcmd5>
+    <version>1.24.5</version>
+    <time>1390906994</time>
+    <user>coolo</user>
+    <comment>- Disable ipv6 in the appliance because qemu usernet is ipv4 only</comment>
+    <requestid>214989</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>a3598acff7ff0abbd5551f993d1b4fa2</srcmd5>
+    <version>1.24.5</version>
+    <time>1391240608</time>
+    <user>coolo</user>
+    <comment>- add BuildRequires:  ocaml(ocaml.opt)</comment>
+    <requestid>220472</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>61250201ba9276436316e2fcef3e923e</srcmd5>
+    <version>1.24.5</version>
+    <time>1391538335</time>
+    <user>coolo</user>
+    <comment>- drop i586 from ExclusiveArch as SLE-12 does not build a runnable
+  kernel there, and KVM is 64bit only</comment>
+    <requestid>220698</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9bfd293745ea6b4a1feab24f5edbd112</srcmd5>
+    <version>1.24.6</version>
+    <time>1392447947</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.24.6
+  *  FAQ: Another common problem is permission denied errors when running as root.
+  *  FAQ: Add another common Ubuntu appliance problem.
+  *  list-filesystems: Do not segfault if guestfs_btrfs_subvolume_list returns an error (RHBZ#1064008).
+  *  actions/part_set_gpt_type: set type of &quot;guid&quot; parameter as &quot;GUID&quot; (RHBZ#1008417).
+  *  generator: generate code for parameter validation
+  *  generator: add a GUID parameter type
+  *  utils: add a function to validate a GUID string
+  *  Remove bogus license file from daemon subdirectory.
+  *  daemon: Always pass -F option to mkfs.ntfs.
+  *  resize: Don't truncate libguestfs error messages.
+  *  libvirt-domain: Remove unnecessary and wrongly indented parens.
+  *  fish/uri: Tidy up error messages.
+  *  daemon: lvm2: Ignore &quot;unknown device&quot; output when a PV is missing (RHBZ#1054761).
+  *  generator/set-uuid: Fix two typos in documentation
+  *  sparsify: Prevent overwriting block or char output devices (RHBZ#1056290).
+  *  test-tool: Rearrange output into alphabetical order.
+
+- more testcases for SLE12, using grub2
+  libguestfs.test.simple.create-sles12-guest.sh
+  libguestfs.test.simple.create-sles12-guest-crypt-on-lvm.sh</comment>
+    <requestid>222204</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>bca0e070f759276725b2bc7e54e70bcc</srcmd5>
+    <version>1.24.6</version>
+    <time>1394386045</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>225115</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6e9c387543ec202079040ba73f611b33</srcmd5>
+    <version>1.26.0</version>
+    <time>1396709221</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>229048</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c4f32a6a189f3e811da9a3998cba950b</srcmd5>
+    <version>1.26.2</version>
+    <time>1400256699</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.26.2
+  * sparsify: Add a note about qcow2 internal snapshots not being copied (RHBZ#1094746).
+  * customize: random-seed file has moved again.
+  * lib: xmlParse{File,Memory} -&gt; xmlRead{File,Memory}
+  * launch: direct: Supply -M option when testing qemu for devices.
+  * tar-in: Fix places where we didn't cancel the receive (FileIn) correctly along error paths (RHBZ#1091803).
+  * configure: Make sure grep matches qemu 2.x version string.
+  * daemon: parted: part-get-name: switch from sgdisk to parted (RHBZ#1088424).
+  * sparsify: If using -v (verbose), ensure #disk_create runs verbose too.
+  * disk-create: Fix this API so it works correctly with block devices (RHBZ#1088262).
+  * listfs: If LDM not available, don't inhibit partition detection (RHBZ#1079182).
+  * mllib: utils: Add mapi function.
+  * src/launch: improve the addition of the no-hpet option
+  * handle: Free g-&gt;backend_settings.
+  * python: Remove unnecessary library dependencies.
+  * utils: Move guestfs___validate_guid out of utils.c.
+  * utils: Remove for-loop variable decl.
+  * rescue: Don't leak various variables when using --suggest option with multi-boot guests.
+  * make-fs: Close FILE* along error path.
+  * make-fs: Check for error return from guestfs_statvfs.
+  * daemon: parted: part-get-name: Don't leak partition type string.</comment>
+    <requestid>234225</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7d5cbed92cbd8da01cfee371d9e1ff06</srcmd5>
+    <version>1.26.3</version>
+    <time>1401899975</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>236111</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>0f6c76c25b87e6716ee032a8a28b3d64</srcmd5>
+    <version>1.26.3</version>
+    <time>1402117956</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236465</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>c1eb44214d533d4633bfd1449d7d1fd5</srcmd5>
+    <version>1.26.3</version>
+    <time>1404459282</time>
+    <user>coolo</user>
+    <comment>- Include mkinitrd scripts from lvm2, device-mapper, mdadm and
+  nfs-client for 13.2 builds. The scripts will be removed from these
+  packages, they are required here. (bnc#883863, bnc#883873,bnc#883876)</comment>
+    <requestid>239272</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>afbfe1f39f4a7e66b1d588fbc1223b50</srcmd5>
+    <version>1.26.5</version>
+    <time>1404996915</time>
+    <user>coolo</user>
+    <comment>- Update requirements for kvm package. Instead of calling qemu-kvm
+  and Requires: kvm, replace the Requires with /usr/bin/qemu-system-$ARCH
+  Define the helper for aarch64, ppc64, s390x and x86_64.
+  Other archs have to use LIBGUESTFS_HV= (bnc#884564)
+
+- Update to version 1.26.5
+  * generator: Sort the structs.
+  * Use -v and -x flags consistently across OCaml virt-* tools.
+  * mllib: Rewrite text wrapping function so it can handle newlines within the text.
+  * mllib: Add a common 'warning' utility function.
+  * mllib: Add an interface for Common_utils library.
+  * mllib: Move common code for comparing version strings to library.
+  * options: Compile out part of union which cannot be used when not compiling guestfish.
+  * mllib: Create a common utility function is_directory.
+  * fuse: UID 0 should override all permissions checks (RHBZ#1106548).
+  * launch: libvirt: Only use serial BIOS (sgabios) on x86.
+  * daemon: print parameters for vgchange in error messages
+  * generator: fix daemon functions with optional params but no mandatory params
+  * appliance: Increase udev timeout to 6000s (RHBZ#1096579).
+  * launch: libvirt: Add -device sga (sgabios).
+
+- Add cdrkit-cdrtools-compat, psmisc, gptfdisk, syslinux to
+  BuildRequires to reduce amount of missing commands
+
+- Include mkinitrd scripts for btrfs, and include it in feature list</comment>
+    <requestid>239768</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c696fe873b4467776132e51c05257d02</srcmd5>
+    <version>1.26.5</version>
+    <time>1405658443</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>241350</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7aabb747368c78a476d3018ea060e03f</srcmd5>
+    <version>1.26.6</version>
+    <time>1406557284</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.26.6
+  * cleanups: add CLEANUP_FCLOSE (fclose on FILE*)
+  * launch: Close file descriptors after fork (RHBZ#1123007).
+  * virt-resize: Unmount filesystem after testing size.
+  * daemon: Add extra debugging to umount_all command.
+  * sparsify: Relax requirement that output device cannot be block device (RHBZ#1122557).
+  * ocaml: Ignore Warning 3: deprecated feature: String.* functions.
+  * sysprep: Standard exception handling, taken from virt-builder &amp; virt-v2v.
+  * customize: Use Common_utils.error function instead of failwith.
+  * mllib: introduce Mkdtemp.temp_dir
+  * inspect: ignore /etc/fstab with no entries (RHBZ#1113156).</comment>
+    <requestid>242704</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>588001af79a879acc980537d840b3e58</srcmd5>
+    <version>1.26.7</version>
+    <time>1406836239</time>
+    <user>coolo</user>
+    <comment>- Fix build without ocaml
+
+- Update to version 1.26.7
+  * launch: Close file descriptors after fork (RHBZ#1123007).
+  * Revert &quot;launch: Close file descriptors after fork (RHBZ#1123007).&quot;
+  * launch: direct: check for null paths in make_uri
+  * make-fs: do not leak the fd from mkstemp
+  * make-fs: respect libguestfs' temporary dir
+
+- define kernel_binary on aarch64</comment>
+    <requestid>243201</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>588001af79a879acc980537d840b3e58</srcmd5>
+    <version>1.26.7</version>
+    <time>1409301585</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3fc295825f62f6190869ad506a578ef9</srcmd5>
+    <version>1.26.8</version>
+    <time>1409761388</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>247186</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2ad598bb052b1260638e06304ddd0ba0</srcmd5>
+    <version>1.26.9</version>
+    <time>1410513564</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>248845</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>f7f74df5c95aaac9f2878f6f8219667e</srcmd5>
+    <version>1.26.9</version>
+    <time>1414744773</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>258128</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5a2ae767b9a05bd910656924604eed2d</srcmd5>
+    <version>1.26.10</version>
+    <time>1432159063</time>
+    <user>dimstar_suse</user>
+    <comment>- Force feature usb into initrd to avoid build-compare noise
+
+- Workaround bug in patch(1) which does not follow symlinks anymore
+
+- Update to version 1.26.10
+  * gcc5: test-tool: Initialize local variable.
+  * lua: Define luaL_checkint which was deprecated in lua 5.3.
+  * tools: fix free -m invocation
+
+- Make zypper called with -n parameter when installing packages.
+  (bsc#916567)
+
+- Package guestfs_lvm_conf.aug (bnc#908632)
+
+- Handle more dist versions when patching mkinitrd
+
+- Add isofs and other fs drivers (bnc#906692)
+
+- Use fixed /etc/hosts, scsi_dh_modules and ibft_hostname to
+  reduce build-compare noise</comment>
+    <requestid>308082</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>124966a4913370b5cb8a5b8c5a16d043</srcmd5>
+    <version>1.26.10</version>
+    <time>1439190959</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>321043</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>c89430775d1059edf6b41b422c3ed54e</srcmd5>
+    <version>1.26.10</version>
+    <time>1441822894</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330060</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>b1664028311c69fe661e159a32773a71</srcmd5>
+    <version>1.26.10</version>
+    <time>1443068133</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>332663</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>9e5b52c916a47ee75123ac5870a81580</srcmd5>
+    <version>1.26.10</version>
+    <time>1444130758</time>
+    <user>dimstar_suse</user>
+    <comment>- Add password default encryption method for sles. fate#318952
+
+- Add -l to zypper for install and update.</comment>
+    <requestid>335951</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a0ca8d8ac79a8e22f55e2761172addfd</srcmd5>
+    <version>1.32.4</version>
+    <time>1465335985</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.32.4
+- Backported commits (fate#316274):
+  * f5a9cdf: api: add mountable_device and mountable_subvolume
+  * 1c30c23: fish: fix btrfs subvolumes display in error case
+  * 1f24364: v2v: win &lt;= 7: reduce registry patch
+  * f0dce24: v2v: win &gt;= 8: reduce registry patch
+  * 9a441b0: v2v: win &gt;= 8: simplify registry patching
+  * e07459d: v2v: win: factor out common bits in registry patching
+  * 47aa64a: v2v: add support for virtio-scsi
+  * bba9ea9: v2v: also search for windows virtio drivers in symlinks
+  * 3bf7d30: Update packagelist for SLES and openSUSE
+  * 89ae53e: appliance: skip /etc/mtab creation is already existing
+  * ee78c06: customize: add support for pvvxsvc
+  * 25848b5: v2v: document SUSE's Xen as a working input hypervisor
+  * e9082ea: v2v: rename RHEL 5 Xen input section into Xen in man
+  * 75fe93e: v2v: improve initrd search
+  * 536ef6f: customize: change windows firstboot path
+  * 07f7bfa: customize: fix windows firstboot script
+  * c466d4c: v2v: add support for SUSE VMDP drivers
+  * 9de9300: v2v: handle subfolders in ova files
+- Removed patches:
+  * 1000-force-virtio_blk-in-old-guest-kernel.patch
+  * libguestfs.mkinitrd.1110.patch
+  * libguestfs.mkinitrd.1115.patch
+  * libguestfs.mkinitrd.1140.patch
+  * libguestfs.mkinitrd.1210.patch
+  * libguestfs.mkinitrd.1220.patch
+  * libguestfs.mkinitrd.1230.patch
+  * libguestfs.mkinitrd.1310.patch
+  * libguestfs.mkinitrd.boot-btrfs.sh</comment>
+    <requestid>398179</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>b9fee3107e625429be339604e3288908</srcmd5>
+    <version>1.32.4</version>
+    <time>1467705167</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix guestfs-tools dependencies. bsc#986866
+
+- Fix virt-filesystem -l for btrfs. bsc#980092
+- Add p2v support (fate#316274)</comment>
+    <requestid>406383</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>96d1ea19220394f7653492ac48957273</srcmd5>
+    <version>1.32.4</version>
+    <time>1468700011</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408321</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>6e253ad76ef9e6a5fab92c6f5dfd31b8</srcmd5>
+    <version>1.32.4</version>
+    <time>1469081908</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412296</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>d4576cb21ee4f798aa24eac9335d6a28</srcmd5>
+    <version>1.32.4</version>
+    <time>1469382743</time>
+    <user>dimstar_suse</user>
+    <comment>- appliance fixes (fate#316274):
+  * re-add helper script mount-rootfs-and-chroot.sh for virt-rescue
+    appliance.patch
+  * make guestfs-data a requirement of guestfs-tools</comment>
+    <requestid>412486</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>d7851b27fb623a4b6ed777b5805b3ecc</srcmd5>
+    <version>1.32.4</version>
+    <time>1470773686</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417116</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>65da2479c8c4e53e9fd80746343e561f</srcmd5>
+    <version>1.32.4</version>
+    <time>1472595071</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423752</requestid>
+  </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>66c17d19ee4081101c4197514e21bdbd</srcmd5>
+    <version>1.32.4</version>
+    <time>1474016510</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427712</requestid>
+  </revision>
+  <revision rev="45" vrev="9">
+    <srcmd5>864278c44f881b3bb18318298b7a45c2</srcmd5>
+    <version>1.32.4</version>
+    <time>1474370863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428644</requestid>
+  </revision>
+  <revision rev="46" vrev="10">
+    <srcmd5>aabdadfda5f551527d3c9cfa99585e58</srcmd5>
+    <version>1.32.4</version>
+    <time>1474723698</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>429486</requestid>
+  </revision>
+  <revision rev="47" vrev="11">
+    <srcmd5>934e18a869ad0e74167a9758b71ca979</srcmd5>
+    <version>1.32.4</version>
+    <time>1480693394</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442932</requestid>
+  </revision>
+  <revision rev="48" vrev="12">
+    <srcmd5>0fd9bf2f944db20872954ac689620117</srcmd5>
+    <version>1.32.4</version>
+    <time>1492714484</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487788</requestid>
+  </revision>
+  <revision rev="49" vrev="13">
+    <srcmd5>9cd110dd7ead1ce2ba0bd61f3a7b63ff</srcmd5>
+    <version>1.32.4</version>
+    <time>1494938760</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494930</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>c63e8bffd993720436f204fe9d7fefd6</srcmd5>
+    <version>1.36.4</version>
+    <time>1496226048</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.36.4
+  ... to fix build with gperf 3.1</comment>
+    <requestid>499765</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>c43e1eb15b6a00ac77f277b5ea602c05</srcmd5>
+    <version>1.36.4</version>
+    <time>1496534405</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500561</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1e4ba9e11e2f46da733e62fd3167da88</srcmd5>
+    <version>1.36.5</version>
+    <time>1503392846</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514075</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>1dee2773b3dfca7a296cedcd3399695f</srcmd5>
+    <version>1.36.5</version>
+    <time>1504521295</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520200</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>b44a388d462223d067e59bb436d9b8aa</srcmd5>
+    <version>1.36.5</version>
+    <time>1504981557</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521910</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>cf3862b86b18ecfa2da134796e2f33ad</srcmd5>
+    <version>1.36.5</version>
+    <time>1506453341</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528607</requestid>
+  </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>9b1e32dacbdbc70c614f80ca913ad61f</srcmd5>
+    <version>1.36.5</version>
+    <time>1508434434</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535225</requestid>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>2b8925c9f182c23fbda1f7f0539cdeae</srcmd5>
+    <version>1.36.5</version>
+    <time>1509036342</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536717</requestid>
+  </revision>
+  <revision rev="58" vrev="7">
+    <srcmd5>8303d41478b2ad9b5eb0f55ec43eb4d5</srcmd5>
+    <version>1.36.5</version>
+    <time>1512734375</time>
+    <user>dimstar_suse</user>
+    <comment>- evtxdump is in python3-evtx, drop python2 dependency
+  (fate#323526)
+- add hwinfo to the appliance packages for ntfs support.
+  (bsc#1070976)
+- Don't run fdupes as it symlinks some of the python3 binding
+  files to their python2 equivalent
+
+- Add db48-utils dependency: needed to inspect the installed
+  packages.
+- Remove useless patch: 0000-hotfix.patch</comment>
+    <requestid>554862</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>2518442811d998092cdb4df7b00e31fd</srcmd5>
+    <version>1.38.0</version>
+    <time>1518426950</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.38.0:
+  * Virt-builder-repository is a new tool allowing end users to
+    create and update virt-builder repositories. (fate#318952)
+  * Virt-rescue has been substantially rewritten, implementing job
+    control, -m and -i options, escape keys, etc.
+  * Virt-builder planner has been improved so that faster and more
+    efficient build plans are chosen for complex cases, especially when
+    either the tmpdir or output is on networked storage.
+  * Virt-customize now sets a random /etc/machine-id for Linux guests, if
+    one is not already set.
+  * Virt-df now works correctly on filesystems with block sizes smaller
+    than 1K.
+  * Virt-dib has further compatibility enhancements with diskimage-builder.
+  * Virt-sysprep removes &quot;DHCP_HOSTNAME&quot; from ifcfg-* files.
+  * Virt-resize now correctly copies GPT partition attributes from the
+    source to the destination. (bsc#1074585)
+  * Bash tab completion implemented or enhanced for: virt-win-reg,
+    virt-v2v-copy-to-local.
+  * Both virt-v2v and virt-p2v are now able to pass through the source CPU
+    vendor, model and topology.
+  * Virt-v2v now supports encrypted guests.
+  * Virt-v2v now detects the special Linux Xen PV-only kernels correctly
+  * Virt-v2v -o glance now generates the right properties for UEFI guests
+  * Virt-v2v -o null now avoids spooling the guest to a temporary file,
+    instead it writes to the qemu &quot;null block device&quot;.  This makes it
+    faster and use almost no disk space.
+  * Virt-v2v -i libvirtxml can now open network disks over http or https.
+  * Virt-v2v will now give a warning about host passthrough devices
+  * Inspection support was rewritten in OCaml and included inside the
+    daemon.  This makes inspection considerably faster, more robust and</comment>
+    <requestid>575411</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>db8eb20765d44b65057b2cf2bbe624aa</srcmd5>
+    <version>1.38.0</version>
+    <time>1519396323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579511</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>538a9ab3c838b59ff435db0efba6dd1b</srcmd5>
+    <version>1.38.0</version>
+    <time>1519902461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580951</requestid>
+  </revision>
+  <revision rev="62" vrev="4">
+    <srcmd5>d91c713a60175215ac24ab7024797d05</srcmd5>
+    <version>1.38.0</version>
+    <time>1524144794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598474</requestid>
+  </revision>
+  <revision rev="63" vrev="5">
+    <srcmd5>254634518b66bbf6f15cf646868fc78f</srcmd5>
+    <version>1.38.0</version>
+    <time>1529402275</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616447</requestid>
+  </revision>
+  <revision rev="64" vrev="6">
+    <srcmd5>684c34c3b07978c4c32bfff1e1b69460</srcmd5>
+    <version>1.38.0</version>
+    <time>1554833947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692565</requestid>
+  </revision>
+  <revision rev="65" vrev="7">
+    <srcmd5>de5eb6394fe1e0eccf14355d96e1088a</srcmd5>
+    <version>1.38.0</version>
+    <time>1555574244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695339</requestid>
+  </revision>
+  <revision rev="66" vrev="8">
+    <srcmd5>9c1c5f2d0291a19d323e011c5636a469</srcmd5>
+    <version>1.38.0</version>
+    <time>1561557887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712071</requestid>
+  </revision>
+  <revision rev="67" vrev="9">
+    <srcmd5>090b04b53df543731a5a43dee49fed96</srcmd5>
+    <version>1.38.0</version>
+    <time>1566551261</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove empty /etc/libguestfs-tools.conf</comment>
+    <requestid>725337</requestid>
+  </revision>
+  <revision rev="68" vrev="10">
+    <srcmd5>47c5104d4278c8edb5f7779e5196813b</srcmd5>
+    <version>1.38.0</version>
+    <time>1568379583</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>730191</requestid>
+  </revision>
+</revisionlist>

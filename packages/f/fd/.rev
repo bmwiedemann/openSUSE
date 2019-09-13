@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>415f20a2fdc5d21914f8dc74758fe90c</srcmd5>
+    <version>6.3.0</version>
+    <time>1521716570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589024</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d768f18cf1c004ed7ad572d0321d2bc0</srcmd5>
+    <version>7.0.0</version>
+    <time>1527583401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.0.0
+Features
+  * Added --type executable (or -t x) to search for executable
+    files only
+  * Added support for .fdignore files
+  * Added --ignore-file option to add custom ignore files
+  * Suggest --fixed-strings on invalid regular expressions
+  * Detect when user supplied path instead of pattern
+Changes
+  * .ignore and .rgignore files are not parsed anymore. Use
+    .fdignore files
+  * or add custom files via --ignore-file instead.
+Bugfixes
+  * Properly normalize absolute paths
+  * Invalid utf8 filenames displayed when -e is used
+  * If --type is used, fifos/sockets/etc. are always shown
+- cleanup with spec-cleaner
+</comment>
+    <requestid>611908</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>045f41a051e9f88e4ffc97697477fae7</srcmd5>
+    <version>7.1.0</version>
+    <time>1537187240</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 7.1.0
+Features
+  * Added --size filter option
+  * Added --type empty (or -t e) to search for empty files and/or directories
+Changes
+  * .gitignore files will only be respected in Git repositories, not outside.
+  * A few performance improvements for --type searches
+- cleanup with spec-cleaner 
+</comment>
+    <requestid>635954</requestid>
+  </revision>
+</revisionlist>

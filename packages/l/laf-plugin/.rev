@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49bb2985f4c3208deb08d056bb5eaffd</srcmd5>
+    <version>1.0</version>
+    <time>1399390821</time>
+    <user>coolo</user>
+    <comment>Preparing for scilab
+http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
+    <requestid>232438</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>790f49a42d117b38d36cfb8be2e6c4b3</srcmd5>
+    <version>1.0</version>
+    <time>1405101954</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240354</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4bfe62eeeca6a60c8722bd721c7cc06f</srcmd5>
+    <version>1.0</version>
+    <time>1406557279</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>242703</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4bfe62eeeca6a60c8722bd721c7cc06f</srcmd5>
+    <version>1.0</version>
+    <time>1409301457</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>051291d8a68aa5ee212d6dffc0957d7a</srcmd5>
+    <version>1.0</version>
+    <time>1505920315</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527276</requestid>
+  </revision>
+</revisionlist>

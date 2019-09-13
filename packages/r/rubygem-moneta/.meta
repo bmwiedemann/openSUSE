@@ -1,0 +1,8 @@
+<package name="rubygem-moneta" project="openSUSE:Factory">
+  <title>A unified interface to key/value stores</title>
+  <description>A unified interface to key/value stores
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-moneta"/>
+  <url>http://www.yehudakatz.com</url>
+</package>

@@ -1,0 +1,7 @@
+<package name="gperftools" project="openSUSE:Factory">
+  <title>&quot;great&quot; perftools  (formerly google-perftools)</title>
+  <description>The gperftools package contains some utilities to improve and analyze the performance of C++ programs.  This includes an optimized thread-caching malloc() and cpu and heap profiling utilities.
+
+Formerly the google-perftools package.</description>
+  <devel project="devel:libraries:c_c++" package="gperftools"/>
+</package>

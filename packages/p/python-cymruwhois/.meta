@@ -1,0 +1,9 @@
+<package name="python-cymruwhois" project="openSUSE:Factory">
+  <title>Client for the whois.cymrucom service</title>
+  <description>Perform lookups by ip address and return ASN, Country Code,
+and Netblock Owner.
+
+</description>
+  <devel project="network" package="python-cymruwhois"/>
+  <url>http://packages.python.org/cymruwhois/</url>
+</package>

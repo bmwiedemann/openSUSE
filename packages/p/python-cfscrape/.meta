@@ -1,0 +1,11 @@
+<package name="python-cfscrape" project="openSUSE:Factory">
+  <title>Python module to bypass Cloudflare's anti-bot page</title>
+  <description>A simple Python module to bypass Cloudflare's anti-bot page (also known as &quot;I'm Under Attack Mode&quot;, or IUAM), implemented with Requests.
+
+This can be useful if you wish to scrape or crawl a website protected with Cloudflare. Cloudflare's anti-bot page currently just checks if the client supports Javascript, though they may add additional techniques in the future.
+
+Due to Cloudflare continually changing and hardening their protection page, cfscrape requires Node.js to solve Javascript challenges. This allows the script to easily impersonate a regular web browser without explicitly deobfuscating and parsing Cloudflare's Javascript.
+
+Note: This only works when regular Cloudflare anti-bots is enabled (the &quot;Checking your browser before accessing...&quot; loading page). If there is a reCAPTCHA challenge, you're out of luck. Thankfully, the Javascript check page is much more common.</description>
+  <devel project="devel:languages:python" package="python-cfscrape"/>
+</package>

@@ -1,0 +1,14 @@
+<package name="libsmi" project="openSUSE:Factory">
+  <title>A Library to Access SMI MIB Information</title>
+  <description>The purpose of libsmi is to
+
+* Give network management applications a concise programmer-friendly
+   interface to access MIB module information
+
+* Separate the knowledge on SMI from the main parts of management
+   applications
+
+* Allow addition of new kinds of MIB repositories without the need to
+adapt applications that make use of libsmi</description>
+  <devel project="network:utilities" package="libsmi"/>
+</package>

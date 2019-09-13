@@ -1,0 +1,14 @@
+<package name="skinlf" project="openSUSE:Factory">
+  <title>Java Skin Look And Feel</title>
+  <description>
+Skin Look And Feel allows Java developers to write skinnable application using
+the Swing toolkit. Skin Look And Feel is able to load themepacks (a bundle of
+GTK - The Gimp Toolkit - and KDE - The K Desktop Environment - skins) to
+enhance your application GUI controls such as Buttons, Checks, Radios,
+Scrollbars, Progress Bar, Lists, Tables, Internal Frames, Colors, Background
+Textures, Regular Windows. Skin Look And Feel (aka SkinLF) also includes
+NativeSkin to create irregular windows. 
+  </description>
+  <devel project="Java:packages" package="skinlf"/>
+  <url>http://skinlf.l2fprod.com/</url>
+</package>

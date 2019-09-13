@@ -1,0 +1,6 @@
+<package name="unsermake" project="openSUSE:Factory">
+  <title>Replacement for make and automake</title>
+  <description>Developed for building KDE, Unsermake replaces the functionality of
+automake and make.</description>
+  <devel project="KDE:KDE3" package="unsermake"/>
+</package>

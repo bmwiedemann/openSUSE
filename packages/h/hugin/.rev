@@ -1,0 +1,506 @@
+<revisionlist>
+  <revision rev="1" vrev="39">
+    <srcmd5>55e3f368253c4423b091f7dd18a92676</srcmd5>
+    <version>0.6.1</version>
+    <time>1176690686</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="60">
+    <srcmd5>5bb3768caa520ee9608185eee5f2c7ad</srcmd5>
+    <version>0.6.1</version>
+    <time>1178733827</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce693d4975c1d3750d43b47cd43ae499</srcmd5>
+    <version>0.6.99.4</version>
+    <time>1184621773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="36">
+    <srcmd5>905946a5f816cbfb2ab602cfe2b6c743</srcmd5>
+    <version>0.6.99.4</version>
+    <time>1191365817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="37">
+    <srcmd5>9d60aece2358ac2035c91b873d367cee</srcmd5>
+    <version>0.6.99.4</version>
+    <time>1191537044</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="55">
+    <srcmd5>ec0b4dcbc91cbbe4557b7126c8acb7a9</srcmd5>
+    <version>0.6.99.4</version>
+    <time>1193788798</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="60">
+    <srcmd5>006e7e3fb98677a7e283df062ac5fafe</srcmd5>
+    <version>0.6.99.4</version>
+    <time>1194900648</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="61">
+    <srcmd5>de5391f75d0aa4857be3fcf9f7bf746c</srcmd5>
+    <version>0.6.99.4</version>
+    <time>1197479510</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="107">
+    <srcmd5>1c4b5787d9fbab5cc31ea64bff105e3e</srcmd5>
+    <version>0.6.99.4</version>
+    <time>1207581868</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2867faaafe678970c8ec1358ee20fbbb</srcmd5>
+    <version>0.7.0.3032</version>
+    <time>1208993351</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>95cd5322f9ac0661e8723c16f7d80c59</srcmd5>
+    <version>0.7.0.3032</version>
+    <time>1209132324</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d89956e0cc65bcd89e701f0c4eb78dcf</srcmd5>
+    <version>0.7.0.3238</version>
+    <time>1217642690</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>06aea210ca828b4fbbd2a695fecb8285</srcmd5>
+    <version>0.7.0</version>
+    <time>1223459261</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>1966212eb111a038aa7f85d155653e68</srcmd5>
+    <version>0.7.0</version>
+    <time>1244242155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>5ae16f7432c8a76b3897ea3214cf3dc3</srcmd5>
+    <version>0.7.0</version>
+    <time>1244543145</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>49d9cc48ad7583621a0b52bbcce6d9ac</srcmd5>
+    <version>0.8.0</version>
+    <time>1249685589</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>49d9cc48ad7583621a0b52bbcce6d9ac</srcmd5>
+    <version>0.8.0</version>
+    <time>1249685589</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>7eff436feb791ed6366384bf76300733</srcmd5>
+    <version>0.8.0</version>
+    <time>1268923958</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cfcd0e55cd0de95e247bfc92b5424f83</srcmd5>
+    <version>2010.0.0</version>
+    <time>1270732343</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/hugin based on submit request 37354 from user adrianSuSE
+</comment>
+    <requestid>37354</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>2e275ed499d22b9dad261255e08a48df</srcmd5>
+    <version>2010.0.0</version>
+    <time>1272214343</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/hugin based on submit request 38613 from user coolo
+</comment>
+    <requestid>38613</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>eb9e700d42e4e0615e72949a103c25a4</srcmd5>
+    <version>2010.0.0</version>
+    <time>1272487950</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/hugin based on submit request 39000 from user pgajdos
+</comment>
+    <requestid>39000</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>eb9e700d42e4e0615e72949a103c25a4</srcmd5>
+    <version>2010.0.0</version>
+    <time>1278667350</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>eb9e700d42e4e0615e72949a103c25a4</srcmd5>
+    <version>2010.0.0</version>
+    <time>1278678582</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>84c578907eae381165630bd21831e74a</srcmd5>
+    <version>2010.0.0</version>
+    <time>1295289724</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58515 from user sbrabec
+</comment>
+    <requestid>58515</requestid>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>b5df6efedd850c4ac02f7cdebd58e482</srcmd5>
+    <version>2010.0.0</version>
+    <time>1295289746</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58515
+</comment>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>b5df6efedd850c4ac02f7cdebd58e482</srcmd5>
+    <version>2010.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="27" vrev="11">
+    <srcmd5>77b9e0fc1d6a2d7ea041d9622a5cc36e</srcmd5>
+    <version>2010.0.0</version>
+    <time>1300812158</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64804 from user licensedigger
+</comment>
+    <requestid>64804</requestid>
+  </revision>
+  <revision rev="28" vrev="12">
+    <srcmd5>24b91f3becf957be500a863cf7269e52</srcmd5>
+    <version>2010.0.0</version>
+    <time>1300812165</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64804
+</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3b190adc2d5d54dfabe24f92f468078f</srcmd5>
+    <version>2011.0.0</version>
+    <time>1314629278</time>
+    <user>saschpe</user>
+    <comment>new version</comment>
+    <requestid>80042</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>dcbb3d6062524dd85c940061ca6026a4</srcmd5>
+    <version>2011.0.0</version>
+    <time>1314629296</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80042
+</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>dcbb3d6062524dd85c940061ca6026a4</srcmd5>
+    <version>2011.0.0</version>
+    <time>1319181974</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d11510d51a8b8f6b7dd77d1e43f97ac5</srcmd5>
+    <version>2011.4.0</version>
+    <time>1325231145</time>
+    <user>coolo</user>
+    <comment>-Updated to version 2011.4.0:
+ * numerous translation updates
+ * bug fixes
+ * new pto-gen tool
+ * build system fixes
+
+- Fixed build on openSUSE 11.3.
+
+- Updated to version 2011.2.0:
+  * New Python scripting interface.
+  * New lens calibration tool
+  * A critical bug affecting a significant number of Mac users has been fixed.
+  * Many general improvements have been made.
+
+- disable parallel build and enable verbose compilne
+
+- Add hugin-fix-gcc46.patch: fix gcc 4.6 compilation
+  * Set blender and fusion options to default value when user
+  * Fixes update of preview window when projection parameter
+- fix build with gcc-4.4
+- removed gnome-icon-theme from BuildRequires [#247450]
+- accept gettext 0.16 ...
+  * added tool fulla (see man pages), for distortion, TCA and vignetting
+- remove some extra qualifications to fix build with gcc-4.1
+- fixed missing part of function
+- fix build with current wxGTK
+- change desktopfile</comment>
+    <requestid>98363</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>64de180b103f1f28ff4d36447cb9a4c6</srcmd5>
+    <version>2011.4.0</version>
+    <time>1326292607</time>
+    <user>coolo</user>
+    <comment>- Add missing explicit buildrequires on libjpeg-devel and 
+  libtiff-devel, fixes factory build (forwarded request 99667 from elvigia)</comment>
+    <requestid>99672</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>1e3ac2a6cbfc2ec299c9894088798fa6</srcmd5>
+    <version>2011.4.0</version>
+    <time>1332239250</time>
+    <user>coolo</user>
+    <comment>- added patch to fix gcc 4.7 failure (gcc47.diff)
+- added fdupes (forwarded request 109983 from ealin) (forwarded request 109984 from dimstar)</comment>
+    <requestid>110019</requestid>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>1e3ac2a6cbfc2ec299c9894088798fa6</srcmd5>
+    <version>2011.4.0</version>
+    <time>1340183443</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>0a26fa2189fb20ef094167004aa020eb</srcmd5>
+    <version>2012.0.0</version>
+    <time>1358412137</time>
+    <user>coolo</user>
+    <comment>- Update to version 2012.0.0:
+  * integrated lensfun library
+  * new tool pto_gen
+  * improvements to cpfind
+  * option to keep exposure fused stacks
+  * pano_modify: Added HDR autocrop option
+  * translations updated
+  * more improvements and bug fixes
+- Turn on HSI (Python Hugin Scripting Interface). (forwarded request 148722 from sbrabec)</comment>
+    <requestid>148723</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>0a26fa2189fb20ef094167004aa020eb</srcmd5>
+    <version>2012.0.0</version>
+    <time>1359109056</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>3264a1f126738107869d96f9dbb917f3</srcmd5>
+    <version>2012.0.0</version>
+    <time>1359580927</time>
+    <user>coolo</user>
+    <comment>- Update to version 2012.0.0 (bnc#800803):</comment>
+    <requestid>150456</requestid>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>f9d860b8aa0bb3d8856ddd3423c9afcb</srcmd5>
+    <version>2012.0.0</version>
+    <time>1366797080</time>
+    <user>coolo</user>
+    <comment>- Add libXi-devel and libXmu-devel BuildRequires: cmake checks for
+  their presence. (forwarded request 172935 from dimstar)</comment>
+    <requestid>172969</requestid>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>078a7f11fa49aa09575357fbf0584913</srcmd5>
+    <version>2012.0.0</version>
+    <time>1374847016</time>
+    <user>coolo</user>
+    <comment>- Fix build with perl 5.18 by adding hugin-perl-5.18.patch
+- Remove old opensuse version conditionals as the package anyway
+  builds only on 12.3 and later, unresolvable on older ones.</comment>
+    <requestid>184408</requestid>
+  </revision>
+  <revision rev="41" vrev="7">
+    <srcmd5>8a1cd0eab8baae395fc79757ac4502d5</srcmd5>
+    <version>2012.0.0</version>
+    <time>1376310167</time>
+    <user>scarabeus_factory</user>
+    <comment>- Fix build on factory with new cmake. (forwarded request 186638 from scarabeus_iv)</comment>
+    <requestid>186642</requestid>
+  </revision>
+  <revision rev="42" vrev="9">
+    <srcmd5>8a1cd0eab8baae395fc79757ac4502d5</srcmd5>
+    <version>2012.0.0</version>
+    <time>1379662626</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0a268b33ba9d461ea4ece1472a79d264</srcmd5>
+    <version>2013.0.0</version>
+    <time>1383035152</time>
+    <user>coolo</user>
+    <comment>- Updated to version 2013.0.0.
+- Removed hugin-perl-5.18.patch (included upstream). (forwarded request 204973 from sergeyopensuse)</comment>
+    <requestid>205005</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>46f012cbee11aa084abf0e483d917b85</srcmd5>
+    <version>2013.0.0</version>
+    <time>1398499347</time>
+    <user>coolo</user>
+    <comment>- Add make as requires (needed for photo stiching) (bnc#822775). (forwarded request 231233 from fcrozat)</comment>
+    <requestid>231235</requestid>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>46f012cbee11aa084abf0e483d917b85</srcmd5>
+    <version>2013.0.0</version>
+    <time>1409301183</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b16d015d2d898651365babaedf5c43c8</srcmd5>
+    <version>2014.0.0</version>
+    <time>1413285902</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256021</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>01bb571f910d642647886408d6b0dc7b</srcmd5>
+    <version>2014.0.0</version>
+    <time>1418054194</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with boost 1.56.0 (forwarded request 264132 from dimstar)</comment>
+    <requestid>264149</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>21e6824938ccb68f757a5bfd4ac8fac4</srcmd5>
+    <version>2014.0.0</version>
+    <time>1425566380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288556</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>8a29c1ad5cabbe30b05ac961bd112cf5</srcmd5>
+    <version>2015.0.0</version>
+    <time>1441726740</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328759</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>a5f42c82c91468b6a3929149833b9793</srcmd5>
+    <version>2015.0.0</version>
+    <time>1453998149</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354448</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>ca387cf34641ef21e1d7af4def390002</srcmd5>
+    <version>2015.0.0</version>
+    <time>1455190692</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358655</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>ce4ee3fc9eadbbdf30964d7758a80a88</srcmd5>
+    <version>2016.0.0</version>
+    <time>1459002471</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378882</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>1a77c6aaffb5dd3a146e2d00b67f6ab0</srcmd5>
+    <version>2016.0.0</version>
+    <time>1467705149</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406297</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>50b954a424ec00f61182f919b77d4271</srcmd5>
+    <version>2016.2.0</version>
+    <time>1474370847</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428512</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>c96cf25f6c96c6bdb3f77ce315f76093</srcmd5>
+    <version>2016.2.0</version>
+    <time>1486635395</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455240</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3b891479273f39deb72dac6e107de014</srcmd5>
+    <version>2017.0.0</version>
+    <time>1514569834</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>559844</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>019edc51a81645c72192acbddb94d1ea</srcmd5>
+    <version>2017.0.0</version>
+    <time>1517606548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571987</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>784ee8c0e443a97eacffbe443b4aa6dc</srcmd5>
+    <version>2018.0.0</version>
+    <time>1518025259</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>573398</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>f67f957faa75f76ef4a85514976092d8</srcmd5>
+    <version>2018.0.0</version>
+    <time>1549017953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669982</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>6a2b33d8d5f9aba41d30cda3c2f2ecd8</srcmd5>
+    <version>2018.0.0</version>
+    <time>1549286763</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671001</requestid>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>7b31da33dd08e65166a5bd223dd4e399</srcmd5>
+    <version>2018.0.0</version>
+    <time>1551114057</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678905</requestid>
+  </revision>
+  <revision rev="62" vrev="5">
+    <srcmd5>01d2e0bf458e742f608a349dd6a4793c</srcmd5>
+    <version>2018.0.0</version>
+    <time>1552548108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684717</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>4b46a4530d99428ef39cc16a413bdf71</srcmd5>
+    <version>2019.0.0</version>
+    <time>1563362380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715491</requestid>
+  </revision>
+</revisionlist>

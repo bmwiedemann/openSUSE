@@ -1,0 +1,7 @@
+<package name="paexec" project="openSUSE:Factory">
+  <title>paexec distributes tasks over network or CPUs</title>
+  <description>Small program that processes a list of tasks in parallel
+on different CPUs, computers in a network or whatever else.
+</description>
+  <devel project="devel:tools" package="paexec"/>
+</package>

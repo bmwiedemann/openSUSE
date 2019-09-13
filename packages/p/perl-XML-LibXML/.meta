@@ -1,0 +1,8 @@
+<package name="perl-XML-LibXML" project="openSUSE:Factory">
+  <title>Perl Binding for libxml2</title>
+  <description>This module implements a Perl interface to the Gnome libxml2 library which
+provides interfaces for parsing and manipulating XML files. This module allows
+Perl programmers to make use of the highly capable validating XML parser and
+the high performance DOM implementation.</description>
+  <devel project="devel:languages:perl" package="perl-XML-LibXML"/>
+</package>

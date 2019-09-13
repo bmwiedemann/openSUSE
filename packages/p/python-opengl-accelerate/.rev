@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e354820870eff18ad10320e555247a49</srcmd5>
+    <version>3.0.2</version>
+    <time>1366632987</time>
+    <user>coolo</user>
+    <comment>This package provides acceleration for python-opengl, which is already in factory.  They are developed by the same group and are meant to work together.</comment>
+    <requestid>172635</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e1990509d4a99e1bae49fe33b8e64ffe</srcmd5>
+    <version>3.0.2</version>
+    <time>1371652973</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179918</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e1990509d4a99e1bae49fe33b8e64ffe</srcmd5>
+    <version>3.0.2</version>
+    <time>1379664235</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cf8e8db4473dc0c65f9f5fe916e2dc20</srcmd5>
+    <version>3.1.0</version>
+    <time>1405411722</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240926</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>cf8e8db4473dc0c65f9f5fe916e2dc20</srcmd5>
+    <version>3.1.0</version>
+    <time>1409302933</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>26507aba86d286000db70a94a00434cd</srcmd5>
+    <version>3.1.1a1</version>
+    <time>1497274442</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502723</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3fda27c7f16db76ecc5dea7d15b81585</srcmd5>
+    <version>3.1.3b1</version>
+    <time>1541666834</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 3.1.3b1:
+  * no real changelog</comment>
+    <requestid>644633</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>74087fbd61208cdb7c0304bd2c13474e</srcmd5>
+    <version>3.1.3b1.post1</version>
+    <time>1568065403</time>
+    <user>dimstar_suse</user>
+    <comment>- Add commit1080.patch to make source compatible with opengl 3.1.3b2
+  needed for Python 3.7 compatibility
+- Add wrapper.pxd and formathandler.pxd needed to rebuild from source</comment>
+    <requestid>724525</requestid>
+  </revision>
+</revisionlist>

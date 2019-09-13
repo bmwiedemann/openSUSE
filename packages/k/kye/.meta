@@ -1,0 +1,15 @@
+<package name="kye" project="openSUSE:Factory">
+  <title>Logic puzzle game with arcade elements</title>
+  <description>This is a clone of the original Kye game for Windows, by Colin Garbutt.
+
+Kye is a puzzle game with arcade game elements. The game takes place
+in a small playing area, where the player controls Kye - a
+distinctive green blob. The player moves around and tries to collect
+all of the diamonds. However, there are many other objects in the
+game, which can obstruct, trap or kill the Kye.
+
+Kye is one of those games like Chess, where a small number of
+different playing pieces, obeying simple rules, combine to create a
+game of enormous variety and complexity.</description>
+  <devel project="games" package="kye"/>
+</package>

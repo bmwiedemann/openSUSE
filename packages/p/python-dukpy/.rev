@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f9c2855060f83e8d2eb9bf3fdc6b9aef</srcmd5>
+    <version>0.2.0</version>
+    <time>1535122953</time>
+    <user>dimstar_suse</user>
+    <comment>javascript engine for python</comment>
+    <requestid>628460</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3cdf1c7f1157ca8017ad40ee330f4ed5</srcmd5>
+    <version>0.2.0</version>
+    <time>1535367528</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631406</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>69391304102ac5273a01163c02dae12b</srcmd5>
+    <version>0.2.2</version>
+    <time>1552985907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.2:
+  * State compatibility with Python 3.7
+  * Provide wheels for Python 3.7
+  * Fix building wheel from source distribution
+  * Fix a memory leak in dukpy.evaljs
+- Add patch from upstream to work well with pytest:
+  * pytest.patch</comment>
+    <requestid>682894</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49ccfa9a77d793b7d406218c92de76c7</srcmd5>
+    <version>0.1.1</version>
+    <time>1518597179</time>
+    <user>dimstar_suse</user>
+    <comment>- New component for Azure CLI</comment>
+    <requestid>574830</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84a7aae19cbb15e250454f7844969675</srcmd5>
+    <version>0.5.1</version>
+    <time>1526220065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600031</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>71bb749dc2aaa01314e6bb1ea8bd82dc</srcmd5>
+    <version>0.6.0</version>
+    <time>1539593320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641240</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5412e875ab1198e77896febffa77714</srcmd5>
+    <version>2.0.0</version>
+    <time>1558515521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Azure CLI to latest version</comment>
+    <requestid>696812</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ea04f5364967cbc5720e301e3b02e597</srcmd5>
+    <version>2.0.0</version>
+    <time>1559727682</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Azure CLI build on SLE-12 (forwarded request 707470 from glaubitz)</comment>
+    <requestid>707532</requestid>
+  </revision>
+</revisionlist>

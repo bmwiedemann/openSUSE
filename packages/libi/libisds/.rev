@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>15867ca6fafb5596cdd29abc05612d39</srcmd5>
+    <version>0.10</version>
+    <time>1421232295</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for datovka update</comment>
+    <requestid>280903</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a5dfdbf8bda59306a9937bcec1c4076a</srcmd5>
+    <version>0.10.1</version>
+    <time>1441727075</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.10.1:
+  * Fix expired certificates so the testsuite pass again</comment>
+    <requestid>329437</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7176326d7caf23cb64a536fd32708253</srcmd5>
+    <version>0.10.3</version>
+    <time>1460482792</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>387657</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a363b235f3d6da86d84de4a245bad149</srcmd5>
+    <version>0.10.5</version>
+    <time>1476109523</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434089</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>40c1617aaecc5ad0df4dece5f36e049c</srcmd5>
+    <version>0.10.6</version>
+    <time>1477135385</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436529</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ab95be1edd9475a94ae700c62c29a899</srcmd5>
+    <version>0.10.6</version>
+    <time>1497016595</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable werror</comment>
+    <requestid>500913</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>630bc9970fb8abc8facd27bbd4c1282a</srcmd5>
+    <version>0.10.7</version>
+    <time>1500670154</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511405</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3e93d34e378a26f3a8b46a4f0cdd6255</srcmd5>
+    <version>0.10.8</version>
+    <time>1535370479</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.10.8:
+  * Various memory leaks fixed
+  * Recognise EV8</comment>
+    <requestid>628856</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>55ae5a0081706399112e824ee103e18d</srcmd5>
+    <version>0.10.8</version>
+    <time>1558690332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704966</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>10666110e7d055623cfd356f4569fd20</srcmd5>
+    <version>0.10.8</version>
+    <time>1559580895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707045</requestid>
+  </revision>
+</revisionlist>

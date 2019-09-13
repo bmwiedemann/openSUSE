@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b6746df148f7a1e696d63dbbdfd695a2</srcmd5>
+    <version>2.2.0</version>
+    <time>1332999659</time>
+    <user>coolo</user>
+    <comment>add apache-ivy to Factory</comment>
+    <requestid>111352</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b6746df148f7a1e696d63dbbdfd695a2</srcmd5>
+    <version>2.2.0</version>
+    <time>1340183174</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>29c786427924997112c291689e30cf4e</srcmd5>
+    <version>2.2.0</version>
+    <time>1357217035</time>
+    <user>namtrac</user>
+    <comment>- Define ${target.ivy.version} during build
+- Include an ivy(1) command line script and man page (forwarded request 146847 from archie172)</comment>
+    <requestid>146891</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>29c786427924997112c291689e30cf4e</srcmd5>
+    <version>2.2.0</version>
+    <time>1359108654</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a2aae5e23a73e49e525d049257e9b3a0</srcmd5>
+    <version>2.3.0</version>
+    <time>1378998469</time>
+    <user>scarabeus_factory</user>
+    <comment>- Move from jpackage-utils to javapackage-tools
+
+- Upgrade to release 2.3.0
+  * improved Ant support with some new Ant tasks and enhancements to existing tasks
+  * improved Maven2 compatibility
+  * some new resolvers
+  * numerous bug fixes as documented in Jira and in the release notes</comment>
+    <requestid>198720</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a2aae5e23a73e49e525d049257e9b3a0</srcmd5>
+    <version>2.3.0</version>
+    <time>1379661972</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>df4c67e24489843b0f0cb4f0decc5989</srcmd5>
+    <version>2.3.0</version>
+    <time>1383917677</time>
+    <user>coolo</user>
+    <comment>- Remove jakarta-commons-httpclient3, we do no longer provide it
+- Add ant.d config snippet for ivy
+- call add_maven_depmap</comment>
+    <requestid>205975</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>5a504c108f18b8cb3e77eee9e34abeec</srcmd5>
+    <version>2.3.0</version>
+    <time>1405522169</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240326</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>5a504c108f18b8cb3e77eee9e34abeec</srcmd5>
+    <version>2.3.0</version>
+    <time>1409300496</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>b35a5a44272a9f5b84276db59952439f</srcmd5>
+    <version>2.3.0</version>
+    <time>1427982812</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292601</requestid>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>e8ffaaf825abad831448080e98931912</srcmd5>
+    <version>2.3.0</version>
+    <time>1496230331</time>
+    <user>dimstar_suse</user>
+    <comment>- Reduce deps a bit
+
+- New build dependency: javapackages-local</comment>
+    <requestid>497064</requestid>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>125b271bd9204a7480d4071b7a549e28</srcmd5>
+    <version>2.3.0</version>
+    <time>1505334302</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>523091</requestid>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>130a6a5315af948b72fae0129661978b</srcmd5>
+    <version>2.3.0</version>
+    <time>1532446251</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620759</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6ec4680a33059376235665e756753de2</srcmd5>
+    <version>2.4.0</version>
+    <time>1544189410</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653636</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b4fcaa009dcf9432aa0f628f397c012d</srcmd5>
+    <version>2.4.0</version>
+    <time>1549916291</time>
+    <user>dimstar_suse</user>
+    <comment>install compatibility symlink of the jar file + clean-up a bit the spec file</comment>
+    <requestid>672491</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0f5b81fa42ec4f59daa69b34a8cb47ba</srcmd5>
+    <version>2.4.0</version>
+    <time>1555237216</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the reference to parent from pom file, since we are not
+  building using maven.
+</comment>
+    <requestid>693084</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>f06154d87d04cbd7e2c785f45acebb86</srcmd5>
+    <version>2.4.0</version>
+    <time>1562590754</time>
+    <user>dimstar_suse</user>
+    <comment>add ssh and vfs integration</comment>
+    <requestid>713014</requestid>
+  </revision>
+</revisionlist>

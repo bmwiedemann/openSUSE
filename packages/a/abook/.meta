@@ -1,0 +1,7 @@
+<package name="abook" project="openSUSE:Factory">
+  <title>Text-based addressbook program</title>
+  <description>Abook is a text-based addressbook program designed to
+use with mutt mail client.</description>
+  <devel project="server:mail" package="abook"/>
+  <url>http://abook.sourceforge.net/</url>
+</package>

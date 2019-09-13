@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc2c116affd2810b82bbbd3eb6a84199</srcmd5>
+    <version>8.06.0</version>
+    <time>1414744777</time>
+    <user>coolo</user>
+    <comment>New package, split after update to ocaml-4.02</comment>
+    <requestid>258136</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d73844708b236b04d374da45eb1e74d0</srcmd5>
+    <version>8.06.1</version>
+    <time>1468579594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.06.1
+  Added labltk-8.06.1.patch
+
+- Add hardcoded Provides for pre 12.1 repos</comment>
+    <requestid>404356</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b8ed0e8c3db4910d3b59d51457a0f13</srcmd5>
+    <version>8.06.3</version>
+    <time>1503061425</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Update to version 8.06.3
+  Adjust for ocaml-4.05
+  remove labltk-8.06.1.patch
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>517022</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,16 @@
+<package name="python-pyshp" project="openSUSE:Factory">
+  <title>python-pyshp</title>
+  <description>The Python Shapefile Library (pyshp) provides read and write
+      support for the ESRI Shapefile format.  The Shapefile format is a
+      popular Geographic Information System vector data format created by
+      Esri.  For more information about this format please read the
+      well-written &quot;ESRI Shapefile Technical Description - July 1998&quot;.  The
+      Esri document describes the shp and shx file formats.  However a third
+      file format called dbf is also required.  This format is documented on
+      the web as the &quot;XBase File Format Description&quot; and is a simple
+      file-based database format created in the 1960's.  Both the Esri and
+      XBase file-formats are very simple in design and memory efficient which
+      is part of the reason the shapefile format remains popular despite the
+      numerous ways to store and exchange GIS data available today.</description>
+  <devel project="Application:Geo" package="python-pyshp"/>
+</package>

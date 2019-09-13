@@ -1,0 +1,5 @@
+<package name="R-crayon" project="openSUSE:Factory">
+  <title></title>
+  <description>Colored Terminal Output</description>
+  <devel project="devel:languages:R:released" package="R-crayon"/>
+</package>

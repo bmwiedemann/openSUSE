@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>88dbbabffc4a22f282318276863072c1</srcmd5>
+    <version>1.8</version>
+    <time>1551468745</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>680468</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>172fa077cb43ff19a37bc307725995e4</srcmd5>
+    <version>1.8</version>
+    <time>1552380269</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test macro expansion</comment>
+    <requestid>682424</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>46fc1dab1f4da4d9c602643df33bdfa6</srcmd5>
+    <version>1.9</version>
+    <time>1554833821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691735</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4bc680efdbb57de2b004ff314d3bb245</srcmd5>
+    <version>1.9.1</version>
+    <time>1558515274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704177</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>31c8d5d754c348b18849baee0e262fb8</srcmd5>
+    <version>1.9.2</version>
+    <time>1564484694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2:
+  * FIX: Shortcut last descendant calculation if possible for performance.
+  * FIX: Fix issue where Doctype strings can be mistaken for a normal text node in some cases.
+  * FIX: A top level tag is not a :root tag if it has sibling text nodes or tag nodes. This is an issue that mostly manifests when using html.parser as the parser will allow multiple root nodes.</comment>
+    <requestid>717581</requestid>
+  </revision>
+</revisionlist>

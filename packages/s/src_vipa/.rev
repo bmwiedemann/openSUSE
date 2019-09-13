@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="14">
+    <srcmd5>b988dab05b9a30f0d9fbf69010973de2</srcmd5>
+    <version>2.0.3</version>
+    <time>1168904278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="37">
+    <srcmd5>137d7fe3391b3f3066d2c22d71acc06a</srcmd5>
+    <version>2.0.3</version>
+    <time>1171241289</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d92ea5f0034300a10631c4183c80b960</srcmd5>
+    <version>2.0.4</version>
+    <time>1222298254</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="136">
+    <srcmd5>d92ea5f0034300a10631c4183c80b960</srcmd5>
+    <version>2.0.4</version>
+    <time>1222298254</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="137">
+    <srcmd5>86802bee88bffe24f88d99122bba1a8d</srcmd5>
+    <version>2.0.4</version>
+    <time>1245277580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="139">
+    <srcmd5>86802bee88bffe24f88d99122bba1a8d</srcmd5>
+    <version>2.0.4</version>
+    <time>1245277580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="140">
+    <srcmd5>f0897e793fd81d469039147f04b0158e</srcmd5>
+    <version>2.0.4</version>
+    <time>1258385749</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/src_vipa based on submit request 24487 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="8" vrev="141">
+    <srcmd5>087577aa9db498e2a0cf12ce79f23017</srcmd5>
+    <version>2.0.4</version>
+    <time>1268926226</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="143">
+    <srcmd5>087577aa9db498e2a0cf12ce79f23017</srcmd5>
+    <version>2.0.4</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="144">
+    <srcmd5>087577aa9db498e2a0cf12ce79f23017</srcmd5>
+    <version>2.0.4</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="147">
+    <srcmd5>087577aa9db498e2a0cf12ce79f23017</srcmd5>
+    <version>2.0.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="149">
+    <srcmd5>087577aa9db498e2a0cf12ce79f23017</srcmd5>
+    <version>2.0.4</version>
+    <time>1319182487</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="150">
+    <srcmd5>227488ec8c08f2bca8b93c310e37ea67</srcmd5>
+    <version>2.0.4</version>
+    <time>1323194741</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="152">
+    <srcmd5>227488ec8c08f2bca8b93c310e37ea67</srcmd5>
+    <version>2.0.4</version>
+    <time>1340184236</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="153">
+    <srcmd5>ea3d62be67c07564a9153f5cd93e1a6b</srcmd5>
+    <version>2.0.4</version>
+    <time>1341822148</time>
+    <user>coolo</user>
+    <comment>- remove unsafe LD_LIBRARY_PATH usage (not necessary due to 
+  it being instaleld to /usr/lib anyway) (forwarded request 127293 from msmeissn)</comment>
+    <requestid>127331</requestid>
+  </revision>
+  <revision rev="16" vrev="155">
+    <srcmd5>ea3d62be67c07564a9153f5cd93e1a6b</srcmd5>
+    <version>2.0.4</version>
+    <time>1359110435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="157">
+    <srcmd5>ea3d62be67c07564a9153f5cd93e1a6b</srcmd5>
+    <version>2.0.4</version>
+    <time>1379664728</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>adb28094a3d1f8b34fcfd0172d9cbe99</srcmd5>
+    <version>2.1.0</version>
+    <time>1392791110</time>
+    <user>coolo</user>
+    <comment>src_vipa 2.1.0 (FATE #315295)</comment>
+    <requestid>222395</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>adb28094a3d1f8b34fcfd0172d9cbe99</srcmd5>
+    <version>2.1.0</version>
+    <time>1409303410</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

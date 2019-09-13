@@ -1,0 +1,15 @@
+<package name="vollkorn-fonts" project="openSUSE:Factory">
+  <title>An every day use free serif font</title>
+  <description>From the Vollkorn webpage:
+Vollkorn intends to be a quiet, modest, and well working text face.
+It has dark and meaty serifs and a bouncing and healthy look.
+It might be used as body type as well as for headlines or titles.
+
+»Vollkorn« (pronounced »Follkorn«) is German for »wholemeal«
+which refers to the old term »Brotschrift«.
+
+
+</description>
+  <devel project="M17N:fonts" package="vollkorn-fonts"/>
+  <url>http://friedrichalthausen.de/?page_id=411</url>
+</package>

@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ca5461c4a1481f66f6313299e7f1055</srcmd5>
+    <version>0.8.1</version>
+    <time>1516633809</time>
+    <user>dimstar_suse</user>
+    <comment>restic is a backup program that is fast, efficient and secure.</comment>
+    <requestid>564153</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bc2461c1ed6481b9ad9fc443a7bbc2f3</srcmd5>
+    <version>0.8.3</version>
+    <time>1519902500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581452</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>915f9882bf5e44c6d15becc36d0d88ec</srcmd5>
+    <version>0.9.1</version>
+    <time>1529919720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618639</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>dfcae1dd7dd4246b7fdc68f90ae5ac46</srcmd5>
+    <version>0.9.1</version>
+    <time>1533045607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626163</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>34b6a62fbf6b02968e94f682c8acb71b</srcmd5>
+    <version>0.9.2</version>
+    <time>1535122810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627986</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d7690effb89e48e035fed1f6df07348</srcmd5>
+    <version>0.9.3</version>
+    <time>1542012173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.3. boo#1115498
+  https://github.com/restic/restic/releases/tag/v0.9.3
+  See installed /usr/share/doc/packages/restic/CHANGELOG.md
+- Update to Go 1.9, and disable Go 1.11 modules since they require internet
+  access (restic still provides vendor/).</comment>
+    <requestid>647663</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0a9655c5cb8456d980f199a7d73eaa20</srcmd5>
+    <version>0.9.4</version>
+    <time>1546947012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663575</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f63c9544515aa974a9e7dacac167619f</srcmd5>
+    <version>0.9.5</version>
+    <time>1560337833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697210</requestid>
+  </revision>
+</revisionlist>

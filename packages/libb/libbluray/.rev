@@ -1,0 +1,365 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>468ad0d19553abfcc2c3cd23a9077f74</srcmd5>
+    <version>0.1.99_0.2</version>
+    <time>1321542182</time>
+    <user>coolo</user>
+    <comment>New package for BluRay reading support.</comment>
+    <requestid>91880</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ef0af5d1f1ef8c973b74f6952173fe4d</srcmd5>
+    <version>0.2.1</version>
+    <time>1323085454</time>
+    <user>coolo</user>
+    <comment>- Fix soname version to 1 
+
+- Update to version 0.2.1:
+  + Make library version information visible to applications.
+  + First released tarball.
+- Remove automake BuildRequires: this is now a real release that
+  was already bootstrapped.
+
+- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>95277</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fba4f98bae30412167a19e81d78bd2da</srcmd5>
+    <version>0.2.1</version>
+    <time>1323192161</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>696aca5a57f84f17ca3e11b549412100</srcmd5>
+    <version>0.2.1</version>
+    <time>1326141771</time>
+    <user>coolo</user>
+    <comment>Add baselibs.conf (forwarded request 99450 from vuntz)</comment>
+    <requestid>99452</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ea7932db25b494428bf1a59d5ad08eb3</srcmd5>
+    <version>0.2.2</version>
+    <time>1338017171</time>
+    <user>coolo</user>
+    <comment>Update to 0.2.2 (forwarded request 122437 from dimstar)</comment>
+    <requestid>122439</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ea7932db25b494428bf1a59d5ad08eb3</srcmd5>
+    <version>0.2.2</version>
+    <time>1340183566</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a55d9d93793962aa2855f5d64660c508</srcmd5>
+    <version>0.2.3</version>
+    <time>1347893892</time>
+    <user>coolo</user>
+    <comment>Update to 0.2.3 (forwarded request 134449 from dimstar)</comment>
+    <requestid>134492</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>a55d9d93793962aa2855f5d64660c508</srcmd5>
+    <version>0.2.3</version>
+    <time>1359109243</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ac4add845c8ed5466a9205a4012478cd</srcmd5>
+    <version>0.3.0</version>
+    <time>1368450445</time>
+    <user>coolo</user>
+    <comment>Update to 0.3.0 (forwarded request 174760 from dimstar)</comment>
+    <requestid>174761</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>ac4add845c8ed5466a9205a4012478cd</srcmd5>
+    <version>0.3.0</version>
+    <time>1379662903</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a4c9f9eb8228a469616f6c0328185115</srcmd5>
+    <version>0.4.0</version>
+    <time>1380999594</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 0.4.0, guess I won't get this one in for 13.1, but SR'ing anyway. (forwarded request 202283 from Zaitor)</comment>
+    <requestid>202286</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c69d6d15c48e3a7eec3c3d7c3c52e850</srcmd5>
+    <version>0.4.0</version>
+    <time>1386936439</time>
+    <user>coolo</user>
+    <comment>Added use-recommended-freetype-include.patch -- needed for freetype2 2.5.1 (forwarded request 210594 from sumski)</comment>
+    <requestid>210637</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b03802bf93278fd9c2f5c3120dfb6336</srcmd5>
+    <version>0.4.0</version>
+    <time>1389208032</time>
+    <user>coolo</user>
+    <comment>- Select the C standard to be used with autoconf macros 
+  instead of passing std=c99.
+- Correct CPPFLAGS and CFLAGS
+- Ensure config.h is always included, in 32 bit OS the library
+  was using both fopen() and fopen64() this will cause 
+  problems with largefiles due to _FILE_OFFSET_BITS=64 beign
+  used inconsistenly.
+- Patch name : libbluray-autotools.patch (forwarded request 212590 from elvigia)</comment>
+    <requestid>212974</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>b03802bf93278fd9c2f5c3120dfb6336</srcmd5>
+    <version>0.4.0</version>
+    <time>1409301507</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9311637bb27e7bbeb78063e00fb2d2e8</srcmd5>
+    <version>0.6.2</version>
+    <time>1419159655</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265868</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>a367fad309f3ff68738b5ebc2dbc2c78</srcmd5>
+    <version>0.6.2</version>
+    <time>1419331810</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266070</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ca4b69f7e2bd00a9cd242d4849c0414f</srcmd5>
+    <version>0.7.0</version>
+    <time>1422594244</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282994</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>9711fdd8fd219b15fca8cfb1624ff2c6</srcmd5>
+    <version>0.7.0</version>
+    <time>1424432574</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>286523</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>772fc1f349d23a39bf0958b57c6feaf4</srcmd5>
+    <version>0.7.0</version>
+    <time>1426485175</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290610</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d263d13f1f9e462f483f0d44b75731f2</srcmd5>
+    <version>0.8.0</version>
+    <time>1430983231</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>304904</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>404ed8372beaed6a398a9c59f33831d0</srcmd5>
+    <version>0.8.1</version>
+    <time>1432488222</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308443</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>a418727a979e34d77a49314159b54db5</srcmd5>
+    <version>0.8.1</version>
+    <time>1439274341</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321549</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>90845a5cd952bbae395f91812488a9e1</srcmd5>
+    <version>0.9.0</version>
+    <time>1445511399</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336484</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2269f085a1b59e85af44a9b17a9d001f</srcmd5>
+    <version>0.9.1</version>
+    <time>1446978305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.1
+  + Improved BD-J security.
+  + Improved error resilience.
+  + Improved seeking (avoid skipping PAT/PMT/PCR).
+  + Fix UO mask check when bd_play_title() is used for Top Menu.
+  + Fix re-starting of title bound Xlets when title changes.
+  + Fix loading classes with invalid debug info.</comment>
+    <requestid>342370</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>bb5ed6b907815faa3fc28d7c1a2b8a72</srcmd5>
+    <version>0.9.2</version>
+    <time>1449685984</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347316</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c5b89058330ac0720f5a7271b26b0c9b</srcmd5>
+    <version>0.9.3</version>
+    <time>1464014208</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix download url to not fail on network error 
+
+- Update to version 0.9.3:
+  + Add bd_open_files(). This function deprecates old global file
+    system hooks.
+  + Add flag for on-disc menu support to DISC_INFO.
+  + Add configure argument to disable building of JAR file.
+  + Add missing player settings enums.
+  + Update linux Java search path list and preferred JVM.
+  + Enable UDF support by default.
+  + Split developer tools from examples.
+  + Improve BDJ_EVENT_CHAPTER triggering.
+  + Improve main title detection.
+  + Improve error resilience.
+  + Improve BD-J compability.
+  + Improve detecting of working aacs implementation.
+  + Improve libmmbd support.
+  + Fix BD-J media player stop().
+  + Fix restoring playback rate with some BD-J discs.
+  + Fix restoring suspended playback time position.
+  + Fix current chapter lookup.
+  + Fix lost key focus with multi-HScene discs.
+  + Fix playback of discs without Top Menu title.
+  + Fix caching of some BD-J files from UDF filesystem.
+  + Fix stopping playback from HDMV menus.
+  + Fix possible errors in win32 .iso image reading.
+  + Fix undefined values in DISC_INFO.
+  + Fix memory leaks.
+- Fixed patch libbluray-jvm_dir.patch.</comment>
+    <requestid>396749</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>22fe5e3a718116cd222ae7f031d28d83</srcmd5>
+    <version>0.9.3</version>
+    <time>1471853106</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop libbluray-autotools.patch as it has no real benefit and if
+  something should be upstreamed</comment>
+    <requestid>419564</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>b034c7dfb5584847b72df52ace7c225d</srcmd5>
+    <version>0.9.3</version>
+    <time>1487259867</time>
+    <user>dimstar_suse</user>
+    <comment>- drop patch A02-expopse-clip_id.patch as Handbrake seems to be the only
+  package that needs it, to avoid binary runtime incompatibilities with
+  libbluray packages that would stem from other repositories
+
+- add patch to expose clip_id (as applied by Debian), which is
+  necessary to build packages that depend on it (such as Handbrake)
+  * A02-expose-clip_id.patch</comment>
+    <requestid>457425</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>0542c4362ee2cc99612d610abbced7a9</srcmd5>
+    <version>0.9.3</version>
+    <time>1487767876</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459221</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a99e63cf577344cc07c955b5896d5d6f</srcmd5>
+    <version>1.0.0</version>
+    <time>1489174664</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>466345</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4e3d36a7fbce477f2ebde39ae8c92da1</srcmd5>
+    <version>1.0.1</version>
+    <time>1497786518</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503908</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>4aa6d9541a6d2a6b5b2a1d143afbc78c</srcmd5>
+    <version>1.0.1</version>
+    <time>1505334289</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523089</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>c1100796d448801cfcc896c59a498d18</srcmd5>
+    <version>1.0.1</version>
+    <time>1509530838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537568</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a60327317942674a81ac9df5aa1a81fa</srcmd5>
+    <version>1.0.2</version>
+    <time>1512734145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>550793</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>91c7c63314bee667f0fc07c97bf58bb4</srcmd5>
+    <version>1.0.2</version>
+    <time>1513941431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558332</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1cdd69cf28477594ee329a80cb482053</srcmd5>
+    <version>1.1.0</version>
+    <time>1551027783</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677281</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>3a5078d3e18e5805c4db8d8fa44e4619</srcmd5>
+    <version>1.1.0</version>
+    <time>1553610989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687570</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>29b1e06739b215f527218fdd42695ed6</srcmd5>
+    <version>1.1.1</version>
+    <time>1554930649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692288</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>00a9e60cceb0c2e1a66a8a5dcee167b9</srcmd5>
+    <version>1.1.2</version>
+    <time>1565864608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720877</requestid>
+  </revision>
+</revisionlist>

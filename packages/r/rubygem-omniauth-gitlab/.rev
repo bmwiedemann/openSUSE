@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d73378ee0335af781a286e84ca938d0</srcmd5>
+    <version>1.0.2</version>
+    <time>1518697471</time>
+    <user>dimstar_suse</user>
+    <comment>required for building portus</comment>
+    <requestid>570713</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d3fafd793a946f5a07eb5bb39fd10cae</srcmd5>
+    <version>1.0.3</version>
+    <time>1518813813</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>576990</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d1af081aca8f17d89661e540460d4b29</srcmd5>
+    <version>2.0.0</version>
+    <time>1539758482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642179</requestid>
+  </revision>
+</revisionlist>

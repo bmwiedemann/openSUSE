@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ef50423d40744d92707ed547cf49ef73</srcmd5>
+    <version>0.0.1~20150915</version>
+    <time>1444140797</time>
+    <user>dimstar_suse</user>
+    <comment>New package for the GNOME Desktop</comment>
+    <requestid>331771</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>347398857afc19b7e67a74f5bc918073</srcmd5>
+    <version>0.0.1~20150915</version>
+    <time>1445860075</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 339394 from Zaitor)</comment>
+    <requestid>339813</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d6121be0dc980a6b2099670cfd40d75e</srcmd5>
+    <version>0.0.1+20170118</version>
+    <time>1490219845</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>461050</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5aa54e75d1dc9712be2c130949262776</srcmd5>
+    <version>0.0.1+20170808</version>
+    <time>1505331601</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>520676</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f81241d85b17b8e5725347b8b87f19d4</srcmd5>
+    <version>0.0.1+20170808</version>
+    <time>1509722660</time>
+    <user>dimstar_suse</user>
+    <comment>- Change appstream file location due to appstream-glib &amp;gt;= 0.7.3.
+- Fix rpm runtime dependency rpmlint warning for python3.
+- Cleanup duplicate files. (forwarded request 537564 from dimstar)</comment>
+    <requestid>537582</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a04235a4bdfce4279fdd1648c99c587c</srcmd5>
+    <version>0.0.1+20171119</version>
+    <time>1518950509</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 573519 from dimstar)</comment>
+    <requestid>575545</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c508a40d2dab9d799e30f0bb5ca25ed0</srcmd5>
+    <version>0.0.1+20171119</version>
+    <time>1520588305</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581092 from dimstar)</comment>
+    <requestid>582736</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a0aa236784f28cf2b1a303f45304003b</srcmd5>
+    <version>0.0.1+20190129</version>
+    <time>1549916672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>672891</requestid>
+  </revision>
+</revisionlist>

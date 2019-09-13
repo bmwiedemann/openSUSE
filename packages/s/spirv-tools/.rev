@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ff6efc0a35e31027feca5802d3d614db</srcmd5>
+    <version>1.1.g41</version>
+    <time>1467205777</time>
+    <user>dimstar_suse</user>
+    <comment>new prerequisite for vulkan</comment>
+    <requestid>401665</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e02d20772a75b3ce93d64450da987021</srcmd5>
+    <version>2016.7~g24</version>
+    <time>1486465473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 2016.7~g24</comment>
+    <requestid>454708</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7d65956eac5a74081fab797aa4008ee4</srcmd5>
+    <version>2016.7~g28</version>
+    <time>1488479254</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf [needed by libvulkan1, needed by libgtk4-0]</comment>
+    <requestid>459301</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8c8ec4a552993c112d07693ae378908a</srcmd5>
+    <version>2016.7~g154</version>
+    <time>1502186382</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new snapshot 2016.7~g145</comment>
+    <requestid>515074</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a2005f57d733ad283e8df1b37cab67ff</srcmd5>
+    <version>2017.0.g103</version>
+    <time>1511949143</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>545246</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f39f35f3233a643495f75320f62871c7</srcmd5>
+    <version>2017.0.g103</version>
+    <time>1516358806</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566499</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ec7ebc7fea53391be411e29edc9e301b</srcmd5>
+    <version>2018.0</version>
+    <time>1518281690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2018.0</comment>
+    <requestid>573919</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ff2f82df2e8294c758e8e927769feca0</srcmd5>
+    <version>2018.2</version>
+    <time>1520852845</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2018.2</comment>
+    <requestid>584122</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>30488b359d1f6839b1dc66b93fca2966</srcmd5>
+    <version>2018.2</version>
+    <time>1522404114</time>
+    <user>dimstar_suse</user>
+    <comment>- add spirv-tools-devel for baselibs, for wine usage. (forwarded request 592029 from msmeissn)</comment>
+    <requestid>592078</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e9329a04e6152d029c1fa7222f4e0ecf</srcmd5>
+    <version>2018.4.g0</version>
+    <time>1536678689</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream release 2018.4</comment>
+    <requestid>631743</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>574c0979ee9463fd6b3b26b99fb25571</srcmd5>
+    <version>2018.6.g0</version>
+    <time>1542011722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2018.6</comment>
+    <requestid>648153</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>515dffc4571d60f625dd4ef62e997cb2</srcmd5>
+    <version>2019.1</version>
+    <time>1547554451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2019.1</comment>
+    <requestid>663459</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1630e38560047145b163b7fff19f5189</srcmd5>
+    <version>2019.2.git25</version>
+    <time>1553699446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 2019.2.git25</comment>
+    <requestid>685791</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ff3ef0eb702bd28318b790070f348a33</srcmd5>
+    <version>2019.4~git33</version>
+    <time>1560458096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 2019.4~git33</comment>
+    <requestid>707923</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a7f85f640b3c1e570d35a263e180f4b3</srcmd5>
+    <version>2019.5~git11</version>
+    <time>1566664923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 2019.5~git11</comment>
+    <requestid>724964</requestid>
+  </revision>
+</revisionlist>

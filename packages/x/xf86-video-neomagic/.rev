@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3504ce7ee00eded6e4179b14d4e23421</srcmd5>
+    <version>1.2.6</version>
+    <time>1336471366</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115434</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>385331c7af634d11fc57476b6e00a2b7</srcmd5>
+    <version>1.2.6</version>
+    <time>1337955569</time>
+    <user>coolo</user>
+    <comment>- Use &quot;Supplements&quot; to make the package manager pick
+  the driver when the user has the proper hardware.</comment>
+    <requestid>121912</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>44f2384cf379ef71f5cd9a689f9e64f8</srcmd5>
+    <version>1.2.6</version>
+    <time>1338582777</time>
+    <user>coolo</user>
+    <comment>- remove hw supplements (bnc#764395)</comment>
+    <requestid>123185</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>44f2384cf379ef71f5cd9a689f9e64f8</srcmd5>
+    <version>1.2.6</version>
+    <time>1340184349</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6a02cbd78b5c948debccd8f174474989</srcmd5>
+    <version>1.2.7</version>
+    <time>1347723024</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134015</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6a02cbd78b5c948debccd8f174474989</srcmd5>
+    <version>1.2.7</version>
+    <time>1359110613</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>9d529497e4345187bae5aa8a6b10a14c</srcmd5>
+    <version>1.2.7</version>
+    <time>1363953740</time>
+    <user>coolo</user>
+    <comment>- Add mibstore.patch, fixes build with xorg-server 1.14 
+
+- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333)</comment>
+    <requestid>160447</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8597fbaf2b6a2237cf03f9fc4f60dc37</srcmd5>
+    <version>1.2.8</version>
+    <time>1376902355</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 1.2.8 (forwarded request 195516 from Zaitor)</comment>
+    <requestid>195563</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>8597fbaf2b6a2237cf03f9fc4f60dc37</srcmd5>
+    <version>1.2.8</version>
+    <time>1379665027</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>8597fbaf2b6a2237cf03f9fc4f60dc37</srcmd5>
+    <version>1.2.8</version>
+    <time>1409303710</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>f90a2b97ff11d07fe5af14efd5c387ce</srcmd5>
+    <version>1.2.8</version>
+    <time>1423595803</time>
+    <user>dimstar_suse</user>
+    <comment>- U_neomagic-fix-build-against-master-X-server.patch
+  * fixes build against xorg-server 1.17</comment>
+    <requestid>284470</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9d623505bfc4358404a97b4fa268990f</srcmd5>
+    <version>1.2.9</version>
+    <time>1431248200</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.9
+  * Use own thunk functions instead of vgaHW*Weak
+  * neomagic: fix build against master X server.
+  * Fix compiler warning with recent X servers
+- deprecates U_neomagic-fix-build-against-master-X-server.patch</comment>
+    <requestid>305933</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2d17f01bb828e0525f9e53f55902d071</srcmd5>
+    <version>1.3.0</version>
+    <time>1547211647</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.0
+  * This is a maintenance release of NeoMagic DDX for X.Org X Server.
+    No testing has been done due to the lack of equipment availability.</comment>
+    <requestid>663024</requestid>
+  </revision>
+</revisionlist>

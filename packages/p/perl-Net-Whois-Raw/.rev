@@ -1,0 +1,362 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec03e7a77808f5cf2c74d48ef47deb0c</srcmd5>
+    <version>2.25</version>
+    <time>1306311036</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66748</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ced466dead9bd7d551dd0d4c54603591</srcmd5>
+    <version>2.25</version>
+    <time>1306311051</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66748
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ced466dead9bd7d551dd0d4c54603591</srcmd5>
+    <version>2.25</version>
+    <time>1319182294</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>068f85fbf6079937959d6e0ca25646fd</srcmd5>
+    <version>2.40</version>
+    <time>1331124266</time>
+    <user>coolo</user>
+    <comment>- update to 2.40
+    - Fixed problem with passing server parameter from command line in pwhois
+    - Fixed problem with encoding detection in pwhois on Windows
+    - Added convertation to punycode in pwhois
+    - Added domain name validation in pwhois
+    - Updated some 'not found' string
+    - whois.relcom.ru is no more. Using whois.nic.ru instead.
+    - Removed crutches for whois.relcom.ru / www_whois
+    - Further migration from whois.relcom.ru to whois.nic.ru
+    - confess -&gt; die :: no need to die such verbosely
+    - Added whois server for .SO zone
+    - Deleted whitespaces removing from the whois result
+    - Added whois server for .CO.UA zone
+    - Added whois server for .IN.UA zone
+    - Added whois server for .XXX zone
+    - Fixed BZ whois (restored whois.belizenic.bz server)
+    - Fixed regexp for .PRO whois check
+    - Fixed whois server address for *.ua domains
+    - Confess instead of die to simplify error tracing
+    - internet tests updated
+    - Net::Whois::Raw::Data addons / updates, thanx to Guillaume
+    - Now you can redefine SOCK_CLASS::getline method as you want
+    - require_once for Data::Dumper
+
+- patch license to follow spdx.org standard</comment>
+    <requestid>104681</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>068f85fbf6079937959d6e0ca25646fd</srcmd5>
+    <version>2.40</version>
+    <time>1340183894</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>068f85fbf6079937959d6e0ca25646fd</srcmd5>
+    <version>2.40</version>
+    <time>1359109765</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4ef07b99344af08f72f92cd7a211688d</srcmd5>
+    <version>2.46</version>
+    <time>1371814316</time>
+    <user>coolo</user>
+    <comment>- updated to 2.46
+   - Case-insensitive match for &quot;not found&quot; messages
+   - utf8 encoding fix
+   - IPv6 whois support
+   - IPv6 whois support with Regexp::IPv6
+   - Using whois.netcom.cm for CM instead of web whois
+   - TV whois server updated
+   - BZ web whois updated
+   - MU, IN, CN web whois removed
+   - Fixed TJ web whois (broken html)</comment>
+    <requestid>180223</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4ef07b99344af08f72f92cd7a211688d</srcmd5>
+    <version>2.46</version>
+    <time>1379663797</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>110f00e633b3e31a0b5ed32f8ebfc8a0</srcmd5>
+    <version>2.48</version>
+    <time>1381064118</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202251</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7f55626aa5f9f79ee7e0b5049bd979ca</srcmd5>
+    <version>2.51</version>
+    <time>1392185884</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221901</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c7076f51575187fc74a7c0f6ff125837</srcmd5>
+    <version>2.57</version>
+    <time>1394519931</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>225391</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ec41db5aee58f4131d49bcfe24ef720c</srcmd5>
+    <version>2.59</version>
+    <time>1394806657</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>225886</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>54b75716368fcc96c3ebca081a30122a</srcmd5>
+    <version>2.76</version>
+    <time>1406360522</time>
+    <user>coolo</user>
+    <comment>- updated to 2.76
+     - Fixed .domains whois error
+ 
+ 2.60    Mar 21 2014 Dmitriy Shamatrin
+     - Added query suffix
+     - Added timeout to 02-internet.t for hangs prevention
+ 
+ 2.61    Apr 02 2014 Dmitriy Seluzhitskiy
+     - Add zones for whois.uniregistry.net
+ 
+ 2.62    Apr 16 2014 Dmitriy Seluzhitskiy
+     - Add whois.dot-kiwi.com for .KIWI
+ 
+ 2.63    Apr 17 2014 Dmitriy Seluzhitskiy
+     - Add whois.nic.build for .BUILD
+ 
+ 2.64    Apr 22 2014 Dmitriy Seluzhitskiy
+     - new tlds .PINK .RED .SHIKSHA .KIM .BLUE
+ 
+ 2.65    Apr 24 2014 Dmitriy Seluzhitskiy
+     - new tlds .CLUB
+ 
+ 2.66    May 08 2014 Dmitriy Seluzhitskiy
+     - new tlds of United TLD Holdco Ltd (http://rightside.co)
+ 
+ 2.67    May 08 2014 Dmitriy Seluzhitskiy
+     - new tlds .LUXURY
+ 
+ 2.68    May 21 2014 Dmitriy Seluzhitskiy
+     - new tlds of donuts.co</comment>
+    <requestid>242333</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>54b75716368fcc96c3ebca081a30122a</srcmd5>
+    <version>2.76</version>
+    <time>1409302433</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b7e0e9ffe55def63f4d43a0ff485ce8f</srcmd5>
+    <version>2.84</version>
+    <time>1429346349</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297168</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9c412d87ea877b3f136f0b3199270355</srcmd5>
+    <version>2.87</version>
+    <time>1444285462</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>336272</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ee51195db5e68f3375d900bd4488c20f</srcmd5>
+    <version>2.90</version>
+    <time>1446049874</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341264</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>21fd3b263da8fe610dd7c190cb7760a4</srcmd5>
+    <version>2.91</version>
+    <time>1446209019</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341471</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>072b4baf87b3204b805bd61f1c74de47</srcmd5>
+    <version>2.92</version>
+    <time>1455701128</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359227</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>efa2a69de6a69d88695acb4080021798</srcmd5>
+    <version>2.93</version>
+    <time>1458120847</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368880</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c32740cb7548420c343b0b4de060da99</srcmd5>
+    <version>2.94</version>
+    <time>1460482428</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385080</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>32b1237c7f0035f208aa6d5fddb93439</srcmd5>
+    <version>2.96</version>
+    <time>1464595079</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398553</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3844492c9a993bf688f8c41f06e013aa</srcmd5>
+    <version>2.99</version>
+    <time>1468482416</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407323</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f21c2069a873884b04a3adb0b8d96167</srcmd5>
+    <version>2.99001</version>
+    <time>1473103289</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424196</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4850b0df85fc51281880049630661b56</srcmd5>
+    <version>2.99002</version>
+    <time>1477219983</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>436758</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>af08d43c0020175f66b86aba03463746</srcmd5>
+    <version>2.99006</version>
+    <time>1487261130</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457034</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a59682d64596b57efdd4d69777303303</srcmd5>
+    <version>2.99007</version>
+    <time>1495883944</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498320</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8ef4a049707ea035a4ef3aa85cd49064</srcmd5>
+    <version>2.99008</version>
+    <time>1497016696</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502483</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9e088576e209551580634be23bc2fe5b</srcmd5>
+    <version>2.99009</version>
+    <time>1498485360</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506077</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e1311147ef23669dbf53c8195ae1272b</srcmd5>
+    <version>2.99010</version>
+    <time>1503925461</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514081</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>efe25b618df5c5316c6996d5324a533c</srcmd5>
+    <version>2.99013</version>
+    <time>1515505870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557291</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ed3c47b5920f551c32816233529e3105</srcmd5>
+    <version>2.99014</version>
+    <time>1527582717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610501</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>621aeebd370dc3b7ddb02320c83be0c8</srcmd5>
+    <version>2.99015</version>
+    <time>1529501205</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617440</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f4243a177a05b9acaefef3e466a8b982</srcmd5>
+    <version>2.99016</version>
+    <time>1532293537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624412</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ed08b1df935f695b4b6258be42f75749</srcmd5>
+    <version>2.99018</version>
+    <time>1535705257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632248</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>18f8617d6a8bd7e3a743772224a1bf5a</srcmd5>
+    <version>2.99020</version>
+    <time>1537964593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637906</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>07fa7046f0e53a02ca98e42468b7d541</srcmd5>
+    <version>2.99021</version>
+    <time>1544632030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655785</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8c65347ab90fa8cd38b0002ef8544b11</srcmd5>
+    <version>2.99022</version>
+    <time>1563366448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715931</requestid>
+  </revision>
+</revisionlist>

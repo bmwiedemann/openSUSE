@@ -1,0 +1,271 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3584c46ab5025b8f75dd84f24447d30e</srcmd5>
+    <version>1.3.2</version>
+    <time>1336471483</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115459</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3584c46ab5025b8f75dd84f24447d30e</srcmd5>
+    <version>1.3.2</version>
+    <time>1340184366</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>7a5ad41f38c42b26d3aa46fb20899805</srcmd5>
+    <version>1.3.2</version>
+    <time>1341258041</time>
+    <user>coolo</user>
+    <comment>- Allow xinitrc scripts to be sourced (bnc#750980) (forwarded request 126878 from WernerFink)</comment>
+    <requestid>126885</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>c123f2e2e81d487b733e35081f5a5070</srcmd5>
+    <version>1.3.2</version>
+    <time>1354888371</time>
+    <user>namtrac</user>
+    <comment>- Move xinitrc.d sourcing part to xinit.common to make it work
+  even with xdm session scripts
+- Detect other running X server in xserverrc (forwarded request 144277 from WernerFink)</comment>
+    <requestid>144531</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>c123f2e2e81d487b733e35081f5a5070</srcmd5>
+    <version>1.3.2</version>
+    <time>1359110647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d5970067fd29b93fb6c62b1413f31c73</srcmd5>
+    <version>1.3.3</version>
+    <time>1379076438</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 1.3.3 (forwarded request 198769 from Zaitor)</comment>
+    <requestid>198900</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d162e2ac755b884ad29f4e5c8977a6a4</srcmd5>
+    <version>1.3.3</version>
+    <time>1379423152</time>
+    <user>coolo</user>
+    <comment>- fixed loading of .xkb files (bnc#840408)</comment>
+    <requestid>199271</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>d162e2ac755b884ad29f4e5c8977a6a4</srcmd5>
+    <version>1.3.3</version>
+    <time>1379665072</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>1a322813af0a01b6ff3ddad586526faa</srcmd5>
+    <version>1.3.3</version>
+    <time>1389208210</time>
+    <user>coolo</user>
+    <comment>- don't call the obsolete wmlist. Read /usr/share/xsessions instead. (forwarded request 213186 from lnussel)</comment>
+    <requestid>213190</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>1a322813af0a01b6ff3ddad586526faa</srcmd5>
+    <version>1.3.3</version>
+    <time>1409303758</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>27533805ca420ccfe7de3fda06e7e07f</srcmd5>
+    <version>1.3.3</version>
+    <time>1410361278</time>
+    <user>coolo</user>
+    <comment>- add info to run chkstat after modifying /etc/permissions.local
+  in order to run startx (bnc#895647)</comment>
+    <requestid>248116</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>54451a169abdfbba1b4551938a658fb2</srcmd5>
+    <version>1.3.3</version>
+    <time>1419249247</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265709</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8d60dffc6078afb629e82ff6494358fd</srcmd5>
+    <version>1.3.4</version>
+    <time>1421873667</time>
+    <user>coolo</user>
+    <comment>- Fixed some more spacing and minor issues in adapted patches 
+
+- Fixed some spacing and single quote vs backtick issues
+  in patches 
+
+- Corrections to variable names in xinit-suse.patch and
+  xinit-tolerant-hostname-changes.patch 
+
+- Update to version 1.3.4:
+  + Changes from 1.3.3
+    - Fix warnings about parameters to startServer &amp; startClient
+      shadowing globals
+    - Pass files to cpp via CLI arg instead of stdin to workaround
+      gcc 4.8 change (fdo#69439) 
+    - Remove unixware / sco support
+    - Bump required util-macros version to 1.19
+    - Replace $RAWCPPFLAGS with $TRADITIONALCPPFLAGS when processing
+      cpp files
+    - Under Linux start X on the current VT (rh#806491)
+    - startx; Pass vtX as long as the user did not specify one
+    - configure: Drop AM_MAINTAINER_MODE
+    - autogen.sh: Honor NOCONFIGURE=1
+    - startx: Make the bugzilla reference in a comment survive cpp
+      processing (fdo#83019)
+    - Remove hardcoded path to OpenSSL for OpenBSD
+  + Patches refactored/renamed for version change
+  + Added:
+    - xinit-client-session.patch
+    - xinit-tolerant-hostname-changes.patch
+    - xinit-suse.patch
+    - xinit-1.3.4.tar.bz2
+  + Modified:
+    - xinit-client-session.patch
+  + Dropped:
+    - xinit-tolerant-hostname-changes.diff
+    - xinit-suse.diff
+    - xinit-1.3.3.tar.bz2</comment>
+    <requestid>282195</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>f9082c042adbf9100c328b403d27e85c</srcmd5>
+    <version>1.3.4</version>
+    <time>1422134407</time>
+    <user>dimstar_suse</user>
+    <comment>- apparently with release 1.3.4 xinit needs cc1plus; otherwise
+  generation of startx fails and results in a file with a size
+  of 0 bytes</comment>
+    <requestid>282581</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>372fff029e75ad3d9decb76c1de89b38</srcmd5>
+    <version>1.3.4</version>
+    <time>1422594673</time>
+    <user>dimstar_suse</user>
+    <comment>- startx.cpp:
+  * /usr/X11R6/bin/X --&gt; /usr/bin/X
+  * /var/X11R6/bin/X --&gt; /var/lib/X11/X
+- refreshed patches</comment>
+    <requestid>283082</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>a657f9316bd3d2ab5bb4b6b57536666f</srcmd5>
+    <version>1.3.4</version>
+    <time>1426495052</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290453</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>d097841526e1dd849d274f57d8f027fb</srcmd5>
+    <version>1.3.4</version>
+    <time>1426795677</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed bugnumer reference in previous changelog entry</comment>
+    <requestid>291279</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>436333beb4ab1dc1ff5f31c0e4b7c9bf</srcmd5>
+    <version>1.3.4</version>
+    <time>1431668558</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306176</requestid>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>2662ae96e7988416148ac052d5ca25cf</srcmd5>
+    <version>1.3.4</version>
+    <time>1459936281</time>
+    <user>dimstar_suse</user>
+    <comment>- xinit.tar.bz2:
+  update /etc/X11/xinit/xinitrc.common to make sure numbered scripts
+  are run sequentially. All non-numbered scripts will still be run in
+  background to avoid stalling on non-daemonizing 'services' (boo#973559).</comment>
+    <requestid>384396</requestid>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>cf5a7244b5ca7b17e7412ecc5cadd7ff</srcmd5>
+    <version>1.3.4</version>
+    <time>1465129190</time>
+    <user>dimstar_suse</user>
+    <comment>- xinitrc.common: Add plasma* in list of fallback WMs
+
+- xinitrc.common: Add comments, make error messages clearer.
+  Don't filter out twm, as it's only installed on request.
+  Don't expand fallback WINDOWMANAGER.
+
+- xinit.tar.bz2: skip twm and xsession desktops 
+
+- xinit.tar.bz2:
+  simplify bash code of /etc/X11/xinit/xinitrc.common to avoid that
+  already set WINDOWMANAGER variable becomes stripped (bsc#981437)</comment>
+    <requestid>399478</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6f80e551859d3438438ce6bef2b67816</srcmd5>
+    <version>1.4.0</version>
+    <time>1524237863</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0
+  * autogen.sh: use quoted string variables
+  * Remove SCO support for SHELL_CMD and startx man page.
+  * Remove support for ancient A/UX 3.0 support
+  * Remove left over $(launchagents_DATA) in CLEANFILES
+  * startx: Pass -keeptty when telling the server to start on the current tty
+  * startx: Fix startx picking an already used display number when -nolock is used
+  * remove bogus \/ escapes
+  * launchd: Install binaries into libexecdir
+  * startx: Add -listen tcp if nolisten_tcp is disabled for XQuartz
+  * startx: Add support for enabling IGLX for XQuartz
+  * startx: Don't use GNU expr extensions
+  * autogen: add default patch prefix
+  * startx: fix comment typo
+  * startx: don't init defaultdisplay to :0
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * xinit: check for correct fork error code</comment>
+    <requestid>593569</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>23fd8859fc323f077f6c781154912bcd</srcmd5>
+    <version>1.4.0</version>
+    <time>1531946110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622070</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>8156c9a7a074e58de046e2f79eb298b2</srcmd5>
+    <version>1.4.0</version>
+    <time>1537436254</time>
+    <user>maxlin_factory</user>
+    <comment>- xinit-nolonger-unset-dbus-session.patch
+  * no longer unset DBUS_SESSION_BUS_ADDRESS variable to prevent
+    gnome-session (and probably other DEs or programs, except of
+    Plasma) from launching a new D-Bus session, while systemd has
+    already launched its own. Unsetting it broke user systemd
+    services that use D-Bus (e.g. PulseAudio), because X uses
+    another D-Bus session (boo#1108549)</comment>
+    <requestid>635868</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6827d962ce178ada11f188642288690f</srcmd5>
+    <version>1.4.1</version>
+    <time>1552042779</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.1
+  * This release fixes a bug when too many arguments are supplied
+    to the program and improves the man pages.</comment>
+    <requestid>681296</requestid>
+  </revision>
+</revisionlist>

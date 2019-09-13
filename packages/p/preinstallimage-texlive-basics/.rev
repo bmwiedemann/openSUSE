@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe5ef2ef98e4748c261f34172c60ba4e</srcmd5>
+    <version>unknown</version>
+    <time>1343914379</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:preinstallimage-libqt4 revision:2</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a849a0026b895c271d0390ec4053b306</srcmd5>
+    <version>unknown</version>
+    <time>1343914478</time>
+    <user>coolo</user>
+    <comment>just latex</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a849a0026b895c271d0390ec4053b306</srcmd5>
+    <version>unknown</version>
+    <time>1359109953</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>a849a0026b895c271d0390ec4053b306</srcmd5>
+    <version>unknown</version>
+    <time>1379664069</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>a849a0026b895c271d0390ec4053b306</srcmd5>
+    <version>unknown</version>
+    <time>1409302747</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>74dfd10ba38e3381eedd7100bcf0a4cb</srcmd5>
+    <version>unknown</version>
+    <time>1525250760</time>
+    <user>dimstar_suse</user>
+    <comment>add ignore on cputype-armv6l</comment>
+    <requestid>602984</requestid>
+  </revision>
+</revisionlist>

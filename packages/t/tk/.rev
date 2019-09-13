@@ -1,0 +1,415 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42e082b12792a05c2497dcae6cbed130</srcmd5>
+    <version>8.4.14</version>
+    <time>1166483885</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ea4a25981b95c511dcc9935c01ba29d0</srcmd5>
+    <version>8.4.15</version>
+    <time>1181214997</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="21">
+    <srcmd5>b32c6f137b1beeb2ec8bdf4c41db5e03</srcmd5>
+    <version>8.4.15</version>
+    <time>1189702770</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>56321a77b84330b24cc8ce5c368d125d</srcmd5>
+    <version>8.5.2</version>
+    <time>1207447400</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec7336dd3e5a059023db85c54b2f0eac</srcmd5>
+    <version>8.5.3</version>
+    <time>1215806773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ad94ae6a1b509feb634cc0b7aeee89b</srcmd5>
+    <version>8.5.4</version>
+    <time>1221301333</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>af0cf6da92d9715d66bde226b4b98118</srcmd5>
+    <version>8.5.5</version>
+    <time>1224694387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>88ecd00efa5f65aa3c3ffa21bb2fa1d8</srcmd5>
+    <version>8.5.5</version>
+    <time>1229350226</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>658fa391547301eaa6f1f649fadd708b</srcmd5>
+    <version>8.5.5</version>
+    <time>1231463110</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>904dd292501c0239b766c17ad55a0248</srcmd5>
+    <version>8.5.7</version>
+    <time>1244819733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6bec92540989a1bf3b7cc2da7165242e</srcmd5>
+    <version>8.5.7</version>
+    <time>1245372758</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>6bec92540989a1bf3b7cc2da7165242e</srcmd5>
+    <version>8.5.7</version>
+    <time>1245372758</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0f18ee4cf47bbf4db63cf68fd834f121</srcmd5>
+    <version>8.5.8</version>
+    <time>1258970505</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:tcl/tk based on submit request 24787 from user rmax
+</comment>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>5c45a78c229bd681d37cd473094a19ac</srcmd5>
+    <version>8.5.8</version>
+    <time>1268926342</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>5c45a78c229bd681d37cd473094a19ac</srcmd5>
+    <version>8.5.8</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>5c45a78c229bd681d37cd473094a19ac</srcmd5>
+    <version>8.5.8</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2f568217b7864bcfb3eb2c4248dddfb2</srcmd5>
+    <version>8.5.9</version>
+    <time>1285594861</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:tcl/tk based on submit request 49179 from user rmax
+</comment>
+    <requestid>49179</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>2f568217b7864bcfb3eb2c4248dddfb2</srcmd5>
+    <version>8.5.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>f3f4016a541819e5cc89236bd25ccf2d</srcmd5>
+    <version>8.5.9</version>
+    <time>1299659193</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63629 from user rmax
+</comment>
+    <requestid>63629</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>a76a829009084b6d612e11c186a374c2</srcmd5>
+    <version>8.5.9</version>
+    <time>1299659200</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63629
+</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>25f815c3236dbf40062b3a4e96be5fc1</srcmd5>
+    <version>8.5.10</version>
+    <time>1309529218</time>
+    <user>saschpe</user>
+    <comment>Version 8.5.10</comment>
+    <requestid>74988</requestid>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>ff8c402cd11b3007ff7e25ad1dbec3fc</srcmd5>
+    <version>8.5.10</version>
+    <time>1309529230</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74988
+</comment>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>ff8c402cd11b3007ff7e25ad1dbec3fc</srcmd5>
+    <version>8.5.10</version>
+    <time>1319182523</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>25a926a0fa433cae0e7e57fb690d1e95</srcmd5>
+    <version>8.5.11</version>
+    <time>1329405850</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104561 from coolo)</comment>
+    <requestid>104990</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>25a926a0fa433cae0e7e57fb690d1e95</srcmd5>
+    <version>8.5.11</version>
+    <time>1340184277</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d4757e318979e7fee29a342b553c4672</srcmd5>
+    <version>8.5.12</version>
+    <time>1347883936</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134061</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>a978d5c153849f04e3e274d78657a7f9</srcmd5>
+    <version>8.5.12</version>
+    <time>1349673487</time>
+    <user>coolo</user>
+    <comment>Cleanup list of build requires. (forwarded request 137207 from a_jaeger)</comment>
+    <requestid>137251</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>a978d5c153849f04e3e274d78657a7f9</srcmd5>
+    <version>8.5.12</version>
+    <time>1359110493</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>0b83bc9cfa687ab0ffaa9e88f3de33c2</srcmd5>
+    <version>8.5.12</version>
+    <time>1365937243</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162760 from namtrac)</comment>
+    <requestid>163128</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2962f998b00b306d2fec8a4c490afa7b</srcmd5>
+    <version>8.6.0</version>
+    <time>1376391575</time>
+    <user>scarabeus_factory</user>
+    <comment>- New version: 8.6.0.
+- Integrate tkcon.</comment>
+    <requestid>186431</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>2962f998b00b306d2fec8a4c490afa7b</srcmd5>
+    <version>8.6.0</version>
+    <time>1379664826</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c7aa656dd20a07f95bebebc053b33e3a</srcmd5>
+    <version>8.6.1</version>
+    <time>1379934972</time>
+    <user>coolo</user>
+    <comment>- Final 8.6.1 release:
+  * Fix several crashes.
+
+- New patchlevel release 8.6.1rc0:
+  * (enhancement) better build support for Debian arch
+  * (bug fix)[3603077] treeview update on tag add/remove
+  * (bug fix)[3599312] First Alt key event is lost
+  * (platform support) FreeBSD updates</comment>
+    <requestid>199830</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>542a8ad6b387b9ccbc43e436085bfe4d</srcmd5>
+    <version>8.6.1</version>
+    <time>1382516102</time>
+    <user>scarabeus_factory</user>
+    <comment>- tkcon requires xhost (bnc#846953) (forwarded request 204287 from sndirsch)</comment>
+    <requestid>204299</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>d7f27758dbcfb6ce6e434b2c79cdec6f</srcmd5>
+    <version>8.6.1</version>
+    <time>1398266889</time>
+    <user>coolo</user>
+    <comment>Add patch to fix pkgconfig file. (forwarded request 228248 from badshah400)</comment>
+    <requestid>230373</requestid>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>d7f27758dbcfb6ce6e434b2c79cdec6f</srcmd5>
+    <version>8.6.1</version>
+    <time>1409303505</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>861c4794f6178feb116ec922084b1355</srcmd5>
+    <version>8.6.2</version>
+    <time>1410081111</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>247721</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>54f78ce595b1bada783200999e913f36</srcmd5>
+    <version>8.6.3</version>
+    <time>1416347589</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 8.6.3:
+  * (bug)[9e487e] Phony button clicks from browsers to plugin
+  * (bug)[810c43] [text] elide changes advance epoch
+  * (bug)[fb35eb] fix PNG transparency appearance
+  * (bug)[3417012] [scale -digits $bigValue] segfault
+  * (bug)[3529885] [scale] handling of negative resolution</comment>
+    <requestid>261312</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8e0f67347a2fe5e748be13dc56883c49</srcmd5>
+    <version>8.6.4</version>
+    <time>1442638303</time>
+    <user>coolo</user>
+    <comment>- New version 8.6.4:
+  * (bug)[d43a10] shimmer-related crash in [tk_getOpenFile]
+  * (bug)[1c0d6e] Win build trouble with SIGDN
+  * (bug)[4a0451] [tk_getOpenFile] result
+  * (bug) several fixes to elided context in [text]
+  * (new feature)[TIP 433] %M binding substitution
+  * (bug)[ab6dab] corrupt dashed lines in postscript
+- Update tkcon.tcl to CVS revision 1.122.</comment>
+    <requestid>320822</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ec8a8cfa26a139fab9ad63c06e488aa5</srcmd5>
+    <version>8.6.5</version>
+    <time>1457945778</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 8.6.5:
+  * (bug)[e4ed00] [$text index &quot;1.0 display wordstart&quot;] crash
+  * (bug)[562118] Unicode support of &quot;wordstart&quot; modifier
+  * (bug)[06c3fc] PNG alpha error corrupted output file
+  * (bug)[dece63] various mem corruptions in images
+  * (bug)[53f8fc] panedwindow geometry management
+  * (bug)[1641721] tk_getOpenFile symlink display doubled
+  * (bug)[d7bad5][2368195][3592454][1714535][1292219][3592454]
+    panedwindow fixes
+  * (bug)[805cff] Tk_ConfigureWidget() segfault
+  * (bug)[3f179a] Text widget crash with elided text
+  * (bug)[2886436] Stop [$text delete] acting before start index
+  * (bug)[1236306] TraverseToMenu error bound to toplevel destroy
+  * (bug)[00189c] MSVC 14: semi-static UCRT support
+  * (bug)[cc0ba3] PNG read buffer overflow
+  * (bug)[1501749] Crash embedded window delete bound to &lt;Map&gt;
+  * (license) Replace icons that lacked clear free license
+  * (bug)[46c83f] Win: tk_getOpenFile -initialdir
+  * (new feature)[TIP 437] New panedwindow options
+  * (bug)[1669632] [text] autoseparator placement
+  * (bug)[2262711] [text] RE search Unicode+elided
+  * (bug)[1815161] [$text count -ypixels] needs management
+  * (bug)[1520118] Document spinbox validate expectations
+  * (bug)[1414025] $entry insertion cursor visibility
+  * (bug) PNG rendering on El Capitan
+  * (bug)[2160206] menubutton panic
+  * (bug)[220854] Display trailing TAB in entry
+  * (bug)[542199] double click on lone char in entry
+  * (bug)[297442d] strict motif binding on &lt;Control-underscore&gt;
+  * (bug)[3601604] $listbox -takefocus</comment>
+    <requestid>365280</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>420b62422994c2190080d85960cbf3f2</srcmd5>
+    <version>8.6.6</version>
+    <time>1481964340</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 8.6.6:
+  * (bug)[3137232] spinbox teardown hygiene
+  * (bug)[2981253] spinbox rapid button action
+  * (bug)[2262543] scale initialization callbacks
+  * (bug)[e9112e] incomplete [wm forget]
+  * (bug)[d95e5d] &lt;Map&gt; from hidden panes
+  * (TIP 443) More configuration options for text tags
+  * (bug)[487861] menu: cascade/accelerator appearance
+  * (bug)[1192095] active index from toplevel menus
+  * (bug)[18c08d] revised final newline behavior in [text]
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[fd3a4d] &lt;&lt;Modified&gt;&gt; delivery to text peers
+  * (bug)[b36218,011706] event reentrancy / widget destruction
+  * (bug)[64261b] mouse events after double click
+  * (bug)[545f10] Xft color font speed
+  * (bug)[109865] event reentrancy / widget destruction
+  * (TIP 446)[1273358] [$text edit (canundo|canredo)]
+  * (bug)[79549a] crash in mouse pointer warping
+  * (bug)[787adc] Modernize Tk_Init()
+  * (bug) Aqua: excess lable padding
+  * (bug) Aqua: bitmap distortion
+  * (bug) Aqua/Retina: fix alpha rendering of images
+  * (bug)[c84f66] Aqua: crash: overflow in geometry calc
+  * (bug)[450bb0] Aqua: memory corruption from [tk busy]</comment>
+    <requestid>445415</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>38edf27880ac409dd651673ea137121b</srcmd5>
+    <version>8.6.7</version>
+    <time>1505919921</time>
+    <user>dimstar_suse</user>
+    <comment>- Change licence to &quot;TCL&quot;. 
+
+- New version 8.6.7:
+  * (bug)[a2abc4] Wrong warp cursor position on 2nd display
+  * (bug)[fa3229] menu-38.1
+  * (bug)[2cf3d6] button-5.24
+  * (bug)[1534455,2945130] Key release events get _L vs _R right.
+  * (bug)[8c4216] listbox-4.1
+  * (bug)[eb2681] listbox-13.1
+  * (bug)[3126428] ttk::button react to image change
+  * (bug)[1082213] wrapped text don't start lines with whitespace
+  * (bug)[3217462] tri-state button on non-native theme
+  * (bug)[3588460] Fix file dialog -typevariable
+  * (bug)[e36963] event generate .e &lt;diaeresis&gt;
+  * (bug)[6aea69] grid-23
+  * (bug)[f60c54] combobox-3
+  * (bug)[f32502] crash drawing many dashed objects
+  * (bug)[dac92f] text-2.[89]
+  * (bug)[7a838c] X11 ring buffer overflow
+  * (bug)[d4fb4e] imgPhoto-4.75
+  * (bug)[1403ea] Limits on text line size on Windows
+  * (bug)[ae32eb] textDisp fails in text custom config
+  * (bug)[7d967c] crash after IME restart
+  * (bug)[c492c9] disabled combobox arrow appearance
+  * (bug)[6b3644] Fix -alpha for 16-bit color PNG
+  * (bug)[775273] artifacts on Ubuntu 16.10+
+  * (bug)[28a3c3] test BTree memleaks plugged
+  * (bug)[db8c54] Stop freed mem access in warp pointer callback
+  * (bugs) Fix calculation of ttk::notebook tab widths
+  * (bug)[291296] notebook tab management</comment>
+    <requestid>525918</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>059009ec6ded07f1e3802b3732f07408</srcmd5>
+    <version>8.6.9</version>
+    <time>1548769172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669141</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>3e3a2bd6ce9964f8dddf1529db048af0</srcmd5>
+    <version>8.6.9</version>
+    <time>1564301838</time>
+    <user>dimstar_suse</user>
+    <comment>- Use FAT LTO objects in order to provide proper static
+  library (boo#1138797).</comment>
+    <requestid>717799</requestid>
+  </revision>
+</revisionlist>

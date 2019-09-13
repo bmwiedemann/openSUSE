@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ad9301b274b9c3db8a7b9205b950d329</srcmd5>
+    <version>1.130</version>
+    <time>1440135628</time>
+    <user>dimstar_suse</user>
+    <comment>package created; it's required by kbd in order to convert xkb
+layouts from xkeyboard-config to console keymaps (FATE#318426)</comment>
+    <requestid>322876</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>493637087f5cbaf755b10b2ff51d024c</srcmd5>
+    <version>1.134</version>
+    <time>1450471779</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349062</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>727f892c7fd9e0ff0ec362a922db5291</srcmd5>
+    <version>1.134</version>
+    <time>1455021003</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356473</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9979d4d0d4103aca0a1067e221fd614e</srcmd5>
+    <version>1.134</version>
+    <time>1506955404</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528597</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>e6ea98ce3999a60764b49ae157febffd</srcmd5>
+    <version>1.134</version>
+    <time>1516358868</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566625</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>1b7ee60100d691a01171d7b4d2440fd2</srcmd5>
+    <version>1.134</version>
+    <time>1548769536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668377</requestid>
+  </revision>
+</revisionlist>

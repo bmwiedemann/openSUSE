@@ -1,0 +1,570 @@
+<revisionlist>
+  <revision rev="1" vrev="14">
+    <srcmd5>792fb3b8bc5622b5c977f0c92d8dc2a9</srcmd5>
+    <version>6.7</version>
+    <time>1166483845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>45743caf07f774fd483cb1de7ea2c196</srcmd5>
+    <version>7.0</version>
+    <time>1168275144</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1ab3348b3e7f6df58c952a7c548136de</srcmd5>
+    <version>7.0</version>
+    <time>1168361581</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>40d698f2811f8d72fb790bcafa60da48</srcmd5>
+    <version>7.0</version>
+    <time>1171037159</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>16f3c2f469479c7c49f49112646c618c</srcmd5>
+    <version>7.1</version>
+    <time>1177543004</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>a7d9d4fab751490924fcba9d335c33c0</srcmd5>
+    <version>7.1</version>
+    <time>1177949659</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>df08188c3e509cc1fdfeafc349eb3199</srcmd5>
+    <version>7.1</version>
+    <time>1178464669</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6f7c3cf0b1b686682272f009bbdfad53</srcmd5>
+    <version>7.2</version>
+    <time>1185494617</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>a3a5205cae9f6229a623c3cecfa5bed4</srcmd5>
+    <version>7.2</version>
+    <time>1186685316</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>46da93542da0d7fc0dcde0228711d1ed</srcmd5>
+    <version>7.4</version>
+    <time>1194889315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>53e00ec6ad55a6e41e585495094d53e2</srcmd5>
+    <version>7.5</version>
+    <time>1200603142</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2fbf77f59c2e7c34429d7018a403d3d4</srcmd5>
+    <version>7.6</version>
+    <time>1201914559</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>59a30a2aa7766e5c3a063958ad32f308</srcmd5>
+    <version>7.6</version>
+    <time>1207833972</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>79fd92611e5ee09e9d5b2da9fa976000</srcmd5>
+    <version>7.8</version>
+    <time>1221281521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>b51bc9bdcea6267a333242932c104134</srcmd5>
+    <version>7.8</version>
+    <time>1231461859</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>316b6e7198ec1b2dedba4360db33bf6d</srcmd5>
+    <version>7.9</version>
+    <time>1241628621</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b372674997adbbe4b77f9b07642ad92a</srcmd5>
+    <version>7.9</version>
+    <time>1243543958</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>6f224eb5bf0ce543c28d0b6e93fd14b6</srcmd5>
+    <version>7.9</version>
+    <time>1243937417</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4f10883ce608844e1c6cf80b4e8c3b82</srcmd5>
+    <version>7.9.0</version>
+    <time>1247064387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>4f10883ce608844e1c6cf80b4e8c3b82</srcmd5>
+    <version>7.9.0</version>
+    <time>1247064387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>4b7f80c9373fded3a23212b9e8000d03</srcmd5>
+    <version>7.9.0</version>
+    <time>1256139460</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pcre based on submit request 21998 from user coolo
+</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>4d0af14ab374c13c583112831597840e</srcmd5>
+    <version>7.9.0</version>
+    <time>1262968334</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pcre based on submit request 28055 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>7c81c62126a0f8576ac00823edae9bb5</srcmd5>
+    <version>7.9.0</version>
+    <time>1265911311</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pcre based on submit request 32039 from user sax2
+</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>6fda615ef24dbc96c6b1b277a4f02374</srcmd5>
+    <version>7.9.0</version>
+    <time>1267142999</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pcre based on submit request 33500 from user prusnak
+</comment>
+    <requestid>33500</requestid>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>67cffc319090b60cfef41750c1e60faa</srcmd5>
+    <version>7.9.0</version>
+    <time>1268925330</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>c6d6488ade3af821a48a3ce77ced4f1a</srcmd5>
+    <version>7.9.0</version>
+    <time>1272120694</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pcre based on submit request 38681 from user coolo
+</comment>
+    <requestid>38681</requestid>
+  </revision>
+  <revision rev="27" vrev="11">
+    <srcmd5>c6d6488ade3af821a48a3ce77ced4f1a</srcmd5>
+    <version>7.9.0</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="12">
+    <srcmd5>c6d6488ade3af821a48a3ce77ced4f1a</srcmd5>
+    <version>7.9.0</version>
+    <time>1278678608</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="29" vrev="13">
+    <srcmd5>7ae824f8c204e5bc39fce73857f07ae7</srcmd5>
+    <version>7.9.0</version>
+    <time>1279897015</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pcre based on submit request 43707 from user coolo
+</comment>
+    <requestid>43707</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>265add5d4a92dba82f3570fd769ff421</srcmd5>
+    <version>8.10</version>
+    <time>1284988373</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pcre based on submit request 48509 from user prusnak
+</comment>
+    <requestid>48509</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>08c92a70418a7793671c69e4a6703ee0</srcmd5>
+    <version>8.10</version>
+    <time>1290248108</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53431 from user coolo
+</comment>
+    <requestid>53431</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>144139c0cd6a0517a246feefcbee90fe</srcmd5>
+    <version>8.10</version>
+    <time>1290248113</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53431
+</comment>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>144139c0cd6a0517a246feefcbee90fe</srcmd5>
+    <version>8.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a43e67f61f01ef8f154ec982328bfdba</srcmd5>
+    <version>8.12</version>
+    <time>1299687180</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63749 from user coolo
+</comment>
+    <requestid>63749</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>1154fd8b66a314a8848dc7d868bc90cb</srcmd5>
+    <version>8.12</version>
+    <time>1299687187</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63749
+</comment>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>afe0cac70e77513c46dd7917dd70d977</srcmd5>
+    <version>8.12</version>
+    <time>1316459705</time>
+    <user>lrupp</user>
+    <comment>- remove fragile _service</comment>
+    <requestid>83613</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f9dc9a4fb6dc0d01e787edb19ab0d872</srcmd5>
+    <version>8.13</version>
+    <time>1318428862</time>
+    <user>lrupp</user>
+    <comment>- udpate to 8.13:
+  * too many fixes to list here, see included ChangeLog
+  * the Unicode data tables have been updated to Unicode 6.0.0.</comment>
+    <requestid>87455</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>f9dc9a4fb6dc0d01e787edb19ab0d872</srcmd5>
+    <version>8.13</version>
+    <time>1319182233</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>65cea5e2b149d110f9a958c05cf60400</srcmd5>
+    <version>8.20</version>
+    <time>1320232349</time>
+    <user>coolo</user>
+    <comment>- Update to version 8.20 
+  * too many fixes to list here, see included ChangeLog
+  * replace pcre-visibility patch with the one I submitted to 
+    upstream for inclusion. (forwarded request 89878 from elvigia)</comment>
+    <requestid>89879</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>878519826db01f002a6c2325025c9e5a</srcmd5>
+    <version>8.20</version>
+    <time>1321460403</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 91729 from coolo)</comment>
+    <requestid>91814</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a67ada019e0351dc3e6a19d1418ffb00</srcmd5>
+    <version>8.30</version>
+    <time>1328890716</time>
+    <user>coolo</user>
+    <comment>- fix baselibs (forwarded request 103063 from elvigia)</comment>
+    <requestid>103064</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>81f0758128b6c695fe9664e938c43682</srcmd5>
+    <version>8.30</version>
+    <time>1336762057</time>
+    <user>coolo</user>
+    <comment>This adds a pcre-devel-static package, needed for qemu-linux-user 1.1 update for 12.2 (glib-2.0 has grown a dependency on -lpcre). Please forward to Factory. (forwarded request 120625 from a_faerber)</comment>
+    <requestid>120627</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>81f0758128b6c695fe9664e938c43682</srcmd5>
+    <version>8.30</version>
+    <time>1340183783</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>2d90bb3cb508a5b341f66231d53e7269</srcmd5>
+    <version>8.30</version>
+    <time>1342866651</time>
+    <user>namtrac</user>
+    <comment>- Only use --enable-jit on supported architectures; the build will
+  otherwise fail (e.g. on sparc). (forwarded request 128420 from jengelh)</comment>
+    <requestid>128497</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6c868e0bf85e4d83f7fdcf5cb20288c2</srcmd5>
+    <version>8.31</version>
+    <time>1345630543</time>
+    <user>namtrac</user>
+    <comment>Update to 8.31 (forwarded request 131108 from dimstar)</comment>
+    <requestid>131129</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>5183897577238f9076191e251ad15f0d</srcmd5>
+    <version>8.31</version>
+    <time>1352562907</time>
+    <user>coolo</user>
+    <comment>Enable the --enable-pcre16 option. Will be required by Qt5 in the future (forwarded request 140561 from cgiboudeaux)</comment>
+    <requestid>140586</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>4b6628e9267322f7b640f248efe5c83e</srcmd5>
+    <version>8.31</version>
+    <time>1354099553</time>
+    <user>coolo</user>
+    <comment>- Update package descriptions about the differences between the
+  PCRE library subpackages. (forwarded request 142635 from jengelh)</comment>
+    <requestid>143033</requestid>
+  </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>4b6628e9267322f7b640f248efe5c83e</srcmd5>
+    <version>8.31</version>
+    <time>1359109583</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>99199f3c7af9b05db1eb3c2d5a92faa2</srcmd5>
+    <version>8.32</version>
+    <time>1366017335</time>
+    <user>coolo</user>
+    <comment>update to 8.32 (forwarded request 147290 from posophe)</comment>
+    <requestid>147328</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>3aa40def63b01b4a9776367ab72a2949</srcmd5>
+    <version>8.33</version>
+    <time>1372173449</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 8.33 (forwarded request 178894 from jengelh)</comment>
+    <requestid>178965</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>3aa40def63b01b4a9776367ab72a2949</srcmd5>
+    <version>8.33</version>
+    <time>1379663526</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>1c9515acb8643d5aee5efcbb2f9cd7f5</srcmd5>
+    <version>8.33</version>
+    <time>1394901481</time>
+    <user>coolo</user>
+    <comment>- enable tests for all archs
+- --enable-jit for sparc (forwarded request 206827 from WernerFink)</comment>
+    <requestid>225831</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>5affe41c4df02ea8d19c59026659f2fe</srcmd5>
+    <version>8.34</version>
+    <time>1396770842</time>
+    <user>coolo</user>
+    <comment>- Add automake and autoconf as explicit deps as we run autoreconf
+
+- Add patch pcre-8.21-multilib.patch to fix RPATH issues.
+  * The patch is taken from RedHat.
+
+- Clean up with the spec cleaner. Use -j1 in tests as it is not
+  really thread safe
+
+- Version bump to 8.34:
+  * warning fixes
+  * perl fixes
+  * unocode6.3.0 support
+  * gconv support (forwarded request 227257 from scarabeus_iv)</comment>
+    <requestid>228071</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e8ba2c0b417a5fd34af090dd0c7e1e03</srcmd5>
+    <version>8.35</version>
+    <time>1399377743</time>
+    <user>coolo</user>
+    <comment>- update to 0.35:
+  There have been performance improvements for classes containing non-ASCII
+  characters and the &quot;auto-possessification&quot; feature has been extended. Other
+  minor improvements have been implemented and bugs fixed. There is a new callout
+  feature to enable applications to do detailed stack checks at compile time, to
+  avoid running out of stack for deeply nested parentheses. The JIT compiler has
+  been extended with experimental support for ARM-64, MIPS-64, and PPC-LE.
+- add pcre-commit1472.patch from SVN to work with gcc49, see
+  http://bugs.exim.org/show_bug.cgi?id=1463 (forwarded request 232505 from coolo)</comment>
+    <requestid>232614</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>0af8821830ea093efdfb70436bbe06c9</srcmd5>
+    <version>8.35</version>
+    <time>1403070642</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237587</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>0af8821830ea093efdfb70436bbe06c9</srcmd5>
+    <version>8.35</version>
+    <time>1409302132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>8ef307bd635a619e7d8b4c08173b7e2d</srcmd5>
+    <version>8.35</version>
+    <time>1409761226</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247112</requestid>
+  </revision>
+  <revision rev="58" vrev="6">
+    <srcmd5>bcdfe4ac1ccd59a5735044bd8288b16f</srcmd5>
+    <version>8.35</version>
+    <time>1410081098</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247438</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>c91e34ce1f83be22392ffe57d1b771f2</srcmd5>
+    <version>8.36</version>
+    <time>1426485158</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289948</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>e7666779a637b63803403adb75e3a3e3</srcmd5>
+    <version>8.37</version>
+    <time>1430904082</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304881</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>a662a8bbe638dce96bad574140a1cd9e</srcmd5>
+    <version>8.38</version>
+    <time>1449145485</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346337</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>d4834cc717ef8655d48b710b92441113</srcmd5>
+    <version>8.39</version>
+    <time>1467205239</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403030</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>23078bb90a991900a182cf08e16d82b5</srcmd5>
+    <version>8.39</version>
+    <time>1470934377</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416907</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>8d1addeddcc53f8b992887f05986371b</srcmd5>
+    <version>8.40</version>
+    <time>1488559088</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456817</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>47c7ab73651af0153493444a87820526</srcmd5>
+    <version>8.40</version>
+    <time>1497272993</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501301</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>728b46878c86e1e8dc405418ca117654</srcmd5>
+    <version>8.41</version>
+    <time>1501840604</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512856</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>709746637b726a589183b87c4b023b16</srcmd5>
+    <version>8.41</version>
+    <time>1505919950</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>525991</requestid>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>1caa58f2079b0d2eb76695816f15bf80</srcmd5>
+    <version>8.41</version>
+    <time>1510406083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539295</requestid>
+  </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>26359ab9b4edf476346242158356f1cb</srcmd5>
+    <version>8.41</version>
+    <time>1520414879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580531</requestid>
+  </revision>
+  <revision rev="70" vrev="5">
+    <srcmd5>415f7ddd4d093529df7c817f667f4241</srcmd5>
+    <version>8.41</version>
+    <time>1524400555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598766</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>15d3af1629331a9d828ea4ff1cc16ff6</srcmd5>
+    <version>8.42</version>
+    <time>1538377303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633754</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>a216aa6b7f28416038d9e5cfe44e640d</srcmd5>
+    <version>8.42</version>
+    <time>1542202157</time>
+    <user>dimstar_suse</user>
+    <comment>- pcreposix patch taken from debian. Solves cyrus-imapd issue #1731, too.
+  pcre-8.42-pcreposix.patch</comment>
+    <requestid>646913</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>0c875a64430649a73509424259606600</srcmd5>
+    <version>8.42</version>
+    <time>1567677768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720520</requestid>
+  </revision>
+</revisionlist>

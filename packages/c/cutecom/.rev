@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>97597eaac0c261c92e17a4e4831ef483</srcmd5>
+    <version>0.22.0</version>
+    <time>1305724022</time>
+    <user>saschpe</user>
+    <comment>cutecom is a graphical serial port application. It is much easier to use than minicom for most purposes.</comment>
+    <requestid>70065</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e6cd25597d9e90a60d06f7ee302ebdbe</srcmd5>
+    <version>0.22.0</version>
+    <time>1305724034</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70065
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e6cd25597d9e90a60d06f7ee302ebdbe</srcmd5>
+    <version>0.22.0</version>
+    <time>1319181838</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d1def51d608151b64e95655c2007a2f7</srcmd5>
+    <version>0.22.0</version>
+    <time>1326962482</time>
+    <user>coolo</user>
+    <comment>patching license field to be in spdx.org format, for legal team to review before forward (forwarded request 99925 from dec16180)</comment>
+    <requestid>100256</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>e11f94f8baab7b4aefe5801a17116708</srcmd5>
+    <version>0.22.0</version>
+    <time>1330966761</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>107791</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>e11f94f8baab7b4aefe5801a17116708</srcmd5>
+    <version>0.22.0</version>
+    <time>1340183266</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>e11f94f8baab7b4aefe5801a17116708</srcmd5>
+    <version>0.22.0</version>
+    <time>1359108791</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>e11f94f8baab7b4aefe5801a17116708</srcmd5>
+    <version>0.22.0</version>
+    <time>1379662194</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>e11f94f8baab7b4aefe5801a17116708</srcmd5>
+    <version>0.22.0</version>
+    <time>1409300728</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>10f284eded9469f108a57145fefe3971</srcmd5>
+    <version>0.22.0</version>
+    <time>1448720345</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build for leap.</comment>
+    <requestid>346189</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ec2aa0dc81b4c8d5c28d2035eb2e344d</srcmd5>
+    <version>0.30.1</version>
+    <time>1452721551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>352829</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cdf4bb50e5a16a20718d08cdb7a3ec35</srcmd5>
+    <version>0.30.2</version>
+    <time>1452941818</time>
+    <user>dimstar_suse</user>
+    <comment>Please also change the url of the factory package to &quot;http://github.com/neundorf/CuteCom&quot;.</comment>
+    <requestid>353711</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b2833bc9575b5fe0db4bd3addd3b46c0</srcmd5>
+    <version>0.30.2</version>
+    <time>1468482265</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406869</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5d8d6b2cec38d24cd00b11020cfa6feb</srcmd5>
+    <version>0.40.0</version>
+    <time>1502892849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516613</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5b6399460e130a97cfe473b8ddb039f1</srcmd5>
+    <version>0.40.0</version>
+    <time>1529402101</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615935</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>66ebd85cd3d2ad7008e53b0c9ed47568</srcmd5>
+    <version>0.51.0</version>
+    <time>1536094619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632859</requestid>
+  </revision>
+</revisionlist>

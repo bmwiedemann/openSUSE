@@ -1,0 +1,7 @@
+<package name="dhcp" project="openSUSE:Factory">
+  <title>Common Files Used by ISC DHCP Software</title>
+  <description>This package contains common programs used by both the ISC DHCP
+server (&quot;dhcp-server&quot; package) and client (&quot;dhcp-client&quot;) as the
+omshell and common manual pages.</description>
+  <devel project="network:dhcp" package="dhcp"/>
+</package>

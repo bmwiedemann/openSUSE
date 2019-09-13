@@ -1,0 +1,5 @@
+<package name="python2-scikit-learn" project="openSUSE:Factory">
+  <title>Python modules for machine learning and data mining</title>
+  <description>scikits.learn is a python module for machine learning built on top of scipy.</description>
+  <devel project="devel:languages:python:numeric" package="python2-scikit-learn"/>
+</package>

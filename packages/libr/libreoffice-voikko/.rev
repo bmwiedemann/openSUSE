@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>4cb34b34bd28172754c567606783c3f5</srcmd5>
+    <version>3.1.2</version>
+    <time>1297013388</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60091 from user pmladek
+</comment>
+    <requestid>60091</requestid>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>bab567c3e45d0a6f4dcd3ac964fdaee4</srcmd5>
+    <version>3.1.2</version>
+    <time>1297013394</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60091
+</comment>
+  </revision>
+  <revision rev="3" vrev="8">
+    <srcmd5>bab567c3e45d0a6f4dcd3ac964fdaee4</srcmd5>
+    <version>3.1.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="10">
+    <srcmd5>bab567c3e45d0a6f4dcd3ac964fdaee4</srcmd5>
+    <version>3.1.2</version>
+    <time>1319182133</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="11">
+    <srcmd5>9673f42051d90c0b5edf7ac7bad89fe3</srcmd5>
+    <version>3.1.2</version>
+    <time>1334641574</time>
+    <user>coolo</user>
+    <comment>- set license tag correctly to GPL-3.0+ (bnc#741551)
+
+- fix build with LibreOffice-3.5; basis directory does not longer exist
+- call unopkg-sync-bundled in %posttrans and %post to update extensions
+  cache and make it actually working
+- spec file clean up
+
+- change license to be in spdx.org format
+
+- removed unused update-alternatives from BuildRequires</comment>
+    <requestid>113368</requestid>
+  </revision>
+  <revision rev="6" vrev="13">
+    <srcmd5>9673f42051d90c0b5edf7ac7bad89fe3</srcmd5>
+    <version>3.1.2</version>
+    <time>1340183634</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="15">
+    <srcmd5>9673f42051d90c0b5edf7ac7bad89fe3</srcmd5>
+    <version>3.1.2</version>
+    <time>1359109347</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d1b8c3debab7de320a88b1fb088ea0aa</srcmd5>
+    <version>3.4.1</version>
+    <time>1377332084</time>
+    <user>scarabeus_factory</user>
+    <comment>fix version of the used %patch macro (forwarded request 196129 from pmladek)</comment>
+    <requestid>196130</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d1b8c3debab7de320a88b1fb088ea0aa</srcmd5>
+    <version>3.4.1</version>
+    <time>1379663079</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b3aa172efb01975c10dbd30168931288</srcmd5>
+    <version>4.0</version>
+    <time>1394103569</time>
+    <user>coolo</user>
+    <comment>- set exclusivearch to x86/x86_64
+
+- Fix the install phase.
+
+- Fix license tag to GPL-3.0+ or MIT and package COPYING and
+  README (which states both licenses can apply).
+
+- Version bump to 3.7:
+  * Needed to build with lo-4.2 and later
+  * Also compatible with new libvoikko
+- Cleanup with spec-cleaner and remove useless defines.
+- Drop no longer needed patch:
+  * libreoffice-voikko-rel-3.4.1-lo-4.1-cppumaker.diff</comment>
+    <requestid>224444</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b3aa172efb01975c10dbd30168931288</srcmd5>
+    <version>4.0</version>
+    <time>1409301701</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6f33184af8c140ceccc01c42e877e97a</srcmd5>
+    <version>4.1</version>
+    <time>1421959780</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282395</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5aa185232fc8b70a50ef1a293adf94b9</srcmd5>
+    <version>4.1</version>
+    <time>1438899832</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320543</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>0462f6d7167f786d3342a1404735f74d</srcmd5>
+    <version>4.1</version>
+    <time>1464014326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396561</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2f87491c68a11de5a45f1d749ee84225</srcmd5>
+    <version>5.0</version>
+    <time>1495133122</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.0:
+  * Few parts redone in python instead of C++</comment>
+    <requestid>491013</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ac5bbe29789da6fad04b6f4dc3e0cdca</srcmd5>
+    <version>5.0</version>
+    <time>1496927048</time>
+    <user>dimstar_suse</user>
+    <comment>- No need to limit exclusivearch</comment>
+    <requestid>501800</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>ef0967e59f2befc45e913528854e751a</srcmd5>
+    <version>5.0</version>
+    <time>1507755408</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not requires pre/post/postun requires
+
+- Added python3-libvoikko to requires list so spell checking
+  actually works</comment>
+    <requestid>531537</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>cea46ed5da2f856f029387391c4dad72</srcmd5>
+    <version>5.0</version>
+    <time>1525256397</time>
+    <user>dimstar_suse</user>
+    <comment>- Use exclusive arch wrt issue bsc#1091620 as it gets unresolvable
+  otherwise</comment>
+    <requestid>602970</requestid>
+  </revision>
+</revisionlist>

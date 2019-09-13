@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07ed53276798d595f770953f9ddb931f</srcmd5>
+    <version>B.02.17</version>
+    <time>1438421743</time>
+    <user>dimstar_suse</user>
+    <comment>New package, there is some demand for it (i.e tampakrap wanted it in
+factory)</comment>
+    <requestid>318416</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6b486938893e54ba0e25c94f9a775566</srcmd5>
+    <version>B.02.18</version>
+    <time>1462051870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391756</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>52e2ef151c46421e45fd6248d4081667</srcmd5>
+    <version>B.02.18</version>
+    <time>1466681795</time>
+    <user>dimstar_suse</user>
+    <comment>- Small spec file cleanup
+- Do not ship pci/usb/oter id's as they are provided by other
+  packages as well
+- Disable parallel building as it seems to cause random linking
+  failures (boo#985111)</comment>
+    <requestid>403782</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1631bcbac51fc6258860f83c164b5242</srcmd5>
+    <version>B.02.18</version>
+    <time>1494442388</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>493815</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>82a61355dcce0c8e591e2a2ed323e928</srcmd5>
+    <version>B.02.18</version>
+    <time>1496822163</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>501438</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>016c4d3b21fa58c7beff2345c30f9db2</srcmd5>
+    <version>B.02.18</version>
+    <time>1518025417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573782</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0eacc796adb69405b8fd8cfa942ec479</srcmd5>
+    <version>B.02.18+git.20190104</version>
+    <time>1546946959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version B.02.18+git.20190104:
+  * Resolves bsc#1120819 bsc#1093650 fate#326432
+  * various new HW enablement, including:
+    + improved support for latest PPC64LE
+    + DDR4
+- Drop no longer needed patches:
+  * lshw-cpuinfo.patch
+  * lshw-devtree_cpunodes.patch 
+  * lshw-devtree_machine_describtion.patch
+  * lshw-dimminfo.patch</comment>
+    <requestid>663348</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>27d356e10e6bbae375f0f386d41f3891</srcmd5>
+    <version>B.02.18+git.20190324</version>
+    <time>1553809774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version B.02.18+git.20190324:
+  * merge Github PR44
+- Set correct version (bsc#1130818)</comment>
+    <requestid>689318</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4bb22c50b0b27e8a4a9513d47c6df393</srcmd5>
+    <version>B.02.18+git.20190324</version>
+    <time>1556817707</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix displaying proper logical name of network device bsc#1133923
+  * lswh-logical-name-iface.patch
+- Fix displaying correct version bsc##1130818
+  * lshw-display-latest-version.patch
+  * lshw-help-man.patch
+  * lshw-modified-time.patch</comment>
+    <requestid>700059</requestid>
+  </revision>
+</revisionlist>

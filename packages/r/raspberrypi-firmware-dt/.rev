@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bbe57ace63172cc3154581653aaaf0fd</srcmd5>
+    <version>2018.02.02</version>
+    <time>1519145822</time>
+    <user>dimstar_suse</user>
+    <comment>In addition to the RPi firmware binaries and configuration we also
+want to provide a device tree from the FW to U-Boot / the kernel.
+
+In the original firmware tree the device tree blobs are only
+provided as blobs, built from their Linux source tree.
+
+This package takes the RPi foundation provided device trees, compiles
+and packages them up for the RPi firmware to use.</comment>
+    <requestid>578314</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>792a0f521c723fbda8e452c5494fed64</srcmd5>
+    <version>2018.03.14</version>
+    <time>1521193357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586997</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b682c2daf6e7f753e2bffcede5445556</srcmd5>
+    <version>2018.11.15</version>
+    <time>1542750239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650383</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32e3104395d733d550207ff230723144</srcmd5>
+    <version>2018.07.16</version>
+    <time>1545376905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660023</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e1454ea2e91913a444b13369e3a9371d</srcmd5>
+    <version>2018.07.16</version>
+    <time>1548064657</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream-rpi-ft5406-overlay.patch which updates the touchscreen's
+  overlay to support both downstream and upstream versions of the driver
+  (FATE#326921, bsc#1122118)
+</comment>
+    <requestid>666444</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>db41747bc4c4640c3a8e0c9f1c2928b2</srcmd5>
+    <version>2019.01.29</version>
+    <time>1549286714</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670900</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1c0b406b98e7d738f09b3d884d560c0e</srcmd5>
+    <version>2019.06.03</version>
+    <time>1560459786</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>709418</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b171da152ee69314b6d7bbf3bd3a4509</srcmd5>
+    <version>2019.06.18</version>
+    <time>1561642014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712256</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>de843eb80df35ec4e732f4706ef2745a</srcmd5>
+    <version>2019.08.17</version>
+    <time>1567850006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728685</requestid>
+  </revision>
+</revisionlist>

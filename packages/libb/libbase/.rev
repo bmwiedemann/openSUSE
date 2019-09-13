@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79ed99763005dbaf76e55d95ad8f6baf</srcmd5>
+    <version>1.1.3</version>
+    <time>1391604194</time>
+    <user>coolo</user>
+    <comment>Libreoffice-4.2 unbundling</comment>
+    <requestid>214273</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2bb3aaf6e1ab8bb3bf55e3cbc6782f45</srcmd5>
+    <version>1.1.3</version>
+    <time>1405434343</time>
+    <user>coolo</user>
+    <comment>- Mention libbase-rpmlintrc in spec.
+
+- Specify buildroot</comment>
+    <requestid>239599</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2bb3aaf6e1ab8bb3bf55e3cbc6782f45</srcmd5>
+    <version>1.1.3</version>
+    <time>1409301504</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4bc14c7d163d55b2d9f8986066c22007</srcmd5>
+    <version>1.1.3</version>
+    <time>1505334328</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>523234</requestid>
+  </revision>
+</revisionlist>

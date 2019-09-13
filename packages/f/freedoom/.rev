@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0edc8d750c01df61b0e7b821f44cd91e</srcmd5>
+    <version>0.8~beta1</version>
+    <time>1367823858</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>174352</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0edc8d750c01df61b0e7b821f44cd91e</srcmd5>
+    <version>0.8~beta1</version>
+    <time>1379662362</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7adb9b3df188ced6bcbe7270b70f3fa0</srcmd5>
+    <version>0.8</version>
+    <time>1388926840</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 0.8</comment>
+    <requestid>212799</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7adb9b3df188ced6bcbe7270b70f3fa0</srcmd5>
+    <version>0.8</version>
+    <time>1409300898</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d77682b83e326a8b6a4ef7380d1c657e</srcmd5>
+    <version>0.10.1</version>
+    <time>1460358856</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>384534</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8dbe2d908860581745c93187a38a1529</srcmd5>
+    <version>0.10.1</version>
+    <time>1470413818</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>416556</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>74b516a260da4e7e89783872a97be9f1</srcmd5>
+    <version>0.11.2</version>
+    <time>1499292245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>508179</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0d3bc37c15623de94283108041ac42aa</srcmd5>
+    <version>0.11.3</version>
+    <time>1514907298</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.11.3:</comment>
+    <requestid>561021</requestid>
+  </revision>
+</revisionlist>

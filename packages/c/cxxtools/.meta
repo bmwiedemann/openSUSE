@@ -1,0 +1,30 @@
+<package name="cxxtools" project="openSUSE:Factory">
+  <title>Collection of General-purpose C++ Classes</title>
+  <description>Cxxtools is a collection of general-purpose C++ classes.
+
+It includes classes for:
+- argument parsing
+- logging
+- wrappers for threading (pthreads)
+- networking with tcp and udp including iostream-based classes
+- std::ostream for md5-calculation
+- std::ostream-hexdumper
+- std::ostream, which duplicates output (like tee)
+- wrappers for fork(2) and pipe(2)
+- parser for ini files
+- parser for property files
+- policy based smartpointer
+- wrappers for dlopen(2) and dlsym(2)
+- fast http client
+- uuencoder-std::ostream
+- classes to create mime messages for sending mail with attachements or as
+  html-formatted mail
+- template based fast signal/slot-classes
+- template for pools
+- parser for http-query-parameters e.g. for cgi
+- ostream-filter for counting bytes passed through it
+- wrappers for atomic operations
+
+</description>
+  <devel project="devel:libraries:c_c++" package="cxxtools"/>
+</package>

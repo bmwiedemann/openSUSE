@@ -1,0 +1,6 @@
+<package name="nodejs8" project="openSUSE:Factory">
+  <title>Nodejs 8.x</title>
+  <description>The Node.js 8.x release branch is scheduled to become the next actively maintained Long Term Support (LTS) release line in October, 2017 under the LTS codename 'Carbon'. Note that the LTS lifespan for 8.x will end on December 31st, 2019.
+</description>
+  <devel project="devel:languages:nodejs" package="nodejs8"/>
+</package>

@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8a8226ad5454ef6d174764d8f6f6de22</srcmd5>
+    <version>0.1.4</version>
+    <time>1339531158</time>
+    <user>coolo</user>
+    <comment>this is needed for
+https://build.opensuse.org/package/show?package=openstack-nova&amp;project=Virtualization%3ACloud%3AOpenStack</comment>
+    <requestid>124416</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8a8226ad5454ef6d174764d8f6f6de22</srcmd5>
+    <version>0.1.4</version>
+    <time>1340184063</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>8a8226ad5454ef6d174764d8f6f6de22</srcmd5>
+    <version>0.1.4</version>
+    <time>1359110057</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>8a8226ad5454ef6d174764d8f6f6de22</srcmd5>
+    <version>0.1.4</version>
+    <time>1379664200</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>4fcae46e53217a529f96257c091cfa54</srcmd5>
+    <version>0.1.4</version>
+    <time>1382692788</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204580</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>20b72079e5bd7d8f60d1aa74491fd37b</srcmd5>
+    <version>0.1.8</version>
+    <time>1383035640</time>
+    <user>coolo</user>
+    <comment>- update to 0.1.8:
+  * Remove +/- chars from README.rst and ensure tox tests run using LC_ALL=C.
+  * Fix parsing of microseconds 
+  * Correct negative timezone offsets
+  * Wow, it's alive! First update since 2007
+  * Moved over to https://bitbucket.org/micktwomey/pyiso8601
+  * Add support for python 3
+  * Switched to py.test and tox for testing
+  * Make seconds optional in date format
+  * Correctly raise ParseError for more invalid inputs
+  * Support more variations of ISO 8601 dates, times and time zone specs.
+  * Fix microsecond rounding issues
+  * Fix pickling and deepcopy of returned datetime objects
+  * Fix timezone offsets without a separator
+  * &quot;Z&quot; produces default timezone if one is specified
+  * Handle compact date format (forwarded request 204806 from dirkmueller)</comment>
+    <requestid>204828</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d2c735303aa41e662b8b263680397789</srcmd5>
+    <version>0.1.8</version>
+    <time>1393394100</time>
+    <user>coolo</user>
+    <comment>- Include in SLE 12 (FATE #316168) (forwarded request 222121 from rjschwei)</comment>
+    <requestid>222164</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bbee151360ffe4192e791d9ba10143e3</srcmd5>
+    <version>0.1.10</version>
+    <time>1394739834</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.1.10
+  + Fixes https://bitbucket.org/micktwomey/pyiso8601/issue/14/regression-yyyy-mm-no-longer-parses
+  + Adds YYYY as a valid date (uses 1 for both month and day)
+  + Woo, semantic versioning, .10 at last.
+- Changes from version 0.1.9:
+  + Lots of fixes tightening up parsing from jdanjou.
+  + Release addresses https://bitbucket.org/micktwomey/pyiso8601/issue/13/new-release-based-on-critical-bug-fix
+- Run tests again</comment>
+    <requestid>225716</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>bbee151360ffe4192e791d9ba10143e3</srcmd5>
+    <version>0.1.10</version>
+    <time>1409302894</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6c8549d8050d39ff9b64994bb937a323</srcmd5>
+    <version>0.1.11</version>
+    <time>1458333078</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>372858</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>12f598c32e63ff2d6aff0d4e4bf3c073</srcmd5>
+    <version>0.1.11</version>
+    <time>1490221027</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480723</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f5682fd23cf62246ba338d42bb325c30</srcmd5>
+    <version>0.1.12</version>
+    <time>1510505958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540452</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>db98ba4038e0897f0c41735681645cbf</srcmd5>
+    <version>0.1.12</version>
+    <time>1545866810</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659445</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>77763c244f3a2a3084bed794095c8539</srcmd5>
+    <version>0.1.12</version>
+    <time>1547554569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663810</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>3fa7f833c67b014a5ab900cdde65d978</srcmd5>
+    <version>0.1.11</version>
+    <time>1553888367</time>
+    <user>dimstar_suse</user>
+    <comment>- Downgrade to 0.1.11:
+  * Reverts back to avoid API change that caused iso8601.Utc not
+    working on py3 (Fedora and Deb both ship this version)
+
+- Download the sources from pypi and run fdupes</comment>
+    <requestid>689817</requestid>
+  </revision>
+</revisionlist>

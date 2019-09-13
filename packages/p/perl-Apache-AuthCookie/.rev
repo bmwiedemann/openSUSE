@@ -1,0 +1,254 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e10cb56d3795ac7abf1ed87478328b09</srcmd5>
+    <version>3.10</version>
+    <time>1168903779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="187">
+    <srcmd5>e10cb56d3795ac7abf1ed87478328b09</srcmd5>
+    <version>3.10</version>
+    <time>1168903779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aad2acdd0761e3fc907ce767ad4ab04f</srcmd5>
+    <version>3.12</version>
+    <time>1225123640</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>aad2acdd0761e3fc907ce767ad4ab04f</srcmd5>
+    <version>3.12</version>
+    <time>1225123640</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d94a8e96c352ce268eac49c2f5d95a55</srcmd5>
+    <version>3.12</version>
+    <time>1263303923</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Apache-AuthCookie based on submit request 28669 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>96ce58c288d9e18ebf899997efd17b52</srcmd5>
+    <version>3.12</version>
+    <time>1268925356</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>96ce58c288d9e18ebf899997efd17b52</srcmd5>
+    <version>3.12</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>96ce58c288d9e18ebf899997efd17b52</srcmd5>
+    <version>3.12</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe0ee8450da5f7214dee551dd88a6dca</srcmd5>
+    <version>3.14</version>
+    <time>1279545126</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Apache-AuthCookie based on submit request 43301 from user computersalat
+</comment>
+    <requestid>43301</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>91842d78b62ee8300861cf35cf356a11</srcmd5>
+    <version>3.14</version>
+    <time>1291769438</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54954 from user coolo
+</comment>
+    <requestid>54954</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b4ff8d31d11d6ad96d46d74ac1acb766</srcmd5>
+    <version>3.14</version>
+    <time>1291769448</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54954
+</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>b4ff8d31d11d6ad96d46d74ac1acb766</srcmd5>
+    <version>3.14</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>b4ff8d31d11d6ad96d46d74ac1acb766</srcmd5>
+    <version>3.14</version>
+    <time>1319182239</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b24ad67ac639f7c13c0c122190820fea</srcmd5>
+    <version>3.18</version>
+    <time>1321278768</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>91035</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a46171b61e1350f8b78d394ea9bcde2b</srcmd5>
+    <version>3.18</version>
+    <time>1323193044</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>a46171b61e1350f8b78d394ea9bcde2b</srcmd5>
+    <version>3.18</version>
+    <time>1340183790</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>8918fde1b625e52a4740d32de2d96cfd</srcmd5>
+    <version>3.18</version>
+    <time>1350044201</time>
+    <user>coolo</user>
+    <comment>- buildrequire explicitly netcfg (forwarded request 137879 from coolo)</comment>
+    <requestid>137923</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>8918fde1b625e52a4740d32de2d96cfd</srcmd5>
+    <version>3.18</version>
+    <time>1359109594</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>8918fde1b625e52a4740d32de2d96cfd</srcmd5>
+    <version>3.18</version>
+    <time>1379663546</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>564d20738650f5b40c1ad42a7c717402</srcmd5>
+    <version>3.20</version>
+    <time>1387452126</time>
+    <user>coolo</user>
+    <comment>- updated to 3.20
+    - login_form: return OK for mobile IE 10, which also ignores content for
+      FORBIDDEN response.
+    - test .pl registry scripts: do not try to load mod_perl.pm
+    - escape html tags in destination.
+    - split out CGI data handling into ::AuthCookie::Params modules
+    - use Apache::Request/Apache2::Request from libapreq if available. Otherwise,
+      fall back to CGI.pm for handling CGI data.
+    - improve &quot;removed cookie&quot; debug log message
+    - add dependencies: autobox, Class::Load
+    - allow username to be '0'
+    - login_form: return OK for SymbianOS, which ignores content for FORBIDDEN responses.
+    - add login_form_status() to override HTTP status returned by login form
+    - recognize_user: return DECLINED if user is not recognized</comment>
+    <requestid>211360</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>564d20738650f5b40c1ad42a7c717402</srcmd5>
+    <version>3.20</version>
+    <time>1409302154</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d39080a844201142650d6ad68032338a</srcmd5>
+    <version>3.22</version>
+    <time>1429186386</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296969</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a0bbc4daf98bf0c3810ea04f9ddc5a3b</srcmd5>
+    <version>3.23</version>
+    <time>1451390375</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350873</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2331d589ef61cf2991ab40a42a2ee198</srcmd5>
+    <version>3.24</version>
+    <time>1453416249</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354801</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e6998b524a1b6fb671e883e4e29fb28d</srcmd5>
+    <version>3.25</version>
+    <time>1474886171</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424237</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0595f4ee6fb9325ef02466bf9bc539f6</srcmd5>
+    <version>3.27</version>
+    <time>1538374748</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.27
+   see /usr/share/doc/packages/perl-Apache-AuthCookie/Changes
+  3.27  2017-07-28
+     - Fix POD spelling error [#118545].
+  
+  3.26  2016-09-30
+     - remove unused module Apache::AuthCookie::Autobox from dist
+     - remove CGI.pm dependency.  CGI.pm has been removed from perl core, which
+       was the primary reason we used it in the first place.  Replaced with
+       dependency on lighter weight set of three modules:
+  
+          * HTTP::Body
+          * WWW::Form::UrlEncoded
+          * Hash::MultiValue
+  
+       Also recommended (but not required) is WWW::Form::UrlEncoded::XS
+     - Add optional support for charset encoding.  If you have something like
+  
+          PerlSetVar MyAuthNameEncoding UTF-8
+  
+       Then AuthCookie with now automatically decode parameters using the given
+       encoding now. AuthCookie params() data will be decoded automatically if
+       this is on.  See details in AuthCookie module documentation.  In addition
+       r-&gt;user will be encoded (using byte semantics) using this encoding. 
+  
+       ***** IMPORTANT *****
+       If you turn this on, this could break your code.  r-&gt;user() will now be
+       byte encoded using the given encoding.  If you use usernames that contain
+       non-ascii characters you either need to use decoded_user(), or decode
+       r-&gt;user() yourself in your subclasses.
+  
+       See the AuthCookie docs for more details.
+     - add optional support for decoding httpd.conf requires directives. This is
+       enabled with a RequiresEncoding setting:
+  
+          PerlSetVar MyAuthNameRequiresEncoding UTF-8
+  
+       Then decoded_requires($r) will return the decoded value of $r-&gt;requires
+       You only need this if you have non-ascii characters in your requires
+       directives such as:
+  
+          Requires user programmør
+  
+     - add decoded_user($r) method to get the value of r-&gt;user decoded using
+       character semantics instead of bytes.  Due to the fact that r-&gt;user is a C
+       API method we cannot get character semantics on r-&gt;user directly.  If no
+       Encoding directive is in effect, then this is the same as r-&gt;user.
+     - add encoding($r): string which returns the value of the Encoding directive
+       that is in effect for the current request.
+</comment>
+    <requestid>638958</requestid>
+  </revision>
+</revisionlist>

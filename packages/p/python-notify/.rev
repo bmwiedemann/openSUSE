@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>9e22c0227d9e5d3ca56d7cc5f76bcbd1</srcmd5>
+    <version>0.1.1</version>
+    <time>1221533069</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>0f54d15391e15ab9db4d9c74786739de</srcmd5>
+    <version>0.1.1</version>
+    <time>1237330910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="7">
+    <srcmd5>0f54d15391e15ab9db4d9c74786739de</srcmd5>
+    <version>0.1.1</version>
+    <time>1237330910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="8">
+    <srcmd5>231ddd34a84f7603e3cb14ece65b8f40</srcmd5>
+    <version>0.1.1</version>
+    <time>1268925867</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>231ddd34a84f7603e3cb14ece65b8f40</srcmd5>
+    <version>0.1.1</version>
+    <time>1278667384</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>231ddd34a84f7603e3cb14ece65b8f40</srcmd5>
+    <version>0.1.1</version>
+    <time>1278678614</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>2e3083877cfca327621412653bd0eb5c</srcmd5>
+    <version>0.1.1</version>
+    <time>1281313237</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-notify based on submit request 44952 from user vuntz
+</comment>
+    <requestid>44952</requestid>
+  </revision>
+  <revision rev="8" vrev="15">
+    <srcmd5>2e3083877cfca327621412653bd0eb5c</srcmd5>
+    <version>0.1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>29547cca1c0163b840d37df7c0dd7a37</srcmd5>
+    <version>0.1.1</version>
+    <time>1301059471</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65213 from user licensedigger
+</comment>
+    <requestid>65213</requestid>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>ca7b801fda44581ec854aabb3e56d64b</srcmd5>
+    <version>0.1.1</version>
+    <time>1301059479</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65213
+</comment>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>b73682258a54316f4a1d6beaa9f978eb</srcmd5>
+    <version>0.1.1</version>
+    <time>1304691033</time>
+    <user>saschpe</user>
+    <comment>Add patch to fix build</comment>
+    <requestid>69779</requestid>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>89ac671e52a801e704a57f19bb980289</srcmd5>
+    <version>0.1.1</version>
+    <time>1304691044</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69779
+</comment>
+  </revision>
+  <revision rev="13" vrev="21">
+    <srcmd5>89ac671e52a801e704a57f19bb980289</srcmd5>
+    <version>0.1.1</version>
+    <time>1319182398</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="22">
+    <srcmd5>e9e5e6a7f3e755f7b4892932a848f23f</srcmd5>
+    <version>0.1.1</version>
+    <time>1323194197</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="24">
+    <srcmd5>e9e5e6a7f3e755f7b4892932a848f23f</srcmd5>
+    <version>0.1.1</version>
+    <time>1340184071</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>e9e5e6a7f3e755f7b4892932a848f23f</srcmd5>
+    <version>0.1.1</version>
+    <time>1359110078</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="27">
+    <srcmd5>ff9fc1f51c26f3ed6453748023da408a</srcmd5>
+    <version>0.1.1</version>
+    <time>1363340868</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159265</requestid>
+  </revision>
+  <revision rev="18" vrev="29">
+    <srcmd5>ff9fc1f51c26f3ed6453748023da408a</srcmd5>
+    <version>0.1.1</version>
+    <time>1379664228</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="31">
+    <srcmd5>ff9fc1f51c26f3ed6453748023da408a</srcmd5>
+    <version>0.1.1</version>
+    <time>1409302928</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="32">
+    <srcmd5>a0eb91da4fedf3022c1cee224eb72369</srcmd5>
+    <version>0.1.1</version>
+    <time>1520415360</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583094</requestid>
+  </revision>
+  <revision rev="21" vrev="33">
+    <srcmd5>262dd0f286ea93d1871b0a3305aa0c21</srcmd5>
+    <version>0.1.1</version>
+    <time>1562843892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714381</requestid>
+  </revision>
+</revisionlist>

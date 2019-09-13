@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e6bbc2b3ed58e35795964e99669f8ab</srcmd5>
+    <version>0.8.2</version>
+    <time>1386326942</time>
+    <user>coolo</user>
+    <comment>New package, cli tools for file conversions that use libraries used in libreoffice.</comment>
+    <requestid>209374</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4a6607f5bec1a13ff426e6eaa70ef1a0</srcmd5>
+    <version>0.8.3</version>
+    <time>1387392432</time>
+    <user>coolo</user>
+    <comment>- Upgrading to 0.8.3
+  - Add fh2odg for Macromedia Freehand documents.
+  - Add key2odp for Apple Keynote documents.
+  - Improve mwaw support. (forwarded request 211188 from fstrba)</comment>
+    <requestid>211189</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f07c8149634f2edbd44d4a97748df73f</srcmd5>
+    <version>0.9.1</version>
+    <time>1406479623</time>
+    <user>coolo</user>
+    <comment>Lo 4.3.0.3 submission</comment>
+    <requestid>242313</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f07c8149634f2edbd44d4a97748df73f</srcmd5>
+    <version>0.9.1</version>
+    <time>1409303649</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>13707413507df61215ee0e66e4ea499b</srcmd5>
+    <version>0.9.2</version>
+    <time>1417643391</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to upstream 0.9.2 and add tools generating EPUB</comment>
+    <requestid>263305</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>73950b3782b1a0eaf532dada42714e32</srcmd5>
+    <version>0.9.4</version>
+    <time>1441173226</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.9.4:
+  * Various fixes to match the latest library updates
+- Merge all the crazy subpackages, too much effort</comment>
+    <requestid>313608</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f99e562679ea885c1d1621323d4833a7</srcmd5>
+    <version>0.9.4</version>
+    <time>1441296191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>328427</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>16c67558a66dcea944d579688b02ef30</srcmd5>
+    <version>0.9.5</version>
+    <time>1460482302</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable libstaroffice as a dependency to provide sd2odf
+- Enable librvngabw to allow export to abiword documents
+- There is no test phase so delete it
+
+- Version update to 0.9.5:
+  - Make numbers2ods actually work.
+  - Convert Pict images to SVG in mwaw2abw.
+  - Pass needed flags enabling C++11 mode to gcc automatically if
+    configured with --with-sharedptr=c++11 .
+  - Fix build in C++11 mode.
+  - Add support for conversion of StarOffice documents using
+    libstaroffice. The new tool is called sd2odf.
+  - Improve --help for all tools and make it compatible with help2man.
+- Do not use boost but c++11</comment>
+    <requestid>379302</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>73446b2c471e28e670fce9e161b057f7</srcmd5>
+    <version>0.9.6</version>
+    <time>1515623698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562779</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bdfa5b34393dc2870dc29e1fb794f843</srcmd5>
+    <version>2.22</version>
+    <time>1168903811</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>db1810a322117586281751cff24f3792</srcmd5>
+    <version>2.24</version>
+    <time>1191839243</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8d0bb4d635507a32e815ecc180e352a0</srcmd5>
+    <version>2.28</version>
+    <time>1207180174</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d80685f1b03503d1601e93cbaae1f792</srcmd5>
+    <version>2.29</version>
+    <time>1214260806</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>95e1e61735692791d74ddb9b4d92f97f</srcmd5>
+    <version>2.30</version>
+    <time>1235747689</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>95e1e61735692791d74ddb9b4d92f97f</srcmd5>
+    <version>2.30</version>
+    <time>1235747689</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>953ae463bc4c03fcafcd689f23e1b144</srcmd5>
+    <version>2.30</version>
+    <time>1263301949</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Crypt-CBC based on submit request 29215 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>42762bc1e3b60dfe67572d6c004e7d50</srcmd5>
+    <version>2.30</version>
+    <time>1268925401</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>42762bc1e3b60dfe67572d6c004e7d50</srcmd5>
+    <version>2.30</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>42762bc1e3b60dfe67572d6c004e7d50</srcmd5>
+    <version>2.30</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>edfa4d23d0a12860c461c76019b2e614</srcmd5>
+    <version>2.30</version>
+    <time>1291128710</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 53919 from user computersalat
+</comment>
+    <requestid>53919</requestid>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>5ca89382287249dfcf9b4323f1b69e5b</srcmd5>
+    <version>2.30</version>
+    <time>1291128715</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 53919
+</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>f7e67d639e069d656b4b36d6d0246e99</srcmd5>
+    <version>2.30</version>
+    <time>1291581818</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54500 from user coolo
+</comment>
+    <requestid>54500</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>37f563a550b3197b6dbcb166442cab9e</srcmd5>
+    <version>2.30</version>
+    <time>1291581823</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54500
+</comment>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>bb495e102ae635cdb3d56bf525d8f93f</srcmd5>
+    <version>2.30</version>
+    <time>1291996733</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55207 from user coolo
+</comment>
+    <requestid>55207</requestid>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>c52b31ed6b865e00f76af59035e3f55b</srcmd5>
+    <version>2.30</version>
+    <time>1291996740</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55207
+</comment>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>c52b31ed6b865e00f76af59035e3f55b</srcmd5>
+    <version>2.30</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>d3e35800e1865570cf053342a36088df</srcmd5>
+    <version>2.30</version>
+    <time>1315238451</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>80972</requestid>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>8f1a88cdb6d8a4018f8434c2493e4441</srcmd5>
+    <version>2.30</version>
+    <time>1315238460</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80972
+</comment>
+  </revision>
+  <revision rev="20" vrev="21">
+    <srcmd5>8f1a88cdb6d8a4018f8434c2493e4441</srcmd5>
+    <version>2.30</version>
+    <time>1319182253</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="22">
+    <srcmd5>c7c954b18d233f716dec07ad0c292525</srcmd5>
+    <version>2.30</version>
+    <time>1321875429</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92153</requestid>
+  </revision>
+  <revision rev="22" vrev="23">
+    <srcmd5>6174c3692082a169950a45d640ba4f84</srcmd5>
+    <version>2.30</version>
+    <time>1323193167</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="25">
+    <srcmd5>6174c3692082a169950a45d640ba4f84</srcmd5>
+    <version>2.30</version>
+    <time>1340183817</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="27">
+    <srcmd5>6174c3692082a169950a45d640ba4f84</srcmd5>
+    <version>2.30</version>
+    <time>1359109629</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>93a5b89c6501eea0c97c7d8d29793fb9</srcmd5>
+    <version>2.32</version>
+    <time>1370447439</time>
+    <user>coolo</user>
+    <comment>- updated to 2.32
+      - Fixes &quot;Taint checks are turned on and your key is tainted&quot; error when autogenerating salt and IV.
+      - Fixes to regular expressions to avoid rare failures to
+         correctly strip padding in decoded messages.
+      - Add padding type = &quot;none&quot;.
+      - Both fixes contributed by Bas van Sisseren. (forwarded request 177291 from coolo)</comment>
+    <requestid>177372</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>511b24b20932da9bd7b27c160e4d4b29</srcmd5>
+    <version>2.33</version>
+    <time>1376381914</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186502</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>511b24b20932da9bd7b27c160e4d4b29</srcmd5>
+    <version>2.33</version>
+    <time>1379663604</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>511b24b20932da9bd7b27c160e4d4b29</srcmd5>
+    <version>2.33</version>
+    <time>1409302223</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

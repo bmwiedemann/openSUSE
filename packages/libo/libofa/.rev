@@ -1,0 +1,186 @@
+<revisionlist>
+  <revision rev="1" vrev="8">
+    <srcmd5>e6e2cb0e7d74f8d45e9ae4fe3406aba5</srcmd5>
+    <version>0.9.3</version>
+    <time>1168903355</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="27">
+    <srcmd5>dc7afbac7ca3113c2c2bf4102b948005</srcmd5>
+    <version>0.9.3</version>
+    <time>1177697563</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="71">
+    <srcmd5>23bc9df4bfcfdc4bd44439c2a06e08d1</srcmd5>
+    <version>0.9.3</version>
+    <time>1194387912</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="73">
+    <srcmd5>23bc9df4bfcfdc4bd44439c2a06e08d1</srcmd5>
+    <version>0.9.3</version>
+    <time>1194387912</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="74">
+    <srcmd5>b80da83d2216d28f05a1364ce3509463</srcmd5>
+    <version>0.9.3</version>
+    <time>1226067587</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="75">
+    <srcmd5>ac684bd07dedbd5f02bb67193b65939d</srcmd5>
+    <version>0.9.3</version>
+    <time>1241628514</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="77">
+    <srcmd5>ac684bd07dedbd5f02bb67193b65939d</srcmd5>
+    <version>0.9.3</version>
+    <time>1241628514</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="78">
+    <srcmd5>1c8f9560a3c9c9406476e3de40d96f2e</srcmd5>
+    <version>0.9.3</version>
+    <time>1262129188</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libofa based on submit request 27743 from user tiwai
+</comment>
+  </revision>
+  <revision rev="9" vrev="79">
+    <srcmd5>f0bc7fa5d24c2744de0e608ae8e09d22</srcmd5>
+    <version>0.9.3</version>
+    <time>1268924662</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="81">
+    <srcmd5>f0bc7fa5d24c2744de0e608ae8e09d22</srcmd5>
+    <version>0.9.3</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="82">
+    <srcmd5>f0bc7fa5d24c2744de0e608ae8e09d22</srcmd5>
+    <version>0.9.3</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="85">
+    <srcmd5>f0bc7fa5d24c2744de0e608ae8e09d22</srcmd5>
+    <version>0.9.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="86">
+    <srcmd5>5297c14d325da3ad2ecc3b3899974340</srcmd5>
+    <version>0.9.3</version>
+    <time>1306497979</time>
+    <user>saschpe</user>
+    <comment>Corrected license field</comment>
+    <requestid>71563</requestid>
+  </revision>
+  <revision rev="14" vrev="87">
+    <srcmd5>e1b45dd82e8fe05c081a22a0d1266224</srcmd5>
+    <version>0.9.3</version>
+    <time>1306497994</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71563
+</comment>
+  </revision>
+  <revision rev="15" vrev="88">
+    <srcmd5>31061d3e6955143c5c65326bd0aa0f62</srcmd5>
+    <version>0.9.3</version>
+    <time>1312808720</time>
+    <user>saschpe</user>
+    <comment>- Ficx build with newer curl (forwarded request 78184 from elvigia)</comment>
+    <requestid>78185</requestid>
+  </revision>
+  <revision rev="16" vrev="89">
+    <srcmd5>2c2727207af0c7890736ea3d66c429a9</srcmd5>
+    <version>0.9.3</version>
+    <time>1312808728</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78185
+</comment>
+  </revision>
+  <revision rev="17" vrev="91">
+    <srcmd5>2c2727207af0c7890736ea3d66c429a9</srcmd5>
+    <version>0.9.3</version>
+    <time>1319182116</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="92">
+    <srcmd5>f9348178df308b83c29649ed0f8e859a</srcmd5>
+    <version>0.9.3</version>
+    <time>1321886831</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 92557 from coolo)</comment>
+    <requestid>92575</requestid>
+  </revision>
+  <revision rev="19" vrev="93">
+    <srcmd5>c7e82f1639e42234cd8c7ef20407f0b0</srcmd5>
+    <version>0.9.3</version>
+    <time>1332416059</time>
+    <user>coolo</user>
+    <comment>- fix license tag (forwarded request 109678 from coolo)</comment>
+    <requestid>109700</requestid>
+  </revision>
+  <revision rev="20" vrev="95">
+    <srcmd5>c7e82f1639e42234cd8c7ef20407f0b0</srcmd5>
+    <version>0.9.3</version>
+    <time>1340183614</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="97">
+    <srcmd5>c7e82f1639e42234cd8c7ef20407f0b0</srcmd5>
+    <version>0.9.3</version>
+    <time>1359109316</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="99">
+    <srcmd5>c7e82f1639e42234cd8c7ef20407f0b0</srcmd5>
+    <version>0.9.3</version>
+    <time>1379663027</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="101">
+    <srcmd5>c7e82f1639e42234cd8c7ef20407f0b0</srcmd5>
+    <version>0.9.3</version>
+    <time>1409301646</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="102">
+    <srcmd5>3e9fc40f3604db6a7aedb933116e1558</srcmd5>
+    <version>0.9.3</version>
+    <time>1503061001</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516800</requestid>
+  </revision>
+  <revision rev="25" vrev="103">
+    <srcmd5>c5be43a02ca023d7e71a6c6f7105b872</srcmd5>
+    <version>0.9.3</version>
+    <time>1503929825</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518835</requestid>
+  </revision>
+  <revision rev="26" vrev="104">
+    <srcmd5>3c28c8b6882aaabeb99a07934e3eaac1</srcmd5>
+    <version>0.9.3</version>
+    <time>1565962344</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license macro
+- Remove two BRs that are not directly used</comment>
+    <requestid>723238</requestid>
+  </revision>
+</revisionlist>

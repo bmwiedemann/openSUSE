@@ -1,0 +1,6 @@
+<package name="gphotofs" project="openSUSE:Factory">
+  <title>User Level File System for gphoto-Based Cameras</title>
+  <description>This package provides a fuse module to make digital cameras supported
+by libgphoto2 visible as a file system.</description>
+  <devel project="graphics" package="gphotofs"/>
+</package>

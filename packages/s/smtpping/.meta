@@ -1,0 +1,9 @@
+<package name="smtpping" project="openSUSE:Factory">
+  <title>A tool for measuring SMTP server delay, delay variation and throughput</title>
+  <description>A tool for measuring SMTP server delay, delay variation and throughput.
+
+
+  </description>
+  <devel project="network" package="smtpping"/>
+  <url>https://github.com/halon/smtpping</url>
+</package>

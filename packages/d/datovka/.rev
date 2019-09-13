@@ -1,0 +1,344 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc5bbcb929ee41128fd07d2b344126d5</srcmd5>
+    <version>3.0.3</version>
+    <time>1359540848</time>
+    <user>coolo</user>
+    <comment>Datovka czech egov system, this time fixed Source as upstream moves it around quite a lot :/</comment>
+    <requestid>149965</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a288703edffb7ccab28a3666d906cc84</srcmd5>
+    <version>3.0.3</version>
+    <time>1373989198</time>
+    <user>coolo</user>
+    <comment>- Format spec file was run and it was not changelogged.</comment>
+    <requestid>183425</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a288703edffb7ccab28a3666d906cc84</srcmd5>
+    <version>3.0.3</version>
+    <time>1379662204</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>55ff8344d19edbf0e4392d79248202b9</srcmd5>
+    <version>3.0.3</version>
+    <time>1383825091</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>205866</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>55ff8344d19edbf0e4392d79248202b9</srcmd5>
+    <version>3.0.3</version>
+    <time>1409300740</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7ac3d072830529dd4df1f606abf362b9</srcmd5>
+    <version>3.1</version>
+    <time>1412142033</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>250709</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ffb919a9a97e919305cda1fcd806c757</srcmd5>
+    <version>4.1.0</version>
+    <time>1423812929</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 4.1:
+  * Complete rewrite under qt5
+  * Should provide same usability, reffer to homepage for more info
+- Various cleanups
+- Add patch to fix building with respecting cflags/etc:
+  * datovka-fix-pro.patch</comment>
+    <requestid>285808</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a5fe81a43c06716e5ad41d5254a80057</srcmd5>
+    <version>4.1.2</version>
+    <time>1424827075</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 4.1.2:
+  * Various bugfixes
+- Add patch to not ask about new version availabilty:
+  * 0001-no-check-new-versions.patch
+- Refreshed patch:
+  * datovka-fix-pro.patch</comment>
+    <requestid>287508</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cbd076fbfcf752d3187dee3cf74d5338</srcmd5>
+    <version>4.2.0</version>
+    <time>1428391761</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 4.2.0:
+  * Various bugfixes
+  * Resending messages/etc
+- Obsoleted patch:
+  * 0001-no-check-new-versions.patch</comment>
+    <requestid>294304</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ba644d237f474a9590fe23de95666176</srcmd5>
+    <version>4.3.0</version>
+    <time>1433401489</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 4.3.0:
+  * No obvious changelog apart from mentioning bugfixes</comment>
+    <requestid>310137</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8dd2031d40f7151602765e3961706d8d</srcmd5>
+    <version>4.3.1</version>
+    <time>1441726989</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump 4.3.1:
+  * Few small bugfixes see ChangeLog for details
+- Refresh patch datovka-fix-pro.patch</comment>
+    <requestid>329249</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>de1121fd7fd3353f03aa41603aa4ad3b</srcmd5>
+    <version>4.4.0</version>
+    <time>1444833912</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 4.4.0:
+  * Various bugfixes all around. See ChangeLog file</comment>
+    <requestid>338137</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>156b9b21433ec94dd971dc8ff28c3382</srcmd5>
+    <version>4.4.3</version>
+    <time>1452027335</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 4.4.3:
+  * Various bugfixes. See ChangeLog file
+  * Fixed broken expired password swap</comment>
+    <requestid>351997</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>725a2a4687ba595a874da0a8b8640ce8</srcmd5>
+    <version>4.5.0</version>
+    <time>1455790028</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 4.5.0:
+  * various backend updates
+  * various bugs fixed
+  * qt 5.3 required now
+- Rebase patch:
+  * datovka-fix-pro.patch</comment>
+    <requestid>359655</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>00fd86719b3d3944a64aff3c82b8c965</srcmd5>
+    <version>4.5.3</version>
+    <time>1459845800</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>382863</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>50d5517073c5bbbdecf7f2012f60535e</srcmd5>
+    <version>4.6.0</version>
+    <time>1463393045</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 4.6.0:
+  * Added support for tags. These can be locally assigned to the messages.
+  * Message information are shown in separate window when double-clicking the
+    message in message list or when hitting the Return/Enter key.
+  * When composing a message, the recipient can be added to the recipient list
+    by double clicking it in the recently-used recipient list.
+  * Information about personal delivery are shown in message description field.
+  * Fixed problem where account entry has not been updated after message
+    deletion.
+  * Fixed encoding issue when exporting correspondence overview in HTML.
+  * Fixed a bug causing the create message button not to activate when first
+    account was created.</comment>
+    <requestid>395506</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>676e85e70dcfe316a03a70ba04116215</srcmd5>
+    <version>4.6.1</version>
+    <time>1476109538</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434090</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b4fa0818e7d14f40507fe40e7eb1733e</srcmd5>
+    <version>4.7.0</version>
+    <time>1476997792</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 4.7.0:
+  * openssl 1.1.0 support
+  * Various small fixes</comment>
+    <requestid>436450</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>464c75201dcc28260527e4baff33877d</srcmd5>
+    <version>4.7.1</version>
+    <time>1487681373</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458694</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>1932218081d1bbf3825e4f4f43bd8928</srcmd5>
+    <version>4.7.1</version>
+    <time>1489345437</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix license to be GPL-3.0+ as per COPYING file</comment>
+    <requestid>477755</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5602cd39ba2bd12ce892f5ff82c5e142</srcmd5>
+    <version>4.8.0</version>
+    <time>1490965822</time>
+    <user>maxlin_factory</user>
+    <comment>- Version update to 4.8.0:
+  * Added full-text data box search which is now the default method to search
+    for data boxes.
+  * Fixed problems with placing the main application window when starting the
+    application on a smaller screen than it has been closed before.
+  * Refactoring of code related to message imports and exports.
+  * Reduced the amount of code in main application window.
+
+- Drop dejavu dependency as it is now using fontconfig and not hardcoded
+  paths in the code</comment>
+    <requestid>483825</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>37abd8ca3a386fcf75e9117e6dc41ed9</srcmd5>
+    <version>4.8.1</version>
+    <time>1495637429</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497425</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cf464c0f0782c21bc93d6a6454d1d2ac</srcmd5>
+    <version>4.9.0</version>
+    <time>1500670162</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511418</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9c6fc17f647d2e6873992c7e5d47e040</srcmd5>
+    <version>4.9.3</version>
+    <time>1508876556</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535955</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c994677f0f02174484ff8415f5a38064</srcmd5>
+    <version>4.10.0</version>
+    <time>1512216721</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 4.10.0:
+  * Can now encrypt passwords via master password
+  * Better support for screen readers</comment>
+    <requestid>547022</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>eaf2e7ca2d6203a2778aa5c17fb95d43</srcmd5>
+    <version>4.10.1</version>
+    <time>1516359228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.10.1:
+  * Few small fixes
+  * MSI installer tweaks
+- Refresh patch datovka-fix-pro.patch</comment>
+    <requestid>566985</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>402027155c87fc6b89f8de9a832e9c8b</srcmd5>
+    <version>4.10.3</version>
+    <time>1535370520</time>
+    <user>dimstar_suse</user>
+    <comment>- Update datovka-fix-pro.patch to contain fix for Leap 42.3 build
+
+- Update to 4.10.3 bsc#1104620:
+  * Added classes based on Qt types encapsulating various ISDS data types and
+    structures. Sharing this code with mobile application.
+  * Added per-account locking of communication contexts.
+  * Modified database interface to accommodate new data types.
+  * Explicitly specifying tab order for most windows and dialogues. It is also
+    possible (on Windows and Linux) to cycle through actions in top tool bar.
+  * Asking users for confirmation before deleting tags which are still assigned
+    to some messages.
+  * Added tooltip description of message state value in sent message list.
+  * Added button to view account password when editing account credentials and
+    PIN (master password) is enabled.
+  * Added DigiCert Global Root G2 certificate.
+  * Improved keyboard-based control of main and other dialogue windows. All
+    important elements should be navigable only by keyboard (on Windows and
+    Linux).
+  * Fixed a problem with wrong conversion of obtained ISDS error statuses into
+    readable text. This may have caused the programme to crash.
+  * Fixed scaling of some icon-based control elements when using enlarged fonts
+    on Windows.
+  * Fixed message list sorting and filtering according to assigned tags.
+  * Displaying busy cursor when switching between entries in account list.
+  * New version notification can be blocked on Windows in runtime by setting
+    specific registry values. It can also be blocked at compile time
+    by using a configuration option when running qmake.
+  * Extended resource information for the generated Windows executable.
+  * Fixed project file include paths in order not to interfere with user-defined
+    compiler flags.</comment>
+    <requestid>629923</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6f7165ab2cac08dd8c8946c339b439aa</srcmd5>
+    <version>4.11.0</version>
+    <time>1536876115</time>
+    <user>maxlin_factory</user>
+    <comment>- Version update to 4.11.0:
+  * Few feature enhancements in mesage composing</comment>
+    <requestid>635483</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>55c5172340939748d3a279c006a65b50</srcmd5>
+    <version>4.11.0</version>
+    <time>1540320086</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license macros</comment>
+    <requestid>643896</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>07a1e4f01f1859c9e9b4fa5299b466ee</srcmd5>
+    <version>4.12.0</version>
+    <time>1548064663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.12.0 bsc#1104620:
+  * Bigger attachments allowed (50MB)
+  * HiDPI icons
+  * Minor fixes</comment>
+    <requestid>666455</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>334cbbbecd955d31b8fc2ba1291e2484</srcmd5>
+    <version>4.13.0</version>
+    <time>1555574205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.13.0 bsc#1104620:
+  * Account renaming now possible
+  * Special format downloading now alloved to &quot;spisova sluzba&quot;
+- Rebase patch datovka-fix-pro.patch</comment>
+    <requestid>695104</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e5c041eaf536f1d846f2b062988b3fbf</srcmd5>
+    <version>4.13.1</version>
+    <time>1559375206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705799</requestid>
+  </revision>
+</revisionlist>

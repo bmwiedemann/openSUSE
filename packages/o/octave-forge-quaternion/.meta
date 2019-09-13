@@ -1,0 +1,6 @@
+<package name="octave-forge-quaternion" project="openSUSE:Factory">
+  <title></title>
+  <description>Quaternion class with overloaded operators.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-quaternion"/>
+</package>

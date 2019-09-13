@@ -1,0 +1,5 @@
+<package name="vit" project="openSUSE:Factory">
+  <title>Curses-based front end to Taskwarrior</title>
+  <description>VIT - a minimalistic Taskwarrior full-screen terminal interface with Vim key bindings</description>
+  <devel project="utilities" package="vit"/>
+</package>

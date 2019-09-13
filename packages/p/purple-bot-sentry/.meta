@@ -1,0 +1,6 @@
+<package name="purple-bot-sentry" project="openSUSE:Factory">
+  <title>libpurple plugin to prevent Instant Message spam</title>
+  <description>Bot Sentry is a libpurple plug-in to prevent Instant Message spam.
+It allows you to ignore IMs unless the sender is in your Buddy List or Allow List, or the sender correctly answers a question you have predefined.</description>
+  <devel project="network:pidgin" package="purple-bot-sentry"/>
+</package>

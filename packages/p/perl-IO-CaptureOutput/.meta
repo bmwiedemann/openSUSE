@@ -1,0 +1,10 @@
+<package name="perl-IO-CaptureOutput" project="openSUSE:Factory">
+  <title>Capture STDOUT and STDERR from Perl code, subprocesses or XS</title>
+  <description>This module provides routines for capturing STDOUT and STDERR from perl
+subroutines, forked system calls (e.g. system(), fork()) and from XS or C
+modules.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-IO-CaptureOutput"/>
+  <url>http://search.cpan.org/dist/IO-CaptureOutput/</url>
+</package>

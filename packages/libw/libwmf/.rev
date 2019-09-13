@@ -1,0 +1,276 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>93078be091ca0ff7977b0831690e91e9</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1168903410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="32">
+    <srcmd5>4a8d03bb2121441b0c20b5719fc625ff</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1168965063</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="206">
+    <srcmd5>4a8d03bb2121441b0c20b5719fc625ff</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1168965063</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="207">
+    <srcmd5>5887ee5eefd24c4a6fa2b5dda32be48d</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1227882606</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="209">
+    <srcmd5>5887ee5eefd24c4a6fa2b5dda32be48d</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1227882606</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="210">
+    <srcmd5>c76415df6196103b24873476f83ed01e</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1260953433</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libwmf based on submit request 26615 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="211">
+    <srcmd5>3730611c51f3fd142ff0d6c5330b4593</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1261434869</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libwmf based on submit request 27373 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="212">
+    <srcmd5>bc57569d399c2e4c7f74e3e9c5d19286</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1263504557</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libwmf based on submit request 29097 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="9" vrev="213">
+    <srcmd5>555cdc0eb3db21209267222459dfa759</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1268924764</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="214">
+    <srcmd5>7b1ecae6394616beeafebe94a1ca44c7</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1270404492</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libwmf based on submit request 36903 from user oertel
+</comment>
+    <requestid>36903</requestid>
+  </revision>
+  <revision rev="11" vrev="216">
+    <srcmd5>7b1ecae6394616beeafebe94a1ca44c7</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="217">
+    <srcmd5>7b1ecae6394616beeafebe94a1ca44c7</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="218">
+    <srcmd5>2d6e2bd524bdd0c6bb6fe3d399575dc2</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1292766218</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56252 from user coolo
+</comment>
+    <requestid>56252</requestid>
+  </revision>
+  <revision rev="14" vrev="219">
+    <srcmd5>4902a99bc1aa7a753f1d47a83a7663d2</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1292766230</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56252
+</comment>
+  </revision>
+  <revision rev="15" vrev="222">
+    <srcmd5>4902a99bc1aa7a753f1d47a83a7663d2</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="224">
+    <srcmd5>4902a99bc1aa7a753f1d47a83a7663d2</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1319182146</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="225">
+    <srcmd5>754a89a8c76af6af5338c2cecd1f90da</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1322073392</time>
+    <user>coolo</user>
+    <comment>- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Apply shlib packaging (-&gt; new libwmf-0_2-7 subpackage),
+  create &quot;wmf-utils&quot; subpackage as suggested by namtrac (forwarded request 93121 from jengelh)</comment>
+    <requestid>93125</requestid>
+  </revision>
+  <revision rev="18" vrev="226">
+    <srcmd5>224fa325b61fad64ce48a0df5804e4d3</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1323192373</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="227">
+    <srcmd5>28504d00902afc26654b1ba22da35e69</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1331039119</time>
+    <user>coolo</user>
+    <comment>- Add libjpeg-devel as BuildRequires, needed to resolve build error
+- Add selected Xorg packages to BR to have wmf2x be built again</comment>
+    <requestid>107830</requestid>
+  </revision>
+  <revision rev="20" vrev="229">
+    <srcmd5>28504d00902afc26654b1ba22da35e69</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1340183653</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="230">
+    <srcmd5>8175e7b520e0297bfe31416a1d50f0b6</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1340626729</time>
+    <user>coolo</user>
+    <comment>Add libwmf-0_2-7 to baselibs.conf (forwarded request 125298 from dimstar)</comment>
+    <requestid>125308</requestid>
+  </revision>
+  <revision rev="22" vrev="232">
+    <srcmd5>8175e7b520e0297bfe31416a1d50f0b6</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1359109375</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="233">
+    <srcmd5>5409e6dcd280aa2242a3aee56a44da09</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1366290008</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 170992 from m_meister)</comment>
+    <requestid>171024</requestid>
+  </revision>
+  <revision rev="24" vrev="235">
+    <srcmd5>5409e6dcd280aa2242a3aee56a44da09</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1379663130</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="236">
+    <srcmd5>2dd8c3d2ff0088a84370fdc96b4ccf55</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1396535910</time>
+    <user>coolo</user>
+    <comment>- Add libwmf-0.2.8.4-bnc495842.patch to fix realloc return value
+  usage (bnc#495842, bnc#831299)</comment>
+    <requestid>227554</requestid>
+  </revision>
+  <revision rev="26" vrev="237">
+    <srcmd5>5ab8e1f8c5d3aed49ce84bc10546f671</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1401641896</time>
+    <user>coolo</user>
+    <comment>- Clean spec file with spec-cleaner
+- Do not distribute *.la files (forwarded request 235655 from fstrba)</comment>
+    <requestid>235692</requestid>
+  </revision>
+  <revision rev="27" vrev="238">
+    <srcmd5>e90e31a44547dbc88ace71cf38b795e8</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1409252718</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246530</requestid>
+  </revision>
+  <revision rev="28" vrev="240">
+    <srcmd5>e90e31a44547dbc88ace71cf38b795e8</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1409301760</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="241">
+    <srcmd5>c79213ee622e99da74a0abe909aeb9df</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1434136501</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#933109</comment>
+    <requestid>311550</requestid>
+  </revision>
+  <revision rev="30" vrev="242">
+    <srcmd5>aee776a5124ef61d6e24eb5c0b21bf21</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1435170738</time>
+    <user>dimstar_suse</user>
+    <comment>Update changelog with CVE number</comment>
+    <requestid>312251</requestid>
+  </revision>
+  <revision rev="31" vrev="243">
+    <srcmd5>b53127c752fae32b9ec26d1d3c918e91</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1438615244</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#936062 and bsc#936058</comment>
+    <requestid>314670</requestid>
+  </revision>
+  <revision rev="32" vrev="244">
+    <srcmd5>85d2be57b5d7b16839cac5f9ff5b87d7</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1498840678</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505755</requestid>
+  </revision>
+  <revision rev="33" vrev="245">
+    <srcmd5>fa755b431abef7075d0223edb2826ebd</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1517323230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570705</requestid>
+  </revision>
+  <revision rev="34" vrev="246">
+    <srcmd5>ccb1efb81dd08905a5e6e615dd0fd78f</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1520853018</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>584528</requestid>
+  </revision>
+  <revision rev="35" vrev="247">
+    <srcmd5>7550d842ec61aae3362e0038e7d61417</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1521579096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586439</requestid>
+  </revision>
+  <revision rev="36" vrev="248">
+    <srcmd5>e6e59602876e19701a3ba01efedaa3ac</srcmd5>
+    <version>0.2.8.4</version>
+    <time>1526573007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604726</requestid>
+  </revision>
+</revisionlist>

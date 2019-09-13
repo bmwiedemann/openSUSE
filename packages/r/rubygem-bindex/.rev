@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0742303059d5caae486b4b538d607080</srcmd5>
+    <version>0.5.0</version>
+    <time>1496534207</time>
+    <user>dimstar_suse</user>
+    <comment>Let's finally fix boo#1035083 - not sure why the responsible people don't feel inclined to submit this package</comment>
+    <requestid>499670</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a67b33670a53fe0cf4b8059f82220da0</srcmd5>
+    <version>0.7.0</version>
+    <time>1560970758</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705978</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>98425392ab611d3ef23fa24bb09f66a6</srcmd5>
+    <version>0.8.1</version>
+    <time>1563259298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715394</requestid>
+  </revision>
+</revisionlist>

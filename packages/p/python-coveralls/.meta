@@ -1,0 +1,6 @@
+<package name="python-coveralls" project="openSUSE:Factory">
+  <title></title>
+  <description>Show coverage stats online via coverallsio
+</description>
+  <devel project="devel:languages:python" package="python-coveralls"/>
+</package>

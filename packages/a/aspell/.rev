@@ -1,0 +1,260 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ef4051f844f1ed8f6ee496aa61a2165</srcmd5>
+    <version>0.60.5</version>
+    <time>1168561015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="10">
+    <srcmd5>421680be66d29b40cc5600c28cfb880d</srcmd5>
+    <version>0.60.5</version>
+    <time>1175421781</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="35">
+    <srcmd5>f9c8acd57374be17ac673d9062900cad</srcmd5>
+    <version>0.60.5</version>
+    <time>1187202048</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="36">
+    <srcmd5>53dbb7a2f8a9e02c17afce8f943413bc</srcmd5>
+    <version>0.60.5</version>
+    <time>1187279798</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="39">
+    <srcmd5>0926be57c29d2f230f8fc55b0be828ff</srcmd5>
+    <version>0.60.5</version>
+    <time>1187909027</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="48">
+    <srcmd5>b1f9f7cef301b9a5e6f0ff65c5ebefed</srcmd5>
+    <version>0.60.5</version>
+    <time>1193422337</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="76">
+    <srcmd5>76f2e6aaa142dd2e1e6b20d773326dd1</srcmd5>
+    <version>0.60.5</version>
+    <time>1207825595</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>04c0e9fb31ab517900ca0725c8498cf3</srcmd5>
+    <version>0.60.6</version>
+    <time>1216997230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="23">
+    <srcmd5>daefa17b909285e3425d7568cee9651e</srcmd5>
+    <version>0.60.6</version>
+    <time>1221434960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="24">
+    <srcmd5>ec533d684e450925168076e6b8701b2f</srcmd5>
+    <version>0.60.6</version>
+    <time>1225636357</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="25">
+    <srcmd5>38249817f859ef2abb6e6c3a0f349ef3</srcmd5>
+    <version>0.60.6</version>
+    <time>1227276757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="26">
+    <srcmd5>3b84fc122813a15f95c093a9178c004b</srcmd5>
+    <version>0.60.6</version>
+    <time>1229338711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="27">
+    <srcmd5>5259d7fc847c077fb8b18cf7bb439333</srcmd5>
+    <version>0.60.6</version>
+    <time>1249942163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="29">
+    <srcmd5>5259d7fc847c077fb8b18cf7bb439333</srcmd5>
+    <version>0.60.6</version>
+    <time>1249942163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="30">
+    <srcmd5>bcd97162b6dac28048f9a80f2710fdec</srcmd5>
+    <version>0.60.6</version>
+    <time>1263483027</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/aspell based on submit request 29085 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="16" vrev="31">
+    <srcmd5>37c2ee675cb2fbfc6d57472203671019</srcmd5>
+    <version>0.60.6</version>
+    <time>1268922936</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="33">
+    <srcmd5>37c2ee675cb2fbfc6d57472203671019</srcmd5>
+    <version>0.60.6</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="34">
+    <srcmd5>37c2ee675cb2fbfc6d57472203671019</srcmd5>
+    <version>0.60.6</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="37">
+    <srcmd5>37c2ee675cb2fbfc6d57472203671019</srcmd5>
+    <version>0.60.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="38">
+    <srcmd5>73847c94ff11b52f8138f59e42c6b612</srcmd5>
+    <version>0.60.6</version>
+    <time>1317625958</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85945 from coolo)</comment>
+    <requestid>86048</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>88eb8a81ef52e6418f1ee5f75efe6b49</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1317828903</time>
+    <user>lrupp</user>
+    <comment>update to version 0.60.6.1, Spec file updates, Removed some patches (fixed upstream), Updated baselibs.conf (forwarded request 86562 from adra)</comment>
+    <requestid>86572</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>88eb8a81ef52e6418f1ee5f75efe6b49</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1319181776</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>224a49e320e68759161de686f02af699</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1322073254</time>
+    <user>coolo</user>
+    <comment>- add -ltinfo</comment>
+    <requestid>93111</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>66318abf506ad6c32989aee78fe6f7f7</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1323190758</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>03bf3926d0f50af07b85e4eb2c61ae29</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1328890282</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections per specfile guideline suggestions</comment>
+    <requestid>103162</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>99b2b7711d948595f1b5aad622327279</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1330434725</time>
+    <user>coolo</user>
+    <comment>- Build C++ code with -fvisibility-inlines-hidden
+- Fix ncurses linkage. (forwarded request 106851 from elvigia)</comment>
+    <requestid>106852</requestid>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>99b2b7711d948595f1b5aad622327279</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1340183183</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="10">
+    <srcmd5>1832853df75763a14eb995319de7db6a</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1350020472</time>
+    <user>coolo</user>
+    <comment>- license FDL-1.1+ and LGPL-2.1 and HPND and BSD-Mark-Modifications</comment>
+    <requestid>137547</requestid>
+  </revision>
+  <revision rev="29" vrev="12">
+    <srcmd5>1832853df75763a14eb995319de7db6a</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1359108670</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="13">
+    <srcmd5>a2f231f8051c76a5b807de6a3ecf3b34</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1362744068</time>
+    <user>coolo</user>
+    <comment>- license GFDL-1.1+ and LGPL-2.1 and HPND and SUSE-BSD-Mark-Modifications
+  [bnc#777131]
+
+- license update: GFDL-1.1+ and LGPL-2.1 and HPND and BSD-3-Clause
+  SDPX
+
+- license GFDL-1.1+ and LGPL-2.1 and HPND and BSD-Mark-Modifications
+
+- fix build with new automake
+  * automake-1.13.patch</comment>
+    <requestid>157504</requestid>
+  </revision>
+  <revision rev="31" vrev="15">
+    <srcmd5>a2f231f8051c76a5b807de6a3ecf3b34</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1379661994</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="16">
+    <srcmd5>c3f28d5b656b24b6013f48574d34cf97</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1398485089</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>230944</requestid>
+  </revision>
+  <revision rev="33" vrev="18">
+    <srcmd5>c3f28d5b656b24b6013f48574d34cf97</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1409300519</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="19">
+    <srcmd5>50107250b60c8d7600427b74d5274b9a</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1450284076</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347125</requestid>
+  </revision>
+  <revision rev="35" vrev="20">
+    <srcmd5>ffa5a7c520644de2d48e5236d42a184a</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1483953925</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448235</requestid>
+  </revision>
+  <revision rev="36" vrev="21">
+    <srcmd5>4b30187366662627d5671050be2f5e8c</srcmd5>
+    <version>0.60.6.1</version>
+    <time>1486968435</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456409</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f053119471c8ed0a20048bb02c58f839</srcmd5>
+    <version>2.04</version>
+    <time>1302770846</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66728 from user babelworx
+</comment>
+    <requestid>66728</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4ccacff1fe6180f26dd00a3654a0db19</srcmd5>
+    <version>2.04</version>
+    <time>1302770858</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66728
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4ccacff1fe6180f26dd00a3654a0db19</srcmd5>
+    <version>2.04</version>
+    <time>1319182272</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7550fc0251010460c90b204245adb4a4</srcmd5>
+    <version>2.08</version>
+    <time>1321875644</time>
+    <user>coolo</user>
+    <comment>- update to 2.08
+    - Wind back pre-reqs for various modules to match what was shipped with Perl V 5.8.1.
+      Many thanx to Brian Cassidy for the error report: https://rt.cpan.org/Ticket/Display.html?id=72068.
+    - Rewrite Build.PL and Makefile.PL to try loading File::Which rather than assuming it is installed.
+      This avoids the chicken-and-egg problem whereby these 2 programs need File::Which::which to find 'dot'.
+      Many thanx to Richard Clamp for the error report: https://rt.cpan.org/Public/Bug/Display.html?id=71971.
+    - Add File::Which to the pre-reqs in Build.PL and Makefile.PL.
+    - Add 'Deprecated. See GraphViz2' to the docs.
+    - Add Build.PL.
+    - Add ability to set ORIENTATION. Thanx to Christian Lackas for the patch. See RT#71787.
+    - Add Changelog.ini.
+    - Add META.json, MYMETA.json and MYMETA.yml.
+    - Add MANIFEST.SKIP.
+    - Ensure all modules contain a version number.
+    - Update the docs regarding the list of modules shipped in this distro.
+    - Remove examples/remote.pl because GraphViz::Remote is no longer shipped.
+    - Clean up examples/clusters2.pl.
+    - Clean up Makefile.PL.</comment>
+    <requestid>92441</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9d277f71ea8d689d87b90febbe60c42e</srcmd5>
+    <version>2.08</version>
+    <time>1323193328</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>9d277f71ea8d689d87b90febbe60c42e</srcmd5>
+    <version>2.08</version>
+    <time>1340183848</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>9d277f71ea8d689d87b90febbe60c42e</srcmd5>
+    <version>2.08</version>
+    <time>1359109684</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>9d277f71ea8d689d87b90febbe60c42e</srcmd5>
+    <version>2.08</version>
+    <time>1379663691</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>61c724ebe84d2688ac20766d12c22d47</srcmd5>
+    <version>2.15</version>
+    <time>1400006805</time>
+    <user>coolo</user>
+    <comment>- update to 2.15
+  * fixes build on Factory
+  * changes:
+    - Fix double-quote escaping bug in GraphViz's _attributes() method. See RT#90528.
+    - Patch t/foo.t to not assume text appears on specific lines of the output test files.
+    - Re-package distro because users get errors during testing. See RT#80709.
+    - For pre-reqs such as strict, warnings, etc, which ship with Perl, set the version # to 0.
+	Reported as RT#80663 by Father Chrysostomos for Tree::DAG_Node.
+    - Add VDX as an output format.
+    - Accept a patch kindly supplied by Alexander Kriegisch, to change handling of the rankdir attribute.
+    - Patch this file to replace BST with GMT, since both DateTime::Format::HTTP and DateTime::Format::Strptime (forwarded request 233537 from vitezslav_cizek)</comment>
+    <requestid>233538</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>61c724ebe84d2688ac20766d12c22d47</srcmd5>
+    <version>2.15</version>
+    <time>1409302314</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0cbeabeaaaa65631a1528c0b77f56b4b</srcmd5>
+    <version>2.24</version>
+    <time>1508434338</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.24
+        - Test with Test::More V 1.001002 rather than V 1.302019, and all tests still pass.
+                See RT#115236. Thanx to Kent Fredric for again (sorry!) prompting me over this.
+                Lowering the version of Test::More in Makefile.PL is the only change in this version.
+        - Add no_xxe to XML::Twig instantiation. See RT#118972. Many thanx to Lisa Hare for a
+                very well-crafted set of patches provided via github.
+        - Revert change so we use Test::More instead of Test2::Bundle::Extended.
+                See RT#115236. Thanx to ribasushi for this report, and my apologies for not acting sooner.
+        - Escape a '{' in a regexp in t/foo.t. See RT#114551. Thanx to Slaven Rezic.
+        - Fix a typo in a comment, as provided by Gregor Herrmann in RT#111385.
+        - See http://savage.net.au/Ron/html/My.Workflow.for.Building.Distros.html for notes on the
+                modernization of the repo.
+                This includes updating Makefile.PL and removing Build.PL, MANIFEST and *META.*.
+        - Bail out cleanly if 'dot' is not installed. See RT#105575. Thanx Karen Etheridge.
+        - Update docs to point to a copy of the Perl licence.
+        - Update docs in GraphViz.pm to point to the github repo.
+        - Move t/pod.t into xt/author/.
+        - Merge patch from ntyni via github. This concerned use of defined(@some_array). With thanx.
+        - Accept pull request from Patrice Clement to add the x_deprecated flag to both META.json and
+                META.yml. The docs already had various references to 'deprecated', including directing users
+                to GraphViz2, so no change is needed there. Thanx Patrice.
+        - Add .gitignore to MANIFEST.SKIP.
+        - All patches to this version are from chrony, via a github pull request. With thanx.
+        - Use File::Which on Windows to detect if Graphviz is present.
+        - Clean up the code, including Build.PL and Makefile.PL.</comment>
+    <requestid>533860</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="perl-File-Find-Rule" project="openSUSE:Factory">
+  <title>Alternative interface to File::Find</title>
+  <description>File::Find::Rule is a friendlier interface to File::Find. It allows you to build rules which specify the desired files and directories.</description>
+  <devel project="devel:languages:perl" package="perl-File-Find-Rule"/>
+</package>

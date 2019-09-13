@@ -1,0 +1,14 @@
+<package name="yast2-scanner" project="openSUSE:Factory">
+  <title>YaST2 - Scanner Configuration</title>
+  <description>This package provides support for the configuration of USB scanners,
+SCSI scanners, scanners in HP all-in-one devices, and scanning via
+network (i.e. use a remote scanner via another host in the network).
+
+Parallel port scanners and network scanners (i.e. a scanner which is
+directly accessible in the network) cannot be configured with this
+tool, except for such scanners in HP all-in-one devices. Usually those
+devices must be configured manually. For more information see
+http://www.sane-project.org/ and the documentation in the package
+&quot;sane-backends&quot;.</description>
+  <devel project="YaST:Head" package="yast2-scanner"/>
+</package>

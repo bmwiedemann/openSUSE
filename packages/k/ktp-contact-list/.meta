@@ -1,0 +1,5 @@
+<package name="ktp-contact-list" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="ktp-contact-list"/>
+</package>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>527219b4339170d0ba8f30ef3cac294f</srcmd5>
+    <version>1.14</version>
+    <time>1485511260</time>
+    <user>dimstar_suse</user>
+    <comment>New package for monitoring.</comment>
+    <requestid>445331</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3a7ff648de5d8057cb73f71f29d7a351</srcmd5>
+    <version>1.14</version>
+    <time>1490026125</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479840</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1108e4059a1107042be8ca1259e20963</srcmd5>
+    <version>1.14</version>
+    <time>1511517371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544948</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>79f3b33eccfcc9b9b20ef940b14343bc</srcmd5>
+    <version>1.14</version>
+    <time>1561970653</time>
+    <user>dimstar_suse</user>
+    <comment>change dependency of systemd (forwarded request 706138 from computersalat)</comment>
+    <requestid>706139</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d2c287113523332fac7d1c8cdaf77ee6</srcmd5>
+    <version>1.14</version>
+    <time>1565362482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721965</requestid>
+  </revision>
+</revisionlist>

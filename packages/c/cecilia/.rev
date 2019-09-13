@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="83">
+    <srcmd5>dd6a86b7d3dac3c1fbe00fb0670b59ef</srcmd5>
+    <version>2.0.5</version>
+    <time>1168902406</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="233">
+    <srcmd5>0dd13a670a692726eb742abc512dc5be</srcmd5>
+    <version>2.0.5</version>
+    <time>1211498658</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="260">
+    <srcmd5>f529a98a559b16c9d775862d0b174e3e</srcmd5>
+    <version>2.0.5</version>
+    <time>1222261585</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="261">
+    <srcmd5>f529a98a559b16c9d775862d0b174e3e</srcmd5>
+    <version>2.0.5</version>
+    <time>1222261585</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="263">
+    <srcmd5>f529a98a559b16c9d775862d0b174e3e</srcmd5>
+    <version>2.0.5</version>
+    <time>1222261585</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="264">
+    <srcmd5>5c7f613ff2b25610f596a0989e9072b0</srcmd5>
+    <version>2.0.5</version>
+    <time>1268923160</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="266">
+    <srcmd5>5c7f613ff2b25610f596a0989e9072b0</srcmd5>
+    <version>2.0.5</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="267">
+    <srcmd5>5c7f613ff2b25610f596a0989e9072b0</srcmd5>
+    <version>2.0.5</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="270">
+    <srcmd5>5c7f613ff2b25610f596a0989e9072b0</srcmd5>
+    <version>2.0.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="271">
+    <srcmd5>270ba90481a7b0503937f6a2c4b81602</srcmd5>
+    <version>2.0.5</version>
+    <time>1316617046</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 83071 from jengelh)</comment>
+    <requestid>83973</requestid>
+  </revision>
+  <revision rev="11" vrev="273">
+    <srcmd5>270ba90481a7b0503937f6a2c4b81602</srcmd5>
+    <version>2.0.5</version>
+    <time>1319181806</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="274">
+    <srcmd5>a37aa1c0caadcba32b7b02aabc2b8142</srcmd5>
+    <version>2.0.5</version>
+    <time>1323190961</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="276">
+    <srcmd5>a37aa1c0caadcba32b7b02aabc2b8142</srcmd5>
+    <version>2.0.5</version>
+    <time>1340183231</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="278">
+    <srcmd5>a37aa1c0caadcba32b7b02aabc2b8142</srcmd5>
+    <version>2.0.5</version>
+    <time>1359108738</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="280">
+    <srcmd5>a37aa1c0caadcba32b7b02aabc2b8142</srcmd5>
+    <version>2.0.5</version>
+    <time>1379662096</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="282">
+    <srcmd5>a37aa1c0caadcba32b7b02aabc2b8142</srcmd5>
+    <version>2.0.5</version>
+    <time>1409300626</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

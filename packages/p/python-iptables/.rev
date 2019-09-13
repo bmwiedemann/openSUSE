@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1861294a58f9aa20d11eadee93fea1db</srcmd5>
+    <version>0.1.1+git20121114</version>
+    <time>1354712772</time>
+    <user>namtrac</user>
+    <comment>Python bindings for iptables</comment>
+    <requestid>143666</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1861294a58f9aa20d11eadee93fea1db</srcmd5>
+    <version>0.1.1+git20121114</version>
+    <time>1359110055</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>1861294a58f9aa20d11eadee93fea1db</srcmd5>
+    <version>0.1.1+git20121114</version>
+    <time>1379664199</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>bd54b6875be1c0fc43f7d04344ce34d3</srcmd5>
+    <version>0.1.1+git20121114</version>
+    <time>1382692769</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204579</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>27b046cfd225b34b3935550abaf4ee95</srcmd5>
+    <version>0.2.0</version>
+    <time>1386604769</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.2.0
+  + No changelog available
+- Use tarball generated with Github tags (forwarded request 209875 from posophe)</comment>
+    <requestid>209876</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>27b046cfd225b34b3935550abaf4ee95</srcmd5>
+    <version>0.2.0</version>
+    <time>1409302893</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>409bb6f98bb2a2dc3fb2be9c1a055aad</srcmd5>
+    <version>0.13.0</version>
+    <time>1530191615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619375</requestid>
+  </revision>
+</revisionlist>

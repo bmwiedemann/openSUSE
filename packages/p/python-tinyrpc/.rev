@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b53f8bc6bc524de48f16c3c779340f7</srcmd5>
+    <version>0.9.1</version>
+    <time>1526371585</time>
+    <user>dimstar_suse</user>
+    <comment>Cloud stuff
+
+- update to 0.9.1
+- Initial spec
+</comment>
+    <requestid>603518</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d0038bf4ddb39b4e824d948b80a5f709</srcmd5>
+    <version>0.9.1</version>
+    <time>1528492664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614835</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c54c9ebae740246d937d1e36cff05388</srcmd5>
+    <version>0.9.1</version>
+    <time>1545648316</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659719</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>87a1f7026de08b2f458c9ee03184a3e2</srcmd5>
+    <version>0.9.4</version>
+    <time>1551784989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.4:
+  * Tiny bugfixes only</comment>
+    <requestid>681400</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f4de8b1c6b44a18de14dd37fde5b7077</srcmd5>
+    <version>1.0.2</version>
+    <time>1563808785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2:
+  * no upstream changelog</comment>
+    <requestid>717573</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>12b8297059eda0bbcf9b9eaacc43c045</srcmd5>
+    <version>1.0.3</version>
+    <time>1568190891</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.3:
+  * no upstream changelog</comment>
+    <requestid>729733</requestid>
+  </revision>
+</revisionlist>

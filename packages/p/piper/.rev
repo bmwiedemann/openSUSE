@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e6b7a1afc184dd4e4d91ea6d4fe6ae76</srcmd5>
+    <version>0.2.902</version>
+    <time>1540451453</time>
+    <user>dimstar_suse</user>
+    <comment>I would like to add the new package piper to Factory, see https://lists.opensuse.org/opensuse-factory/2018-10/msg00241.html.</comment>
+    <requestid>644078</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1d1a8a55c3a766179b6d8b5a2e5ea9e6</srcmd5>
+    <version>0.2.903</version>
+    <time>1549018004</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.903:
+  * Updated Polish and German translations.
+  * Adjust to incompatible changes in ratbagd 0.9.904.
+  * Improved handling of error cases.
+  * Improved compatibility with HiDPI screens.
+  * Provide localized desktop files</comment>
+    <requestid>670156</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ca09d31e6b2a7f8a97aac769648a5927</srcmd5>
+    <version>0.2.904</version>
+    <time>1554281439</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.904:
+  * Adjusted to breaking DBus API changes of libratbag 0.9.905.
+  * Removed &quot;Add Profile&quot; button as the functionality was not
+    implemented.
+  * SVG handling is now done wholly within Piper instead of relying
+    on libratbag providing the SVGs.
+- Added patch fix-resource-generation-script-shebang.patch which
+  backports a fix for one of the build scripts.
+
+This should be processed with 690071 in which the API of libratbag
+changes incompatibly.</comment>
+    <requestid>690075</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5f1c32d9bce285a963c8e9aa78a3188a</srcmd5>
+    <version>0.2.904</version>
+    <time>1556107060</time>
+    <user>maxlin_factory</user>
+    <comment>- Add missing dependency to python3-cairo. (boo#1132961)</comment>
+    <requestid>697286</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d750cdcc53148c225237dc0625e74316</srcmd5>
+    <version>0.3</version>
+    <time>1565694886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3:
+  * Switched back to &quot;normal&quot; version numbering
+  * Check the APIVersion field in ratbagd to ensure it is
+    compatible.
+- Drop fix-resource-generation-script-shebang.patch as it has been
+  applied upstream.</comment>
+    <requestid>720732</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df0be7c641eafdf969e4e9fe6b7e2c65</srcmd5>
+    <version>0.1.0</version>
+    <time>1345973474</time>
+    <user>namtrac</user>
+    <comment>new Traditional input method. supersede previous SR to fix #bnc775644 reported by our license digger.</comment>
+    <requestid>130725</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>db9d616274842f165a932988a20e6211</srcmd5>
+    <version>0.1.1</version>
+    <time>1348147718</time>
+    <user>coolo</user>
+    <comment>update 0.1.1 (forwarded request 134465 from MargueriteSu)</comment>
+    <requestid>134481</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>81057e9f1ab42efd8863cca0b857a5d5</srcmd5>
+    <version>0.1.2</version>
+    <time>1351020247</time>
+    <user>coolo</user>
+    <comment> (forwarded request 138094 from MargueriteSu)</comment>
+    <requestid>138102</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>81057e9f1ab42efd8863cca0b857a5d5</srcmd5>
+    <version>0.1.2</version>
+    <time>1359108871</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0d682049e24f30cb69daed0c0df1e1aa</srcmd5>
+    <version>0.2.0</version>
+    <time>1359457936</time>
+    <user>coolo</user>
+    <comment>update 0.2.0 for 12.3 (forwarded request 150057 from MargueriteSu)</comment>
+    <requestid>150059</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>62d1e8401fac8949c3f2613dc3bb26d9</srcmd5>
+    <version>0.2.0</version>
+    <time>1359827499</time>
+    <user>coolo</user>
+    <comment>explicitly requires brise, which can't be handled by ld (forwarded request 150754 from MargueriteSu)</comment>
+    <requestid>150756</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3a9d850a9aa1167146f3667c8adfbaa</srcmd5>
+    <version>0.2.1</version>
+    <time>1372058854</time>
+    <user>coolo</user>
+    <comment>update 0.2.1:bugfix release (forwarded request 180525 from MargueriteSu)</comment>
+    <requestid>180526</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>947a92df514011549b6300e017ca612b</srcmd5>
+    <version>0.2.1</version>
+    <time>1373130854</time>
+    <user>coolo</user>
+    <comment>- add patch: fcitx-rime-0.2.1-Caplocks_never_response_second_request.patch
+  * Phenomenon: When inputing Chinese, users hit Capslock to enter
+    Capital letters, then fcitx-rime will enter ASCII mode. But
+    the second or further Capslock won't change ASCII mode back
+    to Chinese pinyin mode unless users hit Shift.
+  * Cause: Rime reads bitmask FcitxKeyState_CapsLock to detect 
+    whether CapsLock is on, but fcitx-rime frontend didn't 
+    provide such use. (forwarded request 182332 from MargueriteSu)</comment>
+    <requestid>182333</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>57a36b19f8aa06f24994eed9a9bddfcd</srcmd5>
+    <version>0.2.2</version>
+    <time>1374751124</time>
+    <user>coolo</user>
+    <comment>update version 0.2.2</comment>
+    <requestid>184200</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>57a36b19f8aa06f24994eed9a9bddfcd</srcmd5>
+    <version>0.2.2</version>
+    <time>1379662331</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1c9fbe87e173c58d3d224b8087704999</srcmd5>
+    <version>0.3.0</version>
+    <time>1384939517</time>
+    <user>coolo</user>
+    <comment>update version 0.3.0 (forwarded request 207558 from MargueriteSu)</comment>
+    <requestid>207559</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a224be72238d73dc6a2d2889fc47ea64</srcmd5>
+    <version>0.3.1</version>
+    <time>1402403939</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236652</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>a224be72238d73dc6a2d2889fc47ea64</srcmd5>
+    <version>0.3.1</version>
+    <time>1409300864</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d7fc5e391f45a59e7cc6dc0d7a9a3b12</srcmd5>
+    <version>0.3.2</version>
+    <time>1513677072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547525</requestid>
+  </revision>
+</revisionlist>

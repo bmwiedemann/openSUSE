@@ -1,0 +1,5 @@
+<package name="rubygem-ruby-dbus" project="openSUSE:Factory">
+  <title>Ruby module for interaction with D-Bus</title>
+  <description>Ruby module for interaction with D-Bus</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-ruby-dbus"/>
+</package>

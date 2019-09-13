@@ -1,0 +1,6 @@
+<package name="libdlm" project="openSUSE:Factory">
+  <title>Application interface to the kernel's distributed lock manager</title>
+  <description>Libraries and tools that allow applications, particularly filesystems
+like OCFS2, to interface with the in-kernel distributed lock manager.</description>
+  <devel project="network:ha-clustering:Factory" package="libdlm"/>
+</package>

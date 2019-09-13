@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d104903eb6616bac4bdce954027a67f1</srcmd5>
+    <version>1.4.2</version>
+    <time>1505334824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>523382</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>136cbc65daceb52a87460118df1039f3</srcmd5>
+    <version>1.5.2</version>
+    <time>1516711934</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.5.2</comment>
+    <requestid>559950</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a8c68ac3f76fb73881836225ae48fd9b</srcmd5>
+    <version>1.5.2</version>
+    <time>1530304363</time>
+    <user>dimstar_suse</user>
+    <comment>fix build failure</comment>
+    <requestid>618657</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>41e92ee21f400f01ef648ccbba5d3d6f</srcmd5>
+    <version>1.5.2</version>
+    <time>1534543422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629457</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>64a80e57d7d7e92b1227d98766c8f754</srcmd5>
+    <version>1.6.3</version>
+    <time>1567849836</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.6.3</comment>
+    <requestid>728502</requestid>
+  </revision>
+</revisionlist>

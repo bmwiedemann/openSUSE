@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc3abd67047c28245759862611fc1718</srcmd5>
+    <version>2.4.2</version>
+    <time>1476350918</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for new dbcp</comment>
+    <requestid>431242</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>68985604d5817318735dd4e3ebc5a6f1</srcmd5>
+    <version>2.4.2</version>
+    <time>1505416866</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build of javadoc</comment>
+    <requestid>526166</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>06fedc194e4b44a24284e78455e0e1f6</srcmd5>
+    <version>2.4.2</version>
+    <time>1532446246</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620757</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>67139eaaf2993e0846106814dbe05181</srcmd5>
+    <version>2.4.2</version>
+    <time>1545866664</time>
+    <user>dimstar_suse</user>
+    <comment>Maven artifact</comment>
+    <requestid>658035</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9e8ceafff258b76cae27655da012647e</srcmd5>
+    <version>2.4.2</version>
+    <time>1553809530</time>
+    <user>dimstar_suse</user>
+    <comment>Disregard the pom parent</comment>
+    <requestid>689054</requestid>
+  </revision>
+</revisionlist>

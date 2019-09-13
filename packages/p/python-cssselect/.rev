@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72dabed50041478d45fbe2bafbf2d3dc</srcmd5>
+    <version>0.7.1</version>
+    <time>1358786696</time>
+    <user>coolo</user>
+    <comment>This package is required for calibre to work properly.</comment>
+    <requestid>148983</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>72dabed50041478d45fbe2bafbf2d3dc</srcmd5>
+    <version>0.7.1</version>
+    <time>1359110007</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f50d61551e4fc23e12e79322bffb9808</srcmd5>
+    <version>0.8</version>
+    <time>1364899949</time>
+    <user>coolo</user>
+    <comment>update to 0.8 (forwarded request 161669 from apersaud)</comment>
+    <requestid>161816</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a66a795bcfb2edfc1835120fde76b2a9</srcmd5>
+    <version>0.8</version>
+    <time>1371652063</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179767</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>566e98889f6f997481553decb3e6ef66</srcmd5>
+    <version>0.8</version>
+    <time>1373655265</time>
+    <user>coolo</user>
+    <comment>- Packaged LICENSE file
+  fixes bnc#828513 
+  Bug 828513 - LICENSE not packaged in python3-cssselect 0.8 (forwarded request 182676 from apersaud)</comment>
+    <requestid>182871</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>566e98889f6f997481553decb3e6ef66</srcmd5>
+    <version>0.8</version>
+    <time>1379664149</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>88495c4cc67e014f903787c750fa12b4</srcmd5>
+    <version>0.9.1</version>
+    <time>1385292450</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 208061 from posophe)</comment>
+    <requestid>208062</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>88495c4cc67e014f903787c750fa12b4</srcmd5>
+    <version>0.9.1</version>
+    <time>1409302839</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f65855d943a3b77a5e34230a22f93fb5</srcmd5>
+    <version>1.0.1</version>
+    <time>1492617886</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>483317</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>780d74ab4e9b46e70986bd07584732d8</srcmd5>
+    <version>1.0.3</version>
+    <time>1516091126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562295</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1966a856713571704d83574e60df743f</srcmd5>
+    <version>1.0.3</version>
+    <time>1544816804</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655721</requestid>
+  </revision>
+</revisionlist>

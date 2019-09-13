@@ -1,0 +1,650 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>981851c88ece56251c527e7c26a73846</srcmd5>
+    <version>0.2</version>
+    <time>1332832399</time>
+    <user>coolo</user>
+    <comment>This time with SPDX license tag!</comment>
+    <requestid>111141</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>981851c88ece56251c527e7c26a73846</srcmd5>
+    <version>0.2</version>
+    <time>1340184231</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>981851c88ece56251c527e7c26a73846</srcmd5>
+    <version>0.2</version>
+    <time>1359110426</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>981851c88ece56251c527e7c26a73846</srcmd5>
+    <version>0.2</version>
+    <time>1379664715</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2d588c6346eec0055085944cf367c230</srcmd5>
+    <version>0.5.3</version>
+    <time>1389799636</time>
+    <user>coolo</user>
+    <comment>- Add comment on py3 conditional and depend on python-argparse
+
+- Version bump to 0.5.3:
+  + Various parser fixes and extended testsuite coverage
+    thanks to reports from packagers team.
+
+- Version bump to 0.5.2:
+  + Fixes issues found while parsing libreoffice
+  + Fixes issues 4 and 3 on github
+
+- Version bump to 0.5.1:
+  + Fixes the conditionals placement and makes all tests pass.
+
+- Version bump to 0.4.2:
+  + fix inlining
+  + fix service shell script
+  + rename obs service to different from format_spec_file
+
+- Fix build on fedora as they bytecompile the py
+
+- Version bump to 0.4.1
+  + Fixes to actually be able to parse own specfile.
+
+- Version bump to 0.4.0:
+  + Add extensive testsuite
+  + Split the code for readability purposes
+  + Mimic all the functionality from prep_spec
+  + Provide and obsolete obs-service-format_spec_file</comment>
+    <requestid>213824</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>65c3e103fc98775783788187e90db934</srcmd5>
+    <version>0.5.4</version>
+    <time>1391442115</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.5.4:
+  * plenty of bugfixes regarding to spec parsing as they were
+    reported on github
+  * add more exceptions on adding curly brackets
+  * update licenses list to the latest.</comment>
+    <requestid>220685</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fdec8c320aae4afbe26375ce2b0db159</srcmd5>
+    <version>0.5.5</version>
+    <time>1396709299</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.5.5:
+  * Few minor fixes as reported on github tracker.</comment>
+    <requestid>229018</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>aa038a145128ece9e096d3c6db0de59f</srcmd5>
+    <version>0.5.6</version>
+    <time>1399755513</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.5.6:
+  * Few minor fixes as reported on github.</comment>
+    <requestid>233326</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3515672395180751e9d1618bd08790aa</srcmd5>
+    <version>0.5.8</version>
+    <time>1403615773</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.5.8:
+  * brown paperbag release fixing tests on py3.
+
+- Version bump to 0.5.7:
+  * Updates about smp_mflags parsing
+  * makeinstall macro replacing improvements.</comment>
+    <requestid>238401</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>268200b21f5ec629a5790d1dce3f2f11</srcmd5>
+    <version>0.5.9</version>
+    <time>1404831540</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.5.9:
+  * Fix parsing %endif #comment
+  * Fix parsing %if rigth after %clean section</comment>
+    <requestid>239879</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>268200b21f5ec629a5790d1dce3f2f11</srcmd5>
+    <version>0.5.9</version>
+    <time>1409303397</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>938b0ccd2188f38f5ca30929e437e2ac</srcmd5>
+    <version>0.6.1</version>
+    <time>1409761338</time>
+    <user>coolo</user>
+    <comment>- py3 include arpgarse itself.
+
+- Version bump to 0.6.1:
+  * Fixup release with working spec-cleaner script executable
+
+- Version bump to 0.6.0:
+  * Use setuptools and nosetests for building&amp;testing
+  * Various bugfixes as found by java icedtea cleaning</comment>
+    <requestid>246811</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>47908170dc140f8659d3dcf198c69557</srcmd5>
+    <version>0.6.1</version>
+    <time>1409998699</time>
+    <user>coolo</user>
+    <comment>- Require py3-setuptools</comment>
+    <requestid>247444</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e1d31cad1f007caf76d75aed5ca144a3</srcmd5>
+    <version>0.6.2</version>
+    <time>1411461759</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.6.2:
+  * Fix iniline mode
+  * Various small fixes and testsuite expansion</comment>
+    <requestid>250668</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3eac6bf6245329c27b1190f500b17c05</srcmd5>
+    <version>0.6.3</version>
+    <time>1413263520</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>255547</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a782a7bbb2791e613f046d126d443d6f</srcmd5>
+    <version>0.6.4</version>
+    <time>1416347145</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove PKGBUILD until service-download_files is fixed to work fine
+  with them
+- Version bump to 0.6.4:
+  * Various small fixes and macro expansion.</comment>
+    <requestid>261746</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a545bbe91180e4d49e2410357fea6105</srcmd5>
+    <version>0.6.5</version>
+    <time>1418054213</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.6.5:
+  * Fix vertical spacing around nested conditionals
+  * Fix issue with bogus %lang detection</comment>
+    <requestid>264374</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bbadc28413895950c77ed2a77e49c6a2</srcmd5>
+    <version>0.6.8</version>
+    <time>1423596260</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.6.8:
+  * The copyright line broke test, so update again to fix that
+
+- Version bump to 0.6.7:
+  * Update copyright line to match current SUSE one
+
+- Version bump to 0.6.6:
+  * Excludes for java qmake gem_ and kde macros
+  * Cleanup conflicts lines properly
+  * Cleanup kernel subpkgs properly
+  * Work with spaces in version string</comment>
+    <requestid>285119</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>af722747413febe111ffe3c2db2b083e</srcmd5>
+    <version>0.6.9</version>
+    <time>1429346395</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.6.9:
+  * Replace =&gt; with &gt;=
+  * Bracketing excludes
+  * Replace paths using regexps instead of hardcoding (more cases covered)
+  * Remove various obsolete tags from preamble Icon/Packager/...
+  * Fix RPM_BUILD_ROOT replacement cornercase failure
+  * Remove %doc from %_mandir paths as it is pointless to have there</comment>
+    <requestid>297297</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b82992984236260749e1208a03df93ad</srcmd5>
+    <version>0.7.0</version>
+    <time>1433401472</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.7.0:
+  * Various small code cleanups and readability improvemnets
+  * Better macro detection to allow braces in macros
+  * Fix minimal mode appending empty lines in some cases
+  * Various additional bracketing excludes</comment>
+    <requestid>310123</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e6fc7929cd2a3d6641ab1ce45038722b</srcmd5>
+    <version>0.7.1</version>
+    <time>1433920567</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311276</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6d6f8d34359b7ee700bda62e0682bd82</srcmd5>
+    <version>0.7.2</version>
+    <time>1435870167</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.7.2:
+  * Do not curlify %20 which is usually space in Source lines
+  * Few more excludes for bracket
+  * Bunch of small fixes</comment>
+    <requestid>314465</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>65fed01c8a679b9038ba516b870aba78</srcmd5>
+    <version>0.7.3</version>
+    <time>1441296214</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.7.3:
+  * Fix wrong bracketing of kernel_module macro</comment>
+    <requestid>328577</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>384885e301bfbbd8282db68121dd7a97</srcmd5>
+    <version>0.7.4</version>
+    <time>1442638522</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.7.4:
+  * Use license digger from format_spec_file
+  * Provide optional subpkg providing format_spec_file OBS bindings</comment>
+    <requestid>331748</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5122ba704f9bacf71ddc326e590a95a3</srcmd5>
+    <version>0.7.5</version>
+    <time>1453799697</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.7.5:
+  * Replace jobs in install section too
+  * Do not curlify gconf_schemas
+  * Work with defines in sections not just as global declarations
+  * Quote optflags properly when replacing RPM_OPT_FLAGS
+  * Do not add empty line after oneline scriptlet</comment>
+    <requestid>355381</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d676b9cabd3ce5c662e37b37ffe835ad</srcmd5>
+    <version>0.7.7</version>
+    <time>1455190686</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.7.7:
+  * fix oneline scriptlets from previous version
+  * Few small fixes
+  * Minimal mode expansion to work reliably as format_spec_file replacement</comment>
+    <requestid>358605</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>49e9051a9dd16df9c6b0ecdd32ab1626</srcmd5>
+    <version>0.7.8</version>
+    <time>1456320402</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>361222</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3d2140622fe91fe81759a671b91a5e11</srcmd5>
+    <version>0.7.9</version>
+    <time>1457014595</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.7.9:
+  * Fix bug in %if detection if it was curlified
+  * Add one more case of RPM_BUILD_ROOT replacement
+  * Detect wrong Group values and suggest correct ones</comment>
+    <requestid>365180</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>67ed25531b9e10f48a4bcf603d04a964</srcmd5>
+    <version>0.7.9</version>
+    <time>1459002445</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378573</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9b73a20e36691d50aa4c9dac27e5263a</srcmd5>
+    <version>0.8.0</version>
+    <time>1460632113</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.8.0:
+  * Various bugfixes to the functionality
+  * Add fixme to plain ./configure macro
+  * Add pkgconfig dependency if needed
+  * Add tests for all exclude_bracketing rules</comment>
+    <requestid>389427</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0ec703e7b3479f8c292742808d6881ac</srcmd5>
+    <version>0.8.1</version>
+    <time>1461855245</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.8.1:
+  * Sort out AUTHORS alphabetically and fix emails
+  * Fix FIXME addition to all ./configure calls
+  * Fix breakage on some buildrequires syntax</comment>
+    <requestid>390056</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>68621a5f103740b8ca439a0666e704e6</srcmd5>
+    <version>0.8.2</version>
+    <time>1462178692</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.8.2:
+  * Add switch to disable copyright generating
+  * Few small fixes
+  * Tweak pkgconfig addition to work on all distros not just openSUSE</comment>
+    <requestid>393066</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>053b4c10bbd9071f54ea3072d13fcee0</srcmd5>
+    <version>0.8.5</version>
+    <time>1463124250</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.8.5:
+  * Fix for pkgconfig adding in preamble section
+
+- Version update to 0.8.4:
+  * 0.8.3 skipped due to pypi mistake
+  * set suffix for manpages/infopages
+  * remove suse_update_config
+  * remove more authors blobs
+  * redo options passing to be more readable
+  * split out testsuite (now runs ~270 tests)
+  * few bracketing excludes updates
+  * Fix the no-header option to do what everyone would expect</comment>
+    <requestid>394945</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e9ce60f95971ac936594e077749eadfb</srcmd5>
+    <version>0.8.8</version>
+    <time>1464014340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>396826</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f95be3bd41c465c85b6003f6e0356355</srcmd5>
+    <version>0.8.9</version>
+    <time>1465336158</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.8.9:
+  * Fix one more virtualenv issue
+  * Fix one case of broken requires splitting
+  * Properly initialize unbracketing in regexps
+  * Fix one more case of double pkg-config dependency</comment>
+    <requestid>400220</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9e12d207e78e7bbab94bded86a60aa1e</srcmd5>
+    <version>0.9.0</version>
+    <time>1467541677</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.9.0:
+  * Various small fixes
+  * Support for tex/perl/cmake conversions:
+    + bla-devel -&gt; cmake(bla)</comment>
+    <requestid>405726</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f8e48b992aabe340f0336b977bf4ac21</srcmd5>
+    <version>0.9.1</version>
+    <time>1483555029</time>
+    <user>lnussel_factory</user>
+    <comment>- Version update to 0.9.1:
+  * Switch from regexp macro detection to full-blown parser to avoid
+    bugs</comment>
+    <requestid>448276</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>dd013d387a7a6ef9a111888b6599900d</srcmd5>
+    <version>0.9.2</version>
+    <time>1487149653</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.9.2:
+  * More minimal fixes
+  * Add option to keep vertical space in preamble if desired</comment>
+    <requestid>456788</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5f7b1187a2855b216d7b23f6c7530522</srcmd5>
+    <version>0.9.3</version>
+    <time>1488322260</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460667</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4521c943d80d303628e3a45fc92269aa</srcmd5>
+    <version>0.9.4</version>
+    <time>1492073119</time>
+    <user>maxlin_factory</user>
+    <comment>- Version update to 0.9.4:
+  * Fixes in the dep_parser
+  * Vertical whitespace is now safeguarded
+  * More excludes_bracketing
+  * Update list of known licenses</comment>
+    <requestid>487015</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>cac4f721e4284f32ef6434495b88768d</srcmd5>
+    <version>0.9.5</version>
+    <time>1495034362</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.9.5:
+  * More fixes for the dep_parser
+  * Convert pypy urls to new format
+  * Start of rpmpreamble cleanup</comment>
+    <requestid>495599</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0b0769c498d36f26f8716b42beeaf101</srcmd5>
+    <version>0.9.6</version>
+    <time>1496932712</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.9.6:
+  * Deduplication of requires/buildrequires
+  * Preamble detection fixups
+  * Detect buildignores</comment>
+    <requestid>501887</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>37a0c03e49bb7148b30bdd8a4e1ca0d2</srcmd5>
+    <version>0.9.7</version>
+    <time>1497274571</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.9.7:
+  * Fix help parsing that crashed the app on execution</comment>
+    <requestid>503031</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>456b1c5fd978f720945c547148c85401</srcmd5>
+    <version>0.9.8</version>
+    <time>1498840950</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.9.8 bsc#1046652:
+  * Various fixes as reported on github
+  * Remove defattr as default from new rpm should be enough
+  * Remove buildroot as new rpms do not need it at all</comment>
+    <requestid>507043</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>588ed062119745dba7d03e2d26932b8a</srcmd5>
+    <version>1.0.0</version>
+    <time>1506524108</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.0.0 bsc#1060402:
+  * Recognise the BuildConflicts tag
+  * Fix few make parsing errors
+  * Fix some codeblock error detection
+  * More path replacements detection
+  * Keep uppercase URL tag as per vote
+
+- Version update to 0.9.9:
+  * Include pkgconfig and others from leap 42.3 instead of 42.2</comment>
+    <requestid>528773</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>69d59f7220c4fd7ac6059c333e1866dc</srcmd5>
+    <version>1.0.1</version>
+    <time>1512734380</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.0.1 bsc#1071561:
+  * Recognize new rpm trgger* events
+  * Remove otherproviders conflicts syntax (just keep the pkg name)
+  * Detect more apache macros
+  * Drop py_requires macro that is useless</comment>
+    <requestid>554866</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2cd694ce4a3a7829532208a15e54f88e</srcmd5>
+    <version>1.0.2</version>
+    <time>1516804249</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.0.2 bsc#1077177:
+  * Allow changelog-year specification via cmdline
+  * Switch to pytest
+  * Add groups for rust
+  * Fix bug in otherprovides removal</comment>
+    <requestid>568515</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b7e9cf7adf34f030f9124e08018e2733</srcmd5>
+    <version>1.0.3</version>
+    <time>1519218668</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the debian control things, all releases fail to build
+- Update to 1.0.3:
+  * Fix various lint issues
+  * Switch to SPDX-3.0 license format
+  * Add %doc -&gt; %license conversion script
+  * Fix crash bugs found when scanning whole Tumbleweed repo</comment>
+    <requestid>576937</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b17906f8477e0a6211f86de1dfd194f4</srcmd5>
+    <version>1.0.4</version>
+    <time>1519844596</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix issue with the %doc -&gt; %license conversion in some complex
+  cases, multiple licenses at once, prefixed licenses</comment>
+    <requestid>580985</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9e2d04b4428c964e53cd35abd9a2e267</srcmd5>
+    <version>1.0.6</version>
+    <time>1520415580</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.0.6 release:
+  * Fixes license conversions to spdx3.0
+  * Allows better parsing of pattern packages
+  * Various manpage suffixing fixes
+  * Added more things to exclude bracketing</comment>
+    <requestid>583685</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>0f6402d52e5ed29ba84a64ea005c9a60</srcmd5>
+    <version>1.0.7</version>
+    <time>1523616665</time>
+    <user>maxlin_factory</user>
+    <comment>- Version update to 1.0.7 bsc#1089297:
+  * Fix haskell macro bracketing
+  * Fix firewalld macros bracketing</comment>
+    <requestid>595915</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>03822e8d6ffcd958f67f9923d4468adc</srcmd5>
+    <version>1.0.8</version>
+    <time>1526463540</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.0.8 bsc#1092933:
+  * Be case insensitive on license detection
+  * Exclude limit_build from bracketing
+  * Replace _libexecdir as we now do not really bother about
+    SLE11</comment>
+    <requestid>606443</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>aa27746b1aea7175965fa2fcb81f015e</srcmd5>
+    <version>1.0.9</version>
+    <time>1530304619</time>
+    <user>dimstar_suse</user>
+    <comment>- Version uppdate to 1.0.9 bsc#1099674:
+  * Move some checks from rpmlint to be autochecked
+  * Dropped support of py2
+  * Fixed error reported on parsing non-utf spec-file
+  * Leap 15.0 used as base for conversions to pkgconfig/etc.</comment>
+    <requestid>619757</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>be56e8b9a0de303382c7a93f86cbced1</srcmd5>
+    <version>1.1.0</version>
+    <time>1530567182</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.1.0 bsc#1099674:
+  * Fix issue with previous release not finding datadirs</comment>
+    <requestid>620042</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c5b910f0dd53861160016d901efc3da8</srcmd5>
+    <version>1.1.1</version>
+    <time>1534774906</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.1.1 bsc#1099674:
+  * Fix help message not working
+  * Make libexecdir opt-in rather than opt-out
+  * Account for LICENCE string not just LICENSE
+  * Warn about direct qmake/meson usage
+  * Use https when mentioning bugzilla in header
+  * Use tuples on some places rather than lists</comment>
+    <requestid>630463</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>1daf182d273930cf50b836e1c565981c</srcmd5>
+    <version>1.1.2</version>
+    <time>1544727016</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.1.2 bsc#1099674: 
+  * Fixed qmake macro recommendation
+  * More licenses recognised
+  * Do not curlify sysuser_create</comment>
+    <requestid>657809</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>039b3f0eb6511c2072ccb93bd1ae060b</srcmd5>
+    <version>1.1.3</version>
+    <time>1552206892</time>
+    <user>coolo</user>
+    <comment>- Update to 1.1.3 bsc#1099674:
+  * Convert pytest calls to macros
+  * Fix errors in %python_expand line expansions
+  * update licenses list
+  * Expand more excludes for curlification
+  * Do not add accidental newlines to complex conditions</comment>
+    <requestid>682450</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>9305369a40d67c28d3326559d5cdda51</srcmd5>
+    <version>1.1.4</version>
+    <time>1563456077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716033</requestid>
+  </revision>
+</revisionlist>

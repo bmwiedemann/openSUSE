@@ -1,0 +1,5 @@
+<package name="libXxf86vm" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:XOrg" package="libXxf86vm"/>
+</package>

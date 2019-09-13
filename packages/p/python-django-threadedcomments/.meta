@@ -1,0 +1,9 @@
+<package name="python-django-threadedcomments" project="openSUSE:Factory">
+  <title></title>
+  <description>threadedcomments is a Django application which allows for the simple
+creation of a threaded commenting system.
+
+Commenters can reply both to the original item, and reply to other
+comments as well.</description>
+  <devel project="devel:languages:python:django" package="python-django-threadedcomments"/>
+</package>

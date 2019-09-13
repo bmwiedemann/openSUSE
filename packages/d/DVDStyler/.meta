@@ -1,0 +1,9 @@
+<package name="DVDStyler" project="openSUSE:Factory">
+  <title>A GUI frontend for dvdauthor and other related tools</title>
+  <description>DVDStyler is a gui frontend for using dvdauthor and dvd-slideshow scripts to easily 
+build DVD menus and assemble the DVD VOB files.
+
+</description>
+  <devel project="multimedia:apps" package="DVDStyler"/>
+  <url>https://www.dvdstyler.org</url>
+</package>

@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d49a4c3dbc11def5dfee88ed4706ede</srcmd5>
+    <version>2.3.1</version>
+    <time>1491469345</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>484077</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>243629ae12bd7fa75c380aeb93d3daa6</srcmd5>
+    <version>2.3.2</version>
+    <time>1526463605</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libsignal-protocol-c-2.3.2-lib_ver.patch:
+  Use 2.3.2 lib version.
+  See https://github.com/signalapp/libsignal-protocol-c/pull/110
+
+- Update to 2.3.2:
+  * Update curve25519 code based on upstream changes 
+  * Added support for building against OpenSSL 1.1
+  * Add ability to generate fingerprints from a collection of identity keys
+  * Add support for identity fingerprint format v1
+  * Update to latest protobuf definition for fingerprints
+  * Provide a pkg-config file for libsignal-protocol-c
+  * Explicitly require check 0.9.10+ for unit tests
+  * Various bug fixes
+  * For full list see:
+  https://github.com/signalapp/libsignal-protocol-c/compare/v2.3.1...v2.3.2</comment>
+    <requestid>607070</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7556204816e71261e42c53774250a2fa</srcmd5>
+    <version>2.3.2</version>
+    <time>1551216095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>679232</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6c20d505a95c5feecf26d07cd58b4f31</srcmd5>
+    <version>2.3.2</version>
+    <time>1551276629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>679766</requestid>
+  </revision>
+</revisionlist>

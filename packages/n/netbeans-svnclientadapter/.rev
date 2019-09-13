@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>763011ed7491a0b1a6ac67cb5f99e453</srcmd5>
+    <version>6.5</version>
+    <time>1247367009</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>763011ed7491a0b1a6ac67cb5f99e453</srcmd5>
+    <version>6.5</version>
+    <time>1247367009</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7f6713ee23bac5ae161438ccc063efc9</srcmd5>
+    <version>6.5</version>
+    <time>1268925078</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ddfbd476edb3da8526425b5443014662</srcmd5>
+    <version>6.7.1</version>
+    <time>1270722849</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/netbeans-svnclientadapter based on submit request 37327 from user mvyskocil
+</comment>
+    <requestid>37327</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ddfbd476edb3da8526425b5443014662</srcmd5>
+    <version>6.7.1</version>
+    <time>1278667370</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>ddfbd476edb3da8526425b5443014662</srcmd5>
+    <version>6.7.1</version>
+    <time>1278678600</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>ddfbd476edb3da8526425b5443014662</srcmd5>
+    <version>6.7.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>ddfbd476edb3da8526425b5443014662</srcmd5>
+    <version>6.7.1</version>
+    <time>1319182198</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>85bf7dec2b35553d213bde47d54d1f3f</srcmd5>
+    <version>6.7.1</version>
+    <time>1323192694</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>85bf7dec2b35553d213bde47d54d1f3f</srcmd5>
+    <version>6.7.1</version>
+    <time>1340183729</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>85bf7dec2b35553d213bde47d54d1f3f</srcmd5>
+    <version>6.7.1</version>
+    <time>1359109498</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>72831ec6f885e3d1c17522cb26322ffe</srcmd5>
+    <version>6.7.1</version>
+    <time>1378899495</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198305</requestid>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>72831ec6f885e3d1c17522cb26322ffe</srcmd5>
+    <version>6.7.1</version>
+    <time>1379663357</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="18">
+    <srcmd5>6a6c69bb385140bea6556bab964a0ff5</srcmd5>
+    <version>6.7.1</version>
+    <time>1405101958</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240359</requestid>
+  </revision>
+  <revision rev="15" vrev="20">
+    <srcmd5>6a6c69bb385140bea6556bab964a0ff5</srcmd5>
+    <version>6.7.1</version>
+    <time>1409301969</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="21">
+    <srcmd5>cb758b64229dd6362f884b941e029b0a</srcmd5>
+    <version>6.7.1</version>
+    <time>1505920373</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527347</requestid>
+  </revision>
+</revisionlist>

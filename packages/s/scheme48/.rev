@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>495d71f2a3c757e16f659474cd225036</srcmd5>
+    <version>1.9.2</version>
+    <time>1553635858</time>
+    <user>dimstar_suse</user>
+    <comment>Fix name space: openSUSE does not have emacs-common but emacs package</comment>
+    <requestid>686319</requestid>
+  </revision>
+</revisionlist>

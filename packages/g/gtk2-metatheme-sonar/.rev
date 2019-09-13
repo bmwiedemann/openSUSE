@@ -1,0 +1,258 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>71863475d1ec97087a069b38bc1fc61f</srcmd5>
+    <version>11.2.1</version>
+    <time>1242927725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>839ccbc289485c7455c583ca65ca4005</srcmd5>
+    <version>11.2.1</version>
+    <time>1249679120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a15a589acad5b3f6fde09190eb1e7f7</srcmd5>
+    <version>11.2.2</version>
+    <time>1250514928</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 18005 from user vuntz
+</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c1ec3a7715dfe4c34cd0baf90108e0be</srcmd5>
+    <version>11.2.3</version>
+    <time>1253654039</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 20774 from user dimstar
+</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>02e4674fb83b2768cffb787f2bc64274</srcmd5>
+    <version>11.2.3</version>
+    <time>1254002653</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 21117 from user dimstar
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9d3535990aefd31366174f0f8bd3e99a</srcmd5>
+    <version>11.2.5</version>
+    <time>1254792930</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 21789 from user vuntz
+</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>9d3535990aefd31366174f0f8bd3e99a</srcmd5>
+    <version>11.2.5</version>
+    <time>1254792930</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 21789 from user vuntz
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>97e643bcc3e5b84844276a99060c8331</srcmd5>
+    <version>11.2.9</version>
+    <time>1256217229</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 22860 from user dimstar
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1a2d689a812680fff48d1d61f8e2b081</srcmd5>
+    <version>11.2.10</version>
+    <time>1260268427</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 25846 from user vuntz
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1f5ea220ac8dad4e3563ba3968513dc6</srcmd5>
+    <version>11.2.10</version>
+    <time>1268923900</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7561d3e56050a57bcd6e024e1a7e39e0</srcmd5>
+    <version>11.3.0</version>
+    <time>1273791378</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 39907 from user dimstar
+</comment>
+    <requestid>39907</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8c2884227e00bf7fd2671bbb682d944b</srcmd5>
+    <version>11.3.0</version>
+    <time>1277826108</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 42190 from user vuntz
+</comment>
+    <requestid>42190</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>8c2884227e00bf7fd2671bbb682d944b</srcmd5>
+    <version>11.3.0</version>
+    <time>1278667349</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>8c2884227e00bf7fd2671bbb682d944b</srcmd5>
+    <version>11.3.0</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>0b3b134da504c481d89bb4ddfe361345</srcmd5>
+    <version>11.3.0</version>
+    <time>1281363929</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 45091 from user vuntz
+</comment>
+    <requestid>45091</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>8067db5ac1662e0dc44e575a64031425</srcmd5>
+    <version>11.3.0</version>
+    <time>1282945766</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 46467 from user vuntz
+</comment>
+    <requestid>46467</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>7428874b6f1fc5a255192d1f6c089f69</srcmd5>
+    <version>11.3.0</version>
+    <time>1285529655</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 49117 from user vuntz
+</comment>
+    <requestid>49117</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>ef62975c96c322b6f66701be539398e1</srcmd5>
+    <version>11.3.0</version>
+    <time>1287155494</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk2-metatheme-sonar based on submit request 50724 from user vuntz
+</comment>
+    <requestid>50724</requestid>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>1f2f9901402e4fa8bf1ae039b4c0af70</srcmd5>
+    <version>unknown</version>
+    <time>1295050960</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58217 from user vuntz
+</comment>
+    <requestid>58217</requestid>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>5fa2185dfc459954b41ebcd5c8a9cb73</srcmd5>
+    <version>unknown</version>
+    <time>1295050969</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58217
+</comment>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>f04a21464c4cfe1a3c27db02f5319e8d</srcmd5>
+    <version>11.3.0</version>
+    <time>1295943156</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 58738 from user vuntz
+</comment>
+    <requestid>58738</requestid>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>b8942350ca0f3afe1d01b8d8fbdcfb9e</srcmd5>
+    <version>11.3.0</version>
+    <time>1295943206</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 58738
+</comment>
+  </revision>
+  <revision rev="23" vrev="15">
+    <srcmd5>b8942350ca0f3afe1d01b8d8fbdcfb9e</srcmd5>
+    <version>11.3.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="17">
+    <srcmd5>b8942350ca0f3afe1d01b8d8fbdcfb9e</srcmd5>
+    <version>11.3.0</version>
+    <time>1319181952</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="18">
+    <srcmd5>fea253b61d4fa5aeab574165589ee31c</srcmd5>
+    <version>unknown</version>
+    <time>1323191815</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="20">
+    <srcmd5>fea253b61d4fa5aeab574165589ee31c</srcmd5>
+    <version>unknown</version>
+    <time>1340183421</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="22">
+    <srcmd5>fea253b61d4fa5aeab574165589ee31c</srcmd5>
+    <version>unknown</version>
+    <time>1359109021</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="23">
+    <srcmd5>5318c092cf427ab46b29b6ba746e3935</srcmd5>
+    <version>unknown</version>
+    <time>1364896214</time>
+    <user>coolo</user>
+    <comment>cleanup</comment>
+    <requestid>161801</requestid>
+  </revision>
+  <revision rev="29" vrev="25">
+    <srcmd5>5318c092cf427ab46b29b6ba746e3935</srcmd5>
+    <version>unknown</version>
+    <time>1379662580</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="26">
+    <srcmd5>b2f66f9c5a8c66f34e8a454b0401e661</srcmd5>
+    <version>unknown</version>
+    <time>1406272141</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242082</requestid>
+  </revision>
+  <revision rev="31" vrev="28">
+    <srcmd5>b2f66f9c5a8c66f34e8a454b0401e661</srcmd5>
+    <version>unknown</version>
+    <time>1409301127</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="29">
+    <srcmd5>46f68f7e506fa47d82a99bb90352fd36</srcmd5>
+    <version>unknown</version>
+    <time>1520588375</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581178 from dimstar)</comment>
+    <requestid>582776</requestid>
+  </revision>
+  <revision rev="33" vrev="30">
+    <srcmd5>cee153b1a55339da9b262f9b50a36658</srcmd5>
+    <version>unknown</version>
+    <time>1547540125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657448</requestid>
+  </revision>
+</revisionlist>

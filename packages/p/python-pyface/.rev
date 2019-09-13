@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e2c1c803dbe1195d40ae5b1c42a53c9</srcmd5>
+    <version>6.0.0</version>
+    <time>1527605254</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-enable</comment>
+    <requestid>605851</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2b6643b252fa1604e2153e0ba8af36fa</srcmd5>
+    <version>6.0.0</version>
+    <time>1555773187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695965</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8df0c09a5383b5cbfb8b36cf4d98635c</srcmd5>
+    <version>6.1.2</version>
+    <time>1563915389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718002</requestid>
+  </revision>
+</revisionlist>

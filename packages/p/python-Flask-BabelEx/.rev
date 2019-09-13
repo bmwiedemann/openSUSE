@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c6c3dd38a782376d6b7d4c241463a5c7</srcmd5>
+    <version>0.9.3</version>
+    <time>1540451572</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-Flask-BabelEx, required by pgadmin4</comment>
+    <requestid>644359</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6b4f1c741b881aa0e2b951702decf528</srcmd5>
+    <version>0.9.3</version>
+    <time>1540544977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644502</requestid>
+  </revision>
+</revisionlist>

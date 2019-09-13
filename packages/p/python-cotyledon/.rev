@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0065e6c579910b11dddd9fee5e4fc304</srcmd5>
+    <version>1.6.8</version>
+    <time>1531232170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621737</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>aba14a68fbaff4536a6eb5a9265baa42</srcmd5>
+    <version>1.6.8</version>
+    <time>1531813265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622819</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>61185e1b2267702b34d2b8a1a5ee3111</srcmd5>
+    <version>1.7.1</version>
+    <time>1539589321</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies based on upstream setup.py/requirements
+- Update to 1.7.1:
+  * No obvious changelog except of git log
+- Use py3 to generate documentation
+- Run tests on all python variants
+</comment>
+    <requestid>641692</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c806bb46dc9c620f768cb6afeed2a705</srcmd5>
+    <version>1.7.1</version>
+    <time>1543591929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652373</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4639931d2a1cbee3c43607139a3feb09</srcmd5>
+    <version>1.7.3</version>
+    <time>1552206932</time>
+    <user>coolo</user>
+    <comment>- Update to 1.7.3:
+  * No upstream changelog
+- Remove merged fix_arm.patch</comment>
+    <requestid>682466</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0af4b072cdc08df6ef0afa0cb535120a</srcmd5>
+    <version>1.7.3</version>
+    <time>1553436117</time>
+    <user>dimstar_suse</user>
+    <comment>- skip functional tests (take very long to execute)</comment>
+    <requestid>687931</requestid>
+  </revision>
+</revisionlist>

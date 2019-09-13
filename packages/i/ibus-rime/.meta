@@ -1,0 +1,7 @@
+<package name="ibus-rime" project="openSUSE:Factory">
+  <title>ibus-rime</title>
+  <description>中州韻輸入法引擎，思想用鍵盤表達也行。
+
+Rime Input Method Engine - riming with your keystrokes. </description>
+  <devel project="M17N" package="ibus-rime"/>
+</package>

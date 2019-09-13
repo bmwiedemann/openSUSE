@@ -1,0 +1,366 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93d6e8af77295e42b90f87757e0a9ce6</srcmd5>
+    <version>0.1.16</version>
+    <time>1313069961</time>
+    <user>saschpe</user>
+    <comment>New package grilo: new dependency for totem for media browser and upnp</comment>
+    <requestid>78033</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a818cdf1e1b073367eabab4782c007a0</srcmd5>
+    <version>0.1.16</version>
+    <time>1313069975</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78033
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0c2a00ea13eb5c6494b4f561d5b89be4</srcmd5>
+    <version>0.1.17</version>
+    <time>1315562627</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81502</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>00618a654ab412d1d0543e61cb433f2f</srcmd5>
+    <version>0.1.17</version>
+    <time>1316001739</time>
+    <user>saschpe</user>
+    <comment>Use tracker 0.12, to fix build (forwarded request 81973 from vuntz)</comment>
+    <requestid>82075</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0316edf19b6a8aae7658c55cfb4b8535</srcmd5>
+    <version>0.1.17</version>
+    <time>1316001759</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82075
+</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>0316edf19b6a8aae7658c55cfb4b8535</srcmd5>
+    <version>0.1.17</version>
+    <time>1319181943</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>a28a41972d7140a54d6737c47796df49</srcmd5>
+    <version>0.1.17</version>
+    <time>1323191778</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>14dc1aaa1c8ab91731f79f3eecae3f1c</srcmd5>
+    <version>0.1.18</version>
+    <time>1326118630</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99057</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f60d10b1bf57498ccac9f3e9c519798a</srcmd5>
+    <version>0.1.18</version>
+    <time>1326988541</time>
+    <user>coolo</user>
+    <comment>- Build against gmime 2.6: replace pkgconfig(gmime-2.4)
+  BuildRequires with pkgconfig(gmime-2.4). (forwarded request 99864 from dimstar)</comment>
+    <requestid>100040</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>b42a1e6553e0a3daa3adb08cd9610119</srcmd5>
+    <version>0.1.18</version>
+    <time>1327583073</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>101608</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3253bddf82fd518c21992c605da3d7d8</srcmd5>
+    <version>0.1.19</version>
+    <time>1340023924</time>
+    <user>coolo</user>
+    <comment>Push latest G:F</comment>
+    <requestid>125201</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>3253bddf82fd518c21992c605da3d7d8</srcmd5>
+    <version>0.1.19</version>
+    <time>1340183411</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6a6bc56d4135c612a117de53f2fec360</srcmd5>
+    <version>0.2.0</version>
+    <time>1349454922</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136718</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>40b79372eca26e09df034ff48c447b06</srcmd5>
+    <version>0.2.2</version>
+    <time>1350646095</time>
+    <user>coolo</user>
+    <comment>Update to 0.2.2</comment>
+    <requestid>137963</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>59b39d7ac56e15e380eb6bcf28b25bd2</srcmd5>
+    <version>0.2.3</version>
+    <time>1353512865</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>142109</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ed8e9110c22d71d2b1f0f66ba05686c6</srcmd5>
+    <version>0.2.4</version>
+    <time>1355467049</time>
+    <user>coolo</user>
+    <comment>Update to 0.2.4 (forwarded request 145054 from dimstar)</comment>
+    <requestid>145109</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a14e9089dee7fd185ea6f469c99f5e6c</srcmd5>
+    <version>0.2.5</version>
+    <time>1356703224</time>
+    <user>namtrac</user>
+    <comment>Update to 0.2.5 (forwarded request 145857 from vuntz)</comment>
+    <requestid>146502</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>a14e9089dee7fd185ea6f469c99f5e6c</srcmd5>
+    <version>0.2.5</version>
+    <time>1359109004</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>08585f708650cf6dbeff1e26f408d166</srcmd5>
+    <version>0.2.6</version>
+    <time>1365025571</time>
+    <user>coolo</user>
+    <comment>Push G:Factory</comment>
+    <requestid>162178</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>22b8d84181f6dd7a892646cfeb320586</srcmd5>
+    <version>0.2.8</version>
+    <time>1370425974</time>
+    <user>coolo</user>
+    <comment>Update to 0.2.8 - minor tweak for lints (forwarded request 176601 from dimstar)</comment>
+    <requestid>176603</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b9ec3b11b9332c8d1f9aa6c95a4de225</srcmd5>
+    <version>0.2.9</version>
+    <time>1377629318</time>
+    <user>coolo</user>
+    <comment>Make zaitor happy (forwarded request 196426 from Zaitor)</comment>
+    <requestid>196430</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>b9ec3b11b9332c8d1f9aa6c95a4de225</srcmd5>
+    <version>0.2.9</version>
+    <time>1379662555</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>ba1814dec8e39d4be99d7a2f2252332d</srcmd5>
+    <version>0.2.9</version>
+    <time>1385290573</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory</comment>
+    <requestid>207681</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e53fc183d8e76e4409ac9e94230e786b</srcmd5>
+    <version>0.2.12</version>
+    <time>1399317366</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231751</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>e53fc183d8e76e4409ac9e94230e786b</srcmd5>
+    <version>0.2.12</version>
+    <time>1409301101</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>62d6b406100593c3e414e61899a7e055</srcmd5>
+    <version>0.2.13</version>
+    <time>1412098605</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.13.91 - Add to Staging:E (forwarded request 248710 from dimstar)</comment>
+    <requestid>248775</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>85dd7feb9a5e40e993a3931bef22b82d</srcmd5>
+    <version>0.2.13</version>
+    <time>1413263440</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255143</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>910890e2d0e35fd70725547b469314fd</srcmd5>
+    <version>0.2.13</version>
+    <time>1422959998</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283655</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>35e6cace58ea86cbb6bce7df41c11ae8</srcmd5>
+    <version>0.2.14</version>
+    <time>1427735670</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME:Factory - without pcheck</comment>
+    <requestid>291996</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fdc0b4fb3215d8bfa85bb2567d7533f6</srcmd5>
+    <version>0.2.16</version>
+    <time>1444142166</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 333801 from Zaitor)</comment>
+    <requestid>333810</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e6d09f233747f1bd872193ff5a4bc220</srcmd5>
+    <version>0.2.17</version>
+    <time>1450857036</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350195</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3b70646c9452549fd35a009a05324594</srcmd5>
+    <version>0.3.1</version>
+    <time>1459255708</time>
+    <user>dimstar_suse</user>
+    <comment>Tweaked supersede (forwarded request 378582 from Zaitor)</comment>
+    <requestid>378903</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>f4d9955c66e2235d1bb5160b043a1ee3</srcmd5>
+    <version>0.3.1</version>
+    <time>1466326202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402780</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e58033317cd186a873bd4b191f0ab7ae</srcmd5>
+    <version>0.3.2</version>
+    <time>1467541662</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403501</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>ee80befef42cd13b6ee64b9ba7fb79cb</srcmd5>
+    <version>0.3.2</version>
+    <time>1472478081</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423054</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d236f0bd7a3997fce26ee05693faab61</srcmd5>
+    <version>0.3.3</version>
+    <time>1474623158</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426645</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>6ccc059f20a3fefce217037877993d5b</srcmd5>
+    <version>0.3.3</version>
+    <time>1485383751</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452268</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ca361e298d1d2018c69bbda77bdfe226</srcmd5>
+    <version>0.3.4</version>
+    <time>1487592887</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457465</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>eb0eb85801b6d2d8207b672ef6314e4c</srcmd5>
+    <version>0.3.5</version>
+    <time>1504617299</time>
+    <user>dimstar_suse</user>
+    <comment>Resub, fixed up sub (forwarded request 518834 from Zaitor)</comment>
+    <requestid>519079</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>1fec3f638acca8ec84bd7c12a9ceebfc</srcmd5>
+    <version>0.3.5</version>
+    <time>1505416863</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop SLE12 / Leap42 build conditionals, enable lua and chroma
+  unconditionally. (forwarded request 526145 from zhangxiaofei)</comment>
+    <requestid>526155</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>2d264aa125c96c5abaef7f6ac9d221af</srcmd5>
+    <version>0.3.5</version>
+    <time>1512847819</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable chroma and dmapsharing when building on SLE (not
+  available there). (forwarded request 555097 from fcrozat)</comment>
+    <requestid>555208</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>76e6ea61f0b4bf34f55bc3ecdd32bebd</srcmd5>
+    <version>0.3.5</version>
+    <time>1520588352</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581134 from dimstar)</comment>
+    <requestid>582760</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>fe97eb859814c314acdf3d7ef3320892</srcmd5>
+    <version>0.3.6</version>
+    <time>1532033379</time>
+    <user>dimstar_suse</user>
+    <comment>New stable (forwarded request 623510 from iznogood)</comment>
+    <requestid>623625</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c3b8ce5d72214abe7b6600693ad02cfc</srcmd5>
+    <version>0.3.8</version>
+    <time>1539756874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638503</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>f87890f142628f546ab342d1194338da</srcmd5>
+    <version>0.3.8</version>
+    <time>1540447789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643058</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>7594f18097494fbf63b54f381791c3e1</srcmd5>
+    <version>0.3.9</version>
+    <time>1563701483</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 715825 from iznogood)</comment>
+    <requestid>716276</requestid>
+  </revision>
+</revisionlist>

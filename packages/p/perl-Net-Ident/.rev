@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79f493d97c66b91727bae61d7e78f885</srcmd5>
+    <version>1.20</version>
+    <time>1271376402</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-Ident based on submit request 36489 from user computersalat
+</comment>
+    <requestid>36489</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>79f493d97c66b91727bae61d7e78f885</srcmd5>
+    <version>1.20</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>79f493d97c66b91727bae61d7e78f885</srcmd5>
+    <version>1.20</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b976441f636c192ff241d9d0550e8ea8</srcmd5>
+    <version>1.23</version>
+    <time>1280712971</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-Ident based on submit request 44059 from user computersalat
+</comment>
+    <requestid>44059</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d9c9f1f58ec3210ca1f7f1c8ad939237</srcmd5>
+    <version>1.23</version>
+    <time>1291583268</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54604 from user coolo
+</comment>
+    <requestid>54604</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>39c0dbca6f4ea0363c7e08a94802843b</srcmd5>
+    <version>1.23</version>
+    <time>1291583276</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54604
+</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>39c0dbca6f4ea0363c7e08a94802843b</srcmd5>
+    <version>1.23</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>39c0dbca6f4ea0363c7e08a94802843b</srcmd5>
+    <version>1.23</version>
+    <time>1319182292</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>bda423cfe5f3e61410c10aa216565688</srcmd5>
+    <version>1.23</version>
+    <time>1321875819</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92201</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>e8600bb4cd1e98be1f141510e88f4522</srcmd5>
+    <version>1.23</version>
+    <time>1323193510</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>e8600bb4cd1e98be1f141510e88f4522</srcmd5>
+    <version>1.23</version>
+    <time>1340183890</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>e8600bb4cd1e98be1f141510e88f4522</srcmd5>
+    <version>1.23</version>
+    <time>1359109761</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>460ced5b460fa6e4c44f97d7bc17ba08</srcmd5>
+    <version>1.23</version>
+    <time>1364899011</time>
+    <user>coolo</user>
+    <comment>fails to build on openSUSE &amp;gt;= 12.2, because perl-macros is deprecated there. Change documented. (forwarded request 161436 from rusjako)</comment>
+    <requestid>161448</requestid>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>460ced5b460fa6e4c44f97d7bc17ba08</srcmd5>
+    <version>1.23</version>
+    <time>1379663791</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="19">
+    <srcmd5>460ced5b460fa6e4c44f97d7bc17ba08</srcmd5>
+    <version>1.23</version>
+    <time>1409302425</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>aa1e73ae0385eb8d36d01d271253072a</srcmd5>
+    <version>1.24</version>
+    <time>1429657686</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296668</requestid>
+  </revision>
+</revisionlist>

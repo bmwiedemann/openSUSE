@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="39">
+    <srcmd5>a5db63754e4d17fff9f4ea2b8b0c3927</srcmd5>
+    <version>0.5</version>
+    <time>1168901337</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="234">
+    <srcmd5>a5db63754e4d17fff9f4ea2b8b0c3927</srcmd5>
+    <version>0.5</version>
+    <time>1168901337</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="235">
+    <srcmd5>bae3e3834469688e8ae5f9382456b4cf</srcmd5>
+    <version>0.5</version>
+    <time>1245259247</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="237">
+    <srcmd5>bae3e3834469688e8ae5f9382456b4cf</srcmd5>
+    <version>0.5</version>
+    <time>1245259247</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="238">
+    <srcmd5>249211fca39f7ea3e4a10d86a2d1b1cc</srcmd5>
+    <version>0.5</version>
+    <time>1268922717</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="240">
+    <srcmd5>249211fca39f7ea3e4a10d86a2d1b1cc</srcmd5>
+    <version>0.5</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="241">
+    <srcmd5>249211fca39f7ea3e4a10d86a2d1b1cc</srcmd5>
+    <version>0.5</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="244">
+    <srcmd5>249211fca39f7ea3e4a10d86a2d1b1cc</srcmd5>
+    <version>0.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="245">
+    <srcmd5>3ff6d5810b98a1deb938b0c493988901</srcmd5>
+    <version>0.5</version>
+    <time>1316458936</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82630 from jengelh)</comment>
+    <requestid>83040</requestid>
+  </revision>
+  <revision rev="10" vrev="247">
+    <srcmd5>3ff6d5810b98a1deb938b0c493988901</srcmd5>
+    <version>0.5</version>
+    <time>1319181749</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="248">
+    <srcmd5>2e56a66a2fcc57d3c6f80052a7a43899</srcmd5>
+    <version>0.5</version>
+    <time>1323191086</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="250">
+    <srcmd5>2e56a66a2fcc57d3c6f80052a7a43899</srcmd5>
+    <version>0.5</version>
+    <time>1340183149</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="251">
+    <srcmd5>bca67c1fa405e30ae19aa6a76b772dcd</srcmd5>
+    <version>0.5</version>
+    <time>1340975709</time>
+    <user>coolo</user>
+    <comment>- replace buildrequire xorg-x11 with the real require (forwarded request 126503 from coolo)</comment>
+    <requestid>126607</requestid>
+  </revision>
+  <revision rev="14" vrev="253">
+    <srcmd5>bca67c1fa405e30ae19aa6a76b772dcd</srcmd5>
+    <version>0.5</version>
+    <time>1359108615</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="255">
+    <srcmd5>bca67c1fa405e30ae19aa6a76b772dcd</srcmd5>
+    <version>0.5</version>
+    <time>1379661905</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="257">
+    <srcmd5>bca67c1fa405e30ae19aa6a76b772dcd</srcmd5>
+    <version>0.5</version>
+    <time>1409300426</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

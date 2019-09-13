@@ -1,0 +1,6 @@
+<package name="octave-forge-general" project="openSUSE:Factory">
+  <title></title>
+  <description>General tools for Octave.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-general"/>
+</package>

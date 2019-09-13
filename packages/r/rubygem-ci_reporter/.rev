@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a15bd712279dd75c01e2e8b3ca46fffa</srcmd5>
+    <version>1.6.4</version>
+    <time>1306396324</time>
+    <user>saschpe</user>
+    <comment>required for OBS</comment>
+    <requestid>71235</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d12fd25f07564d4c5f84ef16192bfdc3</srcmd5>
+    <version>1.6.4</version>
+    <time>1306396334</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71235
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d12fd25f07564d4c5f84ef16192bfdc3</srcmd5>
+    <version>1.6.4</version>
+    <time>1319182436</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f40f819b863508ca5cc8e11b7511d6c1</srcmd5>
+    <version>1.7.0</version>
+    <time>1331900677</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108543</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f40f819b863508ca5cc8e11b7511d6c1</srcmd5>
+    <version>1.7.0</version>
+    <time>1340184158</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6ae630023d19c0496ef1b95da9fc1358</srcmd5>
+    <version>1.7.1</version>
+    <time>1346488395</time>
+    <user>namtrac</user>
+    <comment>- updated to version 1.7.1
+  * #58: Use const_defined? for checking a constant is defined (Kouhei Sutou)
+  * #70: Initialize delegate IO for non-tee methods
+  * #55: Accommodate 1.8.7 which requires std streams to be subclasses of IO
+  * #52: Mark skipped tests as skipped instead of failure
+  * #51: Allow for constants to include &quot;Omission&quot; or :Omission (1.8 vs. 1.9).</comment>
+    <requestid>132187</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>18e665259042874530f6dd96d438cc1f</srcmd5>
+    <version>1.7.2</version>
+    <time>1348562879</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135568</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>531bd8a8f21cfd113024eb9b352b59eb</srcmd5>
+    <version>1.7.3</version>
+    <time>1350680244</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138810</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4120d02ea2ef92806856e15afbf2d282</srcmd5>
+    <version>1.8.3</version>
+    <time>1355733465</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145452</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>4120d02ea2ef92806856e15afbf2d282</srcmd5>
+    <version>1.8.3</version>
+    <time>1359110308</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>739e72a3d0dc43e598990d64205869ea</srcmd5>
+    <version>1.8.4</version>
+    <time>1362736681</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157743</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>129db2d38904bc1c82d86947cad620c6</srcmd5>
+    <version>1.9.0</version>
+    <time>1373130943</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>182312</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>129db2d38904bc1c82d86947cad620c6</srcmd5>
+    <version>1.9.0</version>
+    <time>1379664508</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cf48209c7faa91f3b5dc100dd4fd041e</srcmd5>
+    <version>1.9.1</version>
+    <time>1389611013</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>213110</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5d9d69dec3d0e5bdf2de88ab867ae92c</srcmd5>
+    <version>1.9.2</version>
+    <time>1400682295</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234894</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>5d9d69dec3d0e5bdf2de88ab867ae92c</srcmd5>
+    <version>1.9.2</version>
+    <time>1409303221</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>9aee9c5a1160975a8eccb7bf6d6340d1</srcmd5>
+    <version>1.9.2</version>
+    <time>1413263510</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255465</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c5d31ac3a8c719bf939d1f1831ecaffb</srcmd5>
+    <version>2.0.0</version>
+    <time>1413476100</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>256867</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="segv_handler" project="openSUSE:Factory">
+  <title>System wide segv handler to produces a backtrace</title>
+  <description>This is a useful utility for installing a system-wide segv handler that
+produces a backtrace on any program that gets a SEGV signal. It is
+installed as a preload, so you don't need to modify the target
+programs.</description>
+  <devel project="devel:tools" package="segv_handler"/>
+</package>

@@ -1,0 +1,276 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a120543befc0439730db5a61f93e1d5c</srcmd5>
+    <version>0.2.8</version>
+    <time>1397626130</time>
+    <user>coolo</user>
+    <comment>Replace of SR#229085</comment>
+    <requestid>229830</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24231b3d1c96f9a8faf4c16438a15918</srcmd5>
+    <version>0.2.9</version>
+    <time>1402946973</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.2.9
+  * Update LAPACK to 3.5.0 version
+  * Fixed compatiable issues with Clang and Pathscale compilers.
+  * Added OPENBLAS_VERBOSE environment variable.(#338)
+  * Make OpenBLAS thread-pool resilient to fork via pthread_atfork.
+    (#294)
+  * Rewrote rotmg
+  * Fixed sdsdot bug.
+  * Improved the result for LAPACK testing. (#372)
+  x86/x86-64:
+  * Optimization on Intel Haswell.
+  * Enable optimization kernels on AMD Bulldozer and Piledriver.
+  * Detect Intel Haswell for new Macbook.
+  * To improve LAPACK testing, we fallback some kernels. (#372)
+    https://github.com/xianyi/OpenBLAS/wiki/Fixed-optimized-kernels-To-do-List
+  ARM:
+  * Support ARMv6 and ARMv7 ISA.
+  * Optimization on ARM Cortex-A9.
+- Update patches:
+  * openblas-0.2.8-libs.patch
+  * openblas-0.2.8-noexecstack.patch
+  to
+  * openblas-libs.patch
+  * openblas-noexecstack.patch
+- Fix gcc warnings (#385)
+  * openblas-0.2.9-gcc-warnings.patch</comment>
+    <requestid>237017</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5ec95046cc8cfae421ab74fb46b97d49</srcmd5>
+    <version>0.2.10</version>
+    <time>1405685034</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241395</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5b6a59b0b1bd8c4f2b29f972da4a3ee7</srcmd5>
+    <version>0.2.11</version>
+    <time>1408524669</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>245138</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5b6a59b0b1bd8c4f2b29f972da4a3ee7</srcmd5>
+    <version>0.2.11</version>
+    <time>1409302029</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e02032285d9811254b804574644e9982</srcmd5>
+    <version>0.2.12</version>
+    <time>1413616187</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257421</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ff1341f88ea5347f6252dd53fca69c00</srcmd5>
+    <version>0.2.13</version>
+    <time>1418251455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.13
+  * Add SYMBOLPREFIX and SYMBOLSUFFIX makefile options
+    for adding a prefix or suffix to all exported symbol names
+    in the shared library.
+  * Remove openblas-0.1.0-soname.patch
+  * Add openblas-soname.patch
+  * Rebase openblas-noexecstack.patch
+  x86/x86-64:
+  * Add generic kernel files for x86-64. make TARGET=GENERIC
+  * Fix a bug of sgemm kernel on Intel Sandy Bridge.
+  * Fix c_check bug on some amd64 systems.
+  ARM:
+  * Support APM's X-Gene 1 AArch64 processors.
+  * Optimize trmm and sgemm.</comment>
+    <requestid>263947</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d95c3fe2803f4ff4d47da29e256069b1</srcmd5>
+    <version>0.2.14</version>
+    <time>1430891326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305141</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f9cffac9990db2ae45268e532d0c6b2b</srcmd5>
+    <version>0.2.14</version>
+    <time>1439385319</time>
+    <user>dimstar_suse</user>
+    <comment>- Change library name suffix
+  * drop openblas-soname.patch
+- Add RPM %post script for manual BLAS/LAPACK update-alternatives
+  configuration update
+- Use update-alternatives mechanism for OpenBLAS variants (serial,
+  openmp, pthreads). pthreads variant is default for x86 and x86_64,
+  OpenMP for other architectures.
+- Fix build on ARM64
+  * openblas-arm64-build.patch
+- Add update-alternatives mechanism for CBLAS
+- Provide cmake module
+- Delete info about host cpu from openblas_config.h for dynamic arch
+- Add update-alternatives to 'preup' and 'post' requires list for 
+  libraries
+- Add README.SUSE</comment>
+    <requestid>322040</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b8318e6b7be359fffeaa923e7dc875ea</srcmd5>
+    <version>0.2.15</version>
+    <time>1446049875</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341266</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c0f5d932a84445aee64b8e385e68498d</srcmd5>
+    <version>0.2.16</version>
+    <time>1458333743</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>374094</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ce3e8f5baed94b4773d60785940b28e1</srcmd5>
+    <version>0.2.17</version>
+    <time>1459002349</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>377043</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b4d152cce5de954bb1a8d5193909d95b</srcmd5>
+    <version>0.2.18</version>
+    <time>1460632081</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389142</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>09e566479ec4f4ad7881d43fb721f2bb</srcmd5>
+    <version>0.2.19</version>
+    <time>1473349161</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.19
+  POWER:
+    * Optimize BLAS on Power8
+    * Fixed Julia+OpenBLAS bugs on Power8
+  MIPS:
+    * Optimize BLAS on MIPS P5600 and I6400
+  ARM:
+    * Improved on ARM Cortex-A57</comment>
+    <requestid>425332</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7a78301becb4d7e7f429273c7dcfb271</srcmd5>
+    <version>0.2.19</version>
+    <time>1495883349</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496480</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>791d75748486c5e2322af85f43816133</srcmd5>
+    <version>0.2.20</version>
+    <time>1503591627</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515929</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>01ebf1909be31367ec2960bff63352ec</srcmd5>
+    <version>0.2.20</version>
+    <time>1508336124</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534890</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>16ffe7536d9c672fce9e547002f1ee2f</srcmd5>
+    <version>0.2.20</version>
+    <time>1512291929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546641</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>398ccc6d5f3eca3006ca4c2ef245604d</srcmd5>
+    <version>0.2.20</version>
+    <time>1516091135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562358</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>9200921d7ce651dbdadab9533abd2829</srcmd5>
+    <version>0.2.20</version>
+    <time>1518281657</time>
+    <user>dimstar_suse</user>
+    <comment>- add openblas-s390.patch to build on s390 (bsc#1079513).</comment>
+    <requestid>573788</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>36c632f91766c862fcca8c4329465ded</srcmd5>
+    <version>0.3.3</version>
+    <time>1540198913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640893</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6295c1cbc7cb709b24331df0f56e5740</srcmd5>
+    <version>0.3.4</version>
+    <time>1544441015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656137</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bbb4e0257f3e558081ea2477028a6ec0</srcmd5>
+    <version>0.3.5</version>
+    <time>1549017812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668899</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>211b9572645b443bd43e9cb49b301c76</srcmd5>
+    <version>0.3.5</version>
+    <time>1551027803</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677358</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>61fc8ab8fea897eb3f2e5ab8cfaa8f22</srcmd5>
+    <version>0.3.5</version>
+    <time>1552571462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684454</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3aed365d3ced85c277f9242432799c79</srcmd5>
+    <version>0.3.6</version>
+    <time>1557169962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700583</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>383c5c4cc5c18f4f0653068ac6465590</srcmd5>
+    <version>0.3.7</version>
+    <time>1565962030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722787</requestid>
+  </revision>
+</revisionlist>

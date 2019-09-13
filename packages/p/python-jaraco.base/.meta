@@ -1,0 +1,8 @@
+<package name="python-jaraco.base" project="openSUSE:Factory">
+  <title>Supplement packaging Python releases</title>
+  <description>Tools to supplement packaging Python releases.
+
+</description>
+  <devel project="openSUSE:Factory" package="python-jaraco.packaging"/>
+  <bcntsynctag>python-jaraco.packaging</bcntsynctag>
+</package>

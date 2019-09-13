@@ -1,0 +1,828 @@
+<revisionlist>
+  <revision rev="1" vrev="17">
+    <srcmd5>59adc62e0e64752b215e15eda2a1954c</srcmd5>
+    <version>2.6.29</version>
+    <time>1187912312</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="21">
+    <srcmd5>2ed7ec7cab542e6b5cb88a951c697396</srcmd5>
+    <version>2.6.29</version>
+    <time>1188508080</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="24">
+    <srcmd5>d5fbb207922baf37f52615e2f80f38c3</srcmd5>
+    <version>2.6.29</version>
+    <time>1189702129</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8d80303de50ce77f18d4461f8f87cf61</srcmd5>
+    <version>2.6.30</version>
+    <time>1190222106</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="22">
+    <srcmd5>b4d37bc76af296859a6a2f062a483fe6</srcmd5>
+    <version>2.6.30</version>
+    <time>1196899797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0ee4d8b3ffad2a4beac76bdce82bcd8d</srcmd5>
+    <version>2.6.31</version>
+    <time>1201125431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bc6631d19e441c941f38bcc6dae87d5d</srcmd5>
+    <version>2.6.31</version>
+    <time>1201196698</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="17">
+    <srcmd5>5198e03d1845c292252395c9fd9ccbc1</srcmd5>
+    <version>2.6.31</version>
+    <time>1205513472</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="19">
+    <srcmd5>e4300f356e05bb0eaa08448ee676e2b7</srcmd5>
+    <version>2.6.31</version>
+    <time>1206544944</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="26">
+    <srcmd5>14c48950e1a9403af1c5bb31fc2ec187</srcmd5>
+    <version>2.6.31</version>
+    <time>1207831859</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bd97535183b91e490b7e03b355aea9e0</srcmd5>
+    <version>2.6.32</version>
+    <time>1208024476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>6061ec896bd8237abbbb44ddff05e84e</srcmd5>
+    <version>2.7.1</version>
+    <time>1222210231</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>8ef97d5088718a3ba38edebaf5ceca4a</srcmd5>
+    <version>2.7.1</version>
+    <time>1223310266</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>758c5b6b7017739c68a94140336505f7</srcmd5>
+    <version>2.7.1</version>
+    <time>1225636997</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>a9f87d41af5401d645100c7b9eaf9557</srcmd5>
+    <version>2.7.1</version>
+    <time>1226938805</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>1d4c635982133703410c1c544c004cff</srcmd5>
+    <version>2.7.1</version>
+    <time>1227192622</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>bc078d66fb81a7c0ea82e2531a5e2452</srcmd5>
+    <version>2.7.1</version>
+    <time>1227882598</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>62146fe809236fe01bf20bf9f1fdff11</srcmd5>
+    <version>2.7.1</version>
+    <time>1229343278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>781392f9639339b38a431f9a06f5b69c</srcmd5>
+    <version>2.7.1</version>
+    <time>1231780400</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ea0f6f3a5f1c96b86339f92757dc3685</srcmd5>
+    <version>2.7.3</version>
+    <time>1237572857</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>ea0f6f3a5f1c96b86339f92757dc3685</srcmd5>
+    <version>2.7.3</version>
+    <time>1237572857</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>8a01c01625484351fe3641ac5071767d</srcmd5>
+    <version>2.7.3</version>
+    <time>1258362071</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libxml2 based on submit request 24454 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>0c2ebaadec792866e0cce1a7644ab1bc</srcmd5>
+    <version>2.7.3</version>
+    <time>1263504400</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libxml2 based on submit request 29091 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>e9dd23f90fd8cab20a4a897e4cb50572</srcmd5>
+    <version>2.7.3</version>
+    <time>1268924778</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>5565f4670b5eacc454782ab78932f58d</srcmd5>
+    <version>2.7.3</version>
+    <time>1268949154</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libxml2 based on submit request 35069 from user coolo
+</comment>
+    <requestid>35069</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9b4c71aaca4e4118c26bdf432d1a3739</srcmd5>
+    <version>2.7.7</version>
+    <time>1270638885</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libxml2 based on submit request 37034 from user coolo
+</comment>
+    <requestid>37034</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>72c3cf1814fbae7d4ce992aa8d7d0d6b</srcmd5>
+    <version>2.7.7</version>
+    <time>1270658454</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libxml2 based on submit request 37260 from user coolo
+</comment>
+    <requestid>37260</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>6c634eaa3f3f90393018a30881928c07</srcmd5>
+    <version>2.7.7</version>
+    <time>1272103130</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libxml2 based on submit request 38660 from user coolo
+</comment>
+    <requestid>38660</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>6c634eaa3f3f90393018a30881928c07</srcmd5>
+    <version>2.7.7</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>6c634eaa3f3f90393018a30881928c07</srcmd5>
+    <version>2.7.7</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>e8e8561ae931b3d168097f9b27ce8b1f</srcmd5>
+    <version>2.7.7</version>
+    <time>1284749598</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libxml2 based on submit request 48382 from user puzel
+</comment>
+    <requestid>48382</requestid>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>cd4e5df3571c31636be915734e179bdd</srcmd5>
+    <version>2.7.7</version>
+    <time>1284989809</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libxml2 based on submit request 48552 from user puzel
+</comment>
+    <requestid>48552</requestid>
+  </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>357b39c7da1be8abc3deaeccb0621040</srcmd5>
+    <version>2.7.7</version>
+    <time>1288689489</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51817 from user coolo
+</comment>
+    <requestid>51817</requestid>
+  </revision>
+  <revision rev="34" vrev="9">
+    <srcmd5>588138753a78008fc6c05a7a0b8ff1e0</srcmd5>
+    <version>2.7.7</version>
+    <time>1288689500</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51817
+</comment>
+  </revision>
+  <revision rev="35" vrev="10">
+    <srcmd5>cd7333b95032d95024779d7bad834ea8</srcmd5>
+    <version>2.7.7</version>
+    <time>1288710426</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51977 from user puzel
+</comment>
+    <requestid>51977</requestid>
+  </revision>
+  <revision rev="36" vrev="11">
+    <srcmd5>c069d0d1a5f50e022f5a19f069d3a2a8</srcmd5>
+    <version>2.7.7</version>
+    <time>1288710432</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51977
+</comment>
+  </revision>
+  <revision rev="37" vrev="9">
+    <srcmd5>c0478940ec661c4dd6302522722a5b55</srcmd5>
+    <version>2.7.8</version>
+    <time>1291586280</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54403 from user puzel
+</comment>
+    <requestid>54403</requestid>
+  </revision>
+  <revision rev="38" vrev="10">
+    <srcmd5>03dd04f76ec92f3801352bcad0d55659</srcmd5>
+    <version>2.7.8</version>
+    <time>1291586291</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54403
+</comment>
+  </revision>
+  <revision rev="39" vrev="11">
+    <srcmd5>83b292133e2faec311d8b0848dd1bde9</srcmd5>
+    <version>2.7.8</version>
+    <time>1291629606</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 54833 from user puzel
+</comment>
+    <requestid>54833</requestid>
+  </revision>
+  <revision rev="40" vrev="12">
+    <srcmd5>1a3e6cc9da6c7f5835d3cbc6f36f1f73</srcmd5>
+    <version>2.7.8</version>
+    <time>1291629614</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 54833
+</comment>
+  </revision>
+  <revision rev="41" vrev="13">
+    <srcmd5>463d4ab8bce3b93056688f42527f0e2b</srcmd5>
+    <version>2.7.8</version>
+    <time>1294148491</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56998 from user puzel
+</comment>
+    <requestid>56998</requestid>
+  </revision>
+  <revision rev="42" vrev="14">
+    <srcmd5>02e8f05b4bdcdf9138ed107d73729028</srcmd5>
+    <version>2.7.8</version>
+    <time>1294148497</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56998
+</comment>
+  </revision>
+  <revision rev="43" vrev="17">
+    <srcmd5>02e8f05b4bdcdf9138ed107d73729028</srcmd5>
+    <version>2.7.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="44" vrev="18">
+    <srcmd5>2416b574e8482d707374c10edd1b1480</srcmd5>
+    <version>2.7.8</version>
+    <time>1307429993</time>
+    <user>saschpe</user>
+    <comment>Library Symbol Versioning fix for openSUSE 11.4 (ref. Bugzilla #698132) (forwarded request 72722 from chorler)</comment>
+    <requestid>72816</requestid>
+  </revision>
+  <revision rev="45" vrev="19">
+    <srcmd5>dc9995e250499490a800b7b013550b08</srcmd5>
+    <version>2.7.8</version>
+    <time>1307430006</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72816
+</comment>
+  </revision>
+  <revision rev="46" vrev="20">
+    <srcmd5>43cfd22a1d9d1c871b8250a5af7b1a9e</srcmd5>
+    <version>2.7.8</version>
+    <time>1309353475</time>
+    <user>saschpe</user>
+    <comment>add libxml2-CVE-2011-1944.patch (bnc#697372)</comment>
+    <requestid>74827</requestid>
+  </revision>
+  <revision rev="47" vrev="21">
+    <srcmd5>9255ed0dfa00133e7ed808be587718de</srcmd5>
+    <version>2.7.8</version>
+    <time>1309353492</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74827
+</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9086aa4cd9ea5e7f0a6d0b6eaa36fe33</srcmd5>
+    <version>2.7.8+git20110708</version>
+    <time>1310380193</time>
+    <user>saschpe</user>
+    <comment>- update to libxml-2.7.8+git20110708
+  - several important bugfixes
+- drop upstreamed patches:
+  * libxml2-CVE-2010-4494.patch
+  * libxml2-CVE-2011-1944.patch
+  * noxref.patch
+  * symbol-versioning.patch</comment>
+    <requestid>76020</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>16c3bb4289ac1cd75bb3879cb5b4158b</srcmd5>
+    <version>2.7.8+git20110708</version>
+    <time>1310380206</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76020
+</comment>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>16c3bb4289ac1cd75bb3879cb5b4158b</srcmd5>
+    <version>2.7.8+git20110708</version>
+    <time>1319182148</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>487e7e1c7a7886cd3a86886073dfdd3e</srcmd5>
+    <version>2.7.8+git20110708</version>
+    <time>1323192387</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>260cd130f4a0a1405d9bac9db0e4d2d0</srcmd5>
+    <version>2.7.8+git20110708</version>
+    <time>1323192387</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="53" vrev="7">
+    <srcmd5>a18290ba9071881b58187428001ebe1e</srcmd5>
+    <version>2.7.8+git20110708</version>
+    <time>1325007429</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97532 from coolo)</comment>
+    <requestid>97533</requestid>
+  </revision>
+  <revision rev="54" vrev="8">
+    <srcmd5>14e91d9999d18fa75974c369cf4556b1</srcmd5>
+    <version>2.7.8+git20110708</version>
+    <time>1329318996</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104001</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a8e1af2c5bf862a5736bbd22fc6c43d6</srcmd5>
+    <version>2.7.8+git20120223</version>
+    <time>1330151428</time>
+    <user>coolo</user>
+    <comment>- update to today's GIT snapshot:
+    include XZ support
+- split libxml2-2 according to shared library policy
+
+
+- renamed to python-libxml2 to follow python naming expectations
+- do not require python but let rpm figure it out
+
+- Remove redundant tags/sections
+
+- update to libxml-2.7.8+git20110708
+  - several important bugfixes
+
+- buildrequire python-xml to fix build
+
+- update to libxml-2.7.8
+  - number of bufixes, documentation and portability fixes
+  - update language ID parser to RFC 5646
+  - sort python generated stubs
+  - add an HTML parser option to avoid a default doctype
+  - see http://xmlsoft.org/news.html for exact details
+- clean up specfile
+
+- fix build
+
+- update to 2.7.7
+- add extra options to ./configure for scribus features and avoid a crash
+- updates from 2.7.3 &gt; 2.7.7 include a number of portability, correctness
+  memory leaks and build fixes including some CVE
+- see http://xmlsoft.org/news.html for exact details</comment>
+    <requestid>106746</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>5183dc4f9c536769070511ac848c3bf5</srcmd5>
+    <version>2.7.8+git20120223</version>
+    <time>1330157391</time>
+    <user>coolo</user>
+    <comment>- add provide for the old name to fix packages with explicit
+  library dependency</comment>
+    <requestid>106863</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>0342be9bab6226cea870a38b3f4aa497</srcmd5>
+    <version>2.7.8+git20120223</version>
+    <time>1330159751</time>
+    <user>coolo</user>
+    <comment>- fix version</comment>
+    <requestid>106867</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>daea1b4e0815fcb1138f4cd9796a9906</srcmd5>
+    <version>2.7.8+git20120223</version>
+    <time>1330247662</time>
+    <user>coolo</user>
+    <comment>- the fallout of requiring libxml2-tools as explicit buildrequire
+  is just too large, so avoid it for now and create a cycle between
+  libxml2-2 and libxml2-tools</comment>
+    <requestid>106915</requestid>
+  </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>5632423fa432011ed915e8a86b89cfbe</srcmd5>
+    <version>2.7.8+git20120223</version>
+    <time>1330692541</time>
+    <user>coolo</user>
+    <comment>fixed 64bit bigendian issue (forwarded request 107691 from msmeissn)</comment>
+    <requestid>107692</requestid>
+  </revision>
+  <revision rev="60" vrev="6">
+    <srcmd5>bf0ecd49002466420f14cd99214de7ec</srcmd5>
+    <version>2.7.8+git20120223</version>
+    <time>1331147377</time>
+    <user>coolo</user>
+    <comment>- revert the two commits that broke perl-XML-LibXML's test case,
+  I hope the two upstreams will figure it out
+
+- update to git to fix some issues
+  * Fix a logic error in Schemas Component ConstraintsHEADmaster
+  * Fix a wrong enum type use in Schemas Types</comment>
+    <requestid>107961</requestid>
+  </revision>
+  <revision rev="61" vrev="7">
+    <srcmd5>32d3c570e37b4c7e5bee1d51424e3058</srcmd5>
+    <version>2.7.8+git20120223</version>
+    <time>1331579724</time>
+    <user>coolo</user>
+    <comment>- libxml2-2 should not require libxml2-tools. There is no trouble
+  expected, since attempting to install libxml2 will already pull
+  in libxml2-tools due to Provides tags. (forwarded request 108821 from jengelh)</comment>
+    <requestid>108822</requestid>
+  </revision>
+  <revision rev="62" vrev="9">
+    <srcmd5>32d3c570e37b4c7e5bee1d51424e3058</srcmd5>
+    <version>2.7.8+git20120223</version>
+    <time>1340183658</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>5c94ff005cf5a4aa2f5f070d82a1a94c</srcmd5>
+    <version>2.8.0</version>
+    <time>1348381837</time>
+    <user>coolo</user>
+    <comment>- Remove .la files; make sure installation succeeds for
+  Fedora_17 target (forwarded request 135341 from jengelh)</comment>
+    <requestid>135347</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>2afc9d6d95735fb1d9379e848ed868fe</srcmd5>
+    <version>2.8.0</version>
+    <time>1348428519</time>
+    <user>coolo</user>
+    <comment>- readd .la file, python-libxml2 needs it</comment>
+    <requestid>135506</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>798b2d4ecb389276c35711c26f1d90e3</srcmd5>
+    <version>2.8.0</version>
+    <time>1348669286</time>
+    <user>coolo</user>
+    <comment>Let's not have reviewers and packagers guess and redo the same errors over and over.. a comment can help them (forwarded request 135509 from dimstar)</comment>
+    <requestid>135532</requestid>
+  </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>e9413dfef708be0efbb92b5e9fe4c059</srcmd5>
+    <version>2.8.0</version>
+    <time>1355156212</time>
+    <user>coolo</user>
+    <comment>- Add libxml2-CVE-2012-5134.patch to fix CVE-2012-5134 (bnc#793334)</comment>
+    <requestid>144710</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>30bd76ea8a5649ee3ae8a7b2a1b02ad1</srcmd5>
+    <version>2.9.0</version>
+    <time>1355912049</time>
+    <user>coolo</user>
+    <comment>- update to 2.9.0 version:
+  * please see the Changelog
+- Updated patchs to get working with new version:
+   * libxml2-2.9.0-CVE-2012-5134.patch ( libxml2-CVE-2012-5134.patch )
+   * fix-perl.diff
+
+- update to 2.9.0 version:
+  * please see the Changelog
+- Updated patchs to get working with new version:
+  * libxml2-2.9.0-CVE-2012-5134.patch ( libxml2-CVE-2012-5134.patch )
+  * fix-perl.diff 
+  
+
+  * please see ChangeLog for more info</comment>
+    <requestid>145630</requestid>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>30bd76ea8a5649ee3ae8a7b2a1b02ad1</srcmd5>
+    <version>2.9.0</version>
+    <time>1359109382</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>c33c1cfcb2aa259b433d4284a7c97eba</srcmd5>
+    <version>2.9.0</version>
+    <time>1363949775</time>
+    <user>coolo</user>
+    <comment>- fix for CVE-2013-0338 (bnc#805233)
+  libxml2-CVE-2013-0338-Detect-excessive-entities-expansion-upon-replacement.patch (forwarded request 160256 from vitezslav_cizek)</comment>
+    <requestid>160259</requestid>
+  </revision>
+  <revision rev="70" vrev="5">
+    <srcmd5>4b3eb63767ff6b021a9ec5adaa1667e8</srcmd5>
+    <version>2.9.0</version>
+    <time>1366472962</time>
+    <user>coolo</user>
+    <comment>- fix for CVE-2013-1969 (bnc#815665)
+  * libxml2-CVE-2013-1969.patch (forwarded request 172437 from vitezslav_cizek)</comment>
+    <requestid>172438</requestid>
+  </revision>
+  <revision rev="71" vrev="6">
+    <srcmd5>2ff5b1c445c8c28458884dd6de37d260</srcmd5>
+    <version>2.9.0</version>
+    <time>1373260480</time>
+    <user>coolo</user>
+    <comment>- buildignore python to avoid build cycle (forwarded request 182398 from coolo)</comment>
+    <requestid>182399</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>1a0ae188850096cadabe1b8aeece6fcf</srcmd5>
+    <version>2.9.1</version>
+    <time>1375628146</time>
+    <user>coolo</user>
+    <comment>- update to 2.9.1
+  dropped patches (in upstream):
+  * libxml2-2.9.0-CVE-2012-5134.patch
+  * libxml2-CVE-2013-0338-Detect-excessive-entities-expansion-upon-replacement.patch
+  * libxml2-CVE-2013-1969.patch
+  New features:
+  * Support for Python3
+  * Add xmlXPathSetContextNode and xmlXPathNodeEval (forwarded request 185614 from vitezslav_cizek)</comment>
+    <requestid>185646</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>1a0ae188850096cadabe1b8aeece6fcf</srcmd5>
+    <version>2.9.1</version>
+    <time>1379663140</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>574ec228e7e791fcdba1d00d3002a3b2</srcmd5>
+    <version>2.9.1</version>
+    <time>1401092891</time>
+    <user>coolo</user>
+    <comment>- fix for CVE-2014-0191 (bnc#876652)
+  * libxml2: external parameter entity loaded when entity
+    substitution is disabled
+  * added libxml2-CVE-2014-0191.patch (forwarded request 235223 from vitezslav_cizek)</comment>
+    <requestid>235275</requestid>
+  </revision>
+  <revision rev="75" vrev="5">
+    <srcmd5>b60142b857c574e7ea6d134254fb23b2</srcmd5>
+    <version>2.9.1</version>
+    <time>1403121873</time>
+    <user>coolo</user>
+    <comment>- temporarily reverting libxml2-CVE-2014-0191.patch until there is a fix
+  that doesn't break other applications</comment>
+    <requestid>236364</requestid>
+  </revision>
+  <revision rev="76" vrev="6">
+    <srcmd5>06d0831e601689900cd4c285d1ce6a64</srcmd5>
+    <version>2.9.1</version>
+    <time>1408957371</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245585</requestid>
+  </revision>
+  <revision rev="77" vrev="8">
+    <srcmd5>06d0831e601689900cd4c285d1ce6a64</srcmd5>
+    <version>2.9.1</version>
+    <time>1409301769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="78" vrev="9">
+    <srcmd5>691cdf7a62942f8a1a0d50bf84145aab</srcmd5>
+    <version>2.9.1</version>
+    <time>1413739671</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257384</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>0769411356a1a5865a947a864d1927e6</srcmd5>
+    <version>2.9.2</version>
+    <time>1415288977</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259698</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>dcffda801a3440ccb19f3422f6ccb01c</srcmd5>
+    <version>2.9.3</version>
+    <time>1459002024</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.9.3 (bsc#954429):
+  * Fixes for CVE-2015-8035, CVE-2015-7942, CVE-2015-7941,
+    CVE-2015-1819, CVE-2015-7497, CVE-2015-7498, CVE-2015-5312,
+    CVE-2015-7499, CVE-2015-7500 and CVE-2015-8242
+  * And other bugfixes
+- Removed upstream fixed patches:
+  * libxml2-dont_initialize_catalog.patch
+  * 0001-Fix-missing-entities-after-CVE-2014-3660-fix.patch
+  * 0002-Adding-example-from-bugs-738805-to-regression-tests.patch</comment>
+    <requestid>367668</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>1f7c69b741630d07a2d86f9bddb00112</srcmd5>
+    <version>2.9.3</version>
+    <time>1462696716</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393437</requestid>
+  </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>2449eb327da5b72737d30f81ae845129</srcmd5>
+    <version>2.9.3</version>
+    <time>1464204083</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397215</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>b930b2b535d07e6dc6458e380a137273</srcmd5>
+    <version>2.9.4</version>
+    <time>1465750292</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400709</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>0ea30e9521b096b640aa9c730649dab4</srcmd5>
+    <version>2.9.4</version>
+    <time>1489178664</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477481</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>557d86d68814fd095f2d25195157572e</srcmd5>
+    <version>2.9.4</version>
+    <time>1496392162</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497430</requestid>
+  </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>c54f2339fddcd3ae860239c54d334610</srcmd5>
+    <version>2.9.4</version>
+    <time>1497949200</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504140</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>10a6607d3b7784e060715e11f5555a08</srcmd5>
+    <version>2.9.5</version>
+    <time>1506678520</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528090</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>5853b3026f1965478e3ef1d58c21a4d1</srcmd5>
+    <version>2.9.5</version>
+    <time>1507197282</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530521</requestid>
+  </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>57fbeb3d03250476c0152599b0ff07a3</srcmd5>
+    <version>2.9.5</version>
+    <time>1509723092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>536925</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>0b7c4e16c8ee325e6e549841e4094bc0</srcmd5>
+    <version>2.9.7</version>
+    <time>1510667124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541036</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>fbe49e86595a9fac206d024d3efe4666</srcmd5>
+    <version>2.9.8</version>
+    <time>1521498683</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.9.8:
+  * Various -Werror fixes and compilation updates as travis is now
+    used by upstream
+  * Few additional tests added for ICU operations
+
+- Version update to 2.9.8:
+  * Various -Werror fixes and compilation updates as travis is now
+    used by upstream
+  * Few additional tests added for ICU operations
+- Drop patch python3.6-verify_fd.patch merged upstream</comment>
+    <requestid>586779</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>0c8f4c20af98f2a96c187f89458ecdb2</srcmd5>
+    <version>2.9.8</version>
+    <time>1522058714</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license instead of %doc [bsc#1082318]</comment>
+    <requestid>589171</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>0b9532c3e0cdaf255af8c6dfb15cddf0</srcmd5>
+    <version>2.9.9</version>
+    <time>1549311012</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>668978</requestid>
+  </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>1bed87e0f7cad67db1cd9f8b12174f31</srcmd5>
+    <version>2.9.9</version>
+    <time>1568379414</time>
+    <user>lnussel_factory</user>
+    <comment>- Do not depend on setuptools to keep the depgraph small and
+  avoid build cycles
+
+- Use python[23]-libmxl2 as python names not python-libxml2-python
+  which is kinda confusing
+
+- Do not ship libtool archive anymore
+
+- Enable tests also in the python subpackages
+
+- Added a new configurable variable XPATH_DEFAULT_MAX_NODESET_LENGTH
+  to avoid nodeset limit when processing large XML files [bsc#1135123]
+  * Added libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
+
+- Merge python-libxml2-python spec and changes files into the
+  libxml2 ones using _multibuild [bsc#1126499, bsc#1123919]
+
+- Add libxml2-python3-string-null-check.patch: fix NULL pointer
+    dereference when parsing invalid data (bsc#1065270
+    glgo#libxml2!15).).
+- Drop patch python3.6-verify_fd.patch merged upstream
+- clean with spec-cleaner
+
+- libxml2-python3-unicode-errors.patch: work around an issue with
+  libxml2 supplied error strings being undecodable UTF-8 (bsc#1065270)
+
+- convert to singlespec, build a python 3 version
+- change build instructions to use setup.py (and %python_build macros)
+  instead of makefile-based approach
+- add python3.6-verify_fd.patch that fixes libxml2 on python 3.6</comment>
+    <requestid>729358</requestid>
+  </revision>
+</revisionlist>

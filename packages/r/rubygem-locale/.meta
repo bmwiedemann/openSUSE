@@ -1,0 +1,6 @@
+<package name="rubygem-locale" project="openSUSE:Factory">
+  <title>Ruby-Locale is the pure ruby library which provides basic APIs for localization</title>
+  <description>Ruby-Locale is the pure ruby library which provides basic APIs for
+localization.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-locale"/>
+</package>

@@ -1,0 +1,16 @@
+<package name="fotowall" project="openSUSE:Factory">
+  <title>A wallpaper generator</title>
+  <description>FotoWall is a wallpaper generator rendering some of your favorite pictures
+in a nice and smooth high resolution composition.
+
+The interface is intuitive:
+- drag multiple pictures inside fotowall
+- use the red button on the lower rigt corner to resize the picture
+- use the green button on the lower right corner to rotate the picture
+- press the &quot;del&quot; button after selecting a picture to remove it from the composition
+- move the mouse on the corners to change various colors in an extremely cool way
+
+</description>
+  <devel project="graphics" package="fotowall"/>
+  <url>https://www.enricoros.com/opensource/fotowall</url>
+</package>

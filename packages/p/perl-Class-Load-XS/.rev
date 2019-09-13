@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95fcf6608f14a07f17dd709e1d5ff929</srcmd5>
+    <version>0.03</version>
+    <time>1322738698</time>
+    <user>coolo</user>
+    <comment>new deps of Moose</comment>
+    <requestid>94333</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5321e7e3ee53e2f703f0174299609b1d</srcmd5>
+    <version>0.03</version>
+    <time>1323265113</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>94956</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd544f0fc925fd0333b90d3a7558fb33</srcmd5>
+    <version>0.04</version>
+    <time>1329405690</time>
+    <user>coolo</user>
+    <comment>- updated to 0.04
+  - Some small test changes for the latest Module::Implementation and
+    Class::Load. There is no need to upgade if you have 0.03 installed.</comment>
+    <requestid>104260</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8178b7d24b592f62ac11147d3cdc9026</srcmd5>
+    <version>0.04</version>
+    <time>1332147059</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>109662</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c3668f8a668524fc63a5c68abeafd9a7</srcmd5>
+    <version>0.04</version>
+    <time>1338476876</time>
+    <user>coolo</user>
+    <comment>- all Module::Build will do</comment>
+    <requestid>122846</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>c3668f8a668524fc63a5c68abeafd9a7</srcmd5>
+    <version>0.04</version>
+    <time>1340183808</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c3668f8a668524fc63a5c68abeafd9a7</srcmd5>
+    <version>0.04</version>
+    <time>1359109617</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7a27e71265cb47e55924f63480ab8cd1</srcmd5>
+    <version>0.06</version>
+    <time>1371137520</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 178045 from coolo)</comment>
+    <requestid>178260</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7a27e71265cb47e55924f63480ab8cd1</srcmd5>
+    <version>0.06</version>
+    <time>1379663584</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2822576f81f4d3667235691cf848bc8d</srcmd5>
+    <version>0.08</version>
+    <time>1394386476</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>224971</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>2822576f81f4d3667235691cf848bc8d</srcmd5>
+    <version>0.08</version>
+    <time>1409302201</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7d5aa998a5d1c9eb8b463bbd73550ca7</srcmd5>
+    <version>0.09</version>
+    <time>1423392169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>284649</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9a444e6cd15346939916df398a42bb71</srcmd5>
+    <version>0.10</version>
+    <time>1492714327</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487653</requestid>
+  </revision>
+</revisionlist>

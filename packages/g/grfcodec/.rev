@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>558b4db2d5550e7250684bbdcc0b640c</srcmd5>
+    <version>6.0.4</version>
+    <time>1403642764</time>
+    <user>coolo</user>
+    <comment>Old toolset for building graphics for openttd, openttd-opengfx needs it to compare different versions.</comment>
+    <requestid>238075</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>558b4db2d5550e7250684bbdcc0b640c</srcmd5>
+    <version>6.0.4</version>
+    <time>1409301099</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c101debef6605f011c9190f69103c988</srcmd5>
+    <version>6.0.6</version>
+    <time>1467541696</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405802</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>379c01e058440419bb79ab5d3754907d</srcmd5>
+    <version>6.0.6</version>
+    <time>1486135740</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454053</requestid>
+  </revision>
+</revisionlist>

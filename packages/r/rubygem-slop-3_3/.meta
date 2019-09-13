@@ -1,0 +1,5 @@
+<package name="rubygem-slop-3_3" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-slop-3_3"/>
+</package>

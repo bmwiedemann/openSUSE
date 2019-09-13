@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b4e0016650270ca84eeeda87e857208</srcmd5>
+    <version>0.6.0</version>
+    <time>1495034343</time>
+    <user>dimstar_suse</user>
+    <comment>new package, future dependency of sysbench, now with constraints</comment>
+    <requestid>495529</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5687c68a5ce8bd99011a9986f2b7998d</srcmd5>
+    <version>0.6.0</version>
+    <time>1530866705</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621047</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>323fd0e64ee3b383f6b3ddf177f6a8ea</srcmd5>
+    <version>0.6.0</version>
+    <time>1560971570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710659</requestid>
+  </revision>
+</revisionlist>

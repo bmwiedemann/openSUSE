@@ -1,0 +1,840 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d341c9d1f95599799e75b86613cd084</srcmd5>
+    <version>2.10.1</version>
+    <time>1168904203</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9d083702a039e64c060d12ac4782a78f</srcmd5>
+    <version>2.10.2</version>
+    <time>1170427323</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>49eddd9bcdb4761c8e9cbcec71277461</srcmd5>
+    <version>2.10.2</version>
+    <time>1172443120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="10">
+    <srcmd5>759c7f888eba447b4b97ad0109eacd36</srcmd5>
+    <version>2.10.2</version>
+    <time>1175200633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4c61d33be3be6e687bb62f467548d6fc</srcmd5>
+    <version>2.10.3</version>
+    <time>1175812223</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>954fb08091d5b3a49e8c494f1a2f7c59</srcmd5>
+    <version>2.10.3</version>
+    <time>1176394742</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>e154abd5f58ef173bcdde72b5f23381f</srcmd5>
+    <version>2.10.3</version>
+    <time>1178464695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>923346b9791a2596a7e612aa3e988c11</srcmd5>
+    <version>2.10.3</version>
+    <time>1178716566</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="19">
+    <srcmd5>4c588a26805b1c2f142f9263c3e5b64c</srcmd5>
+    <version>2.10.3</version>
+    <time>1180357497</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="25">
+    <srcmd5>57698e8ae7ac0e2dcf3f0db56f622e40</srcmd5>
+    <version>2.10.3</version>
+    <time>1180998762</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="31">
+    <srcmd5>27b88534a3c4716e06d9204d1d7347c0</srcmd5>
+    <version>2.10.3</version>
+    <time>1182464026</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="33">
+    <srcmd5>40d215e8c86264eced54cefecb580d4c</srcmd5>
+    <version>2.10.3</version>
+    <time>1183052569</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a022327791238531e99ba7d79ddc27b4</srcmd5>
+    <version>2.10.4</version>
+    <time>1186174010</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>430a6bd499b00f6f726eafd2563098ec</srcmd5>
+    <version>2.10.4</version>
+    <time>1187203005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>f8202a9e5f14e68cbbde5447315f2cdc</srcmd5>
+    <version>2.10.4</version>
+    <time>1188420199</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>cd3b6dd2ac1f8e83b0b9eaf2cc23333b</srcmd5>
+    <version>2.10.4</version>
+    <time>1188837750</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="28">
+    <srcmd5>b842e63e8321b502e3c2a191db413321</srcmd5>
+    <version>2.10.4</version>
+    <time>1192552568</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>efc46dd185d698f8a9a7d871d2d80158</srcmd5>
+    <version>2.10.5</version>
+    <time>1193649939</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>29975875cf0410a0dd3690723b58c575</srcmd5>
+    <version>2.10.5</version>
+    <time>1193847779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>3d632ca484d9f504a51a48d289d850a8</srcmd5>
+    <version>2.10.5</version>
+    <time>1193963990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>674b1078bb8de5b1ac0f844d36629ef4</srcmd5>
+    <version>2.10.5</version>
+    <time>1194015773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>f299590c706b104eeede33354a8775e9</srcmd5>
+    <version>2.10.5</version>
+    <time>1194103070</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>cd0d20489d8565a412baf3d16ac7e834</srcmd5>
+    <version>2.10.5</version>
+    <time>1194305877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="14">
+    <srcmd5>1b2bfe9088ed7176974c85d85ed36c62</srcmd5>
+    <version>2.10.5</version>
+    <time>1195778754</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3c1008e43e9264688044813ba2261ec1</srcmd5>
+    <version>3.0.0</version>
+    <time>1196290165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>16eaa40cac94bcbf49bffa976190efa4</srcmd5>
+    <version>3.0.0</version>
+    <time>1196357145</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>53eb247bb654a2a44c9381a15cda2737</srcmd5>
+    <version>3.0.0</version>
+    <time>1196643890</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>fd43602914a93b491b6ffd3631682621</srcmd5>
+    <version>3.0.0</version>
+    <time>1197389701</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>efba2e3964e8c3c4ebf9e79c0c381eb6</srcmd5>
+    <version>3.0.0</version>
+    <time>1198000553</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="18">
+    <srcmd5>8ee31b1df880b7a9d18a153dfa045c18</srcmd5>
+    <version>3.0.0</version>
+    <time>1200874362</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>10f890ac72b20c2b42581280f7581266</srcmd5>
+    <version>3.0.1</version>
+    <time>1202143285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="12">
+    <srcmd5>6ddf6683ffa0112ef02123d5e5eaf68f</srcmd5>
+    <version>3.0.1</version>
+    <time>1205431572</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="21">
+    <srcmd5>dfbe0d73e39e8d3997a0976306c6b681</srcmd5>
+    <version>3.0.1</version>
+    <time>1207834360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="23">
+    <srcmd5>86a912644803351b59a1e72f92dd0f37</srcmd5>
+    <version>3.0.1</version>
+    <time>1208738009</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="27">
+    <srcmd5>66ec00fffb587b03cb15e1eddec5dcf7</srcmd5>
+    <version>3.0.1</version>
+    <time>1209502571</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="33">
+    <srcmd5>871c507736c22eba5b35cd905f683828</srcmd5>
+    <version>3.0.1</version>
+    <time>1210674182</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>96c318e33f16e2d56ae5d6e7b2fa9866</srcmd5>
+    <version>3.0.2</version>
+    <time>1211413868</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e3ba479701f28e69eef0d7d69848e825</srcmd5>
+    <version>3.0.3</version>
+    <time>1222705091</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="40">
+    <srcmd5>e3ba479701f28e69eef0d7d69848e825</srcmd5>
+    <version>3.0.3</version>
+    <time>1222705091</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="41">
+    <srcmd5>934e06e00f7d021256cd6779ebaacf82</srcmd5>
+    <version>3.0.3</version>
+    <time>1224730038</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="42">
+    <srcmd5>c91ccd790bfa4a8ff08fb1c07a7a4d3c</srcmd5>
+    <version>3.0.3</version>
+    <time>1224757799</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="43">
+    <srcmd5>cfeb61d0061090811f67ae9d602b8b0c</srcmd5>
+    <version>3.0.3</version>
+    <time>1231722883</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="44">
+    <srcmd5>12c4830119d2a267d37b12009e58e214</srcmd5>
+    <version>3.0.3</version>
+    <time>1240522425</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>07f43bbab297768988f4e5742203df9c</srcmd5>
+    <version>3.1.1</version>
+    <time>1248966063</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>b23970cb246e172b1809ff017224c1fa</srcmd5>
+    <version>3.1.1</version>
+    <time>1253561641</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sensors based on submit request 20545 from user jdelvare
+</comment>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>b23970cb246e172b1809ff017224c1fa</srcmd5>
+    <version>3.1.1</version>
+    <time>1253561641</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sensors based on submit request 20545 from user jdelvare
+</comment>
+  </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>c8563edb6ee494d4b8d9b50609fb9742</srcmd5>
+    <version>3.1.1</version>
+    <time>1258374004</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sensors based on submit request 24442 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="48" vrev="6">
+    <srcmd5>396e048a6d78dd5521815b3d510893c1</srcmd5>
+    <version>3.1.1</version>
+    <time>1260195981</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sensors based on submit request 25591 from user jdelvare
+</comment>
+  </revision>
+  <revision rev="49" vrev="7">
+    <srcmd5>d28a683e36dc75d32be8bba9826e1779</srcmd5>
+    <version>3.1.1</version>
+    <time>1263221624</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sensors based on submit request 29083 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f07299ffc47d2c59113d8a0a29eaf7f3</srcmd5>
+    <version>3.1.2</version>
+    <time>1265376016</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sensors based on submit request 31553 from user jdelvare
+</comment>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>83ed91a7568488ea8b88cb1330a37dc1</srcmd5>
+    <version>3.1.2</version>
+    <time>1268926143</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>70c1926fcbbd661a3b95889ce233231a</srcmd5>
+    <version>3.1.2</version>
+    <time>1270085001</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sensors based on submit request 36455 from user jdelvare
+</comment>
+    <requestid>36455</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>224347d5f1df8b7bc6b917f98b82784b</srcmd5>
+    <version>3.1.2</version>
+    <time>1271188614</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sensors based on submit request 37858 from user jdelvare
+</comment>
+    <requestid>37858</requestid>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>d9e1930f58aa56ed8514c0811f00bd6e</srcmd5>
+    <version>3.1.2</version>
+    <time>1273239590</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sensors based on submit request 39642 from user jdelvare
+</comment>
+    <requestid>39642</requestid>
+  </revision>
+  <revision rev="55" vrev="6">
+    <srcmd5>abe148a657e05f4dc852009ccc013062</srcmd5>
+    <version>3.1.2</version>
+    <time>1275569153</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sensors based on submit request 41018 from user jdelvare
+</comment>
+    <requestid>41018</requestid>
+  </revision>
+  <revision rev="56" vrev="8">
+    <srcmd5>abe148a657e05f4dc852009ccc013062</srcmd5>
+    <version>3.1.2</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="57" vrev="9">
+    <srcmd5>abe148a657e05f4dc852009ccc013062</srcmd5>
+    <version>3.1.2</version>
+    <time>1278678619</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>64badf72f0b48949ab83de2f37a3396c</srcmd5>
+    <version>3.2.0</version>
+    <time>1286792292</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sensors based on submit request 50197 from user jdelvare
+</comment>
+    <requestid>50197</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>8bd9cacb8f2f423de5b3188bc179dea5</srcmd5>
+    <version>3.2.0</version>
+    <time>1288692620</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51835 from user coolo
+</comment>
+    <requestid>51835</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>6eb97d4ef3f2adb02345441e402bd685</srcmd5>
+    <version>3.2.0</version>
+    <time>1288692628</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51835
+</comment>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>9dd8ac49f2ae532421cb35bbae7c1e77</srcmd5>
+    <version>3.2.0</version>
+    <time>1291128416</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54112 from user elvigia
+</comment>
+    <requestid>54112</requestid>
+  </revision>
+  <revision rev="62" vrev="5">
+    <srcmd5>277898748a9ef990a8af40078edde64e</srcmd5>
+    <version>3.2.0</version>
+    <time>1291128422</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54112
+</comment>
+  </revision>
+  <revision rev="63" vrev="6">
+    <srcmd5>54a32776f3dbf10a3ee3233d41eb22e8</srcmd5>
+    <version>3.2.0</version>
+    <time>1295881675</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 58732 from user jdelvare
+</comment>
+    <requestid>58732</requestid>
+  </revision>
+  <revision rev="64" vrev="7">
+    <srcmd5>f2063f6f2e43e43ed28f3a8d975612c2</srcmd5>
+    <version>3.2.0</version>
+    <time>1295881685</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 58732
+</comment>
+  </revision>
+  <revision rev="65" vrev="10">
+    <srcmd5>f2063f6f2e43e43ed28f3a8d975612c2</srcmd5>
+    <version>3.2.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="66" vrev="11">
+    <srcmd5>714d14f7ccec2f1e0c23ead785e91b57</srcmd5>
+    <version>3.2.0</version>
+    <time>1298027470</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61677 from user jdelvare
+</comment>
+    <requestid>61677</requestid>
+  </revision>
+  <revision rev="67" vrev="12">
+    <srcmd5>bb49af44750938a94cacee21d4159721</srcmd5>
+    <version>3.2.0</version>
+    <time>1298027481</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61677
+</comment>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>5714a03efeb52e0b3375d3f2db0266a4</srcmd5>
+    <version>3.3.0</version>
+    <time>1301474471</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65530 from user coolo
+</comment>
+    <requestid>65530</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>0dce2e8e0e709413b109aebc9e6c5690</srcmd5>
+    <version>3.3.0</version>
+    <time>1301474477</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65530
+</comment>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>d4e72c4627eb7d6f321efbd91909041b</srcmd5>
+    <version>3.3.1</version>
+    <time>1311576145</time>
+    <user>saschpe</user>
+    <comment>Update to lm_sensors 3.3.1.</comment>
+    <requestid>76807</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>2befd3215c3ec40ff30a17ecc4654eda</srcmd5>
+    <version>3.3.1</version>
+    <time>1316703436</time>
+    <user>saschpe</user>
+    <comment>- lm_sensors.init: Move lock file from /var/lock/subsys to
+  /var/run (bnc#714654).</comment>
+    <requestid>84489</requestid>
+  </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>2befd3215c3ec40ff30a17ecc4654eda</srcmd5>
+    <version>3.3.1</version>
+    <time>1319182462</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="73" vrev="5">
+    <srcmd5>6baf6b6a3e0e9d85a5c8f8aa7b3a74dd</srcmd5>
+    <version>3.3.1</version>
+    <time>1323194615</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="74" vrev="6">
+    <srcmd5>a6cfd2061d91c54e0bd836df965f9791</srcmd5>
+    <version>3.3.1</version>
+    <time>1329319083</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103846</requestid>
+  </revision>
+  <revision rev="75" vrev="7">
+    <srcmd5>19b075cc39aa7ce5b3f7714870c2ad4e</srcmd5>
+    <version>3.3.1</version>
+    <time>1332147857</time>
+    <user>coolo</user>
+    <comment>- Fix loading of the cpuid module.
+- Properly handle Super-I/O chips without logical device.
+- Change sysfs detection to survive upcoming kernel changes (bnc#751180).
+- sensord: Fix memory leaks revealed by valgrind (bnc#751177).
+- Fix power interval output.</comment>
+    <requestid>109273</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>a264692f63485d077fe1a4f27b9e315e</srcmd5>
+    <version>3.3.2</version>
+    <time>1333014150</time>
+    <user>coolo</user>
+    <comment>Upgrade to upstream version 3.3.2.</comment>
+    <requestid>111596</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>a264692f63485d077fe1a4f27b9e315e</srcmd5>
+    <version>3.3.2</version>
+    <time>1340184208</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>7e9bc853ee84103aaeeac7f1bf1a98ac</srcmd5>
+    <version>3.3.2</version>
+    <time>1347883800</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use the &quot;modutils&quot; require instead of &quot;modules&quot; to select a
+  module toolset implementation (forwarded request 134209 from jengelh)</comment>
+    <requestid>134220</requestid>
+  </revision>
+  <revision rev="79" vrev="5">
+    <srcmd5>837c021962bc08ea96a59851a68b2da2</srcmd5>
+    <version>3.3.2</version>
+    <time>1351874519</time>
+    <user>coolo</user>
+    <comment>- lm_sensors systemd service file missing [bnc#768354] (forwarded request 139902 from elvigia)</comment>
+    <requestid>139931</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>fbf5b901eac0307d8ff41a66cf3bc77c</srcmd5>
+    <version>3.3.3</version>
+    <time>1352700408</time>
+    <user>coolo</user>
+    <comment>Update to lm_sensors 3.3.3 (forwarded request 140787 from sumski)</comment>
+    <requestid>140809</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>fbf5b901eac0307d8ff41a66cf3bc77c</srcmd5>
+    <version>3.3.3</version>
+    <time>1359110395</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>9fbb659dc79fec3eed3999c211bb4e8d</srcmd5>
+    <version>3.3.3</version>
+    <time>1362167075</time>
+    <user>coolo</user>
+    <comment>Align sensors-detect with what kernel 3.7 supports.
+
+- lm_sensors-r6111-detection-Winbond-W83627SF.diff: Add detection
+  of Winbond W83627SF/GF (no sensors.)
+- lm_sensors-r6112-detection-AMD-family-16h.diff: Add detection of
+  AMD family 16h power sensors.
+- lm_sensors-r6113-ITE-IT877x-IT878x-driver.diff: Map IT8771E,
+  IT8772E, IT8782F and IT8783F to it87.
+- lm_sensors-r6117-detection-ITE-IT8752F.diff: Add detection of
+  IT8752F.
+- lm_sensors-r6123-AnalogDev-ADT7410-driver.diff: We have a driver
+  for the ADT7410 since kernel 3.7.</comment>
+    <requestid>156979</requestid>
+  </revision>
+  <revision rev="83" vrev="5">
+    <srcmd5>510ea31a1bdcb8c32f573ebb0fc29828</srcmd5>
+    <version>3.3.3</version>
+    <time>1365934268</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162805 from namtrac)</comment>
+    <requestid>162944</requestid>
+  </revision>
+  <revision rev="84" vrev="6">
+    <srcmd5>a6511a243b247f1558a4a60cd426f011</srcmd5>
+    <version>3.3.3</version>
+    <time>1369641709</time>
+    <user>coolo</user>
+    <comment>- lm_sensors-r6163-pwmconfig-raise-threshold.diff: pwmconfig: Raise
+  the detection threshold to 3/4 (bnc#810344).
+- lm_sensors-r6164-pwmconfig-drop-comment.diff: pwmconfig: Drop a
+  stray comment.
+- lm_sensors-r6165-pwmconfig-multiple-fans.diff:  pwmconfig:
+  Properly deal with multiple fan control (bnc#810344).
+- lm_sensors-r6172-fancontrol-absolute-paths.diff: fancontrol: Fix
+  handling of absolute paths in config (bnc#810344).
+
+- fancontrol.service: Cleanups.
+
+- Add fancontrol.service (bnc#810344).</comment>
+    <requestid>176499</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>60cbdbefbd1bd94f256b8a57e91cc6f0</srcmd5>
+    <version>3.3.4</version>
+    <time>1370453733</time>
+    <user>coolo</user>
+    <comment>- Update to lm_sensors 3.3.4
+  * Mostly a packaging-only clean-up, as we had backported most
+    important changes already.
+  * lm_sensors-r6111-detection-Winbond-W83627SF.diff,
+    lm_sensors-r6112-detection-AMD-family-16h.diff,
+    lm_sensors-r6113-ITE-IT877x-IT878x-driver.diff,
+    lm_sensors-r6117-detection-ITE-IT8752F.diff,
+    lm_sensors-r6123-AnalogDev-ADT7410-driver.diff,
+    lm_sensors-r6163-pwmconfig-raise-threshold.diff,
+    lm_sensors-r6164-pwmconfig-drop-comment.diff,
+    lm_sensors-r6165-pwmconfig-multiple-fans.diff,
+    lm_sensors-r6172-fancontrol-absolute-paths.diff: Removed,
+    upstream now.
+  * fancontrol.service: Removed, now provided by upstream,
+    together with sensord.service.
+  * lm_sensors-3.0.0-sysconfig_metadata.patch,
+    lm_sensors-3.0.3-hint-at-kernel-extra-package.patch: Refreshed.
+- lm_sensors-r6181-fix-service-files.patch: Fix EnvironmentFile
+  in service files</comment>
+    <requestid>177756</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>f93df9967dc782bc96a786b121faf0e8</srcmd5>
+    <version>3.3.4</version>
+    <time>1372840019</time>
+    <user>coolo</user>
+    <comment>- sensors is required for pacemaker and libdlm, and as such
+  we should not buildrequire systemd (forwarded request 181710 from coolo)</comment>
+    <requestid>181732</requestid>
+  </revision>
+  <revision rev="87" vrev="4">
+    <srcmd5>f93df9967dc782bc96a786b121faf0e8</srcmd5>
+    <version>3.3.4</version>
+    <time>1379664647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="88" vrev="5">
+    <srcmd5>0433e7d45be125f7efa4ca38454ac377</srcmd5>
+    <version>3.3.4</version>
+    <time>1386932453</time>
+    <user>coolo</user>
+    <comment>- Remove sysvinit support; none of target distributions use it anymore</comment>
+    <requestid>210690</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>eca564a44cc3ad93cc548ca66d859db8</srcmd5>
+    <version>3.3.5</version>
+    <time>1390976227</time>
+    <user>coolo</user>
+    <comment>- Update to lm_sensors 3.3.5
+ * includes a libsensors fix needed for recent Intel processors (coretemp driver)
+ * sensors-detect: Detection of new devices, added non-interactive (automatic) mode
+- Package COPYING and COPYING.LGPL as requested by legal team</comment>
+    <requestid>215379</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>ce0c9ea26cd225c9b9c70ed7c70c1d68</srcmd5>
+    <version>3.3.5</version>
+    <time>1405253168</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>240169</requestid>
+  </revision>
+  <revision rev="91" vrev="4">
+    <srcmd5>ce0c9ea26cd225c9b9c70ed7c70c1d68</srcmd5>
+    <version>3.3.5</version>
+    <time>1409303349</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="92" vrev="5">
+    <srcmd5>f96ce306049594b5ab9c7aac294fdc0b</srcmd5>
+    <version>3.3.5</version>
+    <time>1416823977</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>261228</requestid>
+  </revision>
+  <revision rev="93" vrev="6">
+    <srcmd5>44e3e468e7f89c3b0bb08f74495728dd</srcmd5>
+    <version>3.3.5</version>
+    <time>1434003658</time>
+    <user>dimstar_suse</user>
+    <comment>Fix laptop display corruption when running sensors-detect (bsc#933072)</comment>
+    <requestid>311332</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>764149a2efbe9286221273b65f171d5f</srcmd5>
+    <version>3.4.0</version>
+    <time>1437059923</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>315662</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>19d4fe926b0fe8fac5323c468273aff6</srcmd5>
+    <version>3.4.0</version>
+    <time>1454833304</time>
+    <user>dimstar_suse</user>
+    <comment>Allow passing arbitrary extra arguments to sensord.</comment>
+    <requestid>357366</requestid>
+  </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>d2709a277646f1cc014340c31cf5e39b</srcmd5>
+    <version>3.4.0</version>
+    <time>1473408957</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425181</requestid>
+  </revision>
+  <revision rev="97" vrev="4">
+    <srcmd5>cb435d3cbfe07d22675de7c6f0598642</srcmd5>
+    <version>3.4.0</version>
+    <time>1476430029</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434454</requestid>
+  </revision>
+  <revision rev="98" vrev="5">
+    <srcmd5>99e0c2b183b7c04507d944c12d0bb18f</srcmd5>
+    <version>3.4.0</version>
+    <time>1481459014</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>444688</requestid>
+  </revision>
+  <revision rev="99" vrev="6">
+    <srcmd5>9da01189b52065ab109313b78a4f93f0</srcmd5>
+    <version>3.4.0</version>
+    <time>1511949092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545107</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>c2e3aacc4cb7a78565f7aef4324e6e78</srcmd5>
+    <version>3.4.0git20180510.1c48b19</version>
+    <time>1527673536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612697</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>3dde30a1c9fec93ee654b6b6384fb375</srcmd5>
+    <version>3.5.0</version>
+    <time>1551215648</time>
+    <user>dimstar_suse</user>
+    <comment>- lm_sensors-3.5.0-libsensors-fix-soname.patch: Undo the
+  SENSORS_API_VERSION change, to stay source-compatible with
+  upstream.
+- lm_sensors-3.5.0-libsensors-fix-soname.patch: Undo excessive
+  libsensors version bump.
+- Update to version 3.5.0:
+  + soname was bumped due to commit dcf2367 which introduced an
+    ABI change.
+  + Fixed disappearance of certain hwmon chips with 4.19+ kernels,
+    (gh#lm-sensors/lm-sensors#139, boo#1116021).
+  + Add the find-driver script for debugging.
+  + Various documentation and man page improvements.
+  + Fix various issues found by Coverity Scan.
+  + Fix compilation with the musl C library.
+  + Updated links in documentation to reflect the new home of
+    lm_sensors.
+  + sensors.1: Add reference to sensors-detect and document -j
+    option (json output).
+  + sensors: Add support for json output, add support for power
+    min, lcrit, min_alarm, lcrit_alarm.
+  + sensors-detect:
+    * Fix systemd paths.
+    * Add detection of Fintek F81768.
+    * Only probe I/O ports on x86.
+    * Add detection of Nuvoton NCT6793D.
+    * Add detection of Microchip MCP9808.
+    * Mark F71868A as supported by the f71882fg driver.
+    * Mark F81768D as supported by the f71882fg driver.
+    * Mark F81866D as supported by the f71882fg driver.
+    * Add detection of various ITE chips.
+    * Add detection of Nuvoton NCT6795D.
+    * Add detection of DDR4 SPD.
+    * Add detection of ITE IT8987D.
+    * Add detection of AMD Family 17h temperature sensors.
+    * Add detection of AMD KERNCZ SMBus controller.
+    * Add detection of various Intel SMBus controllers.
+    * Add detection of Giantec GT30TS00.
+    * Add detection of ONS CAT34TS02C and CAT34TS04.
+    * Add detection of AMD Family 15h Model 60+ temperature
+      sensors.
+    * Add detection of Nuvoton NCT6796D.
+    * Add detection of AMD Family 15h Model 70+ temperature
+      sensors.
+  + configs: Add sample configuration files.
+  + sensors.conf.default:
+    * Add hardwired inputs of NCT6795D
+    * Add hardwired inputs of F71868A
+    * Add hardwired NCT6796D inputs
+  + vt1211_pwm: replaced deprecated sub shell syntax, run with
+    bash instead of sh.
+  + pwmconfig: replaced deprecated sub shell syntax.
+  + fancontrol: replaced deprecated sub shell syntax, save
+    original pwm values.
+  + fancontrol.8: replaced deprecated sub shell syntax.
+  + libsensors:
+    * Add support for SENSORS_BUS_TYPE_SCSI, add support
+      for power min, lcrit, min_alarm, lcrit_alarm.
+    * Handle hwmon device with thermal device parent (bsc#1108468).
+- Rebase lm_sensors-3.0.3-hint-at-kernel-extra-package.patch for
+  new release.
+- Spec file tidy up for man page extension.
+</comment>
+    <requestid>678308</requestid>
+  </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>75ea52ca6bd4f5e213e1886da1f177c9</srcmd5>
+    <version>3.5.0</version>
+    <time>1553699500</time>
+    <user>dimstar_suse</user>
+    <comment>- Join %service_* lines to generate less scriptlet boilerplate. (forwarded request 685864 from jengelh)</comment>
+    <requestid>686004</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,581 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f4756166d2eb64b57c8534853900ba0</srcmd5>
+    <version>1.3.1</version>
+    <time>1271378124</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/meld based on submit request 36725 from user vuntz
+</comment>
+    <requestid>36725</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1f4756166d2eb64b57c8534853900ba0</srcmd5>
+    <version>1.3.1</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1f4756166d2eb64b57c8534853900ba0</srcmd5>
+    <version>1.3.1</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ff6907f26853258dc843e1bbc30eee12</srcmd5>
+    <version>1.3.2</version>
+    <time>1281403345</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/meld based on submit request 45208 from user vuntz
+</comment>
+    <requestid>45208</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9055e97e74ad875cddf21a27bdfdcf69</srcmd5>
+    <version>unknown</version>
+    <time>1284378940</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/meld based on submit request 47816 from user vuntz
+</comment>
+    <requestid>47816</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>0d4adcea4ab464a3daa0961555e344db</srcmd5>
+    <version>1.4.0</version>
+    <time>1287154843</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/meld based on submit request 50630 from user vuntz
+</comment>
+    <requestid>50630</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2b03b8b3b4a30d19bb5c3d500a99e2a9</srcmd5>
+    <version>1.5.0</version>
+    <time>1294657748</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57520 from user vuntz
+</comment>
+    <requestid>57520</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3dbc5256eb0d79e1c95ad0198befc6e9</srcmd5>
+    <version>1.5.0</version>
+    <time>1294657769</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57520
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d1a7403b41726f93bc098e6e6925822e</srcmd5>
+    <version>1.5.0</version>
+    <time>1297643086</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60973 from user vuntz
+</comment>
+    <requestid>60973</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>f6d5634f3d5546ea9f8150d5734ea65f</srcmd5>
+    <version>1.5.0</version>
+    <time>1297643091</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60973
+</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>f6d5634f3d5546ea9f8150d5734ea65f</srcmd5>
+    <version>1.5.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>c8cf297fffaaaa9208b52a56b3a7b3f1</srcmd5>
+    <version>1.5.0</version>
+    <time>1298031239</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61479 from user vuntz
+</comment>
+    <requestid>61479</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>ede21b3192105f0dd0b2045eec462935</srcmd5>
+    <version>1.5.0</version>
+    <time>1298031252</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61479
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bd92b37b354dd787b46e21550e0b5eff</srcmd5>
+    <version>1.5.1</version>
+    <time>1304347167</time>
+    <user>saschpe</user>
+    <comment>Pushing G:A</comment>
+    <requestid>69178</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>1da2ef71f3c07d16b1a5894f4ae230ce</srcmd5>
+    <version>1.5.1</version>
+    <time>1307691653</time>
+    <user>saschpe</user>
+    <comment>Update deps (forwarded request 73124 from vuntz)</comment>
+    <requestid>73154</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>737a28dd33add1f8fdea75a5d11e6f5f</srcmd5>
+    <version>1.5.1</version>
+    <time>1307691661</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73154
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2f476f522986e196e79bd5063a761dd3</srcmd5>
+    <version>1.5.2</version>
+    <time>1312362092</time>
+    <user>saschpe</user>
+    <comment>Pushing G:A</comment>
+    <requestid>77757</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>2f476f522986e196e79bd5063a761dd3</srcmd5>
+    <version>1.5.2</version>
+    <time>1319182175</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>28efea99f359e5ab3d3b15accdf9a5cd</srcmd5>
+    <version>1.5.2</version>
+    <time>1323192529</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cd452c08e962fa267172721373206009</srcmd5>
+    <version>1.5.3</version>
+    <time>1329391435</time>
+    <user>coolo</user>
+    <comment>Pushing some G:A bits</comment>
+    <requestid>104902</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a118c23d5526cb2ca3a361ca1c372daa</srcmd5>
+    <version>1.5.4</version>
+    <time>1334216467</time>
+    <user>coolo</user>
+    <comment>Update to 1.5.4 (forwarded request 112326 from dimstar)</comment>
+    <requestid>112685</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>08f9c255b1261a90406efa0b556a05d0</srcmd5>
+    <version>1.6.0</version>
+    <time>1337195293</time>
+    <user>coolo</user>
+    <comment>Update to 1.6.0 (forwarded request 115969 from vuntz)</comment>
+    <requestid>121048</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>08f9c255b1261a90406efa0b556a05d0</srcmd5>
+    <version>1.6.0</version>
+    <time>1340183695</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1ebb78a208881fff8ba4d4094fdc17a7</srcmd5>
+    <version>1.6.1</version>
+    <time>1351091622</time>
+    <user>coolo</user>
+    <comment>tweak (forwarded request 139120 from dimstar)</comment>
+    <requestid>139121</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>70f707e21a44abd3324a7c62a0d6cc42</srcmd5>
+    <version>1.7.0</version>
+    <time>1353305171</time>
+    <user>coolo</user>
+    <comment>Update to 1.7.0 (forwarded request 140534 from Zaitor)</comment>
+    <requestid>141730</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>70f707e21a44abd3324a7c62a0d6cc42</srcmd5>
+    <version>1.7.0</version>
+    <time>1359109439</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4621f99f0b7b99f5d433352236193769</srcmd5>
+    <version>1.7.1</version>
+    <time>1362730971</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.7.1:
+  + Features:
+    - Folder comparisons can now show extra information, such as
+      file size and modification times. Column visibility and
+      ordering are properly configurable.
+    - Shallow comparison (i.e., based on size and timestamp) are
+      now supported for folder comparisons, including timestamp
+      resolution preferences for cross-filesystem comparisons.
+    - The UI for launching new comparisons has been reworked to
+      have a clearer workflow, and is now shown on startup if no
+      other comparisons have been opened
+    - Recently-used comparisons are now supported, allowing you to
+      re-open previous comparisons directly.
+    - Read-only files are now not editable by default, making merge
+      actions clearer and more consistent. Individual read-only
+      files can easily be set as editable as desired.
+  + Bugfixes:
+    - New version control API, currently used by Git and SVN
+    - Version control compatibility updates and fixes
+    - Command line labelling options now apply to folder tabs
+    - Regressions from parallel inline highlighting calculations
+      have been fixed
+    - Diff algorithm cleanup
+    - Compatibility fixes for Python 3; this does *not* mean that
+      Meld works on Python 3 yet, just that 2to3 issues have been
+      addressed
+  + Updated translations.
+- Add meld-no-updates.patch: do not execute update-mime-database
+  and update-desktop-database during make install. We have to
+  execute these on the target systems. (forwarded request 157412 from Zaitor)</comment>
+    <requestid>157622</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>398be7dff9bb5e56b8bdaca8ea4ce3c0</srcmd5>
+    <version>1.7.2</version>
+    <time>1366793244</time>
+    <user>coolo</user>
+    <comment>Update to 1.7.2 (forwarded request 171175 from Zaitor)</comment>
+    <requestid>172424</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>de7b53290c220b6cc804d2d132dbc94c</srcmd5>
+    <version>1.7.3</version>
+    <time>1372059295</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.7.3 (forwarded request 178023 from dimstar)</comment>
+    <requestid>180553</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c295ed6adc8d6e47405e10ab8681add6</srcmd5>
+    <version>1.7.4</version>
+    <time>1375364887</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.7.4 (forwarded request 184529 from RBrownCCB)</comment>
+    <requestid>185202</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ab6414ee96823457f726bc0337bafbae</srcmd5>
+    <version>1.7.5</version>
+    <time>1378532205</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.7.5 (forwarded request 197319 from dimstar)</comment>
+    <requestid>197538</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3a94cd03ae2224b101d975f13fec7420</srcmd5>
+    <version>1.8.0</version>
+    <time>1379340999</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.8.0:
+  + Fixes: Minor fixes.
+  + Updated translations.</comment>
+    <requestid>199223</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>3a94cd03ae2224b101d975f13fec7420</srcmd5>
+    <version>1.8.0</version>
+    <time>1379663279</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c7e147cef6dde314d625c5fbd448d609</srcmd5>
+    <version>1.8.1</version>
+    <time>1379942726</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.8.1. (forwarded request 200080 from dimstar)</comment>
+    <requestid>200084</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8b40d256ee92319e7982fb826fccf0a3</srcmd5>
+    <version>1.8.2</version>
+    <time>1382351412</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 1.8.2, possible wanted for 13.1, as it's only bugfixes and updated translations. (forwarded request 204012 from dimstar)</comment>
+    <requestid>204080</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a5aab56ed72f214dc6b14041878e60c0</srcmd5>
+    <version>1.8.3</version>
+    <time>1387208118</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.8.3 (forwarded request 210956 from Zaitor)</comment>
+    <requestid>210962</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e7a52079dd1c366fc77c30520aa5c3a8</srcmd5>
+    <version>1.8.4</version>
+    <time>1390907008</time>
+    <user>coolo</user>
+    <comment>Update to 1.8.4 (forwarded request 214738 from Zaitor)</comment>
+    <requestid>214981</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>cef8ca9dc7f7000a43853f62d1b6b5e3</srcmd5>
+    <version>1.8.6</version>
+    <time>1405931744</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241645</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>cef8ca9dc7f7000a43853f62d1b6b5e3</srcmd5>
+    <version>1.8.6</version>
+    <time>1409301884</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>258efbaaee02803ee94e710af5edb572</srcmd5>
+    <version>3.11.4</version>
+    <time>1411721527</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252155</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>fda748966950c104f7afd456dfb52629</srcmd5>
+    <version>3.12.0</version>
+    <time>1412098813</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252748</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>77e62b177584dcbbcbd9736251c02099</srcmd5>
+    <version>3.12.0</version>
+    <time>1413048372</time>
+    <user>coolo</user>
+    <comment>- Add meld-format-as-patch-dialog-window.patch: fix vertical
+  resizing of the format-as-patch dialog (bgo#738120).</comment>
+    <requestid>254812</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5fa319b96c3983b5852e306e2cf2f2f7</srcmd5>
+    <version>3.12.1</version>
+    <time>1415118560</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.12.1:
+  + Work around change colours not displaying on GTK+ 3.14.
+  + Fix missing cache opcodes in some circumstances.
+  + Fix text view expansion when resizing patch dialog.
+  + Build fix to always include C locale when LINGUAS is set.
+- Drop meld-format-as-patch-dialog-window.patch: fixed upstream.</comment>
+    <requestid>259397</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>dcb89a78a9ac58535a4f5f7c74489ab1</srcmd5>
+    <version>3.12.1</version>
+    <time>1416347083</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261519</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>27ea10c8804b0dff405cb84503ef84bf</srcmd5>
+    <version>3.12.2</version>
+    <time>1419331850</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266183</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>33f3c7102248561a101106c85ae8a930</srcmd5>
+    <version>3.12.3</version>
+    <time>1420318849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266891</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>4914209225c0a555630eb46fba3ef713</srcmd5>
+    <version>3.13.0</version>
+    <time>1427735496</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME:Apps - without pcheck</comment>
+    <requestid>291877</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a0856d68877072a441011da54b722fea</srcmd5>
+    <version>3.13.1</version>
+    <time>1429658365</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.13.1</comment>
+    <requestid>298277</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>966e43bb018783479bd3d4b0711ddf72</srcmd5>
+    <version>3.13.3</version>
+    <time>1436888685</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316389</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9b63ca865b07268249cd72f501ac2747</srcmd5>
+    <version>3.14.0</version>
+    <time>1437724742</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>318212</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5a8322ad648b7d3448f52df865834630</srcmd5>
+    <version>3.14.1</version>
+    <time>1444130865</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336516</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>980aa1c6f2be849677f9497bcbcaa8eb</srcmd5>
+    <version>3.14.2</version>
+    <time>1449995999</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>348293</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>5e74aeb178c9c1f38bd5b974b6bb39a4</srcmd5>
+    <version>3.15.2</version>
+    <time>1459508591</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>382383</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>532ec9505b795d33c0854d9ffe9dc8e8</srcmd5>
+    <version>3.15.3</version>
+    <time>1461855394</time>
+    <user>dimstar_suse</user>
+    <comment>Version bump and fix.</comment>
+    <requestid>391475</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a5b54c1214dd5af61980103a845dd097</srcmd5>
+    <version>3.16.0</version>
+    <time>1462261060</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393300</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>606de53b804f9088b3ba859f1d1db964</srcmd5>
+    <version>3.16.0</version>
+    <time>1463738164</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396753</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>2046d49621a0b3c8d1a1ef1568138850</srcmd5>
+    <version>3.16.0</version>
+    <time>1464853179</time>
+    <user>dimstar_suse</user>
+    <comment>Sync package with SLE12SP2 - just for easier tracking (forwarded request 399225 from dimstar)</comment>
+    <requestid>399449</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>67790c561ddbdf4a1d3bfe0b8cb629db</srcmd5>
+    <version>3.16.1</version>
+    <time>1467360051</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405599</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>cdfcecf45637b9c21f4b50bbbf775419</srcmd5>
+    <version>3.16.2</version>
+    <time>1470413843</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416715</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>949fe8721a3f822dfb8e353ca0e7535e</srcmd5>
+    <version>3.16.3</version>
+    <time>1475055065</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>430528</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9ee60f2315854b8697ebea72971ede04</srcmd5>
+    <version>3.16.4</version>
+    <time>1482418614</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447053</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>001d6c7331e9783f387b501eb7f5fe0b</srcmd5>
+    <version>3.18.0</version>
+    <time>1505139783</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523053</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>f415e8d10a2b966f25aa5a8af9fafecc</srcmd5>
+    <version>3.18.0</version>
+    <time>1508316713</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python3-cairo requires: Fix startup of the application
+  (boo#1062151). (forwarded request 534238 from dimstar)</comment>
+    <requestid>534314</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>0324dde229cc58c42c505bbf5e56b561</srcmd5>
+    <version>3.18.0</version>
+    <time>1520503053</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581274 from dimstar)</comment>
+    <requestid>582697</requestid>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>569c342215de96c8661b2fc931ee9c89</srcmd5>
+    <version>3.18.0</version>
+    <time>1521904482</time>
+    <user>dimstar_suse</user>
+    <comment>t-u-u / boo#1086036 (forwarded request 589284 from dimstar)</comment>
+    <requestid>589974</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>29edddaf553e8fbd76e830fbdd843b6b</srcmd5>
+    <version>3.19.0</version>
+    <time>1523447791</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>592380</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>82b968039d0b4d77f1b35cfb04f39de0</srcmd5>
+    <version>3.20.0</version>
+    <time>1548064105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664083</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>e5809d7180f236bbcde1c9638043192f</srcmd5>
+    <version>3.20.1</version>
+    <time>1554115206</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release</comment>
+    <requestid>690201</requestid>
+  </revision>
+</revisionlist>

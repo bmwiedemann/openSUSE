@@ -1,0 +1,7 @@
+<package name="python-geographiclib" project="openSUSE:Factory">
+  <title>A translation of the GeographicLib library to Python</title>
+  <description>This is a python implementation of the geodesic routines from GeographicLib. This contains implementations of the classes: GeographicLib::Math, GeographicLib::Accumulator, GeographicLib::Geodesic, GeographicLib::GeodesicLine, and GeographicLib::PolygonArea.
+
+For more information on GeographicLib, see http://geographiclib.sf.net</description>
+  <devel project="Application:Geo" package="python-geographiclib"/>
+</package>

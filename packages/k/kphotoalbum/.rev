@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a84f28c4a34e907dcb3e6ef2ce498de5</srcmd5>
+    <version>5.3</version>
+    <time>1522062892</time>
+    <user>dimstar_suse</user>
+    <comment>Available in KDE:Extra since years, actively maintained upstream</comment>
+    <requestid>590872</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4bd0318992a80fbd6a883cc065a4d99f</srcmd5>
+    <version>5.3</version>
+    <time>1528111386</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Fix-build-with-Qt-511.patch
+- Run spec-cleaner
+</comment>
+    <requestid>613950</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>220a602b4a6dfc1f2d5b1a98ea2917e4</srcmd5>
+    <version>5.4</version>
+    <time>1539589615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641954</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a0ee86914c8ddcdd8a2b13bb971e8737</srcmd5>
+    <version>5.4</version>
+    <time>1546695747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662734</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1fe88123d5b9fb64ef4eef02e0c05cce</srcmd5>
+    <version>5.4.2</version>
+    <time>1549624414</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672379</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cc9f1cebcfef3f6bd533842fd1b18abf</srcmd5>
+    <version>5.5</version>
+    <time>1556817736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700142</requestid>
+  </revision>
+</revisionlist>

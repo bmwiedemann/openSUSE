@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>b0fc9429109c645147c434b4af003640</srcmd5>
+    <version>3.1</version>
+    <time>1168903456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>45fc201a3146bf62b5f73a0560457b90</srcmd5>
+    <version>3.2</version>
+    <time>1220991200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3bf14843f83623d6e2df9f21b7d15d13</srcmd5>
+    <version>4.0</version>
+    <time>1231952190</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4c46ebca206f047074d46e879cf15648</srcmd5>
+    <version>4.0</version>
+    <time>1248172150</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>4c46ebca206f047074d46e879cf15648</srcmd5>
+    <version>4.0</version>
+    <time>1248172150</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>f60b8b4710194f62e557b69be8aeccb9</srcmd5>
+    <version>4.0</version>
+    <time>1268924853</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>f60b8b4710194f62e557b69be8aeccb9</srcmd5>
+    <version>4.0</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>f60b8b4710194f62e557b69be8aeccb9</srcmd5>
+    <version>4.0</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>cfd8ed08b91fdf7dd988366a0e7bf8dc</srcmd5>
+    <version>4.0</version>
+    <time>1297113506</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60201 from user coolo
+</comment>
+    <requestid>60201</requestid>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>d86c7f88230a0eadd502d05642df9be4</srcmd5>
+    <version>4.0</version>
+    <time>1297113514</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60201
+</comment>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>d86c7f88230a0eadd502d05642df9be4</srcmd5>
+    <version>4.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>d86c7f88230a0eadd502d05642df9be4</srcmd5>
+    <version>4.0</version>
+    <time>1319182159</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>f253594b170433744d744252bc1fc92a</srcmd5>
+    <version>4.0</version>
+    <time>1323192436</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>f253594b170433744d744252bc1fc92a</srcmd5>
+    <version>4.0</version>
+    <time>1340183674</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>f253594b170433744d744252bc1fc92a</srcmd5>
+    <version>4.0</version>
+    <time>1359109410</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>f253594b170433744d744252bc1fc92a</srcmd5>
+    <version>4.0</version>
+    <time>1379663199</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>5b5c58bd6c14c002ad8aa389bda2d81b</srcmd5>
+    <version>4.0</version>
+    <time>1380199465</time>
+    <user>coolo</user>
+    <comment>- require [bnc#807747]
+    /usr/bin/foomatic-rip
+    /usr/bin/gs
+    /usr/bin/xdg-desktop-icon
+    /usr/bin/xdg-desktop-menu
+    /usr/bin/xdg-email
+    /usr/bin/xdg-icon-resource
+    /usr/bin/xdg-mime
+    /usr/bin/xdg-open
+    /usr/bin/xdg-screensaver
+    Mesa-libGL1
+    libGLU1
+    libXt6
+    libXtst6
+    libasound2
+    libjpeg62
+    libpng12
+    libqt4
+    libqt4-sql
+    libqt4-x11
+    mozilla-nss (forwarded request 200671 from pgajdos)</comment>
+    <requestid>200674</requestid>
+  </revision>
+  <revision rev="18" vrev="25">
+    <srcmd5>677015ab886aac820d2959882f40b89e</srcmd5>
+    <version>4.0</version>
+    <time>1380713483</time>
+    <user>coolo</user>
+    <comment>- require libpng12-0 instead of libpng12</comment>
+    <requestid>201533</requestid>
+  </revision>
+  <revision rev="19" vrev="27">
+    <srcmd5>677015ab886aac820d2959882f40b89e</srcmd5>
+    <version>4.0</version>
+    <time>1409301821</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="28">
+    <srcmd5>cb3f334ea94963880adf0afd9759fe97</srcmd5>
+    <version>4.0</version>
+    <time>1448400816</time>
+    <user>coolo</user>
+    <comment>- Set optional variables in /etc/lsb-release form /etc/os-release provided by openSUSE-release:
+  - DISTRIB_ID
+  - DISTRIB_RELEASE
+  - DISTRIB_CODENAME
+  - DISTRIB_DESCRIPTION</comment>
+    <requestid>345047</requestid>
+  </revision>
+  <revision rev="21" vrev="29">
+    <srcmd5>2733e82fb30e7e9c1debce1ef009f969</srcmd5>
+    <version>4.0</version>
+    <time>1486968581</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456008</requestid>
+  </revision>
+  <revision rev="22" vrev="30">
+    <srcmd5>ef4b70a30a1b1f06e5c1c153f4bf6751</srcmd5>
+    <version>4.0</version>
+    <time>1503392967</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert change from Nov 18, 2015: copying the data from
+  /etc/os-release to /etc/lsb-release does not work with a rolling
+  release like Tumbleweed [bsc#960501]</comment>
+    <requestid>517872</requestid>
+  </revision>
+  <revision rev="23" vrev="31">
+    <srcmd5>7070ab4040753c2768440ca476c29b2c</srcmd5>
+    <version>4.0</version>
+    <time>1503593794</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix missing double quote, unbreaks lsb_release (forwarded request 518510 from namtrac)</comment>
+    <requestid>518511</requestid>
+  </revision>
+  <revision rev="24" vrev="32">
+    <srcmd5>e1dc75d5907831045e618e748505953f</srcmd5>
+    <version>4.0</version>
+    <time>1521716602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589123</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>47847b1506e6b06284183251d42d02e0</srcmd5>
+    <version>4.0.fake</version>
+    <time>1554458700</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove all desktop requires as they just don't fit with the way
+  Tumbleweed moves. And most applications out there nowadays requiring
+  'lsb' don't really mean the standard, but some kind of base system
+  (see boo#1086166)</comment>
+    <requestid>691591</requestid>
+  </revision>
+</revisionlist>

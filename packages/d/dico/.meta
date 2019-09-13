@@ -1,0 +1,10 @@
+<package name="dico" project="openSUSE:Factory">
+  <title>Flexible modular implementation of DICT server (RFC 2229)</title>
+  <description>GNU Dico is a flexible modular implementation of DICT server (RFC 2229). In
+contrast to another implementations, it does not depend on particular
+database format. GNU Dico handles database accesses using loadable modules.
+
+</description>
+  <devel project="Education" package="dico"/>
+  <url>https://www.gnu.org/software/dico/</url>
+</package>

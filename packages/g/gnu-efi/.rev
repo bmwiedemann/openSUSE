@@ -1,0 +1,235 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9e1bee35e0b39f92bf9d5616654353f</srcmd5>
+    <version>3.0c</version>
+    <time>1168902903</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="34">
+    <srcmd5>48036f6dd65a2dde1ef36a41bbc5f83f</srcmd5>
+    <version>3.0c</version>
+    <time>1172442314</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="53">
+    <srcmd5>830e790e33092be071c58118953734e5</srcmd5>
+    <version>3.0c</version>
+    <time>1180217602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="54">
+    <srcmd5>8b4f327cb09e1e954982525a13d7a638</srcmd5>
+    <version>3.0c</version>
+    <time>1180283869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cc44af120253eaced36349e6ad158976</srcmd5>
+    <version>3.0e</version>
+    <time>1217532319</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="20">
+    <srcmd5>36dbabeccba5d68cfd1b506eb7c2ef49</srcmd5>
+    <version>3.0e</version>
+    <time>1224691119</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="22">
+    <srcmd5>36dbabeccba5d68cfd1b506eb7c2ef49</srcmd5>
+    <version>3.0e</version>
+    <time>1224691119</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="23">
+    <srcmd5>4542d7dfc79b5e3f11abac873881a6db</srcmd5>
+    <version>3.0e</version>
+    <time>1268923826</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="25">
+    <srcmd5>4542d7dfc79b5e3f11abac873881a6db</srcmd5>
+    <version>3.0e</version>
+    <time>1278667347</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="26">
+    <srcmd5>4542d7dfc79b5e3f11abac873881a6db</srcmd5>
+    <version>3.0e</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="29">
+    <srcmd5>4542d7dfc79b5e3f11abac873881a6db</srcmd5>
+    <version>3.0e</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="31">
+    <srcmd5>4542d7dfc79b5e3f11abac873881a6db</srcmd5>
+    <version>3.0e</version>
+    <time>1319181929</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="32">
+    <srcmd5>c9d4282a154242349ef8185f365a3a6e</srcmd5>
+    <version>3.0e</version>
+    <time>1323191708</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3227f4dbf368680c9b1a0b1e3d1d134a</srcmd5>
+    <version>3.0q</version>
+    <time>1339707238</time>
+    <user>coolo</user>
+    <comment>- Update to gnu-efi 3.0q
+  + Fix .reloc section to support UEFI Secure Boot
+  + Fix redefined types compilation failure on x86_64 machines
+  + Conditionally assign toolchain binaries to allow overriding
+    them
+  + Force a dependency on lib for gnuefi
+  + Add guarantee 16-byte stack alignment on x86_64
+  + Add routine to make callbacks work
+  + Add apps/tcc.efi to test calling convention
+  + Add ifdefs for ia64 to mirror ia32 and x86-64 so that
+    one can build with GCC.
+  + Add headers for PciIo
+  + Add the UEFI 2.x bits for EFI_BOOT_SERVICES
+  + Add an ignore for .note.GNU-stack section in X86-64 linker maps
+  + Change license from GPL to BSD
+  + Fix elf_ia32_efi.lds linker script to be compatible with the
+    new linker behaviour
+  + Fix to not having any relocations at all
+  + Add setjmp/longjmp
+  + Fixes incorrect section attribute in crt0-efi-ia32.S
+  + Adds value EfiResetShutdown to enum EFI_RESET_TYPE
+  + Fixes a RAW warning in reloc_ia64.S
+  + Adds the USB HCI device path structure in the headers
+  + Added '-mno-red-zone' to x68_64 compiles</comment>
+    <requestid>124990</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>3227f4dbf368680c9b1a0b1e3d1d134a</srcmd5>
+    <version>3.0q</version>
+    <time>1340183393</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>41a5c895a13e015a3172388bdd580c6d</srcmd5>
+    <version>3.0q</version>
+    <time>1342772205</time>
+    <user>coolo</user>
+    <comment>- cleaned below up, pass in OPTFLAGS and LIBDIR to make.
+
+- Add gnu-efi-add-optflags-to-make-defaults.patch: Add additional
+  RPM OPT FLAGS to Make.defaults to avoid brp check warning.
+- Spec file clean up and rename rpmlintrc file.</comment>
+    <requestid>128243</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>885f9d9acf8883f88f7fa94b4aab1c0b</srcmd5>
+    <version>3.0q</version>
+    <time>1352796059</time>
+    <user>coolo</user>
+    <comment>- revert last change as it breaks the app completely</comment>
+    <requestid>140575</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>885f9d9acf8883f88f7fa94b4aab1c0b</srcmd5>
+    <version>3.0q</version>
+    <time>1359108971</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6b77514cfe749822a50838cbffb75545</srcmd5>
+    <version>3.0u</version>
+    <time>1374386866</time>
+    <user>coolo</user>
+    <comment>Update to gnu-efi 3.0u. Although shim &gt;= 3.0 only requests gnu-efi &gt;= 3.0t, 3.0u includes some important fixes such as disabling MMX and SSE and fixes for uefi call parameter-passing, and it's worth to upgrade to 3.0u. (forwarded request 183513 from gary_lin)</comment>
+    <requestid>183812</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>6b77514cfe749822a50838cbffb75545</srcmd5>
+    <version>3.0u</version>
+    <time>1379662513</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>6b77514cfe749822a50838cbffb75545</srcmd5>
+    <version>3.0u</version>
+    <time>1409301051</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b24f392848de2f39b765eb05e2b892ab</srcmd5>
+    <version>3.0w</version>
+    <time>1415748045</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>253756</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c117d78f8fb8eefce08953a141f8fb16</srcmd5>
+    <version>3.0.2</version>
+    <time>1434602183</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>311739</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b10bf1a05b899e134915cb105954c8c4</srcmd5>
+    <version>3.0.3</version>
+    <time>1441726602</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328929</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>042d48e0ad2a0d0737a5627041a5a988</srcmd5>
+    <version>3.0.3</version>
+    <time>1457353568</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>364982</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9e2020b8adf9dc39fcacb09211d0d029</srcmd5>
+    <version>3.0.5</version>
+    <time>1498202197</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504045</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>3f84829043921dd6de63f9707826c4d8</srcmd5>
+    <version>3.0.5</version>
+    <time>1517606420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571702</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>06e423b10e8c97fef366c6af6febdfe9</srcmd5>
+    <version>3.0.5</version>
+    <time>1521904333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589235</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>433fc447dbb6f05a61220765fbf0dfed</srcmd5>
+    <version>3.0.8</version>
+    <time>1543399747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641271</requestid>
+  </revision>
+</revisionlist>

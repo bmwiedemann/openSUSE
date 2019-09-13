@@ -1,0 +1,248 @@
+<revisionlist>
+  <revision rev="1" vrev="48">
+    <srcmd5>3e546655fd0684d5675cabcc7c19705a</srcmd5>
+    <version>2.0.11</version>
+    <time>1168447484</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="50">
+    <srcmd5>6d81cc4e7f4e08cb4fced3909e9320e2</srcmd5>
+    <version>2.0.11</version>
+    <time>1168615324</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="51">
+    <srcmd5>442082ea8e79d2fe52afb75ac44e3a1c</srcmd5>
+    <version>2.0.11</version>
+    <time>1170418057</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="52">
+    <srcmd5>643d43a18083e9aaa7ffb37d06a30a76</srcmd5>
+    <version>2.0.11</version>
+    <time>1170865664</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="107">
+    <srcmd5>cdf19e4675551728ea1d0bf52fae6bc6</srcmd5>
+    <version>2.0.11</version>
+    <time>1186678890</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="176">
+    <srcmd5>4d115029868a04c129ff6b7a8405f6fb</srcmd5>
+    <version>2.0.11</version>
+    <time>1201900379</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bfcb06f9279f96baf72c32e64b15a6b3</srcmd5>
+    <version>2.0.13</version>
+    <time>1218667364</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4cccc58b60b379c7179ac14517830a9a</srcmd5>
+    <version>2.0.14</version>
+    <time>1219077565</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="17">
+    <srcmd5>bf5c29cdd36df9585d6cada4f271043f</srcmd5>
+    <version>2.0.14</version>
+    <time>1223305470</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>eb567ce7d79532126e823572ef0f5c54</srcmd5>
+    <version>2.0.15</version>
+    <time>1231869508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>2c920042f9fdb17a84bbb0ad588982d3</srcmd5>
+    <version>2.0.15</version>
+    <time>1234288254</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>2c920042f9fdb17a84bbb0ad588982d3</srcmd5>
+    <version>2.0.15</version>
+    <time>1234288254</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>2cb81fe5205bed9993aa235facb87738</srcmd5>
+    <version>2.0.15</version>
+    <time>1268923910</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>2cb81fe5205bed9993aa235facb87738</srcmd5>
+    <version>2.0.15</version>
+    <time>1278667349</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>2cb81fe5205bed9993aa235facb87738</srcmd5>
+    <version>2.0.15</version>
+    <time>1278678581</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>ac955ad311022b68fa0a23bf34f9eb9d</srcmd5>
+    <version>unknown</version>
+    <time>1284372703</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtkspell based on submit request 47769 from user vuntz
+</comment>
+    <requestid>47769</requestid>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>ac955ad311022b68fa0a23bf34f9eb9d</srcmd5>
+    <version>unknown</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>5a6778ef58f6bca059c0e317af62abbf</srcmd5>
+    <version>2.0.15</version>
+    <time>1299056432</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63175 from user sbrabec
+</comment>
+    <requestid>63175</requestid>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>760220959744fe9dc5905c92395939c7</srcmd5>
+    <version>2.0.15</version>
+    <time>1299056440</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63175
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cfc5ab14756013f9d845a591625138fd</srcmd5>
+    <version>2.0.16</version>
+    <time>1304423210</time>
+    <user>darix</user>
+    <comment>Drop .la file (forwarded request 69310 from vuntz)</comment>
+    <requestid>69339</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0436603b99db85e69987da8a1f194873</srcmd5>
+    <version>2.0.16</version>
+    <time>1304423218</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 69339
+</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>8029950829b9c3904136f4f5d85d89a2</srcmd5>
+    <version>2.0.16</version>
+    <time>1304688849</time>
+    <user>saschpe</user>
+    <comment>SLPP</comment>
+    <requestid>69759</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>4ee4b7729e0a5b956fca0746776a8258</srcmd5>
+    <version>2.0.16</version>
+    <time>1304688860</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69759
+</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>a93c878d21cfdbb8238b9c3d4ed7bbc0</srcmd5>
+    <version>2.0.16</version>
+    <time>1308303672</time>
+    <user>saschpe</user>
+    <comment>Drop _service (forwarded request 73952 from vuntz)</comment>
+    <requestid>73964</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>0420c351ca83b5ccb62c9ddd9fd8daf8</srcmd5>
+    <version>2.0.16</version>
+    <time>1308303684</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73964
+</comment>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>0420c351ca83b5ccb62c9ddd9fd8daf8</srcmd5>
+    <version>2.0.16</version>
+    <time>1319181957</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>55e33c570a15d5b412e4714babd8d218</srcmd5>
+    <version>2.0.16</version>
+    <time>1323191850</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="28" vrev="11">
+    <srcmd5>55e33c570a15d5b412e4714babd8d218</srcmd5>
+    <version>2.0.16</version>
+    <time>1340183426</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="13">
+    <srcmd5>55e33c570a15d5b412e4714babd8d218</srcmd5>
+    <version>2.0.16</version>
+    <time>1359109029</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="14">
+    <srcmd5>60921ade0124d8d9e714bc602b208e67</srcmd5>
+    <version>2.0.16</version>
+    <time>1364896271</time>
+    <user>coolo</user>
+    <comment>spec cleanup</comment>
+    <requestid>161990</requestid>
+  </revision>
+  <revision rev="31" vrev="16">
+    <srcmd5>60921ade0124d8d9e714bc602b208e67</srcmd5>
+    <version>2.0.16</version>
+    <time>1379662589</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="18">
+    <srcmd5>60921ade0124d8d9e714bc602b208e67</srcmd5>
+    <version>2.0.16</version>
+    <time>1409301136</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="19">
+    <srcmd5>af69da8023eb9a1e9acd94ea07c8559a</srcmd5>
+    <version>2.0.16</version>
+    <time>1505331574</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>520660</requestid>
+  </revision>
+  <revision rev="34" vrev="20">
+    <srcmd5>d5527b21cb90a3782543f334128c7805</srcmd5>
+    <version>2.0.16</version>
+    <time>1513676740</time>
+    <user>dimstar_suse</user>
+    <comment>spellfix #2 (forwarded request 557018 from Zaitor)</comment>
+    <requestid>557084</requestid>
+  </revision>
+  <revision rev="35" vrev="21">
+    <srcmd5>f96ca6fbbde980dc31e0c6a3e4a40ce6</srcmd5>
+    <version>2.0.16</version>
+    <time>1520502379</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581203 from dimstar)</comment>
+    <requestid>582794</requestid>
+  </revision>
+</revisionlist>

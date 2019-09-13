@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d0d4fae7464d711b69cf395bb20201e4</srcmd5>
+    <version>1.2.4</version>
+    <time>1493368534</time>
+    <user>dimstar_suse</user>
+    <comment>replaces dbus-1-python</comment>
+    <requestid>486296</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a3485c7cec475ae4a664ab0bf01b5e09</srcmd5>
+    <version>1.2.4</version>
+    <time>1511193762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542588</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f49fc4a55414d331368a9851ea60605a</srcmd5>
+    <version>1.2.4</version>
+    <time>1514027838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557983</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7e6b427484ff6aa334d0a6ac0a81d117</srcmd5>
+    <version>1.2.4</version>
+    <time>1516092004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563550</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d52113cd7f2ebe859f606d19c0d5b30c</srcmd5>
+    <version>1.2.8</version>
+    <time>1531469765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621284</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>85dcf8253aa2270ee3f3faebc7ebb723</srcmd5>
+    <version>1.2.8</version>
+    <time>1539342513</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing dependency for pkg-config files</comment>
+    <requestid>640876</requestid>
+  </revision>
+</revisionlist>

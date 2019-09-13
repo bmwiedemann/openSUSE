@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6db8970514234912e07e10d4846b67e</srcmd5>
+    <version>1.0.3</version>
+    <time>1344368997</time>
+    <user>namtrac</user>
+    <comment>add updated ilmbase (replaces libilmbase6 with sane naming) to Factory</comment>
+    <requestid>130293</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d88cc56ece29c79261920522eab13244</srcmd5>
+    <version>1.0.3</version>
+    <time>1345973515</time>
+    <user>namtrac</user>
+    <comment>restoreControlRegs function for 32 bit x86 had signature differently from prototype, fixed that (forwarded request 131521 from repabuild)</comment>
+    <requestid>131541</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3a6f03d7c1790fb7bd217ac6604dad59</srcmd5>
+    <version>1.0.3</version>
+    <time>1349243286</time>
+    <user>coolo</user>
+    <comment>- Correct baselibs.conf</comment>
+    <requestid>136189</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>3a6f03d7c1790fb7bd217ac6604dad59</srcmd5>
+    <version>1.0.3</version>
+    <time>1359109076</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>f0514550606f2619de6fd1c7abf096f9</srcmd5>
+    <version>1.0.3</version>
+    <time>1364896425</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161557 from m_meister)</comment>
+    <requestid>161558</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f85312a39739a37982bfcd3454943392</srcmd5>
+    <version>2.0.0</version>
+    <time>1366472670</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>172568</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f0827987733cc6db6efb77a683f279a2</srcmd5>
+    <version>2.0.1</version>
+    <time>1373985279</time>
+    <user>coolo</user>
+    <comment>- update to 2.0.1 
+    * Bumped version to track OpenEXR
+      (Piotr Stanczyk)
+- add gpg-offline based verification
+- use downloads from nongnu.org, instead of github</comment>
+    <requestid>183077</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f0827987733cc6db6efb77a683f279a2</srcmd5>
+    <version>2.0.1</version>
+    <time>1379662662</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>939443b433ae416eca7f3783097f08c4</srcmd5>
+    <version>2.1.0</version>
+    <time>1385562640</time>
+    <user>coolo</user>
+    <comment>- update to 2.1.0 
+    * Bumped version to track OpenEXR
+      (Piotr Stanczyk)
+- small cleanup of spec file</comment>
+    <requestid>208648</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ef492eff51ed6fd61f1f6eb132cacf9c</srcmd5>
+    <version>2.1.0</version>
+    <time>1409212918</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245786</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>ef492eff51ed6fd61f1f6eb132cacf9c</srcmd5>
+    <version>2.1.0</version>
+    <time>1409301220</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bc36ff6ac66f92b7a9dc430b308b81bd</srcmd5>
+    <version>2.2.0</version>
+    <time>1422658628</time>
+    <user>dimstar_suse</user>
+    <comment>- updated openexr.keyring from the savannah project page.
+
+- Update to version 2.2.0
+   * Bumped version to track OpenEXR
+- Bump so_suffix to 2_2-12 and libHalf11 to libHalf12 according to
+  upstream changes
+- removed arm-build.diff: upstream?
+- removed fix-i586.patch: upstream?
+- Bump so version in baselibs.conf</comment>
+    <requestid>282635</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>dcde2c695b3001c6efbae50a8aee20e6</srcmd5>
+    <version>2.2.0</version>
+    <time>1503308129</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516763</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5343f76c307b55567b68f668225bacde</srcmd5>
+    <version>2.2.1</version>
+    <time>1518697199</time>
+    <user>dimstar_suse</user>
+    <comment>- fix license of halfExport.h [bsc#774408]
+  + ilmbase-halfExport.h-license.patch
+
+- Update keyring and set keyring URL
+
+- Update to version 2.2.1
+  * Bumped version to track OpenEXR
+- bump sonum and macroify it
+- cleanup with spec-cleaner</comment>
+    <requestid>575811</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7659106afbbdab91d0a30924eedd45a8</srcmd5>
+    <version>2.3.0</version>
+    <time>1542012625</time>
+    <user>dimstar_suse</user>
+    <comment>- asan_build: build ASAN included
+- debug_build: build more suitable for debugging
+
+- updated to 2.3.0
+  * ThreadPool overhead improvements, enable custom thread pool 
+    to be registered via ThreadPoolProvider class
+  * Fixes to enable custom namespaces for Iex, Imf
+  * Improve read performance for deep/zipped data, and
+    SIMD-accelerated uncompress support
+  * Added rawPixelDataToBuffer() function for access to
+    compressed scanlines
+  * Iex::BaseExc no longer derived from std::string.
+  * Imath throw() specifiers removed
+  * Initial Support for Python 3
+  * removed patch
+    - ilmbase-halfExport.h-license.patch (upstreamed)</comment>
+    <requestid>646648</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,218 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e4bd2bb46ce599f42e3ac9a199d03ba</srcmd5>
+    <version>0.1.3</version>
+    <time>1338476970</time>
+    <user>coolo</user>
+    <comment>Please add, python-requests dependency.</comment>
+    <requestid>122030</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6e4bd2bb46ce599f42e3ac9a199d03ba</srcmd5>
+    <version>0.1.3</version>
+    <time>1340184072</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>77f31bcff7550dcb6f7b0e78463d9631</srcmd5>
+    <version>0.3.4</version>
+    <time>1353847850</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.4:
+  + A number of small features and bug fixes.
+- Changes from version 0.3.3:
+  + OAuth 1 Provider verify now return useful params
+- Changes from version 0.3.2:
+  + Fixed #62, all Python 3 tests pass.
+- Changes from version 0.3.1:
+  + Python 3.1, 3.2, 3.3 support (experimental)
+- Changes from version 0.3.0:
+  + Initial OAuth 2 client support
+- Changes from version 0.2.1:
+  + Exclude non urlencoded bodies during request verification
+- Changes from version 0.2.0:
+  + OAuth provider support
+- Changes from version 0.1.4:
+  + soft dependency on PyCrypto</comment>
+    <requestid>142574</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>77f31bcff7550dcb6f7b0e78463d9631</srcmd5>
+    <version>0.3.4</version>
+    <time>1359110082</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>77f31bcff7550dcb6f7b0e78463d9631</srcmd5>
+    <version>0.3.4</version>
+    <time>1379664233</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e4009d4fe4e76616fb4e4566d0eb41d7</srcmd5>
+    <version>0.3.4</version>
+    <time>1382693093</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204607</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f27d3392c8e1143bb01dc21f266a4de8</srcmd5>
+    <version>0.6.0</version>
+    <time>1383324181</time>
+    <user>scarabeus_factory</user>
+    <comment>Update (forwarded request 205530 from posophe)</comment>
+    <requestid>205531</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c3baffeac51893c4ddc015a1b76d17cf</srcmd5>
+    <version>0.6.0</version>
+    <time>1390231487</time>
+    <user>coolo</user>
+    <comment>- Add pycrypto requirement for &quot;rsa&quot; submodule</comment>
+    <requestid>214480</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0b75b559d9f98b14ddba1e519725df72</srcmd5>
+    <version>0.6.0</version>
+    <time>1390395621</time>
+    <user>coolo</user>
+    <comment>- use pycrypto, not python-rsa (forwarded request 214547 from dirkmueller)</comment>
+    <requestid>214551</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>439a99a248b0d3e458e19c4c51b31a63</srcmd5>
+    <version>0.6.1</version>
+    <time>1397460317</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 229915 from posophe)</comment>
+    <requestid>229916</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>439a99a248b0d3e458e19c4c51b31a63</srcmd5>
+    <version>0.6.1</version>
+    <time>1409302931</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4be8d3dbc445c72e61210fa4fe7847c6</srcmd5>
+    <version>0.6.3</version>
+    <time>1410795647</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242386</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>643cf7643648ea75f61b0f36f7749b53</srcmd5>
+    <version>0.7.2</version>
+    <time>1429948369</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298712</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9f4c9bd327f41279c1f1f114dda9f618</srcmd5>
+    <version>0.7.2</version>
+    <time>1474723694</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>429472</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4c94ac0659927c42000f5ed6b0c01338</srcmd5>
+    <version>2.0.1</version>
+    <time>1484041503</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pypi.io and htttps as Source
+
+- update to 2.0.1:
+  too many changes to be listed herein
+  (see /usr/share/doc/packages/python-oauthlib/CHANGELOG.rst)
+- removed obsolete pycrypto.patch because changes were made upstream</comment>
+    <requestid>448444</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1c5ea71c678069844126cddb3601e793</srcmd5>
+    <version>2.0.1</version>
+    <time>1494442237</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493372</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ba745fddf7a10ff0326d914ead80e826</srcmd5>
+    <version>2.0.2</version>
+    <time>1503393028</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517961</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9b49f71edb84cc13f757fd33c21af8c5</srcmd5>
+    <version>2.0.4</version>
+    <time>1507570861</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530451</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e7d30b10cc889e271a4a702cd5e20c0d</srcmd5>
+    <version>2.0.6</version>
+    <time>1510150195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>536027</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f79a0f51e807680eb0378ceca7d566cb</srcmd5>
+    <version>2.0.7</version>
+    <time>1522226003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591610</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a76249d841f661898317cbf54372ad72</srcmd5>
+    <version>2.1.0</version>
+    <time>1527583347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611829</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>8a147d51f0a539caa9ef8af837fb2cad</srcmd5>
+    <version>2.1.0</version>
+    <time>1535123520</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631174</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>4d0e2aeb79a5bbb2c66654dfbb48c7d1</srcmd5>
+    <version>2.1.0</version>
+    <time>1545648030</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659521</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f693442036a9e3d919a7dfdcb61ad3b6</srcmd5>
+    <version>3.0.1</version>
+    <time>1551037564</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676992</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>af4dfe08c0ebc7eecb943e1e82eff703</srcmd5>
+    <version>3.0.2</version>
+    <time>1564484616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717381</requestid>
+  </revision>
+</revisionlist>

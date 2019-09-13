@@ -1,0 +1,5 @@
+<package name="vorta" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Archiving:Backup" package="vorta"/>
+</package>

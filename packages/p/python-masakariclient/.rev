@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>583e2a4d7b0711bba62be6c0e245952c</srcmd5>
+    <version>3.0.1</version>
+    <time>1503927137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>515039</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4ddb1c34239120759009466c0dc00797</srcmd5>
+    <version>4.0.0</version>
+    <time>1516804024</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.0
+  - Fix failing test case for PY3
+  - Bump openstacksdk to 0.9.13
+  - Use os-testr and add PY35 support
+  - Improve command arguments
+  - Change the base class of osc.v1.DeleteHost
+  - Add assertions to UT code
+  - Re-factor test cases to reduce code
+  - [Fix gate]Update test requirement
+  - Remove unnecessary return statement
+  - Fix failing gate jobs by fixing constraints support
+  - Add support for auto_priority, rh_priority recovery method
+  - Remove inproper comment for APIs.
+  - Enable to specify name and ID when operating segments and hosts</comment>
+    <requestid>567266</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>07da40ec09c8baa657f465c90e10fd21</srcmd5>
+    <version>4.0.0</version>
+    <time>1521498890</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583307</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c7848f3e02a354b78797b503d9a38111</srcmd5>
+    <version>5.2.0</version>
+    <time>1536327473</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633079</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>92faf09471ceacee7382c10a1f0726ac</srcmd5>
+    <version>5.4.0</version>
+    <time>1556916073</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.4.0
+  - Add --os-interface and --os-region-name options
+  - Update the hacking to latest
+  - Update the outdated URL in HACKING.rst
+  - Add Python 3.6 classifier to setup.cfg
+  - Run all jobs by default using python3
+  - Fix osc command issue
+  - Change openstack-dev to openstack-discuss
+  - Add api_version support
+  - Update reno for stable/rocky
+  - Display progress_details of the notification
+  - Use template for lower-constraints
+  - Delete segment and host shouldn't ignore not found error
+  - Deprecate masakari CLI
+  - import zuul job settings from project-config</comment>
+    <requestid>692836</requestid>
+  </revision>
+</revisionlist>

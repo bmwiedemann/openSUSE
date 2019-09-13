@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5fc4ad212fe256646659c9f0c711710</srcmd5>
+    <version>0.1.0</version>
+    <time>1332241854</time>
+    <user>coolo</user>
+    <comment>M17N engine for fcitx. It allows input of many languages using the input table maps from m17n-db.</comment>
+    <requestid>109147</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0d7cf3e28a9b7f50f0759e0c059259b1</srcmd5>
+    <version>0.1.1</version>
+    <time>1334215373</time>
+    <user>coolo</user>
+    <comment> (forwarded request 112955 from MargueriteSu)</comment>
+    <requestid>112956</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3b91e8c8a7ab1843c7c175a0d5bc47c1</srcmd5>
+    <version>0.1.2</version>
+    <time>1336472820</time>
+    <user>coolo</user>
+    <comment> (forwarded request 116583 from MargueriteSu)</comment>
+    <requestid>116586</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3b91e8c8a7ab1843c7c175a0d5bc47c1</srcmd5>
+    <version>0.1.2</version>
+    <time>1340183323</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>e81b1d5c82f49add32faf00068438e35</srcmd5>
+    <version>0.1.2</version>
+    <time>1340717571</time>
+    <user>coolo</user>
+    <comment> (forwarded request 125961 from MargueriteSu)</comment>
+    <requestid>126052</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2e3b170a9e9c45c8196adf724d847c8e</srcmd5>
+    <version>0.1.3</version>
+    <time>1350935184</time>
+    <user>coolo</user>
+    <comment> (forwarded request 138888 from MargueriteSu)</comment>
+    <requestid>138889</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8eca7ae7bf6e257fa67f83d5f430bb68</srcmd5>
+    <version>0.1.4</version>
+    <time>1358889695</time>
+    <user>coolo</user>
+    <comment>update to 0.1.4 (forwarded request 149409 from MargueriteSu)</comment>
+    <requestid>149410</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8eca7ae7bf6e257fa67f83d5f430bb68</srcmd5>
+    <version>0.1.4</version>
+    <time>1359108871</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cb71f47fc6026de4dc1a19ab739eb09e</srcmd5>
+    <version>0.2.0</version>
+    <time>1359457928</time>
+    <user>coolo</user>
+    <comment>update 0.2.0 for 12.3 (forwarded request 150056 from MargueriteSu)</comment>
+    <requestid>150058</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>abeef1f52a80f1d2b64ac7fbce88bc74</srcmd5>
+    <version>0.2.1</version>
+    <time>1373283306</time>
+    <user>coolo</user>
+    <comment>update version 0.2.1 (forwarded request 181681 from MargueriteSu)</comment>
+    <requestid>181682</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>abeef1f52a80f1d2b64ac7fbce88bc74</srcmd5>
+    <version>0.2.1</version>
+    <time>1379662330</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1e307ab4089595f340e5ef1535541518</srcmd5>
+    <version>0.2.2</version>
+    <time>1383896090</time>
+    <user>coolo</user>
+    <comment>update 0.2.2 (forwarded request 206131 from MargueriteSu)</comment>
+    <requestid>206133</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>95a271a923a7cf2e83397708766133ce</srcmd5>
+    <version>0.2.3</version>
+    <time>1402403936</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236651</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>95a271a923a7cf2e83397708766133ce</srcmd5>
+    <version>0.2.3</version>
+    <time>1409300863</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ed9274b9dbee422f8ddb85805a4e588b</srcmd5>
+    <version>0.2.4</version>
+    <time>1513677069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547523</requestid>
+  </revision>
+</revisionlist>

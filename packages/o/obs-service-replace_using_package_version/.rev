@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2150a19bc068bc2c28e1d78eee844a81</srcmd5>
+    <version>0.0.1</version>
+    <time>1522062119</time>
+    <user>dimstar_suse</user>
+    <comment>An OBS service that enables to replace a regex with package version
+of another package.</comment>
+    <requestid>589310</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>607c73576087b21e8a19f66476a188f4</srcmd5>
+    <version>0.0.2</version>
+    <time>1539093253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1539069197.d0e12bd:
+  * Bump version: 0.0.1 → 0.0.2
+  * Add bumpversion support
+  * Add the `--parse-version` flag (fixes bsc#1111089)
+  * Add a simple example in README.md
+  * Adjusting readme and tests code style</comment>
+    <requestid>640750</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2fe5e95de9a5d103dcf0cf4be24d9e08</srcmd5>
+    <version>0.0.3</version>
+    <time>1561557832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711909</requestid>
+  </revision>
+</revisionlist>

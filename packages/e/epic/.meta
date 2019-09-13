@@ -1,0 +1,7 @@
+<package name="epic" project="openSUSE:Factory">
+  <title>Enhanced Programmable ircII Client</title>
+  <description>EPIC is an IRC client almost 100% compatible with the old ircII client
+from which it was derived. It has improved scripting, better
+configurability, and more.</description>
+  <devel project="network" package="epic"/>
+</package>

@@ -1,0 +1,1101 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>2f92116b5047708cb1135543ac41a40c</srcmd5>
+    <version>2.5.1</version>
+    <time>1221705960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e3e58a735ef060e21228316e69deb170</srcmd5>
+    <version>3.0b3</version>
+    <time>1247760244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce3a39b3c5c7531198a5f3cc904e94c3</srcmd5>
+    <version>3.1</version>
+    <time>1249681960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5dafca76cdb6d5e6cd7d9c191c16640b</srcmd5>
+    <version>3.1</version>
+    <time>1252581120</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python:Factory/python3 based on submit request 20142 from user matejcik
+</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>5dafca76cdb6d5e6cd7d9c191c16640b</srcmd5>
+    <version>3.1</version>
+    <time>1252581120</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python:Factory/python3 based on submit request 20142 from user matejcik
+</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>8c2305fc6c9ff7d50d73796f2a21b8d1</srcmd5>
+    <version>3.1</version>
+    <time>1261438818</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python:Factory/python3 based on submit request 27368 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>0d825179e2892f673169728a8157c45c</srcmd5>
+    <version>3.1</version>
+    <time>1266508457</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python:Factory/python3 based on submit request 32752 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>41ff56b87b7617ca4c09ac02ee58e5a1</srcmd5>
+    <version>3.1</version>
+    <time>1268925901</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>41ff56b87b7617ca4c09ac02ee58e5a1</srcmd5>
+    <version>3.1</version>
+    <time>1278667386</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>41ff56b87b7617ca4c09ac02ee58e5a1</srcmd5>
+    <version>3.1</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>4214238e88badc47238a26ecd8acc702</srcmd5>
+    <version>3.1.2</version>
+    <time>1290252186</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53359 from user matejcik
+</comment>
+    <requestid>53359</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>fd4eb40d0f2cc6cefea745f6fce5963e</srcmd5>
+    <version>3.1.2</version>
+    <time>1290252191</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53359
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a4122e0c155fca9860bbe9e780fb8fcb</srcmd5>
+    <version>3.1.3</version>
+    <time>1295056651</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58293 from user coolo
+</comment>
+    <requestid>58293</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6ce1cdc847dde7eed42800d3571390db</srcmd5>
+    <version>3.1.3</version>
+    <time>1295056658</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58293
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>6ce1cdc847dde7eed42800d3571390db</srcmd5>
+    <version>3.1.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>550907748b7b3f514d251c277e3ffbe1</srcmd5>
+    <version>3.2</version>
+    <time>1309269515</time>
+    <user>saschpe</user>
+    <comment>- update to python 3.2
+- replaced dynamic so version with manual so version, because
+  autobuild does not support autogeneration
+- generate macros.python3 at compile-time with fixed values
+- don't include bogus values in pyconfig.h, as they can break
+  third-party packages (bnc#673071)
+- added Obsoletes: python3 &lt; 3.1 so that the transition from
+  non-split to split packages goes smoothly
+- updated to build --with-wide-unicode (for compatibility with
+  fedora and our own python 2.x series)
+- fix python3-base build failure due to pybench.py crash by
+  python-3.2-pybench.patch</comment>
+    <requestid>74043</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ff004aa7cedd63ad5822c481c05701d5</srcmd5>
+    <version>3.2</version>
+    <time>1309269551</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74043
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>84610a1d4b3814d9296741055d620d80</srcmd5>
+    <version>3.2.1</version>
+    <time>1313359558</time>
+    <user>oertel</user>
+    <comment>- update to 3.2.1
+    * bugfix-only release, no major changes
+- fix build on linux3 platform
+- remove upstreamed pybench patch
+- install /usr/lib directories in all cases to prevent spurious
+  &quot;directory not owned&quot; in dependent packages</comment>
+    <requestid>78334</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>96950a6770e49d6cdfd523889e34f784</srcmd5>
+    <version>3.2.1</version>
+    <time>1313359570</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 78334
+</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>3d7b6067d759661f1ea194cc8f66c797</srcmd5>
+    <version>3.2.1</version>
+    <time>1315235318</time>
+    <user>lrupp</user>
+    <comment>- use sysconfig module to get py3_incdir, py3_abiflags,
+  py3_soflags, python3_sitelib and python3_sitearch
+
+- fix baselibs.conf</comment>
+    <requestid>80643</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>b59f19a0568524d74315129e57c99574</srcmd5>
+    <version>3.2.1</version>
+    <time>1315235332</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80643
+</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>b59f19a0568524d74315129e57c99574</srcmd5>
+    <version>3.2.1</version>
+    <time>1319182410</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>677762a49695fd76cf8f917e23008c3d</srcmd5>
+    <version>3.2.1</version>
+    <time>1325658621</time>
+    <user>coolo</user>
+    <comment>- license.opensuse.org-compatible license headers
+
+- add automake as buildrequire to avoid implicit dependency
+
+- fix ARM build (exclude some test cases which break for us)</comment>
+    <requestid>96200</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0b5267642eee3985bbeca8c12544bca5</srcmd5>
+    <version>3.2.2.99rc2</version>
+    <time>1334216821</time>
+    <user>coolo</user>
+    <comment>- update to 3.2.3rc2
+  * fixes several security issues:
+  * CVE-2012-0845, bnc#747125
+  * CVE-2012-1150, bnc#751718
+  * CVE-2011-4944, bnc#754447
+  * CVE-2011-3389, bnc#754677
+- fix for insecure .pypirc (CVE-2011-4944, bnc#754447)
+- disable test_gdb because it is broken by our gdb
+
+- skip broken test_io test on ppc
+
+- update to 3.2.2
+  * bugfix-only release
+  * reports &quot;linux2&quot; as sys.platform regardless of Linux kernel
+- added pre_checkin.sh to copy common spec sections to python3.spec
+- added PACKAGING-NOTES with some helpful info for packagers
+
+- Use system ffi, included one is broken see 
+  http://bugs.python.org/issue11729 and 
+  http://bugs.python.org/issue12081</comment>
+    <requestid>112390</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>0b5267642eee3985bbeca8c12544bca5</srcmd5>
+    <version>3.2.2.99rc2</version>
+    <time>1340184103</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>167c7a945f420ea71f438f23422c17d1</srcmd5>
+    <version>3.2.3</version>
+    <time>1342254144</time>
+    <user>coolo</user>
+    <comment>satisfy source validator. btw, you should really use a branched package in your devel project or at least manually add the source services to see such errors. (forwarded request 125818 from adrianSuSE)</comment>
+    <requestid>127731</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>11dbe7f8d8519e3543dbc561d50a27d6</srcmd5>
+    <version>3.2.3</version>
+    <time>1343673528</time>
+    <user>coolo</user>
+    <comment>- skip test_io on ppc 
+- drop test_io ppc patch
+
+- drop test_io ppc patch... we run only selective tests here (forwarded request 129071 from k0da)</comment>
+    <requestid>129335</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>81b4f23d17ad0db2cc701b9ec82f39e9</srcmd5>
+    <version>3.3.0</version>
+    <time>1349373736</time>
+    <user>coolo</user>
+    <comment>- Update to final 3.3.0 release
+  * See http://hg.python.org/cpython/file/v3.3.0/Misc/NEWS
+
+- Update to final 3.3.0 release
+  * See http://hg.python.org/cpython/file/v3.3.0/Misc/NEWS
+
+- Update to final 3.3.0 release
+  * See http://hg.python.org/cpython/file/v3.3.0/Misc/NEWS (forwarded request 136493 from namtrac)</comment>
+    <requestid>136511</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>b597940b85cb0870f5ed6fd7b64fef50</srcmd5>
+    <version>3.3.0</version>
+    <time>1350022210</time>
+    <user>coolo</user>
+    <comment>- remove distutils.cfg (bnc#658604)
+  * this changes default prefix for distutils to /usr
+  * see ML for details:
+http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html</comment>
+    <requestid>137630</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>a5743d008457afe1bfe5ebf72b86ccf2</srcmd5>
+    <version>3.3.0</version>
+    <time>1350415978</time>
+    <user>coolo</user>
+    <comment>- buildrequire libbz2-devel explicitly (forwarded request 138360 from coolo) (forwarded request 138361 from coolo)</comment>
+    <requestid>138398</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>051a939341ca18d412d9afa141715e0d</srcmd5>
+    <version>3.3.0</version>
+    <time>1352215212</time>
+    <user>coolo</user>
+    <comment>- buildrequire timezone for the test suite (forwarded request 140251 from coolo)</comment>
+    <requestid>140293</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>9cd806cb829f188f5040d8a0ad202433</srcmd5>
+    <version>3.3.0</version>
+    <time>1355130682</time>
+    <user>coolo</user>
+    <comment>- fix include path in macros (bnc#787526)
+- implement failed import handlers for modules that live in
+  subpackages - e.g. &quot;import ssl&quot; will now throw a sensible error
+  message telling you to install &quot;python3&quot;
+
+- merge python3-xml into python3
+- merge python3-2to3 library into python3-base
+  and the 2to3 binary into python3-devel
+  (python3-devel is now in conflict with python-2to3, which
+  will be dropped)
+- enable --with-system-expat for python3, making the xml modules
+  (and thus python3) depend on expat
+- reconfigure tests to disable network and GUI resources, which
+  the upstream apparently thought is a good idea to enable by default.
+  this fixes build failures in Factory
+- add lzma-devel to build the _lzma module
+- moved %dynlib macro definition to common section</comment>
+    <requestid>144415</requestid>
+  </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>9cd806cb829f188f5040d8a0ad202433</srcmd5>
+    <version>3.3.0</version>
+    <time>1359110153</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="8">
+    <srcmd5>63d703a5dab17d6d5c6b687a56acdc6d</srcmd5>
+    <version>3.3.0</version>
+    <time>1359439357</time>
+    <user>coolo</user>
+    <comment>- update baselibs for new version of libpython3</comment>
+    <requestid>150211</requestid>
+  </revision>
+  <revision rev="35" vrev="9">
+    <srcmd5>67c2fc60326d2d8a892169ffad2dd9a9</srcmd5>
+    <version>3.3.0</version>
+    <time>1362120594</time>
+    <user>coolo</user>
+    <comment>- /etc/rpm/macros.python3 is no %config, it is not meant to be changed
+  by users.
+- Add rpmlintrc with some obvious filters (forwarded request 156544 from saschpe)</comment>
+    <requestid>156857</requestid>
+  </revision>
+  <revision rev="36" vrev="10">
+    <srcmd5>5d6b26b1a0a78b65f314edfb11cdf194</srcmd5>
+    <version>3.3.0</version>
+    <time>1362638034</time>
+    <user>coolo</user>
+    <comment>- add ctypes-libffi-aarch64.patch:
+  * import aarch64 support for libffi in _ctypes module
+- add aarch64 to the list of lib64 based archs 
+- add movetogetdents64.diff:
+  * port to getdents64, as SYS_getdents is not implemented everywhere (forwarded request 157426 from dirkmueller)</comment>
+    <requestid>157532</requestid>
+  </revision>
+  <revision rev="37" vrev="11">
+    <srcmd5>678694151d2b43bab18464035416755e</srcmd5>
+    <version>3.3.0</version>
+    <time>1364651972</time>
+    <user>coolo</user>
+    <comment>- replace broken movetogetdents64.diff patch with a correct one
+  from upstream repo (python-3.3.0-getdents64.patch)</comment>
+    <requestid>161757</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ad02148be2380497d92ed03357c54917</srcmd5>
+    <version>3.3.1</version>
+    <time>1366233391</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3.1
+  * Fix the –enable-profiling configure switch.
+  * In IDLE, close the replace dialog after it is used.
+- Too many bugfixes to list here,
+  see See http://hg.python.org/cpython/file/v3.3.0/Misc/NEWS
+- Refresh Python-3.3.0b2-multilib.patch
+- Refresh python-3.2b2-buildtime-generate.patch
+- Drop upstream patches: ctypes-libffi-aarch64.patch,
+  python-3.2.3rc2-pypirc-secure.patch, python-3.3.0-getdents64.patch
+
+- Add Source URL, see https://en.opensuse.org/title=SourceUrls
+
+- remove spurious modification of python-3.3.0b1-localpath.patch
+  that would force installation into /usr/local.
+  this fixes bnc#809831
+
+- Update to version 3.3.1 
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+- Update to version 3.3.1
+  * Fix the –enable-profiling configure switch.
+  * In IDLE, close the replace dialog after it is used.
+- Too many bugfixes to list here,
+  see See http://hg.python.org/cpython/file/v3.3.0/Misc/NEWS
+- Refresh Python-3.3.0b2-multilib.patch
+- Refresh python-3.2b2-buildtime-generate.patch
+- Drop upstream patches: ctypes-libffi-aarch64.patch,
+  python-3.2.3rc2-pypirc-secure.patch, python-3.3.0-getdents64.patch</comment>
+    <requestid>171186</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>410f5381092fe9c9862350f0f35f9906</srcmd5>
+    <version>3.3.1</version>
+    <time>1367501433</time>
+    <user>coolo</user>
+    <comment>- Readd missing bits from ctypes-libffi-aarch64.patch (forwarded request 173869 from Andreas_Schwab)</comment>
+    <requestid>174260</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ec8324ad6655029655ca6cf57131a7f3</srcmd5>
+    <version>3.3.2</version>
+    <time>1371286220</time>
+    <user>coolo</user>
+    <comment>- update to 3.3.2
+  * bugfix-only release
+  * fixes several regressions introduced in 3.3.1
+- switch to xz compression
+- move _lzma module to python3-base
+- python-3.3.2-no-REUSEPORT.patch to fix build on kernels without SO_REUSEPORT
+- remove README.txt (bnc#709442)
+- disable Source URLs for docs (the doc archives are regenerated
+  every day and autobuild detects this as &quot;upstream file is different&quot;
+  error)</comment>
+    <requestid>178996</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>be99a3ebcf4214397ff214396635ed93</srcmd5>
+    <version>3.3.2</version>
+    <time>1376392124</time>
+    <user>scarabeus_factory</user>
+    <comment>- Exclue test_faulthandler from tests on powerpc due to bnc#831629 (forwarded request 186438 from k0da)</comment>
+    <requestid>186599</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>3bf5a340aed3f4975cebd9cede041d75</srcmd5>
+    <version>3.3.2</version>
+    <time>1377085571</time>
+    <user>scarabeus_factory</user>
+    <comment>- handle NULL bytes in certain fields of SSL certificates
+  (CVE-2013-4073, bnc#834601)</comment>
+    <requestid>195713</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>f9c42dff95f2cc27bfe7769e1a2d45a7</srcmd5>
+    <version>3.3.2</version>
+    <time>1377856081</time>
+    <user>coolo</user>
+    <comment>rename patch and change previous .changes entry, because a wrong CVE ID was used</comment>
+    <requestid>196450</requestid>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>f9c42dff95f2cc27bfe7769e1a2d45a7</srcmd5>
+    <version>3.3.2</version>
+    <time>1379664326</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="7">
+    <srcmd5>c63b93f2cfcc9663f429a1c954053227</srcmd5>
+    <version>3.3.2</version>
+    <time>1382012770</time>
+    <user>scarabeus_factory</user>
+    <comment>- build with -DOPENSSL_LOAD_CONF for the same reasons 
+  described in the python2 package. (forwarded request 203423 from elvigia)</comment>
+    <requestid>203516</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>065317ed802e13ac77aa02883aad41db</srcmd5>
+    <version>3.3.3</version>
+    <time>1385143295</time>
+    <user>coolo</user>
+    <comment>- Add python-3.3.3-skip-distutils-test_sysconfig_module.patch:
+  + Disable global and distutils sysconfig comparison test, we deviate
+    from the default depending on optflags
+
+- update to 3.3.3
+  * bugfix-only release
+  * many SSL-related fixes
+  * upstream fix for CVE-2013-4238
+  * upstream fixes for CVE-2013-1752
+- move example module xxlimited to python3-testsuite
+- remove --with-wide-unicode config option, it is now the default
+  (and only) choice
+- don't touch anything between make and makeinstall
+- drop python-3.2b2-buildtime-generate.patch - the issue was caused
+  by touching things between make and makeinstall
+- link pycache entries for import_failed hooks properly
+
+- update to 3.3.3
+
+- update to 3.3.3
+- move example module xxlimited to python3-testsuite
+- drop CVE-2013-4238_py33.patch - it is upstreamed</comment>
+    <requestid>207965</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>95371bae29ad7b6fd10e84ef25f14cac</srcmd5>
+    <version>3.3.3</version>
+    <time>1386662881</time>
+    <user>coolo</user>
+    <comment>fix for ppc64le (forwarded request 209575 from adrianSuSE)</comment>
+    <requestid>209595</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b3ccb1156862612d68917253f5ddd991</srcmd5>
+    <version>3.4.0~b3</version>
+    <time>1393394121</time>
+    <user>coolo</user>
+    <comment>- initial commit of 3.4.0 beta 3
+    * new stdlib modules: pathlib, enum, statistics, tracemalloc
+    * asynchronous IO with new asyncio module
+    * introspection data for builtins
+    * subprocesses no longer inherit open file descriptors
+    * standardized metadata for packages
+    * internal hashing changed to SipHash
+    * new pickle protocol
+    * improved handling of codecs
+    * TLS 1.2 support
+    * major speed improvements for internal unicode handling
+    * many bugfixes and optimizations
+- see porting guide at:
+  http://docs.python.org/3.4/whatsnew/3.4.html#porting-to-python-3-4
+- moved several modules to -testsuite subpackage
+- updated list of binary extensions, refreshed patches
+- tracemalloc_gcov.patch fixes profile-based optimization build
+- updated packages and pre_checkin.sh to use ~-version notation
+  for prereleases
+- fix-shebangs part of build process moved to common %prep
+- drop python-3.3.2-no-REUSEPORT.patch (upstreamed)
+- update baselibs for new soname
+- TODOs:
+    * require python-pip, make ensurepip work with zypper
+
+- initial commit of 3.4.0 beta2
+  * for full changelog, see python3-base
+
+- initial commit of 3.4.0 beta 3
+  * for full changelog, see python3-base</comment>
+    <requestid>220956</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>2deb2d2a7e239aa81e83fd514baafa8d</srcmd5>
+    <version>3.4.0~rc2</version>
+    <time>1394129890</time>
+    <user>coolo</user>
+    <comment>- update to 3.4.0 rc2
+   * pre-release bugfixes
+   * improvements to asyncio library
+- drop upstreamed tracemalloc_gcov.patch
+- python-3.4rc2-importlib.patch fixes backwards-incompatibility
+  in the reworked importlib module that blocks build of vim
+
+- hard Require for python3-pip in python3, see what happens</comment>
+    <requestid>224134</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>7143906b00183dae99b9c20ae64491b7</srcmd5>
+    <version>3.4.0</version>
+    <time>1395413257</time>
+    <user>coolo</user>
+    <comment>- update to 3.4.0 final
+- drop upstreamed python-3.4rc2-importlib.patch
+- lower pip requirement to Suggests, to prevent build cycles
+
+- Only build with profile-opt if profiling is enabled
+- Update test exclusion lists:
+  * test_ctypes no longer fails on arm
+  * test_io no longer fails on ppc*
+  * test_multiprocessing has been split in multiple tests
+  * test_posix and test_signal fail due to qemu bugs
+
+- Fix build with SQLite 3.8.4 [bnc#867887], fixing SQLite tests,
+  adding python-2.7.6-sqlite-3.8.4-tests.patch</comment>
+    <requestid>226622</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>5d149320049adc567e83e7f647bdf4a5</srcmd5>
+    <version>3.4.0</version>
+    <time>1396291377</time>
+    <user>coolo</user>
+    <comment>- raise timeout value for test_subprocess to 10s (might fix
+  intermittent build failures in OBS)
+
+- remove blacklisting of test_posix on aarch64: qemu bug is fixed</comment>
+    <requestid>227623</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>4d6a2118e3fce7ebe97231497e1553fb</srcmd5>
+    <version>3.4.0</version>
+    <time>1397041267</time>
+    <user>coolo</user>
+    <comment>- CVE-2014-2667-mkdir.patch: race condition with reseting umask
+  in os.makedirs
+  (CVE-2014-2667, bnc#869222)
+- updated multilib patch to include ~/.local/lib64 (bnc#637176)</comment>
+    <requestid>229292</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>54f6f5632dd7c753ddcf47a14652e3ce</srcmd5>
+    <version>3.4.1</version>
+    <time>1403672289</time>
+    <user>coolo</user>
+    <comment>- fix bnc number in older changelog entry
+
+- update to 3.4.1
+    * bugfix-only release, over 300 bugs fixed
+- drop upstreamed python-3.4.0rc2-sqlite-3.8.4-tests.patch
+- drop upstreamed CVE-2014-2667-mkdir.patch
+- include Python release manager keyring and signature file
+  for the source archive (thus renumbering of source files)
+  (see https://www.python.org/download/#openpgp-public-keys )
+- move ensurepip to python3, because it transitively requires ssl
+- build documentation from source tarball
+  * this brings build-time dependency on Sphinx and LaTeX
+- drop useless README.AIX and duplicate ACKS file
+- drop wrong Obsoletes/Provides pairs
+- upgrade pip to Recommends (it seems to be a stronger hint)
+- python-3.4.1-SUSE-ensurepip.patch: make ensurepip require
+  python3-pip from separate package
+- python3 Suggests every subpackage that is part of stdlib</comment>
+    <requestid>238378</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>58bdfde3347281b51d7779e705696a2f</srcmd5>
+    <version>3.4.1</version>
+    <time>1406360508</time>
+    <user>coolo</user>
+    <comment>- CVE-2014-4650-CGIHTTPServer-traversal.patch: CGIHTTPServer file
+  disclosure and directory traversal through URL-encoded characters
+  (CVE-2014-4650, bnc#885882)
+
+- drop python-3.4.1-SUSE-ensurepip.patch for compatibility reasons,
+  reinstate bundled copies of pip and setuptools
+  (fixes bnc#885662)
+- add more files as sources to silence the validator</comment>
+    <requestid>242218</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>ac42c86cd72fa0c5810eca5e2da18dc3</srcmd5>
+    <version>3.4.1</version>
+    <time>1408021056</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>244321</requestid>
+  </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>ac42c86cd72fa0c5810eca5e2da18dc3</srcmd5>
+    <version>3.4.1</version>
+    <time>1409303035</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>4e986508d200f743d4ec6a8aaab7b5ea</srcmd5>
+    <version>3.4.1</version>
+    <time>1414744758</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>258500</requestid>
+  </revision>
+  <revision rev="58" vrev="7">
+    <srcmd5>fee6161aadf3e4b9c3b6b75739361aa3</srcmd5>
+    <version>3.4.1</version>
+    <time>1421334045</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280908</requestid>
+  </revision>
+  <revision rev="59" vrev="8">
+    <srcmd5>fc1465aeb39518c87193700981efb32c</srcmd5>
+    <version>3.4.1</version>
+    <time>1428651917</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294974</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>d87c04508617dc5db949fee557d5aa6b</srcmd5>
+    <version>3.4.3</version>
+    <time>1431753205</time>
+    <user>coolo</user>
+    <comment>update to 3.4.3</comment>
+    <requestid>307118</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>dc924308b790c19fa524f269f17a9ff3</srcmd5>
+    <version>3.4.3</version>
+    <time>1432379131</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308250</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>ea27fbfa32eb48493fa4d51a3b0ec43f</srcmd5>
+    <version>3.4.3</version>
+    <time>1436111644</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314683</requestid>
+  </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>e868c1c72bf952f8d448220b2b0def1f</srcmd5>
+    <version>3.4.3</version>
+    <time>1438076535</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318454</requestid>
+  </revision>
+  <revision rev="64" vrev="5">
+    <srcmd5>e676b8cc8016d7eb6076b3776d7d7e78</srcmd5>
+    <version>3.4.3</version>
+    <time>1440658440</time>
+    <user>coolo</user>
+    <comment>- improve import_failed hook to do the right thing when invoking
+  missing modules with &quot;python3 -m modulename&quot; (boo#942751)</comment>
+    <requestid>326449</requestid>
+  </revision>
+  <revision rev="65" vrev="6">
+    <srcmd5>4544b42a5f101f4a8527d4a3abd67992</srcmd5>
+    <version>3.4.3</version>
+    <time>1442638362</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>330338</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>e27e423d9601f01d9a8ff79f1538b038</srcmd5>
+    <version>3.5.1</version>
+    <time>1457945819</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369246</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>d62f91249e18de317544267f2a4c81de</srcmd5>
+    <version>3.5.1</version>
+    <time>1459238043</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373413</requestid>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>5b9df9c3cac0e7becddb46df4d6023e4</srcmd5>
+    <version>3.5.1</version>
+    <time>1462178628</time>
+    <user>dimstar_suse</user>
+    <comment>- move _hashlib and _ssl modules and tests to python3-base
+- recommend python3
+- change Suggests to Recommends on supplemental modules</comment>
+    <requestid>391683</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>e095c36dde5174e01469c3463a2c9d8e</srcmd5>
+    <version>3.6.0</version>
+    <time>1487461504</time>
+    <user>dimstar_suse</user>
+    <comment>- reenable test_socket with AEAD patch (test-socket-aead-kernel49.patch)
+- reintroduce %py3_soflags macro (and better named %cpython3_soabi equivalent)
+- update to 3.6.0
+- rework multilib patch: drop Python-3.5.0-multilib.patch, implement
+  upstreamable python-3.6.0-multilib-new.patch
+- refresh python-3.3.0b1-localpath.patch, subprocess-raise-timeout.patch
+- drop upstreamed Python-3.5.1-fix_lru_cache_copying.patch
+- finally drop python-2.6b1-canonicalize2.patch that was not applied in source
+  and only kept around in case we needed it in the future. (which we don't, as it seems)
+- update import_failed map and baselibs
+- build ctypes against system libffi
+
+  (buildrequire libffi-devel in python3-base)
+- add new key to keyring (signed by keys already in keyring)
+- introduced common configure section between python3 and python3-base
+- moved pyconfig.h and Makefile to devel subpackage as distutils no longer
+  need it at runtime
+- added python-rpm-macros dependency, regenerated macros file, drop macros.python3.py
+  because it is not used now
+- improve summaries and descriptions (fixes bsc#917607)
+- enabled Link-Time Optimization, see what happens
+- including skipped_tests.py in pre_checkin.sh run
+- run specs through spec-cleaner, rearrange sections</comment>
+    <requestid>455508</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>20ad56fee969b57b9203419c2893237e</srcmd5>
+    <version>3.6.0</version>
+    <time>1490025874</time>
+    <user>dimstar_suse</user>
+    <comment>- prevent regenerating AST at build-time more robustly
+- add &quot;--without profileopt&quot; and &quot;--without testsuite&quot; options to python3-base
+  to allow short circuiting when working on the package
+
+- Add 0001-allow-for-reproducible-builds-of-python-packages.patch
+  upstream https://github.com/python/cpython/pull/296</comment>
+    <requestid>479250</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>c68710dc9dc3f78301e131549e5de625</srcmd5>
+    <version>3.6.1</version>
+    <time>1490965490</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 3.6.1
+  * bugfix release, over a hundred bugs fixed
+  * never add import location's parent directory to sys.path
+  * switch to git for version control, build changes related to that
+  * fix &quot;failed to get random numbers&quot; on old kernels (bsc#1029902)
+  * several crashes and memory leaks corrected
+  * f-string are no longer accepted as docstrings
+
+- update to 3.6.1
+  * see python3-base for details
+
+- update to 3.6.1
+  * see python3-base for details</comment>
+    <requestid>482276</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>3137202b853dfaaee19fa413d4790623</srcmd5>
+    <version>3.6.1</version>
+    <time>1501406391</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>509456</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>0b2b00aca4a4db5c4332a8663f5a6d6e</srcmd5>
+    <version>3.6.2</version>
+    <time>1502559302</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 3.6.2
+  * bugfix release, over a hundred bugs fixed
+  * see Misc/NEWS for details
+- drop upstreamed test-socket-aead-kernel49.patch
+- add Provides: python3-typing (fixes bsc#1050653)
+- drop duplicate Provides: python3</comment>
+    <requestid>514565</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>3137202b853dfaaee19fa413d4790623</srcmd5>
+    <version>3.6.1</version>
+    <time>1502701725</time>
+    <user>maxlin_factory</user>
+    <comment>revert for boo#1053607</comment>
+    <requestid>516778</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>699c48f48ecf876ae11e1cb75c57929b</srcmd5>
+    <version>3.6.2</version>
+    <time>1505416136</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520797</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>1b6a73a1e6222ec97c075c5aa1933786</srcmd5>
+    <version>3.6.2</version>
+    <time>1505989723</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527324</requestid>
+  </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>f510e3854df1f3fcde5f8d47fc4f09ac</srcmd5>
+    <version>3.6.2</version>
+    <time>1506955474</time>
+    <user>dimstar_suse</user>
+    <comment>- drop python-2.7-libffi-aarch64.patch: this patches the intree
+  copy of libffi which is unused/deleted in the line afterwards
+- fix build against system libffi: include flags weren't set
+  so it actually used the in-tree libffi headers.
+
+- drop python-2.7-libffi-aarch64.patch: this patches the intree
+  copy of libffi which is unused/deleted in the line afterwards</comment>
+    <requestid>528686</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>cf19af3e2793d23f702becd05a32557d</srcmd5>
+    <version>3.6.3</version>
+    <time>1508769423</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.3
+  * bugfix release, over a hundred bugs fixed
+  * see Misc/NEWS for details
+- drop upstreamed 0001-3.6-bpo-30714-ALPN-changes-for-OpenSSL-1.1.0f-3093.patch</comment>
+    <requestid>533944</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>8277708408fa5ac03ee8860b2050b205</srcmd5>
+    <version>3.6.3</version>
+    <time>1511426163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544285</requestid>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>8fa93765eecc72dbc20caffc059c94d7</srcmd5>
+    <version>3.6.3</version>
+    <time>1512546482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548076</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>394669c6c2d72081043e4cd89f460b80</srcmd5>
+    <version>3.6.4</version>
+    <time>1515260800</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.4
+  * bugfix release, over a hundred bugs fixed
+  * see Misc/NEWS for details
+- drop upstreamed python3-ncurses-6.0-accessors.patch
+- drop PYTHONSTARTUP hooks that cause spurious startup errors
+  * fixes bsc#1070738
+  * the relevant feature (REPL history) is now built into Python itself</comment>
+    <requestid>561429</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>b0cef5691e0789875decf247132ff6f5</srcmd5>
+    <version>3.6.4</version>
+    <time>1516546054</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567661</requestid>
+  </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>1cc23f6426f123113605b07fcaa3b90a</srcmd5>
+    <version>3.6.4</version>
+    <time>1516971529</time>
+    <user>dimstar_suse</user>
+    <comment>- move XML modules and python3-xml provide to python3-base
+  (fixes bsc#1077230)
+- move ensurepip to base</comment>
+    <requestid>569359</requestid>
+  </revision>
+  <revision rev="84" vrev="4">
+    <srcmd5>5311c84ef6725e75ff2c13fd27ef90a2</srcmd5>
+    <version>3.6.4</version>
+    <time>1518596301</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix glibc 2.27 fail bsc#1079761:
+  * fix-localeconv-encoding-for-LC_NUMERIC.patch
+
+- Add patch to fix glibc 2.27 fail bsc#1079761:
+  * fix-localeconv-encoding-for-LC_NUMERIC.patch
+
+- Add patch to fix glibc 2.27 fail bsc#1079761:
+  * fix-localeconv-encoding-for-LC_NUMERIC.patch
+
+- Update skip_random_failing_tests.patch (for PowerPC)
+  to avoid test_call_later failure</comment>
+    <requestid>573616</requestid>
+  </revision>
+  <revision rev="85" vrev="5">
+    <srcmd5>eb25331dc3df30bf77decce0b0cb4eb3</srcmd5>
+    <version>3.6.4</version>
+    <time>1519557620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578394</requestid>
+  </revision>
+  <revision rev="86" vrev="6">
+    <srcmd5>3c917c6efeafcacd1123f7056df7108e</srcmd5>
+    <version>3.6.4</version>
+    <time>1520852692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583862</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>3a68e9a36c2d44555a99ddf6c4331329</srcmd5>
+    <version>3.6.5</version>
+    <time>1522934997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592795</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>1a025a05afff19771570220594720c25</srcmd5>
+    <version>3.6.5</version>
+    <time>1525023420</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Do not mention the testsuite disabling in opts as it was moved to
+  main pkg so base is test-free
+
+- As we run in main python package do not generate the pre_checkin
+  from both now
+
+- Move the tests from base to generic package wrt bsc#1088573
+  * We still fail the whole distro if python3 is not build
+  * The other archs than x86_64 took couple of hours to unblock
+    build of other software, this way we work around the issue
+- Some tests are still run in -base for the LTO tweaking, but at
+  least it is not run twice
+- As we run in main python package do not generate the pre_checkin
+  from both now
+
+- Move the tests from base to generic package wrt bsc#1088573
+  * We still fail the whole distro if python3 is not build
+  * The other archs than x86_64 took couple of hours to unblock
+    build of other software, this way we work around the issue</comment>
+    <requestid>601557</requestid>
+  </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>cfdcc302ed9f9054c8ab9faaa7a96307</srcmd5>
+    <version>3.6.5</version>
+    <time>1525611434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602591</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>61d02d7c1d2ad107be5c6d696b42f4ae</srcmd5>
+    <version>3.7.2</version>
+    <time>1548704726</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not require full gettext in order to avoid pulling in the
+  glib2 as a dependency
+
+- Update to 3.7.2:
+  * bugfix release:
+    https://docs.python.org/3.7/whatsnew/changelog.html#changelog
+
+- Stop applying python-3.6.0-multilib-new.patch (which is still
+  WIP), and apply the old proven python-3.6.0-multilib.patch
+  instead.
+
+- Use upstream-recommended %{_rpmconfigdir}/macros.d directory
+  for the rpm macros.
+
+- Upgrade to 3.7.2rc1:
+    * bugfix release, for the full list of all changes see
+      https://docs.python.org/3.7/whatsnew/changelog.html#changelog 
+- Make run of the test suite more verbose
+
+- Write summaries without em dashes.
+
+- Remove python-3.3.0b1-curses-panel.patch it is unnecessary anymore.
+- Add boo1071941-make-install-in-sep-loc.patch to make pip and
+  distutils in user environment install into separate location
+  (boo#1071941)
+  Set values of prefix and exec_prefix in distutils install
+  command to /usr/local if executable is /usr/bin/python* and RPM
+  build is not detected to make pip and distutils install into
+  separate location
+- Remove finally python-3.3.3-skip-distutils-test_sysconfig_module.patch</comment>
+    <requestid>663711</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>d9339e5dc56ec2f0f9464bd90ae5898e</srcmd5>
+    <version>3.7.2</version>
+    <time>1549140355</time>
+    <user>coolo</user>
+    <comment>- Put LICENSE file where it belongs (bsc#1121852)
+
+- bsc#1122191: add CVE-2019-5010-null-defer-x509-cert-DOS.patch
+  fixing bpo-35746.
+  An exploitable denial-of-service vulnerability exists in the
+  X509 certificate parser of Python.org Python 2.7.11 / 3.7.2.
+  A specially crafted X509 certificate can cause a NULL pointer
+  dereference, resulting in a denial of service. An attacker can
+  initiate or accept TLS connections using crafted certificates
+  to trigger this vulnerability.
+
+- Put LICENSE file where it belongs (bsc#1121852)
+
+- bsc#1122191: add CVE-2019-5010-null-defer-x509-cert-DOS.patch
+  fixing bpo-35746.
+  An exploitable denial-of-service vulnerability exists in the
+  X509 certificate parser of Python.org Python 2.7.11 / 3.7.2.
+  A specially crafted X509 certificate can cause a NULL pointer
+  dereference, resulting in a denial of service. An attacker can
+  initiate or accept TLS connections using crafted certificates
+  to trigger this vulnerability.
+
+- Put LICENSE file where it belongs (bsc#1121852)
+
+- bsc#1122191: add CVE-2019-5010-null-defer-x509-cert-DOS.patch
+  fixing bpo-35746.
+  An exploitable denial-of-service vulnerability exists in the
+  X509 certificate parser of Python.org Python 2.7.11 / 3.7.2.
+  A specially crafted X509 certificate can cause a NULL pointer
+  dereference, resulting in a denial of service. An attacker can</comment>
+    <requestid>670332</requestid>
+  </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>d8c5f283128398ea4b3e999417f6c7c8</srcmd5>
+    <version>3.7.2</version>
+    <time>1554189381</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove building of Qt Develop help files.
+- Return distutils-reproducible-compile.patch which is still
+  missing (still unfinished bpo#29708).
+- Build nis module again.</comment>
+    <requestid>689912</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>ad08c6ca6d15fcc5d2a9a9d02ce51aad</srcmd5>
+    <version>3.7.3</version>
+    <time>1560861778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704730</requestid>
+  </revision>
+</revisionlist>

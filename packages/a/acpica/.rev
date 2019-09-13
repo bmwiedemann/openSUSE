@@ -1,0 +1,507 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4102a40c9962e5526ff9f5d359f893eb</srcmd5>
+    <version>20090320</version>
+    <time>1241403958</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>facdbaed1bc7cd0203626eb600bfb308</srcmd5>
+    <version>20090320</version>
+    <time>1245459953</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>facdbaed1bc7cd0203626eb600bfb308</srcmd5>
+    <version>20090320</version>
+    <time>1245459953</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>90abd3316d214eb7a25fe6475e28291c</srcmd5>
+    <version>20091013</version>
+    <time>1261824324</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/acpica based on submit request 27562 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>935d0b3fabbc9c3117d083b1a544967e</srcmd5>
+    <version>20091013</version>
+    <time>1268922850</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f1259b1da61eb196df30f0c38cf8e2c1</srcmd5>
+    <version>20100304</version>
+    <time>1268985591</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/acpica based on submit request 35077 from user coolo
+</comment>
+    <requestid>35077</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f1259b1da61eb196df30f0c38cf8e2c1</srcmd5>
+    <version>20100304</version>
+    <time>1278667335</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f1259b1da61eb196df30f0c38cf8e2c1</srcmd5>
+    <version>20100304</version>
+    <time>1278678561</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>32a262180c4a008c07dbd828718a7d50</srcmd5>
+    <version>20100806</version>
+    <time>1285067146</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/acpica based on submit request 48636 from user a_jaeger
+</comment>
+    <requestid>48636</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>56953f68adee30de34e1cdd8a2c2c764</srcmd5>
+    <version>20101013</version>
+    <time>1293576832</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56587 from user a_jaeger
+</comment>
+    <requestid>56587</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>060ea29c8266c830fc1d6810bd4d4d69</srcmd5>
+    <version>20101013</version>
+    <time>1293576843</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56587
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5a40c17c20806b629a30da1c1163108b</srcmd5>
+    <version>20110112</version>
+    <time>1295055982</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58242 from user trenn
+</comment>
+    <requestid>58242</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>721821197915d8dd09f8df7a3ed99d55</srcmd5>
+    <version>20110112</version>
+    <time>1295055989</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58242
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>721821197915d8dd09f8df7a3ed99d55</srcmd5>
+    <version>20110112</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>70c13d3b27942a0ffdea20d8a21880aa</srcmd5>
+    <version>20110112</version>
+    <time>1298622910</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62739 from user trenn
+</comment>
+    <requestid>62739</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>abf21890b195468c5a12e2d375a87add</srcmd5>
+    <version>20110112</version>
+    <time>1298622917</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62739
+</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>c81945aba21304ca24e714d387851043</srcmd5>
+    <version>20110316</version>
+    <time>1306308376</time>
+    <user>saschpe</user>
+    <comment>- Fix gcc 4.6 build
+- Disable both build dates in this package and in
+  the files it generates as it both trigger either unneeded
+  republish of itself or other bigger packages like virtualbox
+- Provides: iasl too. (forwarded request 67681 from elvigia)
+- Fix license</comment>
+    <requestid>70752</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>3354f6d2e7d96c61d47721acbbc4c5ec</srcmd5>
+    <version>20110316</version>
+    <time>1306308387</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70752
+</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>27558fb9d0b5931403bfea3ec3bbe732</srcmd5>
+    <version>20110316</version>
+    <time>1308641018</time>
+    <user>saschpe</user>
+    <comment>Add acpica-unix-const.patch: fix const correctness issue in AslCompilererror, http://www.acpica.org/bugzilla/show_bug.cgi?id=923 (forwarded request 74222 from namtrac)</comment>
+    <requestid>74224</requestid>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>39535aeab5d98be617432703f81a48de</srcmd5>
+    <version>20110316</version>
+    <time>1308641031</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74224
+</comment>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>39535aeab5d98be617432703f81a48de</srcmd5>
+    <version>20110316</version>
+    <time>1319181765</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>4abf40f64fa7d2987158d5307eedcf09</srcmd5>
+    <version>20111123</version>
+    <time>1325658183</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0
+You added ec_access.c with a GPL-2.0 (only) license. Now the spec file has to be updated to reflect this (forwarded request 98602 from babelworx)</comment>
+    <requestid>98603</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>df3b0c13a990bc2ace3b575443511142</srcmd5>
+    <version>20120518</version>
+    <time>1337667119</time>
+    <user>coolo</user>
+    <comment>- Update to latest version 20120518</comment>
+    <requestid>121619</requestid>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>df3b0c13a990bc2ace3b575443511142</srcmd5>
+    <version>20120518</version>
+    <time>1340183165</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>811ea2da8e138870931e39b173b3664e</srcmd5>
+    <version>20120913</version>
+    <time>1349673008</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137378</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>3fce94759532effa177e83e42f9f9246</srcmd5>
+    <version>20121018</version>
+    <time>1352907184</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>141261</requestid>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>0a562d5f602c4adf1fe5d1e93396ee60</srcmd5>
+    <version>20121220</version>
+    <time>1359038027</time>
+    <user>coolo</user>
+    <comment>- Make use of -in (Ignore NoOp opcodes/operators)
+  to avoid false positive errors during compliation/disassembling
+
+- Update to version 20121018
+  -&gt; remove some patches that got integrated
+  -&gt; Add one patch (bob_noop.patch) which will get integrated
+     mainline: Stop and bail out when max error (200) count is reached.
+     Introduce -in compile/disassemble option.
+
+- Add acpi_validate script for easy disassembling and re-compilation
+  of local ACPI tables or of an already existing acpidump file</comment>
+    <requestid>149671</requestid>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>0a562d5f602c4adf1fe5d1e93396ee60</srcmd5>
+    <version>20121220</version>
+    <time>1359108640</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>ecbf34b9a98725dc8af98cd02242b8a4</srcmd5>
+    <version>20121220</version>
+    <time>1362772940</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157788</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>146e9e561de03dd85a177bd615a97b29</srcmd5>
+    <version>20130418</version>
+    <time>1369733120</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176487</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>57a4590f49456ecaa00d575d0c0e015c</srcmd5>
+    <version>20130517</version>
+    <time>1370446647</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>177074</requestid>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>996ce4c718b31360db311fde47d22a38</srcmd5>
+    <version>20130517</version>
+    <time>1374045901</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183476</requestid>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>996ce4c718b31360db311fde47d22a38</srcmd5>
+    <version>20130517</version>
+    <time>1379661948</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>9f1a27c038d518c2f465857770342baa</srcmd5>
+    <version>20130823</version>
+    <time>1379918775</time>
+    <user>coolo</user>
+    <comment>- Update to version 20130823
+- remove already integrated patch:
+  dmar-buf10.patch</comment>
+    <requestid>199643</requestid>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>1d38af309479c03f0c16803d8338dc14</srcmd5>
+    <version>20131115</version>
+    <time>1386942762</time>
+    <user>coolo</user>
+    <comment>- Update to version 20131115
+- Explicitly add commit 04d10e3c1f41a776cbed96dce2326ee649b9a0f0 to fix
+  bnc#855050:
+  acpica-fix_dots_in_path_for_p_option.patch</comment>
+    <requestid>210781</requestid>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>bc340fdd959aed509a16ea59a0a8820b</srcmd5>
+    <version>20131218</version>
+    <time>1389247990</time>
+    <user>coolo</user>
+    <comment>- Update to version 20131218
+  Add acpica-add_missing_examples_makefile.patch: They forgot to add a file
+  to the tarball. This patch adds it from git repo.
+  Drop acpica-fix_dots_in_path_for_p_option.patch: This patch is included
+  in the newly provided version tarball already.</comment>
+    <requestid>213133</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>1aed15a984f6d21e77fa16a4929bcacf</srcmd5>
+    <version>20140114</version>
+    <time>1391090016</time>
+    <user>coolo</user>
+    <comment>Drop acpica-add_missing_examples_makefile.patch from project (forwarded request 214978 from aeneas_jaissle)</comment>
+    <requestid>215007</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b10a4a71fb2f97e5cca006b330a51198</srcmd5>
+    <version>20140214</version>
+    <time>1395043970</time>
+    <user>coolo</user>
+    <comment>- Add acpi-tools tarball from kernel sources: tools/power/acpi
+  Use latest acpidump from there instead of acpica included one.
+  This fixes acpidump on latest kernels.
+- Add script for easier retrieving of acpi-tools tarball from kernel sources.
+
+- Update to version 20140214
+- Replace $RPM_OPT_FLAGS with %{optflags} as suggested by tcech@suse.cz
+
+- set HOST for make to not blindly set the hostname
+  as compiler definition</comment>
+    <requestid>225803</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>aa6a8680c9121e9aa0fbee83e7bed5f0</srcmd5>
+    <version>20140214</version>
+    <time>1396709394</time>
+    <user>coolo</user>
+    <comment>Add generate_acpi-tools_tarball.sh as source (forwarded request 228306 from leonardocf)</comment>
+    <requestid>228322</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>aa680540ac4ede53f37a980aae6f680f</srcmd5>
+    <version>20140724</version>
+    <time>1407045027</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243062</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>aa680540ac4ede53f37a980aae6f680f</srcmd5>
+    <version>20140724</version>
+    <time>1409300469</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>02d8cba3aaf6446ac85a2a658a25b5bb</srcmd5>
+    <version>20140724</version>
+    <time>1423130326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283824</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>83fc904942011a6c48debcb6a662d97b</srcmd5>
+    <version>20150410</version>
+    <time>1430132315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>303617</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>8043a9695e7bab95848026286b85c0ee</srcmd5>
+    <version>20150410</version>
+    <time>1436111453</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314682</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1b5d9b89ec36d4888195541d55b9a4dd</srcmd5>
+    <version>20150717</version>
+    <time>1439984478</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323455</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>fecceaa527e6fb95d5d1a5f9a1a0f172</srcmd5>
+    <version>20150717</version>
+    <time>1446764625</time>
+    <user>dimstar_suse</user>
+    <comment>- add support for kernel 4.3+ (boo#953599)</comment>
+    <requestid>342518</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2131c48531dfa7e5be2a2adc6f89d184</srcmd5>
+    <version>20160422</version>
+    <time>1474976567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>429266</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>314b085270e28509d08d07c005c1a1cb</srcmd5>
+    <version>20161117</version>
+    <time>1484040955</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448924</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>b7fe49b8b46ba1f6cc7871c7a9e593a6</srcmd5>
+    <version>20161117</version>
+    <time>1484914065</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450533</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f7ebb388326c131b3f5b216743efd29b</srcmd5>
+    <version>20170119</version>
+    <time>1485510369</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452450</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>99004d636dc32ec1aef01df793b46b6d</srcmd5>
+    <version>20170531</version>
+    <time>1497949278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503389</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>20e4fbc7ebb0930e28cc9487d09d43c0</srcmd5>
+    <version>20170531</version>
+    <time>1512926040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555016</requestid>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>03e17fd2ce44d36019cb327fee28bf0c</srcmd5>
+    <version>20170531</version>
+    <time>1516091894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563911</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ef1ee494e707dda3386368893bc5de52</srcmd5>
+    <version>20180105</version>
+    <time>1516443930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566228</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>996fc3f37d39659db735934164603bd3</srcmd5>
+    <version>20180313</version>
+    <time>1524643181</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to latest version 20180313
+- Update patches:
+  * acpica-no-compiletime.patch
+  * do_not_use_build_date_and_time.patch</comment>
+    <requestid>598496</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>9fe44cb2e3743dc3b17da42587aed05d</srcmd5>
+    <version>20180629</version>
+    <time>1531231997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620258</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>40021d10832b6c1ab64ef7454202bb65</srcmd5>
+    <version>20190215</version>
+    <time>1552990062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685017</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f80b162c0c75a36a329189f4f6345513</srcmd5>
+    <version>20190405</version>
+    <time>1555053064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692555</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>79c4738e4a633eb0caf02883bc4c92d9</srcmd5>
+    <version>20190509</version>
+    <time>1558783154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704812</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>057235c3d82775d8a634940ba4f54c4f</srcmd5>
+    <version>20190509</version>
+    <time>1560337393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706245</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42ff820460ebd69fed6091f4f37c1d52</srcmd5>
+    <version>0.8.2</version>
+    <time>1522596374</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license macro for license.
+- Update to 0.8.2
+  * No upstream changelog
+- Implement single-spec version
+- Update to 0.7.4
+  * No upstream changelog
+- Update to 0.7.2
+  * No upstream changelog
+- Update to 0.7.1
+  * Test `nth` with negative index on sequence and iterator.
+  * Add itemmap, itemfilter to api doc.
+  * Add `itemmap` and `itemfilter` to `dicttoolz`.
+  * binstar: add more platforms/versions
+  * add tail to itertoolz.__all__
+  * take, drop, tail refer to each other in docstrings
+  * test tail in lazy setting
+  * fix tail doctest
+  * last is a recipe of tail
+  * add tail operation
+  * pep8 space error fix
+  * Identity doc string
+  * add dissoc function to dictoolz
+  * Describe the ideal contribution
+  * reduceby takes callable init keyword argument
+  * Add pypy3 to build matrix
+  * getter works in empty index case
+  * simpler check on index in get
+  * get([], seq) returns ()
+- Update to 0.7.0
+  * No upstream changelog
+- Update to 0.6.0
+  * memoize is curried by default
+  * memoize support `key` keyword argument
+  * Cleaned up issues in curried namespace
+  * Unary functions memoize with just the single argument, not a tuple
+  * Flattened directory structure
+  * Add `pluck` function from underscore.js
+  * Remove `sandbox.jackknife`
+- 0.5.3 Changelog
+  * get_in function
+  * add itervalues, iterkeys, iteritems to compatibility
+  * Add do function, remove side_effects from sandbox
+  * Add juxt, partner to map
+  * Performance improvements to merge_with
+  * Errors from curried functions propagate upwards
+  * keyfilter, valfilter
+  * do
+- Update to version 0.5.3
+  + No changelog available
+- Update to version 0.4.1
+  + No changelog available
+- Initial version (0.3.0)
+</comment>
+    <requestid>585411</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bb5cc78729f028edc50b1b4980db6544</srcmd5>
+    <version>0.9.0</version>
+    <time>1526371561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603498</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>447d8765153c24c884652df110424e19</srcmd5>
+    <version>0.9.0</version>
+    <time>1545648322</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659723</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>2e206fdfaaf7639d21b36a578fc8af31</srcmd5>
+    <version>0.9.0</version>
+    <time>1559923324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707198</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>19234feee39ef39effe988460925981b</srcmd5>
+    <version>0.10.0</version>
+    <time>1563808778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  * no upstream changelog</comment>
+    <requestid>717570</requestid>
+  </revision>
+</revisionlist>

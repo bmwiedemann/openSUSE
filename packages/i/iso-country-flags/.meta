@@ -1,0 +1,5 @@
+<package name="iso-country-flags" project="openSUSE:Factory">
+  <title>ISO country flags</title>
+  <description>A collection of country flags.</description>
+  <devel project="X11:Cinnamon:Factory" package="iso-country-flags"/>
+</package>

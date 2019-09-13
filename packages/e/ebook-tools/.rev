@@ -1,0 +1,161 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>658593aa1263a8c2437338a7a460c862</srcmd5>
+    <version>0.1.1</version>
+    <time>1248489426</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>658593aa1263a8c2437338a7a460c862</srcmd5>
+    <version>0.1.1</version>
+    <time>1248489426</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c271b1c74309773c738967f6c4e79581</srcmd5>
+    <version>0.1.1</version>
+    <time>1268923421</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>c271b1c74309773c738967f6c4e79581</srcmd5>
+    <version>0.1.1</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>c271b1c74309773c738967f6c4e79581</srcmd5>
+    <version>0.1.1</version>
+    <time>1278678573</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>9588a65c3d62cb5c4ad59a33b1096e5a</srcmd5>
+    <version>unknown</version>
+    <time>1284199757</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/ebook-tools based on submit request 47852 from user coolo
+</comment>
+    <requestid>47852</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>9588a65c3d62cb5c4ad59a33b1096e5a</srcmd5>
+    <version>unknown</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>17499d54b87fccfc54ae3406786aaaf5</srcmd5>
+    <version>0.2.1</version>
+    <time>1300956376</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64964 from user coolo
+</comment>
+    <requestid>64964</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>c56ec8405fd7eb0f90c2cd4b8a8e6adc</srcmd5>
+    <version>0.2.1</version>
+    <time>1300956385</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64964
+</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>b9c1f072c16ad1f0dde1a0f198526db2</srcmd5>
+    <version>0.2.1</version>
+    <time>1316443830</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines) (forwarded request 83392 from jengelh)</comment>
+    <requestid>83413</requestid>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>b9c1f072c16ad1f0dde1a0f198526db2</srcmd5>
+    <version>0.2.1</version>
+    <time>1319181860</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>ce546f96fdd6a3a0e9f0f5a10a60f299</srcmd5>
+    <version>0.2.1</version>
+    <time>1323191251</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>cf53ba5dd659f708219ffffc77ff9b51</srcmd5>
+    <version>0.2.1</version>
+    <time>1325660446</time>
+    <user>coolo</user>
+    <comment>- Use GCC visibility, which shrinks the symbol table
+  to less than a half of the actually size (forwarded request 98432 from elvigia)</comment>
+    <requestid>98440</requestid>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>cf53ba5dd659f708219ffffc77ff9b51</srcmd5>
+    <version>0.2.1</version>
+    <time>1340183297</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>cf53ba5dd659f708219ffffc77ff9b51</srcmd5>
+    <version>0.2.1</version>
+    <time>1359108837</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>a6804ac071563766cce553f5b7e4f7a4</srcmd5>
+    <version>0.2.1</version>
+    <time>1374504004</time>
+    <user>coolo</user>
+    <comment>- xz was added to buildrequires and it was formatted.</comment>
+    <requestid>183426</requestid>
+  </revision>
+  <revision rev="17" vrev="25">
+    <srcmd5>a6804ac071563766cce553f5b7e4f7a4</srcmd5>
+    <version>0.2.1</version>
+    <time>1379662274</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>edd49b81065d9c75bdb5f6a4c0bf602b</srcmd5>
+    <version>0.2.2</version>
+    <time>1381735560</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 0.2.2 (bnc#845629, kde#325909)
+* Bugfix release, no upstream changelog provided
+
+Please checkin to 13.1, old version makes Okular crashy</comment>
+    <requestid>203070</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>00870b96e7b5f3f065be06135030c10f</srcmd5>
+    <version>0.2.2</version>
+    <time>1404157365</time>
+    <user>coolo</user>
+    <comment>Add baselibs.conf</comment>
+    <requestid>238946</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>00870b96e7b5f3f065be06135030c10f</srcmd5>
+    <version>0.2.2</version>
+    <time>1409300811</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>81df29ffcb9df1d565f536c938ba4b19</srcmd5>
+    <version>0.2.2</version>
+    <time>1556915145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699965</requestid>
+  </revision>
+</revisionlist>

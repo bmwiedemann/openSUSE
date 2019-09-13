@@ -1,0 +1,8 @@
+<package name="scite" project="openSUSE:Factory">
+  <title>scite</title>
+  <description>SciTE is a SCIntilla based Text Editor. Originally built to demonstrate
+Scintilla, it has grown to be a generally useful editor with facilities for
+building and running programs.
+  </description>
+  <devel project="editors" package="scite"/>
+</package>

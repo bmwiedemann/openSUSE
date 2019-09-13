@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed16f5aab987d60ce6142339af617733</srcmd5>
+    <version>0.2.2</version>
+    <time>1564414344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719596</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>751c72106d2aa2d95b6769054d4d8182</srcmd5>
+    <version>0.3.0</version>
+    <time>1568191200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * support python 3.8</comment>
+    <requestid>729898</requestid>
+  </revision>
+</revisionlist>

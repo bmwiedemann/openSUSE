@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>0fa5e9f272bd73d8d98e13433a3079eb</srcmd5>
+    <version>2.0.3</version>
+    <time>1248882847</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>0fa5e9f272bd73d8d98e13433a3079eb</srcmd5>
+    <version>2.0.3</version>
+    <time>1248882847</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>fc2c15d7771ee5c4fa557e902197d225</srcmd5>
+    <version>2.0.3</version>
+    <time>1268926053</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>fc2c15d7771ee5c4fa557e902197d225</srcmd5>
+    <version>2.0.3</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>fc2c15d7771ee5c4fa557e902197d225</srcmd5>
+    <version>2.0.3</version>
+    <time>1278678617</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>fc2c15d7771ee5c4fa557e902197d225</srcmd5>
+    <version>2.0.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>fc2c15d7771ee5c4fa557e902197d225</srcmd5>
+    <version>2.0.3</version>
+    <time>1319182445</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>8eda7f3e1c9a8d5638fb15c32ac5399c</srcmd5>
+    <version>2.0.3</version>
+    <time>1323194510</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>4d74a799fc30f26820d11b6acf39b851</srcmd5>
+    <version>2.0.3</version>
+    <time>1340029813</time>
+    <user>coolo</user>
+    <comment>- fix a build with jdk7 (-Dtarget)</comment>
+    <requestid>125325</requestid>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>4d74a799fc30f26820d11b6acf39b851</srcmd5>
+    <version>2.0.3</version>
+    <time>1340184187</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0751950c09efc400506f3741f89488e8</srcmd5>
+    <version>2.3.2</version>
+    <time>1351020390</time>
+    <user>coolo</user>
+    <comment>Update to 2.3.2  (forwarded request 138699 from posophe)</comment>
+    <requestid>138999</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0751950c09efc400506f3741f89488e8</srcmd5>
+    <version>2.3.2</version>
+    <time>1359110366</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>3bb0bb1d643bcf79a35726187c2a9365</srcmd5>
+    <version>2.3.2</version>
+    <time>1378899479</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198311</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>3bb0bb1d643bcf79a35726187c2a9365</srcmd5>
+    <version>2.3.2</version>
+    <time>1379664608</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>34feae053db0cb4efb3365852ae462b3</srcmd5>
+    <version>2.3.2</version>
+    <time>1404161411</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238908</requestid>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>34feae053db0cb4efb3365852ae462b3</srcmd5>
+    <version>2.3.2</version>
+    <time>1409303313</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>daa8b79d42ae45a366f07f451cd1175c</srcmd5>
+    <version>2.3.2</version>
+    <time>1495442904</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove un-needed dependencies</comment>
+    <requestid>497058</requestid>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>c9cb3894824cf3c9b38fbfa2c0d9a6a0</srcmd5>
+    <version>2.3.2</version>
+    <time>1505920433</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527466</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3d58bb648d762a30b7fc989d50fc08b0</srcmd5>
+    <version>2.3.5</version>
+    <time>1543953365</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653652</requestid>
+  </revision>
+</revisionlist>

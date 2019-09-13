@@ -1,0 +1,2410 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>554b8a3888f9694dd8dbedcd25421b0f</srcmd5>
+    <version>3.80.3</version>
+    <time>1177966362</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>962bde57684c868a6f809a1c970403d0</srcmd5>
+    <version>3.90.1</version>
+    <time>1178541584</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7cc68fb104a0066e872d29d763da803e</srcmd5>
+    <version>3.90.1</version>
+    <time>1178647942</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>28606c235e846a03ea993dbe36fee0f2</srcmd5>
+    <version>3.90.1</version>
+    <time>1178832564</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>6c4a242af647ec92c86d588b76cf0fa9</srcmd5>
+    <version>3.90.1</version>
+    <time>1178917478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>32588d24e8f775dd8b0d11f70394e4a0</srcmd5>
+    <version>3.90.1</version>
+    <time>1178967163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>302263fb64368c167594461aa6658ee1</srcmd5>
+    <version>3.90.1</version>
+    <time>1179394936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f298d0e8d562682f559fba40bd37b3b4</srcmd5>
+    <version>3.90.1.svn668118</version>
+    <time>1180387485</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>841e15cd1e8912726c07041b21e9861a</srcmd5>
+    <version>3.90.1.svn670163</version>
+    <time>1180689700</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>9ae0bc1ebf817c89d7df37dc25fe47a8</srcmd5>
+    <version>3.90.1.svn670163</version>
+    <time>1181317211</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>459645296b480faa8450f4ff5eb66bc6</srcmd5>
+    <version>3.90.1.svn670163</version>
+    <time>1181596801</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>b784305cd37ae11634abd5747e18823d</srcmd5>
+    <version>3.90.1.svn670163</version>
+    <time>1182678608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9c74ff45040d2f3d1babdcfc624c3e17</srcmd5>
+    <version>3.91.0.svn670163</version>
+    <time>1184351645</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>0698c7a34fa6b1f6a28f3bce49e4dcc4</srcmd5>
+    <version>3.91.0.svn670163</version>
+    <time>1184600974</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>18061bf0c988b27c7ae553521ac5b607</srcmd5>
+    <version>3.92.0</version>
+    <time>1185699081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>cbb9bcdf2df61abf1b5aca4ccdc7475d</srcmd5>
+    <version>3.92.0</version>
+    <time>1186089886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>25a52a79283a1fc49da2b5c3db4ebdc2</srcmd5>
+    <version>3.92.0</version>
+    <time>1186472074</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>43b7ed5a511ce3274d8c357d30032a3f</srcmd5>
+    <version>3.92.0</version>
+    <time>1186671072</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fc2bf49f43ef9ac7e1d45b51d87d0e03</srcmd5>
+    <version>3.92.0.svn700733</version>
+    <time>1187369574</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>675edfc33ec73f83d4974cf765676dce</srcmd5>
+    <version>3.93.0</version>
+    <time>1188720161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5730e31e0fd5ff7d0ad3fd6fba8795ca</srcmd5>
+    <version>3.93.0.svn712047</version>
+    <time>1189779424</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>067f3850075fa9909e62be8942536c92</srcmd5>
+    <version>3.93.0.svn712047</version>
+    <time>1192130055</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f68b71ef5704c0ff1f1b0b146feda438</srcmd5>
+    <version>3.94.0</version>
+    <time>1192552495</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>5aa14324277086435af66e3b3bf72fe3</srcmd5>
+    <version>3.94.0</version>
+    <time>1192761249</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>516863de397885dc83066426b542a35e</srcmd5>
+    <version>3.94.1</version>
+    <time>1192894975</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>001350a71f343cb3f12085911be73058</srcmd5>
+    <version>3.95.0</version>
+    <time>1193788585</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>6833e0981d597c10343ea7b71acc3a4c</srcmd5>
+    <version>3.95.0</version>
+    <time>1193963052</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>cd7ae12a9476c70df92613fd6e612d3d</srcmd5>
+    <version>3.95.1</version>
+    <time>1194001495</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e4c57eb9791203134c1b335d6c9d76c2</srcmd5>
+    <version>3.96.0</version>
+    <time>1195665919</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6c28128d004ad116deac6cdebbca4bb8</srcmd5>
+    <version>3.96.1</version>
+    <time>1196288647</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>828bd1f2dd76803a3aa00e32c8e745b3</srcmd5>
+    <version>3.96.2</version>
+    <time>1196604047</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7cbfaeaa85bd77a4bd623032611a18ef</srcmd5>
+    <version>3.96.3</version>
+    <time>1196892879</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>fbae78359203d301e3a0349db56b6b6e</srcmd5>
+    <version>3.96.3</version>
+    <time>1196954122</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6a6f68d2afe8407b01cee52ea3a8d5e2</srcmd5>
+    <version>3.97.0</version>
+    <time>1197551238</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>cec496a61c260003f8b7ee226370efc1</srcmd5>
+    <version>3.97.1</version>
+    <time>1198164668</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>277296b547572556740d695fea7a9ac7</srcmd5>
+    <version>3.97.2</version>
+    <time>1199378728</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>19149236087d2513ed065db5eca3815e</srcmd5>
+    <version>4.0</version>
+    <time>1200049090</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>61f08504ff779f8fe57066ef687f7046</srcmd5>
+    <version>4.0</version>
+    <time>1200873384</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>954298cb4eef151d0a903cebe28dcfe5</srcmd5>
+    <version>4.0</version>
+    <time>1201205752</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="10">
+    <srcmd5>972f9ac5ad22e23efcf24ea59780d6eb</srcmd5>
+    <version>4.0</version>
+    <time>1201479111</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>eb9a0a4cafd0fc078f4c57bbe5af26d9</srcmd5>
+    <version>4.0.1</version>
+    <time>1202082733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>511113bfe4d15d08e59b2eef70069b71</srcmd5>
+    <version>4.0.1</version>
+    <time>1202146151</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>72ed81ed52e79304f9b645d7f6a084a3</srcmd5>
+    <version>4.0.1</version>
+    <time>1202156791</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>3e7ccebc38901e4e4a2ae86df9f6ce5c</srcmd5>
+    <version>4.0.1</version>
+    <time>1202496070</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>bb40af758daae9dc4c8b7ba59aafec33</srcmd5>
+    <version>4.0.2</version>
+    <time>1204754615</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>c43edf93b00e4112f98e5931f5525ac5</srcmd5>
+    <version>4.0.2</version>
+    <time>1205256859</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="6">
+    <srcmd5>b5fe5acffee9c00c889fb417a46a7f63</srcmd5>
+    <version>4.0.2</version>
+    <time>1205441393</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="9">
+    <srcmd5>46853beab187910e32ea082d72317488</srcmd5>
+    <version>4.0.2</version>
+    <time>1205887929</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>6fcad028f911887de2045b94276a809c</srcmd5>
+    <version>4.0.3</version>
+    <time>1207163616</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>41672ba96f94a51496b951f09f5e41ca</srcmd5>
+    <version>4.0.3</version>
+    <time>1207691920</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>0741bc8c3ef2a0b6e53e863b331c655c</srcmd5>
+    <version>4.0.3</version>
+    <time>1207830041</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>cc5454d3e5c4792eed01c11d71dd871d</srcmd5>
+    <version>4.0.3</version>
+    <time>1207855991</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="7">
+    <srcmd5>fb281e9cec245a93393316d575dc8110</srcmd5>
+    <version>4.0.3</version>
+    <time>1208027795</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="11">
+    <srcmd5>3f27c9501708e4d9be748a519ae31a9a</srcmd5>
+    <version>4.0.3</version>
+    <time>1208701807</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="16">
+    <srcmd5>cf4772042d921765f88086528b34835b</srcmd5>
+    <version>4.0.3</version>
+    <time>1209644441</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3fe2bce0f4204e5361e956bb9e4a8153</srcmd5>
+    <version>4.0.4</version>
+    <time>1210107302</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>e515363b96d1ae30e3df9d5a9a6f4e76</srcmd5>
+    <version>4.0.4</version>
+    <time>1210366886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="6">
+    <srcmd5>1d6efebdf6da69d6772507b905e556c2</srcmd5>
+    <version>4.0.4</version>
+    <time>1210971347</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="8">
+    <srcmd5>261478fd45232c0ed2204b49d85c2432</srcmd5>
+    <version>4.0.4</version>
+    <time>1211242504</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="10">
+    <srcmd5>22587e03de82d64ffeeb39755eed312f</srcmd5>
+    <version>4.0.4</version>
+    <time>1211410646</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="11">
+    <srcmd5>b3685db66b6e0854dc0439839aa3594b</srcmd5>
+    <version>4.0.4</version>
+    <time>1211821781</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>2603277294c8dedae217b9f0b33a721a</srcmd5>
+    <version>4.0.82</version>
+    <time>1214112880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>de3c71e3620b34486cd8d89994851baa</srcmd5>
+    <version>4.0.83</version>
+    <time>1214416897</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>461b6b9efb8a0589072c15a86567c8e2</srcmd5>
+    <version>4.0.84</version>
+    <time>1214841681</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>868a306f3e01daef72e4df55bb5489fb</srcmd5>
+    <version>4.0.85</version>
+    <time>1215632007</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>f58bf25a5a02853c391922ae37550bc6</srcmd5>
+    <version>4.0.98</version>
+    <time>1216332101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>0bc25ae9f432ef7be3f7431273d40404</srcmd5>
+    <version>4.0.99</version>
+    <time>1216414825</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>5d17ef848b9dc1da072ded769d10a0bb</srcmd5>
+    <version>4.1.0</version>
+    <time>1217373487</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="69" vrev="5">
+    <srcmd5>15d9f130e8167add723eaf19f1613e76</srcmd5>
+    <version>4.1.0</version>
+    <time>1217980173</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="70" vrev="15">
+    <srcmd5>010aadd219510ce41f5b69ba5e8933dd</srcmd5>
+    <version>4.1.0</version>
+    <time>1219011111</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>0535f09a08d0952d16dd1a5cde9f9fb2</srcmd5>
+    <version>4.1.1</version>
+    <time>1220274111</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="72" vrev="11">
+    <srcmd5>d9acabc7dfe0fb6128fce99d375c7aad</srcmd5>
+    <version>4.1.1</version>
+    <time>1221274053</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="73" vrev="12">
+    <srcmd5>3e2583a19a70b2fd410ab10dbf1f1cf9</srcmd5>
+    <version>4.1.1</version>
+    <time>1221305414</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>94639e8ed1be234a4dcba3dc337fff9f</srcmd5>
+    <version>4.1.2</version>
+    <time>1222703457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>51810554db06dd51d2afbf8c723c65a1</srcmd5>
+    <version>4.1.2</version>
+    <time>1224757266</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>a63a29fedfff5649e5d8835cc836dfe4</srcmd5>
+    <version>4.1.2</version>
+    <time>1225711041</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>c1b1df0e02e1d60816275e76e77aa5ae</srcmd5>
+    <version>4.1.3</version>
+    <time>1225732379</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>2a93ce47380f62873905c37ca7606472</srcmd5>
+    <version>4.1.3</version>
+    <time>1226416169</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>d8817a699edf9667ba4d8c71b2b506db</srcmd5>
+    <version>4.1.3</version>
+    <time>1227191788</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="80" vrev="4">
+    <srcmd5>25c5bf27fd6220d0acc642c1898ff16b</srcmd5>
+    <version>4.1.3</version>
+    <time>1227277705</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="81" vrev="5">
+    <srcmd5>0858d3c8ef93f35203ad3ff100d888c2</srcmd5>
+    <version>4.1.3</version>
+    <time>1231435673</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>df59a2f69685a2e5eacfbf161d957e5c</srcmd5>
+    <version>4.1.87</version>
+    <time>1231779660</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>a3c6b2dabf5934a6f3d5da1a30056824</srcmd5>
+    <version>4.1.96</version>
+    <time>1232066626</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>003792bf525fa7d16c97223b4378d987</srcmd5>
+    <version>4.2.0</version>
+    <time>1233267170</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>8965979b42f29360324e8f978359e939</srcmd5>
+    <version>4.2.0</version>
+    <time>1233694891</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>43206de74c9f43c7e46ad0f0ca168111</srcmd5>
+    <version>4.2.0</version>
+    <time>1233992788</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="87" vrev="4">
+    <srcmd5>e9e3d80107f61a0ff1ddf4f074e91132</srcmd5>
+    <version>4.2.0</version>
+    <time>1234198499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="88" vrev="5">
+    <srcmd5>38e3c7c70984a3a415ec8eb4b47968c4</srcmd5>
+    <version>4.2.0</version>
+    <time>1234743737</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="89" vrev="6">
+    <srcmd5>b2753806da50d2339742f558e492198c</srcmd5>
+    <version>4.2.0</version>
+    <time>1235079820</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="90" vrev="7">
+    <srcmd5>d42275afebe59c12294aa1548bf41f31</srcmd5>
+    <version>4.2.0</version>
+    <time>1235667315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>f6c5bd9f9e79509c9a6236c08aa47cec</srcmd5>
+    <version>4.2.1</version>
+    <time>1236212694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>06d14e243ccb73749b5157dadbda3817</srcmd5>
+    <version>4.2.1</version>
+    <time>1237921148</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>92323370dead5cc9fa361bf032e173af</srcmd5>
+    <version>4.2.2</version>
+    <time>1238692058</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>f72599820719a466c481dfa2fd2f2541</srcmd5>
+    <version>4.2.2</version>
+    <time>1239730763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>51e86e01a05afb0515ff5802e4daf29a</srcmd5>
+    <version>4.2.3</version>
+    <time>1241628540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>cf3f8001d01a2aa66558e96c6751b8ac</srcmd5>
+    <version>4.2.85</version>
+    <time>1242770148</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>03e9a38f7017921eb6a746c23767142e</srcmd5>
+    <version>4.2.88svn973768</version>
+    <time>1243938685</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>7578bfd7c0962f6a32a4f2975430b5f6</srcmd5>
+    <version>4.2.88svn973768</version>
+    <time>1243983038</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>5b654e11a02f289fb5b1ebdd8f1fdb42</srcmd5>
+    <version>4.2.88svn973768</version>
+    <time>1244021762</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>9a1dd66230015cc681c69047b2c05730</srcmd5>
+    <version>4.2.90</version>
+    <time>1244651434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>c660aa0ee069326f350c8c9cb065a586</srcmd5>
+    <version>4.2.95</version>
+    <time>1247080434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>83eb71b3e010167c05d5b9a81da9f409</srcmd5>
+    <version>4.2.98</version>
+    <time>1248360357</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>692d2b70d98d99b1f9caa7e46cf620a5</srcmd5>
+    <version>4.2.98</version>
+    <time>1248540480</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>a0603a1cd9d09b0d18f98fe9e26880e8</srcmd5>
+    <version>4.3.0</version>
+    <time>1249415249</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>8444f376677b91635386172fdee29d1d</srcmd5>
+    <version>4.3.0</version>
+    <time>1249653428</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>7480ce03e9d62a744b7b33fb9ed7e7ec</srcmd5>
+    <version>4.3.0</version>
+    <time>1250865754</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 18068 from user Beineri
+</comment>
+  </revision>
+  <revision rev="107" vrev="4">
+    <srcmd5>a0417fca43cc54d855c91044696bba2a</srcmd5>
+    <version>4.3.0</version>
+    <time>1251411061</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 18919 from user Beineri
+</comment>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>e80e4add4c7e76110601fb14833ad8c7</srcmd5>
+    <version>4.3.1</version>
+    <time>1251834209</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 19474 from user Beineri
+</comment>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>98a12760258c7eb329fe6a2e2d69a5bf</srcmd5>
+    <version>4.3.1</version>
+    <time>1253150953</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 20539 from user coolo
+</comment>
+  </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>ff2a7ecacaed91294af3dd2357f8aaa6</srcmd5>
+    <version>4.3.1</version>
+    <time>1253831208</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 21044 from user Beineri
+</comment>
+  </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>cb991e05895c513dfaf06e0e0f682417</srcmd5>
+    <version>4.3.1</version>
+    <time>1254780118</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 21649 from user Beineri
+</comment>
+  </revision>
+  <revision rev="112" vrev="5">
+    <srcmd5>2ad4d4aab7fc79ff4ac4630c0731d1a5</srcmd5>
+    <version>4.3.1</version>
+    <time>1255341041</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 22178 from user llunak
+</comment>
+  </revision>
+  <revision rev="113" vrev="7">
+    <srcmd5>2ad4d4aab7fc79ff4ac4630c0731d1a5</srcmd5>
+    <version>4.3.1</version>
+    <time>1255341041</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 22178 from user llunak
+</comment>
+  </revision>
+  <revision rev="114" vrev="8">
+    <srcmd5>186d20862740d61c74a20e18cc73a30e</srcmd5>
+    <version>4.3.1</version>
+    <time>1256079464</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 22560 from user Beineri
+</comment>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>4b768c74e8ceb393b479962005a3e1f3</srcmd5>
+    <version>4.3.3</version>
+    <time>1257327671</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 23830 from user Beineri
+</comment>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>41558dd444a06fcea844c084888bdaa5</srcmd5>
+    <version>4.3.3</version>
+    <time>1258373720</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 24508 from user Beineri
+</comment>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>b7328dac63ff7d3d79f37cb0ea344ef0</srcmd5>
+    <version>4.3.80</version>
+    <time>1260953722</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 26556 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>c25fd9a70f78764b2fd3323638946940</srcmd5>
+    <version>4.3.80</version>
+    <time>1260978956</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 26790 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>6e50344f56d84fc8301cfcad230da507</srcmd5>
+    <version>4.3.85</version>
+    <time>1261435062</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 27318 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>dff072616b4f6c9d58c8bd226cc2a54d</srcmd5>
+    <version>4.3.90</version>
+    <time>1262964471</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 28297 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>f8fcdb4dbe22caf2acd3027645301425</srcmd5>
+    <version>4.3.90</version>
+    <time>1263122321</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 28363 from user coolo
+</comment>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>59116e8b7806e4ff20354617faedc43c</srcmd5>
+    <version>4.3.95</version>
+    <time>1264777262</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 30791 from user llunak
+</comment>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>1fdc6b015a2cfe6c4d48313e9a12aef1</srcmd5>
+    <version>4.4.0</version>
+    <time>1265752645</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 31975 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>a0de1cffc1758b4c12a3f61cf1552cc7</srcmd5>
+    <version>4.4.1</version>
+    <time>1268068521</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 34294 from user coolo
+</comment>
+    <requestid>34294</requestid>
+  </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>f0a1c972f29543027ffd145a47f247f2</srcmd5>
+    <version>4.4.1</version>
+    <time>1268924200</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>d881ae18c370d47bc8ade6a4cc2be3b7</srcmd5>
+    <version>4.4.2</version>
+    <time>1270130885</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 36589 from user llunak
+</comment>
+    <requestid>36589</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>1ae76a3f9b9850ee549c7fd0d8719110</srcmd5>
+    <version>4.4.2</version>
+    <time>1270159677</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 36722 from user llunak
+</comment>
+    <requestid>36722</requestid>
+  </revision>
+  <revision rev="128" vrev="3">
+    <srcmd5>585321fa0d0793c2baadb02ec8616df5</srcmd5>
+    <version>4.4.2</version>
+    <time>1270666734</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 37227 from user llunak
+</comment>
+    <requestid>37227</requestid>
+  </revision>
+  <revision rev="129" vrev="4">
+    <srcmd5>f498014d5e90d9c7f73b9eb28ab3c0c5</srcmd5>
+    <version>4.4.2</version>
+    <time>1271722059</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 38280 from user llunak
+</comment>
+    <requestid>38280</requestid>
+  </revision>
+  <revision rev="130" vrev="5">
+    <srcmd5>fa3c796e3a3324939875fd96b02f761c</srcmd5>
+    <version>4.4.2</version>
+    <time>1272297180</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 38793 from user dirkmueller
+</comment>
+    <requestid>38793</requestid>
+  </revision>
+  <revision rev="131" vrev="6">
+    <srcmd5>9f9a3f6bf14fb4982160c08f3e949de8</srcmd5>
+    <version>4.4.2</version>
+    <time>1272488223</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 38918 from user llunak
+</comment>
+    <requestid>38918</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>bea08ceaff8b7cfa304ba6160e78da61</srcmd5>
+    <version>4.4.3</version>
+    <time>1273090833</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 39500 from user dirkmueller
+</comment>
+    <requestid>39500</requestid>
+  </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>52d86a19cf598bbf2dfd8544901156bb</srcmd5>
+    <version>4.4.3</version>
+    <time>1274133011</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 40155 from user llunak
+</comment>
+    <requestid>40155</requestid>
+  </revision>
+  <revision rev="134" vrev="3">
+    <srcmd5>76379c4b929e2d7261200afde7336bc4</srcmd5>
+    <version>4.4.3</version>
+    <time>1275579623</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 41048 from user llunak
+</comment>
+    <requestid>41048</requestid>
+  </revision>
+  <revision rev="135" vrev="4">
+    <srcmd5>c7bbc851f340ed7eb260d364c39de03e</srcmd5>
+    <version>4.4.3</version>
+    <time>1276467758</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 41396 from user llunak
+</comment>
+    <requestid>41396</requestid>
+  </revision>
+  <revision rev="136" vrev="5">
+    <srcmd5>929c6b9fbc6ab253242afd5278a519ab</srcmd5>
+    <version>4.4.3</version>
+    <time>1276833901</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 41494 from user llunak
+</comment>
+    <requestid>41494</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>341fbece691dde39384a590e251bc619</srcmd5>
+    <version>4.4.4</version>
+    <time>1277135810</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 41798 from user dirkmueller
+</comment>
+    <requestid>41798</requestid>
+  </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>87be4a5094c2ac68335e8cfb5c2f5bbc</srcmd5>
+    <version>4.4.4</version>
+    <time>1277714630</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdelibs4 based on submit request 42098 from user llunak
+</comment>
+    <requestid>42098</requestid>
+  </revision>
+  <revision rev="139" vrev="3">
+    <srcmd5>87be4a5094c2ac68335e8cfb5c2f5bbc</srcmd5>
+    <version>4.4.4</version>
+    <time>1278667354</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="140" vrev="4">
+    <srcmd5>87be4a5094c2ac68335e8cfb5c2f5bbc</srcmd5>
+    <version>4.4.4</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>02e6794736b2fda9c29d26e5650d542c</srcmd5>
+    <version>4.4.93svn1149349</version>
+    <time>1279542809</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdelibs4 based on submit request 43262 from user dirkmueller
+</comment>
+    <requestid>43262</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>0c104ab7f5731e14b50c9da75f1f2262</srcmd5>
+    <version>4.5.0</version>
+    <time>1281434903</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdelibs4 based on submit request 45252 from user Beineri
+</comment>
+    <requestid>45252</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>7f36dbb7e8639096637bdebb00ffe66f</srcmd5>
+    <version>4.5.1</version>
+    <time>1283514796</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdelibs4 based on submit request 46960 from user dirkmueller
+</comment>
+    <requestid>46960</requestid>
+  </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>eb4b7be2ae467e04df1054758aea313a</srcmd5>
+    <version>unknown</version>
+    <time>1284123820</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdelibs4 based on submit request 47678 from user coolo
+</comment>
+    <requestid>47678</requestid>
+  </revision>
+  <revision rev="145" vrev="3">
+    <srcmd5>804e191fdb631213a2a29184b348817e</srcmd5>
+    <version>4.5.2</version>
+    <time>1286488816</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdelibs4 based on submit request 49980 from user dirkmueller
+</comment>
+    <requestid>49980</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>11d8217a8a258f51054eaeac6d40957d</srcmd5>
+    <version>4.5.3</version>
+    <time>1288964343</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52229 from user dirkmueller
+</comment>
+    <requestid>52229</requestid>
+  </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>3b7912a87c1091d71677deb9fd719e06</srcmd5>
+    <version>4.5.3</version>
+    <time>1289224135</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52360 from user dirkmueller
+</comment>
+    <requestid>52360</requestid>
+  </revision>
+  <revision rev="148" vrev="3">
+    <srcmd5>4c59249e8a12bbb73b61b8eec72f1753</srcmd5>
+    <version>4.5.3</version>
+    <time>1289224146</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52360
+</comment>
+  </revision>
+  <revision rev="149" vrev="4">
+    <srcmd5>eb44436d07a930b434fe56a04f4845dd</srcmd5>
+    <version>4.5.3</version>
+    <time>1290092923</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53217 from user dirkmueller
+</comment>
+    <requestid>53217</requestid>
+  </revision>
+  <revision rev="150" vrev="5">
+    <srcmd5>d2907f0b8cd89253903df9ed9020bf6d</srcmd5>
+    <version>4.5.3</version>
+    <time>1290092929</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53217
+</comment>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>9f90cf5d34fb623b3bf736a0e8950605</srcmd5>
+    <version>4.5.80</version>
+    <time>1290465339</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53726 from user dirkmueller
+</comment>
+    <requestid>53726</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>e7596c399c09042f7f98bc5a9c42d789</srcmd5>
+    <version>4.5.85</version>
+    <time>1292258664</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55825 from user wstephenson
+</comment>
+    <requestid>55825</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>494feabeace87c36e843666b63850eb7</srcmd5>
+    <version>4.5.95</version>
+    <time>1294652975</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57313 from user dirkmueller
+</comment>
+    <requestid>57313</requestid>
+  </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>ddd6d545de75b9c127793ffd38796bbf</srcmd5>
+    <version>4.5.95</version>
+    <time>1295013228</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58166 from user coolo
+</comment>
+    <requestid>58166</requestid>
+  </revision>
+  <revision rev="155" vrev="3">
+    <srcmd5>740479443a984cc257095db1963d33ee</srcmd5>
+    <version>4.5.95</version>
+    <time>1295013237</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58166
+</comment>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>5532d7d2c5605e1d9e6fb77028d8aef0</srcmd5>
+    <version>4.6.0</version>
+    <time>1296582141</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59181 from user dirkmueller
+</comment>
+    <requestid>59181</requestid>
+  </revision>
+  <revision rev="157" vrev="2">
+    <srcmd5>2e138e637bb61f4608091a673f9b7bdb</srcmd5>
+    <version>4.6.0</version>
+    <time>1296582151</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59181
+</comment>
+  </revision>
+  <revision rev="158" vrev="3">
+    <srcmd5>a06bd96f50a0c5cbf4047c9ae6a565c3</srcmd5>
+    <version>4.6.0</version>
+    <time>1297113043</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60202 from user wstephenson
+</comment>
+    <requestid>60202</requestid>
+  </revision>
+  <revision rev="159" vrev="4">
+    <srcmd5>414179fed4c6553b7dce59bb4d26d823</srcmd5>
+    <version>4.6.0</version>
+    <time>1297113054</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60202
+</comment>
+  </revision>
+  <revision rev="160" vrev="7">
+    <srcmd5>414179fed4c6553b7dce59bb4d26d823</srcmd5>
+    <version>4.6.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="161" vrev="8">
+    <srcmd5>adfd13cfbd563dec03119c89f95b11bd</srcmd5>
+    <version>4.6.0</version>
+    <time>1298302343</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62332 from user wstephenson
+</comment>
+    <requestid>62332</requestid>
+  </revision>
+  <revision rev="162" vrev="9">
+    <srcmd5>986a024d3da10540a66058965027dd6d</srcmd5>
+    <version>4.6.0</version>
+    <time>1298302352</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 62332
+</comment>
+  </revision>
+  <revision rev="163" vrev="10">
+    <srcmd5>7bd00c8eee97fa6c914995a71ce7a761</srcmd5>
+    <version>4.6.0</version>
+    <time>1298402489</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62500 from user coolo
+</comment>
+    <requestid>62500</requestid>
+  </revision>
+  <revision rev="164" vrev="11">
+    <srcmd5>d0b6e1787607b79793a81712488a5904</srcmd5>
+    <version>4.6.0</version>
+    <time>1298402506</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62500
+</comment>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>47dba8f5f3341617f26bce59fc6bd1ef</srcmd5>
+    <version>4.6.1</version>
+    <time>1299688375</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63772 from user coolo
+</comment>
+    <requestid>63772</requestid>
+  </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>2cf66df34eed2b4652cdfe91ead32aab</srcmd5>
+    <version>4.6.1</version>
+    <time>1299688384</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63772
+</comment>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>f95c3b8cffea7af2779ed0efb82f0de7</srcmd5>
+    <version>4.6.2</version>
+    <time>1302163110</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66276 from user coolo
+</comment>
+    <requestid>66276</requestid>
+  </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>b87a4b4ab7730244263c50b1c8e3beef</srcmd5>
+    <version>4.6.2</version>
+    <time>1302163122</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66276
+</comment>
+  </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>cbae061d5312752af5a80d06248a5a18</srcmd5>
+    <version>4.6.3</version>
+    <time>1305633491</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>70394</requestid>
+  </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>0b0a570efccc5c43e782e6b23924681e</srcmd5>
+    <version>4.6.3</version>
+    <time>1305633508</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70394
+</comment>
+  </revision>
+  <revision rev="171" vrev="3">
+    <srcmd5>0a1141f12afd121d782a314a0da62b6c</srcmd5>
+    <version>4.6.3</version>
+    <time>1305793856</time>
+    <user>saschpe</user>
+    <comment>- fix double post problem with konqueror (kde#272466)
+
+- fix double post problem with konqueror (kde#272466)
+
+It's simply to annoying to get a Mid-air-collision on every comment on bugzilla to wait for 4.6.4! (forwarded request 70612 from christiantrippe)</comment>
+    <requestid>70627</requestid>
+  </revision>
+  <revision rev="172" vrev="4">
+    <srcmd5>900cf757dc11480ebda5358371b0e426</srcmd5>
+    <version>4.6.3</version>
+    <time>1305793865</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70627
+</comment>
+  </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>491a9ef95a3398836773b433537073e0</srcmd5>
+    <version>4.6.4</version>
+    <time>1307546734</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>72967</requestid>
+  </revision>
+  <revision rev="174" vrev="2">
+    <srcmd5>60ab88c406276a37893f2f54be009db2</srcmd5>
+    <version>4.6.4</version>
+    <time>1307546746</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72967
+</comment>
+  </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>f7587ee028ed800336723cd50863e354</srcmd5>
+    <version>4.6.5</version>
+    <time>1309786494</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>75274</requestid>
+  </revision>
+  <revision rev="176" vrev="2">
+    <srcmd5>6e4613df47f6f868e8922ef0d90dff41</srcmd5>
+    <version>4.6.5</version>
+    <time>1309786517</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75274
+</comment>
+  </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>a8cf0d646067dae2312142705c40e6a6</srcmd5>
+    <version>4.6.95</version>
+    <time>1311340143</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>76722</requestid>
+  </revision>
+  <revision rev="178" vrev="2">
+    <srcmd5>b1ef33f79b73149e31e4e5fba3974a07</srcmd5>
+    <version>4.6.95</version>
+    <time>1311340156</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76722
+</comment>
+  </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>5d7a2341837be7164951c7ae191e42c1</srcmd5>
+    <version>4.7.0</version>
+    <time>1311778843</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>77241</requestid>
+  </revision>
+  <revision rev="180" vrev="2">
+    <srcmd5>0d81f66588694bff669ecb4c2465ad9c</srcmd5>
+    <version>4.7.0</version>
+    <time>1311778857</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77241
+</comment>
+  </revision>
+  <revision rev="181" vrev="3">
+    <srcmd5>9500510b45e26f4ba3c956adff26cbca</srcmd5>
+    <version>4.7.0</version>
+    <time>1312207546</time>
+    <user>saschpe</user>
+    <comment>- Add kdewidgets-in-designer.patch, fix KDE widgets not showing up
+  in Qt Designer, upstream r101804 
+
+- Add kdewidgets-in-designer.patch, fix KDE widgets not showing up
+  in Qt Designer, upstream r101804</comment>
+    <requestid>77416</requestid>
+  </revision>
+  <revision rev="182" vrev="4">
+    <srcmd5>00858d723b741b7ae1465d7ab92e8534</srcmd5>
+    <version>4.7.0</version>
+    <time>1312207558</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77416
+</comment>
+  </revision>
+  <revision rev="183" vrev="5">
+    <srcmd5>e52c31ff3a19c015f7d75c8f4f9216a3</srcmd5>
+    <version>4.7.0</version>
+    <time>1314103256</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>79388</requestid>
+  </revision>
+  <revision rev="184" vrev="6">
+    <srcmd5>bafb7c28fb1fb929d2296df2d8e3f714</srcmd5>
+    <version>4.7.0</version>
+    <time>1314103267</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79388
+</comment>
+  </revision>
+  <revision rev="185" vrev="7">
+    <srcmd5>0051aed3657d2b984b10d7b3c7f489c6</srcmd5>
+    <version>4.7.0</version>
+    <time>1314275486</time>
+    <user>saschpe</user>
+    <comment> - Refresh kdelibs-4.7-branch.patch
+   * Fix regression in KLockFile
+
+ - Added herqq-devel buildrequires (adds UPnP support)
+ - Added kde4_runtime_requires macros (fix for RPMLINT warning)
+ - Made building position-independent (fix for RPMLINT warning)
+ - Added doc macros
+ - Removed redundant buildrequires and requires
+ - Cleaned up spec file formatting
+
+- Add kdelibs-4.7-branch.patch
+  * Fix fd leaks in KIO
+  * Fix potential crash in KIO
+  * Always use platform palette and fonts
+  * Fix crash in QThreadPrivate::finish due to terminate() without 
+    wait().
+  * Properly handle empty HTTP auth challenges
+- Drop kdewidgets-in-designer.patch, already fixed in branch
+- Refreshed plasma-libs.diff
+
+- herqq is unacceptable as LGPLv3 (for now), so leave it for 
+  people building themselves
+
+ - Refresh kdelibs-4.7-branch.patch
+   * Fix regression in KLockFile
+
+ - Added herqq-devel buildrequires (adds UPnP support)
+ - Added kde4_runtime_requires macros (fix for RPMLINT warning)
+ - Made building position-independent (fix for RPMLINT warning)
+ - Added doc macros</comment>
+    <requestid>79746</requestid>
+  </revision>
+  <revision rev="186" vrev="8">
+    <srcmd5>06fcea46afc55431bc6cc47de1fb07b5</srcmd5>
+    <version>4.7.0</version>
+    <time>1314275497</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79746
+</comment>
+  </revision>
+  <revision rev="187" vrev="9">
+    <srcmd5>0649876f8b33d303a2673cd73dcd0342</srcmd5>
+    <version>4.7.0</version>
+    <time>1314603372</time>
+    <user>saschpe</user>
+    <comment> - Refresh kdelibs-4.7-branch.patch:
+   * Unbreak kickoff menu</comment>
+    <requestid>79871</requestid>
+  </revision>
+  <revision rev="188" vrev="10">
+    <srcmd5>c52afab092dc2226f989495fcbe10505</srcmd5>
+    <version>4.7.0</version>
+    <time>1314603381</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79871
+</comment>
+  </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>baaa1bbec745fe64edc3339f83f79200</srcmd5>
+    <version>4.7.1</version>
+    <time>1315410555</time>
+    <user>saschpe</user>
+    <comment>- update to 4.7.1
+  * Bugfixes over KDE 4.7.0
+  *  see http://kde.org/announcements/changelogs/changelog4_7_0to4_7_1.php for details
+
+- Refresh kdelibs-4.7-branch.patch:
+  * Fix a crash that occurs while rating in KNewStuff
+
+- Refresh kdelibs-4.7-branch.patch:
+   * Unbreak kickoff menu
+
+- herqq is unacceptable as LGPLv3 (for now), so leave it for 
+  people building themselves
+
+- update to 4.7.1
+  * Bugfixes over KDE 4.7.0
+  *  see http://kde.org/announcements/changelogs/changelog4_7_0to4_7_1.php for details
+
+- Refresh kdelibs-4.7-branch.patch:
+  * Fix a crash that occurs while rating in KNewStuff
+
+- Refresh kdelibs-4.7-branch.patch:</comment>
+    <requestid>81279</requestid>
+  </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>905ddc7ef4994b82dbf1dcf76c53a40c</srcmd5>
+    <version>4.7.2</version>
+    <time>1317911270</time>
+    <user>oertel</user>
+    <comment>forward to factory</comment>
+    <requestid>86785</requestid>
+  </revision>
+  <revision rev="191" vrev="2">
+    <srcmd5>5b312e2e1a317b07275aa63665b3d224</srcmd5>
+    <version>4.7.2</version>
+    <time>1317993701</time>
+    <user>lrupp</user>
+    <comment>- for 12.1 provide all files in branding-upstream, not just the
+  background</comment>
+    <requestid>87004</requestid>
+  </revision>
+  <revision rev="192" vrev="3">
+    <srcmd5>8692474cef58e692bd0c354c604ac342</srcmd5>
+    <version>4.7.2</version>
+    <time>1318515522</time>
+    <user>lrupp</user>
+    <comment>- fix first time login - patch pushed to 4.7 branch too</comment>
+    <requestid>87660</requestid>
+  </revision>
+  <revision rev="193" vrev="4">
+    <srcmd5>584aaebccbd1d4c34d2be5a398193426</srcmd5>
+    <version>4.7.2</version>
+    <time>1318940239</time>
+    <user>saschpe</user>
+    <comment>- make branding requires for old distros backwards - will hopefully
+  fade out as time goes by
+
+- Patch PulseAudio cmake module with same fix as phonon
+
+- make branding requires for old distros backwards - will hopefully
+  fade out as time goes by
+
+- Patch PulseAudio cmake module with same fix as phonon</comment>
+    <requestid>88186</requestid>
+  </revision>
+  <revision rev="194" vrev="6">
+    <srcmd5>584aaebccbd1d4c34d2be5a398193426</srcmd5>
+    <version>4.7.2</version>
+    <time>1319182035</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="195" vrev="7">
+    <srcmd5>d877dec2fa56894de66a970b9590b8aa</srcmd5>
+    <version>4.7.2</version>
+    <time>1319206736</time>
+    <user>coolo</user>
+    <comment>- Add 4.7 branch diff
+- Remove first time login fix patch, now upstream
+
+- Add 4.7 branch diff
+- Remove first time login fix patch, now upstream</comment>
+    <requestid>88835</requestid>
+  </revision>
+  <revision rev="196" vrev="8">
+    <srcmd5>fedb207d53b0d8e12e3e9a6da126caa2</srcmd5>
+    <version>4.7.2</version>
+    <time>1320487072</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>89970</requestid>
+  </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>4f76fc29255cc4f657b1482a7a20dc73</srcmd5>
+    <version>4.7.3</version>
+    <time>1321276142</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>91287</requestid>
+  </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>7cf4c456b56a4f48ffa6440d13e11955</srcmd5>
+    <version>4.7.4</version>
+    <time>1323343486</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>95799</requestid>
+  </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>f95ae81c0a58a4b4e8fe8bfc6864ef32</srcmd5>
+    <version>4.8.0</version>
+    <time>1327673952</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>101736</requestid>
+  </revision>
+  <revision rev="200" vrev="2">
+    <srcmd5>7d584e986d13b90c1b72c21ae5ffe992</srcmd5>
+    <version>4.8.0</version>
+    <time>1328001629</time>
+    <user>coolo</user>
+    <comment>Fixed aspell detection (forwarded request 102028 from TheBlackCat)</comment>
+    <requestid>102036</requestid>
+  </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>7b90a4d8e3b3f9974fb78f619e9e3ccb</srcmd5>
+    <version>4.8.1</version>
+    <time>1331634281</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>108984</requestid>
+  </revision>
+  <revision rev="202" vrev="2">
+    <srcmd5>beb25379b4394d7122328fee3a7d5595</srcmd5>
+    <version>4.8.1</version>
+    <time>1332148314</time>
+    <user>coolo</user>
+    <comment>applied fix for KDE Bug 295474 from https://bugs.kde.org/show_bug.cgi?id=295474#c27 (forwarded request 109265 from NicoK)</comment>
+    <requestid>109268</requestid>
+  </revision>
+  <revision rev="203" vrev="3">
+    <srcmd5>976ad8a7ed64512e9503703833d830b7</srcmd5>
+    <version>4.8.1</version>
+    <time>1332999797</time>
+    <user>coolo</user>
+    <comment>disable aspell, as explained on the mailinglist (http://lists.opensuse.org/opensuse-kde/2012-03/msg00124.html) (forwarded request 111071 from cornelisbb)</comment>
+    <requestid>111373</requestid>
+  </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>531f4c9fe5b4a749c5a4f21d97f122a1</srcmd5>
+    <version>4.8.2</version>
+    <time>1334215909</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>112632</requestid>
+  </revision>
+  <revision rev="205" vrev="2">
+    <srcmd5>c4d54bbfd68ab5a0853aaf9f54b0149e</srcmd5>
+    <version>4.8.2</version>
+    <time>1334692733</time>
+    <user>coolo</user>
+    <comment>- Make XF86Calculator key work (bnc#726550, kde#257900)
+
+- fix build on older distributions
+
+- Remove wrongly added %kde_runtime_requires macro
+
+- Make XF86Calculator key work (bnc#726550, kde#257900) (forwarded request 113931 from christiantrippe)</comment>
+    <requestid>114012</requestid>
+  </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>5449dbb69e28bcf3aba041063e60174e</srcmd5>
+    <version>4.8.3</version>
+    <time>1336653133</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>120586</requestid>
+  </revision>
+  <revision rev="207" vrev="2">
+    <srcmd5>f03457704c2f2ec4de321a8e02300584</srcmd5>
+    <version>4.8.3</version>
+    <time>1338030308</time>
+    <user>coolo</user>
+    <comment>- fix brandingversion
+
+- fix crash due to race in fstabstorageaccess constructor
+- cache fstabstorageaccess interface instance
+- solid udisks/upower backends:
+  * fix solid call to org.freedesktop.Properties.GetAll
+  * do not call Properties method on Root object
+
+- fix brandingversion</comment>
+    <requestid>122082</requestid>
+  </revision>
+  <revision rev="208" vrev="3">
+    <srcmd5>b8ab4c94d6543f112b82a2bdc4ef0aec</srcmd5>
+    <version>4.8.3</version>
+    <time>1338476749</time>
+    <user>coolo</user>
+    <comment>- Re-enable building with herqq/hupnp support.  The licensing issues have all been resolved (see bnc#710616)
+  This allows browsing of upnp servers in kio as well as upnp playback in amarok.</comment>
+    <requestid>122731</requestid>
+  </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>fb1d5ce34269cf6dab48b9dd63578225</srcmd5>
+    <version>4.8.4</version>
+    <time>1339530143</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>124586</requestid>
+  </revision>
+  <revision rev="210" vrev="3">
+    <srcmd5>fb1d5ce34269cf6dab48b9dd63578225</srcmd5>
+    <version>4.8.4</version>
+    <time>1340183511</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="211" vrev="4">
+    <srcmd5>860fc95b988bf284277c81d5ea0b9c01</srcmd5>
+    <version>4.8.4</version>
+    <time>1340890197</time>
+    <user>coolo</user>
+    <comment>- Add patches to fix Soprano crashes 
+
+- Add patches to fix Soprano crashes</comment>
+    <requestid>126148</requestid>
+  </revision>
+  <revision rev="212" vrev="5">
+    <srcmd5>0526979ed03c8020557dd271b22dff26</srcmd5>
+    <version>4.8.4</version>
+    <time>1342171883</time>
+    <user>namtrac</user>
+    <comment>apply to upstream patch for mount vfat filesystem with flush option, bnc#746394, kde#273792 (forwarded request 127746 from mlin7442)</comment>
+    <requestid>127748</requestid>
+  </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>0324d484890fa2962000ff13abd52bc3</srcmd5>
+    <version>4.8.5</version>
+    <time>1344457392</time>
+    <user>coolo</user>
+    <comment>- Remove herqq support as this causes frequent crashes (bnc#768368)
+
+- Remove herqq support as this causes frequent crashes (bnc#768368) (forwarded request 129360 from christiantrippe)</comment>
+    <requestid>129719</requestid>
+  </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>8c628b6a1552dc14eaa5659d4aa35518</srcmd5>
+    <version>4.9.1</version>
+    <time>1347342999</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>133033</requestid>
+  </revision>
+  <revision rev="215" vrev="2">
+    <srcmd5>8ba378c49d07135e64f01f4121e27573</srcmd5>
+    <version>4.9.1</version>
+    <time>1347356340</time>
+    <user>coolo</user>
+    <comment>- require the right shared-desktop-ontologies package</comment>
+    <requestid>133586</requestid>
+  </revision>
+  <revision rev="216" vrev="3">
+    <srcmd5>d69a191b90f54c4a05a70b25b7a069c3</srcmd5>
+    <version>4.9.1</version>
+    <time>1348148859</time>
+    <user>coolo</user>
+    <comment>- BuildRequires: krb5-devel to enable kerberos support (bnc#780300) (forwarded request 134214 from christiantrippe)</comment>
+    <requestid>135050</requestid>
+  </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>0f92ef6d9308594bfc68b5dae3ea51be</srcmd5>
+    <version>4.9.2</version>
+    <time>1349673080</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.9.2. Changelog is corrected.</comment>
+    <requestid>137062</requestid>
+  </revision>
+  <revision rev="218" vrev="2">
+    <srcmd5>1076506c4e0101d40281cc1694a95e71</srcmd5>
+    <version>4.9.2</version>
+    <time>1350589862</time>
+    <user>coolo</user>
+    <comment>- Add patch from upstream to enable correct Python 3 installation:
+  this is a prerequisite to provide PyKDE4 Python 3 packages.
+- Currently the patch is enabled just for Factory (openSUSE 12.3) (forwarded request 138040 from luca_b)</comment>
+    <requestid>138045</requestid>
+  </revision>
+  <revision rev="219" vrev="1">
+    <srcmd5>7c7493ab83303a1fa5d87afe7966c7e1</srcmd5>
+    <version>4.9.3</version>
+    <time>1352357004</time>
+    <user>coolo</user>
+    <comment>Update regarding KDE 4.9.3</comment>
+    <requestid>140372</requestid>
+  </revision>
+  <revision rev="220" vrev="2">
+    <srcmd5>57af09b1ea155543b5b7a05a728d7552</srcmd5>
+    <version>4.9.3</version>
+    <time>1353267005</time>
+    <user>namtrac</user>
+    <comment>- Explicitly require pkgconfig(bzip2) for 12.3
+- Recommend media-player-info for kde#269447, kde#269451 (forwarded request 141764 from sumski)</comment>
+    <requestid>141765</requestid>
+  </revision>
+  <revision rev="221" vrev="1">
+    <srcmd5>36245e2324ece7502066f902d3623777</srcmd5>
+    <version>4.9.90</version>
+    <time>1354886592</time>
+    <user>namtrac</user>
+    <comment>Update to KDE 4.10 Beta2</comment>
+    <requestid>144230</requestid>
+  </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>00c2b2673316e55e0333762894c3127f</srcmd5>
+    <version>4.9.95</version>
+    <time>1356077757</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.10 RC</comment>
+    <requestid>145962</requestid>
+  </revision>
+  <revision rev="223" vrev="2">
+    <srcmd5>04733cf730a6359d67de41cb701677c2</srcmd5>
+    <version>4.9.95</version>
+    <time>1356703360</time>
+    <user>namtrac</user>
+    <comment>Clean the BuildRequirements:
+* alsa-devel, cups-devel and unzip are not required
+* Minimal required versions are cmake &gt;= 2.8.9 and Qt &gt;= 4.8.0 (forwarded request 146486 from sumski)</comment>
+    <requestid>146498</requestid>
+  </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>5626ad899b8d1db7303276da86a9a570</srcmd5>
+    <version>4.9.97</version>
+    <time>1357552901</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.10 RC2</comment>
+    <requestid>146990</requestid>
+  </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>2b81cc8f474e4a4edc2367966d93c2bf</srcmd5>
+    <version>4.9.98</version>
+    <time>1358609870</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.10 RC3</comment>
+    <requestid>148985</requestid>
+  </revision>
+  <revision rev="226" vrev="2">
+    <srcmd5>85e8d69af112dfc47118edd8e48f76ef</srcmd5>
+    <version>4.9.98</version>
+    <time>1358865807</time>
+    <user>coolo</user>
+    <comment>- Added make-plasma-widgets-respect-plasma-button-colors.patch,
+  fixes kde#310389, kde#263979 
+
+- Added make-plasma-widgets-respect-plasma-button-colors.patch,
+  fixes kde#310389, kde#263979 (forwarded request 149469 from sumski)</comment>
+    <requestid>149480</requestid>
+  </revision>
+  <revision rev="227" vrev="4">
+    <srcmd5>85e8d69af112dfc47118edd8e48f76ef</srcmd5>
+    <version>4.9.98</version>
+    <time>1359109157</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="228" vrev="5">
+    <srcmd5>3219bede9c0f533cc37d6e34cfd15c15</srcmd5>
+    <version>4.9.98</version>
+    <time>1359708198</time>
+    <user>coolo</user>
+    <comment>- Add kio_revert_slow_filesystems.patch to work around bnc#776141.
+  This is a workaround, reverting to KDE 4.7.3 behavior.
+  A fix should come from upstream (kde#288824). (forwarded request 150412 from lnt-sysadmin)</comment>
+    <requestid>150578</requestid>
+  </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>5108a74640179b160ddd611ac582050e</srcmd5>
+    <version>4.10.0</version>
+    <time>1360006286</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.10.0 final</comment>
+    <requestid>150937</requestid>
+  </revision>
+  <revision rev="230" vrev="2">
+    <srcmd5>03e60883520f3baed241a980707c35b2</srcmd5>
+    <version>4.10.0</version>
+    <time>1360401151</time>
+    <user>coolo</user>
+    <comment>changed clever-menu.patch:
+  * added method KServiceGroup::addSortOrderEntry(), needed to fix bnc#356553 (forwarded request 154926 from wolfi323)</comment>
+    <requestid>154935</requestid>
+  </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>35bb5261b0ff5da78bdfeec6ee203894</srcmd5>
+    <version>4.10.1</version>
+    <time>1363340315</time>
+    <user>coolo</user>
+    <comment>fix build with giflib-5 (kdelibs-4.10.0-giflib5.patch) (forwarded request 159269 from seife)</comment>
+    <requestid>159280</requestid>
+  </revision>
+  <revision rev="232" vrev="2">
+    <srcmd5>7e1d7182b02985d121486a8071e22be5</srcmd5>
+    <version>4.10.1</version>
+    <time>1364651869</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160843</requestid>
+  </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>b8a7ee5b93db2e544a955531e3caee17</srcmd5>
+    <version>4.10.2</version>
+    <time>1366017317</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 163576 from m_meister)</comment>
+    <requestid>163595</requestid>
+  </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>7297abb58ad0280c12910fdf2d82bb90</srcmd5>
+    <version>4.10.3</version>
+    <time>1368715757</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.10.3</comment>
+    <requestid>175333</requestid>
+  </revision>
+  <revision rev="235" vrev="2">
+    <srcmd5>b7bb9bb00f35afa4cf089d78e56729b0</srcmd5>
+    <version>4.10.3</version>
+    <time>1370425987</time>
+    <user>coolo</user>
+    <comment>Added Fix-KWindowSystem-compositingChanged-signal.patch, fixes long standing bug of KWin clients (e.g. plasma) not detecting compositing state (kde#179042)</comment>
+    <requestid>176784</requestid>
+  </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>da98c12f4294bf2a22b53f64ac5497ca</srcmd5>
+    <version>4.10.4</version>
+    <time>1370923920</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>178117</requestid>
+  </revision>
+  <revision rev="237" vrev="1">
+    <srcmd5>6eba8c22088a372e149d00872c63ebd1</srcmd5>
+    <version>4.10.90</version>
+    <time>1373261676</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.10.90</comment>
+    <requestid>181963</requestid>
+  </revision>
+  <revision rev="238" vrev="1">
+    <srcmd5>6fca5639b11bcaf4bf2353ffaa7e3cab</srcmd5>
+    <version>4.10.95</version>
+    <time>1374506097</time>
+    <user>coolo</user>
+    <comment>Removal of the obsolete code to change the upstream KDE_VERSION_STRING</comment>
+    <requestid>183902</requestid>
+  </revision>
+  <revision rev="239" vrev="1">
+    <srcmd5>1227f813532d11f1328bcb091b4fed6e</srcmd5>
+    <version>4.10.97</version>
+    <time>1375192754</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE (RC2) 4.10.97</comment>
+    <requestid>184615</requestid>
+  </revision>
+  <revision rev="240" vrev="1">
+    <srcmd5>a9cd095bbcd2b1ba76eda971fbaf8def</srcmd5>
+    <version>4.11.0</version>
+    <time>1376653666</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to KDE 4.11 Final</comment>
+    <requestid>187259</requestid>
+  </revision>
+  <revision rev="241" vrev="2">
+    <srcmd5>8f258c062e9627812c8dda4387e0886b</srcmd5>
+    <version>4.11.0</version>
+    <time>1376857280</time>
+    <user>scarabeus_factory</user>
+    <comment>Added two upstream fixes</comment>
+    <requestid>195518</requestid>
+  </revision>
+  <revision rev="242" vrev="3">
+    <srcmd5>bc8cb61427cea8999ef6e8e519e90765</srcmd5>
+    <version>4.11.0</version>
+    <time>1377855574</time>
+    <user>coolo</user>
+    <comment>Added upstream patch for kde#321706</comment>
+    <requestid>196437</requestid>
+  </revision>
+  <revision rev="243" vrev="1">
+    <srcmd5>c3078ed177c83a8fdc09edeb1b46d9cc</srcmd5>
+    <version>4.11.1</version>
+    <time>1378717576</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.11.1 Final</comment>
+    <requestid>197626</requestid>
+  </revision>
+  <revision rev="244" vrev="3">
+    <srcmd5>c3078ed177c83a8fdc09edeb1b46d9cc</srcmd5>
+    <version>4.11.1</version>
+    <time>1379662766</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="245" vrev="1">
+    <srcmd5>f9d9911df7a0cd14f9c7902d7b9976d4</srcmd5>
+    <version>4.11.2</version>
+    <time>1380808445</time>
+    <user>scarabeus_factory</user>
+    <comment>Update KDE to KDE 4.11.2 Final</comment>
+    <requestid>201672</requestid>
+  </revision>
+  <revision rev="246" vrev="2">
+    <srcmd5>49d5788fe5f6484039e3c2db242d90c7</srcmd5>
+    <version>4.11.2</version>
+    <time>1382173867</time>
+    <user>scarabeus_factory</user>
+    <comment>Added 0001-Fix-association-with-derived-mimetype-again.patch, fixes remaining issues in mimetype handling, see e.g. kde#32450.
+
+This issue is specially annoying and visible to openSUSE users, since we have ksuseinstall dialog when issue is triggered, please checkin to 13.1</comment>
+    <requestid>203779</requestid>
+  </revision>
+  <revision rev="247" vrev="3">
+    <srcmd5>6069072f4bdba74af18620a30a39e856</srcmd5>
+    <version>4.11.2</version>
+    <time>1382429885</time>
+    <user>scarabeus_factory</user>
+    <comment>- Added 0001-Improve-fix-for-association-with-derived-mimetypes.patch, improves the last fix for mimetype handling (kde#321706)
+
+The last fix apparently introduced new problems with okular which are fixed by this, see https://forums.opensuse.org/english/get-technical-help-here/applications/491364-okular-pdf-backend-gone-3.html and http://forum.kde.org/viewtopic.php?f=251&amp;t=118023
+
+Please copy to 13.1 as well. (forwarded request 204229 from wolfi323)</comment>
+    <requestid>204231</requestid>
+  </revision>
+  <revision rev="248" vrev="1">
+    <srcmd5>dc21ae9e6a01f22f4eb02c8cf23f9645</srcmd5>
+    <version>4.11.90</version>
+    <time>1385983858</time>
+    <user>coolo</user>
+    <comment>Update to 4.12 Beta 2</comment>
+    <requestid>207144</requestid>
+  </revision>
+  <revision rev="249" vrev="1">
+    <srcmd5>e4cf94c4557004f1a50b172b2bb3df06</srcmd5>
+    <version>4.11.97</version>
+    <time>1386768748</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.11.97</comment>
+    <requestid>210140</requestid>
+  </revision>
+  <revision rev="250" vrev="1">
+    <srcmd5>8002fb801d556f9d7f62d1c3631b537c</srcmd5>
+    <version>4.12.0</version>
+    <time>1387455297</time>
+    <user>coolo</user>
+    <comment>KDE 4.12 Release</comment>
+    <requestid>211479</requestid>
+  </revision>
+  <revision rev="251" vrev="2">
+    <srcmd5>bc26e6076d5f42aca5fa8f565e291c8e</srcmd5>
+    <version>4.12.0</version>
+    <time>1389291550</time>
+    <user>coolo</user>
+    <comment>- Remove gamin-devel dependency, KDirWatch can use in-kernel inotify
+  functionality instead. (forwarded request 213308 from namtrac)</comment>
+    <requestid>213310</requestid>
+  </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>9aa7137d814d0f273cc3de27bbbf1809</srcmd5>
+    <version>4.12.1</version>
+    <time>1390411192</time>
+    <user>coolo</user>
+    <comment>Added 0001-Fix-display-of-interlaced-GIF-images-with-giflib-v5.patch:
+  With giflib v5 GIF images don't need to be deinterlaced manually,
+  fixes display of interlaced GIF images in KHTML on 13.1 (kde#330148)
+ (forwarded request 214609 from wolfi323)</comment>
+    <requestid>214683</requestid>
+  </revision>
+  <revision rev="253" vrev="1">
+    <srcmd5>d585fc62e86d0c1335b36bb7d6e14ca7</srcmd5>
+    <version>4.12.2</version>
+    <time>1392879468</time>
+    <user>coolo</user>
+    <comment>Well, then an updated changelog file</comment>
+    <requestid>223022</requestid>
+  </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>f3c5c327290570dd005574fd91136a8a</srcmd5>
+    <version>4.12.90</version>
+    <time>1395154908</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.13 Beta 2</comment>
+    <requestid>226096</requestid>
+  </revision>
+  <revision rev="255" vrev="1">
+    <srcmd5>f436a9202463433646d312b94a6de127</srcmd5>
+    <version>4.12.97</version>
+    <time>1396158652</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.13 RC</comment>
+    <requestid>227858</requestid>
+  </revision>
+  <revision rev="256" vrev="1">
+    <srcmd5>f038ed0ccad40c82cec1662d21023298</srcmd5>
+    <version>4.13.0</version>
+    <time>1397813735</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to KDE 4.13 final</comment>
+    <requestid>230517</requestid>
+  </revision>
+  <revision rev="257" vrev="2">
+    <srcmd5>7f882e9c9ae64f975cb6fc31f049095e</srcmd5>
+    <version>4.13.0</version>
+    <time>1399377434</time>
+    <user>coolo</user>
+    <comment>Cut down Requires of devel subpackage, as those libraries are used privately: OpenEXR-devel, avahi-compat-mDNSResponder-devel, enchant-devel, giflib-devel, libacl-devel, libattica-devel, libbz2-devel, libidn-devel, libpolkit-qt-1-devel, libxslt-devel, pcre-devel and pkgconfig(libxml-2.0)
+
+This on average reduces number of installed packages that need libkde4-devel as BuildRequires by 40 (there are ~170 SC packages ;-) so single KDF rebuild would now install ~6800 packages less.
+
+I've rebuilt all packages, and inspected the logs - and adjusted few of those that relied on libkde4-devel pullin their required dependencies. Sr's will follow. (forwarded request 232564 from sumski)</comment>
+    <requestid>232636</requestid>
+  </revision>
+  <revision rev="258" vrev="1">
+    <srcmd5>e358ff4be56a8138590eb9e1bdb4fcec</srcmd5>
+    <version>4.13.1</version>
+    <time>1400734144</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.13.1</comment>
+    <requestid>233933</requestid>
+  </revision>
+  <revision rev="259" vrev="1">
+    <srcmd5>807038138404df01a0ef47049476b6f7</srcmd5>
+    <version>4.13.2</version>
+    <time>1403176494</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.13.2. Resolves wrong changelog</comment>
+    <requestid>237640</requestid>
+  </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>d45950af31375af1e209fa14e95556ec</srcmd5>
+    <version>4.13.80</version>
+    <time>1405520368</time>
+    <user>coolo</user>
+    <comment>Update to 4.13.80</comment>
+    <requestid>240734</requestid>
+  </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>a74d6ef2737e474ecdf5dc220a248dbb</srcmd5>
+    <version>4.14.0</version>
+    <time>1408957083</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.14.0 Final</comment>
+    <requestid>245304</requestid>
+  </revision>
+  <revision rev="262" vrev="3">
+    <srcmd5>a74d6ef2737e474ecdf5dc220a248dbb</srcmd5>
+    <version>4.14.0</version>
+    <time>1409301337</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="263" vrev="1">
+    <srcmd5>a6528c7f9a81fd0f222edce4260eada8</srcmd5>
+    <version>4.14.1</version>
+    <time>1411019824</time>
+    <user>coolo</user>
+    <comment>Update to KDE SC 4.14.1 Bugfix release</comment>
+    <requestid>249676</requestid>
+  </revision>
+  <revision rev="264" vrev="1">
+    <srcmd5>a56c7f170a0a40204195c6902f7308dc</srcmd5>
+    <version>4.14.2</version>
+    <time>1413475875</time>
+    <user>coolo</user>
+    <comment>Update to KDE SC 4.14.1 Bugfix release</comment>
+    <requestid>256355</requestid>
+  </revision>
+  <revision rev="265" vrev="1">
+    <srcmd5>ee8ed2453b86d3d2b26a2ba8fcf174c7</srcmd5>
+    <version>4.14.3</version>
+    <time>1416425078</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262234</requestid>
+  </revision>
+  <revision rev="266" vrev="1">
+    <srcmd5>f59f05994fdd6792cfa9eb45da0723a0</srcmd5>
+    <version>4.14.4</version>
+    <time>1421874487</time>
+    <user>coolo</user>
+    <comment>Update to KDE Apps 14.12.1</comment>
+    <requestid>281099</requestid>
+  </revision>
+  <revision rev="267" vrev="1">
+    <srcmd5>df2abb6a1ba84c9955148a17dab525ae</srcmd5>
+    <version>4.14.5</version>
+    <time>1423668739</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Apps 14.12.2. Bugfix release</comment>
+    <requestid>284274</requestid>
+  </revision>
+  <revision rev="268" vrev="1">
+    <srcmd5>b39a38b8919e737ec0965c9927bb2e35</srcmd5>
+    <version>4.14.6</version>
+    <time>1426063370</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 14.12.3</comment>
+    <requestid>289380</requestid>
+  </revision>
+  <revision rev="269" vrev="1">
+    <srcmd5>b83be279ba86e5ee7cfd3b428afd293a</srcmd5>
+    <version>4.14.7</version>
+    <time>1430580353</time>
+    <user>dimstar_suse</user>
+    <comment>LTS update of kdelibs4.  This is independent of the Plasma5 stuff and could go directly into Factory/tumbleweed</comment>
+    <requestid>304703</requestid>
+  </revision>
+  <revision rev="270" vrev="1">
+    <srcmd5>2c1547c3abd1486e0a191d448c554cb3</srcmd5>
+    <version>4.14.8</version>
+    <time>1431673391</time>
+    <user>coolo</user>
+    <comment>LT support updates based on KDE Apps 15.04.1</comment>
+    <requestid>306696</requestid>
+  </revision>
+  <revision rev="271" vrev="1">
+    <srcmd5>5a89ed89d938a3d2792654ff7ab30531</srcmd5>
+    <version>4.14.9</version>
+    <time>1433404206</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 15.04.2</comment>
+    <requestid>309891</requestid>
+  </revision>
+  <revision rev="272" vrev="1">
+    <srcmd5>120f4658312b92e84c3fa68dcdd5dabb</srcmd5>
+    <version>4.14.10</version>
+    <time>1436888556</time>
+    <user>coolo</user>
+    <comment>LTS update </comment>
+    <requestid>316354</requestid>
+  </revision>
+  <revision rev="273" vrev="1">
+    <srcmd5>7679a47b392c7d4f41353b54464caf8b</srcmd5>
+    <version>4.14.12</version>
+    <time>1443896932</time>
+    <user>coolo</user>
+    <comment>Update to 4.14.12 as part of KDE Applications 15.08.1</comment>
+    <requestid>332571</requestid>
+  </revision>
+  <revision rev="274" vrev="2">
+    <srcmd5>855ced04091656ac3bbf5612ff2fb52c</srcmd5>
+    <version>4.14.12</version>
+    <time>1444636865</time>
+    <user>coolo</user>
+    <comment>- Update sync-with-upstream-FindGettext.patch to remain compatible
+  with all users of kdelibs' module
+
+- Added patches to fix build for users of KDE4Macros and FindGettext
+  kdelibs' (&gt; 4.14.11, where CMP0002 is set to NEW) modules:
+  sync-with-upstream-FindGettext.patch
+  Give-unique-names-to-the-targets-created-by-KDE4Macros.cmake.patch
+
+- Update sync-with-upstream-FindGettext.patch to remain compatible
+  with all users of kdelibs' module
+
+- Added patches to fix build for users of KDE4Macros and FindGettext
+  kdelibs' (&gt; 4.14.11, where CMP0002 is set to NEW) modules:
+  sync-with-upstream-FindGettext.patch
+  Give-unique-names-to-the-targets-created-by-KDE4Macros.cmake.patch</comment>
+    <requestid>337488</requestid>
+  </revision>
+  <revision rev="275" vrev="1">
+    <srcmd5>b6ad1087222ceffb92490e1cb33b5938</srcmd5>
+    <version>4.14.14</version>
+    <time>1448400090</time>
+    <user>coolo</user>
+    <comment>Part of the LTS update together with KDE Apps 15.08.3</comment>
+    <requestid>343853</requestid>
+  </revision>
+  <revision rev="276" vrev="2">
+    <srcmd5>3bc3ea5da354df06cdf55a1b51000670</srcmd5>
+    <version>4.14.14</version>
+    <time>1450363987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348087</requestid>
+  </revision>
+  <revision rev="277" vrev="1">
+    <srcmd5>4f1f15507aa920d042f732dfc1e991d6</srcmd5>
+    <version>4.14.15</version>
+    <time>1452377404</time>
+    <user>dimstar_suse</user>
+    <comment>Update to kdelibs4 4.14.15. Comes with a patch to prevent kopete from crashing</comment>
+    <requestid>352458</requestid>
+  </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>60eb935a0577081816119a11951d3c00</srcmd5>
+    <version>4.14.16</version>
+    <time>1453507841</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Apps 15.12.1</comment>
+    <requestid>354358</requestid>
+  </revision>
+  <revision rev="279" vrev="1">
+    <srcmd5>fe947a44a7dac3f94d3751bb5c7a0124</srcmd5>
+    <version>4.14.17</version>
+    <time>1456132551</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Apps 15.12.2</comment>
+    <requestid>359720</requestid>
+  </revision>
+  <revision rev="280" vrev="1">
+    <srcmd5>2b2f1018cbc7fe468267015dc8dc01df</srcmd5>
+    <version>4.14.18</version>
+    <time>1459001685</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 15.12.3</comment>
+    <requestid>377868</requestid>
+  </revision>
+  <revision rev="281" vrev="1">
+    <srcmd5>3eaaa0f0eb2df4d11e198eec870a75a1</srcmd5>
+    <version>4.14.19</version>
+    <time>1464690178</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397933</requestid>
+  </revision>
+  <revision rev="282" vrev="1">
+    <srcmd5>11e371e06e3f98dfa01eb13b1dc2e0f0</srcmd5>
+    <version>4.14.21</version>
+    <time>1466413564</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402556</requestid>
+  </revision>
+  <revision rev="283" vrev="1">
+    <srcmd5>b546e9c44c96c8374db91f6914b45ebb</srcmd5>
+    <version>4.14.22</version>
+    <time>1469079728</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 16.04.3</comment>
+    <requestid>407965</requestid>
+  </revision>
+  <revision rev="284" vrev="1">
+    <srcmd5>03b9b89316b13d0e0ae18d6b9049d1e7</srcmd5>
+    <version>4.14.23</version>
+    <time>1472474024</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 16.08.0</comment>
+    <requestid>420104</requestid>
+  </revision>
+  <revision rev="285" vrev="1">
+    <srcmd5>b403f68a659a2b2c3308899680de6520</srcmd5>
+    <version>4.14.24</version>
+    <time>1473886983</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 16.08.1</comment>
+    <requestid>426358</requestid>
+  </revision>
+  <revision rev="286" vrev="1">
+    <srcmd5>72ab9970bbd2d7b0d0a841a69f185a8d</srcmd5>
+    <version>4.14.25</version>
+    <time>1476778363</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.08.2</comment>
+    <requestid>434820</requestid>
+  </revision>
+  <revision rev="287" vrev="1">
+    <srcmd5>673ba592880758869cd915c61ac94bd3</srcmd5>
+    <version>4.14.26</version>
+    <time>1478953859</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.08.3</comment>
+    <requestid>439648</requestid>
+  </revision>
+  <revision rev="288" vrev="1">
+    <srcmd5>9331af0bd8a329372a5ae93d3fe02a8b</srcmd5>
+    <version>4.14.27</version>
+    <time>1481968943</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applicatons 16.12.0</comment>
+    <requestid>446197</requestid>
+  </revision>
+  <revision rev="289" vrev="1">
+    <srcmd5>ee58ab7599458eb745dd690f398f7c34</srcmd5>
+    <version>4.14.28</version>
+    <time>1485382483</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.12.1</comment>
+    <requestid>450896</requestid>
+  </revision>
+  <revision rev="290" vrev="1">
+    <srcmd5>23523f93fb23b392bad20b19e0520934</srcmd5>
+    <version>4.14.29</version>
+    <time>1486968309</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.12.2</comment>
+    <requestid>456347</requestid>
+  </revision>
+  <revision rev="291" vrev="2">
+    <srcmd5>b090a72e67be293d76935cc38fdc4e7f</srcmd5>
+    <version>4.14.29</version>
+    <time>1488733013</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch to fix kio security issue (boo#1027520)
+  * kio-sanitize-url-for-proxy.patch</comment>
+    <requestid>461717</requestid>
+  </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>d45c3b71aa8f3ef4b1b0baf19505348f</srcmd5>
+    <version>4.14.30</version>
+    <time>1489536127</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.12.3</comment>
+    <requestid>478311</requestid>
+  </revision>
+  <revision rev="293" vrev="1">
+    <srcmd5>495e192c427db2f696b541a9aa240945</srcmd5>
+    <version>4.14.31</version>
+    <time>1494262849</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.04.0 final</comment>
+    <requestid>490553</requestid>
+  </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>908663df825261f91c927ed0191502e5</srcmd5>
+    <version>4.14.32</version>
+    <time>1495442747</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.04.1</comment>
+    <requestid>496084</requestid>
+  </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>17b3f57ed9d12937a52017abdcbccc81</srcmd5>
+    <version>4.14.33</version>
+    <time>1497273487</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.04.2</comment>
+    <requestid>501991</requestid>
+  </revision>
+  <revision rev="296" vrev="1">
+    <srcmd5>6196955659e75fb841f3dfd2e5d8fef2</srcmd5>
+    <version>4.14.34</version>
+    <time>1500975327</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.04.3</comment>
+    <requestid>510905</requestid>
+  </revision>
+  <revision rev="297" vrev="1">
+    <srcmd5>9d9e23c9534a541fd9606dc84dab33a9</srcmd5>
+    <version>4.14.35</version>
+    <time>1503589824</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 17.08.0</comment>
+    <requestid>516497</requestid>
+  </revision>
+  <revision rev="298" vrev="1">
+    <srcmd5>59e664de4dc83af6676be75c1abadd6d</srcmd5>
+    <version>4.14.37</version>
+    <time>1508768970</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.08.2</comment>
+    <requestid>534694</requestid>
+  </revision>
+  <revision rev="299" vrev="1">
+    <srcmd5>db3b441bd1a01baa9fdb7a519f45a600</srcmd5>
+    <version>4.14.38</version>
+    <time>1510839285</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.08.3</comment>
+    <requestid>541004</requestid>
+  </revision>
+  <revision rev="300" vrev="2">
+    <srcmd5>199aadf1a4d17a1202c5de255d8716d0</srcmd5>
+    <version>4.14.38</version>
+    <time>1512433534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547667</requestid>
+  </revision>
+  <revision rev="301" vrev="3">
+    <srcmd5>f8ba186055cbb4bbe0fbb906bcdb2744</srcmd5>
+    <version>4.14.38</version>
+    <time>1513014901</time>
+    <user>dimstar_suse</user>
+    <comment>Escape the usage of %{VERSION} when calling out to rpm.
+</comment>
+    <requestid>555667</requestid>
+  </revision>
+  <revision rev="302" vrev="4">
+    <srcmd5>63e7f3451d3616a1ac1042b24caaa8c0</srcmd5>
+    <version>4.14.38</version>
+    <time>1513453514</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Make-kssl-compile-against-OpenSSL-1.1.0.patch (backported
+  from KF5's kdelibs4support) to allow building with openSSL 1.1.0
+
+Fixes build with the latest libqt4 in KDE:Qt (which now uses openSSL 1.1.0 on TW), still builds fine with openSSL 1.0.0 too. (forwarded request 556621 from wolfi323)</comment>
+    <requestid>556624</requestid>
+  </revision>
+  <revision rev="303" vrev="5">
+    <srcmd5>092813fe8c7c18bbe7287921a586fcb1</srcmd5>
+    <version>4.14.38</version>
+    <time>1513851865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557833</requestid>
+  </revision>
+  <revision rev="304" vrev="6">
+    <srcmd5>ae83b8ad15703e72f3d3684f17f7a20a</srcmd5>
+    <version>4.14.38</version>
+    <time>1538672398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639466</requestid>
+  </revision>
+  <revision rev="305" vrev="7">
+    <srcmd5>931fb3aa3353358e455a8dfa0c98cc5f</srcmd5>
+    <version>4.14.38</version>
+    <time>1549916302</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove requirements on upower: it is long deprecated and there
+  is no longer a Qt4 based desktop to use it (boo#1124573)</comment>
+    <requestid>672505</requestid>
+  </revision>
+  <revision rev="306" vrev="8">
+    <srcmd5>7b73a84805a6d2d04087d41260f391e5</srcmd5>
+    <version>4.14.38</version>
+    <time>1565096897</time>
+    <user>dimstar_suse</user>
+    <comment>- New _constraints for ppc64/ppc64le avoid &quot;No space left on device&quot;
+- Disable LTO for ppc64 (BE) bypass collect2 error (boo#1143249) (forwarded request 719584 from michel_mno)</comment>
+    <requestid>719589</requestid>
+  </revision>
+  <revision rev="307" vrev="9">
+    <srcmd5>614abc9494efa758eefc77e105cb1bb2</srcmd5>
+    <version>4.14.38</version>
+    <time>1565362274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721478</requestid>
+  </revision>
+</revisionlist>

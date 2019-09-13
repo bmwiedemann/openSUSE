@@ -1,0 +1,277 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>084f263ec52534645263f9981e7f12df</srcmd5>
+    <version>3.0.0</version>
+    <time>1296695245</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59510 from user saschpe
+</comment>
+    <requestid>59510</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>adb42af5ae5a918203fde94c6b2a0cc0</srcmd5>
+    <version>3.0.0</version>
+    <time>1296695251</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59510
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>adb42af5ae5a918203fde94c6b2a0cc0</srcmd5>
+    <version>3.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>0d821d57e325d8da6efadb938c8c52ae</srcmd5>
+    <version>3.0.0</version>
+    <time>1317740742</time>
+    <user>oertel</user>
+    <comment>- Set license to GPL-2.0+ (SPDX style)
+- The scripts sub-package now requires php5
+- PHP scripts now again point to &quot;/usr/bin/php&quot; as the php5 package doesn't
+  provide a 'php5' binary anymore</comment>
+    <requestid>85453</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>0d821d57e325d8da6efadb938c8c52ae</srcmd5>
+    <version>3.0.0</version>
+    <time>1319182643</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>360d9f3c2a0ca947792e1c973282e91b</srcmd5>
+    <version>3.0.0</version>
+    <time>1323195656</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e97f8c1e09dceaac42e30dd256c31aca</srcmd5>
+    <version>3.3.2</version>
+    <time>1326141871</time>
+    <user>coolo</user>
+    <comment>- update to 3.3.2:
+  upstream does not provide any changelog</comment>
+    <requestid>99410</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6d8931b2d44c752277df327e03bec52d</srcmd5>
+    <version>3.3.2</version>
+    <time>1331232385</time>
+    <user>coolo</user>
+    <comment>- fix wrong libdir for ppc64. 
+Please forward to Factory (forwarded request 108366 from k0da)</comment>
+    <requestid>108367</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d22a257ebbc345d8d3b5675f21e4c077</srcmd5>
+    <version>4.1.0</version>
+    <time>1339352456</time>
+    <user>coolo</user>
+    <comment>- Update to 4.1.0, no changelog from upstream provided. (forwarded request 124070 from Fisiu)</comment>
+    <requestid>124099</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d22a257ebbc345d8d3b5675f21e4c077</srcmd5>
+    <version>4.1.0</version>
+    <time>1340184416</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>5440d4a4f651fadbeb356264276ad05c</srcmd5>
+    <version>4.1.0</version>
+    <time>1341561231</time>
+    <user>coolo</user>
+    <comment>- add ppc64 to the known platforms (forwarded request 127044 from k0da)</comment>
+    <requestid>127097</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>5440d4a4f651fadbeb356264276ad05c</srcmd5>
+    <version>4.1.0</version>
+    <time>1359110770</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>59dca0fe18e180de3f158ecf9f898c80</srcmd5>
+    <version>4.1.0</version>
+    <time>1363861170</time>
+    <user>coolo</user>
+    <comment>From the yo-dawg-i-heard-you-like-cflags-so-i-put-a-cflags-inside-your-cflags department
+
+- dont-mess-with-cflags.patch: don't mess with CFLAGS
+
+- Add aarch64 to the list of lib64 platforms</comment>
+    <requestid>160288</requestid>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>dcc310cf6f76560df852b8f44d4c33e0</srcmd5>
+    <version>4.1.0</version>
+    <time>1366788146</time>
+    <user>coolo</user>
+    <comment>- Add yate-fix-ssl-detection.patch: Fix openssl detection: checkin
+  for the return value of pkg-config --cflags $pkg, and relying on
+  pkg-config returning an empty string 'when package exists but
+  does not specify CFLAGS' is just wrong. (forwarded request 172948 from dimstar)</comment>
+    <requestid>173022</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0f3e7668d031838c19349c24b1332c6e</srcmd5>
+    <version>4.3.0</version>
+    <time>1376857562</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 4.3.0:
+  * Various changes to improve Jingle and Google Voice support
+  * Javascript is now usable in routing scripts 
+  * SIGTRAN links failures fixed by always setting the SCTP socket
+    timers 
+  * Flood protection in the SIP channel 
+  * iLBC codes based on fixed point WebRTC library 
+  * Added XML support in Javascript
+  * SCCP - GTT routing between different networks
+  * Stability improvements (forwarded request 195452 from duwe)</comment>
+    <requestid>195472</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0f3e7668d031838c19349c24b1332c6e</srcmd5>
+    <version>4.3.0</version>
+    <time>1379665182</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>d0cdc5f0bf68666ba5c39832713db02f</srcmd5>
+    <version>4.3.0</version>
+    <time>1387833733</time>
+    <user>coolo</user>
+    <comment>- yate-3.3.2-ppc64-libdir.patch: Add ppc64le.
+- yate-ppc64.patch: Fix ppc64 and add ppc64le support. (forwarded request 210904 from uweigand)</comment>
+    <requestid>212027</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>db2652692252b5baad7a99f2e2e8d804</srcmd5>
+    <version>5.3.0</version>
+    <time>1401644435</time>
+    <user>coolo</user>
+    <comment>- Fix source url
+
+- update to 5.3.0:
+  - removed patch: yate-fix-ssl-detection.patch (fixed upstream)
+  - upstream does not provide changelog</comment>
+    <requestid>235646</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f3884f6d4409c38119cfca96a49f6b38</srcmd5>
+    <version>5.4.0</version>
+    <time>1407942492</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244280</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>f3884f6d4409c38119cfca96a49f6b38</srcmd5>
+    <version>5.4.0</version>
+    <time>1409303866</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>302c5f869b1f6b8628541f33881b5fcc</srcmd5>
+    <version>5.4.0</version>
+    <time>1418737679</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264760</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6046e3aca85359e49498b54332823f04</srcmd5>
+    <version>5.4.2</version>
+    <time>1428391793</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294633</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4100567dde6119fa9bf0d09860557d90</srcmd5>
+    <version>5.5.0</version>
+    <time>1445287775</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337821</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b7ffe06c4aac5e48e9350ebc47f8d204</srcmd5>
+    <version>5.5.0</version>
+    <time>1462697129</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393497</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>197cd24dbdda730050e87030bf30520f</srcmd5>
+    <version>5.5.0</version>
+    <time>1472111777</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>420800</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>ef8cd3393c52ef09871e4b17c0ded587</srcmd5>
+    <version>5.5.0</version>
+    <time>1491469319</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482833</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>e6789df0ee1524856045d1e7a0379d8f</srcmd5>
+    <version>5.5.0</version>
+    <time>1506594912</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dropped php5 from Requires in scripts subpkg</comment>
+    <requestid>528983</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>3fed8306e4e57447285e0d591b13d8a6</srcmd5>
+    <version>5.5.0</version>
+    <time>1513583845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556059</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ea1eae745fbe3299eccf18ac7a6f0f02</srcmd5>
+    <version>6.0.0</version>
+    <time>1515623678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562522</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>3ac9ea12fed0805c3e063631fb27f3a6</srcmd5>
+    <version>6.0.0</version>
+    <time>1519747220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580570</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>67bad707788b6d08cecc2b39120e47ea</srcmd5>
+    <version>6.1.0</version>
+    <time>1530866945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621154</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>dacae8439bb867a910a3991ed47999a0</srcmd5>
+    <version>6.1.0</version>
+    <time>1559029385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705654</requestid>
+  </revision>
+</revisionlist>

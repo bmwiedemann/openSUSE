@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90682b90d9fbc4a68fb04eddba5fcfe9</srcmd5>
+    <version>0.6.5.1</version>
+    <time>1490317438</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>422969</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7894c9e3d565ea3157ea1cec5ecd6614</srcmd5>
+    <version>0.6.5.1</version>
+    <time>1505502246</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with spec cleaner</comment>
+    <requestid>523883</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd03c54d83f5f2442c549e6fef07f098</srcmd5>
+    <version>0.6.6.0</version>
+    <time>1527675725</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-SDL to version 0.6.6.0.</comment>
+    <requestid>610026</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e44a281fb310255a72e4d27b1370807e</srcmd5>
+    <version>0.6.7.0</version>
+    <time>1532445143</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update SDL to version 0.6.7.0.
+  Upstream has not updated the file &quot;changes.txt&quot; since the last
+  release.
+
+- Update spec file.</comment>
+    <requestid>623702</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f40654e4f3a108d803c434eebf61980b</srcmd5>
+    <version>0.6.7.0</version>
+    <time>1540448521</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643338</requestid>
+  </revision>
+</revisionlist>

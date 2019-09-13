@@ -1,0 +1,9 @@
+<package name="allegro" project="openSUSE:Factory">
+  <title>Cross-platform library for games and multimedia programming</title>
+  <description>Allegro is a cross-platform library intended for use in computer games
+and other types of multimedia programming.
+
+A wide range of extension packages and add-on modules are also available, which
+can be found in the &quot;Library Extensions&quot; section of the Allegro website.</description>
+  <devel project="games" package="allegro"/>
+</package>

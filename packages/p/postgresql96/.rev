@@ -1,0 +1,228 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9e945e722bd927d3a69afd251f02354</srcmd5>
+    <version>9.6.1</version>
+    <time>1482418573</time>
+    <user>lnussel_factory</user>
+    <comment>New package, the latest stable version of PostgreSQL.</comment>
+    <requestid>444945</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9c06c52258c70a20033e828857fb4c4b</srcmd5>
+    <version>9.6.2</version>
+    <time>1487259889</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456848</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5ab0a8671060a7fa7d08610a78ce25b2</srcmd5>
+    <version>9.6.2</version>
+    <time>1490132577</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479731</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a8a180928668e5b9da7a4685abbc2db</srcmd5>
+    <version>9.6.3</version>
+    <time>1495267899</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496337</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>17716ec280644db17ef8b52a90c54113</srcmd5>
+    <version>9.6.4</version>
+    <time>1503481921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.6.4:
+  * https://www.postgresql.org/docs/9.6/static/release-9-6-4.html
+  * CVE-2017-7547, bsc#1051685: Further restrict visibility of
+    pg_user_mappings.umoptions, to protect passwords stored as
+    user mapping options.
+  * CVE-2017-7546, bsc#1051684: Disallow empty passwords in all
+    password-based authentication methods.
+  * CVE-2017-7548, bsc#1053259: lo_put() function ignores ACLs.
+
+- fix building on sle11 by using krb5-devel again
+
+- use multibuild</comment>
+    <requestid>516109</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>28ab126b98c80248c433b3a410739e1a</srcmd5>
+    <version>9.6.5</version>
+    <time>1511688811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545174</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9d7a3e9766da0d4ec5290b191398196a</srcmd5>
+    <version>9.6.6</version>
+    <time>1513109902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.6.6:
+  * https://www.postgresql.org/docs/9.6/static/release-9-6-6.html
+  * Security Issues
+    - CVE-2017-15098, bsc#1067844:
+      Memory disclosure in JSON functions
+    - CVE-2017-15099, bsc#1067841: INSERT ... ON CONFLICT DO UPDATE
+      fails to enforce SELECT privileges
+      Prior to this release, the &quot;INSERT ... ON CONFLICT DO UPDATE&quot;
+      would not check to see if the executing user had permission
+      to perform a &quot;SELECT&quot; on the index performing the conflicting
+      check. Additionally, in a table with row-level security
+      enabled, the &quot;INSERT ... ON CONFLICT DO UPDATE&quot; would not
+      check the SELECT policies for that table before performing
+      the update.
+      This fix ensures that &quot;INSERT ... ON CONFLICT DO UPDATE&quot;
+      checks against table permissions and RLS policies before
+      executing.</comment>
+    <requestid>554740</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>90b724cfc8300ade7c88671110ea7f15</srcmd5>
+    <version>9.6.7</version>
+    <time>1518281806</time>
+    <user>dimstar_suse</user>
+    <comment>- Upate to PostgreSQL 9.6.7
+  * https://www.postgresql.org/docs/9.6/static/release-9-6-7.html
+  * CVE-2018-1053, bsc#1077983: Ensure that all temporary files
+    made by pg_upgrade are non-world-readable.
+  * bsc#1079757: Rename pg_rewind's copy_file_range function to
+    avoid conflict with new Linux system call of that name.
+- Don't %config the symlinks to /etc/alternatives to avoid rpmlint
+  warnings.</comment>
+    <requestid>574652</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>53f14f2817a9084c09e898027eba14da</srcmd5>
+    <version>9.6.8</version>
+    <time>1521579270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585350</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>90810c63d8b47a32c14a514c0df4805d</srcmd5>
+    <version>9.6.9</version>
+    <time>1527084390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.6.9:
+  https://www.postgresql.org/about/news/1851/
+  https://www.postgresql.org/docs/current/static/release-9-6-9.html
+  A dump/restore is not required for those running 9.6.X.
+  However, if you use the adminpack extension, you should update
+  it as per the first changelog entry below.
+  Also, if the function marking mistakes mentioned in the second
+  and third changelog entries below affect you, you will want to
+  take steps to correct your database catalogs.
+  * CVE-2018-1115, bsc#1091610: Remove public execute privilege
+    from contrib/adminpack's pg_logfile_rotate() function
+    pg_logfile_rotate() is a deprecated wrapper for the core
+    function pg_rotate_logfile(). When that function was changed
+    to rely on SQL privileges for access control rather than a
+    hard-coded superuser check, pg_logfile_rotate() should have
+    been updated as well, but the need for this was missed. Hence,
+    if adminpack is installed, any user could request a logfile
+    rotation, creating a minor security issue.
+    After installing this update, administrators should update
+    adminpack by performing ALTER EXTENSION adminpack UPDATE in
+    each database in which adminpack is installed.
+  * Fix incorrect volatility markings on a few built-in functions
+  * Fix incorrect parallel-safety markings on a few built-in
+    functions.</comment>
+    <requestid>610012</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>90e23b6e1185bef43c09dd90d1b38036</srcmd5>
+    <version>9.6.10</version>
+    <time>1534099877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.6.10:
+  https://www.postgresql.org/docs/current/static/release-9-6-10.html
+  * CVE-2018-10915, bsc#1104199: Fix failure to reset libpq's state
+    fully between connection attempts.
+  * CVE-2018-10925, bsc#1104202: Fix INSERT ... ON CONFLICT UPDATE
+    through a view that isn't just SELECT * FROM ...</comment>
+    <requestid>628666</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d59a71e0d0eaecaa0761be951666ac1c</srcmd5>
+    <version>9.6.10</version>
+    <time>1541509613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644338</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>21aa0f9ea1883ec3dd08e4fc8aa1537a</srcmd5>
+    <version>9.6.11</version>
+    <time>1544094922</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.6.11:
+  * Numerous bug fixes, see the release notes:
+    https://www.postgresql.org/docs/9.6/release-9-6-11.html
+  * Remove unneeded library dependencies from PGXS.</comment>
+    <requestid>651974</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7394d222c2ad507a1cef53108520f29a</srcmd5>
+    <version>9.6.12</version>
+    <time>1551298433</time>
+    <user>coolo</user>
+    <comment>- Update to 9.6.12:
+  * https://www.postgresql.org/docs/9.6/release-9-6-12.html
+  * https://www.postgresql.org/about/news/1920/
+  * By default, panic instead of retrying after fsync() failure,
+    to avoid possible data corruption.
+  * Numerous other bug fixes.
+- Overhaul README.SUSE</comment>
+    <requestid>678949</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>59d28f866ccc38dd55d56d1921dd9655</srcmd5>
+    <version>9.6.12</version>
+    <time>1552206650</time>
+    <user>coolo</user>
+    <comment>- Make the server-devel package exclusive across versions.</comment>
+    <requestid>681676</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3a3844ba6684aadbef7add71ed36fb77</srcmd5>
+    <version>9.6.13</version>
+    <time>1558340782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.6.13:
+  * https://www.postgresql.org/docs/9.6/release-9-6-13.html
+  * https://www.postgresql.org/about/news/1939/
+  * CVE-2019-10130, bsc#1134689: Prevent row-level security
+    policies from being bypassed via selectivity estimators.</comment>
+    <requestid>703461</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>982aa662b77118610db9be2739ce4908</srcmd5>
+    <version>9.6.14</version>
+    <time>1563018414</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.6.14:
+  https://www.postgresql.org/docs/9.6/release-9-6-14.html</comment>
+    <requestid>713378</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>84431d4570f10659e4168e5f90eec59e</srcmd5>
+    <version>9.6.15</version>
+    <time>1567679398</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.6.15:
+  * https://www.postgresql.org/about/news/1960/
+  * https://www.postgresql.org/docs/9.6/release-9-6-15.html
+  * CVE-2019-10208, bsc#1145092: TYPE in pg_temp executes arbitrary
+    SQL during SECURITY DEFINER execution.
+
+- Use FAT LTO objects in order to provide proper static library.</comment>
+    <requestid>723110</requestid>
+  </revision>
+</revisionlist>

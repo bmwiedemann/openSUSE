@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b3dc756891294d44195476d93c0f7205</srcmd5>
+    <version>0.2.1.2</version>
+    <time>1484771886</time>
+    <user>dimstar_suse</user>
+    <comment>Submit of LTS Haskell as specifid in https://hackweek.suse.com/14/projects/1368</comment>
+    <requestid>414296</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c0d7a0e35f38cb3ed205e87ce15d0939</srcmd5>
+    <version>0.2.2.1</version>
+    <time>1485862813</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452498</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7781c9575f8c1e9d0ac7ec13c58a40c8</srcmd5>
+    <version>0.2.3.1</version>
+    <time>1492169943</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485171</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>af12f26d517d8859b0d73d24a297de0e</srcmd5>
+    <version>0.2.3.3</version>
+    <time>1498046172</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504681</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a6f4225f3a4d5a3a334ac23bd8c3fe7c</srcmd5>
+    <version>0.2.3.3</version>
+    <time>1505506931</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525614</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4466c7331c63d65868ef2ccd061aba24</srcmd5>
+    <version>0.3.1.1</version>
+    <time>1527675349</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-uri-bytestring to the latest version.</comment>
+    <requestid>607919</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>518caa30d1f4da7ea58b9418f479eb55</srcmd5>
+    <version>0.3.2.0</version>
+    <time>1532445795</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update uri-bytestring to version 0.3.2.0.
+  0.3.2.0
+  * Only depend on the fail package when it is needed due to GHC version.</comment>
+    <requestid>623889</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>123550c9e88ba51b489a6ea5dbed77d9</srcmd5>
+    <version>0.3.2.1</version>
+    <time>1540448352</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642902</requestid>
+  </revision>
+</revisionlist>

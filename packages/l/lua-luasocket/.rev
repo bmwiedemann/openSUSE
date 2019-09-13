@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f86709ebf72e2e3a28354a9a8cfc600</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1502706919</time>
+    <user>dimstar_suse</user>
+    <comment>no multibuild</comment>
+    <requestid>512782</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f64827f068e004de25e3a8ed11e6e859</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1508769490</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide/Obsolete luasocket to avoid conflict wrt bsc#1063306
+
+- Provide/Obsolete luasocket to avoid conflict wrt bsc#1063306
+
+- Provide/Obsolete luasocket to avoid conflict wrt bsc#1063306
+
+- Provide/Obsolete luasocket to avoid conflict wrt bsc#1063306</comment>
+    <requestid>534155</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>60386e3ea2c693dceeb63f7d5167051e</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1509787328</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop lua52-luasocket to obsolete lua52 from distribution</comment>
+    <requestid>537925</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1f94c85301284791be9b55ab03f0e0e5</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1552901783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684695</requestid>
+  </revision>
+</revisionlist>

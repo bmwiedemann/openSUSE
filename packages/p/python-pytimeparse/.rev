@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b50ad6a1d0348252b56879afc9051f1f</srcmd5>
+    <version>1.1.8</version>
+    <time>1527582742</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-agate.
+See request 605895
+https://build.opensuse.org/request/show/605895</comment>
+    <requestid>610546</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ffd66f6b3520982e586569ecafe1bd50</srcmd5>
+    <version>1.1.8</version>
+    <time>1545648171</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659623</requestid>
+  </revision>
+</revisionlist>

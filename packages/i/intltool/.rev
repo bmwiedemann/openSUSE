@@ -1,0 +1,251 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2cdc7be423abf380e32617f77166ebfe</srcmd5>
+    <version>0.35.2</version>
+    <time>1166793246</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0f57ce6c3f25b63297fb7ce9f2b4426b</srcmd5>
+    <version>0.35.4</version>
+    <time>1171927992</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>85826f09701f2fd6648d861d03a0d564</srcmd5>
+    <version>0.35.5</version>
+    <time>1174561741</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a35d53a6922d7d17ac77a80d462a5e67</srcmd5>
+    <version>0.35.5</version>
+    <time>1174611022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9651d1fb5167188c7584bd25c3b38d66</srcmd5>
+    <version>0.36.1</version>
+    <time>1188417877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="35">
+    <srcmd5>d78ef365f619753d889612c14b7b935e</srcmd5>
+    <version>0.35.5</version>
+    <time>1188503966</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f067ff62b3b9d228acbf78b5bcbede2b</srcmd5>
+    <version>0.37.1</version>
+    <time>1205511688</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a661cedf5a7c6c180088121470242047</srcmd5>
+    <version>0.40.0</version>
+    <time>1214113882</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>0050b9f69ba8185074aefefd54ffa417</srcmd5>
+    <version>0.40.0</version>
+    <time>1216410901</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cf6ed778954a85d339c9c6c182ed9ab5</srcmd5>
+    <version>0.40.3</version>
+    <time>1220575554</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0f39e8a91c85fe994c7e22a5cf54281a</srcmd5>
+    <version>0.40.4</version>
+    <time>1223739732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>198a243e3ceead3a91d163430cbdf27e</srcmd5>
+    <version>0.40.5</version>
+    <time>1223908208</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>047b31d319d509d7a6e5cffc88bd07c5</srcmd5>
+    <version>0.40.5</version>
+    <time>1233991247</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e3aa51e37937c4a07ab409e9a1947ab5</srcmd5>
+    <version>0.40.6</version>
+    <time>1238084674</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>e3aa51e37937c4a07ab409e9a1947ab5</srcmd5>
+    <version>0.40.6</version>
+    <time>1238084674</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>121d9091fb902c1ecf28b3651ab379ea</srcmd5>
+    <version>0.40.6</version>
+    <time>1268924029</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>416f4490885c738397a1a29630345c6b</srcmd5>
+    <version>0.41.1</version>
+    <time>1270083973</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/intltool based on submit request 36353 from user vuntz
+</comment>
+    <requestid>36353</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>416f4490885c738397a1a29630345c6b</srcmd5>
+    <version>0.41.1</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>416f4490885c738397a1a29630345c6b</srcmd5>
+    <version>0.41.1</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>416f4490885c738397a1a29630345c6b</srcmd5>
+    <version>0.41.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>416f4490885c738397a1a29630345c6b</srcmd5>
+    <version>0.41.1</version>
+    <time>1319181990</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bca04c518b7e4f828ac413630aab675e</srcmd5>
+    <version>0.50.0</version>
+    <time>1326292614</time>
+    <user>coolo</user>
+    <comment>Update to 0.50, with valid Source line</comment>
+    <requestid>99172</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>065fa98b59bc755dd9d908d5f09da8d7</srcmd5>
+    <version>0.50.1</version>
+    <time>1329405407</time>
+    <user>coolo</user>
+    <comment>Pushing most G:F bits</comment>
+    <requestid>105131</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>dfd6184004fcaf2de56abcf86c444358</srcmd5>
+    <version>0.50.2</version>
+    <time>1330618819</time>
+    <user>coolo</user>
+    <comment>Update to 0.50.2 (forwarded request 107096 from dimstar)</comment>
+    <requestid>107306</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>dfd6184004fcaf2de56abcf86c444358</srcmd5>
+    <version>0.50.2</version>
+    <time>1340183463</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>dfd6184004fcaf2de56abcf86c444358</srcmd5>
+    <version>0.50.2</version>
+    <time>1359109084</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>999640654b1b51511de116b166def0ed</srcmd5>
+    <version>0.50.2</version>
+    <time>1364896460</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161564 from vuntz)</comment>
+    <requestid>161778</requestid>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>999640654b1b51511de116b166def0ed</srcmd5>
+    <version>0.50.2</version>
+    <time>1379662674</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>999640654b1b51511de116b166def0ed</srcmd5>
+    <version>0.50.2</version>
+    <time>1409301234</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>96b1b519c3333f7f7b4fa297bb3cfe95</srcmd5>
+    <version>0.51.0</version>
+    <time>1428391593</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294310</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>3d28ce366d10ffa459df02fd6420c8b4</srcmd5>
+    <version>0.51.0</version>
+    <time>1441726533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328294</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>8e9d2c417d6e84c9d57afa4b6aa3ebf1</srcmd5>
+    <version>0.51.0</version>
+    <time>1473102628</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424166</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>979977b5e2538a0ec8a3322c76bac9e8</srcmd5>
+    <version>0.51.0</version>
+    <time>1495132763</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494341</requestid>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>65a0e7b98d557bc5051ef05ecaf9e9e5</srcmd5>
+    <version>0.51.0</version>
+    <time>1506955454</time>
+    <user>dimstar_suse</user>
+    <comment>- extend intltool-perl-5.22.patch to fix one more perl 5.26 issue (forwarded request 528478 from coolo)</comment>
+    <requestid>528643</requestid>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>c0628328d5d431a0ae7ab4df3ff405d0</srcmd5>
+    <version>0.51.0</version>
+    <time>1520502396</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581208 from dimstar)</comment>
+    <requestid>582798</requestid>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>ed7c1d07bf0aac03aa240be214de0fe8</srcmd5>
+    <version>0.51.0</version>
+    <time>1527001191</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 607002 from dimstar)</comment>
+    <requestid>607011</requestid>
+  </revision>
+</revisionlist>

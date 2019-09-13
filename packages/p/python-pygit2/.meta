@@ -1,0 +1,5 @@
+<package name="python-pygit2" project="openSUSE:Factory">
+  <title></title>
+  <description>Bindings for libgit2, a linkable C library for the Git version-control system.</description>
+  <devel project="devel:languages:python" package="python-pygit2"/>
+</package>

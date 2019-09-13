@@ -1,0 +1,189 @@
+<revisionlist>
+  <revision rev="1" vrev="10">
+    <srcmd5>55cf248112eaf0537622e42f8a3445b5</srcmd5>
+    <version>0.21</version>
+    <time>1168903637</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="44">
+    <srcmd5>f78432f5ee7b833906bf6817fc2b5a02</srcmd5>
+    <version>0.21</version>
+    <time>1177274187</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="49">
+    <srcmd5>f3f546027aad5db4d9cf0a636634522d</srcmd5>
+    <version>0.21</version>
+    <time>1178554715</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="55">
+    <srcmd5>dc8e86fd7b3b716de06d16f6cd9abf64</srcmd5>
+    <version>0.21</version>
+    <time>1179496438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="69">
+    <srcmd5>90069de13096c8d84ee528849a6ba937</srcmd5>
+    <version>0.21</version>
+    <time>1182463933</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>99b0cad01395d1f42cb3ea5262f11d4e</srcmd5>
+    <version>0.22</version>
+    <time>1214423131</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="36">
+    <srcmd5>69b361d95a62820e73360e79e4f928eb</srcmd5>
+    <version>0.22</version>
+    <time>1221522079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="37">
+    <srcmd5>3ae0e8b3cd0a27984c71449a35c4108e</srcmd5>
+    <version>0.22</version>
+    <time>1221581010</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="38">
+    <srcmd5>c37a3730ee3e7a282787e1fd6a4bce54</srcmd5>
+    <version>0.22</version>
+    <time>1231722500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="40">
+    <srcmd5>c37a3730ee3e7a282787e1fd6a4bce54</srcmd5>
+    <version>0.22</version>
+    <time>1231722500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="41">
+    <srcmd5>0c47a8962d57e35b4dcdd68d0f6e4c57</srcmd5>
+    <version>0.22</version>
+    <time>1268925131</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>06812f383aa0134fafc17ae65a02fdfe</srcmd5>
+    <version>0.23</version>
+    <time>1272317794</time>
+    <user>autobuild</user>
+    <comment>Copy from network/obexftp based on submit request 38790 from user coolo
+</comment>
+    <requestid>38790</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>06812f383aa0134fafc17ae65a02fdfe</srcmd5>
+    <version>0.23</version>
+    <time>1278667371</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>06812f383aa0134fafc17ae65a02fdfe</srcmd5>
+    <version>0.23</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>872227c9b4fce55e06539606110ecff7</srcmd5>
+    <version>0.23</version>
+    <time>1295021552</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58192 from user matejcik
+</comment>
+    <requestid>58192</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>1bc9ec2ad5130e54df61c87c33285647</srcmd5>
+    <version>0.23</version>
+    <time>1295021571</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58192
+</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>1bc9ec2ad5130e54df61c87c33285647</srcmd5>
+    <version>0.23</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>1bc9ec2ad5130e54df61c87c33285647</srcmd5>
+    <version>0.23</version>
+    <time>1319182208</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>86dd9d5a5fd682b40584dd5534da74f4</srcmd5>
+    <version>0.23</version>
+    <time>1321980538</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92661 from coolo)</comment>
+    <requestid>92908</requestid>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>a7dee8566ba5ba703864579e2e4d57a8</srcmd5>
+    <version>0.23</version>
+    <time>1323192784</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>a7dee8566ba5ba703864579e2e4d57a8</srcmd5>
+    <version>0.23</version>
+    <time>1340183742</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>90ae3c6dd6dc8cfbf2f47e1bf41f0d28</srcmd5>
+    <version>0.23</version>
+    <time>1347618711</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134072</requestid>
+  </revision>
+  <revision rev="23" vrev="17">
+    <srcmd5>90ae3c6dd6dc8cfbf2f47e1bf41f0d28</srcmd5>
+    <version>0.23</version>
+    <time>1359109523</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="19">
+    <srcmd5>90ae3c6dd6dc8cfbf2f47e1bf41f0d28</srcmd5>
+    <version>0.23</version>
+    <time>1379663396</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8eca982bb4cc5fd13129c98d613f08c9</srcmd5>
+    <version>0.24</version>
+    <time>1383630712</time>
+    <user>coolo</user>
+    <comment>update to 0.24, fix build with OpenOBEX 1.7</comment>
+    <requestid>205718</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>1ab89f52f7efca45b0b1e04d08ad9e43</srcmd5>
+    <version>0.24</version>
+    <time>1385100726</time>
+    <user>coolo</user>
+    <comment>- obexftp-pkgconfig_requires.patch:
+  in pkgconfig file, require bluez instead of bluetooth (forwarded request 207624 from oertel)</comment>
+    <requestid>207877</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>1ab89f52f7efca45b0b1e04d08ad9e43</srcmd5>
+    <version>0.24</version>
+    <time>1409302009</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

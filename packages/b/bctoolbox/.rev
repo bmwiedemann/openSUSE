@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f3c089cc37a19e324b8a7d0ee0bd409</srcmd5>
+    <version>0.2.0</version>
+    <time>1471428352</time>
+    <user>dimstar_suse</user>
+    <comment>new package, future dependency of telephony stuff</comment>
+    <requestid>419507</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>99e35acfe25f8fc90674f0b7dccdc216</srcmd5>
+    <version>0.2.0</version>
+    <time>1472594465</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove extraneous pkgconfig require
+
+- Merge changes from home:X0F:HSF
+- Fix generation of pkgconfig files
+  * bctoolbox-pkgconfig_1.patch
+  * bctoolbox-pkgconfig_2.patch</comment>
+    <requestid>423457</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4a6eebdcbccfee88b76b69aea10ef3d0</srcmd5>
+    <version>0.5.1</version>
+    <time>1498638922</time>
+    <user>dimstar_suse</user>
+    <comment>- Update baselibs
+- Run spec-cleaner
+
+- Update to version 0.5.1:
+  * security bugfix: TLS session could be successfully established
+    whereas the common name did not match the server name.
+  * &quot;const char * to void *&quot; map feature.
+- Remove bctoolbox-pkgconfig_1.patch and
+  bctoolbox-pkgconfig_2.patch: fixed upstream.</comment>
+    <requestid>505237</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dbac7f5232db590291dc918d96e97702</srcmd5>
+    <version>0.6.0</version>
+    <time>1503999503</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511946</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b75a3ceb6795cbf4c3c2e69b72964420</srcmd5>
+    <version>0.6.0</version>
+    <time>1535370424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629595</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9e6b43f3d0e31d9b9641f7e6fbe268df</srcmd5>
+    <version>0.6.0</version>
+    <time>1556915153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700028</requestid>
+  </revision>
+</revisionlist>

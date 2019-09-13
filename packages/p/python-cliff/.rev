@@ -1,0 +1,452 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db63e000233dc8c482fdc16216504b3e</srcmd5>
+    <version>1.3</version>
+    <time>1353404663</time>
+    <user>coolo</user>
+    <comment>Dependency for python-quantumclient</comment>
+    <requestid>141376</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>db63e000233dc8c482fdc16216504b3e</srcmd5>
+    <version>1.3</version>
+    <time>1359110003</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ff21dff12f0325075b308125dbeb019</srcmd5>
+    <version>1.3.1</version>
+    <time>1363084372</time>
+    <user>coolo</user>
+    <comment>- Update to 1.3.1:
+  - Sort list of commands in interactive help mode.
+  - Fix a dependency issue with PyParsing until the cmd2 package can
+    release an update setting the version of its dependency based on the
+    Python version. (forwarded request 158635 from dirkmueller)</comment>
+    <requestid>158636</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>712d17c267eafeca3ffd12a9660fb156</srcmd5>
+    <version>1.3.1</version>
+    <time>1363269650</time>
+    <user>coolo</user>
+    <comment>- add prettytable-0.7x.diff:
+  - Be compatible with PrettyTable 0.7 
+- tighten rpm dependencies (forwarded request 158846 from dirkmueller)</comment>
+    <requestid>158847</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>42233e230154ad79fe2091537be4cc92</srcmd5>
+    <version>1.3.1</version>
+    <time>1363900298</time>
+    <user>coolo</user>
+    <comment>- tighten requires on pyparsing (forwarded request 159841 from dirkmueller)</comment>
+    <requestid>160177</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d52a92f6c835a73b719de526aef83fff</srcmd5>
+    <version>1.3.2</version>
+    <time>1366955020</time>
+    <user>coolo</user>
+    <comment>- update to 1.3.2: 
+  - Add ``convert_underscores`` parameter to ``CommandManager`` ``__init__``
+    method to allow underscores to be used in command names. This optional
+    argument is defaulted to True to maintain current behavior.
+   (contributed by Joe Server)
+  - Use flake8_ for style checking.
+  - Relax version requirement for PrettyTable dependency to allow
+    point releases of 0.7.
+
+- buildrequire the right mock version (forwarded request 173332 from dirkmueller)</comment>
+    <requestid>173342</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9d38d7731f795a34396499e739836853</srcmd5>
+    <version>1.3.2</version>
+    <time>1367487192</time>
+    <user>coolo</user>
+    <comment>- add ignore-cmd2-requires.diff: 
+  loosen cmd2 version requires (forwarded request 173906 from dirkmueller)</comment>
+    <requestid>173927</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>258ff47397a4b45b87cc74920b07edc7</srcmd5>
+    <version>1.3.2</version>
+    <time>1367502966</time>
+    <user>coolo</user>
+    <comment>- add 0001-Restore-compatibility-with-Prettytable-0.7.2.patch (forwarded request 174280 from dirkmueller)</comment>
+    <requestid>174287</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f390a35f19364dfe225df75f58298de9</srcmd5>
+    <version>1.3.3</version>
+    <time>1368451522</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174973</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d4635ecf7cb7882080f2a7ecf76e0462</srcmd5>
+    <version>1.4</version>
+    <time>1372509156</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.4:
+  + Upstream provides no changelog</comment>
+    <requestid>181166</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>102359f3428eac18d1f8d21d8e4c225c</srcmd5>
+    <version>1.4.4</version>
+    <time>1378238577</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.4:
+  - Provide better error handling for unknown commands run from the
+  command line. (Contributed by Christophe Chauvet.) (forwarded request 197216 from dirkmueller)</comment>
+    <requestid>197219</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>05771da56ede7e93148e1023ce9e85d4</srcmd5>
+    <version>1.4.4</version>
+    <time>1378897642</time>
+    <user>coolo</user>
+    <comment>- add relax-cmd2-requires.diff: Allow 0.6.6.1 or newer (forwarded request 197970 from dirkmueller)</comment>
+    <requestid>198230</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>05771da56ede7e93148e1023ce9e85d4</srcmd5>
+    <version>1.4.4</version>
+    <time>1379664143</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>baf171dee01dedd0f16084bdb3dbf208</srcmd5>
+    <version>1.4.4</version>
+    <time>1379934929</time>
+    <user>coolo</user>
+    <comment>- Add 0001-Require-pyparsing-2.0.1.patch: Allow running with pyparsing&gt;=2.0.1</comment>
+    <requestid>199550</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d8038fca5aa432e9cd92dc356f25e195</srcmd5>
+    <version>1.4.5</version>
+    <time>1380608810</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.5:
+  * Update the pyparsing dependency to a version that supports both
+  Python 2 and Python 3.
+  * Add PyPy testing.
+- remove patches that went upstream:
+  * remove 0001-Require-pyparsing-2.0.1.patch
+  * remove relax-cmd2-requires.diff
+- fix requires (forwarded request 201198 from dirkmueller)</comment>
+    <requestid>201416</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>80dff51b5ecc1f580cb93aaad302d27c</srcmd5>
+    <version>1.5.2</version>
+    <time>1391157844</time>
+    <user>coolo</user>
+    <comment>- update to 1.5.2:
+  * Fix the arguments passed to commands when they are instantiated to
+  pull out help.
+  * Add bash command completion.
+  * Use stevedore to load formatter plugins
+  * Use pbr for packaging
+- add remove-distribute-dep.patch: remove distribute dependency
+- add 0001-Fix-doc-build-with-Python-2.6.x.patch: Fix build with python 2.6 (forwarded request 220390 from dirkmueller)</comment>
+    <requestid>220428</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>83f118d3132d4c3c90e1370cf65faa55</srcmd5>
+    <version>1.5.2</version>
+    <time>1393394105</time>
+    <user>coolo</user>
+    <comment>- add 0001-Move-pep8-dependency-into-pep8-tox-test.patch: remove global pep8 dependency (forwarded request 222173 from dirkmueller)</comment>
+    <requestid>222179</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4d9500118e1d20758c24d2f88107f1da</srcmd5>
+    <version>1.6.1</version>
+    <time>1404157508</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238766</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>4d9500118e1d20758c24d2f88107f1da</srcmd5>
+    <version>1.6.1</version>
+    <time>1409302832</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1e28de161fa8cde4fef85ce90fe7f1bb</srcmd5>
+    <version>1.7.0</version>
+    <time>1410795684</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249134</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5e881f42fb45d184b76bd3e93726c67f</srcmd5>
+    <version>1.9.0</version>
+    <time>1420833031</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280442</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6a5d057ffb60f0a7eb671c20f4a70f81</srcmd5>
+    <version>1.10.1</version>
+    <time>1426064320</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290108</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5ec1315c9aedbc84196986f046294607</srcmd5>
+    <version>1.13.0</version>
+    <time>1438421821</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318751</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>45f99e0b3f5e5da5f48bbb53e7c14d5c</srcmd5>
+    <version>1.14.0</version>
+    <time>1441146949</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>327750</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a6688bca025f3675919e9ebd614dcaa5</srcmd5>
+    <version>1.15.0</version>
+    <time>1443684539</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>331688</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>59458228a4962eae74ac378ff49f17a3</srcmd5>
+    <version>2.1.0</version>
+    <time>1468482374</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pypi.io as Source url
+
+- update to 2.1.0:
+  * Updated from global requirements
+  * Update --max-width help
+  * Add more test coverage for shell formatter
+  * Add more test coverage for CSV formatter
+  * Support multiple sub commands in completion
+  * Factorize more test data
+  * Factorize some test data
+  * Factorize common test code
+  * Factorize argparse importing
+  * Updated from global requirements
+  * Updated from global requirements
+  * Add CLIFF_MAX_TERM_WIDTH envvar to complement --max-width
+  * Fix prettytable.PrettyTable().max_width wrong usage
+  * Fix AttributeError when entry point load failed
+  * Distinguish no existed columns in ShowOne
+  * Refactor HelpCommand
+  * Updated from global requirements
+  * Remove httplib2 from test-requirements.txt
+  * Sync help message for --help
+  * handle empty list in table formatter
+  * Drop Python 2.6 support
+  * Revert &quot;app,command: disallow abbrev by default&quot;
+  * Fixes terminal_width on Windows
+  * Updated from global requirements
+  * remove openstack-common.conf
+  * Add doc for deferred_help parameter
+  * Fix pep8 failure</comment>
+    <requestid>407220</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0ace0b9016d5560086d227b7596af2f2</srcmd5>
+    <version>2.2.0</version>
+    <time>1475589656</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433090</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2519b7455ea78cf7c2ee7992605800d4</srcmd5>
+    <version>2.4.0</version>
+    <time>1487680891</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.0:
+  * Remove tox environments that no longer work
+  * Fix command order
+  * Show team and repo badges on README
+  * Add print_empty parameter
+  * ignore Command docstring when looking for descriptions
+  * let the Command get its one-liner description from a class attribute
+  * flake8 fix
+  * Replace dashes and colons when using bash formatter
+  * Show entire command in error message
+  * Updated from global requirements
+  * Updated from global requirements
+  * Fix spelling mistake
+  * Add Python 3.5 classifier and venv
+  * Updated from global requirements
+  * Changed the home-page link
+  * Add Apache 2.0 license to source file
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Clean imports in code
+  * [doc]Fix URL for 'setuptools entry points'
+  * Fix a typo in comment
+- Remove relax-sphinx-requirement.patch . No longer needed.</comment>
+    <requestid>456105</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ded8f27dc25b58da062e64073c55123d</srcmd5>
+    <version>2.8.0</version>
+    <time>1502562412</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 2.8.0:
+  * add tests for display command classes and hooks
+  * Run hooks for DisplayCommandBase
+  * add --fit-width option to table formatter
+  * sphinxext: Add 'application' option to the autoprogram directive
+  * use openstackdocstheme html context
+  * switch from oslosphinx to openstackdocstheme
+  * Fix erroneous line in command hook test
+  * make smart help formatter test deterministic
+  * remove references to distribute in the docs
+  * add before and after hooks
+  * add hook for get\_epilog
+  * add hook for manipulating the argument parser
+  * Updated from global requirements
+  * pass the command name from HelpCommand
+  * Adjust completenames tests for cmd2 0.7.3+
+  * rearrange existing content to follow new standard
+  * sphinext: Use metavar where possible
+  * sphinxext: Use 'argparse.description', 'argparse.epilog'
+  * sphinxext: Allow configuration of ignorable options
+  * sphinxext: Generate better usage examples
+  * add cmd\_name argument to CompleteCommand
+  * Ensure python standard argparse module is loaded
+  * Updated from global requirements
+  * covert test suite to use testrepository
+  * Updated from global requirements
+  * Add smart help formatter for command parser
+  * Add support for epilogs
+  * Add 'autoprogram-cliff' Sphinx directive
+  * .gitignore: Ignore eggs</comment>
+    <requestid>514848</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c308c5b69ff32af9b7c6bd9c1a374ce4</srcmd5>
+    <version>2.9.1</version>
+    <time>1511517231</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.9.1
+  - doc: minor cleanup
+  - trivial: Fix comments in sphinxext module
+  - add actual column names to error msg
+  - handle more varied top_level.txt files in distributions
+  - Allow command hooks to make changes
+  - Move comments up in [extras] section of setup.cfg
+  - Update doc on Sphinx integration process
+  - show the distribution providing the command in help output
+  - Update and replace http with https for doc links
+  - Make openstackdocstheme an optional doc dependency
+  - Docs update for more-hooks
+  - sphinxext: Correct issues with usage formatting
+  - Fix regexp for detecting long options
+  - Updates for stestr
+  - Updated from global requirements
+- Drop 0001-Make-openstackdocstheme-an-optional-doc-dependency.patch .
+  Applied upstream
+- Add _service and switch to openstack/rpm-packging spec template</comment>
+    <requestid>544429</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5dd2a7801ed5da537fca002c8abbda15</srcmd5>
+    <version>2.11.0</version>
+    <time>1518601938</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.11.0
+  - Move doc requirements to doc/requirements.txt
+  - Alias exit to cmd2's quit command to exit interactive shell
+  - doc: Remove blank lines between term and definition
+  - remove -s alias for --sort-columns
+  - Replace legacy tips jobs with shiny new versions
+  - Update .gitignore
+  - Updated from global requirements
+  - sphinxext: Support cliff application
+  - Remove tox_install.sh and just pass -c in tox
+  - do not require installing demo app to build docs
+  - Remove empty files
+  - add support for legacy command name translation
+  - doc: Cleanup of demoapp doc
+  - Generate demoapp CLI refernece
+  - Fix codec error when format=csv
+  - Use in-tree cliffdemo app for docs build
+  - add bandit to pep8 job
+  - Use assertIsNone(...) instead of assertIs(None,...)
+  - Fix PEP8 in gate
+  - Add ability to sort data by columns for list commands</comment>
+    <requestid>576370</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2bc749525140616c7acb91ee53b2fc63</srcmd5>
+    <version>2.14.0</version>
+    <time>1551686980</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.14.0
+  - sphinxext: Warn if namespace or command pattern invalid
+  - fix tox python3 overrides
+  - import zuul job settings from project-config
+  - Remove the warning of getargspec removal
+  - Zuul: Remove project name
+  - Fix cmd2 doc URL
+  - add lib-forward-testing-python3 test job
+  - support cmd2 0.9.1 in interactive mode
+  - update cmd2 dependency to handle py3 only versions
+  - Build universal wheels
+  - exclude cmd2 0.8.3 and update to 0.8.4
+  - Align parsed() call with cmd2 versions &gt;= 0.7.3
+  - Removed unused err variable
+  - switch documentation job to new PTI
+  - add python 3.6 unit test job
+  - Remove travis.yml
+  - Assure executable name is kept when app is called as module
+  - Updated from global requirements
+  - add lower-constraints job
+  - Don't try to run issubclass on non-classes
+  - fix typos in documentation</comment>
+    <requestid>680099</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d712ab6d35fd27cb9bbe6bbab056e2c0</srcmd5>
+    <version>2.13.0</version>
+    <time>1552380308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682602</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d47ccbb6715765f6539add9b071d47a5</srcmd5>
+    <version>2.14.1</version>
+    <time>1555053206</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.14.1
+  - Use template for lower-constraints
+  - add lib-forward-testing-python3 test job
+  - import zuul job settings from project-config
+  - switch documentation job to new PTI
+  - add python 3.6 unit test job
+  - Removed unused err variable
+  - Don't try to run issubclass on non-classes</comment>
+    <requestid>692819</requestid>
+  </revision>
+</revisionlist>

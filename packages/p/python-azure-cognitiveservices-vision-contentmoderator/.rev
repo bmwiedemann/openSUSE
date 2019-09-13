@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c337ae840b2016fe44af8492a00135a0</srcmd5>
+    <version>0.1.0</version>
+    <time>1526220243</time>
+    <user>dimstar_suse</user>
+    <comment>azure</comment>
+    <requestid>602791</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b5b6f5114192f7d427c301db5d23ebf0</srcmd5>
+    <version>1.0.0</version>
+    <time>1557833411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694258 from glaubitz)</comment>
+    <requestid>694379</requestid>
+  </revision>
+</revisionlist>

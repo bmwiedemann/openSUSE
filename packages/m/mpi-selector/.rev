@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3803447e65c9b35f0c1130dcef357ea4</srcmd5>
+    <version>1.0.0</version>
+    <time>1184639885</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="11">
+    <srcmd5>209e55b92a7dba2f0709c8c3be83891b</srcmd5>
+    <version>1.0.0</version>
+    <time>1187912749</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8aaba1aa1843e05eb47e5be77e9a6bca</srcmd5>
+    <version>1.0.2</version>
+    <time>1221236716</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>91e65507c5e8a46560de3f9b434f8b9d</srcmd5>
+    <version>1.0.2</version>
+    <time>1224925543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>91e65507c5e8a46560de3f9b434f8b9d</srcmd5>
+    <version>1.0.2</version>
+    <time>1224925543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>7c5ae794fc5579535fc5d1dd432f21f2</srcmd5>
+    <version>1.0.2</version>
+    <time>1268924995</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>6049a798f55fcc116fad549319f88b21</srcmd5>
+    <version>1.0.2</version>
+    <time>1275655885</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:openSUSE:Factory/mpi-selector based on submit request 41089 from user coolo
+</comment>
+    <requestid>41089</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>6049a798f55fcc116fad549319f88b21</srcmd5>
+    <version>1.0.2</version>
+    <time>1278667369</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>6049a798f55fcc116fad549319f88b21</srcmd5>
+    <version>1.0.2</version>
+    <time>1278678598</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>6049a798f55fcc116fad549319f88b21</srcmd5>
+    <version>1.0.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>6049a798f55fcc116fad549319f88b21</srcmd5>
+    <version>1.0.2</version>
+    <time>1319182186</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ef98a3e1ab84ef17b7d9485009eaedde</srcmd5>
+    <version>1.0.3</version>
+    <time>1330081574</time>
+    <user>coolo</user>
+    <comment>- No need to own %{_libdir}/mpi/gcc/, so package can be noarch
+- Mark stuff under /etc/profile.d as config and remove rpmlintrc (forwarded request 105359 from saschpe)</comment>
+    <requestid>105582</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>bf161639ec8feeaea4b6865a43ebb182</srcmd5>
+    <version>1.0.3</version>
+    <time>1337579682</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121269</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>bf161639ec8feeaea4b6865a43ebb182</srcmd5>
+    <version>1.0.3</version>
+    <time>1340183711</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>bf161639ec8feeaea4b6865a43ebb182</srcmd5>
+    <version>1.0.3</version>
+    <time>1359109465</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>32e72203c0e207fd6f7ba2f66b8654fd</srcmd5>
+    <version>1.0.3</version>
+    <time>1366793404</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 171073 from namtrac)</comment>
+    <requestid>172989</requestid>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>b16a20d60ba46159dd44f5a533f69efe</srcmd5>
+    <version>1.0.3</version>
+    <time>1366811849</time>
+    <user>coolo</user>
+    <comment>No macro for make install</comment>
+    <requestid>173166</requestid>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>b16a20d60ba46159dd44f5a533f69efe</srcmd5>
+    <version>1.0.3</version>
+    <time>1379663316</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>6d14762c00d7f2cdcc442926c25a5ab1</srcmd5>
+    <version>1.0.3</version>
+    <time>1405434347</time>
+    <user>coolo</user>
+    <comment>Copy OFED 3.12 packages from SLE12</comment>
+    <requestid>239603</requestid>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>6d14762c00d7f2cdcc442926c25a5ab1</srcmd5>
+    <version>1.0.3</version>
+    <time>1409301933</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

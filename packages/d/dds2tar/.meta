@@ -1,0 +1,6 @@
+<package name="dds2tar" project="openSUSE:Factory">
+  <title>DDS2 Tape Streamer Utilities</title>
+  <description>A tool for quick extraction of individual files from a DDS2 streamer.
+dds2tar can control data compression for HP DAT streamers.</description>
+  <devel project="Archiving" package="dds2tar"/>
+</package>

@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e10f1ece838ed87f4db21ccdeb95b040</srcmd5>
+    <version>1.1553677467.1bfaa5a1c</version>
+    <time>1553700133</time>
+    <user>dimstar_suse</user>
+    <comment>- Created Package
+</comment>
+    <requestid>689033</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3cc201f17d6d0656212d0740e647e85d</srcmd5>
+    <version>1.1558347989.0bd999e02</version>
+    <time>1558427955</time>
+    <user>dimstar_suse</user>
+    <comment>Added dependency</comment>
+    <requestid>704215</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b75cf053753e61ff836bb839d9b7ed4d</srcmd5>
+    <version>1.1558441645.3cae9c7d1</version>
+    <time>1558516622</time>
+    <user>dimstar_suse</user>
+    <comment>Ensure reproducible dependency sorting required for automatic SRs.</comment>
+    <requestid>704451</requestid>
+  </revision>
+</revisionlist>

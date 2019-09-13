@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc75c1fcd2b103ade143c7f58f0e9fea</srcmd5>
+    <version>1.10.1</version>
+    <time>1526041733</time>
+    <user>dimstar_suse</user>
+    <comment>Functional programming tools</comment>
+    <requestid>605543</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f5f73f170e37b606be365b95f9e6c817</srcmd5>
+    <version>1.10.1</version>
+    <time>1526737424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610537</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d2ff323965c33758115147c03e738742</srcmd5>
+    <version>1.10.1</version>
+    <time>1545224001</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659389</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2bcf3c1ac8de276a71c67fca6a3be97d</srcmd5>
+    <version>1.11</version>
+    <time>1552464922</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11:
+  - switched docs and internals to Python 3
+  - improved docs: better texts and examples here and there
+  - support Python 3.7 officially
+  - added popups over functions everywhere in docs
+  - accept any iterables of errors in flow utils
+  - fixed walk_values() for defaultdicts with empty factory
+  - fixed xmap() signature introspection
+  - documented lzip()</comment>
+    <requestid>684438</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>58de5688dabedd19c30a8c8f93dd67c7</srcmd5>
+    <version>1.12</version>
+    <time>1557653811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701960</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c5c5a7a0bf16827731117d83941a4589</srcmd5>
+    <version>1.13</version>
+    <time>1565695419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722710</requestid>
+  </revision>
+</revisionlist>

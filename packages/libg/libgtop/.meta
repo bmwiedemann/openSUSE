@@ -1,0 +1,10 @@
+<package name="libgtop" project="openSUSE:Factory">
+  <title>LibGTop Library</title>
+  <description>A library that fetches information about the running system, such as
+CPU and memory usage and active processes.
+
+On Linux systems, this information is taken directly from the /proc
+file system. On other systems, a server is used to read information
+from /dev/kmem.</description>
+  <devel project="GNOME:Factory" package="libgtop"/>
+</package>

@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8b763fc87108d141ed98e736fd293b25</srcmd5>
+    <version>0.9.2</version>
+    <time>1526371825</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.9.2 (2018-05-04) 
+  + High-level changes
+    Fixed handling of DISCARD ALL command when parallel workers are
+     involved, which sometimes caused the extension to complain it 
+     was not preloaded
+    User permission bug fix where users locating TRIGGER permissions
+    in a database could not insert data into a hypertable
+   + Fixes for some issues with 32-bit architectures
+- Changes for 0.9.1
+  + High-level changes
+    For this release only, you will need to restart the database 
+    before running ALTER EXTENSION
+    Several edge cases regarding CTEs addressed
+    Updated preloader with better error messaging and fixed edge case
+    ABI compatibility with latest PostgreSQL to help catch any 
+    breaking changes
+- Changes for 0.9.0
+  + When updating your database, you should connect using
+    psql with the -X flag to prevent any .psqlrc commands from
+    accidentally triggering the load of a previous DB version.
+  + High-level changes
+    Support for multiple extension versions on different databases 
+    in the same PostgreSQL instance. 
+    This allows different databases to be updated independently 
+    and provides for smoother updates between versions. No
+    more spurious errors in the log as the extension is being
+    updated, and new versions no longer require a restart of 
+    the database.
+  + Streamlined update process for smaller binary/package sizes
+  + Significant refactoring to simplify and improve codebase, 
+    including improvements to error handling, security/permissions
+  + Corrections to edge-case scenarios involving dropping schemas,
+    hypertables, dimensions, and more
+  + Correctness improvements through propagating reloptions from main
+    table to chunk tables and blocking ONLY commands that try to alter
+    hypertables (i.e., changes should be applied to chunks as well)
+  + Addition of a migrate_data option to create_hypertable to allow
+    non-empty tables to be turned into hypertables without separate
+    creation &amp; insertion steps. Note, this option may take a while 
+    if the original table has lots of data
+  + Support for ALTER TABLE RENAME CONSTRAINT
+  + Support for adjusting the number of partitions for a space dimension
+  + Improvements to tablespace handling
+- Adapt cmake ld flags (no-as-needed) for build on Leap 42x/SLE12 
+- initial package
+</comment>
+    <requestid>605658</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1359c8c2af1e46d1912cc60c20b3e413</srcmd5>
+    <version>0.9.2</version>
+    <time>1527582823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610716</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>607feecfc0bdb9ecff7583fba990f5cf</srcmd5>
+    <version>1.0.0</version>
+    <time>1543828273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653220</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>89de5f896f40ffae3e36d9b3a8893e03</srcmd5>
+    <version>1.2.0</version>
+    <time>1552464703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>671889</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9af80d71cfda931aac8f7a6af5097e2d</srcmd5>
+    <version>1.2.0</version>
+    <time>1553888499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670882</requestid>
+  </revision>
+</revisionlist>

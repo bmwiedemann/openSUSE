@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f1e73c7639446b41c368a8731e03ba54</srcmd5>
+    <version>1.3</version>
+    <time>1515505886</time>
+    <user>dimstar_suse</user>
+    <comment>Primarily for SLE15, fixes ownership</comment>
+    <requestid>558684</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b7b3a54500061026cb9382d577313547</srcmd5>
+    <version>1.3</version>
+    <time>1516359148</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>563424</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>93348b650bb8acb7187e00aa10cab6a9</srcmd5>
+    <version>1.3</version>
+    <time>1516970413</time>
+    <user>dimstar_suse</user>
+    <comment>clarified password string bsc#1077666 (forwarded request 569734 from jrecord)</comment>
+    <requestid>569735</requestid>
+  </revision>
+</revisionlist>

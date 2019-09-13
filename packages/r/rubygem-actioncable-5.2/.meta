@@ -1,0 +1,5 @@
+<package name="rubygem-actioncable-5.2" project="openSUSE:Factory">
+  <title>rubygem-actioncable-5.2</title>
+  <description>Structure many real-time application concerns into channels over a single WebSocket connection.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-actioncable-5.2"/>
+</package>

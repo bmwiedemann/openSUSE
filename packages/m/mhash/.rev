@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df73a71e9ebe9d58ea58325ec32c67be</srcmd5>
+    <version>0.9.7.1</version>
+    <time>1167928016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>85b75b750c13069faaf5e8acd000fec6</srcmd5>
+    <version>0.9.9</version>
+    <time>1175812013</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="26">
+    <srcmd5>b64c9c6b3466a07ad1d17b9d432ee584</srcmd5>
+    <version>0.9.9</version>
+    <time>1187202796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="95">
+    <srcmd5>b64c9c6b3466a07ad1d17b9d432ee584</srcmd5>
+    <version>0.9.9</version>
+    <time>1187202796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>937d50e23da47ad37fd897dcc55adb2d</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1232410358</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>cc29af42785073e7ddb99bb7afb19be4</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1237317239</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>cc29af42785073e7ddb99bb7afb19be4</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1237317239</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>c1425cc258d5bf0467ee9390d90bf95e</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1259329445</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mhash based on submit request 25087 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>b589dc1f6d5dab504d2cf34d87f3ef16</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1264071022</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mhash based on submit request 29935 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>2bc326217477e4daf6655172e462e1cc</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1268924938</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>2bc326217477e4daf6655172e462e1cc</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>2bc326217477e4daf6655172e462e1cc</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1278678597</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>e6438a1e7485d2d1b11fe776ef0a17b4</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1288701205</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51846 from user coolo
+</comment>
+    <requestid>51846</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>3afc7ebd39d8ab871957375a51332293</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1288701215</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51846
+</comment>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>3afc7ebd39d8ab871957375a51332293</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>3afc7ebd39d8ab871957375a51332293</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1319182178</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="18">
+    <srcmd5>812eadc725ef9427a08e1007c3035161</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1321460364</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 91738 from coolo)</comment>
+    <requestid>91811</requestid>
+  </revision>
+  <revision rev="18" vrev="19">
+    <srcmd5>79fab7cf1e37ce3dbc0b9b5638a7979b</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1323192538</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="21">
+    <srcmd5>79fab7cf1e37ce3dbc0b9b5638a7979b</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1340183699</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="22">
+    <srcmd5>bf59350a7753043501a65816ea9e5d6d</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1358161355</time>
+    <user>coolo</user>
+    <comment>- remove suse_update_config (forwarded request 148216 from coolo)</comment>
+    <requestid>148371</requestid>
+  </revision>
+  <revision rev="21" vrev="24">
+    <srcmd5>bf59350a7753043501a65816ea9e5d6d</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1359109444</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="26">
+    <srcmd5>bf59350a7753043501a65816ea9e5d6d</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1379663287</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="28">
+    <srcmd5>bf59350a7753043501a65816ea9e5d6d</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1409301894</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="29">
+    <srcmd5>2a5d19470ffdb69f23a98d5281f7ee7a</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1425217606</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288054</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="container-feeder" project="openSUSE:Factory">
+  <title>container-feeder</title>
+  <description>Find all docker images that are packaged in RPM and load all them in docker daemon.</description>
+  <devel project="devel:CaaSP:Head:ControllerNode" package="container-feeder"/>
+</package>

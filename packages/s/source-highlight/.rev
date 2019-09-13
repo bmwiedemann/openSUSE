@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a896847ab935b5d04508ffd231be85c4</srcmd5>
+    <version>3.1.4</version>
+    <time>1298387462</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62156 from user pbleser
+</comment>
+    <requestid>62156</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4359071cdff76ddbfdcd28289d6ad273</srcmd5>
+    <version>3.1.4</version>
+    <time>1298387470</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 62156
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4359071cdff76ddbfdcd28289d6ad273</srcmd5>
+    <version>3.1.4</version>
+    <time>1319182481</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>920d70a30a545339f3fa63ff0cd92454</srcmd5>
+    <version>3.1.6</version>
+    <time>1337578355</time>
+    <user>coolo</user>
+    <comment>- remove explicit lib requires that are even wrong in parts (forwarded request 121149 from coolo)</comment>
+    <requestid>121239</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>920d70a30a545339f3fa63ff0cd92454</srcmd5>
+    <version>3.1.6</version>
+    <time>1340184229</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>920d70a30a545339f3fa63ff0cd92454</srcmd5>
+    <version>3.1.6</version>
+    <time>1359110424</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>920d70a30a545339f3fa63ff0cd92454</srcmd5>
+    <version>3.1.6</version>
+    <time>1379664709</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5bcb3b4c6f46526374a3c9d8a6e21b21</srcmd5>
+    <version>3.1.7</version>
+    <time>1388396650</time>
+    <user>coolo</user>
+    <comment>Update to upstream version 3.1.7 (forwarded request 212437 from benoit_monin)</comment>
+    <requestid>212439</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>326b0ed2f81f19dfb59ecaee872e7722</srcmd5>
+    <version>3.1.7</version>
+    <time>1396291499</time>
+    <user>coolo</user>
+    <comment>- Build with graphiz-gnome, needed for png support in dot (forwarded request 228124 from Andreas_Schwab)</comment>
+    <requestid>228230</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>326b0ed2f81f19dfb59ecaee872e7722</srcmd5>
+    <version>3.1.7</version>
+    <time>1409303393</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>9ccb08a82b33537e9cff3bd5f9a5a6f3</srcmd5>
+    <version>3.1.7</version>
+    <time>1426680532</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf to sources
+
+- Cleanup spec file with spec-cleaner
+- Add gpg signature
+- Use graphviz-gd instead of graphiz-gnome
+- Disable build of static library
+- Remove source-highlight-rpmlintrc</comment>
+    <requestid>291255</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ac1baa17229ee953aefff70cb9d2dd7d</srcmd5>
+    <version>3.1.8</version>
+    <time>1427983479</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294072</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>6b42ce92f348cda4008266226abfe22c</srcmd5>
+    <version>3.1.8</version>
+    <time>1457533030</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367551</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>e2758bcffea786616c3e7e61deb2474f</srcmd5>
+    <version>3.1.8</version>
+    <time>1483955290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>447041</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>31f9b4aa6837e11846bce6569e8fb87e</srcmd5>
+    <version>3.1.8</version>
+    <time>1486135791</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454254</requestid>
+  </revision>
+</revisionlist>

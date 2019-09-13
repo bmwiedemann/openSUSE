@@ -1,0 +1,5 @@
+<package name="python-pycallgraph" project="openSUSE:Factory">
+  <title>python-pycallgraph</title>
+  <description>pycallgraph is a Python library that creates call graphs for Python programs.</description>
+  <devel project="devel:languages:python" package="python-pycallgraph"/>
+</package>

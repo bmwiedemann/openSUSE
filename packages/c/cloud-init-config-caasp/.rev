@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ce93ca99d76a9a196da476d0746f76fd</srcmd5>
+    <version>1.0</version>
+    <time>1492516119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>478857</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5c226e33eabac509be73c7e59329ec69</srcmd5>
+    <version>1.0</version>
+    <time>1493903102</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491655</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>76280688c69cd8afee37c16e62fa4937</srcmd5>
+    <version>1.0</version>
+    <time>1496534448</time>
+    <user>dimstar_suse</user>
+    <comment>- Add modules to manage disks and filesystems</comment>
+    <requestid>500666</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>910418eadde926a37873e2beab1ea1cf</srcmd5>
+    <version>1.0</version>
+    <time>1496822160</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable growpart and resizefs [bsc#1042913]</comment>
+    <requestid>501423</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e99c21535f9b4d05875b85691473361f</srcmd5>
+    <version>1.0</version>
+    <time>1511817538</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable ds-identify for now (doesn't seem to detect any 
+  datasources on CaaSP/Kubic) (ds-identify.cfg)
+- Enable growpart and resizefs modules by default [bsc#1069471]
+
+- Adjust zypper_add_repo module name
+- Require cloud-init &gt;= 17.1 because of module changes</comment>
+    <requestid>546020</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e26bd5e919b47fd1facc01153ddd62de</srcmd5>
+    <version>1.0</version>
+    <time>1520933055</time>
+    <user>dimstar_suse</user>
+    <comment>- Add license to file list</comment>
+    <requestid>585870</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>3f55edbd596f6bc0cd58dfd38af73a02</srcmd5>
+    <version>1.0</version>
+    <time>1539758601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642490</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>6bb9506d25caadfebdb5872c101befaa</srcmd5>
+    <version>1.0</version>
+    <time>1541594181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646963</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>ea4bc0222e97cfb7874265b5f84525f7</srcmd5>
+    <version>1.0</version>
+    <time>1545376897</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ds-identify.cfg: does harm too much if there is no
+  datasource. ds=nocloud on kernel cmdline is required until
+  the cloud-init bug is fixed.
+- Remove 02-kubic-network.cfg: prevents configuring the network
+  at all, which means you cannot login on any of our images for
+  virtualisation or cloud.</comment>
+    <requestid>659974</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>045bba444b047a35d4723b1c2c1726b8</srcmd5>
+    <version>1.0</version>
+    <time>1567423311</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>727001</requestid>
+  </revision>
+</revisionlist>

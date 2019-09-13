@@ -1,0 +1,524 @@
+<revisionlist>
+  <revision rev="1" vrev="21">
+    <srcmd5>534d07c712641504cc8be90402690bac</srcmd5>
+    <version>0.102.20</version>
+    <time>1168361143</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d2406bf508cfd52de6be3581e9e0a9ca</srcmd5>
+    <version>0.103.0</version>
+    <time>1174953278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c9d59a89909807643de7307432b6d6c0</srcmd5>
+    <version>0.103.0</version>
+    <time>1175121684</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>c88603e3d48083d9366cf2927904581a</srcmd5>
+    <version>0.103.0</version>
+    <time>1176392667</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>721b6ed95a48efcb076c6eee20eb9aa0</srcmd5>
+    <version>0.103.0</version>
+    <time>1176762752</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="62">
+    <srcmd5>ab1bbcb38bf19dfdbdf26e37af4781f3</srcmd5>
+    <version>0.103.0</version>
+    <time>1193846660</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a19c4ca0b27511cdabb9007956b37573</srcmd5>
+    <version>0.109.0</version>
+    <time>1200607978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>26a5107179bef9e060e4e35e7ff65089</srcmd5>
+    <version>0.109.0</version>
+    <time>1201714007</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>96673a5ac16e5dbb2a097a97d1ded988</srcmd5>
+    <version>0.109.2</version>
+    <time>1201901880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="22">
+    <srcmd5>5079ff6ea200bed97f3ea736874e009f</srcmd5>
+    <version>0.109.2</version>
+    <time>1207829988</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="27">
+    <srcmd5>ef255935b1e5c6cbe083996240661d07</srcmd5>
+    <version>0.109.2</version>
+    <time>1209505923</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="63">
+    <srcmd5>ef255935b1e5c6cbe083996240661d07</srcmd5>
+    <version>0.109.2</version>
+    <time>1209505923</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="64">
+    <srcmd5>0b3682cba36f0184bb0459938d6f6b4b</srcmd5>
+    <version>0.109.2</version>
+    <time>1223908318</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="65">
+    <srcmd5>01eadd31b434b55e446e7b92a420b8f2</srcmd5>
+    <version>0.109.2</version>
+    <time>1228391354</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="66">
+    <srcmd5>55a960e72c94d56874f635150437b431</srcmd5>
+    <version>0.109.2</version>
+    <time>1229341652</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>80b0dc7fe4091baf8b112161f99d7592</srcmd5>
+    <version>0.116.2</version>
+    <time>1240516717</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>90f7ca2debb402e7382b06ddd747db7d</srcmd5>
+    <version>0.116.2</version>
+    <time>1245450188</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>296a838e1be91aecb5d9cc4bdc920393</srcmd5>
+    <version>0.116.2</version>
+    <time>1246284512</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>151383dd37f09616428cd28e4311526d</srcmd5>
+    <version>0.116.2</version>
+    <time>1253732984</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/jack based on submit request 20882 from user tiwai
+</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>151383dd37f09616428cd28e4311526d</srcmd5>
+    <version>0.116.2</version>
+    <time>1253732984</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/jack based on submit request 20882 from user tiwai
+</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>e4e5b05adcd36f6d0588ce62e26065fb</srcmd5>
+    <version>0.116.2</version>
+    <time>1262128929</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/jack based on submit request 27758 from user tiwai
+</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>97a0352ca6b9d4b4b2efc788b8796ab2</srcmd5>
+    <version>0.118.0</version>
+    <time>1266884398</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/jack based on submit request 33065 from user coolo
+</comment>
+    <requestid>33065</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>b51dad9bf778d397a6ea4dac5bbd6442</srcmd5>
+    <version>0.118.0</version>
+    <time>1268924064</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>da1d916266dac02dfadf8b253fc40141</srcmd5>
+    <version>1.9.5</version>
+    <time>1271188746</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/jack based on submit request 37393 from user tiwai
+</comment>
+    <requestid>37393</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>4d63066c43d2e49b1a78ec62042d5611</srcmd5>
+    <version>1.9.5</version>
+    <time>1272914729</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/jack based on submit request 39191 from user plater
+</comment>
+    <requestid>39191</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>4d63066c43d2e49b1a78ec62042d5611</srcmd5>
+    <version>1.9.5</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>4d63066c43d2e49b1a78ec62042d5611</srcmd5>
+    <version>1.9.5</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>4362b8b2d9b96cfc67fd19d9558035b4</srcmd5>
+    <version>1.9.5</version>
+    <time>1287958954</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51326 from user plater
+</comment>
+    <requestid>51326</requestid>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>9ee6864c1c68faa5875a404448598e03</srcmd5>
+    <version>1.9.5</version>
+    <time>1287958960</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51326
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>046b3048a3727eab89a572245954de47</srcmd5>
+    <version>1.9.6</version>
+    <time>1290426352</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53605 from user plater
+</comment>
+    <requestid>53605</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>2d3da1c91f9cb571197f2473c106893b</srcmd5>
+    <version>1.9.6</version>
+    <time>1290426357</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 53605
+</comment>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>251dee87dddc32b9b376a22e89414e0a</srcmd5>
+    <version>1.9.6</version>
+    <time>1292240139</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55695 from user coolo
+</comment>
+    <requestid>55695</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>59c05b3d852231e0f9a3c4b360a5892b</srcmd5>
+    <version>1.9.6</version>
+    <time>1292240148</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55695
+</comment>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>59c05b3d852231e0f9a3c4b360a5892b</srcmd5>
+    <version>1.9.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6cfbf3dbd27b64a537fada6c8d4f3649</srcmd5>
+    <version>1.9.7</version>
+    <time>1306138151</time>
+    <user>saschpe</user>
+    <comment>update to 1.9.7 (forwarded request 70816 from plater)</comment>
+    <requestid>70818</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>7b5b66ae471815d865b2700ac72cafb9</srcmd5>
+    <version>1.9.7</version>
+    <time>1306138168</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70818
+</comment>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>ed2b8ef2d05f7d100c75ff7a301f4ad6</srcmd5>
+    <version>1.9.7</version>
+    <time>1315760970</time>
+    <user>saschpe</user>
+    <comment>enabled dbus and classic removed engine profiling (forwarded request 81374 from plater)</comment>
+    <requestid>81375</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>a0d87bfddd2b769c1092744c80ed4c63</srcmd5>
+    <version>1.9.7</version>
+    <time>1315760977</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81375
+</comment>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>a0d87bfddd2b769c1092744c80ed4c63</srcmd5>
+    <version>1.9.7</version>
+    <time>1319181999</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>5c5a85be26136365a20077766e5af9d6</srcmd5>
+    <version>1.9.7</version>
+    <time>1319206561</time>
+    <user>coolo</user>
+    <comment>fix build on arm ... or better on non-i586/x86_64/ppc (forwarded request 88631 from adrianSuSE)</comment>
+    <requestid>88658</requestid>
+  </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>cd79d972b02baa2682d08e848d17bd06</srcmd5>
+    <version>1.9.7</version>
+    <time>1323191999</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>dcf6e651d091deca554f658e3652f5e1</srcmd5>
+    <version>1.9.8</version>
+    <time>1332752487</time>
+    <user>coolo</user>
+    <comment>Update to version 1.9.8 and fix bug bnc#736115</comment>
+    <requestid>110854</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>20401085e51d2714b71a3fbde4428b39</srcmd5>
+    <version>1.9.8</version>
+    <time>1334215627</time>
+    <user>coolo</user>
+    <comment>Disable parallel build, it seems to break the build due to scarce resources. Waf is heavy like that, I've had to do it in other waf-based projects too. It could probably work with -j2, though, but I thought I'd stay on the safe side.
+I triggered a rebuild a few times and it hasn't failed since the change. Hope it fixes.
+
+PS: Added the changes entry (forwarded request 113127 from klaussfreire) (forwarded request 113129 from dimstar)</comment>
+    <requestid>113188</requestid>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>20401085e51d2714b71a3fbde4428b39</srcmd5>
+    <version>1.9.8</version>
+    <time>1340183474</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="45" vrev="7">
+    <srcmd5>f943c609ac7fc05e55d7e6168fe944ac</srcmd5>
+    <version>1.9.8</version>
+    <time>1340890173</time>
+    <user>coolo</user>
+    <comment>- fix R_PPC64_ADDR32 fff85e94858 for symbol `' out of range
+- fix jack_connect segfault (forwarded request 126364 from RedDwarf)</comment>
+    <requestid>126384</requestid>
+  </revision>
+  <revision rev="46" vrev="9">
+    <srcmd5>f943c609ac7fc05e55d7e6168fe944ac</srcmd5>
+    <version>1.9.8</version>
+    <time>1359109098</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>0ef6f6588c349477201291c2ca283bce</srcmd5>
+    <version>1.9.9.5</version>
+    <time>1360330319</time>
+    <user>coolo</user>
+    <comment>Update to release 1.9.9.5 fixes bnc#801442 caused by recent ffado update. (forwarded request 151481 from plater)</comment>
+    <requestid>151482</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>87bc6b8c37d084d61b9bf98d2b7eae0e</srcmd5>
+    <version>1.9.9.5</version>
+    <time>1364896504</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161568 from m_meister)</comment>
+    <requestid>161570</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>ec59f7b65aa6726ada90b9a77ef7b2a8</srcmd5>
+    <version>1.9.9.5</version>
+    <time>1370925260</time>
+    <user>coolo</user>
+    <comment>license update:  GPL-2.0+ and LGPL-2.1+
+jack server is licensed under GPL-2.0+ (forwarded request 177880 from dec16180)</comment>
+    <requestid>177889</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>d6bc8473d2f17f5cf22532da70c7012c</srcmd5>
+    <version>1.9.9.5</version>
+    <time>1371221159</time>
+    <user>coolo</user>
+    <comment>- add aarch64.patch (forwarded request 178602 from dirkmueller)</comment>
+    <requestid>178862</requestid>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>d6bc8473d2f17f5cf22532da70c7012c</srcmd5>
+    <version>1.9.9.5</version>
+    <time>1379662693</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="7">
+    <srcmd5>0a49a519c31951cf0d04e9112f3abb21</srcmd5>
+    <version>1.9.9.5</version>
+    <time>1400057427</time>
+    <user>coolo</user>
+    <comment>- Enable firewire only for 12.1+ due to lack of libffado-devel
+
+for evergreen 11.4 packman (forwarded request 232386 from olh)</comment>
+    <requestid>233690</requestid>
+  </revision>
+  <revision rev="53" vrev="9">
+    <srcmd5>0a49a519c31951cf0d04e9112f3abb21</srcmd5>
+    <version>1.9.9.5</version>
+    <time>1409301258</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>7e80d0c97dde997496e78002f15b7006</srcmd5>
+    <version>1.9.10</version>
+    <time>1411556933</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250579</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>a4bdc682fe4adab420d328e441a70cbe</srcmd5>
+    <version>1.9.10</version>
+    <time>1426485409</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289957</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>e170fb4d07a67f5585d46f4db315f108</srcmd5>
+    <version>1.9.10</version>
+    <time>1432886171</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit the right revision</comment>
+    <requestid>308953</requestid>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>76e311eebaf3400fbd03867c2f3e0c73</srcmd5>
+    <version>1.9.10</version>
+    <time>1459001410</time>
+    <user>dimstar_suse</user>
+    <comment>Use pkgconfig buildrequires and buildignore libiec61883</comment>
+    <requestid>376419</requestid>
+  </revision>
+  <revision rev="58" vrev="5">
+    <srcmd5>0011460b0884d14f31ea359a0aabbd57</srcmd5>
+    <version>1.9.10</version>
+    <time>1462051625</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390196</requestid>
+  </revision>
+  <revision rev="59" vrev="6">
+    <srcmd5>c14abc65afcab070aa19254d63c673a3</srcmd5>
+    <version>1.9.10</version>
+    <time>1493019945</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>484400</requestid>
+  </revision>
+  <revision rev="60" vrev="7">
+    <srcmd5>dd025ec4fa03a9f61314a5ab734b09b2</srcmd5>
+    <version>1.9.10</version>
+    <time>1500892233</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511527</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>a52062492e3654950c8324c0d04e99ef</srcmd5>
+    <version>1.9.12</version>
+    <time>1516443924</time>
+    <user>dimstar_suse</user>
+    <comment>Only package libjack.so.* in libjack package
+Build with _smp_mflags
+Split off libjacknet0 and libjackserver0 into subpackages.
+Update to version 1.9.12 and use python3 instead of python2 for the build.
+- Removed jack-sparcv9.diff and jack-ppc64-long.patch, the file that is patched - linux/cycles.h no longer exists.
+- Removed reproducible.patch, gcc6-fixes.diff and jack-fixgcc7.patch
+  they are all now upstream.
+- Upstream changes:
+  *Various corrections in NetJack2 code.
+  *Partial buffers can now be transmitted with libjacknet API.
+  *Including S24_LE/BE formats to linux ALSA driver.
+  *More robust shared memory allocator.
+  *Correct CoreAudio devices aggregation code.
+  *Waf and wscripts improvement and update.
+  *New JackProxyDriver.
+  *Various fixes in JACK MIDI code.
+  *Fix return value of SetTimebaseCallback().
+  *Correct netmanager latency reporting.
+  *Implement new jack_port_rename and JackPortRenameCallback API.
+  *Fix CPU hogging of the midi_thread().
+  *Release audio devices when alsa_driver_new fails.
+  *String management fix.
+  *Correct JackDriver::Open : call to fGraphManager-&gt;SetBufferSize
+   has to use current fEngineControl-&gt;fBufferSize value.
+  *Use ARM neon intrinsics for AudioBufferMixdown.
+  *Fix Netjack alignment.
+  *Various wscript improvements and cleanup.
+  *Fix initialization of several class variables.
+  *Heap-allocate client matrix in topo sort.
+  *Add a toggle command to transport utility, to allow toggling
+   between play and stop state.
+  *Avoid side effects from parsing of &quot;version&quot; option in jackd.
+  *Allow firewire device be selected via -d.
+  *Add ARM-NEON acceleration for all non-dithering sample
+   conversion functions.
+  *Add jack_simdtest utility.
+  *Use Linux futex as JackSynchro.
+  *Add autoclose option to jack_load.
+  *Fix build with gcc-7.
+  *Show hint when DBus device reservation fails.
+  *Add support for internal session files.
+</comment>
+    <requestid>565897</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>7e3543ebf6e18abdcf5bdcc58969a497</srcmd5>
+    <version>1.9.12</version>
+    <time>1537970532</time>
+    <user>dimstar_suse</user>
+    <comment>Remove unnecessary requires for libjack0 and remove obsolete comments. Use %license on &quot;COPYING&quot;
+Add upstream patch to fix return value check of mmap() (boo#1108981): fix-mmap-return-value-check.patch
+Update the waf code to the 2.0 series in order to work under python3.7 taken from upstream git:
+  * jack-waf2.patch</comment>
+    <requestid>637005</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>db60e2721842f52f3a631f2804471c35</srcmd5>
+    <version>1.9.12</version>
+    <time>1555492977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694428</requestid>
+  </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>0c84b56fc58cd7edba0913dae21b8961</srcmd5>
+    <version>1.9.12</version>
+    <time>1564302022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718138</requestid>
+  </revision>
+</revisionlist>

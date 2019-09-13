@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0fb751d8f137bd195dce1023d7248219</srcmd5>
+    <version>0.9.5</version>
+    <time>1415636892</time>
+    <user>dimstar_suse</user>
+    <comment>Submitted as leaf dependency for package rubygem-vagrant
+
+rubygem-vagrant submission was announced to opensuse-factory at http://lists.opensuse.org/opensuse-factory/2013-11/msg00877.html .</comment>
+    <requestid>259389</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ab144421cab78dd130fa7230a6371f80</srcmd5>
+    <version>0.9.7</version>
+    <time>1457353619</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>365367</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a32ee7e834bb443ed3977cfdade3b831</srcmd5>
+    <version>0.9.8</version>
+    <time>1491895876</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>456599</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0502142fa6424633d83b37b6efe6577f</srcmd5>
+    <version>0.9.10</version>
+    <time>1499677620</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505383</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0f92b1b8f14b3a492cb455d124a6a6a3</srcmd5>
+    <version>0.10.0</version>
+    <time>1551687669</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679537</requestid>
+  </revision>
+</revisionlist>

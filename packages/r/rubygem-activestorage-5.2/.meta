@@ -1,0 +1,5 @@
+<package name="rubygem-activestorage-5.2" project="openSUSE:Factory">
+  <title>rubygem-activestorage-5.2</title>
+  <description>Attach cloud and local files in Rails applications.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-activestorage-5.2"/>
+</package>

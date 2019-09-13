@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6d5c0670d76e93dc64c56730bf2de94</srcmd5>
+    <version>5.9.1</version>
+    <time>1503592413</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.1</comment>
+    <requestid>507704</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9249ec042dda143809d04c6dd30b15b0</srcmd5>
+    <version>5.9.1</version>
+    <time>1503926263</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner
+- Remove unnecessary empty private-headers-devel package</comment>
+    <requestid>518874</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f1be41145353b4ee62a8e00be39ca711</srcmd5>
+    <version>5.9.2</version>
+    <time>1510960797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>532820</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eb8729d5576501c166f7f7305f5a7210</srcmd5>
+    <version>5.9.3</version>
+    <time>1513343088</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.3</comment>
+    <requestid>545957</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>335ee924cf8db8ea7b25fefe8ff350d9</srcmd5>
+    <version>5.10.0</version>
+    <time>1514027638</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.10.0</comment>
+    <requestid>557401</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>21145883b7fceca58a364251b8029fc9</srcmd5>
+    <version>5.11.0</version>
+    <time>1527933099</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.0 (forwarded request 611394 from Vogtinator)</comment>
+    <requestid>611684</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c5b7b9eb24677d91dededca711d31574</srcmd5>
+    <version>5.11.1</version>
+    <time>1530001889</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.1</comment>
+    <requestid>618684</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>02c95a66ecde11a7abb0ca35fb477e53</srcmd5>
+    <version>5.11.2</version>
+    <time>1538374360</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.2</comment>
+    <requestid>637848</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e0ae0e7c81c755c4ab5c6f6a524016f8</srcmd5>
+    <version>5.12.0</version>
+    <time>1544817124</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.12.0 final</comment>
+    <requestid>656571</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>71106eca30bd96f3fdcf74578ed77044</srcmd5>
+    <version>5.12.0</version>
+    <time>1550049431</time>
+    <user>dimstar_suse</user>
+    <comment>- Split speechd plugin into subpackage to not pull in libspeechd forcibly
+- Use System/Libraries as group for libQt5TextToSpeech5
+- Use %license
+- Use %requires_eq due to private API use</comment>
+    <requestid>670297</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5ad03abe5b644602649e7163041b3e04</srcmd5>
+    <version>5.12.2</version>
+    <time>1553157672</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.12.2</comment>
+    <requestid>685645</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>01fd4ebea4633cb780aa649d0f1386e4</srcmd5>
+    <version>5.12.3</version>
+    <time>1556312012</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.12.3</comment>
+    <requestid>697076</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>46310f279a4522d39b3219402dd13fe5</srcmd5>
+    <version>5.13.0</version>
+    <time>1561732206</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.0</comment>
+    <requestid>711196</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b93247f0166ac9d92301184b1bada194</srcmd5>
+    <version>5.13.1</version>
+    <time>1568025040</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.1</comment>
+    <requestid>729220</requestid>
+  </revision>
+</revisionlist>

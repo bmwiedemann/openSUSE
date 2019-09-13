@@ -1,0 +1,5 @@
+<package name="charliecloud" project="openSUSE:Factory">
+  <title>user-defined software stacks (UDSS) for HPC centers</title>
+  <description></description>
+  <devel project="network:cluster" package="charliecloud"/>
+</package>

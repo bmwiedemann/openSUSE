@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0b9c7329c6728d2484f818ef24f10bd3</srcmd5>
+    <version>1.39</version>
+    <time>1516804297</time>
+    <user>dimstar_suse</user>
+    <comment>Initial import of rclone v1.39. Here follows the project description:
+
+rsync for cloud storage. rclone is a command line program to sync files and
+directories to and from a wide variety of cloud storage providers, providing
+various additional features.</comment>
+    <requestid>568569</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5009dc7c0622293cbc58ce3ea028b688</srcmd5>
+    <version>1.41</version>
+    <time>1528492595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to rclone v1.41. 
+  * Too many changes to list, please see
+    https://rclone.org/changelog/ for the complete changelog.
+
+- Fix spec file causing build error (unresolvable) on Leap 42.3.
+
+- Update to rclone v1.40.</comment>
+    <requestid>614555</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>728d9bc6a4fb64f944ae52718b234048</srcmd5>
+    <version>1.42</version>
+    <time>1530087717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619042</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e6526575826fd988d93cc0ba1a354360</srcmd5>
+    <version>1.43.1</version>
+    <time>1538374675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v1.43.1
+  * See https://rclone.org/changelog/ for the complete changelog.
+- Switch to obs_scm</comment>
+    <requestid>638789</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e9e0423ad109e2a3c48a4a7621a78518</srcmd5>
+    <version>1.45</version>
+    <time>1543953315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v1.45
+  * See https://rclone.org/changelog/ for the complete changelog.</comment>
+    <requestid>653558</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dffb714e836e053e0196bc1e0288b048</srcmd5>
+    <version>1.46</version>
+    <time>1552901934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685346</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>45fd734aa059feb2d6365a4200115705</srcmd5>
+    <version>1.47.0</version>
+    <time>1560338096</time>
+    <user>dimstar_suse</user>
+    <comment>Update to rclone v1.47.0.</comment>
+    <requestid>708876</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1d1a579c6f13d2700e61d1b54a45e1b3</srcmd5>
+    <version>1.48.0</version>
+    <time>1562843272</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix executable permission
+- Update to version 1.48.0
+  * New commands
+    - serve sftp: Serve an rclone remote over SFTP (Nick Craig-Wood)
+  * New Features
+    - Multi threaded downloads to local storage (Nick Craig-Wood)
+      controlled with --multi-thread-cutoff and --multi-thread-streams
+    - Use rclone.conf from rclone executable directory to enable portable use (albertony)
+    - Allow sync of a file and a directory with the same name (forgems)
+      this is common on bucket based remotes, eg s3, gcs
+    - Add --ignore-case-sync for forced case insensitivity (garry415)
+    - Implement --stats-one-line-date and --stats-one-line-date-format (Peter Berbec)
+    - Log an ERROR for all commands which exit with non-zero status (Nick Craig-Wood)
+    - Use go-homedir to read the home directory more reliably (Nick Craig-Wood)
+    - Enable creating encrypted config through external script invocation (Wojciech Smigielski)
+    - build: Drop support for go1.8 (Nick Craig-Wood)
+    - config: Make config create/update encrypt passwords where necessary (Nick Craig-Wood)
+    - copyurl: Honor --no-check-certificate (Stefan Breunig)
+    - install: Linux skip man pages if no mandb (didil)
+    - lsf: Support showing the Tier of the object (Nick Craig-Wood)
+    - lsjson
+      + Added EncryptedPath to output (calisro)
+      + Support showing the Tier of the object (Nick Craig-Wood)
+      + Add IsBucket field for bucket based remote listing of the root (Nick Craig-Wood)
+    - rc
+      + Add --loopback flag to run commands directly without a server (Nick Craig-Wood)
+      + Add operations/fsinfo: Return information about the remote (Nick Craig-Wood)
+      + Skip auth for OPTIONS request (Nick Craig-Wood)
+      + cmd/providers: Add DefaultStr, ValueStr and Type fields (Nick Craig-Wood)
+      + jobs: Make job expiry timeouts configurable (Aleksandar Jankovic)</comment>
+    <requestid>711124</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea8ee8b116789316271c380fde2ac950</srcmd5>
+    <version>1.49.0</version>
+    <time>1566894408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726239</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2e9d6a8e5ebaf303f8a48ec01a983199</srcmd5>
+    <version>1.49.1</version>
+    <time>1567581170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727822</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ee9c5febd23f3940ac5da7c8f9d16c73</srcmd5>
+    <version>1.49.2</version>
+    <time>1568025428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729272</requestid>
+  </revision>
+</revisionlist>

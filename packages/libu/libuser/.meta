@@ -1,0 +1,6 @@
+<package name="libuser" project="openSUSE:Factory">
+  <title>A user and group account administration library</title>
+  <description></description>
+  <devel project="security:SELinux" package="libuser"/>
+  <url>https://fedorahosted.org/libuser/</url>
+</package>

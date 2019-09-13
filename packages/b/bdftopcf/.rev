@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f1163f1c88deef89edb6445908dea96c</srcmd5>
+    <version>1.0.3</version>
+    <time>1336470956</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115328</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f1163f1c88deef89edb6445908dea96c</srcmd5>
+    <version>1.0.3</version>
+    <time>1340183199</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9e6649296d635faaad23a6dfe6a63e43</srcmd5>
+    <version>1.0.4</version>
+    <time>1358862833</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 149182 from Zaitor)</comment>
+    <requestid>149355</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9e6649296d635faaad23a6dfe6a63e43</srcmd5>
+    <version>1.0.4</version>
+    <time>1359108696</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9e6649296d635faaad23a6dfe6a63e43</srcmd5>
+    <version>1.0.4</version>
+    <time>1379662029</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>9e6649296d635faaad23a6dfe6a63e43</srcmd5>
+    <version>1.0.4</version>
+    <time>1409300556</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8459a23a4c83e35e7c312d1af01941ae</srcmd5>
+    <version>1.0.5</version>
+    <time>1420755613</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>279968</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a810385e1e26f74dd5a6d7b6de3113d4</srcmd5>
+    <version>1.0.5</version>
+    <time>1486551919</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454435</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4cddfd4aaac2f01d9e31ad482b0c6179</srcmd5>
+    <version>1.1</version>
+    <time>1510665420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1
+  * This release imports the libXfont 1.x BDF-reading and PCF-writing
+    code, as this program is the only known user of that code and
+    libXfont 1.x is otherwise unmaintained. No functional difference
+    should be apparent, this is just another step towards eliminating
+    the old version of libXfont from the world.</comment>
+    <requestid>540273</requestid>
+  </revision>
+</revisionlist>

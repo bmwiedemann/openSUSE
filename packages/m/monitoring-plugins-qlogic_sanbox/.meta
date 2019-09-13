@@ -1,0 +1,17 @@
+<package name="monitoring-plugins-qlogic_sanbox" project="openSUSE:Factory">
+  <title>Check QLogic FC Sanboxes</title>
+  <description>Nagios plugin, allowing to check QLogic FC Sanboxes.
+
+This plugin has been tested with the following QLogic switches:
+
+SANbox 5200 FC Switch
+SANbox 5202 FC Switch
+SANbox 5600 FC Switch
+SANbox 5602 FC Switch
+SANbox 5800 FC Switch
+
+
+</description>
+  <devel project="server:monitoring" package="monitoring-plugins-qlogic_sanbox"/>
+  <url>http://en.opensuse.org/Nagios-plugins-qlogic_sanbox</url>
+</package>

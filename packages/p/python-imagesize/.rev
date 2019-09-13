@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0fe0575de85ea09b0351747bbca0bdf3</srcmd5>
+    <version>0.7.1</version>
+    <time>1489021362</time>
+    <user>dimstar_suse</user>
+    <comment>needed for python-Sphinx &gt;= 1.5.2</comment>
+    <requestid>476830</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6c1db56d295e21edfb2fde59b005623b</srcmd5>
+    <version>0.7.1</version>
+    <time>1489653252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478927</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c328b45f476bf04eb694fd02a6783caa</srcmd5>
+    <version>0.7.1</version>
+    <time>1492618074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>485965</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5dfddd6a198223ad1ac28f4b03f4b62</srcmd5>
+    <version>1.0.0</version>
+    <time>1519557415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579326</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>012236375a5fc21358a69d7cb285a01c</srcmd5>
+    <version>1.0.0</version>
+    <time>1545866796</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659437</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>54df9e378dbdc3da100064d8bd677417</srcmd5>
+    <version>1.1.0</version>
+    <time>1557404850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701294</requestid>
+  </revision>
+</revisionlist>

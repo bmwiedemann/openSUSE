@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b972feebb7a2faf5feb52ce268874cd</srcmd5>
+    <version>3.1.0</version>
+    <time>1526371646</time>
+    <user>dimstar_suse</user>
+    <comment>Additional colormaps for python plotting tools</comment>
+    <requestid>603743</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5fce9ec88804bae3f139f86e20c5d77f</srcmd5>
+    <version>3.1.1</version>
+    <time>1546946768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660793</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8c24e72e591e42ff24b369dde50295f2</srcmd5>
+    <version>3.2.0</version>
+    <time>1563915382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717998</requestid>
+  </revision>
+</revisionlist>

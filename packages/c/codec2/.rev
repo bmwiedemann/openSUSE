@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4ab75549a2a3700ecd3faea12d716068</srcmd5>
+    <version>0.5.1</version>
+    <time>1490707291</time>
+    <user>maxlin_factory</user>
+    <comment>codec used in amateur radio</comment>
+    <requestid>479774</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8c6986e80b90fa51dfe8e1b7d3bef9b9</srcmd5>
+    <version>0.6</version>
+    <time>1496226024</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>499754</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8318e5a0847ec690ac06bd89ca35fa1</srcmd5>
+    <version>0.8.1</version>
+    <time>1534543212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628816</requestid>
+  </revision>
+</revisionlist>

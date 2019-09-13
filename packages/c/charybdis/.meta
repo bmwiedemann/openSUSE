@@ -1,0 +1,9 @@
+<package name="charybdis" project="openSUSE:Factory">
+  <title>An ircd based on ratbox-ircd</title>
+  <description>Charybdis is an ircd used on various networks such as AthemeNET/OSCNet and
+SorceryNet, based on ircd-ratbox 2.1.5
+
+
+</description>
+  <devel project="server:irc" package="charybdis"/>
+</package>

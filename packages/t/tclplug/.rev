@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>8533b0f7b784c909de5e2abf8e7b4c18</srcmd5>
+    <version>3.0.2</version>
+    <time>1168904325</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f1cb9491827c056b6c91f491d45f809a</srcmd5>
+    <version>3.1.0</version>
+    <time>1207465508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>30ac69c096700dda7cd758d26b7b824a</srcmd5>
+    <version>3.1.0</version>
+    <time>1207834436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7ab06a80a8251b14e7721eed5758b10f</srcmd5>
+    <version>3.1.0</version>
+    <time>1207834492</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="51">
+    <srcmd5>7ab06a80a8251b14e7721eed5758b10f</srcmd5>
+    <version>3.1.0</version>
+    <time>1207834492</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="52">
+    <srcmd5>62f1b1b671cc4f1e31bef8862dc80492</srcmd5>
+    <version>3.1.0</version>
+    <time>1245341148</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="54">
+    <srcmd5>62f1b1b671cc4f1e31bef8862dc80492</srcmd5>
+    <version>3.1.0</version>
+    <time>1245341148</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="55">
+    <srcmd5>936eb6bd2c10d23578c50851b987e416</srcmd5>
+    <version>3.1.0</version>
+    <time>1265378497</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:tcl/tclplug based on submit request 31523 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="56">
+    <srcmd5>0ea8f6c27066e0f4ad8317e08ead3b03</srcmd5>
+    <version>3.1.0</version>
+    <time>1268926299</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="58">
+    <srcmd5>0ea8f6c27066e0f4ad8317e08ead3b03</srcmd5>
+    <version>3.1.0</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="59">
+    <srcmd5>0ea8f6c27066e0f4ad8317e08ead3b03</srcmd5>
+    <version>3.1.0</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="62">
+    <srcmd5>0ea8f6c27066e0f4ad8317e08ead3b03</srcmd5>
+    <version>3.1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="64">
+    <srcmd5>0ea8f6c27066e0f4ad8317e08ead3b03</srcmd5>
+    <version>3.1.0</version>
+    <time>1319182508</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="65">
+    <srcmd5>e96960685fd445c72bbe94944035befa</srcmd5>
+    <version>3.1.0</version>
+    <time>1323194853</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="66">
+    <srcmd5>80222bcf2b67b8d5239d19100bad15e5</srcmd5>
+    <version>3.1.0</version>
+    <time>1324831322</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97548 from coolo)</comment>
+    <requestid>97575</requestid>
+  </revision>
+  <revision rev="16" vrev="68">
+    <srcmd5>80222bcf2b67b8d5239d19100bad15e5</srcmd5>
+    <version>3.1.0</version>
+    <time>1340184260</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="70">
+    <srcmd5>80222bcf2b67b8d5239d19100bad15e5</srcmd5>
+    <version>3.1.0</version>
+    <time>1359110466</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="72">
+    <srcmd5>80222bcf2b67b8d5239d19100bad15e5</srcmd5>
+    <version>3.1.0</version>
+    <time>1379664775</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="74">
+    <srcmd5>80222bcf2b67b8d5239d19100bad15e5</srcmd5>
+    <version>3.1.0</version>
+    <time>1409303456</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="75">
+    <srcmd5>6748d25315729f8d66b73495e6db6ffc</srcmd5>
+    <version>3.1.0</version>
+    <time>1415118618</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259640</requestid>
+  </revision>
+</revisionlist>

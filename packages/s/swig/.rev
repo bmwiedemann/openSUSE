@@ -1,0 +1,614 @@
+<revisionlist>
+  <revision rev="1" vrev="24">
+    <srcmd5>8a04d06738efbfd00a5025cc779515ca</srcmd5>
+    <version>1.3.29</version>
+    <time>1168904308</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fd50533499384ec8d32ac28f280ba23a</srcmd5>
+    <version>1.3.31</version>
+    <time>1175812276</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="15">
+    <srcmd5>49563c78ca299d0dfad07a2984d0c9a2</srcmd5>
+    <version>1.3.31</version>
+    <time>1180007903</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="18">
+    <srcmd5>d895d254a5ef4f64cbbe6800c1db2329</srcmd5>
+    <version>1.3.31</version>
+    <time>1180638843</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="51">
+    <srcmd5>26dfcf5bb46f3a9fdf5ab7c3e0f7a814</srcmd5>
+    <version>1.3.31</version>
+    <time>1191366801</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ee975fd9643bfe0fac3037ec9372f543</srcmd5>
+    <version>1.3.33</version>
+    <time>1196721670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4ab184c1170f098b1495b876992d3b43</srcmd5>
+    <version>1.3.34</version>
+    <time>1205928717</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>658b7c9d21fae4496c2a7f4189736879</srcmd5>
+    <version>1.3.34</version>
+    <time>1206654740</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8260f9aa77abdb9b9ebdcb6dcb75a499</srcmd5>
+    <version>1.3.35</version>
+    <time>1207860507</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>52833be5b7df3edbe6a7c298153d7bfc</srcmd5>
+    <version>1.3.36</version>
+    <time>1222434734</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="48">
+    <srcmd5>52833be5b7df3edbe6a7c298153d7bfc</srcmd5>
+    <version>1.3.36</version>
+    <time>1222434734</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="49">
+    <srcmd5>b792537391e752db604551bcd4de4d0a</srcmd5>
+    <version>1.3.36</version>
+    <time>1224694274</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="51">
+    <srcmd5>b792537391e752db604551bcd4de4d0a</srcmd5>
+    <version>1.3.36</version>
+    <time>1224694274</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>48673a0d46bd9934a6e9373b29f026d9</srcmd5>
+    <version>1.3.40</version>
+    <time>1265911261</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:building/swig based on submit request 29348 from user coolo
+</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>cfdae88c0c39a17c0d858f6a1638a64e</srcmd5>
+    <version>1.3.40</version>
+    <time>1266147350</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:building/swig based on submit request 32511 from user coolo
+</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>2be45301731cf5daa99b1a83c6c914ae</srcmd5>
+    <version>1.3.40</version>
+    <time>1268926263</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>eeda8426bec6ede27ba61f7a565a44b5</srcmd5>
+    <version>1.3.40</version>
+    <time>1270654707</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:building/swig based on submit request 37087 from user michal-m
+</comment>
+    <requestid>37087</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>eeda8426bec6ede27ba61f7a565a44b5</srcmd5>
+    <version>1.3.40</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>eeda8426bec6ede27ba61f7a565a44b5</srcmd5>
+    <version>1.3.40</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>eeda8426bec6ede27ba61f7a565a44b5</srcmd5>
+    <version>1.3.40</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>829e7b33183363d60c155b107a32098d</srcmd5>
+    <version>2.0.3</version>
+    <time>1305707422</time>
+    <user>saschpe</user>
+    <comment>Remove duplicate BuildRequires: python-devel (forwarded request 69911 from namtrac)</comment>
+    <requestid>69970</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>6abe76e48e2972ec85f40c1a14800902</srcmd5>
+    <version>2.0.3</version>
+    <time>1305707435</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69970
+</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>b67ce229f9fc310e0082e6b842b49f7c</srcmd5>
+    <version>2.0.3</version>
+    <time>1306144601</time>
+    <user>saschpe</user>
+    <comment>- Fix test failures with Perl 5.14
+- Use upstream patch for Perl 5.12 support
+ (forwarded request 70751 from namtrac)</comment>
+    <requestid>70867</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>198ee97797db286b8ede9f15f96e9e99</srcmd5>
+    <version>2.0.3</version>
+    <time>1306144611</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70867
+</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>f5e09011158fd9990f7210c615040d36</srcmd5>
+    <version>2.0.4</version>
+    <time>1316618590</time>
+    <user>saschpe</user>
+    <comment>- Update to swig 2.0.4
+  (see CHANGES.current for complete list)
+  * [Perl] Patch #3260265 fixing overloading of non-primitive types and integers in 
+    Perl 5.12 and later.
+  * [Ruby] Fix %import where one of the imported files %include one of the STL include
+    files such as std_vector.i.
+  * [python] Additional fixes for python3.2 support.
+  * [python] Fixed PyGetSetDescr for python3.2.
+  * Bug 2635919: Convenience method to convert std::map to a python dict.
+  * Fixed bug 1163440: vararg typemaps.
+  * [Python] Applied patch #1932484: migrate PyCObject to PyCapsule.
+  * [Python] Merged in the szager-python-builtin branch, adding the -builtin feature
+    for python.  The -builtin option may provide a significant performance gain
+    in python wrappers.  For full details and limitations, refer to Doc/Manual/Python.html.
+    A small test suite designed to demonstrate the performance gain is in
+    Examples/python/performance.
+
+- Fix RHEL/Fedora build (forwarded request 84038 from kwk)</comment>
+    <requestid>84040</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>f5e09011158fd9990f7210c615040d36</srcmd5>
+    <version>2.0.4</version>
+    <time>1319182498</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>f7683706f860e0e8a775b91403aa01e0</srcmd5>
+    <version>2.0.4</version>
+    <time>1323961679</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 96070 from coolo)</comment>
+    <requestid>96075</requestid>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>bc31154a94cd7a5112d2f5b75280ccdd</srcmd5>
+    <version>2.0.4</version>
+    <time>1331039230</time>
+    <user>coolo</user>
+    <comment>- fix SLES 10 build, disable failing test (bnc#750618) (forwarded request 108119 from kwk)</comment>
+    <requestid>108122</requestid>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>9041f6e444a3a818403b7f44fba9df29</srcmd5>
+    <version>2.0.4</version>
+    <time>1331124349</time>
+    <user>coolo</user>
+    <comment>- The perl 5.12 packages are compiled with -Duse64bitint, which 
+  means that IVs are 64-bits even on 32-bit architectures. When 
+  converting IVs, SWIG assumes that an IV is the same size as a 
+  long, which causes OverflowErrors with  unsigned longs when 
+  the value is greater than 2^31. (forwarded request 108217 from k0da)</comment>
+    <requestid>108240</requestid>
+  </revision>
+  <revision rev="30" vrev="11">
+    <srcmd5>bca882c2d32fded2e9627c27f896c1eb</srcmd5>
+    <version>2.0.4</version>
+    <time>1334217168</time>
+    <user>coolo</user>
+    <comment>Added a patch to fix regression leading to uncompilable code when using typedef and function pointer references (forwarded request 113033 from adra)</comment>
+    <requestid>113057</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a1e8acd53b380156dee63d2553d7ee71</srcmd5>
+    <version>2.0.6</version>
+    <time>1336423971</time>
+    <user>coolo</user>
+    <comment>- Update to 2.0.6
+  * Various fixes with templates and typedef types.
+  * Some template lookup problems fixed.
+  * Templated type fixes to use correct typemaps.
+  * Autodoc documentation generation improvements.
+  * Python STL container wrappers improvements including addition of
+    stepped slicing.
+  * Approximately 70 fixes and minor enhancements for the following
+    target languages: AllegroCL, C#, D, Go, Java, Lua, Ocaml, Octave,
+    Perl, PHP, Python, R, Ruby, Tcl, Xml.</comment>
+    <requestid>116044</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d67d14ef4d49f33ebee6a79d498099ec</srcmd5>
+    <version>2.0.7</version>
+    <time>1338284370</time>
+    <user>coolo</user>
+    <comment>- Fix segfault in constructor/destructor warning (upstream ID 3530078)
+
+- Port SWIG to Ruby 1.9 (various patches)
+- Disable broken tests
+
+- Update to 2.0.7
+  * Important regression fixes since 2.0.5 for typemaps in general and
+    in Python.
+  * Fixes and enhancements for Go, Java, Octave and PHP.</comment>
+    <requestid>122544</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>d67d14ef4d49f33ebee6a79d498099ec</srcmd5>
+    <version>2.0.7</version>
+    <time>1340184249</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c6a09d2ff22335225b1b9ad15ddf4f0b</srcmd5>
+    <version>2.0.8</version>
+    <time>1352717055</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140897</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ad406716145cfd957970f601afc72660</srcmd5>
+    <version>2.0.9</version>
+    <time>1356082563</time>
+    <user>coolo</user>
+    <comment>- Update to SWIG 2.0.9
+  SWIG-2.0.9 summary:
+  - Improved typemap matching.
+  - Ruby 1.9 support is much improved.
+  - Various bug fixes and minor improvements in C#, CFFI, Go, Java,
+    Modula3, Octave, Perl, Python, R, Ruby, Tcl and in ccache-swig.
+- Removed patches (included in 2.0.9 release)
+  - 0001-Ruby-replace-obsolete-STR2CSTR-macro-with-StringValu.patch
+  - 0002-Ruby-use-RbConfig-instead-of-deprecated-Config-modul.patch
+  - 0003-Ruby-Fix-include-pathes-for-Ruby-1.9.patch
+  - 0004-Ruby-Add-local-dir-to-loadpath-for-Ruby-1.9.patch
+  - 0007-Ruby-1.9-methods-returns-array-of-Symbols-now.patch
+- Removed broken patch
+  - swig-2.0.4-guile2.patch
+- Disable tests failing on (deprecated) Python 2.4
+  - new patch: python-2.4.patch
+
+- fix build on SLE10: disable autogen.sh
+  Add patch: PyInt_FromSize_t unavailable under Python 2.4 (forwarded request 145936 from kwk)</comment>
+    <requestid>145941</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>8880b4fdcf25518684e9c0110318ae20</srcmd5>
+    <version>2.0.9</version>
+    <time>1356731400</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146461</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>8880b4fdcf25518684e9c0110318ae20</srcmd5>
+    <version>2.0.9</version>
+    <time>1359110453</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>eef18ab473b8370048b6550ffd5e58a7</srcmd5>
+    <version>2.0.9</version>
+    <time>1364901773</time>
+    <user>coolo</user>
+    <comment>Fix a declaration to match the one in ocamls headers</comment>
+    <requestid>161585</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6aa58487ef5024f90a71456aebf55891</srcmd5>
+    <version>2.0.10</version>
+    <time>1370435540</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>177047</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>6aa58487ef5024f90a71456aebf55891</srcmd5>
+    <version>2.0.10</version>
+    <time>1379664750</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d014a7b4ace1cff5f3398b3931bb2e13</srcmd5>
+    <version>2.0.11</version>
+    <time>1380218560</time>
+    <user>coolo</user>
+    <comment>- Update to SWIG 2.0.11
+  - Minor bug fixes and enhancements mostly in Python, but also
+    C#, Lua, Ocaml, Octave, Perl, PHP, Python, R, Ruby, Tcl. (forwarded request 200683 from kwk)</comment>
+    <requestid>200684</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>86697cfb32b583254b51c66e1c240003</srcmd5>
+    <version>2.0.11</version>
+    <time>1380738541</time>
+    <user>scarabeus_factory</user>
+    <comment>Add patch to fix a swig regression in version 2.0.11 causing void returns in non-void functions; patch submitted upstream. (forwarded request 201652 from badshah400)</comment>
+    <requestid>201664</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>bdd3d5d58599cfa45c4d81df63f0be8e</srcmd5>
+    <version>2.0.11</version>
+    <time>1391165107</time>
+    <user>coolo</user>
+    <comment>Add patch to make swig support octave &gt;= 3.8.0 (forwarded request 215615 from badshah400)</comment>
+    <requestid>215623</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>68537811ebfba43c3a05f15635cea472</srcmd5>
+    <version>2.0.12</version>
+    <time>1392270771</time>
+    <user>coolo</user>
+    <comment>- Update to 2.0.12
+  - This is a maintenance release backporting some fixes from the
+    pending 3.0.0 release.
+  - Octave 3.8 support added.
+  - C++11 support for new versions of erase/insert in the STL
+    containers.
+  - Compilation fixes on some systems for the generated Lua, PHP,
+    Python and R wrappers.
+ 
+  - Drop upstreamed patches:
+    swig-lua-fix-void-return-for-int-functions.patch
+    swig-support-octave-3.8.0.patch
+    ruby-2.0-encoding-utf8.patch</comment>
+    <requestid>221576</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5a8002c1dc3278b838d7933ef1ce1225</srcmd5>
+    <version>3.0.0</version>
+    <time>1395294808</time>
+    <user>coolo</user>
+    <comment>- Update to 3.0.0
+  - This is a major new release focusing primarily on C++
+    improvements.
+  - C++11 support added. Please see documentation for details of
+    supported features:
+    http://www.swig.org/Doc3.0/CPlusPlus11.html
+  - Nested class support added. This has been taken full advantage
+    of in Java and C#. Other languages can use the nested classes,
+    but require further work for a more natural integration into
+    the target language.
+  - We urge folk knowledgeable in the other target languages to
+    step forward and help with this effort.
+  - Lua: improved metatables and support for %nspace.
+  - Go 1.3 support added.
+  - Python import improvements including relative imports.
+  - Python 3.3 support completed.
+  - Perl director support added.
+  - C# .NET 2 support is now the minimum. Generated using statements
+    are replaced by fully qualified names.
+  - Bug fixes and improvements to the following languages:
+    C#, Go, Guile, Java, Lua, Perl, PHP, Python, Octave, R, Ruby, Tcl
+  - Various other bug fixes and improvements affecting all
+    languages.
+  - Note that this release contains some backwards incompatible
+    changes in some languages.
+  - Full detailed release notes are in the changes file.
+- drop 0001-Fix-Ruby-tracking-code-to-use-C-hash.patch,
+  ruby-1.8.6-newobject.patch, and swig-fix_ocaml_type.patch.
+  All upstreamed. (forwarded request 226429 from kwk)</comment>
+    <requestid>226459</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>cb84140e6ef96ddaffdb6897fb450e2b</srcmd5>
+    <version>3.0.2</version>
+    <time>1403176799</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>237293</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>cb84140e6ef96ddaffdb6897fb450e2b</srcmd5>
+    <version>3.0.2</version>
+    <time>1409303434</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>a0cdd7c55fe9066bf7fac04acc21edd8</srcmd5>
+    <version>3.0.2</version>
+    <time>1409326974</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246683</requestid>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>f98fbffbb29087d1b7b44dc53c485641</srcmd5>
+    <version>3.0.2</version>
+    <time>1410981874</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249196</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9571e04cc36e2a223901e8e74d7421be</srcmd5>
+    <version>3.0.4</version>
+    <time>1421777523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.4
+  - Python regression fix when wrapping C++ default arguments.
+  - Improved error messages.
+
+- Update to 3.0.3
+  - Add support for C++11 strongly typed enumerations.
+  - Numerous bug fixes and minor enhancements for C#, D, Go, Java,
+    Javascript, PHP, Perl and Python wrappers.
+- drop nested_classes.diff, patch is upstream</comment>
+    <requestid>281370</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>57eea79cb2427c1df39b12c9313066f7</srcmd5>
+    <version>3.0.5</version>
+    <time>1423216111</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283712</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>07a400c9e5aa51fc569f5bc6feaaa4f4</srcmd5>
+    <version>3.0.6</version>
+    <time>1437059643</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316058</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>e988040f98c22ac7f467cb6949b9e42a</srcmd5>
+    <version>3.0.7</version>
+    <time>1438899511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.7
+  - Add support for Octave-4.0.0.
+  - Remove potential Android security exploit in generated Java classes.
+  - Minor new features and bug fixes.
+- drop swig-octave4.patch and swig-3.0.6.patch, upstream now</comment>
+    <requestid>320310</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>b478993b87df6693f293aa5f8f16f506</srcmd5>
+    <version>3.0.8</version>
+    <time>1452535812</time>
+    <user>dimstar_suse</user>
+    <comment>- Add swig308-Fix-li_boost_array-test.patch to fix boost::array
+  test on PPC.
+
+- Update to 3.0.8
+  - pdf documentation enhancements.
+  - Various Python 3.5 issues fixed.
+  - std::array support added for Ruby and Python.
+  - shared_ptr support added for Ruby.
+  - Minor improvements for CFFI, Go, Java, Perl, Python, Ruby.</comment>
+    <requestid>352498</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>f3a32e1c25c2cb8c8e39ac9e81c02e06</srcmd5>
+    <version>3.0.8</version>
+    <time>1455272464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357387</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>195c484f226ea374a71f0b500da9bda6</srcmd5>
+    <version>3.0.8</version>
+    <time>1464299619</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397603</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>de77deadd02496dbfdaa0b329df19da6</srcmd5>
+    <version>3.0.9</version>
+    <time>1465750273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>400671</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>b397d6d621c958a2a14b527c15ea2dfa</srcmd5>
+    <version>3.0.10</version>
+    <time>1466977889</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>403648</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>91bcfde7691b9bbdbc30dfff8d2b89bd</srcmd5>
+    <version>3.0.11</version>
+    <time>1484041088</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>448965</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>d50f02485d5018a14fc3e71282fc4023</srcmd5>
+    <version>3.0.12</version>
+    <time>1486388108</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454251</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>be9b41c326e30db6a591daf0eb1a8d39</srcmd5>
+    <version>3.0.12</version>
+    <time>1506340651</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528527</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>d1767aa08523cadb8be99c7d1ae3f144</srcmd5>
+    <version>3.0.12</version>
+    <time>1510664753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539788</requestid>
+  </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>5005fdb8c40afca464bfa99b39bef06f</srcmd5>
+    <version>3.0.12</version>
+    <time>1516091695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561560</requestid>
+  </revision>
+  <revision rev="64" vrev="5">
+    <srcmd5>635365ce01050eed147786df5ec30836</srcmd5>
+    <version>3.0.12</version>
+    <time>1537970434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636298</requestid>
+  </revision>
+  <revision rev="65" vrev="6">
+    <srcmd5>952c333a21b576a891ee3657dc584dff</srcmd5>
+    <version>3.0.12</version>
+    <time>1543999096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653076</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>509d24d963b4b5f93b2ee02e21eed93d</srcmd5>
+    <version>4.0.0</version>
+    <time>1567423395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702574</requestid>
+  </revision>
+</revisionlist>

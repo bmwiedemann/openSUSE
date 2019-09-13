@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7c495229fcc72f23e51d2b7326d41f51</srcmd5>
+    <version>0~20130304</version>
+    <time>1366358246</time>
+    <user>coolo</user>
+    <comment>Joachim Metz has created a set of c libraries used by security tools.  The libxxx packages often include basic applications sub-packages which are useful by themselves.</comment>
+    <requestid>163821</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>22375cd7732e95d265aa8e8c6e7822cf</srcmd5>
+    <version>0~20130413</version>
+    <time>1375284226</time>
+    <user>coolo</user>
+    <comment>update to 0~20130413
+part of summer 2013 libyal refresh for opensuse 13.1
+</comment>
+    <requestid>185039</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>22375cd7732e95d265aa8e8c6e7822cf</srcmd5>
+    <version>0~20130413</version>
+    <time>1379662995</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ee6d22c93c4e51ea1fd36fe2119197e2</srcmd5>
+    <version>0~20131015</version>
+    <time>1385387686</time>
+    <user>coolo</user>
+    <comment>Update to 0~20131015.  Clean up BuildRequires.</comment>
+    <requestid>207811</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9b040d898cbf885e88f042836f67234f</srcmd5>
+    <version>0~20140731</version>
+    <time>1408021089</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244586</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9b040d898cbf885e88f042836f67234f</srcmd5>
+    <version>0~20140731</version>
+    <time>1409301610</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>8d363f180226d8d9ceddad38355e9685</srcmd5>
+    <version>0~20140731</version>
+    <time>1409998676</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>247269</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1c09b51946bfe5662d95bb2c3713f8e0</srcmd5>
+    <version>0~20140905</version>
+    <time>1411926849</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>252568</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>18be8d7f477b4def936eb88566db91cf</srcmd5>
+    <version>0~20141026</version>
+    <time>1419331858</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266219</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>db58c703cbe50cc8350494d034a4754d</srcmd5>
+    <version>0~20150105</version>
+    <time>1422626759</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282350</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e6a1b8422674fad949bcc4b0fe78105c</srcmd5>
+    <version>0~20160107</version>
+    <time>1455021101</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356371</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6570e0d13efc916368f8fde7d2a00258</srcmd5>
+    <version>0~20181227</version>
+    <time>1560337804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696097</requestid>
+  </revision>
+</revisionlist>

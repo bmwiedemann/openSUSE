@@ -1,0 +1,7 @@
+<package name="git-test" project="openSUSE:Factory">
+  <title>git-test</title>
+  <description>Run tests on each distinct tree in a revision list,
+	  skipping versions whose contents have already been tested
+  </description>
+  <devel project="devel:tools:scm" package="git-test"/>
+</package>

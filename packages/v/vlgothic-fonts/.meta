@@ -1,0 +1,7 @@
+<package name="vlgothic-fonts" project="openSUSE:Factory">
+  <title>VL-Gothic TrueType font family</title>
+  <description>This package provides &quot;VLGothic&quot; Japanese TrueType fonts which are
+based on the M+ fonts and the Sazanami fonts.
+</description>
+  <devel project="M17N:fonts" package="vlgothic-fonts"/>
+</package>

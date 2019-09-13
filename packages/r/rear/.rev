@@ -1,0 +1,273 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>92fb1b05825ef7605e4ccca9274f1eef</srcmd5>
+    <version>1.7.18</version>
+    <time>1238622636</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bbb08f1edb36a2d411a3fa5c68818ed3</srcmd5>
+    <version>1.7.21</version>
+    <time>1254923115</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/rear based on submit request 21456 from user sschapiro
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bbb08f1edb36a2d411a3fa5c68818ed3</srcmd5>
+    <version>1.7.21</version>
+    <time>1254923115</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/rear based on submit request 21456 from user sschapiro
+</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7130e4c06ce3046d97b513eb668cb566</srcmd5>
+    <version>1.7.23</version>
+    <time>1260973159</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/rear based on submit request 26302 from user sschapiro
+</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>112080c18ec0e311a7e5c29a3792e491</srcmd5>
+    <version>1.7.23</version>
+    <time>1268925966</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>112080c18ec0e311a7e5c29a3792e491</srcmd5>
+    <version>1.7.23</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>112080c18ec0e311a7e5c29a3792e491</srcmd5>
+    <version>1.7.23</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>36b437445e3c6c7815945000a09a0889</srcmd5>
+    <version>1.9.0</version>
+    <time>1297786564</time>
+    <user>darix</user>
+    <comment>Accepted submit request 61141 from user sschapiro
+</comment>
+    <requestid>61141</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>5f106ece29746361dad52cda00e1c628</srcmd5>
+    <version>1.9.0</version>
+    <time>1297786572</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 61141
+</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>5f106ece29746361dad52cda00e1c628</srcmd5>
+    <version>1.9.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>143c7385d5102b486274d7420804c26f</srcmd5>
+    <version>1.10.0</version>
+    <time>1298244195</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62206 from user sschapiro
+</comment>
+    <requestid>62206</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>f77b17cce933450c0fd04b90a9f0f47b</srcmd5>
+    <version>1.10.0</version>
+    <time>1298244204</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62206
+</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>f77b17cce933450c0fd04b90a9f0f47b</srcmd5>
+    <version>1.10.0</version>
+    <time>1319182423</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>fa7b884d08b96d82d3eb4585cbfc332a</srcmd5>
+    <version>1.10.0</version>
+    <time>1323194382</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>fa7b884d08b96d82d3eb4585cbfc332a</srcmd5>
+    <version>1.10.0</version>
+    <time>1340184139</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>fa7b884d08b96d82d3eb4585cbfc332a</srcmd5>
+    <version>1.10.0</version>
+    <time>1359110279</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d70866491eb57b0c229324d640731e68</srcmd5>
+    <version>1.14</version>
+    <time>1371153419</time>
+    <user>coolo</user>
+    <comment>- Require /usr/bin/mkisofs instead of mkisofs
+- The default getty is agetty now
+
+- Require mkisofs instead of genisoimage, as we plan to switch to
+  it. (rear works both /usr/bin/mkisofs and /usr/bin/genisoimage)
+- Avoid UUOC: better deletion strategy for gitignore
+
+- updated to rear 1.14 from upstream
+  * see rear-release-notes.txt for more informations
+- clean and rebase specfile
+- remove debian files
+- don't include manfiles and makefile in documentation</comment>
+    <requestid>178608</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d70866491eb57b0c229324d640731e68</srcmd5>
+    <version>1.14</version>
+    <time>1379664439</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7e29642692b5d2ad32ea61c7dd745db6</srcmd5>
+    <version>1.15</version>
+    <time>1391540245</time>
+    <user>coolo</user>
+    <comment>Rear version upgrade to current upstream version 1.15</comment>
+    <requestid>220860</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>a158771b2498361d416bd7c356df6cf4</srcmd5>
+    <version>1.15</version>
+    <time>1392128738</time>
+    <user>coolo</user>
+    <comment>Replaced RPM Requires: lsb by explicitly requiring only those RPM packages that are mandatory for Rear (bnc#861871 and bnc#862824) (forwarded request 221836 from jsmeix)</comment>
+    <requestid>221837</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>028ba4b1a98831b9bdec6b31070e6c50</srcmd5>
+    <version>1.16</version>
+    <time>1399660244</time>
+    <user>coolo</user>
+    <comment>Version upgrade to 1.16 that adds in particular VLAN tagging support. (forwarded request 233254 from jsmeix)</comment>
+    <requestid>233255</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>902bfd5ad817da614c8a7e2c4ec7c4ff</srcmd5>
+    <version>1.16</version>
+    <time>1400057102</time>
+    <user>coolo</user>
+    <comment>Provide also the other documentation (&quot;make install&quot; only installs the man page) and check the syntax of all bash code. (forwarded request 233727 from jsmeix)</comment>
+    <requestid>233728</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>902bfd5ad817da614c8a7e2c4ec7c4ff</srcmd5>
+    <version>1.16</version>
+    <time>1409303172</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3a5abc129f4e5d35a2b9dd08b2324efa</srcmd5>
+    <version>1.17.0</version>
+    <time>1426680327</time>
+    <user>dimstar_suse</user>
+    <comment>Version upgrade to 1.17.0 plus fixed Source0 URL plus cleaned up changes file (wrapped long lines, remoced non-ASCII characters, removed trailing whitespaces, removed duplicate empty lines)</comment>
+    <requestid>290978</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>54e3f5b888a6bc9a6757f5b63a90838b</srcmd5>
+    <version>1.17.1</version>
+    <time>1436734370</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>315470</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e9ac3ec852d92a2339041bc15348e614</srcmd5>
+    <version>1.17.2</version>
+    <time>1442474422</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>330889</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c46c4af40cad818e6c48c4141d70c9b3</srcmd5>
+    <version>1.17.2.a</version>
+    <time>1445287903</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>339132</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>2eb249e100095af25a58298c14e04bcf</srcmd5>
+    <version>1.17.2.a</version>
+    <time>1446049836</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>341064</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>55230525d7240c74f012e4534cba784c</srcmd5>
+    <version>1.17.2.a</version>
+    <time>1446764650</time>
+    <user>dimstar_suse</user>
+    <comment>rear1172a-gpt_sync_mbr.patch adds support for the SUSE specific gpt_sync_mbr partitioning see https://github.com/rear/rear/issues/544 (bsc#950610). Additionally using a separate directory /usr/share/rear/conf/examples/ for the SUSE example config files to be in compliance with upstream https://github.com/rear/rear/pull/681 (forwarded request 342414 from jsmeix)</comment>
+    <requestid>342416</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>23161aafd352cb5fb044e42b1a44fba7</srcmd5>
+    <version>1.18</version>
+    <time>1459936295</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>381156</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9daee1911463c38ce8555c9cb9ec096e</srcmd5>
+    <version>1.19</version>
+    <time>1480019015</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.19 (forwarded request 441307 from ecsos)</comment>
+    <requestid>441315</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>015234aec3f201709164df4a585bef86</srcmd5>
+    <version>2.2</version>
+    <time>1503592942</time>
+    <user>dimstar_suse</user>
+    <comment>ReaR version upgrade to 2.2 (forwarded request 512637 from jsmeix)</comment>
+    <requestid>512638</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>da04c0bf301bbb605d2d3e158b4566fa</srcmd5>
+    <version>2.3</version>
+    <time>1513852194</time>
+    <user>dimstar_suse</user>
+    <comment>ReaR version upgrade to 2.3 (fate#323930 fate#323931 fate#323932) with rear-2.3.tar.gz from sourceforge (forwarded request 558881 from jsmeix)</comment>
+    <requestid>558882</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>a449b9f1de986b6665ffbe8398d557d2</srcmd5>
+    <version>2.3</version>
+    <time>1513941631</time>
+    <user>dimstar_suse</user>
+    <comment>ReaR version upgrade to 2.3 (fate#323930 fate#323931 fate#323932) with newest rear-2.3.tar.gz tarball from sourceforge plus changelog entry about it (forwarded request 559076 from jsmeix)</comment>
+    <requestid>559078</requestid>
+  </revision>
+</revisionlist>

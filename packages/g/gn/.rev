@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a270367459e69dba6d3fdfe912866f1f</srcmd5>
+    <version>0.1445</version>
+    <time>1532774556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625307</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>55181dcbe3637a805754a435da5530b2</srcmd5>
+    <version>0.1445</version>
+    <time>1533627783</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building on openSUSE Leap 42.3</comment>
+    <requestid>627652</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>411c85324059f3d43af52f8f5f94a0b2</srcmd5>
+    <version>0.1463</version>
+    <time>1535538397</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1463:
+  * No upstream changelog
+- Rebase patch gn-flags.patch</comment>
+    <requestid>631962</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c944eb34a8de7800f51a63af28de41e7</srcmd5>
+    <version>0.1479</version>
+    <time>1540988453</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.1479:
+  * No upstream changelog
+- Rebase patch gn-flags.patch</comment>
+    <requestid>645552</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e4f48be93ed86a46774dc28295a255de</srcmd5>
+    <version>0.1479</version>
+    <time>1542012140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647641</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>825687dc70cc6dea4c641e87cec7a7b1</srcmd5>
+    <version>0.1544</version>
+    <time>1557263984</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1544:
+  * No upstream changelog
+- Rebase patch gn-flags.patch</comment>
+    <requestid>701245</requestid>
+  </revision>
+</revisionlist>

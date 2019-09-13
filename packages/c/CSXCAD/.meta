@@ -1,0 +1,5 @@
+<package name="CSXCAD" project="openSUSE:Factory">
+  <title></title>
+  <description>A C++ library to describe geometrical objects and their physical or non-physical properties.</description>
+  <devel project="science" package="CSXCAD"/>
+</package>

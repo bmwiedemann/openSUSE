@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7d7329e3cf52cc38c7cd22a6bf9f61f9</srcmd5>
+    <version>0.15.0</version>
+    <time>1391666121</time>
+    <user>coolo</user>
+    <comment>new package, see http://lists.opensuse.org/opensuse-factory/2014-02/msg00118.html</comment>
+    <requestid>220951</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b102b68f68517ae440890de2681e215b</srcmd5>
+    <version>0.15.0</version>
+    <time>1401184990</time>
+    <user>coolo</user>
+    <comment>- fix /var/run handling
+  spice-vdagent-var_run.patch</comment>
+    <requestid>235504</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7ad9785a07df6cd3e5e13ea0bf7b71eb</srcmd5>
+    <version>0.15.0</version>
+    <time>1404996916</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239769</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e7dae590c9610efea19210bd1ad46c0f</srcmd5>
+    <version>0.15.0</version>
+    <time>1405520382</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241080</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>e7dae590c9610efea19210bd1ad46c0f</srcmd5>
+    <version>0.15.0</version>
+    <time>1409303402</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>76f31f03fd7ce24a24c93d727649ec57</srcmd5>
+    <version>0.16.0</version>
+    <time>1438421909</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>319394</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f65786a6e95a58bc49fe0a4c9b94ea50</srcmd5>
+    <version>0.16.0</version>
+    <time>1465938425</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>400808</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6bec9119840f698b351812d509091234</srcmd5>
+    <version>0.16.0</version>
+    <time>1473241708</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425089</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dabf7299fdd849d3a6b774c70cfafb4f</srcmd5>
+    <version>0.17.0</version>
+    <time>1480693425</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443023</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1c2e970505dd6905f8620ccef6db01ca</srcmd5>
+    <version>0.17.0</version>
+    <time>1489345380</time>
+    <user>dimstar_suse</user>
+    <comment>- Add endian swapping to run on BE guests (boo#1012215).
+  vdagentd-do-endian-swapping.patch</comment>
+    <requestid>477557</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>c02de02911d1888fb6128e37ce03b63d</srcmd5>
+    <version>0.17.0</version>
+    <time>1503929843</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519134</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>e5d11d78f4d475c92c49da17b5fb4052</srcmd5>
+    <version>0.17.0</version>
+    <time>1513245263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554572</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7852130d833133307c3e2a1ccb615334</srcmd5>
+    <version>0.19.0</version>
+    <time>1560970651</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.0
+  * Add libdrm dependency
+  * Fix file descriptor leak on failed connections
+  * Handle new VD_AGENT_GRAPHICS_DEVICE_INFO message advertised by
+    VD_AGENT_CAP_GRAPHICS_DEVICE_INFO capability
+  * Session agent autostart changed to WindowManager ([rhbz#1623947])
+    This fixes possible race with xdg-user-dirs
+  * Fix of sending empty screen resolution messages ([rhbz#1641723])
+  * Fix 'Dependency failed for Activation socket' with systemd ([rhbz#1545212])
+  * Fix error messages about on selecting text on host ([rhbz#1594876])
+    this was also fixed with Gtk backend
+  * Update paths from /var/run → /run
+  * Fix Session agent restart
+  * Add test for file creation
+  * Prefer GLib memory functions stdlib.h ones
+  * Several code and logs improvements
+  * Add GTK+ framework to handle x11 backend such as clipboard
+  * Deprecate X11 backend in favor of GTK+ framework
+  * Ask pkg-config to appropriate directory to install udev rules
+  * Fix leak of udscs's file descriptor
+  * Better quote directory path when calling xdg-open to save file transfer
+  * Bump GLib to 2.34
+  * Add systemd socket activation (rhbz#1340160)
+  * Add support to detailed errors on file transfers
+  * Add check for available free space in guest before starting a file transfer
+  * Use better names for duplicated files on file transfer
+  * Improve support on big endian guests (#5)
+  * Use IdleHint to check if a session is locked over console-kit (rhbz#1412673)
+  * Fixes double free on errors over udscs by improving memory ownership
+  * Hide autostart file on Unity
+  * Improve command line messages for vdagentd
+  * Fix typo in --enable-static-uinput configure option
+  * Code repository moved to gitlab.freedesktop.org
+- Add keyring and tarball signature files
+- obsoleted patches removed:
+  8ba17481-quote-save-dir-before-passing-to-shell.patch
+  vdagentd-do-endian-swapping.patch
+</comment>
+    <requestid>703830</requestid>
+  </revision>
+</revisionlist>

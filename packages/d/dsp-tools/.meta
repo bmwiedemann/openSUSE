@@ -1,0 +1,7 @@
+<package name="dsp-tools" project="openSUSE:Factory">
+  <title>Utilities for TI OMAP3 DSP</title>
+  <description>Utilities for TI OMAP3 DSP.
+Sources: http://gst-dsp.googlecode.com/
+GIT sources: http://github.com/felipec/dsp-tools</description>
+  <devel project="hardware" package="dsp-tools"/>
+</package>

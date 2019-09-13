@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e970c6f62dc6b5b000c0a2e72ea926e2</srcmd5>
+    <version>3.3.0</version>
+    <time>1338529051</time>
+    <user>coolo</user>
+    <comment>This package is needed by new WebYaST (will be submitted soon)</comment>
+    <requestid>123010</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e970c6f62dc6b5b000c0a2e72ea926e2</srcmd5>
+    <version>3.3.0</version>
+    <time>1340184161</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>84966daafe72e2d630db3ea683574a16</srcmd5>
+    <version>4.0.0</version>
+    <time>1344146522</time>
+    <user>coolo</user>
+    <comment>- updated to version 4.0.0
+  Remove deprecated cucumber_steps
+  Remove deprecated alternate syntaxes
+  Deprecate duplicate_attribute_assignment_from_initialize_with, which is now unused
+   as attributes assigned within initialize_with are not subsequently assigned
+
+- updated to version 3.6.1
+  Update README to include info about running with JRuby
+  Update dependencies on RSpec and tiny versions of Rails in Appraisal
+  Improve flexibility of using traits with associations and add documentation
+  Stub update_column to raise to mirror ActiveRecord's change from update_attribute</comment>
+    <requestid>129954</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9458aab36af87a7edf77373ff083e9e</srcmd5>
+    <version>4.1.0</version>
+    <time>1348562895</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135569</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d9458aab36af87a7edf77373ff083e9e</srcmd5>
+    <version>4.1.0</version>
+    <time>1359110316</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ec4a790be1280e2de2d851f1769cde6</srcmd5>
+    <version>4.2.0</version>
+    <time>1371460043</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>179136</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5ec4a790be1280e2de2d851f1769cde6</srcmd5>
+    <version>4.2.0</version>
+    <time>1379664520</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b60d153f81e7024a1b59006c2cf7aa4e</srcmd5>
+    <version>4.3.0</version>
+    <time>1385313151</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208116</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e915deced9e3e7c66b0747175d9903bb</srcmd5>
+    <version>4.4.0</version>
+    <time>1393310193</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223638</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>e915deced9e3e7c66b0747175d9903bb</srcmd5>
+    <version>4.4.0</version>
+    <time>1409303230</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>ed977b77a4b45a0756b278c30540c9f8</srcmd5>
+    <version>4.4.0</version>
+    <time>1413263528</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255726</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6e53fdb280b971d5f155993169e00eca</srcmd5>
+    <version>4.5.0</version>
+    <time>1423669524</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285502</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>68c721c4be112e7d203c787aab80b5f4</srcmd5>
+    <version>4.7.0</version>
+    <time>1460482461</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385107</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5041af586b9136f81ce2786a5f696b9c</srcmd5>
+    <version>4.8.0</version>
+    <time>1483047998</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447129</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>68d92af0c62bed48c9e0ee658747e1e5</srcmd5>
+    <version>4.8.1</version>
+    <time>1508197970</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 533253 from coolo)</comment>
+    <requestid>534138</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9b6de2293eec31673cb8329255ef484a</srcmd5>
+    <version>4.9.0</version>
+    <time>1509530971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537506</requestid>
+  </revision>
+</revisionlist>

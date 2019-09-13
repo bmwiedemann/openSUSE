@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e9ffaa54c16dc35b0408c2e178e36415</srcmd5>
+    <version>2.0.4</version>
+    <time>1445860061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>339631</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2694731a2b1ecbb251b0dab07712a68b</srcmd5>
+    <version>2.0.4</version>
+    <time>1446647611</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342072</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>72dc213682d427091ac4aea3d5aaf05d</srcmd5>
+    <version>2.0.4</version>
+    <time>1465336077</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400073</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ef16becef65fd01783a44f3d209dacb4</srcmd5>
+    <version>2.0.4</version>
+    <time>1468482489</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407626</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fa214f49ee5242229c55fac246e21f9e</srcmd5>
+    <version>2.1.0~beta2</version>
+    <time>1483554964</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>448020</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9835fd4c54329e532bda1f8e5d665f8b</srcmd5>
+    <version>2.1.0~beta2</version>
+    <time>1497518724</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.1.0-beta3
+  * Includes more fixes and tweaks for aarch64 support
+- Refresh patch luajit-lua-versioned.patch</comment>
+    <requestid>503651</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>caeaa16e2c675680d021061278cde18f</srcmd5>
+    <version>2.1.0~beta2</version>
+    <time>1518697645</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf to provide 32bit library for libluajit</comment>
+    <requestid>576806</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>c6dd9cc4aaaa551a07d637640b8f8c7b</srcmd5>
+    <version>2.1.0~beta2</version>
+    <time>1519747156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580293</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>69235c75af0acbdd030c3b76dc3d83d5</srcmd5>
+    <version>2.1.0~beta2</version>
+    <time>1551113900</time>
+    <user>coolo</user>
+    <comment>- Add ppc64le support from https://github.com/PPC64/LuaJIT (boo#1126363).
+  * 0001-PPC64-Fix-sradi-machine-code-offsets.patch
+  * 0002-PPC64-Add-method-for-external-branch-by-using-got-fo.patch
+  * 0003-PPC64-Add-LJ_GC64-mode-interpreter-for-ppc.patch
+  * 0004-PPC64-Add-special-instructions-for-PIC-code-setup.patch
+  * 0005-PPC64-Add-ffi-support.patch
+  * 0006-PPC64-Enable-support-for-ppc64-little-endian.patch
+  * 0007-PPC64-Fix-external-branches-that-should-address-on-R.patch
+  * 0008-luajit-2.1-fix-fp-parameter-passing-for-ppc64.patch
+  * 0009-PPC64-Fix-tab-indentation-from-last-commit.patch
+  * 0010-PPC64-Define-13-FPs-regs-as-arguments.patch
+  * 0011-PPC64-Fix-indentation-code-style.patch
+  * 0012-Fix-debug-information-for-PPC64.patch
+  * 0013-Fix-TOC-pointer-value-on-ffi-callback-handling.patch
+  * 0014-Improve-readability-of-a-load-instruction.patch
+  * 0015-Fix-remaining-unwind-values-on-vm-frames.patch</comment>
+    <requestid>678836</requestid>
+  </revision>
+</revisionlist>

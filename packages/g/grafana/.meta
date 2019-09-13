@@ -1,0 +1,11 @@
+<package name="grafana" project="openSUSE:Factory">
+  <title>Dashboards and editors for Graphite, InfluxDB, OpenTSDB</title>
+  <description>A graph and dashboard builder for visualizing time series metrics.
+
+Grafana provides ways to create, explore, and share
+dashboards and data with teams.
+
+</description>
+  <devel project="server:monitoring" package="grafana"/>
+  <url>http://grafana.org/</url>
+</package>

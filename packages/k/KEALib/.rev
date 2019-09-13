@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e9018c4b1a62e1575e381ea187462c4</srcmd5>
+    <version>1.4.7</version>
+    <time>1531592665</time>
+    <user>dimstar_suse</user>
+    <comment>- Move kea-config to devel package
+- Disable GDAL plugin by default
+- Update to 1.4.7
+- Backport upstream patch to fix bin/* installation
+  * Fixed_out_of_tree_builds.patch
+- Initial version 1.4.6
+- Add patch to be able to build GDAL plugin:
+  * fix_build_with_gdal.patch
+</comment>
+    <requestid>622451</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c30710baf89b25de9dad5f873b0ded27</srcmd5>
+    <version>1.4.7</version>
+    <time>1531813410</time>
+    <user>dimstar_suse</user>
+    <comment>- Polish spec file with spec-cleaner
+- Use more of cmake macros
+- Run test(s)
+- Fix dependencies of devel package
+</comment>
+    <requestid>623233</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1eaa1750106aacf02db3e83b965aecea</srcmd5>
+    <version>1.4.10</version>
+    <time>1532528083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625235</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>01d191881fa25cff1d7137d0b25c7359</srcmd5>
+    <version>1.4.10</version>
+    <time>1534543441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629494</requestid>
+  </revision>
+</revisionlist>

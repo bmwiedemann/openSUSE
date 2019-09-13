@@ -1,0 +1,760 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>2fffaee39f77c69cbc0b2a99c6978852</srcmd5>
+    <version>0.5.2</version>
+    <time>1233027746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ccbfc25852e9fbd07a5db724d679b7f3</srcmd5>
+    <version>0.5.2</version>
+    <time>1233698677</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1ba5855a16703e26d0a4f2f3fe816228</srcmd5>
+    <version>0.6.0</version>
+    <time>1236555385</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cfb82b786885a572c095790822590f40</srcmd5>
+    <version>0.6.0</version>
+    <time>1240056098</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7bb59a0118ed088326dfa9918bac0770</srcmd5>
+    <version>0.6.2</version>
+    <time>1241454228</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1fb74ba584fca28ca32f26c52ae24b13</srcmd5>
+    <version>0.6.3</version>
+    <time>1251496460</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/lxc based on submit request 18534 from user jirislaby
+</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1fb74ba584fca28ca32f26c52ae24b13</srcmd5>
+    <version>0.6.3</version>
+    <time>1251496460</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/lxc based on submit request 18534 from user jirislaby
+</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>66215a71e64bdf9d07189f091182cdbb</srcmd5>
+    <version>0.6.3</version>
+    <time>1266507287</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/lxc based on submit request 32735 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f08b6c6ae982dda2e3fe01167add4e30</srcmd5>
+    <version>0.6.5</version>
+    <time>1267801406</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/lxc based on submit request 34164 from user jirislaby
+</comment>
+    <requestid>34164</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>78e07dd4c563e5e687a17025b6883e35</srcmd5>
+    <version>0.6.5</version>
+    <time>1268924867</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>78e07dd4c563e5e687a17025b6883e35</srcmd5>
+    <version>0.6.5</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>78e07dd4c563e5e687a17025b6883e35</srcmd5>
+    <version>0.6.5</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f197990a93075ed95449898630f3fd29</srcmd5>
+    <version>0.7.2</version>
+    <time>1287411853</time>
+    <user>mlschroe</user>
+    <comment>checked in</comment>
+    <requestid>50898</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b87a230a27894cec6b03f7faac19467f</srcmd5>
+    <version>0.7.2</version>
+    <time>1287411860</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/lxc based on submit request 50898 from user jirislaby
+</comment>
+    <requestid>50898</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3f9ba9ba01be561a0efe1831b208bbaf</srcmd5>
+    <version>0.7.3</version>
+    <time>1294973509</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57807 from user jirislaby
+</comment>
+    <requestid>57807</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>5554b40683876ca31bcb0715783a5f22</srcmd5>
+    <version>0.7.3</version>
+    <time>1294973517</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57807
+</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>5554b40683876ca31bcb0715783a5f22</srcmd5>
+    <version>0.7.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b12c6c44c109988d2de809eb6b810e4c</srcmd5>
+    <version>0.7.3.99rc1</version>
+    <time>1298402913</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62542 from user jirislaby
+</comment>
+    <requestid>62542</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c89182be651d01da52188f4d027d0bc1</srcmd5>
+    <version>0.7.4</version>
+    <time>1298970172</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63052 from user jirislaby
+</comment>
+    <requestid>63052</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>acc90a31f88bb227d4d810803ee3a697</srcmd5>
+    <version>0.7.4.1</version>
+    <time>1301645627</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65684 from user coolo
+</comment>
+    <requestid>65684</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ca723e9ece7618192ff30275a1007127</srcmd5>
+    <version>0.7.4.2</version>
+    <time>1309165949</time>
+    <user>saschpe</user>
+    <comment>update to 0.7.4.2 and add lxc-opensuse (a script for opensuse installation into container)</comment>
+    <requestid>74476</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5422471bfca60aba71f31525830373a3</srcmd5>
+    <version>0.7.5</version>
+    <time>1314885070</time>
+    <user>saschpe</user>
+    <comment>update to 0.7.5</comment>
+    <requestid>80380</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>9e074a865985059f04ada52afd2bad6e</srcmd5>
+    <version>0.7.5</version>
+    <time>1315233491</time>
+    <user>lrupp</user>
+    <comment>- Fix license tag, it is LGPLv2.1+ (using LGPLv2+ tag to be
+  consistent). (forwarded request 80613 from fcrozat)</comment>
+    <requestid>80801</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>305c23ad7e38ffae12c29489cde0f4fa</srcmd5>
+    <version>0.7.5</version>
+    <time>1315233502</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80801
+</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>305c23ad7e38ffae12c29489cde0f4fa</srcmd5>
+    <version>0.7.5</version>
+    <time>1319182163</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>7a70589780d1a1ad60105b006716b918</srcmd5>
+    <version>0.7.5</version>
+    <time>1320231829</time>
+    <user>coolo</user>
+    <comment>- Add console to opensuse securetty, since we are in a container.
+
+- Add lxc-opensuse-12.1.patch: create openSUSE 12.1 containers now
+- Add Recommends on build package, which is used by opensuse
+  template.
+- Update README.SUSE to current status for cgroups mountpoint</comment>
+    <requestid>89819</requestid>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>568d7785bc80edb67d0327257a31d9e5</srcmd5>
+    <version>0.7.5</version>
+    <time>1323192445</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>134cc1090f36e17f4fbf6113641ab629</srcmd5>
+    <version>0.7.5</version>
+    <time>1326292646</time>
+    <user>coolo</user>
+    <comment>- Drop lxc-file_caps.patch, it is SLES specific, since openSUSE is
+  now shipping with file capabilities enabled. (forwarded request 99661 from fcrozat)</comment>
+    <requestid>99662</requestid>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>649dc4d54013f48dbca2b498a7cc81ac</srcmd5>
+    <version>0.7.5</version>
+    <time>1331124197</time>
+    <user>coolo</user>
+    <comment>Accurately detect whether a system supports clone_children</comment>
+    <requestid>108244</requestid>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>a2a58f1f0fe65200c5113bbd7b8d28b5</srcmd5>
+    <version>0.7.5</version>
+    <time>1334641588</time>
+    <user>coolo</user>
+    <comment>- Add lxc-createconfig script to easy LXC configuration
+  (bnc#723950). (forwarded request 113395 from fcrozat)</comment>
+    <requestid>113397</requestid>
+  </revision>
+  <revision rev="31" vrev="11">
+    <srcmd5>1105ab4cec237aae17d1d0948a82e57a</srcmd5>
+    <version>0.7.5</version>
+    <time>1335165327</time>
+    <user>coolo</user>
+    <comment>- Add various fixes to opensuse template :
+  + create /etc/hostname as symlink to /etc/HOSTNAME 
+    (lxc-clone fix)
+  + fix inadequate space in lxc.mount config (lxc-clone fix)
+  + disable network in container if not configured
+  + configure network scripts properly
+- Add lxc-snapshot-btrfs-lvm.patch: backport snapshot support,
+  using btrfs or lvm2.
+- Add lxc-opensuse-tmpfs.patch: ensure container shutting down is
+  correctly detected by LXC. (forwarded request 114881 from fcrozat)</comment>
+    <requestid>114885</requestid>
+  </revision>
+  <revision rev="32" vrev="13">
+    <srcmd5>1105ab4cec237aae17d1d0948a82e57a</srcmd5>
+    <version>0.7.5</version>
+    <time>1340183680</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c846f26bb69c0c554e80aa668bd5ad18</srcmd5>
+    <version>0.8.0</version>
+    <time>1358161342</time>
+    <user>coolo</user>
+    <comment>drop old patches (forwarded request 148373 from fcrozat)</comment>
+    <requestid>148382</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>1d8dc2bb7201f775f1e5d57f3380a1e0</srcmd5>
+    <version>0.8.0</version>
+    <time>1358866595</time>
+    <user>coolo</user>
+    <comment>- Update pivot-root_shared.patch with upstream patch to build with
+  old version of kernel headers.
+- Check for /etc/init.d/boot.cgroup presence before starting it in
+  %post. (forwarded request 149390 from fcrozat)</comment>
+    <requestid>149438</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>1d8dc2bb7201f775f1e5d57f3380a1e0</srcmd5>
+    <version>0.8.0</version>
+    <time>1359109415</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>20863c5658e871e277cfabd8561b91b9</srcmd5>
+    <version>0.8.0</version>
+    <time>1361287139</time>
+    <user>coolo</user>
+    <comment>- lxc-opensuse-extend-base.patch: lxc-opensuse: extend base (bnc#804232)
+- lxc-opensuse-proper-failure.patch: lxc-opensuse: proper failure
+- remove change-hwaddr-on-clone.patch as it was fixed upstream already</comment>
+    <requestid>155808</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>05d2affdf52fb6e93631d1a0daa7e4b0</srcmd5>
+    <version>0.8.0</version>
+    <time>1361824848</time>
+    <user>coolo</user>
+    <comment>- Add lxc-opensuse-12.3.patch: update template to openSUSE 12.3 (forwarded request 155946 from fcrozat)</comment>
+    <requestid>156293</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>c4ecc3d9bcf20d9634dbfe1e51383f9e</srcmd5>
+    <version>0.8.0</version>
+    <time>1361888293</time>
+    <user>coolo</user>
+    <comment>- run zypper ar only if .repo file does not exists
+  fixes a partial created repos (bnc#804435#c16) (forwarded request 156404 from mvyskocil)</comment>
+    <requestid>156416</requestid>
+  </revision>
+  <revision rev="39" vrev="8">
+    <srcmd5>baa371a23a65394a2e7ff77e594a485b</srcmd5>
+    <version>0.8.0</version>
+    <time>1362119240</time>
+    <user>coolo</user>
+    <comment>- clean cache if a distro version in template does not match
+  with files in a cache (bnc#804435#c19) (forwarded request 156437 from mvyskocil)</comment>
+    <requestid>156461</requestid>
+  </revision>
+  <revision rev="40" vrev="9">
+    <srcmd5>01e4ddc6c5260d897ae862c349182d74</srcmd5>
+    <version>0.8.0</version>
+    <time>1362773776</time>
+    <user>coolo</user>
+    <comment>- Ensure update repository directory is correctly created
+  (bnc#804435). (forwarded request 157927 from fcrozat)</comment>
+    <requestid>158004</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6c7852d10e041348685c51cbebbf3ed4</srcmd5>
+    <version>0.9.0</version>
+    <time>1366812359</time>
+    <user>coolo</user>
+    <comment>update to 0.9.0</comment>
+    <requestid>173176</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>2ce43e503176ef463235e7cf4bb90d0b</srcmd5>
+    <version>0.9.0</version>
+    <time>1379318778</time>
+    <user>coolo</user>
+    <comment>- opensuse-systemd-shutdown.patch: Fixed opensuse template to
+  workaround lxc-shutdown problem with systemd (bnc#839388)</comment>
+    <requestid>199145</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>2ce43e503176ef463235e7cf4bb90d0b</srcmd5>
+    <version>0.9.0</version>
+    <time>1379663217</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>4d6b35b0c6db7426fd78934440ad1956</srcmd5>
+    <version>0.9.0</version>
+    <time>1379923315</time>
+    <user>coolo</user>
+    <comment>add perl-base to prerequisities (bnc#839873) (forwarded request 199876 from jirislaby)</comment>
+    <requestid>199877</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>bb15893be12c66cd11ad8b1d115938c3</srcmd5>
+    <version>0.9.0</version>
+    <time>1389630012</time>
+    <user>coolo</user>
+    <comment>fix (forwarded request 213374 from jirislaby)</comment>
+    <requestid>213375</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f3a5c0907ec4c88cd19d193defd3b9d4</srcmd5>
+    <version>1.0.0.beta1.93.gfad967669817</version>
+    <time>1389810953</time>
+    <user>coolo</user>
+    <comment>update to lxc-1.0 beta-post-1. This should go to SLE12 still as 1.0 is going to be a long-term maintained version. 1.0 is planned to be released in Feb 2014.</comment>
+    <requestid>213895</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d3e3f4f8ec6ba381e8e20dcc498e2200</srcmd5>
+    <version>1.0.0</version>
+    <time>1393935247</time>
+    <user>coolo</user>
+    <comment>updated sources to 1.0.0</comment>
+    <requestid>224377</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>487c38d91ce7ee0a58b0a8d249feb4df</srcmd5>
+    <version>1.0.3</version>
+    <time>1399390937</time>
+    <user>coolo</user>
+    <comment>Upgrade to 1.0.3 including /usr/sbin/rclxc (forwarded request 232720 from ojkastl_buildservice)</comment>
+    <requestid>232836</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>a27ab077f24d15fc290f9ac6764f59e9</srcmd5>
+    <version>1.0.3</version>
+    <time>1400476921</time>
+    <user>coolo</user>
+    <comment>- added --enable-lua to compile lxc with lua support (for lxc-top) 
+- added &quot;Requires: lua&quot;, as lxc-top needs it (forwarded request 234468 from ojkastl_buildservice)</comment>
+    <requestid>234496</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>3545564fe7de7f17ac0f82b73d8a5475</srcmd5>
+    <version>1.0.4</version>
+    <time>1403070649</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237826</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5fa2f6a160926e96b559c5788a337a83</srcmd5>
+    <version>1.0.5</version>
+    <time>1407942495</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244307</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>8eea6ec310a88149c2f279ec1a877c02</srcmd5>
+    <version>1.0.5</version>
+    <time>1408353843</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244982</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>8eea6ec310a88149c2f279ec1a877c02</srcmd5>
+    <version>1.0.5</version>
+    <time>1409301833</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ae98ab93c3fa428fa5457110a8e2ec85</srcmd5>
+    <version>1.0.6</version>
+    <time>1412533890</time>
+    <user>coolo</user>
+    <comment>update to 1.0.6</comment>
+    <requestid>253735</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>d3fac9040924f00fbfd8d6c5a8be1ca1</srcmd5>
+    <version>1.0.6</version>
+    <time>1414943172</time>
+    <user>coolo</user>
+    <comment>take care of /run/lock/subsys/</comment>
+    <requestid>258950</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>603010b59acaa085acc1ab018097bc45</srcmd5>
+    <version>1.0.6</version>
+    <time>1416505400</time>
+    <user>dimstar_suse</user>
+    <comment>- Added 0002-Disable-building-opensuse-containers-on-openSUSE13.2.patch
+  Disable building opensuse containers on openSUSE 13.2 due to changed
+  build behaviour (bsc#905638)</comment>
+    <requestid>262312</requestid>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>06c43b6a01bd36fa8651ce4a6eb583d2</srcmd5>
+    <version>1.0.6</version>
+    <time>1417438896</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263570</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>c65c44bb0b5f173da29708614a164890</srcmd5>
+    <version>1.0.7</version>
+    <time>1418112851</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264373</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>c9e87f60f20d0ef31b45372a96fe1646</srcmd5>
+    <version>1.0.7</version>
+    <time>1419159896</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265858</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>3abfc65eb405655df685429e8821b267</srcmd5>
+    <version>1.0.7</version>
+    <time>1419897019</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266780</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>8ff548252073800f23f51672262df0d7</srcmd5>
+    <version>1.1.2</version>
+    <time>1437981230</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.1.2 and fix 2 CVEs</comment>
+    <requestid>318092</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>f44f3683c54d9c729c3d5db87edefb39</srcmd5>
+    <version>1.1.2</version>
+    <time>1439385329</time>
+    <user>dimstar_suse</user>
+    <comment>update upstream status before submitting</comment>
+    <requestid>322051</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>1fd5ddf24748e91e5206805dbbe78ec5</srcmd5>
+    <version>1.1.2</version>
+    <time>1444130738</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335477</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>f78e0fe20ac9f3014f7183ea434ee7e0</srcmd5>
+    <version>1.1.4</version>
+    <time>1445092739</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>338359</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>aac87dc941a910167a8c1e127aba4d59</srcmd5>
+    <version>1.1.5</version>
+    <time>1447766614</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344865</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>5e5475cd60dd299eb7d6dbea2a916850</srcmd5>
+    <version>2.0.1</version>
+    <time>1466501458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403575</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>4abf4db8d854e0cc5d17c1f9152657d3</srcmd5>
+    <version>2.0.3</version>
+    <time>1470217455</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415959</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>c3e5981996d910d20c5c87777fbc2b47</srcmd5>
+    <version>2.0.4</version>
+    <time>1474476581</time>
+    <user>dimstar_suse</user>
+    <comment>- setcap has been moved to /usr/sbin (boo#998326).
+
+- update lxc to 2.0.4
+- add 0001-bdev-use-correct-overlay-module-name.patch
+- add 0002-cleanup-tools-remove-name-from-lxc-top-usage-message.patch
+- add 0003-cleanup-whitespaces-in-option-alignment-for-lxc-exec.patch
+- add 0004-Use-full-GPG-fingerprint-instead-of-long-IDs.patch
+- add 0005-tools-move-rcfile-to-the-common-options-list.patch
+- add 0006-tools-set-configfile-after-load_config.patch
+- add 0007-doc-add-rcfile-to-common-opts.patch
+- add 0008-doc-Update-Korean-lxc-attach-1.patch
+- add 0009-doc-Add-rcfile-to-Korean-common-opts.patch
+- add 0010-doc-Add-rcfile-to-Japanese-common-opts.patch
+- add 0011-tools-use-exit-EXIT_-everywhere.patch
+- add 0012-tools-unify-exit-calls-outside-of-main.patch
+- add 0013-utils-Add-mips-signalfd-syscall-numbers.patch
+- add 0014-seccomp-Implement-MIPS-seccomp-handling.patch
+- add 0015-seccomp-Add-mips-and-mips64-entries-to-lxc_config_pa.patch
+- add 0016-seccomp-fix-strerror.patch
+- add 0017-confile-add-more-archs-to-lxc_config_parse_arch.patch
+- add 0018-seccomp-add-support-for-s390x.patch
+- add 0019-seccomp-remove-double-include-and-order-includes.patch
+- add 0020-seccomp-non-functional-changes.patch
+- add 0021-templates-use-fd-9-instead-of-200.patch
+- add 0022-templates-fedora-requires-openssl-binary.patch
+- add 0023-tools-use-boolean-for-ret-in-lxc_device.c.patch
+- add 0024-c-r-use-proc-self-tid-children-instead-of-pidfile.patch
+- add 0025-c-r-Fix-pid_t-on-some-arches.patch
+- add 0026-templates-Add-mips-hostarch-detection-to-debian.patch
+- add 0027-cleanup-replace-tabs-wth-spaces-in-usage-strings.patch</comment>
+    <requestid>428745</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>28c7b36c8c503610cb884facc5552cf0</srcmd5>
+    <version>2.0.4</version>
+    <time>1481272711</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444348</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>ada3f099d1fe15ad8efeca3c5552f93d</srcmd5>
+    <version>2.0.7</version>
+    <time>1491896213</time>
+    <user>maxlin_factory</user>
+    <comment>fix for boo#1028264; backported patches to allow builds for Tumbleweed</comment>
+    <requestid>483859</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>a150fb1158b7cc2fdbb6dc8ef6daf384</srcmd5>
+    <version>2.0.7</version>
+    <time>1493363589</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490838</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>684d44375b5ac4fe5af42cdb8ce0a172</srcmd5>
+    <version>2.0.8</version>
+    <time>1495883815</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>497945</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>642800bb4afdf2e7f459d1fc16a40774</srcmd5>
+    <version>2.0.8</version>
+    <time>1499510055</time>
+    <user>dimstar_suse</user>
+    <comment>added workaround for #bsc1041291 to allow builds on Tumbleweed with gcc7</comment>
+    <requestid>508214</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>7000e4f06a7bdc26d31f6ffaa6b9be4d</srcmd5>
+    <version>2.0.8</version>
+    <time>1505502224</time>
+    <user>dimstar_suse</user>
+    <comment>changed apparmor stuff in %post according to cboltz's recommendations</comment>
+    <requestid>523518</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>35f2d474a9f4f467d980785e95e98de7</srcmd5>
+    <version>2.0.9</version>
+    <time>1509531015</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 2.0.9</comment>
+    <requestid>537977</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>4436c9b3ebc584459313226b2e2a8735</srcmd5>
+    <version>2.0.9</version>
+    <time>1531379948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621948</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>1b3b484798620acbf22f9d104ee6574f</srcmd5>
+    <version>2.0.9</version>
+    <time>1532161511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624121</requestid>
+  </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>991a65016d24a93cd1f674c154db68f1</srcmd5>
+    <version>2.0.9</version>
+    <time>1533412502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627386</requestid>
+  </revision>
+  <revision rev="79" vrev="5">
+    <srcmd5>42052eec74386af953250525cc65e894</srcmd5>
+    <version>2.0.9</version>
+    <time>1536679138</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634703</requestid>
+  </revision>
+  <revision rev="80" vrev="6">
+    <srcmd5>fe3a715a430261d8d24c71514dafdfcd</srcmd5>
+    <version>2.0.9</version>
+    <time>1537187185</time>
+    <user>maxlin_factory</user>
+    <comment>fix wrong path for bash completion</comment>
+    <requestid>635876</requestid>
+  </revision>
+  <revision rev="81" vrev="7">
+    <srcmd5>e09edcab841979f24c43e5b2f31374c9</srcmd5>
+    <version>2.0.9</version>
+    <time>1537964649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638264</requestid>
+  </revision>
+  <revision rev="82" vrev="8">
+    <srcmd5>87a97ed8b6e07a7bd216c929b72bbf55</srcmd5>
+    <version>2.0.9</version>
+    <time>1549624533</time>
+    <user>coolo</user>
+    <comment>compilation fixed for Python 3.7</comment>
+    <requestid>672560</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>e5fed0e82e4a5ad72c8f63e1e5b1f0a0</srcmd5>
+    <version>3.1.0</version>
+    <time>1554749611</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid wrong permissions warning by conditionally setting the setuid bit based
+  on what version of permissions is available in that distribution (makes no
+  difference but results in less confusion to users).
+- Fix builds on SLE12, by depending on apparmor-profiles instead of
+  apparmor-abstractions. In addition, remove the Requires on abstractions.
+- Trim project history from package description.
+- Update to LXC 3.1.0. The changelog is far too long to include here, please
+  look at the changelogs posted on https://linuxcontainers.org/. boo#1131762
+  * Includes fixes for CVE-2019-5736 bsc#1122185.
+  + pam_cgfs is now provided by this package, since upstream has moved the
+    sources to LXC (it used to be part of lxcfs).
+  * All of the patches have been upstreamed or are no longer relevant:
+    - 0001-apparmor-Allow-usr-lib-paths-for-mount-and-pivot_roo.patch
+    - 0001-utils-add-LXC_PROC_PID_FD_LEN.patch
+    - 0001-lxc-user-nic-verify-file-descriptor-stable-2.0.patch
+    - 0001-Backport-autodev-fix-from-lxc-master.patch
+    - 0001-PyOS_AfterFork-python3.7.patch
+- Add a warning if lxc-user-nic is not setuid after set_permissions, to ensure
+  users actually read the warning (which means we get to remove README.SUSE).
+  It also supports people using paranoid mode, which is why it's done in
+  post-install and isn't packaged. boo#988348
+- Quite a lot of the runtime helpers and configuration have been moved to
+  liblxc, in order to allow LXD to make use of them (because, in truth, they
+  were always a requirement of liblxc and not just the lxc-* tools).
+- Add workaround for pre-15 distros, where _sharedstatedir was inexplicably
+  /usr/com, to use the correct directory of /var/lib.
+- Rework packaging to be a more modern openSUSE-style.</comment>
+    <requestid>692121</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>a262efe2bb5b4cac51e8738c81e10248</srcmd5>
+    <version>3.1.0</version>
+    <time>1555488625</time>
+    <user>dimstar_suse</user>
+    <comment>- fix apparmor dropin to be compatible with LXC 3.1.0</comment>
+    <requestid>694840</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>0339fa1a895129e50a5cbf4a3bb440f5</srcmd5>
+    <version>3.1.0</version>
+    <time>1556107041</time>
+    <user>maxlin_factory</user>
+    <comment>- Rework /var/adm/update-messages handling to be far less complicated, and more
+  packaging-friendly (by update-messages be owned by the rpm) as well as
+  storing the update message in a autoconf-templated source file.</comment>
+    <requestid>697202</requestid>
+  </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>ae7b9b072b5e475cd44e53e81618d09d</srcmd5>
+    <version>3.1.0</version>
+    <time>1559375348</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705934</requestid>
+  </revision>
+</revisionlist>

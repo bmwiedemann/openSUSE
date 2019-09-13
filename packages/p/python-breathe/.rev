@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3dff213754201caa9eb53a90c4443ec3</srcmd5>
+    <version>4.7.2</version>
+    <time>1505831564</time>
+    <user>dimstar_suse</user>
+    <comment>python-sphinxcontrib-breathe, renamed to follow python packaging guidelines.</comment>
+    <requestid>527082</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9d9ac7549730868a064c9463ee64e3cb</srcmd5>
+    <version>4.7.2</version>
+    <time>1544726430</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653955</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>87304f7a2b6fab1429aa3cfa6f9db641</srcmd5>
+    <version>4.12.0</version>
+    <time>1554114911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.12.0:
+  * More sphinx fixes
+- Remove merged patch sphinx18.patch
+
+- Update to 4.11.1:
+  * Fixes for newer sphinx releases
+- Switch to github tarball for tests and license
+- Add patch to fix build with sphinx 1.8:
+  * sphinx18.patch</comment>
+    <requestid>686451</requestid>
+  </revision>
+</revisionlist>

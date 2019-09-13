@@ -1,0 +1,309 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>03ae65873e30923c9dd856cb5adade9f</srcmd5>
+    <version>7.3.1</version>
+    <time>1168903450</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ab7c1dc69b77a92a76efb35f72fd5bba</srcmd5>
+    <version>7.3.6</version>
+    <time>1194899259</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="26">
+    <srcmd5>a957143fc9a7bb815139ecc5a90f2506</srcmd5>
+    <version>7.3.6</version>
+    <time>1207683363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="60">
+    <srcmd5>a957143fc9a7bb815139ecc5a90f2506</srcmd5>
+    <version>7.3.6</version>
+    <time>1207683363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="61">
+    <srcmd5>fcf708bfb2245661a25f9cef3d302fff</srcmd5>
+    <version>7.3.6</version>
+    <time>1223910932</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="62">
+    <srcmd5>891a6ccaff6878522286613b4e415697</srcmd5>
+    <version>7.3.6</version>
+    <time>1231894146</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="63">
+    <srcmd5>171c7ec6a9e66c1881fa455ab7915208</srcmd5>
+    <version>7.3.6</version>
+    <time>1232327510</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="64">
+    <srcmd5>5f24aa0bdfd6be45b4685adcdd5058d9</srcmd5>
+    <version>7.3.6</version>
+    <time>1232410185</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="66">
+    <srcmd5>a70bfba6e85984dc86f0ab546a7cefb0</srcmd5>
+    <version>7.3.6</version>
+    <time>1251749244</time>
+    <user>autobuild</user>
+    <comment>Copy from server:monitoring/logwatch based on submit request 19280 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="68">
+    <srcmd5>a70bfba6e85984dc86f0ab546a7cefb0</srcmd5>
+    <version>7.3.6</version>
+    <time>1251749244</time>
+    <user>autobuild</user>
+    <comment>Copy from server:monitoring/logwatch based on submit request 19280 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="69">
+    <srcmd5>bb3c5f6cba9745a87ff8c88f7fde7524</srcmd5>
+    <version>7.3.6</version>
+    <time>1268832530</time>
+    <user>autobuild</user>
+    <comment>Copy from server:monitoring/logwatch based on submit request 35025 from user coolo
+</comment>
+    <requestid>35025</requestid>
+  </revision>
+  <revision rev="12" vrev="70">
+    <srcmd5>ed1998f807d7f9d5e3ef4cddbb5e0ac8</srcmd5>
+    <version>7.3.6</version>
+    <time>1268924848</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="71">
+    <srcmd5>a5636e813d684bdd16fc626fce7f8779</srcmd5>
+    <version>7.3.6</version>
+    <time>1273792006</time>
+    <user>autobuild</user>
+    <comment>Copy from server:monitoring/logwatch based on submit request 39723 from user psmt
+</comment>
+    <requestid>39723</requestid>
+  </revision>
+  <revision rev="14" vrev="73">
+    <srcmd5>a5636e813d684bdd16fc626fce7f8779</srcmd5>
+    <version>7.3.6</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="74">
+    <srcmd5>a5636e813d684bdd16fc626fce7f8779</srcmd5>
+    <version>7.3.6</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="75">
+    <srcmd5>84addefdb32518f10571b98f23088847</srcmd5>
+    <version>7.3.6</version>
+    <time>1297113540</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60251 from user lrupp
+</comment>
+    <requestid>60251</requestid>
+  </revision>
+  <revision rev="17" vrev="76">
+    <srcmd5>95724969829f6568301c2c322491b1ed</srcmd5>
+    <version>7.3.6</version>
+    <time>1297113556</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60251
+</comment>
+  </revision>
+  <revision rev="18" vrev="79">
+    <srcmd5>95724969829f6568301c2c322491b1ed</srcmd5>
+    <version>7.3.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="80">
+    <srcmd5>d1295b0a3c8fcf559d890d4cac48d368</srcmd5>
+    <version>7.3.6</version>
+    <time>1298644243</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62800 from user psmt
+</comment>
+    <requestid>62800</requestid>
+  </revision>
+  <revision rev="20" vrev="81">
+    <srcmd5>e6e0fa673b83dba0c6297c5e5ad3baf1</srcmd5>
+    <version>7.3.6</version>
+    <time>1298644254</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62800
+</comment>
+  </revision>
+  <revision rev="21" vrev="82">
+    <srcmd5>4399b14ee5ba61f57d85b1b60c4ddbc9</srcmd5>
+    <version>7.3.6</version>
+    <time>1298880400</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62983 from user coolo
+</comment>
+    <requestid>62983</requestid>
+  </revision>
+  <revision rev="22" vrev="83">
+    <srcmd5>ee55ac629dee0d86c9210b709db66347</srcmd5>
+    <version>7.3.6</version>
+    <time>1298880406</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62983
+</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>980b6a4044050ae9ac0737515fc71c9d</srcmd5>
+    <version>7.4.0</version>
+    <time>1318940561</time>
+    <user>saschpe</user>
+    <comment>Fix bnc#724164 and update to latest release which contains the CVS fix</comment>
+    <requestid>88195</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>980b6a4044050ae9ac0737515fc71c9d</srcmd5>
+    <version>7.4.0</version>
+    <time>1319182158</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>a48fcb261e433d30c6284ea423031a8a</srcmd5>
+    <version>7.4.0</version>
+    <time>1323192433</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>a48fcb261e433d30c6284ea423031a8a</srcmd5>
+    <version>7.4.0</version>
+    <time>1340183672</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>97e35cc71cc4d52c15f6221a2c8687af</srcmd5>
+    <version>7.4.0</version>
+    <time>1356731086</time>
+    <user>namtrac</user>
+    <comment>Added logwatch-dmeventd-reduce_frequency.patch to reduce false
+positives from dmeventd when a long logwatch run is in progress (forwarded request 145746 from robert_munteanu)</comment>
+    <requestid>146324</requestid>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>97e35cc71cc4d52c15f6221a2c8687af</srcmd5>
+    <version>7.4.0</version>
+    <time>1359109407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>5c02517298ad58bb7e358118a78573a3</srcmd5>
+    <version>7.4.0</version>
+    <time>1371544391</time>
+    <user>coolo</user>
+    <comment>Make logwatch understand the default timestamp format of newer rsyslog versions</comment>
+    <requestid>179328</requestid>
+  </revision>
+  <revision rev="30" vrev="12">
+    <srcmd5>5c02517298ad58bb7e358118a78573a3</srcmd5>
+    <version>7.4.0</version>
+    <time>1379663190</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="13">
+    <srcmd5>ad4f78437805b3b910cfbc212c8ae20c</srcmd5>
+    <version>7.4.0</version>
+    <time>1386757763</time>
+    <user>coolo</user>
+    <comment>Fix dupe logfile entry warning, borderline rpm macro (forwarded request 209325 from netsroth)</comment>
+    <requestid>209922</requestid>
+  </revision>
+  <revision rev="32" vrev="15">
+    <srcmd5>ad4f78437805b3b910cfbc212c8ae20c</srcmd5>
+    <version>7.4.0</version>
+    <time>1409301816</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5af79bb6b5b3c86cb1daaf13126c4a2f</srcmd5>
+    <version>7.4.1</version>
+    <time>1424436662</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286940</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>f74ef588c0afd890948f8cbfd7036a5b</srcmd5>
+    <version>7.4.1</version>
+    <time>1444833886</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new patch to deal with Perl's pickyness regarding curly
+  brackets in patterns (logwatch-http.patch).</comment>
+    <requestid>337603</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c07c5c8759c1379dff7f417f2e6544b1</srcmd5>
+    <version>7.4.3</version>
+    <time>1462428773</time>
+    <user>dimstar_suse</user>
+    <comment>Add the missing Fate ID</comment>
+    <requestid>393385</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>949d4144ef0e0a95172da75a6a94434f</srcmd5>
+    <version>7.4.3</version>
+    <time>1487462435</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455337</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>3ecc64a7a9a27edb97d34a9e80ee2bf5</srcmd5>
+    <version>7.4.3</version>
+    <time>1516634480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568182</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>e7db6c19e427034cfcf975a6b9add9b6</srcmd5>
+    <version>7.4.3</version>
+    <time>1541454948</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>646088</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>4578cc74ec0224f0d593498ab53c3172</srcmd5>
+    <version>7.5.2</version>
+    <time>1565267018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721563</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>7365d605c184fe771d0cfda5494e807c</srcmd5>
+    <version>7.5.2</version>
+    <time>1565362480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721963</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>bd42be1f8bdd6764b2adf7ae66ad6921</srcmd5>
+    <version>7.5.2</version>
+    <time>1567010109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726476</requestid>
+  </revision>
+</revisionlist>

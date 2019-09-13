@@ -1,0 +1,8 @@
+<package name="qmltermwidget" project="openSUSE:Factory">
+  <title>QML port of qtermwidget</title>
+  <description>This project is a QML port of qtermwidget.
+
+</description>
+  <devel project="X11:terminals" package="qmltermwidget"/>
+  <url>https://github.com/Swordfish90/qmltermwidget</url>
+</package>

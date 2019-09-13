@@ -1,0 +1,15 @@
+<package name="jondofox" project="openSUSE:Factory">
+  <title>Secure Firefox profile for anonymous web browsing</title>
+  <description>JonDoFox is a profile for the Mozilla Firefox web browser or
+Firefox ESR (recommended), particularly optimized for anonymous
+and secure web surfing. For anonymous surfing you need an
+IP changer proxy too. We recommend our proxy tool JonDo.
+
+By default JonDoFox uses restrictive settings for security reasons.
+Time by time a website does not work like expected. You may have
+a look at our online help for JonDoFox to learn how to deal with
+restrictions.
+
+This package contains an secure browser profil for anonymous web browsing.</description>
+  <devel project="network" package="jondofox"/>
+</package>

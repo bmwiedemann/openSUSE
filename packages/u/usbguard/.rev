@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>66a3db754dbbf49f4b4b3d938f38948e</srcmd5>
+    <version>0.6.2</version>
+    <time>1505416616</time>
+    <user>dimstar_suse</user>
+    <comment>add usbguard to factory</comment>
+    <requestid>525975</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>910e3d6edf5ac336fcddb2bab867713a</srcmd5>
+    <version>0.7.4</version>
+    <time>1539251750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640850</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>17cdb3d44855975892d78bb4aa13c412</srcmd5>
+    <version>0.7.4</version>
+    <time>1539342713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641406</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b697932661688bb817378952cf81435d</srcmd5>
+    <version>0.7.4</version>
+    <time>1541746473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647226</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a3a1c7fac2b8c5228095b0eb5eff701f</srcmd5>
+    <version>0.7.4</version>
+    <time>1548064591</time>
+    <user>dimstar_suse</user>
+    <comment>use upstream usbguard.service instead of hardcoded version (bsc#1120969) (forwarded request 666303 from rfrohl)</comment>
+    <requestid>666304</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>b12093b3fb959717f54a46a78dce7bca</srcmd5>
+    <version>0.7.4</version>
+    <time>1558690369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705009</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>6263da5267ffdd10271b4deab114188d</srcmd5>
+    <version>0.7.4</version>
+    <time>1563808735</time>
+    <user>dimstar_suse</user>
+    <comment>- link against libpthread to make it build (bsc#1141377)
+- added usbguard-pthread.patch</comment>
+    <requestid>717525</requestid>
+  </revision>
+</revisionlist>

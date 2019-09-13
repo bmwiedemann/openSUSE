@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58216e56376134f22881f364ba762dea</srcmd5>
+    <version>1.2.1</version>
+    <time>1422521660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>282783</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b3e3bb3bb56210ee9ed1abbbd7d3d65a</srcmd5>
+    <version>1.2.1</version>
+    <time>1425031776</time>
+    <user>dimstar_suse</user>
+    <comment>- new patch meep_change_protos_with_harminv_complex.patch
+  required for ppc64 architecture to avoid make check error
+  while building meep package.</comment>
+    <requestid>287857</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>446891dd39202c8a1cb948a87294034f</srcmd5>
+    <version>1.2.1</version>
+    <time>1441054793</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328188</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bdb79ab11c2ab5d887430e6c4a966e82</srcmd5>
+    <version>1.2.1</version>
+    <time>1488479348</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460080</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>293063cafc4168a2cbe83a6cee40ba1d</srcmd5>
+    <version>1.7.0</version>
+    <time>1543224558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.0:
+  * See /usr/share/meep/NEWS.md
+- update so version to 12
+- add patch:
+  * namespace-for-complex-literals.patch: fixes build failure
+- drop patch:
+  * meep_change_protos_with_harminv_complex.patch
+- add libmeepgeom library
+- correct doc file names
+- use c++14 for complex_literals
+</comment>
+    <requestid>651319</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fdfa704110c77588c4506aa343a572a3</srcmd5>
+    <version>1.8.0</version>
+    <time>1554712575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691839</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>99873bf87bb70f67c54c069131d32ddf</srcmd5>
+    <version>1.9.0</version>
+    <time>1559837901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707898</requestid>
+  </revision>
+</revisionlist>

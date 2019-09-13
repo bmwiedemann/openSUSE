@@ -1,0 +1,7 @@
+<package name="timidity" project="openSUSE:Factory">
+  <title>Software Synthesizer and MIDI Player</title>
+  <description>TiMidity plays MIDI files without external MIDI instruments and
+converts MIDI files to WAV using GUS/patch and SoundFont for voice
+data.</description>
+  <devel project="multimedia:apps" package="timidity"/>
+</package>

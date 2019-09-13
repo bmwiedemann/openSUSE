@@ -1,0 +1,117 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ea90798aa6650b96446fd480c2b609b</srcmd5>
+    <version>7.6_1.10.1</version>
+    <time>1399317072</time>
+    <user>coolo</user>
+    <comment>Create package; added COPYING to %doc</comment>
+    <requestid>232206</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>93c7f0214fd10eea7ac1af5dfaa4c49a</srcmd5>
+    <version>7.6_1.11</version>
+    <time>1407391694</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243725</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>93c7f0214fd10eea7ac1af5dfaa4c49a</srcmd5>
+    <version>7.6_1.11</version>
+    <time>1409303675</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b61adcc4733e69c5ebe404172bbcab20</srcmd5>
+    <version>7.6_1.11</version>
+    <time>1411472767</time>
+    <user>coolo</user>
+    <comment>- Update description and other metadata
+- Use full %configure for build, and remove CFLAGS (nothing is
+  compiled)
+- Make file list more compact</comment>
+    <requestid>250637</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>250d5f3234aebe171784f9eecbab21eb</srcmd5>
+    <version>7.6_1.11</version>
+    <time>1451177843</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349312</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f158df8e1aa02b0e9e26a066afa5af6</srcmd5>
+    <version>7.6_1.12</version>
+    <time>1464017423</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12
+  * here is a new version of xcb-proto for you to enjoy. Highlights
+    are lots of improvements especially to the xinput extension,
+    support for RandR 1.5 and an automatic alignment checker.</comment>
+    <requestid>396744</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4aeaf7509b5512143e21e30ebd1c15b9</srcmd5>
+    <version>7.6_1.12</version>
+    <time>1509820098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538315</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c34d0155cea5f90545a05286c9b06d36</srcmd5>
+    <version>7.6_1.12</version>
+    <time>1511086230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542206</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>015c24cde0c50dcbe6bb853e68b698d7</srcmd5>
+    <version>7.6_1.12</version>
+    <time>1513162584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555546</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>5cbf8d45920bd27c53efa07ee258973b</srcmd5>
+    <version>7.6_1.12</version>
+    <time>1516091166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update xinput to the state when it was enabled by default
+  upstream. (bnc#1074249)
+  * U_SendExtensionEvent-uses-eventstruct.patch
+  * U_add-support-for-eventstruct.patch
+  * U_xinput-typedef-for-event_type_base.patch</comment>
+    <requestid>562816</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>58ebddb7b7d4da2383f28fdb6d201118</srcmd5>
+    <version>7.6_1.12</version>
+    <time>1516358881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566632</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8eee4886b138e46b3e9169f392d7bcc5</srcmd5>
+    <version>7.6_1.13</version>
+    <time>1520502816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13
+  * This release of xcb-proto brings support for buffer modifiers and
+    multi-planar buffers through DRI3 v1.2 and Present v1.2, support for
+    leasing KMS devices to clients via RandR 1.6, and also allows clients
+    to send each other XInput2 events via support for the GenericEvent
+    extension's SendExtension event.
+- supersedes U_xinput-typedef-for-event_type_base.patch,
+  U_add-support-for-eventstruct.patch, 
+  U_SendExtensionEvent-uses-eventstruct.patch,
+  U_python-whitespace.patch,
+  U_python3-compat.patch</comment>
+    <requestid>582992</requestid>
+  </revision>
+</revisionlist>

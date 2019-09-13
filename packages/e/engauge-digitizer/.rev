@@ -1,0 +1,268 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>776d08a3f8886c742c0b730fd52041a1</srcmd5>
+    <version>5.0_2012.10.11</version>
+    <time>1356703163</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>144875</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8fda6072a26451f8755508391213d8fd</srcmd5>
+    <version>5.1</version>
+    <time>1357127768</time>
+    <user>namtrac</user>
+    <comment>Update to version 5.1</comment>
+    <requestid>146557</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8fda6072a26451f8755508391213d8fd</srcmd5>
+    <version>5.1</version>
+    <time>1359108849</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>8fda6072a26451f8755508391213d8fd</srcmd5>
+    <version>5.1</version>
+    <time>1379662294</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>8fda6072a26451f8755508391213d8fd</srcmd5>
+    <version>5.1</version>
+    <time>1409300827</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8c802a7f6bde64480b28c4d4cc32fea3</srcmd5>
+    <version>5.2</version>
+    <time>1420754566</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280209</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f9daf2fedc09adfca662b6de550abb4f</srcmd5>
+    <version>5.2</version>
+    <time>1426680384</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291085</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>008603497f33ccbf691cabb999374801</srcmd5>
+    <version>8.2</version>
+    <time>1468482223</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406043</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2a9f93ee5ac05c5e549b91b48b1d84c3</srcmd5>
+    <version>9.1</version>
+    <time>1472026113</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>420779</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f204358b42f44b51489b1e21261bc437</srcmd5>
+    <version>9.3</version>
+    <time>1473241692</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424915</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>94c3fad694a56be7126a5111a084fc3f</srcmd5>
+    <version>9.4</version>
+    <time>1475589574</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>432696</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>07f82fc55673c770a0dccacbe2c335d9</srcmd5>
+    <version>9.5</version>
+    <time>1478780331</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438896</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d6b744465282b23d0176850332d686d2</srcmd5>
+    <version>9.8</version>
+    <time>1484475680</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450333</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7c2c8989565205abc99946955d98c021</srcmd5>
+    <version>10.0</version>
+    <time>1500669887</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500843</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>22f7b8d780d745b1c832726c18fd8415</srcmd5>
+    <version>10.1</version>
+    <time>1501146762</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.1:
+  + Export settings dialog usability improvements
+    (gh#markummitchell/engauge-digitizer#235).
+  + Export files have blank line between sections
+    (gh#markummitchell/engauge-digitizer#234).
+  + Export setting for raw relation points is saved
+    (gh#markummitchell/engauge-digitizer#229).
+  + Four-axes axis point coordinates are not confused
+    (gh#markummitchell/engauge-digitizer#228).
+  + Newly copied points can be pasted
+    (gh#markummitchell/engauge-digitizer#227).
+  + Prevent crash if grid is undefined
+    (gh#markummitchell/engauge-digitizer#226).
+- Drop engauge-digitizer-license-fix.patch: upstreamed. (forwarded request 512068 from badshah400)</comment>
+    <requestid>512580</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9f6db886b8644ed0c56f93a70ac8ab91</srcmd5>
+    <version>10.2</version>
+    <time>1503593761</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518419</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>131613c5b7e5d16ff8b29a694e488199</srcmd5>
+    <version>10.3</version>
+    <time>1504102987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519325</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dbd7f8a33d6010aa96e172ccd1944d10</srcmd5>
+    <version>10.4</version>
+    <time>1507755730</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533035</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>3e6c26a6c8648fe440be5ea057bb7483</srcmd5>
+    <version>10.4</version>
+    <time>1520415528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583449</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>8ac2075117530063ef6b139f732b9768</srcmd5>
+    <version>10.4</version>
+    <time>1522404443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591657</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ee647da662d72d6c1c81a3a349f20986</srcmd5>
+    <version>10.6</version>
+    <time>1526371487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603192</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>71c5f38f6e565a0418e47bf0f988ad1b</srcmd5>
+    <version>10.7</version>
+    <time>1528897163</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615805</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1c3a80ed06d7f7fe9fc9fbf4dd499243</srcmd5>
+    <version>10.8</version>
+    <time>1532161483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624002</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bf3fd657276501305076b6179c2665bf</srcmd5>
+    <version>10.9</version>
+    <time>1534543519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629635</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>94e4bd440d3dbaaca6c05092c69db5e7</srcmd5>
+    <version>10.10</version>
+    <time>1540319935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643737</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5d00a8c20f96420ee8b3904622f1128c</srcmd5>
+    <version>10.11</version>
+    <time>1542666676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649609</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>a30fa83deaa2479b0dbbb288142c2b3d</srcmd5>
+    <version>10.11</version>
+    <time>1546535362</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662561</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8f7a28461719dbb9f81fb492d44661d1</srcmd5>
+    <version>10.12</version>
+    <time>1552902095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685511</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8b00ec2c15473cdf6cd7ef41e614b972</srcmd5>
+    <version>11.1</version>
+    <time>1556817666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699959</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0a93cad330467db0f0f981ed8caa456f</srcmd5>
+    <version>11.2</version>
+    <time>1558340890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703759</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e63a389f69d5e3153d5bcc160c71f7ad</srcmd5>
+    <version>11.3</version>
+    <time>1564302142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718995</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>120f43a893e6a1800a0d04c7cf538ce6</srcmd5>
+    <version>12</version>
+    <time>1566665224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725665</requestid>
+  </revision>
+</revisionlist>

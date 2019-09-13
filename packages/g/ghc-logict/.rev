@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7906837c0572304f6462077229342436</srcmd5>
+    <version>0.6.0.2</version>
+    <time>1481459221</time>
+    <user>dimstar_suse</user>
+    <comment>Submit of LTS Haskell as specifid in https://hackweek.suse.com/14/projects/1368</comment>
+    <requestid>413756</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a944f05772e44919bd620f2975e5b662</srcmd5>
+    <version>0.6.0.2</version>
+    <time>1505505360</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524962</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8be5d85d142340a00975879ead5b3f0a</srcmd5>
+    <version>0.6.0.2</version>
+    <time>1527675564</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609792</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e8780ef3955f163a355b6c4cfa915260</srcmd5>
+    <version>0.6.0.2</version>
+    <time>1532445612</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623804</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5a39d326f04a46a5e0a2db87974389c7</srcmd5>
+    <version>0.6.0.2</version>
+    <time>1540448819</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643416</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>48d8fd22c53952d46dd28ba49709e284</srcmd5>
+    <version>0.6.0.3</version>
+    <time>1557389411</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>700202</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>76fd7e13ba39e61370cdfa12d29614e1</srcmd5>
+    <version>0.7.0.1</version>
+    <time>1564413974</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>715413</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>44108752d26812f028d2e98ed16c07a8</srcmd5>
+    <version>0.7.0.2</version>
+    <time>1565694897</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>721029</requestid>
+  </revision>
+</revisionlist>

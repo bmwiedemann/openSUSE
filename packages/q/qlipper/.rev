@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4fb7b26d20180175612b62353e17f348</srcmd5>
+    <version>5.1.1</version>
+    <time>1527583177</time>
+    <user>dimstar_suse</user>
+    <comment>- Require lxqt-build-tools-devel &gt;= 0.4.0
+- Update to 5.1.1:
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Allow only one instance of application
+  * Clean up dialoges
+  * Bug fixes
+  * Update translations
+  * systray: Don't display clipboard items in context menu
+- Remove _service file
+- Remove icon cache update
+- update to version 5.1.1
+</comment>
+    <requestid>611349</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2d48c1f1ac6f4c6ee9e706ad6751a690</srcmd5>
+    <version>5.1.1</version>
+    <time>1534322182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628933</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dee7fc6e08d3c02b2050ca7c27ed6f6a</srcmd5>
+    <version>5.1.1</version>
+    <time>1551113397</time>
+    <user>coolo</user>
+    <comment>- BuildRequires:  lxqt-build-tools-devel &gt;= 0.5.0 
+- Clean up spec
+</comment>
+    <requestid>670401</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5011b182a4f91843f51bfcd1ba175b2e</srcmd5>
+    <version>0.23.0</version>
+    <time>1424255982</time>
+    <user>dimstar_suse</user>
+    <comment>- Python client websocket implementation, dependency for newer version of google-cloud-sdk</comment>
+    <requestid>286506</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4641d4c664a7493ceafc560ae500154e</srcmd5>
+    <version>0.30.0</version>
+    <time>1431668668</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307132</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e88b1aa9702d28ba089f34a027f04a46</srcmd5>
+    <version>0.30.0</version>
+    <time>1438421815</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318744</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ba350656995b9f3138626fc37b51f996</srcmd5>
+    <version>0.32.0</version>
+    <time>1446209007</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>341345</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6ed56b0f73a857be7fa806be7c227c33</srcmd5>
+    <version>0.32.0</version>
+    <time>1453508206</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>355255</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ede503e6321e5f9b1bef1981f336bc18</srcmd5>
+    <version>0.32.0</version>
+    <time>1461855221</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>387969</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5924b8243065f779e2350ee89367cdfa</srcmd5>
+    <version>0.37.0</version>
+    <time>1481153434</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441397</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>585505429923d14b85c586f0bb3c6714</srcmd5>
+    <version>0.44.0</version>
+    <time>1504617580</time>
+    <user>dimstar_suse</user>
+    <comment>- properly provide/obsolete python3-websocket-client-test
+
+- Fix build for Leap 42.3
+
+- Update license to LGPL 3
+- Fix rpmlint issues
+
+- Grammatical/Typographic corrections to the description.
+
+- Fix singlespec macro usage
+- Fix source URL.
+
+- update to 0.44.0:
+  -renames key in sslopt dict (#326)
+  - Unkown kwarg 'ca_cert' when calling ssl wrap_socket() (#326)
+  - Race condition in WebSocket ping/pong (#327)
+  - Implement simple cookie jar(#292)
+  - fix: when using pppoe redial will block.(#301)
+  - Fix insecure_pythons list in setup.py(#304)
+  - Support WEBSOCKET_CLIENT_CA_BUNDLE being directory(#307)
+  - WebSocketPayloadException under high traffic and limited network connection(#306)
+  - Not working --nocert parameter in wsdump.py(#315)
+  - Avoid the app to block on close on certain systems (#320)
+  - Fix warning is not defined. (#323)
+  - move to repository to https://github.com/websocket-client/websocket-client.git
+  - _send_ping warning fails due to missing reference in _logging.__all__ (#294)
+  - Fix opcode -&gt; op_code (#286)
+  - Shuffled around example code (#256)
+  - _send_ping graceful error handling (#262)
+  - Allow closing WebSocketApp with status/reason/timeout (#265)</comment>
+    <requestid>521008</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4394745919ff4e27135065768a5e2c28</srcmd5>
+    <version>0.46.0</version>
+    <time>1519308234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578994</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1d7688fc07d54308f59eaf6b80f4729b</srcmd5>
+    <version>0.46.0</version>
+    <time>1545648368</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659754</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3576064bbfe3f2f215e4db25dc544468</srcmd5>
+    <version>0.54.0</version>
+    <time>1553888232</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.54.0:
+  * many fixes all around, see ChangeLog file
+- Drop merged use_system_cabundle.patch</comment>
+    <requestid>687637</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>91378e882127a28a2f3b792b17d1420e</srcmd5>
+    <version>0.56.0</version>
+    <time>1555588639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.56.0:
+  * Don't retry sockets with timeout set to 0(#536)
+  * Add response headers in WebSocketBadStatusException (#501)
+  * Manually assigning WebSocket-Version (#506)
+  * SSL socket handling fix (#474)
+  * Let setup.py use the same license as LICENSE file (#517)
+  * Ensure that &quot;timeout&quot; is passed down, when calling WebSocket.connect() (#513)
+  * Retry connect on &quot;Interrupted system call&quot; (#528)</comment>
+    <requestid>694795</requestid>
+  </revision>
+</revisionlist>

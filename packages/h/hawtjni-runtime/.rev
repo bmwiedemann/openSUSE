@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc6897946e82f4905c45bffa1dca4d60</srcmd5>
+    <version>1.16</version>
+    <time>1551024767</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>672354</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>37e467fca541f3f6a0e3550205db8b38</srcmd5>
+    <version>1.16</version>
+    <time>1554977962</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove reference to the parent pom since we are not building
+  using Maven.
+</comment>
+    <requestid>693095</requestid>
+  </revision>
+</revisionlist>

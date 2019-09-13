@@ -1,0 +1,6 @@
+<package name="gnome-themes" project="openSUSE:Factory">
+  <title>GNOME Themes</title>
+  <description>GNOME themes, including Ximian Industrial and selected background
+images.</description>
+  <devel project="GNOME:Factory" package="gnome-themes"/>
+</package>

@@ -1,0 +1,269 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>ca379bda6c018bf3dd4f1e40667ffcf3</srcmd5>
+    <version>2.0.5</version>
+    <time>1168904237</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="50">
+    <srcmd5>aaec0b8fe0be774d29f6ce78d23c0a54</srcmd5>
+    <version>2.0.5</version>
+    <time>1180388284</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>016e2ee12f4ba61362a8b811dbbc14eb</srcmd5>
+    <version>2.1.1</version>
+    <time>1184208230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="45">
+    <srcmd5>d47422678e8675c85ce816cbee93fdad</srcmd5>
+    <version>2.1.1</version>
+    <time>1207834369</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="57">
+    <srcmd5>4ccae40fdb1e53d441c4a44f195dbf25</srcmd5>
+    <version>2.1.1</version>
+    <time>1215559725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="82">
+    <srcmd5>91ea582edd8c95c1f1bcb145280ed963</srcmd5>
+    <version>2.1.1</version>
+    <time>1231462930</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="84">
+    <srcmd5>91ea582edd8c95c1f1bcb145280ed963</srcmd5>
+    <version>2.1.1</version>
+    <time>1231462930</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="85">
+    <srcmd5>3e51dc0b6cf19941a58c52d7a429a4e6</srcmd5>
+    <version>2.1.1</version>
+    <time>1263034183</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/slang based on submit request 28336 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="86">
+    <srcmd5>db7dc511dd03b8bb84e2187c4afb6e54</srcmd5>
+    <version>2.1.1</version>
+    <time>1263485454</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/slang based on submit request 29419 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="10" vrev="87">
+    <srcmd5>2aeda2d81d1b9cc84255bbde1e5a8f1e</srcmd5>
+    <version>2.1.1</version>
+    <time>1268926181</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="88">
+    <srcmd5>96d07090fdb3cf7c210af7db0f0977ee</srcmd5>
+    <version>2.1.1</version>
+    <time>1272915234</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/slang based on submit request 39203 from user msmeissn
+</comment>
+    <requestid>39203</requestid>
+  </revision>
+  <revision rev="12" vrev="90">
+    <srcmd5>96d07090fdb3cf7c210af7db0f0977ee</srcmd5>
+    <version>2.1.1</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="91">
+    <srcmd5>96d07090fdb3cf7c210af7db0f0977ee</srcmd5>
+    <version>2.1.1</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d3720f02cf9a174d1316b30c6bff2858</srcmd5>
+    <version>2.2.2</version>
+    <time>1283516296</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/slang based on submit request 46177 from user coolo
+</comment>
+    <requestid>46177</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>2d7a3987a9fcf935b23dcf03068b8dde</srcmd5>
+    <version>unknown</version>
+    <time>1284378469</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/slang based on submit request 47988 from user coolo
+</comment>
+    <requestid>47988</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>2d7a3987a9fcf935b23dcf03068b8dde</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>2d7a3987a9fcf935b23dcf03068b8dde</srcmd5>
+    <version>unknown</version>
+    <time>1319182474</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>73bd1ee6db3995e5511889bf31736d5d</srcmd5>
+    <version>2.2.2</version>
+    <time>1325660491</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95137 from coolo)</comment>
+    <requestid>95185</requestid>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>380cdccdb3e53474119fc2e4a8f8e203</srcmd5>
+    <version>2.2.2</version>
+    <time>1329242909</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104014</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0f45e65ef0e9d1e0f5ae469b4142e91c</srcmd5>
+    <version>2.2.4</version>
+    <time>1338030376</time>
+    <user>coolo</user>
+    <comment>- update to version 2.2.4
+  - numerous changes, see the included changes.txt for a detailed
+    list
+- rebased slang-2.2.2.dif and renamed to slang.patch
+- rebased slang-2.2.2-autoconf.dif and renamed to
+  slang-autoconf.patch
+- rebased slang-2.2.2-libpng12-linker-flag.patch and renamed to
+  slang-libpng12-linker-flag.patch
+- rebased slang-2.2.2-fsuid.dif and renamed to slang-fsuid.patch
+- build oniguruma module on &gt;= 12.1 (forwarded request 122071 from gberh)</comment>
+    <requestid>122072</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>0f45e65ef0e9d1e0f5ae469b4142e91c</srcmd5>
+    <version>2.2.4</version>
+    <time>1340184220</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>0f45e65ef0e9d1e0f5ae469b4142e91c</srcmd5>
+    <version>2.2.4</version>
+    <time>1359110412</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>0f45e65ef0e9d1e0f5ae469b4142e91c</srcmd5>
+    <version>2.2.4</version>
+    <time>1379664690</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>008fa31a8ff8240e5eb2a0f497e2aada</srcmd5>
+    <version>2.2.4</version>
+    <time>1405434344</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239602</requestid>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>f6e3c3279fa359c7cf28948bd86131e8</srcmd5>
+    <version>2.2.4</version>
+    <time>1409252711</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246528</requestid>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>f6e3c3279fa359c7cf28948bd86131e8</srcmd5>
+    <version>2.2.4</version>
+    <time>1409303375</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b3f24784949c028cc981e9686fca8fcf</srcmd5>
+    <version>2.3.0</version>
+    <time>1425377562</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file with spec-cleaner
+- Add gpg signature
+- Remove upstreamed patch
+  * sprintf-bug-concerning-c-for-8-bit-character-in-non-.patch
+- Update to 2.3.0
+  * numerous changes, see included changes.txt for a detailed
+    list</comment>
+    <requestid>288288</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d2c1386ee59e831f8a7d8e29e2ffec56</srcmd5>
+    <version>2.3.1a</version>
+    <time>1496821884</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499648</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>696fee004c6ecb38bd13562c610873e8</srcmd5>
+    <version>2.3.1a</version>
+    <time>1497949083</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503684</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>cd3d28ae1595e0f4a5c1a896d7fa85dc</srcmd5>
+    <version>2.3.1a</version>
+    <time>1518426707</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream commit 6dd5ade9a97b52ace4ac033779a6d3c1c51db4d1 as
+  patch git-6dd5ade9a97b52ace4ac033779a6d3c1c51db4d1.patch (boo#1079543)
+  * Added support for the new ncurses 32-bit terminfo database entries</comment>
+    <requestid>574532</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>c34b1a7f73ef1044031597271e9047a5</srcmd5>
+    <version>2.3.1a</version>
+    <time>1520415045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582541</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>b9c17df05a5794afd75bdc292d6cc85e</srcmd5>
+    <version>2.3.1a</version>
+    <time>1521192937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587519</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>d176fcf475b2584f737ec19f8dda9c64</srcmd5>
+    <version>2.3.1a</version>
+    <time>1538377574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637425</requestid>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>477ae25dae4109168d2abe6a301453c9</srcmd5>
+    <version>2.3.1a</version>
+    <time>1567677744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720516</requestid>
+  </revision>
+</revisionlist>

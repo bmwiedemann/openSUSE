@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a8d0a2a6455ed64328d1b5eb5d59883</srcmd5>
+    <version>1.2.3</version>
+    <time>1376513605</time>
+    <user>scarabeus_factory</user>
+    <comment>Please review bwbar for inclusion in the distribution.</comment>
+    <requestid>186663</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1a8d0a2a6455ed64328d1b5eb5d59883</srcmd5>
+    <version>1.2.3</version>
+    <time>1379662066</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ff22b3c010d5f4db3d770e68ee5c7126</srcmd5>
+    <version>1.2.3</version>
+    <time>1383034470</time>
+    <user>coolo</user>
+    <comment>little fix (forwarded request 204855 from posophe)</comment>
+    <requestid>204880</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>ff22b3c010d5f4db3d770e68ee5c7126</srcmd5>
+    <version>1.2.3</version>
+    <time>1409300596</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>df067cf8878fd3a0a1526b8bd96a893a</srcmd5>
+    <version>1.2.3</version>
+    <time>1511517263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544812</requestid>
+  </revision>
+</revisionlist>

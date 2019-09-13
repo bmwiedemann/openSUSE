@@ -1,0 +1,5 @@
+<package name="kio" project="openSUSE:Factory">
+  <title>kio</title>
+  <description>KIO</description>
+  <devel project="KDE:Frameworks5" package="kio"/>
+</package>

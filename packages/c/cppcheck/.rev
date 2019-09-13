@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d51b3db1dab119e235f185acefa45d0b</srcmd5>
+    <version>1.69</version>
+    <time>1438899839</time>
+    <user>dimstar_suse</user>
+    <comment>New package, usefull tool</comment>
+    <requestid>320724</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>442cd6b90b01e3bb12ca3510cde19ab6</srcmd5>
+    <version>1.70</version>
+    <time>1442474494</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>331102</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3a6bdd49d47c3b549e4f85c624e35ab2</srcmd5>
+    <version>1.70</version>
+    <time>1456243044</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360676</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49e8fb66b3a1885aba4d9b573a745d21</srcmd5>
+    <version>1.77</version>
+    <time>1490318541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.77:
+- Always build Qt5 GUI</comment>
+    <requestid>481721</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e01220fab180074c74f2275a5e36f49</srcmd5>
+    <version>1.82</version>
+    <time>1519041809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577906</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79b4d2672ea5a37ada835260da732752</srcmd5>
+    <version>1.85</version>
+    <time>1539869998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642840</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3057bc21c7c9fa6580012503d0a94ad8</srcmd5>
+    <version>1.86</version>
+    <time>1545376938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660219</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>44bedc9f6f2ed71f687c606e2d0a45c9</srcmd5>
+    <version>1.86</version>
+    <time>1545996942</time>
+    <user>dimstar_suse</user>
+    <comment>- Small packaging enhancements
+
+- Use Python 3 instad of Python 2
+- Switch to CMake as the used build system, otherwise Python 3
+  could not be detected by plain make</comment>
+    <requestid>661573</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>39521a6727a83fdf03288d3aa2f93b3d</srcmd5>
+    <version>1.86</version>
+    <time>1546695754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662754</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7d78d140634408b42c575bd407332624</srcmd5>
+    <version>1.88</version>
+    <time>1562843626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712895</requestid>
+  </revision>
+</revisionlist>

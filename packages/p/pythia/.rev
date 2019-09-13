@@ -1,0 +1,198 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7be04a61bebccf9e15bf8027154b2ff0</srcmd5>
+    <version>8.185</version>
+    <time>1402947140</time>
+    <user>coolo</user>
+    <comment>New package: pythia - A monte-carlo event generator to generate high-energy-physics ‘events’, i.e. sets of outgoing particles produced in the interactions between two incoming particles</comment>
+    <requestid>231500</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7be04a61bebccf9e15bf8027154b2ff0</srcmd5>
+    <version>8.185</version>
+    <time>1409302776</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>08bf620d60ae8cadc82a5f64f3a6d68d</srcmd5>
+    <version>8.186</version>
+    <time>1409998715</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247629</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c4c59f6dad765c50a658452f5477eb4c</srcmd5>
+    <version>8.201</version>
+    <time>1414613413</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258590</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b3581dc41ab2d3a05255954d7fb6b455</srcmd5>
+    <version>8.210</version>
+    <time>1439556438</time>
+    <user>dimstar_suse</user>
+    <comment>- Change postinstall scripts to run ldconfig directly 
+
+- Update to version 8.210:  
+  + Bug fix in CKKW-L merging for LHE files, such that the
+    factorization and renormalization scales are set by the SCALUP
+    value if the muf2 and mur2 LHEF3 attributes have not been set,
+    and the user has not set any explicit values; this change
+    restores the PYTHIA 8.1 behaviour.
+  + Various technical improvements in the machinery for hard
+    diffraction.
+  + Correct quark flavour selection when a string spanned directly
+    between two junctions is split up.
+  + Check that SK-I and SK-II colour reconnection machineries only
+    are called for event topologies they are set up to handle.
+  + Bug fixes in partial widths of the W' boson. Results are
+    correct when the W' is a simply rescaled copy of the W, but
+    not for more general couplings. Thanks to Mihail Chizhov.
+  + Minor fix in default location of PDF data files in the
+    constructors. No practical consequence since correct
+    non-default values are used.
+  + Tiny fix in the configure script, so that CXX options
+    containing an equal sign are parsed correctly.
+- Changes from version 8.202 through 8.209:
+  + See /usr/share/doc/packages/pythia/htmldoc/UpdateHistory.html.
+- Add pythia-makefile-destdir-support.patch to enable DESTDIR
+  support in the Makefile; makes configure stage buildroot-free
+  and prevents an ugly BUILDROOT trace in the shlib.
+- Enable additional bindings now that all necessary deps are in
+  Factory; new subpackage: libpythia8lhapdf6.
+- Add BuildRequires: chrpath; required to cleanup rpath in</comment>
+    <requestid>323100</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2a656fddc783228a51aba7f9cbe47cb2</srcmd5>
+    <version>8.210</version>
+    <time>1439631584</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323162</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>117861184e420629fd127c5bdd13e880</srcmd5>
+    <version>8.210</version>
+    <time>1440135642</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323272</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>5447204ce460590494805c05a4c8d6a5</srcmd5>
+    <version>8.210</version>
+    <time>1441296196</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328430</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>0521d0cb649bcebe292a3e330797a081</srcmd5>
+    <version>8.210</version>
+    <time>1441726963</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329140</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>06198e548aeb4e5cea31a876962ba062</srcmd5>
+    <version>8.212</version>
+    <time>1443585103</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333399</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b59eda2e92f8202a01cb4b7516b10ac7</srcmd5>
+    <version>8.215</version>
+    <time>1454491198</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357275</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>297dcbe9b2b4fba8e88876d980efedf7</srcmd5>
+    <version>8.219</version>
+    <time>1473241526</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424388</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1dcab21d6049f59fcfece4412bc9aa6b</srcmd5>
+    <version>8.219</version>
+    <time>1473679543</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425692</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4e47acb16b998d2c5f0c8ddb701aa5b4</srcmd5>
+    <version>8.223</version>
+    <time>1485682787</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452884</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>49210c280f9a9b6c10b6f87b9752901e</srcmd5>
+    <version>8.223</version>
+    <time>1486135764</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454216</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>9e813b1835149dfb6cd7a4664a228b96</srcmd5>
+    <version>8.223</version>
+    <time>1486391075</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454916</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f0b7ec4719586755bcfcbcd8caab9419</srcmd5>
+    <version>8.226</version>
+    <time>1503593040</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514116</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>16a493808b3d9d1772668dfd167b93c3</srcmd5>
+    <version>8.226</version>
+    <time>1505334706</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522239</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5faf38af8ca41bacaf0941e6a3b5d759</srcmd5>
+    <version>8.235</version>
+    <time>1526220283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603526</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>79ede248ec89a218979d8fa173fdc3e8</srcmd5>
+    <version>8.240</version>
+    <time>1557263930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701136</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e4fe29f3b6495433fe33341cd2c85f33</srcmd5>
+    <version>8.243</version>
+    <time>1567850012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728702</requestid>
+  </revision>
+</revisionlist>

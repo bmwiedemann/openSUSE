@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db9ee068bcf8893bfd20398210ce9fcf</srcmd5>
+    <version>2.6.0</version>
+    <time>1428391803</time>
+    <user>dimstar_suse</user>
+    <comment>%postun is now %preun</comment>
+    <requestid>294643</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8aa34eb641c7460797709f21c5bb8a5b</srcmd5>
+    <version>2.6.0</version>
+    <time>1439969361</time>
+    <user>dimstar_suse</user>
+    <comment>- ExcludeArch ppc64le because asm files in
+  mpn/powerpc64/mode64/* are ABI version 1. (forwarded request 322579 from michel_mno)</comment>
+    <requestid>322580</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e1f205f105b8a0b22181027f1f1801ab</srcmd5>
+    <version>2.7.2</version>
+    <time>1448957945</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>346680</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c734952538786bb1249230ccd8e8d8d</srcmd5>
+    <version>3.0.0~alpha3</version>
+    <time>1488479716</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 3.0.0~alpha3
+- Add 0001-Fix-32-bit-fat-build.patch</comment>
+    <requestid>460362</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b3a76f83579b8bbf516a3b6f2da4cf30</srcmd5>
+    <version>3.0.0~alpha3</version>
+    <time>1489653796</time>
+    <user>dimstar_suse</user>
+    <comment>- Add explicit m4 BuildRequire</comment>
+    <requestid>479602</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>81b6a75b518fcfb7f3fbfdc9814913d8</srcmd5>
+    <version>3.0.0</version>
+    <time>1493580267</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.0.0
+  * IA32 build failure resolved
+- Removed 0001-Fix-32-bit-fat-build.patch (included)</comment>
+    <requestid>492170</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>de2c113b2d109c3cd8a768c0e56a8f07</srcmd5>
+    <version>3.0.0</version>
+    <time>1517823977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571986</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e798fe451e2e8b36190b539ebae5b905</srcmd5>
+    <version>3.0.0</version>
+    <time>1518514007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574866</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>34ff49e5dbdcf8187a5f42e8afb6ee4b</srcmd5>
+    <version>3.0.0</version>
+    <time>1551284861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674500</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>68f14a8dc45721f3c6329ce4fa37cf8c</srcmd5>
+    <version>3.0.0</version>
+    <time>1566894097</time>
+    <user>dimstar_suse</user>
+    <comment>- Specfile modernization.</comment>
+    <requestid>725967</requestid>
+  </revision>
+</revisionlist>

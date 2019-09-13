@@ -1,0 +1,6 @@
+<package name="octave-forge-fits" project="openSUSE:Factory">
+  <title></title>
+  <description>Functions for reading and writing FITS (Flexible Image Transport System) files. 
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-fits"/>
+</package>

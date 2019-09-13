@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3d7f8c6e0eb2cc255426b0d3a5ce42a</srcmd5>
+    <version>52.3.0</version>
+    <time>1505331704</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for the GNOME 3.26 stack - Staging:G</comment>
+    <requestid>520786</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e0ae90de43f847fbb8b3727e3aeea938</srcmd5>
+    <version>52.3.0</version>
+    <time>1507896380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532533</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4862a066255aef82e8d173c351252188</srcmd5>
+    <version>52.3.0</version>
+    <time>1511274204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542767</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3d73e82108e1f80decc0429e919eb413</srcmd5>
+    <version>52.3.0</version>
+    <time>1512546734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547649</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f2258c95ef55e4fc67184c2cd946886b</srcmd5>
+    <version>52.6.0</version>
+    <time>1517323177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570635</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7a7320d7dffb6e1d261801f70eaa7f21</srcmd5>
+    <version>52.6.0</version>
+    <time>1520253333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582173</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>4ee769280588b75f5d08bedb527a8f0f</srcmd5>
+    <version>52.6.0</version>
+    <time>1527276877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611491</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>0d67f0ed49ef8ab473c0cc4d91d91fa1</srcmd5>
+    <version>52.6.0</version>
+    <time>1528021793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613050</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>302f8992ede310d5e48ae571b8aa8cb2</srcmd5>
+    <version>52.6.0</version>
+    <time>1530740856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617548</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>315c09875e2ec83e37ad74c609e6134d</srcmd5>
+    <version>52.6.0</version>
+    <time>1532593014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625195</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>904045a28f76214c2261b750b75fb806</srcmd5>
+    <version>52.6.0</version>
+    <time>1547539898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664128</requestid>
+  </revision>
+</revisionlist>

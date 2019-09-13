@@ -1,0 +1,5 @@
+<package name="hostinfo" project="openSUSE:Factory">
+  <title>Host Information at Login</title>
+  <description>A script that displays current system information to help identify a host and it's resources.</description>
+  <devel project="Novell:NTS:Unstable" package="hostinfo"/>
+</package>

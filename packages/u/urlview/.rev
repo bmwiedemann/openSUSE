@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="663">
+    <srcmd5>66c889f1edc57b406542862f9361d160</srcmd5>
+    <version>0.9</version>
+    <time>1295052495</time>
+    <user>darix</user>
+    <comment>Accepted submit request 56626 from user puzel
+</comment>
+    <requestid>56626</requestid>
+  </revision>
+  <revision rev="2" vrev="717">
+    <srcmd5>62bdc0274c0528a0f5924e86e308dc92</srcmd5>
+    <version>0.9</version>
+    <time>1295052503</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 56626
+</comment>
+  </revision>
+  <revision rev="3" vrev="720">
+    <srcmd5>62bdc0274c0528a0f5924e86e308dc92</srcmd5>
+    <version>0.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="722">
+    <srcmd5>62bdc0274c0528a0f5924e86e308dc92</srcmd5>
+    <version>0.9</version>
+    <time>1319182543</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="723">
+    <srcmd5>b8e3104bf69a018e11f57f1dd939d2c4</srcmd5>
+    <version>0.9</version>
+    <time>1323085560</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94776 from coolo)</comment>
+    <requestid>95291</requestid>
+  </revision>
+  <revision rev="6" vrev="724">
+    <srcmd5>b83b67cd12f82fbd774d01fc106469a1</srcmd5>
+    <version>0.9</version>
+    <time>1329215242</time>
+    <user>coolo</user>
+    <comment>- convert license string to spdx format 
+- remove suse_update_config</comment>
+    <requestid>103511</requestid>
+  </revision>
+  <revision rev="7" vrev="726">
+    <srcmd5>b83b67cd12f82fbd774d01fc106469a1</srcmd5>
+    <version>0.9</version>
+    <time>1340184300</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="728">
+    <srcmd5>b83b67cd12f82fbd774d01fc106469a1</srcmd5>
+    <version>0.9</version>
+    <time>1359110529</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="730">
+    <srcmd5>b83b67cd12f82fbd774d01fc106469a1</srcmd5>
+    <version>0.9</version>
+    <time>1379664894</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="732">
+    <srcmd5>b83b67cd12f82fbd774d01fc106469a1</srcmd5>
+    <version>0.9</version>
+    <time>1409303581</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

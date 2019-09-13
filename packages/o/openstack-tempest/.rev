@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4f8adea12d876201d04f76a66c48c61</srcmd5>
+    <version>12.1.0</version>
+    <time>1476350925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>431555</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>83f46febc18c872f6773c16913c4cf57</srcmd5>
+    <version>18.0.0</version>
+    <time>1556915980</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 18.0.0:
+  * Release matching OpenStack Rocky requirements</comment>
+    <requestid>692813</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>403a21ccfefc6fd2dd4ee97627fe7c61</srcmd5>
+    <version>20.0.0</version>
+    <time>1565362510</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 20.0.0
+  * release matching OpenStack Stein requirements
+
+- This package doesn't support jsonschema 3.</comment>
+    <requestid>722000</requestid>
+  </revision>
+</revisionlist>

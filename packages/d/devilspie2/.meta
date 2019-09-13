@@ -1,0 +1,5 @@
+<package name="devilspie2" project="openSUSE:Factory">
+  <title>Devil's Pie 2</title>
+  <description>A window matching utility</description>
+  <devel project="X11:common:Factory" package="devilspie2"/>
+</package>

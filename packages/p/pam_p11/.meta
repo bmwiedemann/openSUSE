@@ -1,0 +1,25 @@
+<package name="pam_p11" project="openSUSE:Factory">
+  <title>PAM Authentication Module for Using Cryptographic Tokens</title>
+  <description>Pam_p11 is a pluggable authentication module (pam) package for using
+cryptographic tokens, such as smart cards and usb crypto tokens, for
+authentication.
+
+Pam_p11 uses libp11 to access any PKCS#11 module. It should be
+compatible with any implementation, but it is primarily developed using
+OpenSC.
+
+Pam_p11 implements two authentication modules:
+
+* pam_p11_openssh authenticates the user using openssh
+   ~/.ssh/authorized_keys file.
+
+* pam_p11_opensc authenticates the user using certificates found in
+   ~/.eid/authorized_certificates. It is compatible with the older
+   opensc &quot;pam_opensc&quot; authentication module (eid mode).
+
+Pam_p11 is very simple. It has no configuration file, no other options
+than the PKCS#11 module file, and does not know about certificate
+chains, certificate authorities, revocation lists, or OCSP. It is
+perfect for the small installation with no frills.</description>
+  <devel project="security:chipcard" package="pam_p11"/>
+</package>

@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>53d003e2a85004ff3a57451ea4d0f481</srcmd5>
+    <version>1.0.16</version>
+    <time>1510911510</time>
+    <user>dimstar_suse</user>
+    <comment>- replaced renamed tarball by git tag download 
+- fixed Source field to use URL
+- initial package from github.com/swh/lv2 git tag 1.0.16
+</comment>
+    <requestid>535933</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a9f165a2cd5acada383a44d551b20f1b</srcmd5>
+    <version>1.0.16</version>
+    <time>1549916770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673108</requestid>
+  </revision>
+</revisionlist>

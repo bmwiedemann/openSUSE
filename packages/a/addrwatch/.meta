@@ -1,0 +1,25 @@
+<package name="addrwatch" project="openSUSE:Factory">
+  <title>A tool similar to arpwatch for IPv4/IPv6 and ethernet address pairing monitoring. </title>
+  <description>This is a tool similar to arpwatch. It main purpose is to monitor network and log discovered ethernet/ip pairings.
+
+Main features of addrwatch:
+
+    IPv4 and IPv6 address monitoring
+    Monitoring multiple network interfaces with one daemon
+    Monitoring of VLAN tagged (802.1Q) packets.
+    Output to stdout, plain text file, syslog, sqlite3 db, MySQL db
+    IP address usage history preserving output/logging
+
+Addrwatch is extremely useful in networks with IPv6 autoconfiguration (RFC4862) enabled. It allows to track IPv6 addresses of hosts using IPv6 privacy extensions (RFC4941).
+
+The main difference between arpwatch and addrwatch is the format of output files.
+
+Arpwatch stores only current state of the network ethernet/ip pairings and allows to send email notification when a pairing change occurs. This is fine for small and rather static networks. In arpwatch case all the history of pairings is saved only in administrators mailbox. When arpwatch is used for monitoring dozen or more networks it becomes hard to keep track of the historic address usage information.
+
+Addrwatch do not keep persistent network pairings state but instead logs all the events that allow ethernet/ip pairing discovery. For IPv4 it is ARP requests, ARP replies and ARP ACD (Address Conflict Detection) packets. For IPv6 it uses ICMPv6 Neighbor Discovery and (DAD) Duplicate Address Detection packets (Neighbor Solicitations, Neighbor Advertisements).
+
+
+</description>
+  <devel project="security" package="addrwatch"/>
+  <url>https://github.com/fln/addrwatch</url>
+</package>

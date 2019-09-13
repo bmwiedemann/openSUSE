@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00173ac2c5b5f0c103a1079820013837</srcmd5>
+    <version>4.0.2</version>
+    <time>1363983110</time>
+    <user>coolo</user>
+    <comment>Useful zope package</comment>
+    <requestid>159560</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f76805d3badf4a84d58feef205391b6c</srcmd5>
+    <version>4.0.2</version>
+    <time>1364928170</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161951</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f76805d3badf4a84d58feef205391b6c</srcmd5>
+    <version>4.0.2</version>
+    <time>1379664325</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>9fe980109de68e5e9cdf87a229001d7d</srcmd5>
+    <version>4.0.2</version>
+    <time>1383144683</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204695</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>9fe980109de68e5e9cdf87a229001d7d</srcmd5>
+    <version>4.0.2</version>
+    <time>1409303034</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ceaaa58e5e83b606e4599091895aa26a</srcmd5>
+    <version>4.0.4</version>
+    <time>1432072057</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307907</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1dc919a0e43f9c57a12d8768546aa5c0</srcmd5>
+    <version>5.2.4</version>
+    <time>1533627881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627761</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>dd88f3c15c0338c2c51d5d9cd387985c</srcmd5>
+    <version>5.2.4</version>
+    <time>1544726796</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654092</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8a23db7fb91f3f86fef0b58025fec6a8</srcmd5>
+    <version>5.3.2</version>
+    <time>1556022911</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>692484</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e202cd6565aa20a40da99ccc60b3eec2</srcmd5>
+    <version>5.3.3</version>
+    <time>1563808740</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3.3:
+  * Fix a bug where clicking the selected radio button would unselect it. See issue 68.
+  * Fix another incompatibility with BeautifulSoup4 &gt;= 4.7 that could result in a SyntaxError from browser.getLink(). See issue 61.</comment>
+    <requestid>717543</requestid>
+  </revision>
+</revisionlist>

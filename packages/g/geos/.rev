@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>580814842036e3d61d238666c366e10a</srcmd5>
+    <version>3.4.2</version>
+    <time>1423130437</time>
+    <user>dimstar_suse</user>
+    <comment>New cool package</comment>
+    <requestid>283991</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c5980b107f07696e50759c176db9d564</srcmd5>
+    <version>3.4.2</version>
+    <time>1431247623</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305871</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d28c4fe4af8485c1878e859eac0eb861</srcmd5>
+    <version>3.4.2</version>
+    <time>1431795685</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307442</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>62a229aecd3d4a221bd48cc1de2dc453</srcmd5>
+    <version>3.5.0</version>
+    <time>1447146237</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanups spec file with spec-cleaner
+
+- Implement shlib packaging guidelines. Drop explicit Requires,
+  as the python/ruby/etc. subpackages require the libraries by
+  SONAME already.
+- Throw out repeated packaging of documentation
+- RPM group classification corrections
+
+- Update to version 3.5.0
+  * Voronoi API (#627)
+  * PHP: Geometry-&gt;normalize method
+  * GEOS_USE_ONLY_R_API macro support (#695)
+  * PHP: WKBReader-&gt;read() &amp; WKBWriter::write() methods
+  * GEOSClipByRect (#699)
+  * CAPI: thread-safe message handling API (#663)
+  * Speed-up intersection and difference between geometries
+    with small bounding box overlap.
+  * CAPI: add MULTILINESTRING support for GEOSisClosed
+  * Added no-parameter CoordinateSequenceFactory::create method
+- Update libruby.patch
+- Remove depreciated %py_requires macro</comment>
+    <requestid>343229</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7cc8101150f6fe7a58bcaf68b1d48700</srcmd5>
+    <version>3.5.0</version>
+    <time>1466814284</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with recent gcc</comment>
+    <requestid>404470</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bacee971e81cb42067b88482d17c37a3</srcmd5>
+    <version>3.5.1</version>
+    <time>1481391029</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445121</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed87696efd80640d8da456bc8a07cb4a</srcmd5>
+    <version>3.6.1</version>
+    <time>1500669874</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.6.1:</comment>
+    <requestid>500554</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>91e24bcc30f67d4e84fb1043703ab8fd</srcmd5>
+    <version>3.6.2</version>
+    <time>1510837297</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.6.2:</comment>
+    <requestid>541502</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3180bdb420d55ba1cf55b05382f8b267</srcmd5>
+    <version>3.6.2</version>
+    <time>1520588766</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file a bit</comment>
+    <requestid>584407</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dcec10be6819fd13853c8970faa9f7a4</srcmd5>
+    <version>3.7.1</version>
+    <time>1551284917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>677273</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>38d350fdac47d90178c2beca5197e3e5</srcmd5>
+    <version>3.7.2</version>
+    <time>1561494104</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.2
+  * Envelope constructor using strtod (#875 Paul Ramsey)
+  * Failure in CMake for OSX Framework (#936 Paul Ramsey)
+  * Polygon build failure in Overlay difference (#789 Paul Ramsey)
+  * Invalid union result from valid polygon inputs (#838)</comment>
+    <requestid>709442</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="cargo-vendor" project="openSUSE:Factory">
+  <title></title>
+  <description>This is a Cargo subcommand which vendors all crates.io dependencies into a local directory using Cargo's support for source replacement.</description>
+  <devel project="devel:languages:rust" package="cargo-vendor"/>
+</package>

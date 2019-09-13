@@ -1,0 +1,160 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af3d4444254b4e124587a3872530c2bf</srcmd5>
+    <version>0.7</version>
+    <time>1249915410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>af3d4444254b4e124587a3872530c2bf</srcmd5>
+    <version>0.7</version>
+    <time>1249915410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c882bcb917d39267e40851d3dc8fd77f</srcmd5>
+    <version>0.7</version>
+    <time>1268923925</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>c882bcb917d39267e40851d3dc8fd77f</srcmd5>
+    <version>0.7</version>
+    <time>1278667349</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>c882bcb917d39267e40851d3dc8fd77f</srcmd5>
+    <version>0.7</version>
+    <time>1278678581</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7a95a961d104ec7539a023db8ffcbe3b</srcmd5>
+    <version>0.8</version>
+    <time>1281736999</time>
+    <user>autobuild</user>
+    <comment>Copy from Application:Geo/gypsy based on submit request 45539 from user vuntz
+</comment>
+    <requestid>45539</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>7a95a961d104ec7539a023db8ffcbe3b</srcmd5>
+    <version>0.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>0848271fa0c183c992c28a8b85abd228</srcmd5>
+    <version>0.8</version>
+    <time>1304604765</time>
+    <user>saschpe</user>
+    <comment>Fix gcc 4.6 compilation</comment>
+    <requestid>69674</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>d1016d5920dc368fdfe64a3efab34d48</srcmd5>
+    <version>0.8</version>
+    <time>1304604774</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69674
+</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>d1016d5920dc368fdfe64a3efab34d48</srcmd5>
+    <version>0.8</version>
+    <time>1319181962</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>f4763471cadab895078306240a3c089c</srcmd5>
+    <version>0.8</version>
+    <time>1323191864</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>f4763471cadab895078306240a3c089c</srcmd5>
+    <version>0.8</version>
+    <time>1340183431</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>83615ac040ed552bfd455cbec8cc7681</srcmd5>
+    <version>0.8</version>
+    <time>1341920504</time>
+    <user>coolo</user>
+    <comment>- Add gypsy-CVE-2011-0523.patch: add config file to restrict the
+  files that can be read. Fix CVE-2011-0523 and bnc#666839.
+- Add gypsy-CVE-2011-0524.patch: use snprintf() to avoid buffer
+  overflows. Fix CVE-2011-0524 and bnc#666839.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh for
+  gypsy-CVE-2011-0523.patch, since it touches the build system. (forwarded request 127427 from vuntz)</comment>
+    <requestid>127428</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dbacd89335e52b7406b7ffb44f332130</srcmd5>
+    <version>0.9</version>
+    <time>1351013803</time>
+    <user>coolo</user>
+    <comment>Update to 0.9 (forwarded request 139072 from vuntz)</comment>
+    <requestid>139073</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>dbacd89335e52b7406b7ffb44f332130</srcmd5>
+    <version>0.9</version>
+    <time>1359109039</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>a1e58bc7f8f8d985c2f80b89c8861043</srcmd5>
+    <version>0.9</version>
+    <time>1366357452</time>
+    <user>coolo</user>
+    <comment>Fix build in Factory - please work with upstream to integrate the patch (forwarded request 171382 from dimstar)</comment>
+    <requestid>172364</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>a1e58bc7f8f8d985c2f80b89c8861043</srcmd5>
+    <version>0.9</version>
+    <time>1379662601</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>ebb1d50fd5bcba7194f06be3e8473b9c</srcmd5>
+    <version>0.9</version>
+    <time>1403070626</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236529</requestid>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>ebb1d50fd5bcba7194f06be3e8473b9c</srcmd5>
+    <version>0.9</version>
+    <time>1409301149</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>2f51d56faa208c7e1b4b7dd84fd70dba</srcmd5>
+    <version>0.9</version>
+    <time>1459254583</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>364958</requestid>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>f221939a7cad05e62f4f2341a3670e10</srcmd5>
+    <version>0.9</version>
+    <time>1508323845</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534151</requestid>
+  </revision>
+</revisionlist>

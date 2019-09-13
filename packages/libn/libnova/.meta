@@ -1,0 +1,8 @@
+<package name="libnova" project="openSUSE:Factory">
+  <title>Celestial Mechanics, Astrometry and Astrodynamics Library</title>
+  <description>libnova is a general purpose, double precision, Celestial Mechanics,
+Astrometry and Astrodynamics library. The intended audience of libnova
+is C &amp; C++ programmers, astronomers and anyone else interested in
+calculating positions of astronomical objects or celestial mechanics.</description>
+  <devel project="science" package="libnova"/>
+</package>

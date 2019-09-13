@@ -1,0 +1,751 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b1f3247f0bf7988ed39d27cfb159eacb</srcmd5>
+    <version>1.0</version>
+    <time>1179715275</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>a46560ebee084bfacb80f39e30497561</srcmd5>
+    <version>1.0</version>
+    <time>1180046204</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="11">
+    <srcmd5>11b75505300bd3e2833e4537f5233587</srcmd5>
+    <version>1.0</version>
+    <time>1180999058</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="13">
+    <srcmd5>fffdc29f0ccb70a6d254f0a4e8c11a21</srcmd5>
+    <version>1.0</version>
+    <time>1181146670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="15">
+    <srcmd5>d0a01714588d70aa6134f28c9bf9da02</srcmd5>
+    <version>1.0</version>
+    <time>1181254824</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="20">
+    <srcmd5>a217b56097a10af6d7433f1f821c201f</srcmd5>
+    <version>1.0</version>
+    <time>1182463949</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="69">
+    <srcmd5>2ba6f8a8a1c16901e52a128127207655</srcmd5>
+    <version>1.0</version>
+    <time>1194561129</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="74">
+    <srcmd5>dc707ad4972b0d96d2330983d718ab77</srcmd5>
+    <version>1.0</version>
+    <time>1195778950</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="102">
+    <srcmd5>cf3cff30e6c00f3488c0961a30bdb078</srcmd5>
+    <version>1.0</version>
+    <time>1202915612</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="119">
+    <srcmd5>69a953cb60624f822d3b324a316f0734</srcmd5>
+    <version>1.0</version>
+    <time>1205170481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="156">
+    <srcmd5>72bb9031f482140a9353c29ce727d04f</srcmd5>
+    <version>1.0</version>
+    <time>1214611349</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="159">
+    <srcmd5>e4963383ac9578e4db0be3b3673f3da3</srcmd5>
+    <version>1.0</version>
+    <time>1215082937</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="160">
+    <srcmd5>7eba48ae533bead09bf06d724fe8d809</srcmd5>
+    <version>1.0</version>
+    <time>1216888724</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="170">
+    <srcmd5>20da1c2bce619c98a86916e2cf0e8c6d</srcmd5>
+    <version>1.0</version>
+    <time>1216929648</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="186">
+    <srcmd5>029b800d8244cf5dc3cb72a3280e7fe7</srcmd5>
+    <version>1.0</version>
+    <time>1218757789</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="208">
+    <srcmd5>4d21f0dd9ad1a2dd1603dac52267f239</srcmd5>
+    <version>1.0</version>
+    <time>1220868325</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="209">
+    <srcmd5>af4102dc630024e4992b55d839342073</srcmd5>
+    <version>1.0</version>
+    <time>1220871928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5a753dd8fc99b0ece721370357455120</srcmd5>
+    <version>unknown</version>
+    <time>1222531688</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="210">
+    <srcmd5>bf1c86ec8723b85ac9abf7c5cae1bbb7</srcmd5>
+    <version>1.0</version>
+    <time>1222531940</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="211">
+    <srcmd5>900a900aab49d91964c5b96ade52e1fd</srcmd5>
+    <version>1.0</version>
+    <time>1222533496</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="212">
+    <srcmd5>9497b3504f46af69fff91215f22c43b3</srcmd5>
+    <version>1.0</version>
+    <time>1222533896</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="213">
+    <srcmd5>59d5f2b1318da4bae4b08fdb3aa89e41</srcmd5>
+    <version>1.0</version>
+    <time>1222544179</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="214">
+    <srcmd5>1328cc3d3a8458445985d12f4f51addf</srcmd5>
+    <version>1.0</version>
+    <time>1229349912</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="215">
+    <srcmd5>401959b9c78d6b047bbf32bb1b0d3c6d</srcmd5>
+    <version>1.0</version>
+    <time>1232750338</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="216">
+    <srcmd5>1c281ad9770f848c5e0b2f365c834df7</srcmd5>
+    <version>1.0</version>
+    <time>1251907460</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-mini based on submit request 19020 from user lnussel
+</comment>
+  </revision>
+  <revision rev="26" vrev="217">
+    <srcmd5>240c78270db0bd197279119bac9dbda8</srcmd5>
+    <version>1.0</version>
+    <time>1253119418</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-mini based on submit request 20533 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="27" vrev="218">
+    <srcmd5>b550111d4573d214bc3d0414b98ddcdc</srcmd5>
+    <version>1.0</version>
+    <time>1254152799</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-mini based on submit request 21214 from user lnussel
+</comment>
+  </revision>
+  <revision rev="28" vrev="220">
+    <srcmd5>b550111d4573d214bc3d0414b98ddcdc</srcmd5>
+    <version>1.0</version>
+    <time>1254152799</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-mini based on submit request 21214 from user lnussel
+</comment>
+  </revision>
+  <revision rev="29" vrev="221">
+    <srcmd5>52f2cb85fa7a021ae33940129bd99f59</srcmd5>
+    <version>1.0</version>
+    <time>1264613361</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-mini based on submit request 30232 from user lnussel
+</comment>
+  </revision>
+  <revision rev="30" vrev="222">
+    <srcmd5>709f501b8fa327e96d1594fe4200258f</srcmd5>
+    <version>1.0</version>
+    <time>1267143061</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-mini based on submit request 33498 from user lnussel
+</comment>
+    <requestid>33498</requestid>
+  </revision>
+  <revision rev="31" vrev="223">
+    <srcmd5>1a8d06ec538ef98f06ce9f16ebcb7684</srcmd5>
+    <version>1.0</version>
+    <time>1267182379</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-mini based on submit request 33534 from user lnussel
+</comment>
+    <requestid>33534</requestid>
+  </revision>
+  <revision rev="32" vrev="224">
+    <srcmd5>2070c08eac286d8ac93a8bc72d07cd4e</srcmd5>
+    <version>1.0</version>
+    <time>1268926001</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>857e8f0421ab9042b7e3c0a5e0e3d432</srcmd5>
+    <version>0.95</version>
+    <time>1270058006</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-mini based on submit request 35943 from user dirkmueller
+</comment>
+    <requestid>35943</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>857e8f0421ab9042b7e3c0a5e0e3d432</srcmd5>
+    <version>0.95</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>857e8f0421ab9042b7e3c0a5e0e3d432</srcmd5>
+    <version>0.95</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>3265be865460eb77d88be4f6b85a26fe</srcmd5>
+    <version>0.95</version>
+    <time>1280842365</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-mini based on submit request 44414 from user dirkmueller
+</comment>
+    <requestid>44414</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e1233fba93dbc667ce3f92a9aa3a1516</srcmd5>
+    <version>0.98</version>
+    <time>1284766770</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-mini based on submit request 48314 from user dirkmueller
+</comment>
+    <requestid>48314</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>96d12d753f3a3971d0765268778d0f09</srcmd5>
+    <version>0.98</version>
+    <time>1284991558</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-mini based on submit request 48539 from user dirkmueller
+</comment>
+    <requestid>48539</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>332e4ae2b92b20c52e60403f52ea4af9</srcmd5>
+    <version>0.99</version>
+    <time>1287413853</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50897 from user dirkmueller
+</comment>
+    <requestid>50897</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>5717201ab2397b94864adf8be24ee1ad</srcmd5>
+    <version>0.99</version>
+    <time>1287413859</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50897
+</comment>
+  </revision>
+  <revision rev="41" vrev="225">
+    <srcmd5>452546ab9e68bf7dbd6bb6dbf3636983</srcmd5>
+    <version>1.0</version>
+    <time>1289841452</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52776 from user dirkmueller
+</comment>
+    <requestid>52776</requestid>
+  </revision>
+  <revision rev="42" vrev="226">
+    <srcmd5>12402c075277f5f718d2922b0c45be27</srcmd5>
+    <version>1.0</version>
+    <time>1289841458</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52776
+</comment>
+  </revision>
+  <revision rev="43" vrev="227">
+    <srcmd5>548de3e28d1aed8656d1feaa8033584b</srcmd5>
+    <version>1.0</version>
+    <time>1290435009</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53610 from user coolo
+</comment>
+    <requestid>53610</requestid>
+  </revision>
+  <revision rev="44" vrev="228">
+    <srcmd5>4abd4797bdfada58857f0372b6df19f0</srcmd5>
+    <version>1.0</version>
+    <time>1290435018</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53610
+</comment>
+  </revision>
+  <revision rev="45" vrev="231">
+    <srcmd5>4abd4797bdfada58857f0372b6df19f0</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6840a6cbbc6b57e9702f1d5085540ab0</srcmd5>
+    <version>1.1</version>
+    <time>1303197781</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67738 from user coolo
+</comment>
+    <requestid>67738</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>80bea7a67f641288f8a0d6d5e0a63e74</srcmd5>
+    <version>1.1</version>
+    <time>1303197794</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67738
+</comment>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>f49060b5a1b7c23da95989a1585e7bf8</srcmd5>
+    <version>1.1</version>
+    <time>1303395292</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 68073 from user coolo
+</comment>
+    <requestid>68073</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>28dfe85a8a1104f1da76cc74d1430d43</srcmd5>
+    <version>1.1</version>
+    <time>1303395303</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 68073
+</comment>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>5c04fddb5f76ae7f0eef849ee9003352</srcmd5>
+    <version>1.1</version>
+    <time>1305550845</time>
+    <user>saschpe</user>
+    <comment>- include pie.config</comment>
+    <requestid>70090</requestid>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>7e54a3d5a6dcc1197386cb8fd9881d64</srcmd5>
+    <version>1.1</version>
+    <time>1305550855</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70090
+</comment>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>8febeca8fc2c737cfbafe76911fbe4c2</srcmd5>
+    <version>1.2</version>
+    <time>1310369169</time>
+    <user>saschpe</user>
+    <comment>- fix magic detection after the file update to 5.07 
+
+- bump version to 1.2 (matching rpmlint update)</comment>
+    <requestid>75909</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>e79b607d4ed70deae9fd902d842a1fad</srcmd5>
+    <version>1.2</version>
+    <time>1310369179</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75909
+</comment>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>e13611d7d88ce34b31a1d5e3c8404dde</srcmd5>
+    <version>1.3</version>
+    <time>1314021911</time>
+    <user>saschpe</user>
+    <comment>- bump version to 1.3 (matching rpmlint update)</comment>
+    <requestid>79475</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>cdce29c2914b6fa958f02b2c0c19b669</srcmd5>
+    <version>1.3</version>
+    <time>1314021921</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79475
+</comment>
+  </revision>
+  <revision rev="56" vrev="6">
+    <srcmd5>cdce29c2914b6fa958f02b2c0c19b669</srcmd5>
+    <version>1.3</version>
+    <time>1319182430</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="57" vrev="7">
+    <srcmd5>c19d79c40382ee4edd2e450208865113</srcmd5>
+    <version>1.3</version>
+    <time>1319452661</time>
+    <user>coolo</user>
+    <comment>- add the new abuild build path to the search dir list</comment>
+    <requestid>89129</requestid>
+  </revision>
+  <revision rev="58" vrev="8">
+    <srcmd5>2837f5684d0a2e0f8b5230565df3bff0</srcmd5>
+    <version>1.3</version>
+    <time>1322738761</time>
+    <user>coolo</user>
+    <comment>- install licenses.config</comment>
+    <requestid>94592</requestid>
+  </revision>
+  <revision rev="59" vrev="9">
+    <srcmd5>06dc5bc282a8006a792360a7ea6f4c43</srcmd5>
+    <version>1.3</version>
+    <time>1323194429</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="60" vrev="10">
+    <srcmd5>731957a5d93b1d6c873415b17619dd95</srcmd5>
+    <version>1.3</version>
+    <time>1324831272</time>
+    <user>coolo</user>
+    <comment>- update desktop-file-validate to 0.19:
+   - add Unity to list of registered environments
+   - deal with various zz-application/zz-winassoc-XXX mime types
+   - mark all zz-application/* MIME types as aliases
+   - add support for updated Keywords key
+   - accept x-scheme-handler/* mime types</comment>
+    <requestid>97657</requestid>
+  </revision>
+  <revision rev="61" vrev="11">
+    <srcmd5>56b76e5ed71aa6fdcfc8d9d2b4d32172</srcmd5>
+    <version>1.3</version>
+    <time>1330364211</time>
+    <user>coolo</user>
+    <comment>add documentation (bnc#748866) (forwarded request 106815 from yecril71pl)</comment>
+    <requestid>107074</requestid>
+  </revision>
+  <revision rev="62" vrev="13">
+    <srcmd5>56b76e5ed71aa6fdcfc8d9d2b4d32172</srcmd5>
+    <version>1.3</version>
+    <time>1340184149</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="63" vrev="14">
+    <srcmd5>fa0f1681d3ec3c083d88a1553c7835f5</srcmd5>
+    <version>1.3</version>
+    <time>1347487566</time>
+    <user>namtrac</user>
+    <comment>- update to desktop-file-validate 0.20 (bnc#779850):
+  - add MATE and Razor to list of registered environments (Vincent)
+  - validate Desktop Actions (Giovanni Campagna, Vincent)</comment>
+    <requestid>133748</requestid>
+  </revision>
+  <revision rev="64" vrev="15">
+    <srcmd5>23a7b1a2647840a45d4af7fea08b19e7</srcmd5>
+    <version>1.3</version>
+    <time>1351881566</time>
+    <user>coolo</user>
+    <comment>- fix build by passing rpmlint :)
+
+- let it require cpio - the same as with rpmlint (forwarded request 139597 from coolo)</comment>
+    <requestid>140011</requestid>
+  </revision>
+  <revision rev="65" vrev="16">
+    <srcmd5>a3292c12e29e7fd46a290989f262fe9a</srcmd5>
+    <version>1.3</version>
+    <time>1357834082</time>
+    <user>coolo</user>
+    <comment>temporarly disable for bootstrap fix</comment>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>ff3d8c535064a9577acce730cd324858</srcmd5>
+    <version>1.4</version>
+    <time>1359020405</time>
+    <user>coolo</user>
+    <comment>- bump version to 1.4
+undo bootstrap workaround</comment>
+    <requestid>149562</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>ff3d8c535064a9577acce730cd324858</srcmd5>
+    <version>1.4</version>
+    <time>1359110295</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>2010589d85c352ef5af09508b6e610df</srcmd5>
+    <version>1.4</version>
+    <time>1372271223</time>
+    <user>coolo</user>
+    <comment>- fix build against python 2.7.5</comment>
+    <requestid>181051</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>d86e9fdb609ebecd33095d021b22e3cb</srcmd5>
+    <version>1.5</version>
+    <time>1372510295</time>
+    <user>coolo</user>
+    <comment>- update to desktop-file-validate 0.21:
+  - update to current version of menu specification (Vincent):
+    - only print hint if no main category is present, not an error
+    - make Science a main category
+    - add new registered categories: Adult, Feed, Humanities, Maps,
+      Shooter, Spirituality, XFCE
+    - update related categories
+    - add TDE to list of registered OnlyShowIn
+  - accept and validate GNOME3/GSettings for AutostartCondition (Vincent)
+  - output hint if more than one main category is present (Vincent)
+  - output hint about suggested related categories (Vincent)</comment>
+    <requestid>181365</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>d86e9fdb609ebecd33095d021b22e3cb</srcmd5>
+    <version>1.5</version>
+    <time>1379664471</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>81c4d254c425cd4e971516ea2b3646f7</srcmd5>
+    <version>1.5</version>
+    <time>1380112724</time>
+    <user>coolo</user>
+    <comment>- no longer install rpmgroups.config
+
+- update to desktop-file-validate 0.22:
+  - add DBusActivatable key to allowed keys
+  - warn about OnlyShowIn in Action groups
+  - allow validating multiple desktop files
+  - improve help output
+  - update man page</comment>
+    <requestid>200423</requestid>
+  </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>4125c85fa321ae7520cafd2921206707</srcmd5>
+    <version>1.5</version>
+    <time>1380713619</time>
+    <user>coolo</user>
+    <comment>- dash is in /usr/bin now</comment>
+    <requestid>201844</requestid>
+  </revision>
+  <revision rev="73" vrev="6">
+    <srcmd5>a4e7c2d2d0d63fedb6bdf2d111281d15</srcmd5>
+    <version>1.5</version>
+    <time>1380864372</time>
+    <user>coolo</user>
+    <comment>- repackage libedit0 dependency of dash</comment>
+    <requestid>202006</requestid>
+  </revision>
+  <revision rev="74" vrev="7">
+    <srcmd5>46238bdf6bacc1bbb39c88c98efc483a</srcmd5>
+    <version>1.5</version>
+    <time>1400850026</time>
+    <user>coolo</user>
+    <comment> (forwarded request 231562 from matwey)</comment>
+    <requestid>235105</requestid>
+  </revision>
+  <revision rev="75" vrev="9">
+    <srcmd5>46238bdf6bacc1bbb39c88c98efc483a</srcmd5>
+    <version>1.5</version>
+    <time>1409303200</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="76" vrev="10">
+    <srcmd5>03380a3b82d888d19dbb6e76c8591ad4</srcmd5>
+    <version>1.5</version>
+    <time>1430387349</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>304203</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>916fc88e0213f38064afb0e04dd4c717</srcmd5>
+    <version>1.8</version>
+    <time>1456821521</time>
+    <user>dimstar_suse</user>
+    <comment>- raise version to 1.8</comment>
+    <requestid>360772</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>75f49bcd3dfc47857142c7bc3607800b</srcmd5>
+    <version>1.8</version>
+    <time>1461854944</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391106</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>f888633d2dfe79a6e120663103a22e50</srcmd5>
+    <version>1.8</version>
+    <time>1478167753</time>
+    <user>dimstar_suse</user>
+    <comment>- update desktop-file-utils to 0.23:
+  + Accept version 1.1 desktop files.
+  + Add Cinnamon, EDE and LXQt to the list of registered desktop
+    environments (fdo#73497, fdo#56353, fdo#79561).
+  + Allow multipart/related MIME type; it's used for MHTML
+    (fdo#93376).
+  + Ensure DBusActivatable filenames conform to reverse-DNS
+    notation (fdo#66904).
+  + Downgrade trailing semicolons to optional (fdo#76902).
+  + Fix buffer over-read (fdo#94303).</comment>
+    <requestid>437701</requestid>
+  </revision>
+  <revision rev="80" vrev="4">
+    <srcmd5>78a63497f7109f1aa3c21f9c2db3d368</srcmd5>
+    <version>1.8</version>
+    <time>1482418515</time>
+    <user>lnussel_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>446735</requestid>
+  </revision>
+  <revision rev="81" vrev="5">
+    <srcmd5>888df1cf54df57396694dfda69b3f32a</srcmd5>
+    <version>1.8</version>
+    <time>1485597848</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452589</requestid>
+  </revision>
+  <revision rev="82" vrev="6">
+    <srcmd5>ad003062d802a9f15197fce654759a4d</srcmd5>
+    <version>1.8</version>
+    <time>1486389900</time>
+    <user>dimstar_suse</user>
+    <comment>- buildignore ourselves to allow better bootstrapping.</comment>
+    <requestid>453844</requestid>
+  </revision>
+  <revision rev="83" vrev="7">
+    <srcmd5>68084876ca04185c4de3510fa883d6f9</srcmd5>
+    <version>1.8</version>
+    <time>1496932622</time>
+    <user>dimstar_suse</user>
+    <comment>- Add rpmlint-deps.patch:
+  Revert 'Adapt rpmlint-deps.txt for python-construct &gt;= 2.8'
+  for Leap 42.x</comment>
+    <requestid>500925</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>4993b28c8cc052e43ca8b5915321c3ee</srcmd5>
+    <version>1.10</version>
+    <time>1507627937</time>
+    <user>dimstar_suse</user>
+    <comment>- rebuild against rpmlint 1.10
+  drops: rpmlint-deps.patch
+- Switch to Python 3.x</comment>
+    <requestid>531247</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>46448da6f25c2054f4609e98603ed805</srcmd5>
+    <version>1.10</version>
+    <time>1508316252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534152</requestid>
+  </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>f11d53a12ee6121e448c534aa64de0be</srcmd5>
+    <version>1.10</version>
+    <time>1509193151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536396</requestid>
+  </revision>
+  <revision rev="87" vrev="4">
+    <srcmd5>19f13d22cdf692e788179dc5126e9edb</srcmd5>
+    <version>1.10</version>
+    <time>1509787421</time>
+    <user>dimstar_suse</user>
+    <comment>- set locale to C.utf8 to avoid non-ascii warnings</comment>
+    <requestid>538083</requestid>
+  </revision>
+  <revision rev="88" vrev="5">
+    <srcmd5>29bd6a6eefbf70b81f128a3092d20e18</srcmd5>
+    <version>1.10</version>
+    <time>1515875580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554744</requestid>
+  </revision>
+  <revision rev="89" vrev="6">
+    <srcmd5>c1122f04fed95fda80deabd719883904</srcmd5>
+    <version>1.10</version>
+    <time>1532681513</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>624593</requestid>
+  </revision>
+  <revision rev="90" vrev="7">
+    <srcmd5>60afe37ba05197e9793738689b47d90d</srcmd5>
+    <version>1.10</version>
+    <time>1546535009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661566</requestid>
+  </revision>
+  <revision rev="91" vrev="8">
+    <srcmd5>5c8f19178a16ea198ce68e19d8fc34cb</srcmd5>
+    <version>1.10</version>
+    <time>1552464584</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dependency to new polkit-whitelisting subpackage of polkit-default-privs
+  and embed the JSON file for polkit rules.d whitelistings. This is necessary
+  for the upcoming implementation of a new rpmlint-check to cover files in
+  /etc/polkit-1/rules.d and /usr/share/polkit-1/rules.d (bsc#1125314).
+- For this we will also need the json python module, since the new whitelist
+  will be in the JSON format. (forwarded request 678931 from mgerstner)</comment>
+    <requestid>679245</requestid>
+  </revision>
+  <revision rev="92" vrev="9">
+    <srcmd5>d3fdf2213e0ee1a47b361415246320a7</srcmd5>
+    <version>1.10</version>
+    <time>1565962152</time>
+    <user>dimstar_suse</user>
+    <comment>- update desktop-file-utils to 0.24 release
+  + Allow desktop file spec version 1.2.
+  + Add Budgie, Deepin, Enlightenment and Pantheon to list of
+    registered desktop environments.
+  + Sort output lines internally to conserve reproducibility.
+  + Use pledge(2) on OpenBSD to limit capabilities.
+  + Fix missing ; when appending to a list not ending with one.
+  + Add font as valid media type.
+  + Fix broken emacs blocking compile.</comment>
+    <requestid>723059</requestid>
+  </revision>
+  <revision rev="93" vrev="10">
+    <srcmd5>0fc69082aff26929e07aeb871720d78d</srcmd5>
+    <version>1.10</version>
+    <time>1568189828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726799</requestid>
+  </revision>
+</revisionlist>

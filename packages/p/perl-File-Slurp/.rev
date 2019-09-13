@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>665f9170160a181cd2f94fc20db04167</srcmd5>
+    <version>9999.13</version>
+    <time>1249998824</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-File-Slurp based on submit request 17369 from user coolo
+</comment>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>665f9170160a181cd2f94fc20db04167</srcmd5>
+    <version>9999.13</version>
+    <time>1249998824</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-File-Slurp based on submit request 17369 from user coolo
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a308a25050249764d48bcd48d2429235</srcmd5>
+    <version>9999.13</version>
+    <time>1263294370</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-File-Slurp based on submit request 29303 from user coolo
+</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>11e4ea7b9971328b6e4fd48511360a45</srcmd5>
+    <version>9999.13</version>
+    <time>1268925462</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>11e4ea7b9971328b6e4fd48511360a45</srcmd5>
+    <version>9999.13</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>11e4ea7b9971328b6e4fd48511360a45</srcmd5>
+    <version>9999.13</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>571771426a1dfc5ba2f9bf51d0b1e795</srcmd5>
+    <version>9999.13</version>
+    <time>1281392455</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-File-Slurp based on submit request 45178 from user computersalat
+</comment>
+    <requestid>45178</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>bbc3461ccfbe5b8d917e8686bae4ad26</srcmd5>
+    <version>9999.13</version>
+    <time>1291582313</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54535 from user coolo
+</comment>
+    <requestid>54535</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>34d153f3517207d551a412dfdf9d4b68</srcmd5>
+    <version>9999.13</version>
+    <time>1291582322</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54535
+</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>34d153f3517207d551a412dfdf9d4b68</srcmd5>
+    <version>9999.13</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dad2b9fd9261c31572c289c201ae2409</srcmd5>
+    <version>9999.15</version>
+    <time>1301644702</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65701 from user coolo
+</comment>
+    <requestid>65701</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>91f5b15e74b820ac2626633c49333ad8</srcmd5>
+    <version>9999.15</version>
+    <time>1301644713</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65701
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8f91904a028a4b4028fbb039cf453ee6</srcmd5>
+    <version>9999.18</version>
+    <time>1306842006</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>72091</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>800c43595ef2d6d77d2b8f908d0491f4</srcmd5>
+    <version>9999.19</version>
+    <time>1308567096</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>74159</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>800c43595ef2d6d77d2b8f908d0491f4</srcmd5>
+    <version>9999.19</version>
+    <time>1319182267</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>70c681f9829ac6fffde8c0eed60c0172</srcmd5>
+    <version>9999.19</version>
+    <time>1323193290</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>70c681f9829ac6fffde8c0eed60c0172</srcmd5>
+    <version>9999.19</version>
+    <time>1340183841</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>70c681f9829ac6fffde8c0eed60c0172</srcmd5>
+    <version>9999.19</version>
+    <time>1359109669</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>70c681f9829ac6fffde8c0eed60c0172</srcmd5>
+    <version>9999.19</version>
+    <time>1379663677</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>70c681f9829ac6fffde8c0eed60c0172</srcmd5>
+    <version>9999.19</version>
+    <time>1409302294</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>932f020f8d251e16f7adc6d627c8e509</srcmd5>
+    <version>9999.24</version>
+    <time>1542123082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647541</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>31ecdc74d89c042d3ee8c9c515e16ce7</srcmd5>
+    <version>9999.25</version>
+    <time>1544264384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655763</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a02c2792c7f93504a029155670358e12</srcmd5>
+    <version>9999.26</version>
+    <time>1551113163</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676043</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4c2ed8d776f7f88b532857319ce78c56</srcmd5>
+    <version>9999.27</version>
+    <time>1554930556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692032</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>b08606be863b591961bf9b56b3035ee8</srcmd5>
+    <version>1.9</version>
+    <time>1168904437</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="62">
+    <srcmd5>0fc5dc8643dc3d8222056555a64a5e2e</srcmd5>
+    <version>1.9</version>
+    <time>1198229027</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="116">
+    <srcmd5>0fc5dc8643dc3d8222056555a64a5e2e</srcmd5>
+    <version>1.9</version>
+    <time>1198229027</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="117">
+    <srcmd5>5206fdaffe61de3ab22b6f29d6b42188</srcmd5>
+    <version>1.9</version>
+    <time>1245363571</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="119">
+    <srcmd5>5206fdaffe61de3ab22b6f29d6b42188</srcmd5>
+    <version>1.9</version>
+    <time>1245363571</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="120">
+    <srcmd5>79d79df61ef374a0414169d21c564c28</srcmd5>
+    <version>1.9</version>
+    <time>1268926464</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="122">
+    <srcmd5>79d79df61ef374a0414169d21c564c28</srcmd5>
+    <version>1.9</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="123">
+    <srcmd5>79d79df61ef374a0414169d21c564c28</srcmd5>
+    <version>1.9</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="126">
+    <srcmd5>79d79df61ef374a0414169d21c564c28</srcmd5>
+    <version>1.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="128">
+    <srcmd5>79d79df61ef374a0414169d21c564c28</srcmd5>
+    <version>1.9</version>
+    <time>1319182553</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="129">
+    <srcmd5>d1829b95b52c54012cd37d0aab6ccb45</srcmd5>
+    <version>1.9</version>
+    <time>1323195120</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="130">
+    <srcmd5>a8b8d3b146f16bd3479c3635c5d71c82</srcmd5>
+    <version>1.9</version>
+    <time>1328540129</time>
+    <user>coolo</user>
+    <comment>usrMerge project - binary in /usr</comment>
+    <requestid>102467</requestid>
+  </revision>
+  <revision rev="13" vrev="131">
+    <srcmd5>4ac5e459b90b5e68f1c5ccb04c22543f</srcmd5>
+    <version>1.9</version>
+    <time>1329400984</time>
+    <user>coolo</user>
+    <comment>changelog correction</comment>
+    <requestid>105260</requestid>
+  </revision>
+  <revision rev="14" vrev="133">
+    <srcmd5>4ac5e459b90b5e68f1c5ccb04c22543f</srcmd5>
+    <version>1.9</version>
+    <time>1340184315</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="135">
+    <srcmd5>4ac5e459b90b5e68f1c5ccb04c22543f</srcmd5>
+    <version>1.9</version>
+    <time>1359110549</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="137">
+    <srcmd5>4ac5e459b90b5e68f1c5ccb04c22543f</srcmd5>
+    <version>1.9</version>
+    <time>1379664934</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="139">
+    <srcmd5>4ac5e459b90b5e68f1c5ccb04c22543f</srcmd5>
+    <version>1.9</version>
+    <time>1409303614</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="140">
+    <srcmd5>29a919d2b54f5ad7221d0e3509afe877</srcmd5>
+    <version>1.9</version>
+    <time>1411927104</time>
+    <user>coolo</user>
+    <comment>- Removed obsolete README.SuSE (fate#316521,bnc#888999),
+  see ifcfg-vlan(5) manual page for actual informations.</comment>
+    <requestid>251769</requestid>
+  </revision>
+</revisionlist>

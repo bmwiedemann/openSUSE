@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0d8a104278783558255c5b090ac8773</srcmd5>
+    <version>4.5.3</version>
+    <time>1566478941</time>
+    <user>dimstar_suse</user>
+    <comment>Split python-tornado packages by version. tornado 5 is the version supported by the most packages, and the default. Some packages still only work with tornado 4. tornado 6 is the most recent version. Having split versions allows packages that depend on a particular version to still work.
+
+This is the python-tornado version 4 package. This is will stop working with python 3.8, so it automatically disables python 3 builds for that version.</comment>
+    <requestid>722055</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,13 @@
+<package name="psgml" project="openSUSE:Factory">
+  <title>Emacs Add-On to edit SGML/XML documents</title>
+  <description>'psgml' supports you while editing SGML/XML documents.	It respects the
+context of the used DTD (Document Type Definition) and offers the valid
+elements and attributes.
+
+Included are several helper tools: tdtd, xxml, psgml-xpointer.
+
+For more info see README.SuSE.
+
+Compiled for GNU Emacs (XEmacs has its own version!).</description>
+  <devel project="Publishing" package="psgml"/>
+</package>

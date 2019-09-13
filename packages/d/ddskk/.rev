@@ -1,0 +1,198 @@
+<revisionlist>
+  <revision rev="1" vrev="9">
+    <srcmd5>c93dd1f4bf3684172ac114bc369ac0be</srcmd5>
+    <version>20050123</version>
+    <time>1168902532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="149">
+    <srcmd5>fcda24d521c36ced6d37db7a45e7a77d</srcmd5>
+    <version>20050123</version>
+    <time>1196793002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="266">
+    <srcmd5>fcda24d521c36ced6d37db7a45e7a77d</srcmd5>
+    <version>20050123</version>
+    <time>1196793002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="267">
+    <srcmd5>d032fb664c890e1618e2c6c9b768b430</srcmd5>
+    <version>20050123</version>
+    <time>1245337683</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="268">
+    <srcmd5>8b6119d712b07664b94710d5d39560f7</srcmd5>
+    <version>20050123</version>
+    <time>1251499497</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/ddskk based on submit request 19012 from user tiwai
+</comment>
+  </revision>
+  <revision rev="6" vrev="270">
+    <srcmd5>8b6119d712b07664b94710d5d39560f7</srcmd5>
+    <version>20050123</version>
+    <time>1251499497</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/ddskk based on submit request 19012 from user tiwai
+</comment>
+  </revision>
+  <revision rev="7" vrev="271">
+    <srcmd5>9588f3863ca5697f387e5e4c73a964e6</srcmd5>
+    <version>20050123</version>
+    <time>1268923307</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="273">
+    <srcmd5>9588f3863ca5697f387e5e4c73a964e6</srcmd5>
+    <version>20050123</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="274">
+    <srcmd5>9588f3863ca5697f387e5e4c73a964e6</srcmd5>
+    <version>20050123</version>
+    <time>1278678570</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="277">
+    <srcmd5>9588f3863ca5697f387e5e4c73a964e6</srcmd5>
+    <version>20050123</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="279">
+    <srcmd5>9588f3863ca5697f387e5e4c73a964e6</srcmd5>
+    <version>20050123</version>
+    <time>1319181844</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="280">
+    <srcmd5>82a06cc7e690cfefe492827bdb3201cc</srcmd5>
+    <version>20050123</version>
+    <time>1319706244</time>
+    <user>coolo</user>
+    <comment>This is resubmission of declined request #88643
+fix representation of bug number in ddskk.changes. (forwarded request 89442 from ftake)</comment>
+    <requestid>89443</requestid>
+  </revision>
+  <revision rev="13" vrev="281">
+    <srcmd5>fa7b8eedfea63b68522e3325e57d8b98</srcmd5>
+    <version>20050123</version>
+    <time>1323191131</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="282">
+    <srcmd5>356552b857fe0cbb16d7a8e1aa2b5f29</srcmd5>
+    <version>20050123</version>
+    <time>1326118572</time>
+    <user>coolo</user>
+    <comment>- remove %{_infodir}/* from skkdic %files section, it is packaged
+  in main package yet (forwarded request 99265 from pgajdos)</comment>
+    <requestid>99340</requestid>
+  </revision>
+  <revision rev="15" vrev="284">
+    <srcmd5>356552b857fe0cbb16d7a8e1aa2b5f29</srcmd5>
+    <version>20050123</version>
+    <time>1340183274</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a02922b47f73b6382f9b40a6fdf55931</srcmd5>
+    <version>14.4</version>
+    <time>1341559598</time>
+    <user>coolo</user>
+    <comment>- Update to ddskk-14.4 and skkdic-20110529
+  * Don't know to much as I do not speak nor read Japanese but
+    it compiles with latest emacs 24.1 
+- Take some patches from Debian as well add some own patches
+- Drop superfluous patches</comment>
+    <requestid>127102</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5020597d52a7d2c690fddb75696a346d</srcmd5>
+    <version>20121010_14.4</version>
+    <time>1349944737</time>
+    <user>coolo</user>
+    <comment>- Solve update problem due date based version number scheme and
+  current number scheme with 14.4</comment>
+    <requestid>137727</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>5020597d52a7d2c690fddb75696a346d</srcmd5>
+    <version>20121010_14.4</version>
+    <time>1359108804</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>5020597d52a7d2c690fddb75696a346d</srcmd5>
+    <version>20121010_14.4</version>
+    <time>1379662214</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>f433ced8870d9505a473a635b7875300</srcmd5>
+    <version>20121010_14.4</version>
+    <time>1401644489</time>
+    <user>coolo</user>
+    <comment>- Drop unused build-time requirements on libpng, libgif, libtiff,
+  krb5, openldap2 (forwarded request 235900 from jengelh)</comment>
+    <requestid>235905</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1b6346251098e08dcd3fa2b6e037424a</srcmd5>
+    <version>20140608</version>
+    <time>1402403953</time>
+    <user>coolo</user>
+    <comment>update version 20140608(upstream version)</comment>
+    <requestid>236667</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>1b6346251098e08dcd3fa2b6e037424a</srcmd5>
+    <version>20140608</version>
+    <time>1409300749</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5a793dc952229463fe9190b5fd61fab6</srcmd5>
+    <version>20150816</version>
+    <time>1440658542</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>325394</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b5a38adb22b464c0f1c21ac2783f2ac3</srcmd5>
+    <version>20150816</version>
+    <time>1502562569</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516260</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6bbb18e29c197895527cf90e9ff99960</srcmd5>
+    <version>20160304</version>
+    <time>1520778234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584496</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>de8adbdf5a1972003483238c9e1ea7b9</srcmd5>
+    <version>20160304</version>
+    <time>1521579628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588740</requestid>
+  </revision>
+</revisionlist>

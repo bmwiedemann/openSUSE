@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9133c3602a223972bc2ba95d747e6371</srcmd5>
+    <version>0.6.0</version>
+    <time>1531135759</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package
+</comment>
+    <requestid>621362</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e0be4e6a70dad875631c43686af105a9</srcmd5>
+    <version>0.6.0</version>
+    <time>1531470142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622340</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1db5e34d6ae964e29634673ce0e15d1f</srcmd5>
+    <version>0.6.1</version>
+    <time>1536679106</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634500</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dbcd8908a0f9da72ba052e9f55051103</srcmd5>
+    <version>0.6.1b</version>
+    <time>1540819381</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>645176</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2f52575f10cb84317845fc6241c1cf1e</srcmd5>
+    <version>0.6.7</version>
+    <time>1548064762</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.7:
+  * Fix: Cozy crashed on startup when prefering cover image files over embedded album art
+- Update to 0.6.6:
+  * Fix: Cozy crashed on startup when prefering cover image files over embedded album art
+</comment>
+    <requestid>666794</requestid>
+  </revision>
+</revisionlist>

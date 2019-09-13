@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>f2513cab38ddfdbd41ffbd6d725245a7</srcmd5>
+    <version>0.1</version>
+    <time>1242932936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>f2513cab38ddfdbd41ffbd6d725245a7</srcmd5>
+    <version>0.1</version>
+    <time>1242932936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>fd291da7203b0351e3cc4988ea96a55b</srcmd5>
+    <version>0.1</version>
+    <time>1268926630</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>fd291da7203b0351e3cc4988ea96a55b</srcmd5>
+    <version>0.1</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>fd291da7203b0351e3cc4988ea96a55b</srcmd5>
+    <version>0.1</version>
+    <time>1278678627</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>fd291da7203b0351e3cc4988ea96a55b</srcmd5>
+    <version>0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>fd291da7203b0351e3cc4988ea96a55b</srcmd5>
+    <version>0.1</version>
+    <time>1319182602</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>e9c783d4b8c3a32fc036263b5b6527d5</srcmd5>
+    <version>0.1</version>
+    <time>1333000169</time>
+    <user>coolo</user>
+    <comment>license update: Apache-1.1
+SPÃƒDX (forwarded request 111165 from babelworx)</comment>
+    <requestid>111348</requestid>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>e9c783d4b8c3a32fc036263b5b6527d5</srcmd5>
+    <version>0.1</version>
+    <time>1340184374</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>e9c783d4b8c3a32fc036263b5b6527d5</srcmd5>
+    <version>0.1</version>
+    <time>1359110661</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>d8d466ce3ed9a2ed0b15e2917ce5fe77</srcmd5>
+    <version>0.1</version>
+    <time>1378912309</time>
+    <user>scarabeus_factory</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198318</requestid>
+  </revision>
+  <revision rev="12" vrev="21">
+    <srcmd5>d8d466ce3ed9a2ed0b15e2917ce5fe77</srcmd5>
+    <version>0.1</version>
+    <time>1379665089</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="22">
+    <srcmd5>a9cf371887f4db20ed4e7dc9e96b6b4a</srcmd5>
+    <version>0.1</version>
+    <time>1404161424</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238916</requestid>
+  </revision>
+  <revision rev="14" vrev="23">
+    <srcmd5>72a4339d688ea1fe08a7610d8197130b</srcmd5>
+    <version>0.1</version>
+    <time>1405931702</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>241539</requestid>
+  </revision>
+  <revision rev="15" vrev="25">
+    <srcmd5>72a4339d688ea1fe08a7610d8197130b</srcmd5>
+    <version>0.1</version>
+    <time>1409303777</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>4e2e00d4451cc06d89edaa0ecf76eb1a</srcmd5>
+    <version>0.1</version>
+    <time>1505334465</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523589</requestid>
+  </revision>
+</revisionlist>

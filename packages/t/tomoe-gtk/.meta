@@ -1,0 +1,5 @@
+<package name="tomoe-gtk" project="openSUSE:Factory">
+  <title>TOMOE GTK+ library</title>
+  <description>TOMOE GTK+ library</description>
+  <devel project="M17N" package="tomoe-gtk"/>
+</package>

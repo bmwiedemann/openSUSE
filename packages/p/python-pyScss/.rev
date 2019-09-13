@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4fa3ca10ba3c47ba2effd23301c48e32</srcmd5>
+    <version>1.3.5</version>
+    <time>1526371576</time>
+    <user>dimstar_suse</user>
+    <comment>Cloud stuff
+
+- convert to singlespec
+- update to 1.3.5
+  * The new less2scss module attempts to convert Less syntax to SCSS.
+  * The *-exists functions from Sass 3.3 are now supported.
+  * The contents of a file @import-ed in the middle of an input file
+    now appears in the expected place, not at the end of the output.
+  * Double-slashes within URLs, as often happens with base64-encoded
+    data URLs, are no longer stripped as comments.
+  * Nesting selectors that end with a combinator, e.g. div &gt; { p {
+    ... } }, now works correctly.
+  * invert() is now left alone when the argument is a number,
+    indicating the CSS filter rather than the Sass function.
+  * if() now evaluates its arguments lazily.
+  * str-slice() now silently corrects out-of-bounds indices.
+  * append() now defaults to returning a space-delimited list, when
+    the given list has fewer than two elements.
+  * -moz-calc and -webkit-calc are recognized as variants of the
+     calc() CSS function.
+  * Filenames containing dots can now be imported.
+  * Properties with a computed value of null are now omitted from the
+    output.
+  * The opacity token in IE's strange alpha(opacity=N) construct is
+    now recognized case-insensitively.
+  * The Compass gradient functions now recognize currentColor as a
+    color.
+  * The fonts extension should now work under Python 3.
+  * Escaped astral plane characters no longer crash narrow Python 2
+    builds.
+  * The alpha value in rgba(...) is no longer truncated to only two
+    decimal places.
+  * Some edge cases with float precision were fixed, so 742px - 40px
+    is no longer 701.99999999px.
+- add missing dependency on python-enum34 
+- update to 1.3.4:
+  * no changelog available
+- install README/LICENSE 
+- Add python-six requirement; new dependency
+- update to 1.2.1:
+  * Bootstrap 3.2 compatibility fixes
+- update to 1.2.0post3:
+  * This is a significant release that greatly increases 
+  compatibility with the reference compiler; in particular,
+  the Sass port of Bootstrap now compiles.
+  * There are a lot of changes here, so please feel free to
+  report any bugs you see! The goal is 100% compatibility
+   with the Ruby project.
+  * Python 3 support. As a result, Python 2.5 no longer works;
+  whether this is a bug or a feature is not yet clear.
+  * It's possible to write custom Sass functions in Python,
+  though the API for this is not final.
+  * Experimental support for the map type and destructuring
+  @each, both unreleased additions to the Ruby project.
+  * Support for the new string and list functions in Sass 3.3.
+  * Added background-brushed.
+  Backwards-incompatible changes
+  * Configuration via monkeypatching the scss module no
+  longer works. Monkeypatch scss.config instead.
+  * em and px are no longer compatible.
+  * Unrecognized variable names are now a fatal error.
+- version 1.1.5: initial build
+</comment>
+    <requestid>603515</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="kparts" project="openSUSE:Factory">
+  <title>kparts</title>
+  <description>KParts</description>
+  <devel project="KDE:Frameworks5" package="kparts"/>
+</package>

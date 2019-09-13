@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e9cc29ecb447e708ecc43682447a2f5</srcmd5>
+    <version>1.0</version>
+    <time>1323085389</time>
+    <user>coolo</user>
+    <comment>New package: CharLS - A JPEG-LS library, CharLS can be used by the dcmtk package in Factory</comment>
+    <requestid>95223</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7a13c38c2472c9d5dbde12b5c859a789</srcmd5>
+    <version>1.0</version>
+    <time>1328890302</time>
+    <user>coolo</user>
+    <comment>license update: BSD-3-Clause</comment>
+    <requestid>102936</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>7a13c38c2472c9d5dbde12b5c859a789</srcmd5>
+    <version>1.0</version>
+    <time>1340183148</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>fca379c0906b62f64616d1031430bb88</srcmd5>
+    <version>1.0</version>
+    <time>1353506802</time>
+    <user>coolo</user>
+    <comment>Fix the SLES build (%make_install is not expanded) (forwarded request 142113 from cgiboudeaux)</comment>
+    <requestid>142120</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>fca379c0906b62f64616d1031430bb88</srcmd5>
+    <version>1.0</version>
+    <time>1359108613</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>fca379c0906b62f64616d1031430bb88</srcmd5>
+    <version>1.0</version>
+    <time>1379661903</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>fca379c0906b62f64616d1031430bb88</srcmd5>
+    <version>1.0</version>
+    <time>1409300424</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ee7b21a6a486bb245dc9c9f6a0a7ccf9</srcmd5>
+    <version>2.0.0</version>
+    <time>1499415482</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508661</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>45fd76e767504badbe4f5fea4738df92</srcmd5>
+    <version>2.0.0</version>
+    <time>1499754495</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509310</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c8ee2c20354f8e27e3271e503ef3c2df</srcmd5>
+    <version>2.0.0</version>
+    <time>1500670230</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>511701</requestid>
+  </revision>
+</revisionlist>

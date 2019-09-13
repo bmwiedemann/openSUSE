@@ -1,0 +1,5 @@
+<package name="ktp-text-ui" project="openSUSE:Factory">
+  <title>Telepathy text chat handler</title>
+  <description></description>
+  <devel project="KDE:Applications" package="ktp-text-ui"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="xfce4-vala" project="openSUSE:Factory">
+  <title>Vala bindings to Xfce</title>
+  <description>This package provides Vala bindings to Xfce.</description>
+  <devel project="X11:xfce" package="xfce4-vala"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="python-Fiona" project="openSUSE:Factory">
+  <title>Module for reading and writing spatial data files</title>
+  <description>Fiona is OGR's spatial data API for Python programmers</description>
+  <devel project="Application:Geo" package="python-Fiona"/>
+  <url>http://github.com/Toblerity/Fiona</url>
+</package>

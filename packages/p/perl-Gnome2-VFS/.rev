@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f22de9da0e129c5b7675814bf76c04f5</srcmd5>
+    <version>1.081</version>
+    <time>1307709752</time>
+    <user>saschpe</user>
+    <comment>Excluded from openSUSE:Factory:Contrib</comment>
+    <requestid>73254</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8a55672d96e701b951d55ceaef835aaa</srcmd5>
+    <version>1.081</version>
+    <time>1307709766</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73254
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>8a55672d96e701b951d55ceaef835aaa</srcmd5>
+    <version>1.081</version>
+    <time>1319182271</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>2160aaff21d20b074e517119c256ac41</srcmd5>
+    <version>1.081</version>
+    <time>1324387818</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 96592 from coolo)</comment>
+    <requestid>96618</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>f7cee026be601b4dcacccb080dea0dbb</srcmd5>
+    <version>1.081</version>
+    <time>1325658403</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>98290</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>f7cee026be601b4dcacccb080dea0dbb</srcmd5>
+    <version>1.081</version>
+    <time>1340183847</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>f7cee026be601b4dcacccb080dea0dbb</srcmd5>
+    <version>1.081</version>
+    <time>1359109682</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>f7cee026be601b4dcacccb080dea0dbb</srcmd5>
+    <version>1.081</version>
+    <time>1379663689</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2d6aa2a8228ec5353dd8824de53352e1</srcmd5>
+    <version>1.082</version>
+    <time>1381064020</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202256</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>2d6aa2a8228ec5353dd8824de53352e1</srcmd5>
+    <version>1.082</version>
+    <time>1409302311</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>65a08f8835b3c9c304f2397942b97680</srcmd5>
+    <version>1.083</version>
+    <time>1537964596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637907</requestid>
+  </revision>
+</revisionlist>

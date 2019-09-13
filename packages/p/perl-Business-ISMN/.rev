@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2bfd176b23bdd8e5ecf4657df00ba37d</srcmd5>
+    <version>1.11</version>
+    <time>1372687153</time>
+    <user>coolo</user>
+    <comment>needed for texlive 2013</comment>
+    <requestid>181344</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2bfd176b23bdd8e5ecf4657df00ba37d</srcmd5>
+    <version>1.11</version>
+    <time>1379663562</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>2bfd176b23bdd8e5ecf4657df00ba37d</srcmd5>
+    <version>1.11</version>
+    <time>1409302174</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d62d5dfec916a198785649c44f5f9c88</srcmd5>
+    <version>1.13</version>
+    <time>1429989315</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>296877</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>225e6c262e889b143a05a37714183691</srcmd5>
+    <version>1.131</version>
+    <time>1481272471</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444318</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>efbc0e2aab280dfcac88cbe42d133563</srcmd5>
+    <version>1.132</version>
+    <time>1531946247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623033</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9f441073a9fbe1e869ada762dfa63b6d</srcmd5>
+    <version>1.201</version>
+    <time>1542122734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647272</requestid>
+  </revision>
+</revisionlist>

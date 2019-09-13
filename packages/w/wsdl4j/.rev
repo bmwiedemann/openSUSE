@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="21">
+    <srcmd5>f88d04a0bd9928df5dc387bc5460bc0b</srcmd5>
+    <version>1.5.1</version>
+    <time>1168904491</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="315">
+    <srcmd5>f88d04a0bd9928df5dc387bc5460bc0b</srcmd5>
+    <version>1.5.1</version>
+    <time>1168904491</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="316">
+    <srcmd5>1a659bb36b4f997b8873646129d9a773</srcmd5>
+    <version>1.5.1</version>
+    <time>1245363738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="318">
+    <srcmd5>1a659bb36b4f997b8873646129d9a773</srcmd5>
+    <version>1.5.1</version>
+    <time>1245363738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="319">
+    <srcmd5>4380c5ecca6f712dac611ef69ec0e873</srcmd5>
+    <version>1.5.1</version>
+    <time>1268926508</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="321">
+    <srcmd5>4380c5ecca6f712dac611ef69ec0e873</srcmd5>
+    <version>1.5.1</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="322">
+    <srcmd5>4380c5ecca6f712dac611ef69ec0e873</srcmd5>
+    <version>1.5.1</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="325">
+    <srcmd5>4380c5ecca6f712dac611ef69ec0e873</srcmd5>
+    <version>1.5.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="327">
+    <srcmd5>4380c5ecca6f712dac611ef69ec0e873</srcmd5>
+    <version>1.5.1</version>
+    <time>1319182572</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="328">
+    <srcmd5>2daf4ba2a4f1f3722a573aba22c83b06</srcmd5>
+    <version>1.5.1</version>
+    <time>1323195198</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="330">
+    <srcmd5>2daf4ba2a4f1f3722a573aba22c83b06</srcmd5>
+    <version>1.5.1</version>
+    <time>1340184327</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="332">
+    <srcmd5>2daf4ba2a4f1f3722a573aba22c83b06</srcmd5>
+    <version>1.5.1</version>
+    <time>1359110577</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="333">
+    <srcmd5>1dba59f0cc685af4102ef6ad07118706</srcmd5>
+    <version>1.5.1</version>
+    <time>1379076350</time>
+    <user>scarabeus_factory</user>
+    <comment>- temoporary provide osgi(javax.wsdl) to satisfy axis depenencies</comment>
+    <requestid>198837</requestid>
+  </revision>
+  <revision rev="14" vrev="335">
+    <srcmd5>1dba59f0cc685af4102ef6ad07118706</srcmd5>
+    <version>1.5.1</version>
+    <time>1379664971</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8b63ebe4155dc87323cb9a5fc08c39b0</srcmd5>
+    <version>1.6.3</version>
+    <time>1403672244</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner.
+
+- Version bump to 1.6.3 to match upstream code.
+  * Package done to match fedora one.
+- Delete no longer needed patch:
+  * wsdl4j-java14compat.patch</comment>
+    <requestid>237890</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3139c255cadd5b368b3eefeeb09206e9</srcmd5>
+    <version>1.6.3</version>
+    <time>1404161420</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238914</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>b4d91f793d3a497f470f3e1644b886c7</srcmd5>
+    <version>1.6.3</version>
+    <time>1405931696</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>241538</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>b4d91f793d3a497f470f3e1644b886c7</srcmd5>
+    <version>1.6.3</version>
+    <time>1409303650</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>12f8d01029713be923261258cd576cdc</srcmd5>
+    <version>1.6.3</version>
+    <time>1418251623</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264297</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>6ae8bcd671dddda7ef0ff122b82f2d6c</srcmd5>
+    <version>1.6.3</version>
+    <time>1427983167</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292646</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>d4102a67917c1f82e859a30b0595eda2</srcmd5>
+    <version>1.6.3</version>
+    <time>1496230198</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building of axis with this new javapackages-tools</comment>
+    <requestid>496741</requestid>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>2131afa6dd64892fcfbf91b138f87618</srcmd5>
+    <version>1.6.3</version>
+    <time>1505334427</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>523415</requestid>
+  </revision>
+</revisionlist>

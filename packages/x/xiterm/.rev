@@ -1,0 +1,268 @@
+<revisionlist>
+  <revision rev="1" vrev="43">
+    <srcmd5>0d217496b95de64a29371260bbaa7404</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1168904560</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="77">
+    <srcmd5>df007f44d287d10be49207c9ff26669a</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1170429435</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="85">
+    <srcmd5>42fc36a10c874fb9c2c294252a5e5be1</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1175209707</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="188">
+    <srcmd5>ccdb7d3de8f955755d677f36b03097ee</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1204564555</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="259">
+    <srcmd5>ccdb7d3de8f955755d677f36b03097ee</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1204564555</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="260">
+    <srcmd5>cd7035032a3da07176fe098dcb9b54f4</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1224115456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="261">
+    <srcmd5>9cc2b9b5b7921adc16bb0af601298500</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1245462067</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="263">
+    <srcmd5>9cc2b9b5b7921adc16bb0af601298500</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1245462067</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="264">
+    <srcmd5>6c2e061840b772f7eab1a4e177bcb85b</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1266884843</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xiterm based on submit request 33090 from user coolo
+</comment>
+    <requestid>33090</requestid>
+  </revision>
+  <revision rev="10" vrev="265">
+    <srcmd5>97f787149d2443fef8942d835728cbfe</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1268926613</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="267">
+    <srcmd5>97f787149d2443fef8942d835728cbfe</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="268">
+    <srcmd5>97f787149d2443fef8942d835728cbfe</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1278678627</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="269">
+    <srcmd5>1c3cab6e9d19373f2dec090c9b0b2fd2</srcmd5>
+    <version>unknown</version>
+    <time>1284125349</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xiterm based on submit request 47665 from user coolo
+</comment>
+    <requestid>47665</requestid>
+  </revision>
+  <revision rev="14" vrev="270">
+    <srcmd5>d79a17f6769f207d62470fb2dc547b64</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1289412499</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52486 from user coolo
+</comment>
+    <requestid>52486</requestid>
+  </revision>
+  <revision rev="15" vrev="271">
+    <srcmd5>08678812108cc42e1ca46092fd96b516</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1289412505</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52486
+</comment>
+  </revision>
+  <revision rev="16" vrev="274">
+    <srcmd5>08678812108cc42e1ca46092fd96b516</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="275">
+    <srcmd5>7cb68a7772b64bda3cd87a7732952f17</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1310631211</time>
+    <user>saschpe</user>
+    <comment>- fix permissions to get rpm to extract requires</comment>
+    <requestid>76195</requestid>
+  </revision>
+  <revision rev="18" vrev="276">
+    <srcmd5>d741f9364fd8457c3347c04e177769b7</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1310631222</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76195
+</comment>
+  </revision>
+  <revision rev="19" vrev="278">
+    <srcmd5>d741f9364fd8457c3347c04e177769b7</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1319182599</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="279">
+    <srcmd5>5e689108dd0de9fb9ab69583ea6fca0a</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1322134665</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93241 from coolo)</comment>
+    <requestid>93305</requestid>
+  </revision>
+  <revision rev="21" vrev="280">
+    <srcmd5>c34918e7250b61e2f487a45c701187d1</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1323195357</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="281">
+    <srcmd5>6f5930d21ef31d447bb35893131bde8b</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1327696048</time>
+    <user>coolo</user>
+    <comment>- build with asneeded
+  * asneeded-and-dso.patch</comment>
+    <requestid>101825</requestid>
+  </revision>
+  <revision rev="23" vrev="283">
+    <srcmd5>6f5930d21ef31d447bb35893131bde8b</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1340184367</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="284">
+    <srcmd5>e5f77f87d4948a21fcd628f4177de45e</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1354119846</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-CPL-0.5
+ (forwarded request 143279 from babelworx)</comment>
+    <requestid>143284</requestid>
+  </revision>
+  <revision rev="25" vrev="286">
+    <srcmd5>e5f77f87d4948a21fcd628f4177de45e</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1359110648</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="287">
+    <srcmd5>373d362d87bcf3b27293c9a194afa9b9</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1360873008</time>
+    <user>coolo</user>
+    <comment>- add bdftopcf into build requires [bnc#803276]</comment>
+    <requestid>155435</requestid>
+  </revision>
+  <revision rev="27" vrev="288">
+    <srcmd5>bf733ed1b87c364ed6177c4efae840e9</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1362485294</time>
+    <user>coolo</user>
+    <comment>- builds with automake 1.13
+  * automake-1.13.patch</comment>
+    <requestid>157345</requestid>
+  </revision>
+  <revision rev="28" vrev="290">
+    <srcmd5>bf733ed1b87c364ed6177c4efae840e9</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1379665074</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="291">
+    <srcmd5>5eebc6404f2095c21c3e2f2febbf24b3</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1407265862</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>243611</requestid>
+  </revision>
+  <revision rev="30" vrev="293">
+    <srcmd5>5eebc6404f2095c21c3e2f2febbf24b3</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1409303760</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="294">
+    <srcmd5>3981f78e6f4ca39fcb2155f4cf19d8a1</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1415201204</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259220</requestid>
+  </revision>
+  <revision rev="32" vrev="295">
+    <srcmd5>a40abeeab8eeb1daa60f3b9b023f2014</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1468869764</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407861</requestid>
+  </revision>
+  <revision rev="33" vrev="296">
+    <srcmd5>23ebe6de11389cd8025aa60ef623b24b</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1494096277</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492130</requestid>
+  </revision>
+  <revision rev="34" vrev="297">
+    <srcmd5>f91a6fd2a6895a25ba91bc8966cfd020</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1503392692</time>
+    <user>dimstar_suse</user>
+    <comment>- Prerequire group(tty) (forwarded request 517181 from Andreas_Schwab)</comment>
+    <requestid>517182</requestid>
+  </revision>
+  <revision rev="35" vrev="298">
+    <srcmd5>52e2e7974832f0030e4d1b3010f093ce</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1505919973</time>
+    <user>dimstar_suse</user>
+    <comment>Add conflict with terminfo-iterm (forwarded request 527315 from dimstar)</comment>
+    <requestid>527317</requestid>
+  </revision>
+  <revision rev="36" vrev="299">
+    <srcmd5>31ccf4fbdd64f74f1caafcc0a999a9f3</srcmd5>
+    <version>0.5.20040304</version>
+    <time>1565775398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722609</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,162 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>442830c1cf6e2e7e9b27ea629fdd5ea1</srcmd5>
+    <version>0.9.0</version>
+    <time>1460631761</time>
+    <user>dimstar_suse</user>
+    <comment>GNU Guix package manager written in Guile (Scheme), orthogonal to openSUSE, zypper or RPM thanks to violating FHS
+
+changes since last attempt:
+- removed guixd file which wasn't in spec file</comment>
+    <requestid>358991</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ade7b266f5b0f29e1673b2c3e66aebb6</srcmd5>
+    <version>0.10.0</version>
+    <time>1463393067</time>
+    <user>dimstar_suse</user>
+    <comment>- bump to 0.10.0
+- add gnutls-guile as build time dependency
+- don't mark bash completion as %config (warning fixed)
+
+- add ExclusiveArch to restrict available architectures
+- remove filter for non-standard group guixbuild (it is standard now)
+- remove %config for bash completion script (rpmlint was fixed)
+
+    distribution level and numerous bug fixed (forwarded request 395692 from sleep_walker)</comment>
+    <requestid>395700</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>42e1633cc919b273424fc5ac6a3a1e78</srcmd5>
+    <version>0.10.0</version>
+    <time>1468482431</time>
+    <user>dimstar_suse</user>
+    <comment>(adding one more run time dependency which seems to be crucial)
+
+- require gnutls-guile also as run time dependency
+
+- explicitly require libgcrypt-devel until the dynamic-link is able to
+  load symlink target of /usr/lib*/libgcrypt.so
+  http://debbugs.gnu.org/cgi/bugreport.cgi?bug=21076</comment>
+    <requestid>407402</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bcb06a7b72e06f8c7ff5ff73c19c9821</srcmd5>
+    <version>0.11.0</version>
+    <time>1470934416</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>418334</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9d7da8d9ae90e7f1d03030d638b24fb5</srcmd5>
+    <version>0.12.0</version>
+    <time>1483555057</time>
+    <user>lnussel_factory</user>
+    <comment>- bump to 0.12.0
+   overview of changes is in NEWS
+
+fixed keyring (this release is signed by Ricardo instead of Ludo)</comment>
+    <requestid>448332</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5e6e6d869f589f9f8819141e0fde313a</srcmd5>
+    <version>0.14.0</version>
+    <time>1521904434</time>
+    <user>dimstar_suse</user>
+    <comment>depends on other packages which are (hopefully) on the way to Factory
+
+ guile-git
+https://build.opensuse.org/request/show/585140
+ guile-json
+https://build.opensuse.org/request/show/585132
+ guile-bytestructures do Factory
+https://build.opensuse.org/request/show/585135
+ shepherd
+https://build.opensuse.org/request/show/585131
+ guile-charting
+https://build.opensuse.org/request/show/585162
+
+
+- fix build against guile 2.0+
+
+- use wrapper for running daemon and alter service file to use it
+  - if there is new daemon available - use it
+  - if there is not, use the one from this package
+
+- require guile-git and libgit2-devel for build
+- bump to 0.14.0</comment>
+    <requestid>585165</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5fa243923d3217bac2186a77810c78c4</srcmd5>
+    <version>0.14.0</version>
+    <time>1522750347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593038</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>3484968d3bbb1258e12aa822261c6ee3</srcmd5>
+    <version>0.14.0</version>
+    <time>1527934112</time>
+    <user>dimstar_suse</user>
+    <comment>- add gnutls-fix.patch
+  GnuTLS built against guile 2.0 is breaking any HTTPS connection,
+  this upstream patch solves it
+- put COPYING as %license in specfile
+
+This patch was successful tested on:
+Tumbleweed and Leap 15.0 (from devel:languages:misc repo)</comment>
+    <requestid>612682</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>09e635da2cb57b4da2857c3c333fcd38</srcmd5>
+    <version>0.14.0</version>
+    <time>1528492461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614222</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bf9937f46d8eded0a5b2f4fad8f3fbc0</srcmd5>
+    <version>0.15.0</version>
+    <time>1532681695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622346</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>52c98ff386a6ef481e1a2325667109a2</srcmd5>
+    <version>0.15.0</version>
+    <time>1543311799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652000</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7c346a97183e8aa11bede45708243c62</srcmd5>
+    <version>0.16.0</version>
+    <time>1548064211</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.16
+Will fail to build until all programms requiring guile will be rebuild, due to the update to guile-2.2.</comment>
+    <requestid>664440</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0dad65405f18a2079501d90acc932476</srcmd5>
+    <version>1.0.1</version>
+    <time>1560970662</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.1</comment>
+    <requestid>704175</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3ff663fd887bd9aabdaafdc79053d413</srcmd5>
+    <version>1.0.1</version>
+    <time>1564667336</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>720038</requestid>
+  </revision>
+</revisionlist>

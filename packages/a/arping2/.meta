@@ -1,0 +1,11 @@
+<package name="arping2" project="openSUSE:Factory">
+  <title>Layer-2 Ethernet pinger</title>
+  <description>Arping is a util to find out it a specific IP address on the LAN is
+&quot;taken&quot; and what MAC address owns it. It is designed to work on
+unrouted networks and with ICMP-blocking hosts.
+
+Author(s):
+----------
+	Thomas Habets</description>
+  <devel project="network:utilities" package="arping2"/>
+</package>

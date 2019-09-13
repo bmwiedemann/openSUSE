@@ -1,0 +1,208 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>2dc615722340a5bac1ba6fd3434cd409</srcmd5>
+    <version>1.0b2</version>
+    <time>1217212006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="17">
+    <srcmd5>f658f7a34e51b9bc6cf377d0b6882d4a</srcmd5>
+    <version>1.0b2</version>
+    <time>1218208721</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="39">
+    <srcmd5>d47c72f9ad42b6f12cf2d1d69430a2ed</srcmd5>
+    <version>1.0b2</version>
+    <time>1221252291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="40">
+    <srcmd5>00b834c2945d68a149ec2575a5b0f25a</srcmd5>
+    <version>1.0b2</version>
+    <time>1241130022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="42">
+    <srcmd5>00b834c2945d68a149ec2575a5b0f25a</srcmd5>
+    <version>1.0b2</version>
+    <time>1241130022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="43">
+    <srcmd5>917f2b8153eff93edaf10e1d6f125183</srcmd5>
+    <version>1.0b2</version>
+    <time>1268922877</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="45">
+    <srcmd5>917f2b8153eff93edaf10e1d6f125183</srcmd5>
+    <version>1.0b2</version>
+    <time>1278667336</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="46">
+    <srcmd5>917f2b8153eff93edaf10e1d6f125183</srcmd5>
+    <version>1.0b2</version>
+    <time>1278678563</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="47">
+    <srcmd5>1cf48f492716a3cd9b65c481d43048be</srcmd5>
+    <version>1.0b2</version>
+    <time>1286792702</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/ant-contrib based on submit request 50068 from user mvyskocil
+</comment>
+    <requestid>50068</requestid>
+  </revision>
+  <revision rev="10" vrev="50">
+    <srcmd5>1cf48f492716a3cd9b65c481d43048be</srcmd5>
+    <version>1.0b2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="51">
+    <srcmd5>8463aa064fcfd75c421433d6a0e1bc95</srcmd5>
+    <version>1.0b2</version>
+    <time>1316765933</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile as discussed on oSC2011/opensuse-packaging (forwarded request 82980 from jengelh)</comment>
+    <requestid>84357</requestid>
+  </revision>
+  <revision rev="12" vrev="53">
+    <srcmd5>8463aa064fcfd75c421433d6a0e1bc95</srcmd5>
+    <version>1.0b2</version>
+    <time>1319181770</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="54">
+    <srcmd5>d966d841b7bada6293a6d5c166a29311</srcmd5>
+    <version>1.0b2</version>
+    <time>1323190705</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="56">
+    <srcmd5>d966d841b7bada6293a6d5c166a29311</srcmd5>
+    <version>1.0b2</version>
+    <time>1340183172</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="58">
+    <srcmd5>d966d841b7bada6293a6d5c166a29311</srcmd5>
+    <version>1.0b2</version>
+    <time>1359108652</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="59">
+    <srcmd5>c81e52a8ba2032d4eb6b745de9ade0db</srcmd5>
+    <version>1.0b2</version>
+    <time>1377855153</time>
+    <user>coolo</user>
+    <comment>- disable javadoc build</comment>
+    <requestid>195989</requestid>
+  </revision>
+  <revision rev="17" vrev="60">
+    <srcmd5>e2d6be669fafe4224a34d330cb79f15b</srcmd5>
+    <version>1.0b2</version>
+    <time>1378899577</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198246</requestid>
+  </revision>
+  <revision rev="18" vrev="62">
+    <srcmd5>e2d6be669fafe4224a34d330cb79f15b</srcmd5>
+    <version>1.0b2</version>
+    <time>1379661966</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f03efe0b908975407ae3eb90fb15e006</srcmd5>
+    <version>1.0b3</version>
+    <time>1386333882</time>
+    <user>coolo</user>
+    <comment>- don't require ant-junit for build, junit is sufficient
+  * reducing of cycles
+
+- upgrade to 1.0b3
+  * no upstream changelog available
+- removed patches:
+  * ant-contrib-1.0b2-enable-for-task.patch
+    there is no for task in beta3
+  * ant-contrib-ant-1.7.0.patch
+    no longer needed
+  * ant-contrib-build_xml.patch
+    fixed upstream
+  * ant-contrib-BuildFileTest_java.patch
+    no longer needed
+- added patches:
+  * ant-contrib-antservertest.patch
+  * ant-contrib-pom.patch
+  * local-ivy.patch
+- add pom file
+- add ant.d configuration</comment>
+    <requestid>206977</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>21373dbc8562c500b760103f05648a86</srcmd5>
+    <version>1.0b3</version>
+    <time>1405522162</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240317</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>21373dbc8562c500b760103f05648a86</srcmd5>
+    <version>1.0b3</version>
+    <time>1409300489</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>5f3d879f33f9705dfe68e08a85940bf8</srcmd5>
+    <version>1.0b3</version>
+    <time>1426680077</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290943</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>57dfb323115a415ffb4295b3d0b8d27e</srcmd5>
+    <version>1.0b3</version>
+    <time>1427982709</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292591</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>cb29054715d8f5d016122e933da67355</srcmd5>
+    <version>1.0b3</version>
+    <time>1496230123</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with new javapackages-tools</comment>
+    <requestid>496533</requestid>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>3f1bf1bc90e7a7230e69948d40faf83c</srcmd5>
+    <version>1.0b3</version>
+    <time>1505333930</time>
+    <user>dimstar_suse</user>
+    <comment>Fix builds with java 9</comment>
+    <requestid>521764</requestid>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>d000b81804ed7dba26a0865dcb6804f1</srcmd5>
+    <version>1.0b3</version>
+    <time>1532446208</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620741</requestid>
+  </revision>
+</revisionlist>

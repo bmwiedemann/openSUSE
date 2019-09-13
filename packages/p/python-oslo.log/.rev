@@ -1,0 +1,297 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3607945eab679b44b13af2134d4dcf9</srcmd5>
+    <version>1.8.0</version>
+    <time>1440658495</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>320704</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ad84ab3430a5a9ebb48ccfbcfdbb2a9a</srcmd5>
+    <version>1.10.0</version>
+    <time>1440871505</time>
+    <user>coolo</user>
+    <comment>- update to 1.10.0:
+  * Fix package name for PublishErrorsHandler
+  * Updated from global requirements
+  * Fix duplicate-key pylint issue
+  * Maintain old oslo logger names
+  * Add Mitaka release to versionutils
+  * Update single letter release names to full names
+  * Provide a way to register versionutils options
+  * Imported Translations from Transifex
+  * Updated from global requirements
+- Adjust Requires according to requirements.txt</comment>
+    <requestid>327703</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>86db5f8b8ce72696f2788448bf6bd4b3</srcmd5>
+    <version>1.11.0</version>
+    <time>1446208945</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.0:
+  * Fix poor examples of exception logging
+  * Updated from global requirements
+- Adjust Requires according to requirements.txt</comment>
+    <requestid>337155</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>40c539d0b20161ac8c0fa0ab0aa08548</srcmd5>
+    <version>1.12.0</version>
+    <time>1450695838</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.0:
+  * Fix coverage configuration and execution
+  * No need for Oslo Incubator Sync
+  * Imported Translations from Zanata
+  * Fix unintended assignment of &quot;syslog&quot;
+  * Make doc title consistent with readme
+  * add documentation with example of an external configuration file
+  * add auto-generated docs for config options
+  * Update option docs for when log config is used
+  * Updated from global requirements
+  * Add optional 'fixture' dependencies
+  * Change ignore-errors to ignore_errors
+  * Fix the home-page value in setup.cfg with openstack.org
+  * FastWatchedFileHandler class was added</comment>
+    <requestid>346983</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>31697b17bb2ba6582223dd67691c883b</srcmd5>
+    <version>3.2.0</version>
+    <time>1462342778</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * use log.warning instead of log.warn
+  * Imported Translations from Zanata
+  * Updated from global requirements
+  * Remove deprecated use-syslog-rfc-format option
+  * Add release note for removed log_format option
+  * Updated from global requirements
+  * add page for release notes for unreleased versions
+  * add a release note about using reno
+  * Add reno for release notes management
+  * remove pypy from default tox environment list
+  * stop making a copy of options discovered by config generator
+  * always run coverage report
+  * Remove bandit.yaml in favor of defaults
+  * Updated from global requirements
+  * Fix spell typos
+  * set oslo.cache and dogpile to INFO
+  * Update translation setup
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Imported Translations from Zanata
+  * Updated from global requirements
+  * Improve Logging docs with inline examples and context example
+  * Revert &quot;Pass environment variables of proxy to tox&quot;
+  * Clean up removed hacking rule from [flake8] ignore lists
+  * Provide a deprecated_reason for use_syslog_rfc_format
+  * Remove deprecated log-format option
+  * Improve documentataion of Oslo Log Usage
+  * Added public method to getting default log levels</comment>
+    <requestid>390214</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1ef1037819f487397fb05fb424d4855c</srcmd5>
+    <version>3.16.0</version>
+    <time>1475242163</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425271</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>241895017c123ec53f5cd2d6f99e6747</srcmd5>
+    <version>3.20.0</version>
+    <time>1487681196</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Must-not-go-underneath-the-context-object-and-access.patch
+
+- update to version 3.20.0:
+  - Add a json reformatter command
+  - Add support for P and Q release names
+  - Update reno for stable/newton
+  - Avoid converting to unicode if not needed
+  - Imported Translations from Zanata
+  - standardize release note page ordering
+  - Add Constraints support
+  - Implement FluentFormatter
+  - modify the home-page info with the developer documentation
+  - Show team and repo badges on README
+  - Default use_stderr to False
+  - Use six.wraps instead of functools
+  - Fix typos
+  - Fix races in unit tests
+  - Enable release notes translation
+  - Add a filter to rate limit logs
+  - Modify use of assertTrue(A in B)
+  - Change assertTrue(isinstance()) by optimal assert
+  - Replace method attr in vars() to hasattr
+  - Updated from global requirements</comment>
+    <requestid>456900</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>60bb1c00d994ee4225135c00f561a3e6</srcmd5>
+    <version>3.20.1</version>
+    <time>1491469314</time>
+    <user>maxlin_factory</user>
+    <comment>- update to version 3.20.1:
+  - Must not go underneath the context object and access __dict__
+  - Update .gitreview for stable/ocata
+- Drop 0001-Must-not-go-underneath-the-context-object-and-access.patch</comment>
+    <requestid>482828</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>516b22629f4d88121fb7bf8070ef1a82</srcmd5>
+    <version>3.30.0</version>
+    <time>1503926985</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.30.0
+  - only show error_summary for warning and error messages
+  - Fix bug in log_method_call decorator
+  - refactor error summary logic so it can be reused
+  - Add additional info like python-systemd does
+  - [Fix gate]Update test requirement
+  - Update URLs according to document migration
+  - Remove deprecated module loggers
+  - Fix devstack colors
+  - Update reno for stable/ocata
+  - Check reStructuredText documents for common style issues.
+  - When record.args is None, it should not give an exception.
+  - Trivial: Remove testscenarios from test-requirements.txt
+  - Remove 'verbose' option (again)
+  - clarify release note for error summary handling
+  - Optimize the link address
+  - Fix some reST field lists in docstrings
+  - make handling of error_summary more flexible
+  - formatter: skip ImportError when adding error_summary
+  - switch from oslosphinx to openstackdocstheme
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Add missing variable html_last_updated_fmt
+  - do not add error_summary for debug log messages
+  - add error_summary support to JSONFormatter
+  - add error_summary support for fluentd formatter
+  - tail support, log filtering, executable, and splitlines bug fix
+  - Documentation for journal usage
+  - improve the documentation for log format strings
+  - rearrange content to fit the new standard layout
+  - Must not go underneath the context object and access __dict__</comment>
+    <requestid>514856</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1049fd066c37027cd94601b14f4cdbe4</srcmd5>
+    <version>3.36.0</version>
+    <time>1516222597</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.36.0
+  - Update the documentation link for doc migration
+  - Add release note for use_json option
+  - Truncate error_summary if exc_info not explicitly passed
+  - Update reno for stable/pike
+  - Remove checks for auth_token in JSON-based formatter tests
+  - JSONFormatter convert unserializable with repr()
+  - Remove setting of version/release from releasenotes
+  - Add option to use JSON formatter
+  - Imported Translations from Zanata
+  - Cleanup test-requirements
+  - Allow logging of unhashable exceptions in Python 3
+  - Migrate to Zuul v3
+  - Zuul: add file extension to playbook path
+  - Update the documentation link
+  - Updated from global requirements
+  - Capture context in its own key for JSON-based formatters</comment>
+    <requestid>565769</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>74db830b4a143a4d5c808586a602d0b5</srcmd5>
+    <version>3.36.0</version>
+    <time>1521498956</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583340</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>1067450835d32c87010b667dde112526</srcmd5>
+    <version>3.36.0</version>
+    <time>1521716613</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-Increase-sleep-time-in-testsuite-to-make-it-more-rob.patch (bsc#1085568)</comment>
+    <requestid>589127</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7faf3ac5e50b51feaf069e58f3629b29</srcmd5>
+    <version>3.39.0</version>
+    <time>1536327624</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.39.0
+  - Fix file permissions
+  - Update reno for stable/queens
+  - Increase sleep time in testsuite to make it more robust
+  - Imported Translations from Zanata
+  - Add release notes link to README
+  - Fix sphinx-docs job
+  - Automatically append reset_color to log lines
+  - Provide reset_color key on log record
+  - Zuul: Remove project name
+  - Add ROCKY to deprecated releases
+  - Remove stale pip-missing-reqs tox test
+  - Add Stein release to versionutils
+  - Update links in README
+  - Add Rocky release to versionutils._RELEASES
+  - Trivial: Update pypi url to new url
+  - tox: Group targets and tool configuration together
+  - tox: Don't set basepython in testenv
+  - set default python to python3
+  - fix tox python3 overrides
+  - update structured logging tests to prove context id is included
+  - Fix Formatter subclasses for Python 3.2+
+  - Updated from global requirements
+  - add lower-constraints job
+- remove 0001-Increase-sleep-time-in-testsuite-to-make-it-more-rob.patch (upstream)</comment>
+    <requestid>633514</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c7d7553edfe9c31d22e3a6d3bbf7462e</srcmd5>
+    <version>3.39.2</version>
+    <time>1548335720</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.39.2
+  - Update UPPER_CONSTRAINTS_FILE for stable/rocky
+  - Update .gitreview for stable/rocky
+  - import zuul job settings from project-config
+  - Filter args dict in JSONFormatter</comment>
+    <requestid>668115</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>97ebdaed4d7f4d027911f796377757a0</srcmd5>
+    <version>3.42.3</version>
+    <time>1556916142</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.42.3
+  - Add Windows Event Log handler
+  - Imported Translations from Zanata
+  - Update mailinglist from dev to discuss
+  - Clarify some config options
+  - Use template for lower-constraints
+  - import zuul job settings from project-config
+  - Always build universal wheels
+  - Add config options for log rotation
+  - Update reno for stable/rocky
+  - add python 3.6 unit test job
+  - Fix handling of exc_info in OSJournalHandler
+  - Default oslo.policy logging to INFO
+  - Advancing the protocal of the website to HTTPS in usage.rst.
+  - add lib-forward-testing-python3 test job
+  - Filter args dict in JSONFormatter
+  - Add devstack job with JSONFormatter configured
+  - Fix lower-constraints job
+  - Follow the new PTI for document build
+  - Migrate to stestr
+  - rewrite tests to not rely on implementation details of logging module
+  - Fix up nits in log rotation change
+  - Clean up .gitignore references to personal tools</comment>
+    <requestid>692858</requestid>
+  </revision>
+</revisionlist>

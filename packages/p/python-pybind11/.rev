@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>19fd958092423fd401504b5891c1b6e5</srcmd5>
+    <version>2.3.0</version>
+    <time>1566242821</time>
+    <user>dimstar_suse</user>
+    <comment>Required by scipy test suite.</comment>
+    <requestid>720903</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>47491afe531a6ab556d3d71cf4527536</srcmd5>
+    <version>2.3.0</version>
+    <time>1566665343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725775</requestid>
+  </revision>
+</revisionlist>

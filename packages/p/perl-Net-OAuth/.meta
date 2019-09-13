@@ -1,0 +1,23 @@
+<package name="perl-Net-OAuth" project="openSUSE:Factory">
+  <title>An implementation of the OAuth protocol</title>
+  <description>OAuth is &quot;An open protocol to allow secure API authentication in a simple and
+standard method from desktop and web applications.&quot;
+
+In practical terms, OAuth is a mechanism for a Consumer to request protected
+resources from a Service Provider on behalf of a user.
+
+Please refer to the OAuth spec: http://oauth.net/documentation/spec
+
+Net::OAuth provides:
+*   classes that encapsulate OAuth messages (requests and responses).
+*   message signing
+*   message serialization and parsing.
+*   2-legged requests (aka. tokenless requests, aka. consumer requests),
+    see &quot;CONSUMER REQUESTS&quot;
+
+Net::OAuth does not provide:
+*   Consumer or Service Provider encapsulation
+*   token/nonce/key storage/management</description>
+  <devel project="devel:languages:perl" package="perl-Net-OAuth"/>
+  <url>http://search.cpan.org/dist/Net-OAuth</url>
+</package>

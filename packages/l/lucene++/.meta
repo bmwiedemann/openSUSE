@@ -1,0 +1,8 @@
+<package name="lucene++" project="openSUSE:Factory">
+  <title>A high-performance, full-featured text search engine written in C++</title>
+  <description>An up to date C++ port of the popular Java Lucene library, a high-performance, full-featured text search engine.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="lucene++"/>
+  <url>https://github.com/luceneplusplus/LucenePlusPlus</url>
+</package>

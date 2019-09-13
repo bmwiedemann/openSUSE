@@ -1,0 +1,451 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>71e699895e98ed5cb5fc21bda7bb44de</srcmd5>
+    <version>0.55</version>
+    <time>1271724226</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DateTime based on submit request 37706 from user computersalat
+</comment>
+    <requestid>37706</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>71e699895e98ed5cb5fc21bda7bb44de</srcmd5>
+    <version>0.55</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>71e699895e98ed5cb5fc21bda7bb44de</srcmd5>
+    <version>0.55</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>39b1d934f391128404fde8e57dd15435</srcmd5>
+    <version>0.60</version>
+    <time>1280713135</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DateTime based on submit request 43314 from user computersalat
+</comment>
+    <requestid>43314</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>32127c093d8a0429b4ae1d639e37c4a1</srcmd5>
+    <version>0.61</version>
+    <time>1284765176</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DateTime based on submit request 48374 from user computersalat
+</comment>
+    <requestid>48374</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>046fbf6503c638d819e2f56eb7577a49</srcmd5>
+    <version>0.63</version>
+    <time>1285971258</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DateTime based on submit request 49567 from user anicka
+</comment>
+    <requestid>49567</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1b35d8a11a500a2717bc2e2dd6df00c8</srcmd5>
+    <version>0.65</version>
+    <time>1290434974</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53655 from user anicka
+</comment>
+    <requestid>53655</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2a6b31b1c9dbe2dccabf31686b07a280</srcmd5>
+    <version>0.65</version>
+    <time>1290434980</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53655
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>19a189bc537e8b089b24424f239c4548</srcmd5>
+    <version>0.65</version>
+    <time>1291582049</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54512 from user coolo
+</comment>
+    <requestid>54512</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>27d247217fa25367c5220122ad7e593e</srcmd5>
+    <version>0.65</version>
+    <time>1291582054</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54512
+</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>27d247217fa25367c5220122ad7e593e</srcmd5>
+    <version>0.65</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>363cab9594f3d5115b73351bc4b2c774</srcmd5>
+    <version>0.66</version>
+    <time>1298246069</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62175 from user computersalat
+</comment>
+    <requestid>62175</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>df9360deeea54e7ead2638156b49650a</srcmd5>
+    <version>0.66</version>
+    <time>1298246077</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62175
+</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>5df284fb3bb25efccacd8dd69339453b</srcmd5>
+    <version>0.66</version>
+    <time>1301574151</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65642 from user coolo
+</comment>
+    <requestid>65642</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>8d94c77c19e6ce396798d7eb6e90b2f8</srcmd5>
+    <version>0.66</version>
+    <time>1301574161</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65642
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d9acdf8c6036d535acbff73ea415812b</srcmd5>
+    <version>0.70</version>
+    <time>1305189920</time>
+    <user>azouhr</user>
+    <comment>bugfix: fixes %N placeholder</comment>
+    <requestid>69999</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d9acdf8c6036d535acbff73ea415812b</srcmd5>
+    <version>0.70</version>
+    <time>1319182258</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>e34157a6c4cc3c6ef97ef842c742b0b7</srcmd5>
+    <version>0.70</version>
+    <time>1321875490</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92190</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>04bf26605ecfcac779c5d9f5143cec8b</srcmd5>
+    <version>0.70</version>
+    <time>1323193203</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7db798329e16a8bd7c2479692ee3642e</srcmd5>
+    <version>0.72</version>
+    <time>1329405696</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>104869</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>50774aafb77bc17e21b187380d080303</srcmd5>
+    <version>0.72</version>
+    <time>1331324700</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108535</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>50774aafb77bc17e21b187380d080303</srcmd5>
+    <version>0.72</version>
+    <time>1340183827</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>50774aafb77bc17e21b187380d080303</srcmd5>
+    <version>0.72</version>
+    <time>1359109642</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>12258974eb310ad5e1e3c3ca290aea04</srcmd5>
+    <version>1.03</version>
+    <time>1370447464</time>
+    <user>coolo</user>
+    <comment>- updated to 1.03
+ - The set_time_zone() method was not returning the object when caalled with a
+   name that matched the current zone. Reported by Noel Maddy. RT #84699.
+ 
+ - When a constructor method like new() or today() was called on an object,
+   you'd get an error message like 'Can't locate object method
+   &quot;_normalize_nanoseconds&quot; via package &quot;2013-04-15T00:00:00&quot;'. This has been
+   fixed to provide a sane error message. Patch by Doug Bell.
+ 
+ - When set_time_zone() is called with a name that matches the current time
+   zone, DateTime now short circuits and avoids a lot of work. Patch by Mark
+   Stosberg.
+ 
+ - Fixed test failures on older Perls.
+ 
+ - Bumped the version to 1.00. This is mostly because my prior use of both X.YY
+   and X.YYYY versions causes trouble for some packaging systems. Plus after 10
+   years it's probably ready to be called 1.00. Requested by Adam. RT #82800. 
+ 
+ - The %j specifier for strftime was not zero-padding 1 and 2 digit
+   numbers. Fixed by Christian Hansen. RT #84310.
+ 
+ - The truncate method was sloppy about validating its &quot;to&quot; parameter, so you
+   could pass things like &quot;years&quot; or &quot;month whatever anything goes&quot;. The method
+   would accept the parameter but then not actually truncate the object. RT
+   #84229.
+ 
+ - Previously, if a call to $dt-&gt;set_time_zone() failed it would still change
+   the time zone of the object, leaving it in a broken state. Reported by Bill
+   Moseley. RT #83940. (forwarded request 177336 from coolo)</comment>
+    <requestid>177402</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>12258974eb310ad5e1e3c3ca290aea04</srcmd5>
+    <version>1.03</version>
+    <time>1379663633</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>63bbc5104bd030bec07afdfc384489d8</srcmd5>
+    <version>1.04</version>
+    <time>1386757831</time>
+    <user>coolo</user>
+    <comment>- updated to 1.04
+ - Calling set_locale() or set_formatter() on an object with an ambiguous local
+   time could change the underlying UTC time for that object. Reported by Marta
+   Cuaresma Saturio. RT #90583.</comment>
+    <requestid>209943</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>c7a4a66d10fc326a95fb5f231dcc91f4</srcmd5>
+    <version>1.04</version>
+    <time>1392128676</time>
+    <user>coolo</user>
+    <comment>- removed obsolete patches:
+  * DateTime-0.72-Build.patch (forwarded request 221731 from leonardocf)</comment>
+    <requestid>221816</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>330633d40908c7c8706489b14e906374</srcmd5>
+    <version>1.07</version>
+    <time>1394386657</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>224983</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1a8481850fc206686f1ad487d2689bc0</srcmd5>
+    <version>1.10</version>
+    <time>1406284051</time>
+    <user>coolo</user>
+    <comment>- updated to 1.10
+ 
+ - Some tests added in 1.09 would fail on a Perl without a 64-bit
+   gmtime(). Reported by Jerome Eteve. RT #95345.
+ 
+ 
+ 1.09   2014-05-03
+ 
+ - A call to -&gt;truncate( to =&gt; 'week' ) could fail but leave the object
+   changed. RT #93347.
+ 
+ - The value of -&gt;jd() is now calculated based on -&gt;mjd() instead of the other
+   way around. This reduces floating point errors a bit when calculating MJD,
+   and should have a neglible impact on the accuracy of JD. Reported by Anye
+   Li. RT #92972. See the ticket for a more detailed description of what this
+   fixes.
+ 
+ - Attempting to construct a DateTime object with a year &gt;= 5000 and a time
+   zone other than floating or DST now issues a warning. This warning may go
+   away once DateTime::TimeZone is made much faster. Inspired by a bug report
+   from Lloyd Fournier. RT #92655.
+ 
+ 
+ 1.08   2014-03-11
+ 
+ - DateTime now calls DateTime-&gt;_core_time() instead of calling Perl's time()
+   built-in directly. This makes it much easier to override the value of time()
+   that DateTime sees. This may make it easier to write tests for code that
+   uses DateTime .</comment>
+    <requestid>242324</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>1a8481850fc206686f1ad487d2689bc0</srcmd5>
+    <version>1.10</version>
+    <time>1409302247</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a32687385c383db9d5be2230833d88f8</srcmd5>
+    <version>1.12</version>
+    <time>1411127763</time>
+    <user>coolo</user>
+    <comment>- updated to 1.12
+ - The last release had the wrong repo info in the metadata.
+ 
+ - The latest historical changes in DateTime::TimeZone 1.74 caused some tests
+   to fail. Reported by Slaven Rezic. RT #98483.
+ 
+ - This release of DateTime.pm now requires the DateTime::TimeZone 1.74.</comment>
+    <requestid>249346</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5ddd6654afa137a323127ab4e1197e80</srcmd5>
+    <version>1.18</version>
+    <time>1423596215</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284928</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a856687d1cdc88591b451751889c05a7</srcmd5>
+    <version>1.19</version>
+    <time>1434003783</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311431</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>5cddcf3dec8b8188d31f24557ab29429</srcmd5>
+    <version>1.21</version>
+    <time>1444833843</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335897</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c26d9548266b44a4e417ce27c1b2b80b</srcmd5>
+    <version>1.25</version>
+    <time>1458120860</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368919</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c8e0e9fd9868fb16d653bc858bc4344e</srcmd5>
+    <version>1.26</version>
+    <time>1459002409</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>377331</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f2c69a33baee6895adf622fb69e55a9f</srcmd5>
+    <version>1.28</version>
+    <time>1464204577</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397864</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>dbd48e55b84fcf1aba0f5c2984904881</srcmd5>
+    <version>1.33</version>
+    <time>1467705176</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406463</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0ea3d936525a5391a367270805f6a62c</srcmd5>
+    <version>1.34</version>
+    <time>1468049036</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407089</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e6d8c614dbcfd4864f35c597f9c6a4dc</srcmd5>
+    <version>1.36</version>
+    <time>1470773718</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417323</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>5c4ba3a0c9830b4d19867240af046b15</srcmd5>
+    <version>1.43</version>
+    <time>1497518722</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503646</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a0309c4cb56f16602b3f937eb5a7699f</srcmd5>
+    <version>1.44</version>
+    <time>1503591922</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518090</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>cd371620799850af9e1809bc971e5824</srcmd5>
+    <version>1.45</version>
+    <time>1515504893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561823</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d4b8ac51325b202c2f721c15b93a55f2</srcmd5>
+    <version>1.46</version>
+    <time>1518813504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577367</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>99660540953697b643c197d57788eee8</srcmd5>
+    <version>1.48</version>
+    <time>1522317174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592064</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6dfc2c0c313b4d7705a830f3ae9342d7</srcmd5>
+    <version>1.49</version>
+    <time>1527276894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611497</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>916cf274cbba8cad4da615d50d937a44</srcmd5>
+    <version>1.50</version>
+    <time>1535367382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631317</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>41ba10eaef40f93f1d2d8e82203595a2</srcmd5>
+    <version>1.51</version>
+    <time>1556023276</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696578</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1131d2a1ec6274e75522e8a13933154c</srcmd5>
+    <version>0.05</version>
+    <time>1523875818</time>
+    <user>dimstar_suse</user>
+    <comment>ana 0.05 (dependency for cooldict, claripy and angr)</comment>
+    <requestid>596724</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7c8212d03141a870923116fff678e443</srcmd5>
+    <version>0.05</version>
+    <time>1524144620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597451</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fc327db276df33b38ad02350d371b55e</srcmd5>
+    <version>0.05</version>
+    <time>1544631887</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653909</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ecd39e4f72e437d641594967b2e07b39</srcmd5>
+    <version>0.06</version>
+    <time>1560338147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708982</requestid>
+  </revision>
+</revisionlist>

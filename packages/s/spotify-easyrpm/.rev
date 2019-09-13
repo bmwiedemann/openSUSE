@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd010dc0afb4dc48da4689c059a3be9e</srcmd5>
+    <version>2.0.3</version>
+    <time>1568065314</time>
+    <user>dimstar_suse</user>
+    <comment>remove %post and remove recommends which are already in the generated spotify rpm. Require rpm-build and createrepo otherwise the script won't function</comment>
+    <requestid>723388</requestid>
+  </revision>
+</revisionlist>

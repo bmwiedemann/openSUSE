@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8022514d0d359b7205d9084d73e07c5f</srcmd5>
+    <version>4.0.2</version>
+    <time>1391376216</time>
+    <user>coolo</user>
+    <comment>Zope Configuration Markup Language (ZCML)
+
+New dependency of python-pyramid</comment>
+    <requestid>211663</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8022514d0d359b7205d9084d73e07c5f</srcmd5>
+    <version>4.0.2</version>
+    <time>1409303030</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d397f8ac1fa2969f8eda57f935ccc7c0</srcmd5>
+    <version>4.0.3</version>
+    <time>1432071468</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.3
+- point the source URL to pypi
+- add fdupes as BuildRequires and call it after install
+- pass -q to the test to avoid spamming the build log
+- rename CHANGES.txt to CHANGES.rst: changed upstream
+- rename README.txt to README.rst: changed upstream (forwarded request 307307 from benoit_monin)</comment>
+    <requestid>307497</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e25a35a26002262bdb2d886d207b24d</srcmd5>
+    <version>4.1.0</version>
+    <time>1503999777</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 510575 from alois)</comment>
+    <requestid>510601</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>49aa6e908717472f7ea51e006ee63899</srcmd5>
+    <version>4.3.1</version>
+    <time>1554749569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691770</requestid>
+  </revision>
+</revisionlist>

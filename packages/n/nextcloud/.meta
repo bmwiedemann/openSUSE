@@ -1,0 +1,9 @@
+<package name="nextcloud" project="openSUSE:Factory">
+  <title>nextcloud community server package</title>
+  <description>A safe home for all your data – community-driven, free &amp; open source
+
+Access &amp; share your files, calendars, contacts, mail &amp; more from any device, on your terms
+
+(a fork from owncloud)</description>
+  <devel project="server:php:applications" package="nextcloud"/>
+</package>

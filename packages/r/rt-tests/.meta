@@ -1,0 +1,10 @@
+<package name="rt-tests" project="openSUSE:Factory">
+  <title>Realtime Kernel Testsuite</title>
+  <description>Realtime Kernel Testsuite which measures Realtime attributes of the Kernel:
+Timer and signal latency and the functionality of Priority Inheritance
+Mutexes.
+
+</description>
+  <devel project="benchmark" package="rt-tests"/>
+  <url>https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git</url>
+</package>

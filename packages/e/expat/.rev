@@ -1,0 +1,468 @@
+<revisionlist>
+  <revision rev="1" vrev="22">
+    <srcmd5>da1aa5105ef94102b702a93c3e9c68d2</srcmd5>
+    <version>2.0.0</version>
+    <time>1166483751</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="47">
+    <srcmd5>db0033c6b0638e4e683805f35a207a90</srcmd5>
+    <version>2.0.0</version>
+    <time>1177684999</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02bca430fe5b1cae85536bb9cae1c3e6</srcmd5>
+    <version>2.0.1</version>
+    <time>1181254406</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="10">
+    <srcmd5>1596ecb568d72f8a02e49c8b4b8a3b05</srcmd5>
+    <version>2.0.1</version>
+    <time>1185543285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="13">
+    <srcmd5>e8d46ac0aba41b3f0f782d76124159c4</srcmd5>
+    <version>2.0.1</version>
+    <time>1185698687</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="53">
+    <srcmd5>29538ae4b1d9ea4f5babf8fcfc988a81</srcmd5>
+    <version>2.0.1</version>
+    <time>1207829499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="87">
+    <srcmd5>29538ae4b1d9ea4f5babf8fcfc988a81</srcmd5>
+    <version>2.0.1</version>
+    <time>1207829499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="88">
+    <srcmd5>4a410117b7267588c4a20f0eb70eef35</srcmd5>
+    <version>2.0.1</version>
+    <time>1225636765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="89">
+    <srcmd5>075c7cb281cd4c0362030b9647ceeb47</srcmd5>
+    <version>2.0.1</version>
+    <time>1229340559</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="90">
+    <srcmd5>cd4a242dcb70f37c0b586d2ac9f25d3e</srcmd5>
+    <version>2.0.1</version>
+    <time>1238685833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="91">
+    <srcmd5>a075a37e2355b7775b13c0299314f1b7</srcmd5>
+    <version>2.0.1</version>
+    <time>1240506343</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="93">
+    <srcmd5>a075a37e2355b7775b13c0299314f1b7</srcmd5>
+    <version>2.0.1</version>
+    <time>1240506343</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="94">
+    <srcmd5>559f39b61779d2687157bfa08bb24f5b</srcmd5>
+    <version>2.0.1</version>
+    <time>1256920211</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/expat based on submit request 23403 from user prusnak
+</comment>
+  </revision>
+  <revision rev="14" vrev="95">
+    <srcmd5>cedf72c923258b06a10e17adafb34776</srcmd5>
+    <version>2.0.1</version>
+    <time>1260263490</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/expat based on submit request 25590 from user prusnak
+</comment>
+  </revision>
+  <revision rev="15" vrev="96">
+    <srcmd5>b15720c757f6f9af9313377eb41a236f</srcmd5>
+    <version>2.0.1</version>
+    <time>1262968206</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/expat based on submit request 28314 from user prusnak
+</comment>
+  </revision>
+  <revision rev="16" vrev="97">
+    <srcmd5>21f907335a8ec17da745156e51265203</srcmd5>
+    <version>2.0.1</version>
+    <time>1268923504</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="99">
+    <srcmd5>21f907335a8ec17da745156e51265203</srcmd5>
+    <version>2.0.1</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="100">
+    <srcmd5>21f907335a8ec17da745156e51265203</srcmd5>
+    <version>2.0.1</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="103">
+    <srcmd5>21f907335a8ec17da745156e51265203</srcmd5>
+    <version>2.0.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="104">
+    <srcmd5>c84e9310402fa4a11536ab2497bdaaec</srcmd5>
+    <version>2.0.1</version>
+    <time>1300812598</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64822 from user licensedigger
+</comment>
+    <requestid>64822</requestid>
+  </revision>
+  <revision rev="21" vrev="105">
+    <srcmd5>f18bde9b0614cefd98656a6737a85d59</srcmd5>
+    <version>2.0.1</version>
+    <time>1300812617</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64822
+</comment>
+  </revision>
+  <revision rev="22" vrev="106">
+    <srcmd5>e95eb71542b28ed92ce8c4b80f589547</srcmd5>
+    <version>2.0.1</version>
+    <time>1307346463</time>
+    <user>saschpe</user>
+    <comment>Fixed wrong identification in descriptions of expat.spec since sample/build.bat is a file and not a directory (forwarded request 72359 from aturrini)</comment>
+    <requestid>72500</requestid>
+  </revision>
+  <revision rev="23" vrev="107">
+    <srcmd5>fe64e9a80fcbe4984aa2b39cfb70e3f8</srcmd5>
+    <version>2.0.1</version>
+    <time>1307346472</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72500
+</comment>
+  </revision>
+  <revision rev="24" vrev="108">
+    <srcmd5>b920af1035f87bd96c08fa090cffda2a</srcmd5>
+    <version>2.0.1</version>
+    <time>1316443961</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+- Add libexpat-devel to baselibs (for dev of 32-bit progs) (forwarded request 83485 from jengelh)</comment>
+    <requestid>83497</requestid>
+  </revision>
+  <revision rev="25" vrev="110">
+    <srcmd5>b920af1035f87bd96c08fa090cffda2a</srcmd5>
+    <version>2.0.1</version>
+    <time>1319181872</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="111">
+    <srcmd5>8ec69e6d973888b97b3dc491cd539e57</srcmd5>
+    <version>2.0.1</version>
+    <time>1320231105</time>
+    <user>coolo</user>
+    <comment>NOT FOR 12.1, Factory Only.
+
+- Hide non public symbols reusing existing win32 API export/imports
+- annotate malloc/realloc-like functions with attribute alloc_size
+  to catch possible misuses in calling code. (forwarded request 89779 from elvigia)</comment>
+    <requestid>89782</requestid>
+  </revision>
+  <revision rev="27" vrev="112">
+    <srcmd5>666d1830e79f91c46ed2bc48772a5212</srcmd5>
+    <version>2.0.1</version>
+    <time>1322839541</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95005 from coolo)</comment>
+    <requestid>95010</requestid>
+  </revision>
+  <revision rev="28" vrev="113">
+    <srcmd5>e997e392ef3fcf162fe3c2291dff80e5</srcmd5>
+    <version>2.0.1</version>
+    <time>1323191334</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="29" vrev="114">
+    <srcmd5>07b12b4136236b62aa475f0bbc8ee523</srcmd5>
+    <version>2.0.1</version>
+    <time>1329318877</time>
+    <user>coolo</user>
+    <comment>- Put libraries back to %{_libdir}, /usr merge project (forwarded request 104138 from elvigia)</comment>
+    <requestid>104146</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a544564e1327498583f237b86575708a</srcmd5>
+    <version>2.1.0beta</version>
+    <time>1331147338</time>
+    <user>coolo</user>
+    <comment>- update to 2.1.0 beta
+  * refreshed expat-visibility.patch
+  * removed obsolete expat-CVE-2009-3560.patch
+  * removed obsolete expat-CVE-2009-2625.patch
+  - hash table DOS attack fix
+  - accumulated bug fixes and some changes to the build system
+  - new conditional feature to make byte offsets for attributes
+    and attribute names available</comment>
+    <requestid>108241</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>15ef2c8de184fdd5bfc9657b621986d1</srcmd5>
+    <version>2.1.0</version>
+    <time>1334215324</time>
+    <user>coolo</user>
+    <comment>update to 2.1.0 (forwarded request 113138 from tabraham1)</comment>
+    <requestid>113180</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>15ef2c8de184fdd5bfc9657b621986d1</srcmd5>
+    <version>2.1.0</version>
+    <time>1340183316</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>cdb61d08e1eecebcb9c0ef102d0a0196</srcmd5>
+    <version>2.1.0</version>
+    <time>1358786228</time>
+    <user>coolo</user>
+    <comment>- really hide private Xml* symbols [bnc#798644]
+  * modified visibility.patch</comment>
+    <requestid>148919</requestid>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>4e27f23f746acc6a5f8f95387dad35da</srcmd5>
+    <version>2.1.0</version>
+    <time>1358875066</time>
+    <user>coolo</user>
+    <comment>- Executing autoreconf requires autoconf BuildRequire (forwarded request 149538 from jengelh)</comment>
+    <requestid>149545</requestid>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>211bd3d95e801d2852bfdb8e93e79794</srcmd5>
+    <version>2.1.0</version>
+    <time>1359039781</time>
+    <user>coolo</user>
+    <comment>as it can't get worse, I want to have this in factory</comment>
+    <requestid>149768</requestid>
+  </revision>
+  <revision rev="36" vrev="8">
+    <srcmd5>211bd3d95e801d2852bfdb8e93e79794</srcmd5>
+    <version>2.1.0</version>
+    <time>1359108862</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="9">
+    <srcmd5>70df03f624e7cc2bd073440eec67079e</srcmd5>
+    <version>2.1.0</version>
+    <time>1360075316</time>
+    <user>coolo</user>
+    <comment>- Update config.guess/sub for aarch64 (forwarded request 151254 from Andreas_Schwab)</comment>
+    <requestid>151262</requestid>
+  </revision>
+  <revision rev="38" vrev="10">
+    <srcmd5>2521ec9e269b214eff7359865d095198</srcmd5>
+    <version>2.1.0</version>
+    <time>1361548166</time>
+    <user>coolo</user>
+    <comment>- Sanitize description of expat (replace it with a more current
+  one from the homepage) (forwarded request 155998 from jengelh)</comment>
+    <requestid>155999</requestid>
+  </revision>
+  <revision rev="39" vrev="11">
+    <srcmd5>b1d97ed4ce890b2577b74a82a7ed0176</srcmd5>
+    <version>2.1.0</version>
+    <time>1364309659</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161179 from m_meister)</comment>
+    <requestid>161181</requestid>
+  </revision>
+  <revision rev="40" vrev="13">
+    <srcmd5>b1d97ed4ce890b2577b74a82a7ed0176</srcmd5>
+    <version>2.1.0</version>
+    <time>1379662318</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="15">
+    <srcmd5>b1d97ed4ce890b2577b74a82a7ed0176</srcmd5>
+    <version>2.1.0</version>
+    <time>1409300851</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="16">
+    <srcmd5>a7e0202e5a594832d8f3bba80be56113</srcmd5>
+    <version>2.1.0</version>
+    <time>1437477885</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316020</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>c02ea8fe664ab7f34f5eba1966d309e8</srcmd5>
+    <version>2.1.1</version>
+    <time>1459422108</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.1
+  * Fixes CVE-2015-1283 — Multiple integer overflows in the
+    XML_GetBuffer function
+  * Fix potential null pointer dereference
+  * Symbol XML_SetHashSalt was not exported
+  * Output of xmlwf -h was incomplete
+  * Document behavior of calling XML_SetHashSalt with salt 0
+  * Minor improvements to man page xmlwf(1)
+- Simplify expat-visibility.patch, refresh expat-alloc-size.patch
+- Drop config-guess-sub-update.patch, fixed upstream.</comment>
+    <requestid>378414</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>a2adc4ca8560cd179dd4c86902e36cc3</srcmd5>
+    <version>2.1.1</version>
+    <time>1460363241</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>383022</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>6f1d08d0f484b3ffe5d38d58204b7f0a</srcmd5>
+    <version>2.1.1</version>
+    <time>1464299552</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396750</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>ae13e902c4b2bcf99510a571f35b8704</srcmd5>
+    <version>2.1.1</version>
+    <time>1468048734</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>404263</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a6e06f1b4e61325ff45996c55c663fa2</srcmd5>
+    <version>2.2.0</version>
+    <time>1468869422</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408557</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>c2f405574ec7c2219f9b46522e6cc50b</srcmd5>
+    <version>2.2.0</version>
+    <time>1470413482</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412247</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>8c14767915533ec0e03d2aa467e673fa</srcmd5>
+    <version>2.2.0</version>
+    <time>1479904484</time>
+    <user>dimstar_suse</user>
+    <comment>  * Fixes bnc#983215 CVE-2012-6702
+  * Fixes bnc#983216 CVE-2016-5300</comment>
+    <requestid>441164</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>443a81f713b022a87943337b223028da</srcmd5>
+    <version>2.2.1</version>
+    <time>1499754884</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508187</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>10993edd81f97b3e293c8c04b47084ce</srcmd5>
+    <version>2.2.1</version>
+    <time>1501406630</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509586</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>f162f46dff8d7f59a3fc358c80b3c3fd</srcmd5>
+    <version>2.2.1</version>
+    <time>1507628450</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532443</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>2bf72269b13ec91bf205aabe8b85a391</srcmd5>
+    <version>2.2.5</version>
+    <time>1511086258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542219</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>6a933d2369b30c768a9ce6add5a7535b</srcmd5>
+    <version>2.2.6</version>
+    <time>1537263614</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634955</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>ee9e951678ff9157f34de44b7c606931</srcmd5>
+    <version>2.2.6</version>
+    <time>1546946344</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop docbook2x dependency, the manpages are generated in
+  the upstream archive and this way we break buildcycle</comment>
+    <requestid>662662</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>b9ea6e7332decba999ccb2aadb653a0d</srcmd5>
+    <version>2.2.6</version>
+    <time>1549916169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>672726</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>91dd583ecd0b146badc93f4257738565</srcmd5>
+    <version>2.2.7</version>
+    <time>1562590807</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.2.7 (CVE-2018-20843, bsc#1139937)
+  * Security fixes:
+    - CVE-2018-20843 - Fix extraction of namespace prefixes from
+      XML names; XML names with multiple colons could end up in
+      the wrong namespace, and take a high amount of RAM and CPU
+      resources while processing, opening the door to use for
+      denial-of-service attacks
+  * Other changes:
+    - Autotools/CMake: Utilize -fvisibility=hidden to stop
+      exporting non-API symbols
+    - Autotools: Add --without-examples and --without-tests
+    - Autotools: Modernize configure.ac
+    - Autotools: Fix check for -fvisibility=hidden for Clang
+    - Autotools: Fix compilation for lack of docbook2x-man
+    - CMake: Make libdir of pkgconfig expat.pc support multilib
+    - CMake: Build man page in PROJECT_BINARY_DIR not _SOURCE_DIR
+    - Remove fallback to bcopy, assume that memmove(3) exists
+- Removed expat-2.2.6-fix-make-clean.patch</comment>
+    <requestid>713395</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,235 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>0635460b369d31b59066dd7747480f77</srcmd5>
+    <version>0.9.2</version>
+    <time>1186109186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>f4f256c41221454e2396dced3aa88995</srcmd5>
+    <version>0.9.2</version>
+    <time>1186759243</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4c5821ab5d3252f047904b4bf87256b3</srcmd5>
+    <version>0.9.3</version>
+    <time>1221474374</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2d3ff2c9efe6843a402a93dadedbaf17</srcmd5>
+    <version>0.9.4</version>
+    <time>1222379534</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>742ebe004d423a74c93992268ffca9af</srcmd5>
+    <version>0.9.7</version>
+    <time>1240601808</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b7ff07b2ec17736516de5fab28eee519</srcmd5>
+    <version>0.9.8</version>
+    <time>1249067060</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b7ff07b2ec17736516de5fab28eee519</srcmd5>
+    <version>0.9.8</version>
+    <time>1249067060</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8566d5c9684591b4bf82e799c8fe1df4</srcmd5>
+    <version>0.9.9</version>
+    <time>1268237954</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/x11vnc based on submit request 34517 from user coolo
+</comment>
+    <requestid>34517</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b922a06eb14b2c7c31edbe4e192708f2</srcmd5>
+    <version>0.9.9</version>
+    <time>1268926523</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>b922a06eb14b2c7c31edbe4e192708f2</srcmd5>
+    <version>0.9.9</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>b922a06eb14b2c7c31edbe4e192708f2</srcmd5>
+    <version>0.9.9</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8c009ac31f89d1e58ac77a328baac378</srcmd5>
+    <version>0.9.12</version>
+    <time>1284991490</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/x11vnc based on submit request 48504 from user prusnak
+</comment>
+    <requestid>48504</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>8c009ac31f89d1e58ac77a328baac378</srcmd5>
+    <version>0.9.12</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>8c009ac31f89d1e58ac77a328baac378</srcmd5>
+    <version>0.9.12</version>
+    <time>1319182576</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3d48c4e8e7cd37ec84f5f3f99cd42958</srcmd5>
+    <version>0.9.13</version>
+    <time>1339701116</time>
+    <user>coolo</user>
+    <comment>Develproject has newer package, please get this into factory.</comment>
+    <requestid>124915</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>3d48c4e8e7cd37ec84f5f3f99cd42958</srcmd5>
+    <version>0.9.13</version>
+    <time>1340184331</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>3d48c4e8e7cd37ec84f5f3f99cd42958</srcmd5>
+    <version>0.9.13</version>
+    <time>1359110586</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>617da7a125dae050c784e419cb26f653</srcmd5>
+    <version>0.9.13</version>
+    <time>1363693417</time>
+    <user>coolo</user>
+    <comment>- builds with automake 1.13
+  * automake-1.13.patch (forwarded request 159157 from pgajdos)</comment>
+    <requestid>159815</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>617da7a125dae050c784e419cb26f653</srcmd5>
+    <version>0.9.13</version>
+    <time>1379664984</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>617da7a125dae050c784e419cb26f653</srcmd5>
+    <version>0.9.13</version>
+    <time>1409303663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>90df1825ee272bc9b366ba1f0772ca57</srcmd5>
+    <version>0.9.13</version>
+    <time>1413263548</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255835</requestid>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>860e93eacaf42b5ca494fb9b851a0acb</srcmd5>
+    <version>0.9.13</version>
+    <time>1432636519</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308674</requestid>
+  </revision>
+  <revision rev="23" vrev="13">
+    <srcmd5>317c94adca7390ad6ab77ee5fc1f0c21</srcmd5>
+    <version>0.9.13</version>
+    <time>1455701186</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359549</requestid>
+  </revision>
+  <revision rev="24" vrev="14">
+    <srcmd5>eafb7bc51826c8f29d3ee3f394399565</srcmd5>
+    <version>0.9.13</version>
+    <time>1468360315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407017</requestid>
+  </revision>
+  <revision rev="25" vrev="15">
+    <srcmd5>5285d634db4529a39f098a71b74e8b67</srcmd5>
+    <version>0.9.13</version>
+    <time>1528492465</time>
+    <user>dimstar_suse</user>
+    <comment>- Properly state mp3lame as dependency and configure detects it
+  but still nothing links up to the x11vnc later on
+- Add patch to fix openssl detection on current TW:
+  * 0001-Fix-openssl-1.1.x-detection.patch
+  * 0002-Support-openssl-1.1.0.patch
+  * 10_usepkgconfig.diff
+
+- Use upstream tarball
+- Require iproute2 for the ss command calls
+
+- In x11vnc_ssh replace deprecated netstat tool by /usr/sbin/ss</comment>
+    <requestid>614227</requestid>
+  </revision>
+  <revision rev="26" vrev="16">
+    <srcmd5>02536c81540d6dd325620478784339c9</srcmd5>
+    <version>0.9.13</version>
+    <time>1546535327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662449</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>030b51278065ec28aff3219054418b0d</srcmd5>
+    <version>0.9.16</version>
+    <time>1553611383</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to upstream download url
+
+- Updated to version 0.9.16 which is now part of libvncserver as in
+  page http://www.karlrunge.com/x11vnc/ there is sentence
+  x11vnc is a contributed program to the LibVNCServer project at SourceForge.net or
+  https://github.com/LibVNC/x11vnc
+   Changes:
+   * Build fixes.
+   * Misc. documentation fixes.
+   * Misc. buffer overflow and memleak fixes.
+   * Support for OpenSSL 1.1.0.
+   * Fix for Debian bug #672435.
+   * Added support for the X Composite Extension. For subwindow/appshare
+     modes this allows sharing the respective window/app when it
+     is partially or completely off-screen as XComposite renders
+     the window contents to an off-screen buffer. Before, updating
+     of the window contents would stop once it went even partially
+     off-screen.
+   * Added XInput 2 multi-pointer support which allows multiple clients
+     to view and control a single shared screen, all having their
+     own mouse pointers and keyboard foci. For in-depth info, read
+     http://edoc.hu-berlin.de/master/beier-christian-2011-07-19/PDF/beier.pdf,
+     especially section 5.1.
+  
+     Added some support for running under Wayland via the deskshot utility
+     found in the misc/ subdirectory.
+  
+   - miscellaneous new features and changes:
+   * Separated x11vnc sources from LibVNCServer. The project is now
+     hosted at GitHub under https://github.com/LibVNC/x11vnc/.</comment>
+    <requestid>685942</requestid>
+  </revision>
+</revisionlist>

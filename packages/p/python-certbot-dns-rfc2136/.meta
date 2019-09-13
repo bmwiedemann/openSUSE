@@ -1,0 +1,5 @@
+<package name="python-certbot-dns-rfc2136" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:certbot" package="python-certbot-dns-rfc2136"/>
+</package>

@@ -1,0 +1,9 @@
+<package name="monitoring-plugins-tftp" project="openSUSE:Factory">
+  <title>Nagios plugin to check a tftp server</title>
+  <description>
+This plugin checks a tftp server. Issues a &quot;status&quot; command to the given server
+and processes the results. Requires a local tftp binary.
+  </description>
+  <devel project="server:monitoring" package="monitoring-plugins-tftp"/>
+  <url>http://isle.wumpus.org/src/nagios/</url>
+</package>

@@ -1,0 +1,233 @@
+<revisionlist>
+  <revision rev="1" vrev="32">
+    <srcmd5>3c8d812a0fc1c786a4aa38717ab96f88</srcmd5>
+    <version>1.7</version>
+    <time>1168903990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="45">
+    <srcmd5>3aa9fc8028d9dcd53ed0bb347420d89f</srcmd5>
+    <version>1.7</version>
+    <time>1175185541</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a18aac43bc32c9a628c8dcbb5b23e7f1</srcmd5>
+    <version>1.8</version>
+    <time>1185494873</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="82">
+    <srcmd5>a18aac43bc32c9a628c8dcbb5b23e7f1</srcmd5>
+    <version>1.8</version>
+    <time>1185494873</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="83">
+    <srcmd5>f45e3812dae5f28d837be508d49e685c</srcmd5>
+    <version>1.8</version>
+    <time>1245338342</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="85">
+    <srcmd5>f45e3812dae5f28d837be508d49e685c</srcmd5>
+    <version>1.8</version>
+    <time>1245338342</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="86">
+    <srcmd5>2447ff28138e7ff174167116ee5dc74b</srcmd5>
+    <version>1.8</version>
+    <time>1268925769</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="88">
+    <srcmd5>2447ff28138e7ff174167116ee5dc74b</srcmd5>
+    <version>1.8</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="89">
+    <srcmd5>2447ff28138e7ff174167116ee5dc74b</srcmd5>
+    <version>1.8</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c61bd21b23a03b9d3b7ef728ab2403bb</srcmd5>
+    <version>1.9</version>
+    <time>1294828754</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57928 from user mrdocs
+</comment>
+    <requestid>57928</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c9abe54fbf983ff214af086b695c757b</srcmd5>
+    <version>1.9</version>
+    <time>1294828786</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57928
+</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>c9abe54fbf983ff214af086b695c757b</srcmd5>
+    <version>1.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>2136679bb244a77968b7c87d8ab2e0d2</srcmd5>
+    <version>1.9</version>
+    <time>1300872502</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64796 from user licensedigger
+</comment>
+    <requestid>64796</requestid>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>02bb2f7364d7463ea98d62b7adb3dd11</srcmd5>
+    <version>1.9</version>
+    <time>1300872509</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64796
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3090e7d6ddee79b6ac608c5a8d4b2ab0</srcmd5>
+    <version>1.10</version>
+    <time>1314022037</time>
+    <user>saschpe</user>
+    <comment>update to 1.10, run spec-cleaner on the spec file, adjust configure to disable static packages (forwarded request 79441 from mrdocs)</comment>
+    <requestid>79442</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>69a0be48142a7a724dc3d4c0b16fec88</srcmd5>
+    <version>1.10</version>
+    <time>1314022047</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79442
+</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>69a0be48142a7a724dc3d4c0b16fec88</srcmd5>
+    <version>1.10</version>
+    <time>1319182367</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>15e3ba2842079eb33e41e587cce1899a</srcmd5>
+    <version>1.10</version>
+    <time>1322488168</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93796 from coolo)</comment>
+    <requestid>93833</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>97fc6f340fa885e24c54fc56065fbbd2</srcmd5>
+    <version>1.10</version>
+    <time>1323193968</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>97fc6f340fa885e24c54fc56065fbbd2</srcmd5>
+    <version>1.10</version>
+    <time>1340184014</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>97fc6f340fa885e24c54fc56065fbbd2</srcmd5>
+    <version>1.10</version>
+    <time>1359109946</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7938272f3aaa60de66f635b4b3843ad5</srcmd5>
+    <version>1.11</version>
+    <time>1361453066</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.11:
+  * A GeoJSON backend was added.
+  * Support for bitfields in the BMP format was added.
+  * A minor change was made to the behavior of the alphamax
+    parameter; a value of 0 now gives a true polygon. 
+- Build shared libpotrace. (forwarded request 155922 from sbrabec)</comment>
+    <requestid>155923</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>7938272f3aaa60de66f635b4b3843ad5</srcmd5>
+    <version>1.11</version>
+    <time>1379664058</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>7938272f3aaa60de66f635b4b3843ad5</srcmd5>
+    <version>1.11</version>
+    <time>1409302737</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1566e50560da6439c594604c30c89d30</srcmd5>
+    <version>1.12</version>
+    <time>1428192239</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294308</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7d7e1996068bf4528d44a99811cba271</srcmd5>
+    <version>1.13</version>
+    <time>1445675380</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340625</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8c8c7bb95aae9c7ff66d22b3469cecfb</srcmd5>
+    <version>1.14</version>
+    <time>1488558788</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460990</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>360089c23453ba759fccd402830efc8d</srcmd5>
+    <version>1.15</version>
+    <time>1502561010</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515106</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>d2046938e2ab6e0a54073c7c19b491e8</srcmd5>
+    <version>1.15</version>
+    <time>1504520342</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519323</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>81e6dfe1cfca6807666f1877f079c507</srcmd5>
+    <version>1.15</version>
+    <time>1513676810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557263</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>f5178bd0ffd74615f24ea9bec74e7533</srcmd5>
+    <version>1.15</version>
+    <time>1566893618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725293</requestid>
+  </revision>
+</revisionlist>

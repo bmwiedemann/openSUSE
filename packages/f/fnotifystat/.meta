@@ -1,0 +1,10 @@
+<package name="fnotifystat" project="openSUSE:Factory">
+  <title>File activity monitoring tool</title>
+  <description>Fnotifystat periodically dumps out the activity on files in the system. It can
+be used to identify rogue file activity and discover which processes are
+performing open/close/read/write operations on the files. 
+
+</description>
+  <devel project="server:monitoring" package="fnotifystat"/>
+  <url>http://kernel.ubuntu.com/~cking/fnotifystat/</url>
+</package>

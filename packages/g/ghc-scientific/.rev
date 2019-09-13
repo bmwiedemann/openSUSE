@@ -1,0 +1,189 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c987127a0fdf3175e4e71de63d28a869</srcmd5>
+    <version>0.3.3.7</version>
+    <time>1424255889</time>
+    <user>dimstar_suse</user>
+    <comment>New awesome package</comment>
+    <requestid>283967</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a7c02783051bbb74c87284766532224f</srcmd5>
+    <version>0.3.3.7</version>
+    <time>1428652235</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>294579</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a726f7c2dd994a41b714859f8d28c8a8</srcmd5>
+    <version>0.3.3.8</version>
+    <time>1430387486</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304687</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>027919ea2e1c9d7c116168f89e4a8a7f</srcmd5>
+    <version>0.3.4.0</version>
+    <time>1444285479</time>
+    <user>coolo</user>
+    <comment>- update to 0.3.4.0
+*Added fromRationalRepetend &amp; toRationalRepetend
+  for safely converting from and to rationals
+  which have a repeating decimal representation like:
+  1 % 28 = 0.03(571428).
+* Added a Binary instance.
+* Various performance improvements.
+* Support vector-0.11
+* Support tasty-0.11
+* Support criterion-1.1.0.0</comment>
+    <requestid>336341</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>54b96be7cabc7020522b0187e1e4e835</srcmd5>
+    <version>0.3.4.2</version>
+    <time>1444833921</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.4.2
+* build fixes
+
+* Added fromRationalRepetend &amp; toRationalRepetend</comment>
+    <requestid>338283</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1e03d5aba8dbb89b0e4a7912370e0462</srcmd5>
+    <version>0.3.4.4</version>
+    <time>1448957974</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.4.4
+* Fix build with integer-simple.
+* Improved performance of toDecimalDigits by 13%.</comment>
+    <requestid>346750</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b9818c29611abeb64a68202e57d95e10</srcmd5>
+    <version>0.3.4.6</version>
+    <time>1458120960</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.4.6
+* Made toDecimalDigits more similar to floatToDigits
+* Introduce a special case for 0 in fromFloatDigits
+
+- update to 0.3.4.5
+* Support GHC-8.0.1
+* Support binary-0.8 (forwarded request 370923 from mimi_vx)</comment>
+    <requestid>370926</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b8bec860bdf170eca42d639dbace5020</srcmd5>
+    <version>0.3.4.7</version>
+    <time>1465938519</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.4.7
+* Unconditionally export Data.ByteString.Builder.Scientific.
+* The bytestring-builder cabal flag has been removed.
+* Depend on bytestring-builder for backwards compatibility for GHC &amp;lt; 7.8. (forwarded request 401659 from mimi_vx)</comment>
+    <requestid>401660</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aefb096cc65ae249c8563405d107a7d9</srcmd5>
+    <version>0.3.4.8</version>
+    <time>1467705158</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.4.8
+* Make bytestring-builder's installation conditional based on a Cabal flag. (forwarded request 406341 from mimi_vx)</comment>
+    <requestid>406343</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>123aa7f594641f2da2ced5ebf6e44c02</srcmd5>
+    <version>0.3.4.8</version>
+    <time>1469081124</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411386</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>39b0fb1dde5bf5b26d01fd560e581935</srcmd5>
+    <version>0.3.4.9</version>
+    <time>1472026078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.4.9 revision 0 with cabal2obs. (forwarded request 412717 from mimi_vx)</comment>
+    <requestid>412718</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3df8a3e5c516fbd3f22d08edaa9fe473</srcmd5>
+    <version>0.3.4.10</version>
+    <time>1490025993</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461680</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d65ed43be8256a1cb2c2fac868f4d047</srcmd5>
+    <version>0.3.4.11</version>
+    <time>1492170088</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487388</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1f741df7029ef4b11f1919543437b592</srcmd5>
+    <version>0.3.4.12</version>
+    <time>1494088140</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491508</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>75d27ce4fa73cdcc28cde08561f5c0dc</srcmd5>
+    <version>0.3.4.15</version>
+    <time>1498046153</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504677</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c00171240db0e3dd58778faac147188b</srcmd5>
+    <version>0.3.4.15</version>
+    <time>1499880928</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>509318</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c636e4f033162deb822c705528c1ab8e</srcmd5>
+    <version>0.3.5.1</version>
+    <time>1501146729</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>511518</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ef505054afe9531c08428bcad5ff6a6f</srcmd5>
+    <version>0.3.6.2</version>
+    <time>1527675180</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-scientific to the latest version.</comment>
+    <requestid>607878</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4adcd0b2f8fbdf24143bea1dbe9dc184</srcmd5>
+    <version>0.3.6.2</version>
+    <time>1532161384</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 0.3.3.8</comment>
+    <requestid>623850</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>c44a31f259ae44a23fab8c1c28621c82</srcmd5>
+    <version>0.3.6.2</version>
+    <time>1540451031</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643453</requestid>
+  </revision>
+</revisionlist>

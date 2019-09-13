@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>937c2790ac1765c552d4d995464d974f</srcmd5>
+    <version>1.0</version>
+    <time>1516359135</time>
+    <user>dimstar_suse</user>
+    <comment>Brought over from Packman.</comment>
+    <requestid>561271</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>630bba7b86ae5cd2d6edc3d7eb9e1bd2</srcmd5>
+    <version>1.0</version>
+    <time>1516444071</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>567652</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2e4807e36577f845e995a9a99c2fc076</srcmd5>
+    <version>1.0</version>
+    <time>1532774426</time>
+    <user>dimstar_suse</user>
+    <comment>- add fotowall-1.0-fix-build-against-qt-5.11.0.patch from Mageia</comment>
+    <requestid>624054</requestid>
+  </revision>
+</revisionlist>

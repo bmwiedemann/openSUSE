@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bcc214a2eb5705daa9850e167826b7e1</srcmd5>
+    <version>1.1</version>
+    <time>1545141555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658921</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c63327e8c41adc966a5ba4334889886</srcmd5>
+    <version>1.1</version>
+    <time>1548704996</time>
+    <user>dimstar_suse</user>
+    <comment>- add SLE_HPC to aarch64</comment>
+    <requestid>669090</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>391bcefa7bf3a1b05d2d40f3273c3d7d</srcmd5>
+    <version>1.1</version>
+    <time>1549017917</time>
+    <user>dimstar_suse</user>
+    <comment>- ignore setting of %is_susesap and rework build conditions</comment>
+    <requestid>669805</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e71f61e2525ca5a0631193bc89a88f0c</srcmd5>
+    <version>1.1</version>
+    <time>1558351115</time>
+    <user>dimstar_suse</user>
+    <comment>- Kubic flavor failed to build due to use of wrong release package
+- Just drop it as it's not used anywhere (forwarded request 703411 from favogt)</comment>
+    <requestid>704159</requestid>
+  </revision>
+</revisionlist>

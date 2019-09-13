@@ -1,0 +1,31 @@
+<package name="zam-plugins" project="openSUSE:Factory">
+  <title>A collection of LV2/LADSPA audio plugins for high quality processing</title>
+  <description>The purpose of these plugins is to provide high quality DSP without
+using an excessive amount of CPU, in an attempt to complement some of
+the amazing work done on other free audio software projects by other
+people. There is an exception: ZamValve has two different models one of
+which uses very large proportion of CPU but has been commented that it
+does sound much more realistic than the tanh model. The CPU hungry
+version is in a separate git branch and is not selected by default but
+can be compiled by switching to the zamvalve branch.
+
+There currently is no documentation on how to use these plugins, but
+anyone who is familiar with outboard gear should be able to work it out.
+Plus the default settings and almost every slider is calibrated to
+standard ranges.
+
+The suite so far consists of:
+
+ZamAutoSat - Automatic saturation plugin
+ZamComp - Mono Compressor plugin*
+ZamCompX2 - Stereo Compressor plugin*
+ZamCompExp - Stereo Compressor/Expander plugin
+ZamEQ2 - 2x parametric EQ (with high/lowshelf and HP/LP) plugin
+ZamValve - Valve distortion (WDF physical model* or tanh*) plugin
+ZamGEQ31 - Mono 31 band graphic equalizer plugin
+ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
+
+</description>
+  <devel project="multimedia:apps" package="zam-plugins"/>
+  <url>http://www.zamaudio.com/?p=976</url>
+</package>

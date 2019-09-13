@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f58b250b24426499d6fc96b423d7104</srcmd5>
+    <version>0.15</version>
+    <time>1527933990</time>
+    <user>dimstar_suse</user>
+    <comment>Python graph (network) package</comment>
+    <requestid>612079</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c9d9c71edc191345623783663e418c88</srcmd5>
+    <version>0.16.1</version>
+    <time>1542580318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649805</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>55d0f4e085baa2e8f4b31ddb8930cdbb</srcmd5>
+    <version>0.16.1</version>
+    <time>1544631883</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653907</requestid>
+  </revision>
+</revisionlist>

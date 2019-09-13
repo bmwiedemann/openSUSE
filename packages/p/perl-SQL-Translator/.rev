@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>94c509fa5c2d8994b93130e4e2d3cad7</srcmd5>
+    <version>0.11010</version>
+    <time>1327696033</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>99782</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>94c509fa5c2d8994b93130e4e2d3cad7</srcmd5>
+    <version>0.11010</version>
+    <time>1340183913</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>94c509fa5c2d8994b93130e4e2d3cad7</srcmd5>
+    <version>0.11010</version>
+    <time>1359109789</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d42c158ffe1fdcce57d05cc98c4486bf</srcmd5>
+    <version>0.11016</version>
+    <time>1375782398</time>
+    <user>coolo</user>
+    <comment>license update: (Artistic-1.0 or GPL-1.0+) and GPL-2.0
+See e.g. script/sqlt (forwarded request 185916 from babelworx)</comment>
+    <requestid>185920</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d42c158ffe1fdcce57d05cc98c4486bf</srcmd5>
+    <version>0.11016</version>
+    <time>1379663831</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bb4d8eb6f6f2bb74edf3b4547d3752bc</srcmd5>
+    <version>0.11018</version>
+    <time>1385705063</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208416</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>bb4d8eb6f6f2bb74edf3b4547d3752bc</srcmd5>
+    <version>0.11018</version>
+    <time>1409302470</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1aaa4e619f84a7c8d440dbeae704c5a6</srcmd5>
+    <version>0.11020</version>
+    <time>1410967578</time>
+    <user>coolo</user>
+    <comment>- updated to 0.11020
+  * Fix test failure if Test::PostgreSQL is installed but not working
+ 
+ 0.11019 2014-09-02
+ 
+  * Add Json and hstore types to Pg Parser (cloudinstustrie)
+  * Fix DROP TABLE in SQL Server Producer
+  * Fix Pg DBI parser test (Dagfinn Ilmari Mannsåker)
+  * Remove spurious warnings (Matt Phillips, Wallace Reis)
+  * Fix MySQL producer for columns with scalar ref in 'ON UPDATE' (Wallace Reis)
+  * Fix handling of views in MySQL DBI parser
+  * Fix handling of renamed fields in SQLite diff (Peter Mottram)
+  * Check numeric equality of default values in numeric-type fields (Wallace Reis)
+  * Fix handling of renamed fields in renamed tables in Pg diff (Peter Mottram)</comment>
+    <requestid>249515</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9715e71940277a0a349211a13933bd00</srcmd5>
+    <version>0.11020</version>
+    <time>1417643294</time>
+    <user>dimstar_suse</user>
+    <comment>- require YAML, actually required by Translator:YAML</comment>
+    <requestid>263729</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>14dd2e8b7896d007861f3097892d4ab8</srcmd5>
+    <version>0.11021</version>
+    <time>1423596229</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284950</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>07368ddda9917052b943a0278a39388f</srcmd5>
+    <version>0.11021</version>
+    <time>1507065615</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530801</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>555940d29f1c8f950628ee6c0e975f21</srcmd5>
+    <version>0.11023</version>
+    <time>1515505860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555674</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ad0fb6f0a4ac05c8bf95c8831affdd09</srcmd5>
+    <version>0.11024</version>
+    <time>1516804206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568397</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c0b24361b9f9806fb7eea5a0450df556</srcmd5>
+    <version>1.60</version>
+    <time>1560970974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707185</requestid>
+  </revision>
+</revisionlist>

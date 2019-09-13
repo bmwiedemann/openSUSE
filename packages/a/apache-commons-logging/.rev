@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e26a1614c62eb88aa1866498193c418</srcmd5>
+    <version>1.1.1</version>
+    <time>1330062755</time>
+    <user>coolo</user>
+    <comment>osc service localrun format_spec_file</comment>
+    <requestid>104680</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1d799b4a70bcc2d3a8aec1c14b234c09</srcmd5>
+    <version>1.1.1</version>
+    <time>1331124053</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108310</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9dc0d00e930b83e3e7e12f4e555532e6</srcmd5>
+    <version>1.1.1</version>
+    <time>1333475531</time>
+    <user>coolo</user>
+    <comment>- provide commons-logging</comment>
+    <requestid>112216</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>9dc0d00e930b83e3e7e12f4e555532e6</srcmd5>
+    <version>1.1.1</version>
+    <time>1340183174</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>9dc0d00e930b83e3e7e12f4e555532e6</srcmd5>
+    <version>1.1.1</version>
+    <time>1359108654</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bcc132020a725b190da72a1d14943715</srcmd5>
+    <version>1.1.3</version>
+    <time>1378238481</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.3 (bugfix release)
+  see http://commons.apache.org/proper/commons-logging/changes-report.html
+  or RELEASE-NOTES.txt for details
+- add gpg verification
+- use new add_maven_depmap from javapackages-tools
+- dropped unecessary patches/sources
+  * build.xml.patch
+  * commons-logging-eclipse-manifest.patch
+  * commons-logging-maven-release-plugin.patch
+  * and commons-logging.depmap</comment>
+    <requestid>196532</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>761793cb8ef8c89cbd2105894eb804f4</srcmd5>
+    <version>1.1.3</version>
+    <time>1378899570</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198253</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>761793cb8ef8c89cbd2105894eb804f4</srcmd5>
+    <version>1.1.3</version>
+    <time>1379661971</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>877250e381df7942325cc3a186eebb5c</srcmd5>
+    <version>1.1.3</version>
+    <time>1404161380</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238884</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>d48150070ff0aaa6c2b4024b7a163f04</srcmd5>
+    <version>1.1.3</version>
+    <time>1408021059</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244326</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>d48150070ff0aaa6c2b4024b7a163f04</srcmd5>
+    <version>1.1.3</version>
+    <time>1409300495</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>f70e631da7a35c8554c263563d2bd7b0</srcmd5>
+    <version>1.1.3</version>
+    <time>1425566004</time>
+    <user>dimstar_suse</user>
+    <comment>- Use log4j-mini to hopefully avoid build-cycle
+
+- add the log4j adapter to commons-logging-adapters
+  (bnc#918852)</comment>
+    <requestid>288833</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>3b3e96b65b84e61d8fa0daae3a907566</srcmd5>
+    <version>1.1.3</version>
+    <time>1427983219</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop maven conditionals that were never triggered.
+
+- Drop gpg offline and rely on service
+
+- Fix build with new javapackages-tools</comment>
+    <requestid>293053</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6c688ab81669252ddac43ce36c95a516</srcmd5>
+    <version>1.2</version>
+    <time>1454149847</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355750</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9a6443844ad6991b39dd30fb87e15652</srcmd5>
+    <version>1.2</version>
+    <time>1496230154</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove bootstrap conditional
+
+- New build dependency: javapackages-local 
+- Fixed requires</comment>
+    <requestid>496607</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>1e7695eaadcf3015314bc1377762bfae</srcmd5>
+    <version>1.2</version>
+    <time>1505333950</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>521994</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>9bc3bbcda188694ab553e9e39a490ed1</srcmd5>
+    <version>1.2</version>
+    <time>1532446238</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620753</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>83ea6a6c92b7ee0aed7f4d39a23ec4cb</srcmd5>
+    <version>1.2</version>
+    <time>1541079420</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>645282</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>b795efa3be18e2a14def4c820db76102</srcmd5>
+    <version>1.2</version>
+    <time>1549464474</time>
+    <user>coolo</user>
+    <comment>Build against glassfish-servlet-api</comment>
+    <requestid>672040</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>20aa7cb52143bc35959ff1c44122df35</srcmd5>
+    <version>1.2</version>
+    <time>1553809524</time>
+    <user>dimstar_suse</user>
+    <comment>Disregard the pom parent + minor cleanup</comment>
+    <requestid>689052</requestid>
+  </revision>
+</revisionlist>

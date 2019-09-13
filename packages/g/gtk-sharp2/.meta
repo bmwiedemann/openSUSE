@@ -1,0 +1,5 @@
+<package name="gtk-sharp2" project="openSUSE:Factory">
+  <title>.Net Language Bindings for GTK+</title>
+  <description>This package contains Mono bindings for gtk+, gdk, atk, and pango.</description>
+  <devel project="Mono:Factory" package="gtk-sharp2"/>
+</package>

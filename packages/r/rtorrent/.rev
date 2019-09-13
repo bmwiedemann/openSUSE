@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2c59f6c7e883b71face6177a05d4faa</srcmd5>
+    <version>0.9.4</version>
+    <time>1407331918</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>243720</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e2c59f6c7e883b71face6177a05d4faa</srcmd5>
+    <version>0.9.4</version>
+    <time>1409303208</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>616157ea972ff78f3be7a448a84a7640</srcmd5>
+    <version>0.9.6</version>
+    <time>1447882477</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable xmlrpc on Tumbleweed (forwarded request 344464 from pluskalm)</comment>
+    <requestid>344465</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92d65b28d1c6d6bc6a1eb45332eb484c</srcmd5>
+    <version>0.9.6.g93</version>
+    <time>1503592184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 0.9.6.g93</comment>
+    <requestid>501673</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>81db8a00e74c27a47468c244b7b56f4d</srcmd5>
+    <version>0.9.6.g116</version>
+    <time>1513110194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 0.9.6.g113</comment>
+    <requestid>556323</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>796af7b875c1b22ab170be38f4fb3fe8</srcmd5>
+    <version>0.9.8</version>
+    <time>1564576275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719869</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>00d469dbdb5d9fadb57cd56a192fa693</srcmd5>
+    <version>0.9.8</version>
+    <time>1566243544</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing %service_* scriptlets</comment>
+    <requestid>724200</requestid>
+  </revision>
+</revisionlist>

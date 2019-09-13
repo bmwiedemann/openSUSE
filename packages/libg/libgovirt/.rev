@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c719e7dd5488e7dfcac174fad1bfd83</srcmd5>
+    <version>0.0.3</version>
+    <time>1363720997</time>
+    <user>coolo</user>
+    <comment>New package - for GNOME 3.8 - Enter the legal review queue</comment>
+    <requestid>159580</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>659ae7412e82dfbb8656fdab1283c5ae</srcmd5>
+    <version>0.1.0</version>
+    <time>1372059133</time>
+    <user>coolo</user>
+    <comment>Fixup/resub after review (forwarded request 180575 from dimstar)</comment>
+    <requestid>180580</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>65b158566c9f55b6873cbf2b8deabf09</srcmd5>
+    <version>0.2.0</version>
+    <time>1373981807</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.4 - hopefully in the for #oSC13</comment>
+    <requestid>183177</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>65b158566c9f55b6873cbf2b8deabf09</srcmd5>
+    <version>0.2.0</version>
+    <time>1379662966</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b50510806ac58569f3f0f26860a46f22</srcmd5>
+    <version>0.3.0</version>
+    <time>1391679075</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.3.0, it's been sitting in GN for 3 months :-)  (forwarded request 220975 from dimstar)</comment>
+    <requestid>221057</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b50510806ac58569f3f0f26860a46f22</srcmd5>
+    <version>0.3.0</version>
+    <time>1409301578</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e0cd3335a14b4b7ec41442082b0f8a8b</srcmd5>
+    <version>0.3.1</version>
+    <time>1412098601</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.13.91 - Add to Staging:E (forwarded request 248718 from dimstar)</comment>
+    <requestid>248769</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6394f466fc637a90262c730598011863</srcmd5>
+    <version>0.3.2</version>
+    <time>1413048400</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254991</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f65e6a6211a1eef91d8dd108cc3b0c27</srcmd5>
+    <version>0.3.3</version>
+    <time>1429768562</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298407</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>51616ff9b3d87853e892c76ca65acb00</srcmd5>
+    <version>0.3.4</version>
+    <time>1460740011</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390160</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>00723896fd504331c1e0b4cc648b1d4b</srcmd5>
+    <version>0.3.4</version>
+    <time>1520502713</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SRPM group. Update summaries. Fix faulty disable-static
+  switch. (forwarded request 583009 from jengelh)</comment>
+    <requestid>583033</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6534ecb65b2f69091db61b7c0bb93c4d</srcmd5>
+    <version>0.3.6</version>
+    <time>1559481214</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 705702 from iznogood)</comment>
+    <requestid>705804</requestid>
+  </revision>
+</revisionlist>

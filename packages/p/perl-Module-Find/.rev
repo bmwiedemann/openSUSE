@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4ba9a313cfcc585caa25fb78b59457c9</srcmd5>
+    <version>0.10</version>
+    <time>1326378384</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>99772</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7ca9977db404132a144da70046d4fbff</srcmd5>
+    <version>0.11</version>
+    <time>1337955469</time>
+    <user>coolo</user>
+    <comment>- updated to 0.11
+  Fixed RT#74251: defined(@array) is deprecated under Perl 5.15.7.</comment>
+    <requestid>121944</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7ca9977db404132a144da70046d4fbff</srcmd5>
+    <version>0.11</version>
+    <time>1340183875</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7ca9977db404132a144da70046d4fbff</srcmd5>
+    <version>0.11</version>
+    <time>1359109739</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>7ca9977db404132a144da70046d4fbff</srcmd5>
+    <version>0.11</version>
+    <time>1379663746</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fbd497c4f9ec30b902cf8b94c4028b9f</srcmd5>
+    <version>0.12</version>
+    <time>1393611333</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223908</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>fbd497c4f9ec30b902cf8b94c4028b9f</srcmd5>
+    <version>0.12</version>
+    <time>1409302382</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>334ea191de771e3e51054da3be658907</srcmd5>
+    <version>0.13</version>
+    <time>1429606360</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298025</requestid>
+  </revision>
+</revisionlist>

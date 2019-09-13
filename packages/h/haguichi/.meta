@@ -1,0 +1,6 @@
+<package name="haguichi" project="openSUSE:Factory">
+  <title>Haguichi</title>
+  <description>Provides a user friendly GUI to control the Hamachi client on Linux</description>
+  <devel project="network" package="haguichi"/>
+  <url>http://www.haguichi.net/</url>
+</package>

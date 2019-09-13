@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>daeeaaa0a0f21ef5aa7109fdea097a8c</srcmd5>
+    <version>0.6</version>
+    <time>1348145752</time>
+    <user>coolo</user>
+    <comment>Can abootimg please be added to openSUSE:Factory, bug 778493 has been resolved, license are both GPL-2.0+ and Apache-2.0</comment>
+    <requestid>134666</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>daeeaaa0a0f21ef5aa7109fdea097a8c</srcmd5>
+    <version>0.6</version>
+    <time>1359108638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>daeeaaa0a0f21ef5aa7109fdea097a8c</srcmd5>
+    <version>0.6</version>
+    <time>1379661945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>daeeaaa0a0f21ef5aa7109fdea097a8c</srcmd5>
+    <version>0.6</version>
+    <time>1409300466</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>2dbad76e4afdcfdef21579d2f7d8c012</srcmd5>
+    <version>0.6</version>
+    <time>1455021151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358271</requestid>
+  </revision>
+</revisionlist>

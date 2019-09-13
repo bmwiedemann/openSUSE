@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>25a40ec400e04d3c73903889f111984f</srcmd5>
+    <version>1.2.0</version>
+    <time>1336471275</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115410</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>25a40ec400e04d3c73903889f111984f</srcmd5>
+    <version>1.2.0</version>
+    <time>1340184342</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>79cb90a26730e8f032000be3e6fa392b</srcmd5>
+    <version>1.2.1</version>
+    <time>1358874356</time>
+    <user>coolo</user>
+    <comment>Update to version 1.2.1 (forwarded request 149216 from Zaitor)</comment>
+    <requestid>149364</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>79cb90a26730e8f032000be3e6fa392b</srcmd5>
+    <version>1.2.1</version>
+    <time>1359110603</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>79cb90a26730e8f032000be3e6fa392b</srcmd5>
+    <version>1.2.1</version>
+    <time>1379665012</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>79cb90a26730e8f032000be3e6fa392b</srcmd5>
+    <version>1.2.1</version>
+    <time>1409303694</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>23e9e8c6c334c51edbce00bf7a1ecd39</srcmd5>
+    <version>1.2.2</version>
+    <time>1426064278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290000</requestid>
+  </revision>
+</revisionlist>

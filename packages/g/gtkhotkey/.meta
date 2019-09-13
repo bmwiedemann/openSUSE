@@ -1,0 +1,6 @@
+<package name="gtkhotkey" project="openSUSE:Factory">
+  <title>Platform Independent Hotkey Handling for GTK+ Applications</title>
+  <description>GtkHotkey is simple library offering a platform independent way for GTK+
+applications to manage and bind desktop-wide hotkeys.</description>
+  <devel project="GNOME:Apps" package="gtkhotkey"/>
+</package>

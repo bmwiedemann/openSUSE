@@ -1,0 +1,13 @@
+<package name="perl-IPC-System-Simple" project="openSUSE:Factory">
+  <title>Run commands simply, with detailed diagnostics</title>
+  <description>Calling Perl's in-built &quot;system()&quot; function is easy, determining if it was
+successful is *hard*. Let's face it, $? isn't the nicest variable in the
+world to play with, and even if you *do* check it, producing a
+well-formatted error string takes a lot of work.
+&quot;IPC::System::Simple&quot; takes the hard work out of calling external
+commands.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-IPC-System-Simple"/>
+  <url>http://search.cpan.org/dist/IPC-System-Simple</url>
+</package>

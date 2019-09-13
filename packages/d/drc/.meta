@@ -1,0 +1,10 @@
+<package name="drc" project="openSUSE:Factory">
+  <title>Tools to generate digital room correction filters</title>
+  <description>DRC is a program used to generate correction filters for acoustic compensation
+of HiFi and audio systems in general, including listening room compensation. DRC
+generates just the FIR correction filters, which can be used with a real time or
+offline convolver to provide real time or offline correction. DRC doesn't
+provide convolution features, and provides only some simplified, although really
+accurate, measuring tools.</description>
+  <devel project="multimedia:apps" package="drc"/>
+</package>

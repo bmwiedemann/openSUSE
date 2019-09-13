@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>d70130d6de9b54ee36ae16ca986f8fa5</srcmd5>
+    <version>1.1</version>
+    <time>1243996784</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>d70130d6de9b54ee36ae16ca986f8fa5</srcmd5>
+    <version>1.1</version>
+    <time>1243996784</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>b9729833a8f098932ebcf8ca6bb30abb</srcmd5>
+    <version>1.1</version>
+    <time>1268924124</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="8">
+    <srcmd5>b9729833a8f098932ebcf8ca6bb30abb</srcmd5>
+    <version>1.1</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>b9729833a8f098932ebcf8ca6bb30abb</srcmd5>
+    <version>1.1</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="12">
+    <srcmd5>b9729833a8f098932ebcf8ca6bb30abb</srcmd5>
+    <version>1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="14">
+    <srcmd5>b9729833a8f098932ebcf8ca6bb30abb</srcmd5>
+    <version>1.1</version>
+    <time>1319182008</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="15">
+    <srcmd5>b36bbb659c5215f14469ad4c0cfdcffd</srcmd5>
+    <version>1.1</version>
+    <time>1323192031</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="17">
+    <srcmd5>b36bbb659c5215f14469ad4c0cfdcffd</srcmd5>
+    <version>1.1</version>
+    <time>1340183483</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="19">
+    <srcmd5>b36bbb659c5215f14469ad4c0cfdcffd</srcmd5>
+    <version>1.1</version>
+    <time>1359109118</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="20">
+    <srcmd5>7e2ca0d6b688c4a689dbba76325e1a29</srcmd5>
+    <version>1.1</version>
+    <time>1378899522</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198285</requestid>
+  </revision>
+  <revision rev="12" vrev="22">
+    <srcmd5>7e2ca0d6b688c4a689dbba76325e1a29</srcmd5>
+    <version>1.1</version>
+    <time>1379662707</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="24">
+    <srcmd5>7e2ca0d6b688c4a689dbba76325e1a29</srcmd5>
+    <version>1.1</version>
+    <time>1409301274</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="25">
+    <srcmd5>d59a91c8e978c3c5426096a36d365918</srcmd5>
+    <version>1.1</version>
+    <time>1505334035</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>522251</requestid>
+  </revision>
+</revisionlist>

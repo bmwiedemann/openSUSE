@@ -1,0 +1,9 @@
+<package name="rlwrap" project="openSUSE:Factory">
+  <title>A Readline Wrapper</title>
+  <description>rlwrap uses the GNU readline library to allow the editing of keyboard
+input for any other command. The input history is remembered across
+invocations, separately for each command;history completion and search
+work as in bash and completion word lists can be specified on the
+command line.</description>
+  <devel project="Base:System" package="rlwrap"/>
+</package>

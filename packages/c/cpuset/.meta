@@ -1,0 +1,9 @@
+<package name="cpuset" project="openSUSE:Factory">
+  <title>Allows manipulation of cpusets on system and provides higher level functions</title>
+  <description>Cpuset is a Python application to make using the cpusets facilities in
+the Linux kernel easier.  The actual included command is called cset
+and it allows manipulation of cpusets on the system and provides higher
+level functions such as implementation and control of a basic CPU
+shielding setup.</description>
+  <devel project="hardware" package="cpuset"/>
+</package>

@@ -1,0 +1,8 @@
+<package name="nasm" project="openSUSE:Factory">
+  <title>Netwide Assembler (An x86 Assembler)</title>
+  <description>NASM is a prototype general-purpose x86 assembler. It can currently
+output several binary formats, including ELF, a.out, Win32, and OS/2.
+
+Read the licence agreement in /usr/share/doc/packages/nasm/Licence.</description>
+  <devel project="devel:tools:compiler" package="nasm"/>
+</package>

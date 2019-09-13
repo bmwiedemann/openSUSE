@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>92075af4b40814fcee524c2cd3cf671b</srcmd5>
+    <version>1.3.5</version>
+    <time>1332616238</time>
+    <user>coolo</user>
+    <comment>Rails-3.2 requirement</comment>
+    <requestid>110734</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>92075af4b40814fcee524c2cd3cf671b</srcmd5>
+    <version>1.3.5</version>
+    <time>1340184171</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>92075af4b40814fcee524c2cd3cf671b</srcmd5>
+    <version>1.3.5</version>
+    <time>1359110338</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c3d980c598aa629f5df56d1528e85ce0</srcmd5>
+    <version>1.3.10</version>
+    <time>1364901048</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161849</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ddb6ca9c44f5b0e51e5d51890393fb3c</srcmd5>
+    <version>1.3.10</version>
+    <time>1368471036</time>
+    <user>coolo</user>
+    <comment>- add license link</comment>
+    <requestid>175260</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>ddb6ca9c44f5b0e51e5d51890393fb3c</srcmd5>
+    <version>1.3.10</version>
+    <time>1379664559</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>ddb6ca9c44f5b0e51e5d51890393fb3c</srcmd5>
+    <version>1.3.10</version>
+    <time>1409303268</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>7eb6f8b136e30276d7a5b6844cd3eeb8</srcmd5>
+    <version>1.3.10</version>
+    <time>1416823980</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>261232</requestid>
+  </revision>
+</revisionlist>

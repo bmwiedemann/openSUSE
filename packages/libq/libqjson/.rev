@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f28dbfb76ea873953a04119ffe20e539</srcmd5>
+    <version>0.6.0</version>
+    <time>1249915679</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8df2c2b8c963e9e0d04b5f7dfcbd122a</srcmd5>
+    <version>0.6.0</version>
+    <time>1251152209</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqjson based on submit request 18585 from user flavio_castelli
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d49cb2cb2e75843b1e798c34c8f8b13d</srcmd5>
+    <version>0.6.1</version>
+    <time>1253143009</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqjson based on submit request 20353 from user Beineri
+</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e0c936438db57fbe607661acf36ce5a</srcmd5>
+    <version>0.6.2</version>
+    <time>1253560577</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqjson based on submit request 20560 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5e0c936438db57fbe607661acf36ce5a</srcmd5>
+    <version>0.6.2</version>
+    <time>1253560577</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqjson based on submit request 20560 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3d75c5f6983d9308c4a300faee961209</srcmd5>
+    <version>0.6.3</version>
+    <time>1256210812</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqjson based on submit request 22833 from user Beineri
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a77ce5d4d9678dffff6ed194fbbb0103</srcmd5>
+    <version>0.7.1</version>
+    <time>1260198068</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqjson based on submit request 25704 from user Beineri
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d30be3b420e709924d2264c874cdbfcd</srcmd5>
+    <version>0.7.1</version>
+    <time>1268924695</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>d30be3b420e709924d2264c874cdbfcd</srcmd5>
+    <version>0.7.1</version>
+    <time>1278667361</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>d30be3b420e709924d2264c874cdbfcd</srcmd5>
+    <version>0.7.1</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>d30be3b420e709924d2264c874cdbfcd</srcmd5>
+    <version>0.7.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>d30be3b420e709924d2264c874cdbfcd</srcmd5>
+    <version>0.7.1</version>
+    <time>1319182125</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>f817d147e87eabb7a188f324afa8acd6</srcmd5>
+    <version>0.7.1</version>
+    <time>1326962577</time>
+    <user>coolo</user>
+    <comment>patching license field to be in spdx.org format, for legal team to review before forward (forwarded request 99952 from dec16180)</comment>
+    <requestid>100284</requestid>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>f817d147e87eabb7a188f324afa8acd6</srcmd5>
+    <version>0.7.1</version>
+    <time>1340183624</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ae4a34a808b133b086f440891b89e773</srcmd5>
+    <version>0.8.1</version>
+    <time>1354177454</time>
+    <user>coolo</user>
+    <comment>Fix the sles build,
+install the license files (forwarded request 143203 from cgiboudeaux)</comment>
+    <requestid>143478</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>ae4a34a808b133b086f440891b89e773</srcmd5>
+    <version>0.8.1</version>
+    <time>1359109333</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>438d86fa3e8024d76bea438f9a0576ea</srcmd5>
+    <version>0.8.1</version>
+    <time>1363084287</time>
+    <user>coolo</user>
+    <comment>- Properly determine LIB_SUFFIX (forwarded request 158637 from Andreas_Schwab)</comment>
+    <requestid>158638</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>438d86fa3e8024d76bea438f9a0576ea</srcmd5>
+    <version>0.8.1</version>
+    <time>1379663057</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>438d86fa3e8024d76bea438f9a0576ea</srcmd5>
+    <version>0.8.1</version>
+    <time>1409301673</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>a3fb81d80b42900387fe1f166918889a</srcmd5>
+    <version>0.8.1</version>
+    <time>1410795633</time>
+    <user>coolo</user>
+    <comment>Added baselibs.conf, needed for libkdepimlibs4-32bit</comment>
+    <requestid>248662</requestid>
+  </revision>
+</revisionlist>

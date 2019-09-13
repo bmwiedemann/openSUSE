@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57443043d650d04b9176cd5f205a246d</srcmd5>
+    <version>0.3.3</version>
+    <time>1563914585</time>
+    <user>dimstar_suse</user>
+    <comment>Filesystem specification package.
+
+Required by the latest version of python-gcsfs</comment>
+    <requestid>717932</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0115526eed2569333ed6b6b7657b0f47</srcmd5>
+    <version>0.3.6</version>
+    <time>1564576176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719840</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bd885786a8bd4f950a23c21725f342e8</srcmd5>
+    <version>0.4.0</version>
+    <time>1564994214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * No upstream changelog</comment>
+    <requestid>720167</requestid>
+  </revision>
+</revisionlist>

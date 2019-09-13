@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0b10925071ec7d13dd6043cec1b12a50</srcmd5>
+    <version>0.2.2</version>
+    <time>1527605267</time>
+    <user>dimstar_suse</user>
+    <comment>Excel plugin for agate</comment>
+    <requestid>605897</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b19e9a803a5f44aba47336a07d1d321f</srcmd5>
+    <version>0.2.2</version>
+    <time>1551276624</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github tarball and enable tests
+- Add patches from upstream git to pass the tests:
+  * no-column.patch
+  * row-offset.patch</comment>
+    <requestid>679762</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>149ea8adc7d752a5d2899b1db79b42e2</srcmd5>
+    <version>0.2.3</version>
+    <time>1555574180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695032</requestid>
+  </revision>
+</revisionlist>

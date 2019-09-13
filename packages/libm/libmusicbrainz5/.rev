@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d05b85011903839a939ff4969a2be3d0</srcmd5>
+    <version>5.0.1</version>
+    <time>1347487440</time>
+    <user>namtrac</user>
+    <comment>New version of libmusicbrainz, which is now used by some apps</comment>
+    <requestid>133725</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>844e94dad88d137856b08de99b8bd36f</srcmd5>
+    <version>5.0.1</version>
+    <time>1350590062</time>
+    <user>coolo</user>
+    <comment>- Correct inconsistent licensing text (bnc#779931)</comment>
+    <requestid>138322</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>844e94dad88d137856b08de99b8bd36f</srcmd5>
+    <version>5.0.1</version>
+    <time>1359109309</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>844e94dad88d137856b08de99b8bd36f</srcmd5>
+    <version>5.0.1</version>
+    <time>1379663013</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>844e94dad88d137856b08de99b8bd36f</srcmd5>
+    <version>5.0.1</version>
+    <time>1409301631</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>b98b167737de572e510844dbcd4ac3e4</srcmd5>
+    <version>5.0.1</version>
+    <time>1413263338</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255451</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2a1c46d71f7b11f16e65e154c5c263d0</srcmd5>
+    <version>5.1.0</version>
+    <time>1424068577</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>285852</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b634200ec2eab53b2c2e1248fa31fc48</srcmd5>
+    <version>5.1.0</version>
+    <time>1537966405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636598</requestid>
+  </revision>
+</revisionlist>

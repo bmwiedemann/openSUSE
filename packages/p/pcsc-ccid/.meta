@@ -1,0 +1,9 @@
+<package name="pcsc-ccid" project="openSUSE:Factory">
+  <title>PCSC Driver for CCID Based Smart Card Readers and GemPC Twin Serial Reader</title>
+  <description>This package contains a generic USB CCID (Chip/Smart Card Interface
+Devices) driver.
+
+This driver is meant to be used with the PCSC-Lite daemon from the
+pcsc-lite package.</description>
+  <devel project="security:chipcard" package="pcsc-ccid"/>
+</package>

@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e5366667278e467d52bfcb3d4b04e17</srcmd5>
+    <version>1.1.0</version>
+    <time>1518426871</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for python-proliantutils</comment>
+    <requestid>574249</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e79797301fc5e05fead89347b01bbf4b</srcmd5>
+    <version>1.3.1</version>
+    <time>1531232160</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template
+
+- update to version 1.3.1 (bsc#1078607)
+  - Enable some off-by-default checks
+  - Add ListField class to resource base
+  - Update .gitreview for stable/queens
+  - Avoid tox_install.sh for constraints support
+  - Replace HTTP numeric constants with http_client constants
+  - Add PUT method to connector
+  - Restore the default semantics of refresh()
+  - Indicating the location tests directory in oslo_debug_helper
+  - Zuul: Remove project name
+  - flake8: Enable some off-by-default checks
+  - Adds EthernetInterface to the library
+  - Add int_or_none adapter function
+  - zuul: clean up job definition
+  - Update documentation related to 'refresh()'
+  - Add DELETE method to connector
+  - Add Zuul v3 jobs in tree
+  - Update UPPER_CONSTRAINTS_FILE for stable/queens
+  - Update method docstring
+  - Use the tempest plugin from openstack/ironic-tempest-plugin
+  - Refining the resource refresh
+  - Update some tests to copy the dictionaries passed in
+  - Update reno for stable/pike
+  - Restores sushy session functionality.
+  - Follow-up patch for 8fe2904a62b0f56dc3fc3fefc5a5a746911ce891
+  - Restore interface of Connector
+  - Implement Redfish Sessions
+  - Updated from global requirements</comment>
+    <requestid>621723</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4ccd9a3ae52dff8dd4b79432b14b5359</srcmd5>
+    <version>1.3.2</version>
+    <time>1536327573</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633121</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d97f6b4e1b298127eef9d301c1bc6e49</srcmd5>
+    <version>1.6.0</version>
+    <time>1537964583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>635338</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ea85755e86e392e99f15d90b3446967c</srcmd5>
+    <version>1.8.0</version>
+    <time>1552206758</time>
+    <user>coolo</user>
+    <comment>- update to version 1.8.0
+  -  Add foundation for supporting Redfish OEMs
+  -  Introduce default value for `transfer_protocol` parameter
+  -  Add support for ilo Virtual Media
+  -  Add support for the `CompositionService` resource
+  -  Add support for the `UpdateService` resource
+  -  Follow Up Zuulv3
+  -  Move to zuulv3
+  -  Introduce `dateutil`
+  -  Update the docstring of `sub_processors()`
+  -  Update to public
+  -  Add missing tests
+  -  Add Chassis&lt;-&gt;ComputerSystem/Manager linkage
+  -  Add System&lt;-&gt;Manager linkage follow up
+  -  Add System&lt;-&gt;Manager linkage
+  -  Change openstack-dev to openstack-discuss and update URL
+  -  Add `ChassisCollection` and `Chassis` classes
+  -  Cleanup JsonDataReader name
+  -  remove useless whitespces
+  -  Unify sushy models by Redfish schema bundle
+  -  Delete HTTP tokens on `Sushy` shutdown
+  -  [Trivial Fix] modify spelling errors of fulfill, for, containing
+  -  Change adapter to 'int_or_none' for processor properties
+  -  [Trivial Fix] modify spelling error of &quot;committed&quot;
+  -  Add support for loading resources from archive file
+  -  [Trivial Fix] modify spelling error of &quot;resource&quot;
+  -  Follow-up to 27c725c to move up ``cache_clear``
+  -  Requests session keyword arguments for sushy connector
+  -  Introduce ``cache_it`` and ``cache_clear``
+  -  Fix crashing `BasicAuth` context manager</comment>
+    <requestid>682176</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ba2da25a6327f57f4bee0b5b345cb8b3</srcmd5>
+    <version>1.8.1</version>
+    <time>1557263968</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.8.1
+  - Update .gitreview for stable/stein
+  - Fix wrong default JsonDataReader() argument</comment>
+    <requestid>701218</requestid>
+  </revision>
+</revisionlist>

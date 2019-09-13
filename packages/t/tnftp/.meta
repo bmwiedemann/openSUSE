@@ -1,0 +1,5 @@
+<package name="tnftp" project="openSUSE:Factory">
+  <title>Enhanced FTP Client</title>
+  <description>Previously known as lukemftp, this is the enhanced FTP client in NetBSD.</description>
+  <devel project="network" package="tnftp"/>
+</package>

@@ -1,0 +1,557 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5ac5babccaa6254a7b1a5fcdb75c60c</srcmd5>
+    <version>1.62001</version>
+    <time>1168903932</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="34">
+    <srcmd5>3c04cf40c9f26ebad738a203412ef27e</srcmd5>
+    <version>1.62001</version>
+    <time>1180900810</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>785423696b7d7c041c7c310c611a082b</srcmd5>
+    <version>1.66</version>
+    <time>1202498745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="50">
+    <srcmd5>785423696b7d7c041c7c310c611a082b</srcmd5>
+    <version>1.66</version>
+    <time>1202498745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9ec9d269b9fb9b5c554d458557f1a822</srcmd5>
+    <version>1.69</version>
+    <time>1232639544</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9ec9d269b9fb9b5c554d458557f1a822</srcmd5>
+    <version>1.69</version>
+    <time>1232639544</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>acf1c1185fb607f384e6c608734aaea1</srcmd5>
+    <version>1.70</version>
+    <time>1263483367</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-LibXML based on submit request 29448 from user anicka
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>106d6e97e05af82dcd0469bb72122186</srcmd5>
+    <version>1.70</version>
+    <time>1263817913</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-LibXML based on submit request 29847 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>abb30f9ab4a78f590aebacada8bf34b9</srcmd5>
+    <version>1.70</version>
+    <time>1268925657</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>5c0e408c556b1d908f75cf9008043adb</srcmd5>
+    <version>1.70</version>
+    <time>1270332570</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-LibXML based on submit request 36848 from user computersalat
+</comment>
+    <requestid>36848</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>5c0e408c556b1d908f75cf9008043adb</srcmd5>
+    <version>1.70</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>5c0e408c556b1d908f75cf9008043adb</srcmd5>
+    <version>1.70</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>5cf2f760306ca997796651e941f9dd28</srcmd5>
+    <version>1.70</version>
+    <time>1291584507</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54695 from user coolo
+</comment>
+    <requestid>54695</requestid>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>ab509c8d598f3d966d2d7a6339239f03</srcmd5>
+    <version>1.70</version>
+    <time>1291584513</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54695
+</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>ab509c8d598f3d966d2d7a6339239f03</srcmd5>
+    <version>1.70</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>e0aac41b0b6320d0ec88879bee4fff6d</srcmd5>
+    <version>1.71</version>
+    <time>1309521318</time>
+    <user>saschpe</user>
+    <comment>- update to 1.71
+   - turn XML_LIBXML_PARSE_DEFAULTS constant to $XML::LibXML::XML_LIBXML_PARSE_DEFAULTS
+   - Apply 0001-XML-LibXML-Error-no-need-to-AUTOLOAD-domain.patch from
+     https://rt.cpan.org/Public/Bug/Display.html?id=68575 - no need to
+     AUTOLOAD 'domain' because a method like that exists.
+    - Apply 0002-XML-LibXML-Error-avoid-AUTOLOAD.patch from
+      https://rt.cpan.org/Public/Bug/Display.html?id=68575 - get rid of
+      AUTOLOAD completely.
+    - Apply 0003-XML-LibXML-Error-make-domain-work-for-unknown-domain.patch
+      from https://rt.cpan.org/Public/Bug/Display.html?id=68575 - handle
+      unknown domains.
+    - Apply 0004-XML-LibXML-Error-add-domains-from-newer-libxml2.patch
+      from https://rt.cpan.org/Public/Bug/Display.html?id=68575 - add more
+      errors.
+    - Apply 0005-XML-LibXML-Error-avoid-malformed-UTF-8-warnings.patch
+      from https://rt.cpan.org/Public/Bug/Display.html?id=68575
+    - In replaceDataString - use 
+    http://perldoc.perl.org/functions/quotemeta.html instead of a long (and
+    incomplete) list of characters to escape.
+        -- With test.
+        -- also fix deleteDataString by making it use replaceDataString
+        for help.
+        -- Fixing https://rt.cpan.org/Ticket/Display.html?id=68564</comment>
+    <requestid>73957</requestid>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>e868640dda2a8ca5fb646869f8b99e16</srcmd5>
+    <version>1.71</version>
+    <time>1309521333</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73957
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c3915ca71b579114ad33ee6d7806e7fa</srcmd5>
+    <version>1.79</version>
+    <time>1310454265</time>
+    <user>saschpe</user>
+    <comment> - update to 1.79
+    - many rt bug fixes
+    - most of the tests rewritten to use Test::More
+ - dropped utf-16 patch (no longer needed)</comment>
+    <requestid>76060</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>14033280d2d1e00053927456766a25b5</srcmd5>
+    <version>1.84</version>
+    <time>1311592015</time>
+    <user>saschpe</user>
+    <comment>- update to 1.84
+        - fixes https://rt.cpan.org/Ticket/Display.html?id=69722 .
+    - Fixed missing declarations after statements:
+        - resolves https://rt.cpan.org/Ticket/Display.html?id=69622 again.
+    - Fix docbook source validity
+        - resolves https://rt.cpan.org/Ticket/Display.html?id=69702
+    - Moved some if blocks after the dSP; (which contains declarations) to be
+    compliant with C89/C90, which don't allow declarations in the middle of
+    a C function.
+        - resolves https://rt.cpan.org/Ticket/Display.html?id=69622
+    - Fix https://rt.cpan.org/Ticket/Display.html?id=69553 :
+        - &quot;install_sax_driver doesn't like custom INSTALLARCHLIB&quot;
+    - Fix &quot;IDs of elements is lost when importing nodes&quot;
+        - https://rt.cpan.org/Public/Bug/Display.html?id=69520
+        - With t/48importing_nodes_IDs_rt_69520.t .
+    - Convert all remaining Test.pm-based test scripts except t/14sax.t to
+    Test::More .
+    - Fix https://rt.cpan.org/Public/Bug/Display.html?id=69082 :
+        - Compilation on strawberry perl.
+        - The problem was that stderr required a dTHX; call previously.
+    - DOM Normalisation patches and a fix for #69096
+        - https://rt.cpan.org/Ticket/Display.html?id=69096
+        - &quot;findvalue from XML::LibXML 1.74 is very slow (regression)&quot;
+        - https://bitbucket.org/shlomif/perl-xml-libxml/pull-request/5/normalize-bug-fixes
+    - Fix https://rt.cpan.org/Ticket/Display.html?id=69433 :
+        - &quot;t/19die_on_invalid_utf8_rt_58848.t assumes errors will be objects:&quot;
+        - Failed on older libxml2's.
+    - Add a skip for t/60error_prev_chain.t in case $@ is true but not a ref.
+        - https://rt.cpan.org/Ticket/Display.html?id=69435
+        - http://www.cpantesters.org/cpan/report/4ac00aae-a73f-11e0-84bd-8881cd42d09c</comment>
+    <requestid>76933</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>045c5a5f67527509fbe1693785c2dded</srcmd5>
+    <version>1.87</version>
+    <time>1314621115</time>
+    <user>saschpe</user>
+    <comment>- update to 1.87
+    - Fix t/49callbacks_returning_undef.t to not read /etc/passed which may
+    not be valid XML. Instead, we're reading a local file while using 
+    URI::file (assuming it exists - else - we skip_all.)
+1.86            Thu Aug 25 11:42:55 IDT 2011
+    - Changed SvPVx_nolen() to SvPV_nolen() in LibXML.xs for better compatibility.
+        - SvPVx_nolen() appears to be undocumented API.
+        - Resolves https://rt.cpan.org/Public/Bug/Display.html?id=70476
+        - Thanks to Paul for the report.
+1.85            Wed Aug 24 17:05:19 IDT 2011
+    - Gracefully handle returned undef()s in the read callback under -w ($^W):
+        - t/49callbacks_returning_undef.t
+        - https://rt.cpan.org/Ticket/Display.html?id=70321
+    - Add a patch from Mithaldu to get XML::LibXML to compile on Win32:
+        - https://rt.cpan.org/Ticket/Display.html?id=70141
+        - I'm applying it by faith, so if it breaks, blame him. (;-).
+        - the patch adds -lllibgettextlib.dll to the Makefile.PL.</comment>
+    <requestid>80018</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>045c5a5f67527509fbe1693785c2dded</srcmd5>
+    <version>1.87</version>
+    <time>1319182322</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b727b47eea3a7213e9379ef358fec52e</srcmd5>
+    <version>1.88</version>
+    <time>1321273576</time>
+    <user>coolo</user>
+    <comment>- update to 1.88
+    - Add libxml2 2.7.8 as tested and working fine for the Makefile.PL.
+    (Thanks to H. Merijn Brand.).
+    - Apply a patch to perl-libxml-sax.c to use xmlChar * instead of char *.
+    (Thanks to H. Merijn Brand.).
+    - Correct the README so it won't read XML-LibXML-Common.
+        - see http://code.activestate.com/lists/perl-xml/8907/
+    - Add a patch to implement the no_defdtd option in recent libxml2's:
+        - https://rt.cpan.org/Ticket/Display.html?id=70878
+        - Thanks to zzgrim@gmail.com .
+    - Add scripts/bump-version-number.pl to modify the version number globally.
+        - Currently the version numbers of the modules under lib/ where 1.73.</comment>
+    <requestid>91027</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>b2702618b9aa412d57332f9a0f042531</srcmd5>
+    <version>1.88</version>
+    <time>1323193785</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0fc9b84492415439375fe267635a187e</srcmd5>
+    <version>1.90</version>
+    <time>1329215168</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>103764</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>96a72ca240a9fae21f13d9ab4fb866c0</srcmd5>
+    <version>1.92</version>
+    <time>1330434883</time>
+    <user>coolo</user>
+    <comment>- update to 1.92
+    - Fix for test failure on perls &lt; 5.10.
+        - Fixes https://rt.cpan.org/Public/Bug/Display.html?id=75195
+        - Thanks to Paul for the report, and for a patch that was not
+        accepted.
+1.91            Tue Feb 21 13:57:54 IST 2012
+    - Overload hash dereferencing on XML::LibXML::Elements, to provide
+    access to the element's attributes.
+        - See XML::LibXML::AttributeHash for details.
+        - Thanks to Toby Inkster.
+    - Pull some commits from Toby Inkster to add more convenient methods
+    to XML::LibXML::NodeList such as sort, map, grep, etc.
+        - https://bitbucket.org/shlomif/perl-xml-libxml/pull-request/11/xml-libxml-nodelist-improvements
+        - Thanks, Toby!
+    - Printed some warnings regardless if DEBUG is on.
+        - Thanks to http://search.cpan.org/~mstrout/ for the suggestion.</comment>
+    <requestid>107095</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>74e021cab47a4b8ec7df1cb0c6ece582</srcmd5>
+    <version>1.95</version>
+    <time>1331039176</time>
+    <user>coolo</user>
+    <comment>- update to 1.95
+    - Got rid of a broken test (at least with recent libxml2s) in
+    t/03doc.t :
+        - https://rt.cpan.org/Ticket/Display.html?id=75403
+        - The problem was that the test tested for an undefined XML
+        namespace, a behaviour which was changed in a recent libxml2
+        release.
+   1.94
+    - Fix XML::LibXML::Element tests for ineqaulity with == and eq.
+        - Fixes https://rt.cpan.org/Ticket/Display.html?id=75505 .
+        - Thanks to Mark Overmeer for the report and for a preliminary patch
+        to t/71overload.t .
+    1.93            Mon Feb 27 11:15:50 IST 2012
+    - Fix XML::LibXML::Element comparision with == and eq.
+        - Fixes https://rt.cpan.org/Ticket/Display.html?id=75257 ,
+        https://rt.cpan.org/Ticket/Display.html?id=75293 ,
+        https://rt.cpan.org/Ticket/Display.html?id=75259 .
+        - Thanks to Toby Inkster for a preliminary patch (that was modified by
+        me) and to the various people who reported the problem.</comment>
+    <requestid>108136</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e9aaa9e144b11c9d8389f0369f16f32e</srcmd5>
+    <version>1.95</version>
+    <time>1334692846</time>
+    <user>coolo</user>
+    <comment>- disable 12html.t as it causes OOM on ppc64 (forwarded request 113919 from k0da)</comment>
+    <requestid>114001</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>188987e3e42cecf567ec782d506969e2</srcmd5>
+    <version>1.95</version>
+    <time>1338284652</time>
+    <user>coolo</user>
+    <comment>- STRLEN has 64 bits here and int has 32, so the (int*) cast in
+XML::LibXML::Document::toStringHTML() makes htmlDocDumpMemory() store
+the 32-bit length of the result into a 64-bit variable.  Depending on
+the endianness, it either works OK (LE) or corrupts the variable (BE)
+Just use an 'int' instead, and cast it to an STRLEN later in the
+newSVpvn() call. (forwarded request 122259 from k0da)</comment>
+    <requestid>122630</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>188987e3e42cecf567ec782d506969e2</srcmd5>
+    <version>1.95</version>
+    <time>1340183953</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>188987e3e42cecf567ec782d506969e2</srcmd5>
+    <version>1.95</version>
+    <time>1359109850</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>97a942af5978f15660aed7d06f5935cb</srcmd5>
+    <version>2.0019</version>
+    <time>1375204256</time>
+    <user>coolo</user>
+    <comment>- updated to 2.0019
+     - Correct typos reported in RT #86599.
+         - https://rt.cpan.org/Ticket/Display.html?id=86599
+         - Thanks to dsteinbrunner.
+ 
+     - Revert previous change of minimal version of libxml2.
+         - This change proved to be unpopular and didn't prevent
+         the CPAN test failures.
+         - By SHLOMIF
+ 
+     - Made the minimal version of libxml2 2.9.0 as previous versions were
+     too buggy due to spuriourous CPAN test failures.
+         - Please upgrade.
+         - By SHLOMIF
+ 
+     - Don't enable XML_PARSE_HUGE by default.
+         - Fix the previous version due to a mercurial SNAFU.
+ 
+     - Don't enable XML_PARSE_HUGE by default.
+         - https://bitbucket.org/shlomif/perl-xml-libxml/pull-request/19
+         - Thanks to Grant McLean ( https://metacpan.org/author/GRANTM ) for
+         the bug report and patch.
+ 
+     - Got 40reader_mem_error.t to not fetch the external DTDs.
+         - https://rt.cpan.org/Public/Bug/Display.html?id=81703
+         - Thanks to Alexandr Ciornii (CHORNY) for the report and Slaven
+         Rezic (SREZIC) for the analysis and a proposed fix.
+ 
+     - Fix a memory error (double-free) in XML::LibXML::Reader if we reached
+     EOF and</comment>
+    <requestid>184912</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>97a942af5978f15660aed7d06f5935cb</srcmd5>
+    <version>2.0019</version>
+    <time>1379663919</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7d45fc358859cd0214c1e33d8db7d134</srcmd5>
+    <version>2.0116</version>
+    <time>1406521865</time>
+    <user>coolo</user>
+    <comment>- updated to 2.0116
+     - t/cpan-changes.t : minimum version of Test::CPAN::Changes.
+         - This is to avoid test failures such as:
+             - http://www.cpantesters.org/cpan/report/69ee1a2a-6c09-1014-be8f-3786912f2992
+ 
+ 2.0115  2014-04-03
+     - Fix double free when calling $node-&gt;addSibling with text nodes.
+           - https://rt.cpan.org/Ticket/Display.html?id=94149
+           - Thanks to Jeff Trout for the report.
+ 
+ 2.0114  2014-04-03
+     - Fix memory leaks and segfaults related to removal and insertion of
+       DTD nodes.
+         - https://rt.cpan.org/Ticket/Display.html?id=80521
+     - Fix memory leak in $node-&gt;removeChildNodes
+
+- updated to 2.0113
+     - Fix test failures with older libxml2 versions.
+         - https://rt.cpan.org/Ticket/Display.html?id=93852
+         - Thanks to Nick Wellnhofer for the patch.
+         - Thanks to the CPAN Testers for reporting this issue.
+ 
+ 2.0112          Thu 13 Mar 20:16:52 IST 2014
+     - Fix segfaults when accessing attributes of DTD nodes
+         - https://rt.cpan.org/Ticket/Display.html?id=71076
+         - Thanks to Ralph Merridew for the report.
+     - Make $schema-&gt;validate work with elements. This uses
+       xmlSchemaValidateOneElement under the hood.
+         - https://rt.cpan.org/Ticket/Display.html?id=93496
+         - Thanks to Jeremy Marshall for the report.</comment>
+    <requestid>242338</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>7d45fc358859cd0214c1e33d8db7d134</srcmd5>
+    <version>2.0116</version>
+    <time>1409302570</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>eb65ca44659b7daf776921f3bb5aa595</srcmd5>
+    <version>2.0119</version>
+    <time>1430132659</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>303821</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>657cefc52cc2ab8b5a6a458e32f81dba</srcmd5>
+    <version>2.0120</version>
+    <time>1430780057</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305002</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2cec2e292facc644054e014f0b484365</srcmd5>
+    <version>2.0121</version>
+    <time>1430903871</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305416</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7947c368b82a34c27b5fe075fc3e3fa6</srcmd5>
+    <version>2.0122</version>
+    <time>1442130153</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328696</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3c6cbc103805a7fbf66da2ce3c449843</srcmd5>
+    <version>2.0123</version>
+    <time>1449995954</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>348065</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>26e67064a925f4032ed1a9481c53d37f</srcmd5>
+    <version>2.0124</version>
+    <time>1457695756</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368025</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a4882ce6b1a090b771c5bf3079ff68cd</srcmd5>
+    <version>2.0125</version>
+    <time>1464964645</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399313</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>28854bae5bfb7999a58900008767d011</srcmd5>
+    <version>2.0126</version>
+    <time>1467896893</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404959</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>98912e23b5c1f2851ea51d2ca38ead1c</srcmd5>
+    <version>2.0128</version>
+    <time>1470217142</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416435</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ce5e25790186716ef47f8a04a924a5de</srcmd5>
+    <version>2.0129</version>
+    <time>1489866454</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479454</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>658d63990da52b4ed16c2e0d765d1d01</srcmd5>
+    <version>2.0129</version>
+    <time>1506678598</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528827</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>986ea7b5126f306b109e1d585d5f449d</srcmd5>
+    <version>2.0131</version>
+    <time>1509193157</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536757</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a5cac11c4d292d04acadf7a6c1924fcf</srcmd5>
+    <version>2.0132</version>
+    <time>1509530804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537510</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>4e2cce85326baa5f7d4621ce526fadc1</srcmd5>
+    <version>2.0132</version>
+    <time>1532774271</time>
+    <user>dimstar_suse</user>
+    <comment>- add parser to ParserDetails.ini</comment>
+    <requestid>624069</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>97bbefee275f2329d89a01f5ea0bc641</srcmd5>
+    <version>2.0133</version>
+    <time>1549629943</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671009</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e90b6111fef17f71431c22ac86ecfa1c</srcmd5>
+    <version>2.0134</version>
+    <time>1550149941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673510</requestid>
+  </revision>
+</revisionlist>

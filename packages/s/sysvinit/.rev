@@ -1,0 +1,1380 @@
+<revisionlist>
+  <revision rev="1" vrev="49">
+    <srcmd5>33fd43681c39e74beb5e81add1998fe8</srcmd5>
+    <version>2.86</version>
+    <time>1166115960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="55">
+    <srcmd5>f41bf3c71208014f3b66bdd4d2cab182</srcmd5>
+    <version>2.86</version>
+    <time>1171559183</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="61">
+    <srcmd5>d712b207360c480a2e128d9e140edd52</srcmd5>
+    <version>2.86</version>
+    <time>1177015408</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="67">
+    <srcmd5>8b28ae23c0e12638d3755aaafb1c667a</srcmd5>
+    <version>2.86</version>
+    <time>1178890780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="74">
+    <srcmd5>29036fe95e6b6605603ad7f991880d6c</srcmd5>
+    <version>2.86</version>
+    <time>1181054438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="76">
+    <srcmd5>ec67b209951ce742389ef46b6e3c01d4</srcmd5>
+    <version>2.86</version>
+    <time>1181146706</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="81">
+    <srcmd5>ef67f8aa25db6063c5c18adf116ee330</srcmd5>
+    <version>2.86</version>
+    <time>1181666399</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="83">
+    <srcmd5>4eddc1f55d221bd3f1f54000aecfcdda</srcmd5>
+    <version>2.86</version>
+    <time>1181830645</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="84">
+    <srcmd5>28e0b468f4e2338caa72c57389278eba</srcmd5>
+    <version>2.86</version>
+    <time>1182179955</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="85">
+    <srcmd5>36002c31268192e106827f12d3176b05</srcmd5>
+    <version>2.86</version>
+    <time>1182360496</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="105">
+    <srcmd5>0937ab8e51ebcbd6f8c96cc941e94d08</srcmd5>
+    <version>2.86</version>
+    <time>1193848935</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="106">
+    <srcmd5>9ca6a8ab5ae0f031beec9e1a98eaa0fe</srcmd5>
+    <version>2.86</version>
+    <time>1193864068</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="112">
+    <srcmd5>6a3e25fde45c65dc495e06040b97db72</srcmd5>
+    <version>2.86</version>
+    <time>1196435635</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="118">
+    <srcmd5>a9257b1f795c4e20c0749272498756fa</srcmd5>
+    <version>2.86</version>
+    <time>1199931334</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="119">
+    <srcmd5>01573438e24eabf9f67556bee3b8dd4d</srcmd5>
+    <version>2.86</version>
+    <time>1199975340</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="132">
+    <srcmd5>f9ccd8eaf459aa86e605447057e2b875</srcmd5>
+    <version>2.86</version>
+    <time>1205431610</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="146">
+    <srcmd5>4fc300cf6db5c8bbfdd8f43edacd3c55</srcmd5>
+    <version>2.86</version>
+    <time>1211425203</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="150">
+    <srcmd5>89eb7397e2c548409c84a1b3ce6e5416</srcmd5>
+    <version>2.86</version>
+    <time>1214188489</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="154">
+    <srcmd5>9951ab86c093deb0ccf0797d5d2182aa</srcmd5>
+    <version>2.86</version>
+    <time>1216413468</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="156">
+    <srcmd5>46f6d480aae14580b32582a73cca6189</srcmd5>
+    <version>2.86</version>
+    <time>1216955933</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="163">
+    <srcmd5>5e9449ce516ec5669e3f42ce3370115c</srcmd5>
+    <version>2.86</version>
+    <time>1217980704</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="167">
+    <srcmd5>5167b4c0f3cc539ebec65691cbc5842a</srcmd5>
+    <version>2.86</version>
+    <time>1218848229</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="173">
+    <srcmd5>dfc3f56e1b66fb613dd01be5681bfa25</srcmd5>
+    <version>2.86</version>
+    <time>1219710227</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="176">
+    <srcmd5>11d27c319f12859222ed7fbb4f7318d8</srcmd5>
+    <version>2.86</version>
+    <time>1220640098</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="182">
+    <srcmd5>09c5b7f0ce728cccd80bccd699e21013</srcmd5>
+    <version>2.86</version>
+    <time>1221474296</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="183">
+    <srcmd5>aa444f1f9f0c5f5741d5847e93cbaf27</srcmd5>
+    <version>2.86</version>
+    <time>1222270680</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="184">
+    <srcmd5>f16b2e79404e387a6c2176b703bd3e47</srcmd5>
+    <version>2.86</version>
+    <time>1222877028</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="185">
+    <srcmd5>18616268f712b9fc3c9a4be4be972eda</srcmd5>
+    <version>2.86</version>
+    <time>1223306224</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="186">
+    <srcmd5>797043bd745c2106c68718e46e0489bb</srcmd5>
+    <version>2.86</version>
+    <time>1227194835</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="187">
+    <srcmd5>a9131042c621cb851c3c24338b32c669</srcmd5>
+    <version>2.86</version>
+    <time>1228488632</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="188">
+    <srcmd5>c6bd6d70018241567751effa55be47d2</srcmd5>
+    <version>2.86</version>
+    <time>1228571265</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="189">
+    <srcmd5>d6f8e62ca172d82f43006d22c39b826a</srcmd5>
+    <version>2.86</version>
+    <time>1229350215</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="190">
+    <srcmd5>4ed07bbbaba07c0e3023deb47486f0c3</srcmd5>
+    <version>2.86</version>
+    <time>1233187709</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="193">
+    <srcmd5>f20c0ee87976d978213847d6ba30f06b</srcmd5>
+    <version>2.86</version>
+    <time>1234172875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="194">
+    <srcmd5>e2f2c31bcf533bad2f2cf9126b8f5874</srcmd5>
+    <version>2.86</version>
+    <time>1234476016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="196">
+    <srcmd5>2086ac87fddba3d25ee6f48224ec179a</srcmd5>
+    <version>2.86</version>
+    <time>1235164716</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="197">
+    <srcmd5>c6ec9e2c0f3e6432ce5508efd35ab634</srcmd5>
+    <version>2.86</version>
+    <time>1236554997</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="198">
+    <srcmd5>790c45bdff74a298f1d5153acc934d22</srcmd5>
+    <version>2.86</version>
+    <time>1236638167</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="199">
+    <srcmd5>f6135e1ae1db0143596e681b0be0c3a9</srcmd5>
+    <version>2.86</version>
+    <time>1236803993</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="200">
+    <srcmd5>e9121913a81d2cca6b8e48845d59ca2d</srcmd5>
+    <version>2.86</version>
+    <time>1236953522</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="201">
+    <srcmd5>a2550d59dc2c8e466e93b387500d4173</srcmd5>
+    <version>2.86</version>
+    <time>1237328753</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="202">
+    <srcmd5>8151ac7763e19ec5ce0f2c992b284ce6</srcmd5>
+    <version>2.86</version>
+    <time>1238111008</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="203">
+    <srcmd5>9050bdbb3f12976c4b795328cd1a5e97</srcmd5>
+    <version>2.86</version>
+    <time>1238602836</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="204">
+    <srcmd5>c93fad5ce1c7945ec6e3d672de2d7163</srcmd5>
+    <version>2.86</version>
+    <time>1240533178</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="205">
+    <srcmd5>c3ec6952080a4c42813c246a23eab510</srcmd5>
+    <version>2.86</version>
+    <time>1240962297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="206">
+    <srcmd5>0989d206e38999ef0ec1a0679b3ee837</srcmd5>
+    <version>2.86</version>
+    <time>1241134387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="207">
+    <srcmd5>b2729cdbff302f070a285e7998f31a8a</srcmd5>
+    <version>2.86</version>
+    <time>1241454927</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="208">
+    <srcmd5>b48e961d1b627a4caa629f8701aebd86</srcmd5>
+    <version>2.86</version>
+    <time>1241702591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="209">
+    <srcmd5>d04b0b9c95b59a1265f5447cf1bba6d6</srcmd5>
+    <version>2.86</version>
+    <time>1242425138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="210">
+    <srcmd5>dada8dc5be24c179eb8bc8eab284f76c</srcmd5>
+    <version>2.86</version>
+    <time>1243475419</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="211">
+    <srcmd5>e5ce13f6b0fc2cc33625f08d5cc3d597</srcmd5>
+    <version>2.86</version>
+    <time>1247140454</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="212">
+    <srcmd5>bb217e01bb3821212c5fb12bff98242c</srcmd5>
+    <version>2.86</version>
+    <time>1248820713</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="213">
+    <srcmd5>9a203de3fbf49c25b39e7eb80c6128df</srcmd5>
+    <version>2.86</version>
+    <time>1250869345</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 18360 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="54" vrev="214">
+    <srcmd5>768d6542c2972ec8ba4c0677c87a5344</srcmd5>
+    <version>2.86</version>
+    <time>1254529759</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 21292 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="55" vrev="216">
+    <srcmd5>768d6542c2972ec8ba4c0677c87a5344</srcmd5>
+    <version>2.86</version>
+    <time>1254529759</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 21292 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="56" vrev="217">
+    <srcmd5>229aaa308c74861f5b7daff8d707a4a4</srcmd5>
+    <version>2.86</version>
+    <time>1258378868</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 24461 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="57" vrev="218">
+    <srcmd5>10f30661a0c41794859d6bff423e8ad8</srcmd5>
+    <version>2.86</version>
+    <time>1260197599</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 25583 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="58" vrev="219">
+    <srcmd5>74dabc183f2ceb09f95df0e679b01977</srcmd5>
+    <version>2.86</version>
+    <time>1260270968</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 25784 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="59" vrev="220">
+    <srcmd5>4f54b58819ed0eb86c6d6fdb45db6dde</srcmd5>
+    <version>2.86</version>
+    <time>1261436958</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 27347 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="60" vrev="221">
+    <srcmd5>6b13034defa8fb42a36b51e31d19feb8</srcmd5>
+    <version>2.86</version>
+    <time>1264780363</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 30828 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="61" vrev="222">
+    <srcmd5>21b59d45f58f06148660afeb865160ce</srcmd5>
+    <version>2.86</version>
+    <time>1265750940</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 31791 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="62" vrev="223">
+    <srcmd5>45b1e145da3b7b0ee7abad5c1f034937</srcmd5>
+    <version>2.86</version>
+    <time>1266253878</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 32611 from user coolo
+</comment>
+  </revision>
+  <revision rev="63" vrev="224">
+    <srcmd5>cc06ef900299e09180f34669fbbde988</srcmd5>
+    <version>2.86</version>
+    <time>1267778799</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 33857 from user coolo
+</comment>
+    <requestid>33857</requestid>
+  </revision>
+  <revision rev="64" vrev="225">
+    <srcmd5>d2dc967c6c062c88508554b2726bf548</srcmd5>
+    <version>2.86</version>
+    <time>1268926279</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="65" vrev="226">
+    <srcmd5>f007593e8d9817bde95c77ea40f16828</srcmd5>
+    <version>2.86</version>
+    <time>1271252278</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 37901 from user WernerFink
+</comment>
+    <requestid>37901</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>aef805c907fc18162c1a09474351be45</srcmd5>
+    <version>2.88</version>
+    <time>1272213739</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 38331 from user WernerFink
+</comment>
+    <requestid>38331</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>357bf6ba477a994c102bc7f151972b69</srcmd5>
+    <version>2.88</version>
+    <time>1272486463</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 38937 from user WernerFink
+</comment>
+    <requestid>38937</requestid>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>f312f0409c4db2b832571ef56a63069e</srcmd5>
+    <version>2.88</version>
+    <time>1272583108</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 39094 from user WernerFink
+</comment>
+    <requestid>39094</requestid>
+  </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>7ed4d9d755af3252bee7f9dd16b4d3c6</srcmd5>
+    <version>2.88</version>
+    <time>1273876327</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 40057 from user coolo
+</comment>
+    <requestid>40057</requestid>
+  </revision>
+  <revision rev="70" vrev="5">
+    <srcmd5>e6999dfd683780d82e0bca0fd0bd2c67</srcmd5>
+    <version>2.88</version>
+    <time>1274137427</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 40113 from user WernerFink
+</comment>
+    <requestid>40113</requestid>
+  </revision>
+  <revision rev="71" vrev="6">
+    <srcmd5>915d6a8c949206f1d72bb76f87d3878c</srcmd5>
+    <version>2.88</version>
+    <time>1274654922</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 40485 from user WernerFink
+</comment>
+    <requestid>40485</requestid>
+  </revision>
+  <revision rev="72" vrev="7">
+    <srcmd5>87f3efa5128f5c2672a41bac875eaf75</srcmd5>
+    <version>2.88</version>
+    <time>1275061528</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 40804 from user WernerFink
+</comment>
+    <requestid>40804</requestid>
+  </revision>
+  <revision rev="73" vrev="8">
+    <srcmd5>cc15a597167c114af3b1329e91e8a059</srcmd5>
+    <version>2.88</version>
+    <time>1275436859</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 40952 from user coolo
+</comment>
+    <requestid>40952</requestid>
+  </revision>
+  <revision rev="74" vrev="9">
+    <srcmd5>d22f4d29ea0bf0f07db7b8a9845c5d21</srcmd5>
+    <version>2.88</version>
+    <time>1275495274</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 41007 from user coolo
+</comment>
+    <requestid>41007</requestid>
+  </revision>
+  <revision rev="75" vrev="10">
+    <srcmd5>d22f4d29ea0bf0f07db7b8a9845c5d21</srcmd5>
+    <version>2.88</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="76" vrev="11">
+    <srcmd5>d22f4d29ea0bf0f07db7b8a9845c5d21</srcmd5>
+    <version>2.88</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="77" vrev="12">
+    <srcmd5>ee06b3ef547785b2801ff7d0a0d169c5</srcmd5>
+    <version>2.88</version>
+    <time>1279542697</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 43070 from user WernerFink
+</comment>
+    <requestid>43070</requestid>
+  </revision>
+  <revision rev="78" vrev="13">
+    <srcmd5>cef7b432202efc8045a70dcb6f346e05</srcmd5>
+    <version>2.88</version>
+    <time>1279650770</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 43483 from user WernerFink
+</comment>
+    <requestid>43483</requestid>
+  </revision>
+  <revision rev="79" vrev="14">
+    <srcmd5>51d694926a6edc002f0e0b43bbae18f0</srcmd5>
+    <version>2.88</version>
+    <time>1280712578</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 44203 from user WernerFink
+</comment>
+    <requestid>44203</requestid>
+  </revision>
+  <revision rev="80" vrev="15">
+    <srcmd5>2f59eb6e00cb8ba1107c93b6d109a5c3</srcmd5>
+    <version>2.88</version>
+    <time>1282666302</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 46106 from user WernerFink
+</comment>
+    <requestid>46106</requestid>
+  </revision>
+  <revision rev="81" vrev="16">
+    <srcmd5>6a9222d2dee468fde67562d24c34aefd</srcmd5>
+    <version>2.88</version>
+    <time>1285541400</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 49061 from user WernerFink
+</comment>
+    <requestid>49061</requestid>
+  </revision>
+  <revision rev="82" vrev="17">
+    <srcmd5>6b0a20abddd909ba96d36d140132dc9b</srcmd5>
+    <version>2.88</version>
+    <time>1286174193</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 49626 from user WernerFink
+</comment>
+    <requestid>49626</requestid>
+  </revision>
+  <revision rev="83" vrev="18">
+    <srcmd5>4175c9bed9eeb87893113c9436b2860c</srcmd5>
+    <version>2.88</version>
+    <time>1286484445</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 49732 from user WernerFink
+</comment>
+    <requestid>49732</requestid>
+  </revision>
+  <revision rev="84" vrev="19">
+    <srcmd5>d0832f63494610e986d360bab2656d01</srcmd5>
+    <version>2.88</version>
+    <time>1287009959</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysvinit based on submit request 50409 from user WernerFink
+</comment>
+    <requestid>50409</requestid>
+  </revision>
+  <revision rev="85" vrev="20">
+    <srcmd5>81fda99dd874d0fd5ff092711e2c5d44</srcmd5>
+    <version>2.88</version>
+    <time>1287678044</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51191 from user WernerFink
+</comment>
+    <requestid>51191</requestid>
+  </revision>
+  <revision rev="86" vrev="21">
+    <srcmd5>fb033cd5ef50e2e28bd5eac9e85a17d1</srcmd5>
+    <version>2.88</version>
+    <time>1287678056</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51191
+</comment>
+  </revision>
+  <revision rev="87" vrev="22">
+    <srcmd5>4d5054b2fbba0a9cfc6d78858003cb7a</srcmd5>
+    <version>2.88</version>
+    <time>1288265073</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51454 from user WernerFink
+</comment>
+    <requestid>51454</requestid>
+  </revision>
+  <revision rev="88" vrev="23">
+    <srcmd5>194e40166fd3fa85f340423343e5341d</srcmd5>
+    <version>2.88</version>
+    <time>1288265081</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51454
+</comment>
+  </revision>
+  <revision rev="89" vrev="24">
+    <srcmd5>d4fd4be38099e359fe97d2d7814beae4</srcmd5>
+    <version>2.88</version>
+    <time>1288699916</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51650 from user WernerFink
+</comment>
+    <requestid>51650</requestid>
+  </revision>
+  <revision rev="90" vrev="25">
+    <srcmd5>8078521e54080cb0131d0f5dcb88bec0</srcmd5>
+    <version>2.88</version>
+    <time>1288699926</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51650
+</comment>
+  </revision>
+  <revision rev="91" vrev="26">
+    <srcmd5>a08430bdef86d7f1134d9664368572f0</srcmd5>
+    <version>2.88</version>
+    <time>1289410613</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52607 from user WernerFink
+</comment>
+    <requestid>52607</requestid>
+  </revision>
+  <revision rev="92" vrev="27">
+    <srcmd5>7c41a8787009cc06b83a3a53ac4e2cc5</srcmd5>
+    <version>2.88</version>
+    <time>1289410619</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52607
+</comment>
+  </revision>
+  <revision rev="93" vrev="28">
+    <srcmd5>61d09631a23d0a2d2a437fe97271b36f</srcmd5>
+    <version>2.88</version>
+    <time>1295882644</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 58965 from user WernerFink
+</comment>
+    <requestid>58965</requestid>
+  </revision>
+  <revision rev="94" vrev="29">
+    <srcmd5>97bf7509edf549ad50d82e22aefa9cf3</srcmd5>
+    <version>2.88</version>
+    <time>1295882663</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 58965
+</comment>
+  </revision>
+  <revision rev="95" vrev="30">
+    <srcmd5>9aa9e0710a7ad917d608f71046b4eb6f</srcmd5>
+    <version>2.88</version>
+    <time>1296607173</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59259 from user WernerFink
+</comment>
+    <requestid>59259</requestid>
+  </revision>
+  <revision rev="96" vrev="31">
+    <srcmd5>c3a0ef7a5af60b121677c33ae70c2ee1</srcmd5>
+    <version>2.88</version>
+    <time>1296607182</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59259
+</comment>
+  </revision>
+  <revision rev="97" vrev="32">
+    <srcmd5>66e61d38f4a2131be883bbf5176f9111</srcmd5>
+    <version>2.88</version>
+    <time>1296839634</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60071 from user WernerFink
+</comment>
+    <requestid>60071</requestid>
+  </revision>
+  <revision rev="98" vrev="33">
+    <srcmd5>e60981346e437ef7cc5333bc4ff43cb3</srcmd5>
+    <version>2.88</version>
+    <time>1296839642</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 60071
+</comment>
+  </revision>
+  <revision rev="99" vrev="34">
+    <srcmd5>162eb01427561023026e9a13d56f8584</srcmd5>
+    <version>2.88</version>
+    <time>1297385663</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60504 from user WernerFink
+</comment>
+    <requestid>60504</requestid>
+  </revision>
+  <revision rev="100" vrev="35">
+    <srcmd5>9c32566bc1246ee158e359f92590cc9e</srcmd5>
+    <version>2.88</version>
+    <time>1297385670</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60504
+</comment>
+  </revision>
+  <revision rev="101" vrev="38">
+    <srcmd5>9c32566bc1246ee158e359f92590cc9e</srcmd5>
+    <version>2.88</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="102" vrev="39">
+    <srcmd5>8da223b8bbc7452fce31b37258cdf618</srcmd5>
+    <version>2.88</version>
+    <time>1298029647</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61449 from user WernerFink
+</comment>
+    <requestid>61449</requestid>
+  </revision>
+  <revision rev="103" vrev="40">
+    <srcmd5>eadb74164c3f9285de56d1c54cc228d4</srcmd5>
+    <version>2.88</version>
+    <time>1298029656</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61449
+</comment>
+  </revision>
+  <revision rev="104" vrev="41">
+    <srcmd5>fd045a89c35687bc4f7883413b9e0eca</srcmd5>
+    <version>2.88</version>
+    <time>1300095830</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63910 from user WernerFink
+</comment>
+    <requestid>63910</requestid>
+  </revision>
+  <revision rev="105" vrev="42">
+    <srcmd5>a9a5d429d5c02747810959cf1c2d5c1d</srcmd5>
+    <version>2.88</version>
+    <time>1300095840</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63910
+</comment>
+  </revision>
+  <revision rev="106" vrev="40">
+    <srcmd5>29476152a40d3e159ab9cd6172226278</srcmd5>
+    <version>2.88+</version>
+    <time>1300268605</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64194 from user WernerFink
+</comment>
+    <requestid>64194</requestid>
+  </revision>
+  <revision rev="107" vrev="41">
+    <srcmd5>79894bfa91e92dea77816cc14e7e3f82</srcmd5>
+    <version>2.88+</version>
+    <time>1300268615</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64194
+</comment>
+  </revision>
+  <revision rev="108" vrev="42">
+    <srcmd5>58a4c17c4ac582be3416d52418c7cc44</srcmd5>
+    <version>2.88+</version>
+    <time>1301300853</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65242 from user licensedigger
+</comment>
+    <requestid>65242</requestid>
+  </revision>
+  <revision rev="109" vrev="43">
+    <srcmd5>451ea9fa8f5a6c4651794f68b336cc07</srcmd5>
+    <version>2.88+</version>
+    <time>1301300860</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65242
+</comment>
+  </revision>
+  <revision rev="110" vrev="44">
+    <srcmd5>cad958fb23965fa02adb26877b11badd</srcmd5>
+    <version>2.88+</version>
+    <time>1301669461</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65761 from user coolo
+</comment>
+    <requestid>65761</requestid>
+  </revision>
+  <revision rev="111" vrev="45">
+    <srcmd5>95ad3c1da02dfd5d9ec91e2332627863</srcmd5>
+    <version>2.88+</version>
+    <time>1301669470</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65761
+</comment>
+  </revision>
+  <revision rev="112" vrev="46">
+    <srcmd5>2c3c03bc0102b4fa885556ff6fb594f1</srcmd5>
+    <version>2.88+</version>
+    <time>1302892548</time>
+    <user>darix</user>
+    <comment>Accepted submit request 67544 from user coolo
+</comment>
+    <requestid>67544</requestid>
+  </revision>
+  <revision rev="113" vrev="47">
+    <srcmd5>5c6cb4b350a1689aa3f601b1d735ad13</srcmd5>
+    <version>2.88+</version>
+    <time>1302892560</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67544
+</comment>
+  </revision>
+  <revision rev="114" vrev="48">
+    <srcmd5>00f65481c3a26a1a4fada158826d100a</srcmd5>
+    <version>2.88+</version>
+    <time>1305816002</time>
+    <user>saschpe</user>
+    <comment>-  Add latest change for sulogin multiple console devices support
+------------------------------------------------------------------
+- Aoid possible trouble due raw pts/ptmx terminal line in both
+  blogd and startpar
+- Block SIGTTOU during tcsetattr(3) library call in both blogd
+  and startpar
+- Replace select(2) with pselect(2) in blogd and ensure that
+  the timeout structure will be reseted after a timeout
+------------------------------------------------------------------
+- Correct shutdown messages of startpar send via blogd
+------------------------------------------------------------------
+- Avoid possible races which can be happen if blogd sees a signal
+  and will exit then (related to bnc#642289)
+------------------------------------------------------------------
+- Let sulogin respect device on the command line as well as the</comment>
+    <requestid>70685</requestid>
+  </revision>
+  <revision rev="115" vrev="49">
+    <srcmd5>6df6ebd799b6eb17afc3b1999c536cc6</srcmd5>
+    <version>2.88+</version>
+    <time>1305816035</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70685
+</comment>
+  </revision>
+  <revision rev="116" vrev="50">
+    <srcmd5>baece9a9fa950dfe7d5af7daaa93b8f7</srcmd5>
+    <version>2.88+</version>
+    <time>1307351151</time>
+    <user>saschpe</user>
+    <comment>- use /run for utmp as that's already mounted by the initrd (forwarded request 72431 from lnussel)</comment>
+    <requestid>72446</requestid>
+  </revision>
+  <revision rev="117" vrev="51">
+    <srcmd5>b87ba793a8c44f898139302c2c089bab</srcmd5>
+    <version>2.88+</version>
+    <time>1307351161</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72446
+</comment>
+  </revision>
+  <revision rev="118" vrev="52">
+    <srcmd5>1c0a7e7476ec72da23b35699354651d5</srcmd5>
+    <version>2.88+</version>
+    <time>1309349753</time>
+    <user>saschpe</user>
+    <comment>Fix build without static libcrypt.a (forwarded request 74732 from a_jaeger)</comment>
+    <requestid>74820</requestid>
+  </revision>
+  <revision rev="119" vrev="53">
+    <srcmd5>6755dd1a39314fc6a758f65ce8f6bc39</srcmd5>
+    <version>2.88+</version>
+    <time>1309349783</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74820
+</comment>
+  </revision>
+  <revision rev="120" vrev="54">
+    <srcmd5>cdebe3ee5e5881773c845cebfa58a288</srcmd5>
+    <version>2.88+</version>
+    <time>1311685109</time>
+    <user>saschpe</user>
+    <comment>- Sulogin: enforce reconnection of stdin/stdout/stderr if a device
+  was specified.
+- Sulogin: if zero is read at reading the passwd guess it's done.
+
+- Add latest change for sulogin multiple console devices support
+  serial system console (bnc#672450)</comment>
+    <requestid>77067</requestid>
+  </revision>
+  <revision rev="121" vrev="55">
+    <srcmd5>a1e7b331ee8403447c9a8078ca038d5b</srcmd5>
+    <version>2.88+</version>
+    <time>1311685137</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77067
+</comment>
+  </revision>
+  <revision rev="122" vrev="56">
+    <srcmd5>44a69cfefbd30cefb1ac452ec70210fd</srcmd5>
+    <version>2.88+</version>
+    <time>1311784202</time>
+    <user>saschpe</user>
+    <comment>- Add workaround for blowfish signedness bug (CVE-2011-2483)
+
+- Sulogin: respect byte order that is do not mix chars and ints
+  (bnc#707724)</comment>
+    <requestid>77218</requestid>
+  </revision>
+  <revision rev="123" vrev="57">
+    <srcmd5>c1a468ac4e79249ce0e82693390375a2</srcmd5>
+    <version>2.88+</version>
+    <time>1311784217</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77218
+</comment>
+  </revision>
+  <revision rev="124" vrev="58">
+    <srcmd5>3aa6cc95dc1ea57b2f7504b5e1820046</srcmd5>
+    <version>2.88+</version>
+    <time>1312268128</time>
+    <user>saschpe</user>
+    <comment>- libblogger: check for SIGPIPE and block SIGPIPE during write, this
+  also does help startpar not to die on SIGPIPE (bnc#679671)
+- blogd: add a further check for nsigsys in writelog() (bnc#679671)</comment>
+    <requestid>77585</requestid>
+  </revision>
+  <revision rev="125" vrev="59">
+    <srcmd5>f8db9b40168e44f0cd460d934f1e5ed0</srcmd5>
+    <version>2.88+</version>
+    <time>1312268136</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77585
+</comment>
+  </revision>
+  <revision rev="126" vrev="60">
+    <srcmd5>8440495d48ea83773e82323cfb75d025</srcmd5>
+    <version>2.88+</version>
+    <time>1315238074</time>
+    <user>lrupp</user>
+    <comment>- Update to killproc-2.20 
+- Update to showconsole-1.15
+- Clean spec file</comment>
+    <requestid>80702</requestid>
+  </revision>
+  <revision rev="127" vrev="61">
+    <srcmd5>0383155ca000735e97e6fa76ad002886</srcmd5>
+    <version>2.88+</version>
+    <time>1315238086</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80702
+</comment>
+  </revision>
+  <revision rev="128" vrev="62">
+    <srcmd5>c691ed483c391eff1be3cf0f841eed6f</srcmd5>
+    <version>2.88+</version>
+    <time>1317546979</time>
+    <user>lrupp</user>
+    <comment>showconsole.8: macro `OS' not defined (removed) (forwarded request 81597 from yecril71pl)</comment>
+    <requestid>85854</requestid>
+  </revision>
+  <revision rev="129" vrev="63">
+    <srcmd5>f8a981bb671d970d0a09be08167e56b9</srcmd5>
+    <version>2.88+</version>
+    <time>1317744910</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc, %configure macros (forwarded request 86476 from uli_suse)</comment>
+    <requestid>86490</requestid>
+  </revision>
+  <revision rev="130" vrev="64">
+    <srcmd5>9e3603e6699de144ae7366087c9a9cc8</srcmd5>
+    <version>2.88+</version>
+    <time>1318348798</time>
+    <user>lrupp</user>
+    <comment>- do not telinit u if /sbin/init is not sysvinit
+
+- split out the symlink /sbin/init into a special subpackage,
+  which does _NOT_ do a split provide. systemd-sysvinit will 
+  provide this, so you need to do extra work if you want to stay
+  on sysvinit
+
+- remove unused files</comment>
+    <requestid>87398</requestid>
+  </revision>
+  <revision rev="131" vrev="65">
+    <srcmd5>863e511e30a0e3c1dac79cc492d7d5ca</srcmd5>
+    <version>2.88+</version>
+    <time>1318941060</time>
+    <user>saschpe</user>
+    <comment>- Add option -x to be able to identify scripts overwriting their
+  command line (bnc#723708) 
+
+- There was never a version 1.16 for showconsole 
+- Add some code to be able to detect programs even as user with
+  kernel 3.0 and above (bnc#723072)</comment>
+    <requestid>88444</requestid>
+  </revision>
+  <revision rev="132" vrev="67">
+    <srcmd5>863e511e30a0e3c1dac79cc492d7d5ca</srcmd5>
+    <version>2.88+</version>
+    <time>1319182503</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="133" vrev="68">
+    <srcmd5>e96de46c1659a00a78e68a8843187a6d</srcmd5>
+    <version>2.88+</version>
+    <time>1319208176</time>
+    <user>coolo</user>
+    <comment>- Use pipe to synch parent with child in startproc (bnc#713342)</comment>
+    <requestid>88847</requestid>
+  </revision>
+  <revision rev="134" vrev="69">
+    <srcmd5>f7c0921a83ef42992d884a7e11d66359</srcmd5>
+    <version>2.88+</version>
+    <time>1323194827</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="135" vrev="70">
+    <srcmd5>d0d6b6912dc47c10b4901c1261eaf465</srcmd5>
+    <version>2.88+</version>
+    <time>1328093658</time>
+    <user>coolo</user>
+    <comment>- New killproc-2.21 which includes the last bug fixes as well as
+  new features like support for ionice with startproc
+- New showconsole-1.16 which includes the last bug fixes
+- New startpar-0.58 which includes the last bug fixes as well as
+  the patches from Debian
+- Make rpmlint happy
+
+- Avoid trouble with indirect console names (bnc#731563)
+- Unmount proc file system if initial not mounted (bnc#718385)</comment>
+    <requestid>102282</requestid>
+  </revision>
+  <revision rev="136" vrev="71">
+    <srcmd5>6de3d3a801c9270838558a7de0234d5d</srcmd5>
+    <version>2.88+</version>
+    <time>1328718050</time>
+    <user>coolo</user>
+    <comment>- Work around dully check script of obs</comment>
+    <requestid>103303</requestid>
+  </revision>
+  <revision rev="137" vrev="72">
+    <srcmd5>5cbd969f15dbdd7ee2580376683185ae</srcmd5>
+    <version>2.88+</version>
+    <time>1330692611</time>
+    <user>coolo</user>
+    <comment>- Avoid useless check for runlevel as access(2) now works on
+  kernel 3.0 and above, this fixes bnc#744538</comment>
+    <requestid>107656</requestid>
+  </revision>
+  <revision rev="138" vrev="73">
+    <srcmd5>e4b8c5690b30b7e5b7122e40f515eec4</srcmd5>
+    <version>2.88+</version>
+    <time>1332239775</time>
+    <user>coolo</user>
+    <comment>- Add two patch from upstream
+  + Handle deleted binaries in pidof (was upstream bug #34992)
+  + Allow init to delte extra environment variables (was upstream
+    bug #35858)
+  + Avoid that init double environment variables for its childs
+    (was upstream bug #35855)</comment>
+    <requestid>109745</requestid>
+  </revision>
+  <revision rev="139" vrev="74">
+    <srcmd5>ce55a0903048536372d5d42519a61f22</srcmd5>
+    <version>2.88+</version>
+    <time>1334928022</time>
+    <user>coolo</user>
+    <comment>mingetty is not needed on systems running with systemd, where agetty from util-linux is preffered. This change will add mingetty as a dependency of sysvinit, because it's needed by default /etc/inittab provided by aaa_base package. (forwarded request 113736 from mvyskocil)</comment>
+    <requestid>114501</requestid>
+  </revision>
+  <revision rev="140" vrev="75">
+    <srcmd5>45e8457e0ab12615511608c558a862ca</srcmd5>
+    <version>2.88+</version>
+    <time>1336452535</time>
+    <user>coolo</user>
+    <comment>- Add two patch from upstream
+  + Avoid crash for exported environment for processes init spawns
+- Fix typo as the script for powerd (bnc#758920)</comment>
+    <requestid>116438</requestid>
+  </revision>
+  <revision rev="141" vrev="76">
+    <srcmd5>0136d6264c01d621ae75e753e36686f2</srcmd5>
+    <version>2.88+</version>
+    <time>1337955539</time>
+    <user>coolo</user>
+    <comment>- Fix parameter turner in fscanf to really detect the file system
+  type in startproc/checkproc/killproc (bnc#762489)</comment>
+    <requestid>121915</requestid>
+  </revision>
+  <revision rev="142" vrev="78">
+    <srcmd5>0136d6264c01d621ae75e753e36686f2</srcmd5>
+    <version>2.88+</version>
+    <time>1340184254</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="143" vrev="79">
+    <srcmd5>71e92bb5581d42b7645acde23f0badb3</srcmd5>
+    <version>2.88+</version>
+    <time>1340628061</time>
+    <user>coolo</user>
+    <comment>- fix deadlock in blogd that happens on shutdown (bnc#730193)</comment>
+    <requestid>125924</requestid>
+  </revision>
+  <revision rev="144" vrev="80">
+    <srcmd5>4025efd01c9e437fd428e0fab8832f58</srcmd5>
+    <version>2.88+</version>
+    <time>1344080085</time>
+    <user>coolo</user>
+    <comment>- Add fix/workaround in blogd for new glibc internal pthread API to
+  avoid an glibc nptl assert report in bnc#772055</comment>
+    <requestid>129838</requestid>
+  </revision>
+  <revision rev="145" vrev="81">
+    <srcmd5>f16ced394ff22bc7a523061c40a22d2a</srcmd5>
+    <version>2.88+</version>
+    <time>1344778163</time>
+    <user>namtrac</user>
+    <comment>- Increase daemon detection time in startproc to give started
+  process the time to daemonize (bnc#757643)</comment>
+    <requestid>130604</requestid>
+  </revision>
+  <revision rev="146" vrev="82">
+    <srcmd5>59a065db8c1915f38847134b5d523dfb</srcmd5>
+    <version>2.88+</version>
+    <time>1347619172</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133907</requestid>
+  </revision>
+  <revision rev="147" vrev="84">
+    <srcmd5>59a065db8c1915f38847134b5d523dfb</srcmd5>
+    <version>2.88+</version>
+    <time>1359110459</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="148" vrev="85">
+    <srcmd5>24ed4086d709b7581f08ca0ab37e833a</srcmd5>
+    <version>2.88+</version>
+    <time>1362462659</time>
+    <user>coolo</user>
+    <comment>- move mkinitrd scripts of blogs to sysvinit-init, it's breaking
+  systemd/plymouth (bnc#804458)</comment>
+    <requestid>157246</requestid>
+  </revision>
+  <revision rev="149" vrev="86">
+    <srcmd5>36ebee9484bf19360293b6ed8666015e</srcmd5>
+    <version>2.88+</version>
+    <time>1367488973</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174100</requestid>
+  </revision>
+  <revision rev="150" vrev="87">
+    <srcmd5>e10c15ba8e419e8bb06fc595d48ada61</srcmd5>
+    <version>2.88+</version>
+    <time>1370603768</time>
+    <user>coolo</user>
+    <comment>- Skip binaries now part of util-linux</comment>
+    <requestid>177980</requestid>
+  </revision>
+  <revision rev="151" vrev="88">
+    <srcmd5>eebc462578e562433c288d9e036dc2e4</srcmd5>
+    <version>2.88+</version>
+    <time>1374702367</time>
+    <user>coolo</user>
+    <comment>- Remove usage of absolute paths
+- List all needed binaries in programs tag (forwarded request 184081 from olh)</comment>
+    <requestid>184202</requestid>
+  </revision>
+  <revision rev="152" vrev="90">
+    <srcmd5>eebc462578e562433c288d9e036dc2e4</srcmd5>
+    <version>2.88+</version>
+    <time>1379664761</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="153" vrev="91">
+    <srcmd5>02d8f8e7369cc01c7639bd9b24c2e508</srcmd5>
+    <version>2.88+</version>
+    <time>1390411203</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214675</requestid>
+  </revision>
+  <revision rev="154" vrev="92">
+    <srcmd5>c9e12b7763175916ca30d0ed82527be0</srcmd5>
+    <version>2.88+</version>
+    <time>1390976247</time>
+    <user>coolo</user>
+    <comment>- Add patch sysvinit-2.88+dsf-sulogin.diff from upstream to handle
+  e.g. strange names of executables in killall5
+- Make powerd work together with systemd
+- Modify patch powerd-2.0.2.dif to remove sysvinit features
+- Adding the systemd unit file powerd.service</comment>
+    <requestid>215394</requestid>
+  </revision>
+  <revision rev="155" vrev="93">
+    <srcmd5>40429022080ef44e6a7d993581722662</srcmd5>
+    <version>2.88+</version>
+    <time>1392112755</time>
+    <user>coolo</user>
+    <comment>- Add patch sysvinit-2.88+dsf-xen.patch to enable sulogin to find
+  suitable console device even if first is not usable (bnc#862078)</comment>
+    <requestid>221264</requestid>
+  </revision>
+  <revision rev="156" vrev="94">
+    <srcmd5>7cf89d74789fbc0ef7d44a74df93eed2</srcmd5>
+    <version>2.88+</version>
+    <time>1395156081</time>
+    <user>coolo</user>
+    <comment>- Now work with latest systemd</comment>
+    <requestid>226302</requestid>
+  </revision>
+  <revision rev="157" vrev="95">
+    <srcmd5>219b2417b9b64304c34ae29128f13d0e</srcmd5>
+    <version>2.88+</version>
+    <time>1408957368</time>
+    <user>coolo</user>
+    <comment>- use systemd-rpm-macros instead of systemd-devel to avoid build
+  dependency on systemd and it's deps in turn
+- install rcpowerd link also when using systemd
+
+- use systemd-rpm-macros instead of systemd-devel to avoid build
+  dependency on systemd and it's deps in turn
+- don't install mkinitrd stuff on &amp;gt; 131 anymore (forwarded request 245573 from lnussel)</comment>
+    <requestid>245579</requestid>
+  </revision>
+  <revision rev="158" vrev="97">
+    <srcmd5>219b2417b9b64304c34ae29128f13d0e</srcmd5>
+    <version>2.88+</version>
+    <time>1409303445</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="159" vrev="98">
+    <srcmd5>07f6dd11831387afc1805396307f54c4</srcmd5>
+    <version>2.88+</version>
+    <time>1410326889</time>
+    <user>coolo</user>
+    <comment>- For systemd distributions and products do not build the package
+  sysvinit anymore</comment>
+    <requestid>248003</requestid>
+  </revision>
+  <revision rev="160" vrev="99">
+    <srcmd5>4fbab362dd6f8a456c6ce29b79cb635a</srcmd5>
+    <version>2.88+</version>
+    <time>1425031462</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with -std=gnu89 to deal with GCC 5 defaulting to -std=gnu11 (forwarded request 287287 from rguenther)</comment>
+    <requestid>287288</requestid>
+  </revision>
+  <revision rev="161" vrev="100">
+    <srcmd5>2b08cd001fc7964c31ae38054cd65a27</srcmd5>
+    <version>2.88+</version>
+    <time>1449995630</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>347193</requestid>
+  </revision>
+  <revision rev="162" vrev="101">
+    <srcmd5>826b1f133c028c47a13013897faeab23</srcmd5>
+    <version>2.88+</version>
+    <time>1453280047</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353463</requestid>
+  </revision>
+  <revision rev="163" vrev="102">
+    <srcmd5>a2ada6b3be204a8cf2d1696b993003e1</srcmd5>
+    <version>2.88+</version>
+    <time>1456242718</time>
+    <user>dimstar_suse</user>
+    <comment>- remove unused /etc/pam.d/init
+- remove notify-pam-dead.patch
+
+- Use libblogger of package blog-devel now 
+
+- Split off showconsole as its separate package called blog 
+  Moved also the patches: showconsole-1.16.dif, showconsole-1.16-deadlock.diff,
+  showconsole-1.16-glibc.dif</comment>
+    <requestid>356283</requestid>
+  </revision>
+  <revision rev="164" vrev="103">
+    <srcmd5>d63dfa6a659104f9f6dcfa3076d2efe7</srcmd5>
+    <version>2.88+</version>
+    <time>1476430007</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434329</requestid>
+  </revision>
+  <revision rev="165" vrev="104">
+    <srcmd5>d51c9fd007cdfc60ce26eb976875ab8e</srcmd5>
+    <version>2.88+</version>
+    <time>1527673272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612627</requestid>
+  </revision>
+  <revision rev="166" vrev="105">
+    <srcmd5>d89c079e433af5630eaa1662bc182286</srcmd5>
+    <version>2.88+</version>
+    <time>1533549122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626993</requestid>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>121fab273192213ea576616b81da2213</srcmd5>
+    <version>2.90</version>
+    <time>1534321777</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to sysvinit 2.90 
+- Remove now upstream patches
+  * sysvinit-2.88+dsf-dostat.patch
+  * sysvinit-2.88+dsf-sulogin.diff
+  * sysvinit-2.88+dsf.tar.bz2
+  * sysvinit-2.88dsf-scripts2.patch
+- Port our patches
+  sysvinit-2.88dsf-no-kill.patch becomes sysvinit-2.90-no-kill.patch
+  sysvinit-2.88+dsf.dif becomes sysvinit-2.90.dif</comment>
+    <requestid>627700</requestid>
+  </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>badb6350271e5c46b63defbc97e7db13</srcmd5>
+    <version>2.90</version>
+    <time>1551784567</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679450</requestid>
+  </revision>
+  <revision rev="169" vrev="3">
+    <srcmd5>3cb6aa827911fa88c2aa112271eacf02</srcmd5>
+    <version>2.90</version>
+    <time>1555053090</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch killproc-mntinf-optional.patch to handle various optional
+  fields of /proc/&lt;pid&gt;/mountinfo on the entry/ies before the hypen
+  (bsc#1131982)</comment>
+    <requestid>692609</requestid>
+  </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>1a629f405c5b3b92b2c25f461669cd77</srcmd5>
+    <version>2.95</version>
+    <time>1561493809</time>
+    <user>dimstar_suse</user>
+    <comment>- Find newer architectures even with vendor string 
+
+- Remove logsave as well as the manual page as those as part of
+  package e2fsprogs already 
+
+- Update to sysvinit 2.95
+  * new logsave helper
+- Update to startpar-0.63
+  * move startpar from /sbin to /bin
+- Port our patches
+  * startpar-0.58.dif
+  * sysvinit-2.88dsf-suse.patch
+  * sysvinit-2.90-no-kill.patch
+  * sysvinit-2.90.dif</comment>
+    <requestid>711279</requestid>
+  </revision>
+</revisionlist>

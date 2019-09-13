@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc7a9147602600b2a57ded108352e8f4</srcmd5>
+    <version>0.1.10</version>
+    <time>1492009965</time>
+    <user>maxlin_factory</user>
+    <comment>Submit of LTS Haskell as specifid in https://hackweek.suse.com/14/projects/1368</comment>
+    <requestid>414234</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f1ce13bb3dcab195cbd77ced01c5509b</srcmd5>
+    <version>0.1.11</version>
+    <time>1494442145</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>489370</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>048a5a1e67567fa299bf13702565599b</srcmd5>
+    <version>0.1.11</version>
+    <time>1505506727</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525530</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a7185293fe0f0d5ac5aaba54c240d8f1</srcmd5>
+    <version>0.1.11</version>
+    <time>1527675662</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609825</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>5375964baebc4ad83409dd5929b675c6</srcmd5>
+    <version>0.1.11</version>
+    <time>1532445783</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623874</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>f5be50c2f3857130e24360b5634a84b9</srcmd5>
+    <version>0.1.11</version>
+    <time>1540451167</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643471</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d368a2722a0d1bb6460d9285336fd85f</srcmd5>
+    <version>0.1.12</version>
+    <time>1550402434</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>674309</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a607fa81536ecc38ac60fdfbfac200fd</srcmd5>
+    <version>0.1.13</version>
+    <time>1557389436</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>700206</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>76c875987acd7aecfb620bd04e3bbcc0</srcmd5>
+    <version>0.1.14</version>
+    <time>1566665072</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>725525</requestid>
+  </revision>
+</revisionlist>

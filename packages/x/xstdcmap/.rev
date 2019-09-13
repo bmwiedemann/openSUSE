@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>def19cad063f54658679be9ca98b27d4</srcmd5>
+    <version>1.0.2</version>
+    <time>1336471677</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115506</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>def19cad063f54658679be9ca98b27d4</srcmd5>
+    <version>1.0.2</version>
+    <time>1340184386</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>def19cad063f54658679be9ca98b27d4</srcmd5>
+    <version>1.0.2</version>
+    <time>1359110697</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b4f6cc9a53144a09d2e46a7afd6aaaf8</srcmd5>
+    <version>1.0.3</version>
+    <time>1362032108</time>
+    <user>coolo</user>
+    <comment>Update to version 1.0.3 (forwarded request 156361 from Zaitor)</comment>
+    <requestid>156435</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b4f6cc9a53144a09d2e46a7afd6aaaf8</srcmd5>
+    <version>1.0.3</version>
+    <time>1379665122</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>b4f6cc9a53144a09d2e46a7afd6aaaf8</srcmd5>
+    <version>1.0.3</version>
+    <time>1409303809</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>90b928290189c66c1f638d138cecc004</srcmd5>
+    <version>1.0.4</version>
+    <time>1551025099</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.4
+  * This release delivers some minor cleanups and janitorial
+    maintenance.</comment>
+    <requestid>677968</requestid>
+  </revision>
+</revisionlist>

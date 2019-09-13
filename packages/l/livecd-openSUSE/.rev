@@ -1,0 +1,565 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e69985e0a36bb231a055b24c7973928</srcmd5>
+    <version>unknown</version>
+    <time>1542203025</time>
+    <user>dimstar_suse</user>
+    <comment>Into the main project it goes!</comment>
+    <requestid>648863</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0c74b695b62162456e16db6dfdd0e1d9</srcmd5>
+    <version>unknown</version>
+    <time>1542282083</time>
+    <user>dimstar_suse</user>
+    <comment>- Install README.BETA from skelcd-openSUSE</comment>
+    <requestid>649016</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e26bf959321c83fb81f7f97559f1b32b</srcmd5>
+    <version>unknown</version>
+    <time>1542705798</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow binutils, but force-remove it in config.sh (bsc#1116665)</comment>
+    <requestid>650347</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>402ba288f3158de1cd3bb4b7a80926c2</srcmd5>
+    <version>unknown</version>
+    <time>1544691545</time>
+    <user>dimstar_suse</user>
+    <comment>Allow noto-coloremoji</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d5b1d5f34a83884f8c4aecc51776277a</srcmd5>
+    <version>unknown</version>
+    <time>1544693075</time>
+    <user>dimstar_suse</user>
+    <comment>- Try to ignore gcc8 on XFCE Live images.</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>fb8881deff080db620f5631195033a31</srcmd5>
+    <version>unknown</version>
+    <time>1544694185</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>505664284ea46fa339b82aa6bddb4c2b</srcmd5>
+    <version>unknown</version>
+    <time>1544694956</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>27e8d5c87cdf04bf0e07a485ba36c6a0</srcmd5>
+    <version>unknown</version>
+    <time>1544695438</time>
+    <user>dimstar_suse</user>
+    <comment>gcc8 is needed</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>bd00a21647210e69ba394bb5c64bf5d3</srcmd5>
+    <version>unknown</version>
+    <time>1544695663</time>
+    <user>dimstar_suse</user>
+    <comment>- Put midori instead of Firefox on the rescue CD</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>8a3428aac47ae4ad2df7fc7b2b06a7c0</srcmd5>
+    <version>unknown</version>
+    <time>1544697469</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop gimp from the GNOME live CD.</comment>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>d54850b2fec324e15b82b53105ffc462</srcmd5>
+    <version>unknown</version>
+    <time>1544702353</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer block noto-coloremoji-fonts from the rescue CD:
+  xfce4-branding requires it.</comment>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>50fbfabbb87a27c5b1c555c100874efc</srcmd5>
+    <version>unknown</version>
+    <time>1545304741</time>
+    <user>dimstar_suse</user>
+    <comment>- Block intel-gpu-tools from the Rescue CD</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>ea5f62105b577d5a6dfe849a240ab3e3</srcmd5>
+    <version>unknown</version>
+    <time>1545475705</time>
+    <user>dimstar_suse</user>
+    <comment>- Save space on live media:
+  + Drop marble-lang from kde live cd
+  + drop gnome-user-docs-lang from gnome live cd</comment>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>36f14b2be0fa48bb432f0c7869cf813b</srcmd5>
+    <version>unknown</version>
+    <time>1545637571</time>
+    <user>dimstar_suse</user>
+    <comment>  + Drop marble-lang and digikam from kde live cd
+  + Drop evolution-lang from gnome live cd</comment>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>6096ee2a56df4c9dc51d3a540ac003bd</srcmd5>
+    <version>unknown</version>
+    <time>1545640154</time>
+    <user>dimstar_suse</user>
+    <comment>  + Drop marble-lang, hugin and digikam from kde live cd</comment>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>7d16d7c15ffedeb48b09f43513bac0b5</srcmd5>
+    <version>unknown</version>
+    <time>1545641918</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>11eabac62283f263967210f35741f6be</srcmd5>
+    <version>unknown</version>
+    <time>1546459182</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>f3b022f08c840998d1f522decfc516ee</srcmd5>
+    <version>unknown</version>
+    <time>1546503279</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>497c5b2a1591acb1cb76aaefbeaad65f</srcmd5>
+    <version>unknown</version>
+    <time>1546503467</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>fe8c1f6619d0d2d1e5281255d5094646</srcmd5>
+    <version>unknown</version>
+    <time>1548661731</time>
+    <user>dimstar_suse</user>
+    <comment>- Minimize GNOME live CD: drop zenity-lang and gnome-weather</comment>
+  </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>aa92b49ffef6f6526d2874bfabac7867</srcmd5>
+    <version>unknown</version>
+    <time>1548661760</time>
+    <user>dimstar_suse</user>
+    <comment>Actually do the drop</comment>
+  </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>851c5dfcc05a77d047c5ee89888c96ad</srcmd5>
+    <version>unknown</version>
+    <time>1548665277</time>
+    <user>dimstar_suse</user>
+    <comment>- Shrink the KDE Live image a bit: ignore plasma5-desktop-lang</comment>
+  </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>749a889ff598ae1b07e6202bb14f56de</srcmd5>
+    <version>unknown</version>
+    <time>1548672383</time>
+    <user>dimstar_suse</user>
+    <comment>- Shrink the KDE Live image a bit: ignore plasma5-desktop-lang and kate-lang</comment>
+  </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>2c90c727ebb47a6c74f4aff7ed28dd99</srcmd5>
+    <version>unknown</version>
+    <time>1548676250</time>
+    <user>dimstar_suse</user>
+    <comment>- Shrink the KDE Live image a bit: ignore plasma5-desktop-lang and
+  kate-lang, and desktop-translations.</comment>
+  </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>7b5cb000af0ea75d7fe9af6950fc154e</srcmd5>
+    <version>unknown</version>
+    <time>1548679933</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove netronome firmwares. Somebody using the LiveCD on such specialized
+  hardware is a stretch. And the firmware for those devices sums
+  up to &gt; 120MB, which we can make better use of on the Live CD.
+  kate-lang.</comment>
+  </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>5395cf27200c4b11cce17f45418051dd</srcmd5>
+    <version>unknown</version>
+    <time>1549722485</time>
+    <user>coolo</user>
+    <comment>- KDE Live image contains libreoffice-icon-themes for some reason - blocking
+  to shrink. X11 Live image hopefully survives without gcc8</comment>
+  </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>d72339a895f47b041b752480f1a3810e</srcmd5>
+    <version>unknown</version>
+    <time>1549726857</time>
+    <user>coolo</user>
+    <comment>  to shrink. Remove gcc8 and vim-data from X11 Live image</comment>
+  </revision>
+  <revision rev="28" vrev="28">
+    <srcmd5>273873c40ade93fb20ca7e9d4a4aecd3</srcmd5>
+    <version>unknown</version>
+    <time>1550048743</time>
+    <user>dimstar_suse</user>
+    <comment>- list-gnome: buildignore gnome-user-docs and more noto-sans fonts
+- live-kde: buildignore vlc-lang and gimp-lang
+- Allow binutils, but force-remove it in config.sh (bsc#1116665)
+- Add livecd-openSUSE.kiwi to allow submission as &quot;livecd-openSUSE&quot;
+  into the main project
+- Install README.BETA from skelcd-openSUSE
+- Set the upgrade icon as &quot;trusted&quot;
+- Bump leap to 15.1
+- Also show upgrade.desktop on the desktop if available
+- Remove more generated files (boo#1098535)
+- Block virtualbox-guest-kmp-default on Leap due to boo#1095148
+- Exclude multipath from the initrd (boo#1097203)
+- Move deletion of wodim/cpp* to config.sh
+- Buildignore systemd-logger to resolve conflict
+- Add GParted to X11 and GNOME
+- Add KDE Partitionmanager to KDE
+- Don't block virtualbox-guest-x11 from KDE and Rescue (boo#1094789)
+- Remove konqueror
+- No longer block virtualbox modules from Leap
+- Add cracklib and cracklib-dict-full to the media (boo#1013206).
+- Move snapper buildignore from list-common to list-x11
+- do not add systemd-coredump to the live images.
+- Add grub2-x86_64-efi on x86_64
+- Replace geturls.tar.xz with live-add-yast-repos
+- Remove /usr/share/doc/packages/ subdirectories to save space
+- Remove netronome and liquidio firmware, space offenders in
+  kernel-firmware
+- Enable rpm excludedocs
+- Fix invocation of xsltproc with geturls.xsl
+- Ignore virtualbox on leap, not available right now
+- Ignore more packages: pam_mount, deja-dup, inkscape, amavisd-new,
+  system-config-printer and tuned
+- Remove yast locales as well
+- Use the new arch attribute for profiles instead of relying on the
+  prjconf
+- Handle $releasever in a different way - leave expansion to libzypp
+- Add support for $releasever in geturls.tar.xz/geturls.xsl (boo#1085005)
+- Call geturls.xsl with releasever in config.sh
+- From Dominique:
+  * Exclude yet another -lang package
+  * Use spaces for VOLID again
+  * Don't add gconf2-branding-openSUSE
+- Don't buildignore xorg-x11-fonts in list-gnome, just everywhere
+  else as it's required by libreoffice
+- Don't ignore vim-data in list-common
+- Ignore autofs, google-droid-fonts, awesfx, libgweather-lang and espeak
+- Move ignoring of printing to list-common
+- Convert package-lists into direct dependencies, generated
+  by list-{common,gnome,kde,x11}.sh
+- Support firewalld
+- Clear RC_LANG in /etc/sysconfig/language as kiwi writes a value,
+  taking precedence over localectl used by live-langset-data
+- Also tell UDisks2 to ignore the rescue CD
+- Don't put the installer on the rescue CD
+- Instead of installing gnome-keyring-pam(-32bit) and disabling it
+  in config.sh, just don't install it
+- Support Leap 15:
+  * Build livecd-leap-FLAVOR and livecd-tumbleweed-FLAVOR
+- Adjust the rules file in udev-livecd.tar.xz to the python-kiwi
+  9.11.8 layout
+- Move from build-time config generation to static image configuration
+- Move langset and installer parts into separate packages:
+  * langset: langset.service, langset.sh, getcountrydata.rb
+  * installer: start-install.sh, installation.desktop
+- Remove obsolete files:
+  * README (outdated, important parts missing)
+  * SoftLocks (packages don't exist anymore)
+  * isopatch.sh.in (kiwi issues now fixed in the right place)
+  * kiwi-config-openSUSE-rpmlintrc (split into live-langset-data)
+- Based on kiwi-config-openSUSE
+- Rewrite HAL-based 99-ignore-live-usb.fdi into udev-live.tar.xz/99-livecd.rules
+- Use uid 1000 for livecd user to treat it as normal user
+</comment>
+    <requestid>673600</requestid>
+  </revision>
+  <revision rev="29" vrev="29">
+    <srcmd5>8bcde0bbb4c100a00cdf53588d0348ef</srcmd5>
+    <version>unknown</version>
+    <time>1550128693</time>
+    <user>dimstar_suse</user>
+    <comment>Cherry pick first diff from sr#674583</comment>
+  </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>fb937e766a4c0bf86d27725a6a9ef0ac</srcmd5>
+    <version>unknown</version>
+    <time>1550131571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674583</requestid>
+  </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>39168f50b87bb0f8d42b519c8d64f4a5</srcmd5>
+    <version>unknown</version>
+    <time>1550151410</time>
+    <user>dimstar_suse</user>
+    <comment>- list-kde: Force kde_plasma pattern
+</comment>
+    <requestid>674918</requestid>
+  </revision>
+  <revision rev="32" vrev="32">
+    <srcmd5>efc6a48661d9170b172dd292e34c353d</srcmd5>
+    <version>unknown</version>
+    <time>1550221387</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>676160</requestid>
+  </revision>
+  <revision rev="33" vrev="33">
+    <srcmd5>23653f57f59dc44e839a066fc667bd71</srcmd5>
+    <version>unknown</version>
+    <time>1550574154</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677161</requestid>
+  </revision>
+  <revision rev="34" vrev="34">
+    <srcmd5>16c22acf007c7e964e3943bd5956fbc4</srcmd5>
+    <version>unknown</version>
+    <time>1551952251</time>
+    <user>dimstar_suse</user>
+    <comment>- Prevent creation of livecd-leap-xfce.kiwi in pre-checkin.sh
+- Removed white spaces in pre-checkin.sh
+
+- Fixed indendation in config.sh
+- Temporarily removed live-leap-xfce.kiwi
+- Added Xfce System Role to installer as option via xfce-changecontrolxml.xsl
+
+- Added config and files for the installer to use Xfce System Role
+
+- Added Xfce TW Live Image kiwi file and related configs</comment>
+    <requestid>682193</requestid>
+  </revision>
+  <revision rev="35" vrev="35">
+    <srcmd5>58db57d18ab9ddc6d7d585f4a2bed550</srcmd5>
+    <version>unknown</version>
+    <time>1552206964</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682524</requestid>
+  </revision>
+  <revision rev="36" vrev="36">
+    <srcmd5>beee780536da4ff11719fff1d9d6f6de</srcmd5>
+    <version>unknown</version>
+    <time>1552464834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684276</requestid>
+  </revision>
+  <revision rev="37" vrev="37">
+    <srcmd5>809da9e4e3be2d3272ab5901b4ffe47d</srcmd5>
+    <version>unknown</version>
+    <time>1553416996</time>
+    <user>dimstar_suse</user>
+    <comment>Try to fit rescue cd</comment>
+  </revision>
+  <revision rev="38" vrev="38">
+    <srcmd5>6d446b98959dfa5b43f007d71dcf4212</srcmd5>
+    <version>unknown</version>
+    <time>1553611459</time>
+    <user>dimstar_suse</user>
+    <comment>- Support new product EULA location</comment>
+    <requestid>688164</requestid>
+  </revision>
+  <revision rev="39" vrev="39">
+    <srcmd5>7f2b61c58547daf500bc0fc4a462293d</srcmd5>
+    <version>unknown</version>
+    <time>1554115072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689865</requestid>
+  </revision>
+  <revision rev="40" vrev="40">
+    <srcmd5>b1c274f28fa16891f76da84e09f1bbbf</srcmd5>
+    <version>unknown</version>
+    <time>1554458663</time>
+    <user>dimstar_suse</user>
+    <comment>- Split packages for installation into list-installer.sh, shared
+  between gnome, kde and xfce
+- Require yast2_basis pattern in list-common
+- Pull in skelcd-control-openSUSE for installer deps
+  (boo#1131235)
+- Add more fonts for the installation (boo#1131061)
+- Ignore ntp, workaround for bsc#1131492 (forwarded request 691452 from favogt)</comment>
+    <requestid>691453</requestid>
+  </revision>
+  <revision rev="41" vrev="41">
+    <srcmd5>a8d3a68e360a148d18df0b9e357f15d1</srcmd5>
+    <version>unknown</version>
+    <time>1554749642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692289</requestid>
+  </revision>
+  <revision rev="42" vrev="42">
+    <srcmd5>6ae79a3f17f2c82495e889474e8b607d</srcmd5>
+    <version>unknown</version>
+    <time>1554883065</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch bootsplash_theme to bgrp, following the branding change.</comment>
+  </revision>
+  <revision rev="43" vrev="43">
+    <srcmd5>336c2b9396733830d8f3ec89c773922c</srcmd5>
+    <version>unknown</version>
+    <time>1554889463</time>
+    <user>dimstar_suse</user>
+    <comment>Fix silly ttypo: the splash is called bgrt, not bgrp</comment>
+  </revision>
+  <revision rev="44" vrev="44">
+    <srcmd5>33501e8fb3e3f2ca2f9fb29b15f06260</srcmd5>
+    <version>unknown</version>
+    <time>1554892303</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="45" vrev="45">
+    <srcmd5>a2978ff2cc1ba0b177093e90be11c9fa</srcmd5>
+    <version>unknown</version>
+    <time>1556379315</time>
+    <user>maxlin_factory</user>
+    <comment>- Ignore xdg-desktop-portal-kde on Tumbleweed</comment>
+  </revision>
+  <revision rev="46" vrev="46">
+    <srcmd5>a147742446a36486328dc23bc44f7f67</srcmd5>
+    <version>unknown</version>
+    <time>1556382861</time>
+    <user>maxlin_factory</user>
+  </revision>
+  <revision rev="47" vrev="47">
+    <srcmd5>971bb04fda39b1fabbace2616af39df4</srcmd5>
+    <version>unknown</version>
+    <time>1556384133</time>
+    <user>maxlin_factory</user>
+    <comment>another try</comment>
+  </revision>
+  <revision rev="48" vrev="48">
+    <srcmd5>d1fe799cc0e79ac0c62cdbddbf5fae07</srcmd5>
+    <version>unknown</version>
+    <time>1556395007</time>
+    <user>maxlin_factory</user>
+    <comment>- Reverted ignoring xdg-desktop-portal-kde change</comment>
+  </revision>
+  <revision rev="49" vrev="49">
+    <srcmd5>250f4d719caaf1aed3f75bb9979ba0fc</srcmd5>
+    <version>unknown</version>
+    <time>1556968574</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop no longer existing gnome-shell-browser-plugin from GNOME Live.</comment>
+  </revision>
+  <revision rev="50" vrev="50">
+    <srcmd5>fb0f9e5497012c597f38a77d436e1c2e</srcmd5>
+    <version>unknown</version>
+    <time>1559923334</time>
+    <user>dimstar_suse</user>
+    <comment>- Move OBS comment
+- Use set in config.sh correctly
+
+- Handle aarch64</comment>
+    <requestid>708282</requestid>
+  </revision>
+  <revision rev="51" vrev="51">
+    <srcmd5>e519aa00fa564cb4ac6f5cb7794ae9fa</srcmd5>
+    <version>unknown</version>
+    <time>1561702936</time>
+    <user>dimstar_suse</user>
+    <comment>- Block gtk2-lang from the Rescue CD - We run again out of space.</comment>
+  </revision>
+  <revision rev="52" vrev="52">
+    <srcmd5>e68fb537cb37387edf5713c258c05edf</srcmd5>
+    <version>unknown</version>
+    <time>1564155282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718862</requestid>
+  </revision>
+  <revision rev="53" vrev="53">
+    <srcmd5>c49d79c3838127d7ac264883bb0c52a5</srcmd5>
+    <version>unknown</version>
+    <time>1565599097</time>
+    <user>maxlin_factory</user>
+    <comment>Block nano-lang on Rescue CD, ran out of space again</comment>
+  </revision>
+  <revision rev="54" vrev="54">
+    <srcmd5>a3846a9458bdc7307b78e7eff50db8c9</srcmd5>
+    <version>unknown</version>
+    <time>1565602406</time>
+    <user>maxlin_factory</user>
+    <comment>Block hexchat-lang and evince-lang on Rescue CD, ran out of space again</comment>
+  </revision>
+  <revision rev="55" vrev="55">
+    <srcmd5>cb867730b727a24ecc06a38f402edbdf</srcmd5>
+    <version>unknown</version>
+    <time>1566551428</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>725488</requestid>
+  </revision>
+  <revision rev="56" vrev="56">
+    <srcmd5>985f6f1aab057d106e9829f6a36d3117</srcmd5>
+    <version>unknown</version>
+    <time>1566988495</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow orca on the GNOME Live CD.</comment>
+  </revision>
+  <revision rev="57" vrev="57">
+    <srcmd5>4ac40b2e28be9789c1dd1591dd5072db</srcmd5>
+    <version>unknown</version>
+    <time>1567092520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727011</requestid>
+  </revision>
+  <revision rev="58" vrev="58">
+    <srcmd5>e291d6187333ca8c487bb08f6a442331</srcmd5>
+    <version>unknown</version>
+    <time>1567168963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727172</requestid>
+  </revision>
+  <revision rev="59" vrev="59">
+    <srcmd5>e14f81a37f1525e5c30ed0c4bb39d63e</srcmd5>
+    <version>unknown</version>
+    <time>1567240987</time>
+    <user>dimstar_suse</user>
+    <comment>no py2 on gnome live</comment>
+  </revision>
+  <revision rev="60" vrev="60">
+    <srcmd5>bca5bfabe9e2eec8a489abf5d4b1403c</srcmd5>
+    <version>unknown</version>
+    <time>1567327840</time>
+    <user>dimstar_suse</user>
+    <comment>Disallow orca - we are short by 50MB?</comment>
+  </revision>
+  <revision rev="61" vrev="61">
+    <srcmd5>bfb944b0b84629aa40d2168cbf4c3a5d</srcmd5>
+    <version>unknown</version>
+    <time>1567409516</time>
+    <user>dimstar_suse</user>
+    <comment>- Install opensuse-welcome explicitly on Xfce and KDE, but blacklist on GNOME</comment>
+    <requestid>727685</requestid>
+  </revision>
+  <revision rev="62" vrev="62">
+    <srcmd5>023c5965dba3e6bda8410a29b033c71f</srcmd5>
+    <version>unknown</version>
+    <time>1568190755</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>729483</requestid>
+  </revision>
+  <revision rev="63" vrev="63">
+    <srcmd5>a5cd093ce8b324226eceb714dbd62a87</srcmd5>
+    <version>unknown</version>
+    <time>1568274839</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop orca again from the GNOME Live - we are really above the
+  space limits with it - or we find something else to drop.</comment>
+  </revision>
+  <revision rev="64" vrev="64">
+    <srcmd5>23004959152f25e236a42b134c1e7f08</srcmd5>
+    <version>unknown</version>
+    <time>1568282008</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore evolution-data-server-lang on the GNOME live media.</comment>
+  </revision>
+</revisionlist>

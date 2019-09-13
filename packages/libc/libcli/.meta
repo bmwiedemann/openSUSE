@@ -1,0 +1,5 @@
+<package name="libcli" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:utilities" package="libcli"/>
+</package>

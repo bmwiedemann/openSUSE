@@ -1,0 +1,9 @@
+<package name="hddtemp" project="openSUSE:Factory">
+  <title>Hard disk temperature tool</title>
+  <description>hddtemp is tool that gives you the temperature of your hard drive by
+reading S.M.A.R.T. information.
+
+</description>
+  <devel project="utilities" package="hddtemp"/>
+  <url>http://www.guzu.net/linux/hddtemp.php</url>
+</package>

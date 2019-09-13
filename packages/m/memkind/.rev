@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1017c962497375aad6d33a3fcaee2d30</srcmd5>
+    <version>1.1.0</version>
+    <time>1472731360</time>
+    <user>dimstar_suse</user>
+    <comment>Sync SLE and Factory packages (bnc#990223)</comment>
+    <requestid>423676</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0822d7626f3c47407d5d03a6423fd690</srcmd5>
+    <version>1.6.0</version>
+    <time>1510960947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update memkind to version 1.6.0 (fate #321932):
+  * Deprecated some functions: memkind_create(), memkind_ops,
+    memkind_finalize(), memkind_get_num_kind(),
+    memkind_get_kind_by_partition(), memkind_get_kind_by_name(),
+    memkind_partition_mmap(), memkind_get_size().
+  * Introduced hbw_verify_memory_region() for checking HBWness
+  * Added memkind_create_kind(), memkind_destroy_kind().
+  * Updated internal jemalloc to 4.3.1
+  * Add envvar MEMKIND_HOG_MEMORY preventing memkind from releasing
+    memory to OS.
+  * Deprecated support for gigabyte-pages
+  * Deprecated the headers from memkind/internal
+  * Allocation time optimizations with up to 20% improvement
+  * Introduced logging mechanism
+  * Cleanup of symbols exposed by libmemkind.so
+  * Introduced policy HBW_POLICY_BIND_ALL and MEMKIND_HBW_ALL,
+    MEMKIND_HBW_ALL_HUGETLB and MEMKIND_REGULAR kinds
+- Removed gtest-1.7.0.zip (tests now included fused gtest sources)
+- Adjust patch memkind-fix-build.diff</comment>
+    <requestid>542702</requestid>
+  </revision>
+</revisionlist>

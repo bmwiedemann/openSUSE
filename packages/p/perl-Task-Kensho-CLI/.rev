@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>29f64b2fc626660de4fd1f965174251a</srcmd5>
+    <version>0.29</version>
+    <time>1326104194</time>
+    <user>coolo</user>
+    <comment>useful task</comment>
+    <requestid>97214</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>29f64b2fc626660de4fd1f965174251a</srcmd5>
+    <version>0.29</version>
+    <time>1340183923</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>29f64b2fc626660de4fd1f965174251a</srcmd5>
+    <version>0.29</version>
+    <time>1359109804</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>29f64b2fc626660de4fd1f965174251a</srcmd5>
+    <version>0.29</version>
+    <time>1379663854</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>29f64b2fc626660de4fd1f965174251a</srcmd5>
+    <version>0.29</version>
+    <time>1409302498</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e5065ca6b97d735c5c6b209c0b1146ac</srcmd5>
+    <version>0.38</version>
+    <time>1410967562</time>
+    <user>coolo</user>
+    <comment>- updated to 0.38
+           - WebDev: Template::Toolkit is not indexed (see RT#92588) -
+             refer to Template instead
+           - subtask distributions now just use regular prereqs on their
+             component modules, rather than using optional_features metadata
+           - Task-Kensho now once again prompts at install time for each
+             subtask to be optionally installed
+           - ModuleDev: Switch Carp::Always over to Devel::Confess (per mst)
+           - ModuleDev: Add Data::Printer (per Sawyer X)
+           - ModuleDev: Add Devel::Dwarn (per mst)
+           - Toolchain: Add Pinto (per Sawyer X)
+           - Toolchain: Add App::FatPacker (per perigrin)
+           - fix pod markup error in main Task::Kensho distribution
+           - module list revisions to CLI, Dates, Toolchain, WebCrawling,
+             WebDev</comment>
+    <requestid>249372</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9843755caff7236b6ec294e465a85c74</srcmd5>
+    <version>0.39</version>
+    <time>1464204561</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397843</requestid>
+  </revision>
+</revisionlist>

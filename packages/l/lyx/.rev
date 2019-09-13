@@ -1,0 +1,728 @@
+<revisionlist>
+  <revision rev="1" vrev="14">
+    <srcmd5>9f6263b8140e54de977270e0614b2728</srcmd5>
+    <version>1.4.2</version>
+    <time>1168903466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ad3e62242bd0fb85d10c1040bf9c559f</srcmd5>
+    <version>1.5.0beta2</version>
+    <time>1177685335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ca21b48f3343be455e04df48c1958c08</srcmd5>
+    <version>1.5.0beta2</version>
+    <time>1177862631</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="23">
+    <srcmd5>a5a1549c414cc350996f221bb764b97c</srcmd5>
+    <version>1.5.0beta2</version>
+    <time>1183654944</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c23267143e672fcc450a238a7958aa7f</srcmd5>
+    <version>1.5.1</version>
+    <time>1186307056</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>41058c413118b73628d9794219aa96b3</srcmd5>
+    <version>1.5.3</version>
+    <time>1200218232</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>be297a0ee3b21a5cda9b91629fe50ab2</srcmd5>
+    <version>1.5.4</version>
+    <time>1204926844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="17">
+    <srcmd5>46cc5e77d77f5adc1faceb33a8212378</srcmd5>
+    <version>1.5.4</version>
+    <time>1209508676</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4e7588f47fd7b4ab652f44929991528e</srcmd5>
+    <version>1.5.5</version>
+    <time>1216945692</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d1c877a29c9c1d3ad5b7a3dcc9a2f30d</srcmd5>
+    <version>1.5.5</version>
+    <time>1216997818</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6e7e32fef1732426d5fa2a985f6f797c</srcmd5>
+    <version>1.6rc2</version>
+    <time>1222269098</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4bad92153e27ba50d127a503b2bd51c7</srcmd5>
+    <version>1.6rc3</version>
+    <time>1223459852</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>de4a14b39048d801be0eaae13693c9b8</srcmd5>
+    <version>1.6rc3</version>
+    <time>1223573100</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f52d48809d604d45e6d17aeb0a046ac4</srcmd5>
+    <version>1.6rc4</version>
+    <time>1224925413</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>951eee90f2706cea26588d4bc803034d</srcmd5>
+    <version>1.6rc5</version>
+    <time>1225711570</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>aedbcc3b9b4b843619468a931cb8926c</srcmd5>
+    <version>1.6.0</version>
+    <time>1226414739</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e5eebb1b9e9352d85a36f8ef63c89814</srcmd5>
+    <version>1.6.0</version>
+    <time>1234744377</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>95bc921d2c074b7d787d5bcfc12d3376</srcmd5>
+    <version>1.6.3</version>
+    <time>1244537600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d9c3de493259b3dfe50b094ea0407f1c</srcmd5>
+    <version>1.6.4</version>
+    <time>1251840279</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/lyx based on submit request 19299 from user prusnak
+</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>d9c3de493259b3dfe50b094ea0407f1c</srcmd5>
+    <version>1.6.4</version>
+    <time>1251840279</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/lyx based on submit request 19299 from user prusnak
+</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>61193b5a675a8a65a5b914cfadc630c2</srcmd5>
+    <version>1.6.4</version>
+    <time>1268924886</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d845c5fc867ef40cebd4ffa2511e603e</srcmd5>
+    <version>1.6.5</version>
+    <time>1271372607</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/lyx based on submit request 37970 from user coolo
+</comment>
+    <requestid>37970</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d845c5fc867ef40cebd4ffa2511e603e</srcmd5>
+    <version>1.6.5</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>d845c5fc867ef40cebd4ffa2511e603e</srcmd5>
+    <version>1.6.5</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>213a4c7725e0d17deef58e03ba567902</srcmd5>
+    <version>1.6.7</version>
+    <time>1279566470</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/lyx based on submit request 43170 from user Beineri
+</comment>
+    <requestid>43170</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>371f4afc3c007b5268a0b04380239aef</srcmd5>
+    <version>1.6.8</version>
+    <time>1295349184</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58650 from user coolo
+</comment>
+    <requestid>58650</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>35c133b086a8692ce2751a3274d3a098</srcmd5>
+    <version>1.6.8</version>
+    <time>1295349192</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58650
+</comment>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>f68a72c28e1c7017b27a74b424ccaf4e</srcmd5>
+    <version>1.6.8</version>
+    <time>1296608829</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59574 from user coolo
+</comment>
+    <requestid>59574</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>ea2ce76d7697579ac6ef805c1b12c740</srcmd5>
+    <version>1.6.8</version>
+    <time>1296608838</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59574
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7b8b7da04825dd5f571831aeb840bd63</srcmd5>
+    <version>1.6.9</version>
+    <time>1297113479</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60239 from user coolo
+</comment>
+    <requestid>60239</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>7b8b7da04825dd5f571831aeb840bd63</srcmd5>
+    <version>1.6.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>45f67f6c7b75eb90f363ec8e4f66b7e6</srcmd5>
+    <version>1.6.9</version>
+    <time>1300356394</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64380 from user coolo
+</comment>
+    <requestid>64380</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>d563fd143f1f3b97a7499ce57065e3cd</srcmd5>
+    <version>1.6.9</version>
+    <time>1300356400</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64380
+</comment>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>e98e1e02776b672e4761316eb6b25ec1</srcmd5>
+    <version>1.6.9</version>
+    <time>1303505652</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 68148 from user coolo
+</comment>
+    <requestid>68148</requestid>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>3263ca876b9bda2312d4dc22399714b6</srcmd5>
+    <version>1.6.9</version>
+    <time>1303505660</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 68148
+</comment>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>ff13bb628c4443aa8c103bbc99867eaf</srcmd5>
+    <version>2.0.0</version>
+    <time>1306855108</time>
+    <user>saschpe</user>
+    <comment>update to 2.0.0 and used url as source and gz no longer recompressed to bz2 (forwarded request 69726 from cornelisbb)</comment>
+    <requestid>72068</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>f2d02fc0f2ce851b0c9aae19cf59a4b9</srcmd5>
+    <version>2.0.0</version>
+    <time>1306855120</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72068
+</comment>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>cdc66892300bae64e063e3c5da5cf401</srcmd5>
+    <version>2.0.0</version>
+    <time>1307372368</time>
+    <user>saschpe</user>
+    <comment>fix build with hunspell 1.3</comment>
+    <requestid>72733</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>0e7241c05521a918a2a78b8cf83a0115</srcmd5>
+    <version>2.0.0</version>
+    <time>1310042086</time>
+    <user>saschpe</user>
+    <comment>added patch to use xdg-open</comment>
+    <requestid>75566</requestid>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>f013de2f4d036bc00a2d306a40ed79e3</srcmd5>
+    <version>2.0.0</version>
+    <time>1310042104</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75566
+</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bbf8ea56a51d7c7c540d04ecafe2e44a</srcmd5>
+    <version>2.0.1</version>
+    <time>1315316403</time>
+    <user>saschpe</user>
+    <comment>update to 2.0.1</comment>
+    <requestid>81029</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>349709092e57d88003069fe9a6c4d833</srcmd5>
+    <version>2.0.1</version>
+    <time>1315316412</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81029
+</comment>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>18416d0fcc40ae1c81c3b550328f777f</srcmd5>
+    <version>2.0.1</version>
+    <time>1315563709</time>
+    <user>saschpe</user>
+    <comment>Cleaned up BuildRequires</comment>
+    <requestid>81611</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>15990bd889c0a42a40b1845c156e8acf</srcmd5>
+    <version>2.0.1</version>
+    <time>1315563718</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81611
+</comment>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>462a9e38d370304994c0f6eb226edf3c</srcmd5>
+    <version>2.0.1</version>
+    <time>1316447685</time>
+    <user>lrupp</user>
+    <comment>more cleaning up of spec file</comment>
+    <requestid>83561</requestid>
+  </revision>
+  <revision rev="46" vrev="6">
+    <srcmd5>2af09eadebe56d7090bee3cf5472ffbf</srcmd5>
+    <version>2.0.1</version>
+    <time>1317914606</time>
+    <user>oertel</user>
+    <comment>change to hunspell as default spellchecker</comment>
+    <requestid>86899</requestid>
+  </revision>
+  <revision rev="47" vrev="7">
+    <srcmd5>0a97537837a33c9cbba3509ec1d8bd4c</srcmd5>
+    <version>2.0.1</version>
+    <time>1318940574</time>
+    <user>saschpe</user>
+    <comment>updated text of package summary and description</comment>
+    <requestid>88447</requestid>
+  </revision>
+  <revision rev="48" vrev="9">
+    <srcmd5>0a97537837a33c9cbba3509ec1d8bd4c</srcmd5>
+    <version>2.0.1</version>
+    <time>1319182166</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0ce8f2fd112e041ffcf4e27decc5006f</srcmd5>
+    <version>2.0.2</version>
+    <time>1322738672</time>
+    <user>coolo</user>
+    <comment>update to 2.0.2</comment>
+    <requestid>94649</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>96a0781e5e99f6c10629619e2bf733c8</srcmd5>
+    <version>2.0.2</version>
+    <time>1323192462</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>54143cc201949f4e0b19150bdedb6262</srcmd5>
+    <version>2.0.3</version>
+    <time>1330520919</time>
+    <user>coolo</user>
+    <comment>Update to version 2.0.3</comment>
+    <requestid>107467</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>cb839958463b951e6081460ce83a5a05</srcmd5>
+    <version>2.0.3</version>
+    <time>1332239366</time>
+    <user>coolo</user>
+    <comment>fix license information and some rpmlint errors</comment>
+    <requestid>108981</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>cb839958463b951e6081460ce83a5a05</srcmd5>
+    <version>2.0.3</version>
+    <time>1340183683</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>d7e509c6fb345ac5635b505d5b91eb15</srcmd5>
+    <version>2.0.4</version>
+    <time>1341148394</time>
+    <user>coolo</user>
+    <comment>update to 2.0.4 (forwarded request 126058 from cornelisbb)</comment>
+    <requestid>126059</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>fab7c74f5ce024d9eb3b9fc76c87ae28</srcmd5>
+    <version>2.0.4</version>
+    <time>1348562487</time>
+    <user>coolo</user>
+    <comment>resolved one rpmlint warning, the one left is fixed upstream (forwarded request 135672 from cornelisbb)</comment>
+    <requestid>135675</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>17baa7ceb56c4988173e9068ecd0f17a</srcmd5>
+    <version>2.0.5</version>
+    <time>1352716985</time>
+    <user>coolo</user>
+    <comment>update to 2.0.5</comment>
+    <requestid>140863</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2c5f0e1059eed2526571a5a3ce406079</srcmd5>
+    <version>2.0.5.1</version>
+    <time>1357217148</time>
+    <user>namtrac</user>
+    <comment>Update to version 2.0.5.1</comment>
+    <requestid>146843</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>2c5f0e1059eed2526571a5a3ce406079</srcmd5>
+    <version>2.0.5.1</version>
+    <time>1359109422</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>c39cfe834a8e3f4bea917f9e96504a79</srcmd5>
+    <version>2.0.5.1</version>
+    <time>1363083094</time>
+    <user>coolo</user>
+    <comment>Added some Requires for 12.3 and later to get a usable latex environment. The old Requires were not enough for me. Probably needs some fine tuning.</comment>
+    <requestid>158551</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4d3929b7fcbdfbf81e6d06ab6c0ab82e</srcmd5>
+    <version>2.0.6</version>
+    <time>1368450525</time>
+    <user>coolo</user>
+    <comment>update to 2.0.6 and further finetuning of Requires</comment>
+    <requestid>174767</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>56bad5e3a90bfc8a94807746aaae1b1e</srcmd5>
+    <version>2.0.6</version>
+    <time>1375628294</time>
+    <user>coolo</user>
+    <comment>fix for zombie processes connected with use of xdg-open and adding texlive-nomencl to Requires</comment>
+    <requestid>185576</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>44ad357f5d870624d2d83ff5b757b4c0</srcmd5>
+    <version>2.0.6</version>
+    <time>1377090531</time>
+    <user>scarabeus_factory</user>
+    <comment>fix typo</comment>
+    <requestid>195801</requestid>
+  </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>3396a356034ff8ad4d1fe3de88e34271</srcmd5>
+    <version>2.0.6</version>
+    <time>1377855772</time>
+    <user>coolo</user>
+    <comment>Added more Requres that are also supported by LyX</comment>
+    <requestid>196690</requestid>
+  </revision>
+  <revision rev="64" vrev="5">
+    <srcmd5>0bf09695302600fc1dd3ba3e022acdca</srcmd5>
+    <version>2.0.6</version>
+    <time>1379008351</time>
+    <user>scarabeus_factory</user>
+    <comment>last fine-tuning of Requires for 13.1</comment>
+    <requestid>198703</requestid>
+  </revision>
+  <revision rev="65" vrev="7">
+    <srcmd5>0bf09695302600fc1dd3ba3e022acdca</srcmd5>
+    <version>2.0.6</version>
+    <time>1379663236</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>37d05ddc2528a559ea427b9224157b92</srcmd5>
+    <version>2.0.7</version>
+    <time>1391090185</time>
+    <user>coolo</user>
+    <comment>update to 2.0.7: bugfix release</comment>
+    <requestid>215078</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>1b387fd6da2bd69b1c118a4368650241</srcmd5>
+    <version>2.1.0</version>
+    <time>1399032022</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>231963</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>de5ac23d0f7a79f3b3b2626db6b5ce31</srcmd5>
+    <version>2.1.1</version>
+    <time>1405520387</time>
+    <user>coolo</user>
+    <comment>update to 2.1.1</comment>
+    <requestid>241131</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>de5ac23d0f7a79f3b3b2626db6b5ce31</srcmd5>
+    <version>2.1.1</version>
+    <time>1409301841</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>36d50386a9939f23cc2b734daa5650bb</srcmd5>
+    <version>2.1.2</version>
+    <time>1411926854</time>
+    <user>coolo</user>
+    <comment>bugfix update to 2.1.2 and changed texlive Requires to Recommends to give the (expert) user more control</comment>
+    <requestid>252592</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>dc31cdee68158769fd9405b86f3b87d3</srcmd5>
+    <version>2.1.2.2</version>
+    <time>1421959748</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282254</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>5b0f8b8c60f338944c50f8d575f53065</srcmd5>
+    <version>2.1.3</version>
+    <time>1423669525</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.1.3</comment>
+    <requestid>285510</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>766df25dbcb101ab3459f12da0d910b3</srcmd5>
+    <version>2.1.3</version>
+    <time>1435053615</time>
+    <user>dimstar_suse</user>
+    <comment>added two patches to fix build with  gcc5</comment>
+    <requestid>313081</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>3d4371798a44fb2f6eb92264056ee81e</srcmd5>
+    <version>2.1.4</version>
+    <time>1438421948</time>
+    <user>dimstar_suse</user>
+    <comment>updaste to 2.1.4</comment>
+    <requestid>319659</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>70c1ac2b3fe4e5136a094ca880e3d277</srcmd5>
+    <version>2.1.4</version>
+    <time>1445779090</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>340689</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>780d61b5f8ffcc4243e3758e42270c7a</srcmd5>
+    <version>2.1.4</version>
+    <time>1450955797</time>
+    <user>dimstar_suse</user>
+    <comment>Added work-around-gcc5-bug.patch to fix crash reported in boo#943840</comment>
+    <requestid>349688</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>2ffc52d23778a8d53c47de218de50fd5</srcmd5>
+    <version>2.2.0</version>
+    <time>1464594991</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.2.0</comment>
+    <requestid>398302</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>add834a6a06b294f4ff6755e063c5643</srcmd5>
+    <version>2.2.1</version>
+    <time>1469628795</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.2.1</comment>
+    <requestid>415257</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>b48c58375cc8c90ec36d9897bab242c0</srcmd5>
+    <version>2.2.1</version>
+    <time>1472478218</time>
+    <user>dimstar_suse</user>
+    <comment>couple of minor fixes</comment>
+    <requestid>423402</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>bd4121dd907d1f1a9ff701f52a466fd8</srcmd5>
+    <version>2.2.2</version>
+    <time>1476780223</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>435823</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>25273a2397f3d50dbc04e47c26b718cf</srcmd5>
+    <version>2.2.2</version>
+    <time>1486046658</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453923</requestid>
+  </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>37f3376e17c1999184f95c6064ed71e9</srcmd5>
+    <version>2.2.2</version>
+    <time>1487592946</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459113</requestid>
+  </revision>
+  <revision rev="83" vrev="4">
+    <srcmd5>3dfed92dcf7dc255eb7c3b2dd320bc22</srcmd5>
+    <version>2.2.2</version>
+    <time>1488560016</time>
+    <user>dimstar_suse</user>
+    <comment>- Added Qt58.patch to fix build with Qt 5.8</comment>
+    <requestid>461733</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>4f0918827c662770681b4e7a60390506</srcmd5>
+    <version>2.2.3</version>
+    <time>1495034334</time>
+    <user>dimstar_suse</user>
+    <comment>2.2.3, now with new source tarballs</comment>
+    <requestid>495509</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>ce93eda18555f9323320f3558016e030</srcmd5>
+    <version>2.3.0</version>
+    <time>1517323449</time>
+    <user>dimstar_suse</user>
+    <comment>This version works better with Qt 5.10 than the previous one and is stable enough for daily use.</comment>
+    <requestid>570784</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>b3e12d060e70bfb4976adb9db7378a04</srcmd5>
+    <version>2.3.0</version>
+    <time>1519747200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0 release</comment>
+    <requestid>580544</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>126e93b292596331c90005a8d6327f14</srcmd5>
+    <version>2.3.0</version>
+    <time>1528492492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614363</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>bea74902b015b7d031ffa14902caead8</srcmd5>
+    <version>2.3.1</version>
+    <time>1537018826</time>
+    <user>maxlin_factory</user>
+    <comment>2.3.1</comment>
+    <requestid>635590</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>e2f03da99bf20d0a6c5bc4574d84a3a9</srcmd5>
+    <version>2.3.1</version>
+    <time>1542750280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650548</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>513cda7758986dde401ae0b98f6be524</srcmd5>
+    <version>2.3.2</version>
+    <time>1544632289</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.2: this is a maintenance update.
+  * Too many changes to list here, but they are all minor updates
+    bugfixes. The most notable are:
+  * DOCUMENT INPUT/OUTPUT:
+    + Add support for non-ASCII characters in hyperlinks (bug 11165)
+    + Support rotated table cells with linebreaks (bug 8085)
+  * TEX2LYX IMPROVEMENTS:
+    + Add support for multirow (bug 11164)
+    + Improve import of titling commands other than \maketitle (bug 6461)
+  * For more details see included ANNOUNCE file
+- Added texlive-menukeys to Recommends: key symbols are supported
+  now via menukeys packages (part of LyX bug #10641)</comment>
+    <requestid>657513</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>129016415c3ae6efc99257ee3a8fde61</srcmd5>
+    <version>2.3.2</version>
+    <time>1552902045</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix_boost_169.patch to fix build with boost 1.69.</comment>
+    <requestid>685416</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>6e79f815dac3d214ada30c2c0acc8363</srcmd5>
+    <version>2.3.3</version>
+    <time>1562843741</time>
+    <user>dimstar_suse</user>
+    <comment>- Add README.SUSE and refer to that in %description to explain
+  limited functionality of ImageMagick in openSUSE
+
+- Update the description in the spec file with information on
+  security setting for ImageMagick in openSUSE. See boo#1139928
+  It seems the only thing we can do about it.
+
+- Update to 2.3.3:
+  This is a bugfix release with only minor improvements that are
+  not really bugfixes. The many details can be found here:
+  https://www.lyx.org/announce/2_3_3.txt
+- Removed upstream patch: fix_boost_169.patch
+- Improved spec file a bit</comment>
+    <requestid>713564</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>29696846dd72bcbb23e1610074fef567</srcmd5>
+    <version>2.3.3</version>
+    <time>1566463918</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>724791</requestid>
+  </revision>
+</revisionlist>

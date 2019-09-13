@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2bec0e8cef91fdd4e9786cead605296e</srcmd5>
+    <version>2.5</version>
+    <time>1530304568</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain uftpd in Factory</comment>
+    <requestid>619636</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4ef85d87bdff0cdf8fdde2937bd1fc2b</srcmd5>
+    <version>2.6</version>
+    <time>1530866534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620668</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bcc56a28995570333c9f5396d673911b</srcmd5>
+    <version>2.6</version>
+    <time>1533045550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626023</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6d0fca797e9dc09845d7ab988a534048</srcmd5>
+    <version>2.7</version>
+    <time>1551687850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681113</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>375a09c9b4a728547f1d528a06e185a3</srcmd5>
+    <version>2.8</version>
+    <time>1559375513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706243</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d8127cbbab496ba52a6483d2c4cd2bea</srcmd5>
+    <version>2.9</version>
+    <time>1564483161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719745</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6f9cf6ef67346f48fe9fd0bf30746bb1</srcmd5>
+    <version>2.10</version>
+    <time>1566894464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726274</requestid>
+  </revision>
+</revisionlist>

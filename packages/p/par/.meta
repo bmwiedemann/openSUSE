@@ -1,0 +1,9 @@
+<package name="par" project="openSUSE:Factory">
+  <title>Parity File Generator</title>
+  <description>Parchive creates extra parity data over several volumes. These can be
+used to restore the complete archive after some data loss or
+corruption.
+
+par is used by Dar.</description>
+  <devel project="Archiving" package="par"/>
+</package>

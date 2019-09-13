@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6626eaa5694f2d6678a5374e728ba73</srcmd5>
+    <version>0.2.0</version>
+    <time>1366812050</time>
+    <user>coolo</user>
+    <comment>shellementary is zenity or kdialog like tool implemented using EFL</comment>
+    <requestid>173039</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a6626eaa5694f2d6678a5374e728ba73</srcmd5>
+    <version>0.2.0</version>
+    <time>1379664666</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ec98c187f5eb5192af0be7a29fa49170</srcmd5>
+    <version>0.2.0</version>
+    <time>1388396616</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212155</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>ec98c187f5eb5192af0be7a29fa49170</srcmd5>
+    <version>0.2.0</version>
+    <time>1409303360</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

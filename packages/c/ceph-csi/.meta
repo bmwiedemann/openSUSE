@@ -1,0 +1,7 @@
+<package name="ceph-csi" project="openSUSE:Factory">
+  <title>Ceph CSI driver</title>
+  <description>Ceph CSI plugins implement an interface between CSI enabled Container
+Orchestrator (CO) and Ceph cluster. It allows dynamically provisioning
+Ceph block and file volumes and attaching them to workloads.</description>
+  <devel project="filesystems:ceph" package="ceph-csi"/>
+</package>

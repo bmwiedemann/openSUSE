@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d0d7b70118eddd29469dd8435262a522</srcmd5>
+    <version>0.1.1</version>
+    <time>1526371547</time>
+    <user>dimstar_suse</user>
+    <comment>Profiler plugin for spyder and spyder3</comment>
+    <requestid>603493</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>62a983ddc80d789d1c68da6a98eb4d78</srcmd5>
+    <version>0.1.1</version>
+    <time>1534543475</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim filler wording and adjust grammar. (forwarded request 629497 from jengelh)</comment>
+    <requestid>629547</requestid>
+  </revision>
+</revisionlist>

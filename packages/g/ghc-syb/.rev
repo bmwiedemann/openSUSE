@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f03ea70e59bb6d9e4b039e4a25e7923</srcmd5>
+    <version>0.3.7</version>
+    <time>1357038008</time>
+    <user>namtrac</user>
+    <comment>New package for Haskell Platform. See: http://lists.opensuse.org/opensuse-factory/2012-12/msg00178.html. Fixed source validator issue.</comment>
+    <requestid>146692</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5f03ea70e59bb6d9e4b039e4a25e7923</srcmd5>
+    <version>0.3.7</version>
+    <time>1359108931</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9a9c4a360dc1800c76f08568fa8e20c8</srcmd5>
+    <version>0.4.0</version>
+    <time>1375364033</time>
+    <user>coolo</user>
+    <comment>Update to Haskell Platform 2013.2.0.0 (forwarded request 185273 from ptrommler)</comment>
+    <requestid>185305</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9a9c4a360dc1800c76f08568fa8e20c8</srcmd5>
+    <version>0.4.0</version>
+    <time>1379662439</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>ecb1143d76af7b839cd84ef2d2761edc</srcmd5>
+    <version>0.4.0</version>
+    <time>1408957489</time>
+    <user>coolo</user>
+    <comment>enable PowerPC builds</comment>
+    <requestid>246016</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>ecb1143d76af7b839cd84ef2d2761edc</srcmd5>
+    <version>0.4.0</version>
+    <time>1409300974</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>21eaa0c35afae9ea7185cd3b47f63082</srcmd5>
+    <version>0.4.1</version>
+    <time>1417031706</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260171</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6d759299f898c248f5121838797e5c94</srcmd5>
+    <version>0.4.4</version>
+    <time>1431493975</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306407</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e222985bd6a82e612859aafe4948a629</srcmd5>
+    <version>0.5.1</version>
+    <time>1440337401</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324491</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>159e1eb3970439f47bdc84f1f20e4568</srcmd5>
+    <version>0.6</version>
+    <time>1452122699</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6 (forwarded request 352155 from mimi_vx)</comment>
+    <requestid>352174</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>313e50ad46bd6923a9242b0581fca31e</srcmd5>
+    <version>0.6</version>
+    <time>1469382665</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412110</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>18a2af01e17a2a12a8f9d753b8575e58</srcmd5>
+    <version>0.6</version>
+    <time>1498120749</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504107</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e087da923dd2bb447280ae48ec337d29</srcmd5>
+    <version>0.7</version>
+    <time>1504206003</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513505</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>609406bf2d944583a2d0505b031afa59</srcmd5>
+    <version>0.7</version>
+    <time>1505506543</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525460</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>0e0c11860ec3a4a3d1fee210bd3c8df3</srcmd5>
+    <version>0.7</version>
+    <time>1527675647</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609821</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>510add70ee3a4914b337c740abe1d955</srcmd5>
+    <version>0.7</version>
+    <time>1532445736</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 0.6
+- update to 0.4.4
+* no changelog available from hackage
+* no changelog available from hackage
+- regenerate spec file
+- more transparent packaging (fewer macros)
+- expand macro in name tag to help source validator
+- make service localonly for Factory submission
+- required by Haskell Platform 2012.4.0.0
+- required by Haskell Platform 2012.2.0.0
+- Added BuildRoot for sle11-sp1
+- Adjusted version for platform 2011.4
+- Initial packaging.</comment>
+    <requestid>623863</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>b5f60d86d1c92c780d572d1005333eea</srcmd5>
+    <version>0.7</version>
+    <time>1540451129</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643465</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>15f327c04f682d0bf8bab3468d0c4a4c</srcmd5>
+    <version>0.7.1</version>
+    <time>1560971515</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710641</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="glassfish-servlet-api" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="glassfish-servlet-api"/>
+</package>

@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>698767b99be785aad30930374aa1bf7b</srcmd5>
+    <version>0.7</version>
+    <time>1548064043</time>
+    <user>dimstar_suse</user>
+    <comment>- use meson macros during build 
+- Update to 0.7
+  * Features:
+    - announce status to systemd via sd_notify (using a simple custom implementation)
+  * Bug fixes:
+    - properly update global security level status
+    - adapt to systemd 240 not sending bind/unbind uevents
+    - fix compilation on musl
+    - daemon: use g_unix_signal_source… to catch signals
+  * Improvements
+    - precondition checks cleanup and completion
+    - error cleanup
+    - fix some leaks and issues uncovered by coverity
+- security review: add RNG hardening patch (boo#1119975): 
+  hardening_for_RNG_code.patch
+Update to 0.6
+- New Features:
+  * pre-boot access control list, aka. BootACL support
+	- domains objects are now persistent
+	  * new Uid (dbus) / uid (object) property derived from the uuid of the device representing the root switch
+	  * sysfs and id attribute will be set/unset on connects and disconnects
+	  * domains are now stored in the boltd database
+	- domains got the BootACL (dbus) / bootacl (object) property
+	  * uuids can be added, removed or set in batch
+	  * when domain is online: changes are written to the sysfs boot_acl attribute directly
+	  * when domain is offline: changes are written to a journal and then reapplied in order when the domain is connected
+	- newly enrolled devices get added to all bootacls of all domains if the policy is BOLT_POLICY_AUTO
+	- removed devices get deleted from all bootacls of all domains
+	- boltacl domain command will show the bootacl slots and their content
+  * boltctl gained the -U, --uuid option, to control how uuids are printed
+- Improvements and fixes:
+  * Testing
+	- boltctl is now included in the tests
+  * Bugs and robustness:
+	- The device state is verified in Device.Authorize
+	- Handle empty 'keys' sysfs device attribute
+	- Properly adjust policies when enrolling already authorized devices
+	- Fix potential crasher when logging assertions g_return_if_fail
+</comment>
+    <requestid>663603</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6bc25d1a0f842eef51149d1abff58873</srcmd5>
+    <version>0.7</version>
+    <time>1551215965</time>
+    <user>dimstar_suse</user>
+    <comment>Move polkit rules file to into doc folder. The 'wheel' group has no special
+privileges and the file did not have any effect. (boo#1125425)</comment>
+    <requestid>678235</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d467b0d846a5250a9a3092b40f59a56c</srcmd5>
+    <version>0.8</version>
+    <time>1561494131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711856</requestid>
+  </revision>
+</revisionlist>

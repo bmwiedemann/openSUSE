@@ -1,0 +1,224 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>eb72cf6046f01bc33446c27d313f7fdd</srcmd5>
+    <version>0.5.3</version>
+    <time>1242700231</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>03a061a99b184f817a3299ea7985e232</srcmd5>
+    <version>0.5.3</version>
+    <time>1249425132</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>03a061a99b184f817a3299ea7985e232</srcmd5>
+    <version>0.5.3</version>
+    <time>1249425132</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>938915089ee0447ffc038b0004b080e2</srcmd5>
+    <version>0.6</version>
+    <time>1261824556</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/compcache based on submit request 27607 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b5ea5108b9b073cc1ea404998900372b</srcmd5>
+    <version>0.6</version>
+    <time>1262947373</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/compcache based on submit request 28276 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>633997519699edc781f0f0bb4c12f98b</srcmd5>
+    <version>0.6</version>
+    <time>1268923222</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>12cebb19f12e549e9855e1eb762663ef</srcmd5>
+    <version>0.6</version>
+    <time>1268991368</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/compcache based on submit request 35090 from user coolo
+</comment>
+    <requestid>35090</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>e63c284bd64caabd12eb09f5531fbd28</srcmd5>
+    <version>0.6</version>
+    <time>1271893256</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/compcache based on submit request 38468 from user coolo
+</comment>
+    <requestid>38468</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>4d612bdd81ee63be3564220e8b3c177b</srcmd5>
+    <version>0.6</version>
+    <time>1273792270</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/compcache based on submit request 39864 from user tiwai
+</comment>
+    <requestid>39864</requestid>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>4d612bdd81ee63be3564220e8b3c177b</srcmd5>
+    <version>0.6</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>4d612bdd81ee63be3564220e8b3c177b</srcmd5>
+    <version>0.6</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c2f4bffda1cad821f997e0a86350c06f</srcmd5>
+    <version>0.6.2</version>
+    <time>1295052067</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58088 from user coolo
+</comment>
+    <requestid>58088</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>033dd3a56c0aa65ae77667b40759050a</srcmd5>
+    <version>0.6.2</version>
+    <time>1295052075</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58088
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>033dd3a56c0aa65ae77667b40759050a</srcmd5>
+    <version>0.6.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>7fd0a8c8c8852cd8ce96276863fffcc5</srcmd5>
+    <version>0.6.2</version>
+    <time>1300892615</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65010 from user licensedigger
+</comment>
+    <requestid>65010</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>223170db3eef3ce8dc84bee07e22af15</srcmd5>
+    <version>0.6.2</version>
+    <time>1300892628</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65010
+</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>1dbdd8c87ec414b08dae84f9ccc24ffe</srcmd5>
+    <version>0.6.2</version>
+    <time>1316680857</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 83121 from jengelh)</comment>
+    <requestid>84282</requestid>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>1dbdd8c87ec414b08dae84f9ccc24ffe</srcmd5>
+    <version>0.6.2</version>
+    <time>1319181819</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>94ee7b7b6cf74bc3386e7c89a705a2c8</srcmd5>
+    <version>0.6.2</version>
+    <time>1323191032</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>0f945099a3b4c208e5709482416a0abf</srcmd5>
+    <version>0.6.2</version>
+    <time>1326203445</time>
+    <user>coolo</user>
+    <comment>- fix init script for 3.x kernel (bnc#739584)</comment>
+    <requestid>99507</requestid>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>d847d1611ae9a5eee22dcc91787acaf3</srcmd5>
+    <version>0.6.2</version>
+    <time>1330363998</time>
+    <user>coolo</user>
+    <comment>- module parameter name changed from &quot;num_devices&quot; to
+  &quot;zram_num_devices&quot;, adapt init-script accordingly (forwarded request 107003 from oertel)</comment>
+    <requestid>107072</requestid>
+  </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>d847d1611ae9a5eee22dcc91787acaf3</srcmd5>
+    <version>0.6.2</version>
+    <time>1340183245</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="17">
+    <srcmd5>d847d1611ae9a5eee22dcc91787acaf3</srcmd5>
+    <version>0.6.2</version>
+    <time>1359108763</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="18">
+    <srcmd5>83eda638c54baeda3d0ef3f816c45ea8</srcmd5>
+    <version>0.6.2</version>
+    <time>1373985217</time>
+    <user>coolo</user>
+    <comment>- module parameter again changed back to &quot;num_devices&quot; (bnc#825238)
+- fix package description, remove about compcache-kmp (bnc#825238) (forwarded request 183264 from tiwai)</comment>
+    <requestid>183294</requestid>
+  </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>83eda638c54baeda3d0ef3f816c45ea8</srcmd5>
+    <version>0.6.2</version>
+    <time>1379662139</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="22">
+    <srcmd5>83eda638c54baeda3d0ef3f816c45ea8</srcmd5>
+    <version>0.6.2</version>
+    <time>1409300667</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="23">
+    <srcmd5>4a86bdbc614acecbc5d5c57a8f607558</srcmd5>
+    <version>0.6.2</version>
+    <time>1464853148</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399300</requestid>
+  </revision>
+  <revision rev="28" vrev="24">
+    <srcmd5>770bab0dabc5f144b7481764ddd53e70</srcmd5>
+    <version>0.6.2</version>
+    <time>1490318535</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481707</requestid>
+  </revision>
+  <revision rev="29" vrev="25">
+    <srcmd5>e84983f7c87eaa99bafa28153a23d6ce</srcmd5>
+    <version>0.6.2</version>
+    <time>1511517268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544847</requestid>
+  </revision>
+</revisionlist>

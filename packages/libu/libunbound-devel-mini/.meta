@@ -1,0 +1,19 @@
+<package name="libunbound-devel-mini" project="openSUSE:Factory">
+  <title>Validating, recursive, and caching DNS(SEC) resolver</title>
+  <description>Unbound is a validating, recursive, and caching DNS(SEC) resolver.
+
+The C implementation of Unbound is developed and maintained by NLnet
+Labs. It is based on ideas and algorithms taken from a java prototype
+developed by Verisign labs, Nominet, Kirei and ep.net.
+
+Unbound is designed as a set of modular components, so that also
+DNSSEC (secure DNS) validation and stub-resolvers (that do not run
+as a server, but are linked into an application) are easily possible.
+
+This package is just for my personal use. If you want to submit it to factory you become the maintainer.
+
+</description>
+  <devel project="openSUSE:Factory" package="unbound"/>
+  <url>http://www.unbound.net/</url>
+  <bcntsynctag>unbound</bcntsynctag>
+</package>

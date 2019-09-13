@@ -1,0 +1,9 @@
+<package name="dump" project="openSUSE:Factory">
+  <title>A Backup Program</title>
+  <description>The dump package contains both dump and restore.  Dump examines files
+in a file system, determines which ones need to be backed up, and
+copies those files to a specified disk, tape, or other storage medium. 
+The restore command performs the inverse function of dump. It can
+restore a full backup of a file system.</description>
+  <devel project="Archiving" package="dump"/>
+</package>

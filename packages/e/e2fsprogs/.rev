@@ -1,0 +1,839 @@
+<revisionlist>
+  <revision rev="1" vrev="16">
+    <srcmd5>47c2a5aeabba951b914047454fa99cf0</srcmd5>
+    <version>1.39</version>
+    <time>1166483745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="22">
+    <srcmd5>71883748123ec73af885dbfda516cf2a</srcmd5>
+    <version>1.39</version>
+    <time>1166538606</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fec46b0c1fbf24eb9e37784f4d17a894</srcmd5>
+    <version>1.39+1.40_WIP_20061114</version>
+    <time>1169419578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>88cdf7cb76fbf194359f33caa78082c1</srcmd5>
+    <version>1.39+1.40_WIP_20061114</version>
+    <time>1169511283</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2a089b75bdf1ca63cef0da1f149cac0a</srcmd5>
+    <version>1.39+1.40_WIP_20061114</version>
+    <time>1169744591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>efb3e75c650de0b6c436f572e678fd60</srcmd5>
+    <version>1.39+1.40_WIP_20061114</version>
+    <time>1175121007</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>396f5e454fa0d4ec5a1873904d9e6bb7</srcmd5>
+    <version>1.39+1.40_WIP_20061114+PATCH20070329</version>
+    <time>1175264963</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>009bdd45791d5b96fcb301032e9947cd</srcmd5>
+    <version>1.39+1.40_WIP_20061114+PATCH20070329</version>
+    <time>1175712089</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>6ccd5593b71c1a999c4d97dfe575fdb4</srcmd5>
+    <version>1.39+1.40_WIP_20061114+PATCH20070329</version>
+    <time>1176391010</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>4c1e8cb7c63ce417130f0bf2b1aadaed</srcmd5>
+    <version>1.39+1.40_WIP_20061114+PATCH20070329</version>
+    <time>1177542164</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="23">
+    <srcmd5>03df604a714b0081d4fe3f117c683ad8</srcmd5>
+    <version>1.39+1.40_WIP_20061114+PATCH20070329</version>
+    <time>1182295160</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>08d5a32322165b1c052cebffa6c4a80f</srcmd5>
+    <version>1.40</version>
+    <time>1183652911</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a2341728434c5e4c342b5de3d5431d07</srcmd5>
+    <version>1.40.1</version>
+    <time>1184342759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e617798e651fff24d16c843f633511a2</srcmd5>
+    <version>1.40.2</version>
+    <time>1184785800</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>151b39310bfd9a685901921947cc5998</srcmd5>
+    <version>1.40.2</version>
+    <time>1185492273</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>d01cc2d2917255cc3394ff52170092f2</srcmd5>
+    <version>1.40.2</version>
+    <time>1185543279</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="30">
+    <srcmd5>2025b57a014978224dc3e818cfb5a8c4</srcmd5>
+    <version>1.40.2</version>
+    <time>1196287388</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5d3106f27b51a301c95e191e9e742a7d</srcmd5>
+    <version>1.40.4</version>
+    <time>1200606385</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bd8b46391d5e55098926bc4275c75f1f</srcmd5>
+    <version>1.40.5</version>
+    <time>1201897759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c708a7f6d7b6bc2808a2780ee88bf913</srcmd5>
+    <version>1.40.6</version>
+    <time>1204160067</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>73b605b9b983529dfdde9fa43c5ec782</srcmd5>
+    <version>1.40.7</version>
+    <time>1204918075</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b0057e18c8da91e9e78eec816abdda80</srcmd5>
+    <version>1.40.8</version>
+    <time>1206060919</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>042b38250d2e25eebf97a82150cc1ac9</srcmd5>
+    <version>1.40.8</version>
+    <time>1207829462</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>c275dba5182254aee5dc8cb59c262b81</srcmd5>
+    <version>1.40.8</version>
+    <time>1210190114</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="14">
+    <srcmd5>900840573ba960fb4e80a84231431b52</srcmd5>
+    <version>1.40.8</version>
+    <time>1210969780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="16">
+    <srcmd5>6876e1eab54b475d41e02397a84d051d</srcmd5>
+    <version>1.40.8</version>
+    <time>1211404023</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="17">
+    <srcmd5>d2490fa705f387f59a57d8ad6ef716a5</srcmd5>
+    <version>1.40.8</version>
+    <time>1211820245</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="19">
+    <srcmd5>e7dc26995e45c7e523a65442f89fa1c1</srcmd5>
+    <version>1.40.8</version>
+    <time>1212228645</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b37091f406326a7a0132e9d25402921a</srcmd5>
+    <version>1.40.11</version>
+    <time>1214338816</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>14c4f4890d6611e7c73cd73b6c19343f</srcmd5>
+    <version>1.40.11</version>
+    <time>1215801712</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5ca6e838699ae1878e2a9801650c5426</srcmd5>
+    <version>1.41.0</version>
+    <time>1216410787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="16">
+    <srcmd5>5c73339e971cb7e4586fd123a9657378</srcmd5>
+    <version>1.41.0</version>
+    <time>1219334320</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="17">
+    <srcmd5>d6f904ea258d0b1975b7a96decd02ed5</srcmd5>
+    <version>1.41.0</version>
+    <time>1219352038</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8d59640760375c9114a9b52df81e1105</srcmd5>
+    <version>1.41.1</version>
+    <time>1220638435</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>abb6811f19efecca22d77c418a96d1cb</srcmd5>
+    <version>1.41.1</version>
+    <time>1221489175</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="9">
+    <srcmd5>9dbca82829596a69e791a07a3097800c</srcmd5>
+    <version>1.41.1</version>
+    <time>1222709442</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="10">
+    <srcmd5>2e2a5ebb61126d2e58a89b3dab0c9880</srcmd5>
+    <version>1.41.1</version>
+    <time>1223387767</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="11">
+    <srcmd5>e4f8587cc906079ea1163a6718d46f94</srcmd5>
+    <version>1.41.1</version>
+    <time>1225670437</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="12">
+    <srcmd5>5c39de8ff473104b0728672f27c49c6a</srcmd5>
+    <version>1.41.1</version>
+    <time>1228486507</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="13">
+    <srcmd5>eed2da0dbba16a2a9a63feec277b107a</srcmd5>
+    <version>1.41.1</version>
+    <time>1231951903</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3bcc8e74559fb988bcccb19f2424773b</srcmd5>
+    <version>1.41.4</version>
+    <time>1233934467</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>796db283d4b54221c0666571beabc4f7</srcmd5>
+    <version>1.41.4</version>
+    <time>1235162635</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>d1bffcb9136d40bf9aa5aa2ba9a37d68</srcmd5>
+    <version>1.41.4</version>
+    <time>1237304851</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b32bdd77d30669f5be0f09398f7d17c4</srcmd5>
+    <version>1.41.7</version>
+    <time>1246633982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6a8079088aebe34120e46cea1f2556ee</srcmd5>
+    <version>1.41.8</version>
+    <time>1247840867</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>dfbd604df83d65f135db142c632ba743</srcmd5>
+    <version>1.41.8</version>
+    <time>1249573119</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>669a9ac624c65c0980174edd6afc0b9b</srcmd5>
+    <version>1.41.9</version>
+    <time>1252103073</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/e2fsprogs based on submit request 19670 from user coolo
+</comment>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>28f3009b0dbe0249f3c6bca9b0066d1d</srcmd5>
+    <version>1.41.9</version>
+    <time>1253132219</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/e2fsprogs based on submit request 20384 from user hennevogel
+</comment>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>28f3009b0dbe0249f3c6bca9b0066d1d</srcmd5>
+    <version>1.41.9</version>
+    <time>1253132219</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/e2fsprogs based on submit request 20384 from user hennevogel
+</comment>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>9d536b79b6f871ed112bc1ff4d7dce3c</srcmd5>
+    <version>1.41.9</version>
+    <time>1260532917</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/e2fsprogs based on submit request 26180 from user michal-m
+</comment>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>b182169346612c68e3492e6476680b91</srcmd5>
+    <version>1.41.9</version>
+    <time>1260950975</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/e2fsprogs based on submit request 26688 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="52" vrev="7">
+    <srcmd5>ec6adb6e67bcd9880ed2f2438096c3dc</srcmd5>
+    <version>1.41.9</version>
+    <time>1268923415</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>2b4433d7edcc79ec79891646ee4723ce</srcmd5>
+    <version>1.41.11</version>
+    <time>1270128320</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/e2fsprogs based on submit request 36548 from user jankara
+</comment>
+    <requestid>36548</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>2b4433d7edcc79ec79891646ee4723ce</srcmd5>
+    <version>1.41.11</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>2b4433d7edcc79ec79891646ee4723ce</srcmd5>
+    <version>1.41.11</version>
+    <time>1278678573</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>6f11633dc3c7573d303df5d453c98b76</srcmd5>
+    <version>1.41.11</version>
+    <time>1280486677</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/e2fsprogs based on submit request 44229 from user coolo
+</comment>
+    <requestid>44229</requestid>
+  </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>e274496dae9bf436277bc31775a7d905</srcmd5>
+    <version>1.41.11</version>
+    <time>1280841757</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/e2fsprogs based on submit request 44351 from user coolo
+</comment>
+    <requestid>44351</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>3421a8fa1e211cc9cab01a7260ffa11a</srcmd5>
+    <version>1.41.14</version>
+    <time>1295269148</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58461 from user coolo
+</comment>
+    <requestid>58461</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>7868fe5d12e75a09768ed8ec495648c4</srcmd5>
+    <version>1.41.14</version>
+    <time>1295269164</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58461
+</comment>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>5deaf4cc928b3d8f0fdf34b0c30627b5</srcmd5>
+    <version>1.41.14</version>
+    <time>1297507682</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59538 from user oertel
+</comment>
+    <requestid>59538</requestid>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>b3305de3fc1ddb0b854b9f67c4f784df</srcmd5>
+    <version>1.41.14</version>
+    <time>1297507693</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59538
+</comment>
+  </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>b3305de3fc1ddb0b854b9f67c4f784df</srcmd5>
+    <version>1.41.14</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="63" vrev="8">
+    <srcmd5>61c036c01938732bc9a543353976844c</srcmd5>
+    <version>1.41.14</version>
+    <time>1312441555</time>
+    <user>saschpe</user>
+    <comment>- Fix licenses in spec file to match those specified in COPYING file (forwarded request 76809 from jankara)</comment>
+    <requestid>76980</requestid>
+  </revision>
+  <revision rev="64" vrev="9">
+    <srcmd5>123911afb976887cb87973665aaeddbc</srcmd5>
+    <version>1.41.14</version>
+    <time>1312441569</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76980
+</comment>
+  </revision>
+  <revision rev="65" vrev="11">
+    <srcmd5>123911afb976887cb87973665aaeddbc</srcmd5>
+    <version>1.41.14</version>
+    <time>1319181860</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="66" vrev="12">
+    <srcmd5>2a835dd99951815729f30368122b9c4b</srcmd5>
+    <version>1.41.14</version>
+    <time>1326292575</time>
+    <user>coolo</user>
+    <comment>Fix building on Factory</comment>
+    <requestid>99422</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>a616f40bf80ecdfe666c16a11683a5a5</srcmd5>
+    <version>1.42</version>
+    <time>1330081448</time>
+    <user>coolo</user>
+    <comment>- removed dumpe2fs-add-man-page-warning-about-mounted-fil.patch
+  deprecated by this release
+- refreshed e2fsprogs-1.41.1-splash_support.patch
+- added several patches to fix warnings generated by the check_gcc_output
+  and rpmlint
+- update to 1.42
+  * this release has support for file systems &gt;16TB. online resize
+    requires kernel support which will hopefully be in kernel version
+    3.2. offline support is not yet available for &gt;16TB, but will be
+    coming
+  * this release has support for clustered allocation, which reduces
+    the number of block (now cluster) bitmaps by allocating and
+    deallocating space in contiguous power-of-2 collections of blocks,
+    which are called clustered. This is a filesystem level feature
+    called 'bigalloc', which must be enabled when the filesystem is
+    inititally formatted. It is not backwards compatible with older
+    kernels.
+  * added support for the Multi-Mount Protection (MMP) feature
+  * The mke2fs and e2fsck programs now tries to use the punch hole command 
+    as a &quot;discard&quot; when operating on normal files.
+  * The resize2fs program now has support for a new online resize ioctl 
+    that can support file systems &gt; 16TB, once it arrives in v3.x kernels.
+  * Added e4defrag tool which uses the EXT4_IOC_MOVE_EXT ioctl.
+  * Added support for journals larger than 2GB.
+  * Added internationalization support for libcom_err error table strings.
+  * Fixed various spelling mistakes found in various output strings found by 
+    I18N translators.
+  * Update translations: French, Chinese, Germany, Indonesian, Swedish, 
+    Vietnamese, Polish, Dutch, Czech. (Addresses Debian Bugs: #520985, 
+    #620659)</comment>
+    <requestid>103347</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>6eaea78ef7b5a46b57cb240896d9df31</srcmd5>
+    <version>1.42</version>
+    <time>1334692674</time>
+    <user>coolo</user>
+    <comment>usrMerge project - move files from toplevel to /usr (forwarded request 113288 from rjschwei)</comment>
+    <requestid>113290</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>69dab8975c6b9e52bde72aee7871fcaa</srcmd5>
+    <version>1.42.2</version>
+    <time>1335190186</time>
+    <user>coolo</user>
+    <comment>update to 1.42.2 and add matching german messages</comment>
+    <requestid>115072</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>79931669cf4979fdc297b4f9d0016869</srcmd5>
+    <version>1.42.3</version>
+    <time>1338030005</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.42.3
+   - Fix a bug in the Unix I/O manager which could cause corruption of file
+     systems with more than 16TB when e2fsprogs is compiled in 32-bit mode.
+   - Improve the support for integrated quota files.
+   - Fixed a regression introduced in 1.42.2 which would cause applications
+     outside of e2fsprogs which did not pass the EXT2_FLAG_64BIT to crash.
+   - Fix a bug which would cause mke2fs to fail creating the journal if
+     /etc/mtab and /proc/mounts are missing.
+   - Updated/fixed various man page.
+   - Updated translations.
+
+- Added dependency of e2fsprogs package on particular versions of libext2fs
+  and libcom_err to avoid problems with missing symbols (forwarded request 122001 from jankara)</comment>
+    <requestid>122002</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>ebcf0d840138ea3bcd2a9d84ff2fa764</srcmd5>
+    <version>1.42.4</version>
+    <time>1339767646</time>
+    <user>coolo</user>
+    <comment>- update to 1.42.4
+  * Fix 64-bit block number bugs in e2fsck, dumpe2fs, and debugfs which
+    could corrupt file systems
+  * Fixed e2fsck's handling of how errors propagate from the journal to
+    the file system superblock
+  * Fixed a false positive complaint from e2fsck if all of the extents
+    in the last extent block are uninitialized and located after the
+    end of the file.
+  * dumpe2fs will display the journal's error indicator in the
+    superblock if it is set
+  * Fixed a  bug which caused e2fsck to incorrectly use O_EXCLUSIVE in
+    some corner cases.
+  * Fix truncation of extent-mapped inodes in e2fsck and libext2fs
+  * Fixed i_blocks accounting in bigalloc file systems.
+  * Add support for btrfs's No_COW flag to lsattr and chattr
+  * Debugfs interprets the date strings of the form &quot;@ddd&quot; as ddd
+    seconds after the epoch
+  * Updated/fixed various man pages  (Closes: #674453, #674694) (forwarded request 124987 from coolo)</comment>
+    <requestid>125024</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>ebcf0d840138ea3bcd2a9d84ff2fa764</srcmd5>
+    <version>1.42.4</version>
+    <time>1340183297</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>c878c2c76fce2ac63fb475be6413af5f</srcmd5>
+    <version>1.42.4</version>
+    <time>1346397829</time>
+    <user>coolo</user>
+    <comment>- Add an /etc/e2fsck.conf file with broken_system_clock=1 to fix 
+  first part of bnc#775268 (forwarded request 131510 from namtrac)</comment>
+    <requestid>131885</requestid>
+  </revision>
+  <revision rev="74" vrev="5">
+    <srcmd5>afe3a0d7c66a7e487b67bb0ac362b552</srcmd5>
+    <version>1.42.4</version>
+    <time>1347512381</time>
+    <user>coolo</user>
+    <comment>- add makeinfo as explicit buildrequire (forwarded request 133623 from coolo)</comment>
+    <requestid>133634</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>a048d43d2a4f73e2c02aaa67944ebcc6</srcmd5>
+    <version>1.42.6</version>
+    <time>1350021797</time>
+    <user>coolo</user>
+    <comment>- removed e2fsprogs-1.42-voidreturn_value_declared.patch because it makes
+  no longer any sence due to upstream changes (forwarded request 137687 from jankara)</comment>
+    <requestid>137688</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>a048d43d2a4f73e2c02aaa67944ebcc6</srcmd5>
+    <version>1.42.6</version>
+    <time>1359108835</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>468f532629787efc349ab695856689e2</srcmd5>
+    <version>1.42.6</version>
+    <time>1360950145</time>
+    <user>coolo</user>
+    <comment>(please forward to Factory AND 12.3)
+- Install the correct source file as /etc/e2fsck.conf. (forwarded request 154914 from fcrozat)</comment>
+    <requestid>155454</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>00a12b8c538c7d935a2e9c6b5b51546d</srcmd5>
+    <version>1.42.7</version>
+    <time>1361888076</time>
+    <user>coolo</user>
+    <comment>Update changelog to mention all added patches. (forwarded request 156372 from jankara)</comment>
+    <requestid>156373</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>6c8ac6d45d76f34bf077b0fd0b30c768</srcmd5>
+    <version>1.42.7</version>
+    <time>1362736162</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157776</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>5a9a53bc27c8c158260ef9fd556941fa</srcmd5>
+    <version>1.42.8</version>
+    <time>1372428204</time>
+    <user>coolo</user>
+    <comment>Update to 1.42.8 (forwarded request 181173 from jankara)</comment>
+    <requestid>181174</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>5a9a53bc27c8c158260ef9fd556941fa</srcmd5>
+    <version>1.42.8</version>
+    <time>1379662271</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>9436f33e689cfee2a3528c5a8d568c34</srcmd5>
+    <version>1.42.9</version>
+    <time>1391360913</time>
+    <user>coolo</user>
+    <comment>Remove e2fsprogs-mini (forwarded request 215287 from jankara)</comment>
+    <requestid>215288</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>e1fb0d36a5e1c27c90e7b0c114ab79c5</srcmd5>
+    <version>1.42.9</version>
+    <time>1399051325</time>
+    <user>coolo</user>
+    <comment>- Add filefrag-print-shared-extent-flag.patch: lets filefrag print shared
+  extent flag when it gets it. Helps with fate#316317 / bnc#868847. Patch
+  sent to upstream 4/17/2014. (forwarded request 231951 from mfasheh)</comment>
+    <requestid>231952</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>fc0f3956a515a31e995cb9c80be85bbe</srcmd5>
+    <version>1.42.11</version>
+    <time>1405521441</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241111</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>fc0f3956a515a31e995cb9c80be85bbe</srcmd5>
+    <version>1.42.11</version>
+    <time>1409300808</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>48adaf6ddfe132049492d1647cfdb6e7</srcmd5>
+    <version>1.42.12</version>
+    <time>1409810147</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247232</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>e06d6984b644c827b52d7c7b4cdb75ad</srcmd5>
+    <version>1.42.12</version>
+    <time>1420927622</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280548</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>fa7acbf6bcd5553e9283c4781027e117</srcmd5>
+    <version>1.42.13</version>
+    <time>1432723194</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308743</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>48760165f9a21841c69bc1b5cd8ccd2e</srcmd5>
+    <version>1.42.13</version>
+    <time>1436111862</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>313192</requestid>
+  </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>21ce194ac6a1d174a005ec63cc67b926</srcmd5>
+    <version>1.42.13</version>
+    <time>1439818398</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322114</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>ba05af2e4b562cb01a071a6781e32178</srcmd5>
+    <version>1.43.1</version>
+    <time>1468048690</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403733</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>66c3f62db3c057bd2b2c460869197a9b</srcmd5>
+    <version>1.43.3</version>
+    <time>1475588521</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>432946</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>bcbd3bf180bc0f7a97369d2e14fcaa93</srcmd5>
+    <version>1.43.4</version>
+    <time>1488930204</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>467812</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>f8ac2e0ac529d87cda2556d21dad29c3</srcmd5>
+    <version>1.43.5</version>
+    <time>1503999375</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517939</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>0600bb34b5d46e5856a783ebba2520ad</srcmd5>
+    <version>1.43.6</version>
+    <time>1505331191</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521408</requestid>
+  </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>6da31857f8e4140c4de900e59914dd73</srcmd5>
+    <version>1.43.6</version>
+    <time>1506108588</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527259</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>e3b63c557171829b71ca990e79d00de3</srcmd5>
+    <version>1.43.7</version>
+    <time>1510911423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541821</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>272a0fa9350ae153df6fc8ea13fdf658</srcmd5>
+    <version>1.43.8</version>
+    <time>1516443705</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>566366</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>5f41ba689f8bc9fa1467f673e04278a9</srcmd5>
+    <version>1.43.8</version>
+    <time>1517234085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569339</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>fe03fab1c10b9c4fbc11266d285aaa39</srcmd5>
+    <version>1.43.9</version>
+    <time>1520852779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584248</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>c638530c6adbf8e104f84488c54fc492</srcmd5>
+    <version>1.44.2</version>
+    <time>1527673214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611843</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>dc54b46221da872458e7fc71702c2ef1</srcmd5>
+    <version>1.44.4</version>
+    <time>1537187140</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635056</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>01b032407d9945a095e38ec8e82c8122</srcmd5>
+    <version>1.44.5</version>
+    <time>1548769041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663724</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>0be9c369a1300563b5348d359b84b35d</srcmd5>
+    <version>1.45.0</version>
+    <time>1554372055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690289</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>7a1f3b2ca37e9625dc4200dd4d169d8c</srcmd5>
+    <version>1.45.1</version>
+    <time>1558426779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703179</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>5b98726ec1487a33c717ecc2857e2cec</srcmd5>
+    <version>1.45.2</version>
+    <time>1560337578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706657</requestid>
+  </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>b64c1249a149712334e0acdeeac78347</srcmd5>
+    <version>1.45.2</version>
+    <time>1562591395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713211</requestid>
+  </revision>
+  <revision rev="108" vrev="3">
+    <srcmd5>e9af09e351aa83af5e1f41dc83245d46</srcmd5>
+    <version>1.45.2</version>
+    <time>1564996700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718774</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>7d45751e69b9b17ace5b31613bf981d2</srcmd5>
+    <version>1.45.3</version>
+    <time>1566899889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721981</requestid>
+  </revision>
+</revisionlist>

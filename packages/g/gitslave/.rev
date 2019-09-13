@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b966cfc28256cd716a9dd92b74e7788c</srcmd5>
+    <version>2.0.2</version>
+    <time>1372058910</time>
+    <user>coolo</user>
+    <comment>Please review for inclusion in factory.
+
+Spec has been updated to reflect that this package has a LGPL-2.1-derived license. See LICENSE.README and LICENSE.TXT inside the tarball for more details.</comment>
+    <requestid>179560</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>017d3af43d8ce4fce4657b99f1fdb01d</srcmd5>
+    <version>2.0.2</version>
+    <time>1373396013</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>182619</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>017d3af43d8ce4fce4657b99f1fdb01d</srcmd5>
+    <version>2.0.2</version>
+    <time>1379662452</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>017d3af43d8ce4fce4657b99f1fdb01d</srcmd5>
+    <version>2.0.2</version>
+    <time>1409300990</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>f474cb0f8126ec7608314c2831cc9969</srcmd5>
+    <version>2.0.2</version>
+    <time>1426064271</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289959</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>ebca18dcddebd7a7cccef436bb04a072</srcmd5>
+    <version>2.0.2</version>
+    <time>1468999287</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411768</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>3623e2226c3e16dd3b169bf15d367858</srcmd5>
+    <version>2.0.2</version>
+    <time>1474016516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>427866</requestid>
+  </revision>
+</revisionlist>

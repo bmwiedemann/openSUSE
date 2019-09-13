@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0eab201b09e08ecd7301b4c77c437084</srcmd5>
+    <version>2.2.3</version>
+    <time>1479299545</time>
+    <user>dimstar_suse</user>
+    <comment>Submit of LTS Haskell as specifid in https://hackweek.suse.com/14/projects/1368</comment>
+    <requestid>413582</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>107bbaa056554261ba313c95ee95d5b7</srcmd5>
+    <version>2.4.2</version>
+    <time>1490026026</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477449</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4591a6036c8cd44b7b52cd5a6a08fa2e</srcmd5>
+    <version>2.4.3</version>
+    <time>1492169888</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485133</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>70c579606d59a7516ffe6f287951cbf4</srcmd5>
+    <version>2.4.3</version>
+    <time>1498120671</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504076</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a41db7c6fc1d82870f73bddaeba591b6</srcmd5>
+    <version>2.4.4</version>
+    <time>1504205265</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513391</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>569d0e6cbae266e3f3275fd26f5298a2</srcmd5>
+    <version>2.4.4</version>
+    <time>1505504989</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524795</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ad4f2f73ebc2f3ef7872d29b58e444a3</srcmd5>
+    <version>2.5.0</version>
+    <time>1527674951</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-hspec-core to the latest version.</comment>
+    <requestid>607815</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>34ed1851f92fca4a052d424076c25d9d</srcmd5>
+    <version>2.5.5</version>
+    <time>1532445585</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update hspec-core to version 2.5.5.
+  Upstream does not provide a change log file.
+
+- Update hspec-core to version 2.5.4.
+  Upstream does not provide a change log file.</comment>
+    <requestid>623789</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9ae15164b393635207becce90d90ea16</srcmd5>
+    <version>2.5.8</version>
+    <time>1540448204</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642866</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a16a7535d20f1c8089c7319810489fa5</srcmd5>
+    <version>2.6.0</version>
+    <time>1541746324</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646355</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bf51bf2c237d8ef9a2a6341e441f85dc</srcmd5>
+    <version>2.7.0</version>
+    <time>1548452598</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>667137</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>37befcefc557aa3669b94e9bab028148</srcmd5>
+    <version>2.7.1</version>
+    <time>1554276445</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>690182</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b4cbdfac1f005052820a23282bf25b2</srcmd5>
+    <version>0.4.1</version>
+    <time>1476351017</time>
+    <user>dimstar_suse</user>
+    <comment>required for paperwork</comment>
+    <requestid>433879</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6945c3fadd691d276714ba2344d5630a</srcmd5>
+    <version>0.5</version>
+    <time>1515623617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560041</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ee144c6757c1b049ffd3f030211e87b</srcmd5>
+    <version>0.7</version>
+    <time>1558129425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703573</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>793cb0edffa4c28d985e0777af6ff689</srcmd5>
+    <version>0.7.2</version>
+    <time>1568191000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2:
+  * minor bugfixes</comment>
+    <requestid>729839</requestid>
+  </revision>
+</revisionlist>

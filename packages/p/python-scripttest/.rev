@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b848bee1f5c31484e18f8a5b0c9171e4</srcmd5>
+    <version>1.3</version>
+    <time>1389278245</time>
+    <user>coolo</user>
+    <comment>new dep for pip-1.5</comment>
+    <requestid>213040</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a64999cbde5513619af6e69a4319831b</srcmd5>
+    <version>1.3</version>
+    <time>1394172375</time>
+    <user>coolo</user>
+    <comment>totally awesome to have</comment>
+    <requestid>224889</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a64999cbde5513619af6e69a4319831b</srcmd5>
+    <version>1.3</version>
+    <time>1409302988</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>1aa45be4d7905aa0a7e6c84c9d98bf31</srcmd5>
+    <version>1.3</version>
+    <time>1504520267</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519806</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>2235a6c263c7cd0f8a75e0c759c8cbaf</srcmd5>
+    <version>1.3</version>
+    <time>1545648221</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659660</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>6f40d907c384230d61fae166df51d07a</srcmd5>
+    <version>1.3</version>
+    <time>1567848302</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file, update URL</comment>
+    <requestid>726492</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f440ac418c878d01b8b9a25cf169703c</srcmd5>
+    <version>0.4.7</version>
+    <time>1505680709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>526471</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cf3dfcacddb9fde399e665a233501c30</srcmd5>
+    <version>0.4.7.1</version>
+    <time>1508610103</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535523</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3739caf1e69bbb459b4be1bb0d6e688d</srcmd5>
+    <version>0.4.7.1</version>
+    <time>1518855347</time>
+    <user>dimstar_suse</user>
+    <comment>- Add freeorion-boost-1.66.patch: Replace use of
+  Boost::system::posix_error, which has been deprecated since boost
+  1.37. Fixes build with Boost 1.66. (forwarded request 577249 from dimstar)</comment>
+    <requestid>577260</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>850f352dc15ee0317f664a0d9752c9a8</srcmd5>
+    <version>0.4.8</version>
+    <time>1542580338</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.4.8 try5</comment>
+    <requestid>649915</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2320af317ae77517f793cf024c820050</srcmd5>
+    <version>0.4.8</version>
+    <time>1566665455</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with boost 1.69: Add freeorion-0.4.8-remove-boost-signals.patch.
+- Refresh spec file. (forwarded request 725482 from 1Antoine1)</comment>
+    <requestid>725814</requestid>
+  </revision>
+</revisionlist>

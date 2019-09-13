@@ -1,0 +1,1718 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c6b8e661b4104733dbd84994662ebe11</srcmd5>
+    <version>2.18.50.20071002</version>
+    <time>1191896938</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ce27a819cc5083567aea65285823f8c2</srcmd5>
+    <version>2.18.50.20071112</version>
+    <time>1194889186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a48b4dcea8efd5abfcb1504cb486c916</srcmd5>
+    <version>2.18.50.20080110</version>
+    <time>1200102074</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53804e93001f0efd77bbbf375a5ad0e5</srcmd5>
+    <version>2.18.50.20080117</version>
+    <time>1200603037</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c930cf1a25a13dd3400e2350708d5c92</srcmd5>
+    <version>2.18.50.20080125</version>
+    <time>1201276470</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b288f905735d6a8826aeee06391eba38</srcmd5>
+    <version>2.18.50.20080201</version>
+    <time>1201891979</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cec6505024bc20c7e12588c45ff1f37b</srcmd5>
+    <version>2.18.50.20080215</version>
+    <time>1203130728</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>196c81da06efed3006d189ee35ce0592</srcmd5>
+    <version>2.18.50.20080225</version>
+    <time>1203955618</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6f5f099a8706029f186c30a972aceafa</srcmd5>
+    <version>2.18.50.20080307</version>
+    <time>1204917524</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c9f9bce02c15ffa16c7d5155086f83e3</srcmd5>
+    <version>2.18.50.20080325</version>
+    <time>1206543903</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1629d46f3068cd490f6fd7308ce32ad7</srcmd5>
+    <version>2.18.50.20080409</version>
+    <time>1207757988</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>0e230d5babbbbf30d79832ec469b7830</srcmd5>
+    <version>2.18.50.20080409</version>
+    <time>1207825800</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f9b09541cf42d48c213147728192ca66</srcmd5>
+    <version>2.18.50.20080618</version>
+    <time>1214091024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>faea06856ed3758fd4db22c6b57d1a20</srcmd5>
+    <version>2.18.50.20080711</version>
+    <time>1215800950</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>01a1676c327eabb8fe0790942ab787f4</srcmd5>
+    <version>2.18.50.20080718</version>
+    <time>1216410345</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>91efdcef2a8f025f7d486403e78d7ecd</srcmd5>
+    <version>2.18.50.20080808</version>
+    <time>1218209221</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2ba7b0b04872837102faa395e68f9d97</srcmd5>
+    <version>2.18.50.20080904</version>
+    <time>1220645387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7db1751ce106cf6b3372bad0a1baeb47</srcmd5>
+    <version>2.18.90.20080912</version>
+    <time>1221245561</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>73694741541de760050b1aca67ea87ce</srcmd5>
+    <version>2.18.91</version>
+    <time>1222207739</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6c0ec3674b5d7713a52b80eb086fc768</srcmd5>
+    <version>2.18.93</version>
+    <time>1223905553</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fc63386705a74f31ca344e215a536eea</srcmd5>
+    <version>2.19</version>
+    <time>1224688736</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>6981e48dc31f3994ceea5b6f5543fae7</srcmd5>
+    <version>2.19</version>
+    <time>1225577816</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>8800bd59b9bf707fc786063f1fc9dd75</srcmd5>
+    <version>2.19</version>
+    <time>1226066160</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>6437b8ed2613ea0c6c5a1d5e63f4881b</srcmd5>
+    <version>2.19</version>
+    <time>1226936111</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>43b39ed4998441b0a712838e7fb2977e</srcmd5>
+    <version>2.19</version>
+    <time>1227276361</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>f5843f462fb6e256cdf2a6a618e289dd</srcmd5>
+    <version>2.19</version>
+    <time>1227279804</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>acb412a39db199968bb52c3a34820305</srcmd5>
+    <version>2.19</version>
+    <time>1228486073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>64e6bcc02ada2883a57014d413850ee3</srcmd5>
+    <version>2.19</version>
+    <time>1229338543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>c4af13f29d3ec63fec1585aeb12cc552</srcmd5>
+    <version>2.19</version>
+    <time>1231507781</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="11">
+    <srcmd5>88475eb275746a187a306f388a72f67a</srcmd5>
+    <version>2.19</version>
+    <time>1231508921</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>221fd2de8f43f8352ce2fa0700114f31</srcmd5>
+    <version>2.19.51</version>
+    <time>1232625884</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>2c4e4989cc2b0fec30a17860751b260f</srcmd5>
+    <version>2.19.51</version>
+    <time>1232639292</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>e7050b2f143d8fddbc623a28b3c1840c</srcmd5>
+    <version>2.19.51</version>
+    <time>1233265440</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>d7dcdaee9de6ff7a49bc4314d89e7e4d</srcmd5>
+    <version>2.19.51</version>
+    <time>1234784076</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>bb9527b5d25caf4ab2f8d2032a987e72</srcmd5>
+    <version>2.19.51</version>
+    <time>1238685770</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>8fa68340a4611bd7d1499be7a42d3577</srcmd5>
+    <version>2.19.51</version>
+    <time>1243462618</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>e3fcb8363e57f6bd48212380d83417d6</srcmd5>
+    <version>2.19.51</version>
+    <time>1244818030</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="9">
+    <srcmd5>912b2fccf32503a744de6d23c6632559</srcmd5>
+    <version>2.19.51</version>
+    <time>1244903534</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="10">
+    <srcmd5>83f374da459ed37cd6d5fb9ac9dbc454</srcmd5>
+    <version>2.19.51</version>
+    <time>1250864470</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:gcc/binutils based on submit request 18357 from user rguenther
+</comment>
+  </revision>
+  <revision rev="40" vrev="12">
+    <srcmd5>83f374da459ed37cd6d5fb9ac9dbc454</srcmd5>
+    <version>2.19.51</version>
+    <time>1250864470</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:gcc/binutils based on submit request 18357 from user rguenther
+</comment>
+  </revision>
+  <revision rev="41" vrev="13">
+    <srcmd5>43cc85b8eb246e8c07b9277510be4672</srcmd5>
+    <version>2.19.51</version>
+    <time>1256075716</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:gcc/binutils based on submit request 22060 from user rguenther
+</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1564a949386156548143d4a6036fb1d8</srcmd5>
+    <version>2.20.0</version>
+    <time>1259321610</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:gcc/binutils based on submit request 24908 from user matz2
+</comment>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>b9f91e974ab696939e47ff078f63f1db</srcmd5>
+    <version>2.20.0</version>
+    <time>1263479063</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:gcc/binutils based on submit request 29428 from user matz2
+</comment>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>cb5e8a83b235406cbd8bb4ce3a3fded3</srcmd5>
+    <version>2.20.0</version>
+    <time>1264773533</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:gcc/binutils based on submit request 30302 from user matz2
+</comment>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>d0b3fd1ee266cf1a9665b523a4f8ee9f</srcmd5>
+    <version>2.20.0</version>
+    <time>1265990667</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:gcc/binutils based on submit request 32416 from user matz2
+</comment>
+  </revision>
+  <revision rev="46" vrev="5">
+    <srcmd5>2767f187ee2bb0278f5ae621b2ee834b</srcmd5>
+    <version>2.20.0</version>
+    <time>1268923026</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="47" vrev="6">
+    <srcmd5>a5e2c1f24f1a7ca5e114d729ecc31506</srcmd5>
+    <version>2.20.0</version>
+    <time>1269558233</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:gcc/binutils based on submit request 35698 from user matz2
+</comment>
+    <requestid>35698</requestid>
+  </revision>
+  <revision rev="48" vrev="7">
+    <srcmd5>10ffd2e8772dacfa3189dbf6c8a23e11</srcmd5>
+    <version>2.20.0</version>
+    <time>1271186512</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:gcc/binutils based on submit request 37774 from user matz2
+</comment>
+    <requestid>37774</requestid>
+  </revision>
+  <revision rev="49" vrev="9">
+    <srcmd5>10ffd2e8772dacfa3189dbf6c8a23e11</srcmd5>
+    <version>2.20.0</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="50" vrev="10">
+    <srcmd5>10ffd2e8772dacfa3189dbf6c8a23e11</srcmd5>
+    <version>2.20.0</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="51" vrev="11">
+    <srcmd5>6493ab71258abaa1c798a3dc83c71d04</srcmd5>
+    <version>2.20.0</version>
+    <time>1280485947</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:gcc/binutils based on submit request 44055 from user rguenther
+</comment>
+    <requestid>44055</requestid>
+  </revision>
+  <revision rev="52" vrev="11">
+    <srcmd5>9ef225858d4046729cba11cff7447eb1</srcmd5>
+    <version>2.21</version>
+    <time>1294963877</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57991 from user rguenther
+</comment>
+    <requestid>57991</requestid>
+  </revision>
+  <revision rev="53" vrev="12">
+    <srcmd5>29cb439ac6e713c425a6138482b91ef8</srcmd5>
+    <version>2.21</version>
+    <time>1294963889</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57991
+</comment>
+  </revision>
+  <revision rev="54" vrev="15">
+    <srcmd5>29cb439ac6e713c425a6138482b91ef8</srcmd5>
+    <version>2.21</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>39f4b53b77fa08adcf6db34a447bb8bb</srcmd5>
+    <version>2.21.0</version>
+    <time>1303378938</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67906 from user licensedigger
+</comment>
+    <requestid>67906</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>85373670b24f0136a878068d7dfc9d66</srcmd5>
+    <version>2.21.0</version>
+    <time>1303378958</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67906
+</comment>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>db1bd02d2dc433c8beeb81c6345e1a2d</srcmd5>
+    <version>2.21.0</version>
+    <time>1304516996</time>
+    <user>saschpe</user>
+    <comment>- Update to binutils-2_21-branch head.  [bnc#691290]</comment>
+    <requestid>69554</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>f9045164398f2e9ec643e3d7c3287a50</srcmd5>
+    <version>2.21.0</version>
+    <time>1304517018</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69554
+</comment>
+  </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>c8c194d1a6fc1c26c8416e5471e3cdcd</srcmd5>
+    <version>2.21.0</version>
+    <time>1308130886</time>
+    <user>saschpe</user>
+    <comment>- Add patch to support AMD Bulldozer v2 [fate #312149]
+
+- Update to binutils-2_21-branch head.  [bnc#698346]
+
+- Disable cross-sh4-binutils.
+
+  Rewrite history by including this:
+    Wed Mar 24 17:23:32 CET 2010 - matz@suse.de
+    
+    - Fix testcase breaking with MALLOC_PERTURB.  [bnc #590820]
+    
+    Sat Feb 13 17:52:11 CET 2010 - rguenther@suse.de
+    
+    - Drop build counter from the libbfd and libopcode SONAMEs.
+    
+    Fri Jan 22 15:31:06 CET 2010 - matz@suse.de
+    
+    - Update to current binutils-2_20-branch.  [bnc #561142, #573019]
+    
+    Wed Jan 13 15:16:44 CET 2010 - matz@novell.com
+    
+    - Fix removal of unwanted files (man,info,libiberty) on the
+      cross binutils.
+    
+    Sat Dec 12 19:09:40 CET 2009 - jengelh@medozas.de
+    
+    - add baselibs.conf as a source
+    
+    Mon Dec  7 16:14:27 CET 2009 - jengelh@medozas.de</comment>
+    <requestid>73515</requestid>
+  </revision>
+  <revision rev="60" vrev="6">
+    <srcmd5>bbc33ea4fe041e530964e73834488676</srcmd5>
+    <version>2.21.0</version>
+    <time>1308130909</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73515
+</comment>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>75bd61ab8b93d62967155d18785844b9</srcmd5>
+    <version>2.21.1</version>
+    <time>1309941462</time>
+    <user>saschpe</user>
+    <comment>- Update to binutils 2.21.1 release.
+
+- Add support for x86_64-pep target [needed for Xen fate #311376]</comment>
+    <requestid>74753</requestid>
+  </revision>
+  <revision rev="62" vrev="5">
+    <srcmd5>2dbbc3270502927271099aea14f2c16d</srcmd5>
+    <version>2.21.1</version>
+    <time>1309941487</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74753
+</comment>
+  </revision>
+  <revision rev="63" vrev="6">
+    <srcmd5>f3f83e7b10d78efb6aef21853b184105</srcmd5>
+    <version>2.21.1</version>
+    <time>1310392879</time>
+    <user>darix</user>
+    <comment>- BuildRequire glibc-devel-static to fix static linking tests.
+
+- Add patch to fix a readelf endless loop bug [#12855]
+
+- Add dependency to opcodes from gold.</comment>
+    <requestid>76035</requestid>
+  </revision>
+  <revision rev="64" vrev="7">
+    <srcmd5>33568ea52ba401c11e28da330fede264</srcmd5>
+    <version>2.21.1</version>
+    <time>1310392905</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 76035
+</comment>
+  </revision>
+  <revision rev="65" vrev="8">
+    <srcmd5>12fd4f64b450ae4e5a9a95255818a0d8</srcmd5>
+    <version>2.21.1</version>
+    <time>1310472367</time>
+    <user>darix</user>
+    <comment>- Add patch for bogus executable stack setting with -flto.  [bso#12982]</comment>
+    <requestid>76101</requestid>
+  </revision>
+  <revision rev="66" vrev="9">
+    <srcmd5>a41632eb2b424bbf802ae95abb1ef95d</srcmd5>
+    <version>2.21.1</version>
+    <time>1310472397</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 76101
+</comment>
+  </revision>
+  <revision rev="67" vrev="10">
+    <srcmd5>0fadfb37b7c4d8379d3d8e43f90c0f21</srcmd5>
+    <version>2.21.1</version>
+    <time>1314178642</time>
+    <user>saschpe</user>
+    <comment>- Fix XLC object linker complaints.  [bnc#713504]
+
+- Make --no-copy-dt-needed-default the default for ld.</comment>
+    <requestid>79558</requestid>
+  </revision>
+  <revision rev="68" vrev="11">
+    <srcmd5>f47544be5fadf71cfa92a4a2565f6ea7</srcmd5>
+    <version>2.21.1</version>
+    <time>1314178663</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79558
+</comment>
+  </revision>
+  <revision rev="69" vrev="13">
+    <srcmd5>f47544be5fadf71cfa92a4a2565f6ea7</srcmd5>
+    <version>2.21.1</version>
+    <time>1319181788</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="70" vrev="10">
+    <srcmd5>5039ab08f0dd4f2ee274a28694225024</srcmd5>
+    <version>2.21.90</version>
+    <time>1320486883</time>
+    <user>coolo</user>
+    <comment>- Update to binutils-2_22-branch head.
+  * Adds support for LDPT_GET_SYMBOLS_V2.
+  * Drop patches that have been applied upstream.
+
+- Fix --gc-sections failure with symbol versioning [bso#13195]
+
+- Update to binutils-2_22-branch head.
+  * Drop patches that have been applied upstream.
+  * Drop patches that no longer apply.
+
+- use -gnueabi extension to switch to new abi for arm
+
+- Add support for arm-*-gnueabihf targets (PR ld/12643)
+
+- add arm targets
+
+- Make --no-copy-dt-needed-entries the default for ld.
+- Update to binutils-2_22-branch head.
+  * Adds support for LDPT_GET_SYMBOLS_V2.
+  * Drop patches that have been applied upstream.
+
+- Fix --gc-sections failure with symbol versioning [bso#13195]
+
+- Update to binutils-2_22-branch head.
+  * Drop patches that have been applied upstream.
+  * Drop patches that no longer apply.
+
+- use -gnueabi extension to switch to new abi for arm
+
+- Add support for arm-*-gnueabihf targets (PR ld/12643)</comment>
+    <requestid>89936</requestid>
+  </revision>
+  <revision rev="71" vrev="10">
+    <srcmd5>ca6b26cdab4005acfed5ade84762f69f</srcmd5>
+    <version>2.22</version>
+    <time>1323190669</time>
+    <user>coolo</user>
+    <comment>- Update to final binutils 2.22 release.</comment>
+    <requestid>95571</requestid>
+  </revision>
+  <revision rev="72" vrev="11">
+    <srcmd5>a2851f5d39a26fc5c9b9e9c8642dc79c</srcmd5>
+    <version>2.22</version>
+    <time>1325846590</time>
+    <user>coolo</user>
+    <comment>- Add patch to fix arm unwind table corruption.  [bso#13449]
+- Canonicalize arm targets.
+- Enable gold for arm.
+
+- Add patch to fix build-id issues.  [bso#12451]</comment>
+    <requestid>98732</requestid>
+  </revision>
+  <revision rev="73" vrev="12">
+    <srcmd5>913ac2bffaba434bb53b24c5adb40d8a</srcmd5>
+    <version>2.22</version>
+    <time>1328260917</time>
+    <user>coolo</user>
+    <comment>- Fix package licenses to follow SPDX format, adjust to reality.
+
+- Amend patch to fix arm unwind table corruption.  [bso#13449]</comment>
+    <requestid>101649</requestid>
+  </revision>
+  <revision rev="74" vrev="13">
+    <srcmd5>8e99eece5839ed018c11cf75be4320d4</srcmd5>
+    <version>2.22</version>
+    <time>1329477636</time>
+    <user>coolo</user>
+    <comment>- Drop the new spec files again, instead move the cross-$arch-binutils
+  contents to /usr, away from /opt.
+
+- Add spec files that build variants for arm and avr that install
+  under /usr rather than /opt/cross.
+- Add avr-binutils-relocs.patch to fix a crash in avr-ld.
+  http://sourceware.org/bugzilla/show_bug.cgi?id=12161</comment>
+    <requestid>105212</requestid>
+  </revision>
+  <revision rev="75" vrev="14">
+    <srcmd5>f7f1699863110351c0e30d3d9dcc4de1</srcmd5>
+    <version>2.22</version>
+    <time>1334927474</time>
+    <user>coolo</user>
+    <comment>- Consistently use $target-suse-linux triplets.</comment>
+    <requestid>114814</requestid>
+  </revision>
+  <revision rev="76" vrev="15">
+    <srcmd5>abd2146821f3362172ac8424d0e4f1f4</srcmd5>
+    <version>2.22</version>
+    <time>1339822457</time>
+    <user>coolo</user>
+    <comment>- exclude our target arch for cross compiling - this is just not cross</comment>
+    <requestid>125070</requestid>
+  </revision>
+  <revision rev="77" vrev="16">
+    <srcmd5>e31c1283fa10621cc305c00672758898</srcmd5>
+    <version>2.22</version>
+    <time>1340047492</time>
+    <user>coolo</user>
+    <comment>- the previous fix was not good enough, another iteration of the same (forwarded request 125342 from coolo)</comment>
+    <requestid>125375</requestid>
+  </revision>
+  <revision rev="78" vrev="18">
+    <srcmd5>e31c1283fa10621cc305c00672758898</srcmd5>
+    <version>2.22</version>
+    <time>1340183202</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="79" vrev="19">
+    <srcmd5>9b32672378222dbff20375d2600eccd8</srcmd5>
+    <version>2.22</version>
+    <time>1340716496</time>
+    <user>coolo</user>
+    <comment>- fix default elf format for arm cross tools
+
+- fix stupid typo
+
+- fix default elf format for arm cross tools
+
+- fix stupid typo
+
+- fix default elf format for arm cross tools
+
+- fix stupid typo
+
+- fix default elf format for arm cross tools
+
+- fix stupid typo
+
+- fix default elf format for arm cross tools
+
+- fix stupid typo
+
+- fix default elf format for arm cross tools
+
+- fix stupid typo
+
+- fix default elf format for arm cross tools
+
+- fix stupid typo
+
+- fix default elf format for arm cross tools</comment>
+    <requestid>125946</requestid>
+  </revision>
+  <revision rev="80" vrev="20">
+    <srcmd5>d1d21fd52a6e610173550fe17b14c534</srcmd5>
+    <version>2.22</version>
+    <time>1347512362</time>
+    <user>coolo</user>
+    <comment>- add makeinfo as explicit buildrequire
+- Enable threaded linking in gold.
+- Add patch to fix libiberty integer overflow.  [bnc#776968]</comment>
+    <requestid>133496</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>81e5332953355be0819bf2f9273e5354</srcmd5>
+    <version>2.23.0</version>
+    <time>1351837848</time>
+    <user>coolo</user>
+    <comment>- Update to binutils 2.23 branch head.
+  * Includes binutils 2.23 release.
+
+- Update to binutils 2.23 release candidate.
+- Remove no longer applying AVR patch.</comment>
+    <requestid>139427</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>358a46e96f4f5e65b7e5de4b9cf82e54</srcmd5>
+    <version>2.23.1</version>
+    <time>1354114767</time>
+    <user>coolo</user>
+    <comment>- Change update-alternative priorities to always prefer GNU ld
+
+- Implement update-alternatives service for gold
+
+- update to version 2.23.1 release
+- add aarch64 biarch patch
+
+- add cross-aarch64-binutils
+
+- Have pre_checkin.sh create cross-sparc64-binutils
+
+- Change update-alternative priorities to always prefer GNU ld
+
+- Implement update-alternatives service for gold
+
+- update to version 2.23.1 release
+- add aarch64 biarch patch
+
+- add cross-aarch64-binutils
+
+- Have pre_checkin.sh create cross-sparc64-binutils
+
+- Change update-alternative priorities to always prefer GNU ld
+
+- Implement update-alternatives service for gold
+
+- update to version 2.23.1 release
+- add aarch64 biarch patch
+
+- add cross-aarch64-binutils</comment>
+    <requestid>143390</requestid>
+  </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>358a46e96f4f5e65b7e5de4b9cf82e54</srcmd5>
+    <version>2.23.1</version>
+    <time>1359108701</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="84" vrev="4">
+    <srcmd5>0f84f7ee7f35536766d87fae764800b4</srcmd5>
+    <version>2.23.1</version>
+    <time>1359580709</time>
+    <user>coolo</user>
+    <comment>- Backport s390 .machinemode pseudo insn
+
+- Revert upstream change to error on bfd.h usage without first
+  including some config.h</comment>
+    <requestid>150280</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>5620192d66c899515e39db831764d9e2</srcmd5>
+    <version>2.23.2</version>
+    <time>1364895555</time>
+    <user>coolo</user>
+    <comment>- Update to binutils 2.23.2.
+  * various bugfixes
+- Refresh no longer applying patch.
+
+- Add aarch64 support for --gc-sections
+  (from http://sourceware.org/ml/binutils/2013-02/msg00285.html)</comment>
+    <requestid>162066</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>2b8d592b445c8df75d9fb4ce0de25e64</srcmd5>
+    <version>2.23.2</version>
+    <time>1368710301</time>
+    <user>coolo</user>
+    <comment>- Drop cross-alpha-binutils.  Adjust pre-checkin.sh to remove
+  all cross packages before re-generating them.
+
+- Tell bfd ELF backend that aarch64 defaults to non-exec stack
+
+- Re-instantiate patch to warn about non-PIC code in shared objects
+  on s390x.
+
+- Drop cross-alpha-binutils.  Adjust pre-checkin.sh to remove
+  all cross packages before re-generating them.
+
+- Tell bfd ELF backend that aarch64 defaults to non-exec stack
+
+- Re-instantiate patch to warn about non-PIC code in shared objects
+  on s390x.
+
+- Drop cross-alpha-binutils.  Adjust pre-checkin.sh to remove
+  all cross packages before re-generating them.
+
+- Tell bfd ELF backend that aarch64 defaults to non-exec stack
+
+- Re-instantiate patch to warn about non-PIC code in shared objects
+  on s390x.
+
+- Drop cross-alpha-binutils.  Adjust pre-checkin.sh to remove
+  all cross packages before re-generating them.
+
+- Tell bfd ELF backend that aarch64 defaults to non-exec stack
+
+- Re-instantiate patch to warn about non-PIC code in shared objects</comment>
+    <requestid>175732</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>856c5d061fe130c018291613f82beaf2</srcmd5>
+    <version>2.23.2</version>
+    <time>1371221032</time>
+    <user>coolo</user>
+    <comment>- add aarch64-support-1796bf893c4729d5c523502318d72cae78495d6c.diff
+- add aarch64-support-f426901e1be0f58fe4e9386cada50ca57d0a4f36.diff
+
+- add aarch64-support-1796bf893c4729d5c523502318d72cae78495d6c.diff
+- add aarch64-support-f426901e1be0f58fe4e9386cada50ca57d0a4f36.diff
+
+- add aarch64-support-1796bf893c4729d5c523502318d72cae78495d6c.diff
+- add aarch64-support-f426901e1be0f58fe4e9386cada50ca57d0a4f36.diff
+
+- add aarch64-support-1796bf893c4729d5c523502318d72cae78495d6c.diff
+- add aarch64-support-f426901e1be0f58fe4e9386cada50ca57d0a4f36.diff
+
+- add aarch64-support-1796bf893c4729d5c523502318d72cae78495d6c.diff
+- add aarch64-support-f426901e1be0f58fe4e9386cada50ca57d0a4f36.diff
+
+- add aarch64-support-1796bf893c4729d5c523502318d72cae78495d6c.diff
+- add aarch64-support-f426901e1be0f58fe4e9386cada50ca57d0a4f36.diff
+
+- add aarch64-support-1796bf893c4729d5c523502318d72cae78495d6c.diff
+- add aarch64-support-f426901e1be0f58fe4e9386cada50ca57d0a4f36.diff
+
+- add aarch64-support-1796bf893c4729d5c523502318d72cae78495d6c.diff
+- add aarch64-support-f426901e1be0f58fe4e9386cada50ca57d0a4f36.diff
+
+- add aarch64-support-1796bf893c4729d5c523502318d72cae78495d6c.diff
+- add aarch64-support-f426901e1be0f58fe4e9386cada50ca57d0a4f36.diff
+
+- add aarch64-support-1796bf893c4729d5c523502318d72cae78495d6c.diff
+- add aarch64-support-f426901e1be0f58fe4e9386cada50ca57d0a4f36.diff (forwarded request 178615 from dirkmueller)</comment>
+    <requestid>178782</requestid>
+  </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>0f9085745f4fab4fc3f836db4392eaf3</srcmd5>
+    <version>2.23.2</version>
+    <time>1372925120</time>
+    <user>coolo</user>
+    <comment>- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list 
+
+- add armv6l to target list (forwarded request 181892 from dirkmueller)</comment>
+    <requestid>181893</requestid>
+  </revision>
+  <revision rev="89" vrev="5">
+    <srcmd5>0254302bcc8cf070bc1c78736d662625</srcmd5>
+    <version>2.23.2</version>
+    <time>1374575389</time>
+    <user>coolo</user>
+    <comment>- warning-symbol-sections.patch: don't clobber warning sections from
+  shared libraries (forwarded request 183973 from Andreas_Schwab)</comment>
+    <requestid>183991</requestid>
+  </revision>
+  <revision rev="90" vrev="6">
+    <srcmd5>2fc78617fd34a39f914dbdbd6ef1f6ef</srcmd5>
+    <version>2.23.2</version>
+    <time>1375288313</time>
+    <user>coolo</user>
+    <comment>- warning-symbol-sections.patch: correct test in last change (forwarded request 184884 from Andreas_Schwab)</comment>
+    <requestid>184935</requestid>
+  </revision>
+  <revision rev="91" vrev="7">
+    <srcmd5>c00aa62990a2573892208ee2ef0513e4</srcmd5>
+    <version>2.23.2</version>
+    <time>1378416026</time>
+    <user>coolo</user>
+    <comment>- Add binutils-2.23.52.0.1-64-bit-thin-archives.patch to fix thin
+  archive creation on 64bit systems. This is rh#915411 and should
+  also fix webkitgtk on s390x. (forwarded request 196965 from namtrac)</comment>
+    <requestid>197371</requestid>
+  </revision>
+  <revision rev="92" vrev="9">
+    <srcmd5>c00aa62990a2573892208ee2ef0513e4</srcmd5>
+    <version>2.23.2</version>
+    <time>1379662036</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>0df41b9c54ce38e4f3d1d6ac3315fcf8</srcmd5>
+    <version>2.23.92</version>
+    <time>1386222508</time>
+    <user>coolo</user>
+    <comment>- Update to 2.23.92 prerelease, mostly for ppc64le support.
+- Add cross-ppc64le-binutils.
+
+- Add cross-m68k-binutils
+
+- pie-m68k.patch: Emit DT_DEBUG also for PIE
+
+- Update to 2.23.90 prerelease, remove patches that
+  are upstream ( aarch64-biarch.patch, aarch64-dynamic-placement.patch,
+  aarch64-execstack.patch, aarch64-gc-section-support.patch,
+  aarch64-support-1796bf893c4729d5c523502318d72cae78495d6c.diff,
+  aarch64-support-f426901e1be0f58fe4e9386cada50ca57d0a4f36.diff,
+  binutils-2.22-objalloc.patch,
+  binutils-2.23.52.0.1-64-bit-thin-archives.patch,
+  s390-machinemode.patch, warning-symbol-sections.patch).</comment>
+    <requestid>209295</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>c1d2c31762f71c40f63caa5701dcd22e</srcmd5>
+    <version>2.24</version>
+    <time>1386774871</time>
+    <user>coolo</user>
+    <comment>- Update to 2.24 release and to branch at 9177510e:
+  * Add support for the Texas Instruments MSP430X processor.
+  * Add support for Altera Nios II.
+  * Add support for the V850E3V5 architecture.
+  * Add support for the Imagination Technologies Meta processor.
+  * --enable-new-dtags no longer generates old dtags in addition to new dtags.
+  * Remove assembler and linker support for MIPS ECOFF targets.
+  * Remove assembler support for MIPS ECOFF targets.
+  * Add ALIGN_WITH_INPUT to the linker script language to force the
+    alignment of an output section to use the maximum alignment of
+    all its input sections.
+  * Add -gdwarf-sections command line option to enable per-code-section
+    generation of DWARF .debug_line sections.
+  * Objcopy now supports wildcard characters in command line options that take
+    section names.</comment>
+    <requestid>210350</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>900b9473cc5519b87da98c43bf1b5a16</srcmd5>
+    <version>2.24</version>
+    <time>1393600912</time>
+    <user>scarabeus_factory</user>
+    <comment>- Disable --enable-deterministic-archives again, as it breaks 
+  valid Makefiles.
+
+- cross-avr-size.patch: AVR-style output in avr-size utility
+
+- build with --enable-deterministic-archives so ar and ranlib 
+  cooperate in the creation of reproducible builds.</comment>
+    <requestid>223431</requestid>
+  </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>374c826220dd250f77adb426a4cd44d1</srcmd5>
+    <version>2.24</version>
+    <time>1396770948</time>
+    <user>coolo</user>
+    <comment>- binutils-2.24-auto-plugin.diff: Update from git commit that went
+  to trunk.
+
+- Update to current 2.24 branch at 25f1c421:
+  AVX512 fixes, new x86 instructions clflushopt, xsaves, xsavec, xrstors.
+  aarch64: linker fixes for PLT stubs, correct float const 0.0 parsing,
+  support ifunc in static links.
+  Fix ld/16643 (problem with GCed sections).
+  powerpc64le: fix ld segfault with --emit-relocs.
+  Fix buffer underrun in x86 disassembler.
+  Fix merging of skipped weak symbols.  [bnc #863764]
+
+- Add binutils-2.24-auto-plugin.diff to make plugin auto-load work
+  for GCC LTO objects.  [bso#14698]</comment>
+    <requestid>228988</requestid>
+  </revision>
+  <revision rev="97" vrev="4">
+    <srcmd5>189ba09c9a42d11138e2319d9f29f234</srcmd5>
+    <version>2.24</version>
+    <time>1396949477</time>
+    <user>coolo</user>
+    <comment>- ld-dtags.diff: update testsuite for --enable-new-dtags default
+- ld-testsuite.patch: fix spurious failures in ld-plugin/lto.exp (forwarded request 229209 from AndreasSchwab)</comment>
+    <requestid>229248</requestid>
+  </revision>
+  <revision rev="98" vrev="5">
+    <srcmd5>4a24aaadf4b8e4be5259f3810b0f5630</srcmd5>
+    <version>2.24</version>
+    <time>1400783850</time>
+    <user>coolo</user>
+    <comment>- binutils-2.24-bso16746.diff: Fix bso#16746, spurious warnings
+  for warn annotated symbols with LTO.</comment>
+    <requestid>232900</requestid>
+  </revision>
+  <revision rev="99" vrev="7">
+    <srcmd5>4a24aaadf4b8e4be5259f3810b0f5630</srcmd5>
+    <version>2.24</version>
+    <time>1409300564</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>d3f9c8d2c825f68968031956b9696c9f</srcmd5>
+    <version>2.24.90</version>
+    <time>1418251431</time>
+    <user>dimstar_suse</user>
+    <comment>follow policy</comment>
+    <requestid>264543</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>9f0d98a4b413db5457845af5f0bebbfc</srcmd5>
+    <version>2.25.0</version>
+    <time>1421787273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to binutils 2.25 release.
+  * Add --data option to strings to only print strings in loadable, initialized
+    data sections.  Change the default behaviour to be --all, but add a new
+    configure time option of --disable-default-strings-all to restore the old
+    default behaviour.
+  * Add --include-all-whitespace to strings.
+  * Add --dump-section option to objcopy.
+  * Add support for the Andes NDS32.
+  * PE binaries now once again contain real timestamps by default.  To disable
+    the inclusion of a timestamp in a PE binary, use the --no-insert-timestamp
+    command line option.
+  * Replace support for openrisc and or32 with support for or1k.
+  * Add support for the --build-id command line option to COFF based targets.
+  * x86/x86_64 pe-coff now supports the --build-id option.
+  * Add support for the AVR Tiny microcontrollers.
+  * Enhanced the ARM port to accept the assembler output from the CodeComposer
+    Studio tool.  Support is enabled via the new command line option -mccs.
+- Update to 2.25 branch head.
+  * Pulls PIE fixes.
+
+- Minor fix on the usage of update-alternatives
+  https://en.opensuse.org/openSUSE:Packaging_Multiple_Version_guidelines</comment>
+    <requestid>281397</requestid>
+  </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>a055915aa42c88e1c27133dbab165eed</srcmd5>
+    <version>2.25.0</version>
+    <time>1422594088</time>
+    <user>dimstar_suse</user>
+    <comment>- eh-frame-hdr-on-shared-lib-bfd.patch: Don't create .eh_frame_hdr on
+  shared lib bfd, fixes building libgcj on ppc64 (forwarded request 282205 from Andreas_Schwab)</comment>
+    <requestid>282208</requestid>
+  </revision>
+  <revision rev="103" vrev="3">
+    <srcmd5>bfbf94faaf4587724d3aabfa8fe0bfc7</srcmd5>
+    <version>2.25.0</version>
+    <time>1424622002</time>
+    <user>dimstar_suse</user>
+    <comment>- gold-opd-visibility.patch: Set default visibility on discarded .opd
+  symbols (forwarded request 286744 from Andreas_Schwab)</comment>
+    <requestid>286745</requestid>
+  </revision>
+  <revision rev="104" vrev="4">
+    <srcmd5>3b334628157e688b2d301c2d8d4d0a2f</srcmd5>
+    <version>2.25.0</version>
+    <time>1440135279</time>
+    <user>dimstar_suse</user>
+    <comment>Some more fixes.</comment>
+    <requestid>317801</requestid>
+  </revision>
+  <revision rev="105" vrev="5">
+    <srcmd5>000b3e2710c92e95e03412910b0322c9</srcmd5>
+    <version>2.25.0</version>
+    <time>1444130621</time>
+    <user>dimstar_suse</user>
+    <comment>- gold-arm64-abi-pagesize.patch: fix ABI pagesize for aarch64 in gold (forwarded request 335624 from Andreas_Schwab)</comment>
+    <requestid>335868</requestid>
+  </revision>
+  <revision rev="106" vrev="6">
+    <srcmd5>715e1fe3deb820052ca9dbcf9851a12a</srcmd5>
+    <version>2.25.0</version>
+    <time>1445285639</time>
+    <user>dimstar_suse</user>
+    <comment>- s390-troo-insn-type.patch: fix wrong insn type for troo insn
+- aarch64-common-pagesize.patch: change default common-page-size to 64K on
+  aarch64 (forwarded request 338990 from Andreas_Schwab)</comment>
+    <requestid>338992</requestid>
+  </revision>
+  <revision rev="107" vrev="7">
+    <srcmd5>7ae8ec301c6cef284929a3941ca2c595</srcmd5>
+    <version>2.25.0</version>
+    <time>1453416022</time>
+    <user>dimstar_suse</user>
+    <comment>- gold-relocate-tls.patch: Fix internal error when applying TLSDESC
+  relocations with no TLS segment (forwarded request 353332 from Andreas_Schwab)</comment>
+    <requestid>353628</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>4506d64c46799fa7339cbd5b0b119751</srcmd5>
+    <version>2.26</version>
+    <time>1457179486</time>
+    <user>dimstar_suse</user>
+    <comment>- Add binutils-2.26-branch.diff, updates to branch head.
+  * Adds -mrelax-relocations on x86
+  * Fixes bso#19698
+
+- Refresh cross-avr-nesc-as.patch
+
+- Update to binutils 2.26
+  * Add --fix-stm32l4xx-629360 to the ARM linker to enable a link-time
+    workaround for a bug in the bus matrix / memory controller for some of
+    the STM32 Cortex-M4 based products (STM32L4xx)
+  * Add a configure option --enable-compressed-debug-sections={all,ld} to
+    decide whether DWARF debug sections should be compressed by default.
+  * Add support for the ARC EM/HS, and ARC600/700 architectures.
+  * Experimental support for linker garbage collection (--gc-sections)
+    has been enabled for COFF and PE based targets.
+  * New command line option for ELF targets to compress DWARF debug
+    sections, --compress-debug-sections=[none|zlib|zlib-gnu|zlib-gabi].
+  * New command line option, --orphan-handling=[place|warn|error|discard], to
+    adjust how orphan sections are handled.  The default is 'place' which gives
+    the current behaviour, 'warn' and 'error' issue a warning or error
+    respectively when orphan sections are found, and 'discard' will discard all
+    orphan sections.
+  * Add support for LLVM plugin.
+  * Add --print-memory-usage option to report memory blocks usage.
+  * Add --require-defined option, it's like --undefined except the new symbol
+    must be defined by the end of the link.
+  * Add a configure option --enable-compressed-debug-sections={all,gas} to
+    decide whether DWARF debug sections should be compressed by default.
+  * Add support for the ARC EM/HS, and ARC600/700 architectures.  Remove
+    assembler support for Argonaut RISC architectures.</comment>
+    <requestid>363404</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>0ba7585f0a54d40f781f1dd0aff9366f</srcmd5>
+    <version>2.26</version>
+    <time>1457782293</time>
+    <user>dimstar_suse</user>
+    <comment>- Update binutils-2.26-branch.diff, updates to branch head.
+  (swo#19739) (swo#19775)</comment>
+    <requestid>369051</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>479960fd04dd252ad01968b764d05473</srcmd5>
+    <version>2.26.1</version>
+    <time>1468699796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to binutils 2.26.1.
+- Remove binutils-2.26-branch.diff.
+
+- Update binutils-2.26-branch.diff, updates to branch head.
+  (swo#19807) (bnc#970239)
+- Disable -mrelax-relocations by default on old products.</comment>
+    <requestid>407069</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>4be412739db34036637d8c27ac5e7ff3</srcmd5>
+    <version>2.27</version>
+    <time>1472731244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to binutils 2.27.
+  * Add a configure option, --enable-64-bit-archive, to force use of a
+    64-bit format when creating an archive symbol index.
+  * Add --elf-stt-common= option to objcopy for ELF targets to control
+    whether to convert common symbols to the STT_COMMON type.
+  GAS:
+  * Default to --enable-compressed-debug-sections=gas for Linux/x86 targets.
+  * Add --no-pad-sections to stop the assembler from padding the end of output
+    sections up to their alignment boundary.
+  * Support for the ARMv8-M architecture has been added to the ARM port.
+    Support for the ARMv8-M Security and DSP Extensions has also been added
+    to the ARM port.
+  * ARC backend accepts .extInstruction, .extCondCode, .extAuxRegister, and
+    .extCoreRegister pseudo-ops that allow an user to define custom
+    instructions, conditional codes, auxiliary and core registers.
+  * Add a configure option --enable-elf-stt-common to decide whether ELF
+    assembler should generate common symbols with the STT_COMMON type by
+    default.  Default to no.
+  * New command line option --elf-stt-common= for ELF targets to control
+    whether to generate common symbols with the STT_COMMON type.
+  * Add ability to set section flags and types via numeric values for ELF
+    based targets.
+  * Add a configure option --enable-x86-relax-relocations to decide whether
+    x86 assembler should generate relax relocations by default.  Default to
+    yes, except for x86 Solaris targets older than Solaris 12.
+  * New command line option -mrelax-relocations= for x86 target to control
+    whether to generate relax relocations.
+  * New command line option -mfence-as-lock-add=yes for x86 target to encode
+    lfence, mfence and sfence as &quot;lock addl $0x0, (%[re]sp)&quot;.
+  * Add assembly-time relaxation option for ARC cpus.</comment>
+    <requestid>423084</requestid>
+  </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>1e96abc64138ec1c249afb02c37640b7</srcmd5>
+    <version>2.27</version>
+    <time>1480785760</time>
+    <user>dimstar_suse</user>
+    <comment>- Add refine_.cfi_sections_check_to_only_consider_compact_eh_frame.patch
+  from upstream to fix an assembler problem with clang on ARM.
+  Fixes https://sourceware.org/bugzilla/show_bug.cgi?id=20648
+
+- Add refine_.cfi_sections_check_to_only_consider_compact_eh_frame.patch
+  from upstream to fix an assembler problem with clang on ARM.
+  Fixes https://sourceware.org/bugzilla/show_bug.cgi?id=20648
+
+- Add refine_.cfi_sections_check_to_only_consider_compact_eh_frame.patch
+  from upstream to fix an assembler problem with clang on ARM.
+  Fixes https://sourceware.org/bugzilla/show_bug.cgi?id=20648
+
+- Add refine_.cfi_sections_check_to_only_consider_compact_eh_frame.patch
+  from upstream to fix an assembler problem with clang on ARM.
+  Fixes https://sourceware.org/bugzilla/show_bug.cgi?id=20648
+
+- Add refine_.cfi_sections_check_to_only_consider_compact_eh_frame.patch
+  from upstream to fix an assembler problem with clang on ARM.
+  Fixes https://sourceware.org/bugzilla/show_bug.cgi?id=20648
+
+- Add refine_.cfi_sections_check_to_only_consider_compact_eh_frame.patch
+  from upstream to fix an assembler problem with clang on ARM.
+  Fixes https://sourceware.org/bugzilla/show_bug.cgi?id=20648
+
+- Add refine_.cfi_sections_check_to_only_consider_compact_eh_frame.patch
+  from upstream to fix an assembler problem with clang on ARM.
+  Fixes https://sourceware.org/bugzilla/show_bug.cgi?id=20648
+
+- Add refine_.cfi_sections_check_to_only_consider_compact_eh_frame.patch
+  from upstream to fix an assembler problem with clang on ARM. (forwarded request 442826 from namtrac)</comment>
+    <requestid>442830</requestid>
+  </revision>
+  <revision rev="113" vrev="3">
+    <srcmd5>01d0ad9b774f65bced4ca9d894df2d0e</srcmd5>
+    <version>2.27</version>
+    <time>1486941846</time>
+    <user>dimstar_suse</user>
+    <comment>- Add s390x to gold_archs.
+
+- Fix alignment frags for aarch64 (boo#1003846)
+  aarch64-alignment-frags.patch
+
+- Call ldconfig for libbfd</comment>
+    <requestid>455439</requestid>
+  </revision>
+  <revision rev="114" vrev="4">
+    <srcmd5>42bc2a6a6403a64e7acd8d81be7c714e</srcmd5>
+    <version>2.27</version>
+    <time>1488732540</time>
+    <user>dimstar_suse</user>
+    <comment>- Add binutils-bso21193.diff to fix section alignment on
+  .gnu_debuglink.  [bso#21193]</comment>
+    <requestid>460174</requestid>
+  </revision>
+  <revision rev="115" vrev="5">
+    <srcmd5>14de6785302a992c8aacdf85385a8f71</srcmd5>
+    <version>2.27</version>
+    <time>1489536357</time>
+    <user>dimstar_suse</user>
+    <comment>- Configure with --with-system-zlib (forwarded request 477325 from AndreasSchwab)</comment>
+    <requestid>477329</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>b6fa261b8b0ecd24f9b83ec89b96968f</srcmd5>
+    <version>2.28</version>
+    <time>1490132758</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-security-bugs.diff to fix bnc#1029907, bnc#1029908,
+  bnc#1029909 and more.  Upstream bugs fixed: 
+  PR 21135, PR 21137, PR 21139, PR 21147, PR 21148, PR 21149,
+  PR 21150, PR 21151, PR 21155, PR 21156, PR 21157, PR 21158,
+  PR 21159
+
+- Update to binutils 2.28.
+  * Add support for locating separate debug info files using the build-id
+    method, where the separate file has a name based upon the build-id of
+    the original file.
+  * This version of binutils fixes a problem with PowerPC VLE 16A and 16D
+    relocations which were functionally swapped, for example,
+    R_PPC_VLE_HA16A performed like R_PPC_VLE_HA16D while R_PPC_VLE_HA16D
+    performed like R_PPC_VLE_HA16A.  This could have been fixed by
+    renumbering relocations, which would keep object files created by an
+    older version of gas compatible with a newer ld.  However, that would
+    require an ABI update, affecting other assemblers and linkers that
+    create and process the relocations correctly.  It is recommended that
+    all VLE object files be recompiled, but ld can modify the relocations
+    if --vle-reloc-fixup is passed to ld.  If the new ld command line
+    option is not used, ld will ld warn on finding relocations inconsistent
+    with the instructions being relocated.
+  * The nm program has a new command line option (--with-version-strings)
+    which will display a symbol's version information, if any, after the
+    symbol's name.
+  * The ARC port of objdump now accepts a -M option to specify the extra
+    instruction class(es) that should be disassembled.
+  * The --remove-section option for objcopy and strip now accepts section
+    patterns starting with an exclamation point to indicate a non-matching
+    section.  A non-matching section is removed from the set of sections</comment>
+    <requestid>480883</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>3979ce47d059a99a5008963d7100e926</srcmd5>
+    <version>2.28</version>
+    <time>1493103260</time>
+    <user>dimstar_suse</user>
+    <comment>Relative to the last submit req 484086 this only adds a new
+target and hence package (riscv64).  No actual source or code
+changes, so the testing that's currently done in Staging:A is
+still valid for this submission as well.
+
+- Add riscv64 target, tested with gcc7 and downstream newlib 2.4.0
+* Prepare riscv32 target (gh#riscv/riscv-newlib#8)</comment>
+    <requestid>485830</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>478ee4bc41eef52517fda7ae14d5009e</srcmd5>
+    <version>2.29</version>
+    <time>1505919863</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.29 (@5d25156), upstream fix for PR21884, as
+  well as PRs 18808 18841 21840 21988 21910 21962 21964.
+
+- Last fixes for PR21884 weren't complete, adjust
+  binutils-2.29-branch.diff some more for this.
+
+- Update to 2.29 branch (@de44148c), fixing PR21884, a segfault
+  in ld while building memtest86+ .
+  Changes binutils-2.29-branch.diff.
+
+- Update to 2.29 branch, fixing PR21847, affecting the ppc64le
+  ABI in corner cases since 2.29 release.
+  Adds binutils-2.29-branch.diff.
+- Remove binutils-2.29-gold-mips.patch, obsolete by the update.
+
+- Add binutils-2.29-gold-mips.patch to fix build on SLE-11.
+
+- Update to binutils 2.29.
+  * The MIPS port now supports microMIPS eXtended Physical Addressing (XPA)
+    instructions for assembly and disassembly.
+  * The MIPS port now supports the microMIPS Release 5 ISA for assembly and
+    disassembly.
+  * The MIPS port now supports the Imagination interAptiv MR2 processor,
+    which implements the MIPS32r3 ISA, the MIPS16e2 ASE as well as a couple
+    of implementation-specific regular MIPS and MIPS16e2 ASE instructions.
+  * The SPARC port now supports the SPARC M8 processor, which implements the
+    Oracle SPARC Architecture 2017.
+  * The MIPS port now supports the MIPS16e2 ASE for assembly and disassembly.
+  * Add support for ELF SHF_GNU_MBIND and PT_GNU_MBIND_XXX.
+  * Add support for the wasm32 ELF conversion of the WebAssembly file format.</comment>
+    <requestid>520106</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>54cdce6a581d06252f4346abe4a3cb26</srcmd5>
+    <version>2.29.1</version>
+    <time>1506869940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.29.1 release, accumulating bugfixes.
+- Update binutils-2.29-branch.diff to @a38a1d80 and to be
+  relative to the 2.29.1 release fixing PRs 22199, 22170 and 22163.</comment>
+    <requestid>529108</requestid>
+  </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>71417a60c509b7c586d692b97aa07c70</srcmd5>
+    <version>2.29.1</version>
+    <time>1507896139</time>
+    <user>dimstar_suse</user>
+    <comment>(relative to SR 531177: add references to fates)
+- Add s390x-8fe09d7.diff to fix typo in ELF notes.
+
+- Update binutils-2.29-branch.diff to @a45d8fd5ffbf888 fixing PR 22220.
+
+  relative to the 2.29.1 release fixing following PRs/bnc/CVE:
+  22058 [bnc#1057149, CVE-2017-14130]
+  21813 [bnc#1052503, CVE-2017-12456, bnc#1052507, CVE-2017-12454,
+         bnc#1052509, CVE-2017-12453, bnc#1052511, CVE-2017-12452,
+         bnc#1052514, CVE-2017-12450, bnc#1052503, CVE-2017-12456,
+         bnc#1052507, CVE-2017-12454, bnc#1052509, CVE-2017-12453,
+         bnc#1052511, CVE-2017-12452, bnc#1052514, CVE-2017-12450]
+  22148 [bnc#1060599, CVE-2017-14745]
+  22163 [bnc#1061241, CVE-2017-14974]
+  21933 [bnc#1053347, CVE-2017-12799]
+  21787 [bnc#1052518, CVE-2017-12448]
+  22018 [bnc#1056312, CVE-2017-13757]
+  22170 [bnc#1060621, CVE-2017-14729]
+  22047 [bnc#1057144, CVE-2017-14129]
+  22059 [bnc#1057139, CVE-2017-14128]
+  21990 [bnc#1058480, CVE-2017-14333]
+  22113 [bnc#1059050, CVE-2017-14529]
+  as well as these PRs:
+  22061, 21786, 21916, 21994, 22064, 21995, 21909, 21441, 22060,
+  22067, 22032, 21820, 22048, 22199, 21781, 21824, 21861, 22150.
+- Update to binutils 2.29. [fate#321454, fate#321494, fate#323293]
+- Add s390x-8fe09d7.diff to fix typo in ELF notes.
+
+- Update binutils-2.29-branch.diff to @a45d8fd5ffbf888 fixing PR 22220.
+
+  relative to the 2.29.1 release fixing following PRs/bnc/CVE:</comment>
+    <requestid>531786</requestid>
+  </revision>
+  <revision rev="121" vrev="3">
+    <srcmd5>2ea52a9be7dacaea89e4b652728417c1</srcmd5>
+    <version>2.29.1</version>
+    <time>1508197934</time>
+    <user>dimstar_suse</user>
+    <comment>This touches only the .changes file, so you can simply check it in
+without much checking.
+- Fixes these security-related PRs/bnc/CVEs:
+  18750 [bsc#1030296, CVE-2014-9939]
+  20891 [bsc#1030585, CVE-2017-7225]
+  20892 [bsc#1030588, CVE-2017-7224]
+  20898 [bsc#1030589, CVE-2017-7223]
+  20905 [bsc#1030584, CVE-2017-7226]
+  20908 [bsc#1031644, CVE-2017-7299]
+  20909 [bsc#1031656, CVE-2017-7300]
+  20921 [bsc#1031595, CVE-2017-7302]
+  20922 [bsc#1031593, CVE-2017-7303]
+  20924 [bsc#1031638, CVE-2017-7301]
+  20931 [bsc#1031590, CVE-2017-7304]
+  21409 [bsc#1037052, CVE-2017-8392]
+  21412 [bsc#1037057, CVE-2017-8393]
+  21414 [bsc#1037061, CVE-2017-8394]
+  21432 [bsc#1037066, CVE-2017-8396]
+  21440 [bsc#1037273, CVE-2017-8421]
+  21580 [bsc#1044891, CVE-2017-9746]
+  21581 [bsc#1044897, CVE-2017-9747]
+  21582 [bsc#1044901, CVE-2017-9748]
+  21587 [bsc#1044909, CVE-2017-9750]
+  21594 [bsc#1044925, CVE-2017-9755]
+  21595 [bsc#1044927, CVE-2017-9756]
+- Feature changes:
+  PR 21135 [bsc#1030298, CVE-2017-7209],
+  PR 21137 [bsc#1029909, CVE-2017-6965],
+  PR 21139 [bsc#1029908, CVE-2017-6966],
+  PR 21156 [bsc#1029907, CVE-2017-6969],
+  PR 21157 [bsc#1030297, CVE-2017-7210],
+  PR 21147, PR 21148, PR 21149, PR 21150, PR 21151, PR 21155,</comment>
+    <requestid>533970</requestid>
+  </revision>
+  <revision rev="122" vrev="4">
+    <srcmd5>8eb14ab9afcc780c6ef8727a9501c306</srcmd5>
+    <version>2.29.1</version>
+    <time>1516970009</time>
+    <user>dimstar_suse</user>
+    <comment>- Add riscv64 to %target_list (forwarded request 568059 from Andreas_Schwab)</comment>
+    <requestid>568195</requestid>
+  </revision>
+  <revision rev="123" vrev="5">
+    <srcmd5>150b2c73f79290ce7a41be0aac6ff068</srcmd5>
+    <version>2.29.1</version>
+    <time>1517234125</time>
+    <user>dimstar_suse</user>
+    <comment>Drop bc build dependency... I could not find any test that still relies on it (but I can might be wrong) (forwarded request 569884 from dimstar)</comment>
+    <requestid>569906</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>bbc9ca8fe70f973ba50254c1f66e1554</srcmd5>
+    <version>2.30</version>
+    <time>1520502045</time>
+    <user>dimstar_suse</user>
+    <comment>This should fix the LLVM testsuite fail in Staging:A.
+
+- Add binutils-pr22868.diff to fix testsuite fails in LLVM.
+
+- Update to binutils 2.30
+  * Add --debug-dump=links option to readelf and --dwarf=links option to objdump
+    which displays the contents of any .gnu_debuglink or .gnu_debugaltlink
+    sections.
+    Add a --debug-dump=follow-links option to readelf and a --dwarf=follow-links
+    option to objdump which causes indirect links into separate debug info files
+    to be followed when dumping other DWARF sections.
+  * Add support for loaction views in DWARF debug line information.
+  * Add -z separate-code to generate separate code PT_LOAD segment.
+  * Add &quot;-z undefs&quot; command line option as the inverse of the &quot;-z defs&quot; option.
+  * Add -z globalaudit command line option to force audit libraries to be run
+    for every dynamic object loaded by an executable - provided that the loader
+    supports this functionality.
+  * Tighten linker script grammar around file name specifiers to prevent the use
+    of SORT_BY_ALIGNMENT and SORT_BY_INIT_PRIORITY on filenames.  These would
+    previously be accepted but had no effect.
+  * The EXCLUDE_FILE directive can now be placed within any SORT_* directive
+    within input section lists.
+- binutils-2.30-branch.diff: 2.30 branch @4cd0043413
+- riscv-wrap-relax.patch: Fix linker relaxation with --wrap
+- Remove use-hashtype-both-by-default.diff, use
+  --enable-default-hash-style=both instead
+- Remove binutils-2.29-branch.diff, s390x-8fe09d7.diff
+- Use riscv64-suse-linux as target for cross-riscv64-binutils
+
+- Add binutils-pr22868.diff to fix testsuite fails in LLVM.
+
+- Update to binutils 2.30</comment>
+    <requestid>583547</requestid>
+  </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>4e05a68633a4b659c7c9c2928bc7d3d8</srcmd5>
+    <version>2.30</version>
+    <time>1520852560</time>
+    <user>dimstar_suse</user>
+    <comment>- riscv-relax-size.patch: Fix symbol size bug when relaxation deletes bytes (forwarded request 584502 from Andreas_Schwab)</comment>
+    <requestid>585020</requestid>
+  </revision>
+  <revision rev="126" vrev="3">
+    <srcmd5>655e6163edbab6f8ec1d079f130eaaf7</srcmd5>
+    <version>2.30</version>
+    <time>1521903972</time>
+    <user>dimstar_suse</user>
+    <comment>- Update binutils-2.30-branch.diff: 2.30 branch @7c78c26eefbb8
+  * Includes more complete fix for PR20882.
+  * Includes fix for PR22836.  [boo#1085784]
+  * Includes fix for PR22983.</comment>
+    <requestid>589144</requestid>
+  </revision>
+  <revision rev="127" vrev="4">
+    <srcmd5>ee0a16e6eba509b39811ba9b1c6a056a</srcmd5>
+    <version>2.30</version>
+    <time>1522832454</time>
+    <user>dimstar_suse</user>
+    <comment>- riscv-relax-relocatable.patch: RISC-V: Don't enable relaxation in
+  relocatable link (forwarded request 591508 from Andreas_Schwab)</comment>
+    <requestid>591668</requestid>
+  </revision>
+  <revision rev="128" vrev="5">
+    <srcmd5>6078cf08dba7bbbfafc98e2e0df048c5</srcmd5>
+    <version>2.30</version>
+    <time>1528895569</time>
+    <user>maxlin_factory</user>
+    <comment>- riscv-relax-versioned-hidden.patch: RISC-V: Fix symbol address problem
+  with versioned symbols (PR ld/22756) (forwarded request 613973 from Andreas_Schwab)</comment>
+    <requestid>613986</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>e347fb215e60271acc91c50b2218a3af</srcmd5>
+    <version>2.31</version>
+    <time>1534146808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to binutils 2.31
+  * The AArch64 port now supports showing disassembly notes which are emitted
+    when inconsistencies are found with the instruction that may result in the
+    instruction being invalid.  These can be turned on with the option -M notes
+    to objdump.
+  * The AArch64 port now emits warnings when a combination of an instruction and
+    a named register could be invalid.
+  * Added O modifier to ar to display member offsets inside an archive
+  * The ADR and ADRL pseudo-instructions supported by the ARM assembler
+    now only set the bottom bit of the address of thumb function symbols
+    if the -mthumb-interwork command line option is active.
+  * Add --generate-missing-build-notes=[yes|no] option to create (or not) GNU
+    Build Attribute notes if none are present in the input sources.  Add a
+    --enable-generate-build-notes=[yes|no] configure time option to set the
+    default behaviour.  Set the default if the configure option is not used
+    to &quot;no&quot;.
+  * Remove -mold-gcc command-line option for x86 targets.
+  * Add -O[2|s] command-line options to x86 assembler to enable alternate
+    shorter instruction encoding.
+  * Add support for .nops directive.  It is currently supported only for
+    x86 targets.
+  * Speed up direct linking with DLLs for Cygwin and Mingw targets.
+  * Add a configure option --enable-separate-code to decide whether
+    -z separate-code should be enabled in ELF linker by default.  Default
+    to yes for Linux/x86 targets.  Note that -z separate-code can increase
+    disk and memory size.
+  * Includes riscv-relax-size.patch, riscv-relax-relocatable.patch,
+    riscv-relax-versioned-hidden.patch and riscv-wrap-relax.patch
+- Refresh enable-targets-gold.diff.
+- Adjust cross-avr-omit_section_dynsym.patch.</comment>
+    <requestid>623367</requestid>
+  </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>8eaddeb7e4f9ad1031e0ba8d185c34d3</srcmd5>
+    <version>2.31</version>
+    <time>1543827775</time>
+    <user>dimstar_suse</user>
+    <comment>- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919.
+- Add handle-ELF-compressed-header-alignment-correctly-by-.patch:
+  PR23919. (forwarded request 652176 from marxin)</comment>
+    <requestid>652180</requestid>
+  </revision>
+  <revision rev="131" vrev="3">
+    <srcmd5>e1cba30f5c121b24b616e1e953d74a8b</srcmd5>
+    <version>2.31</version>
+    <time>1548769157</time>
+    <user>dimstar_suse</user>
+    <comment>- Add s390-relro.diff to improve relro support on s390
+  [fate#326356]
+
+- Fix the fix for PR23919 [bsc#1118644]:
+  rename handle-ELF-compressed-header-alignment-correctly-by-.patch
+  to fix-pr23919-1.diff and add fix-pr23919-2.diff
+  and fix-pr23919-3.diff .</comment>
+    <requestid>668394</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>940eb868b68aec0362ba9ea8cb0f28b6</srcmd5>
+    <version>2.32</version>
+    <time>1551023988</time>
+    <user>coolo</user>
+    <comment>- Add disk and RAM (for ppc, ppc64 and ppc64le) constraint with _constraints.
+
+- Update to binutils 2.32:
+    * The binutils now support for the C-SKY processor series.
+    * The x86 assembler now supports a -mvexwig=[0|1] option to control
+      encoding of VEX.W-ignored (WIG) VEX instructions.
+      It also has a new -mx86-used-note=[yes|no] option to generate (or
+      not) x86 GNU property notes.  
+    * The MIPS assembler now supports the Loongson EXTensions R2 (EXT2),
+      the Loongson EXTensions (EXT) instructions, the Loongson Content
+      Address Memory (CAM) ASE and the Loongson MultiMedia extensions
+      Instructions (MMI) ASE.
+    * The addr2line, c++filt, nm and objdump tools now have a default
+      limit on the maximum amount of recursion that is allowed whilst
+      demangling strings.  This limit can be disabled if necessary.
+    * Objdump's --disassemble option can now take a parameter,
+      specifying the starting symbol for disassembly.  Disassembly will
+      continue from this symbol up to the next symbol or the end of the
+      function.
+    * The BFD linker will now report property change in linker map file
+      when merging GNU properties.
+    * The BFD linker's -t option now doesn't report members within
+      archives, unless -t is given twice.  This makes it more useful
+      when generating a list of files that should be packaged for a
+      linker bug report.
+    * The GOLD linker has improved warning messages for relocations that
+      refer to discarded sections.
+- Remove binutils-2.31-branch.diff.gz, fix-pr23919-1.diff,
+  fix-pr23919-2.diff, fix-pr23919-3.diff,
+  gold-depend-on-opcodes.diff and s390-relro.diff.</comment>
+    <requestid>673442</requestid>
+  </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>495cc9c36addb1aa7388be548c227ec7</srcmd5>
+    <version>2.32</version>
+    <time>1552571424</time>
+    <user>dimstar_suse</user>
+    <comment>- Add binutils.keyring and verify signature. (forwarded request 677318 from marxin)</comment>
+    <requestid>684304</requestid>
+  </revision>
+  <revision rev="134" vrev="3">
+    <srcmd5>197742694ae8551246246f58edecb376</srcmd5>
+    <version>2.32</version>
+    <time>1554712198</time>
+    <user>dimstar_suse</user>
+    <comment>- riscv-abi-check.patch: Don't check ABI flags if no code section (forwarded request 691290 from Andreas_Schwab)</comment>
+    <requestid>691511</requestid>
+  </revision>
+  <revision rev="135" vrev="4">
+    <srcmd5>ebdc9bdd258cb8dc77328e4ba42b039f</srcmd5>
+    <version>2.32</version>
+    <time>1556311364</time>
+    <user>maxlin_factory</user>
+    <comment>- Add rx-gas-padding-pr24464.patch: fix for PR24464. (forwarded request 697019 from marxin)</comment>
+    <requestid>697147</requestid>
+  </revision>
+  <revision rev="136" vrev="5">
+    <srcmd5>083d631d57e82d4204ccdbdc35b9d0bd</srcmd5>
+    <version>2.32</version>
+    <time>1556817323</time>
+    <user>dimstar_suse</user>
+    <comment>- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232).
+- Add binutils-pr24486.patch: fix for PR24486 (boo#1133131 boo#1133232). (forwarded request 699441 from marxin)</comment>
+    <requestid>699464</requestid>
+  </revision>
+  <revision rev="137" vrev="6">
+    <srcmd5>1bf1a65689b80e7a600559baba02808e</srcmd5>
+    <version>2.32</version>
+    <time>1564993704</time>
+    <user>dimstar_suse</user>
+    <comment>- Use -ffat-lto-objects in order to provide assembly for static libs
+  (boo#1141913). (forwarded request 717776 from marxin)</comment>
+    <requestid>717878</requestid>
+  </revision>
+</revisionlist>

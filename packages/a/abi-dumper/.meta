@@ -1,0 +1,9 @@
+<package name="abi-dumper" project="openSUSE:Factory">
+  <title>A tool to dump ABI of an ELF object containing DWARF debug info</title>
+  <description>The tool is intended to be used with ABI Compliance Checker tool for tracking
+  ABI changes of a C/C++ library or kernel module.
+  
+  The tool is developed by Andrey Ponomarenko: ;</description>
+  <devel project="devel:tools" package="abi-dumper"/>
+  <url>https://abi-laboratory.pro/</url>
+</package>

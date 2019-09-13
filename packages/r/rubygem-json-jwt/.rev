@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1ec70fe57ded3955e97294d533de30ca</srcmd5>
+    <version>1.8.3</version>
+    <time>1515623509</time>
+    <user>dimstar_suse</user>
+    <comment>dependencies for kubic</comment>
+    <requestid>555964</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>301f975970c0be2cc949c3a44a762ed1</srcmd5>
+    <version>1.9.1</version>
+    <time>1519683944</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>580039</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ae49ba02cff97a0084556366cba0be2</srcmd5>
+    <version>1.9.4</version>
+    <time>1525779422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603057</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ed93dfa6574fbceab4b2ce6b28eb7849</srcmd5>
+    <version>1.10.0</version>
+    <time>1551687597</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679520</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>60b881e21a2f59b78455803441ab7b79</srcmd5>
+    <version>1.10.2</version>
+    <time>1565096989</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>717304</requestid>
+  </revision>
+</revisionlist>

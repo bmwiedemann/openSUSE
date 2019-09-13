@@ -1,0 +1,5 @@
+<package name="WindowMaker-applets" project="openSUSE:Factory">
+  <title>Window Maker Applets</title>
+  <description>Some small applications for Window Maker.</description>
+  <devel project="X11:windowmanagers" package="WindowMaker-applets"/>
+</package>

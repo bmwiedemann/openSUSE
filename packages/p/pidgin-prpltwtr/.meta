@@ -1,0 +1,5 @@
+<package name="pidgin-prpltwtr" project="openSUSE:Factory">
+  <title>libpurple/Pidgin plugin supporting microblogging</title>
+  <description>This is a libpurple Pidgin, Finch, etc plugin which treats microblogging sites GNU social, Twitter as IM protocols.</description>
+  <devel project="network:pidgin" package="pidgin-prpltwtr"/>
+</package>

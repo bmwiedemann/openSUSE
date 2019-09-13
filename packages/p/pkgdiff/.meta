@@ -1,0 +1,10 @@
+<package name="pkgdiff" project="openSUSE:Factory">
+  <title>Package Changes Analyzer</title>
+  <description>A tool for visualizing changes in Linux software packages (RPM, DEB, TAR.GZ, etc).
+The tool is intended for Linux maintainers who are interested in ensuring
+compatibility of old and new versions of packages.
+
+</description>
+  <devel project="devel:tools" package="pkgdiff"/>
+  <url>https://github.com/lvc/pkgdiff</url>
+</package>

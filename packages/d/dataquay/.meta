@@ -1,0 +1,9 @@
+<package name="dataquay" project="openSUSE:Factory">
+  <title>Friendly C++ API for RDF Data Stores</title>
+  <description>Dataquay is a free open source library that provides a friendly C++ API for an
+RDF data store using Qt5 classes and containers.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="dataquay"/>
+  <url>http://breakfastquay.com/dataquay/</url>
+</package>

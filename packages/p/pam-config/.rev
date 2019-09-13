@@ -1,0 +1,622 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e79fd6b2497f755a66c71a017d49c12</srcmd5>
+    <version>0.13</version>
+    <time>1168903735</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2d81d2f33200255a5360f62ec666e865</srcmd5>
+    <version>0.15</version>
+    <time>1170086940</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ccd9abb3ead6ef402861ba2310c7e264</srcmd5>
+    <version>0.16</version>
+    <time>1183052343</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fe38915c231b6f4f8ab0057a7176e1ff</srcmd5>
+    <version>0.20</version>
+    <time>1184070199</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>30bc773570a4d5190d09f25a9e939ffb</srcmd5>
+    <version>0.21</version>
+    <time>1185541961</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5cba95651e98609775ef88b5bcb19050</srcmd5>
+    <version>0.23</version>
+    <time>1187202907</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f6b49b0634ae49b493e184d80c2d2416</srcmd5>
+    <version>0.24</version>
+    <time>1193356193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e14060e6c4fbaaf3dde3478aafa72b4c</srcmd5>
+    <version>0.25</version>
+    <time>1194985643</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8191d707b295af387049a6b103b37b3e</srcmd5>
+    <version>0.26</version>
+    <time>1195074460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>22b9cbff4a5429eda7e7f4cc4ef3748a</srcmd5>
+    <version>0.27</version>
+    <time>1195824773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9ad6423134fe283109fc2912b4def094</srcmd5>
+    <version>0.50</version>
+    <time>1203035817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3318e78018dbdd13ad40d42589571e66</srcmd5>
+    <version>0.51</version>
+    <time>1205170249</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eb34fa0a9ad2d4a7d428878128f4266d</srcmd5>
+    <version>0.52</version>
+    <time>1207179508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>233c6112999136418670f09e0e666fe8</srcmd5>
+    <version>0.53</version>
+    <time>1211555521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4c6523b8d0f9ea187a1e7b8cce31feb5</srcmd5>
+    <version>0.54</version>
+    <time>1215551550</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>613cbf6c55b564a0042317afb5d3173b</srcmd5>
+    <version>0.55</version>
+    <time>1215803057</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2c4741c67a439e5bfc7bc9813aac7c82</srcmd5>
+    <version>0.56</version>
+    <time>1216029609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>92a6970fdc46ee29bcd9ff654c386b9c</srcmd5>
+    <version>0.57</version>
+    <time>1217647181</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>857b6201018b9288d61ed289ddab35b3</srcmd5>
+    <version>0.58</version>
+    <time>1219448689</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8d0c97aec20280e2663610e928a41e84</srcmd5>
+    <version>0.59</version>
+    <time>1220051836</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c8ad0af311c900956de145f1d9de2ea6</srcmd5>
+    <version>0.60</version>
+    <time>1220662747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>465b10bc8be870ba9edcc93035d02f85</srcmd5>
+    <version>0.61</version>
+    <time>1223306299</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>02ddeabb7df87fd009ccdb54f809faaf</srcmd5>
+    <version>0.62</version>
+    <time>1223482202</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1dc62b3667dbcfdb14072b9c9e887ae9</srcmd5>
+    <version>0.63</version>
+    <time>1224005330</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1c5756a82bc1b54443f44e6822a52f10</srcmd5>
+    <version>0.64</version>
+    <time>1224693221</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>84ac74d3ff72ce21a5515dd4d73e7ced</srcmd5>
+    <version>0.65</version>
+    <time>1226068733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>938576384ec3f6452473e4dc0c079c4a</srcmd5>
+    <version>0.66</version>
+    <time>1226171691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>150a367bdc1f3386329eb478ca43c608</srcmd5>
+    <version>0.66</version>
+    <time>1226940192</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3d7507a812c7aefd1c482d34225db202</srcmd5>
+    <version>0.67</version>
+    <time>1227278762</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8ccf286b93224f2a5931a94ac5d5de10</srcmd5>
+    <version>0.68</version>
+    <time>1228151056</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c9e5881782a5c76bffc854e5d17b7789</srcmd5>
+    <version>0.69</version>
+    <time>1238085664</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3af5b3fe0ab99dc75219efda806bdbdb</srcmd5>
+    <version>0.70</version>
+    <time>1241128072</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5dec21ac3c83e016227afb0b64e7d15a</srcmd5>
+    <version>0.71</version>
+    <time>1242417066</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e3b437bc3cb7f0d941b85951eb6b8145</srcmd5>
+    <version>0.72</version>
+    <time>1248882302</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>e3b437bc3cb7f0d941b85951eb6b8145</srcmd5>
+    <version>0.72</version>
+    <time>1248882302</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c90bf9f67f7c95b81c89dc77215e1de5</srcmd5>
+    <version>0.73</version>
+    <time>1259918615</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam-config based on submit request 25320 from user mcalmer
+</comment>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>da8ba3b2cac2d230439930c5e2d5e593</srcmd5>
+    <version>0.73</version>
+    <time>1260952005</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam-config based on submit request 26593 from user mcalmer
+</comment>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>81decbf7bab6779732644d86086f4fa7</srcmd5>
+    <version>0.73</version>
+    <time>1268925273</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>5c07e97d779ab0f378fb1655ae1830e4</srcmd5>
+    <version>0.74</version>
+    <time>1278081930</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam-config based on submit request 42274 from user kukuk
+</comment>
+    <requestid>42274</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0ea79a14a9f4bed5b1447457cdff1147</srcmd5>
+    <version>0.75</version>
+    <time>1281736773</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam-config based on submit request 45394 from user kukuk
+</comment>
+    <requestid>45394</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>c16563c339c5847e01b104235294cb54</srcmd5>
+    <version>0.76</version>
+    <time>1282921239</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam-config based on submit request 46207 from user kukuk
+</comment>
+    <requestid>46207</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>5501833740e863f3d295b32321ee7f90</srcmd5>
+    <version>0.77</version>
+    <time>1283511657</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam-config based on submit request 46839 from user kukuk
+</comment>
+    <requestid>46839</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8b3cf7822c20a04ffb69b9d0f8265e94</srcmd5>
+    <version>0.78</version>
+    <time>1287053440</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam-config based on submit request 50480 from user kukuk
+</comment>
+    <requestid>50480</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>8b3cf7822c20a04ffb69b9d0f8265e94</srcmd5>
+    <version>0.78</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>131145fac31f9b990e0b9d90b4e992a9</srcmd5>
+    <version>0.79</version>
+    <time>1305187809</time>
+    <user>azouhr</user>
+    <comment>- Version 0.79
+  * Make pam_lastlog optional [bnc#686034].
+  * Document that if symlinks don't point to *-pc files config is 
+    ignored [FATE#310739].</comment>
+    <requestid>69972</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>296620f3dfd5282ef4dfb88afcd9f348</srcmd5>
+    <version>0.79</version>
+    <time>1305187842</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 69972
+</comment>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>417f512eb52ce41327d0961e2fe95d5c</srcmd5>
+    <version>0.79</version>
+    <time>1313654000</time>
+    <user>saschpe</user>
+    <comment>- Add pam_systemd.patch: Add pam_systemd support (forwarded request 79119 from fcrozat)</comment>
+    <requestid>79121</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>975fbfbad20c063640aff6de3fce9c4c</srcmd5>
+    <version>0.79</version>
+    <time>1313654008</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79121
+</comment>
+  </revision>
+  <revision rev="49" vrev="6">
+    <srcmd5>975fbfbad20c063640aff6de3fce9c4c</srcmd5>
+    <version>0.79</version>
+    <time>1319182225</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="50" vrev="7">
+    <srcmd5>7efe2e863193e21fc9c9eba216854a0c</srcmd5>
+    <version>0.79</version>
+    <time>1323192935</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="51" vrev="8">
+    <srcmd5>d8a15cce3acd588787067b6a2fc97e4b</srcmd5>
+    <version>0.79</version>
+    <time>1323705507</time>
+    <user>coolo</user>
+    <comment>- add automake as buildrequire to avoid implicit dependency (forwarded request 95643 from coolo)</comment>
+    <requestid>95677</requestid>
+  </revision>
+  <revision rev="52" vrev="9">
+    <srcmd5>8f28ae943ad9bf00b5ae4fb8bdb39a6e</srcmd5>
+    <version>0.79</version>
+    <time>1329319018</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103862</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>6dd66a6033e034cc436dd76289dad621</srcmd5>
+    <version>0.80</version>
+    <time>1334216664</time>
+    <user>coolo</user>
+    <comment>- Add support for pam_ecryptfs [bnc#752851]</comment>
+    <requestid>112382</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>6dd66a6033e034cc436dd76289dad621</srcmd5>
+    <version>0.80</version>
+    <time>1340183772</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f43b7ce2c65c1a25784b548a6143ce79</srcmd5>
+    <version>0.81</version>
+    <time>1344417784</time>
+    <user>coolo</user>
+    <comment>- Update to pam-config 0.81:
+  - pam_ssh: fix try_first_pass bug fixed [bnc#773560]
+  - pam_ecryptfs: fix order, still does not work with 
+    krb5 [bnc#740110]</comment>
+    <requestid>130306</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>264ae01762f3f38950a87080d71404f8</srcmd5>
+    <version>0.81</version>
+    <time>1345973606</time>
+    <user>namtrac</user>
+    <comment>- make pam_ssh a sufficient auth module (bnc#730851) (forwarded request 130788 from vitezslav_cizek)</comment>
+    <requestid>131586</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>8535c3cde3243aa86f089cc4adeeacc9</srcmd5>
+    <version>0.83</version>
+    <time>1348647032</time>
+    <user>coolo</user>
+    <comment>- Update to pam-config 0.83:
+  - Fix stacking of pam_unix
+  - Add new pam_unix options
+- Update to pam-config 0.82:
+  - Use pam_unix and pam_cracklib as default on fresh installations.</comment>
+    <requestid>135869</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>4843aa76ba3d568af04600efa959a3e3</srcmd5>
+    <version>0.84</version>
+    <time>1352796143</time>
+    <user>coolo</user>
+    <comment>- Use --create --force for new installation
+- Update to pam-config 0.84
+  - Add pam_env per default
+  - Don't print wrong error messages</comment>
+    <requestid>140974</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>4843aa76ba3d568af04600efa959a3e3</srcmd5>
+    <version>0.84</version>
+    <time>1359109564</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>50322722254d58884804b919acaac93c</srcmd5>
+    <version>0.85</version>
+    <time>1360007901</time>
+    <user>coolo</user>
+    <comment>- Add sha512 and shadow to pam_unix.so when creating common-passwd-pc
+  by default, did somehow got lost [bnc#801970]</comment>
+    <requestid>151115</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>26ce3ce53ae0cb9c5d607bc27e708194</srcmd5>
+    <version>0.86</version>
+    <time>1360243524</time>
+    <user>coolo</user>
+    <comment>- Remove last change regarding sha512, is now solved directly by
+  pam_unix.so.</comment>
+    <requestid>151553</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>26ce3ce53ae0cb9c5d607bc27e708194</srcmd5>
+    <version>0.86</version>
+    <time>1379663480</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>9b1adddd2ffc8da782d774e2e9680512</srcmd5>
+    <version>0.87</version>
+    <time>1396761025</time>
+    <user>coolo</user>
+    <comment>- Update to pam-config 0.87
+  - Add support for pam_access.so
+- Rervert last change, it will break manually adjusted config
+  files as documented
+
+- &quot;pam-config --debug --update&quot; in the %post section fails if any
+  /etc/pam.d/common-$TYPE file is not a symlink to /etc/pam.d/common-$TYPE-pc.
+  Fix that by adding '--force'. This is mainly an update issue since
+  fresh configs are created appropriatly</comment>
+    <requestid>228762</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>9b1adddd2ffc8da782d774e2e9680512</srcmd5>
+    <version>0.87</version>
+    <time>1409302096</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e5c1c3a2fbf5306eaa2a482542db3b41</srcmd5>
+    <version>0.88</version>
+    <time>1411927002</time>
+    <user>coolo</user>
+    <comment>- Update to pam-config 0.88
+  - Add pam_ecryptfs to password section [bnc#895096]</comment>
+    <requestid>252282</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>c0144b69831e68936e030478028469bb</srcmd5>
+    <version>0.88</version>
+    <time>1416823983</time>
+    <user>dimstar_suse</user>
+    <comment>- Added pam_google_authenticator.patch: support google authentiator
+  [bnc#888149]</comment>
+    <requestid>261267</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>6c7732187147020333aed1df2705b426</srcmd5>
+    <version>0.88</version>
+    <time>1422594695</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283093</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>b12cfd55f072871bf1469f9c4d52e3d3</srcmd5>
+    <version>0.89</version>
+    <time>1459936253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.89
+  - Includes pam_google_authenticator.patch
+  - Better check for dual-arch PAM stack</comment>
+    <requestid>382857</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>48428ff946ca8c7db5464361fd40bc3e</srcmd5>
+    <version>0.91</version>
+    <time>1465129166</time>
+    <user>dimstar_suse</user>
+    <comment>- No %ghost entries anymore, common-*-pc files are now real config 
+  files for better tracking of modifications.
+- Update to version 0.91
+  - Adjust for Linux-PAM 1.3.0
+  - Automatically replace obsolete PAM modules no longer installed
+  - Extend error messages</comment>
+    <requestid>399364</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>b12cfd55f072871bf1469f9c4d52e3d3</srcmd5>
+    <version>0.89</version>
+    <time>1465374528</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to pam-config 0.89 - the ghost-&gt;no-ghost is fatal on upgrades</comment>
+    <requestid>400626</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>8a600cb7ab114707b23209d9c8449d7f</srcmd5>
+    <version>0.91</version>
+    <time>1471345228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.91
+  - Adjust for Linux-PAM 1.3.0
+  - Automatically replace obsolete PAM modules no longer installed
+  - Extend error messages</comment>
+    <requestid>404201</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>b0180d5cf36f690041aa42bfa23eb5e7</srcmd5>
+    <version>0.91</version>
+    <time>1484132449</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449463</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>cd53ccd8d8b3cb52b5f8c4d5e2831397</srcmd5>
+    <version>0.92</version>
+    <time>1503308014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>515434</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>147f81d28b0c3d80ab15ea864ab615b8</srcmd5>
+    <version>0.93</version>
+    <time>1509193095</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.93: Teach pam_cracklib module about 
+  enforce_for_root [bnc#929079, FATE#312643].</comment>
+    <requestid>535373</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>8db24df4c2dcf30687c510439ea942b2</srcmd5>
+    <version>0.94</version>
+    <time>1516443910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.94: add support for keyinit [bsc#1045886]</comment>
+    <requestid>565816</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>7ea4f35245362d20c4fea73d4a1be778</srcmd5>
+    <version>0.95</version>
+    <time>1519554798</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license instead of %doc [bsc#1082318]
+
+- Update to version 0.95:
+  - fix migration from pam_unix2/pam_pwcheck to pam_unix/pam_cracklib</comment>
+    <requestid>579500</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>1f70655875a03b2d5b596b95ac79ea8d</srcmd5>
+    <version>0.95</version>
+    <time>1523956362</time>
+    <user>dimstar_suse</user>
+    <comment>- Add triggerun script: update config if pam-modules is removed
+  [bsc#1088863]</comment>
+    <requestid>595680</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>2ce752f6e58b1789776dbca83e59dc0b</srcmd5>
+    <version>0.96</version>
+    <time>1545222217</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.96:
+  * Add missing pam_cracklib options [bsc#1114835]</comment>
+    <requestid>656756</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>1932c3476d75b7e47a72fcd797e39574</srcmd5>
+    <version>1.0</version>
+    <time>1556474197</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.0:
+  - Add search in different locations for config files
+  - Add support for pam_mktemp [bsc#1123878] (forwarded request 697363 from kukuk)</comment>
+    <requestid>697364</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>b64b4dba81aafff449d94dfa03dc893b</srcmd5>
+    <version>1.1</version>
+    <time>1563701364</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1:
+  - enhance comments in common-*-pc files</comment>
+    <requestid>715654</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>334cccfa2a597b971c14c8ab2b7d0ef2</srcmd5>
+    <version>1.2</version>
+    <time>1566912058</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2:
+  - use /usr/etc as second fallback directory
+
+- Use noun phrase in summary. (forwarded request 724532 from kukuk)</comment>
+    <requestid>724533</requestid>
+  </revision>
+</revisionlist>

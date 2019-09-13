@@ -1,0 +1,119 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf1dcd74924d685a1b2f440f7fb98c7d</srcmd5>
+    <version>0.22</version>
+    <time>1406145996</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>241640</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b60eca4246c1b0a0deaa00acdaef7ac</srcmd5>
+    <version>0.22</version>
+    <time>1406479651</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242548</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1b60eca4246c1b0a0deaa00acdaef7ac</srcmd5>
+    <version>0.22</version>
+    <time>1409303660</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>77c69d2c49bc44731c2318c85ca49640</srcmd5>
+    <version>0.22</version>
+    <time>1413048385</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>254877</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f26ad994f28f03146fd47111d560ace8</srcmd5>
+    <version>0.23</version>
+    <time>1420754567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>280216</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4335888ef044945a07fb5742e0cb8e67</srcmd5>
+    <version>0.23</version>
+    <time>1472111774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>420723</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>e4eb4395d60d25efdc23b5208f10c336</srcmd5>
+    <version>0.23</version>
+    <time>1480342137</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442043</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>19b76e68de707f6b8041747603687885</srcmd5>
+    <version>0.23</version>
+    <time>1485250459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>451199</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>636652e515b42e1df4d6f049835afc51</srcmd5>
+    <version>0.23+git20161226</version>
+    <time>1486465415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>454426</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>59ed21911c5a929fdf143623484b300d</srcmd5>
+    <version>0.23+git20170312</version>
+    <time>1489345557</time>
+    <user>dimstar_suse</user>
+    <comment>Reverted license field to original and more bugfix's</comment>
+    <requestid>478798</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0620d284d00fe30a91374fa35287d9de</srcmd5>
+    <version>0.23+git20170810</version>
+    <time>1514569971</time>
+    <user>dimstar_suse</user>
+    <comment>- Make description relevant to the package.
+- Trim filler wording from description.
+- Fix Factory build by explicitly specifying python3 binary for
+  udis86 build.
+- Update to 0.23+git20170810
+- Upstream changes:
+  Fixed TAG deletion behaviour while tag not selected.
+  Implemented tags redo/undo support.
+  Fixed part of #67, SEGV due Tags.
+  Fixed Forward Search SEGV. Fixed recent mem leak patch.
+  Delete existing buffers on allocation failure.
+- Update to 0.23+git20170316
+- Upstream changes:
+  Fixed file cut/deletion tag issues. #67
+</comment>
+    <requestid>560527</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>877b974e27fbdd075b20dd0e0880c37b</srcmd5>
+    <version>0.24</version>
+    <time>1517824367</time>
+    <user>dimstar_suse</user>
+    <comment>Update to release 0.24 and modify wxhexeditor-0.23-mhash.patch.
+Use %license on license files.
+Upstream changes:
+  *Fixed many critical bugs and assertions. (Thanks Mikhail Kasimov
+   for Beta testing.)
+  *Fixed many compiler warnings.
+  *Added Wiki option to Help.
+  *Fixed language not supported error for English.
+</comment>
+    <requestid>572387</requestid>
+  </revision>
+</revisionlist>

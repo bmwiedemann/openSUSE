@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3bdaf74d1251bbaf58820548577a8eda</srcmd5>
+    <version>2.30.0</version>
+    <time>1272487938</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-icon-theme-extras based on submit request 36085 from user vuntz
+</comment>
+    <requestid>36085</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>155d4031cf763be00e6c2d849381f334</srcmd5>
+    <version>2.30.1</version>
+    <time>1273792143</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-icon-theme-extras based on submit request 39948 from user dimstar
+</comment>
+    <requestid>39948</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>155d4031cf763be00e6c2d849381f334</srcmd5>
+    <version>2.30.1</version>
+    <time>1278667347</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>155d4031cf763be00e6c2d849381f334</srcmd5>
+    <version>2.30.1</version>
+    <time>1278678578</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d53d1e04e0a60307049562372941f13f</srcmd5>
+    <version>2.30.1</version>
+    <time>1282946044</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-icon-theme-extras based on submit request 46459 from user vuntz
+</comment>
+    <requestid>46459</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>d53d1e04e0a60307049562372941f13f</srcmd5>
+    <version>2.30.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>862e149c324c555afcc8b13f4a01c1ed</srcmd5>
+    <version>3.0.0</version>
+    <time>1304682525</time>
+    <user>saschpe</user>
+    <comment>Fix URL in Source tag (forwarded request 69745 from vuntz)</comment>
+    <requestid>69751</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0ce70c32a16e8fdbdbfd1cf0e67043d5</srcmd5>
+    <version>3.0.0</version>
+    <time>1304682538</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69751
+</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>0ce70c32a16e8fdbdbfd1cf0e67043d5</srcmd5>
+    <version>3.0.0</version>
+    <time>1319181919</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>c9d1976273030580663471b2c9de66ff</srcmd5>
+    <version>3.0.0</version>
+    <time>1323191640</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>eb7eaf4b9279282c59371fe92455cb3a</srcmd5>
+    <version>3.4.0</version>
+    <time>1333022034</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111721</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>eb7eaf4b9279282c59371fe92455cb3a</srcmd5>
+    <version>3.4.0</version>
+    <time>1340183380</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>22bb91a3a64c363572c77d1d4c149df7</srcmd5>
+    <version>3.6.2</version>
+    <time>1353511516</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>142098</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>22bb91a3a64c363572c77d1d4c149df7</srcmd5>
+    <version>3.6.2</version>
+    <time>1359108958</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>22bb91a3a64c363572c77d1d4c149df7</srcmd5>
+    <version>3.6.2</version>
+    <time>1379662490</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>97271f550d1251ce720f4a2b3057247b</srcmd5>
+    <version>3.12.0</version>
+    <time>1399317313</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231718</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>97271f550d1251ce720f4a2b3057247b</srcmd5>
+    <version>3.12.0</version>
+    <time>1409301024</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

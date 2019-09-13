@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f804924ddb1ca870482787544f41367</srcmd5>
+    <version>0.1.3</version>
+    <time>1519747179</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.1.3:
+  * update travis.yml to track Python 3.6
+  * evict returns key, value, and weight
+  * Add LRU.evict method (#18)
+  * add links to readme and setup.py
+- Initial version
+</comment>
+    <requestid>580321</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>42bc542895efa6e0d307238b86b689cc</srcmd5>
+    <version>0.1.3</version>
+    <time>1520164354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582329</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dec3c004fc2f9682a264c01ea5d81551</srcmd5>
+    <version>0.1.3</version>
+    <time>1543999544</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654086</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>40213ce0bbbc33ee9a2b8a8ec604f48b</srcmd5>
+    <version>0.1.4</version>
+    <time>1553700172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689074</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>edadd5e13de4919a7d7d4d5f2e2dd53d</srcmd5>
+    <version>1.0.0</version>
+    <time>1563808755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * no upstream changelog</comment>
+    <requestid>717550</requestid>
+  </revision>
+</revisionlist>

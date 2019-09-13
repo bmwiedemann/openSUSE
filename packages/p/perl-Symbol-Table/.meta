@@ -1,0 +1,5 @@
+<package name="perl-Symbol-Table" project="openSUSE:Factory">
+  <title>An easy interface to symbol tables</title>
+  <description>Symbol::Table allows the user to manipulate Perl's symbol table</description>
+  <devel project="devel:languages:perl" package="perl-Symbol-Table"/>
+</package>

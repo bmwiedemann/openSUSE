@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>10781b8cee85a52867c71dacf6847fd0</srcmd5>
+    <version>2.2.1</version>
+    <time>1492169685</time>
+    <user>maxlin_factory</user>
+    <comment>Needed by recent versions of the jupyter suite.</comment>
+    <requestid>483958</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>607bf86bedcfcdb03cdf4ad64ef91d2a</srcmd5>
+    <version>2.3.0</version>
+    <time>1515506192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562842</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4bdcbca0213f67a7097f97760ada5c3d</srcmd5>
+    <version>2.3.0</version>
+    <time>1527084561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611340</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>09cc803d33e0a90159a241365e0fc09e</srcmd5>
+    <version>2.3.2</version>
+    <time>1527934164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613053</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5695ad50df4a5b5b68f65ea9a314dd0e</srcmd5>
+    <version>2.3.2</version>
+    <time>1533732342</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup deps (forwarded request 627895 from mimi_vx)</comment>
+    <requestid>627896</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b6ffed32e5a70a139f8fda03adf0bc5e</srcmd5>
+    <version>2.3.2</version>
+    <time>1542202865</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid an issue with accidentally still pulling scandir on python3
+
+- Scandir is needed only on older than 3.5 python</comment>
+    <requestid>648383</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1d13f49da27f956fc8a8bbe5d5855014</srcmd5>
+    <version>2.3.3</version>
+    <time>1546946208</time>
+    <user>dimstar_suse</user>
+    <comment>- Always pull in python2-scandir as there is no core functionality
+
+- Update to version 2.3.3:
+  * Bring back old deprecated dependency syntax to ensure
+    compatibility with older systems (see issue #46).
+  * Drop Python 3.3 support, as scandir no longer supports it.
+  * Add Python 3.7 support.
+- Update conditionals for tests and dependencies to work on older
+  SLE/openSUSE releases as well</comment>
+    <requestid>662391</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>814a5d96425b7c79db029c0b1cce5919</srcmd5>
+    <version>2.3.3</version>
+    <time>1549630118</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672134</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>c45987aafda85b13eba1b4ea80966046</srcmd5>
+    <version>2.3.3</version>
+    <time>1552380375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683717</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cbad38a03954a47504441f2fd543e330</srcmd5>
+    <version>2.3.4</version>
+    <time>1564301857</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.4:
+  * Do not raise windows error when calling resolve on a non-existing path in Python 2.7, to match behaviour on Python 3.x (see issue #54).
+  * Use the new collections.abc when possible (see issue #53).
+  * Sync with upstream pathlib (see issues #47 and #51).</comment>
+    <requestid>717895</requestid>
+  </revision>
+</revisionlist>

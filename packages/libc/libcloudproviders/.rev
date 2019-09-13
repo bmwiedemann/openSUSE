@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d611b8612103c6f804e2ae9b13b943f3</srcmd5>
+    <version>0.1.1</version>
+    <time>1505335030</time>
+    <user>dimstar_suse</user>
+    <comment>Introduction of new package, dep to GTK+ at one point</comment>
+    <requestid>523929</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>62fbf526827fa1f1ad386ae9d94f09e5</srcmd5>
+    <version>0.2.5</version>
+    <time>1516359250</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.5:
+  + Fix leftovers of the daemon service breaking the build.
+- Changes from version 0.2.4:
+  + Remove libcloudproviders.service since a daemon won't be used
+    anymore.
+- Changes from version 0.2.3:
+  + No news provided.
+- Changes from version 0.2.2:
+  + No news provided.
+- Changes from version 0.2.1:
+  + No news provided.
+- Changes from version 0.2.0:
+  + Use proper DBus.
+  + Use proper class prefixes.
+  + Remove daemon, since it's not necessary.
+  + Remove manager, since it can be simplified.
+- Update Url to https://gitlab.gnome.org/External/libcloudproviders
+  since this is the current libcloudproviders' GitLab project page.
+- Drop unneeded libcloudproviders Requires tag for the shared
+  library package once the main package has been removed,
+  following upstream's changes. (forwarded request 567241 from iznogood)</comment>
+    <requestid>567446</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>29f8839c777c2e6eee474279072bf308</srcmd5>
+    <version>0.2.5</version>
+    <time>1520588461</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581386 from dimstar)</comment>
+    <requestid>582878</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e26928aff5db88658f4a93c4a3c7731</srcmd5>
+    <version>0.3.0</version>
+    <time>1567849826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728487</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+<package name="tkirc" project="openSUSE:Factory">
+  <title>A graphical IRC client</title>
+  <description>Tkirc is a graphical frontend for the ircII or epic textmode IRC
+clients. It is written in Tcl/Tk and thus can be greatly configured,
+customized and extended.
+
+Documentation can be found under /usr/share/doc/packages/tkirc/README
+and the directory /usr/share/doc/packages/tkirc/.tkirc2 contains
+configuration examples, that can be copied over to one's home
+directory.</description>
+  <devel project="network" package="tkirc"/>
+</package>

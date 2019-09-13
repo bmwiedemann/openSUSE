@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35a69c7334e52a8ab959523387f540dc</srcmd5>
+    <version>1.5.10</version>
+    <time>1532527799</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission</comment>
+    <requestid>624465</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c0da7d3a6f61ca079056eaf30fb5077b</srcmd5>
+    <version>1.5.12</version>
+    <time>1540448347</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642900</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>45528b0e307192c5e72861ffee83d63a</srcmd5>
+    <version>1.5.13</version>
+    <time>1545996921</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>661502</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc4aebf997528565f262376b76285263</srcmd5>
+    <version>1.5.14</version>
+    <time>1556475241</time>
+    <user>maxlin_factory</user>
+    <comment>version update</comment>
+    <requestid>698564</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c69f518a6f8dfbf4a87f68da9e905ec4</srcmd5>
+    <version>1.5.14</version>
+    <time>1557084109</time>
+    <user>dimstar_suse</user>
+    <comment>required update for openSUSE:Factory:Staging:adi:90</comment>
+    <requestid>700478</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>4a1429d96601dd863dbb113f19d3d108</srcmd5>
+    <version>1.5.14</version>
+    <time>1558129459</time>
+    <user>dimstar_suse</user>
+    <comment>please add this update to openSUSE:Factory:Staging:adi:78</comment>
+    <requestid>703665</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>63e7e2fe52735212ec0b3d39c36de9e8</srcmd5>
+    <version>1.5.14</version>
+    <time>1564414201</time>
+    <user>dimstar_suse</user>
+    <comment>minor version update</comment>
+    <requestid>719373</requestid>
+  </revision>
+</revisionlist>

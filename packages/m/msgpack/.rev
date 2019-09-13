@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed9210a496ecc33edeabbad530516e5c</srcmd5>
+    <version>0.5.9</version>
+    <time>1425565846</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for neovim</comment>
+    <requestid>288549</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3427f25d3adcbac5cd70b5350e32a32b</srcmd5>
+    <version>1.3.0</version>
+    <time>1449687036</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347278</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>de443781fa55d6075defb43d07bd15e3</srcmd5>
+    <version>1.4.1</version>
+    <time>1460358851</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>383802</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ab7b96b2cfd4e2dc062fdd746154529e</srcmd5>
+    <version>2.0.0</version>
+    <time>1472731379</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423868</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a236abc66fe88fc24c0bdb4846516c48</srcmd5>
+    <version>2.0.0</version>
+    <time>1484041490</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448413</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3374986204ab18885dc3d2c5c8271ed6</srcmd5>
+    <version>2.1.2</version>
+    <time>1497274560</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503030</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>74eec0a0546640d8060aec50eb2dbecf</srcmd5>
+    <version>2.1.5</version>
+    <time>1510912453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541232</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4bc4feeab3f0bdb4c5a85e44c725922f</srcmd5>
+    <version>3.0.1</version>
+    <time>1529402331</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616552</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>673b93024c56eb96dfa9ef4efa5a8a25</srcmd5>
+    <version>3.1.1</version>
+    <time>1536679153</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634746</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1e386d5177e6b93829e0b79a58c7c966</srcmd5>
+    <version>3.2.0</version>
+    <time>1559581040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707098</requestid>
+  </revision>
+</revisionlist>

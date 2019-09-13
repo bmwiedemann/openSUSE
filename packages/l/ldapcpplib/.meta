@@ -1,0 +1,7 @@
+<package name="ldapcpplib" project="openSUSE:Factory">
+  <title>C++ API for LDAPv3</title>
+  <description>C++ API for LDAPv3.
+
+Documentation is in /usr/share/doc/packages/ldapcpplib/srcdoc.</description>
+  <devel project="network:ldap" package="ldapcpplib"/>
+</package>

@@ -1,0 +1,156 @@
+<revisionlist>
+  <revision rev="1" vrev="115">
+    <srcmd5>858b68037198cd049841bf0ad2a115db</srcmd5>
+    <version>0.6</version>
+    <time>1168904476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="247">
+    <srcmd5>858b68037198cd049841bf0ad2a115db</srcmd5>
+    <version>0.6</version>
+    <time>1168904476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="248">
+    <srcmd5>050d4a38bb052f2fcf373fa325f02b0a</srcmd5>
+    <version>0.6</version>
+    <time>1245277733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="250">
+    <srcmd5>050d4a38bb052f2fcf373fa325f02b0a</srcmd5>
+    <version>0.6</version>
+    <time>1245277733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="251">
+    <srcmd5>1d98c44bec8ca231c22bde330da72691</srcmd5>
+    <version>0.6</version>
+    <time>1268926492</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4821683a4a81f6042d52f761e999aa7f</srcmd5>
+    <version>0.8</version>
+    <time>1269566740</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/wiggle based on submit request 35697 from user prusnak
+</comment>
+    <requestid>35697</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e101f52240ebe0e6d22f73f73a3e1d07</srcmd5>
+    <version>0.8</version>
+    <time>1271925106</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/wiggle based on submit request 38483 from user coolo
+</comment>
+    <requestid>38483</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e101f52240ebe0e6d22f73f73a3e1d07</srcmd5>
+    <version>0.8</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>e101f52240ebe0e6d22f73f73a3e1d07</srcmd5>
+    <version>0.8</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>e101f52240ebe0e6d22f73f73a3e1d07</srcmd5>
+    <version>0.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>e101f52240ebe0e6d22f73f73a3e1d07</srcmd5>
+    <version>0.8</version>
+    <time>1319182568</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>d467b974e99226451e479e0d2e9f6174</srcmd5>
+    <version>0.8</version>
+    <time>1329318002</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104575 from coolo)</comment>
+    <requestid>104700</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4d5e0803b14001993783daa7e481abd9</srcmd5>
+    <version>0.9</version>
+    <time>1337578387</time>
+    <user>coolo</user>
+    <comment>- New upstream release 0.9.
+  Numerous bugfixes for edge cases,
+  lots of improvements to --browser mode which
+  is now documented
+  new --show-wiggle flag to make it easier to
+  see what wiggle is trying to do</comment>
+    <requestid>121295</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>4d5e0803b14001993783daa7e481abd9</srcmd5>
+    <version>0.9</version>
+    <time>1340184323</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>4d5e0803b14001993783daa7e481abd9</srcmd5>
+    <version>0.9</version>
+    <time>1359110569</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e6627efa2351f681f31c53981797652d</srcmd5>
+    <version>1.0</version>
+    <time>1377249150</time>
+    <user>scarabeus_factory</user>
+    <comment>New release of wiggle ready for Factory!
+
+- New upstream release 1.0
+  Substatial improvements to --browser mode including
+  ability to edit the resulting merge.
+  New --ignore-blanks flag.
+  Improved git integration.</comment>
+    <requestid>196056</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>e6627efa2351f681f31c53981797652d</srcmd5>
+    <version>1.0</version>
+    <time>1379664960</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>e6627efa2351f681f31c53981797652d</srcmd5>
+    <version>1.0</version>
+    <time>1409303639</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>f657c9ce5ded4537998c78ff3643b846</srcmd5>
+    <version>1.0</version>
+    <time>1467705142</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406272</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ac15dd0b67655486fd557b9619f54914</srcmd5>
+    <version>1.1</version>
+    <time>1535123021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628878</requestid>
+  </revision>
+</revisionlist>

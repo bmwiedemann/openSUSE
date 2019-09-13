@@ -1,0 +1,119 @@
+<revisionlist>
+  <revision rev="1" vrev="81">
+    <srcmd5>f6bfa715133a1517b8081b0a31015630</srcmd5>
+    <version>1.6.0</version>
+    <time>1168903982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="134">
+    <srcmd5>75410472651ed7af8912cb0a16fee9a8</srcmd5>
+    <version>1.6.0</version>
+    <time>1175041463</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="242">
+    <srcmd5>75410472651ed7af8912cb0a16fee9a8</srcmd5>
+    <version>1.6.0</version>
+    <time>1175041463</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="243">
+    <srcmd5>3a5c4d0cc733c9b37b3fec556d5cb030</srcmd5>
+    <version>1.6.0</version>
+    <time>1245277060</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="245">
+    <srcmd5>3a5c4d0cc733c9b37b3fec556d5cb030</srcmd5>
+    <version>1.6.0</version>
+    <time>1245277060</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="246">
+    <srcmd5>e672e86cc7f437af199c12873262cc2c</srcmd5>
+    <version>1.6.0</version>
+    <time>1268925731</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="248">
+    <srcmd5>e672e86cc7f437af199c12873262cc2c</srcmd5>
+    <version>1.6.0</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="249">
+    <srcmd5>e672e86cc7f437af199c12873262cc2c</srcmd5>
+    <version>1.6.0</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="252">
+    <srcmd5>e672e86cc7f437af199c12873262cc2c</srcmd5>
+    <version>1.6.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="254">
+    <srcmd5>e672e86cc7f437af199c12873262cc2c</srcmd5>
+    <version>1.6.0</version>
+    <time>1319182361</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="255">
+    <srcmd5>db92984219d7af6f63d85749d5fa2846</srcmd5>
+    <version>1.6.0</version>
+    <time>1324307419</time>
+    <user>coolo</user>
+    <comment>- fix license to GPL-2.0 only (bnc#735050)
+
+- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>96429</requestid>
+  </revision>
+  <revision rev="12" vrev="256">
+    <srcmd5>1b1de59891247f67b8dc70de1080ec18</srcmd5>
+    <version>1.6.0</version>
+    <time>1324913347</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97725 from coolo)</comment>
+    <requestid>98220</requestid>
+  </revision>
+  <revision rev="13" vrev="258">
+    <srcmd5>1b1de59891247f67b8dc70de1080ec18</srcmd5>
+    <version>1.6.0</version>
+    <time>1340184007</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="260">
+    <srcmd5>1b1de59891247f67b8dc70de1080ec18</srcmd5>
+    <version>1.6.0</version>
+    <time>1359109934</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="262">
+    <srcmd5>1b1de59891247f67b8dc70de1080ec18</srcmd5>
+    <version>1.6.0</version>
+    <time>1379664041</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b3288863fdaaaf52b449afb781d0c6ce</srcmd5>
+    <version>1.7.0</version>
+    <time>1380172314</time>
+    <user>coolo</user>
+    <comment>update to version 1.7.0 (forwarded request 200213 from cyberiad)</comment>
+    <requestid>200571</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>b3288863fdaaaf52b449afb781d0c6ce</srcmd5>
+    <version>1.7.0</version>
+    <time>1409302718</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cfd5fc28c2d3b407d0f1c59b2f04adc2</srcmd5>
+    <version>0.02</version>
+    <time>1311666336</time>
+    <user>saschpe</user>
+    <comment>indirect dep of hermes</comment>
+    <requestid>76642</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>90076b99006ea09cd6676a1c76c20944</srcmd5>
+    <version>0.02</version>
+    <time>1311666352</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76642
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>90076b99006ea09cd6676a1c76c20944</srcmd5>
+    <version>0.02</version>
+    <time>1319182300</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>b2dcf335826ea2aa244bf0c9289d120c</srcmd5>
+    <version>0.02</version>
+    <time>1323193586</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>b2dcf335826ea2aa244bf0c9289d120c</srcmd5>
+    <version>0.02</version>
+    <time>1340183906</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>b2dcf335826ea2aa244bf0c9289d120c</srcmd5>
+    <version>0.02</version>
+    <time>1359109781</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fed0b826f851e7e2bb3b5c446928857c</srcmd5>
+    <version>0.04</version>
+    <time>1371146832</time>
+    <user>coolo</user>
+    <comment>- updated to 0.04
+     - Fix the author field in META.yml
+     - Compatibility with the MooseX::Role::WithOverloading
+     - cover_requires option (forwarded request 178326 from coolo)</comment>
+    <requestid>178335</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>fed0b826f851e7e2bb3b5c446928857c</srcmd5>
+    <version>0.04</version>
+    <time>1379663818</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4966db0b81c48b547356eddd266bdc12</srcmd5>
+    <version>0.05</version>
+    <time>1395148595</time>
+    <user>coolo</user>
+    <comment>- fix spec file to build
+
+- update to 0.05:
+  + Removed use of Perl6::Junction, which causes warnings with 5.18.0.
+  + switch to using namespace::autoclean everywhere
+  + canonical repository migrated to the github moose organization</comment>
+    <requestid>226365</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>4966db0b81c48b547356eddd266bdc12</srcmd5>
+    <version>0.05</version>
+    <time>1409302455</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7fa5fb3421ae7b62a8ab2febbf21c3c2</srcmd5>
+    <version>0.07</version>
+    <time>1441727106</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329540</requestid>
+  </revision>
+</revisionlist>

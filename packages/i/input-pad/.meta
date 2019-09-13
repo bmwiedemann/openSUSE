@@ -1,0 +1,5 @@
+<package name="input-pad" project="openSUSE:Factory">
+  <title>On-screen Input Pad to Send Characters with Mouse</title>
+  <description>The input pad is a tool to send a character on button to text applications.</description>
+  <devel project="M17N" package="input-pad"/>
+</package>

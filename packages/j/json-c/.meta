@@ -1,0 +1,9 @@
+<package name="json-c" project="openSUSE:Factory">
+  <title>JSON implementation in C</title>
+  <description>JSON-C implements a reference counting object model that allows you to
+easily construct JSON objects in C, output them as JSON formatted
+strings and parse JSON formatted strings back into the C
+representation of JSON objects.</description>
+  <devel project="devel:libraries:c_c++" package="json-c"/>
+  <url>http://oss.metaparadigm.com/%{name}</url>
+</package>

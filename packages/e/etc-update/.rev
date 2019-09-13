@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae65d70a9ee897e98b753b46f9780ca7</srcmd5>
+    <version>2.1.11.50</version>
+    <time>1360683518</time>
+    <user>coolo</user>
+    <comment>New simple package to help with managing .rpmnew files, supperseeds sr#151571</comment>
+    <requestid>154877</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ae65d70a9ee897e98b753b46f9780ca7</srcmd5>
+    <version>2.1.11.50</version>
+    <time>1379662307</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>ae65d70a9ee897e98b753b46f9780ca7</srcmd5>
+    <version>2.1.11.50</version>
+    <time>1409300842</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2e7b101644ecde3ac88be4a19a95d0b9</srcmd5>
+    <version>2.2.24</version>
+    <time>1447696297</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344298</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>16bb0d67d5fb5b25a759849e3ccfd209</srcmd5>
+    <version>2.3.31</version>
+    <time>1524838114</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch etc-update-opensuse.patch to really work on Leap
+
+- Version update to 2.3.31:
+  * Few small fixes
+  * Update to support archlinux config files out of the box
+- Use full portage archive in order to allow &quot;automatic&quot; updating
+  instead of copying files</comment>
+    <requestid>601518</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>27172247e818f5f776021e16b81f07b1</srcmd5>
+    <version>2.3.31</version>
+    <time>1525121855</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh etc-update-opensuse.patch to match for rpmnew files too.
+  Now it matched only rpmsave and rpmorig
+  * etc-update-opensuse.patch</comment>
+    <requestid>602474</requestid>
+  </revision>
+</revisionlist>

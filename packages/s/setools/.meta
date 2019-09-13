@@ -1,0 +1,9 @@
+<package name="setools" project="openSUSE:Factory">
+  <title>Policy analysis tools for SELinux</title>
+  <description>SETools is a collection of graphical tools, command-line tools, and
+libraries designed to facilitate SELinux policy analysis.
+
+This meta-package depends upon the main packages necessary to run
+SETools.</description>
+  <devel project="security:SELinux" package="setools"/>
+</package>

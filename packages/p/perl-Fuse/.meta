@@ -1,0 +1,7 @@
+<package name="perl-Fuse" project="openSUSE:Factory">
+  <title>Write filesystems in Perl using FUSE</title>
+  <description>This lets you implement filesystems in perl, through the FUSE (Filesystem
+in USErspace) kernel/lib interface.
+</description>
+  <devel project="devel:languages:perl" package="perl-Fuse"/>
+</package>

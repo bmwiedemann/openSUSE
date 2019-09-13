@@ -1,0 +1,5 @@
+<package name="python-yarg" project="openSUSE:Factory">
+  <title></title>
+  <description>A PyPI client</description>
+  <devel project="devel:languages:python" package="python-yarg"/>
+</package>

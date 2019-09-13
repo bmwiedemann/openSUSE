@@ -1,0 +1,377 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79f22ccf63d2cdcb054547fdee8600ce</srcmd5>
+    <version>2.8.4</version>
+    <time>1453416112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>348239</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cea5a9296a4b2097dd4a4ae45eca78d0</srcmd5>
+    <version>2.8.5</version>
+    <time>1458120905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>369576</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d7dd8b1e608e0421cb18e7f177d47beb</srcmd5>
+    <version>3.0.0</version>
+    <time>1462051761</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>391522</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52e4b1ff5f6e9fe6a123871dc1cf7b8f</srcmd5>
+    <version>3.0.1</version>
+    <time>1462865248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>394113</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5de750eeefd68a376db66b7588a3fda4</srcmd5>
+    <version>3.0.3</version>
+    <time>1463124262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>395019</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a361bd193b6bb68476fc1fdefa118e42</srcmd5>
+    <version>3.0.4</version>
+    <time>1464014398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>397322</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>05cbfcf16e22ff00240fb551cf05b6d3</srcmd5>
+    <version>3.0.5</version>
+    <time>1466814231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>404347</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fb0c89ac8072bfeb4a8ed8e219b3511e</srcmd5>
+    <version>3.2.0</version>
+    <time>1479229231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>439962</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>748f7759e2d6fa10797951994dad284f</srcmd5>
+    <version>3.2.1</version>
+    <time>1480342020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>441865</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f4167e6ca57a335e732562e52f78d095</srcmd5>
+    <version>3.2.2</version>
+    <time>1483956185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>449255</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>298de034fd6a2242e7c8503ce01823dc</srcmd5>
+    <version>3.4.0</version>
+    <time>1495883685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>493340</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9ea23d1ade500ffaf1f399738e7a7854</srcmd5>
+    <version>3.4.1</version>
+    <time>1503393035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>518001</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0680d05daad71e9c37f4dfd5020cd96f</srcmd5>
+    <version>3.6.0</version>
+    <time>1510322154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538173</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>43d6b800a2d2d7d2c968e8a1a59614bf</srcmd5>
+    <version>3.8.0</version>
+    <time>1524742636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599337</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>21c40c2d989d4a988dac0f6c4b72298b</srcmd5>
+    <version>3.8.1</version>
+    <time>1526022940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605817</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>418a63515b4bb5066243b51654e2ad46</srcmd5>
+    <version>3.8.2</version>
+    <time>1529402645</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617246</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>42b6fb82a821c55d60f90dd7d50db8da</srcmd5>
+    <version>4.2.1</version>
+    <time>1563456173</time>
+    <user>dimstar_suse</user>
+    <comment>- ”flto” caused the failed build
+- don't use %configure, some optflags cause the build to fail
+- Update to version 4.2.1
+  * Remove toggle_input_panel call during a key press.  
+  * Fix standalone muffin executable
+- Update to version 4.2.0:
+  * cogl-util: Use original meta_rectangle_new for older GPUs (#401)
+  * window: Pass the input rect to meta_compositor_tile_window (#411)
+  * Improvements for Cinnamon's app system (#418)
+  * Clutter master clock improvements (#392)
+  * window: Remove some window icon properties and related processing (#399)
+  * Avoid usage of g_getenv in frequently called functions (#423)
+  * Phase out MetaCompScreen (#424)
+  * clutter-stage: Don't emit &quot;after-paint&quot; when picking (#412)
+  * window-actor: Fix partially visible frameless windows, some window flickering cases (#405)
+  * Stop caching the shape region in MetaShapedTexture (#406)
+  * window-actor: Only apply desaturation effect if window has a shadow (#408)
+  * shadow-factory: Replace the changed signal with a function call (#426)
+  * window: Cache icons if the size is &lt;= icon_size, return a GdkPixbuf (#422)
+  * Support toggling vsync at runtime for better unredirection control (#425)
+  * window: Fix the position-changed signal not firing for CSD windows (#416)
+  * Move the desktop effects setting to Muffin (#428)
+  * Avoid getting context from Clutter in frequently called functions (#429)
+  * window: Cache the outer, client rects (#427)
+  * Various compositor improvements (#410)
+  * Improve sync between the cursor and frames (#397)
+  * ui: Don't apply CSD window filtering for button events (#435)
+  * screen: Ensure monitors update on monitor change (#439)
+  * screen: Update the rect cache on monitor change (#441)
+  * window: Update monitor state before showing the window (#444)
+  * compositor: Fix tiling placement (#447)
+  * Revert two commits from #410 (#448)
+  * clutter: Fix check for keyboard a11y features (#458)
+  * window-actor: Fix squished window textures (#453)
+  * window-actor: override Clutter opacity property and method (#449)
+  * Make compositor_private a MetaWindowActor type (#454)
+  * Fix unredirection for wine games, mpv
+  * clutter-actor: Keep is_dirty unchanged for culled actors (#456)
+  * boxes: Actually check for rectangle containment (#457)
+  * compositor: Avoid changing pipeline/source if shadow is not being painted (#459)
+  * Clean up the pre-paint functions (#460)
+  * clutter-stage: Remove unused variable, double assignment (#461)
+  * Add meta_display_popup_window_visible (#445)
+  * window-actor: Make actor non-reactive (#440)
+  * window-actor: Use int for opacity
+  * window: Remove obsolete cast in meta_window_adjust_opacity
+  * window: Fix the snap OSD getting stuck (#450)
+  *  Expose the sync method to preferences (#452)
+  * compositor: Fix workspace switching, improve window dragging smoothness (#465)
+  * Replace some deprecated GDK methods (#443)
+  * window: Remove unnecessary function call in send_sync_request (#467)
+  * core util.c: remove a couple of cases generating compile warnings (#470)
+  * compositor-private: remove a couple of duplicated lines (#472)
+  * Replace some GLib wrappers (#421)
+  * Fix unredirected windows not being clipped out of the stage (#474)
+  * Make sure windows paint before un-fullscreening (#475)
+  * Add MetaPrefsState struct for retrieving the prefs state without function invocation (#466)
+  * boxes: Return if the rect pointers are null (#478)
+  * window-actor: Add reference to MetaDisplay (#476)
+  *  window-actor: Support applying effects on clones (#464)
+  *  Fix cinnamon-screensaver freezing up when activated (#477)
+  * compositor: Check if priv is NULL before calling meta_window_actor_should_unredirect (#479)
+  * hidpi: Restore scaling to initial cursor size, tile HUD threshold and some tile/maximize break-away distances.
+  * window: Fix edge resistance
+  * Unconditionalize meta_window_update_outer_rect (#484)
+  * window-actor: Update clip_shadow before the redraw
+  * window: Call update_outer_rect in update_resize
+  * window: Fix tile HUD color not changing when holding the snap modifier during a drag (#488)
+  * Fix screensaver regressions (#489)
+  * gitignore auto-generated files (#506)
+  * window-actor: Use source actor for the close, minimize effects (#508)
+  * Fix segfault when using cinnamon --replace (#512)
+  * Fix the current workspace not being selected during startup (#511)
+  * Revert rect caching and obstructed windows optimizations (#515)
+  * Replace some GLib wrappers (#421)
+  * Replace some deprecated GDK methods (#443)
+  * Fix segfault when using cinnamon --replace (#512)
+  * Expose the sync method to preferences (#452)
+  * Fix unredirection for wine games, mpv
+  * Display: Add meta_display_get_pointer() and meta_display_get_window_pointer()
+  * window-actor: Fix segfault in meta_window_actor_should_unredirect (#514)
+  * Add meta_display_popup_window_visible (#445)
+  * window-private: Include compositor-private.h (#518)
+  * window-props: remove some warnings with casts (#504)
+  * menu.c: remove some compile warnings (#503)
+  * core.c: remove a compile warning (#499)
+  * meta-sync-ring: get rid of some compiler warnings (#496)
+  * gradient: resolve a few compile warnings (#495)
+  * cogl-utils: remove a deprecation (#494)
+  * boxes: remove an ISO C90 warning (#493)
+  * compositor: fix a few compiler warnings (#492)
+  * Revert unredirection backports (#520)
+  * meta-window-actor: don't toggle sync during runtime (#523)
+  * exclude code only needed in verbose mode (#502)
+- Update to version 4.0.6:
+  * Re-add gsettings key org.cinnamon.muffin button-layout
+  * window-actor: Fix corners not updating on size change (#394)
+  * shaped-texture: Return early if shape_region is NULL in ensure_mask (#389)
+  * window-actor: Fix the mask texture not updating after windows re-map after re-decoration (#390)
+  * Speed up window mapping (#391)
+  * Revert &quot;clutter: Deliver events sooner when possible&quot; (#387)
+  * docs: Disable internal cogl doc generation.
+  * Make transitions between restarts seamless
+  * window.c: Remove tooltip workaround.
+  * main: Reserve CLUTTER_PAINT for software rendering only (#379)
+  * window-actor: Fix window shading (#381)
+  * window-actor: Fix window artifacts on size/position change (#382)
+  * shaped-texture: Don't redraw when setting the shape region (#384)
+  * Fix VLC fullscreen controller position (#383)
+  * window: Implement _NET_RESTACK_WINDOW and XConfigureRequestEvent sibling (#386)
+  * always process clutter Makefile.in (#374)
+  * window-actor: Queue mask texture update on maximize (#376)
+  * window.c: Allow the user-defined workspace left/right shortcuts to be used when dragging a window in addition to the advertised arrow- left/right.
+  * meta-window-actor.c: Don't shadow dock type windows as a rule.
+  * window-props: Start respecting the _GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED window hint.
+  * stack.c: Don't attempt to restack or raise windows that are in the process of being unmanaged.
+  * theme-parser.c: Look in XDG_DATA_HOME (.local/share) for themes.
+  * stack: Place dock windows below other windows when the monitor they're on is in fullscreen.
+  * texture-tower: Remove CPU codepath for mipmap generation
+  * tower: make sure not to blend when updating tower
+  * MetaTextureTower: actually mark revalidated levels as valid
+  * texture-tower: Fix error case in meta-texture-tower
+  * Update for Cogl API breaks
+  * Use correct cogl object types
+  * compositor: Handle fences in the frontend X connection (#338)
+  * compositor: map overlay window before redirecting windows (#340)
+  * compositor: sync stacking of window actors even if they're not parented to the window groups (#341)
+  * compositor: Fix ClutterTimeline usage (#342)
+  * Remove clutter version check
+  * compositor: Don't connect to the stage's paint signal
+  * compositor: Default to META_SYNC_DELAY == 0
+  * Integrate Clutter and Cogl into Muffin (WIP)
+  * Remove libclutter-1.0-dev from debian dependencies
+  * Update muffin dependencies, add options found in the Mutter tree
+  * Add missing math lib to cogl-path
+  * Remove cogl-1.0 from deps
+  * Symlink muffin libs to libdir, needed for gtkdoc-scan in cinnamon to finish
+  * Remove clutter-1.0 from Makefile.am, get muffin linking to its private libs
+  * Fix segfault on initialization
+  * Remove debug option, remove cogl onscreen related calls in meta_pre_paint_func
+  * Add missing macros for Clutter
+  * Update build dependencies
+  * Disable kms-egl-platform
+  * Update dependencies for LMDE
+  * Clutter: Update Makefile.am.marshal
+  * Clutter: Prevent assertion error from wayland function
+  * Fix clutter stage assertion errors
+  * Clutter: expose vblank mode to gsettings
+  * clutter: Deliver events sooner when possible
+  * clutter: Smooth out master clock to smooth visuals
+  * Fix up segfault fix, apply upstream patches for window syncing
+  * Remove meta_window_actor_frame_complete, frame_callback
+  * window-group: Decompose culling operations into two methods
+  * window-actor: Base the paint volume on our children, not our shape
+  * Don't cache the paint volume on non-clipped redraws
+  * screen: Get monitor refresh rates from xrandr
+  * meta-window-actor: Use the monitor refresh rate to get frame timings
+  * meta-window-actor: Don't process invisible windows that have a pixmap
+  * Add option to toggle frame timings
+  * cogl-winsys-glx: Fix frame notification race/leak
+  * Replace libmuffin-dev with libmuffin0
+  * Don't use cogl_onscreen_add_frame_callback for Nvidia
+  * Fix desktop background appearing during the login sequence
+  * Remove remaining deprecated Cogl 1.0 usage (#348)
+  * window: Various performance improvements (#349)
+  * shaped-texture: Disable mipmapping during animation (#353)
+  * Improve handling of tracking the old focused window during restart (#346)
+  * meta-shaped-texture: Don't queue redraws for obscured regions
+  * meta-window-actor: Throttle obscured frame synced apps
+  * Remove unused variable
+  * shaped-texture: Remove dead code
+  * window_actor: Remove the frame_messages timeout in destroy
+  * window: Fix a couple leaks (#357)
+  * Double check whether the user time window was previously used (#358)
+  * clutter: Improve smoothness of visuals (#355)
+  * Only emit tiling-related signals when needed (#354)
+  * Avoid clutter_actor_queue_relayout in animations (#356)
+  * clutter: Fix offscreen-effect painting of clones (#360)
+  * Handle GL video memory purged errors (#363)
+  * screen: Fetch the COW window up-front (#365)
+  * Don't attempt to get monitor geometry on non-existent monitors (#366)
+  * window: Remove duplicated code (#367)
+  * Add threaded swap waiting (#368)
+  * gtk-doc: Add Clutter and Cogl references (#359)
+  * Cogl, Clutter: Avoid crashing when texture allocation fails (#370)
+  * keybindings.c: Rework workspace navigation during a mouse move grab.
+  * keybindings.c: Squelch fall-thru warnings in GCC7+ from previous commit.  The fall-thru is intentional behavior in these cases.
+  * edge resistance: Disable all edge resistance when the pref is disabled.
+  * shaped-texture: Remove an unnecessary set to NULL
+  * shaped-texture: Simplify pipeline creation
+  * shaped-texture: Use non-deprecated cogl APIs
+  * Support _NET_WM_OPAQUE_REGION
+  * compositor: Fix crash when adding a window with an opaque region
+  * window-actor: Use g_clear_pointer
+  * Fix up &quot;Support _NET_WM_OPAQUE_REGION&quot;
+  * window-props: Don't make another round-trip to fetch the opaque region
+  * shaped-texture: Turn blending off when drawing entirely opaque regions
+  * shaped-texture: Prevent no clip region from being used as an empty clip region
+  * shaped-texture: Remove bad comment
+  * shaped-texture: Actually fetch rectangles from the blended_region
+  * shaped-texture: Fix memory leak
+  * shaped-texture: Use nearest-pixel interpolation if the texture is unscaled
+  * shaped-texture: Make sure to set the texture tower's texture
+  * shaped-texture: Clean up code flow a bit
+  * shaped-texture: Clean up slightly
+  * shaped-texture: If we have too many rectangles, don't paint the opaque
+  * shaped-texture: Fix the logic when the blended region is empty
+  * Use meta_actor_painting_untransformed() for MetaShapedTexture
+  * shaped-texture: Don't set a small minimum size
+  * shaped-texture: Clean up some internals
+  * shaped-texture: Repeat edge pixels instead of mirroring the image
+  * shaped-texture: Remove unnecessary copies of the pipeline
+  * shaped-texture: Invalidate mask texture when main texture changes size
+  * Fix Codacy warning
+  * Fix the input region not working properly
+  * Fix leak when resizing windows
+  * Don't set the mask texture on every paint
+  * window-actor: Don't queue a redraw when queueing a new pixmap
+  * window-actor: Remove the bounding region
+  * window-actor: Don't add shadows to popups if the toolkit does
+  * window-actor: Phase out the size/position changed signals, and connect to shaped texture's size changed signal
+  * window-actor: Give notify::opacity signal an ID
+  * window-actor: Move all buffer management and damage correction here
+  * MetaFrame: Cache borders
+  * Fix title bar artifacts on unmaximize
+  * Fix redraw issues when windows change size
+  * compositor: Don't call process_damage if the window is gone
+  * Fix redraw issues in some fullscreen applications
+  * Don't queue full stage relayouts when moving windows
+  * window: Make sure update_corners gets called after every resize, theme change
+  * Fix up tile signal optimization (#372) 
+</comment>
+    <requestid>716209</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b6d021a63b445d67b600a29ad726a2be</srcmd5>
+    <version>4.2.2</version>
+    <time>1564414137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719318</requestid>
+  </revision>
+</revisionlist>

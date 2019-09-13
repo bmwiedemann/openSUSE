@@ -1,0 +1,203 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2b70e1947ee1be9a7fad40a8cb8b4a3</srcmd5>
+    <version>2012.02.13</version>
+    <time>1329405089</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>105431</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>33d2df8c926798caa9d333ae1d19f4b5</srcmd5>
+    <version>2012.02.13</version>
+    <time>1329421635</time>
+    <user>coolo</user>
+    <comment>- fix output filename</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d96ac1ebce5bc8217d2e9be9752ac919</srcmd5>
+    <version>2012.02.13</version>
+    <time>1329476405</time>
+    <user>coolo</user>
+    <comment>- do not output nodisplay=true .desktop files
+- avoid empty &lt;applications/&gt;
+
+- remove /usr/share/applications/ prefix</comment>
+    <requestid>105620</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>51ba843776b4cac72e0158b078a7908b</srcmd5>
+    <version>2012.02.13</version>
+    <time>1329750435</time>
+    <user>coolo</user>
+    <comment>- fix two desktop files in one rpm (forwarded request 105955 from coolo)</comment>
+    <requestid>105957</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5e95b8073284220bb3512f3800e2aad0</srcmd5>
+    <version>2012.02.13</version>
+    <time>1329923256</time>
+    <user>coolo</user>
+    <comment>- changed my mind - use rpmname as part of the xml filename
+  to simplify all kind of tasks (forwarded request 106432 from coolo)</comment>
+    <requestid>106498</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b2e7ccf53542d68f9d2e1c3718c2b346</srcmd5>
+    <version>2012.02.13</version>
+    <time>1330692418</time>
+    <user>coolo</user>
+    <comment>- make the brp script a perl script too and let it find icons (forwarded request 107755 from coolo)</comment>
+    <requestid>107756</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>1e56fb157ff08bd1930ef66c6b7994a6</srcmd5>
+    <version>2012.02.13</version>
+    <time>1331124088</time>
+    <user>coolo</user>
+    <comment>- adding extract-icons.pl script to be called for kiwi products (forwarded request 108301 from coolo)</comment>
+    <requestid>108305</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>1b9c291a3055b83ff6e3f9f250ce244c</srcmd5>
+    <version>2012.02.13</version>
+    <time>1331492599</time>
+    <user>coolo</user>
+    <comment>- add required perl modules</comment>
+    <requestid>108806</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>744f9b36b452d644e659106e5ac1b9db</srcmd5>
+    <version>2012.02.13</version>
+    <time>1331899802</time>
+    <user>coolo</user>
+    <comment>- fix XML structure of generated files</comment>
+    <requestid>109485</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>e475c69776bd48b6b1942975cd2ffaf6</srcmd5>
+    <version>2012.02.13</version>
+    <time>1332239162</time>
+    <user>coolo</user>
+    <comment>- remove the icon tag if there is no icon</comment>
+    <requestid>109907</requestid>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>e475c69776bd48b6b1942975cd2ffaf6</srcmd5>
+    <version>2012.02.13</version>
+    <time>1340183214</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>e1e7b305517e865121de6500d6375ce7</srcmd5>
+    <version>2012.02.13</version>
+    <time>1349673026</time>
+    <user>coolo</user>
+    <comment>Mount /proc for post-build-checks. (forwarded request 136997 from a_jaeger)</comment>
+    <requestid>137228</requestid>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>e1e7b305517e865121de6500d6375ce7</srcmd5>
+    <version>2012.02.13</version>
+    <time>1359108717</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>e1e7b305517e865121de6500d6375ce7</srcmd5>
+    <version>2012.02.13</version>
+    <time>1379662057</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>3d1289fa9c711025981d8ef8d5829d82</srcmd5>
+    <version>2012.02.13</version>
+    <time>1380121607</time>
+    <user>coolo</user>
+    <comment>- Make the appdata.xml contain full icon names, incl. suffix; speed
+  up gnome-software startup for not having to guess what we know
+  here already. (forwarded request 200430 from dimstar)</comment>
+    <requestid>200468</requestid>
+  </revision>
+  <revision rev="16" vrev="19">
+    <srcmd5>f850d5d05df8326836c238fada98f457</srcmd5>
+    <version>2012.02.13</version>
+    <time>1380713225</time>
+    <user>coolo</user>
+    <comment>Change simply regexp to regexp plus or statement as asked for by coolo (forwarded request 201586 from dimstar)</comment>
+    <requestid>201592</requestid>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>db43d314a5d43e6c5febb80939b6d3e2</srcmd5>
+    <version>2012.02.13</version>
+    <time>1389277692</time>
+    <user>coolo</user>
+    <comment>- do not mount or umount /proc - the build script handles that</comment>
+    <requestid>213284</requestid>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>639f213f94349f74f017bfa9c711f527</srcmd5>
+    <version>2012.02.13</version>
+    <time>1393780923</time>
+    <user>scarabeus_factory</user>
+    <comment>rewrite brp-extract-appdata.pl and create-appdata-xml.pl (forwarded request 224105 from mlschroe)</comment>
+    <requestid>224153</requestid>
+  </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>639f213f94349f74f017bfa9c711f527</srcmd5>
+    <version>2012.02.13</version>
+    <time>1409300585</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="24">
+    <srcmd5>a8ae7e4fa83d216c9ed75353b003adf0</srcmd5>
+    <version>2012.02.13</version>
+    <time>1423392115</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>283760</requestid>
+  </revision>
+  <revision rev="21" vrev="25">
+    <srcmd5>5f587223829c998ffc3f50456fea43e5</srcmd5>
+    <version>2012.02.13</version>
+    <time>1428790170</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295200</requestid>
+  </revision>
+  <revision rev="22" vrev="26">
+    <srcmd5>185af8d375361ad698dc04811e89a51a</srcmd5>
+    <version>2012.02.13</version>
+    <time>1430904104</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305291</requestid>
+  </revision>
+  <revision rev="23" vrev="27">
+    <srcmd5>164fe016d824d2cfdc9ffc5e29a7ac47</srcmd5>
+    <version>2012.02.13</version>
+    <time>1455610685</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357747</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>232df76b4ac7af4b3673e45c22e00236</srcmd5>
+    <version>2016.05.04</version>
+    <time>1463221377</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393640</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>672a6d10475eb399777bf5bfaa0792c0</srcmd5>
+    <version>2016.05.04</version>
+    <time>1520852620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583667</requestid>
+  </revision>
+</revisionlist>

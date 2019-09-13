@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58fb26274041ae2a794afdf0e4d9766b</srcmd5>
+    <version>5.1.0</version>
+    <time>1475242221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>425302</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>95292440398d28279dfaaf26e8be208f</srcmd5>
+    <version>5.1.1</version>
+    <time>1479229288</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 5.1.1
+  * Update .gitreview for stable/newton
+  * Fix running unknown commands in daemon mode
+
+- switch to stable/newton tarball in _service</comment>
+    <requestid>440278</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0c4d6041ab7b227a9aaaeb0e0d30f80a</srcmd5>
+    <version>5.4.0</version>
+    <time>1487680935</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.4.0:
+  - Remove discover from test-requirements
+  - Add Constraints support
+  - Updated from global requirements
+  - Show team and repo badges on README
+  - Update homepage with developer documentation page
+  - [TrivialFix] Replace 'assertFalse(a in b)' with 'assertNotIn(a, b)'
+  - Enable release notes translation
+  - Relax default strict option under python3.x for configparser
+  - Fix running unknown commands in daemon mode
+  - Enhance _program() and _program_path()
+  - Add reno for release notes management</comment>
+    <requestid>456689</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>11ffd6a5b38ce9a4a77d29f11142fc6c</srcmd5>
+    <version>5.4.1</version>
+    <time>1496926990</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.4.1
+  - Avoid importing Linux specific modules on Windows
+  - Update UPPER_CONSTRAINTS_FILE for stable/ocata
+  - Allow rootwrap-daemon to timeout and exit
+  - [daemon] Close inherited filedescriptors after forking
+  - Update .gitreview for stable/ocata</comment>
+    <requestid>501642</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>20e20dd0cb66cdc875ad763b4dd4acc9</srcmd5>
+    <version>5.9.0</version>
+    <time>1503927092</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.9.0
+  - Always check cmd which does not exist
+  - rearrange existing documentation to fit the new standard layout
+  - Don't open subdirectories rootwrap filter directories
+  - [Fix gate]Update test requirement
+  - Allow rootwrap-daemon to timeout and exit
+  - Avoid importing Linux specific modules on Windows
+  - Update URLs in documents according to document migration
+  - Remove support for py34
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Update reno for stable/ocata
+  - [daemon] Close inherited filedescriptors after forking
+  - Remove pbr warnerrors in favor of sphinx check
+  - Updated from global requirements
+  - Switch from oslosphinx to openstackdocstheme
+  - Trivial: Remove testscenarios from test-requirements.txt</comment>
+    <requestid>514998</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eb9fcb5f4c6bcba6b32d44033ecf596e</srcmd5>
+    <version>5.13.0</version>
+    <time>1516222592</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.13.0
+  - Follow the new PTI for document build
+  - Remove -U from pip install
+  - Add bandit to pep8 job
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - Avoid tox_install.sh for constraints support
+  - Fix test_daemon_no_cleanup_for_uninitialized_server
+  - Protect rootwrap daemon socket against multiple threads
+  - Cleanup test-requirements
+  - Updated from global requirements
+  - Ignore syslog settings if /dev/log is not present</comment>
+    <requestid>565768</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>338bf3e629f95b6dcf67b01d5f958e7d</srcmd5>
+    <version>5.13.0</version>
+    <time>1521498981</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583347</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bccb021bc03e3688b632265455c8574c</srcmd5>
+    <version>5.14.1</version>
+    <time>1536327546</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633107</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>87ee7af43a6bd733a3ed3f398feca8de</srcmd5>
+    <version>5.15.2</version>
+    <time>1556916158</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.15.2
+  - Update mailinglist from dev to discuss
+  - Add release note for file descriptor limit change
+  - fix tox python3 overrides
+  - Fix portability issue
+  - Switch to stestr
+  - Run rootwrap with lower fd ulimit by default
+  - Update reno for stable/rocky
+  - Clean up .gitignore references to personal tools
+  - Add release notes link to README
+  - Don't quote {posargs} in tox.ini
+  - Use template for lower-constraints
+  - add lib-forward-testing-python3 test job
+  - add python 3.6 unit test job
+  - add python 3.7 unit test job
+  - import zuul job settings from project-config</comment>
+    <requestid>692864</requestid>
+  </revision>
+</revisionlist>

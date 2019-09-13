@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2eb1be2f0225eb723fe8aed1c020fcaf</srcmd5>
+    <version>0.07</version>
+    <time>1402947008</time>
+    <user>coolo</user>
+    <comment>needed for slic3r</comment>
+    <requestid>237468</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2eb1be2f0225eb723fe8aed1c020fcaf</srcmd5>
+    <version>0.07</version>
+    <time>1409302278</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0751e1dc825f00a2dbf1890bda502800</srcmd5>
+    <version>0.09</version>
+    <time>1429186409</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297000</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e6f23809a82a4ff938b69457cd9157ae</srcmd5>
+    <version>0.10</version>
+    <time>1441955080</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330335</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>77ca35d978867253b6b474a3e94a256b</srcmd5>
+    <version>0.11</version>
+    <time>1442474492</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>331101</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>669def61f9b7982361c34ae8c8f574a6</srcmd5>
+    <version>0.12</version>
+    <time>1515505835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554838</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9fe8825eca3fe1ea4435d88e01acdd5b</srcmd5>
+    <version>0.19</version>
+    <time>1562843259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691012</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ebfcc8fccfef83a157c3013dcc894493</srcmd5>
+    <version>0.20</version>
+    <time>1567679680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727963</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="sakura" project="openSUSE:Factory">
+  <title>Terminal Emulator based on the VTE Library</title>
+  <description>sakura is a vte-based terminal emulator. It aims to provide a terminal emulator that only depends on GTK and VTE. It uses a notebook to allow multiple tabs in the same window.</description>
+  <devel project="X11:Utilities" package="sakura"/>
+</package>

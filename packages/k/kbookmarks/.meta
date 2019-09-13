@@ -1,0 +1,5 @@
+<package name="kbookmarks" project="openSUSE:Factory">
+  <title>kbookmarks</title>
+  <description>KBookmarks</description>
+  <devel project="KDE:Frameworks5" package="kbookmarks"/>
+</package>

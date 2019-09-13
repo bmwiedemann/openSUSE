@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a958965e05a08e817c366d09bd190f09</srcmd5>
+    <version>0.9.4.1</version>
+    <time>1498840927</time>
+    <user>dimstar_suse</user>
+    <comment>Submission of version 0.9.4.1; dependency for python-caldav (boo#1042534)</comment>
+    <requestid>504645</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cdfd17628dc46b18acdc327bd177b547</srcmd5>
+    <version>0.9.5</version>
+    <time>1503593118</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514466</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>44db1f217854d92eb0350e785ef1142d</srcmd5>
+    <version>0.9.6.1</version>
+    <time>1543224857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651635</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9f242668ced315c1a67383484ca8745e</srcmd5>
+    <version>0.9.6.1</version>
+    <time>1544189764</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove useless service file
+- Make the tests unconditional
+- Fix the fdupes call</comment>
+    <requestid>655697</requestid>
+  </revision>
+</revisionlist>

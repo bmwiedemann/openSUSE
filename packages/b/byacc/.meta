@@ -1,0 +1,9 @@
+<package name="byacc" project="openSUSE:Factory">
+  <title>LALR(1) parser generator</title>
+  <description>Berkeley Yacc is a LALR(1) parser generator. It has been made as compatible as
+possible with AT&amp;T Yacc and it accepts any input specification that conforms to
+the AT&amp;T Yacc documentation. In contrast to bison, it is written to avoid
+dependencies upon a particular compiler.</description>
+  <devel project="devel:tools:compiler" package="byacc"/>
+  <url>http://invisible-island.net/byacc/byacc.html</url>
+</package>

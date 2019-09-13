@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>513c4020d48e8eb262024c73e56b53e6</srcmd5>
+    <version>1.0.0</version>
+    <time>1465596049</time>
+    <user>dimstar_suse</user>
+    <comment>Submit vncmanager package.
+Session manager for VNC. It listens on VNC port and spawns Xvnc processes for incoming clients.
+(fate#319319)</comment>
+    <requestid>395052</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c89037b495cd25c8dbf390312aa3eae</srcmd5>
+    <version>1.0.1</version>
+    <time>1467205291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1
+  * Fix build with gcc 6, fix licence link in README. (bnc#985002)
+- Add dependency on xorg-x11-Xvnc. (bnc#984461)
+- Add n_use_with_vnc_key_wrapper.patch
+  * Use with-vnc-key.sh wrapper to generate VNC key and certificate
+    on first use. (bnc#982349)</comment>
+    <requestid>402734</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2389007b74a3fe5dafc8b986425a3e50</srcmd5>
+    <version>1.0.1</version>
+    <time>1488479342</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460045</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>16cb552e3c670cf60199550a8253d653</srcmd5>
+    <version>1.0.2</version>
+    <time>1495469388</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2
+  * Fix crash when client disconnects during of TLS negotiation
+  * Add geometry parameter (bnc#1038851)</comment>
+    <requestid>497298</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>db81b2f27d0f4f84cf882b8ae48a4bde</srcmd5>
+    <version>1.0.2</version>
+    <time>1502562494</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516143</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>64f43737bf0564688e96a57f5884ffd5</srcmd5>
+    <version>1.0.2</version>
+    <time>1518719496</time>
+    <user>dimstar_suse</user>
+    <comment>- U_ControllerConnection-Split-iostream-into-istream-and.patch
+  * Do not try to seek on unix socket. (bnc#1076730)</comment>
+    <requestid>577032</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>41a4373f788f63102d382eb206b6fbb0</srcmd5>
+    <version>1.0.2</version>
+    <time>1533627800</time>
+    <user>dimstar_suse</user>
+    <comment>- n_vncmanager-add-target-to-service.patch
+  * Declare the service as part of xvnc.target so it can be used as
+    dependency for xvnc-novnc.service. (bnc#1103552)</comment>
+    <requestid>627669</requestid>
+  </revision>
+</revisionlist>

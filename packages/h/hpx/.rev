@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5ea76c3d213c884d0f38d96e9f9446c</srcmd5>
+    <version>1.2.0</version>
+    <time>1543528738</time>
+    <user>dimstar_suse</user>
+    <comment>- Put static libraries into hpx-static package
+- Added 3557.patch to fix build on ppc64
+- Re-enable build on ppc64le
+- Version bump to 1.2.0
+  Full log here: https://stellar-group.github.io/hpx/docs/sphinx/tags/1.2.0/html/releases/whats_new_1_2_0.html
+- added upstream 3551.patch to fix build on i586
+- Remove future goals from description.
+- Version bump to 1.1.0
+- Dropped hpx_0.9.8-pr1137.patch, merged upstream
+- initial commit
+</comment>
+    <requestid>652007</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e2d18021bc9b7f4614a17297639c9436</srcmd5>
+    <version>1.2.0</version>
+    <time>1543999583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>654120</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>876308ad77c8c3c97fa849eeed951fa4</srcmd5>
+    <version>1.2.0</version>
+    <time>1544264531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656170</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a733b74c632d5f89aff62fd1622bd394</srcmd5>
+    <version>1.2.0</version>
+    <time>1545141507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658774</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e67bc2191138af5d6aa870e9f868c4f1</srcmd5>
+    <version>1.2.0</version>
+    <time>1545376913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660151</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>38f8e3c90dbd531cda05d1ad4b2e866c</srcmd5>
+    <version>1.2.0</version>
+    <time>1546535233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662299</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4e01c49b7a17712ab55302c28797ac9d</srcmd5>
+    <version>1.2.1</version>
+    <time>1553436053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687801</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,16 @@
+<package name="perl-MouseX-ConfigFromFile" project="openSUSE:Factory">
+  <title>An abstract Mouse role for setting attributes from a configfile</title>
+  <description>This is an abstract role which provides an alternate constructor for
+creating objects using parameters passed in from a configuration file. The
+actual implementation of reading the configuration file is left to
+concrete subroles.
+It declares an attribute &quot;configfile&quot; and a class method
+&quot;new_with_config&quot;, and requires that concrete roles derived from it
+implement the class method &quot;get_config_from_file&quot;.
+Attributes specified directly as arguments to &quot;new_with_config&quot; supercede
+those in the configfile.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-MouseX-ConfigFromFile"/>
+  <url>http://search.cpan.org/dist/MouseX-ConfigFromFile</url>
+</package>

@@ -1,0 +1,238 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>571dedd304ac9668e59c790e49be36a6</srcmd5>
+    <version>4.1</version>
+    <time>1190082562</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>391ddced15fe97eb78527beba16da4ee</srcmd5>
+    <version>4.2</version>
+    <time>1197327180</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bd75876ab0cf35946cfc894fa0ed81bf</srcmd5>
+    <version>4.3</version>
+    <time>1201897401</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bcbfdedb267c255f0cb5fd3746164866</srcmd5>
+    <version>4.4</version>
+    <time>1219708350</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>41ba772e32c6b4cabab8ce4be0e9bca0</srcmd5>
+    <version>4.5</version>
+    <time>1249513808</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>41ba772e32c6b4cabab8ce4be0e9bca0</srcmd5>
+    <version>4.5</version>
+    <time>1249513808</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>c19b0c85734a402ede73ef8c0beaca1e</srcmd5>
+    <version>4.5</version>
+    <time>1268923354</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>c19b0c85734a402ede73ef8c0beaca1e</srcmd5>
+    <version>4.5</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>c19b0c85734a402ede73ef8c0beaca1e</srcmd5>
+    <version>4.5</version>
+    <time>1278678571</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bc8ef090ee97945e76a56de1095c7ec9</srcmd5>
+    <version>4.6</version>
+    <time>1290097386</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53178 from user pgajdos
+</comment>
+    <requestid>53178</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a8a1ebad3c020825d60e7312bf1afc2a</srcmd5>
+    <version>4.6</version>
+    <time>1290097393</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53178
+</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>a8a1ebad3c020825d60e7312bf1afc2a</srcmd5>
+    <version>4.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>685e036c67c327f307455ba6e03e947e</srcmd5>
+    <version>4.7</version>
+    <time>1306310324</time>
+    <user>saschpe</user>
+    <comment>- updated to version 4.7:
+  * Fix for crash on quick PgUp PgDn sequences.
+  * Fix scrollbars in continuous mode.
+  * Fix plugin for some webkit based browsers.</comment>
+    <requestid>71140</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>dd8dd83578654365ba9780a809aee44f</srcmd5>
+    <version>4.7</version>
+    <time>1306310343</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71140
+</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>48f122279fde7192c6e7de1dbfbd280c</srcmd5>
+    <version>4.7</version>
+    <time>1316445159</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83265 from jengelh)</comment>
+    <requestid>83372</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>48f122279fde7192c6e7de1dbfbd280c</srcmd5>
+    <version>4.7</version>
+    <time>1319181850</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ec0a12a10c19bcc37d255c7bbccb6ece</srcmd5>
+    <version>4.8</version>
+    <time>1320231068</time>
+    <user>coolo</user>
+    <comment>- updated to version 4.8:
+  * Added option to invert luminance.
+  * Added shortcut ctrl+g to go to the page combo.
+  * Fixed export issues under win32.
+  * Mouse wheel can be configured to control the zoom.
+  * Animated page movements.</comment>
+    <requestid>89805</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>11740f4633aadced709a5cef31ac94e2</srcmd5>
+    <version>4.8</version>
+    <time>1323191188</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>1dd6aae43eb3e097aaa401702030921d</srcmd5>
+    <version>4.8</version>
+    <time>1327087399</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100886</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>1dd6aae43eb3e097aaa401702030921d</srcmd5>
+    <version>4.8</version>
+    <time>1340183282</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>1dd6aae43eb3e097aaa401702030921d</srcmd5>
+    <version>4.8</version>
+    <time>1359108816</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>def43e15630c22f46ccf998fc19ff219</srcmd5>
+    <version>4.9</version>
+    <time>1364472620</time>
+    <user>coolo</user>
+    <comment>- updated to 4.9:
+  * Added language selection in preference.
+  * Added option to override printing and saving restrictions.
+  * Automatic reloading of djvu documents when the file is changed.
+  * New chinese translations.
+  * Improved network code (needs Qt&gt;=4.4.)
+  * Remember the last visited position for the last 50 documents.
+- dropped qt-4.8.patch, upstream is using qSwap()</comment>
+    <requestid>161309</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1d4d5578b638496c0460a5bc0ae5a587</srcmd5>
+    <version>4.9</version>
+    <time>1379076327</time>
+    <user>scarabeus_factory</user>
+    <comment>- npsdk-aarch64-support.patch: Add support for AArch64 in npsdk (forwarded request 198470 from Andreas_Schwab)</comment>
+    <requestid>198801</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>1d4d5578b638496c0460a5bc0ae5a587</srcmd5>
+    <version>4.9</version>
+    <time>1379662235</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>1d4d5578b638496c0460a5bc0ae5a587</srcmd5>
+    <version>4.9</version>
+    <time>1409300769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ab701ff511b860e3952ffcc489d08f1a</srcmd5>
+    <version>4.10</version>
+    <time>1426796723</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file with spec-cleaner
+- Use url for source 
+- Build qt5 version
+- Remove no longer needed patches
+  * djview4-nsplugin_manpage.patch
+  * djview4-nsplugin_dir.patch
+- Update to 4.10
+  * Bug fixes: layout, usability, preferences, locale selection
+  * Works with both Qt4 and Qt5
+  * Build uses automake/qmake hybrid (instead of autoconf/qmake).
+  * Layout annotations are honored in multipage mode
+  * Experimental OpenGL rendering
+  * Slideshow mode (forwarded request 291527 from pluskalm)</comment>
+    <requestid>291540</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9dc160e0624a8f3ed4e827e97809548c</srcmd5>
+    <version>4.10.6</version>
+    <time>1479837563</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.10.6
+  - Support for pinch gestures
+  - New shortcuts on mac
+  - Support for high dpi displays
+  - Spanish translations
+  - Bug fixes
+  - Workaround for qt5.5 embed bug</comment>
+    <requestid>441324</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>ce749d574df58524b5bb87a0b49c51ed</srcmd5>
+    <version>4.10.6</version>
+    <time>1524238315</time>
+    <user>dimstar_suse</user>
+    <comment>- npsdk-aarch64-support.patch: remove obsolete patch (forwarded request 598495 from Andreas_Schwab)</comment>
+    <requestid>599175</requestid>
+  </revision>
+</revisionlist>

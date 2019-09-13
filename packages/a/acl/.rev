@@ -1,0 +1,389 @@
+<revisionlist>
+  <revision rev="1" vrev="7">
+    <srcmd5>1ba1c787b001b777369cea98c64030e2</srcmd5>
+    <version>2.2.34</version>
+    <time>1166483706</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1cede425fe6387956781f49d16dc0d6d</srcmd5>
+    <version>2.2.45</version>
+    <time>1193422070</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>779ccbe09f139e3b98bd8545b1e47220</srcmd5>
+    <version>2.2.45</version>
+    <time>1193657482</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="31">
+    <srcmd5>b7c013f2abe4bd097065b1fb58108262</srcmd5>
+    <version>2.2.45</version>
+    <time>1207825501</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>75cf747d4b694d53a98596aa76ec38a8</srcmd5>
+    <version>2.2.47</version>
+    <time>1215814545</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="25">
+    <srcmd5>75cf747d4b694d53a98596aa76ec38a8</srcmd5>
+    <version>2.2.47</version>
+    <time>1215814545</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="26">
+    <srcmd5>dd60f021095c7f7dda30f7859868978d</srcmd5>
+    <version>2.2.47</version>
+    <time>1225636327</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="27">
+    <srcmd5>44967c23f2f1fe66140fd95a37f0734e</srcmd5>
+    <version>2.2.47</version>
+    <time>1226936227</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="28">
+    <srcmd5>4ec0247e39470a6c129b685ce07c0282</srcmd5>
+    <version>2.2.47</version>
+    <time>1229338656</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="29">
+    <srcmd5>388572a1922cfd857e9fdaca7fff939d</srcmd5>
+    <version>2.2.47</version>
+    <time>1231460682</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="31">
+    <srcmd5>015c9ba37756ebb207c78c567c8e77a2</srcmd5>
+    <version>2.2.47</version>
+    <time>1235061166</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e3acee3bc0c813210c458caaf3863a01</srcmd5>
+    <version>2.2.48</version>
+    <time>1249118515</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e3acee3bc0c813210c458caaf3863a01</srcmd5>
+    <version>2.2.48</version>
+    <time>1249118515</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>60b9e09da5c7f1a2043b498c732396f9</srcmd5>
+    <version>2.2.48</version>
+    <time>1256656999</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/acl based on submit request 23178 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>a1c5f49557bdaf7738b5eaee4df74d52</srcmd5>
+    <version>2.2.48</version>
+    <time>1259323099</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/acl based on submit request 25109 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>c37244f28f41e0b98a4505fece1441ed</srcmd5>
+    <version>2.2.48</version>
+    <time>1260952028</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/acl based on submit request 26683 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>698e7b122dd4b79d8b3c29831b4e97f9</srcmd5>
+    <version>2.2.48</version>
+    <time>1268922849</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>698e7b122dd4b79d8b3c29831b4e97f9</srcmd5>
+    <version>2.2.48</version>
+    <time>1278667335</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>698e7b122dd4b79d8b3c29831b4e97f9</srcmd5>
+    <version>2.2.48</version>
+    <time>1278678561</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>a7accdc66a600580b90fe2b1454f71f5</srcmd5>
+    <version>2.2.48</version>
+    <time>1279650043</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/acl based on submit request 43438 from user coolo
+</comment>
+    <requestid>43438</requestid>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>a7accdc66a600580b90fe2b1454f71f5</srcmd5>
+    <version>2.2.48</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2053aadb562599802e87797dfadf4260</srcmd5>
+    <version>2.2.51</version>
+    <time>1308207920</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>73782</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>3fc31938d8003ec3df90037b1c4d5cda</srcmd5>
+    <version>2.2.51</version>
+    <time>1308207931</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73782
+</comment>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>8023d3fea8d9279688d0bda8db254abb</srcmd5>
+    <version>2.2.51</version>
+    <time>1316619315</time>
+    <user>saschpe</user>
+    <comment>- Fix provides/Obsoletes 
+
+- Implement shlib package (libacl1)
+- Enable libacl-devel on all baselib arches</comment>
+    <requestid>84220</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>8023d3fea8d9279688d0bda8db254abb</srcmd5>
+    <version>2.2.51</version>
+    <time>1319181765</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>efc67328f3ce1fd62ab9a73027d22c92</srcmd5>
+    <version>2.2.51</version>
+    <time>1323190660</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+;LGPL-2.1+
+SPDX format (forwarded request 94532 from babelworx)</comment>
+    <requestid>94546</requestid>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>ce5968547092371560eee4eb24ee3a10</srcmd5>
+    <version>2.2.51</version>
+    <time>1331147305</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104289 from coolo)</comment>
+    <requestid>104667</requestid>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>ce5968547092371560eee4eb24ee3a10</srcmd5>
+    <version>2.2.51</version>
+    <time>1340183164</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>9b4f7c92041edebd9a56deddce1e8939</srcmd5>
+    <version>2.2.51</version>
+    <time>1347882447</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133893</requestid>
+  </revision>
+  <revision rev="30" vrev="11">
+    <srcmd5>9f9548d0a585031afbe7061c187b0346</srcmd5>
+    <version>2.2.51</version>
+    <time>1356702902</time>
+    <user>namtrac</user>
+    <comment>- Use OS byteswapping routines, application already Includes
+  &quot;endian.h&quot; but then goes ahead defining ad-hoc equivalent 
+  functionality (0001-Use-OS-byteswapping-macros.patch) (forwarded request 146438 from elvigia)</comment>
+    <requestid>146506</requestid>
+  </revision>
+  <revision rev="31" vrev="13">
+    <srcmd5>9f9548d0a585031afbe7061c187b0346</srcmd5>
+    <version>2.2.51</version>
+    <time>1359108639</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="14">
+    <srcmd5>470c573c1dc1577d61f0bd02df5a9d6b</srcmd5>
+    <version>2.2.51</version>
+    <time>1359996951</time>
+    <user>coolo</user>
+    <comment>- Add config-guess-sub-update.diff:
+  update config.guess/sub to latest state for AArch64</comment>
+    <requestid>150876</requestid>
+  </revision>
+  <revision rev="33" vrev="15">
+    <srcmd5>3852e7f085c233c3f04fb21ebc3b4d0f</srcmd5>
+    <version>2.2.51</version>
+    <time>1363946382</time>
+    <user>coolo</user>
+    <comment>- add gpg checking
+
+- use source url</comment>
+    <requestid>159971</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9129bfb17ffb43073cd6ccb44d66f7a6</srcmd5>
+    <version>2.2.52</version>
+    <time>1371721743</time>
+    <user>coolo</user>
+    <comment>- remove gpg-offline calls from bootstrap package
+
+- Update to new upstream release 2.2.52
+* This release fixes a few build system issues that were found and
+  merges in a tree walking bug fix.
+- Remove acl-fiximplicit.patch (merged upstream),
+  config-guess-sub-update.diff (no longer applies)
+- Sync baselibs.conf with in-.spec obsoletes/provides.</comment>
+    <requestid>179385</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>9129bfb17ffb43073cd6ccb44d66f7a6</srcmd5>
+    <version>2.2.52</version>
+    <time>1379661948</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>32ab5690dad42fcfd70104ddd0a0d354</srcmd5>
+    <version>2.2.52</version>
+    <time>1396949471</time>
+    <user>coolo</user>
+    <comment>- add acl-2.2.52-tests.patch and enable tests, check section taken
+  from Fedora package (forwarded request 229210 from rudi_m)</comment>
+    <requestid>229262</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>32ab5690dad42fcfd70104ddd0a0d354</srcmd5>
+    <version>2.2.52</version>
+    <time>1409300468</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>23efe3f4870870bdf4b0f76fcfd4bddf</srcmd5>
+    <version>2.2.52</version>
+    <time>1413382756</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252170</requestid>
+  </revision>
+  <revision rev="39" vrev="8">
+    <srcmd5>80193328c75054ef3eec52c159d15bc9</srcmd5>
+    <version>2.2.52</version>
+    <time>1454921212</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to git snapshot dated 21 Sep 2015.
+  - Added:
+    * 0001-Install-the-libraries-to-the-appropriate-directory.patch
+    * 0002-setfacl.1-fix-typo-inclu-de-include.patch
+    * 0003-test-fix-insufficient-quoting-of.patch
+    * 0004-Makefile-rename-configure.in-to-configure.ac.patch
+    * 0005-Bad-markup-in-acl.5-page.patch
+    * 0006-.gitignore-ignore-and-config.h.in.patch
+    * 0007-Use-autoreconf-rather-than-autoconf-to-regenerate-th.patch
+    * 0008-libacl-Make-sure-that-acl_from_text-always-sets-errn.patch
+    * 0009-libacl-fix-SIGSEGV-of-getfacl-e-on-overly-long-group.patch
+    * 0010-punt-debian-rpm-packaging-logic.patch
+    * 0011-move-gettext-logic-into-misc.h.patch
+    * 0012-test-make-running-parallel-out-of-tree-safe.patch
+    * 0013-modernize-build-system.patch
+    * 0014-po-regenerate-files-after-move.patch
+    * 0015-build-drop-aclincludedir-use-pkgincludedir.patch
+    * 0016-build-make-use-of-an-aux-dir-to-stow-away-helper-scr.patch
+    * 0017-build-ship-a-pkgconfig-file-for-libacl.patch
+    * 0018-read_acl_-comments-seq-rename-line-to-lineno.patch
+    * 0019-read_acl_-comments-seq-switch-to-next_line.patch
+    * 0020-telldir-return-value-and-seekdir-second-parameters-a.patch
+    * 0021-mark-libmisc-funcs-as-hidden-so-they-are-not-exporte.patch
+    * 0022-add-__acl_-prefixes-to-internal-symbols.patch
+    * 0023-cp.test-Check-permissions-of-the-right-file.patch
+    * 0024-libacl-acl_set_file-Remove-unnecesary-racy-check.patch
+    * 0025-fix-compilation-with-latest-xattr-git.patch
+    * 0026-getfacl-Fix-memory-leak.patch
+    * 0027-Fix-the-display-block-nesting-in-acl.5.patch
+    * 0028-setfacl-man-page-Minor-wording-improvements.patch</comment>
+    <requestid>347330</requestid>
+  </revision>
+  <revision rev="40" vrev="9">
+    <srcmd5>2a6885660adf7d7eb3e4114a90be103d</srcmd5>
+    <version>2.2.52</version>
+    <time>1490786497</time>
+    <user>maxlin_factory</user>
+    <comment>- Add BuildRequires for system user bin needed by test suite (forwarded request 479980 from kukuk)</comment>
+    <requestid>481225</requestid>
+  </revision>
+  <revision rev="41" vrev="10">
+    <srcmd5>2c4ce2dddb8ff99db94e244d1b5747e1</srcmd5>
+    <version>2.2.52</version>
+    <time>1491210280</time>
+    <user>lnussel_factory</user>
+    <comment>- Make it possible to disable tests (for Ring0)
+- Add BuildRequires: system-user-daemon for the testsuite (forwarded request 483810 from favogt)</comment>
+    <requestid>484099</requestid>
+  </revision>
+  <revision rev="42" vrev="11">
+    <srcmd5>4ebd5519228483aa17ea966cacbc42fa</srcmd5>
+    <version>2.2.52</version>
+    <time>1494441193</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493044</requestid>
+  </revision>
+  <revision rev="43" vrev="12">
+    <srcmd5>3a5bbfc751756bc01dfbf38d3fa8f68d</srcmd5>
+    <version>2.2.52</version>
+    <time>1496681344</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500582</requestid>
+  </revision>
+  <revision rev="44" vrev="13">
+    <srcmd5>f8eb213c49e7beddcf81a0763b39bc4a</srcmd5>
+    <version>2.2.52</version>
+    <time>1506955413</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528598</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e1d8c75a98c6718a61aadf37c8819fab</srcmd5>
+    <version>2.2.53</version>
+    <time>1540198982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641197</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>fcf0f223c37d1bc5191bc3d14d2ec625</srcmd5>
+    <version>2.2.53</version>
+    <time>1542666499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648855</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>b9db867d2d25f6d1214159a6d841b911</srcmd5>
+    <version>2.2.53</version>
+    <time>1553699489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685963</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,632 @@
+<revisionlist>
+  <revision rev="1" vrev="23">
+    <srcmd5>751baf6916e01a171182ebad364d7568</srcmd5>
+    <version>2.9.20</version>
+    <time>1168361591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>150da6c1a207d5d593c590f3c43023aa</srcmd5>
+    <version>2.9.21</version>
+    <time>1177606936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>976ac832eba4d47a9e4380aa383902f1</srcmd5>
+    <version>2.9.21</version>
+    <time>1177836898</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="56">
+    <srcmd5>199095c66c93810969648397a6df3887</srcmd5>
+    <version>2.9.21</version>
+    <time>1190747706</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="68">
+    <srcmd5>d26c657aa149237b1a73b3bd9d703192</srcmd5>
+    <version>2.9.21</version>
+    <time>1193657283</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="126">
+    <srcmd5>959aa61e679d9e016e5b496d37c98638</srcmd5>
+    <version>2.9.21</version>
+    <time>1208994662</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>41da4c1c8f50adac39fb77fc835ad2e2</srcmd5>
+    <version>2.9.21.1</version>
+    <time>1219362546</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>36bb4f79fb3e86ae9d8b4b6c9bbf98ec</srcmd5>
+    <version>2.9.21.1</version>
+    <time>1224252816</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>256f80a9ea2312f71c65a58a970c5e00</srcmd5>
+    <version>2.9.21.1</version>
+    <time>1225992390</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>777fa2e599279f9239ef68e3f3fe1c38</srcmd5>
+    <version>2.9.21.2</version>
+    <time>1228151122</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6902e4ace3979ce4c2cf5bde1ab927e5</srcmd5>
+    <version>2.9.21.2</version>
+    <time>1244562380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>6902e4ace3979ce4c2cf5bde1ab927e5</srcmd5>
+    <version>2.9.21.2</version>
+    <time>1244562380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>fd2e5e66903014497e072f2cde60cdb2</srcmd5>
+    <version>2.9.21.2</version>
+    <time>1268925346</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9245543842e75cd104a5671305ed9549</srcmd5>
+    <version>2.9.22</version>
+    <time>1272488902</time>
+    <user>autobuild</user>
+    <comment>Copy from server:dns/pdns based on submit request 38989 from user darix
+</comment>
+    <requestid>38989</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9245543842e75cd104a5671305ed9549</srcmd5>
+    <version>2.9.22</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>9245543842e75cd104a5671305ed9549</srcmd5>
+    <version>2.9.22</version>
+    <time>1278678608</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>9245543842e75cd104a5671305ed9549</srcmd5>
+    <version>2.9.22</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>9245543842e75cd104a5671305ed9549</srcmd5>
+    <version>2.9.22</version>
+    <time>1319182236</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>efe343b7c982ded474d99c10262e888a</srcmd5>
+    <version>3.0.1</version>
+    <time>1336423713</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>115703</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e7bf8662d048e8a2549d1a24f74e786c</srcmd5>
+    <version>3.1.0</version>
+    <time>1337756012</time>
+    <user>coolo</user>
+    <comment>- set license to GPLv2 Only (bnc#762986)
+- update to 3.1
+  Warning:
+  Version 3.1 of the PowerDNS Authoritative Server is a
+  major upgrade if you are coming from 2.9.x. There are also some
+  important changes if you are coming from 3.0. Please refer to
+  Section 1, “From PowerDNS Authoritative Server 2.9.x to 3.0” and
+  Section 2, “From PowerDNS Authoritative Server 3.0 to 3.1” for
+  important information on correct and stable operation, as well as
+  notes on performance and memory use.
+  For the details see:
+  http://rtfm.powerdns.com/changelog.html#changelog-auth-3-1
+- added pdns-3.1_lib_lua.patch:
+  instead of using an hardcoded -llua5.1 use the LUA_LIBS variable.
+- refreshed pdns-3.0.rc1_polarssl.patch
+- added 2 new subpackages:
+  pdns-backend-mydns
+  pdns-backend-lua (new dependency 5.2 &gt; lua &gt;= 5.1)</comment>
+    <requestid>121662</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>e7bf8662d048e8a2549d1a24f74e786c</srcmd5>
+    <version>3.1.0</version>
+    <time>1340183787</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>a4875ff4efdcf96cbeabe5f083638b98</srcmd5>
+    <version>3.1.0</version>
+    <time>1349632459</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137390</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>cea564cb3ffbbacd7ea8b3fd1ae2a369</srcmd5>
+    <version>3.1.0</version>
+    <time>1353513870</time>
+    <user>coolo</user>
+    <comment>- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+
+error is masked by  : (forwarded request 141977 from dimstar)</comment>
+    <requestid>142060</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>cea564cb3ffbbacd7ea8b3fd1ae2a369</srcmd5>
+    <version>3.1.0</version>
+    <time>1359109589</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>cea564cb3ffbbacd7ea8b3fd1ae2a369</srcmd5>
+    <version>3.1.0</version>
+    <time>1379663536</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fb1af965a9a6273e0441ca4af616bb9b</srcmd5>
+    <version>3.3.1</version>
+    <time>1407073011</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243371</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>fb1af965a9a6273e0441ca4af616bb9b</srcmd5>
+    <version>3.3.1</version>
+    <time>1409302142</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ccf1f64f29365cf61dda356313d6aa31</srcmd5>
+    <version>3.4.0</version>
+    <time>1412799236</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>254650</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>98bd2c329113792525b5ccdd3038e608</srcmd5>
+    <version>3.4.0</version>
+    <time>1414613419</time>
+    <user>coolo</user>
+    <comment>- only enable geoip backend on distros newer than 12.3
+  before the package lacks the pkg-config file and there is no
+  fallback to finding geoip without it.
+
+- fix permissions of the home directory
+
+- enable some backends that we had forgotten:
+  - pipe   (main package)
+  - random (main package)
+  - geoip  (new subpackage)
+    - new BR: yaml-cpp-devel and GeoIP-devel</comment>
+    <requestid>258655</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>48be9b295f7569318ac544471f76d4ad</srcmd5>
+    <version>3.4.1</version>
+    <time>1414776459</time>
+    <user>coolo</user>
+    <comment>- update to version 3.4.1
+Changes since 3.4.0:
+ * commit dcd6524, commit a8750a5, commit 7dc86bf, commit 2fda71f: PowerDNS now
+   polls the security status of a release at startup and periodically. More
+   detail on this feature, and how to turn it off, can be found in Section 2,
+   “Security polling”.
+ * commit 5fe6dc0: API: Replace HTTP Basic auth with static key in custom header
+   (X-API-Key)
+ * commit 4a95ab4: Use transaction for pdnssec increase-serial
+ * commit 6e82a23: Don't empty ordername during pdnssec increase-serial
+ * commit 535f4e3: honor SOA-EDIT while considering &quot;empty IXFR&quot; fallback, fixes
+   ticket 1835. This fixes slaving of signed zones to IXFR-aware slaves like NSD
+   or BIND.</comment>
+    <requestid>259027</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>8ac0f27bbf6faf564c28dd84761168a3</srcmd5>
+    <version>3.4.1</version>
+    <time>1415748129</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260893</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>8e45878a126804a7e97efd569a5d2163</srcmd5>
+    <version>3.4.1</version>
+    <time>1415866658</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261163</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>896c287f8ed83e636dbcbbfe649dbbbb</srcmd5>
+    <version>3.4.1</version>
+    <time>1417643295</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263733</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a0a0c9338874654617a6c021b8db14ff</srcmd5>
+    <version>3.4.2</version>
+    <time>1423669457</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>285091</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>da9f1c260bfba29492cd0e9e3da70e45</srcmd5>
+    <version>3.4.3</version>
+    <time>1426064310</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290068</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2c7bb2fe717f085601ebcd39854f975c</srcmd5>
+    <version>3.4.4</version>
+    <time>1430891349</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>305367</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7be3b7223ca60d13680b0743a3cc2f7a</srcmd5>
+    <version>3.4.5</version>
+    <time>1434003812</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311468</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>bbb1fa70736a864602efba63727859b1</srcmd5>
+    <version>3.4.6</version>
+    <time>1441296270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>328681</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>debf1983b1b691be54ce1fde667754d3</srcmd5>
+    <version>3.4.7</version>
+    <time>1451674136</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.4.7</comment>
+    <requestid>351483</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>02ee2c39b5e0f1b5b40ef04a8933c8ef</srcmd5>
+    <version>3.4.8</version>
+    <time>1454628731</time>
+    <user>dimstar_suse</user>
+    <comment>update to upstream release 3.4.8 (successfully tested on Tumbleweed x86_64)</comment>
+    <requestid>357611</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9a045836437be0ba8dd38a5142543e04</srcmd5>
+    <version>3.4.9</version>
+    <time>1465336076</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400070</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1ba901efe1eb0a99002dbdd9e50c5039</srcmd5>
+    <version>4.0.1</version>
+    <time>1475242047</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.1
+Bug fixes
+ - #4126 Wait for the connection to the carbon server to be established
+ - #4206 Don't try to deallocate empty PG statements
+ - #4245 Send the correct response when queried for an NSEC directly (Kees Monshouwer)
+ - #4252 Don't include bind files if length &lt;= 2 or &gt; sizeof(filename)
+ - #4255 Catch runtime_error when parsing a broken MNAME
+Improvements
+ - #4044 Make DNSPacket return a ComboAddress for local and remote (Aki Tuomi)
+ - #4056 OpenSSL 1.1.0 support (Christian Hofstaedtler)
+ - #4169 Fix typos in a logmessage and exception (Christian Hofsteadtler)
+ - #4183 pdnsutil: Remove checking of ctime and always diff the changes (Hannu Ylitalo)
+ - #4192 dnsreplay: Only add Client Subnet stamp when asked
+ - #4250 Use toLogString() for ringAccount (Kees Monshouwer)
+Additions
+ - #4133 Add limits to the size of received {A,I}XFR (CVE-2016-6172)
+ - #4142 Add used filedescriptor statistic (Kees Monshouwer)
+
+- update to 4.0.0
+  https://blog.powerdns.com/2016/07/11/powerdns-authoritative-server-4-0-0-released/
+  https://blog.powerdns.com/2016/07/11/welcome-to-powerdns-4-0-0/
+- packaging changes:
+  - remotebackend split out now
+  - enabled experimental_gss_tsig support
+  - enabled protobuf based stats support
+  - no more xdb and lmdb backend
+  - added odbc backend where supported
+- drop pdns-3.4.0-no_date_time.patch: replaced with
+  --enable-reproducible</comment>
+    <requestid>416553</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>e2e0224754cf9e724b45c503fc4bd6bb</srcmd5>
+    <version>4.0.1</version>
+    <time>1483955308</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447059</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>480bc508afc3d4b7de99aa1f92941be8</srcmd5>
+    <version>4.0.2</version>
+    <time>1484660205</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450388</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>565307514e01fdd3d7dd2c9d8faceaae</srcmd5>
+    <version>4.0.3</version>
+    <time>1485250466</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451222</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>3ffd6e99743c07bb169f1f67776ae687</srcmd5>
+    <version>4.0.3</version>
+    <time>1486218030</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454137</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>db0bd7b0a7e4fb3979f4384ce6729f5e</srcmd5>
+    <version>4.0.3</version>
+    <time>1492011310</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>486326</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f4af550cce4fd93690ba38c2887cc4d6</srcmd5>
+    <version>4.0.4</version>
+    <time>1503593006</time>
+    <user>dimstar_suse</user>
+    <comment>- This makes the schema fit storage requirements of various
+  mysql/mariadb versions. pdns-4.0.4_mysql-schema-mariadb.patch
+- preset uid and gid in configuration
+
+- fixed use of pdns_protobuf
+
+- update to 4.0.4
+  - fixes ed25519 signer. This signer hashed the message before
+    signing, resulting in unverifiable signatures.
+  - send a notification to all slave servers after every dnsupdate
+  for complete list of changes, see 
+https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-released/</comment>
+    <requestid>513688</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>ba599ddf9d582ba99a2d18a88dc6d537</srcmd5>
+    <version>4.0.4</version>
+    <time>1507197702</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531119</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>28fc0c013730ef604d6377d2048701dc</srcmd5>
+    <version>4.0.4</version>
+    <time>1510045059</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure descriptions are neutral. Remove ineffective --with-pic.
+- Do not ignore errors from useradd.
+- Trim idempotent %if..%endif around %package.
+- Added pdns.keyring linked from https://dnsdist.org/install.html
+</comment>
+    <requestid>538598</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c853f1e9eb7e71744d3d59f0a628adb3</srcmd5>
+    <version>4.1.0</version>
+    <time>1513941540</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>555064</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>b8dd811579660fb8960b7882456cf375</srcmd5>
+    <version>4.1.1</version>
+    <time>1519041687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577717</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>5d338834fc675074f03de69b3a678f89</srcmd5>
+    <version>4.1.1</version>
+    <time>1523956649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597061</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>f653ee734322f354f0d0ea40e1d0e3a5</srcmd5>
+    <version>4.1.2</version>
+    <time>1527197066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.2
+  - Improvements
+    * API: increase serial after dnssec related updates
+    * Auth: lower ‘packet too short’ loglevel
+    * Make check-zone error on rows that have content but shouldn’t
+    * Auth: avoid an isane amount of new backend connections during an axfr
+    * Report unparseable data in stoul invalid_argument exception
+    * Backport: recheck serial when axfr is done
+    * Backport: add tcp support for alias
+  - Bug Fixes
+    * Auth: allocate new statements after reconnecting to postgresql
+    * Auth-bindbackend: only compare ips in ismaster() (Kees Monshouwer)
+    * Rather than crash, sheepishly report no file/linenum
+    * Document undocumented config vars
+    * Backport #6276 (auth 4.1.x): prevent cname + other data with dnsupdate
+  - misc
+    * Move includes around to avoid boost L conflict
+    * Backport: update edns option code list
+    * Auth: link dnspcap2protobuf against librt when needed
+    * Fix a warning on botan &gt;= 2.5.0
+    * Auth 4.1.x: unbreak build
+    * Dnsreplay: bail out on a too small outgoing buffer (CVE-2018-1046 bsc#1092540)
+
+- add patch for upstream issue #6228
+  https://patch-diff.githubusercontent.com/raw/PowerDNS/pdns/pull/6370.patch</comment>
+    <requestid>606956</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c9b7060e306d85783ec4d60b342bd56d</srcmd5>
+    <version>4.1.3</version>
+    <time>1527583750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612636</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>2877c626c564a41a4d00269889e75b16</srcmd5>
+    <version>4.1.4</version>
+    <time>1535705223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632190</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>430bb8fb51ed810f71659a31d1acad8e</srcmd5>
+    <version>4.1.5</version>
+    <time>1541667021</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.5
+  * Improvements
+    - Apply alias scopemask after chasing
+    - Release memory in case of error in the openssl ecdsa constructor
+    - Switch to devtoolset 7 for el6
+  * Bug Fixes
+    - Crafted zone record can cause a denial of service
+      (bsc#1114157, CVE-2018-10851)
+    - Packet cache pollution via crafted query
+      (bsc#1114169, CVE-2018-14626)
+    - Fix compilation with libressl 2.7.0+
+    - Actually truncate truncated responses</comment>
+    <requestid>646920</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>35dbf6d77c333112d1339d043fbff9e1</srcmd5>
+    <version>4.1.5</version>
+    <time>1552901919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685320</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>e0aa079e7ad185245a526425db26b889</srcmd5>
+    <version>4.1.7</version>
+    <time>1552986188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686249</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>efedca237bb7cfba9537438e9c04176f</srcmd5>
+    <version>4.1.7</version>
+    <time>1553084409</time>
+    <user>dimstar_suse</user>
+    <comment>Bugzilla reference</comment>
+    <requestid>686373</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>11b25228fba60f5563817db73a652e82</srcmd5>
+    <version>4.1.8</version>
+    <time>1553436075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687824</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>cf09a064376d792b10bcee3babd85a28</srcmd5>
+    <version>4.1.10</version>
+    <time>1561195506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711405</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>5eabc972c80be3c0766498441a1f09e5</srcmd5>
+    <version>4.1.11</version>
+    <time>1564994263</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.11:
+  * update postgresql schema to address a possible denial of service
+    by an authorized user by inserting a crafted record in a MASTER
+    type zone under their control. (bsc#1142810, CVE-2019-10203)
+  To fix the issue, run the following command against your PostgreSQL
+  pdns database:
+    ALTER TABLE domains ALTER notified_serial TYPE bigint
+      USING CASE WHEN notified_serial &gt;= 0
+      THEN notified_serial::bigint END;
+- spec file simplifications and cleanup
+
+  * fixes a denial of service but when authorized user to cause
+    the server to exit by inserting a crafted record in a MASTER
+    type zone under their control. (bsc#1138582, CVE-2019-10162)
+  * fixes a denial of service of slave server when an authorized
+    master server sends large number of NOTIFY messages
+    (bsc#1138582, CVE-2019-10163)</comment>
+    <requestid>720228</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>20e38fb04768e7205c4afc7aa64b636d</srcmd5>
+    <version>4.1.13</version>
+    <time>1565362458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721872</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>f3a551f2bf889f29f31db2d8e0e13148</srcmd5>
+    <version>4.2.0</version>
+    <time>1567423528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.0:
+  - New features:
+    * Lua records
+    * ixfrdist
+    * a new LMDB backend
+  - Important functional changes:
+    * the default UDP response size limit has been changed from 1680 to 1232
+    * the autoserial feature has been removed
+- pdns-4.0.3_allow_dacoverride_in_capset.patch: refreshed</comment>
+    <requestid>727236</requestid>
+  </revision>
+</revisionlist>

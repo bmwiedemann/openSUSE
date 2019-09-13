@@ -1,0 +1,7 @@
+<package name="kamerka" project="openSUSE:Factory">
+  <title>Take photographs with your webcam and a shiny animated interface</title>
+  <description>Kamerka is a Qt5 application using KF5 libraries.
+It uses Video4Linux to get an image from the webcam and is able to save photographs.
+The interface is based on QML and uses it's possibilities to show an easy to use animated UI.</description>
+  <devel project="KDE:Extra" package="kamerka"/>
+</package>

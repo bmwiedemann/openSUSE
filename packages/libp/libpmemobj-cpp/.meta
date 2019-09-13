@@ -1,0 +1,5 @@
+<package name="libpmemobj-cpp" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware:nvdimm" package="libpmemobj-cpp"/>
+</package>

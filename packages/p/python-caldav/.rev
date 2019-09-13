@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2199cdfc6ee5c0d6a587d001def5a5f</srcmd5>
+    <version>0.5.0</version>
+    <time>1498840982</time>
+    <user>dimstar_suse</user>
+    <comment>Re-added to TW, dependency to GNU Health</comment>
+    <requestid>507277</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b5e4ca2ea4ae70b24a7824e097d21e6b</srcmd5>
+    <version>0.5.0</version>
+    <time>1499754458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509187</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dcb4c6d9716c8fa0f68f4e3f39aa6f0b</srcmd5>
+    <version>0.5.0</version>
+    <time>1544726460</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653962</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>48f4cf1101cba52bda8367acc4a20ccd</srcmd5>
+    <version>0.6.0</version>
+    <time>1554458211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687588</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8effb021dcef2657cac7bc1091c8bdce</srcmd5>
+    <version>0.6.1</version>
+    <time>1556622221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697741</requestid>
+  </revision>
+</revisionlist>

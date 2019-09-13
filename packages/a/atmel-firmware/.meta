@@ -1,0 +1,11 @@
+<package name="atmel-firmware" project="openSUSE:Factory">
+  <title>Firmware for Atmel at76c50x Wireless Network Chips</title>
+  <description>The drivers for Atmel at76c50x wireless network chips in the Linux 2.6.x kernel
+and at http://at76c503a.berlios.de/ do not include the firmware and this
+firmware needs to be loaded by the host on most cards using these chips. 
+
+This package provides the firmware images that should be automatically loaded
+as needed by the hotplug system. It also provides a small loader utility that
+can be used to accomplish the same thing when hotplug is not in use.</description>
+  <devel project="hardware" package="atmel-firmware"/>
+</package>

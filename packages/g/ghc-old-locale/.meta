@@ -1,0 +1,5 @@
+<package name="ghc-old-locale" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-old-locale"/>
+</package>

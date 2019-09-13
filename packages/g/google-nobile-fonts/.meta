@@ -1,0 +1,16 @@
+<package name="google-nobile-fonts" project="openSUSE:Factory">
+  <title>Sans Serif Font</title>
+  <description>&quot;Nobile&quot; is designed to work with the technologies of digital 
+screens and handheld devices without losing the distinctive look 
+more usually found in fonts designed for printing. Going back to 
+William Morris's baseline &quot;Have nothing in your house that you do 
+not know to be useful, or believe to be beautiful&quot;, the aim was to 
+design a font that could function well, have good legibility on 
+screen yet also be good loooking, not only at larger display sizes 
+but also right down to small text sizes.
+
+   
+</description>
+  <devel project="M17N:fonts" package="google-nobile-fonts"/>
+  <url>http://code.google.com/webfonts/family?family=Nobile</url>
+</package>

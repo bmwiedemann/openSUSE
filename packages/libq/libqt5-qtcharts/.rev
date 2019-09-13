@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2366e4a934a8bade002cb09721619d76</srcmd5>
+    <version>5.9.1</version>
+    <time>1503593787</time>
+    <user>dimstar_suse</user>
+    <comment>Part of Qt 5</comment>
+    <requestid>518445</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>947b508c895ab57786769a3206a0b8d6</srcmd5>
+    <version>5.9.2</version>
+    <time>1508876510</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.2</comment>
+    <requestid>533793</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8a52348216050e3d0ee1255acd4617e1</srcmd5>
+    <version>5.9.3</version>
+    <time>1513343077</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.3</comment>
+    <requestid>545937</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bbcc57dac1e27c733c87375faf30f57f</srcmd5>
+    <version>5.10.0</version>
+    <time>1514027555</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.10.0</comment>
+    <requestid>557381</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>79e540a0f53f32167b3cbe947f8435c9</srcmd5>
+    <version>5.11.0</version>
+    <time>1528022243</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.0 (forwarded request 611375 from Vogtinator)</comment>
+    <requestid>611666</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0a442212db1e90ec152a564ed957acaa</srcmd5>
+    <version>5.11.1</version>
+    <time>1530304371</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.1</comment>
+    <requestid>618665</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>909a4b768a5a1a951843777cd0161b17</srcmd5>
+    <version>5.11.2</version>
+    <time>1538502337</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.2</comment>
+    <requestid>637829</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>34df5c90b9834adf0cf5d8319e560032</srcmd5>
+    <version>5.12.0</version>
+    <time>1545306832</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.12.0 final</comment>
+    <requestid>656550</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>41716b0f9ce623fe2db009fe2c2e0dcf</srcmd5>
+    <version>5.12.2</version>
+    <time>1553263526</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.12.2</comment>
+    <requestid>685626</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bb079871a3403c64a691cc6d0d8c710a</srcmd5>
+    <version>5.12.3</version>
+    <time>1556311928</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.12.3</comment>
+    <requestid>697057</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c4e56a8220457c11b625d0df4551c5ac</srcmd5>
+    <version>5.13.0</version>
+    <time>1561732051</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.0</comment>
+    <requestid>711177</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6a7291d233829ff8151949c5b5da0c04</srcmd5>
+    <version>5.13.1</version>
+    <time>1568097260</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.1</comment>
+    <requestid>729200</requestid>
+  </revision>
+</revisionlist>

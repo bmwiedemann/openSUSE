@@ -1,0 +1,6 @@
+<package name="powermanga" project="openSUSE:Factory">
+  <title>Arcade 2D shoot-them-up game</title>
+  <description>Powermanga is an arcade 2D shoot-them-up game with 41 levels and more than
+200 sprites.</description>
+  <devel project="games" package="powermanga"/>
+</package>

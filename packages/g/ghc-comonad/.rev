@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5eb45597834483d06b4a59333bf627e</srcmd5>
+    <version>4.2.6</version>
+    <time>1432379226</time>
+    <user>dimstar_suse</user>
+    <comment>comonads</comment>
+    <requestid>308170</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>885e0a58844d05d98de6f98e4a4af6e2</srcmd5>
+    <version>4.2.7.2</version>
+    <time>1438750246</time>
+    <user>coolo</user>
+    <comment>- update to 4.2.7.2
+* Compiles warning-free on GHC 7.10
+* Use CPP
+* Trustworthy fixes for GHC 7.2</comment>
+    <requestid>318864</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>21b9f8d8e8f1e0500bb89a3fbc46615a</srcmd5>
+    <version>4.2.7.2</version>
+    <time>1469081312</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411521</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>27a296927ef74fbb667e8e3d2f1b5f61</srcmd5>
+    <version>5</version>
+    <time>1477219849</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433377</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>14f194f12a3f87bc13d086267132392c</srcmd5>
+    <version>5.0.1</version>
+    <time>1496533956</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494146</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4a58f0342ffa4e23c7722a34a7f1a4cc</srcmd5>
+    <version>5.0.3</version>
+    <time>1527674696</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-comonad to the latest version.</comment>
+    <requestid>607769</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>58295384926548d0a4fd01bb77c2dbee</srcmd5>
+    <version>5.0.4</version>
+    <time>1532445369</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update comonad to version 5.0.4.
+  5.0.4 [2018.07.01]
+  ------------------
+  * Add `Comonad` instances for `Tagged s` with `s` of any kind. Before the
+    change, `s` had to be of kind `*`.
+  * Allow `containers-0.6`.
+
+- correct licence to BSD-2-Clause
+- initial commit</comment>
+    <requestid>623743</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>aebd4e973c2e9efa5aabe986fe16188b</srcmd5>
+    <version>5.0.4</version>
+    <time>1540448610</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643368</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7df5985eb4a97301084e7028273df624</srcmd5>
+    <version>5.0.5</version>
+    <time>1557653682</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>701761</requestid>
+  </revision>
+</revisionlist>

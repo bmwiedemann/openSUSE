@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e62a122c3e3b34428d44cb87ee0e5364</srcmd5>
+    <version>2.0.18</version>
+    <time>1302076117</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65937 from user babelworx
+</comment>
+    <requestid>65937</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8dff8155f4e8f5f49fae00bbecb04931</srcmd5>
+    <version>2.0.18</version>
+    <time>1302076129</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65937
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>8dff8155f4e8f5f49fae00bbecb04931</srcmd5>
+    <version>2.0.18</version>
+    <time>1319181973</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>a50118fa418153e41fe7b8516e636383</srcmd5>
+    <version>2.0.18</version>
+    <time>1327403912</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100909</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>140910d2b1d664c644e03b7ac73643b8</srcmd5>
+    <version>2.0.18</version>
+    <time>1329391375</time>
+    <user>coolo</user>
+    <comment>- patch license to follow spdx.org standard</comment>
+    <requestid>105180</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3d3e80862365e7128ec7a59ae11b9dcb</srcmd5>
+    <version>2.0.19</version>
+    <time>1330520855</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.0.19
+* fixed a crash with the &quot;follow&quot; function on invalid addresses
+  in analyser
+* AVX, AVX2, BMI, BMI2 and TBM instruction support on x86
+* fixed loading of ELF files with no section headers</comment>
+    <requestid>107413</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ce310270b975829ad513da6604e256f9</srcmd5>
+    <version>2.0.20</version>
+    <time>1330966781</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.0.20
+* Last version had a bug preventing load of 32 bit ELFs</comment>
+    <requestid>107920</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>ce310270b975829ad513da6604e256f9</srcmd5>
+    <version>2.0.20</version>
+    <time>1340183441</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>ce310270b975829ad513da6604e256f9</srcmd5>
+    <version>2.0.20</version>
+    <time>1359109053</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6df07fe23a6bcd305535d7574a71fe9b</srcmd5>
+    <version>2.0.21</version>
+    <time>1364157218</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160769</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e18b6ab83fe541470e29a47de979a175</srcmd5>
+    <version>2.0.22</version>
+    <time>1371217487</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.0.22</comment>
+    <requestid>178925</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a8c9f9edfc3eaa1e0f6ca394ae9c28b9</srcmd5>
+    <version>2.0.22</version>
+    <time>1372059065</time>
+    <user>coolo</user>
+    <comment>- Provide the program under an altername name &quot;hte&quot;</comment>
+    <requestid>180590</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>a8c9f9edfc3eaa1e0f6ca394ae9c28b9</srcmd5>
+    <version>2.0.22</version>
+    <time>1379662623</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>a8c9f9edfc3eaa1e0f6ca394ae9c28b9</srcmd5>
+    <version>2.0.22</version>
+    <time>1409301179</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>632f28cca7f4c33e6acabaf3d33d99e9</srcmd5>
+    <version>2.0.22</version>
+    <time>1420833043</time>
+    <user>dimstar_suse</user>
+    <comment>- Use original tarball/source URL</comment>
+    <requestid>280526</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>46b685fa59e32498ae680252552632a7</srcmd5>
+    <version>2.1.0</version>
+    <time>1423732967</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285728</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>970c6a16946bd8974f88cc6dfcc901e8</srcmd5>
+    <version>2.1.0</version>
+    <time>1497274315</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ht-gcc7.diff</comment>
+    <requestid>501699</requestid>
+  </revision>
+</revisionlist>

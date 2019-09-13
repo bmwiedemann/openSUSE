@@ -1,0 +1,8 @@
+<package name="rzip" project="openSUSE:Factory">
+  <title>A large-file compression program</title>
+  <description>rzip is a compression program, similar in functionality to gzip or
+bzip2, but able to take advantage long distance redundencies in files,
+which can sometimes allow rzip to produce much better compression
+ratios than other programs.</description>
+  <devel project="Archiving" package="rzip"/>
+</package>

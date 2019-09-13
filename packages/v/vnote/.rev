@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3a898c8731f6778308977f44a2b5fc8e</srcmd5>
+    <version>2.5</version>
+    <time>1560970648</time>
+    <user>dimstar_suse</user>
+    <comment>Add a Markdown writing tool to openSUSE:Factory</comment>
+    <requestid>703741</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>28f49b5f1f3796ffee6ed1521e614041</srcmd5>
+    <version>2.5</version>
+    <time>1561049746</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>710959</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0adf288ceaa3a0c1aaecd16dbb9d1caf</srcmd5>
+    <version>2.7</version>
+    <time>1561494115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711717</requestid>
+  </revision>
+</revisionlist>

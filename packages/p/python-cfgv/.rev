@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2cc6f08c7a94ccb0fda508ddd9657399</srcmd5>
+    <version>1.6.0</version>
+    <time>1554712512</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v1.6.0
+</comment>
+    <requestid>691728</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fb4d8af82539070160496327d8bb6b55</srcmd5>
+    <version>1.6.0</version>
+    <time>1554977755</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase.</comment>
+    <requestid>692552</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a5957b3e3badcfde7520f012a509a778</srcmd5>
+    <version>2.0.1</version>
+    <time>1564155317</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718905</requestid>
+  </revision>
+</revisionlist>

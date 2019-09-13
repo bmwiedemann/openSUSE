@@ -1,0 +1,6 @@
+<package name="unixODBC" project="openSUSE:Factory">
+  <title>ODBC driver manager with some drivers included</title>
+  <description>UnixODBC aims to provide a complete ODBC solution for the Linux
+platform. Further drivers can be found at http://www.unixodbc.org/.</description>
+  <devel project="server:database" package="unixODBC"/>
+</package>

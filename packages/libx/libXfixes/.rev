@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6926982081056fd1a572eb97d5c59b8a</srcmd5>
+    <version>5.0</version>
+    <time>1329476605</time>
+    <user>coolo</user>
+    <comment>- Rename xorg-x11-libXfixes to libXfixes and utilize shlib policy</comment>
+    <requestid>105454</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6926982081056fd1a572eb97d5c59b8a</srcmd5>
+    <version>5.0</version>
+    <time>1340183557</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6cda74b3ba0b08da43b714e13d33d2ef</srcmd5>
+    <version>5.0</version>
+    <time>1348582341</time>
+    <user>coolo</user>
+    <comment>- specfile cleanup</comment>
+    <requestid>135807</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>6cda74b3ba0b08da43b714e13d33d2ef</srcmd5>
+    <version>5.0</version>
+    <time>1359109232</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>9e5a18ae736386dcd456302a3f8a80c1</srcmd5>
+    <version>5.0</version>
+    <time>1363949708</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160092</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>0811f41ec868b448be555b3841555ec1</srcmd5>
+    <version>5.0</version>
+    <time>1365928468</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 163626 from m_meister)</comment>
+    <requestid>163640</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>062e5208d1d82ae02bb30dea5e86e160</srcmd5>
+    <version>5.0.1</version>
+    <time>1370426192</time>
+    <user>coolo</user>
+    <comment>update to version 5.0.1 (forwarded request 176973 from tobijk)</comment>
+    <requestid>177059</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>062e5208d1d82ae02bb30dea5e86e160</srcmd5>
+    <version>5.0.1</version>
+    <time>1379662884</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>062e5208d1d82ae02bb30dea5e86e160</srcmd5>
+    <version>5.0.1</version>
+    <time>1409301486</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>00eff15501f0ef313f3f07f8ef3e75f5</srcmd5>
+    <version>5.0.2</version>
+    <time>1464964567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.2
+  * Remove fallback for _XEatDataWords, require libX11 1.6 for it 
+- tagged baselibs.conf as source in specfile</comment>
+    <requestid>398961</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ba89a9f77bdd4acec70b2bf4351b8b58</srcmd5>
+    <version>5.0.3</version>
+    <time>1478377286</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438253</requestid>
+  </revision>
+</revisionlist>

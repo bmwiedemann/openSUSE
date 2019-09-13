@@ -1,0 +1,991 @@
+<revisionlist>
+  <revision rev="1" vrev="26">
+    <srcmd5>77f2c7b55f85eb8aab59a3ff12c0e61a</srcmd5>
+    <version>2.2.3</version>
+    <time>1166538593</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="59">
+    <srcmd5>1b15791853caa55366227c9710668e85</srcmd5>
+    <version>2.2.3</version>
+    <time>1180001877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4c48862ee65afdaa91e5c269e3a2cb64</srcmd5>
+    <version>2.2.9</version>
+    <time>1185833362</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e94ff1e83be36f8ab7de33121037427a</srcmd5>
+    <version>2.2.9</version>
+    <time>1186674368</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="75">
+    <srcmd5>bd9ac155c31683a1bcdf765a247089ff</srcmd5>
+    <version>2.2.9</version>
+    <time>1201195129</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>603f56c5c5b8165135e9b8003d2c81bd</srcmd5>
+    <version>3.2.1</version>
+    <time>1203553817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2dbda9d0e57467f5744118678355b83d</srcmd5>
+    <version>3.2.1</version>
+    <time>1203557141</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b078b710d02658bbfcf5df4ee92aba60</srcmd5>
+    <version>3.2.1</version>
+    <time>1203586226</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>279947101fb34ef944bfdfebd3163415</srcmd5>
+    <version>2.3.3</version>
+    <time>1204215600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="103">
+    <srcmd5>279947101fb34ef944bfdfebd3163415</srcmd5>
+    <version>2.3.3</version>
+    <time>1204215600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="104">
+    <srcmd5>efb0a1f37da25a8cd96fcb57791eb6a5</srcmd5>
+    <version>2.3.3</version>
+    <time>1238022632</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="105">
+    <srcmd5>70324440a66edb99a04c6570cb4b2bf4</srcmd5>
+    <version>2.3.3</version>
+    <time>1238617026</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eaeda33fa626b57794da926fcda12fa2</srcmd5>
+    <version>4.0.0</version>
+    <time>1250515734</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/aqbanking based on submit request 17830 from user vuntz
+</comment>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>1b7a9414ddc893a9f818f4fb7e5bc2d3</srcmd5>
+    <version>4.0.0</version>
+    <time>1254793586</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/aqbanking based on submit request 21717 from user vuntz
+</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>1b7a9414ddc893a9f818f4fb7e5bc2d3</srcmd5>
+    <version>4.0.0</version>
+    <time>1254793586</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/aqbanking based on submit request 21717 from user vuntz
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5db106a6f11658b6bb89be5875b79d74</srcmd5>
+    <version>4.2.0</version>
+    <time>1261824377</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/aqbanking based on submit request 27407 from user vuntz
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6b1a224b87d4c5bf26cebf146f7dade8</srcmd5>
+    <version>4.2.1</version>
+    <time>1262109720</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/aqbanking based on submit request 27790 from user vuntz
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c80aca074c989ef6713904849874fdb6</srcmd5>
+    <version>4.2.3</version>
+    <time>1263831095</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/aqbanking based on submit request 29687 from user vuntz
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8c52bcbf834bc9564b6b84397c7666a5</srcmd5>
+    <version>4.2.4</version>
+    <time>1266183079</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/aqbanking based on submit request 32498 from user vuntz
+</comment>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>dd3381ce12c4a9c8f5986bc29353d263</srcmd5>
+    <version>4.2.4</version>
+    <time>1268922908</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>dd3381ce12c4a9c8f5986bc29353d263</srcmd5>
+    <version>4.2.4</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>dd3381ce12c4a9c8f5986bc29353d263</srcmd5>
+    <version>4.2.4</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>623a5b7694871c3ea63244be27de4e68</srcmd5>
+    <version>5.0.1</version>
+    <time>1291999929</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55543 from user vuntz
+</comment>
+    <requestid>55543</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b795c3b8438809a1be320433039a4b9f</srcmd5>
+    <version>5.0.1</version>
+    <time>1291999937</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55543
+</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>bf678923bbfda8e6748b2d050a7860ec</srcmd5>
+    <version>5.0.1</version>
+    <time>1295020212</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58207 from user vuntz
+</comment>
+    <requestid>58207</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>b794ca2c48949cee7c26f1e519b253e6</srcmd5>
+    <version>5.0.1</version>
+    <time>1295020220</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58207
+</comment>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e5727f9addbd50725ba92a572737852c</srcmd5>
+    <version>5.0.2</version>
+    <time>1295285610</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58450 from user vuntz
+</comment>
+    <requestid>58450</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>169d9a63b199aa26b1f67f52d24843b6</srcmd5>
+    <version>5.0.2</version>
+    <time>1295285618</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58450
+</comment>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>169d9a63b199aa26b1f67f52d24843b6</srcmd5>
+    <version>5.0.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e7e9345565d37a25d0ce167970bfa061</srcmd5>
+    <version>5.0.4</version>
+    <time>1299236735</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63405 from user vuntz
+</comment>
+    <requestid>63405</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>91ffcaa65e072b4b6399aefd60786a56</srcmd5>
+    <version>5.0.5</version>
+    <time>1301479176</time>
+    <user>saschpe</user>
+    <comment>Copy from GNOME:Apps/aqbanking based on submit request 65536 from user coolo
+</comment>
+    <requestid>65536</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6ed11678bbcd037c0c08dad80fabdc73</srcmd5>
+    <version>5.0.6</version>
+    <time>1306147076</time>
+    <user>saschpe</user>
+    <comment>update to 5.0.6 (forwarded request 70844 from NicoK)</comment>
+    <requestid>70911</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>90a6d7f74f165dd05b027bd3982b0d5b</srcmd5>
+    <version>5.0.7</version>
+    <time>1306744469</time>
+    <user>saschpe</user>
+    <comment>update to 5.0.7 (forwarded request 71572 from NicoK)</comment>
+    <requestid>71805</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>18ba3e4ef5dab4e3e77ae25504f225ea</srcmd5>
+    <version>5.0.10</version>
+    <time>1308046718</time>
+    <user>saschpe</user>
+    <comment>update to 5.0.10 (forwarded request 73458 from NicoK)</comment>
+    <requestid>73486</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>75e62bec365b44b547468544a0a4cafa</srcmd5>
+    <version>5.0.10</version>
+    <time>1308046729</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73486
+</comment>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>9bf6054e624f655f3da30ca3fbf1e8e7</srcmd5>
+    <version>5.0.10</version>
+    <time>1308052037</time>
+    <user>unknown</user>
+    <comment>trigger service run</comment>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>3c0b27afeb4c96002062a7e3a3821408</srcmd5>
+    <version>5.0.10</version>
+    <time>1308052863</time>
+    <user>mls</user>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>73bc143df9bc284aa47f666d3ee97b8b</srcmd5>
+    <version>5.0.10</version>
+    <time>1308055119</time>
+    <user>mls</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e6e33b97300d6c7ad6466766e8f7583a</srcmd5>
+    <version>5.0.14</version>
+    <time>1312443365</time>
+    <user>saschpe</user>
+    <comment>Pushing G:A</comment>
+    <requestid>77760</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>02552fa3ca37fe926bab9e3ddc842738</srcmd5>
+    <version>5.0.14</version>
+    <time>1312443382</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77760
+</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>26b7b1ed4d816605caab71c0db58e8b9</srcmd5>
+    <version>5.0.15</version>
+    <time>1316465329</time>
+    <user>lrupp</user>
+    <comment>update to 5.0.15 (forwarded request 81822 from NicoK)</comment>
+    <requestid>83428</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d342bc19f6035918a1d290049f8f6d0a</srcmd5>
+    <version>5.0.16</version>
+    <time>1317541680</time>
+    <user>lrupp</user>
+    <comment>Pushing G:A</comment>
+    <requestid>85535</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>d342bc19f6035918a1d290049f8f6d0a</srcmd5>
+    <version>5.0.16</version>
+    <time>1319181773</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>bc9b299c365ac6c9f6532bb1dc231442</srcmd5>
+    <version>5.0.19</version>
+    <time>1325767665</time>
+    <user>coolo</user>
+    <comment>update to 5.0.19 (updates, initial support for optical chipTAN methods, also licensed under GPL3)</comment>
+    <requestid>97471</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>543bbb8e4150840c2fb94c6932091c74</srcmd5>
+    <version>5.0.22</version>
+    <time>1326292554</time>
+    <user>coolo</user>
+    <comment>update to 5.0.22,
+fix build for Factory by including %{_datadir}/aclocal directory</comment>
+    <requestid>99707</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>39b3e0e9f231f93dd06b1e4112acb151</srcmd5>
+    <version>5.0.23</version>
+    <time>1332415863</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>109660</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>379ac5b365959459ffb54bbfa126c841</srcmd5>
+    <version>5.0.23</version>
+    <time>1337577824</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-Free-Art-1.3
+Added SUSE-Free-Art-1.3 to the spreadsheet linked at license.opensuse.org (forwarded request 121216 from babelworx)</comment>
+    <requestid>121226</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>379ac5b365959459ffb54bbfa126c841</srcmd5>
+    <version>5.0.23</version>
+    <time>1340183178</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>bbdee3fccae3290387152bcbb52cd781</srcmd5>
+    <version>5.0.25</version>
+    <time>1347617538</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134023</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>bbdee3fccae3290387152bcbb52cd781</srcmd5>
+    <version>5.0.25</version>
+    <time>1359108661</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>65ff937af38d4f7485ffb318be3a07a6</srcmd5>
+    <version>5.0.31beta</version>
+    <time>1378133373</time>
+    <user>coolo</user>
+    <comment>update to 5.0.31beta (again, this version is 5.0.31 which identifies itself as beta - there won't be a 5.0.31 final) (forwarded request 196886 from NicoK)</comment>
+    <requestid>196889</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>65ff937af38d4f7485ffb318be3a07a6</srcmd5>
+    <version>5.0.31beta</version>
+    <time>1379661981</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>82b40ec3fc73b2155de4cd653d592e7b</srcmd5>
+    <version>5.0.32beta</version>
+    <time>1379918803</time>
+    <user>coolo</user>
+    <comment>update to 5.0.32beta (like last time: there won't be a 5.0.32) - please forward to Factory (forwarded request 199481 from NicoK)</comment>
+    <requestid>199696</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e3a23dca92de080b0018e46216660789</srcmd5>
+    <version>5.1.0beta</version>
+    <time>1383324050</time>
+    <user>scarabeus_factory</user>
+    <comment>update to version 5.1.0beta (= 5.1.0 is beta, there is no 5.1.0 final)</comment>
+    <requestid>205378</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>3c7095887c7418921125d09eadc37b08</srcmd5>
+    <version>5.3.0beta</version>
+    <time>1390284124</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214456</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>1bc91ddc667b4df48bf4d21b76fcd14b</srcmd5>
+    <version>5.3.6beta</version>
+    <time>1392789086</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.6beta and integration of changes from home:j-engel:banking as discussed (forwarded request 221554 from j-engel)</comment>
+    <requestid>222662</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>343646315aba34ea26e27a9a404e8f4b</srcmd5>
+    <version>5.4.0beta</version>
+    <time>1393600961</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223953</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>2774ecf58d9f22dec6289c10a09deb31</srcmd5>
+    <version>5.4.1beta</version>
+    <time>1393935615</time>
+    <user>coolo</user>
+    <comment>Update to 5.4.1 including bugfixes. SEPA should now work for even more users.</comment>
+    <requestid>224486</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>c63fb5e6c7491f556ef2468d00f97aa5</srcmd5>
+    <version>5.4.2beta</version>
+    <time>1396291346</time>
+    <user>coolo</user>
+    <comment>Update to 5.4.2beta, all openSUSE distributions build properly, SLES does not provide all the requirements currently and is thus disabled.</comment>
+    <requestid>228285</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>890140dc1e5df2f2419ac1e5b8b9ce66</srcmd5>
+    <version>5.4.3beta</version>
+    <time>1398499164</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>231480</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>890140dc1e5df2f2419ac1e5b8b9ce66</srcmd5>
+    <version>5.4.3beta</version>
+    <time>1409300506</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>eb7ceeeff87c76e9f67464037c9526bb</srcmd5>
+    <version>5.5.0.2</version>
+    <time>1419159909</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265976</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>8723b24804b866cd48f1692024eee49c</srcmd5>
+    <version>5.5.1</version>
+    <time>1420318879</time>
+    <user>dimstar_suse</user>
+    <comment>Update to stable release 5.5.1 including some bugfixes</comment>
+    <requestid>267096</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>3011fb2ee6e27aa29f3b7d09e0a40ef6</srcmd5>
+    <version>5.6.1beta</version>
+    <time>1448186449</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345374</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>5adc24c592ae4327e1ebd57882e239d5</srcmd5>
+    <version>5.6.4beta</version>
+    <time>1452850893</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.4</comment>
+    <requestid>353448</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>19fd50d930cba5d931c1ae2df872aca1</srcmd5>
+    <version>5.6.8beta</version>
+    <time>1460028760</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385509</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>9ee8d301944a34766532490e541a6310</srcmd5>
+    <version>5.6.10</version>
+    <time>1462178694</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393085</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>f6f4716758ea2a246498b5d7cb1f156c</srcmd5>
+    <version>5.7.1beta</version>
+    <time>1473679653</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426772</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>844f48ef9b883e3e8dd06622aec71d6d</srcmd5>
+    <version>5.7.2beta</version>
+    <time>1475750876</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.7.2beta</comment>
+    <requestid>433471</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>134e3bf1f8941d831e113276d4d622a0</srcmd5>
+    <version>5.7.4beta</version>
+    <time>1476780188</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435428</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>c44161dbb61b113eaead1482c3f9ef22</srcmd5>
+    <version>5.7.6beta</version>
+    <time>1498741970</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505635</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>c1daf25da936239f1bdd0c795fefce90</srcmd5>
+    <version>5.7.6beta</version>
+    <time>1499598261</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508952</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>d0bc465fe2b1372a35271558c70df4c8</srcmd5>
+    <version>5.7.6beta</version>
+    <time>1512042349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546418</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>5717cc320ccb8ea386551a6642cd35b6</srcmd5>
+    <version>5.7.8</version>
+    <time>1524742653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.7.8
+  + Bugfixes
+  + Updates of German bankinfo files
+- Drop --with-qt4-libs configure parameter: no longer understood by
+  configure.
+- Remove libqt4-devel BuildRequires: since --with-qt4-libs is not
+  understood anyway, we do not require the libst.
+- override build date to make build reproducible and fix build-compare
+- enable paypal back-end
+- enable EBICS back-end (for openSUSE 42.3+)
+- Update to 5.7.6beta
+  + finally fix unclean TLS connection shutdown by HBCI servers
+  + fix passing user flags to the http module
+- Update to 5.7.5beta
+  + support for ZKA cards (by Holger Magnussen)
+  + updated bank information for German banks
+  + some bugfixes
+  + adapted and re-activated the paypal plugin (by Holger Magnussen)
+  + HBCI: allow changing the server address in RDH and DDV mode
+- Update to 5.7.4beta
+  + Fix crash pulling new accounts
+  + Enable setting the new flag tlsgnPrematureClose from console
+- Update to 5.7.2beta
+  + Fix crash receiving account list
+- quick fix for $CPP being unset and configure failing to handle
+  include dirs properly
+- Update to 5.7.1beta:
+  + re-retrieval of the account list is not required anymore to
+    continue using existing accounts
+- Update to 5.7.0beta:
+  + finally fixes the problem of not correlating accounts correctly
+    if the bank returns multiple accounts with the same account
+    number and IBAN
+- Update to 5.6.12
+  + Improvement in handling account owners
+- Update to 5.6.10:
+  + fixes problems with some special HBCI messages
+  + support HHD 1.3.2 (Flicker codes for PIN/TAN) again
+    (thanks to Martin Kuehn)
+- Update to 5.6.9beta:
+  + support old-version Flicker codes which are still used by
+    some banks (thanks to Martin Kuehn)
+- Update to 5.6.8beta:
+  + this should finally fix problems with the comdirect bank
+    (and others)
+- Update to 5.6.7beta:
+  + fixes further problems using the &quot;Unterkontomerkmal&quot; field
+    for multiple accounts with the same account number,
+    e.g. comdirect bank
+- Update to 5.6.6beta:
+  + fix an error with the version number
+- Update to 5.6.5beta:
+  + fix SWIFT parser problems with banks using non-standard
+    conform data, e.g. also extract the IBAN from the account
+    number field
+  + store UPD seperately for each account depending on account
+    number and sub-account number (&quot;Konto-Unterkennung&quot;) - this
+    should fix problems with banks using the same account number
+    for multiple accounts, e.g. comdirect bank
+- Update to 5.6.4beta
+  + Fix error in SWIFT importer (missing import of :NS: fields)
+  + Fix transmission of Flicker codes (HHD 1.4)
+- Update to 5.6.1 (beta):
+  + improve the SWIFT parser
+    (NOTE: duplicates may arise after first updating your accounts)
+- Update to 5.6.0 (beta):
+  + make the SWIFT parser tolerate non-specification conforming
+    information, e.g. from the SpardaBank and Netbank
+    (NOTE: duplicates will arise for those banks after first
+     updating your accounts)
+  + support a HBCI module for COR1-SEPA direct debits (not fully
+    tested yet)
+  + some improvements in the build system
+- Update to 5.5.1
+  + SEPA transactions mostly working now
+  + stable version
+- Update to version 5.5.0.2
+  + Shorten paths of some AqHBCI files.
+    &quot;tar&quot; has a filename limit of 99, so we need to shorten the total
+    path, otherwise &quot;make dist&quot; will fail.
+- Add a dependency on cmake; aqbanking now provides cmake configuration
+  files for development
+- Update to 5.4.3beta
+  + Fix a bug in aqbanking-cli concerning standing orders
+- Update to 5.4.2beta
+  + Introduce command sepadebitnotes for aqbanking-cli
+- Update to 5.4.1beta
+  + Bugfixes by Elias Oltmanns
+- Update to 5.4.0beta
+  + Fix problems with SEPA debit orders
+  + Fix wrong key length for RDH10
+- Update to 5.3.6beta
+  + Fix an issue with RDH10
+- Fixes in previous versions:
+  + Change in plugin architecture
+  + Bugfixes for SEPA (e.g. missing sum field)
+- Update to version 5.3.0beta:
+  + fixes some problems with SEPA orders and simplifies the code
+    of AqHBCI (better extensibility for future order types)
+  + extends the SWIFT parser to decode SEPA fields in Netbank
+    statements (may yield to duplicates)
+- Update to version 5.2.0beta:
+  + contains the EBICS module (now under GPL license)
+  + some minor internal improvements regarding BIC and IBAN
+- fix build for SLE
+- Update to version 5.1.0beta:
+  + improvements to the SEPA exporter
+    (ability to create bank valid transfers and debits)
+  + add fields required for SEPA debits to AB_TRANSACTION
+  + SEPA debits should work (not tested yet)
+  + add a command to AqBanking-CLI to add a SEPA debit to a
+    ImExporterContext file from which orders in SEPA format can be
+    exported
+- Update to version 5.0.32beta:
+  + fixes a compiler problem with missing source code files
+- Update to version 5.0.31beta:
+  + contains further code for SEPA transactions
+  + request for help: please fetch your latest statements with
+    this version and have a look whether there is information on
+    the segment &quot;HICDS&quot; in the user settings
+    (&quot;$HOME/.aqbanking/settings/users/*.conf&quot;)
+  + requires at least Gwenhywfar 4.7.0beta
+- Update to version 5.0.30beta:
+  + adds a missing file
+- Update to version 5.0.29beta:
+  + fixes a few compile warnings
+  + fixes a bug in the SEPA module
+  + add support for REINVEST tags in the OFX parser
+    (thanks to Paul Conrady)
+  + let the OFX DirectConnect module send the HTTP-Header
+    &quot;user-agent&quot;
+- drop aqbanking-5.0.28beta.no-return-in-nonvoid-function.diff
+  patch (included upstream)
+- Update to version 5.0.28beta:
+  + fixes some bugs in the previous version
+  + improvements to the German translation (thanks to Christian)
+  + adds support for downloading credit card transactions from
+    some Sparkasse banks (thanks to Matthias)
+- Update to version 5.0.27beta:
+  + adds a missing file in the last version's package
+- Update to version 5.0.26beta:
+  + implements SEPA transactions via HBCI
+    (tested with some Sparkasse and Postbank banks)
+  + adds commands to aqhbci-cli for retrieving SEPA information
+    about bank accounts needed for SEPA transactions
+  + removes (unmaintained) paypal back-end
+- add aqbanking-5.0.28beta.no-return-in-nonvoid-function.diff patch
+- Update to version 5.0.25:
+  + added support for exporting bank transfers/direct debits via CSV
+    (new CSV profile &quot;transfers&quot;)
+- Update to version 5.0.24:
+  + fixes several bugs, particularly in the various HBCI keyfile
+    methods and creating INI mails in HTML
+  + mark PIN as bad in PIN/TAN mode if dialogue calcelled
+- license update: SUSE-Free-Art-1.3
+  Added SUSE-Free-Art-1.3 to the spreadsheet linked at license.opensuse.org
+- Update to version 5.0.23:
+  + minor improvements to the CSV profile editor
+- Update to version 5.0.22:
+  + fixes some problems with the SWIFT parser
+  + fixes a crash with empty configuration files
+  + added an option to set that (when using mTAN) the SMS account
+    is not being charged (required by GAD-based banks)
+- included %{_datadir}/aclocal in the devel package
+- Update to version 5.0.21:
+  + more flexible SWIFT parser
+  + improved flicker message display of optical chipTAN methods
+- Update to version 5.0.20:
+  + added support for newer TAN methods (HKTAN5)
+  + added a dialogue to change account settings
+    (allows changing e.g. &quot;Prefer Single Transfer&quot;)
+- Update to version 5.0.19:
+  + support for optical chipTAN methods (in principal - for now only
+    implemented in the FOX front-end)
+- Update to version 5.0.17:
+  + additionally licensed under GPLv3
+  + fixes a bug in the PIN/TAN definition files (HBCI backend)
+- Update to version 5.0.16:
+  + fixes a write error
+  + supports setting the charset during OFX import
+- Remove redundant tags/sections from specfile
+- Update to version 5.0.15:
+  + fixed some bugs in OFX DirectConnect
+  + cmd tools now also link to libstdc++ to fix some segfaults
+- Update to version 5.0.14:
+  + Bug fix in applayer.
+- Changes from version 5.0.13:
+  + Added some safeguards in SWIFT.
+  + Fixed a bug in SWIFT parser. This bug caused the plugin to
+    hang while parsing subtags which contain question marks.
+  + Fixed a bug in dlg_pintan_special.dlg
+- Changes from version 5.0.11:
+  + Bug fixes for the parameter list.
+  + Use &quot;void&quot; in functions with empty argument list.
+  + Add argument &quot;--charset&quot; to aqbanking-cli and also fixes a
+    typo.
+  + Fixed a memory leak in banking plugin.
+  + Removed a leftover LDADD.
+  + Increased debug verbosity and comments in joblayer plugin.
+- Update spec file License field from GPLv2+ to GPL-2.0+ to
+  conform with spdx.org identifier.
+- Clean up and reformat spec file.
+- Add FIXME as still unable to parallel make.
+- Update BuildRequires to use pkgconfig(gtk+-2.0) instead
+  of gtk2-devel.
+- Remove service usage, following the new consensus on Factory
+  packaging.
+- Update to version 5.0.10:
+  + some bug fixes
+  + internal symbols of AqHBCI are not exported anymore
+  + better handling of standing orders and terminated bank
+    transfers during imports
+- Update to version 5.0.9beta:
+  + added &quot;aqhbci-tool logfile&quot; to anonymise log files
+  + bug fixes for manual ChipTAN methods
+- Update to version 5.0.8beta:
+  + support for new iTAN methods (some manual ChipTAN methods might
+    now work)
+- Update to version 5.0.7:
+  + added support for HKTAN version 5 in the HBCI backend
+   (this should improve support for some manual ChipTan methods)
+- Update to version 5.0.6:
+  + fixes bugs with long RDH keys (HBCI)
+- Update to version 5.0.5:
+  + bugfixes in the HBCI-NewKeyFile dialogue and Q43 import
+  + added a first version of the C++ wrappers to aqbanking
+    (by Christian)
+- Update to version 5.0.4:
+  + do not assert() when failing to save user/account
+  + improved handling of iTAN modes
+- Update to version 5.0.3:
+  + fixes some bugs in the OFX back-end
+  + added support for TanMediumId when using smsTAN
+- Update to version 5.0.2:
+  + fixed some errors with HBCI version 2.2 and above
+  + some fixes for Windows
+- Remove unneeded BuildRequires: libqt4-devel python-devel pyxml
+  qt3-devel.
+- Add BuildRequires: gcc-c++ (we need it), gtk2-devel (needed for
+  --enable-gui-tests configure option).
+- Remove qt3-devel Requires from devel package.
+- Pass --enable-gui-tests to configure: while we do not care much
+  about this, it is useful to work around a bug in the configure
+  script that causes ktoblzcheck to not be detected.
+- Do not pass --with-qt3-libs and --with-qt4-libs to configure:
+  these options don't exist anymore.
+- Update to version 5.0.1:
+  + Fix issue when querying HBCI system identification.
+- Update to version 5.0.0:
+  + Fix several issues with HBCI, mainly PIN/TAN.
+  + Usage of the new dialog framework of gwenhywfar.
+  + Support querying of paypac account balance.
+  + Improved dialogs for HBCI and OFX DirectConnect.
+  + New dialogs of EBICS and PayPal.
+- Change lang Requires to Recommends.
+- Drop aqbanking-qt3, aqbanking-qt4, aqbanking-ofx-qt3,
+  aqbanking-ofx-qt4 subpackages as aqbanking now uses the new
+  dialog framework of gwenhywfar.
+- Update to version 4.2.4:
+  + Probably fixed a problem in definition of HITAN:1.
+  + Fixed a bug in SecProfile definition.
+  + Added CSV profile for Nederlandse SNS Bank.
+  + Added a few SEPA-related fields to AB_TRANSACTION.
+  + Improved handling of SWIFT fields within TAGS, special handling
+    for SEPA transactions.
+  + CSV-Im-/Exporter: Added profile variables &quot;commaThousands&quot; and
+    &quot;commaDecimal&quot;.
+  + Added tanMethod version 3 and make HITANS:2 use that.
+  + Improved debug and error messages concerning itan modes.
+  + The three digit code in a :86: field is the transaction code,
+    not the text key.
+  + DTAUS-Exporter: Segment too long purpose lines instead of
+    rejecting them.
+  + Added missing segment description &quot;HKTAN:3&quot;.
+  + Build fixes.
+- Add libqt4-devel BuildRequires, and create qt4 and ofx-qt4
+  subpackages.
+- Pass --with-qt4-libs to configure to fix detection of where qt4
+  libraries live.
+- Update to version 4.2.3:
+  + Decrease verbosity.
+  + Fixed a bug in &quot;Verfahrensparameter Zwei-Schritt-Verfahren&quot; of
+    HITANS:3.
+- Update handbook to 20091231 version.
+- Update to version 4.2.2:
+  + Decreased verbosity.
+  + Fixed a bug in the description of HITAN(1).
+- Update to version 4.2.1:
+  + Applied a series of SWIFT-patches.
+  + Decrease debug level of several non-critical messages.
+  + Updated German bank info files.
+- Remove autoreconf call since it's unneeded.
+- Add gwenhywfar-tools BuildRequires, since some binaries were
+  moved from gwenhywfar-devel to gwenhywfar-tools.
+- Move the handbook to a doc subpackage, since its big and has a
+  different license.
+- Remove .la files.
+- Update to version 4.2.0:
+  + better import of previous configurations
+  + use pin file for chipcards in non-interactive mode
+  + DTAUS import now sets order type correctly
+- Changes from version 4.1.8:
+  + fixes problems with locks inside the HBCI module
+- Changes from version 4.1.7:
+  + fixes OFX parser not being linked into the application
+- Changes from version 4.1.6:
+  + fixes an important bug in the HBCI module that was preventing
+    users to store certain user and account information
+- Changes from version 4.1.5:
+  + fixes some minor bugs in the HBCI module
+  + removes unused code
+  + special support for statistical modules has been removed again
+    to simplify the build system
+- Changes from version 4.1.4:
+  + made max number of payments per (collective) order configurable
+- Changes from version 4.1.3:
+  + fixes a bug in newer RDH modes (HTML output did not contain the
+    correct hash value)
+  + improved the CSV import so that columns can be exchanged based
+    on their leading sign (this is being used by the new CSV
+    profile of the Postbank Frankfurt/Main)
+  + AqHBCI tool now checks valid combinations of RDH mode and HBCI
+    version
+- Changes from version 4.1.2:
+  + fixes a crash in the QT3 frontend when editing accounts
+- Drop aqbanking-strncat.patch: unneeded now.
+- Added pdf-handbook
+- Remove gtk2-devel, kdelibs3-devel, libchipcard4,
+  libchipcard4-devel and libglade2-devel BuildRequires: they're
+  either redundant or unneeded.
+- Remove gtk2-devel, kdelibs3-devel, libchipcard4-devel,
+  libglade2-devel Requires of devel package.
+- Change libchipcard3-devel Requires to libchipcard4-devel Requires
+  in devel package.
+- Remove --enable-python and --with-kde3-libs configure option:
+  they don't exist anymore.
+- Remove the yellownet-related subpackages: there's no such backend
+  anymore in this version. This fixes the build on i586.
+- update to 4.0.0, triggered by gwenhywfar
+  - too long without update to describe in a few lines,
+    this is very active project
+- Add aqbanking-remove-datetime.patch to be more build-compare
+  friendly.
+- fix build with gcc 4.4 
+- update to 2.3.3 (last in 2.3 series)
+  - Very minor improvements: One windows function signature has been
+    fixed. DTAUS export has been improved. Error messages at
+    aqbanking-tool have been improved.
+- update to 2.3.2
+  - Windows registry lookup issues have been solved.  This release is only
+    interesting for windows users.
+- update to 2.3.1
+  - Fix translations when using qt4, especially on Windows. Improve
+    cross-compiling. (This release brings no changes for the conventional
+    qt3 compile.)
+- update to 2.3.0
+  - Fix some path lookup issues on MS Windows. Fix a crash with erroneous
+    bank codes. Fix check function in PIN/TAN mode. Improved
+    aqhbci-tool. Add a function for easier initial setup (hence the
+    incremented version number).
+- disabled ofx backend build (incompatible with current libofx)
+- fix open call
+- Use %fdupes
+- Split off a -lang subpackage.
+- Updated to version 2.2.9:
+  * Improvements in the setup wizard.
+  * Fix qt4 porting code.
+  * Fix crashes when actions have no selected items in qbanking.
+  * Improve aqbanking-tool and aqhbci-tool usage messages.
+  * Fix command line processing in tool hbcixml.
+  * Fixed changes in aqofxconnect to be enabled only for new libofx
+    versions.
+  * The config file is saved correctly.
+  * Adaptation on gwenhywfar changes.
+  * AqGeldKarte has been fixed and adapted to Libchipcard3.
+  * The QBanking frontend is now less verbous.
+  * Allows to setup iTAN HBCI accounts.
+  * Import profile for ABN AMRO Bank (NL).
+  * Other fixes and improvements, see NEWS for details.
+- add missing %run_ldconfig calls
+- fixed comparison with string literal (strcmp.patch) [#224464]
+- Updated to version 2.2.3:
+  * Allows to setup iTAN HBCI accounts.
+  * Improved support for HBCI iTAN mode, added an import profile
+    for ABN AMRO Bank (NL).
+  * Fixes some errors.
+- update to version 2.2.1
+- fixed a bug in DTAUS importer profile &quot;default&quot;
+- src/libs/aqbanking/types/transaction.xml: Fix typos
+- added aqbanking-tool command &quot;chkiban&quot; which checks whether a given IBAN
+  is valid
+- AqOfxConnect: Fixed a bug in provider.c which could lead to a segfault
+- generic bankinfo plugin:
+  - implemented a mechanism to update bank info files via additional files
+  - Germany: Updated HBCI and bank info files (now reads new
+    format of Bundesbank files)
+  - Austria:
+    - updated BLZ file (now reads new, more extensive format)
+    - added OFX server information for BAWAG P.S.K and EasyBank
+- AqHBCI:
+  - removed functions AH_HBCI_HbciToUtf8() and AH_JobQueue_AddAsUtf8() because
+    they are no longer needed since the whole server response is transformed
+    to UTF8 -&gt; finally fixes Umlaut problems
+  - implemented iTAN process type 2: It now works against the test server,
+    tomorrow I will have to test it against a real server
+- Fix rule srcdoc if directory was not existing 
+- Work around broken configure check.
+- Updated to version 2.0.0 (new branch).
+- Split package to follow upstream packaging.
+- Fixed documentation path (#146744).
+- converted neededforbuild to BuildRequires
+- Fixed libtool patch.
+- New SuSE package, version 1.2.0.
+  Based on spec file from Rajesh Singh &lt;rajeshsingh.geo@yahoo.com&gt;.
+</comment>
+    <requestid>599641</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>009be9412be887f7d2f4b4c4ed05ed29</srcmd5>
+    <version>5.8.1</version>
+    <time>1566243533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724189</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>fa843c05a3b8bf10f3a16bf4a4b3d7c0</srcmd5>
+    <version>5.8.2</version>
+    <time>1567010140</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.8.2 to fix crash with FinTS.</comment>
+    <requestid>726541</requestid>
+  </revision>
+</revisionlist>

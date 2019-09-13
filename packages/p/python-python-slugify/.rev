@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56022ee2a91c33e06ef04ee7b7cd68fd</srcmd5>
+    <version>1.2.5</version>
+    <time>1526371911</time>
+    <user>dimstar_suse</user>
+    <comment>Slugify application that handles Unicode</comment>
+    <requestid>605958</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fc39886844afd50b4362776b2d24e479</srcmd5>
+    <version>1.2.5</version>
+    <time>1545648160</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659616</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6c942e8426017383dc56a63b75a66681</srcmd5>
+    <version>2.0.1</version>
+    <time>1550668392</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677459</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7ea332f09bd552c14dfe6c22a7be1d9c</srcmd5>
+    <version>3.0.1</version>
+    <time>1553611529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688589</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d4ae7ff3dee7b6854268cdf45dd1e3ca</srcmd5>
+    <version>3.0.2</version>
+    <time>1558939148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.2:
+  * Add official support of Py 3.7</comment>
+    <requestid>705388</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>608677675ec6de67767c6c02bdc89472</srcmd5>
+    <version>3.0.3</version>
+    <time>1566894367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726219</requestid>
+  </revision>
+</revisionlist>

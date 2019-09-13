@@ -1,0 +1,259 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e817268b76cffac71baf513e52bd03c</srcmd5>
+    <version>2.1.1</version>
+    <time>1500456003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>508773</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>19fa4021015009fe7a052dd1804bce59</srcmd5>
+    <version>2.1.1</version>
+    <time>1500670202</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix module file name (forwarded request 511590 from NMoreyChaisemartin)</comment>
+    <requestid>511600</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5fda1dc4e522b1e782586b361bf9597f</srcmd5>
+    <version>2.1.1</version>
+    <time>1503308291</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517827</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5cdef2fce0f3798817a6a42676c4587c</srcmd5>
+    <version>2.1.1</version>
+    <time>1504981519</time>
+    <user>dimstar_suse</user>
+    <comment>- Update _service to allow auto updates from github</comment>
+    <requestid>521612</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>727624baf36d3b347d4d749a6422ebdd</srcmd5>
+    <version>2.1.1</version>
+    <time>1505238957</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523331</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>6fdabf4bf1b9031d1e667f792e24719a</srcmd5>
+    <version>2.1.1</version>
+    <time>1505920362</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove --disable-mca-dso
+  Related bug was due to openmpi/*.so wrongly packaged as devel
+
+- Reenable fortan08 bindings as gcc &gt;= 5 is now the default
+- Remove devel-headers configure option (reserved for MPI plugins developers)
+
+- Update to 2.1.1.186.9a3ac9803c
+- Drop openmpi-pmix-configure-ac.patch as it was merged upstream
+
+  * Too many bug fixes to list. See NEWS</comment>
+    <requestid>527336</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>751b3cc5a569830ed302f47ec1deaa31</srcmd5>
+    <version>2.1.2</version>
+    <time>1507391513</time>
+    <user>dimstar_suse</user>
+    <comment>- Add conflicts between the macros-devel packages
+
+- Convert to multibuild.
+- Move all the doc to the docs RPM
+- Add HPC build using environment modules (FATE#321711).
+- Resync spec with openmpi and openmpi3
+
+- Update to OpenMPI 2.1.2
+  * Many bug fixes. See NEWS
+- Fix VERSION file during build so that ompi_info reports good infos</comment>
+    <requestid>532254</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>940620aca187fe3bbdbfed6dd481d4a4</srcmd5>
+    <version>2.1.2</version>
+    <time>1507896642</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a ringdisabled flag to allow building only the standard flavor
+  so not all flavors are pulled into staging rings
+- Fix baselibs.conf generation (wrong directory and name)</comment>
+    <requestid>533457</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>4e5275e942096d427727cdabe2b3462b</srcmd5>
+    <version>2.1.2</version>
+    <time>1509193099</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix pre/post install call to ldconfig</comment>
+    <requestid>535456</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>413ad9cb02272a4ce5f59efd6b8de947</srcmd5>
+    <version>2.1.2</version>
+    <time>1513162601</time>
+    <user>dimstar_suse</user>
+    <comment>- Add btl-vader-change-the-way-fast-boxes-are-used.patch to
+  fix a SEGV on i386 systems</comment>
+    <requestid>555880</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>965485a3b7811299785654b4fe66173f</srcmd5>
+    <version>2.1.2</version>
+    <time>1516358981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566631</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>53c5e8338af1cd4f97ef9adecad52f1e</srcmd5>
+    <version>2.1.2</version>
+    <time>1517668907</time>
+    <user>dimstar_suse</user>
+    <comment>- Use macro in mpivars.(c)sh to be independent of changes to the module
+  setup for the compiler (boo#1078364).</comment>
+    <requestid>571423</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>cb6f3aaed1eedf597a7e837c9b23b88f</srcmd5>
+    <version>2.1.2</version>
+    <time>1518513868</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574674</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b7132417d0f6c42e497cda7327ef8272</srcmd5>
+    <version>2.1.3</version>
+    <time>1522317181</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to openmpi 2.1.3
+  - Update internal PMIx version to 1.2.5.
+  - Fix a problem with ompi_info reporting using param option.
+  - Correct PMPI_Aint_{add|diff} to be functions (not subroutines)
+    in the Fortran mpi_f08 module.
+  - Fix a problem when doing MPI I/O using data types with large
+    extents in conjunction with MPI_TYPE_CREATE_SUBARRAY.  Thanks to
+  - Fix a problem when opening many files using MPI_FILE_OPEN.
+  - Fix a problem with debuggers failing to attach to a running job.
+  - Fix a problem when using madvise and the OpenIB BTL.
+  - Fix a problem in the Vader BTL that resulted in failures of
+    IMB under certain circumstances.
+  - Fix a problem preventing Open MPI from working under Cygwin.
+  - Reduce some verbosity being emitted by the USNIC BTL under certain
+    circumstances.
+  - Fix a problem with misdirection of SIGKILL.
+  - Replace use of posix_memalign with malloc for small allocations.
+  - Fix a problem with Open MPI's out of band TCP network for file descriptors
+    greater than 32767.
+  - Plug a memory leak in MPI_Mem_free().
+- Drop btl-vader-change-the-way-fast-boxes-are-used.patch as it
+  merged upstream.
+- Add fix-rdma-component-selection.patch to fix bad rdma component selection
+  which can cause stall when running on multiple IB nodes (bsc#1087031)
+
+- Enable --enable-mpirun-prefix-by-default (bsc#1086821)</comment>
+    <requestid>592098</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>2fa909d2e4fe72e02e505cce9f3a2b22</srcmd5>
+    <version>2.1.3</version>
+    <time>1525697592</time>
+    <user>dimstar_suse</user>
+    <comment>- Create missing docs master package (bsc#1091714) (forwarded request 603225 from eeich)</comment>
+    <requestid>603228</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>794db253fb6d7d4f02b979f4811902d1</srcmd5>
+    <version>2.1.3</version>
+    <time>1527001119</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes qlogic roce issue bsc#1092257 (forwarded request 610359 from jjolly)</comment>
+    <requestid>610361</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>ffea869f426d3cef1f395c0135ba50b0</srcmd5>
+    <version>2.1.3</version>
+    <time>1529065941</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614937</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>10bd5766439280c326792b629e6b60b4</srcmd5>
+    <version>2.1.3</version>
+    <time>1535440974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630808</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>38f762bbc2d8fdfb64124dce5740d345</srcmd5>
+    <version>2.1.3</version>
+    <time>1537263764</time>
+    <user>maxlin_factory</user>
+    <comment>- Remove bashism in preun scriptlet
+
+- Fix handling of mpi-selector during updates (bsc#1098653)</comment>
+    <requestid>636131</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>43a89d229ef2de3ad13615ebf0e7a0c2</srcmd5>
+    <version>2.1.5</version>
+    <time>1541510041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644621</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b79c354cd84fd8da43aa9d4e2be5804b</srcmd5>
+    <version>2.1.5</version>
+    <time>1542889430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650521</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>b00c83e4ed8c3d9cd862faf843c95611</srcmd5>
+    <version>2.1.5</version>
+    <time>1545866617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657864</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f8bbe2c6b1f76865d6636473699ece18</srcmd5>
+    <version>2.1.6</version>
+    <time>1551113090</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>674872</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>1cf1a80317641bf7629ab04ad72d20e1</srcmd5>
+    <version>2.1.6</version>
+    <time>1554371971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690255</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>4bde4a1d106585a1e15677d09bf6b7c3</srcmd5>
+    <version>2.1.6</version>
+    <time>1556311499</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix bad INCLUDE path in module (bsc#1132949)</comment>
+    <requestid>696992</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>05eb22ebe38341a6a8334f3b9868c48f</srcmd5>
+    <version>2.1.6</version>
+    <time>1559374900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705573</requestid>
+  </revision>
+</revisionlist>

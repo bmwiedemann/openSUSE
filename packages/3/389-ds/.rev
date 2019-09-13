@@ -1,0 +1,259 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a88b887f56f3177ce38a3e089eb71fb3</srcmd5>
+    <version>1.3.3.9</version>
+    <time>1429107883</time>
+    <user>dimstar_suse</user>
+    <comment>Init package, requirement for Kolab</comment>
+    <requestid>296191</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>be7506ec6373594b4e6445561604139d</srcmd5>
+    <version>1.3.3.9</version>
+    <time>1429769117</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>298636</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>502bb1c03ed65a9a770ce9cba1e14cd5</srcmd5>
+    <version>1.3.3.10</version>
+    <time>1430387479</time>
+    <user>dimstar_suse</user>
+    <comment>Update to new upstream release 1.3.3.10, fixing CVE-2015-1854 (forwarded request 304677 from aeneas_jaissle)</comment>
+    <requestid>304681</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b1c4f530cb1f2d81f50c89b4d1eef72</srcmd5>
+    <version>1.3.3.11</version>
+    <time>1435053370</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstrema release 1.3.3.11
+- Added 389-ds-1.3.3.11-CVE-2015-3230.patch:
+  nsSSL3Ciphers preference not enforced on server side
+  [boo#934934] [CVE-2015-3230]</comment>
+    <requestid>312408</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bbdf7c5491bf712dd66af0c1cc871481</srcmd5>
+    <version>1.3.3.13</version>
+    <time>1441955054</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.3.3.13 (forwarded request 330030 from aeneas_jaissle)</comment>
+    <requestid>330265</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7bf3274771eff829cd3f0bb4bdf42ffc</srcmd5>
+    <version>1.3.4.4</version>
+    <time>1442474500</time>
+    <user>dimstar_suse</user>
+    <comment>Version upgrade</comment>
+    <requestid>331124</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9d74a685d883f779b547b9e4a3f7cd3d</srcmd5>
+    <version>1.3.4.5</version>
+    <time>1448400830</time>
+    <user>coolo</user>
+    <comment>Update to new upstream release 1.3.4.5 (forwarded request 345388 from aeneas_jaissle)</comment>
+    <requestid>345826</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fdf6d90ce77235fa1a0488572836a3b2</srcmd5>
+    <version>1.3.4.8</version>
+    <time>1457014584</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>364115</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dc0fb3f19a2f98e4c87b505520a7b403</srcmd5>
+    <version>1.3.4.14</version>
+    <time>1480342251</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442229</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1f38d362682e6798f6513e671d9b87f8</srcmd5>
+    <version>1.3.6.6</version>
+    <time>1503999848</time>
+    <user>dimstar_suse</user>
+    <comment>- Introduce acl as mandatory runtime dependency.
+
+- Rename patch 389-ds-base-1.3.2.11_init_fhs.patch -&gt; 0001-init_fhs.patch
+- Fix faulty python module import with patch
+  0002-use-python2-for-selinux-detection.patch
+- Conduct a major clean-up of spec file to remove all outdated macros
+- Introduce extra schema files from OpenLDAP distribution with
+  extra-schema.tgz and LICENSE.openldap
+
+- update to 1.3.6.6
+  - Ticket 49157 - fix error in ds-logpipe.py
+  - Ticket 48864 - remove config.h from spal header.
+  - Ticket 48681 - logconv.pl - Fix SASL Bind stats and rework
+    report format
+  - Ticket 49261 - Fix script usage and man pages
+  - Ticket 49238 - AddressSanitizer: heap-use-after-free in
+    libreplication
+  - Ticket 48864 - Fix FreeIPA build
+  - Ticket 49257 - Reject dbcachesize updates while auto cache
+    sizing is enabled
+  - Ticket 49249 - cos_cache is erroneously logging schema checking
+    failure
+  - Ticket 49258 - Allow nsslapd-cache-autosize to be modified
+    while the server is running
+  - Ticket 49247 - resolve build issues on debian
+  - Ticket 49246 - ns-slapd crashes in role cache creation
+  - Ticket 49157 - ds-logpipe.py crashes for non-existing users
+  - Ticket 49241 - Update man page and usage for db2bak.pl
+  - Ticket 49075 - Adjust logging severity levels
+  - Ticket 47662 - db2index not properly evaluating arguments</comment>
+    <requestid>518666</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>fd41afd6e54e55321dab592ffbf10d06</srcmd5>
+    <version>1.3.6.6</version>
+    <time>1504206213</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519693</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8a127ab67d7780138079d8a41c78c8b0</srcmd5>
+    <version>1.3.6.6</version>
+    <time>1505920284</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527262</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1cc7b26f171809865c777aa5f915d5ce</srcmd5>
+    <version>1.4.0.3</version>
+    <time>1517424865</time>
+    <user>dimstar_suse</user>
+    <comment>- For SLES 15 schedule, do not build lib389 programmable extension
+  for now.
+
+- BuildRequire python3-ldap instead of python3-pyldap: pyldap is
+  deprecated in favor of python-ldap.
+
+- Rename dependency package python-pyldap into python3-pyldap.
+
+- Correct name to dependency package &quot;python-pyldap&quot;.
+
+- Introduce patch 0003-fix-rm-non-existent-man-pages.patch to remove
+  a faulty rm statement from makefile.
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468) 
+
+- added simplify-lib389-setup-py.patch
+  seems the python3 setuptools on leap 42.3 do not like this fancy
+  syntax. kill it and always use the python 3 way.
+
+- update to 1.4.0.3
+  - Ticket 49457 - Fix spal_meminfo_get function prototype
+  - Ticket 49455 - Add tests to monitor test suit.
+  - Ticket 49448 - dynamic default pw scheme based on environment.
+  - Ticket 49298 - fix complier warn
+  - Ticket 49298 - Correct error codes with config restore.
+  - Ticket 49454 - SSL Client Authentication breaks in FIPS mode
+  - Ticket 49453 - passwd.py to use pwdhash defaults.
+  - Ticket 49427 - whitespace in fedse.c
+  - Ticket 49410 - opened connection can remain no longer poll,</comment>
+    <requestid>571393</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>f1113adb2290754055fd5a29d4158a60</srcmd5>
+    <version>1.4.0.3</version>
+    <time>1518187929</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>574444</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>6fd1dd5b96694bca399c448bc2598376</srcmd5>
+    <version>1.4.0.3</version>
+    <time>1519145715</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly generate dirsrv sysconfig file as it is necessary for
+  SLES 15 (bsc#1081324).</comment>
+    <requestid>578038</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>77dd82ed45c2bb824e9474c230aa4079</srcmd5>
+    <version>1.4.0.18</version>
+    <time>1540447925</time>
+    <user>dimstar_suse</user>
+    <comment>- remove fscaps until the audit bug is done
+- fix one type pkg_name vs pkgname in the post scriptlets
+- prepare rust support
+- use the same hack for svrcore-devel as the redhat package: claim
+  to be version 4.1.4 and obsolete olders. the pkg-config file will
+  report the new version though.
+- update to 1.4.0.18
+- drop patches:
+  0003-fix-rm-non-existent-man-pages.patch
+  simplify-lib389-setup-py.patch
+  tw.patch
+- new BuildRequires:
+  - cracklib-devel
+  - rsync
+  - synced lib389 setup.py: python-ldap argparse-manpage
+- use %license
+- new subpackages libsvrcore*
+- provide/obsolete svrcore-devel
+</comment>
+    <requestid>642115</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a4e44cda4381b6bee572c7b38e5f4078</srcmd5>
+    <version>1.4.1.1~git0.af9bb7206</version>
+    <time>1551024684</time>
+    <user>coolo</user>
+    <comment>- use lib389 on 15.0 and up. now that we do not hardrequire the
+  python selinux bindings anymore (forwarded request 670652 from darix)</comment>
+    <requestid>670926</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>057fbe53b3dc090d4358ed6b183ff244</srcmd5>
+    <version>1.4.1.1~git0.af9bb7206</version>
+    <time>1552902235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685885</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>323cac4f2ec787bc9d6a924e481bc5af</srcmd5>
+    <version>1.4.1.2~git0.9a126614a</version>
+    <time>1554712589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691893</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e41d6a62e3a9bfc9b875012b564850c6</srcmd5>
+    <version>1.4.1.6~git0.5ac5a8aad</version>
+    <time>1565963437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723847</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>76adfb22791c9da6691901913e075698</srcmd5>
+    <version>1.4.1.6~git0.5ac5a8aad</version>
+    <time>1566894438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726261</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>a682aa1af0233b0a2a6ccaddb39ad79b</srcmd5>
+    <version>1.4.1.6~git0.5ac5a8aad</version>
+    <time>1568190794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729591</requestid>
+  </revision>
+</revisionlist>

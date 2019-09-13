@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>826c108c4c484bac2df5c9a934b9752c</srcmd5>
+    <version>0.1.1</version>
+    <time>1516222544</time>
+    <user>dimstar_suse</user>
+    <comment>Created new package reuse, introduced in &lt;https://lists.opensuse.org/opensuse-factory/2017-12/msg00273.html&gt;.</comment>
+    <requestid>558610</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6bf74452c6d5072599665a4ac1da686a</srcmd5>
+    <version>0.2.0</version>
+    <time>1524238143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.0:
+  + Added translations for Dutch, Esperanto and Spanish.
+  + Added new `-only` and `-or-later` SPDX tags for GPL.
+  + Based on argparse instead of click.
+- Remove xfail-test.patch.
+</comment>
+    <requestid>597558</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ef46b921fe53904fbd6ec1caf8b8da1d</srcmd5>
+    <version>0.3.0</version>
+    <time>1526489053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.0:
+  + Bill of materials output is now deterministic.  Entries are
+    sorted.
+</comment>
+    <requestid>609141</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e02997dc2dcc744d07c5ac561ec04203</srcmd5>
+    <version>0.3.1</version>
+    <time>1534322327</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.1:
+  + Finding of root directory fixed when using pygit2.
+</comment>
+    <requestid>629261</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e4419e9c82a569ee0edbad8cffaa7335</srcmd5>
+    <version>0.3.3</version>
+    <time>1535123530</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631179</requestid>
+  </revision>
+</revisionlist>

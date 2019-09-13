@@ -1,0 +1,227 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4adecd65cc1e41ba7ad86e1879486d8</srcmd5>
+    <version>0.5</version>
+    <time>1249009046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>60d4f9e41a0f03966e8dfd8a071dfb5e</srcmd5>
+    <version>0.5</version>
+    <time>1251294795</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-bugzilla based on submit request 18727 from user mvyskocil
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>60d4f9e41a0f03966e8dfd8a071dfb5e</srcmd5>
+    <version>0.5</version>
+    <time>1251294795</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-bugzilla based on submit request 18727 from user mvyskocil
+</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>1b8b19ea3c820f01b72394c7941a74a0</srcmd5>
+    <version>0.5</version>
+    <time>1268925830</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>1b8b19ea3c820f01b72394c7941a74a0</srcmd5>
+    <version>0.5</version>
+    <time>1278667383</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>1b8b19ea3c820f01b72394c7941a74a0</srcmd5>
+    <version>0.5</version>
+    <time>1278678613</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>960f063f510516edab059356ea75907d</srcmd5>
+    <version>0.5</version>
+    <time>1279917087</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-bugzilla based on submit request 43700 from user coolo
+</comment>
+    <requestid>43700</requestid>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>960f063f510516edab059356ea75907d</srcmd5>
+    <version>0.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>69ae38480a2b79695ab4a28c5121d645</srcmd5>
+    <version>0.6.1</version>
+    <time>1306162612</time>
+    <user>saschpe</user>
+    <comment>- update to 0.6.1
+  * many new parameters for bugzilla command-line tool like --target_milestone,
+  --private, --status, --assignee, et all
+  * add support for Bugzilla 36
+  * Unicode related fixes
+- SUSE specific fixes
+  * novell bugzilla support in getBugzillaClassForURL
+  * obfuscated password support in oscrc
+  * move novell bugzilla to 3.4
+  * xmlrpclib changes done in python 2.7 from master [bug#685842]
+- create suse branch for stashing SUSE specific changes
+  https://gitorious.org/opensuse/python-bugzilla/commits/suse</comment>
+    <requestid>71048</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c903e54ab1cd21da3ce118536601f7d2</srcmd5>
+    <version>0.6.1</version>
+    <time>1306162627</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71048
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a0fab45a6f6f322740f3393c5f585433</srcmd5>
+    <version>0.6.2</version>
+    <time>1311933223</time>
+    <user>saschpe</user>
+    <comment>- update to 0.6.2, rebased all patches
+  * backport --outputformat feature from git
+
+- add 0005-Add-Bugzilla34._query.patch fixing query command
+- add 0020-allow-various-bnc-instances-in-NovellBugzilla.patch</comment>
+    <requestid>77404</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>a0fab45a6f6f322740f3393c5f585433</srcmd5>
+    <version>0.6.2</version>
+    <time>1319182383</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>6a68c818b9c63ae77e5944d4b32f8e69</srcmd5>
+    <version>0.6.2</version>
+    <time>1323194089</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>06e59e48582d1a1e96e2be714b65964f</srcmd5>
+    <version>0.6.2</version>
+    <time>1328261154</time>
+    <user>coolo</user>
+    <comment>- remove basic auth credentials from backtraces
+- Novell Bugzilla is the default when using bugzilla command line tool
+
+- update to openSUSE-1 tag from openSUSE's git branch
+  * better handling of NovellBugzilla instances
+  * using HTTP basic auth instead of IChain</comment>
+    <requestid>102483</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>06e59e48582d1a1e96e2be714b65964f</srcmd5>
+    <version>0.6.2</version>
+    <time>1340184038</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>06e59e48582d1a1e96e2be714b65964f</srcmd5>
+    <version>0.6.2</version>
+    <time>1359110000</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>5fb7fab5772fdeee306ece817ff89faf</srcmd5>
+    <version>0.6.2</version>
+    <time>1362731979</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157718</requestid>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>7bb6593b36b02bfeeacbd5c9ac56c59a</srcmd5>
+    <version>0.6.2</version>
+    <time>1369641500</time>
+    <user>coolo</user>
+    <comment>- Apply python-bugzilla-0.6.2-section.patch
+- Cleanup spec file
+- Package README
+
+- Fix UL sections that is check also for URL without final slash
+  this may fix bnc#807901</comment>
+    <requestid>176332</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>63a5f61c85dff5af6458b7984448b334</srcmd5>
+    <version>0.8.0suse2</version>
+    <time>1370432115</time>
+    <user>coolo</user>
+    <comment>- update to 0.8.0
+  * support for Bugzilla 4 and above
+  * streamlined internals
+- update to suse2 from gitorious
+  * include all suse patches
+  * use osc's methods to parse .oscrc (forwarded request 177008 from matejcik)</comment>
+    <requestid>177009</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7604748f118ffb1c4793960c4daf6371</srcmd5>
+    <version>0.9.0suse3</version>
+    <time>1372509030</time>
+    <user>coolo</user>
+    <comment>fixed Requires</comment>
+    <requestid>181362</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>7604748f118ffb1c4793960c4daf6371</srcmd5>
+    <version>0.9.0suse3</version>
+    <time>1379664136</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>7604748f118ffb1c4793960c4daf6371</srcmd5>
+    <version>0.9.0suse3</version>
+    <time>1409302826</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>274bb10e7467c72a721fc39fe5fdc794</srcmd5>
+    <version>0.9.0suse3</version>
+    <time>1421232326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281026</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0c52ec1a7ba247e241bf172d6b810197</srcmd5>
+    <version>1.2.2</version>
+    <time>1468999235</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411661</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>68a3c2776733d1fd3f4e1acd19910fde</srcmd5>
+    <version>2.1.0</version>
+    <time>1525779545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605151</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5ac2e0da1235b29bdd26c141869a78a2</srcmd5>
+    <version>2.2.0</version>
+    <time>1535123519</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631173</requestid>
+  </revision>
+</revisionlist>

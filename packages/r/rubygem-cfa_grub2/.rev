@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a4ccc8ca54b27379b58aef87da4d3cc0</srcmd5>
+    <version>0.4.0</version>
+    <time>1461334688</time>
+    <user>dimstar_suse</user>
+    <comment>new package needed by yast2-bootloader for FATE#317701</comment>
+    <requestid>388284</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>04be8811a8a02dc7b46914769db1171d</srcmd5>
+    <version>0.4.1</version>
+    <time>1463124139</time>
+    <user>dimstar_suse</user>
+    <comment>- fix value for GRUB_ENCRYPTED_DISK attribute (bnc#976315)
+- 0.4.1</comment>
+    <requestid>394997</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>41002dd3ac03f64b9912f7ef3e86623d</srcmd5>
+    <version>0.5.1</version>
+    <time>1468699944</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not crash for submenu with double quotes (bnc#986005)
+- Filter out non-bootable menuentries ( a Snapper help label,
+  using double quotes )
+- 0.5.1
+
+- extend grub.cfg model to construct also full path usable for
+  grub2-set-default (bnc#986005)
+- 0.5.0</comment>
+    <requestid>408269</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1f3ccd1b44d6e2e93e4ff8e339748506</srcmd5>
+    <version>0.5.2</version>
+    <time>1476789991</time>
+    <user>dimstar_suse</user>
+    <comment>- fix dependency on cfa as it follows semantic versioning
+  (needed for bsc#877047)
+- 0.5.2</comment>
+    <requestid>435088</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>da119839851b82ba2f19afe8fc71f3a5</srcmd5>
+    <version>0.5.3</version>
+    <time>1481272547</time>
+    <user>dimstar_suse</user>
+    <comment>- Use correct configuration file for xen kernel parameters
+  (bsc#1012503)
+- 0.5.3</comment>
+    <requestid>444387</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1a585fac57c3ac25a471825d55cce839</srcmd5>
+    <version>0.6.0</version>
+    <time>1490786531</time>
+    <user>maxlin_factory</user>
+    <comment>- adapt to new cfa version (bsc#1023204)
+- 0.6.0</comment>
+    <requestid>481352</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9ad403e734a2c8e4e5634dfcdd7e427c</srcmd5>
+    <version>0.6.1</version>
+    <time>1492009695</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix switched xen hypervisor and xen kernel parameters
+  (bsc#1014136)
+- 0.6.1</comment>
+    <requestid>483393</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0e89c1d8d0bc9518ec0f88b579b4cca6</srcmd5>
+    <version>0.6.2</version>
+    <time>1493103368</time>
+    <user>dimstar_suse</user>
+    <comment>- fix parsing grub.cfg with multi-level of submenus (bsc#1009025)
+- 0.6.2</comment>
+    <requestid>489312</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4c9bc7b1555195ac693ef12c70cce83a</srcmd5>
+    <version>0.6.3</version>
+    <time>1501840639</time>
+    <user>maxlin_factory</user>
+    <comment>- do not share parsers to avoid use of wrong file content as cache
+  (bsc#1044409)
+- 0.6.3</comment>
+    <requestid>514038</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>590e7b097b6be4a6f276903ee2013b4e</srcmd5>
+    <version>0.6.5</version>
+    <time>1512145064</time>
+    <user>dimstar_suse</user>
+    <comment>-------------------------------------------------------------------------
+- fix reading GRUB_TERMINAL (caused by fix for bsc#1068578)
+- 0.6.5
+-------------------------------------------------------------
+- avoid crash if config file uses trailing comment (bsc#1068578)
+- 0.6.4</comment>
+    <requestid>546774</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8ffde1ea594d8908bd73300ea93e0387</srcmd5>
+    <version>1.0.1</version>
+    <time>1536094183</time>
+    <user>dimstar_suse</user>
+    <comment>- bnc#1053559
+  - fixed serial_console= to use new terminal= API
+- 1.0.1
+-------------------------------------------------------------------------
+- bnc#1053559
+  - backward incompatible change in API
+  - modified Grub2::Default#terminal and terminal= to handle multiple
+    values in GRUB_TERMINAL. Former one returns array (was string) of
+    strings since now. Later one expects array of strings as argument,
+    array items are joined into space separated value of the option.
+- 1.0.0
+-------------------------------------------------------------------------</comment>
+    <requestid>629735</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>28862a35d39f72ea23b6ecb5cf444a9a</srcmd5>
+    <version>2.0.0</version>
+    <time>1561493862</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Dropped the changes_only argument of Default,DeviceMap#save
+  following the same change in BaseModel#save in cfa-1.0.0
+  because the merging was not working anyway (bsc#1137948)
+- Drop support for Ruby 2.2 and 2.3; add 2.6.
+- 2.0.0</comment>
+    <requestid>711304</requestid>
+  </revision>
+</revisionlist>

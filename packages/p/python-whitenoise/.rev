@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fdd28942fd0d4e9d11f0c34d38ac3dbb</srcmd5>
+    <version>4.1.2</version>
+    <time>1560971676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710892</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f9b31bb2f3c81a31b8750f7c07252440</srcmd5>
+    <version>4.1.2</version>
+    <time>1562591576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714017</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f392bf839fd4ddf1a1bd1646884f2904</srcmd5>
+    <version>4.1.3</version>
+    <time>1563808760</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.3:
+  * Fix handling of zero-valued mtimes which can occur when running on some filesystems
+  * Fix potential path traversal attack while running in autorefresh mode on Windows</comment>
+    <requestid>717554</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,191 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc19dcc328913559b3f0b412d1e9ebda</srcmd5>
+    <version>2.8</version>
+    <time>1168904643</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="52">
+    <srcmd5>08755009f43f2cf8a3cce8b9eab87eca</srcmd5>
+    <version>2.8</version>
+    <time>1180901442</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>756eafb8463009d4ad06182330dcafb8</srcmd5>
+    <version>3.0</version>
+    <time>1216956038</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="29">
+    <srcmd5>83ac676cdce7347395e842a4890b62c2</srcmd5>
+    <version>3.0</version>
+    <time>1229696433</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="31">
+    <srcmd5>83ac676cdce7347395e842a4890b62c2</srcmd5>
+    <version>3.0</version>
+    <time>1229696433</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="32">
+    <srcmd5>a19a89808383832d99b90d3c5d65c240</srcmd5>
+    <version>3.0</version>
+    <time>1260198394</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/xvkbd based on submit request 25601 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4f475a98d576ee82a3aa94dc36215a1f</srcmd5>
+    <version>3.1</version>
+    <time>1267404692</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/xvkbd based on submit request 33624 from user prusnak
+</comment>
+    <requestid>33624</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1764439c13378691e56df06eb8355431</srcmd5>
+    <version>3.2</version>
+    <time>1268701229</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/xvkbd based on submit request 34863 from user coolo
+</comment>
+    <requestid>34863</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>35a40ccbe15a842cc3a4f285a3764da7</srcmd5>
+    <version>3.2</version>
+    <time>1268926705</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>2d36d2c5558f4c38bedabd6c8f2e31e3</srcmd5>
+    <version>3.2</version>
+    <time>1268988681</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/xvkbd based on submit request 35121 from user coolo
+</comment>
+    <requestid>35121</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>2d36d2c5558f4c38bedabd6c8f2e31e3</srcmd5>
+    <version>3.2</version>
+    <time>1278667397</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>2d36d2c5558f4c38bedabd6c8f2e31e3</srcmd5>
+    <version>3.2</version>
+    <time>1278678631</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>2d36d2c5558f4c38bedabd6c8f2e31e3</srcmd5>
+    <version>3.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>2d36d2c5558f4c38bedabd6c8f2e31e3</srcmd5>
+    <version>3.2</version>
+    <time>1319182619</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>bb6820a541759726b226bfa56cfb8c0b</srcmd5>
+    <version>3.2</version>
+    <time>1323195504</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>3fadb27fc277fb407c23d70d65b71c11</srcmd5>
+    <version>3.2</version>
+    <time>1330062890</time>
+    <user>coolo</user>
+    <comment>- fix build on factory (forwarded request 106633 from coolo)</comment>
+    <requestid>106672</requestid>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>3fadb27fc277fb407c23d70d65b71c11</srcmd5>
+    <version>3.2</version>
+    <time>1340184389</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>549c6bdb7cb9d11efc496f03a783831b</srcmd5>
+    <version>3.3</version>
+    <time>1348564156</time>
+    <user>coolo</user>
+    <comment>update to version 3.3 (forwarded request 135487 from ketheriel)</comment>
+    <requestid>135491</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>549c6bdb7cb9d11efc496f03a783831b</srcmd5>
+    <version>3.3</version>
+    <time>1359110704</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>673eccc1f26da25c4b48ea5d2342d977</srcmd5>
+    <version>3.4a</version>
+    <time>1370432328</time>
+    <user>coolo</user>
+    <comment>Update to version 3.4a, Dropped support for openSUSE &lt; 10.2, Updated build requirements, Use desktop-file-utils instead of update-desktop-files for openSUSE &gt; 12.1, Updated xvkbd.desktop file (forwarded request 176610 from WernerFink)</comment>
+    <requestid>176790</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>06944dfa4aa7d3d678013c0418049f02</srcmd5>
+    <version>3.5</version>
+    <time>1375113098</time>
+    <user>coolo</user>
+    <comment>Update to version 3.5 (forwarded request 184501 from adra)</comment>
+    <requestid>184526</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>06944dfa4aa7d3d678013c0418049f02</srcmd5>
+    <version>3.5</version>
+    <time>1379665128</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>06944dfa4aa7d3d678013c0418049f02</srcmd5>
+    <version>3.5</version>
+    <time>1409303815</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>74bd7631c4edd9a165af0f0a8e95f636</srcmd5>
+    <version>3.7</version>
+    <time>1443357158</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>333980</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b2b73e3b4895936d33915c4a54f4d905</srcmd5>
+    <version>3.8</version>
+    <time>1503592604</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509551</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3dce4e2a9fcf2d9e94f653ebb62c0efb</srcmd5>
+    <version>3.9</version>
+    <time>1543953343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653610</requestid>
+  </revision>
+</revisionlist>

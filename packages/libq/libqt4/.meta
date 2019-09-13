@@ -1,0 +1,8 @@
+<package name="libqt4" project="openSUSE:Factory">
+  <title>C++ Program Library, Core Components</title>
+  <description>Qt is a set of libraries for developing applications.
+
+This package contains base tools, like string, xml, and network
+handling.</description>
+  <devel project="KDE:Qt" package="libqt4"/>
+</package>

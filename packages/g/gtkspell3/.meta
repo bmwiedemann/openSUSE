@@ -1,0 +1,7 @@
+<package name="gtkspell3" project="openSUSE:Factory">
+  <title>GTK3 Spell Checker Interface Library</title>
+  <description>GtkSpell provides MSWord-style and MacOSX-style highlighting of
+misspelled words in a GtkTextView widget. Right-clicking a misspelled
+word opens a menu of suggested replacements.</description>
+  <devel project="GNOME:Factory" package="gtkspell3"/>
+</package>

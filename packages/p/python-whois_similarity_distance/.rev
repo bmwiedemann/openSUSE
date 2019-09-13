@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ad1ea6ee08cc6fa1e94a0029e075627</srcmd5>
+    <version>1.0.2</version>
+    <time>1524576729</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.2:
+ - Fix a problem with Pickle opening a .ps file on Python 3+
+- update to version 1.0.1:
+ - fix problem to package the library with the pickle file.
+- update to verison 1.0.0:
+ - Add GradientBoosting trained classifier to related domains using their WHOIS information using the features distances proposed in this algorithm smiley
+- initial package for version 0.2.1
+</comment>
+    <requestid>596752</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8f96ca8780f8c0deb5eca9e0e55dce89</srcmd5>
+    <version>1.0.2</version>
+    <time>1525426208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update summary.
+</comment>
+    <requestid>603214</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>78f6ef8c616077e44cf31916a2777293</srcmd5>
+    <version>1.0.2</version>
+    <time>1545648371</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659757</requestid>
+  </revision>
+</revisionlist>

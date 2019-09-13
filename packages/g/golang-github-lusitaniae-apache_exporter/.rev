@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7d36de7fa182d358ffc5a2d5141ac705</srcmd5>
+    <version>0.5.0</version>
+    <time>1563790761</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %license macro for LICENSE file 
+- Fix license information in spec file (MIT)
+- Initial commit (v0.5.0)
+</comment>
+    <requestid>708772</requestid>
+  </revision>
+</revisionlist>

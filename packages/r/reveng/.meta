@@ -1,0 +1,16 @@
+<package name="reveng" project="openSUSE:Factory">
+  <title>An arbitrary-precision CRC calculator and algorithm finder</title>
+  <description>CRC RevEng is a portable, arbitrary-precision CRC calculator and
+algorithm finder. It calculates CRCs using any of the 72 preset
+algorithms, or a user-specified algorithm to any width. It calculates
+reversed CRCs to give the bit pattern that produces a desired forward
+CRC. CRC RevEng also reverse-engineers any CRC algorithm from
+sufficient correctly formatted message-CRC pairs and optional known
+parameters. It comprises powerful input interpretation options.
+Compliant with Ross Williams' Rocksoft(tm) model of parametrised CRC
+algorithms.
+
+</description>
+  <devel project="devel:tools" package="reveng"/>
+  <url>http://reveng.sourceforge.net/</url>
+</package>

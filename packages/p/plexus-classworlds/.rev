@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>74434f849f0558de0b1f57070b5f792b</srcmd5>
+    <version>2.5.2</version>
+    <time>1551455200</time>
+    <user>dimstar_suse</user>
+    <comment>Rename from classworlds and update to 2.5.2</comment>
+    <requestid>678587</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>717b9e4d6ab87f684dfe261b11c100e6</srcmd5>
+    <version>2.5.2</version>
+    <time>1554977980</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove reference to the parent pom since we are not building
+  using Maven.
+</comment>
+    <requestid>693099</requestid>
+  </revision>
+</revisionlist>

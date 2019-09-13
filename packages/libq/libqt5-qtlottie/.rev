@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b3bebe156b409f925324e8b9cdaaf599</srcmd5>
+    <version>5.13.0</version>
+    <time>1563914060</time>
+    <user>dimstar_suse</user>
+    <comment>New Qt module</comment>
+    <requestid>714832</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3cc87f442f27938dfed07dd6c60bf344</srcmd5>
+    <version>5.13.1</version>
+    <time>1568097164</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.1</comment>
+    <requestid>729209</requestid>
+  </revision>
+</revisionlist>

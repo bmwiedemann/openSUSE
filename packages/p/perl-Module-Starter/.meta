@@ -1,0 +1,11 @@
+<package name="perl-Module-Starter" project="openSUSE:Factory">
+  <title>a simple starter kit for any module</title>
+  <description>This is the core module for Module::Starter. If you're not looking to
+extend or alter the behavior of this module, you probably want to look at
+the module-starter manpage instead.
+
+Module::Starter is used to create a skeletal CPAN distribution, including
+basic builder scripts, tests, documentation, and module code. This is done
+through just one method, 'create_distro'.</description>
+  <devel project="devel:languages:perl" package="perl-Module-Starter"/>
+</package>

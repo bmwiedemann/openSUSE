@@ -1,0 +1,5 @@
+<package name="python-python-lzo" project="openSUSE:Factory">
+  <title></title>
+  <description>Python bindings for the LZO data compression library</description>
+  <devel project="devel:languages:python" package="python-python-lzo"/>
+</package>

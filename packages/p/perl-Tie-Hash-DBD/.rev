@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bce080bf1385f5931744c53f0d220a3c</srcmd5>
+    <version>0.07</version>
+    <time>1314951436</time>
+    <user>saschpe</user>
+    <comment>should be here</comment>
+    <requestid>80556</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>86e4e78bf79aae615e663dfed3803430</srcmd5>
+    <version>0.07</version>
+    <time>1314951448</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80556
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>86e4e78bf79aae615e663dfed3803430</srcmd5>
+    <version>0.07</version>
+    <time>1319182317</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5454fe73fd7550e9e848d79ce96268cf</srcmd5>
+    <version>0.10</version>
+    <time>1321876160</time>
+    <user>coolo</user>
+    <comment>- update to 0.10
+    - NAME / DISTNAME in Makefile.PL
+  
+    - Up copyright to 2011
+    - More cross-checks for META data
+  
+    - Use Storable's nfreeze () instead of freeze ()
+    - Add transaction support in Tie::Hash::DBD</comment>
+    <requestid>92393</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>95b7d55f4964312404d9c6359b948965</srcmd5>
+    <version>0.10</version>
+    <time>1323193745</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>95b7d55f4964312404d9c6359b948965</srcmd5>
+    <version>0.10</version>
+    <time>1340183943</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>95b7d55f4964312404d9c6359b948965</srcmd5>
+    <version>0.10</version>
+    <time>1359109831</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>95b7d55f4964312404d9c6359b948965</srcmd5>
+    <version>0.10</version>
+    <time>1379663899</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>95b7d55f4964312404d9c6359b948965</srcmd5>
+    <version>0.10</version>
+    <time>1409302545</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>52f13616da97e1b362f7ec7d1cff5adf</srcmd5>
+    <version>0.16</version>
+    <time>1507571167</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.16
+   see /usr/share/doc/packages/perl-Tie-Hash-DBD/Changes</comment>
+    <requestid>532536</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>71f4daa0406d58c21926e338af8edb4a</srcmd5>
+    <version>0.18</version>
+    <time>1532774591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625593</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5085329ab068c32d52eaad418651a45f</srcmd5>
+    <version>0.19</version>
+    <time>1567091927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726795</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>64b08bb442741f9c64697b1e17d6f8c0</srcmd5>
+    <version>0.20</version>
+    <time>1567582436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728019</requestid>
+  </revision>
+</revisionlist>

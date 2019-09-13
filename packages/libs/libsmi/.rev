@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4d50c5f74c07b95a10008484831e37a7</srcmd5>
+    <version>0.4.5</version>
+    <time>1168903396</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="125">
+    <srcmd5>4d50c5f74c07b95a10008484831e37a7</srcmd5>
+    <version>0.4.5</version>
+    <time>1168903396</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="126">
+    <srcmd5>90876cd0b59b5f96fe92f9a853853e57</srcmd5>
+    <version>0.4.5</version>
+    <time>1231722258</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="128">
+    <srcmd5>90876cd0b59b5f96fe92f9a853853e57</srcmd5>
+    <version>0.4.5</version>
+    <time>1231722258</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="129">
+    <srcmd5>b4eae08d5fa26cad7e6032b588a3e92d</srcmd5>
+    <version>0.4.5</version>
+    <time>1268924731</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="131">
+    <srcmd5>b4eae08d5fa26cad7e6032b588a3e92d</srcmd5>
+    <version>0.4.5</version>
+    <time>1278667363</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="132">
+    <srcmd5>b4eae08d5fa26cad7e6032b588a3e92d</srcmd5>
+    <version>0.4.5</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c01e784ba7471e1cd7be36b749cdead4</srcmd5>
+    <version>0.4.8</version>
+    <time>1286399697</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/libsmi based on submit request 49869 from user coolo
+</comment>
+    <requestid>49869</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6152991eaf5da7e74ff97362c12d495f</srcmd5>
+    <version>0.4.8</version>
+    <time>1289833045</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52949 from user mrdocs
+</comment>
+    <requestid>52949</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>00f684dfa5b252b4b2004d5cca3b7607</srcmd5>
+    <version>0.4.8</version>
+    <time>1289833052</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52949
+</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>00f684dfa5b252b4b2004d5cca3b7607</srcmd5>
+    <version>0.4.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>00f684dfa5b252b4b2004d5cca3b7607</srcmd5>
+    <version>0.4.8</version>
+    <time>1319182137</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>944f4a043d21594822d892b46dc58a13</srcmd5>
+    <version>0.4.8</version>
+    <time>1322134562</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93207 from coolo)</comment>
+    <requestid>93302</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>2e17397d2796abb2df1f4bc686a7a833</srcmd5>
+    <version>0.4.8</version>
+    <time>1323192348</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>2e17397d2796abb2df1f4bc686a7a833</srcmd5>
+    <version>0.4.8</version>
+    <time>1340183638</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>01899ad8b471eed4545721650d5b2bcb</srcmd5>
+    <version>0.4.8</version>
+    <time>1352822875</time>
+    <user>coolo</user>
+    <comment>- Add libsmi-flex.patch: yyleng should be type of size_t</comment>
+    <requestid>141110</requestid>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>01899ad8b471eed4545721650d5b2bcb</srcmd5>
+    <version>0.4.8</version>
+    <time>1359109355</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>17e31caff818366d9d324e489f873d9b</srcmd5>
+    <version>0.4.8</version>
+    <time>1366087561</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 170855 from m_meister)</comment>
+    <requestid>170872</requestid>
+  </revision>
+  <revision rev="19" vrev="18">
+    <srcmd5>17e31caff818366d9d324e489f873d9b</srcmd5>
+    <version>0.4.8</version>
+    <time>1379663092</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>17e31caff818366d9d324e489f873d9b</srcmd5>
+    <version>0.4.8</version>
+    <time>1409301719</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>05b67a597196b7a5d3372472790ee2e7</srcmd5>
+    <version>0.4.8</version>
+    <time>1421873590</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>282170</requestid>
+  </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>1c06a4137bc32d9f4247ab9ca34926cf</srcmd5>
+    <version>0.4.8</version>
+    <time>1422216887</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282594</requestid>
+  </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>d197edc023d716f3f96e14837b6f2838</srcmd5>
+    <version>0.4.8</version>
+    <time>1423216423</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284060</requestid>
+  </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>2512f77a48a56a44136af14225f7a5f7</srcmd5>
+    <version>0.4.8</version>
+    <time>1425377527</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288127</requestid>
+  </revision>
+</revisionlist>

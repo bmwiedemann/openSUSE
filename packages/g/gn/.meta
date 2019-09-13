@@ -1,0 +1,5 @@
+<package name="gn" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:chromium" package="gn"/>
+</package>

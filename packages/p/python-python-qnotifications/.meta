@@ -1,0 +1,5 @@
+<package name="python-python-qnotifications" project="openSUSE:Factory">
+  <title></title>
+  <description>In-app notifications for PyQt</description>
+  <devel project="devel:languages:python" package="python-python-qnotifications"/>
+</package>

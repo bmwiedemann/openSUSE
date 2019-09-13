@@ -1,0 +1,8 @@
+<package name="rubygem-gyoku" project="openSUSE:Factory">
+  <title>gyoku</title>
+  <description>
+Gyoku converts Ruby Hashes to XML
+  </description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-gyoku"/>
+  <url>http://github.com/rubiii/gyoku</url>
+</package>

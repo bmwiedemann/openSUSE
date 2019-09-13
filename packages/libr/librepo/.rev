@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12d9c2f34aeccac8e84528a829287b2f</srcmd5>
+    <version>1.7.20</version>
+    <time>1503925826</time>
+    <user>dimstar_suse</user>
+    <comment>Initial import of librepo into Factory</comment>
+    <requestid>517040</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4d4954219da1bf6f2d73a4da8b42e0f7</srcmd5>
+    <version>1.8.1</version>
+    <time>1515110522</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.8.1
+  + Fix memory leaks in Python bindings (gh#rpm-software-management/librepo#83)
+  + Fix HTTP header checking to work with proxies (gh#rpm-software-management/librepo#86)
+  + Change connection and low-speed default timeouts to sync with DNF/Yum
+  + Fix max download speed from repo (rh#1227921)
+</comment>
+    <requestid>561499</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>28fed762757dd7f0a070d34be8083813</srcmd5>
+    <version>1.8.1</version>
+    <time>1536876162</time>
+    <user>maxlin_factory</user>
+    <comment>- Backport fix from upstream to use glibc's xattr instead of libattr
+  * Add patch: 0001-stop-requiring-attr-xattr.patch
+- Use full author identities in changelog entries</comment>
+    <requestid>635526</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4fb90681b440dcf7477271b40854ac25</srcmd5>
+    <version>1.8.1</version>
+    <time>1537360257</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636415</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4efea7a648a2d7fc8ef3b0e4538d1b42</srcmd5>
+    <version>1.9.3</version>
+    <time>1550668208</time>
+    <user>maxlin_factory</user>
+    <comment>- Upgrade to 1.9.3
+  + Replace expat with libxml2
+  + Support using python-gpg instead of pygpgme
+  + Fix major performance regression with libcurl-7.61.1
+  + Add zchunk support
+- Drop patch for backported fix that is part of this release
+  * Patch: 0001-stop-requiring-attr-xattr.patch
+- Add patch proposed upstream to fix progress reporting for zck
+  * Patch: PR138-Fix-progress-reporting-with-zchunk-files.patch
+- Fix RPM group and description for Python 3 subpackage
+- Drop Python 2 subpackage</comment>
+    <requestid>672449</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>481287ccb2367bb46634a871cdb6a8e3</srcmd5>
+    <version>1.9.6</version>
+    <time>1554115201</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix fetching zck-compressed repos (rh#1694411)
+  * Patch: librepo-PR148-clean-up-curl-target_handle.patch
+- Upgrade to 1.9.6
+  + Fix progress reporting with zchunk files
+  + Reduce download delays by using still_running correctly
+  + Improve error handling, cleanup
+  + Simplified lr_perform()'s loop to prevent busy wait
+  + Require libcurl &gt;= 7.28.0
+- Drop patch included in this release
+  * Patch: PR138-Fix-progress-reporting-with-zchunk-files.patch
+</comment>
+    <requestid>690200</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba8d8ba480117de17f47673f9d19f33b</srcmd5>
+    <version>1.10.2</version>
+    <time>1557654375</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.10.2
+  + Fix librepo isn't able to load zchunk files from next server on failure (rh#1706321)
+- Upgrade to 1.10.1
+  + Clean up target-&gt;curl_handle rather than target-&gt;handle (rh#1694411)
+  + Add an option to preserve timestamps of the downloaded files (rh#1688537)
+  + Fix fetching repositories supplied by SUSE Customer Center
+  + [tests] Wait for server to start instead of doing arbitrary sleep
+- Drop patch included in this release
+  * Patch: librepo-PR148-clean-up-curl-target_handle.patch
+- Disable executing test suite on ARM and RISC-V due to performance issues with builders
+</comment>
+    <requestid>702408</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>36d2cd2c4e3ae9800022a064769cbb14</srcmd5>
+    <version>1.10.3</version>
+    <time>1558690401</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.10.3
+  + Exit gpg-agent after repokey import (rh#1650266)
+  + Make sure to check next transfer if current zck transfer already exists (rh#1706627)
+</comment>
+    <requestid>705108</requestid>
+  </revision>
+</revisionlist>

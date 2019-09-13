@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e6f18fa0b295a2f99426c50a415db4b</srcmd5>
+    <version>3.1</version>
+    <time>1365159844</time>
+    <user>coolo</user>
+    <comment>fix a filelist/build, called osc service localrun format_spec_file</comment>
+    <requestid>162592</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5e6f18fa0b295a2f99426c50a415db4b</srcmd5>
+    <version>3.1</version>
+    <time>1379661969</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e90395d078a9273a26b1fd5f4e041cbd</srcmd5>
+    <version>3.1</version>
+    <time>1382719928</time>
+    <user>scarabeus_factory</user>
+    <comment>- really apply CVE-2012-5783 patch
+- build with java 6 and higher</comment>
+    <requestid>204783</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>8723bbd65138b2ce64b3f58d8828e076</srcmd5>
+    <version>3.1</version>
+    <time>1397540225</time>
+    <user>coolo</user>
+    <comment>disable bytecode test on SLES 
+ (forwarded request 230041 from deadpoint)</comment>
+    <requestid>230042</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>1c951960db600eb279c641a637d08b47</srcmd5>
+    <version>3.1</version>
+    <time>1405264525</time>
+    <user>coolo</user>
+    <comment>- Redo the bytcode disabling properly.
+- Cleanup with spec-cleaner</comment>
+    <requestid>239865</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>1c951960db600eb279c641a637d08b47</srcmd5>
+    <version>3.1</version>
+    <time>1409300493</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>b5e65f5b602b4e165ae67f022c891d33</srcmd5>
+    <version>3.1</version>
+    <time>1505333940</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>521986</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>f0b1cc9d7278ea46eb679a1aef03885a</srcmd5>
+    <version>3.1</version>
+    <time>1532446227</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620750</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>5ba7891312ddb3b27f517f3c988b9d31</srcmd5>
+    <version>3.1</version>
+    <time>1549311787</time>
+    <user>coolo</user>
+    <comment>Add maven pom file</comment>
+    <requestid>667627</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>a62673b49aa9913d9b499579635587b6</srcmd5>
+    <version>3.1</version>
+    <time>1554379886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690494</requestid>
+  </revision>
+</revisionlist>

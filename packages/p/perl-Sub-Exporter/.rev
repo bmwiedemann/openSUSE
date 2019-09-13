@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db6b11886fb874bce8632dfc587fa2e4</srcmd5>
+    <version>0.982</version>
+    <time>1271373845</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Sub-Exporter based on submit request 37710 from user computersalat
+</comment>
+    <requestid>37710</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>db6b11886fb874bce8632dfc587fa2e4</srcmd5>
+    <version>0.982</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>db6b11886fb874bce8632dfc587fa2e4</srcmd5>
+    <version>0.982</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1459b93f699c5d273bc74d54bc548879</srcmd5>
+    <version>0.982</version>
+    <time>1291583882</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54644 from user coolo
+</comment>
+    <requestid>54644</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>66d4e5070fc9d04ee2caf459864b6b4b</srcmd5>
+    <version>0.982</version>
+    <time>1291583889</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54644
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>66d4e5070fc9d04ee2caf459864b6b4b</srcmd5>
+    <version>0.982</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>66d4e5070fc9d04ee2caf459864b6b4b</srcmd5>
+    <version>0.982</version>
+    <time>1319182307</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>f214dcb334fcd4bc5fb1abe00582c635</srcmd5>
+    <version>0.982</version>
+    <time>1321875968</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92126</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>62c5f890bc7fd595933703f86d740390</srcmd5>
+    <version>0.982</version>
+    <time>1324387826</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 96607 from coolo)</comment>
+    <requestid>96621</requestid>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>62c5f890bc7fd595933703f86d740390</srcmd5>
+    <version>0.982</version>
+    <time>1340183920</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>62c5f890bc7fd595933703f86d740390</srcmd5>
+    <version>0.982</version>
+    <time>1359109799</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dd1f4daf64ed6782b19ec8487a5b29b2</srcmd5>
+    <version>0.985</version>
+    <time>1370518136</time>
+    <user>coolo</user>
+    <comment>- updated to 0.985
+    documentation fixes (forwarded request 177588 from coolo)</comment>
+    <requestid>177601</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fe005a85045a555a95610d238fc89f7a</srcmd5>
+    <version>0.986</version>
+    <time>1377248835</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195939</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>fe005a85045a555a95610d238fc89f7a</srcmd5>
+    <version>0.986</version>
+    <time>1379663845</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d69e52f3bf89a073a560cbb6a7cb76c7</srcmd5>
+    <version>0.987</version>
+    <time>1387737438</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 0.987
+  update bugtracker metadata</comment>
+    <requestid>211372</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>d69e52f3bf89a073a560cbb6a7cb76c7</srcmd5>
+    <version>0.987</version>
+    <time>1409302487</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

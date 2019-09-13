@@ -1,0 +1,540 @@
+<revisionlist>
+  <revision rev="1" vrev="28">
+    <srcmd5>e14673b2c986db0f33e84a94873235aa</srcmd5>
+    <version>0.8.5</version>
+    <time>1168903222</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5f378cda42ad1e36e1706566c8949034</srcmd5>
+    <version>0.8.6</version>
+    <time>1173610824</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="21">
+    <srcmd5>390f1eff77071e8ceabc3c770ae97c44</srcmd5>
+    <version>0.8.6</version>
+    <time>1179955238</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="34">
+    <srcmd5>e6adba95800b15507a689d5d9d1bfce2</srcmd5>
+    <version>0.8.6</version>
+    <time>1182417217</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0eceefed59de1c59e1a56920bcc66e19</srcmd5>
+    <version>0.8.7</version>
+    <time>1185149785</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="44">
+    <srcmd5>d8cb3fe23c27e7cf86b08cf624b7a4a2</srcmd5>
+    <version>0.8.7</version>
+    <time>1193270696</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e71dcd594fd5fc129a854bda20e86333</srcmd5>
+    <version>0.8.8</version>
+    <time>1198165170</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>88aacde12f9afc4c7c9d671ce67efdf9</srcmd5>
+    <version>0.8.9</version>
+    <time>1207265596</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="62">
+    <srcmd5>88aacde12f9afc4c7c9d671ce67efdf9</srcmd5>
+    <version>0.8.9</version>
+    <time>1207265596</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="63">
+    <srcmd5>cf4cc0afe58ca56c82348725c53204de</srcmd5>
+    <version>0.8.9</version>
+    <time>1235168931</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3d0ad281a99fe630ce857da2d1ff7a65</srcmd5>
+    <version>1.0.0</version>
+    <time>1251319331</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/kmymoney based on submit request 18910 from user Beineri
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f85da37c5e8c2701012a2c4d0bcafce6</srcmd5>
+    <version>1.0.0</version>
+    <time>1251496703</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/kmymoney based on submit request 18918 from user Beineri
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4b7c2f48e8d38b3358b6d9f37bc67ba6</srcmd5>
+    <version>1.0.1</version>
+    <time>1253832055</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/kmymoney based on submit request 21007 from user Beineri
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6982f453c0d6d3c1502615809c2a8998</srcmd5>
+    <version>1.0.2</version>
+    <time>1254798748</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/kmymoney based on submit request 21644 from user Beineri
+</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>6982f453c0d6d3c1502615809c2a8998</srcmd5>
+    <version>1.0.2</version>
+    <time>1254798748</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/kmymoney based on submit request 21644 from user Beineri
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>233ab191059c56f839fdf08a3c2d2472</srcmd5>
+    <version>1.0.3</version>
+    <time>1267061484</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/kmymoney based on submit request 33412 from user dirkmueller
+</comment>
+    <requestid>33412</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>4884c49113da0cc67039142082b94457</srcmd5>
+    <version>1.0.3</version>
+    <time>1268924298</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f58c9b5343ce3fe5f596812094687535</srcmd5>
+    <version>1.0.4</version>
+    <time>1271371084</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/kmymoney based on submit request 37674 from user Beineri
+</comment>
+    <requestid>37674</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>f58c9b5343ce3fe5f596812094687535</srcmd5>
+    <version>1.0.4</version>
+    <time>1278667355</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>f58c9b5343ce3fe5f596812094687535</srcmd5>
+    <version>1.0.4</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ca0ba6a049ae1ec91d4b4cb7f6f25023</srcmd5>
+    <version>1.0.5</version>
+    <time>1279567354</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/kmymoney based on submit request 43150 from user Beineri
+</comment>
+    <requestid>43150</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8fcb31324442533dac632d9cedb87035</srcmd5>
+    <version>4.5.2</version>
+    <time>1293662982</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56853 from user rwooninck
+</comment>
+    <requestid>56853</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>988aaae977c934d508a79af130299f52</srcmd5>
+    <version>4.5.2</version>
+    <time>1293662987</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56853
+</comment>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>489a50fc6b8b7db53e3b7206182d68a2</srcmd5>
+    <version>4.5.2</version>
+    <time>1296694566</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59740 from user coolo
+</comment>
+    <requestid>59740</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>bcac4094d379da23fd41f54154efaa8b</srcmd5>
+    <version>4.5.2</version>
+    <time>1296694577</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59740
+</comment>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>bcac4094d379da23fd41f54154efaa8b</srcmd5>
+    <version>4.5.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a5f502bf6ab29a2de6d87d28f0fbf512</srcmd5>
+    <version>4.5.3</version>
+    <time>1303385921</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 66981 from user dirkmueller
+</comment>
+    <requestid>66981</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>204d244b476743741c55b3d559a12aa3</srcmd5>
+    <version>4.6.0</version>
+    <time>1314885763</time>
+    <user>saschpe</user>
+    <comment>Forward to Factory.</comment>
+    <requestid>80374</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>d138bfdd575690696d33721fd393de7f</srcmd5>
+    <version>4.6.0</version>
+    <time>1318940329</time>
+    <user>saschpe</user>
+    <comment>- change lang and doc subpackages to recommends
+
+- Allow import of gnucash files (bnc#723728)
+
+- Split translation package (fix for RPMLINT warning)
+- Split documentation package (fix for RPMLINT warning)
+- Changed descriptions
+- Added pth gpgme backend support
+- Enabled building of HTML handbook
+- Cleaned up spec file formatting</comment>
+    <requestid>88377</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>d138bfdd575690696d33721fd393de7f</srcmd5>
+    <version>4.6.0</version>
+    <time>1319182051</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b92a1158823ccd5feafb36ef543fe348</srcmd5>
+    <version>4.6.1</version>
+    <time>1320936564</time>
+    <user>coolo</user>
+    <comment>Update to 4.6.1, Spec file updates, Removed bnc723728_fix_gnucash_import.diff patch (fixed upstream) (forwarded request 90877 from adra)</comment>
+    <requestid>90881</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>d43453cf56b7a0deaed05c241ef4f6e6</srcmd5>
+    <version>4.6.1</version>
+    <time>1322757477</time>
+    <user>coolo</user>
+    <comment>- Fix build with Qt 4.8</comment>
+    <requestid>94514</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>8f0283c9763855ac5daa4be8a8c84638</srcmd5>
+    <version>4.6.1</version>
+    <time>1323192112</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>5fe028107e71efcfb993d2f2677a7539</srcmd5>
+    <version>4.6.2</version>
+    <time>1329221196</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103858</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>5fe028107e71efcfb993d2f2677a7539</srcmd5>
+    <version>4.6.2</version>
+    <time>1340183532</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>62fb2aeae31869b217728b5d9c6924a6</srcmd5>
+    <version>4.6.3</version>
+    <time>1357651898</time>
+    <user>coolo</user>
+    <comment>update to 4.6.3 (with updated .changes file)</comment>
+    <requestid>147456</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>62fb2aeae31869b217728b5d9c6924a6</srcmd5>
+    <version>4.6.3</version>
+    <time>1359109196</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>6d33ede95c3a662b9ed502a9cd655fac</srcmd5>
+    <version>4.6.3</version>
+    <time>1363858733</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159718</requestid>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>db449d73a17729a3e88e116e2f2006fd</srcmd5>
+    <version>4.6.3</version>
+    <time>1379318595</time>
+    <user>coolo</user>
+    <comment>Added 0001-Fixed-linking-with-Gwenhywfar-4.6.0.patch, fixes build with newer Gwenhywfar versions</comment>
+    <requestid>199155</requestid>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>db449d73a17729a3e88e116e2f2006fd</srcmd5>
+    <version>4.6.3</version>
+    <time>1379662820</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6e166491e673db4fef08e08788d875f3</srcmd5>
+    <version>4.6.4</version>
+    <time>1381062385</time>
+    <user>scarabeus_factory</user>
+    <comment>(bugfix) update to 4.6.4, this time fix kde bugfix references (forwarded request 202397 from NicoK)</comment>
+    <requestid>202398</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>7fd4857646c148edc05d5e0cfb45d762</srcmd5>
+    <version>4.6.6</version>
+    <time>1403642771</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238458</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>7fd4857646c148edc05d5e0cfb45d762</srcmd5>
+    <version>4.6.6</version>
+    <time>1409301404</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c69e1a06ab1a8ca6d2572287b3d27299</srcmd5>
+    <version>4.7.0</version>
+    <time>1413616154</time>
+    <user>coolo</user>
+    <comment>update to 4.7.0</comment>
+    <requestid>257329</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>eb22eb939c8c318adfde423adf904c2f</srcmd5>
+    <version>4.7.1</version>
+    <time>1415866671</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261191</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b4478209aaa21f5b3d893e75895a32d5</srcmd5>
+    <version>4.7.2</version>
+    <time>1430387491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304780</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>1bac20cd8c08f29287dd600915125124</srcmd5>
+    <version>4.8.0</version>
+    <time>1468869800</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407982</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>2072d0421d8303ef3d6d42dacf7b5dcb</srcmd5>
+    <version>4.8.0</version>
+    <time>1474370814</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428387</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>8bb4712116e1aa2c5db671ed43a9bdfb</srcmd5>
+    <version>4.8.0</version>
+    <time>1480584485</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442651</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>7c6c6b00ff98d7d86db2ec80dcfc3668</srcmd5>
+    <version>4.8.0</version>
+    <time>1486390885</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454498</requestid>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>f400a086b23eaab2f732bbbc38f993e7</srcmd5>
+    <version>4.8.0</version>
+    <time>1496681414</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500918</requestid>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>7cb2a809f15111c275c0916722664e40</srcmd5>
+    <version>4.8.0</version>
+    <time>1497274398</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502513</requestid>
+  </revision>
+  <revision rev="53" vrev="7">
+    <srcmd5>fdf0584f72be27dd3fc10428daacbadb</srcmd5>
+    <version>4.8.0</version>
+    <time>1499152295</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507830</requestid>
+  </revision>
+  <revision rev="54" vrev="8">
+    <srcmd5>2d37f0343beac7cd16c7dbc36b6c24cb</srcmd5>
+    <version>4.8.0</version>
+    <time>1503926255</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518870</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c970b5e97a98d1696407fbc93f7a855a</srcmd5>
+    <version>4.8.1.1</version>
+    <time>1516359071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560617</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>95d2b216a39381845d4a081025b7e486</srcmd5>
+    <version>4.8.1.1</version>
+    <time>1517323481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570864</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>525453de1f2e45c1e933283fa7d612e1</srcmd5>
+    <version>5.0.0</version>
+    <time>1519041681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.0
+  * Ported to KDE Frameworks 5
+  * Multiple improvements to reports, including better performance.
+  * Allow logarithmic axes in report graphs.
+  * When deleting a security, automatically delete its prices.
+  * Allow separate beginning balance accounts for different currencies.
+  * Added support for several new currencies
+  * Major bugs fixed:
+    + Elimination of several crashes.
+    + Fix problems with report graphs using older data.
+    + Fix rounding errors in some investment transactions.
+    + Removed Yahoo from stock and currency price sources, as they no
+      longer provide this service.
+- Drop patches (upstreamed or no longer applicable):
+  - aqbanking-5.1-backward-compatibility.patch
+  - fix-build-with-libalkimia-7.0.patch
+  - fix-sepa-plugin.patch
+- Move docs to main subpackage (English) and put translated docs
+  in -lang
+</comment>
+    <requestid>577511</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>d50f6aa58284d4a843131f18343fff3d</srcmd5>
+    <version>5.0.1</version>
+    <time>1521716661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589187</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>b4f648a2718e4fd5ef91030e6614f6a7</srcmd5>
+    <version>5.0.1</version>
+    <time>1527583695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612492</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>ece1f038cb1f27326bea9f7602071ecd</srcmd5>
+    <version>5.0.1</version>
+    <time>1531470165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622369</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>17e2cede94538b09715499a3f84eee55</srcmd5>
+    <version>5.0.2</version>
+    <time>1541865566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646411</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>bee9d544b06ab1454da2db3671b10395</srcmd5>
+    <version>5.0.3</version>
+    <time>1550220946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669111</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>43c97c92ec19a8269ab8bd22a18e8fc5</srcmd5>
+    <version>5.0.4</version>
+    <time>1556022956</time>
+    <user>maxlin_factory</user>
+    <comment>Update to 5.0.4</comment>
+    <requestid>696758</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>f58a7dfad6ae75d7b5096bb13e394385</srcmd5>
+    <version>5.0.4</version>
+    <time>1557751927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702487</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>f37568d4797c6ac2ec97907d5fc27c02</srcmd5>
+    <version>5.0.5</version>
+    <time>1562925590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714469</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>d34addef79f08ac4673a72ede7f395c6</srcmd5>
+    <version>5.0.5</version>
+    <time>1565695385</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with Qt 5.13</comment>
+    <requestid>722631</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>84aad4542ed791bf65914a8e9ad60757</srcmd5>
+    <version>5.0.6</version>
+    <time>1566463881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724702</requestid>
+  </revision>
+</revisionlist>

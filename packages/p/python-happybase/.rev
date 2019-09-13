@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bc982392fbf0e36c680d952ec99d41a</srcmd5>
+    <version>0.4</version>
+    <time>1363587024</time>
+    <user>coolo</user>
+    <comment>OpenStack dependency</comment>
+    <requestid>158813</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f32e4f7d504b2a99ba35d2e053bc19bc</srcmd5>
+    <version>0.4</version>
+    <time>1365928678</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>163731</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4bf39b401a1f6bf2b694c50c91236efd</srcmd5>
+    <version>0.6</version>
+    <time>1373564215</time>
+    <user>coolo</user>
+    <comment>- update to 0.6:
+* Rewrote exception handling in connection pool. Exception handling is now a lot
+  cleaner and does not introduce cyclic references anymore. (`issue #25
+  &lt;https://github.com/wbolster/happybase/issues/25&gt;`_).
+* Regenerated bundled Thrift code using Thrift 0.9.0 with the new-style classes
+  flag (`issue #27 &lt;https://github.com/wbolster/happybase/issues/27&gt;`_).
+
+- update to 0.5:
+* Added a thread-safe connection pool (:py:class:`ConnectionPool`)
+* The :py:meth:`Connection.delete_table` method now features an optional
+  `disable` parameter to make deleting enabled tables easier.
+* The debug log message emitted by :py:meth:`Table.scan` when closing a scanner
+* Increased Thrift dependency to at least 0.8.
+* The :py:class:`Connection` constructor now features an optional `timeout`
+  parameter
+* The `timestamp` argument to various methods now also accepts `long` values
+* In some corner cases exceptions were raised during interpreter shutdown (forwarded request 182829 from dirkmueller)</comment>
+    <requestid>182842</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4bf39b401a1f6bf2b694c50c91236efd</srcmd5>
+    <version>0.6</version>
+    <time>1379664192</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>e6c720e84b072bbe926dbbe27e33921c</srcmd5>
+    <version>0.6</version>
+    <time>1382692658</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204569</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>949b0a80e7301255d0cd6cb4dc77f4c9</srcmd5>
+    <version>0.7</version>
+    <time>1386775288</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.7
+  * Added a `wal` argument to various data manipulation methods on the
+    :py:class:`Table` and :py:class:`Batch` classes to determine whether
+    to write the mutation to the Write-Ahead Log (WAL). (`issue #36
+    &lt;https://github.com/wbolster/happybase/issues/36&gt;`_).
+  * Pass batch_size to underlying Thrift Scan instance (`issue #38
+    &lt;https://github.com/wbolster/happybase/issues/38&gt;`_).
+  * Expose server name and port in :py:meth:`Table.regions` (recent HBase
+    versions only) (`issue #37
+    &lt;https://github.com/wbolster/happybase/issues/37&gt;`_).
+  * Regenerated bundled Thrift API modules using a recent upstream
+    Thrift APIdefinition. This is required to expose newly added API.
+- Package NEWS.rst, TODO.rst and html pages in documentation directory
+- Add python-Sphinx requirement to build html documentation (forwarded request 210381 from posophe)</comment>
+    <requestid>210382</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5f1819b2c02239f3db48ffad9dd42801</srcmd5>
+    <version>0.8</version>
+    <time>1397736520</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 0.8:
+ * Add (and default to) '0.96' compatibility mode in :py:class:`Connection`.
+ * Add support for retrieving sorted columns, which is possible with the HBase
+  0.96 Thrift API
+ * The `batch_size` argument to :py:meth:`Table.scan` is no longer propagated to
+  `Scan.setBatching()` at the Java side (inside the Thrift server). (forwarded request 230267 from dirkmueller)</comment>
+    <requestid>230330</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5f1819b2c02239f3db48ffad9dd42801</srcmd5>
+    <version>0.8</version>
+    <time>1409302886</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>346aa2369fc9b3bf0004106ab2af18bf</srcmd5>
+    <version>0.9</version>
+    <time>1431247589</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305748</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>53770690ad25035fac2461aa8fde2b03</srcmd5>
+    <version>1.1.0</version>
+    <time>1503999854</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518704</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>659641cdf04be75c746d8c0bd7f32a61</srcmd5>
+    <version>1.1.0</version>
+    <time>1504617371</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520555</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>45d0d8da1bf8b01318e8dbb86046df01</srcmd5>
+    <version>1.1.0</version>
+    <time>1505920077</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526920</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>6df503304d1d067560c7c411fbc3f2f1</srcmd5>
+    <version>1.1.0</version>
+    <time>1545647879</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659410</requestid>
+  </revision>
+</revisionlist>

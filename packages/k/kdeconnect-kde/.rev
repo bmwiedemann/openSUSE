@@ -1,0 +1,160 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>336fc8265ecdf33361b5fc0cec8134b5</srcmd5>
+    <version>0.9g</version>
+    <time>1457782306</time>
+    <user>dimstar_suse</user>
+    <comment>Add kdeconnect-kde package into distribution</comment>
+    <requestid>357223</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ec9c43d0bbb47251af26aab13ebb512f</srcmd5>
+    <version>1.0</version>
+    <time>1473679537</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-build-with-older-qt.patch from upstream to make it
+  compile with Qt &lt; 5.6, and lower the Qt requirement to 5.2 again
+  (as demanded by CMakeLists.txt)
+
+- Add firewalld service file
+
+- Build docs again
+- Require at least Qt 5.6
+
+- New upstream version 1.0
+  * Trigger custom commands from phone
+  * Reply to SMS messages from the desktop
+  * Receive desktop notifications on phone
+  * TLS encryption</comment>
+    <requestid>425341</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8c77fc314445f9ec6db3ece13e079569</srcmd5>
+    <version>1.0.1</version>
+    <time>1474623600</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>429356</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5eb5c7edf6831216c1199782319e724</srcmd5>
+    <version>1.0.3</version>
+    <time>1483048189</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447546</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>94d37c0dc81e695674bbd4af4bb58382</srcmd5>
+    <version>1.0.3</version>
+    <time>1499881000</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix unauthenticated HTML injection (kde#382243):
+  * 0001-Treat-device-names-as-plaintext-not-rich-text.patch</comment>
+    <requestid>509687</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>56a0155d0e1559680e75c4aa0a4fc46b</srcmd5>
+    <version>1.2</version>
+    <time>1508876546</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0
+- Update build requirements, it needs Qt 5.7 and KF 5.38 now
+- Remove patches, now upstream:
+  * 0001-Treat-device-names-as-plaintext-not-rich-text.patch</comment>
+    <requestid>534621</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fc5ebfa5dcaa0c90b88bead5bb87552e</srcmd5>
+    <version>1.2.1</version>
+    <time>1517517014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571676</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>541ce3321a1ab02157444172344a59e0</srcmd5>
+    <version>1.2.1</version>
+    <time>1519308154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578840</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ce640f5ba8ad2807bf3815bdf9d73abd</srcmd5>
+    <version>1.3.0</version>
+    <time>1523448078</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595150</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f290e0f42a1e9b991ba04f72bd4bb165</srcmd5>
+    <version>1.3.1</version>
+    <time>1528111323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613696</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e03a3c54e3e9577d1e25fa9ca501d758</srcmd5>
+    <version>1.3.2</version>
+    <time>1540319882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643601</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5e6a0c73a4733b02cc37617c606759c2</srcmd5>
+    <version>1.3.3</version>
+    <time>1541746461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647099</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f8951dd13ab2ffbb6cbd4f49a45c757c</srcmd5>
+    <version>1.3.3</version>
+    <time>1542282121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649176</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f8e6cef27942187060295b0f4fd9d444</srcmd5>
+    <version>1.3.4</version>
+    <time>1554189825</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.4
+  * Always play when call ended (kde#400787)
+  * [cli] Show all reachable devices (kde#402088)
+  * [sftp] Get device ID from URL
+  * Retry the network packet if it failed to unserialize
+  * Fix sending keys via CLI
+  * [kio] Fix file browsing with non-KIO file managers
+- Run spec-cleaner
+- Refresh 0001-Fix-build-on-Leap-42.3.patch
+- Add 0001-Revert-Retry-the-network-packet-if-it-failed-to-unse.patch
+  to make it build on Leap 42.3
+- Drop Provides/Obsoletes for kdeconnect-kde-devel, that package
+  doesn't exist anymore since 2015 and nothing should need it
+</comment>
+    <requestid>690439</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0ed31b61f2fd0646b404eae8c1f5a106</srcmd5>
+    <version>1.3.4</version>
+    <time>1554276523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690775</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f44968250ac62efff6eb1c1e0a606f00</srcmd5>
+    <version>1.3.5</version>
+    <time>1564994502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720797</requestid>
+  </revision>
+</revisionlist>

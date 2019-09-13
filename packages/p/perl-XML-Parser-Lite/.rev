@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bdb80d7ac467338782390062a56c2954</srcmd5>
+    <version>0.72</version>
+    <time>1430903937</time>
+    <user>dimstar_suse</user>
+    <comment>needed for SOAP::Lite</comment>
+    <requestid>304309</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e0921cb67b5f46148e03db15ce01151</srcmd5>
+    <version>0.721</version>
+    <time>1434003740</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311221</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f544cc83a8824670d3a4f4081a5a5c7</srcmd5>
+    <version>0.722</version>
+    <time>1535701965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631290</requestid>
+  </revision>
+</revisionlist>

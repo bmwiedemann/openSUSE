@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e287fd493edbf8e79af05b509dfe5404</srcmd5>
+    <version>0.19</version>
+    <time>1504521325</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename python-xlib to python-python-xlib to follow python package rules.
+- Update to Version 0.19</comment>
+    <requestid>520248</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4e9b5438b4d41bf41870679aad102858</srcmd5>
+    <version>0.23</version>
+    <time>1543827895</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure the tests are run
+
+- Update to version 0.23 (changes since 0.19):
+  * Fix unclosed file in Xauth implementation.
+  * Fix support for Window.set_wm_transient_for.
+  * Fix support for Drawable.put_image / Drawable.get_image.
+  * Use Latin-1 for decoding strings in Python 3 (same as Python 2).
+  * Fix Python 3 warnings about array.tostring() (deprecated).
+  * When DISPLAY does not specify a protocol, and the implicit Unix
+    socket connection fails, fallback to TCP (mimicking XCB's
+    behaviour).
+  * Fix Display.change_pointer_control implementation.
+  * Fix Drawable.put_pil_image implementation.
+  * Don't bundle a copy of texi2html to build the HTML
+    documentation, but use the currently installed version instead.
+  * Improve response processing performance: reduce the number of
+    `socket.recv` calls needed to receive a full response.
+- Remove python-xlib-0.14-increase-receiving-buffer.patch: no
+  longer needed, see commit 1958a82.</comment>
+    <requestid>652147</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aac95667178d7e15d145e65e7bbd07a8</srcmd5>
+    <version>0.25</version>
+    <time>1557833377</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701756</requestid>
+  </revision>
+</revisionlist>

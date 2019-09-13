@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9f9ffad446449047d1d1e23553a99bbd</srcmd5>
+    <version>2.16</version>
+    <time>1519683891</time>
+    <user>dimstar_suse</user>
+    <comment>udisks2's new dependency.</comment>
+    <requestid>579622</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dfa500aa2319c919a1a6c777800d8ade</srcmd5>
+    <version>2.16</version>
+    <time>1520329715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583156</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c8a139076dc4a107e5b26aa55eda6af2</srcmd5>
+    <version>2.16</version>
+    <time>1524400176</time>
+    <user>dimstar_suse</user>
+    <comment>Resplit plugins to avoid pulling clusterlvm support by default into the dependency chain (bsc#1086447).
+</comment>
+    <requestid>596357</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>892035eae07549937edc7f876275f83b</srcmd5>
+    <version>2.17</version>
+    <time>1525779129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604037</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a05f340ad600cc34ef7d03a88fa03e18</srcmd5>
+    <version>2.18</version>
+    <time>1530473143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619654</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d627113934a13508927c2c9cdc41c2a7</srcmd5>
+    <version>2.20</version>
+    <time>1549361879</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670776</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c87227606e3954a3c32e9cdc493cc2d6</srcmd5>
+    <version>2.20</version>
+    <time>1551113083</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>674702</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f96eb27918833ca18cbfad334744e4bd</srcmd5>
+    <version>2.22</version>
+    <time>1561195239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710123</requestid>
+  </revision>
+</revisionlist>

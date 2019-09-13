@@ -1,0 +1,7 @@
+<package name="perl-Test-Spelling" project="openSUSE:Factory">
+  <title>Check POD Files for Spelling Mistakes</title>
+  <description>Check POD files for spelling mistakes, using Pod::Spell and spell to do
+the heavy lifting.</description>
+  <devel project="devel:languages:perl" package="perl-Test-Spelling"/>
+  <url>http://search.cpan.org/dist/Test-Spelling</url>
+</package>

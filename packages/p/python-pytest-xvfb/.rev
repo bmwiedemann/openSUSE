@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d552ff8e64b7e2630314543b0f6fa6e</srcmd5>
+    <version>1.0.0</version>
+    <time>1504102939</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of spyder and spyder3</comment>
+    <requestid>519219</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3644d0006581f7afbb97a8d9c4274c1d</srcmd5>
+    <version>1.1.0</version>
+    <time>1524144566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597312</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b3cc19b687c0117f16ecf1cc190a60f3</srcmd5>
+    <version>1.2.0</version>
+    <time>1550048838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  * Item.get_closest_marker is now used, which restores compatibility with pytest 4.1.0 and requires pytest 3.6.0 or newer.
+
+- Really run tests
+- Remove devel dependency</comment>
+    <requestid>673761</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>318df413fb57dfe101e042260ee0da06</srcmd5>
+    <version>1.2.0</version>
+    <time>1556107020</time>
+    <user>maxlin_factory</user>
+    <comment>- Skip one of the tests checking for error return code that fails
+  on i586</comment>
+    <requestid>697104</requestid>
+  </revision>
+</revisionlist>

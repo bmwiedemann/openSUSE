@@ -1,0 +1,6 @@
+<package name="lxcc" project="openSUSE:Factory">
+  <title>LXDE Control Center</title>
+  <description>The lxcc package
+</description>
+  <devel project="X11:lxde" package="lxcc"/>
+</package>

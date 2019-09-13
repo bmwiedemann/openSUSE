@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="32">
+    <srcmd5>f2c2cafd398c30119ebd34d8d790d66c</srcmd5>
+    <version>0.99.12</version>
+    <time>1168903292</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="86">
+    <srcmd5>6c19171f4916b69e549f26e991646673</srcmd5>
+    <version>0.99.12</version>
+    <time>1199136335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="139">
+    <srcmd5>6c19171f4916b69e549f26e991646673</srcmd5>
+    <version>0.99.12</version>
+    <time>1199136335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="140">
+    <srcmd5>a3650cfc169e47adcd7b119e9aeaf340</srcmd5>
+    <version>0.99.12</version>
+    <time>1223459551</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="141">
+    <srcmd5>e0aae58bd1523e1a77101b5ff4c26ca1</srcmd5>
+    <version>0.99.12</version>
+    <time>1248733893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="142">
+    <srcmd5>97508dffbc0aa38e7eae784890ac496d</srcmd5>
+    <version>0.99.12</version>
+    <time>1249420595</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="144">
+    <srcmd5>97508dffbc0aa38e7eae784890ac496d</srcmd5>
+    <version>0.99.12</version>
+    <time>1249420595</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="145">
+    <srcmd5>acb25476b0898c89989394a5e4b1e361</srcmd5>
+    <version>0.99.12</version>
+    <time>1262128993</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libcdaudio based on submit request 27755 from user tiwai
+</comment>
+  </revision>
+  <revision rev="9" vrev="146">
+    <srcmd5>416a5ee024e50c2a0324abdc8d813f2d</srcmd5>
+    <version>0.99.12</version>
+    <time>1268924518</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="148">
+    <srcmd5>416a5ee024e50c2a0324abdc8d813f2d</srcmd5>
+    <version>0.99.12</version>
+    <time>1278667357</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="149">
+    <srcmd5>416a5ee024e50c2a0324abdc8d813f2d</srcmd5>
+    <version>0.99.12</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="152">
+    <srcmd5>416a5ee024e50c2a0324abdc8d813f2d</srcmd5>
+    <version>0.99.12</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="153">
+    <srcmd5>7c01b809f6f912c4685a7a1be442a042</srcmd5>
+    <version>0.99.12</version>
+    <time>1303113013</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67591 from user coolo
+</comment>
+    <requestid>67591</requestid>
+  </revision>
+  <revision rev="14" vrev="154">
+    <srcmd5>bf0c5e2b84beb16985ed5059a48162a9</srcmd5>
+    <version>0.99.12</version>
+    <time>1303113024</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67591
+</comment>
+  </revision>
+  <revision rev="15" vrev="156">
+    <srcmd5>bf0c5e2b84beb16985ed5059a48162a9</srcmd5>
+    <version>0.99.12</version>
+    <time>1319182076</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="157">
+    <srcmd5>9c656d3db373eb1754186a268cfac12b</srcmd5>
+    <version>0.99.12</version>
+    <time>1323192171</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="159">
+    <srcmd5>9c656d3db373eb1754186a268cfac12b</srcmd5>
+    <version>0.99.12</version>
+    <time>1340183569</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="160">
+    <srcmd5>1623cec49faab5a974b1eff3c482c69d</srcmd5>
+    <version>0.99.12</version>
+    <time>1354095550</time>
+    <user>coolo</user>
+    <comment>- Employ shared library packaging guidelines
+- Use %_smp_mflags for parallel build
+- Remove redundant tags/sections from specfile (forwarded request 142632 from jengelh)</comment>
+    <requestid>142920</requestid>
+  </revision>
+  <revision rev="19" vrev="162">
+    <srcmd5>1623cec49faab5a974b1eff3c482c69d</srcmd5>
+    <version>0.99.12</version>
+    <time>1359109247</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="164">
+    <srcmd5>1623cec49faab5a974b1eff3c482c69d</srcmd5>
+    <version>0.99.12</version>
+    <time>1379662912</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="166">
+    <srcmd5>1623cec49faab5a974b1eff3c482c69d</srcmd5>
+    <version>0.99.12</version>
+    <time>1409301515</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c0abb3b82959193120c7ea8040bcfc33</srcmd5>
+    <version>0.99.12p2</version>
+    <time>1562843830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714242</requestid>
+  </revision>
+</revisionlist>

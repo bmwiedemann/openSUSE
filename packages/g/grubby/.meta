@@ -1,0 +1,9 @@
+<package name="grubby" project="openSUSE:Factory">
+  <title>Command line tool for updating bootloader configs</title>
+  <description>grubby is a command line tool for updating and displaying information about
+the configuration files for the grub, lilo, elilo (ia64), yaboot (powerpc)
+and zipl (s390) boot loaders. It is primarily designed to be used from scripts
+which install new kernels and need to find information about the current boot
+environment.</description>
+  <devel project="Virtualization" package="grubby"/>
+</package>

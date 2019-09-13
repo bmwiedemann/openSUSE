@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="13">
+    <srcmd5>0dc02322fc15aca6a3fd7abc5a43b562</srcmd5>
+    <version>20120626</version>
+    <time>1345809086</time>
+    <user>namtrac</user>
+    <comment>New font, replaces the same font without the prefix (see also sr#130086)</comment>
+    <requestid>131472</requestid>
+  </revision>
+  <revision rev="2" vrev="15">
+    <srcmd5>0dc02322fc15aca6a3fd7abc5a43b562</srcmd5>
+    <version>20120626</version>
+    <time>1359108992</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="17">
+    <srcmd5>0dc02322fc15aca6a3fd7abc5a43b562</srcmd5>
+    <version>20120626</version>
+    <time>1379662541</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1a442ebdb032558cac8e583db5f2c99d</srcmd5>
+    <version>20130925</version>
+    <time>1380171862</time>
+    <user>coolo</user>
+    <comment>Add Slab version, update other versions (forwarded request 200582 from stknorr)</comment>
+    <requestid>200584</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1a442ebdb032558cac8e583db5f2c99d</srcmd5>
+    <version>20130925</version>
+    <time>1409301083</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7407be5e5237f521ec5d3ddf4c441bf0</srcmd5>
+    <version>20150820</version>
+    <time>1445287921</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339254</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f757da802729228c06f90f6c0f8eab3e</srcmd5>
+    <version>20150820</version>
+    <time>1456433806</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>359379</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2a03e2d0a8cb65bbdc30434f4b30314b</srcmd5>
+    <version>20161103.2.135</version>
+    <time>1482143236</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>444708</requestid>
+  </revision>
+</revisionlist>

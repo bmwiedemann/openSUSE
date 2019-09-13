@@ -1,0 +1,9 @@
+<package name="perl-Text-WrapI18N" project="openSUSE:Factory">
+  <title>Line Wrapping Module</title>
+  <description>Line wrapping module with support for multibyte, fullwidth, and combining
+characters and languages without whitespaces between words.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Text-WrapI18N"/>
+  <url>http://search.cpan.org/dist/Text-WrapI18N</url>
+</package>

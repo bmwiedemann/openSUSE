@@ -1,0 +1,119 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d1c64fa46b85573f0f4aeb1b74092f25</srcmd5>
+    <version>20161020</version>
+    <time>1488479291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>459514</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4f957636cec3084bf7a490e15e0d24a</srcmd5>
+    <version>20161020</version>
+    <time>1489241981</time>
+    <user>dimstar_suse</user>
+    <comment>- Add hardware access groups: kmem, lock, tty, audio, cdrom,
+  dialout, disk, input, tape, video
+- Add group wheel</comment>
+    <requestid>478630</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c03e6edbd082d938c542ac2c873ad67b</srcmd5>
+    <version>20161020</version>
+    <time>1489759663</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix group ownership of /var/lib/wwwrun (forwarded request 480796 from kukuk)</comment>
+    <requestid>480797</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f9445859cc5dc4c06c213664251420d0</srcmd5>
+    <version>20161020</version>
+    <time>1492009757</time>
+    <user>maxlin_factory</user>
+    <comment>- Prerequire group lock for uucp
+
+- Allow user uucp to do locking</comment>
+    <requestid>485070</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>fba418492f9d1785bfe5c17439ad1d3d</srcmd5>
+    <version>20161020</version>
+    <time>1494441160</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492622</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2b0ad76f3505867816fef3df94384e36</srcmd5>
+    <version>20170617</version>
+    <time>1498202039</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505024</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9b7f5ba3fc2240c298a7190d52355f66</srcmd5>
+    <version>20170617</version>
+    <time>1500669424</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509140</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8eaadbeb624a3ee1df9b31f106bd05b0</srcmd5>
+    <version>20170617</version>
+    <time>1503999348</time>
+    <user>dimstar_suse</user>
+    <comment>- user nobody: move usermod to %post, else it will be executed
+  before the user is created. (forwarded request 517841 from kukuk)</comment>
+    <requestid>517842</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>5559b0c49c07ebbaaea3cbb221836e9f</srcmd5>
+    <version>20170617</version>
+    <time>1505757262</time>
+    <user>dimstar_suse</user>
+    <comment>- uuidd does not need group daemon, Copy&amp;Paste error.
+
+- udev needs groups kvm and lp: [bsc#1058703]
+  - Add group kvm to system-group-hardware
+  - Move group lp from system-user-lp to system-group-hardware
+
+- Add system-user-uuidd.conf (boo#1057937#c3).</comment>
+    <requestid>526091</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>7a1633a70650f1b6abe2dd165274b5aa</srcmd5>
+    <version>20170617</version>
+    <time>1512546444</time>
+    <user>dimstar_suse</user>
+    <comment>- Change home directory of user man to /var/lib/empty. Home
+  directories below /var/cache are by definition insecure and a
+  bad idea.</comment>
+    <requestid>546397</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>73a99b41f47e02bc1363dcbf379330cc</srcmd5>
+    <version>20170617</version>
+    <time>1522403700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590364</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>9662b027f47364fa7bdf1ca72e2f8482</srcmd5>
+    <version>20170617</version>
+    <time>1551784554</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679449</requestid>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>075af639137031be5e135c0870f2561e</srcmd5>
+    <version>20170617</version>
+    <time>1565864824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723093</requestid>
+  </revision>
+</revisionlist>

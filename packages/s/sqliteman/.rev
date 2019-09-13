@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee8dfb90eef31407978e73d301e3e3db</srcmd5>
+    <version>1.2.2</version>
+    <time>1426680515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>291221</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>551dc5c8c535c021b1266b4e96528b04</srcmd5>
+    <version>1.2.2</version>
+    <time>1494442231</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix to build under latest qscintilla split for qt4 and qt5:
+  * sqliteman-fix-qscintilla-find.patch</comment>
+    <requestid>493321</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d11f1953ce8dfb398d6b23fd1b23492e</srcmd5>
+    <version>1.2.2</version>
+    <time>1519308222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578959</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58d9d4efe7f7ddad921591c46cfabc1c</srcmd5>
+    <version>2.0.14</version>
+    <time>1533292815</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-Psychopy</comment>
+    <requestid>627212</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ca52d88ccad8b3948f8d30bba78c0724</srcmd5>
+    <version>2.0.14</version>
+    <time>1535122825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628146</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e8b933c7569787b8ef840a0225d1ed37</srcmd5>
+    <version>2.0.14</version>
+    <time>1544631897</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653914</requestid>
+  </revision>
+</revisionlist>

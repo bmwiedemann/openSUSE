@@ -1,0 +1,6 @@
+<package name="ipxrip" project="openSUSE:Factory">
+  <title>IPX Routing Daemon</title>
+  <description>This is an RIP/SAP daemon for Linux. With this daemon, you can turn
+your Linux machine into an IPX router.</description>
+  <devel project="network:utilities" package="ipxrip"/>
+</package>

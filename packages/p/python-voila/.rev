@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>048d5610922118c72a1b606960a5b656</srcmd5>
+    <version>0.0.9</version>
+    <time>1558516231</time>
+    <user>dimstar_suse</user>
+    <comment>Serving read-only live Jupyter notebooks</comment>
+    <requestid>700263</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>68b9e12e29b7e6291df07a8461f17973</srcmd5>
+    <version>0.0.9</version>
+    <time>1559375394</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705975</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2d1e892bf89abaf89905f58b420b783a</srcmd5>
+    <version>0.1.2</version>
+    <time>1560537731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709580</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a4c88408653b75920df1e5232a847cd</srcmd5>
+    <version>0.1.8</version>
+    <time>1564576066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719625</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f6b21688a543ae6b453c13d401ba178e</srcmd5>
+    <version>0.1.9</version>
+    <time>1565695242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722252</requestid>
+  </revision>
+</revisionlist>

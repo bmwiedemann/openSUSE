@@ -1,0 +1,5 @@
+<package name="grail" project="openSUSE:Factory">
+  <title>Open Input Framework Grail Library</title>
+  <description>Gesture Recognition And Instantiation Library</description>
+  <devel project="X11:Unity" package="grail"/>
+</package>

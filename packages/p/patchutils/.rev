@@ -1,0 +1,176 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>038b0426999b73492e1b184441d4d8f8</srcmd5>
+    <version>0.2.31</version>
+    <time>1168903752</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="38">
+    <srcmd5>93bb7f55b039e29d9487ebcc4921e919</srcmd5>
+    <version>0.2.31</version>
+    <time>1174197158</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ee7dfdc27c8c896bd0c561ca51c8e25a</srcmd5>
+    <version>0.3.0</version>
+    <time>1215552379</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d4cd7caff73a28b18ea34c7709594421</srcmd5>
+    <version>0.3.1</version>
+    <time>1232842870</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d4cd7caff73a28b18ea34c7709594421</srcmd5>
+    <version>0.3.1</version>
+    <time>1232842870</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>85e63ffe54e8f79535fac8075f4cc515</srcmd5>
+    <version>0.3.1</version>
+    <time>1263304106</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/patchutils based on submit request 29050 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>4503ce884319d3fd5bf67cbe17673c58</srcmd5>
+    <version>0.3.1</version>
+    <time>1268925312</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>395fa7618da5a66eb8a9bf0c0fb2e5ab</srcmd5>
+    <version>0.3.1</version>
+    <time>1271723215</time>
+    <user>autobuild</user>
+    <comment>Copy from home:sndirsch:branches:openSUSE:Factory/patchutils based on submit request 38245 from user sndirsch
+</comment>
+    <requestid>38245</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>395fa7618da5a66eb8a9bf0c0fb2e5ab</srcmd5>
+    <version>0.3.1</version>
+    <time>1278667375</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>395fa7618da5a66eb8a9bf0c0fb2e5ab</srcmd5>
+    <version>0.3.1</version>
+    <time>1278678608</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>395fa7618da5a66eb8a9bf0c0fb2e5ab</srcmd5>
+    <version>0.3.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ea6c6e67e0c9e36ef204189011a19b9f</srcmd5>
+    <version>0.3.2</version>
+    <time>1301927841</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65918 from user licensedigger
+</comment>
+    <requestid>65918</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>834203fe5ce6f119cd36d49bc04a226e</srcmd5>
+    <version>0.3.2</version>
+    <time>1301927850</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65918
+</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>fc4c69f2118be29bca3e5aa17f544c4a</srcmd5>
+    <version>0.3.2</version>
+    <time>1301985341</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 65947 from user coolo
+</comment>
+    <requestid>65947</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>d3e90f01df6b593f1683b5d5156ccd93</srcmd5>
+    <version>0.3.2</version>
+    <time>1301985350</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 65947
+</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>d3e90f01df6b593f1683b5d5156ccd93</srcmd5>
+    <version>0.3.2</version>
+    <time>1319182230</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>014dd60fe4bf6a4979e0262a104c42c5</srcmd5>
+    <version>0.3.2</version>
+    <time>1327486112</time>
+    <user>coolo</user>
+    <comment>buildreq automake</comment>
+    <requestid>101302</requestid>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>014dd60fe4bf6a4979e0262a104c42c5</srcmd5>
+    <version>0.3.2</version>
+    <time>1340183779</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>014dd60fe4bf6a4979e0262a104c42c5</srcmd5>
+    <version>0.3.2</version>
+    <time>1359109578</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>6e2ea7f087b4102f2c4e4fe4c2d9e297</srcmd5>
+    <version>0.3.2</version>
+    <time>1362900980</time>
+    <user>coolo</user>
+    <comment>fix build with autmake-1.13, convert changes to utf-8 (forwarded request 158126 from seife)</comment>
+    <requestid>158128</requestid>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>6e2ea7f087b4102f2c4e4fe4c2d9e297</srcmd5>
+    <version>0.3.2</version>
+    <time>1379663513</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="16">
+    <srcmd5>6e2ea7f087b4102f2c4e4fe4c2d9e297</srcmd5>
+    <version>0.3.2</version>
+    <time>1409302120</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0cc15545f658f09d928235b230e946d9</srcmd5>
+    <version>0.3.3</version>
+    <time>1409761229</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247117</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>50e093300e770a2300965e51743f6b77</srcmd5>
+    <version>0.3.4</version>
+    <time>1437477827</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314948</requestid>
+  </revision>
+</revisionlist>

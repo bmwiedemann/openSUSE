@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5062620defbaf67ff9b0f6a617ea4d44</srcmd5>
+    <version>4.1</version>
+    <time>1503593157</time>
+    <user>dimstar_suse</user>
+    <comment>Add perftest
+
+Some file in the tarball have proprietary license but the patch was applied after this release upstream to fix it to GPL.
+This patch is applied during compilation as perftest-license.patch</comment>
+    <requestid>514554</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3be8157596bfa55ce26c4366dc4721f1</srcmd5>
+    <version>4.1</version>
+    <time>1504981551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update URL of perftest.</comment>
+    <requestid>521886</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>29452fb41bb409a6fe172acda39da2bb</srcmd5>
+    <version>4.1</version>
+    <time>1505238915</time>
+    <user>dimstar_suse</user>
+    <comment>- Move call to autogen.sh to the %build section</comment>
+    <requestid>523210</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>dd632c6f1325ab0126b792e94039d9eb</srcmd5>
+    <version>4.1</version>
+    <time>1534543574</time>
+    <user>dimstar_suse</user>
+    <comment>Merge changelog with SLES12SP3</comment>
+    <requestid>629790</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a2530fff50d05a90ddef0d3e7a938c87</srcmd5>
+    <version>4.4</version>
+    <time>1542123363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4-0.4 (fate#326013)
+  * No release notes available
+- Drop perftest-license.patch as it was fixed upstream</comment>
+    <requestid>644626</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6e692f80da69a19eac9a645733ab2356</srcmd5>
+    <version>4.4</version>
+    <time>1553263865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687460</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ea3a3abc5f192a07d3bb4489bd3ed966</srcmd5>
+    <version>4.4</version>
+    <time>1556312171</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698277</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>07eedd6d3a915770b856a84f3d4f0142</srcmd5>
+    <version>4.4</version>
+    <time>1563366417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715700</requestid>
+  </revision>
+</revisionlist>

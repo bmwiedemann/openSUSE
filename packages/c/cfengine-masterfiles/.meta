@@ -1,0 +1,5 @@
+<package name="cfengine-masterfiles" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement" package="cfengine-masterfiles"/>
+</package>

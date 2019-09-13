@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e5c8b7ac3fe903e465f39d7b64e1bf68</srcmd5>
+    <version>1.73</version>
+    <time>1366633879</time>
+    <user>coolo</user>
+    <comment>needed by nagios</comment>
+    <requestid>172796</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e5c8b7ac3fe903e465f39d7b64e1bf68</srcmd5>
+    <version>1.73</version>
+    <time>1379663799</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>e5c8b7ac3fe903e465f39d7b64e1bf68</srcmd5>
+    <version>1.73</version>
+    <time>1409302436</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f5565a48d79baf4e770ee73bc637955e</srcmd5>
+    <version>1.75</version>
+    <time>1435652356</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314318</requestid>
+  </revision>
+</revisionlist>

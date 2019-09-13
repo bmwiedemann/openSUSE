@@ -1,0 +1,5 @@
+<package name="python-identify" project="openSUSE:Factory">
+  <title></title>
+  <description>File identification library for Python, including detecting licenses</description>
+  <devel project="devel:languages:python" package="python-identify"/>
+</package>

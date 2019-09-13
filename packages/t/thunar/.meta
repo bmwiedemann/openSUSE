@@ -1,0 +1,9 @@
+<package name="thunar" project="openSUSE:Factory">
+  <title>Fast and Easy to Use File Manager for the Xfce Desktop Environment</title>
+  <description>Thunar a file manager for the Xfce desktop environment which has been designed
+from the ground up to be fast and easy to use. It provides a clean, intuitive,
+and fully accessible user interface and does not include any confusing or
+useless options by default. Thunar is fast and responsive with good startup and
+folder load times.</description>
+  <devel project="X11:xfce" package="thunar"/>
+</package>

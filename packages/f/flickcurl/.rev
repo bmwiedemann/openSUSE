@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>828a79c46f3eb6b5653db1e02b505b05</srcmd5>
+    <version>1.21</version>
+    <time>1309502588</time>
+    <user>saschpe</user>
+    <comment>flickcurl is a build dependency for darktable (for Flickr support) and we forgot to add it until today. It allows to interact with Flickr with a C api or command-line</comment>
+    <requestid>73355</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3624b763a7ea350e6d0d04d4992b775e</srcmd5>
+    <version>1.21</version>
+    <time>1309502604</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73355
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>df4810dafc66b277e04ab794c61cf9ba</srcmd5>
+    <version>1.21</version>
+    <time>1312736807</time>
+    <user>saschpe</user>
+    <comment>- Fix build with newer curl Fix build with newer curl (forwarded request 78180 from elvigia)</comment>
+    <requestid>78181</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>eee4620e8d08f36619d57d3ae79c8a00</srcmd5>
+    <version>1.21</version>
+    <time>1312736816</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78181
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d048d81092f4131b97f487e2217f9674</srcmd5>
+    <version>1.21</version>
+    <time>1317024299</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83527 from jengelh)</comment>
+    <requestid>84600</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>d048d81092f4131b97f487e2217f9674</srcmd5>
+    <version>1.21</version>
+    <time>1319181880</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>7db5477c8270c5a4ec60c0343bfcd702</srcmd5>
+    <version>1.21</version>
+    <time>1323191381</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>4d56d2a44718d4c1bea2e97a769bd185</srcmd5>
+    <version>1.21</version>
+    <time>1325231136</time>
+    <user>coolo</user>
+    <comment>- Fix wrong size parameter in memset call (forwarded request 98309 from namtrac)</comment>
+    <requestid>98340</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>4d56d2a44718d4c1bea2e97a769bd185</srcmd5>
+    <version>1.21</version>
+    <time>1340183332</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1af4d4a2a259c0d9dd6cea5e256f7ee4</srcmd5>
+    <version>1.23</version>
+    <time>1355463798</time>
+    <user>coolo</user>
+    <comment>Update to 1.23 (forwarded request 144843 from posophe)</comment>
+    <requestid>144900</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>1af4d4a2a259c0d9dd6cea5e256f7ee4</srcmd5>
+    <version>1.23</version>
+    <time>1359108882</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>1af4d4a2a259c0d9dd6cea5e256f7ee4</srcmd5>
+    <version>1.23</version>
+    <time>1379662348</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ed9c0589a18c733267856311e7aeb24c</srcmd5>
+    <version>1.25</version>
+    <time>1399031738</time>
+    <user>coolo</user>
+    <comment>- Update for version 1.25:
+ - more OAuth fixes, including uploading fully working
+ - Multiple internal OAuth changes to simplify code. 
+- Remove flickcurl-wrong-memset.patch, merged upstream (forwarded request 231638 from fcrozat)</comment>
+    <requestid>231811</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>ed9c0589a18c733267856311e7aeb24c</srcmd5>
+    <version>1.25</version>
+    <time>1409300884</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>789e22e33473e301d3e6df95be03c900</srcmd5>
+    <version>1.26</version>
+    <time>1415696396</time>
+    <user>dimstar_suse</user>
+    <comment>flickcurl 1.26</comment>
+    <requestid>260784</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>88984efbf73e7d18a244ced6a7036f02</srcmd5>
+    <version>1.26</version>
+    <time>1507391547</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532315</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>f2a058a45e72d2a1399e3f97c580b3dd</srcmd5>
+    <version>1.26</version>
+    <time>1507571254</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532723</requestid>
+  </revision>
+</revisionlist>

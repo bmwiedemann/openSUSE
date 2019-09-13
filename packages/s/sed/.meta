@@ -1,0 +1,8 @@
+<package name="sed" project="openSUSE:Factory">
+  <title>A Stream-Oriented Non-Interactive Text Editor</title>
+  <description>Sed takes text input, performs one or more operations on it, and
+outputs the modified text. Sed is typically used for extracting parts
+of a file using pattern matching or  for substituting multiple
+occurrences of a string within a file.</description>
+  <devel project="Base:System" package="sed"/>
+</package>

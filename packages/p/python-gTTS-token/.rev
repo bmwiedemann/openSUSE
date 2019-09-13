@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51ba65d5b0e594180c8a741c404e49ee</srcmd5>
+    <version>1.1.1</version>
+    <time>1521193169</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-gTTS-token, required by mycroft-core</comment>
+    <requestid>582447</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4a016eb2d2ea8a9ec3c94319247b7b7f</srcmd5>
+    <version>1.1.2</version>
+    <time>1541511526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646388</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f548343ebb8c1c58befeff4158c511c</srcmd5>
+    <version>1.1.3</version>
+    <time>1543828303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653417</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,175 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>7fc97e1c1f159e09e42b1dcb398defd0</srcmd5>
+    <version>0.1.2</version>
+    <time>1168903743</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="36">
+    <srcmd5>98755c217aa18473f513c414780cc7e5</srcmd5>
+    <version>0.1.2</version>
+    <time>1175211315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd207f9eebe97c22de1af2c3d2950845</srcmd5>
+    <version>0.1.3</version>
+    <time>1185494562</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="54">
+    <srcmd5>d9b564c754415aef59666c50c8110242</srcmd5>
+    <version>0.1.3</version>
+    <time>1207833698</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>39698c4a388a333cb25bb2ce7253da05</srcmd5>
+    <version>0.1.5</version>
+    <time>1221281320</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>dc37e71330474a3fc0297bb261ab92d2</srcmd5>
+    <version>0.1.5</version>
+    <time>1246629835</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>dc37e71330474a3fc0297bb261ab92d2</srcmd5>
+    <version>0.1.5</version>
+    <time>1246629835</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>637228384b7a3ac6a66e9dc885384329</srcmd5>
+    <version>0.1.5</version>
+    <time>1266974565</time>
+    <user>autobuild</user>
+    <comment>Copy from security:chipcard/pam_p11 based on submit request 33312 from user coolo
+</comment>
+    <requestid>33312</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>373c4f638e21c6f9fbd2440c72f04ef6</srcmd5>
+    <version>0.1.5</version>
+    <time>1268925283</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>373c4f638e21c6f9fbd2440c72f04ef6</srcmd5>
+    <version>0.1.5</version>
+    <time>1278667375</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>373c4f638e21c6f9fbd2440c72f04ef6</srcmd5>
+    <version>0.1.5</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>373c4f638e21c6f9fbd2440c72f04ef6</srcmd5>
+    <version>0.1.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>bc7c71e72d0925cf36496a100b63ef2a</srcmd5>
+    <version>0.1.5</version>
+    <time>1301301305</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65267 from user licensedigger
+</comment>
+    <requestid>65267</requestid>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>5e44f4ceace050c0ff5224c0b87baaa4</srcmd5>
+    <version>0.1.5</version>
+    <time>1301301311</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65267
+</comment>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>5e44f4ceace050c0ff5224c0b87baaa4</srcmd5>
+    <version>0.1.5</version>
+    <time>1319182226</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="19">
+    <srcmd5>9c0607047ab4134780eef0c2b718b8ec</srcmd5>
+    <version>0.1.5</version>
+    <time>1323192944</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="21">
+    <srcmd5>9c0607047ab4134780eef0c2b718b8ec</srcmd5>
+    <version>0.1.5</version>
+    <time>1340183774</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="23">
+    <srcmd5>9c0607047ab4134780eef0c2b718b8ec</srcmd5>
+    <version>0.1.5</version>
+    <time>1359109567</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="25">
+    <srcmd5>9c0607047ab4134780eef0c2b718b8ec</srcmd5>
+    <version>0.1.5</version>
+    <time>1379663484</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="27">
+    <srcmd5>9c0607047ab4134780eef0c2b718b8ec</srcmd5>
+    <version>0.1.5</version>
+    <time>1409302101</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>86e9112dde81d91e7fbe8aedf41f62bb</srcmd5>
+    <version>0.1.6</version>
+    <time>1516804315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568719</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ca54356c3a8757c73e2192fd56357e38</srcmd5>
+    <version>0.2.0</version>
+    <time>1551025067</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677825</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7023bec86eb5ad44d2de0a0923e2702a</srcmd5>
+    <version>0.3.0</version>
+    <time>1565695658</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.0:
+  * Add Italian translation.
+  * Add support for matching the PIN-input with a regular
+    expression.
+  * Add support for macOS
+  * Add support for building with OpenSSL 1.1.1
+  * Add support for nistp256/384/521 keys in authorized_keys file.
+- Remove README.SUSE: Its content is present in README.md which
+  is now installed.
+- Add pam_p11-0.3.0-lto-type-mismatch.patch: Fix build with LTO on
+  x86_64.
+- Drop upstreamed patches:
+  * pam_p11-replace-deprecated-OpenSSL-API-functions.patch
+  * pam_p11-unsigned-comparison.patch (forwarded request 722933 from 1Antoine1)</comment>
+    <requestid>722958</requestid>
+  </revision>
+</revisionlist>

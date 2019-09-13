@@ -1,0 +1,6 @@
+<package name="yast2-auth-server" project="openSUSE:Factory">
+  <title>YaST2 - Configuration of Network Authentication Server</title>
+  <description>Provides Configuration of an OpenLDAP Server with or without 
+using kerberos for authentication.</description>
+  <devel project="YaST:Head" package="yast2-auth-server"/>
+</package>

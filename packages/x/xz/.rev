@@ -1,0 +1,558 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>233a03c0de3cbd6959b58d4cac1b9b0f</srcmd5>
+    <version>4.999.8beta</version>
+    <time>1234238714</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e3953fe77fb77090b294c0e0c451479c</srcmd5>
+    <version>4.999.8beta</version>
+    <time>1234353686</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>059704ee1b647164e663f266152cf14a</srcmd5>
+    <version>4.999.8beta</version>
+    <time>1234783639</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>46b8d54a8f3b1b5db8a46e0b4e268f0b</srcmd5>
+    <version>4.999.8beta</version>
+    <time>1235390617</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d22284efccf8477aac07cd983da5e4e7</srcmd5>
+    <version>4.999.8beta</version>
+    <time>1244815478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ef76b3a6e3d5f2c3ab51d27ee578c6c</srcmd5>
+    <version>4.999.8git</version>
+    <time>1250905219</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/xz based on submit request 18441 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c8ed10db25de8d721eb58ccdc890a233</srcmd5>
+    <version>4.999.9beta</version>
+    <time>1252102655</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/xz based on submit request 19892 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c8ed10db25de8d721eb58ccdc890a233</srcmd5>
+    <version>4.999.9beta</version>
+    <time>1252102655</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/xz based on submit request 19892 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>5b2cca6fb098284f9c231bd4dff8005b</srcmd5>
+    <version>4.999.9beta</version>
+    <time>1261135782</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/xz based on submit request 26843 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>0b9019c69dc6880dd14fe1557599962e</srcmd5>
+    <version>4.999.9beta</version>
+    <time>1268926707</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>c2f348bfe770096b244a180e44414fe9</srcmd5>
+    <version>4.999.9beta</version>
+    <time>1275655589</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/xz based on submit request 41030 from user coolo
+</comment>
+    <requestid>41030</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>c2f348bfe770096b244a180e44414fe9</srcmd5>
+    <version>4.999.9beta</version>
+    <time>1278667397</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>c2f348bfe770096b244a180e44414fe9</srcmd5>
+    <version>4.999.9beta</version>
+    <time>1278678632</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>0a9f3c6f793c960f5fea5e41f43a0253</srcmd5>
+    <version>5.0.0</version>
+    <time>1288261238</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51559 from user coolo
+</comment>
+    <requestid>51559</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>f320a8e9744b98fd6ea0f08e225427de</srcmd5>
+    <version>5.0.0</version>
+    <time>1288261243</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51559
+</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>aa853ee3ce9a3abbbd18da34d4f31a45</srcmd5>
+    <version>5.0.0</version>
+    <time>1288284521</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>f320a8e9744b98fd6ea0f08e225427de</srcmd5>
+    <version>5.0.0</version>
+    <time>1288320425</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>3fad4f44a8ab6c6faa9ba64ec03bd7a9</srcmd5>
+    <version>5.0.0</version>
+    <time>1288689128</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51734 from user elvigia
+</comment>
+    <requestid>51734</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>00d72504299c595729520cdeba57a196</srcmd5>
+    <version>5.0.0</version>
+    <time>1288689135</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51734
+</comment>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>f7d040151934843241a4509200f7e78c</srcmd5>
+    <version>5.0.0</version>
+    <time>1289533790</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>00d72504299c595729520cdeba57a196</srcmd5>
+    <version>5.0.0</version>
+    <time>1289569335</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>6b4d9144e8ad15b33fd52ea10dbb2387</srcmd5>
+    <version>5.0.0</version>
+    <time>1291814806</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55070 from user elvigia
+</comment>
+    <requestid>55070</requestid>
+  </revision>
+  <revision rev="23" vrev="12">
+    <srcmd5>32e8c645f6620e2abdecdf34156f3396</srcmd5>
+    <version>5.0.0</version>
+    <time>1291814814</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55070
+</comment>
+  </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>32e8c645f6620e2abdecdf34156f3396</srcmd5>
+    <version>5.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>9f158f3a8908fdcc650ff0d260d11791</srcmd5>
+    <version>5.0.1</version>
+    <time>1299506206</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63474 from user elvigia
+</comment>
+    <requestid>63474</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>3e903724952010f1caab5a764e4e0b56</srcmd5>
+    <version>5.0.1</version>
+    <time>1299506213</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63474
+</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e3fb8fdc91eb944a664636caf9e53a06</srcmd5>
+    <version>5.0.2</version>
+    <time>1302245659</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66470 from user coolo
+</comment>
+    <requestid>66470</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a6099f0a68eb59a1c56755bfc1d56fee</srcmd5>
+    <version>5.0.3</version>
+    <time>1307609590</time>
+    <user>saschpe</user>
+    <comment>- Update to version 5.0.3
+    * liblzma fixes:
+        - A memory leak was fixed.
+        - lzma_stream_buffer_encode() no longer creates an empty .xz
+          Block if encoding an empty buffer. Such an empty Block with
+          LZMA2 data would trigger a bug in 5.0.1 and older (see the
+          first bullet point in 5.0.2 notes). When releasing 5.0.2,
+          I thought that no encoder creates this kind of files but
+          I was wrong.
+        - Validate function arguments better in a few functions. Most
+          importantly, specifying an unsupported integrity check to
+          lzma_stream_buffer_encode() no longer creates a corrupt .xz
+          file. Probably no application tries to do that, so this
+          shouldn't be a big problem in practice.
+        - Document that lzma_block_buffer_encode(),
+          lzma_easy_buffer_encode(), lzma_stream_encoder(), and
+          lzma_stream_buffer_encode() may return LZMA_UNSUPPORTED_CHECK.
+        - The return values of the _memusage() functions are now
+          documented better.
+    * Fix command name detection in xzgrep. xzegrep and xzfgrep now
+      correctly use egrep and fgrep instead of grep.
+    * French translation was added.</comment>
+    <requestid>73037</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>88ce3e19969891b90a6b726675c7e573</srcmd5>
+    <version>5.0.3</version>
+    <time>1308120879</time>
+    <user>saschpe</user>
+    <comment>- add recommends xz-lang</comment>
+    <requestid>73576</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>b62efbf678a6cd404092220b0cd57bf1</srcmd5>
+    <version>5.0.3</version>
+    <time>1308120887</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73576
+</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>c50d1279b64d164070bffd4b278334eb</srcmd5>
+    <version>5.0.3</version>
+    <time>1316460440</time>
+    <user>lrupp</user>
+    <comment>- remove _service, too fragile
+
+- Add xz-devel to baselibs
+- Remove redundant sections</comment>
+    <requestid>82794</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>197725ac101de90b2705f873c752a5da</srcmd5>
+    <version>5.0.3</version>
+    <time>1317132917</time>
+    <user>saschpe</user>
+    <comment>- minor fixes of last portability changes:
+  * decouple do_profiling and lang_package again
+  * don't define do_factory, just use lang_package instead
+  * simplify files section
+  * do_profiling for some more systems (forwarded request 85092 from rudi_m)</comment>
+    <requestid>85100</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>c641eb90b1d614610c3bd93a3a3a8adc</srcmd5>
+    <version>5.0.3</version>
+    <time>1317547108</time>
+    <user>lrupp</user>
+    <comment>- Fix build in armv5el doesnt like profiling (forwarded request 85834 from elvigia)</comment>
+    <requestid>85836</requestid>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>79dab6deb7e9cccebde686959eabf0e1</srcmd5>
+    <version>5.0.3</version>
+    <time>1318345649</time>
+    <user>lrupp</user>
+    <comment>re-submit #86758 including changelog (forwarded request 87178 from rudi_m)</comment>
+    <requestid>87269</requestid>
+  </revision>
+  <revision rev="35" vrev="9">
+    <srcmd5>79dab6deb7e9cccebde686959eabf0e1</srcmd5>
+    <version>5.0.3</version>
+    <time>1319182619</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="36" vrev="10">
+    <srcmd5>e661b128a156586e7893c696e17275dd</srcmd5>
+    <version>5.0.3</version>
+    <time>1323195507</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="37" vrev="11">
+    <srcmd5>01dae04e6cb81404074d121bada9fc2e</srcmd5>
+    <version>5.0.3</version>
+    <time>1329319130</time>
+    <user>coolo</user>
+    <comment>- Put libraries back in %{_libdir}, /usr merge project. (forwarded request 104193 from elvigia)</comment>
+    <requestid>104195</requestid>
+  </revision>
+  <revision rev="38" vrev="13">
+    <srcmd5>01dae04e6cb81404074d121bada9fc2e</srcmd5>
+    <version>5.0.3</version>
+    <time>1340184390</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="39" vrev="14">
+    <srcmd5>9a3dd60b4af28030f93acbd86251efc1</srcmd5>
+    <version>5.0.3</version>
+    <time>1341834192</time>
+    <user>coolo</user>
+    <comment>- correct license &quot;LGPL-2.1+ and GPL-2.0+&quot; (bnc#770195)</comment>
+    <requestid>127269</requestid>
+  </revision>
+  <revision rev="40" vrev="15">
+    <srcmd5>124e40f882c2c25c22d6c534fd3bedb3</srcmd5>
+    <version>5.0.3</version>
+    <time>1343673745</time>
+    <user>coolo</user>
+    <comment>- Disable profiling on SPARC due to compiler bug [gcc #54121] (forwarded request 129221 from jengelh)</comment>
+    <requestid>129232</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>386708a98ab94f9b5d403ae93c706089</srcmd5>
+    <version>5.0.4</version>
+    <time>1354119878</time>
+    <user>coolo</user>
+    <comment>- Update to version 5.0.4
+  * liblzma:
+    - Fix lzma_index_init(). It could crash if memory allocation
+      failed.
+    - Fix the possibility of an incorrect LZMA_BUF_ERROR when a BCJ
+      filter is used and the application only provides exactly as
+      much output space as is the uncompressed size of the file.
+    - Fix a bug in doc/examples_old/xz_pipe_decompress.c. It didn't
+      check if the last call to lzma_code() really returned
+      LZMA_STREAM_END, which made the program think that truncated
+      files are valid.
+    - New example programs in doc/examples (old programs are now in
+      doc/examples_old). These have more comments and more detailed
+      error handling.
+  * Fix &quot;xz -lvv foo.xz&quot;. It could crash on some corrupted files.
+  * Fix output of &quot;xz --robot -lv&quot; and &quot;xz --robot -lvv&quot; which
+    incorrectly printed the filename also in the &quot;foo (x/x)&quot; format.
+  * Fix exit status of &quot;xzdiff foo.xz bar.xz&quot;.
+  * Fix exit status of &quot;xzgrep foo binary_file&quot;.
+  * Fix portability to EBCDIC systems.
+  * Fix a configure issue on AIX with the XL C compiler. See INSTALL
+    for details.
+  * Update French, German, Italian, and Polish translations (forwarded request 143030 from rudi_m)</comment>
+    <requestid>143060</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>386708a98ab94f9b5d403ae93c706089</srcmd5>
+    <version>5.0.4</version>
+    <time>1359110705</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>2322fcb5a7ff5b506fc999bb53411b0d</srcmd5>
+    <version>5.0.4</version>
+    <time>1359640568</time>
+    <user>coolo</user>
+    <comment>Disable profiling for aarch64 arch (forwarded request 150409 from Guillaume_G)</comment>
+    <requestid>150563</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>67bb1ce328537dedc0a6aed01a58d61c</srcmd5>
+    <version>5.0.5</version>
+    <time>1374050243</time>
+    <user>coolo</user>
+    <comment>- Update to version 5.0.5
+  * lzmadec and liblzma's lzma_alone_decoder(): Support decompressing
+    .lzma files that have less common settings in the headers
+    (dictionary size other than 2^n or 2^n + 2^(n-1), or uncompressed
+    size greater than 256 GiB).
+  * xz:
+    - Fixes and improvements to error handling.
+    - Various fixes to the man page.
+  * xzless: Fixed to work with &quot;less&quot; versions 448 and later
+  * xzgrep: Made -h an alias for --no-filename. (forwarded request 183430 from namtrac)</comment>
+    <requestid>183453</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>67bb1ce328537dedc0a6aed01a58d61c</srcmd5>
+    <version>5.0.5</version>
+    <time>1379665130</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>7a29b1216f26953bbb1805dc77880145</srcmd5>
+    <version>5.0.5</version>
+    <time>1387456538</time>
+    <user>coolo</user>
+    <comment>- add optional -static-devel library package, intended to publish pixz for
+  CentOS / RHEL, default off
+
+- Use gzipped archive to prevent a build cycle on older targets
+  * http://lists.opensuse.org/opensuse-buildservice/2013-10/msg00079.html
+- Add a signature and keyring file for source verification
+  * not enable in spec due bootstrapping issues</comment>
+    <requestid>210449</requestid>
+  </revision>
+  <revision rev="47" vrev="6">
+    <srcmd5>7a29b1216f26953bbb1805dc77880145</srcmd5>
+    <version>5.0.5</version>
+    <time>1409303817</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>abd1649ac276626092b8ccc9647abbf8</srcmd5>
+    <version>5.0.7</version>
+    <time>1411987210</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>251516</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>77b4ac0e7b0a3573fce4444a91ea3baf</srcmd5>
+    <version>5.0.7</version>
+    <time>1419334376</time>
+    <user>dimstar_suse</user>
+    <comment>- build with PIE support.
+
+- Build XZ with full RELRO.</comment>
+    <requestid>265895</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>cd15645d5e741101e2e51654fdc116f0</srcmd5>
+    <version>5.2.0</version>
+    <time>1420318840</time>
+    <user>dimstar_suse</user>
+    <comment>xz 5.2.0 (forwarded request 266416 from AndreasStieger)</comment>
+    <requestid>266417</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>61b5d82fe10a468aea351898e525c548</srcmd5>
+    <version>5.2.0</version>
+    <time>1422594078</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid running configure twice and using -fprofile-generate or
+  -fprofile-use for compiling configure tests when profiling.</comment>
+    <requestid>282206</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>43e405166407a5150128f1ee4ecf265e</srcmd5>
+    <version>5.2.1</version>
+    <time>1425565877</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288183</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d7d21e2e49c84c0971b6c132f8bd7292</srcmd5>
+    <version>5.2.2</version>
+    <time>1444130604</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334900</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>db1876f73154e185a94f214bc6d3b32c</srcmd5>
+    <version>5.2.2</version>
+    <time>1448186263</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>344924</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>c934bdea98a4fa1478202c42cd943a0a</srcmd5>
+    <version>5.2.2</version>
+    <time>1456132176</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359928</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>7d908bd39e8c62c577f4aa7febcd6095</srcmd5>
+    <version>5.2.2</version>
+    <time>1459001258</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>374985</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>550a19aaa5cdf0ba8c21d2501c9bced4</srcmd5>
+    <version>5.2.3</version>
+    <time>1484818402</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448455</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>c65062441d340afde1d1d488b8e4301d</srcmd5>
+    <version>5.2.3</version>
+    <time>1488930341</time>
+    <user>dimstar_suse</user>
+    <comment>is there any reason why we can't enable static build of xz in SUSE? I would need to build an extra package of it otherwise .... (forwarded request 460649 from adrianSuSE)</comment>
+    <requestid>477250</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>3c62b549dc914d683b1e9ab2f0117bab</srcmd5>
+    <version>5.2.3</version>
+    <time>1498840740</time>
+    <user>dimstar_suse</user>
+    <comment>various clean-ups</comment>
+    <requestid>506130</requestid>
+  </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>d356b077fc3b55f6a3c2621fd16c91e5</srcmd5>
+    <version>5.2.3</version>
+    <time>1500669306</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509345</requestid>
+  </revision>
+  <revision rev="61" vrev="5">
+    <srcmd5>1dd513269c6c3cb0fe6bed1f37f5279f</srcmd5>
+    <version>5.2.3</version>
+    <time>1522058342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588644</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0aa64f9c58eaee2b6023c76ce75013c7</srcmd5>
+    <version>5.2.4</version>
+    <time>1530087260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617062</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>0c7590fcafcf1c8a7a8686391d5da8cc</srcmd5>
+    <version>5.2.4</version>
+    <time>1560337035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705528</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>1c4fcc0e758b78231383d589aae2213b</srcmd5>
+    <version>5.2.4</version>
+    <time>1567677828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720527</requestid>
+  </revision>
+</revisionlist>

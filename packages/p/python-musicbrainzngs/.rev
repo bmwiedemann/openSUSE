@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1f2f509c3f6f008dfdd99bc9e167dca</srcmd5>
+    <version>0.6</version>
+    <time>1505334647</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of  python3-musicbrainzngs</comment>
+    <requestid>522164</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3e7e3bf921511208a409a84862494324</srcmd5>
+    <version>0.6</version>
+    <time>1545648000</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659504</requestid>
+  </revision>
+</revisionlist>

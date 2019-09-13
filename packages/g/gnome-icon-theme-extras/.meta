@@ -1,0 +1,5 @@
+<package name="gnome-icon-theme-extras" project="openSUSE:Factory">
+  <title>GNOME Icon Theme Extras</title>
+  <description>Extra GNOME icons for specific devices and file types.</description>
+  <devel project="GNOME:Factory" package="gnome-icon-theme-extras"/>
+</package>

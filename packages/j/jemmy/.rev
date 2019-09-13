@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa459aaffdc17095a6a04205de945b3d</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1270757325</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/jemmy based on submit request 37332 from user mvyskocil
+</comment>
+    <requestid>37332</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>aa459aaffdc17095a6a04205de945b3d</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>aa459aaffdc17095a6a04205de945b3d</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>30c12c785aa3cdc3bb6c28cd55fc4114</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1294657379</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57361 from user prusnak
+</comment>
+    <requestid>57361</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>34e30719982f871e1052fe170c6bd0e5</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1294657390</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57361
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>34e30719982f871e1052fe170c6bd0e5</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>34e30719982f871e1052fe170c6bd0e5</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1319182010</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>1ebee0ac25bd52dd3724ef4d50500653</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1323192036</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>1ebee0ac25bd52dd3724ef4d50500653</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1340183485</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>1ebee0ac25bd52dd3724ef4d50500653</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1359109122</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>863624116864f5942a1a583aa8d01484</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1363067783</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0 or CDDL-1.0
+previous spec file license made no sense (forwarded request 157911 from babelworx)</comment>
+    <requestid>157912</requestid>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>41e085b910e17eff50b708cad78a121b</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1378899518</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198288</requestid>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>41e085b910e17eff50b708cad78a121b</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1379662714</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>60c5c70ba9206b682463944c557dce2d</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1404161393</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238894</requestid>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>60c5c70ba9206b682463944c557dce2d</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1409301279</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>f9530af4b353920674f0f6af8bbba1df</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1427983031</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292627</requestid>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>d47430dee1fc060ccd10bff7c2050035</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1495442824</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496541</requestid>
+  </revision>
+  <revision rev="18" vrev="25">
+    <srcmd5>fc5c6827cad00a33bb9c7e119542daa7</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1505920208</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527189</requestid>
+  </revision>
+</revisionlist>

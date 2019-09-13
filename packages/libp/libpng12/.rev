@@ -1,0 +1,360 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>91eca0a9ed0f96d7397607a48d4e72f9</srcmd5>
+    <version>1.2.43</version>
+    <time>1270139017</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libpng12 based on submit request 36103 from user pgajdos
+</comment>
+    <requestid>36103</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>53e10b05579d50fcd50b0cb80cf34517</srcmd5>
+    <version>1.2.43</version>
+    <time>1272122982</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libpng12 based on submit request 38735 from user coolo
+</comment>
+    <requestid>38735</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>88ffa79b1dfe0094c64d3c48cbf6ddec</srcmd5>
+    <version>1.2.43</version>
+    <time>1275657708</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libpng12 based on submit request 41125 from user coolo
+</comment>
+    <requestid>41125</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9f05a01bd699f5bf0f3de51199788528</srcmd5>
+    <version>1.2.44</version>
+    <time>1278081732</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libpng12 based on submit request 42217 from user pgajdos
+</comment>
+    <requestid>42217</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9f05a01bd699f5bf0f3de51199788528</srcmd5>
+    <version>1.2.44</version>
+    <time>1278667361</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>9f05a01bd699f5bf0f3de51199788528</srcmd5>
+    <version>1.2.44</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>8338f791f76781277b36cfa184e0ef58</srcmd5>
+    <version>1.2.44</version>
+    <time>1280486495</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libpng12 based on submit request 44231 from user pgajdos
+</comment>
+    <requestid>44231</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>f9a45772484775e073f64d4776935161</srcmd5>
+    <version>1.2.44</version>
+    <time>1283512114</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libpng12 based on submit request 46668 from user coolo
+</comment>
+    <requestid>46668</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>f9a45772484775e073f64d4776935161</srcmd5>
+    <version>1.2.44</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>f24e4da1bbe5b0513601caf8c2ec1464</srcmd5>
+    <version>1.2.46</version>
+    <time>1311607454</time>
+    <user>saschpe</user>
+    <comment>- updated to 1.2.46:
+  * fixed CVE-2011-2501 [bnc#702578]</comment>
+    <requestid>76128</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>9803d6c461bbc882d521956159af9aba</srcmd5>
+    <version>1.2.46</version>
+    <time>1311607464</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76128
+</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>97c2f6a33051671e4d6e6badecbfc870</srcmd5>
+    <version>1.2.46</version>
+    <time>1317912184</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %configure macro (forwarded request 86693 from uli_suse)</comment>
+    <requestid>86702</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>97c2f6a33051671e4d6e6badecbfc870</srcmd5>
+    <version>1.2.46</version>
+    <time>1319182123</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>007c0c56cbe3d7f853495b03259ca36d</srcmd5>
+    <version>1.2.46</version>
+    <time>1322814435</time>
+    <user>coolo</user>
+    <comment>- Name field shouldn't contain a macro 
+
+- add libtool as buildrequire to avoid implicit dependency</comment>
+    <requestid>94672</requestid>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>c78b45dafa31e9fd620fab015a9e6f43</srcmd5>
+    <version>1.2.46</version>
+    <time>1323192313</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6c80922d80e2a0137b30435ff29ecdf4</srcmd5>
+    <version>1.2.47</version>
+    <time>1329750876</time>
+    <user>coolo</user>
+    <comment>- updated to 1.2.47:
+  * fixed CVE-2011-3026 [bnc#747311]</comment>
+    <requestid>105993</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2164ef79cb95ae5b6aaa8973c9c86330</srcmd5>
+    <version>1.2.48</version>
+    <time>1332148307</time>
+    <user>coolo</user>
+    <comment>- updated to 1.2.48:
+  * fixed CVE-2011-3045 [bnc#752008]</comment>
+    <requestid>109263</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ee0281c6c08faf894ea5d1570af47ec5</srcmd5>
+    <version>1.2.49</version>
+    <time>1333356640</time>
+    <user>coolo</user>
+    <comment>- updated to 1.2.49: [bnc#754745]
+  Revised png_set_text_2() to avoid potential memory corruption (fixes
+    CVE-2011-3048).
+  Prevent PNG_EXPAND+PNG_SHIFT doing the shift twice.</comment>
+    <requestid>111878</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>ee0281c6c08faf894ea5d1570af47ec5</srcmd5>
+    <version>1.2.49</version>
+    <time>1340183622</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>93eb1f1eeca523cb074e26cb673b77ca</srcmd5>
+    <version>1.2.50</version>
+    <time>1347618555</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134078</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>2888338ec95e08b6163788b7a4b06ae5</srcmd5>
+    <version>1.2.50</version>
+    <time>1351264363</time>
+    <user>coolo</user>
+    <comment>- Add missing baselib requires for compat-devel-32bit (forwarded request 139206 from jengelh)</comment>
+    <requestid>139342</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>2888338ec95e08b6163788b7a4b06ae5</srcmd5>
+    <version>1.2.50</version>
+    <time>1359109329</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>5159bfeab5959fa3f909a1edaa289759</srcmd5>
+    <version>1.2.50</version>
+    <time>1366290002</time>
+    <user>coolo</user>
+    <comment>- add conflicts in -32bit package (forwarded request 171336 from coolo)</comment>
+    <requestid>171338</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>5159bfeab5959fa3f909a1edaa289759</srcmd5>
+    <version>1.2.50</version>
+    <time>1379663049</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>43412ca9e664b2a5b09dde43ddcafd0d</srcmd5>
+    <version>1.2.51</version>
+    <time>1391948267</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 1.2.51:
+  Ignore, with a warning, out-of-range value of num_trans in png_set_tRNS().
+  Replaced AM_CONFIG_HEADER(config.h) with
+     AC_CONFIG_HEADERS([config.h]) in configure.ac
+  Changed default value of PNG_USER_CACHE_MAX from 0 to 32767 in pngconf.h.
+  Avoid a possible memory leak in contrib/gregbook/readpng.c
+  Revised libpng.3 so that &quot;doclifter&quot; can process it.
+  Changed '&quot;%s&quot;m' to '&quot;%s&quot; m' in png_debug macros to improve portability
+    among compilers.
+  Rebuilt the configure scripts with autoconf-2.69 and automake-1.14.1
+  Removed potentially misleading warning from png_check_IHDR().
+  Quiet set-but-not-used warnings in pngset.c
+  Quiet an uninitialized memory warning from VC2013 in png_get_png().
+  Quiet unused variable warnings from clang by porting PNG_UNUSED() from
+    libpng-1.4.6.
+  Added -DZ_SOLO to CFLAGS in contrib/pngminim/*/makefile
+  Added an #ifdef PNG_FIXED_POINT_SUPPORTED/#endif in pngset.c</comment>
+    <requestid>221208</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>502f5517ccf9563fb79fec8aafe8a009</srcmd5>
+    <version>1.2.51</version>
+    <time>1399376376</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>232699</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>502f5517ccf9563fb79fec8aafe8a009</srcmd5>
+    <version>1.2.51</version>
+    <time>1409301668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0d15fb48bf15318837d8d37d1e5fb0b9</srcmd5>
+    <version>1.2.52</version>
+    <time>1416823998</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.2.52:
+  * Avoid out-of-bounds memory access while checking version string.</comment>
+    <requestid>262527</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>35ec9711f9d4a8772a5bd9d8de563f82</srcmd5>
+    <version>1.2.52</version>
+    <time>1421959713</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix CVE-2013-7354.patch, include limits.h for INT_MAX (forwarded request 281971 from olh)</comment>
+    <requestid>281974</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d039ddefb719ba977092f4f55a0f2d68</srcmd5>
+    <version>1.2.53</version>
+    <time>1425377405</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.2.53:
+  Issue a png_error() instead of a png_warning() when width is
+    potentially too large for the architecture, in case the calling
+    application has overridden the default 1,000,000-column limit
+    (fixes CVE-2014-9495 and CVE-2015-0973).
+  Display user limits in the output from pngtest.
+  Changed PNG_USER_CHUNK_MALLOC_MAX from unlimited to 8,000,000.
+    This can only be changed at library-build time.  It only
+    affects the maximum memory that can be allocated to an
+    ancillary chunk; it does not limit the size of IDAT
+    data, which is instead limited by PNG_USER_WIDTH_MAX.</comment>
+    <requestid>288036</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>acf19f32f8280931fd0193ad6308054d</srcmd5>
+    <version>1.2.53</version>
+    <time>1439825158</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>323167</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>afabe64bea0d65ba309684f67f2b5403</srcmd5>
+    <version>1.2.54</version>
+    <time>1448400653</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>345349</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a289861db72785b4c16b2e34839f02d1</srcmd5>
+    <version>1.2.55</version>
+    <time>1449686010</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.2.55:
+  Avoid potential pointer overflow in png_handle_iTXt(), png_handle_zTXt(),
+    png_handle_sPLT(), and png_handle_pCAL() (Bug report by John Regehr).
+  Fixed incorrect implementation of png_set_PLTE() that uses png_ptr
+    not info_ptr, that left png_set_PLTE() open to the CVE-2015-8126
+    vulnerability.</comment>
+    <requestid>347338</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7c60c86d7b7766183b132c9fc4cd705d</srcmd5>
+    <version>1.2.56</version>
+    <time>1450695814</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.2.56:
+  Fixed an out-of-range read in png_check_keyword() (Bug report from
+    Qixue Xiao, CVE-2015-8540).
+  Added keyword checks to pngset.c</comment>
+    <requestid>349409</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0d5d7f74723a70d121b9fd7b23c99b15</srcmd5>
+    <version>1.2.57</version>
+    <time>1484041042</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.2.57: fixes CVE-2016-10087</comment>
+    <requestid>448476</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>6a8e763771108ccfd37f0bf79314eb0b</srcmd5>
+    <version>1.2.57</version>
+    <time>1517668877</time>
+    <user>dimstar_suse</user>
+    <comment>- check with -j1, be explicit
+
+- Fix SRPM group and grammar issues.</comment>
+    <requestid>571332</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>6a8e763771108ccfd37f0bf79314eb0b</srcmd5>
+    <version>1.2.57</version>
+    <time>1521499044</time>
+    <user>dimstar_suse</user>
+    <comment>fixed all packages that required this, other than the defunct LSB thing, it can be safely dropped from factory.</comment>
+    <requestid>587550</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>6a8e763771108ccfd37f0bf79314eb0b</srcmd5>
+    <version>1.2.57</version>
+    <time>1521624898</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for steam</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>982bae3d509fce279c57ee8144c0fa53</srcmd5>
+    <version>1.2.59</version>
+    <time>1563456070</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.2.59
+  Added png_check_chunk_length() function, and check all chunks except
+    IDAT against the default 8MB limit; check IDAT against the maximum
+    size computed from IHDR parameters (Fixes CVE-2017-12652).
+  Initialize memory allocated by png_inflate to zero, using memset, to
+    stop an oss-fuzz &quot;use of uninitialized value&quot; detection in png_set_text_2()
+    due to truncated iTXt or zTXt chunk.</comment>
+    <requestid>715992</requestid>
+  </revision>
+</revisionlist>

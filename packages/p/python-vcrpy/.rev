@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5ea0ad678b851f90645991207af67e3</srcmd5>
+    <version>1.11.1</version>
+    <time>1504103032</time>
+    <user>dimstar_suse</user>
+    <comment>Add python-vcrpy to factory.</comment>
+    <requestid>519533</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>af23d219e957cc17a9ec2f47b88a508c</srcmd5>
+    <version>2.0.1</version>
+    <time>1540544919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644399</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6de8978fe3f3c3f4dcae8a809fc1b7ef</srcmd5>
+    <version>2.0.1</version>
+    <time>1546246031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662049</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>14d87bd072e3cc025964200684031dfd</srcmd5>
+    <version>2.0.1</version>
+    <time>1555574210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695151</requestid>
+  </revision>
+</revisionlist>

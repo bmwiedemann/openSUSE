@@ -1,0 +1,5 @@
+<package name="sca-patterns-sle11" project="openSUSE:Factory">
+  <title>Supportconfig Analysis Patterns for SLE11</title>
+  <description>Supportconfig Analysis (SCA) appliance patterns to identify known issues relating to all versions of SLES/SLED 11</description>
+  <devel project="Novell:NTS:Unstable" package="sca-patterns-sle11"/>
+</package>

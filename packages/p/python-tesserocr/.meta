@@ -1,0 +1,11 @@
+<package name="python-tesserocr" project="openSUSE:Factory">
+  <title>A simple, Pillow-friendly, Python wrapper around tesseract-ocr</title>
+  <description>A simple, Pillow-friendly wrapper around the tesseract-ocr API for Optical
+Character Recognition (OCR).
+
+tesserocr integrates directly with Tesseract's C++ API using Cython
+which allows for simple Pythonic and easy-to-read source code. It
+enables real concurrent execution when used with Python's threading
+module by releasing the GIL while processing an image in tesseract.</description>
+  <devel project="devel:languages:python" package="python-tesserocr"/>
+</package>

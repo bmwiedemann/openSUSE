@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>111b1491500ba8cba36a5b3e34cd7dc2</srcmd5>
+    <version>3.1.0</version>
+    <time>1411721554</time>
+    <user>coolo</user>
+    <comment>New package used by malware researchers - not needed in 13.2, but fine to have there.</comment>
+    <requestid>252373</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8f3f395dbb0aa1794a1a543b2a0ad60f</srcmd5>
+    <version>3.4.0</version>
+    <time>1437724746</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>318236</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c8de89abdeff9e3bcd65805a5ca78398</srcmd5>
+    <version>3.5.0</version>
+    <time>1478952019</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>432110</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e510349f67677f644469cfd1bd2de414</srcmd5>
+    <version>3.5.0</version>
+    <time>1479150915</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440080</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>32afe9b4fb0eaa7022559fa95abc3579</srcmd5>
+    <version>3.6.1</version>
+    <time>1500669893</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501373</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4c94cdd6c90675f2c25ec89c5ebaffde</srcmd5>
+    <version>3.7.1</version>
+    <time>1527605534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612691</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-tpfd" project="openSUSE:Factory">
+  <title></title>
+  <description>TPFD is an easy way to parse strings and execute functions depending on their contents.</description>
+  <devel project="devel:languages:python" package="python-tpfd"/>
+</package>

@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>171f8a724ba917b8df09bb24853261b3</srcmd5>
+    <version>0.2.0</version>
+    <time>1515623587</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>559893</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dccf6ed7ef8854f24673f8ae5e4c2295</srcmd5>
+    <version>0.3.0</version>
+    <time>1518187977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.0:
+  * drop python2.x support
+  * bug fix, Add sort key function #14</comment>
+    <requestid>574520</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6bdab6a32e9e70dcb104727c469d6386</srcmd5>
+    <version>0.4.2</version>
+    <time>1539342656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.2:
+  * fix bug for support 4-digit (handling prelease and build)
+  * suport 4-digit version (e.g. x.y.z.a)</comment>
+    <requestid>641274</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>02bef258a278b37ccef4a605300939a3</srcmd5>
+    <version>0.6.1</version>
+    <time>1547211934</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.0:
+  * more strict error handling (InvalidTypeIncluded is added)
+- Changes for version 0.5.1:
+  * bug fix
+- Changes for version 0.5.0:
+  * include_prerelease option is added</comment>
+    <requestid>664383</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>97302e0846ed619115e6161ceb4e5da9</srcmd5>
+    <version>0.7.0</version>
+    <time>1565721912</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.0:
+  * Include tests in source distributions</comment>
+    <requestid>723101</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="lightstep-tracer-cpp" project="openSUSE:Factory">
+  <title>lightstep-tracer-cpp</title>
+  <description>The LightStep distributed tracing library for C++</description>
+  <devel project="devel:libraries:c_c++" package="lightstep-tracer-cpp"/>
+  <url>http://lightstep.com/</url>
+</package>

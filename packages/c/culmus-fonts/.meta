@@ -1,0 +1,5 @@
+<package name="culmus-fonts" project="openSUSE:Factory">
+  <title>culmus</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="M17N:fonts" package="culmus-fonts"/>
+</package>

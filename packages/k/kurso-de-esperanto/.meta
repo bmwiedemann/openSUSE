@@ -1,0 +1,10 @@
+<package name="kurso-de-esperanto" project="openSUSE:Factory">
+  <title>Multimedia application for teaching oneself Esperanto</title>
+  <description>Kurso de Esperanto is a multimedia computer application for teaching oneself Esperanto.
+Here are several of its features:
+ * Just 12 lessons.
+ * Pronunciation and listening exercises.
+ * Audio songs – learn while you sing!
+ * A wide variety of exercises, to reinforce the learning points.</description>
+  <devel project="Education" package="kurso-de-esperanto"/>
+</package>

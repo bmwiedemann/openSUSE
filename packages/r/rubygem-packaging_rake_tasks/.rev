@@ -1,0 +1,191 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bf68b6047606e2a8994aba8c90c14c3</srcmd5>
+    <version>1.0.3</version>
+    <time>1386687815</time>
+    <user>coolo</user>
+    <comment>New package see http://lists.opensuse.org/opensuse-factory/2013-10/msg00023.html</comment>
+    <requestid>202584</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e4145478926e9651b5fe84a69d08ca80</srcmd5>
+    <version>1.0.11</version>
+    <time>1386932440</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210692</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b073815153bf39aafe27e86c31b63f15</srcmd5>
+    <version>1.0.12</version>
+    <time>1389284749</time>
+    <user>coolo</user>
+    <comment>submit new version 1.0.12</comment>
+    <requestid>213154</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>252cf244d52ba5ef3a26bd3e2182d368</srcmd5>
+    <version>1.0.13</version>
+    <time>1390482669</time>
+    <user>coolo</user>
+    <comment>submit new version 1.0.13</comment>
+    <requestid>214202</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5361e7cabf7912b88cef44c307a3db65</srcmd5>
+    <version>1.0.14</version>
+    <time>1391787868</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>221029</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5f2dc1834187a3fb9315b3fea6f6f2a6</srcmd5>
+    <version>1.0.15</version>
+    <time>1393605991</time>
+    <user>coolo</user>
+    <comment>submit new version 1.0.15</comment>
+    <requestid>223875</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5f2dc1834187a3fb9315b3fea6f6f2a6</srcmd5>
+    <version>1.0.15</version>
+    <time>1409303263</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>65d713f07086875244d05ab94fa3e745</srcmd5>
+    <version>1.1.0</version>
+    <time>1413048356</time>
+    <user>coolo</user>
+    <comment>submit new version 1.1.0</comment>
+    <requestid>254712</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6bf4fc02f313bd4af896bccace1e4fca</srcmd5>
+    <version>1.1.0</version>
+    <time>1413782804</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255845</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cb26c836bc4a2ef9b6926ced22436edb</srcmd5>
+    <version>1.1.3</version>
+    <time>1443896911</time>
+    <user>coolo</user>
+    <comment>- Do not crash if tarball have different name in devel project
+- 1.1.3
+
+- stop osc commit if there is no change
+- 1.1.2
+
+- additionally report warnings in the &quot;check:syntax&quot; task
+- 1.1.1</comment>
+    <requestid>335866</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2b5ec43bc278b697b6804f5c3cbe090e</srcmd5>
+    <version>1.1.4</version>
+    <time>1458470901</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 1.1.4</comment>
+    <requestid>373329</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4f697aec0d84cd101358ecc761b27855</srcmd5>
+    <version>1.2.0</version>
+    <time>1459237947</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 1.2.0</comment>
+    <requestid>376620</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>604ef239651887506b82b16c35d88585</srcmd5>
+    <version>1.2.1</version>
+    <time>1460028886</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 1.2.1</comment>
+    <requestid>382968</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>28ec1e4893716bb440933b8d5b867990</srcmd5>
+    <version>1.3.1</version>
+    <time>1492417441</time>
+    <user>maxlin_factory</user>
+    <comment>- sync IDs in check:changelog with build service
+- 1.3.1
+
+- Add new task for check documentation (check:doc)
+- 1.3.0</comment>
+    <requestid>487084</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cf5086e9c2abb1a56b0d55990cd95edd</srcmd5>
+    <version>1.4.0</version>
+    <time>1506340514</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 1.4.0</comment>
+    <requestid>528046</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>99996f6cb27d2de667541b3b7e7060db</srcmd5>
+    <version>1.4.1</version>
+    <time>1508769480</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid &quot;service in progress&quot; error when creating a SR for
+  a freshly commited package (bsc#1063248)
+- 1.4.1</comment>
+    <requestid>534131</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bee97c6ae6f6041e670fcc8cfc73d9e1</srcmd5>
+    <version>1.4.3</version>
+    <time>1512292212</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed &quot;rake tarball&quot; task to work also with tar &lt; 1.28.
+  (Do not use the &quot;--sort=name&quot; tar option, use a &quot;find | sort&quot;
+  workaround instead. The &quot;--sort&quot; option is not supported in
+  the latest Leap 42.3 or SLE12-SP3.) (bsc#1070168)
+- 1.4.3
+
+- Fixed the &quot;rake tarball&quot; task to create reproducible tarballs,
+  avoid different source checksums for the same content in OBS
+  and in IBS (bsc#1070168)
+- 1.4.2</comment>
+    <requestid>546422</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>684905c069087d590b8a2f2998323f8d</srcmd5>
+    <version>1.4.5</version>
+    <time>1529065920</time>
+    <user>maxlin_factory</user>
+    <comment>submit new version 1.4.5</comment>
+    <requestid>614860</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8dd092b78cfb5182724b7aca9280beb5</srcmd5>
+    <version>1.4.7</version>
+    <time>1557832382</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 1.4.7</comment>
+    <requestid>701983</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>441b9c2827bb6fa5db3b91417c0a4286</srcmd5>
+    <version>1.4.9</version>
+    <time>1566664965</time>
+    <user>dimstar_suse</user>
+    <comment>New version 1.4.9, with a correct gem file</comment>
+    <requestid>724994</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d8f15ecdb7e14c666411d118461531b5</srcmd5>
+    <version>1.4.10</version>
+    <time>1568190108</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 1.4.10</comment>
+    <requestid>728526</requestid>
+  </revision>
+</revisionlist>

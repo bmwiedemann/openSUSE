@@ -1,0 +1,5 @@
+<package name="qt5ct" project="openSUSE:Factory">
+  <title>Qt5 Configuration Tool</title>
+  <description>This application allows users to configure Qt5 settings (theme, font, icons, etc.) under a DE/WM without Qt integration.</description>
+  <devel project="KDE:Qt5" package="qt5ct"/>
+</package>

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72156cd87c9749e6be4c5caf8d38c9e9</srcmd5>
+    <version>0.14</version>
+    <time>1411017159</time>
+    <user>coolo</user>
+    <comment>needed for perl-Mouse</comment>
+    <requestid>249263</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>491f5ab5303b0254f4bdfbc314127757</srcmd5>
+    <version>0.15</version>
+    <time>1430132656</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>303814</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5e5dc1a2b0ad5eab4c000c5e273114e4</srcmd5>
+    <version>0.16</version>
+    <time>1435870214</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314643</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e589071f321b49afe2d1db4e9147bb24</srcmd5>
+    <version>0.17</version>
+    <time>1510761185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539958</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d10860de70ed3e15928ba5ec8f645303</srcmd5>
+    <version>0.18</version>
+    <time>1515505830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554831</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9690c88b343c71c140f0e15d36566b55</srcmd5>
+    <version>0.19</version>
+    <time>1562843255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691010</requestid>
+  </revision>
+</revisionlist>

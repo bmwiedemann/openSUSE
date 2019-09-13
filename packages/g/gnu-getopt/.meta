@@ -1,0 +1,8 @@
+<package name="gnu-getopt" project="openSUSE:Factory">
+  <title>Java getopt Implementation</title>
+  <description>The GNU Java getopt classes support short and long argument parsing in
+a manner 100% compatible with the version of GNU getopt in glibc 2.0.6
+with a mostly compatible programmer's interface as well. Note that this
+is a port, not a new implementation.</description>
+  <devel project="Java:packages" package="gnu-getopt"/>
+</package>

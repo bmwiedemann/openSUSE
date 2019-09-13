@@ -1,0 +1,11 @@
+<package name="lzop" project="openSUSE:Factory">
+  <title>LZOP is a fast File Compressor</title>
+  <description>lzop is a file compressor similar to gzip. Its main advantages over gzip are much higher compression and decompression speed at the cost of compression ratio.
+
+lzop was designed with the following goals in mind:
+- speed (both compression and decompression)
+- reasonable drop-in compatibility to gzip
+- portability</description>
+  <devel project="Archiving" package="lzop"/>
+  <url>http://www.lzop.org/</url>
+</package>

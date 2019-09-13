@@ -1,0 +1,187 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>858ef27592e98654395512f48fbcf040</srcmd5>
+    <version>0.9.7</version>
+    <time>1168903386</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="52">
+    <srcmd5>f50525f427ae8069422da4d7ee374532</srcmd5>
+    <version>0.9.7</version>
+    <time>1174762385</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="99">
+    <srcmd5>b6565625cdd0fe3d12791d032889bbdd</srcmd5>
+    <version>0.9.7</version>
+    <time>1188229610</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="102">
+    <srcmd5>8f29e3913a36f374ef1c0ad5fe5a9244</srcmd5>
+    <version>0.9.7</version>
+    <time>1188721813</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="168">
+    <srcmd5>8f29e3913a36f374ef1c0ad5fe5a9244</srcmd5>
+    <version>0.9.7</version>
+    <time>1188721813</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="169">
+    <srcmd5>7a5860e97e4c107886373b4076fc238b</srcmd5>
+    <version>0.9.7</version>
+    <time>1245276000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="171">
+    <srcmd5>7a5860e97e4c107886373b4076fc238b</srcmd5>
+    <version>0.9.7</version>
+    <time>1245276000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="172">
+    <srcmd5>1bf8ae24e62a6685a53b57ea6d780834</srcmd5>
+    <version>0.9.7</version>
+    <time>1268924709</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="174">
+    <srcmd5>1bf8ae24e62a6685a53b57ea6d780834</srcmd5>
+    <version>0.9.7</version>
+    <time>1278667362</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="175">
+    <srcmd5>1bf8ae24e62a6685a53b57ea6d780834</srcmd5>
+    <version>0.9.7</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="178">
+    <srcmd5>1bf8ae24e62a6685a53b57ea6d780834</srcmd5>
+    <version>0.9.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="180">
+    <srcmd5>1bf8ae24e62a6685a53b57ea6d780834</srcmd5>
+    <version>0.9.7</version>
+    <time>1319182134</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="181">
+    <srcmd5>ba470e179e34e3d0a529d8a91bf77600</srcmd5>
+    <version>0.9.7</version>
+    <time>1321980501</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93017 from coolo)</comment>
+    <requestid>93033</requestid>
+  </revision>
+  <revision rev="14" vrev="182">
+    <srcmd5>eaf296ef674fc60c49f3adacc7d35309</srcmd5>
+    <version>0.9.7</version>
+    <time>1329383160</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104394 from coolo)</comment>
+    <requestid>104645</requestid>
+  </revision>
+  <revision rev="15" vrev="184">
+    <srcmd5>eaf296ef674fc60c49f3adacc7d35309</srcmd5>
+    <version>0.9.7</version>
+    <time>1340183634</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="186">
+    <srcmd5>eaf296ef674fc60c49f3adacc7d35309</srcmd5>
+    <version>0.9.7</version>
+    <time>1359109349</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="187">
+    <srcmd5>6ce95fc22dbcbb98a23b3d3b99fc0430</srcmd5>
+    <version>0.9.7</version>
+    <time>1363586861</time>
+    <user>coolo</user>
+    <comment>apply a fix for huge files, example in man page, cleanup, testing build (forwarded request 159603 from frispete)</comment>
+    <requestid>159639</requestid>
+  </revision>
+  <revision rev="18" vrev="188">
+    <srcmd5>319de52b3be0442530298c9c43410ec8</srcmd5>
+    <version>0.9.7</version>
+    <time>1367565451</time>
+    <user>coolo</user>
+    <comment>- librsync-serial-tests.patch fix build with new automake (forwarded request 174330 from elvigia)</comment>
+    <requestid>174340</requestid>
+  </revision>
+  <revision rev="19" vrev="190">
+    <srcmd5>319de52b3be0442530298c9c43410ec8</srcmd5>
+    <version>0.9.7</version>
+    <time>1379663082</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="191">
+    <srcmd5>156ec722da57066019891deebacfda44</srcmd5>
+    <version>0.9.7</version>
+    <time>1400255786</time>
+    <user>coolo</user>
+    <comment>- Remove accidentaly added file.
+
+- Cleanup with spec-cleaner
+- Add patch librsync-0.9.7-getopt.patch fixing debian bug#435894
+  * makes rdiff avare of -i and -z getopt options</comment>
+    <requestid>233876</requestid>
+  </revision>
+  <revision rev="21" vrev="193">
+    <srcmd5>156ec722da57066019891deebacfda44</srcmd5>
+    <version>0.9.7</version>
+    <time>1409301705</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="194">
+    <srcmd5>f7ddaa09b75ae9610d89bb5f956c8e08</srcmd5>
+    <version>0.9.7</version>
+    <time>1411220987</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249869</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c6314164941fac4bf9ba8f8c74ce64af</srcmd5>
+    <version>1.0.0</version>
+    <time>1426495228</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>289294</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>e1bd22fce0e21c236bf6b629239e64e5</srcmd5>
+    <version>1.0.0</version>
+    <time>1428192165</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>293756</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f80e0590f4854e8b6cbb8b7e382793d7</srcmd5>
+    <version>2.1.0</version>
+    <time>1568379758</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 2.1.0:
+- Remove no longer applicable patches:
+  * blake2-config.patch
+  * librsync-0.9.7-getopt.patch
+  * librsync-0.9.7-strictalias.diff
+  * librsync-exports.patch
+  * librsync-man-example.diff</comment>
+    <requestid>730530</requestid>
+  </revision>
+</revisionlist>

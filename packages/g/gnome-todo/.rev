@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b541d1dc93a8de63a871517c5d511586</srcmd5>
+    <version>3.18.0</version>
+    <time>1444142144</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0'
+</comment>
+    <requestid>333508</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>33c285572e2e1b900bb7e42593a2590b</srcmd5>
+    <version>3.18.1</version>
+    <time>1445860093</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 339414 from Zaitor)</comment>
+    <requestid>339830</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6bcfa39d72342c2203a2e587535df34f</srcmd5>
+    <version>3.20.0</version>
+    <time>1459255326</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 377208 from dimstar)</comment>
+    <requestid>377397</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b576c4adafd0069997792e669c2c2f4c</srcmd5>
+    <version>3.20.1</version>
+    <time>1462443023</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392375</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b40e16ce77b4f9ae05c3eacb6b4a633</srcmd5>
+    <version>3.20.2</version>
+    <time>1463038430</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394699</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5e4cedcbe9a32efa790fb9ad5a54924d</srcmd5>
+    <version>3.22.0</version>
+    <time>1478626127</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.22.0 - resub, build tested and fixed (forwarded request 439097 from dimstar)</comment>
+    <requestid>439152</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>495000a10501ae728046197078001319</srcmd5>
+    <version>3.22.1</version>
+    <time>1484041892</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449340</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9b8d0a0180d7c85bb44fc43850662ae3</srcmd5>
+    <version>3.24.1</version>
+    <time>1496327565</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498191</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7307c0d76a94e09e0257bd514bab4545</srcmd5>
+    <version>3.24.2</version>
+    <time>1497362981</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503266</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2321033a3fe2db8b3ce16f100c7735a6</srcmd5>
+    <version>3.25.90</version>
+    <time>1505331892</time>
+    <user>dimstar_suse</user>
+    <comment>- Update descriptions. (forwarded request 522359 from jengelh)</comment>
+    <requestid>522442</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a057f2f153e417892ebf3d28b3f8701e</srcmd5>
+    <version>3.26.1</version>
+    <time>1506594932</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529021</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>efcce8fb66f689da7cd6fc994543c46a</srcmd5>
+    <version>3.26.2</version>
+    <time>1509722905</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.26.2 (forwarded request 538051 from dimstar)</comment>
+    <requestid>538391</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3ad1987d67c659ee349fac0075e6c86e</srcmd5>
+    <version>3.26.2</version>
+    <time>1514745135</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-todo-nb-translations.patch: Update Norwegian bokmål
+  translations.
+- Enable build of api docs again, fixed upstream in 3.26.2 release.
+- Clean up spec, use modern macros.
+</comment>
+    <requestid>560743</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fd6569dac8c0ed71636bb14153a58ff1</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052753</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0 (forwarded request 586011 from dimstar)</comment>
+    <requestid>586212</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fd13f0c22ec6cbfd1945280602fc24fd</srcmd5>
+    <version>3.28.1</version>
+    <time>1523956591</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.28.1. (forwarded request 595820 from luc14n0)</comment>
+    <requestid>596169</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ee20a344f82ed99fcc0f8e5d92cc1545</srcmd5>
+    <version>3.28.1</version>
+    <time>1559376866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706721</requestid>
+  </revision>
+</revisionlist>

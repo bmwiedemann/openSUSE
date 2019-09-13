@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3268765a173e2ee7dc1f69486a8f3d1</srcmd5>
+    <version>0.6.7</version>
+    <time>1513245599</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package for version 0.6.7
+</comment>
+    <requestid>556402</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f45691d72060cdc4f62e19e5a095e14b</srcmd5>
+    <version>0.7.0</version>
+    <time>1526041673</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.7.0:
+ * support for .lu, cz
+ * fix for .eu
+- update typo version 0.6.9:
+ * fix .me
+- update typo version 0.6.8:
+ * support for .cat, .ie, .space, .nz
+ * dealing with multiple dates improved
+ * fixes for Python 3
+</comment>
+    <requestid>603208</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f97f3700695f902b4fac90b69da5c2cf</srcmd5>
+    <version>0.7.0</version>
+    <time>1545648165</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659620</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>07c53214745c7f4029beb1871b305899</srcmd5>
+    <version>0.7.1</version>
+    <time>1557751762</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.7.1:
+ * no changelog available</comment>
+    <requestid>701015</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9f6976036cee39e9e974ca54773cd8c9</srcmd5>
+    <version>0.7.2</version>
+    <time>1568190959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2:
+  * no changelog available</comment>
+    <requestid>729807</requestid>
+  </revision>
+</revisionlist>

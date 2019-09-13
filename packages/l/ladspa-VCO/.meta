@@ -1,0 +1,6 @@
+<package name="ladspa-VCO" project="openSUSE:Factory">
+  <title>LADSPA VCO plugin</title>
+  <description></description>
+  <devel project="multimedia:libs" package="ladspa-VCO"/>
+  <url>http://users.skynet.be/solaris/linuxaudio/</url>
+</package>

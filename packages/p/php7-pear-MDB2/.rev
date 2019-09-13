@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e86dfd18ada52b81cda8ade30fe12165</srcmd5>
+    <version>2.5.0b5</version>
+    <time>1510761105</time>
+    <user>dimstar_suse</user>
+    <comment>Packaged for PHP7</comment>
+    <requestid>539893</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cd73995a45da875a8044df953f7a2bac</srcmd5>
+    <version>2.5.0b5</version>
+    <time>1518426934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575370</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>95a7f11398c374e17d6490a8c6caa1b7</srcmd5>
+    <version>2.5.0b5</version>
+    <time>1520778301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584991</requestid>
+  </revision>
+</revisionlist>

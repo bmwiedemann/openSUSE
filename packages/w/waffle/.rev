@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>036ef5add66b3bfb613cdf2427c3098b</srcmd5>
+    <version>1.5.2</version>
+    <time>1485939106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>452459</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b821e058014a8f2dfe3488a5351fc70</srcmd5>
+    <version>1.5.2</version>
+    <time>1511193950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542941</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7e4a9b6206d709633c95a16ff24e3456</srcmd5>
+    <version>1.5.2</version>
+    <time>1529402504</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616834</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>05af46f27ad439e9e03bcefa54ce6d97</srcmd5>
+    <version>1.6.0</version>
+    <time>1560338246</time>
+    <user>dimstar_suse</user>
+    <comment>- version 1.6.0
+  * nacl support in cmake
+  * a shiny new meson build system
+  * json output from wflinfo
+  * EGL/GBM modifiers support
+  * Out of the box FreeBSD support when using meson
+  * Also included are a number of behind the scenes changes from
+    Emil, in particular a massive refactoring/improvement of the
+    unit tests.
+- no longer package LICENSE in every subpackage: instead let library
+  package require base package
+- improve description of devel package</comment>
+    <requestid>709109</requestid>
+  </revision>
+</revisionlist>

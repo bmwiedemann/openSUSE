@@ -1,0 +1,5 @@
+<package name="qore-uuid-module" project="openSUSE:Factory">
+  <title>Qore UUID Module</title>
+  <description>The Qore uuid module provides the ability to generate and parse UUIDs (universally unique identifiers)</description>
+  <devel project="devel:languages:misc" package="qore-uuid-module"/>
+</package>

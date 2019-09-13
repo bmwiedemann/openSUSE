@@ -1,0 +1,314 @@
+<revisionlist>
+  <revision rev="1" vrev="33">
+    <srcmd5>20fcdc251c3879b8af95b76efe945756</srcmd5>
+    <version>0.9</version>
+    <time>1168855306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>01f6d64a6c4291a52f6583f116c76a8d</srcmd5>
+    <version>1.0</version>
+    <time>1171611218</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4d3c7d7377ae56605a2700ac4d2feab1</srcmd5>
+    <version>1.0</version>
+    <time>1172443251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>66502820519fb9ec06d53b93c09d556b</srcmd5>
+    <version>1.0</version>
+    <time>1174592906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b646c59c005b11326923424d33716e0d</srcmd5>
+    <version>1.1</version>
+    <time>1186083575</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="25">
+    <srcmd5>0de4db58f4aaff11ed8bc4ea4f6098f4</srcmd5>
+    <version>1.1</version>
+    <time>1191366885</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="36">
+    <srcmd5>af90f102f24fc2201f30aa128fbe6c6e</srcmd5>
+    <version>1.1</version>
+    <time>1193183150</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="42">
+    <srcmd5>ba6601fc9ed80daf1c850cdca4c32aeb</srcmd5>
+    <version>1.1</version>
+    <time>1193964017</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="45">
+    <srcmd5>842b05a4f6e372b1a9f307902df89d8a</srcmd5>
+    <version>1.1</version>
+    <time>1194566581</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="67">
+    <srcmd5>ec90403f60b6b5f605bb0f2b8b047853</srcmd5>
+    <version>1.1</version>
+    <time>1200874411</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3c6c2ba1c60b4be0505bb1dd5142a6c3</srcmd5>
+    <version>1.2</version>
+    <time>1205411274</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="20">
+    <srcmd5>f8708f383f80558a43cc2f2aeb711529</srcmd5>
+    <version>1.2</version>
+    <time>1210112427</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3017094afa7f9b8db957dcdcbc0274ee</srcmd5>
+    <version>1.3.2</version>
+    <time>1220981258</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>559d4c0081cbe8c99a31ae5d73b66cf0</srcmd5>
+    <version>1.4.2</version>
+    <time>1250905494</time>
+    <user>autobuild</user>
+    <comment>Copy from network:telephony/twinkle based on submit request 18169 from user hennevogel
+</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>559d4c0081cbe8c99a31ae5d73b66cf0</srcmd5>
+    <version>1.4.2</version>
+    <time>1250905494</time>
+    <user>autobuild</user>
+    <comment>Copy from network:telephony/twinkle based on submit request 18169 from user hennevogel
+</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>0cc347a2050653abd1004a2cb90bbbf1</srcmd5>
+    <version>1.4.2</version>
+    <time>1268069190</time>
+    <user>autobuild</user>
+    <comment>Copy from network:telephony/twinkle based on submit request 34253 from user coolo
+</comment>
+    <requestid>34253</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>c3e584af8d5e94c27911505d8398893d</srcmd5>
+    <version>1.4.2</version>
+    <time>1268926395</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>c3e584af8d5e94c27911505d8398893d</srcmd5>
+    <version>1.4.2</version>
+    <time>1278667393</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>c3e584af8d5e94c27911505d8398893d</srcmd5>
+    <version>1.4.2</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>c3e584af8d5e94c27911505d8398893d</srcmd5>
+    <version>1.4.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="12">
+    <srcmd5>d5ba9e8e058b48a6d5d36d907ad2d9b1</srcmd5>
+    <version>1.4.2</version>
+    <time>1308567566</time>
+    <user>saschpe</user>
+    <comment>- do not remove the original COPYING (forwarded request 72776 from coolo)</comment>
+    <requestid>74120</requestid>
+  </revision>
+  <revision rev="22" vrev="13">
+    <srcmd5>6f8219fc535fa2c2a8a71b6ba20844f7</srcmd5>
+    <version>1.4.2</version>
+    <time>1308567578</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74120
+</comment>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>8adc3a14d2e832863647a382461e5f3d</srcmd5>
+    <version>1.4.2</version>
+    <time>1314004382</time>
+    <user>saschpe</user>
+    <comment>- add patch to modify Twinkle to use the new GNU uCommon/commoncpp libraries
+- remove dependency to common GNU CC++ library
+- merged the small non-void patch into the ucommon patch</comment>
+    <requestid>78721</requestid>
+  </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>642a649ed0862c647ca53695b04a14a2</srcmd5>
+    <version>1.4.2</version>
+    <time>1314004391</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78721
+</comment>
+  </revision>
+  <revision rev="25" vrev="16">
+    <srcmd5>7c5daf9b9b9398328656bd114c5e0609</srcmd5>
+    <version>1.4.2</version>
+    <time>1317132367</time>
+    <user>saschpe</user>
+    <comment>- fix build with newer ld
+
+- Fix BuildRequires to fetch the new libzrtpcpp2</comment>
+    <requestid>85065</requestid>
+  </revision>
+  <revision rev="26" vrev="18">
+    <srcmd5>7c5daf9b9b9398328656bd114c5e0609</srcmd5>
+    <version>1.4.2</version>
+    <time>1319182533</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="27" vrev="19">
+    <srcmd5>b72d0b79189fb9e4c2f08449a8dc004b</srcmd5>
+    <version>1.4.2</version>
+    <time>1323194989</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="28" vrev="20">
+    <srcmd5>a54b64c0afa59c4f168d0429973a1abd</srcmd5>
+    <version>1.4.2</version>
+    <time>1327484478</time>
+    <user>coolo</user>
+    <comment>Forward.</comment>
+    <requestid>101142</requestid>
+  </revision>
+  <revision rev="29" vrev="22">
+    <srcmd5>a54b64c0afa59c4f168d0429973a1abd</srcmd5>
+    <version>1.4.2</version>
+    <time>1340184289</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="30" vrev="24">
+    <srcmd5>a54b64c0afa59c4f168d0429973a1abd</srcmd5>
+    <version>1.4.2</version>
+    <time>1359110511</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="26">
+    <srcmd5>a54b64c0afa59c4f168d0429973a1abd</srcmd5>
+    <version>1.4.2</version>
+    <time>1379664855</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="27">
+    <srcmd5>a5f42d0066fc6a67d43ce9687c0c873a</srcmd5>
+    <version>1.4.2</version>
+    <time>1382378616</time>
+    <user>scarabeus_factory</user>
+    <comment>- Shift BuildRequires to explicitly use zrtpcpp2
+- Remove redundant %clean section (forwarded request 203765 from jengelh)</comment>
+    <requestid>204148</requestid>
+  </revision>
+  <revision rev="33" vrev="29">
+    <srcmd5>a5f42d0066fc6a67d43ce9687c0c873a</srcmd5>
+    <version>1.4.2</version>
+    <time>1409303541</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="30">
+    <srcmd5>cbf0892043b967c31acb9226fd39ee27</srcmd5>
+    <version>1.4.2</version>
+    <time>1433832533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308832</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6ab5aad8f22070feafd75bea50e618f6</srcmd5>
+    <version>1.9.0</version>
+    <time>1437803074</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>318467</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>def355d39f408f84728c3f014066b11c</srcmd5>
+    <version>1.9.0</version>
+    <time>1443585203</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>334759</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>070100d8d8627639f731def959c6e160</srcmd5>
+    <version>1.9.0</version>
+    <time>1444636928</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>337181</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>c9bde41ae4955b0f35d84fc09be28f7a</srcmd5>
+    <version>1.9.0</version>
+    <time>1452377617</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352489</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ee29910b5f9908d25c7357cc99a58131</srcmd5>
+    <version>1.10~git20160520</version>
+    <time>1464014382</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397278</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>707f6cb1f31f75f9479ce58cef5c6e41</srcmd5>
+    <version>1.10~git20160520</version>
+    <time>1472731402</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423968</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b4e698f313c2ee282d27f902bded52a7</srcmd5>
+    <version>1.10.1</version>
+    <time>1478289645</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438242</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>c136449d051e0e7b194e1a35db77a8c8</srcmd5>
+    <version>1.10.1</version>
+    <time>1528492583</time>
+    <user>dimstar_suse</user>
+    <comment>fix build against Qt 5.11</comment>
+    <requestid>614547</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ab9d8939dcc8c2324d3050d63fed1972</srcmd5>
+    <version>1.10.2</version>
+    <time>1562843817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714183</requestid>
+  </revision>
+</revisionlist>

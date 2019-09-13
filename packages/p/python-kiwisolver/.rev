@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6fe4ca01b40bc98d5a12cc988ad2dd60</srcmd5>
+    <version>1.0.1</version>
+    <time>1521904597</time>
+    <user>dimstar_suse</user>
+    <comment>needed for python-matplotlib sr#585408</comment>
+    <requestid>590636</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ce310e1eaea75fc98673e7672574e3a1</srcmd5>
+    <version>1.0.1</version>
+    <time>1522317470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592125</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a2c753f5cf1f14e004eb189bbb5064db</srcmd5>
+    <version>1.1.0</version>
+    <time>1564302009</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * prevent attempting a dual optimize on a dummy row PR #56 closes #15
+  * add dump and dumps methods to inspect the internal state of the solver PR #56
+  * test on Python 3.7 PR #51
+  * improvemnts to setup.py and tests PR #46 #50</comment>
+    <requestid>718128</requestid>
+  </revision>
+</revisionlist>

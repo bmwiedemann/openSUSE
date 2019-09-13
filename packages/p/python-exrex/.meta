@@ -1,0 +1,8 @@
+<package name="python-exrex" project="openSUSE:Factory">
+  <title>Irregular methods for regular expressions</title>
+  <description>Exrex is a command line tool and python module that generates all or random matching strings to a given regular expression and more.
+
+</description>
+  <devel project="devel:languages:python" package="python-exrex"/>
+  <url>https://github.com/asciimoo/exrex</url>
+</package>

@@ -1,0 +1,200 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>320dd43c7a5ad415a9efc1626070b1ef</srcmd5>
+    <version>6.5.11</version>
+    <time>1488641813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>458675</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>989d36ebdfb7ab4f0eb38d3baa53855a</srcmd5>
+    <version>6.5.11</version>
+    <time>1492011400</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486722</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4ed81e4314926571bf806e96cec32443</srcmd5>
+    <version>6.5.11</version>
+    <time>1497274463</time>
+    <user>dimstar_suse</user>
+    <comment>- Add profile files for bash and csh. (forwarded request 502427 from eeich)</comment>
+    <requestid>502809</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c937c7cea5e14975f6af1c84dbe511b0</srcmd5>
+    <version>6.5.11</version>
+    <time>1498551701</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506289</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b50a03fdb2439b1c28ef491d2c2a6fb8</srcmd5>
+    <version>6.5.11</version>
+    <time>1502629132</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix build: add buildrequires for texlive-latexmk, texlive-makeindex and
+      	     texlive-varwidth.
+
+- Prepare for suse default settings (bsc#1053237). (forwarded request 515932 from eeich)</comment>
+    <requestid>515935</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9467d2b661dfc80d96eb594a4184f60e</srcmd5>
+    <version>6.5.11</version>
+    <time>1503308248</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix group of doc package.
+- Change BuildRequires from ohpc to ohpc-macros.</comment>
+    <requestid>517728</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>9cf8027c6d25e0f5766a7ad954f5012f</srcmd5>
+    <version>6.5.11</version>
+    <time>1504815333</time>
+    <user>dimstar_suse</user>
+    <comment>- Change group of documentation package to Documentation/Other.</comment>
+    <requestid>521483</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>339c403af61950ed300daa6b08b9d360</srcmd5>
+    <version>6.5.11</version>
+    <time>1506956085</time>
+    <user>dimstar_suse</user>
+    <comment>- Make lua-lmod Arch-dependent: it hard codes the search path to
+  .so plugins used by other Lua packages (boo#1061205). (forwarded request 530289 from eeich)</comment>
+    <requestid>530302</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>43615e85a9ec2b882be8e3bfb91edc7e</srcmd5>
+    <version>6.5.11</version>
+    <time>1507280711</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build for Leap, SLE-12 and SLE-15.
+- Remove _service file: the service can be run with
+  'osc service run download_files' as well. (forwarded request 531885 from eeich)</comment>
+    <requestid>531888</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5309fc15eb91e74f09351ed3f2d325e4</srcmd5>
+    <version>7.6.1</version>
+    <time>1507896880</time>
+    <user>dimstar_suse</user>
+    <comment>- Make lua-lmod Arch-dependent: it hard codes the search path to
+  .so plugins used by other Lua packages (boo#1061205).
+
+- Update to 7.6:
+     1. Support for disable &lt;collection_name&gt;
+     2. A marked default is honored even if it is hidden
+     3. Support for depends_on() as a better way to handle module dependencies.
+   * Lmod 7.5:
+     1. Added -T, --trace option to report restore, load, unloads and spider.
+     2. Report both global and version aliases with module --terse
+     	Add Global Aliases output to module avail if they exist.
+     3. Support for isVisibleHook (Thanks @wpoely86!) to control whether
+     	a module is hidden or not.
+     4. Support for &quot;spider -o spider-json&quot; to set the key &quot;hidden&quot;
+      to true or false for each module.
+     5. Setting LMOD_EXACT_MATCH=yes also turns off the display of (D) with
+      avail.
+     6. CMake &quot;shell&quot; added.
+     7. Added feature that LMOD_TMOD_FIND_FIRST.  A site can decide to force
+        FIND_FIRST instead FIND_BEST for NV module layouts.
+     Bug Fixes:
+     1. Fix bug where Lmod would be unable to load a module where NV and
+        NVV module layouts were mixed.
+     2. Fix bug where LMOD_CASE_INDEPENDENT_SORTING=yes wasn't case
+        independent when using avail hook.
+   * Lmod 7.4:
+     1. Using built-in luafilesystem if system version doesn't exist or &lt; 1.6.2
+     2. Support for setting LMOD_SYSHOST with configure.
+     3. Sites or users can use italic instead of dim for hidden modules
+     4. Detailed spider output reports all dependencies hidden or not.</comment>
+    <requestid>533072</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e3744991c08f06704f82ec1612e715f2</srcmd5>
+    <version>7.6.1</version>
+    <time>1508316719</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534319</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>13422f836dcbcfca548c4bb0b4c6c277</srcmd5>
+    <version>7.6.1</version>
+    <time>1524144732</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %__ type macro indirections.
+- Update RPM groups, summaries, find|xargs commands.
+
+- Avoid conflicting script snippets from 'Modules' and 'lua-lmod'
+  in /etc/profiles.d by making sure that both packages cannot be
+  installed simultaneously (boo#1089970).</comment>
+    <requestid>597885</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>10c7ad6b18ec34cbd86927a7dc40d456</srcmd5>
+    <version>7.8.1</version>
+    <time>1535441064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.8.1:
+    * Fixed typo in myGlobals.lua about assigning LMOD_DUPLICATE_PATHS
+    *  Fixed TARG_TITLE_BAR_PAREN to always have a value, needed for tcsh.
+    * Added LMOD_SETTARG_TITLE_BAR=yes to turn on the title bar.
+    * Changed from sn-version to sn/version in title bar.
+    * Changed the initialization of LMOD_SETTARG_CMD in bash.in and csh.in.
+      It is defined to be `:' iff it is undefined.  This allows settarg to work
+      in sub-shells.
+    * Use spider cache for &quot;module --terse avail&quot; when LMOD_CACHED_LOADS=yes
+    * Fix bug with LMOD_SETTARG_CMD and csh.
+    * Turn off LMOD_REDIRECT for tcsh
+      Settarg now supports C/N/V and N/V/V module layouts.
+    * Fixed a bug where sometimes a compiler-mpi dependent module wouldn't
+      be found when it should.
+    * Fixed issue #321 Changed LMOD_TARGPATHLOC to LMOD_SETTARG_TARG_PATH_LOCATION
+      changed LMOD_FULL_SETTARG_SUPPORT to LMOD_SETTARG_FULL_SUPPORT. (Lmod supports both)
+    * Fixed issue #322 where non-existant directory would cause problems
+    * Fix bug in settarg module for csh.
+    * Fix bug in Csh.lua where semicolons inside an alias were removed.  Only remove the
+      trailing semicolon.
+    * Generate an LmodError() if the cachefile is broken.
+    * Do not convert /foo/bar/../baz to /foo/baz.  Leave .. in paths. Fixes issue #324
+    * The admin.list (aka, nag mesages) supports Lua regex's.  Responds to issue #326
+    * The admin.list now supports multiple targets for the same message (issue #326)
+    * Use full path_regularize() on all TCL program files.  Having paths like /a/b/../d
+      caused problems for some users when interacting with TCL.
+    * Do not look for lua_json.  Just use the one that comes with Lmod.
+    * Fix sh_to_modulefile correctly handle bad options (issue #332)
+    * Allow pushenv(&quot;FOO&quot;,false) to clear &quot;FOO&quot; (issue #331)
+    * Always use ref counting for MODULEPATH. (forwarded request 630002 from eeich)</comment>
+    <requestid>630003</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c9481ad1ad3a34048cec3f41c35ed133</srcmd5>
+    <version>7.8.15</version>
+    <time>1551024418</time>
+    <user>coolo</user>
+    <comment>- Declare bash-specific nature of build recipe. (forwarded request 674454 from jengelh)</comment>
+    <requestid>674755</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9639d21cd5b544b4edd23b210ddc6ee7</srcmd5>
+    <version>7.8.15</version>
+    <time>1552571619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683908</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b748aa9e2796901a24d594982b61202c</srcmd5>
+    <version>8.1.14</version>
+    <time>1566893857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725391</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,204 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f67116c3eeb95f18e4b83f65a77ffd60</srcmd5>
+    <version>0.0.101</version>
+    <time>1268648681</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/libnetfilter_conntrack based on submit request 33704 from user jengelh
+</comment>
+    <requestid>33704</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>59a3197abce460fd51556b9ab1903ec0</srcmd5>
+    <version>0.0.101</version>
+    <time>1268924644</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>59a3197abce460fd51556b9ab1903ec0</srcmd5>
+    <version>0.0.101</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>59a3197abce460fd51556b9ab1903ec0</srcmd5>
+    <version>0.0.101</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d969c338ef508b63a8d6137b87b94050</srcmd5>
+    <version>0.9.0</version>
+    <time>1285530037</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/libnetfilter_conntrack based on submit request 49048 from user jengelh
+</comment>
+    <requestid>49048</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d969c338ef508b63a8d6137b87b94050</srcmd5>
+    <version>0.9.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>246ff4365ee582ef03fd281554a6124c</srcmd5>
+    <version>0.9.1</version>
+    <time>1311246734</time>
+    <user>saschpe</user>
+    <comment>- new upstream release 0.9.1
+* add support for CTA_SECCTX and CTA_EXPECT_ZONE
+* allow to use nfct handler for conntrack and expectations at
+  the same time
+* conntrack: add timestamp support</comment>
+    <requestid>76624</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6826146d42f112b46a34114ab2d4004c</srcmd5>
+    <version>0.9.1</version>
+    <time>1311246748</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76624
+</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>6826146d42f112b46a34114ab2d4004c</srcmd5>
+    <version>0.9.1</version>
+    <time>1319182113</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>914ac70db73584b220ca3687da62be9d</srcmd5>
+    <version>1.0.0</version>
+    <time>1325767707</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.0.0
+* build and compilation updates
+* expect: fix missing parsing of master tuple
+* expect: nfexp_snprintf prints expectation timeout if present
+* expect: nfexp_snprintf displays mask and master tuple information
+* expect: add nfexp_send()
+* expect: support CTA_EXPECT_HELP_NAME
+* src: clarify licensing terms of library (GPLv2+)
+* conntrack: fix size of CTA_PROTOINFO_TCP_FLAGS_ORIGINAL in ARM
+* conntrack: fix set operation for master IPv6 src and dst
+* expect: add nfexp_cmp
+
+- SPDX format for License: tag
+- Use separate include directory to catch compile errors</comment>
+    <requestid>98801</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ea296450f9770761881c50f71aad62ca</srcmd5>
+    <version>1.0.1</version>
+    <time>1337667384</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.0.1
+* add NAT, expectfn and class support
+* conntrack: add new ATTR_GRP_[ORIG|REPL]_ADDR_[SRC|DST] attributes</comment>
+    <requestid>121532</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>ea296450f9770761881c50f71aad62ca</srcmd5>
+    <version>1.0.1</version>
+    <time>1340183609</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>96ec1360645ac4808545ca4eb1a6b788</srcmd5>
+    <version>1.0.2</version>
+    <time>1350364032</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138219</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>5260c57cb4165353e52a6c42b70c69f2</srcmd5>
+    <version>1.0.2</version>
+    <time>1355474123</time>
+    <user>coolo</user>
+    <comment>- Verify GPG signature</comment>
+    <requestid>144970</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>5260c57cb4165353e52a6c42b70c69f2</srcmd5>
+    <version>1.0.2</version>
+    <time>1359109310</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5877816d9ec5ef032717b118a78cc8b1</srcmd5>
+    <version>1.0.3</version>
+    <time>1362745402</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.0.3</comment>
+    <requestid>157934</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8e14c292a9d488515a823269af2b89d8</srcmd5>
+    <version>1.0.4</version>
+    <time>1376391949</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to new upstream release 1.0.4</comment>
+    <requestid>186212</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>8e14c292a9d488515a823269af2b89d8</srcmd5>
+    <version>1.0.4</version>
+    <time>1379663016</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>8e14c292a9d488515a823269af2b89d8</srcmd5>
+    <version>1.0.4</version>
+    <time>1409301635</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>59213da64c2a406b3289fa94ce700c3a</srcmd5>
+    <version>1.0.4</version>
+    <time>1411927105</time>
+    <user>coolo</user>
+    <comment>- Drop just gpg-offline</comment>
+    <requestid>252271</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>d38d80ec5e9fc03a3aa9c5003727dfb7</srcmd5>
+    <version>1.0.4</version>
+    <time>1418737645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>264527</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8b0534b372b6fcd8d34ab9bf45a86651</srcmd5>
+    <version>1.0.5</version>
+    <time>1442392543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.0.5</comment>
+    <requestid>330259</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2d357a2d5108a96db5f2c1697ba0ef98</srcmd5>
+    <version>1.0.6</version>
+    <time>1472246037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.0.6</comment>
+    <requestid>421146</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1683d5cab8c306cccd089c864687afa8</srcmd5>
+    <version>1.0.7</version>
+    <time>1525343454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.0.7</comment>
+    <requestid>602811</requestid>
+  </revision>
+</revisionlist>

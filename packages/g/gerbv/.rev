@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2aa3ee2cc58622c64e290f474af21ec8</srcmd5>
+    <version>2.6.0</version>
+    <time>1357648565</time>
+    <user>coolo</user>
+    <comment>part of gEDA
+http://lists.opensuse.org/opensuse-factory/2012-12/msg00538.html</comment>
+    <requestid>146934</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2aa3ee2cc58622c64e290f474af21ec8</srcmd5>
+    <version>2.6.0</version>
+    <time>1359108920</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>12be6859edf0cb85cfde33bc0905905e</srcmd5>
+    <version>2.6.1</version>
+    <time>1374575490</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.6.1
+  * Localization support
+- Disable localization due to missed files
+  * gerbv-2.6.1-no-translation.patch</comment>
+    <requestid>184067</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>12be6859edf0cb85cfde33bc0905905e</srcmd5>
+    <version>2.6.1</version>
+    <time>1379662415</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>12be6859edf0cb85cfde33bc0905905e</srcmd5>
+    <version>2.6.1</version>
+    <time>1409300945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>2fb6ca510dfaf0506bf03e6b58faabfd</srcmd5>
+    <version>2.6.1</version>
+    <time>1412799235</time>
+    <user>coolo</user>
+    <comment>- Fix build with automake 1.14
+  * gerbv-fix-install-sh-call.patch</comment>
+    <requestid>254639</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>b917a47e1a4b53eb4f8f6635cff9df36</srcmd5>
+    <version>2.6.1</version>
+    <time>1425566410</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288657</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8e956db38a1b76b07fae7b275df5ec5f</srcmd5>
+    <version>2.7.0</version>
+    <time>1553636006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688504</requestid>
+  </revision>
+</revisionlist>

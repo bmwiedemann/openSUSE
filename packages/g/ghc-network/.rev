@@ -1,0 +1,181 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>158e5aa3fffa77cae9c553048cf90403</srcmd5>
+    <version>2.3.1.0</version>
+    <time>1357659144</time>
+    <user>coolo</user>
+    <comment>New package for Haskell Platform. See: http://lists.opensuse.org/opensuse-factory/2012-12/msg00178.html.</comment>
+    <requestid>147412</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>158e5aa3fffa77cae9c553048cf90403</srcmd5>
+    <version>2.3.1.0</version>
+    <time>1359108927</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d811da4bae49cf987b2fc16cdb7bc03d</srcmd5>
+    <version>2.4.1.2</version>
+    <time>1375764725</time>
+    <user>coolo</user>
+    <comment>Update to Haskell Platform 2013.2.0.0 (forwarded request 185259 from ptrommler)</comment>
+    <requestid>185450</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d811da4bae49cf987b2fc16cdb7bc03d</srcmd5>
+    <version>2.4.1.2</version>
+    <time>1379662433</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>70bc07d074a374466061c6fdea94377d</srcmd5>
+    <version>2.4.1.2</version>
+    <time>1408957479</time>
+    <user>coolo</user>
+    <comment>enable PowerPC builds</comment>
+    <requestid>246006</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>70bc07d074a374466061c6fdea94377d</srcmd5>
+    <version>2.4.1.2</version>
+    <time>1409300967</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e893cce5695c8120397378ce94422773</srcmd5>
+    <version>2.4.2.3</version>
+    <time>1417031689</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260157</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e7e9c079ddd8238ca5b5dfcb10321cae</srcmd5>
+    <version>2.6.1.0</version>
+    <time>1432188874</time>
+    <user>coolo</user>
+    <comment>- update to 2.6.1.0
+* no upstream changelog
+
+- update to 2.6.0.2
+* split to network and network-uri packages</comment>
+    <requestid>306773</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b65589d0f8818336dfebb60c055f87a9</srcmd5>
+    <version>2.6.2.0</version>
+    <time>1433232345</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.2.0
+* no upstream changelog</comment>
+    <requestid>309489</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>94ecfd70b797a36a97ba70a11ecd0048</srcmd5>
+    <version>2.6.2.1</version>
+    <time>1436888674</time>
+    <user>coolo</user>
+    <comment>- update to 2.6.2.1
+* Regenerate configure and HsNetworkConfig.h.in.
+* Better detection of CAN sockets.
+* Add support for TCP_USER_TIMEOUT.
+* Don't conditionally export the SockAddr constructors.
+* Add isSupportSockAddr to allow checking for supported
+   address types at runtime.</comment>
+    <requestid>316338</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>60767a5db5a573000284d7d92f107d5d</srcmd5>
+    <version>2.6.2.1</version>
+    <time>1469081650</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411632</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d74402ccd4fe0d327d7c6176cda626df</srcmd5>
+    <version>2.6.3.1</version>
+    <time>1473103222</time>
+    <user>dimstar_suse</user>
+    <comment>version update (forwarded request 421661 from psimons)</comment>
+    <requestid>421746</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>471500ec6aca80d6b649588ee64cec94</srcmd5>
+    <version>2.6.3.2</version>
+    <time>1498120698</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504087</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>52bb458080b86337db0b3e02f3917c3e</srcmd5>
+    <version>2.6.3.2</version>
+    <time>1505505631</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525064</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>17b722f2ee7e969d1fe5854cf4413bc0</srcmd5>
+    <version>2.6.3.5</version>
+    <time>1527675065</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-network to the latest version.</comment>
+    <requestid>607844</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5c97bce72bf6058d63573fbb48d9a991</srcmd5>
+    <version>2.6.3.6</version>
+    <time>1532445622</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update network to version 2.6.3.6.
+  ## Version 2.6.3.6
+   * Removed unnecessary withMVar, which caused locking on close.
+     [#330](https://github.com/haskell/network/pull/330)
+
+* Haskell Platform 2014.2.0.0
+- regenerate spec file
+- more transparent packaging (fewer macros)
+- expand macro in name tag to help source validator
+- make service localonly for Factory submission
+* cabal-install requires &lt; 2.4
+- required by Haskell Platform 2012.4.0.0
+- spec file template generated by cabal2spec-0.25.5
+- Adjusted version for platform 2011.4
+- Fix defattr
+- Added rpmlintrc and BR ghc libraries
+- Initial packaging.</comment>
+    <requestid>623817</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fbb5eb8c54be1e5f05ee666da2ebc2f3</srcmd5>
+    <version>2.7.0.2</version>
+    <time>1540448261</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642883</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a6ae3a95be4fadfa6581401d50b9db21</srcmd5>
+    <version>2.8.0.0</version>
+    <time>1544094989</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>650507</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f6eb83d0c44e566b9d75ed011f185b21</srcmd5>
+    <version>2.8.0.1</version>
+    <time>1557389415</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>700203</requestid>
+  </revision>
+</revisionlist>

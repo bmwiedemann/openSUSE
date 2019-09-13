@@ -1,0 +1,11 @@
+<package name="postfish" project="openSUSE:Factory">
+  <title>A digital audio post-processing tool</title>
+  <description>the Postfish is a digital audio post-processing, restoration, filtering
+and mixdown tool. It works as a linear audio filter, much like a rack
+of analog effects. The first stage of the filter pipeline provides a
+bank of configurable per-channel processing filters for up to 32 input
+channels. The second stage provides mixdown of the processed input
+audio into a group of up to eight output channels. The third stage
+applies processing filters to the output group post-mixdown.</description>
+  <devel project="multimedia:apps" package="postfish"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="kaffeine" project="openSUSE:Factory">
+  <title>Xine-Based Multimedia Player</title>
+  <description>Kaffeine plays all files and devices supported by Xine. For example,
+MPEG files, AVI (if the codec being used is supported by Xine), MP3,
+and Ogg Vorbis. It also handles Video CDs, DVDs, and DVB cards.</description>
+  <devel project="KDE:Extra" package="kaffeine"/>
+</package>

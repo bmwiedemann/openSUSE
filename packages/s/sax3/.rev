@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d38a1feff9c5bcaecf17d20a5f8dc68</srcmd5>
+    <version>0.1</version>
+    <time>1314263171</time>
+    <user>saschpe</user>
+    <comment>SaX3 is a graphical configuration that is a successor to the old sax2. It can run under Qt, ncurses and GTK</comment>
+    <requestid>79691</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5cf159c40942612773d61c53289f0d87</srcmd5>
+    <version>0.1</version>
+    <time>1314263187</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79691
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>5cf159c40942612773d61c53289f0d87</srcmd5>
+    <version>0.1</version>
+    <time>1319182445</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>40c9dab257723ec145e3ba3b8ac21a62</srcmd5>
+    <version>0.1</version>
+    <time>1323185079</time>
+    <user>coolo</user>
+    <comment>Spec File changed to spdx format as suggested by cfarell</comment>
+    <requestid>95557</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>676e0c76bac65769bc771bec1434150d</srcmd5>
+    <version>0.1</version>
+    <time>1323194511</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>676e0c76bac65769bc771bec1434150d</srcmd5>
+    <version>0.1</version>
+    <time>1340184188</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>676e0c76bac65769bc771bec1434150d</srcmd5>
+    <version>0.1</version>
+    <time>1359110368</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>24f0953622962278806d426c226e4015</srcmd5>
+    <version>0.1</version>
+    <time>1359466826</time>
+    <user>coolo</user>
+    <comment>- Added fix-libyui-include-path.diff
+  * support build with libyui which renamed from yast2-libyui
+  * linking correct libyui library path
+- Added fix-std-nametype-issue.diff
+  * fixed compilation error</comment>
+    <requestid>149923</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>72f4afd8eb64017032e6e00060e6b6d0</srcmd5>
+    <version>0.1.1</version>
+    <time>1366633425</time>
+    <user>coolo</user>
+    <comment>Fix conflict with augeas</comment>
+    <requestid>172463</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9b841a7f4c88362e847dc5c81e17da65</srcmd5>
+    <version>0.1.1</version>
+    <time>1369641696</time>
+    <user>coolo</user>
+    <comment>- Properly determine LIB_SUFFIX
+- Use %{optflags} (forwarded request 176322 from Andreas_Schwab)</comment>
+    <requestid>176519</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>9b841a7f4c88362e847dc5c81e17da65</srcmd5>
+    <version>0.1.1</version>
+    <time>1379664614</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>81bcf7a77b28a77b0f06b678e2908330</srcmd5>
+    <version>0.1.2</version>
+    <time>1399377797</time>
+    <user>coolo</user>
+    <comment>
+- sax3-keyboard text domain was incorrect. Updated it for sax3-keyboard
+
+---------------------------------- ---------------------------------
+Sun May  4 12:46:08 UTC 2014 - manugupt1@gmail.com
+
+- Translation Support added for sax3 modules along with PO files
+- Logs are much more beautiful for some modules</comment>
+    <requestid>232751</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>99d8f1d51fb1a6d65605e6872c542870</srcmd5>
+    <version>0.1.2</version>
+    <time>1399818964</time>
+    <user>coolo</user>
+    <comment>- Final Set of translation changes, seems so
+- Renamed po files to pot files
+- Made some string changes</comment>
+    <requestid>233462</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>c136fe547fc49f6b47d5d56935423534</srcmd5>
+    <version>0.1.2</version>
+    <time>1400588670</time>
+    <user>coolo</user>
+    <comment>- Updated Man page
+- Removed unnecessary lines</comment>
+    <requestid>234631</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>c136fe547fc49f6b47d5d56935423534</srcmd5>
+    <version>0.1.2</version>
+    <time>1409303314</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>d283f98e3871f34a9fe0710d9f224e72</srcmd5>
+    <version>0.1.2</version>
+    <time>1468048945</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406060</requestid>
+  </revision>
+</revisionlist>

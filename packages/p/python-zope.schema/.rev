@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2468f06e15f158bf3640b863d2575087</srcmd5>
+    <version>4.3.2</version>
+    <time>1363954547</time>
+    <user>coolo</user>
+    <comment>Useful zope library
+</comment>
+    <requestid>159558</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a4b3ae11909014e0831be0e6c27d1876</srcmd5>
+    <version>4.3.2</version>
+    <time>1364900078</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161377</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e12d6b332e8cb124a701c14c821b752c</srcmd5>
+    <version>4.3.2</version>
+    <time>1375284293</time>
+    <user>coolo</user>
+    <comment>- generate separate -doc package (forwarded request 184892 from frispete)</comment>
+    <requestid>184930</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e12d6b332e8cb124a701c14c821b752c</srcmd5>
+    <version>4.3.2</version>
+    <time>1379664324</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d158e012cb8dd22c40794a00437cf537</srcmd5>
+    <version>4.4.0</version>
+    <time>1393699462</time>
+    <user>coolo</user>
+    <comment>Update to 4.4.0 (forwarded request 224278 from poorboywilly)</comment>
+    <requestid>224317</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d158e012cb8dd22c40794a00437cf537</srcmd5>
+    <version>4.4.0</version>
+    <time>1409303033</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5dd3b8aea4eb6400aab7788b8e5ab5e3</srcmd5>
+    <version>4.4.2</version>
+    <time>1432072008</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307904</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>78a7aacecc1828069f33117a5e62e567</srcmd5>
+    <version>4.4.2</version>
+    <time>1500456115</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511026</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>531d6cbb67b5c94a79faa3bffc2307be</srcmd5>
+    <version>4.4.2</version>
+    <time>1544726792</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654091</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d4329c201c9768658b45850b9558ecf4</srcmd5>
+    <version>4.9.3</version>
+    <time>1554712519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691752</requestid>
+  </revision>
+</revisionlist>

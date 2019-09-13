@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a299b01ce5922c159e790cd9daf88ce</srcmd5>
+    <version>0.2.0</version>
+    <time>1526371963</time>
+    <user>dimstar_suse</user>
+    <comment>Plugin for pytest to perform isort checks</comment>
+    <requestid>605995</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d2054aa3dac06d04166e65affe5cfbef</srcmd5>
+    <version>0.2.1</version>
+    <time>1550221362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.1:
+  * Drop &quot;pytest-cache&quot; dependency, not required anymore - part of py.test itself</comment>
+    <requestid>676054</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4d0b71a7975e67854e50431729fb3dd0</srcmd5>
+    <version>0.3.1</version>
+    <time>1552299479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.1:
+  * Update packaging, source distribution now includes tests and wheel is universal
+
+- Update to 0.3.0:
+  * Improve display of test result by appending ::ISORT
+  * This release requires pytest 3.5</comment>
+    <requestid>683729</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd11e94fe9c15e0b3839869d888dcdf3</srcmd5>
+    <version>0.5.1</version>
+    <time>1390429176</time>
+    <user>coolo</user>
+    <comment>add for factory</comment>
+    <requestid>214259</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bd11e94fe9c15e0b3839869d888dcdf3</srcmd5>
+    <version>0.5.1</version>
+    <time>1409301739</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ea0b66c18c41aa4ea453ddf9fb1a883a</srcmd5>
+    <version>0.5.2</version>
+    <time>1427109538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.2
+  * No entry for this release
+- Update project home and download Urls
+- Add autoconf, automake and libtool build require; the tarball
+  comes from git and configure script has to be generated</comment>
+    <requestid>292213</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5476a60e74a88acecd6bc1f3b57191a</srcmd5>
+    <version>0.6.0</version>
+    <time>1516804158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568220</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>422580084efb5faf6eb496c008944451</srcmd5>
+    <version>0.6.0</version>
+    <time>1551284870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674674</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>023103b2f4996daad0d5bbb42214497d</srcmd5>
+    <version>0.7.0</version>
+    <time>1568066295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729455</requestid>
+  </revision>
+</revisionlist>

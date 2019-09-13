@@ -1,0 +1,117 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ad8e8150b8d5eb1e22afcb95d30a896</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1302522614</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66796 from user babelworx
+</comment>
+    <requestid>66796</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7f5e14d145084023653cdb7ccdef3576</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1302522628</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66796
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>57eaeac6172f3af938beceea4c12e1be</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1312900776</time>
+    <user>saschpe</user>
+    <comment>added vcard support</comment>
+    <requestid>78366</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>29b61e4bc8e53f912aa909c53127cda4</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1312900783</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78366
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>02e92f99875a8709ee5eea55fd60d94f</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1316439171</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82699 from jengelh)</comment>
+    <requestid>82786</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>02e92f99875a8709ee5eea55fd60d94f</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1319181764</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>c42bb07eb90b5aef48eb6058412f15ce</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1323190635</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>08955941b62a47503a410c680071c4cf</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1324307341</time>
+    <user>coolo</user>
+    <comment>- COPYING says it's GPL-2.0+ (forwarded request 96120 from coolo)</comment>
+    <requestid>96204</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>08955941b62a47503a410c680071c4cf</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1340183164</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>08955941b62a47503a410c680071c4cf</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1359108638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>08955941b62a47503a410c680071c4cf</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1379661945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>08955941b62a47503a410c680071c4cf</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1409300465</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>cf3eaa8dcad8c204d4ec99a9daa16132</srcmd5>
+    <version>0.6.0pre2</version>
+    <time>1435053475</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312656</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2f191c807b55f6a061f8fb7f30aa4bdc</srcmd5>
+    <version>0.6.1</version>
+    <time>1446209041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341598</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f53756755e67ae84d9dff64f696939fe</srcmd5>
+    <version>0.6.1</version>
+    <time>1527583385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611871</requestid>
+  </revision>
+</revisionlist>

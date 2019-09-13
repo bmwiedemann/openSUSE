@@ -1,0 +1,5 @@
+<package name="wxlua" project="openSUSE:Factory">
+  <title>wxLua</title>
+  <description>wxWidets Lua bindings and small IDE</description>
+  <devel project="devel:languages:lua" package="wxlua"/>
+</package>

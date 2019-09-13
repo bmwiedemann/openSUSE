@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9944d5deadfa2c93c344d075eab2edbd</srcmd5>
+    <version>1.15</version>
+    <time>1372136303</time>
+    <user>coolo</user>
+    <comment>needed for JSON::RPC</comment>
+    <requestid>179389</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9944d5deadfa2c93c344d075eab2edbd</srcmd5>
+    <version>1.15</version>
+    <time>1379663883</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ede02b5f65d5d4454a29db69f16c3deb</srcmd5>
+    <version>2.01</version>
+    <time>1384332342</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 2.01
+       test waitport argument by running full code-chain, not with partial mocking
+       
+       The partial mocks cause stuck forks on win32 at times, causing the test to
+       hang. With the full code chain present the test runs reliably
+   [INCOMPATIBLE CHANGES]
+   - Change wait_port() API to take max_wait seconds, and wait exponentially.
+     Dropped wait_port_retry argument introduced at 1.27.
+     (miyagawa)
+   - Increase the default sleep and retry: 0.01 sec and 1000 times
+     (miyagawa)
+   - Care the `test_tcp(port =&gt; undef)` case.
+     https://github.com/tokuhirom/Test-TCP/issues/13
+   - Added wait_port_sleep and wait_port_retry option for
+     Test::TCP::wait_port, Test::TCP#new, test_tcp().
+     (tokuhirom)
+   - export wait_port from Net::EmptyPort
+     (Pavel Shaydo)
+   - Make default wait_port() sleeping time shorter.
+     0.1sec =&gt; 0.0001sec.
+     (tokuhirom)
+   - Remove unused deps from cpanfile.
+- remove no longer necessary test-no-note.patch</comment>
+    <requestid>205489</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b81aefc8a06b26fea3675d2631be5f5</srcmd5>
+    <version>2.02</version>
+    <time>1385473332</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208428</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9b81aefc8a06b26fea3675d2631be5f5</srcmd5>
+    <version>2.02</version>
+    <time>1409302527</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c85d664025475b06b1b35b8f585787ad</srcmd5>
+    <version>2.11</version>
+    <time>1429346394</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.11
+   see /usr/share/doc/packages/perl-Test-TCP/Changes
+- remove long dead test-no-note.patch</comment>
+    <requestid>297284</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a9618e95934f760c1e549a57c570256f</srcmd5>
+    <version>2.12</version>
+    <time>1432072161</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307955</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>636b1da1d49244ed343fde934dbf9d87</srcmd5>
+    <version>2.13</version>
+    <time>1438076592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318524</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e5c190d3e9867df97c3887e58f8a0ad9</srcmd5>
+    <version>2.14</version>
+    <time>1444285471</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>336277</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9588082f984d0df418742f8d84a0ff7d</srcmd5>
+    <version>2.15</version>
+    <time>1461334992</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378492</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a24eb4503081491ab6f14aa2276fb742</srcmd5>
+    <version>2.16</version>
+    <time>1462261054</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393262</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>33faed1d3e1f1cf89a8cdc97061af629</srcmd5>
+    <version>2.17</version>
+    <time>1471853239</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>420458</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>829622f0d9927fe489e2a05a1c584f70</srcmd5>
+    <version>2.18</version>
+    <time>1493819844</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492408</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>525aaf76571f3c02dc3686ed188d874a</srcmd5>
+    <version>2.19</version>
+    <time>1495637245</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495810</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>763e48fb3cd0de8dfa0821ffaa39ace4</srcmd5>
+    <version>2.20</version>
+    <time>1566242838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721783</requestid>
+  </revision>
+</revisionlist>

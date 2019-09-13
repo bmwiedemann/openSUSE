@@ -1,0 +1,512 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0f20e5b52c29215c127694a8f7730ee</srcmd5>
+    <version>0.1.0alpha+git20100302</version>
+    <time>1267787753</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 33745 from user anubisg1
+</comment>
+    <requestid>33745</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6c687afdc2d37e20f132129fa68c9d8e</srcmd5>
+    <version>0.1.5alpha+git20100309</version>
+    <time>1268268090</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 34469 from user anubisg1
+</comment>
+    <requestid>34469</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e863d8e26b2ed3d8226e2564e2df3992</srcmd5>
+    <version>0.1.5alpha+git20100309</version>
+    <time>1268924561</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2853c59af75a3ec557545b1ca24cae60</srcmd5>
+    <version>0.1.9beta+git20100319</version>
+    <time>1269168781</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 35398 from user anubisg1
+</comment>
+    <requestid>35398</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d0402b905bc710e43784adf8ed3fd2b8</srcmd5>
+    <version>0.1.9beta+git20100330</version>
+    <time>1270050209</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 36218 from user anubisg1
+</comment>
+    <requestid>36218</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fc8272dc986bcf29e45c372108d42bd3</srcmd5>
+    <version>0.1.9beta+git20100404</version>
+    <time>1270586580</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 37035 from user anubisg1
+</comment>
+    <requestid>37035</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>173b67e6363f432e652a028c32b539cd</srcmd5>
+    <version>0.1.9beta+git20100413</version>
+    <time>1271372067</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 37895 from user anubisg1
+</comment>
+    <requestid>37895</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cd8710d51d26f823b744b3493a9fda01</srcmd5>
+    <version>0.1.10beta+git20100419</version>
+    <time>1271669253</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 38171 from user anubisg1
+</comment>
+    <requestid>38171</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a651768614a77ff48cbab67dc5be0df2</srcmd5>
+    <version>0.1.10beta+git20100420</version>
+    <time>1271807817</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 38377 from user anubisg1
+</comment>
+    <requestid>38377</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>84063fab9d95a535f12a1d8cd25e417d</srcmd5>
+    <version>0.1.11beta+git20100427</version>
+    <time>1272486407</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 38977 from user anubisg1
+</comment>
+    <requestid>38977</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4fec44ccb1ba89c11118306fc18ed233</srcmd5>
+    <version>0.1.11beta+git20100516</version>
+    <time>1274654442</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 40514 from user anubisg1
+</comment>
+    <requestid>40514</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>457d3f27db58ddaba8930e351e111631</srcmd5>
+    <version>0.1.12_rc1</version>
+    <time>1275260174</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 40846 from user anubisg1
+</comment>
+    <requestid>40846</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3b721331709d0a21ae99416072c9b93f</srcmd5>
+    <version>0.1.12_rc1</version>
+    <time>1276468445</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 41384 from user anubisg1
+</comment>
+    <requestid>41384</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b5311d1ecc2e930f7d12e8ccf21f25ef</srcmd5>
+    <version>0.1.12_rc1</version>
+    <time>1278317197</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 42444 from user anubisg1
+</comment>
+    <requestid>42444</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>b5311d1ecc2e930f7d12e8ccf21f25ef</srcmd5>
+    <version>0.1.12_rc1</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>b5311d1ecc2e930f7d12e8ccf21f25ef</srcmd5>
+    <version>0.1.12_rc1</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>c747ed40b00eb45a7bdda4792e5d76fb</srcmd5>
+    <version>0.1.12_rc1</version>
+    <time>1281659844</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 45429 from user anubisg1
+</comment>
+    <requestid>45429</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ca32cc85843b449060aa0581e18615ad</srcmd5>
+    <version>0.1.14_rc2</version>
+    <time>1287353810</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/libfm based on submit request 50857 from user anubisg1
+</comment>
+    <requestid>50857</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>7a5ba63e9d5622fc293d65a6fd7a3ce1</srcmd5>
+    <version>0.1.14_rc2</version>
+    <time>1287580797</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51113 from user anubisg1
+</comment>
+    <requestid>51113</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>a92c9bccb8f86786ef7c1252a6489473</srcmd5>
+    <version>0.1.14_rc2</version>
+    <time>1287580807</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51113
+</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>0288a7baa835b7b22a4c954e19f93020</srcmd5>
+    <version>0.1.14_rc2</version>
+    <time>1295946454</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59041 from user anubisg1
+</comment>
+    <requestid>59041</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>b817222a28302abf06ba25a6b2bc5300</srcmd5>
+    <version>0.1.14_rc2</version>
+    <time>1295946478</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59041
+</comment>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>b817222a28302abf06ba25a6b2bc5300</srcmd5>
+    <version>0.1.14_rc2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>34f1f98b91f4919aaa6c366ff6d98421</srcmd5>
+    <version>0.1.14_rc2</version>
+    <time>1308732413</time>
+    <user>saschpe</user>
+    <comment>- add prerequires for the rpm scripts (forwarded request 74252 from coolo)</comment>
+    <requestid>74257</requestid>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>965121907fb53a072eee213445dbcf0d</srcmd5>
+    <version>0.1.14_rc2</version>
+    <time>1308732422</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74257
+</comment>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>de82c36c8efa7a70bb6dd0ace93d1534</srcmd5>
+    <version>0.1.16_rc3</version>
+    <time>1313148835</time>
+    <user>saschpe</user>
+    <comment>new upstream version 0.1.16_rc3</comment>
+    <requestid>78564</requestid>
+  </revision>
+  <revision rev="27" vrev="10">
+    <srcmd5>2c91258076c0285fa634ddbbc5def1d2</srcmd5>
+    <version>0.1.16_rc3</version>
+    <time>1313148846</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78564
+</comment>
+  </revision>
+  <revision rev="28" vrev="12">
+    <srcmd5>2c91258076c0285fa634ddbbc5def1d2</srcmd5>
+    <version>0.1.16_rc3</version>
+    <time>1319182091</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c1a97bcdf489d7bfb7a6559196247a46</srcmd5>
+    <version>0.1.17_rc4</version>
+    <time>1321269061</time>
+    <user>coolo</user>
+    <comment>new upstream version</comment>
+    <requestid>91157</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>c7b002ac3727a724617d688d7c53f8ec</srcmd5>
+    <version>0.1.17_rc4</version>
+    <time>1323192210</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>a5cfa482bcb52146e620355da6d0e8bd</srcmd5>
+    <version>0.1.17_rc4</version>
+    <time>1339076330</time>
+    <user>coolo</user>
+    <comment>http://lists.opensuse.org/opensuse-factory/2012-05/msg00752.html (forwarded request 122720 from jengelh)</comment>
+    <requestid>123775</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>a5cfa482bcb52146e620355da6d0e8bd</srcmd5>
+    <version>0.1.17_rc4</version>
+    <time>1340183583</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9bf49cac5b882145ae61a5ca3a0fc231</srcmd5>
+    <version>1.0</version>
+    <time>1345638985</time>
+    <user>namtrac</user>
+    <comment>new upstream stable version 1.0</comment>
+    <requestid>131266</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>a9396f2ea61432618b310bfea2084576</srcmd5>
+    <version>1.0</version>
+    <time>1345809123</time>
+    <user>namtrac</user>
+    <comment>license update: GPL-2.0+
+No GPL-2.0 (i.e. version 2 &quot;only&quot;) licenses found in the package (forwarded request 131277 from babelworx)</comment>
+    <requestid>131403</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1bdce791bfbcf9173a62a2cf4dcea332</srcmd5>
+    <version>1.1.0</version>
+    <time>1357127900</time>
+    <user>namtrac</user>
+    <comment>new upstream version</comment>
+    <requestid>145888</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>1bdce791bfbcf9173a62a2cf4dcea332</srcmd5>
+    <version>1.1.0</version>
+    <time>1359109268</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>bde29634e559522581f5dfc3ccfeabbc</srcmd5>
+    <version>1.1.0</version>
+    <time>1374846687</time>
+    <user>coolo</user>
+    <comment>- Fix build with rpm-4.11</comment>
+    <requestid>184411</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0e8b77d2f4b5f9029bd8896ab2b1ad68</srcmd5>
+    <version>1.1.2.2</version>
+    <time>1378894726</time>
+    <user>coolo</user>
+    <comment>update version 1.1.2.2 (forwarded request 197809 from MargueriteSu)</comment>
+    <requestid>198197</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>0e8b77d2f4b5f9029bd8896ab2b1ad68</srcmd5>
+    <version>1.1.2.2</version>
+    <time>1379662947</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>26aaee74ad74a49c0bdf02a2e9da78cb</srcmd5>
+    <version>1.2.0</version>
+    <time>1393936906</time>
+    <user>coolo</user>
+    <comment>- New upstream version 1.2.0
+  * detailed changelog at http://blog.lxde.org/?p=1082
+- Removed build compatibility with discontinued versions (&lt;= 12.2)
+- Disabled debug on configure to improve performance
+- Fixed typo in %{?_smp_mflags} macro
+- Built against GKT2 to override GTK3 issues
+  * in a conversation with one of the developers, we concluded that it is better to stick to GTK2 at the moment
+- Splitted lang package
+- LXShortcut is now built as a subpackage (forwarded request 224356 from jcsl)</comment>
+    <requestid>224455</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>98924a56248966f69120eac916af82ad</srcmd5>
+    <version>1.2.0</version>
+    <time>1396174404</time>
+    <user>scarabeus_factory</user>
+    <comment>- spec file fix
+  * removed unnecessary %dir %{_libdir} to avoid standard-dir-owned-by-package (forwarded request 228131 from jcsl)</comment>
+    <requestid>228135</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>7f62ec78c1a80b7c9ce453ecf9097770</srcmd5>
+    <version>1.2.0</version>
+    <time>1400055970</time>
+    <user>coolo</user>
+    <comment>- removed Fedora 20 spec file if/else - not required (forwarded request 233730 from anubisg1)</comment>
+    <requestid>233731</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>9cf1fc58baf0eebbc8129764a912d73d</srcmd5>
+    <version>1.2.0</version>
+    <time>1400388599</time>
+    <user>coolo</user>
+    <comment>- enabled udisk support for libfm
+- restored preferences patch previously disabled by mista (forwarded request 234287 from anubisg1)</comment>
+    <requestid>234288</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>6f6c9d9b359215e18be7af307cc1cb29</srcmd5>
+    <version>1.2.1</version>
+    <time>1405264585</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239531</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>6f6c9d9b359215e18be7af307cc1cb29</srcmd5>
+    <version>1.2.1</version>
+    <time>1409301557</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8b00c51c80052ab30ec378b103989a38</srcmd5>
+    <version>1.2.2.1</version>
+    <time>1409761332</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246793</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>ee5529e8fcf47b363f334f11bc1d3d42</srcmd5>
+    <version>1.2.2.1</version>
+    <time>1410282011</time>
+    <user>coolo</user>
+    <comment>split libfm-extra to avoid cycle with new menu-cache</comment>
+    <requestid>248121</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>a75792e725e6daf33bec6b9f26f8a6ef</srcmd5>
+    <version>1.2.2.1</version>
+    <time>1412147874</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>250567</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ce0a5f1bdc5fa372a1d8419c2595336b</srcmd5>
+    <version>1.2.3</version>
+    <time>1413382821</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>256683</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>0a5ae9b825a8381c87913a09005833c3</srcmd5>
+    <version>1.2.3</version>
+    <time>1415696386</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260758</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>0cf160d63d81b5580a89725c544b15af</srcmd5>
+    <version>1.2.3</version>
+    <time>1452611569</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352786</requestid>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>502ce345c5262dac88f1e6dbe0af4443</srcmd5>
+    <version>1.2.3</version>
+    <time>1465336012</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399601</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>3c306b586d24e6a812f9b045ad444d76</srcmd5>
+    <version>1.2.5</version>
+    <time>1489345228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>476878</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>38b516cb84074be6d5bcbea4549cb5ad</srcmd5>
+    <version>1.2.5</version>
+    <time>1513852187</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1073719: Fix build with gtk-doc 1.27:
+  * Add libfm-1.2.5-gtk-doc-workaround.patch</comment>
+    <requestid>558870</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f2ad40b48b1bf7b82b27ee7c1657a83d</srcmd5>
+    <version>1.3.0.2</version>
+    <time>1540451353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.0.2:
+  * Fixed launching menu entries shortcuts on desktop which was broken by making
+    them all executable in 1.3.0 - those should be launchable still.
+  * Fixed installing modules into non-standard path: libtool couldn't relink them
+    properly.
+  * Added emblem support by reading the &quot;metadata::emblems&quot; attribute provided by
+    GFileInfo. The metadata is provided by gio/gvfs and are currently stored in
+    $XDG_DATA_HOME/gvfs-metadata.
+  * Fixed typo: occured -&gt; occurred.
+  * Made desktop entries treaten as executables. Now clicking on a native desktop
+    file opens a confirmation dialog instead of executing it. Trashed desktop
+    files are only opened as text files and desktop files under system menu
+    (i.e. menu://applications/) are executed without prompt as before.
+  * Fixed build error with vala 0.36.1.
+  * Fixed crash on launching nonexistent link targets.
+  * Added tooltips for attributes of copying files.
+  * Fixed thumbnails generation for files in the thumbnails cache directory which
+    actually should never be done.
+  * Fixed crash on pasting large string when completion matches.
+  * Prevented creation corrupted image thumbnails with gdk-pixbuf2 &gt;= 2.36.1.
+  * Fixed crash in fm_config_load_from_file().
+  * Dropped displaying &quot;extension&quot; for a directory.
+  * Fixed crash on pasting a file into the search folder, show an error message
+    when the copy destination doesn't exist instead.
+  * Added new API for FmAction new object type, to replace old VALA-generated
+    code. New API is more convenient, C instead of VALA, and should support all
+    DES-API specification features, not just limited set.
+  * Migrated module 'gtk-menu-actions' to new DES-EMA actions API.
+  * Added display of data transferred to progress dialog.
+  * Fixed wrong names for files, copied from Google Drive and similar places.
+- Remove libfm-1.2.5-gtk-doc-workaround.patch: upstreamed
+</comment>
+    <requestid>643912</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>d9592db139a84555c801786d987c6653</srcmd5>
+    <version>1.3.1</version>
+    <time>1545996887</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.1:
+  * Fixed crash on reload while directory changes (folder might be not ready yet).
+  * Changed size of large thumbnails to 512 since 256*256 appears to be small on
+    hi-res displays.
+  * Added application/gzip to archivers.list file next to application/x-gzip.
+  * Added image/x-compressed-xcf to archivers.list file for xarchiver.
+</comment>
+    <requestid>661338</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>92d8b61f5ff8b19468dfbcae22719d0a</srcmd5>
+    <version>1.3.1</version>
+    <time>1560800071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710306</requestid>
+  </revision>
+</revisionlist>

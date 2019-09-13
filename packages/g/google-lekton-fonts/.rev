@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb3aa77ece6469da20d47c196c1a34ea</srcmd5>
+    <version>22</version>
+    <time>1331324581</time>
+    <user>coolo</user>
+    <comment>Argl. Thanks for the hint. Added new procedure http://en.opensuse.org/openSUSE:Packaging_Fonts#How_to_Create_a_New_Font</comment>
+    <requestid>106823</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c0900c98dd6e65bacd5a1c242d41f0ca</srcmd5>
+    <version>22</version>
+    <time>1338017125</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122151</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c0900c98dd6e65bacd5a1c242d41f0ca</srcmd5>
+    <version>22</version>
+    <time>1340183405</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e25f2e0800dd3c4d12521e26a5f89488</srcmd5>
+    <version>22</version>
+    <time>1347618304</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133954</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>e25f2e0800dd3c4d12521e26a5f89488</srcmd5>
+    <version>22</version>
+    <time>1359108991</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>e25f2e0800dd3c4d12521e26a5f89488</srcmd5>
+    <version>22</version>
+    <time>1379662540</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>e25f2e0800dd3c4d12521e26a5f89488</srcmd5>
+    <version>22</version>
+    <time>1409301082</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

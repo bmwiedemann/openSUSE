@@ -1,0 +1,7 @@
+<package name="file-roller" project="openSUSE:Factory">
+  <title>An Archive Manager for GNOME</title>
+  <description>File Roller is an archive manager for GNOME. With it, you can create
+and modify archives, view the contents of an archive, view a file
+contained in the archive, and extract files from the archive.</description>
+  <devel project="GNOME:Factory" package="file-roller"/>
+</package>

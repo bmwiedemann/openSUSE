@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3dc1e2e3461a6f7379207b24d099b118</srcmd5>
+    <version>1.8</version>
+    <time>1336035531</time>
+    <user>coolo</user>
+    <comment>new package for factory; introductory mail: http://lists.opensuse.org/opensuse-factory/2012-04/msg00573.html</comment>
+    <requestid>115052</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3dc1e2e3461a6f7379207b24d099b118</srcmd5>
+    <version>1.8</version>
+    <time>1340183725</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7dd87f4878774675e6237fda931cbeb6</srcmd5>
+    <version>1.9</version>
+    <time>1351265199</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139358</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7dd87f4878774675e6237fda931cbeb6</srcmd5>
+    <version>1.9</version>
+    <time>1359109492</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a04210365e558cd78cb446e1f1a98c61</srcmd5>
+    <version>1.10</version>
+    <time>1378296131</time>
+    <user>coolo</user>
+    <comment>update to 1.10 (forwarded request 196961 from Lazy_Kent)</comment>
+    <requestid>196974</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a04210365e558cd78cb446e1f1a98c61</srcmd5>
+    <version>1.10</version>
+    <time>1379663348</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>a04210365e558cd78cb446e1f1a98c61</srcmd5>
+    <version>1.10</version>
+    <time>1409301960</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c8abc92ae822f8a3c43d9eacb0cfee9e</srcmd5>
+    <version>1.11</version>
+    <time>1462428762</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11
+  * Added 'b' key to spawn shell in the current directory
+  * Support scanning (and refreshing) of empty directories
+  * Added --si flag for base 10 prefixes
+  * Fix toggle dirs before files
+- Spec file cleanups
+- Add include_sys_wait.patch.  Fixes building on earlier distros.
+  The patch is includes upstream and should be in the next release.
+  Please see:
+  + https://dev.yorhel.nl/ncdu/bug/70
+  + https://g.blicky.net/ncdu.git/commit/?id=29f347c19cb7ad17c4b401e1d984fce8eafaaafa</comment>
+    <requestid>392052</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>acb013c93e7eb9835dd17811661852d9</srcmd5>
+    <version>1.12</version>
+    <time>1483555120</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>448427</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f664c127786b1a583b6fa90e8a291b13</srcmd5>
+    <version>1.13</version>
+    <time>1518025343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573676</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>eb2513face51eae1882bb8b3bf944959</srcmd5>
+    <version>1.14</version>
+    <time>1558520396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704645</requestid>
+  </revision>
+</revisionlist>

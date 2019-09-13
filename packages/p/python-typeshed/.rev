@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>88dc6fef8504c4e0ada0e65281d933b7</srcmd5>
+    <version>0.0.1+git.1539385126.cec22025</version>
+    <time>1545648019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.1+git.1539385126.cec22025:
+  * Widen the type of the file argument to Python 2's json.dump. (#2516)
+  * Fix _StrType in difflib in Python 2. (#2514)
+  * Set urllib.parse.urljoin url argument to optional (#2513)
+  * Inherit `InstanceType` from `object` (#2511)
+  * Make csv.reader take Iterator[Text] argument instead of Iterator[str]. (#2508)
+  * skip .git files from linting with flake8 (#2506)
+  * Make _NetlocResultMixinBytes derive from _NetlocResultMixinBase[bytes], not [str] (#2503)
+  * fix typing.Pattern in Python 2 (#2219)
+  * Make 'datetime' a subclass of 'date'. (#2488)
+  * Add new gflags names. (#2489)
+</comment>
+    <requestid>659515</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fcb89b4b712690019b06b0d6a959a073</srcmd5>
+    <version>0.0.1+git.1550076324.0989d950</version>
+    <time>1550668270</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix the URL and set author in changelog entries
+
+- Update to version 0.0.1+git.1550076324.0989d950:
+  * Fix groupby with key=None (#2794)
+  * root_path cannot be None (#2792)
+  * Added `Optional[]` around the `itertools.groupby()` `key` attribute to allow `None` to pass the type (#2790)
+  * Fix Flask.config annotation (#2787)
+  * Add stubs for HTTP Handler classes in py2/urllib2 &amp; py3/urllib.request (#2710)
+  * Make AsyncGenerator.aclose() properly return Awaitable[None] (#2786)
+  * Add type hints for orjson (#2747)
+  * Some small tweaks to Werkzeug stubs: (#2784)
+  * Make `NamedTuple` accept `Text` names (#2762)
+  * decorators.pyi: Add overload to option() (#2671)
+  * __init__.pyi: Add __getitem__() to stat_result() (#2753)
+  * Support *contiguous attributes of memoryview. (#2755)
+  * Use a more accurate type for jwt.decode (#2765)
+  * Fix signature of asyncio.create_server. (#2763)
+  * Improve the stubs in charset.pyi under python3. (#2768)
+  * requests.auth.AuthBase.__call__ deals with PreparedRequest. (#2759)
+  * Support the errors arg in codecs factory functions. (#2752)
+  * gflags: Add DEFINE_multi_enum. (#2783)
+  * Add  types to some cross-platform functions in the platform library (#2781)
+  * Make SyntaxError.offset be optional (again) (#2782)
+  * Update models.pyi (#2780)
+  * Update stubgen link and add a bit more info (#2779)
+  * Add hidden and deprecated click.Command options (#2778)
+  * Add type annotation for collections.deque.__iadd__ (#2774)
+  * pkg_resources: fix stub for get_metadata_lines (#2776)
+  * pkg_resources Add PKG_INFO str attribute for Distribution class (#2775)
+  * Create stubs for Flask (#2740)</comment>
+    <requestid>677315</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a7f1ac1c1b1e093cd731c2ee94f40ef4</srcmd5>
+    <version>0.0.1+git.1562136779.4af283e1</version>
+    <time>1562247873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.1+git.1562136779.4af283e1:
+  * Fix HTTPConnection.putrequest parameter names (#3101)
+  * Add in multiprocessing.managers.ValueProxy types (#3100)
+  * PurePath methods accept os.PathLike[str] from 3.6 (#3099)
+  * Fix contextlib GeneratorContextManager name for py&gt;=3.2 (#3083)
+  * QueueHandler / QueueListener accept SimpleQueue too (#3098)
+  * xml.etree.ElementTree: fix missing None in get(), findtext() return type (#3093)
+  * Add Generic Typing to Queue.PriorityQueue and Queue.LifoQueue in python 2 (#3036)
+  * Add TLSVersion &amp; related attributes to SSLContext (#3097)
+  * Make dataclasses.Field.metadata non-optional (#3094)
+  * Add undocumented methods codecs.utf_16_be_{decode,encode}. (#3091)
+  * Restore default value to click.echo_via_pager (#3090)
+  * Install Black and isort autoformatters (#3069)
+  * itsdangerous: update JSONWebSignatureSerializer.dumps return type (#3082)
+  * &quot;key&quot; argument of builtin function sorted should be optional in python 2.7 (#3086)
+  * Fix annotation of re.Match 'lastindex' and 'lastgroup' in Python 3 (#3085)
+  * fix type of loop.sock_connect (#3073)
+  * Revert &quot;Define functools.partial as overloaded function instead of its own class (#2878)&quot; (#3077)
+  * Add mp_context parameter to concurrent.futures.ProcessPoolExecutor (#3078)
+  * fix ssl.Purpose type in py3 (#3054)
+  * Add types and functions in types.py that are new in 3.7 (#3066)
+  * Refactor tests/pytype_test.py (#3065)
+  * change http.cookies.Morsel to Dict[str, Any] (#3060)
+  * Represent the use of IntEnums in functions in socket.py. (#3009)
+  * HTMLParser.get_starttag_text() can return None (#3072)
+  * redis: Add some type hints (#3055)
+  * Sync recent typing and typing_extensions updates (#3070)
+  * Overload ast.parse to recognize that mode=exec means Module return. (#3039)
+  * str and unicode format functions take objects (#3068)
+  * ssl.pyi: fix types of cadata argument (#3063)</comment>
+    <requestid>713398</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0623f4212f5650e9d00b39c7ddc5724a</srcmd5>
+    <version>0.0.1+git.1562136779.4af283e1</version>
+    <time>1563701708</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide/obsolete python2-typeshed too</comment>
+    <requestid>717185</requestid>
+  </revision>
+</revisionlist>

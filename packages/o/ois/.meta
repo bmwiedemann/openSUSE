@@ -1,0 +1,6 @@
+<package name="ois" project="openSUSE:Factory">
+  <title>Object Oriented Input System</title>
+  <description>Object Oriented Input System (OIS) is meant to be a cross platform, simple solution for using all kinds of Input Devices (KeyBoards, Mice, Joysticks, etc) and feedback devices (e.g. forcefeedback).</description>
+  <devel project="games" package="ois"/>
+  <url>http://sourceforge.net/projects/wgois</url>
+</package>

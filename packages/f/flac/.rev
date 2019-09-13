@@ -1,0 +1,435 @@
+<revisionlist>
+  <revision rev="1" vrev="23">
+    <srcmd5>11fc448d634a874334320c035dca80ca</srcmd5>
+    <version>1.1.2</version>
+    <time>1168902749</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dad7713d920a3946a607a7eef58bbe41</srcmd5>
+    <version>1.1.4</version>
+    <time>1176395168</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="23">
+    <srcmd5>2ef8dbce841382c57d2bdc24a7fc0b7f</srcmd5>
+    <version>1.1.4</version>
+    <time>1181214825</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="25">
+    <srcmd5>84d647bbab538b769a392f8f27c6131d</srcmd5>
+    <version>1.1.4</version>
+    <time>1181316876</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>40ddbeb3264fb151eca89b41141be467</srcmd5>
+    <version>1.2.0</version>
+    <time>1185492360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cc16eca35bc17c349c81294201005425</srcmd5>
+    <version>1.2.1</version>
+    <time>1192226925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>d02e997d0b8bb2f30cfeb6a64f4bd139</srcmd5>
+    <version>1.2.1</version>
+    <time>1193063685</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>daa681f639d7560250f17df2dc10713b</srcmd5>
+    <version>1.2.1</version>
+    <time>1197891865</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="33">
+    <srcmd5>32230b4a1e39bdf073a6743354cb4852</srcmd5>
+    <version>1.2.1</version>
+    <time>1207829588</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="41">
+    <srcmd5>7b9d403dc4fcff670c8579c6260a2f8f</srcmd5>
+    <version>1.2.1</version>
+    <time>1211821267</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="67">
+    <srcmd5>7b9d403dc4fcff670c8579c6260a2f8f</srcmd5>
+    <version>1.2.1</version>
+    <time>1211821267</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="68">
+    <srcmd5>1c95970059167dd443cfa20111471a2b</srcmd5>
+    <version>1.2.1</version>
+    <time>1225636809</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="69">
+    <srcmd5>cb87f490f7446d93277db9b45c3e041f</srcmd5>
+    <version>1.2.1</version>
+    <time>1229340596</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="71">
+    <srcmd5>cb87f490f7446d93277db9b45c3e041f</srcmd5>
+    <version>1.2.1</version>
+    <time>1229340596</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="72">
+    <srcmd5>847730c866b4f5b0225f3a112ac8847d</srcmd5>
+    <version>1.2.1</version>
+    <time>1258365241</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/flac based on submit request 24113 from user tiwai
+</comment>
+  </revision>
+  <revision rev="16" vrev="73">
+    <srcmd5>4c851753ba953ff052c575d0242c0606</srcmd5>
+    <version>1.2.1</version>
+    <time>1262128621</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/flac based on submit request 27761 from user tiwai
+</comment>
+  </revision>
+  <revision rev="17" vrev="74">
+    <srcmd5>0d6d7bf3de35b6bbb5d16b423272fc35</srcmd5>
+    <version>1.2.1</version>
+    <time>1268923539</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="76">
+    <srcmd5>0d6d7bf3de35b6bbb5d16b423272fc35</srcmd5>
+    <version>1.2.1</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="77">
+    <srcmd5>0d6d7bf3de35b6bbb5d16b423272fc35</srcmd5>
+    <version>1.2.1</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="78">
+    <srcmd5>997ae15f79885320763eb4ea7d08f6d7</srcmd5>
+    <version>1.2.1</version>
+    <time>1291992829</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55245 from user elvigia
+</comment>
+    <requestid>55245</requestid>
+  </revision>
+  <revision rev="21" vrev="79">
+    <srcmd5>4dabba85df5ec3c33b1b40860d44a351</srcmd5>
+    <version>1.2.1</version>
+    <time>1291992835</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55245
+</comment>
+  </revision>
+  <revision rev="22" vrev="82">
+    <srcmd5>4dabba85df5ec3c33b1b40860d44a351</srcmd5>
+    <version>1.2.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="83">
+    <srcmd5>03e0a05ad7728dd23180e2edeb272b7b</srcmd5>
+    <version>1.2.1</version>
+    <time>1312651040</time>
+    <user>saschpe</user>
+    <comment>- Do not build with -fno-strict-aliasing since is no longer
+  required. 
+- Impoer two patches from redhat, one speeds up decoding and
+  the other enables the working ASM optimizations. (forwarded request 78170 from elvigia)</comment>
+    <requestid>78179</requestid>
+  </revision>
+  <revision rev="24" vrev="84">
+    <srcmd5>3fe8ea643134aee0364bf730cef9055e</srcmd5>
+    <version>1.2.1</version>
+    <time>1312651048</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78179
+</comment>
+  </revision>
+  <revision rev="25" vrev="85">
+    <srcmd5>a05c88ddf39316d3d6235e89fd74f78b</srcmd5>
+    <version>1.2.1</version>
+    <time>1316465434</time>
+    <user>lrupp</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+- Add flac-devel to baselibs (forwarded request 83524 from jengelh)</comment>
+    <requestid>83630</requestid>
+  </revision>
+  <revision rev="26" vrev="86">
+    <srcmd5>4ec53fdb03fb339298249b0b6dd516f8</srcmd5>
+    <version>1.2.1</version>
+    <time>1317211644</time>
+    <user>saschpe</user>
+    <comment>- Build with --enable-sse, this only disables runtime 
+  checking if the *OS* supports SSE, which registers a 
+  SIGILL signal handler then tries to execute SSE code...
+  it still tests the running *CPU* though. (forwarded request 85232 from elvigia)</comment>
+    <requestid>85256</requestid>
+  </revision>
+  <revision rev="27" vrev="87">
+    <srcmd5>ec5c4f2de06260b52fdb5044e1b05e0e</srcmd5>
+    <version>1.2.1</version>
+    <time>1317626277</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 86007 from coolo)</comment>
+    <requestid>86083</requestid>
+  </revision>
+  <revision rev="28" vrev="89">
+    <srcmd5>ec5c4f2de06260b52fdb5044e1b05e0e</srcmd5>
+    <version>1.2.1</version>
+    <time>1319181879</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="90">
+    <srcmd5>e4afe4db645f1ce4fa8606d7c8598fd2</srcmd5>
+    <version>1.2.1</version>
+    <time>1321886708</time>
+    <user>coolo</user>
+    <comment>- Use O_CLOEXEC in all library code. (forwarded request 92592 from elvigia)</comment>
+    <requestid>92692</requestid>
+  </revision>
+  <revision rev="30" vrev="91">
+    <srcmd5>f8eb048abcb37e99de3e94c5b0596283</srcmd5>
+    <version>1.2.1</version>
+    <time>1323191376</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="31" vrev="92">
+    <srcmd5>4d1c1963166c3e71b8b380f65c030f84</srcmd5>
+    <version>1.2.1</version>
+    <time>1327486062</time>
+    <user>coolo</user>
+    <comment>- Support symbol visibility features
+- Disable test suite, nothing wrong with it, it just
+  takes too long to run and uses private/hidden symbols to
+  test flac's internals. (forwarded request 101382 from elvigia)</comment>
+    <requestid>101390</requestid>
+  </revision>
+  <revision rev="32" vrev="93">
+    <srcmd5>20a1b50b2ebd0c0e4be1c1801468e747</srcmd5>
+    <version>1.2.1</version>
+    <time>1328001583</time>
+    <user>coolo</user>
+    <comment>- Fix some memory and resources leak.
+- Link shared libraries with -Bsymbolic-functions
+- annotate relevant functions with proper attributes to
+  allow the compiler generate better code (attribute hot. alloc_size) (forwarded request 101855 from elvigia)</comment>
+    <requestid>101857</requestid>
+  </revision>
+  <revision rev="33" vrev="94">
+    <srcmd5>65bd28364422804fd7c3a502519999ca</srcmd5>
+    <version>1.2.1</version>
+    <time>1331324551</time>
+    <user>coolo</user>
+    <comment>- don't use fvisibility=hidden on ppc. As it can't find symbols
+  afterwards (forwarded request 108488 from k0da)</comment>
+    <requestid>108489</requestid>
+  </revision>
+  <revision rev="34" vrev="95">
+    <srcmd5>7f903303ff54ae2953afef32785e50d4</srcmd5>
+    <version>1.2.1</version>
+    <time>1332147812</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 109343 from dimstar)</comment>
+    <requestid>109350</requestid>
+  </revision>
+  <revision rev="35" vrev="97">
+    <srcmd5>7f903303ff54ae2953afef32785e50d4</srcmd5>
+    <version>1.2.1</version>
+    <time>1340183331</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="36" vrev="98">
+    <srcmd5>7ed95cc3a9ce1abf1b4b0e5454c85e15</srcmd5>
+    <version>1.2.1</version>
+    <time>1347882891</time>
+    <user>coolo</user>
+    <comment>- Don't ignore $(AM_CFLAGS).
+- Remove ppc patch. (forwarded request 132480 from AndreasSchwab)</comment>
+    <requestid>132563</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6aa6387de7af806fe146f8ba68aac929</srcmd5>
+    <version>1.2.1_git201212051942</version>
+    <time>1355463658</time>
+    <user>coolo</user>
+    <comment>- add xz buildrequires for old distros. 
+
+- Update to current git
+* patches deleted:
+  - flac-1.2.1-asm.patch
+  - flac-1.2.1-bitreader.patch
+  - flac-gcc43-fixes.diff
+  - flac-gcc47.patch
+  - flac-leaks.patch
+  - flac-no-xmms.diff
+  - flac-visibility.patch
+  - flac-printf-format-fix.diff
+All Upstreamed either by us or other distros.
+- Add flac-openssl.patch, do crypto with openssl (not wanted upstream)
+- Restore make check (forwarded request 144806 from elvigia)</comment>
+    <requestid>144833</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>549a3bc8f8c0d547b1476a52e3e617c0</srcmd5>
+    <version>1.2.1_git201212051942</version>
+    <time>1355910890</time>
+    <user>coolo</user>
+    <comment>- Add flac-fix-pkgconfig.patch to fix includedir in the pkgconfig
+  files.</comment>
+    <requestid>145747</requestid>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>549a3bc8f8c0d547b1476a52e3e617c0</srcmd5>
+    <version>1.2.1_git201212051942</version>
+    <time>1359108881</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="5">
+    <srcmd5>339f51c7188294f9a932082f9954a383</srcmd5>
+    <version>1.2.1_git201212051942</version>
+    <time>1362131276</time>
+    <user>coolo</user>
+    <comment>add flac-1.2.1-automake1_13.patch, fix build with automake-1.13.1 (forwarded request 156894 from seife)</comment>
+    <requestid>156895</requestid>
+  </revision>
+  <revision rev="41" vrev="6">
+    <srcmd5>de45a12c4a3d5d39a0de33af639d5504</srcmd5>
+    <version>1.2.1_git201212051942</version>
+    <time>1366791849</time>
+    <user>coolo</user>
+    <comment>license update: BSD-3-Clause and GPL-2.0+ and GFDL-1.2
+Numerous GPL-2.0+ licensed files;documtation is GFDL-1.2 (forwarded request 172871 from babelworx)</comment>
+    <requestid>172875</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>65df6b27a4c2f8851698c1b7cadb1580</srcmd5>
+    <version>1.2.99_git201305252226</version>
+    <time>1370425895</time>
+    <user>coolo</user>
+    <comment>- Update to flac 1.3.0pre4 (packaged as 1.2.99_git* to avoid
+ messing with RPM versioning)
+ * Mostly non-linux related bugfixes plus autotools fixes
+ - flac-openssl.patch --&gt; 0001-Allow-use-of-openSSL.patch 
+ - remove flac-1.2.1-automake1_13.patch, fixed in upstream.
+ - add 0001-getopt_long-not-broken-here.patch, FLAC bundles
+   GNU-compatible getopt_long for broken OS, but we do have
+   a functional version in libc already. (forwarded request 176579 from elvigia)</comment>
+    <requestid>176786</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e458fefe414f4a6d1ef28d31a6013295</srcmd5>
+    <version>1.3.0</version>
+    <time>1372686835</time>
+    <user>coolo</user>
+    <comment>- Update to final upstream release 1.3.0
+(had to quilt refresh openssl.patch) (forwarded request 181552 from jengelh)</comment>
+    <requestid>181554</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>e458fefe414f4a6d1ef28d31a6013295</srcmd5>
+    <version>1.3.0</version>
+    <time>1379662346</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>e458fefe414f4a6d1ef28d31a6013295</srcmd5>
+    <version>1.3.0</version>
+    <time>1409300882</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="6">
+    <srcmd5>e08a0becd8edcc33b6c8df2c1c378684</srcmd5>
+    <version>1.3.0</version>
+    <time>1417160825</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263120</requestid>
+  </revision>
+  <revision rev="47" vrev="7">
+    <srcmd5>dc040aa01163a30f25402cbb47efd7b5</srcmd5>
+    <version>1.3.0</version>
+    <time>1417643388</time>
+    <user>dimstar_suse</user>
+    <comment>Correct CVE# (forwarded request 263300 from tiwai)</comment>
+    <requestid>263301</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3d8e9b9188b90cbc601543c887f4a456</srcmd5>
+    <version>1.3.1</version>
+    <time>1427313815</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292127</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>31ce284f50699c0d023d43da06320426</srcmd5>
+    <version>1.3.1</version>
+    <time>1428272612</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294074</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>0d7a466d2dd5a86a139a38d9cebe9a6b</srcmd5>
+    <version>1.3.1</version>
+    <time>1473679375</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426638</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f49e4b45efe34e84482e7b708861f1be</srcmd5>
+    <version>1.3.2</version>
+    <time>1484131949</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448425</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>8703911b7f6e6ede04a55a90e83d830c</srcmd5>
+    <version>1.3.2</version>
+    <time>1525208930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601932</requestid>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>ae08358e6a5e266ce86379a7e3d764fd</srcmd5>
+    <version>1.3.2</version>
+    <time>1548704832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668084</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>4a4650a669d903c015bcf9cd5d584471</srcmd5>
+    <version>1.3.3</version>
+    <time>1567848558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727839</requestid>
+  </revision>
+</revisionlist>

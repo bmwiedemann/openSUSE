@@ -1,0 +1,886 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4d7811c79dd77be6ac8faf75b51cdb5d</srcmd5>
+    <version>4.5.2</version>
+    <time>1173872244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>90fb9aaf08f6d4b34d345b771359ed67</srcmd5>
+    <version>4.6</version>
+    <time>1176394515</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ca62178a401b8836c4fda501f7899ef</srcmd5>
+    <version>4.7</version>
+    <time>1186095525</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>be757e7019ce0a33ee8b55105000a69b</srcmd5>
+    <version>4.7</version>
+    <time>1186911850</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>d837b0b8883ba32b533b25c0aa6dac43</srcmd5>
+    <version>4.7</version>
+    <time>1186957093</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>d36b45bb0dcbf7d11386cb301efc8048</srcmd5>
+    <version>4.7</version>
+    <time>1187370019</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8aa14e1c99a4325d674c39b2db28e0de</srcmd5>
+    <version>4.7.1</version>
+    <time>1191366543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>729cd49ae3a01fca6c9d1f04363dacc4</srcmd5>
+    <version>4.7.3</version>
+    <time>1197573836</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>93f11fa24aaeb47bff552879ef53cc7e</srcmd5>
+    <version>4.7.4</version>
+    <time>1203035955</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7ca1e80b7ae28bdd8e6337c4aa3af9bb</srcmd5>
+    <version>4.7.6</version>
+    <time>1211897755</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="25">
+    <srcmd5>a2a44adda37522fbd4d279681f845b6d</srcmd5>
+    <version>4.7.4</version>
+    <time>1211916105</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>46d91a65435b224cdc4420a371d7befa</srcmd5>
+    <version>4.7.6</version>
+    <time>1212448107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c7a161a979cebf21c255ba5980b50184</srcmd5>
+    <version>4.7.7</version>
+    <time>1218404279</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>aca5ad43864ce2f700011287161b440c</srcmd5>
+    <version>4.7.9</version>
+    <time>1228489189</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a334730bc5792541150cfe828dc0b384</srcmd5>
+    <version>4.8.snapshot.20090430</version>
+    <time>1242689384</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3f9c52b17e94fcfa49196076129eb4c2</srcmd5>
+    <version>4.7.90.snapshot.20090601</version>
+    <time>1243983200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0435ac209fe8800b41427112656ba479</srcmd5>
+    <version>4.8</version>
+    <time>1244498241</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0734bd0372690b139f83253560e461cc</srcmd5>
+    <version>4.8.1</version>
+    <time>1245281976</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>be28c8cda47e389e235ee528c03bc957</srcmd5>
+    <version>4.8.1</version>
+    <time>1248541086</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>383a91fbc9ab69463cf7153816512252</srcmd5>
+    <version>4.8.2</version>
+    <time>1249418047</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>d0766ada2f538155b990b9530bb86a24</srcmd5>
+    <version>4.8.2</version>
+    <time>1250513760</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 17948 from user Beineri
+</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>0ba56cdbc9b1501a9ec17c8ca464b767</srcmd5>
+    <version>4.8.2</version>
+    <time>1251746494</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 19358 from user Beineri
+</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>0ba56cdbc9b1501a9ec17c8ca464b767</srcmd5>
+    <version>4.8.2</version>
+    <time>1251746494</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 19358 from user Beineri
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8ce9e543474043955a1950425d22baa3</srcmd5>
+    <version>4.9.1</version>
+    <time>1256573235</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 23117 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cf1f3d94241c7a253282c01648b9851d</srcmd5>
+    <version>4.9.2</version>
+    <time>1258981029</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 24768 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>645aa9d605f4f3e792524514c1a108c4</srcmd5>
+    <version>4.9.3</version>
+    <time>1259345925</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 25191 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1abfac3056c92def100edb5bb281b421</srcmd5>
+    <version>4.10</version>
+    <time>1265751992</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 31828 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>1188655261c9eddc18a5e4205501c43b</srcmd5>
+    <version>4.10</version>
+    <time>1268925888</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>aacd9ce83810b8e297e84af8846bb344</srcmd5>
+    <version>4.10.1</version>
+    <time>1270057950</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 35884 from user dirkmueller
+</comment>
+    <requestid>35884</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>6bff797e225eee4d5db035d4eb52aacc</srcmd5>
+    <version>4.10.1</version>
+    <time>1274789306</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 40407 from user prusnak
+</comment>
+    <requestid>40407</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0ae1af80a9c3d4afff37f8842c9c7a76</srcmd5>
+    <version>4.10.2</version>
+    <time>1276528135</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 41422 from user dirkmueller
+</comment>
+    <requestid>41422</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>0ae1af80a9c3d4afff37f8842c9c7a76</srcmd5>
+    <version>4.10.2</version>
+    <time>1278667385</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>0ae1af80a9c3d4afff37f8842c9c7a76</srcmd5>
+    <version>4.10.2</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>939f53f79da6d50bf44b0477700d3097</srcmd5>
+    <version>4.11</version>
+    <time>1283516414</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 46893 from user dirkmueller
+</comment>
+    <requestid>46893</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>1408117f2da3b957df0a451208bf6123</srcmd5>
+    <version>4.11</version>
+    <time>1283766505</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 47213 from user coolo
+</comment>
+    <requestid>47213</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3b0f837dcbd7ce9caaa2199ab826ff90</srcmd5>
+    <version>4.11.1</version>
+    <time>1286138256</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/python-sip based on submit request 49692 from user dirkmueller
+</comment>
+    <requestid>49692</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7102eed934c2fe5684482b67ea5a5227</srcmd5>
+    <version>4.11.2</version>
+    <time>1290250900</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53434 from user dirkmueller
+</comment>
+    <requestid>53434</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>cb4e16b2c568fee8f956f64b410c1013</srcmd5>
+    <version>4.11.2</version>
+    <time>1290250915</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53434
+</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d0a2cce6c9e1ca0c6067e68e0d87dd65</srcmd5>
+    <version>4.12</version>
+    <time>1294392999</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57006 from user dirkmueller
+</comment>
+    <requestid>57006</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>0a5f4cdbf302a0816c43707284a84be9</srcmd5>
+    <version>4.12</version>
+    <time>1294393021</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57006
+</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>5831426bb61471b6ff26fe7c3f5aa948</srcmd5>
+    <version>4.12.1</version>
+    <time>1297386812</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60412 from user wstephenson
+</comment>
+    <requestid>60412</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>37c1a878bc820d023942deee6d19988e</srcmd5>
+    <version>4.12.1</version>
+    <time>1297386817</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60412
+</comment>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>37c1a878bc820d023942deee6d19988e</srcmd5>
+    <version>4.12.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>7ab02be612c2e4aa1d830691642465cc</srcmd5>
+    <version>4.12.2</version>
+    <time>1305713456</time>
+    <user>saschpe</user>
+    <comment>update</comment>
+    <requestid>70534</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>c96791a558379cc102992bfdde236878</srcmd5>
+    <version>4.12.3</version>
+    <time>1306767836</time>
+    <user>darix</user>
+    <comment>- update to 4.12.3:
+  - A bug fix release.</comment>
+    <requestid>72057</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1d0fef48a59b49ee0a157c10816d4fbc</srcmd5>
+    <version>4.12.4</version>
+    <time>1313760204</time>
+    <user>darix</user>
+    <comment>Fix License per bnc#712639 (forwarded request 79128 from termim)</comment>
+    <requestid>79130</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>8d9af96dde9083209c6d9da3e3bef470</srcmd5>
+    <version>4.12.4</version>
+    <time>1313760217</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 79130
+</comment>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>b72d87a59b51c279e7bbd0df5dc049dc</srcmd5>
+    <version>4.12.4</version>
+    <time>1315762518</time>
+    <user>saschpe</user>
+    <comment>require python3-base only for &gt; 11.4 (forwarded request 81744 from termim)</comment>
+    <requestid>81774</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>bcfe672421e3f6aef44912a8a63b44d7</srcmd5>
+    <version>4.12.4</version>
+    <time>1315762525</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81774
+</comment>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>bcfe672421e3f6aef44912a8a63b44d7</srcmd5>
+    <version>4.12.4</version>
+    <time>1319182405</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f6a5bbb724e55029f0a52367115f204b</srcmd5>
+    <version>4.13</version>
+    <time>1321980565</time>
+    <user>coolo</user>
+    <comment>Fix the 11.3/11.4 python3-sip build (forwarded request 92833 from dirkmueller)</comment>
+    <requestid>92901</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>01d3e4e0220642f41432b44109ef8f9a</srcmd5>
+    <version>4.13.1</version>
+    <time>1325767901</time>
+    <user>coolo</user>
+    <comment>- update to 4.13.1:
+  - Deprecation warnings can no longer be disabled.
+  - Added the all_raise_py_exception argument to the %Module directive.
+  - Added the /NoRaisesPyException/ function annotation.
+  - Added the /PyName/ typedef annotation.
+  - Class templates now allow super-classes to be defined as template
+   arguments.
+ - Added support for 'public' preceding the name of a class in a super-class
+   list.
+ - Added support for 'protected' and 'private' preceding the name of a class
+   in a super-class list.  Any such super-class will be ignored.</comment>
+    <requestid>98711</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a249d145ba1e5800ab595ebbdbcec55b</srcmd5>
+    <version>4.13.2</version>
+    <time>1332752722</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0 or GPL-3.0 or SUSE-SIP
+Use SUSE- proprietary extension until SIP license is accepted upstream at spdx.org (forwarded request 110724 from babelworx)</comment>
+    <requestid>110725</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>8f41d08589e849d777d7ea34a0e3151a</srcmd5>
+    <version>4.13.2</version>
+    <time>1336035612</time>
+    <user>coolo</user>
+    <comment>Fix for bnc#756282 and bnc#721280 (forwarded request 115249 from adra)</comment>
+    <requestid>115251</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>8f41d08589e849d777d7ea34a0e3151a</srcmd5>
+    <version>4.13.2</version>
+    <time>1340184092</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>eb260f9206ae80bf67aae63362bcdd67</srcmd5>
+    <version>4.13.3</version>
+    <time>1341821806</time>
+    <user>coolo</user>
+    <comment>- install api version as rpm macro
+
+- Update to version 4.13.3
+  * The /NoRaisesPyException/ and /RaisesPyException/ function annotations can
+    now be applied to constructors.
+  * Added support for the Python v3.3 handling of Unicode.
+
+- install api version as rpm macro
+
+- Update to version 4.13.3
+  - The /NoRaisesPyException/ and /RaisesPyException/ function annotations can
+    now be applied to constructors.
+  - Added support for the Python v3.3 handling of Unicode.</comment>
+    <requestid>127207</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>f496089a0a961280cbac95ce55f6ead4</srcmd5>
+    <version>4.14</version>
+    <time>1349251714</time>
+    <user>coolo</user>
+    <comment>This is an update (see below) for the SIP package following the latest upstream
+version. I have updated both the python2 and python3 spec files. Let me know if
+I need to make a separate request for the py2 version.
+
+- Update to latest upstream version:
+  - The internal API version is increased to 9.0 requiring the regeneration
+    of all modules.
+  - Added the %InstanceCode directive.
+  - Added the %VirtualErrorHandler directive.
+  - Added the default_VirtualErrorHandler argument to the %Module directive.
+  - Added the VirtualErrorHandler class annotation.
+  - Added the NoVirtualErrorHandler and VirtualErrorHandler function
+    annotations.
+  - The AllowNone and NoRelease mapped type annotations can now be used
+    with mapped type templates.
+  - SIP_PLATFORM_* and SIP_TIMELINE_* preprocessor symbols are generated
+    corresponding to the -t arguments passed on the command line.
+  - Deprecated sipTransferBreak().
+  - For Python v2.x unsigned short and unsigned char (when used as a byte)
+    are now converted to int, rather than long, objects.
+  - Added support for MSVC 2010 to the build system.
+- 
+
+- Update to the latest upstream version:
+  - The internal API version is increased to 9.0 requiring the regeneration
+    of all modules.
+  - Added the %InstanceCode directive.
+  - Added the %VirtualErrorHandler directive.
+  - Added the default_VirtualErrorHandler argument to the %Module directive.
+  - Added the VirtualErrorHandler class annotation.
+  - Added the NoVirtualErrorHandler and VirtualErrorHandler function
+    annotations.
+  - The AllowNone and NoRelease mapped type annotations can now be used
+    with mapped type templates. (forwarded request 136482 from luca_b)</comment>
+    <requestid>136575</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>78bcee4f2fe194f6483bc5a225b15bdc</srcmd5>
+    <version>4.14.1</version>
+    <time>1352215252</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140218</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>7f7cfebdd4026256a3be479e2399e8f4</srcmd5>
+    <version>4.14.2</version>
+    <time>1355478395</time>
+    <user>coolo</user>
+    <comment>- Update to 4.14.2:
+  - Added sip.setdestroyonexit().
+  - sip.voidptr() will now accept any object that implements the buffer 
+    protocol. (forwarded request 144840 from luca_b)</comment>
+    <requestid>144842</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>169c864c3531edf8b12a713ad543edc1</srcmd5>
+    <version>4.14.2</version>
+    <time>1357576657</time>
+    <user>coolo</user>
+    <comment>Remove openSUSE 11.4 spec file workarounds (forwarded request 142451 from TheBlackCat) (forwarded request 142452 from TheBlackCat)</comment>
+    <requestid>147139</requestid>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>169c864c3531edf8b12a713ad543edc1</srcmd5>
+    <version>4.14.2</version>
+    <time>1359110122</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>23b648e024792771833c4b0953c6dd56</srcmd5>
+    <version>4.14.3</version>
+    <time>1359466486</time>
+    <user>coolo</user>
+    <comment>- update to 4.14.3:
+  - The /KeepReference/ argument annotation, when applied to factories, will
+    now keep the reference with the object created by the factory.
+  - Any object that supports the buffer protocol can now be passed when a
+    sip.voidptr is expected.</comment>
+    <requestid>150264</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>c26c8d26ab5f33f4e798d3209d3b8d59</srcmd5>
+    <version>4.14.4</version>
+    <time>1362773794</time>
+    <user>coolo</user>
+    <comment>update to 4.14.4 (forwarded request 157602 from mlin7442)</comment>
+    <requestid>157985</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>0b184f1e181656dd4dc9b3387cafb2ff</srcmd5>
+    <version>4.14.5</version>
+    <time>1364473462</time>
+    <user>coolo</user>
+    <comment>- update to 4.14.5:
+  * Bug fixes (specifically for QGIS)</comment>
+    <requestid>161353</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>b933eb7329820b92e55570506a9ffb0d</srcmd5>
+    <version>4.14.5</version>
+    <time>1365140670</time>
+    <user>coolo</user>
+    <comment>- update to 4.14.5 (bnc#812130):</comment>
+    <requestid>162342</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>1bc04b5fa22a9058d837535452965bc8</srcmd5>
+    <version>4.14.6</version>
+    <time>1367487890</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>173739</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>46b55d8f74f2dbaa4aa1de35a8c9aeda</srcmd5>
+    <version>4.14.6</version>
+    <time>1372064651</time>
+    <user>coolo</user>
+    <comment>remove duplicated spec file</comment>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>63fb53b24f1630133c94d28afe759340</srcmd5>
+    <version>4.14.6</version>
+    <time>1372160930</time>
+    <user>coolo</user>
+    <comment>readd p3 spec</comment>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>7e8b2e8807cde5c28170135cff5a62c3</srcmd5>
+    <version>4.14.7</version>
+    <time>1372413287</time>
+    <user>coolo</user>
+    <comment>- update to 4.14.7: 
+  - The internal API version is increased to 10.0 requiring the regeneration of
+    all modules.
+  - Added the /Sequence/ function annotation.
+  - %ConvertFromTypeCode can now be specified for classes.
+  - Added sipEnableAutoconversion() to the C API.
+  - Added sipSetDestroyOnExit() to the C API.
+  - Bug fixes.</comment>
+    <requestid>180859</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>c8d8b10ca8178a0737218e45203dd4ff</srcmd5>
+    <version>4.15.1</version>
+    <time>1377717410</time>
+    <user>coolo</user>
+    <comment>Update to 4.15.1 (forwarded request 196488 from termim)</comment>
+    <requestid>196654</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>a16b5961940f51e21314bd7768cc7887</srcmd5>
+    <version>4.14.7</version>
+    <time>1378238684</time>
+    <user>coolo</user>
+    <comment>Urgent request to revert back to 4.14.7 to prevent crashes in plasma-desktop when utilizing plasmoids based on python. Upstream is aware and working on the issue. Will update package when issues are fixed.</comment>
+    <requestid>196896</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>f2600cdd1af5e2022b2644cc4b864af8</srcmd5>
+    <version>4.15.1</version>
+    <time>1378915829</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>198532</requestid>
+  </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>f2600cdd1af5e2022b2644cc4b864af8</srcmd5>
+    <version>4.15.1</version>
+    <time>1379664283</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>05590c7661d2f847e8b296d9116072a4</srcmd5>
+    <version>4.15.3</version>
+    <time>1382353130</time>
+    <user>scarabeus_factory</user>
+    <comment>- Use alternatives for /usr/bin/sip to prevent conflicts between
+  Python 3 and Python 2 python-sip-devel packages (forwarded request 204054 from luca_b)</comment>
+    <requestid>204104</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>8e8dcb1dbc2428dd386dccc898255bde</srcmd5>
+    <version>4.15.4</version>
+    <time>1389385320</time>
+    <user>coolo</user>
+    <comment>- New upstream version 4.15.4:
+  - Fixed all the compiler warning messages when building the sip module.
+  - Fixed the parsing of C++ types involving multiple const and pointers.
+  - Added SIP_SSIZE_T_FORMAT to the C API.
+  - Moved the lexer and parser meta-source files to a separate directory to avoid
+  problems with make accidentaly regenerating them.
+  - Allow the pointers used to store the parsed results from Python
+  reimplementations to be NULL.
+  - Remove the __pycache__ directory when cleaning. (forwarded request 213381 from luca_b)</comment>
+    <requestid>213491</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>b8871ea8e34b3e0f3c4b2398eb43c142</srcmd5>
+    <version>4.15.4</version>
+    <time>1390299128</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214313</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>c8e77e6045dde87a856c8b55b202f175</srcmd5>
+    <version>4.15.5</version>
+    <time>1395405260</time>
+    <user>coolo</user>
+    <comment>Update to 4.15.5 (forwarded request 226654 from saschpe)</comment>
+    <requestid>226940</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>9e0b4dd9d7c2c5ad3a2956d919aab68b</srcmd5>
+    <version>4.16.1</version>
+    <time>1403762270</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236697</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>9b160c16b83f51575d58a8aa5f816326</srcmd5>
+    <version>4.16.2</version>
+    <time>1406896463</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243235</requestid>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>9b160c16b83f51575d58a8aa5f816326</srcmd5>
+    <version>4.16.2</version>
+    <time>1409302992</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>12f1200f73438eff8afb8a7958dcad93</srcmd5>
+    <version>4.16.3</version>
+    <time>1413285878</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255089</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>b71d68ba290fa1b6c10ee1978b26e755</srcmd5>
+    <version>4.16.5</version>
+    <time>1420318982</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266885</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>d5285a2cd7eb21b1e982356855794747</srcmd5>
+    <version>4.16.8</version>
+    <time>1434550555</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>311979</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>417088461ae65937fe5ed1de0f7da832</srcmd5>
+    <version>4.16.9</version>
+    <time>1437657704</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317671</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>fdee8adfb24570366aed7597c694da24</srcmd5>
+    <version>4.17</version>
+    <time>1446465286</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341736</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>9c11ec5ded8f854aeaff97bf3aeb44cd</srcmd5>
+    <version>4.18</version>
+    <time>1464014278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396739</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>ff268ddcbeefe035a118ce4d4d2a0bfe</srcmd5>
+    <version>4.18</version>
+    <time>1469079686</time>
+    <user>dimstar_suse</user>
+    <comment>- removed build-compare.diff: it is the default since 4.18 anyway
+- disable-rpaths.diff refreshed
+
+- removed build-compare.diff: it is the default since 4.18 anyway
+- disable-rpaths.diff refreshed</comment>
+    <requestid>406435</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>171fcccf6661868c55e79f51e8440215</srcmd5>
+    <version>4.18.1</version>
+    <time>1470217236</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415324</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>c9b693f0ae010130568f2250c36aec90</srcmd5>
+    <version>4.19</version>
+    <time>1484818788</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449542</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>d1ee0c1ee3b85fd0414b14ebb252336a</srcmd5>
+    <version>4.19.1</version>
+    <time>1487680601</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459263</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>42f98098d296b8285970cc335a02de1a</srcmd5>
+    <version>4.19.1</version>
+    <time>1492618026</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>485037</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>1ec6e21789740a8061d3c9746c7ae60e</srcmd5>
+    <version>4.19.2</version>
+    <time>1494937553</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490795</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>c72ae477efdcc94b7ee5b13fae3b7c94</srcmd5>
+    <version>4.19.2</version>
+    <time>1496326978</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495365</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>5c24b1c20207bade4523d1bc5fb812ed</srcmd5>
+    <version>4.19.3</version>
+    <time>1504520905</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519231</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>cd7a9f2d5e8d2bd9900267f4229f205f</srcmd5>
+    <version>4.19.3</version>
+    <time>1512041701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544563</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>482d858de778061f0d304c314ae5e80a</srcmd5>
+    <version>4.19.7</version>
+    <time>1517323290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570865</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>ac1b8ec4b758b5350843d7e3090b6ba8</srcmd5>
+    <version>4.19.8</version>
+    <time>1524144029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v4.19.8
+  - Bug fixes. (forwarded request 597255 from termim)</comment>
+    <requestid>597462</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>8e4acc98716e91787c096da8672660f0</srcmd5>
+    <version>4.19.13</version>
+    <time>1541508588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643603</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>7bcc780747483bbbd08d570adb2c29cd</srcmd5>
+    <version>4.19.13</version>
+    <time>1547130004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664039</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>45c8f26a5e151601e36d909b5c246f1e</srcmd5>
+    <version>4.19.14</version>
+    <time>1550151015</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to a working location for the tarball
+
+- Update to 4.19.14:
+  * The reference count displayed by sip.dump() now has the same
+    caveat as sys.getrefcount().
+  * Added SIP_NULLPTR to the C API.
+  * Added support for size_t.
+  * Added sipLong_AsSizeT() to the C API.
+  * Added the '=' format characters to sipBuildResult() and
+    sipParseResult().</comment>
+    <requestid>674453</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>7fdf44aa6bb52f2eebcbc11c798b2e55</srcmd5>
+    <version>4.19.14</version>
+    <time>1551385446</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678047</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>e58eb9941fcb3ab576ea3c5088b466e9</srcmd5>
+    <version>4.19.16</version>
+    <time>1555701956</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>695842</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>b826919c997f17f8b2c59029c768a2db</srcmd5>
+    <version>4.19.17</version>
+    <time>1560337600</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.19.17
+</comment>
+    <requestid>707281</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>4792e6492c9824650a0499138c555dfa</srcmd5>
+    <version>4.19.18</version>
+    <time>1563259169</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.19.18</comment>
+    <requestid>714845</requestid>
+  </revision>
+</revisionlist>

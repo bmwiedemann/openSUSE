@@ -1,0 +1,5 @@
+<package name="zypper-migration-plugin" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="zypp:plugins" package="zypper-migration-plugin"/>
+</package>

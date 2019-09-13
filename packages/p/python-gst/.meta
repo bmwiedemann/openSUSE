@@ -1,0 +1,5 @@
+<package name="python-gst" project="openSUSE:Factory">
+  <title>python-gstreamer-0_10</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="multimedia:libs" package="python-gst"/>
+</package>

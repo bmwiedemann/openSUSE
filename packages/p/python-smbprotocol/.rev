@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f82f5070b1ab7a2c9437b746780ecd84</srcmd5>
+    <version>0.1.0</version>
+    <time>1544441337</time>
+    <user>dimstar_suse</user>
+    <comment>SMBv2 and v3 Client for both Python 2 and 3.
+</comment>
+    <requestid>655899</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3347e20934adf13f64eac57a9509e87e</srcmd5>
+    <version>0.1.1</version>
+    <time>1546246037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662056</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f0e90ca681cecc5393e7abf88bd70bca</srcmd5>
+    <version>0.1.1</version>
+    <time>1546535366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662603</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,219 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69f3ea91216201b13e0b542adba48e39</srcmd5>
+    <version>0.05.2.1</version>
+    <time>1260977461</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/guitarix based on submit request 25561 from user mseben
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e032d704ca335f3d33cdd5adb1bc1a9</srcmd5>
+    <version>0.05.8.1</version>
+    <time>1263306875</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/guitarix based on submit request 29127 from user mseben
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d660d3faa84e33e55d11c8eb742486d5</srcmd5>
+    <version>0.06.0</version>
+    <time>1268268031</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/guitarix based on submit request 34528 from user mseben
+</comment>
+    <requestid>34528</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>eceaf80f7b6e1d0851ff5a5e2bd7910b</srcmd5>
+    <version>0.06.0</version>
+    <time>1268923913</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>eceaf80f7b6e1d0851ff5a5e2bd7910b</srcmd5>
+    <version>0.06.0</version>
+    <time>1278667349</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>eceaf80f7b6e1d0851ff5a5e2bd7910b</srcmd5>
+    <version>0.06.0</version>
+    <time>1278678581</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4f818086ef28168a627840b90d7487f5</srcmd5>
+    <version>0.11.0</version>
+    <time>1281313577</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/guitarix based on submit request 44611 from user mseben
+</comment>
+    <requestid>44611</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d0381d62a9cfe80fb291e2576cd4bffe</srcmd5>
+    <version>0.11.1</version>
+    <time>1283165244</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/guitarix based on submit request 46566 from user mseben
+</comment>
+    <requestid>46566</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>d0381d62a9cfe80fb291e2576cd4bffe</srcmd5>
+    <version>0.11.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1b7627911bc80e2677e785a729e19b62</srcmd5>
+    <version>0.18.0</version>
+    <time>1315560328</time>
+    <user>saschpe</user>
+    <comment>update to guitarix2 0.18.0</comment>
+    <requestid>81431</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7c185f70d65e2c342ff19251c9d76e18</srcmd5>
+    <version>0.18.0</version>
+    <time>1315560338</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81431
+</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>7c185f70d65e2c342ff19251c9d76e18</srcmd5>
+    <version>0.18.0</version>
+    <time>1319181958</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4e759af9b3aa0750f109be443c31888b</srcmd5>
+    <version>0.19.0</version>
+    <time>1329391359</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104354 from coolo)</comment>
+    <requestid>104960</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>4e759af9b3aa0750f109be443c31888b</srcmd5>
+    <version>0.19.0</version>
+    <time>1340183427</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>4e759af9b3aa0750f109be443c31888b</srcmd5>
+    <version>0.19.0</version>
+    <time>1359109032</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>4e759af9b3aa0750f109be443c31888b</srcmd5>
+    <version>0.19.0</version>
+    <time>1379662594</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8ff2552611405c2c3b28287f5465afdd</srcmd5>
+    <version>0.28.3</version>
+    <time>1396537636</time>
+    <user>coolo</user>
+    <comment>major update. mentioned removed patch now in .changes (forwarded request 228121 from cyberiad)</comment>
+    <requestid>228758</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>8ff2552611405c2c3b28287f5465afdd</srcmd5>
+    <version>0.28.3</version>
+    <time>1409301142</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>89722c333946514f619dde3827e2b141</srcmd5>
+    <version>0.32.2</version>
+    <time>1421753732</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281650</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>61452dab1b65664a734d095f7671987b</srcmd5>
+    <version>0.32.2</version>
+    <time>1435870235</time>
+    <user>dimstar_suse</user>
+    <comment>- fpexception.patch: gcc5 supports proper FP exception handling, so we
+  have to take out the dummy exception handling that was in the headers</comment>
+    <requestid>314697</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5e6adda6c3e1e15918fac2b14424f54a</srcmd5>
+    <version>0.35.0</version>
+    <time>1462977479</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394628</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>b66d387fde2c9a69db97a538f1ea1d48</srcmd5>
+    <version>0.35.0</version>
+    <time>1468579725</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406273</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>b9ec5fdd5b987bd391f5c3977c710c5f</srcmd5>
+    <version>0.35.0</version>
+    <time>1468999789</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412103</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3d1b3b73039c6e325b38b5694afc3f88</srcmd5>
+    <version>0.35.2</version>
+    <time>1489536396</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460986</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6a11697e35c5584cb35e4703d94462e7</srcmd5>
+    <version>0.35.3</version>
+    <time>1491896421</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484835</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>5fc690e6a46a8f09d8a5675f883b8d28</srcmd5>
+    <version>0.35.3</version>
+    <time>1507755849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533410</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>5bba2402c249e9eef7a1eb1440b2a2bb</srcmd5>
+    <version>0.35.3</version>
+    <time>1514028081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559565</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ff7592bf3dceb1257a711a46c7f67059</srcmd5>
+    <version>0.37.3</version>
+    <time>1553635926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.37.3 and fix build against boost1_69</comment>
+    <requestid>686975</requestid>
+  </revision>
+</revisionlist>

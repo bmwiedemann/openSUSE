@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>174f45259800ca774d39c59c285bd522</srcmd5>
+    <version>0.103.0</version>
+    <time>1403176811</time>
+    <user>coolo</user>
+    <comment>Activate polkit-qt5-1 package</comment>
+    <requestid>237946</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>484bf545ea2b4d33a3283455c0ab6120</srcmd5>
+    <version>0.112.0</version>
+    <time>1405101966</time>
+    <user>coolo</user>
+    <comment>- Update to 0.112.0
+  * Qt5 support
+  * Update deprecated methods to latest Polkit API
+- Drop patches merged upstream: fixed-reference-counting-of-GObjects.patch,
+  fixed-GCancellable-handling-in-PolkitQtListener.patch and
+  qt5-support.patch</comment>
+    <requestid>240415</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e394a81cdb345d77f8af784eb846defb</srcmd5>
+    <version>0.112.0</version>
+    <time>1408021092</time>
+    <user>lnussel</user>
+    <comment>Added do-not-use-global-static-systembus-instance.patch from upstream, fixes crash on DBus disconnect</comment>
+    <requestid>244612</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e394a81cdb345d77f8af784eb846defb</srcmd5>
+    <version>0.112.0</version>
+    <time>1409302725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ca84a16c431985e596fd9a5525ddd4ec</srcmd5>
+    <version>0.113.0</version>
+    <time>1567168765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726586</requestid>
+  </revision>
+</revisionlist>

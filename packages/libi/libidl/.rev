@@ -1,0 +1,222 @@
+<revisionlist>
+  <revision rev="1" vrev="26">
+    <srcmd5>578292ab2950d6b4241795633691ba24</srcmd5>
+    <version>0.8.7</version>
+    <time>1168187120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="31">
+    <srcmd5>edb84a2243c9a402ec56dd577cf3ceee</srcmd5>
+    <version>0.8.7</version>
+    <time>1171560598</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c2432a8d7f7150b933817850d544e129</srcmd5>
+    <version>0.8.8</version>
+    <time>1174685088</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8d89c8f61bcc09bafc4b3aeb309331b4</srcmd5>
+    <version>0.8.8</version>
+    <time>1175162622</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5408f5a40ecfc17f8c930f5cebd66b27</srcmd5>
+    <version>0.8.9</version>
+    <time>1190221944</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="19">
+    <srcmd5>ab5f86b91402de04e722f8ea4aac1fd5</srcmd5>
+    <version>0.8.9</version>
+    <time>1199670620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>43955e21e8393f6a130b93e46021e02a</srcmd5>
+    <version>0.8.10</version>
+    <time>1201656439</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="17">
+    <srcmd5>62effb094898c1e1d987f495f9e500c4</srcmd5>
+    <version>0.8.10</version>
+    <time>1207830567</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>68b6bd00268471b24967d7a31e6b55d5</srcmd5>
+    <version>0.8.11</version>
+    <time>1219962933</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>28be7876412784b7e7c46db2c4ff0259</srcmd5>
+    <version>0.8.11</version>
+    <time>1231436273</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c3f084a3f4aed9dfc1462054a9d3d9ac</srcmd5>
+    <version>0.8.12</version>
+    <time>1233938696</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>938a01b4f232aa8a6a82665eadb61d68</srcmd5>
+    <version>0.8.13</version>
+    <time>1238086015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>938a01b4f232aa8a6a82665eadb61d68</srcmd5>
+    <version>0.8.13</version>
+    <time>1238086015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>e0ac0dc1a53e87c313fd057536920a92</srcmd5>
+    <version>0.8.13</version>
+    <time>1267751519</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libidl based on submit request 33971 from user dimstar
+</comment>
+    <requestid>33971</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>f2eb972a574ddfb65684cd03d4162746</srcmd5>
+    <version>0.8.13</version>
+    <time>1268924604</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4a01a62063105fb0ee4df3a65ce6be42</srcmd5>
+    <version>0.8.14</version>
+    <time>1270084082</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libidl based on submit request 36372 from user vuntz
+</comment>
+    <requestid>36372</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>d88a718bc4a69636e9a40c074e87a835</srcmd5>
+    <version>0.8.14</version>
+    <time>1272213413</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libidl based on submit request 38764 from user coolo
+</comment>
+    <requestid>38764</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d88a718bc4a69636e9a40c074e87a835</srcmd5>
+    <version>0.8.14</version>
+    <time>1278667359</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>d88a718bc4a69636e9a40c074e87a835</srcmd5>
+    <version>0.8.14</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>209c938bf562a87f5e7702e8ae2bc46c</srcmd5>
+    <version>0.8.14</version>
+    <time>1287139535</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libidl based on submit request 50758 from user vuntz
+</comment>
+    <requestid>50758</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>209c938bf562a87f5e7702e8ae2bc46c</srcmd5>
+    <version>0.8.14</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>209c938bf562a87f5e7702e8ae2bc46c</srcmd5>
+    <version>0.8.14</version>
+    <time>1319182102</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>a109b5556ef92f08d277a791dc8d9963</srcmd5>
+    <version>0.8.14</version>
+    <time>1323192249</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="13">
+    <srcmd5>a109b5556ef92f08d277a791dc8d9963</srcmd5>
+    <version>0.8.14</version>
+    <time>1340183596</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="15">
+    <srcmd5>a109b5556ef92f08d277a791dc8d9963</srcmd5>
+    <version>0.8.14</version>
+    <time>1359109288</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="16">
+    <srcmd5>140999f31a8406c9b045e4eff7b30e72</srcmd5>
+    <version>0.8.14</version>
+    <time>1364897824</time>
+    <user>coolo</user>
+    <comment>cleanup</comment>
+    <requestid>161813</requestid>
+  </revision>
+  <revision rev="27" vrev="17">
+    <srcmd5>214d66b4463b918940ae1e064acfecec</srcmd5>
+    <version>0.8.14</version>
+    <time>1366289987</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 164047 from dimstar)</comment>
+    <requestid>171363</requestid>
+  </revision>
+  <revision rev="28" vrev="19">
+    <srcmd5>214d66b4463b918940ae1e064acfecec</srcmd5>
+    <version>0.8.14</version>
+    <time>1379662979</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="21">
+    <srcmd5>214d66b4463b918940ae1e064acfecec</srcmd5>
+    <version>0.8.14</version>
+    <time>1409301591</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="22">
+    <srcmd5>41cffb0d682d47eb1a340cde68c27fa3</srcmd5>
+    <version>0.8.14</version>
+    <time>1508609832</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace deprecated PreReq: with Requires(post): and Requires(postun):
+- Explicitly remove %{_infodir}/dir before creating package to
+  allow builds on RHEL and derived Linux distributions
+- Use %{ext_info} to allow build on Mageia
+- Enable configure option --disable-dependency-tracking to
+  allow build on Mageia (forwarded request 535087 from jayvdb)</comment>
+    <requestid>535504</requestid>
+  </revision>
+  <revision rev="31" vrev="23">
+    <srcmd5>233a215d804208b00b89fd0e37ed9c7c</srcmd5>
+    <version>0.8.14</version>
+    <time>1520502727</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SRPM groups. Update summaries. Remove ineffective --with-pic. (forwarded request 583035 from jengelh)</comment>
+    <requestid>583047</requestid>
+  </revision>
+</revisionlist>

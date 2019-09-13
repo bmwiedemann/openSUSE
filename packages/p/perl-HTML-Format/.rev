@@ -1,0 +1,219 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae4fb7239d17f00b9f8a592d4b127c75</srcmd5>
+    <version>2.04</version>
+    <time>1168903845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="138">
+    <srcmd5>ae4fb7239d17f00b9f8a592d4b127c75</srcmd5>
+    <version>2.04</version>
+    <time>1168903845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="139">
+    <srcmd5>297775a7031b111baea5790aa1d7c012</srcmd5>
+    <version>2.04</version>
+    <time>1245276875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="140">
+    <srcmd5>297775a7031b111baea5790aa1d7c012</srcmd5>
+    <version>2.04</version>
+    <time>1245276875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="142">
+    <srcmd5>297775a7031b111baea5790aa1d7c012</srcmd5>
+    <version>2.04</version>
+    <time>1245276875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="143">
+    <srcmd5>311cb261534318a68765114665648432</srcmd5>
+    <version>2.04</version>
+    <time>1263502308</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-HTML-Format based on submit request 29548 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="144">
+    <srcmd5>0cd07ae7f6fe3210d06365b07ca1e85a</srcmd5>
+    <version>2.04</version>
+    <time>1268925484</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="146">
+    <srcmd5>0cd07ae7f6fe3210d06365b07ca1e85a</srcmd5>
+    <version>2.04</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="147">
+    <srcmd5>0cd07ae7f6fe3210d06365b07ca1e85a</srcmd5>
+    <version>2.04</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="148">
+    <srcmd5>f093f9f2df6adfe80adf5b30f9065804</srcmd5>
+    <version>2.04</version>
+    <time>1290252848</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53397 from user coolo
+</comment>
+    <requestid>53397</requestid>
+  </revision>
+  <revision rev="11" vrev="149">
+    <srcmd5>2c26ae011e4d38991d2812cdda8cb54c</srcmd5>
+    <version>2.04</version>
+    <time>1290252853</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53397
+</comment>
+  </revision>
+  <revision rev="12" vrev="150">
+    <srcmd5>e21f77431aee10d178cc79caa305c73e</srcmd5>
+    <version>2.04</version>
+    <time>1291582567</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54552 from user coolo
+</comment>
+    <requestid>54552</requestid>
+  </revision>
+  <revision rev="13" vrev="151">
+    <srcmd5>597676291474eae492827f1e49544cb5</srcmd5>
+    <version>2.04</version>
+    <time>1291582574</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54552
+</comment>
+  </revision>
+  <revision rev="14" vrev="152">
+    <srcmd5>254a3884695468581c720ceb08bf8cd4</srcmd5>
+    <version>2.04</version>
+    <time>1296694169</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59806 from user vitezslav_cizek
+</comment>
+    <requestid>59806</requestid>
+  </revision>
+  <revision rev="15" vrev="153">
+    <srcmd5>3ef8cead8f3db4226cbb69f7c0065bc2</srcmd5>
+    <version>2.04</version>
+    <time>1296694188</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59806
+</comment>
+  </revision>
+  <revision rev="16" vrev="156">
+    <srcmd5>3ef8cead8f3db4226cbb69f7c0065bc2</srcmd5>
+    <version>2.04</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="150">
+    <srcmd5>1dc06713f679d710727650e464d70f18</srcmd5>
+    <version>2.05</version>
+    <time>1298381104</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62463 from user vitezslav_cizek
+</comment>
+    <requestid>62463</requestid>
+  </revision>
+  <revision rev="18" vrev="151">
+    <srcmd5>e5d87f47d546a3ef199a7d54efd464e7</srcmd5>
+    <version>2.05</version>
+    <time>1298381113</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 62463
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f7f2d4f61c9cc0827155965f8649f624</srcmd5>
+    <version>2.07</version>
+    <time>1304073632</time>
+    <user>saschpe</user>
+    <comment>- update to 2.07
+    - Code gardening - no functionality modifications
+- removed authors from spec</comment>
+    <requestid>68184</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>96bc8759f108420760b6a9a440f113a6</srcmd5>
+    <version>2.10</version>
+    <time>1311591879</time>
+    <user>saschpe</user>
+    <comment>- update to 2.10
+    - Tests reworked to not use subtests.  Development versions
+      of Test::More do not support subtests, and the smokers
+      that are running with these dev versions then send me
+      confusing test failures.  This is a pain.
+    - Reworking of HTML quote issue in FormatPS
+    - Now remap all double quotes to &quot; in FormatPS (which is not
+      really right, but the best I can do with latin1 output)
+    - RT#69426 - issues with HTML quotes
+    - UTF8 handling requires perl 5.8, so minimum requirement bumped</comment>
+    <requestid>76935</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>96bc8759f108420760b6a9a440f113a6</srcmd5>
+    <version>2.10</version>
+    <time>1319182273</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>f6b5e73c1d2c26bda9ea802ee5619cfa</srcmd5>
+    <version>2.10</version>
+    <time>1323193347</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>f6b5e73c1d2c26bda9ea802ee5619cfa</srcmd5>
+    <version>2.10</version>
+    <time>1340183851</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>f6b5e73c1d2c26bda9ea802ee5619cfa</srcmd5>
+    <version>2.10</version>
+    <time>1359109688</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>f6b5e73c1d2c26bda9ea802ee5619cfa</srcmd5>
+    <version>2.10</version>
+    <time>1379663697</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="12">
+    <srcmd5>f6b5e73c1d2c26bda9ea802ee5619cfa</srcmd5>
+    <version>2.10</version>
+    <time>1409302319</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ee093990ad25999124f0de0ea25024e8</srcmd5>
+    <version>2.11</version>
+    <time>1430903955</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305030</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f20d9605d03376f5558550a5b7b5f7e6</srcmd5>
+    <version>2.12</version>
+    <time>1537970350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>635487</requestid>
+  </revision>
+</revisionlist>

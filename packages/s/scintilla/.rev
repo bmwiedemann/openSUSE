@@ -1,0 +1,164 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>d8f83c3eeb67cbf81a5be12a535884b1</srcmd5>
+    <version>1.77</version>
+    <time>1235015293</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>328bb59a69dd193678e8512051f3712f</srcmd5>
+    <version>1.79</version>
+    <time>1249937129</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>328bb59a69dd193678e8512051f3712f</srcmd5>
+    <version>1.79</version>
+    <time>1249937129</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fea16bfecdb4a1c02735715c7477cf9e</srcmd5>
+    <version>1.79</version>
+    <time>1268926102</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>fea16bfecdb4a1c02735715c7477cf9e</srcmd5>
+    <version>1.79</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>fea16bfecdb4a1c02735715c7477cf9e</srcmd5>
+    <version>1.79</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>fea16bfecdb4a1c02735715c7477cf9e</srcmd5>
+    <version>1.79</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>fea16bfecdb4a1c02735715c7477cf9e</srcmd5>
+    <version>1.79</version>
+    <time>1319182456</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7d8476da1e2807374b682add6fa79d51</srcmd5>
+    <version>2.29</version>
+    <time>1322481441</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93821 from coolo)</comment>
+    <requestid>93948</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4538599ebdc9eaf92418ee01228c1fab</srcmd5>
+    <version>2.29</version>
+    <time>1333000078</time>
+    <user>coolo</user>
+    <comment>license update: MIT
+License is closely related to the MIT license. Use SPDX format (forwarded request 111162 from babelworx)</comment>
+    <requestid>111392</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>4538599ebdc9eaf92418ee01228c1fab</srcmd5>
+    <version>2.29</version>
+    <time>1340184201</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>4538599ebdc9eaf92418ee01228c1fab</srcmd5>
+    <version>2.29</version>
+    <time>1359110387</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>4538599ebdc9eaf92418ee01228c1fab</srcmd5>
+    <version>2.29</version>
+    <time>1379664633</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>4538599ebdc9eaf92418ee01228c1fab</srcmd5>
+    <version>2.29</version>
+    <time>1409303336</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>092086bacd1e0f424588f645af6a05d5</srcmd5>
+    <version>3.5.4</version>
+    <time>1427274035</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292396</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>23a6b8535df4214a832ca62f24a8fd7c</srcmd5>
+    <version>3.6.2</version>
+    <time>1448553694</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345400</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>30925eacd81aeadc81ce1c7895dd2e4e</srcmd5>
+    <version>3.6.3</version>
+    <time>1454352986</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356798</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>00750d02d118917eb774e4ac6056c649</srcmd5>
+    <version>3.6.4</version>
+    <time>1461335051</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.4
+  * avoids some folding bugs by automatically unfolding and 
+    improves clipboard robustness on Win32.</comment>
+    <requestid>386733</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>017971bccc7c29e15c6a3465d1e725fe</srcmd5>
+    <version>3.6.6</version>
+    <time>1468482610</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407938</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>30a5109e01fc859c4c84488a40fb90b6</srcmd5>
+    <version>3.6.6</version>
+    <time>1495637409</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497148</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b9ad38048e2b385aa282361cdca165cf</srcmd5>
+    <version>3.7.5</version>
+    <time>1501311708</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512836</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>bd1b305585edbfdd4080853d0684b346</srcmd5>
+    <version>3.7.5</version>
+    <time>1505239031</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523568</requestid>
+  </revision>
+</revisionlist>

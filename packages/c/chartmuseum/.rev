@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7880851076704c480c27bec18ce1f23</srcmd5>
+    <version>0.2.8</version>
+    <time>1518813793</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix chartmuseum build dependencies
+- Move chartmuseum go package from github.com/chartmuseum/chartmuseum
+  to github.com/kubernetes-helm/chartmuseum
+- Update chartmuseum to 0.2.8
+- Remove dependencies on facebookgo code in vendor
+- Removing %__ macros as they do not add value (see https://build.opensuse.org/request/show/571484)
+- Create initial package 0.2.1
+</comment>
+    <requestid>575591</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>245c5255fd95c0a39f8509a71cd0ecac</srcmd5>
+    <version>0.2.8</version>
+    <time>1528195983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614033</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>31e291fade1cf878309ea1c1d459916f</srcmd5>
+    <version>0.2.8</version>
+    <time>1562843788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714051</requestid>
+  </revision>
+</revisionlist>

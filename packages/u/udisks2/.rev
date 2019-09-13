@@ -1,0 +1,316 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e46ed3d42e808d861ba120cbad896567</srcmd5>
+    <version>1.92.0</version>
+    <time>1331900836</time>
+    <user>coolo</user>
+    <comment>new udisks2 package (the previous 4 tries apparently werent sufficient... maybe we have finally everything in place...</comment>
+    <requestid>107895</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dfd2d1c9485b1b1978e82f151da1c2d7</srcmd5>
+    <version>1.93.0</version>
+    <time>1332416550</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>110420</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8a69b71171baaffd4f0ead193ecb6604</srcmd5>
+    <version>1.94.0</version>
+    <time>1334217290</time>
+    <user>coolo</user>
+    <comment>Update to 1.94.0 (forwarded request 113187 from vuntz)</comment>
+    <requestid>113204</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>14da2dc846aba24444d0c8b87e548556</srcmd5>
+    <version>1.97.0</version>
+    <time>1338017395</time>
+    <user>coolo</user>
+    <comment>Update to 1.97.0 (forwarded request 121981 from vuntz)</comment>
+    <requestid>122005</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>14da2dc846aba24444d0c8b87e548556</srcmd5>
+    <version>1.97.0</version>
+    <time>1340184293</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>8341c13309127bbcc59043dbb5ba6ff0</srcmd5>
+    <version>1.97.0</version>
+    <time>1340896044</time>
+    <user>coolo</user>
+    <comment>- Added udisks-hide-lvm-raid-partitions.patch in order to hide
+  partitions marked as containing LVM and RAID. This is only useful
+  for encrypted partitions (fixes fdo#51439 and bnc#737038). (forwarded request 126241 from gberh)</comment>
+    <requestid>126283</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>dfdf5cbb222a27badce5514d04c05dc7</srcmd5>
+    <version>1.97.0</version>
+    <time>1349633115</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137345</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7d82796b3d08c03b3ed5e62fbc7bff94</srcmd5>
+    <version>1.99.0</version>
+    <time>1351874618</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139860</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>189465b069e940d7a1924969abbe8fff</srcmd5>
+    <version>2.0.0</version>
+    <time>1352973479</time>
+    <user>coolo</user>
+    <comment>tweak (forwarded request 141035 from dimstar)</comment>
+    <requestid>141037</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>004c681d6286f82903a189fb8b0f2ac4</srcmd5>
+    <version>2.0.0</version>
+    <time>1357632854</time>
+    <user>coolo</user>
+    <comment>- Add gptfdisk Requires: sgdisk is called by udisksd to modify the
+  partition tables (bnc#796853). (forwarded request 147318 from Zaitor)</comment>
+    <requestid>147324</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>0100630e6edb8213635183ab74cfc891</srcmd5>
+    <version>2.0.0</version>
+    <time>1357827690</time>
+    <user>coolo</user>
+    <comment>fix fdo#58629
+same as MR#1196 against openSUSE_12.2:Update (forwarded request 147391 from vuntz)</comment>
+    <requestid>147766</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>be32b36d72ad6eae7cbdf389044130b7</srcmd5>
+    <version>2.0.0</version>
+    <time>1358434606</time>
+    <user>coolo</user>
+    <comment>Really apply patch (forwarded request 148790 from vuntz)</comment>
+    <requestid>148793</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>be32b36d72ad6eae7cbdf389044130b7</srcmd5>
+    <version>2.0.0</version>
+    <time>1359110518</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9ce6498a23a4fb382025b04147099c19</srcmd5>
+    <version>2.1.0</version>
+    <time>1365937263</time>
+    <user>coolo</user>
+    <comment>Update to 2.1.0 in Factory</comment>
+    <requestid>163145</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d223c2ea000709faac27ddd418c67768</srcmd5>
+    <version>2.1.1</version>
+    <time>1377248676</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 2.1.1 - Needed for gnome-disk-utilities (forwarded request 195777 from Zaitor)</comment>
+    <requestid>195822</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>d223c2ea000709faac27ddd418c67768</srcmd5>
+    <version>2.1.1</version>
+    <time>1379664875</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>7453919b4b72e51db9aaf465dce7c4ae</srcmd5>
+    <version>2.1.1</version>
+    <time>1385391858</time>
+    <user>coolo</user>
+    <comment>- define _udevrulesdir only if not already defined
+- run %udev_rules_update, if defined. (forwarded request 208095 from dimstar)</comment>
+    <requestid>208140</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>f8c102fbb410b81fdf4e6944d1c3a86e</srcmd5>
+    <version>2.1.1</version>
+    <time>1387208688</time>
+    <user>coolo</user>
+    <comment>Added udisks2-20131026-removable-devices-polkit-auth.patch. It adds polkit authorization variables for removable media, which allow restricting or granting access to removable media based on its type using polkit authorization rules (fate#312966 fdo#72122). (forwarded request 210135 from dimstar)</comment>
+    <requestid>210970</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>281ae3fb5d5731cdd73f9d13ca41f82e</srcmd5>
+    <version>2.1.2</version>
+    <time>1392815000</time>
+    <user>coolo</user>
+    <comment>Update</comment>
+    <requestid>222805</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4e3d515c61d249304e974a2ce82e64e1</srcmd5>
+    <version>2.1.3</version>
+    <time>1394901446</time>
+    <user>coolo</user>
+    <comment>Update to latest upstream version 2.1.3.
+Security fix: Bug 865854, CVE-2014-0004. (forwarded request 225422 from pwieczorkiewicz)</comment>
+    <requestid>225956</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>4e3d515c61d249304e974a2ce82e64e1</srcmd5>
+    <version>2.1.3</version>
+    <time>1409303562</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6dd563cecd40ab6a84c8d07e80f7b50e</srcmd5>
+    <version>2.1.4</version>
+    <time>1419159731</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265934</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>48a1bafe0f582c5cd3c0b1259ff87034</srcmd5>
+    <version>2.1.5</version>
+    <time>1426174653</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290149</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e275d64eb0f85facf1da2f112d946ae6</srcmd5>
+    <version>2.1.6</version>
+    <time>1437299108</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315908</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>899b5c07959d958ebc622938d06a9a21</srcmd5>
+    <version>2.1.7</version>
+    <time>1458333445</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>372702</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>e80a3929109ad4de655a241dcc496292</srcmd5>
+    <version>2.1.7</version>
+    <time>1461855002</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390631</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d255de404767459344595be3ecadb41d</srcmd5>
+    <version>2.1.8</version>
+    <time>1481885610</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445073</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>460add4fb0d927eb06af4c943a78035d</srcmd5>
+    <version>2.6.5</version>
+    <time>1505919961</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.5 (fate#323354)
+  * switch to new maintained codestream at
+    https://github.com/storaged-project/udisks
+  * Detailed changelog in /usr/share/doc/packages/udisks2/NEWS
+</comment>
+    <requestid>525998</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5f1dccf3b8a6cb2ed88ccd07b21c3a3c</srcmd5>
+    <version>2.7.6</version>
+    <time>1520853043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583372</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>9d315dbd6925134ca02f8fff09f5afde</srcmd5>
+    <version>2.7.6</version>
+    <time>1524400312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597157</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>032aee0002f9c3610e1ad6f97dacdc27</srcmd5>
+    <version>2.7.6</version>
+    <time>1525121508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601127</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7b70b6c4789731667689d10f49402b0b</srcmd5>
+    <version>2.7.8</version>
+    <time>1548769440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664655</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8964d0978283f747138c3abf4c4b2986</srcmd5>
+    <version>2.8.1</version>
+    <time>1549361884</time>
+    <user>coolo</user>
+    <comment>Please group with libblockdev sub.
+
+- Update to version 2.8.1:
+  + Mostly bugfixes.
+- Changes from version 2.8.0:
+  + Introduce a new VDO module that is built on top of
+    libblockdev-vdo.
+  + General bugfixes.
+  + Support creating LUKS 2 encrypted devices and other
+    LUKS-related enhancements.
+- Add explicit libblockdev-lvm-dbus-devel BuildRequires: Previously
+  pulled in implicitly.
+</comment>
+    <requestid>670840</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>f8c6031520e723cba80375c8200f32f6</srcmd5>
+    <version>2.8.1</version>
+    <time>1551024114</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>674700</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f5beeb26151196f8cba07f8d9eb0b8da</srcmd5>
+    <version>2.8.2</version>
+    <time>1553262841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686951</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>128d2f8fc167fee62b276b9b841a847e</srcmd5>
+    <version>2.8.3</version>
+    <time>1561195231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710122</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>e6e8c8186888845465604007de5d12bc</srcmd5>
+    <version>2.8.3</version>
+    <time>1563455902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715809</requestid>
+  </revision>
+</revisionlist>

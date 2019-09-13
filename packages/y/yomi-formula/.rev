@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>39d6992f6697b0fd67c9533e058268e6</srcmd5>
+    <version>0.0.1+git.1564144697.5bce6e9</version>
+    <time>1564483079</time>
+    <user>dimstar_suse</user>
+    <comment>Request inclusion of yomi-formula to openSUSE:Factory</comment>
+    <requestid>719616</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f496f26ef5541605b0d94d05f1367ec9</srcmd5>
+    <version>0.0.1+git.1565017592.7207cea</version>
+    <time>1565097107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.1+git.1565017592.7207cea:
+  * documentation: add a note about the pillar top.sls
+
+- Update to version 0.0.1+git.1564577012.3d7decf:
+  * _default_target: fix systemctl call
+  * documentation: add top.sls creation</comment>
+    <requestid>721091</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bb2d0725963baf6add9baad21999b64e</srcmd5>
+    <version>0.0.1+git.1565191883.64eabeb</version>
+    <time>1565267022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.1+git.1565191883.64eabeb:
+  * devices.wipe: clean disk information
+  * pillar: add to MicroOS the new subvols
+  * pillar: fix services for MicroOS
+  * partitioned: ignore flags that contains type=
+  * partitioned: wipefs the new partition</comment>
+    <requestid>721565</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9dcb6a71b9b2928f0cb643cb1253ac8</srcmd5>
+    <version>0.0.1+git.1565868437.c6afdff</version>
+    <time>1566893596</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>725283</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5d2fa43157dd78f66dc796a38315a57a</srcmd5>
+    <version>0.0.1+git.1566569312.4133e8e</version>
+    <time>1567852454</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>727757</requestid>
+  </revision>
+</revisionlist>

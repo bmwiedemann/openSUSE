@@ -1,0 +1,7 @@
+<package name="xgalaga-sdl" project="openSUSE:Factory">
+  <title>Classic single screen vertical shoot em up SDL</title>
+  <description>XGalaga-SDL is a port of the popular X11 game XGalaga,
+a clone of Galaga, using the SDL library.
+XGalaga was originally written by Joe Rumsey.</description>
+  <devel project="games" package="xgalaga-sdl"/>
+</package>

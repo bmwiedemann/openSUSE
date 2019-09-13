@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18e49a0a6eadef464657d8df8a9d548d</srcmd5>
+    <version>1.0.0</version>
+    <time>1503592260</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain nanomsg in Factory</comment>
+    <requestid>506090</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24fe659b0a2fe80b086788ecde75d984</srcmd5>
+    <version>1.1.0</version>
+    <time>1508770347</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535802</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ba174d5ba53dc77f453cbf40728600be</srcmd5>
+    <version>1.1.2</version>
+    <time>1510322245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540154</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b335fccbf3cb9e32520414d91f179462</srcmd5>
+    <version>1.1.3</version>
+    <time>1528111374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613901</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9641580d2c8de98a2d8c70d0bec54764</srcmd5>
+    <version>1.1.4</version>
+    <time>1529667042</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to versoin 1.1.4
+  * This release is primarily a bug-fix release for Windows
+    platforms, but it also adds support for building on Android.
+  * The main change in this release is a fix for the IPC transport
+    on Windows, which was subject to crashing if the remote peer
+    breaks messages into smaller pieces.
+    As some other SP implementations do this to avoid data copies,
+    this fix is very important.
+  * A fix for leaking handles on Windows is included.
+  * Support for compilation on Android using the NDK and the
+    bundled cmake and toolchain file from Android is now present.</comment>
+    <requestid>615268</requestid>
+  </revision>
+</revisionlist>

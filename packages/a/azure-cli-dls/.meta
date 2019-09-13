@@ -1,0 +1,11 @@
+<package name="azure-cli-dls" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'data lake store' Command Module</title>
+  <description>Microsoft Azure CLI 'data lake store' Command Module
+
+This package is for the 'data lake store' module.
+i.e. 'az dls'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-dls"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

@@ -1,0 +1,200 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b3fcf4f2417e951f0b0222fd05e5d7c</srcmd5>
+    <version>0.3.0</version>
+    <time>1358789098</time>
+    <user>coolo</user>
+    <comment>Future OpenStack dependency</comment>
+    <requestid>148964</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6b3fcf4f2417e951f0b0222fd05e5d7c</srcmd5>
+    <version>0.3.0</version>
+    <time>1359110143</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>84387a85977a552072bfd42322556152</srcmd5>
+    <version>0.4.1</version>
+    <time>1370432171</time>
+    <user>coolo</user>
+    <comment>- update to 0.4.1:
+  * add include/ directory and remove some dev files from source
+    distribution.
+  * use Buffer base64 support in Node.js implementation (forwarded request 176796 from dirkmueller)</comment>
+    <requestid>176816</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7071baac7888782d3f8fbeea80ef3690</srcmd5>
+    <version>0.5.1</version>
+    <time>1372925821</time>
+    <user>coolo</user>
+    <comment>- update to 0.5.1: 
+  * use upstream einaros/ws (&gt;=0.4.27) with websockify.js
+  * file_only and no_parent security options for WSRequestHandler
+  * Update build of web-socket-js (c0855c6cae)
+  * add include/web-socket-js-project submodule to gimite/web-socket-js
+    for DSFG compliance.
+  * drop Hixie protocol support (forwarded request 181853 from dirkmueller)</comment>
+    <requestid>181911</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7071baac7888782d3f8fbeea80ef3690</srcmd5>
+    <version>0.5.1</version>
+    <time>1379664313</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>80df02402e7ac918c028eb88667ccb0b</srcmd5>
+    <version>0.5.1</version>
+    <time>1382693769</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204685</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>80df02402e7ac918c028eb88667ccb0b</srcmd5>
+    <version>0.5.1</version>
+    <time>1409303021</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>da93bfd3ec7c3e477a5dca5277975f7b</srcmd5>
+    <version>0.6.0</version>
+    <time>1410967621</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249861</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7fa326cdaa1071b7b562e1913eb3502f</srcmd5>
+    <version>0.6.1</version>
+    <time>1432071802</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307812</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7ec793e7a768946e2514cd1e09d60ff1</srcmd5>
+    <version>0.6.1</version>
+    <time>1438421825</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318810</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>dfd21ec1ab54abd881116ffeadb5fff4</srcmd5>
+    <version>0.6.1</version>
+    <time>1447882428</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336485</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>69c6cf5b4e4bf98b0646109502fe4c39</srcmd5>
+    <version>0.8.0</version>
+    <time>1463221405</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>394569</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>6a7b5f782016d5503a256119c995a962</srcmd5>
+    <version>0.8.0</version>
+    <time>1500975598</time>
+    <user>dimstar_suse</user>
+    <comment>- drop dependency on pyOpenSSL, seems unused (bsc#1049987)</comment>
+    <requestid>512121</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>ee4fc4563db2de411e763105abdbe678</srcmd5>
+    <version>0.8.0</version>
+    <time>1503999851</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for Source
+
+- convert to singlespec
+- split data files into -common package</comment>
+    <requestid>518694</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>0bdeaa644f1a2f1d05266b5676f0e2a1</srcmd5>
+    <version>0.8.0</version>
+    <time>1506453384</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528740</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>844c7d7bb17f25b776e4fcbcf9552ab1</srcmd5>
+    <version>0.8.0</version>
+    <time>1507197530</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530887</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>005dc0dc34bcba12ca36725f31e4460e</srcmd5>
+    <version>0.8.0</version>
+    <time>1545866955</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659755</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>6956bbabf314fdd8349aa397124fdb55</srcmd5>
+    <version>0.8.0</version>
+    <time>1551024313</time>
+    <user>coolo</user>
+    <comment>- Execute tests
+- Switch to github tarball to get tests
+- Add patch to fix tests on python 3.6+:
+  * fix-tests-py3.6.patch
+
+- Add JWT token plugin feature.
+  Added patches:
+    u_added_jwt_tokens_capability.patch
+    PyJWT-token-plugin.patch: fate#325762</comment>
+    <requestid>674444</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>1c8dd7feff42afeb262aa16ba2be487e</srcmd5>
+    <version>0.8.0</version>
+    <time>1554930533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692368</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c048bf939ca07b9e3a8d7315ff25255a</srcmd5>
+    <version>0.9.0</version>
+    <time>1566912072</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.0:
+  * Base64 support removed and binary mode is now required
+  * Low level WebSocket protocol handling now has its own class
+  * Authentication now optionally required for web server
+  * Server hostname can be used as the token
+  * JWT/JWS/JWE can be used for the token
+  * redis can be used for the token
+  * Can now log to syslog
+  * Improved latency by disabling Nagle for proxied connection
+  * Added client certificate authentication
+  * Support for password protected certificate key file
+  * TLS ciphers and options are now configurable
+  * Can be invoked via inetd
+  * Lots of minor fixes...
+- Remove upstream merged:
+  * u_added_jwt_tokens_capability.patch
+  * u_Add-support-for-inetd.patch
+  * u_Fix-inetd-mode-on-python-2.patch
+  * fix-tests-py3.6.patch
+- Drop suse specific PyJWT-token-plugin.patch, will be easier
+  to actually pull in new dependency on jwcrypto if needed
+  * The tests were failing when using PyJWT...</comment>
+    <requestid>724540</requestid>
+  </revision>
+</revisionlist>

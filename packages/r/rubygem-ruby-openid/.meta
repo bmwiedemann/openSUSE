@@ -1,0 +1,31 @@
+<package name="rubygem-ruby-openid" project="openSUSE:Factory">
+  <title>A library for consuming and serving OpenID identities.</title>
+  <description>A library for consuming and serving OpenID identities.
+
+Features
+
+ * Easy to use API for verifying OpenID identites
+ * New support for serving OpenID identites
+ * Yadis service discovery w/ server fallback
+ * Consumer and server support for OpenID extensions,
+   including simple registration
+ * Does not depend on underlying web framework
+ * Supports multiple storage mechanisms (Filesystem, SQL)
+ * Example code to help you get started, including:
+     - WEBrick based consumer
+     - Ruby on rails based server
+     - OpeIDLoginGenerator for quickly getting creating a
+       rails app that uses OpenID for authentication
+     - ActiveRecord adapter for using an SQL store in rails
+ * Comprehensive test suite
+
+
+Authors:
+---------
+    Brian Ellin (JanRain, Inc) &lt;brian@janrian.com&gt;
+
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-ruby-openid"/>
+  <url>http://www.openidenabled.com/openid/libraries/ruby</url>
+</package>

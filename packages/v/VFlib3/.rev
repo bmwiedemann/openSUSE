@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="269">
+    <srcmd5>f079de86e86a2a37cf47e6372f634355</srcmd5>
+    <version>3.6.13</version>
+    <time>1168901434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1e3785b6ebcab7424936905c22afeed2</srcmd5>
+    <version>3.6.14</version>
+    <time>1169011005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="15">
+    <srcmd5>27b75ffeb0ab209a682e7c24890985c3</srcmd5>
+    <version>3.6.14</version>
+    <time>1177607331</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="190">
+    <srcmd5>27b75ffeb0ab209a682e7c24890985c3</srcmd5>
+    <version>3.6.14</version>
+    <time>1177607331</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="191">
+    <srcmd5>6316512b62def4779df03416ba1d7c85</srcmd5>
+    <version>3.6.14</version>
+    <time>1245277976</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="193">
+    <srcmd5>6316512b62def4779df03416ba1d7c85</srcmd5>
+    <version>3.6.14</version>
+    <time>1245277976</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="194">
+    <srcmd5>4588b633652ebb23337b78413369b498</srcmd5>
+    <version>3.6.14</version>
+    <time>1268922833</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="196">
+    <srcmd5>4588b633652ebb23337b78413369b498</srcmd5>
+    <version>3.6.14</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="197">
+    <srcmd5>4588b633652ebb23337b78413369b498</srcmd5>
+    <version>3.6.14</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="200">
+    <srcmd5>4588b633652ebb23337b78413369b498</srcmd5>
+    <version>3.6.14</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="201">
+    <srcmd5>5fc1f7a6500025cf5839167875548825</srcmd5>
+    <version>3.6.14</version>
+    <time>1316439088</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82682 from jengelh)</comment>
+    <requestid>82867</requestid>
+  </revision>
+  <revision rev="12" vrev="203">
+    <srcmd5>5fc1f7a6500025cf5839167875548825</srcmd5>
+    <version>3.6.14</version>
+    <time>1319181758</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="204">
+    <srcmd5>6737d58c63adf3bd7b9f90ee0a6d540a</srcmd5>
+    <version>3.6.14</version>
+    <time>1323195101</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="205">
+    <srcmd5>8ae28d863508b5f7aace93417adb0faf</srcmd5>
+    <version>3.6.14</version>
+    <time>1324831957</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97743 from coolo)</comment>
+    <requestid>97935</requestid>
+  </revision>
+  <revision rev="15" vrev="206">
+    <srcmd5>4cca8923305436e83112a4a5b0b3b518</srcmd5>
+    <version>3.6.14</version>
+    <time>1329823583</time>
+    <user>coolo</user>
+    <comment>- 12.2 has split freetype-devel (forwarded request 106018 from coolo)</comment>
+    <requestid>106092</requestid>
+  </revision>
+  <revision rev="16" vrev="208">
+    <srcmd5>4cca8923305436e83112a4a5b0b3b518</srcmd5>
+    <version>3.6.14</version>
+    <time>1340183158</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="209">
+    <srcmd5>50e9e72468450b4a516eabbcc6210f81</srcmd5>
+    <version>3.6.14</version>
+    <time>1341220751</time>
+    <user>coolo</user>
+    <comment> (forwarded request 126842 from MargueriteSu)</comment>
+    <requestid>126843</requestid>
+  </revision>
+  <revision rev="18" vrev="211">
+    <srcmd5>50e9e72468450b4a516eabbcc6210f81</srcmd5>
+    <version>3.6.14</version>
+    <time>1359108629</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="212">
+    <srcmd5>8b8e8d464bcf9227fffcc6fd24b0290b</srcmd5>
+    <version>3.6.14</version>
+    <time>1379076355</time>
+    <user>scarabeus_factory</user>
+    <comment>- don't build with t1lib, no longer in Factory (forwarded request 198842 from mvyskocil)</comment>
+    <requestid>198843</requestid>
+  </revision>
+  <revision rev="20" vrev="214">
+    <srcmd5>8b8e8d464bcf9227fffcc6fd24b0290b</srcmd5>
+    <version>3.6.14</version>
+    <time>1379661931</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="216">
+    <srcmd5>8b8e8d464bcf9227fffcc6fd24b0290b</srcmd5>
+    <version>3.6.14</version>
+    <time>1409300451</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="217">
+    <srcmd5>c34b6094f959d345982e7445a461ef47</srcmd5>
+    <version>3.6.14</version>
+    <time>1461855196</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>381129</requestid>
+  </revision>
+  <revision rev="23" vrev="218">
+    <srcmd5>4b04ddaeb0729491f13cd5b804a4c2b6</srcmd5>
+    <version>3.6.14</version>
+    <time>1502366650</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512624</requestid>
+  </revision>
+</revisionlist>

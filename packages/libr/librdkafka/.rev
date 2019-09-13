@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>83faa87970b3d931a644d6861aa608d5</srcmd5>
+    <version>0.11.6</version>
+    <time>1544095165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655553</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1c5d346aaa448f8cdeada15b036b6a2e</srcmd5>
+    <version>0.11.6</version>
+    <time>1544539689</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't BuildRequire lz4 on SLE12
+- Do not use %make_build which is not available on SLE12</comment>
+    <requestid>656799</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9f213c360f5eb394f3777aa1cabc152c</srcmd5>
+    <version>0.11.6</version>
+    <time>1545141425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658073</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f8e7fed56bcb56dd1e3b57b699002504</srcmd5>
+    <version>1.1.0</version>
+    <time>1567849823</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * SASL OAUTHBEARER support
+  * In-memory SSL certificates (PEM, DER, PKCS#12) support
+  * Pluggable broker SSL certificate verification callback
+  * ssl.endpoint.identification.algorithm=https (off by default) to validate
+    the broker hostname matches the certificate. Requires OpenSSL &gt;= 1.0.2.
+  * Improved GSSAPI/Kerberos ticket refresh
+  * SSL peer (broker) certificate verification is now enabled by default
+    (disable with enable.ssl.certificate.verification=false)
+  * %{broker.name} is no longer supported in sasl.kerberos.kinit.cmd since
+    kinit refresh is no longer executed per broker, but per client instance.
+  * SASL GSSAPI/Kerberos: Don't run kinit refresh for each broker,
+    just per client instance.
+  * SASL GSSAPI/Kerberos: Changed sasl.kerberos.kinit.cmd to first attempt
+    ticket refresh, then acquire.
+  * SASL: Proper locking on broker name acquisition.
+  * Consumer: max.poll.interval.ms now correctly handles blocking poll calls,
+    allowing a longer poll timeout than the max poll interval.
+  * configure: Fix libzstd static lib detection
+  * rdkafka_performance: Fix for Misleading &quot;All messages delivered!&quot; message
+- update to version 1.0.1:
+  * Fix consumer stall when broker connection goes down
+  * Fix AdminAPI memory leak when broker does not support request
+  * Update/fix protocol error response codes
+  * Treat ECONNRESET as standard Disconnects
+- update to version 1.0.0:
+  * This release changes configuration defaults and deprecates a set
+    of configuration properties, make sure to read the Upgrade considerations
+    section from https://github.com/edenhill/librdkafka/releases/tag/v1.0.0
+  * add support for Idempotent Producer, providing exactly-once</comment>
+    <requestid>728486</requestid>
+  </revision>
+</revisionlist>

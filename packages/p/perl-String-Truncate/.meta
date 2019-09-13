@@ -1,0 +1,5 @@
+<package name="perl-String-Truncate" project="openSUSE:Factory">
+  <title>a module for when strings are too long to be displayed in...</title>
+  <description>a module for when strings are too long to be displayed in...</description>
+  <devel project="devel:languages:perl" package="perl-String-Truncate"/>
+</package>

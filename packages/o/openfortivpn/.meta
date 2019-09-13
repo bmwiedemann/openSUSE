@@ -1,0 +1,11 @@
+<package name="openfortivpn" project="openSUSE:Factory">
+  <title>Client for PPP+SSL VPN tunnel services</title>
+  <description>openfortivpn is a client for PPP+SSL VPN tunnel services. It spawns a pppd
+process and operates the communication between the gateway and this process.
+
+It is compatible with Fortinet VPNs.
+
+</description>
+  <devel project="network:vpn" package="openfortivpn"/>
+  <url>https://github.com/adrienverge/openfortivpn</url>
+</package>

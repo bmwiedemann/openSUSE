@@ -1,0 +1,5 @@
+<package name="beets" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:apps" package="beets"/>
+</package>

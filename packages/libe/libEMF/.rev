@@ -1,0 +1,178 @@
+<revisionlist>
+  <revision rev="1" vrev="185">
+    <srcmd5>94dfc231335998f7ae791efd16709b6c</srcmd5>
+    <version>1.0</version>
+    <time>1168903278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="254">
+    <srcmd5>39a057e5052a448f83a781cb2a3007b7</srcmd5>
+    <version>1.0</version>
+    <time>1204285200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="282">
+    <srcmd5>e662f74f5ba219220d2bc6abec5196e8</srcmd5>
+    <version>1.0</version>
+    <time>1218643323</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="295">
+    <srcmd5>079398ff11059d39e5ea9d80741c7eef</srcmd5>
+    <version>1.0</version>
+    <time>1236176024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="297">
+    <srcmd5>079398ff11059d39e5ea9d80741c7eef</srcmd5>
+    <version>1.0</version>
+    <time>1236176024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="298">
+    <srcmd5>6c45ed9915f38e90b026314bef6552b2</srcmd5>
+    <version>1.0</version>
+    <time>1268924483</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="300">
+    <srcmd5>6c45ed9915f38e90b026314bef6552b2</srcmd5>
+    <version>1.0</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="301">
+    <srcmd5>6c45ed9915f38e90b026314bef6552b2</srcmd5>
+    <version>1.0</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="304">
+    <srcmd5>6c45ed9915f38e90b026314bef6552b2</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="306">
+    <srcmd5>6c45ed9915f38e90b026314bef6552b2</srcmd5>
+    <version>1.0</version>
+    <time>1319182068</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="307">
+    <srcmd5>3876bfb35c6224592b1f1fd22172b99e</srcmd5>
+    <version>1.0</version>
+    <time>1323192199</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>253f161821f0fb30fb68f4c789be4cec</srcmd5>
+    <version>1.0.6</version>
+    <time>1338286737</time>
+    <user>coolo</user>
+    <comment>- Upgrade to version 1.0.6:
+  * Added support for strokeandfillpath and setmiterlimit.
+  * Minor fixes.
+- Build for all architectures.
+- Split according to the Shared Library Packaging Policy.</comment>
+    <requestid>122444</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8f26007c7a456478e4bb5441108a9062</srcmd5>
+    <version>1.0.6</version>
+    <time>1339789075</time>
+    <user>coolo</user>
+    <comment>build only on supported archs (forwarded request 124872 from adrianSuSE)</comment>
+    <requestid>125033</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>8f26007c7a456478e4bb5441108a9062</srcmd5>
+    <version>1.0.6</version>
+    <time>1340183552</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>f6642f9446e49bed91054a545cf67ef9</srcmd5>
+    <version>1.0.6</version>
+    <time>1345630354</time>
+    <user>namtrac</user>
+    <comment>- add support for arm (forwarded request 131257 from algraf)</comment>
+    <requestid>131300</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6ce06c9b3bfbb9123f7a224812ade3ba</srcmd5>
+    <version>1.0.7</version>
+    <time>1353788818</time>
+    <user>coolo</user>
+    <comment>- Upgrade to version 1.0.7:
+  * Fixes and additions for various non-x86 architectures. (forwarded request 142615 from sbrabec)</comment>
+    <requestid>142616</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>6ce06c9b3bfbb9123f7a224812ade3ba</srcmd5>
+    <version>1.0.7</version>
+    <time>1359109226</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>9174006feca3d5a5aee23e61478e388a</srcmd5>
+    <version>1.0.7</version>
+    <time>1362031893</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 156505 from coolo)</comment>
+    <requestid>156543</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>367f01164b2d65196c0368d9ce2f986d</srcmd5>
+    <version>1.0.7</version>
+    <time>1363858766</time>
+    <user>coolo</user>
+    <comment>- aarch64-support.patch: Support for aarch64 (forwarded request 160296 from Andreas_Schwab)</comment>
+    <requestid>160298</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>bbff7bb52b8e98a273469ec1dad80b11</srcmd5>
+    <version>1.0.7</version>
+    <time>1365927850</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 163588 from m_meister)</comment>
+    <requestid>163590</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>bbff7bb52b8e98a273469ec1dad80b11</srcmd5>
+    <version>1.0.7</version>
+    <time>1379662870</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>d3115abfb269c21d4945f577a6d6c4c9</srcmd5>
+    <version>1.0.7</version>
+    <time>1386936473</time>
+    <user>coolo</user>
+    <comment>- ppc64le-support.patch: Support for powerpc64le (forwarded request 210067 from uweigand)</comment>
+    <requestid>210641</requestid>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>d3115abfb269c21d4945f577a6d6c4c9</srcmd5>
+    <version>1.0.7</version>
+    <time>1409301474</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>64debdd2c591b3198e221ead77f30502</srcmd5>
+    <version>1.0.7</version>
+    <time>1441726650</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329154</requestid>
+  </revision>
+</revisionlist>

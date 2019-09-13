@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b7ab54924265454178eaa83b8784156</srcmd5>
+    <version>0.1.0</version>
+    <time>1405661514</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>240857</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7b7ab54924265454178eaa83b8784156</srcmd5>
+    <version>0.1.0</version>
+    <time>1409300867</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>be847c518a7a35c8fa22756c4f9914b6</srcmd5>
+    <version>0.1.0</version>
+    <time>1416994379</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build under libpinyin-0.9.99.20140929,
+  add fix-compatibility-with-libzhuyin-0.9.99.20140929.patch (forwarded request 262175 from hillwood)</comment>
+    <requestid>262177</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>06072633f63e85dadacb338564e16586</srcmd5>
+    <version>0.1.0+git20150626.36064e1</version>
+    <time>1440658550</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325446</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d3119f742143ba4ec0a26ba167003ae2</srcmd5>
+    <version>0.1.0+git20150626.36064e1</version>
+    <time>1507896854</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532832</requestid>
+  </revision>
+</revisionlist>

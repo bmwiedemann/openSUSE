@@ -1,0 +1,21 @@
+<package name="ghc" project="openSUSE:Factory">
+  <title>The Glasgow Haskell Compilation system</title>
+  <description>Haskell is the standard purely functional programming language; the
+current language version is Haskell 98, agreed in December 1998.
+
+GHC is a state-of-the-art programming suite for Haskell.  Included is
+an optimising compiler generating good code for a variety of
+platforms, together with an interactive system for convenient, quick
+development.  The distribution includes space and time profiling
+facilities, a large collection of libraries, and support for various
+language extensions, including concurrency, exceptions, and foreign
+language interfaces (C, C++, etc).
+
+A wide variety of Haskell related resources (tutorials, libraries,
+specifications, documentation, compilers, interprbeters, references,
+contact information, links to research groups) are available from the
+Haskell home page at &lt;http://www.haskell.org/&gt;.
+
+</description>
+  <devel project="devel:languages:haskell" package="ghc"/>
+</package>

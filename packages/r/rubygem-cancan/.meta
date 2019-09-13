@@ -1,0 +1,8 @@
+<package name="rubygem-cancan" project="openSUSE:Factory">
+  <title>Simple authorization solution for Rails</title>
+  <description>Simple authorization solution for Rails which is completely decoupled from the user's roles. All permissions are stored in a single location for convenience.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-cancan"/>
+  <url>http://github.com/ryanb/cancan</url>
+</package>

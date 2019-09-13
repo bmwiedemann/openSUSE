@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d79558bd841e0cd692ce6fd180d8fac5</srcmd5>
+    <version>5.7.8</version>
+    <time>1558516362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.7.8
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+- Add rpm macros.
+- Add conflicts to jupyter subpackage to more explicitly handle file overlaps with old naming scheme.</comment>
+    <requestid>703202</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a16fdb231b0e9a03a125379588a40b49</srcmd5>
+    <version>5.7.8</version>
+    <time>1558784123</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a jupyter-specific language package
+- Split directories and macros into separate package.
+- Make lang subpackage python version-specific
+</comment>
+    <requestid>705228</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fa46a9d438f2baff10bbcae64dd0eabc</srcmd5>
+    <version>5.7.8</version>
+    <time>1559375468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706097</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7267cb45a02b05c15830500e3411259d</srcmd5>
+    <version>0.1.0</version>
+    <time>1336472832</time>
+    <user>coolo</user>
+    <comment>it's a new module since fcitx 4.2.3</comment>
+    <requestid>116613</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2af5edf5060975e8734f7f9f9b9bb02c</srcmd5>
+    <version>0.2.0</version>
+    <time>1339076298</time>
+    <user>coolo</user>
+    <comment>version update (forwarded request 123587 from MargueriteSu)</comment>
+    <requestid>123588</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2af5edf5060975e8734f7f9f9b9bb02c</srcmd5>
+    <version>0.2.0</version>
+    <time>1340183323</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b947e52cdfa87a62f350fb35899180f4</srcmd5>
+    <version>0.2.0</version>
+    <time>1341339923</time>
+    <user>coolo</user>
+    <comment> (forwarded request 125965 from MargueriteSu)</comment>
+    <requestid>126054</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>750173f3b2d4887e08463ed5fbc6ab0e</srcmd5>
+    <version>0.2.1</version>
+    <time>1348147840</time>
+    <user>coolo</user>
+    <comment>update 0.2.1 (forwarded request 134469 from MargueriteSu)</comment>
+    <requestid>134485</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>750173f3b2d4887e08463ed5fbc6ab0e</srcmd5>
+    <version>0.2.1</version>
+    <time>1359108872</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>750173f3b2d4887e08463ed5fbc6ab0e</srcmd5>
+    <version>0.2.1</version>
+    <time>1379662332</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cbe78695dd52430a8a2cfa056f31d2ac</srcmd5>
+    <version>0.2.3</version>
+    <time>1402403944</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236656</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>cbe78695dd52430a8a2cfa056f31d2ac</srcmd5>
+    <version>0.2.3</version>
+    <time>1409300866</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>84dd46cd4b77f9ccaa0029ffaafcbab2</srcmd5>
+    <version>0.2.4</version>
+    <time>1513677089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547530</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,15 @@
+<package name="python-passivetotal" project="openSUSE:Factory">
+  <title>Client for the PassiveTotal REST API</title>
+  <description>Passivetotal provides a Python client library implementation into RiskIQ API
+services. The library currently provides support for the following services:
+
+- Passive DNS queries and filters
+- WHOIS queries (search and details)
+- SSL Certificates (search and details)
+- Account configuration
+- Site actions (tagging, classifying, etc.)
+
+</description>
+  <devel project="devel:languages:python" package="python-passivetotal"/>
+  <url>https://passivetotal.readthedocs.org</url>
+</package>

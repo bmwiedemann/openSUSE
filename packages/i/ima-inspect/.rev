@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20fc8c94c383c1449c7590b8e64aa08c</srcmd5>
+    <version>0.10</version>
+    <time>1508946477</time>
+    <user>dimstar_suse</user>
+    <comment>A new package that supplements ima-evm-utils.</comment>
+    <requestid>536478</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>59e407f5313dd148410216627de99fe9</srcmd5>
+    <version>0.11</version>
+    <time>1514028023</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream version 0.11 which provides new features:
+	- support limitation to specific attribute types via -a switch
+	- support for outputting the cryptographic primitive like digest,
+	  signature or HMAC as hex or binary data</comment>
+    <requestid>559308</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ae5e20dbcb0094d71b970b5d3fa5e78d</srcmd5>
+    <version>0.12</version>
+    <time>1536094675</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream minor release version 0.12 which fixes a compatibility
+  issue with newer libattr-devel packages. It now uses the xattr.h from
+  glibc-devel instead.</comment>
+    <requestid>632987</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c6a2de8fb6095004b539ca12a75ecdf0</srcmd5>
+    <version>0.13</version>
+    <time>1565963446</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream minor release version 0.13 which makes ima-inspect
+  compatible with libimaevm new ABI introduced in version 1.2.</comment>
+    <requestid>723948</requestid>
+  </revision>
+</revisionlist>

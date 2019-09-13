@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>431b6526e9c2887dbadacd3a370a0aaa</srcmd5>
+    <version>217</version>
+    <time>1409118370</time>
+    <user>coolo</user>
+    <comment>Resubmit to Factory with corrected license</comment>
+    <requestid>246334</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>431b6526e9c2887dbadacd3a370a0aaa</srcmd5>
+    <version>217</version>
+    <time>1409302729</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

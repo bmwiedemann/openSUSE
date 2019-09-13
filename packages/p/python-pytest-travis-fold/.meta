@@ -1,0 +1,5 @@
+<package name="python-pytest-travis-fold" project="openSUSE:Factory">
+  <title></title>
+  <description>Folds captured output sections in Travis CI build log</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-travis-fold"/>
+</package>

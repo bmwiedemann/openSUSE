@@ -1,0 +1,11 @@
+<package name="azure-cli-appservice" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'appservice' Command Module</title>
+  <description>Microsoft Azure CLI 'appservice' Command Module
+
+This package is for the 'appservice' module.
+i.e. 'az appservice'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-appservice"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

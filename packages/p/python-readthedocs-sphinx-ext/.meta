@@ -1,0 +1,5 @@
+<package name="python-readthedocs-sphinx-ext" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-readthedocs-sphinx-ext"/>
+</package>

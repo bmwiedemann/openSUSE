@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0277c39d3d0da52186ee2fceea8ddcfc</srcmd5>
+    <version>1.0</version>
+    <time>1502963463</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by latest version of python-pyramid</comment>
+    <requestid>512801</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2ab3615b9d06935f13b7ffc4e6dc7585</srcmd5>
+    <version>1.0</version>
+    <time>1545647895</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659430</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d401b6b004a987cae1ccf87e3e98da56</srcmd5>
+    <version>1.6.1</version>
+    <time>1558351097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704091</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0524f28df8fcd0efb8d3704600a4e5b3</srcmd5>
+    <version>1.8.1</version>
+    <time>1565097110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721099</requestid>
+  </revision>
+</revisionlist>

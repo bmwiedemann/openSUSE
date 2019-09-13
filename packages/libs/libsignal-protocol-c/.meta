@@ -1,0 +1,5 @@
+<package name="libsignal-protocol-c" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:libraries:c_c++" package="libsignal-protocol-c"/>
+</package>

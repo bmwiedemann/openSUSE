@@ -1,0 +1,244 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5cf9b17e1e8c1aa6a2fb706a55083d92</srcmd5>
+    <version>1.5.0</version>
+    <time>1336471362</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115433</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7268b947d94819cc15f5fd7494943e64</srcmd5>
+    <version>1.5.0</version>
+    <time>1337955564</time>
+    <user>coolo</user>
+    <comment>- Use &quot;Supplements&quot; to make the package manager pick 
+  the driver when the user has the proper hardware.</comment>
+    <requestid>121910</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a678e6258d335117a9404a1762d3f7dc</srcmd5>
+    <version>1.5.0</version>
+    <time>1338582772</time>
+    <user>coolo</user>
+    <comment>- remove hw supplements (bnc#764395)</comment>
+    <requestid>123184</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>a678e6258d335117a9404a1762d3f7dc</srcmd5>
+    <version>1.5.0</version>
+    <time>1340184348</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a8fde3fce4eac72759cff96233ec3a17</srcmd5>
+    <version>1.6.1</version>
+    <time>1348148877</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>134890</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8c30867c2d027426d393b2872c8f6650</srcmd5>
+    <version>1.6.2</version>
+    <time>1350382364</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.6.2 (forwarded request 138039 from Zaitor)</comment>
+    <requestid>138191</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>8c30867c2d027426d393b2872c8f6650</srcmd5>
+    <version>1.6.2</version>
+    <time>1359110612</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>d23057fee541e5d8fa6643217aa49358</srcmd5>
+    <version>1.6.2</version>
+    <time>1363860310</time>
+    <user>coolo</user>
+    <comment>- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333)</comment>
+    <requestid>160307</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>62779044e8b92c1668772f1d5b6d5a89</srcmd5>
+    <version>1.6.2</version>
+    <time>1370790399</time>
+    <user>coolo</user>
+    <comment>- U_Restrict-kernel-driver-matching-to-g200-server-chips.patch
+  * Restrict kernel driver matching to g200 server chips. Otherwise
+    we might catch devices handled by matroxfb, not the mgag200 kms
+    driver. (bnc#823410)</comment>
+    <requestid>177970</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>b15a0d9b189fdbda3fe54835e10e2eac</srcmd5>
+    <version>1.6.2</version>
+    <time>1370925635</time>
+    <user>coolo</user>
+    <comment>- fixed bugzilla number in changelog</comment>
+    <requestid>178347</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>b4deb0daa83de9b9a3a5ea3174750090</srcmd5>
+    <version>1.6.2</version>
+    <time>1377260568</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195910</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>b4deb0daa83de9b9a3a5ea3174750090</srcmd5>
+    <version>1.6.2</version>
+    <time>1379665026</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>37399476965f948c1b5179ff43cfeaec</srcmd5>
+    <version>1.6.3</version>
+    <time>1386780179</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.6.3 (forwarded request 209768 from Zaitor)</comment>
+    <requestid>209782</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a24f3cf5b74de7c5f95c1209ddb1e346</srcmd5>
+    <version>1.6.3</version>
+    <time>1400006971</time>
+    <user>coolo</user>
+    <comment>- u_Change-shadow-fb-implementation-from-DDX-based-to-miext-damage-based.patch
+  Fix the shadowfb implementation: old implementation produced 
+  artefacts: Fixed by changing to the mi base shadow method (bnc#876098).
+- u_EXA-Fix-UploadToScreen.patch
+  Fix EXA UploadToScreen: Images were garbled as writing to aperture didn't wait
+  for FIFO to drain. (bnc#876941).
+- u_Fix-compiler-warnings.patch
+- u_Fix-crash-when-EXA-accel-mode-is-enabled.patch
+  Fix segfault in EXA: fb base address was not added to source in
+  DownloadFromScreen (bnc#876940).</comment>
+    <requestid>233579</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>a24f3cf5b74de7c5f95c1209ddb1e346</srcmd5>
+    <version>1.6.3</version>
+    <time>1409303709</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>1b41018bbbf4d099b6f4047c4d2b1a55</srcmd5>
+    <version>1.6.3</version>
+    <time>1423595792</time>
+    <user>dimstar_suse</user>
+    <comment>- U_dri-Stop-uselessly-initializing-the-ValidateTree-hoo.patch
+  * fixes build against xorg-server 1.17</comment>
+    <requestid>284467</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>89b6d11952627db6e847da49a1e56dc5</srcmd5>
+    <version>1.6.4</version>
+    <time>1424779348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.4
+  * man: Don't mention the HAL
+  * dri: Stop (uselessly) initializing the ValidateTree hooks
+  * undef DISABLE_VGA_IO
+  * xf86-video-mga: set the pan_ctl register
+  * xf86-video-mga: fix a lockup in the mga driver
+  * fix a type in previous lockup in the mga driver fix
+- supersedes U_dri-Stop-uselessly-initializing-the-ValidateTree-hoo.patch</comment>
+    <requestid>287321</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>5d7d818e24819b8a8cdc8290e5cfe34e</srcmd5>
+    <version>1.6.4</version>
+    <time>1468482254</time>
+    <user>dimstar_suse</user>
+    <comment>- u_shadow-Calulate-the-shadow-buffer-size-correctly.patch
+  * Calculate the shadow buffer size correctly to avoid the
+    screen being cut off (boo#987670).</comment>
+    <requestid>406739</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>c6cd4ceeac23d21dba5ee5c87928dd8e</srcmd5>
+    <version>1.6.4</version>
+    <time>1480693370</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch
+  * Adapt Block/WakeupHandler signature for ABI 23</comment>
+    <requestid>442918</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6fe62266502aeb6865a926900d0cd5d0</srcmd5>
+    <version>1.6.5</version>
+    <time>1485250514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.5
+  * Enable write-combining on the framebuffer BAR
+  * Adapt Block/WakeupHandler signature for ABI 23
+  * Remove DownloadFromScreen
+  * Composite fixup
+  * Add support for a new G200eW3 chipset
+  * Add support for the new G200e chipset -- V2
+  * MGA DDX: make it possible to find EXA support
+  * Use correct type in function call.
+- supersedes U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch
+- supersedes u_Fix-crash-when-EXA-accel-mode-is-enabled.patch</comment>
+    <requestid>451399</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>fe23eac1e357cb90fabd3ead253889d5</srcmd5>
+    <version>1.6.5</version>
+    <time>1497016578</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041661)</comment>
+    <requestid>499655</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>afb6eeeb92e10b3ab175e2bd671551fd</srcmd5>
+    <version>1.6.5</version>
+    <time>1527605429</time>
+    <user>dimstar_suse</user>
+    <comment>- n_xorg-server-1.20.patch
+  * fix build against xorg-server 1.20</comment>
+    <requestid>611706</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ee824695fd946d47d7a535d1fbf65199</srcmd5>
+    <version>2.0.0</version>
+    <time>1544632179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0
+  * This is a maintenance release of Matrox DDX.
+    Just for disclosure, the code is currently broken for Millennium, Millennium II, and G550.
+    For those models, you may have to disable acceleration to workaround the issue. (the workaround is untested)
+    The code is untested on Mystique and G100 due to lack of access to the hardware at this time.
+    The code works generally okay on G200, G400, and G450.
+    That being said, EXA occasionally leaves artifacts and standby resume is currently broken.
+    Standby resume used to work, but someone broke the code in the last few years.
+    (Kevin Brace, Brace Computer Laboratory, https://bracecomputerlab.com)
+- adjusted u_Fix-compiler-warnings.patch, 
+  u_shadow-Calulate-the-shadow-buffer-size-correctly.patch,
+  u_Change-shadow-fb-implementation-from-DDX-based-to-miext-damage-based.patch
+- supersedes u_EXA-Fix-UploadToScreen.patch</comment>
+    <requestid>657247</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>9243d376d63bb65de4f3acaa8a9b79bb</srcmd5>
+    <version>2.0.0</version>
+    <time>1564994462</time>
+    <user>dimstar_suse</user>
+    <comment>- adding to changelog, that 
+  * U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch fixes 
+    build against updated xorg-server 1.19 (bsc#1098226)
+  * current sources contain latest driver updates for sle12 
+    (fate #315643-315645, 319159-319161, 319618)
+  * we disabled DRI(1) in the driver (no longer supported by Mesa)</comment>
+    <requestid>720680</requestid>
+  </revision>
+</revisionlist>

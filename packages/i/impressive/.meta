@@ -1,0 +1,17 @@
+<package name="impressive" project="openSUSE:Factory">
+  <title>PDF and image viewer optimized for presentations</title>
+  <description>
+Impressive is a PDF and image viewer optimized for
+presentations.
+
+	* Uses OpenGL for display
+	* Features various 3D transition effects
+	* Uses Xpdf or GhostScript to render PDF files
+	* Written in Python
+	* Available for Unix-like and Windows operating
+	  systems.
+	* Open Source (GPLv2)
+
+  </description>
+  <devel project="Office" package="impressive"/>
+</package>

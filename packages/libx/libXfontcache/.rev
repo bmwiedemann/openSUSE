@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90b459a2feb2ade1f57aa21d24a406e9</srcmd5>
+    <version>1.0.5</version>
+    <time>1329476618</time>
+    <user>coolo</user>
+    <comment>- Split xorg-x11-libs into separate packages</comment>
+    <requestid>105457</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>90b459a2feb2ade1f57aa21d24a406e9</srcmd5>
+    <version>1.0.5</version>
+    <time>1340183557</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>75b91f23fa09808aaa99a37a11fa6fac</srcmd5>
+    <version>1.0.5</version>
+    <time>1348582376</time>
+    <user>coolo</user>
+    <comment>- specfile cleanup</comment>
+    <requestid>135810</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>75b91f23fa09808aaa99a37a11fa6fac</srcmd5>
+    <version>1.0.5</version>
+    <time>1359109233</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>8a574bbb4f03a558c7d53c32a1c6e607</srcmd5>
+    <version>1.0.5</version>
+    <time>1363949728</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160094</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>0dfbc22e649900d6c54869f25bc46303</srcmd5>
+    <version>1.0.5</version>
+    <time>1365928475</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 163627 from m_meister)</comment>
+    <requestid>163641</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>0dfbc22e649900d6c54869f25bc46303</srcmd5>
+    <version>1.0.5</version>
+    <time>1379662885</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>0dfbc22e649900d6c54869f25bc46303</srcmd5>
+    <version>1.0.5</version>
+    <time>1409301487</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

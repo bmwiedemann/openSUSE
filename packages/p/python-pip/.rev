@@ -1,0 +1,544 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>868397886d3330e8587ba6bd91257bbb</srcmd5>
+    <version>0.8.1</version>
+    <time>1292245960</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55758 from user saschpe
+</comment>
+    <requestid>55758</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e290773493dbeb7b1f53e6ac9125fd19</srcmd5>
+    <version>0.8.1</version>
+    <time>1292245981</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55758
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ba9e6a1a86a303941ae10bb1723c1e4</srcmd5>
+    <version>0.8.2</version>
+    <time>1294972773</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57863 from user saschpe
+</comment>
+    <requestid>57863</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>aeb2f8771c6d93243c89110dd068c1b4</srcmd5>
+    <version>0.8.2</version>
+    <time>1294972778</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57863
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>aeb2f8771c6d93243c89110dd068c1b4</srcmd5>
+    <version>0.8.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bc849914ebfc156f35dc67a3bcbe7ecf</srcmd5>
+    <version>1.0.2</version>
+    <time>1316465809</time>
+    <user>lrupp</user>
+    <comment>- Update to 1.0.2
+  * Fixed docs issues.
+  * Fixed issue #295 - Reinstall a package when using the ``install -I``
+    option
+  * Fixed issue #283 - Finds a Git tag pointing to same commit as
+    origin/master
+  * Fixed issue #279 - Use absolute path for path to docs in setup.py
+  * Fixed issue #320 - Correctly handle exceptions on Python3.
+  * Fixed issue #314 - Correctly parse ``--editable`` lines in requirements
+    files
+- Updates from 1.0.1
+  * Start to use git-flow.
+  * Fixed issue #274 - `find_command` should not raise AttributeError
+  * Fixed issue #273 - respect Content-Disposition header. Thanks Bradley
+    Ayers.
+  * Fixed issue #233 - pathext handling on Windows.
+  * Fixed issue #252 - svn+svn protocol.
+  * Fixed issue #44 - multiple CLI searches.
+  * Fixed issue #266 - current working directory when running setup.py clean.
+- Updates from 1.0
+  * Added Python 3 support! Huge thanks to Vinay Sajip, Vitaly Babiy, Kelsey
+    Hightower, and Alex Gronholm, among others.
+  * Download progress only shown on a real TTY. Thanks Alex Morega.
+  * Fixed finding of VCS binaries to not be fooled by same-named directories.
+    Thanks Alex Morega.
+  * Fixed uninstall of packages from system Python for users of Debian/Ubuntu
+    python-setuptools package (workaround until fixed in Debian and Ubuntu).
+  * Added `get-pip.py https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+- Updates from 0.8.3
+  * Fixed issue #14 - No uninstall-on-upgrade with URL package. Thanks Oliver
+    Tonnhofer
+  * Fixed issue #163 - Egg name not properly resolved. Thanks Igor Sobreira
+  * Fixed issue #178 - Non-alphabetical installation of requirements. Thanks
+    Igor Sobreira
+  * Fixed issue #199 - Documentation mentions --index instead of --index-url.
+    Thanks Kelsey Hightower
+  * Fixed issue #204 - rmtree undefined in mercurial.py. Thanks Kelsey
+    Hightower
+  * Fixed bug in Git vcs backend that would break during reinstallation.
+  * Fixed bug in Mercurial vcs backend related to pip freeze and branch/tag
+    resolution.
+  * Fixed bug in version string parsing related to the suffix &quot;-dev&quot;.
+ (forwarded request 82747 from ocefpaf)</comment>
+    <requestid>83352</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9b9adcf0d8e8a378e29edb62f4594550</srcmd5>
+    <version>1.0.2</version>
+    <time>1317025024</time>
+    <user>saschpe</user>
+    <comment>- Don't repackage upstream tarball
+- Require python-distribute instead of setuptools
+- Package documentation
+- Fix non-executable script rpmlint warning</comment>
+    <requestid>84386</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>9b9adcf0d8e8a378e29edb62f4594550</srcmd5>
+    <version>1.0.2</version>
+    <time>1319182400</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>bb5bac4d286e5e3ed289835308442d71</srcmd5>
+    <version>1.0.2</version>
+    <time>1328086798</time>
+    <user>coolo</user>
+    <comment>Python is awesome</comment>
+    <requestid>102233</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6667f45114a192a6960a1024d0b57422</srcmd5>
+    <version>1.1</version>
+    <time>1329922468</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1:
+  * Fixed issue #326 - don't crash when a package's setup.py emits UTF-8
+    and then fails.
+  * Added --target option for installing directly to arbitrary directory.
+  * Added support for authentication with Subversion repositories.
+  * Fixed issue #315 - --download now downloads dependencies as well.
+  * Errors from subprocesses will display the current working directory.
+  * Fixed issue #369 - compatibility with Subversion 1.7.
+  * Fixed issue #57 - ignore py2app-generated OS X mpkg zip files in finder.
+  * Fixed issue #182 - log to ~/Library/Logs/ by default on OS X framework
+    installs.
+  * Fixed issue #310 - understand version tags without minor version (&quot;py3&quot;)
+    in sdist filenames.
+  * Fixed issue #7 - Pip now supports optionally installing setuptools
+    &quot;extras&quot; dependencies; e.g. &quot;pip install Paste[openid]&quot;.
+  * Fixed issue #391 - freeze no longer borks on requirements file
+  * Fixed issue #288 - handle symlinks properly.
+  * Fixed issue #49 - pip install -U no longer reinstalls the same versions
+    of packages.
+  * Removed -E option and PIP_RESPECT_VIRTUALENV; both use a restart-in-venv
+    mechanism that's broken, and neither one is useful since every virtualenv
+    now has pip inside it.
+  * Fixed issue #366 - pip throws IndexError when it calls scraped_rel_links
+  * Fixed issue #22 - pip search should set and return a userful shell
+    status code
+  * Fixed issue #351 and #365 - added global --exists-action command line
+    option to easier script file exists conflicts, e.g. from editable
+    requirements from VCS that have a changed repo URL.
+- Cleaned up changes file</comment>
+    <requestid>106458</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>560df2058a24ac4d63fa2b62a7bbfbfb</srcmd5>
+    <version>1.1</version>
+    <time>1336423823</time>
+    <user>coolo</user>
+    <comment>Fix building python 3 package on openSUSE 11.4 x86_64 (forwarded request 116068 from TheBlackCat) (forwarded request 116069 from TheBlackCat)</comment>
+    <requestid>116070</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>560df2058a24ac4d63fa2b62a7bbfbfb</srcmd5>
+    <version>1.1</version>
+    <time>1340184076</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6d0a3375c70de365df7b399f6098e275</srcmd5>
+    <version>1.2.1</version>
+    <time>1347347853</time>
+    <user>coolo</user>
+    <comment>Update to 1.2.1.  Note: dropped support for python 2.4. (forwarded request 133376 from poorboywilly)</comment>
+    <requestid>133453</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e692f6cad79a1f3461cedd56ea23e238</srcmd5>
+    <version>1.2.1</version>
+    <time>1353956101</time>
+    <user>coolo</user>
+    <comment>Removed openSUSE 11.4 spec file workarounds (forwarded request 142803 from TheBlackCat) (forwarded request 142808 from TheBlackCat)</comment>
+    <requestid>142814</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>e692f6cad79a1f3461cedd56ea23e238</srcmd5>
+    <version>1.2.1</version>
+    <time>1359110090</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>96432f66b56df37703cfad95335ec9fc</srcmd5>
+    <version>1.3.1</version>
+    <time>1363511264</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159591</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>696515871a0c9781f9edf1291447a406</srcmd5>
+    <version>1.3.1</version>
+    <time>1366709923</time>
+    <user>coolo</user>
+    <comment>Re-add buildrequires: python3.  This is needed for openSUSE &lt;= 12.2 (forwarded request 172883 from TheBlackCat)</comment>
+    <requestid>172884</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>44073d83eb234567fe562f094f9d379c</srcmd5>
+    <version>1.3.1</version>
+    <time>1371652990</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179929</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>20eee282184eab6b02cfbdcf3b2360b3</srcmd5>
+    <version>1.4</version>
+    <time>1375125060</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.4:
+  * **BACKWARD INCOMPATIBLE** pip now only installs stable versions by default,
+    and offers a new --pre option to also find pre-release and development
+    versions. (Pull #834)
+  * **BACKWARD INCOMPATIBLE** Dropped support for Python 2.5. The minimum
+    supported Python version for pip 1.4 is Python 2.6.
+  * Added support for installing and building wheel archives.
+    Thanks Daniel Holth, Marcus Smith, Paul Moore, and Michele Lacchia
+    (Pull #845)
+  * Applied security patch to pip's ssl support related to certificate DNS
+    wildcard matching (http://bugs.python.org/issue17980).
+  * To satisfy pip's setuptools requirement, pip now recommends setuptools&gt;=0.8,
+    not distribute. setuptools and distribute are now merged into one project
+    called 'setuptools'. (Pull #1003)
+  * pip will now warn when installing a file that is either hosted externally to
+    the index or cannot be verified with a hash. In the future pip will default
+    to not installing them and will require the flags --allow-external NAME, and
+    --allow-insecure NAME respectively. (Pull #985)
+  * If an already-downloaded or cached file has a bad hash, re-download it rather
+    than erroring out. (Issue #963).
+  * pip bundle and support for installing from pybundle files is now
+    considered deprecated and will be removed in pip v1.5.
+  * Fixed a number of issues (#413, #709, #634, #602, and #939) related to
+    cleaning up and not reusing build directories. (Pull #865, #948)
+  * Added a User Agent so that pip is identifiable in logs. (Pull #901)
+  * Added ssl and --user support to get-pip.py. Thanks Gabriel de Perthuis.
+    (Pull #895)
+  * Fixed the proxy support, which was broken in pip 1.3.x (Pull #840)
+  * Fixed issue #32 - pip fails when server does not send content-type header.
+    Thanks Hugo Lopes Tavares and Kelsey Hightower (Pull #872).</comment>
+    <requestid>184861</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>70cd3c9f6e4b2a977a8d45ac964bbe32</srcmd5>
+    <version>1.4.1</version>
+    <time>1376392926</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.4.1:
+ * Fixed issues with installing from pybundle files (Pull #1116).
+ * Fixed error when sysconfig module throws an exception (Pull #1095).
+ * Don't ignore already installed pre-releases (Pull #1076).
+ * Fixes related to upgrading setuptools (Pull #1092).
+ * Fixes so that --download works with wheel archives (Pull #1113).
+ * Fixes related to recognizing and cleaning global build dirs (Pull #1080) (forwarded request 186463 from dirkmueller)</comment>
+    <requestid>186538</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>70cd3c9f6e4b2a977a8d45ac964bbe32</srcmd5>
+    <version>1.4.1</version>
+    <time>1379664242</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>191624f1082ef34883c3d75636b87ac6</srcmd5>
+    <version>1.4.1</version>
+    <time>1380218109</time>
+    <user>coolo</user>
+    <comment>bnc#842516 (forwarded request 200710 from rhafer)</comment>
+    <requestid>200711</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>139fa864759cac3a091a89e6575a819e</srcmd5>
+    <version>1.4.1</version>
+    <time>1386083526</time>
+    <user>coolo</user>
+    <comment>- Fix alternative link in buildroot</comment>
+    <requestid>207963</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5917539f2c14f3332d759f641ef69cc6</srcmd5>
+    <version>1.5</version>
+    <time>1389284744</time>
+    <user>coolo</user>
+    <comment>- Package /usr/bin/pip2
+
+- Readd argparse requirement for SLE
+
+- Update to version 1.5:
+  * **BACKWARD INCOMPATIBLE** pip no longer supports the --use-mirrors,
+    -M, and --mirrors flags. The mirroring support has been removed. In
+    order to use a mirror specify it as the primary index with -i or
+    --index-url, or as an additional index with --extra-index-url. (Pull #1098, CVE-2013-5123)
+  * **BACKWARD INCOMPATIBLE** pip no longer will scrape insecure external urls by
+    default nor will it install externally hosted files by default. Users may opt
+    into installing externally hosted or insecure files or urls using
+    --allow-external PROJECT and --allow-unverified PROJECT. (Pull #1055)
+  * **BACKWARD INCOMPATIBLE** pip no longer respects dependency links by default.
+    Users may opt into respecting them again using --process-dependency-links.
+  * **DEPRECATION** pip install --no-install and pip install
+    --no-download are now formally deprecated.  See Issue #906 for discussion on
+    possible alternatives, or lack thereof, in future releases.
+  * **DEPRECATION** pip zip and pip unzip are now formally deprecated.
+  * pip will now install Mac OSX platform wheels from PyPI. (Pull #1278)
+  * pip now generates the appropriate platform-specific console scripts when
+    installing wheels. (Pull #1251)
+  * Pip now confirms a wheel is supported when installing directly from a path or
+    url. (Pull #1315)
+  * Fixed #1097, --ignore-installed now behaves again as designed, after it was
+    unintentionally broke in v0.8.3 when fixing Issue #14 (Pull #1352).
+  * Fixed a bug where global scripts were being removed when uninstalling --user
+    installed packages (Pull #1353).
+  * Fixed #1163, --user wasn't being respected when installing scripts from wheels (Pull #1176).
+  * Fixed #1150, we now assume '_' means '-' in versions from wheel filenames (Pull #1158).</comment>
+    <requestid>213128</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>5917539f2c14f3332d759f641ef69cc6</srcmd5>
+    <version>1.5</version>
+    <time>1409302944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>fec64757967fd8ec9cf1380d9802508b</srcmd5>
+    <version>1.5</version>
+    <time>1416347108</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261627</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d80b30a23c013d64677e179a56bdbe32</srcmd5>
+    <version>6.0.8</version>
+    <time>1427109535</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292198</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>7583a93711534bfb77542755b1d01cb3</srcmd5>
+    <version>6.0.8</version>
+    <time>1438899646</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319405</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>fa39fa3d941abead1a03f1a8771b91b7</srcmd5>
+    <version>7.1.2</version>
+    <time>1443896976</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333759</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ef796d14b7f89b43eda6a06602956f5a</srcmd5>
+    <version>8.0.0</version>
+    <time>1453997987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354910</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b62d8fedb18709f44bd2720734b8b982</srcmd5>
+    <version>8.1.0</version>
+    <time>1458121387</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369207</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c558d7a03d0ddbabf5a4ec1402e279ee</srcmd5>
+    <version>8.1.2</version>
+    <time>1468169110</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pypi.io as Source url.
+
+- update to 8.1.2:
+  * Fix a regression on systems with uninitialized locale (:issue:`3575`).
+  * Use environment markers to filter packages before determining if a
+    required wheel is supported. Solves (:issue:`3254`).
+  * Make glibc parsing for `manylinux1` support more robust for the variety of
+    glibc versions found in the wild (:issue:`3588`).
+  * Update environment marker support to fully support PEP 508 and legacy
+    environment markers (:issue:`3624`).
+  * Always use debug logging to the ``--log`` file (:issue:`3351`).
+  * Don't attempt to wrap search results for extremely narrow terminal windows
+    (:issue:`3655`).
+  * Fix regression with non-ascii requirement files on Python 2 and add support
+    for encoding headers in requirement files (:issue:`3548`, :pull:`3547`).</comment>
+    <requestid>406269</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>11047f744bc85dd83d349b10bef4dc81</srcmd5>
+    <version>9.0.1</version>
+    <time>1485167468</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451336</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>b7bbf0ba1cf1ced9303e20b213de804b</srcmd5>
+    <version>9.0.1</version>
+    <time>1488216974</time>
+    <user>dimstar_suse</user>
+    <comment>first batch of singlespec packages</comment>
+    <requestid>460264</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>6ac34c5ddbec497dd2974f5ae0e627fe</srcmd5>
+    <version>9.0.1</version>
+    <time>1492617893</time>
+    <user>dimstar_suse</user>
+    <comment>- uninstall alternatives in %postun</comment>
+    <requestid>483376</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>78da58b74b24a8471c3a0244ea342f7b</srcmd5>
+    <version>10.0.1</version>
+    <time>1524742464</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.0.1
+- refactor pip-8.1.2-shipped-requests-cabundle.patch
+ * Switch the default repository to the new &quot;PyPI 2.0&quot; running at https://pypi.org/
+ * big bunch of changes from 9.0.1 in NEWS.rst</comment>
+    <requestid>599442</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a3d9eaaec33a0698f98104973549bf97</srcmd5>
+    <version>18.0</version>
+    <time>1533214123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624944</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>33c84a00f4149c109a63255fc7ba58d3</srcmd5>
+    <version>18.1</version>
+    <time>1541508581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643579</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>204ed584b6c733d06528b25a0b8b5fd5</srcmd5>
+    <version>18.1</version>
+    <time>1544816784</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>655666</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ec149f8e248390aa8ae1937400eea7a4</srcmd5>
+    <version>19.0.2</version>
+    <time>1551024226</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673642</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>90947258aba7c3f1b8c7d15e893491a6</srcmd5>
+    <version>19.0.3</version>
+    <time>1552380383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683720</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f120e0eb9d073c2f56901b8d53f5ff2b</srcmd5>
+    <version>19.1.1+git.1557777841.63878672</version>
+    <time>1558129244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.1.1+git.1557777841.63878672:
+  * Update news file to match usual style
+  * fix-5963: assert error message
+  * Simplify CandidateEvaluator.evaluate_link().
+  * Fix 6486 mac gitignore (#6487)
+  * Store instances in the VcsSupport registry instead of classes.
+  * Remove unused cls argument from VcsSupport.unregister().
+  * fix-5963: Add news file
+  * fix-5963: fail elegantly on missing name or section in config set / unset
+  * Remove unnecessary slices.
+  * Fix typo.
+
+- Switch to multibuild, so testing is separate from the building
+  of the package itself. (forwarded request 703184 from mcepl)</comment>
+    <requestid>703186</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>0d34e02a2839e4c34042867b1fdead8c</srcmd5>
+    <version>19.1.1+git.1557777841.63878672</version>
+    <time>1564484658</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with pytest5, also sent upstream:
+  * pytest5.patch</comment>
+    <requestid>717473</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f0f0a2c877784d6822b9dcde9a235104</srcmd5>
+    <version>19.2.1</version>
+    <time>1565362141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.2.1:
+  * Fix a ``NoneType`` ``AttributeError`` when evaluating hashes and no hashes provided
+  * Drop support for EOL Python 3.4.
+  * Credentials will now be loaded using keyring when installed
+  * Fully support using --trusted-host inside requirements files
+  * Update timestamps in pip's --log file to include milliseconds
+  * Respect whether a file has been marked as &quot;yanked&quot; from a simple repository (see PEP 592 for details)
+  * When choosing candidates to install, prefer candidates with a hash matching one of the user-provided hashes
+  * Improve the error message when METADATA or PKG-INFO is None when accessing metadata
+  * Add a new command pip debug that can display e.g. the list of compatible tags for the current Python
+  * Display hint on installing with --pre when search results include pre-release versions
+  * Report to Warehouse that pip is running under CI if the PIP_IS_CI environment variable is set
+  * Allow --python-version to be passed as a dotted version string (e.g. 3.7 or 3.7.3)
+  * Log the final filename and SHA256 of a .whl file when done building a wheel
+  * Include the wheel's tags in the log message explanation when a candidate wheel link is found incompatible
+  * Add a --path argument to pip freeze to support --target installations
+  * Add a --path argument to pip list to support --target installations</comment>
+    <requestid>721781</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>36379b8e3df069c9a0c0905543c2767f</srcmd5>
+    <version>19.2.2</version>
+    <time>1565962111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.2.2:
+  * Merge pull request #6827 from cjerdonek/issue-6804-find-links-expansion
+  * Fix handling of tokens (single part credentials) in URLs (#6818)
+  * Simplify the handling of &quot;typing.cast&quot;</comment>
+    <requestid>723012</requestid>
+  </revision>
+</revisionlist>

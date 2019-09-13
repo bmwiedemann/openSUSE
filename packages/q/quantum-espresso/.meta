@@ -1,0 +1,7 @@
+<package name="quantum-espresso" project="openSUSE:Factory">
+  <title>A suite for electronic-structure calculations and materials modeling</title>
+  <description>Quantum ESPRESSO is an integrated suite of Open-Source computer codes for electronic-structure calculations and materials modeling at the nanoscale. It is based on density-functional theory, plane waves, and pseudopotentials.
+
+</description>
+  <devel project="science" package="quantum-espresso"/>
+</package>

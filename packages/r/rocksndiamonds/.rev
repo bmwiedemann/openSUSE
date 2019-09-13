@@ -1,0 +1,256 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58bb82c4d94617445194612d17d52619</srcmd5>
+    <version>3.2.2</version>
+    <time>1168904121</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>37512371a5da11ba40a95d6c79214109</srcmd5>
+    <version>3.2.3</version>
+    <time>1170686472</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>9202cb1c7d7f8c5e6e09e5fdd962c7b0</srcmd5>
+    <version>3.2.3</version>
+    <time>1173104951</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="24">
+    <srcmd5>6d67c7748e75dc7ebf921c67cbfb5114</srcmd5>
+    <version>3.2.3</version>
+    <time>1179563036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>868f6ea21ce84101b4dcfa025b56c577</srcmd5>
+    <version>3.2.4</version>
+    <time>1204765489</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="82">
+    <srcmd5>868f6ea21ce84101b4dcfa025b56c577</srcmd5>
+    <version>3.2.4</version>
+    <time>1204765489</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="83">
+    <srcmd5>c2351f191ec8b981df5cbf0de894e21e</srcmd5>
+    <version>3.2.4</version>
+    <time>1225718438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="85">
+    <srcmd5>c2351f191ec8b981df5cbf0de894e21e</srcmd5>
+    <version>3.2.4</version>
+    <time>1225718438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="86">
+    <srcmd5>f41e4710f408b4352fc5c5b65a496759</srcmd5>
+    <version>3.2.4</version>
+    <time>1261021549</time>
+    <user>autobuild</user>
+    <comment>Copy from games/rocksndiamonds based on submit request 26647 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="87">
+    <srcmd5>fe6be7005f61892643a844bfe49917bc</srcmd5>
+    <version>3.2.4</version>
+    <time>1268925990</time>
+    <user>autobuild</user>
+    <comment>Copy from games/rocksndiamonds based on submit request 26647 from user coolo
+</comment>
+    <requestid>26647</requestid>
+  </revision>
+  <revision rev="11" vrev="89">
+    <srcmd5>fe6be7005f61892643a844bfe49917bc</srcmd5>
+    <version>3.2.4</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="90">
+    <srcmd5>fe6be7005f61892643a844bfe49917bc</srcmd5>
+    <version>3.2.4</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="93">
+    <srcmd5>fe6be7005f61892643a844bfe49917bc</srcmd5>
+    <version>3.2.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="83">
+    <srcmd5>2176490d210647e1f718a19b1fff3b95</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1316504160</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>82426</requestid>
+  </revision>
+  <revision rev="15" vrev="85">
+    <srcmd5>2176490d210647e1f718a19b1fff3b95</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1319182428</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="86">
+    <srcmd5>5b9477757d7872f0ec6b407bce478070</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1323194421</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="87">
+    <srcmd5>b3ccdc68b2aab1f0e28ee7dfdf4c8120</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1334641755</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113783</requestid>
+  </revision>
+  <revision rev="18" vrev="89">
+    <srcmd5>b3ccdc68b2aab1f0e28ee7dfdf4c8120</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1340184147</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="90">
+    <srcmd5>7dbe56f1ca99736e1c1c3aaad30ec01d</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1342264504</time>
+    <user>coolo</user>
+    <comment>- do not create ~/.rocksndiamonds/ world writeable. 
+  bnc#736261 / CVE-2011-4606 (forwarded request 127796 from msmeissn)</comment>
+    <requestid>127863</requestid>
+  </revision>
+  <revision rev="20" vrev="91">
+    <srcmd5>c8a6b85168a2f235d6bc6e08fb4bd99b</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1359103098</time>
+    <user>coolo</user>
+    <comment>run_permissions was replaced by set_permissions
+http://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros#.25set_permissions
+Using the old *changes file which is not in utf-8 as it's difficult get it accpted in Factory (forwarded request 149772 from worldcitizen)</comment>
+    <requestid>149778</requestid>
+  </revision>
+  <revision rev="21" vrev="93">
+    <srcmd5>c8a6b85168a2f235d6bc6e08fb4bd99b</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1359110292</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="94">
+    <srcmd5>ebde97a85827d390e42d24239917b112</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1359641428</time>
+    <user>coolo</user>
+    <comment>Dropped all permission scripts (forwarded request 150374 from worldcitizen)</comment>
+    <requestid>150388</requestid>
+  </revision>
+  <revision rev="23" vrev="96">
+    <srcmd5>ebde97a85827d390e42d24239917b112</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1379664460</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="97">
+    <srcmd5>5fcf8583e52aac2a062675201a2a1717</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1380115198</time>
+    <user>coolo</user>
+    <comment>- Add games user/group on demand (fate#314560) (forwarded request 200174 from namtrac)</comment>
+    <requestid>200480</requestid>
+  </revision>
+  <revision rev="25" vrev="99">
+    <srcmd5>5fcf8583e52aac2a062675201a2a1717</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1409303193</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f9762b3db9c45b5050a4e77fb80d2478</srcmd5>
+    <version>3.3.1.2</version>
+    <time>1413269957</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>255050</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>fad9f45eaafa4585540185793d7a9b96</srcmd5>
+    <version>3.3.1.2</version>
+    <time>1460482633</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>386856</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>baa9bc12dc7ed7c9f123b9b1a563ed74</srcmd5>
+    <version>3.3.1.2</version>
+    <time>1491896709</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485712</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>7ac658d2a390be2c789e74b2a2200b1a</srcmd5>
+    <version>4.1.0.0</version>
+    <time>1532774626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625695</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>141ccd0c98f659369961fd8a4213d443</srcmd5>
+    <version>4.1.1.0</version>
+    <time>1548064769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.1.0
+  * improved support for network multi-player games
+  * network games can now be fully configured by using setup menu
+   settings
+  * when playing network games, the level to be played is now sent
+   to all clients
+  * added UDP broadcast to auto-detect network server in local
+   network
+  * multi-player levels now marked in main menu preview with
+   network or team mode
+  * fixed team mode games in R’n’D game engine
+  * added player option in level editor to let the first player
+   solve the level
+  * improved support for highly configurable virtual buttons on
+   touch devices
+  * options for transparency, grid size, highlighted and outlined
+   virtual buttons
+  * separately configurable virtual buttons for portrait and
+   landscape mode
+  * ultra-smooth scrolling using vertical sync (vsync) on
+   supported devices
+  * added setup option to directly play the next level after
+   solving a level
+  * added setup option to skip displaying the high scores after
+   solving a level
+  * added setup option to use extended list for game speed
+   selection
+  * added event actions (key events and screen buttons) to global
+   animations
+  * this allows for simulating key or button events when
+   animations are clicked
+  * added “passthrough” option to click several overlapping global
+   animations
+  * fixed bug with dragon fire destroying indestructible steel
+   letter walls
+  * fixed various other bugs (and probably added some new)
+</comment>
+    <requestid>666798</requestid>
+  </revision>
+</revisionlist>

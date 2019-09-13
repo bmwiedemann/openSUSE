@@ -1,0 +1,273 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee3c162d22f76512e2375060d6a2d307</srcmd5>
+    <version>3.1.1</version>
+    <time>1392185504</time>
+    <user>coolo</user>
+    <comment>add yast2-cluster</comment>
+    <requestid>221802</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>503567d3e292335ae7ab080135c5e7c2</srcmd5>
+    <version>3.1.1</version>
+    <time>1394647745</time>
+    <user>coolo</user>
+    <comment>fix bugs (forwarded request 224074 from deanraccoon)</comment>
+    <requestid>225645</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>87274b0212cf173b655a151f9dc470e3</srcmd5>
+    <version>3.1.10</version>
+    <time>1404487118</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>239555</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4c6f895ab3ce2035a7ae775b70dfe0d3</srcmd5>
+    <version>3.1.11</version>
+    <time>1404817316</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.11</comment>
+    <requestid>239760</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a18268b9f4142a11d1b6b5c306bdaed5</srcmd5>
+    <version>3.1.12</version>
+    <time>1405520390</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.12</comment>
+    <requestid>241174</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a18268b9f4142a11d1b6b5c306bdaed5</srcmd5>
+    <version>3.1.12</version>
+    <time>1409303823</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ad747a38ec212e4b27d6bad48a906a57</srcmd5>
+    <version>3.1.13</version>
+    <time>1409741437</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.13</comment>
+    <requestid>247348</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eedf3e517086b023684ebdd19e03d073</srcmd5>
+    <version>3.1.14</version>
+    <time>1410282007</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.14</comment>
+    <requestid>248107</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9008e09885f12b212965292b237fead3</srcmd5>
+    <version>3.1.15</version>
+    <time>1411127791</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.15</comment>
+    <requestid>250179</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b84d80cb60cc43838df8d707f72842e7</srcmd5>
+    <version>3.1.16</version>
+    <time>1417809850</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.1.16</comment>
+    <requestid>263965</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2d6f7771cccabf38eaec64353e98f1a6</srcmd5>
+    <version>3.1.17</version>
+    <time>1435870272</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.1.17</comment>
+    <requestid>314809</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cdef738053592b23a9ed30a643b04eb3</srcmd5>
+    <version>3.1.18</version>
+    <time>1437478052</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.18</comment>
+    <requestid>317575</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3fa2f27b3ba5f02d5fa99365b20f1009</srcmd5>
+    <version>3.1.20</version>
+    <time>1438615335</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.1.20</comment>
+    <requestid>320068</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a0c62c97f637a32d56f4aac2db746a13</srcmd5>
+    <version>3.1.21</version>
+    <time>1439482253</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.1.21</comment>
+    <requestid>322297</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ffa9dc25ce4403cca246a1295a539c22</srcmd5>
+    <version>3.1.22</version>
+    <time>1449145942</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.1.22</comment>
+    <requestid>346969</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>04d91f6a7797b9ccd225493e2184a573</srcmd5>
+    <version>3.1.23</version>
+    <time>1459717623</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.1.23</comment>
+    <requestid>379560</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>91e81bc27c673d6cebaa5400416b832b</srcmd5>
+    <version>3.1.24</version>
+    <time>1465336225</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.1.24</comment>
+    <requestid>400428</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>642320cc866ca77dcfde7b6ebdbf4182</srcmd5>
+    <version>3.2.0</version>
+    <time>1491566196</time>
+    <user>maxlin_factory</user>
+    <comment>submit new version 3.2.0</comment>
+    <requestid>485924</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>434436232b8956968a5473816df2ba9a</srcmd5>
+    <version>4.0.0</version>
+    <time>1509530992</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.0</comment>
+    <requestid>537876</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b3a4f99d0839a54505a400cdea4c95a2</srcmd5>
+    <version>4.0.1</version>
+    <time>1512433810</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.1</comment>
+    <requestid>548023</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>86dc9ae6bc0795e4642f66b2c12c8383</srcmd5>
+    <version>4.0.2</version>
+    <time>1515261050</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.2</comment>
+    <requestid>561811</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8fefe311c77e864e1c0066a357f26909</srcmd5>
+    <version>4.0.3</version>
+    <time>1515876448</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.3</comment>
+    <requestid>563544</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>866acfef577e2fb8f1f2301a1997100f</srcmd5>
+    <version>4.0.4</version>
+    <time>1517234347</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.4</comment>
+    <requestid>570453</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>580a466c373024bf35cf0f4d330188bc</srcmd5>
+    <version>4.0.5</version>
+    <time>1520021566</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.5</comment>
+    <requestid>581931</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>86ac6458b730bdaaf0e2cefa8205957f</srcmd5>
+    <version>4.0.6</version>
+    <time>1522225877</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.6</comment>
+    <requestid>591051</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>345b7b23b1fa8d2d8af96ec141589b9f</srcmd5>
+    <version>4.0.7</version>
+    <time>1522317440</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.7</comment>
+    <requestid>591969</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>bab35f0d4bc26589b262a0e94a76e447</srcmd5>
+    <version>4.0.8</version>
+    <time>1530653654</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.8</comment>
+    <requestid>620285</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e9f09c0de440b2d5d3db40c8834ef4aa</srcmd5>
+    <version>4.1.0</version>
+    <time>1536148123</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.1.0</comment>
+    <requestid>631119</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ae0cc77107405d106528904dea39dd23</srcmd5>
+    <version>4.1.1</version>
+    <time>1546535143</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.1.1</comment>
+    <requestid>652381</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8bcc6bcbc9a47ed3848e7e28060cc71a</srcmd5>
+    <version>4.1.2</version>
+    <time>1555588723</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.1.2</comment>
+    <requestid>695469</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>e64672987d22c0eefb63dc7f75eb29f4</srcmd5>
+    <version>4.1.2</version>
+    <time>1556622408</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1132881, using ruby base64 to replace uuencode/uudecode.</comment>
+    <requestid>699510</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>590b45d9b8fe57aa2a8f60c23e1b1ba6</srcmd5>
+    <version>4.2.0</version>
+    <time>1564575419</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.0</comment>
+    <requestid>707041</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9b844018aa96e42df313d218ca62aace</srcmd5>
+    <version>4.2.2</version>
+    <time>1565963122</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.2</comment>
+    <requestid>723613</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>db6948605fa29cbe584a24aac8a54f01</srcmd5>
+    <version>4.2.3</version>
+    <time>1566551206</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.3</comment>
+    <requestid>725299</requestid>
+  </revision>
+</revisionlist>

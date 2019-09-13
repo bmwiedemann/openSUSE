@@ -1,0 +1,538 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8dc0e3b618bc4b092d1c764c651c8509</srcmd5>
+    <version>4.2</version>
+    <time>1330364017</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>103088</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>278515b5d70f8beac29eb7053c5e5170</srcmd5>
+    <version>4.2</version>
+    <time>1330966766</time>
+    <user>coolo</user>
+    <comment> (forwarded request 107782 from MargueriteSu)</comment>
+    <requestid>107783</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3374051d27d1847f5262afc5f7aae85e</srcmd5>
+    <version>4.2.1</version>
+    <time>1331324534</time>
+    <user>coolo</user>
+    <comment>- update to 4.2.1
+  * Changes related to API:
+    Cleanup Unused macro and API
+    Some new FcitxInputState series API for get the origin key event 
+    for frontend.
+    Portable with custom path, hide two path related API that may 
+    break portable.
+    Make FcitxHotkeyGetKey process latin letter and strip shift 
+    modifier for them.
+    Ability to bind menu with a status.
+    Ability to update client preedit with formatted string.
+  * Change related to user:
+    Update Taiwan punctuation
+    Quick Phrase can use grave as trigger key.
+    ctrl rshift can switch input method in reverse order.
+    2nd 3rd candidate choosing key will not conflict with same 
+    switch key.
+    AutoEng can accept upper case english key which is not the 
+    initial key.
+    Add Zenkaku_Hankaku and Hangul as default trigger key when 
+    locale is ja and ko.
+    Add Symbolic icon for gnome-shell’s kimpanel. (forwarded request 108573 from hillwood)</comment>
+    <requestid>108574</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8dd771a07e800420aea9733136714b87</srcmd5>
+    <version>4.2.2</version>
+    <time>1334215334</time>
+    <user>coolo</user>
+    <comment> (forwarded request 113112 from MargueriteSu)</comment>
+    <requestid>113113</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f0a7404c5712c4404b0ea28d69d9bc7f</srcmd5>
+    <version>4.2.3</version>
+    <time>1336423519</time>
+    <user>coolo</user>
+    <comment> (forwarded request 116621 from MargueriteSu)</comment>
+    <requestid>116622</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>01dc9eb772b0b641a0c1ab75f27aecaf</srcmd5>
+    <version>4.2.3</version>
+    <time>1337577868</time>
+    <user>coolo</user>
+    <comment> (forwarded request 120765 from MargueriteSu)</comment>
+    <requestid>121241</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d6d1087a84c93d20931b88b0b682f028</srcmd5>
+    <version>4.2.4</version>
+    <time>1339076269</time>
+    <user>coolo</user>
+    <comment>version update (forwarded request 123501 from MargueriteSu)</comment>
+    <requestid>123502</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9fd34b72ced83b215386d41445d3dfba</srcmd5>
+    <version>4.2.4.1</version>
+    <time>1339767590</time>
+    <user>coolo</user>
+    <comment> (forwarded request 124645 from MargueriteSu)</comment>
+    <requestid>124646</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9fd34b72ced83b215386d41445d3dfba</srcmd5>
+    <version>4.2.4.1</version>
+    <time>1340183321</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>8b5b820e28b8ebdcb8ce0e0018d62aad</srcmd5>
+    <version>4.2.4.1</version>
+    <time>1340716766</time>
+    <user>coolo</user>
+    <comment> (forwarded request 125973 from MargueriteSu)</comment>
+    <requestid>126044</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f17d7171f074e960f9ade336bbc7bee6</srcmd5>
+    <version>4.2.5</version>
+    <time>1343134713</time>
+    <user>coolo</user>
+    <comment>version update and provides fix (forwarded request 128579 from MargueriteSu)</comment>
+    <requestid>128580</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b75600dc525bf1456bcd776aae97f162</srcmd5>
+    <version>4.2.5</version>
+    <time>1346179507</time>
+    <user>coolo</user>
+    <comment> (forwarded request 131766 from MargueriteSu)</comment>
+    <requestid>131767</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c2184cd007968a89da502d905e505258</srcmd5>
+    <version>4.2.5</version>
+    <time>1347283241</time>
+    <user>coolo</user>
+    <comment> (forwarded request 133130 from MargueriteSu)</comment>
+    <requestid>133131</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0c8bc3c54543f45d98efcd6fe6283195</srcmd5>
+    <version>4.2.6</version>
+    <time>1347838136</time>
+    <user>namtrac</user>
+    <comment>update 4.2.6 (forwarded request 134457 from MargueriteSu)</comment>
+    <requestid>134473</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>e68b92b9c5072f370b4736d2f27eb19c</srcmd5>
+    <version>4.2.6</version>
+    <time>1349241079</time>
+    <user>coolo</user>
+    <comment>fix build 11.4 and 12.1 (forwarded request 135463 from MargueriteSu)</comment>
+    <requestid>135464</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5449007faa1a412039acafd467e5f4a9</srcmd5>
+    <version>4.2.6.1</version>
+    <time>1350379832</time>
+    <user>coolo</user>
+    <comment> (forwarded request 138088 from MargueriteSu)</comment>
+    <requestid>138096</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>5449007faa1a412039acafd467e5f4a9</srcmd5>
+    <version>4.2.6.1</version>
+    <time>1359108868</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c8a2843968005e3e6fcc525bf55479e5</srcmd5>
+    <version>4.2.7</version>
+    <time>1359457636</time>
+    <user>coolo</user>
+    <comment>update 4.2.7 for 12.3 (forwarded request 150046 from MargueriteSu)</comment>
+    <requestid>150047</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>c7b60a567cba811cf901e3ff195ca2c0</srcmd5>
+    <version>4.2.7</version>
+    <time>1359540939</time>
+    <user>coolo</user>
+    <comment>- fix the permissions of the .directory file in the openSUSE themeing</comment>
+    <requestid>150385</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>b5d60c28194bdb521b62d446db27b462</srcmd5>
+    <version>4.2.7</version>
+    <time>1359646050</time>
+    <user>coolo</user>
+    <comment> (forwarded request 150475 from MargueriteSu)</comment>
+    <requestid>150476</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>b367bab791f38a7a6014846f96092b0f</srcmd5>
+    <version>4.2.7</version>
+    <time>1360059173</time>
+    <user>coolo</user>
+    <comment>* fix 32-bit immodule query
+* fix opencc Simplified &lt;-&gt; Traditional Chinese switch among input methods
+* Clean ups (forwarded request 151147 from MargueriteSu)</comment>
+    <requestid>151148</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>bdd6e61d0f7958497260e680f352b9dd</srcmd5>
+    <version>4.2.7</version>
+    <time>1360075349</time>
+    <user>coolo</user>
+    <comment>- fix typo in specfile</comment>
+    <requestid>151277</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>4307a22005edbeeba1b07dda7d5b1b14</srcmd5>
+    <version>4.2.7</version>
+    <time>1360400663</time>
+    <user>coolo</user>
+    <comment>disable DENABLE_DEBUG to avoid polluting .xsession-errors. bnc#802866</comment>
+    <requestid>154947</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>73234be0f226b17d296046d289d7c77d</srcmd5>
+    <version>4.2.7</version>
+    <time>1366232678</time>
+    <user>coolo</user>
+    <comment>fix an autostart bug reported by users on gtalk. (forwarded request 161652 from MargueriteSu)</comment>
+    <requestid>161653</requestid>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>3b4a5bfeb59d652c8faabee3ab5d86e1</srcmd5>
+    <version>4.2.7</version>
+    <time>1367221992</time>
+    <user>coolo</user>
+    <comment>fix minor stuff. (forwarded request 173551 from MargueriteSu)</comment>
+    <requestid>173552</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b4b696344c636ae9684329b24d8507b8</srcmd5>
+    <version>4.2.8</version>
+    <time>1373288895</time>
+    <user>coolo</user>
+    <comment>update version 4.2.8 (forwarded request 181661 from MargueriteSu)</comment>
+    <requestid>181662</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>940da0c858b4883b166688e684668451</srcmd5>
+    <version>4.2.8.1</version>
+    <time>1374156053</time>
+    <user>coolo</user>
+    <comment>- update version 4.2.8.1
+  * udpate default skin
+  * Merge pull request #119 for fixing Libkvm detection with cmake 2.8.11
+  * add support for using @ to escape icon name
+  * remove an icon to support icon fallback in glib
+  * Check window size to avoid BadWindow caused by invalid skin
+  * Fix Issue #118
+  * Fix some memory leak in Issue #117
+  * Fix table punctuation ignore list
+  * Fix Pinyin Remind mode
+  * Fix behavior of trigger key with modifier
+- fix systray icon in Dartmouth (forwarded request 183494 from MargueriteSu)</comment>
+    <requestid>183498</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>940da0c858b4883b166688e684668451</srcmd5>
+    <version>4.2.8.1</version>
+    <time>1379662326</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2d62beeea0d9159c6b2802f55fcf854e</srcmd5>
+    <version>4.2.8.2</version>
+    <time>1380216746</time>
+    <user>coolo</user>
+    <comment>update version 4.2.8.2 (forwarded request 200647 from MargueriteSu)</comment>
+    <requestid>200648</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fc9b39feaa751e576660b4766e4744a0</srcmd5>
+    <version>4.2.8.3</version>
+    <time>1380469690</time>
+    <user>coolo</user>
+    <comment>update version 4.2.8.3 (forwarded request 201277 from MargueriteSu)</comment>
+    <requestid>201278</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>f96c8c82eb8e2af860c36382f2c7df2a</srcmd5>
+    <version>4.2.8.3</version>
+    <time>1383551361</time>
+    <user>coolo</user>
+    <comment>fix bnc#848694 for 13.1. don't know if this can get into by directly submitting to Factory. if not, please drop me a note in accept message</comment>
+    <requestid>205590</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>43a9b9e2991f98a9ef7389eb6fe9cbd6</srcmd5>
+    <version>4.2.8.3</version>
+    <time>1386693735</time>
+    <user>coolo</user>
+    <comment>- fix fcitx can't input in gnome-terminal</comment>
+    <requestid>210123</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>be005b36f0697c9f76d142a21f86b0be</srcmd5>
+    <version>4.2.8.3</version>
+    <time>1392447838</time>
+    <user>coolo</user>
+    <comment>- Fix *-32bit post and postun calls for gtk-query-immodules-2 on
+  openSUSE 13.1 and later (bnc#845860) (forwarded request 222319 from tiwai)</comment>
+    <requestid>222325</requestid>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>e41cf4449203b1204d18cfe164f025d7</srcmd5>
+    <version>4.2.8.3</version>
+    <time>1392962127</time>
+    <user>coolo</user>
+    <comment>Ensure COPYING is installed</comment>
+    <requestid>223203</requestid>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>1834c7da59d00c8b1797c1625db86947</srcmd5>
+    <version>4.2.8.3</version>
+    <time>1398434945</time>
+    <user>coolo</user>
+    <comment>revert (forwarded request 230841 from MargueriteSu)</comment>
+    <requestid>230842</requestid>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>13edb13fea6e5ae0572ae2adae0926f5</srcmd5>
+    <version>4.2.8.3</version>
+    <time>1399031722</time>
+    <user>coolo</user>
+    <comment> (forwarded request 232326 from MargueriteSu)</comment>
+    <requestid>232327</requestid>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>57b9e0579713216f78679138a342cb1f</srcmd5>
+    <version>4.2.8.3</version>
+    <time>1399545486</time>
+    <user>coolo</user>
+    <comment>update previous patch to fix bnc#875890, back port from upstream (forwarded request 232987 from dliang)</comment>
+    <requestid>232988</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a304ceaee430aac8e0e80d8754f08123</srcmd5>
+    <version>4.2.8.4</version>
+    <time>1402403932</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236648</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>2feae4bda6624d6c884afa770b2e0b10</srcmd5>
+    <version>4.2.8.4</version>
+    <time>1407744446</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244028</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>2feae4bda6624d6c884afa770b2e0b10</srcmd5>
+    <version>4.2.8.4</version>
+    <time>1409300859</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f56a07fecb47a5bd6b5d82b38ba6091e</srcmd5>
+    <version>4.2.8.5</version>
+    <time>1411370634</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250313</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>147ba5e05be30132a1a3692dae52a6ea</srcmd5>
+    <version>4.2.8.5</version>
+    <time>1415664650</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260517</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>4657b44b2a59bbcf20130650e824c937</srcmd5>
+    <version>4.2.8.5</version>
+    <time>1416347227</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261996</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>ab2a4800b1c9b733194f651d64ad6d83</srcmd5>
+    <version>4.2.8.5</version>
+    <time>1425031809</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287923</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>955d9776075fc8d240640e9f65d7c58f</srcmd5>
+    <version>4.2.8.6</version>
+    <time>1428391779</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294596</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>562608db70bba3660434c8f6c296b89e</srcmd5>
+    <version>4.2.9</version>
+    <time>1433232512</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309527</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>d3d7a9c4d59e0006268b096512dbfcc0</srcmd5>
+    <version>4.2.9</version>
+    <time>1439274437</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321710</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>f4af9ef95ed797b68e4a60ac370c99b7</srcmd5>
+    <version>4.2.9</version>
+    <time>1444130747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>335646</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>4c9536872181f856daa99c2c4d3773bd</srcmd5>
+    <version>4.2.9</version>
+    <time>1445860131</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix logging not to include the build path (boo#951602):
+  fcitx-use-basename-for-log.patch
+
+- Several fixes and cleanup for starting fcitx on GNOME on Leap
+  (boo#947576,boo#942816)
+  * Remove the superfluous manual dbus-launch from xim script
+  * Use xdg autostart for GNOME, KDE, LXDE and XFCE;
+    fcitx-autostart script is also modified to check $INPUT_METHOD:
+    fcitx-autostart-check-INPUT_METHOD.patch 
+  * Delay start of fcitx daemon a bit, too</comment>
+    <requestid>340485</requestid>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>0b9057116bb59a0dee1178b9e6535feb</srcmd5>
+    <version>4.2.9</version>
+    <time>1448957988</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346836</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>7eedcc5ddb90f54578c6bf599ce2b848</srcmd5>
+    <version>4.2.9.1</version>
+    <time>1450955831</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350454</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>af2cc6949fc12f275de1f051a1148aea</srcmd5>
+    <version>4.2.9.1</version>
+    <time>1455610709</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358909</requestid>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>769172573b700e9d5fef70082cfa626e</srcmd5>
+    <version>4.2.9.1</version>
+    <time>1456821935</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362888</requestid>
+  </revision>
+  <revision rev="54" vrev="4">
+    <srcmd5>affcd55001fe360a76b91e118094ad17</srcmd5>
+    <version>4.2.9.1</version>
+    <time>1457353664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>366078</requestid>
+  </revision>
+  <revision rev="55" vrev="5">
+    <srcmd5>9ff4c601303d152b3745c1087359f946</srcmd5>
+    <version>4.2.9.1</version>
+    <time>1471009447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>418801</requestid>
+  </revision>
+  <revision rev="56" vrev="6">
+    <srcmd5>9eefe4b6a4f28d484f91afd82891f38b</srcmd5>
+    <version>4.2.9.1</version>
+    <time>1479229278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440263</requestid>
+  </revision>
+  <revision rev="57" vrev="7">
+    <srcmd5>4e88124ca2ad5e1f57f0d6a4c062d267</srcmd5>
+    <version>4.2.9.1</version>
+    <time>1493579403</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491015</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>680c62eb13ffea0abe16b1c94a995f24</srcmd5>
+    <version>4.2.9.5</version>
+    <time>1512378017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547516</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>f310f6bcc74f8a05d513a3cfaa640062</srcmd5>
+    <version>4.2.9.5</version>
+    <time>1519902307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580602</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>41eae0378cab23a092f901882d7d8959</srcmd5>
+    <version>4.2.9.6</version>
+    <time>1522702062</time>
+    <user>dimstar_suse</user>
+    <comment>- update 4.2.9.6
+  * [ipcportal] close connection first
+  * [gtk] workaround libreoffice surrounding text issue
+  * decrease the length of clipboard limit to 256 bytes
+  * [gtk] use symbolic color name to lookup selected color 
+- change fcitx-gtk2 and fcitx-qt4 from Requires to Recommends
+- add fcitx-cmake-3.1.patch, downgrade cmake requirement to 3.1
+  again for Leap
+</comment>
+    <requestid>592248</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>9d0cb8638841f0bc9e07cfb9dcb1409b</srcmd5>
+    <version>4.2.9.6</version>
+    <time>1566913819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726003</requestid>
+  </revision>
+</revisionlist>

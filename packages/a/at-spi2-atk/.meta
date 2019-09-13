@@ -1,0 +1,6 @@
+<package name="at-spi2-atk" project="openSUSE:Factory">
+  <title>Assistive Technology Service Provider Interface - GTK+ module</title>
+  <description>AT-SPI is a general interface for applications to make use of the
+accessibility toolkit. This version is based on dbus.</description>
+  <devel project="GNOME:Factory" package="at-spi2-atk"/>
+</package>

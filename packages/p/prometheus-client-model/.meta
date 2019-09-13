@@ -1,0 +1,6 @@
+<package name="prometheus-client-model" project="openSUSE:Factory">
+  <title>prometheus-client-model</title>
+  <description>Data model artifacts for Prometheus</description>
+  <devel project="devel:languages:go" package="prometheus-client-model"/>
+  <url>https://github.com/prometheus/client_model</url>
+</package>

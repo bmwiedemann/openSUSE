@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49fa417baad420bdae96cdf6bac907ae</srcmd5>
+    <version>11.1</version>
+    <time>1222261542</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6dbcd90c05ea9fc853cd4c7e3b7992ec</srcmd5>
+    <version>11.1</version>
+    <time>1223301746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6dbcd90c05ea9fc853cd4c7e3b7992ec</srcmd5>
+    <version>11.1</version>
+    <time>1223301746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>093b8358adf61971dee9c998c14ff87e</srcmd5>
+    <version>11.1</version>
+    <time>1268923111</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>36599d19238bc9069c9906d1de2d7b68</srcmd5>
+    <version>11.3</version>
+    <time>1276095378</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/branding-upstream based on submit request 41189 from user coolo
+</comment>
+    <requestid>41189</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>36599d19238bc9069c9906d1de2d7b68</srcmd5>
+    <version>11.3</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>36599d19238bc9069c9906d1de2d7b68</srcmd5>
+    <version>11.3</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f006f04787b7e7f974a5a62206dc5787</srcmd5>
+    <version>11.4</version>
+    <time>1290631145</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53890 from user coolo
+</comment>
+    <requestid>53890</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f12d979e42d600a36d08cf4ade5e6426</srcmd5>
+    <version>11.4</version>
+    <time>1290631153</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53890
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>f12d979e42d600a36d08cf4ade5e6426</srcmd5>
+    <version>11.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>791d792ea0ac8515d9540039feb19ec7</srcmd5>
+    <version>12.1</version>
+    <time>1316616933</time>
+    <user>saschpe</user>
+    <comment>- bump version to 12.1
+
+- Remove redundant tags/sections from specfile</comment>
+    <requestid>83855</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>791d792ea0ac8515d9540039feb19ec7</srcmd5>
+    <version>12.1</version>
+    <time>1319181794</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>eeb6c5d93b263b7e5ec9b88305f3f55a</srcmd5>
+    <version>12.1</version>
+    <time>1323190894</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>eeb6c5d93b263b7e5ec9b88305f3f55a</srcmd5>
+    <version>12.1</version>
+    <time>1340183212</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>eeb6c5d93b263b7e5ec9b88305f3f55a</srcmd5>
+    <version>12.1</version>
+    <time>1359108714</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4886edc6daf8c904d1c1f05752dce709</srcmd5>
+    <version>12.3</version>
+    <time>1360075271</time>
+    <user>coolo</user>
+    <comment>- bump version to 12.3</comment>
+    <requestid>151278</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7f1884cc46ddf02d758d5d3af308d7ca</srcmd5>
+    <version>12.3</version>
+    <time>1378293432</time>
+    <user>coolo</user>
+    <comment>- Rename branding file to SUSE-brand (FATE#316269). (forwarded request 197178 from sbrabec)</comment>
+    <requestid>197342</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>7f1884cc46ddf02d758d5d3af308d7ca</srcmd5>
+    <version>12.3</version>
+    <time>1379662054</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>7f1884cc46ddf02d758d5d3af308d7ca</srcmd5>
+    <version>12.3</version>
+    <time>1409300581</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

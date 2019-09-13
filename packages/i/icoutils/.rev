@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>23e10cb6d4ec33a1e325c68f64baa286</srcmd5>
+    <version>0.29.1</version>
+    <time>1302769362</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66895 from user babelworx
+</comment>
+    <requestid>66895</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3b46f8620519184585439b476f2e0e04</srcmd5>
+    <version>0.29.1</version>
+    <time>1302769375</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66895
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>63fa466d31178da9e4ec5d4180d7220d</srcmd5>
+    <version>0.29.1</version>
+    <time>1307431821</time>
+    <user>saschpe</user>
+    <comment>use full URL for source; correct 'suse_version' macro usage</comment>
+    <requestid>72838</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>48327dacff4584e1c3d03d60a3fbc085</srcmd5>
+    <version>0.29.1</version>
+    <time>1307431836</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72838
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>48327dacff4584e1c3d03d60a3fbc085</srcmd5>
+    <version>0.29.1</version>
+    <time>1319181983</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>b074b678d30aded6623b52f71fc4aff9</srcmd5>
+    <version>0.29.1</version>
+    <time>1324458020</time>
+    <user>coolo</user>
+    <comment>clean up spec</comment>
+    <requestid>96847</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>b074b678d30aded6623b52f71fc4aff9</srcmd5>
+    <version>0.29.1</version>
+    <time>1340183454</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>48b1ad1d5bc7f32877126eaf76ae42a9</srcmd5>
+    <version>0.30.0</version>
+    <time>1356097287</time>
+    <user>coolo</user>
+    <comment>update to 0.30.0</comment>
+    <requestid>146232</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>48b1ad1d5bc7f32877126eaf76ae42a9</srcmd5>
+    <version>0.30.0</version>
+    <time>1359109072</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>acb61824690ad14f56bfa7ee429f620c</srcmd5>
+    <version>0.31.0</version>
+    <time>1372686907</time>
+    <user>coolo</user>
+    <comment>update to 0.31.0</comment>
+    <requestid>181545</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>acb61824690ad14f56bfa7ee429f620c</srcmd5>
+    <version>0.31.0</version>
+    <time>1379662656</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>acb61824690ad14f56bfa7ee429f620c</srcmd5>
+    <version>0.31.0</version>
+    <time>1409301212</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>48984cde36d26119c3059bd83e0059a6</srcmd5>
+    <version>0.31.1</version>
+    <time>1484474618</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449732</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d32601568eb91e121135c548bfe7bbe3</srcmd5>
+    <version>0.31.3</version>
+    <time>1502011639</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512721</requestid>
+  </revision>
+</revisionlist>

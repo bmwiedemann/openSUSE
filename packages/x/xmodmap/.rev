@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d846ff7574395e2382f6f255a432994</srcmd5>
+    <version>1.0.7</version>
+    <time>1336471558</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115476</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2d846ff7574395e2382f6f255a432994</srcmd5>
+    <version>1.0.7</version>
+    <time>1340184376</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>2d846ff7574395e2382f6f255a432994</srcmd5>
+    <version>1.0.7</version>
+    <time>1359110666</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>176e3e7222d7602ab7160981caed18ef</srcmd5>
+    <version>1.0.8</version>
+    <time>1379076441</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 1.0.8 (forwarded request 198765 from Zaitor)</comment>
+    <requestid>198903</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>176e3e7222d7602ab7160981caed18ef</srcmd5>
+    <version>1.0.8</version>
+    <time>1379665096</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>176e3e7222d7602ab7160981caed18ef</srcmd5>
+    <version>1.0.8</version>
+    <time>1409303782</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>67ff2b5f94ccd1b0bb50a2718a3511d3</srcmd5>
+    <version>1.0.9</version>
+    <time>1430132353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.9:
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Add -version option to print program version
+  * Print which option was in error along with usage message
+  * Avoid null pointer use if malloc() fails
+  * Remove unneeded casts on malloc, realloc, and free calls</comment>
+    <requestid>303791</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d30a352a366f8f9838787ec13990a55b</srcmd5>
+    <version>1.0.10</version>
+    <time>1551029853</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.10
+  * This release provides a man page update and some small build
+    fixes &amp; janitorial cleanups.</comment>
+    <requestid>677967</requestid>
+  </revision>
+</revisionlist>

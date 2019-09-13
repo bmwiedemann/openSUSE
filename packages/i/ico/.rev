@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5282cdaaba5aaa7ad18d5a61f82b380b</srcmd5>
+    <version>1.0.3</version>
+    <time>1336471001</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115337</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5282cdaaba5aaa7ad18d5a61f82b380b</srcmd5>
+    <version>1.0.3</version>
+    <time>1340183454</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b53810da0e2fb1bc6d72005554197624</srcmd5>
+    <version>1.0.4</version>
+    <time>1358865482</time>
+    <user>coolo</user>
+    <comment>Update to version 1.0.4 (forwarded request 149193 from Zaitor)</comment>
+    <requestid>149360</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b53810da0e2fb1bc6d72005554197624</srcmd5>
+    <version>1.0.4</version>
+    <time>1359109071</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b53810da0e2fb1bc6d72005554197624</srcmd5>
+    <version>1.0.4</version>
+    <time>1379662655</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>b53810da0e2fb1bc6d72005554197624</srcmd5>
+    <version>1.0.4</version>
+    <time>1409301211</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>218d45c8612712163485d6ccafd09794</srcmd5>
+    <version>1.0.5</version>
+    <time>1524144504</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.5
+  * autogen.sh changes
+  * config: Add missing AC_CONFIG_SRCDIR
+  * configure: Drop AM_MAINTAINER_MODE
+  * Combine usage message array into single string
+  * Print which option was in error along with usage message
+  * Add -version option to print program version
+  * Make polygon info const - moves 22k from .data to .rodata
+  * Convert icoFatal() to be a varargs function
+  * Add -version to synopsis in man page
+  * Fix more sign-compare warnings</comment>
+    <requestid>593758</requestid>
+  </revision>
+</revisionlist>

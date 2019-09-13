@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>042b9423a9c5c5c8612f0084c5203666</srcmd5>
+    <version>1.7.0</version>
+    <time>1507280139</time>
+    <user>dimstar_suse</user>
+    <comment>Don't conflict with files from java-1_7_0-openjdk-headless</comment>
+    <requestid>531533</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>97e84a27bdd6dccca7f24c8d6e7ef343</srcmd5>
+    <version>1.7.0</version>
+    <time>1526022871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605659</requestid>
+  </revision>
+</revisionlist>

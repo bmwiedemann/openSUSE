@@ -1,0 +1,345 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cdf21731cd304065a5ba46cd89577fea</srcmd5>
+    <version>11.83</version>
+    <time>1168902683</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="38">
+    <srcmd5>7cd8c875cf5c0b39ba6f1997845289f5</srcmd5>
+    <version>11.83</version>
+    <time>1172922399</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="48">
+    <srcmd5>a3c0640354556a327cfbb1403eac82f0</srcmd5>
+    <version>11.83</version>
+    <time>1177685866</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="49">
+    <srcmd5>94d072bdf27fb0d9f6cd3def96984d67</srcmd5>
+    <version>11.83</version>
+    <time>1177840527</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>72785d4f1a517dca39c17cf844b54557</srcmd5>
+    <version>11.85</version>
+    <time>1205171202</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>06309fbe81b5f44fac71a0cafe0acbb7</srcmd5>
+    <version>11.85</version>
+    <time>1205251481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>d84df79cb69b451fe7edccbeece44484</srcmd5>
+    <version>11.85</version>
+    <time>1205887693</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="88">
+    <srcmd5>d84df79cb69b451fe7edccbeece44484</srcmd5>
+    <version>11.85</version>
+    <time>1205887693</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="89">
+    <srcmd5>e3eb6eaadacf9f16095184ecfbee9082</srcmd5>
+    <version>11.85</version>
+    <time>1245338283</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="91">
+    <srcmd5>e3eb6eaadacf9f16095184ecfbee9082</srcmd5>
+    <version>11.85</version>
+    <time>1245338283</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="92">
+    <srcmd5>144fcccefb7353c19cc889cbfcb17031</srcmd5>
+    <version>11.85</version>
+    <time>1268923451</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="94">
+    <srcmd5>144fcccefb7353c19cc889cbfcb17031</srcmd5>
+    <version>11.85</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="95">
+    <srcmd5>144fcccefb7353c19cc889cbfcb17031</srcmd5>
+    <version>11.85</version>
+    <time>1278678573</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4ba52ac8b613621de178b2bc28e9041b</srcmd5>
+    <version>11.86</version>
+    <time>1279920050</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs-auctex based on submit request 43610 from user WernerFink
+</comment>
+    <requestid>43610</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>31afeb58b1d2e3b0951912b5fe89200c</srcmd5>
+    <version>11.86</version>
+    <time>1280742494</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs-auctex based on submit request 43943 from user WernerFink
+</comment>
+    <requestid>43943</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>92b00b81a582dd9942037fd039fc8527</srcmd5>
+    <version>11.86</version>
+    <time>1281660238</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs-auctex based on submit request 45455 from user WernerFink
+</comment>
+    <requestid>45455</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>08a5d5188c9e29310df031aa1fe07480</srcmd5>
+    <version>11.86</version>
+    <time>1287010466</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs-auctex based on submit request 50473 from user WernerFink
+</comment>
+    <requestid>50473</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>08a5d5188c9e29310df031aa1fe07480</srcmd5>
+    <version>11.86</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>28b6831c560bc4c97bcf92ee1431e59f</srcmd5>
+    <version>11.86</version>
+    <time>1316680972</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83418 from jengelh)</comment>
+    <requestid>84202</requestid>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>28b6831c560bc4c97bcf92ee1431e59f</srcmd5>
+    <version>11.86</version>
+    <time>1319181864</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>99c81c893c770c8adc0013f8e8c0da97</srcmd5>
+    <version>11.86</version>
+    <time>1323191283</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="13">
+    <srcmd5>99c81c893c770c8adc0013f8e8c0da97</srcmd5>
+    <version>11.86</version>
+    <time>1340183303</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>4a8a1599fa0fc33f00c248cf1fd72875</srcmd5>
+    <version>11.86</version>
+    <time>1343134692</time>
+    <user>coolo</user>
+    <comment>- Use texlive-texinfo for build and add also all LaTeX styles to
+  be scanned during AucTeX build.
+- Use texinfo *and* makeinfo for build as both are required</comment>
+    <requestid>128749</requestid>
+  </revision>
+  <revision rev="24" vrev="16">
+    <srcmd5>4a8a1599fa0fc33f00c248cf1fd72875</srcmd5>
+    <version>11.86</version>
+    <time>1359108846</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="17">
+    <srcmd5>ce6f9af1676fd045e68625f4f0a9ea86</srcmd5>
+    <version>11.86</version>
+    <time>1362118637</time>
+    <user>coolo</user>
+    <comment>- Make dinbrief work again</comment>
+    <requestid>156135</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5fe486f60a87ad49e268d0643b965f49</srcmd5>
+    <version>11.87</version>
+    <time>1370581080</time>
+    <user>coolo</user>
+    <comment>- Update to auctex 11.87
+  * Includes the preview fix for ghostscript
+  * Includes the changes for font-late.elc
+- Remove auctex-11.86-font-latex.5.194.patch
+
+- Add patch auctex-11.86-font-latex.5.194.patch from upstream to
+  make GNU emacs 24.3 silent about font-late.elc (reported by
+  Johannes Roth)
+
+- auctex: Version 9.5a für GNU-emacs und X-emacs</comment>
+    <requestid>177896</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>76d9a55eef2617828f587c2210e48e3c</srcmd5>
+    <version>11.87</version>
+    <time>1371456222</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>178972</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>76d9a55eef2617828f587c2210e48e3c</srcmd5>
+    <version>11.87</version>
+    <time>1379662288</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>dd5c89fb6093abbf2979fac95b53fa15</srcmd5>
+    <version>11.87</version>
+    <time>1380188582</time>
+    <user>coolo</user>
+    <comment>- Make it build again as we have now a site-start.d below site-lisp</comment>
+    <requestid>200524</requestid>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>dd5c89fb6093abbf2979fac95b53fa15</srcmd5>
+    <version>11.87</version>
+    <time>1409300822</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="8">
+    <srcmd5>4de84e5c47bbc03fc543c90256902633</srcmd5>
+    <version>11.87</version>
+    <time>1413263559</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255990</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>abe40d52843e55f640994ed834f56442</srcmd5>
+    <version>11.89</version>
+    <time>1449687090</time>
+    <user>dimstar_suse</user>
+    <comment>Fix last try.</comment>
+    <requestid>347501</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>c25966ade01d192e0eeab005629c7c52</srcmd5>
+    <version>11.89</version>
+    <time>1475242376</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>430594</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ca638cfc74b8ed2bfabf37462ee6fb89</srcmd5>
+    <version>11.90</version>
+    <time>1498840947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.90
+   * In addition to the completion performed by 'TeX-complete-symbol',
+     AUCTeX now also supports the new Emacs standard completion-at-point
+     facility (see the Emacs command 'completion-at-point').  This also
+     means that modern completion UIs like company-mode work out of the
+     box in TeX and LaTeX buffers.
+   * Completion is now aware of being inside a math environment and then
+     completes math macros.
+   * AUCTeX is able to display several levels of super- and subscripts,
+     each one raised above and a bit smaller than its basis.  For this
+     feature, have a look at the customize options
+     'font-latex-fontify-script' (especially the new values
+     'multi-level' and 'invisible') and
+     'font-latex-fontify-script-max-level'.  Also, the script characters
+     '^' and '_' are also fontified with a special face named
+     'font-latex-script-char-face'.
+   * Parsing of format specification in various tabular environments has
+     been improved.  The function 'LaTeX-insert-item' ('C-c &lt;LFD&gt;')
+     inserts suitable number of ampersands for '*{num}{cols}'
+     constructs.  Style files for LaTeX packages 'tabularx', 'tabulary',
+     'longtable', 'dcolumn' and 'siunitx' are adapted to take advantage
+     of this improvement.
+   * AUCTeX has a new Ispell dictionary 'tex-ispell.el' for macros and
+     environments which will be skipped during spell checking.  The
+     activiation of this feature is controlled by a new customize option
+     'TeX-ispell-extend-skip-list', which is set to 't' and activated by
+     default.
+   * AUCTeX has a new customize option 'TeX-raise-frame-function' that
+     is currently only used by Evince and Atril inverse search to raise
+     the Emacs frame.</comment>
+    <requestid>506982</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4c5b9c2c63b25cf835b4797e7eb222a2</srcmd5>
+    <version>12.1</version>
+    <time>1524238161</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.1 due bug boo#1088548
+  * AUCTeX now requires GNU Emacs 24 or higher.  Support for XEmacs has
+  * Besides the change in the supported version of Emacs, there has
+    been no functional change in this release, which is equivalent to
+    version 11.92.
+  * preview-latex is compatible with Ghostscript 9.22 where the
+    operator '.runandhide' is removed.  All occurrences of
+    '.runandhide' in preview-latex are replaced by alternative code
+    making it work with Ghostscript 9.22 again.
+  * AUCTeX has a new customize option
+    'TeX-math-input-method-off-regexp'.  When you begin to input a math
+    formula, the current input method is turned off if its name matches
+    this regular expression.
+  * The window system focus is pulled back to Emacs when viewing with
+    evince-compatible viewers if a new customize option
+    'TeX-view-evince-keep-focus' is non-nil.
+  * The usual dose of bug fixes was administered.
+  * Now AUCTeX has a logo.  The LaTeX code to create it is available in
+    the 'etc/' directory of the package.
+  * Add support for 'upmendex', an extension of 'makeindex' capable of
+    sorting indexes by unicode based ICU.
+  * Fix preview-latex to interact correctly with Japanese LaTeX.  The
+    parsing routine was made robust not to be confused by the 7-bit
+    encoding of Japanese text and the necessary option to LaTeX command
+    is kept even when preamble caching is enabled.
+  * The new &quot;Glossaries&quot; entry in 'TeX-command-list' runs the command
+    'makeglossaries'.
+  * Fontification of control symbols has been improved.  Characters
+    defined in 'font-latex-match-simple-exclude-list' do not receive
+    any fontification.  In DocTeX mode, the character '_' is removed</comment>
+    <requestid>597702</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>35f1973038a862c60a9c690c280f7ecc</srcmd5>
+    <version>12.1</version>
+    <time>1532528063</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches/commits from upstream utf8-names-3b1ffcd8.patch and
+  utf8-names-a8ea1273.patch to be able handle files names with
+  UTF-8 characters as well</comment>
+    <requestid>625210</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>08a7276b250aa5f1c2234ed76d39a0b5</srcmd5>
+    <version>12.1</version>
+    <time>1561195492</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the two last upstream commits by adding patch
+  utf8-names-fix-boo1135326.patch which is kind of a backport for
+  bug boo#1135326</comment>
+    <requestid>711321</requestid>
+  </revision>
+</revisionlist>

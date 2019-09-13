@@ -1,0 +1,18 @@
+<package name="python-wsproto" project="openSUSE:Factory">
+  <title>WebSockets state-machine based protocol implementation</title>
+  <description>This module contains a pure-Python implementation of a WebSocket
+protocol stack. It's written from the ground up to be embeddable in
+whatever program you choose to use, ensuring that you can
+communicate via WebSockets, as defined in RFC6455
+&lt;https://tools.ietf.org/html/rfc6455&gt;, regardless of your
+programming paradigm.
+
+This module does not provide a parsing layer, a network layer, or
+any rules about concurrency. Instead, it's a purely in-memory
+solution, defined in terms of data actions and WebSocket frames.
+RFC6455 and Compression Extensions for WebSocket via RFC7692
+&lt;https://tools.ietf.org/html/rfc7692&gt; are fully supported.
+
+</description>
+  <devel project="devel:languages:python" package="python-wsproto"/>
+</package>

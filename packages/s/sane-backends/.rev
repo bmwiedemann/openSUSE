@@ -1,0 +1,649 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>fa7d20088efd3b93e1a287e662de9871</srcmd5>
+    <version>1.0.18</version>
+    <time>1172443080</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="15">
+    <srcmd5>32e81c0a0774f9cec2bb443bc0fd027b</srcmd5>
+    <version>1.0.18</version>
+    <time>1177196555</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="34">
+    <srcmd5>f395bb6b7bd4e4828eece12a64f53850</srcmd5>
+    <version>1.0.18</version>
+    <time>1181086102</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="36">
+    <srcmd5>65e5fc885ede87ceca8ee7c0205f6692</srcmd5>
+    <version>1.0.18</version>
+    <time>1181214978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="41">
+    <srcmd5>af082ebf0087b15e5335fa096ebc6d23</srcmd5>
+    <version>1.0.18</version>
+    <time>1181830208</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="54">
+    <srcmd5>b1af4f027742d53f1625e93adadae465</srcmd5>
+    <version>1.0.18</version>
+    <time>1186173732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="57">
+    <srcmd5>4df06fdeac6bbb6dbf39f14d500f9346</srcmd5>
+    <version>1.0.18</version>
+    <time>1186758985</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="61">
+    <srcmd5>901423367f28d170652fffc76d0f7a47</srcmd5>
+    <version>1.0.18</version>
+    <time>1187202983</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="62">
+    <srcmd5>c9b265cb6905cd8e07afecc66d6e43d7</srcmd5>
+    <version>1.0.18</version>
+    <time>1201772655</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="63">
+    <srcmd5>901423367f28d170652fffc76d0f7a47</srcmd5>
+    <version>1.0.18</version>
+    <time>1201787588</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="125">
+    <srcmd5>a55805b84825d6ef644615f98dc1a3e5</srcmd5>
+    <version>1.0.18</version>
+    <time>1201907572</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>20a0031bf825576c23559b3bb33efb67</srcmd5>
+    <version>1.0.19</version>
+    <time>1204219463</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>65df35eb7ffe09a24e68117a28d5e13a</srcmd5>
+    <version>1.0.19</version>
+    <time>1205254997</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>865f4535a4b40581d58dee27ca8852f7</srcmd5>
+    <version>1.0.19</version>
+    <time>1205431572</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>e2104da55bc275aa570dceaae6794d3a</srcmd5>
+    <version>1.0.19</version>
+    <time>1205928640</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="24">
+    <srcmd5>1910703e998068076586716f17cceb20</srcmd5>
+    <version>1.0.19</version>
+    <time>1207695023</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="25">
+    <srcmd5>ba44abd0171c39a9728c407aab714f95</srcmd5>
+    <version>1.0.19</version>
+    <time>1207834296</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="26">
+    <srcmd5>b6930dc7683284e053902f99886526f6</srcmd5>
+    <version>1.0.19</version>
+    <time>1208028074</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="31">
+    <srcmd5>a46717c020fb11c5b3710d008012b75e</srcmd5>
+    <version>1.0.19</version>
+    <time>1208737942</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="43">
+    <srcmd5>457e315682c729c73bae263f79f2a5fb</srcmd5>
+    <version>1.0.19</version>
+    <time>1210942493</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="94">
+    <srcmd5>457e315682c729c73bae263f79f2a5fb</srcmd5>
+    <version>1.0.19</version>
+    <time>1210942493</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="95">
+    <srcmd5>884ef700de7f2d13f32a8dc62028f3fb</srcmd5>
+    <version>1.0.19</version>
+    <time>1224694012</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="96">
+    <srcmd5>6a2ec8323e8756f1cb53d47f968ae352</srcmd5>
+    <version>1.0.19</version>
+    <time>1225718463</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="97">
+    <srcmd5>f26fc11c24bc030f6c83a4b4dc1bf4a3</srcmd5>
+    <version>1.0.19</version>
+    <time>1227194604</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="98">
+    <srcmd5>7ef8a67942148c96c063326b0cdc2f7c</srcmd5>
+    <version>1.0.19</version>
+    <time>1228318796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="99">
+    <srcmd5>22e03a90d9f2f9901f09bac2caaf3eac</srcmd5>
+    <version>1.0.19</version>
+    <time>1228354573</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="100">
+    <srcmd5>2b250fc0ef1abcf81a55001d08db799d</srcmd5>
+    <version>1.0.19</version>
+    <time>1231952359</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="101">
+    <srcmd5>3e781c90a4432464c2ed7bee06b4683d</srcmd5>
+    <version>1.0.19</version>
+    <time>1232104410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="102">
+    <srcmd5>c5e64e657da797dd38db0545d6ef5688</srcmd5>
+    <version>1.0.19</version>
+    <time>1232717960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>552e7a0859a7ca4f6bbaca6eb41e3010</srcmd5>
+    <version>1.0.20</version>
+    <time>1244646803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>bcd4eb6f61cf9a43cbc0b48335edb557</srcmd5>
+    <version>1.0.20</version>
+    <time>1244822943</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>f290ca9a2354c84d3b220b97d980ebef</srcmd5>
+    <version>1.0.20</version>
+    <time>1248965998</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>2e5733c11aa94eae05a9961fc838210b</srcmd5>
+    <version>1.0.20</version>
+    <time>1250180380</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 17700 from user jsmeix
+</comment>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>9eda8aa56ca0edd0a9e3076cdf71f05e</srcmd5>
+    <version>1.0.20</version>
+    <time>1253561318</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 20607 from user jsmeix
+</comment>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>9a0200c2c6daf6d151cce46ae357c640</srcmd5>
+    <version>1.0.20</version>
+    <time>1254524717</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 21422 from user jsmeix
+</comment>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>b4610a68b41150440eb2f2b3b2c71c74</srcmd5>
+    <version>1.0.20</version>
+    <time>1255355001</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 22150 from user jsmeix
+</comment>
+  </revision>
+  <revision rev="37" vrev="9">
+    <srcmd5>b4610a68b41150440eb2f2b3b2c71c74</srcmd5>
+    <version>1.0.20</version>
+    <time>1255355001</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 22150 from user jsmeix
+</comment>
+  </revision>
+  <revision rev="38" vrev="10">
+    <srcmd5>cd4ac4bdafa6f1df119a21574efe84ee</srcmd5>
+    <version>1.0.20</version>
+    <time>1258376981</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 24458 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="39" vrev="11">
+    <srcmd5>9685bbfbaf1ac69066e9d307a0d12d2f</srcmd5>
+    <version>1.0.20</version>
+    <time>1264778290</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 30745 from user coolo
+</comment>
+  </revision>
+  <revision rev="40" vrev="12">
+    <srcmd5>56e624ce78a798123762812f81c2cb54</srcmd5>
+    <version>1.0.20</version>
+    <time>1265913855</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 32147 from user prusnak
+</comment>
+  </revision>
+  <revision rev="41" vrev="13">
+    <srcmd5>fd542f4f7cd9c6f0a80f3f4adb50a02e</srcmd5>
+    <version>1.0.20</version>
+    <time>1268926049</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="42" vrev="14">
+    <srcmd5>67c045a95f0d078f119e99d186db3a33</srcmd5>
+    <version>1.0.20</version>
+    <time>1272488978</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 39009 from user jsmeix
+</comment>
+    <requestid>39009</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9f9b7cadd439e08f3b800e6a86a61ae6</srcmd5>
+    <version>1.0.21</version>
+    <time>1273240106</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 39641 from user jsmeix
+</comment>
+    <requestid>39641</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>44901ca666ef65e3c574e34f092b2c42</srcmd5>
+    <version>1.0.21</version>
+    <time>1273876254</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 40020 from user prusnak
+</comment>
+    <requestid>40020</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>2507d0ecbe27b7d85f521d1b8781fa92</srcmd5>
+    <version>1.0.21</version>
+    <time>1277716732</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 41957 from user jsmeix
+</comment>
+    <requestid>41957</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>2507d0ecbe27b7d85f521d1b8781fa92</srcmd5>
+    <version>1.0.21</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>2507d0ecbe27b7d85f521d1b8781fa92</srcmd5>
+    <version>1.0.21</version>
+    <time>1278678617</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="48" vrev="6">
+    <srcmd5>108a38e52ae96c4ae1f34f52b1b79d4a</srcmd5>
+    <version>1.0.21</version>
+    <time>1284763558</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 48287 from user jsmeix
+</comment>
+    <requestid>48287</requestid>
+  </revision>
+  <revision rev="49" vrev="7">
+    <srcmd5>6b458ca6b37ee0b625802220df9dea65</srcmd5>
+    <version>1.0.21</version>
+    <time>1285280342</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/sane-backends based on submit request 48818 from user jsmeix
+</comment>
+    <requestid>48818</requestid>
+  </revision>
+  <revision rev="50" vrev="8">
+    <srcmd5>db0dabee8a27eb0924886a12f417344a</srcmd5>
+    <version>1.0.21</version>
+    <time>1291994733</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55390 from user jsmeix
+</comment>
+    <requestid>55390</requestid>
+  </revision>
+  <revision rev="51" vrev="9">
+    <srcmd5>c1347576d2b60779616ec72d4d207506</srcmd5>
+    <version>1.0.21</version>
+    <time>1291994754</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55390
+</comment>
+  </revision>
+  <revision rev="52" vrev="12">
+    <srcmd5>c1347576d2b60779616ec72d4d207506</srcmd5>
+    <version>1.0.21</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="53" vrev="8">
+    <srcmd5>55008df2318f5bc64e7a4736b5264973</srcmd5>
+    <version>1.0.22</version>
+    <time>1298028730</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61503 from user jsmeix
+</comment>
+    <requestid>61503</requestid>
+  </revision>
+  <revision rev="54" vrev="9">
+    <srcmd5>0fa2e7c0b8aa508a5a2c1d7e2c421154</srcmd5>
+    <version>1.0.22</version>
+    <time>1298028739</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61503
+</comment>
+  </revision>
+  <revision rev="55" vrev="10">
+    <srcmd5>4f65436be3981cfe908200d96f74f039</srcmd5>
+    <version>1.0.22</version>
+    <time>1298227878</time>
+    <user>lrupp</user>
+  </revision>
+  <revision rev="56" vrev="11">
+    <srcmd5>6bdd710211c9dec08ff0cab2c05b5e5c</srcmd5>
+    <version>1.0.22</version>
+    <time>1302163798</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66244 from user coolo
+</comment>
+    <requestid>66244</requestid>
+  </revision>
+  <revision rev="57" vrev="12">
+    <srcmd5>cedd439679207d66a9ef24ced2e640ad</srcmd5>
+    <version>1.0.22</version>
+    <time>1304334539</time>
+    <user>saschpe</user>
+    <comment>Fixed a typo in a comment in the spec file</comment>
+    <requestid>68716</requestid>
+  </revision>
+  <revision rev="58" vrev="13">
+    <srcmd5>fa3d99af085431af62eca6bb3359426c</srcmd5>
+    <version>1.0.22</version>
+    <time>1304334551</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68716
+</comment>
+  </revision>
+  <revision rev="59" vrev="14">
+    <srcmd5>acf6228f6b8b06acb5f7934f99524154</srcmd5>
+    <version>1.0.22</version>
+    <time>1317546852</time>
+    <user>lrupp</user>
+    <comment>Fixed one more issue in bnc#681146 starting at comment #38</comment>
+    <requestid>85487</requestid>
+  </revision>
+  <revision rev="60" vrev="16">
+    <srcmd5>acf6228f6b8b06acb5f7934f99524154</srcmd5>
+    <version>1.0.22</version>
+    <time>1319182444</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="61" vrev="17">
+    <srcmd5>1504b30d36aaf53d521e090eaf531852</srcmd5>
+    <version>1.0.22</version>
+    <time>1321886995</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92635 from coolo)</comment>
+    <requestid>92706</requestid>
+  </revision>
+  <revision rev="62" vrev="18">
+    <srcmd5>37ac3e476684bb1b241e700426a2d527</srcmd5>
+    <version>1.0.22</version>
+    <time>1323194507</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="63" vrev="19">
+    <srcmd5>b2cb3ba62d0b6470a1ef57955b98eafc</srcmd5>
+    <version>1.0.22</version>
+    <time>1328890780</time>
+    <user>coolo</user>
+    <comment>- add usb id for SCX4500W
+- fix usb device handling regression in xerox_mfp (bnc#745245) (forwarded request 102831 from lnussel)</comment>
+    <requestid>102868</requestid>
+  </revision>
+  <revision rev="64" vrev="20">
+    <srcmd5>d8c70b72dd6dc5923df33250d638ef8c</srcmd5>
+    <version>1.0.22</version>
+    <time>1332419814</time>
+    <user>coolo</user>
+    <comment>re-add support for USB scanners (forwarded request 110193 from jirislaby)</comment>
+    <requestid>110213</requestid>
+  </revision>
+  <revision rev="65" vrev="21">
+    <srcmd5>8fedd43f853b367618f0f246b6005778</srcmd5>
+    <version>1.0.22</version>
+    <time>1335190387</time>
+    <user>coolo</user>
+    <comment>Use libusb1 via BuildRequires libusb-1_0-devel (instead of using libusb0 via libusb-compat). BuildIgnore ghostscript-x11 which is not needed and blows up the build system. Minor cleanups in the spec file.</comment>
+    <requestid>114853</requestid>
+  </revision>
+  <revision rev="66" vrev="23">
+    <srcmd5>8fedd43f853b367618f0f246b6005778</srcmd5>
+    <version>1.0.22</version>
+    <time>1340184186</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="67" vrev="24">
+    <srcmd5>03271c5bcfe3c92b2d1af8c5da8ef819</srcmd5>
+    <version>1.0.22</version>
+    <time>1345809327</time>
+    <user>namtrac</user>
+    <comment>license update: GPL-2.0+ and SUSE-GPL-2.0+-with-sane-exception and SUSE-Public-Domain
+The LICENSE file in the sane-backends packages explains the licensing of the package. Added SUSE-GPL-2.0+-with-sane-exception to the spreadsheet linked from license.opensuse.org as that license is not yet upstream at http://www.spdx.org/licenses (hence the SUSE- proprietary extension) (forwarded request 131400 from babelworx)</comment>
+    <requestid>131401</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>dbc00676aed3a3b8afc40e16b7f1ff02</srcmd5>
+    <version>1.0.23</version>
+    <time>1350416026</time>
+    <user>coolo</user>
+    <comment>Version upgrade to 1.0.23 (forwarded request 138386 from &amp;lt;bound method Request.get_creator of &amp;lt;osc.core.Request instance at 0x84b954c&amp;gt;&amp;gt;)</comment>
+    <requestid>138388</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>4d1e020a37a911990b3c41a76d409f1f</srcmd5>
+    <version>1.0.23</version>
+    <time>1355146051</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>144289</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>d6e37a0a534ca302840f00d0933b3362</srcmd5>
+    <version>1.0.23</version>
+    <time>1357675971</time>
+    <user>coolo</user>
+    <comment>Adapt sane-backends to work correctly with existing yast2-scanner after iscan-free was dropped (bnc#788756) (forwarded request 145091 from &amp;lt;bound method Request.get_creator of &amp;lt;osc.core.Request instance at 0x84b954c&amp;gt;&amp;gt;)</comment>
+    <requestid>145092</requestid>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>8e2ef4ff05409b3d28fa32711c2d1a76</srcmd5>
+    <version>1.0.23</version>
+    <time>1359020447</time>
+    <user>coolo</user>
+    <comment>- require libv4l-devel to enable v4l backend (forwarded request 149626 from lnussel)</comment>
+    <requestid>149668</requestid>
+  </revision>
+  <revision rev="72" vrev="6">
+    <srcmd5>8e2ef4ff05409b3d28fa32711c2d1a76</srcmd5>
+    <version>1.0.23</version>
+    <time>1359110364</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="73" vrev="7">
+    <srcmd5>83bfe328401c480e1d91e1aa03f517e1</srcmd5>
+    <version>1.0.23</version>
+    <time>1362993911</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 157451 from coolo)</comment>
+    <requestid>157481</requestid>
+  </revision>
+  <revision rev="74" vrev="8">
+    <srcmd5>2d5e037910ea66cdd7151aa272367a9c</srcmd5>
+    <version>1.0.23</version>
+    <time>1365160544</time>
+    <user>coolo</user>
+    <comment>- fixed /etc/slp.reg.d/ ownership conflict, just have
+  it as %dir and the files as %config.
+  (see OBS RQ 162582 decline message)</comment>
+    <requestid>162716</requestid>
+  </revision>
+  <revision rev="75" vrev="10">
+    <srcmd5>2d5e037910ea66cdd7151aa272367a9c</srcmd5>
+    <version>1.0.23</version>
+    <time>1379664606</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="76" vrev="11">
+    <srcmd5>00d76fc3df38dda63c40e460220e4fe6</srcmd5>
+    <version>1.0.23</version>
+    <time>1380122403</time>
+    <user>coolo</user>
+    <comment>Please also copy to 13.1
+
+- workaround for hp scanjet 8200
+  As described in &lt;https://bugzilla.novell.com/show_bug.cgi?id=840443&gt;
+  when operating on a hp scanjet 8200 the avision driver gets stuck
+  in a loop trying to detect an ADF, even if none is present.
+  In order circumvent this issue, following workaround has been implemented:
+  1) create an option &quot;enforce-no-adf&quot; in the file avision.conf
+  2) patch the code in avision.c to make use of this option,
+     if the conditions that lead to the unsuccessful ADF search
+     (namely detection of NO ADF but reporting of SOME ADF type) is given.
+  Per default the new option is inactive by comment; activate at your own risk!
+  An upstream report was added to
+  &lt;https://alioth.debian.org/tracker/index.php?func=detail&amp;aid=314108&amp;group_id=30186&amp;atid=410366&gt;
+- created patch110 for avision.conf
+- created patch111 for avision.c
+- introduced patch110 and patch111 into sane-backends.spec</comment>
+    <requestid>200378</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>029c482523ba5ed84c03b410f6ae585f</srcmd5>
+    <version>1.0.24</version>
+    <time>1386156664</time>
+    <user>coolo</user>
+    <comment>Version upgrade to 1.0.24 (forwarded request 209260 from jsmeix)</comment>
+    <requestid>209261</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>029c482523ba5ed84c03b410f6ae585f</srcmd5>
+    <version>1.0.24</version>
+    <time>1409303310</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>129ff2ca7820be0bac8bb9667b538f72</srcmd5>
+    <version>1.0.24</version>
+    <time>1421959699</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281574</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>60bf258ae8c9da919fa982c285ce2757</srcmd5>
+    <version>1.0.25</version>
+    <time>1445287679</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>338428</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>0c1e9e7150372f7d661b1f0d3fe40318</srcmd5>
+    <version>1.0.25</version>
+    <time>1452721464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353171</requestid>
+  </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>78470d32925c03b64aac0fb477241714</srcmd5>
+    <version>1.0.25</version>
+    <time>1488558732</time>
+    <user>dimstar_suse</user>
+    <comment>Applied upstream CVE-2017-6318.patch (bsc#1027197) (forwarded request 460922 from jsmeix)</comment>
+    <requestid>460926</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>e0f0d2adc9e25791212cb8d89fafb803</srcmd5>
+    <version>1.0.27</version>
+    <time>1496821966</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>500054</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>df29a647d72d0163cb2f65da59e37636</srcmd5>
+    <version>1.0.27</version>
+    <time>1498202230</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504312</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>d550631ea951fa4ce7a79bc1b7907015</srcmd5>
+    <version>1.0.27</version>
+    <time>1509530872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537490</requestid>
+  </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>859c384274b85cf32b79e3bc3a26a1c0</srcmd5>
+    <version>1.0.27</version>
+    <time>1521904260</time>
+    <user>dimstar_suse</user>
+    <comment>Dropped libieee1284 support which is only needed for some parallel port scanners and fixed installation of systemd unit files (boo#1074054) (forwarded request 589779 from jsmeix)</comment>
+    <requestid>589780</requestid>
+  </revision>
+  <revision rev="87" vrev="5">
+    <srcmd5>6ae277d751eb730e0adfa2648db98cbd</srcmd5>
+    <version>1.0.27</version>
+    <time>1523956155</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed systemd unit file saned@.service (boo#1074054) (forwarded request 595947 from jsmeix)</comment>
+    <requestid>595948</requestid>
+  </revision>
+</revisionlist>

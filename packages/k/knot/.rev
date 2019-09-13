@@ -1,0 +1,333 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>901c924ab2af22a8827507bb160f98fe</srcmd5>
+    <version>1.0.6</version>
+    <time>1346488273</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>132137</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ee4f19fd25f8bb0d5ec0717fc645d043</srcmd5>
+    <version>1.1.2</version>
+    <time>1353787866</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.2:
+    Bugfixes:
+	* Fixed crash on reload when config contained duplicate zones.
+	* Fixed scheduling of transfers.
+	* Fixed debug message.
+- merge some changes from fedora spec file
+- remove unittest files, they don't belong in binary packages
+- depend on texinfo package to build the documentation
+
+- update to 1.1.1:
+    New features:
+        * Optionally disable ANY queries for authoritative answers.
+        * Dropping identical records in zone and incoming transfers.
+        * Support for '/' in zone names.
+        * Generating journal from reloaded zone (EXPERIMENTAL).
+        * Outgoing-only interfaces in configuration file.
+        * Following DNAME if the synthetized name is in the same zone.
+        * Signing SOA with TSIG queries when checking zone version with master.
+        * Improved compression of packets. Out-of-zone dnames present in RDATA
+          were not compressed.
+        * Slave zones are now automatically refreshed after startup.
+        * Proper response to IXFR/UDP query (returns SOA in Authority section).
+    Bugfixes:
+        * Crash when zone contained RRSIG signing a CNAME, but did not
+          contain the CNAME.
+        * Malformed packets parsing.
+        * Failed IXFR caused memory leaks.
+        * Failed IXFR might have resulted in inconsistent zone structures.
+        * Fixed answering to +dnssec queries when NSEC3 chain is corrupted.
+        * Fixed answering when transitioning from NSEC3 to NSEC.</comment>
+    <requestid>142523</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>718e5d45564cec40557cef99402ceb51</srcmd5>
+    <version>1.1.2</version>
+    <time>1354180397</time>
+    <user>coolo</user>
+    <comment>Require makeinfo instead of texinfo on newer openSUSE release. (forwarded request 142674 from a_jaeger)</comment>
+    <requestid>143404</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>718e5d45564cec40557cef99402ceb51</srcmd5>
+    <version>1.1.2</version>
+    <time>1359109197</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e747767b8d08e709cf9a505370d4cd7</srcmd5>
+    <version>1.1.99+1.2.0rc3</version>
+    <time>1363084256</time>
+    <user>coolo</user>
+    <comment>- Update to 1.2.0-rc3
+    New features:
+        * Dynamic updates, including forwarding (limited on signed zones)
+        * Updated remote control utility
+        * Configurable TCP timeouts
+        * LOC RR support
+	* Response rate limiting (see documentation)
+    Bugfixes:
+	* Fixed processing of some non-standard dnames.
+	* Correct checking of label length bounds in some cases. 
+	* More compliant rcodes in case of DDNS/TSIG failures.
+	* Correct processing of malformed DDNS prereq section.
+	* Fixed OpenBSD build
+	* Responses to ANY should contain RRSIGs</comment>
+    <requestid>158639</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6983ee4f3672327e4b9bb46f1bed58fb</srcmd5>
+    <version>1.1.99+1.2.0rc4</version>
+    <time>1364896863</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161760</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3117cbe8ca35e9ab7871d690c823523</srcmd5>
+    <version>1.2.0</version>
+    <time>1365791650</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>163548</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1f6232cc42fcace04bd7a694626aa711</srcmd5>
+    <version>1.3.1</version>
+    <time>1378748629</time>
+    <user>coolo</user>
+    <comment>- update to 1.3.1
+  * Faster zone parser
+  * Full support for EUI and ILNP resource records
+  * Lower memory footprint for large zones
+  * No compilation of zones
+  * Improved scheduling of zone transfers
+  * Logging of serials and timing information for zone transfers
+  * see NEWS or https://www.knot-dns.cz/ for details</comment>
+    <requestid>198038</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1f6232cc42fcace04bd7a694626aa711</srcmd5>
+    <version>1.3.1</version>
+    <time>1379662823</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8dea59a9d69e32d98c794f0ab8a4c349</srcmd5>
+    <version>1.3.3</version>
+    <time>1385489880</time>
+    <user>coolo</user>
+    <comment>- update to 1.3.3:
+  * New features:
+    Reduced memory usage
+    Improved performance
+    Experimental automatic DNSSEC signing
+    Refactored zone loading
+    Improved journal locking
+  * Bugfixes:
+    Fixed some race conditions
+    Various fixes in client utilities</comment>
+    <requestid>208524</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>45235519b4b71ead2f932cda2f021755</srcmd5>
+    <version>1.3.4</version>
+    <time>1387207939</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>211001</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9c5bac435d8dc435411814335f1caf91</srcmd5>
+    <version>1.4.0</version>
+    <time>1389208017</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>213108</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>14d77e434667982c4f678e520829d617</srcmd5>
+    <version>1.4.1</version>
+    <time>1390380234</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214614</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1dd0c03691590a14acf380ecc0a927f8</srcmd5>
+    <version>1.4.2</version>
+    <time>1391030151</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>215533</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>75c1bec38f2aeb83daa75501bb2e3722</srcmd5>
+    <version>1.4.3</version>
+    <time>1392832566</time>
+    <user>coolo</user>
+    <comment>I hope it's ok now with the patch name in changelog :)</comment>
+    <requestid>223044</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a37c7bcf393b978cc744ae87665ef0ef</srcmd5>
+    <version>1.4.4</version>
+    <time>1396008993</time>
+    <user>coolo</user>
+    <comment>- updated to 1.4.4
+  Features:
+        * Server is logging remote control commands
+        * 'knotc reload' doesn't refresh unchanged zones
+        * 'knotc -f refresh' forces zone retransfer
+  Bugfixes:
+        * Missing notifications after DDNS/automatic resign
+        * Zone is rebootstrapped if the zone file is unreadable
+        * Progressive bootstrap retry backoff 
+        * Zone file parser allows asterisk as part of the label
+        * Journal maximum entry size fixes
+        * Sign DNSKEYs in non-apex nodes as regular RR sets</comment>
+    <requestid>228060</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ebe6fa0e486abe5e522b557fefe92813</srcmd5>
+    <version>1.4.5</version>
+    <time>1400006669</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>233614</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d46c859b01a6ddbc2781dfc9fd739d67</srcmd5>
+    <version>1.4.7</version>
+    <time>1403686146</time>
+    <user>coolo</user>
+    <comment>- updated to 1.4.7:
+   * Fixed DDNS corner cases
+   * Fixed zone EXPIRE timer
+   * Fixed semantic checks false positives
+   * Fixed sending malformed IXFR with automatic DNSSEC
+   * Fixed NAPTR record serialization</comment>
+    <requestid>238505</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3f21dd100b8e7fc08bdb98b18c7b841f</srcmd5>
+    <version>1.5.0</version>
+    <time>1405404062</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>240892</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>3f21dd100b8e7fc08bdb98b18c7b841f</srcmd5>
+    <version>1.5.0</version>
+    <time>1409301407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e7abc2e83b9ae961a479630a443c8607</srcmd5>
+    <version>1.5.3</version>
+    <time>1411461768</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>251479</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>042fb1e688159e3bcee4ef6185b51209</srcmd5>
+    <version>1.6.0</version>
+    <time>1416425213</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.6.0
+  Bugfixes:
+   - Fix zone expiration when AXFR/IXFR is being refused by master
+   - Fix forced zone refresh on slave (knotc refresh -f)
+   - Persistent timers database opening after privileges has been dropped
+   - DNSSEC: RFC compliant processing of letter case in RDATA domain names
+   - EDNS: Return minimal error response for queries with unsupported version
+   - EDNS: Fix interpretation of Extended RCODE
+  Improvements:
+   - Maximal size of persistent timers database increased from 10 MB to 100 MB
+   - Added logging of persistent timers database errors
+  Features:
+   - Persistent timers for slave zones (expire, refresh, and flush)</comment>
+    <requestid>262211</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1d6d0e210e84c177bc41c902fffdf857</srcmd5>
+    <version>1.6.1</version>
+    <time>1420754546</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>280147</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>397b8d14569842ca5f007516de5aa8cf</srcmd5>
+    <version>1.6.1</version>
+    <time>1421959759</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282296</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fb23e68de0481eb40e92e8c590d96c06</srcmd5>
+    <version>1.6.2</version>
+    <time>1426174723</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290263</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7d90d4ec7792b082743fc70cee233b44</srcmd5>
+    <version>1.6.5</version>
+    <time>1441955092</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>330373</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b91db0b088e1a2a616ca6c2b70dc74ce</srcmd5>
+    <version>1.6.6</version>
+    <time>1449686974</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>347077</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3a5fdd838357206263fe86693ef4cbc1</srcmd5>
+    <version>1.6.7</version>
+    <time>1455790065</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>360054</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>53840fbb01d488cceec16becba3a62a2</srcmd5>
+    <version>1.6.7</version>
+    <time>1463652917</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>396539</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5fe0293431d2acca05111631cd7335b0</srcmd5>
+    <version>1.6.8</version>
+    <time>1497362921</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>503037</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>bc77bb181d286374217ffb207e9cd1b4</srcmd5>
+    <version>1.6.8</version>
+    <time>1515876441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563527</requestid>
+  </revision>
+</revisionlist>

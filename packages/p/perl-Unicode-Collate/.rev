@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fff01927602607548fbcabbf300fc32c</srcmd5>
+    <version>1.19</version>
+    <time>1498411247</time>
+    <user>dimstar_suse</user>
+    <comment>The perl-Unicode-Collate version &gt;= 1.18 is required by new biblatex-biber-2.7 used by TeXLive 2017
+but builtin version of current perl does not fit this!</comment>
+    <requestid>503942</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>80b48fe00f9397bf4d40aad9f8316f0b</srcmd5>
+    <version>1.19</version>
+    <time>1506955372</time>
+    <user>dimstar_suse</user>
+    <comment>- add no-dot-inc.patch to compile with perl 5.26
+  (https://rt.cpan.org/Public/Bug/Display.html?id=121664)</comment>
+    <requestid>528476</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>28363ad96fecd4248a0a482a194bf105</srcmd5>
+    <version>1.25</version>
+    <time>1524643174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598486</requestid>
+  </revision>
+</revisionlist>

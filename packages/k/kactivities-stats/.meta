@@ -1,0 +1,5 @@
+<package name="kactivities-stats" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="kactivities-stats"/>
+</package>

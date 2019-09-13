@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c340c15d804322cb30f6f57f1bca51d</srcmd5>
+    <version>3.3.7</version>
+    <time>1488559442</time>
+    <user>dimstar_suse</user>
+    <comment>package is required for crowbar (part of SUSE OpenStack Cloud)</comment>
+    <requestid>459479</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>18dcda75173a08cf3c640103e5348a5a</srcmd5>
+    <version>3.4.0</version>
+    <time>1551687552</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679515</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9b77be4c0b0f8ca1bfbd0f61525e6f79</srcmd5>
+    <version>3.4.1</version>
+    <time>1560970764</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705980</requestid>
+  </revision>
+</revisionlist>

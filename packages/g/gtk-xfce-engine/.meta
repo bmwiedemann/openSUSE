@@ -1,0 +1,9 @@
+<package name="gtk-xfce-engine" project="openSUSE:Factory">
+  <title>Xfce GTK+-2.0 Theme Engine</title>
+  <description>The Xfce GTK+-2.0 theme engine provides various different themes which allow
+for homogeneity in applications for both business and personal desktops.</description>
+  <devel project="X11:xfce" package="gtk-xfce-engine"/>
+  <build>
+    <disable/>
+  </build>
+</package>

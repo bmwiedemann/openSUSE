@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2eb5e1f06c2e3d46a7359f782cd5558d</srcmd5>
+    <version>1.0.11</version>
+    <time>1518601924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576317</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>06412733b74c375e5453f51f0f90793a</srcmd5>
+    <version>1.0.15</version>
+    <time>1525779412</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.15:
+  * Added applicationKeys parameter to add\_user (#549)
+  * travis: assure prereleases are build only on master
+  * Install tox-travis before using tox in the build
+  * Corrected coverage execution
+  * Add async support to fetch pages (#540)
+  * Add support for custom session cookies to JIRA (#460)
+  * Avoids AttributeError on Jira Error handling
+  * travis: use service account for pypi
+  * merge fixes develop branch
+  * travis: pypi upload fixes
+  * Implement cookie based authentication
+  * gitignore: correct amps pattern fix
+  * docs: replace issues shield badge
+  * docs: build fixes
+  * Fix README.rst images
+  * Fix setup.cfg: UnicodeDecodeError
+  * Add pbr &gt;= 3.0.0 as a module dependency
+  * Fix build scripts
+  * jirashell: Import InteractiveShellEmbed depending on IPython version
+  * Make OPTIONAL default and allowed value of mutual\_authentication
+  * Add testing section to contributions
+  * Update Contribution Guidlines to be more explicit
+  * Place imports on separate lines
+  * Touch ChangeLog To Fix PR Checks
+  * Fix Continuous Integration Testing
+  * Make Kerberos option mutual\_authentication configurable
+  * Accept custom authentication URL
+  * fixed linting errors
+  * Update client.py</comment>
+    <requestid>600976</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad15d0c993c716bc0bde6607393a9857</srcmd5>
+    <version>2.0.0</version>
+    <time>1544189841</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * fix pypi classifiers (#634)
+  * ResultList class to support the iterator interface
+  * Async improvement: Allow setting the number of worker threads for JIRA.\_fetch\_pages
+  * Add Group resource
+  * Changed fields type checks into single if/elif block following PR feedback
+  * Create copy of fields list in JIRA.search\_issues to prevent mutating the original list
+  * update pyyaml dependency
+  * build: cleanup
+  * Update Travis badge to travis.com
+  * avoid pycrypto dependency
+  * travis: fix deploy
+  * build: chore
+  * travis: publish workaround
+  * group\_members should return sorted user keys (#611)
+  * api: py37 support and rename async to async\_ (#604)
+  * Fix spelling error
+  * Passthrough states as a csv string
+  * Remove the email\_user method as it is obsolete
+  * Remove support for renaming users in Jira versions less than 6.0.0
+  * travis: remove test pypi server
+  * travis fixes (#608)
+  * fix travis
+  * Update README.rst
+  * Update README to reflect branch model
+  * travis fixes
+  * Adopt pre-commit hooks
+  * Add Bug and Feature Request Templates
+  * Fix cspell problems
+  * remove ordereddict requirement</comment>
+    <requestid>655762</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6706e19021e65a05e35b9eed9fe1cc34</srcmd5>
+    <version>2.0.0</version>
+    <time>1545648420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660481</requestid>
+  </revision>
+</revisionlist>

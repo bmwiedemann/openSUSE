@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f98f04616fbac764aa24b5ae682cf1b</srcmd5>
+    <version>0.0.5</version>
+    <time>1430246874</time>
+    <user>coolo</user>
+    <comment>Some more VPN options for NM</comment>
+    <requestid>295159</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>278b499c9a89588ffee1b0f0a80949e0</srcmd5>
+    <version>1.2.0</version>
+    <time>1474623173</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>426699</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>884d24d38aa7e5025564e907434f4e12</srcmd5>
+    <version>1.2.0</version>
+    <time>1520588484</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581401 from dimstar)</comment>
+    <requestid>582892</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>16f1864525c0457d4dde6026f3dae9b9</srcmd5>
+    <version>1.2.0</version>
+    <time>1526463596</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 596953 from dimstar)</comment>
+    <requestid>607005</requestid>
+  </revision>
+</revisionlist>

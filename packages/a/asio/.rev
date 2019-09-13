@@ -1,0 +1,188 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>2fd51bb2483dec1955113700131e52fa</srcmd5>
+    <version>1.0.0</version>
+    <time>1207708036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>41caf2417028a9d28babd74ccfa25df3</srcmd5>
+    <version>1.0.0</version>
+    <time>1218473187</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>da8bf19d8f51bd1562acfc99a18cb02a</srcmd5>
+    <version>1.2.0</version>
+    <time>1232034959</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>236cbdaa7b77fd93d07e579918344978</srcmd5>
+    <version>1.2.0</version>
+    <time>1240966160</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c24ac64d968cb2e2503d893cbe39c502</srcmd5>
+    <version>1.4.1</version>
+    <time>1243203414</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c24ac64d968cb2e2503d893cbe39c502</srcmd5>
+    <version>1.4.1</version>
+    <time>1243203414</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>63610058754da574aa8b40872bc7e07b</srcmd5>
+    <version>1.4.1</version>
+    <time>1268922933</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>63610058754da574aa8b40872bc7e07b</srcmd5>
+    <version>1.4.1</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>63610058754da574aa8b40872bc7e07b</srcmd5>
+    <version>1.4.1</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>63610058754da574aa8b40872bc7e07b</srcmd5>
+    <version>1.4.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>de9676fd2d0f882c59d87bd3349ad982</srcmd5>
+    <version>1.5.3</version>
+    <time>1308899987</time>
+    <user>saschpe</user>
+    <comment>Version update to 1.5.3. (forwarded request 74396 from paskov)</comment>
+    <requestid>74401</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a22ad7d3794bf43ce16eb3c04431559a</srcmd5>
+    <version>1.5.3</version>
+    <time>1308899995</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74401
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c9a8c08f94ce7e7e9beeb2314757d6c9</srcmd5>
+    <version>1.5.3</version>
+    <time>1316439547</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Add missing make call
+- Use %_smp_mflags for parallel build (forwarded request 82775 from jengelh)</comment>
+    <requestid>82798</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>c9a8c08f94ce7e7e9beeb2314757d6c9</srcmd5>
+    <version>1.5.3</version>
+    <time>1319181776</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>b908a579a22e49b56c7f752234bc4602</srcmd5>
+    <version>1.5.3</version>
+    <time>1323190752</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>b908a579a22e49b56c7f752234bc4602</srcmd5>
+    <version>1.5.3</version>
+    <time>1340183182</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>b908a579a22e49b56c7f752234bc4602</srcmd5>
+    <version>1.5.3</version>
+    <time>1359108668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>b908a579a22e49b56c7f752234bc4602</srcmd5>
+    <version>1.5.3</version>
+    <time>1379661992</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4a0b1ff594b67f4b9a37fa77eb4414fe</srcmd5>
+    <version>1.10.1</version>
+    <time>1395148401</time>
+    <user>coolo</user>
+    <comment>Update to most recent stable version. The version currently in Factory is a development version. Actually I have no idea about compatibility but we might want to give it a try? (forwarded request 226328 from wrosenauer)</comment>
+    <requestid>226381</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>64b94455f8074901f343907224dfae69</srcmd5>
+    <version>1.10.2</version>
+    <time>1406645319</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242815</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>64b94455f8074901f343907224dfae69</srcmd5>
+    <version>1.10.2</version>
+    <time>1409300517</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e98988e9c848d04777d59b2c5a7d8b66</srcmd5>
+    <version>1.10.4</version>
+    <time>1419249269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>266077</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cdde23e689d413852b125ed63cf18a6f</srcmd5>
+    <version>1.11.0</version>
+    <time>1427109542</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292218</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>cdf1112b7e869a08dea6a88d5d49b8b6</srcmd5>
+    <version>1.11.0</version>
+    <time>1486046523</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453758</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>91acc773c5761ec4c4b6beefa0e69885</srcmd5>
+    <version>1.10.8</version>
+    <time>1513015034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555840</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ed0ea428bb1e5989649127d7d677ae2a</srcmd5>
+    <version>1.12.1</version>
+    <time>1524400876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599745</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e46915bd39c9efab5b2aa8aaf8f0a843</srcmd5>
+    <version>1.6e</version>
+    <time>1432799692</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>308409</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e7fa65ab7a94f60f5d7c83b119701233</srcmd5>
+    <version>1.6e</version>
+    <time>1505238809</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build in factory by adding the new float types</comment>
+    <requestid>521895</requestid>
+  </revision>
+</revisionlist>

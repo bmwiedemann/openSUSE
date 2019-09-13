@@ -1,0 +1,8 @@
+<package name="python-Genshi" project="openSUSE:Factory">
+  <title>A toolkit for generation of output for the web</title>
+  <description>Genshi is a Python library that provides an integrated set of
+components for parsing, generating, and processing HTML, XML or
+other textual content for output generation on the web. The major
+feature is a template language, which is heavily inspired by Kid.</description>
+  <devel project="devel:languages:python" package="python-Genshi"/>
+</package>

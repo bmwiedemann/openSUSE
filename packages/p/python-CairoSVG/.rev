@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58cc4ff297effed17424c73fbc75fe9c</srcmd5>
+    <version>2.1.3</version>
+    <time>1527605500</time>
+    <user>dimstar_suse</user>
+    <comment>SVG Converter for Cairo</comment>
+    <requestid>612557</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8b58a51dedd145a13dec03b7a22efdd4</srcmd5>
+    <version>2.1.3</version>
+    <time>1544726827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655391</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2f1cf2dc79c001a0dd1f72ebee18461c</srcmd5>
+    <version>2.3.0</version>
+    <time>1551386363</time>
+    <user>coolo</user>
+    <comment>- Update to 2.3.0:
+  * Drop Python 3.4 support
+  * Make text selectable on generated PDF files
+  * Don't inherit dx and dy attributes
+  * Fix support of alignment-baseline=&quot;hanging&quot;
+  * Fix backslashes in docstrings and comments
+  * Fix local anchors with files with no given URL
+  * Close VERSION's file descriptor
+  * Fix T commands used with previous relative commands in paths
+  * Use real functions for svg2* commands, improving IDE integration
+  * Handle image-rendering property
+  * Fix crash with some text samples
+  * Fix position of embedded svg tags with a viewbox not at position (0, 0)
+  * Add output-width and output-height options
+  * Handle references to inner document tags defined after the anchor
+  * Fix offsets for texts on paths
+- Run tests manualy reducing the test dependencies a bit</comment>
+    <requestid>674604</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d55ace5607ee165c07fabd52cdb8be97</srcmd5>
+    <version>2.3.1</version>
+    <time>1557083919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1:
+  * Fix relative paths on Windows</comment>
+    <requestid>699369</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>97c9677fd3ca6d00464488cd95f417a5</srcmd5>
+    <version>2.4.0</version>
+    <time>1559902684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0:
+  * Fix aspect and position when resizing root SVG tag
+  * Follow aspect and position hints when using forced output size</comment>
+    <requestid>707611</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c314b6a104f24cdc5cfe19023c7bc4a</srcmd5>
+    <version>1.0</version>
+    <time>1408960481</time>
+    <user>coolo</user>
+    <comment>New Package to parse bittorrent files.  Used by the computer forensic program plaso.</comment>
+    <requestid>246167</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4c314b6a104f24cdc5cfe19023c7bc4a</srcmd5>
+    <version>1.0</version>
+    <time>1409302821</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>175704dba6fa22c5bf45e05b63068bdf</srcmd5>
+    <version>1.2.0</version>
+    <time>1494938613</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494483</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>17d8c88a3634062d7130494f87516a67</srcmd5>
+    <version>1.2.0</version>
+    <time>1544726373</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653941</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3de36786e2d75590fda09c3023ab801b</srcmd5>
+    <version>2.0.0</version>
+    <time>1559837812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707409</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6812f7ec9e5daaeb768096851b853766</srcmd5>
+    <version>2.1.0</version>
+    <time>1560862609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708932</requestid>
+  </revision>
+</revisionlist>

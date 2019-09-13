@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>29b557c1d29746906d9c5dc628fad665</srcmd5>
+    <version>0.13</version>
+    <time>1325658445</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>98180</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>29b557c1d29746906d9c5dc628fad665</srcmd5>
+    <version>0.13</version>
+    <time>1340183880</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>29b557c1d29746906d9c5dc628fad665</srcmd5>
+    <version>0.13</version>
+    <time>1359109745</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fa283968a3186ceabb23ef57dd2ee7fe</srcmd5>
+    <version>0.18</version>
+    <time>1371140149</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 178001 from coolo)</comment>
+    <requestid>178041</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>fa283968a3186ceabb23ef57dd2ee7fe</srcmd5>
+    <version>0.18</version>
+    <time>1379663758</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c49b0361de9b2d6dfdf951c3508cde8c</srcmd5>
+    <version>0.19</version>
+    <time>1395216333</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 0.19
+    - fix buggy test that does not try hard enough to look for a nonexistent
+      pid (ether)
+    - repository moved to github moose organization</comment>
+    <requestid>225887</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c49b0361de9b2d6dfdf951c3508cde8c</srcmd5>
+    <version>0.19</version>
+    <time>1409302396</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>93463c9011656968941b781091a9f5e2</srcmd5>
+    <version>0.20</version>
+    <time>1440658584</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325693</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f6f0402da868c3f26579bb3d1ea76281</srcmd5>
+    <version>0.21</version>
+    <time>1456434259</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360655</requestid>
+  </revision>
+</revisionlist>

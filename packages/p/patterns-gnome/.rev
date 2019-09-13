@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d09233702066630d9a69b65b88d25ef7</srcmd5>
+    <version>20170319</version>
+    <time>1494087816</time>
+    <user>dimstar_suse</user>
+    <comment>Provide/obsolete old names for proper upgrade path</comment>
+    <requestid>492729</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>331931def7bf2dfebeb47b3a2b0d5b63</srcmd5>
+    <version>20170319</version>
+    <time>1495132681</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494243</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>52b82df36e103fe777bee03761c3fd63</srcmd5>
+    <version>20170319</version>
+    <time>1496225713</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499489</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e82a9fab490f15c13dfe4f714169429a</srcmd5>
+    <version>20170319</version>
+    <time>1498638856</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505723</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5a362ce7ed8cacfd094188d7ea32d2ff</srcmd5>
+    <version>20170319</version>
+    <time>1499415362</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508309</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>fd8539d9321cca363d7f498c8079644c</srcmd5>
+    <version>20170319</version>
+    <time>1507280527</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 531615 from dimstar)</comment>
+    <requestid>531700</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0f864d41be82dc6633e28552a32ea8f7</srcmd5>
+    <version>20180321</version>
+    <time>1522935100</time>
+    <user>dimstar_suse</user>
+    <comment>Major GNOME pattern rework</comment>
+    <requestid>593586</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>47a2b65ceaa9c7f7be2c80f99fc3a999</srcmd5>
+    <version>20180321</version>
+    <time>1522999935</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop gnome-icon-theme recommendation from gnome_x11: this theme
+  has been long superseded by adwaita. While reworking the pattern
+  for the SLE12-&gt;15 migration, it snuck back in.</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>af11bea27bcdd04ed84ea290aa7e21ce</srcmd5>
+    <version>20180321</version>
+    <time>1523127300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>594036</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>c4e0c83c21e41044d7e82c395aa16312</srcmd5>
+    <version>20180321</version>
+    <time>1524144279</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure x11_enhanced pattern is required by gnome_basis on SLE,
+  not just x11 one (bsc#1084155).
+
+- gnome-user-share is not available on all SLE flavors, only
+  recommend it on SLE and keep require on openSUSE (bsc#1087222). (forwarded request 595560 from fcrozat)</comment>
+    <requestid>596161</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>7c34076028e14b8645e82cd038ce2412</srcmd5>
+    <version>20180321</version>
+    <time>1524400666</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not recommend pulseaudio-modules-lirc/bluetooth/zeroconf,
+  use supplements in pulseaudio subpackages instead (bsc#1087207). (forwarded request 598527 from fcrozat)</comment>
+    <requestid>598591</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>f61046531521d9c6535647e4926f14d8</srcmd5>
+    <version>20180321</version>
+    <time>1525960071</time>
+    <user>dimstar_suse</user>
+    <comment>- Move the gnome(wayland) pattern into the category of
+  graphicalenvironments, aligning with the other DEs of the distro.
+
+- Re-add gnome-menus recommends to x11 pattern: gnome-menus still
+  brings the .directory translations, which are shown in GNOME
+  Activities (boo#1091487). (forwarded request 605645 from dimstar)</comment>
+    <requestid>605736</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>91c151ffdd97c5ce3849a57c093bfb6c</srcmd5>
+    <version>20180321</version>
+    <time>1527001205</time>
+    <user>dimstar_suse</user>
+    <comment>- Move gnome-shell-classic recommends to gnome_basis pattern
+  (boo#1090117). (forwarded request 607294 from fcrozat)</comment>
+    <requestid>607297</requestid>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>35a851e6163f18dd884e29b8ee6e8f2a</srcmd5>
+    <version>20180321</version>
+    <time>1530740976</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop all traces of gconf:
+  + Drop gconf-editor Suggests and Recommends.
+  + Drop gconf2-branding-openSUSE Recommends.
+  + Replace pulseaudio-module-gconf with
+    pulseaudio-module-gsettings. (forwarded request 619011 from iznogood)</comment>
+    <requestid>619151</requestid>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>24d926a386e88d001b91e8f691e789fc</srcmd5>
+    <version>20180321</version>
+    <time>1536678528</time>
+    <user>maxlin_factory</user>
+    <comment> (forwarded request 631036 from dimstar)</comment>
+    <requestid>631095</requestid>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>8c443e6d7f73104f111661ba808508b8</srcmd5>
+    <version>20180321</version>
+    <time>1539757142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639458</requestid>
+  </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>f508515ef9d3e01de4ca2bf04e2a5ca6</srcmd5>
+    <version>20180321</version>
+    <time>1545223609</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer recommend deja-dup: there are so many variants for
+  users to maintain their backups (e.g. cloud storage) that
+  deja-dup is no longer in the position of being unique.
+  Additionally, we no longer need to pull in python2 on the default
+  installation (boo#1119220).</comment>
+    <requestid>657546</requestid>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>98246780ad83e1ee589ff7d0b7668979</srcmd5>
+    <version>20180321</version>
+    <time>1556914849</time>
+    <user>dimstar_suse</user>
+    <comment>- Require gnome_basic instad of gnome_basis to get gnome-software
+  etc (boo#1132777).
+- Don't pull in gimp as it pulls in python2 which is deprecated
+  (boo#1133307). KDE also doesn't install GIMP by default either.
+</comment>
+    <requestid>699942</requestid>
+  </revision>
+</revisionlist>

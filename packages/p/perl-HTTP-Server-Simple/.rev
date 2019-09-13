@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e76b5784d662ab1e84c6098a8badfe2e</srcmd5>
+    <version>0.44</version>
+    <time>1329221353</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>103729</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e76b5784d662ab1e84c6098a8badfe2e</srcmd5>
+    <version>0.44</version>
+    <time>1340183856</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>23bfadf7694348827e17cde7739c5ba5</srcmd5>
+    <version>0.44</version>
+    <time>1350364413</time>
+    <user>coolo</user>
+    <comment>- buildrequire netcfg for the test suite (forwarded request 138168 from coolo)</comment>
+    <requestid>138170</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>23bfadf7694348827e17cde7739c5ba5</srcmd5>
+    <version>0.44</version>
+    <time>1359109699</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>23bfadf7694348827e17cde7739c5ba5</srcmd5>
+    <version>0.44</version>
+    <time>1379663706</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>23bfadf7694348827e17cde7739c5ba5</srcmd5>
+    <version>0.44</version>
+    <time>1409302327</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d2044206651396b2d8d6b0aa982e1e6d</srcmd5>
+    <version>0.50</version>
+    <time>1429186445</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297056</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f96c27b4fe6480263c66443fd5d31b27</srcmd5>
+    <version>0.50</version>
+    <time>1440871485</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327573</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>563ab77bb2dfc785eef33510749e504a</srcmd5>
+    <version>0.51</version>
+    <time>1443068100</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332248</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>933fdc8401a9e4ff137ed752b0c16b8f</srcmd5>
+    <version>0.52</version>
+    <time>1491907320</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486142</requestid>
+  </revision>
+</revisionlist>

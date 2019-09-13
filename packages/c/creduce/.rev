@@ -1,0 +1,212 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>062938b408e17b39b2a9100c008ef156</srcmd5>
+    <version>2.3.0</version>
+    <time>1435870247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>314730</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eb8ad442b30758e2ccae2fb797ba8c66</srcmd5>
+    <version>2.3.0</version>
+    <time>1442474502</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>331379</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4dc68c70f8a8c623413d64b5c9a04807</srcmd5>
+    <version>2.4.0</version>
+    <time>1445288036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0
+- Drop llvm-3.7.patch, fixed upstream</comment>
+    <requestid>339913</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>29cb704f78e6061edf7ee872a4cf4f33</srcmd5>
+    <version>2.4.0</version>
+    <time>1445796793</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>340478</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2802f14d7736098fc60d613d5da2df1f</srcmd5>
+    <version>2.4.0</version>
+    <time>1459002511</time>
+    <user>dimstar_suse</user>
+    <comment>- Add creduce-llvm-3.8.patch to fix build with llvm 3.8.0</comment>
+    <requestid>379125</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d75a2ff1696a9f50bdfd42d52b45e11e</srcmd5>
+    <version>2.5.0</version>
+    <time>1463652892</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396174</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a60f298bfe177cd31883ab04ffc2aeb1</srcmd5>
+    <version>2.6.0</version>
+    <time>1484914084</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451334</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6971828dc8868c8e28219417215792bc</srcmd5>
+    <version>2.6.0</version>
+    <time>1489345212</time>
+    <user>dimstar_suse</user>
+    <comment> Add llvm-clang and llvm as requirements for the package.
+- Clean up spec file via spec-cleaner.</comment>
+    <requestid>476760</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>497544298024dd04817f4585bcb02116</srcmd5>
+    <version>2.6.0</version>
+    <time>1493363626</time>
+    <user>dimstar_suse</user>
+    <comment>Fix package to require exactly LLVM and clang 3.9.</comment>
+    <requestid>491221</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5f5a6107dc964f4c009357af7c8426de</srcmd5>
+    <version>2.7.0</version>
+    <time>1495268056</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.0
+  * Minor bugfixes
+  * LLVM 4.0 support
+- Depend on llvm4/clang4</comment>
+    <requestid>496502</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c1cc30bd9dd32a68d1426b42f5ee5fa9</srcmd5>
+    <version>2.7.0</version>
+    <time>1509105646</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536858</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>2892d2ae0898c7409160348cbe81798e</srcmd5>
+    <version>2.7.0</version>
+    <time>1515110416</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner
+
+- BuildRequire clang4-devel-static instead of clang-devel-static:
+  all the other llvm/clang deps are hard on version 4.x.</comment>
+    <requestid>561447</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>3b36c8ecb04e4f9e4e975d98daacbb4d</srcmd5>
+    <version>2.7.0</version>
+    <time>1518813971</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed dependency (boo#1081147).
+</comment>
+    <requestid>577227</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>962d4d133ee24626d6f2b631cee1e292</srcmd5>
+    <version>2.7.0</version>
+    <time>1519218832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578610</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9e99d3ea2f0bd5bb4419d6b31d0d413b</srcmd5>
+    <version>2.8.0</version>
+    <time>1531947217</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove Requires to perl-Sys-CPU.
+- Update to version 2.8.0
+  * Include newer `clang_delta` tests in distributions.
+  * Mention CMake-based build system near the top of the file.
+  * Update copyright years.
+  * Do not list `LLVM_LIBS` in the `target_link_libraries`.
+  * Mention that `pkg install` example works for FreeBSD 11.1, too.
+  * Remove remaining references to `Sys::CPU` Perl module.
+  * Update copyright years.
+  * stop using dead sys::cpu perl module
+  * Require LLVM 6.0.
+- Update to version 2.8.0+git.20180410.48e622b:
+  * Fixed an issue for checking function declarations
+  * Fixed crashes due to groupdecls
+  * update copyright year
+  * Handle anonymous unions are declared with other decls
+  * Handle designated init expressions
+  * Regenerate Autoconf/Automake stuff.
+  * Add copyright notices to some `clang_delta/tests/` files.
+  * Add more `clang_delta/tests/` files to distributions.
+  * add todo about try-catch
+  * Update copyright years.
+</comment>
+    <requestid>621906</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3e6663048192f53fcc57c18c591f5639</srcmd5>
+    <version>2.9.0+git.20190422.763bd26</version>
+    <time>1556023140</time>
+    <user>maxlin_factory</user>
+    <comment>- Use %license COPYING.
+- Update to version 2.9.0+git.20190422.763bd26:
+  * Regenerate Autoconf stuff.
+  * Add `INSTALL.md` and `README.md` to `EXTRA_DIST`.
+  * Use `automake --foreign` instead of `automake --gnu`.
+  * Require LLVM 7.0 or later.
+  * Do less I/O in the Darwin version of `ncpus()`.
+  * Implement `ncpus()` for FreeBSD.
+  * Update INSTALL instructions for FreeBSD.
+  * Update copyright years.
+- Remove README from installed files.
+- Depend on llvm7 and clang7 packages.
+- Update to version 2.9.0+git.20190414.095c551:
+  * Fixed a crash in UnionToStruct pass
+  * add pass to remove if directives
+  * skip inlining calls in default arguments
+  * patch from Mingwandroid to update to LLVM 7
+  * convert to markdown
+  * add binary search removal of c++ style comments
+  * add pass for line markers
+  * add pass to remove constant ifs
+  * change ordering so pass_includes is called after pass_unifdef
+  * built with LLVM 7.0
+</comment>
+    <requestid>697014</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>56cb8a6661c5196f51e40a3082ecf315</srcmd5>
+    <version>2.9.0+git.20190501.0fc288e</version>
+    <time>1557263898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701041</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3ba444edaba769259ccc050d77cc9cab</srcmd5>
+    <version>2.10.0+git.20190513.fb91843</version>
+    <time>1561050263</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in spec file.
+
+- Update to version 2.10.0+git.20190513.fb91843:
+  * Remove mention of FreeBSD 10.4.
+  * Update copyright years.
+  * Use LLVM 8 toolchain in the Travis-CI build.
+  * Update copyright years.
+  * Require LLVM 8.0.
+  * Increment version number to 2.10.0.
+  * Set `BUILD_WITH_INSTALL_RPATH` property on target `clang_delta`.
+  * On the CMake-based build path, set rpath for `clang_delta`.
+  * Largely revert commit be741fc.
+  * update to LLVM 8.0</comment>
+    <requestid>711116</requestid>
+  </revision>
+</revisionlist>

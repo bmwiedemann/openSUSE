@@ -1,0 +1,408 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51ceed4cc4056767450bb289074e1eaa</srcmd5>
+    <version>1.11.2</version>
+    <time>1314612701</time>
+    <user>saschpe</user>
+    <comment>New package: mathgl - cross-platform library for making high-quality scientific graphics</comment>
+    <requestid>79954</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a58681261027560ed0ba73c28fa95d4a</srcmd5>
+    <version>1.11.2</version>
+    <time>1314612712</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79954
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a58681261027560ed0ba73c28fa95d4a</srcmd5>
+    <version>1.11.2</version>
+    <time>1319182172</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6e7564de81c86be4383375d1d202c643</srcmd5>
+    <version>1.11.2</version>
+    <time>1329383174</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104410 from coolo)</comment>
+    <requestid>104735</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>76dd14a00f8f67a262e7429c16d0964d</srcmd5>
+    <version>2.0</version>
+    <time>1336653209</time>
+    <user>coolo</user>
+    <comment>Fixed python package installation with a patch (forwarded request 119937 from badshah400)</comment>
+    <requestid>120524</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>97f19f86645902e16c28201f407a02b6</srcmd5>
+    <version>2.0.2</version>
+    <time>1338280443</time>
+    <user>coolo</user>
+    <comment>Update to version 2.0.2; fix building on SLE 11. (forwarded request 122106 from badshah400)</comment>
+    <requestid>122224</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>97f19f86645902e16c28201f407a02b6</srcmd5>
+    <version>2.0.2</version>
+    <time>1340183692</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d6b7c70c2d1a0233dfa174268c557fdc</srcmd5>
+    <version>2.0.3</version>
+    <time>1354549079</time>
+    <user>saschpe</user>
+    <comment>adjusted spec file for fedora builds (forwarded request 141435 from namtrac)</comment>
+    <requestid>141554</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5ed54b8f6542df8864ffc1e9f9f6f3de</srcmd5>
+    <version>2.1.1</version>
+    <time>1356866369</time>
+    <user>namtrac</user>
+    <comment>Update to version 2.1.1 (forwarded request 146346 from Dmitry_R)</comment>
+    <requestid>146347</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5ed54b8f6542df8864ffc1e9f9f6f3de</srcmd5>
+    <version>2.1.1</version>
+    <time>1359109433</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>055b7e3ac429c020681b48cd31bc3513</srcmd5>
+    <version>2.1.2</version>
+    <time>1362730959</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157807</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dcd58703a336776853e472e22dc7901d</srcmd5>
+    <version>2.1.3</version>
+    <time>1367581407</time>
+    <user>coolo</user>
+    <comment> (forwarded request 174396 from Dmitry_R)</comment>
+    <requestid>174397</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c71eb70caa73f56a73287e30265e9e4c</srcmd5>
+    <version>2.1.3.1</version>
+    <time>1368450531</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.1.3.1
+  * bugfix release, see included ChangeLog.txt for details (forwarded request 174893 from Dmitry_R)</comment>
+    <requestid>174894</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ef6b313eda9e79d57aab9a3972c72217</srcmd5>
+    <version>2.1.3.1</version>
+    <time>1370447135</time>
+    <user>coolo</user>
+    <comment>- Add package with static libraries
+
+- Detect WORDS_BIGENDIAN and HAVE_MEMRCHR to build on bigendian
+  platforms correctly (mathgl-bigendian.patch)</comment>
+    <requestid>177119</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>ef6b313eda9e79d57aab9a3972c72217</srcmd5>
+    <version>2.1.3.1</version>
+    <time>1379663268</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>91d4fc0dc3fa76a18652e4fc63a65eb6</srcmd5>
+    <version>2.1.3.1</version>
+    <time>1379923397</time>
+    <user>coolo</user>
+    <comment>Add patch to fix build failures with gsl-1.16, notably in Factory (forwarded request 199458 from badshah400)</comment>
+    <requestid>199459</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ffc5e5691b2e6b645ab00eb65648e3a4</srcmd5>
+    <version>2.2</version>
+    <time>1387349476</time>
+    <user>coolo</user>
+    <comment>Update to version 2.2</comment>
+    <requestid>210133</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6d1dee793ee7b3790a6dad3a923451ce</srcmd5>
+    <version>2.2.1</version>
+    <time>1391061325</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.1
+  * Add Qt5 support.
+  * Add Pascal interface.
+  * Improve JavaScript interface.
+  * Add function AddRange(char dir, mreal v1, mreal v2) and extend
+    corresponding MGL commands '[xyzc]range'.
+  * Add 'hypot' function for known functions in formula parsing.
+  * Add style '~' to disable colorbar or axis labels. NOTE, axis
+    style '_' is obsolete and should be replaced by '~'.
+  * Change Aspect() if Ax=NAN. Now, Ay and Az set the ratio to
+    optimal aspect (not exact value as previously).
+  * Disable changes by View(),Zoom(),Perspective() for position
+    of Title(), Legend(), Colorbar().
+  * Partial support of perspective in CalcXYZ().
+  * Speed up PDE solving.
+  * Add complex versions of PDE, QO2d, QO3d.
+  * Correct filled background for Box() in curved coordinates.
+  * Allow nx=1 for Stem and Error.
+  * Bugfix for drawing single axis.
+  * Bugfix for missing options parsing for some of MGL commands.
+  * Bugfix for .pmin suffix in MGL. Add mglData::MaximalNeg() and
+    mglData::MinimalPos() functions. Add .nmin and .nmax suffixes.
+  * Bugfix for colorbar labels.
+  * Force using python 2.7 by default.
+  * Minor bugfixes and memory leaks.
+- Disable Octave interface due to Octave 3.8.0 changes
+- Disable openmp support due to instability (forwarded request 215573 from Dmitry_R)</comment>
+    <requestid>215574</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>23ec8138d60fbfb90ce5527923d3d482</srcmd5>
+    <version>2.2.1</version>
+    <time>1391360989</time>
+    <user>coolo</user>
+    <comment>Re-enable octave bindings for mathgl (should work with patched swig now in science) (forwarded request 220431 from badshah400)</comment>
+    <requestid>220438</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0163059c4677f18e067c3508627d61a7</srcmd5>
+    <version>2.2.2</version>
+    <time>1394901415</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.2
+  * Add mgl_region_3d() to draw region (or ribbon) between 2 curves.
+    Correspondingly extend mglGraph::Region() function and MGL
+    command 'region'.
+  * Allow LGPL for MathGL widgets.
+  * Improve export to TeX.
+  * Add missing functions to Fortran interface.
+  * Bugfix for legend with enabled lighting.
+  * Minor bugfixes and memory leaks. (forwarded request 225463 from Dmitry_R)</comment>
+    <requestid>225465</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>64419ad0c7ecbced581c289db3f601be</srcmd5>
+    <version>2.2.2</version>
+    <time>1395148519</time>
+    <user>coolo</user>
+    <comment>- Fix -devel package dependences, Qt5 available only for openSUSE &gt;= 13.2</comment>
+    <requestid>226411</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>13cda9ee9c9381d750b0211d4ad8dfe4</srcmd5>
+    <version>2.2.2.1</version>
+    <time>1395411748</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.2.1
+  * Function SetRange(v1,v2) ignore NAN values now.
+  * Add enable-json-sample for building json-samples on demand only.
+  * Update docs. (forwarded request 226845 from Dmitry_R)</comment>
+    <requestid>226846</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b02608480a48a70d11bdb7509659d954</srcmd5>
+    <version>2.3</version>
+    <time>1408353832</time>
+    <user>lnussel</user>
+    <comment>- Update to version 2.3
+- Enable OpenMP support
+- Move PDF documentation to separate package.
+- Disable info files build due to outdated texinfo</comment>
+    <requestid>244889</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>b02608480a48a70d11bdb7509659d954</srcmd5>
+    <version>2.3</version>
+    <time>1409301875</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>127906436d42dd00389cdb9c64197e9c</srcmd5>
+    <version>2.3</version>
+    <time>1412252034</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>253598</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>205d9bdd847d158b430f24f7fbe59e4d</srcmd5>
+    <version>2.3</version>
+    <time>1416823733</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>262485</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c7e70fde20a1a2c44b4a3903b4521083</srcmd5>
+    <version>2.3.1</version>
+    <time>1422790215</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283611</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0f396871659a8ec1b854dff0024ae861</srcmd5>
+    <version>2.3.2</version>
+    <time>1423596069</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284575</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>c48c6ef47c0fa6eff8ed609390f3af92</srcmd5>
+    <version>2.3.2</version>
+    <time>1424255993</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286526</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>beaa600671efb142b81d5e9afdd3ffac</srcmd5>
+    <version>2.3.2</version>
+    <time>1425566400</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288650</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>3465d04f3cb3e0818c8229350b667881</srcmd5>
+    <version>2.3.2</version>
+    <time>1427564322</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293304</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>e705e7a359976ca4264d55b87b015b62</srcmd5>
+    <version>2.3.2</version>
+    <time>1433232577</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable Octave module due to swig incompatibility with Octave 4.0</comment>
+    <requestid>309541</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>aa8163dbd543ae879b9d0a5156ff2521</srcmd5>
+    <version>2.3.3</version>
+    <time>1433745047</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310853</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>24c8ad29244f9f18cf749e2e544c8e4a</srcmd5>
+    <version>2.3.3</version>
+    <time>1433920594</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311361</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>904cc7e7655c5c3ad3966eacbff10f52</srcmd5>
+    <version>2.3.3</version>
+    <time>1439556403</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322415</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>901facbe0e982f9c6d33ec54d95d7f3a</srcmd5>
+    <version>2.3.3</version>
+    <time>1444130749</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335885</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>fd80051aa3347d2aebc24da78ec499b4</srcmd5>
+    <version>2.3.3</version>
+    <time>1448400812</time>
+    <user>coolo</user>
+    <comment>- Fix octave-mathgl package dependencies</comment>
+    <requestid>344899</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b8ebe287595146299d58d3d422392681</srcmd5>
+    <version>2.3.4</version>
+    <time>1456434585</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361236</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>45206c3e1d4abcc38b33eb75ecec5fda</srcmd5>
+    <version>2.3.4</version>
+    <time>1471009357</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417096</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b0d5ebbe15b8fe88e78504cbb4f1f917</srcmd5>
+    <version>2.3.5.1</version>
+    <time>1477220033</time>
+    <user>dimstar_suse</user>
+    <comment>Version update, temporarily workaround build failures by disabling octave bindings until proper fix is found</comment>
+    <requestid>436956</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>618dd6f04577e84f6d513f8d6635cfed</srcmd5>
+    <version>2.4.1</version>
+    <time>1509722673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537842</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>2b4c6ec4971e4d58933eb7a13df48a5d</srcmd5>
+    <version>2.4.1</version>
+    <time>1513245721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556617</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>6666669b7c4288efe588665532eb7e7d</srcmd5>
+    <version>2.4.1</version>
+    <time>1520853183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585723</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e2dbff2c18d0caf62d165b981a8459bd</srcmd5>
+    <version>2.4.2</version>
+    <time>1524237934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592617</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>854a9a3564a82e4f8619841dcac8376a</srcmd5>
+    <version>2.4.2</version>
+    <time>1526372175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607067</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2211e9020e8502818f872ed8ae252f55</srcmd5>
+    <version>2.4.3</version>
+    <time>1568191250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729939</requestid>
+  </revision>
+</revisionlist>

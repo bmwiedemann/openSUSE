@@ -1,0 +1,7 @@
+<package name="xfce4-taskmanager" project="openSUSE:Factory">
+  <title>Simple taskmanager for the Xfce desktop environment</title>
+  <description>xfce4-taskmanager is a simple taskmanager for the Xfce desktop environment. It
+can display window and icon names in a tree view, columns can be reordered, and
+CPU and memory usage are displayed as a graph.</description>
+  <devel project="X11:xfce" package="xfce4-taskmanager"/>
+</package>

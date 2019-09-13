@@ -1,0 +1,270 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>577d977dbb873fd63217042d84cfc140</srcmd5>
+    <version>1.7</version>
+    <time>1222270067</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>bd66c607050a4a44a96c2b22a1f906e5</srcmd5>
+    <version>1.7</version>
+    <time>1222852193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>4e3c3f36923e19d2f68acb8fac2fd013</srcmd5>
+    <version>1.7</version>
+    <time>1224160435</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>9c05b9e9ca744671835a7e51612036bd</srcmd5>
+    <version>1.7</version>
+    <time>1226941225</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>9c05b9e9ca744671835a7e51612036bd</srcmd5>
+    <version>1.7</version>
+    <time>1226941225</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>8187647c84901ccdc3dcfe4f561460b4</srcmd5>
+    <version>1.7</version>
+    <time>1258972935</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/rhino based on submit request 24642 from user mvyskocil
+</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>e274a81f7ff3b760f94197bc1c80c76f</srcmd5>
+    <version>1.7</version>
+    <time>1268925980</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>e274a81f7ff3b760f94197bc1c80c76f</srcmd5>
+    <version>1.7</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>e274a81f7ff3b760f94197bc1c80c76f</srcmd5>
+    <version>1.7</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>54dabc37e1cf9dba36f10e19847c23dc</srcmd5>
+    <version>1.7</version>
+    <time>1283513527</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/rhino based on submit request 46999 from user mvyskocil
+</comment>
+    <requestid>46999</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>30c426278f8e1f7bf98f837acacef179</srcmd5>
+    <version>1.7</version>
+    <time>1289839797</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52371 from user mvyskocil
+</comment>
+    <requestid>52371</requestid>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>cd329213a6f63333994044c8b941aa74</srcmd5>
+    <version>1.7</version>
+    <time>1289839807</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52371
+</comment>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>cd329213a6f63333994044c8b941aa74</srcmd5>
+    <version>1.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>be140e1be84104e8500d410bf1a834fb</srcmd5>
+    <version>1.7</version>
+    <time>1300117723</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64102 from user mvyskocil
+</comment>
+    <requestid>64102</requestid>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>c5809ccdd2d06fef6b5c94b86b9d14b6</srcmd5>
+    <version>1.7</version>
+    <time>1300117734</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64102
+</comment>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>c5809ccdd2d06fef6b5c94b86b9d14b6</srcmd5>
+    <version>1.7</version>
+    <time>1319182427</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d48993a7d3a44dadccfa5a38e14368b2</srcmd5>
+    <version>1.7R3</version>
+    <time>1326962674</time>
+    <user>coolo</user>
+    <comment>- license update: MPL-1.1 or GPL-2.0+
+  the code is dual licensed under a choice of MPL-1.1 or GPL-2.0+
+
+- update to rhino 1_7R3 (bugfix release)
+- fix bnc#739502 - rhino-dojo.patch adds Sun proprietary code to rhino 1.7</comment>
+    <requestid>100421</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>ebe28a6012402033110e27f428d6c31d</srcmd5>
+    <version>1.7R3</version>
+    <time>1340134737</time>
+    <user>coolo</user>
+    <comment>- ignore jdk7 as well</comment>
+    <requestid>125317</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>ebe28a6012402033110e27f428d6c31d</srcmd5>
+    <version>1.7R3</version>
+    <time>1340184144</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>85349e3c9f21fd0ef4f290ce3a23cd28</srcmd5>
+    <version>1.7R3</version>
+    <time>1357653406</time>
+    <user>coolo</user>
+    <comment>- remove xerces-j2-bootstrap depenency (bnc#789163)</comment>
+    <requestid>147385</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>85349e3c9f21fd0ef4f290ce3a23cd28</srcmd5>
+    <version>1.7R3</version>
+    <time>1359110288</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>0d3b56343221339fd3526508b4364919</srcmd5>
+    <version>1.7R3</version>
+    <time>1377430355</time>
+    <user>scarabeus_factory</user>
+    <comment>- disable javadoc build
+- use add_maven_depmap from new javapackages-tools
+- workaround xbean.jar definition problem</comment>
+    <requestid>196101</requestid>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>2000b07d020688102ed83b8feafb15fd</srcmd5>
+    <version>1.7R3</version>
+    <time>1378899481</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198310</requestid>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>2000b07d020688102ed83b8feafb15fd</srcmd5>
+    <version>1.7R3</version>
+    <time>1379664455</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="13">
+    <srcmd5>2000b07d020688102ed83b8feafb15fd</srcmd5>
+    <version>1.7R3</version>
+    <time>1409303187</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="14">
+    <srcmd5>551cfd888c9613351e7945bf88ce72fd</srcmd5>
+    <version>1.7R3</version>
+    <time>1427983113</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292638</requestid>
+  </revision>
+  <revision rev="27" vrev="15">
+    <srcmd5>a01662180d1b12100a8738bb723a1e0b</srcmd5>
+    <version>1.7R3</version>
+    <time>1485380559</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with java not gcj as it gets deprecated</comment>
+    <requestid>448908</requestid>
+  </revision>
+  <revision rev="28" vrev="16">
+    <srcmd5>9966d2be97bdf03b25134d8c220fddde</srcmd5>
+    <version>1.7R3</version>
+    <time>1486968463</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456431</requestid>
+  </revision>
+  <revision rev="29" vrev="17">
+    <srcmd5>0b9ec5e0f256e50438e0876710be11d2</srcmd5>
+    <version>1.7R3</version>
+    <time>1496230166</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496626</requestid>
+  </revision>
+  <revision rev="30" vrev="18">
+    <srcmd5>9644113a70dfe0ac694601722c0c819c</srcmd5>
+    <version>1.7R3</version>
+    <time>1497112376</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop maven depmap so we can actually bootstrap</comment>
+    <requestid>502533</requestid>
+  </revision>
+  <revision rev="31" vrev="19">
+    <srcmd5>a0205c9096392d9e7d1687c50df80330</srcmd5>
+    <version>1.7R3</version>
+    <time>1505680608</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with the new java-gcj-compat</comment>
+    <requestid>526251</requestid>
+  </revision>
+  <revision rev="32" vrev="20">
+    <srcmd5>96d55c3b6178ef1007adf1cae9151792</srcmd5>
+    <version>1.7R3</version>
+    <time>1507280079</time>
+    <user>dimstar_suse</user>
+    <comment>Don't depend on gcc-java + fix build with jdk9</comment>
+    <requestid>530675</requestid>
+  </revision>
+  <revision rev="33" vrev="21">
+    <srcmd5>2257a088bc44800767f2c898936498a8</srcmd5>
+    <version>1.7R3</version>
+    <time>1544189476</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653651</requestid>
+  </revision>
+  <revision rev="34" vrev="22">
+    <srcmd5>863297c718f1eb6e1be2dcf3702f183e</srcmd5>
+    <version>1.7R3</version>
+    <time>1551024216</time>
+    <user>coolo</user>
+    <comment>Fix dependencies + speed-up the build a bit</comment>
+    <requestid>673637</requestid>
+  </revision>
+  <revision rev="35" vrev="23">
+    <srcmd5>b4fcc0985d0fa25c93a0f289ef5d92d8</srcmd5>
+    <version>1.7R3</version>
+    <time>1551687424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680768</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,1861 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35604a304d7eb84635b4782893b4563b</srcmd5>
+    <version>3.11.3</version>
+    <time>1168903544</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ae49a969664cbf45465a004232444dce</srcmd5>
+    <version>3.11.5</version>
+    <time>1172151050</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9aaa160bd5b506249f8ef49d9c6f0bfb</srcmd5>
+    <version>3.11.6</version>
+    <time>1181774435</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4df9f649138f0cd4591c5a20af0e518c</srcmd5>
+    <version>3.11.7</version>
+    <time>1185700010</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>91621cabbe49737d289b9e14426100a1</srcmd5>
+    <version>3.11.7</version>
+    <time>1189723580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="12">
+    <srcmd5>b29973a976fa98f35c35e1c71ce7b02e</srcmd5>
+    <version>3.11.7</version>
+    <time>1189934803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="25">
+    <srcmd5>bd66edda968bb01a6087e80178ca8d03</srcmd5>
+    <version>3.11.7</version>
+    <time>1197331744</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>96f9af274ea0ed4520c177e3ac00818b</srcmd5>
+    <version>3.12.0</version>
+    <time>1206545070</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>7c13641a2f9f2042feaed4072f812b30</srcmd5>
+    <version>3.12.0</version>
+    <time>1207177213</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>79a81f242936ef60e5d8015194e76728</srcmd5>
+    <version>3.12.0</version>
+    <time>1207832068</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>2058302e464fd0e1878bcc7ab0bae215</srcmd5>
+    <version>3.12.0</version>
+    <time>1208733947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>7eba05a2332e5162ac046805c2cce047</srcmd5>
+    <version>3.12.0</version>
+    <time>1209510208</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="25">
+    <srcmd5>70b26a2dcdccbed70dc3d613ff1f4152</srcmd5>
+    <version>3.12.0</version>
+    <time>1214256776</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="54">
+    <srcmd5>0cd8c186806e815abf6dd89288fd59a9</srcmd5>
+    <version>3.12.0</version>
+    <time>1224794207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="55">
+    <srcmd5>71dc4c5ba0f5934d214bb90dc29906cf</srcmd5>
+    <version>3.12.0</version>
+    <time>1231461333</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>707d8760f17cbcf858b3fe134679829f</srcmd5>
+    <version>3.12.2</version>
+    <time>1238106302</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fc6669407d320851d55a793a60ab4a77</srcmd5>
+    <version>3.12.3</version>
+    <time>1240958453</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>423f2d82eb72e56de1b420fe86206f22</srcmd5>
+    <version>3.12.3</version>
+    <time>1243467805</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>b62346d564a275ea808ec9bcf82bba15</srcmd5>
+    <version>3.12.3</version>
+    <time>1243938397</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>98ece287cb03ffc182088467624f660f</srcmd5>
+    <version>3.12.3</version>
+    <time>1244562272</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>06bcb33087b307fbf96f04d2f7c2867d</srcmd5>
+    <version>3.12.3</version>
+    <time>1245365521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f73c2a1e16a6ca6a2cff60b13fd5d302</srcmd5>
+    <version>3.12.3.1</version>
+    <time>1248882756</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>827f8a193149d2f01faa2ff0a3cebc1d</srcmd5>
+    <version>3.12.3.99</version>
+    <time>1249574831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>a75022339c083dcf987f09e48ae8beb5</srcmd5>
+    <version>3.12.3.99</version>
+    <time>1249687923</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9912e181f4e26fbb38cc560c505dbee9</srcmd5>
+    <version>3.12.4</version>
+    <time>1250255139</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 17760 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>9912e181f4e26fbb38cc560c505dbee9</srcmd5>
+    <version>3.12.4</version>
+    <time>1250255139</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 17760 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>1b2522cf7733dd5c31e3375e2fafe93a</srcmd5>
+    <version>3.12.4</version>
+    <time>1259326415</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 24926 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>fcde2910958d20704bdd8cfddf702ae2</srcmd5>
+    <version>3.12.4</version>
+    <time>1260952515</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 26381 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>5a0a5b8ff189c635d4b3866588994757</srcmd5>
+    <version>3.12.4</version>
+    <time>1261401690</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 27193 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>f22ac4ff5063091adf80e78cdfa73af1</srcmd5>
+    <version>3.12.4</version>
+    <time>1261997527</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 27694 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a0e308b796f7eb70f44ec17cec38dc65</srcmd5>
+    <version>3.12.6</version>
+    <time>1268732738</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 34874 from user wrosenauer
+</comment>
+    <requestid>34874</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>b69fc05afd50af8f941095a4e183a377</srcmd5>
+    <version>3.12.6</version>
+    <time>1268924989</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>234c7c296859cba190a06c95d063140e</srcmd5>
+    <version>3.12.6</version>
+    <time>1269616671</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 35408 from user wrosenauer
+</comment>
+    <requestid>35408</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>aa2d3c52cc921171018c958a0a35f398</srcmd5>
+    <version>3.12.6</version>
+    <time>1270404505</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 36875 from user wrosenauer
+</comment>
+    <requestid>36875</requestid>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>3c270f0a7dfd93a227c1ee8b30e9febb</srcmd5>
+    <version>3.12.6</version>
+    <time>1272122499</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 38740 from user wrosenauer
+</comment>
+    <requestid>38740</requestid>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>3c270f0a7dfd93a227c1ee8b30e9febb</srcmd5>
+    <version>3.12.6</version>
+    <time>1278667368</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>3c270f0a7dfd93a227c1ee8b30e9febb</srcmd5>
+    <version>3.12.6</version>
+    <time>1278678598</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="38" vrev="9">
+    <srcmd5>807d4eb55e414595d71ada91dd558930</srcmd5>
+    <version>3.12.6</version>
+    <time>1279539477</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 42982 from user wrosenauer
+</comment>
+    <requestid>42982</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>07d470c5e0740cca3fa490d3987172da</srcmd5>
+    <version>3.12.7</version>
+    <time>1280676036</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 44287 from user wrosenauer
+</comment>
+    <requestid>44287</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>848f4e62111f22e04b58adf1325e18e1</srcmd5>
+    <version>3.12.8</version>
+    <time>1285541155</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/mozilla-nss based on submit request 49078 from user wrosenauer
+</comment>
+    <requestid>49078</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>86e63528a5cb198fee551425be63b938</srcmd5>
+    <version>3.12.8</version>
+    <time>1289409474</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52546 from user wrosenauer
+</comment>
+    <requestid>52546</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0587ccd1049cedfd4625598a06c37db5</srcmd5>
+    <version>3.12.9</version>
+    <time>1291993342</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55474 from user wrosenauer
+</comment>
+    <requestid>55474</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>eb128554ae258245fded1c51ad34560e</srcmd5>
+    <version>3.12.9</version>
+    <time>1294652661</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57623 from user wrosenauer
+</comment>
+    <requestid>57623</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>8ae38f5e574f64449308a72b77025ac1</srcmd5>
+    <version>3.12.9</version>
+    <time>1294652675</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57623
+</comment>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>8ae38f5e574f64449308a72b77025ac1</srcmd5>
+    <version>3.12.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b1480e76e27cf5c2f6849be69b1c33af</srcmd5>
+    <version>3.12.10</version>
+    <time>1304060855</time>
+    <user>saschpe</user>
+    <comment>update</comment>
+    <requestid>68647</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>28a804fb783157076a0bfb6ba8fe0cdd</srcmd5>
+    <version>3.12.10</version>
+    <time>1305792655</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>70636</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>925a1c7c7c689da3d6f3e0c85dcba783</srcmd5>
+    <version>3.12.10</version>
+    <time>1305792663</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70636
+</comment>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>6c086e5020cffda558beb9dbc98da69e</srcmd5>
+    <version>3.12.10</version>
+    <time>1306912589</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>72373</requestid>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>373ff6e4459d6fcb3f03092ae9621fd0</srcmd5>
+    <version>3.12.10</version>
+    <time>1306912601</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72373
+</comment>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>aa2c114d0119ff9fd61f23bb778d64d7</srcmd5>
+    <version>3.12.10</version>
+    <time>1310631015</time>
+    <user>saschpe</user>
+    <comment>make it build with Linux3.0 (forwarded request 76198 from msmeissn)</comment>
+    <requestid>76201</requestid>
+  </revision>
+  <revision rev="52" vrev="7">
+    <srcmd5>f838ce3becd34539c129e8bef92698d2</srcmd5>
+    <version>3.12.10</version>
+    <time>1310631026</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76201
+</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>cede4a28771283f3a1ed105b2e7196e1</srcmd5>
+    <version>3.12.11</version>
+    <time>1313248691</time>
+    <user>oertel</user>
+    <comment></comment>
+    <requestid>78707</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>cefbfb3b1ac02f44a5aaf3bb08ace010</srcmd5>
+    <version>3.12.11</version>
+    <time>1314189564</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>79635</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>7a7006f36eea0e795c176d5937b7279f</srcmd5>
+    <version>3.12.11</version>
+    <time>1314189577</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79635
+</comment>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>6003f5b17dbcbb6f6e8158195559da90</srcmd5>
+    <version>3.12.11</version>
+    <time>1315233546</time>
+    <user>lrupp</user>
+    <comment>security update - bnc#714931</comment>
+    <requestid>80751</requestid>
+  </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>a78aee0a03d8c85eeffe3ac245c671c8</srcmd5>
+    <version>3.12.11</version>
+    <time>1315233559</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80751
+</comment>
+  </revision>
+  <revision rev="58" vrev="6">
+    <srcmd5>22b3ece7b370bcf51c292dbc185b50ff</srcmd5>
+    <version>3.12.11</version>
+    <time>1315762244</time>
+    <user>saschpe</user>
+    <comment>- explicitely distrust/override DigiNotar certs (bmo#683261)
+  (trustdb version 1.87)</comment>
+    <requestid>81757</requestid>
+  </revision>
+  <revision rev="59" vrev="7">
+    <srcmd5>8a1345b02b5dd494f5593575b5de9265</srcmd5>
+    <version>3.12.11</version>
+    <time>1315762253</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81757
+</comment>
+  </revision>
+  <revision rev="60" vrev="8">
+    <srcmd5>b887b0c59c488b5752eda61ae985ac24</srcmd5>
+    <version>3.12.11</version>
+    <time>1317543537</time>
+    <user>lrupp</user>
+    <comment>- Workaround qemu-arm bugs. (forwarded request 85842 from elvigia)</comment>
+    <requestid>85865</requestid>
+  </revision>
+  <revision rev="61" vrev="10">
+    <srcmd5>b887b0c59c488b5752eda61ae985ac24</srcmd5>
+    <version>3.12.11</version>
+    <time>1319182186</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="62" vrev="11">
+    <srcmd5>ee5ee681a4e58a1533d5d111111fe75d</srcmd5>
+    <version>3.12.11</version>
+    <time>1320672158</time>
+    <user>coolo</user>
+    <comment>Please consider for 12.1 (would need to be released as update otherwise)
+
+- explicitely distrust DigiCert Sdn. Bhd (bnc#728520, bmo#698753)
+- make sure NSS_NoDB_Init does not try to use wrong certificate
+  databases (CVE-2011-3640, bnc#726096, bmo#641052)</comment>
+    <requestid>90154</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>24281e086367f70e595ae7823e8714d2</srcmd5>
+    <version>3.13.1</version>
+    <time>1321460373</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>91345</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>3c3bad428e34a83e362f07f8e4455a17</srcmd5>
+    <version>3.13.1</version>
+    <time>1323192595</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>7d444909ce9ab609c4a4259e0a85d893</srcmd5>
+    <version>3.13.1</version>
+    <time>1324475860</time>
+    <user>coolo</user>
+    <comment>fix qemu workaround (forwarded request 96964 from adrianSuSE)</comment>
+    <requestid>96965</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>e5b4c53bb7bc6e9d06ebd6c220729cc8</srcmd5>
+    <version>3.13.2</version>
+    <time>1329487251</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>105668</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>1ae95f725891e31e8fa2f4c99ee4f6e2</srcmd5>
+    <version>3.13.3</version>
+    <time>1330081565</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>106703</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>713b7bce224b14e49b6151627f8de0e9</srcmd5>
+    <version>3.13.4</version>
+    <time>1334692792</time>
+    <user>coolo</user>
+    <comment>- update to 3.13.4 RTM
+  * fixed some bugs
+  * fixed cert verification regression in PKIX mode (bmo#737802)
+    introduced in 3.13.2 (forwarded request 113443 from wrosenauer)</comment>
+    <requestid>113444</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>b9302dc752cbac509be62d690625f4ac</srcmd5>
+    <version>3.13.5</version>
+    <time>1338991728</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>123277</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>b9302dc752cbac509be62d690625f4ac</srcmd5>
+    <version>3.13.5</version>
+    <time>1340183710</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>7f4922f90d9fed00a81f5c1e1f6f2347</srcmd5>
+    <version>3.13.6</version>
+    <time>1345146300</time>
+    <user>namtrac</user>
+    <comment>some bugfixes (incl. security related) and prerequirement for Firefox 15. Therefore nice to have in 12.2 final already.</comment>
+    <requestid>130997</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>e7f399c4e540afb9d78a40b8e6dac59f</srcmd5>
+    <version>3.14</version>
+    <time>1351265191</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>139298</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>578fc274e6c004dfaf3fad2047447b85</srcmd5>
+    <version>3.14.1</version>
+    <time>1356731131</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>146303</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>c7e435fe129ef1a940f49500e367d02d</srcmd5>
+    <version>3.14.1</version>
+    <time>1357301512</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>146971</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>c83cad44ca07c42d395747aaafa30389</srcmd5>
+    <version>3.14.1</version>
+    <time>1357821203</time>
+    <user>coolo</user>
+    <comment>changelog changes only to sync with sec updates
+
+- updated CA database (nssckbi-1.93.patch)
+  * MFSA 2013-20/CVE-2013-0743 (bmo#825022, bnc#796628)
+    revoke mis-issued intermediate certificates from TURKTRUST</comment>
+    <requestid>147589</requestid>
+  </revision>
+  <revision rev="76" vrev="5">
+    <srcmd5>c83cad44ca07c42d395747aaafa30389</srcmd5>
+    <version>3.14.1</version>
+    <time>1359109464</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>d042925ed94de4fa87e105f69e9afa10</srcmd5>
+    <version>3.14.3</version>
+    <time>1362131555</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>156925</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>bab57dbe535b51eddff6181c8d93c443</srcmd5>
+    <version>3.14.3</version>
+    <time>1365146953</time>
+    <user>coolo</user>
+    <comment>- disable tests with expired certificates
+  (nss-disable-expired-testcerts.patch)
+- add SEC_PKCS7VerifyDetachedSignatureAtTime using patch from
+  mozilla tree to fulfill Firefox 21 requirements
+  (bug-834091.patch; bmo#834091)
+
+  * MFSA 2013-40/CVE-2013-0791 (bmo#629816)
+    Out-of-bounds array read in CERT_DecodeCertPackage</comment>
+    <requestid>162347</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>629cd1c801729f50b11e795f31882fda</srcmd5>
+    <version>3.14.3</version>
+    <time>1366793262</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>173001</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>5a8445d53c42f5010d60d628d9ded0ee</srcmd5>
+    <version>3.15</version>
+    <time>1371221200</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>178606</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>8f9402ee2f2afc49111ada927c8cbc36</srcmd5>
+    <version>3.15.1</version>
+    <time>1372925516</time>
+    <user>coolo</user>
+    <comment>- update to 3.15.1
+  * TLS 1.2 (RFC 5246) is supported. HMAC-SHA256 cipher suites
+    (RFC 5246 and RFC 5289) are supported, allowing TLS to be used
+    without MD5 and SHA-1.
+    Note the following limitations:
+      The hash function used in the signature for TLS 1.2 client
+      authentication must be the hash function of the TLS 1.2 PRF,
+      which is always SHA-256 in NSS 3.15.1.
+      AES GCM cipher suites are not yet supported.
+  * some bugfixes and improvements
+
+- require libnssckbi instead of mozilla-nss-certs so p11-kit can
+  conflict with the latter (fate#314991)</comment>
+    <requestid>181869</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>6897c22c2c1b01915b7e7cc8e9cc8b43</srcmd5>
+    <version>3.15.1</version>
+    <time>1373049457</time>
+    <user>coolo</user>
+    <comment>- fix 32bit requirement, it's without () actually (forwarded request 182277 from lnussel)</comment>
+    <requestid>182306</requestid>
+  </revision>
+  <revision rev="83" vrev="4">
+    <srcmd5>6897c22c2c1b01915b7e7cc8e9cc8b43</srcmd5>
+    <version>3.15.1</version>
+    <time>1379663314</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>7e5c5925097d4cadb46d4ab3106d24fa</srcmd5>
+    <version>3.15.2</version>
+    <time>1380469827</time>
+    <user>coolo</user>
+    <comment>Contains a security relevant bugfix and should be considered for 13.1
+
+- update to 3.15.2 (bnc#842979)
+  * Support for AES-GCM ciphersuites that use the SHA-256 PRF
+  * MD2, MD4, and MD5 signatures are no longer accepted for OCSP
+    or CRLs
+  * Add PK11_CipherFinal macro
+  * sizeof() used incorrectly
+  * nssutil_ReadSecmodDB() leaks memory
+  * Allow SSL_HandshakeNegotiatedExtension to be called before
+    the handshake is finished.
+  * Deprecate the SSL cipher policy code
+  * Avoid uninitialized data read in the event of a decryption
+    failure. (CVE-2013-1739)</comment>
+    <requestid>201263</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>058c07fe8fc53d04ecb228f6f0e937e4</srcmd5>
+    <version>3.15.3</version>
+    <time>1384940927</time>
+    <user>coolo</user>
+    <comment>- update to 3.15.3 (bnc#850148)
+  * CERT_VerifyCert returns SECSuccess (saying certificate is good)
+    even for bad certificates, when the CERTVerifyLog log parameter
+    is given (bmo#910438)
+  * NSS advertises TLS 1.2 ciphersuites in a TLS 1.1 ClientHello
+    (bmo#919677)
+  * fix CVE-2013-5605</comment>
+    <requestid>206762</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>c8c8b1aa83d2957b45c1332ec43f7216</srcmd5>
+    <version>3.15.3</version>
+    <time>1386398783</time>
+    <user>coolo</user>
+    <comment>fix ppc64le build, please forward to factory (forwarded request 209419 from adrianSuSE)</comment>
+    <requestid>209434</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>662b21d0a331c328b824687cbf371bf3</srcmd5>
+    <version>3.15.3.1</version>
+    <time>1386693833</time>
+    <user>coolo</user>
+    <comment>- update to 3.15.3.1 (bnc#854367)
+  * includes certstore update (1.95) (bmo#946351)
+    (explicitely distrust AC DG Tresor SSL)</comment>
+    <requestid>210076</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>a93d80d5b27055d25348cd826e0db421</srcmd5>
+    <version>3.15.4</version>
+    <time>1389385262</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>213275</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>938b82e33884ede1f3d76b5cf5c45655</srcmd5>
+    <version>3.15.4</version>
+    <time>1391666790</time>
+    <user>coolo</user>
+    <comment>Updating just the changelog to stay consistent with security update for older dists
+
+* MFSA 2014-12/CVE-2014-1490/CVE-2014-1491
+    NSS ticket handling issues</comment>
+    <requestid>220922</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>99d10f69ac54be7a872159d7522e0e49</srcmd5>
+    <version>3.15.5</version>
+    <time>1393453234</time>
+    <user>coolo</user>
+    <comment>- update to 3.15.5
+  * required for Firefox 28
+  * export FREEBL_LOWHASH to get the correct default headers
+    (bnc#865539)
+  New functionality
+  * Added support for the TLS application layer protocol negotiation
+    (ALPN) extension. Two SSL socket options, SSL_ENABLE_NPN and
+    SSL_ENABLE_ALPN, can be used to control whether NPN or ALPN (or both)
+    should be used for application layer protocol negotiation.
+  * Added the TLS padding extension. The extension type value is 35655,
+    which may change when an official extension type value is assigned
+    by IANA. NSS automatically adds the padding extension to ClientHello
+    when necessary.
+  * Added a new macro CERT_LIST_TAIL, defined in certt.h, for getting
+    the tail of a CERTCertList.
+  Notable Changes
+  * bmo#950129: Improve the OCSP fetching policy when verifying OCSP
+    responses
+  * bmo#949060: Validate the iov input argument (an array of PRIOVec
+    structures) of ssl_WriteV (called via PR_Writev). Applications should
+    still take care when converting struct iov to PRIOVec because the
+    iov_len members of the two structures have different types
+    (size_t vs. int). size_t is unsigned and may be larger than int.
+
+- BuildRequire mozilla-nspr &gt;= 4.9</comment>
+    <requestid>223809</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>64d236d28e3d4c1fa78d0a1fe82a9510</srcmd5>
+    <version>3.16</version>
+    <time>1396327582</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>228183</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>a56a82107419dd9a9aa6f09c5b6bc363</srcmd5>
+    <version>3.16.1</version>
+    <time>1400006864</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>233606</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>9cfe61c1b9fb70e7dc819516e3b6ed82</srcmd5>
+    <version>3.16.3</version>
+    <time>1405971534</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>240770</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>02f6732fdaa273d13cd080b9b064d7f1</srcmd5>
+    <version>3.16.4</version>
+    <time>1408089496</time>
+    <user>lnussel</user>
+    <comment></comment>
+    <requestid>244502</requestid>
+  </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>02f6732fdaa273d13cd080b9b064d7f1</srcmd5>
+    <version>3.16.4</version>
+    <time>1409301929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>a06e60271b2f869eadf2edda926e4cb8</srcmd5>
+    <version>3.17</version>
+    <time>1410204491</time>
+    <user>coolo</user>
+    <comment>- update to 3.17
+  * required for Firefox 33
+  New functionality:
+  * When using ECDHE, the TLS server code may be configured to generate
+    a fresh ephemeral ECDH key for each handshake, by setting the
+    SSL_REUSE_SERVER_ECDHE_KEY socket option to PR_FALSE. The
+    SSL_REUSE_SERVER_ECDHE_KEY option defaults to PR_TRUE, which means
+    the server's ephemeral ECDH key is reused for multiple handshakes.
+    This option does not affect the TLS client code, which always
+    generates a fresh ephemeral ECDH key for each handshake.
+  New Macros
+  * SSL_REUSE_SERVER_ECDHE_KEY
+  Notable Changes:
+  * The manual pages for the certutil and pp tools have been updated to
+    document the new parameters that had been added in NSS 3.16.2.
+  * On Windows, the new build variable USE_STATIC_RTL can be used to
+    specify the static C runtime library should be used. By default the
+    dynamic C runtime library is used.
+
+- update to 3.16.4 (bnc#894201)</comment>
+    <requestid>247562</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>842980e49e98fcad6e483dcc4aa0596d</srcmd5>
+    <version>3.17.1</version>
+    <time>1412155326</time>
+    <user>coolo</user>
+    <comment>- update to 3.17.1 (bnc#897890)
+  * MFSA 2014-73/CVE-2014-1568 (bmo#1064636, bmo#1069405)
+    RSA Signature Forgery in NSS
+  * Change library's signature algorithm default to SHA256
+  * Add support for draft-ietf-tls-downgrade-scsv
+  * Add clang-cl support to the NSS build system
+  * Implement TLS 1.3:
+    * Part 1. Negotiate TLS 1.3
+    * Part 2. Remove deprecated cipher suites andcompression.
+  * Add support for little-endian powerpc64</comment>
+    <requestid>251989</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>b160a8592cf6bc4d3ac174b63f27b804</srcmd5>
+    <version>3.17.2</version>
+    <time>1414613345</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>258176</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>188b977a768a920c0c7ac2e157d315cc</srcmd5>
+    <version>3.17.3</version>
+    <time>1420429377</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>267102</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>e9c9890beb6fc99ceeeecad821ae47b4</srcmd5>
+    <version>3.17.4</version>
+    <time>1423668694</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284702</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>5aeb4d4a2e583929bfe2c1db73d00ed9</srcmd5>
+    <version>3.18</version>
+    <time>1428391729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>294348</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>b3f4ef8a061adc194445508f4fc2445c</srcmd5>
+    <version>3.18.1</version>
+    <time>1429973247</time>
+    <user>coolo</user>
+    <comment>- update to 3.18.1
+  * Firefox target release 38
+  * No new functionality is introduced in this release.
+  Notable Changes:
+  * The following CA certificate had the Websites and Code Signing
+    trust bits restored to their original state to allow more time
+    to develop a better transition strategy for affected sites:
+    - OU = Equifax Secure Certificate Authority
+  * The following CA certificate was removed:
+    - CN = e-Guven Kok Elektronik Sertifika Hizmet Saglayicisi
+  * The following intermediate CA certificate has been added as
+    actively distrusted because it was mis-used to issue certificates
+    for domain names the holder did not own or control:
+    - CN=MCSHOLDING TEST, O=MCSHOLDING, C=EG
+  * The version number of the updated root CA list has been set
+    to 2.4</comment>
+    <requestid>303844</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>0cb58c12bd8667502ec4da71d99d47d2</srcmd5>
+    <version>3.19</version>
+    <time>1433144919</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>309327</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>0f17551f8e2e723950e2dccb1fe857b6</srcmd5>
+    <version>3.19.1</version>
+    <time>1433312467</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.19.1
+  No new functionality is introduced in this release. This patch
+  release includes a fix for the recently published logjam attack.
+  Notable Changes:
+  * The minimum strength of keys that libssl will accept for
+    finite field algorithms (RSA, Diffie-Hellman, and DSA) have
+    been increased to 1023 bits (bmo#1138554).
+  * NSS reports the bit length of keys more accurately.  Thus,
+    the SECKEY_PublicKeyStrength and SECKEY_PublicKeyStrengthInBits
+    functions could report smaller values for values that have
+    leading zero values. This affects the key strength values that
+    are reported by SSL_GetChannelInfo.</comment>
+    <requestid>309532</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>adf8791c3ef19ef2ab286bdc0f6a2b6f</srcmd5>
+    <version>3.19.2</version>
+    <time>1435652118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>313607</requestid>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>4f376ffbbf80718f3f7d67906b795615</srcmd5>
+    <version>3.19.2</version>
+    <time>1437299064</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>315776</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>5a4b7399c392b2549bab6ebf30d67abc</srcmd5>
+    <version>3.20</version>
+    <time>1443896900</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>335620</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>d599ed1a55d345510da3e9b05e1d01c4</srcmd5>
+    <version>3.20.1</version>
+    <time>1446978290</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 4.20.1 (bnc#952810)
+  * requires NSPR 4.10.10
+  * MFSA 2015-133/CVE-2015-7181/CVE-2015-7182 (bmo#1192028, bmo#1202868)
+    memory corruption issues</comment>
+    <requestid>342323</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>e6fb7488517cad5cb0d7cd912b7467ea</srcmd5>
+    <version>3.20.2</version>
+    <time>1451177952</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.20.2 (bnc#959888)
+
+- update to NSS 3.20.1 (bnc#952810)</comment>
+    <requestid>350520</requestid>
+  </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>a9938bdbb87881ee16a87ef036f70e72</srcmd5>
+    <version>3.20.2</version>
+    <time>1452027194</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>351733</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>701ef208653e2b072e49099d48157b21</srcmd5>
+    <version>3.21</version>
+    <time>1454490966</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.21
+  * required for Firefox 44.0
+  New functionality:
+  * certutil now supports a --rename option to change a nickname (bmo#1142209)
+  * TLS extended master secret extension (RFC 7627) is supported (bmo#1117022)
+  * New info functions added for use during mid-handshake callbacks (bmo#1084669)
+  New Functions:
+  * NSS_OptionSet - sets NSS global options
+  * NSS_OptionGet - gets the current value of NSS global options
+  * SECMOD_CreateModuleEx - Create a new SECMODModule structure from module name
+    string, module parameters string, NSS specific parameters string, and NSS
+    configuration parameter string. The module represented by the module
+    structure is not loaded. The difference with SECMOD_CreateModule is the new
+    function handles NSS configuration parameter strings.
+  * SSL_GetPreliminaryChannelInfo - obtains information about a TLS channel prior
+    to the handshake being completed, for use with the callbacks that are invoked
+    during the handshake
+  * SSL_SignaturePrefSet - configures the enabled signature and hash algorithms
+    for TLS
+  * SSL_SignaturePrefGet - retrieves the currently configured signature and hash
+    algorithms
+  * SSL_SignatureMaxCount - obtains the maximum number signature algorithms that
+    can be configured with SSL_SignaturePrefSet
+  * NSSUTIL_ArgParseModuleSpecEx - takes a module spec and breaks it into shared
+    library string, module name string, module parameters string, NSS specific
+    parameters string, and NSS configuration parameter strings. The returned
+    strings must be freed by the caller. The difference with
+    NSS_ArgParseModuleSpec is the new function handles NSS configuration
+    parameter strings.
+  * NSSUTIL_MkModuleSpecEx - take a shared library string, module name string,</comment>
+    <requestid>356139</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>aea16df55acaef3574402e56a3b94910</srcmd5>
+    <version>3.21.1</version>
+    <time>1458120268</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.21.1 (bmo#969894)
+  * required for Firefox 45.0
+  * MFSA 2016-35/CVE-2016-1950 (bmo#1245528)
+    Buffer overflow during ASN.1 decoding in NSS
+    (fixed by requiring 3.21.1)
+  * MFSA 2016-36/CVE-2016-1979 (bmo#1185033)
+    Use-after-free during processing of DER encoded keys in NSS
+    (fixed by requiring 3.21.1)</comment>
+    <requestid>368766</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>af77798a1b752059a0c85979381efad3</srcmd5>
+    <version>3.22.3</version>
+    <time>1460358735</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.22.3
+  * required for Firefox 46.0
+  * Increase compatibility of TLS extended master secret,
+    don't send an empty TLS extension last in the handshake
+    (bmo#1243641)
+
+- update to NSS 3.22.2
+  New functionality:
+  * RSA-PSS signatures are now supported (bmo#1215295)
+  * Pseudorandom functions based on hashes other than SHA-1 are now supported
+  * Enforce an External Policy on NSS from a config file (bmo#1009429)
+  New functions:
+  * PK11_SignWithMechanism - an extended version PK11_Sign()
+  * PK11_VerifyWithMechanism - an extended version of PK11_Verify()
+  * SSL_PeerSignedCertTimestamps - Get signed_certificate_timestamp
+    TLS extension data
+  * SSL_SetSignedCertTimestamps - Set signed_certificate_timestamp
+    TLS extension data
+  New types:
+  * ssl_signed_cert_timestamp_xtn is added to SSLExtensionType
+  * Constants for several object IDs are added to SECOidTag
+  New macros:
+  * SSL_ENABLE_SIGNED_CERT_TIMESTAMPS
+  * NSS_USE_ALG_IN_SSL
+  * NSS_USE_POLICY_IN_SSL
+  * NSS_RSA_MIN_KEY_SIZE
+  * NSS_DH_MIN_KEY_SIZE
+  * NSS_DSA_MIN_KEY_SIZE
+  * NSS_TLS_VERSION_MIN_POLICY
+  * NSS_TLS_VERSION_MAX_POLICY</comment>
+    <requestid>384318</requestid>
+  </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>908f4ce0d9323dcaaae5f536ccdc7852</srcmd5>
+    <version>3.22.3</version>
+    <time>1464689406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>397829</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>3a2133d898550d96a5e5a0dba50ee24f</srcmd5>
+    <version>3.23</version>
+    <time>1465750278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400680</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>d6a123750e75a970eb3d1585eaba5a89</srcmd5>
+    <version>3.24</version>
+    <time>1471008818</time>
+    <user>dimstar_suse</user>
+    <comment>- also sign libfreeblpriv3.so to allow FIPS mode again (boo#992236)
+
+- update to NSS 3.24
+  New functionality:
+  * NSS softoken has been updated with the latest National Institute
+    of Standards and Technology (NIST) guidance (as of 2015):
+    - Software integrity checks and POST functions are executed on
+      shared library load. These checks have been disabled by default,
+      as they can cause a performance regression. To enable these
+      checks, you must define symbol NSS_FORCE_FIPS when building NSS.
+    - Counter mode and Galois/Counter Mode (GCM) have checks to
+      prevent counter overflow.
+    - Additional CSPs are zeroed in the code.
+    - NSS softoken uses new guidance for how many Rabin-Miller tests
+      are needed to verify a prime based on prime size.
+  * NSS softoken has also been updated to allow NSS to run in FIPS
+    Level 1 (no password). This mode is triggered by setting the
+    database password to the empty string. In FIPS mode, you may move
+    from Level 1 to Level 2 (by setting an appropriate password),
+    but not the reverse.
+  * A SSL_ConfigServerCert function has been added for configuring
+    SSL/TLS server sockets with a certificate and private key. Use
+    this new function in place of SSL_ConfigSecureServer,
+    SSL_ConfigSecureServerWithCertChain, SSL_SetStapledOCSPResponses,
+    and SSL_SetSignedCertTimestamps. SSL_ConfigServerCert automatically
+    determines the certificate type from the certificate and private key.
+    The caller is no longer required to use SSLKEAType explicitly to
+    select a &quot;slot&quot; into which the certificate is configured (which
+    incorrectly identifies a key agreement type rather than a certificate).
+    Separate functions for configuring Online Certificate Status Protocol</comment>
+    <requestid>417032</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>306c63fa2aef25b17bac9291ddd773fc</srcmd5>
+    <version>3.24</version>
+    <time>1472246001</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build on certain toolchains (nss-uninitialized.patch)
+  jarfile.c:805:13: error: 'it' may be used uninitialized in this
+  function [-Werror=maybe-uninitialized]</comment>
+    <requestid>421041</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>ba9118b399256ea2a859c863e87a5243</srcmd5>
+    <version>3.25</version>
+    <time>1474806561</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.25
+  New functionality:
+  * Implemented DHE key agreement for TLS 1.3
+  * Added support for ChaCha with TLS 1.3
+  * Added support for TLS 1.2 ciphersuites that use SHA384 as the PRF
+  * In previous versions, when using client authentication with TLS 1.2,
+    NSS only supported certificate_verify messages that used the same
+    signature hash algorithm as used by the PRF. This limitation has
+    been removed.
+  * Several functions have been added to the public API of the
+    NSS Cryptoki Framework.
+  New functions:
+  * NSSCKFWSlot_GetSlotID
+  * NSSCKFWSession_GetFWSlot
+  * NSSCKFWInstance_DestroySessionHandle
+  * NSSCKFWInstance_FindSessionHandle
+  Notable changes:
+  * An SSL socket can no longer be configured to allow both TLS 1.3 and SSLv3
+  * Regression fix: NSS no longer reports a failure if an application
+    attempts to disable the SSLv2 protocol.
+  * The list of trusted CA certificates has been updated to version 2.8
+  * The following CA certificate was Removed
+    Sonera Class1 CA
+  * The following CA certificates were Added
+    Hellenic Academic and Research Institutions RootCA 2015
+    Hellenic Academic and Research Institutions ECC RootCA 2015
+    Certplus Root CA G1
+    Certplus Root CA G2
+    OpenTrust Root CA G1
+    OpenTrust Root CA G2</comment>
+    <requestid>429413</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>aedd1fa587261ff718962f04c695a59b</srcmd5>
+    <version>3.26.2</version>
+    <time>1479381562</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.26.2
+  * required for Firefox 50.0
+  Changes in 3.26
+  New Functionality:
+  * the selfserv test utility has been enhanced to support ALPN
+    (HTTP/1.1) and 0-RTT
+  * added support for the System-wide crypto policy available on
+    Fedora Linux see http://fedoraproject.org/wiki/Changes/CryptoPolicy
+  * introduced build flag NSS_DISABLE_LIBPKIX that allows compilation
+    of NSS without the libpkix library
+  Notable Changes:
+  * The following CA certificate was Added
+    CN = ISRG Root X1
+  * NPN is disabled and ALPN is enabled by default
+  * the NSS test suite now completes with the experimental TLS 1.3
+    code enabled
+  * several test improvements and additions, including a NIST known answer test
+  Changes in 3.26.2
+  * MD5 signature algorithms sent by the server in CertificateRequest
+    messages are now properly ignored. Previously, with rare server
+    configurations, an MD5 signature algorithm might have been selected
+    for client authentication and caused the client to abort the
+    connection soon after.</comment>
+    <requestid>440230</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>be3c5d71ab24cc5c3192ec02cf98529e</srcmd5>
+    <version>3.28.1</version>
+    <time>1485682188</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.28.1
+  No new functionality is introduced in this release. This is a patch release to
+  update the list of root CA certificates and address a minor TLS compatibility
+  issue that some applications experienced with NSS 3.28.
+  * The following CA certificates were Removed
+    CN = Buypass Class 2 CA 1
+    CN = Root CA Generalitat Valenciana
+    OU = RSA Security 2048 V3
+  * The following CA certificates were Added
+    OU = AC RAIZ FNMT-RCM
+    CN = Amazon Root CA 1
+    CN = Amazon Root CA 2
+    CN = Amazon Root CA 3
+    CN = Amazon Root CA 4
+    CN = LuxTrust Global Root 2
+    CN = Symantec Class 1 Public Primary Certification Authority - G4
+    CN = Symantec Class 1 Public Primary Certification Authority - G6
+    CN = Symantec Class 2 Public Primary Certification Authority - G4
+    CN = Symantec Class 2 Public Primary Certification Authority - G6
+  * The version number of the updated root CA list has been set to 2.11
+  * A misleading assertion/alert has been removed when NSS tries to flush data
+    to the peer but the connection was already reset.
+- update to NSS 3.28
+  New functionality:
+  * NSS includes support for TLS 1.3 draft -18. This includes a number
+    of improvements to TLS 1.3:
+    - The signed certificate timestamp, used in certificate
+      transparency, is supported in TLS 1.3.
+    - Key exporters for TLS 1.3 are supported. This includes the early
+      key exporter, which can be used if 0-RTT is enabled. Note that</comment>
+    <requestid>452363</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>758c153211149a7ad6dbf9fe7dcde8b4</srcmd5>
+    <version>3.28.2</version>
+    <time>1487029181</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.28.2
+  This is a stability and compatibility release. Below is a summary of
+  the changes.
+  * Fixed a NSS 3.28 regression in the signature scheme flexibility that
+    causes connectivity issues between iOS 8 clients and NSS servers
+    with ECDSA certificates (bmo#1334114)
+  * Fixed a possible crash on some Windows systems (bmo#1323150)
+  * Fixed a compatibility issue with TLS clients that do not provide a
+    list of supported key exchange groups (bmo#1330612)</comment>
+    <requestid>456518</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>82aa62aac36df4188e4e5ef86c0bc768</srcmd5>
+    <version>3.28.3</version>
+    <time>1487767889</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.28.3
+  * This is a patch release to fix binary compatibility issues.
+    NSS version 3.28, 3.28.1 and 3.28.2 contained changes that were
+    in violation with the NSS compatibility promise.
+    ECParams, which is part of the public API of the freebl/softokn
+    parts of NSS, had been changed to include an additional attribute.
+    That size increase caused crashes or malfunctioning with applications
+    that use that data structure directly, or indirectly through
+    ECPublicKey, ECPrivateKey, NSSLOWKEYPublicKey, NSSLOWKEYPrivateKey,
+    or potentially other data structures that reference ECParams.
+    The change has been reverted to the original state in bug
+    bmo#1334108.
+    SECKEYECPublicKey had been extended with a new attribute, named
+    &quot;encoding&quot;. If an application passed type SECKEYECPublicKey to NSS
+    (as part of SECKEYPublicKey), the NSS library read the uninitialized
+    attribute. With this NSS release SECKEYECPublicKey.encoding is
+    deprecated. NSS no longer reads the attribute, and will always
+    set it to ECPoint_Undefined. See bug bmo#1340103.
+- requires NSPR &gt;= 4.13.1</comment>
+    <requestid>459222</requestid>
+  </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>0d8ab1c88a5c7980530c4c2f20da7b0c</srcmd5>
+    <version>3.28.3</version>
+    <time>1490132659</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480619</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>f53e4375cb7475e0d91e517493617335</srcmd5>
+    <version>3.29.3</version>
+    <time>1490965327</time>
+    <user>maxlin_factory</user>
+    <comment>- update to NSS 3.29.3
+  * enables TLS 1.3 by default
+- TLS 1.3 was already enabled in 3.28.x builds for openSUSE.
+  This build option was removed.
+- required for Firefox 53</comment>
+    <requestid>482051</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>0fe7d9e458c17c031a26d020a828d43f</srcmd5>
+    <version>3.29.5</version>
+    <time>1492516048</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.29.5
+  * Rare crashes in the base 64 decoder and encoder were fixed.
+    (bmo#1344380)
+  * A carry over bug in the RNG was fixed. (bmo#1345089)
+- Allow use of session tickets when there is no ticket wrapping key
+  (boo#1015499, bmo#1320695) (nss-bmo1320695.patch)</comment>
+    <requestid>487715</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>2fdb2c812fa21c0b4e99a8f7a18e71c1</srcmd5>
+    <version>3.30.2</version>
+    <time>1494087976</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>492757</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>bd84b730addd838e62d66d5bf5c184ce</srcmd5>
+    <version>3.31</version>
+    <time>1502963279</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.31
+  New functionality
+  * Allow certificates to be specified by RFC7512 PKCS#11 URIs.
+  * Allow querying a certificate object for its temporary or permanent
+    storage status in a thread safe way.
+  New functions
+  * CERT_GetCertIsPerm - retrieve the permanent storage status attribute of a
+    certificate in a thread safe way.
+  * CERT_GetCertIsTemp - retrieve the temporary storage status attribute of a
+    certificate in a thread safe way.
+  * PK11_FindCertFromURI - find a certificate identified by the given URI.
+  * PK11_FindCertsFromURI - find a list of certificates identified by the given
+    URI.
+  * PK11_GetModuleURI - retrieve the URI of the given module.
+  * PK11_GetTokenURI - retrieve the URI of a token based on the given slot
+    information.
+  * PK11URI_CreateURI - create a new PK11URI object from a set of attributes.
+  * PK11URI_DestroyURI - destroy a PK11URI object.
+  * PK11URI_FormatURI - format a PK11URI object to a string.
+  * PK11URI_GetPathAttribute - retrieve a path attribute with the given name.
+  * PK11URI_GetQueryAttribute - retrieve a query attribute with the given name.
+  * PK11URI_ParseURI - parse PKCS#11 URI and return a new PK11URI object.
+  New macros
+  * Several new macros that start with PK11URI_PATTR_ for path attributes defined
+    in RFC7512.
+  * Several new macros that start with PK11URI_QATTR_ for query attributes defined
+    in RFC7512.
+  Notable changes
+  * The APIs that set a TLS version range have been changed to trim the requested
+    range to the overlap with a systemwide crypto policy, if configured.</comment>
+    <requestid>516062</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>0026c897b39bffa752da081c49fb33e8</srcmd5>
+    <version>3.31.1</version>
+    <time>1505331393</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.31.1
+  * Potential deadlock when using an external PKCS#11 token (bmo#1381784)
+</comment>
+    <requestid>523645</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>5c15aae60897d4483aec414eed616c71</srcmd5>
+    <version>3.32.1</version>
+    <time>1506340506</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.32.1
+  * no upstream changelog/releasenote provided
+
+- update to NSS 3.32
+  Notable changes
+  * Various minor improvements and correctness fixes.
+  * The Code Signing trust bit was turned off for all included root certificates.
+  * The Websites (TLS/SSL) trust bit was turned off for the following
+    root certificates:
+    AddTrust Class 1 CA Root
+    Swisscom Root CA 2
+  * The following CA certificates were Removed:
+    AddTrust Public CA Root
+    AddTrust Qualified CA Root
+    China Internet Network Information Center EV Certificates Root
+    CNNIC ROOT
+    ComSign Secured CA
+    GeoTrust Global CA 2
+    Secure Certificate Services
+    Swisscom Root CA 1
+    Swisscom Root EV CA 2
+    Trusted Certificate Services
+    UTN-USERFirst-Hardware
+    UTN-USERFirst-Object
+- requires NSPR 4.16</comment>
+    <requestid>528036</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>36ec56412cadb215d88afd218d7cda20</srcmd5>
+    <version>3.33</version>
+    <time>1507628110</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.33
+  Notable changes
+  * TLS compression is no longer supported. API calls that attempt
+    to enable compression are accepted without failure. However,
+    TLS compression will remain disabled.
+  * This version of NSS uses a formally verified implementation of
+    Curve25519 on 64-bit systems.
+  * The compile time flag DISABLE_ECC has been removed.
+  * When NSS is compiled without NSS_FORCE_FIPS=1 startup checks
+    are not performed anymore.
+  * Various minor improvements and correctness fixes.
+  New functionality
+  * When listing an NSS database using certutil -L, but the database
+    hasn't yet been initialized with any non-empty or empty password,
+    the text &quot;Database needs user init&quot; will be included in the listing.
+  * When using certutil to set an inacceptable password in FIPS mode,
+    a correct explanation of acceptable passwords will be printed.
+  New functions
+  * CERT_FindCertByIssuerAndSNCX - a variation of existing function
+    CERT_FindCertByIssuerAndSN that accepts an additional password
+    context parameter.
+  * CERT_FindCertByNicknameOrEmailAddrCX - a variation of existing
+    function CERT_FindCertByNicknameOrEmailAddr that accepts an
+    additional password context parameter.
+  * CERT_FindCertByNicknameOrEmailAddrForUsageCX - a variation of
+    existing function CERT_FindCertByNicknameOrEmailAddrForUsage that
+    accepts an additional password context parameter.
+  * NSS_SecureMemcmpZero - check if a memory region is all zero in
+    constant time.
+  * PORT_ZAllocAligned - allocate aligned memory.</comment>
+    <requestid>531472</requestid>
+  </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>7b742f9d8a05f80691dfdffb29562cfc</srcmd5>
+    <version>3.33</version>
+    <time>1513110033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555849</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>559ab5408ab97129be45396ec2925911</srcmd5>
+    <version>3.34.1</version>
+    <time>1516633008</time>
+    <user>dimstar_suse</user>
+    <comment>NSS update as prerequisite for Firefox 58 to be released coming week (to TW).
+
+- update to NSS 3.34.1
+  Changes in 3.34:
+  Notable changes
+  * The following CA certificates were Added:
+    GDCA TrustAUTH R5 ROOT
+    SSL.com Root Certification Authority RSA
+    SSL.com Root Certification Authority ECC
+    SSL.com EV Root Certification Authority RSA R2
+    SSL.com EV Root Certification Authority ECC
+    TrustCor RootCert CA-1
+    TrustCor RootCert CA-2
+    TrustCor ECA-1
+  * The following CA certificates were Removed:
+    Certum CA, O=Unizeto Sp. z o.o.
+    StartCom Certification Authority
+    StartCom Certification Authority G2
+    TÜBİTAK UEKAE Kök Sertifika Hizmet Sağlayıcısı - Sürüm 3
+    ACEDICOM Root
+    Certinomis - Autorité Racine
+    TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı
+    PSCProcert
+    CA 沃通根证书, O=WoSign CA Limited
+    Certification Authority of WoSign
+    Certification Authority of WoSign G2
+    CA WoSign ECC Root
+  * libfreebl no longer requires SSE2 instructions
+  New functionality
+  * When listing an NSS database using certutil -L, but the database
+    hasn't yet been initialized with any non-empty or empty password,
+    the text &quot;Database needs user init&quot; will be included in the listing.
+  * When using certutil to set an inacceptable password in FIPS mode,
+    a correct explanation of acceptable passwords will be printed.
+  * SSLKEYLOGFILE is now supported with TLS 1.3, see bmo#1287711 for details.
+  * SSLChannelInfo has two new fields (bmo#1396525):
+    SSLNamedGroup originalKeaGroup holds the key exchange group of
+    the original handshake when the session was resumed.
+    PRBool resumed is PR_TRUE when the session is resumed and PR_FALSE
+    otherwise.
+  * RSA-PSS signatures are now supported on certificates. Certificates
+    with RSA-PSS or RSA-PKCS#1v1.5 keys can be used to create an RSA-PSS
+    signature on a certificate using the --pss-sign argument to certutil.
+  Changes in 3.34.1:
+  * The following CA certificate was Re-Added. It was removed in NSS
+    3.34, but has been re-added with only the Email trust bit set.
+    (bmo#1418678):
+    libfreebl no longer requires SSE2 instructionsCN = Certum CA, O=Unizeto Sp. z o.o.
+  * Removed entries from certdata.txt for actively distrusted
+    certificates that have expired (bmo#1409872)
+  * The version of the CA list was set to 2.20.
+</comment>
+    <requestid>567964</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>e8c97e2a8ca2a6d5e4c43f53bb8d5a1a</srcmd5>
+    <version>3.35</version>
+    <time>1519486692</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.35
+  New functionality
+  * TLS 1.3 support has been updated to draft -23. This includes a
+    large number of changes since 3.34, which supported only draft
+    -18. See below for details.
+  New Types
+  * SSLHandshakeType - The type of a TLS handshake message.
+  * For the SSLSignatureScheme enum, the enumerated values
+    ssl_sig_rsa_pss_sha* are deprecated in response to a change in
+    TLS 1.3.  Please use the equivalent ssl_sig_rsa_pss_rsae_sha*
+    for rsaEncryption keys, or ssl_sig_rsa_pss_pss_sha* for PSS keys.
+    Note that this release does not include support for the latter.
+  Notable Changes
+  * Previously, NSS used the DBM file format by default. Starting
+    with version 3.35, NSS uses the SQL file format by default.
+    Additional information can be found on this Fedora Linux project
+    page: https://fedoraproject.org/wiki/Changes/NSSDefaultFileFormatSql
+  * Added formally verified implementations of non-vectorized Chacha20
+    and non-vectorized Poly1305 64-bit.
+  * For stronger security, when creating encrypted PKCS#7 or PKCS#12 data,
+    the iteration count for the password based encryption algorithm
+    has been increased to one million iterations. Note that debug builds
+    will use a lower count, for better performance in test environments.
+  * NSS 3.30 had introduced a regression, preventing NSS from reading
+    some AES encrypted data, produced by older versions of NSS.
+    NSS 3.35 fixes this regression and restores the ability to read
+    affected data.
+  * The following CA certificates were Removed:
+    OU = Security Communication EV RootCA1
+    CN = CA Disig Root R1</comment>
+    <requestid>574217</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>6864c5a7f36fd0d14baef261ae591d67</srcmd5>
+    <version>3.36</version>
+    <time>1521903907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587801</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>f6ca8ae8dce9a95e089bb2a61e0168c6</srcmd5>
+    <version>3.36.1</version>
+    <time>1524741702</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.36.1
+  Notable changes
+  * In NSS version 3.35 the iteration count in optimized builds,
+    which is used for password based encryption algorithm related to
+    encrypted PKCS#7 or PKCS#12 data, was increased to one million
+    iterations. That change had caused an interoperability regression
+    with operating systems that are limited to 600 K iterations.
+    NSS 3.36.1 has been changed to use the same 600 K limit.
+  Bugs fixed
+  * Certain smartcard operations could result in a deadlock.
+
+  * Replaces existing vectorized ChaCha20 code with verified</comment>
+    <requestid>600280</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>2021845938585bcc6cd13abde0635b51</srcmd5>
+    <version>3.36.4</version>
+    <time>1529065951</time>
+    <user>maxlin_factory</user>
+    <comment>- update to NSS 3.36.4
+  * required for Firefox 60.0.2 (bsc#1096515)
+  * Fix crash on macOS related to authentication tokens, e.g. PK11or
+    WebAuthn. (bmo#1461731)
+  Bugfixes from 3.36.2
+  * Connecting to a server that was recently upgraded to TLS 1.3
+    would result in a SSL_RX_MALFORMED_SERVER_HELLO error. (bmo#1462303)
+  * Fix a rare bug with PKCS#12 files. (bmo#1460673)
+- use relro linker option (add-relro-linker-option.patch)</comment>
+    <requestid>614946</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>f5e818dea2978751e89ba0c44b7a74fc</srcmd5>
+    <version>3.37.3</version>
+    <time>1530740917</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.37.3
+  * required by Firefox 61.0
+  Notable changes:
+  * The TLS 1.3 implementation was updated to Draft 28.
+  * Added HACL* Poly1305 32-bit
+  * The code to support the NPN protocol has been fully removed.
+  * NSS allows servers now to register ALPN handling callbacks to
+    select a protocol.
+  * NSS supports opening SQL databases in read-only mode.
+  * On Linux, some build configurations can use glibc's function
+    getentropy(), which uses the kernel's getrandom() function.
+  * The CA list was updated to version 2.24, which removed the
+    following CA certificates:
+    - CN = S-TRUST Universal Root CA
+    - CN = TC TrustCenter Class 3 CA II
+    - CN = TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı H5
+  * Fix build on armv6/armv7 and other platforms (bmo#1459739)
+- Set USE_64 on riscv64
+</comment>
+    <requestid>618894</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>0b8e3f062331458ebd00a5a48398f3a7</srcmd5>
+    <version>3.38</version>
+    <time>1538377385</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.38
+  * required by Firefox 62.0
+  New Functionality
+  * Added support for the TLS Record Size Limit Extension
+  * When creating a certificate request (CSR) using certutil -R, an
+    existing orphan private key can be reused. Parameter -k may be
+    used to specify the ID of an existing orphan key. The available
+    orphan key IDs can be displayed using command certutil -K.
+  * When using certutil -O to print the chain for a given certificate
+    nickname, the new parameter --simple-self-signed may be provided,
+    which can avoid ambiguous output in some scenarios.
+  New Functions
+  * SECITEM_MakeItem - Allocate and make an item with the requested contents
+    (secitem.h)
+  New Macros
+  * SSL_RECORD_SIZE_LIMIT - used to control the TLS Record Size Limit
+    Extension (in ssl.h)
+  Notable Changes
+  * Fixed CVE-2018-0495 (bmo#1464971)
+  * Various security fixes in the ASN.1 code
+  * NSS automatically enables caching for SQL database storage on
+    Linux, if it is located on a network filesystem that's known to
+    benefit from caching.
+  * When repeatedly importing the same certificate into an SQL database,
+    the existing nickname will be kept.</comment>
+    <requestid>634751</requestid>
+  </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>3e791c2a9676144dd60234f93e51471e</srcmd5>
+    <version>3.38</version>
+    <time>1539869349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641946</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>66b7f84f1a137cf1c0321520d129328f</srcmd5>
+    <version>3.39</version>
+    <time>1540818917</time>
+    <user>dimstar_suse</user>
+    <comment>in preparation of Firefox 63
+
+- update to NSS 3.39
+  * required by Firefox 63.0
+  Notable bug fixes
+  * NSS responded to an SSLv2-compatible ClientHello with a
+    ServerHello that had an all-zero random (CVE-2018-12384) (bmo#1483128)
+  New functionality
+  * The tstclnt and selfserv utilities added support for configuring
+    the enabled TLS signature schemes using the -J parameter.
+  * NSS will use RSA-PSS keys to authenticate in TLS. Support for
+    these keys is disabled by default but can be enabled using
+    SSL_SignatureSchemePrefSet().
+  * certutil added the ability to delete an orphan private key from
+    an NSS key database.
+  * Added the nss-policy-check utility, which can be used to check
+    an NSS policy configuration for problems.
+  * A PKCS#11 URI can be used as an identifier for a PKCS#11 token.
+  Notable changes
+  * The TLS 1.3 implementation uses the final version number from
+    RFC 8446.
+  * Previous versions of NSS accepted an RSA PKCS#1 v1.5 signature
+    where the DigestInfo structure was missing the NULL parameter.
+    Starting with version 3.39, NSS requires the encoding to contain
+    the NULL parameter.
+  * The tstclnt and selfserv test utilities no longer accept the -z
+    parameter, as support for TLS compression was removed in a
+    previous NSS version.
+  * The CA certificates list was updated to version 2.26.
+  * The following CA certificates were Added:
+    - OU = GlobalSign Root CA - R6
+    - CN = OISTE WISeKey Global Root GC CA</comment>
+    <requestid>644083</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>c3317280d0ce7796ae7b73d214e72d04</srcmd5>
+    <version>3.40.1</version>
+    <time>1545222366</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.40.1
+  * required by Firefox 64.0
+  * patch release fixes CVE-2018-12404
+  Notable bug fixes
+  * FFDHE key exchange sometimes fails with decryption failure (bmo#1478698)
+  New functionality
+  * The draft-00 version of encrypted SNI support is implemented
+  * tstclnt now takes -N option to specify encrypted SNI key
+  Notable changes
+  * The mozilla::pkix library has been ported from Mozilla PSM to NSS.
+    This is a C++ library for building certification paths.
+    mozilla::pkix APIs are not exposed in the libraries NSS builds.
+  * It is easier to build NSS on Windows in mozilla-build environments
+  * The following CA certificates were Removed:
+    CN = Visa eCommerce Root</comment>
+    <requestid>657061</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>9cc434bd6f474549371619866f1bca8e</srcmd5>
+    <version>3.41.1</version>
+    <time>1549311864</time>
+    <user>coolo</user>
+    <comment>- update to NSS 3.41.1
+  * (3.41) required by Firefox 65.0
+  New functionality
+  * Implemented EKU handling for IPsec IKE. (bmo#1252891)
+  * Enable half-closed states for TLS. (bmo#1423043)
+  * Enabled the following ciphersuites by default: (bmo#1493215)
+    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+    TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+    TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+    TLS_RSA_WITH_AES_256_GCM_SHA384
+  Notable changes
+  * The following CA certificates were added:
+    CN = Certigna Root CA
+    CN = GTS Root R1
+    CN = GTS Root R2
+    CN = GTS Root R3
+    CN = GTS Root R4
+    CN = UCA Global G2 Root
+    CN = UCA Extended Validation Root
+  * The following CA certificates were removed:
+    CN = AC Raíz Certicámara S.A.
+    CN = Certplus Root CA G1
+    CN = Certplus Root CA G2
+    CN = OpenTrust Root CA G1
+    CN = OpenTrust Root CA G2
+    CN = OpenTrust Root CA G3
+  Bugs fixed
+  * Reject empty supported_signature_algorithms in Certificate
+    Request in TLS 1.2 (bmo#1412829)
+  * Cache side-channel variant of the Bleichenbacher attack (bmo#1485864)</comment>
+    <requestid>669997</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>837660349ef5a80ed1ed54b4325c0ffc</srcmd5>
+    <version>3.42.1</version>
+    <time>1553699504</time>
+    <user>dimstar_suse</user>
+    <comment>will be required by FF66 to be submitted soon
+
+- update to NSS 3.42.1
+  * required by Firefox 66.0
+  New functionality
+  * Support XDG basedir specification (bmo#818686)
+  Notable changes
+  * added some testcases from the Wycheproof project
+  Bugs fixed
+  * Reject invalid CH.legacy_version in TLS 1.3 (bmo#1490006)
+  * A fix for Solaris where Firefox 60 core dumps during start when
+    using profile from version 52 (bmo#1513913)</comment>
+    <requestid>686019</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>df9cf919622e5201e8df3ece6f8fd604</srcmd5>
+    <version>3.43</version>
+    <time>1558129075</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.43
+  * required by Firefox 67.0
+  New functions
+  * HASH_GetHashOidTagByHashType - convert type HASH_HashType to type SECOidTag
+  * SSL_SendCertificateRequest - allow server to request post-handshake
+    client authentication. To use this both peers need to enable the
+    SSL_ENABLE_POST_HANDSHAKE_AUTH option. Note that while the mechanism
+    is present, post-handshake authentication is currently not TLS 1.3
+    compliant due to bug 1532312
+  Notable changes
+  * The following CA certificates were Added:
+    - emSign Root CA - G1
+    - emSign ECC Root CA - G3
+    - emSign Root CA - C1
+    - emSign ECC Root CA - C3
+    - Hongkong Post Root CA 3
+  Bugs fixed
+  * Improve Gyp build system handling (bmo#1528669, bmo#1529308)
+  * Improve NSS S/MIME tests for Thunderbird (bmo#1529950, bmo#1521174)
+  * If Docker isn't installed, try running a local clang-format as a
+    fallback (bmo#1530134)
+  * Enable FIPS mode automatically if the system FIPS mode flag is set
+    (bmo#1531267)
+  * Add a -J option to the strsclnt command to specify sigschemes
+    (bmo#1528262)
+  * Add manual for nss-policy-check (bmo#1513909)
+  * Fix a deref after a null check in SECKEY_SetPublicValue (bmo#1531074)
+  * Properly handle ESNI with HRR (bmo#1517714)
+  * Expose HKDF-Expand-Label with mechanism (bmo#1529813)
+  * Align TLS 1.3 HKDF trace levels (bmo#1535122)</comment>
+    <requestid>702840</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>119b3fa8f0c321a9a9e186a479ff0e3a</srcmd5>
+    <version>3.44.1</version>
+    <time>1563790561</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.44.1
+  * required by Firefox 68.0
+  Bugs fixed
+  * bmo#1554336 - Optimize away unneeded loop in mpi.c
+  * bmo#1515342 - More thorough input checking
+  * bmo#1540541 - Don't unnecessarily strip leading 0's from key material
+                  during PKCS11 import
+  * bmo#1515236 - Add a SSLKEYLOGFILE enable/disable flag at build.sh
+  * bmo#1546229 - Add IPSEC IKE support to softoken
+  * bmo#1473806 - Fix SECKEY_ConvertToPublicKey handling of non-RSA keys
+  * bmo#1546477 - Updates to testing for FIPS validation
+  * bmo#1552208 - Prohibit use of RSASSA-PKCS1-v1_5 algorithms in TLS 1.3
+  * bmo#1551041 - Unbreak build on GCC &lt; 4.3 big-endian
+
+- update to NSS 3.44
+  * required by Firefox 68.0
+  New functions
+  * CERT_GetCertificateDer - Access the DER-encoded form of a CERTCertificate
+  Notable changes
+  * It is now possible to build NSS as a static library (bmo#1543545)
+  * Initial support for building for iOS
+  Bugs fixed
+  * full list
+    https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.44_release_notes
+- merge some baselibs fixes from SLE</comment>
+    <requestid>713969</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>71abea045dc42774eab2351e1433e475</srcmd5>
+    <version>3.45</version>
+    <time>1567678025</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.45 (bsc#1141322)
+  * required by Firefox 69.0
+  New functions
+  * PK11_FindRawCertsWithSubject - Finds all certificates on the
+    given slot with the given subject distinguished name and returns
+    them as DER bytes. If no such certificates can be found, returns
+    SECSuccess and sets *results to NULL. If a failure is encountered
+    while fetching any of the matching certificates, SECFailure is
+    returned and *results will be NULL.
+  Notable changes
+  * bmo#1540403 - Implement Delegated Credentials
+  * bmo#1550579 - Replace ARM32 Curve25519 implementation with one
+    from fiat-crypto
+  * bmo#1551129 - Support static linking on Windows
+  * bmo#1552262 - Expose a function PK11_FindRawCertsWithSubject for
+    finding certificates with a given subject on a given slot
+  * bmo#1546229 - Add IPSEC IKE support to softoken
+  * bmo#1554616 - Add support for the Elbrus lcc compiler (&lt;=1.23)
+  * bmo#1543874 - Expose an external clock for SSL
+  * bmo#1546477 - Various changes in response to the ongoing FIPS review
+  Certificate Authority Changes
+  * The following CA certificates were Removed:
+    bmo#1552374 - CN = Certinomis - Root CA
+  Bugs fixed
+  * bmo#1540541 - Don't unnecessarily strip leading 0's from key material
+    during PKCS11 import (CVE-2019-11719)
+  * bmo#1515342 - More thorough input checking (CVE-2019-11729)
+  * bmo#1552208 - Prohibit use of RSASSA-PKCS1-v1_5 algorithms in
+    TLS 1.3 (CVE-2019-11727)
+  * bmo#1227090 - Fix a potential divide-by-zero in makePfromQandSeed</comment>
+    <requestid>720828</requestid>
+  </revision>
+</revisionlist>

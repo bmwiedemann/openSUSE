@@ -1,0 +1,15 @@
+<package name="kdeconnect-kde" project="openSUSE:Factory">
+  <title>KDE Android integration</title>
+  <description>Integrate Android with the KDE Desktop.
+
+Current feature list:
+- Clipboard share: copy from or to your desktop
+- Notifications sync (4.3+): Read your Android notifications from KDE
+- Multimedia remote control: Use your phone as a remote control
+- WiFi connection: no usb wire or bluetooth needed
+- RSA Encryption: your information is safe
+
+Please note you will need to install KDE Connect on Android for this app to work:
+https://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp</description>
+  <devel project="KDE:Extra" package="kdeconnect-kde"/>
+</package>

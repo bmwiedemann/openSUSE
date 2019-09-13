@@ -1,0 +1,5 @@
+<package name="haas-proxy" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="haas-proxy"/>
+</package>

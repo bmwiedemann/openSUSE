@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="797">
+    <srcmd5>46723e2213cdc9c9dfc3650bd0f96621</srcmd5>
+    <version>1.01b</version>
+    <time>1168903523</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="929">
+    <srcmd5>46723e2213cdc9c9dfc3650bd0f96621</srcmd5>
+    <version>1.01b</version>
+    <time>1168903523</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="930">
+    <srcmd5>4bc303b08707fb3178d119a5cb5aea02</srcmd5>
+    <version>1.01b</version>
+    <time>1245276393</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="932">
+    <srcmd5>4bc303b08707fb3178d119a5cb5aea02</srcmd5>
+    <version>1.01b</version>
+    <time>1245276393</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="933">
+    <srcmd5>fafe15adcd350b4c8348e41c8500c274</srcmd5>
+    <version>1.01b</version>
+    <time>1268924954</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="935">
+    <srcmd5>fafe15adcd350b4c8348e41c8500c274</srcmd5>
+    <version>1.01b</version>
+    <time>1278667368</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="936">
+    <srcmd5>fafe15adcd350b4c8348e41c8500c274</srcmd5>
+    <version>1.01b</version>
+    <time>1278678597</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="937">
+    <srcmd5>6511ed0e7fa946db7152749e7a12bcb9</srcmd5>
+    <version>1.01b</version>
+    <time>1297387816</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60497 from user pgajdos
+</comment>
+    <requestid>60497</requestid>
+  </revision>
+  <revision rev="9" vrev="938">
+    <srcmd5>6147707f54dee5839ac08b9f85a926d9</srcmd5>
+    <version>1.01b</version>
+    <time>1297387823</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60497
+</comment>
+  </revision>
+  <revision rev="10" vrev="941">
+    <srcmd5>6147707f54dee5839ac08b9f85a926d9</srcmd5>
+    <version>1.01b</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="942">
+    <srcmd5>7e9bdaef2fe865829116585b29e5dd47</srcmd5>
+    <version>1.01b</version>
+    <time>1317744821</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86419 from uli_suse)</comment>
+    <requestid>86424</requestid>
+  </revision>
+  <revision rev="12" vrev="944">
+    <srcmd5>7e9bdaef2fe865829116585b29e5dd47</srcmd5>
+    <version>1.01b</version>
+    <time>1319182180</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="945">
+    <srcmd5>4f6c0d335d5df9637f121021189e86f7</srcmd5>
+    <version>1.01b</version>
+    <time>1323192571</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="947">
+    <srcmd5>4f6c0d335d5df9637f121021189e86f7</srcmd5>
+    <version>1.01b</version>
+    <time>1340183704</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="949">
+    <srcmd5>4f6c0d335d5df9637f121021189e86f7</srcmd5>
+    <version>1.01b</version>
+    <time>1359109451</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="951">
+    <srcmd5>4f6c0d335d5df9637f121021189e86f7</srcmd5>
+    <version>1.01b</version>
+    <time>1379663296</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="953">
+    <srcmd5>4f6c0d335d5df9637f121021189e86f7</srcmd5>
+    <version>1.01b</version>
+    <time>1409301907</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="954">
+    <srcmd5>ac1298fe37c02d7f028f327a9a538896</srcmd5>
+    <version>1.01b</version>
+    <time>1436888678</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file with spec-cleaner (forwarded request 316310 from pluskalm)</comment>
+    <requestid>316343</requestid>
+  </revision>
+</revisionlist>

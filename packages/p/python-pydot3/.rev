@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>344828a7b66ebc7937322951e6da2957</srcmd5>
+    <version>1.0.9</version>
+    <time>1495034269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>490987</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2bdfa752812908e3cd85cf96ecbaa893</srcmd5>
+    <version>1.0.9</version>
+    <time>1499292081</time>
+    <user>dimstar_suse</user>
+    <comment>- drop undefine for python2, this works fine for all pythons</comment>
+    <requestid>507107</requestid>
+  </revision>
+</revisionlist>

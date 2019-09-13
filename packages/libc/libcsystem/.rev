@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>612214fb1d549dfa7ad6fec8e253a372</srcmd5>
+    <version>0~20150101</version>
+    <time>1422626244</time>
+    <user>dimstar_suse</user>
+    <comment>New package - Part of libyal 2015 refresh - may need to go to staging D.  libcstring is a dependency and is currently in staging D.</comment>
+    <requestid>280465</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a116675244aa81a0d5401302a18b0609</srcmd5>
+    <version>0~20150629</version>
+    <time>1454628716</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357440</requestid>
+  </revision>
+</revisionlist>

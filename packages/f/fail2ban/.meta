@@ -1,0 +1,9 @@
+<package name="fail2ban" project="openSUSE:Factory">
+  <title>Bans IP addresses that make too many authentication failures</title>
+  <description>Fail2ban scans log files like /var/log/messages and bans IP addresses
+that makes too many password failures. It updates firewall rules to
+reject the IP address, can send e-mails, or set host.deny entries.
+These rules can be defined by the user. Fail2Ban can read multiple log
+files such as sshd or Apache web server ones.</description>
+  <devel project="security" package="fail2ban"/>
+</package>

@@ -1,0 +1,189 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>186e992e81f6377ad9d0ecd01c00ade3</srcmd5>
+    <version>2.7.0</version>
+    <time>1397812170</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>229130</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>67c2670c85abf93140639386e07fa708</srcmd5>
+    <version>2.8.0</version>
+    <time>1403508245</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.8.0
+  * completion and syntax check on keyval options, e.g.
+    \includegraphics (graphicx!)
+  * search and replace over several documents improved
+  * improved parser for log files (better detection of filenames)
+  * todo-style commands (e.g. \todo{}) are added to the list of todos
+  * the keyboard modifier key for the context menu (spellcheck
+    suppression) is configurable via texstudio.ini
+    &quot;Editor/ContextMenuKeyboardModifiers&quot;
+  * improved auto-hide toolbars feature in embedded viewer
+  * users can overwrite the default language definitions and add own ones
+  * makeglossaries support
+  * allow quoted filenames in include-like commands to support
+    filenames and directories containing spaces
+  * updated LaTeX reference manual
+  * several bugfixes</comment>
+    <requestid>238164</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>67c2670c85abf93140639386e07fa708</srcmd5>
+    <version>2.8.0</version>
+    <time>1409303487</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bc49a179837ea2ced362b4ea1fcf9ea1</srcmd5>
+    <version>2.8.8</version>
+    <time>1425031795</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287908</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a9097bfa6bdfca469ccec702edab163e</srcmd5>
+    <version>2.9.0</version>
+    <time>1426485665</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290799</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>be010cce1536359bc5e16966c371ead8</srcmd5>
+    <version>2.9.4</version>
+    <time>1430595597</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304913</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>66a31726aa2bf1af96db86d7d6f94f91</srcmd5>
+    <version>2.10.2</version>
+    <time>1443068143</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333021</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8fafda8a4f551a9c834ae6030894d4a7</srcmd5>
+    <version>2.10.4</version>
+    <time>1446049846</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341124</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>86fdda247f67b954e6f833e96e2996f2</srcmd5>
+    <version>2.10.6</version>
+    <time>1453019000</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353821</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>62c8a84daebd277b8ee047b27a0dc5e2</srcmd5>
+    <version>2.10.8</version>
+    <time>1455190697</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358711</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>baf869b17645b0996e3a359359290649</srcmd5>
+    <version>2.11.0</version>
+    <time>1465336083</time>
+    <user>dimstar_suse</user>
+    <comment>- Set minimal required memory for building: 2500 Mb
+
+- Update to version 2.11.0
+  * support two editors next to each other
+  * new tabular wizard
+  * support multi-line commands
+  * add scrollbar marks for search and bookmarks
+  * add command option --no-session
+  * bugfixes and minor changes, see included CHANGELOG.txt for details</comment>
+    <requestid>400091</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d15dcc21d19b7f09f31f6456eb2f07ef</srcmd5>
+    <version>2.11.2</version>
+    <time>1477990726</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437900</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4660ba5580304c7faba9f60101604036</srcmd5>
+    <version>2.12.2</version>
+    <time>1486635502</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455442</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d4161117f059f771a4c74fae281869b8</srcmd5>
+    <version>2.12.6</version>
+    <time>1503482111</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518193</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>e0b2fb5f41a8a206230acb0caecac647</srcmd5>
+    <version>2.12.6</version>
+    <time>1515260944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561731</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5e83a891b7c68ffe3fe7c7f01e6bbd4f</srcmd5>
+    <version>2.12.10</version>
+    <time>1533292689</time>
+    <user>dimstar_suse</user>
+    <comment>- Use source url
+- Drop conditionals for older distros, they fail to build anyways
+- Use spec-cleaner to modernise spec file
+
+- Update to version 2.12.10
+  * bug fixes
+  * fix structure view with Qt &gt;5.10
+- Update to version 2.12.8
+  * improved tokenizer for syntax checking and completion
+  * pressing Ctrl+F while the editor search has focus opens the
+    extended search, i.e., you'll get extended search by pressing
+    Ctrl+F twice
+  * automatically insert math delimiters ($) when inserting a math
+    command outside of a math env (can be turned off, default on)
+  * change copy behavior of multiple cursors from selection order
+    to line order
+  * file list is now a transparent popup window: closes when clicked
+    outside
+  * combine file conflict and show diff dialog
+  * fix file watcher not recognizing multiple changes to a file in
+    quick succession
+  * improved detection of package names when opening texdoc
+  * new symbol panel layout
+  * some touch scrolling on certain panels
+  * updated synctex and poppler libraries for pdf viewer
+  * fix undo when a snippet is inserted and a selection is inserted
+    as well
+  * fix some parts of the editor background may not be drawn in the
+    correct color
+  * build for OSX High Sierra</comment>
+    <requestid>627082</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3212cb56d64ae84ce422e55829adf0de</srcmd5>
+    <version>2.12.16</version>
+    <time>1560970687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704671</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6baeda4c3260ee6a15bec5f30d02f5b3</srcmd5>
+    <version>1.0.5</version>
+    <time>1336471474</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115458</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6baeda4c3260ee6a15bec5f30d02f5b3</srcmd5>
+    <version>1.0.5</version>
+    <time>1340184365</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>6baeda4c3260ee6a15bec5f30d02f5b3</srcmd5>
+    <version>1.0.5</version>
+    <time>1359110644</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c74ea49ab781b6b8cdf40ba6f576a0d2</srcmd5>
+    <version>1.0.6</version>
+    <time>1374499417</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.0.6 (forwarded request 183932 from Zaitor)</comment>
+    <requestid>183965</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c74ea49ab781b6b8cdf40ba6f576a0d2</srcmd5>
+    <version>1.0.6</version>
+    <time>1379665070</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>c74ea49ab781b6b8cdf40ba6f576a0d2</srcmd5>
+    <version>1.0.6</version>
+    <time>1409303754</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>628078002764cd7d7f4f9e4225372ca2</srcmd5>
+    <version>1.0.7</version>
+    <time>1430132346</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7: 
+  * Add AC_USE_SYSTEM_EXTENSIONS to expose non-standard extensions
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1</comment>
+    <requestid>303781</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3ce30057bbac05fb0c532c2af23931e9</srcmd5>
+    <version>1.0.8</version>
+    <time>1551029840</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.8
+  * This release hardens xhost against corrupted or malicious responses from
+    the X server, as well as some minor bug &amp; compatibility fixes, and general
+    janitorial maintenance.</comment>
+    <requestid>677771</requestid>
+  </revision>
+</revisionlist>

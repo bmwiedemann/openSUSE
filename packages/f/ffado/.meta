@@ -1,0 +1,15 @@
+<package name="ffado" project="openSUSE:Factory">
+  <title>FireWire 1394 support for audio devices, svn snapshot</title>
+  <description>FFADO aims to provide a generic, open-source solution
+to support FireWire(IEEE1394, iLink) based (semi-)
+professional audio interfaces.
+It's the successor of the FreeBoB project. FFADO is a
+volunteer-based community effort, trying to provide Linux
+with at least the same level of functionality that is
+present on the other operating systems.
+The range of FireWire Audio Devices that we would like
+to support is broad: from pure audio interfaces over
+mixed audio-control devices to DSP algorithm devices.
+This is a snapshot of svn revision 1855</description>
+  <devel project="multimedia:libs" package="ffado"/>
+</package>

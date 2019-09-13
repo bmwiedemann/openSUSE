@@ -1,0 +1,7 @@
+<package name="aalib" project="openSUSE:Factory">
+  <title>An ASCII Art Library</title>
+  <description>AA-lib is a low level gfx library. AA-lib does not require a graphics
+device. In fact, there is no graphical output possible. AA-lib replaces
+old-fashioned output methods with a powerful ASCII art renderer.</description>
+  <devel project="devel:libraries:c_c++" package="aalib"/>
+</package>

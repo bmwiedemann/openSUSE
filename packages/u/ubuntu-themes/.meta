@@ -1,0 +1,5 @@
+<package name="ubuntu-themes" project="openSUSE:Factory">
+  <title>Eyecandy from Ubuntu</title>
+  <description>Ubuntu GNU/Linux basic artwork.</description>
+  <devel project="X11:Unity" package="ubuntu-themes"/>
+</package>

@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a4036d4c3e2fe270a27db95e11f8c41</srcmd5>
+    <version>0.4</version>
+    <time>1408524659</time>
+    <user>lnussel</user>
+    <comment>add package to Factory, for inclusion in LXDE pattern</comment>
+    <requestid>245049</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0a4036d4c3e2fe270a27db95e11f8c41</srcmd5>
+    <version>0.4</version>
+    <time>1409300926</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>fb319157996c5e23c31785bbdaa66018</srcmd5>
+    <version>0.4</version>
+    <time>1458228831</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369087</requestid>
+  </revision>
+</revisionlist>

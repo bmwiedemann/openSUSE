@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d88e8fd617597e1ecaf742ffeee5910b</srcmd5>
+    <version>0.10.1</version>
+    <time>1292862468</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55179 from user vuntz
+</comment>
+    <requestid>55179</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d2377fbcde7fb6d7127121f64d510b5c</srcmd5>
+    <version>0.10.1</version>
+    <time>1292862473</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55179
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>70c51f6fa3048de91c0bedff30f4d156</srcmd5>
+    <version>0.10.1</version>
+    <time>1297643458</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60944 from user vuntz
+</comment>
+    <requestid>60944</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>60041b18b92c4f0cde4ab7e39908893f</srcmd5>
+    <version>0.10.1</version>
+    <time>1297643465</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60944
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>60041b18b92c4f0cde4ab7e39908893f</srcmd5>
+    <version>0.10.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>de0dc72970fa27c16aa957959a934db3</srcmd5>
+    <version>0.10.1</version>
+    <time>1306763763</time>
+    <user>saschpe</user>
+    <comment>Pushing G:A packages with a build fix</comment>
+    <requestid>71939</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>c5c60c6738507ad33bb51b80b7e84e1c</srcmd5>
+    <version>0.10.1</version>
+    <time>1306763772</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71939
+</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>c5c60c6738507ad33bb51b80b7e84e1c</srcmd5>
+    <version>0.10.1</version>
+    <time>1319181918</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>4864851332e0e15964d06f6a56ccc158</srcmd5>
+    <version>0.10.1</version>
+    <time>1325787115</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98916</requestid>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>4762b39151a474715b868f605923d93c</srcmd5>
+    <version>0.10.1</version>
+    <time>1329318910</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104345 from coolo)</comment>
+    <requestid>104660</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>4762b39151a474715b868f605923d93c</srcmd5>
+    <version>0.10.1</version>
+    <time>1340183380</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>4762b39151a474715b868f605923d93c</srcmd5>
+    <version>0.10.1</version>
+    <time>1359108957</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>b8bb56b2e395edc74bd69a86716c9d91</srcmd5>
+    <version>0.10.1</version>
+    <time>1362730195</time>
+    <user>coolo</user>
+    <comment>- Port to GStreamer 1.0:
+  + Add gnome-gmail-notifier-gstreamer-1.0.patch: Actual port.
+  + Add gnome-common BuildRequires and call to autogen.sh and as
+    above patch touches the build system.
+  + Replace gstreamer-0_10-plugins-good, gstreamer-0_10-utils and
+    pkgconfig(gstreamer-0.10) BuildRequires with gstreamer-utils,
+    gstreamer-plugins-good and pkgconfig(gstreamer-1.0). (forwarded request 156998 from Zaitor)</comment>
+    <requestid>157618</requestid>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>b8bb56b2e395edc74bd69a86716c9d91</srcmd5>
+    <version>0.10.1</version>
+    <time>1379662488</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>b8bb56b2e395edc74bd69a86716c9d91</srcmd5>
+    <version>0.10.1</version>
+    <time>1409301024</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>24cdfe6435c7c6db54fe583d958ad7d5</srcmd5>
+    <version>0.10.1</version>
+    <time>1412533924</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253900</requestid>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>d34be7a3e9b3cc79a2c4fa35a51ef49a</srcmd5>
+    <version>0.10.1</version>
+    <time>1520503044</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581085 from dimstar)</comment>
+    <requestid>582690</requestid>
+  </revision>
+</revisionlist>

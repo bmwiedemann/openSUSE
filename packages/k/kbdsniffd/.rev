@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>dc8394d530d37e6b6bef2b67f58dc018</srcmd5>
+    <version>0.2</version>
+    <time>1211164593</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eded373248fc8cf7df9b3a3de6a03433</srcmd5>
+    <version>0.4</version>
+    <time>1221273076</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e946ac721f795d5728d5640949d2216c</srcmd5>
+    <version>0.6</version>
+    <time>1251497006</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbdsniffd based on submit request 19011 from user coolo
+</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>da37b9502fd004153cc3ff44662560e8</srcmd5>
+    <version>0.6</version>
+    <time>1252018344</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbdsniffd based on submit request 19569 from user marco
+</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>da37b9502fd004153cc3ff44662560e8</srcmd5>
+    <version>0.6</version>
+    <time>1252018344</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbdsniffd based on submit request 19569 from user marco
+</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>aae03454eb069e1faf035a4c7dbbbbad</srcmd5>
+    <version>0.6</version>
+    <time>1268924164</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>aae03454eb069e1faf035a4c7dbbbbad</srcmd5>
+    <version>0.6</version>
+    <time>1278667354</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>aae03454eb069e1faf035a4c7dbbbbad</srcmd5>
+    <version>0.6</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>aae03454eb069e1faf035a4c7dbbbbad</srcmd5>
+    <version>0.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>4282ddbe9c62f8d7dd483bed5f7142f8</srcmd5>
+    <version>0.6</version>
+    <time>1317744753</time>
+    <user>oertel</user>
+    <comment>
+- cross-build fix: use %__cc macro (forwarded request 86407 from uli_suse)</comment>
+    <requestid>86456</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>4282ddbe9c62f8d7dd483bed5f7142f8</srcmd5>
+    <version>0.6</version>
+    <time>1319182023</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>5f700482eb1aa2a4d49efc8d3fcda30e</srcmd5>
+    <version>0.6</version>
+    <time>1323192065</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>5f700482eb1aa2a4d49efc8d3fcda30e</srcmd5>
+    <version>0.6</version>
+    <time>1340183498</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>5f700482eb1aa2a4d49efc8d3fcda30e</srcmd5>
+    <version>0.6</version>
+    <time>1359109138</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>5f700482eb1aa2a4d49efc8d3fcda30e</srcmd5>
+    <version>0.6</version>
+    <time>1379662738</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="22">
+    <srcmd5>58f23962412509a30bb66987bc78bcd8</srcmd5>
+    <version>0.6</version>
+    <time>1385489851</time>
+    <user>coolo</user>
+    <comment>- fixed file permissions away from 744 to 755 or 644. bnc#851620 (forwarded request 208495 from msmeissn)</comment>
+    <requestid>208496</requestid>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>58f23962412509a30bb66987bc78bcd8</srcmd5>
+    <version>0.6</version>
+    <time>1409301308</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="25">
+    <srcmd5>7a501ddb48d9b6bcb184f281c021e724</srcmd5>
+    <version>0.6</version>
+    <time>1544189746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655688</requestid>
+  </revision>
+  <revision rev="19" vrev="26">
+    <srcmd5>6e0c1cb5753819a0d979f1e4d600055a</srcmd5>
+    <version>0.6</version>
+    <time>1547130063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663654</requestid>
+  </revision>
+</revisionlist>

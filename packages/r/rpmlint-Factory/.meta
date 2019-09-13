@@ -1,0 +1,6 @@
+<package name="rpmlint-Factory" project="openSUSE:Factory">
+  <title>Rpm correctness checker - Factory configuration</title>
+  <description>Rpmlint is a tool to check common errors on rpm packages. This package
+provides the configuration specific for SUSE Factory.</description>
+  <devel project="devel:openSUSE:Factory:rpmlint" package="rpmlint-Factory"/>
+</package>

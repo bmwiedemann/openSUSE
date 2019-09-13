@@ -1,0 +1,5 @@
+<package name="ocaml-sedlex" project="openSUSE:Factory">
+  <title>unicode-friendly lexer generator</title>
+  <description>A lexer generator for OCaml, similar to ocamllex, but supporting Unicode. Contrary to ocamllex, lexer specifications for sedlex are embedded in regular OCaml source files.</description>
+  <devel project="devel:languages:ocaml" package="ocaml-sedlex"/>
+</package>

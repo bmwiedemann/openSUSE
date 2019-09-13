@@ -1,0 +1,301 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fbd5d18572e21ddd7f29ff0e8d974cf4</srcmd5>
+    <version>3.0.0</version>
+    <time>1193193184</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>75afb03585f21259eec6acfce5152186</srcmd5>
+    <version>3.0.1</version>
+    <time>1207691145</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>8f37c71ddc59017dc626ff98781c90f7</srcmd5>
+    <version>3.0.1</version>
+    <time>1210030089</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="38">
+    <srcmd5>8f37c71ddc59017dc626ff98781c90f7</srcmd5>
+    <version>3.0.1</version>
+    <time>1210030089</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="39">
+    <srcmd5>14fcb06fcafe8092ba272f34cba04712</srcmd5>
+    <version>3.0.1</version>
+    <time>1226937700</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="40">
+    <srcmd5>6bca51c01248d1db452f2ee0f91271ec</srcmd5>
+    <version>3.0.1</version>
+    <time>1227191211</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c24052ca7795aad04bd51d8e6e454bca</srcmd5>
+    <version>3.0.2</version>
+    <time>1249574455</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c24052ca7795aad04bd51d8e6e454bca</srcmd5>
+    <version>3.0.2</version>
+    <time>1249574455</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>058f641b213d5372f8697557f889fad5</srcmd5>
+    <version>3.0.2</version>
+    <time>1263481945</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/i2c-tools based on submit request 28358 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>632c1b06a4bd4caec23563d7227f95c8</srcmd5>
+    <version>3.0.2</version>
+    <time>1268923963</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>632c1b06a4bd4caec23563d7227f95c8</srcmd5>
+    <version>3.0.2</version>
+    <time>1278667350</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>632c1b06a4bd4caec23563d7227f95c8</srcmd5>
+    <version>3.0.2</version>
+    <time>1278678582</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>e198503d434addfc745ad4ae6b756005</srcmd5>
+    <version>3.0.2</version>
+    <time>1288693556</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51866 from user coolo
+</comment>
+    <requestid>51866</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>d65b7b07bb592d615430a9f7f89bf014</srcmd5>
+    <version>3.0.2</version>
+    <time>1288693564</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51866
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1bb59e01bee9df9ba45d3b99b16a77a0</srcmd5>
+    <version>3.0.3</version>
+    <time>1292760281</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56060 from user jdelvare
+</comment>
+    <requestid>56060</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>1bb59e01bee9df9ba45d3b99b16a77a0</srcmd5>
+    <version>3.0.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>24ffb0af7b35cd0714053bc1471ed5c4</srcmd5>
+    <version>3.0.3</version>
+    <time>1317744723</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86400 from uli_suse)</comment>
+    <requestid>86455</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>24ffb0af7b35cd0714053bc1471ed5c4</srcmd5>
+    <version>3.0.3</version>
+    <time>1319181977</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>da8eb6fc089f36fb978c56bb7bec92a2</srcmd5>
+    <version>3.1.0</version>
+    <time>1323190748</time>
+    <user>coolo</user>
+    <comment>Update to version 3.1.0.</comment>
+    <requestid>95416</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>da8eb6fc089f36fb978c56bb7bec92a2</srcmd5>
+    <version>3.1.0</version>
+    <time>1340183445</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>da8eb6fc089f36fb978c56bb7bec92a2</srcmd5>
+    <version>3.1.0</version>
+    <time>1359109059</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>5067205504c2bc404af1aaeb8b4875c6</srcmd5>
+    <version>3.1.0</version>
+    <time>1360772740</time>
+    <user>coolo</user>
+    <comment>Backport fixes from upstream 3.1 branch:
+- i2c-tools-r6063-dont-choke-when-no-eeprom.diff: Don't choke when
+  no EEPROM is found.
+- i2c-tools-r6106-vendors-JEP106AG.diff,
+- i2c-tools-r6107-vendors-JEP106AJ.diff: Update vendor list based
+   on Jedec documents JEP106AG and JEP106AJ.
+- i2c-tools-r6108-remove-duplicate-ns.diff: Remove duplicate &quot;ns&quot;
+  in SDR timings.
+- i2c-tools-r6109-fix-decoding-revision.diff: Fix decoding of SDR
+  SPD revision.
+- i2c-tools-r6110-i2cdetect-clarify-probing.diff: Clarify the SMBus
+  commands used for probing by default.
+- i2c-tools-r6121-typo-sprint.diff: Prevent hang on reserved DDR3
+  module type, caused by a typo in function name.
+- i2c-tools-r6122-more-DDR3-module-types.diff: Decode more DDR3
+  module types.
+
+- patch license to follow spdx.org standard</comment>
+    <requestid>155334</requestid>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>553744d39768d874127adb50f2b28afd</srcmd5>
+    <version>3.1.0</version>
+    <time>1364896317</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161533 from m_meister)</comment>
+    <requestid>161596</requestid>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>099087003c1afd8a95e7e22e236d6943</srcmd5>
+    <version>3.1.0</version>
+    <time>1366357583</time>
+    <user>coolo</user>
+    <comment>- decode-dimms: Backport fixes from upstream 3.1 branch
+- decode-dimms: Improve DDR3 support (hackweek 9 project)</comment>
+    <requestid>171379</requestid>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>099087003c1afd8a95e7e22e236d6943</srcmd5>
+    <version>3.1.0</version>
+    <time>1379662631</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>201bc678893cbf461ed0ee45289f7045</srcmd5>
+    <version>3.1.1</version>
+    <time>1393221124</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.1.1:
+  * Includes 13 packports we already had
+  * Some additional fixes to decode-dimms
+  * New manual pages for decode-dimms, decode-vaio
+  * i2c-stub-from-dump tolerance on input dump format was improved</comment>
+    <requestid>223530</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>1091de693e34b3bc1aa7d4c8929ef7aa</srcmd5>
+    <version>3.1.1</version>
+    <time>1403762419</time>
+    <user>coolo</user>
+    <comment>Fix DDR3 extended temp range refresh rate decoding</comment>
+    <requestid>238040</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>1091de693e34b3bc1aa7d4c8929ef7aa</srcmd5>
+    <version>3.1.1</version>
+    <time>1409301188</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>1726a4484e240da3cdbb3f2d84db4357</srcmd5>
+    <version>3.1.1</version>
+    <time>1445285658</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport  r6048 and r6053 in order to not conflict with 
+  linux-glibc-devel
+  i2c-tools-r6048-Move-SMBus-helper-functions.patch
+  i2c-tools-r6053-Add-smbus-header.patch (forwarded request 338994 from k0da)</comment>
+    <requestid>339004</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d6fd3aed9a74e260b5b89354c7c5d098</srcmd5>
+    <version>3.1.2</version>
+    <time>1449995845</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>347885</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>f4d5c13e8f7f2d000c0e43cc72c05039</srcmd5>
+    <version>3.1.2</version>
+    <time>1499880617</time>
+    <user>dimstar_suse</user>
+    <comment>- Point to the new download location.
+- Update the URL.
+- Remove authors list from package description, it does not belong there.
+- decode-dimms-correctly-check-for-out-of-bounds-vendor-id.patch: Fix recommended by upstream.
+</comment>
+    <requestid>508579</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>b185846f380a659adf538ccee21b69d9</srcmd5>
+    <version>3.1.2</version>
+    <time>1500456122</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing bug number in changes file (bsc#1041644)</comment>
+    <requestid>511065</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a33bb025511ea094b4df571f068bc2b7</srcmd5>
+    <version>4.0</version>
+    <time>1510659532</time>
+    <user>dimstar_suse</user>
+    <comment>- i2cbusses-path-overflows.patch: Prevent buffer overflow of
+  sysfs paths.
+- Update to version 4.0:
+  * New library libi2c
+  * Many fixes and improvements to decode-dimms
+  * New manual pages and examples added to existing manual pages
+  * New tool i2ctransfer
+- Removed obsolete decode-dimms-correctly-check-for-out-of-bounds-vendor-id.patch,
+  i2c-tools-hackweek-9-dependencies.diff,
+  i2c-tools-hackweek-9-improve-DDR3-support.diff,
+  i2c-tools-r6048-Move-SMBus-helper-functions.patch,
+  i2c-tools-r6053-Add-smbus-header.patch (upstream)
+</comment>
+    <requestid>539806</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>d22ff446525a9fb0dba73c09c5bb730c</srcmd5>
+    <version>4.0</version>
+    <time>1514027783</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix random failure of parallel builds
+- Add DDR4 SDRAM memory support to decode-dimms (Hackweek 0x10 project)
+</comment>
+    <requestid>557244</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0fa9e45011bafcd1cd2b1e7bcd03fa48</srcmd5>
+    <version>4.1</version>
+    <time>1544441204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653858</requestid>
+  </revision>
+</revisionlist>

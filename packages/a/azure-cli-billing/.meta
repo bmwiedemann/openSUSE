@@ -1,0 +1,11 @@
+<package name="azure-cli-billing" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'billing' Command Module</title>
+  <description>Microsoft Azure CLI 'billing' Command Module
+
+This package is for the 'billing' module.
+i.e. 'az billing'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-billing"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

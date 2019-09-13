@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf9d639da2cc2228dfa406989916c754</srcmd5>
+    <version>1.5.27</version>
+    <time>1492169554</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>478026</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5986741b15598124b367665972f94317</srcmd5>
+    <version>1.5.27</version>
+    <time>1493020184</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>489812</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55bf0f06e423b60a6678d537033fde3c</srcmd5>
+    <version>1.6.0</version>
+    <time>1518601861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576016</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0bdd3420ce6590e2727dbc77e4a8e36c</srcmd5>
+    <version>1.6.0</version>
+    <time>1545866871</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659599</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a4330be9b215ca5dbcb708146044d303</srcmd5>
+    <version>1.7.0</version>
+    <time>1555691828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694213</requestid>
+  </revision>
+</revisionlist>

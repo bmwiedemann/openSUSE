@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>23f8902aa1025129b5f55ac2064335e8</srcmd5>
+    <version>1.2.0</version>
+    <time>1347487448</time>
+    <user>namtrac</user>
+    <comment>New package: will be needed for GNOME 3.6</comment>
+    <requestid>133730</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>451afb6ce176bf20c7c15b6622f60dcd</srcmd5>
+    <version>1.2.1</version>
+    <time>1357575807</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 146299 from dimstar)</comment>
+    <requestid>146949</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>451afb6ce176bf20c7c15b6622f60dcd</srcmd5>
+    <version>1.2.1</version>
+    <time>1359109332</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>daa87feb620a4a4f7718be778c8038c7</srcmd5>
+    <version>1.2.2</version>
+    <time>1372145270</time>
+    <user>coolo</user>
+    <comment>Update to 1.2.2 - tweak post review (forwarded request 180483 from Zaitor)</comment>
+    <requestid>180649</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>703f6e65636ad9eecb26e4f47e38b3b7</srcmd5>
+    <version>1.2.3</version>
+    <time>1379076351</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 1.2.3 (forwarded request 198774 from Zaitor)</comment>
+    <requestid>198839</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>703f6e65636ad9eecb26e4f47e38b3b7</srcmd5>
+    <version>1.2.3</version>
+    <time>1379663055</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>1bdf25ab94d90c22980408708d6dbe52</srcmd5>
+    <version>1.2.3</version>
+    <time>1408196262</time>
+    <user>lnussel</user>
+    <comment>Push fix</comment>
+    <requestid>244820</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2f24cc54391e80f541a643516643f706</srcmd5>
+    <version>1.2.4</version>
+    <time>1408960475</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246082</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>2f24cc54391e80f541a643516643f706</srcmd5>
+    <version>1.2.4</version>
+    <time>1409301671</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>73a7b219f105eca7c39650716359a2f8</srcmd5>
+    <version>1.3.0</version>
+    <time>1439190641</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319081</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>cb593099e59da0a891ddaaeb6bc9b19e</srcmd5>
+    <version>1.3.0</version>
+    <time>1473102865</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424164</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>098a7c9f578efba234ea4febd3629878</srcmd5>
+    <version>1.3.0</version>
+    <time>1510505860</time>
+    <user>dimstar_suse</user>
+    <comment>- Build python3 version of bindings as well (forwarded request 540166 from pluskalm)</comment>
+    <requestid>540576</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ef5a42ba5e43f6147fa53671eceb5943</srcmd5>
+    <version>1.4.0</version>
+    <time>1516091336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562613</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2bd70a0ff067a9f10589fdb697e604a4</srcmd5>
+    <version>1.4.0</version>
+    <time>1520502490</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581257 from dimstar)</comment>
+    <requestid>582832</requestid>
+  </revision>
+</revisionlist>

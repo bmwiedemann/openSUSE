@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49c3ef3b6808cc61b8f1bf53193e37be</srcmd5>
+    <version>6.82</version>
+    <time>1386333914</time>
+    <user>coolo</user>
+    <comment>some perl packages need a newer version</comment>
+    <requestid>208528</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3687cbf753421f249e2e6c75c8fdb987</srcmd5>
+    <version>6.88</version>
+    <time>1392111874</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221609</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d1174e1060fa120d9ade5c275ac0ac35</srcmd5>
+    <version>6.98</version>
+    <time>1406145990</time>
+    <user>coolo</user>
+    <comment>update to 6.98, fix deps and avoid build loop (forwarded request 241463 from computersalat)</comment>
+    <requestid>241464</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d1174e1060fa120d9ade5c275ac0ac35</srcmd5>
+    <version>6.98</version>
+    <time>1409302281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d4ba631f243bb28b35ce69218276c002</srcmd5>
+    <version>7.04</version>
+    <time>1423397053</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.04
+    Doc fixes:
+     - Corrected MAGICXS documentation
+     - Remove Module::Build encouragement
+ 
+ 7.03_04 Thu Nov 27 14:35:15 GMT 2014
+     Core fixes:
+     - Do not use ccstdflags with the core extensions
+ 
+ 7.03_03 Tue Nov 25 16:37:57 GMT 2014
+     Win32 Fixes:
+     - Eliminate sub-process spawning when checking make type
+ 
+ 7.03_02 Mon Nov 24 13:18:09 GMT 2014
+     VMS fixes:
+     - Fix a couple of missing vendor targets
+     - Remove VAXCCURSE from ExtUtils::Liblist::Kid::_vms_ext.
+ 
+ 7.03_01 Tue Nov 18 21:29:40 GMT 2014
+     VMS fixes:
+     - Handle spaces in install targets
+     - Allow spaces in eliminate_macros and fixpath
+     - Remove fixpath call from ExtUtils::Liblist::Kid::_vms_ext.
+     - Override is_make_type() as checks as unnecessary
+ 
+     Core fixes:
+     - Wrap parse_abstract() call to Encode in eval() to
+       avoid build failures
+     - Fix issue with CCFLAGS in core
+- replace fix-provides.diff with a grep call</comment>
+    <requestid>284726</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>49f31d034ccbf10360bab6bb2713258c</srcmd5>
+    <version>7.04</version>
+    <time>1427564329</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293389</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>fac7dede5c7de695b2e17e8152c4922f</srcmd5>
+    <version>7.04</version>
+    <time>1440480191</time>
+    <user>coolo</user>
+    <comment>- recompile against perl 5.22</comment>
+    <requestid>315529</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e9d889d4b483cb334fb2adfd550c69cd</srcmd5>
+    <version>7.10</version>
+    <time>1458333006</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>371277</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b9b13b35a29f3677835599439f7cf2c3</srcmd5>
+    <version>7.30</version>
+    <time>1498551646</time>
+    <user>dimstar_suse</user>
+    <comment>- try without the -mini package - the deps are using Module::Build
+  meanwhile
+
+- rebase downstream bsc#841204 fix against 7.30
+  + Do_not_set_RPATH_by_default.patch
+  + based on:
+  http://pkgs.fedoraproject.org/cgit/rpms/perl-ExtUtils-MakeMaker.git/plain/ExtUtils-MakeMaker-7.16-USE_MM_LD_RUN_PATH.patch
+
+- updated to 7.30
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+  7.30 Mon Jun 12 13:17:29 BST 2017
+  
+      No changes since v7.29_02
+  
+  7.29_02 Sun Jun 11 12:00:33 BST 2017
+  
+      Doc fixes:
+      - Fixed POD errors in FAQ
+  
+  7.29_01 Wed May 31 08:34:10 BST 2017
+  
+      Bug fixes:
+      - Prune .a without extralibs.ld from search paths
+
+- updated to 7.28
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+  7.28  Tue May 30 22:01:08 BST 2017
+  
+      No changes since v7.27_02</comment>
+    <requestid>506093</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>faab3a2d54df0e645df24e7c2ef75f5d</srcmd5>
+    <version>7.32</version>
+    <time>1519218397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577954</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d33fbb644393c32be61c123f47e3703f</srcmd5>
+    <version>7.34</version>
+    <time>1521904086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590058</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cad5e10229af6dc2fd722cc5ec26fd00</srcmd5>
+    <version>7.36</version>
+    <time>1559374968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705646</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b92bb3bdcbff03e71f380c30dc1b7233</srcmd5>
+    <version>0.60</version>
+    <time>1389889260</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>214007</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7cda16b990451dbda4d5430c030317fc</srcmd5>
+    <version>0.60</version>
+    <time>1392184993</time>
+    <user>coolo</user>
+    <comment>- Fix build for SLE11. Add g_malloc0_n.patch
+
+- add suse-ldap.dif: fix path to slapd in SUSE
+- update to 0.59 (forwarded request 221383 from kwk)</comment>
+    <requestid>221389</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>7cda16b990451dbda4d5430c030317fc</srcmd5>
+    <version>0.60</version>
+    <time>1409301748</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5aa333e67f7693239535f43033589af9</srcmd5>
+    <version>0.60</version>
+    <time>1438421767</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318586</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>97fd6d383cf35f9336ed6b831a4474d2</srcmd5>
+    <version>0.60</version>
+    <time>1502892785</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515186</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8389df730cbe8804b1d8f0685e689dff</srcmd5>
+    <version>0.62</version>
+    <time>1527582563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>609930</requestid>
+  </revision>
+</revisionlist>

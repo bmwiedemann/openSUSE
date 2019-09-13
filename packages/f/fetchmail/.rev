@@ -1,0 +1,638 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>ec0f1b63fbb4f7ace112a4542e9836bb</srcmd5>
+    <version>6.3.5</version>
+    <time>1168902734</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d75125319b0c0788be8483990d21dbd1</srcmd5>
+    <version>6.3.6</version>
+    <time>1169744161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3ae3d735fb3530144d74d8b8510caf73</srcmd5>
+    <version>6.3.6</version>
+    <time>1170804534</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="12">
+    <srcmd5>c485b34ee6070eb92aa45c602a615486</srcmd5>
+    <version>6.3.6</version>
+    <time>1175214787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5bd2714340e3b2b7aa72a2deb34c8d27</srcmd5>
+    <version>6.3.8</version>
+    <time>1177011001</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="27">
+    <srcmd5>4f75ba7c5d7c90f44488a648c339cc07</srcmd5>
+    <version>6.3.8</version>
+    <time>1183406286</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="45">
+    <srcmd5>adeaa57acd49f297896135854f13a85f</srcmd5>
+    <version>6.3.8</version>
+    <time>1188578429</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="51">
+    <srcmd5>38524676e08ed0bc5123c6b60d9be1e0</srcmd5>
+    <version>6.3.8</version>
+    <time>1189538161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="58">
+    <srcmd5>eec0a990c0a2ec9c75e4ae5ae3ffec0e</srcmd5>
+    <version>6.3.8</version>
+    <time>1191423643</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="77">
+    <srcmd5>aa9e9c200179f48cd807a9cca157bf72</srcmd5>
+    <version>6.3.8</version>
+    <time>1196290910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="113">
+    <srcmd5>3fc48b30601880a5453e3dcc4b5afcba</srcmd5>
+    <version>6.3.8</version>
+    <time>1206726973</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="123">
+    <srcmd5>347d25c0f7fda64a3284e1a6c0a0353f</srcmd5>
+    <version>6.3.8</version>
+    <time>1209644077</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="130">
+    <srcmd5>a320fb5a69f343847683c10ee95445cd</srcmd5>
+    <version>6.3.8</version>
+    <time>1211499645</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="136">
+    <srcmd5>e372c14e2c00b26217526b5f9b5ceb89</srcmd5>
+    <version>6.3.8</version>
+    <time>1214250101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="139">
+    <srcmd5>d1b5fcdecdd09fb0a7c59382d95ccb2e</srcmd5>
+    <version>6.3.8</version>
+    <time>1215528869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="144">
+    <srcmd5>83c7101e8aa757119b4df5d854e8ed3e</srcmd5>
+    <version>6.3.8</version>
+    <time>1216939460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="161">
+    <srcmd5>83b3948a4c6f6e7414e54771acd0d752</srcmd5>
+    <version>6.3.8</version>
+    <time>1219443758</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>02bcd03d3fc0196c1b44fa4425d14283</srcmd5>
+    <version>6.3.8.90</version>
+    <time>1220647087</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>dbbcf96113233ed8fe3ee80ec5e218d5</srcmd5>
+    <version>6.3.8.90</version>
+    <time>1220990905</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>5ed7b94477e9a9aaf3cb8246ff8d337f</srcmd5>
+    <version>6.3.8.90</version>
+    <time>1223307230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>5a52e90fe1d38446531fbfd95c749f15</srcmd5>
+    <version>6.3.8.90</version>
+    <time>1223546184</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>724bae3ec661928c8c4d2319c8a21304</srcmd5>
+    <version>6.3.8.90</version>
+    <time>1226936918</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="13">
+    <srcmd5>8dfee2a4a243644210cac914e16ff32f</srcmd5>
+    <version>6.3.8.90</version>
+    <time>1231779171</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>84d303589f8285b1ba37277d78124411</srcmd5>
+    <version>6.3.9</version>
+    <time>1231868692</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5419aafd127990ccc7e2ddb471e6b03e</srcmd5>
+    <version>6.3.10</version>
+    <time>1246694311</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>10241e19eb2f7589bdd0b26e8c57fead</srcmd5>
+    <version>6.3.11</version>
+    <time>1249919378</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>10241e19eb2f7589bdd0b26e8c57fead</srcmd5>
+    <version>6.3.11</version>
+    <time>1249919378</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bc56e78ad1da63bc346955385e3d8db3</srcmd5>
+    <version>6.3.13</version>
+    <time>1258388754</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/fetchmail based on submit request 24293 from user puzel
+</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e977204ce2255c73e1269510cc8a7f94</srcmd5>
+    <version>6.3.14</version>
+    <time>1265381399</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/fetchmail based on submit request 31635 from user puzel
+</comment>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>516ee98743b3c39d10b3e794b4586d57</srcmd5>
+    <version>6.3.14</version>
+    <time>1268923519</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>68beac5759eec780fb729d503357cb09</srcmd5>
+    <version>6.3.15</version>
+    <time>1270026393</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/fetchmail based on submit request 35946 from user puzel
+</comment>
+    <requestid>35946</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a2bfd3f485f6b521f4e8ff2f80e6d518</srcmd5>
+    <version>6.3.16</version>
+    <time>1270669725</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/fetchmail based on submit request 37201 from user puzel
+</comment>
+    <requestid>37201</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>24eee953ff3f67cd407d34ce3f7aa36f</srcmd5>
+    <version>6.3.16</version>
+    <time>1271369578</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/fetchmail based on submit request 37958 from user puzel
+</comment>
+    <requestid>37958</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>8a0a14cdf88fab5b3d273f3abd5f7db2</srcmd5>
+    <version>6.3.16</version>
+    <time>1271723387</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/fetchmail based on submit request 38214 from user puzel
+</comment>
+    <requestid>38214</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>8a0a14cdf88fab5b3d273f3abd5f7db2</srcmd5>
+    <version>6.3.16</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>8a0a14cdf88fab5b3d273f3abd5f7db2</srcmd5>
+    <version>6.3.16</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>c3b9443dd3a72fb4354cc03aca45cf94</srcmd5>
+    <version>6.3.17</version>
+    <time>1280180393</time>
+    <user>darix</user>
+    <comment>Copy from server:mail/fetchmail via accept of submit request 43726 revision 22.
+Request was accepted with message:
+reviewed ok
+</comment>
+    <requestid>43726</requestid>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>8a0a14cdf88fab5b3d273f3abd5f7db2</srcmd5>
+    <version>6.3.16</version>
+    <time>1280198072</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>33ddac501f1a411d766a3a5ade4c8da8</srcmd5>
+    <version>6.3.17</version>
+    <time>1282576816</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/fetchmail based on submit request 45714 from user puzel
+</comment>
+    <requestid>45714</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>8542717491a553aa69286c7cb76a7922</srcmd5>
+    <version>6.3.18</version>
+    <time>1286804331</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/fetchmail based on submit request 50192 from user puzel
+</comment>
+    <requestid>50192</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>476b2722bbef14f0dc78dba9dafbdc0c</srcmd5>
+    <version>6.3.19</version>
+    <time>1292246209</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55789 from user puzel
+</comment>
+    <requestid>55789</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>476b2722bbef14f0dc78dba9dafbdc0c</srcmd5>
+    <version>6.3.19</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>62f3b38c90e77f17fe9816d332f58228</srcmd5>
+    <version>6.3.20</version>
+    <time>1309426983</time>
+    <user>saschpe</user>
+    <comment>update to fetchmail-6.3.20</comment>
+    <requestid>72786</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>435cbbda07cd8daaa899efe05fc2c430</srcmd5>
+    <version>6.3.20</version>
+    <time>1309427006</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72786
+</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1d68b8308675c47d79195fd68a95af36</srcmd5>
+    <version>6.3.21</version>
+    <time>1314779956</time>
+    <user>saschpe</user>
+    <comment>- repack upstream tarball without fetchmail-{SA,EN}-*.txt (bnc#713698)
+- add README-security.txt
+- update to fetchmail-6.3.21 
+- license update:  GPLv2+</comment>
+    <requestid>80212</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>776b3db148338a4b0cdcac58efeb0769</srcmd5>
+    <version>6.3.21</version>
+    <time>1314779975</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80212
+</comment>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>121f51ebc650f5c0594ab168d9c3030a</srcmd5>
+    <version>6.3.21</version>
+    <time>1318346167</time>
+    <user>lrupp</user>
+    <comment>spec cleanup</comment>
+    <requestid>87395</requestid>
+  </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>121f51ebc650f5c0594ab168d9c3030a</srcmd5>
+    <version>6.3.21</version>
+    <time>1319181875</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="49" vrev="6">
+    <srcmd5>da754d61bab216a08ea12abf445a58f5</srcmd5>
+    <version>6.3.21</version>
+    <time>1327403820</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100905</requestid>
+  </revision>
+  <revision rev="50" vrev="8">
+    <srcmd5>da754d61bab216a08ea12abf445a58f5</srcmd5>
+    <version>6.3.21</version>
+    <time>1340183325</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="51" vrev="9">
+    <srcmd5>2c2aa3e0678cdcff08e48519e80effd5</srcmd5>
+    <version>6.3.21</version>
+    <time>1341402707</time>
+    <user>coolo</user>
+    <comment>- dont't require, just suggest smtp_daemon -- fetchmail does run
+  fine (and much safer) with e.g. procmail as mda. (forwarded request 126380 from seife)</comment>
+    <requestid>127076</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>5f78dfae9b5a20076abacffe505bf10e</srcmd5>
+    <version>6.3.22</version>
+    <time>1348412665</time>
+    <user>coolo</user>
+    <comment>- update to 6.3.22
+  # SECURITY FIXES
+    * CVE-2012-3482 (bnc#775988)
+    * CVE-2011-3389
+  # BUG FIX
+    * The Server certificate: message in verbose mode now appears on stdout like the
+      remainder of the output. Reported by Henry Jensen, to fix Debian Bug #639807.
+    * The GSSAPI-related autoconf code now matches gssapi.c better, and uses
+      a different check to look for GSS_C_NT_HOSTBASED_SERVICE.
+      This fixes the GSSAPI-enabled build on NetBSD 6 Beta.
+  # CHANGES
+    * The security and errata notices fetchmail-{EN,SA}-20??-??.txt are now
+      under the more relaxed CC BY-ND 3.0 license (the noncommercial clause
+      was dropped). The Creative Commons address was updated.
+    * The Python-related Makefile.am parts were simplified to avoid an automake
+      1.11.X bug around noinst_PYTHON, Automake Bug #10995.
+    * Configuring fetchmail without SSL now triggers a configure warning,
+      and asks the user to consider running configure --with-ssl.
+  # WORKAROUNDS
+    * Some servers, notably Zimbra, return A1234 987 FETCH () in response to
+      a header request, in the face of message corruption.  fetchmail now treats
+      these as temporary errors. Report and Patch by Mikulas Patocka, Red Hat.
+    * Some servers, notably Microsoft Exchange, return &quot;A0009 OK FETCH completed.&quot;
+      without any header in response to a header request for meeting reminder
+      messages (with a &quot;meeting.ics&quot; attachment). fetchmail now treats these as
+      transient errors.  Report by John Connett, Patch by Sunil Shetye. (forwarded request 133601 from vitezslav_cizek)</comment>
+    <requestid>134928</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>187fd2891ed0bd1a9e88629fe6b25c79</srcmd5>
+    <version>6.3.22</version>
+    <time>1353402961</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>141954</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ad082587d0db70b086a262a6bf445ac0</srcmd5>
+    <version>6.3.23</version>
+    <time>1356013465</time>
+    <user>coolo</user>
+    <comment>- update to 6.3.23
+# REGRESSION FIXES
+* Fix compilation with OpenSSL implementations before 0.9.8m that lack
+  SSL_CTX_clear_options. Patch by Earl Chew.
+  Note that the use of older OpenSSL versions with fetchmail is unsupported and
+  *not* recommended.
+# BUG FIXES
+* Fix combination of --plugin and -f -. Patch by Alexander Zangerl,
+  to fix Debian Bug#671294.
+* Clean up logfile vs. syslog handling, and in case logfile overrides
+  syslog, send a message to the latter stating where logging goes.
+# CHANGES
+* The build process can now be made a bit more silent and concise through
+  ./configure --enable-silent-rules, or by adding &quot;V=0&quot; to the make command.
+# WORKAROUNDS
+* Make Maillennium POP3 workarounds less specific, to encompass
+  Maillennium POP3/UNIBOX (Maillennium V05.00c++). Reported by Eddie
+  via fetchmail-users mailing list, 2012-10-13.
+# TRANSLATION UPDATES (forwarded request 145066 from vitezslav_cizek)</comment>
+    <requestid>146111</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>ad082587d0db70b086a262a6bf445ac0</srcmd5>
+    <version>6.3.23</version>
+    <time>1359108873</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>1123eeb0bb99382abfee333325c4c7db</srcmd5>
+    <version>6.3.25</version>
+    <time>1363775854</time>
+    <user>coolo</user>
+    <comment>- update to 6.3,25
+# CRITICAL AND REGRESSION FIXES
+* Plug a memory leak in OpenSSL's certificate verification callback.
+  This would affect fetchmail configurations running with SSL in daemon mode
+  more than one-shot runs.
+  Reported by Erik Thiele, and pinned by Dominik Heeg,
+  fixes Debian Bug #688015.
+  This bug was introduced into fetchmail 6.3.0 (committed 2005-10-29)
+  when support for subjectAltName was added through a patch by Roland
+  Stigge, submitted as Debian Bug#201113.
+* The --logfile option now works again outside daemon mode, reported by Heinz
+  Diehl. The documentation that I had been reading was inconsistent with the
+  code, and only parts of the manual page claimed that --logfile was only
+  effective in daemon mode.
+# BUG FIXES
+* Fix a memory leak in out-of-memory error condition while handling plugins.
+  Report and patch by John Beck (found with Parfait static code analyzer).
+* Fix a NULL pointer dereference in out-of-memory error condition while handling
+  plugins.
+  Report and patch by John Beck (found with Parfait static code analyzer).
+# CHANGES
+* Improved reporting when SSL/TLS X.509 certificate validation has failed,
+  working around a not-so-recent swapping of two OpenSSL error codes, and
+  a practical impossibility to distinguish broken certification chains from
+  missing trust anchors (root certificates).
+* OpenSSL decoded errors are now reported through report(), rather than dumped
+  to stderr, so that they should show up in logfiles and/or syslog.
+* The fetchmail manual page no longer claims that MD5 were the default OpenSSL
+  hash format (for use with --sslfingerprint). Reported by Jakob Wilk,
+  PARTIAL fix for Debian Bug#700266. (forwarded request 159960 from vitezslav_cizek)</comment>
+    <requestid>159974</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>e64ea66ab9957415e0a96c9549a9bb1b</srcmd5>
+    <version>6.3.26</version>
+    <time>1367485647</time>
+    <user>coolo</user>
+    <comment>- added offline gpg verification
+- update to 6.3.26
+  # CRITICAL BUG FIX for setups using &quot;mimedecode&quot;:
+  * The mimedecode feature failed to ship the last line of the body if it was
+    encoded as quoted-printable and had a MIME soft line break in the very last
+    line.  Reported by Lars Hecking in June 2011.
+  * Bug introduced on 1998-03-20 when the mimedecode support was added by ESR
+    before release 4.4.1 through code contributed by Henrik Storner.
+    Workaround for older releases: do not use mimedecode feature.
+  * Earlier versions of this NEWS file claimed this bug fixed in fetchmail-6.3.23,
+    but it was not.
+  * Fixes Launchpad Bug#1171818. (forwarded request 173762 from vitezslav_cizek)</comment>
+    <requestid>173807</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>e64ea66ab9957415e0a96c9549a9bb1b</srcmd5>
+    <version>6.3.26</version>
+    <time>1379662334</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>be8102d871b0232b0912e4c27ee65a79</srcmd5>
+    <version>6.3.26</version>
+    <time>1384091824</time>
+    <user>coolo</user>
+    <comment>- Add systemd support for openSUSE &gt;= 12.3 (forwarded request 204925 from vitezslav_cizek)</comment>
+    <requestid>206422</requestid>
+  </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>7cce6662d008e491cc85683db8835299</srcmd5>
+    <version>6.3.26</version>
+    <time>1400734726</time>
+    <user>coolo</user>
+    <comment>- added necessary macros for systemd files (forwarded request 234980 from jsegitz)</comment>
+    <requestid>234983</requestid>
+  </revision>
+  <revision rev="61" vrev="7">
+    <srcmd5>7cce6662d008e491cc85683db8835299</srcmd5>
+    <version>6.3.26</version>
+    <time>1409300871</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="62" vrev="8">
+    <srcmd5>4c46fe17f1d4015d6c389233be24b3cd</srcmd5>
+    <version>6.3.26</version>
+    <time>1416994423</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262937</requestid>
+  </revision>
+  <revision rev="63" vrev="9">
+    <srcmd5>dd2c4464e0d9a9d482235791f7f0a810</srcmd5>
+    <version>6.3.26</version>
+    <time>1418737708</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>264999</requestid>
+  </revision>
+  <revision rev="64" vrev="10">
+    <srcmd5>a498caf54183caa83399364553de05f2</srcmd5>
+    <version>6.3.26</version>
+    <time>1420833025</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup with spec-cleaner
+- Remove support for &lt;12.3 as it does not build anyway.
+- Fix krb5 switches
+- Provide proper rcbla controler for the service
+
+- build with PIE</comment>
+    <requestid>280420</requestid>
+  </revision>
+  <revision rev="65" vrev="11">
+    <srcmd5>8181bf29ca5f16c58c625ad4bef7024b</srcmd5>
+    <version>6.3.26</version>
+    <time>1460358872</time>
+    <user>dimstar_suse</user>
+    <comment>- Made /etc/sysconfig/fetchmail work again after a botched systemd
+  conversion that ignored the file altogether (bsc#905673)
+- Removed the FETCHMAIL_USER setting in favor of editing the
+  systemd service file (which should be copied to the respective
+  location in /etc, and not edited in-place)</comment>
+    <requestid>386298</requestid>
+  </revision>
+  <revision rev="66" vrev="12">
+    <srcmd5>b5b64c313c4590a674e615e9f5e4377d</srcmd5>
+    <version>6.3.26</version>
+    <time>1463498130</time>
+    <user>dimstar_suse</user>
+    <comment>- Made the helper script introduced in last change return exit status
+  5 on configuration errors instead of 1, which should make it a bit
+  less confusing (bsc#979534)</comment>
+    <requestid>395149</requestid>
+  </revision>
+  <revision rev="67" vrev="13">
+    <srcmd5>a39afaa5115a5c789617484b8d8355d7</srcmd5>
+    <version>6.3.26</version>
+    <time>1463652908</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396413</requestid>
+  </revision>
+  <revision rev="68" vrev="14">
+    <srcmd5>6f5102e08d34b9b2f67112158ba1beff</srcmd5>
+    <version>6.3.26</version>
+    <time>1491566144</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484302</requestid>
+  </revision>
+  <revision rev="69" vrev="15">
+    <srcmd5>0911c2ed7cf94552f81d2b82ed800c0c</srcmd5>
+    <version>6.3.26</version>
+    <time>1494088203</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492647</requestid>
+  </revision>
+  <revision rev="70" vrev="16">
+    <srcmd5>01a986cbb521964fc50cf7230a272dbf</srcmd5>
+    <version>6.3.26</version>
+    <time>1510661077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541565</requestid>
+  </revision>
+  <revision rev="71" vrev="17">
+    <srcmd5>09236045e5b955da668946ef05ece884</srcmd5>
+    <version>6.3.26</version>
+    <time>1511517413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545043</requestid>
+  </revision>
+  <revision rev="72" vrev="18">
+    <srcmd5>dd97cc769b85bb0832ba781c986cdcc1</srcmd5>
+    <version>6.3.26</version>
+    <time>1520164290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582073</requestid>
+  </revision>
+  <revision rev="73" vrev="19">
+    <srcmd5>89657c73f3fe53e83bfba2eabe3d13a2</srcmd5>
+    <version>6.3.26</version>
+    <time>1521579525</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fetchmailconf to compile with python{2,3} [bsc#1082694]
+  * fetchmail-fetchmailconf-python3-1of3.patch
+  * fetchmail-fetchmailconf-python3-2of3.patch
+  * fetchmail-fetchmailconf-python3-3of3.patch</comment>
+    <requestid>587601</requestid>
+  </revision>
+  <revision rev="74" vrev="20">
+    <srcmd5>e1c4dea8569e2b3078624658f3364518</srcmd5>
+    <version>6.3.26</version>
+    <time>1560337950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706625</requestid>
+  </revision>
+</revisionlist>

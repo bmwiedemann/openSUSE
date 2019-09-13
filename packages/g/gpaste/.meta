@@ -1,0 +1,6 @@
+<package name="gpaste" project="openSUSE:Factory">
+  <title>Gpaste - Clipboard management system</title>
+  <description>gpasted is a clipboard management daemon with DBus interface. gpaste is its CLI
+client and gpaste-settings is a tool to edit gpasted settings</description>
+  <devel project="GNOME:Apps" package="gpaste"/>
+</package>

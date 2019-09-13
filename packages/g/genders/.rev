@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b2343f4f6ab32001b6b8d59da730b86</srcmd5>
+    <version>1.22</version>
+    <time>1517824300</time>
+    <user>dimstar_suse</user>
+    <comment>- Adding genders for HPC - FATE#324149</comment>
+    <requestid>571672</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>02757d32c0e33549f9a32c509b4369b4</srcmd5>
+    <version>1.22</version>
+    <time>1519218711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578397</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>190bef8e3cbb049aa3bc73db936fd1e8</srcmd5>
+    <version>1.22</version>
+    <time>1541666825</time>
+    <user>dimstar_suse</user>
+    <comment>- Added lua binding with lua_bindings.patch
+  * package lua-genders cotains the bindings (forwarded request 643211 from mslacken)</comment>
+    <requestid>643218</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3788861d9e25d4b7220565ab7a39deb2</srcmd5>
+    <version>1.22</version>
+    <time>1543828280</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix %%license.
+
+  * package lua-genders cotains the bindings (FATE#326456).</comment>
+    <requestid>653370</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>75ce156b306e82f8ca29ebc75b11c761</srcmd5>
+    <version>1.26</version>
+    <time>1564137630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718444</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d036e6759ce679f12c7e8c279ac0d388</srcmd5>
+    <version>1.50</version>
+    <time>1500669890</time>
+    <user>dimstar_suse</user>
+    <comment>needed by cavil</comment>
+    <requestid>501213</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c0844e74a2b75ed9329a49f230aed95c</srcmd5>
+    <version>1.51</version>
+    <time>1512433834</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.51: Ignore skips at the end of a pattern</comment>
+    <requestid>548102</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>489104f53815b260264fe7d87354881c</srcmd5>
+    <version>1.52</version>
+    <time>1564302174</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.52: Record all matches even if they overlap at the start</comment>
+    <requestid>719273</requestid>
+  </revision>
+</revisionlist>

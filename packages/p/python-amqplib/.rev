@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e247863c689eec956f079fee6701434</srcmd5>
+    <version>1.0.2</version>
+    <time>1505139483</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-amqplib</comment>
+    <requestid>522394</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>20509157e3fc396bae26ccfd8e4e1cbd</srcmd5>
+    <version>1.0.2</version>
+    <time>1544631885</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653908</requestid>
+  </revision>
+</revisionlist>

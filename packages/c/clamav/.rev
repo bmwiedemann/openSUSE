@@ -1,0 +1,1005 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec0f5028c03802d7d8840a15e913a4f3</srcmd5>
+    <version>0.88.7</version>
+    <time>1168902436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4a6dd3ce3d6972fe0c5a8481b7d1fd32</srcmd5>
+    <version>0.90</version>
+    <time>1172401783</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d7623d6d3a2cfcb8d67b54718e7f9da5</srcmd5>
+    <version>0.90.1</version>
+    <time>1172922279</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a66da3f989530538e824f8e85663d796</srcmd5>
+    <version>0.90.1</version>
+    <time>1173168168</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c3ba3b859ca2326eb5031d2a2b738a50</srcmd5>
+    <version>0.90.2</version>
+    <time>1176627461</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>67c250ff2656ace1894f4f29a3a19ee8</srcmd5>
+    <version>0.90.3</version>
+    <time>1180637256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8fa2260456deb2ff6ccb0a41ae8b8309</srcmd5>
+    <version>0.91</version>
+    <time>1184199097</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>208cb6b81e509ecc0904e701c5d94c5e</srcmd5>
+    <version>0.91</version>
+    <time>1184564893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4388c6fc154108935f8a004471136298</srcmd5>
+    <version>0.91.1</version>
+    <time>1184812056</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>df1fd60d7cb7ee4adebe6993f4e93ee0</srcmd5>
+    <version>0.91.1</version>
+    <time>1186703005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8694af168ffb93d11d62b82556f50ef7</srcmd5>
+    <version>0.91.2</version>
+    <time>1187909429</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="34">
+    <srcmd5>efc0fe11630d5373b636bd44c8e056e6</srcmd5>
+    <version>0.91.2</version>
+    <time>1200604435</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c8cee581fd7f51109a76c2b7ee87135f</srcmd5>
+    <version>0.92.1</version>
+    <time>1203955644</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>50112ecb1ff763b51a7dbbc127494153</srcmd5>
+    <version>0.93</version>
+    <time>1208795855</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cc1056fcdc7b59a4c6537e7bcaa73b17</srcmd5>
+    <version>0.93.1</version>
+    <time>1215808886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>60789f7d8e714ced04343618130506bd</srcmd5>
+    <version>0.94</version>
+    <time>1220645693</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>d4c421521d7a90019aee5b955b9f90d2</srcmd5>
+    <version>0.94</version>
+    <time>1222702244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>741401b8c5dcef7718bfab5f1dc7cb2d</srcmd5>
+    <version>0.94.1</version>
+    <time>1226101605</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>f60500f4f4d26b906a7ba389ca2ce8f8</srcmd5>
+    <version>0.94.1</version>
+    <time>1226413665</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b4f092f4f3636edc81dec2a2ced8133a</srcmd5>
+    <version>0.94.2</version>
+    <time>1228150271</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>41121c6b37a60714b1bcdf09cd42106a</srcmd5>
+    <version>0.95</version>
+    <time>1239101124</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>11c266e3701c3e44ee7e161fa27da0d9</srcmd5>
+    <version>0.95.1</version>
+    <time>1240055593</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>27faaea47551a2e1136b3508c26da7d2</srcmd5>
+    <version>0.95.2</version>
+    <time>1245246106</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>27faaea47551a2e1136b3508c26da7d2</srcmd5>
+    <version>0.95.2</version>
+    <time>1245246106</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>77c859141a6fde663ec313024fcdfff7</srcmd5>
+    <version>0.95.3</version>
+    <time>1256917891</time>
+    <user>autobuild</user>
+    <comment>Copy from security/clamav based on submit request 23409 from user rmax
+</comment>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>5e37311920d8a57baf4b6458b5a296e9</srcmd5>
+    <version>0.95.3</version>
+    <time>1265749678</time>
+    <user>autobuild</user>
+    <comment>Copy from security/clamav based on submit request 31916 from user prusnak
+</comment>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>f94124edd6a8198e11ae001d8ccd4296</srcmd5>
+    <version>0.95.3</version>
+    <time>1268923190</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ae38687cf159b3ba2a549569111b8a60</srcmd5>
+    <version>0.96</version>
+    <time>1270757511</time>
+    <user>autobuild</user>
+    <comment>Copy from security/clamav based on submit request 37394 from user rmax
+</comment>
+    <requestid>37394</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>c0c2c20d9d9940b208d5b52da460df8d</srcmd5>
+    <version>0.96</version>
+    <time>1271186592</time>
+    <user>autobuild</user>
+    <comment>Copy from security/clamav based on submit request 37744 from user rmax
+</comment>
+    <requestid>37744</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>438737ff13a2306998770078c058bce8</srcmd5>
+    <version>0.96</version>
+    <time>1271368832</time>
+    <user>autobuild</user>
+    <comment>Copy from security/clamav based on submit request 37953 from user rmax
+</comment>
+    <requestid>37953</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a877a3619a2e4bf791d3dadf34159c62</srcmd5>
+    <version>0.96.1</version>
+    <time>1277729535</time>
+    <user>autobuild</user>
+    <comment>Copy from security/clamav based on submit request 42176 from user rmax
+</comment>
+    <requestid>42176</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>a877a3619a2e4bf791d3dadf34159c62</srcmd5>
+    <version>0.96.1</version>
+    <time>1278667339</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>a877a3619a2e4bf791d3dadf34159c62</srcmd5>
+    <version>0.96.1</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6ff35ca43f71862667e45bf1799c6cb2</srcmd5>
+    <version>0.96.2</version>
+    <time>1284765896</time>
+    <user>autobuild</user>
+    <comment>Copy from security/clamav based on submit request 48229 from user rmax
+</comment>
+    <requestid>48229</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>03a82698bcac2e59a9bb1a6618574dbe</srcmd5>
+    <version>0.96.4</version>
+    <time>1288969247</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52039 from user rmax
+</comment>
+    <requestid>52039</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>78c7ed1f2409cb42746778b9224d03bc</srcmd5>
+    <version>0.96.4</version>
+    <time>1288969261</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52039
+</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8be9acb2ea49e342e47d06b87d185548</srcmd5>
+    <version>0.96.5</version>
+    <time>1294657562</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57587 from user msmeissn
+</comment>
+    <requestid>57587</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>f18029d1e76d68da171acde719fa6f2f</srcmd5>
+    <version>0.96.5</version>
+    <time>1294657577</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57587
+</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e6e55a7a3f14962814020202d029848e</srcmd5>
+    <version>0.97</version>
+    <time>1297386435</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60403 from user rmax
+</comment>
+    <requestid>60403</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>be6b05c42f8c8ae051555bb6aa0f791d</srcmd5>
+    <version>0.97</version>
+    <time>1297386450</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60403
+</comment>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>be6b05c42f8c8ae051555bb6aa0f791d</srcmd5>
+    <version>0.97</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>001f5b0deb0b485a641fa5006b039fb2</srcmd5>
+    <version>0.97.1</version>
+    <time>1307699087</time>
+    <user>saschpe</user>
+    <comment>Version 0.97.1</comment>
+    <requestid>73234</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4950fb94ca03341364d198322a264e77</srcmd5>
+    <version>0.97.2</version>
+    <time>1311864852</time>
+    <user>saschpe</user>
+    <comment>Security update 0.97.2 (bnc#708263, CVE-2011-2721)</comment>
+    <requestid>77350</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>4950fb94ca03341364d198322a264e77</srcmd5>
+    <version>0.97.2</version>
+    <time>1319181811</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>503b2c077da7a3a7c47ff813f85d7938</srcmd5>
+    <version>0.97.3</version>
+    <time>1319204419</time>
+    <user>coolo</user>
+    <comment>Version 0.97.3 (bnc#724856, CVE-2011-3627)</comment>
+    <requestid>88724</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>6f77043934aade03e341d8dfae444d9a</srcmd5>
+    <version>0.97.3</version>
+    <time>1323190987</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9b77eb2a05f82af174dea9f71c326706</srcmd5>
+    <version>0.97.4</version>
+    <time>1332205131</time>
+    <user>lrupp</user>
+    <comment>- New version 0.97.4 
+ * libclamav/bytecode.c: reset to BYTECODE_AUTO mode at db reload
+   so that we don't fail to re-enable or re-disable it again
+   (bb#3789)
+ * misc: performance improvement for HP-UX PA-RISC - patch from 
+   Michael Pelletier &lt;michael.v.pelletier*raytheon.com&gt;
+   (bb#3926)
+ * libclamav/pe.c: parse vinfo where varfileinfo occours before
+   stringfileinfo (bb#3062)
+ * clamd: add support for on-access scanning on OS X with ClamAuth
+   (beta)
+ * libclamav/bytecode_api*: Fix Sparc crash (bb #4324)
+ * libclamav: fix bytecode whitelisting
+ * libclamav: fix macro detection in OLE2BlockMacros (bb#4269)
+ * libclamav/readdb.c: allow comments in all db files (bb#3930)
+ * libclamav/scanners.c: use lsigs when scanning vba data (bb#3922)
+ * libclamav/matcher-hash.c: Fix SIGBUS on PA-RISC (big-endian)
+   architectures (bb #3894). (forwarded request 109812 from toganm)</comment>
+    <requestid>109833</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>11546aaf12db296760e9d29a1472aef4</srcmd5>
+    <version>0.97.4</version>
+    <time>1332246535</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 109835 from dimstar)</comment>
+    <requestid>110126</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>11546aaf12db296760e9d29a1472aef4</srcmd5>
+    <version>0.97.4</version>
+    <time>1340183236</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>d91124f95115de5ad5804fbfdcec96de</srcmd5>
+    <version>0.97.5</version>
+    <time>1340619759</time>
+    <user>coolo</user>
+    <comment>- update to 0.95.5 [bnc#767574]
+- addresses possible evasion cases in some archive formats
+- CVE-2012-1457: allows to bypass malware detection via a TAR archive
+  entry with a length field that exceeds the total TAR file size
+- CVE-2012-1458: allows to bypass malware detection via a crafted
+  reset interval in the LZXC header of a CHM file
+- CVE-2012-1459: allows to bypass malware detection via a TAR archive
+  entry with a length field corresponding to that entire entry, plus
+  part of the header of the next entry
+- also addresses stability issues in portions of the bytecode engine
+- update clamav-conf.patch for moved lines
+- add a definitions snapshot as {main,daily}.cvd no longer in tarball
+- fix file-contains-date-and-time rpmlint warning (forwarded request 125380 from AndreasStieger)</comment>
+    <requestid>125471</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>1861dac6757e80d11cd0b22c5c7f407f</srcmd5>
+    <version>0.97.5</version>
+    <time>1345630305</time>
+    <user>namtrac</user>
+    <comment>- avoid make check on qemu build (forwarded request 130817 from dirkmueller)</comment>
+    <requestid>130840</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>286c5f64fa539f7f2474ab9606fe5ab1</srcmd5>
+    <version>0.97.6</version>
+    <time>1348231056</time>
+    <user>coolo</user>
+    <comment>- update to 0.97.6
+  * libclamav: bb#5751 - cl_scansis() may returan a file descriptor
+    instead of a valid return code (forwarded request 135016 from toganm)</comment>
+    <requestid>135021</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>f2edf84ff9526a32e3863237e8c64fab</srcmd5>
+    <version>0.97.6</version>
+    <time>1349628873</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137387</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>5fddf6c19d3a93bc679043ed05be38dd</srcmd5>
+    <version>0.97.6</version>
+    <time>1357567293</time>
+    <user>coolo</user>
+    <comment>- update daily.cvd to ver. 16364 
+  released on 04 Jan 2013 20:37 :0500 (sig count: 492103)
+- add cvd signature verification to %check section
+- make Release field of clamav-db package contain cvd file versions (forwarded request 147180 from AndreasStieger)</comment>
+    <requestid>147211</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>6bbea07aca6a4c2f1aecb5a75d7782cb</srcmd5>
+    <version>0.97.6</version>
+    <time>1358411843</time>
+    <user>coolo</user>
+    <comment>- pids and sockets of clamd and freshclam now reside in /var/run
+  instead of /var/lib (bnc#770395)
+- modified pid path in clamd's, freshclam's and clamav-milter's
+  init scripts (forwarded request 148449 from m_meister)</comment>
+    <requestid>148454</requestid>
+  </revision>
+  <revision rev="56" vrev="6">
+    <srcmd5>6bbea07aca6a4c2f1aecb5a75d7782cb</srcmd5>
+    <version>0.97.6</version>
+    <time>1359108748</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>1332f9292c34ea4e38efa59d9e44d396</srcmd5>
+    <version>0.97.7</version>
+    <time>1363858631</time>
+    <user>coolo</user>
+    <comment>- Version 0.97.7 (bnc#809945)
+  * several hardening fixes.</comment>
+    <requestid>160305</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>7f26e08904e104bea6328c99de3ce932</srcmd5>
+    <version>0.97.8</version>
+    <time>1367490840</time>
+    <user>coolo</user>
+    <comment>- mirror the amavisd-new change of /var/spool/amavis bnc#663726
+
+- Version 0.97.8 (bnc#816865)
+  * libclamav: Bugs reported by Felix Groebert of the Google Security Team</comment>
+    <requestid>173882</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>7f26e08904e104bea6328c99de3ce932</srcmd5>
+    <version>0.97.8</version>
+    <time>1379662112</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>25666b036c7b4b81aab921fd732a76d6</srcmd5>
+    <version>0.98</version>
+    <time>1380556288</time>
+    <user>scarabeus_factory</user>
+    <comment>- Version 0.98 (bnc#841815)
+ * code quality fixes on libclamav, clamd, sigtool, clamav-milter, clamconf and clamdtop
+ * code quality fixes on libclamav, libclamunrar and freshclam
+ * valgrind suppression rules for dl_catch_error complaints
+ * bb #8385: PDF ASCII85Decode zero-length fix
+ * libclamav: SCAN_ALL mode fixes
+ * bb #7436: elf64 header early exit
+ * iso9660: iso_scan_file rewrite
+- use source urls, add gpg signature retrieval.</comment>
+    <requestid>201270</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>8cf8f49aedd87aa8cd2b5ce184212d65</srcmd5>
+    <version>0.98</version>
+    <time>1388393391</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212242</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>8ee16bde8a44d5e7d1952037b6c6b2c3</srcmd5>
+    <version>0.98.1</version>
+    <time>1391240598</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>220513</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>a36c78a7223b484b8a9b7d87ab66a1f5</srcmd5>
+    <version>0.98.1</version>
+    <time>1391665634</time>
+    <user>coolo</user>
+    <comment>- Improve handling of /var/run/clamav.</comment>
+    <requestid>220894</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>f11f5c106bab7ad2bd0f499a5b1f7be1</srcmd5>
+    <version>0.98.1</version>
+    <time>1393088834</time>
+    <user>coolo</user>
+    <comment>- add fanotify systemcalls for power, s390 and arm (forwarded request 223009 from msmeissn)</comment>
+    <requestid>223389</requestid>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>09ad93e4379eee8a06bfc790c11f20a8</srcmd5>
+    <version>0.98.1</version>
+    <time>1396159119</time>
+    <user>coolo</user>
+    <comment>- initial systemd support unit files (forwarded request 226920 from bmanojlovic)</comment>
+    <requestid>228125</requestid>
+  </revision>
+  <revision rev="66" vrev="5">
+    <srcmd5>3c8b68dc51be4e47b22987d8ead1b67c</srcmd5>
+    <version>0.98.1</version>
+    <time>1399017098</time>
+    <user>coolo</user>
+    <comment>- do not disable security checks in configure. That would be
+  insecure
+- use DFP_64bit also for aarch64 (forwarded request 231142 from dirkmueller)</comment>
+    <requestid>231146</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>2bed17896ff252f7c01cf5e01d355d47</srcmd5>
+    <version>0.98.3</version>
+    <time>1399660213</time>
+    <user>coolo</user>
+    <comment>- Version 0.98.3</comment>
+    <requestid>233239</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>9d885f50db08cb85caac00304d9533b0</srcmd5>
+    <version>0.98.3</version>
+    <time>1403508232</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>238066</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>4e01660ef7145e5cafe50ba2c7d124ac</srcmd5>
+    <version>0.98.4</version>
+    <time>1404459295</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>239485</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>4e01660ef7145e5cafe50ba2c7d124ac</srcmd5>
+    <version>0.98.4</version>
+    <time>1409300644</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>f994aa68b6238a13eff335c310a44231</srcmd5>
+    <version>0.98.4</version>
+    <time>1415636936</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260626</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>0d21dfee79ba311eede1c270d1a3f88d</srcmd5>
+    <version>0.98.5</version>
+    <time>1417160676</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263145</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>eebe5a52580137c6ada77fe2ee931ff5</srcmd5>
+    <version>0.98.5</version>
+    <time>1420318866</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>267016</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>d1554ced82068e83791551e2135080fb</srcmd5>
+    <version>0.98.5</version>
+    <time>1422646311</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't need sendmail for building clamav-milter anymore,
+  sendmail-devel is enough (bnc#915414).
+
+- bnc#914505: Config file merging and temp file creation got moved
+  to %pre by mistake. Put them back to %post.
+- Restore the updateclamconf script (bnc#908731).
+- Fix a step backwards in the soname version from 0.98.4 to 0.98.5
+  (https://bugzilla.clamav.net/show_bug.cgi?id=11193,
+  clamav-soname.patch).</comment>
+    <requestid>283477</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>7c0750c8a62f650bd6e0133902f4a097</srcmd5>
+    <version>0.98.6</version>
+    <time>1423258686</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.98.6 fixes several security issues:
+  * bsc#916217, CVE-2015-1461: Remote attackers can have
+    unspecified impact via Yoda's crypter or mew packer files.
+  * bsc#916214, CVE-2015-1462: Unspecified impact via acrafted upx
+    packer file.
+  * bsc#916215, CVE-2015-1463: Remote attackers can cause a denial
+    of service via a crafted petite packer file.
+  * bsc#915512, CVE-2014-9328: heap out of bounds condition with
+    crafted upack packer files.
+- Obsoletes clamav-soname.patch</comment>
+    <requestid>284469</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>2813016575f5413baa1810a635cb78de</srcmd5>
+    <version>0.98.7</version>
+    <time>1430980149</time>
+    <user>coolo</user>
+    <comment>- Version 0.98.7 fixes several security issues (bsc#929192) and
+  other bug fixes/improvements:
+  * Fix crash in upx decoder with crafted file. Discovered and
+    patch supplied by Sebastian Andrzej Siewior. CVE-2015-2170.
+  * Fix infinite loop condition on crafted y0da cryptor
+    file. Identified and patch suggested by Sebastian Andrzej
+    Siewior. CVE-2015-2221.
+  * Fix crash on crafted petite packed file. Reported and patch
+    supplied by Sebastian Andrzej Siewior. CVE-2015-2222.
+  * Fix an infinite loop condition on a crafted &quot;xz&quot; archive file.
+    This was reported by Dimitri Kirchner and Goulven Guiheux.
+    CVE-2015-2668.
+  * Apply upstream patch for possible heap overflow in Henry
+    Spencer's regex library. CVE-2015-2305.
+  * Fix false negatives on files within iso9660 containers. This
+    issue was reported by Minzhuan Gong.
+  * Fix a couple crashes on crafted upack packed file. Identified
+    and patches supplied by Sebastian Andrzej Siewior.
+  * Fix a crash during algorithmic detection on crafted PE file.
+    Identified and patch supplied by Sebastian Andrzej Siewior.
+  * Fix compilation error after ./configure --disable-pthreads.
+    Reported and fix suggested by John E. Krokes.
+  * Fix segfault scanning certain HTML files. Reported with sample
+    by Kai Risku.
+  * Improve detections within xar/pkg files.
+  * Improvements to PDF processing: decryption, escape sequence
+    handling, and file property collection.
+  * Scanning/analysis of additional Microsoft Office 2003 XML
+    format.</comment>
+    <requestid>305579</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>9544164b516bfa75455c45c15e67401d</srcmd5>
+    <version>0.98.7</version>
+    <time>1435870245</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314723</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>2350c4a0ac312abece9bbb80ec4fa87a</srcmd5>
+    <version>0.99</version>
+    <time>1449384063</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347206</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>87cb70531b0f77f0e06725aa45821aeb</srcmd5>
+    <version>0.99</version>
+    <time>1450284166</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>348647</requestid>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>9a18510095c5f60744fbefb8e9b73794</srcmd5>
+    <version>0.99</version>
+    <time>1452850900</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353456</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>2be7db4448af972036b164507b2e7681</srcmd5>
+    <version>0.99.1</version>
+    <time>1457426355</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367410</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>c4657e76c094145621658265b155ad7c</srcmd5>
+    <version>0.99.1</version>
+    <time>1466333578</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403034</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>59cc5d592c8689b7dcbff14d7244710b</srcmd5>
+    <version>0.99.2</version>
+    <time>1466814168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.99.2 (bsc#978459)
+  * 7z: fix for FolderStartPackStreamIndex array index heck
+  * print all CDBNAME entries for a zip file when using the -z
+    flag.
+  * try to minimize the err cleanup path
+  * clamunrar: notice if unpacking comment failed
+  * signature manual update.
+  * use temp var for realloc to prevent pointer loss.
+  * fix debug VI hex truncation
+  * freshclam: avoid random data in mirrors.dat.
+  * libclamav: print raw certificate metadata
+  * freshclam manager check return code of strdup.
+  * additional suppress IP notification when using proxy
+  * fix download and verification of *.cld through PrivateMirrors
+  * suppress IP notification when using proxy
+  * remove redundant mempool assignment
+  * divide out dumpcerts output for better readability
+  * fix dconf and option handling for nocert and dumpcert
+  * patch by Jim Morris to increase clamd's soft file descriptor to
+        its potential maximum on 64-bit systems
+  * Move libfreshclam config to m4/reorganization.
+  * adding libfreshclam
+  * Add 'cdb' datafile to sigtools list of datafile types.
+  * NULL pointer check.
+  * malloc() NULL pointer check.
+  * clamscan 'block-macros' option.
+  * initialize cpio name buffer
+  * initialize mspack decompression buffers
+  * prevent memory allocations on used pointers (folder objects)
+  * prevent memory allocations on used pointers (boolvectors)</comment>
+    <requestid>404154</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>4e8ddaa49c199739f2168bf41fb50794</srcmd5>
+    <version>0.99.2</version>
+    <time>1469382768</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412572</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>7dcb6ab0631f9cd3e7b37d631641f653</srcmd5>
+    <version>0.99.2</version>
+    <time>1470413831</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#991812: Remove obsolete dependency on latex2html-pngicons.
+- Trim useless words from description and fix spellos.
+  Test for user/group existence before adding and always show
+  errors when they occur.</comment>
+    <requestid>416677</requestid>
+  </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>ed4545c0c25cec879465322be24e23cc</srcmd5>
+    <version>0.99.2</version>
+    <time>1479150824</time>
+    <user>dimstar_suse</user>
+    <comment>- Add enable-timestamps option to disable time
+  dependent macros if passed to configure.
+  (bsc#1001154, clamav-disable-timestamps.patch)</comment>
+    <requestid>439839</requestid>
+  </revision>
+  <revision rev="87" vrev="5">
+    <srcmd5>660ff2e2f5b332dbbcfee6bd3c05ce57</srcmd5>
+    <version>0.99.2</version>
+    <time>1504815304</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521169</requestid>
+  </revision>
+  <revision rev="88" vrev="6">
+    <srcmd5>37482dd03d7e532046dc1bf56e4cf6b9</srcmd5>
+    <version>0.99.2</version>
+    <time>1507571051</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532408</requestid>
+  </revision>
+  <revision rev="89" vrev="7">
+    <srcmd5>96eb169811ecdf042254fc615808f9f9</srcmd5>
+    <version>0.99.2</version>
+    <time>1511949251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546176</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>c3031503e6a02cf4effdb5a2f3375c0b</srcmd5>
+    <version>0.99.3</version>
+    <time>1517167929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to security release 0.99.3 (bsc#1077732)
+  * CVE-2017-12376 (ClamAV Buffer Overflow in handle_pdfname Vulnerability)
+  * CVE-2017-12377 (ClamAV Mew Packet Heap Overflow Vulnerability)
+  * CVE-2017-12379 (ClamAV Buffer Overflow in messageAddArgument Vulnerability)
+    - these vulnerabilities could have allowed an unauthenticated,
+      remote attacker to cause a denial of service (DoS) condition
+      or potentially execute arbitrary code on an affected device.
+  * CVE-2017-12374 (ClamAV use-after-free Vulnerabilities)
+  * CVE-2017-12375 (ClamAV Buffer Overflow Vulnerability)
+  * CVE-2017-12378 (ClamAV Buffer Over Read Vulnerability)
+  * CVE-2017-12380 (ClamAV Null Dereference Vulnerability)
+    - these vulnerabilities could have allowed an unauthenticated,
+      remote attacker to cause a denial of service (DoS) condition on an affected device.
+  * CVE-2017-6420 (bsc#1052448)
+    - this vulnerability allowed remote attackers to cause a denial of service
+      (use-after-free) via a crafted PE file with WWPack compression.
+  * CVE-2017-6419 (bsc#1052449)
+    - ClamAV allowed remote attackers to cause a denial of service
+      (heap-based buffer overflow and application crash) or possibly
+      have unspecified other impact via a crafted CHM file.
+  * CVE-2017-11423 (bsc#1049423)
+    - The cabd_read_string function in mspack/cabd.c in libmspack 0.5alpha
+      allowed remote attackers to cause a denial of service
+      (stack-based buffer over-read and application crash) via a crafted CAB file.
+  * CVE-2017-6418 (bsc#1052466)
+    - ClamAV 0.99.2 allowed remote attackers to cause a denial
+      of service (out-of-bounds read) via a crafted e-mail message.
+- drop clamav-0.99.2-openssl-1.1.patch (upstream) (forwarded request 569976 from vitezslav_cizek)</comment>
+    <requestid>569980</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>1596ccd116eb74310da9fb2fe8292fd0</srcmd5>
+    <version>0.99.3</version>
+    <time>1518601963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576419</requestid>
+  </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>d1cf6bb7544b6a5a298f874fd07cc2cd</srcmd5>
+    <version>0.99.3</version>
+    <time>1519308075</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>578702</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>6ca281df04d716e2b87c1533d52e5c83</srcmd5>
+    <version>0.99.4</version>
+    <time>1520503157</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to security release 0.99.4 (bsc#1083915):
+  * CVE-2012-6706
+  * CVE-2017-6419
+  * CVE-2017-11423
+  * CVE-2018-1000085 (bsc#1082858)
+  * CVE-2018-0202
+- Obsolete patches:
+  * clamav-CVE-2012-6706.patch
+  * clamav-gcc47.patch</comment>
+    <requestid>583965</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>71523fc550668fef53e3ecc78c521cd5</srcmd5>
+    <version>0.100.0</version>
+    <time>1525023448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.100.0 (bsc#1089502):
+  * Add interfaces to the Prelude SIEM open source package for
+    collecting ClamAV virus events.
+  * Support libmspack internal code or as a shared object
+    library. The internal library is the default and includes
+    modifications to enable parsing of CAB files that do not
+    entirely adhere to the CAB file format.
+  * Link with OpenSSL 1.1.0.
+  * Deprecate of the AllowSupplementaryGroups parameter
+    statement in clamd, clamav-milter, and freshclam.
+    Use of supplementary is now in effect by default.
+  * Deprecate internal LLVM code support.
+  * Compute and check PE import table hash (a.k.a. &quot;imphash&quot;)
+    signatures.
+  * Support file property collection and analysis for MHTML files.
+  * Raw scanning of PostScript files.
+  * Fix clamsubmit to use the new virus and false positive
+    submission web interface.
+  * Optionally, flag files with the virus
+    &quot;Heuristic.Limits.Exceeded&quot; when size limitations are exceeded.
+  * Improved decoders for PDF files.
+  * Reduced number of compile time warnings.
+  * Improved support for C++11.
+  * Improved detection of system installed libraries.
+  * Fixes to ClamAV's Container system and the introduction of
+    Intermediates for more descriptive signatures.
+  * Improvements to clamd's On-Access scanning capabilities
+    for Linux.
+  * Obsoletes clamav-fix_newer_zlib.patch
+- Update key ring and add signature file.</comment>
+    <requestid>601641</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>73a8bee73065ba2a8c4b403abba5a4d1</srcmd5>
+    <version>0.100.1</version>
+    <time>1533214721</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1101654: Disable YARA support for licensing reasons
+  (clamav-disable-yara.patch).
+- Do not ignore errors from useradd et al.
+- Unclutter the spec file.
+
+- Update dendencies (pcre2, libjson-c and systemd)
+- Modernise spec file with spec-cleaner
+
+- fix library-without-ldconfig warnings on libclammspack
+
+- Update to version 0.100.1
+  * CVE-2018-0360: HWP integer overflow, infinite loop
+    vulnerability (bsc#1101410)
+  * CVE-2018-0361: PDF object length check, unreasonably long time
+    to parse relatively small file (bsc#1101412) 
+  * Buffer over-read in unRAR code due to missing max value checks
+    in table initialization
+  * Libmspack heap buffer over-read in CHM parser
+  * PDF parser bugs
+  * Add HTTPS support for clamsubmit
+  * Fix for DNS resolution for users on IPv4-only machines where
+    IPv6 is not available or is link-local only</comment>
+    <requestid>626690</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>7671429aff8f58cd60ff1be5326de0e0</srcmd5>
+    <version>0.100.2</version>
+    <time>1538672604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.100.2:
+  * bsc#1110723, CVE-2018-15378: Vulnerability in ClamAV's MEW
+    unpacking feature that could allow an unauthenticated, remote
+    attacker to cause a denial of service (DoS) condition on an
+    affected device.
+  * bsc#1103040, CVE-2018-14680, CVE-2018-14681, CVE-2018-14682:
+    more fixes for embedded libmspack.
+  * Make freshclam more robust against lagging signature mirrors.
+  * On-Access &quot;Extra Scanning&quot;, an opt-in minor feature of
+    OnAccess scanning on Linux systems, has been disabled due to a
+    known issue with resource cleanup OnAccessExtraScanning will
+    be re-enabled in a future release when the issue is
+    resolved. In the mean-time, users who enabled the feature in
+    clamd.conf will see a warning informing them that the feature
+    is not active. For details, see:
+    https://bugzilla.clamav.net/show_bug.cgi?id=12048
+- Restore exit code compatibility of freshclam with versions before
+  0.100.0 when the virus database is already up to date
+  (bsc#1104457, clamav-freshclam-exit.patch).</comment>
+    <requestid>639958</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>5c3a9af76704f69699dbdcb1f09d11db</srcmd5>
+    <version>0.101.2</version>
+    <time>1554384140</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.101.2 (bsc#1130721)
+  * CVE-2019-1787:
+    An out-of-bounds heap read condition may occur when scanning PDF
+    documents. The defect is a failure to correctly keep track of the number
+    of bytes remaining in a buffer when indexing file data.
+  * CVE-2019-1789:
+    An out-of-bounds heap read condition may occur when scanning PE files
+    (i.e. Windows EXE and DLL files) that have been packed using Aspack as a
+    result of inadequate bound-checking.
+  * CVE-2019-1788:
+    An out-of-bounds heap write condition may occur when scanning OLE2 files
+    such as Microsoft Office 97-2003 documents. The invalid write happens when
+    an invalid pointer is mistakenly used to initialize a 32bit integer to
+    zero. This is likely to crash the application.
+  * CVE-2019-1786:
+    An out-of-bounds heap read condition may occur when scanning malformed
+    PDF documents as a result of improper bounds-checking.
+  * CVE-2019-1785:
+    A path-traversal write condition may occur as a result of improper
+    input validation when scanning RAR archives.
+  * CVE-2019-1798:
+    A use-after-free condition may occur as a result of improper error
+    handling when scanning nested RAR archives.
+- added clamav-max_patch.patch to fix build
+- dropped clamav-freshclam-exit.patch
+
+- Update to version 0.101.1:
+  * Add missing headers to fix build of packages against libclamav.
+- Add missing include for str.h to libclamav/others_common.c
+  (clamav-str-h.patch)</comment>
+    <requestid>689824</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>9ab8126ea3929d66b1721a24565722f0</srcmd5>
+    <version>0.101.3</version>
+    <time>1565362449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.101.3:
+  * bsc#1144504: ZIP bomb causes extreme CPU spikes</comment>
+    <requestid>721852</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>ac9bf5bd3baeddf75470428d473cff57</srcmd5>
+    <version>0.101.4</version>
+    <time>1568066378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729457</requestid>
+  </revision>
+</revisionlist>

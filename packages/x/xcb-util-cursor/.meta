@@ -1,0 +1,5 @@
+<package name="xcb-util-cursor" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:XOrg" package="xcb-util-cursor"/>
+</package>

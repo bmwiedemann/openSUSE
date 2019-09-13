@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>73d9e45444165a7f4ce9d5b43c76a8bf</srcmd5>
+    <version>1.0+git.20160823</version>
+    <time>1476997669</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>424743</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8493fc9e38bd3208578a74b4dad68e64</srcmd5>
+    <version>1.0+git.20180412</version>
+    <time>1551883671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git.20180412:
+  * Add missing #ifdef _OPENMP</comment>
+    <requestid>681722</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="perl-Const-Fast" project="openSUSE:Factory">
+  <title>Facility for creating read-only scalars, arrays, and hashes</title>
+  <description>Facility for creating read-only scalars, arrays, and hashes.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Const-Fast"/>
+  <url>http://search.cpan.org/dist/Const-Fast/</url>
+</package>

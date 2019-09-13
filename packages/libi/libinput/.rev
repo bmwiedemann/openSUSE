@@ -1,0 +1,695 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81e1f7e2d26c211f928219d9568fdcbd</srcmd5>
+    <version>0.1.0</version>
+    <time>1396622156</time>
+    <user>coolo</user>
+    <comment>Submit to Factory - will be a dependency for GNOME 3.12</comment>
+    <requestid>228286</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a67bc0b3d96d1a24aa97ee81d0905bd9</srcmd5>
+    <version>0.1.0</version>
+    <time>1399317441</time>
+    <user>coolo</user>
+    <comment>forwarded rq 232359 from dimstar: add baselibs.conf</comment>
+    <requestid>232365</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a67bc0b3d96d1a24aa97ee81d0905bd9</srcmd5>
+    <version>0.1.0</version>
+    <time>1409301594</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>37ac62829c79880f4429e266b2024cc1</srcmd5>
+    <version>0.6.0</version>
+    <time>1412098611</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 0.6.0
+-&gt; Place into Staging:E</comment>
+    <requestid>248939</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>724747f44261c2a149decf006f786e0b</srcmd5>
+    <version>0.7.0</version>
+    <time>1419159800</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>265873</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b6cbb9ecc1fa80ce687b8a54972fd644</srcmd5>
+    <version>0.12</version>
+    <time>1427735729</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>292268</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1ca5d4df213aa02cd73258da785bb701</srcmd5>
+    <version>0.13</version>
+    <time>1428652188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0</comment>
+    <requestid>295144</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b02afe17acb662749cd9799fdbd5bb8f</srcmd5>
+    <version>0.14</version>
+    <time>1430580787</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>304761</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6e14217bc2c703b07a157cee9c788849</srcmd5>
+    <version>0.14.1</version>
+    <time>1430903849</time>
+    <user>dimstar_suse</user>
+    <comment>Cosmetic fix, feel free to reject, no hard feelings :-) (forwarded request 305365 from Zaitor)</comment>
+    <requestid>305369</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7fcd766f367c9e50d0361a2c2d33b267</srcmd5>
+    <version>0.15</version>
+    <time>1431247972</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.15.0:</comment>
+    <requestid>305693</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bf26acb5db9de4ad57b3d440f9762e71</srcmd5>
+    <version>0.17</version>
+    <time>1433744737</time>
+    <user>dimstar_suse</user>
+    <comment>New release (forwarded request 310841 from Zaitor)</comment>
+    <requestid>310843</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4a42c5caf63099a0cf45247d4d7fffbf</srcmd5>
+    <version>0.18</version>
+    <time>1436111876</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.18.0:</comment>
+    <requestid>313230</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d579882f1e5aad49c0c2e13632c21223</srcmd5>
+    <version>0.20</version>
+    <time>1437299131</time>
+    <user>coolo</user>
+    <comment>Update to 0.20.0 (forwarded request 317368 from tittiatcoke)</comment>
+    <requestid>317375</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fe00aed902ff301a229fe10964314d58</srcmd5>
+    <version>0.21</version>
+    <time>1438899582</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21.0:</comment>
+    <requestid>320460</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>12aea42690c49bcb1ef5ad8a8881e182</srcmd5>
+    <version>0.99</version>
+    <time>1440479904</time>
+    <user>coolo</user>
+    <comment>New rel (forwarded request 324765 from Zaitor)</comment>
+    <requestid>325040</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d2cb4803918bf483a6a0a41c1c556e52</srcmd5>
+    <version>1.0</version>
+    <time>1440743142</time>
+    <user>coolo</user>
+    <comment>- Update to 1.0.0
+  * doc: inverse event type restriction of x and y accessors
+  * doc: ellipse instead of ellipsis
+  * test: fix gcc warning about missing prototypes
+  * doc: fix more typos
+  * doc: add a diagram for evemu and note that libinput doesn't recordings
+  * configure.ac: libinput 1.0 (forwarded request 326695 from pluskalm)</comment>
+    <requestid>326698</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8723bf3596abdf0531f10e6d67a1be39</srcmd5>
+    <version>1.0.1</version>
+    <time>1442130185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1
+  * filter: fix constant acceleration for the X230 (forwarded request 328825 from pluskalm)</comment>
+    <requestid>328826</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cd0bb43c044b4bfbe3deb7c7d8dd83e9</srcmd5>
+    <version>1.0.2</version>
+    <time>1446647484</time>
+    <user>dimstar_suse</user>
+    <comment>Correct version typo in .changes (forwarded request 341810 from Zaitor)</comment>
+    <requestid>341832</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>23ce84889853e7438d7a4f8b9d4d863b</srcmd5>
+    <version>1.1.1</version>
+    <time>1448957899</time>
+    <user>dimstar_suse</user>
+    <comment>- List the package contents inside /lib/udev since we don't
+  want libinput-udev to own /lib/udev itself, which is already owned
+  by the udev package.
+- Modified summary of libinput-udev to begin with a capital letter
+  as required by rpmlint. (forwarded request 346044 from alarrosa)</comment>
+    <requestid>346045</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>56602a94d95c81a870e1e765703c2e93</srcmd5>
+    <version>1.1.4</version>
+    <time>1451177895</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 350344 from Zaitor)</comment>
+    <requestid>350347</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9e3c83b789ba3bc66f2604a7feb8df30</srcmd5>
+    <version>1.1.5</version>
+    <time>1454149855</time>
+    <user>dimstar_suse</user>
+    <comment>New rel (forwarded request 355777 from Zaitor)</comment>
+    <requestid>355781</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>11b820b0c81ab27ef29b3058121de743</srcmd5>
+    <version>1.2.0</version>
+    <time>1456433765</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 361271 from Zaitor)</comment>
+    <requestid>361273</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>126b4326f99b163f0eeefbd94ef137be</srcmd5>
+    <version>1.2.1</version>
+    <time>1458120251</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 368439 from Zaitor)</comment>
+    <requestid>368454</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>380b6acd01cc86f4b94ff1f863225579</srcmd5>
+    <version>1.2.2</version>
+    <time>1459001374</time>
+    <user>dimstar_suse</user>
+    <comment>New rel (forwarded request 375366 from Zaitor)</comment>
+    <requestid>375411</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>1add6d7ed40fa3d0762960aba1a85f25</srcmd5>
+    <version>1.2.2</version>
+    <time>1460358825</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>386040</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8c93fa879cfd59ecf3cf8cfa3e62e55c</srcmd5>
+    <version>1.2.3</version>
+    <time>1460837225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.3:
+  * The handling of the T450 jerky cursor motion had a bug, causing
+    libinput to complain about invalid states (fdo#94601). This is
+    fixed now.
+  * The top software buttons on the T440 generation touchpads had
+    their left-handed button mapping applied twice, effectively
+    cancelling it out (fdo#94733). Fixed now, the top buttons will
+    be mapped correctly in left-handed mode.
+  * The Wacom airbrush pen slider range now sends the correct
+    [-1, 1] normalized range.
+  * And finally, the config call to fetch the default profile
+    libinput_device_config_accel_get_default_profile() actually
+    returns the default profile now.
+- Drop libinput-touchpad-fixes.patch: Fixed upstream. (forwarded request 387675 from Zaitor)</comment>
+    <requestid>387678</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>de8c351b47413eefa9f9ffaea6bbdbb5</srcmd5>
+    <version>1.3.0</version>
+    <time>1463738099</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>396122</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0f07a7fa5eed587a6f08608e973210f7</srcmd5>
+    <version>1.3.1</version>
+    <time>1465750347</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>400213</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>58ca90d7a0616d5f86f0ad89488da97a</srcmd5>
+    <version>1.3.2</version>
+    <time>1467359573</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>404143</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>431e5c0b11af5d547abb1e0557c08262</srcmd5>
+    <version>1.3.3</version>
+    <time>1468699920</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>407725</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>cd71648a628f1389f2c61d2229a3cbad</srcmd5>
+    <version>1.4.0</version>
+    <time>1470217128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstrem release 1.4.0
+fix dot</comment>
+    <requestid>415874</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>983ae1b041e266f4c28a363d524acd44</srcmd5>
+    <version>1.4.1</version>
+    <time>1471427976</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>418858</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c4b3397df53b8d669a469842fb6de40f</srcmd5>
+    <version>1.4.2</version>
+    <time>1473409096</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>424924</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c7993d6c18db2d5e5f2e934c2911fc3f</srcmd5>
+    <version>1.5.0</version>
+    <time>1474475090</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428315</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>bce978f720827bbeca798235ba5d3181</srcmd5>
+    <version>1.5.1</version>
+    <time>1479150607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.5.1</comment>
+    <requestid>439945</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>85b99b15cd64426e45acc1fdabfa1c29</srcmd5>
+    <version>1.5.2</version>
+    <time>1480860381</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>443163</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a4c8cbdae813b92ac7252275b1a6c580</srcmd5>
+    <version>1.5.3</version>
+    <time>1481459140</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444944</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f60def89806eab7e56dfaf6a2380e01b</srcmd5>
+    <version>1.6.0</version>
+    <time>1485166998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.6.0</comment>
+    <requestid>451514</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2141e8d1be6840ef8793431a3a8c0541</srcmd5>
+    <version>1.6.1</version>
+    <time>1487028970</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>455726</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>dc6781db900683474f167d3454d07798</srcmd5>
+    <version>1.6.2</version>
+    <time>1488548254</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461141</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>19572e1bb91c9929798fab4f84f34a34</srcmd5>
+    <version>1.6.3</version>
+    <time>1489175336</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release, not buildtested (forwarded request 477703 from Zaitor)</comment>
+    <requestid>477706</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>5164d52bd2d2351b8837c61de64ab2f1</srcmd5>
+    <version>1.7.0</version>
+    <time>1491895720</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>483780</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>cb5d95fc6528de716a154837b8a6f1cd</srcmd5>
+    <version>1.7.0</version>
+    <time>1493020022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>488626</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>62e0202aa4dd86bab89f4b87825a9462</srcmd5>
+    <version>1.7.2</version>
+    <time>1495133218</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel:
+
+libinput 1.7.2 is now available. The main change here are Paul's patches
+that change the pressure ranges for Elantech touchpads down to something
+more lenient. Previously, the range was set too high, causing the touchpad
+to behave erratically unless the finger pressure was quite high.
+
+Paul Kocialkowski (3):
+      udev: Remove unused Elantech touchpad model binding
+      udev: Select more generic pressure range values for Elantech touchpads
+      udev: Add specific pressure range for the ASUS ZenBook UX21E
+
+Peter Hutterer (3):
+      touchpad: move the pressure range to a hwdb entry
+      doc: add documentation for touchpad pressure detection
+      configure.ac: libinput 1.7.2 (forwarded request 494422 from Zaitor)</comment>
+    <requestid>494461</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>17747643eab8433663c66949c84c308c</srcmd5>
+    <version>1.7.3</version>
+    <time>1498202190</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504033</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1799eec364b418b78e34ec585627760c</srcmd5>
+    <version>1.8.1</version>
+    <time>1502186733</time>
+    <user>maxlin_factory</user>
+    <comment>New stable release (forwarded request 512334 from Zaitor)</comment>
+    <requestid>512365</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>7b624c3a682340ddb2f1c8c39e6a86d9</srcmd5>
+    <version>1.8.1</version>
+    <time>1504814972</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520224</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>bc3640e7c21b1f361c9d8910c5ebdcba</srcmd5>
+    <version>1.8.2</version>
+    <time>1505757132</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new bugfix release 1.8.2
+  * Change in experience is that 2-slot touchpads (e.g. most
+    Lenovos before kernel 4.12) do not support 3fg pinch anymore
+    - instead we assume swipe for three fingers, which makes
+    gestures a lot more reliable (3-finger swipe is much more
+    common than 3-finger pinch anyway).
+</comment>
+    <requestid>526491</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0431be6ac7ef65bb4b3c6c585bd09b74</srcmd5>
+    <version>1.8.3</version>
+    <time>1507896170</time>
+    <user>dimstar_suse</user>
+    <comment>New stable, not buildtested (forwarded request 531897 from Zaitor)</comment>
+    <requestid>531901</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b78e1bc22d0a10f29ba4e812f24064e6</srcmd5>
+    <version>1.9.0</version>
+    <time>1509036194</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.9.0 - happens to include the fix for meson 0.42 (forwarded request 536627 from dimstar)</comment>
+    <requestid>536632</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a045712951b055143d96dbd7a02d1c85</srcmd5>
+    <version>1.9.1</version>
+    <time>1510665441</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.1:
+  + Stop a crash when a lid was opened/closed multiple times while
+    typing.
+  + Reduction of the palm edge zone to a maximum width of 8mm (this
+    notably helps users of recent macs that have large touchpads)
+  + Benjamin's fix to the device groups enables touch arbitration
+    on the Dell Canvas 27 (still needs libwacom changes)
+- Remove name specification from %setup, not needed (forwarded request 540324 from avindra)</comment>
+    <requestid>540335</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>87d265cb7eb2df96b1ff5538f3a4a1e9</srcmd5>
+    <version>1.9.1</version>
+    <time>1510837224</time>
+    <user>dimstar_suse</user>
+    <comment>Minor tweak to spec, and cleanup .changes to use the traditional * instead of + for bullet points, the 2 latter changes are a deviation from what have been done in the past for this package. (forwarded request 541914 from Zaitor)</comment>
+    <requestid>541918</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>061ac8d9fc93f16628bffc2fdfd89024</srcmd5>
+    <version>1.9.2</version>
+    <time>1512041589</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>544385</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>d140fa7e19551b66cd15c7b09bdbfe61</srcmd5>
+    <version>1.9.3</version>
+    <time>1513162535</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>555773</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f793456cac02d4e639fc7b57d7778d54</srcmd5>
+    <version>1.9.4</version>
+    <time>1513676693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.9.4</comment>
+    <requestid>556898</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>5dd35ed185d19555f60646756b4c102a</srcmd5>
+    <version>1.10.0</version>
+    <time>1519557546</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>578305</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>217ecc1010c9e8a62d5a5b0b506f4359</srcmd5>
+    <version>1.10.2</version>
+    <time>1520852873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to bugfix release 1.10.2</comment>
+    <requestid>584262</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>dc01692c2337c2660be7e8ed02d864da</srcmd5>
+    <version>1.10.3</version>
+    <time>1521579190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to bugfix release 1.10.3
+  * Fix a crasher triggered by a specific event sequence during
+    3-finger gestures (and on some touchpads 2-finger gestures).
+  * Fix the new pointer jitter detection. A bitmask got lost and
+    the software compared 32 bits instead of only the 3 it ought
+    to care about.
+</comment>
+    <requestid>588135</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>890cf2012c0fbe6c59857e2921f986bf</srcmd5>
+    <version>1.10.4</version>
+    <time>1523956265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10.4:
+  * Biggest user-noticeable change is that the hysteresis threshold
+    is significantly reduced to 0.25 of a mm now or to the kernel
+    fuzz value where present. This should make touchpads a bit more
+    snappy.
+  * Two fixes for touchpad touch handling, one affecting semi-mt
+    devices with hovering capability and one affecting the Apple
+    touchpads where a touch can get erroneously detected as as
+    exceeding the speed thesholds.
+  * The rest - documentation and tool fixes. Nandor's udev fix
+    fixes a race condition in the test suite. (forwarded request 595011 from iznogood)</comment>
+    <requestid>595279</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>09705f70716ece4a67d9355c693e90bf</srcmd5>
+    <version>1.10.5</version>
+    <time>1524400438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new bugfix release 1.10.5</comment>
+    <requestid>598018</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>a832312b20ba060a68003e31bed12747</srcmd5>
+    <version>1.10.6</version>
+    <time>1525343460</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new bugfix release 1.10.6</comment>
+    <requestid>602812</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>c431e1a7931f1bb4a9ff71e345f5ce2f</srcmd5>
+    <version>1.11.0</version>
+    <time>1529066100</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream release 1.11.0</comment>
+    <requestid>615827</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>c7b35a5c7c2e15c25c4c41a78639ebbc</srcmd5>
+    <version>1.11.1</version>
+    <time>1529919363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618804</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>42b9d2bf410e182e0189515c4fad7896</srcmd5>
+    <version>1.11.2</version>
+    <time>1531592071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621692</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>a078bea1c71a877d2e8ad05b9ff1b1c0</srcmd5>
+    <version>1.11.3</version>
+    <time>1533214195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625692</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>3187acd3030be09cbb3ae881ffd6e683</srcmd5>
+    <version>1.12.0</version>
+    <time>1537436484</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream release 1.12.0</comment>
+    <requestid>634914</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>4715230fd81eb894656007a92fe0dc55</srcmd5>
+    <version>1.12.1</version>
+    <time>1539093184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639996</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>8482d290e2c4f83bb56fb240af519b78</srcmd5>
+    <version>1.12.2</version>
+    <time>1541509436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.12.2</comment>
+    <requestid>644188</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>edd9fab162e96c44a15c22a3b163c5f6</srcmd5>
+    <version>1.12.3</version>
+    <time>1542122522</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.12.3</comment>
+    <requestid>646896</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>f5268b492983b3975702998468f17570</srcmd5>
+    <version>1.12.4</version>
+    <time>1545376778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.12.4</comment>
+    <requestid>659300</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>f952550248e145f7864c3dab37e0c849</srcmd5>
+    <version>1.12.5</version>
+    <time>1547554401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.12.5</comment>
+    <requestid>663336</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>31f00be2871e28dfecc035d9973970a4</srcmd5>
+    <version>1.12.6</version>
+    <time>1549311778</time>
+    <user>coolo</user>
+    <comment>New upstream release (forwarded request 667587 from iznogood)</comment>
+    <requestid>667590</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>9e7d953ca3efcc7bcd710b80609c0ffb</srcmd5>
+    <version>1.13.1</version>
+    <time>1555053059</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.13.1</comment>
+    <requestid>692524</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>daecc461a1f5b449363e5e5a357806c7</srcmd5>
+    <version>1.13.2</version>
+    <time>1559727448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706914</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>8a178e359a04cc4bcc8caab8289ea0cf</srcmd5>
+    <version>1.13.4</version>
+    <time>1561882623</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.13.4</comment>
+    <requestid>712349</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>ad539ad8266ea40ef04a12d6ba5df035</srcmd5>
+    <version>1.14.0</version>
+    <time>1565694775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.14</comment>
+    <requestid>722312</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>6ed6be623062cdc23639c4310f5289d0</srcmd5>
+    <version>1.14.0</version>
+    <time>1566664870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724883</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>76da0ec7fd3f092905e341ba7e6d9f6a</srcmd5>
+    <version>1.14.1</version>
+    <time>1566913728</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.14.1</comment>
+    <requestid>725991</requestid>
+  </revision>
+</revisionlist>

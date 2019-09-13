@@ -1,0 +1,6 @@
+<package name="metamail" project="openSUSE:Factory">
+  <title>MIME Mail Handler</title>
+  <description>Metamail is required for reading multimedia mail messages (such as
+those using the Andrew toolkit) with elm.</description>
+  <devel project="server:mail" package="metamail"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="lxmusic" project="openSUSE:Factory">
+  <title>Lightweight Audio Player</title>
+  <description>LXMusic is just a Lightweight audio player,
+that uses xmm2 as back-end</description>
+  <devel project="X11:lxde" package="lxmusic"/>
+</package>

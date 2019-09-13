@@ -1,0 +1,152 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd4f186fc359de8ed71e31d2f3237068</srcmd5>
+    <version>1.024</version>
+    <time>1168903781</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="211">
+    <srcmd5>dd4f186fc359de8ed71e31d2f3237068</srcmd5>
+    <version>1.024</version>
+    <time>1168903781</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="212">
+    <srcmd5>0e92a86c31d3dbc6d685fd821fc0afd5</srcmd5>
+    <version>1.024</version>
+    <time>1245337075</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="214">
+    <srcmd5>0e92a86c31d3dbc6d685fd821fc0afd5</srcmd5>
+    <version>1.024</version>
+    <time>1245337075</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="215">
+    <srcmd5>ea5008614e3e3e30477bce4457ef5703</srcmd5>
+    <version>1.024</version>
+    <time>1263303845</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Apache-Filter based on submit request 29221 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="216">
+    <srcmd5>126f71a8e428ae027eb6d7730bbd55f0</srcmd5>
+    <version>1.024</version>
+    <time>1268925360</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="218">
+    <srcmd5>126f71a8e428ae027eb6d7730bbd55f0</srcmd5>
+    <version>1.024</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="219">
+    <srcmd5>126f71a8e428ae027eb6d7730bbd55f0</srcmd5>
+    <version>1.024</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="220">
+    <srcmd5>aaf38c1fb004cf4508230b41d4be6183</srcmd5>
+    <version>1.024</version>
+    <time>1291159151</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54186 from user coolo
+</comment>
+    <requestid>54186</requestid>
+  </revision>
+  <revision rev="10" vrev="221">
+    <srcmd5>5407a6e6fbcf32774c197d2155c91a07</srcmd5>
+    <version>1.024</version>
+    <time>1291159161</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54186
+</comment>
+  </revision>
+  <revision rev="11" vrev="222">
+    <srcmd5>31324998673863a5d498f5c971ff6363</srcmd5>
+    <version>1.024</version>
+    <time>1291807366</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54957 from user coolo
+</comment>
+    <requestid>54957</requestid>
+  </revision>
+  <revision rev="12" vrev="223">
+    <srcmd5>b5c4ae3eec7b36a5a9fc4126cc3d50d5</srcmd5>
+    <version>1.024</version>
+    <time>1291807371</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54957
+</comment>
+  </revision>
+  <revision rev="13" vrev="226">
+    <srcmd5>b5c4ae3eec7b36a5a9fc4126cc3d50d5</srcmd5>
+    <version>1.024</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="228">
+    <srcmd5>b5c4ae3eec7b36a5a9fc4126cc3d50d5</srcmd5>
+    <version>1.024</version>
+    <time>1319182239</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="229">
+    <srcmd5>f75180a0719978fd37b0a22caca43dba</srcmd5>
+    <version>1.024</version>
+    <time>1321875304</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92104</requestid>
+  </revision>
+  <revision rev="16" vrev="230">
+    <srcmd5>4dda53f1186896b32e9eb33305d14ef3</srcmd5>
+    <version>1.024</version>
+    <time>1323193046</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="232">
+    <srcmd5>4dda53f1186896b32e9eb33305d14ef3</srcmd5>
+    <version>1.024</version>
+    <time>1340183791</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="234">
+    <srcmd5>4dda53f1186896b32e9eb33305d14ef3</srcmd5>
+    <version>1.024</version>
+    <time>1359109595</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="236">
+    <srcmd5>4dda53f1186896b32e9eb33305d14ef3</srcmd5>
+    <version>1.024</version>
+    <time>1379663547</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="238">
+    <srcmd5>4dda53f1186896b32e9eb33305d14ef3</srcmd5>
+    <version>1.024</version>
+    <time>1409302156</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="239">
+    <srcmd5>b9019c7c371f55f9deaeb377944d821a</srcmd5>
+    <version>1.024</version>
+    <time>1438421885</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319231</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ea491bc395317fd1a1d4e285f0239a5</srcmd5>
+    <version>0.7.1</version>
+    <time>1372839078</time>
+    <user>coolo</user>
+    <comment>A blue clean gtk2/3 plus xfwm4 theme. Want to see it in the next release</comment>
+    <requestid>181774</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7ea491bc395317fd1a1d4e285f0239a5</srcmd5>
+    <version>0.7.1</version>
+    <time>1379662042</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7ea491bc395317fd1a1d4e285f0239a5</srcmd5>
+    <version>0.7.1</version>
+    <time>1409300569</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e90203c101d7601089ec7d398f4cb7be</srcmd5>
+    <version>1.2</version>
+    <time>1507391388</time>
+    <user>dimstar_suse</user>
+    <comment>update to v1.2 (latest release)</comment>
+    <requestid>530162</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b4277d617cbc1411eb4fc87adf1ac5be</srcmd5>
+    <version>1.3</version>
+    <time>1544095052</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.3
+  * New version of the gtk3 theme based on the latest version of Greybird 
+  * Fixing broken compatibility with the latest versions of GTK+ 3
+  * New index.theme file
+- added %license macro
+</comment>
+    <requestid>655293</requestid>
+  </revision>
+</revisionlist>

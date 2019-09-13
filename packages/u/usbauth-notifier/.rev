@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2e07775e1ad6c7175d4a2d9b847611bc</srcmd5>
+    <version>1.0</version>
+    <time>1518025224</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory</comment>
+    <requestid>571661</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d3179ed2fabca07bb19a0bbf8fb683e6</srcmd5>
+    <version>1.0</version>
+    <time>1519218741</time>
+    <user>dimstar_suse</user>
+    <comment>- buildrequires usbauth not needed, we create both
+  groups here.</comment>
+    <requestid>578414</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7bba7c5074a1d3ae487cb0249a87ebbb</srcmd5>
+    <version>1.0</version>
+    <time>1520503078</time>
+    <user>dimstar_suse</user>
+    <comment>- fix formatting of notifications
+- fix group name in manpage/README
+- use XDG autostart instead of xinitrc.d
+- buildrequires usbauth not needed, we create both
+  groups here.
+- fix group creation within spec file
+- susefied spec file. correct permission handling added.
+- UI notifications for new USB devices to be authenticated
+</comment>
+    <requestid>583709</requestid>
+  </revision>
+</revisionlist>

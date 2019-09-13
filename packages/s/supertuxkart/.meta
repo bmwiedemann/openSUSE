@@ -1,0 +1,8 @@
+<package name="supertuxkart" project="openSUSE:Factory">
+  <title>SuperTuxKart</title>
+  <description>SuperTuxKart is an enhanced version of TuxKart, a kart racing game, 
+originally done by Steve Baker, featuring Tux and a bunch of his friends. 
+SuperTuxKart is the work of the GotM run for TuxKart at happypenguin.org.</description>
+  <devel project="games" package="supertuxkart"/>
+  <url>http://supertuxkart.sourceforge.net</url>
+</package>

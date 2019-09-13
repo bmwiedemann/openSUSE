@@ -1,0 +1,6 @@
+<package name="libcontainers-common" project="openSUSE:Factory">
+  <title>Configuration files, manpages and debugging tools common to cri-o and related tools.</title>
+  <description>Configuration files common to github.com/containers, a collection of golang libraries, configuration files, manpages, and debugging tools used by various tools, such as skopeo, cri-o and podman.                                        
+</description>
+  <devel project="devel:kubic" package="libcontainers-common"/>
+</package>

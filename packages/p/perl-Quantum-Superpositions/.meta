@@ -1,0 +1,8 @@
+<package name="perl-Quantum-Superpositions" project="openSUSE:Factory">
+  <title>Qm-like superpositions for Perl</title>
+  <description>The Quantum::Superpositions module provides a new scalar data
+structure: the superposition. In a metaphor drawn from quantum
+mechanics, superpositions store a collection of values by overlaying
+them in parallel superimposed states within a single scalar variable.</description>
+  <devel project="devel:languages:perl" package="perl-Quantum-Superpositions"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="octave-forge-mechanics" project="openSUSE:Factory">
+  <title></title>
+  <description>Library with functions useful for numerical computation in classical mechanics and structural analysis.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-mechanics"/>
+</package>

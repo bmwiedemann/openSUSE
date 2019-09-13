@@ -1,0 +1,5 @@
+<package name="schily" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="schily"/>
+</package>

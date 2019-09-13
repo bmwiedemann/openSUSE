@@ -1,0 +1,184 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34e8b39714259ee820a3236abb27a865</srcmd5>
+    <version>1.5.0</version>
+    <time>1168904380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f956377c6d01dc1f4172bfac86eeffd4</srcmd5>
+    <version>1.5.1</version>
+    <time>1176565424</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="94">
+    <srcmd5>f956377c6d01dc1f4172bfac86eeffd4</srcmd5>
+    <version>1.5.1</version>
+    <time>1176565424</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="95">
+    <srcmd5>99d04b1cc148de2f8d50a34b577c23dc</srcmd5>
+    <version>1.5.1</version>
+    <time>1245277820</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>68936bbc03243daabbaaa342f8565f99</srcmd5>
+    <version>1.5.2.2</version>
+    <time>1247140787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>68936bbc03243daabbaaa342f8565f99</srcmd5>
+    <version>1.5.2.2</version>
+    <time>1247140787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>924f5532ce932beaee1e4815fabfa62c</srcmd5>
+    <version>1.5.3</version>
+    <time>1261402046</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/tree based on submit request 27234 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f7472429c649968753e4e86e6555ee30</srcmd5>
+    <version>1.5.3</version>
+    <time>1268926375</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b5fea4532c74c1757d3522076115da3c</srcmd5>
+    <version>1.5.3</version>
+    <time>1272966645</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/tree based on submit request 39358 from user prusnak
+</comment>
+    <requestid>39358</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>b5fea4532c74c1757d3522076115da3c</srcmd5>
+    <version>1.5.3</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>b5fea4532c74c1757d3522076115da3c</srcmd5>
+    <version>1.5.3</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>b5fea4532c74c1757d3522076115da3c</srcmd5>
+    <version>1.5.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>f5a886a8ca63f35a5095d7eb648304bc</srcmd5>
+    <version>1.5.3</version>
+    <time>1317744926</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86478 from uli_suse)</comment>
+    <requestid>86491</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>f5a886a8ca63f35a5095d7eb648304bc</srcmd5>
+    <version>1.5.3</version>
+    <time>1319182529</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>54ab3075928f9aa4959e0f007fd4b5d9</srcmd5>
+    <version>1.6.0</version>
+    <time>1321980582</time>
+    <user>coolo</user>
+    <comment>update to 1.6.0 (forwarded request 92890 from computersalat)</comment>
+    <requestid>92958</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1ad931bbeee49e1a9f70460ce4c21727</srcmd5>
+    <version>1.6.0</version>
+    <time>1323194961</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>1ad931bbeee49e1a9f70460ce4c21727</srcmd5>
+    <version>1.6.0</version>
+    <time>1340184285</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>1ad931bbeee49e1a9f70460ce4c21727</srcmd5>
+    <version>1.6.0</version>
+    <time>1359110505</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>1ad931bbeee49e1a9f70460ce4c21727</srcmd5>
+    <version>1.6.0</version>
+    <time>1379664845</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f930e6f6c12de3e16028c2e5ef35ec70</srcmd5>
+    <version>1.7.0</version>
+    <time>1405971632</time>
+    <user>coolo</user>
+    <comment>- Update to 1.7.0:
+  * Allow user/group names up to 32 characters before clipping.
+  * Made -i compress XML and JSON output as much as possible by eliminating
+    extraneous whitespace.
+  * Added --caseinsensitive (renamed --ignore-case ala grep) flag so patterns
+    match without regard to case, courtesy of Jason A Donenfeld.
+  * Added --matchdirs option courtesy of Brian Mattern &amp; Jason A. Donenfeld
+    &lt;Jason@zx2c4.com&gt;.
+  * Fixed possible buffer overflow on large uid/gids w/o user names/group
+    names (Alexandre Wendling &lt;alexandrerw@celepar.pr.gov.br&gt;)
+  * Added JSON support courtesy of Florian Sesser &lt;fs@it-agenten.com&gt;.
+  * Fixed formatting error with HTML output when -L 1 specified. (Sascha Zorn 
+    &lt;sascha.zorn@gmail.com&gt;)
+  * Added file size sorting (Philipp M?ller &lt;philippausmuensing@googlemail.com&gt;)
+  * Added '--sort[=]&lt;name&gt;' option, ala ls.
+  * Fixed OS X makefile problems (Ryan Hollis &lt;theryanhollis@gmail.com&gt;)
+  * Fixed possible memory overflow in read_dir (path/lbuf not equal in size
+    to pathsize/lbufsize.) (Han Hui &lt;hanhui03@163.com&gt;)
+  * Fix S_ISDOOR/S_IFDOOR spelling mistake for Solaris. (Tim Mooney
+    &lt;Tim.Mooney@ndsu.edu&gt;)
+  * Make tree more reliably detect UTF-8 locales. (Mantas Mikulnas
+    &lt;grawity@gmail.com&gt; and others.)
+  * Return non-zero exit status on option errors, print usage to stdout when
+    not an error, add the posix '--' option terminator, Change -S description
+    to mean CP437 (console) output codes, not ASCII. (Ivan Shmakov
+    &lt;oneingray@gmail.com&gt;)
+- Use upstream tarball instead of a custom one
+- Adjust the makefile patch accordingly:
+  - Rename tree-dontstrip.patch to tree-makefile.patch,
+    since the upstream makefile does not include the strip flag anymore in that line</comment>
+    <requestid>241765</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>f930e6f6c12de3e16028c2e5ef35ec70</srcmd5>
+    <version>1.7.0</version>
+    <time>1409303528</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a11614b867afdf0e688beb407fd0edcc</srcmd5>
+    <version>1.8.0</version>
+    <time>1544539766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657085</requestid>
+  </revision>
+</revisionlist>

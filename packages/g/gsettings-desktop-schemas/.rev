@@ -1,0 +1,434 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d0960b3d479c989e753a14962e3ccf5</srcmd5>
+    <version>0.0.1</version>
+    <time>1286809644</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gsettings-desktop-schemas based on submit request 50108 from user vuntz
+</comment>
+    <requestid>50108</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d858ed5bda99a374f118af42f4fe50e0</srcmd5>
+    <version>0.1.2</version>
+    <time>1291999415</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55402 from user vuntz
+</comment>
+    <requestid>55402</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02a7ad81cb43771b01748b201075a8ba</srcmd5>
+    <version>0.1.3</version>
+    <time>1294655866</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57538 from user vuntz
+</comment>
+    <requestid>57538</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>885c2f443534e42dac07e3feb3bfe1a3</srcmd5>
+    <version>0.1.3</version>
+    <time>1294655887</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57538
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d29fb71b92259d9c8721bda668607731</srcmd5>
+    <version>0.1.4</version>
+    <time>1295020024</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58232 from user vuntz
+</comment>
+    <requestid>58232</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2d8edff6d4a83a627e709146ff121051</srcmd5>
+    <version>0.1.4</version>
+    <time>1295020032</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58232
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d21ec53d92c2480dec305a9a9fd115fe</srcmd5>
+    <version>0.1.5</version>
+    <time>1297642439</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61091 from user vuntz
+</comment>
+    <requestid>61091</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>d21ec53d92c2480dec305a9a9fd115fe</srcmd5>
+    <version>0.1.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aca9ecd0a47004d9367f87a4803dd2b6</srcmd5>
+    <version>3.0.1</version>
+    <time>1304675663</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69088</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>76ef6be71fc7359486597140d14b00fe</srcmd5>
+    <version>3.1.3</version>
+    <time>1310121801</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F, including GNOME 3.1.3</comment>
+    <requestid>75756</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5dbf5eae64a589095d3f0b29f1584de2</srcmd5>
+    <version>3.1.91</version>
+    <time>1315560199</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81503</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f3258d5579c21ca131d125850b3ee70c</srcmd5>
+    <version>3.2.0</version>
+    <time>1317543031</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85679</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f3258d5579c21ca131d125850b3ee70c</srcmd5>
+    <version>3.2.0</version>
+    <time>1319181945</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>1392fd65ddd6dccbb55bba0172ec24c0</srcmd5>
+    <version>3.2.0</version>
+    <time>1319551277</time>
+    <user>coolo</user>
+    <comment>Add patch from git (forwarded request 89151 from vuntz)</comment>
+    <requestid>89203</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>297546b87b73149de02449862ed9b767</srcmd5>
+    <version>3.3.2</version>
+    <time>1325846680</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99058</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>06964ed032d7566086c160f68e7a6576</srcmd5>
+    <version>3.3.2</version>
+    <time>1329405275</time>
+    <user>coolo</user>
+    <comment>Pushing most G:F bits</comment>
+    <requestid>105120</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>932b2f3fe95a84c1d12974e7b03c0044</srcmd5>
+    <version>3.3.90</version>
+    <time>1330453422</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>107274</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0e636af0e6e8fb3081445b1bfc974f93</srcmd5>
+    <version>3.4.0</version>
+    <time>1333022282</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111743</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f41a951421b63f0d4f9ae7c955b79556</srcmd5>
+    <version>3.4.1</version>
+    <time>1334927816</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>114663</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bba850bc1a39c535be1f1ee6384af5c4</srcmd5>
+    <version>3.4.2</version>
+    <time>1337674201</time>
+    <user>coolo</user>
+    <comment>push G:F</comment>
+    <requestid>121443</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>bba850bc1a39c535be1f1ee6384af5c4</srcmd5>
+    <version>3.4.2</version>
+    <time>1340183413</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a00339f3ed10c0586ed61805b123a3e5</srcmd5>
+    <version>3.6.0</version>
+    <time>1349241914</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136719</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>707b00a34a080baac0870a36a2689b46</srcmd5>
+    <version>3.6.1</version>
+    <time>1353513497</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>142110</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>707b00a34a080baac0870a36a2689b46</srcmd5>
+    <version>3.6.1</version>
+    <time>1359109006</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8e6291556c68be0c852fb8a774bba69c</srcmd5>
+    <version>3.8.0</version>
+    <time>1364986392</time>
+    <user>coolo</user>
+    <comment>Push G:Factory</comment>
+    <requestid>162179</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>34a84af8e1bfa5c2276de8f3973ed318</srcmd5>
+    <version>3.8.2</version>
+    <time>1368694860</time>
+    <user>coolo</user>
+    <comment>Update to 3.8.2 (forwarded request 175558 from Zaitor)</comment>
+    <requestid>175595</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ee8832c9cc42a14ba0542302f8c9f138</srcmd5>
+    <version>3.9.3</version>
+    <time>1372527725</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.3, as announced</comment>
+    <requestid>181291</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>563a8a86709f96ed1e2678586fa49fb3</srcmd5>
+    <version>3.9.5</version>
+    <time>1376648597</time>
+    <user>scarabeus_factory</user>
+    <comment>push GNOME:Factory</comment>
+    <requestid>186888</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e448314a51a11a07052431c1c6078ecc</srcmd5>
+    <version>3.9.90</version>
+    <time>1377875786</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.90</comment>
+    <requestid>196256</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>69ad3c0d971707479baa29564ac26e78</srcmd5>
+    <version>3.9.91</version>
+    <time>1378893592</time>
+    <user>coolo</user>
+    <comment>Update to 3.9.91</comment>
+    <requestid>198096</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>69ad3c0d971707479baa29564ac26e78</srcmd5>
+    <version>3.9.91</version>
+    <time>1379662560</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>f9b9a8455996bcba2757c94364bfd2e2</srcmd5>
+    <version>3.9.91</version>
+    <time>1379921109</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.92</comment>
+    <requestid>200018</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e59819c67e8033551de9cfa235ca9ffb</srcmd5>
+    <version>3.10.0</version>
+    <time>1380199390</time>
+    <user>coolo</user>
+    <comment>- Drop gnome-backgrounds Recommends: the KDE team is unhappy that
+  we try to install an error free GNOME desktop. The requirement
+  is no longer very important though, as glib2-branding-openSUSE
+  adds an override file, setting the lockscreen wallpaper to a
+  openSUSE branded one. Thus, only users of the upstream branding
+  package will be hit badly.
+
+- Update to version 3.10.0:
+  + Updated translations.</comment>
+    <requestid>200652</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>402639cb032c3e2f9cf7a0bd31a85948</srcmd5>
+    <version>3.10.1</version>
+    <time>1382012008</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.10.1 - GNOME Stable branch - Bugfixes only (forwarded request 203458 from Zaitor)</comment>
+    <requestid>203504</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>fb4fc2b3bfc1a5eebbc835f157fa4e26</srcmd5>
+    <version>3.12.0</version>
+    <time>1399317367</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231752</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d2453bef5d5d4b3d4f3a40d495028e1f</srcmd5>
+    <version>3.12.2</version>
+    <time>1400588681</time>
+    <user>coolo</user>
+    <comment>Stable update (forwarded request 234440 from Zaitor)</comment>
+    <requestid>234508</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>d2453bef5d5d4b3d4f3a40d495028e1f</srcmd5>
+    <version>3.12.2</version>
+    <time>1409301106</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>80a654d37655f224be3346ede968f60b</srcmd5>
+    <version>3.14.0</version>
+    <time>1412098677</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251924 from Zaitor)</comment>
+    <requestid>252075</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>951272e874420443a6fa90735809dd86</srcmd5>
+    <version>3.14.1</version>
+    <time>1413528624</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256820</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>cbcf30ec5079a571fb3b2803566b496e</srcmd5>
+    <version>3.16.0</version>
+    <time>1427735911</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292757 from dimstar)</comment>
+    <requestid>292950</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a2b4893c07166854bc119fbc0dcf9564</srcmd5>
+    <version>3.16.1</version>
+    <time>1429768626</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298419</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>237472477184f26e11f8d228b0ec95c3</srcmd5>
+    <version>3.18.0</version>
+    <time>1444141583</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0 (forwarded request 332740 from dimstar)</comment>
+    <requestid>332867</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e4ccc85298d5defe844463f7be967a52</srcmd5>
+    <version>3.18.1</version>
+    <time>1446049716</time>
+    <user>dimstar_suse</user>
+    <comment>Bad me, forgot to sub - but it can wait in GF for staging to complete, no rush :-) (forwarded request 340794 from Zaitor)</comment>
+    <requestid>340949</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b19df9414af75a4994df70e0fe459cbd</srcmd5>
+    <version>3.20.0</version>
+    <time>1459254952</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 376680 from dimstar)</comment>
+    <requestid>376848</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>3363f0c5cabe73d83cf16cac15ddc7d2</srcmd5>
+    <version>3.20.0</version>
+    <time>1472594644</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423537</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>92776381920ae1d15f7d4997ce86844f</srcmd5>
+    <version>3.22.0</version>
+    <time>1474476145</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.22.0 (forwarded request 428961 from dimstar)</comment>
+    <requestid>429152</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2a674c7f53c0c14a6b699f4bc43d7dd3</srcmd5>
+    <version>3.24.0</version>
+    <time>1490220402</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.0 (forwarded request 481293 from dimstar)</comment>
+    <requestid>481373</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>13ebed7efa2ff03674bbb95c8f0c7a66</srcmd5>
+    <version>3.24.1</version>
+    <time>1505331745</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520899</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>20ca0739aedbaed674ba5b23cc0f7dd1</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052114</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0 (forwarded request 586009 from dimstar)</comment>
+    <requestid>586210</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>5839075740866f6bc48685ebc4bbc1ed</srcmd5>
+    <version>3.28.1</version>
+    <time>1536833355</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 3.28.1:
+  + Set default background image for screen lock to an existing
+    one.
+  + Updated translations. (forwarded request 633583 from iznogood)</comment>
+    <requestid>633719</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>9b2c22702fc2b1d1501ec7578b457865</srcmd5>
+    <version>3.28.1</version>
+    <time>1542579889</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch: 
+  + Add settings for org.gnome.desktop.background.lockdialog
+    This key is for the background of lockDialogGroup which makes login
+    and lock background configurable. The default behavior will be
+    retained to what it is currently.
+  + This patch is required by a patch in GNOME Shell
+    gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
+  (fate#324570, glgo#GNOME/gnome-shell#680). (forwarded request 648449 from qkzhu)</comment>
+    <requestid>648877</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>590b8f90f47a2d0395283f3d0d314eb6</srcmd5>
+    <version>3.32.0</version>
+    <time>1556914523</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695582 from dimstar)</comment>
+    <requestid>695752</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="xlockmore" project="openSUSE:Factory">
+  <title>Screen Saver and Locker for the X Window System</title>
+  <description>The xlock utility locks your X Window System session and runs a screen
+saver until a password is entered.</description>
+  <devel project="X11:Utilities" package="xlockmore"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="polkit-default-privs" project="openSUSE:Factory">
+  <title>SUSE PolicyKit default permissions</title>
+  <description>Different default privilege settings depending on local configuration</description>
+  <devel project="Base:System" package="polkit-default-privs"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="antlr-bootstrap" project="openSUSE:Factory">
+  <title>Antlr for bootstrapping purposes</title>
+  <description>This antlr package is used for bootstrapping purposes only.</description>
+  <devel project="openSUSE:Factory" package="antlr"/>
+</package>

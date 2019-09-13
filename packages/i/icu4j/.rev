@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f845a65c625fc7164ec3dcce6f5ff04</srcmd5>
+    <version>52.1</version>
+    <time>1405971586</time>
+    <user>coolo</user>
+    <comment>Another never submitted java pkg</comment>
+    <requestid>241424</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7f845a65c625fc7164ec3dcce6f5ff04</srcmd5>
+    <version>52.1</version>
+    <time>1409301213</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>650071d1096f2c78b83b4500bc2f7cd5</srcmd5>
+    <version>54.1.1</version>
+    <time>1422134442</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282582</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2f4a72efdc16ef4cc8fa0f8c9b1b6fa2</srcmd5>
+    <version>54.1.1</version>
+    <time>1427982970</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292616</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>caa5e954709632e33fc34572290dd988</srcmd5>
+    <version>55.1</version>
+    <time>1438421854</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 55.1:
+  * various bugfixes to match up regular icu-c
+- Add patch to build with jdk8:
+  * java8-compatibility.patch</comment>
+    <requestid>319098</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>be6bbacc81e7922ab63881cf37176d9c</srcmd5>
+    <version>55.1</version>
+    <time>1489345308</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477246</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>fc5fe942d53fc9acc875132a964e2739</srcmd5>
+    <version>55.1</version>
+    <time>1490133065</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481383</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a03228ef4887ac676aba6ac675890253</srcmd5>
+    <version>58.1</version>
+    <time>1495442854</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 58.1:
+  * Changes to keep in line with regular icu release
+- Obsoleted patch:
+  * java8-compatibility.patch
+- Needed as a dependency for FOP 2.1 (fate#322405)
+  for SLE/openSUSE (fate#322405)</comment>
+    <requestid>496757</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e6b2ca963ad1f7bca1479bbae472d529</srcmd5>
+    <version>58.1</version>
+    <time>1505920125</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>526989</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>62897cfa7ba09983f7b94d647ef17815</srcmd5>
+    <version>58.1</version>
+    <time>1506679060</time>
+    <user>dimstar_suse</user>
+    <comment>Solve the _mavendepmapfragdir the proper way</comment>
+    <requestid>529854</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>af79ded9eea63a870f35f418168fc00d</srcmd5>
+    <version>60.2</version>
+    <time>1515876019</time>
+    <user>dimstar_suse</user>
+    <comment>Version upgrade + fix build with jdk10</comment>
+    <requestid>559365</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>989fdba06aea00bda55f54b169bde569</srcmd5>
+    <version>63.1</version>
+    <time>1544189549</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653883</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d398b7554a22089300786a2fc474ea21</srcmd5>
+    <version>63.1</version>
+    <time>1551276241</time>
+    <user>dimstar_suse</user>
+    <comment>Restore java 8 compatibility</comment>
+    <requestid>678583</requestid>
+  </revision>
+</revisionlist>

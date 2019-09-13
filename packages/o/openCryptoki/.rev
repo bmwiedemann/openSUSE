@@ -1,0 +1,506 @@
+<revisionlist>
+  <revision rev="1" vrev="27">
+    <srcmd5>5f36001a7d797be86714fd38572a445e</srcmd5>
+    <version>2.2.2</version>
+    <time>1168903653</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="51">
+    <srcmd5>0179245728cac00d5ce395df6fb6dc79</srcmd5>
+    <version>2.2.2</version>
+    <time>1175211420</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="165">
+    <srcmd5>0dfcbff2c9bf036725dfd8ee64839ac0</srcmd5>
+    <version>2.2.2</version>
+    <time>1219965559</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8e02a5da0a944e25869ddf8ef1c60195</srcmd5>
+    <version>2.2.6</version>
+    <time>1221474022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3a55c5fbd3880b072f107c6568bcba68</srcmd5>
+    <version>2.2.6</version>
+    <time>1226006585</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>43e2c87499ac6a6648bee3cd6e1ffc3c</srcmd5>
+    <version>2.2.6</version>
+    <time>1229349527</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>780b493140ccfe3a593fd46321a42114</srcmd5>
+    <version>2.2.6</version>
+    <time>1232717584</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>4b8b53995051dc8e40f24f4a1d5a3f58</srcmd5>
+    <version>2.2.6</version>
+    <time>1232842858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>4ac603234d2db691cee86cc5264b8f18</srcmd5>
+    <version>2.2.6</version>
+    <time>1235161793</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>adbb09df92f03436ac00bb8de599c7c5</srcmd5>
+    <version>2.2.6</version>
+    <time>1245364996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>adbb09df92f03436ac00bb8de599c7c5</srcmd5>
+    <version>2.2.6</version>
+    <time>1245364996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>79c778a51e6a9a7ce3f7935320952f5b</srcmd5>
+    <version>2.2.6</version>
+    <time>1268925192</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>79c778a51e6a9a7ce3f7935320952f5b</srcmd5>
+    <version>2.2.6</version>
+    <time>1278667372</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>79c778a51e6a9a7ce3f7935320952f5b</srcmd5>
+    <version>2.2.6</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>40b302cedec6fb0e5a6cf3b5b0e67e04</srcmd5>
+    <version>2.2.6</version>
+    <time>1285597131</time>
+    <user>autobuild</user>
+    <comment>Copy from security/openCryptoki based on submit request 49193 from user msmeissn
+</comment>
+    <requestid>49193</requestid>
+  </revision>
+  <revision rev="16" vrev="20">
+    <srcmd5>40b302cedec6fb0e5a6cf3b5b0e67e04</srcmd5>
+    <version>2.2.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="22">
+    <srcmd5>40b302cedec6fb0e5a6cf3b5b0e67e04</srcmd5>
+    <version>2.2.6</version>
+    <time>1319182212</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="23">
+    <srcmd5>2bf8c366b8a6cb90244ef073b5700ab1</srcmd5>
+    <version>2.2.6</version>
+    <time>1322481309</time>
+    <user>coolo</user>
+    <comment>- don't package man pages twice
+
+- add libtool as buildrequire to avoid implicit dependency (forwarded request 93825 from coolo)</comment>
+    <requestid>93939</requestid>
+  </revision>
+  <revision rev="19" vrev="24">
+    <srcmd5>8010a8bfd734e706f0ade6cf1b32b119</srcmd5>
+    <version>2.2.6</version>
+    <time>1323192834</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="26">
+    <srcmd5>8010a8bfd734e706f0ade6cf1b32b119</srcmd5>
+    <version>2.2.6</version>
+    <time>1340183750</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="27">
+    <srcmd5>312c1a089723119eb091001edea17cf7</srcmd5>
+    <version>2.2.6</version>
+    <time>1355156243</time>
+    <user>coolo</user>
+    <comment>- remove -o from groupadd
+- fixed sed script to not a grouplist with leading ,</comment>
+    <requestid>144723</requestid>
+  </revision>
+  <revision rev="22" vrev="29">
+    <srcmd5>312c1a089723119eb091001edea17cf7</srcmd5>
+    <version>2.2.6</version>
+    <time>1359109533</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="31">
+    <srcmd5>312c1a089723119eb091001edea17cf7</srcmd5>
+    <version>2.2.6</version>
+    <time>1379663413</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="32">
+    <srcmd5>a61e13ec10c5c2c79725cab435bb258b</srcmd5>
+    <version>2.2.6</version>
+    <time>1386932389</time>
+    <user>coolo</user>
+    <comment>- enable ppc64le (forwarded request 210434 from k0da)</comment>
+    <requestid>210666</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4b5faab1a5248a861491a194e990c5ba</srcmd5>
+    <version>3.1</version>
+    <time>1392116396</time>
+    <user>coolo</user>
+    <comment>- Updated to openCryptoki v3.1: See ChangeLog for complete details
+  (FATE#315426)
+  - opencryptoki-3.1
+    - New ep11 token to support IBM Crypto Express adpaters
+      (starting with Crypto Express 4S adapters) configured with
+      Enterprise PKCS#11(EP11) firmware. (FATE#315330)
+  - opencryptoki-3.0
+    - New opencryptoki.conf file to replace pk_config_data and
+      pkcs11_starup.  The opencryptoki.conf contains slot entry
+      information for tokens.
+    - Removed pkcs_slot and pkcs11_startup shell scripts.
+    - ICA token supports CKM_DES_OFB64, CKM_DES_CFB8, CKM_DES_CFB6
+      mechanisms using 3DES keys. (FATE#315323)
+    - ICA token supports CKM_DES3_MAC and CKM_DES3_MAC_GENERAL
+      mechanisms. (FATE#315323)
+    - ICA token supports CKM_AES_OFB, CKM_AES_CFB8, CKM_AES_CFB64,
+      CKM_AES_CFB128, CKM_AES_MAC, and CKM_AES_MAC_GENERAL
+      mechanisms. (FATE#315323)
+  - opencryptoki-2.4.1 (21 Feb 2012)
+    - SHA256 support added for CCA token (FATE#315289)
+- Using insserv macros in %post, %preun and %postun sections
+- Cleaned up spec file
+- removed patches:
+  - ocki-2.2.6-PIN-backspace.patch
+- added patches:
+  - ocki-3.1-fix-implicit-decl.patch
+  - ocki-3.1-remove-make-install-chgrp-chmod.patch
+  - ocki-3.1-fix-init_d-path.patch
+
+- add aarch64 to 64bit archs</comment>
+    <requestid>221145</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>4b5faab1a5248a861491a194e990c5ba</srcmd5>
+    <version>3.1</version>
+    <time>1409302025</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>682c3c3361eba4dba3cb47e608f6a3b7</srcmd5>
+    <version>3.1</version>
+    <time>1409761394</time>
+    <user>coolo</user>
+    <comment>- Specfile Cleanup, Added directory macros in appropriate places 
+
+- Several package changes as per bnc#880217
+  - Added openCryptoki-tmp.conf for lock directory management
+  - Added 'lite' token support
+  - Changed from init.d daemon to systemd service
+    - Updated macros in %pre %post %preun and %postun sections
+  - Added missing icsf and ep11tok directories to %files section
+    ocki-3.1_01_ep11_makefile.patch
+    ocki-3.1_02_ep11_m_init.patch
+- Patches added:
+  ocki-3.1-fix-libica-link.patch
+  ocki-3.1_03_ock_obj_mgr.patch
+  ocki-3.1_04_ep11_opaque2blob_error_handl.patch
+  ocki-3.1_05_ep11_readme_update.patch
+  ocki-3.1_06_0001-print_mechanism-ignored-bad-returncodes-from-the-cal.patch
+  ocki-3.1_06_0002-Fix-failure-when-confname-is-not-given-use-default-e.patch
+  ocki-3.1_06_0003-Configure-was-checking-for-the-ep11-lib-and-the-m_in.patch
+  ocki-3.1_06_0004-The-asm-zcrypt.h-header-file-uses-some-std-int-types.patch
+  ocki-3.1_06_0005-Small-reworks.patch
+  ocki-3.1_06_0006-The-31-bit-build-on-s390-showed-an-build-error-at-in.patch
+  ocki-3.1_06_0007-ep11-is-not-building-because-not-setting-with_zcrypt.patch
+
+- Moved libpkcs11_icsf 32-bit out of s390-specific files
+
+- Made ep11tok.conf and pkcsep11_migrate specific to s390/s390x
+- Added libpkcs11_ep11.so and libpkcs11_icsf.so to 32-bit s390/s390x
+
+- EP11 token available in the opencryptoki V3.1 package  (bnc#879303)
+  - Specfile changed to include ep11tok.conf</comment>
+    <requestid>247238</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>15ff4e4a4808fea3a634cdfdc5f07d2b</srcmd5>
+    <version>3.1</version>
+    <time>1409998739</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247774</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>539b1635c506fe36e343a21470f00e1b</srcmd5>
+    <version>3.2</version>
+    <time>1419159888</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.2
+  +New pkcscca tool. Currently it assists in migrating cca private token
+   objects from opencryptoki version 2 to the clear key encryption method 
+   used in opencryptoki version 3. Includes a manpage for pkcscca tool.
+   Changes to README.cca_stdll to assist in using the CCA token and
+   migrating the private token objects.
+  + Support for CKM_RSA_PKCS_OAEP and CKM_RSA_PKCS_PSS algorithms.
+  + Various bugfixes.
+  + New testcases for various crypto algorithms.
+- Only depend on insserv if builded with sysvinit support
+- Remove obsolete patches; merged on upstream release
+  + ocki-3.1_01_ep11_makefile.patch
+  + ocki-3.1_02_ep11_m_init.patch
+  + ocki-3.1_03_ock_obj_mgr.patch
+  + ocki-3.1_04_ep11_opaque2blob_error_handl.patch
+  + ocki-3.1_05_ep11_readme_update.patch
+  + ocki-3.1_06_0001-print_mechanism-ignored-bad-returncodes-from-the-cal.patch
+  + ocki-3.1_06_0002-Fix-failure-when-confname-is-not-given-use-default-e.patch
+  + ocki-3.1_06_0003-Configure-was-checking-for-the-ep11-lib-and-the-m_in.patch
+  + ocki-3.1_06_0004-The-asm-zcrypt.h-header-file-uses-some-std-int-types.patch
+  + ocki-3.1_06_0005-Small-reworks.patch
+  + ocki-3.1_06_0006-The-31-bit-build-on-s390-showed-an-build-error-at-in.patch
+  + ocki-3.1_06_0007-ep11-is-not-building-because-not-setting-with_zcrypt.patch
+  + ocki-3.1_07_0001-Man-page-corrections.patch
+  + ocki-3.1_08_0001-Add-a-pkcscca-tool-to-help-migrate-cca-private-token.patch
+  + ocki-3.1_08_0002-Add-documentation-pkcscca-manpage-and-README.cca_std.patch
+  + ocki-3.1_09_0001-Fix-EOL-encoding-in-README.patch
+  + ocki-3.1_10_0001-ica-sha-update-empty-msg.patch
+- Project is now hosted on sourceforge; fix the Url
+- Remove cvs related stuff; tarball is produced by upstream</comment>
+    <requestid>265803</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>f6b99b484af336ccd45e2966c0ff2fd5</srcmd5>
+    <version>3.2</version>
+    <time>1429769077</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298532</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7ddc5b8db8add79d620b9f7b4599b95e</srcmd5>
+    <version>3.4.1</version>
+    <time>1461855272</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgraded to openCryptoki v3.4.1 (Fate#319576, 319585, 319592, 319938).
+- Changed BuildRequires for libica_2_3_0-devel to libica2-devel.
+- Changed BuildRequires for openssl-devel to specify &gt;= 1.0
+  Contrary to what the README says, version 0.9.7 isn't
+  sufficient.
+- Removed the redundant DESTDIR= parameter from the %make_install
+- Removed the following obsolete patches
+  opencryptoki-run-lock.patch (/var/lock and run/lock are actually the
+    same place) Also reverted the changed to openCryptoki-tmp.conf to match.
+  ocki-3.1_10_0001-ica-sha-update-empty-msg.patch
+  ocki-3.1-fix-implicit-decl.patch
+  ocki-3.1-fix-init_d-path.patch
+  ocki-3.1-fix-libica-link.patch
+  ocki-3.2_01_fix-return-type-error.patch
+  ocki-3.2_02_ep11-token-incorrectly-copied-the-public-key-object-.patch
+  ocki-3.2_03_ICSF-Token-C_SignUpdate-was-sometimes-segfaulting-an.patch
+  ocki-3.2_04_CKA_EC_POINT-is-not-required-in-the-ECDSA-private-ke.patch
+  ocki-3.2_05_icsf_ldap_handles.patch
+  ocki-3.2_06_icsf_sign_verify.patch
+- renamed: ocki-3.1-remove-make-install-chgrp-chmod.patch to
+  ocki-3.1-remove-make-install-chgrp.patch
+
+- Get a new ldap handle for each session opened in the icsf token,
+    once the user has authenticated. (bsc#953347,LTC#130078)
+  - ocki-3.2_05_icsf_ldap_handles.patch
+  - ocki-3.2_06_icsf_sign_verify.patch
+
+- Added /var/lib/opencryptoki/lite/TOK_OBJ token directory (bsc#943070)
+- Added ocki-3.2_02_ep11-token-incorrectly-copied-the-public-key-object-.patch
+  - Fixed two public key object inclusion in EP11 token (bsc#946808)</comment>
+    <requestid>390331</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2c39abb650b5203d0bd08b60cde778b3</srcmd5>
+    <version>3.5</version>
+    <time>1465481605</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400390</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>6a523e9c4300535e3328429aeb310ca0</srcmd5>
+    <version>3.5</version>
+    <time>1466681792</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>403770</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>4d576724e9e80e184317fd94bc7da101</srcmd5>
+    <version>3.5</version>
+    <time>1468360345</time>
+    <user>dimstar_suse</user>
+    <comment>IBM fixes for bsc#986854.</comment>
+    <requestid>407345</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>b180857662618153515e9d7835fc8eaa</srcmd5>
+    <version>3.5</version>
+    <time>1470217427</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415809</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>1eb7d590bbbc6553ceee16e2d6aca5b2</srcmd5>
+    <version>3.5</version>
+    <time>1470413865</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416905</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>1cfa370723a0667183a90bd560e97459</srcmd5>
+    <version>3.5</version>
+    <time>1473679540</time>
+    <user>dimstar_suse</user>
+    <comment>Corrected bug number in changes file.</comment>
+    <requestid>425354</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d13427669803c794a0fe6620b8018e4c</srcmd5>
+    <version>3.6.1</version>
+    <time>1485250697</time>
+    <user>dimstar_suse</user>
+    <comment>Upgraded to latest version per IBM request (fate#321451)</comment>
+    <requestid>451674</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5f6746be9b18b4da220aa2ecd5764b2d</srcmd5>
+    <version>3.6.2</version>
+    <time>1488559474</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460935</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>909771326d0d4cca7f4aeaeaa1637684</srcmd5>
+    <version>3.6.2</version>
+    <time>1489866664</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480952</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>6acbae9b069a761cfa1b149cb37385b5</srcmd5>
+    <version>3.6.2</version>
+    <time>1490318514</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481629</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>5d20a56feecd310f3d2a340c65a52e4d</srcmd5>
+    <version>3.6.2</version>
+    <time>1493363640</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491366</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6a8dec3f9a65bfecb86705d2a03bcd4e</srcmd5>
+    <version>3.7.0</version>
+    <time>1494938719</time>
+    <user>dimstar_suse</user>
+    <comment>Updated to version 3.7.0 (Fate#321451) (bsc#1036640)</comment>
+    <requestid>494813</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>406b5a7233e4ee74dac56cf9a38442d7</srcmd5>
+    <version>3.7.0</version>
+    <time>1496327691</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1039510</comment>
+    <requestid>500232</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7d604e4f16e8638af1b1975a77730bef</srcmd5>
+    <version>3.8.2</version>
+    <time>1512292369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546864</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>1b4858484d893a4d9b80787d057a0c82</srcmd5>
+    <version>3.8.2</version>
+    <time>1520778339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585158</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>7b32158887a67a916bf684ea9a7b775c</srcmd5>
+    <version>3.8.2</version>
+    <time>1524144681</time>
+    <user>dimstar_suse</user>
+    <comment>- Added ocki-3.8.2-Fix-Hardware-Feature-Object-validation-and-tests.patch
+  (bsc#1086678)
+</comment>
+    <requestid>597603</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>34b3819a7cbc0eb47343688f4ecbbf55</srcmd5>
+    <version>3.11.0</version>
+    <time>1542750150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649627</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>48b7cd134f6fc994909414c34aa4905d</srcmd5>
+    <version>3.11.0</version>
+    <time>1543591970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652748</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>a8c6195e396ab77a63e7d5a1512b9557</srcmd5>
+    <version>3.11.0</version>
+    <time>1544189757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655691</requestid>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>3baa953fd4b82eb6ff4f0d871856b1f2</srcmd5>
+    <version>3.11.0</version>
+    <time>1550221456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>676277</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>6a80103946dfaf989d233a3a221c1739</srcmd5>
+    <version>3.11.1</version>
+    <time>1567680408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728363</requestid>
+  </revision>
+</revisionlist>

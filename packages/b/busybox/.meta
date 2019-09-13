@@ -1,0 +1,13 @@
+<package name="busybox" project="openSUSE:Factory">
+  <title>The Swiss Army Knife of Embedded Linux</title>
+  <description>BusyBox combines tiny versions of many common UNIX utilities into a
+small single executable. It provides minimalist replacements for most
+of the utilities usually found in fileutils, shellutils, findutils,
+textutils, grep, gzip, tar, and more. BusyBox provides a fairly
+complete POSIX environment for any small or embedded system. The
+utilities in BusyBox generally have fewer options than their
+full-featured GNU cousins. The options that are included provide the
+expected functionality and behave very much like their GNU
+counterparts.</description>
+  <devel project="Base:System" package="busybox"/>
+</package>

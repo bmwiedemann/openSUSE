@@ -1,0 +1,12 @@
+<package name="ocaml-xml-light" project="openSUSE:Factory">
+  <title>Minimal XML parser and printer for OCaml</title>
+  <description>Xml-Light is a minimal XML parser &amp; printer for OCaml. It provides
+functions to parse an XML document into an OCaml data structure, work
+with it, and print it back to an XML document. It support also DTD
+parsing and checking, and is entirely written in OCaml, hence it does
+not require additional C library.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-xml-light"/>
+  <url>http://tech.motion-twin.com/xmllight.html</url>
+</package>

@@ -1,0 +1,242 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9ec92448913fa2c572ddccbf3d2219d</srcmd5>
+    <version>0.8.0</version>
+    <time>1415288998</time>
+    <user>coolo</user>
+    <comment>core packages for LXQT (LXDE porting to QT5)</comment>
+    <requestid>258632</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b8b778c4585074a332db4f5524a6f437</srcmd5>
+    <version>0.8.0</version>
+    <time>1422959958</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283569</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd8da2f8c7ab660c49a90f9fbbdd4350</srcmd5>
+    <version>0.9.0</version>
+    <time>1424117284</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>284975</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6589b113fa5c0484e9bcd54882f776cd</srcmd5>
+    <version>0.9.0</version>
+    <time>1424827054</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed %build and %install to use cmake macros (forwarded request 287061 from sfalken)</comment>
+    <requestid>287406</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8a6e79e3244853be4880ad0abc5cf937</srcmd5>
+    <version>0.9.0</version>
+    <time>1437299143</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>317173</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5df00c3150271a37756fdf1ec0a5cd82</srcmd5>
+    <version>0.10.0</version>
+    <time>1447454131</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343347</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>16d2854266804a3b193a71ed19056cd1</srcmd5>
+    <version>0.11.0</version>
+    <time>1475750597</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>432234</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3fd948fa52932293e69ff316df4f1ade</srcmd5>
+    <version>0.11.1</version>
+    <time>1489345135</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460074</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a64f00a7e2bf93950eaef677d375b4ed</srcmd5>
+    <version>0.12.0</version>
+    <time>1508876570</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Set patch version 0
+  * Don't export github templates
+  * Added Lithuanian translation
+  * added myself
+  * set Qt::AA_UseHighDpiPixmaps to true
+  * Added a very basic cli (#39)
+  * updated Polish translation
+  * Update AUTHORS
+- Remove post and postun
+- Update to 0.11.1:
+  * Removed da_DK (keep da)
+  * Added *da.desktop, renamed da_DK to da
+  * .gitignore: Fix typo
+  * Remove cpack (#34)
+- Update to 0.11.0:
+  * Extend README.md
+  * translation: Fix language in _nl.desktop
+  * Create lxqt-about_nl.desktop
+  * Add translators_ca.info
+  * Add Catalan translation
+  * Add Arabic Translation for Desktop File and SafaAlFulaij As a Translator (#30)
+  * .gitignore: Cleanup
+  * build: Use external translations
+  * ts-files removal (#28)
+  * Bump AUTHORS year Fix license, lxqt-about is LGPL only
+  * Italian translation update
+  * Russian translation update
+  * Updated german translation.
+  * French translation:
+  * Minor update of README.md
+  * Delete country specific files
+  * Add copyright symbol © to ‘About’ tab
+  * Add simple README.md file
+- Upstream release 0.10.0
+- Removing patches:
+ * fix_desktop_categories.patch - Using sed in spec file now
+- Cleanup spec
+- Use correct name &quot;lxqt&quot; instead of &quot;lxde-qt&quot;
+- Changed %build and %install to use cmake macros 
+- New upstream version 0.9.0 
+- Added conditionals to build for Fedora 
+- new upstream version 0.8.0 
+- removed unused buildrequires 
+- Specfile cleanup 
+- Removed fedora spec, split into subproject
+  Del:  lxqt-about-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-about-Fedora_20.spec 
+- Removed desktop file patch (upstream fixes)
+  Del:  0001-fix_desktop_file.patch 
+- Added source tarball for new stable release 
+  Add:  lxqt-about-0.7.0.tar.xz
+  Del:  _service
+- Added patch to correct .desktop file
+  Add: 0001-fix_desktop_file.patch 
+- Initial Source Upload 
+  Add: _service
+  Add: lxqt-about.spec
+  Add: lxqt-about.changes
+</comment>
+    <requestid>535970</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>75e65158b2b0a5eebd1a374f858a8d3f</srcmd5>
+    <version>0.13.0</version>
+    <time>1530304264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * CMake: Prevent in-source builds
+  * Fixed razor and http -&gt; https
+  * Fixed some LXDE mentions
+  * Drop Qt foreach
+  * Add Traditional Chinese translations
+  * Add Simplified Chinese translations
+  * Add Spanish desktop entry
+  * translators_ru: Remove &quot;Translator X.&quot; prefix
+  * Make translators_lt.info tidy again
+- Update to 0.12.0:
+  * Set patch version 0
+  * Don't export github templates
+  * Added Lithuanian translation
+  * added myself
+  * set Qt::AA_UseHighDpiPixmaps to true
+  * Added a very basic cli (#39)
+  * updated Polish translation
+  * Update AUTHORS
+- Remove post and postun
+- Update to 0.11.1:
+  * Removed da_DK (keep da)
+  * Added *da.desktop, renamed da_DK to da
+  * .gitignore: Fix typo
+  * Remove cpack (#34)
+- Update to 0.11.0:
+  * Extend README.md
+  * translation: Fix language in _nl.desktop
+  * Create lxqt-about_nl.desktop
+  * Add translators_ca.info
+  * Add Catalan translation
+  * Add Arabic Translation for Desktop File and SafaAlFulaij As a Translator (#30)
+  * .gitignore: Cleanup
+  * build: Use external translations
+  * ts-files removal (#28)
+  * Bump AUTHORS year Fix license, lxqt-about is LGPL only
+  * Italian translation update
+  * Russian translation update
+  * Updated german translation.
+  * French translation:
+  * Minor update of README.md
+  * Delete country specific files
+  * Add copyright symbol © to ‘About’ tab
+  * Add simple README.md file
+- Upstream release 0.10.0
+- Removing patches:
+ * fix_desktop_categories.patch - Using sed in spec file now
+- Cleanup spec
+- Use correct name &quot;lxqt&quot; instead of &quot;lxde-qt&quot;
+- Changed %build and %install to use cmake macros 
+- New upstream version 0.9.0 
+- Added conditionals to build for Fedora 
+- new upstream version 0.8.0 
+- removed unused buildrequires 
+- Specfile cleanup 
+- Removed fedora spec, split into subproject
+  Del:  lxqt-about-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-about-Fedora_20.spec 
+- Removed desktop file patch (upstream fixes)
+  Del:  0001-fix_desktop_file.patch 
+- Added source tarball for new stable release 
+  Add:  lxqt-about-0.7.0.tar.xz
+  Del:  _service
+- Added patch to correct .desktop file
+  Add: 0001-fix_desktop_file.patch 
+- Initial Source Upload 
+  Add: _service
+  Add: lxqt-about.spec
+  Add: lxqt-about.changes
+</comment>
+    <requestid>618051</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2dd6ffd09296e2dc637ac18f9c24f8a2</srcmd5>
+    <version>0.14.0</version>
+    <time>1551113343</time>
+    <user>coolo</user>
+    <comment>- Update to 0.14.0:
+  * Bumped version to 0.14.0
+  * Translation updates
+  * translatorsinfo: sort translators by language
+  * Improved cmake scripting
+    - Set cmake_minimum_required to 3.1.0
+    - Removed locale compile definitons
+  * Moved translations from lxqt-l10n back to lxqt-about
+    - Removed obsolete translation fuctionality
+    - Added translation promo in README.md
+- Move translation from lxqt-l10n into package
+</comment>
+    <requestid>670381</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7644548a7a40b34a5af1f654d0165ed2</srcmd5>
+    <version>0.14.1</version>
+    <time>1551455376</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.1:
+  * Only translations was changed</comment>
+    <requestid>680438</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,248 @@
+<revisionlist>
+  <revision rev="1" vrev="26">
+    <srcmd5>8eb8ada0a2bf3486a19d8104a5723062</srcmd5>
+    <version>2.3.0</version>
+    <time>1168902381</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="321">
+    <srcmd5>8eb8ada0a2bf3486a19d8104a5723062</srcmd5>
+    <version>2.3.0</version>
+    <time>1168902381</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="322">
+    <srcmd5>00fb17e0b1a17bb40a9ecc44b73ebd4f</srcmd5>
+    <version>2.3.0</version>
+    <time>1226066329</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="323">
+    <srcmd5>b79a4766c2dcb673422dd05aee723d90</srcmd5>
+    <version>2.3.0</version>
+    <time>1249588126</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="324">
+    <srcmd5>2b4f971effa74a18ae1a7b2a25347a2a</srcmd5>
+    <version>2.3.0</version>
+    <time>1251411489</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/bsf based on submit request 18753 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="6" vrev="325">
+    <srcmd5>4337d104e7cd50dd3cc1f462a2b4bf9a</srcmd5>
+    <version>2.3.0</version>
+    <time>1251909482</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/bsf based on submit request 19381 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="327">
+    <srcmd5>4337d104e7cd50dd3cc1f462a2b4bf9a</srcmd5>
+    <version>2.3.0</version>
+    <time>1251909482</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/bsf based on submit request 19381 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="328">
+    <srcmd5>8fb1ba41debdab38269f52110a75f7f7</srcmd5>
+    <version>2.3.0</version>
+    <time>1268923117</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="330">
+    <srcmd5>8fb1ba41debdab38269f52110a75f7f7</srcmd5>
+    <version>2.3.0</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="331">
+    <srcmd5>8fb1ba41debdab38269f52110a75f7f7</srcmd5>
+    <version>2.3.0</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="334">
+    <srcmd5>8fb1ba41debdab38269f52110a75f7f7</srcmd5>
+    <version>2.3.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="335">
+    <srcmd5>7d594f45b2b7b2f89e73e2cf3b1b0677</srcmd5>
+    <version>2.3.0</version>
+    <time>1316766064</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82882 from jengelh)</comment>
+    <requestid>84345</requestid>
+  </revision>
+  <revision rev="13" vrev="337">
+    <srcmd5>7d594f45b2b7b2f89e73e2cf3b1b0677</srcmd5>
+    <version>2.3.0</version>
+    <time>1319181795</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="338">
+    <srcmd5>2cf1efe03b9ceb821510d8e0786fffa9</srcmd5>
+    <version>2.3.0</version>
+    <time>1323190909</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="339">
+    <srcmd5>c2b9ed2e6a503a684d6279c23a9ee0e2</srcmd5>
+    <version>2.3.0</version>
+    <time>1330583160</time>
+    <user>coolo</user>
+    <comment>- ignore mysql-connector-java from build to break a build cycle</comment>
+    <requestid>107522</requestid>
+  </revision>
+  <revision rev="16" vrev="341">
+    <srcmd5>c2b9ed2e6a503a684d6279c23a9ee0e2</srcmd5>
+    <version>2.3.0</version>
+    <time>1340183214</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="343">
+    <srcmd5>c2b9ed2e6a503a684d6279c23a9ee0e2</srcmd5>
+    <version>2.3.0</version>
+    <time>1359108717</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7dbeebf25708aa5c5f11f7693f6bb11a</srcmd5>
+    <version>2.4.0</version>
+    <time>1378238505</time>
+    <user>coolo</user>
+    <comment>- update to 2.4.0 
+  * can be used as an extension package to Java by placing it into
+    &quot;jre/lib/ext&quot; [using the thread's context classloader, ie. the result
+    of 'Thread.currentThread().getContextClassLoader()']
+  * rely on commons-logging or log4j
+  * removed jpython engine, supperseeded by jython
+  * and more, see CHANGES.txt
+- add gpg verification
+- drop bsf-disable-rhino.patch
+- add build-file.patch and build.properties.patch
+- use add_maven_depmap from javapackages-tools</comment>
+    <requestid>196632</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>9ac0276b045b5056bb2dcfe2eab5fc53</srcmd5>
+    <version>2.4.0</version>
+    <time>1378899559</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198260</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>9ac0276b045b5056bb2dcfe2eab5fc53</srcmd5>
+    <version>2.4.0</version>
+    <time>1379662058</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>9ac0276b045b5056bb2dcfe2eab5fc53</srcmd5>
+    <version>2.4.0</version>
+    <time>1409300586</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>74fa07b3b9e4002ac0a027da05fc9876</srcmd5>
+    <version>2.4.0</version>
+    <time>1427983231</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove gpg-offline dep and cleanup with spec-cleaner
+
+- Fix build with new javapackages-tools</comment>
+    <requestid>293064</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>680bdca5b32c8b8527471b339b85a9b8</srcmd5>
+    <version>2.4.0</version>
+    <time>1496230316</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove jython from dependencies, not needed
+
+- New build dependency: javapackages-local
+- Spec file cleaned</comment>
+    <requestid>496986</requestid>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>464bf8ba36cff43c3897eb5f66b0a24b</srcmd5>
+    <version>2.4.0</version>
+    <time>1505334319</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on systems where jdk9 is the default</comment>
+    <requestid>523232</requestid>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>4b90062c489fbc3bc48b23dbfac3a585</srcmd5>
+    <version>2.4.0</version>
+    <time>1506523756</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527619</requestid>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>3ddb1ba60d27f66e8b646e0ab76adf04</srcmd5>
+    <version>2.4.0</version>
+    <time>1514569778</time>
+    <user>dimstar_suse</user>
+    <comment>Some classes were built with too high levels</comment>
+    <requestid>559394</requestid>
+  </revision>
+  <revision rev="27" vrev="12">
+    <srcmd5>fdff80c549d3d1b79826418ccc61c6cb</srcmd5>
+    <version>2.4.0</version>
+    <time>1532446288</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620774</requestid>
+  </revision>
+  <revision rev="28" vrev="13">
+    <srcmd5>d40f23bf51fbe4f2e679abeb2870182d</srcmd5>
+    <version>2.4.0</version>
+    <time>1544189532</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653790</requestid>
+  </revision>
+  <revision rev="29" vrev="14">
+    <srcmd5>3e01eadca7c97f0b56a890b41eb9d6b0</srcmd5>
+    <version>2.4.0</version>
+    <time>1549464452</time>
+    <user>coolo</user>
+    <comment>- Clean the spec file and sanitize dependencies
+</comment>
+    <requestid>671937</requestid>
+  </revision>
+  <revision rev="30" vrev="15">
+    <srcmd5>be52f0e583dc5f62b26b3e4a561e9581</srcmd5>
+    <version>2.4.0</version>
+    <time>1551024219</time>
+    <user>coolo</user>
+    <comment>BuildIgnore jline to avoid a build cycle with newer jline</comment>
+    <requestid>673640</requestid>
+  </revision>
+  <revision rev="31" vrev="16">
+    <srcmd5>a7d66a4610b7144133b5382dc64c8808</srcmd5>
+    <version>2.4.0</version>
+    <time>1555237224</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove reference to parent pom, since we do not use Maven to
+  build this package
+</comment>
+    <requestid>693087</requestid>
+  </revision>
+</revisionlist>

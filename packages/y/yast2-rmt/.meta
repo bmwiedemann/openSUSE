@@ -1,0 +1,5 @@
+<package name="yast2-rmt" project="openSUSE:Factory">
+  <title>YaST2 - Repository Management Tool Configuration</title>
+  <description>Provides the YaST module for RMT configuration.</description>
+  <devel project="systemsmanagement:SCC:RMT" package="yast2-rmt"/>
+</package>

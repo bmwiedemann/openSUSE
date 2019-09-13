@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>567107c792ec65fb20b6e778b58c91f7</srcmd5>
+    <version>3.4</version>
+    <time>1520253464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4. See changelog for all changes.
+- convert to singlespec
+- rename to python-python-twitter</comment>
+    <requestid>580900</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5d57e51f5d2bc41a26039c7e3440de81</srcmd5>
+    <version>3.4.2</version>
+    <time>1530304041</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.4.2:
+ * Bugfixes:
+  * Allow upload of GIFs with size up to 15mb. See #538
+- update to version 3.4.1:
+ * Bugfixes:
+  * Fix an issue where :py:func:`twitter.twitter_utils.calc_expected_status_length` was failing for python 2 due to a failure to convert a bytes string to unicode. Github issue #546.
+  * Documentation fix for :py:func:`twitter.api.Api.UsersLookup`. UsersLookup can take a string or a list and properly parses both of them now. Github issues #535 and #549.
+  * Properly decode response content for :py:func:`twitter.twitter_utils.http_to_file`. Github issue #521.
+  * Fix an issue with loading extended_tweet entities from Streaming API where tweets would be truncated when converting to a :py:class:`twitter.models.Status`. Github issues #491 and #506.
+</comment>
+    <requestid>617157</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>50cb4c69aea1ad1411c8534b03e2bd9f</srcmd5>
+    <version>3.4.2</version>
+    <time>1545648162</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659617</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8a1f7b9ad6d49170303956566998d275</srcmd5>
+    <version>3.5</version>
+    <time>1557653801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701794</requestid>
+  </revision>
+</revisionlist>

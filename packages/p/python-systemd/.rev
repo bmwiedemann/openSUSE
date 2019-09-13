@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efbf232d0f22794e066692e61a0ba895</srcmd5>
+    <version>230</version>
+    <time>1446208978</time>
+    <user>dimstar_suse</user>
+    <comment>The python wrappers for systemd are required e.g. to rirectly use systemd logging via fail2ban</comment>
+    <requestid>339912</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dd1f442b40212245bf8ad88226ab0514</srcmd5>
+    <version>231</version>
+    <time>1446978390</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342545</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bae6f97080ad69d7334d0d9e2936db46</srcmd5>
+    <version>231</version>
+    <time>1485383129</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450995</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c79ce12640a62fbfe1de6a7ae5b26734</srcmd5>
+    <version>233</version>
+    <time>1497943995</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to release 233:
+  + Tests are fixed and should pass on various old and new systems
+    alike.
+  + journal.stream() can be used without arguments and defaults to
+    LOG_LEVEL.
+- Changes from version 232:
+  + Wrappers for sd_journal_enumerate_unique, has_runtime_files,
+    has_peristent_files.
+  + sd_journal_open_directory_fd, sd_journal_open_files_fd can be
+    used by passing file descriptors to the initializer as the path
+    or files arguments.</comment>
+    <requestid>503939</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0bcb6061663715fecf9db783216a0df3</srcmd5>
+    <version>234</version>
+    <time>1499162182</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507119</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ee1ade6301c748756b32ebe57e383159</srcmd5>
+    <version>234</version>
+    <time>1508508681</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532999</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>275470ba27936e442e1a25b41a40a6b0</srcmd5>
+    <version>234</version>
+    <time>1510406143</time>
+    <user>dimstar_suse</user>
+    <comment>- iso-c-90.patch added to fix building on SLE12-SP3
+</comment>
+    <requestid>539384</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>d6388d724e0141558aa20ec3842885e3</srcmd5>
+    <version>234</version>
+    <time>1510911417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541808</requestid>
+  </revision>
+</revisionlist>

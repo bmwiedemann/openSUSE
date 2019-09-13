@@ -1,0 +1,5 @@
+<package name="xf86-video-opentegra" project="openSUSE:Factory">
+  <title>opentegra driver for Nvidia Tegra</title>
+  <description></description>
+  <devel project="X11:XOrg" package="xf86-video-opentegra"/>
+</package>

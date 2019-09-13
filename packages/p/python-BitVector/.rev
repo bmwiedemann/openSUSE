@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>53f1daa62cd2c2154f04ad00d9b3f39a</srcmd5>
+    <version>3.4.8</version>
+    <time>1535122993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628657</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>638ece472f245b66bf5c3beff64ab351</srcmd5>
+    <version>3.4.9</version>
+    <time>1554189743</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.9:
+   * Version 3.4.9, in addition to implementing __iadd__, also includes a
+     significantly faster implementation for __add__.  For extending a given
+     instance of BitVector, the implementation for __iadd__ adds bits to the
+     existing instance as opposed to creating a new instance.  These changes
+     to the module should make it easier to solve larger problems more
+     quickly with BitVector.</comment>
+    <requestid>690340</requestid>
+  </revision>
+</revisionlist>

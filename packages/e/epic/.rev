@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee154dce1c90e2850b50a509a59d8ace</srcmd5>
+    <version>2.6</version>
+    <time>1168452163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="9">
+    <srcmd5>a246ccc587b3f8bc9d6c3d549912683b</srcmd5>
+    <version>2.6</version>
+    <time>1175214825</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dfa526cd60d6b90336323749c395a529</srcmd5>
+    <version>2.10</version>
+    <time>1221486304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>dfa526cd60d6b90336323749c395a529</srcmd5>
+    <version>2.10</version>
+    <time>1221486304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>644c83c6876a78514f5568aa0281dbdc</srcmd5>
+    <version>2.10</version>
+    <time>1258388880</time>
+    <user>autobuild</user>
+    <comment>Copy from network/epic based on submit request 24475 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>e389e219772b3db3a8b9ac02351b9fad</srcmd5>
+    <version>2.10</version>
+    <time>1268923474</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>e389e219772b3db3a8b9ac02351b9fad</srcmd5>
+    <version>2.10</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>e389e219772b3db3a8b9ac02351b9fad</srcmd5>
+    <version>2.10</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>e389e219772b3db3a8b9ac02351b9fad</srcmd5>
+    <version>2.10</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>e389e219772b3db3a8b9ac02351b9fad</srcmd5>
+    <version>2.10</version>
+    <time>1319181867</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>0a5f35be06031234a417d2fd0a1e119b</srcmd5>
+    <version>2.10</version>
+    <time>1323191297</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>0a5f35be06031234a417d2fd0a1e119b</srcmd5>
+    <version>2.10</version>
+    <time>1340183307</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>0a5f35be06031234a417d2fd0a1e119b</srcmd5>
+    <version>2.10</version>
+    <time>1359108853</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>0a5f35be06031234a417d2fd0a1e119b</srcmd5>
+    <version>2.10</version>
+    <time>1379662298</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>c414dcbeeb1be0a08ef891dbeb8d9345</srcmd5>
+    <version>2.10</version>
+    <time>1395404987</time>
+    <user>coolo</user>
+    <comment>- require openssl-devel, so that ssl support is compiled in
+
+(Seems we should have this unless there's some reason not to) (forwarded request 226882 from mgorse)</comment>
+    <requestid>226890</requestid>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>c414dcbeeb1be0a08ef891dbeb8d9345</srcmd5>
+    <version>2.10</version>
+    <time>1409300834</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>af3c92505e6ca439156b7d7e0d3d0e37</srcmd5>
+    <version>2.10.6</version>
+    <time>1514842242</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.6, fixes openSSL 1.1 build 
+
+Remove obsolete tarball
+</comment>
+    <requestid>560859</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>757b647126fe852130e5ea92234de40c</srcmd5>
+    <version>2.10.6</version>
+    <time>1521499113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588329</requestid>
+  </revision>
+</revisionlist>

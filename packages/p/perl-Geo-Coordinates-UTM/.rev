@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f3f6f215390c6f4f2b4b83f2a916d99</srcmd5>
+    <version>0.09</version>
+    <time>1306415568</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66725</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>580a5022cb79ba217bcdfc1377516987</srcmd5>
+    <version>0.09</version>
+    <time>1306415578</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66725
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>580a5022cb79ba217bcdfc1377516987</srcmd5>
+    <version>0.09</version>
+    <time>1319182270</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>ebbf03683343aea49ecb47e3f1a4ec23</srcmd5>
+    <version>0.09</version>
+    <time>1321875634</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92234</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>23831a1c1a8a7b37248406ef81f4e93a</srcmd5>
+    <version>0.09</version>
+    <time>1323193322</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>23831a1c1a8a7b37248406ef81f4e93a</srcmd5>
+    <version>0.09</version>
+    <time>1340183846</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>23831a1c1a8a7b37248406ef81f4e93a</srcmd5>
+    <version>0.09</version>
+    <time>1359109678</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>abb92495b6e0cd8b61ba690369bc49e4</srcmd5>
+    <version>0.11</version>
+    <time>1370514020</time>
+    <user>coolo</user>
+    <comment>- update to 0.11
+       - fixed error in Everest Pakistan ellipsoid axis
+       - Added Arc 1950 ellipsoid
+       - patched MGRS calculations for S. Hemisphere
+       - Added MGRS tests
+       - Added NAD27 and NAD83 ellipsoids (forwarded request 177671 from coolo)</comment>
+    <requestid>177690</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>abb92495b6e0cd8b61ba690369bc49e4</srcmd5>
+    <version>0.11</version>
+    <time>1379663687</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>abb92495b6e0cd8b61ba690369bc49e4</srcmd5>
+    <version>0.11</version>
+    <time>1409302308</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

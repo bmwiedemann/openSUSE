@@ -1,0 +1,16 @@
+<package name="perl-Log-Dispatch" project="openSUSE:Factory">
+  <title>Dispatches messages to one or more outputs</title>
+  <description>This module manages a set of Log::Dispatch::* output objects that can be
+logged to via a unified interface.
+
+The idea is that you create a Log::Dispatch object and then add various
+logging objects to it (such as a file logger or screen logger). Then you
+call the 'log' method of the dispatch object, which passes the message to
+each of the objects, which in turn decide whether or not to accept the
+message and what to do with it.
+
+This makes it possible to call single method and send a message to a log
+file, via email, to the screen, and anywhere else, all with very little
+code needed on your part, once the dispatching object has been created.</description>
+  <devel project="devel:languages:perl" package="perl-Log-Dispatch"/>
+</package>

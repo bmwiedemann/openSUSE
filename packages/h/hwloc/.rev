@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>fc701c00312883b7b1d06cace61a1676</srcmd5>
+    <version>1.7</version>
+    <time>1388480714</time>
+    <user>coolo</user>
+    <comment>Push to factory</comment>
+    <requestid>210427</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1cfdaeecab3dd62ce703eb0d8a5d4420</srcmd5>
+    <version>1.9</version>
+    <time>1408524652</time>
+    <user>lnussel</user>
+    <comment>- removed patches (fixed upstream)
+   * hwloc-1.7-manpage.patch
+   * hwloc-1.7.patch 
+- Update to Version 1.9.0
+  * API
+    + Add hwloc_obj_type_sscanf() to extend hwloc_obj_type_of_string() with
+      type-specific attributes such as Cache/Group depth and Cache type.
+      hwloc_obj_type_of_string() is moved to hwloc/deprecated.h.
+    + Add hwloc_linux_get_tid_last_cpu_location() for retrieving the
+      last CPU where a Linux thread given by TID ran.
+    + Add hwloc_distrib() to extend the old hwloc_distribute[v]() functions.
+      hwloc_distribute[v]() is moved to hwloc/deprecated.h.
+    + Don't mix total and local memory when displaying verbose object attributes
+      with hwloc_obj_attr_snprintf() or in lstopo.
+  * Backends
+    + Add CPUVendor, CPUModelNumber and CPUFamilyNumber info attributes for
+      x86, ia64 and Xeon Phi sockets on Linux, to extend the x86-specific
+      support added in v1.8.1. Requested by Ralph Castain.
+    + Add many CPU- and Platform-related info attributes on ARM and POWER
+      platforms, in the Machine and Socket objects.
+    + Add CUDA info attributes describing the number of multiprocessors and
+      cores and the size of the global, shared and L2 cache memories in CUDA
+      OS devices.
+    + Add OpenCL info attributes describing the number of compute units and
+      the global memory size in OpenCL OS devices.
+    + The synthetic backend now accepts extended types such as L2Cache, L1i or
+      Group3. lstopo also exports synthetic strings using these extended types.
+  * Tools
+    + lstopo
+      - Do not overwrite output files by default anymore.</comment>
+    <requestid>245030</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1cfdaeecab3dd62ce703eb0d8a5d4420</srcmd5>
+    <version>1.9</version>
+    <time>1409301185</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3cb719e5bd652c521d9c30e4e6107b16</srcmd5>
+    <version>1.10.0</version>
+    <time>1419159877</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265780</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c31dbd358b6c909b14a8d9038ef12bab</srcmd5>
+    <version>1.10.0</version>
+    <time>1420021347</time>
+    <user>dimstar_suse</user>
+    <comment>- minor spec fixes (unbreak build for suse_version &lt; Factory)</comment>
+    <requestid>266851</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9635d077b00969c96a1133d5a3c5262c</srcmd5>
+    <version>1.10.1</version>
+    <time>1426064226</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289778</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>707d95ce0196e4245ccf9d1285cb4d62</srcmd5>
+    <version>1.11.1</version>
+    <time>1447766597</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344785</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3e0228d93c7f49ccba63dad9bcc63f87</srcmd5>
+    <version>1.11.2</version>
+    <time>1451390380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350944</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>20791929362eca9aac431d73af91cdb2</srcmd5>
+    <version>1.11.5</version>
+    <time>1487029403</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455568</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c6eb33475af7ff0c5b1b34a2360e56f5</srcmd5>
+    <version>1.11.5</version>
+    <time>1489345338</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477308</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>2c2548d1b39274c5e847fd2b8192b8d6</srcmd5>
+    <version>1.11.5</version>
+    <time>1511274987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544164</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4e9b220175abc639e777226a52f5e849</srcmd5>
+    <version>1.11.8</version>
+    <time>1511426642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544379</requestid>
+  </revision>
+</revisionlist>

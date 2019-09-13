@@ -1,0 +1,200 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>10ff41e809f25ef02a6701f1582f13d1</srcmd5>
+    <version>unknown</version>
+    <time>1523349378</time>
+    <user>maxlin_factory</user>
+    <comment>more conflicts/provides</comment>
+    <requestid>593619</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>09f0f34fa094abe3f3690aa0b32d4919</srcmd5>
+    <version>unknown</version>
+    <time>1523956105</time>
+    <user>dimstar_suse</user>
+    <comment>- Add iconv-name.diff; rename cp10000 to macintosh to workaround
+  glibc [boo#1089126]</comment>
+    <requestid>595769</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>06c3febbb50fb49614917de518c78931</srcmd5>
+    <version>unknown</version>
+    <time>1528492143</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove schily-2018-05-25_star_bufferoverflow.patch
+  (the bug is long gone, the patch has no effect)
+- add patches from the star package
+  * schily-2018-05-25_star_configuration.patch
+  * schily-2018-05-25_star_no_fsync.patch
+  * schily-2018-05-25_star_lock.patch
+  * schily-2018-05-25_star_detect_gzip_failures.patch
+  * schily-2018-05-25_star_bufferoverflow.patch
+  * schily-2018-05-25_star_use_ssh_by_default.patch
+  * schily-2018-05-25_star_mk.patch
+  * schily-2018-05-25_star_selinux.patch
+- add missing BuildRequires for star:
+  * autoconf (because of selinux patch)
+  * libacl-devel
+  * libattr-devel
+  * libselinux-devel
+  * libtool
+- install README-FIRST (as schily-rmt) documentation
+- add noreplace for %_sysconfdir/default/rmt and
+  %_sysconfdir/default/star
+- move srmt from sbindir to bindir
+- do not ship star_sym and suntar
+- Update to new upstream release 2018.05.25
+  * star: user name, group name, path and linkpath are now
+    automatically added to the POSIX.1-2001 extended header in
+    case that they include non-ASCII characters (outside the
+    7-bit range).
+- Remove gccwarns.diff (fixed upstream), gcc48wa.diff (we no
+  longer have gcc-4.8)
+- Update to new upstream release 2018.05.17
+  * smake: Now using TYPE_MAXVAL(time_t) in gnewtime() instead of
+    the method from 1996, to work around a problem with gcc-8.1
+    and clang-6.0.
+  * mkisofs: The link count computation did incorrectly count all
+    directory entries for large (multi extent) files. This
+    resulted in a link count that was &quot;real number&quot; + (sizeof
+    file / 2GB)
+  * mkisofs: File meta data for UDF directories that refer to a
+    Rock Ridge relocated directory had been emitted as all
+    zeroes.
+  * star: nanosecond timestamp support
+  * libfind: nanosecond timestamp support
+  * star: Added a new archive format &quot;epax&quot;. This is the same as
+    &quot;pax&quot;, but it always includes a POSIX.1-2001 extended header
+    with timestamps with nanosecond resolution.
+- Update to new upstream release 2018.05.02
+  * bsh: fixed a NULL deref when the file content was &quot;#!&quot;
+  * bsh: Avoid a coredump from expressions like
+    &quot;$2222222222222222222&quot; that cause an integer overflow while
+    converting the number.
+  * mkisofs: fixed crash during Joliet info creation
+  * Better support for Address Sanitizer
+  * (s)patch: CVE-2018-1000156 was fixed
+  * star: star -diff is now able to compare nanoseconds in
+    timestamps.
+- Drop mkisofs-j-crash.diff (fixed upstream)
+- Add gccwarns.diff to address some undefined behavior.
+- Add update-alternatives handling for (s)rmt and (s)mt
+- Add spax and star subpackages
+</comment>
+    <requestid>614856</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5fbd7a6ddeb54f87dc9f1e9e50d13aa8</srcmd5>
+    <version>unknown</version>
+    <time>1535122215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630358</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6db29f3645ea780aa9df1b826672046f</srcmd5>
+    <version>unknown</version>
+    <time>1535964307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632482</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c976079a0544d254267d8e3dddd52d62</srcmd5>
+    <version>unknown</version>
+    <time>1542579697</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2018.10.30</comment>
+    <requestid>648728</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>41f87586e7242bbdb91b738f274419bf</srcmd5>
+    <version>unknown</version>
+    <time>1544441177</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2018.11.22</comment>
+    <requestid>653794</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>1ab8828193c627a52f5fb0fa737b280e</srcmd5>
+    <version>unknown</version>
+    <time>1550049468</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2019.01.22</comment>
+    <requestid>670613</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>215ee46a4d29d34bb1d5cf8f2fa5f70a</srcmd5>
+    <version>unknown</version>
+    <time>1551385414</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2019.02.18</comment>
+    <requestid>677814</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>f064340623a63f21115558e0df890d15</srcmd5>
+    <version>unknown</version>
+    <time>1552901712</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Conflict markers for file-based conflicts identified
+  by repo-checker.
+- Update to new upstream release 2019.03.11</comment>
+    <requestid>685554</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>9e051c85ddcd1fe2a19e9e6d8fd1b094</srcmd5>
+    <version>unknown</version>
+    <time>1554372109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2019.03.29</comment>
+    <requestid>690323</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>be379bee2c227a3b54c3c249de8eb0af</srcmd5>
+    <version>unknown</version>
+    <time>1556915276</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2019.04.29</comment>
+    <requestid>700266</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>aee2e642a3da6f858ce7d3bdc4f592f3</srcmd5>
+    <version>unknown</version>
+    <time>1559642987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2019.05.28</comment>
+    <requestid>706880</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>1405cf3b50de03949c89e318ca4c6073</srcmd5>
+    <version>unknown</version>
+    <time>1561493840</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>711285</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>f04782338ef5434837a326337660b026</srcmd5>
+    <version>unknown</version>
+    <time>1562925615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714789</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>5b76c6c29d7bc0d1abfd9b973e018c77</srcmd5>
+    <version>unknown</version>
+    <time>1565962069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2019.07.22</comment>
+    <requestid>722927</requestid>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>1ae80559719c9322052d01a944142a62</srcmd5>
+    <version>unknown</version>
+    <time>1566913826</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2019.08.13</comment>
+    <requestid>726011</requestid>
+  </revision>
+</revisionlist>

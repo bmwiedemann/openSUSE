@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e70cda3e12a61e0943ec3d74d6c926bd</srcmd5>
+    <version>2.14.2</version>
+    <time>1381748744</time>
+    <user>scarabeus_factory</user>
+    <comment>New package see http://lists.opensuse.org/opensuse-factory/2013-10/msg00023.html</comment>
+    <requestid>201912</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1001289458080183bfced85ccd2a16d8</srcmd5>
+    <version>2.14.3</version>
+    <time>1382173924</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>203826</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e9d9134330c250e9d6f6ae4da377a0d9</srcmd5>
+    <version>2.14.4</version>
+    <time>1385313199</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208100</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fad4b28e70fc7cc2506bb438994df081</srcmd5>
+    <version>2.14.5</version>
+    <time>1392638696</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221435</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>fad4b28e70fc7cc2506bb438994df081</srcmd5>
+    <version>2.14.5</version>
+    <time>1409303277</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>4f441fc19e8c9c057f3b2bda80134de4</srcmd5>
+    <version>2.14.5</version>
+    <time>1413782807</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256107</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2942afb477f2b405c334cd4c59491b2b</srcmd5>
+    <version>3.2.0</version>
+    <time>1423396990</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 3.2.0
+ Enhancements:
+ 
+ * Add `block_arg` method to custom matcher API, which allows you to
+   access the block passed to a custom matcher, if there is one.
+   (Mike Dalton, #645)
+ * Provide more detail in failure message of `yield_control` matcher.
+   (Jon Rowe, #650)
+ * Add a shorthand syntax for `chain` in the matcher DSL which assigns values
+   for use elsewhere, for example `chain :and_smaller_than, :small_value`
+   creates an `attr_reader` for `small_value` (Tom Stuart, #644)
+ * Provide a more helpful deprecation message when using the `should` syntax.
+   (Elia Schito, #663)
+ * Provide more detail in the `have_attributes` matcher failure message.
+   (Jon Rowe,  #668)
+ * Make the `have_attributes` matcher diffable.
+   (Jon Rowe, Alexey Fedorov, #668)
+ * Add `output(...).to_std(out|err)_from_any_process` as alternatives
+   to `output(...).to_std(out|err)`. The latter doesn't work when a sub
+   process writes to the named stream but is much faster.
+   (Alex Genco, #700)
+ * Improve compound matchers (created by `and` and `or`) so that diffs
+   are included in failures when one or more of their matchers
+   are diffable. (Alexey Fedorov, #713)
+ 
+ Bug Fixes:
+ 
+ * Avoid calling `private_methods` from the `be` predicate matcher on
+   the target object if the object publicly responds to the predicate
+   method. This avoids a possible error that can occur if the object</comment>
+    <requestid>284558</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2207a8698ceae163d9443d22c403e41a</srcmd5>
+    <version>3.2.1</version>
+    <time>1428949767</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>295365</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a03c2cc5735f54396a50eb3ca1b0cd99</srcmd5>
+    <version>3.3.0</version>
+    <time>1434383157</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312015</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>204cec6c6406117353fb519905aae83b</srcmd5>
+    <version>3.3.1</version>
+    <time>1437383995</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317064</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5382ee76c1a6e2290dd11cb0cf6c74c2</srcmd5>
+    <version>3.4.0</version>
+    <time>1448960534</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345653</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1047831e07242da2c53f9123e8186f15</srcmd5>
+    <version>3.5.0</version>
+    <time>1468699884</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406358</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ca7dfa3ff8a18d70523023fed93a770e</srcmd5>
+    <version>3.6.0</version>
+    <time>1495883487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497692</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a36a42f42267374ec162726fd95edba1</srcmd5>
+    <version>3.7.0</version>
+    <time>1509530889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537496</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e203781f35cf76125b6d185d1ec72c42</srcmd5>
+    <version>3.8.2</version>
+    <time>1541095833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645800</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>169e28ccd805269049d1ebef3becd11a</srcmd5>
+    <version>3.8.3</version>
+    <time>1560337247</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706020</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9c7376a68be5630eac5cfb8fef1eb0b7</srcmd5>
+    <version>3.8.4</version>
+    <time>1563790578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713995</requestid>
+  </revision>
+</revisionlist>

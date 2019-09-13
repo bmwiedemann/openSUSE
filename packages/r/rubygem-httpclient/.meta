@@ -1,0 +1,13 @@
+<package name="rubygem-httpclient" project="openSUSE:Factory">
+  <title>Fast HTTP library for Ruby</title>
+  <description>'httpclient' gives something like the functionality of PERLs LWP module in Ruby.
+
+
+Authors:
+--------
+    Hiroshi Nakamura
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-httpclient"/>
+  <url>http://dev.ctor.org/http-access2/</url>
+</package>

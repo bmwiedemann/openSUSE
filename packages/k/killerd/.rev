@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf1e32b38a951ba23e1c8bcc1d88b5fa</srcmd5>
+    <version>1.1</version>
+    <time>1169080522</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="100">
+    <srcmd5>bf1e32b38a951ba23e1c8bcc1d88b5fa</srcmd5>
+    <version>1.1</version>
+    <time>1169080522</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="101">
+    <srcmd5>63ebb0c29046e3de5b050448ba364e49</srcmd5>
+    <version>1.1</version>
+    <time>1224729358</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="103">
+    <srcmd5>63ebb0c29046e3de5b050448ba364e49</srcmd5>
+    <version>1.1</version>
+    <time>1224729358</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="104">
+    <srcmd5>71cf0962b767f4ef904b39580c91d485</srcmd5>
+    <version>1.1</version>
+    <time>1258388308</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/killerd based on submit request 24419 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="6" vrev="105">
+    <srcmd5>e30e3df457df03921507149cb8e38fc3</srcmd5>
+    <version>1.1</version>
+    <time>1268924285</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="107">
+    <srcmd5>e30e3df457df03921507149cb8e38fc3</srcmd5>
+    <version>1.1</version>
+    <time>1278667355</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="108">
+    <srcmd5>e30e3df457df03921507149cb8e38fc3</srcmd5>
+    <version>1.1</version>
+    <time>1278678586</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="111">
+    <srcmd5>e30e3df457df03921507149cb8e38fc3</srcmd5>
+    <version>1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="112">
+    <srcmd5>9bed01357ac932215cc3e89cd54a58b7</srcmd5>
+    <version>1.1</version>
+    <time>1317744776</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86408 from uli_suse)</comment>
+    <requestid>86443</requestid>
+  </revision>
+  <revision rev="11" vrev="114">
+    <srcmd5>9bed01357ac932215cc3e89cd54a58b7</srcmd5>
+    <version>1.1</version>
+    <time>1319182047</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="115">
+    <srcmd5>6ac26eec28bf7a16994fba7b0044c6b0</srcmd5>
+    <version>1.1</version>
+    <time>1323192104</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="117">
+    <srcmd5>6ac26eec28bf7a16994fba7b0044c6b0</srcmd5>
+    <version>1.1</version>
+    <time>1340183528</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="119">
+    <srcmd5>6ac26eec28bf7a16994fba7b0044c6b0</srcmd5>
+    <version>1.1</version>
+    <time>1359109188</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="121">
+    <srcmd5>6ac26eec28bf7a16994fba7b0044c6b0</srcmd5>
+    <version>1.1</version>
+    <time>1379662807</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="123">
+    <srcmd5>6ac26eec28bf7a16994fba7b0044c6b0</srcmd5>
+    <version>1.1</version>
+    <time>1409301385</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="124">
+    <srcmd5>894c3424e5fc735f5e6dad1b173028bf</srcmd5>
+    <version>1.1</version>
+    <time>1413476094</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256816</requestid>
+  </revision>
+  <revision rev="18" vrev="125">
+    <srcmd5>5416287001ab582ab5ece4038bef8ff0</srcmd5>
+    <version>1.1</version>
+    <time>1426485640</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup with spec-cleaner
+- Use systemd unit file</comment>
+    <requestid>290621</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e65821dd52fff2157ac823d54d0e2921</srcmd5>
+    <version>8.57</version>
+    <time>1431364986</time>
+    <user>coolo</user>
+    <comment>Please include in Staging I. Required for KAccount. The KDE method for webaccounts</comment>
+    <requestid>303633</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4626d9afa5f3de2543d23fa5a878d39c</srcmd5>
+    <version>8.57</version>
+    <time>1442638462</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>331828</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b880bdde5ccdb888818f859c1643de1f</srcmd5>
+    <version>8.57</version>
+    <time>1456132392</time>
+    <user>dimstar_suse</user>
+    <comment>Add the ability to have the -32bit packages and also fix one rpmlint error. </comment>
+    <requestid>356559</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9087eb1b611897bf43879547902ee477</srcmd5>
+    <version>8.59</version>
+    <time>1510241085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538921</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4bc925d51c75d2c2f7eb798cd8e4b760</srcmd5>
+    <version>8.59</version>
+    <time>1564993819</time>
+    <user>dimstar_suse</user>
+    <comment>- Use FAT LTO objects in order to provide proper static library. (forwarded request 720004 from marxin)</comment>
+    <requestid>720019</requestid>
+  </revision>
+</revisionlist>

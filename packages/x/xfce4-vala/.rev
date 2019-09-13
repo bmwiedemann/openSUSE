@@ -1,0 +1,335 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f2f4c9abaab09e2767df4193f97337e1</srcmd5>
+    <version>4.6.0</version>
+    <time>1267093447</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/xfce4-vala based on submit request 33452 from user prusnak
+</comment>
+    <requestid>33452</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>34168a42b4b330ff0edef31ed8d1090d</srcmd5>
+    <version>4.6.0</version>
+    <time>1268926589</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>34168a42b4b330ff0edef31ed8d1090d</srcmd5>
+    <version>4.6.0</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>34168a42b4b330ff0edef31ed8d1090d</srcmd5>
+    <version>4.6.0</version>
+    <time>1278678626</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bc70565d4301450bff7282ceb49f539e</srcmd5>
+    <version>4.6.99_git20101205</version>
+    <time>1291769127</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55002 from user prusnak
+</comment>
+    <requestid>55002</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0cc5271bd643438891ec5ce6341047a3</srcmd5>
+    <version>4.6.99_git20101205</version>
+    <time>1291769135</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55002
+</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>429c79da50ed6b179a8eaa817a6947ac</srcmd5>
+    <version>4.6.99_git20101205</version>
+    <time>1292850625</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56166 from user prusnak
+</comment>
+    <requestid>56166</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>8bd7c8fdcc24c5e43cf12abdb9978d59</srcmd5>
+    <version>4.6.99_git20101205</version>
+    <time>1292850637</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56166
+</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>2fccb4370090d1c0a43eb3e8974aa153</srcmd5>
+    <version>4.6.99_git20101205</version>
+    <time>1295056977</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57408 from user gberh
+</comment>
+    <requestid>57408</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>2785fafccd1a8cd934ab07cbbc0e42d4</srcmd5>
+    <version>4.6.99_git20101205</version>
+    <time>1295056987</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57408
+</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>2785fafccd1a8cd934ab07cbbc0e42d4</srcmd5>
+    <version>4.6.99_git20101205</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>f9b14ee6ed7a4bceaf0cdb711b7dc85e</srcmd5>
+    <version>4.8.0</version>
+    <time>1298030638</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61570 from user gberh
+</comment>
+    <requestid>61570</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>b4178cd7ccf791225e3c98006c80ed06</srcmd5>
+    <version>4.8.0</version>
+    <time>1298030646</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61570
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c141de352e5c162257a9fae7f3217d9f</srcmd5>
+    <version>4.8.1</version>
+    <time>1305538078</time>
+    <user>saschpe</user>
+    <comment>- update to version 4.8.1
+  - update to vala 0.12
+- added xfce4-vala-multiple-vala-versions.patch to retain
+  compatibility with vala 0.10</comment>
+    <requestid>70203</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7392ae09c4d84605764cffa37bdb6508</srcmd5>
+    <version>4.8.1</version>
+    <time>1305538094</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70203
+</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>1302d909812530aaedcf34a986afd954</srcmd5>
+    <version>4.8.1</version>
+    <time>1310974384</time>
+    <user>saschpe</user>
+    <comment>- allow build against vala 0.14</comment>
+    <requestid>76284</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>39a26f128178fad4b58551ec5b33f1dc</srcmd5>
+    <version>4.8.1</version>
+    <time>1310974395</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76284
+</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>39a26f128178fad4b58551ec5b33f1dc</srcmd5>
+    <version>4.8.1</version>
+    <time>1319182595</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>ba6f0fbcddfd560d6cd29638bbc27019</srcmd5>
+    <version>4.8.1</version>
+    <time>1323195329</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>2ddc986b82bbc3bd67e776f827b3678b</srcmd5>
+    <version>4.8.1</version>
+    <time>1329383473</time>
+    <user>coolo</user>
+    <comment>- add support for vala 0.16</comment>
+    <requestid>104756</requestid>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>2d3e12c9b7ad89e7c3e8453557134fbb</srcmd5>
+    <version>4.8.1</version>
+    <time>1334824951</time>
+    <user>coolo</user>
+    <comment>- loosen vala version constraints to make package installable
+
+- specfile cleanup
+- correct dependencies</comment>
+    <requestid>112556</requestid>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>2d3e12c9b7ad89e7c3e8453557134fbb</srcmd5>
+    <version>4.8.1</version>
+    <time>1340184360</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="12">
+    <srcmd5>3f097c31c095dd7c9fdcb722ed873e28</srcmd5>
+    <version>4.8.1</version>
+    <time>1349721400</time>
+    <user>coolo</user>
+    <comment>depend on vala-0_12 for &gt;= 12.1 and fix build on Factory</comment>
+    <requestid>137476</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f54c768557e4a964a94e7b4f09817813</srcmd5>
+    <version>4.10.2</version>
+    <time>1351159943</time>
+    <user>namtrac</user>
+    <comment>- use most recent vala version available in an openSUSE release
+
+- update to version 4.10.2
+  - added garcon (package, VAPI, and test program)
+  - updated API to Xfce 4.10.0
+  - updated package to Vala 0.16</comment>
+    <requestid>139165</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>f54c768557e4a964a94e7b4f09817813</srcmd5>
+    <version>4.10.2</version>
+    <time>1359110637</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>cc85c2481da9014899f8c08494955ef0</srcmd5>
+    <version>4.10.2</version>
+    <time>1367489110</time>
+    <user>coolo</user>
+    <comment>- add support for vala 0.20
+
+- remove support for openSUSE 11.4</comment>
+    <requestid>173748</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c09170269940db46ae7c8a8a2664f84e</srcmd5>
+    <version>4.10.3</version>
+    <time>1376911858</time>
+    <user>scarabeus_factory</user>
+    <comment>- add support for vala 0.22 in Factory
+
+- update to version 4.10.3
+  - Make the pkgconfig file noarch
+  - Add --with-vala-api option to allow packagers select vala api
+    version
+- drop now obsolete xfce4-vala-multiple-vala-versions.patch
+- remove support for openSUSE 12.1</comment>
+    <requestid>195537</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>c09170269940db46ae7c8a8a2664f84e</srcmd5>
+    <version>4.10.3</version>
+    <time>1379665058</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>f936c716352ed46ce5dab516c2c3aade</srcmd5>
+    <version>4.10.3</version>
+    <time>1400476925</time>
+    <user>coolo</user>
+    <comment>- add support for vala 0.24 in Factory, remove support for 12.2 (forwarded request 234492 from gberh)</comment>
+    <requestid>234493</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>f936c716352ed46ce5dab516c2c3aade</srcmd5>
+    <version>4.10.3</version>
+    <time>1409303743</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>2180bb454e4e1eef543e5d0fcdb2597b</srcmd5>
+    <version>4.10.3</version>
+    <time>1412533874</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253669</requestid>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>07094824eda11af4246befa193c35fd5</srcmd5>
+    <version>4.10.3</version>
+    <time>1428272782</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294353</requestid>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>cb80624b38bf4c27aa306a028aa2661f</srcmd5>
+    <version>4.10.3</version>
+    <time>1439482239</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322113</requestid>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>d5b41c9c68284ef447b7a2ea3a0f4dda</srcmd5>
+    <version>4.10.3</version>
+    <time>1441146985</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328237</requestid>
+  </revision>
+  <revision rev="35" vrev="11">
+    <srcmd5>9cc20cb713fce998833d00fdf3c7c93d</srcmd5>
+    <version>4.10.3</version>
+    <time>1445287919</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339253</requestid>
+  </revision>
+  <revision rev="36" vrev="12">
+    <srcmd5>8acc4dd8b0d3c5baf912b9ea276956e8</srcmd5>
+    <version>4.10.3</version>
+    <time>1459845826</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>383175</requestid>
+  </revision>
+  <revision rev="37" vrev="13">
+    <srcmd5>25ae3cefcfe2ec2b7eb5475fe922f22c</srcmd5>
+    <version>4.10.3</version>
+    <time>1475242374</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>430585</requestid>
+  </revision>
+  <revision rev="38" vrev="14">
+    <srcmd5>ace181204293b34469f4396c0f112ebc</srcmd5>
+    <version>4.10.3</version>
+    <time>1480420184</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442442</requestid>
+  </revision>
+  <revision rev="39" vrev="15">
+    <srcmd5>adf272ac47b57089143c26ae4ed99a9c</srcmd5>
+    <version>4.10.3</version>
+    <time>1491896099</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483411</requestid>
+  </revision>
+  <revision rev="40" vrev="16">
+    <srcmd5>c5983af3edea49a6ece1a129ab554280</srcmd5>
+    <version>4.10.3</version>
+    <time>1496534462</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500817</requestid>
+  </revision>
+</revisionlist>

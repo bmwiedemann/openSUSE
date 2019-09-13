@@ -1,0 +1,153 @@
+<revisionlist>
+  <revision rev="1" vrev="305">
+    <srcmd5>18c878f941fc7fb77880ef2fddc66cfa</srcmd5>
+    <version>0.4</version>
+    <time>1168903049</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="347">
+    <srcmd5>169528ba737caba9f21693197ace44d1</srcmd5>
+    <version>0.4</version>
+    <time>1177450251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="364">
+    <srcmd5>bda9777af14746f5b4a490914929f08d</srcmd5>
+    <version>0.4</version>
+    <time>1184786647</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2cce2bc94132bf165465658df74f8f5b</srcmd5>
+    <version>0.5</version>
+    <time>1185031999</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="25">
+    <srcmd5>f7fd0e7dceefd40054d14f15cd04a98b</srcmd5>
+    <version>0.5</version>
+    <time>1197375053</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="55">
+    <srcmd5>8c4d96c23d85529e0d3a433156cc811a</srcmd5>
+    <version>0.5</version>
+    <time>1214440225</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="80">
+    <srcmd5>9b3c75780b1178af1505a633d9a4eca2</srcmd5>
+    <version>0.5</version>
+    <time>1245364177</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="81">
+    <srcmd5>55e0d9dc5ac2ec2a29afd6a9f005263e</srcmd5>
+    <version>0.5</version>
+    <time>1254958758</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/initviocons based on submit request 21923 from user prusnak
+</comment>
+  </revision>
+  <revision rev="9" vrev="83">
+    <srcmd5>55e0d9dc5ac2ec2a29afd6a9f005263e</srcmd5>
+    <version>0.5</version>
+    <time>1254958758</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/initviocons based on submit request 21923 from user prusnak
+</comment>
+  </revision>
+  <revision rev="10" vrev="84">
+    <srcmd5>4f1a879080bcc25f1b5f87e18d0b0c39</srcmd5>
+    <version>0.5</version>
+    <time>1268924018</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="86">
+    <srcmd5>4f1a879080bcc25f1b5f87e18d0b0c39</srcmd5>
+    <version>0.5</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="87">
+    <srcmd5>4f1a879080bcc25f1b5f87e18d0b0c39</srcmd5>
+    <version>0.5</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="90">
+    <srcmd5>4f1a879080bcc25f1b5f87e18d0b0c39</srcmd5>
+    <version>0.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="92">
+    <srcmd5>4f1a879080bcc25f1b5f87e18d0b0c39</srcmd5>
+    <version>0.5</version>
+    <time>1319181988</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="93">
+    <srcmd5>96e6a3571151ae9068a8d1641cec45b8</srcmd5>
+    <version>0.5</version>
+    <time>1322828485</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94740 from coolo)</comment>
+    <requestid>94749</requestid>
+  </revision>
+  <revision rev="16" vrev="94">
+    <srcmd5>ef5961145d946565c49346fa30007678</srcmd5>
+    <version>0.5</version>
+    <time>1323191967</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="95">
+    <srcmd5>6d18f8d93dd039463c16fdb5bc1b2269</srcmd5>
+    <version>0.5</version>
+    <time>1329750809</time>
+    <user>coolo</user>
+    <comment>- place binary in /usr tree (UsrMerge project)</comment>
+    <requestid>105786</requestid>
+  </revision>
+  <revision rev="18" vrev="97">
+    <srcmd5>6d18f8d93dd039463c16fdb5bc1b2269</srcmd5>
+    <version>0.5</version>
+    <time>1340183461</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="99">
+    <srcmd5>6d18f8d93dd039463c16fdb5bc1b2269</srcmd5>
+    <version>0.5</version>
+    <time>1359109080</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="101">
+    <srcmd5>6d18f8d93dd039463c16fdb5bc1b2269</srcmd5>
+    <version>0.5</version>
+    <time>1379662668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="103">
+    <srcmd5>6d18f8d93dd039463c16fdb5bc1b2269</srcmd5>
+    <version>0.5</version>
+    <time>1409301229</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="104">
+    <srcmd5>2ff7b4e831f34a71d3df357910a6071c</srcmd5>
+    <version>0.5</version>
+    <time>1496533692</time>
+    <user>dimstar_suse</user>
+    <comment>- Actually build with RPM_OPT_FLAGS, will also catch
+  too long -F arguments (bsc#1041840) (forwarded request 500267 from msmeissn)</comment>
+    <requestid>500268</requestid>
+  </revision>
+</revisionlist>

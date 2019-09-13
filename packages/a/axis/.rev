@@ -1,0 +1,254 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a66337f4a62757f1d7da75a86c4078fc</srcmd5>
+    <version>1.4</version>
+    <time>1173871430</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="25">
+    <srcmd5>c510deb4ec26e3bf29ba177e05a6baa9</srcmd5>
+    <version>1.4</version>
+    <time>1178225207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="137">
+    <srcmd5>192a2f4bd11dc338177e968e077755f8</srcmd5>
+    <version>1.4</version>
+    <time>1200602099</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="173">
+    <srcmd5>d437f45a8ff4f0a064e0c433a8a43dcd</srcmd5>
+    <version>1.4</version>
+    <time>1208908609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="217">
+    <srcmd5>a40cc230dc358190c905b4f4467dcbcf</srcmd5>
+    <version>1.4</version>
+    <time>1216239539</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="236">
+    <srcmd5>765f660d9e878e97804c9b5ce3fcd5de</srcmd5>
+    <version>1.4</version>
+    <time>1217637524</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="265">
+    <srcmd5>032a999b446c92babb8b746c773cf179</srcmd5>
+    <version>1.4</version>
+    <time>1243471531</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="267">
+    <srcmd5>032a999b446c92babb8b746c773cf179</srcmd5>
+    <version>1.4</version>
+    <time>1243471531</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="268">
+    <srcmd5>35ea57dd88ec8061d93d8c0094081bfb</srcmd5>
+    <version>1.4</version>
+    <time>1268922978</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="270">
+    <srcmd5>35ea57dd88ec8061d93d8c0094081bfb</srcmd5>
+    <version>1.4</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="271">
+    <srcmd5>35ea57dd88ec8061d93d8c0094081bfb</srcmd5>
+    <version>1.4</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="274">
+    <srcmd5>35ea57dd88ec8061d93d8c0094081bfb</srcmd5>
+    <version>1.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="275">
+    <srcmd5>861062640eeb40dc1c2d8feab620f8e0</srcmd5>
+    <version>1.4</version>
+    <time>1300095258</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63981 from user mvyskocil
+</comment>
+    <requestid>63981</requestid>
+  </revision>
+  <revision rev="14" vrev="276">
+    <srcmd5>66c6f6e00d0c15117c436734f1b7de19</srcmd5>
+    <version>1.4</version>
+    <time>1300095272</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63981
+</comment>
+  </revision>
+  <revision rev="15" vrev="277">
+    <srcmd5>22c17dce1fa9c81950531f15269049e0</srcmd5>
+    <version>1.4</version>
+    <time>1316765990</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (cf.packaging guidelines) (forwarded request 82993 from jengelh)</comment>
+    <requestid>84363</requestid>
+  </revision>
+  <revision rev="16" vrev="279">
+    <srcmd5>22c17dce1fa9c81950531f15269049e0</srcmd5>
+    <version>1.4</version>
+    <time>1319181784</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="280">
+    <srcmd5>9933d5cb96280b9eb27a73d1b01401a5</srcmd5>
+    <version>1.4</version>
+    <time>1323190810</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="281">
+    <srcmd5>dad073f17557d613a3c0139cc88e4fdb</srcmd5>
+    <version>1.4</version>
+    <time>1335165126</time>
+    <user>coolo</user>
+    <comment>- strip the jakarta- from classpath to be ready for jakarta-&gt;apache-commons
+  renaming
+- added some pms and manifest files
+  needs fixed jpackage-utils (107564)</comment>
+    <requestid>107565</requestid>
+  </revision>
+  <revision rev="19" vrev="283">
+    <srcmd5>dad073f17557d613a3c0139cc88e4fdb</srcmd5>
+    <version>1.4</version>
+    <time>1340183194</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="285">
+    <srcmd5>dad073f17557d613a3c0139cc88e4fdb</srcmd5>
+    <version>1.4</version>
+    <time>1359108689</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="286">
+    <srcmd5>470d87ba60cf191ed245b4d38d0e97ce</srcmd5>
+    <version>1.4</version>
+    <time>1378998296</time>
+    <user>scarabeus_factory</user>
+    <comment>jpackage-utils collison fix</comment>
+    <requestid>198678</requestid>
+  </revision>
+  <revision rev="22" vrev="288">
+    <srcmd5>470d87ba60cf191ed245b4d38d0e97ce</srcmd5>
+    <version>1.4</version>
+    <time>1379662020</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="289">
+    <srcmd5>41d580f07d2e76acd257b7e73fb3cef4</srcmd5>
+    <version>1.4</version>
+    <time>1404161382</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238886</requestid>
+  </revision>
+  <revision rev="24" vrev="291">
+    <srcmd5>41d580f07d2e76acd257b7e73fb3cef4</srcmd5>
+    <version>1.4</version>
+    <time>1409300545</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="292">
+    <srcmd5>6895831182d84cf262c35eb6150936c6</srcmd5>
+    <version>1.4</version>
+    <time>1427982854</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292604</requestid>
+  </revision>
+  <revision rev="26" vrev="293">
+    <srcmd5>174f0df1a04dc9536fd7b0e51bbe6cc2</srcmd5>
+    <version>1.4</version>
+    <time>1496230113</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with new javapackages-tools
+
+- Disable javadoc
+- Fix build with new ant 1.9.8+
+  * axis-ant-build.patch</comment>
+    <requestid>496517</requestid>
+  </revision>
+  <revision rev="27" vrev="294">
+    <srcmd5>ca0552379bdc65f18fedde4174334e45</srcmd5>
+    <version>1.4</version>
+    <time>1505334102</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on systems when jdk9 is default java</comment>
+    <requestid>522861</requestid>
+  </revision>
+  <revision rev="28" vrev="295">
+    <srcmd5>a0857ab1a3ce734b29e73dad0872be84</srcmd5>
+    <version>1.4</version>
+    <time>1505680603</time>
+    <user>dimstar_suse</user>
+    <comment>classpath is provided by java-1_5_0-gcj-compat-devel</comment>
+    <requestid>526215</requestid>
+  </revision>
+  <revision rev="29" vrev="296">
+    <srcmd5>87c69c3e6574968c18dbd143d97c4ef6</srcmd5>
+    <version>1.4</version>
+    <time>1507628357</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>531529</requestid>
+  </revision>
+  <revision rev="30" vrev="297">
+    <srcmd5>8281ae19b0af3ddd740b2f60c7a2140a</srcmd5>
+    <version>1.4</version>
+    <time>1532446350</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk11</comment>
+    <requestid>621938</requestid>
+  </revision>
+  <revision rev="31" vrev="298">
+    <srcmd5>e029550490a0f1c03efdd6a7085b234f</srcmd5>
+    <version>1.4</version>
+    <time>1541864863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647275</requestid>
+  </revision>
+  <revision rev="32" vrev="299">
+    <srcmd5>770687ea0be0f5ed28942a2d47c0d272</srcmd5>
+    <version>1.4</version>
+    <time>1549140282</time>
+    <user>coolo</user>
+    <comment>Build against generic javamail provider</comment>
+    <requestid>668995</requestid>
+  </revision>
+  <revision rev="33" vrev="300">
+    <srcmd5>ba48ff331229f7b529f8b4f8c39850e0</srcmd5>
+    <version>1.4</version>
+    <time>1555492930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694192</requestid>
+  </revision>
+  <revision rev="34" vrev="301">
+    <srcmd5>f12d61ce06ff35748433e32283e53ff9</srcmd5>
+    <version>1.4</version>
+    <time>1557832265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701870</requestid>
+  </revision>
+</revisionlist>

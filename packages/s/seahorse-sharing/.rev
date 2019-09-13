@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>73270b16be0b591963b5aa3a5c2057e5</srcmd5>
+    <version>3.2</version>
+    <time>1317213628</time>
+    <user>saschpe</user>
+    <comment>New package: feature that got split from seahorse in 3.2</comment>
+    <requestid>85082</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c83a55366a1ee489003c41205c49e09d</srcmd5>
+    <version>3.2.1</version>
+    <time>1319044037</time>
+    <user>coolo</user>
+    <comment>Pushing missing G:F bits</comment>
+    <requestid>88683</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c83a55366a1ee489003c41205c49e09d</srcmd5>
+    <version>3.2.1</version>
+    <time>1319182459</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>51a92a845827a6a9007a70f7a09b4455</srcmd5>
+    <version>3.2.1</version>
+    <time>1323194589</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>184ad929ca562b2ab241d6bf21689e97</srcmd5>
+    <version>3.2.1</version>
+    <time>1329823541</time>
+    <user>coolo</user>
+    <comment>Fix build after xorg-x11 shuffle.</comment>
+    <requestid>106165</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>146ab787e837c4b1d68b4921dcaa5216</srcmd5>
+    <version>3.4.0</version>
+    <time>1333022762</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111779</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>146ab787e837c4b1d68b4921dcaa5216</srcmd5>
+    <version>3.4.0</version>
+    <time>1340184205</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>96af7e4f6ea355cd5de1d82f0564f7ae</srcmd5>
+    <version>3.6.0</version>
+    <time>1349253580</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136783</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9db2f48b270f85a57b7537afd22bd14c</srcmd5>
+    <version>3.6.1</version>
+    <time>1353849060</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>142480</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>9db2f48b270f85a57b7537afd22bd14c</srcmd5>
+    <version>3.6.1</version>
+    <time>1359110391</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d653437561a87415d51144cc97071a23</srcmd5>
+    <version>3.8.0</version>
+    <time>1364928241</time>
+    <user>coolo</user>
+    <comment>Push G:Factory</comment>
+    <requestid>162202</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>d653437561a87415d51144cc97071a23</srcmd5>
+    <version>3.8.0</version>
+    <time>1379664642</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>d653437561a87415d51144cc97071a23</srcmd5>
+    <version>3.8.0</version>
+    <time>1409303344</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>70ed0b1494645348e75bd8a0ff7a2ba7</srcmd5>
+    <version>3.8.0</version>
+    <time>1418840144</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265424</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>e50b4a6ea0154814be019e76b6497aaa</srcmd5>
+    <version>3.8.0</version>
+    <time>1504815377</time>
+    <user>dimstar_suse</user>
+    <comment>Add 2.2 to the list of accepted GPG versions. (forwarded request 521722 from dimstar)</comment>
+    <requestid>521775</requestid>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>c4099212a9c6b75e5a71ec796ded2f02</srcmd5>
+    <version>3.8.0</version>
+    <time>1520588443</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581362 from dimstar)</comment>
+    <requestid>582863</requestid>
+  </revision>
+</revisionlist>

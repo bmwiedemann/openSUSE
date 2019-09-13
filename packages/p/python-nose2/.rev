@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1d5c31f44bd798d05a9ee224cbf94ec1</srcmd5>
+    <version>0.6.5</version>
+    <time>1499510018</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-nose2</comment>
+    <requestid>507176</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>41ef37e76354aa3052eea50f41c9b261</srcmd5>
+    <version>0.8.0</version>
+    <time>1535123074</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid name repetition in summary (rpmlint). (forwarded request 629533 from jengelh)</comment>
+    <requestid>629542</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>45462bbc672afcd32b847239c754707b</srcmd5>
+    <version>0.9.1</version>
+    <time>1554749626</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.1
+- refresh remove_unittest2.patch
+ * the prof plugin now uses cProfile instead of hotshot for profiling
+ * skipped tests now include the user's reason in junit XML's message field
+ * the prettyassert plugin mishandled multi-line function definitions
+ * Using a plugin's CLI flag when the plugin is already enabled via config
+   no longer errors
+ * nose2.plugins.prettyassert, enabled with --pretty-assert
+ * Cleanup code for EOLed python versions
+ * Dropped support for distutils.
+ * Result reporter respects failure status set by other plugins
+ * JUnit XML plugin now includes the skip reason in its output</comment>
+    <requestid>692272</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0558805d97a8a135573e8157c2c31fd0</srcmd5>
+    <version>0.9.1</version>
+    <time>1557916451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702904</requestid>
+  </revision>
+</revisionlist>

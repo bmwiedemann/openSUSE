@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a82e9a1a698fd4bde9ac4bf9e2e5fb3</srcmd5>
+    <version>1.6</version>
+    <time>1514842547</time>
+    <user>dimstar_suse</user>
+    <comment>- PAmix -&gt; pamix (lowercase per factory rules)
+- update to 1.6:
+  * improved stability
+  * Can reconnect to pulseaudio
+  * --version argument
+  * Fixed issues with Cards tab
+  * Updated Default Configuration
+- build switched to cmake
+- initial package with 1.5 release
+</comment>
+    <requestid>560952</requestid>
+  </revision>
+</revisionlist>

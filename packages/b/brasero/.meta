@@ -1,0 +1,10 @@
+<package name="brasero" project="openSUSE:Factory">
+  <title>CD/DVD burning application for GNOME</title>
+  <description>Brasero is an application to burn CD/DVDs for the GNOME Desktop. It is
+designed to be as simple as possible and has some unique features to
+enable users to create their discs easily and quickly.
+
+It supports creating audio discs, data discs, burning ISO and other
+image files, and duplicating discs.</description>
+  <devel project="GNOME:Factory" package="brasero"/>
+</package>

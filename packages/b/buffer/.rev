@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="710">
+    <srcmd5>7da13c6bc86e7d2f778919887a7064b1</srcmd5>
+    <version>1.19</version>
+    <time>1168902383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="843">
+    <srcmd5>7da13c6bc86e7d2f778919887a7064b1</srcmd5>
+    <version>1.19</version>
+    <time>1168902383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="844">
+    <srcmd5>ee7d8aeb201497acd6e7fad0b2c7e6f7</srcmd5>
+    <version>1.19</version>
+    <time>1245259003</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="846">
+    <srcmd5>ee7d8aeb201497acd6e7fad0b2c7e6f7</srcmd5>
+    <version>1.19</version>
+    <time>1245259003</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="847">
+    <srcmd5>f8655f79452a3c86cc3f031ddf6b6db9</srcmd5>
+    <version>1.19</version>
+    <time>1268923123</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="849">
+    <srcmd5>f8655f79452a3c86cc3f031ddf6b6db9</srcmd5>
+    <version>1.19</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="850">
+    <srcmd5>f8655f79452a3c86cc3f031ddf6b6db9</srcmd5>
+    <version>1.19</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="853">
+    <srcmd5>f8655f79452a3c86cc3f031ddf6b6db9</srcmd5>
+    <version>1.19</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="854">
+    <srcmd5>e3b041f458766b9eb503d186167e5009</srcmd5>
+    <version>1.19</version>
+    <time>1316503714</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82928 from jengelh)</comment>
+    <requestid>83656</requestid>
+  </revision>
+  <revision rev="10" vrev="855">
+    <srcmd5>cf9c9251a53ffc9bd0871d4541077915</srcmd5>
+    <version>1.19</version>
+    <time>1317744441</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86374 from uli_suse)</comment>
+    <requestid>86398</requestid>
+  </revision>
+  <revision rev="11" vrev="857">
+    <srcmd5>cf9c9251a53ffc9bd0871d4541077915</srcmd5>
+    <version>1.19</version>
+    <time>1319181796</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="858">
+    <srcmd5>ce11ee612693f40f3339ac1458e89731</srcmd5>
+    <version>1.19</version>
+    <time>1323190912</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="860">
+    <srcmd5>ce11ee612693f40f3339ac1458e89731</srcmd5>
+    <version>1.19</version>
+    <time>1340183215</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="862">
+    <srcmd5>ce11ee612693f40f3339ac1458e89731</srcmd5>
+    <version>1.19</version>
+    <time>1359108718</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="864">
+    <srcmd5>ce11ee612693f40f3339ac1458e89731</srcmd5>
+    <version>1.19</version>
+    <time>1379662059</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="866">
+    <srcmd5>ce11ee612693f40f3339ac1458e89731</srcmd5>
+    <version>1.19</version>
+    <time>1409300588</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

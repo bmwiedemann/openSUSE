@@ -1,0 +1,10 @@
+<package name="python-inflection" project="openSUSE:Factory">
+  <title>A port of Ruby on Rails inflector to Python</title>
+  <description>Inflection is a string transformation library.  It singularizes and pluralizes
+English words, and transforms strings from CamelCase to underscored string.
+Inflection is a port of `Ruby on Rails`_' `inflector`_ to Python.
+
+</description>
+  <devel project="devel:languages:python" package="python-inflection"/>
+  <url>http://github.com/jpvanhal/inflection</url>
+</package>

@@ -1,0 +1,9 @@
+<package name="mailx" project="openSUSE:Factory">
+  <title>A MIME-Capable Implementation of the mailx Command</title>
+  <description>Nail is a mail user agent derived from Berkeley Mail 8.1.  It is
+intended to provide the functionality of the POSIX.2 mailx command with
+additional support for MIME messages, POP3, and SMTP.  In recent system
+environments, nail is Unicode/UTF-8 capable.  Further, it contains some
+minor enhancements like the ability to set a &quot;From:&quot; address.</description>
+  <devel project="server:mail" package="mailx"/>
+</package>

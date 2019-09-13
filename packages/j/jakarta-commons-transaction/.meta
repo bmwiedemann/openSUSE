@@ -1,0 +1,11 @@
+<package name="jakarta-commons-transaction" project="openSUSE:Factory">
+  <title>Commons Transaction</title>
+  <description>Commons Transaction aims at providing lightweight, standardized, well
+tested and efficient implementations of utility classes commonly used
+in transactional Java programming. Initially there are implementations
+for multi level locks, transactional collections and transactional file
+access. There may be additional implementations when the common need
+for them becomes obvious. However, the complete component shall remain
+compatible to JDK1.2 and should have minimal dependencies.</description>
+  <devel project="Java:packages" package="jakarta-commons-transaction"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-gast" project="openSUSE:Factory">
+  <title>gast library</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-gast"/>
+</package>

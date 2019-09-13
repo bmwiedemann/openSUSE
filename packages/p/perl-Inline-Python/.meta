@@ -1,0 +1,10 @@
+<package name="perl-Inline-Python" project="openSUSE:Factory">
+  <title>Title of New Package</title>
+  <description>
+LONG DESCRIPTION
+GOES
+HERE
+  </description>
+  <devel project="devel:languages:perl" package="perl-Inline-Python"/>
+  <url>PUT_UPSTREAM_URL_HERE</url>
+</package>

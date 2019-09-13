@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12db130e2743116145cc95b12a51fc8f</srcmd5>
+    <version>3.1.3</version>
+    <time>1485040390</time>
+    <user>dimstar_suse</user>
+    <comment>required for FreeCAD. FreeCAD is not anymore maintained in KDE:Extra, so is Coin. you need to add it again to openSUSE:Factory:Staging:adi:28</comment>
+    <requestid>437526</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e8b5f58b3452f962c69cffff29ddfdac</srcmd5>
+    <version>3.1.3</version>
+    <time>1487029235</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453217</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d04504f74421fcfa4c91670ef98d1b6c</srcmd5>
+    <version>3.1.3</version>
+    <time>1489345464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477892</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d233b4f33b1c76a6ed87dc27592f1301</srcmd5>
+    <version>3.1.3</version>
+    <time>1492714529</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487943</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>dc6881d0bb40a4911449d1f677356006</srcmd5>
+    <version>3.1.3</version>
+    <time>1501146776</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512693</requestid>
+  </revision>
+</revisionlist>

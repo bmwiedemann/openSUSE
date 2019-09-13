@@ -1,0 +1,5 @@
+<package name="kstars" project="openSUSE:Factory">
+  <title>Desktop Planetarium</title>
+  <description>KStars is a desktop planetarium for KDE.</description>
+  <devel project="KDE:Extra" package="kstars"/>
+</package>

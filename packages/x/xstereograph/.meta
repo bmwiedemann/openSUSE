@@ -1,0 +1,10 @@
+<package name="xstereograph" project="openSUSE:Factory">
+  <title>Stereogram generator</title>
+  <description>Stereograph is a stereogram generator. In detail it is a single image
+stereogram (SIS) generator. That's a program that produces
+two-dimensional images that seem to be three-dimensional (surely you
+know the famous works of &quot;The Magic Eye&quot;, Stereograph produces the same
+output). You do _not_ need any pair of colored spectacles to regard
+them - everyone can learn it.</description>
+  <devel project="graphics" package="xstereograph"/>
+</package>

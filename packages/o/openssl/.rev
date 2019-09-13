@@ -1,0 +1,1556 @@
+<revisionlist>
+  <revision rev="1" vrev="17">
+    <srcmd5>03cf96452ef941841a0e162fb62de83b</srcmd5>
+    <version>0.9.8d</version>
+    <time>1166483838</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="22">
+    <srcmd5>4d5c36fe5bead14c4abda1caf727724a</srcmd5>
+    <version>0.9.8d</version>
+    <time>1168448065</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a17826df13a212adf2ea48be9fda2e1d</srcmd5>
+    <version>0.9.8e</version>
+    <time>1173176297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>27d45064cd205b04fc3acc1c55b54ae9</srcmd5>
+    <version>0.9.8e</version>
+    <time>1177363228</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="12">
+    <srcmd5>d1ad4c25a4d46816edea7e731720a5ff</srcmd5>
+    <version>0.9.8e</version>
+    <time>1178464651</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="25">
+    <srcmd5>c52c0d5b36519b902528ded1fd540a3b</srcmd5>
+    <version>0.9.8e</version>
+    <time>1181860070</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="32">
+    <srcmd5>e3362f643098a7cfff15ddfc1e948dfe</srcmd5>
+    <version>0.9.8e</version>
+    <time>1186148988</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="41">
+    <srcmd5>e6543772082aec9feb126763bf834a95</srcmd5>
+    <version>0.9.8e</version>
+    <time>1189702417</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="47">
+    <srcmd5>6fd78928c8f33a5edac07abc8527072f</srcmd5>
+    <version>0.9.8e</version>
+    <time>1192291404</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>49de88fee30d781f86ac2278b7559935</srcmd5>
+    <version>0.9.8f</version>
+    <time>1192551807</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>25cb13532a7ea9a16d8ae575b5d165c9</srcmd5>
+    <version>0.9.8g</version>
+    <time>1193063036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>16c556de7ec0715ffb38e28ddf267bd5</srcmd5>
+    <version>0.9.8g</version>
+    <time>1194303053</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="33">
+    <srcmd5>bac247bd44cd537b4a9fe571c2312138</srcmd5>
+    <version>0.9.8g</version>
+    <time>1207833627</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="35">
+    <srcmd5>50ebaf8c5557c293b93061f73ed1b15c</srcmd5>
+    <version>0.9.8g</version>
+    <time>1208908075</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="43">
+    <srcmd5>661c3cce9478f8e50c347f6bbd629efa</srcmd5>
+    <version>0.9.8g</version>
+    <time>1211820701</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="46">
+    <srcmd5>df927785c7b56ff2bc03dfe5e653cfc7</srcmd5>
+    <version>0.9.8g</version>
+    <time>1212681274</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dfdf2af951e9a333a70d58b9d8650d63</srcmd5>
+    <version>0.9.8h</version>
+    <time>1215526518</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>94d5d09281b61d28fa9c37385b53a85f</srcmd5>
+    <version>0.9.8h</version>
+    <time>1215801881</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>83d5ab7e1142c52615b668dcc22ef6a8</srcmd5>
+    <version>0.9.8h</version>
+    <time>1216410991</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="27">
+    <srcmd5>952ca9103d5ba7d720b5f8316699edbe</srcmd5>
+    <version>0.9.8h</version>
+    <time>1224693063</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="28">
+    <srcmd5>eda01e643f083d33803f0f7f46e87b79</srcmd5>
+    <version>0.9.8h</version>
+    <time>1226940066</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="29">
+    <srcmd5>6efa286f458ca211daeb667bddc8ac5c</srcmd5>
+    <version>0.9.8h</version>
+    <time>1228747477</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="30">
+    <srcmd5>6e2376962c7e59ec2317e12fd91f7fd4</srcmd5>
+    <version>0.9.8h</version>
+    <time>1231508725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="32">
+    <srcmd5>a95d09783f1e4b8eb858001bc58d247e</srcmd5>
+    <version>0.9.8h</version>
+    <time>1240507047</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c9d8b2344198ffeedd55a9c0ee0337dc</srcmd5>
+    <version>0.9.8k</version>
+    <time>1247128969</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>8ab48c441a63ad00834f8c421ff6e21d</srcmd5>
+    <version>0.9.8k</version>
+    <time>1251908298</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 19418 from user coolo
+</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>8ab48c441a63ad00834f8c421ff6e21d</srcmd5>
+    <version>0.9.8k</version>
+    <time>1251908298</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 19418 from user coolo
+</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>7a2036a2a70892aaa0ec94be11f24c1a</srcmd5>
+    <version>0.9.8k</version>
+    <time>1258362506</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 24437 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>025ca510411075b9502cd40e95aa0535</srcmd5>
+    <version>0.9.8k</version>
+    <time>1262968308</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 28053 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>b839269c533c61c5b540d861918a2845</srcmd5>
+    <version>0.9.8k</version>
+    <time>1266508140</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 32358 from user coolo
+</comment>
+  </revision>
+  <revision rev="31" vrev="8">
+    <srcmd5>e12dad05862bd6e3ea9ae32075f4b2d8</srcmd5>
+    <version>0.9.8k</version>
+    <time>1268925230</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1b9c101c91e1f948a051db2bfdd12634</srcmd5>
+    <version>0.9.8m</version>
+    <time>1270056944</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 36001 from user msmeissn
+</comment>
+    <requestid>36001</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a483b41e8e322d884550493d92f58b27</srcmd5>
+    <version>1.0.0</version>
+    <time>1271250858</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 37809 from user msmeissn
+</comment>
+    <requestid>37809</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>7f3797c4fc76e5e47afba0f619eb9c2f</srcmd5>
+    <version>1.0.0</version>
+    <time>1272103084</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 38656 from user coolo
+</comment>
+    <requestid>38656</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>96f82b89f31bb10242b7de20ef0142e1</srcmd5>
+    <version>1.0.0</version>
+    <time>1274776344</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 40076 from user msmeissn
+</comment>
+    <requestid>40076</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>86e59a932d5725b9c581ec38a806d72a</srcmd5>
+    <version>1.0.0</version>
+    <time>1275494847</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 40913 from user msmeissn
+</comment>
+    <requestid>40913</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>72a391a7adc96fbf30b1ac4931f6f76d</srcmd5>
+    <version>1.0.0</version>
+    <time>1276831050</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 41504 from user prusnak
+</comment>
+    <requestid>41504</requestid>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>72a391a7adc96fbf30b1ac4931f6f76d</srcmd5>
+    <version>1.0.0</version>
+    <time>1278667374</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>72a391a7adc96fbf30b1ac4931f6f76d</srcmd5>
+    <version>1.0.0</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="40" vrev="8">
+    <srcmd5>33fe7de258465b6b1b92fc326b653c55</srcmd5>
+    <version>1.0.0</version>
+    <time>1279897528</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 43713 from user coolo
+</comment>
+    <requestid>43713</requestid>
+  </revision>
+  <revision rev="41" vrev="9">
+    <srcmd5>73a9d635435ad3fe08a2e0de7cc56ab0</srcmd5>
+    <version>1.0.0</version>
+    <time>1280486113</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 44144 from user elvigia
+</comment>
+    <requestid>44144</requestid>
+  </revision>
+  <revision rev="42" vrev="10">
+    <srcmd5>63f7deadd6ae530d2d4d10c7dea15883</srcmd5>
+    <version>1.0.0</version>
+    <time>1286481190</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/openssl based on submit request 49880 from user coolo
+</comment>
+    <requestid>49880</requestid>
+  </revision>
+  <revision rev="43" vrev="11">
+    <srcmd5>4de016bcf8cdb425cb6b41759e503ab9</srcmd5>
+    <version>1.0.0c</version>
+    <time>1291992067</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55363 from user a_jaeger
+</comment>
+    <requestid>55363</requestid>
+  </revision>
+  <revision rev="44" vrev="12">
+    <srcmd5>64731838ebe8cf773f475b2ac3800d33</srcmd5>
+    <version>1.0.0c</version>
+    <time>1291992072</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55363
+</comment>
+  </revision>
+  <revision rev="45" vrev="13">
+    <srcmd5>b9eb4d8c11947deaf6c2cc7c4c379d87</srcmd5>
+    <version>1.0.0c</version>
+    <time>1294674102</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57693 from user msmeissn
+</comment>
+    <requestid>57693</requestid>
+  </revision>
+  <revision rev="46" vrev="14">
+    <srcmd5>2552bcb950dcae2a53dc50cb5d447fb5</srcmd5>
+    <version>1.0.0c</version>
+    <time>1294674152</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57693
+</comment>
+  </revision>
+  <revision rev="47" vrev="15">
+    <srcmd5>a9f4715a77fd79349229da5b57d85c66</srcmd5>
+    <version>1.0.0c</version>
+    <time>1295282839</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58423 from user elvigia
+</comment>
+    <requestid>58423</requestid>
+  </revision>
+  <revision rev="48" vrev="16">
+    <srcmd5>4700625739f706cd092fb1b47f4d73e9</srcmd5>
+    <version>1.0.0c</version>
+    <time>1295282851</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58423
+</comment>
+  </revision>
+  <revision rev="49" vrev="19">
+    <srcmd5>4700625739f706cd092fb1b47f4d73e9</srcmd5>
+    <version>1.0.0c</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="50" vrev="20">
+    <srcmd5>67e6e0ca326a086af7e7d4908b86533d</srcmd5>
+    <version>1.0.0c</version>
+    <time>1300177730</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63797 from user coolo
+</comment>
+    <requestid>63797</requestid>
+  </revision>
+  <revision rev="51" vrev="21">
+    <srcmd5>9a2c58f45e86de0af960ab4cc851b77c</srcmd5>
+    <version>1.0.0c</version>
+    <time>1300177737</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63797
+</comment>
+  </revision>
+  <revision rev="52" vrev="20">
+    <srcmd5>bd3a9ed0461f0cbb8a784aea66c9cac3</srcmd5>
+    <version>1.0.0d</version>
+    <time>1302852015</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67324 from user coolo
+</comment>
+    <requestid>67324</requestid>
+  </revision>
+  <revision rev="53" vrev="21">
+    <srcmd5>2d18cf1b0dbe449b01863eb0f1f0e9c8</srcmd5>
+    <version>1.0.0d</version>
+    <time>1302852028</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67324
+</comment>
+  </revision>
+  <revision rev="54" vrev="22">
+    <srcmd5>9a2c58f45e86de0af960ab4cc851b77c</srcmd5>
+    <version>1.0.0c</version>
+    <time>1303115990</time>
+    <user>coolo</user>
+    <comment>revert to #51 to make factory a usable system again</comment>
+  </revision>
+  <revision rev="55" vrev="23">
+    <srcmd5>9a2c58f45e86de0af960ab4cc851b77c</srcmd5>
+    <version>1.0.0c</version>
+    <time>1303386666</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 68054 from user licensedigger
+</comment>
+    <requestid>68054</requestid>
+  </revision>
+  <revision rev="56" vrev="24">
+    <srcmd5>86d87738369cbb3071c05a4946b200c3</srcmd5>
+    <version>1.0.0c</version>
+    <time>1303386675</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 68054
+</comment>
+  </revision>
+  <revision rev="57" vrev="25">
+    <srcmd5>f64d4ede549437d8a2084ce2d294c654</srcmd5>
+    <version>1.0.0c</version>
+    <time>1306739144</time>
+    <user>saschpe</user>
+    <comment>added openssl as dependency in the devel package, or for packages linking to libopenssl there can be failures like : undefined reference to 'get_dh1024' because openssl binary is used during code generation (forwarded request 70339 from anubisg1)</comment>
+    <requestid>71772</requestid>
+  </revision>
+  <revision rev="58" vrev="26">
+    <srcmd5>a31e486a1b9f1de5857e2a9d31f92575</srcmd5>
+    <version>1.0.0c</version>
+    <time>1306739153</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71772
+</comment>
+  </revision>
+  <revision rev="59" vrev="25">
+    <srcmd5>afd4a6ace0258c78bad06fb1b188740b</srcmd5>
+    <version>1.0.0d</version>
+    <time>1309248385</time>
+    <user>saschpe</user>
+    <comment>update to latest stable version 1.0.0d.</comment>
+    <requestid>74715</requestid>
+  </revision>
+  <revision rev="60" vrev="26">
+    <srcmd5>75a614689299f9454b9a5834b4d1ead4</srcmd5>
+    <version>1.0.0d</version>
+    <time>1309248403</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74715
+</comment>
+  </revision>
+  <revision rev="61" vrev="27">
+    <srcmd5>477ff60e60f5cc32f944c2ca4cdfe0e7</srcmd5>
+    <version>1.0.0d</version>
+    <time>1311680848</time>
+    <user>saschpe</user>
+    <comment>- Edit baselibs.conf to provide libopenssl-devel-32bit too (forwarded request 77000 from jengelh)</comment>
+    <requestid>77054</requestid>
+  </revision>
+  <revision rev="62" vrev="28">
+    <srcmd5>9bbcbc7461c4221849b5ab6e5a0d0e43</srcmd5>
+    <version>1.0.0d</version>
+    <time>1311680862</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77054
+</comment>
+  </revision>
+  <revision rev="63" vrev="29">
+    <srcmd5>f84dc1459e68055ae0c3512c944a06fd</srcmd5>
+    <version>1.0.0d</version>
+    <time>1312650529</time>
+    <user>saschpe</user>
+    <comment>- remove -fno-strict-aliasing from CFLAGS no longer needed 
+  and is likely to slow down stuff. (forwarded request 78147 from elvigia)</comment>
+    <requestid>78150</requestid>
+  </revision>
+  <revision rev="64" vrev="30">
+    <srcmd5>a5c6dc7dfef1251907e6cbe2cb147107</srcmd5>
+    <version>1.0.0d</version>
+    <time>1312650539</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78150
+</comment>
+  </revision>
+  <revision rev="65" vrev="31">
+    <srcmd5>89031ab7b75691ed882c92831880d6a8</srcmd5>
+    <version>1.0.0d</version>
+    <time>1313394112</time>
+    <user>saschpe</user>
+    <comment>- Add upstream patch that calls ENGINE_register_all_complete()
+  in ENGINE_load_builtin_engines() saving us from adding dozens
+  of calls to such function to calling applications. (forwarded request 78169 from elvigia)</comment>
+    <requestid>78686</requestid>
+  </revision>
+  <revision rev="66" vrev="32">
+    <srcmd5>bc1c77273dd16c848f05fc6fb1e9cf82</srcmd5>
+    <version>1.0.0d</version>
+    <time>1313394120</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78686
+</comment>
+  </revision>
+  <revision rev="67" vrev="31">
+    <srcmd5>3ac76b4b768527fd9728da21c8ba3bdd</srcmd5>
+    <version>1.0.0e</version>
+    <time>1315561754</time>
+    <user>saschpe</user>
+    <comment>- Update to openssl 1.0.0e fixes CVE-2011-3207 and CVE-2011-3210
+  see http://openssl.org/news/secadv_20110906.txt for details. (forwarded request 81347 from elvigia)</comment>
+    <requestid>81348</requestid>
+  </revision>
+  <revision rev="68" vrev="32">
+    <srcmd5>422a99076c479f6eadce805b2d89d2a8</srcmd5>
+    <version>1.0.0e</version>
+    <time>1315561761</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81348
+</comment>
+  </revision>
+  <revision rev="69" vrev="33">
+    <srcmd5>af12189d1b4f248339324ac515295a3f</srcmd5>
+    <version>1.0.0e</version>
+    <time>1319024421</time>
+    <user>coolo</user>
+    <comment>- AES-NI: Check the return value of Engine_add() 
+  if the ENGINE_add() call fails: it ends up adding a reference 
+  to a freed up ENGINE which is likely to subsequently contain garbage 
+  This will happen if an ENGINE with the same name is added multiple
+  times,for example different libraries. [bnc#720601] (forwarded request 88590 from elvigia)</comment>
+    <requestid>88591</requestid>
+  </revision>
+  <revision rev="70" vrev="35">
+    <srcmd5>af12189d1b4f248339324ac515295a3f</srcmd5>
+    <version>1.0.0e</version>
+    <time>1319182218</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="71" vrev="36">
+    <srcmd5>f7c6d6859373b6dc703d9e2fbd1304b6</srcmd5>
+    <version>1.0.0e</version>
+    <time>1323192883</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>ebf70eafd1c8883f659034d051a0b812</srcmd5>
+    <version>1.0.0g</version>
+    <time>1328261093</time>
+    <user>coolo</user>
+    <comment>update to 1.0.0g</comment>
+    <requestid>102443</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>1ca9b6132668d4849aaef383b7f1b352</srcmd5>
+    <version>1.0.0g</version>
+    <time>1331147391</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>107790</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>ca5a1d3617fa6b17f3c7d3a3b8ce4b2e</srcmd5>
+    <version>1.0.0g</version>
+    <time>1332262155</time>
+    <user>coolo</user>
+    <comment>license update: OpenSSL
+ (forwarded request 110174 from babelworx)</comment>
+    <requestid>110176</requestid>
+  </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>97ea40e2518ec69db9b146e3fa4b1f6d</srcmd5>
+    <version>1.0.0g</version>
+    <time>1334692824</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113739</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>2934e4551259d7de0d4ab3e6cd78c393</srcmd5>
+    <version>1.0.0i</version>
+    <time>1335195609</time>
+    <user>coolo</user>
+    <comment>update to 1.0.0i</comment>
+    <requestid>115109</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>957d621a93a6476a745fa8f5c1ecdb53</srcmd5>
+    <version>1.0.0i</version>
+    <time>1336472902</time>
+    <user>coolo</user>
+    <comment>- don't install any demo or expired certs at all</comment>
+    <requestid>116433</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>67992622f8db9c93ef6ed6e7632672df</srcmd5>
+    <version>1.0.1c</version>
+    <time>1337587242</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.1c for the complete list of changes see
+  NEWS, this only list packaging changes.
+- Drop aes-ni patch, no longer needed as it is builtin in openssl
+  now.
+- Define GNU_SOURCE and use -std=gnu99 to build the package.
+- Use LFS_CFLAGS in platforms where it matters. (forwarded request 120643 from elvigia)</comment>
+    <requestid>121256</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>67992622f8db9c93ef6ed6e7632672df</srcmd5>
+    <version>1.0.1c</version>
+    <time>1340183759</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="80" vrev="4">
+    <srcmd5>d2647c8651afa6e55bacf3c1a23426ea</srcmd5>
+    <version>1.0.1c</version>
+    <time>1344417483</time>
+    <user>coolo</user>
+    <comment>- fix build on armv5 (bnc#774710) (forwarded request 130344 from dirkmueller)</comment>
+    <requestid>130358</requestid>
+  </revision>
+  <revision rev="81" vrev="5">
+    <srcmd5>4b75bf571498caa45380812a24529c07</srcmd5>
+    <version>1.0.1c</version>
+    <time>1345983727</time>
+    <user>namtrac</user>
+    <comment>- Open Internal file descriptors with O_CLOEXEC, leaving
+  those open across fork()..execve() makes a perfect
+  vector for a side-channel attack... (forwarded request 131190 from elvigia)</comment>
+    <requestid>131690</requestid>
+  </revision>
+  <revision rev="82" vrev="6">
+    <srcmd5>3f23e9bff3f4023bdfa78f4596027c5e</srcmd5>
+    <version>1.0.1c</version>
+    <time>1353599494</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>141990</requestid>
+  </revision>
+  <revision rev="83" vrev="8">
+    <srcmd5>3f23e9bff3f4023bdfa78f4596027c5e</srcmd5>
+    <version>1.0.1c</version>
+    <time>1359109545</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>317f3f5a2484cdb261cb4834fd27fe89</srcmd5>
+    <version>1.0.1d</version>
+    <time>1360230240</time>
+    <user>coolo</user>
+    <comment>- update to version 1.0.1d, fixing security issues
+  o Fix renegotiation in TLS 1.1, 1.2 by using the correct TLS version.
+  o Include the fips configuration module.
+  o Fix OCSP bad key DoS attack CVE-2013-0166
+  o Fix for SSL/TLS/DTLS CBC plaintext recovery attack CVE-2013-0169
+    bnc#802184
+  o Fix for TLS AESNI record handling flaw CVE-2012-2686</comment>
+    <requestid>151305</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>9a6e7edba444e39c36e02e300c5c0854</srcmd5>
+    <version>1.0.1d</version>
+    <time>1360577246</time>
+    <user>coolo</user>
+    <comment>Fix nasty 1.0.1d regression (forwarded request 155056 from sumski)</comment>
+    <requestid>155059</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>1d9e864160edf5357eaa7ec67b093bb7</srcmd5>
+    <version>1.0.1e</version>
+    <time>1360683700</time>
+    <user>coolo</user>
+    <comment>- Update to 1.0.1e
+  o Bugfix release (bnc#803004)
+- Drop openssl-1.0.1d-s3-packet.patch, included upstream</comment>
+    <requestid>155179</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>e233487e1e805e31435b91d53134997f</srcmd5>
+    <version>1.0.1e</version>
+    <time>1361633948</time>
+    <user>coolo</user>
+    <comment>- disable fstack-protector on aarch64 (forwarded request 156130 from dirkmueller)</comment>
+    <requestid>156167</requestid>
+  </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>3ef2b7e07be8ced0c78cb51a3f5b0f55</srcmd5>
+    <version>1.0.1e</version>
+    <time>1370430348</time>
+    <user>coolo</user>
+    <comment>add %if tag for BuildArch. someone may need to fork it to SLE (forwarded request 176549 from MargueriteSu)</comment>
+    <requestid>176587</requestid>
+  </revision>
+  <revision rev="89" vrev="4">
+    <srcmd5>d7180415f5a488869424d2adca5af454</srcmd5>
+    <version>1.0.1e</version>
+    <time>1372139003</time>
+    <user>coolo</user>
+    <comment>- pick openssl-fix-pod-syntax.diff out of the upstream RT to fix
+  build with perl 5.18 (forwarded request 180092 from coolo)</comment>
+    <requestid>180215</requestid>
+  </revision>
+  <revision rev="90" vrev="5">
+    <srcmd5>60fc37ea7a2f506a9cbe8e9a99737575</srcmd5>
+    <version>1.0.1e</version>
+    <time>1372743612</time>
+    <user>coolo</user>
+    <comment>- Build enable-ec_nistp_64_gcc_128, ecdh is many times faster
+  but only works in x86_64.
+  According to the openSSL team
+&quot;it is superior to the default in multiple regards (speed, and also
+security as the new implementations are secure against timing
+attacks)&quot;
+It is not enabled by default due to the build system being unable
+to detect if the compiler supports __uint128_t. (forwarded request 181467 from elvigia)</comment>
+    <requestid>181537</requestid>
+  </revision>
+  <revision rev="91" vrev="6">
+    <srcmd5>7326b54eed760633cc3b97dc29f90630</srcmd5>
+    <version>1.0.1e</version>
+    <time>1372953898</time>
+    <user>coolo</user>
+    <comment>- Don't use the legacy /etc/ssl/certs directory anymore but rather
+  the p11-kit generated /var/lib/ca-certificates/openssl one
+  (fate#314991, openssl-1.0.1e-truststore.diff)</comment>
+    <requestid>182147</requestid>
+  </revision>
+  <revision rev="92" vrev="7">
+    <srcmd5>4bfc69edc39951802b692d3db2e0e670</srcmd5>
+    <version>1.0.1e</version>
+    <time>1375202577</time>
+    <user>coolo</user>
+    <comment>- compression_methods_switch.patch: Disable compression by default to
+  avoid the CRIME attack (CVE-2012-4929 bnc#793420)
+  Can be override by setting environment variable
+      OPENSSL_NO_DEFAULT_ZLIB=no</comment>
+    <requestid>184582</requestid>
+  </revision>
+  <revision rev="93" vrev="8">
+    <srcmd5>003348c57b97e54e85427f5bc47b393f</srcmd5>
+    <version>1.0.1e</version>
+    <time>1375628361</time>
+    <user>coolo</user>
+    <comment>- 0005-libssl-Hide-library-private-symbols.patch: hide 
+  private symbols, this *only* applies to libssl where
+  it is straightforward to do so as applications should
+  not be using any of the symbols declared/defined in headers
+  that the library does not install.
+  A separate patch MAY be provided in the future for libcrypto
+  where things are much more complicated and threfore requires
+  careful testing. (forwarded request 185819 from elvigia)</comment>
+    <requestid>185827</requestid>
+  </revision>
+  <revision rev="94" vrev="9">
+    <srcmd5>26c8b7c8157299519e9f13dc0c65ac8f</srcmd5>
+    <version>1.0.1e</version>
+    <time>1376384453</time>
+    <user>scarabeus_factory</user>
+    <comment>Fix bug[ bnc#832833] openssl ssl_set_cert_masks() is broken; Add patch file: SSL_get_certificate-broken.patch (forwarded request 186693 from shawn2012)</comment>
+    <requestid>186710</requestid>
+  </revision>
+  <revision rev="95" vrev="10">
+    <srcmd5>99b8184943b123be51f169ef93f51d2e</srcmd5>
+    <version>1.0.1e</version>
+    <time>1378416151</time>
+    <user>coolo</user>
+    <comment>Fix armv6l arch (armv7 was previously used to build armv6 which lead to illegal instruction when used) (forwarded request 197443 from Guillaume_G)</comment>
+    <requestid>197451</requestid>
+  </revision>
+  <revision rev="96" vrev="12">
+    <srcmd5>99b8184943b123be51f169ef93f51d2e</srcmd5>
+    <version>1.0.1e</version>
+    <time>1379663431</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="97" vrev="13">
+    <srcmd5>434db4fd20f6784cd452704502c127c6</srcmd5>
+    <version>1.0.1e</version>
+    <time>1380304101</time>
+    <user>coolo</user>
+    <comment>- VPN openconnect problem (DTLS handshake failed)
+  (git 9fe4603b8, bnc#822642, openssl ticket#2984) (forwarded request 201079 from dmacvicar)</comment>
+    <requestid>201094</requestid>
+  </revision>
+  <revision rev="98" vrev="14">
+    <srcmd5>6bf056b4165ef4b4a1660f7c750f1963</srcmd5>
+    <version>1.0.1e</version>
+    <time>1382012644</time>
+    <user>scarabeus_factory</user>
+    <comment>- openssl-1.0.1c-ipv6-apps.patch: 
+  Support ipv6 in the openssl s_client / s_server commandline app. (forwarded request 203361 from msmeissn)</comment>
+    <requestid>203428</requestid>
+  </revision>
+  <revision rev="99" vrev="15">
+    <srcmd5>4e14c34b2260fce929264e3561949d5e</srcmd5>
+    <version>1.0.1e</version>
+    <time>1382616645</time>
+    <user>scarabeus_factory</user>
+    <comment> (forwarded request 204370 from elvigia)</comment>
+    <requestid>204475</requestid>
+  </revision>
+  <revision rev="100" vrev="16">
+    <srcmd5>e39fe1f83740a903f8c0821b38abffb0</srcmd5>
+    <version>1.0.1e</version>
+    <time>1385704989</time>
+    <user>coolo</user>
+    <comment>Patches for OpenSSL FIPS-140-2/3 certification; Add patch files: openssl-1.0.1e-fips.patch, openssl-1.0.1e-fips-ec.patch,openssl-1.0.1e-fips-ctor.patch (forwarded request 208378 from shawn2012)</comment>
+    <requestid>208487</requestid>
+  </revision>
+  <revision rev="101" vrev="17">
+    <srcmd5>f91320871619e58ed01899ac7849395e</srcmd5>
+    <version>1.0.1e</version>
+    <time>1385830770</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:openssl revision:99</comment>
+  </revision>
+  <revision rev="102" vrev="18">
+    <srcmd5>a01efd2c17f9a39ca08ac651d39e7a7b</srcmd5>
+    <version>1.0.1e</version>
+    <time>1387270937</time>
+    <user>coolo</user>
+    <comment>Adjust the installation path; Modify files: README-FIPS.txt openssl.spec (forwarded request 210984 from shawn2012)</comment>
+    <requestid>210985</requestid>
+  </revision>
+  <revision rev="103" vrev="19">
+    <srcmd5>662eb09be4f717dc44d6f8c4f5ea8682</srcmd5>
+    <version>1.0.1e</version>
+    <time>1387456492</time>
+    <user>coolo</user>
+    <comment>- compression_methods_switch.patch: setenv might not be successful
+  if a surrounding library or application filters it, like e.g. sudo.
+  As setenv() does not seem to be useful anyway, remove it.
+  bnc#849377 (forwarded request 211400 from msmeissn)</comment>
+    <requestid>211421</requestid>
+  </revision>
+  <revision rev="104" vrev="20">
+    <srcmd5>6f0fc2b4f5cd890b9caf29b7d6d9a99d</srcmd5>
+    <version>1.0.1e</version>
+    <time>1387833415</time>
+    <user>coolo</user>
+    <comment>Fixed bnc#856687, openssl: crash when using TLS 1.2; Add file: CVE-2013-6449.patch (forwarded request 212077 from shawn2012)</comment>
+    <requestid>212087</requestid>
+  </revision>
+  <revision rev="105" vrev="21">
+    <srcmd5>ad88b80e73ddd393773782e704b8bd80</srcmd5>
+    <version>1.0.1e</version>
+    <time>1388757456</time>
+    <user>scarabeus_factory</user>
+    <comment>Fixed bnc#857203, openssl: crash in DTLS renegotiation after packet loss; Add file: CVE-2013-6450.patch (forwarded request 212653 from shawn2012)</comment>
+    <requestid>212714</requestid>
+  </revision>
+  <revision rev="106" vrev="22">
+    <srcmd5>feaaaea80a038e0dfa29a3d792ac2fe9</srcmd5>
+    <version>1.0.1e</version>
+    <time>1389284737</time>
+    <user>coolo</user>
+    <comment>Fixed bnc#857850, openssl doesn't load engine; Modify file: openssl.spec (forwarded request 213131 from shawn2012)</comment>
+    <requestid>213132</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>8338b1fa4a8280f14cf88366bed50464</srcmd5>
+    <version>1.0.1f</version>
+    <time>1389953116</time>
+    <user>coolo</user>
+    <comment>Remove GCC option -O3 for compiliation issue of ARM version; Modify: openssl.spec (forwarded request 213627 from shawn2012)</comment>
+    <requestid>213629</requestid>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>037e9fe37e6efdb1c825f40e2a3f9eb2</srcmd5>
+    <version>1.0.1f</version>
+    <time>1394130566</time>
+    <user>coolo</user>
+    <comment>additional changes required for FIPS validation( from Fedora repo); Add patch file: openssl-1.0.1e-new-fips-reqs.patch (forwarded request 224375 from shawn2012)</comment>
+    <requestid>224423</requestid>
+  </revision>
+  <revision rev="109" vrev="3">
+    <srcmd5>bf174b7b6631d08856caece501c95900</srcmd5>
+    <version>1.0.1f</version>
+    <time>1396535908</time>
+    <user>coolo</user>
+    <comment>Fix bug[ bnc#869945] CVE-2014-0076: openssl: Recovering OpenSSL ECDSA Nonces Using the FLUSH+RELOAD Cache Side-channel Attack; Add file: CVE-2014-0076.patch (forwarded request 227417 from shawn2012)</comment>
+    <requestid>227508</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>3ea1f9b1a7fe72b1bdd4b899ad3f59c8</srcmd5>
+    <version>1.0.1g</version>
+    <time>1397060243</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.1g:
+  * fix for critical TLS heartbeat read overrun (CVE-2014-0160) (bnc#872299)
+  * Fix for Recovering OpenSSL ECDSA Nonces (CVE-2014-0076) (bnc#869945)
+  * Workaround for the &quot;TLS hang bug&quot; (see FAQ and PR#2771)
+- remove CVE-2014-0076.patch
+- openssl.keyring: upstream changed to:
+  pub  4096R/FA40E9E2 2005-03-19 Dr Stephen N Henson &lt;steve@openssl.org&gt;
+  uid                            Dr Stephen Henson &lt;shenson@drh-consultancy.co.uk&gt;
+  uid                            Dr Stephen Henson &lt;shenson@opensslfoundation.com&gt;</comment>
+    <requestid>229370</requestid>
+  </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>c423310e5fd02adf5ff2a2e56db0a1f4</srcmd5>
+    <version>1.0.1g</version>
+    <time>1397540049</time>
+    <user>coolo</user>
+    <comment>- openssl-gcc-attributes.patch 
+  * annotate memory allocation wrappers with attribute(alloc_size)
+    so the compiler can tell us if it knows they are being misused
+  * OPENSSL_showfatal is annotated with attribute printf to detect
+    format string problems.
+- It is time to try to disable SSLv2 again, it was tried a while
+  ago but broke too many things, nowadays Debian, Ubuntu, the BSDs
+  all have disabled it, most components are already fixed.
+  I will fix the remaining fallout if any. (email me) (forwarded request 229674 from elvigia)</comment>
+    <requestid>229715</requestid>
+  </revision>
+  <revision rev="112" vrev="3">
+    <srcmd5>22fa7d9f52ebed40cf9d0003b5f65e65</srcmd5>
+    <version>1.0.1g</version>
+    <time>1397738156</time>
+    <user>scarabeus_factory</user>
+    <comment>osc copypac from project:openSUSE:Factory package:openssl revision:110</comment>
+  </revision>
+  <revision rev="113" vrev="4">
+    <srcmd5>52053653ab272885a3bd1f9876bdbdf7</srcmd5>
+    <version>1.0.1g</version>
+    <time>1397812045</time>
+    <user>scarabeus_factory</user>
+    <comment>osc copypac from project:openSUSE:Factory package:openssl revision:111</comment>
+  </revision>
+  <revision rev="114" vrev="5">
+    <srcmd5>c22ba0e40034554234d11faec8c50ed2</srcmd5>
+    <version>1.0.1g</version>
+    <time>1398524505</time>
+    <user>coolo</user>
+    <comment>- Build everything with full RELRO (-Wl,-z,relro,-z,now)
+- Remove -fstack-protector from the hardcoded build options
+  it is already in RPM_OPT_FLAGS and is replaced by 
+  -fstack-protector-strong with gcc 4.9
+
+- Remove the &quot;gmp&quot; and &quot;capi&quot; shared engines, nobody noticed 
+  but they are just dummies that do nothing. 
+
+- Use enable-rfc3779 to allow projects such as rpki.net 
+  to work in openSUSE and match the functionality
+  available in Debian/Fedora/etc
+
+- openssl-buffreelistbug-aka-CVE-2010-5298.patch fix 
+  CVE-2010-5298 and disable the internal BUF_FREELISTS
+  functionality. it hides bugs like heartbleed and is
+  there only for systems on which malloc() free() are slow.
+- ensure we export MALLOC_CHECK and PERTURB during the test
+  suite, now that the freelist functionality is disabled it
+  will help to catch bugs before they hit users.
+
+- openssl-libssl-noweakciphers.patch do not offer &quot;export&quot;
+  or &quot;low&quot; quality ciphers by default. using such ciphers
+  is not forbidden but requires an explicit request
+
+- openssl-gcc-attributes.patch: fix thinko, CRYPTO_realloc_clean does 
+  not return memory of &quot;num * old_num&quot; but only &quot;num&quot; size
+  fortunately this function is currently unused. (forwarded request 230868 from elvigia)</comment>
+    <requestid>231108</requestid>
+  </revision>
+  <revision rev="115" vrev="6">
+    <srcmd5>40204cea4e84b7bcf96ee549105394d9</srcmd5>
+    <version>1.0.1g</version>
+    <time>1399376372</time>
+    <user>coolo</user>
+    <comment>Fixed bug[ bnc#876282], CVE-2014-0198 openssl: OpenSSL NULL pointer dereference in do_ssl3_write; Add file: CVE-2014-0198.patch (forwarded request 232650 from shawn2012)</comment>
+    <requestid>232653</requestid>
+  </revision>
+  <revision rev="116" vrev="7">
+    <srcmd5>2c319034517beffdfcdb449162b5a6ac</srcmd5>
+    <version>1.0.1g</version>
+    <time>1399611455</time>
+    <user>coolo</user>
+    <comment>-  0005-libssl-Hide-library-private-symbols.patch
+   Update to hide more symbols that are not part of
+   the public API
+- openssl-gcc-attributes.patch BUF_memdup also
+  needs attribute alloc_size as it returns memory
+  of size of the second parameter.
+- openssl-ocloexec.patch Update, accept()
+  also needs O_CLOEXEC.
+- 0009-Fix-double-frees.patch, 0017-Double-free-in-i2o_ECPublicKey.patch
+  fix various double frees (from upstream)
+- 012-Fix-eckey_priv_encode.patch eckey_priv_encode should 
+  return an error inmediately on failure of i2d_ECPrivateKey (from upstream)
+- 0001-Axe-builtin-printf-implementation-use-glibc-instead.patch 
+  From libressl, modified to work on linux systems that do not have
+  funopen() but fopencookie() instead.
+  Once upon a time, OS didn't have snprintf, which caused openssl to
+  bundle a *printf implementation. We know better nowadays, the glibc
+  implementation has buffer overflow checking, has sane failure modes
+  deal properly with threads, signals..etc..
+ 
+- build with -fno-common as well. (forwarded request 232752 from elvigia)</comment>
+    <requestid>232889</requestid>
+  </revision>
+  <revision rev="117" vrev="8">
+    <srcmd5>0847edbebd1fd1a8e1d52a0ffc3858ca</srcmd5>
+    <version>1.0.1g</version>
+    <time>1400055967</time>
+    <user>coolo</user>
+    <comment>- Add upstream patches fixing coverity scan issues:
+* 0018-fix-coverity-issues-966593-966596.patch
+* 0020-Initialize-num-properly.patch
+* 0022-bignum-allow-concurrent-BN_MONT_CTX_set_locked.patch
+* 0023-evp-prevent-underflow-in-base64-decoding.patch
+* 0024-Fixed-NULL-pointer-dereference-in-PKCS7_dataDecode-r.patch
+* 0025-fix-coverity-issue-966597-error-line-is-not-always-i.patch
+- Update 0001-libcrypto-Hide-library-private-symbols.patch
+  to cover more private symbols, now 98% complete and probably
+  not much more can be done to fix the rest of the ill-defined API.
+- openssl-fips-hidden.patch new, hides private symbols added by the
+  FIPS patches.
+- openssl-no-egd.patch disable the EGD (entropy gathering daemon)
+  interface, we have no EGD in the distro and obtaining entropy from
+  a place other than /dev/*random, the hardware rng or the openSSL
+  internal PRNG is an extremely bad &amp; dangerous idea.
+- use secure_getenv instead of getenv everywhere. (forwarded request 233217 from elvigia)</comment>
+    <requestid>233553</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>a2e1d6cf1230c215d32370500b7a51cf</srcmd5>
+    <version>1.0.1h</version>
+    <time>1403070461</time>
+    <user>coolo</user>
+    <comment>NOTE: 
+
+I submitted perl-Net-SSLeay 1.64 update to devel:languages:perl which
+fixes its regression.
+
+
+
+- updated openssl to 1.0.1h (bnc#880891):
+  - CVE-2014-0224: Fix for SSL/TLS MITM flaw. An attacker using a carefully crafted
+    handshake can force the use of weak keying material in OpenSSL
+    SSL/TLS clients and servers.
+  - CVE-2014-0221: Fix DTLS recursion flaw. By sending an invalid DTLS handshake to an
+    OpenSSL DTLS client the code can be made to recurse eventually crashing
+    in a DoS attack.
+  - CVE-2014-0195: Fix DTLS invalid fragment vulnerability. A buffer
+    overrun attack can be triggered by sending invalid DTLS fragments to
+    an OpenSSL DTLS client or server. This is potentially exploitable to
+    run arbitrary code on a vulnerable client or server.
+  - CVE-2014-3470: Fix bug in TLS code where clients enable anonymous
+    ECDH ciphersuites are subject to a denial of service attack.
+- openssl-buffreelistbug-aka-CVE-2010-5298.patch: removed, upstream
+- CVE-2014-0198.patch: removed, upstream
+- 0009-Fix-double-frees.patch: removed, upstream
+- 0012-Fix-eckey_priv_encode.patch: removed, upstream
+- 0017-Double-free-in-i2o_ECPublicKey.patch: removed, upstream
+- 0018-fix-coverity-issues-966593-966596.patch: removed, upstream
+- 0020-Initialize-num-properly.patch: removed, upstream
+- 0022-bignum-allow-concurrent-BN_MONT_CTX_set_locked.patch: removed, upstream
+- 0023-evp-prevent-underflow-in-base64-decoding.patch: removed, upstream
+- 0024-Fixed-NULL-pointer-dereference-in-PKCS7_dataDecode-r.patch: removed, upstream
+- 0025-fix-coverity-issue-966597-error-line-is-not-always-i.patch: removed, upstream
+- 0001-libcrypto-Hide-library-private-symbols.patch: disabled heartbeat testcase
+- openssl-1.0.1c-ipv6-apps.patch: refreshed
+- openssl-fix-pod-syntax.diff: some stuff merged upstream, refreshed
+
+- Added new SUSE default cipher suite
+  openssl-1.0.1e-add-suse-default-cipher.patch</comment>
+    <requestid>236989</requestid>
+  </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>3cbf7d8a761c645048b1661e2c89e4e7</srcmd5>
+    <version>1.0.1h</version>
+    <time>1403702656</time>
+    <user>coolo</user>
+    <comment>- recommend: ca-certificates-mozilla instead of openssl-certs</comment>
+    <requestid>238467</requestid>
+  </revision>
+  <revision rev="120" vrev="3">
+    <srcmd5>c7d1bbd3277954bffac609e0f40886df</srcmd5>
+    <version>1.0.1h</version>
+    <time>1406442344</time>
+    <user>coolo</user>
+    <comment>- Move manpages around such that .3 is in openssl-doc
+  and .1 in openssl (forwarded request 241758 from jengelh)</comment>
+    <requestid>241763</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>3a1843c63ba8d6bc2b359a33132c8c6e</srcmd5>
+    <version>1.0.1i</version>
+    <time>1408957387</time>
+    <user>coolo</user>
+    <comment>- openssl.keyring: the 1.0.1i release was done by 
+  Matt Caswell &lt;matt@openssl.org&gt; UK 0E604491
+
+- rename README.SuSE (old spelling) to README.SUSE (bnc#889013)
+
+- update to 1.0.1i
+  * Fix SRP buffer overrun vulnerability. Invalid parameters passed to the
+    SRP code can be overrun an internal buffer. Add sanity check that
+    g, A, B &lt; N to SRP code.
+    (CVE-2014-3512)
+  * A flaw in the OpenSSL SSL/TLS server code causes the server to negotiate
+    TLS 1.0 instead of higher protocol versions when the ClientHello message
+    is badly fragmented. This allows a man-in-the-middle attacker to force a
+    downgrade to TLS 1.0 even if both the server and the client support a
+    higher protocol version, by modifying the client's TLS records.
+    (CVE-2014-3511)
+  * OpenSSL DTLS clients enabling anonymous (EC)DH ciphersuites are subject
+    to a denial of service attack. A malicious server can crash the client
+    with a null pointer dereference (read) by specifying an anonymous (EC)DH
+    ciphersuite and sending carefully crafted handshake messages.
+    (CVE-2014-3510)
+  * By sending carefully crafted DTLS packets an attacker could cause openssl
+    to leak memory. This can be exploited through a Denial of Service attack.
+    (CVE-2014-3507)
+  * An attacker can force openssl to consume large amounts of memory whilst
+    processing DTLS handshake messages. This can be exploited through a
+    Denial of Service attack.
+    (CVE-2014-3506)
+  * An attacker can force an error condition which causes openssl to crash
+    whilst processing DTLS packets due to memory being freed twice. This</comment>
+    <requestid>245642</requestid>
+  </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>3a1843c63ba8d6bc2b359a33132c8c6e</srcmd5>
+    <version>1.0.1i</version>
+    <time>1409302051</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>4c159d3d38e9e232ca97ac0317ed8d96</srcmd5>
+    <version>1.0.1j</version>
+    <time>1418840284</time>
+    <user>dimstar_suse</user>
+    <comment>I also submitted libcamgm that matches this submit
+
+
+- suse_version 10.1 &amp; 10.2 x86_64 can not enable-ec_nistp_64_gcc_128
+
+- openssl-1.0.1i-noec2m-fix.patch: only report the Elliptic Curves
+  we actually support (not the binary ones) (bnc#905037)
+
+- openSUSE &lt; 11.2 doesn't have accept4()
+
+- openSSL 1.0.1j 
+* Fix SRTP Memory Leak (CVE-2014-3513)
+* Session Ticket Memory Leak (CVE-2014-3567)
+* Add SSL 3.0 Fallback protection (TLS_FALLBACK_SCSV)
+* Build option no-ssl3 is incomplete (CVE-2014-3568)</comment>
+    <requestid>264696</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>ac7744d4225e338a4e5a2c26723b07d4</srcmd5>
+    <version>1.0.1k</version>
+    <time>1421787226</time>
+    <user>dimstar_suse</user>
+    <comment>- openssl 1.0.1k release
+  bsc#912294 CVE-2014-3571: Fix DTLS segmentation fault in dtls1_get_record.
+  bsc#912292 CVE-2015-0206: Fix DTLS memory leak in dtls1_buffer_record.
+  bsc#911399 CVE-2014-3569: Fix issue where no-ssl3 configuration sets method to NULL.
+  bsc#912015 CVE-2014-3572: Abort handshake if server key exchange
+                            message is omitted for ephemeral ECDH ciphersuites.
+  bsc#912014 CVE-2015-0204: Remove non-export ephemeral RSA code on client and server.
+  bsc#912293 CVE-2015-0205: Fixed issue where DH client certificates are accepted without verification.
+  bsc#912018 CVE-2014-8275: Fix various certificate fingerprint issues.
+  bsc#912296 CVE-2014-3570: Correct Bignum squaring.
+  and other bugfixes.
+- openssl.keyring: use Matt Caswells current key. 
+  pub  2048R/0E604491 2013-04-30
+  uid                            Matt Caswell &lt;frodo@baggins.org&gt;
+  uid                            Matt Caswell &lt;matt@openssl.org&gt;
+  sub  2048R/E3C21B70 2013-04-30
+- openssl-1.0.1e-fips.patch: rediffed
+- openssl-1.0.1i-noec2m-fix.patch: removed (upstream)
+- openssl-ocloexec.patch: rediffed</comment>
+    <requestid>280570</requestid>
+  </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>332e659fcab320305aab230a426549b8</srcmd5>
+    <version>1.0.1k</version>
+    <time>1423216256</time>
+    <user>dimstar_suse</user>
+    <comment>- The DATE stamp moved from crypto/Makefile to crypto/buildinf.h,
+  replace it there (bsc#915947)</comment>
+    <requestid>284003</requestid>
+  </revision>
+  <revision rev="126" vrev="3">
+    <srcmd5>24555af95614deb9cc4a9b3239404288</srcmd5>
+    <version>1.0.1k</version>
+    <time>1427109366</time>
+    <user>dimstar_suse</user>
+    <comment>- security update:
+ * CVE-2015-0209 (bnc#919648)
+   - Fix a failure to NULL a pointer freed on error
+ * CVE-2015-0286 (bnc#922496)
+   - Segmentation fault in ASN1_TYPE_cmp
+ * CVE-2015-0287 (bnc#922499)
+   - ASN.1 structure reuse memory corruption
+ * CVE-2015-0288 x509: (bnc#920236)
+   - added missing public key is not NULL check
+ * CVE-2015-0289 (bnc#922500)
+   - PKCS7 NULL pointer dereferences
+ * CVE-2015-0293 (bnc#922488)
+   - Fix reachable assert in SSLv2 servers
+ * added patches:
+   openssl-CVE-2015-0209.patch
+   openssl-CVE-2015-0286.patch
+   openssl-CVE-2015-0287.patch
+   openssl-CVE-2015-0288.patch
+   openssl-CVE-2015-0289.patch
+   openssl-CVE-2015-0293.patch (forwarded request 291606 from vitezslav_cizek)</comment>
+    <requestid>291607</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>42e82217a764c14e09dadc5dda1a8bb4</srcmd5>
+    <version>1.0.2a</version>
+    <time>1433744756</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2a
+  * Major changes since 1.0.1:
+    - Suite B support for TLS 1.2 and DTLS 1.2
+    - Support for DTLS 1.2
+    - TLS automatic EC curve selection.
+    - API to set TLS supported signature algorithms and curves
+    - SSL_CONF configuration API.
+    - TLS Brainpool support.
+    - ALPN support.
+    - CMS support for RSA-PSS, RSA-OAEP, ECDH and X9.42 DH.
+- packaging changes:
+  * merged patches modifying CIPHER_LIST into one, dropping:
+    - openssl-1.0.1e-add-suse-default-cipher-header.patch
+    - openssl-libssl-noweakciphers.patch
+  * fix a manpage with invalid name
+    - added openssl-fix_invalid_manpage_name.patch
+  * remove a missing fips function
+    - openssl-missing_FIPS_ec_group_new_by_curve_name.patch
+  * reimported patches from Fedora
+    dropped patches:
+    - openssl-1.0.1c-default-paths.patch
+    - openssl-1.0.1c-ipv6-apps.patch
+    - openssl-1.0.1e-fips-ctor.patch
+    - openssl-1.0.1e-fips-ec.patch
+    - openssl-1.0.1e-fips.patch
+    - openssl-1.0.1e-new-fips-reqs.patch
+    - VIA_padlock_support_on_64systems.patch
+    added patches:
+    - openssl-1.0.2a-default-paths.patch
+    - openssl-1.0.2a-fips-ctor.patch (forwarded request 309611 from vitezslav_cizek)</comment>
+    <requestid>310849</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>780b50a7c66ad4819a88ab574338fd32</srcmd5>
+    <version>1.0.2d</version>
+    <time>1436734314</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.2d
+  * fixes CVE-2015-1793 (bsc#936746)
+  Alternate chains certificate forgery
+     During certificate verfification, OpenSSL will attempt to find an
+     alternative certificate chain if the first attempt to build such a chain
+     fails. An error in the implementation of this logic can mean that an
+     attacker could cause certain checks on untrusted certificates to be
+     bypassed, such as the CA flag, enabling them to use a valid leaf
+     certificate to act as a CA and &quot;issue&quot; an invalid certificate.
+- drop openssl-fix_invalid_manpage_name.patch (upstream) (forwarded request 315682 from vitezslav_cizek)</comment>
+    <requestid>315685</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>addbbd040599e7d384514eb02fb58e52</srcmd5>
+    <version>1.0.2e</version>
+    <time>1449995778</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.2e
+  * fixes five security vulnerabilities
+  * Anon DH ServerKeyExchange with 0 p parameter
+    (CVE-2015-1794) (bsc#957984)
+  * BN_mod_exp may produce incorrect results on x86_64
+    (CVE-2015-3193) (bsc#957814)
+  * Certificate verify crash with missing PSS parameter
+    (CVE-2015-3194) (bsc#957815)
+  * X509_ATTRIBUTE memory leak
+    (CVE-2015-3195) (bsc#957812)
+  * Race condition handling PSK identify hint
+    (CVE-2015-3196) (bsc#957813)
+- pulled a refreshed fips patch from Fedora
+  * openssl-1.0.2a-fips.patch was replaced by
+    openssl-1.0.2e-fips.patch
+- refresh openssl-ocloexec.patch</comment>
+    <requestid>347504</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>9b3d4acca137d27f17ea6776044812c4</srcmd5>
+    <version>1.0.2g</version>
+    <time>1457173278</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2g (bsc#968044)
+  * Disable weak ciphers in SSLv3 and up in default builds of OpenSSL.
+    Builds that are not configured with &quot;enable-weak-ssl-ciphers&quot; will not
+    provide any &quot;EXPORT&quot; or &quot;LOW&quot; strength ciphers.
+  * Disable SSLv2 default build, default negotiation and weak ciphers.  SSLv2
+    is by default disabled at build-time.  Builds that are not configured with
+    &quot;enable-ssl2&quot; will not support SSLv2.  Even if &quot;enable-ssl2&quot; is used,
+    users who want to negotiate SSLv2 via the version-flexible SSLv23_method()
+    will need to explicitly call either of:
+        SSL_CTX_clear_options(ctx, SSL_OP_NO_SSLv2);
+    or
+        SSL_clear_options(ssl, SSL_OP_NO_SSLv2);
+    (CVE-2016-0800)
+  * Fix a double-free in DSA code
+     (CVE-2016-0705)
+  * Disable SRP fake user seed to address a server memory leak.
+     Add a new method SRP_VBASE_get1_by_user that handles the seed properly.
+     (CVE-2016-0798)
+  * Fix BN_hex2bn/BN_dec2bn NULL pointer deref/heap corruption
+     (CVE-2016-0797)
+  *) Side channel attack on modular exponentiation
+     http://cachebleed.info.
+     (CVE-2016-0702)
+  *) Change the req app to generate a 2048-bit RSA/DSA key by default,
+     if no keysize is specified with default_bits. This fixes an
+     omission in an earlier change that changed all RSA/DSA key generation
+     apps to use 2048 bits by default. (forwarded request 363599 from vitezslav_cizek)</comment>
+    <requestid>363602</requestid>
+  </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>c230ab3495cc8ec2fbce05c12cae6eaf</srcmd5>
+    <version>1.0.2g</version>
+    <time>1461334636</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390473</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>eab2447be03661aa650767015dd07c4f</srcmd5>
+    <version>1.0.2h</version>
+    <time>1462696729</time>
+    <user>dimstar_suse</user>
+    <comment>- OpenSSL Security Advisory [3rd May 2016]
+- update to 1.0.2h (boo#977584, boo#977663)
+  * Prevent padding oracle in AES-NI CBC MAC check
+     A MITM attacker can use a padding oracle attack to decrypt traffic
+     when the connection uses an AES CBC cipher and the server support
+     AES-NI.
+     (CVE-2016-2107, boo#977616)
+  * Fix EVP_EncodeUpdate overflow
+     An overflow can occur in the EVP_EncodeUpdate() function which is used for
+     Base64 encoding of binary data. If an attacker is able to supply very large
+     amounts of input data then a length check can overflow resulting in a heap
+     corruption.
+     (CVE-2016-2105, boo#977614)
+  * Fix EVP_EncryptUpdate overflow
+     An overflow can occur in the EVP_EncryptUpdate() function. If an attacker
+     is able to supply very large amounts of input data after a previous call to
+     EVP_EncryptUpdate() with a partial block then a length check can overflow
+     resulting in a heap corruption.
+     (CVE-2016-2106, boo#977615)
+  * Prevent ASN.1 BIO excessive memory allocation
+     When ASN.1 data is read from a BIO using functions such as d2i_CMS_bio()
+     a short invalid encoding can casuse allocation of large amounts of memory
+     potentially consuming excessive resources or exhausting memory.
+     (CVE-2016-2109, boo#976942)
+  * EBCDIC overread
+     ASN1 Strings that are over 1024 bytes can cause an overread in applications
+     using the X509_NAME_oneline() function on EBCDIC systems. This could result
+     in arbitrary stack data being returned in the buffer.
+     (CVE-2016-2176, boo#978224)
+  * Modify behavior of ALPN to invoke callback after SNI/servername (forwarded request 393446 from vitezslav_cizek)</comment>
+    <requestid>393456</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>b3b921db92f436d9070b5705b6aa1484</srcmd5>
+    <version>1.0.2j</version>
+    <time>1475067813</time>
+    <user>dimstar_suse</user>
+    <comment>- update to openssl-1.0.2j
+  * Missing CRL sanity check (CVE-2016-7052 bsc#1001148)
+
+- OpenSSL Security Advisory [22 Sep 2016] (bsc#999665)
+  Severity: High
+  * OCSP Status Request extension unbounded memory growth
+    (CVE-2016-6304) (bsc#999666)
+  Severity: Low
+  * Pointer arithmetic undefined behaviour (CVE-2016-2177) (bsc#982575)
+  * Constant time flag not preserved in DSA signing (CVE-2016-2178) (bsc#983249)
+  * DTLS buffered message DoS (CVE-2016-2179) (bsc#994844)
+  * OOB read in TS_OBJ_print_bio() (CVE-2016-2180) (bsc#990419)
+  * DTLS replay protection DoS (CVE-2016-2181) (bsc#994749)
+  * OOB write in BN_bn2dec() (CVE-2016-2182) (bsc#993819)
+  * Birthday attack against 64-bit block ciphers (SWEET32)
+    (CVE-2016-2183) (bsc#995359)
+  * Malformed SHA512 ticket DoS (CVE-2016-6302) (bsc#995324)
+  * OOB write in MDC2_Update() (CVE-2016-6303) (bsc#995377)
+  * Certificate message OOB reads (CVE-2016-6306) (bsc#999668)
+- update to openssl-1.0.2i
+  * remove patches:
+    openssl-1.0.2a-new-fips-reqs.patch
+    openssl-1.0.2e-fips.patch
+  * add patches:
+    openssl-1.0.2i-fips.patch
+    openssl-1.0.2i-new-fips-reqs.patch
+
+- fix crash in print_notice (bsc#998190)
+  * add openssl-print_notice-NULL_crash.patch</comment>
+    <requestid>430498</requestid>
+  </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>a3c976e7d725e24e71b25e0ac586f782</srcmd5>
+    <version>1.0.2j</version>
+    <time>1476109050</time>
+    <user>dimstar_suse</user>
+    <comment>- resume reading from /dev/urandom when interrupted by a signal
+  (bsc#995075)
+  * add openssl-randfile_fread_interrupt.patch
+
+- add FIPS changes from SP2:
+- fix problems with locking in FIPS mode (bsc#992120)
+  * duplicates: bsc#991877, bsc#991193, bsc#990392, bsc#990428
+    and bsc#990207
+  * bring back openssl-fipslocking.patch
+- drop openssl-fips_RSA_compute_d_with_lcm.patch (upstream)
+  (bsc#984323)
+- don't check for /etc/system-fips (bsc#982268)
+  * add openssl-fips-dont_run_FIPS_module_installed.patch
+- refresh openssl-fips-rsagen-d-bits.patch (forwarded request 431508 from vitezslav_cizek)</comment>
+    <requestid>433063</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>10372cbb26dc15bdf25e7080487b073c</srcmd5>
+    <version>1.0.2k</version>
+    <time>1485862660</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to openssl 1.0.2k
+  - bsc#1009528 / CVE-2016-7055: openssl: Montgomery multiplication may produce incorrect results
+  - bsc#1019334 / CVE-2016-7056: openssl: ECSDA P-256 timing attack key recovery
+  - bsc#1022085 / CVE-2017-3731: openssl: Truncated packet could crash via OOB read
+  - bsc#1022086 / CVE-2017-3732: openssl: BN_mod_exp may produce incorrect results on x86_64</comment>
+    <requestid>452919</requestid>
+  </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>bfa0cbbd4c5f6dd6971b8408fb353a5e</srcmd5>
+    <version>1.0.2k</version>
+    <time>1486465049</time>
+    <user>dimstar_suse</user>
+    <comment>- fix X509_CERT_FILE path (bsc#1022271) and rename
+  updated openssl-1.0.1e-truststore.diff to openssl-truststore.patch (forwarded request 454258 from vitezslav_cizek)</comment>
+    <requestid>454260</requestid>
+  </revision>
+  <revision rev="137" vrev="3">
+    <srcmd5>1b37b9c7736aef8a1bea076a71b66de8</srcmd5>
+    <version>1.0.2k</version>
+    <time>1491895772</time>
+    <user>maxlin_factory</user>
+    <comment>- Remove O3 from optflags, no need to not rely on distro wide settings
+- Remove conditions for sle10 and sle11, we care only about sle12+
+- USE SUSE instead of SuSE in readme
+- Pass over with spec-cleaner (forwarded request 485192 from scarabeus_iv)</comment>
+    <requestid>485219</requestid>
+  </revision>
+  <revision rev="138" vrev="4">
+    <srcmd5>49bfcd24ef5e3337e06641fa34fe3a7e</srcmd5>
+    <version>1.0.2k</version>
+    <time>1495133193</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide pkgconfig(openssl)
+
+- Provide basic baselibs.conf for 32bit subpackages
+- Specify this package as noarch (as we just provide README files)
+
+- Fix typo in openssl requires
+- Add dependency on the branched devel package
+- Provide all pkgconfig symbols to hide them in versioned subpkgs
+- This allows us to propagate only the preffered version of openssl
+  while allowing us to add extra openssl only as additional dependency
+
+- Remove the ssl provides as it is applicable for only those that
+  really provide it
+
+- Prepare to split to various subpackages converting main one to
+  dummy package
+- Reduce to only provide main pkg and devel and depend on proper
+  soversioned package
+- Version in this package needs to be synced with the one provided
+  by the split package
+- Remove all the patches, now in the proper versioned namespace:
+  * merge_from_0.9.8k.patch
+  * openssl-1.0.0-c_rehash-compat.diff
+  * bug610223.patch
+  * openssl-ocloexec.patch
+  * openssl-1.0.2a-padlock64.patch
+  * openssl-fix-pod-syntax.diff
+  * openssl-truststore.patch
+  * compression_methods_switch.patch
+  * 0005-libssl-Hide-library-private-symbols.patch</comment>
+    <requestid>492985</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>6d4c0ee13d6ae6473c4540a0923efa19</srcmd5>
+    <version>1.0.2l</version>
+    <time>1498551590</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert back to 1.0.2l for now so we get new fixes of 1.0 openssl
+  to tumbleweed
+
+- Update to 1.1.0f release
+
+- Switch default to openssl-1.1.0</comment>
+    <requestid>506205</requestid>
+  </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>420691b3063d180842c88f404b142349</srcmd5>
+    <version>1.0.2l</version>
+    <time>1500274898</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509431</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>d679a1f1a20b339e00b4ed7d1193d143</srcmd5>
+    <version>1.0.2m</version>
+    <time>1510321037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538750</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>962b16a0f97a404e4a6ad0d397f72560</srcmd5>
+    <version>1.1.0g</version>
+    <time>1511688880</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>541546</requestid>
+  </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>ccd341dddd21b3c329245fc070b5c881</srcmd5>
+    <version>1.1.0g</version>
+    <time>1519902280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578326</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>aeb9ecc59b468cd70c61b8ba6104ce74</srcmd5>
+    <version>1.1.0h</version>
+    <time>1522404006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591688</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>552bbaf3c489a11a71c9a96315493609</srcmd5>
+    <version>1.1.1b</version>
+    <time>1558036490</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1b release
+</comment>
+    <requestid>681715</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>32d018ea6404aeb092dc1ad135af0b90</srcmd5>
+    <version>1.1.1c</version>
+    <time>1560861867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706515</requestid>
+  </revision>
+</revisionlist>

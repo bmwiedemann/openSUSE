@@ -1,0 +1,237 @@
+<revisionlist>
+  <revision rev="1" vrev="16">
+    <srcmd5>3bbdd9387bcd06907f6b12881e41e77b</srcmd5>
+    <version>1.4.4</version>
+    <time>1166483738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="40">
+    <srcmd5>1bf9089aa10c022f6c5355b0fe1c07ac</srcmd5>
+    <version>1.4.4</version>
+    <time>1171214418</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="52">
+    <srcmd5>b527b57e8c70785a5b22bb1de2f31539</srcmd5>
+    <version>1.4.4</version>
+    <time>1179394029</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="139">
+    <srcmd5>b527b57e8c70785a5b22bb1de2f31539</srcmd5>
+    <version>1.4.4</version>
+    <time>1179394029</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="140">
+    <srcmd5>42e9b219ea8b9189b61d88a203e3066b</srcmd5>
+    <version>1.4.4</version>
+    <time>1245259299</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="142">
+    <srcmd5>42e9b219ea8b9189b61d88a203e3066b</srcmd5>
+    <version>1.4.4</version>
+    <time>1245259299</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="143">
+    <srcmd5>673b8e29236e2b31800dd8306a60b36b</srcmd5>
+    <version>1.4.4</version>
+    <time>1265911785</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/dejagnu based on submit request 32141 from user prusnak
+</comment>
+  </revision>
+  <revision rev="8" vrev="144">
+    <srcmd5>14cbf7e46320963f2c13ee17f202ce6a</srcmd5>
+    <version>1.4.4</version>
+    <time>1268923310</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="146">
+    <srcmd5>14cbf7e46320963f2c13ee17f202ce6a</srcmd5>
+    <version>1.4.4</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="147">
+    <srcmd5>14cbf7e46320963f2c13ee17f202ce6a</srcmd5>
+    <version>1.4.4</version>
+    <time>1278678570</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="150">
+    <srcmd5>14cbf7e46320963f2c13ee17f202ce6a</srcmd5>
+    <version>1.4.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="151">
+    <srcmd5>8ec35988bf763c97126aa08aee16b154</srcmd5>
+    <version>1.4.4</version>
+    <time>1316680879</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83234 from jengelh)</comment>
+    <requestid>84284</requestid>
+  </revision>
+  <revision rev="13" vrev="153">
+    <srcmd5>8ec35988bf763c97126aa08aee16b154</srcmd5>
+    <version>1.4.4</version>
+    <time>1319181844</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="154">
+    <srcmd5>f6554abfd7eed20f109e0bb3b6e81266</srcmd5>
+    <version>1.4.4</version>
+    <time>1323705372</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94769 from coolo)</comment>
+    <requestid>94858</requestid>
+  </revision>
+  <revision rev="15" vrev="156">
+    <srcmd5>f6554abfd7eed20f109e0bb3b6e81266</srcmd5>
+    <version>1.4.4</version>
+    <time>1340183275</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="157">
+    <srcmd5>275d6caf10fb5a65b72f52f5667fe34c</srcmd5>
+    <version>1.4.4</version>
+    <time>1358082386</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>148207</requestid>
+  </revision>
+  <revision rev="17" vrev="159">
+    <srcmd5>275d6caf10fb5a65b72f52f5667fe34c</srcmd5>
+    <version>1.4.4</version>
+    <time>1359108806</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="160">
+    <srcmd5>db8e0d14a874d6becf20d6f8718d0a0b</srcmd5>
+    <version>1.4.4</version>
+    <time>1363982931</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160583 from m_meister)</comment>
+    <requestid>160622</requestid>
+  </revision>
+  <revision rev="19" vrev="162">
+    <srcmd5>db8e0d14a874d6becf20d6f8718d0a0b</srcmd5>
+    <version>1.4.4</version>
+    <time>1379662218</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4056f881f5bd8e244f3c3679a38d47a7</srcmd5>
+    <version>1.5.1</version>
+    <time>1397284016</time>
+    <user>coolo</user>
+    <comment>- Update to dejagnu 1.5.1
+  1. The runtest.1 man page has been brought up to date.
+  2. The Docbook/SGML documentation files were removed in favour of the
+     Docbook/XML documentation.  The Texinfo source for the Info pages is
+     now automatically generated from the Docbook source.
+  3. The Makefile structure has been substantially simplified.  There
+     is now a single top-level Makefile.am.  The use of recursive make
+     has been eliminated.
+  4. lib/mondfe.exp and lib/xsh.exp have been removed.  Users requiring
+     these communication modes can still use the DejaGnu 1.4 branch or
+     can contact dejagnu@gnu.org to discuss reinstating these files.
+  5. The configure script now ensures that Expect is installed and that
+     it is linked against Tcl 8.3 or greater.
+  6. The runtest program now gracefully handles the possibility of the
+     expect binary vanishing after DejaGnu has been installed (for
+     example, by the user altering their PATH).
+  7. The user-visible utility procedures `absolute', `prune', `psource'
+     and `slay' are deprecated and will be removed in the next release.
+     If a testsuite uses any of these procedures, a copy of the
+     procedure should be made and placed in the lib directory of the
+     testsuite.
+- dejagnu-ignore-libwarning.patch: Removed
+- dejagnu-make_doc.patch: Removed
+- Build as noarch (forwarded request 229388 from Andreas_Schwab)</comment>
+    <requestid>229427</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>4056f881f5bd8e244f3c3679a38d47a7</srcmd5>
+    <version>1.5.1</version>
+    <time>1409300753</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1afa1f39c6841d3875c1374e58a26db0</srcmd5>
+    <version>1.5.2</version>
+    <time>1424430010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to dejagnu 1.5.2
+  * New boards and bugfixes (forwarded request 285067 from Andreas_Schwab)</comment>
+    <requestid>285068</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>7d71b826014052d19ae27f7242ddbbc0</srcmd5>
+    <version>1.5.2</version>
+    <time>1427109068</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gpg signature
+- Add dependencies for macros dealing with info files
+- Use fdupes to avoid duplicate files
+- Small spec file cleanup by spec-cleaner</comment>
+    <requestid>290929</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2fb8ff46d105d5e25eead32be6fead52</srcmd5>
+    <version>1.5.3</version>
+    <time>1428192122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to dejagnu 1.5.3
+  * More bugfixes (forwarded request 293968 from Andreas_Schwab)</comment>
+    <requestid>293971</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a69be4fbe90ab799e023a9d9eec4aa19</srcmd5>
+    <version>1.6</version>
+    <time>1464594930</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390603</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6ed1555166a5e60e0a09600fc7b74c57</srcmd5>
+    <version>1.6.1</version>
+    <time>1508946213</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.1 (forwarded request 534362 from Andreas_Schwab)</comment>
+    <requestid>534364</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>167f17e7922e45285a2ed4330fccab5c</srcmd5>
+    <version>1.6.1</version>
+    <time>1534321737</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust license (forwarded request 626665 from Andreas_Schwab)</comment>
+    <requestid>626666</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3c998726d9ee748168d33a07f477040d</srcmd5>
+    <version>1.6.2</version>
+    <time>1544440905</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to dejagnu 1.6.2
+  * runtest will abort if $DEJAGNU is defined but the file is not
+    found.
+- close-wait-program.patch: Removed (forwarded request 652287 from Andreas_Schwab)</comment>
+    <requestid>652288</requestid>
+  </revision>
+</revisionlist>

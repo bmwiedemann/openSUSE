@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81f03426b72975aa84a9b074ded0f850</srcmd5>
+    <version>0.2</version>
+    <time>1509036220</time>
+    <user>dimstar_suse</user>
+    <comment>replacement for gkrellm-cpufreq (dr#534952)</comment>
+    <requestid>534957</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>beb506bd74e40f50c5fdaeedf58ac306</srcmd5>
+    <version>0.2</version>
+    <time>1509820151</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>538602</requestid>
+  </revision>
+</revisionlist>

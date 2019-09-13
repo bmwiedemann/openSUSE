@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ccbebfbf3444dc0fc7ba116de8471144</srcmd5>
+    <version>1.0.4</version>
+    <time>1336471704</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115512</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ccbebfbf3444dc0fc7ba116de8471144</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184390</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>ccbebfbf3444dc0fc7ba116de8471144</srcmd5>
+    <version>1.0.4</version>
+    <time>1359110705</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>ccbebfbf3444dc0fc7ba116de8471144</srcmd5>
+    <version>1.0.4</version>
+    <time>1379665129</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>ccbebfbf3444dc0fc7ba116de8471144</srcmd5>
+    <version>1.0.4</version>
+    <time>1409303816</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c8f09e9cabb45718d0aabf003a2ddb42</srcmd5>
+    <version>1.0.5</version>
+    <time>1524144501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.5
+  * autogen.sh changes
+  * configure: Drop AM_MAINTAINER_MODE
+  * Mark Error() argument as const char *
+  * Print which option was in error along with usage message
+  * Add -version option to print program version</comment>
+    <requestid>593757</requestid>
+  </revision>
+</revisionlist>

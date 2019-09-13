@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ca9d63d85feff14088682b60ce8d108</srcmd5>
+    <version>0.0.1</version>
+    <time>1557263794</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing guile-newt-rpmlintrc as source file 
+- let there be guile-newt 
+
+dependency of guix</comment>
+    <requestid>698223</requestid>
+  </revision>
+</revisionlist>

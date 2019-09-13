@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d69e99118074dc492df8c8aae22807f0</srcmd5>
+    <version>1.0.2</version>
+    <time>1349243301</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>136580</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d69e99118074dc492df8c8aae22807f0</srcmd5>
+    <version>1.0.2</version>
+    <time>1359109081</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>d69e99118074dc492df8c8aae22807f0</srcmd5>
+    <version>1.0.2</version>
+    <time>1379662670</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dbd6a566afbff38d6d510bedbec02a4a</srcmd5>
+    <version>1.0.3</version>
+    <time>1386936287</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.3
+  * Some unofficial IPA, labial-velars, laterals, nasal releases, ...
+  * Added data for Old English and Middle English.
+  * Enalbed XTEST because glib2 uses XI2.
+  * Enabled GTK3 by default.
+  * Fixed an error with gcc -Wformat -Werror=format-security .
+  * Updated translations.
+  * Added the man of input-pad . (forwarded request 210680 from hillwood)</comment>
+    <requestid>210753</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>dbd6a566afbff38d6d510bedbec02a4a</srcmd5>
+    <version>1.0.3</version>
+    <time>1409301230</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>368a92a826ada55fe3798b4bacbbbcb2</srcmd5>
+    <version>1.0.99.20140916</version>
+    <time>1413616114</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256627</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3561d56440070596900758e94475522f</srcmd5>
+    <version>1.0.99.20140916</version>
+    <time>1415953151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261361</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4126cdeafb8ccb88b40d8d552c675a27</srcmd5>
+    <version>1.0.99.20140916</version>
+    <time>1461334984</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378345</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,738 @@
+<revisionlist>
+  <revision rev="1" vrev="20">
+    <srcmd5>99bdf9f2e5fa90188c0778d308a2b468</srcmd5>
+    <version>0.9</version>
+    <time>1168904563</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="34">
+    <srcmd5>820cc7e928facf9a46c92573b32556a0</srcmd5>
+    <version>0.9</version>
+    <time>1170609854</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="43">
+    <srcmd5>80ae928c1a09b0d0e92d43b81adfc9e3</srcmd5>
+    <version>0.9</version>
+    <time>1176111872</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="47">
+    <srcmd5>d00082ec9a6ba6da5e51f5447b458738</srcmd5>
+    <version>0.9</version>
+    <time>1177800204</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="53">
+    <srcmd5>c3568b1449eeebd568d801e58d823b92</srcmd5>
+    <version>0.9</version>
+    <time>1179097373</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="58">
+    <srcmd5>ed8f000058d9e9f0dd1f7f53936b18b2</srcmd5>
+    <version>0.9</version>
+    <time>1179766060</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="60">
+    <srcmd5>2e30a0baf9fd25891a84d80fb916d485</srcmd5>
+    <version>0.9</version>
+    <time>1179839653</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9644573c53294859712df047867c9446</srcmd5>
+    <version>1.0</version>
+    <time>1184352831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="19">
+    <srcmd5>aff0c21c6665e49777e4be99af434fee</srcmd5>
+    <version>1.0</version>
+    <time>1188230549</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>22d9eaf571715d66faa2be0d93e07350</srcmd5>
+    <version>1.1</version>
+    <time>1191367035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e3809d486073b27779f13b00708b45d7</srcmd5>
+    <version>1.2</version>
+    <time>1201722593</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>ad5eb38f3ea01ac8c9adc6dce9667460</srcmd5>
+    <version>1.2</version>
+    <time>1204766944</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="16">
+    <srcmd5>2ed78e0dc0db96d0afa0b16b6da35037</srcmd5>
+    <version>1.2</version>
+    <time>1205114434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>8107b87f3daff3fb4b8ded1616b524e9</srcmd5>
+    <version>1.2</version>
+    <time>1205171018</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>7de27c649b6ac8672e4d2f1bc3e09797</srcmd5>
+    <version>1.2</version>
+    <time>1205174434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="27">
+    <srcmd5>ea5b11a87dd174e4d44b1ed56f86b7b9</srcmd5>
+    <version>1.2</version>
+    <time>1207466249</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="37">
+    <srcmd5>62789ba1aaa2f69a179b7c1cfcb62db1</srcmd5>
+    <version>1.2</version>
+    <time>1210943157</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="38">
+    <srcmd5>45217e0d595e50aa2e757135baf842ff</srcmd5>
+    <version>1.2</version>
+    <time>1210986014</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="45">
+    <srcmd5>2347c6247b2ae5b08e01978f15e6efd3</srcmd5>
+    <version>1.2</version>
+    <time>1215218442</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="47">
+    <srcmd5>08ff2a571477a7263a4ac0b8c4d2f02d</srcmd5>
+    <version>1.2</version>
+    <time>1215561866</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>38737fc422cd64aed8965eff8ec522d3</srcmd5>
+    <version>1.3</version>
+    <time>1216654716</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="31">
+    <srcmd5>46d9caade658882d91697616f3ea0c83</srcmd5>
+    <version>1.3</version>
+    <time>1221487009</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="32">
+    <srcmd5>4be7e3a14d881680addd3e261d9c3631</srcmd5>
+    <version>1.3</version>
+    <time>1221489370</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="33">
+    <srcmd5>04404e52886b131c16711ca4d5eac1b3</srcmd5>
+    <version>1.3</version>
+    <time>1234180397</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>26633aab1d18337b9a7d4b7b80840b55</srcmd5>
+    <version>1.5</version>
+    <time>1236100481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>0654d91239b89b3924a40e56741e9782</srcmd5>
+    <version>1.5</version>
+    <time>1239106719</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>c15d45f5a88ddea153697abd0390610f</srcmd5>
+    <version>1.5</version>
+    <time>1240788673</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>3ea3895d53776a6fc8347a76ba2be5c3</srcmd5>
+    <version>1.5</version>
+    <time>1240868901</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>3ea3895d53776a6fc8347a76ba2be5c3</srcmd5>
+    <version>1.5</version>
+    <time>1240868901</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>29e47f86a74fa4cae5e6dbc2b40837fc</srcmd5>
+    <version>1.7</version>
+    <time>1258540641</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xkeyboard-config based on submit request 24563 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>a5cacab5619bf96eee5ed7eefcffba3e</srcmd5>
+    <version>1.7</version>
+    <time>1260197304</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xkeyboard-config based on submit request 25645 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>6a26e01275ad5c3ea81c53201ac95875</srcmd5>
+    <version>1.7</version>
+    <time>1268926615</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>ebf037adc7241d0ee93b865607b3ba78</srcmd5>
+    <version>1.7</version>
+    <time>1273240304</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xkeyboard-config based on submit request 39528 from user sndirsch
+</comment>
+    <requestid>39528</requestid>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>8e0c9eba43564fd288c758ed314c956b</srcmd5>
+    <version>1.7</version>
+    <time>1274033748</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xkeyboard-config based on submit request 40087 from user sndirsch
+</comment>
+    <requestid>40087</requestid>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>3becf243a6322752cb6f6c6329a7cbce</srcmd5>
+    <version>1.7</version>
+    <time>1277136987</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xkeyboard-config based on submit request 41767 from user sndirsch
+</comment>
+    <requestid>41767</requestid>
+  </revision>
+  <revision rev="36" vrev="8">
+    <srcmd5>3becf243a6322752cb6f6c6329a7cbce</srcmd5>
+    <version>1.7</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="37" vrev="9">
+    <srcmd5>3becf243a6322752cb6f6c6329a7cbce</srcmd5>
+    <version>1.7</version>
+    <time>1278678627</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="38" vrev="10">
+    <srcmd5>44dffb0661e2e5c712cc949cf027a413</srcmd5>
+    <version>unknown</version>
+    <time>1284124650</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xkeyboard-config based on submit request 47178 from user sndirsch
+</comment>
+    <requestid>47178</requestid>
+  </revision>
+  <revision rev="39" vrev="11">
+    <srcmd5>aa8e0ab4a49e346a66960b96c48b1fba</srcmd5>
+    <version>2.0</version>
+    <time>1285973135</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xkeyboard-config based on submit request 49449 from user sndirsch
+</comment>
+    <requestid>49449</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>82261488ab84746194d217efe6a6d4af</srcmd5>
+    <version>2.1</version>
+    <time>1297113132</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60131 from user sndirsch
+</comment>
+    <requestid>60131</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>4ed93e30a839a9c5a50ed61fae48f24b</srcmd5>
+    <version>2.1</version>
+    <time>1297113138</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60131
+</comment>
+  </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>4ed93e30a839a9c5a50ed61fae48f24b</srcmd5>
+    <version>2.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="43" vrev="6">
+    <srcmd5>3e855bcc3dab94d6184e8f32136af12b</srcmd5>
+    <version>2.1</version>
+    <time>1298029393</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61502 from user sndirsch
+</comment>
+    <requestid>61502</requestid>
+  </revision>
+  <revision rev="44" vrev="7">
+    <srcmd5>42bb8a2bfd676fa31df15afef17d628c</srcmd5>
+    <version>2.1</version>
+    <time>1298029416</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61502
+</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d20a66c7261c30757237ec25091d3a97</srcmd5>
+    <version>2.2</version>
+    <time>1301985396</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 65950 from user coolo
+</comment>
+    <requestid>65950</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6cf230ca9ebbc6e570409713de2e7c08</srcmd5>
+    <version>2.2.1</version>
+    <time>1302857056</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67493 from user coolo
+</comment>
+    <requestid>67493</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>d4636aac9efcde2d2c60e607a72b7df0</srcmd5>
+    <version>2.2.1</version>
+    <time>1306401718</time>
+    <user>saschpe</user>
+    <comment>- remove xkeyboard-config.inet.patch:
+  * There is an entry for KP_Equal in inet(apple) already:
+        key &lt;KPEQ&gt;  {       [ KP_Equal ] };
+    With the macintosh keycodes &lt;KPEQ&gt; has the same value as
+    &lt;K59&gt; in the xfree86 keycodes file (i.e. 157).
+
+- place all SUSE specific patches into one file:
+  * add Multi_key for compose.
+  * add ctrl-alt-backspace server termination key sequence.
+
+- remove xkeyboard-config.macintosh.patch:
+  This can be handled by adding:
+  altwin:swap_lalt_lwin,lv3:alt_switch
+  as option for instance to the keyboard mappings for macintosh.
+  The xorg-x11 package will be updated accordingly.
+
+- Remove xkeyboard-config.inet.microsoftpro.patch:
+  This patch is bogus and not needed for evedev keyboards any
+  more.
+  For old style keyboard +inet(microsoftprousb) specified the
+  augmentation used for a specific keyboard model. This this
+  keyboard model should be set instead ie:
+  setxkbmap -rules base -model microsfortprousb -layout &lt;lo&gt; -option &quot;&quot;
+  produces the same results as:
+  setxkbmap -rules base -model pc104 -layout &lt;lo&gt; -option inet:microsoftpro
+  (disregarding the geometry part which is rather irrelevant here).
+
+- IBM Space Saver keyboard support was added upstream with
+  commit b69a8bd.</comment>
+    <requestid>71244</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>b5710b12285012b03d4dce3d1dbf5bf1</srcmd5>
+    <version>2.2.1</version>
+    <time>1306401736</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71244
+</comment>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>b5710b12285012b03d4dce3d1dbf5bf1</srcmd5>
+    <version>2.2.1</version>
+    <time>1319182599</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>fdae924b009fae52ac8c3ff4a835e46e</srcmd5>
+    <version>2.2.1</version>
+    <time>1323195360</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f016c70f82b394a1f92a6f384d1421ad</srcmd5>
+    <version>2.5.1</version>
+    <time>1336471507</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115465</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>c37641d853ac6e98952f07e5eca056bd</srcmd5>
+    <version>2.5.1</version>
+    <time>1339707199</time>
+    <user>coolo</user>
+    <comment>- don't require xorg-x11 - it's just a compat metapackage nowadays (forwarded request 124964 from seife)</comment>
+    <requestid>125003</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>c37641d853ac6e98952f07e5eca056bd</srcmd5>
+    <version>2.5.1</version>
+    <time>1340184368</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>0c8e0884607fae57aa68d7ff0a0012a0</srcmd5>
+    <version>2.5.1</version>
+    <time>1340725339</time>
+    <user>coolo</user>
+    <comment>- improved BuildRequires; instead of xorg-x11 meta package require
+  xkbcomp package</comment>
+    <requestid>126153</requestid>
+  </revision>
+  <revision rev="55" vrev="6">
+    <srcmd5>4402ba9ca8259695546c8d7705fa4884</srcmd5>
+    <version>2.5.1</version>
+    <time>1343033079</time>
+    <user>coolo</user>
+    <comment>- Split out -lang package (bnc#645077).</comment>
+    <requestid>128648</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>906e147522429c8c23e05de878af4ee7</srcmd5>
+    <version>2.7</version>
+    <time>1348746234</time>
+    <user>coolo</user>
+    <comment>Update to 2.7, maybe this will get into Milestone 0 as well (forwarded request 136110 from klausi123)</comment>
+    <requestid>136153</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>d11a2c109d676840725e65bb35fe3800</srcmd5>
+    <version>2.7</version>
+    <time>1348925896</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+ and LGPL-2.1+ and MIT and CDDL-1.0
+Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 136245 from babelworx)</comment>
+    <requestid>136285</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>d11a2c109d676840725e65bb35fe3800</srcmd5>
+    <version>2.7</version>
+    <time>1359110650</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>fe0318096c17c553d6d4366fc073e0a9</srcmd5>
+    <version>2.8</version>
+    <time>1359731706</time>
+    <user>coolo</user>
+    <comment>Update to version 2.8 (forwarded request 150626 from tobijk)</comment>
+    <requestid>150728</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>c6b2462380d8957182e494f6277eb128</srcmd5>
+    <version>2.8</version>
+    <time>1364473793</time>
+    <user>coolo</user>
+    <comment>- u_zhe-dze.patch 
+  The key (z on US keyboard) should give dze (&amp;#1029; [capital]
+  / &amp;#1109;) but it gives zhe (&amp;#1046; [capital] / &amp;#1078;)
+  (bnc#780230)</comment>
+    <requestid>161252</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>6a7bffd1f0f0f917f3936b68197a4297</srcmd5>
+    <version>2.9</version>
+    <time>1370431473</time>
+    <user>coolo</user>
+    <comment>update to version 2.9 (forwarded request 176970 from tobijk)</comment>
+    <requestid>177054</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>2d5abff1f095b4baa2baaf122ae9d577</srcmd5>
+    <version>2.9</version>
+    <time>1377717733</time>
+    <user>coolo</user>
+    <comment>- remove server-*.xkm in %post to show correct layout after
+  package upgrade. (bnc#662014, bnc#831823)</comment>
+    <requestid>196552</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>3d2b78fa3ab83ead721640131e30ca0a</srcmd5>
+    <version>2.9</version>
+    <time>1378126942</time>
+    <user>coolo</user>
+    <comment>- U_Add-missing-backslash-bar-mapping-on-us-internationa.patch
+  * Add missing backslash/bar mapping on &quot;us&quot; international
+    variants (fdo#68606, bnc#831823).
+- U_ara-digits-Generate-arabic-script-digits-also-on-key.patch
+  * ara(digits): Generate arabic script digits also on keypad
+    (fdo#68650, bnc#831823)
+- refreshed patches</comment>
+    <requestid>196858</requestid>
+  </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>0d1b811186cb9bee11be19aa8fab34b0</srcmd5>
+    <version>2.9</version>
+    <time>1378416499</time>
+    <user>coolo</user>
+    <comment>- renamed u_zhe-dze.patch to 
+  U_rs-cyralpha-The-key-z-on-US-keyboard-should-give-dze.patch
+  after having it upstreamed (#fdo#68754)
+
+- renamed p_suse.diff to n_suse.patch (never to be upstreamed)
+  according to X11:XOrg patch guidelines</comment>
+    <requestid>197404</requestid>
+  </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>01a6ade15e49e3fc3f996b04775d8c45</srcmd5>
+    <version>2.9</version>
+    <time>1378898697</time>
+    <user>coolo</user>
+    <comment>- renamed U_rs-cyralpha-The-key-z-on-US-keyboard-should-give-dze.patch
+  to n_rs-cyralpha-The-key-z-on-US-keyboard-should-give-dze.patch
+  since it will never be accepted upstream, but still needed for QA
+  people not being aware of the special situation of serbian-cyrillic
+  keyboard users (#fdo#68754)</comment>
+    <requestid>198185</requestid>
+  </revision>
+  <revision rev="66" vrev="7">
+    <srcmd5>01a6ade15e49e3fc3f996b04775d8c45</srcmd5>
+    <version>2.9</version>
+    <time>1379665076</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>bd1f9e9e26a965cdd4ec675f481e25be</srcmd5>
+    <version>2.10.1</version>
+    <time>1381223284</time>
+    <user>scarabeus_factory</user>
+    <comment>- fixed source link in specfile 
+
+- Update to version 2.10.1:
+  The release 2.10 of xkeyboard-config did not really happen because of
+  the technical issues, so I am happy to present 2.10.1
+  + massive cleanups of the codebase.
+  + various layouts fixes and code improvements.
+- Remove upstreamed patches:
+  + Patch11: U_Add-missing-backslash-bar-mapping-on-us-internationa.patch
+  + Patch12: U_ara-digits-Generate-arabic-script-digits-also-on-key.patch
+- Updated Patch100: n_suse.patch to work with this version.</comment>
+    <requestid>202535</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a8af1c789420db301300845675c9957b</srcmd5>
+    <version>2.11</version>
+    <time>1391182961</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.11
+  + There is traditional massive code cleanup by Benno - and a
+    number of other fixes and updated translations (thanks to TP)</comment>
+    <requestid>215613</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>2c9a30e4ced3f77a511f07465b657e7b</srcmd5>
+    <version>2.11</version>
+    <time>1391666830</time>
+    <user>coolo</user>
+    <comment>- U_Let-KPDL-key-on-it-fr-and-nl-keyboards-generate-KP_S.patch 
+  * reverse apply the above patch in order to fix again the KPDL
+    key on french, italian and netherland keyboards (bnc#671931)</comment>
+    <requestid>220841</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>0a1734943d2bcf8ae98be1c3a0b5a427</srcmd5>
+    <version>2.12</version>
+    <time>1403081952</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.12
+  * bugfix release
+  * supersedes U_Let-KPDL-key-on-it-fr-and-nl-keyboards-generate-KP_S.patch
+- remove n_rs-cyralpha-The-key-z-on-US-keyboard-should-give-dze.patch,
+  which is considered wrong (bnc#68754)</comment>
+    <requestid>236205</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>0a1734943d2bcf8ae98be1c3a0b5a427</srcmd5>
+    <version>2.12</version>
+    <time>1409303762</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>7bd02c4cb708a50e0008989609b53b53</srcmd5>
+    <version>2.13</version>
+    <time>1412533756</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253539</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>e25a49683856d0bb275c26a16b1e3a7f</srcmd5>
+    <version>2.14</version>
+    <time>1423732806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.14
+  bug fixes, documentation fixes</comment>
+    <requestid>284854</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>d2a597c42cc5541dfbc7999416d91784</srcmd5>
+    <version>2.15</version>
+    <time>1432885704</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to version 2.15
+   * Here is another minor release. Thanks to the Translation
+     Project for the several updated translations.
+     - symbols/typo: rework typographic layout.
+     - Add support for Latinamerican Dvorak layout
+     - added lk(us)
+     - fixed the license (removed GPL)
+     - Removed GPLv3 line
+     - Fixed Singhala -&gt; Sinhala
+     - Updated cm layout
+     - Updated from TP
+     - Update from TP
+     - Define &lt;LSGT&gt; key properly in basic layout</comment>
+    <requestid>308908</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>6d961e934dc96ce300c3120c203a6f74</srcmd5>
+    <version>2.16</version>
+    <time>1445782256</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340214</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>afcd940defda396620979481d3621015</srcmd5>
+    <version>2.17</version>
+    <time>1453997951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.16
+  * Added sbj keymap for Jolla phone
+  * Adding the option to make Caps Lock act as a Menu key.
+  * add altwin:prtsc_rwin
+  * Add br(thinkpad) to the xml files
+  * symbols/group: re-enable grp:ctrls_toggle
+  * Make us(dvp) work with regular right Alt key again
+  * Updated Azerbaijani layout
+  * Azerty French Layout
+  * Added French Togo
+  * More changes to tg layout
+  * Added de(koy)
+  * syntax fix
+  * Translations updated before release
+  * Reenable layer5-lock for de variants
+  * Icelandic QWERTY Layout: Add ability to write Icelandic quotation marks („“)
+
+- add /usr/share/X11 dir to filelist in order to fix build again
+
+- Adding 'BuildRequires: xsltproc' to build man page.
+
+- Removed link from /usr/share/X11/xkb/xkbcomp to /usr/bin/xkbcomp
+- Removed xkbcomp as Buildrequire (bnc#953161)
+- Added man page xkeyboard-config (7)</comment>
+    <requestid>356261</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>5ee55bd34c5efa049a7ffe59a5ba17e0</srcmd5>
+    <version>2.18</version>
+    <time>1465750445</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400632</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>592b40973329409dbf3c819418cb9d10</srcmd5>
+    <version>2.19</version>
+    <time>1475749901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.19
+  * Bug fixes and performance improvements</comment>
+    <requestid>433133</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>53277e4853adf53cbe8f104ee4094ecc</srcmd5>
+    <version>2.20</version>
+    <time>1486464995</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20
+  * Bug fixes and performance improvements</comment>
+    <requestid>453885</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>7cd9ace8f096fc3f67b615673ecb1833</srcmd5>
+    <version>2.21</version>
+    <time>1496932665</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500976</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>54a11d7076e9e2cbb42ff03136fc5c2e</srcmd5>
+    <version>2.22</version>
+    <time>1507628146</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531743</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>c537d395a7b4449bf4ef5ec9caf03951</srcmd5>
+    <version>2.22</version>
+    <time>1508508675</time>
+    <user>dimstar_suse</user>
+    <comment>- n_suse-ctrl-alt-bksp-terminate.patch
+  * removed the hunk, which made Shift-RCTL and Shift-RALT the
+    default Compose key (bsc#1059438)</comment>
+    <requestid>532997</requestid>
+  </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>96b528fafe780d5ec53754891d7809bb</srcmd5>
+    <version>2.22</version>
+    <time>1511426102</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544169</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>60e1c0fb56d921d977c55b068d8a3e8a</srcmd5>
+    <version>2.23.1</version>
+    <time>1517668913</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Fix-typo-in-Polish-symbols-file.patch
+  * fixes broken polish symbols file (fdo#104904)
+
+- Update to version 2.23.1
+  * Fixing the build 
+
+- Update to version 2.23
+  * Added it(intl), it(scn) and us(scn)
+  * Minor fidvorak adjustment
+  * Typo fixed
+  * Refreshed the default Arabic keyboard layout
+  * more robust comment handling
+  * replace 'ʼ' (0x10002bc) with '՚' (0x100055a) in armenian layout
+  * Add polish layout for use glagolica script
+  * Use default compose key with Finnish keyboard
+  * incomplete Finnish fix patch
+  * Prerelease translation sync
+  * Added International Phonetic Alphabet
+- supersedes U_xkeyboard-config_fix-typo-hungarian.patch</comment>
+    <requestid>572000</requestid>
+  </revision>
+</revisionlist>

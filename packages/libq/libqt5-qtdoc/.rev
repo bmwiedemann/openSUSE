@@ -1,0 +1,315 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c125540ad8ee1336242e3fd83965344a</srcmd5>
+    <version>5.1.0</version>
+    <time>1380608010</time>
+    <user>coolo</user>
+    <comment>New Package for Qt 5.1</comment>
+    <requestid>185792</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ed74e0fa008ed2ece560cca971663b8b</srcmd5>
+    <version>5.2.0~beta1</version>
+    <time>1383051143</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0-beta1</comment>
+    <requestid>205061</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>032eb7d3d71a9cfd09f27e161b64af62</srcmd5>
+    <version>5.2.0~beta1</version>
+    <time>1384347019</time>
+    <user>scarabeus_factory</user>
+    <comment>Remove global docs from package, they are delivered with qtbase module</comment>
+    <requestid>206053</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>965d39f22dceb2bc3e8327be8dda814b</srcmd5>
+    <version>5.2.0~rc1</version>
+    <time>1385965378</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0 rc1</comment>
+    <requestid>209097</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>990fd5a4f1a847f29acef6dc0b9787e6</srcmd5>
+    <version>5.2.0</version>
+    <time>1388394537</time>
+    <user>coolo</user>
+    <comment>Update libqt5-qtdoc to 5.2.0 final</comment>
+    <requestid>212362</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3b2b7b289ff7a4b9162746ca73369f74</srcmd5>
+    <version>5.2.0</version>
+    <time>1392111177</time>
+    <user>coolo</user>
+    <comment>install license files to %doc (forwarded request 221613 from mlin7442)</comment>
+    <requestid>221699</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8f07d9d7aab00fd7d6cf5050356bf756</srcmd5>
+    <version>5.2.1</version>
+    <time>1392128601</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.1</comment>
+    <requestid>221835</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>84b25be28625950fd79a7f1321e8c283</srcmd5>
+    <version>5.3.0~beta</version>
+    <time>1395908983</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0 beta</comment>
+    <requestid>227521</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>75bbb3481c173f50e9137886c665b888</srcmd5>
+    <version>5.3.0</version>
+    <time>1400733504</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0 final</comment>
+    <requestid>234804</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>84b02215fa5a6ecb849360e3def48fe8</srcmd5>
+    <version>5.3.1</version>
+    <time>1405971621</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.1</comment>
+    <requestid>241726</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>84b02215fa5a6ecb849360e3def48fe8</srcmd5>
+    <version>5.3.1</version>
+    <time>1409301678</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>01101becb7be38ad6223b97e02c52992</srcmd5>
+    <version>5.3.2</version>
+    <time>1411019821</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.2 final</comment>
+    <requestid>249673</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c3d4371da97f440f32eeaadb43edb7eb</srcmd5>
+    <version>5.3.2</version>
+    <time>1411472786</time>
+    <user>coolo</user>
+    <comment>Fix the qchs tarball, some modules where missing images subdir</comment>
+    <requestid>251282</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d0c78cc11d445c43e79080bf070c4dbd</srcmd5>
+    <version>5.4.0</version>
+    <time>1419159445</time>
+    <user>coolo</user>
+    <comment>Update to 5.4.0</comment>
+    <requestid>264857</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>92bb50d5e55f225f1d6bab3ff74a6e66</srcmd5>
+    <version>5.4.1</version>
+    <time>1425219178</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.1</comment>
+    <requestid>287879</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8d90273a9655e50fd047d2752399b824</srcmd5>
+    <version>5.4.2</version>
+    <time>1435870223</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.2</comment>
+    <requestid>314651</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fd7fec69e9e1d5ae004005749753c3fe</srcmd5>
+    <version>5.5.0</version>
+    <time>1443335785</time>
+    <user>coolo</user>
+    <comment>Update to 5.5.0</comment>
+    <requestid>323355</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3c76f73eb69128a33a557c126075d056</srcmd5>
+    <version>5.5.1</version>
+    <time>1445287622</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix 5.5.1 update</comment>
+    <requestid>339592</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>bc15a41403af86b1a391a701163c0502</srcmd5>
+    <version>5.5.1</version>
+    <time>1463652850</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.0</comment>
+    <requestid>379809</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9cc099a4225165ea6d65112abbfcc21e</srcmd5>
+    <version>5.6.1</version>
+    <time>1468579532</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.1</comment>
+    <requestid>401301</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d082df56a041e695f1c3599090764f9e</srcmd5>
+    <version>5.7.1</version>
+    <time>1485041443</time>
+    <user>dimstar_suse</user>
+    <comment>5.7.1</comment>
+    <requestid>446482</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>73dbcbbce1c074e44451a724f0ca03d7</srcmd5>
+    <version>5.9.2</version>
+    <time>1508876514</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.2</comment>
+    <requestid>533797</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b743a8594a064fe4e2fc5031ed8cd76c</srcmd5>
+    <version>5.9.3</version>
+    <time>1513343082</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.3</comment>
+    <requestid>545941</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>64d8c354ea919aa51c59b86a457a7a87</srcmd5>
+    <version>5.10.0</version>
+    <time>1514027724</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in -devel subpackage's Requires
+
+- Update the license tag (boo#967696)
+
+- Update to 5.10.0 final
+  * New bugfix release
+
+- Update to 5.10.0 RC 2
+  * New bugfix release
+
+- Update to 5.10.0 RC 1
+  * New bugfix release
+
+- Add requires to the devel-doc package to enable 
+  building QCH documentation in other packages
+
+- Update to 5.10 Beta 4
+- Contains bugfixes
+
+- Update to 5.10 Beta 3
+- Contains bugfixes
+
+- Update to 5.10 Beta 2
+- Contains bugfixes
+
+- Update to 5.10 Beta 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/10/09/qt-5-10-beta-released/
+
+- Update to 5.10 Alpha 1</comment>
+    <requestid>558849</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8007e7e1d385419d558fc09c9a1d7d24</srcmd5>
+    <version>5.11.0</version>
+    <time>1528111309</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.0 (forwarded request 611379 from Vogtinator)</comment>
+    <requestid>611669</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>c10ce3bc59a079cfc34eeab09e8e935f</srcmd5>
+    <version>5.11.0</version>
+    <time>1528897101</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch to fix building on 32-bit architectures (boo#1092425):
+  * workaround-qdoc-failure.patch
+
+- BuildRequire clang, this is needed since 5.11 to properly build
+  the docs</comment>
+    <requestid>615217</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>72fd13d48aee9519dae57021aa518c37</srcmd5>
+    <version>5.11.1</version>
+    <time>1530304377</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.1</comment>
+    <requestid>618669</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>13852084ed18b7e52496b3bce43f5e38</srcmd5>
+    <version>5.11.1</version>
+    <time>1535963766</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildReqs to allow building of WebEngine</comment>
+    <requestid>632654</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f9547dd90c0bdd49731117b41dc3a052</srcmd5>
+    <version>5.11.2</version>
+    <time>1538502340</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.2</comment>
+    <requestid>637833</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0750b880077f2a084bb027eaee063a87</srcmd5>
+    <version>5.12.0</version>
+    <time>1546245975</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.12.0 final</comment>
+    <requestid>656556</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>976e888e1958c0be3db678553eeb2c3d</srcmd5>
+    <version>5.12.2</version>
+    <time>1553263549</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.12.2</comment>
+    <requestid>685630</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6f14874d6e1055f9a18c4d8d1b715f4d</srcmd5>
+    <version>5.12.3</version>
+    <time>1556311949</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.12.3</comment>
+    <requestid>697061</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1345e36935bf57b9cc697304b3c2e112</srcmd5>
+    <version>5.13.0</version>
+    <time>1561732079</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.0</comment>
+    <requestid>711181</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>d945a3c798ee3b109ed7bacf63fad250</srcmd5>
+    <version>5.13.0</version>
+    <time>1567168933</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly BuildRequire libqt5-qttools and libqt5-qttools-doc, no
+  longer pulled in by libqt5-qttools-devel.</comment>
+    <requestid>727150</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>cd282964e2b013ae5a0d0799d082a4ce</srcmd5>
+    <version>5.13.1</version>
+    <time>1568097314</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.1</comment>
+    <requestid>729204</requestid>
+  </revision>
+</revisionlist>

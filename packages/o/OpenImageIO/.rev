@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c681d48a95c64c05d6d126bf566dde5b</srcmd5>
+    <version>1.5.12</version>
+    <time>1427736762</time>
+    <user>dimstar_suse</user>
+    <comment>Required libOpenImageIO_Util</comment>
+    <requestid>293356</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0b956fa070f557f47e86583d4d9f142e</srcmd5>
+    <version>1.5.12</version>
+    <time>1432982049</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309171</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>335aeb3bd466a8e9d8cb3f14f64c97c3</srcmd5>
+    <version>1.5.20</version>
+    <time>1448553680</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345150</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>405dc0c5225af3062e3e7b4260655f6d</srcmd5>
+    <version>1.7.0dev</version>
+    <time>1452941826</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.7.0dev to fix build with boost 1.90 and explicitly enable openssl because i586 build fails due to unmatched types otherwise.</comment>
+    <requestid>353754</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7d70ada5b201bc92342e588863c12b79</srcmd5>
+    <version>1.7.0dev</version>
+    <time>1458228858</time>
+    <user>dimstar_suse</user>
+    <comment>Disabled opencv in build until I've resolved the problem.</comment>
+    <requestid>371163</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>563df2d7c50bfc51d2e5d0be267c6851</srcmd5>
+    <version>1.7.0dev</version>
+    <time>1459238190</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>377664</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>f5b35dae488cb5536dc49d9e7fe1031d</srcmd5>
+    <version>1.7.0dev</version>
+    <time>1466333587</time>
+    <user>dimstar_suse</user>
+    <comment>Added oiio_gcc6_missleading_indentation.patch to fix gcc6 errors</comment>
+    <requestid>403143</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>765f6a10d5267120763c0be527a54e49</srcmd5>
+    <version>1.7.0dev</version>
+    <time>1486465315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454269</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>248ded5ec0dd3db28571d44275fbf94b</srcmd5>
+    <version>1.7.13</version>
+    <time>1492011267</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484395</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>12c80fe866326fdffe1a29e2eaff7efb</srcmd5>
+    <version>1.7.15</version>
+    <time>1497274581</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503036</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b1acdd39fbf747f44568b40740d7c986</srcmd5>
+    <version>1.7.17</version>
+    <time>1507571184</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532551</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>52bd301b2811505effb0b9be863eff6a</srcmd5>
+    <version>1.8.6</version>
+    <time>1512651265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554845</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a1482b08a96052d8a45c9c53f5e84e44</srcmd5>
+    <version>1.8.6</version>
+    <time>1513245620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556522</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>f4e9a309beba7fbda96433d1ffbf9488</srcmd5>
+    <version>1.8.6</version>
+    <time>1514569829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559780</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>52ee539f84ad4fa3353fc296db18cf31</srcmd5>
+    <version>1.8.10</version>
+    <time>1523875803</time>
+    <user>dimstar_suse</user>
+    <comment>Update to release 1.8.10 and rebase oiio-add-libdl-for-plugin.patch.
+Updated oiio-detectplatform-others.patch to handle armv6l
+</comment>
+    <requestid>596682</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>87b6449a3c9496739ac77119f52d98df</srcmd5>
+    <version>1.8.10</version>
+    <time>1529501824</time>
+    <user>maxlin_factory</user>
+    <comment>Fix description</comment>
+    <requestid>618008</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>f9ad1b21a5585bbb75e7e53c410e53c3</srcmd5>
+    <version>1.8.10</version>
+    <time>1552643568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685268</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>83eee71d9768031d37211ad15cea3431</srcmd5>
+    <version>1.8.17</version>
+    <time>1554977996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693107</requestid>
+  </revision>
+</revisionlist>

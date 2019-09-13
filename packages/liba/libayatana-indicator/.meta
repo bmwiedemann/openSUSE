@@ -1,0 +1,5 @@
+<package name="libayatana-indicator" project="openSUSE:Factory">
+  <title>Ayatana panel indicator applet libraries</title>
+  <description>This library contains information to build indicators to go into the indicator applet.</description>
+  <devel project="X11:Unity" package="libayatana-indicator"/>
+</package>

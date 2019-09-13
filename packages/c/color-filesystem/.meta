@@ -1,0 +1,5 @@
+<package name="color-filesystem" project="openSUSE:Factory">
+  <title>Color filesystem layout</title>
+  <description>This package provides directories and rpm macros that are required/used to store color management data for many applications.</description>
+  <devel project="multimedia:color_management" package="color-filesystem"/>
+</package>

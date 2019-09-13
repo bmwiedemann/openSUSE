@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>9f01e541ddaf2cff558ad64d79cb7c95</srcmd5>
+    <version>0.9</version>
+    <time>1241145387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>9f01e541ddaf2cff558ad64d79cb7c95</srcmd5>
+    <version>0.9</version>
+    <time>1241145387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>474e8db5386e05c086d843756d6d3fc6</srcmd5>
+    <version>0.9</version>
+    <time>1268924112</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>474e8db5386e05c086d843756d6d3fc6</srcmd5>
+    <version>0.9</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>474e8db5386e05c086d843756d6d3fc6</srcmd5>
+    <version>0.9</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>474e8db5386e05c086d843756d6d3fc6</srcmd5>
+    <version>0.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>474e8db5386e05c086d843756d6d3fc6</srcmd5>
+    <version>0.9</version>
+    <time>1319182005</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>57deec92abcf60c80406b61bbca15675</srcmd5>
+    <version>0.9</version>
+    <time>1323192024</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>57deec92abcf60c80406b61bbca15675</srcmd5>
+    <version>0.9</version>
+    <time>1340183480</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>57deec92abcf60c80406b61bbca15675</srcmd5>
+    <version>0.9</version>
+    <time>1359109108</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>fd4428013790727588db9a587bd7a039</srcmd5>
+    <version>0.9</version>
+    <time>1378899530</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198280</requestid>
+  </revision>
+  <revision rev="12" vrev="21">
+    <srcmd5>fd4428013790727588db9a587bd7a039</srcmd5>
+    <version>0.9</version>
+    <time>1379662701</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="23">
+    <srcmd5>fd4428013790727588db9a587bd7a039</srcmd5>
+    <version>0.9</version>
+    <time>1409301266</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="24">
+    <srcmd5>5511d5acbe48a67ae1ba5c066de07216</srcmd5>
+    <version>0.9</version>
+    <time>1427983009</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292622</requestid>
+  </revision>
+  <revision rev="15" vrev="25">
+    <srcmd5>2138dc0dff86e49db380239a94618c1b</srcmd5>
+    <version>0.9</version>
+    <time>1495442826</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496571</requestid>
+  </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>3f94e82fb7cf9d8ca4a771f8726dbf3a</srcmd5>
+    <version>0.9</version>
+    <time>1505920145</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527011</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4a6b4ebc586d033b9a18f85bfcf149e4</srcmd5>
+    <version>1.4</version>
+    <time>1532681828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625408</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>87943193f55787e17f154161832efea3</srcmd5>
+    <version>1.4</version>
+    <time>1543953360</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653643</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>8660fe239ad64dfdd6bee8e126740b3e</srcmd5>
+    <version>1.4</version>
+    <time>1545141234</time>
+    <user>dimstar_suse</user>
+    <comment>Build against objectweb-asm</comment>
+    <requestid>657201</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c220ebf5a821edd059b11f1fb66d3cc5</srcmd5>
+    <version>0.9.6</version>
+    <time>1328261166</time>
+    <user>coolo</user>
+    <comment>Python is awesome</comment>
+    <requestid>102356</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c220ebf5a821edd059b11f1fb66d3cc5</srcmd5>
+    <version>0.9.6</version>
+    <time>1340184064</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>c220ebf5a821edd059b11f1fb66d3cc5</srcmd5>
+    <version>0.9.6</version>
+    <time>1359110060</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>c220ebf5a821edd059b11f1fb66d3cc5</srcmd5>
+    <version>0.9.6</version>
+    <time>1379664206</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>c220ebf5a821edd059b11f1fb66d3cc5</srcmd5>
+    <version>0.9.6</version>
+    <time>1409302903</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>7681554d3fcef2797e1d4d12a1eeb1be</srcmd5>
+    <version>0.9.6</version>
+    <time>1499754487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509283</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>2683d3a8d2b3f5e08f1995b8d6b382f4</srcmd5>
+    <version>0.9.6</version>
+    <time>1529402535</time>
+    <user>maxlin_factory</user>
+    <comment>Clean SPEC file (forwarded request 616912 from mcepl)</comment>
+    <requestid>616913</requestid>
+  </revision>
+</revisionlist>

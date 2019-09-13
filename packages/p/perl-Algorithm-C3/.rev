@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1167997310a8f93b32c8506d60428399</srcmd5>
+    <version>0.08</version>
+    <time>1290098209</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52861 from user computersalat
+</comment>
+    <requestid>52861</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c658e7ebdf62e265893c8ed1d66fd4a2</srcmd5>
+    <version>0.08</version>
+    <time>1291581246</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54459 from user coolo
+</comment>
+    <requestid>54459</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cd89c0fd6769bbb7e04f01372e0044f4</srcmd5>
+    <version>0.08</version>
+    <time>1291581250</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54459
+</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>cd89c0fd6769bbb7e04f01372e0044f4</srcmd5>
+    <version>0.08</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>8d1fc4115af054eab3e6a27901112f7e</srcmd5>
+    <version>0.08</version>
+    <time>1316447810</time>
+    <user>lrupp</user>
+    <comment>- reformat spec file</comment>
+    <requestid>82406</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>8d1fc4115af054eab3e6a27901112f7e</srcmd5>
+    <version>0.08</version>
+    <time>1319182238</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>ea001ecdcb9122ec3d2efbb8c714961a</srcmd5>
+    <version>0.08</version>
+    <time>1321524297</time>
+    <user>coolo</user>
+    <comment>- use original tar</comment>
+    <requestid>91896</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>faec94a91c8cfb7d498c43b97f83479d</srcmd5>
+    <version>0.08</version>
+    <time>1323193028</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>faec94a91c8cfb7d498c43b97f83479d</srcmd5>
+    <version>0.08</version>
+    <time>1340183789</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>faec94a91c8cfb7d498c43b97f83479d</srcmd5>
+    <version>0.08</version>
+    <time>1359109591</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>faec94a91c8cfb7d498c43b97f83479d</srcmd5>
+    <version>0.08</version>
+    <time>1379663542</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>68516266b44e4397f96adb548c6e252b</srcmd5>
+    <version>0.09</version>
+    <time>1394386422</time>
+    <user>coolo</user>
+    <comment>- updated to 0.09
+    - convert to use ExtUtils::MakeMaker using distar
+    - include repo and bugtracker metadata
+- regenerate spec file</comment>
+    <requestid>224951</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>68516266b44e4397f96adb548c6e252b</srcmd5>
+    <version>0.09</version>
+    <time>1409302149</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cac550411106811061003e4333a854c8</srcmd5>
+    <version>0.10</version>
+    <time>1410795696</time>
+    <user>coolo</user>
+    <comment>- updated to 0.10
+ - declare minimum version of perl as 5.6 in metadata</comment>
+    <requestid>249282</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="sca-patterns-base" project="openSUSE:Factory">
+  <title>Supportconfig Analysis Pattern Base Libraries</title>
+  <description>Supportconfig Analysis (SCA) appliance pattern base libraries used by all patterns</description>
+  <devel project="Novell:NTS:Unstable" package="sca-patterns-base"/>
+</package>

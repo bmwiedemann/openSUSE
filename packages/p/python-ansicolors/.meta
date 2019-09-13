@@ -1,0 +1,5 @@
+<package name="python-ansicolors" project="openSUSE:Factory">
+  <title>Ansiicolors</title>
+  <description>A simple module to add ANSI colors and decorations to your settings.</description>
+  <devel project="devel:languages:python" package="python-ansicolors"/>
+</package>

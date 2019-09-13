@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3e0502b4562de7dac6f61c30b79a724e</srcmd5>
+    <version>1.0.38</version>
+    <time>1336035398</time>
+    <user>coolo</user>
+    <comment>new font</comment>
+    <requestid>115061</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>82ae39479d4fe9c8412e66d4317838aa</srcmd5>
+    <version>1.0.38</version>
+    <time>1338017135</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122153</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>82ae39479d4fe9c8412e66d4317838aa</srcmd5>
+    <version>1.0.38</version>
+    <time>1340183406</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5f68dadd9f706993ad8d97e46318cda1</srcmd5>
+    <version>1.0.38</version>
+    <time>1347618311</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133956</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>5f68dadd9f706993ad8d97e46318cda1</srcmd5>
+    <version>1.0.38</version>
+    <time>1359108992</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>5f68dadd9f706993ad8d97e46318cda1</srcmd5>
+    <version>1.0.38</version>
+    <time>1379662540</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>5f68dadd9f706993ad8d97e46318cda1</srcmd5>
+    <version>1.0.38</version>
+    <time>1409301082</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

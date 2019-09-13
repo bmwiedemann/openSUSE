@@ -1,0 +1,304 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3464b1350c12cdd19476d14775fe5286</srcmd5>
+    <version>0.8.1</version>
+    <time>1344065969</time>
+    <user>coolo</user>
+    <comment>#hackweek8</comment>
+    <requestid>129323</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f0fae8e477e8822a3ad0a5650f2b1ace</srcmd5>
+    <version>0.8.1</version>
+    <time>1346529561</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>132173</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f0fae8e477e8822a3ad0a5650f2b1ace</srcmd5>
+    <version>0.8.1</version>
+    <time>1359110319</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bef562d365838896708022706894f6e9</srcmd5>
+    <version>0.8.4</version>
+    <time>1363769656</time>
+    <user>coolo</user>
+    <comment>- update to 0.8.4 - fixes for fedora 18
+- use url for sources</comment>
+    <requestid>159803</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fee49ce19c3a8e482ab4bb8847428289</srcmd5>
+    <version>0.9.2</version>
+    <time>1367222190</time>
+    <user>coolo</user>
+    <comment>- support ruby 2.0
+
+- update to 0.9.2 - no changelog
+
+- fix redirection in gem2rpm-opensuse</comment>
+    <requestid>173615</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6614eeb4988a663dbd927ffec39ff400</srcmd5>
+    <version>0.9.2</version>
+    <time>1369641583</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176253</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0203998069b5d23f2dddf751d8e5aa51</srcmd5>
+    <version>0.9.2</version>
+    <time>1370453620</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>177151</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>e6c33499592e6414378a655ae0cfef14</srcmd5>
+    <version>0.9.2</version>
+    <time>1370925483</time>
+    <user>coolo</user>
+    <comment>- make sure license.txt is also symlinked
+
+- integrate more of the version into the mod_weight to give
+  an easier job to update-alternatives
+- use --force in update-alternatives to replace (old) binaries</comment>
+    <requestid>178307</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>44dbb4255f9cdcc1cdf2235bc2e0789e</srcmd5>
+    <version>0.9.2</version>
+    <time>1372271248</time>
+    <user>coolo</user>
+    <comment>- doing update-alternatives correctly after reading
+   http://en.opensuse.org/openSUSE:Packaging_Multiple_Version_guidelines
+
+- avoid --force in update-alternatives as SLE11 does not have that ;(</comment>
+    <requestid>181056</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>44dbb4255f9cdcc1cdf2235bc2e0789e</srcmd5>
+    <version>0.9.2</version>
+    <time>1379664524</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>0d576e01a4d3e565513773566b45a89b</srcmd5>
+    <version>0.9.2</version>
+    <time>1390482381</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214057</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>e05cb6c0b1380efef3e3ce7e8de58ea0</srcmd5>
+    <version>0.9.2</version>
+    <time>1391765391</time>
+    <user>scarabeus_factory</user>
+    <comment>- buildrequire ruby-devel for extensions</comment>
+    <requestid>221116</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>069388da5f60c5d7d6a56a37c51c4ad7</srcmd5>
+    <version>0.10.1</version>
+    <time>1406479646</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>242536</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>069388da5f60c5d7d6a56a37c51c4ad7</srcmd5>
+    <version>0.10.1</version>
+    <time>1409303234</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>c4cff99508a70a082a98229739c08df2</srcmd5>
+    <version>0.10.1</version>
+    <time>1410514101</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>248325</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>34191102311e394c5a4fbc7671f24459</srcmd5>
+    <version>0.10.1</version>
+    <time>1413782812</time>
+    <user>coolo</user>
+    <comment>- add 0011-fixes-for-the-opensuse-template.patch to survive
+  format_spec formatting
+
+- added 0009-rubinius-has-no-extensions-docdir.patch
+  special casing for rubinius
+- added 0010-switch-to-new-packaging-scheme-by-default.patch
+  move to new packaging templates by default
+
+- added ruby 1.9 support
+
+- added ruby 1.8 support
+- also guarded the 2.1 part
+
+- added 0008-dont-allow-suffixes-with-just-a-plain-number.-prefix.patch 
+  Dont allow an suffix with just a plain number. prefix it with
+  ruby.
+
+- added ruby 2.0 support</comment>
+    <requestid>256648</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>84c115c53c7bd20c37fabcd7c5d7a7dd</srcmd5>
+    <version>0.10.1</version>
+    <time>1424118113</time>
+    <user>coolo</user>
+    <comment>- more patches from git:
+A    0010-Try-to-load-rbconfigpackagingsupport-and-fail-gracef.patch
+A    0011-Add-support-for-scripts-pre-post-for-subpackages.patch
+A    0012-typo-in-gem2rpm.yml.documentation-custom_pkgs-instea.patch
+A    0013-Also-tag-LICENSE-MIT-as-docfile.patch
+A    0014-Refactor-into-multiple-lines.patch
+A    0015-Add-licence-to-the-list-of-license-files-as-well.patch
+A    0016-add-two-more-ways-to-express-changes.patch
+
+- added 0009-No-longer-require-the-ruby-version-inside-the-subpac.patch
+  No longer require the ruby version inside the subpackage
+  With the buildrequires we already make sure that the package is
+  only built if we find a recent enough ABI. then the normal
+  $interpreter(abi) requires generated by rpm is enough
+
+- refreshed patch series to match the git again:
+  M 0001-use-the-ID-from-os-release-to-use-the-proper-templat.patch
+  M 0002-added-basic-config-file-support-to-gem2rpm-in-yaml-f.patch
+  A 0003-new-opensuse-templates.-they-require-the-config-file.patch
+  A 0004-added-example-gem2rpm.yml.patch
+  A 0005-properly-shorten-description-and-summary.patch
+  A 0006-Preserve-the-license-header-found-in-the-output-file.patch
+  A 0007-fixes-for-the-opensuse-template.patch
+  A 0008-do-not-use-not-.-not-supported-on-1.8-e.g.patch
+  D 0003-sle-12-templates.-they-require-the-config-file-suppo.patch
+  D 0004-openSUSE-template-fixes.patch
+  D 0005-added-example-gem2rpm.yml.patch
+  D 0006-properly-shorten-description-and-summary.patch
+  D 0007-Preserve-the-license-header-found-in-the-output-file.patch
+  D 0008-dont-allow-suffixes-with-just-a-plain-number.-prefix.patch</comment>
+    <requestid>285500</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>7e6cc321cb5262d77e26eda3c3686eeb</srcmd5>
+    <version>0.10.1</version>
+    <time>1430980064</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>297747</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>f6bfdaced35566da614337176f292343</srcmd5>
+    <version>0.10.1</version>
+    <time>1448400626</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>345138</requestid>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>90d149e17b72482590d05fb548059892</srcmd5>
+    <version>0.10.1</version>
+    <time>1460358662</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0017-touch-unpacked-sources.patch to please build-compare</comment>
+    <requestid>385113</requestid>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>0f0ae8c86517bbb5b6633a7dcb705842</srcmd5>
+    <version>0.10.1</version>
+    <time>1471008915</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>417738</requestid>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>7623b38fee0ac8c1f14ccb2306c23898</srcmd5>
+    <version>0.10.1</version>
+    <time>1479662232</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>440735</requestid>
+  </revision>
+  <revision rev="23" vrev="12">
+    <srcmd5>3b36cc083b92ecdc5deeff517b8fc389</srcmd5>
+    <version>0.10.1</version>
+    <time>1505502148</time>
+    <user>dimstar_suse</user>
+    <comment>We want early testing of ruby 2.5</comment>
+    <requestid>523220</requestid>
+  </revision>
+  <revision rev="24" vrev="13">
+    <srcmd5>ad4f1600eaa7cb036cb0ead552d89ea3</srcmd5>
+    <version>0.10.1</version>
+    <time>1511086023</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>542106</requestid>
+  </revision>
+  <revision rev="25" vrev="14">
+    <srcmd5>072413202b25021ca6ab2095c6c1a197</srcmd5>
+    <version>0.10.1</version>
+    <time>1549623732</time>
+    <user>coolo</user>
+    <comment>- [42.3/sle12] disable ruby 2.3 and 2.4 so we can enable 2.6
+
+- add ruby 2.6 support
+
+- enhances.patch is a WIP but we add it to the filelist for the
+  source validator
+
+- added binary_map.patch:
+  add way to avoid conflicts with non rubygems packages in /usr/bin
+- added template_loader.patch (boo#1092585)</comment>
+    <requestid>671139</requestid>
+  </revision>
+  <revision rev="26" vrev="15">
+    <srcmd5>fc99511c0b2ff9a442ab854aea804ef6</srcmd5>
+    <version>0.10.1</version>
+    <time>1551385480</time>
+    <user>coolo</user>
+    <comment>- Update from git. Add:
+A    0027-quote-version_suffix-in-gem2rpm.yml.documentation-to.patch
+A    0028-add-binary_map-support.patch
+A    0029-Use-or-for-the-conditions-instead-of-and.patch
+A    0030-gem_package.spec.erb-sync-with-ruby-common.patch
+A    0031-use-template-opensuse-on-openSUSE-Tumbleweed-where-e.patch
+A    0032-Replace-no-rdoc-no-ri-with-no-document.patch
+And refresh all others
+Remove:
+D    binary_map.patch
+D    enhances.patch
+
+- Use less strict PreReq replacements.
+
+- added 0008-dont-allow-suffixes-with-just-a-plain-number.-prefix.patch
+  0003-sle-12-templates.-they-require-the-config-file-suppo.patch
+  0005-added-example-gem2rpm.yml.patch
+  0006-properly-shorten-description-and-summary.patch
+  0007-Preserve-the-license-header-found-in-the-output-file.patch
+- make sure the sle12 template is also installed
+- no longer provide stuff for older distributions, we rely on patched
+- fix requirements, as package need to run json parser
+  http://lists.opensuse.org/opensuse-ruby/2010-12/msg00001.html</comment>
+    <requestid>678367</requestid>
+  </revision>
+  <revision rev="27" vrev="16">
+    <srcmd5>6d1ee63125739b9f20793f07761bc37b</srcmd5>
+    <version>0.10.1</version>
+    <time>1562057373</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>712555</requestid>
+  </revision>
+</revisionlist>

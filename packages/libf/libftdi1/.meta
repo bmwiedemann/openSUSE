@@ -1,0 +1,7 @@
+<package name="libftdi1" project="openSUSE:Factory">
+  <title>Library to program and control the FTDI USB controller</title>
+  <description>Library to program and control the FTDI USB controller. 
+This library is used by many programs accessing FTDI USB-to-RS232 converters.</description>
+  <devel project="hardware" package="libftdi1"/>
+  <url>www.intra2net.com/en/developer/libftdi/</url>
+</package>

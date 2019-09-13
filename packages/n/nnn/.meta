@@ -1,0 +1,7 @@
+<package name="nnn" project="openSUSE:Factory">
+  <title>nnn</title>
+  <description>nnn is a fork of noice, a lightweight terminal file browser with easy keyboard shortcuts for navigation, opening files and running tasks.
+
+There is no config file and mime associations are hard-coded.</description>
+  <devel project="utilities" package="nnn"/>
+</package>

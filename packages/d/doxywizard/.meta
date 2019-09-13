@@ -1,0 +1,6 @@
+<package name="doxywizard" project="openSUSE:Factory">
+  <title>Graphical User Interface for Doxygen</title>
+  <description>Doxywizard is a graphical front-end to read/edit/write doxygen
+configuration files.</description>
+  <devel project="openSUSE:Factory" package="doxygen"/>
+</package>

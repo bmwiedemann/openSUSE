@@ -1,0 +1,5 @@
+<package name="kdepim-addons" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="kdepim-addons"/>
+</package>

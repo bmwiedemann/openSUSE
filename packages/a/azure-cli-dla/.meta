@@ -1,0 +1,11 @@
+<package name="azure-cli-dla" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'data lake analytics' Command Module</title>
+  <description>Microsoft Azure CLI 'data lake analytics' Command Module
+
+This package is for the 'data lake analytics' module.
+i.e. 'az dla'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-dla"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="groovy18" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="groovy18"/>
+</package>

@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a24fe0c9cd9875c8ab18658f34428ae3</srcmd5>
+    <version>3.4.1</version>
+    <time>1533887336</time>
+    <user>dimstar_suse</user>
+    <comment>For cura.
+
+&gt; %cmake already handles LIB_SUFFIX so you don't have to.
+done
+
+&gt; Also please use full source URLs, see https://en.opensuse.org/SourceUrls
+there is no online file with xz compression, so the url is in the _service file.</comment>
+    <requestid>628089</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b4af462c808e04c07ed011363cf4d761</srcmd5>
+    <version>3.5.1</version>
+    <time>1540447956</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.5.1
+  * version change only
+
+- Rename %soname to %sover to better reflect its use.
+- Fix RPM groups for Factory.</comment>
+    <requestid>642561</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6535e4a66bbca4e0aaae7805aae0c841</srcmd5>
+    <version>3.6.0</version>
+    <time>1551113625</time>
+    <user>coolo</user>
+    <comment>- update to version 3.6.0
+  * version change only</comment>
+    <requestid>678192</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>00ebb193fbfcb941900c342bf5db6441</srcmd5>
+    <version>4.1.0</version>
+    <time>1562843601</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.0
+  * https://ultimaker.com/en/products/ultimaker-cura-software/release-notes
+- enable test cases</comment>
+    <requestid>712875</requestid>
+  </revision>
+</revisionlist>

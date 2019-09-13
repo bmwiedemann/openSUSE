@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c282173b9cfa9ba3c84250cafff1c35</srcmd5>
+    <version>1.10.2</version>
+    <time>1337755931</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>121699</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4c282173b9cfa9ba3c84250cafff1c35</srcmd5>
+    <version>1.10.2</version>
+    <time>1340183201</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6ca9cac4f5539676adc429dd89ab800f</srcmd5>
+    <version>1.11</version>
+    <time>1351662899</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.11
+* Be single-threaded by default due to an inherent race condition;
+  use -o multithreaded to get the old behavior back.
+* Respect setgid bit on directories when using --create-as-user
+
+- Update to new upstream version 1.10.6
+* a memory bug from 1.10.1, and --create-as-user and thread
+  safety regressions were resolved
+* honor CFLAGS in ./configure call
+* fix a short-allocation that led to a crash in bindfs_readdir
+* implement a lookup cache to speed up repeated lookups
+  (helpful for networked user databases, e.g. on LDAP)</comment>
+    <requestid>139583</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6ca9cac4f5539676adc429dd89ab800f</srcmd5>
+    <version>1.11</version>
+    <time>1359108700</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0bf165201c47be944cce08be9cabeaf8</srcmd5>
+    <version>1.12</version>
+    <time>1362462200</time>
+    <user>coolo</user>
+    <comment>Factory only.
+- Update to new upstream release 1.12 (bnc#806956)</comment>
+    <requestid>157215</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b3abae7ebde6247be0ffd4be171773ba</srcmd5>
+    <version>1.12.2</version>
+    <time>1377248858</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195947</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b3abae7ebde6247be0ffd4be171773ba</srcmd5>
+    <version>1.12.2</version>
+    <time>1379662035</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>592bfee9f056b5d821e958f8286f97fc</srcmd5>
+    <version>1.12.3</version>
+    <time>1385965177</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>209039</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1ec502ab685f9076164bec65d182c44e</srcmd5>
+    <version>1.12.6</version>
+    <time>1407318154</time>
+    <user>coolo</user>
+    <comment>forward request 243097 by illuusio</comment>
+    <requestid>243729</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1ec502ab685f9076164bec65d182c44e</srcmd5>
+    <version>1.12.6</version>
+    <time>1409300563</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>10c79f21cad0f890f5e22c45f866a7cc</srcmd5>
+    <version>1.12.7</version>
+    <time>1443336024</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.12.7</comment>
+    <requestid>333676</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>70586fc8f03c8049c87fba50e92830d5</srcmd5>
+    <version>1.13.0</version>
+    <time>1447588006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.13.0</comment>
+    <requestid>344296</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1cf04bd2156dddb74e922c4f359353b6</srcmd5>
+    <version>1.13.1</version>
+    <time>1458560730</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>375780</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>96d8f857b98a79e2b28bde57d55dccbd</srcmd5>
+    <version>1.13.2</version>
+    <time>1474976730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.13.2</comment>
+    <requestid>430505</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2dec9cd5c5bc69f3797e320360566038</srcmd5>
+    <version>1.13.7</version>
+    <time>1504521350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.13.7
+no _service here, yo stupid bot</comment>
+    <requestid>520339</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>aad336cccc8d86630592995c98560f0d</srcmd5>
+    <version>1.13.8</version>
+    <time>1510232866</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.13.8</comment>
+    <requestid>540019</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>02b4ac6ffc379d6a470639fb2656b952</srcmd5>
+    <version>1.13.9</version>
+    <time>1518187610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.13.9</comment>
+    <requestid>573921</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b01fb68ac21b05fd06ba2dfccea83bf5</srcmd5>
+    <version>1.14.1</version>
+    <time>1566551388</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.14.1</comment>
+    <requestid>725417</requestid>
+  </revision>
+</revisionlist>

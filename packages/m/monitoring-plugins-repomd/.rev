@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="100">
+    <srcmd5>7488cd466ec0894c11ffb1ea4725b251</srcmd5>
+    <version>2.0</version>
+    <time>1455190631</time>
+    <user>dimstar_suse</user>
+    <comment>New package for openSUSE:Factory: check, if a repomd repository is out-of date</comment>
+    <requestid>348667</requestid>
+  </revision>
+  <revision rev="2" vrev="101">
+    <srcmd5>68fa2e0170e774dd7f13722f5ba33a42</srcmd5>
+    <version>2.0</version>
+    <time>1456127858</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>360122</requestid>
+  </revision>
+  <revision rev="3" vrev="102">
+    <srcmd5>5f8423c65d5b2ee82a78a59b239a663d</srcmd5>
+    <version>2.0</version>
+    <time>1555488479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694437</requestid>
+  </revision>
+  <revision rev="4" vrev="103">
+    <srcmd5>d435b878b8940036ff8728637935a1e1</srcmd5>
+    <version>2.0</version>
+    <time>1555928804</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696475</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>042e39d0b7b820984787a24b4ca02c6d</srcmd5>
+    <version>2.1</version>
+    <time>1556622321</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1:
+  + be a bit more robust if curl fails or produces unknown output
+- include abstractions/bash and abstractions/openssl in the apparmor
+  profile to avoid misleading DENIED messages in audit log
+- path for grep, cat and mktemp were moved to /usr/bin - use sed 
+  to adjust the script in spec</comment>
+    <requestid>698934</requestid>
+  </revision>
+</revisionlist>

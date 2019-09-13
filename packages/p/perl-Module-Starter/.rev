@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35269ecbfea564b03a0aa16020fc3205</srcmd5>
+    <version>1.56</version>
+    <time>1302514329</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66745 from user coolo
+</comment>
+    <requestid>66745</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0803db86020e1d9c7001b45fff56524e</srcmd5>
+    <version>1.56</version>
+    <time>1302514340</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66745
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>0803db86020e1d9c7001b45fff56524e</srcmd5>
+    <version>1.56</version>
+    <time>1319182288</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3abd53f470f10489a7fe3d7581994d98</srcmd5>
+    <version>1.58</version>
+    <time>1321278026</time>
+    <user>coolo</user>
+    <comment>- update to 1.58
+    * Added prereq on Path::Class (RT #68360).
+    * Doc fixes by Nicholas Bamber and Salvatore Bonaccorso (RT #68385).
+    * No functional changes.
+    * Removing English from unnecessary tests that confuse a tester.</comment>
+    <requestid>91025</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4b51f119d03744efc917903c10b00303</srcmd5>
+    <version>1.58</version>
+    <time>1323193475</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>4b51f119d03744efc917903c10b00303</srcmd5>
+    <version>1.58</version>
+    <time>1340183877</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>4b51f119d03744efc917903c10b00303</srcmd5>
+    <version>1.58</version>
+    <time>1359109741</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dddbc63bf7b2eebaceda41340857044b</srcmd5>
+    <version>1.60</version>
+    <time>1370789920</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 177805 from coolo)</comment>
+    <requestid>177848</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>dddbc63bf7b2eebaceda41340857044b</srcmd5>
+    <version>1.60</version>
+    <time>1379663750</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>04279af1b7145f0842f4499c48a19f50</srcmd5>
+    <version>1.62</version>
+    <time>1386757924</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>209961</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>04279af1b7145f0842f4499c48a19f50</srcmd5>
+    <version>1.62</version>
+    <time>1409302388</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a1657fa144384fce49b0ef267f3d0e3a</srcmd5>
+    <version>1.71</version>
+    <time>1429658271</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296058</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1a57cde632979b5143b7f9396ed5cea7</srcmd5>
+    <version>1.72</version>
+    <time>1491469258</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482702</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ef8858fdafef94d99883b0e9b1c7181c</srcmd5>
+    <version>1.75</version>
+    <time>1530303799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617443</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>00daf545e6c83b18b0c389b9814f61eb</srcmd5>
+    <version>1.76</version>
+    <time>1553084321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684910</requestid>
+  </revision>
+</revisionlist>

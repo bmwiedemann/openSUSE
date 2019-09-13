@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c0d0d375b1d5b7888d08fd6913fd0934</srcmd5>
+    <version>0.2</version>
+    <time>1373029807</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>182201</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c0d0d375b1d5b7888d08fd6913fd0934</srcmd5>
+    <version>0.2</version>
+    <time>1379664289</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>775f3deb0244e0a6d3fa6ab299361a2f</srcmd5>
+    <version>0.5</version>
+    <time>1382351566</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 0.5:
+  * Add rest verb as prefix for custom_actions
+
+- update to 0.4:
+  * Remove duplication in RESTControllerDirective
+  * Handle more pecan REST method
+
+- Update to version 0.3:
+  + Update pbr usage past the world of d2to1</comment>
+    <requestid>204094</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>87e23a5213deef977b60d9fadbba89c5</srcmd5>
+    <version>0.7</version>
+    <time>1394172380</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.7:
+  + Remove trailing slash from URLs
+
+- remove d2to1 dependency 
+
+- update to 0.6:
+  * Add support for DELETE and PATCH HTTP verbs</comment>
+    <requestid>224903</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9030e5eb1ff0fcad4933ed2dbca4b2a4</srcmd5>
+    <version>0.8.0</version>
+    <time>1399377750</time>
+    <user>coolo</user>
+    <comment>- update to version 0.8:
+  + Fix make rst for method not using wsme
+
+- Update to version 0.7.1:
+  + update announce.rst for 0.7.1 release
+  + Fix formatting issue for docstrings without param list
+  + fix tags syntax</comment>
+    <requestid>232806</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9030e5eb1ff0fcad4933ed2dbca4b2a4</srcmd5>
+    <version>0.8.0</version>
+    <time>1409302997</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>6a2818356b22aa10fc84bb9f09c18ed2</srcmd5>
+    <version>0.8.0</version>
+    <time>1441173237</time>
+    <user>coolo</user>
+    <comment>- Unify spec file. Use fedora compatible files macros</comment>
+    <requestid>328092</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7cf1ff78836ea6bd47b9cc88bf5e1aa3</srcmd5>
+    <version>0.9.0</version>
+    <time>1536833434</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 0.9:
+  * setup.cfg: Update with recent changes
+  * Port to Python 3
+- switch to singlespec</comment>
+    <requestid>632979</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2e58fe98b1920ccb9fc3da1f4b76d675</srcmd5>
+    <version>0.10.0</version>
+    <time>1556621979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697382</requestid>
+  </revision>
+</revisionlist>

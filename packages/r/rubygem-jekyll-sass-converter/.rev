@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>232a77718a04ffb4a5c480a112346496</srcmd5>
+    <version>1.4.0</version>
+    <time>1468579806</time>
+    <user>dimstar_suse</user>
+    <comment>needed by jekyll</comment>
+    <requestid>407388</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a768dbf5f4eab81391579f37c40d173c</srcmd5>
+    <version>1.5.0</version>
+    <time>1481459249</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444819</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>983f30f0cb72858b17bb6dc9731f5301</srcmd5>
+    <version>1.5.2</version>
+    <time>1520329520</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>574933</requestid>
+  </revision>
+</revisionlist>

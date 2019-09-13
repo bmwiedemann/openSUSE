@@ -1,0 +1,5 @@
+<package name="netbeans-svnclientadapter" project="openSUSE:Factory">
+  <title>Subversion Client Adapter</title>
+  <description>SVNClientAdapter is a high-level Java API for Subversion.</description>
+  <devel project="Java:packages" package="netbeans-svnclientadapter"/>
+</package>

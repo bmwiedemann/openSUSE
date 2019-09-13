@@ -1,0 +1,10 @@
+<package name="link-grammar" project="openSUSE:Factory">
+  <title>An English grammar checker</title>
+  <description>The Link Grammar Parser is a syntactic parser of English, based on link
+grammar, an original theory of English syntax. Given a sentence, the
+system assigns to it a syntactic structure, which consists of a set of
+labeled links connecting pairs of words. The parser also produces a
+&quot;constituent&quot; (Penn tree-bank style phrase tree) representation of a
+sentence (showing noun phrases, verb phrases, etc.).</description>
+  <devel project="GNOME:Factory" package="link-grammar"/>
+</package>

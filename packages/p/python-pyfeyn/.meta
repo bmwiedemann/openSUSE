@@ -1,0 +1,5 @@
+<package name="python-pyfeyn" project="openSUSE:Factory">
+  <title>PyFeyn</title>
+  <description>PyFeyn is a Python-language based system for drawing Feynman diagrams in Physics. It was inspired by the C++ FeynDiagram system, and aims to provide the same functionality and quality of output as that, with the added benefits of a modern interpreted language, an improved interface and output direct to both EPS and PDF</description>
+  <devel project="devel:languages:python:numeric" package="python-pyfeyn"/>
+</package>

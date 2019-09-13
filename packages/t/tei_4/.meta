@@ -1,0 +1,9 @@
+<package name="tei_4" project="openSUSE:Factory">
+  <title>TEI 4 DTD (SGML and XML)</title>
+  <description>If you want to mark up literary and linguistic texts for online
+research or for printing, the DTD of the TEI (Text Encoding Initiative)
+is the way to go. The TEI DTD comes with special markup elements and
+attributes for poems, plays, and novels as well as for critical
+apparatus, taxonomy systems, etc.</description>
+  <devel project="Publishing" package="tei_4"/>
+</package>

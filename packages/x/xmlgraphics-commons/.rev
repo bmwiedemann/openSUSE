@@ -1,0 +1,199 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7ff4d997e774e5ff0cdda842f1691e1</srcmd5>
+    <version>1.4</version>
+    <time>1289863684</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52379 from user mvyskocil
+</comment>
+    <requestid>52379</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0837d4bfcb2740f0e78fb6e4711a288c</srcmd5>
+    <version>1.4</version>
+    <time>1289863689</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52379
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>0837d4bfcb2740f0e78fb6e4711a288c</srcmd5>
+    <version>1.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>0837d4bfcb2740f0e78fb6e4711a288c</srcmd5>
+    <version>1.4</version>
+    <time>1319182603</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>6010e1857092709ffce7e9222a1c24d2</srcmd5>
+    <version>1.4</version>
+    <time>1323195393</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>0a875835a9a9139b96dc58a276252bd9</srcmd5>
+    <version>1.4</version>
+    <time>1340029785</time>
+    <user>coolo</user>
+    <comment>- fix jdk7 build (Fedora patch)</comment>
+    <requestid>125322</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>0a875835a9a9139b96dc58a276252bd9</srcmd5>
+    <version>1.4</version>
+    <time>1340184374</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>804c6afce546ad3c33c00b5d07512efd</srcmd5>
+    <version>1.5</version>
+    <time>1351317441</time>
+    <user>coolo</user>
+    <comment>- update to 1.5
+  * bug fix release
+  * improved code practices
+  * improved coverage of CCITTFax Group 3 image formats
+  * removed com.sun classes usage
+  * see http://xmlgraphics.apache.org/commons/changes.html#version_1.5
+  * drop upstreamed java7 patch</comment>
+    <requestid>139415</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>99154268b9b97afcc172023afb108787</srcmd5>
+    <version>1.5</version>
+    <time>1359020566</time>
+    <user>coolo</user>
+    <comment>- fix javadoc installation 
+
+- remove the symlink madness - jar and javadoc are not versioned anymore</comment>
+    <requestid>149635</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>99154268b9b97afcc172023afb108787</srcmd5>
+    <version>1.5</version>
+    <time>1359110663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>cc6817297da636cb9ea9448a13b34f3c</srcmd5>
+    <version>1.5</version>
+    <time>1378912312</time>
+    <user>scarabeus_factory</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198319</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>cc6817297da636cb9ea9448a13b34f3c</srcmd5>
+    <version>1.5</version>
+    <time>1379665091</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>cc6817297da636cb9ea9448a13b34f3c</srcmd5>
+    <version>1.5</version>
+    <time>1409303779</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>abef6f738c2c47606ac948d3876db8ff</srcmd5>
+    <version>2.0</version>
+    <time>1418054204</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264293</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5f0c5690ead865020f1781295c1428dd</srcmd5>
+    <version>2.0</version>
+    <time>1427983180</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292649</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>09de327561bdc77b123845fcdba9726e</srcmd5>
+    <version>2.1</version>
+    <time>1457353662</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>365979</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ab930c7ff4dc408b8f66e1f81f421dc3</srcmd5>
+    <version>2.1</version>
+    <time>1489345306</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477245</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>3bf3334f37adfb78b1857f325f10b431</srcmd5>
+    <version>2.1</version>
+    <time>1492011106</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>481797</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>7420e72a05cdb2cc6f7649ca473c6f33</srcmd5>
+    <version>2.1</version>
+    <time>1496327551</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires: javapackages-local (for maven conversions)</comment>
+    <requestid>496754</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>0234f9063816e23ad3cbfd9351c35942</srcmd5>
+    <version>2.1</version>
+    <time>1505920222</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527229</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>5ef5d9d84eb515d18cc02c9613d6995a</srcmd5>
+    <version>2.1</version>
+    <time>1508197882</time>
+    <user>dimstar_suse</user>
+    <comment>Condition correctly the maven defines</comment>
+    <requestid>533055</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>c0257c0ed29b95aaf12371caad507e74</srcmd5>
+    <version>2.1</version>
+    <time>1514679195</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk10</comment>
+    <requestid>559372</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>658cda2b38c56414724efca21bcac3d2</srcmd5>
+    <version>2.3</version>
+    <time>1535963600</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not run target  maven_artifacts as it just copies file from a-&gt;b
+  and fails with newer ant
+
+- Update to version 2.3:
+  * no changelog available</comment>
+    <requestid>631992</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>aeca4f2c62a78743b1953834952c1d29</srcmd5>
+    <version>2.3</version>
+    <time>1549311747</time>
+    <user>coolo</user>
+    <comment>Sanitize spec + clean requires + add OSGi manifest entries</comment>
+    <requestid>667392</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc58c9a4798c315d0c98154dcf996f6b</srcmd5>
+    <version>1.4.1</version>
+    <time>1554458764</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v1.4.1
+</comment>
+    <requestid>691706</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>93f5e0ee9b75ed71462139b096137d3d</srcmd5>
+    <version>1.4.2</version>
+    <time>1557264012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701311</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f02a6fc47a01791417bfd9941ea159e0</srcmd5>
+    <version>1.4.3</version>
+    <time>1558516652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704520</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4d4542fb58df463705b047bc7ba76c57</srcmd5>
+    <version>1.4.5</version>
+    <time>1564576077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719791</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1d7dbc43a8698fba0ec096ee2714fcc2</srcmd5>
+    <version>1.4.7</version>
+    <time>1568379594</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 1.4.7:
+  * no upstream changelog</comment>
+    <requestid>730196</requestid>
+  </revision>
+</revisionlist>

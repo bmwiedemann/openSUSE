@@ -1,0 +1,595 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f58a5b81b05cea600d395d2ef227507</srcmd5>
+    <version>20130913</version>
+    <time>1380201326</time>
+    <user>coolo</user>
+    <comment>Why not to have the fuzzer in openSUSE?</comment>
+    <requestid>199158</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>693a31afa1f6b49c354c7bc84551414c</srcmd5>
+    <version>20140119</version>
+    <time>1390395656</time>
+    <user>coolo</user>
+    <comment>update to 20140119 (forwarded request 214530 from jirislaby)</comment>
+    <requestid>214531</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>693a31afa1f6b49c354c7bc84551414c</srcmd5>
+    <version>20140119</version>
+    <time>1409303529</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8b09659c2f7a88e399ef4aa7ca263e8e</srcmd5>
+    <version>20141021</version>
+    <time>1414066865</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258075</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d6e01e08c39caee9e6dacd14207dbbfa</srcmd5>
+    <version>20141110</version>
+    <time>1415748108</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260833</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c3745d6e9b0b69ad8121937539cd9260</srcmd5>
+    <version>20141117</version>
+    <time>1417438864</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263405</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f1d12a621bfd2c3e23abb001e82335b9</srcmd5>
+    <version>20141206</version>
+    <time>1419249259</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>266016</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8c864592599541de4dd5fc4bf483cc0b</srcmd5>
+    <version>20150107</version>
+    <time>1421333932</time>
+    <user>dimstar_suse</user>
+    <comment>update to 20150107</comment>
+    <requestid>281311</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b472d273eb29a638365f20fd0effa6c6</srcmd5>
+    <version>20150215</version>
+    <time>1424255998</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286553</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>84870c5830de93bb01d6c29a5492bd55</srcmd5>
+    <version>20150429</version>
+    <time>1430595657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>304924</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a321e4541709f1a4f08317bd4dd23ff3</srcmd5>
+    <version>20150617</version>
+    <time>1435053604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20150617</comment>
+    <requestid>313049</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dadabfb3fee8b7c0122b40d7dc183f28</srcmd5>
+    <version>20150629</version>
+    <time>1436734368</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>315404</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>91e50c8a68e0b9408c4a345faf31c5ad</srcmd5>
+    <version>20150804</version>
+    <time>1440135690</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>324400</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dfe5fb983332070308a78d2b5c805064</srcmd5>
+    <version>20150905</version>
+    <time>1442638524</time>
+    <user>coolo</user>
+    <comment>- Update to 20150905</comment>
+    <requestid>331805</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>19bf60041509aef6c71ff4bff89cbf85</srcmd5>
+    <version>20151029</version>
+    <time>1446647614</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 20151029</comment>
+    <requestid>342076</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a5374b05e85e99b38558ebce0168da19</srcmd5>
+    <version>20151204</version>
+    <time>1449687100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20151204
+- Make building more verbose
+- Use default optflags for building</comment>
+    <requestid>347572</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2283f905212a6c9b8c559e584e809108</srcmd5>
+    <version>20151221</version>
+    <time>1450955804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20151221
+
+- Update to 20151214</comment>
+    <requestid>350254</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>95e9975ff4b3a21ef8de66752eb077e1</srcmd5>
+    <version>20151230</version>
+    <time>1452027314</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 20151230</comment>
+    <requestid>351887</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>99b8d99d11ffa907ba2eb4a21277a5e1</srcmd5>
+    <version>20160131</version>
+    <time>1454628692</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 20160131</comment>
+    <requestid>357353</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e6273ac2788acf94a5910ef2b1a86857</srcmd5>
+    <version>20160301</version>
+    <time>1457014582</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>364028</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a8f4686864a6c778e25c0ec2bff4694f</srcmd5>
+    <version>20160315</version>
+    <time>1459002263</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20160315
+- Install manpage</comment>
+    <requestid>375897</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c0041e16210a41845550a25d2acc8eb2</srcmd5>
+    <version>1.6~git.20160331</version>
+    <time>1459845860</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>383427</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>949bc0e8300a88ec437b0046f0b3d40f</srcmd5>
+    <version>1.6+git.20160520</version>
+    <time>1464014372</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6+git.20160520:</comment>
+    <requestid>397261</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>15744c6c7dae9d57bc8afe91c90ef637</srcmd5>
+    <version>1.6+git.20160526</version>
+    <time>1465336060</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>400023</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>83e175a1c0172a19a98bb78abf28a672</srcmd5>
+    <version>1.6+git.20160603</version>
+    <time>1466501449</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>403531</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0c560c6654e599eba5bc5c974d6eba4e</srcmd5>
+    <version>1.6+git.20160706</version>
+    <time>1468999152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6+git.20160706:
+  * check for potential failure to acquire testfile fd.
+  * fds/drm.c: Add forward declaration of struct.
+  * flesh out the bpf sanitiser a little.
+  * introduce object types for bpf maps &amp; progs
+  * make the BPF_PROG_LOAD case look more sane
+  * bpf: only do bpf_gen_filter for BPF_PROG_TYPE_SOCKET_FILTER
+  * fix wrong variable name in childops wait
+  * if we use the fallback seed, don't use rand() yet.
+  * Before falling back to gtod, try getrandom() if available.
+  * net/proto-unix.c: set protocol to 0 in unix_rand_socket()
+- Drop support for building on SLE-11 as builds are failing 
+  anyways</comment>
+    <requestid>411472</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>12d11f80bebaa3ba7ddc33eb57df5cad</srcmd5>
+    <version>1.6+git.20160826</version>
+    <time>1472379494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6+git.20160826:
+  * overwrite the correct pointer with the sockaddr
+  * Replace -&gt;generate with lists of valid socket triplets
+  * add support for privileged sockets to the socket generator.
+  * use correct loop boundary for privileged sockets
+  * add PF_CAIF valid triplets
+  * add PF_DECnet socket triplets
+  * dummy entry for (dead) econet
+  * add valid protos for PF_KCM
+  * add PF_X25 valid triplet
+  * remove -&gt;socket</comment>
+    <requestid>423375</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>036e8c0eca2ddeccd8d5eaee8a198eb6</srcmd5>
+    <version>1.6+git.20160913</version>
+    <time>1474016568</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427949</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f792b4332bda454c87c7e18a7aa82106</srcmd5>
+    <version>1.6+git.20160913</version>
+    <time>1474807512</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>430031</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>79217c646637c62b0999e2e64694622a</srcmd5>
+    <version>1.6+git.20161005</version>
+    <time>1476109290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433590</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>57dd41338eb6194e9a23faa1c2394e1e</srcmd5>
+    <version>1.6+git.20161018</version>
+    <time>1476997790</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6+git.20161018:</comment>
+    <requestid>436433</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d400576ff50cf72a13035d2847cc7830</srcmd5>
+    <version>1.7+git.20161028</version>
+    <time>1478377564</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7+git.20161028:
+  * disable the mremap page-dirtying for now
+  * pick read/write dirtying based on PROT settings of mapping
+  * for now disable periodic dirtying of mappings.
+  * Sanity checks in pid_alive
+  * update find.sh to a more interesting example.
+  * kill_pid debugging
+  * consolidate the seed initialization into init_seed
+  * Add FALLOC_FL_UNSHARE_RANGE flag to fallocate
+  * 1.7 release.
+  * Move version back to devel</comment>
+    <requestid>438381</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b4536da990419169eaff93f10cf973ef</srcmd5>
+    <version>1.7+git.20161108</version>
+    <time>1479074502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7+git.20161108:
+  * fix build when USE_BPF is not defined
+  * Some older distros apparently need types.h included here.</comment>
+    <requestid>440037</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>94bc40663bb646fc0695689037a455f6</srcmd5>
+    <version>1.7+git.20161222</version>
+    <time>1483048258</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to version 1.7+git.20161222:</comment>
+    <requestid>447783</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5ecd9465287cb44f1a1319d054e0d0ef</srcmd5>
+    <version>1.7+git.20170107</version>
+    <time>1485167748</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>450414</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2ec18d37df63e45fcfc215f824bb7855</srcmd5>
+    <version>1.7+git.20170315</version>
+    <time>1490026176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7+git.20170315:</comment>
+    <requestid>480675</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>eee71d42898b810a4a49c4ed19240c56</srcmd5>
+    <version>1.7+git.20170405</version>
+    <time>1492011432</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.7+git.20170405:</comment>
+    <requestid>486978</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2b60ff9a02bc6c5b958a102b161e86ed</srcmd5>
+    <version>1.7+git.20170506</version>
+    <time>1494938572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>494115</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fbedd2ad7288b6e7389f3d33e7711c65</srcmd5>
+    <version>1.7+git.20170512</version>
+    <time>1495268017</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495855</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>65fc8b1a252d88b4e30f8c58ff589a7e</srcmd5>
+    <version>1.7+git.20170612</version>
+    <time>1498202265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7+git.20170612:
+  * mark the sync syscalls as expensive
+  * reduce the likelyhood that we call expensive syscalls.
+
+- Update to version 1.7+git.20170525:
+  * add incoming packets to the correct place in the list.
+  * add the last op_nr to the childexited message
+  * add a flag to mark when we're expecting a spawn message.
+  * only process CHILD_EXITED messages if the opnr is current
+  * maintain a count of packets processed each scan of the child list.
+  * childhdr is already set at this point.
+  * use a single thread to process all child packets
+  * optimize packet rx list walk
+  * drop duplicate packets instead of adding them to the list.
+  * fix up cppcheck signedness warnings
+  * replace state machine with simpler drain logic</comment>
+    <requestid>504038</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d3f060d41f1823b6245774bd3b917295</srcmd5>
+    <version>1.7+git.20170712</version>
+    <time>1500975652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7+git.20170712:
+  * remove old debug leftover
+  * remove the syscall-in-subchild code.
+  * make the new seed be sequential (sort of)
+  * move the 'are we done' check to the generic child code.
+  * Include sys/io.h for UIO_MAXIOV symbol.
+  * ioctls/vfs.c: add more ioctls from linux/fs.h
+  * ioctls/vfs.c: FS_IOC_GETFSMAP
+  * get_syscall_entry: remove SYSCALL_OFFSET
+  * add new TCP setsockopts
+  * update setsockopt options
+  * special case tls for TCP_ULP
+  * update netlink protocols</comment>
+    <requestid>512274</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d9bcb10cf7c25831cf2f1b77497d247d</srcmd5>
+    <version>1.7+git.20170813</version>
+    <time>1502892907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7+git.20170813:
+  * dump_pid_stack: fix uninitialised variable
+  * beginnings of TCP_ULP support.
+  * add tls header
+  * only Werror on gcc7+</comment>
+    <requestid>516837</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8b897662c20e183cc7d898766b758934</srcmd5>
+    <version>1.7+git.20170825</version>
+    <time>1504102947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7+git.20170825:</comment>
+    <requestid>519315</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>0fe10225ba145e481ff0f9dd53a564b0</srcmd5>
+    <version>1.7+git.20170918</version>
+    <time>1507755773</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533154</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>00f3a51ec9f9817b9794435216e5a214</srcmd5>
+    <version>1.7+git.20171006</version>
+    <time>1509036341</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>536715</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4837c0bc47099dca64c2cb9a423a14de</srcmd5>
+    <version>1.8+git.20171103</version>
+    <time>1510322251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540176</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>b9a91525492c3834647145eaf1d9757e</srcmd5>
+    <version>1.8+git.20171103</version>
+    <time>1511949258</time>
+    <user>dimstar_suse</user>
+    <comment>- add compat-handle-removed-autofs-macros.patch to fix factory
+  build failure
+</comment>
+    <requestid>546177</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>47f86268ef44591066ed0765927faa46</srcmd5>
+    <version>1.9+git.20171219</version>
+    <time>1515623908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563296</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>58e8337b874afb50a99205fcdff8eb98</srcmd5>
+    <version>1.9+git.20180206</version>
+    <time>1518187870</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20180206:
+  * trinity: Add support for readdir svc
+  * trinity: Add support for copy_file_range svc
+  * trinity: Add support for mlock2 svc
+  * trinity: Add support for statx svc
+  * trinity: Add support for preadv2/pwritev2 svcs
+  * trinity: Update and comment on s390 system call table
+  * trinity: Fix compile error on linux 4.15 kernel</comment>
+    <requestid>574232</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>3d5a5a5e5eb30ed3cc0768acb241405b</srcmd5>
+    <version>1.9+git.20180228</version>
+    <time>1520778356</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20180228:
+  * suppress packed warning
+  * add sgxv2
+  * add ioctl pattern for sgx driver
+  * trinity: Add support for s390_sthyi svc
+  * trinity: Add support for s390_guarded_storage svc
+  * trinity: Add support for s390_pci_mmio_read and write
+  * trinity: Add support for runtime_instr svc
+- add memfd-do-not-redefine-memfd_create.patch
+- add mlock-move-MLOCK_ONFAULT-to-compat.h.patch
+</comment>
+    <requestid>585238</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>6ad1d8c780ccd0043cfac1dc5d8e9b7a</srcmd5>
+    <version>1.9+git.20180402</version>
+    <time>1523448174</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595312</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>882ab4fd40883ed566b39736009aadee</srcmd5>
+    <version>1.9+git.20180608</version>
+    <time>1530191693</time>
+    <user>dimstar_suse</user>
+    <comment>- workaround build with gcc8
+
+- Update to version 1.9+git.20180608:
+  * configure: fix build with kernel headers v4.17+
+  * trinity: check pidstatfile before fclose
+
+- Update to version 1.9+git.20180413:
+  * parisc-specific updates</comment>
+    <requestid>619542</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a25dbc521ebb4d3b1fb9daee5529fc83</srcmd5>
+    <version>1.9+git.20180827</version>
+    <time>1535538380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631918</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>dd94edc3616758acfb777621cdd9a82f</srcmd5>
+    <version>1.9+git.20180921</version>
+    <time>1538672586</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>639945</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>ba065ab180fa08133d3f673b7085d476</srcmd5>
+    <version>1.9+git.20190124</version>
+    <time>1560970914</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706046</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>fe2134c0b81edeb2d0cc3d3bb024ddad</srcmd5>
+    <version>1.9+git.20190614</version>
+    <time>1561641978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20190614:
+  * memfd build fixes for modern glibc
+  * cppcheck fixes
+  * strncpy -&gt; memcpy</comment>
+    <requestid>712154</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>9a4c01fee5d6266252a5bf6cd524cb73</srcmd5>
+    <version>1.9+git.20190701</version>
+    <time>1563456011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20190701:
+  * format string fixes
+  * don't free the default dump filename ptr
+  * remove pointless or
+  * Fix reversed file closures in ftrace code.
+  * Fix cut-n-paste errors in smc socket creation
+  * Map PF_XDP to string
+  * more signed-&gt;unsigned
+  * silence the perf dumper
+  * socket args are unsigned
+  * Don't do 10 iterations of sockets we can't generate
+  * no logging by default
+  * Bump version string to something that makes more sense
+  * Fix compile failure on centos7
+  * update x86-32 syscalls
+  * update prctl
+  * update setsockopts
+  * basic fspick support
+  * basic fsmount support
+  * basic fsconfig support
+  * basic fsopen support
+  * basic move_mount support
+  * basic open_tree support
+  * basic io_uring support
+  * Add pidfd_send_signal
+  * commit the additional PF_XDP bits
+  * Add PF_XDP support</comment>
+    <requestid>715671</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>30fdc82700f14091f517837ea16e440e</srcmd5>
+    <version>1.9+git.20190801</version>
+    <time>1567010251</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20190801:
+  * Remove DEVEL crud
+  * update TCP setsockopts
+  * Add SO_DETACH_REUSEPORT_BPF
+  * update x86-32 syscalls
+  * add new 5.3 syscalls</comment>
+    <requestid>726676</requestid>
+  </revision>
+</revisionlist>

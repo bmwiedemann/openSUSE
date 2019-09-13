@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ffb43bf0e84d0444bc0440ff4643f7c2</srcmd5>
+    <version>0.6.2</version>
+    <time>1541511213</time>
+    <user>dimstar_suse</user>
+    <comment>Python module for audio and music processing. Also used by some other python audio packages.</comment>
+    <requestid>646135</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>987d09b91e59b49c66837197fac17029</srcmd5>
+    <version>0.6.3</version>
+    <time>1554114896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684459</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>832297d9d68c331348c3b8896e9f6586</srcmd5>
+    <version>0.7.0</version>
+    <time>1564137816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718645</requestid>
+  </revision>
+</revisionlist>

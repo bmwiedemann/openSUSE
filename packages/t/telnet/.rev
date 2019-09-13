@@ -1,0 +1,215 @@
+<revisionlist>
+  <revision rev="1" vrev="33">
+    <srcmd5>a4f9c8ddfa05732e95c066425aea675b</srcmd5>
+    <version>1.2</version>
+    <time>1168904336</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="41">
+    <srcmd5>63d3ab0e7b9af5e9bb4a88fb0d0244e4</srcmd5>
+    <version>1.2</version>
+    <time>1172929049</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="45">
+    <srcmd5>8de8c36d9b27c0345335d1feaa63805d</srcmd5>
+    <version>1.2</version>
+    <time>1175185852</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="89">
+    <srcmd5>f80fd83ee9651e67efb8e6954d7eb9e9</srcmd5>
+    <version>1.2</version>
+    <time>1199705931</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="108">
+    <srcmd5>fb8168363b9d31e761a7c2ba37553ed8</srcmd5>
+    <version>1.2</version>
+    <time>1207770939</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="134">
+    <srcmd5>103ba7929c42d65836b54869bfa13c71</srcmd5>
+    <version>1.2</version>
+    <time>1220229504</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="141">
+    <srcmd5>f46d9b7a6590d638d36106b97f19206c</srcmd5>
+    <version>1.2</version>
+    <time>1243265200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="143">
+    <srcmd5>f46d9b7a6590d638d36106b97f19206c</srcmd5>
+    <version>1.2</version>
+    <time>1243265200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="144">
+    <srcmd5>5f8bdffbc7c99199c4dff694a76e6b3d</srcmd5>
+    <version>1.2</version>
+    <time>1263225494</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/telnet based on submit request 29033 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="145">
+    <srcmd5>4bd84f69912cacf9a02ca2075c002c52</srcmd5>
+    <version>1.2</version>
+    <time>1268926316</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="147">
+    <srcmd5>4bd84f69912cacf9a02ca2075c002c52</srcmd5>
+    <version>1.2</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="148">
+    <srcmd5>4bd84f69912cacf9a02ca2075c002c52</srcmd5>
+    <version>1.2</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="151">
+    <srcmd5>4bd84f69912cacf9a02ca2075c002c52</srcmd5>
+    <version>1.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="152">
+    <srcmd5>ef5bcbfa1911dba05a8d552ed84115ae</srcmd5>
+    <version>1.2</version>
+    <time>1309531039</time>
+    <user>saschpe</user>
+    <comment>- exit cleanly, when hostalias cannot be resolved (bnc#700229) (forwarded request 74874 from vitezslav_cizek)</comment>
+    <requestid>74940</requestid>
+  </revision>
+  <revision rev="15" vrev="153">
+    <srcmd5>02f08b5c7dae2fc29848634c3323c8ff</srcmd5>
+    <version>1.2</version>
+    <time>1309531051</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74940
+</comment>
+  </revision>
+  <revision rev="16" vrev="154">
+    <srcmd5>26ec02e91277594f1ea55b79ae90e005</srcmd5>
+    <version>1.2</version>
+    <time>1310477679</time>
+    <user>saschpe</user>
+    <comment>- made manpage more clear about the -b option (forwarded request 76104 from vitezslav_cizek)</comment>
+    <requestid>76108</requestid>
+  </revision>
+  <revision rev="17" vrev="155">
+    <srcmd5>aa88ce3c15ac72748eef47995817a6a1</srcmd5>
+    <version>1.2</version>
+    <time>1310477688</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76108
+</comment>
+  </revision>
+  <revision rev="18" vrev="157">
+    <srcmd5>aa88ce3c15ac72748eef47995817a6a1</srcmd5>
+    <version>1.2</version>
+    <time>1319182513</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="158">
+    <srcmd5>0dd38e747b44728f92c9d550f85e0a7f</srcmd5>
+    <version>1.2</version>
+    <time>1329242944</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104062</requestid>
+  </revision>
+  <revision rev="20" vrev="160">
+    <srcmd5>0dd38e747b44728f92c9d550f85e0a7f</srcmd5>
+    <version>1.2</version>
+    <time>1340184267</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="162">
+    <srcmd5>0dd38e747b44728f92c9d550f85e0a7f</srcmd5>
+    <version>1.2</version>
+    <time>1359110472</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="163">
+    <srcmd5>97e4561b0978d756817b0a19b317aa6e</srcmd5>
+    <version>1.2</version>
+    <time>1365174795</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162758 from namtrac)</comment>
+    <requestid>162801</requestid>
+  </revision>
+  <revision rev="23" vrev="165">
+    <srcmd5>97e4561b0978d756817b0a19b317aa6e</srcmd5>
+    <version>1.2</version>
+    <time>1379664788</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="167">
+    <srcmd5>97e4561b0978d756817b0a19b317aa6e</srcmd5>
+    <version>1.2</version>
+    <time>1409303469</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="168">
+    <srcmd5>0fe2965a57d85b9b07345cae7405b213</srcmd5>
+    <version>1.2</version>
+    <time>1412625884</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254158</requestid>
+  </revision>
+  <revision rev="26" vrev="169">
+    <srcmd5>93aa711e5e6a777938ff349d34428ac7</srcmd5>
+    <version>1.2</version>
+    <time>1413616096</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256719</requestid>
+  </revision>
+  <revision rev="27" vrev="170">
+    <srcmd5>2e96358cff5769a6939c702ffb8fef0e</srcmd5>
+    <version>1.2</version>
+    <time>1486552335</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454828</requestid>
+  </revision>
+  <revision rev="28" vrev="171">
+    <srcmd5>5bcea3385002a7191036a198fbe0f758</srcmd5>
+    <version>1.2</version>
+    <time>1498120489</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504899</requestid>
+  </revision>
+  <revision rev="29" vrev="172">
+    <srcmd5>4adff2378a6546007f4e4f27383a0664</srcmd5>
+    <version>1.2</version>
+    <time>1528021840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613084</requestid>
+  </revision>
+  <revision rev="30" vrev="173">
+    <srcmd5>44f76b84845382cb3f17c4d783aaae35</srcmd5>
+    <version>1.2</version>
+    <time>1565096864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719514</requestid>
+  </revision>
+</revisionlist>

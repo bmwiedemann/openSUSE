@@ -1,0 +1,13 @@
+<package name="ipmiutil" project="openSUSE:Factory">
+  <title>A package that provides easy-to-use IPMI server management utilities</title>
+  <description>The ipmiutil package provides easy-to-use utilities to view the SEL, 
+perform an IPMI chassis reset, set up the IPMI LAN and Platform Event Filter 
+entries to allow SNMP alerts, and other IPMI tasks.  
+These can be invoked with the metacommand ipmiutil, or via subcommand 
+shortcuts as well.  Man pages are provided.
+An IPMI driver can be provided by either the OpenIPMI driver (/dev/ipmi0)
+or the Intel IPMI driver (/dev/imb), etc.  If used locally and no driver is
+detected, ipmiutil will use user-space direct I/Os instead.</description>
+  <devel project="systemsmanagement" package="ipmiutil"/>
+  <url>http://ipmiutil.sourceforge.net</url>
+</package>

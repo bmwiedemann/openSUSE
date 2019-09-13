@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b2fa1ecb198c3d5329c97ae9d97ba14b</srcmd5>
+    <version>5.10.0</version>
+    <time>1274654377</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:prolog/swipl based on submit request 40376 from user poletti_marco
+</comment>
+    <requestid>40376</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b2fa1ecb198c3d5329c97ae9d97ba14b</srcmd5>
+    <version>5.10.0</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b2fa1ecb198c3d5329c97ae9d97ba14b</srcmd5>
+    <version>5.10.0</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9ae8fb5cdb570ac1e79be150c25f5da</srcmd5>
+    <version>5.10.2</version>
+    <time>1294972382</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57952 from user coolo
+</comment>
+    <requestid>57952</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>59954c0ad0bd407cabccda118741f2b8</srcmd5>
+    <version>5.10.2</version>
+    <time>1294972390</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57952
+</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>59954c0ad0bd407cabccda118741f2b8</srcmd5>
+    <version>5.10.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>59954c0ad0bd407cabccda118741f2b8</srcmd5>
+    <version>5.10.2</version>
+    <time>1319182499</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>541401cef01c115d2336d681b3f2445a</srcmd5>
+    <version>5.10.2</version>
+    <time>1323194804</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>e2b3946a8f7be8adc192a581eae4a8af</srcmd5>
+    <version>5.10.2</version>
+    <time>1336423979</time>
+    <user>coolo</user>
+    <comment>Make it work with pkg-config (and also update the changelog, this time).</comment>
+    <requestid>116558</requestid>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>e2b3946a8f7be8adc192a581eae4a8af</srcmd5>
+    <version>5.10.2</version>
+    <time>1340184250</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>7a717726a6c431fc35849f3a7175888d</srcmd5>
+    <version>5.10.2</version>
+    <time>1340895632</time>
+    <user>coolo</user>
+    <comment>- build require java-devel &gt;= 1.6.0 (forwarded request 126199 from mvyskocil)</comment>
+    <requestid>126277</requestid>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>b98b6d15254d50669e1589aaeac75cf0</srcmd5>
+    <version>5.10.2</version>
+    <time>1350454161</time>
+    <user>coolo</user>
+    <comment>- fix jpl build on powerpc64 (swipl-ppc64.patch)</comment>
+    <requestid>138321</requestid>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>b98b6d15254d50669e1589aaeac75cf0</srcmd5>
+    <version>5.10.2</version>
+    <time>1359110454</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>de620b46e140e8be0a99f41315869d55</srcmd5>
+    <version>5.10.2</version>
+    <time>1362992220</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 156916 from coolo)</comment>
+    <requestid>156939</requestid>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>de620b46e140e8be0a99f41315869d55</srcmd5>
+    <version>5.10.2</version>
+    <time>1379664751</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="19">
+    <srcmd5>03c7cff932e35096c73365dd6f3b5152</srcmd5>
+    <version>5.10.2</version>
+    <time>1387911692</time>
+    <user>scarabeus_factory</user>
+    <comment>- extend swipl-ppc64 patch to cover ppc64le as well
+- modified patches:
+  * swipl-ppc64.patch (forwarded request 212135 from k0da)</comment>
+    <requestid>212136</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4b99ac4d09f73c5d9e9dbebd8a9901d2</srcmd5>
+    <version>6.6.6</version>
+    <time>1406177929</time>
+    <user>coolo</user>
+    <comment>- update swipl-ppc64.patch to fix powerpc builds
+  ppc64le now have ppc64 as java_libarch 
+
+- Update to version 6.6.6</comment>
+    <requestid>242000</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>4b99ac4d09f73c5d9e9dbebd8a9901d2</srcmd5>
+    <version>6.6.6</version>
+    <time>1409303436</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ae73047982666d0e1e216dc0d2813401</srcmd5>
+    <version>7.2.2</version>
+    <time>1441955072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330324</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a5185347423834d4acb7d56c2882a589</srcmd5>
+    <version>7.4.1</version>
+    <time>1490707328</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>480947</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>05ae436ac0114ae8db18124a76d30700</srcmd5>
+    <version>7.6.4</version>
+    <time>1525426088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602467</requestid>
+  </revision>
+</revisionlist>

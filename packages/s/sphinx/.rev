@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0aafa6d3fbf8eb059dbb4ba4e19b34ea</srcmd5>
+    <version>2.2.11</version>
+    <time>1530303995</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace require libsphinxclient with libsphinxclient-%{soname}
+  for libsphinxclient-devel
+- Update to last maintenance release 
+  with over 70 bug fixes and small improvements:
+  * max_matches option did not affect facet queries #2348
+  * support for Connector/J 5.1.36+ #2365
+  * UTF-8 support for extended wildcards (?,%) #2451
+  * group by aliased  for JSON array #2452
+  * multi query with profiling enabled #2394
+  * ping to bad ha mirror pause accept thread at daemon #2363
+  * windows service does not handle system shutdown #2497
+  * 64-bit values comparison for ALL/ANY/INDEXOF functions #2437
+  * count(*) statement vs space characters at facet #2420
+  * better SphinxQL logs #2462, #2435
+  * lcs calculation for large delta position #2398
+  * official packages for Ubuntu 16.04 LTS
+  * added missing logrotate for some Debian/Ubuntu packages
+  * Ubuntu 16.04, Debian Jessie, RHEL/CentOS 7 packages use systemd
+    service script
+    For a complete list, please consult the changelog.
+    http://sphinxsearch.com/docs/latest/rel2211.html
+- Packaging : 
+  * Fix missing postun for libsphinx
+  * Added ghost /run/sphinx
+- Removed unneeded patch sphinx-fix_static.patch
+- Fix packaging and build issues : add systemd requires when needed 
+- Update to version 2.2.10
+  * added #2310, --replay-flags=ignore-open-errors switch to replay
+    binlogs even if some files are missing
+  * added #2234, support for empty string values (stringattr='') in
+    WHERE clause
+  * added #2233, support for IN() filters with string values
+  * added #2232, string collation support in SELECT expressions
+  * added #2121, &quot;where flt&lt;&gt;val&quot; support, &quot;where fltcol=intval&quot; and
+    &quot;where fltcol!=intval&quot; conditions
+  * added #2119, new indexer exit code 2 on a --rotate failure
+  * fixed #2207, unified min_prefix_len, min_infix_len behavior 
+    between RT and plain indexes
+  * fixed #2020, unified (and greatly shortened) the list of SphinxQL
+    reserved keywords between indexer checks, SphinxQL parser checks, 
+    and the documentation
+- Add patches
+  * sphinx-default_listen.patch
+  * sphinx-fix_static.patch
+- Remove copying.patch
+- Packaging Fixes
+  * systemd unit file : no forking, add group
+  * correct rights for conf file root,daemon_group in /etc/sphinx
+  * correct rights for log dir &amp; files
+  * ghost log files
+  * Fix path and name in .dist conf file too
+  * Create correct directories layout in /var/lib/sphinx
+  * Fix /run/sphinx creation and remove at (un)install time
+- Update to last 2.2.9 bugfixes release
+  * fixed #2190, incorrect GROUP BY outer JSON object
+  * fixed #2197, TRUNCATE fails to remove disk chunk files after calling OPTIMIZE
+  * fixed #2199, invalid packedfactors JSON output for index with stopwords
+  * fixed #2203, legacy API SELECT list
+  * fixed #2201, crash with string comparison at expressions and expression ranker
+  * fixed #2196, .NET connector issue (UTC_TIMESTAMP() support)
+  * fixed #2144, query parser crash vs multiforms with heading numbers
+  * fixed #2228, removed searchd shutdown behavior on failed connection
+  * fixed #2220, aliased JSON elements support
+  * fixed #2122, id64 daemon failed to load RT disk chunk with kill-list from id32 build
+  * fixed #2208, ZONESPANLIST() support for RT indexes
+  * fixed #1979, snippets generation and span length and lcs calculation in proximity queries
+  * fixed truncated results (and a potential crash) vs long enough ZONESPANLIST() result
+ 
+- Packaging: 
+  * run spec-cleaner
+    ** Adapted Year licence
+	** changes to make macros
+  * Patch for FSF COPYING
+  * split daemon and libclient apply soname policy
+  * include systemd service or init file depending on suse version
+  * include logrotate file
+  * Adapt conf to new data,log,pid dir
+- Update to 2.2.8
+  
+  * Full JSON support.
+  * New and easy FACET syntax.
+  * ALTER statement for dynamic index manipulation.
+  * English and German morphology (lemmatization) support.
+  * HAVING and N-best GROUP BY clauses for SELECT queries.
+  * A new plugin system (CREATE/DROP PLUGIN, tokenization and
+    ranking plugins, etc).
+- update to 2.1.8
+- stop renaming indexer and searchd, 3rd party libraries look
+  for it
+- update to 2.0.8
+  Bug fixes
+  ---------
+  
+     * fixed #1515, log strings over 2KB were clipped when
+       query_log_format=plain
+     * fixed #1514, RT index disk chunk lose attribute update on daemon
+       restart
+     * fixed #1512, crash while formatting log messages
+     * fixed #1511, crash on indexing PostgreSQL data source with MVA
+       attributes
+     * fixed #1509, blend_chars vs incomplete multi-form and overshort
+     * fixed #1504, RT binlog replay vs descending tid on update
+     * fixed #1499, sql_field_str2wordcount actually is int, not string
+     * fixed #1498, now working with exceptions starting with number too
+     * fixed #1496, multiple destination keywords in wordform
+     * fixed #1494, lost 'mod', '%' operations in select list. Also corrected
+       few typers in the doc.
+     * fixed #1490, expand_keywords vs prefix
+     * fixed #1487, `id` in expression fixed
+     * fixed #1483, snippets limits fix
+     * fixed #1481, shebang config changes check on rotation
+     * fixed #1479, port handling in PHP Sphinx API
+     * fixed #1474, daemon crash at SphinxQL packet overflows max_packet_size
+     * fixed #1472, crash on loading index to indextool for check
+     * fixed #1465, expansion_limit got lost in index rotation
+     * fixed #1427, #1506, utf8 3 and 4-bytes codepoints
+     * fixed #1405, between with mixed int float values
+- remove obsolete _service file (still referencing 2.0.6)
+- Removed libsphinx client package and moved it to sphinx-devel 
+- update to 2.0.7
+- cleanup of spec file 
+- update to 2.0.6 release 
+- update to 2.0.3-release
+- update to 2.0.1-beta
+- update to 0.9.9
+- update to 0.9.8.1
+- update to 0.9.7
+- enable debug package
+- update to 0.9.6 final
+</comment>
+    <requestid>616882</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>af57df823a6e86cc9f7d4c394c98eea1</srcmd5>
+    <version>2.2.11</version>
+    <time>1532361737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624657</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b7d79d94e2e66399cb0e3453f3ac3b90</srcmd5>
+    <version>2.2.11</version>
+    <time>1533887388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628235</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>942ddaf0822da38b0f6be359c4c043d2</srcmd5>
+    <version>2.2.11</version>
+    <time>1553436081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687886</requestid>
+  </revision>
+</revisionlist>

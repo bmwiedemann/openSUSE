@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>5bdf348a60050c460a931d4d70d9fe1b</srcmd5>
+    <version>0.08</version>
+    <time>1221533333</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>926019ae4a4148d9365c67e8f7db0e85</srcmd5>
+    <version>0.11</version>
+    <time>1251495349</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/xclip based on submit request 19038 from user coolo
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>926019ae4a4148d9365c67e8f7db0e85</srcmd5>
+    <version>0.11</version>
+    <time>1251495349</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/xclip based on submit request 19038 from user coolo
+</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4244c649b4ea60c5c731a5749dbd3bee</srcmd5>
+    <version>0.11</version>
+    <time>1268926543</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>4244c649b4ea60c5c731a5749dbd3bee</srcmd5>
+    <version>0.11</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>4244c649b4ea60c5c731a5749dbd3bee</srcmd5>
+    <version>0.11</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>4244c649b4ea60c5c731a5749dbd3bee</srcmd5>
+    <version>0.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>4244c649b4ea60c5c731a5749dbd3bee</srcmd5>
+    <version>0.11</version>
+    <time>1319182580</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>3b76ab44e5198c93cb9a0ec543f3bf10</srcmd5>
+    <version>0.11</version>
+    <time>1323869734</time>
+    <user>coolo</user>
+    <comment>fix license to be in spdx.org format</comment>
+    <requestid>96541</requestid>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>3b76ab44e5198c93cb9a0ec543f3bf10</srcmd5>
+    <version>0.11</version>
+    <time>1340184337</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>3b76ab44e5198c93cb9a0ec543f3bf10</srcmd5>
+    <version>0.11</version>
+    <time>1359110596</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>3b76ab44e5198c93cb9a0ec543f3bf10</srcmd5>
+    <version>0.11</version>
+    <time>1379664998</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="21">
+    <srcmd5>3b76ab44e5198c93cb9a0ec543f3bf10</srcmd5>
+    <version>0.11</version>
+    <time>1409303681</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>58e9fc70bfd1d69ec49bd5228c79ccc8</srcmd5>
+    <version>0.12</version>
+    <time>1442130306</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330461</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aa021467c0e26b45178fe69fa19a41f7</srcmd5>
+    <version>0.13</version>
+    <time>1495883625</time>
+    <user>dimstar_suse</user>
+    <comment>- change homepage and download url to github (forwarded request 489957 from mimi_vx)</comment>
+    <requestid>489958</requestid>
+  </revision>
+</revisionlist>

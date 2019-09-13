@@ -1,0 +1,9 @@
+<package name="tclplug" project="openSUSE:Factory">
+  <title>Tcl/Tk Plug-In for Netscape Navigator</title>
+  <description>With this plug-in, download special Tcl/Tk scripts (also known as
+tclets) from the Internet and execute them inside your browser like
+Java applets.
+
+Find the documentation in /opt/netscape/tclplug/2.0/doc.</description>
+  <devel project="devel:languages:tcl" package="tclplug"/>
+</package>

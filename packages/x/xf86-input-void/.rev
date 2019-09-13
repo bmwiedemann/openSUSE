@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a98b246d60dffa6f955b47460604d0e7</srcmd5>
+    <version>1.4.0</version>
+    <time>1336471306</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115419</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a98b246d60dffa6f955b47460604d0e7</srcmd5>
+    <version>1.4.0</version>
+    <time>1340184346</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>a98b246d60dffa6f955b47460604d0e7</srcmd5>
+    <version>1.4.0</version>
+    <time>1359110608</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>a98b246d60dffa6f955b47460604d0e7</srcmd5>
+    <version>1.4.0</version>
+    <time>1379665020</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>a98b246d60dffa6f955b47460604d0e7</srcmd5>
+    <version>1.4.0</version>
+    <time>1409303702</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7747cd4d5cd30bc0698e9ba19963fbbf</srcmd5>
+    <version>1.4.1</version>
+    <time>1430132360</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 1.4.1:
+  * A few cleanup patches that have been sitting on the branch for
+    almost a year.</comment>
+    <requestid>303794</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>602553490f0047c279ff4a88413cfa6b</srcmd5>
+    <version>1.4.1</version>
+    <time>1440135380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319780</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9bd41ffaeacffdfbe60f99cbbd45cd81</srcmd5>
+    <version>1.4.1</version>
+    <time>1496533494</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041352)</comment>
+    <requestid>499020</requestid>
+  </revision>
+</revisionlist>

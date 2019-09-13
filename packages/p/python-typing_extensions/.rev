@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>29d7de4230b721cf5081472f1f9aacca</srcmd5>
+    <version>3.6.6</version>
+    <time>1544189669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655601</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>47d8272f06ffccebe5c0472d2ba6a65a</srcmd5>
+    <version>3.7.2</version>
+    <time>1551455277</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the old tarball
+
+- Replace test_modules.tar.gz with python-testsuite
+- Remove fix_tests.patch which is half fixing test_modules.tar.gz,
+  and the other half is replaced with a less brittle sed.
+- Remove unnecessary build dependencies
+- Update to 3.7.2
+  * Pass *args and **kwargs to superclass in Generic.__new__
+  * Fix for issue #524
+  * Fix typing_extensions to support PEP 560
+  * Add annotations to NamedTuple children __new__ constructors
+  * Add missing 'NoReturn' to __all__ in typing.py
+  * Backport Generic.__new__ fix
+  * Fix IO.closed to be property
+  * Add Final to typing_extensions
+  * Fix instance/subclass checks of functions against runtime protocols
+  * Add Literal[...] types to typing_extensions</comment>
+    <requestid>680053</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2436657a0d39924c585b21c61e586ed5</srcmd5>
+    <version>3.7.2</version>
+    <time>1551687785</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase the patch to the current git state
+
+- Add support for Python &lt;3.5, using upstream commit as
+  test-sys-executable.patch to fix the tests, replacing custom sed.
+- Remove unnecessary buid dependency on pytest and pytest-xdist</comment>
+    <requestid>680892</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c67a9f8721b59b7953d807e019f7e759</srcmd5>
+    <version>3.7.4</version>
+    <time>1564576063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717379</requestid>
+  </revision>
+</revisionlist>

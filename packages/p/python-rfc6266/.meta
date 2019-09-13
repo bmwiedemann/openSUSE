@@ -1,0 +1,8 @@
+<package name="python-rfc6266" project="openSUSE:Factory">
+  <title>Parse and generate Content-Disposition headers</title>
+  <description>This module parses and generates HTTP Content-Disposition headers.
+These headers are used when getting resources for download;
+they provide a hint of whether the file should be downloaded,
+and of what filename to use when saving.</description>
+  <devel project="devel:languages:python" package="python-rfc6266"/>
+</package>

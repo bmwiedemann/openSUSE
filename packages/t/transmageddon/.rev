@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7db1db5b2caeef6576e82cb492b78843</srcmd5>
+    <version>unknown</version>
+    <time>1283792404</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/transmageddon based on submit request 46987 from user vuntz
+</comment>
+    <requestid>46987</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c4ff2d7c5caadfc8c512c78ae6d16efb</srcmd5>
+    <version>0.16</version>
+    <time>1289422956</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52756 from user dimstar
+</comment>
+    <requestid>52756</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>43f037c6d2bc2e51c0cb65dcd05d8225</srcmd5>
+    <version>0.16</version>
+    <time>1289422974</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52756
+</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fc5ba21796965631d7653392d29e7d8b</srcmd5>
+    <version>0.16</version>
+    <time>1297642740</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60997 from user vuntz
+</comment>
+    <requestid>60997</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>668de81805f7c9332ecd3b53eff374c1</srcmd5>
+    <version>0.16</version>
+    <time>1297642747</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60997
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>668de81805f7c9332ecd3b53eff374c1</srcmd5>
+    <version>0.16</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>dcb3a7d9e3a319770a8ad5ac31d8269c</srcmd5>
+    <version>0.16</version>
+    <time>1298030719</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61484 from user vuntz
+</comment>
+    <requestid>61484</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>0e65337d3fbd0f7236c651f97ce02491</srcmd5>
+    <version>0.16</version>
+    <time>1298030730</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61484
+</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>0e65337d3fbd0f7236c651f97ce02491</srcmd5>
+    <version>0.16</version>
+    <time>1319182528</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>798e664a2841d593c4e1d9b0791eaedc</srcmd5>
+    <version>0.20</version>
+    <time>1325787365</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98952</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3f658e2fec45735aacff96d2ba0dc7be</srcmd5>
+    <version>0.20</version>
+    <time>1329319093</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104565 from coolo)</comment>
+    <requestid>104650</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6385f73c23c43c93c8e77e8737b3c5de</srcmd5>
+    <version>0.21</version>
+    <time>1338991811</time>
+    <user>coolo</user>
+    <comment>- Change python-gstreamer-0_10 Requires to 0.10.22 despite
+  configure.ac mentioning 0.10.23, as this version is not avaialble
+  and the only point where this requirement is versioned is in
+  transmageddon.spec.in.
+
+- Update to version 0.21:
+  + Fix MPEG4 profiles to work with new caps in GStreamer
+  + Move preset directory to be Transmageddon specific
+  + Stop using XDG python library and just use glib
+  + Fix bug with repeated remuxings of same file
+  + Updated translations.</comment>
+    <requestid>123667</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>6385f73c23c43c93c8e77e8737b3c5de</srcmd5>
+    <version>0.21</version>
+    <time>1340184284</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>adbc2636ca57fd9ad9ba8eb12affd23c</srcmd5>
+    <version>0.24</version>
+    <time>1349854460</time>
+    <user>coolo</user>
+    <comment>Update to 0.24 (forwarded request 136551 from Zaitor)</comment>
+    <requestid>137642</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e911432b42b8fb29a3e5ca79594211dc</srcmd5>
+    <version>0.25</version>
+    <time>1350381936</time>
+    <user>coolo</user>
+    <comment>Update to 0.25 (forwarded request 137798 from Zaitor)</comment>
+    <requestid>138058</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>e911432b42b8fb29a3e5ca79594211dc</srcmd5>
+    <version>0.25</version>
+    <time>1359110504</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>84d77a136cc69accc2ac79625497eea5</srcmd5>
+    <version>0.25</version>
+    <time>1376298511</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add transmageddon-gtk3.patch: require GTK 3.0 from the python
+  code. We know we can't use GTK2, as introspection support is not
+  really given there.
+
+- Add python3-gobject Requires: as transmageddon makes use of
+  gobject-introspection, we need to pull in the python gi loader. (forwarded request 186364 from Zaitor)</comment>
+    <requestid>186591</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>84d77a136cc69accc2ac79625497eea5</srcmd5>
+    <version>0.25</version>
+    <time>1379664843</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>84d77a136cc69accc2ac79625497eea5</srcmd5>
+    <version>0.25</version>
+    <time>1409303526</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>aa913df29e2de6c42a5f0d17a06bcacc</srcmd5>
+    <version>1.5</version>
+    <time>1415866639</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260762</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>3ab66a5531d70d422a770c13e3996f9f</srcmd5>
+    <version>1.5</version>
+    <time>1454921275</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357796</requestid>
+  </revision>
+</revisionlist>

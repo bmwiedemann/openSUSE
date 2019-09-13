@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3cbd429712e9d77950ef211008350810</srcmd5>
+    <version>1.0.93</version>
+    <time>1503592741</time>
+    <user>dimstar_suse</user>
+    <comment>Namespacing of lua (will need one staging)</comment>
+    <requestid>510456</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a57119198256ca94f147dfbe77ef56f0</srcmd5>
+    <version>1.0.93</version>
+    <time>1504815274</time>
+    <user>dimstar_suse</user>
+    <comment>- Tweak the tolua++-1.0.93-lua52.patch to work with lua5.1 too correctly</comment>
+    <requestid>521095</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cca3d8aa8e1b0a3712418c5cced69579</srcmd5>
+    <version>1.0.93</version>
+    <time>1505238863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522988</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>daad2c1ce794a5e24eaa32b8a7050774</srcmd5>
+    <version>1.0.93</version>
+    <time>1509461068</time>
+    <user>dimstar_suse</user>
+    <comment>drop lua5.2 from multibuild</comment>
+    <requestid>537636</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7dc9f29dd1ef855952ea113c1f0729a1</srcmd5>
+    <version>1.0.93</version>
+    <time>1517606581</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with py3 scons:
+  * toluapp-scons-py3.patch</comment>
+    <requestid>572012</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>dedb88614049594641921ac3efde9375</srcmd5>
+    <version>1.0.93</version>
+    <time>1551216059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>679087</requestid>
+  </revision>
+</revisionlist>

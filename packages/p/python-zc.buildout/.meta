@@ -1,0 +1,5 @@
+<package name="python-zc.buildout" project="openSUSE:Factory">
+  <title></title>
+  <description>System for managing development buildouts.</description>
+  <devel project="devel:languages:python" package="python-zc.buildout"/>
+</package>

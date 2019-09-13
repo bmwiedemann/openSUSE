@@ -1,0 +1,7 @@
+<package name="firescope" project="openSUSE:Factory">
+  <title>Read linux kernel logs over firewire</title>
+  <description>Firescope allows to read remote kernel memory over a firewire
+connection.  On x86-64 it is normally used to read the kernel log
+buffer.</description>
+  <devel project="Base:System" package="firescope"/>
+</package>

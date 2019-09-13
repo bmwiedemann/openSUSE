@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d60bdbc40ba12b13044f0d2b85ae827</srcmd5>
+    <version>2.4</version>
+    <time>1515505959</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>561809</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6042ed510efaabfea3283116922f9d58</srcmd5>
+    <version>2.7</version>
+    <time>1538502479</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to python3
+
+- update to 2.7:
+  * Support for virtual databases
+  * Dicoweb: graceful handling of unsupported content types.
+  * The dictorg module improved
+- includes changes from 2.6:
+  * Support for Guile 2.2.0
+  * Support for Python 3
+- includes changes from 2.5:
+  * Support for four-column index files in dictorg databases</comment>
+    <requestid>639377</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>802b5de3e52b159c099ddfec5b13bfa8</srcmd5>
+    <version>2.7</version>
+    <time>1543400090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652175</requestid>
+  </revision>
+</revisionlist>

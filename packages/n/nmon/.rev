@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe2dfc31cee6a00278cdba14b796cdb1</srcmd5>
+    <version>14i</version>
+    <time>1414943163</time>
+    <user>coolo</user>
+    <comment>It would be good to have nmon in factory</comment>
+    <requestid>258912</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8c7cbb62747475d32d9eeb7041797554</srcmd5>
+    <version>15a</version>
+    <time>1426064228</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289779</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>430aa0737a029743c0dc6a4b69b3151f</srcmd5>
+    <version>15g</version>
+    <time>1438794870</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320494</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>edafa57755865ba3cfab92bc3c148468</srcmd5>
+    <version>15h</version>
+    <time>1450284173</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348777</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4f82a864602f76b1e181ddf5bf22f1cc</srcmd5>
+    <version>16d</version>
+    <time>1459002244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 16d
+- Drop nmon.1 and genereate manpage during build</comment>
+    <requestid>375195</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>27446959118f88b2d940e5d5722001ae</srcmd5>
+    <version>16e</version>
+    <time>1460482587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 16e (boo#974718)</comment>
+    <requestid>386397</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>594ae432d7b5ca17a3db4ed041c5c3de</srcmd5>
+    <version>16f</version>
+    <time>1466333600</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16f (boo#985538):
+  * Minor changed to the on-screen view only.</comment>
+    <requestid>403410</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bbcbf14e14e0cfe0730ad9fbec26d0bd</srcmd5>
+    <version>16f</version>
+    <time>1468482438</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify build process a bit
+- Build as PIE</comment>
+    <requestid>407446</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f5785eec4a8256d964949944fa9acd11</srcmd5>
+    <version>16g</version>
+    <time>1524144713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597776</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2ef729f7fd77ff4b1a2078f4e768644b</srcmd5>
+    <version>16h</version>
+    <time>1547211920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16h:
+  * Internal code changes for robustness malloc() and
+    snprintf/strncpy. 
+  * POWER pool_capacity now correctly divided by 100. 
+  * Online view ARM lscpu command column format depends on your
+    hardware
+  * Online view ALL /proc/cpuinfo format depends on your hardware
+    and new lines - like MMU: Hash or MMU:
+  * Online view POWER Welcome panel on POWER reports the top MHz 
+- Drop manpage generation</comment>
+    <requestid>664355</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>af177f13695223d3b9d3f08955293bbe</srcmd5>
+    <version>16j</version>
+    <time>1558340996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704056</requestid>
+  </revision>
+</revisionlist>

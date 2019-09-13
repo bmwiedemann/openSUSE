@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3da73634d6a965c4e41bbb0877fcb3d5</srcmd5>
+    <version>0.28</version>
+    <time>1326378398</time>
+    <user>coolo</user>
+    <comment>new task</comment>
+    <requestid>99741</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3da73634d6a965c4e41bbb0877fcb3d5</srcmd5>
+    <version>0.28</version>
+    <time>1340183925</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>3da73634d6a965c4e41bbb0877fcb3d5</srcmd5>
+    <version>0.28</version>
+    <time>1359109806</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>3da73634d6a965c4e41bbb0877fcb3d5</srcmd5>
+    <version>0.28</version>
+    <time>1379663856</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e0978346746c43fb85daeac420459b17</srcmd5>
+    <version>0.36</version>
+    <time>1395400510</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226447</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>e0978346746c43fb85daeac420459b17</srcmd5>
+    <version>0.36</version>
+    <time>1409302500</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b1476a62cc508d2fe5323551038fc4c7</srcmd5>
+    <version>0.38</version>
+    <time>1430165313</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>303916</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7cd0b2fdcdb1565ff4671c26056716c1</srcmd5>
+    <version>0.39</version>
+    <time>1466814239</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404383</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f541d133adc2dba86f65e6d6b1bd8c56</srcmd5>
+    <version>0.40</version>
+    <time>1544632055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655829</requestid>
+  </revision>
+</revisionlist>

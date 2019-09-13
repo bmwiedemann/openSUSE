@@ -1,0 +1,128 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0983107f522e0afb34636c2b7e35758d</srcmd5>
+    <version>1.0.2</version>
+    <time>1168903742</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="29">
+    <srcmd5>f407079134cccbc5ee177ce907b7d4ca</srcmd5>
+    <version>1.0.2</version>
+    <time>1174586588</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>868a1a2a36dee3bec53d0d1ec73c2906</srcmd5>
+    <version>1.0.3</version>
+    <time>1207265963</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d3b2ea776fae5ddacb45fdc921081dd1</srcmd5>
+    <version>1.0.3</version>
+    <time>1207833673</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="40">
+    <srcmd5>d3b2ea776fae5ddacb45fdc921081dd1</srcmd5>
+    <version>1.0.3</version>
+    <time>1207833673</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="41">
+    <srcmd5>76b4341020951f134ac5f100fe3d304f</srcmd5>
+    <version>1.0.3</version>
+    <time>1245336764</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="42">
+    <srcmd5>65dc1127b16934cc31de676f7e85a420</srcmd5>
+    <version>1.0.3</version>
+    <time>1246629707</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="44">
+    <srcmd5>65dc1127b16934cc31de676f7e85a420</srcmd5>
+    <version>1.0.3</version>
+    <time>1246629707</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="45">
+    <srcmd5>cf007b5e7df070b062a0dd198f215134</srcmd5>
+    <version>1.0.3</version>
+    <time>1266974562</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam_mktemp based on submit request 33313 from user coolo
+</comment>
+    <requestid>33313</requestid>
+  </revision>
+  <revision rev="10" vrev="46">
+    <srcmd5>1d422c3f7952bbb3638188bf00a10449</srcmd5>
+    <version>1.0.3</version>
+    <time>1268925281</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="48">
+    <srcmd5>1d422c3f7952bbb3638188bf00a10449</srcmd5>
+    <version>1.0.3</version>
+    <time>1278667375</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="49">
+    <srcmd5>1d422c3f7952bbb3638188bf00a10449</srcmd5>
+    <version>1.0.3</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="52">
+    <srcmd5>1d422c3f7952bbb3638188bf00a10449</srcmd5>
+    <version>1.0.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="54">
+    <srcmd5>1d422c3f7952bbb3638188bf00a10449</srcmd5>
+    <version>1.0.3</version>
+    <time>1319182226</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ebaebcb052530c74e0f80acd6f534a92</srcmd5>
+    <version>1.1.1</version>
+    <time>1325658353</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 96777 from coolo)</comment>
+    <requestid>97174</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>ebaebcb052530c74e0f80acd6f534a92</srcmd5>
+    <version>1.1.1</version>
+    <time>1340183773</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>ebaebcb052530c74e0f80acd6f534a92</srcmd5>
+    <version>1.1.1</version>
+    <time>1359109567</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>ebaebcb052530c74e0f80acd6f534a92</srcmd5>
+    <version>1.1.1</version>
+    <time>1379663484</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>ebaebcb052530c74e0f80acd6f534a92</srcmd5>
+    <version>1.1.1</version>
+    <time>1409302100</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

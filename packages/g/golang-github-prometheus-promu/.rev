@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a327518e799d16e44cca7989238d4e22</srcmd5>
+    <version>0.1.0</version>
+    <time>1521193206</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Factory submission. https://lists.opensuse.org/opensuse-factory/2018-03/msg00088.html</comment>
+    <requestid>583282</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e2b6c2e347d4680d5b2640cc1e763156</srcmd5>
+    <version>0.2.0</version>
+    <time>1549916647</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.0
+  + Features:
+    * Adding changes to support s390x
+    * Add option to disable static linking
+    * Add support for 32bit MIPS.
+    * Added check_licenses Command to Promu
+  + Enhancements:
+    * Allow to customize nested options via env variables
+    * Bump Go version to 1.11
+    * Add warning if promu info is unable to determine repo info
+  + Bug Fixes:
+    * Fix build on SmartOS by not setting gcc's -static flag
+    * Fix git repository url parsing (forwarded request 672761 from jfajerski)</comment>
+    <requestid>672862</requestid>
+  </revision>
+</revisionlist>

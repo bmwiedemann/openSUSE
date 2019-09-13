@@ -1,0 +1,7 @@
+<package name="susepaste" project="openSUSE:Factory">
+  <title>SUSE Pate</title>
+  <description>Simple script for using openSUSE pastebin easilly.
+
+http://susepaste.org</description>
+  <devel project="devel:tools" package="susepaste"/>
+</package>

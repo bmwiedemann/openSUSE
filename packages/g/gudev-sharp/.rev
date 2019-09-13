@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35f8acdac6d48bc9bbbbf45738837e29</srcmd5>
+    <version>0.2</version>
+    <time>1297776908</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60612 from user gabrielburt
+</comment>
+    <requestid>60612</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9f428e45c4b978331f35f6a15ab53cc8</srcmd5>
+    <version>0.2</version>
+    <time>1297776917</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60612
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>9f428e45c4b978331f35f6a15ab53cc8</srcmd5>
+    <version>0.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>10ec20c02d06a5cbb3c17c917fcd0429</srcmd5>
+    <version>0.2</version>
+    <time>1313050042</time>
+    <user>saschpe</user>
+    <comment>Fix filelist. (forwarded request 77666 from a_jaeger)</comment>
+    <requestid>78465</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>816d4a3c4cf290bae9739a45628b1fbe</srcmd5>
+    <version>0.2</version>
+    <time>1313050049</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78465
+</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>816d4a3c4cf290bae9739a45628b1fbe</srcmd5>
+    <version>0.2</version>
+    <time>1319181958</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>cf60aa382cca1e306e7d7ffc5a881ebf</srcmd5>
+    <version>0.2</version>
+    <time>1329391355</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104353 from coolo)</comment>
+    <requestid>105030</requestid>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>cf60aa382cca1e306e7d7ffc5a881ebf</srcmd5>
+    <version>0.2</version>
+    <time>1340183427</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>cf60aa382cca1e306e7d7ffc5a881ebf</srcmd5>
+    <version>0.2</version>
+    <time>1359109031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>cf60aa382cca1e306e7d7ffc5a881ebf</srcmd5>
+    <version>0.2</version>
+    <time>1379662592</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>cf60aa382cca1e306e7d7ffc5a881ebf</srcmd5>
+    <version>0.2</version>
+    <time>1409301139</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b06be9c6b64d7c122aec3984a52c71ca</srcmd5>
+    <version>3.0</version>
+    <time>1425031135</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281554</requestid>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>184a2ad49ebf1ac1aae222dee7e1cbd3</srcmd5>
+    <version>0.2</version>
+    <time>1425889252</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to rev 11</comment>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>265ebf72bfab57aa0ae8c229f109aae2</srcmd5>
+    <version>0.2</version>
+    <time>1426485627</time>
+    <user>dimstar_suse</user>
+    <comment>Reverted back + just a little cleanup</comment>
+    <requestid>290500</requestid>
+  </revision>
+</revisionlist>

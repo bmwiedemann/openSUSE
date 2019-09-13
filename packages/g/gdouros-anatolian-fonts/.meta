@@ -1,0 +1,5 @@
+<package name="gdouros-anatolian-fonts" project="openSUSE:Factory">
+  <title>Anatolian Hieroglyphs</title>
+  <description>Anatolian is a work-font, encoding Anatolian Hieroglyphs in F200 - F4FF of the Private Use Area of the BMP. There are no plans to improve or expand it.</description>
+  <devel project="M17N:fonts" package="gdouros-anatolian-fonts"/>
+</package>

@@ -1,0 +1,190 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c2857ea624d5e47797d94764acca58d3</srcmd5>
+    <version>3.0200</version>
+    <time>1306414827</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66761</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e7fdab2ec66621e327a5f7eae5927a6a</srcmd5>
+    <version>3.0200</version>
+    <time>1306414838</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66761
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e7fdab2ec66621e327a5f7eae5927a6a</srcmd5>
+    <version>3.0200</version>
+    <time>1319182306</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>163bd241473db2dd298026d2cfacba99</srcmd5>
+    <version>3.0202</version>
+    <time>1324547677</time>
+    <user>coolo</user>
+    <comment>- update to 3.0202
+    - Moved tag-release.pl to scripts/tag-release.pl (though we now use
+      Mercurial instead of Subversion.)
+    - Add t/mode.t to test the -&gt;mode() method.
+    - Documented -&gt;mode() better.
+    - Optimized -&gt;mode().
+    - Add some documentation clarifying the 0th percentile return, as it
+      returns undef() for representing -inf:
+        - Fix https://rt.cpan.org/Ticket/Display.html?id=62055
+        - Thanks to Dave Breimann for reporting it.
+    - Add the tag-release.pl to tag a release using Subversion.</comment>
+    <requestid>97122</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d649393364ebc3da786e6e7607f5ba92</srcmd5>
+    <version>3.0300</version>
+    <time>1329476887</time>
+    <user>coolo</user>
+    <comment>- updated to 3.0300
+   - Now mean() and median() and other routines return undef() if there are
+   no data.
+   - Somewhat incompatible change: some methods that returned undef() under
+   list context now return an empty list (so it will be false).
+       - it is generally not recommended to call such methods in list context
+       as they should always be called in scalar context.
+   - Resolves https://rt.cpan.org/Ticket/Display.html?id=74693
+       - thanks to Shawn Laffan for the report and the patch.
+   - Fix https://rt.cpan.org/Ticket/Display.html?id=72495 .
+       - percentile should not die and should return undef if there are
+       no elements in the collection.</comment>
+    <requestid>105627</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d649393364ebc3da786e6e7607f5ba92</srcmd5>
+    <version>3.0300</version>
+    <time>1340183918</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>d649393364ebc3da786e6e7607f5ba92</srcmd5>
+    <version>3.0300</version>
+    <time>1359109796</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ba38d59caffa3062ea3089b711ffea37</srcmd5>
+    <version>3.0605</version>
+    <time>1370430435</time>
+    <user>coolo</user>
+    <comment>- updated to 3.0605
+    - Add t/style-trailing-space.t .
+    - Add t/cpan-changes.t .
+        - Convert Changes to it.
+    - Correct a misspelling of &quot;weight&quot; in
+    lib/Statistics/Descriptive/Smoother/Weightedexponential.pm
+        - Thanks to Wilhelm for the report.
+    - Update the scripts/tag-release.pl file for Mercurial.
+    - Use in_between to compare decimal numbers
+        - Smoothing tests were failing because of rounding problems
+        - Thanks to Andreas J. König for reporting it and to
+          Fabio Ponciroli for fixing it.
+    - Correct a typo:
+        - https://rt.cpan.org/Ticket/Display.html?id=77145
+        - Thanks to Salvatore Bonaccorso and the Debian Perl Group
+        for the report.
+    - No longer using Test::Exception in the tests.
+        - It was used by the tests and not specified in
+        test_requires/build_requires.
+        - Thanks to hsk@fli-leibniz.de for the report.
+    - Add the smoothing functionality.
+        - Add the following public methods: add_data_with_samples(),
+        set_smoother(), get_smoothed_data() to the main module.
+        - Add the lib/Statistics/Descriptive/Smoother.pm and
+        lib/Statistics/Descriptive/Smoother/Exponential.pm
+        lib/Statistics/Descriptive/Smoother/Weightedexponential.pm
+        modules.
+        - Thanks to Fabio Ponciroli
+    - Add the scripts/bump-version-number.pl to facilitate bumping the
+    version number. (forwarded request 177584 from coolo)</comment>
+    <requestid>177594</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>ba38d59caffa3062ea3089b711ffea37</srcmd5>
+    <version>3.0605</version>
+    <time>1379663840</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fb171e1d9a62c807b01cb7714b54a521</srcmd5>
+    <version>3.0607</version>
+    <time>1392186145</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221904</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>fb171e1d9a62c807b01cb7714b54a521</srcmd5>
+    <version>3.0607</version>
+    <time>1409302481</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0da3344d2c851179c8847ca9c31d33ca</srcmd5>
+    <version>3.0608</version>
+    <time>1423392165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>284643</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8f88dd596049e04133093b642eb8a6b7</srcmd5>
+    <version>3.0608</version>
+    <time>1427736827</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>293630</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>daeae58aa1fe803d71a7e10040238a10</srcmd5>
+    <version>3.0609</version>
+    <time>1435053574</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312966</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f3b3b4e7840176e2f08789ee7bf02223</srcmd5>
+    <version>3.0612</version>
+    <time>1452850940</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353510</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d28e8088f6cd8b89302ad0e84cfc117c</srcmd5>
+    <version>3.0613</version>
+    <time>1527933518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610494</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1dc847b3c65cc8c6482152372336b64a</srcmd5>
+    <version>3.0701</version>
+    <time>1532774479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624422</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>09c4e5082beff4001ac960e8d292dfc1</srcmd5>
+    <version>3.0702</version>
+    <time>1542011933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647343</requestid>
+  </revision>
+</revisionlist>

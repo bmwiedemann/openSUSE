@@ -1,0 +1,444 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58c2fc0879dcc7091f705b0a712edad9</srcmd5>
+    <version>0.59</version>
+    <time>1168903875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e287202465d891e5c131c19346038ff5</srcmd5>
+    <version>0.60</version>
+    <time>1183468476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4c4166d137e737a283e2e12457d43615</srcmd5>
+    <version>0.61</version>
+    <time>1191839282</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1f6dacce1ee0e9103049aaa8a9b245a7</srcmd5>
+    <version>0.62</version>
+    <time>1199670842</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9c6ed958c0c5d4d82211adc9f88b8c52</srcmd5>
+    <version>0.62</version>
+    <time>1199929448</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>4db59c9a82f8fc5c9123a32a841569af</srcmd5>
+    <version>0.62</version>
+    <time>1202709736</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>9c6ed958c0c5d4d82211adc9f88b8c52</srcmd5>
+    <version>0.62</version>
+    <time>1202788017</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>326fa8f21d65daafc4220360acd7777a</srcmd5>
+    <version>0.63</version>
+    <time>1203641061</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="42">
+    <srcmd5>326fa8f21d65daafc4220360acd7777a</srcmd5>
+    <version>0.63</version>
+    <time>1203641061</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="43">
+    <srcmd5>a0e57fab944634c73a5a2efa8969964f</srcmd5>
+    <version>0.63</version>
+    <time>1227886200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="44">
+    <srcmd5>8aa9cdb2050b67f237761eed5f169ea6</srcmd5>
+    <version>0.63</version>
+    <time>1232067104</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fcc851c558811b44e199ec083873dc67</srcmd5>
+    <version>0.64</version>
+    <time>1232501793</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a949614dd5b0e7c5a2035eaa97acd182</srcmd5>
+    <version>0.65</version>
+    <time>1235430081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a2af3fbafdb8079de4f911b802912993</srcmd5>
+    <version>0.65</version>
+    <time>1245169304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>a2af3fbafdb8079de4f911b802912993</srcmd5>
+    <version>0.65</version>
+    <time>1245169304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>c642658a3f03bda4a4954a096e32914b</srcmd5>
+    <version>0.65</version>
+    <time>1263294276</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-DNS based on submit request 29248 from user coolo
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>402c7876849b319c1fe3459214079523</srcmd5>
+    <version>0.66</version>
+    <time>1263827568</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-DNS based on submit request 29663 from user anicka
+</comment>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>24f4f956637829987733dd4393f62c91</srcmd5>
+    <version>0.66</version>
+    <time>1268925535</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>24f4f956637829987733dd4393f62c91</srcmd5>
+    <version>0.66</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>24f4f956637829987733dd4393f62c91</srcmd5>
+    <version>0.66</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>29b9644c07cd791a92cc1a1467b964bb</srcmd5>
+    <version>0.66</version>
+    <time>1291583206</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54601 from user coolo
+</comment>
+    <requestid>54601</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>ee0a31ad2ea8c636c418c225d14e3f21</srcmd5>
+    <version>0.66</version>
+    <time>1291583213</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54601
+</comment>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>ee0a31ad2ea8c636c418c225d14e3f21</srcmd5>
+    <version>0.66</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>ee0a31ad2ea8c636c418c225d14e3f21</srcmd5>
+    <version>0.66</version>
+    <time>1319182290</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>885dcda36349b30bfb982e20990d5772</srcmd5>
+    <version>0.67</version>
+    <time>1321542191</time>
+    <user>coolo</user>
+    <comment>- update to 0.67
+  * dropped fix-tests.diff patch (not needed anymore)
+  * huge number of bugfixes, see CHANGES</comment>
+    <requestid>91828</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>3b476c928d9b06b6b56e3f5c79f8a5c5</srcmd5>
+    <version>0.67</version>
+    <time>1323193498</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>683744d7567d9c5eb8320317d6135565</srcmd5>
+    <version>0.68</version>
+    <time>1328201942</time>
+    <user>coolo</user>
+    <comment>- update to 0.68
+Fix rt.cpan.org #72314
+	Let a Net::DNS::Nameserver bind on Net::DNS::Nameserver::DEFAULT_ADDR
+	as a last resort.
+Fix to suppress false warnings about subroutine profiles on ancient
+	versions of perl.
+Fix to avoid constants with value undef which prevents unwanted code from being
+	optimized away on ancient versions of perl.
+Fix code error in PTR.pm, canonical RDATA not downcased.
+Enhancement to clarify the function of parse and data methods, by renaming them
+	to decode and encode respectively.
+Feature IDN query support.
+	Question.pm modified to use the recently introduced DomainName.pm
+	module to represent DNS names.  Queries for domain names containing
+	non-ASCII characters are now possible on Unicode platforms with CPAN 
+	Net::LibIDN installed.
+Introduction of Mailbox.pm module that will be used in the future to represent 
+	RDATA components containing DNS coded RFC822 mailbox addresses.
+Introduction of Text.pm module that will be used in the future to represent
+	RDATA components containing text.</comment>
+    <requestid>102392</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>683744d7567d9c5eb8320317d6135565</srcmd5>
+    <version>0.68</version>
+    <time>1340183888</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>45c1170880b7645d3c2cf65f700ffb36</srcmd5>
+    <version>0.68</version>
+    <time>1348232139</time>
+    <user>coolo</user>
+    <comment>- installing perl(IO::Socket::INET6) is recommended
+
+If we don't have it then DNS queries will always fail if we have
+only IPv6 addresses in /etc/resolv.conf (which is valid!).
+
+Personally I would make this even &quot;required&quot; instead of
+&quot;recommended&quot; only but this may decide somebody else. (forwarded request 135138 from rudi_m)</comment>
+    <requestid>135146</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>45c1170880b7645d3c2cf65f700ffb36</srcmd5>
+    <version>0.68</version>
+    <time>1359109759</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e04a9a8deb1b9bf266601806453eea96</srcmd5>
+    <version>0.72</version>
+    <time>1370790125</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 177826 from coolo)</comment>
+    <requestid>177858</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>e04a9a8deb1b9bf266601806453eea96</srcmd5>
+    <version>0.72</version>
+    <time>1379663785</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>188389da07730ca55aa8b768be824f9c</srcmd5>
+    <version>0.73</version>
+    <time>1387208263</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210536</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>13c873d7244e42d8c2aed8cd54a35d79</srcmd5>
+    <version>0.74</version>
+    <time>1392222156</time>
+    <user>coolo</user>
+    <comment>- updated to 0.74
+ Fix rt.cpan.org #91306
+        Nameserver crashes on malformed UDP query.
+ 
+ Fix rt.cpan.org #91241
+        TSIG: Fix incorrectly generated %algbyval table.
+ 
+ Feature
+        Add CAA, EUI48 and EUI64 RR implementation.</comment>
+    <requestid>221507</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>13c873d7244e42d8c2aed8cd54a35d79</srcmd5>
+    <version>0.74</version>
+    <time>1409302421</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1b4339a92c66a5f1aa27629a7af7b3f7</srcmd5>
+    <version>0.81</version>
+    <time>1418737843</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264747</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>446ac891fd024515df48b69608f5ac22</srcmd5>
+    <version>0.83</version>
+    <time>1429657680</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296667</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>dd5e0333bfa1917236bf394f5d6e7e17</srcmd5>
+    <version>1.02</version>
+    <time>1443684454</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>332487</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1400ad19dfabc3d29dd3c38631568f05</srcmd5>
+    <version>1.04</version>
+    <time>1449995949</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>348059</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a2a9147bee74b7e70d81b5a861d64e58</srcmd5>
+    <version>1.05</version>
+    <time>1458120300</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368901</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>965261dc0fd2db9d68de6960f9561d27</srcmd5>
+    <version>1.06</version>
+    <time>1467541072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398551</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>432b189101d50f80aeaf6e52c10b4e58</srcmd5>
+    <version>1.06_03</version>
+    <time>1473241269</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>424606</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a4e94c84fccd91afc9fb0ea860331420</srcmd5>
+    <version>1.07</version>
+    <time>1484475218</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448584</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>fa4bacb5d3147ca434d26f8b84ba4802</srcmd5>
+    <version>1.08</version>
+    <time>1488547969</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460874</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>34818021bcdd61c918169d09ea65d0d2</srcmd5>
+    <version>1.09</version>
+    <time>1491907133</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482701</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c7c44cb8a18f14ed16cf77018b59f974</srcmd5>
+    <version>1.10</version>
+    <time>1495267678</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494770</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>0fd1725578a90ca983ae14adffc852dd</srcmd5>
+    <version>1.11</version>
+    <time>1499161975</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506942</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a6b9c76ff54821a740cc6e50f1f80be3</srcmd5>
+    <version>1.12</version>
+    <time>1503999415</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517968</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>c6e8501943d2b119c8d653f59f4cd3a7</srcmd5>
+    <version>1.13</version>
+    <time>1509193041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535196</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8ec0b1298ec3f45704e7c02c57b62281</srcmd5>
+    <version>1.14</version>
+    <time>1515504873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561819</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>76a10948550d61b2b7a2b071ca28277c</srcmd5>
+    <version>1.15</version>
+    <time>1518813463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576815</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>fea2cc04d3ecd4c650eebec04bc15893</srcmd5>
+    <version>1.17</version>
+    <time>1532681626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625590</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f3eededd7a3b5f2a6c7866153d27a63b</srcmd5>
+    <version>1.18</version>
+    <time>1538374468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637208</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e59411b96570813d60a88f70798fc0f5</srcmd5>
+    <version>1.19</version>
+    <time>1544264390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655786</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f6b9b1a1087fca592fc2cc1772de41c6</srcmd5>
+    <version>1.20</version>
+    <time>1554371940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690165</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>02db62052b5d17aba398a913a2e2cb70</srcmd5>
+    <version>1.21</version>
+    <time>1567852435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727710</requestid>
+  </revision>
+</revisionlist>

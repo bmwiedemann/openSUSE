@@ -1,0 +1,165 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>622a9e8b2daa75f25d3367d8d3d6ff8a</srcmd5>
+    <version>1.10</version>
+    <time>1368454815</time>
+    <user>coolo</user>
+    <comment>Required in Factory due split from clisp see SR#172680</comment>
+    <requestid>174825</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e3429be4da75aa527a1de4365c76aa2e</srcmd5>
+    <version>1.10</version>
+    <time>1368711300</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>175821</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e3429be4da75aa527a1de4365c76aa2e</srcmd5>
+    <version>1.10</version>
+    <time>1379662336</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>af441c32af09f187e45571c569d4afef</srcmd5>
+    <version>1.10</version>
+    <time>1392447849</time>
+    <user>coolo</user>
+    <comment>- remove s390x from list of architectures (no asm code available) (forwarded request 221935 from oertel)</comment>
+    <requestid>221940</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>af441c32af09f187e45571c569d4afef</srcmd5>
+    <version>1.10</version>
+    <time>1409300872</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2435f996117aa8377f1372df6828a3c8</srcmd5>
+    <version>1.12</version>
+    <time>1455701132</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359250</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8425d232ce322e78ce618219cef2563a</srcmd5>
+    <version>1.13</version>
+    <time>1503592299</time>
+    <user>dimstar_suse</user>
+    <comment>- Accordingly to Bruno Haible the define -DMAP_VARIABLE=MAP_PRIVATE
+  should become removed
+
+- Add some more debug code for build architecture 
+
+- Update to (lib)fcall-1.13 release
+  * The license has been changed from GPLv2 to GPLv2+.
+  * Added support for the following platforms:
+    (Previously, a build on these platforms failed.)
+    - x86_64: Mac OS X 64-bit.
+    - x86_64: Solaris 64-bit.
+    - x86_64: Linux with x32 ABI: CC=&quot;gcc -mx32&quot;.
+    - arm: Linux 32-bit, without hardware floats.
+    - arm64: Linux 64-bit.
+    - s390x: Linux 64-bit.
+    - powerpc: AIX 64-bit.
+    - mips: IRIX 6.5 with CC=&quot;cc -32&quot;.
+    - sparc: Solaris 64-bit.
+  * Fixed support for the following platforms:
+    (Previously, a build on these platforms appeared to succeed but was buggy.)
+    - x86_64: Linux.
+    - arm: Linux 32-bit, with hardware floats.
+    - powerpc: Linux 64-bit.
+    - mips: Linux with CC=&quot;gcc -mabi=32&quot;.
+    - mips: Linux with CC=&quot;gcc -mabi=n32&quot;.
+    - mips: Linux with CC=&quot;gcc -mabi=64&quot;.
+    - mips: IRIX 6.5 with CC=&quot;gcc -mabi=n32&quot;.
+    - s390: Linux.
+    - sparc: Linux 64-bit.
+    - ia64: Linux.</comment>
+    <requestid>506619</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>958f200aa5d850a1988caf097e109ed7</srcmd5>
+    <version>2.1</version>
+    <time>1519218697</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Correct order of %file and %defattr 
+
+- Allow debuginfo 
+
+- Update to (lib)fcall-2.1 release
+  * Added support for the following platforms:
+    (Previously, a build on these platforms failed.)
+    - x86_64: Solaris 11.3.
+    - OpenBSD 6.1.
+    - HardenedBSD 10 and 11.
+  * Fixed a bug regarding passing of pointers on the following platforms:
+    - x86_64: Linux with x32 ABI: CC=&quot;gcc -mx32&quot;.
+  * Fixed a crash in trampoline on the following platforms:
+- Update the patch ffcall-trampoline.patch even if not applied
+
+- Update to (lib)fcall-2.0 release
+  * The package now installs a library libffcall.{a,so}. It contains the
+    'avcall' and 'callback' packages. The libraries libavcall.{a,so} and
+    libcallback.{a,so} are still installed as well, but are deprecated.
+  * The installed libraries are now installed as shared libraries by default
+    (except for libvacall, which is still a static library only).
+  * The installed shared libraries are now properly versioned. This means that
+    when installing with --enable-shared, upgrading to a newer version of
+    libffcall will not break existing binaries.
+  * The installed include files are now platform independent. This means that
+    you can now install libffcall for different ABIs on the same system, using
+    the same --prefix option but different --exec-prefix options for each ABI.
+  * API changes in &lt;trampoline.h&gt;:
+    - The second argument of alloc_trampoline() is now a 'void**', rather
+      than a 'void*'.</comment>
+    <requestid>578359</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>41dfc6a0f2242caffd5da8898be8d3ab</srcmd5>
+    <version>2.1</version>
+    <time>1562843894</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependencies to get clisp build again</comment>
+    <requestid>714382</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f36e826120b7bba14993dce2052e1c19</srcmd5>
+    <version>2.2</version>
+    <time>1566894274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to (lib)fcall-2.2 release
+  * Added support for the following platforms:
+    (Previously, a build on these platforms failed.)
+    - armv6 (Raspberry Pi): Linux.
+    - hppa: Linux 32-bit.
+    - riscv32: Linux with ilp32d ABI.
+    - riscv64: Linux with lp64d ABI.
+  * The build for the mips 32-bit ABI is now compatible with toolchains for
+    the 'fpxx' ABI variant.  The downside is that the mips1 architecture is
+    no longer supported.
+  * Fixed a bug regarding passing of more than 8 arguments on the following
+    platforms:
+    - arm64: Linux 64-bit.
+  * Fixed a stack corruption bug on the following platforms:
+    - hppa: HP-UX 32-bit.
+
+- add upstream signing keyring and verify source signature</comment>
+    <requestid>726083</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6c5b4184873c78bfb6d7537bc5f66703</srcmd5>
+    <version>2.2</version>
+    <time>1568379706</time>
+    <user>lnussel_factory</user>
+    <comment>- Add riscv64 to ffcall_arches
+
+- Use -ffat-lto-objects when building static libraries.</comment>
+    <requestid>730438</requestid>
+  </revision>
+</revisionlist>

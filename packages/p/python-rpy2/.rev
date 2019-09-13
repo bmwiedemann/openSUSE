@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1d1950f59fe4c20dc9b9e4724bfee290</srcmd5>
+    <version>2.9.3</version>
+    <time>1526463551</time>
+    <user>dimstar_suse</user>
+    <comment>Python interface to the R programming language
+
+Fix license</comment>
+    <requestid>606547</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8f6ed70622f70300d6f0e14b1c73b028</srcmd5>
+    <version>2.9.3</version>
+    <time>1526737421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610531</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>97f95fbda0352a52240dbe2cc5f4aa6e</srcmd5>
+    <version>2.9.4</version>
+    <time>1533887403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628247</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d7989672543c94537ad3708599081535</srcmd5>
+    <version>2.9.4</version>
+    <time>1534543341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629374</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b2031d983aa557caddd8700ade9c768d</srcmd5>
+    <version>2.9.5</version>
+    <time>1543953331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653600</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>05f6fa561efddf3ae13a704f25f57bad</srcmd5>
+    <version>3.0.5</version>
+    <time>1564137764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718616</requestid>
+  </revision>
+</revisionlist>

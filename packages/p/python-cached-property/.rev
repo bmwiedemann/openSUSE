@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6fa66c1c0160a06b946822a995577cdb</srcmd5>
+    <version>1.3.0</version>
+    <time>1461335038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>382590</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0f7f0b1b5bf14ca705b58e44b80edf5a</srcmd5>
+    <version>1.3.0</version>
+    <time>1462178680</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>392905</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>37aca436cc52cf07bd0ebb21c095144c</srcmd5>
+    <version>1.3.0</version>
+    <time>1503925942</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518030</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f1b3e822cf55ca29cb7f438edb33363c</srcmd5>
+    <version>1.3.0</version>
+    <time>1544726439</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653958</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a3a350be725e2fca06c8dc50bf8322c7</srcmd5>
+    <version>1.3.0</version>
+    <time>1549019019</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with new freezegun (by skipping test):
+  * freezegun-skip.patch</comment>
+    <requestid>670547</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d8edb202d19b8a6d6212682c000d6a3d</srcmd5>
+    <version>1.5.1</version>
+    <time>1551455344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680387</requestid>
+  </revision>
+</revisionlist>

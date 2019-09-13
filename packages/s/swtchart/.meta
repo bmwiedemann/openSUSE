@@ -1,0 +1,5 @@
+<package name="swtchart" project="openSUSE:Factory">
+  <title>SWTChart</title>
+  <description>Chart component based on SWT.</description>
+  <devel project="Java:packages" package="swtchart"/>
+</package>

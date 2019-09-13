@@ -1,0 +1,8 @@
+<package name="libical" project="openSUSE:Factory">
+  <title>An Implementation of Basic iCAL Protocols</title>
+  <description>Libical is an open source implementation of the IETF's iCalendar
+calendaring and scheduling protocols (RFC 2445, 2446, and 2447). It
+parses iCal components and provides a C API for manipulating the
+component properties, parameters, and subcomponents.</description>
+  <devel project="devel:libraries:c_c++" package="libical"/>
+</package>

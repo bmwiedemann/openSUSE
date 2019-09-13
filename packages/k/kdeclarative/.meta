@@ -1,0 +1,5 @@
+<package name="kdeclarative" project="openSUSE:Factory">
+  <title>kdeclarative</title>
+  <description>KDeclarative</description>
+  <devel project="KDE:Frameworks5" package="kdeclarative"/>
+</package>

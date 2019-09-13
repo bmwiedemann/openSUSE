@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8add2ca7bb65fb4eb383932a972bdd29</srcmd5>
+    <version>1.2.0</version>
+    <time>1550151102</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim bias from descriptions
+- Update to v1.2.0
+  + Improved parsing speed by compiling regex on global context and reusing named collection.
+- Initial spec for v1.1.0
+</comment>
+    <requestid>674364</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9271bdfb118341e3c862c6d647b0bc29</srcmd5>
+    <version>1.2.1</version>
+    <time>1552299328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683057</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8537f8da6bf7c29f758308326be5540</srcmd5>
+    <version>1.2.2</version>
+    <time>1553503687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688061</requestid>
+  </revision>
+</revisionlist>

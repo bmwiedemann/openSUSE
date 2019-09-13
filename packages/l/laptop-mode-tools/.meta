@@ -1,0 +1,10 @@
+<package name="laptop-mode-tools" project="openSUSE:Factory">
+  <title>The Laptop Mode Tools</title>
+  <description>Laptop Mode Tools is a laptop power saving package for Linux systems.
+It allows you to extend the battery life of your laptop, in several
+ways. It is the primary way to enable the Laptop Mode feature of the
+Linux kernel, which lets your hard drive spin down. In addition, it
+allows you to tweak a number of other power-related settings using a
+simple configuration file.</description>
+  <devel project="Base:System" package="laptop-mode-tools"/>
+</package>

@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16f49725597d435b7f8c9ffbc287f1be</srcmd5>
+    <version>0.1</version>
+    <time>1334692985</time>
+    <user>coolo</user>
+    <comment>It's easy to get lost in /sys and not much fun typing long udevadm info command lines all the time. This is a little UI for exploring the udev/sysfs tree: udev-browse. This provides a little bit simpler access to the device tree</comment>
+    <requestid>113967</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>16f49725597d435b7f8c9ffbc287f1be</srcmd5>
+    <version>0.1</version>
+    <time>1340184292</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c068be365f18c797fc989068edcd0108</srcmd5>
+    <version>0.3</version>
+    <time>1350936739</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3:
+  + update to new vala
+  + ported to gtk3
+- license is LGPLv2.1+ (forwarded request 138694 from fcrozat)</comment>
+    <requestid>138755</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c068be365f18c797fc989068edcd0108</srcmd5>
+    <version>0.3</version>
+    <time>1359110517</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>754959c2a6800dadeb19f5ba32f97c52</srcmd5>
+    <version>0.3</version>
+    <time>1366473827</time>
+    <user>coolo</user>
+    <comment>- Add fix-gee.patch: fix build with latest vala / libgee. (forwarded request 172562 from fcrozat)</comment>
+    <requestid>172574</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>754959c2a6800dadeb19f5ba32f97c52</srcmd5>
+    <version>0.3</version>
+    <time>1379664873</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>754959c2a6800dadeb19f5ba32f97c52</srcmd5>
+    <version>0.3</version>
+    <time>1409303560</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>060aa461a9c84f4523ea698896df1dac</srcmd5>
+    <version>0.3</version>
+    <time>1428652300</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294777</requestid>
+  </revision>
+</revisionlist>

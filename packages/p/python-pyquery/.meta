@@ -1,0 +1,5 @@
+<package name="python-pyquery" project="openSUSE:Factory">
+  <title></title>
+  <description>Pyquery allows you to make jQuery queries on XML documents. The API is as much as possible the similar to jQuery. Pyquery uses lxml for fast XML and HTML manipulation.</description>
+  <devel project="devel:languages:python" package="python-pyquery"/>
+</package>

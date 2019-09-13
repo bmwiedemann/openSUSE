@@ -1,0 +1,10 @@
+<package name="libsigsegv" project="openSUSE:Factory">
+  <title>Handling Page Faults in User Mode</title>
+  <description>This is a library for handling page faults in user mode. A page fault occurs
+when a program tries to access to a region of memory that is currently not
+available.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="libsigsegv"/>
+  <url>http://libsigsegv.sourceforge.net/</url>
+</package>

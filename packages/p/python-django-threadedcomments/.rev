@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>498968d00fb797bdb968e1248647a220</srcmd5>
+    <version>1.2</version>
+    <time>1556022926</time>
+    <user>maxlin_factory</user>
+    <comment>- Ensure neutrality of descriptions.
+- Activate test suite, with dj-test-settings.patch to initialise
+  Django and test-use-content-type.patch being a tiny subset of
+  upstream commit 7feb0f851
+- Use GitHub archive of v1.2
+- Fix License: and use %license
+- Add fdupes
+- update to version 1.2+20180827
+- Update to version 0.9.0
+  + Rewrote application to use django.contrib.comments
+  + Included example app
+- Use download url as source url
+- Replace python-distribute with python-setuptools BuildRequires
+- Add documentation from tarball
+- Add a head in specfile
+- Some improvements
+- Update to 0.5.2;
+- Building as noarch for openSUSE &gt;= 11.2;
+- Fixed URL, Author and Summary in spec file.
+</comment>
+    <requestid>694193</requestid>
+  </revision>
+</revisionlist>

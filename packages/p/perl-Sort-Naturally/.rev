@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ab8970f088a0f1b2aec86a90d90c32a8</srcmd5>
+    <version>1.02</version>
+    <time>1304682919</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66759</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f86c46b58dfbc456b6182bd9afd66cbd</srcmd5>
+    <version>1.02</version>
+    <time>1304682931</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66759
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f86c46b58dfbc456b6182bd9afd66cbd</srcmd5>
+    <version>1.02</version>
+    <time>1319182305</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4db57c9bccb07920ab649e788992fc77</srcmd5>
+    <version>1.02</version>
+    <time>1323193631</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>4db57c9bccb07920ab649e788992fc77</srcmd5>
+    <version>1.02</version>
+    <time>1340183916</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>4db57c9bccb07920ab649e788992fc77</srcmd5>
+    <version>1.02</version>
+    <time>1359109794</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>382eef2e5767d8c2b34bdd79d8f4890d</srcmd5>
+    <version>1.03</version>
+    <time>1371814360</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 179034 from coolo)</comment>
+    <requestid>179056</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>382eef2e5767d8c2b34bdd79d8f4890d</srcmd5>
+    <version>1.03</version>
+    <time>1379663838</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>382eef2e5767d8c2b34bdd79d8f4890d</srcmd5>
+    <version>1.03</version>
+    <time>1409302478</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

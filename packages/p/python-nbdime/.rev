@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f1d42fd1c6913c361e41b0d81c33f85a</srcmd5>
+    <version>unknown</version>
+    <time>1558516381</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.5
+- Rename to to match jupyter package naming guidelines.
+- Specify which version number is being used to avoid conflicts.
+- Add conflicts to jupyter subpackage to more explicitly handle file overlaps with old naming scheme.
+</comment>
+    <requestid>703527</requestid>
+  </revision>
+</revisionlist>

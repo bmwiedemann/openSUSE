@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>006d2b7934938b08dbd71aae525a0a38</srcmd5>
+    <version>unknown</version>
+    <time>1441955012</time>
+    <user>dimstar_suse</user>
+    <comment>Since tesseract was renamed to tesseract-ocr, rename also tesseract-traineddata to tesseract-ocr-traineddata. Also Require tesseract-ocr instead of tesseract in the traineddata subpackages. A delete request for tesseract-traineddata will follow</comment>
+    <requestid>329780</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e22839e412a65ff3a26b7ed0cecf50c</srcmd5>
+    <version>3.04.00</version>
+    <time>1444130816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>336308</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1fd86272348d1624bdb2c793913a520d</srcmd5>
+    <version>3.04.00</version>
+    <time>1444833945</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Obsoletes for the american traineddata case boo#950121</comment>
+    <requestid>338409</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f0707bc9ffeffaf5b9f9aaca12a07127</srcmd5>
+    <version>3.04.00</version>
+    <time>1458228925</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373455</requestid>
+  </revision>
+</revisionlist>

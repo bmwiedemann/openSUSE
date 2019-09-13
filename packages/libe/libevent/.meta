@@ -1,0 +1,7 @@
+<package name="libevent" project="openSUSE:Factory">
+  <title>Library Providing an Event Handling API</title>
+  <description>The libevent library provides a mechanism to execute a function when a
+specific event on a file descriptor occurs or after a given time has
+passed.</description>
+  <devel project="devel:libraries:c_c++" package="libevent"/>
+</package>

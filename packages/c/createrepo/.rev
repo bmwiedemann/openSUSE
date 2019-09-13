@@ -1,0 +1,370 @@
+<revisionlist>
+  <revision rev="1" vrev="35">
+    <srcmd5>215a958499391bf40750a4ed94a0294d</srcmd5>
+    <version>0.4.6</version>
+    <time>1168447621</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5115348c8ffb04bb1c6c0ea8389f00f0</srcmd5>
+    <version>0.4.8</version>
+    <time>1171630696</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="10">
+    <srcmd5>08c41c8e5c6d68b902f2c4bd990a0672</srcmd5>
+    <version>0.4.8</version>
+    <time>1177534237</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="13">
+    <srcmd5>45ab66d27a3b1c7bfe5fb28e035a4494</srcmd5>
+    <version>0.4.8</version>
+    <time>1178293354</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="16">
+    <srcmd5>03b7b11e7f0e57b4806a75b0de29672b</srcmd5>
+    <version>0.4.8</version>
+    <time>1178647437</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="19">
+    <srcmd5>4608658be71e0a6957ff2b835953b9a8</srcmd5>
+    <version>0.4.8</version>
+    <time>1179325415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>caf3a121dde4a733e91f467100edcd47</srcmd5>
+    <version>0.4.9</version>
+    <time>1179393628</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>00b1ff269b38e3dbeff7ce86aacad090</srcmd5>
+    <version>0.4.9</version>
+    <time>1179752922</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ba03f13c8504ea15e4e9fd077a2fac12</srcmd5>
+    <version>0.4.10</version>
+    <time>1186664356</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="31">
+    <srcmd5>4e30abfa3d64f77975c9b88ecb0292e6</srcmd5>
+    <version>0.4.10</version>
+    <time>1196278277</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>521aff97476ca22c73018a059bb0ec40</srcmd5>
+    <version>0.4.11</version>
+    <time>1196955428</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>e4effbf39daf67af0929ddb00dd5679e</srcmd5>
+    <version>0.4.11</version>
+    <time>1199908424</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="79">
+    <srcmd5>e4effbf39daf67af0929ddb00dd5679e</srcmd5>
+    <version>0.4.11</version>
+    <time>1199908424</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="80">
+    <srcmd5>edaf61006ee7369d4802e08ca3719eb9</srcmd5>
+    <version>0.4.11</version>
+    <time>1232926785</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="81">
+    <srcmd5>2dae42dd437985457af7ee84a57a388a</srcmd5>
+    <version>0.4.11</version>
+    <time>1241137146</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="83">
+    <srcmd5>2dae42dd437985457af7ee84a57a388a</srcmd5>
+    <version>0.4.11</version>
+    <time>1241137146</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5c97165d15f21e857e508683d0acb797</srcmd5>
+    <version>0.9.8</version>
+    <time>1268739472</time>
+    <user>autobuild</user>
+    <comment>Copy from system:packagemanager/createrepo based on submit request 34928 from user mbarringer
+</comment>
+    <requestid>34928</requestid>
+  </revision>
+  <revision rev="18" vrev="84">
+    <srcmd5>cfba506ef1be93308f4dcb904ea38927</srcmd5>
+    <version>0.4.11</version>
+    <time>1268750666</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Factory/createrepo based on submit request 34950 from user coolo
+</comment>
+    <requestid>34950</requestid>
+  </revision>
+  <revision rev="19" vrev="85">
+    <srcmd5>497d1f6de6804e98fdf7ff7faf0d228c</srcmd5>
+    <version>0.4.11</version>
+    <time>1268923255</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>ab21974691ed993a695d9ee4f0bb61bd</srcmd5>
+    <version>0.9.8</version>
+    <time>1271189579</time>
+    <user>autobuild</user>
+    <comment>Copy from system:packagemanager/createrepo based on submit request 37761 from user mbarringer
+</comment>
+    <requestid>37761</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>ba0ecbd1ef3a2950d45b1d3b60f656f2</srcmd5>
+    <version>0.9.8</version>
+    <time>1271807851</time>
+    <user>autobuild</user>
+    <comment>Copy from system:packagemanager/createrepo based on submit request 38332 from user mbarringer
+</comment>
+    <requestid>38332</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>775a350ec88c9562ec549187a324657d</srcmd5>
+    <version>0.9.8</version>
+    <time>1273241566</time>
+    <user>autobuild</user>
+    <comment>Copy from system:packagemanager/createrepo based on submit request 39639 from user mbarringer
+</comment>
+    <requestid>39639</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>775a350ec88c9562ec549187a324657d</srcmd5>
+    <version>0.9.8</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>775a350ec88c9562ec549187a324657d</srcmd5>
+    <version>0.9.8</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>25c86568247e737bfa66fcc4b1eeaf12</srcmd5>
+    <version>0.9.8</version>
+    <time>1285105104</time>
+    <user>autobuild</user>
+    <comment>Copy from system:packagemanager/createrepo based on submit request 48657 from user coolo
+</comment>
+    <requestid>48657</requestid>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>f8d9e8e8a445bc2704e209bc22b89886</srcmd5>
+    <version>0.9.8</version>
+    <time>1293577044</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56758 from user mbarringer
+</comment>
+    <requestid>56758</requestid>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>3628e5d7254e65ff3ade16e98357cb83</srcmd5>
+    <version>0.9.8</version>
+    <time>1293577051</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56758
+</comment>
+  </revision>
+  <revision rev="28" vrev="10">
+    <srcmd5>ceddf65f2eea4abc1aa38db600b2d672</srcmd5>
+    <version>0.9.8</version>
+    <time>1295059350</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58256 from user coolo
+</comment>
+    <requestid>58256</requestid>
+  </revision>
+  <revision rev="29" vrev="11">
+    <srcmd5>5d09f07d9be0eea2a496de3f8ade662b</srcmd5>
+    <version>0.9.8</version>
+    <time>1295059361</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58256
+</comment>
+  </revision>
+  <revision rev="30" vrev="14">
+    <srcmd5>5d09f07d9be0eea2a496de3f8ade662b</srcmd5>
+    <version>0.9.8</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="31" vrev="15">
+    <srcmd5>746b76c6d63b1798d314ae2860fc9990</srcmd5>
+    <version>0.9.8</version>
+    <time>1316617133</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 83140 from jengelh)</comment>
+    <requestid>83799</requestid>
+  </revision>
+  <revision rev="32" vrev="17">
+    <srcmd5>746b76c6d63b1798d314ae2860fc9990</srcmd5>
+    <version>0.9.8</version>
+    <time>1319181826</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="33" vrev="18">
+    <srcmd5>cf950fe0c9e93b4c4b804f947d724a7a</srcmd5>
+    <version>0.9.8</version>
+    <time>1323191072</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>61b6c7685fb0259ed7ca539136c17eb0</srcmd5>
+    <version>0.9.9</version>
+    <time>1329476414</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104128</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>61b6c7685fb0259ed7ca539136c17eb0</srcmd5>
+    <version>0.9.9</version>
+    <time>1340183252</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>61b6c7685fb0259ed7ca539136c17eb0</srcmd5>
+    <version>0.9.9</version>
+    <time>1359108773</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>68e721913507723eef7994fa8fb887fb</srcmd5>
+    <version>0.9.9</version>
+    <time>1364239012</time>
+    <user>coolo</user>
+    <comment>- added createrepo-0.9.9-worker-clog_limit.patch in order to
+  fix &quot;creatrepo --changelog-limit &lt;num&gt; ...&quot; (forwarded request 160652 from Marcus_H)</comment>
+    <requestid>160877</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>764ec035d4f7c032dc030c13a6c3cb50</srcmd5>
+    <version>0.9.9</version>
+    <time>1364927202</time>
+    <user>coolo</user>
+    <comment>fix createrepo without clog_limit (bnc#812589) (forwarded request 161842 from bmwiedemann)</comment>
+    <requestid>162068</requestid>
+  </revision>
+  <revision rev="39" vrev="8">
+    <srcmd5>ddb5c7c0e100fbae975f552834034b54</srcmd5>
+    <version>0.9.9</version>
+    <time>1371544186</time>
+    <user>coolo</user>
+    <comment>- createrepo/readMetadata.py is using python-libxml2, so require it (forwarded request 178959 from coolo)</comment>
+    <requestid>179332</requestid>
+  </revision>
+  <revision rev="40" vrev="9">
+    <srcmd5>d2601432783af2d59c5498e669e39bfd</srcmd5>
+    <version>0.9.9</version>
+    <time>1377258818</time>
+    <user>scarabeus_factory</user>
+    <comment>- write timestamps in seconds (BNC#823652)
+
+- createrepo-0.9.9-clean_tmp_files.patch:
+  remove hunk referencing variables not in this codebase
+  (git 850b368ced63b2c0b7f2a4f2fb014d1daba7c80c)
+
+- clean up tmp files (BNC#812071)
+
+--------------------------------------------------------------------
+- add fix to pass checksum type to workers (BNC#802001) (forwarded request 187270 from oertel)</comment>
+    <requestid>196084</requestid>
+  </revision>
+  <revision rev="41" vrev="11">
+    <srcmd5>d2601432783af2d59c5498e669e39bfd</srcmd5>
+    <version>0.9.9</version>
+    <time>1379662156</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>783f8c28a42be043ec1fcaf9e35d009d</srcmd5>
+    <version>0.10.3</version>
+    <time>1393600933</time>
+    <user>scarabeus_factory</user>
+    <comment>-&gt;</comment>
+    <requestid>223816</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>f248d6a94b645100f83704582d1da261</srcmd5>
+    <version>0.10.3</version>
+    <time>1393935653</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>224399</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>f248d6a94b645100f83704582d1da261</srcmd5>
+    <version>0.10.3</version>
+    <time>1409300683</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>e18b9fa4d84dfd7e5ec927cfe638e08c</srcmd5>
+    <version>0.10.3</version>
+    <time>1416823993</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262449</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>7d850432ecbc5bcb5cb0e9ed0b974498</srcmd5>
+    <version>0.10.4</version>
+    <time>1459237871</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>379191</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>07b3dc9528d49bdc712fad04f2388f38</srcmd5>
+    <version>0.10.4</version>
+    <time>1519307826</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>578786</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>8151b8587993365c0976005fcb5daa17</srcmd5>
+    <version>0.10.4</version>
+    <time>1520852643</time>
+    <user>dimstar_suse</user>
+    <comment>- Use SPDX3.0 license tags and package COPYING as %license.
+
+- Fix misspelled createrepo-implementation provides. (forwarded request 580969 from dimstar)</comment>
+    <requestid>583767</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>0e35bc98b997c27e38228ad8289f985f</srcmd5>
+    <version>0.10.4</version>
+    <time>1568190905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729753</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,505 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6862b85953b51d2eae4753e6f1a2c9f</srcmd5>
+    <version>0.0.2</version>
+    <time>1219374142</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="6">
+    <srcmd5>eb22b83b5ffb4d604664ed70c6ce76c3</srcmd5>
+    <version>0.0.2</version>
+    <time>1219438803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>df6f2ab1df81e87a7d14a4ad859c29a0</srcmd5>
+    <version>0.0.3</version>
+    <time>1221340620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>103609c468f38e9aa59f0ca69423fe34</srcmd5>
+    <version>0.0.3</version>
+    <time>1226273998</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>957f08051f485fe27b21e957c7ad5424</srcmd5>
+    <version>0.2.0</version>
+    <time>1249512715</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>957f08051f485fe27b21e957c7ad5424</srcmd5>
+    <version>0.2.0</version>
+    <time>1249512715</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>41853ff382b5d5b25a4cfcb2e2057d81</srcmd5>
+    <version>0.2.0</version>
+    <time>1267404618</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/virt-viewer based on submit request 33599 from user charlesa
+</comment>
+    <requestid>33599</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>c168924d5c63efe55e6e31a0b1c703c6</srcmd5>
+    <version>0.2.0</version>
+    <time>1268926459</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b7e05ec679a371bc26d8be5a3b1d08b1</srcmd5>
+    <version>0.2.1</version>
+    <time>1273791686</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/virt-viewer based on submit request 39911 from user charlesa
+</comment>
+    <requestid>39911</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b7e05ec679a371bc26d8be5a3b1d08b1</srcmd5>
+    <version>0.2.1</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b7e05ec679a371bc26d8be5a3b1d08b1</srcmd5>
+    <version>0.2.1</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>dbf572a198a887afcd242e7add80678a</srcmd5>
+    <version>0.2.1</version>
+    <time>1285625166</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/virt-viewer based on submit request 49272 from user charlesa
+</comment>
+    <requestid>49272</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>dbf572a198a887afcd242e7add80678a</srcmd5>
+    <version>0.2.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2abca5cb13724a86223097e1e72509ca</srcmd5>
+    <version>0.3.1</version>
+    <time>1303386565</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 67039 from user charlesa
+</comment>
+    <requestid>67039</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5bd5ed56d7a06bce805b189e90254e13</srcmd5>
+    <version>0.3.1</version>
+    <time>1303386574</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 67039
+</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>be7a9764d77d6755cb174857e328af2b</srcmd5>
+    <version>0.3.1</version>
+    <time>1305541153</time>
+    <user>saschpe</user>
+    <comment>Fix spec file building in Factory</comment>
+    <requestid>70133</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>a05b05d71049086ba68aa3a7a699085c</srcmd5>
+    <version>0.3.1</version>
+    <time>1305541169</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70133
+</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>5189ffbe5724e3caaee4089f3242cba4</srcmd5>
+    <version>0.3.1</version>
+    <time>1310542360</time>
+    <user>saschpe</user>
+    <comment>Milestone 3 checkin</comment>
+    <requestid>76132</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>e67d21aa476591455a04f1fc68fa6550</srcmd5>
+    <version>0.3.1</version>
+    <time>1311926403</time>
+    <user>saschpe</user>
+    <comment>Fix spec file for building on older platforms</comment>
+    <requestid>77377</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>85c637efb7f00a14b6f942301404fee4</srcmd5>
+    <version>0.3.1</version>
+    <time>1311926415</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77377
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7744e486d69b7bc5e63b56869d6cc665</srcmd5>
+    <version>0.4.1</version>
+    <time>1317132413</time>
+    <user>saschpe</user>
+    <comment>Update to version 0.4.1</comment>
+    <requestid>84968</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ad0d85474d480182b8a218ac3692fb87</srcmd5>
+    <version>0.4.1</version>
+    <time>1319033534</time>
+    <user>coolo</user>
+    <comment>Checkin for RC1</comment>
+    <requestid>88607</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>ad0d85474d480182b8a218ac3692fb87</srcmd5>
+    <version>0.4.1</version>
+    <time>1319182552</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>e906e8799c821e6314ab117c0a0cce57</srcmd5>
+    <version>0.4.1</version>
+    <time>1322567572</time>
+    <user>coolo</user>
+    <comment>- Always use canonical URI from libvirt connection 
+  virtview-git-canonical-uri.patch</comment>
+    <requestid>94174</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f7267581f126fde6eda7e954707b4638</srcmd5>
+    <version>0.4.2</version>
+    <time>1329221507</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103876</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5e73e394a4ac7c8abdf7ec5f142b5e35</srcmd5>
+    <version>0.5.2</version>
+    <time>1333014168</time>
+    <user>coolo</user>
+    <comment>Update to 0.5.2 - Milestone 3 checkin</comment>
+    <requestid>111598</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>f57f0e30c302ebc4e662e83826c7261f</srcmd5>
+    <version>0.5.2</version>
+    <time>1336035686</time>
+    <user>coolo</user>
+    <comment>- Fix failure of viewer to close when guest is terminated 
+  virtview-git-vnc-close.patch
+- Additional upstream fix
+  virtview-git-uri-crash.patch</comment>
+    <requestid>115237</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e64f85dd10b0ef5b806b8c993645d7ce</srcmd5>
+    <version>0.5.3</version>
+    <time>1337578369</time>
+    <user>coolo</user>
+    <comment>Update to 0.5.3 - Milestone 4/beta checkin</comment>
+    <requestid>121353</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>e64f85dd10b0ef5b806b8c993645d7ce</srcmd5>
+    <version>0.5.3</version>
+    <time>1340184314</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>d157536b0204c80ef0fbb62c72436f0d</srcmd5>
+    <version>0.5.3</version>
+    <time>1345022466</time>
+    <user>namtrac</user>
+    <comment>fix build for SLE_11 (forwarded request 130793 from computersalat)</comment>
+    <requestid>130815</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c30e26377df9eb61d8fc942c2516091d</srcmd5>
+    <version>0.5.4</version>
+    <time>1349633220</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137353</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>eb2418ad9ddf94a1865acbca3bb81101</srcmd5>
+    <version>0.5.4</version>
+    <time>1354713012</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143992</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>8fb4fcd80bb1b9900acbd2446bec9e83</srcmd5>
+    <version>0.5.4</version>
+    <time>1358416515</time>
+    <user>coolo</user>
+    <comment>Bug fixes</comment>
+    <requestid>148619</requestid>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>8fb4fcd80bb1b9900acbd2446bec9e83</srcmd5>
+    <version>0.5.4</version>
+    <time>1359110547</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>672291f1c65efa3b3516ba921534bc5d</srcmd5>
+    <version>0.5.5</version>
+    <time>1363340930</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159464</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8c6b7557fcc250605420b8ba6bb26840</srcmd5>
+    <version>0.5.6</version>
+    <time>1371647825</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>179634</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f285f703b0f36d07f27c89fccb0c32f9</srcmd5>
+    <version>0.5.7</version>
+    <time>1375366175</time>
+    <user>coolo</user>
+    <comment>New version with bug fixes</comment>
+    <requestid>185338</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>bbc0feff045e4c526f2b25047a37334c</srcmd5>
+    <version>0.5.7</version>
+    <time>1377248698</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>196046</requestid>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>bbc0feff045e4c526f2b25047a37334c</srcmd5>
+    <version>0.5.7</version>
+    <time>1379664932</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>8855e0d0aca347a7885485772ebbaea2</srcmd5>
+    <version>0.6.0</version>
+    <time>1391030605</time>
+    <user>coolo</user>
+    <comment>Update to version 0.6.0</comment>
+    <requestid>215539</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>d8bfcdd0c6aab182b5f2c832ecf8e2a7</srcmd5>
+    <version>0.6.0</version>
+    <time>1394393296</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>225116</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>4a4d22430371390bd1087d219f72d624</srcmd5>
+    <version>0.6.0</version>
+    <time>1396020565</time>
+    <user>coolo</user>
+    <comment>Bug fixes for os13.2</comment>
+    <requestid>227833</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>de38576e21f2fac55c64a451c506d55a</srcmd5>
+    <version>0.6.0</version>
+    <time>1402947441</time>
+    <user>coolo</user>
+    <comment>Bug fixes for os13.2</comment>
+    <requestid>237024</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>a746c94bd382e8dc8201ce343e4f61d0</srcmd5>
+    <version>0.6.0</version>
+    <time>1404306321</time>
+    <user>coolo</user>
+    <comment>Bug fixes for os13.2</comment>
+    <requestid>239241</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>4dfe2b347bb1bd6d24d11b5dcbc57b0d</srcmd5>
+    <version>0.6.0</version>
+    <time>1406005090</time>
+    <user>coolo</user>
+    <comment>Bug fixes for os13.2</comment>
+    <requestid>241747</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>9c4338547b5d1f42049d13f90317f17d</srcmd5>
+    <version>1.0</version>
+    <time>1406272146</time>
+    <user>coolo</user>
+    <comment>Bug fixes for os13.2</comment>
+    <requestid>242216</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>9c4338547b5d1f42049d13f90317f17d</srcmd5>
+    <version>1.0</version>
+    <time>1409303611</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>26db2e585442734bcfaf127a0c161212</srcmd5>
+    <version>2.0</version>
+    <time>1421232317</time>
+    <user>dimstar_suse</user>
+    <comment>New version 2.0 for Factory</comment>
+    <requestid>280958</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>66266eba1513e64372f0b6b59342db88</srcmd5>
+    <version>2.0</version>
+    <time>1443585198</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>334673</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>45c03d7ae8030a165b492f1dd752be99</srcmd5>
+    <version>3.0</version>
+    <time>1450605169</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>349589</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>84e608a2775ee38b9b6bfa047db00d99</srcmd5>
+    <version>3.1</version>
+    <time>1453416226</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>354636</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>122be865d300563fab98927f05479fcc</srcmd5>
+    <version>3.1</version>
+    <time>1465938429</time>
+    <user>dimstar_suse</user>
+    <comment>Sync with SLES-12 SP2 Updates</comment>
+    <requestid>400900</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>00a3bf9c8523dcbb107d3d2df75c4e29</srcmd5>
+    <version>4.0</version>
+    <time>1468999060</time>
+    <user>dimstar_suse</user>
+    <comment>Update to virt-viewer 4.0</comment>
+    <requestid>408604</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>0edf75c47617d791d1db2b88d2752daf</srcmd5>
+    <version>4.0</version>
+    <time>1470217374</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415037</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>ff14302b96100adfe395a5698cbf1a40</srcmd5>
+    <version>4.0</version>
+    <time>1472111828</time>
+    <user>dimstar_suse</user>
+    <comment>A couple bug fixes for Tumbleweed, Leap 42.2, and SLE12SP2</comment>
+    <requestid>421373</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>351412451953abdeff82acd578db5088</srcmd5>
+    <version>4.0</version>
+    <time>1473241571</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>424531</requestid>
+  </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>e7b5d8e8913c0a3d3c8ba2d679639c96</srcmd5>
+    <version>4.0</version>
+    <time>1477904168</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>437493</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>597cc1c62c8b0fbdab69003612faa202</srcmd5>
+    <version>5.0</version>
+    <time>1481030826</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>443987</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>8ea2d7d3203954b80c3325d24eff4367</srcmd5>
+    <version>5.0</version>
+    <time>1485512208</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452479</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>3a0e9fd798b39661c7e7109cbb63a566</srcmd5>
+    <version>6.0</version>
+    <time>1503593598</time>
+    <user>dimstar_suse</user>
+    <comment>Update to virt-viewer version 6.0</comment>
+    <requestid>517066</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>3309626a0319b852a0e800b2e2a6ea25</srcmd5>
+    <version>6.0</version>
+    <time>1530866974</time>
+    <user>dimstar_suse</user>
+    <comment>Fix virt-viewer build failure in Factory due to changes in spice-gtk</comment>
+    <requestid>621202</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>fff00ce69808b7f3cab546965ac857f8</srcmd5>
+    <version>7.0</version>
+    <time>1532774743</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 7.0</comment>
+    <requestid>625854</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>1429493784b4e53c27335cfd12d3f27c</srcmd5>
+    <version>8.0</version>
+    <time>1552599785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0:
+  - Fix warnings with latest GCC versions
+  - More strictly filter out non-ISO images in ovirt menu
+  - Require libgovirt &amp;gt;= 0.3.3
+  - Require librest &amp;gt;= 0.8
+  - Support UNIX and TLS URI schemes for spice
+  - Fix full screen monitor placement under wayland
+  - Fix command line encoding on Windows
+  - Ensure VM name is set in window title
+  - Support unix-path in .vv files
+  - Support text console windows via VTE
+  - Add machine power control menu options
+  - Record full build env in MSI installer 
+
+- update virtview-desktop.patch (forwarded request 684997 from polslinux)</comment>
+    <requestid>685105</requestid>
+  </revision>
+</revisionlist>

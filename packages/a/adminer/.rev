@@ -1,0 +1,168 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8140a3d761da7be9925695b8c7f84fbe</srcmd5>
+    <version>4.2.3</version>
+    <time>1455610698</time>
+    <user>dimstar_suse</user>
+    <comment>Adminer (formerly phpMinAdmin) is a full-featured database management tool written in PHP. Conversely to phpMyAdmin, it consist of a single file ready to deploy to the target server. Adminer is available for MySQL, PostgreSQL, SQLite, MS SQL, Oracle, Firebird, SimpleDB, Elasticsearch and MongoDB.</comment>
+    <requestid>348142</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>31934f3602ae0a97514e452ed16f44df</srcmd5>
+    <version>4.2.4</version>
+    <time>1455790029</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.2.4.</comment>
+    <requestid>359660</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b3a0b2ebb389295353584c9cc2d57371</srcmd5>
+    <version>4.2.4</version>
+    <time>1457353389</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>361559</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b59cafdb2c3a8ea133f89453dd51e2a</srcmd5>
+    <version>4.2.5</version>
+    <time>1465336009</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v4.2.5:
+  + Fix http:// links in stylesheets to protocol-independent ones (//)
+  + improved kill command support for MySQL and initial support for PgSQL
+  + Remove global variable
+  + Fix remote execution in SQLite query (thanks to Vincent Waart)
+  + SQLite: Require credentials to use (thanks to Vincent Waart)
+  + Release 4.2.5</comment>
+    <requestid>399559</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>82ea0501ef032135eed95f9758d28eb2</srcmd5>
+    <version>4.2.5</version>
+    <time>1485682626</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452553</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1e566570f63136e3f31a8c316499a42b</srcmd5>
+    <version>4.3.0</version>
+    <time>1489653817</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479775</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0bddf33fc17d6a9e648b05a173193535</srcmd5>
+    <version>4.3.1</version>
+    <time>1492714606</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>488004</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>859595917736cc6c43886f2d69883d38</srcmd5>
+    <version>4.3.1</version>
+    <time>1505238974</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523421</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0ba048dda4518a1f6f0240dc8a9ed966</srcmd5>
+    <version>4.3.1</version>
+    <time>1509305069</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>537261</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>62df841af0e82d362c825cf20766e566</srcmd5>
+    <version>4.4.0</version>
+    <time>1516359233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567202</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e2c2457ce39ac67ba66ecbfb672d3d88</srcmd5>
+    <version>4.5.0</version>
+    <time>1516970376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569523</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bedab05400dff9637b20155a9ef20887</srcmd5>
+    <version>4.6.0</version>
+    <time>1517932165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573153</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ba24405a14962e850905c723837ce87b</srcmd5>
+    <version>4.6.1</version>
+    <time>1518187935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574448</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ebed0dc463bdb36937cd697832aeb72f</srcmd5>
+    <version>4.6.2</version>
+    <time>1519218796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578541</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>12310cfdbd57eee5a642331444b06e76</srcmd5>
+    <version>4.6.3</version>
+    <time>1530304575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619643</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>acbb3fc75c393e197c717f6975a0ae19</srcmd5>
+    <version>4.7.0</version>
+    <time>1543224719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651564</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>107ad8fb51d4489bb86d576fc465f08a</srcmd5>
+    <version>4.7.1</version>
+    <time>1548452684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668382</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>36d6c5113bec165995c5d1d88d10d41e</srcmd5>
+    <version>4.7.1</version>
+    <time>1556916432</time>
+    <user>dimstar_suse</user>
+    <comment>forward cleanups</comment>
+    <requestid>700233</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c54d0273295e0398e1fcab51cd3ed85c</srcmd5>
+    <version>4.7.2</version>
+    <time>1563701631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716629</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5a24eb52c45a58d396ba33c68c8365d3</srcmd5>
+    <version>4.7.3</version>
+    <time>1567092558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727019</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c69e58c423465644114ab7b141d3a8a5</srcmd5>
+    <version>0.9.41</version>
+    <time>1333389149</time>
+    <user>coolo</user>
+    <comment>Moving M17N/ttf-wqy-zenhei to M17N:fonts/wqy-zenhei-fonts.</comment>
+    <requestid>112023</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cb2111ccab91b54b8d74332c49203a10</srcmd5>
+    <version>0.9.41</version>
+    <time>1338017431</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122200</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>cb2111ccab91b54b8d74332c49203a10</srcmd5>
+    <version>0.9.41</version>
+    <time>1340184327</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>86a8d6295b1eabed6fe32156e767c29a</srcmd5>
+    <version>0.9.41</version>
+    <time>1347619342</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134001</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>c3ee5547a414f910f3966d8d03f68218</srcmd5>
+    <version>0.9.41</version>
+    <time>1350364910</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138216</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>02d05dee527bd7e3b793575ae6d915bc</srcmd5>
+    <version>0.9.41</version>
+    <time>1351056011</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139101</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>02d05dee527bd7e3b793575ae6d915bc</srcmd5>
+    <version>0.9.41</version>
+    <time>1359110576</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e12c5279c66b0ff06472d485b98b087a</srcmd5>
+    <version>0.9.45</version>
+    <time>1363278678</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157676</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e12c5279c66b0ff06472d485b98b087a</srcmd5>
+    <version>0.9.45</version>
+    <time>1379664970</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>5d3366e31e8c0c93ccfb94605b6e8a89</srcmd5>
+    <version>0.9.45</version>
+    <time>1380475801</time>
+    <user>coolo</user>
+    <comment>Remove alias preference in wqy-zenhei.conf, which may interfere with settings in 58-suse-post-user.conf. (forwarded request 201329 from ramax)</comment>
+    <requestid>201383</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>5d3366e31e8c0c93ccfb94605b6e8a89</srcmd5>
+    <version>0.9.45</version>
+    <time>1409303649</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>448f563611a3f4e30a8b5853aac7172e</srcmd5>
+    <version>0.9.47+snapshot20141019</version>
+    <time>1413782843</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257671</requestid>
+  </revision>
+</revisionlist>

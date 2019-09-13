@@ -1,0 +1,9 @@
+<package name="xf86-video-omap" project="openSUSE:Factory">
+  <title>xf86-video-omap</title>
+  <description>Open-source X.org graphics driver for TI OMAP graphics
+
+Use omapdrm kernel driver.
+
+https://github.com/robclark/xf86-video-omap</description>
+  <devel project="X11:XOrg" package="xf86-video-omap"/>
+</package>

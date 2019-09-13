@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fcdc8d8e3eb5aa08a082b67934c5aaea</srcmd5>
+    <version>0.0.0+git20180202.37707fd</version>
+    <time>1518187568</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.0+git20180202.37707fd:
+  * unix: move gccgo redeclared *SyscallNoError functions to a separate file
+  * unix: fix cpuset size argument in sched_affinity syscall
+  * unix: use SyscallNoError and RawSyscallNoError on Linux only
+  * unix: fix godoc comment for clen
+  * unix: add godoc for Sockaddr* types
+  * plan9: add arm support
+  * unix: add sockaddr_l2 definitions
+  * unix: don't export padding fields on all platforms
+  * unix: use ParseDirent from syscall
+  * unix: adjust replacement regex for removed struct fields for linux/s390x
+- added CONTRIBUTING.md to package documentation
+- Update to version 0.0.0+git20161205.478fcf5:
+  * x/sys/unix: add *linkat functions on linux
+  * unix: Fix *linkat on sparc64 and s390x
+  * unix: Add FADV_* constants for linux/arm
+  * unix: fix name of prlimit parameters
+  * x/sys/unix: add Getsid on linux
+  * x/sys/unix: added SockaddrCAN struct to allow creation of AF_CAN sockets
+  * unix: Use syscall.SysctlRaw in Sysctl
+  * windows: run &quot;go generate&quot;
+  * windows/registry: add code to access remote pc registry
+  * x/sys/unix: added linux/mips{,le} support
+- Updated service definition
+- Added rpmlintrc for common golang linting
+- Applied latest changes for golang-packaging
+- Refactoed spec with a new unified layout
+- Switched to disabled run service
+- rename to golang-org-x-sys
+- update version 0.0.0+git20150612.b4e2899
+- use golang-packaging for packaging
+- initial version 0.0.0+git20150320.8642817
+</comment>
+    <requestid>573725</requestid>
+  </revision>
+</revisionlist>

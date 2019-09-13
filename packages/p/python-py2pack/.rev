@@ -1,0 +1,461 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>96d6e8e1f269f3ae1c5965ad8fff5dbc</srcmd5>
+    <version>0.3.7</version>
+    <time>1295947360</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 58716 from user saschpe
+</comment>
+    <requestid>58716</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f678611caab76a18c769b30603ccd59b</srcmd5>
+    <version>0.3.7</version>
+    <time>1295947366</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 58716
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a20217f42d5e5e13c7785d3bae787f2c</srcmd5>
+    <version>0.3.10</version>
+    <time>1296608393</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59376 from user saschpe
+</comment>
+    <requestid>59376</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ed0a04f29cf137fc979f7f6b3d96d8b8</srcmd5>
+    <version>0.3.10</version>
+    <time>1296608401</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59376
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ed0a04f29cf137fc979f7f6b3d96d8b8</srcmd5>
+    <version>0.3.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ff57ba2d49ed4d62b850088537cb3e5a</srcmd5>
+    <version>0.3.11</version>
+    <time>1299578534</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 63270 from user saschpe
+</comment>
+    <requestid>63270</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>da4cdfcce95700f4d3c26f2d610368a6</srcmd5>
+    <version>0.3.11</version>
+    <time>1299578540</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 63270
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e2af8e3b927adde25b9a014433b1e154</srcmd5>
+    <version>0.3.13</version>
+    <time>1299673877</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63706 from user saschpe
+</comment>
+    <requestid>63706</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>bd8d7da392d5f2f95b851649284a906c</srcmd5>
+    <version>0.3.13</version>
+    <time>1299673884</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63706
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b5439168bfceccb3eb8f4fa5b772d923</srcmd5>
+    <version>0.3.14</version>
+    <time>1302861169</time>
+    <user>darix</user>
+    <comment>Accepted submit request 66930 from user coolo
+</comment>
+    <requestid>66930</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>28582236370754ab131d0625910146bc</srcmd5>
+    <version>0.3.14</version>
+    <time>1302861178</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 66930
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f0c4932269e2e3de2b82363aa51c956d</srcmd5>
+    <version>0.3.15</version>
+    <time>1303953542</time>
+    <user>darix</user>
+    <comment>Accepted submit request 68552 from user coolo
+</comment>
+    <requestid>68552</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4d43a1c06b4ad688477e80cc5e583923</srcmd5>
+    <version>0.3.15</version>
+    <time>1303953553</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 68552
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>78c9e1d8ee165548010878e4eaf8ab52</srcmd5>
+    <version>0.3.17</version>
+    <time>1305730683</time>
+    <user>darix</user>
+    <comment>- Update to version 0.3.17
+  * Fix unicode encoding issues
+  * New spec file template for Mageia (formerly Mandriva)
+- Changes from version 0.3.16
+  * More testing
+  * Updated spec file templates according to distro policies</comment>
+    <requestid>70546</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5141c3020f4317d28a7128e8b83e973c</srcmd5>
+    <version>0.3.17</version>
+    <time>1305730694</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 70546
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4888762111c5a842039027fe94c184f2</srcmd5>
+    <version>0.3.20</version>
+    <time>1308903669</time>
+    <user>azouhr</user>
+    <comment>- Update to version 0.3.20
+  * Use URL for RPM tag 'Source' instead of filename
+
+- Update to version 0.3.18
+  * Also list dependencies from 'install_requires'
+  * Allow to depend on specific Python versions</comment>
+    <requestid>74305</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>2832d49aa9155b541fb5f4874b6f0664</srcmd5>
+    <version>0.3.20</version>
+    <time>1308903685</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 74305
+</comment>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>47792dcec86f088d86af6176cd9d39b5</srcmd5>
+    <version>0.3.20</version>
+    <time>1315235034</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>80618</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>d62eab872bd2926362ffa6243479bc4d</srcmd5>
+    <version>0.3.20</version>
+    <time>1315235044</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80618
+</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>a26c561fa9010262de1fdd5d2671d2f1</srcmd5>
+    <version>0.3.20</version>
+    <time>1316618435</time>
+    <user>saschpe</user>
+    <comment>- Buildrequire python-Jinja2 instead of python-jinja2
+- Removed %clean section, use sane default
+- Fix non-executable script rpmlint warning</comment>
+    <requestid>83943</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e83a15ca607368d08af676df43b45f81</srcmd5>
+    <version>0.3.21</version>
+    <time>1317025032</time>
+    <user>saschpe</user>
+    <comment>- Set license to GPL-2.0+ (SPDX style)
+- Update to version 0.3.21:
+  * Improvements to the Fedora and SUSE spec templates</comment>
+    <requestid>84436</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>e83a15ca607368d08af676df43b45f81</srcmd5>
+    <version>0.3.21</version>
+    <time>1319182400</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bfeb5628e3e0a0e1e4eab4ca7fe89e9c</srcmd5>
+    <version>0.4.1.1</version>
+    <time>1336035602</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>115032</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>bfeb5628e3e0a0e1e4eab4ca7fe89e9c</srcmd5>
+    <version>0.4.1.1</version>
+    <time>1340184078</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>bfeb5628e3e0a0e1e4eab4ca7fe89e9c</srcmd5>
+    <version>0.4.1.1</version>
+    <time>1359110093</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f6b8ae0cef8a7baedeb8e1f1bc9e1a59</srcmd5>
+    <version>0.4.3.2</version>
+    <time>1367487723</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.4.3:
+  + Generate SPDX-style licenses
+  + Find documentation files from local tarball
+  + Detect C extensions from local tarball</comment>
+    <requestid>173777</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>debc3b2a4b231dc3b7b7843bc3afc605</srcmd5>
+    <version>0.4.3.4</version>
+    <time>1367581565</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.4.3.4:
+  + catch more doc files
+
+- Update to version 0.4.3.3:
+  + Various bugfixes</comment>
+    <requestid>174421</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>a3e202b49de92310ad6704122c9ab464</srcmd5>
+    <version>0.4.3.4</version>
+    <time>1371654245</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179940</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c0a4b497345f29ce93227169d7f2cd9c</srcmd5>
+    <version>0.4.4</version>
+    <time>1372145721</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.4.4:
+  + Package scripts (setup.py) as binaries</comment>
+    <requestid>180744</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>c0a4b497345f29ce93227169d7f2cd9c</srcmd5>
+    <version>0.4.4</version>
+    <time>1379664248</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2f97827a1e16d0987e95277b7f67553f</srcmd5>
+    <version>0.4.9</version>
+    <time>1392113011</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.4.9:
+  + Fix coverage report source
+  + Add cssselect setup_requires
+  + Update SPDX license map
+  + Change 'flake8' to 'pep8' target
+  + Fix recursive-include for doc
+  ...</comment>
+    <requestid>221584</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>cc55719d1446d7ae530b27eab32df5e3</srcmd5>
+    <version>0.4.10</version>
+    <time>1394392644</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.4.10
+  + Fix PyPI URL to avoid 301 moved permanently
+  + Minor bugfixes
+------------------------------------------------------------------</comment>
+    <requestid>224844</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>cc55719d1446d7ae530b27eab32df5e3</srcmd5>
+    <version>0.4.10</version>
+    <time>1409302950</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>29abeca0029b0fba84cce06d9fc07dc5</srcmd5>
+    <version>0.6.3</version>
+    <time>1468360269</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406255</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>649e364669ed3be7b59c755181ce45de</srcmd5>
+    <version>0.6.3</version>
+    <time>1469382797</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing python-six BuildRequires</comment>
+    <requestid>412809</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>80c5ac6d5a31dab887c110f24be1faa5</srcmd5>
+    <version>0.6.4</version>
+    <time>1471428314</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419420</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>40096d86c5fc88ee355d4cdca4111ccb</srcmd5>
+    <version>0.7.0</version>
+    <time>1487901287</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.0:
+  * Switch to pbr
+  * Include doc/* in sdist tarball
+  * Add Shinx config to setup.cfg
+  * Post release version bump to 0.6.7
+  * Bump version to 0.6.6
+  * Set files.pythonhosted.org as Source url
+  * Also search for tarballs with underscores
+  * Set pypi.io url for Source
+  * Remove deprecated metadata subcommand
+  * doc: Move CLI help to extra document
+  * Support multiple template directories
+  * Fix pep8 error
+  * Use Sphinx for documentation
+  * Remove hardcoded markers
+  * Add license wit FIXME if available
+  * Fix extensions for openSUSE template
+  * Add script to create packages for OBS
+  * Switch to metaextract
+  * Improve openSUSE template checks
+  * Update repository name after move to openSUSE
+- Adjust Requires</comment>
+    <requestid>457073</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d2d408eb98e05703664afa95424e6e14</srcmd5>
+    <version>0.8.0</version>
+    <time>1488560064</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Ignore the required python version for now
+  * Add build condition for tests in opensuse template
+  * Install setup_requires as BuildRequires during build
+  * Update opensuse template for singlespec approach
+  * Remove useless '(' and ')' replacements from opensuse template
+  * travis: Update credential to deploy on pypi
+- Remove manpage for now. Build is broken.</comment>
+    <requestid>461852</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>72e00264f4391841f61e5fd0a3d0a0f6</srcmd5>
+    <version>0.8.0</version>
+    <time>1492714130</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481395</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>63434b5a00535f4b9b5f7e99ccea2273</srcmd5>
+    <version>0.8.0</version>
+    <time>1495883663</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492681</requestid>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>fd1c6e5ed74d78663fe396db0d0788e4</srcmd5>
+    <version>0.8.0</version>
+    <time>1498202294</time>
+    <user>dimstar_suse</user>
+    <comment>- Use update-alternatives for the py2pack executable</comment>
+    <requestid>505629</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>803ff99aece5161a1cad9a8d21e90c53</srcmd5>
+    <version>0.8.1</version>
+    <time>1502562452</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 0.8.1:
+  * Enable tests with python setup.py test
+  * Also support for python 3.6
+  * Fix opensuse's multipython template
+  * unify trailing whitespaces in templates
+  * Handle no upstream source download URL gracefully
+  * Allow packaging custom pypi names via obs-from-pypi.py</comment>
+    <requestid>516069</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d0e5e6efb1ca0681847b5e14c969e8aa</srcmd5>
+    <version>0.8.2</version>
+    <time>1514028011</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.2:
+  * pep8 fixes
+  * opensuse template updates
+  * Add source\_url to Args in tests and use None as default value
+  * Removed unneeded nargs parameter to add\_argument
+  * Add a --source-url parameter to 'fetch' and 'generate' commands
+  * tests: templates: fix version</comment>
+    <requestid>559276</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>86d0bafd8a948285af52d0d07d624ac5</srcmd5>
+    <version>0.8.2</version>
+    <time>1520415542</time>
+    <user>dimstar_suse</user>
+    <comment>- update url to point to the new location (bsc#1079905)</comment>
+    <requestid>583659</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>57d9f44c4d45c6acd4b14d89758a46c4</srcmd5>
+    <version>0.8.2</version>
+    <time>1524144593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597414</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>165ae98033f23ca6d1ba449f7136520b</srcmd5>
+    <version>0.8.3</version>
+    <time>1524576792</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.3:
+  * Remove Sphinx cap
+  * Fix copyright year in tests
+  * Use release\_urls() XMLRPC method for the time being
+  * Test python 3.6 and remove 3.5
+- drop fix-api-package-urls.patch (merged upstream)</comment>
+    <requestid>599997</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>946de5b17bd060bd42eefefaa68d2179</srcmd5>
+    <version>0.8.4</version>
+    <time>1544189965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655970</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>b29db3057488baf6eb69a1c641b7748c</srcmd5>
+    <version>0.8.4</version>
+    <time>1553888550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689256</requestid>
+  </revision>
+</revisionlist>

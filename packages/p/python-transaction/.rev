@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e9ac4103f2a7135bb11664811dea370</srcmd5>
+    <version>1.0a1</version>
+    <time>1277195827</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-transaction based on submit request 41659 from user hennevogel
+</comment>
+    <requestid>41659</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0e9ac4103f2a7135bb11664811dea370</srcmd5>
+    <version>1.0a1</version>
+    <time>1278667400</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0e9ac4103f2a7135bb11664811dea370</srcmd5>
+    <version>1.0a1</version>
+    <time>1278678635</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>da40a160d4d7da83ab6bf844263f2002</srcmd5>
+    <version>unknown</version>
+    <time>1284469705</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-transaction based on submit request 48112 from user coolo
+</comment>
+    <requestid>48112</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a9340b5cf7f72e6931b6633c9f81f95d</srcmd5>
+    <version>1.1.1</version>
+    <time>1288703083</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51930 from user coolo
+</comment>
+    <requestid>51930</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>8615a77d021113328653f8d6616d6b5a</srcmd5>
+    <version>1.1.1</version>
+    <time>1288703089</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51930
+</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>8615a77d021113328653f8d6616d6b5a</srcmd5>
+    <version>1.1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>8615a77d021113328653f8d6616d6b5a</srcmd5>
+    <version>1.1.1</version>
+    <time>1319182406</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c583c75b94bbbe2a09c77adb930a9005</srcmd5>
+    <version>1.2.0</version>
+    <time>1328202010</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.0:
+  * Python 3.2 compatibility.
+  * Dropped Python 2.4 and 2.5 compatibility
+- Set license to SPDX style (ZPL-2.1)
+- Ran spec-cleaner</comment>
+    <requestid>102381</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>82df563556e9a77d150808043c97b8cd</srcmd5>
+    <version>1.2.0</version>
+    <time>1331324812</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108322</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d46f5dccff66309dbc9df540c6b5274d</srcmd5>
+    <version>1.3.0</version>
+    <time>1339352352</time>
+    <user>coolo</user>
+    <comment>Update to 1.3.0 (forwarded request 123892 from poorboywilly)</comment>
+    <requestid>124088</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>d46f5dccff66309dbc9df540c6b5274d</srcmd5>
+    <version>1.3.0</version>
+    <time>1340184096</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8a587b52d79edce7dcd332f9bea0ca90</srcmd5>
+    <version>1.4.0</version>
+    <time>1358690014</time>
+    <user>coolo</user>
+    <comment>Update and python3 support (forwarded request 148606 from posophe)</comment>
+    <requestid>148958</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>8a587b52d79edce7dcd332f9bea0ca90</srcmd5>
+    <version>1.4.0</version>
+    <time>1359110132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>c32ed1e5bac4fc74b900f72dbf64aa69</srcmd5>
+    <version>1.4.0</version>
+    <time>1372064659</time>
+    <user>coolo</user>
+    <comment>remove duplicated spec file</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2cd3b61c3dae9600ca7ad83c8dc6ed2a</srcmd5>
+    <version>1.4.1</version>
+    <time>1378238761</time>
+    <user>coolo</user>
+    <comment>don't package PKG-INFO (forwarded request 186459 from frispete)</comment>
+    <requestid>186545</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>2cd3b61c3dae9600ca7ad83c8dc6ed2a</srcmd5>
+    <version>1.4.1</version>
+    <time>1379664299</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>2cd3b61c3dae9600ca7ad83c8dc6ed2a</srcmd5>
+    <version>1.4.1</version>
+    <time>1409303007</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fd486289faae543b7a7dee057c4bd59d</srcmd5>
+    <version>1.4.3</version>
+    <time>1431981304</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307808</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ce9499ad837192798b5ae46a5771d929</srcmd5>
+    <version>2.1.2</version>
+    <time>1500669989</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507381</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f7f6909fcc90b88596324e50b5b920aa</srcmd5>
+    <version>2.4.0</version>
+    <time>1551785074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0:
+  * add support for python 3.7
+  * many small fixes and test improvements
+  * For more see CHANGES.rst</comment>
+    <requestid>681508</requestid>
+  </revision>
+</revisionlist>

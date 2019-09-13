@@ -1,0 +1,8 @@
+<package name="perl-Compress-Bzip2" project="openSUSE:Factory">
+  <title>Interface to Bzip2 compression library</title>
+  <description>The Compress::Bzip2 module provides a Perl interface to the Bzip2 compression library (see &quot;AUTHOR&quot; for details about where to get Bzip2). A relevant subset of the functionality provided by Bzip2 is available in Compress::Bzip2.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Compress-Bzip2"/>
+  <url>http://cpan.org/modules/by-module/Compress/</url>
+</package>

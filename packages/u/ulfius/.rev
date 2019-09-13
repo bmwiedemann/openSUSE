@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c69247f71a1495cb6f49d554252fd6b</srcmd5>
+    <version>2.3.8</version>
+    <time>1535122943</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain ulfius in Factory</comment>
+    <requestid>628428</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>336efba076ed682231d4adf2c21da306</srcmd5>
+    <version>2.3.8</version>
+    <time>1535367534</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631408</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3591ade33db1eaa02b8512385be68b54</srcmd5>
+    <version>2.5.2</version>
+    <time>1546946953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663315</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e6148fa344eee2b24dded6b2f25e02c9</srcmd5>
+    <version>2.5.4</version>
+    <time>1555053308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692246</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>50814057d3d479f4e2c75d9162c927a7</srcmd5>
+    <version>2.6.1</version>
+    <time>1562591501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713850</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>41ea49b49aa9d782224c2bb0c09837a6</srcmd5>
+    <version>2.6.2</version>
+    <time>1563993230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717781</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>937bcdb36e8e021ee227c00436bcfee1</srcmd5>
+    <version>2.6.2</version>
+    <time>1564994302</time>
+    <user>dimstar_suse</user>
+    <comment>Forward the current version of ulfius to Factory</comment>
+    <requestid>720255</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a81fc3278ff0678b23c27e1a76025ff5</srcmd5>
+    <version>2.6.3</version>
+    <time>1565963482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724028</requestid>
+  </revision>
+</revisionlist>

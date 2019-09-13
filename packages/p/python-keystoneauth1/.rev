@@ -1,0 +1,239 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d4ea64a22d3e464b1e9d30ea35c9e86c</srcmd5>
+    <version>2.2.0</version>
+    <time>1462342738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>373200</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>72eaea72789082eb6eb8c26d68f21583</srcmd5>
+    <version>2.12.1</version>
+    <time>1475242526</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 2.12.1
+  * get_endpoint should return None when no version found
+
+update to version 2.12.0
+  * Allow identity plugins to discover relative version urls
+  * Disables TCP_KEEPCNT when using Windows Subsystem for Linux
+  * User-agent header shouldn't start with a space
+  * Add tests for user-agent with odd sys.argv
+  * add status code 308 to _REDIRECT_STATUSES
+  * Update the home-page in setup.cfg
+  * Updated from global requirements
+
+- update to version 2.11.0
+  * Add tests for YamlJsonSerializer
+  * Add missing class name to tuple of public objects
+  * Fix arguments to _auth_required()
+  * Don't include openstack/common in flake8 exclude list
+  * Fix the doc error in &quot;using-session&quot;
+  * Improve authentication plugins documentation
+  * Use assertEqual() instead of assertDictEqual()
+  * Updated from global requirements
+  * Correctly report available for ADFS plugin
+
+- update to 2.10.0:
+  * Lazy load oauthlib for plugin loading
+  * oidc: add missing 'OidcAccessToken' to __all__
+  * oidc: implement client_credentials grant type
+  * Fix ECP doc link in Saml2 Password class doc
+  * Updated from global requirements
+  * Fix link for &quot;extras dependencies&quot; in extras doc</comment>
+    <requestid>431490</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3f8c9c533fe1985a70bf42b8479208b2</srcmd5>
+    <version>2.18.0</version>
+    <time>1487680789</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.18.0:
+  - Allow specifying client and service info to user_agent
+  - Prevent MemoryError when logging response bodies
+  - Only log application/json in session to start
+  - Fix a typo in opts.py
+  - Fix parameters for Kerberos Auth Plugin
+  - Enable release notes translation
+  - mark a few oidc parameters as required
+  - Drop MANIFEST.in - it's not needed by pbr
+  - Remove discover from test-requirements
+  - Update reno for stable/newton
+  - Remove references to Python 3.4
+  - Raise NotImplementedError instead of NotImplemented
+  - Add Constraints support
+  - Show team and repo badges on README
+  - Use mockpatch fixtures from fixtures
+  - Replace six.iteritems() with .items()
+  - Using assertIsNotNone() instead of assertNotEqual(None)
+  - Replace yaml.load() with yaml.safe_load()
+  - be more explicit about connection errors
+  - Add test for header in Saml2 plugin
+  - Correct betamax fixture for more strict IDNA
+  - X-Serivce-Token should be hashed in the log
+  - Don't issue deprecation warning when nesting adapters
+  - Correctly Omit Response Body in Debug Mode
+  - doc: remove unused import
+  - Removes unnecessary utf-8 encoding
+  - Test that v3fedkerb plugin loads
+  - Allow setting client_name, client_version on adapter
+  - Log request-id for each api call</comment>
+    <requestid>456058</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f1f4edabb0e2ecb1e0b97df7c5c5f866</srcmd5>
+    <version>3.1.0</version>
+    <time>1503926983</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.1.0
+  - Allow setting EndpointReference in ADFSPassword
+  - Add returning EndpointData objects from discovery
+  - Refactor volume mock urls in identity_common tests
+  - Add support for version ranges
+  - Record the discovered major api version
+  - Add an allow_version_hack flag to session and identity plugins.
+  - Use https for *.openstack.org references
+  - Add note to requirements.txt
+  - Miscellaneous cleanup in discover.py
+  - Make discover.version_between private
+  - Support a list of interface values
+  - Clean up a few review nits
+  - Updated inconsistent value of scope parameter
+  - Pass kwargs to the plugin getter
+  - Add paragraph clarifying major and micro versions
+  - Trivial fix typo in document
+  - Introduce keystoneauth1.loading.adapter
+  - Update reno for stable/ocata
+  - Add flags to turn discovery on and off
+  - Fix html_last_updated_fmt for Python3
+  - Ensure constructed urls have trailing '/'s
+  - Add global_request_id param to Adapter constructor
+  - Update docs and add a release note
+  - Optimize the link address
+  - Allow users to specify a serializer easily
+  - Fixed minor review comments and updated docs
+  - Fix ClientException message property not set properly
+  - Plumb endpoint_override through get_endpoint_data
+  - get_conf_options can exclude deprecated opts</comment>
+    <requestid>514838</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c964e38675d63a5a2ae6ea86713d95da</srcmd5>
+    <version>3.3.0</version>
+    <time>1515876181</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.3.0
+  - Add tests for mutually exclusive [min|max]version
+  - Migrate to stestr
+  - Correct docs usage of keystoneauth1 session
+  - Nits in using-sessions.rst
+  - Make discover._version_between more consistent
+  - Updated from global requirements
+  - Remove setting of version/release from releasenotes
+  - Sanely order assertion args in test_discovery
+  - Recommend unversioned for endpoint-override
+  - Add version discovery support to BaseAuthPlugin
+  - Add loading mock fixtures
+  - Add EndpointData.__str__ for debugging
+  - Extract iterables for test_keystone_version_data
+
+- update to version 3.2.0
+  - Add release note for 'none' auth plugin
+  - Protect against missing interface attribute
+  - Fix docstring typo
+  - Adapter.get_conf_options(deprecated_opts)
+  - Update discovery url normalization with catalog info
+  - Fix exception message in adapter loading
+  - Enable some off-by-default checks
+  - Allow discovery URLs to have trailing slashes
+  - Add method to get the api major version
+  - Remove use of positional decorator
+  - Don't use mutable defaults in allow arguments
+  - Update reno for stable/pike
+  - Set self.allow to a dict if None is passed
+  - Parameter to tune mutual authentication in kerberos</comment>
+    <requestid>555146</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cbd3c7aedad84e6548a01056e3706b01</srcmd5>
+    <version>3.4.0</version>
+    <time>1518601831</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.4.0 (bsc#1078607)
+  - Implement system scope
+  - Make none auth usable in CLI
+  - Mark SAML loader properties as required
+  - Shift additional_user_agent in the stack
+  - Fix docs builds
+  - Use stestr in tox.ini
+  - Add documentation and release note for app creds
+  - Add osc, shade and sdk tips jobs
+  - Add support for application credentials
+  - Updated from global requirements
+  - Fix masked variable name</comment>
+    <requestid>575937</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a1fd61d624702d80435a2da00bc36a6d</srcmd5>
+    <version>3.4.0</version>
+    <time>1521498885</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583303</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0495698d0f77c5507a8e99afef27e4c0</srcmd5>
+    <version>3.9.0</version>
+    <time>1536327453</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633074</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>318c3775ac5f947b74012b0dd746bb86</srcmd5>
+    <version>3.10.0</version>
+    <time>1537964577</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.10.0
+  - Add netloc and version check for version discovery</comment>
+    <requestid>634904</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ed8ba256a86143477e2ab5604843c246</srcmd5>
+    <version>3.13.1</version>
+    <time>1556916054</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.13.1
+  - add release notes to readme.rst
+  - Replacing the HTTP protocal with HTTPS in using-sessions.rst.
+  - Add support for client-side rate limiting
+  - Drop py35 jobs
+  - Use template for lower-constraints
+  - Add Keystone2Keystone example
+  - Fix rate semaphore for keystoneclient
+  - import zuul job settings from project-config
+  - Expose app creds and new attrs in fixtures
+  - Add py36 tox environment
+  - Change openstack-dev to openstack-discuss
+  - Cache root urls with and without trailing slashes
+  - Update reno for stable/rocky
+  - Make new-style single endpoint version discovery actually work for ironic
+  - Remove os-testr from requirements
+  - Remove shade jobs
+  - add python 3.6 unit test job
+  - Protect against endpoint_data not existing
+  - Reformat Adapter docstring
+  - add lib-forward-testing-python3 test job
+  - Add ability to filter version data by service-type
+  - Fix version discovery for clouds with int project_ids
+  - switch documentation job to new PTI
+  - Add support for ironic single-version responses
+  - Change log hashing to SHA256
+  - add python 3.7 unit test job
+  - Add missing release note for ironic discovery fix
+  - fix wrong spelling of &quot;unnecessary&quot;
+  - Update sphinx extension logging</comment>
+    <requestid>692831</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="speedtest-cli" project="openSUSE:Factory">
+  <title>Command line interface for testing internet bandwidth</title>
+  <description>Command line interface for testing internet bandwidth using
+speedtest.net</description>
+  <devel project="benchmark" package="speedtest-cli"/>
+</package>

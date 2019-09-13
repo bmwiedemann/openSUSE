@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>83cec84f0559e8191e5e60a2c8a177c8</srcmd5>
+    <version>3.1.1</version>
+    <time>1536094463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628039</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eb8599192da39cb2d95b2729f3958553</srcmd5>
+    <version>3.1.1</version>
+    <time>1536327590</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>633223</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4db300b669c1f4cad982c721729c32d6</srcmd5>
+    <version>3.2.0</version>
+    <time>1553611193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0:
+  *  Updated unicode data and tests</comment>
+    <requestid>682460</requestid>
+  </revision>
+</revisionlist>

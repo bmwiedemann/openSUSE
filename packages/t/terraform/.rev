@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ede82bdf89eac86fc0877f91b496e610</srcmd5>
+    <version>0.11.11</version>
+    <time>1560459670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699399</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bf522f730ef483805c54d71cb4dac3a3</srcmd5>
+    <version>0.11.14</version>
+    <time>1560971250</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>709809</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ab6d6a3637c1e1eddea71b4d264a892f</srcmd5>
+    <version>v0.12.0</version>
+    <time>1561405999</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>711657</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8631745a190f5ae756d640b7e8fbbce2</srcmd5>
+    <version>0.12.0</version>
+    <time>1562056738</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix versionformat in service file</comment>
+    <requestid>712852</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>46f62a7d03adea56e0f5b2fedccc8285</srcmd5>
+    <version>0.12.3</version>
+    <time>1563362081</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>714277</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9da07ce4379bbe4531f7f033ca52584d</srcmd5>
+    <version>0.12.6</version>
+    <time>1566479137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725253</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>681a558b0894b63d399d23f686d62931</srcmd5>
+    <version>0.12.8</version>
+    <time>1568379452</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>729780</requestid>
+  </revision>
+</revisionlist>

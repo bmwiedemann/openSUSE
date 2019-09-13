@@ -1,0 +1,226 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2cbb513342469a92c69096dc95cd8848</srcmd5>
+    <version>2.26</version>
+    <time>1289421879</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52603 from user coolo
+</comment>
+    <requestid>52603</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>18b11c84a3724a0ee4817e0e85189512</srcmd5>
+    <version>2.26</version>
+    <time>1291582869</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54571 from user coolo
+</comment>
+    <requestid>54571</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>752fab629d178bd6c5c8974cf36869ff</srcmd5>
+    <version>2.26</version>
+    <time>1291582873</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54571
+</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>752fab629d178bd6c5c8974cf36869ff</srcmd5>
+    <version>2.26</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>97730946e4c091111bcf24b1d850700e</srcmd5>
+    <version>2.51</version>
+    <time>1301571770</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65610 from user coolo
+</comment>
+    <requestid>65610</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>152330304149e402b6386b35cf45e4b6</srcmd5>
+    <version>2.51</version>
+    <time>1301571783</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65610
+</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>2197e1300133d160a6f2a91f518372df</srcmd5>
+    <version>2.51</version>
+    <time>1302081982</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66074 from user licensedigger
+</comment>
+    <requestid>66074</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>567db0ab150b14e3c3306a9362d39a01</srcmd5>
+    <version>2.51</version>
+    <time>1302081991</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66074
+</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>567db0ab150b14e3c3306a9362d39a01</srcmd5>
+    <version>2.51</version>
+    <time>1319182281</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>18cb7f0d8d7847de9a2758941cbc463b</srcmd5>
+    <version>2.53</version>
+    <time>1321875713</time>
+    <user>coolo</user>
+    <comment>- update to 2.53
+    - made Makefile.PL skipping a installing XS question
+      when set $ENV{PERL_ONLY} or $ENV{NO_XS} (rt#66820)
+    - fixed to_json (pointed and patched by mmcleric in rt#68359)
+    - backport JSON::PP 2.27200
+  * fixed incr_parse docodeing string more correctly (rt#68032 by LCONS)</comment>
+    <requestid>92397</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>e8877c618b2dc4aa59917ea923aa2cc9</srcmd5>
+    <version>2.53</version>
+    <time>1323193406</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>e8877c618b2dc4aa59917ea923aa2cc9</srcmd5>
+    <version>2.53</version>
+    <time>1340183863</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>e8877c618b2dc4aa59917ea923aa2cc9</srcmd5>
+    <version>2.53</version>
+    <time>1359109712</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5a2a336282a8089e7304d61ec1807910</srcmd5>
+    <version>2.59</version>
+    <time>1371138163</time>
+    <user>coolo</user>
+    <comment>- updated to 2.59
+        - PUREPERL_ONLY support was not supported...
+            and finally remove all PP options from Makefile.PL.
+        - recommend JSON::XS instead of conditionally requiring it
+             patched by miyagaw
+          ( for example, $ cpanm --with-recommends JSON)
+        - Hide more packages from PAUSE (and other stuff)
+             patched by miyagawa
+ 
+        - support PUREPERL_ONLY install option. (rt#84876)
+           (PERL_ONLY and NO_XS are not yet removed)
+        - stop installing JSON::XS automatically on Perl 5.18
+        - t/x17_strage_overload.t didn't work correctly.
+        - fixed t/x17_strage_overload.t (rt#84451 by Ricardo Signes)
+        - update JSON::BackportPP version
+ 
+        - fixed t/19_incr.t on perl &gt;= 5.17.10 (wyant, rt#84154)
+            pathced by mbeijen and modified with demerphq's patch
+        - Fixed some spelling (by briandfoy)
+        - fixed sppeling (by Perlover)
+        - enhanced documents (Thanks to Justin Hunter and Olof Johansson)
+        - changed backend module loading for overloaded object behavior
+                                                (reported by tokuhirom)
+- remove upstreamed fix_provides.diff</comment>
+    <requestid>178331</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>5a2a336282a8089e7304d61ec1807910</srcmd5>
+    <version>2.59</version>
+    <time>1379663721</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c65495cc3057ffd600ee27a15b7c3464</srcmd5>
+    <version>2.90</version>
+    <time>1385661131</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208778</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>8def368fae5b8c60fdc0731c792d1d8f</srcmd5>
+    <version>2.90</version>
+    <time>1399056738</time>
+    <user>coolo</user>
+    <comment>Remove obsolete/unused file. (forwarded request 232255 from leonardocf)</comment>
+    <requestid>232266</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>8def368fae5b8c60fdc0731c792d1d8f</srcmd5>
+    <version>2.90</version>
+    <time>1409302345</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5ac4a359f8327d1d086eecc0baf57edc</srcmd5>
+    <version>2.93</version>
+    <time>1495883566</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497401</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5245280234e2cc11764cce52f1f716a0</srcmd5>
+    <version>2.94</version>
+    <time>1496821955</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499924</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d9eac7343129cffdd86781517c7f8156</srcmd5>
+    <version>2.97000</version>
+    <time>1511426479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544104</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6448f2a3f3b8025e5cce73960ba40717</srcmd5>
+    <version>2.97001</version>
+    <time>1515504883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561821</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>15f5a2ceacb1343ffc100e597fe94fb2</srcmd5>
+    <version>4.00</version>
+    <time>1545222227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656759</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4d75bc826ee4fe2e408d064122c01f74</srcmd5>
+    <version>4.01</version>
+    <time>1549311756</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>667408</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fbb363a972ca090ce3ea28168c6b513b</srcmd5>
+    <version>4.02</version>
+    <time>1551385498</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678394</requestid>
+  </revision>
+</revisionlist>

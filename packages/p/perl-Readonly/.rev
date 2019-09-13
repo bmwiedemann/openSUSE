@@ -1,0 +1,217 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3dc8683abf06ea0a17bae1ab82540c86</srcmd5>
+    <version>1.03</version>
+    <time>1268355307</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Readonly based on submit request 34489 from user coolo
+</comment>
+    <requestid>34489</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6d04e54cc9c84f72a64613f922b18c61</srcmd5>
+    <version>1.03</version>
+    <time>1268838582</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Readonly based on submit request 35013 from user computersalat
+</comment>
+    <requestid>35013</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4025cea93e0aa7a2d55cd85975aa0348</srcmd5>
+    <version>1.03</version>
+    <time>1268925594</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4025cea93e0aa7a2d55cd85975aa0348</srcmd5>
+    <version>1.03</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>4025cea93e0aa7a2d55cd85975aa0348</srcmd5>
+    <version>1.03</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>5c0923e6615fbe8bb54ba338fd34d4e8</srcmd5>
+    <version>1.03</version>
+    <time>1291583698</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54631 from user coolo
+</comment>
+    <requestid>54631</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>a9493db1e7c7e2f7873c97169ebb5555</srcmd5>
+    <version>1.03</version>
+    <time>1291583702</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54631
+</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>a9493db1e7c7e2f7873c97169ebb5555</srcmd5>
+    <version>1.03</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>a9493db1e7c7e2f7873c97169ebb5555</srcmd5>
+    <version>1.03</version>
+    <time>1319182301</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>d409ff126ff61fc85b5f74cab7471b1c</srcmd5>
+    <version>1.03</version>
+    <time>1321627653</time>
+    <user>coolo</user>
+    <comment>- use original tar.gz</comment>
+    <requestid>92042</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>70a30d90ae5c2b9df69a2cd5870da5d0</srcmd5>
+    <version>1.03</version>
+    <time>1336492894</time>
+    <user>coolo</user>
+    <comment>license update: Artistic-1.0 or GPL-1.0+
+Use SPDX format (http://www.spdx.org/licenses) (forwarded request 116757 from babelworx)</comment>
+    <requestid>116759</requestid>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>70a30d90ae5c2b9df69a2cd5870da5d0</srcmd5>
+    <version>1.03</version>
+    <time>1340183909</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>70a30d90ae5c2b9df69a2cd5870da5d0</srcmd5>
+    <version>1.03</version>
+    <time>1359109785</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>70a30d90ae5c2b9df69a2cd5870da5d0</srcmd5>
+    <version>1.03</version>
+    <time>1379663824</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b20161ad6787d2337a9c77b23396e178</srcmd5>
+    <version>1.04</version>
+    <time>1388774876</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212567</requestid>
+  </revision>
+  <revision rev="16" vrev="22">
+    <srcmd5>92a4ec1587950c434302063e28bff08c</srcmd5>
+    <version>1.03</version>
+    <time>1389384794</time>
+    <user>coolo</user>
+    <comment>revert as it breaks texlive-biber somehow</comment>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b20161ad6787d2337a9c77b23396e178</srcmd5>
+    <version>1.04</version>
+    <time>1391323010</time>
+    <user>coolo</user>
+    <comment>- eliminate attempt to remove the benchmark test. The new install process
+  no longer installs the benchmark test into the target tree, thus the
+  removal of the file to hide it from the package is obsolete.
+  + Fixes the build failure on all distros
+
+- updated to 1.04
+    - Module now maintained by Sanko Robinson. Please see TODO for a possible
+      set of changes to this module that may effect code written for old, pre-
+      perl 5.14.0 platforms!!!</comment>
+    <requestid>220532</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>b20161ad6787d2337a9c77b23396e178</srcmd5>
+    <version>1.04</version>
+    <time>1409302461</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f62d60b9f0cafafef7f438a8a192e7bf</srcmd5>
+    <version>2.00</version>
+    <time>1411220996</time>
+    <user>coolo</user>
+    <comment>- updated to 2.00
+     - Deprecation of Readonly::XS as a requirement for fast, readonly
+       scalars is complete. Report any lingering issues on the tracker
+       ASAP.
+ 
+ 1.61 2014-06-28T11:22:13Z
+     - Normal constants (strings, numbers) do not appear to be read only to
+       Internals::SvREADONLY($) but perl itself doesn't miss a beat when you
+       attempt to assign a value to them. Fixing test regression in
+       t/general/reassign.t
+ 
+ 1.60 2014-06-27T15:59:27Z
+     - Fix array and hash tie() while in XS mode (exposed by Params::Validate tests)
+     - Fix implicit undef value regression resolves #8
+     - Minor documentation fixes (spell check, etc.)
+     - Patch from Gregor Herrmann &lt;gregoa@debian.org&gt; resolves #7
+ 
+ v1.500.0 2014-06-25T19:56:18Z
+     - PLEASE NOTE: Readonly::XS is no longer needed!
+     - Again, Readonly::XS is no longer needed.
+     - Merged typo fix from David Steinbrunner RT#86350/#2
+     - Merged patch (w/ tests, yay!) from Daniel P. Risse RT#37864
+     - Upstream magic related bugs were reported to p5p and fixed in perl
+       itself so we can resolve the following local issues: RT#70167, RT#57382,
+       RT#29487, RT#36653, RT#24216.
+     - Reported RT#120122 (tie + smartmatch bug) upstream to p5p. Will
+       eventually resolve local [RT#59256].
+     - Note: Resolved RT#16167 (benchmark.pl being installed) in 1.04.
+     - Use readonly support exposed in Internals on perl &gt;=5.8.x
+     - Have I mentioned you don't need to install Readonly::XS anymore?</comment>
+    <requestid>249965</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9d31cfb0b948908bc1ec7d65eb3e17ba</srcmd5>
+    <version>2.01</version>
+    <time>1458120287</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368895</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0349b361a2b9c338f386877139de46f7</srcmd5>
+    <version>2.05</version>
+    <time>1467541107</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.05
+   see /usr/share/doc/packages/perl-Readonly/Changes
+  2.05 2016-06-10T17:03:28Z
+      - Fix deref when using the stupid and utterly unnecessary Readonly::Clone
+
+- updated to 2.04
+   see /usr/share/doc/packages/perl-Readonly/Changes
+  2.04 2016-05-07T15:38:37Z
+      - Quiet compile time warnings about function prototypes and vars being
+        used only once
+  
+  2.03 2016-05-06T22:27:44Z
+  	- Rewording some documentation
+  	- No longer require an explicit version of perl in META.json or cpanfile
+  
+  2.02 2016-05-06T21:56:10Z
+  	- Create mutable clones of readonly structures with Readonly::Clone
+  		- Still not convinced this is useful but... fixes #13
+  	- Minor typo patch from Gregor Herrmann &lt;gregoa@debian.org&gt; fixes #21</comment>
+    <requestid>404104</requestid>
+  </revision>
+</revisionlist>

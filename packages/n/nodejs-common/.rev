@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>243b90ad52dbdfdbc92b5b09a7a6949c</srcmd5>
+    <version>1.0</version>
+    <time>1500456153</time>
+    <user>dimstar_suse</user>
+    <comment>set license to MIT</comment>
+    <requestid>511165</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9d9eeec41a8edede454709cd0fb110dd</srcmd5>
+    <version>2.0</version>
+    <time>1502629005</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>515745</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>884eef15ef60eeb0d90237847bd9db89</srcmd5>
+    <version>2.0</version>
+    <time>1531469599</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620954</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>04cc4a57e5cd0a2c8fc6934cccef141b</srcmd5>
+    <version>3.0</version>
+    <time>1551468570</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679505</requestid>
+  </revision>
+</revisionlist>

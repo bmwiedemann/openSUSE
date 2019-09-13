@@ -1,0 +1,5 @@
+<package name="imx-usb-loader" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="imx-usb-loader"/>
+</package>

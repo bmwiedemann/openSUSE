@@ -1,0 +1,12 @@
+<package name="python-imagesize" project="openSUSE:Factory">
+  <title>Getting image size from png/jpeg/jpeg2000/gif file </title>
+  <description>Pure Python library which parses image files’ header and returns image size.
+
+Supported formats:
+ * PNG
+ * JPEG
+ * JPEG2000
+ * GIF
+</description>
+  <devel project="devel:languages:python" package="python-imagesize"/>
+</package>

@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c655adc089c66ba4d6a147c2fbdaac9</srcmd5>
+    <version>0.11.1</version>
+    <time>1475750579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>432104</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a094dd177c8ef7f8b8856e02c85b4765</srcmd5>
+    <version>0.11.2</version>
+    <time>1489415549</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460513</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5ccadf3ca7e7c9789025b8a11e67dd12</srcmd5>
+    <version>0.12.0</version>
+    <time>1508876561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Add data transferred to file operation dialog.
+  * Bump versions
+  * Disable context-menu actions that cannot be used
+  * Don't export github templates
+  * Fix partially visible toggled path buttons
+  * Add functions to get and set search settings
+  * Fix mistakes in listview column width calculation
+  * Add archiver separator only when needed
+  * Add a separator before archiver actions
+  * Enable XDS subfolder drop
+  * UI improvements for Fm::MountOperationPasswordDialog()
+  * Respect inactiveness when drawing text
+  * Grey out files that have been Ctrl-X'ed (#88)
+  * Ignore button for error dialog
+  * Inline renaming for detailed list view (#110)
+  * Remove redundant code.
+  * Prefer local paths if they exist
+  * Removed QFileInfo (as @PCMan recommended)
+  * Simplification, optimization and a fix
+  * Really focus text entry on showing dialog
+  * Two small fixes
+  * Keep selection on reloading (if not CPU-intensive)
+  * Added back/forward buttons and fixed 3 issues
+  * Reload button, hidden shortcut and a fix
+  * Implement FileDialog::selectMimeTypeFilter() and QString FileDialog::selectedMimeTypeFilter().
+  * Initialize folder_ to null
+  * Fixed the quote issue
+  * Always preserve explicitly set labels
+  * Update OK button text and state when needed</comment>
+    <requestid>535965</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c4d4e4fc7f2f9f65e5dae8286bfe1973</srcmd5>
+    <version>0.12.0</version>
+    <time>1525426222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603589</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>77c32fd090f58ab9a10137f761769ad4</srcmd5>
+    <version>0.13.1</version>
+    <time>1530303816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * This LibFM-Qt point release fixes a regression in Qt 5.11
+    which will crash PcmanFM-Qt under certain conditions
+  * Seems to be a problem in Qt 5.11 which is fixed in 5.11.1
+  * Disconnect old source model
+- Update to 0.13.0:
+  * Important functionalities, like file operations, are ported to C++, which means more flexibility and less libfm dependency
+  * Smooth scrolling for icon and thumbnail views
+  * Added a group column to the detailed list view
+  * Merge side-pane with its surroundings
+  * Support hiding of items in Places side-pane.
+  * Use special/custom folder icons for bookmarks
+  * Italic font for hidden items
+  * Several bug fixes
+  * Improvements in GUI and functionalities
+  * Code cleanup
+</comment>
+    <requestid>618031</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5e4d392f590eb6704e918a31927e84ba</srcmd5>
+    <version>0.14.1</version>
+    <time>1551113936</time>
+    <user>coolo</user>
+    <comment>- Update to 0.14.1:
+  * Bumped API version to 0.14.1
+  * Aged ABI version to 6.1.0
+  * Respect sorting/selection order when launching files
+  * Generate libfm-qt.pc correctly
+  * Fix recursive search when a dir is matched
+  * Fix crash on showing Properties dialog in special cases
+  * Case-insensitive and match-containing file name completer for file dialog
+  * Give window parents to some app-modal dialogs
+  * Gray out cut files in detailed and compact modes
+  * Added custom widths and visibility for detailed columns
+  * Added missing sort-by-group action
+  * Do not rely on the order of folder menu actions. instead check their data
+  * pathbar: fix an issue with a slot recursive call
+  * Make setting trust possible anytime
+  * Define a macro for &quot;metadata::trust&quot;.
+  * Add rubber-band selection to detailed list view
+  * Updated translations
+
+- Update license to: LGPL-2.1-or-later AND GPL-2.0-or-later
+
+- Fix lang requirement:
+  %{lang_package} has implicit requires on %{name} We need to
+  use %{lang_package -r libfm-qt6} to specify correct name.
+
+- Update to 0.14.0:
+  * The old libfm dependency is completely dropped.
+  * Options are added for showing full file names instead of display
+    names and also for shadowing icons of hidden items.
+  * Problems in mounts and SMB are fixed.</comment>
+    <requestid>678860</requestid>
+  </revision>
+</revisionlist>

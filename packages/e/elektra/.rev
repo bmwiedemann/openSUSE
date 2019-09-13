@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f278362a0ce01e7d42464b492431130</srcmd5>
+    <version>0.8.19</version>
+    <time>1485511604</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain elektra in factory and would like to use multimedia:color_management as development base. rev4</comment>
+    <requestid>448703</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>23eba6d5db066f7ef02cccaf8c819745</srcmd5>
+    <version>0.8.19</version>
+    <time>1486465386</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>454390</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5fd864be319d55fdbec931bb73323a46</srcmd5>
+    <version>0.8.20</version>
+    <time>1511346091</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>542774</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>de914cbfea9d8df33bfe9d926a4f2a70</srcmd5>
+    <version>0.8.20</version>
+    <time>1516092190</time>
+    <user>dimstar_suse</user>
+    <comment>- Augeas: Fix internal inconsistency (git#c93b4175 patch-fix-augeas-config.patch)
+</comment>
+    <requestid>565779</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>77d7d261de70f1ace717eaadcfc8dc10</srcmd5>
+    <version>0.8.20</version>
+    <time>1528492542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614414</requestid>
+  </revision>
+</revisionlist>

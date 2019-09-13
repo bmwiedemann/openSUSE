@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e319583ac3336c24936b52d749cd0a9d</srcmd5>
+    <version>1.0.3</version>
+    <time>1434003719</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>310153</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d9b9dfb689e0a126dc4e95b28dcc3daf</srcmd5>
+    <version>1.1.0</version>
+    <time>1448186457</time>
+    <user>coolo</user>
+    <comment>Update to version 1.1.0 to support shadow files and improve getaddrinfo() multiple address handling.</comment>
+    <requestid>345401</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>35ac46cd4ed6ce95f4ab226095e27eed</srcmd5>
+    <version>1.1.2</version>
+    <time>1453799720</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>355699</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9a4cd2f0d710052276e91916b2980f9e</srcmd5>
+    <version>1.1.2</version>
+    <time>1455701515</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359312</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3a54859029a5fe194ca9cbcb02906a44</srcmd5>
+    <version>1.1.3</version>
+    <time>1459508505</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>380709</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5f97d50641ff3e1f3cd11e7e8b0fd128</srcmd5>
+    <version>1.1.5</version>
+    <time>1541514464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  * Fixed running on older distributions
+- Update to version 1.1.4
+  * Fixed module getpw* functions
+  * Fixed nss_wrapper.pl to use correct perl binary
+  * Fixed compatibility with musl-libc
+</comment>
+    <requestid>645750</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>81d77084968722a48f5f67189b30f7ca</srcmd5>
+    <version>1.1.6</version>
+    <time>1558514984</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.6
+  * Fixed issues with memory alignment of getgrnam()
+  * Fixed getpwnam() on FreeBSD
+  * Started to use modern cmake (&gt;= 3.5.0)
+</comment>
+    <requestid>703645</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f5a3ec6b22257de269fae420ea7ee8ac</srcmd5>
+    <version>1.1.6</version>
+    <time>1566664954</time>
+    <user>dimstar_suse</user>
+    <comment>Change Requires to Recommends for cmake and pkgconf</comment>
+    <requestid>724988</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="libzypp-plugin-appdata" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="libzypp-plugin-appdata"/>
+</package>

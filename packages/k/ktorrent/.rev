@@ -1,0 +1,859 @@
+<revisionlist>
+  <revision rev="1" vrev="7">
+    <srcmd5>e0c3df2535ab70765c6d696dbc57e6e9</srcmd5>
+    <version>2.0.3</version>
+    <time>1168903252</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>606ab2a358b4a39a874db335be5832d1</srcmd5>
+    <version>2.1.0</version>
+    <time>1170715078</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8015952ac436ff9aaf07ad4e20af5e90</srcmd5>
+    <version>2.1.0</version>
+    <time>1171036560</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ebf0912e48ed1fb2b0a06f4376487dc6</srcmd5>
+    <version>2.1.1</version>
+    <time>1173199951</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>89fa53ff648b860e2886ea594b84ac6b</srcmd5>
+    <version>2.1.2</version>
+    <time>1173567653</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3b7b7f09d90bd5c5e2e21036761e4b87</srcmd5>
+    <version>2.1.3</version>
+    <time>1175629026</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ab52400250cedf1ddf5a0f5ece9b21ad</srcmd5>
+    <version>2.1.4</version>
+    <time>1177413021</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>42a8df63b5bb268ab6143b656ea8ec1d</srcmd5>
+    <version>2.1.4</version>
+    <time>1179394949</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>6ce6e2d6d005e0c8f71378b12380d2ec</srcmd5>
+    <version>2.1.4</version>
+    <time>1179689542</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="22">
+    <srcmd5>bdb4329eba459c137b563987b757425f</srcmd5>
+    <version>2.1.4</version>
+    <time>1180998363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ed96cf8ff2a0692a756c6cb2c4854a70</srcmd5>
+    <version>2.2rc1</version>
+    <time>1182179054</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9ecd629d6466903e17f01b9fe9f34049</srcmd5>
+    <version>2.2rc1</version>
+    <time>1182458166</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d6e9c64e36d38b474536e2483473472d</srcmd5>
+    <version>2.2.0</version>
+    <time>1183623846</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e11f93736c09d024456b419c0ad88fab</srcmd5>
+    <version>2.2.1</version>
+    <time>1185321420</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>a27d43a731953edaefc29ebaeeda1300</srcmd5>
+    <version>2.2.1</version>
+    <time>1187202575</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="15">
+    <srcmd5>cbbb622038b42f1db8bc58e5325b5bdc</srcmd5>
+    <version>2.2.1</version>
+    <time>1187543107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d9c7645362aa357bff2ba2e4b66db381</srcmd5>
+    <version>2.2.2</version>
+    <time>1191366164</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>1e783ee5c670123da7dd79ff8cd3b755</srcmd5>
+    <version>2.2.2</version>
+    <time>1192131084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d6e5609479125a795bb5f09dd92d0d26</srcmd5>
+    <version>2.2.3</version>
+    <time>1195666566</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>99f076f9034a68f6f5f3d40adae0f688</srcmd5>
+    <version>2.2.4</version>
+    <time>1195750050</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e7d77e161308aeaee403a4a4151ae67c</srcmd5>
+    <version>2.2.5</version>
+    <time>1201479204</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cc59b23d897567362c3bf49546a8fa34</srcmd5>
+    <version>3.0.0</version>
+    <time>1203426747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>f3f41fdf4836b5589bcf1ae134ab71c8</srcmd5>
+    <version>3.0.0</version>
+    <time>1203555343</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>dfb3c57eee6d4020b2842ad2e6dfa649</srcmd5>
+    <version>3.0.1</version>
+    <time>1206544738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2ec5969c9dac1333c3245065c173a478</srcmd5>
+    <version>3.0.2</version>
+    <time>1209202527</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="13">
+    <srcmd5>57cbf3193bc08c81112d27b6cb4b47c8</srcmd5>
+    <version>3.0.2</version>
+    <time>1210940926</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="14">
+    <srcmd5>8f9a19205c3afb46a03b9d1a03369020</srcmd5>
+    <version>3.0.2</version>
+    <time>1210985027</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a35d1ec0485e298552a8c62ab91665d6</srcmd5>
+    <version>3.1</version>
+    <time>1214121434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e2f38b7af63d1c8d2976dbfb5115055c</srcmd5>
+    <version>3.1.1</version>
+    <time>1216052639</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ce37b036eee7dee6c921e56bbd120a5f</srcmd5>
+    <version>3.1.2</version>
+    <time>1219011235</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>fda01a40189dc3dbf1c33c6af1b98ce8</srcmd5>
+    <version>3.1.2</version>
+    <time>1219357150</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0214cab2b35094938fbcffbf93c4dab2</srcmd5>
+    <version>3.1.3</version>
+    <time>1223312480</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>daccbd0c2dd243b7e22d6a76571f0752</srcmd5>
+    <version>3.1.4</version>
+    <time>1224691856</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>2c77fd961041e69326f4bdc3e0baedc1</srcmd5>
+    <version>3.1.4</version>
+    <time>1225711230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1c84388389f94157fc58e815485adac5</srcmd5>
+    <version>3.1.5</version>
+    <time>1226938472</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>7969f1bbd99bf21dec09b532412d3407</srcmd5>
+    <version>3.1.5</version>
+    <time>1229348903</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>95a455abeb3323ccf40fad2d5b81f061</srcmd5>
+    <version>3.1.99+3.2beta1</version>
+    <time>1232327320</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a7b31eabf549f936614c2d2d5dccb388</srcmd5>
+    <version>3.1.99+3.2rc1</version>
+    <time>1233696111</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>4eaf52aaea7efabfae5bda357f2afeb5</srcmd5>
+    <version>3.2</version>
+    <time>1234907684</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0a2ae4516a2452eeea27c4b3310a3e26</srcmd5>
+    <version>3.2.1</version>
+    <time>1240056052</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>e7e2b948aec09f54ba07136b96306549</srcmd5>
+    <version>3.2.1</version>
+    <time>1240788324</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ad2e0d9da38e568359d728e0f29c7c00</srcmd5>
+    <version>3.2.2</version>
+    <time>1243939797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>147bed3971d2b19ae401998fd361f89b</srcmd5>
+    <version>3.2.3</version>
+    <time>1249941105</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>67d8ccdaa7cbbd65d29571c431d359d3</srcmd5>
+    <version>3.2.3</version>
+    <time>1250121023</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/ktorrent based on submit request 17488 from user Beineri
+</comment>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>f304a6db182380858ff0418e99872012</srcmd5>
+    <version>3.2.3</version>
+    <time>1250869980</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/ktorrent based on submit request 18387 from user Beineri
+</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>49830181e6f76dc42af5a8cd4b16ebce</srcmd5>
+    <version>3.2.4</version>
+    <time>1253832124</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/ktorrent based on submit request 21016 from user Beineri
+</comment>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>49830181e6f76dc42af5a8cd4b16ebce</srcmd5>
+    <version>3.2.4</version>
+    <time>1253832124</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/ktorrent based on submit request 21016 from user Beineri
+</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>63879e300a82e14d0ca7e155cea1ff54</srcmd5>
+    <version>3.2.5</version>
+    <time>1256918385</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/ktorrent based on submit request 23360 from user Beineri
+</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>e8c3b8e3b585214e4bed8209c259c9c3</srcmd5>
+    <version>3.3</version>
+    <time>1258383193</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/ktorrent based on submit request 24178 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>64b07690f20785e111381b7e61486015</srcmd5>
+    <version>3.3.1</version>
+    <time>1259158916</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/ktorrent based on submit request 25026 from user wstephenson
+</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>7b0d08c518ffd326f9bb263395781898</srcmd5>
+    <version>3.3.2</version>
+    <time>1261437559</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/ktorrent based on submit request 27330 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>64bae1450697f5a86865fe86368decb5</srcmd5>
+    <version>3.3.3</version>
+    <time>1264780767</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/ktorrent based on submit request 30812 from user llunak
+</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f227ad8837c2c6ef200d56c8b78cdbda</srcmd5>
+    <version>3.3.4</version>
+    <time>1265752971</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/ktorrent based on submit request 31987 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>3f6845c57fac4cc3429b0cadb45d2adb</srcmd5>
+    <version>3.3.4</version>
+    <time>1268924328</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>fbca2bdb08025644a3f5356969952dc9</srcmd5>
+    <version>3.3.4</version>
+    <time>1277719458</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/ktorrent based on submit request 42100 from user llunak
+</comment>
+    <requestid>42100</requestid>
+  </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>fbca2bdb08025644a3f5356969952dc9</srcmd5>
+    <version>3.3.4</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>fbca2bdb08025644a3f5356969952dc9</srcmd5>
+    <version>3.3.4</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f0e49187f76e6a9d6d4def1aea538901</srcmd5>
+    <version>4.0.2</version>
+    <time>1279567550</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/ktorrent based on submit request 43162 from user Beineri
+</comment>
+    <requestid>43162</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>b3521cbb6475d3f32e1d4d747c606eec</srcmd5>
+    <version>4.0.3</version>
+    <time>1285975760</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/ktorrent based on submit request 49467 from user dirkmueller
+</comment>
+    <requestid>49467</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>29396d6ae06000d7aaa282e9242c259c</srcmd5>
+    <version>4.0.4</version>
+    <time>1288970027</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52217 from user dirkmueller
+</comment>
+    <requestid>52217</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>453e86f8f57e0cef0c5ca0dc3ec91921</srcmd5>
+    <version>4.0.4</version>
+    <time>1288970037</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52217
+</comment>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>de42528c0c53c633fbb01cba5455ccc0</srcmd5>
+    <version>4.0.4.60git20101122</version>
+    <time>1290466891</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53723 from user dirkmueller
+</comment>
+    <requestid>53723</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>e2c120540575b34c3e6c7b37e979fa57</srcmd5>
+    <version>4.0.4.60git20101122</version>
+    <time>1290466900</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53723
+</comment>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>993a9638b64d1787daf1df1a45626bff</srcmd5>
+    <version>4.0.4.60git20101122</version>
+    <time>1290504831</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 53747 from user coolo
+</comment>
+    <requestid>53747</requestid>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>9c4cd2567ef80e0b3a8c3e7237f6e3fc</srcmd5>
+    <version>4.0.4.60git20101122</version>
+    <time>1290504837</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 53747
+</comment>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>cabab61b6ad820cadf4ae232c486fa98</srcmd5>
+    <version>4.0.4.60git20101130</version>
+    <time>1292320690</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55839 from user wstephenson
+</comment>
+    <requestid>55839</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>f0d920c4a073fe49bc0a43bdb6be4427</srcmd5>
+    <version>4.0.4.60git20101130</version>
+    <time>1292320697</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55839
+</comment>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>81bebe88d97f9855e0a13e1714780cb6</srcmd5>
+    <version>1.0.80</version>
+    <time>1294666852</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57324 from user dirkmueller
+</comment>
+    <requestid>57324</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>794783b2e409351e054d6819d9bd30b8</srcmd5>
+    <version>1.0.80</version>
+    <time>1294666862</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57324
+</comment>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>6e96b49a8e967cef5fc91202ced25b25</srcmd5>
+    <version>4.0.99beta1</version>
+    <time>1295016161</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58171 from user coolo
+</comment>
+    <requestid>58171</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>39a0dd6dcfe854a72a7e1d97982f16ec</srcmd5>
+    <version>4.0.99beta1</version>
+    <time>1295016177</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58171
+</comment>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>3d26c016ca00e874aa0e4a9b6bd2d8da</srcmd5>
+    <version>4.0.99beta1</version>
+    <time>1297093569</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60210 from user coolo
+</comment>
+    <requestid>60210</requestid>
+  </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>de857ee93523a768a891c871b7d90066</srcmd5>
+    <version>4.0.99beta1</version>
+    <time>1297093574</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60210
+</comment>
+  </revision>
+  <revision rev="74" vrev="7">
+    <srcmd5>de857ee93523a768a891c871b7d90066</srcmd5>
+    <version>4.0.99beta1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>436fa9fbe9787f2ab8c5a71d8d4df715</srcmd5>
+    <version>4.0.99rc1</version>
+    <time>1298811642</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62879 from user coolo
+</comment>
+    <requestid>62879</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>5752eabbc2110fc1cc4a76c2c661bd2f</srcmd5>
+    <version>4.0.99rc1</version>
+    <time>1298811657</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62879
+</comment>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>dc95ec914c120c2ec787901ade791924</srcmd5>
+    <version>4.0.99rc1</version>
+    <time>1300096346</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63974 from user coolo
+</comment>
+    <requestid>63974</requestid>
+  </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>cd44ee721a34da9625326d1b444b70b1</srcmd5>
+    <version>4.0.99rc1</version>
+    <time>1300096357</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63974
+</comment>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>05c14ea2320594ac582beafb2f71db85</srcmd5>
+    <version>4.1.0</version>
+    <time>1300355408</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64363 from user tittiatcoke
+</comment>
+    <requestid>64363</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>757ed2c2c3ea1615426c0be59e19a2ff</srcmd5>
+    <version>4.1.1</version>
+    <time>1305707553</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>70401</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>b845f2397981b11b2a3fa12c81baa8f8</srcmd5>
+    <version>4.1.2</version>
+    <time>1314106145</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>79394</requestid>
+  </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>b845f2397981b11b2a3fa12c81baa8f8</srcmd5>
+    <version>4.1.2</version>
+    <time>1319182060</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>ddac30692de0f6c6ed421fe1b16e6756</srcmd5>
+    <version>4.1.3</version>
+    <time>1322232758</time>
+    <user>coolo</user>
+    <comment>Update to 4.1.3, Spec file updates, Updated manpages (forwarded request 93558 from adra)</comment>
+    <requestid>93561</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>632988bf4f4f52e39f5e515609876e3c</srcmd5>
+    <version>4.1.3</version>
+    <time>1323192129</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>ca856ea99a35efa45b008528748d4b80</srcmd5>
+    <version>4.1.3</version>
+    <time>1327922770</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>101761</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>476d9dd0e92fa4dd7e19f5c6c30370c1</srcmd5>
+    <version>4.2.0</version>
+    <time>1331579713</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.2.0, also lists changes what changed in rc1
+  * Add new group switcher combobox in toolbar
+  * Make kio-magnet optional
+  * Improve handing magnet uris in search plugin
+  * Fix bug causing kio-magnet to deselect all files
+  * Close current scan widget when a new one is started for a torrent
+  * Fix syndication plugin not handling relative urls properly
+  * Fix magnet uri's not being handled properly in load torrent feature of webinterface
+  * Make it possible to check individual files of a torrent
+  * Data checks for multiple torrents can now get started at the same time
+  * Make links clickable in the status tab comments field
+  * Revamp UPnP plugin
+  * Fix bug making it possible to add conflicting items to the schedule
+  * Make it possible for schedule items to span multiple days
+  * Include disk usage of existing files when calculating bytes left after download in FileSelectDlg
+  * Disable scripts in GUI, if no interpreter could be found for the script
+  * Show shutdown plugin's config dialog when no rules are present and the enable button is pressed
+  * Make it possible to wait for several events before activating the shutdown action
+  * Fix wrong required diskspace calculation in some rare circumstances
+  * Revamp scanfolder plugin
+  * Revamp GUI of mediaplayer plugin
+  * Make properties extender a dialog
+  * Fix bug causing scripts not to be selectable in scripting plugin
+  * Show info hash in status tab
+  * Improve video streaming support
+  * Add Open With option to FileView context menu
+  * Fix bug causing views to not get properly restored when the application language changes
+  * Check if new trackers have a supported protocol
+  * Remove usage of several deprecated KDE3 networking classes
+  * Remove obsolete config options of datacheck during upload feature</comment>
+    <requestid>108782</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>3b2248069721420535ebc50425fd061a</srcmd5>
+    <version>4.2.0</version>
+    <time>1334818204</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>114384</requestid>
+  </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>f4c5b920356d97bf8da616c80c8c8787</srcmd5>
+    <version>4.2.0</version>
+    <time>1336423646</time>
+    <user>coolo</user>
+    <comment>- Fix taglib requires for older distros</comment>
+    <requestid>116634</requestid>
+  </revision>
+  <revision rev="89" vrev="5">
+    <srcmd5>f4c5b920356d97bf8da616c80c8c8787</srcmd5>
+    <version>4.2.0</version>
+    <time>1340183541</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>d4aad37fd550bd643322c7e006b95a8c</srcmd5>
+    <version>4.2.1</version>
+    <time>1340620425</time>
+    <user>coolo</user>
+    <comment>update to version 4.2.1, new libktorrent also submitted by SR125586 (forwarded request 125587 from mlin7442)</comment>
+    <requestid>125606</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>d2820fd6cd9caa2ee24c4b06735232d8</srcmd5>
+    <version>4.3.0</version>
+    <time>1347355457</time>
+    <user>coolo</user>
+    <comment>give it hard build dependence with libktorrent, it seems needed, though I did not see version requires check in cmake (forwarded request 133296 from mlin7442)</comment>
+    <requestid>133461</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>d8881c11fd18046ab5209711680a93b5</srcmd5>
+    <version>4.3.0</version>
+    <time>1352732692</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140770</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>e09a33b56538d727c3bf4ff51d455933</srcmd5>
+    <version>4.3.1</version>
+    <time>1358889714</time>
+    <user>coolo</user>
+    <comment>Update to version 4.3.1</comment>
+    <requestid>149549</requestid>
+  </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>e09a33b56538d727c3bf4ff51d455933</srcmd5>
+    <version>4.3.1</version>
+    <time>1359109211</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="95" vrev="5">
+    <srcmd5>e09a33b56538d727c3bf4ff51d455933</srcmd5>
+    <version>4.3.1</version>
+    <time>1379662845</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="96" vrev="6">
+    <srcmd5>b373b64093e46dea3d0d88c17c18bb71</srcmd5>
+    <version>4.3.1</version>
+    <time>1392887538</time>
+    <user>coolo</user>
+    <comment>I've added an upstream bugfix (forwarded request 223027 from Vindex17)</comment>
+    <requestid>223156</requestid>
+  </revision>
+  <revision rev="97" vrev="7">
+    <srcmd5>515cf5c19cffb4bd93a1e384735f91bd</srcmd5>
+    <version>4.3.1</version>
+    <time>1402946886</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237583</requestid>
+  </revision>
+  <revision rev="98" vrev="9">
+    <srcmd5>515cf5c19cffb4bd93a1e384735f91bd</srcmd5>
+    <version>4.3.1</version>
+    <time>1409301433</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="99" vrev="10">
+    <srcmd5>e74c07e0a43456554accb651c9095cf3</srcmd5>
+    <version>4.3.1</version>
+    <time>1423732898</time>
+    <user>dimstar_suse</user>
+    <comment>Add properly-support-x-scheme-handler-magnet-mimetype.patch, make ktorrent support magnet mimetype outside KDE4</comment>
+    <requestid>284674</requestid>
+  </revision>
+  <revision rev="100" vrev="11">
+    <srcmd5>e65871fd2b0630c698835fbe9a1a2a89</srcmd5>
+    <version>4.3.1</version>
+    <time>1444636876</time>
+    <user>coolo</user>
+    <comment> Add remove-plasma.diff: Disable building the plasma applet,
+  which is totally non functional in Plasma 5 and adds an 
+  unnecessary dependency on kdebase4-workspace</comment>
+    <requestid>337903</requestid>
+  </revision>
+  <revision rev="101" vrev="12">
+    <srcmd5>20daa0668a46ee6d180dae76a30826f0</srcmd5>
+    <version>4.3.1</version>
+    <time>1458120322</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369180</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>ea23f067d2d26388601cdebce5c03893</srcmd5>
+    <version>5.0</version>
+    <time>1461334622</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Ktorrent 5.0.  This should go together with the update of libktorrent !!</comment>
+    <requestid>390358</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>815b3d785df572717d204484d7d92e6c</srcmd5>
+    <version>5.0</version>
+    <time>1467541636</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-build-with-newer-kconfig.diff: build (backwards-compatible)
+  with newer KConfig from frameworks
+
+This should fix the failures seen in Staging:E</comment>
+    <requestid>405105</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>a27937b85649bdef992371832b593c18</srcmd5>
+    <version>5.0.1</version>
+    <time>1473241439</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424887</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>86d4311cc1a2aff20f4054fad7e27a03</srcmd5>
+    <version>5.0.1</version>
+    <time>1486547216</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454504</requestid>
+  </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>7211de184f3be1e2c7bd8ec38ee9e88e</srcmd5>
+    <version>5.0.1</version>
+    <time>1496327030</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497775</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>d988acac19b9d44e57732f27ff0c304a</srcmd5>
+    <version>5.1.0</version>
+    <time>1504896229</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520941</requestid>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>591c34070742a341b86edbe763b2f8ad</srcmd5>
+    <version>5.1.0</version>
+    <time>1516971537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569400</requestid>
+  </revision>
+  <revision rev="109" vrev="3">
+    <srcmd5>870279ac454ad6e4d2442ed720dd620c</srcmd5>
+    <version>5.1.0</version>
+    <time>1527605482</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches:
+  * fix-build.patch
+  * fix-build-with-Qt-5_11.patch
+</comment>
+    <requestid>612383</requestid>
+  </revision>
+  <revision rev="110" vrev="4">
+    <srcmd5>393d14e3367bef4fad2fc59a37006f26</srcmd5>
+    <version>5.1.0</version>
+    <time>1528111357</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a missing change to fix-build-with-Qt-5_11.patch
+</comment>
+    <requestid>613840</requestid>
+  </revision>
+  <revision rev="111" vrev="5">
+    <srcmd5>46f70fd9a4da7d2bee311f9fb6989ca6</srcmd5>
+    <version>5.1.0</version>
+    <time>1533045554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626027</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>050d0f5ff1fabbeb260caa4305f5cc42</srcmd5>
+    <version>5.1.1</version>
+    <time>1535963736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632511</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>9a07dabeedb2c6a8f8fd357a00392dae</srcmd5>
+    <version>5.1.2</version>
+    <time>1567581077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727701</requestid>
+  </revision>
+</revisionlist>

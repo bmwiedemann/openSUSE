@@ -1,0 +1,5 @@
+<package name="rubygem-fastercsv" project="openSUSE:Factory">
+  <title>rubygem-fastercsv</title>
+  <description>FasterCSV is intended as a replacement to Ruby‘s standard CSV library. </description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-fastercsv"/>
+</package>

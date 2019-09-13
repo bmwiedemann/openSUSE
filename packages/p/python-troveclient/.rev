@@ -1,0 +1,312 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa8776669e063cf09ede02dbccb38124</srcmd5>
+    <version>1.0.4</version>
+    <time>1396953990</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>228985</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>516a9f5c17d9477e5f315acff0587176</srcmd5>
+    <version>1.0.4</version>
+    <time>1408021073</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244224</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>516a9f5c17d9477e5f315acff0587176</srcmd5>
+    <version>1.0.4</version>
+    <time>1409303008</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b0d6a5cf9697eea2baccb0cf0640f4b</srcmd5>
+    <version>1.0.7</version>
+    <time>1413987756</time>
+    <user>coolo</user>
+    <comment>- add rpmlintrc as a source 
+
+- update to 1.0.7:
+ * Update the README.rst with latest help
+ * Use 'replica' instead of 'slave'
+ * adding configuration parameters mgmt api
+ * Clusters troveclient Implementation
+
+- go back to released version (1.0.6) 
+
+- Update to version python-troveclient-1.0.5.74.g9756e2d:
+  * Add visibility filter to datastore versions
+
+- Update to version python-troveclient-1.0.5.72.g722aeff:
+  * Updated from global requirements
+
+- Update to version python-troveclient-1.0.5.71.g872abf2:
+  * Improve help text for --size option
+
+- Update to version python-troveclient-1.0.5.70.g0330b94:
+  * Fix trove help for show and flavor-show
+
+- Update to version python-troveclient-1.0.5.68.g5036106:
+  * Use JSON instead of json in the parameter descriptions
+
+- Update to version python-troveclient-1.0.5.67.g043b987:
+  * Add CONTRIBUTING.rst
+
+- Update to version python-troveclient-1.0.5.66.g75c5456:
+  * Add datatore/version name into configuration view</comment>
+    <requestid>257963</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>85eecd87118bf696c92ccdeddd28862f</srcmd5>
+    <version>1.3.0</version>
+    <time>1446208935</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * Updated from global requirements
+  * Root enablement for Vertica clusters/instances
+  * Use more appropriate exceptions for validation
+  * Redis Clustering Initial Implementation
+  * Revert &quot;Root enablement for Vertica clusters/instances&quot;
+  * Implements Datastore Registration API
+  * Root enablement for Vertica clusters/instances
+  * Updated from global requirements
+  * Updated from global requirements
+  * Add a --marker argument to the backup commands
+  * Fixed missing periods in positional arguments
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Error message on cluster-create is misleading
+  * Make subcommands accept flavor name and cluster name
+  * Fix flavor-show problems with UUID
+  * Updated from global requirements
+  * Allow a user to pass an insecure environment variable
+  * Updated from global requirements
+  * Added more unit-tests to improve code coverage
+  * Updated from global requirements
+  * Fixes the non-existent exception NoTokenLookupException
+  * Fixes new hacking rules
+  * Updated coverage related options to project
+  * Updated from global requirements
+  * Drop use of 'oslo' namespace package
+  * Updated from global requirements
+  * Corrects order of parameters to assertEqual</comment>
+    <requestid>337148</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>07f607592842ebea67acba96a34d20db</srcmd5>
+    <version>2.2.0</version>
+    <time>1463652866</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * Client support for instance module feature
+  * Revert &quot;Time to get rid of any last vestiges of slave_of&quot;
+  * Add suport for module maintenance commands
+  * Fix for guest_log authentication failure
+  * Updated from global requirements
+  * Update readme file to be valid rst and update content
+  * support OS_ENDPOINT_TYPE environment variable
+  * Updated from global requirements
+  * Client Changes for Guest Log File Retrieval
+  * Fix the &quot;OpenStack CLI guide&quot; link
+  * Updated from global requirements
+  * use oslotest to break into the debugger when running test cases
+  * Remove argparse from requirements
+  * Trival: Remove 'MANIFEST.in'
+  * Use the oslo.utils.reflection to extract the class name
+  * Change assertTrue(isinstance()) by optimal assert
+  * Remove openstack-common.conf
+  * Put py34 first in the env order of tox
+  * Updated from global requirements
+  * Drop py33 support
+  * Replace assertEqual(None, *) with assertIsNone
+  * Remove py26 support
+  * Added '.' and remove extra parentheses(')') from README.rst
+  * Trivial: Remove vim header from source files
+  * Replace assertEqual(None, *) with assertIsNone in tests
+  * Add root-disable api
+  * Add 'volume_type' parameter to instance create
+  * Updated from global requirements
+  * cluster create passing availability zone incorrectly</comment>
+    <requestid>393969</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>40509b7b709129cb812116a69de7ad89</srcmd5>
+    <version>2.5.0</version>
+    <time>1475242245</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 2.5.0
+  * Add support for module ordering on apply
+  * module-update with --all_datastores doesn't work
+  * Add command to delete BUILD instances and clusters
+  * Implement scheduled backups
+  * Expose Quota.update API
+  * Add --incremental flag to backup-create
+
+update to version 2.4.0
+  * Implement Instance Upgrade
+  * Update README.rst with lastest usage
+  * Remove Rackspace auth references from troveclient
+  * Support flavor ids with leading '0'
+  * Allow use of backup name in trove create
+  * Fix module-list failing with AccessInfoV2 error
+  * Remove discover from test-requirements
+  * Replace assertDictEqual
+  * Make username and password non-required params
+  * Remove times.dbm file for each tox run
+  * Locality support for clusters
+  * Add support for modules in cluster-grow
+  * Display more flavor information in trove flavor-list command
+  * Fixed output of cluster-create in CLI
+  * Persist error messages and display on 'show'
+  * Replace OpenStack LLC with OpenStack Foundation
+  * configuration-* cli allow name of configuration group entered
+  * Fix CLI output of datastore-show
+  * Fix inadvertent generation of file during tox test
+  * Fix troveclient to support Mistral
+  * Make dict.keys() PY3 compatible</comment>
+    <requestid>426004</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>257d92833d2300a8b02f8c2cfc564e22</srcmd5>
+    <version>2.8.0</version>
+    <time>1487681101</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.8.0:
+  - Replace assertTrue(a in b) with assertIn(a, b)
+  - Use lowercase project name for doc
+  - move old apiclient code out of openstack/common
+  - Enable release notes translation
+  - Get python-troveclient to use upper-constraints.txt
+  - Cluster Upgrade
+  - Update reno for stable/newton
+  - Add module-instance-count command
+  - Throw correct error on creation of size 0
+  - Show team and repo badges on README
+  - Add tests to fake
+  - Display flavor-ephemeral in trove flavor-list command
+  - Fix module-list
+  - Using assertIsNotNone() instead of assertNotEqual(None)
+  - Multi-Region Support
+  - Add a new command in the readme
+  - Allow type to be specified on cluster-create
+  - Add i18n to v1/shell.py
+  - Add fixtures to test-requirements
+  - Use i18n for shell.py
+  - Add OpenStackClient plugin and flavor list
+  - Avoid use xx=[]  for parameter in function
+  - Added limit/marker support for config group lists
+  - Use strutils.to_slug() instead of utils.slugify()
+  - Fix Swift Authentication for log commands
+  - Time to get rid of slave_of
+  - Add support for module-reapply command
+  - Updated from global requirements
+  - Delete unnessary as e</comment>
+    <requestid>456831</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d567442d1580938f1ddd3055bf3df0ad</srcmd5>
+    <version>2.12.0</version>
+    <time>1503927120</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.12.0
+  - Add datastore-list to OSC
+  - Update the trove docs to follow the docs theme
+  - Update reno for stable/ocata
+  - [Fix gate]Update test requirement
+  - Add limit-list to OSC
+  - Handle log message interpolation by the logger
+  - Add list to OSC
+  - Add user-list to OSC
+  - Fix token response mock
+  - Correct help in --profile argument
+  - turn on warning-is-error for documentation builds
+  - Add related_to help message for instance help
+  - Drop pycrypto from tests dependencies
+  - Update reset-status docstring
+  - Add database-list to OSC
+  - rearrange docs into new standard layout
+  - update setup.cfg for classifier python 3.5
+  - Add backup-list to OSC
+  - Remove log translations
+  - Client changes for datastore-version volume-types
+  - Add configuration-list to OSC
+  - Add cli to docs
+  - Enable user/db operations on clusters
+  - Updated from global requirements
+  - Add cluster-list to OSC</comment>
+    <requestid>515025</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d97ed71b8d911719cb67bd10c1244272</srcmd5>
+    <version>2.14.0</version>
+    <time>1521499022</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template
+
+- update to version 2.14.0 (bsc#1078607)
+  - Fix trove schedule-list error
+  - Add show to OSC
+  - Add force-delete to OSC
+  - Use openstackclient-plugin-jobs
+  - Fix abnormal display with openstack database instance list
+  - Add restart to OSC
+  - Add backup-show to OSC
+  - Fix print_list label name in troveclient/utils.py
+  - Add datastore-show to OSC
+  - Avoid tox_install.sh for constraints support
+  - Use ID instead of Name in secgroup_delete_rule
+  - Add root-disable to OSC
+  - Add create to OSC
+  - Add user-delete to OSC
+  - Add upgrade to OSC
+  - Fix log-enable high priority error
+  - Support delete and cluster_delete with many resources
+  - Add configuration-parameter-show to OSC
+  - Add datastore-version-show to OSC
+  - Add flavor-show to OSC
+  - Add resize-instance to OSC
+  - Add instance-delete to OSC
+  - Update the doc link
+  - Add quota commands to OSC
+  - Add user-update-attributes to OSC
+  - Add backup-delete to OSC
+  - Fix datastore abnormal display with trove list</comment>
+    <requestid>583362</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>34452bb590e8db3cd45fc8a0c909d7fa</srcmd5>
+    <version>2.16.0</version>
+    <time>1536327580</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633124</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b8d5b98183db06cd19623eac68f7e534</srcmd5>
+    <version>2.17.0</version>
+    <time>1556916203</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.17.0
+  - Add detailed list for instances
+  - Support configuration groups for clusters
+  - switch documentation job to new PTI
+  - Cleanup zuul.yaml
+  - Add release note link in README
+  - Switch to stestr
+  - Fix wrong keyword arguments
+  - Add extended properties support for mongo cluster.
+  - Fix python3 compatibility issues
+  - Replace assertRaisesRegexp with assertRaisesRegex
+  - Update reno for stable/rocky
+  - Don't quote {posargs} in tox.ini
+  - Remove PyPI downloads
+  - Sync two parameters of cluster-create to OSC
+  - add python 3.6 unit test job
+  - import zuul job settings from project-config</comment>
+    <requestid>692882</requestid>
+  </revision>
+</revisionlist>

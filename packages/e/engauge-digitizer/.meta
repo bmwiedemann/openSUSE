@@ -1,0 +1,5 @@
+<package name="engauge-digitizer" project="openSUSE:Factory">
+  <title>Engauge Digitizer</title>
+  <description>This open source, digitizing software converts an image file showing a graph or map, into numbers. The image file can come from a scanner, digital camera or screenshot. The numbers can be read on the screen, and written or copied to a spreadsheet.</description>
+  <devel project="science" package="engauge-digitizer"/>
+</package>

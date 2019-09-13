@@ -1,0 +1,362 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c0bc918f563e18f517cb743ed1dcd848</srcmd5>
+    <version>3.6.2</version>
+    <time>1414776460</time>
+    <user>coolo</user>
+    <comment>restore the package again</comment>
+    <requestid>259028</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>83c72c65d21340fabdceda6356dcbbb9</srcmd5>
+    <version>3.6.2</version>
+    <time>1415866659</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261164</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b6c93f98e46c4ef3ea020d9d78a7e936</srcmd5>
+    <version>3.6.2</version>
+    <time>1418737764</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>265383</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ff3a6ab5442fe1b54c099d044a6d1920</srcmd5>
+    <version>3.7.1</version>
+    <time>1424430100</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>286807</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>568b132ce0464826ee643c08ccad7588</srcmd5>
+    <version>3.7.2</version>
+    <time>1430903973</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>305535</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>88209199a3594eb22d4601babf1f135e</srcmd5>
+    <version>3.7.3</version>
+    <time>1434003813</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311469</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7205e4354de4cd39be159b85497ef140</srcmd5>
+    <version>3.7.3</version>
+    <time>1438421865</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>319152</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e156cf2feab8aa1424858838b44820fa</srcmd5>
+    <version>4.0.3</version>
+    <time>1475242270</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427816</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0b8294ff16cefa72007db5d8bde17647</srcmd5>
+    <version>4.0.3</version>
+    <time>1483955343</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447103</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>13ee16c9b442eae48d4e47c2ecaeca82</srcmd5>
+    <version>4.0.4</version>
+    <time>1486218041</time>
+    <user>dimstar_suse</user>
+    <comment>- use individual libboost-*-devel packages instead of boost-devel
+- add signature file for upstream release
+
+- update to version 4.0.4
+  The following security advisories were fixed
+  - 2016-02: Crafted queries can cause abnormal CPU usage
+  (CVE-2016-7068, boo#1018326)
+  - 2016-04: Insufficient validation of TSIG signatures
+  (CVE-2016-2120, boo#1018329)
+  complete changeset is availalbe at,
+  https://doc.powerdns.com/md/changelog/#powerdns-recursor-404
+- remove 4462.patch: in upstream release.</comment>
+    <requestid>454144</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>53d7b0a652620585081a50a4310a3ede</srcmd5>
+    <version>4.0.4</version>
+    <time>1495268030</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>496436</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8b7b7ff7aca2a46c5abead6e1a8d6312</srcmd5>
+    <version>4.0.5</version>
+    <time>1498638974</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.5
+  + adds ed25519 (algorithm 15) support for DNSSEC
+  + adds the 2017 DNSSEC root key
+  + complete changeset is available at,
+  https://doc.powerdns.com/md/changelog/#powerdns-recursor-405</comment>
+    <requestid>503372</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3232b4d9236faa16c07f5e6897df3d58</srcmd5>
+    <version>4.0.6</version>
+    <time>1499415458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508480</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>1116a5c9b2481b870befb87d323c64f8</srcmd5>
+    <version>4.0.6</version>
+    <time>1507197718</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531120</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>032d141bdbdd9ca965815d3469295499</srcmd5>
+    <version>4.0.6</version>
+    <time>1510045063</time>
+    <user>dimstar_suse</user>
+    <comment>- Added pdns-recursor.keyring linked from
+  https://dnsdist.org/install.html
+</comment>
+    <requestid>538601</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>94ab2608f9fb3b29101f8d549bcbf522</srcmd5>
+    <version>4.1.0</version>
+    <time>1513014982</time>
+    <user>dimstar_suse</user>
+    <comment>- enable ed25519 support (new BR: libsodium-devel)
+- enable net-snmp support (new BR: net-snmp-devel)
+- simplify BR for lua: lua-devel everywhere now
+
+- update to version 4.1.0:
+  + Improved DNSSEC support
+  + Improved documentation
+  + Improved RPZ support
+  + Improved EDNS Client Subnet support
+  + SNMP support
+  + Lua engine has gained access to more parts of the recursor
+  + CPU affinity can now be specified
+  + TCP Fast Open support
+  + New performance metrics
+  + For complete changes see:
+    https://blog.powerdns.com/2017/12/04/powerdns-recursor-4-1/
+
+- update to version 4.0.7:
+  + fixes CVE-2017-15090: Insufficient validation of DNSSEC
+    signatures
+  + fixes CVE-2017-15092: Cross-Site Scripting in the web interface
+  + fixes CVE-2017-15093: Configuration file injection in the API
+  + fixes CVE-2017-15094: Memory leak in DNSSEC parsing
+  + Fix validation at the exact RRSIG inception or expiration time
+  + Extract nested exception from Luawrapper
+  + Throw an error when lua-conf-file can’t be loaded
+  + Lowercase all outgoing qnames when lowercase-outgoing is set</comment>
+    <requestid>555202</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f7d07464217ebf9d51f4793e83b2ce26</srcmd5>
+    <version>4.1.0</version>
+    <time>1514907313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561067</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4492ad25b680b3e6b56684b877412602</srcmd5>
+    <version>4.1.1</version>
+    <time>1516712016</time>
+    <user>dimstar_suse</user>
+    <comment>Version update and add missing bugzilla entries
+
+- update to version 4.1.1:
+  + Fixes security vulnerability where man-in-the-middle to send
+    a NXDOMAIN answer for a DNSSEC name that does exist.
+    (bsc#1077154, CVE-2018-1000003)
+  + Don't validate signature for &quot;glue&quot; CNAME, since anything else
+    than the initial CNAME can’t be considered authoritative.
+
+- update to version 4.0.7: (bsc#1069242)</comment>
+    <requestid>568487</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>14322ef8aba4f326499c0bc11677b1d5</srcmd5>
+    <version>4.1.2</version>
+    <time>1523956642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597059</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>06be28a3c49202f367ba6015cc804b03</srcmd5>
+    <version>4.1.3</version>
+    <time>1527583251</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.3
+  - Improvements
+    * Add a subtree option to the API cache flush endpoint
+    * Use a separate, non-blocking pipe to distribute queries
+    * Move carbon/webserver/control/stats handling to a separate
+      thread
+    * Add _raw versions for QName / ComboAddresses to the FFI API
+    * Fix a warning on botan &gt;= 2.5.0
+  - Bug Fixes
+    * Count a lookup into an internal auth zone as a cache miss
+    * Don’t increase the DNSSEC validations counters when running
+      with process-no-validate
+    * Respect the AXFR timeout while connecting to the RPZ server
+    * Increase MTasker stacksize to avoid crash in exception
+      unwinding
+    * Use the SyncRes time in our unit tests when checking cache
+      validity
+    * Add -rdynamic to C{,XX}FLAGS when we build with LuaJIT
+    * Delay the loading of RPZ zones until the parsing is done,
+      fixing a race condition
+    * Reorder includes to avoid boost L conflict (bsc#1089814)</comment>
+    <requestid>611478</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>569941baa34abd39af9aa262ab4c5699</srcmd5>
+    <version>4.1.4</version>
+    <time>1535963742</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.4
+  - Improvements
+    * Split pdns_enable_unit_tests.
+    * Add a new max-udp-queries-per-round setting.
+    * Fix warnings reported by gcc 8.1.0.
+    * Tests: replace awk command by perl.
+    * Allow the snmp thread to retrieve statistics.
+  - Bug Fixes
+    * Don’t account chained queries more than once.
+    * Make rec_control respect include-dir.
+    * Load lua scripts only in worker threads.
+    * Purge all auth/forward zone data including subtree.</comment>
+    <requestid>632520</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bbb8d99e0b2fa93dfb5bdd50dbe9b2c9</srcmd5>
+    <version>4.1.6</version>
+    <time>1541667035</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.6
+  - Revert &quot;rec: Authority records in AA=1 CNAME answer are
+    authoritative&quot;
+    https://github.com/PowerDNS/pdns/issues/7158
+
+- update to 4.1.5
+  - Improvements
+    * Add pdnslog to lua configuration scripts
+    * Fix compilation with libressl 2.7.0+
+    * Export outgoing ECS value and server ID in protobuf (if any)
+    * Switch to devtoolset 7 for el6
+    * Allow the signature inception to be off by number of seconds
+  - Bug Fixes
+    * Crafted answer can cause a denial of service
+      (bsc#1114157, CVE-2018-10851)
+    * Packet cache pollution via crafted query
+      (bsc#1114169, CVE-2018-14626)
+    * Crafted query for meta-types can cause a denial of service
+      (bsc#1114170, CVE-2018-14644)
+    * Delay creation of rpz threads until we dropped privileges
+    * Cleanup the netmask trees used for the ecs index on removals
+    * Make sure that the ecs scope from the auth is &lt; to the source
+    * Authority records in aa=1 cname answer are authoritative
+    * Avoid a memory leak in catch-all exception handler
+    * Don’t require authoritative answers for forward-recurse zones
+    * Release memory in case of error in openssl ecdsa constructor
+    * Convert a few uses to toLogString to print DNSName’s that
+      may be empty in a safer manner
+    * Avoid a crash on DEC Alpha systems
+    * Clear all caches on (N)TA changes</comment>
+    <requestid>646976</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9493da8e544160f9a62bc53e73888285</srcmd5>
+    <version>4.1.8</version>
+    <time>1543311874</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.8
+  https://blog.powerdns.com/2018/11/26/powerdns-recursor-4-1-8-released/
+  - Fixes case where a crafted query can cause a denial of service
+    (CVE-2018-16855, bsc#1116592)
+
+- update to 4.1.7
+  https://blog.powerdns.com/2018/11/09/powerdns-recursor-4-1-7-released/
+  - Revert ‘Keep the EDNS status of a server on FormErr with EDNS’
+  - Refuse queries for all meta-types</comment>
+    <requestid>652039</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ce29815aab0c81567462b9bae30349ce</srcmd5>
+    <version>4.1.9</version>
+    <time>1548335545</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.9
+  https://blog.powerdns.com/2019/01/21/powerdns-recursor-4-1-9-released/
+  - Fixes case when Lua hooks are not called over TCP
+    (CVE-2019-3806, bsc#1121887)
+  - Fixes DNSSEC validation is not performed for AA=0 responses
+    (CVE-2019-3807, bsc#1121889)</comment>
+    <requestid>667620</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>547d2af7f169f28bc26f5e254e6558ec</srcmd5>
+    <version>4.1.10</version>
+    <time>1548537754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668666</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6afbce5a1cfef7fdd91f00a2470cd10a</srcmd5>
+    <version>4.1.12</version>
+    <time>1554281504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690877</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e242c3adf84c129259c8b4796775bcfc</srcmd5>
+    <version>4.1.12</version>
+    <time>1556312144</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698186</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>940067bdc88a378577c3634e78ac6f31</srcmd5>
+    <version>4.1.13</version>
+    <time>1558516628</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.13:
+  * Add the disable-real-memory-usage setting to skip expensive
+    collection of detailed memory usage info
+  * Fix DNSSEC validation of wildcards expanded onto themselves.</comment>
+    <requestid>704461</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>57bc2ff1ff61e2d0a72b7bbfb0126b44</srcmd5>
+    <version>4.2.0</version>
+    <time>1563456013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715693</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="libid3tag" project="openSUSE:Factory">
+  <title>ID3 Tag Manipulation Library</title>
+  <description>libid3tag is a library for reading and writing ID3 tags, both ID3v1 and
+the various versions of ID3v2.</description>
+  <devel project="multimedia:libs" package="libid3tag"/>
+</package>

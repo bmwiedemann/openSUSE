@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e5eac958641f470cc3f1aa0098efe09</srcmd5>
+    <version>3.7</version>
+    <time>1521904555</time>
+    <user>dimstar_suse</user>
+    <comment>py3status is enhancement of i3status - content generator (not only) for i3 panel</comment>
+    <requestid>590407</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>325ceba98dee85aee527c5cf31a73f53</srcmd5>
+    <version>3.12</version>
+    <time>1535123424</time>
+    <user>dimstar_suse</user>
+    <comment>- Version  update to 3.12:
+  * For the list of changes please see CHANGELOG file
+- Enable tests
+- Add patch fast-entrypoints.patch to fix setup.py</comment>
+    <requestid>630855</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fca387d07f1c7f283261ec8b96066edb</srcmd5>
+    <version>3.19</version>
+    <time>1559375147</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the pytest macro
+
+- version update to 3.19
+  * many changes, see CHANGELOG file
+- deleted patches
+  - fast-entrypoints.patch (upstreamed)</comment>
+    <requestid>705398</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>830c09175604f01fe55e5e7e7937e303</srcmd5>
+    <version>3.20</version>
+    <time>1568191174</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.20:
+  * introduce entry point based discovery of packaged custom modules
+  * many other fixes, see CHANGELOG</comment>
+    <requestid>729884</requestid>
+  </revision>
+</revisionlist>

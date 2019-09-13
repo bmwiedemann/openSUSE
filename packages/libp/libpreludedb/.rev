@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6d7791f0a137edec0725e6446da9782</srcmd5>
+    <version>3.0.0</version>
+    <time>1474016532</time>
+    <user>dimstar_suse</user>
+    <comment>Adding libpreludedb to factory. libprelude is already in factory and packages depending on
+libprelude and libpreludedb will also be submitted</comment>
+    <requestid>427884</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7350ac7f4ec024f478009b026a441c2e</srcmd5>
+    <version>3.0.0</version>
+    <time>1475359794</time>
+    <user>dimstar_suse</user>
+    <comment>Force using postgresql94</comment>
+    <requestid>432171</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4eb7e24cd9bd785bc32465692e14f5a3</srcmd5>
+    <version>3.1.0</version>
+    <time>1491210310</time>
+    <user>lnussel_factory</user>
+    <comment>Update to 3.1.0</comment>
+    <requestid>482280</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f17659809d34e1b6e4f25c2d2baa80d0</srcmd5>
+    <version>3.1.0</version>
+    <time>1493580204</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490890</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c31fc38fb740e31fd365a97863d7ebb6</srcmd5>
+    <version>4.0.0</version>
+    <time>1510578121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541093</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f79b6c48d959b9f4754e696305f1696f</srcmd5>
+    <version>5.0.0</version>
+    <time>1551687734</time>
+    <user>dimstar_suse</user>
+    <comment>Bump version 5.0.0
+- Remove patchs included in new version
+  - libpreludedb-fix-gtk-doc.patch
+</comment>
+    <requestid>680666</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>91c4de1c30d8f52402aa4db1ab8f4476</srcmd5>
+    <version>5.0.0</version>
+    <time>1556475332</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698745</requestid>
+  </revision>
+</revisionlist>

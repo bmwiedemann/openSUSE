@@ -1,0 +1,5 @@
+<package name="panini" project="openSUSE:Factory">
+  <title></title>
+  <description>visual tool for creating perspective views from panoramic and wide angle photographs </description>
+  <devel project="X11:LXQt" package="panini"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="rust-packaging" project="openSUSE:Factory">
+  <title>RPM tools and macros for building Rust packages</title>
+  <description>This package provides the tools and macros for building projects in Rust
+on various architectures.</description>
+  <devel project="devel:languages:rust" package="rust-packaging"/>
+</package>

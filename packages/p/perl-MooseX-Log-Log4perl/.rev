@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>26db1f40d28144228d0a2254e0623f7b</srcmd5>
+    <version>0.42</version>
+    <time>1303212108</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66746 from user babelworx
+</comment>
+    <requestid>66746</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>36309f74e06ad5343a48fd06f9ca35e3</srcmd5>
+    <version>0.42</version>
+    <time>1303212124</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66746
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>36309f74e06ad5343a48fd06f9ca35e3</srcmd5>
+    <version>0.42</version>
+    <time>1319182289</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>730e8ded609625b871eaa298c2008f92</srcmd5>
+    <version>0.43</version>
+    <time>1324458145</time>
+    <user>coolo</user>
+    <comment>- update to 0.43
+    * Change to use Any::Moose to also support Mouse environemnt
+    * Documentation improvements for Any::Moose</comment>
+    <requestid>97157</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>730e8ded609625b871eaa298c2008f92</srcmd5>
+    <version>0.43</version>
+    <time>1340183881</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>730e8ded609625b871eaa298c2008f92</srcmd5>
+    <version>0.43</version>
+    <time>1359109747</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>99e754e002e3de04a5a16e0e82c082e4</srcmd5>
+    <version>0.46</version>
+    <time>1370517838</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 177814 from coolo)</comment>
+    <requestid>177850</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>99e754e002e3de04a5a16e0e82c082e4</srcmd5>
+    <version>0.46</version>
+    <time>1379663762</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>99e754e002e3de04a5a16e0e82c082e4</srcmd5>
+    <version>0.46</version>
+    <time>1409302400</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>067775c10b69fdd9c0ef2ff5be6c9076</srcmd5>
+    <version>0.47</version>
+    <time>1449995991</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>348094</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>0cf510153b79e882249baf765d86b4f1</srcmd5>
+    <version>0.47</version>
+    <time>1507065532</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530699</requestid>
+  </revision>
+</revisionlist>

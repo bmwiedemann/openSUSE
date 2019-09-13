@@ -1,0 +1,5 @@
+<package name="python-ucsmsdk" project="openSUSE:Factory">
+  <title>Cisco UCS Python SDK</title>
+  <description>Cisco UCS Python Software Development Kit is a python module which helps automate all aspects of Cisco UCS management including server, network, storage and hypervisor management. The source code repository is at https://github.com/CiscoUcs/ucsmsdk. This package should be used for Cisco UCS Python SDK versions greater than 0.8.2.5 instead of python-UcsSdk.</description>
+  <devel project="devel:languages:python" package="python-ucsmsdk"/>
+</package>

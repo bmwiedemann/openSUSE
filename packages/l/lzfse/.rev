@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3f0a91d263ef8865cf490505483b657</srcmd5>
+    <version>0.0+git.20160620</version>
+    <time>1468482551</time>
+    <user>dimstar_suse</user>
+    <comment>New cool package</comment>
+    <requestid>407797</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5005de356019103615b9d91420cba3ca</srcmd5>
+    <version>0.0+git.20160802</version>
+    <time>1471009379</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git.20160802:</comment>
+    <requestid>418278</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ff3d2139b99ef488323f9ea7dc6357f</srcmd5>
+    <version>0.0+git.20161117</version>
+    <time>1482418608</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to version 0.0+git.20161117:
+  * Update API export to work for CMake and MSVC
+  * Fix label error
+  * Fix 64-bit check for MSVC
+  * Add some tests to verify the build.
+  * Add Travis CI support.
+  * Add AppVeyor builds.
+  * Don't rely on unaligned accesses in the LZVN encoder.
+  * Get Visual Studio 12 working.
+  * Replace #pragma mark with // MARK:
+  * Add const to tables in lzfse_internal.h</comment>
+    <requestid>446898</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d475e1375cc3ef2938b5204bedd65fd</srcmd5>
+    <version>1.0</version>
+    <time>1519145779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578266</requestid>
+  </revision>
+</revisionlist>

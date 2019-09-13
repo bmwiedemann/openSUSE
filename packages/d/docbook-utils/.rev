@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="65">
+    <srcmd5>b56c8cd04d7bf302e930a69bb7c7d553</srcmd5>
+    <version>0.6.14</version>
+    <time>1168902625</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="171">
+    <srcmd5>95a2eea47270170bc4885f52b8b02362</srcmd5>
+    <version>0.6.14</version>
+    <time>1205924539</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="213">
+    <srcmd5>95a2eea47270170bc4885f52b8b02362</srcmd5>
+    <version>0.6.14</version>
+    <time>1205924539</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="214">
+    <srcmd5>3a6a56e678af1fc71f423302c71717db</srcmd5>
+    <version>0.6.14</version>
+    <time>1245338174</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="216">
+    <srcmd5>3a6a56e678af1fc71f423302c71717db</srcmd5>
+    <version>0.6.14</version>
+    <time>1245338174</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="217">
+    <srcmd5>8a012e3bc2d523a362e858acfaec799c</srcmd5>
+    <version>0.6.14</version>
+    <time>1263820529</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/docbook-utils based on submit request 29854 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="218">
+    <srcmd5>a88355a98633104917b818b8fb4b2ced</srcmd5>
+    <version>0.6.14</version>
+    <time>1268923373</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="220">
+    <srcmd5>a88355a98633104917b818b8fb4b2ced</srcmd5>
+    <version>0.6.14</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="221">
+    <srcmd5>a88355a98633104917b818b8fb4b2ced</srcmd5>
+    <version>0.6.14</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="224">
+    <srcmd5>a88355a98633104917b818b8fb4b2ced</srcmd5>
+    <version>0.6.14</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="225">
+    <srcmd5>5058a5587038be5332de4a6b1aa7ac64</srcmd5>
+    <version>0.6.14</version>
+    <time>1316443462</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83276 from jengelh)</comment>
+    <requestid>83337</requestid>
+  </revision>
+  <revision rev="12" vrev="227">
+    <srcmd5>5058a5587038be5332de4a6b1aa7ac64</srcmd5>
+    <version>0.6.14</version>
+    <time>1319181852</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="228">
+    <srcmd5>105e7536c25dd5023fd19834e016ce91</srcmd5>
+    <version>0.6.14</version>
+    <time>1323290434</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94782 from coolo)</comment>
+    <requestid>95447</requestid>
+  </revision>
+  <revision rev="14" vrev="229">
+    <srcmd5>37c8e4a4ecc8d59ffca238630e3ce167</srcmd5>
+    <version>0.6.14</version>
+    <time>1335165153</time>
+    <user>coolo</user>
+    <comment>- split out the backends that do not require tex to work (forwarded request 114313 from coolo)</comment>
+    <requestid>114422</requestid>
+  </revision>
+  <revision rev="15" vrev="231">
+    <srcmd5>37c8e4a4ecc8d59ffca238630e3ce167</srcmd5>
+    <version>0.6.14</version>
+    <time>1340183286</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="233">
+    <srcmd5>37c8e4a4ecc8d59ffca238630e3ce167</srcmd5>
+    <version>0.6.14</version>
+    <time>1359108820</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="235">
+    <srcmd5>37c8e4a4ecc8d59ffca238630e3ce167</srcmd5>
+    <version>0.6.14</version>
+    <time>1379662242</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="237">
+    <srcmd5>37c8e4a4ecc8d59ffca238630e3ce167</srcmd5>
+    <version>0.6.14</version>
+    <time>1409300777</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="238">
+    <srcmd5>d1e629ac9e27469724c1cad769354f42</srcmd5>
+    <version>0.6.14</version>
+    <time>1421959701</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281649</requestid>
+  </revision>
+  <revision rev="20" vrev="239">
+    <srcmd5>ab8c29d44471c35b235198f8b3fbdbce</srcmd5>
+    <version>0.6.14</version>
+    <time>1485510252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452067</requestid>
+  </revision>
+</revisionlist>

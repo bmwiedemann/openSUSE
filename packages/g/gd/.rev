@@ -1,0 +1,437 @@
+<revisionlist>
+  <revision rev="1" vrev="29">
+    <srcmd5>1feab6ccd727235de2fe31cbf6e8a580</srcmd5>
+    <version>2.0.32</version>
+    <time>1168902831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>50ada5d447734b32464f7f9d1b5daa30</srcmd5>
+    <version>2.0.34</version>
+    <time>1172442244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="11">
+    <srcmd5>6625c39725a97dd04e9955b489127d60</srcmd5>
+    <version>2.0.34</version>
+    <time>1178230113</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="21">
+    <srcmd5>0598c97b55b88dac4924ade30047b9a6</srcmd5>
+    <version>2.0.34</version>
+    <time>1180639777</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ffe780019e5c6297c67b345085cc36d5</srcmd5>
+    <version>2.0.35</version>
+    <time>1184070855</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="38">
+    <srcmd5>27ddbb98f516b950fc109d08ee4d5def</srcmd5>
+    <version>2.0.35</version>
+    <time>1198348378</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>93b91218e77de4651d11f30d22c6f916</srcmd5>
+    <version>2.0.36RC1</version>
+    <time>1200681245</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4f607a521126b02912ea3b0cd9d776f5</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1205114124</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="52">
+    <srcmd5>4f607a521126b02912ea3b0cd9d776f5</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1205114124</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="53">
+    <srcmd5>19b2c48a08ed91ca830c2ec7974ba439</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1226937055</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="55">
+    <srcmd5>19b2c48a08ed91ca830c2ec7974ba439</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1226937055</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="56">
+    <srcmd5>85bfa933dc0caaf3adf9e44d8629709d</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1268923682</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="57">
+    <srcmd5>dbc3db621c66e4c96b93646a6aa68c1c</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1270404380</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/gd based on submit request 36904 from user oertel
+</comment>
+    <requestid>36904</requestid>
+  </revision>
+  <revision rev="14" vrev="58">
+    <srcmd5>618e981efb63205b8e423452a866ad63</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1270654932</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/gd based on submit request 37200 from user oertel
+</comment>
+    <requestid>37200</requestid>
+  </revision>
+  <revision rev="15" vrev="60">
+    <srcmd5>618e981efb63205b8e423452a866ad63</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="61">
+    <srcmd5>618e981efb63205b8e423452a866ad63</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="64">
+    <srcmd5>618e981efb63205b8e423452a866ad63</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="65">
+    <srcmd5>b8eab4bc19874069e0a44b58538057da</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1308121636</time>
+    <user>saschpe</user>
+    <comment>Fix dependencies of devel package. (forwarded request 73567 from a_jaeger)</comment>
+    <requestid>73601</requestid>
+  </revision>
+  <revision rev="19" vrev="66">
+    <srcmd5>72c3828cddb0e5fcf7265cb33fc38334</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1308121649</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73601
+</comment>
+  </revision>
+  <revision rev="20" vrev="67">
+    <srcmd5>ea758f031bb9c88cf838fa61d7ff0b3e</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1317626354</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 86020 from coolo)</comment>
+    <requestid>86059</requestid>
+  </revision>
+  <revision rev="21" vrev="68">
+    <srcmd5>f99421ef920b3c79f87a8c35ebe4c364</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1317909759</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: use libpng from sysroot (forwarded request 86676 from uli_suse)</comment>
+    <requestid>86714</requestid>
+  </revision>
+  <revision rev="22" vrev="70">
+    <srcmd5>f99421ef920b3c79f87a8c35ebe4c364</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1319181897</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="71">
+    <srcmd5>8065c9acf66cc09488ec6b1191d85ea2</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1323191497</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="72">
+    <srcmd5>f6ac413b1513e2c18751300c4a9bcf87</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1329318889</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104268</requestid>
+  </revision>
+  <revision rev="25" vrev="74">
+    <srcmd5>f6ac413b1513e2c18751300c4a9bcf87</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1340183353</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="76">
+    <srcmd5>f6ac413b1513e2c18751300c4a9bcf87</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1359108909</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="77">
+    <srcmd5>99b86d6689616d914d1a68a229b9461e</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1360005133</time>
+    <user>coolo</user>
+    <comment>- gd-autoconf.patch fix up compile file so gd can handle 
+  large files on 32 bit (forwarded request 150882 from elvigia)</comment>
+    <requestid>150898</requestid>
+  </revision>
+  <revision rev="28" vrev="79">
+    <srcmd5>99b86d6689616d914d1a68a229b9461e</srcmd5>
+    <version>2.0.36.RC1</version>
+    <time>1379662396</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>dfd24a3f8ae94a53f4d9122b3e98aed0</srcmd5>
+    <version>2.1.0</version>
+    <time>1388075809</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212283</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>e93f3e9ae411dff3912f5f9951137820</srcmd5>
+    <version>2.1.0</version>
+    <time>1388393528</time>
+    <user>coolo</user>
+    <comment>- Cleanup here&amp;there to parallelize everything
+- Remove bogus cmake dependency (forwarded request 212320 from scarabeus_iv)</comment>
+    <requestid>212327</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>2685c7211014eafdc4c9740ed36f18f4</srcmd5>
+    <version>2.1.0</version>
+    <time>1397041263</time>
+    <user>coolo</user>
+    <comment>- fixed NULL ptr deref in GD XPM decoder [bnc#868624]
+   * CVE-2014-2497.patch</comment>
+    <requestid>229236</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>b4cb5e38f315d8bfc2eaa6ff39741ab7</srcmd5>
+    <version>2.1.0</version>
+    <time>1397450592</time>
+    <user>coolo</user>
+    <comment>- build against libtiff and libvpx</comment>
+    <requestid>229561</requestid>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>c425e1fad0fa412c06d60e53dfc49a01</srcmd5>
+    <version>2.1.0</version>
+    <time>1398278145</time>
+    <user>coolo</user>
+    <comment>- Add tiff and vpx to the devel deps as it is in .pc file. (forwarded request 230513 from scarabeus_iv)</comment>
+    <requestid>230725</requestid>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>5e64b19242e8e97fe4910297b3d059d6</srcmd5>
+    <version>2.1.0</version>
+    <time>1404157366</time>
+    <user>coolo</user>
+    <comment>- split out libgd3, so libgd2 could be installed in parallel.</comment>
+    <requestid>238951</requestid>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>5e64b19242e8e97fe4910297b3d059d6</srcmd5>
+    <version>2.1.0</version>
+    <time>1409300931</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="9">
+    <srcmd5>80845430e3bfd166f8bc3423abc0806d</srcmd5>
+    <version>2.1.0</version>
+    <time>1409326934</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246423</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0dd57faed3f8a26aad008b64366e1b44</srcmd5>
+    <version>2.1.1</version>
+    <time>1425566319</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288262</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>754e65ba01cd2bfa1bb9d6b320e5663c</srcmd5>
+    <version>2.1.1</version>
+    <time>1431982906</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307504</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>8b90a745a3c5c6b781d89ed8777c9e72</srcmd5>
+    <version>2.1.1</version>
+    <time>1457546476</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing config/getver.pl [bsc#965190]</comment>
+    <requestid>363644</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>2aaf80ca0a2ff35ec78c8c2531770611</srcmd5>
+    <version>2.1.1</version>
+    <time>1464964561</time>
+    <user>dimstar_suse</user>
+    <comment>- security update:
+  * CVE-2016-5116 [bsc#982176]
+    + gd-CVE-2016-5116.patch</comment>
+    <requestid>398959</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>92d452df29e98a2a9f9bde14aa213b6e</srcmd5>
+    <version>2.1.1</version>
+    <time>1472246071</time>
+    <user>dimstar_suse</user>
+    <comment>- security update:
+  * CVE-2016-6132 [bsc#987577]
+    + gd-CVE-2016-6132.patch
+  * CVE-2016-6214 [bsc#991436]
+    + gd-CVE-2016-6214.patch
+  * CVE-2016-6905 [bsc#995034]
+    + gd-CVE-2016-6905.patch</comment>
+    <requestid>421269</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2a43927a4cd8880d9bd02669e0f9a06d</srcmd5>
+    <version>2.2.3</version>
+    <time>1476109098</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>432069</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>9a8f30b3ac7094c847a1daa20ac8588f</srcmd5>
+    <version>2.2.3</version>
+    <time>1481653950</time>
+    <user>dimstar_suse</user>
+    <comment>- devel package also require libwebp-devel
+
+- Support webp format, BuildRequires libwebp-devel 
+
+- Honour %optflags correctly.</comment>
+    <requestid>445158</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>90342598b711a7b393d3fde687fbaa8d</srcmd5>
+    <version>2.2.4</version>
+    <time>1502365403</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch gd-rounding.patch
+- Set again the cflags so other archs do not fail testsuite (forwarded request 511828 from scarabeus_iv)</comment>
+    <requestid>511835</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>806154cd5066bacfd6bc105c6dce7b3a</srcmd5>
+    <version>2.2.4</version>
+    <time>1503591992</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't fail gdimagegrayscale/basic on SLE15 (boo#1053825) (forwarded request 517000 from lnussel)</comment>
+    <requestid>517003</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>da69720d72254fea3536cae836ec6c82</srcmd5>
+    <version>2.2.5</version>
+    <time>1504895963</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.2.5:
+  ### Security
+  - Double-free in gdImagePngPtr(). (CVE-2017-6362)
+  - Buffer over-read into uninitialized memory. (CVE-2017-7890)
+  
+  ### Fixed
+  - Fix #109: XBM reading fails with printed error
+  - Fix #338: Fatal and normal libjpeg/ibpng errors not distinguishable
+  - Fix #357: 2.2.4: Segfault in test suite
+  - Fix #386: gdImageGrayScale() may produce colors
+  - Fix #406: webpng -i removes the transparent color
+  - Fix Coverity #155475: Failure to restore alphaBlendingFlag
+  - Fix Coverity #155476: potential resource leak
+  - Fix several build issues and test failures
+  - Fix and reenable optimized support for reading 1 bps TIFFs
+  
+  ### Added
+  - The native MSVC buildchain now supports libtiff and most executables
+- removed patches (upstreamed):
+  . gd-freetype.patch
+  . gd-rounding.patch</comment>
+    <requestid>521156</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>c6d1901cb02d071003ddc45229b5d8d4</srcmd5>
+    <version>2.2.5</version>
+    <time>1516970067</time>
+    <user>dimstar_suse</user>
+    <comment>- security update:
+  * CVE-2018-5711 [bsc#1076391]
+    + gd-CVE-2018-5711.patch</comment>
+    <requestid>568192</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>c72373552a650e1fb0c5ac85cbe11970</srcmd5>
+    <version>2.2.5</version>
+    <time>1536678801</time>
+    <user>maxlin_factory</user>
+    <comment>- security update:
+  * CVE-2018-1000222 [bsc#1105434]
+    + gd-CVE-2018-1000222.patch
+
+- libgd-config.patch: do not inject false dependencies into 
+  packages, GD does not need extra libs to be used.
+  this also allows us to clean up -devel package dependencies.</comment>
+    <requestid>631813</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>2d98757b057b182950d5960c489b15e7</srcmd5>
+    <version>2.2.5</version>
+    <time>1545866632</time>
+    <user>dimstar_suse</user>
+    <comment>- add gd-devel as baselibs, for building 32bit libaries on 64bit</comment>
+    <requestid>657872</requestid>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>bc8444aa3be643c818d447bbc1109559</srcmd5>
+    <version>2.2.5</version>
+    <time>1549629940</time>
+    <user>coolo</user>
+    <comment>- security update
+  * CVE-2019-6978 [bsc#1123522]
+    + gd-CVE-2019-6978.patch
+  * CVE-2019-6977 [bsc#1123361]
+    + gd-CVE-2019-6977.patch</comment>
+    <requestid>671007</requestid>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>1f718f49437f127c6be6c1e27654c24d</srcmd5>
+    <version>2.2.5</version>
+    <time>1559481434</time>
+    <user>dimstar_suse</user>
+    <comment>- change order while installing splitted library [bsc#1136574]</comment>
+    <requestid>706509</requestid>
+  </revision>
+  <revision rev="52" vrev="7">
+    <srcmd5>28e463017319d55a5058cbc51ee40d65</srcmd5>
+    <version>2.2.5</version>
+    <time>1563701357</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  CVE-2019-11038 [bsc#1140120]
+  + gd-CVE-2019-11038.patch</comment>
+    <requestid>715653</requestid>
+  </revision>
+</revisionlist>

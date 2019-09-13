@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95134bd487fd0e635dc0ecd97decaf0f</srcmd5>
+    <version>1.0.0+git1615.g26887efd</version>
+    <time>1562843719</time>
+    <user>dimstar_suse</user>
+    <comment>- restore package name and correct unique containers tags
+- changing package name as it couldn't comply to the container tag name
+  + https://github.com/containers/image/issues/649 
+- Ceph added as a requirement to get it version for the container image
+- Added service to strip Ceph version from ceph package
+- Fixed sed for the container images names
+- Update Rook to commit ad89e4f47e744c484b8e264e351f6276a42eedfc
+  + change csi template path to match rook-k8s-yaml package files
+- Fix update-tarball.sh to delete right files
+- Add all manifests to the rook-k8s-yaml packages
+- Fix rook binary location from /usr/local/bin/ to /usr/bin/ 
+- Fix update-tarball.sh to ignore errors where is needed
+- Update spec to include additional ceph-csi config files 
+- Adding additional files as Source to spec 
+- Update tarball generation script to get correct version
+- Correct tarball name, spec version and package name
+- Add new k8s-yaml package to distribute manifests files
+- Update rook to commit 700cdd36fe9107733a717fac934c2bedd91fd290
+- build from https://github.com/SUSE/rook/tree/suse-master
+- based on Rook v1.0.0
+- Ceph:
+  + Ceph Nautilus (v14) is now supported by Rook
+  + The Ceph-CSI driver is available for experimental mode
+  + A CephNFS CRD will start NFS daemon(s) for exporting CephFS volumes or RGW buckets
+  + The number of mons can be increased automatically when new nodes come online
+  + OSDs provisioned by ceph-volume now supports metadataDevice and databaseSizeMB options
+- Update rook to commit c43b57844e37a7909beb362d08ef85fffdd5fed4
+- build from https://github.com/SUSE/rook/tree/suse-master
+- Ceph:
+  + Improve rbd hotplug selection
+  + set default version to nautilus
+  + improved OSD removal
+  + clean shutdown of CephFS
+  + improve logging
+  + improved upgrade ochestration
+- Update rook to commit 69936c170cb3913a539eacf963993e9bb3545e8a
+- Cassandra: Fix the mount point for th
+- Ceph:
+  + Improve mon failover cleanup and operator restart during failover
+  + Enable host ipc for osd encryption
+  + Add missing &quot;host path requires privileged&quot; setting to the helm chart
+- Update rook to commit 8e263cd9c31b0a310b0d1180e58ac843b432b14b
+- Correctly capture and log the stderr output from child processes
+- Allow disabling setting fsgroup when mounting a volume
+- Allow configuration of SELinux relabeling
+- Correctly set the secretKey used for cephfs mounts
+- Set ceph-mgr privileges to prevent the dashboard from failing on rbd mirroring settings
+- Correctly configure the ssl certificate for the RGW service
+- Allow configuration of the dashboard port
+- Allow disabling of ssl on the dashboard
+- Update rook to commit d0cd8cec72176bf28a3ac0ba1457297151004f79
+- Ceph CRDs have been declared stable V1.
+- Ceph versioning is decoupled from the Rook version. Luminous and Mimic can be run in production, or Nautilus in experimental mode.
+- Ceph upgrades are greatly simplified
+- The minimum version of Kubernetes supported by Rook changed from 1.7 to 1.8
+- install to /usr/local/bin as rook hardcodes this path for rookflex
+- Update rook to commit bf2759e317c44c0ad0aaf635e04cbd72a002a5a0
+- Refactor ceph containers to disconnect rook and ceph versions
+-------------
+- Update Rook build to use '-buildmode=pie' flag
+- Version at commit e11b3d863728667ea018aa329f3ad907360473cf
+-------------
+- Initial submission
+- Version at commit 71514921ad8e41ede6f2814e7004f0465e3dd0f7
+- Modifications to upstream Rook to support SLE:
+  - None
+</comment>
+    <requestid>713451</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f5bf8e257555890a0ffcf6b18992213e</srcmd5>
+    <version>1.0.0+git1697.ga265cdfd</version>
+    <time>1563259162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714841</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>28eefb82aad6d5f0dac6862518f57adf</srcmd5>
+    <version>1.0.0+git1783.g7a48482f</version>
+    <time>1564137480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718745</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0bbd64a4ba7e3c942bd6da7334c30e3d</srcmd5>
+    <version>1.0.0+git1862.ge9abbf48</version>
+    <time>1565962192</time>
+    <user>dimstar_suse</user>
+    <comment>Update Rook to commit e9abbf4831673a9a5545971532ae326e95f3ea60</comment>
+    <requestid>723072</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f781dfd166078422bd2d58261c8c322c</srcmd5>
+    <version>1.0.0+git1899.g69255322</version>
+    <time>1567000909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725604</requestid>
+  </revision>
+</revisionlist>

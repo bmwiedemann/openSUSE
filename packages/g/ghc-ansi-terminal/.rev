@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db94058a659b27ab151fa61f7c9b1c64</srcmd5>
+    <version>0.6.2.1</version>
+    <time>1432190051</time>
+    <user>coolo</user>
+    <comment>ANSI terminal support for Haskell: allows cursor movement, screen clearing,
+color output showing or hiding the cursor, and changing the title.
+Compatible with Windows and those Unixes with ANSI terminals, but only GHC is
+supported as a compiler.</comment>
+    <requestid>307142</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>92e07bf738b3eee06f371fa194711c33</srcmd5>
+    <version>0.6.2.2</version>
+    <time>1440658601</time>
+    <user>coolo</user>
+    <comment>- update to 0.6.2.2 
+* Fix a GHC 7.10 warning</comment>
+    <requestid>325725</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e89c0f45df8fd7bafa4b66ac54494090</srcmd5>
+    <version>0.6.2.3</version>
+    <time>1442474349</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.2.3
+* Add an example to the haddocks</comment>
+    <requestid>330752</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e4ac64e267cd15111ab5e1b2f4551f28</srcmd5>
+    <version>0.6.2.3</version>
+    <time>1469080761</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>410444</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>02d770cccd3e37697ba7db2f36bd22df</srcmd5>
+    <version>0.6.3.1</version>
+    <time>1498120611</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504055</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5872442b2ded8a477a8f3e220d36c010</srcmd5>
+    <version>0.6.3.1</version>
+    <time>1505503192</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524124</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7c806ad90cbf3a9975ff22b584187c2d</srcmd5>
+    <version>0.8.0.4</version>
+    <time>1527674351</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-ansi-terminal to the latest version.</comment>
+    <requestid>607738</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>61f71c365988a2399153bc98e92dd437</srcmd5>
+    <version>0.8.0.4</version>
+    <time>1532161174</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 0.6.2.2
+- regenerated spec with  cabal-rpm
+- add group to devele section
+- initial commit</comment>
+    <requestid>623712</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c52af07660a88ec3e8608cb84c2606e4</srcmd5>
+    <version>0.8.1</version>
+    <time>1540448081</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642847</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b8fcfe033b71a9271e61abae5040d00c</srcmd5>
+    <version>0.8.2</version>
+    <time>1541746310</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646353</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>23b0446baa8dd644436da6994aa49bcd</srcmd5>
+    <version>0.9</version>
+    <time>1550402390</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>674294</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0b4a2ff12695724caf2249855e1534eb</srcmd5>
+    <version>0.9.1</version>
+    <time>1558129355</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>703470</requestid>
+  </revision>
+</revisionlist>

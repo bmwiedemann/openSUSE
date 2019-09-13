@@ -1,0 +1,214 @@
+<revisionlist>
+  <revision rev="1" vrev="24">
+    <srcmd5>62b8e81ba0b453213c118c973cce7764</srcmd5>
+    <version>2.2</version>
+    <time>1168903157</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="315">
+    <srcmd5>62b8e81ba0b453213c118c973cce7764</srcmd5>
+    <version>2.2</version>
+    <time>1168903157</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="316">
+    <srcmd5>8d29d6aa2239cd7813a5adee1da726dc</srcmd5>
+    <version>2.2</version>
+    <time>1245364593</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="318">
+    <srcmd5>8d29d6aa2239cd7813a5adee1da726dc</srcmd5>
+    <version>2.2</version>
+    <time>1245364593</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="319">
+    <srcmd5>9c06d5ee662d0c72afc335df170ff0e1</srcmd5>
+    <version>2.2</version>
+    <time>1268924157</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="321">
+    <srcmd5>9c06d5ee662d0c72afc335df170ff0e1</srcmd5>
+    <version>2.2</version>
+    <time>1278667354</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="322">
+    <srcmd5>9c06d5ee662d0c72afc335df170ff0e1</srcmd5>
+    <version>2.2</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="325">
+    <srcmd5>9c06d5ee662d0c72afc335df170ff0e1</srcmd5>
+    <version>2.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="326">
+    <srcmd5>dabee673b6ec1899c09aaeeff5ac6b87</srcmd5>
+    <version>2.2</version>
+    <time>1298404221</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62531 from user coolo
+</comment>
+    <requestid>62531</requestid>
+  </revision>
+  <revision rev="10" vrev="327">
+    <srcmd5>2665d064efed9b36f9fd43c75e195c57</srcmd5>
+    <version>2.2</version>
+    <time>1298404229</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62531
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fe8316b49155961bc687e7f8f2aae734</srcmd5>
+    <version>2.2.1</version>
+    <time>1300095163</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63978 from user mvyskocil
+</comment>
+    <requestid>63978</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9e021ef9772cdcf837a001de43429618</srcmd5>
+    <version>2.2.1</version>
+    <time>1300095171</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63978
+</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>9e021ef9772cdcf837a001de43429618</srcmd5>
+    <version>2.2.1</version>
+    <time>1319182020</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>a39ac2939304c90ddc3201cef4feb668</srcmd5>
+    <version>2.2.1</version>
+    <time>1332416000</time>
+    <user>coolo</user>
+    <comment>license update: Python-2.0 and Apache-2.0
+Use SPDX format (forwarded request 109062 from babelworx)</comment>
+    <requestid>109478</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>a39ac2939304c90ddc3201cef4feb668</srcmd5>
+    <version>2.2.1</version>
+    <time>1340183494</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>a39ac2939304c90ddc3201cef4feb668</srcmd5>
+    <version>2.2.1</version>
+    <time>1359109133</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>69e687f7166e5975b2637fd81eb7779e</srcmd5>
+    <version>2.2.1</version>
+    <time>1378899500</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198300</requestid>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>69e687f7166e5975b2637fd81eb7779e</srcmd5>
+    <version>2.2.1</version>
+    <time>1379662730</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>69e687f7166e5975b2637fd81eb7779e</srcmd5>
+    <version>2.2.1</version>
+    <time>1409301297</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="15">
+    <srcmd5>1ec9299625e2697b2ef77c48e14cc276</srcmd5>
+    <version>2.2.1</version>
+    <time>1423216009</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patches to fix CVE-2013-2027 bnc#916224:
+  * jython-cached-classes.patch
+  * jython-cacheperms.patch
+  * jython-makeCompiledFilename.patch</comment>
+    <requestid>284056</requestid>
+  </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>13e9065f7f7bedd00b502178b3900d3f</srcmd5>
+    <version>2.2.1</version>
+    <time>1439190647</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>319083</requestid>
+  </revision>
+  <revision rev="22" vrev="17">
+    <srcmd5>13c13d50e951740091c9f52507f6106b</srcmd5>
+    <version>2.2.1</version>
+    <time>1499168035</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop bogus ht2html dependency</comment>
+    <requestid>506705</requestid>
+  </revision>
+  <revision rev="23" vrev="18">
+    <srcmd5>1ad59cf58546c2954dbd544d4f00ea68</srcmd5>
+    <version>2.2.1</version>
+    <time>1505334185</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>522908</requestid>
+  </revision>
+  <revision rev="24" vrev="19">
+    <srcmd5>9e61ec5f7bda4a9610dc13594e959122</srcmd5>
+    <version>2.2.1</version>
+    <time>1505990002</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk &lt;= 7</comment>
+    <requestid>527023</requestid>
+  </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>c04d9318138b8532516e9403518b5dff</srcmd5>
+    <version>2.2.1</version>
+    <time>1514840670</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>559845</requestid>
+  </revision>
+  <revision rev="26" vrev="21">
+    <srcmd5>b9e017245602d51f17458125ee6d4f01</srcmd5>
+    <version>2.2.1</version>
+    <time>1544189458</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653648</requestid>
+  </revision>
+  <revision rev="27" vrev="22">
+    <srcmd5>05a1c4bfa10692fc3eaccca5773a10dd</srcmd5>
+    <version>2.2.1</version>
+    <time>1551468324</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679458</requestid>
+  </revision>
+  <revision rev="28" vrev="23">
+    <srcmd5>db2b3ee4a5a917e258c3bd76e31ee689</srcmd5>
+    <version>2.2.1</version>
+    <time>1562073481</time>
+    <user>dimstar_suse</user>
+    <comment>- Add maven artifact alias
+</comment>
+    <requestid>712782</requestid>
+  </revision>
+</revisionlist>

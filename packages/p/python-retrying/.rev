@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>833f222e968413e8a3814b8541fadb31</srcmd5>
+    <version>1.3.3</version>
+    <time>1437657747</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>317627</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ad8169ecfc67f01a352d96d800c8f119</srcmd5>
+    <version>1.3.3</version>
+    <time>1503393079</time>
+    <user>dimstar_suse</user>
+    <comment>- convert to singlespec (forwarded request 518040 from tbechtold)</comment>
+    <requestid>518041</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8e430c31e4fa95673bb1a2b71bbe6ee5</srcmd5>
+    <version>1.3.3</version>
+    <time>1503926303</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518971</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b436f1fdf3a27f9946fddaa5a7afa392</srcmd5>
+    <version>1.3.3</version>
+    <time>1544189943</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655922</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a42986f190b06c97193a1f0f08365f9a</srcmd5>
+    <version>1.3.3</version>
+    <time>1546946869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662810</requestid>
+  </revision>
+</revisionlist>

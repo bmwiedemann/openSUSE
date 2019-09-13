@@ -1,0 +1,5 @@
+<package name="libsrtp2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:telephony" package="libsrtp2"/>
+</package>

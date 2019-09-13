@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7ecb64d948c2d0dbd1f1999bf705d96</srcmd5>
+    <version>1.4.1</version>
+    <time>1337578349</time>
+    <user>coolo</user>
+    <comment>Make source_validator happy</comment>
+    <requestid>121204</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c7ecb64d948c2d0dbd1f1999bf705d96</srcmd5>
+    <version>1.4.1</version>
+    <time>1340184204</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>43b3ceb01d8ff6fe9a6435f258066443</srcmd5>
+    <version>1.5.0</version>
+    <time>1343137125</time>
+    <user>coolo</user>
+    <comment>- Update to 1.5.0
+  * New Games:
+    - Added support for Backyard Baseball 2003.
+    - Added support for Blue Force.
+    - Added support for Darby the Dragon.
+    - Added support for Dreamweb.
+    - Added support for Geisha.
+    - Added support for Gregory and the Hot Air Balloon.
+    - Added support for Magic Tales: Liam Finds a Story.
+    - Added support for Once Upon A Time: Little Red Riding Hood
+    - Added support for Sleeping Cub's Test of Courage.
+    - Added support for Soltys.
+    - Added support for The Princess and the Crab.
+  * General:
+    - Updated MT-32 emulation code to latest munt project snapshot.
+      The emulation improved dramatically.
+    - Implemented support for TrueType fonts via FreeType2 in our
+      GUI. Along with it GNU FreeFont was also added to our modern
+      theme. Note that not all ports take advantage of this.
+    - Added Basque translation.
+    - Added custom game and engine options in the AGI, DREAMWEB,
+      KYRA, QUEEN, SKY and SCI engines. It is now possible to
+      toggle these options via the Engine tab when adding or
+      editing a configuration for a game. In most cases, you will
+      have to run each game once or readd them all in ScummVM's
+      launcher in order to get the custom options tab.
+    - Improved predictive dialog look.
+    - Various GUI improvements.
+  * Broken Sword 1:
+    - Fixed incorrect sound effects in the DOS/Windows demo.</comment>
+    <requestid>128600</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>fb0ec9a80fc6670d68f866a7fe1ccc8f</srcmd5>
+    <version>1.5.0</version>
+    <time>1351155596</time>
+    <user>namtrac</user>
+    <comment>license update: GPL-2.0+
+SPDX format - plus it appears as though only one license relevant binary is created (2 if you count the extra package) - meaning that the binary is almost GPL licensed (i.e. there does not appear to be a library which could be LGPL licensed) (forwarded request 139061 from babelworx)</comment>
+    <requestid>139064</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>fb0ec9a80fc6670d68f866a7fe1ccc8f</srcmd5>
+    <version>1.5.0</version>
+    <time>1359110390</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d71bbe5d9163a42dcb60c64b01f0c940</srcmd5>
+    <version>1.6.0</version>
+    <time>1370592552</time>
+    <user>coolo</user>
+    <comment>- Update to 1.6.0
+  * New Games:
+    - Added support for 3 Skulls of the Toltecs.
+    - Added support for Eye of the Beholder.
+    - Added support for Eye of the Beholder II: The Legend of Darkmoon.
+    - Added support for Hopkins FBI.
+    - Added support for Tony Tough and the Night of Roasted Moths.
+    - Added support for The Journeyman Project: Pegasus Prime.
+    - Added support for the Macintosh version of Discworld 1.
+  * General:
+    - Added a new save/load chooser based on a grid of thumbnails. This is only
+      supported for resolutions bigger than 640x400. The old chooser is still
+      available and used for games without thumbnail support. It is possible to
+      select the old one as default too.
+    - Rewrote VideoDecoder subsystem.
+    - Added Galician translation.
+    - Added Finnish translation.
+    - Added Belarusian translation.
+    - Using the mouse wheel on a slider widget now changes the value by the
+      smallest possible amount. This is more predictable than the old behaviour,
+      which was to change the value by &quot;one pixel&quot; which would sometimes not
+      change it at all.
+    - Updated MT-32 emulation code to latest munt project snapshot.
+    - Added FluidSynth settings dialog, mainly for reverb and chorus settings.
+    - Fixed crash on certain Smacker movies.
+  * Cine:
+    - Improved audio support for Amiga and AtariST versions of Future Wars.
+      Now music fades out slowly instead of stopping immediately. Sound
+      effects are now properly panned, when requested by the game.
+  * CGE:</comment>
+    <requestid>177947</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d71bbe5d9163a42dcb60c64b01f0c940</srcmd5>
+    <version>1.6.0</version>
+    <time>1379664640</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>d71bbe5d9163a42dcb60c64b01f0c940</srcmd5>
+    <version>1.6.0</version>
+    <time>1409303341</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f9d5b389ed6181a4b18438c3b6f60c2f</srcmd5>
+    <version>1.7.0</version>
+    <time>1411370644</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>250383</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>970d82c250261af209080f907f68754c</srcmd5>
+    <version>1.8.0</version>
+    <time>1459002423</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release</comment>
+    <requestid>377661</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8c2ab5272629ae1f229393ad297f6ee7</srcmd5>
+    <version>1.8.1</version>
+    <time>1470217461</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415969</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4135eab1902d61eb917c5ff89467a6d4</srcmd5>
+    <version>1.8.1</version>
+    <time>1471009388</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>418333</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>01fabf1152457a0cc8af97585e48f601</srcmd5>
+    <version>1.8.1</version>
+    <time>1473241668</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424844</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d5a59f44ebc0109a40a259888cf4f7f8</srcmd5>
+    <version>1.9.0</version>
+    <time>1486046698</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453953</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>eeebcab63dbee68c527c1ec8fb72dad3</srcmd5>
+    <version>2.0.0</version>
+    <time>1515876284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558089</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>4de8ce263d9a19689ebd1c46d2a475f4</srcmd5>
+    <version>2.0.0</version>
+    <time>1565695302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722429</requestid>
+  </revision>
+</revisionlist>

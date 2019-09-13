@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e370b4f37a91709dfeb128a4c741d85f</srcmd5>
+    <version>0.81</version>
+    <time>1508770314</time>
+    <user>dimstar_suse</user>
+    <comment>I'd like to add xwmfs to Factory.</comment>
+    <requestid>534928</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3465f6adf930eed944981a275bc09381</srcmd5>
+    <version>0.83</version>
+    <time>1559029379</time>
+    <user>dimstar_suse</user>
+    <comment>- update to minor version 0.83:
+    - compatibility with gcc-9 (fixed warning -Wdeprecated-copy)
+- update to minor version 0.82:
+    - Fixes issues with make check in automated builds.</comment>
+    <requestid>705638</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ddfbbd1efeb932d1a86a74468aa32e71</srcmd5>
+    <version>0.83</version>
+    <time>1563456177</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>716216</requestid>
+  </revision>
+</revisionlist>

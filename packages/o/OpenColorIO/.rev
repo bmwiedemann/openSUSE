@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51c59e771ea7e1b8af89d374a9968aef</srcmd5>
+    <version>1.0.8</version>
+    <time>1370430324</time>
+    <user>coolo</user>
+    <comment>New package submission: OpenColorIO can be used by calligra (fixed license issues)</comment>
+    <requestid>176608</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3e5b8e6c59cf0908e45b0dfa8d5da3f3</srcmd5>
+    <version>1.0.8</version>
+    <time>1373228402</time>
+    <user>coolo</user>
+    <comment>Use internal yaml-cpp until OpenColorIO is ported to yaml-cpp &gt;= 0.5.0 currently in Factory (forwarded request 182388 from adra)</comment>
+    <requestid>182392</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3e5b8e6c59cf0908e45b0dfa8d5da3f3</srcmd5>
+    <version>1.0.8</version>
+    <time>1379661917</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>3e5b8e6c59cf0908e45b0dfa8d5da3f3</srcmd5>
+    <version>1.0.8</version>
+    <time>1409300438</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ce5bdc2234a39242f647f0b1307a7e3e</srcmd5>
+    <version>1.0.9</version>
+    <time>1422974116</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283847</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>00e8d3dec409bed74c5de5da1866a3f3</srcmd5>
+    <version>1.1.1</version>
+    <time>1556622128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697656</requestid>
+  </revision>
+</revisionlist>

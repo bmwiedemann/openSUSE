@@ -1,0 +1,11 @@
+<package name="PlayOnLinux" project="openSUSE:Factory">
+  <title>PlayOnLinux</title>
+  <description>PlayOnLinux is a piece of sofware which allows you to easily install and use numerous games and apps designed to run with Microsoft® Windows®.
+Few games are compatible with GNU/Linux at the moment and it certainly is a factor preventing the migration to this system. PlayOnLinux brings a cost-free, accessible and efficient solution to this problem.
+
+PlayOnLinux è un software che permette di installare e utilizzare facilmente numerosi giochi e applicazioni progettati per funzionare con Microsoft ® Windows ®.
+Pochi giochi sono compatibili con GNU/Linux al momento ed è certamente un fattore che impedisce la migrazione verso questo sistema.
+PlayOnLinux porta a costo zero, una soluzione accessibile ed efficiente a questo problema.</description>
+  <devel project="games:tools" package="PlayOnLinux"/>
+  <url>https://www.playonlinux.com/</url>
+</package>

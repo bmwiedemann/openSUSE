@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7791bd98e90f8fcffbe58de309659b5</srcmd5>
+    <version>2.14.3</version>
+    <time>1381748748</time>
+    <user>scarabeus_factory</user>
+    <comment>New package see http://lists.opensuse.org/opensuse-factory/2013-10/msg00023.html</comment>
+    <requestid>201913</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6295bfdfd0bd6fa56e1cc68f9f4abdd5</srcmd5>
+    <version>2.14.4</version>
+    <time>1383231566</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>204167</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b22ef30aa35b0d1a7795ac352d7b781d</srcmd5>
+    <version>2.14.5</version>
+    <time>1392638703</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221436</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0dceb42940be78cf1a7a5217360ba8c0</srcmd5>
+    <version>2.14.6</version>
+    <time>1393453231</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223801</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0dceb42940be78cf1a7a5217360ba8c0</srcmd5>
+    <version>2.14.6</version>
+    <time>1409303278</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>b8c49f378e657308e3616b1b328c8af8</srcmd5>
+    <version>2.14.6</version>
+    <time>1413782809</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256108</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>04d4c4a0e262466894a86e7d913f4752</srcmd5>
+    <version>3.2.0</version>
+    <time>1423397006</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 3.2.0
+ Enhancements:
+ 
+ * Treat `any_args` as an arg splat, allowing it to match an arbitrary
+   number of args at any point in an arg list. (Myron Marston, #786)
+ * Print diffs when arguments in mock expectations are mismatched.
+   (Sam Phippen, #751)
+ * Support names for verified doubles (`instance_double`, `instance_spy`,
+   `class_double`, `class_spy`, `object_double`, `object_spy`). (Cezary
+   Baginski, #826)
+ * Make `array_including` and `hash_including` argument matchers composable.
+   (Sam Phippen, #819)
+ * Make `allow_any_instance_of(...).to receive(...).and_wrap_original`
+   work. (Ryan Fitzgerald, #869)
+ 
+ Bug Fixes:
+ 
+ * Provide a clear error when users wrongly combine `no_args` with
+   additional arguments (e.g. `expect().to receive().with(no_args, 1)`).
+   (Myron Marston, #786)
+ * Provide a clear error when users wrongly use `any_args` multiple times in the
+   same argument list (e.g. `expect().to receive().with(any_args, 1, any_args)`.
+   (Myron Marston, #786)
+ * Prevent the error generator from using user object #description methods.
+   See [#685](https://github.com/rspec/rspec-mocks/issues/685).
+   (Sam Phippen, #751)
+ * Make verified doubles declared as `(instance|class)_double(SomeConst)`
+   work properly when `SomeConst` has previously been stubbed.
+   `(instance|class)_double(&quot;SomeClass&quot;)` already worked properly.
+   (Myron Marston, #824)</comment>
+    <requestid>284561</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fc4e87c195c89d363270942d2d28a478</srcmd5>
+    <version>3.2.1</version>
+    <time>1425218278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287848</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e16c3feb390c430b78f4183c9cb943a6</srcmd5>
+    <version>3.3.0</version>
+    <time>1434383145</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312014</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>06fe3d233c96a306c8ecdefcfebf17e3</srcmd5>
+    <version>3.3.1</version>
+    <time>1436111835</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312999</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>24919f23daa544b9f03cd0f06590663f</srcmd5>
+    <version>3.3.2</version>
+    <time>1437383990</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317063</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>60350f7e9e2c376412afc082292ae1f4</srcmd5>
+    <version>3.4.0</version>
+    <time>1448960540</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345654</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7780cee4b7812bbffebec3c45a17a943</srcmd5>
+    <version>3.4.1</version>
+    <time>1453997995</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354972</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7807e790b8557d48b13ecc159ffa5542</srcmd5>
+    <version>3.5.0</version>
+    <time>1468699876</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406357</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>613e2ceb5c6c6e9e5341d71c278f4e74</srcmd5>
+    <version>3.6.0</version>
+    <time>1495883492</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497693</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>af42f59b6390235544a5622b2a70ad8e</srcmd5>
+    <version>3.7.0</version>
+    <time>1509530894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537497</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dd81db79cb8d683fe734c3027be9823c</srcmd5>
+    <version>3.8.0</version>
+    <time>1541094726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627633</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d54c1dcb484ce54342317702c6fb7db0</srcmd5>
+    <version>3.8.1</version>
+    <time>1563790585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713999</requestid>
+  </revision>
+</revisionlist>

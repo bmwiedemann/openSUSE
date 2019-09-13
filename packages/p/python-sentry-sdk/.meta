@@ -1,0 +1,5 @@
+<package name="python-sentry-sdk" project="openSUSE:Factory">
+  <title>python-sentry-sdk</title>
+  <description>Python SDK for Sentry.io</description>
+  <devel project="devel:languages:python" package="python-sentry-sdk"/>
+</package>

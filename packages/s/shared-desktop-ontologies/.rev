@@ -1,0 +1,213 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fdbe761e624e69c3882568b6dc55eafd</srcmd5>
+    <version>0.2</version>
+    <time>1260981885</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/shared-desktop-ontologies based on submit request 26822 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b82affff12ebbee9b47a94cbe2b4c631</srcmd5>
+    <version>0.2</version>
+    <time>1262965088</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/shared-desktop-ontologies based on submit request 28311 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>62f47cfa0f80da376a15baa644218669</srcmd5>
+    <version>0.2</version>
+    <time>1268926159</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7790d6803b0a66617e661b92d1ac911a</srcmd5>
+    <version>0.3</version>
+    <time>1270085019</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/shared-desktop-ontologies based on submit request 36247 from user llunak
+</comment>
+    <requestid>36247</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7790d6803b0a66617e661b92d1ac911a</srcmd5>
+    <version>0.3</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>7790d6803b0a66617e661b92d1ac911a</srcmd5>
+    <version>0.3</version>
+    <time>1278678619</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9181257fe9ac879043d5fdaf8d3fd3bf</srcmd5>
+    <version>0.5</version>
+    <time>1279541403</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/shared-desktop-ontologies based on submit request 43144 from user dirkmueller
+</comment>
+    <requestid>43144</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>9181257fe9ac879043d5fdaf8d3fd3bf</srcmd5>
+    <version>0.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>74fe920254aa8711b146a7bea4192528</srcmd5>
+    <version>0.6.0</version>
+    <time>1306144861</time>
+    <user>saschpe</user>
+    <comment>- Update to version 0.6.0:
+  + Added new properties:
+    - nco:hasIMCapability
+    - nco:isAccessedBy
+    - nco:publishesPresenceTo
+    - nco:requestedPresenceSubscriptionTo
+    - nco:isBlocked
+  + Added new class nco:IMCapability and instances
+    nco:imCapabilityText, nco:imCapabilityAudio, and
+    nco:imCapabilityVideo
+- Add pkg-config BuildRequires to automatically get the pkgconfig()
+  Provides.</comment>
+    <requestid>70864</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>29fc4ce846df16b177b39c1f4fd840d1</srcmd5>
+    <version>0.6.0</version>
+    <time>1306144870</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70864
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d74f2e8af9070c332603269cc0200794</srcmd5>
+    <version>0.7.1</version>
+    <time>1311339397</time>
+    <user>saschpe</user>
+    <comment>- Update to 0.7.1 
+  *  Fixed domain of nao:maintainedBy
+  *  Lots of new classes</comment>
+    <requestid>76744</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8812276ca37706398c4ea98c9b4c51a0</srcmd5>
+    <version>0.8.0</version>
+    <time>1318428945</time>
+    <user>lrupp</user>
+    <comment>- update to 0.8.0:
+   Made nfo:FileName a sub-property of nao:prefLabel
+   Added nfo:WebDataObject
+   Fixed range of nexif:orientation
+   Added nmm:setNumber and nmm:setSize
+   Added nmm:albumTrackCount
+   nmm:MusicPiece is a subclass of nfo:Audio instead of nfo:Media
+   Added focus event handling
+   Made ncal:comment a subproperty of nie:comment
+   Add nco:imStatusType
+   Added nie:modified and nie:contentModified
+   Fixed ranges of
+    nmm:albumPeakGain
+    nmm:trackGain
+    nmm:trackPeakGain
+    nmm:albumGain</comment>
+    <requestid>87468</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>8812276ca37706398c4ea98c9b4c51a0</srcmd5>
+    <version>0.8.0</version>
+    <time>1319182467</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>38e1fbfd480da3a3fa87477ec5a10260</srcmd5>
+    <version>0.8.1</version>
+    <time>1322481447</time>
+    <user>coolo</user>
+    <comment>- Update to 0.8.1
+  * Fixed domain of nmm:setSize to nmm:MusicAlbum. 
+  This fixes indexing of certain mp3 files in Nepomuk. (forwarded request 93691 from namtrac)</comment>
+    <requestid>93714</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>de0cf7c814aee8fe5d50de5f85bd3f2c</srcmd5>
+    <version>0.8.1</version>
+    <time>1327484469</time>
+    <user>coolo</user>
+    <comment>- license update: (CC-BY-SA-3.0 or BSD-3-Clause) and CC-BY-3.0 and W3C
+  SPDX format reflecting the license as stated in LICENSE.README</comment>
+    <requestid>100579</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>37e1b8c0d0631a38ab201ff6bb266cf3</srcmd5>
+    <version>0.9.0</version>
+    <time>1329477027</time>
+    <user>coolo</user>
+    <comment>Update to 0.9.0 (forwarded request 103812 from sumski) (forwarded request 105396 from namtrac)</comment>
+    <requestid>105587</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>91faed28404f1d4d1185499032133bae</srcmd5>
+    <version>0.9.0</version>
+    <time>1336653253</time>
+    <user>coolo</user>
+    <comment>Please also forward to Factory. (forwarded request 119775 from namtrac)</comment>
+    <requestid>119779</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>91faed28404f1d4d1185499032133bae</srcmd5>
+    <version>0.9.0</version>
+    <time>1340184214</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c6bf1bfd34e7fa6054eb1e9151cac79d</srcmd5>
+    <version>0.10.0</version>
+    <time>1347356261</time>
+    <user>coolo</user>
+    <comment>- Update to 0.10:
+  * Added nmm:TVSeason and friends to make TV seasons fully 
+    qualified resources.
+  * Fixed nmo:messageHeader cardinality restriction.
+- Remove patch about cardinality of nmo#mailHeader, since it is now
+  included</comment>
+    <requestid>133580</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>c6bf1bfd34e7fa6054eb1e9151cac79d</srcmd5>
+    <version>0.10.0</version>
+    <time>1359110402</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>82bce2392ef692e1e7c478b145100453</srcmd5>
+    <version>0.11.0</version>
+    <time>1372139062</time>
+    <user>coolo</user>
+    <comment>Update to 0.11, Removed gcc-c++ build requirement (not needed) (forwarded request 180686 from adra)</comment>
+    <requestid>180725</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>82bce2392ef692e1e7c478b145100453</srcmd5>
+    <version>0.11.0</version>
+    <time>1379664662</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>82bce2392ef692e1e7c478b145100453</srcmd5>
+    <version>0.11.0</version>
+    <time>1409303359</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

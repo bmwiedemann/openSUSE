@@ -1,0 +1,5 @@
+<package name="kblackbox" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="kblackbox"/>
+</package>

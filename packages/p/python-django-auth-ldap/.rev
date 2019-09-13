@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81c3d675a23c10b03eb2425030af452e</srcmd5>
+    <version>1.1.4</version>
+    <time>1370581640</time>
+    <user>coolo</user>
+    <comment>Authentication library for Django webapps</comment>
+    <requestid>177725</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>81c3d675a23c10b03eb2425030af452e</srcmd5>
+    <version>1.1.4</version>
+    <time>1379664156</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>5d708a569b0113d057c57843529a1630</srcmd5>
+    <version>1.1.4</version>
+    <time>1386182954</time>
+    <user>coolo</user>
+    <comment>- add missing dependency on python-ldap (forwarded request 207817 from Nijel)</comment>
+    <requestid>207883</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d61f36ef5fcf2518e1028c37be4c916b</srcmd5>
+    <version>1.1.8</version>
+    <time>1392447986</time>
+    <user>coolo</user>
+    <comment>- Update to 1.1.8:
+  * Fix #43: Update django_auth_ldap.config.LDAPSearchUnion to work for
+    group searches in addition to user searches.
+  * Tox no longer supports Python 2.5, so our tests now run on 2.6 and 2.7 only.
+  * Bug fix: AUTH_LDAP_GLOBAL_OPTIONS could be ignored in some cases
+    (such as django_auth_ldap.backend.LDAPBackend.populate_user.
+  * Fix #41: Support POSIX group permissions with no gidNumber attribute.
+  * Support multiple group DNs for *_FLAGS_BY_GROUP. (forwarded request 222277 from Nijel)</comment>
+    <requestid>222337</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e780467d89fa2f313bb5e26664a7b26</srcmd5>
+    <version>1.2.0</version>
+    <time>1398499846</time>
+    <user>coolo</user>
+    <comment>- Update to 1.2.0:
+   * django-auth-ldap now provides experimental Python 3 support. Python 2.5
+     was dropped.
+- Use pypi URL as source (forwarded request 231372 from Nijel)</comment>
+    <requestid>231439</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6e780467d89fa2f313bb5e26664a7b26</srcmd5>
+    <version>1.2.0</version>
+    <time>1409302846</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>34711d6b6f0679cf43546811093a25c0</srcmd5>
+    <version>1.2.2</version>
+    <time>1412851942</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254795</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e1d3ca7b022d5c02cde263802381375b</srcmd5>
+    <version>1.2.6</version>
+    <time>1429948371</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298723</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6259b7b7ff05a801d08ab18a7896af0d</srcmd5>
+    <version>1.2.6</version>
+    <time>1530866689</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620967</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9d93740e55f7e1e2f019fefdc7f61f9c</srcmd5>
+    <version>1.7.0</version>
+    <time>1535123060</time>
+    <user>dimstar_suse</user>
+    <comment>needs to go with python-ldap fix</comment>
+    <requestid>629180</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>41e0d415a20a1980245d03d00590bac8</srcmd5>
+    <version>1.7.0</version>
+    <time>1548064333</time>
+    <user>dimstar_suse</user>
+    <comment>- Add few more test dependencies</comment>
+    <requestid>665650</requestid>
+  </revision>
+</revisionlist>

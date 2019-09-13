@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f9b1ae7418bd30879a20ecc6462f87cc</srcmd5>
+    <version>1.21</version>
+    <time>1324831113</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>97968</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3903233d3672a6ebfd4e938ae0f93432</srcmd5>
+    <version>1.21</version>
+    <time>1331986941</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>109663</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3903233d3672a6ebfd4e938ae0f93432</srcmd5>
+    <version>1.21</version>
+    <time>1340183824</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>3903233d3672a6ebfd4e938ae0f93432</srcmd5>
+    <version>1.21</version>
+    <time>1359109637</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>60a4b76a099991b004259b5bb392bf57</srcmd5>
+    <version>1.22</version>
+    <time>1370447445</time>
+    <user>coolo</user>
+    <comment>- updated to 1.22
+   Deal with class names containing '=' [RT#72415]
+   Filters now get access to $ctx-&gt;expr; the textual expression
+   denoting the current object. (forwarded request 177331 from coolo)</comment>
+    <requestid>177381</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>60a4b76a099991b004259b5bb392bf57</srcmd5>
+    <version>1.22</version>
+    <time>1379663618</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>60a4b76a099991b004259b5bb392bf57</srcmd5>
+    <version>1.22</version>
+    <time>1409302238</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5ac633f41598815f68d68f333020d93f</srcmd5>
+    <version>1.23</version>
+    <time>1434383198</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312021</requestid>
+  </revision>
+</revisionlist>

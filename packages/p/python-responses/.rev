@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6964ac7899e62d461846422b6e45294</srcmd5>
+    <version>0.5.1</version>
+    <time>1503593609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>517090</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>df87ba70f1b4d2f988cba1413bc8f3ef</srcmd5>
+    <version>0.8.1</version>
+    <time>1519747027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563772</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8eed91d773887297e0301d2724fe4c46</srcmd5>
+    <version>0.8.1</version>
+    <time>1520778243</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix python2 requires (forwarded request 584620 from mimi_vx)</comment>
+    <requestid>584621</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a30747f59a08612d670bf1aaa0f8a4a3</srcmd5>
+    <version>0.9.0</version>
+    <time>1531232197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621746</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6c89601090391754d18e67715e87f003</srcmd5>
+    <version>0.9.0</version>
+    <time>1545648208</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659649</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>40b77a0aa07878e038d5dd29d468dbd4</srcmd5>
+    <version>0.10.5</version>
+    <time>1549458423</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671876</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bd5f1674db328022655c8f2901c6bf2e</srcmd5>
+    <version>0.10.5</version>
+    <time>1549916764</time>
+    <user>dimstar_suse</user>
+    <comment>- Activate tests
+- Remove test_responses.py from package:
+  * tidy-py_modules.patch
+- Remove unnecessary build dependencies
+- Remove inappropriate Suggests
+- Add missing changelog entry for v0.10.5
+
+- Update to 0.10.5
+  + Fix callback exception mocking.
+  + Improve test coverage
+  + Improve build configuration.
+- from version 0.10.4</comment>
+    <requestid>673107</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c8098f1348099b4d98914a5278b77d0b</srcmd5>
+    <version>0.10.6</version>
+    <time>1558129100</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.6
+- drop tidy-py_modules.patch
+- use %pytest macro
+ * ConnectionError's raised by responses now indicate which request
+    path/method failed to match a mock.</comment>
+    <requestid>702856</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>67d7f162d4dc949572e1055647bf3567</srcmd5>
+    <version>0.10.6</version>
+    <time>1564484490</time>
+    <user>dimstar_suse</user>
+    <comment>- Hardcode pytest4 for testing as pytest5 fails for now</comment>
+    <requestid>716847</requestid>
+  </revision>
+</revisionlist>

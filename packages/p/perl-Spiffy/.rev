@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c20db58e78571763c06f0531955eaaf5</srcmd5>
+    <version>0.30</version>
+    <time>1168903911</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="111">
+    <srcmd5>c20db58e78571763c06f0531955eaaf5</srcmd5>
+    <version>0.30</version>
+    <time>1168903911</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="112">
+    <srcmd5>c1d087317026bcd081356951863d0092</srcmd5>
+    <version>0.30</version>
+    <time>1245337925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="114">
+    <srcmd5>c1d087317026bcd081356951863d0092</srcmd5>
+    <version>0.30</version>
+    <time>1245337925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="115">
+    <srcmd5>ec3463ea0c85755e3a9711dc5a673191</srcmd5>
+    <version>0.30</version>
+    <time>1263294861</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Spiffy based on submit request 29269 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="116">
+    <srcmd5>d6f3669985df90617eb1ee0bcbfbc4d5</srcmd5>
+    <version>0.30</version>
+    <time>1268925608</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="118">
+    <srcmd5>d6f3669985df90617eb1ee0bcbfbc4d5</srcmd5>
+    <version>0.30</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="119">
+    <srcmd5>d6f3669985df90617eb1ee0bcbfbc4d5</srcmd5>
+    <version>0.30</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="120">
+    <srcmd5>1da1b320f8466d5ed0c7d6f1c74529f2</srcmd5>
+    <version>0.30</version>
+    <time>1287486802</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51029 from user coolo
+</comment>
+    <requestid>51029</requestid>
+  </revision>
+  <revision rev="10" vrev="121">
+    <srcmd5>6792ba9f3fabd1acab80fea2cd0ba2dd</srcmd5>
+    <version>0.30</version>
+    <time>1287486807</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51029
+</comment>
+  </revision>
+  <revision rev="11" vrev="122">
+    <srcmd5>1171875c8cd93ec3ea0535b70bb4b53b</srcmd5>
+    <version>0.30</version>
+    <time>1291583870</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54642 from user coolo
+</comment>
+    <requestid>54642</requestid>
+  </revision>
+  <revision rev="12" vrev="123">
+    <srcmd5>712537f869735f910412c505649a4289</srcmd5>
+    <version>0.30</version>
+    <time>1291583875</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54642
+</comment>
+  </revision>
+  <revision rev="13" vrev="126">
+    <srcmd5>712537f869735f910412c505649a4289</srcmd5>
+    <version>0.30</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="128">
+    <srcmd5>712537f869735f910412c505649a4289</srcmd5>
+    <version>0.30</version>
+    <time>1319182305</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="129">
+    <srcmd5>2648d9a6e244356310d6d2bcddf9094c</srcmd5>
+    <version>0.30</version>
+    <time>1323193632</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="131">
+    <srcmd5>2648d9a6e244356310d6d2bcddf9094c</srcmd5>
+    <version>0.30</version>
+    <time>1340183917</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="133">
+    <srcmd5>2648d9a6e244356310d6d2bcddf9094c</srcmd5>
+    <version>0.30</version>
+    <time>1359109794</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4b2e15e7cd3e2b5436bcf91745bf8466</srcmd5>
+    <version>0.31</version>
+    <time>1376562051</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 0.31:
+  + Make tests not use 'B&quot; package. rt72542
+  + Use Module::Package
+- cleanup specfile and use perl_make_install and perl_gen_filelist
+  macros</comment>
+    <requestid>188147</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>4b2e15e7cd3e2b5436bcf91745bf8466</srcmd5>
+    <version>0.31</version>
+    <time>1379663838</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>4b2e15e7cd3e2b5436bcf91745bf8466</srcmd5>
+    <version>0.31</version>
+    <time>1409302479</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2c59c8e4e45270c629543679b4433c0b</srcmd5>
+    <version>0.46</version>
+    <time>1429989298</time>
+    <user>coolo</user>
+    <comment>- updated to 0.46
+ 0.45 Sat Aug 16 04:04:07 PDT 2014
+  - Eliminate spurious trailing whitespace
+ 
+ 0.44 Sat Aug 16 02:50:17 PDT 2014
+  - Eliminate File::Basename from test/
+ 
+ 0.43 Fri Aug 15 20:37:55 PDT 2014
+  - Add t/000-compile-modules.t
+ 
+ 0.42 Sat Aug  9 00:43:22 PDT 2014
+  - Only support back to 5.8.1
+ 
+ 0.41 Thu Aug  7 00:28:54 PDT 2014
+  - Fix bad encoding in Pod
+ 
+ 0.40 Wed Aug  6 10:29:46 PDT 2014
+  - Fix a bug that was causing lots of warnings in Test::Base on perl 5.21
+ 
+ 0.39 Tue Aug  5 10:13:52 PDT 2014
+  - Add badges to doc
+ 
+ 0.38 Mon Aug  4 00:30:13 PDT 2014
+  - Remove (c) from Copyright
+ 
+ 0.37 Wed Jul 30 16:16:56 PDT 2014
+  - Switch IRC to '#pkg'
+ 
+ 0.36 Sat Jul 26 12:01:35 PDT 2014
+  - Fix email in Meta</comment>
+    <requestid>296078</requestid>
+  </revision>
+</revisionlist>

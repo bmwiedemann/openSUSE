@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6cf4e0df0e334a248855f060a1be2e99</srcmd5>
+    <version>0.4.0</version>
+    <time>1547540197</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.0:
+  * Add test for header whitelist
+  * Fix propagation header whitelist
+  * Add missing docker-compose.yml file in C++ example
+  * Allow to use custom libdir and includedir in cmake
+  * Add SOVERSION in cmake
+- Call ldconfig on post-(un)installation.
+- Initial release - 0.3.8
+</comment>
+    <requestid>664674</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d43c2047801781b7289c7563b22eeef8</srcmd5>
+    <version>1.0.1</version>
+    <time>1565362412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721729</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="perl-Mail-IMAPClient" project="openSUSE:Factory">
+  <title>This module provides methods implementing the IMAP protocol</title>
+  <description>This module provides methods implementing the IMAP protocol</description>
+  <devel project="devel:languages:perl" package="perl-Mail-IMAPClient"/>
+</package>

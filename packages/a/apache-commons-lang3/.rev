@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f53f141ff5c192fe0b8acdf03e349d7</srcmd5>
+    <version>3.4</version>
+    <time>1507571251</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>532719</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>458574203e7fe26d5d991c9c4cadfbdf</srcmd5>
+    <version>3.4</version>
+    <time>1525697496</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner</comment>
+    <requestid>603108</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e1f57d8da4505f66a6ff4f006a0f52c6</srcmd5>
+    <version>3.8.1</version>
+    <time>1541666533</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>645326</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>17ebd5b37829c2d4de7961199dc916e7</srcmd5>
+    <version>3.8.1</version>
+    <time>1549464443</time>
+    <user>coolo</user>
+    <comment>Clean-up the spec file</comment>
+    <requestid>671846</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7d634698994308b1d93f8b2770803e72</srcmd5>
+    <version>3.8.1</version>
+    <time>1553809520</time>
+    <user>dimstar_suse</user>
+    <comment>Disregard the pom parent</comment>
+    <requestid>689051</requestid>
+  </revision>
+</revisionlist>

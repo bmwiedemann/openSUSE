@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4b7237df918f6a0a3630956c93ab2fba</srcmd5>
+    <version>0.3.1</version>
+    <time>1528021996</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-pandas-datareader</comment>
+    <requestid>603729</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>055b9d1d4fd3d7802dd77210ac4ca007</srcmd5>
+    <version>0.3.1</version>
+    <time>1528897086</time>
+    <user>maxlin_factory</user>
+    <comment>- Ensure neutrality of description. (forwarded request 615073 from jengelh)</comment>
+    <requestid>615176</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>aa3b0f8074cc6d1c65f594835d7cf591</srcmd5>
+    <version>0.3.1</version>
+    <time>1545648195</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659643</requestid>
+  </revision>
+</revisionlist>

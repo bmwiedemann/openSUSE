@@ -1,0 +1,425 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d35f9525b3ebe3087abe375ff1ba4635</srcmd5>
+    <version>1.1.77.svn939650</version>
+    <time>1238494387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>151773bf81c152f2871b17db1f13deae</srcmd5>
+    <version>1.1.77.svn942587</version>
+    <time>1238503497</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0e282141ac24f7c224d6fe3e9e4629eb</srcmd5>
+    <version>1.1.77.svn942587</version>
+    <time>1238508110</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29975b83d86fc0e38a2b0abad9b9fcfa</srcmd5>
+    <version>1.1.77.svn951439</version>
+    <time>1239730921</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6677b5ad0baa5571ddd2fcf37e79db5a</srcmd5>
+    <version>1.1.77.svn958022</version>
+    <time>1240604817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d62f604cf7d310ad4d7f273da9dff9fb</srcmd5>
+    <version>1.1.77.svn967285</version>
+    <time>1242693668</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>87f87d042f63682daff14cb0b01cf33a</srcmd5>
+    <version>1.2alpha1</version>
+    <time>1242810309</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b55c69a523212cfe39091267ef19debb</srcmd5>
+    <version>1.2alpha2</version>
+    <time>1243479738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3da2bc4319f0066568c2760e90738616</srcmd5>
+    <version>1.2alpha3</version>
+    <time>1244242091</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>db234eb0a3ea8d87205a9ba79ac79826</srcmd5>
+    <version>1.2alpha4</version>
+    <time>1247126692</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1a4a2cc1a6b86081f8764f43aa62e63a</srcmd5>
+    <version>1.2alpha4+svn1002348</version>
+    <time>1249062980</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b125163c54fe3b5bbe4eeada89b87c1a</srcmd5>
+    <version>1.2alpha5</version>
+    <time>1249677128</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fb64ebb602036ed1729344fa1cafa415</srcmd5>
+    <version>1.2alpha6</version>
+    <time>1250004272</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/konversation based on submit request 17423 from user Beineri
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4dc6672291c39bfd8a2a4609ea7b055a</srcmd5>
+    <version>1.2beta1</version>
+    <time>1253654456</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/konversation based on submit request 20827 from user Beineri
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c23be301e40d5541316f679159e57223</srcmd5>
+    <version>1.2rc1</version>
+    <time>1254792584</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/konversation based on submit request 21642 from user Beineri
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c8264784855849bfb41401cb1c8bcd25</srcmd5>
+    <version>1.2</version>
+    <time>1255358357</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/konversation based on submit request 22170 from user wstephenson
+</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>c8264784855849bfb41401cb1c8bcd25</srcmd5>
+    <version>1.2</version>
+    <time>1255358357</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/konversation based on submit request 22170 from user wstephenson
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>138bb8a773c1f8a7411b72ecdb765445</srcmd5>
+    <version>1.2.0</version>
+    <time>1256918380</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/konversation based on submit request 23324 from user Beineri
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7d39e4ccf29aa35bd9ea921f04d0d7de</srcmd5>
+    <version>1.2.1</version>
+    <time>1258383252</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/konversation based on submit request 24386 from user Beineri
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>08bdd37505c5bbf6c127e0efacf96f46</srcmd5>
+    <version>1.2.3</version>
+    <time>1267061521</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/konversation based on submit request 33433 from user dirkmueller
+</comment>
+    <requestid>33433</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>79dc526b4f889174b191939e859b2a9b</srcmd5>
+    <version>1.2.3</version>
+    <time>1268924306</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>79dc526b4f889174b191939e859b2a9b</srcmd5>
+    <version>1.2.3</version>
+    <time>1278667355</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>79dc526b4f889174b191939e859b2a9b</srcmd5>
+    <version>1.2.3</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4785bdc3f3b46ab2bb522f1bcbf1b56f</srcmd5>
+    <version>1.3.1</version>
+    <time>1279567470</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/konversation based on submit request 43159 from user Beineri
+</comment>
+    <requestid>43159</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>81c8896c8a19aa0691beef0d1e1deab0</srcmd5>
+    <version>1.3.1</version>
+    <time>1292242205</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55774 from user coolo
+</comment>
+    <requestid>55774</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>3070370aa95c50ea8057b42614b66642</srcmd5>
+    <version>1.3.1</version>
+    <time>1292242213</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55774
+</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>79733fe1f2b08733c2ac3a2622ca823a</srcmd5>
+    <version>1.3.1</version>
+    <time>1296841005</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60043 from user wstephenson
+</comment>
+    <requestid>60043</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>40c2a3bfdfbdc08957d5e9ceabeeed8c</srcmd5>
+    <version>1.3.1</version>
+    <time>1296841015</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 60043
+</comment>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>40c2a3bfdfbdc08957d5e9ceabeeed8c</srcmd5>
+    <version>1.3.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="30" vrev="9">
+    <srcmd5>b9cae9af3d89a93ecaa4f749db6b6cb9</srcmd5>
+    <version>1.3.1</version>
+    <time>1298812235</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62880 from user coolo
+</comment>
+    <requestid>62880</requestid>
+  </revision>
+  <revision rev="31" vrev="10">
+    <srcmd5>4258c8d2935bd7d1cd205a8eed029094</srcmd5>
+    <version>1.3.1</version>
+    <time>1298812348</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62880
+</comment>
+  </revision>
+  <revision rev="32" vrev="12">
+    <srcmd5>4258c8d2935bd7d1cd205a8eed029094</srcmd5>
+    <version>1.3.1</version>
+    <time>1319182054</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>bcbcbe7ea3e293a43e5cca2c21785beb</srcmd5>
+    <version>1.4</version>
+    <time>1323342692</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>95820</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>bcbcbe7ea3e293a43e5cca2c21785beb</srcmd5>
+    <version>1.4</version>
+    <time>1340183534</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>bcbcbe7ea3e293a43e5cca2c21785beb</srcmd5>
+    <version>1.4</version>
+    <time>1359109200</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>12f0466ce98c8c1a97b8711521bd4fa1</srcmd5>
+    <version>1.5~rc1</version>
+    <time>1364157406</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160766</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>cee809b9d728f0c1b57af27c32057341</srcmd5>
+    <version>1.5~rc1</version>
+    <time>1364239882</time>
+    <user>coolo</user>
+    <comment>- readd download URL</comment>
+    <requestid>160820</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>cee809b9d728f0c1b57af27c32057341</srcmd5>
+    <version>1.5~rc1</version>
+    <time>1379662827</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>61d8b96de85e3625c1e22448908be377</srcmd5>
+    <version>1.5~rc1</version>
+    <time>1386156402</time>
+    <user>coolo</user>
+    <comment>- use png_fix macro [bnc#852862] (forwarded request 209237 from pgajdos)</comment>
+    <requestid>209361</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>fb42a95853bf86c4678b75808db16847</srcmd5>
+    <version>1.5~rc2</version>
+    <time>1389248006</time>
+    <user>coolo</user>
+    <comment>Update to 1.5-rc2</comment>
+    <requestid>213220</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>8130d832a99a97b505c37450a017d066</srcmd5>
+    <version>1.5</version>
+    <time>1390395179</time>
+    <user>coolo</user>
+    <comment>Now with updated URL
+
+- Update to 1.5
+ * Expanded interface translations (forwarded request 214641 from frispete)</comment>
+    <requestid>214684</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>25dbf9311ae14cc8803659a832a7a631</srcmd5>
+    <version>1.5</version>
+    <time>1394901405</time>
+    <user>coolo</user>
+    <comment>Konversation can operate without kdepim4-runtime, so make it a Recommends instead of requires</comment>
+    <requestid>226001</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>25dbf9311ae14cc8803659a832a7a631</srcmd5>
+    <version>1.5</version>
+    <time>1409301412</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a301cd79cf3c3d8bc2403c9b16e4457e</srcmd5>
+    <version>1.5.1</version>
+    <time>1415347504</time>
+    <user>coolo</user>
+    <comment>Update to 1.5.1</comment>
+    <requestid>259691</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>2795cee39bea7ca01384acfee5c5df11</srcmd5>
+    <version>1.6</version>
+    <time>1431365555</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>304932</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1d14e8be46fe2b46a3dedb37c1fbfcc3</srcmd5>
+    <version>1.6.1</version>
+    <time>1469742293</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>414998</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8d50a18ca464d21a10c9aaeefa0d46f2</srcmd5>
+    <version>1.6.2</version>
+    <time>1470508552</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416791</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>33c782d8d47bec90b68b57c16d773ea0</srcmd5>
+    <version>1.6.2</version>
+    <time>1489241912</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477272</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>c7536b819096da609c54b4ec37f35219</srcmd5>
+    <version>1.7</version>
+    <time>1494441270</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492922</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>5f4c62b358ec0b16132f7383d443ceba</srcmd5>
+    <version>1.7.2</version>
+    <time>1496327249</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499439</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>0d1ded81931ff7d15f1e0d0a262a11c0</srcmd5>
+    <version>1.7.2</version>
+    <time>1503929790</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix prefix handling for channel types (kde#383801):
+  * fix-prefix-addressed-message-handling.patch</comment>
+    <requestid>518651</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>46870c3cbbb402707640c8a26ea74f95</srcmd5>
+    <version>1.7.3</version>
+    <time>1510839753</time>
+    <user>dimstar_suse</user>
+    <comment>add bugzilla and CVE reference (forwarded request 541896 from AndreasStieger)</comment>
+    <requestid>541900</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>2160ab57657c05240a77a54b2f748eef</srcmd5>
+    <version>1.7.4</version>
+    <time>1511086166</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542472</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>6d730cb5884b11a1bb7071d4fcdc066e</srcmd5>
+    <version>1.7.4</version>
+    <time>1525208150</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with Qt 5.11:
+  * fix-build-qt-5.11.patch</comment>
+    <requestid>601819</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>002398a0fd1142a82c59a4a5d5b4e281</srcmd5>
+    <version>1.7.5</version>
+    <time>1530473065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619414</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>39a9f70ff38c9e0e313abd3ffcf85eaf</srcmd5>
+    <version>1.7.5</version>
+    <time>1566242775</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with Qt5.13</comment>
+    <requestid>722598</requestid>
+  </revision>
+</revisionlist>

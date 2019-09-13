@@ -1,0 +1,12 @@
+<package name="miller" project="openSUSE:Factory">
+  <title>Name-indexed data processing tool</title>
+  <description>Miller (mlr) allows name-indexed data such as CSV and JSON files to be
+processed with functions equivalent to sed, awk, cut, join, sort etc. It can
+convert between formats, preserves headers when sorting or reversing, and
+streams data where possible so its memory requirements stay small. It works
+well with pipes and can feed &quot;tail -f&quot;.
+
+</description>
+  <devel project="utilities" package="miller"/>
+  <url>http://johnkerl.org/miller/doc</url>
+</package>

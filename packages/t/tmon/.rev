@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a8acccd138ad19b6d8438c4acbc2d532</srcmd5>
+    <version>1.0</version>
+    <time>1456127843</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submit (fate#319184)</comment>
+    <requestid>360005</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b2db5e6ebaa406e41529dc6ba9dc5b1b</srcmd5>
+    <version>1.0</version>
+    <time>1456821900</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>362816</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cef6c0ca8e29b869b1b899b5f33d997f</srcmd5>
+    <version>1.0</version>
+    <time>1507391537</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532264</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7377298d0f248f14087e461bc10136bd</srcmd5>
+    <version>1.0</version>
+    <time>1524144580</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner
+- Update URL to point out to the real location in kernel for easier
+  understanding
+
+- Backported a patch from upstream to prevent a race condition
+  wrt &quot;cur_thermal_record&quot;.
+  [bsc#1075156, prevent-cur_thermal_record_race.patch]</comment>
+    <requestid>597356</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b25b725cebe5c6913e12b7c076308fa4</srcmd5>
+    <version>0.3.3</version>
+    <time>1313571199</time>
+    <user>saschpe</user>
+    <comment>New package requested by FATE:312654</comment>
+    <requestid>79095</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8ac8c804350bb7d3e8ecba03e083bfd5</srcmd5>
+    <version>0.3.3</version>
+    <time>1313571211</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79095
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2197fa9da08c81edefd4f412edc04b35</srcmd5>
+    <version>0.3.3</version>
+    <time>1314193833</time>
+    <user>saschpe</user>
+    <comment>- remove strip to generate debuginfo
+- remove generic INSTALL file</comment>
+    <requestid>79642</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>43c938c2348e741c11e3967cf8e8edcc</srcmd5>
+    <version>0.3.3</version>
+    <time>1314193844</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79642
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>43c938c2348e741c11e3967cf8e8edcc</srcmd5>
+    <version>0.3.3</version>
+    <time>1319182201</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>2ed2f07acb3aed00a74648f1d7c22eef</srcmd5>
+    <version>0.3.3</version>
+    <time>1323192717</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>2ed2f07acb3aed00a74648f1d7c22eef</srcmd5>
+    <version>0.3.3</version>
+    <time>1340183733</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>2ed2f07acb3aed00a74648f1d7c22eef</srcmd5>
+    <version>0.3.3</version>
+    <time>1359109505</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>6b8cad4e6f1dbdd3aa250c132370e4d1</srcmd5>
+    <version>0.3.3</version>
+    <time>1363156382</time>
+    <user>coolo</user>
+    <comment>license update: BSD-3-Clause
+GPL matches are for e.g. Makefile. Consolidate to BSD (as per Fedora) (forwarded request 157496 from babelworx)</comment>
+    <requestid>157564</requestid>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>05fc2cc4c037481a6057ab1062834a7e</srcmd5>
+    <version>0.3.3</version>
+    <time>1371543641</time>
+    <user>coolo</user>
+    <comment>- aclocal 1.13 doesn't have a --acdir option (forwarded request 179167 from coolo)</comment>
+    <requestid>179314</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>05fc2cc4c037481a6057ab1062834a7e</srcmd5>
+    <version>0.3.3</version>
+    <time>1379663370</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>64f8666a2d81c6b39f51cf8bff41490c</srcmd5>
+    <version>0.3.3</version>
+    <time>1395750246</time>
+    <user>coolo</user>
+    <comment>- allow-spaces-in-principal-names.patch
+  upstream patch to allow spaces in principal names.
+  (bnc#772896)</comment>
+    <requestid>227404</requestid>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>51044581f18a7b773ecebf3f24b374bc</srcmd5>
+    <version>0.3.3</version>
+    <time>1401958199</time>
+    <user>coolo</user>
+    <comment>- nfs-acl-tools-xattr.patch For over 10 years the *xattr*
+  functions have been in glibc instead of libattr, use them instead. (forwarded request 235727 from elvigia)</comment>
+    <requestid>236182</requestid>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>51044581f18a7b773ecebf3f24b374bc</srcmd5>
+    <version>0.3.3</version>
+    <time>1409301980</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

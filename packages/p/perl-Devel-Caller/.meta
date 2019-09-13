@@ -1,0 +1,8 @@
+<package name="perl-Devel-Caller" project="openSUSE:Factory">
+  <title>Meatier Versions of Caller</title>
+  <description>Devel::Caller - meatier versions of caller.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Devel-Caller"/>
+  <url>http://search.cpan.org/dist/Devel-Caller/</url>
+</package>

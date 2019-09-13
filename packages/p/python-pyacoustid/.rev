@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55b0b7c708800e17d6bc41575bc42dcf</srcmd5>
+    <version>1.1.5</version>
+    <time>1505334588</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-pyacoustid</comment>
+    <requestid>522114</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5bd2d4e59456aed8a77d9293c2502e90</srcmd5>
+    <version>1.1.5</version>
+    <time>1545648100</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659575</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5fcdf804f0095bef29d8bf0596319c9f</srcmd5>
+    <version>1.1.7</version>
+    <time>1558939180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.7:
+  * Distribute license
+
+- Update to 1.1.6:
+  * In submission, avoid an error on non-integer durations.
+    A new function, get_submission_status, abstracts the API endpoint for monitoring submissions using the (new) result from the submit function.</comment>
+    <requestid>705407</requestid>
+  </revision>
+</revisionlist>

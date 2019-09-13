@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec2e79c475d831ce094179636114f10f</srcmd5>
+    <version>2.5.1</version>
+    <time>1492714660</time>
+    <user>dimstar_suse</user>
+    <comment>License is in fact a PHP 3.0 license; productnames and author in the license text has been changed to match the xdebug product.</comment>
+    <requestid>489008</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c99c62e015170dd4f8afe7f181803c1</srcmd5>
+    <version>2.5.5</version>
+    <time>1498910729</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507066</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e212c4e2fe2f23d9ddecbfd27fadac39</srcmd5>
+    <version>2.5.5</version>
+    <time>1502562362</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514650</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b153c6aa01e09e37171bd5c0fa24afb</srcmd5>
+    <version>2.6.0~beta1</version>
+    <time>1516634407</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to Xdebug 2.6.0beta1</comment>
+    <requestid>567999</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>abecefc4d14c8064baa8972ad28c200c</srcmd5>
+    <version>2.6.0</version>
+    <time>1524238339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599228</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1f488332a0e0335ae25d3454daf2565f</srcmd5>
+    <version>2.7.0~beta1</version>
+    <time>1548335701</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed package version to 2.7.0~beta1 to ensure correct updates
+- Removed redundant xdebug.ini source file
+- Updated to Xdebug 2.7.0beta1
+  * Fixed issue #1519: PHP 7.3 support
+- Updated to Xdebug 2.7.0alpha1
+  * Fixed issue #938: Support remote debugging for PHP scripts that
+    fork. (Sponsored by Brad Wilson)
+  * Fixed issue #1487: Re-enable IPv6 test on Travis.
+  * Fixed issue #1526: Namespace filter does equality match instead
+    of prefix match.
+  * Fixed issue #1532: SIGABRT when using remote debugging and an
+    error is thrown in eval().
+  * Fixed issue #1543: Various memory leaks due to changes in
+    (internal) string handling.
+</comment>
+    <requestid>667963</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3cb703cb3739eda409ef2ba92fc149c0</srcmd5>
+    <version>2.7.0</version>
+    <time>1553611185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682185</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>61f7ea7d7b988e4c6af5aaae4fe96724</srcmd5>
+    <version>2.7.2</version>
+    <time>1559375439</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706073</requestid>
+  </revision>
+</revisionlist>

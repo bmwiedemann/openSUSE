@@ -1,0 +1,5 @@
+<package name="rabbitmq-java-client" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="rabbitmq-java-client"/>
+</package>

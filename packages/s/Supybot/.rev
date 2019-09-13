@@ -1,0 +1,183 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8fd726d80a022c8470250175fdec46ad</srcmd5>
+    <version>0.83.2</version>
+    <time>1168901431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>31b6a46cbc16efecd35858ca3ac13d25</srcmd5>
+    <version>0.83.3</version>
+    <time>1193272163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="55">
+    <srcmd5>251625aeb273a944064c0ab3c8644025</srcmd5>
+    <version>0.83.3</version>
+    <time>1212503515</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="65">
+    <srcmd5>b4247f0f026204a30b750904d314653e</srcmd5>
+    <version>0.83.3</version>
+    <time>1216954988</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="91">
+    <srcmd5>49148d4278cfd3b4e6f670bd97658ad7</srcmd5>
+    <version>0.83.3</version>
+    <time>1225732669</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>68a04b720dee8d570b6ecd50d1a1931f</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1244562568</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>75ca8ffbf173815b38e320c838bfd4b3</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1249921787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>75ca8ffbf173815b38e320c838bfd4b3</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1249921787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>5cdfa96d40790504eabf93adfacbc4fa</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1261400705</time>
+    <user>autobuild</user>
+    <comment>Copy from network/Supybot based on submit request 27226 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>049a1b99a104bb5907850e6b00f70596</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1264784357</time>
+    <user>autobuild</user>
+    <comment>Copy from network/Supybot based on submit request 30737 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>8effd7f7dc22a97ebcccdf038a6c720b</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1268922831</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>7efbf76aa12025c6f7f60640a7f4fa5f</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1277196073</time>
+    <user>autobuild</user>
+    <comment>Copy from network/Supybot based on submit request 41609 from user prusnak
+</comment>
+    <requestid>41609</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>7efbf76aa12025c6f7f60640a7f4fa5f</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>7efbf76aa12025c6f7f60640a7f4fa5f</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>7efbf76aa12025c6f7f60640a7f4fa5f</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="15">
+    <srcmd5>4d981e71c5d856453b71ce36bd3439a6</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1316439053</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82755 from jengelh)</comment>
+    <requestid>82807</requestid>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>4d981e71c5d856453b71ce36bd3439a6</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1319181758</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>ea07c8e09426561862ffe09a77bf76f8</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1323194778</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="20">
+    <srcmd5>ea07c8e09426561862ffe09a77bf76f8</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1340183158</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="22">
+    <srcmd5>ea07c8e09426561862ffe09a77bf76f8</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1359108629</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="23">
+    <srcmd5>7d37d23d054f386cb1dba7e3e6947dac</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1363777089</time>
+    <user>coolo</user>
+    <comment>- add changes entry for the license change (forwarded request 159792 from coolo)</comment>
+    <requestid>159849</requestid>
+  </revision>
+  <revision rev="22" vrev="25">
+    <srcmd5>7d37d23d054f386cb1dba7e3e6947dac</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1379661930</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="27">
+    <srcmd5>7d37d23d054f386cb1dba7e3e6947dac</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1409300450</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="28">
+    <srcmd5>ba08601e76cd04b4f75067d6261b3b49</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1511595763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545071</requestid>
+  </revision>
+  <revision rev="25" vrev="29">
+    <srcmd5>e59574da524d3ff4d8a929d6811885e4</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1553084536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686882</requestid>
+  </revision>
+  <revision rev="26" vrev="30">
+    <srcmd5>813618fc2a895320e6b8b0744aa4642d</srcmd5>
+    <version>0.83.4.1</version>
+    <time>1560338104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708887</requestid>
+  </revision>
+</revisionlist>

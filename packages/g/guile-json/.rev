@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a9979691d43d97782e5f311edf28d991</srcmd5>
+    <version>0.4.0</version>
+    <time>1447146206</time>
+    <user>dimstar_suse</user>
+    <comment>JSON library for guile 
+Changes since last attempts (thanks to Andreas Stieger)
+- added URLs into source, added keyring
+- license changed to LGPL-3.0+
+- add more documentation files into package</comment>
+    <requestid>343056</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6c42fa1c99ea200dfe4a57237565cf4f</srcmd5>
+    <version>0.5.0</version>
+    <time>1469382801</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412824</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9cc7d30f9c933116f0840ed3d617bd9e</srcmd5>
+    <version>0.6.0</version>
+    <time>1519396272</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>579214</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4531f1a83fbfbb768309472d349b3eb9</srcmd5>
+    <version>0.6.0</version>
+    <time>1520853090</time>
+    <user>dimstar_suse</user>
+    <comment>guile-json
+
+JSON module for guile language, dependency for Guix</comment>
+    <requestid>585132</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>058ad4fffeeedbeda9f030f71e639548</srcmd5>
+    <version>0.6.0</version>
+    <time>1526022952</time>
+    <user>dimstar_suse</user>
+    <comment>adding rpmlintrc to spec file (forwarded request 605838 from sleep_walker)</comment>
+    <requestid>605908</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fecf642c02093106c632884ee437f6fa</srcmd5>
+    <version>1.0.1</version>
+    <time>1527605552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612792</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>32b3c1efb42aa692a2ceb61a3e42465c</srcmd5>
+    <version>1.2.0</version>
+    <time>1535705019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631507</requestid>
+  </revision>
+</revisionlist>

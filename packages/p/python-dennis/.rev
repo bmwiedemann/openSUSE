@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb9ee9b85344014136c344d7f85faefe</srcmd5>
+    <version>0.9</version>
+    <time>1550151163</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove tests from package distribution
+- Activate tests
+- Remove unnecessary build dependency python-devel
+- Use %license
+- Initial version v0.9
+</comment>
+    <requestid>674426</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f173f1e48ea8674b45c22f32953c496e</srcmd5>
+    <version>0.9</version>
+    <time>1551216052</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim filler wording from description, and fixup sentence grammar.
+</comment>
+    <requestid>679063</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>991d5ad53bf816873632c26c6f81b705</srcmd5>
+    <version>0.9</version>
+    <time>1551455271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680046</requestid>
+  </revision>
+</revisionlist>

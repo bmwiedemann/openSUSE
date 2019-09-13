@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1891c7513c35d55c4d21bdaf9add2e4a</srcmd5>
+    <version>1.5+20170811.73b7fd2</version>
+    <time>1520778239</time>
+    <user>dimstar_suse</user>
+    <comment>Submit new package python-iwlib &quot;Python module to interface with iwlib&quot; to Factory.</comment>
+    <requestid>584613</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0a0baffbaf97610a253bf8f7d00ef18</srcmd5>
+    <version>1.6.2</version>
+    <time>1557916442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702835</requestid>
+  </revision>
+</revisionlist>

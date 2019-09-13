@@ -1,0 +1,179 @@
+<revisionlist>
+  <revision rev="1" vrev="122">
+    <srcmd5>8a11a6724b6f46c4831f48c95293dbd8</srcmd5>
+    <version>0.28</version>
+    <time>1168903930</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>42363f3351c53bb4752f4bf0b7856db0</srcmd5>
+    <version>0.29</version>
+    <time>1184602718</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="37">
+    <srcmd5>4e4f911e89d0d453a4a31f1383ddb339</srcmd5>
+    <version>0.29</version>
+    <time>1203957407</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="78">
+    <srcmd5>4e4f911e89d0d453a4a31f1383ddb339</srcmd5>
+    <version>0.29</version>
+    <time>1203957407</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="79">
+    <srcmd5>8993abdc328904569db87bd795247d3a</srcmd5>
+    <version>0.29</version>
+    <time>1223483565</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="80">
+    <srcmd5>ec5070f16d8bb5a42d2f91db01fd1000</srcmd5>
+    <version>0.29</version>
+    <time>1232626494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="82">
+    <srcmd5>ec5070f16d8bb5a42d2f91db01fd1000</srcmd5>
+    <version>0.29</version>
+    <time>1232626494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="83">
+    <srcmd5>4ff64fc693c716a557a8958f44d40b13</srcmd5>
+    <version>0.29</version>
+    <time>1263223197</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-X500-DN based on submit request 28934 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="84">
+    <srcmd5>3f4774e0be9f4bba5934299fcc6ce1d3</srcmd5>
+    <version>0.29</version>
+    <time>1268925653</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="86">
+    <srcmd5>3f4774e0be9f4bba5934299fcc6ce1d3</srcmd5>
+    <version>0.29</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="87">
+    <srcmd5>3f4774e0be9f4bba5934299fcc6ce1d3</srcmd5>
+    <version>0.29</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="88">
+    <srcmd5>10ab636397be66077e60b404896b01c7</srcmd5>
+    <version>0.29</version>
+    <time>1291131296</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54128 from user coolo
+</comment>
+    <requestid>54128</requestid>
+  </revision>
+  <revision rev="13" vrev="89">
+    <srcmd5>f33b60b7db0ffef3373706cf1fe90871</srcmd5>
+    <version>0.29</version>
+    <time>1291131302</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54128
+</comment>
+  </revision>
+  <revision rev="14" vrev="90">
+    <srcmd5>eda01508b3e3c823ccc61d08b35883ff</srcmd5>
+    <version>0.29</version>
+    <time>1292241070</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55724 from user coolo
+</comment>
+    <requestid>55724</requestid>
+  </revision>
+  <revision rev="15" vrev="91">
+    <srcmd5>731cab0b6cbaf3cbef48a019ecf98b39</srcmd5>
+    <version>0.29</version>
+    <time>1292241079</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55724
+</comment>
+  </revision>
+  <revision rev="16" vrev="94">
+    <srcmd5>731cab0b6cbaf3cbef48a019ecf98b39</srcmd5>
+    <version>0.29</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="96">
+    <srcmd5>731cab0b6cbaf3cbef48a019ecf98b39</srcmd5>
+    <version>0.29</version>
+    <time>1319182321</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="97">
+    <srcmd5>ecd1e308b86d4e9b3b314baf68740c23</srcmd5>
+    <version>0.29</version>
+    <time>1323193778</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="99">
+    <srcmd5>ecd1e308b86d4e9b3b314baf68740c23</srcmd5>
+    <version>0.29</version>
+    <time>1340183951</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="101">
+    <srcmd5>ecd1e308b86d4e9b3b314baf68740c23</srcmd5>
+    <version>0.29</version>
+    <time>1359109847</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="102">
+    <srcmd5>174ca053d792be9aa4f362bc64326072</srcmd5>
+    <version>0.29</version>
+    <time>1362120329</time>
+    <user>coolo</user>
+    <comment>ciaran wants it with 'or' now</comment>
+    <requestid>156757</requestid>
+  </revision>
+  <revision rev="22" vrev="103">
+    <srcmd5>271d06fd7b8ef11297aceed83b3ed122</srcmd5>
+    <version>0.29</version>
+    <time>1363776941</time>
+    <user>coolo</user>
+    <comment>- add a url for the source</comment>
+    <requestid>159932</requestid>
+  </revision>
+  <revision rev="23" vrev="104">
+    <srcmd5>97623f98c29014e54a633e1a73d24e9f</srcmd5>
+    <version>0.29</version>
+    <time>1371814393</time>
+    <user>coolo</user>
+    <comment>- don't set $Parse::RecDescent::skip to 'undef' (bnc#799660)
+  * X500-DN-dont_set_skip_to_undef.patch (forwarded request 180035 from vitezslav_cizek)</comment>
+    <requestid>180058</requestid>
+  </revision>
+  <revision rev="24" vrev="106">
+    <srcmd5>97623f98c29014e54a633e1a73d24e9f</srcmd5>
+    <version>0.29</version>
+    <time>1379663915</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="108">
+    <srcmd5>97623f98c29014e54a633e1a73d24e9f</srcmd5>
+    <version>0.29</version>
+    <time>1409302566</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

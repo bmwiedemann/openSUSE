@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bada47bc11cb017cdbf630ff020f72f3</srcmd5>
+    <version>0.0.20120613</version>
+    <time>1354978316</time>
+    <user>namtrac</user>
+    <comment>(set --no-cleanup)</comment>
+    <requestid>144298</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bada47bc11cb017cdbf630ff020f72f3</srcmd5>
+    <version>0.0.20120613</version>
+    <time>1359109301</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>bada47bc11cb017cdbf630ff020f72f3</srcmd5>
+    <version>0.0.20120613</version>
+    <time>1379662999</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6f64a43e662ede36dfe9ffc0d682f83e</srcmd5>
+    <version>0~20130416</version>
+    <time>1394103556</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 20130416</comment>
+    <requestid>224545</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6f64a43e662ede36dfe9ffc0d682f83e</srcmd5>
+    <version>0~20130416</version>
+    <time>1409301614</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>667ea375ffd86a73859567e2043872ed</srcmd5>
+    <version>0~20140914</version>
+    <time>1413269958</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 20140914</comment>
+    <requestid>255157</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ddd618633030c0401628dfae6bb2909</srcmd5>
+    <version>0~20150908</version>
+    <time>1447696303</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20150908</comment>
+    <requestid>344373</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+<package name="rubygem-archive-tar-minitar" project="openSUSE:Factory">
+  <title>Title of New Package</title>
+  <description>
+LONG DESCRIPTION 
+GOES 
+HERE
+  </description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-archive-tar-minitar"/>
+</package>

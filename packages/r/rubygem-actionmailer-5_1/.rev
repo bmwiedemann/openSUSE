@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7c441ea8cc931e5e7fb0a7fee513f472</srcmd5>
+    <version>5.1.3</version>
+    <time>1504521513</time>
+    <user>dimstar_suse</user>
+    <comment>rails</comment>
+    <requestid>520467</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8f4dfd0e299b6280d89b0e9f39d83ce7</srcmd5>
+    <version>5.1.4</version>
+    <time>1505334849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523490</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0089b6878d408906eb89251f194ea749</srcmd5>
+    <version>5.1.5</version>
+    <time>1518950608</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>577549</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d3f983d05cbecc1d70c67c09b2958673</srcmd5>
+    <version>5.1.6</version>
+    <time>1531946869</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620973</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6404d0e66d2d3be080b2f6828a976f6e</srcmd5>
+    <version>5.1.6.1</version>
+    <time>1548062858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656409</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6fdb8caec901d68c0833f1a01dd07a80</srcmd5>
+    <version>5.1.6.2</version>
+    <time>1553699930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685152</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a16d64b257c6b4711c4f49ad4f6f03f1</srcmd5>
+    <version>5.1.7</version>
+    <time>1554114944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689676</requestid>
+  </revision>
+</revisionlist>

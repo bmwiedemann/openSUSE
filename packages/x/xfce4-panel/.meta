@@ -1,0 +1,5 @@
+<package name="xfce4-panel" project="openSUSE:Factory">
+  <title>Panel for the Xfce Desktop Environment</title>
+  <description>xfce4-panel is the panel for the Xfce desktop environment.</description>
+  <devel project="X11:xfce" package="xfce4-panel"/>
+</package>

@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7f0be41b2928d71783ea97c1092b7ce</srcmd5>
+    <version>1.21</version>
+    <time>1357217204</time>
+    <user>namtrac</user>
+    <comment>Required for frozen-bubble.</comment>
+    <requestid>146818</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f7f0be41b2928d71783ea97c1092b7ce</srcmd5>
+    <version>1.21</version>
+    <time>1359109710</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f7f0be41b2928d71783ea97c1092b7ce</srcmd5>
+    <version>1.21</version>
+    <time>1379663717</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>180b73a3471e37fb00553e399f791ddc</srcmd5>
+    <version>1.25</version>
+    <time>1385705039</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208423</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>180b73a3471e37fb00553e399f791ddc</srcmd5>
+    <version>1.25</version>
+    <time>1409302341</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

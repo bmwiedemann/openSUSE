@@ -1,0 +1,278 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7acf031f3e59f60f1956b972bc0e7fd8</srcmd5>
+    <version>5.6.1</version>
+    <time>1295946352</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 57884 from user coolo
+</comment>
+    <requestid>57884</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0dade9b1e31be7d0e8b5290bdf6f4775</srcmd5>
+    <version>5.6.1</version>
+    <time>1295946372</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 57884
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>0dade9b1e31be7d0e8b5290bdf6f4775</srcmd5>
+    <version>5.6.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>dfaa5e1dc5644d74a2a466cb316acbee</srcmd5>
+    <version>5.6.1</version>
+    <time>1310373346</time>
+    <user>saschpe</user>
+    <comment>fixed ppc build, added explicit -pthread (forwarded request 76010 from msmeissn)</comment>
+    <requestid>76011</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>25ba896e37e6b9ca76d3314c51f7e31c</srcmd5>
+    <version>5.6.1</version>
+    <time>1310373356</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76011
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>db04f9a06937c2405f053fcc2855da6a</srcmd5>
+    <version>5.6.1</version>
+    <time>1318762362</time>
+    <user>lrupp</user>
+    <comment>- Added pkg-config file from fedora project
+- Cleaned up spec file formatting (forwarded request 87847 from TheBlackCat)</comment>
+    <requestid>87881</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>25f2a6d25f220697d246265cc6c3bee5</srcmd5>
+    <version>5.6.1</version>
+    <time>1318940384</time>
+    <user>saschpe</user>
+    <comment>There is no libcrypto++0 in packman. It's also bogus, shlib packages
+must not Obsolete:, and because their file set is (supposed to be)
+non-overlapping, there is no point in Conflicts:. (forwarded request 88264 from jengelh)</comment>
+    <requestid>88445</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>25f2a6d25f220697d246265cc6c3bee5</srcmd5>
+    <version>5.6.1</version>
+    <time>1319182081</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>95fe7762dbe5362bd7fa4955de3f0dc2</srcmd5>
+    <version>5.6.1</version>
+    <time>1323192180</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>ae5c458841ceae2fa67c8ca390315000</srcmd5>
+    <version>5.6.1</version>
+    <time>1328622364</time>
+    <user>coolo</user>
+    <comment>- Proper shared library versioning (forwarded request 102791 from jengelh)</comment>
+    <requestid>102829</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>9d9683a4609900597d7de05dc2dab8db</srcmd5>
+    <version>5.6.1</version>
+    <time>1332239315</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 109800 from dimstar)</comment>
+    <requestid>109886</requestid>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>9d9683a4609900597d7de05dc2dab8db</srcmd5>
+    <version>5.6.1</version>
+    <time>1340183572</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>2f405aa52b8ebaf5a9395a3b8c496561</srcmd5>
+    <version>5.6.1</version>
+    <time>1350381481</time>
+    <user>coolo</user>
+    <comment>- added baselibs.conf
+- spec file improved (forwarded request 138107 from etamPL)</comment>
+    <requestid>138282</requestid>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>2f405aa52b8ebaf5a9395a3b8c496561</srcmd5>
+    <version>5.6.1</version>
+    <time>1359109253</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>414b461f29da6a512e72c35857561f0f</srcmd5>
+    <version>5.6.2</version>
+    <time>1363691995</time>
+    <user>coolo</user>
+    <comment>- update to 5.6.2
+  - changed license to Boost Software License 1.0
+  - added SHA-3 (Keccak)
+  - updated DSA to FIPS 186-3 (see DSA2 class)
+  - fixed Blowfish minimum keylength to be 4 bytes (32 bits)
+  - fixed Salsa validation failure when compiling with GCC 4.6
+  - fixed infinite recursion when on x64, assembly disabled, and
+    no AESNI
+  - ported to MSVC 2012, GCC 4.7, Clang 3.2, Solaris Studio 12.3,
+    Intel C++ Compiler 13.0
+- removed libcryptopp-gcc47.patch - fixed upstream
+- rebased libcryptopp-shared.patch
+- added devel-static subpackage
+- updated license tag</comment>
+    <requestid>157534</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>414b461f29da6a512e72c35857561f0f</srcmd5>
+    <version>5.6.2</version>
+    <time>1379662920</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>8c950bec354b3821528556d6ab464a99</srcmd5>
+    <version>5.6.2</version>
+    <time>1380296326</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200787</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>060d2e9eed6093585e8886362664808f</srcmd5>
+    <version>5.6.2</version>
+    <time>1387737277</time>
+    <user>scarabeus_factory</user>
+    <comment>- define as big endian on s390/s390x (libcryptopp-s390.patch)</comment>
+    <requestid>211815</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>c921bc86dd1cdd152e78e76436b4b81e</srcmd5>
+    <version>5.6.2</version>
+    <time>1396622123</time>
+    <user>coolo</user>
+    <comment>- libcryptopp-m68k.patch: define IS_LITTLE_ENDIAN on m68k (forwarded request 228892 from Andreas_Schwab)</comment>
+    <requestid>228904</requestid>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>c921bc86dd1cdd152e78e76436b4b81e</srcmd5>
+    <version>5.6.2</version>
+    <time>1409301525</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>492a30075e30d7fd19972952a40284b8</srcmd5>
+    <version>5.6.2</version>
+    <time>1411627400</time>
+    <user>coolo</user>
+    <comment>- Added 0001-disable_os_rng_test.patch
+  Fixes buildfailure on openSUSE_Factory x86_64 within OBS environment,
+  due to OS supplied Random Number Generator taking too long to respond</comment>
+    <requestid>251786</requestid>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>d497ae65d2ff82b5f54d2a8940a3089b</srcmd5>
+    <version>5.6.2</version>
+    <time>1436734408</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315635</requestid>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>33d5e3a0691fb605b50b248be4f39c86</srcmd5>
+    <version>5.6.2</version>
+    <time>1466814105</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403703</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cb5900ac1cbb3c1758035e94d0100806</srcmd5>
+    <version>5.6.4</version>
+    <time>1474016521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.6.4
+  * Use proper openSUSE-style library naming
+  * Drop upstream libcryptopp-s390.patch
+  * Drop upstream libcryptopp-m68k.patch
+  * Drop upstream libcryptopp-CVE-2015-2141.patch
+  * Drop upstream cryptopp-gcc6.patch
+  * Rebase libcryptopp-shared.patch
+  * Rebase 0001-disable_os_rng_test.patch</comment>
+    <requestid>427870</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>9d4ed83521957b5c5046ebadf6b759d5</srcmd5>
+    <version>5.6.4</version>
+    <time>1485862072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453244</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>9fb42201c7618762e636d3f9612ac755</srcmd5>
+    <version>5.6.4</version>
+    <time>1486465041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454217</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>34e8ad75d90f3d6a60b5960286687d85</srcmd5>
+    <version>5.6.5</version>
+    <time>1488125018</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460173</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>52d504710d77c558961a98d6be9d4987</srcmd5>
+    <version>5.6.5</version>
+    <time>1489175264</time>
+    <user>dimstar_suse</user>
+    <comment>Fix version macros to satisfy osc download service</comment>
+    <requestid>477070</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>237dbbbef4b4c9da280fb45df87b6895</srcmd5>
+    <version>5.6.5</version>
+    <time>1496327279</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497073</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>63ccb4a3256bee3a65e57f86853b3728</srcmd5>
+    <version>7.0.0</version>
+    <time>1543953437</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653713</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>036a2709a0aad74749f0e3175b1d3b44</srcmd5>
+    <version>8.2.0</version>
+    <time>1564575339</time>
+    <user>dimstar_suse</user>
+    <comment>Update to major version 8.2.0
+Filter out -flto= flag for arm7 see cryptopp issue#865</comment>
+    <requestid>718852</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>7321c2a0154f5e048f9adb8aa16668c4</srcmd5>
+    <version>8.2.0</version>
+    <time>1565694834</time>
+    <user>dimstar_suse</user>
+    <comment>Partial fix for CVE-2019-14318</comment>
+    <requestid>722323</requestid>
+  </revision>
+</revisionlist>

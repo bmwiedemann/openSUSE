@@ -1,0 +1,6 @@
+<package name="ant-contrib" project="openSUSE:Factory">
+  <title>Collection of tasks for Ant</title>
+  <description>The Ant-Contrib project is a collection of tasks (and at one point
+maybe types and other tools) for Apache Ant.</description>
+  <devel project="Java:packages" package="ant-contrib"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="dd-opentracing-cpp" project="openSUSE:Factory">
+  <title>dd-opentracing-cpp</title>
+  <description>Datadog Opentracing C++ Client</description>
+  <devel project="devel:libraries:c_c++" package="dd-opentracing-cpp"/>
+  <url>https://github.com/DataDog/dd-opentracing-cpp</url>
+</package>

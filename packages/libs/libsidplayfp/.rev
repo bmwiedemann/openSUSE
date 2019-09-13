@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1318ad466aa739192370dcbe48cb9514</srcmd5>
+    <version>1.4.2</version>
+    <time>1406146016</time>
+    <user>coolo</user>
+    <comment>There was libsidplay1, then libsidplay2... and then both died.
+Now we have libsidplayfp, which has been actively maintained for three years already.
+
+It's used by the latest qmmp.
+We have libsidplay1 because GStreamer supports it. So I can't see a reason not
+to have libsidplayfp. But they are not source compatible (GStreamer doesn't
+even support libsidplay2), so we have to keep libsidplay1 until somebody fixes
+GStreamer.</comment>
+    <requestid>241848</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1318ad466aa739192370dcbe48cb9514</srcmd5>
+    <version>1.4.2</version>
+    <time>1409301714</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>039ee4030757d9fc1c7a574e1162e24a</srcmd5>
+    <version>1.7.0</version>
+    <time>1424121119</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286231</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>526c287679b47a3bf2bab23630300889</srcmd5>
+    <version>1.8.7</version>
+    <time>1484475413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.7
+  * Fix out of range tune selection
+  * Reenable accidentally broken branch hints in residfp
+  * Minor fix in VIC-II code ported from VICE
+  * Fix an off-by-one error in mixer code
+  * Slightly improve some combined waveforms
+  * Fix a regression in VIC-II code
+  * Improve combined waveforms emulation
+  * Fix a possible crash when locking a sid device fails
+  * Fix an overflow in resid/residfp for 8580 output, noticed in /MUSICIANS/L/Linus/64_Forever.sid
+  * Use log1p in resid/residfp for improved precision of 6581 filter parameter calculation
+  * Fix a warning in PSID model checking
+  * Fix running with -b parameter
+  * Attenuate second chip output by 3dB in 3SID mode as it is mixed in both channels
+  * Fix uninitialized vars
+  * Fix a regresion in MUS loader introduced in 1.8.0
+  * Fix a regresion in STIL
+  * Rework and clean tune loading to be more portable
+  * Add support for 3SID files (PSID v4)
+  * Check if lightpen is really triggered before changing state
+  * Define WIN32_LEAN_AND_MEAN when compiling on MinGW
+  * Other minor fixes and improvements
+  * Fix interpolation outside bounds in reSIDfp
+  * Remove redundant code in PSID loader
+  * Fix reported number of channels
+  * Install psid driver before placing tune, fixes BASIC tunes and /MUSICIANS/L/Legg_Stephen/Steigar.sid
+  * Apply volume to channels, not to chips output (forwarded request 449998 from olh)</comment>
+    <requestid>449999</requestid>
+  </revision>
+</revisionlist>

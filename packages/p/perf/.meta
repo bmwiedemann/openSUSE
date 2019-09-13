@@ -1,0 +1,9 @@
+<package name="perf" project="openSUSE:Factory">
+  <title>Performance Monitoring Tools for Linux</title>
+  <description>This package provides a userspace tool 'perf', which monitors performance for
+either unmodified binaries or the entire system. It requires a Linux kernel
+which includes the Performance Counters for Linux (PCL) subsystem (&gt;= 2.6.31).
+This subsystem utilizes the Performance Monitoring Unit (PMU) / hardware
+counters of the underlying cpu architecture (if supported).</description>
+  <devel project="devel:tools" package="perf"/>
+</package>

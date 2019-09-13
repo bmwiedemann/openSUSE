@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63265b19c2f821b1a6021fdc000ced18</srcmd5>
+    <version>0.1.0</version>
+    <time>1332831504</time>
+    <user>coolo</user>
+    <comment>SST requirement</comment>
+    <requestid>111099</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>63265b19c2f821b1a6021fdc000ced18</srcmd5>
+    <version>0.1.0</version>
+    <time>1340184031</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d9c8f726fb46a4f1f07da38469d842b5</srcmd5>
+    <version>0.1.1</version>
+    <time>1358198748</time>
+    <user>coolo</user>
+    <comment>update and add python3 support (forwarded request 148137 from posophe)</comment>
+    <requestid>148360</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d9c8f726fb46a4f1f07da38469d842b5</srcmd5>
+    <version>0.1.1</version>
+    <time>1359109982</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>88e52822b3ddeb9af93ca96d95caecba</srcmd5>
+    <version>0.1.2</version>
+    <time>1361117601</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 155651 from posophe)</comment>
+    <requestid>155652</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>aebbb0ce91045b12d1e4b30bce4d8844</srcmd5>
+    <version>0.1.2</version>
+    <time>1371651746</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179702</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>aebbb0ce91045b12d1e4b30bce4d8844</srcmd5>
+    <version>0.1.2</version>
+    <time>1379664112</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>8e97bf7f275dd6736f907b10d627e20b</srcmd5>
+    <version>0.1.2</version>
+    <time>1382693450</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204646</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>8e97bf7f275dd6736f907b10d627e20b</srcmd5>
+    <version>0.1.2</version>
+    <time>1409302800</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0015104a778456680f43043090ffe192</srcmd5>
+    <version>0.1.5</version>
+    <time>1431795718</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307482</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c87694435fe01a8d7e64a63e91238ec9</srcmd5>
+    <version>0.2.1</version>
+    <time>1504102928</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519209</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9fd6a4c71548f4434c3a0e85b5b445f2</srcmd5>
+    <version>0.2.1</version>
+    <time>1545223952</time>
+    <user>dimstar_suse</user>
+    <comment>- Also remove nonsensical dependency on python3-2to3
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659376</requestid>
+  </revision>
+</revisionlist>

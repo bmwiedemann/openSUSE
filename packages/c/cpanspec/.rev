@@ -1,0 +1,390 @@
+<revisionlist>
+  <revision rev="1" vrev="10">
+    <srcmd5>68dd3878251d47eaf66ac6e1a8e0f5ea</srcmd5>
+    <version>1.78</version>
+    <time>1290098589</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53320 from user computersalat
+</comment>
+    <requestid>53320</requestid>
+  </revision>
+  <revision rev="2" vrev="11">
+    <srcmd5>afa3006ee03bef493c1efd819c5c7ab3</srcmd5>
+    <version>1.78</version>
+    <time>1290098593</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53320
+</comment>
+  </revision>
+  <revision rev="3" vrev="12">
+    <srcmd5>cb02b87385b5e76e3e9d0489ed467ec4</srcmd5>
+    <version>1.78</version>
+    <time>1291584351</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54409 from user coolo
+</comment>
+    <requestid>54409</requestid>
+  </revision>
+  <revision rev="4" vrev="13">
+    <srcmd5>64d99952993c1f61569ac10a46dbd6f3</srcmd5>
+    <version>1.78</version>
+    <time>1291584357</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54409
+</comment>
+  </revision>
+  <revision rev="5" vrev="14">
+    <srcmd5>2d09b7be197252a52a7cb961610abe42</srcmd5>
+    <version>1.78</version>
+    <time>1296609113</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59599 from user computersalat
+</comment>
+    <requestid>59599</requestid>
+  </revision>
+  <revision rev="6" vrev="15">
+    <srcmd5>c2fccf4a36d0e4a0d69433cdbb08e68d</srcmd5>
+    <version>1.78</version>
+    <time>1296609125</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59599
+</comment>
+  </revision>
+  <revision rev="7" vrev="18">
+    <srcmd5>c2fccf4a36d0e4a0d69433cdbb08e68d</srcmd5>
+    <version>1.78</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="19">
+    <srcmd5>30bb120276e038bbed4e03e3dc02304d</srcmd5>
+    <version>1.78</version>
+    <time>1300984787</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65098 from user licensedigger
+</comment>
+    <requestid>65098</requestid>
+  </revision>
+  <revision rev="9" vrev="20">
+    <srcmd5>91e43812d3918fea1f225dc928f75f4c</srcmd5>
+    <version>1.78</version>
+    <time>1300984794</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65098
+</comment>
+  </revision>
+  <revision rev="10" vrev="21">
+    <srcmd5>0c0ec41cbbb7eae28d18daedb05eeddb</srcmd5>
+    <version>1.78</version>
+    <time>1302075445</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66053 from user coolo
+</comment>
+    <requestid>66053</requestid>
+  </revision>
+  <revision rev="11" vrev="22">
+    <srcmd5>233238bbbc941e24e5ab36411a9517df</srcmd5>
+    <version>1.78</version>
+    <time>1302075550</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66053
+</comment>
+  </revision>
+  <revision rev="12" vrev="23">
+    <srcmd5>979c8f921c8451b7c3d6622ece8a7259</srcmd5>
+    <version>1.78</version>
+    <time>1302083068</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66215 from user coolo
+</comment>
+    <requestid>66215</requestid>
+  </revision>
+  <revision rev="13" vrev="24">
+    <srcmd5>d3a0238e6046cc7ba6d8dc40aeeff212</srcmd5>
+    <version>1.78</version>
+    <time>1302083075</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66215
+</comment>
+  </revision>
+  <revision rev="14" vrev="25">
+    <srcmd5>4b788ccc0f962b76679a3b944ed631dd</srcmd5>
+    <version>1.78</version>
+    <time>1302253728</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66488 from user coolo
+</comment>
+    <requestid>66488</requestid>
+  </revision>
+  <revision rev="15" vrev="26">
+    <srcmd5>4b066e765622ca26956d90c0fa7f8bd2</srcmd5>
+    <version>1.78</version>
+    <time>1302253736</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66488
+</comment>
+  </revision>
+  <revision rev="16" vrev="27">
+    <srcmd5>9a0b69304c64fe0c16defb555e5c3a22</srcmd5>
+    <version>1.78</version>
+    <time>1302512810</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66646 from user coolo
+</comment>
+    <requestid>66646</requestid>
+  </revision>
+  <revision rev="17" vrev="28">
+    <srcmd5>9f1d54e511a7ca64b9ab042e5a54ceec</srcmd5>
+    <version>1.78</version>
+    <time>1302512820</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66646
+</comment>
+  </revision>
+  <revision rev="18" vrev="27">
+    <srcmd5>2060f3040d67e540ae7857d10947d93d</srcmd5>
+    <version>1.78.04</version>
+    <time>1306501370</time>
+    <user>saschpe</user>
+    <comment>- Christian (1):
+      fix File:Path remove_tree -&gt; rmtree
+Stephan Kulow (2):
+      add copy from Module::Depends to fix some bugs
+      trying to make it harder for modules to run amok
+
+- Stephan Kulow (6):
+      do not write out module dependencies that are in core since 5.8.8 (10.1
+      add verbose debug message for previous commit
+      extract the archive for real - preparation for bigger moves
+      less debug
+      check for executable files and avoid them
+      use an external module for testing Build.pl
+
+- Stephan Kulow (12):
+      fix non-standard source
+      add more requires
+      fix owner of documentation files
+      %attr only has 3 args
+      take out the 644 - it also applies to directories on &lt; 11.3
+      add default summary
+      make the documentation unique
+      avoid errors
+      avoid crashes while reading POM
+      allow to skip changes file
+      ignore .bak files
+      fix doc match</comment>
+    <requestid>71131</requestid>
+  </revision>
+  <revision rev="19" vrev="28">
+    <srcmd5>49e31998d7cbb73fb524d30da1de0ccf</srcmd5>
+    <version>1.78.04</version>
+    <time>1306501379</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71131
+</comment>
+  </revision>
+  <revision rev="20" vrev="29">
+    <srcmd5>db4e5b8e25351fb302dc8988adafc59b</srcmd5>
+    <version>1.78.04</version>
+    <time>1306750635</time>
+    <user>saschpe</user>
+    <comment>- remove buildrequire now that we have a copy</comment>
+    <requestid>71719</requestid>
+  </revision>
+  <revision rev="21" vrev="30">
+    <srcmd5>13bd5879dfdc50d2e7083010ab09f3ed</srcmd5>
+    <version>1.78.04</version>
+    <time>1306750646</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71719
+</comment>
+  </revision>
+  <revision rev="22" vrev="29">
+    <srcmd5>63f0548b4408ebb0558fd8d5d7706b71</srcmd5>
+    <version>1.78.05</version>
+    <time>1306925258</time>
+    <user>saschpe</user>
+    <comment>- Stephan Kulow (1):
+      convert to Makefile.PL</comment>
+    <requestid>72251</requestid>
+  </revision>
+  <revision rev="23" vrev="30">
+    <srcmd5>04a845d5b42744ad0707077a0a1988e2</srcmd5>
+    <version>1.78.05</version>
+    <time>1306925270</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72251
+</comment>
+  </revision>
+  <revision rev="24" vrev="31">
+    <srcmd5>c53cf1428e9108ebaafe59ed07cfda5a</srcmd5>
+    <version>1.78.05</version>
+    <time>1312900628</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>77840</requestid>
+  </revision>
+  <revision rev="25" vrev="32">
+    <srcmd5>cf19e4dc6fe60e663690ab5e54536c11</srcmd5>
+    <version>1.78.05</version>
+    <time>1312900636</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77840
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dbeded67b3e57199f005fc4c4a895d4a</srcmd5>
+    <version>1.78.06</version>
+    <time>1317025793</time>
+    <user>saschpe</user>
+    <comment>- Stephan Kulow (3):
+      ignore duplicates
+      run prepare_spec
+      new version
+
+- Stephan Kulow (1):
+      only add scanned deps as comment
+
+- Remove redundant tags/sections from specfile</comment>
+    <requestid>84793</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>dbeded67b3e57199f005fc4c4a895d4a</srcmd5>
+    <version>1.78.06</version>
+    <time>1319181824</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>3fbd423f4bb4b6f856f50c71190b1d6c</srcmd5>
+    <version>1.78.06</version>
+    <time>1323340056</time>
+    <user>coolo</user>
+    <comment>- fixed cpanspec to suggest &quot;GPL-1.0+ or Artistic-1.0&quot; if no
+  licence is found (forwarded request 95465 from vitezslav_cizek)</comment>
+    <requestid>95689</requestid>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>3fbd423f4bb4b6f856f50c71190b1d6c</srcmd5>
+    <version>1.78.06</version>
+    <time>1340183250</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>3fbd423f4bb4b6f856f50c71190b1d6c</srcmd5>
+    <version>1.78.06</version>
+    <time>1359108769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>172253496028ae135b8396e056005bfe</srcmd5>
+    <version>1.78.07</version>
+    <time>1375594112</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>185736</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>172253496028ae135b8396e056005bfe</srcmd5>
+    <version>1.78.07</version>
+    <time>1379662149</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>dc3e3d60f3347ff8b5504951966d0166</srcmd5>
+    <version>1.78.08</version>
+    <time>1401516556</time>
+    <user>coolo</user>
+    <comment>- remove cpanspec-1.78.06-spdx.patch - upstreamed
+
+- Stephan Kulow (2):
+      apply spdx.patch applied for a year in OBS
+      bump version
+
+- Stephan Kulow (2):
+      no longer print possible build requires
+      avoid useless newlines</comment>
+    <requestid>235542</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>dc3e3d60f3347ff8b5504951966d0166</srcmd5>
+    <version>1.78.08</version>
+    <time>1409300678</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>7979ff06215a97a3ae9e171962c76906</srcmd5>
+    <version>1.78.08</version>
+    <time>1443585024</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327881</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>c8d818c3ab9bcbcd00b7da45fac87a1e</srcmd5>
+    <version>1.78.08</version>
+    <time>1452263033</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352537</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>62d18fdaaa901e36a8a0c4716609a269</srcmd5>
+    <version>1.78.09</version>
+    <time>1552464829</time>
+    <user>dimstar_suse</user>
+    <comment>- Bernhard M. Wiedemann (5):
+      avoid stripping exec bits off .pl files
+      refactor custom spec sections
+      allow for post_build section
+      allow to override summary and description
+      accept more pathnames in tarballs
+Dirk Stoecker (8):
+      fix some issues, add minimal README
+      small cleanup in download case
+      fix Linux::Inotify2 - user new license names, don't show upstream license if identical, better summary capitalization
+      don't show upstream license if totally identical
+      support Zip
+      support perl license text in cpanspec.yml properly
+      support perl license text in cpanspec.yml properly - drop debug
+      unify perl license
+Dirk Stöcker (2):
+      makecmd - handle alike to perl and rm (#8)
+      support new storage position for cpan data
+Sebastian Riedel (1):
+      Prevent invalid &quot;perl-.spec&quot; and &quot;perl-.changes&quot; from being generated
+Stephan Kulow (7):
+      retry the checkout after branch (service in progress)
+      avoid &quot;the manpage&quot; links
+      remove debug statement
+      take license folder too
+      small fixes
+      Use %license
+      Fix wget options in cpanget</comment>
+    <requestid>684271</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0a8e7e0c931c804cc8c2af76c5a7085b</srcmd5>
+    <version>1.78.09.1554211595.43afd0f</version>
+    <time>1554276500</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.78.09.1554211595.43afd0f:
+  * Support licence as filename for license (british english)
+
+- Update to version 1.78.09.1551439566.b166388:
+  Switch to _service file</comment>
+    <requestid>690675</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>7298a47603f3808f8dc6164eb29c3123</srcmd5>
+    <version>1.78.09.1554211595.43afd0f</version>
+    <time>1559375373</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705967</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4b51fd7108dba254bf7c810503b581c5</srcmd5>
+    <version>3.2.5</version>
+    <time>1520415319</time>
+    <user>dimstar_suse</user>
+    <comment>NLTK -- the Natural Language Toolkit -- is a suite of open source Python modules, data sets and tutorials supporting research and development in Natural Language Processing.</comment>
+    <requestid>583014</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a135d862b47747ce9117e244a2c99fc6</srcmd5>
+    <version>3.2.5</version>
+    <time>1525426167</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim redundant wording from description.
+</comment>
+    <requestid>603179</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>64d6b4e0e65a4adeaa2400dc60946926</srcmd5>
+    <version>3.4</version>
+    <time>1551024845</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673240</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aff10a94c4941953c3b2dbf20d4ec5a0</srcmd5>
+    <version>3.4.1</version>
+    <time>1558690383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705020</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3825061b3ebc3632a733894300a44360</srcmd5>
+    <version>3.4.4</version>
+    <time>1563914514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.4:
+  * fix bug in plot function (probability.py)
+  * add improved PanLex Swadesh corpus reader
+  * add Text.generate()
+  * add QuadgramAssocMeasures
+  * add SSP to tokenizers
+  * return confidence of best tag from AveragedPerceptron
+  * make plot methods return Axes objects
+  * don't require list arguments to PositiveNaiveBayesClassifier.train
+  * fix Tree classes to work with native Python copy library
+  * fix inconsistency for NomBank
+  * fix random seeding in LanguageModel.generate
+  * fix ConditionalFreqDist mutation on tabulate/plot call
+  * fix broken links in documentation
+  * fix misc Wordnet issues
+  * update installation instructions</comment>
+    <requestid>717915</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a4edeba3737e09ba5ec524a393fbfd43</srcmd5>
+    <version>3.4.5</version>
+    <time>1568379497</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 3.4.5:
+  * Fixed security bug in downloader: Zip slip vulnerability - for the
+    unlikely situation where a user configures their downloader to use
+    a compromised server CVE-2019-14751</comment>
+    <requestid>730102</requestid>
+  </revision>
+</revisionlist>

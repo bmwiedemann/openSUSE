@@ -1,0 +1,729 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c372dd1d7e4bd4ea28dc349b08b40b16</srcmd5>
+    <version>0.137</version>
+    <time>1223944002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cc20d19b20d30d00d0f92b6aeb32d506</srcmd5>
+    <version>0.137</version>
+    <time>1225670483</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>490a6bbeaab95250eea4e4e3154ea50c</srcmd5>
+    <version>0.137</version>
+    <time>1227880700</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ce44dbb384e553789ec9a762b85e2584</srcmd5>
+    <version>0.137</version>
+    <time>1229695861</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>852e089cd4506fa172d78533c9621d3e</srcmd5>
+    <version>0.137</version>
+    <time>1231434189</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>1b0c07fecc05cc054d943b2f7f9e8c52</srcmd5>
+    <version>0.137</version>
+    <time>1233265548</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0897cb84cf59ba3b3ca2588f73cd1172</srcmd5>
+    <version>0.140</version>
+    <time>1235063275</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>862ad7b7ae777757b6b96ef0476ae187</srcmd5>
+    <version>0.141</version>
+    <time>1242382106</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4896164b02c0e2dcb3bf12044717c249</srcmd5>
+    <version>0.142</version>
+    <time>1250199407</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/elfutils based on submit request 17725 from user tiwai
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>94a000fe97fe9499bc20c14f7a14b704</srcmd5>
+    <version>0.142</version>
+    <time>1250864326</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/elfutils based on submit request 18356 from user rguenther
+</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>94a000fe97fe9499bc20c14f7a14b704</srcmd5>
+    <version>0.142</version>
+    <time>1250864326</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/elfutils based on submit request 18356 from user rguenther
+</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>c983d70c10236e3b5b79b28f1c3d3132</srcmd5>
+    <version>0.142</version>
+    <time>1260950105</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/elfutils based on submit request 26689 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>7ab912f04adf562af334d4d58e3adaf8</srcmd5>
+    <version>0.142</version>
+    <time>1265911721</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/elfutils based on submit request 32024 from user rguenther
+</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>965189fd9e18ff33f0ec437b77031378</srcmd5>
+    <version>0.142</version>
+    <time>1268923445</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f1fc039d10d48b58d67ce8f65af5df85</srcmd5>
+    <version>0.147</version>
+    <time>1274776180</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/elfutils based on submit request 40226 from user jones_tony
+</comment>
+    <requestid>40226</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f1fc039d10d48b58d67ce8f65af5df85</srcmd5>
+    <version>0.147</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>f1fc039d10d48b58d67ce8f65af5df85</srcmd5>
+    <version>0.147</version>
+    <time>1278678573</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>0e1f3c527bc104731bb8bb1edd1c166d</srcmd5>
+    <version>0.147</version>
+    <time>1279896873</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/elfutils based on submit request 43689 from user coolo
+</comment>
+    <requestid>43689</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>e18e045e1af3d29ab7b75305bbc6e40a</srcmd5>
+    <version>unknown</version>
+    <time>1284036180</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/elfutils based on submit request 47102 from user jones_tony
+</comment>
+    <requestid>47102</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>b241239e626ba70297c737c49fd92d71</srcmd5>
+    <version>0.148</version>
+    <time>1284749223</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/elfutils based on submit request 48133 from user coolo
+</comment>
+    <requestid>48133</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1f36235c15a2cc4d93c6387bdeb76e5f</srcmd5>
+    <version>0.149</version>
+    <time>1286481589</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/elfutils based on submit request 50025 from user jones_tony
+</comment>
+    <requestid>50025</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>1f36235c15a2cc4d93c6387bdeb76e5f</srcmd5>
+    <version>0.149</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>184109096c252d9b758508e0c966ef82</srcmd5>
+    <version>0.152</version>
+    <time>1304330259</time>
+    <user>saschpe</user>
+    <comment>Update to version 0.152</comment>
+    <requestid>68727</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>6e4cbb452d5c1b57d88c9fb1fa35e29a</srcmd5>
+    <version>0.152</version>
+    <time>1304330270</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68727
+</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>1fd7ac192c1db066f8ef2e2db8512f4c</srcmd5>
+    <version>0.152</version>
+    <time>1308207732</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>73779</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>1e363213f941d5a1845051d910af9f14</srcmd5>
+    <version>0.152</version>
+    <time>1308207747</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73779
+</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>d4fc44862197fa87c4687edc39bd0ad8</srcmd5>
+    <version>0.152</version>
+    <time>1316680960</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Add elfutils-devel to baselibs
+  (local compilation of a 3rd-party program in 32-bit mode) (forwarded request 83414 from jengelh)</comment>
+    <requestid>84277</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>d4fc44862197fa87c4687edc39bd0ad8</srcmd5>
+    <version>0.152</version>
+    <time>1319181863</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>b58ffdfa9d12d700d80a9a0d2029c6cd</srcmd5>
+    <version>0.152</version>
+    <time>1325846614</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>97072</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>177946e9bc474f3bb225fe83dac261b3</srcmd5>
+    <version>0.153</version>
+    <time>1332500701</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7;update to 0.153 (forwarded request 109477 from a_jaeger)</comment>
+    <requestid>109583</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>177946e9bc474f3bb225fe83dac261b3</srcmd5>
+    <version>0.153</version>
+    <time>1340183302</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>5945301e7c706ebf589990419b22d7b9</srcmd5>
+    <version>0.153</version>
+    <time>1347882848</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133896</requestid>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>189349df37fa7f4797fbe7318dc17b1d</srcmd5>
+    <version>0.153</version>
+    <time>1348231131</time>
+    <user>coolo</user>
+    <comment>- license update: SUSE-GPL-2.0-with-OSI-exception
+  Use a license available on the spreadsheet linked at
+  license.opensuse.org</comment>
+    <requestid>135158</requestid>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>625569c568260ba1a232803bb8a98d16</srcmd5>
+    <version>0.153</version>
+    <time>1350363601</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138179</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5e2b7b34db226918ce112c0d0c3d1fa1</srcmd5>
+    <version>0.155</version>
+    <time>1354711776</time>
+    <user>namtrac</user>
+    <comment>- add elfutils-aarch64.patch to support aarch64
+- update to 0.155
+  libelf: elf*_xlatetomd now works for cross-endian ELF note data.
+  	elf_getshdr now works consistently on non-mmaped ELF files after
+  	calling elf_cntl(ELF_C_FDREAD).
+  	Implement support for ar archives with 64-bit symbol table.
+  	[g]elf[32|64]_offscn() do not match SHT_NOBITS sections at OFFSET.
+  
+  libdw: dwarf.h corrected the DW_LANG_ObjC constant name (was DW_LANG_Objc).
+         Any existing sources using the old name will have to be updated.
+         Add DW_MACRO_GNU .debug_macro type encodings constants, DW_ATE_UTF
+         and DW_OP_GNU_parameter_ref to dwarf.h.
+         Experimental support for DWZ multifile forms DW_FORM_GNU_ref_alt
+         and DW_FORM_GNU_strp_alt.  Disabled by default.  Use configure
+         --enable-dwz to test it.
+         dwarf_highpc function now handles DWARF 4 DW_AT_high_pc constant form.
+         Fix bug using dwarf_next_unit to iterate over .debug_types.
+  
+  elflint: Now accepts gold linker produced executables.
+  
+  readelf: Add .debug_macro parsing support.
+  	 Add .gdb_index version 7 parsing support.
+  	 Recognize DW_OP_GNU_parameter_ref.
+  
+  backends: Add support for Tilera TILE-Gx processor.
+  
+  translations: Updated Ukrainian translation.
+  
+  The license is now GPLv2/LGPLv3+ for the libraries and GPLv3+ for stand-alone
+  programs. There is now also a formal CONTRIBUTING document describing how to</comment>
+    <requestid>143660</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>5e2b7b34db226918ce112c0d0c3d1fa1</srcmd5>
+    <version>0.155</version>
+    <time>1359108844</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>1d148f027172a4b87edad3e91a95ad2b</srcmd5>
+    <version>0.155</version>
+    <time>1364472630</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161175 from jones_tony)</comment>
+    <requestid>161233</requestid>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>07494224afc8624d44823db771be1d0d</srcmd5>
+    <version>0.155</version>
+    <time>1371645782</time>
+    <user>coolo</user>
+    <comment>- elfutils-sizeof-pointer-memaccess.patch: Fix sizeof-pointer-memaccess
+  warnings (forwarded request 179593 from Andreas_Schwab)</comment>
+    <requestid>179624</requestid>
+  </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>07494224afc8624d44823db771be1d0d</srcmd5>
+    <version>0.155</version>
+    <time>1379662287</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>44318a91b93b96d25284ec8b83537a08</srcmd5>
+    <version>0.157</version>
+    <time>1384501023</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 0.157, see ChangeLog (forwarded request 206750 from jones_tony)</comment>
+    <requestid>206934</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a7732a3239b571efeadfd2b080546c50</srcmd5>
+    <version>0.158</version>
+    <time>1391105779</time>
+    <user>coolo</user>
+    <comment> (forwarded request 215569 from jones_tony)</comment>
+    <requestid>215570</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>576c2cd886f0f8d8214cd8ac209eae84</srcmd5>
+    <version>0.158</version>
+    <time>1395750040</time>
+    <user>coolo</user>
+    <comment>- SPARC build requires the large PIC model (or else build fails) (forwarded request 227237 from jengelh)</comment>
+    <requestid>227261</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>bc32604ae412ee77e998156845a8b335</srcmd5>
+    <version>0.158</version>
+    <time>1398145372</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>230415</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>bc32604ae412ee77e998156845a8b335</srcmd5>
+    <version>0.158</version>
+    <time>1409300821</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>f20ca1cd06d270dcf6207b3dd35f4c82</srcmd5>
+    <version>0.158</version>
+    <time>1409761232</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247248</requestid>
+  </revision>
+  <revision rev="46" vrev="7">
+    <srcmd5>1142df8800411645ce961fbe74793da0</srcmd5>
+    <version>0.158</version>
+    <time>1417438822</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262928</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>12cf674583b80c81598cf1c17cb2db37</srcmd5>
+    <version>0.161</version>
+    <time>1420927491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280219</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>573f109e61495651bddbd8fb202d2088</srcmd5>
+    <version>0.161</version>
+    <time>1424430018</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285889</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>d39010b187535d63f0601eabb75b507f</srcmd5>
+    <version>0.163</version>
+    <time>1443770550</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330719</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a2421b73b1c5c5661f6e5138be8456fd</srcmd5>
+    <version>0.164</version>
+    <time>1448553646</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345589</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>bc4148ef09482a1f60c2a191d1ededc1</srcmd5>
+    <version>0.164</version>
+    <time>1457179481</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362807</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>9fa2aa154095f091c5e1052d33cfa965</srcmd5>
+    <version>0.164</version>
+    <time>1461334551</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390327</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ea0cca22f73fb65a6add98620be9080d</srcmd5>
+    <version>0.166</version>
+    <time>1468699842</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407877</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>a28b376b063e1fc54bf2f2487834f286</srcmd5>
+    <version>0.167</version>
+    <time>1472731273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423865</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>bc9145ee2a77ee89edb54a4fd9221e16</srcmd5>
+    <version>0.167</version>
+    <time>1483047668</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447176</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>058e634098347af016dbf802331571ad</srcmd5>
+    <version>0.168</version>
+    <time>1490965284</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.168:
+  libelf: gelf_newehdr and gelf_newehdr now return void *.
+  libdw: dwarf.h corrected the DW_LANG_PLI constant name (was DW_LANG_PL1).
+  readelf: Add optional --symbols[=SECTION] argument to select section name.
+- Includes changes from 0001-Add-GCC7-Wimplicit-fallthrough-support-fixes.patch
+  and 0001-ar-Fix-GCC7-Wformat-length-issues.patch.
+- Remove elfutils-0.137-dwarf-header-check-fix.diff which is no longer
+  required after a debugedit fix. (forwarded request 483764 from rguenther)</comment>
+    <requestid>483826</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>2f339906e26d3a0c65b0a76781c7fb29</srcmd5>
+    <version>0.168</version>
+    <time>1493103305</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487068</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>9cf6b4f6e2e1c84437b44340a7c7277f</srcmd5>
+    <version>0.168</version>
+    <time>1495883143</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-backends-Add-support-for-EM_PPC64-GNU_ATTRIBUTES.patch
+  unconditionally in the spec file. As we can't support binary diff,
+  a newly added test-case is removed from the patch.
+
+- Add 0001-backends-Add-support-for-EM_PPC64-GNU_ATTRIBUTES.patch:
+  fix .gnu.attributes checking on ppc64{,le}.</comment>
+    <requestid>491760</requestid>
+  </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>9f7679e0eac2c5ccdb60a00b1a9bc6d3</srcmd5>
+    <version>0.168</version>
+    <time>1497273048</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>501368</requestid>
+  </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>29f0d99a9b328641f201a568a91b6a33</srcmd5>
+    <version>0.168</version>
+    <time>1498202067</time>
+    <user>dimstar_suse</user>
+    <comment>- ppc-machine-flags.patch: support EM_PPC machine flags
+- disable-tests-with-ptrace.patch: disable more tests (forwarded request 504468 from AndreasSchwab)</comment>
+    <requestid>504583</requestid>
+  </revision>
+  <revision rev="61" vrev="6">
+    <srcmd5>469357378412206b21b102e6bcdcc220</srcmd5>
+    <version>0.168</version>
+    <time>1505416145</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520996</requestid>
+  </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>58d5a6a03f3c0e3cea7c073a21c42834</srcmd5>
+    <version>0.168</version>
+    <time>1519844167</time>
+    <user>dimstar_suse</user>
+    <comment>Use %license (boo#1082318). Please forward to SLE, if possible (forwarded request 580083 from favogt)</comment>
+    <requestid>580189</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>71f08f976e8a4f28ed696ff3877e5cf0</srcmd5>
+    <version>0.170</version>
+    <time>1521498602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.170
+  libdw: Added new DWARF5 attribute, tag, character encoding, language code,
+         calling convention, defaulted member function and macro constants
+         to dwarf.h.
+	 New functions dwarf_default_lower_bound and dwarf_line_file.
+	 dwarf_peel_type now handles DWARF5 immutable, packed and shared tags.
+	 dwarf_getmacros now handles DWARF5 .debug_macro sections.
+  strip: Add -R, --remove-section=SECTION and --keep-section=SECTION.
+  backends: The bpf disassembler is now always build on all platforms.
+- Includes changes in 0.169
+  backends: Add support for EM_PPC64 GNU_ATTRIBUTES.
+            Frame pointer unwinding fallback support for i386, x86_64, aarch64.
+  translations: Update Polish translation.
+- Remove obsolete 0001-backends-Add-support-for-EM_PPC64-GNU_ATTRIBUTES.patch 
+  and ppc-machine-flags.patch
+- Add elfutils-0.170-stripnothing.patch to robustify test and avoid a FAIL.
+- Add elfutils-0.170-Wpackednotaligned.patch to fix build with GCC 8.
+  (boo#1084637) (forwarded request 584787 from rguenther)</comment>
+    <requestid>585779</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>de6308c29cbaa97f7dac8b22d5356d2b</srcmd5>
+    <version>0.170</version>
+    <time>1522317000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591142</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>3a0d59e07c8fafdd1f8b58e02aa6c104</srcmd5>
+    <version>0.171</version>
+    <time>1528492127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.171
+  DWARF5 and split dwarf, including GNU DebugFission, are supported now.
+  Data can be read from the new DWARF sections .debug_addr, .debug_line_str,
+  .debug_loclists, .debug_str_offsets and .debug_rnglists.  Plus the new
+  DWARF5 and GNU DebugFission encodings of the existing .debug sections.
+  Also in split DWARF .dwo (DWARF object) files.  This support is mostly
+  handled by existing functions (dwarf_getlocation*, dwarf_getsrclines,
+  dwarf_ranges, dwarf_form*, etc.) now returning the data from the new
+  sections and data formats.  But some new functions have been added
+  to more easily get information about skeleton and split compile units
+  (dwarf_get_units and dwarf_cu_info), handle new attribute data
+  (dwarf_getabbrevattr_data) and to keep references to Dwarf_Dies
+  that might come from different sections or files (dwarf_die_addr_die).
+  Not yet supported are .dwp (Dwarf Package) and .sup (Dwarf Supplementary)
+  files, the .debug_names index, the .debug_cu_index and .debug_tu_index
+  sections. Only a single .debug_info (and .debug_types) section are
+  currently handled.
+  readelf: Handle all new DWARF5 sections.
+           --debug-dump=info+ will show split unit DIEs when found.
+           --dwarf-skeleton can be used when inspecting a .dwo file.
+     Recognizes GNU locviews with --debug-dump=loc.
+  libdw: New functions dwarf_die_addr_die, dwarf_get_units,
+         dwarf_getabbrevattr_data and dwarf_cu_info.
+         libdw will now try to resolve the alt file on first use of
+         an alt attribute FORM when not set yet with dwarf_set_alt.
+         dwarf_aggregate_size() now works with multi-dimensional arrays.
+  libdwfl: Use process_vm_readv when available instead of ptrace.
+  backends: Add a RISC-V backend.
+  There were various improvements to build on Windows.
+  The sha1 and md5 implementations have been removed, they weren't used.
+- Remove patches: elfutils-0.170-Wpackednotaligned.patch,
+  elfutils-0.170-stripnothing.patch, gcc8-disable-test.patch 
+- make package with V=1 to print verbose command line (forwarded request 613899 from marxin)</comment>
+    <requestid>614220</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>0704c6be620e39c1196ea75183200304</srcmd5>
+    <version>0.172</version>
+    <time>1529665911</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to versio 0.172
+  No functional changes compared to 0.171.
+  Various bug fixes in libdw and eu-readelf dealing with bad DWARF5 data.
+  Thanks to running the afl fuzzer on eu-readelf and various testcases. (forwarded request 616253 from marxin)</comment>
+    <requestid>616503</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>288bbade231c0cd5751b0cd1a91d7da3</srcmd5>
+    <version>0.173</version>
+    <time>1531592078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.173
+  More fixes for crashes and hangs found by afl-fuzz. In particular various
+  functions now detect and break infinite loops caused by bad DIE tree cycles.
+  readelf: Will now lookup the size and signedness of constant value types
+           to display them correctly (and not just how they were encoded).
+  libdw: New function dwarf_next_lines to read CU-less .debug_line data.
+         dwarf_begin_elf now accepts ELF files containing just .debug_line
+         or .debug_frame sections (which can be read without needing a DIE
+         tree from the .debug_info section).
+         Removed dwarf_getscn_info, which was never implemented.
+  backends: Handle BPF simple relocations.
+            The RISCV backends now handles ABI specific CFI and knows about
+            RISCV register types and names.
+- add cfi-fix.patch: make build green on arm target (forwarded request 621681 from marxin)</comment>
+    <requestid>621693</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>9ccf8b68ace7f2776edbfcea7e4b5071</srcmd5>
+    <version>0.173</version>
+    <time>1535440783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630656</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>863eeb568f0e28917c096fed0b52b10e</srcmd5>
+    <version>0.174</version>
+    <time>1538377370</time>
+    <user>dimstar_suse</user>
+    <comment>- Add disable-backtrace-dwarf-test.patch in order to work around:
+  https://sourceware.org/bugzilla/show_bug.cgi?id=23673. (forwarded request 637018 from marxin)</comment>
+    <requestid>637381</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>17ac26b879388dfc0bb213aa44ef139e</srcmd5>
+    <version>0.175</version>
+    <time>1543827752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.175
+readelf: Handle mutliple .debug_macro sections.
+         Recognize and parse GNU Property, NT_VERSION and
+         GNU Build Attribute ELF Notes.
+strip: Handle SHT_GROUP correctly.
+       Add strip --reloc-debug-sections-only option.
+       Handle relocations against GNU compressed sections.
+libdwelf: New function dwelf_elf_begin.
+libcpu: Recognize bpf jump variants BPF_JLT, BPF_JLE, BPF_JSLT
+        and BPF_JSLE.
+backends: RISCV handles ADD/SUB relocations.
+          Handle SHT_X86_64_UNWIND.
+Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
+- remove disable-backtrace-dwarf-test.patch patch - the test
+  works now (forwarded request 649580 from marxin)</comment>
+    <requestid>649599</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>930bc2c4d31bc36b4fd2be548161c014</srcmd5>
+    <version>0.176</version>
+    <time>1551023722</time>
+    <user>coolo</user>
+    <comment>- Add elfutils.keyring and verify signature. (forwarded request 677312 from marxin)</comment>
+    <requestid>677347</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>fe1a76d1118a43b946c23a6ad1fc3eac</srcmd5>
+    <version>0.176</version>
+    <time>1557653504</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc9-tests-Don-t-printf-a-known-NULL-symname.patch in order to
+  fix boo#1120864. (forwarded request 701234 from marxin)</comment>
+    <requestid>701262</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>eec1b712f0624e116510cd317521f932</srcmd5>
+    <version>0.176</version>
+    <time>1560337542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707457</requestid>
+  </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>4670ab9e2b9530c6b3a2e81223ab26e4</srcmd5>
+    <version>0.176</version>
+    <time>1562591166</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO (boo#1138796). (forwarded request 711044 from marxin)</comment>
+    <requestid>711664</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>e3d87f88ba582b2b37d32337b8a50dfb</srcmd5>
+    <version>0.177</version>
+    <time>1566899972</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.177:
+  elfclassify: New tool to analyze ELF objects.
+  readelf: Print DW_AT_data_member_location as decimal offset.
+           Decode DW_AT_discr_list block attributes.
+  libdw: Add DW_AT_GNU_numerator, DW_AT_GNU_denominator and DW_AT_GNU_bias.
+  libdwelf: Add dwelf_elf_e_machine_string.
+            dwelf_elf_begin now only returns NULL when there is an error
+            reading or decompressing a file. If the file is not an ELF file
+            an ELF handle of type ELF_K_NONE is returned.
+  backends: Add support for C-SKY.
+- remove fix-bsc-1110929.diff and gcc9-tests-Don-t-printf-a-known-NULL-symname.patch
+- Use %make_build (forwarded request 723467 from marxin)</comment>
+    <requestid>723501</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>7797fecd6bcf179306e435d9c82b15b3</srcmd5>
+    <version>0.177</version>
+    <time>1568190285</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>727947</requestid>
+  </revision>
+</revisionlist>

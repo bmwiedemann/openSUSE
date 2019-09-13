@@ -1,0 +1,277 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c61b1d12321102cf1e15b322f25cc60</srcmd5>
+    <version>0.2.1</version>
+    <time>1462342811</time>
+    <user>dimstar_suse</user>
+    <comment>This is necessary for the Docker 1.11.1 update, in which the daemon has been
+split into multiple components. This request goes together with request 392078.
+
+containerd is also a useful package, it allows people to run many containers
+without the overhead of Docker's setup.</comment>
+    <requestid>393249</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a2c33c1f688bb3f34db80410c7458041</srcmd5>
+    <version>0.2.2</version>
+    <time>1466681766</time>
+    <user>dimstar_suse</user>
+    <comment>* Update to containerd v0.2.2.
+* Includes updates to the out-of-tree patches.
+
+This goes with https://build.opensuse.org/request/show/402450</comment>
+    <requestid>403672</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3cd03bfb7809a26b043c7cde78784e23</srcmd5>
+    <version>0.2.2</version>
+    <time>1469081943</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412323</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0c77f6cf608c70852efb5c1668c564aa</srcmd5>
+    <version>0.2.2</version>
+    <time>1471428363</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419597</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>04b7aafafcd3edf219effac13dad013c</srcmd5>
+    <version>0.2.2</version>
+    <time>1471688841</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419903</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c7397833b7050cbf26cd87c3f23b2b5c</srcmd5>
+    <version>0.2.3</version>
+    <time>1474476564</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428677</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e4ff2a9ada662e924691ddfc3846b540</srcmd5>
+    <version>0.2.4+git0366d7e</version>
+    <time>1477481362</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437279</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ab5306914515a22f549ec0d1fd46fb31</srcmd5>
+    <version>0.2.4+gitr565_0366d7e</version>
+    <time>1480019151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441849</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a0cfafec0d0232cde6d6db17d3ce4e9e</srcmd5>
+    <version>0.2.4+gitr565_0366d7e</version>
+    <time>1480420179</time>
+    <user>dimstar_suse</user>
+    <comment>Part of the fix for boo#1012302, as this unblocks sr#1012302.</comment>
+    <requestid>442436</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>de796f10a1d35686b9248510793d6200</srcmd5>
+    <version>0.2.4+gitr565_0366d7e</version>
+    <time>1481030817</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>443971</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b58152f3a6763579894ef4dcf1facd8e</srcmd5>
+    <version>0.2.5+gitr569_2a5e70c</version>
+    <time>1484041465</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447843</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1627493e3e2f7ba48a4e79084514f313</srcmd5>
+    <version>0.2.5+gitr569_2a5e70c</version>
+    <time>1485167771</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450478</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>82228ccdb9af08925c272e49a62db36e</srcmd5>
+    <version>0.2.5+gitr608_03e5862</version>
+    <time>1489345553</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>478793</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b7d18f03da39af26119d41da081b810e</srcmd5>
+    <version>0.2.5+gitr608_03e5862</version>
+    <time>1492417592</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487505</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>80653aa13779e9f29dbeb1a9f2ade491</srcmd5>
+    <version>0.2.5+gitr639_422e31c</version>
+    <time>1495267991</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494717</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>370171b877ff34e0688a4f855e1fadf6</srcmd5>
+    <version>0.2.5+gitr639_422e31c</version>
+    <time>1501406561</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509156</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>59d179a5ed9f76386680b27e91631866</srcmd5>
+    <version>0.2.5+gitr639_422e31c</version>
+    <time>1502963036</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>516136</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>08974adde89b348f156b0c8702a39da3</srcmd5>
+    <version>0.2.8+gitr671_3addd8406531</version>
+    <time>1508503172</time>
+    <user>dimstar_suse</user>
+    <comment>Update containerd to 0.2.8+gitr671_3addd8406531. This is necesary for the
+Docker 17.07.0_ce update. This SR is in conjunction with:
+
+* https://build.opensuse.org/request/show/535047</comment>
+    <requestid>535048</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>270ad2654a4245ba6a4ecccea27e570e</srcmd5>
+    <version>0.2.8+gitr671_3addd8406531</version>
+    <time>1509723133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>536962</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>9b36bfb48b6791f8c9a80732767a2649</srcmd5>
+    <version>0.2.8+gitr671_3addd8406531</version>
+    <time>1512042065</time>
+    <user>dimstar_suse</user>
+    <comment>Update of containerd, mostly just packaging changes.</comment>
+    <requestid>545161</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a6a81fb9ef342c044871752ff258fecf</srcmd5>
+    <version>0.2.9+gitr706_06b9cb351610</version>
+    <time>1513851926</time>
+    <user>dimstar_suse</user>
+    <comment>Docker v17.09.1_ce upgrade.</comment>
+    <requestid>558283</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>2b34072b2fa5e2fd1bb9d731053b37e3</srcmd5>
+    <version>0.2.9+gitr706_06b9cb351610</version>
+    <time>1515342089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561515</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>bd8ec420ba6eedaf51b09f6ec00adbfd</srcmd5>
+    <version>0.2.9+gitr706_06b9cb351610</version>
+    <time>1517823926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571971</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>2473c1b1f846b0b2048aa948254ff345</srcmd5>
+    <version>0.2.9+gitr706_06b9cb351610</version>
+    <time>1528492188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614155</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>358a003d60ae0d6c3e81acb5086e1d4b</srcmd5>
+    <version>0.2.9+gitr706_06b9cb351610</version>
+    <time>1529666191</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617849</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9d4c9c14d22f0a9c36aecc6292cd27ea</srcmd5>
+    <version>1.1.2</version>
+    <time>1536147983</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>632122</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>511b8375b81854e3b6fa1ed4bcf638ad</srcmd5>
+    <version>1.1.2</version>
+    <time>1542012586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646394</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>e9b3b131aac292f3eb0eb095eebf9afd</srcmd5>
+    <version>1.1.2</version>
+    <time>1548061624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664601</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>632079145c2e5c0cced04e5f14efe4bc</srcmd5>
+    <version>1.2.2</version>
+    <time>1550048269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Docker 18.09.1-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1124308</comment>
+    <requestid>672796</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8936902f8c8eb60ae42af307dd994985</srcmd5>
+    <version>1.2.4</version>
+    <time>1553635684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688118</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8db136be5be40dd672e2d7610e166433</srcmd5>
+    <version>1.2.5</version>
+    <time>1557169989</time>
+    <user>dimstar_suse</user>
+    <comment>Docker update to 18.09.5-ce.</comment>
+    <requestid>700632</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3e4e795be850808117bdf7fc90fd2c13</srcmd5>
+    <version>1.2.6</version>
+    <time>1561882744</time>
+    <user>dimstar_suse</user>
+    <comment>Docker v18.09.7 update.</comment>
+    <requestid>712297</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>03b9b510a5478b675420016bfdc88b73</srcmd5>
+    <version>1.2.6</version>
+    <time>1565005245</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>720988</requestid>
+  </revision>
+</revisionlist>

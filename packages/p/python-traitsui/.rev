@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6217761a498bb4a2d1a1f51a8c31243c</srcmd5>
+    <version>6.0.0</version>
+    <time>1527605253</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-enable</comment>
+    <requestid>605850</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bce2f7e5391e25d0394818cdf40e839a</srcmd5>
+    <version>6.1.2</version>
+    <time>1564137797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718631</requestid>
+  </revision>
+</revisionlist>

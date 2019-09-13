@@ -1,0 +1,7 @@
+<package name="ocl-icd" project="openSUSE:Factory">
+  <title>OpenCL Installable Client Driver Bindings (ICD Bindings)</title>
+  <description>OpenCL is a royalty-free standard for cross-platform, parallel programming of modern processors found in personal computers, servers and handheld/embedded devices.
+
+This package provides an Installable Client Driver Bindings (ICD Bindings). The provided libOpenCL library is able to load any free or non-free installed ICD (driver backend).</description>
+  <devel project="science" package="ocl-icd"/>
+</package>

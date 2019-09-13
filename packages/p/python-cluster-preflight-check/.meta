@@ -1,0 +1,5 @@
+<package name="python-cluster-preflight-check" project="openSUSE:Factory">
+  <title>python-cluster-preflight-check</title>
+  <description>Tool for Standardize Testing of Basic Cluster Functionality</description>
+  <devel project="network:ha-clustering:Factory" package="python-cluster-preflight-check"/>
+</package>

@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51ad6d6a17f05c17a655ba1c3da7a34b</srcmd5>
+    <version>0.15</version>
+    <time>1415748060</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>260211</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4491deac85d326f4e4a4da25afe41b88</srcmd5>
+    <version>0.20</version>
+    <time>1435652060</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20
+- adjust the linker order which caused the compilation error in pesign
+- fix a bug which cause the error in deletion
+- Use default CFLAGS
+- Drop upstreamed patche</comment>
+    <requestid>313395</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4e078c2e1b07965ba57a55d012e9b1a1</srcmd5>
+    <version>0.21</version>
+    <time>1450856897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21
+- Update the source link
+- Add efivar-fix-initializer.patch to initialize ifreq properly
+- Drop patches
+  + efivar-fix-vars_del_variable.patch: upstreamed
+  + efivar-revert-linker-order.patch: not necessary</comment>
+    <requestid>346967</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7e12f06f83d30564ce7a5114729d42ae</srcmd5>
+    <version>0.23</version>
+    <time>1458121377</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368931</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ce1c7c0fde35bbe825df63d29d867dd1</srcmd5>
+    <version>0.23</version>
+    <time>1460837269</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389079</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>740e07f087ced6f98f823c3c7b3610cf</srcmd5>
+    <version>0.24</version>
+    <time>1468998915</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408177</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bc7583497bb63cba23d94dfb9cea1657</srcmd5>
+    <version>0.24</version>
+    <time>1486773559</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455651</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>43fada46d08a48be7082158f8669ae6e</srcmd5>
+    <version>31</version>
+    <time>1489241941</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478067</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>036141837b61978d54512e18f9faa1e9</srcmd5>
+    <version>31</version>
+    <time>1490965515</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482383</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d63a8fa30048558f3d8f0f253ceabe71</srcmd5>
+    <version>36</version>
+    <time>1530566876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619118</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>bbd79a059072303cea49bf1200c03d4c</srcmd5>
+    <version>31</version>
+    <time>1530692128</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to version 31</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>46e3e463b822930b870bf565040b455f</srcmd5>
+    <version>36</version>
+    <time>1530697050</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to version 36</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>48196f98d3ec00116ce1f00c37e8d98c</srcmd5>
+    <version>35</version>
+    <time>1532177960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623076</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ad98fc384080024e68fd6ece73548c4b</srcmd5>
+    <version>35</version>
+    <time>1532681419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625007</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>f2c2a32184851dcb8c23ab15084a6539</srcmd5>
+    <version>35</version>
+    <time>1548769472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666148</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fc136c62f3737f252771ddd7cba78211</srcmd5>
+    <version>37</version>
+    <time>1551215642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678182</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>d824352290ad5ab8fceca20955e7713d</srcmd5>
+    <version>37</version>
+    <time>1552380469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682663</requestid>
+  </revision>
+</revisionlist>

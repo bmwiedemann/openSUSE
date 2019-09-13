@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9707d6048f3dbf239145fcb88dfd605a</srcmd5>
+    <version>19.1.0</version>
+    <time>1554384166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.1.0:
+  * structlog.ReturnLogger and structlog.PrintLogger now have
+    a fatal() log method. #181
+  * Under certain (rather unclear) circumstances, the frame
+    extraction could throw an SystemError: error return without
+    exception set. A workaround has been added. #174
+  * structlog now tolerates passing through dicts to stdlib
+    logging. #187 #188 #189
+- Use pytest macro
+- Fix source address and add missing source.
+- Version update to 18.2.0
+  * Added structlog.stdlib.add_log_level_number() processor that adds the level
+    number to the event dictionary. Can be used to simplify log filtering.
+  * structlog.processors.JSONRenderer now allows for overwriting the default
+    argument of its serializer.
+  * Added try_unbind() that works like unbind() but doesn't raise a KeyError if
+    one of the keys is missing. #171
+- Initial packaging of version 18.1.0 
+</comment>
+    <requestid>690882</requestid>
+  </revision>
+</revisionlist>

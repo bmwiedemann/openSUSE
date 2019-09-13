@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="88">
+    <srcmd5>90a2617c2403eed8db5d25156dc04de4</srcmd5>
+    <version>3.3.1</version>
+    <time>1168614857</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="197">
+    <srcmd5>90a2617c2403eed8db5d25156dc04de4</srcmd5>
+    <version>3.3.1</version>
+    <time>1168614857</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="198">
+    <srcmd5>96671492c8e0a2faeae88136eeb6bf58</srcmd5>
+    <version>3.3.1</version>
+    <time>1245259383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="200">
+    <srcmd5>96671492c8e0a2faeae88136eeb6bf58</srcmd5>
+    <version>3.3.1</version>
+    <time>1245259383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="201">
+    <srcmd5>da11f36468a7a17b388acd7564017779</srcmd5>
+    <version>3.3.1</version>
+    <time>1264075893</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/docbook-xml-slides based on submit request 29855 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="202">
+    <srcmd5>cf50aa6d4f676bc02daf605da87ddd0c</srcmd5>
+    <version>3.3.1</version>
+    <time>1268923374</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="204">
+    <srcmd5>cf50aa6d4f676bc02daf605da87ddd0c</srcmd5>
+    <version>3.3.1</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="205">
+    <srcmd5>cf50aa6d4f676bc02daf605da87ddd0c</srcmd5>
+    <version>3.3.1</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="208">
+    <srcmd5>cf50aa6d4f676bc02daf605da87ddd0c</srcmd5>
+    <version>3.3.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="209">
+    <srcmd5>ddc874c2b851e8b7ee4aade9ba91dc4f</srcmd5>
+    <version>3.3.1</version>
+    <time>1316443473</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines) (forwarded request 83277 from jengelh)</comment>
+    <requestid>83336</requestid>
+  </revision>
+  <revision rev="11" vrev="211">
+    <srcmd5>ddc874c2b851e8b7ee4aade9ba91dc4f</srcmd5>
+    <version>3.3.1</version>
+    <time>1319181852</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="212">
+    <srcmd5>2da67be7eb80313cd02038ed199e1aac</srcmd5>
+    <version>3.3.1</version>
+    <time>1323191209</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="214">
+    <srcmd5>2da67be7eb80313cd02038ed199e1aac</srcmd5>
+    <version>3.3.1</version>
+    <time>1340183287</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="216">
+    <srcmd5>2da67be7eb80313cd02038ed199e1aac</srcmd5>
+    <version>3.3.1</version>
+    <time>1359108821</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="218">
+    <srcmd5>2da67be7eb80313cd02038ed199e1aac</srcmd5>
+    <version>3.3.1</version>
+    <time>1379662243</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="220">
+    <srcmd5>2da67be7eb80313cd02038ed199e1aac</srcmd5>
+    <version>3.3.1</version>
+    <time>1409300777</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

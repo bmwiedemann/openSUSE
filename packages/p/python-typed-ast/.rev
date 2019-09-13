@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b688bf2e16cdbe6350d2208ec2808669</srcmd5>
+    <version>1.0.4</version>
+    <time>1501840709</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>508402</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>78aa3b8224641baf9f87e0e5da73dcc0</srcmd5>
+    <version>1.1.0</version>
+    <time>1502366774</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>515342</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>74cdb97f12ca68f83899181a8be8ba85</srcmd5>
+    <version>1.1.0</version>
+    <time>1537787512</time>
+    <user>dimstar_suse</user>
+    <comment>- Use license macro for license install</comment>
+    <requestid>636818</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f5ab0112089338d449761fbed1c673c6</srcmd5>
+    <version>1.2.0</version>
+    <time>1548537515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0:
+ * Fix conversions.py2to3 on unicode strings (#67)
+ * Fix remaining calls to Str without a kind (#68)
+ * Add &quot;Python :: 3.7&quot; to the classifiers list
+ * Some docs updates (#73)
+- Update to version 1.1.1:
+ * Add __version__ string and tweak versioning scheme
+ * Point to the Python 3.6 commits as examples of how to update typed_ast (
+ * Add section on development philosophy
+ * Add information about the release process.
+ * Document Google Cloud Storage artifact deployment
+ * Preserve string kind modifiers
+ * Add docs for Str.kind
+</comment>
+    <requestid>667870</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eab3b2fe69fbd88f6bd2cb24cdb004e6</srcmd5>
+    <version>1.3.1</version>
+    <time>1551215756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.1:
+ * Disallow two type comments on one def
+ * Fix memory leaks caused by type comment parsing (#91)
+ * Fix some broken asserts relating to handling of async keyword (#92)
+ * Check NEW_TYPE_COMMENT calls for failure (#93)
+- Update to version 1.3.0:
+ * Fully incorporate the code from Python 3.7.2
+ * Fix some compiler warnings
+ * Add a kind field to Bytes as well (#83) 
+ * Fix await in functions with type comments (#86) 
+ * Put _ast3 and _ast27 in the typed_ast package (#85) 
+ * Fix f-string parsing to not think everything is a set (#87)
+</comment>
+    <requestid>679040</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>da5c64334760136ee720898a796809e7</srcmd5>
+    <version>1.3.5</version>
+    <time>1557263587</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %pytest_arch
+- Add missing fdupes call
+
+- version update to 1.3.5
+  *  Counteract PyTuple_SetItem stealing reference in _PyObject_FastCall
+     fallback (#104)
+- run tests
+
+- update to version 1.3.4:
+ * Oops: add the pgenheaders files to the depends lists
+- update to version 1.3.3:
+ * Don't rely on Python's pgenheaders.h (#101)
+- update to version 1.3.2:
+ * Fix two out-of-bounds array reads (#99)</comment>
+    <requestid>701279</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c1781281893012242495ddd561bdc78e</srcmd5>
+    <version>1.3.5</version>
+    <time>1557654221</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use the %pytest_arch call but expand it as the tests
+  seem to need more verbosity otherwise they fail sometimes
+  (fishy, but works)</comment>
+    <requestid>701990</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1cebb556f62acec2a9234e3cbdcc132f</srcmd5>
+    <version>1.4.0</version>
+    <time>1561195364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710325</requestid>
+  </revision>
+</revisionlist>

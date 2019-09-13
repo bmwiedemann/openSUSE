@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db30af6c9057d26e630be5f9f13fbdbc</srcmd5>
+    <version>0.1</version>
+    <time>1338286742</time>
+    <user>coolo</user>
+    <comment>needed for pulseaudio 2.0 (see SR 122080 and SR 122081 (review))</comment>
+    <requestid>122089</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>db30af6c9057d26e630be5f9f13fbdbc</srcmd5>
+    <version>0.1</version>
+    <time>1340184321</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1679c7b02bc0f042f1ff9a779546d51b</srcmd5>
+    <version>0.1</version>
+    <time>1342100360</time>
+    <user>namtrac</user>
+    <comment>- add ppc64 to known platforms (forwarded request 127039 from k0da)</comment>
+    <requestid>127733</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4a1e43cbd17c121c4e42039e4a50f809</srcmd5>
+    <version>0.1</version>
+    <time>1357128129</time>
+    <user>namtrac</user>
+    <comment>- add s390 and s390x to known platforms 
+  by adding webrtc-s390x.patch (forwarded request 145836 from oertel)</comment>
+    <requestid>146745</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>4a1e43cbd17c121c4e42039e4a50f809</srcmd5>
+    <version>0.1</version>
+    <time>1359110565</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>140c59dfef877d26510ae870a5998f9a</srcmd5>
+    <version>0.1</version>
+    <time>1362736917</time>
+    <user>coolo</user>
+    <comment>- Add patch webrtc-aarch64.patch from algraf to add aarch64 support</comment>
+    <requestid>157852</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>140c59dfef877d26510ae870a5998f9a</srcmd5>
+    <version>0.1</version>
+    <time>1379664954</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>140c59dfef877d26510ae870a5998f9a</srcmd5>
+    <version>0.1</version>
+    <time>1409303633</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d93e03ebf6e2dc7b9a780dd4abab391e</srcmd5>
+    <version>0.3</version>
+    <time>1467359714</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404795</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9f6ca22601820cb9b32ed21a2364b205</srcmd5>
+    <version>0.3</version>
+    <time>1485379898</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf for gstreamer-plugins-bad-32bit (forwarded request 451390 from olh)</comment>
+    <requestid>451393</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b1e152a99dc4c33c9595f0541694e0c8</srcmd5>
+    <version>0.3</version>
+    <time>1567677777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720522</requestid>
+  </revision>
+</revisionlist>

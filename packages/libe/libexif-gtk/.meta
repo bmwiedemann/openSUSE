@@ -1,0 +1,6 @@
+<package name="libexif-gtk" project="openSUSE:Factory">
+  <title>GTK Widgets for Viewing EXIF Information</title>
+  <description>This library contains GTK widgets for viewing EXIF information within
+JPEG images created by some digital cameras.</description>
+  <devel project="graphics" package="libexif-gtk"/>
+</package>

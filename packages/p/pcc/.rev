@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6e549d627931dd673b8d86a9b11ef46</srcmd5>
+    <version>1.0.0</version>
+    <time>1315319518</time>
+    <user>saschpe</user>
+    <comment>Please add pcc, the portable C compiler, to Factory.</comment>
+    <requestid>80776</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4080f64ce26e0506f13183f44ff61b36</srcmd5>
+    <version>1.0.0</version>
+    <time>1315319533</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80776
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4080f64ce26e0506f13183f44ff61b36</srcmd5>
+    <version>1.0.0</version>
+    <time>1319182232</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>ae06637cd32bb91cb33612725512bd31</srcmd5>
+    <version>1.0.0</version>
+    <time>1323961625</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95089 from coolo)</comment>
+    <requestid>95211</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>2581c8058bc29b53c8376d316c6d6072</srcmd5>
+    <version>1.0.0</version>
+    <time>1328201936</time>
+    <user>coolo</user>
+    <comment>- disable build for PPC since it it broken (see
+  http://thread.gmane.org/gmane.comp.compilers.pcc/2391)</comment>
+    <requestid>102456</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>4b0e22cc9506737eb2746320c6978b11</srcmd5>
+    <version>1.0.0</version>
+    <time>1331037613</time>
+    <user>coolo</user>
+    <comment>- disable build on platforms not supported</comment>
+    <requestid>108056</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>4b0e22cc9506737eb2746320c6978b11</srcmd5>
+    <version>1.0.0</version>
+    <time>1340183781</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>4b0e22cc9506737eb2746320c6978b11</srcmd5>
+    <version>1.0.0</version>
+    <time>1359109581</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>4b0e22cc9506737eb2746320c6978b11</srcmd5>
+    <version>1.0.0</version>
+    <time>1379663521</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>4b0e22cc9506737eb2746320c6978b11</srcmd5>
+    <version>1.0.0</version>
+    <time>1409302127</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,577 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ce2eec6fd9d540171198a8aecb82074</srcmd5>
+    <version>0.11.94</version>
+    <time>1348573266</time>
+    <user>coolo</user>
+    <comment>Add gstreamer 1.0 branch to Factory; dependency to GNOME 3.6</comment>
+    <requestid>134446</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c2118cb656d9508ccc1155a5fd249c79</srcmd5>
+    <version>1.0.0</version>
+    <time>1349037929</time>
+    <user>dimstar</user>
+    <comment> (forwarded request 135704 from dimstar)</comment>
+    <requestid>135877</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>91c39bd8c7101af0e1fba90573b6c5ac</srcmd5>
+    <version>1.0.1</version>
+    <time>1349944933</time>
+    <user>coolo</user>
+    <comment> (forwarded request 137685 from dimstar)</comment>
+    <requestid>137694</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>605006e4b97685493c9c642e03f43b96</srcmd5>
+    <version>1.0.2</version>
+    <time>1351264050</time>
+    <user>coolo</user>
+    <comment>Update to 1.0.2 (forwarded request 139281 from dimstar)</comment>
+    <requestid>139378</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>178350bfa41ca60fe5ac480219f813f6</srcmd5>
+    <version>1.0.3</version>
+    <time>1353787236</time>
+    <user>coolo</user>
+    <comment>Update to 1.0.3 (forwarded request 142343 from dimstar)</comment>
+    <requestid>142427</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79f498c6d301a5a539db06b6cebf1965</srcmd5>
+    <version>1.0.4</version>
+    <time>1355946424</time>
+    <user>coolo</user>
+    <comment> (forwarded request 145842 from dimstar)</comment>
+    <requestid>145848</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7a850b007cac71be3c4d97ba2b1a38df</srcmd5>
+    <version>1.0.5</version>
+    <time>1357816331</time>
+    <user>coolo</user>
+    <comment> (forwarded request 147704 from dimstar)</comment>
+    <requestid>147813</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7a850b007cac71be3c4d97ba2b1a38df</srcmd5>
+    <version>1.0.5</version>
+    <time>1359109013</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>84b4d68ef728279406e0ff7afc19ed85</srcmd5>
+    <version>1.0.6</version>
+    <time>1364158539</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.0.6 (forwarded request 160690 from Zaitor)</comment>
+    <requestid>160747</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>656f8b40415933ca989db08b8f7ebe71</srcmd5>
+    <version>1.0.7</version>
+    <time>1367485804</time>
+    <user>coolo</user>
+    <comment>Update to 1.0.7 (forwarded request 173755 from dimstar)</comment>
+    <requestid>173772</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>75b0fe578fe6f2118eaa08dc33ba9dbc</srcmd5>
+    <version>1.0.8</version>
+    <time>1373952917</time>
+    <user>coolo</user>
+    <comment> (forwarded request 182988 from dimstar)</comment>
+    <requestid>182991</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7f9201045d164ca171f2fb128f8a3034</srcmd5>
+    <version>1.0.9</version>
+    <time>1376911825</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 1.0.9, latest stable. (forwarded request 195498 from Zaitor)</comment>
+    <requestid>195535</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9908a1503d1aa0ed2ab66e75ece39055</srcmd5>
+    <version>1.0.10</version>
+    <time>1378295413</time>
+    <user>coolo</user>
+    <comment>Fixup of minor error in spec. (forwarded request 197107 from Zaitor)</comment>
+    <requestid>197111</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>9908a1503d1aa0ed2ab66e75ece39055</srcmd5>
+    <version>1.0.10</version>
+    <time>1379662569</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e7b3fa5dd81107b5253645b5196e5e7d</srcmd5>
+    <version>1.2.0</version>
+    <time>1383545182</time>
+    <user>coolo</user>
+    <comment> (forwarded request 205313 from dimstar)</comment>
+    <requestid>205503</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c118d5c8a2fb81d6487fef461665930a</srcmd5>
+    <version>1.2.1</version>
+    <time>1384776580</time>
+    <user>scarabeus_factory</user>
+    <comment> (forwarded request 206534 from dimstar)</comment>
+    <requestid>206604</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>08a3577b60ad19e5525f481c8f67575b</srcmd5>
+    <version>1.2.2</version>
+    <time>1388917831</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.2.2, pure bugfix relase. On shitty hotell wifi, so buildtestet only. (forwarded request 212514 from Zaitor)</comment>
+    <requestid>212798</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4b6e2122e6097fc738db4b0817c2a37b</srcmd5>
+    <version>1.2.3</version>
+    <time>1392222131</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.2.3 (forwarded request 221551 from Zaitor)</comment>
+    <requestid>221716</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>6e3eda65e79ea9e116074c10c7b3f2d8</srcmd5>
+    <version>1.2.3</version>
+    <time>1392789341</time>
+    <user>coolo</user>
+    <comment>Fix build with future gtk-doc version (forwarded request 222668 from dimstar)</comment>
+    <requestid>222704</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>7c076a6564b46425c3af4c3d65318b5e</srcmd5>
+    <version>1.2.3</version>
+    <time>1392989141</time>
+    <user>coolo</user>
+    <comment>Add patch that I'm entirely sure we actually need since it builds fine without it.
+
+From the patch header
+
++From a4fd0f9351ee319f850aca2acb42f8856a2c1a12 Mon Sep 17 00:00:00 2001
++From: Stefan Sauer &lt;ensonic@users.sf.net&gt;
++Date: Tue, 18 Feb 2014 21:54:45 +0000
++Subject: docs: use docbook markup for xi:include
++
++It turns out that the change in gtk-doc-1.20 which wraps the |[]| content in
++CDATA break xi:inlcude examples. As in a whole jhbuild checkout these where
++the only 4, we're fixing them instead. (forwarded request 223302 from Zaitor)</comment>
+    <requestid>223303</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>765cf5b20e775b00f39b979ff0a86424</srcmd5>
+    <version>1.2.4</version>
+    <time>1398503078</time>
+    <user>coolo</user>
+    <comment> (forwarded request 231451 from dimstar)</comment>
+    <requestid>231468</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bb16df8ad43618ce96747685d3738f7e</srcmd5>
+    <version>1.4.0</version>
+    <time>1406442289</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.4.0:
+  + Bugs fixed: bgo#732912, bgo#733122, bgo#733190, bgo#733380.
+  + Updated translations.
+- Package baselibs.conf.
+
+- Update to version 1.3.91:
+  + Various API additions.
+  + New plugins and elements:
+    - v4l2videodec element for accessing hardware codecs on
+      platforms that make them accessible via V4L2.
+    - New downloadbuffer element that replaces the download
+      buffering feature of queue2.
+    - rtpstreampay and rtpstreamdepay elements for transmitting RTP
+      packets over a stream API (e.g. TCP) according to RFC 4571.
+    - rtprtx elements for standard compliant implementation of
+      retransmissions, integrated into the rtpmanager plugin.
+    - audiomixer element that mixes multiple audio streams together
+      into a single one while keeping synchronization.
+    - OpenNI2 plugin for 3D cameras like the Kinect camera.
+    - OpenEXR plugin for decoding high-dynamic-range EXR images.
+    - curlsshsink and curlsftpsink to write files via SSH/SFTP.
+    - videosignal, ivfparse and sndfile plugins ported from 0.10.
+    - avfvideosrc, vtdec and other elements were ported from 0.10
+      and are available on OS X and iOS now.
+  + Other changes:
+    - gst-libav now uses libav 10.1, and gained support for
+      H265/HEVC.
+    - Support for hardware codecs and special memory types has been
+      improved with bugfixes and feature additions in various
+      plugins and base classes.</comment>
+    <requestid>242090</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>bb16df8ad43618ce96747685d3738f7e</srcmd5>
+    <version>1.4.0</version>
+    <time>1409301117</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>36f736c5a64440acbbbf5fde2d7add9d</srcmd5>
+    <version>1.4.1</version>
+    <time>1409583539</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246975</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>eb7d8b926ba80cc653a47614d2e0a6d4</srcmd5>
+    <version>1.4.2</version>
+    <time>1411404619</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250459</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>bb6f7cfe9131687ae3804618c72c34dd</srcmd5>
+    <version>1.4.3</version>
+    <time>1411721476</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>251797</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>b89071001d6f447df60ce3a1df2efdb2</srcmd5>
+    <version>1.4.3</version>
+    <time>1414613360</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258235</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bd9689c3c00964137d37259d9d026648</srcmd5>
+    <version>1.4.4</version>
+    <time>1416347739</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261659</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9dd1d4b862c433ae8f7f6ec815927b0b</srcmd5>
+    <version>1.4.5</version>
+    <time>1420021333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.5:
+  + Bugs fixed: bgo#711437, bgo#726194, bgo#736397, bgo#737603,
+    bgo#739476, bgo#739722, bgo#739789, bgo#739791, bgo#739792,
+    bgo#739996, bgo#740040, bgo#740392, bgo#740407, bgo#740633,
+    bgo#740636, bgo#740671, bgo#740905, bgo#741271, bgo#741381,
+    bgo#741407, bgo#737579, bgo#739754.
+  + Updated translations.</comment>
+    <requestid>266621</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>9a6a00ef3c7eafc9324042570723561f</srcmd5>
+    <version>1.4.5</version>
+    <time>1431248171</time>
+    <user>coolo</user>
+    <comment>- Use manuel Requires for gstreamer-plugins-base and gstreamer:
+  the source_validator service has some issues finding the tarball
+  otherwise. (forwarded request 305867 from dimstar)</comment>
+    <requestid>305868</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>004e153cad951ed9066952e6073da73e</srcmd5>
+    <version>1.6.1</version>
+    <time>1448400551</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345079</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d86792b6574254ece97ecbed956ba796</srcmd5>
+    <version>1.6.2</version>
+    <time>1454491081</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354542</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>05ac1deefbaa7db51634a075193d081d</srcmd5>
+    <version>1.6.3</version>
+    <time>1455272504</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357490</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>24dd481bf76709f4261b7e1ec88b2de5</srcmd5>
+    <version>1.8.0</version>
+    <time>1462051717</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>391592</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ee89a005a87e03b35fa3407c3c128311</srcmd5>
+    <version>1.8.1</version>
+    <time>1462342716</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393208</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>c9c0e9f90fa171158fe42a5bcc7d8c48</srcmd5>
+    <version>1.8.1</version>
+    <time>1465480656</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400184</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>3428e165f106374cf14195708d8a91fe</srcmd5>
+    <version>1.8.2</version>
+    <time>1467359767</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402078</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0cc081ddc774e90f4e72f274209f3090</srcmd5>
+    <version>1.8.3</version>
+    <time>1473241304</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424383</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>fc69699f8d7a16f417f69a874c25e867</srcmd5>
+    <version>1.8.3</version>
+    <time>1478174151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438160</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c783c5ccdf05f04a0b5ba8fac0d66bc3</srcmd5>
+    <version>1.10.2</version>
+    <time>1481272438</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444157</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>0ba85ff908b9fd889f1aed91dc7e8a91</srcmd5>
+    <version>1.10.3</version>
+    <time>1486045619</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453510</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>6b225b58358ec42965a4719cdeeae830</srcmd5>
+    <version>1.10.3</version>
+    <time>1487029051</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455846</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>14178ed4da0433fd5d053016c77b0300</srcmd5>
+    <version>1.10.4</version>
+    <time>1488218028</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460484</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5160561bd6e8cf6f67b0b2a753729df5</srcmd5>
+    <version>1.12.0</version>
+    <time>1497786458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495717</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a080f24b3ac3257221c7a60690dd2a4c</srcmd5>
+    <version>1.12.1</version>
+    <time>1498638761</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505415</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>7c74d6a25b6ef232b1a78cf086d6770b</srcmd5>
+    <version>1.12.2</version>
+    <time>1500274996</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510509</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>f1b6d03655d15b723e1a8cb3e276398d</srcmd5>
+    <version>1.12.2</version>
+    <time>1504520227</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519753</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3a36432aa86285fe1ac2acb78caedbfc</srcmd5>
+    <version>1.12.3</version>
+    <time>1506340562</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528114</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>5525f7e39468b09be546da1b7a722fea</srcmd5>
+    <version>1.12.3</version>
+    <time>1512386082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546682</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>44632127ba2810312f4a1db5a23c73a8</srcmd5>
+    <version>1.12.4</version>
+    <time>1513245154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556044</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>8faaab594b925b7bc5b342a7034a5a80</srcmd5>
+    <version>1.12.4</version>
+    <time>1514840809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560097</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>02ce0f9ac6f5da1237f30029d6306e3f</srcmd5>
+    <version>1.12.4</version>
+    <time>1519218584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578198</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>8910f11ee559f8e0690925f59df6a061</srcmd5>
+    <version>1.12.4</version>
+    <time>1520021297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581584</requestid>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>e6449d8ab1dec962dc992ddcb4b2fc6f</srcmd5>
+    <version>1.12.4</version>
+    <time>1521904065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589671</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>90b2259e0304ea72bba5e5c8a103814c</srcmd5>
+    <version>1.12.5</version>
+    <time>1522702106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592330</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>d7a557ccb6173f0a7f6ffff81eb153f6</srcmd5>
+    <version>1.14.1</version>
+    <time>1527582409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611164</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>ed1e59cb1b796418568a958922cd5586</srcmd5>
+    <version>1.14.1</version>
+    <time>1530191361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618587</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>50ded941d6a33e9002909002e2de98b3</srcmd5>
+    <version>1.14.2</version>
+    <time>1532681591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624904</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>5149d3a85f37a75bcd136121cf2542a2</srcmd5>
+    <version>1.14.3</version>
+    <time>1538501985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638674</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>c6f8424888e7663c700690cd4a0a64ad</srcmd5>
+    <version>1.14.4</version>
+    <time>1539250952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639893</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>37605f972701830a509dd72d146c226a</srcmd5>
+    <version>1.14.4</version>
+    <time>1549630014</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672686</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>22a216131ef457bd9876e403088a50e0</srcmd5>
+    <version>1.14.4</version>
+    <time>1552299264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682991</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>17b9bd33e5ec99283de6ccfbc2f2287a</srcmd5>
+    <version>1.14.5</version>
+    <time>1560458062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707915</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>beb09a478c441f4617ee6668ccd555a6</srcmd5>
+    <version>1.16.0</version>
+    <time>1561882699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711860</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>15694be89d6398d7320350e4317adad5</srcmd5>
+    <version>1.16.0</version>
+    <time>1563361971</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing pkgconfig(Qt5X11Extras) BuildRequires: Needed to
+  build Qt X11 integration.
+</comment>
+    <requestid>714165</requestid>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>d01c2eff4f5f3b0b1d406f754d3d0ca2</srcmd5>
+    <version>1.16.0</version>
+    <time>1566912313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725939</requestid>
+  </revision>
+</revisionlist>

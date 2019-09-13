@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8bed255ce14790d436c5440cef6069a6</srcmd5>
+    <version>1.5.0</version>
+    <time>1326796487</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>99737</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8bed255ce14790d436c5440cef6069a6</srcmd5>
+    <version>1.5.0</version>
+    <time>1340183941</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>8bed255ce14790d436c5440cef6069a6</srcmd5>
+    <version>1.5.0</version>
+    <time>1359109829</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>8bed255ce14790d436c5440cef6069a6</srcmd5>
+    <version>1.5.0</version>
+    <time>1379663894</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>8bed255ce14790d436c5440cef6069a6</srcmd5>
+    <version>1.5.0</version>
+    <time>1409302541</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>82486881fe86afe6aa43faa6b6d16e0a</srcmd5>
+    <version>1.6.3</version>
+    <time>1429346392</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297283</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5aa6d21286adcb320307278065333831</srcmd5>
+    <version>1.6.5</version>
+    <time>1429769107</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298608</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>907426599ccbd827715e558af73fdb11</srcmd5>
+    <version>1.6.5</version>
+    <time>1522225982</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build (forwarded request 588047 from bmwiedemann)</comment>
+    <requestid>591561</requestid>
+  </revision>
+</revisionlist>

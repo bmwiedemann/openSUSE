@@ -1,0 +1,241 @@
+<revisionlist>
+  <revision rev="1" vrev="57">
+    <srcmd5>80945c9b24ce41a57c38692c3a0ea749</srcmd5>
+    <version>1.12.code10.3</version>
+    <time>1203035253</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="115">
+    <srcmd5>80945c9b24ce41a57c38692c3a0ea749</srcmd5>
+    <version>1.12.code10.3</version>
+    <time>1203035253</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="115">
+    <srcmd5>dc0292820e0576fe315e30fdd0f06d31</srcmd5>
+    <version>1.12.code10.3.1</version>
+    <time>1245365787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="116">
+    <srcmd5>01da64c67f14c96ce09622d262784c03</srcmd5>
+    <version>1.12.code10.3.1</version>
+    <time>1245464166</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="118">
+    <srcmd5>01da64c67f14c96ce09622d262784c03</srcmd5>
+    <version>1.12.code10.3.1</version>
+    <time>1245464166</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="119">
+    <srcmd5>79fa94fd8c7460d1cbda90e99084fab1</srcmd5>
+    <version>1.12.code10.3.1</version>
+    <time>1257328859</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/ladspa based on submit request 23626 from user tiwai
+</comment>
+  </revision>
+  <revision rev="7" vrev="120">
+    <srcmd5>e9eb5283216d2197a329c33a7e452405</srcmd5>
+    <version>1.12.code10.3.1</version>
+    <time>1258393634</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/ladspa based on submit request 24535 from user tiwai
+</comment>
+  </revision>
+  <revision rev="8" vrev="121">
+    <srcmd5>7a94a6d5ad20640abc2fd7be354baac2</srcmd5>
+    <version>1.12.code10.3.1</version>
+    <time>1258540538</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/ladspa based on submit request 24557 from user tiwai
+</comment>
+  </revision>
+  <revision rev="9" vrev="122">
+    <srcmd5>7538e60a0cf77868d1644b8ec5a1054a</srcmd5>
+    <version>1.12.code10.3.1</version>
+    <time>1259329399</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/ladspa based on submit request 25130 from user tiwai
+</comment>
+  </revision>
+  <revision rev="10" vrev="123">
+    <srcmd5>085a421179fece45a55d1988fc95d83d</srcmd5>
+    <version>1.12.code10.3.1</version>
+    <time>1268924456</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4f5059a355dbb29b3424d91bc4c75ea8</srcmd5>
+    <version>1.13</version>
+    <time>1270246859</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/ladspa based on submit request 36762 from user plater
+</comment>
+    <requestid>36762</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a0906d835c0ff138a8c81a6881430544</srcmd5>
+    <version>1.13</version>
+    <time>1271371284</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/ladspa based on submit request 37909 from user plater
+</comment>
+    <requestid>37909</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>5d304c3e98c51e5af36b90a9f96227e8</srcmd5>
+    <version>1.13</version>
+    <time>1272214305</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/ladspa based on submit request 38567 from user plater
+</comment>
+    <requestid>38567</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>5d304c3e98c51e5af36b90a9f96227e8</srcmd5>
+    <version>1.13</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>5d304c3e98c51e5af36b90a9f96227e8</srcmd5>
+    <version>1.13</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>5d304c3e98c51e5af36b90a9f96227e8</srcmd5>
+    <version>1.13</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>dbf4efd0d840e79e5f787bfd30495987</srcmd5>
+    <version>1.13</version>
+    <time>1304584552</time>
+    <user>saschpe</user>
+    <comment>Added 32bit compatibility libraries, Removed tests for obsolete openSUSE versions, Fixed self-obsoletes (fix for RPMLINT warning) (forwarded request 69461 from TheBlackCat)</comment>
+    <requestid>69607</requestid>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>ef65d5a6140bcce363e43b4b1a4e783a</srcmd5>
+    <version>1.13</version>
+    <time>1304584571</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69607
+</comment>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>ef65d5a6140bcce363e43b4b1a4e783a</srcmd5>
+    <version>1.13</version>
+    <time>1319182063</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>1bde368c5f278564408e8f661b343b35</srcmd5>
+    <version>1.13</version>
+    <time>1321268184</time>
+    <user>coolo</user>
+    <comment>add buildrequire libtool (forwarded request 91125 from coolo)</comment>
+    <requestid>91161</requestid>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>d92d6c9a33bc504e013f833f5fd33d08</srcmd5>
+    <version>1.13</version>
+    <time>1323192134</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>320db2ebbbe02e7ab13daef3946d783d</srcmd5>
+    <version>1.13</version>
+    <time>1323192135</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="16">
+    <srcmd5>dcf87b86c46c99456e1d576d062f96b0</srcmd5>
+    <version>1.13</version>
+    <time>1329400656</time>
+    <user>coolo</user>
+    <comment>- remove old %suse_update_config (forwarded request 104875 from coolo)</comment>
+    <requestid>104953</requestid>
+  </revision>
+  <revision rev="24" vrev="18">
+    <srcmd5>dcf87b86c46c99456e1d576d062f96b0</srcmd5>
+    <version>1.13</version>
+    <time>1340183544</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>dcf87b86c46c99456e1d576d062f96b0</srcmd5>
+    <version>1.13</version>
+    <time>1359109216</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="22">
+    <srcmd5>dcf87b86c46c99456e1d576d062f96b0</srcmd5>
+    <version>1.13</version>
+    <time>1379662854</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="23">
+    <srcmd5>02f41af6af13cff50b9e5850c523750b</srcmd5>
+    <version>1.13</version>
+    <time>1386843406</time>
+    <user>coolo</user>
+    <comment>- Merge ladspa-devel.spec into ladspa.spec; back to root, as OBS
+  doesn't like split packages (the submitreq always declined),
+  and the development activity of this package is pretty low, so
+  no worth to resist (forwarded request 209420 from tiwai)</comment>
+    <requestid>210502</requestid>
+  </revision>
+  <revision rev="28" vrev="24">
+    <srcmd5>6ea543a637994bee25a0c2bc5ef4a96c</srcmd5>
+    <version>1.13</version>
+    <time>1387259512</time>
+    <user>coolo</user>
+    <comment>split plugin to each own package (forwarded request 211072 from tiwai)</comment>
+    <requestid>211112</requestid>
+  </revision>
+  <revision rev="29" vrev="25">
+    <srcmd5>5acc1e1712b5a28ffc2130919380d8c5</srcmd5>
+    <version>1.13</version>
+    <time>1393936352</time>
+    <user>coolo</user>
+    <comment>- package the original tarball instead of re-packed tar.bz2 (forwarded request 224406 from tiwai)</comment>
+    <requestid>224407</requestid>
+  </revision>
+  <revision rev="30" vrev="27">
+    <srcmd5>5acc1e1712b5a28ffc2130919380d8c5</srcmd5>
+    <version>1.13</version>
+    <time>1409301449</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="28">
+    <srcmd5>547c01fb1a3d8e5c51b3cc9d816b09a3</srcmd5>
+    <version>1.13</version>
+    <time>1510240874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538911</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>cb166d413a5b3e0c83f1c40c32fb1a7e</srcmd5>
+    <version>1.15</version>
+    <time>1547211744</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.15</comment>
+    <requestid>663176</requestid>
+  </revision>
+</revisionlist>

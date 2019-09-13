@@ -1,0 +1,5 @@
+<package name="python-pyutf8" project="openSUSE:Factory">
+  <title></title>
+  <description>Python extension for dealing with valid and invalid UTF-8 strings</description>
+  <devel project="devel:languages:python" package="python-pyutf8"/>
+</package>

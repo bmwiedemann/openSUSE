@@ -1,0 +1,5 @@
+<package name="attractmode" project="openSUSE:Factory">
+  <title>AttractMode</title>
+  <description>Attract-Mode is a graphical frontend for command line emulators such as MAME, MESS and Nestopia. It hides the underlying operating system and is intended to be controlled with a joystick, gamepad or spinner, making it ideal for use in arcade cabinets.</description>
+  <devel project="games" package="attractmode"/>
+</package>

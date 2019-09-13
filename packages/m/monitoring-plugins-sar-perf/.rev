@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="100">
+    <srcmd5>705742a007ecffa694801192fc56b47f</srcmd5>
+    <version>0.1</version>
+    <time>1455190625</time>
+    <user>dimstar_suse</user>
+    <comment>New package for openSUSE:Factory: check the IO of your systems</comment>
+    <requestid>341694</requestid>
+  </revision>
+  <revision rev="2" vrev="101">
+    <srcmd5>3cc0a83744d1d4384a4b2f6cabde1a59</srcmd5>
+    <version>0.1</version>
+    <time>1493708098</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>492303</requestid>
+  </revision>
+  <revision rev="3" vrev="102">
+    <srcmd5>61fc59fe3af78ee30b122514534b68d7</srcmd5>
+    <version>0.1</version>
+    <time>1511426651</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>544408</requestid>
+  </revision>
+  <revision rev="4" vrev="103">
+    <srcmd5>13cf480134ceb7a9412a16369ae6e468</srcmd5>
+    <version>0.1</version>
+    <time>1530866916</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621119</requestid>
+  </revision>
+  <revision rev="5" vrev="104">
+    <srcmd5>3689f5ee35a294842ba99bc9e64f18da</srcmd5>
+    <version>0.1</version>
+    <time>1555488473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694435</requestid>
+  </revision>
+</revisionlist>

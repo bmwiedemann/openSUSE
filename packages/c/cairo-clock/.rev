@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>654ec5d97d52f0072f86ae84eeb2da83</srcmd5>
+    <version>0.3.4</version>
+    <time>1360059118</time>
+    <user>coolo</user>
+    <comment>New apps from G:A; they were blocked from entering because of licensing issues that got fixed a few weeks ago</comment>
+    <requestid>150845</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>654ec5d97d52f0072f86ae84eeb2da83</srcmd5>
+    <version>0.3.4</version>
+    <time>1379662081</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>654ec5d97d52f0072f86ae84eeb2da83</srcmd5>
+    <version>0.3.4</version>
+    <time>1409300608</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

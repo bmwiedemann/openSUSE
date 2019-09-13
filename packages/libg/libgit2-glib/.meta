@@ -1,0 +1,5 @@
+<package name="libgit2-glib" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="libgit2-glib"/>
+</package>

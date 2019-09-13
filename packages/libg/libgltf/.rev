@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55f55eb2a0b8a9c56e1ff10bc1458382</srcmd5>
+    <version>0.0.1</version>
+    <time>1412098820</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>252757</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b86a586597ab6fbcb80ec5ce9e517706</srcmd5>
+    <version>0.0.2</version>
+    <time>1462051389</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389358</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7801f942fdb86d4ce850be004411ee84</srcmd5>
+    <version>0.0.2</version>
+    <time>1487461314</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453858</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>431cbcfe9e850c088e1cf953b28aafb8</srcmd5>
+    <version>0.1.0</version>
+    <time>1497949234</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.1.0 release
+  * Switched to Epoxy for Wayland (forwarded request 498628 from scarabeus_iv)</comment>
+    <requestid>498629</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3ddeed4e490b5533a7120bdff296e157</srcmd5>
+    <version>0.1.0</version>
+    <time>1516092034</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the test condition as whole to reduce the size; the tests
+  will never run in OBS
+
+- Buildrequire Mesa-devel and libpng, only
+  if tests are being built and ran.
+- devel package requires glm-devel</comment>
+    <requestid>563655</requestid>
+  </revision>
+</revisionlist>

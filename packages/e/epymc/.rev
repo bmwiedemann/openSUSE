@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c3a194e5fa0c4923f10e213a518c024a</srcmd5>
+    <version>1.1.0.1</version>
+    <time>1440658540</time>
+    <user>coolo</user>
+    <comment>GPL-3.0+ and package COPYING, README.md, TODO</comment>
+    <requestid>324860</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>75940d63d542b4187e07794ff8ebb419</srcmd5>
+    <version>1.1.0.1</version>
+    <time>1446719735</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340752</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bcc34b51fb4589eb03fc81be2bf171cd</srcmd5>
+    <version>1.2.0</version>
+    <time>1475242397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>430710</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a50e6b0b1f5c13e7503dc8966d7d09f2</srcmd5>
+    <version>1.2.0</version>
+    <time>1499510099</time>
+    <user>dimstar_suse</user>
+    <comment>Disable for ix86 as python3-efl doesn't build there</comment>
+    <requestid>508681</requestid>
+  </revision>
+</revisionlist>

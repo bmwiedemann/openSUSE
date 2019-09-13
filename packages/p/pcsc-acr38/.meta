@@ -1,0 +1,9 @@
+<package name="pcsc-acr38" project="openSUSE:Factory">
+  <title>PC/SC IFD Handler for the ACR38 Smart Card Reader</title>
+  <description>This package contains a driver for the ACR 38 smart card reader
+produced by ACS.
+
+This driver is meant to be used with the PCSC-Lite daemon from the
+pcsc-lite package.</description>
+  <devel project="security:chipcard" package="pcsc-acr38"/>
+</package>

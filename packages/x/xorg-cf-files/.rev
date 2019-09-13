@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1059096127ab85205e3dbe3768353205</srcmd5>
+    <version>1.0.4</version>
+    <time>1336471566</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115478</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1059096127ab85205e3dbe3768353205</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184376</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3a0039329496ed7177db1322ac468ad3</srcmd5>
+    <version>1.0.4</version>
+    <time>1340725370</time>
+    <user>coolo</user>
+    <comment>- finally changed BuildRequires to font-util (see change before)</comment>
+    <requestid>126154</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>3a0039329496ed7177db1322ac468ad3</srcmd5>
+    <version>1.0.4</version>
+    <time>1359110667</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>d16b94c24a8692f0f5d479aabb6393e8</srcmd5>
+    <version>1.0.4</version>
+    <time>1362142959</time>
+    <user>coolo</user>
+    <comment>- add aarch64-support.diff:
+  Add support for aarch64 (forwarded request 156963 from dirkmueller)</comment>
+    <requestid>156966</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>e51be7eda238dfc2a1eb71c017158d78</srcmd5>
+    <version>1.0.4</version>
+    <time>1362462671</time>
+    <user>coolo</user>
+    <comment>- Add aarch64 to the list of lib64 platforms (forwarded request 157143 from Andreas_Schwab)</comment>
+    <requestid>157203</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>802f9e0e8b168cad09d01106846ce8cb</srcmd5>
+    <version>1.0.5</version>
+    <time>1376912117</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 1.0.5 (forwarded request 187063 from Zaitor)</comment>
+    <requestid>187069</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>802f9e0e8b168cad09d01106846ce8cb</srcmd5>
+    <version>1.0.5</version>
+    <time>1379665099</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>802f9e0e8b168cad09d01106846ce8cb</srcmd5>
+    <version>1.0.5</version>
+    <time>1409303785</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>42a4f56c8926857b621cf383b628c270</srcmd5>
+    <version>1.0.6</version>
+    <time>1451983230</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351122</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>500f3d92419da0fcde6d9667ce88fe64</srcmd5>
+    <version>1.0.6</version>
+    <time>1520160748</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581006</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>183f9581280220442cd361c633dd9197</srcmd5>
+    <version>1.0.6</version>
+    <time>1538502167</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer use $RPM_OPT_FLAGS in order to make it a real noarch
+  package (boo#1110020)</comment>
+    <requestid>638997</requestid>
+  </revision>
+</revisionlist>

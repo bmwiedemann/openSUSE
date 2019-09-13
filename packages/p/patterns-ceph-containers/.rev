@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5ed3f1bbce3f4680f5bf4fba1ed76e2b</srcmd5>
+    <version>1.0</version>
+    <time>1563914143</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename pattern according to the recomendations (replacing &quot;-&quot; with &quot;_&quot;)
+- Add missing packages (mgr) to the pattern 
+- Initial version
+</comment>
+    <requestid>717630</requestid>
+  </revision>
+</revisionlist>

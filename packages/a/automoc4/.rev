@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>0ca770630ef99ecc2c92ae9cfca50c32</srcmd5>
+    <version>0.0.svn803436</version>
+    <time>1210127318</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4388a28ed4eb7715429680a565886800</srcmd5>
+    <version>0.9.83</version>
+    <time>1214105581</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b4fbd671631bd3d87560dabd1ee10ae3</srcmd5>
+    <version>0.9.87</version>
+    <time>1218485717</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="23">
+    <srcmd5>d5e5bfa6220229ac24d1bd8fd9c7e840</srcmd5>
+    <version>0.9.87</version>
+    <time>1221493797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>95554f97e6b5562c178bec5b9470c488</srcmd5>
+    <version>0.9.88</version>
+    <time>1233181716</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>95554f97e6b5562c178bec5b9470c488</srcmd5>
+    <version>0.9.88</version>
+    <time>1233181716</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b8d2c132d015272ca5cbeee55c5d9731</srcmd5>
+    <version>0.9.88</version>
+    <time>1268922967</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>b8d2c132d015272ca5cbeee55c5d9731</srcmd5>
+    <version>0.9.88</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>b8d2c132d015272ca5cbeee55c5d9731</srcmd5>
+    <version>0.9.88</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>b8d2c132d015272ca5cbeee55c5d9731</srcmd5>
+    <version>0.9.88</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>78ebf99bb6450aae14fade768247f236</srcmd5>
+    <version>0.9.88</version>
+    <time>1314019927</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>79376</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>a2779b0109df65e70772af097fbb4494</srcmd5>
+    <version>0.9.88</version>
+    <time>1314019937</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79376
+</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>0c241addd9754238e0aab146d9949acd</srcmd5>
+    <version>0.9.88</version>
+    <time>1316439630</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82818 from jengelh)</comment>
+    <requestid>82820</requestid>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>0c241addd9754238e0aab146d9949acd</srcmd5>
+    <version>0.9.88</version>
+    <time>1319181782</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="16">
+    <srcmd5>1b0499d7c7c4426063bab4b9c0a8fe05</srcmd5>
+    <version>0.9.88</version>
+    <time>1323190797</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>1b0499d7c7c4426063bab4b9c0a8fe05</srcmd5>
+    <version>0.9.88</version>
+    <time>1340183191</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="19">
+    <srcmd5>e752476757b0bc9832c6c1494b2f0f4d</srcmd5>
+    <version>0.9.88</version>
+    <time>1354093585</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143289</requestid>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>e752476757b0bc9832c6c1494b2f0f4d</srcmd5>
+    <version>0.9.88</version>
+    <time>1359108681</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="22">
+    <srcmd5>c403a7dffea394985eb350733cf09509</srcmd5>
+    <version>0.9.88</version>
+    <time>1363946429</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160252 from m_meister)</comment>
+    <requestid>160261</requestid>
+  </revision>
+  <revision rev="20" vrev="24">
+    <srcmd5>c403a7dffea394985eb350733cf09509</srcmd5>
+    <version>0.9.88</version>
+    <time>1379662010</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="26">
+    <srcmd5>c403a7dffea394985eb350733cf09509</srcmd5>
+    <version>0.9.88</version>
+    <time>1409300537</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="27">
+    <srcmd5>7c4a50b2834eb5e8487953a5252c4b63</srcmd5>
+    <version>0.9.88</version>
+    <time>1512733751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555035</requestid>
+  </revision>
+</revisionlist>

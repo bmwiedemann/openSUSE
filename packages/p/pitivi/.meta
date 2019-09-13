@@ -1,0 +1,5 @@
+<package name="pitivi" project="openSUSE:Factory">
+  <title>Intuitive and featureful movie editor</title>
+  <description>PiTiVi is a free, intuitive and featureful movie editor.</description>
+  <devel project="GNOME:Apps" package="pitivi"/>
+</package>

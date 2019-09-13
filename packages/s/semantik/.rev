@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>766366c4800201574c7a27b9da9a2206</srcmd5>
+    <version>0.8.3</version>
+    <time>1354978418</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>143858</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>766366c4800201574c7a27b9da9a2206</srcmd5>
+    <version>0.8.3</version>
+    <time>1359110394</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fd07558b37ab2dcb752c6c8294d5d44e</srcmd5>
+    <version>0.8.4</version>
+    <time>1377717445</time>
+    <user>coolo</user>
+    <comment>- removed oxigen icons from spec to fix build
+- added manpage for semantik commandline arguments
+
+- update version 0.8.4
+  * Export maps to pdf pictures from the command-line
+  * Color scheme fixes #30
+  * Null byte fix for text pasted from Chrome #26</comment>
+    <requestid>196658</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>fd07558b37ab2dcb752c6c8294d5d44e</srcmd5>
+    <version>0.8.4</version>
+    <time>1379664646</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8fb73e993af2b8d325476f2a464d7a16</srcmd5>
+    <version>0.9.0</version>
+    <time>1388481001</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212469</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7681bc65b2f08c68493e8e47d31206a1</srcmd5>
+    <version>0.9.1</version>
+    <time>1394393101</time>
+    <user>coolo</user>
+    <comment>update version 0.9.1 (forwarded request 224858 from MargueriteSu)</comment>
+    <requestid>224862</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7681bc65b2f08c68493e8e47d31206a1</srcmd5>
+    <version>0.9.1</version>
+    <time>1409303347</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9b79069261b634749f8436f697c1d371</srcmd5>
+    <version>0.9.2</version>
+    <time>1410967528</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249321</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3413142ff9f7e9f56e33f095d8b3bad2</srcmd5>
+    <version>0.9.2</version>
+    <time>1412799228</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254517</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d7f87884261d67c162290386bdf6fb86</srcmd5>
+    <version>0.9.3</version>
+    <time>1416505396</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262267</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8007b655df2eae4b2421ae5f60c7184e</srcmd5>
+    <version>0.9.4</version>
+    <time>1431980705</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>307576</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1faa27c39b10a4f35b61d26254fcbf82</srcmd5>
+    <version>0.9.4</version>
+    <time>1464204528</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397683</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ea893b0fbca10698f8efe64c3890195b</srcmd5>
+    <version>0.9.4</version>
+    <time>1480952013</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443705</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>276c598a40ef1c3e0a8711daf3b659d5</srcmd5>
+    <version>1.0.1</version>
+    <time>1514502159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555615</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>175cad7cf9a62187f8eb7f62a7fbf9f0</srcmd5>
+    <version>1.0.1</version>
+    <time>1525121742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602161</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>3047bcb966ec8c3e8f368f3bbefdb83c</srcmd5>
+    <version>1.0.1</version>
+    <time>1526372058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606701</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5f4e19de429e37a9d20ead73404d5a12</srcmd5>
+    <version>1.2.1</version>
+    <time>1551024747</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672000</requestid>
+  </revision>
+</revisionlist>

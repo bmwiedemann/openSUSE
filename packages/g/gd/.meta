@@ -1,0 +1,8 @@
+<package name="gd" project="openSUSE:Factory">
+  <title>A Drawing Library for Programs That Use PNG and JPEG Output</title>
+  <description>Gd allows your code to quickly draw images complete with lines, arcs,
+text, and multiple colors. It supports cut and paste from other images
+and flood fills. It outputs PNG, JPEG, and WBMP (for wireless devices)
+and is supported by PHP4.</description>
+  <devel project="graphics" package="gd"/>
+</package>

@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6842db4226d605b058e03959816304dc</srcmd5>
+    <version>0.0.3</version>
+    <time>1356731055</time>
+    <user>namtrac</user>
+    <comment>Required and used by libreoffice-4.0</comment>
+    <requestid>145634</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6842db4226d605b058e03959816304dc</srcmd5>
+    <version>0.0.3</version>
+    <time>1359109308</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dfd7075e155aa174c53e6fe9d2e00a7b</srcmd5>
+    <version>0.0.5</version>
+    <time>1366975636</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157673</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0e9322dea176e403711124ff60a8d648</srcmd5>
+    <version>0.0.6</version>
+    <time>1370426048</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.0.6:
+ - various coverity and style fixes
+ - deduplication using wpd code
+ - few crash fixes</comment>
+    <requestid>176737</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0e9322dea176e403711124ff60a8d648</srcmd5>
+    <version>0.0.6</version>
+    <time>1379663011</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>a5a960ed69dd8709ef2cab81ff747652</srcmd5>
+    <version>0.0.6</version>
+    <time>1383574025</time>
+    <user>coolo</user>
+    <comment>- Drop conditional for doc and use verbose build.</comment>
+    <requestid>205509</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>3742ed9e164fbdae51880f6dd5bbe06a</srcmd5>
+    <version>0.0.6</version>
+    <time>1390214519</time>
+    <user>coolo</user>
+    <comment>- build with -fvisibility-inlines-hidden (forwarded request 214338 from elvigia)</comment>
+    <requestid>214340</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>75543a873b3febac6330d3318bbeef5e</srcmd5>
+    <version>0.0.6</version>
+    <time>1391077813</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner and noarch documenation.</comment>
+    <requestid>215151</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fbbb98cac73c25724506da76f1cbca8e</srcmd5>
+    <version>0.1.1</version>
+    <time>1406479612</time>
+    <user>coolo</user>
+    <comment>Lo 4.3.0.3 submission</comment>
+    <requestid>242305</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>fbbb98cac73c25724506da76f1cbca8e</srcmd5>
+    <version>0.1.1</version>
+    <time>1409301629</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a48c26e279f3d48e4ebe660776ef1d2e</srcmd5>
+    <version>0.1.2</version>
+    <time>1420318981</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.1.2:
+  - Check arguments of public functions. Passing NULL no longer causes
+    a crash.
+  - Use symbol visibility on Linux. The library only exports the two public
+    functions now.
+  - Fix several crashes and hangs when reading broken files, found with the help
+    of american-fuzzy-lop.
+  - Add support for embedded fonts.
+  - Add initial support for tables.
+  - Parse document metadata.
+- Remove libmspub-0.1.1-pkgconfig.patch</comment>
+    <requestid>266879</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7bd8d9077f58a95f1a6893d7d4b52ad4</srcmd5>
+    <version>0.1.2</version>
+    <time>1471008836</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>417425</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e25f040dee0480b696bd6c23b2d26a47</srcmd5>
+    <version>0.1.2</version>
+    <time>1487461424</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453970</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>aa3d2810e6b33f62da4d057aaef13d97</srcmd5>
+    <version>0.1.3</version>
+    <time>1515505718</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.1.3:
+  * Workaround a build error on some 32-bit systems.
+  * Parse table row and column sizes. (tdf#89061)
+  * Fix various problems when parsing broken files, found with the help of
+    american-fuzzy-lop and oss-fuzz.
+  * Make the output of pub2foo --help more compatible with help2man.
+  * Extract more metadata from documents.
+  * Require C++11 for build.
+  * Drop outdated MSVC project files.
+  * Handle table cells containing multiple paragraphs correctly. (tdf#89393)
+  * Parse more text formatting attributes: all underline types, small
+    caps, all caps, outline, emboss, engrave, shadow.
+  * Parse text language.
+  * Various minor changes and improvements.</comment>
+    <requestid>561003</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0a850c6ce1d94cb3104233526bff517c</srcmd5>
+    <version>0.1.4</version>
+    <time>1520852700</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.1.4:
+  * Fix several problems found by oss-fuzz
+  * Fix regression in closing shape groups that caused missing shapes
+    on second and subsequent pages. (tdf#116018)</comment>
+    <requestid>583879</requestid>
+  </revision>
+</revisionlist>

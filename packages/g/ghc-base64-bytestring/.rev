@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b2d82b6cbeed9154ba5dff1f6289b0a3</srcmd5>
+    <version>1.0.0.1</version>
+    <time>1396451968</time>
+    <user>coolo</user>
+    <comment>drop service file. was: New package for pandoc.</comment>
+    <requestid>228435</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b2d82b6cbeed9154ba5dff1f6289b0a3</srcmd5>
+    <version>1.0.0.1</version>
+    <time>1409300958</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a69692250037143d819aa6ce9a5090e4</srcmd5>
+    <version>1.0.0.1</version>
+    <time>1469081159</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411445</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>0f7dea9e0295eb5723acf1a0265dc89f</srcmd5>
+    <version>1.0.0.1</version>
+    <time>1505503318</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524167</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>0e99413c4c3b06f06c5f6a065a9671c7</srcmd5>
+    <version>1.0.0.1</version>
+    <time>1527675433</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609764</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>b3c6364290e577a861d5707425c6cbd3</srcmd5>
+    <version>1.0.0.1</version>
+    <time>1532445207</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+* no macros spanning multiple spec file sections
+* decodeLenient 50%
+* relaxed version constraints on bytestring
+* fixes joinWith (bug #7)
+- cabal2spec 0.25.5 template for spec file
+This fixes gh-4.</comment>
+    <requestid>623725</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>b00551cf5e956131c112226d417ce9ee</srcmd5>
+    <version>1.0.0.1</version>
+    <time>1540448559</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643353</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f99f28e25e75d90119b50c769933ad07</srcmd5>
+    <version>1.0.0.2</version>
+    <time>1544441378</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>656586</requestid>
+  </revision>
+</revisionlist>

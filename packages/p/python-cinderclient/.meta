@@ -1,0 +1,5 @@
+<package name="python-cinderclient" project="openSUSE:Factory">
+  <title>Openstack Block Storage (Cinder) API Client</title>
+  <description>This is a client for the OpenStack Volume API. There's a Python API (the cinderclient module), and a command-line script (cinder). Each implements 100% of the OpenStack Volume API.</description>
+  <devel project="Cloud:OpenStack:Factory" package="python-cinderclient"/>
+</package>

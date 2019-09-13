@@ -1,0 +1,20 @@
+<package name="nbd" project="openSUSE:Factory">
+  <title>Network Block Device Server and Client Utilities</title>
+  <description>This package contains nbd-server. It is the server backend for the nbd
+network block device driver that's in the Linux kernel.
+
+nbd can be used to have a filesystem stored on another machine. It does
+provide a block device, not a file system; so unless you put a
+clustering filesystem on top of it, you can't access it simultaneously
+from more than one client. Use NFS or a real cluster FS (such as 
+ocfs2) if you want to do this. nbd-server can export a file (which may
+contain a filesystem image) or a partition. Swapping over nbd is
+possible as well, though it's said not to be safe against OOM and
+should not be used for that case. nbd-server also has a copy-on-write
+mode where changes are saved to a separate file and thrown away when
+the connection closes.
+
+The package also contains the nbd-client tools, which you need to
+configure the nbd devices on the client side.</description>
+  <devel project="network:utilities" package="nbd"/>
+</package>

@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fa13a34a71124c8e0d40c28970190779</srcmd5>
+    <version>1.0.1</version>
+    <time>1525121587</time>
+    <user>dimstar_suse</user>
+    <comment>Uutf is an non-blocking streaming Unicode codec for OCaml to decode and encode the UTF-8, UTF-16, UTF-16LE and UTF-16BE encoding schemes.
+
+It is part of the dependency tree of opam.</comment>
+    <requestid>599185</requestid>
+  </revision>
+</revisionlist>

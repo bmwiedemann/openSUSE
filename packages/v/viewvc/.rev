@@ -1,0 +1,398 @@
+<revisionlist>
+  <revision rev="1" vrev="14">
+    <srcmd5>510db97d95a43e790a994c7e674a8564</srcmd5>
+    <version>1.0.3</version>
+    <time>1177764046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>035469f512b406f83e92d26ac4f813df</srcmd5>
+    <version>1.0.4</version>
+    <time>1185495202</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>8b4725989bfbbafeed1dd894b161c1e1</srcmd5>
+    <version>1.0.4</version>
+    <time>1186175712</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>150600c5ac2b0f0db5b9007b775fb6d0</srcmd5>
+    <version>1.0.5</version>
+    <time>1204296947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="68">
+    <srcmd5>150600c5ac2b0f0db5b9007b775fb6d0</srcmd5>
+    <version>1.0.5</version>
+    <time>1204296947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>78daacde2e2fc3107b50c52bfae8ce78</srcmd5>
+    <version>1.0.7</version>
+    <time>1231952463</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5d4995e1f33b2b9b4d943d1b49f472a9</srcmd5>
+    <version>1.1.0</version>
+    <time>1242788125</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7d1019042005205e434ba0ebf404be79</srcmd5>
+    <version>1.1.2</version>
+    <time>1252581025</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/viewvc based on submit request 20020 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a470f1018ecde9409e903a2c7e031c2b</srcmd5>
+    <version>1.1.2</version>
+    <time>1254965110</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/viewvc based on submit request 21970 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>a470f1018ecde9409e903a2c7e031c2b</srcmd5>
+    <version>1.1.2</version>
+    <time>1254965110</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/viewvc based on submit request 21970 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a9018f0cac9b9663f85d43d4af4e961b</srcmd5>
+    <version>1.1.3</version>
+    <time>1263833258</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/viewvc based on submit request 29830 from user coolo
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c6b04f660c47d423ef3e9e51b047049d</srcmd5>
+    <version>1.1.3</version>
+    <time>1264696341</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/viewvc based on submit request 30724 from user coolo
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0a35351486997200b21e7db7b6de47cd</srcmd5>
+    <version>1.1.4</version>
+    <time>1268355259</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/viewvc based on submit request 34642 from user dirkmueller
+</comment>
+    <requestid>34642</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b4f181d891e69cb2a59b7d3ef92d320f</srcmd5>
+    <version>1.1.4</version>
+    <time>1268926452</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ebcd62856f76b7b0a65ab5d982509ef2</srcmd5>
+    <version>1.1.5</version>
+    <time>1270136905</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/viewvc based on submit request 36526 from user dirkmueller
+</comment>
+    <requestid>36526</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c3672eef015fbf1ff8f760204b9c7079</srcmd5>
+    <version>1.1.5</version>
+    <time>1270599623</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/viewvc based on submit request 37143 from user dirkmueller
+</comment>
+    <requestid>37143</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fb32bf673e816f385b70bc40ab3f4e11</srcmd5>
+    <version>1.1.6</version>
+    <time>1276096713</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/viewvc based on submit request 41245 from user dirkmueller
+</comment>
+    <requestid>41245</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>fb32bf673e816f385b70bc40ab3f4e11</srcmd5>
+    <version>1.1.6</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>fb32bf673e816f385b70bc40ab3f4e11</srcmd5>
+    <version>1.1.6</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>8b3f6a7bf06da7f88f319f3e53b1499e</srcmd5>
+    <version>unknown</version>
+    <time>1284394354</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/viewvc based on submit request 47956 from user dirkmueller
+</comment>
+    <requestid>47956</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>c58ceb99a160307207cc6c6d8e469e4b</srcmd5>
+    <version>1.1.8</version>
+    <time>1294976705</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>c58ceb99a160307207cc6c6d8e469e4b</srcmd5>
+    <version>1.1.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9284d3fbc47030881ecc35b91240a94e</srcmd5>
+    <version>1.1.10</version>
+    <time>1303386371</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 66947 from user dirkmueller
+</comment>
+    <requestid>66947</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2761a3dbafdcbd973be4b35491ba0d99</srcmd5>
+    <version>1.1.10</version>
+    <time>1303386380</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 66947
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c1a722f8f7a9a88caf4f962ee8c3eaf5</srcmd5>
+    <version>1.1.11</version>
+    <time>1305790742</time>
+    <user>saschpe</user>
+    <comment>- update to 1.1.11:
+  * security fix: remove user-reachable override of cvsdb row limit
+  * fix broken standalone.py -c and -d options handling
+  * add --help option to standalone.py
+  * fix stack trace when asked to checkout a directory (issue #478)
+  * improve memory usage and speed of revision log markup (issue #477)
+  * fix broken annotation view in CVS keyword-bearing files (issue #479)
+  * warn users when query results are incomplete (issue #443)
+  * avoid parsing errors on RCS newphrases in the admin section (issue #483)
+  * make rlog parsing code more robust in certain error cases (issue #444)</comment>
+    <requestid>70609</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>5b3dcd08bd52ff1d358d27ca70eafff9</srcmd5>
+    <version>1.1.11</version>
+    <time>1313399616</time>
+    <user>saschpe</user>
+    <comment>- add supplements for apache2/subversion-server
+
+- update to 1.1.11 (bnc#694785):</comment>
+    <requestid>78701</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>80df8495ee91f8da1b01b44529d64ca9</srcmd5>
+    <version>1.1.11</version>
+    <time>1313399629</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78701
+</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>80df8495ee91f8da1b01b44529d64ca9</srcmd5>
+    <version>1.1.11</version>
+    <time>1319182550</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>dc791ecbe86d5b8d9fc7c051c1dd9997</srcmd5>
+    <version>1.1.11</version>
+    <time>1323195107</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>dc791ecbe86d5b8d9fc7c051c1dd9997</srcmd5>
+    <version>1.1.11</version>
+    <time>1340184312</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>dcc3db67b6630479a3aa45040931ccc7</srcmd5>
+    <version>1.1.15</version>
+    <time>1343139266</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.15 (bnc#768680):
+  * security fix: complete authz support for remote SVN views (CVE-2012-3356)
+  * security fix: log msg leak in SVN revision view with unreadable copy source (CVE-2012-3357)
+  * fix several instances of incorrect information in remote SVN views
+  * increase performance of some revision metadata lookups in remote SVN views
+  * fix RSS feed regression introduced in 1.1.14
+  * fix annotation of svn files with non-URI-safe paths
+  * handle file:/// Subversion rootpaths as local roots
+  * fix bug caused by trying to case-normalize anon usernames
+  * speed up log handling by reusing tokenization results
+  * add support for custom review log markup rules
+  * fix svndbadmin failure on deleted paths under Subversion 1.7
+  * fix annotation of files in svn roots with non-URI-safe paths
+  * fix stray annotation warning in markup display of images
+  * more gracefully handle attempts to display binary content
+  * fix path display in patch and certain diff views
+  * fix broken cvsdb glob searching
+  * allow svn revision specifiers to have leading r's
+  * allow environmental override of configuration location
+  * fix exception HTML-escaping non-string data under WSGI
+  * add links to root logs from roots view
+  * use Pygments lexer-guessing functionality</comment>
+    <requestid>128838</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>65e4ee790043918d91bcd51e4ade29f1</srcmd5>
+    <version>1.1.17</version>
+    <time>1351265774</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.17:
+  * fix exception caused by uninitialized variable usage (issue #516)
+  * security fix: escape &quot;extra&quot; diff info to avoid XSS attack (issue #515)
+  * add 'binary_mime_types' configuration option and handling (issue #510)
+  * fix 'select for diffs' persistence across log pages (issue #512)
+  * remove lock status and filesize check on directories in remote SVN views
+  * fix bogus 'Annotation of' page title for non-annotated view (issue #514)</comment>
+    <requestid>139395</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>76379dcd4adeacfcf315ad5d5b0ca2c2</srcmd5>
+    <version>1.1.17</version>
+    <time>1352215481</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.17 (bnc#787072):</comment>
+    <requestid>140197</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>76379dcd4adeacfcf315ad5d5b0ca2c2</srcmd5>
+    <version>1.1.17</version>
+    <time>1359110544</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>dc458f4b00e693960bb2b5b219e3e44f</srcmd5>
+    <version>1.1.19</version>
+    <time>1366732961</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.19:
+  * improve root lookup performance (issue #523)
+  * new 'max_filesize_kbytes' config option and handling (issue #524)
+  * tarball generation improvements:
+    - preserve Subversion symlinks in generated tarballs (issue #487)
+    - reduce memory usage of tarball generation logic
+    - fix double compression of generated tarballs (issue #525)
+  * file content handling improvements:
+    - expanded support for encoding detection and transcoding (issue #11)
+    - fix tab-to-space conversion bugs in markup, annotate, and diff views
+    - fix handling of trailing whitespace in diff view
+  * add support for timestamp display in ISO8601 format (issue #46)
+  * fix exception raised by BDB-backed SVN repositories (issue #519)
+  * hide revision-less files when rcsparse is in use
+  * include branchpoints in branch views using rcsparse (issue #347)
+  * miscellaneous cvsdb improvements:
+    - add --port option to make-database (issue #521)
+    - explicitly name columns in queries (issue #522)
+    - update MySQL syntax to avoid discontinued &quot;TYPE=&quot; terms</comment>
+    <requestid>172994</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>6bcd84d6afa2f3dd3a4ff59a7b3f3607</srcmd5>
+    <version>1.1.20</version>
+    <time>1366955207</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.20:
+  * fix tab-to-space handling regression in markup view
+  * fix regression in root lookup handling (issue #526)</comment>
+    <requestid>173372</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>6bcd84d6afa2f3dd3a4ff59a7b3f3607</srcmd5>
+    <version>1.1.20</version>
+    <time>1379664923</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ae6c934f0b28a10ac5c150fb7d979d6d</srcmd5>
+    <version>1.1.21</version>
+    <time>1380122626</time>
+    <user>coolo</user>
+    <comment>update to 1.1.21</comment>
+    <requestid>200259</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>707612b9efae13d7061ce74be14a8235</srcmd5>
+    <version>1.1.22</version>
+    <time>1394806681</time>
+    <user>coolo</user>
+    <comment>1.1.22 (forwarded request 225181 from AndreasStieger)</comment>
+    <requestid>225507</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>707612b9efae13d7061ce74be14a8235</srcmd5>
+    <version>1.1.22</version>
+    <time>1409303607</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d5abbd9e18e2ee60c7884c059a0f94b8</srcmd5>
+    <version>1.1.23</version>
+    <time>1428652370</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294919</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>09eda67cda57f4494fb830aab5f3b4a2</srcmd5>
+    <version>1.1.24</version>
+    <time>1459002463</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378720</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>846f9cb52d922f062f0cb34a81ac3fa6</srcmd5>
+    <version>1.1.24</version>
+    <time>1464075320</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397553</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c290251f5bfe3a3515c94fefaaded233</srcmd5>
+    <version>1.1.25</version>
+    <time>1485250346</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>446913</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b5c6bd3696586d0f6fecfea9ef096178</srcmd5>
+    <version>1.1.26</version>
+    <time>1487029716</time>
+    <user>dimstar_suse</user>
+    <comment>vievwc 1.1.26 CVE-2017-5938 boo#1024393</comment>
+    <requestid>456699</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e96c1bf34a756af0eaf842b018e1ded3</srcmd5>
+    <version>5</version>
+    <time>1516634351</time>
+    <user>dimstar_suse</user>
+    <comment>Initial import into Factory</comment>
+    <requestid>567936</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a41b418f71621cc930e390410117e10b</srcmd5>
+    <version>6</version>
+    <time>1543223913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6
+  + Allow generating spec file from rust project checkout
+  + add option to copy crate to current working directory
+  + Filter dependencies using the cfg language 
+- Backport patches for updated packaging generation
+  + Added patches
+    - 0001-name-spec-patch_file-by-real-crate-name.patch
+    - 0002-generate-doc-statements.patch
+    - 0003-do-better-for-renamed-crates.patch
+    - 0004-remove-pre-3.6-leftovers.patch
+    - 0005-Remove-half-downloaded-crate-on-C.patch
+    - 0006-Throw-an-error-if-s-is-used-without-a-crate.patch
+    - 0007-split-features-into-subpackages.patch
+    - 0008-add-support-for-dependencies-with-same-name.patch
+    - 0009-add-support-for-feeding-user-configuration.patch
+    - 0010-trivial-use-f-strings-everywhere.patch
+- Remove merged patches
+  + 0001-macros-remove-Cargo.lock.patch
+  + 0002-macros-remove-spurious-whitespace.patch
+- Add proposed patch to add option to not generate default changelog entry
+  + 0101-Add-option-to-not-generate-a-default-changelog-entry.patch
+- Add missing runtime requirement for python3-setuptools
+- Update to 6
+  + pass %__cargo_common_opts to %cargo_install
+  + make %cargo_* macros parametric
+  + remove support for target-dir
+</comment>
+    <requestid>648268</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6132b97e3915e36219a9dec1081ba000</srcmd5>
+    <version>6</version>
+    <time>1551883858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681978</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>23b34c5b4b9a7be4380ee225c285d43b</srcmd5>
+    <version>9</version>
+    <time>1558427835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9
+  + Remove temporary Cargo.toml.deps
+  + Fix packager identity detection to use fallbacks properly
+  + Always put upstream license data comment in generated specs
+- Drop unneeded epoch handling in spec, as Epochs are nearly never used in openSUSE
+- Ensure the version-release of rust2rpm used is mentioned in generated specs
+- Ensure license file is installed in rust-packaging
+- Add 0001-macros-Remove-Cargo.toml.orig.patch so crates pass
+  rpmlint
+- Update to version 8
+- Changes since version 6
+  * Generate %doc statements for readme from Cargo.toml
+  * Split features into subpackages (`rust-$crate+$feature-devel`)
+  * Add support for dependencies with same name
+  * Add support for user configuration (`.rust2rpm.conf`, `_rust2rpm.conf`)
+  * Option to not generate default changelog entry (`--no-auto-changelog-entry`)
+  * Set `CARGO_HOME` to the local `.cargo` (required by new Rust)
+  * Improvements for crates with pre-release versions
+  * Do not put unneeded optional dependencies in BuildRequires (`-Z avoid-dev-deps`)
+  * Option to use all crate features when generating spec file
+  * Use new-style changelog format (with TZ info) on Fedora
+  * Option to use dynamic BuildRequires (requires RPM 4.15+)
+  * Environment variables to control packager identity
+- Drop patches part of this release
+  * 0001-name-spec-patch_file-by-real-crate-name.patch
+  * 0002-generate-doc-statements.patch
+  * 0003-do-better-for-renamed-crates.patch
+  * 0004-remove-pre-3.6-leftovers.patch
+  * 0005-Remove-half-downloaded-crate-on-C.patch
+  * 0006-Throw-an-error-if-s-is-used-without-a-crate.patch
+  * 0007-split-features-into-subpackages.patch
+  * 0008-add-support-for-dependencies-with-same-name.patch
+  * 0009-add-support-for-feeding-user-configuration.patch
+  * 0010-trivial-use-f-strings-everywhere.patch
+  * 0011-Add-option-to-not-generate-a-default-changelog-entry.patch
+  * 0012-Set-CARGO_HOME-to-the-local-.config.patch
+  * 0013-Set-the-install-root-in-.cargo-config.patch
+  * 0014-Add-support-for-prerelease-versions.patch
+</comment>
+    <requestid>700961</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>05b523dfa193468a0d9907460e7b7969</srcmd5>
+    <version>10</version>
+    <time>1567168900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727052</requestid>
+  </revision>
+</revisionlist>

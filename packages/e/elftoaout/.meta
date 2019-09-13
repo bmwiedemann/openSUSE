@@ -1,0 +1,8 @@
+<package name="elftoaout" project="openSUSE:Factory">
+  <title>Utility for converting ELF binaries to a.out</title>
+  <description>The elftoaout utility converts a static ELF binary to a static a.out
+binary.  If you are using an ELF system on a SPARC, you will need to
+run elftoaout on the kernel image so that the SPARC PROM can boot the
+image.</description>
+  <devel project="Base:System" package="elftoaout"/>
+</package>

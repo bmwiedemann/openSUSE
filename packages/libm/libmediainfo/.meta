@@ -1,0 +1,8 @@
+<package name="libmediainfo" project="openSUSE:Factory">
+  <title>Supplies technical and tag information about a video or audio file</title>
+  <description>MediaInfo supplies technical and tag information about a video or
+audio file.
+
+</description>
+  <devel project="multimedia:libs" package="libmediainfo"/>
+</package>

@@ -1,0 +1,475 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8ed2f57e77623432bb5b5973059401b0</srcmd5>
+    <version>5.1.0</version>
+    <time>1380608087</time>
+    <user>coolo</user>
+    <comment>New Package for Qt 5.1</comment>
+    <requestid>185804</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a7fe9a96ba8479d14ab1f48813c1a192</srcmd5>
+    <version>5.1.1</version>
+    <time>1380887672</time>
+    <user>scarabeus_factory</user>
+    <comment>Fix bison3 build - compatible with bison2.x - target is 13.1 ;-)</comment>
+    <requestid>201643</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>75281596a98583bf13c65d83ac907570</srcmd5>
+    <version>5.1.1</version>
+    <time>1381062448</time>
+    <user>scarabeus_factory</user>
+    <comment>Drop the memory check from the spec, we are utilizing _constraints for that. Also reduce the processor constraint to 4.</comment>
+    <requestid>202290</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>dbf5def9591ecaadfd91e3906babf9ba</srcmd5>
+    <version>5.1.1</version>
+    <time>1382012531</time>
+    <user>scarabeus_factory</user>
+    <comment>Change constrains, so it requires 5Gb of memory, instead of 4Gb physical memory
+
+Please checkin to 13.1, otherwise it'll never build on arm</comment>
+    <requestid>203533</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>86147baf504faffc16a3ecb4740b19d7</srcmd5>
+    <version>5.2.0~beta1</version>
+    <time>1383553095</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0 beta1</comment>
+    <requestid>204751</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ec6a3a39d8d3c5dc8079720ce4bf3ab3</srcmd5>
+    <version>5.2.0~beta1</version>
+    <time>1384768406</time>
+    <user>scarabeus_factory</user>
+    <comment>- Adjust 04_enable_debug_information.diff for more memory saving
+- Remove libQt5Script-devel from both devel package Requires and BuildRequires, not needed</comment>
+    <requestid>207309</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0c16d81f67b4ff1974e7da0e0500592b</srcmd5>
+    <version>5.2.0~beta1</version>
+    <time>1385704982</time>
+    <user>coolo</user>
+    <comment>- fix-no-jit-build.patch:
+  fix build on ppc and s390 by disabling JIT (forwarded request 208826 from oertel)</comment>
+    <requestid>208851</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8194e5f730787156901e56eb2b985155</srcmd5>
+    <version>5.2.0~rc1</version>
+    <time>1385993334</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0 rc1</comment>
+    <requestid>209092</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8c34c7eaf4e587d7a588530312bc59db</srcmd5>
+    <version>5.2.0</version>
+    <time>1387260578</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0 final</comment>
+    <requestid>210889</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>dd2ce45d24d1ba9cf26861c45baf2fb7</srcmd5>
+    <version>5.2.0</version>
+    <time>1387453590</time>
+    <user>coolo</user>
+    <comment>Move away from pkgconfig(...) BuildRequires and just use libqt5-$upstreammodulename-(devel|private-headers-devel)
+
+
+
+No hurry to checkin ;-) but it is needed for QtLocation</comment>
+    <requestid>211352</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>326b366b6def225c25e07ee16c3d6ca8</srcmd5>
+    <version>5.2.0</version>
+    <time>1387798362</time>
+    <user>scarabeus_factory</user>
+    <comment>The WTF Platform.h file hard-coded PowerPC as big-endian.
+This breaks building on little-endian PowerPC machines.
+
+- Add ppc64le-support.patch: Support powerpc64le-linux. (forwarded request 211857 from uweigand)</comment>
+    <requestid>211887</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>832b2bbdff0afc2d68f9d21333b7ad67</srcmd5>
+    <version>5.2.1</version>
+    <time>1392736712</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.1</comment>
+    <requestid>221465</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>24768faf8e1692c3c8e0b226dd642de7</srcmd5>
+    <version>5.2.1</version>
+    <time>1393568492</time>
+    <user>coolo</user>
+    <comment>- Added dont-pollute-prl-and-pc-files.patch from upstream - fixes issue where private dependencies (such as e.g. gstreamer) where marked as public
+- As per patch, remove all external/private Requires of devel subpackages</comment>
+    <requestid>224146</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>24a167858bec28c3d136874b13e043bc</srcmd5>
+    <version>5.3.0~beta</version>
+    <time>1395909006</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0 beta</comment>
+    <requestid>227534</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4f83ff8089278f3b6891d5d87585b09a</srcmd5>
+    <version>5.3.0~beta</version>
+    <time>1396546612</time>
+    <user>coolo</user>
+    <comment>Build with gstreamer 1.0 API for 13.2 and newer</comment>
+    <requestid>228903</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>9200cb110508a7bf3eceed1f2b997b9c</srcmd5>
+    <version>5.3.0~beta</version>
+    <time>1396725902</time>
+    <user>coolo</user>
+    <comment>- Build with gstreamer 1.0 API for SLE12 also. (forwarded request 228992 from fcrozat)</comment>
+    <requestid>228993</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1646b9e503c4c0939bf316cb844a45f6</srcmd5>
+    <version>5.3.0~rc</version>
+    <time>1400091957</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0 rc</comment>
+    <requestid>233130</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>38155cbaf9f2ca632900000b80a98d54</srcmd5>
+    <version>5.3.0</version>
+    <time>1400733498</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0 final</comment>
+    <requestid>234792</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>a2a935956c2d936ef90fc67d71b19d56</srcmd5>
+    <version>5.3.0</version>
+    <time>1401208130</time>
+    <user>coolo</user>
+    <comment>Build with pkgconfig(libudev), not pkgconfig(udev)</comment>
+    <requestid>235519</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>9df58afcc831900f3c7761e3f50cd2b5</srcmd5>
+    <version>5.3.0</version>
+    <time>1401899928</time>
+    <user>coolo</user>
+    <comment>- Added baselibs.conf
+- Make private headers noarch</comment>
+    <requestid>236103</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ff678dcbaca13aa8698f745d568adc7c</srcmd5>
+    <version>5.3.1</version>
+    <time>1404157476</time>
+    <user>coolo</user>
+    <comment>- Update to 5.3.1
+  * Bugfix release, for more details please see:
+    http://blog.qt.digia.com/blog/2014/06/25/qt-5-3-1-released/</comment>
+    <requestid>238729</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>bfdcea5d5078236d055ca0f486199c28</srcmd5>
+    <version>5.3.1</version>
+    <time>1406146002</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241806</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>046e08652f0672106ecdf80b610085ea</srcmd5>
+    <version>5.3.1</version>
+    <time>1408549978</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244925</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>046e08652f0672106ecdf80b610085ea</srcmd5>
+    <version>5.3.1</version>
+    <time>1409301684</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3ff0366cc6a2c8f84586356c8796bea6</srcmd5>
+    <version>5.3.2~git20140904</version>
+    <time>1410204516</time>
+    <user>coolo</user>
+    <comment>- Update to 5.3.2~git20140904 (r05670f5):
+  * Tip of the bugfix 5.3.2 branch
+
+Please copy to 13.2 if possible, as can be seen from the changelog, it contains many useful bugfixes. The 'snapshot' is artificial, as the probably won't be any commits between now and 5.3.2, but release is waiting on some bureaucratic procedures. Thanks!</comment>
+    <requestid>247862</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>038fd8a1b987749e27bc6d8d9f73915f</srcmd5>
+    <version>5.3.2</version>
+    <time>1411019815</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.2 final</comment>
+    <requestid>249668</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>6057836792f281b2184a4537c3f6f900</srcmd5>
+    <version>5.3.2</version>
+    <time>1412155343</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252300</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>7cb556fefeea4f670779a0f17ebe42f2</srcmd5>
+    <version>5.3.2</version>
+    <time>1414613338</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258079</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>cbec89d960e5f45247e5b3cc3c630724</srcmd5>
+    <version>5.4.0</version>
+    <time>1419159596</time>
+    <user>coolo</user>
+    <comment>Update to 5.4.0</comment>
+    <requestid>265886</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ae8da9aac78789c040961c0f99877bb5</srcmd5>
+    <version>5.4.1</version>
+    <time>1425220028</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.1</comment>
+    <requestid>287895</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>308f706c251339c54280e60e0f38df81</srcmd5>
+    <version>5.4.1</version>
+    <time>1426680191</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291191</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>2ae14bc0ddc3eb537b8d7fd294791067</srcmd5>
+    <version>5.4.1</version>
+    <time>1427735749</time>
+    <user>dimstar_suse</user>
+    <comment>Add patches from upstream: fix-building-with-glib-2.43+.patch (QTBUG-44714) and fix-g++5.0-build.patch (QTBUG-44829)</comment>
+    <requestid>292680</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6b705c23ad59ef08b5f5762d156c8dc4</srcmd5>
+    <version>5.4.2</version>
+    <time>1433577145</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.2</comment>
+    <requestid>310383</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f04103ade6f96ccb667b9a411341ee15</srcmd5>
+    <version>5.5.0</version>
+    <time>1443335874</time>
+    <user>coolo</user>
+    <comment>Update to 5.5.0</comment>
+    <requestid>323375</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2bd3f07ac2364002ce33ecdf61e6d993</srcmd5>
+    <version>5.5.1</version>
+    <time>1445287581</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix 5.5.1 update</comment>
+    <requestid>339537</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>a21f58ff8e65e1bfeaae4e6b20b1314a</srcmd5>
+    <version>5.5.1</version>
+    <time>1446048903</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340469</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6f69efc8c2bfd38a00283baca4b3ecf6</srcmd5>
+    <version>5.6.0</version>
+    <time>1463497566</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.0</comment>
+    <requestid>379854</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>326633d0ced8c27d26f66ee1db8f0951</srcmd5>
+    <version>5.6.1</version>
+    <time>1466812526</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.1</comment>
+    <requestid>401316</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6ea1eb3b68b8fd2a46195aec23413ef2</srcmd5>
+    <version>5.7.0</version>
+    <time>1475358572</time>
+    <user>dimstar_suse</user>
+    <comment>The Time Has Come to Shoot You Down... What a Sound</comment>
+    <requestid>429992</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c009289bc892579b01787f792fda99e6</srcmd5>
+    <version>5.7.1</version>
+    <time>1482419293</time>
+    <user>lnussel_factory</user>
+    <comment>Update to 5.7.1</comment>
+    <requestid>446456</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>6d22a9cb900307db6176f3c34415f933</srcmd5>
+    <version>5.7.1</version>
+    <time>1495133062</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with ICU4C &gt;= 59:
+  * fix-build-icu59.patch</comment>
+    <requestid>494618</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>159aa34672852cc92a101aa71f1967c6</srcmd5>
+    <version>5.9.0</version>
+    <time>1497362749</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500811</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>33a09405a3795caac1bc5b517d9ba900</srcmd5>
+    <version>5.9.0</version>
+    <time>1499509524</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to workaround crash if compiled with GCC7:
+  * workaround-gcc7-crash.patch
+- Set minimum amount of RAM in _constraints to 8 GiB</comment>
+    <requestid>508390</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>5579f247a60c77dc52223411473cadcb</srcmd5>
+    <version>5.9.0</version>
+    <time>1514027713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557487</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>f0abc52d612b78869d0aa7b6969bc530</srcmd5>
+    <version>5.212~alpha2</version>
+    <time>1519041569</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build failure with CMake 3.10
+  * fix-build-with-cmake-3.10.diff
+- Use Gstreamer for audio/video support optional
+- Add patch to keep the same private symbol version scheme:
+  * tell-the-truth-about-private-api.patch
+- Add patch to fix detection of OpenGL ES 2.0 with Qt &amp;gt;= 5.8:
+  * fix-gles-detection.patch
+- Add patch to enable symbol versioning for libQt5WebKit.so.5 as well:
+  * qt5webkit-symver.patch
+- Ported to Konstantin Tokarev's &amp;lt;annulen@yandex.ru&amp;gt; QtWebKit fork
+  version 5.212.0 Alpha 2 (FATE#323918, bsc#1050469)
+  * Based on WebKitGTK 2.12 (uses CMake instead of QMake)
+  * Newer WebKit base
+  * Improved support for web standards
+  * Many bugfixes and patched security holes inherited from upstream WebKit
+  * For more details please see:
+    https://github.com/annulen/webkit/releases/tag/qtwebkit-5.212.0-alpha
+    and
+    https://github.com/annulen/webkit/releases/tag/qtwebkit-5.212.0-alpha2
+- Drop unneeded patches
+  * 03_hide_std_symbols.diff
+  * 04_enable_debug_information.diff
+  * 05-fix-linker-errors.diff
+  * 7dac8c2d5f743563df76c2347c6ad394b6779ffc.patch
+  * fix-build-icu59.patch
+  * no-Werror-rpath.diff
+  * reduce-link-optimization.diff
+  * workaround-gcc7-crash.patch
+- Set minimum amount of RAM in _constraints to 10 GiB for x86_64
+- Add patch to always enable X11 target build:
+  * enable_x11_target_always.patch
+- Add patch to work around gcc7-related crash:
+  * webkit-fix-WTF-StringImpl-copyChars-segfaults-with-gcc7.patch
+- Corrected License tag. QtWebKit is just LGPL-2.1+ and does not follow Qt's
+  commercial-inspired licensing scheme of (L)GPLv3-only. (forwarded request 576796 from alarrosa)</comment>
+    <requestid>576797</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>bd76b1b526bb23d63736330efda91164</srcmd5>
+    <version>5.212~alpha2</version>
+    <time>1519844384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579485</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>3f2a28c8dc5f36f2bc85aa9ce0676507</srcmd5>
+    <version>5.212~alpha2</version>
+    <time>1520160878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581851</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>d6eaa53ab0a3e9eb584b3e5f12858cfa</srcmd5>
+    <version>5.212~alpha2</version>
+    <time>1522058517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589119</requestid>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>3d9302998e4d737b8548b93eb86ee422</srcmd5>
+    <version>5.212~alpha2</version>
+    <time>1530024197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617674</requestid>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>4645062d0337332bd7ec71ed40d58992</srcmd5>
+    <version>5.212~alpha2</version>
+    <time>1544817038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653590</requestid>
+  </revision>
+  <revision rev="51" vrev="7">
+    <srcmd5>a975557f10b692f605cddbe74407fd98</srcmd5>
+    <version>5.212~alpha2</version>
+    <time>1558129237</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO (boo#1135212). (forwarded request 703146 from marxin)</comment>
+    <requestid>703172</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>93895c1801336ffb8e8d539c12ebdae8</srcmd5>
+    <version>5.212~alpha3</version>
+    <time>1563018432</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't modify the pkgconfig files, they have been fixed upstream
+  and the sed commands actually break them now
+
+This fixes the missing pkgconfig(Qt5WebKit*) Provides and the rpmlint error. (forwarded request 713424 from wolfi323)</comment>
+    <requestid>713438</requestid>
+  </revision>
+</revisionlist>

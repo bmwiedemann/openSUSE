@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3efc40af1d789fb7a81d63621d687563</srcmd5>
+    <version>0.2302</version>
+    <time>1382361213</time>
+    <user>scarabeus_factory</user>
+    <comment>newer version than what perl can offer</comment>
+    <requestid>202282</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ed2158e55ed3feb8734d19050d4df7b</srcmd5>
+    <version>0.2304</version>
+    <time>1390429567</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214449</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>827f393fbf03a47bb91ad84d80356737</srcmd5>
+    <version>0.2304</version>
+    <time>1392111879</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221610</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>827f393fbf03a47bb91ad84d80356737</srcmd5>
+    <version>0.2304</version>
+    <time>1409302297</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>774799a3b8d2110686424e1fc982c6b7</srcmd5>
+    <version>0.2308</version>
+    <time>1535705050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631781</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4b1baaad441acdd96ea15f1425c13556</srcmd5>
+    <version>0.2309</version>
+    <time>1546947020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663597</requestid>
+  </revision>
+</revisionlist>

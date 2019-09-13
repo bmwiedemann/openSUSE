@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>41880b2ffad5edf0c5ef70279e02e710</srcmd5>
+    <version>1.5.2</version>
+    <time>1387208544</time>
+    <user>coolo</user>
+    <comment>Needed for newer versions of python-rdflib, which is already in openSUSE:Factory</comment>
+    <requestid>209982</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>41880b2ffad5edf0c5ef70279e02e710</srcmd5>
+    <version>1.5.2</version>
+    <time>1409302803</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9eede13162da0bfad8ef3ec8ce3c420e</srcmd5>
+    <version>1.6.4</version>
+    <time>1456127748</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359552</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b391132c70bf66a430853aecb759b51</srcmd5>
+    <version>1.7.6</version>
+    <time>1474115853</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427606</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a117cf67ae286c9676a328f2f0043467</srcmd5>
+    <version>1.8.0</version>
+    <time>1494937800</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.0
+- Implement single-spec version.
+- Fix source URL.</comment>
+    <requestid>493613</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>30b204da02fe400068e308ca976057d8</srcmd5>
+    <version>1.8.0</version>
+    <time>1515260827</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure to not bail out when building with py3 only
+- Do not recommend already required package</comment>
+    <requestid>561454</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>164c0a6c45c55c39c300c73b8b661a9f</srcmd5>
+    <version>1.8.2</version>
+    <time>1531813209</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622793</requestid>
+  </revision>
+</revisionlist>

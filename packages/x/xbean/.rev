@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec499d1026b180ad303712d4a59a3058</srcmd5>
+    <version>4.5</version>
+    <time>1551024800</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>672391</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>33af7db863adfaa81e57e6808ca85036</srcmd5>
+    <version>4.5</version>
+    <time>1554458692</time>
+    <user>dimstar_suse</user>
+    <comment>Do not require optional dependencies</comment>
+    <requestid>691486</requestid>
+  </revision>
+</revisionlist>

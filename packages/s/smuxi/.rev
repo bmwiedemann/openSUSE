@@ -1,0 +1,220 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b54fda145191d1bc9f89c6560a9e8ad4</srcmd5>
+    <version>0.8</version>
+    <time>1312449409</time>
+    <user>saschpe</user>
+    <comment>New package: a GNOME irc client</comment>
+    <requestid>75304</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d51ece8ca8a51e62f9621a61cc14ea10</srcmd5>
+    <version>0.8</version>
+    <time>1312449419</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75304
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d51ece8ca8a51e62f9621a61cc14ea10</srcmd5>
+    <version>0.8</version>
+    <time>1319182477</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4a6b2941fc13c07d6f2ffb468c91af0c</srcmd5>
+    <version>0.8</version>
+    <time>1323194693</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3d79349eed3e526dd038820b7297ed5e</srcmd5>
+    <version>0.8.9.1</version>
+    <time>1327583309</time>
+    <user>coolo</user>
+    <comment>Update to 0.8.9.1 + move to pkgconfig() BuildRequires (forwarded request 101335 from vuntz)</comment>
+    <requestid>101336</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6a8ae09698b1a0167b6f37bf1c279b99</srcmd5>
+    <version>0.8.9.2</version>
+    <time>1329391686</time>
+    <user>coolo</user>
+    <comment>Update to 0.8.9.2 (forwarded request 103798 from dimstar)</comment>
+    <requestid>104907</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6a8ae09698b1a0167b6f37bf1c279b99</srcmd5>
+    <version>0.8.9.2</version>
+    <time>1340184225</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fb9b57e69c1f91e6ba9bffff99eee063</srcmd5>
+    <version>0.8.10.1</version>
+    <time>1348427650</time>
+    <user>coolo</user>
+    <comment>tweak (forwarded request 135318 from dimstar)</comment>
+    <requestid>135319</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3827473eaaed1a3d50d755d1c786679d</srcmd5>
+    <version>0.8.10.1</version>
+    <time>1357827251</time>
+    <user>coolo</user>
+    <comment>Fix build with mono 3 (forwarded request 147791 from vuntz)</comment>
+    <requestid>147799</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>3827473eaaed1a3d50d755d1c786679d</srcmd5>
+    <version>0.8.10.1</version>
+    <time>1359110418</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8f55c6dbadbbff30ff0ad5b11d62c900</srcmd5>
+    <version>0.8.11</version>
+    <time>1372687212</time>
+    <user>coolo</user>
+    <comment>Update to 0.8.11 (forwarded request 181470 from Zaitor)</comment>
+    <requestid>181539</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4309ef98ce5fc0131e0048c4130db6e1</srcmd5>
+    <version>0.9</version>
+    <time>1378897891</time>
+    <user>coolo</user>
+    <comment>Update to 0.9 (forwarded request 198164 from Zaitor)</comment>
+    <requestid>198176</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>4309ef98ce5fc0131e0048c4130db6e1</srcmd5>
+    <version>0.9</version>
+    <time>1379664699</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f52a93233cf65ed537550ef9c7abfec0</srcmd5>
+    <version>0.10</version>
+    <time>1387897496</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 0.10:
+  + Tabs were replaced with a new nice chat list.
+  + Plugin/scripting support through Smuxi hooks.
+  + Twitter now with /reply, /retweet, /follow, /unfollow, /search
+    and /timeline commands and menus.
+- Create new subpackage frontend-gnome-twitter and corresponding
+  -lang packages.
+- Have smuxi-engine-twitter recommend smuxi-engine-twitter-lang
+  instead of smuxi-engine-jabbr-lang (copy&amp;paste error). (forwarded request 212119 from Zaitor)</comment>
+    <requestid>212120</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4368b9a20732ded95120b1f2dc46d568</srcmd5>
+    <version>0.11</version>
+    <time>1398499912</time>
+    <user>coolo</user>
+    <comment>- Updated to version 0.11:
+  + User Interface Enhancements:
+    - The chat list can be shrunken.
+    - The highlight counter is now a separate column.
+  + Multi Identity Support.
+  + Message Patterns.
+  + Hooks Enhancements.
+  + Twitter Enhancements.
+  + JabbR (Beta) Enhancements.
+  + Updated translations.</comment>
+    <requestid>231464</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>eb48a7116210082a44c1f9c618f02d5d</srcmd5>
+    <version>0.11</version>
+    <time>1403686148</time>
+    <user>coolo</user>
+    <comment>Enable spell-checking</comment>
+    <requestid>238547</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>eb48a7116210082a44c1f9c618f02d5d</srcmd5>
+    <version>0.11</version>
+    <time>1409303382</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ff164907900856e2904dd37a7f2a0194</srcmd5>
+    <version>0.11.1</version>
+    <time>1427274072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292532</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>6b91b9b4c64fb431afe35e1a196af467</srcmd5>
+    <version>0.11.1</version>
+    <time>1432379296</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308405</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9023624424201c452ba0e7746c3c120b</srcmd5>
+    <version>1.0</version>
+    <time>1439274417</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321593</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>9172603d74e690420b87c97cd3267c76</srcmd5>
+    <version>1.0</version>
+    <time>1448400827</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345547</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>39b299eb1c99009ee8adc0d4a870ccf7</srcmd5>
+    <version>1.0.1</version>
+    <time>1452850855</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353285</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3bf3fa7b8c0e0a267313115528e61d43</srcmd5>
+    <version>1.0.3</version>
+    <time>1454491186</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357143</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d532457bd61b322392b4e875e44b26a4</srcmd5>
+    <version>1.0.5</version>
+    <time>1467541653</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>402793</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c5f6848db416fb3d00db28ded0cd8c18</srcmd5>
+    <version>1.0.6</version>
+    <time>1485939187</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453525</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>98958a8a112418dc4a9a6f613075a471</srcmd5>
+    <version>1.0.7</version>
+    <time>1497871422</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504485</requestid>
+  </revision>
+</revisionlist>

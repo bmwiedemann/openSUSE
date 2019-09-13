@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c3559a3364b203cc59f9f5163624866f</srcmd5>
+    <version>6.12.24</version>
+    <time>1352123706</time>
+    <user>coolo</user>
+    <comment>New package submission: libpgf - Progressive Graphics File Library, libpgf can be used by digikam</comment>
+    <requestid>139719</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c3559a3364b203cc59f9f5163624866f</srcmd5>
+    <version>6.12.24</version>
+    <time>1359109327</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1a571e437997ec48454bec4b9b304ea8</srcmd5>
+    <version>6.12.24</version>
+    <time>1364158611</time>
+    <user>coolo</user>
+    <comment>Added a patch automake-1.13.patch to fix build with automake 1.13, Fix build in SLE 11 SP2 and openSUSE 11.4 (forwarded request 160720 from adra)</comment>
+    <requestid>160721</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>1a571e437997ec48454bec4b9b304ea8</srcmd5>
+    <version>6.12.24</version>
+    <time>1379663047</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fade3cba946512abbd1eb5c6de099b0d</srcmd5>
+    <version>6.13.45.svn123</version>
+    <time>1392447953</time>
+    <user>coolo</user>
+    <comment>Update to version 6.13.45.svn123, Removed automake-1.13.patch (fixed upstream) (forwarded request 222261 from adra)</comment>
+    <requestid>222271</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>91ff5a57e4124310c5c8eb303efcdb07</srcmd5>
+    <version>6.14.12</version>
+    <time>1407912489</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244052</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>91ff5a57e4124310c5c8eb303efcdb07</srcmd5>
+    <version>6.14.12</version>
+    <time>1409301666</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>f68920958b63cb283d5d6dc2e1755b13</srcmd5>
+    <version>6.14.12</version>
+    <time>1442638382</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>329621</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c69e3db20ab046ad01a1960885cfdc61</srcmd5>
+    <version>7.15.32</version>
+    <time>1518813954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577210</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f5e0c79b01552a5b748c819b563b22eb</srcmd5>
+    <version>7.19.3</version>
+    <time>1556622135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697657</requestid>
+  </revision>
+</revisionlist>

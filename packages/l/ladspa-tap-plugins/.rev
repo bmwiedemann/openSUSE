@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>161c64c83b00bb6c32e328af26498e3c</srcmd5>
+    <version>0.7.1</version>
+    <time>1393936781</time>
+    <user>coolo</user>
+    <comment>New package, just split from ladspa.rpm
+
+Resubmitted after a few trivial fixes</comment>
+    <requestid>224443</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>161c64c83b00bb6c32e328af26498e3c</srcmd5>
+    <version>0.7.1</version>
+    <time>1409301455</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

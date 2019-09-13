@@ -1,0 +1,287 @@
+<revisionlist>
+  <revision rev="1" vrev="19">
+    <srcmd5>4bcbd615bd6c43bae0024d9281066397</srcmd5>
+    <version>1.0.13</version>
+    <time>1166611381</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="26">
+    <srcmd5>58222c0e1bd99c677c1628fd5ac3ef57</srcmd5>
+    <version>1.0.13</version>
+    <time>1173918977</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="27">
+    <srcmd5>fc88a168fa199150219af2980f1f10f1</srcmd5>
+    <version>1.0.13</version>
+    <time>1174216250</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="35">
+    <srcmd5>72bdfb4db659d486a6b5da5060497626</srcmd5>
+    <version>1.0.13</version>
+    <time>1178225048</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3a277ed24d7e01687573e0ae91dea933</srcmd5>
+    <version>1.0.14</version>
+    <time>1180996921</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0cff1c669f447e9bd97a859f6bcf1bd6</srcmd5>
+    <version>1.0.14</version>
+    <time>1181066702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="14">
+    <srcmd5>9f21d3de55b8915d36d9850bf69306d1</srcmd5>
+    <version>1.0.14</version>
+    <time>1186166831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a5c6f5c73825b74989dadb386eb07873</srcmd5>
+    <version>1.0.15</version>
+    <time>1192552553</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>db1f4e4dd242c1325ac558b53156fb05</srcmd5>
+    <version>1.0.15.99.1</version>
+    <time>1201130862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>78247702e3736f9cc9cf9fd31c36ea7b</srcmd5>
+    <version>1.0.16</version>
+    <time>1201532382</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>e08b57318483a55de39218715ced9d57</srcmd5>
+    <version>1.0.16</version>
+    <time>1202486340</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0e9448c060c7e52926b4ba269e637650</srcmd5>
+    <version>1.0.16.92</version>
+    <time>1214589628</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e10a708bd3704358c0fc66c5aea7037d</srcmd5>
+    <version>1.0.17</version>
+    <time>1216153358</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f90fe2feb9cb8fe822b10973c0259224</srcmd5>
+    <version>1.0.19</version>
+    <time>1232639024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>d6d45612475b4bfb2846fd0118e5196a</srcmd5>
+    <version>1.0.19</version>
+    <time>1236267394</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>287900744b5521c268beee8b922706ad</srcmd5>
+    <version>1.0.20</version>
+    <time>1241627504</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>9b504a908f8071afba44af1043becb00</srcmd5>
+    <version>1.0.20</version>
+    <time>1254967636</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa-firmware based on submit request 21856 from user tiwai
+</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>9b504a908f8071afba44af1043becb00</srcmd5>
+    <version>1.0.20</version>
+    <time>1254967636</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa-firmware based on submit request 21856 from user tiwai
+</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>42d58fd6d5c909cb5b2e028b56147717</srcmd5>
+    <version>1.0.20</version>
+    <time>1267529169</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa-firmware based on submit request 33748 from user coolo
+</comment>
+    <requestid>33748</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>bee48221b8279f53d902f7da26c68387</srcmd5>
+    <version>1.0.20</version>
+    <time>1268922865</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>694d2511b83836cc958911e6acc9e731</srcmd5>
+    <version>1.0.23</version>
+    <time>1271979539</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa-firmware based on submit request 38521 from user tiwai
+</comment>
+    <requestid>38521</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>694d2511b83836cc958911e6acc9e731</srcmd5>
+    <version>1.0.23</version>
+    <time>1278667335</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>694d2511b83836cc958911e6acc9e731</srcmd5>
+    <version>1.0.23</version>
+    <time>1278678562</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6f480b95e58fc7192da818c92e769146</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1296695206</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59788 from user tiwai
+</comment>
+    <requestid>59788</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>1c8d25a9d5f85fd21b44d0a0a00422c1</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1296695220</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59788
+</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>1c8d25a9d5f85fd21b44d0a0a00422c1</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>ffc7752340cbbdf373cef7a2c381d9a5</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1316439307</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82720 from jengelh)</comment>
+    <requestid>82735</requestid>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>ffc7752340cbbdf373cef7a2c381d9a5</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1319181768</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>2a3dfac2966623d3f035294ef294e09d</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1323340035</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94904 from coolo)</comment>
+    <requestid>94936</requestid>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>6a0e987d124a73fd0b03bc6b018ebd16</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1324830771</time>
+    <user>coolo</user>
+    <comment>- alsa firmware is of no use without alsa (forwarded request 97961 from elvigia)</comment>
+    <requestid>97978</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b7dd70c3ee4d7732fda0910aca3efca5</srcmd5>
+    <version>1.0.25</version>
+    <time>1327673774</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.0.25; Update asihpi firmware to 4.10.05</comment>
+    <requestid>101687</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>b7dd70c3ee4d7732fda0910aca3efca5</srcmd5>
+    <version>1.0.25</version>
+    <time>1340183169</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>b7dd70c3ee4d7732fda0910aca3efca5</srcmd5>
+    <version>1.0.25</version>
+    <time>1359108647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0002f48a7f2f01a423b0f11442acb92e</srcmd5>
+    <version>1.0.27</version>
+    <time>1365927074</time>
+    <user>coolo</user>
+    <comment>- Updated to version 1.0.27:
+  add firmware files for CA0132 HD-audio codec
+- Fix macros for udev rules installation path (forwarded request 163764 from tiwai)</comment>
+    <requestid>163770</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>0002f48a7f2f01a423b0f11442acb92e</srcmd5>
+    <version>1.0.27</version>
+    <time>1379661958</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>34b3161280339312c5c03223f3323ba4</srcmd5>
+    <version>1.0.27</version>
+    <time>1392110523</time>
+    <user>coolo</user>
+    <comment>- 0001-Add-cs46xx-entry-to-the-main-configure-and-Makefile..patch:
+  Add firmware files for cs46xx that have been cut since 3.13
+  kernel</comment>
+    <requestid>221639</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c0ea83d602c0286fe12bb3cfa3b6e457</srcmd5>
+    <version>1.0.28</version>
+    <time>1403672254</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237968</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>c0ea83d602c0286fe12bb3cfa3b6e457</srcmd5>
+    <version>1.0.28</version>
+    <time>1409300481</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>793b8808a224a9340f98195a673e92cb</srcmd5>
+    <version>1.0.29</version>
+    <time>1425217619</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288090</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>9b1be89e927bd695c80e4a3ac9d3643e</srcmd5>
+    <version>1.0.29</version>
+    <time>1559375473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706126</requestid>
+  </revision>
+</revisionlist>

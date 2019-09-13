@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>7a7fb46334d8b9f7f5647e3ad4884675</srcmd5>
+    <version>0.6.5</version>
+    <time>1295943178</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56627 from user puzel
+</comment>
+    <requestid>56627</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>684545eab6837852f389ddc4e3159f44</srcmd5>
+    <version>0.6.5</version>
+    <time>1295943184</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56627
+</comment>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>684545eab6837852f389ddc4e3159f44</srcmd5>
+    <version>0.6.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4805e8de0f744ca91171254ef9aa2e56</srcmd5>
+    <version>0.6.6</version>
+    <time>1315410317</time>
+    <user>saschpe</user>
+    <comment>update to 0.6.6</comment>
+    <requestid>81178</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ad9c2bcca14f2238483bcd6d0ececb37</srcmd5>
+    <version>0.6.6</version>
+    <time>1315410325</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81178
+</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>46a6ef4d34f4ce38e0882c1f4d16b5d5</srcmd5>
+    <version>0.6.6</version>
+    <time>1316617056</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 83079 from jengelh)</comment>
+    <requestid>83797</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>46a6ef4d34f4ce38e0882c1f4d16b5d5</srcmd5>
+    <version>0.6.6</version>
+    <time>1319181807</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>16813d0840644075e4e8ee21b2fc31de</srcmd5>
+    <version>0.6.6</version>
+    <time>1326962475</time>
+    <user>coolo</user>
+    <comment>- change license to be in spdx.org format</comment>
+    <requestid>100331</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>005ed14d92893d0871f640aa1a69959e</srcmd5>
+    <version>0.6.6</version>
+    <time>1330007542</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106490</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>005ed14d92893d0871f640aa1a69959e</srcmd5>
+    <version>0.6.6</version>
+    <time>1340183232</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>005ed14d92893d0871f640aa1a69959e</srcmd5>
+    <version>0.6.6</version>
+    <time>1359108741</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6ebd4066f199b8ba4162d0e8c6b4f17b</srcmd5>
+    <version>0.6.7</version>
+    <time>1371456169</time>
+    <user>coolo</user>
+    <comment> (forwarded request 179069 from jenewton)</comment>
+    <requestid>179072</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>6ebd4066f199b8ba4162d0e8c6b4f17b</srcmd5>
+    <version>0.6.7</version>
+    <time>1379662100</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>6ebd4066f199b8ba4162d0e8c6b4f17b</srcmd5>
+    <version>0.6.7</version>
+    <time>1409300632</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fc1bf5a7bd4b58fc736ada1cf298319a</srcmd5>
+    <version>0.6.8</version>
+    <time>1428192256</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294476</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>11aa6b0c58f0ddd83a6e30a227ba7f48</srcmd5>
+    <version>0.7.0</version>
+    <time>1515876451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563545</requestid>
+  </revision>
+</revisionlist>

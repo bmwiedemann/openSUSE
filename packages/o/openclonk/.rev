@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ad2e7c98a1689da4158a4aaf898a7682</srcmd5>
+    <version>7.0</version>
+    <time>1485382610</time>
+    <user>dimstar_suse</user>
+    <comment>now also builds for Leap and has some more dependencies unbundled</comment>
+    <requestid>423592</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bcc40daf4ba3f2cceee1071d813610bf</srcmd5>
+    <version>7.0</version>
+    <time>1520164322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582200</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>04b6aa4d5827234fa2dedda1f3602c6d</srcmd5>
+    <version>7.0</version>
+    <time>1527934197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613077</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>84266fb3f5528d10f9f760e6a04de221</srcmd5>
+    <version>8.1</version>
+    <time>1530303856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>615721</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4cc93ad284c994e42eef0153409516bc</srcmd5>
+    <version>8.1</version>
+    <time>1532361717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624601</requestid>
+  </revision>
+</revisionlist>

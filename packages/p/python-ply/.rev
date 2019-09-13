@@ -1,0 +1,219 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>c8fb339d0bc88e228b89db486bac23de</srcmd5>
+    <version>2.3</version>
+    <time>1206676707</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>04980c2c1fba981dde8f9f6f5d1720ef</srcmd5>
+    <version>2.5</version>
+    <time>1221300348</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3a1a489fb1a50344383466e69d8d777b</srcmd5>
+    <version>2.5</version>
+    <time>1249921694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>3a1a489fb1a50344383466e69d8d777b</srcmd5>
+    <version>2.5</version>
+    <time>1249921694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>b5b55cf74a5eb2de093a02d1511063f2</srcmd5>
+    <version>2.5</version>
+    <time>1268925876</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>b5b55cf74a5eb2de093a02d1511063f2</srcmd5>
+    <version>2.5</version>
+    <time>1278667384</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>b5b55cf74a5eb2de093a02d1511063f2</srcmd5>
+    <version>2.5</version>
+    <time>1278678614</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>6ae0085fe951f66bb0f15d413ca587f7</srcmd5>
+    <version>unknown</version>
+    <time>1284466285</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-ply based on submit request 48094 from user coolo
+</comment>
+    <requestid>48094</requestid>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>6ae0085fe951f66bb0f15d413ca587f7</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>b81a27470aef2b225e616229c47973ae</srcmd5>
+    <version>3.4</version>
+    <time>1301579630</time>
+    <user>darix</user>
+    <comment>Accepted submit request 65634 from user coolo
+</comment>
+    <requestid>65634</requestid>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>00aa9e3083ffec487aac70eadf053ba0</srcmd5>
+    <version>3.4</version>
+    <time>1301579646</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 65634
+</comment>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>00aa9e3083ffec487aac70eadf053ba0</srcmd5>
+    <version>3.4</version>
+    <time>1319182400</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>3a8832b163ad4cbd31e6b929a3c5591d</srcmd5>
+    <version>3.4</version>
+    <time>1329751054</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104493 from coolo)</comment>
+    <requestid>104893</requestid>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>e2608742c4ad1bfc4230ecb241306e60</srcmd5>
+    <version>3.4</version>
+    <time>1338280540</time>
+    <user>coolo</user>
+    <comment>- Fix building on openSUSE 11.4
+- spec file cleanups (forwarded request 122330 from TheBlackCat) (forwarded request 122332 from TheBlackCat)</comment>
+    <requestid>122334</requestid>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>e2608742c4ad1bfc4230ecb241306e60</srcmd5>
+    <version>3.4</version>
+    <time>1340184076</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>93599bdb7d6cfb94aca55b81e1bb3569</srcmd5>
+    <version>3.4</version>
+    <time>1354109630</time>
+    <user>coolo</user>
+    <comment>Removed openSUSE 11.4 spec file workarounds (forwarded request 142748 from TheBlackCat) (forwarded request 142767 from TheBlackCat)</comment>
+    <requestid>142776</requestid>
+  </revision>
+  <revision rev="17" vrev="25">
+    <srcmd5>93599bdb7d6cfb94aca55b81e1bb3569</srcmd5>
+    <version>3.4</version>
+    <time>1359110090</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="26">
+    <srcmd5>beaabf5c99e8f8777f5f115b559cf625</srcmd5>
+    <version>3.4</version>
+    <time>1362732430</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157730</requestid>
+  </revision>
+  <revision rev="19" vrev="27">
+    <srcmd5>99e6cf22c911b70a075385db6fa8de55</srcmd5>
+    <version>3.4</version>
+    <time>1371653009</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179931</requestid>
+  </revision>
+  <revision rev="20" vrev="29">
+    <srcmd5>99e6cf22c911b70a075385db6fa8de55</srcmd5>
+    <version>3.4</version>
+    <time>1379664243</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="31">
+    <srcmd5>99e6cf22c911b70a075385db6fa8de55</srcmd5>
+    <version>3.4</version>
+    <time>1409302945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>962af94d1c97d88bb657f7d9eb2f906c</srcmd5>
+    <version>3.6</version>
+    <time>1431795698</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307464</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>abfef7111de1052dca4db0373a6e2c9b</srcmd5>
+    <version>3.8</version>
+    <time>1444636913</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>336912</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c4b47ac13060ca2b12c8d21f8f246821</srcmd5>
+    <version>3.9</version>
+    <time>1474016423</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424471</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>75d0be538c1d95693554bf28fc7e0e47</srcmd5>
+    <version>3.10</version>
+    <time>1489759659</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480761</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>723e47af37366691d14e51e9c6bb1abb</srcmd5>
+    <version>3.10</version>
+    <time>1499880807</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509281</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0537ec5e97e9e4d858f2e56db48b2fe3</srcmd5>
+    <version>3.11</version>
+    <time>1528195749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613323</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>4219d4685cc474a9ab5ef8c995d5b9d4</srcmd5>
+    <version>3.11</version>
+    <time>1535701906</time>
+    <user>dimstar_suse</user>
+    <comment>- Install some license
+- Remove devel dependency</comment>
+    <requestid>632111</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>eac9bb4e4624064a0840e73f300406c4</srcmd5>
+    <version>3.11</version>
+    <time>1537263350</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634882</requestid>
+  </revision>
+</revisionlist>

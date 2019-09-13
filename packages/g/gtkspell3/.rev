@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6067a5d24df32a865f523e6d709972c7</srcmd5>
+    <version>2.99.1_pre3.0.0</version>
+    <time>1317212520</time>
+    <user>saschpe</user>
+    <comment>New package submitted by community, needed for some features in apps: GTK+ 3 port of gtkspell</comment>
+    <requestid>85076</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>017dd677aed1d36dacd711292b655291</srcmd5>
+    <version>2.99.1_pre3.0.0</version>
+    <time>1318501349</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>87641</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>017dd677aed1d36dacd711292b655291</srcmd5>
+    <version>2.99.1_pre3.0.0</version>
+    <time>1319181957</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>2cb1b15e3576fe67b7c6c6077f7c2e2f</srcmd5>
+    <version>2.99.1_pre3.0.0</version>
+    <time>1323191851</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>2cb1b15e3576fe67b7c6c6077f7c2e2f</srcmd5>
+    <version>2.99.1_pre3.0.0</version>
+    <time>1340183426</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>2cb1b15e3576fe67b7c6c6077f7c2e2f</srcmd5>
+    <version>2.99.1_pre3.0.0</version>
+    <time>1359109029</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6177c3882b5ab061cd670db0b3247b4b</srcmd5>
+    <version>3.0.1</version>
+    <time>1364896280</time>
+    <user>coolo</user>
+    <comment>Update to 3.0.1</comment>
+    <requestid>161522</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b75bbba83b2b2e01e1ab75011e454250</srcmd5>
+    <version>3.0.3</version>
+    <time>1372412994</time>
+    <user>coolo</user>
+    <comment>Update to 3.0.3 - enable introspection support (gramps can make use of it) (forwarded request 180788 from Zaitor)</comment>
+    <requestid>180926</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b75bbba83b2b2e01e1ab75011e454250</srcmd5>
+    <version>3.0.3</version>
+    <time>1379662589</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>b75bbba83b2b2e01e1ab75011e454250</srcmd5>
+    <version>3.0.3</version>
+    <time>1409301136</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>be1c0eb37c2450bb9ea783843d96cf97</srcmd5>
+    <version>3.0.6</version>
+    <time>1411630413</time>
+    <user>coolo</user>
+    <comment>Update to 3.0.6</comment>
+    <requestid>251521</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7052406e30cc60dab939afc3a851b458</srcmd5>
+    <version>3.0.8</version>
+    <time>1463124194</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394545</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d1b439c6772bfd625302b6665abc6b50</srcmd5>
+    <version>3.0.8</version>
+    <time>1464964248</time>
+    <user>dimstar_suse</user>
+    <comment>Sync package with SLE12SP2 - just for easier tracking (forwarded request 399207 from dimstar)</comment>
+    <requestid>399414</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a9c14294352039443e5a15b1717a3ab5</srcmd5>
+    <version>3.0.9</version>
+    <time>1478625950</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release</comment>
+    <requestid>438928</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4b8734f6c33802f43c3171e4c7c492e0</srcmd5>
+    <version>3.0.9</version>
+    <time>1496225692</time>
+    <user>dimstar_suse</user>
+    <comment>Build vala bindings.</comment>
+    <requestid>498574</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>ad32a38cfedb208784483488ea9b22ac</srcmd5>
+    <version>3.0.9</version>
+    <time>1520502385</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581204 from dimstar)</comment>
+    <requestid>582795</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>db77e8a2e3f88c14bdb9eec456f805c0</srcmd5>
+    <version>3.0.10</version>
+    <time>1542749383</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 649932 from iznogood)</comment>
+    <requestid>650155</requestid>
+  </revision>
+</revisionlist>

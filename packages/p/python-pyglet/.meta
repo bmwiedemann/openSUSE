@@ -1,0 +1,5 @@
+<package name="python-pyglet" project="openSUSE:Factory">
+  <title>python-pyglet</title>
+  <description>Cross-platform windowing and multimedia library</description>
+  <devel project="devel:languages:python" package="python-pyglet"/>
+</package>

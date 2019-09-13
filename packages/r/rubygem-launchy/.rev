@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af2e84681c94593e25c108bf6fc5356d</srcmd5>
+    <version>2.3.0</version>
+    <time>1372687199</time>
+    <user>coolo</user>
+    <comment>Dependency for rubygem-github</comment>
+    <requestid>181159</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>af2e84681c94593e25c108bf6fc5356d</srcmd5>
+    <version>2.3.0</version>
+    <time>1379664537</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1d1a2c1baa700c091cf1012331924507</srcmd5>
+    <version>2.4.0</version>
+    <time>1385313163</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208120</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d757367a1ad7d1470ca30dbaf15b9983</srcmd5>
+    <version>2.4.1</version>
+    <time>1385793750</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208867</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9979923ce05e21c78ba35bfb6d4e319a</srcmd5>
+    <version>2.4.2</version>
+    <time>1386000267</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>209126</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9979923ce05e21c78ba35bfb6d4e319a</srcmd5>
+    <version>2.4.2</version>
+    <time>1409303244</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b7e42918dbef2802ec170281fa7bcf03</srcmd5>
+    <version>2.4.3</version>
+    <time>1423669539</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>285521</requestid>
+  </revision>
+</revisionlist>

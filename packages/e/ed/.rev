@@ -1,0 +1,266 @@
+<revisionlist>
+  <revision rev="1" vrev="887">
+    <srcmd5>198d38696e5fa1178945c9bca02f6121</srcmd5>
+    <version>0.2</version>
+    <time>1166483746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1001">
+    <srcmd5>198d38696e5fa1178945c9bca02f6121</srcmd5>
+    <version>0.2</version>
+    <time>1166483746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1002">
+    <srcmd5>aed4cd8ac66bf5def035699578bcfc0b</srcmd5>
+    <version>0.2</version>
+    <time>1224729000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1004">
+    <srcmd5>aed4cd8ac66bf5def035699578bcfc0b</srcmd5>
+    <version>0.2</version>
+    <time>1224729000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c80d2e7ddee1a6958d298415c6b2b144</srcmd5>
+    <version>1.4</version>
+    <time>1259917409</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/ed based on submit request 25296 from user mvyskocil
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3d6957b5063063df07f73a1c463401dd</srcmd5>
+    <version>1.4</version>
+    <time>1268923433</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>3d6957b5063063df07f73a1c463401dd</srcmd5>
+    <version>1.4</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>3d6957b5063063df07f73a1c463401dd</srcmd5>
+    <version>1.4</version>
+    <time>1278678573</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>25a5f57650f86cfbd382c444371deac6</srcmd5>
+    <version>1.5</version>
+    <time>1284989869</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/ed based on submit request 48512 from user prusnak
+</comment>
+    <requestid>48512</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>25a5f57650f86cfbd382c444371deac6</srcmd5>
+    <version>1.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>7fd9b44d1bc68397065ff125be9dc25c</srcmd5>
+    <version>1.5</version>
+    <time>1316689299</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83399 from jengelh)</comment>
+    <requestid>84373</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>7fd9b44d1bc68397065ff125be9dc25c</srcmd5>
+    <version>1.5</version>
+    <time>1319181862</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>aad6d8deef23e60ef7589f1a1c35738e</srcmd5>
+    <version>1.6</version>
+    <time>1328892392</time>
+    <user>coolo</user>
+    <comment>- switch license to spdx format
+- keep executable in /usr (UsrMerge project)
+
+- Update to 1.6 (bugfix release)</comment>
+    <requestid>102762</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>aad6d8deef23e60ef7589f1a1c35738e</srcmd5>
+    <version>1.6</version>
+    <time>1340183299</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>d35ec2144359d331c30ad488b6a56969</srcmd5>
+    <version>1.6</version>
+    <time>1351230798</time>
+    <user>coolo</user>
+    <comment>license update: GPL-3.0+ and LGPL-2.1+
+Semicolon is ambiguous (forwarded request 139095 from babelworx)</comment>
+    <requestid>139187</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>d35ec2144359d331c30ad488b6a56969</srcmd5>
+    <version>1.6</version>
+    <time>1359108839</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>0c63b8a632900ea44a376209f96317d2</srcmd5>
+    <version>1.6</version>
+    <time>1364303160</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161104 from m_meister)</comment>
+    <requestid>161129</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>142869f4f3582221add40471ec3ffefe</srcmd5>
+    <version>1.8</version>
+    <time>1366996862</time>
+    <user>coolo</user>
+    <comment>- update to 1.8 
+  + Ed now stops reading stdin when reaching real End Of File the first
+    time. (Before it needed to reach EOF twice).
+  + Show the &quot;Try 'ed --help' for more information.&quot; message if a bad
+    option is given in the command line.
+  + Quote characters in messages have been changed as advised by GNU
+    Coding Standards.
+  + The description of address offsets in the manual and a link to the
+    Bash manual have been fixed.
+  + Displaying of null characters by the &quot;l&quot; command has been fixed.
+  + The condition deciding when to show the message &quot;Newline appended&quot; has
+    been corrected.
+  + The &quot;modified&quot; flag is now set when reading a non-empty file into
+    an empty buffer.
+  + An error that prevented using NUL characters in regular expressions
+    has been fixed.
+  + Ed now signals an error if it can't create a shell process when
+    executing a shell command.
+  + Ed now flushes stdout/stderr before reading a new command.
+  + Man page is now generated with &quot;help2man&quot;. All command-line options
+    are now documented in the man page.
+- use gpg-offline to verify the package tarball
+- adapt the Summary and Description according current README</comment>
+    <requestid>173473</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>967e6d4cd5d38837cee08b96a1471cf6</srcmd5>
+    <version>1.8</version>
+    <time>1371473110</time>
+    <user>coolo</user>
+    <comment>- revert the use gpg-offline for bootstrap packages</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9b26cf0655e8c4ca66b80949c804a2ef</srcmd5>
+    <version>1.9</version>
+    <time>1373985248</time>
+    <user>coolo</user>
+    <comment>- update to 1.9 
+  + Testsuite no more feeds shell scripts to ed.
+  + &quot;configure&quot; now accepts options with a separate argument.</comment>
+    <requestid>183213</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>9b26cf0655e8c4ca66b80949c804a2ef</srcmd5>
+    <version>1.9</version>
+    <time>1379662278</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>05fec6bc252d3d3969fdeb2493150906</srcmd5>
+    <version>1.10</version>
+    <time>1393600900</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.10
+  + &quot;ed.texinfo&quot; has been renamed to &quot;ed.texi&quot; following the advice
+  of recent Automake about obsolete categories
+- repackage tarball to xz as lzip is unlike ed not a part of bootstrap
+- drop xz and keyring, they are pointless with changed tarball</comment>
+    <requestid>223368</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>05fec6bc252d3d3969fdeb2493150906</srcmd5>
+    <version>1.10</version>
+    <time>1409300815</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>849f1368882d0913497cb4bb459aa024</srcmd5>
+    <version>1.11</version>
+    <time>1428391586</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294287</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9a46bdb7bbf6164baa373897086bd1e7</srcmd5>
+    <version>1.12</version>
+    <time>1437477882</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316008</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2ab51a55ed773213a5f3ab8d463d98f1</srcmd5>
+    <version>1.13</version>
+    <time>1456622703</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359090</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1a5f8031042305475a670d44b4f7e9d6</srcmd5>
+    <version>1.14</version>
+    <time>1484818509</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449277</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7a399cbda408390e519d03366a4f2442</srcmd5>
+    <version>1.14.2</version>
+    <time>1488732609</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460359</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>93a0585570c9344c5c26aa97119f684b</srcmd5>
+    <version>1.15</version>
+    <time>1547539715</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch back to hand provided tarball in order to avoid pulling
+  lzip to the Ring0
+
+- Use upstream released tarball
+
+- Avoid repetition of package name in summary.
+
+- Update to version 1.15:
+        * io.c (print_line): Make '1' command print '\\' before every
+          '$' within the text.
+        * main_loop.c (extract_addresses): Fixed address ',,' to mean
+          '$,$' instead of '1,$'.
+        * regex.c (extract_replacement): Allow newlines even if global.
+        * main_loop.c (exec_command): Make 'c' command reject address 0.
+        * ed.texi: Minor fixes.
+        * configure: Accept appending to CFLAGS, 'CFLAGS+=OPTIONS'.
+        * Switch archive format to tar.</comment>
+    <requestid>664295</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>767009d06960c6216a73bdd2fa24bb30</srcmd5>
+    <version>1.0.9</version>
+    <time>1537264279</time>
+    <user>maxlin_factory</user>
+    <comment>Needed by cassandra-driver</comment>
+    <requestid>636307</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f51dbbeed87cd0989cac61e18b615fd0</srcmd5>
+    <version>1.0.9</version>
+    <time>1568191215</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with python 3.8:
+  * python38.patch</comment>
+    <requestid>729907</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="yast2-samba-server" project="openSUSE:Factory">
+  <title>YaST2 - Samba Server Configuration</title>
+  <description>This package contains the YaST2 component for Samba server
+configuration.</description>
+  <devel project="YaST:Head" package="yast2-samba-server"/>
+</package>

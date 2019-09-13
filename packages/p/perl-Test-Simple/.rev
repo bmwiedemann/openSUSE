@@ -1,0 +1,194 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8ff70a0ca490952a5c1a6fa4d21149c5</srcmd5>
+    <version>1.302075</version>
+    <time>1486857005</time>
+    <user>dimstar_suse</user>
+    <comment>readd to Factory - the core module is too old too often</comment>
+    <requestid>455649</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2e10ac3c7b0f0d97016aba7da20e304f</srcmd5>
+    <version>1.302075</version>
+    <time>1487260919</time>
+    <user>dimstar_suse</user>
+    <comment>- use %license</comment>
+    <requestid>456723</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>36166606856be7ce86bb54ee7ff16252</srcmd5>
+    <version>1.302078</version>
+    <time>1489345288</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477085</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea8b0aa35febc8e8834b5b3f044ff671</srcmd5>
+    <version>1.302085</version>
+    <time>1494938286</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492948</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ce83752d210cf3ea3513747f72df64fe</srcmd5>
+    <version>1.302086</version>
+    <time>1498485378</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506081</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>facffbf2ecbe5aab5a2dabbd72388b7b</srcmd5>
+    <version>1.302096</version>
+    <time>1505331298</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523579</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>96319616cc506152fc35693463c1fc74</srcmd5>
+    <version>1.302098</version>
+    <time>1507755342</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532925</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d164308b208d7ecdb84027b85a6ac410</srcmd5>
+    <version>1.302100</version>
+    <time>1508769669</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534766</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bcacf4433839181c214f3c04a87333bd</srcmd5>
+    <version>1.302103</version>
+    <time>1510505808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539965</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>34a095c0795327a08e61ccd63db6f216</srcmd5>
+    <version>1.302120</version>
+    <time>1513109970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555675</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d41f8b6f2599080921ede5ecb99bbc3a</srcmd5>
+    <version>1.302122</version>
+    <time>1518426477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573948</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>027ca744ac18dcc6a287ce8f7bdb62de</srcmd5>
+    <version>1.302125</version>
+    <time>1519683765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579745</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1df44202f1e928c0c291b3906d28ad91</srcmd5>
+    <version>1.302128</version>
+    <time>1520502916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583225</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9c2902815351b2b97929595924fea65d</srcmd5>
+    <version>1.302133</version>
+    <time>1521579075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586330</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4449e3c7f497bcefe8348351a213763e</srcmd5>
+    <version>1.302135</version>
+    <time>1523956240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595027</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bb241b69f2745e5955bb8e3e2506980a</srcmd5>
+    <version>1.302136</version>
+    <time>1524742434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599316</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e214a047852a764683f0aa0b997eae58</srcmd5>
+    <version>1.302138</version>
+    <time>1531946259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623036</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>52c0151df42f705fec3fc5cbb630509a</srcmd5>
+    <version>1.302140</version>
+    <time>1535367395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631328</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4c8f61dccd0960c53799d1be92bf7edb</srcmd5>
+    <version>1.302141</version>
+    <time>1544264416</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655835</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>85043fa7d089cc85e2615a4294d8ceb3</srcmd5>
+    <version>1.302160</version>
+    <time>1549017807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667181</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1e9b3f1631347bfaa307dc7bea68c11d</srcmd5>
+    <version>1.302162</version>
+    <time>1550149890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>672859</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f8c04e57775352d19c59cf46def9cf58</srcmd5>
+    <version>1.302164</version>
+    <time>1557170012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700731</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2bbf5bd0a721bcf87473361c81ee9498</srcmd5>
+    <version>1.302166</version>
+    <time>1566240438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724047</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f2814fe5d945456e78b5dda2f6e74808</srcmd5>
+    <version>1.302167</version>
+    <time>1567420921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726159</requestid>
+  </revision>
+</revisionlist>

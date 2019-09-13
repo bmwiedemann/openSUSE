@@ -1,0 +1,8 @@
+<package name="perl-Want" project="openSUSE:Factory">
+  <title>A generalisation of C&lt;wantarray&gt;</title>
+  <description>This module generalises the mechanism of the *wantarray* function, allowing
+a function to determine in some detail how its return value is going to be
+immediately used.</description>
+  <devel project="devel:languages:perl" package="perl-Want"/>
+  <url>http://search.cpan.org/dist/Want</url>
+</package>

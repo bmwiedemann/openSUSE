@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6063e5244ab1f4dd9c4fe7d0d6e9bffb</srcmd5>
+    <version>0.9.4.4</version>
+    <time>1374490766</time>
+    <user>coolo</user>
+    <comment>required by gource, sr#182604
+replace of sr#182978</comment>
+    <requestid>183934</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>94f1ddaf71c9dd1df0ce9c243d2f0e1a</srcmd5>
+    <version>0.9.4.4</version>
+    <time>1375764950</time>
+    <user>coolo</user>
+    <comment>- convert sources to UNIX format using dos2unix
+- fix build on non x86 architectures (glm-nonx86.patch) (forwarded request 185423 from k0da)</comment>
+    <requestid>185434</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>94f1ddaf71c9dd1df0ce9c243d2f0e1a</srcmd5>
+    <version>0.9.4.4</version>
+    <time>1379662464</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2cad9611bdfde144b22e2d852edf1015</srcmd5>
+    <version>0.9.5.3</version>
+    <time>1400256498</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.9.5.3
+- Add a patch to disable gtc_packing test that fails on some i586
+  systems:
+  * glm-0.9.5.3-no_gtc_packing_test.patch
+- Add %fdupes to reduce size (forwarded request 234273 from fstrba)</comment>
+    <requestid>234276</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2cad9611bdfde144b22e2d852edf1015</srcmd5>
+    <version>0.9.5.3</version>
+    <time>1409301001</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>b32ffa051e379220e2a6bc541455ca05</srcmd5>
+    <version>0.9.5.3</version>
+    <time>1411926928</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252446</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>677f7e781aebc4d7c1632ef4f24734a6</srcmd5>
+    <version>0.9.7.4</version>
+    <time>1459237978</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378294</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ea2b6055845f6fa8f8d23532009ca25e</srcmd5>
+    <version>0.9.7.5</version>
+    <time>1467359740</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405475</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b9c62d513f5a2977325234c1db466865</srcmd5>
+    <version>0.9.9.4</version>
+    <time>1553699636</time>
+    <user>dimstar_suse</user>
+    <comment>- Upstream does not package a dedicated LICENSE file.
+  Make a note the license terms are included in manual.md
+- Use %fdupes macro also for docs/api/
+- Update to version 0.9.9.4
+  See https://github.com/g-truc/glm/releases for the changelog
+- Update patch:
+  * glm-cmake-config.patch
+- Run spec-cleaner
+</comment>
+    <requestid>688281</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b0ac9057e9364b952417dda3003aa933</srcmd5>
+    <version>0.9.9.4</version>
+    <time>1554189458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689723</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9937e81ed20dfe3aa5b142120f924f2c</srcmd5>
+    <version>0.9.9.5</version>
+    <time>1555691747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694882</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>807150a2d774dcd82ac1bae952b047d9</srcmd5>
+    <version>0.9.9.5</version>
+    <time>1556474326</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697769</requestid>
+  </revision>
+</revisionlist>

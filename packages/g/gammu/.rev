@@ -1,0 +1,374 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>74e6dd87a30bbab6c2ff8681b7c0c1cf</srcmd5>
+    <version>1.09.00</version>
+    <time>1168902806</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c290efbe77108ffdf79f43fda1670242</srcmd5>
+    <version>1.10.0</version>
+    <time>1172584997</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c92974de383d670100a1edb1d0497dc8</srcmd5>
+    <version>1.11.0</version>
+    <time>1179394520</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e955af2f25c935cb14911b9ed3ad10f6</srcmd5>
+    <version>1.12.0</version>
+    <time>1182274355</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="21">
+    <srcmd5>24409423af765ca7857cccd5f18dd668</srcmd5>
+    <version>1.12.0</version>
+    <time>1188836944</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1bbed787e9e8a44532c2c166716ea858</srcmd5>
+    <version>1.13.0</version>
+    <time>1191423679</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5d0514fb71c5b2ba0c87b27e888b2685</srcmd5>
+    <version>1.14.0</version>
+    <time>1194563114</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>49c866be6fe2250a08524d1330c0db28</srcmd5>
+    <version>1.15.0</version>
+    <time>1195611880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d55a2dc7972c254cdc250e3a45d16009</srcmd5>
+    <version>1.16.0</version>
+    <time>1197999463</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4238e635e936575007f07d76c9ba401b</srcmd5>
+    <version>1.17.0</version>
+    <time>1199913152</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fcb3555bc2a9ce31ff57bc60baa604b9</srcmd5>
+    <version>1.18.0</version>
+    <time>1201822409</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1282ab354e433911c8f01f536c5de8c6</srcmd5>
+    <version>1.19.0</version>
+    <time>1205251609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c1c690856ef4092e6fb3513d311ff30f</srcmd5>
+    <version>1.20.0</version>
+    <time>1220990966</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>aec9e1a26c9c8b02c7ead9e657965537</srcmd5>
+    <version>1.20.0</version>
+    <time>1221493853</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2f72ec16881ef191bea4929d08fcccbf</srcmd5>
+    <version>1.23.1</version>
+    <time>1239101756</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8cb26c0d78d458f114f33c58723f4448</srcmd5>
+    <version>1.24.0</version>
+    <time>1241539579</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3e08c03d61c3f378dd73a74fd093dc71</srcmd5>
+    <version>1.25.0</version>
+    <time>1247275142</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d4843f10554d6b62fe01def08927a141</srcmd5>
+    <version>1.25.0</version>
+    <time>1250872728</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/gammu based on submit request 18249 from user prusnak
+</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>d4843f10554d6b62fe01def08927a141</srcmd5>
+    <version>1.25.0</version>
+    <time>1250872728</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/gammu based on submit request 18249 from user prusnak
+</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>a932bba8ca47ed478c47b8deffc498aa</srcmd5>
+    <version>1.25.0</version>
+    <time>1268923616</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>0dfa6d22d687b5ac834ce3bb60c46fea</srcmd5>
+    <version>1.25.0</version>
+    <time>1271369683</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/gammu based on submit request 37720 from user prusnak
+</comment>
+    <requestid>37720</requestid>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>0dfa6d22d687b5ac834ce3bb60c46fea</srcmd5>
+    <version>1.25.0</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>0dfa6d22d687b5ac834ce3bb60c46fea</srcmd5>
+    <version>1.25.0</version>
+    <time>1278678576</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>0dfa6d22d687b5ac834ce3bb60c46fea</srcmd5>
+    <version>1.25.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3f08e6e959988152d3893f5ea90904f9</srcmd5>
+    <version>1.29.0</version>
+    <time>1300709129</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64588 from user adrianSuSE
+</comment>
+    <requestid>64588</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>0288ffb4047927165d3446bbf7c47cd6</srcmd5>
+    <version>1.29.0</version>
+    <time>1300709140</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64588
+</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>18d36fbcf74358e6c143c970bc704623</srcmd5>
+    <version>1.30.0</version>
+    <time>1311577190</time>
+    <user>saschpe</user>
+    <comment>Updated to 1.30.0, Spec file updates, Modified gammu-smsd.lsb.patch (forwarded request 76855 from adra)</comment>
+    <requestid>76869</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>71b5a324058eeabae9529c1734a755d5</srcmd5>
+    <version>1.30.0</version>
+    <time>1311577202</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76869
+</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>71b5a324058eeabae9529c1734a755d5</srcmd5>
+    <version>1.30.0</version>
+    <time>1319181892</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>e95aac0ca24bad82d97099c8a515a1aa</srcmd5>
+    <version>1.30.0</version>
+    <time>1323191451</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>59d8024475a75e046794a77b4f9b28be</srcmd5>
+    <version>1.31.0</version>
+    <time>1324831899</time>
+    <user>coolo</user>
+    <comment>Updated to 1.31.0 (forwarded request 98068 from adra)</comment>
+    <requestid>98072</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>59d8024475a75e046794a77b4f9b28be</srcmd5>
+    <version>1.31.0</version>
+    <time>1340183347</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7e5233ebd9ce2c44d7ce0805e6dcf746</srcmd5>
+    <version>1.32.0</version>
+    <time>1344777891</time>
+    <user>namtrac</user>
+    <comment>- Remove GPL-3.0 licensed files ( bnc#775397 ) 
+
+- Updated to 1.32.0:
+  * Fixed auto installation of EventLog registry.
+  * Improved support for Arduino GPRS shield (bug #1592).
+  * Fixed communication with Cross PD1101wi (bug #1617).
+  * Ignore another unknown block in Nokia phonebook (bug #1614).
+  * Do not encode number when setting up diverts.
+  From 1.31.90:
+  * Improved compatibility with ES75 (bug #1586).
+  * Changed API for call diverts.
+  * Added support for call diverts in Python API.
+  * AT backend supports manipulating with call diverts.
+  * Added support for suspending/resuming SMSD using SIGUSR1/2.
+  * Changed protocol for S60 applet.
+  * S60 applet now handles SMS with new lines.
+  * Improved support for Windows Event Log.
+- Added xz as build requirement for openSUSE &lt;= 12.1 (needed to unpack the
+  package sources).
+- Don't install the init script &quot;gammu-smsd&quot; (doesn't work correctly out of the
+  box). Instead install it in the documentation.
+- Build the package manual (html) for openSUSE &gt; 11.4 (fails for &lt;= 11.4 due to
+  python-sphinx). Added gnu-free-fonts, graphviz, graphviz-gd and python-Sphinx
+  build requirements for this. Added it in a separate subpackage (gammu-doc) to
+  fix rpmlint warning &quot;package-with-huge-docs&quot;.</comment>
+    <requestid>130590</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>7e5233ebd9ce2c44d7ce0805e6dcf746</srcmd5>
+    <version>1.32.0</version>
+    <time>1359108900</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b5308b3bca4edb413bef72ce2952fd24</srcmd5>
+    <version>1.33.0</version>
+    <time>1373469996</time>
+    <user>coolo</user>
+    <comment>Updated to 1.33.0 (forwarded request 182552 from adra)</comment>
+    <requestid>182707</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>b5308b3bca4edb413bef72ce2952fd24</srcmd5>
+    <version>1.33.0</version>
+    <time>1379662381</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>b5308b3bca4edb413bef72ce2952fd24</srcmd5>
+    <version>1.33.0</version>
+    <time>1409300917</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3e6d7c8c3d6e153672c15c89a3d3a753</srcmd5>
+    <version>1.34.0</version>
+    <time>1422974054</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283440</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7b8e3a16b47b80985805e9d56030da40</srcmd5>
+    <version>1.35.0</version>
+    <time>1425377732</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288495</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e02c82827440765852dbd2337498e1bd</srcmd5>
+    <version>1.36.0</version>
+    <time>1429108057</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296738</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e27c92a9c63b5846d01be6c81198e366</srcmd5>
+    <version>1.36.5</version>
+    <time>1440871501</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327664</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b698052aceaa0a820ea980ae8acb5100</srcmd5>
+    <version>1.37.0</version>
+    <time>1457353420</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362243</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>89429156f5d42b40fadfb3c548f945ad</srcmd5>
+    <version>1.37.3</version>
+    <time>1466681743</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402763</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>72f694134224b686df8159ef1e880372</srcmd5>
+    <version>1.38.0</version>
+    <time>1483555169</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>448502</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5bce0b141988599fa847f19119bce601</srcmd5>
+    <version>1.38.3</version>
+    <time>1498639001</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506396</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>9010fbe50914a66bd3dde2a1dcd8735e</srcmd5>
+    <version>1.38.3</version>
+    <time>1510761614</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>541796</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8a30609331a4de011a3e5ec798cde802</srcmd5>
+    <version>1.39.0</version>
+    <time>1517424701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571086</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ce32ea89c48a18ffe202960a6d5e2f21</srcmd5>
+    <version>1.40.0</version>
+    <time>1550048570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673355</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>fe6024dfc3408d85f14be93e6dadaabf</srcmd5>
+    <version>1.40.0</version>
+    <time>1560800075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710308</requestid>
+  </revision>
+</revisionlist>

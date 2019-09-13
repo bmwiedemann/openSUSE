@@ -1,0 +1,373 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>96e98164f98771b2f4c9bdabf8c648e4</srcmd5>
+    <version>3.9.90</version>
+    <time>1377872874</time>
+    <user>coolo</user>
+    <comment>New package - fixed as per legal review</comment>
+    <requestid>196339</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4d469e78d2456f40123db60b5cc4d916</srcmd5>
+    <version>3.9.91</version>
+    <time>1378892452</time>
+    <user>coolo</user>
+    <comment>Update to 3.9.91</comment>
+    <requestid>198070</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4d469e78d2456f40123db60b5cc4d916</srcmd5>
+    <version>3.9.91</version>
+    <time>1379662495</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>187a99a0886943c1aeda2858976e69b7</srcmd5>
+    <version>3.10.0</version>
+    <time>1380607952</time>
+    <user>coolo</user>
+    <comment>- Add gnome-music-notif-coverart.patch: Fix cover art not being
+  shown in notifications (bnc#842992, bgo#709033). (forwarded request 201391 from Zaitor)</comment>
+    <requestid>201403</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>79e2763f49ecd591e5759d427b88e507</srcmd5>
+    <version>3.10.1</version>
+    <time>1381826456</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.10.1 - minor bug fixing only (forwarded request 203242 from Zaitor)</comment>
+    <requestid>203257</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e298eaf4d686cd7acc399cc68eba0d06</srcmd5>
+    <version>3.10.1</version>
+    <time>1388393638</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>212113</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8aa060c1ac819e03f78b6b9e546a8c0b</srcmd5>
+    <version>3.10.3</version>
+    <time>1393221734</time>
+    <user>coolo</user>
+    <comment>Stable update
+
+- Update to version 3.10.3:
+  + Bugs fixed: bgo#709234, bgo#721595, bgo#724016, bgo#723942,
+    bgo#708154, bgo#723765, bgo#721297, bgo#700022, bgo#707744.
+- Changes from version 3.10.2:
+  + Correctly use AlbumArtCache.get_media_title in notifications.
+  + Correctly use gettext call.
+  + Do not ship a broken AppData file.
+  + Updated translations.
+- Drop gnome-music-without-gsd.patch: fixed upstream. (forwarded request 223557 from Zaitor)</comment>
+    <requestid>223563</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f6fe18e011b7bc54e85f24fa68f4e107</srcmd5>
+    <version>3.12.1</version>
+    <time>1399317323</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231726</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b2b3a84938006a63c1700fbd5e5415fa</srcmd5>
+    <version>3.12.2.1</version>
+    <time>1400588660</time>
+    <user>coolo</user>
+    <comment>Stable update (forwarded request 234457 from Zaitor)</comment>
+    <requestid>234497</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>b2b3a84938006a63c1700fbd5e5415fa</srcmd5>
+    <version>3.12.2.1</version>
+    <time>1409301031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>617cda03b43fbfcaf68489cd11c229a2</srcmd5>
+    <version>3.14.0</version>
+    <time>1412098714</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251899 from Zaitor)</comment>
+    <requestid>252100</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>13d723523d7aa612322b7541adb68b72</srcmd5>
+    <version>3.14.0</version>
+    <time>1412589975</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254058</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4961955007c30a98ca8a5cca0be899f3</srcmd5>
+    <version>3.14.1</version>
+    <time>1413383200</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256053</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c9138a161e7ed22c5e73fecfd5b59e75</srcmd5>
+    <version>3.14.2</version>
+    <time>1416347194</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.14.2</comment>
+    <requestid>261795</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>719fe6ae9d291d7d4ea0ec5a2e32e78e</srcmd5>
+    <version>3.14.3.1</version>
+    <time>1422358531</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282832</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e4d8f428d624fbff3c2065b02570c5b8</srcmd5>
+    <version>3.16.0</version>
+    <time>1427736363</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292837 from dimstar)</comment>
+    <requestid>293021</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8344ca6d69db2da0dfda0e7b564a9239</srcmd5>
+    <version>3.16.1</version>
+    <time>1429768899</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298467</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cfd52bd89c1dadcf09c09dc4f45f44ad</srcmd5>
+    <version>3.16.2</version>
+    <time>1439482182</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321838</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>815945b0ca517006f5bc2974c8c0eef8</srcmd5>
+    <version>3.18.0</version>
+    <time>1444142122</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python3-requests Requires: this is a hard runtime dependency. (forwarded request 333186 from dimstar)</comment>
+    <requestid>333187</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0c4547708859b148be4d6326b536c5ae</srcmd5>
+    <version>3.18.2</version>
+    <time>1448186378</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>344723</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>efcd888b44348e46fa0c0188a526c809</srcmd5>
+    <version>3.20.0</version>
+    <time>1459255498</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 377541 from dimstar)</comment>
+    <requestid>377586</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c6226439ee1c87ef6bffbb96f0103164</srcmd5>
+    <version>3.20.2</version>
+    <time>1463738042</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>395498</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0bd349e478d19aee863e6afdf947d03f</srcmd5>
+    <version>3.22.0</version>
+    <time>1474475827</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.22.0 (forwarded request 428769 from dimstar)</comment>
+    <requestid>429104</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ce9ebdb0eff7a009ae620d5b14970d9e</srcmd5>
+    <version>3.22.1</version>
+    <time>1476779332</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435376</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>eefe71ab617a43c9af52094f32cd7c14</srcmd5>
+    <version>3.22.2</version>
+    <time>1478958503</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439859</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5198ac35f1fcdf498f54d2aad02e043e</srcmd5>
+    <version>3.24.0</version>
+    <time>1490220334</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.0 (forwarded request 481245 from dimstar)</comment>
+    <requestid>481363</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>457081185786ad14e8442126261d1b9f</srcmd5>
+    <version>3.24.1.1</version>
+    <time>1493455830</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.1.1 (forwarded request 490787 from dimstar)</comment>
+    <requestid>490922</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8e0ef4424e3ecef3cec9cbca9370fdfa</srcmd5>
+    <version>3.24.2</version>
+    <time>1495132803</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 494377 from Zaitor)</comment>
+    <requestid>494448</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>36afe9f02e21b9727525d230399f82ca</srcmd5>
+    <version>3.24.2</version>
+    <time>1496225644</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497082</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>a7f85c3c07c8ee60a5e4d3b4b508f082</srcmd5>
+    <version>3.24.2</version>
+    <time>1498202162</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505722</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b292a2d0ae9413f191f69abb6a5a1dbd</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332125</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523134</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b5204d4c59f96f8356c5188ea1b59bd2</srcmd5>
+    <version>3.26.1</version>
+    <time>1507280341</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 531152 from Zaitor)</comment>
+    <requestid>531203</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>26bfffa1cafa82f78cd10c372159fbab</srcmd5>
+    <version>3.26.2</version>
+    <time>1518025131</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.26.2:
+  + Bugs fixed:
+    - Block spotify plugin (glgo#gnome-music#132).
+    - DiscListBoxWidget: Update favorites playlist (bgo#784998).
+    - Albumartcache: Fix order in method call.
+    - Flatpak: Update music repository URL (glgo#gnome-music#138).
+    - Misc flatpak fixes.
+  + Updated translations. (forwarded request 573526 from iznogood)</comment>
+    <requestid>573680</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ddf2c3c97c5700a249285d60eb856e66</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052091</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0 (forwarded request 585967 from dimstar)</comment>
+    <requestid>586203</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>b1b2c110f009c3d4fff92310a1baf04d</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052706</time>
+    <user>dimstar_suse</user>
+    <comment>- Add grilo-plugin-tracker as requires, otherwise gnome-music is
+  useless (bsc#1083659).
+- Add tracker as requires, tracker-miner-files is not enough as
+  a dependency (bsc#1084861). (forwarded request 586788 from fcrozat)</comment>
+    <requestid>587040</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>42ebf878e1669a5317a2a6b04f453dc3</srcmd5>
+    <version>3.28.0.1</version>
+    <time>1521904188</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 588475 from dimstar)</comment>
+    <requestid>590339</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f43595bacc242c4ce3c34a1041213dfb</srcmd5>
+    <version>3.28.1</version>
+    <time>1524144186</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 594990 from iznogood)</comment>
+    <requestid>596138</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>91ccb62b83620143b007bb7bf98cf7d1</srcmd5>
+    <version>3.28.2.1</version>
+    <time>1525960048</time>
+    <user>dimstar_suse</user>
+    <comment>Upstream released a new bump after luc went to bed (forwarded request 605374 from iznogood)</comment>
+    <requestid>605379</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2099ed2764c2e62b2da87921363836b8</srcmd5>
+    <version>3.30.0</version>
+    <time>1539756637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636751</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>343a28be43267ab64072d13e49d4cd0e</srcmd5>
+    <version>3.30.2</version>
+    <time>1541666672</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 644245 from iznogood)</comment>
+    <requestid>644302</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>4040ec35abf767d59e2b2ec34d35b74c</srcmd5>
+    <version>3.30.2</version>
+    <time>1546245578</time>
+    <user>dimstar_suse</user>
+    <comment>Add upstream bug fix patch (forwarded request 661686 from iznogood)</comment>
+    <requestid>661752</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8e313a13206b7821dcd14e0c67567904</srcmd5>
+    <version>3.32.1</version>
+    <time>1556914303</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695648 from dimstar)</comment>
+    <requestid>695696</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1cb896caef970d9b67fae697ecacfc01</srcmd5>
+    <version>3.32.2</version>
+    <time>1557472564</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 701141 from iznogood)</comment>
+    <requestid>701602</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>7cdbe651d8575d05710c8c162ea165f3</srcmd5>
+    <version>3.32.2</version>
+    <time>1563018537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714583</requestid>
+  </revision>
+</revisionlist>

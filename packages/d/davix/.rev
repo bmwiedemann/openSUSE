@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bedfe06aff43dfa8bb2d3610372b7bb3</srcmd5>
+    <version>0.7.4</version>
+    <time>1566665045</time>
+    <user>dimstar_suse</user>
+    <comment>New package: davix -  Simple file management over HTTP-based protocols</comment>
+    <requestid>725294</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9605880d2e40303e9d6ff24fef5538d0</srcmd5>
+    <version>0.7.4</version>
+    <time>1567423535</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>727336</requestid>
+  </revision>
+</revisionlist>

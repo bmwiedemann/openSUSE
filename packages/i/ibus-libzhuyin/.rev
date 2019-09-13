@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed413cacfd794354e8ad0bf4ad9bbd80</srcmd5>
+    <version>1.6.99.20140626</version>
+    <time>1405661508</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>240855</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ed413cacfd794354e8ad0bf4ad9bbd80</srcmd5>
+    <version>1.6.99.20140626</version>
+    <time>1409301196</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>49352deaaab0322a77f9e082057bf43a</srcmd5>
+    <version>1.6.99.20140929</version>
+    <time>1416994377</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.99.20140929
+  * write updateLookupTableLabel method</comment>
+    <requestid>262051</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c7a411af2cbad8cb45565a51e2840bf3</srcmd5>
+    <version>1.6.99.20140929</version>
+    <time>1425031165</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287645</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e1c190e8af27a10e70e6090221b01ad</srcmd5>
+    <version>1.7.4</version>
+    <time>1440658551</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325448</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b44273b68e901ebf5ac5ca37f5036103</srcmd5>
+    <version>1.7.4</version>
+    <time>1444636944</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>337281</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>78293a72728e41d192d09751a86d763a</srcmd5>
+    <version>1.7.6</version>
+    <time>1451390357</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.6
+  * clean up getCursorRight method
+  * fixes getCursorRight and selectCandidate method
+  * fixes getCursorRight method
+  * fixes probe_section_start function
+  * fixes getCursorRight method
+  * fixes processSpace method
+  * fixes prepareCandidates method (forwarded request 350733 from hillwood)</comment>
+    <requestid>350736</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7c28292ccfe78742af60d6ba1af98e2a</srcmd5>
+    <version>1.7.8</version>
+    <time>1476997676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.8
+  * fixes leak
+  * Fixes FallbackEditor
+  * fixes full punctuation in English mode
+  * use Shift-Space to toggle full English mode
+  * update class ZhuyinProperties
+  * update class ZhuyinConfig
+  * update main.py
+  * update setup UI
+  * combine two full/width modes into one mode
+  * fixes compile (forwarded request 426292 from hillwood)</comment>
+    <requestid>426294</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bbc0a318cfa8875443842453794829df</srcmd5>
+    <version>1.8.0</version>
+    <time>1507896745</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530350</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e261721f5fe5e785ed9451a7f209df71</srcmd5>
+    <version>1.8.92</version>
+    <time>1540320091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.8.92
+  * fixes easy symbol and user symbol
+  * update read method
+  * use model11.text.tar.gz
+  * translate input method name in ibus menu
+  * fixes cursor move
+  * fixes application shortcut issue
+  * fixes numpad issue (forwarded request 643899 from hillwood)</comment>
+    <requestid>643900</requestid>
+  </revision>
+</revisionlist>

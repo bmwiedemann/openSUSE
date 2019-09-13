@@ -1,0 +1,6 @@
+<package name="libhdhomerun" project="openSUSE:Factory">
+  <title>HDHomeRun library</title>
+  <description>HDHomeRun configuration library allows you to discover HDHomeRun ATSC/QAM/DVB tuners on the network. It can configure the tuners, scan for channels, and retrieve information including signal strength. A shared library is included for linking by client applications and a simple console application is included for scripting.</description>
+  <devel project="hardware" package="libhdhomerun"/>
+  <url>http://www.silicondust.com/downloads/linux</url>
+</package>

@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c60ca89bef1b029b71739df8487cfd8c</srcmd5>
+    <version>0.1.0</version>
+    <time>1522404558</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unneeded Requires for fish and zsh completions
+- Use a single %setup call.
+- Trim filler wording from description.
+- update to rev dcc4b750381cd2096b6001cbf94e95a6e6b52ed0
+  * fix verbose logging (-v, -vv and -vvv)
+- update to rev 6debc4f3351446417d0c4e38173cd9ef0faa71d5
+  * fish shell completions
+  * enable SRGB support
+  * extend SGR and VT200 mouse support
+  * switch meta key to alt instead of super
+- initial package @ cb05e72be2fcf7e78bff99e4316f19510bf4f502
+</comment>
+    <requestid>592453</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>445e579301ced6a74397c1aca1071ddb</srcmd5>
+    <version>0.1.0</version>
+    <time>1525121904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602531</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4f7d0a831551cebd6b890569051996af</srcmd5>
+    <version>0.1.0</version>
+    <time>1533887309</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>627458</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ca5f0c8673cb1c647ad9227a048e1f47</srcmd5>
+    <version>0.2.1</version>
+    <time>1541865414</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.1
+  * first non-development release for opensuse. see
+    https://github.com/jwilm/alacritty/releases/tag/v0.2.1 for notes
+- simplify cargo vendoring
+- minor cleanup with spec-cleaner
+</comment>
+    <requestid>645036</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>62d459231e0dd84e0be2eabc946ac1ab</srcmd5>
+    <version>0.3.2</version>
+    <time>1560970993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707334</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4b7dd683150131dff5578a4c6b5c6f80</srcmd5>
+    <version>0.3.3</version>
+    <time>1564137612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718335</requestid>
+  </revision>
+</revisionlist>

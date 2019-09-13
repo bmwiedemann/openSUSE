@@ -1,0 +1,7 @@
+<package name="sassc" project="openSUSE:Factory">
+  <title>libsass command line driver</title>
+  <description>SassC is a wrapper around libsass (http://github.com/sass/libsass)
+used to generate a useful command-line application that can be
+installed and packaged for several operating systems.</description>
+  <devel project="devel:libraries:c_c++" package="sassc"/>
+</package>

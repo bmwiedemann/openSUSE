@@ -1,0 +1,476 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2cef22c99e5518e21881833e14801ba9</srcmd5>
+    <version>2.8.7</version>
+    <time>1331579567</time>
+    <user>coolo</user>
+    <comment>gsoap is a frequently used SOAP library, it should be in Factory.</comment>
+    <requestid>108617</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2cef22c99e5518e21881833e14801ba9</srcmd5>
+    <version>2.8.7</version>
+    <time>1340183413</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>40f7bde5577b21589bd676e5ca47ed19</srcmd5>
+    <version>2.8.10</version>
+    <time>1346755880</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.8.9
+* Added examples to interoperate with WCF basicHttp,
+  basicTransportSecurity, basicMessageSecurity, and wsDualHttp.
+* Added soapcpp2 option -A for service dispatching based on Action
+  values only.
+* Added wsdl2h option -z3.
+* Added wsse support for WS-SecureConversation.
+* Added wsrm5 WS-ReliableMessaging 1.0 2005.
+* Added iOS plugin with examples.
+* Improved WS-Policy analysis and reporting.
+* Fixed and improved wsse plugin for WS-Security interoperability
+  with WCF and other implementations (required a small API change).
+* Fixed HTTP headers for NTLM.
+* Fixed httpda plugin OpenSSL init crash in md5evp.c.
+- Update to new upstream release 2.8.10
+* Added soapcpp2 -Q option (C++ namespaces).
+* Added wsdl2h -b option (bi-directional operations for duplex
+  services).
+* Updated WS-Addressing and WS-ReliableMessaging plugins,
+  documentation, and examples.</comment>
+    <requestid>132459</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a1695490aaecaf9d48950b61f8801f47</srcmd5>
+    <version>2.8.11</version>
+    <time>1353266732</time>
+    <user>namtrac</user>
+    <comment>Changelog for a patch nobody seriously cares about
+- Removed gsoap-03-initext.diff, merged upstream</comment>
+    <requestid>141605</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>a1695490aaecaf9d48950b61f8801f47</srcmd5>
+    <version>2.8.11</version>
+    <time>1359109008</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>246cddf321e5b6c2230fbfece7ea20f9</srcmd5>
+    <version>2.8.14</version>
+    <time>1362899870</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157959</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>26f11d1cbeb44bbf02ea922555ff07ff</srcmd5>
+    <version>2.8.15</version>
+    <time>1372953507</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>182167</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>26f11d1cbeb44bbf02ea922555ff07ff</srcmd5>
+    <version>2.8.15</version>
+    <time>1379662561</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0bf9191eb4eba510344708b73161523f</srcmd5>
+    <version>2.8.17</version>
+    <time>1392115167</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221677</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>cef0b73ef4b68ae5509a4d0503163dea</srcmd5>
+    <version>2.8.17</version>
+    <time>1407912537</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>244184</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>cef0b73ef4b68ae5509a4d0503163dea</srcmd5>
+    <version>2.8.17</version>
+    <time>1409301108</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>792ce05ca4f49e8991c28e00d8468c35</srcmd5>
+    <version>2.8.21</version>
+    <time>1421959685</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.21</comment>
+    <requestid>281516</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e991ba28e0093eea02f2c956c93c253e</srcmd5>
+    <version>2.8.22</version>
+    <time>1430581177</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>304814</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>219622778ed23d5dad12caff8369e88e</srcmd5>
+    <version>2.8.22</version>
+    <time>1434133693</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>311432</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fc33957fe7e76a3aab7eb59d78fdf4c0</srcmd5>
+    <version>2.8.28</version>
+    <time>1455701406</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.28</comment>
+    <requestid>358773</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>53752974ebba186cc9b04f0338751476</srcmd5>
+    <version>2.8.28</version>
+    <time>1456733583</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>361556</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>663df0d5b9821b51ad5dea0356f62cf7</srcmd5>
+    <version>2.8.29</version>
+    <time>1459717567</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>381072</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c1192615ebe006552af9c5c897932a9f</srcmd5>
+    <version>2.8.30</version>
+    <time>1461868130</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.30</comment>
+    <requestid>387459</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6dfed36f7ff3d83a8e2609d650e8bfc1</srcmd5>
+    <version>2.8.31</version>
+    <time>1463738087</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>396001</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4eaec29687cbb54b75a5b31b5e90cc27</srcmd5>
+    <version>2.8.32</version>
+    <time>1465750425</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>400314</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5f15996bd7fad2be77b5e72e3b7c03ae</srcmd5>
+    <version>2.8.33</version>
+    <time>1467896898</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>405100</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3efeff3804eaaf58fee0c8f13af88997</srcmd5>
+    <version>2.8.36</version>
+    <time>1476108998</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433026</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8a5a63c26a823b35a2ef035967f2e30a</srcmd5>
+    <version>2.8.37</version>
+    <time>1478086200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.37</comment>
+    <requestid>437940</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7ba7c77aadc7085bfe2b7c5f44fedc7f</srcmd5>
+    <version>2.8.39</version>
+    <time>1480693193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.39</comment>
+    <requestid>442180</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3c476f93e943cda8760e5f0cd0aaf6e0</srcmd5>
+    <version>2.8.40</version>
+    <time>1483047660</time>
+    <user>lnussel_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447160</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>209e8ade167113dcda03f86f6c406dda</srcmd5>
+    <version>2.8.42</version>
+    <time>1485597831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.42</comment>
+    <requestid>452424</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3021d48f27764b1f633c0c6632718f98</srcmd5>
+    <version>2.8.43</version>
+    <time>1487597226</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>457368</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>817cd4aa691dbcb8ec32a3d016530c92</srcmd5>
+    <version>2.8.44</version>
+    <time>1490965447</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream release 2.8.44</comment>
+    <requestid>482176</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>252a7ffcf4d1230729295413bdb25401</srcmd5>
+    <version>2.8.45</version>
+    <time>1494096297</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.45</comment>
+    <requestid>492144</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>647f9ab996fb3286bce102a5965723a7</srcmd5>
+    <version>2.8.46</version>
+    <time>1495883545</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.46</comment>
+    <requestid>496594</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>58d237713927c42da524dd9888f6ca25</srcmd5>
+    <version>2.8.48</version>
+    <time>1499754878</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>508172</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b212aa376242da1b8c0f4ee1576f2742</srcmd5>
+    <version>2.8.49</version>
+    <time>1500274960</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove gnutls because openssl overrides it already (forwarded request 510051 from olh)</comment>
+    <requestid>510107</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>0d68b25f9f9a1bf39ffe1ebc518e5f3d</srcmd5>
+    <version>2.8.49</version>
+    <time>1500670191</time>
+    <user>dimstar_suse</user>
+    <comment>add to 2.8.48 changes references to CVE-2017-9765 bsc#1049348 (forwarded request 511463 from AndreasStieger)</comment>
+    <requestid>511468</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>084b66b9980f927f0441643a893f37de</srcmd5>
+    <version>2.8.51</version>
+    <time>1501840617</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream 2.8.51</comment>
+    <requestid>513040</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3672ddf35cbb7c3e6e7f92c1b17eb777</srcmd5>
+    <version>2.8.54</version>
+    <time>1506340210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.54</comment>
+    <requestid>528277</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>be9988ac4a69aad79198b6650643dcf9</srcmd5>
+    <version>2.8.55</version>
+    <time>1509820039</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.55</comment>
+    <requestid>538183</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a92ba5951b828798c39d70d7bcb0fcfd</srcmd5>
+    <version>2.8.58</version>
+    <time>1514569662</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.58</comment>
+    <requestid>559852</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>dfb4b566b7be73abb2616f02407b4a4f</srcmd5>
+    <version>2.8.59</version>
+    <time>1516091052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.59</comment>
+    <requestid>561853</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>948580188591462d6028d34c92a3b16f</srcmd5>
+    <version>2.8.60</version>
+    <time>1516443535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.60</comment>
+    <requestid>567255</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a943c0f6ee5e726e44d0155b0d39276b</srcmd5>
+    <version>2.8.61</version>
+    <time>1518025076</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>573168</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9ff1461ef37eb60ac50c1aa7a9cf13a3</srcmd5>
+    <version>2.8.62</version>
+    <time>1518813753</time>
+    <user>dimstar_suse</user>
+    <comment>- Add xlocale.diff (- don't break virtualbox compilation)
+
+- Update 2.8.62</comment>
+    <requestid>576981</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c3d0c8b25d9f30fe9ead006fbb04f4b5</srcmd5>
+    <version>2.8.63</version>
+    <time>1519902371</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.63</comment>
+    <requestid>580221</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>589b212eda7c5df381c2bd07c2148ab0</srcmd5>
+    <version>2.8.64</version>
+    <time>1520588084</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.64</comment>
+    <requestid>583703</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>dd5c66204796e8a24f4d6f802d7b1fa8</srcmd5>
+    <version>2.8.65</version>
+    <time>1521579002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.65</comment>
+    <requestid>585274</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>afc658e6348d69090e5948847aadae3e</srcmd5>
+    <version>2.8.66</version>
+    <time>1523956303</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.66</comment>
+    <requestid>595391</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>bc672828eb1982a12533c4ffa4f1b16a</srcmd5>
+    <version>2.8.68</version>
+    <time>1531469862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.68</comment>
+    <requestid>621872</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>5992c0c2fb07c45ac28d67e59a45c714</srcmd5>
+    <version>2.8.69</version>
+    <time>1533292188</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>626668</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3fd9cbc7a67edcf3a7c8af2ed96544ed</srcmd5>
+    <version>2.8.70</version>
+    <time>1537263485</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream release 2.8.70</comment>
+    <requestid>635040</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5f51b90ece33a1c4091b40847f5a6a7d</srcmd5>
+    <version>2.8.75</version>
+    <time>1548452506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.75</comment>
+    <requestid>667202</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>be8c2a8948f4b3f3c22b90ee4d97be46</srcmd5>
+    <version>2.8.80</version>
+    <time>1551024198</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.8.80</comment>
+    <requestid>678279</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>e1dfa9ac82e5f3ccd412e9361c7e6e0e</srcmd5>
+    <version>2.8.81</version>
+    <time>1552380462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.81</comment>
+    <requestid>682652</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>4f640364512bc1bf645994c61414c120</srcmd5>
+    <version>2.8.82</version>
+    <time>1553699430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.82</comment>
+    <requestid>685671</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>cf08319b0b6440d9b3c3c255306fe955</srcmd5>
+    <version>2.8.84</version>
+    <time>1558340756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.84</comment>
+    <requestid>703452</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ed70a2b928557f1567fab0cd13e2a44c</srcmd5>
+    <version>2.8.86</version>
+    <time>1562590910</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>713175</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>17c8a6f2642e55254ec9e81432954d60</srcmd5>
+    <version>2.8.87</version>
+    <time>1563223373</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>714423</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>74ffb14ae8a751740cbc7c8ff7394386</srcmd5>
+    <version>2.8.89</version>
+    <time>1565775373</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.89</comment>
+    <requestid>722584</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>236e279300adb24a181a872f664b107f</srcmd5>
+    <version>2.8.91</version>
+    <time>1565962406</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.91</comment>
+    <requestid>723786</requestid>
+  </revision>
+</revisionlist>

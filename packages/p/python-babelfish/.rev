@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dde531e663b1fff089e337c74010fe33</srcmd5>
+    <version>0.5.5</version>
+    <time>1492011120</time>
+    <user>maxlin_factory</user>
+    <comment>single-spec (python 2 and python 3 combined) version of python3-babelfish.</comment>
+    <requestid>481995</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6757b89fea14608eb35b44e40b0bafb4</srcmd5>
+    <version>0.5.5</version>
+    <time>1544631942</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653931</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,272 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48930610fcb75192c2fdf757bc81b17e</srcmd5>
+    <version>0.8.0</version>
+    <time>1415289005</time>
+    <user>coolo</user>
+    <comment>notification daemon for LXQT</comment>
+    <requestid>258703</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3ff93daed4eaa75f1520520eb218d2f3</srcmd5>
+    <version>0.8.0</version>
+    <time>1422959967</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283574</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55e9bc8b393227d5b13ad23f6d81f3a9</srcmd5>
+    <version>0.9.0</version>
+    <time>1424117520</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>285050</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>520f47773b5820c0209570d701c2a5a5</srcmd5>
+    <version>0.9.0</version>
+    <time>1424827050</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed %build and %install to use cmake macros (forwarded request 287065 from sfalken)</comment>
+    <requestid>287403</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f456b271fd6b07f8e03a7f329b53b04e</srcmd5>
+    <version>0.10.0</version>
+    <time>1447454153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>343387</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6e3804b57ff72d568cc78c44a8f45167</srcmd5>
+    <version>0.10.0</version>
+    <time>1470413784</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416221</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>639ea8e77c3410f2c89c704757ddb6d5</srcmd5>
+    <version>0.11.0</version>
+    <time>1475750620</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>432238</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>936cfa977769ce3e87ad927193440d3f</srcmd5>
+    <version>0.11.1</version>
+    <time>1489345138</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460121</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dc6dea771d02ba4ae7ba40693c9672eb</srcmd5>
+    <version>0.12.0</version>
+    <time>1508876580</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Set patch version
+  * Don't export github templates
+  * Improvement for notification settings, see https://github.com/lxde/lxqt/issues/744#issuecomment-138601402
+  * Updated Lithuanian language
+  * Drops Qt5Core_VERSION_STRING
+  * lxqt-config-notificationd: set Qt::AA_UseHighDpiPixmaps to true
+  * Add a basic cli to lxqt-config-notificationd Add a basic cli to lxqt-notificationd
+  * Added default CMAKE_BUILD_TYPE and LXQT_NOTIFICATION_PATCH_VERSION
+  * Create lxqt-config-notificationd_pl_PL.desktop
+  * Fixes a FTBFS in superbuild mode
+  * Added merged autostart to CMakeLists.txt
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Update desktop entries and Replace fr_FR by fr
+  * Update Greek translation (el) Remove country variant from language code
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Updates the build system to use the Targets infrastructure
+  * Drops hardcoded /etc/xdg paths
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * remove dead template lines switch OnlyShowIn from Razor -&gt; LXQt stringchanges LxQt -&gt; LXQt
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Fix a typo: singals -&gt; signals
+  * Bump year
+- Remove post and postun
+- Update to 0.11.1:
+  * Updated da translation. Removed da_DK
+  * Update and rename French .desktop file
+  * Make CMakeList.txt more uniform.
+  * Remove cpack (#53)
+- Update to 0.11.0:
+  * Update and extend README.md
+  * Add Catalan translation
+  * build: Use external translations
+  * ts-files removal (#50)
+  * Clean up qDebugs/comments in notification.cpp
+  * config: Use our specific icon for demo
+  * Fix used licenses in AUTHORS, lxqt-notificationd is pure LGPL Bump year in AUTHORS
+  * Italian translation update
+  * Updated Russian translation Removed ru_RU files
+  * notification: Default icon
+  * notification: Fill background
+  * update lxqt-config-notificationd_hu.ts
+  * Update lxqt-config-notificationd_it.ts
+- Update summary and description to match the package.
+- Upstream release 0.10.0
+- Removing patches:
+ * fix_desktop_file.patch- Using sed in spec file now.
+- Changed %build and %install to use cmake macros
+- New upstream version 0.9.0
+- Added -lang subpackage
+- Added patch
+  + fix_desktop_file.patch
+- Added conditionals to enable Fedora builds 
+- new upstream version 0.8.0 
+- removed unused buildrequires 
+- Specfile cleanup 
+- Removed fedora specfile, split into subproject
+  Del:  lxqt-notificationd-Fedora_20.spec 
+- ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-notificationd-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-notificationd-0.7.0.tar.xz
+  Del:  _service 
+- Removed direct cmake calls, in favour of %cmake and %cmake_install 
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-notificationd.spec
+  Add: lxqt-notificationd.changes 
+</comment>
+    <requestid>535975</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0488af64693a762d3620c2514027e429</srcmd5>
+    <version>0.13.0</version>
+    <time>1530304248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * Spanish translation update
+  * Include QStyle and QStyleOption to fix compilation with Qt5.11
+  * CMake: Prevent in-source builds
+  * notificationlayout: Remove the &quot;on top&quot; hint
+  * fix razor-qt -&gt; lxqt and http -&gt; https
+  * Fix mentions of LXDE
+  * Fix typo
+  * Fix spanish translation
+  * Update Simplified Chinese desktop entry
+  * Update Traditional Chinese translation
+  * Drop Qt foreach
+  * cmake: Handle CMP0071
+  * Change icon to preferences-desktop-notification
+- Update to 0.12.0:
+  * Set patch version
+  * Don't export github templates
+  * Improvement for notification settings, see https://github.com/lxde/lxqt/issues/744#issuecomment-138601402
+  * Updated Lithuanian language
+  * Drops Qt5Core_VERSION_STRING
+  * lxqt-config-notificationd: set Qt::AA_UseHighDpiPixmaps to true
+  * Add a basic cli to lxqt-config-notificationd Add a basic cli to lxqt-notificationd
+  * Added default CMAKE_BUILD_TYPE and LXQT_NOTIFICATION_PATCH_VERSION
+  * Create lxqt-config-notificationd_pl_PL.desktop
+  * Fixes a FTBFS in superbuild mode
+  * Added merged autostart to CMakeLists.txt
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Update desktop entries and Replace fr_FR by fr
+  * Update Greek translation (el) Remove country variant from language code
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Updates the build system to use the Targets infrastructure
+  * Drops hardcoded /etc/xdg paths
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * remove dead template lines switch OnlyShowIn from Razor -&gt; LXQt stringchanges LxQt -&gt; LXQt
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Fix a typo: singals -&gt; signals
+  * Bump year
+- Remove post and postun
+- Update to 0.11.1:
+  * Updated da translation. Removed da_DK
+  * Update and rename French .desktop file
+  * Make CMakeList.txt more uniform.
+  * Remove cpack (#53)
+- Update to 0.11.0:
+  * Update and extend README.md
+  * Add Catalan translation
+  * build: Use external translations
+  * ts-files removal (#50)
+  * Clean up qDebugs/comments in notification.cpp
+  * config: Use our specific icon for demo
+  * Fix used licenses in AUTHORS, lxqt-notificationd is pure LGPL Bump year in AUTHORS
+  * Italian translation update
+  * Updated Russian translation Removed ru_RU files
+  * notification: Default icon
+  * notification: Fill background
+  * update lxqt-config-notificationd_hu.ts
+  * Update lxqt-config-notificationd_it.ts
+- Update summary and description to match the package.
+- Upstream release 0.10.0
+- Removing patches:
+ * fix_desktop_file.patch- Using sed in spec file now.
+- Changed %build and %install to use cmake macros
+- New upstream version 0.9.0
+- Added -lang subpackage
+- Added patch
+  + fix_desktop_file.patch
+- Added conditionals to enable Fedora builds 
+- new upstream version 0.8.0 
+- removed unused buildrequires 
+- Specfile cleanup 
+- Removed fedora specfile, split into subproject
+  Del:  lxqt-notificationd-Fedora_20.spec 
+- ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-notificationd-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-notificationd-0.7.0.tar.xz
+  Del:  _service 
+- Removed direct cmake calls, in favour of %cmake and %cmake_install 
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-notificationd.spec
+  Add: lxqt-notificationd.changes 
+</comment>
+    <requestid>618047</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4f4d1f3cce54486c91c27e28c5fdf68e</srcmd5>
+    <version>0.14.0</version>
+    <time>1551113362</time>
+    <user>coolo</user>
+    <comment>- Update to 0.14.0:
+  * Notification history implemented
+  * Implementations fixed:
+    - Fixed notification styles
+    - Don't use automatic string conversions
+    - Use QLatin1String where it is more efficient
+    - Test app updated
+  * Improved cmake scripting
+    - Set cmake_minimum_required to 3.1.0
+    - Removed locale compile definitons
+  * Moved translations from lxqt-l10n back to lxqt-notificationd
+    - Removed obsolete translation fuctionality
+    - Added translation promo in README.md
+  * Translation updates
+- Move translation from lxqt-l10n into package
+</comment>
+    <requestid>670385</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9cc09a50d443be7455acbf49f11c4736</srcmd5>
+    <version>0.14.1</version>
+    <time>1551455373</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.1:
+  * Only translations was changed</comment>
+    <requestid>680437</requestid>
+  </revision>
+</revisionlist>

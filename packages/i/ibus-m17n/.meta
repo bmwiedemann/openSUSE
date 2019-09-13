@@ -1,0 +1,6 @@
+<package name="ibus-m17n" project="openSUSE:Factory">
+  <title>The M17N engine for IBus platform</title>
+  <description>M17N engine for IBus input platform. It allows input of many launguaes using
+the input table maps from m17n-db.</description>
+  <devel project="M17N" package="ibus-m17n"/>
+</package>

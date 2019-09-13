@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f74da7740266303eef8f695b0516c201</srcmd5>
+    <version>0.1.7</version>
+    <time>1461855230</time>
+    <user>dimstar_suse</user>
+    <comment>Library for scripting Nvim processes through its msgpack-rpc API.</comment>
+    <requestid>389690</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4eee5fe568c6e5bb975ab05fd054cf0e</srcmd5>
+    <version>0.1.8</version>
+    <time>1464014416</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>397340</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7eec44af1dd3d24f90203977ca6fe0b0</srcmd5>
+    <version>0.1.8</version>
+    <time>1464484363</time>
+    <user>dimstar_suse</user>
+    <comment>Remove unneeded dependencies since the GUI was moved to another package.</comment>
+    <requestid>398121</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b9abf3ec03c2335e77527a3137e8f377</srcmd5>
+    <version>0.1.9</version>
+    <time>1471009441</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418764</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>12ec487edf50d53372e6c473da9fa371</srcmd5>
+    <version>0.1.10</version>
+    <time>1476109483</time>
+    <user>dimstar_suse</user>
+    <comment>Version bump to 0.1.10.</comment>
+    <requestid>433954</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cc3655892be19eceeaf75fd0b15b4181</srcmd5>
+    <version>0.1.11</version>
+    <time>1479502945</time>
+    <user>dimstar_suse</user>
+    <comment>Version bump to 0.1.11.</comment>
+    <requestid>440737</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0931101917f0add975925d05dd97f91f</srcmd5>
+    <version>0.1.13</version>
+    <time>1494442385</time>
+    <user>dimstar_suse</user>
+    <comment>Version bump to 0.1.13.</comment>
+    <requestid>493813</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>43823dac81437e3ea8dbd2b2999e0c34</srcmd5>
+    <version>0.1.13</version>
+    <time>1504981598</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522186</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b78f347c502d1b1210b8cbcb8314a0b7</srcmd5>
+    <version>0.2.0</version>
+    <time>1510960837</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner.
+- Version bump to 0.2.0.</comment>
+    <requestid>541604</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>18d403df3e0cdf8a7b8280c52b1b3d9b</srcmd5>
+    <version>0.2.4</version>
+    <time>1523956771</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner.
+- Version bump to 0.2.4.
+  Upstream changelog:
+  Version 0.2.4
+    Temporarily disable asyncio on windows again, as stdio is not
+    functional with asyncio yet.
+    The new nvim.loop attribute is for the moment only available on
+    POSIX systems.
+  Version 0.2.3
+    In this release support of python3.3 is dropped. Henceforth we
+    want python3 rplugins to be able to assume the usage of
+    asyncio, so they can use the asyncio event loop and libraries
+    that build on it.
+    Furthermore, a close() method is added on nvim session objects.
+    When used as a library for externally connecting to a nvim
+    instance (i e not rplugins), it is recommended to call the
+    close() method on the session object when it is not needed
+    anymore. Alternatively, sessions can be used as a context
+    manager:
+      with neovim.attach('socket', path=thepath) as nvim:
+          # do stuff with nvim session in this block:
+          print(nvim.funcs.getpid())
+          print(nvim.current.line)
+    * 2689ddc add tests for plugin decorators #298
+    * 63f257f allow library users to properly cleanup the event
+      loop #303
+    * 59c184f expose the asyncio event loop as nvim.loop (python
+      3.4+ only) #294
+  Version 0.2.1
+    Adds compability with msgpack 0.5.2.
+    * e800c64 discover_runtime_directories refactor (#287)
+    * 9cf971f Travis lint refactor (#288)
+    * 93e6b5b msgpack-python was renamed to msgpack (#293)
+    * 6fc0343 fix for msgpack 0.5.2 (#301)
+</comment>
+    <requestid>597250</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c42936d8ad9ac04484c0cf34ba4ff3d9</srcmd5>
+    <version>0.2.6</version>
+    <time>1541454854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646075</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6b70e8505274d7d3ebbd142b9e6c4661</srcmd5>
+    <version>0.3.1</version>
+    <time>1543311761</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651966</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>399b6c368982580b75370810d862c5dc</srcmd5>
+    <version>0.3.2</version>
+    <time>1548335547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667629</requestid>
+  </revision>
+</revisionlist>

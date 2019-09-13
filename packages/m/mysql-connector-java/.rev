@@ -1,0 +1,274 @@
+<revisionlist>
+  <revision rev="1" vrev="19">
+    <srcmd5>edc8edd2488654b60420b1e2624fd5a4</srcmd5>
+    <version>3.1.12</version>
+    <time>1168903573</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="265">
+    <srcmd5>7f3974c1aa607bb0f39d9d457b9cccc3</srcmd5>
+    <version>3.1.12</version>
+    <time>1216330126</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bf3326c3fef64b44ae90be635e68a192</srcmd5>
+    <version>5.0.8</version>
+    <time>1218103162</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f7c5c82962298c3ff3922e999eb428f</srcmd5>
+    <version>5.1.6</version>
+    <time>1221278099</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2f7c5c82962298c3ff3922e999eb428f</srcmd5>
+    <version>5.1.6</version>
+    <time>1221278099</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>81e249bfaa1321123f0d635a3597e425</srcmd5>
+    <version>5.1.6</version>
+    <time>1268925031</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>81e249bfaa1321123f0d635a3597e425</srcmd5>
+    <version>5.1.6</version>
+    <time>1278667369</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>81e249bfaa1321123f0d635a3597e425</srcmd5>
+    <version>5.1.6</version>
+    <time>1278678599</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>81e249bfaa1321123f0d635a3597e425</srcmd5>
+    <version>5.1.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>81e249bfaa1321123f0d635a3597e425</srcmd5>
+    <version>5.1.6</version>
+    <time>1319182191</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>e57b616f734c7b7fe85ac137ada2ebc8</srcmd5>
+    <version>5.1.6</version>
+    <time>1323192641</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b68dc9d416837e2f5da864a82a4d4691</srcmd5>
+    <version>5.1.19</version>
+    <time>1337580401</time>
+    <user>coolo</user>
+    <comment>- remove the docs/ from source tarball due license issues
+
+- update to 5.1.19
+  * plugable authentication via com.mysql.jdbc.AuthenticationPlugin
+  * retrieve servet charset name using index
+  * ability to determine if the connection is against server on the same host
+  * added slf4j logging adapter
+  * and many more features and bugfixes
+- removed -javadoc patch and package
+- add maven pom</comment>
+    <requestid>116436</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d94a27d3528739e65293f490340d17cc</srcmd5>
+    <version>5.1.19</version>
+    <time>1340030025</time>
+    <user>coolo</user>
+    <comment>- fix a build with jdk7 (build jdbc 3.0 with gcj)
+- remove some obsoleted macros (gcj, jboss)
+- remove jars from source file as well</comment>
+    <requestid>125316</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>d94a27d3528739e65293f490340d17cc</srcmd5>
+    <version>5.1.19</version>
+    <time>1340183718</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>9429bb3705cf63c3c8ec21f9de1e5f74</srcmd5>
+    <version>5.1.19</version>
+    <time>1340620873</time>
+    <user>coolo</user>
+    <comment>- build require java-devel &gt;= 1.6.0 as well</comment>
+    <requestid>125501</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>9429bb3705cf63c3c8ec21f9de1e5f74</srcmd5>
+    <version>5.1.19</version>
+    <time>1359109477</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>502a80ec5a7ea459b3ac1a8050041a47</srcmd5>
+    <version>5.1.19</version>
+    <time>1377430337</time>
+    <user>scarabeus_factory</user>
+    <comment>- use add_maven_depmap provided by javapackages-tools</comment>
+    <requestid>196086</requestid>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>502a80ec5a7ea459b3ac1a8050041a47</srcmd5>
+    <version>5.1.19</version>
+    <time>1379663330</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a83c243e6e8c86b28e90a4d4d031ce18</srcmd5>
+    <version>5.1.25</version>
+    <time>1379942733</time>
+    <user>coolo</user>
+    <comment>- update to 5.1.25 (see CHANGES for full list)
+  * support for Connection Attributes when used with MySQL Server versions (5.6+).
+  5.1.24
+  * support of password expiration protocol. This introduces new boolean
+    connection property disconnectOnExpiredPasswords.
+  5.1.23
+  * added support of password expiration protocol.
+  * driver now allows the mechanism for caching MySQL server configuration
+    values replaceable at runtime.
+  * Connection.setReadOnly() will take advantage of server-side support for
+    read-only transactions present in MySQL-5.6 and newer. Calling .isReadOnly()
+    will incur a round-trip if useLocalSessionState.
+  5.1.22
+  * support of ON UPDATE CURRENT_TIMESTAMP for TIMESTAMP and DATETIME fields.
+  5.1.21
+  * new built-in authentication plugin
+    com.mysql.jdbc.authentication.Sha256PasswordPlugin (&quot;sha256_password&quot;).
+  * Added new built-in authentication plugin
+    com.mysql.jdbc.authentication.MysqlClearPasswordPlugin (&quot;mysql_clear_password&quot;).
+    It allows C/J based clients to connect to MySQL accounts.
+  * the ability to add new client-side prepared statement parse info caches
+  * implemented several JDBC-4.1 methods from Java-7:
+  5.1.19:
+  * Added support for pluggable authentication via the com.mysql.jdbc.AuthenticationPlugin
+- rebase and rename mysql-connector-java-5.1.19-java7.patch to
+  * mysql-connector-java-7-jdbc-4.1.patch
+
+- add jpackages-tools to buildrequires</comment>
+    <requestid>199734</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>e9411f2c30be76c6ac435135d348a1c1</srcmd5>
+    <version>5.1.25</version>
+    <time>1404161407</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238905</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>e9411f2c30be76c6ac435135d348a1c1</srcmd5>
+    <version>5.1.25</version>
+    <time>1409301948</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>7e5675952cf7f65853f47d158328047f</srcmd5>
+    <version>5.1.25</version>
+    <time>1427983091</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292635</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>771673240b222d2fe66773ffa93f1e7c</srcmd5>
+    <version>5.1.35</version>
+    <time>1431753171</time>
+    <user>coolo</user>
+    <comment>- Update to 5.1.35 (see CHANGES for full list of issues)
+  bnc#927981 CVE-2015-2575:
+  * http://dev.mysql.com/doc/relnotes/connector-j/en/news-5-1.html
+- Remove not applicable patch:
+  * mysql-connector-java-7-jdbc-4.1.patch
+- Do not explicitely check for jdk6 but be happy with 7 and 8:
+  * jdk6-check-use-jdk7.patch
+- Do not require hibernate4 to actually build:
+  * extra-libs-build.patch
+- Do not build jdk5 depending jdbc3:
+  * no-jdk5-requirement.patch
+- Add and rebase jdbc4.1 patch:
+  * mysql-connector-java-jdbc-4.1.patch
+- Add new patch to build tests:
+  * use-classpath-in-tests.patch</comment>
+    <requestid>307056</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>96240d7f48e52853def892f6513a7381</srcmd5>
+    <version>5.1.35</version>
+    <time>1434550489</time>
+    <user>coolo</user>
+    <comment>- Fix the patches to allow jdbc3 build and reenable it:
+  * mysql-connector-java-jdbc-4.1.patch
+  * no-jdk5-requirement.patch</comment>
+    <requestid>311653</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>205ad3da1acee698de5756582134f779</srcmd5>
+    <version>5.1.35</version>
+    <time>1494087891</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492576</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>50acf1fe88fe62f84de542f2eb20e3ef</srcmd5>
+    <version>5.1.42</version>
+    <time>1496230177</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496681</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>54d35936de055f4efc60c6ef0df424ed</srcmd5>
+    <version>5.1.43</version>
+    <time>1503591753</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517973</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>0f7b9d147efe450e52148a1642d63d1b</srcmd5>
+    <version>5.1.43</version>
+    <time>1505334157</time>
+    <user>dimstar_suse</user>
+    <comment>Require java 8 to build, since it is the last version that can build with source/target 1.5</comment>
+    <requestid>522893</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>a16cd7d1843a8bc7f86f4b68e10b221f</srcmd5>
+    <version>5.1.43</version>
+    <time>1507628394</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>532197</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>40fee84489bcf9c9171f54347243c3bd</srcmd5>
+    <version>5.1.47</version>
+    <time>1541864849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646511</requestid>
+  </revision>
+</revisionlist>

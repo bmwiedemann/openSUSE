@@ -1,0 +1,5 @@
+<package name="iodine" project="openSUSE:Factory">
+  <title>iodine</title>
+  <description>Lets you tunnel IPv4 data through a DNS server. This can be usable in different situations where internet access is firewalled, but DNS queries are allowed.</description>
+  <devel project="network:utilities" package="iodine"/>
+</package>

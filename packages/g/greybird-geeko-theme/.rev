@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5b07858b8884390073823f34726a2cd4</srcmd5>
+    <version>3.22.10.1+git5.316475b</version>
+    <time>1561494109</time>
+    <user>dimstar_suse</user>
+    <comment>Update to new version with a better dark theme</comment>
+    <requestid>711401</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>08d6355c2d5dfaf45138c7adad041aa9</srcmd5>
+    <version>3.22.10.1+git35.86db55b</version>
+    <time>1562843834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714251</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>192cc16cfa0df19355ed4c222c0fd86d</srcmd5>
+    <version>3.22.10.1+git38.1a7574f</version>
+    <time>1563366426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715734</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8536a9434a4427054c1d83194c92e862</srcmd5>
+    <version>3.22.10.1+git39.ffde076</version>
+    <time>1563456155</time>
+    <user>dimstar_suse</user>
+    <comment>Edit changelog to be more descriptive</comment>
+    <requestid>716107</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="glabels" project="openSUSE:Factory">
+  <title>Label Editing and Printing Tool</title>
+  <description>Labels is a powerful tool for editing and printing all kinds of labels.
+It comes with a lot of templates of standard labels.</description>
+  <devel project="GNOME:Apps" package="glabels"/>
+</package>

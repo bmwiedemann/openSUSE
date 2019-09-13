@@ -1,0 +1,1056 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>7eb718f9b5c3f19fb1f47201152d9f98</srcmd5>
+    <version>2.0.10</version>
+    <time>1295882055</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 58761 from user ug
+</comment>
+    <requestid>58761</requestid>
+  </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>c8f61f2c995431e842f7a8a3727cb7e8</srcmd5>
+    <version>2.0.10</version>
+    <time>1295882061</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 58761
+</comment>
+  </revision>
+  <revision rev="3" vrev="8">
+    <srcmd5>5fa1dfa701d8a57899eb774511a1a64b</srcmd5>
+    <version>2.0.10</version>
+    <time>1296694960</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59759 from user ug
+</comment>
+    <requestid>59759</requestid>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>9b579ab400bf3e4e4512d9f0fd4f13ad</srcmd5>
+    <version>2.0.10</version>
+    <time>1296694965</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59759
+</comment>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>7123ad207aa64733406b4776d7968f54</srcmd5>
+    <version>2.0.10</version>
+    <time>1296844880</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60029 from user ug
+</comment>
+    <requestid>60029</requestid>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>a4cd13597232026f5716ec8f7c8ebf27</srcmd5>
+    <version>2.0.10</version>
+    <time>1296844885</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 60029
+</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>5c1f0cb5297c124d0e78ad4a14d18630</srcmd5>
+    <version>2.0.10</version>
+    <time>1297386463</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60308 from user ug
+</comment>
+    <requestid>60308</requestid>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>a4f735ce40f7575e946c1bd34443f0ff</srcmd5>
+    <version>2.0.10</version>
+    <time>1297386467</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60308
+</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>a4f735ce40f7575e946c1bd34443f0ff</srcmd5>
+    <version>2.0.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>edd800f612307bb56c4d77408a7a408a</srcmd5>
+    <version>2.0.10</version>
+    <time>1298032288</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61635 from user ug
+</comment>
+    <requestid>61635</requestid>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>2fd9cfd124f80e51b310493480095001</srcmd5>
+    <version>2.0.10</version>
+    <time>1298032293</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61635
+</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>9e85affb03eacbad546e026184b0edb1</srcmd5>
+    <version>2.0.10</version>
+    <time>1298970339</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63037 from user ug
+</comment>
+    <requestid>63037</requestid>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>46ad68c65bf1388bb1ff9d98afc876d2</srcmd5>
+    <version>2.0.10</version>
+    <time>1298970344</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63037
+</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>4f90e4783b7568306e23806403519416</srcmd5>
+    <version>2.1.0</version>
+    <time>1312446233</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>77841</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>5e29cc155279640359fe15759a94d0d9</srcmd5>
+    <version>2.1.0</version>
+    <time>1312446244</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77841
+</comment>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>e83ef4d9fac606d07ec192570fb648b5</srcmd5>
+    <version>2.1.0</version>
+    <time>1314885933</time>
+    <user>saschpe</user>
+    <comment>- LOCKFILE usage removed on openSUSE
+  (bnc#714618)</comment>
+    <requestid>80419</requestid>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>466b01ec8199887d533fd910d3dec52c</srcmd5>
+    <version>2.1.0</version>
+    <time>1314885943</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80419
+</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>fdc2458a087970b9f0628b9b60dcf647</srcmd5>
+    <version>2.2.1</version>
+    <time>1318344723</time>
+    <user>lrupp</user>
+    <comment>- Import modules, which allowed easy integration of...
+- Ubuntu and Debian support again!
+- Better support for SuSE
+- Support for FreeBSD
+- Support for ESX 4+/ESXi
+- Integration with the python TFTP server pytftpd
+- &quot;fetchable files&quot; and &quot;boot files&quot; support for distros that need to
+  get more files from the TFTP server
+- Faster sync using link cache
+- Support for EFI grub booting
+- Support for bridged interfaces
+- WSGI instead of mod_python for the web interface.
+- Lots of Web UI improvements
+- A lot more I'm sure I missed when going through the change log
+- version 2.2.1
+
+- Remove redundant tags/sections from specfile</comment>
+    <requestid>87250</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>fdc2458a087970b9f0628b9b60dcf647</srcmd5>
+    <version>2.2.1</version>
+    <time>1319181816</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>667fa0f3f29852936aa14b288fae28f3</srcmd5>
+    <version>2.2.1</version>
+    <time>1319635284</time>
+    <user>coolo</user>
+    <comment>- virtual machines autostart on boot fixed</comment>
+    <requestid>89370</requestid>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>1dd9441dc6c02e15c22038aad1e73b92</srcmd5>
+    <version>2.2.1</version>
+    <time>1329822997</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106247</requestid>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>f9889d97f4b4e02e8bec00cba1dcbaf4</srcmd5>
+    <version>2.2.2</version>
+    <time>1333109915</time>
+    <user>coolo</user>
+    <comment>- update to 2.2.2
+  * please see CHANGELOG for more info
+- remove obsolete virt-auto-boot patch
+- rebase patches</comment>
+    <requestid>111893</requestid>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>fe42300bfac0ea74e4d336cec1fc27a6</srcmd5>
+    <version>2.2.2</version>
+    <time>1334818119</time>
+    <user>coolo</user>
+    <comment>- create a secret during installation</comment>
+    <requestid>114346</requestid>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>8da4d957f74ea889cf434a6202595a0b</srcmd5>
+    <version>2.2.2</version>
+    <time>1334927505</time>
+    <user>coolo</user>
+    <comment>- moved the secret generation from RPM post-script to the
+  init-script, to avoid that all appliances will still have the
+  same key</comment>
+    <requestid>114567</requestid>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>3e372f70b94f7ad27cbcb9665279fe17</srcmd5>
+    <version>2.2.2</version>
+    <time>1337577844</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121291</requestid>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>3e372f70b94f7ad27cbcb9665279fe17</srcmd5>
+    <version>2.2.2</version>
+    <time>1340183241</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="13">
+    <srcmd5>3e372f70b94f7ad27cbcb9665279fe17</srcmd5>
+    <version>2.2.2</version>
+    <time>1359108758</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>2a942d8c2ef2201e72513f2a53ea79ee</srcmd5>
+    <version>2.2.3</version>
+    <time>1365791005</time>
+    <user>coolo</user>
+    <comment>Updates for systemd, minor tweaks, and added support so it should be possible to import new SUSE versions (forwarded request 163551 from RBrownCCB)</comment>
+    <requestid>163615</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>9fa9314bd718b5c9b98b8915a9554541</srcmd5>
+    <version>2.4.0</version>
+    <time>1376514261</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to 2.4.0
+  Major Features:
+  - Dynamic Settings
+  - Distro Signatures
+  - Vastly improved support for Ubuntu, OpenSUSE and VMware ESXi (5.0 and 5.1)
+  - Added in new templated scripting support (needs documentation)
+  - New web interface improvements (tabs, etc.)
+  - Added apt-specific fields for repositories to make mirroring them easier
+  - Support for parameterized classes and defines in puppet using management classes
+  Minor Features:
+  - Added the bonded_bridge_slave interface type:
+  - Improved template error reporting
+  - Variables in fields are now evaluated through the templating engine
+  - Added openvz as a virtualization type for koan
+  - Added --virt-pxe-boot option for koan to force PXE booting of new systems
+  - Added a per-interface gateway option, for systems that support it
+  - Added support for new puppet command syntax
+  - Exposed replication rsync options
+  Major Bugfixes:
+  - --available-as no longer copies all files.
+  - Improved gPXE/iPXE support, including FreeBSD
+  - Deleting objects now respects the --recursive option again
+  Minor Bugfixes:
+  - Too many to list
+
+- fix filelist to fix build on factory: rpm does not allow to
+  mark a non-directory as dir anymore 
+--This line, and those below, will be ignored--
+
+old: openSUSE:Factory/cobbler
+new: systemsmanagement/cobbler rev 57
+Index: cobbler.changes
+===================================================================
+--- cobbler.changes (revision 28)
++++ cobbler.changes (revision 57)
+@@ -1,4 +1,41 @@
+ -------------------------------------------------------------------
++Tue Aug 13 11:41:27 UTC 2013 - kkaempf@suse.com
++
++- Update to 2.4.0
++  Major Features:
++  - Dynamic Settings
++  - Distro Signatures
++  - Vastly improved support for Ubuntu, OpenSUSE and VMware ESXi (5.0 and 5.1)
++  - Added in new templated scripting support (needs documentation)
++  - New web interface improvements (tabs, etc.)
++  - Added apt-specific fields for repositories to make mirroring them easier
++  - Support for parameterized classes and defines in puppet using management classes
++
++  Minor Features:
++  - Added the bonded_bridge_slave interface type:
++  - Improved template error reporting
++  - Variables in fields are now evaluated through the templating engine
++  - Added openvz as a virtualization type for koan
++  - Added --virt-pxe-boot option for koan to force PXE booting of new systems
++  - Added a per-interface gateway option, for systems that support it
++  - Added support for new puppet command syntax
++  - Exposed replication rsync options
++
++  Major Bugfixes:
++  - --available-as no longer copies all files.
++  - Improved gPXE/iPXE support, including FreeBSD
++  - Deleting objects now respects the --recursive option again
++
++  Minor Bugfixes:
++  - Too many to list
++
++-------------------------------------------------------------------
++Wed Aug  7 15:59:31 CEST 2013 - ro@suse.de
++
++- fix filelist to fix build on factory: rpm does not allow to
++  mark a non-directory as dir anymore 
++
++-------------------------------------------------------------------
+ Wed Apr 10 11:23:44 UTC 2013 - rbrownccb@opensuse.org
+ 
+ - use systemd for openSUSE 12.3 and later
+Index: cobbler.spec
+===================================================================
+--- cobbler.spec (revision 28)
++++ cobbler.spec (revision 57)
+@@ -33,9 +33,9 @@
+ Summary: Boot server configurator
+ Name: cobbler
+ License:        GPL-2.0+
+-Version: 2.2.3
++Version: 2.4.0
+ Release: 2
+-Source0: cobbler-%{version}.tar.bz2
++Source0: cobbler-%{version}-1.tar.bz2
+ Source1: vendor-files.tar.bz2
+ Patch0:  fix-initscript.dif
+ Patch1:  suse_config.diff
+@@ -66,9 +66,16 @@
+ #%if 0%{?fedora} &gt;= 11 || 0%{?rhel} &gt;= 6
+ #Requires: genisoimage
+ #%else
++%if 0%{?suse_version}
++# for /usr/bin/mkisofs
++Requires: cdrkit-cdrtools-compat
++%else
+ Requires: mkisofs
++%endif
+ #%endif
++%if !0%{?suse_version}
+ Requires: libyaml-0-2
++%endif
+ Requires: python-cheetah
+ Requires: python-netaddr
+ Requires: python-simplejson
+@@ -105,6 +112,10 @@
+ #Requires: python(abi) &gt;= %{pyver}
+ #%endif
+ 
++%if 0%{?suse_version} &gt; 01020
++BuildRequires:  fdupes
++%endif
++
+ BuildRequires: python-yaml
+ BuildRequires: python-cheetah
+ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+@@ -125,15 +136,15 @@
+ a XMLRPC API for integration with other applications.
+ 
+ %prep
+-%setup -q
+-%setup -a1
++%setup -q -n %{name}-%{name}-%{version}-1
++%setup -a1 -n %{name}-%{name}-%{version}-1
+ %if 0%{?suse_version}
+-%patch0
+-%patch1
++%patch0 -p1
++%patch1 -p1
+ %patch2
+-%patch13
++%patch13 -p1
+ sed -i 's/\r//' config/distro_signatures.json
+-%patch14
++%patch14 -p1
+ sed -i 's/$'&quot;/`echo \\\r`/&quot; config/distro_signatures.json
+ %endif
+ mv vendor-files/cobbler.1.gz docs
+@@ -155,6 +166,12 @@
+ mkdir -p $RPM_BUILD_ROOT/usr/sbin
+ ln -sf ../../etc/init.d/cobblerd $RPM_BUILD_ROOT/usr/sbin/rccobblerd
+ 
++%if 0%{?suse_version} &gt; 01020
++# can't fdupes full buildroot as this will create cross-partition
++# hardlinks and rpmlint will complain
++%fdupes %{buildroot}/usr/lib/python2.7/site-packages/cobbler
++%endif
++
+ %pre
+ %if 0%{?suse_version} &gt;= 1230
+ %service_add_pre cobblerd.service
+@@ -256,7 +273,7 @@
+ %endif
+ %if 0%{?suse_version} &gt;= 1110
+ %defattr(755,root,root)
+-%dir /%{_sysconfdir}/sysconfig/SuSEfirewall2.d/cobbler
++/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/cobbler
+ %defattr(755,wwwrun,www)
+ %else
+ %defattr(755,apache,apache)
+@@ -308,6 +325,8 @@
+ %config(noreplace) /var/lib/cobbler/kickstarts/*.ks
+ %config(noreplace) /var/lib/cobbler/kickstarts/*.xml
+ %config(noreplace) /var/lib/cobbler/kickstarts/*.seed
++%config(noreplace) /var/lib/cobbler/scripts/preseed_early_default
++%config(noreplace) /var/lib/cobbler/scripts/preseed_late_default
+ %config(noreplace) /etc/cobbler/*.template
+ %config(noreplace) /etc/cobbler/pxe/*.template
+ %config(noreplace) /etc/cobbler/reporting/*.template
+@@ -364,6 +383,7 @@
+ 
+ %defattr(755,root,root)
+ %dir /var/lib/cobbler
++%dir /var/lib/cobbler/scripts
+ %config(noreplace) /var/lib/cobbler/distro_signatures.json
+ %dir /var/lib/cobbler/config/
+ %dir /var/lib/cobbler/config/distros.d/
+@@ -425,9 +445,11 @@
+ %{python_sitelib}/cobbler-*-py%{py_ver}.egg-info
+ %endif
+ 
++%if 0
+ %dir /usr/share/augeas
+ %dir /usr/share/augeas/lenses
+ /usr/share/augeas/lenses/cobblersettings.aug
++%endif
+ 
+ %doc AUTHORS CHANGELOG README COPYING
+ 
+Index: fix-initscript.dif
+===================================================================
+--- fix-initscript.dif (revision 28)
++++ fix-initscript.dif (revision 57)
+@@ -1,5 +1,6 @@
+---- config/cobblerd
+-+++ config/cobblerd	2012/04/19 08:55:40
++diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-cobbler-cobbler-2.4.0-1/config/cobblerd ./config/cobblerd
++--- ../orig-cobbler-cobbler-2.4.0-1/config/cobblerd	2013-06-20 07:42:48.000000000 +0200
+++++ ./config/cobblerd	2013-08-13 13:40:07.784665624 +0200
+ @@ -7,8 +7,9 @@
+  
+  ### BEGIN INIT INFO
+@@ -15,7 +16,7 @@
+ @@ -50,8 +51,33 @@
+  
+  start() {
+-     echo -n $&quot;Starting cobbler daemon: &quot;
++     echo -n &quot;Starting cobbler daemon: &quot;
+ +    # Change the SECRET_KEY option in the Django settings.py file
+ +    # required for security reasons, should be unique on all systems
+ +    # the default is empty -&gt; SECRET_KEY = ''
+@@ -60,9 +61,8 @@
+      RETVAL=$?
+      echo
+      if [ $RETVAL -eq 0 ]; then
+--    rm -f $LOCKFILE
+ +        if [ -f $DEBIAN_VERSION ]; then
+-+            rm -f $LOCKFILE
++     rm -f $LOCKFILE
+ +        fi
+          rm -f /var/run/$SERVICE.pid
+      fi
+Index: suse_config.diff
+===================================================================
+--- suse_config.diff (revision 28)
++++ suse_config.diff (revision 57)
+@@ -1,49 +1,47 @@
+-Index: config/cobbler.conf
+-===================================================================
+---- config/cobbler.conf.orig
+-+++ config/cobbler.conf
+-@@ -1,15 +1,15 @@
+- # This configuration file allows cobbler data
+- # to be accessed over HTTP.
+- 
+--AliasMatch ^/cblr(?!/svc/)(.*)?$ &quot;/var/www/cobbler$1&quot;
+--AliasMatch ^/cobbler_track(.*)?$ &quot;/var/www/cobbler$1&quot;
+--#AliasMatch ^/cobbler(.*)?$ &quot;/var/www/cobbler$1&quot;
+--Alias /cobbler /var/www/cobbler
+--Alias /cobbler_webui_content /var/www/cobbler_webui_content
+-+AliasMatch ^/cblr(?!/svc/)(.*)?$ &quot;/srv/www/cobbler$1&quot;
+-+AliasMatch ^/cobbler_track(.*)?$ &quot;/srv/www/cobbler$1&quot;
+-+#AliasMatch ^/cobbler(.*)?$ &quot;/srv/www/cobbler$1&quot;
+-+Alias /cobbler /srv/www/cobbler
+-+Alias /cobbler_webui_content /srv/www/cobbler_webui_content
+- 
+--WSGIScriptAliasMatch ^/cblr/svc/([^/]*) /var/www/cobbler/svc/services.py
+-+WSGIScriptAliasMatch ^/cblr/svc/([^/]*) /srv/www/cobbler/svc/services.py
+- 
+--&lt;Directory &quot;/var/www/cobbler&quot;&gt;
+-+&lt;Directory &quot;/srv/www/cobbler&quot;&gt;
+-     Options Indexes FollowSymLinks
+-     Order allow,deny
+-     Allow from all
+-@@ -26,7 +26,7 @@ BrowserMatch &quot;MSIE&quot; AuthDigestEnableQuer
+- # and is visited at http://.../cobbler_web not this URL.
+- # this is only a pointer to the new page.
+- 
+--&lt;Directory &quot;/var/www/cobbler/web/&quot;&gt;
+-+&lt;Directory &quot;/srv/www/cobbler/web/&quot;&gt;
+-     Options Indexes FollowSymLinks
+-     Order allow,deny
+-     Allow from all
+-Index: config/settings
+-===================================================================
+---- config/settings.orig
+-+++ config/settings
+-@@ -401,7 +401,7 @@ virt_auto_boot: 1
+- # cobbler's web directory.  Don't change this setting -- see the
+- # Wiki on &quot;relocating your cobbler install&quot; if your /var partition
+- # is not large enough.
+--webdir: /var/www/cobbler
+-+webdir: /srv/www/cobbler
+- 
+- # cobbler's public XMLRPC listens on this port.  Change this only
+- # if absolutely needed, as you'll have to start supplying a new
++diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-cobbler-cobbler-2.4.0-1/config/cobbler.conf ./config/cobbler.conf
++--- ../orig-cobbler-cobbler-2.4.0-1/config/cobbler.conf	2013-06-20 07:42:48.000000000 +0200
+++++ ./config/cobbler.conf	2013-08-13 13:48:05.288587476 +0200
++@@ -1,15 +1,15 @@
++ # This configuration file allows cobbler data
++ # to be accessed over HTTP.
++ 
++-AliasMatch ^/cblr(?!/svc/)(.*)?$ &quot;/var/www/cobbler$1&quot;
++-AliasMatch ^/cobbler_track(.*)?$ &quot;/var/www/cobbler$1&quot;
++-#AliasMatch ^/cobbler(.*)?$ &quot;/var/www/cobbler$1&quot;
++-Alias /cobbler /var/www/cobbler
++-Alias /cobbler_webui_content /var/www/cobbler_webui_content
+++AliasMatch ^/cblr(?!/svc/)(.*)?$ &quot;/srv/www/cobbler$1&quot;
+++AliasMatch ^/cobbler_track(.*)?$ &quot;/srv/www/cobbler$1&quot;
+++#AliasMatch ^/cobbler(.*)?$ &quot;/srv/www/cobbler$1&quot;
+++Alias /cobbler /srv/www/cobbler
+++Alias /cobbler_webui_content /srv/www/cobbler_webui_content
++ 
++-WSGIScriptAliasMatch ^/cblr/svc/([^/]*) /var/www/cobbler/svc/services.py
+++WSGIScriptAliasMatch ^/cblr/svc/([^/]*) /srv/www/cobbler/svc/services.py
++ 
++-&lt;Directory &quot;/var/www/cobbler&quot;&gt;
+++&lt;Directory &quot;/srv/www/cobbler&quot;&gt;
++     Options Indexes FollowSymLinks
++     Order allow,deny
++     Allow from all
++@@ -26,7 +26,7 @@
++ # and is visited at http://.../cobbler_web not this URL.
++ # this is only a pointer to the new page.
++ 
++-&lt;Directory &quot;/var/www/cobbler/web/&quot;&gt;
+++&lt;Directory &quot;/srv/www/cobbler/web/&quot;&gt;
++     Options Indexes FollowSymLinks
++     Order allow,deny
++     Allow from all
++diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-cobbler-cobbler-2.4.0-1/config/settings ./config/settings
++--- ../orig-cobbler-cobbler-2.4.0-1/config/settings	2013-06-20 07:42:48.000000000 +0200
+++++ ./config/settings	2013-08-13 13:48:05.288587476 +0200
++@@ -412,7 +412,7 @@
++ # cobbler's web directory.  Don't change this setting -- see the
++ # Wiki on &quot;relocating your cobbler install&quot; if your /var partition
++ # is not large enough.
++-webdir: /var/www/cobbler
+++webdir: /srv/www/cobbler
++ 
++ # cobbler's public XMLRPC listens on this port.  Change this only
++ # if absolutely needed, as you'll have to start supplying a new
+Index: suse_newver.patch
+===================================================================
+--- suse_newver.patch (revision 28)
++++ suse_newver.patch (revision 57)
+@@ -1,83 +1,85 @@
+---- config/distro_signatures.json
+-+++ config/distro_signatures.json
+-@@ -263,6 +263,38 @@
+-     &quot;kernel_options_post&quot;:&quot;&quot;,
+-     &quot;boot_files&quot;:[]
+-    },
+-+   &quot;opensuse12.3&quot;: {
+-+    &quot;signatures&quot;:[&quot;suse&quot;],
+-+    &quot;version_file&quot;:&quot;openSUSE-release-12.3-(.*).rpm&quot;,
+-+    &quot;version_file_regex&quot;:null,
+-+    &quot;kernel_arch&quot;:&quot;kernel-(.*)\\.rpm&quot;,
+-+    &quot;kernel_arch_regex&quot;:null,
+-+    &quot;supported_arches&quot;:[&quot;i386&quot;,&quot;i586&quot;,&quot;x86_64&quot;],
+-+    &quot;supported_repo_breeds&quot;:[&quot;yum&quot;],
+-+    &quot;kernel_file&quot;:&quot;(linux|vmlinuz(.*))&quot;,
+-+    &quot;initrd_file&quot;:&quot;initrd(.*)&quot;,
+-+    &quot;isolinux_ok&quot;:false,
+-+    &quot;default_kickstart&quot;:&quot;/var/lib/cobbler/kickstarts/sample_autoyast.xml&quot;,
+-+    &quot;kernel_options&quot;:&quot;&quot;,
+-+    &quot;kernel_options_post&quot;:&quot;&quot;,
+-+    &quot;boot_files&quot;:[]
+-+   },
+-+   &quot;opensuse13.1&quot;: {
+-+    &quot;signatures&quot;:[&quot;suse&quot;],
+-+    &quot;version_file&quot;:&quot;openSUSE-release-13.1-(.*).rpm&quot;,
+-+    &quot;version_file_regex&quot;:null,
+-+    &quot;kernel_arch&quot;:&quot;kernel-(.*)\\.rpm&quot;,
+-+    &quot;kernel_arch_regex&quot;:null,
+-+    &quot;supported_arches&quot;:[&quot;i386&quot;,&quot;i586&quot;,&quot;x86_64&quot;],
+-+    &quot;supported_repo_breeds&quot;:[&quot;yum&quot;],
+-+    &quot;kernel_file&quot;:&quot;(linux|vmlinuz(.*))&quot;,
+-+    &quot;initrd_file&quot;:&quot;initrd(.*)&quot;,
+-+    &quot;isolinux_ok&quot;:false,
+-+    &quot;default_kickstart&quot;:&quot;/var/lib/cobbler/kickstarts/sample_autoyast.xml&quot;,
+-+    &quot;kernel_options&quot;:&quot;&quot;,
+-+    &quot;kernel_options_post&quot;:&quot;&quot;,
+-+    &quot;boot_files&quot;:[]
+-+   },
+-    &quot;sles11&quot;: {
+-     &quot;signatures&quot;:[&quot;suse&quot;],
+-     &quot;version_file&quot;:&quot;sles-release-11-(.*).rpm&quot;,
+-@@ -298,6 +330,22 @@
+-    &quot;sles11sp2&quot;: {
+-     &quot;signatures&quot;:[&quot;suse&quot;],
+-     &quot;version_file&quot;:&quot;sles-release-11.2-(.*).rpm&quot;,
+-+    &quot;version_file_regex&quot;:null,
+-+    &quot;kernel_arch&quot;:&quot;kernel-(.*)\\.rpm&quot;,
+-+    &quot;kernel_arch_regex&quot;:null,
+-+    &quot;supported_arches&quot;:[&quot;i386&quot;,&quot;i586&quot;,&quot;x86_64&quot;,&quot;ppc64&quot;],
+-+    &quot;supported_repo_breeds&quot;:[&quot;yum&quot;],
+-+    &quot;kernel_file&quot;:&quot;linux[64.gz]?&quot;,
+-+    &quot;initrd_file&quot;:&quot;initrd[64]?&quot;,
+-+    &quot;isolinux_ok&quot;:false,
+-+    &quot;default_kickstart&quot;:&quot;/var/lib/cobbler/kickstarts/sample_autoyast.xml&quot;,
+-+    &quot;kernel_options&quot;:&quot;&quot;,
+-+    &quot;kernel_options_post&quot;:&quot;&quot;,
+-+    &quot;boot_files&quot;:[]
+-+   },
+-+   &quot;sles11sp3&quot;: {
+-+    &quot;signatures&quot;:[&quot;suse&quot;],
+-+    &quot;version_file&quot;:&quot;sles-release-11.3-(.*).rpm&quot;,
+-     &quot;version_file_regex&quot;:null,
+-     &quot;kernel_arch&quot;:&quot;kernel-(.*)\\.rpm&quot;,
+-     &quot;kernel_arch_regex&quot;:null,
+---- newtests/cli/imports/test_suse/suse_import_test.py
+-+++ newtests/cli/imports/test_suse/suse_import_test.py
+-@@ -18,9 +18,16 @@
+-  {&quot;name&quot;:&quot;opensuse12.1-x86_64&quot;, &quot;desc&quot;:&quot;OpenSuSE 12.1 x86_64&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse12.1_x86_64&quot;},
+-  {&quot;name&quot;:&quot;opensuse12.2-i386&quot;, &quot;desc&quot;:&quot;OpenSuSE 12.2 i586&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse12.2_i586&quot;},
+-  {&quot;name&quot;:&quot;opensuse12.2-x86_64&quot;, &quot;desc&quot;:&quot;OpenSuSE 12.2 x86_64&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse12.2_x86_64&quot;},
+-+ {&quot;name&quot;:&quot;opensuse12.3-i386&quot;, &quot;desc&quot;:&quot;OpenSuSE 12.3 i586&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse12.3_i586&quot;},
+-+ {&quot;name&quot;:&quot;opensuse12.3-x86_64&quot;, &quot;desc&quot;:&quot;OpenSuSE 12.3 x86_64&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse12.3_x86_64&quot;},
+-+ {&quot;name&quot;:&quot;opensuse13.1-i386&quot;, &quot;desc&quot;:&quot;OpenSuSE 13.1 i586&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse13.1_i586&quot;},
+-+ {&quot;name&quot;:&quot;opensuse13.1-x86_64&quot;, &quot;desc&quot;:&quot;OpenSuSE 13.1 x86_64&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse13.1_x86_64&quot;},
+-  {&quot;name&quot;:&quot;sles11_sp2-i386&quot;, &quot;desc&quot;:&quot;SLES 11 SP2 i586&quot;, &quot;path&quot;:&quot;/vagrant/distros/sles11_sp2_i586&quot;},
+-  {&quot;name&quot;:&quot;sles11_sp2-x86_64&quot;, &quot;desc&quot;:&quot;SLES 11 SP2 x86_64&quot;, &quot;path&quot;:&quot;/vagrant/distros/sles11_sp2_x86_64&quot;},
+-  {&quot;name&quot;:&quot;sles11_sp2-ppc64&quot;, &quot;desc&quot;:&quot;SLES 11 SP2 ppc64&quot;, &quot;path&quot;:&quot;/vagrant/distros/sles11_sp2_ppc64&quot;},
+-+ {&quot;name&quot;:&quot;sles11_sp3-i386&quot;, &quot;desc&quot;:&quot;SLES 11 SP3 i586&quot;, &quot;path&quot;:&quot;/vagrant/distros/sles11_sp3_i586&quot;},
+-+ {&quot;name&quot;:&quot;sles11_sp3-x86_64&quot;, &quot;desc&quot;:&quot;SLES 11 SP3 x86_64&quot;, &quot;path&quot;:&quot;/vagrant/distros/sles11_sp3_x86_64&quot;},
+-+ {&quot;name&quot;:&quot;sles11_sp3-ppc64&quot;, &quot;desc&quot;:&quot;SLES 11 SP3 ppc64&quot;, &quot;path&quot;:&quot;/vagrant/distros/sles11_sp3_ppc64&quot;},
+- ]
+- 
+- for i in range(0,len(distros)):
++diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-cobbler-cobbler-2.4.0-1/config/distro_signatures.json ./config/distro_signatures.json
++--- ../orig-cobbler-cobbler-2.4.0-1/config/distro_signatures.json	2013-06-20 07:42:48.000000000 +0200
+++++ ./config/distro_signatures.json	2013-08-13 13:45:15.437507529 +0200
++@@ -295,6 +295,38 @@
++     &quot;kernel_options_post&quot;:&quot;&quot;,
++     &quot;boot_files&quot;:[]
++    },
+++   &quot;opensuse12.3&quot;: {
+++    &quot;signatures&quot;:[&quot;suse&quot;],
+++    &quot;version_file&quot;:&quot;openSUSE-release-12.3-(.*).rpm&quot;,
+++    &quot;version_file_regex&quot;:null,
+++    &quot;kernel_arch&quot;:&quot;kernel-(.*)\\.rpm&quot;,
+++    &quot;kernel_arch_regex&quot;:null,
+++    &quot;supported_arches&quot;:[&quot;i386&quot;,&quot;i586&quot;,&quot;x86_64&quot;],
+++    &quot;supported_repo_breeds&quot;:[&quot;yum&quot;],
+++    &quot;kernel_file&quot;:&quot;(linux|vmlinuz(.*))&quot;,
+++    &quot;initrd_file&quot;:&quot;initrd(.*)&quot;,
+++    &quot;isolinux_ok&quot;:false,
+++    &quot;default_kickstart&quot;:&quot;/var/lib/cobbler/kickstarts/sample_autoyast.xml&quot;,
+++    &quot;kernel_options&quot;:&quot;&quot;,
+++    &quot;kernel_options_post&quot;:&quot;&quot;,
+++    &quot;boot_files&quot;:[]
+++   },
+++   &quot;opensuse13.1&quot;: {
+++    &quot;signatures&quot;:[&quot;suse&quot;],
+++    &quot;version_file&quot;:&quot;openSUSE-release-13.1-(.*).rpm&quot;,
+++    &quot;version_file_regex&quot;:null,
+++    &quot;kernel_arch&quot;:&quot;kernel-(.*)\\.rpm&quot;,
+++    &quot;kernel_arch_regex&quot;:null,
+++    &quot;supported_arches&quot;:[&quot;i386&quot;,&quot;i586&quot;,&quot;x86_64&quot;],
+++    &quot;supported_repo_breeds&quot;:[&quot;yum&quot;],
+++    &quot;kernel_file&quot;:&quot;(linux|vmlinuz(.*))&quot;,
+++    &quot;initrd_file&quot;:&quot;initrd(.*)&quot;,
+++    &quot;isolinux_ok&quot;:false,
+++    &quot;default_kickstart&quot;:&quot;/var/lib/cobbler/kickstarts/sample_autoyast.xml&quot;,
+++    &quot;kernel_options&quot;:&quot;&quot;,
+++    &quot;kernel_options_post&quot;:&quot;&quot;,
+++    &quot;boot_files&quot;:[]
+++   },
++    &quot;sles11&quot;: {
++     &quot;signatures&quot;:[&quot;suse&quot;],
++     &quot;version_file&quot;:&quot;sles-release-11-(.*).rpm&quot;,
++@@ -333,6 +365,22 @@
++     &quot;version_file_regex&quot;:null,
++     &quot;kernel_arch&quot;:&quot;kernel-(.*)\\.rpm&quot;,
++     &quot;kernel_arch_regex&quot;:null,
+++    &quot;supported_arches&quot;:[&quot;i386&quot;,&quot;i586&quot;,&quot;x86_64&quot;,&quot;ppc64&quot;],
+++    &quot;supported_repo_breeds&quot;:[&quot;yum&quot;],
+++    &quot;kernel_file&quot;:&quot;linux[64.gz]?&quot;,
+++    &quot;initrd_file&quot;:&quot;initrd[64]?&quot;,
+++    &quot;isolinux_ok&quot;:false,
+++    &quot;default_kickstart&quot;:&quot;/var/lib/cobbler/kickstarts/sample_autoyast.xml&quot;,
+++    &quot;kernel_options&quot;:&quot;&quot;,
+++    &quot;kernel_options_post&quot;:&quot;&quot;,
+++    &quot;boot_files&quot;:[]
+++   },
+++   &quot;sles11sp3&quot;: {
+++    &quot;signatures&quot;:[&quot;suse&quot;],
+++    &quot;version_file&quot;:&quot;sles-release-11.3-(.*).rpm&quot;,
+++    &quot;version_file_regex&quot;:null,
+++    &quot;kernel_arch&quot;:&quot;kernel-(.*)\\.rpm&quot;,
+++    &quot;kernel_arch_regex&quot;:null,
++     &quot;supported_arches&quot;:[&quot;i386&quot;,&quot;i586&quot;,&quot;x86_64&quot;,&quot;ppc64&quot;],
++     &quot;supported_repo_breeds&quot;:[&quot;yum&quot;],
++     &quot;kernel_file&quot;:&quot;linux[64.gz]?&quot;,
++diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-cobbler-cobbler-2.4.0-1/newtests/cli/imports/test_suse/suse_import_test.py ./newtests/cli/imports/test_suse/suse_import_test.py
++--- ../orig-cobbler-cobbler-2.4.0-1/newtests/cli/imports/test_suse/suse_import_test.py	2013-06-20 07:42:48.000000000 +0200
+++++ ./newtests/cli/imports/test_suse/suse_import_test.py	2013-08-13 13:43:48.513881642 +0200
++@@ -18,9 +18,16 @@
++  {&quot;name&quot;:&quot;opensuse12.1-x86_64&quot;, &quot;desc&quot;:&quot;OpenSuSE 12.1 x86_64&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse12.1_x86_64&quot;},
++  {&quot;name&quot;:&quot;opensuse12.2-i386&quot;, &quot;desc&quot;:&quot;OpenSuSE 12.2 i586&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse12.2_i586&quot;},
++  {&quot;name&quot;:&quot;opensuse12.2-x86_64&quot;, &quot;desc&quot;:&quot;OpenSuSE 12.2 x86_64&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse12.2_x86_64&quot;},
+++ {&quot;name&quot;:&quot;opensuse12.3-i386&quot;, &quot;desc&quot;:&quot;OpenSuSE 12.3 i586&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse12.3_i586&quot;},
+++ {&quot;name&quot;:&quot;opensuse12.3-x86_64&quot;, &quot;desc&quot;:&quot;OpenSuSE 12.3 x86_64&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse12.3_x86_64&quot;},
+++ {&quot;name&quot;:&quot;opensuse13.1-i386&quot;, &quot;desc&quot;:&quot;OpenSuSE 13.1 i586&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse13.1_i586&quot;},
+++ {&quot;name&quot;:&quot;opensuse13.1-x86_64&quot;, &quot;desc&quot;:&quot;OpenSuSE 13.1 x86_64&quot;, &quot;path&quot;:&quot;/vagrant/distros/opensuse13.1_x86_64&quot;},
++  {&quot;name&quot;:&quot;sles11_sp2-i386&quot;, &quot;desc&quot;:&quot;SLES 11 SP2 i586&quot;, &quot;path&quot;:&quot;/vagrant/distros/sles11_sp2_i586&quot;},
++  {&quot;name&quot;:&quot;sles11_sp2-x86_64&quot;, &quot;desc&quot;:&quot;SLES 11 SP2 x86_64&quot;, &quot;path&quot;:&quot;/vagrant/distros/sles11_sp2_x86_64&quot;},
++  {&quot;name&quot;:&quot;sles11_sp2-ppc64&quot;, &quot;desc&quot;:&quot;SLES 11 SP2 ppc64&quot;, &quot;path&quot;:&quot;/vagrant/distros/sles11_sp2_ppc64&quot;},
+++ {&quot;name&quot;:&quot;sles11_sp3-i386&quot;, &quot;desc&quot;:&quot;SLES 11 SP3 i586&quot;, &quot;path&quot;:&quot;/vagrant/distros/sles11_sp3_i586&quot;},
+++ {&quot;name&quot;:&quot;sles11_sp3-x86_64&quot;, &quot;desc&quot;:&quot;SLES 11 SP3 x86_64&quot;, &quot;path&quot;:&quot;/vagrant/distros/sles11_sp3_x86_64&quot;},
+++ {&quot;name&quot;:&quot;sles11_sp3-ppc64&quot;, &quot;desc&quot;:&quot;SLES 11 SP3 ppc64&quot;, &quot;path&quot;:&quot;/vagrant/distros/sles11_sp3_ppc64&quot;},
++ ]
++ 
++ for i in range(0,len(distros)):
+Index: users_patch.diff
+===================================================================
+--- users_patch.diff (revision 28)
++++ users_patch.diff (revision 57)
+@@ -1,32 +1,29 @@
+-Index: cobbler/action_reposync.py
+-===================================================================
+---- cobbler/action_reposync.py.orig
+-+++ cobbler/action_reposync.py
+-@@ -560,7 +560,12 @@ class RepoSync:
+-         a safeguard.
+-         &quot;&quot;&quot;
+-         # all_path = os.path.join(repo_path, &quot;*&quot;)
+--        cmd1 = &quot;chown -R root:apache %s&quot; % repo_path
+-+        owner = &quot;root:apache&quot;
+-+        if os.path.exists(&quot;/etc/SuSE-release&quot;):
+-+            owner = &quot;root:wwwrun&quot;
+-+
+-+        cmd1 = &quot;chown -R &quot;+owner+&quot; %s&quot; % repo_path
+-+
+-         utils.subprocess_call(self.logger, cmd1)
+- 
+-         cmd2 = &quot;chmod -R 755 %s&quot; % repo_path
+-Index: cobbler/cobblerd.py
+-===================================================================
+---- cobbler/cobblerd.py.orig
+-+++ cobbler/cobblerd.py
+-@@ -64,6 +64,8 @@
+-         http_user = &quot;apache&quot;
+-         if utils.check_dist() in [ &quot;debian&quot;, &quot;ubuntu&quot; ]:
+-             http_user = &quot;www-data&quot;
+-+        elif utils.check_dist() == &quot;suse&quot;:
+-+            http_user = &quot;wwwrun&quot;
+-         utils.os_system(&quot;chown %s /var/lib/cobbler/web.ss&quot;%http_user )
+-     else:
+-         fd = os.open(ssfile,os.O_CREAT|os.O_RDWR,0600)
+-
++diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-cobbler-cobbler-2.4.0-1/cobbler/action_reposync.py ./cobbler/action_reposync.py
++--- ../orig-cobbler-cobbler-2.4.0-1/cobbler/action_reposync.py	2013-06-20 07:42:48.000000000 +0200
+++++ ./cobbler/action_reposync.py	2013-08-13 13:46:50.341464250 +0200
++@@ -585,7 +585,12 @@
++         a safeguard.
++         &quot;&quot;&quot;
++         # all_path = os.path.join(repo_path, &quot;*&quot;)
++-        cmd1 = &quot;chown -R root:apache %s&quot; % repo_path
+++        owner = &quot;root:apache&quot;
+++        if os.path.exists(&quot;/etc/SuSE-release&quot;):
+++            owner = &quot;root:wwwrun&quot;
+++
+++        cmd1 = &quot;chown -R &quot;+owner+&quot; %s&quot; % repo_path
+++
++         utils.subprocess_call(self.logger, cmd1)
++ 
++         cmd2 = &quot;chmod -R 755 %s&quot; % repo_path
++diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-cobbler-cobbler-2.4.0-1/cobbler/cobblerd.py ./cobbler/cobblerd.py
++--- ../orig-cobbler-cobbler-2.4.0-1/cobbler/cobblerd.py	2013-06-20 07:42:48.000000000 +0200
+++++ ./cobbler/cobblerd.py	2013-08-13 13:46:50.345464415 +0200
++@@ -64,6 +64,8 @@
++         http_user = &quot;apache&quot;
++         if utils.check_dist() in [ &quot;debian&quot;, &quot;ubuntu&quot; ]:
++             http_user = &quot;www-data&quot;
+++        elif utils.check_dist() == &quot;suse&quot;:
+++            http_user = &quot;wwwrun&quot;
++         utils.os_system(&quot;chown %s /var/lib/cobbler/web.ss&quot;%http_user )
++     else:
++         fd = os.open(ssfile,os.O_CREAT|os.O_RDWR,0600)
+Index: cobbler-2.4.0-1.tar.bz2
+===================================================================
+Binary files cobbler-2.4.0-1.tar.bz2 (revision 57) added
+Index: cobbler-2.2.3.tar.bz2
+===================================================================
+Binary files cobbler-2.2.3.tar.bz2 (revision 28) deleted</comment>
+    <requestid>187000</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>9fa9314bd718b5c9b98b8915a9554541</srcmd5>
+    <version>2.4.0</version>
+    <time>1379662127</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2e480bfb05408e10697c47d82a392e83</srcmd5>
+    <version>2.4.2</version>
+    <time>1407073015</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>243415</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>2e480bfb05408e10697c47d82a392e83</srcmd5>
+    <version>2.4.2</version>
+    <time>1409300658</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>90045a3411752f0ab3f0f83a78d49e50</srcmd5>
+    <version>2.4.2</version>
+    <time>1410514120</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>248831</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c89c52e9ab3f5b75a488ee99c5e88ad9</srcmd5>
+    <version>2.6.6</version>
+    <time>1423258666</time>
+    <user>dimstar_suse</user>
+    <comment>- Added 'fix_test_create_systems.diff': fixes the &quot;create_systens&quot; unit test
+
+- Fix runtime dependency: ensure the yaml module is available.
+
+- Install the right cobblerd.service file
+
+- Do not ship cobbler_web.conf inside of the cobbler package, get rid
+  of part of our patches to setup.py,
+
+- Added new patch required to fix the broken unit tests:
+  * fix-broken-tests.diff
+
+- Removed another no longer needed patch:
+  * fix-textmode-for-SUSE.dif
+
+- Update to latest stable version of cobbler (2.6.6)
+- Removed no longer needed patches
+  * bnc_877009.patch
+  * cobbler-2.4.2-Fix-koan-s-get_insert_script.patch
+  * fix-broken-tests.diff
+  * fix-initscript.diff
+  * suse_config.diff
+- Fixed old patches to apply against the new code:
+  * catch_cheetah_exception.patch
+  * grubby-compat.diff
+  * setup_py.diff
+
+- Fix the broken unit tests
+
+- Created sub package for unit tests</comment>
+    <requestid>283094</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>c3f0a2969ceacf4c3419fefdb16edada</srcmd5>
+    <version>2.6.6</version>
+    <time>1458333748</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>374109</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>37a6243735c36fa291a5ac989ff5bee5</srcmd5>
+    <version>2.6.6</version>
+    <time>1462697136</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393795</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>f9ea1b2d92cc67617ddef592c9eb6cd1</srcmd5>
+    <version>2.6.6</version>
+    <time>1464014336</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396728</requestid>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>a90b37834692f5b48050d4788353b036</srcmd5>
+    <version>2.6.6</version>
+    <time>1502366671</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>513077</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>d37b1ed47e51203b68d4a742ced5be7f</srcmd5>
+    <version>2.6.6</version>
+    <time>1507280701</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531790</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>551fdfc3c62c51576e82764f6d96dd45</srcmd5>
+    <version>2.8.2</version>
+    <time>1511517239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544574</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>e385ad533c30c9683e958628e33fbe6f</srcmd5>
+    <version>2.8.2</version>
+    <time>1511817521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545980</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>3bec6adec42c2f24a018d5c88c7aff46</srcmd5>
+    <version>2.8.2</version>
+    <time>1520778291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584806</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>914177bc564ab282cd3ff3998eb65aeb</srcmd5>
+    <version>2.8.2</version>
+    <time>1524838129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601552</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>6d09f649107ddecc4443bc18fd4598cb</srcmd5>
+    <version>2.8.2</version>
+    <time>1534100069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628613</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>0a7f71cdbc60833e238e65691052b63d</srcmd5>
+    <version>2.8.2</version>
+    <time>1535123617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631356</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>eebd307ce82bc7e698b946a2e6e6fb7e</srcmd5>
+    <version>3.0+git20190222.9e502a9d</version>
+    <time>1551216021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678980</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>c42fc213802365f42f45d6144c937898</srcmd5>
+    <version>3.0+git20190222.9e502a9d</version>
+    <time>1551455318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680156</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>b7c4744e60422100835a93f510024983</srcmd5>
+    <version>3.0+git20190222.9e502a9d</version>
+    <time>1552207185</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682771</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>b109adf8b7c270fa9f38c92999e7131b</srcmd5>
+    <version>3.0+git20190222.9e502a9d</version>
+    <time>1552464815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684237</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>7fcb004ba7522679f1b5c35c15ff97cf</srcmd5>
+    <version>3.0.0+git20190510.d43461b3</version>
+    <time>1558532381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704283</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a86defe5ad5d1849126931fe1f7b1580</srcmd5>
+    <version>3.0.0</version>
+    <time>1563993469</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to latest v3.0.0 cobbler release
+- Add previouly added patch: exclude_get-loaders_command.patch to
+  the list of patches to apply.
+
+- Fix log file world readable (as suggested by Matthias Gerstner)
+  and change file attributes via attr in spec file
+- Do not allow get-loaders command (download of third party
+  provided network boot loaders we do not trust)
+A exclude_get-loaders_command.patch
+- Add apache min version requires to 2.4 (due to mainline commit:
+  31a1aa31d26c4a096f0e0
+  Remove apache IfVersion tags from apache configs
+- Fix Tumbleweed build where python2-Cheetah3 and python3-Cheetah3
+  are build for a while by changing (Build- and) Requires from:
+  Cheetah3 to python3-Cheetah3
+- Setting test package group to a valid one
+- Fix test files to be added to test package, not only the directory
+- Remove general dir from file section: %{_datadir}
+- Fix test package requires
+  missing Requires: python3-pytest python3-pyflakes python3-pycodestyle
+- Mainline fixes:
+  3172d1df9b9cc8 Add missing help text in redhat_management_key field
+  c8f5490e507a72 Set default interface if cobbler system add has no
+                 --interface= param
+  31a1aa31d26c4a Remove apache IfVersion tags from apache configs</comment>
+    <requestid>718255</requestid>
+  </revision>
+</revisionlist>

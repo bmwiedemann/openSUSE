@@ -1,0 +1,12 @@
+<package name="python-colander" project="openSUSE:Factory">
+  <title>A simple schema-based serialization and deserialization library</title>
+  <description>An extensible package which can be used to:
+
+    deserialize and validate a data structure composed of strings, mappings, and lists.
+    serialize an arbitrary data structure to a data structure composed of strings, mappings, and lists.
+
+It runs on Python 2.6, 2.7, 3.2, and 3.3.
+
+Please see http://docs.pylonsproject.org/projects/colander/en/latest/ for further documentation.</description>
+  <devel project="devel:languages:python" package="python-colander"/>
+</package>

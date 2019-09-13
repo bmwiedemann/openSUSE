@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e0cf362ce3e1a72d5b22bd25cf2c5a9</srcmd5>
+    <version>16+git20190123.0a0a912</version>
+    <time>1550402380</time>
+    <user>coolo</user>
+    <comment>- Use noun phrase in summary.
+- Wrap description.
+- Add requires for iptables and ipset
+- Update to version 16+git20190123.0a0a912:
+  * Move src files to /src/.
+  * Move man pages to /man/ folder.
+- Initial version (v16)
+</comment>
+    <requestid>672625</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>601ce7cc58c195b39202474334178bf7</srcmd5>
+    <version>16+git20190219.35182b8</version>
+    <time>1551216004</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16+git20190219.35182b8:
+  * Force insert iptables rules as rule #1.
+  * Debug: print path to skipped file, not the other one.</comment>
+    <requestid>678934</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>694fd510ef7c77e19940f8145376a923</srcmd5>
+    <version>16+git20190219.35182b8</version>
+    <time>1559902703</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PreRequires for systemd macros</comment>
+    <requestid>707628</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9f4788b0a798c9d92434047e9199f7d7</srcmd5>
+    <version>16+git20190425.e4b3977</version>
+    <time>1566241118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16+git20190425.e4b3977:
+  * Ensure we don't replay old events.
+  * Add example whitelist defaults.</comment>
+    <requestid>724261</requestid>
+  </revision>
+</revisionlist>

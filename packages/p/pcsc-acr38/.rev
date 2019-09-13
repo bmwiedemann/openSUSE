@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="36">
+    <srcmd5>0f4e1c51bcc490d3bd7524a6feefe2da</srcmd5>
+    <version>100705_P</version>
+    <time>1168903763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>98dcaa1c56b8eeb4e3a40a2c5211e73c</srcmd5>
+    <version>1.7.9</version>
+    <time>1180106715</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>39ce6e27adb52fbc7f33ad4f7bf28555</srcmd5>
+    <version>1.7.9</version>
+    <time>1180638555</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="16">
+    <srcmd5>e73d09cb552fb5a0f9e0a0098aa4b3ae</srcmd5>
+    <version>1.7.9</version>
+    <time>1185494620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="137">
+    <srcmd5>0756cba6bc6a2274ac3597986000c430</srcmd5>
+    <version>1.7.9</version>
+    <time>1221489322</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="138">
+    <srcmd5>ef77586208de262720ffba84277878a8</srcmd5>
+    <version>1.7.9</version>
+    <time>1239747285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="140">
+    <srcmd5>ef77586208de262720ffba84277878a8</srcmd5>
+    <version>1.7.9</version>
+    <time>1239747285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a3966ecdaa1cfb48fabaa4f406647146</srcmd5>
+    <version>1.7.10</version>
+    <time>1260973525</time>
+    <user>autobuild</user>
+    <comment>Copy from security:chipcard/pcsc-acr38 based on submit request 26667 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f3efccc099f48f300c9302df361eabf7</srcmd5>
+    <version>1.7.10</version>
+    <time>1266508172</time>
+    <user>autobuild</user>
+    <comment>Copy from security:chipcard/pcsc-acr38 based on submit request 32606 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a431623877375cc6f5b324249ee705c5</srcmd5>
+    <version>1.7.10</version>
+    <time>1268925331</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>a431623877375cc6f5b324249ee705c5</srcmd5>
+    <version>1.7.10</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>a431623877375cc6f5b324249ee705c5</srcmd5>
+    <version>1.7.10</version>
+    <time>1278678608</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>a431623877375cc6f5b324249ee705c5</srcmd5>
+    <version>1.7.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>a431623877375cc6f5b324249ee705c5</srcmd5>
+    <version>1.7.10</version>
+    <time>1319182233</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>35452731e73899d3d3a50770c29a29fb</srcmd5>
+    <version>1.7.10</version>
+    <time>1321886913</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92627 from coolo)</comment>
+    <requestid>92683</requestid>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>86d2f608c52eac61482ca3fd03965844</srcmd5>
+    <version>1.7.10</version>
+    <time>1323192987</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>86d2f608c52eac61482ca3fd03965844</srcmd5>
+    <version>1.7.10</version>
+    <time>1340183783</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>31e9a837b3f5524e445768e9693a5870</srcmd5>
+    <version>1.7.11</version>
+    <time>1342423651</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.7.11:
+  * Add ACR38U-SAM support.
+  * Fix the problem when receiving a buffer(data+SW) of length in
+    times of 64 bytes.</comment>
+    <requestid>127682</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>31e9a837b3f5524e445768e9693a5870</srcmd5>
+    <version>1.7.11</version>
+    <time>1359109584</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>31e9a837b3f5524e445768e9693a5870</srcmd5>
+    <version>1.7.11</version>
+    <time>1379663526</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>31e9a837b3f5524e445768e9693a5870</srcmd5>
+    <version>1.7.11</version>
+    <time>1409302132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

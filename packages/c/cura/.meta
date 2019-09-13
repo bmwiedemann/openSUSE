@@ -1,0 +1,11 @@
+<package name="cura" project="openSUSE:Factory">
+  <title>3D printer control software</title>
+  <description>Cura is a project which aims to be an single software solution for 3D printing.
+While it is developed to be used with the Ultimaker 3D printer, it can be used
+with other RepRap based designs.
+
+Cura helps you to setup an Ultimaker, shows your 3D model, allows for scaling /
+positioning, can slice the model to G-Code, with sane editable configuration
+settings and send this G-Code to the 3D printer for printing.</description>
+  <devel project="science" package="cura"/>
+</package>

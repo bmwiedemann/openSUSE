@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>6454bfaf9132fbdd3b564334b9b9ea1a</srcmd5>
+    <version>2.0.05</version>
+    <time>1243376828</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>6454bfaf9132fbdd3b564334b9b9ea1a</srcmd5>
+    <version>2.0.05</version>
+    <time>1243376828</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>0623a03b52c71a1df79eb0dddcd6dc68</srcmd5>
+    <version>2.0.05</version>
+    <time>1268924123</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="8">
+    <srcmd5>0623a03b52c71a1df79eb0dddcd6dc68</srcmd5>
+    <version>2.0.05</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>0623a03b52c71a1df79eb0dddcd6dc68</srcmd5>
+    <version>2.0.05</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="12">
+    <srcmd5>0623a03b52c71a1df79eb0dddcd6dc68</srcmd5>
+    <version>2.0.05</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="14">
+    <srcmd5>0623a03b52c71a1df79eb0dddcd6dc68</srcmd5>
+    <version>2.0.05</version>
+    <time>1319182007</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="15">
+    <srcmd5>94a2bf5e576845c52e56e296de476865</srcmd5>
+    <version>2.0.05</version>
+    <time>1323192030</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="17">
+    <srcmd5>94a2bf5e576845c52e56e296de476865</srcmd5>
+    <version>2.0.05</version>
+    <time>1340183483</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>fd13e7b9835bf75eee54274456c75b6f</srcmd5>
+    <version>2.0.05</version>
+    <time>1352407806</time>
+    <user>namtrac</user>
+    <comment>Hallo,
+on openSUSE 12.1 the jhindexer, jhsearch shell scripts do not work, because the jar file name is javahelp2 instead of javahelp. So they fail to find
+the jar file. (forwarded request 140120 from fschuett)</comment>
+    <requestid>140651</requestid>
+  </revision>
+  <revision rev="11" vrev="20">
+    <srcmd5>fd13e7b9835bf75eee54274456c75b6f</srcmd5>
+    <version>2.0.05</version>
+    <time>1359109114</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="21">
+    <srcmd5>2b5695bc22a59c90848003de6ea1ad14</srcmd5>
+    <version>2.0.05</version>
+    <time>1378899526</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198282</requestid>
+  </revision>
+  <revision rev="13" vrev="23">
+    <srcmd5>2b5695bc22a59c90848003de6ea1ad14</srcmd5>
+    <version>2.0.05</version>
+    <time>1379662706</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="24">
+    <srcmd5>07e0c7a9d7091161ed14d9db00e4d8e4</srcmd5>
+    <version>2.0.05</version>
+    <time>1405522191</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240347</requestid>
+  </revision>
+  <revision rev="15" vrev="26">
+    <srcmd5>07e0c7a9d7091161ed14d9db00e4d8e4</srcmd5>
+    <version>2.0.05</version>
+    <time>1409301273</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="27">
+    <srcmd5>57703432af5fe944bcf484fdd61d9923</srcmd5>
+    <version>2.0.05</version>
+    <time>1427983016</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292623</requestid>
+  </revision>
+  <revision rev="17" vrev="28">
+    <srcmd5>d05580289da87382df44e6bdbfa1926a</srcmd5>
+    <version>2.0.05</version>
+    <time>1495442844</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496676</requestid>
+  </revision>
+  <revision rev="18" vrev="29">
+    <srcmd5>a31ef965571a803fbaeb29d000b28a34</srcmd5>
+    <version>2.0.05</version>
+    <time>1505920182</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527124</requestid>
+  </revision>
+  <revision rev="19" vrev="30">
+    <srcmd5>5c648612a25d24ebb74b84614788e64c</srcmd5>
+    <version>2.0.05</version>
+    <time>1555488507</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against upcoming geronimo-specs</comment>
+    <requestid>694543</requestid>
+  </revision>
+</revisionlist>

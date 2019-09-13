@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ed8778736af4acc18924ad86437c212</srcmd5>
+    <version>1.2.4</version>
+    <time>1551883809</time>
+    <user>dimstar_suse</user>
+    <comment>submit the already accepted fix</comment>
+    <requestid>681901</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0b2222b391c41991dcfc313b8261a3b</srcmd5>
+    <version>1.2.6</version>
+    <time>1563456030</time>
+    <user>dimstar_suse</user>
+    <comment>Version 1.2.6 - desktop file corrected</comment>
+    <requestid>715803</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8f2561e486bdaf74b8dc682fed2716ee</srcmd5>
+    <version>1.2.6.1</version>
+    <time>1563701679</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717092</requestid>
+  </revision>
+</revisionlist>

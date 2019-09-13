@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd1c6de7e0bfec9c2b3896e7a2d7cbcc</srcmd5>
+    <version>1.1.2.0</version>
+    <time>1503593477</time>
+    <user>dimstar_suse</user>
+    <comment>Add usnic_tools package to Factory (already present in Leap 42.3, SLES)</comment>
+    <requestid>516135</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d518802062bdf80dc1119848d8e6d4ee</srcmd5>
+    <version>1.1.2.0</version>
+    <time>1504103012</time>
+    <user>dimstar_suse</user>
+    <comment>- Make description neutral.</comment>
+    <requestid>519490</requestid>
+  </revision>
+</revisionlist>

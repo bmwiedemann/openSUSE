@@ -1,0 +1,13 @@
+<package name="hxtools" project="openSUSE:Factory">
+  <title>Collection of day-to-day tools (binaries)</title>
+  <description>A collection of various tools. Some of the important ones:
+
+* declone(1) — break hardlinks
+* fd0ssh(1) — pipe for password-over-stdin support to ssh
+* newns(8) — clone current filesystem namespace and start a process
+* ofl(1) — open file lister (replaces fuser and lsof -m)
+* tailhex(1) — hex dumper with tail-following support
+* utmp_register(1) — make entries in the utmp/wtmp database
+* vfontas(1) — VGA font file assembler</description>
+  <devel project="utilities" package="hxtools"/>
+</package>

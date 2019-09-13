@@ -1,0 +1,208 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>871e8ff522acef8b65f15ef0fcc9189b</srcmd5>
+    <version>1.4.0</version>
+    <time>1436331537</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>313233</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>641fb5c9489d093ebd0b6748e52e7723</srcmd5>
+    <version>1.6.0</version>
+    <time>1440658485</time>
+    <user>coolo</user>
+    <comment>- Unify spec file #2
+- Add -doc package
+
+- Unify spec file. Use fedora compatible files macros
+
+- update to 1.6.0:
+  * Revert &quot;jsonutils: replace strtime(
+  * jsonutils: encode dict keys
+  * jsonutils: simplify simple value handling
+  * jsonutils: replace strtime() usage with isoformat()
+  * Advertise support for Python3.4 / Remove support for Python 3.3
+  * Do not sync run_cross_tests.sh
+  * Updated from global requirements
+  * Remove run_cross_tests.sh
+  * Fixes wrong folder for listing tests
+  * Expose base msgpack exceptions so users don't need to import
+  * Uncap library requirements for liberty
+  * More docstring cleanups/tweaks
+  * Add docstring(s) to handler registry(s)
+  * Add pypi download + version badges
+  * Cleanup README.rst and setup.cfg
+  * Make the msgpackutils handlers more extendable
+  * Updated from global requirements
+- Adjust Requires according to requirements.txt</comment>
+    <requestid>320696</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bfd276220058da5aad660764d3602cd8</srcmd5>
+    <version>1.9.0</version>
+    <time>1446208941</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.0:
+  * Updated from global requirements
+  * Drop stale test - test_jsonutils
+  * Stop using deprecated oslo_utils.timeutils.strtime
+  * Add tox target to find missing requirements
+  * Remove oslo namespace package
+  * Do not use oslo namespace for oslo.i18n lib
+  * Switch badges from 'pypip.in' to 'shields.io'
+- Adjust Requires according to requirements.txt
+
+- fix spelling of python-Sphinx BuildRequires</comment>
+    <requestid>337152</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9a47d75e9d6a27503ee1dfe8fd2be004</srcmd5>
+    <version>1.11.0</version>
+    <time>1450695832</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.0
+  * Fix coverage configuration and execution
+- update to 1.10.0:
+  * Add utilities for base64
+  * Also check for the existence of `items` in to_primitive()
+  * Move 'history' -&gt; release notes section
+  * Add jsonutils.dump_as_bytes() function for py3
+  * Change ignore-errors to ignore_errors</comment>
+    <requestid>346980</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a500cb5ffad969339bce63a6380afe67</srcmd5>
+    <version>2.4.0</version>
+    <time>1463652871</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.0:
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Remove fallback to simplejson in jsonutils
+  * Remove iso8601 dependency
+  * Updated from global requirements
+  * Updated from global requirements
+  * Trival: Remove 'MANIFEST.in'
+  * msgpackutils: drop Python 2.6 support
+  * Updated from global requirements
+  * Updated from global requirements
+  * Remove python 2.6 classifier
+  * Fix bug track URL
+  * Remove python 2.6 and cleanup tox.ini
+  * Updated from global requirements
+- Switch to .spec from rpm-packaging upstream project</comment>
+    <requestid>393973</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c2cba51cc6521728f5cf64adaad0dacc</srcmd5>
+    <version>2.13.0</version>
+    <time>1475242182</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425277</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6708dbd6215a69f155082a40f717ee57</srcmd5>
+    <version>2.16.0</version>
+    <time>1487680940</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.16.0:
+  - modify the home-page info with the developer documentation
+  - Updated from global requirements
+  - Add a title to the API Documentation page
+  - Add Constraints support
+  - Show team and repo badges on README
+  - Replace six.iteritems() with .items()
+  - Prefer raising the python2.x type error for b64 decode errors
+  - Replaces uuid.uuid4 with uuidutils.generate_uuid()
+  - Add reno for release notes management
+  - Don't raise TypeError for invalid b64
+
+- switch to stable/newton tarball in _service</comment>
+    <requestid>456691</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0957ce01d0a84ff586568c74b931e932</srcmd5>
+    <version>2.20.0</version>
+    <time>1503927094</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.20.0
+  - rearrange existing documentation to fit the new standard layout
+  - Remove references to Python 3.4
+  - Revert &quot;Explicitly raise ValueError in to_primitive&quot;
+  - Don't iterate through addresses in netaddr.IPNetwork
+  - Update URLs in documents according to document migration
+  - [Fix gate]Update test requirement
+  - switch from oslosphinx to openstackdocstheme
+  - Update reno for stable/ocata
+  - Explicitly raise ValueError in to_primitive
+  - Updated from global requirements
+  - Use Sphinx 1.5 warning-is-error</comment>
+    <requestid>514999</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0e1eb5aa7fe67be91a6ade9c38a03a18</srcmd5>
+    <version>2.21.1</version>
+    <time>1516222605</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.21.1
+  - Update reno for stable/pike
+  - warn developers when can't convert value into primitive
+  - Updated from global requirements
+  - jsonutils.to_primitive(): add fallback parameter</comment>
+    <requestid>565777</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>65d1d8585a28c083d47872e89af95809</srcmd5>
+    <version>2.24.0</version>
+    <time>1521498983</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template
+
+- update to version 2.24.0
+  - When serializing an exception return its 'repr'
+  - Remove -U from pip install
+  - Remove setting of version/release from releasenotes
+  - Update .gitreview for stable/queens
+  - Avoid tox_install.sh for constraints support
+  - Add bandit to pep8 job
+  - Updated from global requirements
+  - msgpack-python has been renamed to msgpack
+
+- update to version 2.21.1 (bsc#1078607)</comment>
+    <requestid>583348</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a97b67f415822eee5baa1665aa0984db</srcmd5>
+    <version>2.27.0</version>
+    <time>1536327548</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633108</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dcf2841f4d6b92ba86905edad8dc407e</srcmd5>
+    <version>2.28.2</version>
+    <time>1556916161</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.28.2
+  - Update mailinglist from dev to discuss
+  - Clean up .gitignore references to personal tools
+  - Switch to stestr
+  - Fix README
+  - Update hacking version
+  - Update reno for stable/rocky
+  - Add release notes link to README
+  - Use template for lower-constraints
+  - Update the home-page to latest
+  - add lib-forward-testing-python3 test job
+  - add python 3.6 unit test job
+  - py37: deal with Exception repr changes
+  - add python 3.7 unit test job
+  - import zuul job settings from project-config</comment>
+    <requestid>692865</requestid>
+  </revision>
+</revisionlist>

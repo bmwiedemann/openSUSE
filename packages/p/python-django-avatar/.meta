@@ -1,0 +1,6 @@
+<package name="python-django-avatar" project="openSUSE:Factory">
+  <title></title>
+  <description>Django-avatar is a reusable application for handling user avatars. It has the ability to default to Gravatar if no avatar is found for a certain user. Django-avatar automatically generates thumbnails and stores them to your default file storage backend for retrieval later.</description>
+  <devel project="devel:languages:python:django" package="python-django-avatar"/>
+  <url>http://github.com/ericflo/django-avatar</url>
+</package>

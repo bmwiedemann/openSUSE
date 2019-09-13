@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4964395450c918660ac80b4bf3896cea</srcmd5>
+    <version>3.2.2</version>
+    <time>1416048109</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>261402</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1e50dc3fdf959b76c35ddb2b8b92864f</srcmd5>
+    <version>3.6.5</version>
+    <time>1417438855</time>
+    <user>dimstar_suse</user>
+    <comment>New version, fixed dependencies</comment>
+    <requestid>263369</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>71a48d3aa6023671ebfe19561060cef0</srcmd5>
+    <version>3.7.0</version>
+    <time>1438421842</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.0
+  * Fixing package detection in apt/dpkg distros
+  * Fix xmonad detection
+  * Add detection for Sabayon, Haiku, Logos and Chapeau
+  * Add ChromeOS logo (without distro detection)
+  * Add an option to supply custom ASCII art
+  * Combine GTK 2/3 themes if they are the same
+  * Reimplement '-d' (allows for setting what information is 
+    displayed on the command line)</comment>
+    <requestid>319069</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1cb2606af7ee81810dcc5bc075ccf290</srcmd5>
+    <version>3.7.0</version>
+    <time>1468360307</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406870</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>136d2281f1d817e86766a3c4766cecaa</srcmd5>
+    <version>3.7.0</version>
+    <time>1468999093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies
+- Small spec file cleanup</comment>
+    <requestid>409122</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d1ffd5109944572070419019a0c2b24b</srcmd5>
+    <version>3.7.0+git.20160826</version>
+    <time>1472478190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.0+git.20160826 (boo#995916):
+  * silence gsettings if schema wasn't found
+  * handle s390 processor IDs and print the marketing name (close #359)
+  * New Manjaro logo (closes #373)
+  * manpage: MSYS -&gt; MSYS2
+  * rename MSYS to MSYS2
+  * Add new GNU/Linux distro ROSA
+  * corrected screenfetch.1 from distro ROSA
+  * Update CHANGELOG
+  * identify DE on Windows &gt;= 8 as &quot;Mordern UI/Metro&quot;
+  * implement explaination for Crux Linux
+  * correct detection of SLES
+- Add _service and use git snapshot as stable release is outdated</comment>
+    <requestid>423383</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bf995476880f7a896df203f7062b0dde</srcmd5>
+    <version>3.7.0+git.20161002</version>
+    <time>1476109487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.0+git.20161002:</comment>
+    <requestid>433989</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ef670521714995c64b292eb2e5296e63</srcmd5>
+    <version>3.7.0+git.20170127</version>
+    <time>1486391053</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>454827</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>66cdb667586e712033fb06d6f8e28fb7</srcmd5>
+    <version>3.8.0</version>
+    <time>1494442428</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to stable release 3.8.0</comment>
+    <requestid>494228</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4e2d4c99cf2d1800f058994d5662ba7a</srcmd5>
+    <version>3.8.0</version>
+    <time>1511817423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545443</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e56c8b2b1354c095165cedfab83eda52</srcmd5>
+    <version>3.8.0</version>
+    <time>1534322099</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix shebang
+
+- Recommend lsb-release as it is needed for correct detection of
+  distribution (boo#1103527)</comment>
+    <requestid>628881</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>ca05d9c2522149c7c036a4ba1c5846d4</srcmd5>
+    <version>3.8.0</version>
+    <time>1560971625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710844</requestid>
+  </revision>
+</revisionlist>

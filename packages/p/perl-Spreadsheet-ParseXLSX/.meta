@@ -1,0 +1,12 @@
+<package name="perl-Spreadsheet-ParseXLSX" project="openSUSE:Factory">
+  <title>Parse Xlsx Files</title>
+  <description>This module is an adaptor for Spreadsheet::ParseExcel that reads XLSX
+files. For documentation about the various data that you can retrieve from
+these classes, please see Spreadsheet::ParseExcel,
+Spreadsheet::ParseExcel::Workbook, Spreadsheet::ParseExcel::Worksheet, and
+Spreadsheet::ParseExcel::Cell.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Spreadsheet-ParseXLSX"/>
+  <url>http://search.cpan.org/dist/Spreadsheet-ParseXLSX/</url>
+</package>

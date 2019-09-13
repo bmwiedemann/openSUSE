@@ -1,0 +1,11 @@
+<package name="fIcy" project="openSUSE:Factory">
+  <title>Icecast/Shoutcast Stream Grabber</title>
+  <description>fIcy is a command line icecast/shoutcast stream grabber. Its goal is to cleanly
+and automatically rip a stream into user-customizable files. It will work with
+any ICY-compatible stream, allowing you to either to save the stream to disk,
+pipe the output to a media player, or both.
+
+</description>
+  <devel project="multimedia:apps" package="fIcy"/>
+  <url>https://www.thregr.org/~wavexx/software/fIcy</url>
+</package>

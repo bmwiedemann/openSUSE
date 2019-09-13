@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e252a68d7284f8ea7bd39925dfccf37</srcmd5>
+    <version>1.31</version>
+    <time>1408021076</time>
+    <user>lnussel</user>
+    <comment>lease add evtest to factory. Together with linuxconsoletools it replaces input-utils.</comment>
+    <requestid>244249</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1e252a68d7284f8ea7bd39925dfccf37</srcmd5>
+    <version>1.31</version>
+    <time>1409300847</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7348fbb020cf7f99106f6ceea8a16a43</srcmd5>
+    <version>1.32</version>
+    <time>1421232293</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280881</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7287187cd02f4a8a3eaaa897d97e43ba</srcmd5>
+    <version>1.33</version>
+    <time>1440135647</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323440</requestid>
+  </revision>
+</revisionlist>

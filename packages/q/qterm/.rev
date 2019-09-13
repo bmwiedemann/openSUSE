@@ -1,0 +1,213 @@
+<revisionlist>
+  <revision rev="1" vrev="16">
+    <srcmd5>9a66cfc3c1fb17d3301ad3c7aaaee0cb</srcmd5>
+    <version>0.4.0pre3</version>
+    <time>1168904090</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="57">
+    <srcmd5>62cf84d445ab5e373e319f52ba25206f</srcmd5>
+    <version>0.4.0pre3</version>
+    <time>1173919737</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="83">
+    <srcmd5>f9e5a180ef4387cd93adbd595d0a409e</srcmd5>
+    <version>0.4.0pre3</version>
+    <time>1181254810</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="88">
+    <srcmd5>9653014fadbd16c78d3a56b6119063f8</srcmd5>
+    <version>0.4.0pre3</version>
+    <time>1182458987</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="233">
+    <srcmd5>9653014fadbd16c78d3a56b6119063f8</srcmd5>
+    <version>0.4.0pre3</version>
+    <time>1182458987</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a4e0d7616f3cd25719514d5cfcd74eb0</srcmd5>
+    <version>0.5.1</version>
+    <time>1226940898</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f3df58f9b2c32218567cdb026e646e55</srcmd5>
+    <version>0.5.1</version>
+    <time>1238112732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>fd7d8e5977841ae7ec30dfdc7c0dc0a4</srcmd5>
+    <version>0.5.1</version>
+    <time>1245467120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>43ae777f39941788ce5049547d35dcb1</srcmd5>
+    <version>0.5.1</version>
+    <time>1251748750</time>
+    <user>autobuild</user>
+    <comment>Copy from home:coolo:branches:openSUSE:Factory/qterm based on submit request 19294 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>43ae777f39941788ce5049547d35dcb1</srcmd5>
+    <version>0.5.1</version>
+    <time>1251748750</time>
+    <user>autobuild</user>
+    <comment>Copy from home:coolo:branches:openSUSE:Factory/qterm based on submit request 19294 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>5beb1d67ea1914bbd5a26ae623c95660</srcmd5>
+    <version>0.5.1</version>
+    <time>1268925941</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>5beb1d67ea1914bbd5a26ae623c95660</srcmd5>
+    <version>0.5.1</version>
+    <time>1278667386</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>5beb1d67ea1914bbd5a26ae623c95660</srcmd5>
+    <version>0.5.1</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>5beb1d67ea1914bbd5a26ae623c95660</srcmd5>
+    <version>0.5.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>427e7bee81708c0dce7e113fed0fa1aa</srcmd5>
+    <version>0.5.12</version>
+    <time>1316448125</time>
+    <user>lrupp</user>
+    <comment>upgrade to 0.5.12 (forwarded request 82303 from BinLi)</comment>
+    <requestid>82304</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>427e7bee81708c0dce7e113fed0fa1aa</srcmd5>
+    <version>0.5.12</version>
+    <time>1319182419</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>27b7e17a8148cd86f7262b4e4522829a</srcmd5>
+    <version>0.5.12</version>
+    <time>1323194344</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>d647c00a57b95f8a0ebb02a83425015a</srcmd5>
+    <version>0.5.12</version>
+    <time>1332501006</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7. (forwarded request 110583 from a_jaeger)</comment>
+    <requestid>110690</requestid>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>d647c00a57b95f8a0ebb02a83425015a</srcmd5>
+    <version>0.5.12</version>
+    <time>1340184132</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>fc447c1297236c502114c2c981d82e21</srcmd5>
+    <version>0.5.12</version>
+    <time>1356082423</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146215</requestid>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>fc447c1297236c502114c2c981d82e21</srcmd5>
+    <version>0.5.12</version>
+    <time>1359110266</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>fc447c1297236c502114c2c981d82e21</srcmd5>
+    <version>0.5.12</version>
+    <time>1379664422</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>fc447c1297236c502114c2c981d82e21</srcmd5>
+    <version>0.5.12</version>
+    <time>1409303148</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>686352ff20c866ba4bcb0772b75cc3d6</srcmd5>
+    <version>0.5.12</version>
+    <time>1441726794</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329081</requestid>
+  </revision>
+  <revision rev="25" vrev="16">
+    <srcmd5>2743b64f8882b0770769e61a5a3862d6</srcmd5>
+    <version>0.5.12</version>
+    <time>1467205815</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404461</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fad2671c445731f798a9a15b7fe9f23c</srcmd5>
+    <version>0.7.2</version>
+    <time>1513941494</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.2
+- move to QT5 libraries
+- drop patches: 
+    qterm-0.5.12-cmake-2.6.patch
+    qterm-0.5.12-gcc-4.7.patch
+    qterm-0.5.12-gcc6.patch (forwarded request 548442 from mimi_vx)</comment>
+    <requestid>548453</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>365682e07e66c3c9d2a6ac344d0fe1f4</srcmd5>
+    <version>0.7.2</version>
+    <time>1529501542</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch: qterm-fix-build-error.patch
+  * Fix build error.
+</comment>
+    <requestid>617711</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0305945993bb057a94ee362f72fe4ac1</srcmd5>
+    <version>0.7.3</version>
+    <time>1539758370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641961</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>a989ffb7a322ac9146025c4f8c8096e3</srcmd5>
+    <version>0.7.3</version>
+    <time>1546946901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663028</requestid>
+  </revision>
+</revisionlist>

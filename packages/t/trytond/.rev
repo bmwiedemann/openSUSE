@@ -1,0 +1,280 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f8463a8bc7b346315b84077daaba9157</srcmd5>
+    <version>3.8.8</version>
+    <time>1474623047</time>
+    <user>dimstar_suse</user>
+    <comment>part of GNU Health</comment>
+    <requestid>423956</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bd5064fdc4fa903ba89067e6989dc52b</srcmd5>
+    <version>3.8.8</version>
+    <time>1475359785</time>
+    <user>dimstar_suse</user>
+    <comment>update of documentation and conf file</comment>
+    <requestid>432162</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7de799073bcff043944838e5d9cb9921</srcmd5>
+    <version>3.8.8</version>
+    <time>1476997781</time>
+    <user>dimstar_suse</user>
+    <comment>Documentation enhances</comment>
+    <requestid>436213</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>46af6e500d23240e1c1978fb9602ce32</srcmd5>
+    <version>3.8.9</version>
+    <time>1484041430</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>447389</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>743a58ea05a9249af0e40145e8434f55</srcmd5>
+    <version>3.8.9</version>
+    <time>1487681364</time>
+    <user>dimstar_suse</user>
+    <comment>update to GNU Health</comment>
+    <requestid>458684</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>272cf8072ed3c2c0a0f338ddd7821e1e</srcmd5>
+    <version>3.8.10</version>
+    <time>1489653750</time>
+    <user>dimstar_suse</user>
+    <comment>bnc1026365</comment>
+    <requestid>479385</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f5c0b90086489ff776597304b4fd12c5</srcmd5>
+    <version>3.8.11</version>
+    <time>1491469369</time>
+    <user>maxlin_factory</user>
+    <comment>bnc1026365</comment>
+    <requestid>485004</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2aa5341d82b2d51beb556762a2194b90</srcmd5>
+    <version>3.8.12</version>
+    <time>1497274466</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>502812</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2e4d7cbfdf51d6bea7ac78d231d4a604</srcmd5>
+    <version>4.2.5</version>
+    <time>1499291779</time>
+    <user>dimstar_suse</user>
+    <comment>Final version GNU Health 3.2</comment>
+    <requestid>507741</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e293da7fd57d3d218eab637ec8c95440</srcmd5>
+    <version>4.2.5</version>
+    <time>1499754475</time>
+    <user>dimstar_suse</user>
+    <comment>bnc1047498</comment>
+    <requestid>509213</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3d4ebd8b894e77d130b768193dee0830</srcmd5>
+    <version>4.2.6</version>
+    <time>1503061560</time>
+    <user>dimstar_suse</user>
+    <comment>version 4.2.6 plus typos removed</comment>
+    <requestid>517418</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>71e0ed91e2a2508e158057d4ee3fc577</srcmd5>
+    <version>4.2.6</version>
+    <time>1505680733</time>
+    <user>dimstar_suse</user>
+    <comment>bnc1054032 bugfix release for GNU Health</comment>
+    <requestid>526511</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7912d727031c9e37cc5fef5227372079</srcmd5>
+    <version>4.2.7</version>
+    <time>1510837397</time>
+    <user>dimstar_suse</user>
+    <comment>bnc1065671</comment>
+    <requestid>542139</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bef3fece6f2c97e57d08744f49150374</srcmd5>
+    <version>4.2.8</version>
+    <time>1513245633</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>556566</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1322b2c4bf60470dfc0db34dd3fd6d84</srcmd5>
+    <version>4.2.9</version>
+    <time>1515876569</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>563932</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ff35ae9adbb14fba51f456ba6ad07cde</srcmd5>
+    <version>4.2.9</version>
+    <time>1519555619</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>579761</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>54ca00e471e3aa6e5034db0f1c6e3f26</srcmd5>
+    <version>4.2.10</version>
+    <time>1520778273</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>584727</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d0005b87bcf80c4376301a939873aba0</srcmd5>
+    <version>4.2.10</version>
+    <time>1525121702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602135</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ba44f9a0ea213dfb9fcc1e5a7e38e6ae</srcmd5>
+    <version>4.2.11</version>
+    <time>1526372037</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.2.11 - Bugfix Release
+</comment>
+    <requestid>606649</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e1487e76ce7c41ac72d5de7bb709a10b</srcmd5>
+    <version>4.2.12</version>
+    <time>1529500990</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616375</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1c84932c257a05c94f0fe04f552c1bd1</srcmd5>
+    <version>4.2.13</version>
+    <time>1532161509</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1096706 patch applied for postgres10 compatibility</comment>
+    <requestid>624101</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f8b5ee804c13e059b34dba7cfbc42628</srcmd5>
+    <version>4.2.14</version>
+    <time>1534100157</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>628730</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b41a88a766b83a60d81605d5df230db7</srcmd5>
+    <version>4.2.15</version>
+    <time>1535705213</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>632183</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>85a6dd6d9f0b4d4e3b154e400fd63a8a</srcmd5>
+    <version>4.2.15</version>
+    <time>1536575536</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634686</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c0f33f01feb1eada981e09ba28f7fb15</srcmd5>
+    <version>4.2.16</version>
+    <time>1544264471</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653620</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2c7d8968c2201d217200ae8ce4d72e69</srcmd5>
+    <version>4.2.17</version>
+    <time>1544632267</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1117105 bugfix Release of GNU Health</comment>
+    <requestid>657440</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>38cbdf634d892802afa6180eaa4d9562</srcmd5>
+    <version>4.6.11</version>
+    <time>1548064191</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.6.11 - cummulated changes:
+  * trytond_get_login.patch removed (series 4.2)
+  * get_login_trytond-46.patch added for 4.6 series
+  * trytond42_psql10.diff removed (not needed for 4.6)
+</comment>
+    <requestid>664379</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a1790e535d9f998b349143830d532048</srcmd5>
+    <version>4.6.12</version>
+    <time>1548704960</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>668943</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>0384fe757b1a8b0dae9ccfcf3a0c9959</srcmd5>
+    <version>4.6.12</version>
+    <time>1549140589</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670515</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d36d9f809d3c5e3e6141727d40925741</srcmd5>
+    <version>4.6.13</version>
+    <time>1551025088</time>
+    <user>coolo</user>
+    <comment>- Version 4.6.13 - Bugfix Release
+</comment>
+    <requestid>677896</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>49aacb966c39a19bcd64dfbb76cce703</srcmd5>
+    <version>4.6.15</version>
+    <time>1559375284</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705909</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2d74fcb36e9955ed5aef689364ffc9d0</srcmd5>
+    <version>4.6.17</version>
+    <time>1563362088</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1141369</comment>
+    <requestid>714987</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0a598a475cf8cfa1725d9ba07618e603</srcmd5>
+    <version>4.6.18</version>
+    <time>1565695025</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>722050</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a2dc9cd8359f7e384a0685aab756de69</srcmd5>
+    <version>4.6.19</version>
+    <time>1567010178</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>726597</requestid>
+  </revision>
+</revisionlist>

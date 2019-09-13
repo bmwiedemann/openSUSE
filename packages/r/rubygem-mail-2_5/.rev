@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>628f6dc6a84e35544196c44e2ff236f1</srcmd5>
+    <version>2.5.4</version>
+    <time>1414066812</time>
+    <user>coolo</user>
+    <comment>needed as long as rails 3.2 is in Factory ;(</comment>
+    <requestid>256823</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1083bb1b1929cf979146ec609a335661</srcmd5>
+    <version>2.5.5</version>
+    <time>1499677611</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505379</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,438 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>237f3664a84efebfc593934f7eb0a137</srcmd5>
+    <version>0.7.2</version>
+    <time>1336423862</time>
+    <user>coolo</user>
+    <comment>web mailer based on php</comment>
+    <requestid>116017</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ea33af37b833f5bc1baa7ca84e2bc95</srcmd5>
+    <version>0.7.2</version>
+    <time>1337005120</time>
+    <user>coolo</user>
+    <comment> (forwarded request 120797 from wrosenauer)</comment>
+    <requestid>120798</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>0ea33af37b833f5bc1baa7ca84e2bc95</srcmd5>
+    <version>0.7.2</version>
+    <time>1340184147</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>835eeb938db1412115e7477cf62cbbb1</srcmd5>
+    <version>0.8.1</version>
+    <time>1346180142</time>
+    <user>coolo</user>
+    <comment> (forwarded request 131825 from wrosenauer)</comment>
+    <requestid>131826</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5503e5a1d4dc2474fcf50d3c628af220</srcmd5>
+    <version>0.8.1</version>
+    <time>1348734534</time>
+    <user>coolo</user>
+    <comment>The installer looks for or expects php's exif extension, not sure if it's required or optional since it lists them all together in one group. This just add's that requirement to the spec. (forwarded request 136001 from vicidial)</comment>
+    <requestid>136122</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6226c517ae9d9718c119ee3c3d418d12</srcmd5>
+    <version>0.8.2</version>
+    <time>1351873886</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>139634</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e73bb24c8a394514ea71214e02380bd5</srcmd5>
+    <version>0.8.3</version>
+    <time>1352700356</time>
+    <user>coolo</user>
+    <comment>last submit broke roundcube, this fixes it; notice: I had to manually remove my browser cookies after update to 0.8.3 before I was able to login again :-( (forwarded request 140828 from wrosenauer)</comment>
+    <requestid>140829</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>02f57cffd05d66b70742c3eced93a042</srcmd5>
+    <version>0.8.4</version>
+    <time>1353413442</time>
+    <user>coolo</user>
+    <comment> (forwarded request 141991 from wrosenauer)</comment>
+    <requestid>141992</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>02f57cffd05d66b70742c3eced93a042</srcmd5>
+    <version>0.8.4</version>
+    <time>1359110293</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>05dbc63ced595546fdac3ea977aab27f</srcmd5>
+    <version>0.8.5</version>
+    <time>1359541175</time>
+    <user>coolo</user>
+    <comment>include at least one security relevant fix according to the changelog and is a leaf package, please consider for 12.3</comment>
+    <requestid>150360</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e5424a9e01f580ced23046b9656947a0</srcmd5>
+    <version>0.8.6</version>
+    <time>1364900098</time>
+    <user>coolo</user>
+    <comment> (forwarded request 161826 from wrosenauer)</comment>
+    <requestid>161827</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>911c8beb29bf14ab66f45a322b23920b</srcmd5>
+    <version>0.9.0</version>
+    <time>1367222087</time>
+    <user>coolo</user>
+    <comment>submitted wrong revision initially (forwarded request 173646 from wrosenauer)</comment>
+    <requestid>173647</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c708fece46b2683d497045ecc7a66b7b</srcmd5>
+    <version>0.9.1</version>
+    <time>1371153573</time>
+    <user>coolo</user>
+    <comment>0.9.1 update (forwarded request 178057 from wrosenauer)</comment>
+    <requestid>178058</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bdbac14732d7d6b75e21852456b4ce3a</srcmd5>
+    <version>0.9.3</version>
+    <time>1377856102</time>
+    <user>coolo</user>
+    <comment> (forwarded request 196745 from wrosenauer)</comment>
+    <requestid>196746</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>19eb1fd45b993352ef56b00a5085687b</srcmd5>
+    <version>0.9.4</version>
+    <time>1378713239</time>
+    <user>scarabeus_factory</user>
+    <comment> (forwarded request 197931 from wrosenauer)</comment>
+    <requestid>197932</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>19eb1fd45b993352ef56b00a5085687b</srcmd5>
+    <version>0.9.4</version>
+    <time>1379664462</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b54762f9934ce083e53bb24a5a4f59e0</srcmd5>
+    <version>0.9.5</version>
+    <time>1386569887</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>209344</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e5c0c5a33df93424a30d25b69552a161</srcmd5>
+    <version>0.9.5</version>
+    <time>1393705345</time>
+    <user>coolo</user>
+    <comment> (forwarded request 224324 from wrosenauer)</comment>
+    <requestid>224325</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>841bb607d2bcf8940a1192d3bffca4c4</srcmd5>
+    <version>0.9.5</version>
+    <time>1394392957</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>225165</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>adf87b0b6f795f045a5ad5bcd9b2babd</srcmd5>
+    <version>1.0.0</version>
+    <time>1397042156</time>
+    <user>coolo</user>
+    <comment>the new package was already branched on the way to 1.0 while there were updates to Factory. Is this changelog reordering an issue?</comment>
+    <requestid>229448</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>91e9571a8251dba2506289aac9700782</srcmd5>
+    <version>1.0.0</version>
+    <time>1397387992</time>
+    <user>coolo</user>
+    <comment>Remove possible 'leftover' SQL directory from document root, preventing upgrades from versions &gt; 0.9.5 [bnc#872790] (forwarded request 229665 from aeneas_jaissle)</comment>
+    <requestid>229680</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>526e0171b1f6cfa61e53ab4df39ccd56</srcmd5>
+    <version>1.0.1</version>
+    <time>1400006899</time>
+    <user>coolo</user>
+    <comment>New upstream release 1.0.1 (forwarded request 233500 from aeneas_jaissle)</comment>
+    <requestid>233501</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>e2cb3553d5c62fb6c00ae733a9372473</srcmd5>
+    <version>1.0.1</version>
+    <time>1404973009</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239262</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>354be882f71bfb3cc752feb45b9b7b1d</srcmd5>
+    <version>1.0.2</version>
+    <time>1405971608</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241683</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>354be882f71bfb3cc752feb45b9b7b1d</srcmd5>
+    <version>1.0.2</version>
+    <time>1409303195</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f79812a87eaacfc69dda6378c6066d69</srcmd5>
+    <version>1.0.3</version>
+    <time>1412098838</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253147</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>cf372c2c6230a6b755188f296624dbf7</srcmd5>
+    <version>1.0.3</version>
+    <time>1415664642</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260441</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6b50a554459e34ab715fa42de0b5f483</srcmd5>
+    <version>1.0.4</version>
+    <time>1419159897</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265864</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c2e34fcc6cad22afa443b5c5c22dece8</srcmd5>
+    <version>1.0.5</version>
+    <time>1422960007</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283682</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>af6272a5158a9e6d269351b7ca08f03e</srcmd5>
+    <version>1.1.0</version>
+    <time>1424430080</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>286678</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ccfd7632dcdce147f66579f0f7d52355</srcmd5>
+    <version>1.1.1</version>
+    <time>1427445681</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293221</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>522b51354e283eeaae74a62564fd0cf4</srcmd5>
+    <version>1.1.2</version>
+    <time>1433832583</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311198</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c3b57cf62ed7629edddb87e6644b6775</srcmd5>
+    <version>1.1.3</version>
+    <time>1442474468</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>331058</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>724557fff48cd071b6ccde6cc3c0b9bc</srcmd5>
+    <version>1.1.3</version>
+    <time>1446049825</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340971</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>115533d15d0a799ecf241b081c17a628</srcmd5>
+    <version>1.1.4</version>
+    <time>1451674133</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351474</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>561ce450d3617114dc31ef569137f101</srcmd5>
+    <version>1.1.4</version>
+    <time>1453019002</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353836</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>7e28eb4739bd59cc5e5115ae3949d77c</srcmd5>
+    <version>1.1.4</version>
+    <time>1455701101</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>359057</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>78122ca10ffefac3f6a744f40ea37df9</srcmd5>
+    <version>1.1.5</version>
+    <time>1462261058</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>393275</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>14598b1f4f1a55d94136ec6d57831657</srcmd5>
+    <version>1.2.0</version>
+    <time>1464204537</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397801</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a11aa19b6a4f536ff0a69863cd12b4db</srcmd5>
+    <version>1.2.1</version>
+    <time>1471009434</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418760</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>786f7dcfacd1224d4b14f145a564398c</srcmd5>
+    <version>1.2.2</version>
+    <time>1476109275</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433560</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1903ba1db35b7260b75aa80549a4c953</srcmd5>
+    <version>1.2.3</version>
+    <time>1480584516</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442695</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3169712087fe028fcdcfc6b330067d63</srcmd5>
+    <version>1.2.4</version>
+    <time>1490026181</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.2.4 [boo#1029035]</comment>
+    <requestid>480711</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>45c317833647123613846590acfba381</srcmd5>
+    <version>1.2.5</version>
+    <time>1494442241</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493417</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>42f79f71eaac963872f26f50ac7ecf14</srcmd5>
+    <version>1.2.5</version>
+    <time>1501311729</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512902</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6568891ba6ce7852e0ad0bb9078b3e96</srcmd5>
+    <version>1.2.6</version>
+    <time>1510760985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>527577</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>4e19b293b31605778ba0891458f21db8</srcmd5>
+    <version>1.2.7</version>
+    <time>1510960884</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>542627</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>79591b791ff57209876da957897b4dda</srcmd5>
+    <version>1.3.4</version>
+    <time>1517932197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573216</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>1cd6c5531080c901335322f31a1d4570</srcmd5>
+    <version>1.3.4</version>
+    <time>1519308092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578719</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>34fa5040a400fbec981cd341e7b67b9c</srcmd5>
+    <version>1.3.5</version>
+    <time>1522225903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591141</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>81aa8fea83b67b9c51c22d93866291ef</srcmd5>
+    <version>1.3.6</version>
+    <time>1523875746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596413</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>40caee4d2d99ba648a6a08bf42d4b7bc</srcmd5>
+    <version>1.3.7</version>
+    <time>1533732775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627819</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>9d6dcab565314620cbd0886be077b1db</srcmd5>
+    <version>1.3.8</version>
+    <time>1541454980</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>646191</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>22a02b19bca367850c4fdcd0cba9ce65</srcmd5>
+    <version>1.3.9</version>
+    <time>1554372515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691315</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>07340f653a91583a2b66725e7f80eead</srcmd5>
+    <version>1.3.10</version>
+    <time>1567680247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728267</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="869">
+    <srcmd5>212469ab6865668c7ed8515771fda12c</srcmd5>
+    <version>p17</version>
+    <time>1168904016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1001">
+    <srcmd5>212469ab6865668c7ed8515771fda12c</srcmd5>
+    <version>p17</version>
+    <time>1168904016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1002">
+    <srcmd5>1ea503c0a7b8a326cb55a5c36f66f637</srcmd5>
+    <version>p17</version>
+    <time>1224729891</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1004">
+    <srcmd5>1ea503c0a7b8a326cb55a5c36f66f637</srcmd5>
+    <version>p17</version>
+    <time>1224729891</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1005">
+    <srcmd5>5101de4798fa6d2a980fba9e5719494b</srcmd5>
+    <version>p17</version>
+    <time>1263223360</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/psutils based on submit request 29037 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="6" vrev="1006">
+    <srcmd5>9c5a4e75ecf230af67b9f88138c579b4</srcmd5>
+    <version>p17</version>
+    <time>1268925805</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="1008">
+    <srcmd5>9c5a4e75ecf230af67b9f88138c579b4</srcmd5>
+    <version>p17</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1009">
+    <srcmd5>9c5a4e75ecf230af67b9f88138c579b4</srcmd5>
+    <version>p17</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1012">
+    <srcmd5>9c5a4e75ecf230af67b9f88138c579b4</srcmd5>
+    <version>p17</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="1014">
+    <srcmd5>9c5a4e75ecf230af67b9f88138c579b4</srcmd5>
+    <version>p17</version>
+    <time>1319182373</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="1015">
+    <srcmd5>966491bd4d8f504881ad63ba0df7d518</srcmd5>
+    <version>p17</version>
+    <time>1323194022</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="1017">
+    <srcmd5>966491bd4d8f504881ad63ba0df7d518</srcmd5>
+    <version>p17</version>
+    <time>1340184022</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1019">
+    <srcmd5>966491bd4d8f504881ad63ba0df7d518</srcmd5>
+    <version>p17</version>
+    <time>1359109963</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1020">
+    <srcmd5>d88a1001ba09d3cc0bdc185b8157dfb9</srcmd5>
+    <version>p17</version>
+    <time>1365928637</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162852 from namtrac)</comment>
+    <requestid>162889</requestid>
+  </revision>
+  <revision rev="15" vrev="1022">
+    <srcmd5>d88a1001ba09d3cc0bdc185b8157dfb9</srcmd5>
+    <version>p17</version>
+    <time>1379664083</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1024">
+    <srcmd5>d88a1001ba09d3cc0bdc185b8157dfb9</srcmd5>
+    <version>p17</version>
+    <time>1409302763</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

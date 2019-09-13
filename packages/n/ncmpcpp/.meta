@@ -1,0 +1,11 @@
+<package name="ncmpcpp" project="openSUSE:Factory">
+  <title>Music Player Daemon Client</title>
+  <description>Ncmpcpp is almost exact clone of ncmpc but it contains some new features
+ncmpc doesn't have. It's been also rewritten from scratch in C++. Lack of
+some function (eg. tag editor) eventually pushed me to rewrite it as
+ncmpcpp and include these functions in it.
+
+</description>
+  <devel project="multimedia:apps" package="ncmpcpp"/>
+  <url>https://rybczak.net/ncmpcpp</url>
+</package>

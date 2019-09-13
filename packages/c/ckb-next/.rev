@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ab002887165035957af04e0606d0d285</srcmd5>
+    <version>0.3.2</version>
+    <time>1548064221</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim filler wording from description.
+- Update to version 0.3.2
+  Important news:
+  * This version fixes a major bug for the Scimitar Pro, causing
+    the daemon to not properly interface with the mouse. This
+    could require manually reflashing the mouse firmware if a
+    firmware update was performed with 0.3.1 or earlier.
+  * An updater has been created to more quickly push bugfixes to
+    users, especially for those on macOS.
+  * There is a new Space Invaders-like minigame that can be
+    played as an animation, thanks to @mvladimirovich.
+  Support for new devices:
+  * Strafe RGB MK.2; by accidental omission from the previous
+    release.
+  * K66
+  Important bugfixes:
+  * The Scimitar Pro now defaults to v2.xx endpoints
+  * The DPI LED on mice now changes in sniper mode
+  * The GUI will warn if uinput cannot be loaded on Linux
+  * The &quot;Save to Hardware&quot; button on the Scimitar and Glaive has
+    been greyed out due to a current lack of support
+  * Thanks to the efforts of @Kedstar99, the codebase compiles
+    with much fewer warnings
+  * Binding commands to wheels will now repeat properly
+  * QuaZip is no longer required for daemon-only builds
+  * KissFFT is now built as a static library
+  * Symbolic links are now created in /dev/input/by-id for evdev
+    users
+  * Fixed a regression for devices using the legacy protocol
+  Note for packagers:
+  * If ckb-next is updated through a package management system,
+    `-DDISABLE_UPDATER=1` should be passed to CMake
+  version 0.3.1
+  Support for new devices:
+  * K70 RGB MK.2
+  * K70 RGB MK.2 SE
+  New major features:
+  * The GUI now has a generate ckb-next-dev-detect report button
+  Important bugfixes:
+  * Rapidfire keyboards have a workaround on shutdown
+  * Bugfix for independent X/Y DPI
+  * The new Strafe NRGB has firmware updates now
+  * The GUI pops up a warning when trying to bind the Windows
+    key with Winlock enabled
+  * The GUI now has a DPI indicator
+  * The K68 NRGB winlock light now lights up
+  * The GUI handles SIGINT/SIGTERM cleanly, avoiding stalled
+    devices
+  * Strafe sidelights now save state on GUI start
+  * Original Strafe NRGB's sidelights now toggle correctly
+  * ckb-next-dev-detect is now installed to the system and added
+    to PATH
+  version 0.3.0
+  Support for new devices:
+  * K55 RGB
+  * K68 RGB
+  * K90 Legacy
+  * Katar RGB
+  * Polaris RGB
+  * ST100 RGB
+  New major features:
+  * Use URB Interrupts to read data from devices
+  * Profile Import/Export
+  * Keyboard Layout autodetection
+  * CMake build system
+  * Relocation of binaries
+  * No single global layout for all devices in the GUI
+  Important bugfixes:
+  * Deadlock on daemon exit
+  * Support for K95 Platinum profile switch key
+  * Keymap corruption on the GUI
+  * Pulseaudio GUI deadlock
+  * Use udev to detect the appropriate endpoint max packet size
+  * Ignore devices in BIOS mode
+  * Disable save to hardware for unsupported devices
+  * Keymap patches for K68
+  * Workaround for linux kernel out-of-bounds write
+  * Memory leaks on firmware update
+  version 0.2.9
+  Important changes:
+  * Significantly lower CPU usage on idle
+  * Add support for K95 Platinum
+  * Add support for K68
+  * Add support for (new) Strafe non-RGB
+  * Add support for Glaive
+  * Add support for Harpoon
+  * Add support for Corsair firmware v3
+  * Add support for pt\_br layout
+  * Add support for Japanese layout
+  * Add macro delays to the GUI
+  * New FIRMWARE file structure
+  * GUI warning when daemon is not running
+  * udev rule to remove joystick tag
+  * Dynamic keymap patching
+  * Require Qt &gt;=5.2
+  * Numerous small fixes and improvements
+  version 0.2.8
+  * `ckb` is now `ckb-next`, __but the binaries will be renamed
+    in `v0.2.9`__
+  * Numerous PRs from `ckb` merged
+    [\#4](https://github.com/mattanger/ckb-next/issues/4)
+  * SIGSEGV when deleting copied profile is fixed
+    [\#38](https://github.com/mattanger/ckb-next/issues/38)
+  * `make debug` target on Linux is fixed
+    [\#79](https://github.com/mattanger/ckb-next/issues/79)
+  * Heat map animation issues fixed
+    [\#30](https://github.com/mattanger/ckb-next/issues/30)
+  * Compilation of the music visualizer fixed
+    [\#21](https://github.com/mattanger/ckb-next/issues/21)
+  * Hardware profile loading error on firmware 2.05 fixed
+    [\#24](https://github.com/mattanger/ckb-next/pull/24)
+  * Project's own firmware table created, signed and populated
+    with new devices
+    [\#60](https://github.com/mattanger/ckb-next/pull/60)
+  * Arch Linux and Fedora/CentOS packages added
+    [\#80](https://github.com/mattanger/ckb-next/pull/80)
+    [\#5](https://github.com/mattanger/ckb-next/issues/5)
+    [\#41](https://github.com/mattanger/ckb-next/pull/41)
+- Dropped ckb-external-quazip.patch (no longer necessary)
+- Refreshed ckb-use-var-run.patch as ckb-next-use-run.patch
+- Added ckb-next-systemd.patch, ckb-next-no-cmake-modules.patch
+  and ckb-next-udev.patch
+- Update to version 0.2.6
+- Use external quazip only when available
+- Replaced ckb-fix-desktop-file.patch with %suse_update_desktop_file
+- Replaced ckb-daemon-path.patch and ckb-animations-path.patch
+  with macros for consistency.
+- Add hicoler folder, too
+- Fix icon folder
+- Initial package
+  * Use /var/run instead of /dev/input for communication with the
+    daemon.
+  * move the daemon and the animations into the libexec folder
+</comment>
+    <requestid>664454</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5a3605118cc6daafd9c9270f2ed2417c</srcmd5>
+    <version>0.4.0</version>
+    <time>1553611233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682988</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fdacd6a9c280afe8621670fdf8910493</srcmd5>
+    <version>0.4.0</version>
+    <time>1559837732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706242</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c68e61d3689fa40f8e8515b99b32221a</srcmd5>
+    <version>0.4.1</version>
+    <time>1567010167</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726584</requestid>
+  </revision>
+</revisionlist>

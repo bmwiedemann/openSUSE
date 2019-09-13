@@ -1,0 +1,302 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22fac7e2175ae637c8741c4f40e1e57d</srcmd5>
+    <version>2.0.5</version>
+    <time>1333355493</time>
+    <user>coolo</user>
+    <comment>ciarran fixed the license</comment>
+    <requestid>111406</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ebf68bddc75ed865b64c34a1abca8f87</srcmd5>
+    <version>2.3.1</version>
+    <time>1334692934</time>
+    <user>coolo</user>
+    <comment> (forwarded request 114094 from coolo)</comment>
+    <requestid>114114</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ebf68bddc75ed865b64c34a1abca8f87</srcmd5>
+    <version>2.3.1</version>
+    <time>1340184175</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b119d4f17541d5c2e8533e2298289486</srcmd5>
+    <version>2.3.1</version>
+    <time>1342963406</time>
+    <user>coolo</user>
+    <comment>- fix gem requires</comment>
+    <requestid>128601</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bfdb41c32f1a4afd8d8ba4463bcfa065</srcmd5>
+    <version>3.0.1</version>
+    <time>1352717028</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140815</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>beed23f83d15fbea8407f61b37d8aa81</srcmd5>
+    <version>3.0.4</version>
+    <time>1354712875</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>144243</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2f1c18e87ec43b5dbe96fb071b14f94e</srcmd5>
+    <version>3.1.0</version>
+    <time>1355733492</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145454</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f21cca3e8fcaed999e507eddf5ba11cc</srcmd5>
+    <version>3.1.1</version>
+    <time>1357038243</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146614</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>f21cca3e8fcaed999e507eddf5ba11cc</srcmd5>
+    <version>3.1.1</version>
+    <time>1359110344</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>38dae6ee1f0bf392a643178cd5c134a0</srcmd5>
+    <version>3.1.2</version>
+    <time>1364473585</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161287</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>787dcce713f1cd507b91cc260fcb4ceb</srcmd5>
+    <version>3.1.3</version>
+    <time>1367222341</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>173596</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>95dc6dd9fa2539c78c92706722972b43</srcmd5>
+    <version>3.2.2</version>
+    <time>1375641752</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>185550</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>95dc6dd9fa2539c78c92706722972b43</srcmd5>
+    <version>3.2.2</version>
+    <time>1379664570</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>379cfadaae1e3bb37b967329f1a1f085</srcmd5>
+    <version>3.4.0</version>
+    <time>1392238318</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221437</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1901dccf1b0dd903da8914755773ae6d</srcmd5>
+    <version>3.4.1</version>
+    <time>1393310498</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223649</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>86a9165bc2c914f4d4640c5b84200090</srcmd5>
+    <version>3.5.0</version>
+    <time>1397042239</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>229250</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d1843bb7d10cdee7eed5b7fd74a9423b</srcmd5>
+    <version>3.6.1</version>
+    <time>1400734664</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234970</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d1843bb7d10cdee7eed5b7fd74a9423b</srcmd5>
+    <version>3.6.1</version>
+    <time>1409303279</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>fced52315bc0a6f5256646ea2a227ded</srcmd5>
+    <version>3.6.1</version>
+    <time>1410514109</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248368</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>e04337ccfce03c21a873f1eabbdf37b5</srcmd5>
+    <version>3.6.1</version>
+    <time>1413263512</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255467</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>31212f4c94229eed6015e49815c1f790</srcmd5>
+    <version>3.6.3</version>
+    <time>1413616170</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>257353</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>615d52f91a5c68cb09897b7379d2aeaa</srcmd5>
+    <version>3.6.4</version>
+    <time>1423669599</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>285642</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>acdde827579d6091e0ebebead430e062</srcmd5>
+    <version>3.6.5</version>
+    <time>1427274034</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>292367</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ec88ab791d7b7adb33b85aa397bc259f</srcmd5>
+    <version>3.6.6</version>
+    <time>1429346463</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297755</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fd40ee0bc4876d11c7cfd4eb6d58d610</srcmd5>
+    <version>3.7.0</version>
+    <time>1434133836</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311529</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3b2836b0495228247901653e33b164c9</srcmd5>
+    <version>3.7.1</version>
+    <time>1443584935</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>321080</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8b64b89ecbc31ef39439831a95e36793</srcmd5>
+    <version>3.7.2</version>
+    <time>1446238379</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>341677</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e0818f466d5f4b67f98006f4007797f3</srcmd5>
+    <version>3.7.3</version>
+    <time>1456821655</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355650</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d5ad1d830c00b99d03cc2c17e4420460</srcmd5>
+    <version>3.8.1</version>
+    <time>1457353683</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>366195</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2f0816bb43545fce3564b8cbb61066bb</srcmd5>
+    <version>3.8.2</version>
+    <time>1463124229</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394299</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>20abe4b2e6f9f633cb05ba4492d22d28</srcmd5>
+    <version>3.8.3</version>
+    <time>1476780023</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434405</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d9f57c0abef3a6787701cd19825500ae</srcmd5>
+    <version>3.8.4</version>
+    <time>1484660243</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450512</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4f8a3779fecd598e3ff6aadb5e503d70</srcmd5>
+    <version>3.9.0</version>
+    <time>1492714703</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489040</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>78d3085e4065378ed3a1870934f37770</srcmd5>
+    <version>3.10.1</version>
+    <time>1503308220</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515060</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>aec1e78dca2aef116126deae5c2398eb</srcmd5>
+    <version>3.11.0</version>
+    <time>1518813829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577044</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a7d12be1828fd59e41944f38f13693a1</srcmd5>
+    <version>3.12.0</version>
+    <time>1548062739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656373</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f58b460ce35bf7c14a3bd2c52065a59e</srcmd5>
+    <version>3.13.0</version>
+    <time>1553699856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685122</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>9e3ba2b8e4a084fd699a78d929f5a38d</srcmd5>
+    <version>3.13.1</version>
+    <time>1554114983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689690</requestid>
+  </revision>
+</revisionlist>

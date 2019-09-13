@@ -1,0 +1,165 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ca48ac3cc89fce5bd4c9b785bdd291b</srcmd5>
+    <version>2.0</version>
+    <time>1413987840</time>
+    <user>coolo</user>
+    <comment>new package, obsoleting nagios-plugins (incl. subpackages)</comment>
+    <requestid>257389</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>208ddb25215262c2d90a42636e54b6bb</srcmd5>
+    <version>2.1.2</version>
+    <time>1455190622</time>
+    <user>dimstar_suse</user>
+    <comment>- remove monitoring-plugins-postgresql.patch : fixed upstream
+- remove monitoring-plugins.negate.validate_arguments.patch : fixed
+  upstream
+- add patch comments to spec file as requested by rpmlint
+- rebase all patches to current code stream
+
+- update to 2.1.2:
+  ENHANCEMENTS
+  + check_snmp's performance data now also includes warning/critical
+    thresholds
+  + New check_snmp &quot;-N&quot; option to specify SNMPv3 context name
+  + New check_nt &quot;-l&quot; parameters: seconds|minutes|hours|days
+  + New check_mailq -s option which tells the plugin to use sudo(8)
+  + New -W/-C option for check_ldap to check number of entries (Gerhard Lausser)
+  + The check_http -S/--ssl option now accepts the arguments &quot;1.1&quot; and &quot;1.2&quot;
+    to force TLSv1.1 and TLSv1.2 connections, respectively
+  + The check_http -S/--ssl option now allows for specifying the desired
+    protocol with a &quot;+&quot; suffix to also accept newer versions
+  FIXES
+  + Let check_real terminate lines with CRLF when talking to the server, as
+    mandated by 2326
+  + Fix check_procs on HP-UX
+  + check_smtp's -e/--expect option can now be combined with -S/--starttls
+  + Fix incorrect performance data thresholds emitted by check_ups
+  WARNINGS
+  + The format of the performance data emitted by check_mrtgtraf has been
+    changed to comply with the development guidelines
+  + check_ssh now returns CRITICAL for protocol/version errors
+  + If a plugin is invoked with -h/--help or -V/--version, the exit status
+    is now UNKNOWN</comment>
+    <requestid>341451</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cedb511f9e6d7b1e125b8ab4c595acb0</srcmd5>
+    <version>2.1.2</version>
+    <time>1457353588</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>364649</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>59885dd78af2ca5514487f48fda1ec2b</srcmd5>
+    <version>2.2</version>
+    <time>1485250678</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>451649</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9f1d679c68ef3b092ebc6eac529a9d59</srcmd5>
+    <version>2.2</version>
+    <time>1493456032</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491853</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6ab93be1a8657012e714971b9a82dc23</srcmd5>
+    <version>2.2</version>
+    <time>1495058127</time>
+    <user>lrupp</user>
+    <comment>1</comment>
+    <requestid>495700</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>bdac9ddc28896bbaaaa15381ffed5848</srcmd5>
+    <version>2.2</version>
+    <time>1501067117</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512474</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>d6df61cb221b33a6f133faaae11994c0</srcmd5>
+    <version>2.2</version>
+    <time>1508876544</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>534540</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>8c8c8a61df9a7e088bf1e47fac81414b</srcmd5>
+    <version>2.2</version>
+    <time>1510506190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540707</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>489a195e53fe720b44cefe1655782622</srcmd5>
+    <version>2.2</version>
+    <time>1535123572</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631188</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>7772724dd5029b200894e342d26b5d34</srcmd5>
+    <version>2.2</version>
+    <time>1539342691</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>641318</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>4365f852579b825cfb7b91fe1e6c6a57</srcmd5>
+    <version>2.2</version>
+    <time>1549624309</time>
+    <user>coolo</user>
+    <comment>- update usr.lib.nagios.plugins.check_procs again for &gt;= sle15
+  case so that ptrace is allowed</comment>
+    <requestid>672187</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>13c1ed0e000a070482022345bd468d0e</srcmd5>
+    <version>2.2</version>
+    <time>1555488488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694443</requestid>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>1e1cf11c93c3d25ab81620d481452b0e</srcmd5>
+    <version>2.2</version>
+    <time>1556107026</time>
+    <user>maxlin_factory</user>
+    <comment>- apply check_ping_fix_ip4.patch only for suse_version &gt;= 1500
+  sle12/leap42 ping does not know the -4 parameter (boo#132903)
+
+  case so that ptrace is allowed (boo#1133107)</comment>
+    <requestid>697173</requestid>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>e6af14a9864f864a60e28de594f036fb</srcmd5>
+    <version>2.2</version>
+    <time>1556817506</time>
+    <user>dimstar_suse</user>
+    <comment>  sle12/leap42 ping does not know the -4 parameter (boo#1132903)</comment>
+    <requestid>699682</requestid>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>68addc376f6df5f42121c291b7260dda</srcmd5>
+    <version>2.2</version>
+    <time>1563259306</time>
+    <user>dimstar_suse</user>
+    <comment>- monitoring-plugins-mysql should also provide monitoring-plugins-mysql_query
+- Provide/Obsolete nagios-plugins in old version for better 
+  compatibility and to allow dist upgrade (boo#1114483)</comment>
+    <requestid>715402</requestid>
+  </revision>
+</revisionlist>

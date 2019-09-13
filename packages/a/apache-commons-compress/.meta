@@ -1,0 +1,5 @@
+<package name="apache-commons-compress" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="apache-commons-compress"/>
+</package>

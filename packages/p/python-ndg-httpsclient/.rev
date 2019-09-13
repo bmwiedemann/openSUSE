@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bfc166414e3359285ac20727c3308db</srcmd5>
+    <version>0.4.0</version>
+    <time>1451674039</time>
+    <user>dimstar_suse</user>
+    <comment>As this package will be required by letsencrypt, it would be great to have it in factory...</comment>
+    <requestid>349374</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9ad51236f9f9a10972bdd9d529fe8525</srcmd5>
+    <version>0.4.0</version>
+    <time>1504617303</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519151</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>938dfae9050ad07f19ca4c435d03aa7f</srcmd5>
+    <version>0.4.0</version>
+    <time>1545648004</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659507</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bbb4a5a819611c8f7dc4c8bed023ee9d</srcmd5>
+    <version>0.5.1</version>
+    <time>1559375703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706328</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fad96f716a0ded12d4806a6831d9d9bc</srcmd5>
+    <version>0.5.1</version>
+    <time>1559580986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707070</requestid>
+  </revision>
+</revisionlist>

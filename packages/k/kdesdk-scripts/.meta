@@ -1,0 +1,5 @@
+<package name="kdesdk-scripts" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="kdesdk-scripts"/>
+</package>

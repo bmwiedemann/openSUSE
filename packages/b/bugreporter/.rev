@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db680f0c8e83673a82b1930f796b18dc</srcmd5>
+    <version>1.0</version>
+    <time>1323419486</time>
+    <user>coolo</user>
+    <comment>New package, see http://en.opensuse.org/openSUSE:Bugreporter (GSoC Project). Fixed %changelog (for some reason last request had the old .spec file, sorry.</comment>
+    <requestid>95210</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3a62a1301a3a12ed9991afdd08ae1dc2</srcmd5>
+    <version>1.0</version>
+    <time>1323773296</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+
+SPDX format (forwarded request 95987 from babelworx)</comment>
+    <requestid>96408</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3a62a1301a3a12ed9991afdd08ae1dc2</srcmd5>
+    <version>1.0</version>
+    <time>1340183216</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>3a62a1301a3a12ed9991afdd08ae1dc2</srcmd5>
+    <version>1.0</version>
+    <time>1359108718</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>3a62a1301a3a12ed9991afdd08ae1dc2</srcmd5>
+    <version>1.0</version>
+    <time>1379662060</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>3a62a1301a3a12ed9991afdd08ae1dc2</srcmd5>
+    <version>1.0</version>
+    <time>1409300589</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

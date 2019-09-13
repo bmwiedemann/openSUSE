@@ -1,0 +1,383 @@
+<revisionlist>
+  <revision rev="1" vrev="16">
+    <srcmd5>74349037c1f2d2d21a09f17d419d8906</srcmd5>
+    <version>3.81</version>
+    <time>1166483825</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="40">
+    <srcmd5>b7c6af0720a015b3e41b3e1458699ba7</srcmd5>
+    <version>3.81</version>
+    <time>1179395088</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="128">
+    <srcmd5>b7c6af0720a015b3e41b3e1458699ba7</srcmd5>
+    <version>3.81</version>
+    <time>1179395088</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="129">
+    <srcmd5>b8e32a973b74e477ceb94b3ce772d6c9</srcmd5>
+    <version>3.81</version>
+    <time>1224729575</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="131">
+    <srcmd5>b8e32a973b74e477ceb94b3ce772d6c9</srcmd5>
+    <version>3.81</version>
+    <time>1224729575</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="132">
+    <srcmd5>ac83467b40c0ab251aed0e4c1f5585a5</srcmd5>
+    <version>3.81</version>
+    <time>1262968411</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/make based on submit request 28050 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="7" vrev="133">
+    <srcmd5>75d33b5d03a2f33ee1c54d5b6d3d8e4c</srcmd5>
+    <version>3.81</version>
+    <time>1268924898</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="134">
+    <srcmd5>45a75593f22b56719aaabad6fa84693d</srcmd5>
+    <version>3.81</version>
+    <time>1274786622</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/make based on submit request 40597 from user coolo
+</comment>
+    <requestid>40597</requestid>
+  </revision>
+  <revision rev="9" vrev="136">
+    <srcmd5>45a75593f22b56719aaabad6fa84693d</srcmd5>
+    <version>3.81</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="137">
+    <srcmd5>45a75593f22b56719aaabad6fa84693d</srcmd5>
+    <version>3.81</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="138">
+    <srcmd5>f1f5021c6ea60682dfbfe9b7207982ca</srcmd5>
+    <version>3.81</version>
+    <time>1279651364</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/make based on submit request 43452 from user coolo
+</comment>
+    <requestid>43452</requestid>
+  </revision>
+  <revision rev="12" vrev="139">
+    <srcmd5>d746b8442256dccc8aaafabbd08e8b06</srcmd5>
+    <version>unknown</version>
+    <time>1284124118</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/make based on submit request 47702 from user coolo
+</comment>
+    <requestid>47702</requestid>
+  </revision>
+  <revision rev="13" vrev="142">
+    <srcmd5>d746b8442256dccc8aaafabbd08e8b06</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="143">
+    <srcmd5>b59533d9cc1c2256d0d85eb9005a8eb3</srcmd5>
+    <version>3.82</version>
+    <time>1303379390</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67908 from user licensedigger
+</comment>
+    <requestid>67908</requestid>
+  </revision>
+  <revision rev="15" vrev="144">
+    <srcmd5>d3005e43689289f147ac20324f5806ee</srcmd5>
+    <version>3.82</version>
+    <time>1303379400</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67908
+</comment>
+  </revision>
+  <revision rev="16" vrev="145">
+    <srcmd5>d5bceaf83b5135db26ab9798e096fa39</srcmd5>
+    <version>3.82</version>
+    <time>1317543495</time>
+    <user>lrupp</user>
+    <comment>fixed arm build</comment>
+    <requestid>85863</requestid>
+  </revision>
+  <revision rev="17" vrev="146">
+    <srcmd5>091db4112a6d2b0a849b575f0058015b</srcmd5>
+    <version>3.82</version>
+    <time>1318428773</time>
+    <user>lrupp</user>
+    <comment>refixing arm build (forwarded request 87451 from -miska-)</comment>
+    <requestid>87452</requestid>
+  </revision>
+  <revision rev="18" vrev="148">
+    <srcmd5>091db4112a6d2b0a849b575f0058015b</srcmd5>
+    <version>3.82</version>
+    <time>1319182169</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="149">
+    <srcmd5>44536629f12b09a58166db638bb240a6</srcmd5>
+    <version>3.82</version>
+    <time>1323192489</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="150">
+    <srcmd5>3763f794a64bf27a5b7a13d03f84a18a</srcmd5>
+    <version>3.82</version>
+    <time>1334692783</time>
+    <user>coolo</user>
+    <comment>speed up make globbing, eg for libreoffice</comment>
+    <requestid>113914</requestid>
+  </revision>
+  <revision rev="21" vrev="152">
+    <srcmd5>3763f794a64bf27a5b7a13d03f84a18a</srcmd5>
+    <version>3.82</version>
+    <time>1340183687</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="153">
+    <srcmd5>df010215d97a01f4bc60c1c4682b7496</srcmd5>
+    <version>3.82</version>
+    <time>1346398934</time>
+    <user>coolo</user>
+    <comment>Add some patches to help fix building webkit 1.9.6+ (forwarded request 132013 from dimstar)</comment>
+    <requestid>132019</requestid>
+  </revision>
+  <revision rev="23" vrev="155">
+    <srcmd5>df010215d97a01f4bc60c1c4682b7496</srcmd5>
+    <version>3.82</version>
+    <time>1359109427</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="156">
+    <srcmd5>76cbd380807e1170b8240739503c4d73</srcmd5>
+    <version>3.82</version>
+    <time>1359997235</time>
+    <user>coolo</user>
+    <comment>- Add config-guess-update.diff:
+  update config.guess/sub to handle aarch64</comment>
+    <requestid>150874</requestid>
+  </revision>
+  <revision rev="25" vrev="157">
+    <srcmd5>3d6d1ba4cf1970f5c349eb64ffd35d3e</srcmd5>
+    <version>3.82</version>
+    <time>1361888539</time>
+    <user>coolo</user>
+    <comment>- Fix missing definition of PAGE_SIZE (forwarded request 155704 from Andreas_Schwab)</comment>
+    <requestid>156218</requestid>
+  </revision>
+  <revision rev="26" vrev="158">
+    <srcmd5>16267ffcf183ebe6de10647f1fd59e5b</srcmd5>
+    <version>3.82</version>
+    <time>1363950092</time>
+    <user>coolo</user>
+    <comment>- use source urls
+- gpg verification</comment>
+    <requestid>160420</requestid>
+  </revision>
+  <revision rev="27" vrev="159">
+    <srcmd5>d09fd04ae099f94fd59d63b209c04cbc</srcmd5>
+    <version>3.82</version>
+    <time>1371586249</time>
+    <user>coolo</user>
+    <comment>- remove gpg verification from bootstrap packages</comment>
+    <requestid>179393</requestid>
+  </revision>
+  <revision rev="28" vrev="161">
+    <srcmd5>d09fd04ae099f94fd59d63b209c04cbc</srcmd5>
+    <version>3.82</version>
+    <time>1379663245</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="162">
+    <srcmd5>c01566948c06b0f17821423e910581c3</srcmd5>
+    <version>3.82</version>
+    <time>1380608273</time>
+    <user>coolo</user>
+    <comment>- fixed a make target issue with .a (x y) targets (bnc#841457) (forwarded request 201405 from msmeissn)</comment>
+    <requestid>201406</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>dc48acd127438170f3417cabc67bb3c9</srcmd5>
+    <version>4.0</version>
+    <time>1389953076</time>
+    <user>coolo</user>
+    <comment>- Update to 4.0
+  * see details in NEWS and ChangeLog files 
+  * Bugfixes, a complete list of bugs fixed in this version is
+    available here
+    http://sv.gnu.org/bugs/index.php?group=make&amp;report_id=111&amp;fix_release_id=101&amp;set=custom
+  * WARNING: Backward-incompatibility! backslash/newline handling
+  * New feature: GNU Guile integration
+  * New command line option: --output-sync (-O) enables grouping of
+    output by target or by recursive make.
+  * New command line option: --trace enables tracing of targets.
+  * New command line option argument: --debug now accepts a &quot;n&quot;
+    (none) flag which disables all debugging settings that are
+    currently enabled.
+  * New feature: The &quot;job server&quot; capability is now supported on
+    Windows.
+  * New feature: The .ONESHELL capability is now supported on
+    Windows.
+  * New feature: &quot;!=&quot; shell assignment operator as an alternative
+    to the $(shell ...) function.  Implemented for compatibility
+    with BSD makefiles.
+  * New feature: &quot;::=&quot; simple assignment operator as defined by
+    POSIX in 2012.
+  * New feature: Loadable objects
+  * New function: $(file ...) writes to a file.
+  * New variable: $(GNUMAKEFLAGS) will be parsed for make flags,
+    just like MAKEFLAGS is.  It can be set in the environment or
+    the makefile, containing GNU make-specific flags to allow your
+    makefile to be portable to other versions of make.
+  * New variable: `MAKE_HOST' gives the name of the host
+    architecture make was compiled for.</comment>
+    <requestid>213959</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>dc48acd127438170f3417cabc67bb3c9</srcmd5>
+    <version>4.0</version>
+    <time>1409301848</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>22a5bfb03b3aaed33a97dc11698cdf33</srcmd5>
+    <version>4.0</version>
+    <time>1410081102</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247481</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1afc6f6f4869b57da94283e2ddd50188</srcmd5>
+    <version>4.1</version>
+    <time>1415118438</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256806</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>9c97c5037e79cbc1655d33c72d767693</srcmd5>
+    <version>4.1</version>
+    <time>1416823681</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262063</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>0f00595efe6022883b6ac5360e7516ac</srcmd5>
+    <version>4.1</version>
+    <time>1443770568</time>
+    <user>dimstar_suse</user>
+    <comment>- undefine-variables.patch: Force recomputing .VARIABLES when a variable
+  was made undefined (bsc#934131) (forwarded request 331637 from Andreas_Schwab)</comment>
+    <requestid>331638</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>673e8c11a4a407bab2346abb389e8c10</srcmd5>
+    <version>4.2</version>
+    <time>1465335777</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to make 4.2
+  * New variable: $(.SHELLSTATUS) is set to the exit status of the last != or
+    $(shell ...) function invoked in this instance of make.
+  * The $(file ...) function can now read from a file with $(file &amp;lt;FILE).
+  * The makefile line numbers shown by GNU make now point directly to the
+    specific line in the recipe where the failure or warning occurred.
+  * The interface to GNU make's &quot;jobserver&quot; is stable as documented in the
+    manual, for tools which may want to access it.
+  * The amount of parallelism can be determined by querying MAKEFLAGS
+- undefine-variables.patch: Removed
+- make-4.1-fix_null_returns_from_ttyname.patch: Removed
+- 0001-SV-47995-Ensure-forced-double-colon-rules-work-with-.patch: Added
+- 0002-main.c-main-SV-48009-Reset-stack-limit-for-make-re-e.patch: Added
+- Move %install_info_delete to %preun (forwarded request 399680 from Andreas_Schwab)</comment>
+    <requestid>399681</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e33bb640db2f49b3fb9646aee05188f8</srcmd5>
+    <version>4.2.1</version>
+    <time>1467541037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.1:
+  * bug-fix release
+- Drop upstream patches:
+  * 0001-SV-47995-Ensure-forced-double-colon-rules-work-with-.patch
+  * 0002-main.c-main-SV-48009-Reset-stack-limit-for-make-re-e.patch
+- Small spec file cleanup
+  * man and info pages are implicitly marked as documentation (forwarded request 401382 from pluskalm)</comment>
+    <requestid>401555</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>fb2bb4e34b1b093c71cea6c62624e638</srcmd5>
+    <version>4.2.1</version>
+    <time>1505919904</time>
+    <user>dimstar_suse</user>
+    <comment>- Print out testsuite results after failure (forwarded request 523601 from Andreas_Schwab)</comment>
+    <requestid>523602</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>445a219b4dd9b9d966685d1df5094f86</srcmd5>
+    <version>4.2.1</version>
+    <time>1508946220</time>
+    <user>dimstar_suse</user>
+    <comment>Add make-sorted-glob.patch to make many other packages like dpdk build reproducibly without patching them individually (boo#1041090)
+
+now with changed patch tag, even though the patch might be accepted by upstream later (forwarded request 534913 from bmwiedemann)</comment>
+    <requestid>534916</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>92b897487383f5c939c52d7c49ed1781</srcmd5>
+    <version>4.2.1</version>
+    <time>1510760910</time>
+    <user>dimstar_suse</user>
+    <comment>- glob-lstat.patch: Do not assume glibc glob internals (forwarded request 539476 from Andreas_Schwab)</comment>
+    <requestid>539477</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>829f7eca38d37edd55686de7de922236</srcmd5>
+    <version>4.2.1</version>
+    <time>1517234074</time>
+    <user>dimstar_suse</user>
+    <comment>- test-driver.patch: let perl find test_driver.pl
+- glob-interface.patch: Support GLIBC glob interface version 2 (forwarded request 568519 from Andreas_Schwab)</comment>
+    <requestid>568520</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>192b6b4783c07adf2a007352c5d7837c</srcmd5>
+    <version>4.2.1</version>
+    <time>1532774200</time>
+    <user>dimstar_suse</user>
+    <comment>- pselect-non-blocking.patch: Use a non-blocking read with pselect to avoid
+  hangs (bsc#1100504) (forwarded request 623669 from Andreas_Schwab)</comment>
+    <requestid>623670</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>ac934c341a211ae9538ca9f4dac9ba97</srcmd5>
+    <version>4.2.1</version>
+    <time>1534321749</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>627288</requestid>
+  </revision>
+</revisionlist>

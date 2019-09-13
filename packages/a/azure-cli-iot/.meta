@@ -1,0 +1,11 @@
+<package name="azure-cli-iot" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'iot' Command Module</title>
+  <description>Microsoft Azure CLI 'iot' Command Module
+
+This package is for the 'iot' module.
+i.e. 'az iot'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-iot"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

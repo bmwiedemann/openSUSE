@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f61262fa4ba0a085da8605c7a76a4bf7</srcmd5>
+    <version>7</version>
+    <time>1545223858</time>
+    <user>dimstar_suse</user>
+    <comment>New package that will be needed by relaxngDatatype</comment>
+    <requestid>659044</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e3892afc149dc085f704b0af77a3e478</srcmd5>
+    <version>7</version>
+    <time>1549916257</time>
+    <user>dimstar_suse</user>
+    <comment>clean up the pom installation</comment>
+    <requestid>672376</requestid>
+  </revision>
+</revisionlist>

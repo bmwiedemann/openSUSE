@@ -1,0 +1,7 @@
+<package name="python-testinfra" project="openSUSE:Factory">
+  <title>Python Testinfra</title>
+  <description>With Testinfra you can write unit tests in Python to test actual state of your servers configured by managements tools like Salt, Ansible, Puppet, Chef and so on.
+
+Testinfra aims to be a Serverspec equivalent in python and is written as a plugin to the Pytest test engine.</description>
+  <devel project="devel:languages:python" package="python-testinfra"/>
+</package>

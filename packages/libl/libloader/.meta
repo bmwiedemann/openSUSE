@@ -1,0 +1,5 @@
+<package name="libloader" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="LibreOffice:Factory" package="libloader"/>
+</package>

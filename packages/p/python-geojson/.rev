@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d1f0ef9ab046173c379637ae8a2685f</srcmd5>
+    <version>2.4.0</version>
+    <time>1533045624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626313</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0732f2fd0ea31246c2599b460884fa29</srcmd5>
+    <version>2.4.1</version>
+    <time>1551455397</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1:
+  * Allow FeatureCollections to be passed to coords</comment>
+    <requestid>680457</requestid>
+  </revision>
+</revisionlist>

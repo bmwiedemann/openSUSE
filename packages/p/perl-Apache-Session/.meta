@@ -1,0 +1,8 @@
+<package name="perl-Apache-Session" project="openSUSE:Factory">
+  <title>persistent storage for arbitrary data</title>
+  <description>These modules provide persistent storage for arbitrary data, in
+arbitrary backing stores.  The details of interacting with the backing
+store are abstracted to make all backing stores behave alike.  The
+programmer simply interacts with a tied hash.</description>
+  <devel project="devel:languages:perl" package="perl-Apache-Session"/>
+</package>

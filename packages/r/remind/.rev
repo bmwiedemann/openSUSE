@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90ef3be567d097aa59ac75e37acc7187</srcmd5>
+    <version>3.1.10</version>
+    <time>1295062950</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>90ef3be567d097aa59ac75e37acc7187</srcmd5>
+    <version>3.1.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>90ef3be567d097aa59ac75e37acc7187</srcmd5>
+    <version>3.1.10</version>
+    <time>1319182425</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>01fb8f595ef1ac05453def5620f45d71</srcmd5>
+    <version>3.1.10</version>
+    <time>1330364199</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>107107</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5c9520812c06c5a1d083febf34cf16ba</srcmd5>
+    <version>3.1.12</version>
+    <time>1330619235</time>
+    <user>coolo</user>
+    <comment>update to 3.1.12</comment>
+    <requestid>107381</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>5c9520812c06c5a1d083febf34cf16ba</srcmd5>
+    <version>3.1.12</version>
+    <time>1340184142</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>5c9520812c06c5a1d083febf34cf16ba</srcmd5>
+    <version>3.1.12</version>
+    <time>1359110283</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>34d327170ade581184928db3bae34215</srcmd5>
+    <version>3.1.13</version>
+    <time>1366723223</time>
+    <user>coolo</user>
+    <comment>- update to remind-3.1.13 
+  - BUG FIX: Sunrise/Sunset calculations greatly improved thanks to
+    John McGowan.  Accuracy should now be within a couple of
+    minutes in most places.
+  - BUG FIX: Allow specification of margins as low as 0 points in
+    rem2ps, courtesy of Jonathan Kamens.
+  - BUG FIX: Permit compilation with gcc 2.95 (which doesn't allow
+    variable declarations after non-declaration statements in a
+    block.)
+  - BUG FIX: Several minor documentation errors corrected courtesy
+    of Simon Ruderich.
+  - BUG FIX: Spurious test harness failure was fixed.</comment>
+    <requestid>172932</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>34d327170ade581184928db3bae34215</srcmd5>
+    <version>3.1.13</version>
+    <time>1379664447</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>34d327170ade581184928db3bae34215</srcmd5>
+    <version>3.1.13</version>
+    <time>1409303179</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>da5a96e307464d86baecce26b01b67e2</srcmd5>
+    <version>3.1.15</version>
+    <time>1439631586</time>
+    <user>dimstar_suse</user>
+    <comment>- update to remind-3.1.15 
+  - BUG FIX: Fix a buffer overflow found by Alexander Keller
+    (CVE-2015-5957)
+  - BUG FIX: Make parser reject an AT followed by more than one time.
+  - BUG FIX: Make parser reject repeated delta or *repeat values.
+  - NEW FEATURE: Putting the line __EOF__ in a .rem file causes
+    Remind to treat it as end-of-file.
+  - IMPROVEMENT: Use better PNG images for moons in the HTML display
+  - BUG FIX: The &quot;-n&quot; command-line option should really run in
+    &quot;ADVANCE_MODE&quot; rather than &quot;CAL_MODE&quot; internally; otherwise,
+    the substitution sequences may be misinterpreted.
+  - BUG FIX: A typo in clearing out MD5 sum context has been fixed.
+  - BUG FIX: Typo in Spanish translation was fixed.</comment>
+    <requestid>323184</requestid>
+  </revision>
+</revisionlist>

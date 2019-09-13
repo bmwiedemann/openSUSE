@@ -1,0 +1,246 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3385ef3dfa597d595c9d1cdfffe21943</srcmd5>
+    <version>0.602</version>
+    <time>1168903939</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d79b11fbf7d9a586893b396ff8a8b73f</srcmd5>
+    <version>0.603</version>
+    <time>1183591609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0578ee64b5d57b09077441067ed2626c</srcmd5>
+    <version>0.604</version>
+    <time>1204325131</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="44">
+    <srcmd5>0578ee64b5d57b09077441067ed2626c</srcmd5>
+    <version>0.604</version>
+    <time>1204325131</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="45">
+    <srcmd5>bbcf5bcdafd7d7706ad837a480022d65</srcmd5>
+    <version>0.604</version>
+    <time>1232327876</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9df0dd954fd51f771456dc654b47b5a8</srcmd5>
+    <version>0.606</version>
+    <time>1232626507</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>9df0dd954fd51f771456dc654b47b5a8</srcmd5>
+    <version>0.606</version>
+    <time>1232626507</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>7377b5e7d0c5ee57a590e51599ba7d75</srcmd5>
+    <version>0.606</version>
+    <time>1263483427</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Writer based on submit request 28943 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>94230514d3f870a9c9bb1261c3b89464</srcmd5>
+    <version>0.606</version>
+    <time>1268925670</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7dd26e64fc97e363ff12367e5f1bd942</srcmd5>
+    <version>0.607</version>
+    <time>1269616788</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Writer based on submit request 35777 from user anicka
+</comment>
+    <requestid>35777</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>01e15d5e5f4e326335965a47cf99752a</srcmd5>
+    <version>0.610</version>
+    <time>1270057092</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Writer based on submit request 35995 from user anicka
+</comment>
+    <requestid>35995</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>01e15d5e5f4e326335965a47cf99752a</srcmd5>
+    <version>0.610</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>01e15d5e5f4e326335965a47cf99752a</srcmd5>
+    <version>0.610</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>44d426f714f7502455ec46f6a38b990e</srcmd5>
+    <version>0.611</version>
+    <time>1279540806</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Writer based on submit request 43057 from user anicka
+</comment>
+    <requestid>43057</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b5d154b0e9468ad8498774726dec9842</srcmd5>
+    <version>0.612</version>
+    <time>1282665042</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Writer based on submit request 45730 from user computersalat
+</comment>
+    <requestid>45730</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>74a489b1947c9d928765a9c6355c427b</srcmd5>
+    <version>0.612</version>
+    <time>1291993610</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55376 from user coolo
+</comment>
+    <requestid>55376</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>33fb5d996ad875298dd5a513981fc328</srcmd5>
+    <version>0.612</version>
+    <time>1291993619</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55376
+</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>33fb5d996ad875298dd5a513981fc328</srcmd5>
+    <version>0.612</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>75323544c16c541fd72363d25a46b27d</srcmd5>
+    <version>0.612</version>
+    <time>1300353421</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64337 from user computersalat
+</comment>
+    <requestid>64337</requestid>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>a30cc57af85da9f19ddead0277ba359e</srcmd5>
+    <version>0.612</version>
+    <time>1300353430</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64337
+</comment>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>a30cc57af85da9f19ddead0277ba359e</srcmd5>
+    <version>0.612</version>
+    <time>1319182324</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>6e6cfec49bd8bac6ef598cff17f76d44</srcmd5>
+    <version>0.612</version>
+    <time>1321876255</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92105</requestid>
+  </revision>
+  <revision rev="23" vrev="12">
+    <srcmd5>b36881a808db29664b8fc4769e23285a</srcmd5>
+    <version>0.612</version>
+    <time>1324387843</time>
+    <user>coolo</user>
+    <comment>- fedora names that license &quot;MIT&quot;
+
+  http://en.opensuse.org/openSUSE:Accepted_licences compatible 
+  declaration of the text in LICENSE. See also Fedora Packagers
+  licensing guidelines (forwarded request 96465 from coolo)</comment>
+    <requestid>96484</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6ccf009e1510489391061e6412addd99</srcmd5>
+    <version>0.615</version>
+    <time>1329221399</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103911</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>6ccf009e1510489391061e6412addd99</srcmd5>
+    <version>0.615</version>
+    <time>1340183956</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>6ccf009e1510489391061e6412addd99</srcmd5>
+    <version>0.615</version>
+    <time>1359109856</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e0657d6103df2d82606c59dc0f59429d</srcmd5>
+    <version>0.622</version>
+    <time>1370522899</time>
+    <user>coolo</user>
+    <comment>- updated to 0.622
+          - Fix bug where output is an IO::Scalar.
+          - Include selfcontained_output.t in the distribution.
+          - Allow OUTPUT =&gt; 'self' (#81327). (forwarded request 177555 from coolo)</comment>
+    <requestid>177564</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5a3d2745c8a4a296f51b32cc4a71f20c</srcmd5>
+    <version>0.623</version>
+    <time>1375204286</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184815</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>5a3d2745c8a4a296f51b32cc4a71f20c</srcmd5>
+    <version>0.623</version>
+    <time>1379663926</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>37a38070b1249f8c2708e381cdd929d2</srcmd5>
+    <version>0.624</version>
+    <time>1393605986</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223871</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>37a38070b1249f8c2708e381cdd929d2</srcmd5>
+    <version>0.624</version>
+    <time>1409302578</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a130e9da3c46c7e0a1df6ac01a36a69f</srcmd5>
+    <version>0.625</version>
+    <time>1429989414</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>297549</requestid>
+  </revision>
+</revisionlist>

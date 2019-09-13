@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f1e5887cb09a979dcbc1b15f2b4e3ee</srcmd5>
+    <version>5.9.0</version>
+    <time>1551386450</time>
+    <user>coolo</user>
+    <comment>- Initial stand-alone package, based on digikam-5.9.0
+
+kipi-plugins will not be part of digikam 6.0.0 anymore, but it is still used by other applications (gwenview, spectacle, kphotoalbum), so we need this to avoid feature loss there.</comment>
+    <requestid>676688</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a101271a54b1fabebd3fee5ef6b7030b</srcmd5>
+    <version>5.9.1</version>
+    <time>1555773221</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.9.1
+  * https://jriddell.org/2019/04/19/kipi-plugins-5-9-1-released/
+  * First official stand-alone release outside of digikam
+  * No code changes
+- Drop kipi-plugins-lang.tar.xz, the translations are included in
+  the source tarball
+- Remove ImageMagick, enblend-enfuse and hugin Recommends, nothing
+  in kipi-plugins uses them anymore since a long time
+- Change URL to www.kde.org as it is no longer released by the
+  digikam project
+- Make creation of lang package conditional
+</comment>
+    <requestid>696373</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>67efd69054c225e620db5596fce3e6dd</srcmd5>
+    <version>19.08.0</version>
+    <time>1565963154</time>
+    <user>dimstar_suse</user>
+    <comment>Applications 19.08.0 (forwarded request 723532 from cgiboudeaux)</comment>
+    <requestid>723659</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d0c3e1755a1ff4fa883a2f97ebd3660a</srcmd5>
+    <version>19.08.1</version>
+    <time>1568190553</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.1 (forwarded request 728705 from luca_b)</comment>
+    <requestid>728837</requestid>
+  </revision>
+</revisionlist>

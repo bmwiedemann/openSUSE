@@ -1,0 +1,366 @@
+<revisionlist>
+  <revision rev="1" vrev="23">
+    <srcmd5>d9c82cf41d2db8e5481be5acf25fdfa9</srcmd5>
+    <version>2.7.6</version>
+    <time>1168901470</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="51">
+    <srcmd5>552dda7510ede20c1b519460da2702a3</srcmd5>
+    <version>2.7.6</version>
+    <time>1178269431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="52">
+    <srcmd5>bf95c35c1c0504876e6e0a3ee347127b</srcmd5>
+    <version>2.7.6</version>
+    <time>1201640593</time>
+    <user>AdrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="53">
+    <srcmd5>552dda7510ede20c1b519460da2702a3</srcmd5>
+    <version>2.7.6</version>
+    <time>1201663603</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="131">
+    <srcmd5>7584950a58996ce01301b41673e0f5c1</srcmd5>
+    <version>2.7.6</version>
+    <time>1201711187</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="141">
+    <srcmd5>5085d7481b47cd11e93b5bf074fee4c0</srcmd5>
+    <version>2.7.6</version>
+    <time>1203639431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>55d6b245430baf8dae2687a0baa8bf42</srcmd5>
+    <version>2.7.7</version>
+    <time>1209127833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="70">
+    <srcmd5>55d6b245430baf8dae2687a0baa8bf42</srcmd5>
+    <version>2.7.7</version>
+    <time>1209127833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="71">
+    <srcmd5>0942dea367b0fcf3a641e0ef80358147</srcmd5>
+    <version>2.7.7</version>
+    <time>1245365490</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="73">
+    <srcmd5>0942dea367b0fcf3a641e0ef80358147</srcmd5>
+    <version>2.7.7</version>
+    <time>1245365490</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="74">
+    <srcmd5>7831dd75fba7ede03bc3f92a67b6374f</srcmd5>
+    <version>2.7.7</version>
+    <time>1268922880</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="76">
+    <srcmd5>7831dd75fba7ede03bc3f92a67b6374f</srcmd5>
+    <version>2.7.7</version>
+    <time>1278667336</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="77">
+    <srcmd5>7831dd75fba7ede03bc3f92a67b6374f</srcmd5>
+    <version>2.7.7</version>
+    <time>1278678563</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="78">
+    <srcmd5>09de324301dd99781a20df23eb4a3e44</srcmd5>
+    <version>2.7.7</version>
+    <time>1282938020</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/antlr based on submit request 46166 from user mvyskocil
+</comment>
+    <requestid>46166</requestid>
+  </revision>
+  <revision rev="15" vrev="79">
+    <srcmd5>58c7c0d899cbc4a783dc9c2d6fe41f84</srcmd5>
+    <version>2.7.7</version>
+    <time>1283513769</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/antlr based on submit request 46995 from user mvyskocil
+</comment>
+    <requestid>46995</requestid>
+  </revision>
+  <revision rev="16" vrev="82">
+    <srcmd5>58c7c0d899cbc4a783dc9c2d6fe41f84</srcmd5>
+    <version>2.7.7</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="83">
+    <srcmd5>2df04860d3ff9a4d13288e1e82d41e16</srcmd5>
+    <version>2.7.7</version>
+    <time>1311862642</time>
+    <user>saschpe</user>
+    <comment>Fixed filelist for Factory (forwarded request 77111 from cwh)</comment>
+    <requestid>77323</requestid>
+  </revision>
+  <revision rev="18" vrev="84">
+    <srcmd5>72927709f46e65c2ba7b179e65c1ad11</srcmd5>
+    <version>2.7.7</version>
+    <time>1311862651</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77323
+</comment>
+  </revision>
+  <revision rev="19" vrev="86">
+    <srcmd5>72927709f46e65c2ba7b179e65c1ad11</srcmd5>
+    <version>2.7.7</version>
+    <time>1319181770</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="87">
+    <srcmd5>bdf6ef7926209b4b557a56e420994b10</srcmd5>
+    <version>2.7.7</version>
+    <time>1323190708</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="88">
+    <srcmd5>1dfff36f05d6c2cb1ef8beaf96864710</srcmd5>
+    <version>2.7.7</version>
+    <time>1323190710</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="90">
+    <srcmd5>1dfff36f05d6c2cb1ef8beaf96864710</srcmd5>
+    <version>2.7.7</version>
+    <time>1340183172</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="91">
+    <srcmd5>3076b38de6d5becc160b21b717738e99</srcmd5>
+    <version>2.7.7</version>
+    <time>1351869080</time>
+    <user>coolo</user>
+    <comment>- examples files are now 0644 to beeing able to fdupes them properly (bnc#784670)</comment>
+    <requestid>139823</requestid>
+  </revision>
+  <revision rev="24" vrev="93">
+    <srcmd5>3076b38de6d5becc160b21b717738e99</srcmd5>
+    <version>2.7.7</version>
+    <time>1359108652</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="94">
+    <srcmd5>53c5239b9d7e2a16cf40ff5dd36930e4</srcmd5>
+    <version>2.7.7</version>
+    <time>1373985187</time>
+    <user>coolo</user>
+    <comment>- drop antlr-cshap, entirely unused and removes mono dependency (forwarded request 182817 from dirkmueller)</comment>
+    <requestid>182921</requestid>
+  </revision>
+  <revision rev="26" vrev="95">
+    <srcmd5>8975f7b4191a7956785438d38e29ac09</srcmd5>
+    <version>2.7.7</version>
+    <time>1374245462</time>
+    <user>coolo</user>
+    <comment>- Fix quoting of $ (forwarded request 183533 from Andreas_Schwab)</comment>
+    <requestid>183710</requestid>
+  </revision>
+  <revision rev="27" vrev="96">
+    <srcmd5>8d0cf3b3b33becd1d408da2a48c5902f</srcmd5>
+    <version>2.7.7</version>
+    <time>1378899575</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198248</requestid>
+  </revision>
+  <revision rev="28" vrev="98">
+    <srcmd5>8d0cf3b3b33becd1d408da2a48c5902f</srcmd5>
+    <version>2.7.7</version>
+    <time>1379661967</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="99">
+    <srcmd5>02bdc4f7c919d74fe36ca12a8e0ca16f</srcmd5>
+    <version>2.7.7</version>
+    <time>1399031643</time>
+    <user>coolo</user>
+    <comment>Fix buidarch, permissions, and bytecode issues on SLES. (forwarded request 232216 from deadpoint)</comment>
+    <requestid>232231</requestid>
+  </revision>
+  <revision rev="30" vrev="100">
+    <srcmd5>4ffbe7511bd50e85d529bac4f730ad37</srcmd5>
+    <version>2.7.7</version>
+    <time>1405611082</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240318</requestid>
+  </revision>
+  <revision rev="31" vrev="102">
+    <srcmd5>4ffbe7511bd50e85d529bac4f730ad37</srcmd5>
+    <version>2.7.7</version>
+    <time>1409300490</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="103">
+    <srcmd5>57c168f7bd35bb50203fdd2cebabf21f</srcmd5>
+    <version>2.7.7</version>
+    <time>1417869926</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264099</requestid>
+  </revision>
+  <revision rev="33" vrev="104">
+    <srcmd5>7e718b9ed0f404b513f4d6239e2baaf0</srcmd5>
+    <version>2.7.7</version>
+    <time>1496230203</time>
+    <user>dimstar_suse</user>
+    <comment>- Reduce dependencies a bit</comment>
+    <requestid>496776</requestid>
+  </revision>
+  <revision rev="34" vrev="105">
+    <srcmd5>46eda6bdd574d3255773a78fbc733c8f</srcmd5>
+    <version>2.7.7</version>
+    <time>1497112370</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the javadoc so we can be build with java bootstrapping reducing
+  the cycle/failures</comment>
+    <requestid>502530</requestid>
+  </revision>
+  <revision rev="35" vrev="106">
+    <srcmd5>edfb5d92494c90f0488f8b2e7fbb8475</srcmd5>
+    <version>2.7.7</version>
+    <time>1505333925</time>
+    <user>dimstar_suse</user>
+    <comment>Fix builds with java 9</comment>
+    <requestid>521758</requestid>
+  </revision>
+  <revision rev="36" vrev="107">
+    <srcmd5>dadeca61b62806ef0464ed4d451d15b6</srcmd5>
+    <version>2.7.7</version>
+    <time>1506523762</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build breakage</comment>
+    <requestid>527721</requestid>
+  </revision>
+  <revision rev="37" vrev="108">
+    <srcmd5>7f41ddc5fa7da7df68702f3565fadead</srcmd5>
+    <version>2.7.7</version>
+    <time>1507280055</time>
+    <user>dimstar_suse</user>
+    <comment>Don't build with java-1_5_0-gcj-compat</comment>
+    <requestid>529938</requestid>
+  </revision>
+  <revision rev="38" vrev="109">
+    <srcmd5>7220dad6dd899b47ad164d05381e84fc</srcmd5>
+    <version>2.7.7</version>
+    <time>1507628462</time>
+    <user>dimstar_suse</user>
+    <comment>Remove dependency on gcc-java</comment>
+    <requestid>532706</requestid>
+  </revision>
+  <revision rev="39" vrev="110">
+    <srcmd5>7bbad57e3c0247bab8d23b735a2bf2e5</srcmd5>
+    <version>2.7.7</version>
+    <time>1510321004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538659</requestid>
+  </revision>
+  <revision rev="40" vrev="111">
+    <srcmd5>e0853df66483ad2ff09b35d0fdb1a786</srcmd5>
+    <version>2.7.7</version>
+    <time>1512926117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555129</requestid>
+  </revision>
+  <revision rev="41" vrev="112">
+    <srcmd5>90676604279b33b1dd8ba4ba6f26adef</srcmd5>
+    <version>2.7.7</version>
+    <time>1513677124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555931</requestid>
+  </revision>
+  <revision rev="42" vrev="113">
+    <srcmd5>4b6aee5c20fd7b62c430b3212585d993</srcmd5>
+    <version>2.7.7</version>
+    <time>1516091921</time>
+    <user>dimstar_suse</user>
+    <comment>- Add condition about python2 module, the rewrite happened in antlr4
+  for python3 support and it is completely different than the antlr2
+  * The python module is not used by any package in TW bsc#1068226</comment>
+    <requestid>564042</requestid>
+  </revision>
+  <revision rev="43" vrev="114">
+    <srcmd5>2bd7bcce2ae944a64c58bda3b1bf5c94</srcmd5>
+    <version>2.7.7</version>
+    <time>1532446404</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+
+- Do not use old compat macros for python directories
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility</comment>
+    <requestid>624302</requestid>
+  </revision>
+  <revision rev="44" vrev="115">
+    <srcmd5>a5ca1494b673b49e229df4fc3223e295</srcmd5>
+    <version>2.7.7</version>
+    <time>1537187151</time>
+    <user>maxlin_factory</user>
+    <comment>- Do not create compat symlink for python stuff as it was not working
+  before anyway
+- Rename python package to python2-antlr (provide old symbol)</comment>
+    <requestid>635760</requestid>
+  </revision>
+  <revision rev="45" vrev="116">
+    <srcmd5>a0fccaf623997092d6c5aa0b95d10b73</srcmd5>
+    <version>2.7.7</version>
+    <time>1544189403</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653633</requestid>
+  </revision>
+  <revision rev="46" vrev="117">
+    <srcmd5>8a4ec37993458dc90cae96a2a7f60704</srcmd5>
+    <version>2.7.7</version>
+    <time>1549464423</time>
+    <user>coolo</user>
+    <comment>Speed-up the bootstrap build</comment>
+    <requestid>671834</requestid>
+  </revision>
+  <revision rev="47" vrev="118">
+    <srcmd5>904992fc13bd826620d0e84f926a1243</srcmd5>
+    <version>2.7.7</version>
+    <time>1558036545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701804</requestid>
+  </revision>
+  <revision rev="48" vrev="119">
+    <srcmd5>17e23eff6f71e8d4b04d055db893a784</srcmd5>
+    <version>2.7.7</version>
+    <time>1567679500</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build</comment>
+    <requestid>724980</requestid>
+  </revision>
+</revisionlist>

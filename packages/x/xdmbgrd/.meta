@@ -1,0 +1,5 @@
+<package name="xdmbgrd" project="openSUSE:Factory">
+  <title>SuSE Linux background</title>
+  <description>The SuSE Linux background for your XDM workstation.</description>
+  <devel project="X11:Utilities" package="xdmbgrd"/>
+</package>

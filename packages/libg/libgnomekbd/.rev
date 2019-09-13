@@ -1,0 +1,404 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9506b82f74bea6ed8600bafede1f67aa</srcmd5>
+    <version>2.17.2</version>
+    <time>1173871896</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cb455be837f9278babd181c63ee517cb</srcmd5>
+    <version>2.18.1</version>
+    <time>1176393524</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="11">
+    <srcmd5>af73c7ae8ea9e39bcde3dce5c0f35a4e</srcmd5>
+    <version>2.18.1</version>
+    <time>1178890602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>de36cec98f53594a6a0bd8c2bceabd31</srcmd5>
+    <version>2.18.2</version>
+    <time>1184086340</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>ccb1c769f301bd5ccd90e748efd6ed2b</srcmd5>
+    <version>2.18.2</version>
+    <time>1185032716</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="14">
+    <srcmd5>125ac052a6ffc5a7faabf2afff21350e</srcmd5>
+    <version>2.18.2</version>
+    <time>1186666817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8f67768ae01506641170f1af6680ce97</srcmd5>
+    <version>2.19.91</version>
+    <time>1188568413</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d38f3149a5582b3059774cd5c7289e11</srcmd5>
+    <version>2.20.0</version>
+    <time>1190221792</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>da2b64e22cd8ebba57c1d650d08c8efe</srcmd5>
+    <version>2.21.4.1</version>
+    <time>1201279238</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0fe7cb1c854cf5c393178facfeb8fcbe</srcmd5>
+    <version>2.22.0</version>
+    <time>1207164662</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b294f3275b8a133646352762133b75f6</srcmd5>
+    <version>2.23.2</version>
+    <time>1214097630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b0843b0ac46bb186ba151c39fa022b2d</srcmd5>
+    <version>2.24.0</version>
+    <time>1223741804</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>3c99c2755e89e52f583ced72ec5504d2</srcmd5>
+    <version>2.24.0</version>
+    <time>1233019089</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>0cd69547681ec7637e33336097a82a84</srcmd5>
+    <version>2.24.0</version>
+    <time>1233938036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0cc5aa8ce614b6302ac1faebb38ffeda</srcmd5>
+    <version>2.25.91</version>
+    <time>1235389998</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e398c19c2e9cf80e7cd49f4729b9a673</srcmd5>
+    <version>2.26.0</version>
+    <time>1238001263</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>23f2a3e17c6132cbcab069dea64c52d8</srcmd5>
+    <version>2.27.2</version>
+    <time>1243472628</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ad1d8567630e54af65756229acc609d4</srcmd5>
+    <version>2.27.4</version>
+    <time>1249063405</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f15a129f9e54fcaa7ed8a6845be8ad38</srcmd5>
+    <version>2.27.91</version>
+    <time>1252021628</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 19756 from user vuntz
+</comment>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>059bc3f5abae8ff68116c833cc74172d</srcmd5>
+    <version>2.27.91</version>
+    <time>1253654490</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 20781 from user dimstar
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>eb5e2dffd529fd0f99a835837cd15033</srcmd5>
+    <version>2.28.0</version>
+    <time>1254783569</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 21804 from user vuntz
+</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>eb5e2dffd529fd0f99a835837cd15033</srcmd5>
+    <version>2.28.0</version>
+    <time>1254783569</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 21804 from user vuntz
+</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c4093e1b5d3649482ff4c6bb4eea081b</srcmd5>
+    <version>2.28.2</version>
+    <time>1261140131</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 27007 from user vuntz
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7e4e646a5b35ba551356e85a7c44e3f9</srcmd5>
+    <version>2.29.5</version>
+    <time>1263820751</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 29745 from user vuntz
+</comment>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f001ab5567f341d4717b49b409231511</srcmd5>
+    <version>2.29.5</version>
+    <time>1268924583</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7c574a1f7d0fb9f3a2982141fad1eff2</srcmd5>
+    <version>2.29.92</version>
+    <time>1268955810</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 35232 from user MBoman
+</comment>
+    <requestid>35232</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>16d4f7476dc8db0b58c3923e44ef7dfa</srcmd5>
+    <version>2.30.0</version>
+    <time>1270085372</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 36364 from user vuntz
+</comment>
+    <requestid>36364</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8ba18c474c2f7aedbd5abc7ea1754e79</srcmd5>
+    <version>2.30.1</version>
+    <time>1273790169</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 39968 from user dimstar
+</comment>
+    <requestid>39968</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>9cd918942a89e894a5ebd55d26f35189</srcmd5>
+    <version>2.30.1</version>
+    <time>1277136554</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 41707 from user vuntz
+</comment>
+    <requestid>41707</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>9cd918942a89e894a5ebd55d26f35189</srcmd5>
+    <version>2.30.1</version>
+    <time>1278667359</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>9cd918942a89e894a5ebd55d26f35189</srcmd5>
+    <version>2.30.1</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0dbfb0312e53bfb31b0cf6b55eb652f9</srcmd5>
+    <version>2.31.5</version>
+    <time>1281386607</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 45110 from user vuntz
+</comment>
+    <requestid>45110</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>b133a68b5ecf399c9599bc675afba8bd</srcmd5>
+    <version>unknown</version>
+    <time>1284372780</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 47785 from user vuntz
+</comment>
+    <requestid>47785</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>4135202e89f7a8c357f0289141cce57d</srcmd5>
+    <version>2.31.92</version>
+    <time>1285280430</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 48941 from user vuntz
+</comment>
+    <requestid>48941</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f96af1bd62fc777418634228aaba3b11</srcmd5>
+    <version>2.32.0</version>
+    <time>1287153600</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgnomekbd based on submit request 50751 from user vuntz
+</comment>
+    <requestid>50751</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>62cef95f3cc9dc611c1e2b636adc4835</srcmd5>
+    <version>2.32.0</version>
+    <time>1297642138</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61063 from user vuntz
+</comment>
+    <requestid>61063</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>e6a31a278d8be180fe078124cab5188d</srcmd5>
+    <version>2.32.0</version>
+    <time>1297642145</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61063
+</comment>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>e6a31a278d8be180fe078124cab5188d</srcmd5>
+    <version>2.32.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>aee3f84525c9f3dea85d8d8b0aef1d98</srcmd5>
+    <version>3.0.0.1</version>
+    <time>1304494073</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69106</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>682747b0ac48015858c5963219db6c46</srcmd5>
+    <version>3.1.90</version>
+    <time>1315561332</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81519</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>769a49b5a4062b6cd92078d2b22ef749</srcmd5>
+    <version>3.2.0</version>
+    <time>1317543317</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85696</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>769a49b5a4062b6cd92078d2b22ef749</srcmd5>
+    <version>3.2.0</version>
+    <time>1319182098</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>9f52f4bf71d261e66825dbb33dddd03a</srcmd5>
+    <version>3.2.0</version>
+    <time>1323192227</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>84fadd3ba5a2399ee4e5ab6a1ec1e514</srcmd5>
+    <version>3.3.90</version>
+    <time>1330453451</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>107278</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>47bf2b0bc3c84f9f11b2bc29f852e122</srcmd5>
+    <version>3.4.0.2</version>
+    <time>1333022425</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111755</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>47bf2b0bc3c84f9f11b2bc29f852e122</srcmd5>
+    <version>3.4.0.2</version>
+    <time>1340183590</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>58eeffa0b97e3e1816c71ced2f51ef33</srcmd5>
+    <version>3.6.0</version>
+    <time>1349269776</time>
+    <user>namtrac</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136740</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>58eeffa0b97e3e1816c71ced2f51ef33</srcmd5>
+    <version>3.6.0</version>
+    <time>1359109280</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>58eeffa0b97e3e1816c71ced2f51ef33</srcmd5>
+    <version>3.6.0</version>
+    <time>1379662963</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="7">
+    <srcmd5>58eeffa0b97e3e1816c71ced2f51ef33</srcmd5>
+    <version>3.6.0</version>
+    <time>1409301575</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>4956743f7e85310baf380a7a86cb7138</srcmd5>
+    <version>3.22.0.1</version>
+    <time>1474476271</time>
+    <user>dimstar_suse</user>
+    <comment>No idea what is wrong here - it says rev7 is broken, current is rev8 (forwarded request 429172 from dimstar)</comment>
+    <requestid>429173</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>2db6c13c0c09e785fb3b4ee3d6257942</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332504</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.26.0 (forwarded request 523639 from dimstar)</comment>
+    <requestid>523666</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>5e50d5884f23d018c6337d6abcacfe37</srcmd5>
+    <version>3.26.0</version>
+    <time>1520502655</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581435 from dimstar)</comment>
+    <requestid>582919</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>427fe97a2859f4224cad215e77ea0295</srcmd5>
+    <version>3.26.1</version>
+    <time>1550402360</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676259</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>fc2a8cb7479abe57857be66687ea2b59</srcmd5>
+    <version>3.26.1</version>
+    <time>1556914832</time>
+    <user>dimstar_suse</user>
+    <comment>- Make -lang package installable and ease upgrade: provide/obsolete
+  libgnomekbd by libgnomekbd8. (forwarded request 699631 from dimstar)</comment>
+    <requestid>699634</requestid>
+  </revision>
+</revisionlist>

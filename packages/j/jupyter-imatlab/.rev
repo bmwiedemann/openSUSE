@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>009f053fa6051d08f548ea7ee4fff64b</srcmd5>
+    <version>0.3</version>
+    <time>1558516005</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename to to match jupyter package naming guidelines.
+- Do not let pip produce pyc files with random path
+  to make package build reproducible (boo#1094323)
+- Use %license tag
+- Add license and readme
+- Update to version 0.3
+  * When an error occurs, don't display the outermost error from eval.
+  * Clarify message when errors come from plotly.
+  * Drop support for Jupyter 5.0 (requires workarounds); fix support for IPython 6.2, ipykernel 4.7.
+  * Figure exporter sorts figures by number and uses the screen resolution.
+- Enable kernel
+- Initial version
+</comment>
+    <requestid>698361</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c8ec0cd3f9cccc93a3bace39325c0392</srcmd5>
+    <version>0.4</version>
+    <time>1564483098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719657</requestid>
+  </revision>
+</revisionlist>

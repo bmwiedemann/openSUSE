@@ -1,0 +1,13 @@
+<package name="empathy" project="openSUSE:Factory">
+  <title>Instant Messenger Client for GNOME, based on Telepathy</title>
+  <description>Empathy is a messaging program which supports text, voice, and video
+chat and file transfers over many different protocols. You can tell it
+about your accounts on all those services and do all your chatting
+within one application.
+
+Empathy uses Telepathy for protocol support and has a user interface
+based on Gossip. Empathy is the default chat client in current
+versions of GNOME, making it easier for other GNOME applications to
+integrate collaboration functionality using Telepathy.</description>
+  <devel project="GNOME:Factory" package="empathy"/>
+</package>

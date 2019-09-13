@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e648c27bf19c0d14deadc3e5d8df598</srcmd5>
+    <version>3.25.3</version>
+    <time>1504103075</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit, fix installation issues of -lang package, identified by repo-checker</comment>
+    <requestid>519606</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b94dc0ae2bdbf551b9677e2dd12866dc</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332387</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 523457 from Zaitor)</comment>
+    <requestid>523538</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>85fdf2881e57005b3c61f562cec5a696</srcmd5>
+    <version>3.26.1</version>
+    <time>1507280551</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.26.1 (forwarded request 531729 from dimstar)</comment>
+    <requestid>531798</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>026ead42f41a0798c7ee82e2cdff841a</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052417</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0 (forwarded request 586758 from dimstar)</comment>
+    <requestid>586769</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2f2c008f8afa4930a2ba163096013c31</srcmd5>
+    <version>3.28.0</version>
+    <time>1521903956</time>
+    <user>dimstar_suse</user>
+    <comment>- Update descriptions. Fix SRPM group (forwarded request 587016 from jengelh)</comment>
+    <requestid>587952</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>29da81736344850d87a4384763e7eee3</srcmd5>
+    <version>3.30.0</version>
+    <time>1539756710</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 635605 from luc14n0)</comment>
+    <requestid>637361</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9bbd4899ba4eb8319173be091c813346</srcmd5>
+    <version>3.32.0</version>
+    <time>1554114623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689298</requestid>
+  </revision>
+</revisionlist>

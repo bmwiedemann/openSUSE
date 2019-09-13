@@ -1,0 +1,441 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a077d0dae15e1dde6f437da3b4d4ad79</srcmd5>
+    <version>1.47</version>
+    <time>1311951138</time>
+    <user>saschpe</user>
+    <comment>New package for operating system probing</comment>
+    <requestid>76112</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f8ffa94ee90bab906a48455a008b8c19</srcmd5>
+    <version>1.47</version>
+    <time>1311951147</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76112
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>eca9598c5e9186e795fc885c5e315664</srcmd5>
+    <version>1.47</version>
+    <time>1317744863</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86444 from uli_suse)</comment>
+    <requestid>86463</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>eca9598c5e9186e795fc885c5e315664</srcmd5>
+    <version>1.47</version>
+    <time>1319182222</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>da6d4c3c3c811b3b236f94f46d4c1efd</srcmd5>
+    <version>1.49</version>
+    <time>1325658343</time>
+    <user>coolo</user>
+    <comment>Clarify license (forwarded request 97026 from a_jaeger)</comment>
+    <requestid>97028</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>da6d4c3c3c811b3b236f94f46d4c1efd</srcmd5>
+    <version>1.49</version>
+    <time>1340183769</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>09f915ee82d8d95484bcbb49ff2fed5b</srcmd5>
+    <version>1.49</version>
+    <time>1357576217</time>
+    <user>coolo</user>
+    <comment>- add support for chainloading another UEFI bootloader (bnc#775610)
+  * 05efi - top level driver to search ESP
+  * efi-20microsoft - support Microsoft UEFI bootloader
+  * efi-10elilo - support ELILO UEFI bootloader (Agnelo de la Crotche)
+- skip legacy Microsoft bootloader on UEFI (bnc#775610) (forwarded request 147193 from arvidjaar)</comment>
+    <requestid>147212</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>b9f329af407b81a4b55da85ad9c7d1ff</srcmd5>
+    <version>1.49</version>
+    <time>1357675916</time>
+    <user>coolo</user>
+    <comment>- add os-prober-1.49-fix-grub2.cfg-parsing.patch (bnc#796919) (forwarded request 147484 from arvidjaar)</comment>
+    <requestid>147542</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>1633c2356a55021a833b9a95608f5860</srcmd5>
+    <version>1.49</version>
+    <time>1358683494</time>
+    <user>coolo</user>
+    <comment>- fix os-prober-1.49-fix-grub2.cfg-parsing.patch (bnc#799457)
+  * initrd was missing
+  * entries sometimes were not emitted (forwarded request 149277 from arvidjaar)</comment>
+    <requestid>149278</requestid>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>1633c2356a55021a833b9a95608f5860</srcmd5>
+    <version>1.49</version>
+    <time>1359109558</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>52b269f6e77137a24dea561f07635475</srcmd5>
+    <version>1.49</version>
+    <time>1359439296</time>
+    <user>coolo</user>
+    <comment>Mention newly added or removed file in changes file per the reviewing result factory maintainer.
+Also adding relevant bugzilla number. (forwarded request 150081 from michael-chang)</comment>
+    <requestid>150148</requestid>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>a75bd5fd628dad9938168b7254e0115b</srcmd5>
+    <version>1.49</version>
+    <time>1360506028</time>
+    <user>coolo</user>
+    <comment>- os-prober-usr_lib-detection.patch - fix detection of linux distro
+  which moved /lib to /usr/lib (e.g. Fedora)
+
+
+This fixes regression after grub2-mount started to be used. I think
+it should go in before final, at least Fedora 18 is missed without
+this patch. For post 12.3 I have prepared update to the current upstream
+which includes this fix. (forwarded request 154934 from arvidjaar)</comment>
+    <requestid>154968</requestid>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>435011b7ed7b029a3cbe70e1bb3b646b</srcmd5>
+    <version>1.49</version>
+    <time>1362414571</time>
+    <user>coolo</user>
+    <comment>Fix bnc#807190</comment>
+    <requestid>157195</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>baeb7da2249be4d78d7da839b20773ac</srcmd5>
+    <version>1.49</version>
+    <time>1364240426</time>
+    <user>coolo</user>
+    <comment>resubmit with patch mentioned in changes. (forwarded request 160858 from arvidjaar)</comment>
+    <requestid>160859</requestid>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>6a15c9bd7062491ae686f7139592a7ac</srcmd5>
+    <version>1.49</version>
+    <time>1365337492</time>
+    <user>coolo</user>
+    <comment>- add os-prober-linux-secure-boot.patch (bnc#810912)
+  * recognize linuxefi/initrdefi too (forwarded request 162966 from arvidjaar)</comment>
+    <requestid>163015</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>99896623bbcff318445e68ebe32dadb7</srcmd5>
+    <version>1.61</version>
+    <time>1371646381</time>
+    <user>coolo</user>
+    <comment>Companion to new grub2. Probably should not be accepted standalone,
+as it has at least one small patch that depends on new code in grub2. (forwarded request 179592 from arvidjaar)</comment>
+    <requestid>179621</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c4fedabbc5539ab87f98ebe1cea1fbf9</srcmd5>
+    <version>1.61</version>
+    <time>1377717394</time>
+    <user>coolo</user>
+    <comment>- add os-prober-accept-ESP-on-IMSM.patch
+  * accept EFI partition on IMSM MD array (bnc#818871)
+  * fix DOS partition table detection (forwarded request 196124 from arvidjaar)</comment>
+    <requestid>196332</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>c4fedabbc5539ab87f98ebe1cea1fbf9</srcmd5>
+    <version>1.61</version>
+    <time>1379663456</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>ff06af5358511021d68add440ba0c47d</srcmd5>
+    <version>1.61</version>
+    <time>1384092446</time>
+    <user>coolo</user>
+    <comment>- add require btrfsprogs (forwarded request 206055 from michael-chang)</comment>
+    <requestid>206423</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>20078c35d039af438e93400877e20d54</srcmd5>
+    <version>1.61</version>
+    <time>1386693859</time>
+    <user>coolo</user>
+    <comment>- add os-prober-dont-load-all-fs-module-and-dont-test-mount.patch
+  * don't modprobe that many kernel file system modules before mount
+    as mount will take care that for us (bnc#782689)
+  * don't test mount on partitions without any known file system
+    detected (bnc#851722) (forwarded request 210120 from michael-chang)</comment>
+    <requestid>210325</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>85f25592b533106172d922f7e190c128</srcmd5>
+    <version>1.61</version>
+    <time>1387833424</time>
+    <user>coolo</user>
+    <comment>- add os-prober-fix-btrfs-subvol-mounted-tests.patch
+  * move btrfs subvolume mounted tests after regualr rootfs tree
+    tests to make sure that root and subvolume fs tree are tested.
+  * the test order is just a preference, assuming that distribution
+    are installed to root fs tree more likely than to a subvolume. (forwarded request 211328 from michael-chang)</comment>
+    <requestid>212089</requestid>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>715470179cda91faad8fed37dcfeb873</srcmd5>
+    <version>1.61</version>
+    <time>1389953129</time>
+    <user>coolo</user>
+    <comment>- fix os-prober-btrfsfix.patch - current &quot;btrfs subvolume list -s&quot;
+  adds some extra fields. Adjust field number to get subvolume name. (forwarded request 214009 from arvidjaar)</comment>
+    <requestid>214068</requestid>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>af4f873b8d7f6be03d551ae625b97b98</srcmd5>
+    <version>1.61</version>
+    <time>1401685377</time>
+    <user>coolo</user>
+    <comment>- add os-prober-skip-part-on-multipath.patch
+  * fix os-prober creates many unusuable entries on multipath disk
+    (bnc#875327) (forwarded request 235735 from michael-chang)</comment>
+    <requestid>235738</requestid>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>639634e1f5ecc62d4dee94722bba8732</srcmd5>
+    <version>1.61</version>
+    <time>1403176118</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237618</requestid>
+  </revision>
+  <revision rev="25" vrev="11">
+    <srcmd5>5a4a4a9febb61441bbf8998797a95029</srcmd5>
+    <version>1.61</version>
+    <time>1403762423</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238272</requestid>
+  </revision>
+  <revision rev="26" vrev="13">
+    <srcmd5>5a4a4a9febb61441bbf8998797a95029</srcmd5>
+    <version>1.61</version>
+    <time>1409302083</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="14">
+    <srcmd5>55ce180f8d3d6200be826f542be749fd</srcmd5>
+    <version>1.61</version>
+    <time>1409407410</time>
+    <user>coolo</user>
+    <comment>- requires util-linux-systemd (bnc#892337) (forwarded request 245171 from michael-chang)</comment>
+    <requestid>245190</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d8f0d2a1727f6d7ce1b4ac9f25e4135f</srcmd5>
+    <version>1.65</version>
+    <time>1419159859</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265792</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>a78d1a1f0c721520999c6ccd12e2dd55</srcmd5>
+    <version>1.65</version>
+    <time>1422358525</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282828</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>4d643e4e891f546f018b3f34380d667f</srcmd5>
+    <version>1.65</version>
+    <time>1431795650</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307163</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>837c6be5827546c365a085435b947e08</srcmd5>
+    <version>1.65</version>
+    <time>1433312403</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309524</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>29540b225ba34a2771572a986b6eee28</srcmd5>
+    <version>1.65</version>
+    <time>1436111470</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312598</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>e9221aa481e6db1fdcad42344da49617</srcmd5>
+    <version>1.65</version>
+    <time>1438899420</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320066</requestid>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>64d8f95de439b28444af74295f922a04</srcmd5>
+    <version>1.65</version>
+    <time>1444636800</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>335139</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1a1670bb485144591b31ea615000ec0c</srcmd5>
+    <version>1.70</version>
+    <time>1447353534</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343298</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>51be19e2816a592f7e771e45774a9e7d</srcmd5>
+    <version>1.70</version>
+    <time>1451177875</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349415</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>13ea618acaf2e3bc38dacc1120c2ea2f</srcmd5>
+    <version>1.70</version>
+    <time>1474976506</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428987</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>beabfbc85e315de0134dfacdd8c132c1</srcmd5>
+    <version>1.70</version>
+    <time>1475749845</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433123</requestid>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>4aa6f6638ee25cf02d2aeb8b70304caa</srcmd5>
+    <version>1.70</version>
+    <time>1479300408</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440355</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>8b8560b0c92d75aa0823a1aeb1f2ec8b</srcmd5>
+    <version>1.74</version>
+    <time>1487767862</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459208</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>c5293adc692052e152292f38e35530f0</srcmd5>
+    <version>1.74</version>
+    <time>1488733072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461777</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>2e0d2bf6dad7d3d9b87e7e0ec940cbcd</srcmd5>
+    <version>1.74</version>
+    <time>1517823895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571875</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>2da42075bde51fd3c6fe66155c90567d</srcmd5>
+    <version>1.74</version>
+    <time>1519554773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579378</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>323b19b03161d64fcb4636f274ac43fa</srcmd5>
+    <version>1.74</version>
+    <time>1519902413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580557</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>80e9d0cd109df6bb5847b1db47959ebd</srcmd5>
+    <version>1.74</version>
+    <time>1529322546</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616818</requestid>
+  </revision>
+  <revision rev="46" vrev="7">
+    <srcmd5>a237b51287e5d71fbdf09fd2255f190c</srcmd5>
+    <version>1.74</version>
+    <time>1539093135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639760</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>481408d532c268e39c1623f79d115853</srcmd5>
+    <version>1.76</version>
+    <time>1540198958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641127</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>63b75156c81e69a2e247e019c448a1a6</srcmd5>
+    <version>1.76</version>
+    <time>1541514779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645858</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>fffdc6c41e853a83d499e123167aa8ce</srcmd5>
+    <version>1.76</version>
+    <time>1545222375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657083</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>623107976e6bb64913d1cf1ce5ea6b3e</srcmd5>
+    <version>1.76</version>
+    <time>1552571644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684190</requestid>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>260d1ae0c46f8a41f631e5e8acccb0b0</srcmd5>
+    <version>1.76</version>
+    <time>1556621739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697791</requestid>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>9db9032c585dbb449603b96be66670e4</srcmd5>
+    <version>1.76</version>
+    <time>1567848264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726443</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1668d56d3bb42fadff0b9d5a15e7a33</srcmd5>
+    <version>0.7.6</version>
+    <time>1491567631</time>
+    <user>maxlin_factory</user>
+    <comment>fix license tag to address review from sr#422610</comment>
+    <requestid>483243</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c4e22eb582d876fe3e72952fbcb7e680</srcmd5>
+    <version>0.7.7</version>
+    <time>1494346199</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.7.7 with cabal2obs.</comment>
+    <requestid>493589</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>92bfc29ad29a1e864884544165add1bb</srcmd5>
+    <version>0.7.7</version>
+    <time>1505506725</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525529</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>476f0fb3522439b12bf43db6a159c064</srcmd5>
+    <version>0.7.8</version>
+    <time>1527675277</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-th-lift to the latest version.</comment>
+    <requestid>607903</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e3a8cd7c2bcd20327f117b3712222d3a</srcmd5>
+    <version>0.7.10</version>
+    <time>1532445778</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update th-lift to version 0.7.10.
+  Upstream has not updated the file &quot;Changelog&quot; since the last
+  release.</comment>
+    <requestid>623873</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9264ab56ac89d4274663315deb2c3614</srcmd5>
+    <version>0.7.11</version>
+    <time>1535963695</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>632488</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ec8827c87e5b5fd007ae4e91d935cd46</srcmd5>
+    <version>0.7.11</version>
+    <time>1540451161</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643470</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>53656115449825a41d0f05d6de766a8b</srcmd5>
+    <version>0.8</version>
+    <time>1557389429</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>700205</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4a18531eabc8902b4b7dfe47b7212564</srcmd5>
+    <version>0.8.0.1</version>
+    <time>1558129395</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>703479</requestid>
+  </revision>
+</revisionlist>

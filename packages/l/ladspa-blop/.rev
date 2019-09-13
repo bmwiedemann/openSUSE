@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e35b4442b6afed07f2735e9a1cd436c</srcmd5>
+    <version>0.2.8</version>
+    <time>1393618474</time>
+    <user>coolo</user>
+    <comment>New package, just split from ladspa
+Resubmission after the license correction</comment>
+    <requestid>223892</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c6996eda9a694a0173d3f49860799434</srcmd5>
+    <version>0.2.8</version>
+    <time>1393936575</time>
+    <user>coolo</user>
+    <comment>- Run spec-cleaner
+- Remove obsoleted autoreq/autoprov tags
+- Patches carried from the original ladspa package:
+  blop-automake-fix.dif
+  blop-shlib.diff
+  blop-ladspa_dir.diff
+  blop-wdautil-fix.diff</comment>
+    <requestid>224427</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c6996eda9a694a0173d3f49860799434</srcmd5>
+    <version>0.2.8</version>
+    <time>1409301452</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

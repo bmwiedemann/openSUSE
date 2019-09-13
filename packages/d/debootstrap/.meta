@@ -1,0 +1,7 @@
+<package name="debootstrap" project="openSUSE:Factory">
+  <title>Bootstrap a basic Debian system</title>
+  <description>
+debootstrap is used to create a Debian base system from scratch, without requiring the availability of dpkg or apt. It does this by downloading .deb files from a mirror site, and carefully unpacking them into a directory which can eventually be chrooted into.
+  </description>
+  <devel project="devel:tools" package="debootstrap"/>
+</package>

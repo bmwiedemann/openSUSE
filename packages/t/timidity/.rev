@@ -1,0 +1,292 @@
+<revisionlist>
+  <revision rev="1" vrev="23">
+    <srcmd5>e7e5190aede3d1561383f78b14110e86</srcmd5>
+    <version>2.13.2</version>
+    <time>1168904347</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="57">
+    <srcmd5>72afcacf1a3c97758b4fff092c337bce</srcmd5>
+    <version>2.13.2</version>
+    <time>1170428048</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="66">
+    <srcmd5>657c984c05dd4fcdd351a272d02b2455</srcmd5>
+    <version>2.13.2</version>
+    <time>1175629804</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="82">
+    <srcmd5>99c1fc8b81dbdfadb40affbbf0f1c0cc</srcmd5>
+    <version>2.13.2</version>
+    <time>1179929945</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="88">
+    <srcmd5>ac73bce53c09323bfb98be6c8157e17c</srcmd5>
+    <version>2.13.2</version>
+    <time>1180901166</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="94">
+    <srcmd5>fd1708b2f0041ee2186c2321b48c718e</srcmd5>
+    <version>2.13.2</version>
+    <time>1181687242</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="97">
+    <srcmd5>b3ab6ad37906c3466f4695258405b242</srcmd5>
+    <version>2.13.2</version>
+    <time>1182360513</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="109">
+    <srcmd5>87846fe008c0c467b5dc0098f22d71c6</srcmd5>
+    <version>2.13.2</version>
+    <time>1186095624</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="161">
+    <srcmd5>5167a5034e3446284e934ed63e832de3</srcmd5>
+    <version>2.13.2</version>
+    <time>1201129007</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="191">
+    <srcmd5>b120ce333c48077d7d57e0333bca51cd</srcmd5>
+    <version>2.13.2</version>
+    <time>1208360398</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="247">
+    <srcmd5>0299577c3228b128b06f00bd9e94bce2</srcmd5>
+    <version>2.13.2</version>
+    <time>1222379412</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="248">
+    <srcmd5>0299577c3228b128b06f00bd9e94bce2</srcmd5>
+    <version>2.13.2</version>
+    <time>1222379412</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="249">
+    <srcmd5>a53a5387a03feaf8a4acb75c25170931</srcmd5>
+    <version>2.13.2</version>
+    <time>1247131309</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="251">
+    <srcmd5>a53a5387a03feaf8a4acb75c25170931</srcmd5>
+    <version>2.13.2</version>
+    <time>1247131309</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="252">
+    <srcmd5>f6885e9117ffe9fff1186eb6298e2267</srcmd5>
+    <version>2.13.2</version>
+    <time>1268926339</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="254">
+    <srcmd5>f6885e9117ffe9fff1186eb6298e2267</srcmd5>
+    <version>2.13.2</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="255">
+    <srcmd5>f6885e9117ffe9fff1186eb6298e2267</srcmd5>
+    <version>2.13.2</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="256">
+    <srcmd5>5b29d5417c688b9f2a97a9196bd18be1</srcmd5>
+    <version>unknown</version>
+    <time>1283790871</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/timidity based on submit request 47205 from user tiwai
+</comment>
+    <requestid>47205</requestid>
+  </revision>
+  <revision rev="19" vrev="258">
+    <srcmd5>a099691d40dc2b62649cfe3b86e5ff7a</srcmd5>
+    <version>2.13.2</version>
+    <time>1296608365</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59126 from user psmt
+</comment>
+    <requestid>59126</requestid>
+  </revision>
+  <revision rev="20" vrev="259">
+    <srcmd5>07eb4cf1471577f29e0110bef2293d3f</srcmd5>
+    <version>2.13.2</version>
+    <time>1296608375</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59126
+</comment>
+  </revision>
+  <revision rev="21" vrev="262">
+    <srcmd5>07eb4cf1471577f29e0110bef2293d3f</srcmd5>
+    <version>2.13.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="263">
+    <srcmd5>ed9c110b70e1b2ca42d1432ff6b74404</srcmd5>
+    <version>2.13.2</version>
+    <time>1313399812</time>
+    <user>saschpe</user>
+    <comment>- Fix inifinte loop with non-existing soundfont files</comment>
+    <requestid>78668</requestid>
+  </revision>
+  <revision rev="23" vrev="264">
+    <srcmd5>e1085a7fb02d4d4f9a390da1f3a01c0b</srcmd5>
+    <version>2.13.2</version>
+    <time>1313399820</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78668
+</comment>
+  </revision>
+  <revision rev="24" vrev="265">
+    <srcmd5>6eaa799b712a1486032c70daab9dc5fe</srcmd5>
+    <version>2.13.2</version>
+    <time>1316684673</time>
+    <user>saschpe</user>
+    <comment>- Fix timidity startup parameter bnc#675426 
+- Don't package INSTALL file (forwarded request 83949 from coolo)</comment>
+    <requestid>84019</requestid>
+  </revision>
+  <revision rev="25" vrev="267">
+    <srcmd5>6eaa799b712a1486032c70daab9dc5fe</srcmd5>
+    <version>2.13.2</version>
+    <time>1319182521</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="268">
+    <srcmd5>79d12f12ea9bb615f67e6dc107267207</srcmd5>
+    <version>2.13.2</version>
+    <time>1323085555</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95136 from coolo)</comment>
+    <requestid>95200</requestid>
+  </revision>
+  <revision rev="27" vrev="269">
+    <srcmd5>4fe1f8a17432689cc06293b05ad9197b</srcmd5>
+    <version>2.13.2</version>
+    <time>1323194912</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="28" vrev="270">
+    <srcmd5>9012f9c2eddf20f509f09ddc21c1ea43</srcmd5>
+    <version>2.13.2</version>
+    <time>1333000133</time>
+    <user>coolo</user>
+    <comment>Fix build. (forwarded request 111423 from a_jaeger)</comment>
+    <requestid>111459</requestid>
+  </revision>
+  <revision rev="29" vrev="271">
+    <srcmd5>ebed91f1a91d9e35a98073cf683fa599</srcmd5>
+    <version>2.13.2</version>
+    <time>1338280587</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Disable building the Motif output plugin
+  (see http://lists.opensuse.org/opensuse-factory/2012-05/msg00133.html) (forwarded request 122622 from jengelh)</comment>
+    <requestid>122631</requestid>
+  </revision>
+  <revision rev="30" vrev="273">
+    <srcmd5>ebed91f1a91d9e35a98073cf683fa599</srcmd5>
+    <version>2.13.2</version>
+    <time>1340184276</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9031705312d2dab7595f3e75a060c451</srcmd5>
+    <version>2.13.99</version>
+    <time>1347619255</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134085</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>5ede6c3abbba51f72b0d5d507566b1a6</srcmd5>
+    <version>2.13.99</version>
+    <time>1352700448</time>
+    <user>coolo</user>
+    <comment>- Fixed init script TIM_ALSASEQPARAM -&gt; TIM_ALSASEQPARAMS bnc#788444
+- Reversed value of the two pameters in /etc/sysconfig/timidity and
+  added some extra parameters as default
+- Added some comment about the values of the paramters and
+  two recommended package: fluid-soundfont-gm and fluid-soundfont-gs</comment>
+    <requestid>140760</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>f5c3cfc7c92e19a86b57cbd5a77a37f9</srcmd5>
+    <version>2.13.99</version>
+    <time>1355134140</time>
+    <user>coolo</user>
+    <comment> (forwarded request 143759 from fdekruijf)</comment>
+    <requestid>144911</requestid>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>f5c3cfc7c92e19a86b57cbd5a77a37f9</srcmd5>
+    <version>2.13.99</version>
+    <time>1359110492</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>f5c3cfc7c92e19a86b57cbd5a77a37f9</srcmd5>
+    <version>2.13.99</version>
+    <time>1379664824</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1a766f877e19dc818b38794643e84997</srcmd5>
+    <version>2.14.0</version>
+    <time>1408021084</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244522</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>1a766f877e19dc818b38794643e84997</srcmd5>
+    <version>2.14.0</version>
+    <time>1409303502</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>74e79aadc4b9b6c4c3b3e3571d8b6ffe</srcmd5>
+    <version>2.14.0</version>
+    <time>1506594920</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529000</requestid>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>b1512488b0b6d2a00ac025bd5ce034ff</srcmd5>
+    <version>2.14.0</version>
+    <time>1511517279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544854</requestid>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>460f4fe7136a36cd1007460891d45165</srcmd5>
+    <version>2.14.0</version>
+    <time>1519145865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578388</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="libva-gl" project="openSUSE:Factory">
+  <title>Video Acceleration (VA) API for Linux</title>
+  <description>The libva library implements the Video Acceleration (VA) API for Linux.
+The library loads a hardware dependendent driver.</description>
+  <devel project="openSUSE:Factory" package="libva"/>
+  <bcntsynctag>libva</bcntsynctag>
+</package>

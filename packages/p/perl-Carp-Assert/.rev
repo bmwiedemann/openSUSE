@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79f3485d40322b73c6c95d4ee6ba068a</srcmd5>
+    <version>0.20</version>
+    <time>1168448182</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="102">
+    <srcmd5>79f3485d40322b73c6c95d4ee6ba068a</srcmd5>
+    <version>0.20</version>
+    <time>1168448182</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="103">
+    <srcmd5>686faeceb8593494aebb7c286e5de939</srcmd5>
+    <version>0.20</version>
+    <time>1245337121</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="104">
+    <srcmd5>649a8e2cbc420a591450b4c4155a4da8</srcmd5>
+    <version>0.20</version>
+    <time>1248728663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="106">
+    <srcmd5>649a8e2cbc420a591450b4c4155a4da8</srcmd5>
+    <version>0.20</version>
+    <time>1248728663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="107">
+    <srcmd5>d7d49573b060e4237a7c4e19da95b023</srcmd5>
+    <version>0.20</version>
+    <time>1263229779</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Carp-Assert based on submit request 28922 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="108">
+    <srcmd5>fdc3a0ebf44b7f16cf4d517afb62d7a3</srcmd5>
+    <version>0.20</version>
+    <time>1268832341</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Carp-Assert based on submit request 35005 from user computersalat
+</comment>
+    <requestid>35005</requestid>
+  </revision>
+  <revision rev="8" vrev="109">
+    <srcmd5>e018261929d20ad7bed0e35378a6848b</srcmd5>
+    <version>0.20</version>
+    <time>1268925379</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="111">
+    <srcmd5>e018261929d20ad7bed0e35378a6848b</srcmd5>
+    <version>0.20</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="112">
+    <srcmd5>e018261929d20ad7bed0e35378a6848b</srcmd5>
+    <version>0.20</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="113">
+    <srcmd5>4d7aa1b67dd1928240ba39d07574de22</srcmd5>
+    <version>0.20</version>
+    <time>1291581519</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54475 from user coolo
+</comment>
+    <requestid>54475</requestid>
+  </revision>
+  <revision rev="12" vrev="114">
+    <srcmd5>95a98044b350924cb69971892b655e8a</srcmd5>
+    <version>0.20</version>
+    <time>1291581526</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54475
+</comment>
+  </revision>
+  <revision rev="13" vrev="117">
+    <srcmd5>95a98044b350924cb69971892b655e8a</srcmd5>
+    <version>0.20</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="118">
+    <srcmd5>ea2232f8b363d7b11fafd9d6ea77bcbd</srcmd5>
+    <version>0.20</version>
+    <time>1314779256</time>
+    <user>saschpe</user>
+    <comment>Standardized &quot;Authors:&quot; format in description of perl-Carp-Assert.spec (forwarded request 80268 from aturrini)</comment>
+    <requestid>80285</requestid>
+  </revision>
+  <revision rev="15" vrev="119">
+    <srcmd5>75b05acf264485c4e355a02dfbb337c2</srcmd5>
+    <version>0.20</version>
+    <time>1314779265</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80285
+</comment>
+  </revision>
+  <revision rev="16" vrev="121">
+    <srcmd5>75b05acf264485c4e355a02dfbb337c2</srcmd5>
+    <version>0.20</version>
+    <time>1319182245</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="122">
+    <srcmd5>a62ada4dd87f902d2a736180fc11fbb5</srcmd5>
+    <version>0.20</version>
+    <time>1321627583</time>
+    <user>coolo</user>
+    <comment>- regenerate with cpanspec 1.78.05</comment>
+    <requestid>91944</requestid>
+  </revision>
+  <revision rev="18" vrev="123">
+    <srcmd5>d460ba341985c453264d98a2a8ec623d</srcmd5>
+    <version>0.20</version>
+    <time>1323193088</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="125">
+    <srcmd5>d460ba341985c453264d98a2a8ec623d</srcmd5>
+    <version>0.20</version>
+    <time>1340183803</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="127">
+    <srcmd5>d460ba341985c453264d98a2a8ec623d</srcmd5>
+    <version>0.20</version>
+    <time>1359109610</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="129">
+    <srcmd5>d460ba341985c453264d98a2a8ec623d</srcmd5>
+    <version>0.20</version>
+    <time>1379663574</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="131">
+    <srcmd5>d460ba341985c453264d98a2a8ec623d</srcmd5>
+    <version>0.20</version>
+    <time>1409302187</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d67da36a11a243309ac4454ff1b7998f</srcmd5>
+    <version>0.21</version>
+    <time>1429107746</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295992</requestid>
+  </revision>
+</revisionlist>

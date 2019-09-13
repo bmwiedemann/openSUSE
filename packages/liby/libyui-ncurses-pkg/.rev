@@ -1,0 +1,295 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7d197ed84fb104bb589fff2a8ef88c6</srcmd5>
+    <version>2.42.0</version>
+    <time>1344528061</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>130479</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5aa2ecd697f9b55cdbfae55214740952</srcmd5>
+    <version>2.42.0</version>
+    <time>1346829965</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>132536</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f2d1cea50cbc28480945753160bb9a86</srcmd5>
+    <version>2.42.2</version>
+    <time>1347347530</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>133254</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>95e11d5528a0aa8b0db3db16f39ca6c2</srcmd5>
+    <version>2.43.0</version>
+    <time>1349437562</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>137013</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2bb71dcf95d2cab63b85b838cda28f0d</srcmd5>
+    <version>2.43.1</version>
+    <time>1353413331</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>141380</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ef318ea4216e84da6c7d23d59f27b3f5</srcmd5>
+    <version>2.43.1</version>
+    <time>1355925010</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145872</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bc33bda323108a4728d43814ceb2d068</srcmd5>
+    <version>2.43.2</version>
+    <time>1357819974</time>
+    <user>coolo</user>
+    <comment>improved help text</comment>
+    <requestid>147715</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0b4d0139b0fd89ca6d78ce56d217cc2d</srcmd5>
+    <version>2.43.3</version>
+    <time>1359019563</time>
+    <user>coolo</user>
+    <comment>Bug-fix for package search (searching in summary and keywords didn't work correctly because arguments were confused) </comment>
+    <requestid>149627</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0b4d0139b0fd89ca6d78ce56d217cc2d</srcmd5>
+    <version>2.43.3</version>
+    <time>1359109387</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0a0de929cf279a46b4cc53b82dfb040f</srcmd5>
+    <version>2.43.4</version>
+    <time>1361453053</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>155953</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>85f2abdca094fb5e9590bc707fe2d1d2</srcmd5>
+    <version>2.43.6</version>
+    <time>1368469381</time>
+    <user>coolo</user>
+    <comment>- use a common toplevel CMakeLists.txt
+- fix building *-doc pkgs
+- introduce bootstrap.sh
+- Version 2.43.6
+
+- Cast return of setCandidate() to bool (due to libzypp changes)
+
+- use SONAME from libyui instead of VERSION.cmake
+- V 2.43.5</comment>
+    <requestid>175288</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8bc5a5eb58c2fbadde9a13474a4705bc</srcmd5>
+    <version>2.44.0</version>
+    <time>1372428315</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>181234</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7cf360f3bd67773ce2466a471c8d4595</srcmd5>
+    <version>2.44.1</version>
+    <time>1373130875</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>182313</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d32f1bcb1a7e6c318c412372f7a2320d</srcmd5>
+    <version>2.44.2</version>
+    <time>1373982083</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183108</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9df4fe58102b7f1b8509080b76783202</srcmd5>
+    <version>2.44.2</version>
+    <time>1374387097</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183822</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b7520008709c32927c2f521a0e21cbee</srcmd5>
+    <version>2.44.3</version>
+    <time>1375177461</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184490</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e7efffd3e4904245706abb5c59dc7c80</srcmd5>
+    <version>2.44.4</version>
+    <time>1375628162</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>185644</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>e7efffd3e4904245706abb5c59dc7c80</srcmd5>
+    <version>2.44.4</version>
+    <time>1379663148</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3193e928e1f34782522c5e6f80b11ddd</srcmd5>
+    <version>2.45.0</version>
+    <time>1385142491</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>207956</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>df06ce6db3ef4180269e8e91dbfab784</srcmd5>
+    <version>2.46.0</version>
+    <time>1389284714</time>
+    <user>coolo</user>
+    <comment>- adjusted to libyui so version 6
+- 2.46.0</comment>
+    <requestid>213267</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6351b47046042af253291fde37f43172</srcmd5>
+    <version>2.46.1</version>
+    <time>1406645281</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.1</comment>
+    <requestid>242717</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>6351b47046042af253291fde37f43172</srcmd5>
+    <version>2.46.1</version>
+    <time>1409301780</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8b47e2fe7cd206cbe62b57d675cd0f49</srcmd5>
+    <version>2.46.2</version>
+    <time>1421873529</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.2</comment>
+    <requestid>282102</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7a98b3b074e8f3b1f1287bc7ea956165</srcmd5>
+    <version>2.47.0</version>
+    <time>1437059696</time>
+    <user>coolo</user>
+    <comment>submit new version 2.47.0</comment>
+    <requestid>315708</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5ce22c951e081206007cde9c55b3368c</srcmd5>
+    <version>2.48.1</version>
+    <time>1443335923</time>
+    <user>coolo</user>
+    <comment>submit new version 2.48.1</comment>
+    <requestid>332573</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>42c2fa51fbd379941349af583c37fb15</srcmd5>
+    <version>2.48.2</version>
+    <time>1445350839</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.48.2</comment>
+    <requestid>337222</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>68f8493817d8550d464129312c9b86e2</srcmd5>
+    <version>2.48.3</version>
+    <time>1480785804</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.48.3</comment>
+    <requestid>442717</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>257ae8daacbde65f7c51473e44a00ab7</srcmd5>
+    <version>2.48.4</version>
+    <time>1481272534</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.48.4</comment>
+    <requestid>444319</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>174a80c1e6e455fb57c73e0fe833efac</srcmd5>
+    <version>2.48.5</version>
+    <time>1502560921</time>
+    <user>maxlin_factory</user>
+    <comment>submit new version 2.48.5</comment>
+    <requestid>515036</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>235e250a2caf812b675d4661005e1867</srcmd5>
+    <version>2.48.7</version>
+    <time>1532774219</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.48.7</comment>
+    <requestid>623728</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ca8b2704cdcd73145d9dc8322559f267</srcmd5>
+    <version>2.48.8</version>
+    <time>1533214510</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.48.8</comment>
+    <requestid>626439</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>4fb6e0acb6f568b88cca2f962f129894</srcmd5>
+    <version>2.48.8</version>
+    <time>1536678583</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631259</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a984279c492a2c91be65bb34ffdae63c</srcmd5>
+    <version>2.48.9</version>
+    <time>1541152201</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.48.9</comment>
+    <requestid>644601</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>67686dba7bd01b4f87ef43ff8395f5c3</srcmd5>
+    <version>2.49.0</version>
+    <time>1555830111</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.49.0</comment>
+    <requestid>695313</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>9f8074beac9078844fafa778b4ae541b</srcmd5>
+    <version>2.48.9</version>
+    <time>1555929282</time>
+    <user>maxlin_factory</user>
+    <comment>revert libyui stack updates due to https://bugzilla.opensuse.org/show_bug.cgi?id=1132980</comment>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>67686dba7bd01b4f87ef43ff8395f5c3</srcmd5>
+    <version>2.49.0</version>
+    <time>1561732468</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for Qt 5.13 testing</comment>
+    <requestid>700338</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6cea1586d32233815ede0b4e1a9c8246</srcmd5>
+    <version>5.0.0</version>
+    <time>1287959004</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51308 from user dimstar
+</comment>
+    <requestid>51308</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>066cfae71e4a6c76b9e7efeb28a47b46</srcmd5>
+    <version>5.0.0</version>
+    <time>1295313572</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57915 from user sbrabec
+</comment>
+    <requestid>57915</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a6ff3815bf5446d3e2002dea0ae23b01</srcmd5>
+    <version>5.0.0</version>
+    <time>1295313581</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57915
+</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>a6ff3815bf5446d3e2002dea0ae23b01</srcmd5>
+    <version>5.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4bbe74929d6b58f262da9bd1a02e4933</srcmd5>
+    <version>5.0.2</version>
+    <time>1312445279</time>
+    <user>saschpe</user>
+    <comment>update to 5.0.2, fixed a rpmlint warning about duplicate files in the apidocs (forwarded request 76839 from NicoK)</comment>
+    <requestid>76840</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>976ed9c86cb2587716d3dc9d2e78b6e4</srcmd5>
+    <version>5.0.2</version>
+    <time>1312445289</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76840
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>976ed9c86cb2587716d3dc9d2e78b6e4</srcmd5>
+    <version>5.0.2</version>
+    <time>1319182079</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>ecdd0fc7dbb738b9bda299bdbb5d0727</srcmd5>
+    <version>5.0.2</version>
+    <time>1323192175</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>ecdd0fc7dbb738b9bda299bdbb5d0727</srcmd5>
+    <version>5.0.2</version>
+    <time>1340183570</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>ecdd0fc7dbb738b9bda299bdbb5d0727</srcmd5>
+    <version>5.0.2</version>
+    <time>1359109250</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>ecdd0fc7dbb738b9bda299bdbb5d0727</srcmd5>
+    <version>5.0.2</version>
+    <time>1379662916</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>3b4f315c7af070e6d00e331e901e59b0</srcmd5>
+    <version>5.0.2</version>
+    <time>1393232554</time>
+    <user>coolo</user>
+    <comment>Fix build for factory.
+Fallout from update of gwenhywfar? (forwarded request 223579 from Zaitor)</comment>
+    <requestid>223587</requestid>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>3b4f315c7af070e6d00e331e901e59b0</srcmd5>
+    <version>5.0.2</version>
+    <time>1409301520</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4a6ac8b6a3f19aa7f7a8a60852eba01b</srcmd5>
+    <version>5.0.4</version>
+    <time>1462051913</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392976</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>636968bfdcffeb3f5bcc3b78841401fb</srcmd5>
+    <version>5.0.99</version>
+    <time>1503592849</time>
+    <user>dimstar_suse</user>
+    <comment>- Set version tag for beta version lower than 5.1.0.
+- Update to version 5.1.0beta:
+  + support ZKA cards for home banking (by Holger Magnussen)</comment>
+    <requestid>511840</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b1549ed1ffbb9e8902a0bf033c80a269</srcmd5>
+    <version>5.0.99</version>
+    <time>1538502360</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638220</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>10c607f416eaa69746c523bfbf3d7538</srcmd5>
+    <version>5.1.2</version>
+    <time>1556107011</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>678057</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>7b8b0874786a3c6a8291e471a8d2170d</srcmd5>
+    <version>5.0.99</version>
+    <time>1556207965</time>
+    <user>maxlin_factory</user>
+    <comment>reverting due to gwenhwyfar 4.99.8 has been reverted</comment>
+  </revision>
+</revisionlist>

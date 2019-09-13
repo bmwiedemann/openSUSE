@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d8a21f535a5653a95065c09ecdd6b46f</srcmd5>
+    <version>1.7</version>
+    <time>1326796505</time>
+    <user>coolo</user>
+    <comment>New package: libpurple/pidgin plugin, requested by community member</comment>
+    <requestid>100053</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f2c73a9988c58a4fb94061fdd21f6647</srcmd5>
+    <version>1.7</version>
+    <time>1326962639</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+
+SDPDX format (forwarded request 100128 from babelworx)</comment>
+    <requestid>100377</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f2c73a9988c58a4fb94061fdd21f6647</srcmd5>
+    <version>1.7</version>
+    <time>1340184000</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>f2c73a9988c58a4fb94061fdd21f6647</srcmd5>
+    <version>1.7</version>
+    <time>1359109923</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>f2c73a9988c58a4fb94061fdd21f6647</srcmd5>
+    <version>1.7</version>
+    <time>1379664026</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>f2c73a9988c58a4fb94061fdd21f6647</srcmd5>
+    <version>1.7</version>
+    <time>1409302697</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e918e3d3813c21eab4b9cbbc0107c048</srcmd5>
+    <version>1.9</version>
+    <time>1485511404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>447607</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>315efa5dad91b3c656e811ec2a5348cf</srcmd5>
+    <version>1.11</version>
+    <time>1496225776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>494020</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1d173dbbbcb6ac856036f43ccb0caffe</srcmd5>
+    <version>1.12</version>
+    <time>1521499082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587933</requestid>
+  </revision>
+</revisionlist>

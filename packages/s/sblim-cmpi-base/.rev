@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>75c84fa0bbf50c411ea4be97f9c4fdc4</srcmd5>
+    <version>1.6.2</version>
+    <time>1375783429</time>
+    <user>coolo</user>
+    <comment>accept sblim-testsuite first</comment>
+    <requestid>185929</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>75c84fa0bbf50c411ea4be97f9c4fdc4</srcmd5>
+    <version>1.6.2</version>
+    <time>1379664618</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>75c84fa0bbf50c411ea4be97f9c4fdc4</srcmd5>
+    <version>1.6.2</version>
+    <time>1409303319</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>723261eabdd9fe9840c208ef5794816e</srcmd5>
+    <version>1.6.3</version>
+    <time>1414066863</time>
+    <user>coolo</user>
+    <comment>- Update to 1.6.3
+  Bugs Fixed:
+  - SBLIM-2634: incorrect max cpu frequency
+  - SBLIM-2644: wrong UserModeTime and KernelModeTime
+  - SBLIM-2698: system name might have empty domainname
+                (-&gt; drop call-domainname.patch)
+  - SBLIM-2737: datetime values do not adjust for DST
+
+- fix Linux_ComputerSystem Name to include domain name
+  (fall back to domainname if dnsdomainname is empty)
+  Add call-domainname.patch  
+
+- install indication samples to docdir</comment>
+    <requestid>258064</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5427f2676d752b20f750e1aa36f5ea35</srcmd5>
+    <version>1.6.4</version>
+    <time>1414613428</time>
+    <user>coolo</user>
+    <comment>- Update to 1.6.4
+  Bugs Fixed:
+  - SBLIM-2737: bugfix for sprintf() handling</comment>
+    <requestid>258680</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>29031b1f17e7c7e53fd4243490d70551</srcmd5>
+    <version>1.6.4</version>
+    <time>1417246795</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>263279</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>346a5c219d192cf75fa883367d3d44cd</srcmd5>
+    <version>1.6.4</version>
+    <time>1417643267</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263625</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>b7129e75599c62d170155393872d61b4</srcmd5>
+    <version>1.6.4</version>
+    <time>1435172202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313256</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>d6104f44a7dcdbfd68a8211a1279eaeb</srcmd5>
+    <version>1.6.4</version>
+    <time>1512734371</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix RHEL7 build
+</comment>
+    <requestid>554859</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>9130e610645952b8df87825aa13a3458</srcmd5>
+    <version>1.6.4</version>
+    <time>1526463654</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix missing dependencies in Makefile.am
+  0001-make-lib-dependencies-explicit-in-Makefile.am.patch
+- enable parallel make
+</comment>
+    <requestid>607416</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>f4fbc6b4b742fe54ee623def0e8d01b8</srcmd5>
+    <version>1.6.4</version>
+    <time>1566900094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726409</requestid>
+  </revision>
+</revisionlist>

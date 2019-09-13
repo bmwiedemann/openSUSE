@@ -1,0 +1,5 @@
+<package name="newlib" project="openSUSE:Factory">
+  <title>newlib</title>
+  <description>C standard library for embedded devices.</description>
+  <devel project="devel:gcc" package="newlib"/>
+</package>

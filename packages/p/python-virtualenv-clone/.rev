@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1fcd40da5f7f250659126041f3c2e66d</srcmd5>
+    <version>0.2.4</version>
+    <time>1358434375</time>
+    <user>coolo</user>
+    <comment>Please add to Factory.</comment>
+    <requestid>148780</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1fcd40da5f7f250659126041f3c2e66d</srcmd5>
+    <version>0.2.4</version>
+    <time>1359110140</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>1fcd40da5f7f250659126041f3c2e66d</srcmd5>
+    <version>0.2.4</version>
+    <time>1379664307</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>348ca181f27d7339b4dc11f0218da603</srcmd5>
+    <version>0.2.4</version>
+    <time>1382693671</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204678</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>348ca181f27d7339b4dc11f0218da603</srcmd5>
+    <version>0.2.4</version>
+    <time>1409303017</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1d9e1c83c599ef96616624f75fa1c644</srcmd5>
+    <version>0.2.5</version>
+    <time>1418251486</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264553</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>10d6c77f169a94482104b3c8b46c91ab</srcmd5>
+    <version>0.2.6</version>
+    <time>1457014593</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>364979</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7b362772ef1799741b514a0db285278b</srcmd5>
+    <version>0.2.6</version>
+    <time>1493708078</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489355</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>baff08f46009616033923f1dc0cc347a</srcmd5>
+    <version>0.2.6</version>
+    <time>1545648354</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659746</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d915bce3fa6c2f429fee92d06c8528f9</srcmd5>
+    <version>0.5.3</version>
+    <time>1555237356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693640</requestid>
+  </revision>
+</revisionlist>

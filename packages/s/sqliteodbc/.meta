@@ -1,0 +1,7 @@
+<package name="sqliteodbc" project="openSUSE:Factory">
+  <title>SQLite ODBC Driver</title>
+  <description>This package is based on the package 'sqliteodbc' from project 'home:cornell_vrdc'.
+
+The SQLite Database Engine provides a lightweight C library to access database files using a large subset of SQL92 without the overhead of RDBMS server processes</description>
+  <devel project="server:database" package="sqliteodbc"/>
+</package>

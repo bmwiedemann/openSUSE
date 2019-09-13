@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>beee64cc11e5e400f645a8c05deb984e</srcmd5>
+    <version>0.1.9</version>
+    <time>1441727012</time>
+    <user>dimstar_suse</user>
+    <comment>New package. qnapi development is active again so let's have it in a Factory.</comment>
+    <requestid>329324</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b7c215346d17d526cc0f68fc51ba3357</srcmd5>
+    <version>0.1.9</version>
+    <time>1446465325</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341877</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f26e2d1b5d1628a6dbda65e1c4dd22de</srcmd5>
+    <version>0.2.0</version>
+    <time>1450695909</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349746</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2c3a4b74fa9120731f027335d48ef244</srcmd5>
+    <version>0.2.2</version>
+    <time>1491469374</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485019</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>00d12146ee3ca081fba713679428ce51</srcmd5>
+    <version>0.2.3</version>
+    <time>1500669882</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500796</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>42c1fbdac1818e020da219374df3502b</srcmd5>
+    <version>0.2.3</version>
+    <time>1502892668</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>513023</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>61d1f62b724606b1591ea0ec2efcf717</srcmd5>
+    <version>0.2.3</version>
+    <time>1515506171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562783</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>c6cc388a09306da11377ed3c8c739371</srcmd5>
+    <version>0.2.3</version>
+    <time>1529402127</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616024</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>6dca5d69fed5fc4259aa4f7d40c1588e</srcmd5>
+    <version>0.2.3</version>
+    <time>1530653673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620330</requestid>
+  </revision>
+</revisionlist>

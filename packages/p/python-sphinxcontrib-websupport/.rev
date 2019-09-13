@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1119dc1938022ce7463fe9eaf5fdaf76</srcmd5>
+    <version>1.0.1</version>
+    <time>1498742032</time>
+    <user>dimstar_suse</user>
+    <comment>New package needed for newer Sphinx</comment>
+    <requestid>506224</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>54de03cdd6b1d6febbf5ec747b88877d</srcmd5>
+    <version>1.0.1</version>
+    <time>1499415465</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>508577</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>40144d25aa200428a9ac5a2950523a96</srcmd5>
+    <version>1.0.1</version>
+    <time>1506523961</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527170</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>29922eb814461834f635b819e6d85418</srcmd5>
+    <version>1.0.1</version>
+    <time>1520253245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580796</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f9962d8c2ba052fb9a1a36f87a10b2a8</srcmd5>
+    <version>1.0.1</version>
+    <time>1520852896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584289</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e298368c9eaec12cc5ca6516c211c4ae</srcmd5>
+    <version>1.0.1</version>
+    <time>1544816924</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+- Remove python-sphinxcontrib package as well.</comment>
+    <requestid>657512</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d6d200e1b8cc01d65e1b64783c0f532c</srcmd5>
+    <version>1.1.0</version>
+    <time>1556311280</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697037</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3ce5be5250cf8c8e05da234e58343262</srcmd5>
+    <version>1.1.2</version>
+    <time>1560861979</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to fix testing issues
+
+- Update to 1.1.2:
+  * Fixes for sphinx 2.0
+- Enable tests (failing for now)</comment>
+    <requestid>708109</requestid>
+  </revision>
+</revisionlist>

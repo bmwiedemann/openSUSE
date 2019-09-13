@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>340247e8a728b7459dd20dc56d618f6b</srcmd5>
+    <version>4.13a</version>
+    <time>1438421687</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed bad source url</comment>
+    <requestid>317425</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3aa88081909005c4ea12f70bc70d6966</srcmd5>
+    <version>4.13a</version>
+    <time>1543224537</time>
+    <user>dimstar_suse</user>
+    <comment>Update summaries. Remove redundant %clean section. Replace old $RPM_* shell vars.
+config-guess-sub-update.patch: remove
+copy config.guess, config.sub from texinfo to texi2html sources
+</comment>
+    <requestid>651304</requestid>
+  </revision>
+</revisionlist>

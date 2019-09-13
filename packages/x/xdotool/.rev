@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69e418c71b5357565aeaa833f413a8d9</srcmd5>
+    <version>2.20110530.1</version>
+    <time>1326292701</time>
+    <user>coolo</user>
+    <comment>A very useful X11 testing tool.</comment>
+    <requestid>99227</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c0eb5041f05e638fb93d204941ec584f</srcmd5>
+    <version>2.20110530.1</version>
+    <time>1329318008</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104580 from coolo)</comment>
+    <requestid>104697</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c0eb5041f05e638fb93d204941ec584f</srcmd5>
+    <version>2.20110530.1</version>
+    <time>1340184341</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>c0eb5041f05e638fb93d204941ec584f</srcmd5>
+    <version>2.20110530.1</version>
+    <time>1359110602</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1c6223827267b6ccb1e0fb2d16abdc59</srcmd5>
+    <version>2.2012+git.20130201.65cb0b1</version>
+    <time>1363269760</time>
+    <user>coolo</user>
+    <comment>- update to github master @ e0a3e8fb
+  + don't try to access xdo until after we verify it's not null. (#18, reported by zarelit)
+  + mark swedish and danish symbol typing as known-broken, allow skipping them by setting $SKIP_KNOWN_BROKEN_TESTS
+  + provide a way to override which specific test combinations are run
+  + create a way to build xdotool without setting rpath (see e.g. https://wiki.debian.org/RpathIssue)
+  + include the CPPFLAGS variable for C preprocessor flags
+  + Avoid unnecessary double linking
+  + bump major version due to API overhaul (including function name normalization)
+  + constify display argument in xdo_new() since it will not be modified.
+  + allow xdo_free(NULL) without segfaults
+
+- add disabled source service and update to github master @ 118979c5
+  + Don't translate a window's location if its parent is the root.
+  + Fixed merge conflict
+  + Fixed an error in xdo_get_window_property
+  + Merge miss
+  + Unified naming convention for all functions of the API
+  + Changed the behaviour of xdo_get_window_property
+  + Remove xdo_version.h when cleaning
+  + Removed all signed/unsigned conflicts
+  + Changed XKeycodeToKeysym to XkbKeycodeToKeysym to get rid of compilation warnings
+  + Changed name on xdo_getwinprop() to xdo_window_get_property()
+  + Fixed some minor compilation warnings
+  + Replaced xdo_get_active_modifiers with xdo_active_keys_to_keycode_list
+  + Fix another C++ reserved word issue. Reported in http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=663007
+  + add '--file' argument for the type command
+  + don't emit 'findclient' messages
+  + Hack linker rpath to solve problem of /usr/local/lib (or elsewhere) not being in the run-time linker path (see ldd, etc).
+  + abort if we're using a shell that probably won't work
+  + fix librt linking on GNU Hurd</comment>
+    <requestid>158787</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1c6223827267b6ccb1e0fb2d16abdc59</srcmd5>
+    <version>2.2012+git.20130201.65cb0b1</version>
+    <time>1379665011</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>1c6223827267b6ccb1e0fb2d16abdc59</srcmd5>
+    <version>2.2012+git.20130201.65cb0b1</version>
+    <time>1409303693</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>7e7314e6496209de6aa61c3f9dd639fe</srcmd5>
+    <version>2.2012+git.20130201.65cb0b1</version>
+    <time>1415636907</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260130</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>48fbf3fb38a008439b552b8a63496f4b</srcmd5>
+    <version>2.2012+git.20130201.65cb0b1</version>
+    <time>1500975613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>512183</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0c53c4693a6fa169aaf2c07139cf0bdd</srcmd5>
+    <version>3.20160805.1</version>
+    <time>1519218730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578403</requestid>
+  </revision>
+</revisionlist>

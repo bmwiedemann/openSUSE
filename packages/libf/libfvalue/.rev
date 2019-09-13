@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2053d8209a0c5287339d7492547f7288</srcmd5>
+    <version>0~20150104</version>
+    <time>1422532469</time>
+    <user>dimstar_suse</user>
+    <comment>new libyal package - Part of libyal 2015 refresh - may need to go to staging D.  Numerous libyal packages recently submitted.</comment>
+    <requestid>280520</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f910e6f5857d52b9b545f1f9a3ee6ffa</srcmd5>
+    <version>0~20151226</version>
+    <time>1453416301</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355091</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>18799a23992b9b8b0b15cd5030362193</srcmd5>
+    <version>0~20151226</version>
+    <time>1454921247</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>357604</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e7847912742833c6880be7e2ccf250f7</srcmd5>
+    <version>0~20170113</version>
+    <time>1487681237</time>
+    <user>dimstar_suse</user>
+    <comment>2017 update</comment>
+    <requestid>458542</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3d3279c1424c4ed62acd0fe0089bc3e6</srcmd5>
+    <version>0~20180817</version>
+    <time>1560337778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696089</requestid>
+  </revision>
+</revisionlist>

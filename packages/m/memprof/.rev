@@ -1,0 +1,183 @@
+<revisionlist>
+  <revision rev="1" vrev="37">
+    <srcmd5>1ac7a99a7e5843026461678c1545ac3d</srcmd5>
+    <version>0.6</version>
+    <time>1168561875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="38">
+    <srcmd5>3d328b1832248c36b53901dd0e074c66</srcmd5>
+    <version>0.6</version>
+    <time>1169511941</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="44">
+    <srcmd5>84cc071b29abec21cf763358d4f17acd</srcmd5>
+    <version>0.6</version>
+    <time>1175122578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="91">
+    <srcmd5>0c804d12a96c19a9257dd1cad0ded2b5</srcmd5>
+    <version>0.6</version>
+    <time>1186683151</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="154">
+    <srcmd5>e80bb44d58278dc7d25e6e9f3ecc8461</srcmd5>
+    <version>0.6</version>
+    <time>1201126040</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="213">
+    <srcmd5>13d5d6171a28ac08ff3cdf5d13ce28e0</srcmd5>
+    <version>0.6</version>
+    <time>1216061764</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="252">
+    <srcmd5>1444f98a092b3e9e6503c99734f04972</srcmd5>
+    <version>0.6</version>
+    <time>1233994222</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="253">
+    <srcmd5>5d49fc094bfedbc0013f834a394ae852</srcmd5>
+    <version>0.6</version>
+    <time>1236815606</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="255">
+    <srcmd5>5d49fc094bfedbc0013f834a394ae852</srcmd5>
+    <version>0.6</version>
+    <time>1236815606</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="256">
+    <srcmd5>08017732a16a6b825871de396772826e</srcmd5>
+    <version>0.6</version>
+    <time>1268924926</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="258">
+    <srcmd5>08017732a16a6b825871de396772826e</srcmd5>
+    <version>0.6</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="259">
+    <srcmd5>08017732a16a6b825871de396772826e</srcmd5>
+    <version>0.6</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5a7fe254a88c9bc32ae8d6869ad636d0</srcmd5>
+    <version>0.6.2</version>
+    <time>1281402313</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/memprof based on submit request 45237 from user vuntz
+</comment>
+    <requestid>45237</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>cabf4c303f328140cb9c18973f334011</srcmd5>
+    <version>0.6.2</version>
+    <time>1297643075</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60974 from user vuntz
+</comment>
+    <requestid>60974</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>f14d92415d3a94ceaa75c9e6126bdcb6</srcmd5>
+    <version>0.6.2</version>
+    <time>1297643082</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60974
+</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>f14d92415d3a94ceaa75c9e6126bdcb6</srcmd5>
+    <version>0.6.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>f14d92415d3a94ceaa75c9e6126bdcb6</srcmd5>
+    <version>0.6.2</version>
+    <time>1319182175</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>41d98b47395a081831908c6e8ee60450</srcmd5>
+    <version>0.6.2</version>
+    <time>1325787240</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98936</requestid>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>e9451a56a19bf23b017cda894d418637</srcmd5>
+    <version>0.6.2</version>
+    <time>1329242613</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104411 from coolo)</comment>
+    <requestid>104655</requestid>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>e9451a56a19bf23b017cda894d418637</srcmd5>
+    <version>0.6.2</version>
+    <time>1340183696</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>d9822c70eb490b35d0fe28f8c9631031</srcmd5>
+    <version>0.6.2</version>
+    <time>1348573542</time>
+    <user>coolo</user>
+    <comment>Tweak, that almost got lost here (forwarded request 135478 from dimstar)</comment>
+    <requestid>135479</requestid>
+  </revision>
+  <revision rev="22" vrev="14">
+    <srcmd5>1a222538c435d59f9b8a5919ec5314ca</srcmd5>
+    <version>0.6.2</version>
+    <time>1353305195</time>
+    <user>coolo</user>
+    <comment>Fix build with new binutils (forwarded request 141427 from Zaitor)</comment>
+    <requestid>141732</requestid>
+  </revision>
+  <revision rev="23" vrev="16">
+    <srcmd5>1a222538c435d59f9b8a5919ec5314ca</srcmd5>
+    <version>0.6.2</version>
+    <time>1359109440</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="18">
+    <srcmd5>1a222538c435d59f9b8a5919ec5314ca</srcmd5>
+    <version>0.6.2</version>
+    <time>1379663281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>1a222538c435d59f9b8a5919ec5314ca</srcmd5>
+    <version>0.6.2</version>
+    <time>1409301886</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="21">
+    <srcmd5>5ee71eb568cd50d94249ac1af6cc874d</srcmd5>
+    <version>0.6.2</version>
+    <time>1443068134</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332689</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,452 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>65148d87e243dadacf16fa5921502d64</srcmd5>
+    <version>1.5.34</version>
+    <time>1513677032</time>
+    <user>dimstar_suse</user>
+    <comment>- Specfile cleanup:
+  * Update source URLs; fedorahosted has been retired.
+  * Fix package Group.
+  * Run spec-cleaner for minor formatting clean-ups.
+- update to 1.5.34
+- Update translations from zanata (cs new, de updated)
+- Add some tooltips
+- Add an option whether to use pango font fallback to emoji-picker
+- Update emoji annotations from CLDR
+- Add Recommends: google-noto-emoji-color-fonts
+- update to 1.5.33
+- Update translations from zanata (es new)
+- Install appstream metadata to /usr/share/metainfo/
+- Update UnicodeData.txt to Unicode 10.0.0
+- Fix test cases and kakasi support for the update of the
+  emoji annotations from CLDR
+- Update emoji annotations from CLDR
+- Skip the emoji which already have skin tone modifiers
+  in itb_emoji.emoji_by_label()
+- Never load characters of Unicode categories “Cc”, “Co”,
+  and “Cs” into the emoji dictionary
+- Update emoji-data.txt to 5.0
+- update to 1.5.32
+- Fix error when starting emoji-picker when the “recently-used” does not yet exist
+- Update emojione.json to version 3.0
+- Add the data from CLDR common/annotationsDerived
+- Load also the CLDR annotations from “annotationsDerived”
+- update to 1.5.31
+- Rename option --use_vs16 to --non_fully_qualified
+  (effectivly reversing the default)
+- Make description labels in info popover selectable to be able
+  to copy and paste their contents
+- Sort similar emoji with the same number of matching labels
+  by cldr_order distance
+- Map cldr subgroup 'person-sport' to emojione category 'activity'
+- Make the categorie listings and the search work right
+  when using --use_vs16
+- Always store only non-fully-qualified emoji or emoji-sequences
+  in the internal dictionary
+- Update emoji annotations from CLDR
+- update to 1.5.30
+- Update translations from zanata (de, pl, uk updated)
+- Use string order as a fallback to cldr_order in category listings
+- The rainbow flag should be a zwj sequence
+- Also display the Unicode version in the emoji info popover
+- When looking up emoji or other characters via Unicode codepoint,
+  ignore surrogates and private use characters
+- Show the fonts really used to render an emoji in the
+  info popover for the emoji
+- Fix typo in translatable string
+- itb_emoji.py: Use CLDR order to sort the candidates and
+  the similar emoji if score is the same
+- update to 1.5.29
+- Add Recommends: noto-coloremoji-fonts, “Noto Color Emoji”
+  looks much better than “Symbola” even in gray scale.
+- Update translations from zanata (de, pl updated)
+- Add a “--version” command line option to emoji-picker
+- itb_emoji.py: Also read emoji-test.txt (from unicode.org)
+- emoji-picker: Set default font to first available in
+  ['Noto Color Emoji', 'Emoji One', 'Symbola']
+- Small parsing improvement of emoji-sequences.txt
+- Add support to either use U+FE0F VARIATION SELECTOR-16 in emoji sequences or not
+- emoji-picker: Show “∅ Search produced empty result.” when nothing matches in a search
+- update to 1.5.28
+- Allow query by code point even if Python’s unicodedata.name()
+  does not know the character
+- Also read names from emoji-sequences.txt and emoji-zwj-sequences.txt
+- itb_emoji.py: Also read emoji-sequences.txt (from unicode.org)
+- Fix positioning of info popover (fix a typo in an “if” statement)
+- Show emoji properties from unicode.org when debugging is on
+- itb_emoji.py: Also read emoji-zwj-sequences.txt (from unicode.org)
+- Also use the emoji properties from unicode.org to decide whether
+  to offer a lookup on emojipedia
+- Use property “Emoji_Modifier_Base” from emoji-data.txt to check
+  whether an emoji supports skin tones
+- itb_emoji.py: Also read emoji-data.txt (from unicode.org)
+- Tentative skin tone support for families
+- Improve skin tone support: make it work for professions (roles) as well
+- Make skin tone popover scrollable and limit its maximum size
+- update to 1.5.27
+- Update translations from zanata (pl, uk updated)
+- emoji-picker: make skin tone selection work for gendered emoji
+Thu Mar  16 08:34:40 UTC 2017 - maiku.fabian@gmail.com
+- update to 1.5.26
+- Update translations from zanata (de updated)
+- Emulate xdg.BaseDirectory.save_data_path() on systems which lack pyxdg
+- Show the skin tone popover also on a long press gesture
+- Fix pyhunspell support
+  Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/5#issuecomment-286251818
+Tue Mar  14 15:14:28 UTC 2017 - maiku.fabian@gmail.com
+- add python3-pyxdg to BuildRequires only for
+  0%{?sle_version} &gt;= 120200
+Mon Mar  13 17:50:58 UTC 2017 - maiku.fabian@gmail.com
+- add python3-pyxdg to BuildRequires
+Mon Mar  13 16:11:04 UTC 2017 - maiku.fabian@gmail.com
+- update to 1.5.25
+- Update translations from zanata (de, pl, uk updated, zh_CN new)
+- Show the categories as well on right mouse click in emoji-picker
+- Improve information displayed on right mouse click in emoji-picker
+- html.unescape() the strings parsed from the cldr annotations
+- Fix fontsize change for invisible emoji in browse flowbox
+- Add an option whether the arrow keys are allowed to reopen a preëdit
+- Add an option to work around the broken forward_key_event()
+  in the Qt 4/5 im module
+- Use xdg.BaseDirectory to add a USER_DATADIR to the
+  search path for data for itb_emoji.py
+- emoji_picker.py: Speedup: Fix wrong indentation of block
+  in _fill_flowbox_browse()
+- emoji_picker.py: Print some profiling information when debugging is enabled
+- Store the clipboard with gtk_clipboard_store() to keep it around
+  after emoji-picker quits
+- emoji-picker: Do not override the decoration layout of the header bar
+- When an emoji with a different skin tone is selected,
+  replace the original emoji immediately
+- Make emoji-picker work on dark themes like Adwaita-dark as well
+Mon Mar  06 16:11:04 UTC 2017 - maiku.fabian@gmail.com
+- update to 1.5.24
+- Update translations from zanata (de updated)
+- The spin button to change the fontsize should grab focus without selecting
+- emoji-picker: Don’t check if ibus is running,
+  ibus does not need to run for emoji-picker
+- Load .desktop files for emoji-picker and ibus-setup-typing-booster
+  correctly under Gnome Wayland
+- Show the most recently used skin tone by default
+- Use Popovers for skin tones
+- Don’t use HeaderBar with the default widget titlebar
+- Display the detailed information of an emoji as a popover, not as a tooltip
+- Use CSS to show light gray borders around flowbox and listbox children
+Mon Feb  27 15:53:28 UTC 2017 - maiku.fabian@gmail.com
+- remove fix-emoji-picker-desktop-file.patch (fixed upstream)
+Mon Feb  27 15:44:47 UTC 2017 - maiku.fabian@gmail.com
+- update to 1.5.23
+- Update translations from zanata (de, ja, pl, uk updated)
+- emoji_picker.py: Add a menu button to change the font for the emoji
+- emoji-picker: Make background colour of the flowbox listing the emoji white
+- emoji-picker: Use “Symbola” as the default font
+- Remember the font and the fontsize in a config file
+- emoji_picker.py: Add a spin button to change the font size of the emoji
+- Add option to the emoji-picker to load *all* Unicode characters
+- UI redesign of the emoji-picker
+- Return an empty list immediately if candidates() is called with an empty search string
+- Make the fontsize for the names of the emoji in the search results smaller
+- Make the search in emoji-picker a bit more responsive by using GLib.idle_add()
+- Save the recently used emoji immediately, not only when the program quits
+- Set default font size of emoji-picker to 24 instead of 16
+- Set the emoji font only for the emoji, not for its name in the search results
+- Set WM_CLASS of emoji-picker and ibus-setup-typing-booster correctly
+- Add “Icon” and “Categories” to emoji-picker.desktop
+Fri Feb  24 12:57:33 UTC 2017 - maiku.fabian@gmail.com
+- Remove &quot;Buildarch: noarch&quot; again
+  (does not build when --libexecdir=%{_prefix}/%{_lib}/ibus is used
+  but that probably has to be used)
+Wed Feb  22 18:51:20 UTC 2017 - maiku.fabian@gmail.com
+- make it noarch
+Wed Feb  22 11:46:57 UTC 2017 - maiku.fabian@gmail.com
+- fix build (thanks to Stefan Dirsch)
+Wed Feb  22 11:46:57 UTC 2017 - maiku.fabian@gmail.com
+- fix emoji-picker desktop file
+Wed Feb  22 11:04:22 UTC 2017 - maiku.fabian@gmail.com
+- update to 1.5.22
+- Update translations from zanata (de, fr, pl, uk updated)
+- Add an emoji-picker
+- Update of en.xml from CLDR’s emoji annotations
+- Fix skipping of the Korean test case when no Korean dictionary can be found
+- Fix invalid xml in typing-booster.appdata.xml
+- add Requires: python3-pyxdg (for the emoji-picker)
+Wed Feb  08 10:38:20 UTC 2017 - maiku.fabian@gmail.com
+- add BuildRequires:  python3
+  This seems to contain sqlite3, needed for &quot;make check&quot;
+Tue Feb  07 10:15:11 UTC 2017 - maiku.fabian@gmail.com
+- update to 1.5.21
+- add BuildRequires:  hunspell-fr_FR (for make check)
+- Handle Return and Enter correctly when the cursor is not at
+  the end of the preëdit (Resolves: rhbz#1418313)
+- Values of spin buttons should not be translatable
+- Make the categories from emojione translatable
+- Make emoji matching accent insensitive
+- If available use pykakasi to convert Japanese emoji category
+  names to hiragana
+- If available use the “pinyin” Python module to add pinyin
+  to the Chinese names and keywords
+- Don’t fallback to “zh” from “zh_TW”, “zh_HK”, “zh_MO” and “zh_Hant”
+- Don’t sort the labels when listing similar emoji
+- Don’t change Unicode categories to lowercase when loading,
+  use the original case
+- Also treat categories 'Zl' and 'Zp' as invisible and add
+  Unicode code point
+- When searching for similar emoji, the original emoji should be
+  most similar to itself
+- Fix duplicate listing of labels when looking up similar emoji
+- Make it optionally possible to match emoji in Japanese using romaji
+- itb_emoji.py: Add the code point to the name of invisible
+  characters also when looking up similar characters
+- Better matching of the Unicode categories
+- Small performance optimization in EmojiMatcher.similar()
+- Remove any U+2028 LINE SEPARATOR and U+2029 PARAGRAPH SEPARATOR characters
+  from the lookup table
+- Nicer display of the matching labels when looking up similar emoji
+- Don’t strip mathematical symbols (category 'Sm') from tokens
+- Update of en.xml from CLDR’s emoji annotations
+- Update translations from zanata (de, pl updated)
+Fri Jan  27 14:42:08 UTC 2017 - maiku.fabian@gmail.com
+- update to 1.5.20
+- Calculate the maximum word length for each dictionary individually
+- Use .startswith instead of regexp matching when matching in hunspell
+  dictionaries (speed optimization)
+- Improve accent insensitive matching (“filosofičtějš” should also
+  match “filosofičtější”)
+- Some updates for the emoji annotations in en.xml from CLDR
+Thu Jan  19 08:43:06 UTC 2017 - maiku.fabian@gmail.com
+- update to 1.5.19
+- Improve setup layout (thanks to Trinh Anh Ngoc &lt;atw1990@gmail.com&gt;)
+- Add some more directories to search for dictionaries (for FreeBSD)
+- Wrong variable “page_size” was used in set_lookup_table_orientation()
+- Do not try to reopen the preëdit when any modifier except
+  CapsLock is on (Resolves: rhbz#1414642)
+---------------------------------------------------------
+Tue Jan  17 14:00:23 UTC 2017 - maiku.fabian@gmail.com
+- update to 1.5.18
+- Fix typo in the “Unbreak sqlite on Python 3.6” patch
+- Fix the fallback to use pyhunspell-python3 when python3-enchant
+  is not available
+- Remove useless ibus-typing-booster.pc
+Fri Jan  13 18:11:31 UTC 2017 - maiku.fabian@gmail.com
+- update to 1.5.17
+- Update py-compile to current upstream version
+- Also use ＿ U+FF3F FULLWIDTH LOW LINE as a separator for emoji keywords
+- Unbreak sqlite on Python 3.6 (thanks to Jan Alexander Steffens)
+- Return immediately if _update_candidates() is called with
+  empty input (Resolves: rhbz#1413082)
+Tue Jan  10 15:30:05 UTC 2017 - maiku.fabian@gmail.com
+- update  to 1.5.16
+- Remove everything following a tab (including the tab) from
+  hunspell dictionary lines (Resolves: rhbz#1411659)
+- Delete a candidate correctly from the user database even if
+  it starts with a prefix to be stripped from tokens (Resolves: rhbz#1411676)
+- Trigger emoji lookup when the input starts or ends with '_' or ' '
+- Better handling of BackSpace and Delete when reaching the
+  ends of the preëdit (Resolves: rhbz#1411688)
+- Search for hunspell dictionaries in a list of directories
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/6)
+- first version for SuSE 1.5.15
+</comment>
+    <requestid>546779</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9f9a1cfae0e2579345889185c2aeb7ba</srcmd5>
+    <version>1.5.34</version>
+    <time>1515342170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562085</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>022fa945b8c80d4d9518a94fbad0d35f</srcmd5>
+    <version>1.5.35</version>
+    <time>1521579497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586670</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c8505e2189371b0e3ac23959acb763b6</srcmd5>
+    <version>1.5.36</version>
+    <time>1524144569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597324</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a0a2dee825fdc64190c0f2b21bd5e03b</srcmd5>
+    <version>1.5.37</version>
+    <time>1526463742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607644</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>45f65395ce9a731048e358a46f99f23c</srcmd5>
+    <version>2.0.0</version>
+    <time>1527605589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612824</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cf49b19c714fc7e62886e20462cc488a</srcmd5>
+    <version>2.0.2</version>
+    <time>1530304491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619520</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>63e414ca62a989561d54b0e9174ca898</srcmd5>
+    <version>2.1.0</version>
+    <time>1532528053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625144</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7400b57553bb8cddc1b4a2a0aa2da3f4</srcmd5>
+    <version>2.1.1</version>
+    <time>1536327687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633705</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>db93f6eced07366732d1baade54c78d4</srcmd5>
+    <version>2.1.2</version>
+    <time>1538374595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637513</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5d134e90afa424dd643aa3f460d28ecb</srcmd5>
+    <version>2.1.3</version>
+    <time>1539251732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640841</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ddb905ce6c5a8c6827d48543165cd596</srcmd5>
+    <version>2.2.0</version>
+    <time>1542889640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651025</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d5a4efd1626c1e6c6d1882b8538b20bb</srcmd5>
+    <version>2.2.1</version>
+    <time>1543528832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652419</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>24eb895d8e0ac316d36a2240a67334fd</srcmd5>
+    <version>2.4.1</version>
+    <time>1546946826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662226</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0e9254ff39e35dd7d14942218f3e3479</srcmd5>
+    <version>2.5.0</version>
+    <time>1548335557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667649</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cd9f133ee2271ac44a0e59b1b5fc3a85</srcmd5>
+    <version>2.5.1</version>
+    <time>1549018007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670163</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fa547ea2054489afb350a03a695ce6a6</srcmd5>
+    <version>2.5.3</version>
+    <time>1551455291</time>
+    <user>dimstar_suse</user>
+    <comment>- run time-consuming tests simutaneously via script
+  or tumbleweed will fail due to OBS thought the job
+  was stuck
+- Update to 2.5.3
+- Update translations from zanata (ja, pl updated)
+- Update emoji annotations from CLDR
+- Use “NoIME” instead of “NoIme” as the internal name of the dummy input method
+- Update to 2.5.2
+- Fix test case for selecting non existing candidates for Fedora rawhide
+- Update UnicodeData.txt to current Unicode 12.0 draft
+- Update emoji data to Unicode 12.0 final for 2019
+- Update emoji annotations from CLDR
+- Initialize self.dictionary_sub_properties_prop_list = [] in self._init_properties()
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/46)
+- Fix test case for case mode change
+- Improve filter for dictionary selection if langtable available
+</comment>
+    <requestid>680065</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3d44d9585a606d8babae1f123370e5af</srcmd5>
+    <version>2.6.0</version>
+    <time>1551687862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681195</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4a6ab73bdb05d796571b12645ebd79e7</srcmd5>
+    <version>2.6.1</version>
+    <time>1557321408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701233</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0f6694901cf935b2c9774d6c37d20555</srcmd5>
+    <version>2.6.2</version>
+    <time>1559837910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708009</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>909851b57062dd699817b921f660e053</srcmd5>
+    <version>2.6.3</version>
+    <time>1561049785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711028</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>df911636804dd0c3261182204ccc1bc0</srcmd5>
+    <version>2.6.4</version>
+    <time>1563701696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717119</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ba49d8654b0d8485fd4bc2b763c90355</srcmd5>
+    <version>2.6.5</version>
+    <time>1567092443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726973</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>88291d41defe1695becb56cb5c6f0b72</srcmd5>
+    <version>2.6.6</version>
+    <time>1568379619</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>730297</requestid>
+  </revision>
+</revisionlist>

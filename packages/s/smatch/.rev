@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c12301cae3262c70406ee59b89eb8e0</srcmd5>
+    <version>20150820</version>
+    <time>1447234185</time>
+    <user>dimstar_suse</user>
+    <comment>add smatch</comment>
+    <requestid>337421</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>99d4f4ebd3ff03c46b13ce63b4d984df</srcmd5>
+    <version>20151208</version>
+    <time>1450695865</time>
+    <user>dimstar_suse</user>
+    <comment>update to 20151208</comment>
+    <requestid>349106</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f946f573f9f540f1db78098b4b391336</srcmd5>
+    <version>20160307</version>
+    <time>1458120866</time>
+    <user>dimstar_suse</user>
+    <comment>update to 20160307</comment>
+    <requestid>369090</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d4bfd8779b48f8d24a48522fb44f6651</srcmd5>
+    <version>20160715</version>
+    <time>1471504695</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>419775</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7bcb5d70d4dba690246355cdf83c91a2</srcmd5>
+    <version>20180125</version>
+    <time>1522503429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592538</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>de0999df2a72b25a7382f6c0a0edcc7f</srcmd5>
+    <version>20181114</version>
+    <time>1550048449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20181114:
+  * trinity: Proof of concept to auto-generate trinity spec files
+  * user_data: rename to smatch_kernel_user_data.c
+  * assigned_expr: rename to smatch_assigned_expr.c
+  * smatch: make the --enable/disable options take strings
+  * clock() is already defined on illumos, so rename the local function.
+  * Ignore &quot;#ident&quot; as found in some old sources.
+  * Use $(CFLAGS) when compiling smatch.c itself.
+  * smatch_nul_terminated: fix compile
+  * untracked_param: fix a NULL dereference
+  * uninitialized: fix a crashing bug parsing &quot;return (foo);&quot;
+  * nul_terminator: track when strings have a NUL terminator
+  * and many more small fixes and updates
+</comment>
+    <requestid>673295</requestid>
+  </revision>
+</revisionlist>

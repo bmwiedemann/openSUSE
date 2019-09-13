@@ -1,0 +1,7 @@
+<package name="torbrowser-launcher" project="openSUSE:Factory">
+  <title>Tor Browser Launcher</title>
+  <description>A launcher for Tor Browser for GNU/Linux users
+  </description>
+  <devel project="devel:languages:python" package="torbrowser-launcher"/>
+  <url>https://github.com/micahflee/torbrowser-launcher</url>
+</package>

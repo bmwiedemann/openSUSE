@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2be8345fa6e09659fa7e65a5a7b126c3</srcmd5>
+    <version>1.79.2</version>
+    <time>1512433692</time>
+    <user>dimstar_suse</user>
+    <comment>- Abandom the docbook-xsl-stylesheets-script package.
+  The dbtoepub script is available from the rubygem-dbtoepub
+  package.
+  The script pdf2index is available in docbook-xsl-pdf2index
+- First attempt to build the two DocBook stylesheet packages
+  from a single source (see bsc#1069884 for details):
+  - Added xslnons-build script from upstream.
+  - Improved dbxslt-install.sh script a lot
+- Fix bsc#1063066:
+  From 1.79.1 and later, upstream decided to release namespace
+  aware stylesheets only. The non-NS stylesheets have to be built
+  with the &quot;xslnons-build&quot; script (taken from upstream).
+  This is integrated now.
+  The switch from NS-aware to non-NS stylesheets help to fix this
+  problem.  
+- Restore working patch (bsc#1063066):
+  * Rebase docbook-xsl-stylesheets-non-recursive_string_subst.patch
+- Update to version 1.79.2
+- Rebase docbook-xsl-stylesheets-non-recursive_string_subst.patch
+- callout-gen is removed
+- Add docbook-xsl-stylesheets-non-recursive_string_subst.patch
+  Use str:replace from exslt.org to implement string.subst
+  string.subst implementation causes recursion issues when building
+  systemd documentation. This issue has been reported in
+  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=765567 and
+  https://bugs.archlinux.org/task/54694 .
+  Taken from https://github.com/fishilico/xslt10-stylesheets/commit/a7df4fbbef3ab0f97d50aa47f2ccfa0630a2686e
+- Explicitly package %{_docdir}/%{name} to fix build with RPM 4.13.
+- Use update-xml-catalog
+</comment>
+    <requestid>546168</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>26e2934a95ba6a0f8cedd3c1bbca41ad</srcmd5>
+    <version>1.79.2</version>
+    <time>1522934885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593155</requestid>
+  </revision>
+</revisionlist>

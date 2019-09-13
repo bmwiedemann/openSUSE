@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bcc88c90afff99c7d39670536c9248cc</srcmd5>
+    <version>5.1.2</version>
+    <time>1551215975</time>
+    <user>dimstar_suse</user>
+    <comment>- Ship header files with devel package for each HPC build (bsc#1125551).
+- Add explicit Requires: for matching libblacs2-* to non-HPC library package 
+- Update RPM groups.
+- Fix product groups.
+- Fix dependencies.
+- Consolidate use of openmpi1, openmpi2, openmpi3 for non-HPC builds.
+- Fix License.
+- Simpify naming scheme.
+- Fix more dependencies.
+- Rename package: test -&gt; examples.
+- Create HPC master package for doc and examples.
+- Fix shared library builds.
+- Build example binaries against shared libs for all builds.
+- Add Makefiles-Serialize-libseq-libplat-mommond_mod-for-parallel-builds.patch:
+  make sure builds are serialized for 'make -j &lt;n&gt;'
+- Version mumps, requires and buildrequires, remove unneeded buildrequires.
+- Only include requires for the respecive flavor (non-scotch, scotch).
+- Split off static packages &amp; their link package (where applicable).
+- Fix dependencies for devel packages.
+- Update to version 5.1.2
+  See Changelog file or http://mumps.enseeiht.fr/index.php?page=dwnld
+- Convert to full multibuild support: builds with scotch support
+  are separate, now.
+- Add HPC support (FATE#324151).
+- Move links from the sequential libraries to the MPI library directory
+  to a separate package, make this package an optional Recommends:
+  of the non-HPC library packages.
+- Move documentation to separate package.
+- Disable non-HPC builds and some MPI flavors for SLE.
+- Fix dependencies: All scotch devel packages come without 'lib'
+  prefix, now.
+- Refactor spec for _multibuild, currently non-HPC flavors only.
+- Setup MPI environment when building MPI flavors, fixes build on
+  Tumbleweed, Leap 15.x, SLE 15.
+- fix build against recent scalapack which includes blacs library
+- fix build for Factory and recent openmpi
+- install missing headers for the sequential version
+- fix broken requirements of mpi devel packages
+- split devel packages with devel and scotch-devel
+- devel packages don't require scotch-devel anymore
+- fix build with debuginfo enabled
+- minor spec file changes
+- remove atlas deps and link againt ref blas
+- fix build on i586
+- spec file cleanup and formating
+- remove mpich2 stuff
+- specfile cleanup and update with scotch changes
+- link with ATLAS shared libs libsatlas.so
+- build parallel libs for openmpi and mvapich2</comment>
+    <requestid>678598</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>431b7a9e83f92064793d533cb80b6c08</srcmd5>
+    <version>5.1.2</version>
+    <time>1551386692</time>
+    <user>coolo</user>
+    <comment>- Use -Wl,--whole-archive .. -Wl,--no-whole-archive instead of unpacking
+  static library to build a shared library.
+- Add dependency to gcc-gfortran to non-HPC build of devel package. (forwarded request 680113 from eeich)</comment>
+    <requestid>680114</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bc9f1235f7ff43c07eb9dcf2f585ac5b</srcmd5>
+    <version>5.1.2</version>
+    <time>1554372476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691267</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6b11c4e0761c40cdd63c86da30216750</srcmd5>
+    <version>5.1.2</version>
+    <time>1563366466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716027</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b2659deece1b9db33ec25e2730055178</srcmd5>
+    <version>5.2.1</version>
+    <time>1567849701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727691</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>236bbd8e24f80d18960302f082b89b08</srcmd5>
+    <version>5.2.1</version>
+    <time>1568066552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729470</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6eb34bfb20b97b9a14291bdbd08de2d5</srcmd5>
+    <version>1.30.2</version>
+    <time>1297385962</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59250 from user vuntz
+</comment>
+    <requestid>59250</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>87e3db8e0bd41f3ace29a9411147521b</srcmd5>
+    <version>1.30.2</version>
+    <time>1297385967</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59250
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5a71bcf2571e06bf8c56e73dbb6fb47f</srcmd5>
+    <version>1.30.2</version>
+    <time>1297644084</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60675 from user vuntz
+</comment>
+    <requestid>60675</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4a34dd97b7e7303e73fcab1c5529c19f</srcmd5>
+    <version>1.30.2</version>
+    <time>1297644090</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60675
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>4a34dd97b7e7303e73fcab1c5529c19f</srcmd5>
+    <version>1.30.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>4a34dd97b7e7303e73fcab1c5529c19f</srcmd5>
+    <version>1.30.2</version>
+    <time>1319181951</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>76bbb9e38afe5da7817ad567a1b56ba4</srcmd5>
+    <version>1.50</version>
+    <time>1325787175</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98928</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>cf192c337b1b37c3775c2399b91c966b</srcmd5>
+    <version>1.50</version>
+    <time>1326988549</time>
+    <user>coolo</user>
+    <comment>Pushing some bits of G:A (mostly new upstream releases)</comment>
+    <requestid>100707</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>cf192c337b1b37c3775c2399b91c966b</srcmd5>
+    <version>1.50</version>
+    <time>1340183420</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>cf192c337b1b37c3775c2399b91c966b</srcmd5>
+    <version>1.50</version>
+    <time>1359109020</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>cf192c337b1b37c3775c2399b91c966b</srcmd5>
+    <version>1.50</version>
+    <time>1379662578</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>cf192c337b1b37c3775c2399b91c966b</srcmd5>
+    <version>1.50</version>
+    <time>1409301126</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

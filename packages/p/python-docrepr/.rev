@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>91be747fdc57d3c4ae1c896e2127e0dc</srcmd5>
+    <version>0.1.0</version>
+    <time>1505920405</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-jupyter_ipython</comment>
+    <requestid>527411</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>91962cc245651c7f1dd9108562e55e47</srcmd5>
+    <version>0.1.0</version>
+    <time>1544726596</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654021</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8df1f3ae504e5ca7ae3a452f14ca1ab7</srcmd5>
+    <version>0.1.1</version>
+    <time>1552207222</time>
+    <user>coolo</user>
+    <comment>- Update to 0.1.1:
+  * PR: Fix possible Sphinxify.py TypeError on import
+  * PR: Remove dangling r in Readme
+  * docrepr failing to import in readthedocs</comment>
+    <requestid>682870</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>df81f85f9d89450108cfa5ae509238a8</srcmd5>
+    <version>0.1.1</version>
+    <time>1552985928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685826</requestid>
+  </revision>
+</revisionlist>

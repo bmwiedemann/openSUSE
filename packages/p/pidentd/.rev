@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="188">
+    <srcmd5>9d925a7af90cd002628befa06c17b697</srcmd5>
+    <version>3.1a25</version>
+    <time>1168903965</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="313">
+    <srcmd5>04dadcfbac53987b54e571eabf089ea0</srcmd5>
+    <version>3.1a25</version>
+    <time>1219449138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="320">
+    <srcmd5>d478ec9995c03c35d19ec2f50457f33f</srcmd5>
+    <version>3.1a25</version>
+    <time>1251294890</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/pidentd based on submit request 18817 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="4" vrev="322">
+    <srcmd5>d478ec9995c03c35d19ec2f50457f33f</srcmd5>
+    <version>3.1a25</version>
+    <time>1251294890</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/pidentd based on submit request 18817 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="5" vrev="323">
+    <srcmd5>bd37de07921045ac7b79565c18147f3f</srcmd5>
+    <version>3.1a25</version>
+    <time>1268925704</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="325">
+    <srcmd5>bd37de07921045ac7b79565c18147f3f</srcmd5>
+    <version>3.1a25</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="326">
+    <srcmd5>bd37de07921045ac7b79565c18147f3f</srcmd5>
+    <version>3.1a25</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="327">
+    <srcmd5>7246bde9596608a59ee1bf1a4e7af554</srcmd5>
+    <version>3.1a25</version>
+    <time>1290096142</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53175 from user coolo
+</comment>
+    <requestid>53175</requestid>
+  </revision>
+  <revision rev="9" vrev="328">
+    <srcmd5>a60f379014d2f8b98538d665f803fa9b</srcmd5>
+    <version>3.1a25</version>
+    <time>1290096150</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53175
+</comment>
+  </revision>
+  <revision rev="10" vrev="331">
+    <srcmd5>a60f379014d2f8b98538d665f803fa9b</srcmd5>
+    <version>3.1a25</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="333">
+    <srcmd5>a60f379014d2f8b98538d665f803fa9b</srcmd5>
+    <version>3.1a25</version>
+    <time>1319182356</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="334">
+    <srcmd5>3afebee77ceaf45755bf58322aa06a42</srcmd5>
+    <version>3.1a25</version>
+    <time>1322481336</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93818 from coolo)</comment>
+    <requestid>93946</requestid>
+  </revision>
+  <revision rev="13" vrev="335">
+    <srcmd5>e01d5824d2f685234d237101aa0ea68b</srcmd5>
+    <version>3.1a25</version>
+    <time>1335190340</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113790</requestid>
+  </revision>
+  <revision rev="14" vrev="336">
+    <srcmd5>c155fefcf037dc800b0cf0e52424cfb7</srcmd5>
+    <version>3.1a25</version>
+    <time>1337955491</time>
+    <user>coolo</user>
+    <comment>Fix build failures (forwarded request 121808 from flichtenheld)</comment>
+    <requestid>121816</requestid>
+  </revision>
+  <revision rev="15" vrev="338">
+    <srcmd5>c155fefcf037dc800b0cf0e52424cfb7</srcmd5>
+    <version>3.1a25</version>
+    <time>1340183999</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="340">
+    <srcmd5>c155fefcf037dc800b0cf0e52424cfb7</srcmd5>
+    <version>3.1a25</version>
+    <time>1359109923</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="342">
+    <srcmd5>c155fefcf037dc800b0cf0e52424cfb7</srcmd5>
+    <version>3.1a25</version>
+    <time>1379664024</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="344">
+    <srcmd5>c155fefcf037dc800b0cf0e52424cfb7</srcmd5>
+    <version>3.1a25</version>
+    <time>1409302696</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e1458d1cc8efe554bc16c787394c4966</srcmd5>
+    <version>3.0.19</version>
+    <time>1502186308</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>504898</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>aa759b2a55595ea4ed2c09291c35bdac</srcmd5>
+    <version>3.0.19</version>
+    <time>1523127323</time>
+    <user>dimstar_suse</user>
+    <comment>- latest sources dropped plib/strmatch.c and as such all the sources
+  are PD now. License is basically 'you can do whatever you want
+  as long as you don't claim you wrote it' (forwarded request 593992 from coolo)</comment>
+    <requestid>593995</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>aa98a616edd9a8823f3464c08bd587b6</srcmd5>
+    <version>3.0.19</version>
+    <time>1531592687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622462</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>58cf6031e65f8b6fd1912dca12e252c9</srcmd5>
+    <version>3.0.19</version>
+    <time>1537882926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637420</requestid>
+  </revision>
+</revisionlist>

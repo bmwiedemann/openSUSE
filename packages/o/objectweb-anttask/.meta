@@ -1,0 +1,5 @@
+<package name="objectweb-anttask" project="openSUSE:Factory">
+  <title>ObjectWeb Ant task</title>
+  <description>ObjectWeb Ant task</description>
+  <devel project="Java:packages" package="objectweb-anttask"/>
+</package>

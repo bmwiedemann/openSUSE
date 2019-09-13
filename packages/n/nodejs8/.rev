@@ -1,0 +1,419 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c07739bf08645071afb656f15480008a</srcmd5>
+    <version>8.1.4</version>
+    <time>1503592644</time>
+    <user>dimstar_suse</user>
+    <comment>NodeJS v8.x. The future LTS version.</comment>
+    <requestid>509754</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>16177723bbfd9448480b5c5c1d6b3b8d</srcmd5>
+    <version>8.4.0</version>
+    <time>1504521260</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release 8.4.0.
+
+Previous build was broken because of boo#1056783: for some reason the compiler was changed to GCC 6 (revision 23, not 17) but this change was never released to Factory.</comment>
+    <requestid>520137</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7599982dd70fe27c95bc5d8898ab238a</srcmd5>
+    <version>8.5.0</version>
+    <time>1506108815</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 8.5.0:
+  * build: Snapshots are now re-enabled in V8 (#14875)
+  * console: Implement minimal console.group(). (#14910)
+  * deps/libuv: upgraded to 1.14.1 (#14866)
+  * deps/nghttp2: upgraded to 1.25.0 (#14955)
+  * dns: Add &quot;verbatim&quot; option to dns.lookup(). When true, results
+    from the DNS resolver are passed on as-is, without the
+    reshuffling that Node.js otherwise does that puts IPv4
+    addresses before IPv6 addresses. (#14731)
+  * fs: add fs.copyFile and fs.copyFileSync which allows for more
+    efficient copying of files. (#15034)
+  * inspector: Enable async stack traces (#13870)
+  * module: Add support for ESM. This is currently behind the
+    --experimental-modules flag and requires the .mjs extension.
+    (#14369)
+  * napi: implement promise (#14365)
+  * os: Add support for CIDR notation to the output of the
+    networkInterfaces() method. (#14307)
+  * perf_hooks: An initial implementation of the Performance
+    Timing API for Node.js. This is the same Performance Timing
+    API implemented by modern browsers with a number of Node.js
+    specific properties. The User Timing mark() and measure() APIs
+    have also been implemented. (#14680)
+  * tls: multiple PFX in createSecureContext (#14793)
+- Change compiler version used:
+  * SLE 11 SP4: GCC 5
+  * SLE 12 and Leap 42: GCC 6
+  * Factory and SLE/Leap 15: default</comment>
+    <requestid>526982</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>77796d6c2ea81ae53e09422782ed4570</srcmd5>
+    <version>8.6.0</version>
+    <time>1506679020</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 8.6.0:
+  * crypto: Support for multiple ECDH curves.
+  * dgram:
+    + Added setMulticastInterface() API
+    + Custom lookup functions are now supported.
+  * n-api: The command-line flag is no longer required to use N-API
+  * tls: Docs-only deprecation of parseCertString().
+  * path: fix normalize paths ending with two dots
+  * see https://nodejs.org/en/blog/release/v8.6.0/ for full
+    changelog</comment>
+    <requestid>529110</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>be2ffbe90db09d2e34d3830ba33a9b03</srcmd5>
+    <version>8.8.0</version>
+    <time>1508946539</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release 8.8.0: fixes CVE-2017-14919</comment>
+    <requestid>536527</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>be1e55726d337af321437b84757cad42</srcmd5>
+    <version>8.8.1</version>
+    <time>1509105687</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release 8.8.1: fixes regression in 8.8.0</comment>
+    <requestid>536912</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c44a8501dec591fd41fd0394773902b9</srcmd5>
+    <version>8.9.1</version>
+    <time>1510912594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update nodejs.keyring based on current Release Team as found on
+  https://github.com/nodejs/node#release-team
+
+- Fix permissions of node-gyp. This should be executable to allow
+  building of binary node modules.
+
+- New upstream LTS version 8.9.1:
+  * openssl: upgrade openssl sources to 1.0.2m
+    [OpenSSL Security Advisory (bsc#1066242, bsc#1056058)
+     CVE-2017-3735 CVE-2017-3736]
+  * https: revert refactor to use http internals
+- Changes since 8.9.0 LTS version:
+  * deps: update to npm 5.5.1
+  * http2: The exposed http2 socket is no longer manipulatable
+  * module: support custom paths to require.resolve()
+  * util: util.TextEncoder and util.TextDecoder are no longer
+    experimental. No longer produces a warning when using them.
+- versioned.patch: refreshed
+- 0f3e69db.patch icu59.patch: removed empty patches</comment>
+    <requestid>542248</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ed4aec816f8a714ad35886abd35ac008</srcmd5>
+    <version>8.9.1</version>
+    <time>1511949284</time>
+    <user>dimstar_suse</user>
+    <comment>Require OpenSSL 1.0 as an interim measure until we backport support for OpenSSL 1.1 or figure out something else to do.</comment>
+    <requestid>546333</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e066c4398b32aa0109de3a9abe8b3f85</srcmd5>
+    <version>8.9.3</version>
+    <time>1512847972</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS release 8.9.3:
+  * buffer: buffers allocated with an invalid content will now be
+    zero filled
+    [ CVE-2017-15897, gh#nodejs/node#17428 ]
+  * deps/openssl: updated to 1.0.2n (only applies to SLE 12 SP1
+    and lower)
+    [ CVE-2017-3738 CVE-2017-15896 ]
+- Changes in 8.9.2:
+  * console: avoid adding infinite error listeners
+    [ gh#nodejs/node#16770 ]
+  * http2: improve errors thrown in header validation
+    [ gh#nodejs/node#16718 ]
+- Remove unnecessary curl BuildRequires
+- Enable gold linker on s390x (TW and SLE/Leap 15)
+- Build with bundled ICU if system ICU not available (only applies
+  to SLE 11/12 and Leap 42.x)
+</comment>
+    <requestid>555528</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>906ccda46c7315ca26209aec76adf451</srcmd5>
+    <version>8.9.3</version>
+    <time>1513583960</time>
+    <user>dimstar_suse</user>
+    <comment>- openssl11.patch: backport support for OpenSSL 1.1 (bnc#1066953)
+- Dropped 8334.diff - no longer needed</comment>
+    <requestid>557315</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>a5b9f6de36aa05ac55e82e694cfb9dc3</srcmd5>
+    <version>8.9.3</version>
+    <time>1515261134</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>561900</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>953f7552b944998b3dc36d195d828eda</srcmd5>
+    <version>8.9.4</version>
+    <time>1516222730</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>566595</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>29fa6f4decb7b2c38a32878a6caf59db</srcmd5>
+    <version>8.9.4</version>
+    <time>1517668870</time>
+    <user>dimstar_suse</user>
+    <comment>- even on recent codestreams there is no binutils gold on s390
+  only on s390x</comment>
+    <requestid>571325</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>e9300c9eb307cf5b0093a9f0e3960145</srcmd5>
+    <version>8.9.4</version>
+    <time>1519554936</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>578285</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2610eafaf024b5538d50a498a5e18f45</srcmd5>
+    <version>8.10.0</version>
+    <time>1522403922</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS release 8.10.0:
+  * deps:
+    + update V8 to 6.2.414.46
+    + revert ABI breaking changes in V8 6.2
+    + upgrade libuv to 1.19.1
+    + re land npm 5.6.0
+  * crypto:
+    + Support both OpenSSL 1.1.0 and 1.0.2. This allows us to drop
+      openssl11.patch
+    + warn on invalid authentication tag length
+  * async_hooks:
+    + update defaultTriggerAsyncIdScope for perf
+    + use typed array stack as fast path
+    + use scope for defaultTriggerAsyncId
+    + separate missing from default context
+    + deprecate undocumented API
+  * n-api: add helper for addons to get the event loop
+  * cli: add --stack-trace-limit to NODE_OPTIONS
+  * console: add support for console.debug
+  * module:
+    + add builtinModules
+    + replace default paths in require.resolve()
+  * src: add process.ppid
+  * http:
+    + support generic Duplex streams
+    + add rawPacket in err of clientError event
+    + better support for IPv6 addresses
+  * tls: unconsume stream on destroy
+  * process: improve unhandled rejection message
+  * stream: remove usage of *State.highWaterMark
+  * trace_events: add executionAsyncId to init events
+- remove any old manpage files in %pre from before update-alternatives
+  were used to manage symlinks to these manpages.
+- versioned.patch: refreshed</comment>
+    <requestid>591578</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>399df1170b6dd78c6ed16370c387674f</srcmd5>
+    <version>8.11.1</version>
+    <time>1523126831</time>
+    <user>dimstar_suse</user>
+    <comment>- Install license with %license, not %doc (bsc#1082318)
+
+- Fix some node-gyp permissions
+
+- New upstream LTS release 8.11.1:
+  * Security fixes:
+    + Fix for inspector DNS rebinding vulnerability
+      (bsc#1087463, CVE-2018-7160)
+    + Fix for 'path' module regular expression denial of service
+      (bsc#1087459, CVE-2018-7158)
+    + Reject spaces in HTTP Content-Length header values
+      (bsc#1087453, CVE-2018-7159)
+  * deps: upgrade http-parser to v2.8.0</comment>
+    <requestid>593717</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>26bc4efa32b4d791baa89eb5ce0102a9</srcmd5>
+    <version>8.11.2</version>
+    <time>1526646412</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS release 8.11.2:
+  * deps:
+    + update node-inspect to 1.11.3
+    + update nghttp2 to 1.29.0
+  * http2: Sync with current release stream
+  * n-api: Sync with current release stream
+- versioned.patch: rebased
+
+- icu_61_namespacefix.patch: Fix building with ICU61.1 (bsc#1091764)</comment>
+    <requestid>610023</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>289a01447395163bef141c74dad9e4d0</srcmd5>
+    <version>8.11.3</version>
+    <time>1529665962</time>
+    <user>maxlin_factory</user>
+    <comment>- Recommend same major version npm package (bsc#1097748)
+
+- New upstream LTS release 8.11.3:
+  * buffer: Fixes Denial of Service vulnerability where calling
+    Buffer.fill() could hang (CVE-2018-7167, bsc#1097375)
+  * http2:
+    + Fixes Denial of Service vulnerability by updating the http2
+      implementation to not crash under certain circumstances
+      during cleanup (CVE-2018-7161, bsc#1097404)
+    + Unbundled nghttp2 to fix Denial of Service vulnerability
+      (CVE-2018-1000168, bsc#1097401)
+
+- env_shebang.patch: use absolute paths in executable shebang lines
+- versioned.patch: updated to move shebang modifications to above
+  patch.
+
+- use gcc7 for SLE12
+- manual_configure.patch: configure nghttp2 correctly</comment>
+    <requestid>617096</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6b14fd7b8b3c7ebf825066ca03203efa</srcmd5>
+    <version>8.11.4</version>
+    <time>1535440853</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS release 8.11.4:
+  * buffer: Fix out-of-bounds (OOB) write in Buffer.write() for
+    UCS-2 encoding (CVE-2018-12115, bsc#1105019)
+  * deps: Upgrade to OpenSSL 1.0.2p, fixing:
+    + Client DoS due to large DH parameter
+      (CVE-2018-0732, bsc#1097158)
+    + ECDSA key extraction via local side-channel
+
+- Ensure neutrality of description.
+- Use %make_install.</comment>
+    <requestid>630498</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>76a9c874ffca88cf9df1088458f62bcb</srcmd5>
+    <version>8.11.4</version>
+    <time>1536094073</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>632297</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7c9da04ad66b22bdbbc28d936db711e9</srcmd5>
+    <version>8.12.0</version>
+    <time>1541508878</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>643771</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>42c4cec540ab372dc1b1dcb7b05d5e76</srcmd5>
+    <version>8.15.0</version>
+    <time>1547540028</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS release 8.15.0:
+  * cli: add --max-http-header-size flag
+  * http: add maxHeaderSize property
+- Changes in LTS release 8.14.1:
+  * http2: fix sequence of error/close events
+- Changes in LTS release 8.14.0:
+  * http:
+    + Headers received by HTTP servers must not exceed 8192 bytes
+      in total to prevent possible Denial of Service attacks.
+      (CVE-2018-12121, bsc#1117626)
+    + A timeout of 40 seconds now applies to servers receiving HTTP
+      headers. This value can be adjusted with server.headersTimeout.
+      Where headers are not completely received within this period,
+      the socket is destroyed on the next received chunk. In
+      conjunction with server.setTimeout(), this aids in protecting
+      against excessive resource retention and possible
+      Denial of Service. (CVE-2018-12122, bsc#1117627)
+    + Two-byte characters are now strictly disallowed for the path
+      option in HTTP client requests. Paths containing characters
+      outside of the range \u0021 - \u00ff will now be rejected
+      with a TypeError. This behavior can be reverted if necessary
+      by supplying the --security-revert=CVE-2018-12116 command
+      line argument (this is not recommended).
+      (CVE-2018-12116, bsc#1117630)
+  * url: Fix a bug that would allow a hostname being spoofed when
+    parsing URLs with url.parse() with the 'javascript:' protocol.
+    (CVE-2018-12123, bsc#1117629)
+- Changes in LTS release 8.13.0:
+  * assert: backport some assert commits
+  * deps:
+    + upgrade to libuv 1.23.2
+    + V8: cherry-pick 64-bit hash seed commits
+  * http: added aborted property to request
+  * http2: no longer experimental
+    + bump dependency of nghttp2 to 1.34.0
+- fix_ci_tests.patch: Reduce timeout for test-http2-session-timeout
+- skip_test_on_lowmem.patch: skip test on low-memory build machine
+- env_shebang.patch: dropped in favour of programmatic update
+
+- Enable armv6 build
+
+- flaky_test_rerun.patch: Rerun failing tests in case of flakiness</comment>
+    <requestid>664390</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ddc27ad704869e5dd71c3a1c2add7f4f</srcmd5>
+    <version>8.15.1</version>
+    <time>1552464340</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS release 8.15.1:
+  * http: Further prevention of &quot;Slowloris&quot; attacks on HTTP and HTTPS
+  connections by consistently applying the receive timeout set by
+  server.headersTimeout to connections in keep-alive mode.
+  (CVE-2019-5737, bsc#1127532)
+
+- nodejs.keyring: update keyring to today's list as per
+  https://github.com/nodejs/node</comment>
+    <requestid>681822</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>45bfbd4686f2504c439049df88e1c4b3</srcmd5>
+    <version>8.15.1</version>
+    <time>1557264029</time>
+    <user>dimstar_suse</user>
+    <comment>- openssl_1_1_1.patch: backport fixes for OpenSSL 1.1.1 (bsc#1134209)</comment>
+    <requestid>701348</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>aaefa47ce0a4bcdc16734a104a45687b</srcmd5>
+    <version>8.15.1</version>
+    <time>1565097063</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>721007</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>9ae4b499ca90c3d7d429b0baac0752f2</srcmd5>
+    <version>8.15.1</version>
+    <time>1566243431</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>724036</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>02accf0212ffb91bce1c22b04f9a4e61</srcmd5>
+    <version>8.16.1</version>
+    <time>1567091834</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>726172</requestid>
+  </revision>
+</revisionlist>

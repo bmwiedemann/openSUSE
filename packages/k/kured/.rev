@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b91d33c87c21e21c74c0e6309264a9fb</srcmd5>
+    <version>1.0.0+git24.g5731b98</version>
+    <time>1537018775</time>
+    <user>maxlin_factory</user>
+    <comment>- Remove hardcoded GOARCH=amd64 and GOOS=linux
+- Revise go build arg -ldflags and add -buildmode=pie
+  Together these fix rpmlint warnings:
+  - position-independent-executable-suggested
+  - statically-linked-binary
+- Upstream kured project code imports package as 'context'. Bump BuildRequires
+  to go1.7 wherein import path for package context graduates from
+  'golang.org/x/net/context' to the standard library as 'context'.
+  https://golang.org/doc/go1.7#context
+- Bump release number
+- Initial packaging of upstream master branch @ 5731b98 (tagged 1.0.0 + 24)
+- Include 24 commits since release 1.0.0 updating kubernetes version support
+- Dependency sources vendored via dep ensure per upstream build instructions
+- Man page converted from README.md, some HTML formatting artifacts present
+- rpmlint warning: position-independent-executable-suggested
+  - go1.11 currently in review status supports option -buildmode=pie
+- rpmlint warning: statically-linked-binary
+  - Go binaries are generally statically linked
+</comment>
+    <requestid>635505</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7263eac4c7633ef9bd35ef7df932dc10</srcmd5>
+    <version>1.1.0</version>
+    <time>1546946821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662067</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0ecadb80677ae794748ecabea5febb7f</srcmd5>
+    <version>1.1.0</version>
+    <time>1548064808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666975</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4ee0b7052f7e1b5342104642834b6ebd</srcmd5>
+    <version>1.1.0</version>
+    <time>1551455329</time>
+    <user>dimstar_suse</user>
+    <comment>- Change path in yaml file to point to official container image (forwarded request 680196 from kukuk)</comment>
+    <requestid>680197</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>de3770f0ef7bcc6dc60a2bbf946d55e9</srcmd5>
+    <version>1.1.0</version>
+    <time>1553888020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689655</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>7a6340dc4dc33c131dc05d8cfe3a975b</srcmd5>
+    <version>1.1.0</version>
+    <time>1554930584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692072</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>07f1a66c18bb68e85b4db215816708c4</srcmd5>
+    <version>1.2.0</version>
+    <time>1559580174</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0
+  - support newer kubernetes versions
+- Adjust kured-telemetrics.patch
+- Update vendor.tar.gz with recent versions</comment>
+    <requestid>704695</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5140b5ca8f8c5034888fa013b391699f</srcmd5>
+    <version>1.2.0</version>
+    <time>1559902603</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix path to image in manifest</comment>
+    <requestid>707776</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>83a1d1e0b1a8f26537cd3f0487938545</srcmd5>
+    <version>1.2.0</version>
+    <time>1561882480</time>
+    <user>dimstar_suse</user>
+    <comment>- k8s-1.14.diff: kubernetes 1.14.1 support from git</comment>
+    <requestid>711690</requestid>
+  </revision>
+</revisionlist>

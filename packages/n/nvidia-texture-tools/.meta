@@ -1,0 +1,18 @@
+<package name="nvidia-texture-tools" project="openSUSE:Factory">
+  <title>NVIDIA Texture Tools</title>
+  <description>This is the first alpha release of the new NVIDIA Texture Tools. The main highlights of 
+this release are support for all DX10 texture formats, higher speed and improved
+compression quality.
+
+In addition to that it also comes with a hardware accelerated compressor that 
+uses CUDA to compress blocks in parallel on the GPU and runs around 10 times 
+faster than the CPU counterpart.
+
+You can obtain CUDA from our developer site at:
+
+http://developer.nvidia.com/object/cuda.html
+
+The source code of the Texture Tools is being released under the terms of 
+the MIT license.</description>
+  <devel project="graphics" package="nvidia-texture-tools"/>
+</package>

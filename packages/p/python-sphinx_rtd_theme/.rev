@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>779ef247da04a61319b96851030fd079</srcmd5>
+    <version>0.1.6</version>
+    <time>1420531599</time>
+    <user>dimstar_suse</user>
+    <comment>Wondering how we got openlmi-tools into Factory without this dependency....</comment>
+    <requestid>266155</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5f8a54637b5aad90d448a985f56ba9c1</srcmd5>
+    <version>0.1.8</version>
+    <time>1431980754</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307587</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b1b300fec3cf0912dc2939998dfe18b3</srcmd5>
+    <version>0.1.8</version>
+    <time>1470217167</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>415096</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ea79cf82e1b92c9607473147624cf7cc</srcmd5>
+    <version>0.1.8</version>
+    <time>1493368891</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489327</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3794fd85630fb073605a65af4845e609</srcmd5>
+    <version>0.2.4</version>
+    <time>1505989751</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527416</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>009e9b6a478b2375d3658879e0b2cc45</srcmd5>
+    <version>0.3.0</version>
+    <time>1525121458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602108</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1e3e757a824b877dcdf5712d87bfc51b</srcmd5>
+    <version>0.3.1</version>
+    <time>1526030794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605129</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1e78a968c20a574087cc97f957cfb867</srcmd5>
+    <version>0.4.0</version>
+    <time>1531379747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621542</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe9b4d2ac055a725d8cdf618d97d8f56</srcmd5>
+    <version>0.4.1</version>
+    <time>1534321903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628790</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4eaf4d5c3f024099a32b891bd9f5c9dd</srcmd5>
+    <version>0.4.3</version>
+    <time>1560862076</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to mulitbuild to avoid buildcycle
+
+- Update to 0.4.3:
+  * Fixes for new Sphinx
+- Enable tests</comment>
+    <requestid>708169</requestid>
+  </revision>
+</revisionlist>

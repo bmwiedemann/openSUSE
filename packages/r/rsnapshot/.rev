@@ -1,0 +1,213 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dbb55fae0399a7e0046240a2f05bfeb6</srcmd5>
+    <version>1.3.0</version>
+    <time>1168855408</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="25">
+    <srcmd5>7541cbcdb7a911a7e044a72aa0b16e56</srcmd5>
+    <version>1.3.0</version>
+    <time>1179907559</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="85">
+    <srcmd5>3719e99ac8b706aebaeebdfca29d0999</srcmd5>
+    <version>1.3.0</version>
+    <time>1194899350</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9fc8eacecd4a3a36ba572220b7f64772</srcmd5>
+    <version>1.3.1</version>
+    <time>1220884247</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>57a0d51ca65c5893d0423952c2121125</srcmd5>
+    <version>1.3.1</version>
+    <time>1239841155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>57a0d51ca65c5893d0423952c2121125</srcmd5>
+    <version>1.3.1</version>
+    <time>1239841155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>395f38712f614555593a5369066b8d98</srcmd5>
+    <version>1.3.1</version>
+    <time>1268926005</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>395f38712f614555593a5369066b8d98</srcmd5>
+    <version>1.3.1</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>395f38712f614555593a5369066b8d98</srcmd5>
+    <version>1.3.1</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>395f38712f614555593a5369066b8d98</srcmd5>
+    <version>1.3.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>395f38712f614555593a5369066b8d98</srcmd5>
+    <version>1.3.1</version>
+    <time>1319182432</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>7ef5ad70187cc8e4a07e94ac57261905</srcmd5>
+    <version>1.3.1</version>
+    <time>1323194443</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>7ef5ad70187cc8e4a07e94ac57261905</srcmd5>
+    <version>1.3.1</version>
+    <time>1340184150</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>7ef5ad70187cc8e4a07e94ac57261905</srcmd5>
+    <version>1.3.1</version>
+    <time>1359110298</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>e5d90342b2604e29cf0ee6fee0b1bd7e</srcmd5>
+    <version>1.3.1</version>
+    <time>1374777135</time>
+    <user>coolo</user>
+    <comment>- Split test phase to check one.
+- Remove useless clean phase.
+- Silence some rpmlint macros.
+
+- Add a patch to correct syntax needed by perl 5.18:
+    rsnapshot-1.3.1-perl5.18.patch
+- Get rid of changelog entries form specfile</comment>
+    <requestid>184327</requestid>
+  </revision>
+  <revision rev="16" vrev="24">
+    <srcmd5>e5d90342b2604e29cf0ee6fee0b1bd7e</srcmd5>
+    <version>1.3.1</version>
+    <time>1379664475</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="26">
+    <srcmd5>e5d90342b2604e29cf0ee6fee0b1bd7e</srcmd5>
+    <version>1.3.1</version>
+    <time>1409303203</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="27">
+    <srcmd5>628a438e6372b2f4ecef45644dec1a38</srcmd5>
+    <version>1.3.1</version>
+    <time>1419896989</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266554</requestid>
+  </revision>
+  <revision rev="19" vrev="28">
+    <srcmd5>21d64376f0acfdd97babb4f3c7fc85be</srcmd5>
+    <version>1.3.1</version>
+    <time>1428949842</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295487</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>35648551218325a044f9f32ad88343a7</srcmd5>
+    <version>1.4.1</version>
+    <time>1443335981</time>
+    <user>coolo</user>
+    <comment>- Update to 1.4.1
+  * Capture rsync's output right (Github issue 102)
+- Changes for 1.4.0
+  * Tidy the code with perltidy
+  * Fix --rsh command line option
+  * The --rsh option of rsync got errornously quoted (Debian Bug #743310)
+  *  Define traps to unmount LVM parts after fail If you use LVM 
+    snapshots and rsnapshot fails, rsnapshot will unmount and 
+    remove the snapshot, too.
+  * cd to home before executing a command
+  * if($use_lazy_deletes): remove lockfile in any case
+  * Bail on failing cmd_(pre|post)exec If one of those commands 
+    fails, rsnapshot will exit with exit code != 0
+  * Capture output from rsync and print/log if level is &gt;=4
+  * Print rsnpashot's PID when logging to syslog, instead of the 
+    logger's PID.
+  * make script uses pod2man instead of /usr/bin/pod2man
+  * rsnapshot-diff: Fixed removed files reported as addition (+ mark)
+  * Introduction of backup_exec resource for running unix commands
+    interspersed with backup and backup_script jobs.
+  * check for SIGPIPE, mainly in case cron fails when trying to mail
+    (this is probably why rsnapshot dies mysteriously if it outputs when
+    called by cron on a system which does not have mail working).
+  * add test case for -t showing --link-dest when there is only one snapshot
+  * if gnu_cp_al fails, test out a simple cp -al command before suggesting
+    that the cp does not support -al.
+  * When snapshot_root does not exist, check existence of parent directories.
+  * include_conf `command` now strips backticks before execution (bug fix
+    based on suggestion from David Osborn).
+  * Ignore extraneous output from lvremove command.  (patch by Tim Connors)</comment>
+    <requestid>333010</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5554a807db9a11e3ed415db178acdc25</srcmd5>
+    <version>1.4.1</version>
+    <time>1444130765</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335985</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>07e67ee763f2f27bdf43361d7f6b17d2</srcmd5>
+    <version>1.4.2</version>
+    <time>1450861050</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350434</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>2002e74381ac518e6e90f397043d1098</srcmd5>
+    <version>1.4.2</version>
+    <time>1468360309</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406939</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>040b7c3b39ce819a6be4e543dbbe15ee</srcmd5>
+    <version>1.4.2</version>
+    <time>1530303903</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file with spec-cleaner</comment>
+    <requestid>616022</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>6db3b608b1b88150fe488016415b793e</srcmd5>
+    <version>1.4.2</version>
+    <time>1565362467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721950</requestid>
+  </revision>
+</revisionlist>

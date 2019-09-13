@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c13b13972829a9de7d934a5d8df58f06</srcmd5>
+    <version>3.5.1</version>
+    <time>1551024751</time>
+    <user>coolo</user>
+    <comment>dropping it was a mistake. We fixed our setup to make users
+aware of the risks and this is still in usage</comment>
+    <requestid>672190</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,1005 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>599c7e1149a266d6fbd95d3aa420f738</srcmd5>
+    <version>0.6.8</version>
+    <time>1303384892</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 68037 from user babelworx
+</comment>
+    <requestid>68037</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a07dceb0a489c22a8fb8eedae91e3692</srcmd5>
+    <version>0.6.8</version>
+    <time>1303384906</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 68037
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>87b8be871bfbab758eb34d44431efcd3</srcmd5>
+    <version>0.6.10</version>
+    <time>1304340187</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69003</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c08bac08074006cfa22e88f86b5b6eb3</srcmd5>
+    <version>0.6.10</version>
+    <time>1304422504</time>
+    <user>darix</user>
+    <comment>Drop rpmlintrc as changes are now in Factory (package might fail to build until the changes hit snapshot, though) (forwarded request 69321 from vuntz)</comment>
+    <requestid>69345</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>deb575342467f1b7e2e1e0e8be6b8eb3</srcmd5>
+    <version>0.6.10</version>
+    <time>1304422512</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 69345
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ff1c9c6801c26be22a0e090d8749d804</srcmd5>
+    <version>0.6.12</version>
+    <time>1306845924</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>71972</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c53d63adc22d3ecd46a8f878b180daa0</srcmd5>
+    <version>0.6.13</version>
+    <time>1311233398</time>
+    <user>saschpe</user>
+    <comment>Update to 0.6.13 (forwarded request 76524 from vuntz)</comment>
+    <requestid>76532</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>192b3c34dbf332a2184a8b1e22c2aefb</srcmd5>
+    <version>0.6.13</version>
+    <time>1311347719</time>
+    <user>saschpe</user>
+    <comment>Add patch to correctly configure autologin (forwarded request 76596 from dimstar)</comment>
+    <requestid>76773</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9eff3229a57f37060b64e9a4c131ad2a</srcmd5>
+    <version>0.6.13</version>
+    <time>1311347740</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76773
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e51c19623b31d9bdb33940944b928824</srcmd5>
+    <version>0.6.14</version>
+    <time>1315559122</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81437</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>af662b5db7831f9a558b6cbf096241c3</srcmd5>
+    <version>0.6.14</version>
+    <time>1317541612</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85588</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ca9fc7c6d84278a4c94cce7aaab64156</srcmd5>
+    <version>0.6.15</version>
+    <time>1319024935</time>
+    <user>coolo</user>
+    <comment>Pushing missing G:F parts</comment>
+    <requestid>88561</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ca9fc7c6d84278a4c94cce7aaab64156</srcmd5>
+    <version>0.6.15</version>
+    <time>1319181764</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>6677f9c28413584f33bea1773c4775a5</srcmd5>
+    <version>0.6.15</version>
+    <time>1323190636</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>1a688f0c1e49a698a2c9826bd32bfe64</srcmd5>
+    <version>0.6.15</version>
+    <time>1325786988</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>98970</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>b2f9ec7727d7d3067308733e700b2e32</srcmd5>
+    <version>0.6.15</version>
+    <time>1330520730</time>
+    <user>coolo</user>
+    <comment>Fix systemd-related packaging (forwarded request 107164 from dimstar)</comment>
+    <requestid>107305</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>597152a5fa556df1974c504d8c817491</srcmd5>
+    <version>0.6.17</version>
+    <time>1334215029</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>113190</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>08473780211407678e9f8766634e4501</srcmd5>
+    <version>0.6.18</version>
+    <time>1334927448</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>114621</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>64e15d8ac435c7b3ee84c8a507776e51</srcmd5>
+    <version>0.6.18</version>
+    <time>1336035235</time>
+    <user>coolo</user>
+    <comment>Pushing G:F bits</comment>
+    <requestid>115573</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cf24b132af032ec2d97db93e286d2569</srcmd5>
+    <version>0.6.20</version>
+    <time>1337096406</time>
+    <user>coolo</user>
+    <comment>Update to 0.6.20 (forwarded request 116468 from vuntz)</comment>
+    <requestid>120972</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b9759e4c5a991ca6e2f800f74b8718c2</srcmd5>
+    <version>0.6.21</version>
+    <time>1339076230</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>123628</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>b9759e4c5a991ca6e2f800f74b8718c2</srcmd5>
+    <version>0.6.21</version>
+    <time>1340183164</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>a23e7e9151a9e7bbf55ee45826ccb64a</srcmd5>
+    <version>0.6.21</version>
+    <time>1340889308</time>
+    <user>coolo</user>
+    <comment>CVE-2012-2737 (forwarded request 126335 from dimstar)</comment>
+    <requestid>126338</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ab0518da5cb040663fc12ca4b2b10e2e</srcmd5>
+    <version>0.6.22</version>
+    <time>1341218562</time>
+    <user>coolo</user>
+    <comment>Update to 0.6.22 - No urge for 12.2 identified: we already have the CVE fix there</comment>
+    <requestid>126785</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>7a7bceaeffa98e12194bea536590a1b3</srcmd5>
+    <version>0.6.22</version>
+    <time>1342713394</time>
+    <user>coolo</user>
+    <comment>bnc#771177 - Add user 'fax' to the exception list to not show up in gdm - should go to 12.2 (forwarded request 128262 from dimstar)</comment>
+    <requestid>128263</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dba3ac763f083804496ecf50d305c060</srcmd5>
+    <version>0.6.23</version>
+    <time>1345146982</time>
+    <user>namtrac</user>
+    <comment>Update to 0.6.23 (forwarded request 130411 from darix)</comment>
+    <requestid>131000</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e8c48980d0fd7e2fe395f42a73b15e11</srcmd5>
+    <version>0.6.24</version>
+    <time>1349368635</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136630</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d38b8c0707f030e98feb5c6e529cd1d7</srcmd5>
+    <version>0.6.25</version>
+    <time>1352719827</time>
+    <user>coolo</user>
+    <comment>Upadte to 0.6.25 (forwarded request 140299 from dimstar)</comment>
+    <requestid>140883</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bb2777c5f0f51f4321adf7a57b3a7383</srcmd5>
+    <version>0.6.26</version>
+    <time>1353304891</time>
+    <user>coolo</user>
+    <comment>Update to 0.6.26 (forwarded request 141285 from Zaitor)</comment>
+    <requestid>141740</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d8d7945164d67dd4b567250f70b0ae2c</srcmd5>
+    <version>0.6.29</version>
+    <time>1353952385</time>
+    <user>coolo</user>
+    <comment>Resubmit 0.6.29 - type fixed (forwarded request 142679 from dimstar)</comment>
+    <requestid>142680</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c6ee782d9229eb20c79f5b27b98de4c5</srcmd5>
+    <version>0.6.30</version>
+    <time>1355910483</time>
+    <user>coolo</user>
+    <comment>Update to 0.6.30 (forwarded request 145582 from vuntz)</comment>
+    <requestid>145614</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>c6ee782d9229eb20c79f5b27b98de4c5</srcmd5>
+    <version>0.6.30</version>
+    <time>1359108638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1404a2e80c189cfade45445f732b3a02</srcmd5>
+    <version>0.6.31</version>
+    <time>1366983289</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.8.1 to Factory - mostly small bug fixes over the existing 3.8.0 we have</comment>
+    <requestid>173205</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>be771bf40ce4b1f2ba63dd57e7fd6eda</srcmd5>
+    <version>0.6.32</version>
+    <time>1368689649</time>
+    <user>coolo</user>
+    <comment>Update to 0.6.32 (forwarded request 175696 from Zaitor)</comment>
+    <requestid>175771</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0fc710c29b261b196f416f1edcfe88c1</srcmd5>
+    <version>0.6.34</version>
+    <time>1372144929</time>
+    <user>coolo</user>
+    <comment>Update to 0.6.34 (forwarded request 180471 from Zaitor)</comment>
+    <requestid>180647</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>0fc710c29b261b196f416f1edcfe88c1</srcmd5>
+    <version>0.6.34</version>
+    <time>1379661946</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>49e03f60b236a1fc658e0ebdc1f07e27</srcmd5>
+    <version>0.6.34</version>
+    <time>1381322546</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add accountsservice-remotePW-verification.patch: treat NULL
+  shadow entry as &quot;password handled remotely&quot; (bnc#844933,
+  bgo#708997, fdo#70005). (forwarded request 202694 from dimstar)</comment>
+    <requestid>202695</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b967e1828dd683e19798d9072c16aafd</srcmd5>
+    <version>0.6.35</version>
+    <time>1385288673</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory</comment>
+    <requestid>207642</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6d0ef0297a9aacd790be26cc091e6250</srcmd5>
+    <version>0.6.37</version>
+    <time>1396622030</time>
+    <user>coolo</user>
+    <comment>Update to 0.6.37 (forwarded request 228733 from Zaitor)</comment>
+    <requestid>228947</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>6d0ef0297a9aacd790be26cc091e6250</srcmd5>
+    <version>0.6.37</version>
+    <time>1409300467</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>60f3ed486c43fea39017f335091d724f</srcmd5>
+    <version>0.6.38</version>
+    <time>1411926925</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252425</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>7217d92ddcfc37d3dcae92c2a55e685a</srcmd5>
+    <version>0.6.38</version>
+    <time>1412589962</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254027</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d137f9290f4c73ed509372ad9c38a4a3</srcmd5>
+    <version>0.6.39</version>
+    <time>1416347151</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.14.2</comment>
+    <requestid>261760</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>51087464748cafb312049e5496881888</srcmd5>
+    <version>0.6.40</version>
+    <time>1422594280</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283075</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>8df8f464d5777066a35173e65c31b13d</srcmd5>
+    <version>0.6.40</version>
+    <time>1452721362</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353239</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>98ca25c9db04d821b118c205b180eb55</srcmd5>
+    <version>0.6.42</version>
+    <time>1468869492</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407306</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>313bbc7d698bf3f60f0232e633ae54f1</srcmd5>
+    <version>0.6.42</version>
+    <time>1471428028</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>418925</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>37bd9244ad14e23be2355f4fe060f96e</srcmd5>
+    <version>0.6.42</version>
+    <time>1472473750</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423531</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>a2639c3936ac3f9b8b56962e820c5878</srcmd5>
+    <version>0.6.42</version>
+    <time>1474475396</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426848</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>7dbaf953e4da11ae17848530ae74f6c0</srcmd5>
+    <version>0.6.43</version>
+    <time>1476113576</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431527</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>40a3141dc1eded0765773e3821afa622</srcmd5>
+    <version>0.6.43</version>
+    <time>1488125282</time>
+    <user>dimstar_suse</user>
+    <comment>Patch rebased - it's only enabled on !is_opensuse</comment>
+    <requestid>459912</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>cd822252ab407dea7852cd42e8974326</srcmd5>
+    <version>0.6.45</version>
+    <time>1495132607</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.6.45 (forwarded request 490945 from dimstar)</comment>
+    <requestid>494078</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>e7e7c9b715e60ac6b6222bfaf7c98bed</srcmd5>
+    <version>0.6.45</version>
+    <time>1499509571</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508200</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>6be1e5cb6903c7a07b5fc88c83d33752</srcmd5>
+    <version>0.6.45</version>
+    <time>1502559477</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514677</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>f4b3ef250e90bb5b4f35323933839cb8</srcmd5>
+    <version>0.6.45</version>
+    <time>1503061164</time>
+    <user>dimstar_suse</user>
+    <comment>- Update specfile to build 
+  as-fate318433-prevent-same-account-multi-logins.patch on SLE15.
+
+The patch is for a sle particular feature brought from SLE12, we might need some review in short future if it works safely with openSUSE.
+
+By now, it's required for sle-15, so synchronized the updated specfile and changelog with G:F. (forwarded request 515869 from yfjiang)</comment>
+    <requestid>516871</requestid>
+  </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>f0733ed9c5aa537a9d48d8dacee0ccc5</srcmd5>
+    <version>0.6.45</version>
+    <time>1514569749</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove-no-longer-used-system-accounts.patch:
+  Drop operator, nobody4 and noaccess from the blacklist
+  (bsc#1063794, fdo#103879).
+
+- Update specfile to build</comment>
+    <requestid>559350</requestid>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>5a410c8f7a28089e3d5e8a778e64d58d</srcmd5>
+    <version>0.6.45</version>
+    <time>1521051793</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583536 from dimstar)</comment>
+    <requestid>584700</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>0f406eb7ad022060502d25a0cdd49c71</srcmd5>
+    <version>0.6.49</version>
+    <time>1529402034</time>
+    <user>maxlin_factory</user>
+    <comment>Note: Depends on polkit-default-privs sub in staging C - so please add it to that one.
+
+- Add accountsservice-missing-users-on-gdm-login.patch: Don't abort
+  loading users when an /etc/shadow entry found missing
+  (boo#1090003 fdo#106904).
+- Update to version 0.6.49:
+  + Fix crash on startup from previous compiler warning fix.
+- Changes from version 0.6.48:
+  + Fix crashes when adding admin user and when user is removed.
+  + Performance improvements handling really large wtmp files.
+- Changes from version 0.6.47:
+  + Fix problem where libaccountsservice users weren't getting
+    property change updates.
+  + Reduce memory usage of cached users in daemon process.
+  + Drop premature user-added/user-removed signals that erroneously
+    get emitted before ListCachedUsers call finishes.
+- Update to version 0.6.46:
+  + Fix systemd unit file to use default standard output;
+  + Performance improvements;
+  + Leak fixes;
+  + Crash fixes;
+  + Support extra groups for admin users;
+  + Add policy that allows admins to allow users to change their
+    own password;
+  + Introspection fixes;
+  + Elogind support;
+  + Decruftification of username blacklist;
+  + Updated translations.
+- Add:
+  + gio-2.0 and gio-unix-2.0 pkgconfig modules BuildRequires to
+    avoid implicit dependencies.
+  + xmlto and xsltproc BuildRequires to enable documentation.
+- Drop remove-no-longer-used-system-accounts.patch: fixed upstream.
+- Rebase patches:
+  + accountsservice-sysconfig.patch and
+  + accountsservice-filter-suse-accounts.patch.
+</comment>
+    <requestid>617169</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>f32a68147240ff2b5f078f4b9942dcff</srcmd5>
+    <version>0.6.49</version>
+    <time>1531946201</time>
+    <user>dimstar_suse</user>
+    <comment>- Add accountsservice-lib-treat-session-type-wayland-as-graphical-session.patch:
+  When user session type is wayland, act_user_is_logged_in can
+  return TRUE if the user is logged in (boo#1095918 fdo#106855). (forwarded request 623190 from xiaoguang_wang)</comment>
+    <requestid>623621</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>956cea374ef7c02c7ce2a911cce34313</srcmd5>
+    <version>0.6.50</version>
+    <time>1533045221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624616</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>96b2a75b144b441c3c7ae12556dacd6d</srcmd5>
+    <version>0.6.50</version>
+    <time>1545223558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657455</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>6e98686d3b8dc48611277db90d3224a4</srcmd5>
+    <version>0.6.50</version>
+    <time>1553263005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686194</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>9592f92abf0ec9942f799aac865d500c</srcmd5>
+    <version>0.6.54</version>
+    <time>1555488345</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop upstream fixed patches:
+  + accountsservice-lib-don-not-set-loaded-state-until-seat-fetched.patch
+- Update patches:
+  + accountsservice-read-root-user-cache.patch
+  + accountsservice-sysconfig.patch
+- Redo summaries without em dashes.
+- Reduce %systemd_requires to %systemd_ordering:
+  %service_* can handle the absence.
+- Update to version 0.6.54:
+  + Fix user state dirs.
+- Changes from version 0.6.53:
+  + Fix introspection.
+- Changes from version 0.6.52:
+  + Migrate to meson and gettext (instead of autogoo and intltool).
+  + Add code of conduct.
+  + Add new session and session type properties (to replace
+    XSession).
+  + Try to handle misbehaving logind a little better.
+  + Misc mixes and code modernization.
+  + Add new &quot;Saved&quot; property to say whether a cached user is stored
+    on disk.
+- Add accountsservice-upstream-fixes.patch: Add upstream bug fixes
+  commits, fix build.
+- Switch to meson build system, add meson BuildRequires and macros.
+- Drop obsolete intltool, gnome-common, vala, xmlto and xsltproc
+  BuildRequires: No longer needed.
+- Replace gobject-introspection-devel with
+  pkgconfig(gobject-introspection-1.0) and add pkgconfig(dbus-1):
+  New depdendency.
+- Disable the following patches that needs rebase:
+  + accountsservice-sysconfig.patch.
+  + accountsservice-lib-don-not-set-loaded-state-until-seat-fetched.patch.
+  + accountsservice-read-root-user-cache.patch
+- Add accountsservice-read-root-user-cache.patch: Read root user
+  cache file (bsc#1114292 glfo#accountsservice/accountsservice#65).
+- Update to version 0.6.50:
+  + Fix insufficient path check on user icon files.
+  + Fix is-logged-in status for wayland sessions.
+  + Fix user enumeration when system accounts are mixed in.
+- Drop upstream fixed patches:
+  + accountsservice-missing-users-on-gdm-login.patch.
+  + accountsservice-lib-treat-session-type-wayland-as-graphical-session.patch
+- Add accountsservice-lib-don-not-set-loaded-state-until-seat-fetched.patch:
+  At the moment we set is-loaded on the user-manager object as soon 
+  as we start fetching the seat, but we should waiting until the seat
+  is fetched, so that can_switch() will return the correct value if 
+  the caller waited until the loaded signal to use it.
+  (boo#1100041 fdo#107298)
+- Add accountsservice-lib-treat-session-type-wayland-as-graphical-session.patch:
+  When user session type is wayland, act_user_is_logged_in can
+  return TRUE if the user is logged in (boo#1095918 fdo#106855).
+- Make build verbose to see full command lines.
+- Add accountsservice-missing-users-on-gdm-login.patch: Don't abort
+  loading users when an /etc/shadow entry found missing
+  (boo#1090003 fdo#106904).
+- Update to version 0.6.49:
+  + Fix crash on startup from previous compiler warning fix.
+- Changes from version 0.6.48:
+  + Fix crashes when adding admin user and when user is removed.
+  + Performance improvements handling really large wtmp files.
+- Changes from version 0.6.47:
+  + Fix problem where libaccountsservice users weren't getting
+    property change updates.
+  + Reduce memory usage of cached users in daemon process.
+  + Drop premature user-added/user-removed signals that erroneously
+    get emitted before ListCachedUsers call finishes.
+- Update to version 0.6.46:
+  + Fix systemd unit file to use default standard output;
+  + Performance improvements;
+  + Leak fixes;
+  + Crash fixes;
+  + Support extra groups for admin users;
+  + Add policy that allows admins to allow users to change their
+    own password;
+  + Introspection fixes;
+  + Elogind support;
+  + Decruftification of username blacklist;
+  + Updated translations.
+- Add:
+  + gio-2.0 and gio-unix-2.0 pkgconfig modules BuildRequires to
+    avoid implicit dependencies.
+  + xmlto and xsltproc BuildRequires to enable documentation.
+- Drop remove-no-longer-used-system-accounts.patch: fixed upstream.
+- Rebase patches:
+  + accountsservice-sysconfig.patch and
+  + accountsservice-filter-suse-accounts.patch.
+- Modernize spec-file by calling spec-cleaner
+- Add remove-no-longer-used-system-accounts.patch:
+  Drop operator, nobody4 and noaccess from the blacklist
+  (bsc#1063794, fdo#103879).
+- Update specfile to build
+  as-fate318433-prevent-same-account-multi-logins.patch on SLE15.
+- Remove redundant %clean section; use %_smp_mflags for build.
+- Update to version 0.6.45:
+  + Wrap password expiration info in libaccountsservice api.
+- Changes from version 0.6.44:
+  + Export password expiration info from shadow file.
+  + Fix user classification logic.
+  + Don't lose track of users when /etc/passwd is reloaded.
+- Drop accountsservice-933083-load-root-setting.patch:
+  fixed upstream (177509 edac45).
+- Rebase accountsservice-933083-load-root-setting.patch.
+- Update to version 0.6.43:
+  + Fix logout times in login-history.
+  + Increase performance in large deployments.
+  + Memory leak fix.
+  + Exclude nologin users from user list.
+- Update accountsservice-sysconfig.patch:
+  Flush the buffer before shut down the GIOChannel, otherwise we
+  get a truncated setting file. The problem has caused the
+  switching autologin in gnome-control-center breaking
+  /etc/sysconfig/displaymanager (bsc#998107).
+- Enable as-fate318433-prevent-same-account-multi-logins.patch for
+  Leap as requested by the Leap Release Manager (boo#994876).
+- Remove pkgconfig(libsystemd-daemon). Nowadays
+  pkgconfig(libsystemd) is enough and replaces all libsystemd-*
+  libs which are obsolete.
+- Update to version 0.6.42:
+  + Wtmp fixes on solaris.
+  + Allow a user to change his own data even if he's remote.
+  + Add way to set password hint independent of password.
+  + Conform to modern systemd library naming scheme.
+  + Disable GVFS support in service, since it's not needed and has
+    bad side effects.
+- Replace pkgconfig(libsystemd-login) for pkgconfig(libsystemd)
+  BuildRequires following upstream changes.
+- Add as-fate318433-prevent-same-account-multi-logins.patch
+  (fate#318433):
+  Prevent multiple simultaneous logins.
+- Update to GNOME 3.20  Fate#318572
+- Rebased accountsservice-933083-load-root-setting.patch.
+- Updated Url.
+- Add accountsservice-933083-load-root-setting.patch (bnc#933083)
+  Load settings of an account which is not 'human' but can still be
+  able to login to the system. (like 'root')
+- Update to version 0.6.40:
+  + Support large UIDs better.
+  + Don't require X11 display to fetch user with X11 session.
+  + Ensure accountsservice doesn't start before NSS works.
+- Update to version 0.6.39:
+  + Fix ListCachedUsers race at startup.
+  + Add new api for uncaching user.
+  + Fix memory corruption bug.
+  + Build goo changes.
+- Pass --enable-user-heuristics to configure to ensure that legacy
+  users are still shown in GDM facebrowser.
+- Update to version 0.6.38:
+  + Fix polkit policy for non-desktop cases.
+  + Fix for a race when new user appears.
+  + Some clearer log and debug messages.
+- Update to version 0.6.37:
+  + BSD fixes.
+- Changes from version 0.6.36:
+  + Fixes for deleting users.
+  + Leak fix.
+  + Change user classification logic.
+  + BSD fixes.
+- Rebase accountsservice-sysconfig.patch and
+  accountsservice-filter-suse-accounts.patch.
+- Update to version 0.6.35:
+  + Handle non-existent users better.
+  + Misc bug fixes.
+  + Misc clean ups.
+  + Emit &quot;changed&quot; signal when account type changes for user.
+  + Stop shipping vapi files.
+  + Avoid connecting to ConsoleKit on logind systems.
+  + Add extension interface.
+  + Add --enable-coverage option for gcov support.
+- Rebase accountsservice-sysconfig.patch and
+  accountsservice-filter-suse-accounts.patch.
+- Drop accountsservice-remotePW-verification.patch: fixed upstream.
+- Add accountsservice-remotePW-verification.patch: treat NULL
+  shadow entry as &quot;password handled remotely&quot; (bnc#844933,
+  bgo#708997, fdo#70005).
+- Update to version 0.6.34:
+  + Try to sanitize automatic login setting when user account is
+    deleted or disabled (fdo#54506).
+  + Fix build.
+- Changes from version 0.6.33:
+  + Keep track of non-graphical sessions (fdo#65160).
+  + Forget obsolete sessions (fdo#65159).
+  + Monitor wtmp for changes (fdo#63159).
+  + Ignore non-user sessions (fdo#701514).
+  + Rework system account handling (fdo#64769).
+    - Never treat cached users as system accounts.
+    - Add gdm, gnome-initial-setup users to blacklist.
+    - Store system-account bit in key file.
+    - Cache newly-created users explicitly.
+- Rebase accountsservice-filter-suse-accounts.patch.
+- Update to version 0.6.32:
+  + Don't treat remote users as system accounts (fdo#64186).
+  + Clean up spawn_with_login_uid error handling (fdo#55067).
+  + Quit on SIGINT/SIGTERM (fdo#63869).
+  + Make --debug work as expected (fdo#63870).
+  + Remove newlines from debug output (fdo#63871).
+  + Fix mismatched function signature (fdo#63873).
+  + Fix gir/vapi warnings (fdo#63875).
+  + Fix documentation warnings (fdo#63880).
+- Update to version 0.6.31:
+  + Check for logind, not systemd (bgo#62586).
+  + Add --enable-admin-group configure option (bgo#62235).
+  + Be more aggressive at excluding system accounts (bgo#48178).
+  + Fix xsession property notification (bgo#58493).
+  + Fix login history variant handling (bgo#58466).
+- Rebase accountsservice-sysconfig.patch.
+- Update to version 0.6.30:
+  + Minor source clean ups.
+  + Crasher fix on 32bit systems.
+  + Add get_user_by_id.
+  + Don't lose sessions list for users at startup.
+  + Add API for detecting when accountsservice is unavailable.
+- Update to version 0.6.29:
+  + Translate D-Bus errors to local errors in libaccountsservice.
+  + Fix a wrong property name in the login history support.
+- Update to version 0.6.28:
+  + Fix act_user_manager_delete_user_finish.
+  + Fix handling of LoginTime and LoginHistory properties.
+- Changes from version 0.6.27:
+  + Fix warnings when the singleton user manager object is
+    finalized.
+  + Generated docs for libaccountsservice.
+  + Initialize local_acount to TRUE.
+  + Add async api for user creation, caching and deletion.
+- Update to version 0.6.26:
+  + Require libsystemd-login 186.
+  + Protect against deleting root user.
+  + Add LoginTime and LoginHistory properties.
+  + Fix crash consolekit code.
+  + Fix has_multiple_user property after removing user.
+- Update to version 0.6.25:
+  + Uninitialized variable fix
+  + Typo fix
+  + Create data dirs just-in-time
+  + Ignore closing sessions for is_logged_in test
+  + Disable NULL user for delete_user call
+  + Updated translations.
+- Update to version 0.6.24:
+  + add User.Local property for identifying local users.
+- Update to version 0.6.23:
+  + Fix up some debug output.
+  + add new CacheUser and UncacheUser apis.
+  + uncache user before deleting user.
+- Add the user 'fax' to the exception list (bnc#771177).
+- Update to version 0.6.22:
+  + Correct CVE-2012-2737, local file disclosure
+  + small memory leak fix
+  + exclude system accounts from ListCachedUsers
+  + make has-multiple-users properly only check non-system users
+  + remove icon when deleting user
+  + Revert usage of getpwent() as fallback for fgetpwent
+  + support consolekit call cancellation to prevent crashes caused
+    by shortlived sessions
+  + ignore built files in .gitignore
+  + quiet down build goo nagging
+- Drop accountsservice-CVE-2012-2737.patch: fixed upstream.
+- Add accountsservice-CVE-2012-2737.patch: fix local file
+  disclosure flaw. Fix bnc#768807, CVE-2012-2737.
+- Add users cyrus, ldap and mailman to the openSUSE specific users
+  to be excluded (accountsservice-filter-suse-accounts.patch).
+  Fixes bnc#765487.
+- Update to version 0.6.21:
+  + Detect old versions of systemd and fall back to ConsoleKit
+  + Exclude users without a valid shell
+  + Fix log spew
+- Update to version 0.6.20:
+  + Fix user listing which broke in previous release
+- Changes from version 0.6.19:
+  + Fix spurious warnings in logs
+  + Make userdel succeed even if user is already logged in
+  + Exclude users with no shell
+  + Exclude &quot;at&quot; user
+- Drop accountsservice-filter-more-accounts.patch and
+  accountsservice-filter-no-shell.patch: fixed upstream.
+- Add back accountsservice-filter-more-accounts.patch to filter the
+  at user.
+- Add accountsservice-filter-no-shell.patch to filter users with no
+  shell, which happens when NIS is setup.
+- This should fix bnc#757662.
+- Rebase accountsservice-filter-suse-accounts.patch.
+- Update to version 0.6.18:
+  + Fix systemd configure check
+  + Add a few more common system accounts to the blacklist
+  + Fix some issues in systemd session handling
+- Drop accountsservice-filter-more-accounts.patch: fixed upstream.
+- Drop accountsservice-fix-systemd-test-always-evaluating-true.patch:
+  fixed upstream.
+- Add accountsservice-filter-more-accounts.patch: filter out ftp,
+  games, man and mysql system users too, taken from git.
+- Add accountsservice-filter-suse-accounts.patch: filter out some
+  openSUSE-specific accounts (beagleindex, suse-ncc).
+- Add accountsservice-fix-systemd-test-always-evaluating-true.patch
+  Make it possible to build accountsservice without systemd
+  (fdo#48190).
+- Update to version 0.6.17:
+  + Fix user filtering which was broken in 0.6.16
+  + Fix double free in user code
+- Update to version 0.6.16:
+  + Don't filter out users below UID_MIN in login.defs
+  + Filter out users with invalid shells
+  + Use infinite timeout for ListCachedUsers calls
+  + Port to GDBus
+  + Add systemd support
+  + Build fixes for srcdir != builddir
+  + Vala support and introspection fixes
+  + PPC32 fixes
+  + Updated translations.
+- Drop pkgconfig(dbus-glib-1) BuildRequires: dependency is gone
+  upstream.
+- Enable support for systemd session tracking:
+  + Note that it will fall back to ConsoleKit at runtime, so it's
+    fine to build it.
+  + Add pkgconfig() BuildRequires: libsystemd-login,
+    libsystemd-daemon.
+- Rebase accountsservice-sysconfig.patch.
+- Add vala BuildRequires, which is now needed because of the
+  gnome-autogen.sh call.
+- Fix systemd-related packaging:
+  + Use %{?systemd_requires}.
+  + Call %service_{add,del}_* macros in scriptlets for
+    accounts-daemon.service.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Split typelib file into typelib-1_0-AccountsService-1_0
+  subpackage.
+- Add typelib-1_0-AccountsService-1_0 Requires to devel subpackage.
+- Update to version 0.6.15:
+  + Only accept regular files as icons
+  + Don't track non-graphical sessions
+  + Fix wtmp handling
+  + Fix build on FreeBSD and OpenBSD
+- Drop accountsservice-regular-file-for-icon.patch: fixed upstream.
+- Add accountsservice-regular-file-for-icon.patch: only use regular
+  files when setting user icon. Part of bnc#676638.
+- Update to version 0.6.14:
+  + Ignore extraneous SetAutomaticLogin(false) calls for a user
+  + Monitor /etc/gdm/custom.conf for changes in autologin config
+  + Fix fast user switching
+  + Fix docs to build
+  + Updated translations.
+- Rebase accountsservice-sysconfig.patch, and add gnome-common
+  BuildRequires and call to gnome-autogen.sh since it's easier to
+  rebase the patch without Makefile.in.
+- Add gobject-introspection-devel BuildRequires to build
+  introspection data.
+- Add accountsservice-sysconfig.patch: read and write autologin
+  configuration from sysconfig, as done in gdm. Fix bnc#688071.
+- Update to version 0.6.13:
+  + Honor aclocal flags environment variable
+  + Set log domain so it can be hushed
+  + Use wtmp instead of consolekit for determining login frequency
+  + Leak and warning fixes
+  + Clean up polkit deprecation warnings
+  + Add '--' before username to account helper programs
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Update to version 0.6.12:
+  + The usual pile of race fixes
+- Changes from version 0.6.11:
+  + Add API for adding users to the library.
+- Drop rpmlintrc as the necessary changes have now been done in
+  both rpmlint (for suse-dbus-unauthorized-service) and in
+  polkit-default-privs (for polkit-unauthorized-privilege).
+- Update to version 0.6.10:
+  + An assortment of race fixes
+  + Updated translations
+- Changes from version 0.6.9:
+  + Add a 'system-account' property to users
+- Update download url for tarball.
+- Add pkgconfig(systemd) to BuildRequires and package systemd
+  configuration file for accountsservice.
+- Update to version 0.6.8:
+  + use same rules for parsing booleans from gdm config as gdm.
+- Update to version 0.6.7:
+  + Fix call to useradd for normal users
+  + Correct free array of groups
+  + Updated translations
+- Changes from version 0.6.6:
+  + Make it possible to disable user icon
+  + Drop Supervised user role
+  + Use &quot;wheel&quot; instead of &quot;desktop_admin_r&quot; as admin group
+    since that's what everyone uses for this purpose anyway.
+  + Crasher fixes
+  + Misc distro integration fixes
+  + Updated translations
+- Changes from version 0.6.5:
+  + No longer return excluded users from cached listings
+  + Add a --debug command line option
+  + Use proper dbus proxy for settings api in client lib
+  + Expose XSession property over bus
+- Enforce dependency on main package in library package by changing
+  Recommends to Requires.
+- Add a rpmlintrc to ignore security-related rpmlint warnings that
+  make the build fail on Factory. This needs to get removed when
+  entering Factory, though.
+- Cleanup for inclusion in Factory.
+- Update to version 0.6.4:
+  - fix typo in HomeDirectory property
+  - fix bug in asynchronous loading code
+  - drop some random g_print's
+- Changes from version 0.6.3:
+  + Add more getters to client library
+  + Add an initial cut at a setter api
+  + Add XSession property type
+- Changes from version 0.6.2:
+  + Remove the unused UserChanged signal
+  + Add a small client library, based on code from gdm
+  + Don't use gnome-common
+  + Use the user-administration privilege for autologin changes
+- Changes from version 0.6.1:
+  + Always emit the changed signal when setting user photo
+  + Install systemd unit files
+  + Translation updates
+- Changes from version 0.6:
+  + Always require user-administration privilege when setting a
+    password or changing a username
+  + Allow changing password mode and password even when the
+    account is locked, and unlock it as a side-effect
+  + Use /etc/shadow to store account locking and 'set password at
+    next login' information and monitor /etc/shadow for changes
+  + Set loginuid when runing commands on behalf of a user to
+    generate proper audit records
+  + Drop SetIconData and make SetIconFile copy the file when
+    appropriate.  As a consequence, the service no longer links
+    against image libraries.
+  + Various other robustness and error-handling fixes
+- Changes from version 0.5:
+  + Make initial user list call work
+  + Avoid extraneous commandline parsing
+- Package directories used by daemon to store user data:
+  /var/lib/AccountsService and subdirectories.
+- New package (version 0.4). (forwarded request 692039 from iznogood)</comment>
+    <requestid>693285</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>aa679ca89b730328bfbaa4d10e103ba4</srcmd5>
+    <version>0.6.54</version>
+    <time>1557472663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update accountsservice-read-root-user-cache.patch
+  + upstream commit d8b77951 (forwarded request 701432 from xiaoguang_wang)</comment>
+    <requestid>701616</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>677529e38c368e429caeb38bb8bc4625</srcmd5>
+    <version>0.6.54</version>
+    <time>1558036881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703083</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>7a19a3f9fff36864ce4f161784d7fc03</srcmd5>
+    <version>0.6.55</version>
+    <time>1559481263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706718</requestid>
+  </revision>
+</revisionlist>

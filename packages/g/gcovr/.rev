@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b3d4331915bbcc9e00286d42aad3c31c</srcmd5>
+    <version>3.3</version>
+    <time>1515876308</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial packaging based on Fedora package
+</comment>
+    <requestid>559116</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a40fead942234d46601867cbe901f3ce</srcmd5>
+    <version>4.1</version>
+    <time>1547211926</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix package name for Jinja2 dependency
+- Bump gcovr version to 4.1
+  + Drop patch: 0001-re-enable-HTML-reports-under-Python3.patch
+</comment>
+    <requestid>664362</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>07b8a792708437f044a8b99137641403</srcmd5>
+    <version>4.1</version>
+    <time>1549017974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670102</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e2f8762d0d2320dbbd5411f05e4a5f17</srcmd5>
+    <version>4.1</version>
+    <time>1549458465</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671934</requestid>
+  </revision>
+</revisionlist>

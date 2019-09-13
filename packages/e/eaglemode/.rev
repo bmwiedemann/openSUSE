@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aee39ace698e997c1c86a1b10e2da911</srcmd5>
+    <version>0.84.0</version>
+    <time>1348574195</time>
+    <user>coolo</user>
+    <comment>Can eaglemode be a part of Factory? arc, unarj and lha have been remved as Requires as thet aren't used often anymore, babelworx corrected the License, thank you for that</comment>
+    <requestid>135093</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2f712a81528e56a9bdd193471d7ee8e6</srcmd5>
+    <version>0.84.0</version>
+    <time>1356703069</time>
+    <user>namtrac</user>
+    <comment>Fixed sles build pkgconfig isn't supported by sles (forwarded request 146349 from worldcitizen)</comment>
+    <requestid>146350</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2f712a81528e56a9bdd193471d7ee8e6</srcmd5>
+    <version>0.84.0</version>
+    <time>1359108836</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>44c5c17e686c53a430103d719c2a5baf</srcmd5>
+    <version>0.84.0</version>
+    <time>1360611888</time>
+    <user>coolo</user>
+    <comment>- unrar is neither in FTP-repos nor on DVD, so better don't require it (forwarded request 155109 from coolo)</comment>
+    <requestid>155114</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>c3cc1dc628f1b0baa1af62210fb9f774</srcmd5>
+    <version>0.84.0</version>
+    <time>1372740317</time>
+    <user>coolo</user>
+    <comment>- Force use of %{optflags}
+- Fix file list (forwarded request 181455 from AndreasSchwab)</comment>
+    <requestid>181536</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>c3cc1dc628f1b0baa1af62210fb9f774</srcmd5>
+    <version>0.84.0</version>
+    <time>1379662272</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>c3cc1dc628f1b0baa1af62210fb9f774</srcmd5>
+    <version>0.84.0</version>
+    <time>1409300809</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>0a58b2aaece2404a4df6628c4e330c23</srcmd5>
+    <version>0.84.0</version>
+    <time>1419249256</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265725</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>74606c79f1aec9eb91390895cc998959</srcmd5>
+    <version>0.87.0</version>
+    <time>1420754540</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280143</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ebb286b34121615149821e4c20fbe284</srcmd5>
+    <version>0.89.0</version>
+    <time>1432888945</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309060</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cfe036392f06399af6de41d20650b118</srcmd5>
+    <version>0.89.1</version>
+    <time>1440658680</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>326696</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d70d57ae781be7bb1cdd8e214f2e9df1</srcmd5>
+    <version>0.90.0</version>
+    <time>1461855385</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391436</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6bd48677c720aa5b5233fcea39c45e24</srcmd5>
+    <version>0.91.0</version>
+    <time>1467205849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404858</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6712cb9e0ed518400c7cafcbc39623a5</srcmd5>
+    <version>0.92.0</version>
+    <time>1483956080</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449095</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7692917ef4f2fd382f09f0766623f27f</srcmd5>
+    <version>0.93.0</version>
+    <time>1507755829</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.93.0 (forwarded request 533342 from worldcitizen)</comment>
+    <requestid>533343</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>0b30ab18dbec8a0eadb1a873dca2eb8a</srcmd5>
+    <version>0.93.0</version>
+    <time>1531470146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622354</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>50ebc671c01b6e4ad1a007332ee04075</srcmd5>
+    <version>0.94.1</version>
+    <time>1555237393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693760</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>24c70f4496b1797e81ec96d173d740ed</srcmd5>
+    <version>0.94.1</version>
+    <time>1555322036</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694172</requestid>
+  </revision>
+</revisionlist>

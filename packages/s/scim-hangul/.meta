@@ -1,0 +1,5 @@
+<package name="scim-hangul" project="openSUSE:Factory">
+  <title>Hangul Input Method Engine for SCIM</title>
+  <description>Hangul Input Method Engine for SCIM</description>
+  <devel project="M17N" package="scim-hangul"/>
+</package>

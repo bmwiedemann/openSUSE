@@ -1,0 +1,9 @@
+<package name="patterns-devel-osc" project="openSUSE:Factory">
+  <title> Patterns for Installation (Devel osc) </title>
+  <description>This is an internal package that is used to create the patterns as part
+of the installation source setup.  Installation of this package does
+not make sense. 
+
+This particular package contains the pattern for building and developing osc.</description>
+  <devel project="openSUSE:Tools" package="patterns-devel-osc"/>
+</package>

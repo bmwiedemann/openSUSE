@@ -1,0 +1,6 @@
+<package name="lxde-common-branding-openSUSE" project="openSUSE:Factory">
+  <title>openSUSE branding for LXDE</title>
+  <description>This branding-style package sets openSUSE style improvements into LXDE.
+You should always prefer branding-openSUSE packages to branding-upstream.</description>
+  <devel project="X11:lxde" package="lxde-common-branding-openSUSE"/>
+</package>

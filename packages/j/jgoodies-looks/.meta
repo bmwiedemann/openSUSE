@@ -1,0 +1,7 @@
+<package name="jgoodies-looks" project="openSUSE:Factory">
+  <title>JGoodies Windows l&amp;f and Plastic l&amp;f family</title>
+  <description>The JGoodies Looks make your Swing applications and applets look better. The package consists of a Windows look&amp;feel and the Plastic look&amp;feel family.
+These have been optimized for readability, precise micro-design and usability.
+</description>
+  <devel project="Java:packages" package="jgoodies-looks"/>
+</package>

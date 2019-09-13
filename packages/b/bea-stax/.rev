@@ -1,0 +1,190 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5c7c7c7dcf02739075d3b819e338fc6</srcmd5>
+    <version>1.2.0</version>
+    <time>1206543884</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>af1cf91d20d296957dd5635cb6deedd3</srcmd5>
+    <version>1.2.0</version>
+    <time>1221254572</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>bc72e88f50386243948aa4c514efa817</srcmd5>
+    <version>1.2.0</version>
+    <time>1223314689</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>b7c625a230565a6d205862f6dc778798</srcmd5>
+    <version>1.2.0</version>
+    <time>1243470021</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>b7c625a230565a6d205862f6dc778798</srcmd5>
+    <version>1.2.0</version>
+    <time>1243470021</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>8aa4697e8e4273189ab83bdd3bcf96c1</srcmd5>
+    <version>1.2.0</version>
+    <time>1268923010</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>8aa4697e8e4273189ab83bdd3bcf96c1</srcmd5>
+    <version>1.2.0</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>8aa4697e8e4273189ab83bdd3bcf96c1</srcmd5>
+    <version>1.2.0</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>59d807df192d2fe3c0cebdeeae4e241c</srcmd5>
+    <version>1.2.0</version>
+    <time>1283513650</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/bea-stax based on submit request 46996 from user mvyskocil
+</comment>
+    <requestid>46996</requestid>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>732d36ed213693ec88bc26753a2262b8</srcmd5>
+    <version>1.2.0</version>
+    <time>1289839648</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52370 from user mvyskocil
+</comment>
+    <requestid>52370</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>26f8400dac06a33866f037729dad7700</srcmd5>
+    <version>1.2.0</version>
+    <time>1289839660</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52370
+</comment>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>26f8400dac06a33866f037729dad7700</srcmd5>
+    <version>1.2.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>f1b772f06e08c1d66314d3c8905e272d</srcmd5>
+    <version>1.2.0</version>
+    <time>1316766021</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82873 from jengelh)</comment>
+    <requestid>84344</requestid>
+  </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>f1b772f06e08c1d66314d3c8905e272d</srcmd5>
+    <version>1.2.0</version>
+    <time>1319181786</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>258a5f125ef03921f6d59c3379efb0b8</srcmd5>
+    <version>1.2.0</version>
+    <time>1323190836</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="24">
+    <srcmd5>258a5f125ef03921f6d59c3379efb0b8</srcmd5>
+    <version>1.2.0</version>
+    <time>1340183199</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="25">
+    <srcmd5>2947275b9fb2388c342f7495f5df761c</srcmd5>
+    <version>1.2.0</version>
+    <time>1357648399</time>
+    <user>coolo</user>
+    <comment>- remove xerces-j2-bootstrap depenency (bnc#789163)</comment>
+    <requestid>147384</requestid>
+  </revision>
+  <revision rev="18" vrev="27">
+    <srcmd5>2947275b9fb2388c342f7495f5df761c</srcmd5>
+    <version>1.2.0</version>
+    <time>1359108697</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="28">
+    <srcmd5>015fbab51a243a2e0a01c6409c727fe5</srcmd5>
+    <version>1.2.0</version>
+    <time>1377248751</time>
+    <user>scarabeus_factory</user>
+    <comment>- don't build javadoc</comment>
+    <requestid>195996</requestid>
+  </revision>
+  <revision rev="20" vrev="29">
+    <srcmd5>dec34d90b918b13ff21ff4ade2f4cce7</srcmd5>
+    <version>1.2.0</version>
+    <time>1378899560</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198259</requestid>
+  </revision>
+  <revision rev="21" vrev="31">
+    <srcmd5>dec34d90b918b13ff21ff4ade2f4cce7</srcmd5>
+    <version>1.2.0</version>
+    <time>1379662030</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="33">
+    <srcmd5>dec34d90b918b13ff21ff4ade2f4cce7</srcmd5>
+    <version>1.2.0</version>
+    <time>1409300556</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="34">
+    <srcmd5>4bdb87d691aac9485de99591c0d1f92b</srcmd5>
+    <version>1.2.0</version>
+    <time>1496230339</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup a bit and remove unused patch bea-stax-gcj43-build.patch</comment>
+    <requestid>497069</requestid>
+  </revision>
+  <revision rev="24" vrev="35">
+    <srcmd5>a3344439a86d2420e426b68f4a1574a2</srcmd5>
+    <version>1.2.0</version>
+    <time>1505680593</time>
+    <user>dimstar_suse</user>
+    <comment>Don't depend on gcj</comment>
+    <requestid>526189</requestid>
+  </revision>
+  <revision rev="25" vrev="36">
+    <srcmd5>805df4eb9e9638ebc4bf1e98824b817c</srcmd5>
+    <version>1.2.0</version>
+    <time>1532446279</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620771</requestid>
+  </revision>
+  <revision rev="26" vrev="37">
+    <srcmd5>9392b9eaeff82b7780ea4c3cdabf7641</srcmd5>
+    <version>1.2.0</version>
+    <time>1545996766</time>
+    <user>dimstar_suse</user>
+    <comment>Add license file</comment>
+    <requestid>660077</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>86003f129dbafaf183933fb269afc79a</srcmd5>
+    <version>1.0</version>
+    <time>1509787511</time>
+    <user>dimstar_suse</user>
+    <comment>needed by python-Faker, see request 536025
+https://build.opensuse.org/request/show/536025</comment>
+    <requestid>538188</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>701e58896f667e8a1a7febdc6bfa5aff</srcmd5>
+    <version>1.1</version>
+    <time>1510232855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540012</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e250a94937476904f8604c45efa3ffe2</srcmd5>
+    <version>1.1</version>
+    <time>1545648309</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659716</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fcfaa8de43d1fda294fa0510b9e53974</srcmd5>
+    <version>1.2</version>
+    <time>1551024873</time>
+    <user>coolo</user>
+    <comment>- Update to 1.2:
+  * Use pkgutil instead of pkg_resources
+  * Cleanup readme
+- Execute testsuite</comment>
+    <requestid>676149</requestid>
+  </revision>
+</revisionlist>

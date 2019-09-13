@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9bef5ae7a0ecfb32638d5c63dfdb6c9d</srcmd5>
+    <version>2.4</version>
+    <time>1351687331</time>
+    <user>coolo</user>
+    <comment>add apache-commons-io to Factory (needed by fop 1.1), replaces jakarta-commons-io</comment>
+    <requestid>139256</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9bef5ae7a0ecfb32638d5c63dfdb6c9d</srcmd5>
+    <version>2.4</version>
+    <time>1359108654</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6b567ed887f08ff7ef741cda791c75c7</srcmd5>
+    <version>2.4</version>
+    <time>1363940347</time>
+    <user>coolo</user>
+    <comment>- Added url as source. 
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160230 from m_meister)</comment>
+    <requestid>160425</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>b684db554650952ec41a2d9bac8b2a04</srcmd5>
+    <version>2.4</version>
+    <time>1378899572</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198251</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>b684db554650952ec41a2d9bac8b2a04</srcmd5>
+    <version>2.4</version>
+    <time>1379661970</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>660d7675bfe73ae43f4f3b764e0b0823</srcmd5>
+    <version>2.4</version>
+    <time>1405522165</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240322</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>660d7675bfe73ae43f4f3b764e0b0823</srcmd5>
+    <version>2.4</version>
+    <time>1409300494</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>a3b9b7790ce0920eeaf343acbf14af8b</srcmd5>
+    <version>2.4</version>
+    <time>1427982763</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292597</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>00763016ecfbdd21f1dc0810393b0e94</srcmd5>
+    <version>2.4</version>
+    <time>1495442909</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unused depedencies
+
+- New build dependency: javapackages-local</comment>
+    <requestid>497060</requestid>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>d5598b8f64473a5923c72023207db271</srcmd5>
+    <version>2.4</version>
+    <time>1505416744</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>526059</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>93b825132046ac8adefe1c757caba0ab</srcmd5>
+    <version>2.4</version>
+    <time>1532446232</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620751</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>444e149961e609e7c274dcccf8d4e05e</srcmd5>
+    <version>2.6</version>
+    <time>1551468311</time>
+    <user>coolo</user>
+    <comment>Upgrade to 2.6</comment>
+    <requestid>679439</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>cb6cf98f333c4c7324e3a03abdbe48f2</srcmd5>
+    <version>2.6</version>
+    <time>1553809539</time>
+    <user>dimstar_suse</user>
+    <comment>Disregard the pom parent</comment>
+    <requestid>689061</requestid>
+  </revision>
+</revisionlist>

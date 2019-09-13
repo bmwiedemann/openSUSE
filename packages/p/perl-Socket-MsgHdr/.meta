@@ -1,0 +1,6 @@
+<package name="perl-Socket-MsgHdr" project="openSUSE:Factory">
+  <title>Perl interface for the sendmsg/recvmsg functions</title>
+  <description>Socket::MsgHdr provides advanced socket messaging operations via
+sendmsg and recvmsg.</description>
+  <devel project="devel:languages:perl" package="perl-Socket-MsgHdr"/>
+</package>

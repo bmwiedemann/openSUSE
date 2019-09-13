@@ -1,0 +1,9 @@
+<package name="ocaml-pcre" project="openSUSE:Factory">
+  <title>Perl compatibility regular expressions (PCRE) for OCaml</title>
+  <description>Perl compatibile regular expressions (PCRE) for OCaml.
+
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-pcre"/>
+  <url>http://mmottl.github.io/pcre-ocaml/</url>
+</package>

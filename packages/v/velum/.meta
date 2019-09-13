@@ -1,0 +1,5 @@
+<package name="velum" project="openSUSE:Factory">
+  <title>Velum</title>
+  <description>Dashboard for kubernetes clusters</description>
+  <devel project="devel:CaaSP:Head:ControllerNode" package="velum"/>
+</package>

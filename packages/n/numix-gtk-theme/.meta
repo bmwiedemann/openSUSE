@@ -1,0 +1,6 @@
+<package name="numix-gtk-theme" project="openSUSE:Factory">
+  <title>Numix GTK+ theme for MATE, GNOME, and Xfce</title>
+  <description>Numix is a modern flat theme with a combination of light and dark elements.
+It supports MATE, GNOME, Xfce, and Openbox.</description>
+  <devel project="X11:common:Factory" package="numix-gtk-theme"/>
+</package>

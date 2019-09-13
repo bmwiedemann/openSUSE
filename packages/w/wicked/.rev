@@ -1,0 +1,1453 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aac3f44ac8d4de14b105b6bff2e9d9df</srcmd5>
+    <version>0.5.2</version>
+    <time>1382012935</time>
+    <user>scarabeus_factory</user>
+    <comment>- version 0.5.2
+- added activation comment to the spec file (bnc#843526)
+- fixed to not fail on config dirs without any config file
+- rpmlintrc: removed obsolete content (bnc#783932#c18)
+- added extension to update hostname from [dhcp] lease
+- refactored config read and added wicked show-config
+- corrected &amp; documented --log-target destination parsing
+- fixed signed char issues in xml_escape_entities
+- fail when the global --config path gets rejected
+- Applied obs adjustments and copyright comment to spec file
+- wicked ifdown: enable action waiting before calling methods
+- wicked show: create client object and handle ifname argument
+- wicked ifup: parse ifcfg static addrconf even without IPADDR
+- disabled unfinished code to avoid errors / warnings about
+- Initial candidate package for openSUSE:Factory</comment>
+    <requestid>201663</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d3e66fddc3adcd87bd09ec715a504f13</srcmd5>
+    <version>0.5.3</version>
+    <time>1386528611</time>
+    <user>coolo</user>
+    <comment>- version 0.5.3
+- cleaned up to not install unused wicked@.service example
+- wickedd: added shutdownDevice method to ifdown transition from
+  up to exists, used in bond/bridge to release slaves/ports.
+- cleaned up internal iftype vs. arptype mappings and handling
+- client: ifdown deletes the devices created by ifup
+- configure: added rtnetlink,dcbnl,if_link checks
+- macvlan: initial support, no ifcfg yet (fate#315131)
+- wireless: do not scan and bind supplicant by default,
+  corrected the schema to use proper auth-methods type
+- socket: handle hangup after input, but before output
+- added refcounting for ni_dbus_watch_data_t objects
+- bonding: fixed bonding slave duplicate checks
+- client: add client-state including a persistent mode
+  to skip ifdown for important interfaces by default
+- client: ifup --persistent and ifdown --force options
+- several lldp fixes, mostly for parsing / formating
+- logging: added timestamp option to stderr --log-target
+- extensions/updater: get and set NIS settings from lease
+- extensions: replace resolver with new generic updater
+  using simple netconfig key-value leaseinfo dump files
+- dhcp4: initial --test &lt;ifname&gt; implementation (fate#316111)
+- dhcp6: initial --test &lt;ifname&gt; implementation (fate#316111)
+- dhcp6: fixed to accept low preference server offers
+- dhcp4: set fsm state before building the message
+- dhcp4: don't use offered address in initial request
+- netlink: diverse error/return code handling fixes
+- netlink: switched from libnl1 to libnl3
+- moved TODO file content into individual github issues</comment>
+    <requestid>209649</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6e14fe1883abb79485750e5997e2b2cd</srcmd5>
+    <version>0.5.4</version>
+    <time>1389810990</time>
+    <user>coolo</user>
+    <comment>See also rq#213298:
+  wicked-service also contains provides: sysvinit(network)
+  and also a Conflicts: otherproviders(/sbin/ifup) which
+  were provided by old sysconfig-network.
+
+- Added rpm obsoletes sysconfig-network to wicked-service.
+- version 0.5.4
+- spec: require wicked-service package in wicked
+  Fixed spec file to require the wicked-service package
+  in wicked package under systemd. The wicked-service
+  package provides systemd service files as well as the
+  ifup compatibility scripts (bnc#856591,fate#316768).
+- Documentation: man pages update, provide also ifcfg*
+  and ifup,ifdown,ifstatus man pages (bnc#855135).
+- systemd services: added --systemd parameters which
+  enable systemd specific behaviour tweaks.
+- initial wicked ifstatus command, ifstatus and ifprobe
+  compat scripts used and in the network init-script
+  on sysvinit systems (only, not under systemd).
+- cleanup to use LSB codes in client and all daemons
+- client: Add --delete and --no-delete options
+- nanny: enable wickedd-nanny service by default
+- Refactored to use same link.lowerdev name/index
+  reference in vlan,macvlan,infiniband and show
+  master device interface property in show-xml.
+- infiniband schema: changed to use &lt;infiniband:child&gt;
+  for infiniband child interfaces in native configs.
+- fixed newlink functions to not free netdev on discard</comment>
+    <requestid>213496</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f8d7588095787aa475dc7bdc55f19fb9</srcmd5>
+    <version>0.5.5</version>
+    <time>1390247087</time>
+    <user>coolo</user>
+    <comment>- version 0.5.5
+- systemd: added Restart=on-abort to wickedd* (fate#315133)
+- client: implemented ifreload and adopted services (fate#309018)
+- client: use fsm to consider config in ifstatus, exit code rework
+  and refactoring to implement check utilities for ifstatus+reload
+- client: updated copyright and license statements</comment>
+    <requestid>214306</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4edacd83daad7eac8d5784bdcae7e034</srcmd5>
+    <version>0.5.6</version>
+    <time>1390818250</time>
+    <user>scarabeus_factory</user>
+    <comment>- version 0.5.6
+- fixed to free details in compat netdev and lease destroy.
+- systemd: removed requisite=wickedd from wicked.service
+  This dependency triggered an automatic wicked.service (network)
+  restart, when the wickedd.service is restarted (bnc#859801).
+- client: enable compat suse only, install ifcfg-lo
+- client: initial ifcfg support for macvlan, fixed flags
+  and lower-device dependencies in the schema (fate#315131)
+- client: Changing ifcheck to be more robust</comment>
+    <requestid>214794</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1634ae7dec4b462227775ada9fc19144</srcmd5>
+    <version>0.5.7</version>
+    <time>1391787876</time>
+    <user>scarabeus_factory</user>
+    <comment>- version 0.5.7
+- dhcp: request and set hostname and other options (bnc#861476),
+- dhcp: accept dns-domain name option containing a domain list
+  as compatibility abuse of this option and log it (bnc#862130)
+- ibft: always modprobe iscsi_ibft when not yet loaded, added
+  list-only mode and workaround missed readlink utility.
+- dbus: Fix crashes when dbus instance not running
+- leaseinfo: fix accidental closure of file descriptor argument
+- client: improve initialization of client-state structure
+- compat: apply ethtool and lladdr options from ifcfg variable
+- set link-address (mac) for ethernet,vlan,macvlan devices
+- do not set mtu or link-address when device is up as this
+  tends to fail or break upper [vlan, ...] devices
+- limit mtu of upper (vlan) devices to the mtu of lower (eth)
+- addrconf: initial lease writting/parsing helpers / disarmed
+- Disable modem support for now, new ModemManage API (bnc#859888)
+- dhcp: fixed byteswap in ipudp_checksum and checksum_partial
+- leaseinfo: include prefixlen in IPADDR same as in ifcfg files</comment>
+    <requestid>221054</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d1f187c941e27a0209cd6bac0531523d</srcmd5>
+    <version>0.5.8</version>
+    <time>1392481398</time>
+    <user>coolo</user>
+    <comment>- version 0.5.8
+- updater: reverse resolve ip address if dhcp server does not
+  provide a hostname (bnc#861476).
+- debug: init debug and log level from environment using DEBUG,
+  WICKED_DEBUG=&lt;mask&gt; and WICKED_LOG_LEVEL=&lt;level&gt; variables.
+- dhcp4: check link before start, confirm lease on link change
+  and do not discard lease if host does not match
+- dhcp4: modprobe af_packet, omit arp validation when address
+  already set on link.
+- dhcp6: start when link + link-address ready, not network up
+- dhcp: provide addrconf lease and leaseinfo details
+- leaseinfo: consistently use prefixlen in ROUTES
+- wireless: do not remove link/network up flags (bnc#863371)
+- libwicked: libtool -version-info making package and library 
+  versions independent.
+- cleaned up unused schema files and extensions scripts
+- lldp: do not log error when lldp is not supported (bnc#862790)
+- ibft: fixed reading of the origin field
+- iftypes: show s390 ctcm and iucv (slip) devices, not unknown</comment>
+    <requestid>222266</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f551e91244b88b0a9c91bbcd0011cc9a</srcmd5>
+    <version>0.5.12</version>
+    <time>1393136381</time>
+    <user>coolo</user>
+    <comment>- version 0.5.12
+- wicked-devel: require libnl3-devel unconditionally
+
+- version 0.5.11
+- wicked-devel: require libnl3-devel used for build in spec
+
+- version 0.5.10
+- service: fix rpmlink suse-missing-rclink warnings
+- compat: no systemd check via mountpoint in ifup (bnc#864696)
+
+- version 0.5.9
+- dhcp4: fixed to commit and inform wicked when a lease is
+  released lease - this may have cause ifdown errors.
+- client: workaround to consider wait-for-interfaces
+  Get the WAIT_FOR_INTERFACES variable from environment, which is
+  sourced in the service file to not timeout too early and also
+  allow the users to increase it (see bnc#863371, bnc#862530).
+- addconf: update allow static lease to update resolver
+  This is required for iBFT leases and solves bnc#864131.
+- iflist: check validity before extracting nla payload (bnc#863371)
+- Update unquote to handle invalid sysconfig variables properly
+  (bnc#864635)
+- dhcp: added lease-xml output to dhcp --test mode and option 
+  to request lease in dry-run mode (get lease and exit)
+- client: turn &quot;No valid config files found&quot; into a debug msg
+- infiniband: start after rdma service not openibd (sles-11)
+- compat: fixed scripts/ifup -o debug handling
+- daemons: disabled state.xml saving by default (bnc#862335)
+- client: check for config priorities at reading stage
+- client: add --raw parameter to the convert option</comment>
+    <requestid>223350</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>72688aadc8b8e001a4a396da33ceab06</srcmd5>
+    <version>0.5.14</version>
+    <time>1393780947</time>
+    <user>scarabeus_factory</user>
+    <comment>- version 0.5.14
+- util: fix ni_uuid_parse() and support 8-4-4-4-12 format only
+
+- version 0.5.13
+- bridge: do not require link-up on ports (bnc#862530)
+- bonding: try to enslave into bond using netlink
+- extensions: disabled writting of wickedd.log (debug) file
+- addrconf: avoid unwanted updates, update flag fixes (bnc#865325)
+- compat: blacklist all and default interface names
+- leaseinfo: fixed typo in BOOTSERVERNAME variable
+- compat: read all suse ifcfg files and init timeout
+- compat: allow backends return complete config
+- client: exclude STARTMODE='manual' interfaces in ifup all
+  and ignore interfaces with STARTMODE='off' (bnc#864444)
+- temporarily disable modem init from system
+- disable wicked-devel subpackage to avoid wrong expectations
+- nanny: do not update &lt;client-into&gt; and client-state&gt; by default</comment>
+    <requestid>224232</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>943d61c745f88c15e9c6aa6614adb324</srcmd5>
+    <version>0.5.15</version>
+    <time>1395156094</time>
+    <user>coolo</user>
+    <comment>- addrconf: drop default route if disabled (bnc#868187)
+  Honor a (per-interface) DHCLIENT_SET_DEFAULT_ROUTE=no in
+  suse ifcfg files and remove from lease before update runs.
+  [+ 0001-addrconf-drop-default-route-if-disabled-bnc-868187.patch]
+
+- version 0.5.15
+- netlink: fixed masterdev reference name resolving bug
+- bridge: lowered a questionable warning to debug
+- added dummy interface support inclusive suse compat
+- added tun/tap interface support inclusive suse compat
+- netlink: fixed address parsing causing an abort on assert
+- arp: verify ipv4 addresses by default (fate#314399)
+- Enabled arp duplicate check for static ipv4 addresses as
+  default (RFC 5227) and send arp notify when requested in
+  suse ifcfg variables CHECK_DUPLICATE_IP(default yes) and
+  SEND_GRATUITOUS_ARP(default no).
+- ipv6: corrected to apply inverted ipv6.enable flag
+- utils: fixed array remove typo and socket array activate
+- utils: use proper index in ni_string_array_remove
+- utils: properly adjust array in remove actions
+- socket: use proper array in socket array activate
+
+- rpm: added sysconfig-netconfig require to wicked (bnc#867078)
+- service: use explicit before/after ordering in all service
+  files (bnc#866732)
+
+- bridge: fixed to set port link up (bnc#866860), also if they're
+  already part of the bridge (bnc#862530 regression).
+- dhcp: bring link up if not yet up and wait until it is ready in
+  --test mode (used in network-autoconfig and dracut) instead to</comment>
+    <requestid>226493</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>056380f60cb9339add901d59f19ac790</srcmd5>
+    <version>0.5.16</version>
+    <time>1395897417</time>
+    <user>coolo</user>
+    <comment>- version 0.5.16
+- ipv6: catch ipv6.disable=1 kernel command line (bnc#869334)
+- client: read and apply sysctl/ifsysctl files to consider
+  ipv4/ipv6 forwarding, enable (disable_ipv6), ipv6 autoconf
+  and privacy (use_tempaddr) sysctl options (bnc#869334)
+- client: do not complain about missed /etc/HOSTNAME
+- dhcp4: fixed decline message and processing (bnc#869150)
+- dhcp4: check if lease exists while processing arp (bnc#869150)
+- removed obsolete drop default route patch (bnc#868187)
+  [- 0001-addrconf-drop-default-route-if-disabled-bnc-868187.patch]</comment>
+    <requestid>227297</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>18b1d99ba70644b5d1f49c47bc917644</srcmd5>
+    <version>0.5.18</version>
+    <time>1396344853</time>
+    <user>coolo</user>
+    <comment>- version 0.5.18
+- dhcp4: enabled on infiniband / IPoIB links
+- capture: fixed to wrap link-layer packet sockets as the default
+  address length in sockaddr_ll is not enough for infiniband.
+- dhcp6: enabled on infiniband / IPoIB links
+
+- version 0.5.17
+- dhcp4: fixed posix-tz-dbname code and added to parse
+- dhcp4: renew lease via unicast (bnc#866993)
+- macvtap: initial support (fate#315131)
+- ifstatus: do not consider client-state in ifstatus
+- xml: fixed functions retrieving numerical attr values
+- config: generate v5 UUIDs (SHA1) from xml config content</comment>
+    <requestid>228139</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c9fdcece0f41b228b51521e43659d34c</srcmd5>
+    <version>0.5.19</version>
+    <time>1397738618</time>
+    <user>scarabeus_factory</user>
+    <comment>- version 0.5.19
+- server/nanny: do not fail on missed dbus objects or object
+  creation errors due to already deleted interfaces in the
+  kernel while processing the event (bnc#867806,bnc#871388)
+- netlink: verify if device still exists on newlink events
+- nanny: fixed endless loop on policies without name and user
+  control default, added device mach with identify capabilities</comment>
+    <requestid>230057</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6976a55c2a452f6397145fe1cbe43a7b</srcmd5>
+    <version>0.5.21</version>
+    <time>1399017104</time>
+    <user>coolo</user>
+    <comment>- version 0.5.21
+- dhcp6: fix to allow supported devices (bnc#874561)
+- dhcp,autoip: log unsupported devices debug1 level only
+
+- version 0.5.20
+- autoip4,dhcp4,dhcp6: fixed to create instance for supported
+  devices only to save memory and avoid allocation complains
+  due to packet capturing init failure
+- lldp: fix infinite loops in ni_lldp_agent_update,
+  disable built-in support (rejected fate#313671, bnc#873299)
+- dhcp4: do not send hostname to server in discover (bnc#873267)
+- rpm: explicit piddir,statedir,storedir in spec
+- generate ChangeLog file from git while make dist</comment>
+    <requestid>231569</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a1c2ce8c781825c317674f548cab7447</srcmd5>
+    <version>0.5.26</version>
+    <time>1400783927</time>
+    <user>coolo</user>
+    <comment>- version 0.5.26
+- rpm: rpm: drop useless ghost dirs in spec (bnc#873857)
+- client: do not try to fire nanny in ifdown, it is not hired yet
+  We do not install nanny policies by default in ifup, so it is
+  not needed to try to delete them in ifdown. There is currently
+  no nanny started in inst-sys and the attempt is causing ifdown
+  to run into timeouts (bnc#876848,bnc#879127).
+- client: wait for optional leases, just don't fail
+  When waiting for a group-optional lease pair (dhcp4 or dhcp6)
+  and one arrives, wait for the second one until timeout and
+  recheck the results then (bnc#876848,bnc#879127).
+- dhcp6: fix reset and allocate message buffer in build to use
+  clean buffer in release messages sometimes having crap behind.
+
+- version 0.5.25
+- server: no unrequested device-ready events (bnc#871135)
+  This bug caused e.g. bridges not going up from device-exists
+  even they already were in device-ready state before.
+- client: do not mix shared with exlusive references (bnc#877776)
+- ifconfig: do not fail on delete for vanished devices
+- nanny: drop policies on ifdown, turn some errors to debug
+- sysconfig: add WICKED_DEBUG and WICKED_LOG_LEVEL variables
+  to /etc/sysconfig/network/config.
+- man: added ifcfg-{dummy,macvlan,macvtap,tunnel},ifroute,routes
+  ifsysctl and updated already existing manual pages.
+
+- version 0.5.24
+- rpm: use _rundir rpm macro if defined (bnc#873857)
+
+- version 0.5.23</comment>
+    <requestid>235077</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>64e5f65b3255953082544d0490e1ccf1</srcmd5>
+    <version>0.5.27</version>
+    <time>1401685375</time>
+    <user>coolo</user>
+    <comment>- version 0.5.27
+- server: do not apply multiple equal priority (merics) routes
+  to the same destination (bnc#879842)
+- compat: pass DHCLIENT_ROUTE_PRIORITY suse ifcfg variable to
+  the backend allowing to set custom mertics on dhcp4 routes
+  (bnc#879842)
+- dhcp4: set protocol dhcp hint to all routes, strip domain
+  when sending a hostname option to not break ddns updates
+- hostname: reload syslog after change (bnc#874161)
+- dbus: do not close shared connections (bnc#880124)
+- ipv4: new default to send gratuitous arp
+  Consider new suse ifcfg variable default SEND_GRATUITOUS_ARP=auto
+  for arp-notify, enabling to send gratuitous arp by default, when
+  duplicate IPv4 check is enabled via arp-verify/CHECK_DUPLICATE_IP
+  and the check were successful (bnc#879911,fate#314399).</comment>
+    <requestid>235718</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0c5d12d9f9610aaabae370046b350e62</srcmd5>
+    <version>0.5.28</version>
+    <time>1402058178</time>
+    <user>coolo</user>
+    <comment>- version 0.5.28
+- client: avoid FSM refreshes and unsolicited state updates causing
+  to exit at assert, drop config origin and UUID on ifdown causing
+  ifreload to do nothing (bnc#876848,bnc#880664).</comment>
+    <requestid>236142</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ba72236c66820b3be17d1d1f0fa8c070</srcmd5>
+    <version>0.5.31</version>
+    <time>1404157494</time>
+    <user>coolo</user>
+    <comment>- version 0.5.31
+- fsm: maintain shared_users in refresh lowerdev (bnc#883976)
+
+- version 0.5.30
+- ifdown: rebuild hierarchy from lower and masterdev to stop
+  requested interfaces in their correct order (bnc#883976)
+- config: added &lt;use-nanny&gt;true&lt;/use-nanny&gt; switch, which
+  allows to test using nanny -- default is false.
+- client: log exec commands and exit codes as debug
+- client: initial merge of nanny ifup and ifdown
+- nanny: initial merge of nanny fork changes
+- rpm: removed obsolete pkgconfig(systemd), use unitdir
+- library: fixed versioning of internal wicked lib
+
+- version 0.5.29
+- dhcp4: recover lease, correctly build requests (bnc#881475)
+- ipv4: fix duplicate address detection (bnc#881475)
+- service: added network-online.target to wants (bnc#883565)
+- ibft: fixed to generate proper static address node, no
+  static config with dhcp origin and to verify mac in ibft
+  nic selection as it may be for offload device (bnc#883712)
+- client: if needed refresh worker in addressAcquired callback
+- client: wicked xpath subcommand argument check 
+- doc: README and manual page updates (bnc#874609,bnc#880262)
+- client: require directory in --ifconfig compat (bnc#881544)
+- dhcp: show progress notifications (bnc#874609)</comment>
+    <requestid>238861</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>657619b71554954f36d09d2608652119</srcmd5>
+    <version>0.5.34</version>
+    <time>1405434357</time>
+    <user>coolo</user>
+    <comment>- version 0.5.34
+- dhcp6: do not fail on read-only root-fs (bnc#885625)
+- leases: fallback to statedir on read-only fs (bnc#885625)
+- ifreload: hierarchy and multiple devices fixes
+- ifreload: more diagnostic messages (bnc#882311)
+- man: ifcfg(5) document update
+
+- version 0.5.33
+- capture: lower to debug on reconfig changes device type (bnc#880700)
+- policy: add &lt;child&gt; node for policy &lt;match&gt; condition checking
+- client: do not apply NULL config to nanny and segfault
+- client: lowering log level of &quot;skipping&quot; messages
+- server: lookup using link not the hwaddr type
+- dhcp6: use RA prefix len if available (bnc#885234)
+- iflist: fixed to use proper kind mapping, cleanup, refactoring
+- fsm nanny: fix handling of DEVICE_DOWN event
+- nanny: adapt recheck to handle hotplug devices
+- nanny: schedule recheck on new device when policy exists
+- nanny: Change managed and factory up functions
+- nanny: Disable unnecessary schedule recheck calls
+- nanny: Fix handlin DEVICE_CREATE and DEVICE_READY events
+- fsm: ni_fsm_build_hierarchy destructive switch
+- nanny: Trigger recheck on factory devices from create policy
+- client: include and sort children using nanny
+- fsm: Proper subclass and superclass check in ni_ifcondition_type()
+- nanny: create workers and assign config from create policy
+- nanny: Clear config.node on delete policy
+- nanny: disable down operation for now
+- dhcp4: fix link type comparison during device up events
+- fsm: Move ni_ifup_pull_in_children to FSM</comment>
+    <requestid>241017</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d2cf01be5f9a799c415d8b01ea6c60d0</srcmd5>
+    <version>0.5.35</version>
+    <time>1405931688</time>
+    <user>coolo</user>
+    <comment>- version 0.5.35
+- dhcp4: fix routes with gateway on other network than IP address
+  and use address class based netmask if it is missed (bnc#887586)
+- route,address: check also gw address to set scope correctly and
+  omit sending a broadcast when equal to IP address (bnc#887586)
+- ethtool: fix to set link speed, duplex and port options
+- iflist: fix link type detection for tap devices (bnc#887564)
+- ifup/reload: status reporting and complex device hierarchy fixes</comment>
+    <requestid>241452</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>27a8b0fcad66a7dcd914ec1722f1f616</srcmd5>
+    <version>0.5.37</version>
+    <time>1406177918</time>
+    <user>coolo</user>
+    <comment>- version 0.5.37
+- nanny: enabled nanny use for hotplugging (bnc#880515)
+  To disable again in case of trouble, edit /etc/wicked/common.xml
+  and set &lt;use-nanny&gt;false&lt;/use-nanny&gt;, restart wickedd.service
+  and execute &quot;wicked ifup all&quot; to start the interfaces directly.
+- ifdown: flush addrs and routes on device-down (bnc#885236)
+- dhcp6: do not break ifdown if release fails (bnc#884012)
+  When the interface is not ready to send out a lease release,
+  commit the lease drop and notify wickedd, so ifdown goes on.
+- ifup: update client-info and client-state on device-ready,
+  do not detect persistance but set if requested only (bnc#876845).
+
+- version 0.5.36
+- ifup/nanny: refresh state data when address event arrives
+  to have complete lease data for status evaluation on timeout
+  (bnc#884012,bnc#876845)
+- nanny: make policy application mechanism aware of children
+  dependency, fixed ifcondition child handling.
+- ibft: enable ipv6, use sysfs prefix-len (bnc#887542)</comment>
+    <requestid>242018</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7da8f20d329696ead4b1c94a1943f5ec</srcmd5>
+    <version>0.5.38</version>
+    <time>1406366870</time>
+    <user>coolo</user>
+    <comment>- version 0.5.38
+- dhcp4: wait and discover if unable to rebind/reboot.
+- ifreload: fixed to use nanny ifup flow when enabled,
+  fire nanny in down part, initial status info cleanup
+  (bnc#880515,bnc#884012)
+- ifup/ifreload: apply wait-for-interfaces (bnc#888323)
+- wickedd: fixed to process complete device state event
+  change transitions, avoiding manual refreshes breaking
+  them where possible (bnc#880515,bnc#884012)</comment>
+    <requestid>242231</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6ba576221a427494e16de59cf996b4c6</srcmd5>
+    <version>0.6.0</version>
+    <time>1407227061</time>
+    <user>coolo</user>
+    <comment>- version 0.6.0
+- client: added missed ifcfg remote-ip route match (bnc#889801)
+- client: ifstatus/reload/up status reporting fixes (bnc#876845)
+- client: calculate additional bridge STP timeouts (bnc#888323)
+- nanny: do not use fsm default but infinite timeout (bnc#876845)
+- nanny: save and load policies on restart to recover (bnc#876845)
+- server: client configuration state load/save fixes (bnc#876845)
+- ifconfig: fixed to close tun/tap device descriptor (bnc#889326)</comment>
+    <requestid>243397</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>013f24bac951104455c2801c76af5af2</srcmd5>
+    <version>0.6.1</version>
+    <time>1407391698</time>
+    <user>coolo</user>
+    <comment>- version 0.6.1
+- nanny: Do not call link monitor on enable() (bnc#884012, bnc#890643)
+- bridge,bond: Add only device-ready ports/slaves
+- ifup,ifdown,ifreload: correct command status display messages
+- fsm: Add new, free, clone functions for ifworker arrays
+- client-state: Allow printing empty origin and UUID (bnc#890084)</comment>
+    <requestid>243808</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d2bc8654f448862a4f0b5f0c9b1155ff</srcmd5>
+    <version>0.6.2</version>
+    <time>1408550021</time>
+    <user>lnussel</user>
+    <comment>- version 0.6.2
+- nanny: disable nanny use by default again (bnc#891045)
+- fsm: generate default configs for ports/slaves (bnc#889666)
+- dbus: increase signal/default call timeouts (bnc#890084)
+- dhcp4: pad dhcp4 packet to correct minimal len (bnc#882561)
+- dhcp4: apply interface MTU provided by server (bnc#890230)</comment>
+    <requestid>245055</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>d2bc8654f448862a4f0b5f0c9b1155ff</srcmd5>
+    <version>0.6.2</version>
+    <time>1409303638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ef9cd07e59879c0515e410569b519d74</srcmd5>
+    <version>0.6.3</version>
+    <time>1409761298</time>
+    <user>coolo</user>
+    <comment>- version 0.6.3
+- client/nanny: lease handling/status fixes (partial bnc#891045),
+  do not fail when slave/port is missing (bnc#889666,bnc#890275)
+- ifstatus: Do not check for config files (bnc#889666,bnc#890275)
+- dhcp4: advance secs field for dhcpd min-secs (bnc#889314),
+  retransmit DHCP4 renewals enter reboot state with valid lease.
+- ifevent: increase netlink socket recv buffer size (bnc#884012)
+- ipv6: wait for addresses to become usable (bnc#882259)
+- fixed completed sit/gre/ipip tunnel support
+- dhcp6: initial defer handling and no-addr cleanup (bnc#891045)
+- dhcp: apply suse ifcfg dhcp options (bnc#866994)
+- ifup/reload: use default timeout if 0 (bnc#892486)</comment>
+    <requestid>247149</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4a6a17f6e0a631034f0379c62a897de0</srcmd5>
+    <version>0.6.5</version>
+    <time>1409998667</time>
+    <user>coolo</user>
+    <comment>- version 0.6.5
+- nanny: fixed to reset on rearm and to hotplug bonding slaves
+  (bnc#884012,bnc#880515)
+
+- version 0.6.4
+- dhcp6: changed --test to request in auto mode, recheck RA
+  and try to start on new device-change events (bnc#889981)
+- address: enable events in wickedd and expose flags to make
+  them visible and up-to-date in ifstatus (bnc#889981)
+- nanny: reset/rearm on enable/disable, do not arm at all
+  when the use-nanny is false (bnc#891045)
+- leases: intrinsic lease installation hook improvements as
+  preparation for PPPoE support (bnc#865573)
+- dhcp4: do not release and remove lease without request
+  (DHCLIENT_RELEASE_BEFORE_QUIT), randomized startup delay
+  (DHCLIENT_SLEEP) if enabled, handle defer timeout to stop
+  client waiting at ifup (DHCLIENT_WAIT_AT_BOOT), rebind and
+  reboot state fixes (bnc#866994)</comment>
+    <requestid>247734</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>43a2181b7e55df671f09383fa27c4925</srcmd5>
+    <version>0.6.7</version>
+    <time>1410528301</time>
+    <user>coolo</user>
+    <comment>- version 0.6.7
+- config: fixed optional include attribute parsing bug introduced 
+  in version 0.6.6 and causing wicked to fail while config parsing. 
+- util: install signal handlers only once
+
+- version 0.6.6
+- Add wake-on-lan support (bnc#869114)
+- ifconfig: delete address first if address differs (bnc#890406)
+- config: support a local.xml file, clean-up of config file syntax
+- man page wicked-config.5 update
+- Clean-up and removing unused functions</comment>
+    <requestid>248297</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f74258a2baba33c735978d5ea8846db2</srcmd5>
+    <version>0.6.9</version>
+    <time>1410981832</time>
+    <user>coolo</user>
+    <comment>- version 0.6.9
+- ifstatus: address status reporting improvements, adding --verbose
+  parameter
+- addrconf: correctly fetch lease info flags, disarmed old auto6
+  code, added prerequires (bnc#894885)
+- fsm: Do not destroy schema requirements on rearm
+- ipv6: added accept-ra sysctl support, auto6 code clean-up
+- ifconfig: fixed lease updater allocation
+
+- version 0.6.8
+- ifup,reload,status: return setup-in-progress code,
+  fix exit code override when systemd in picture and
+  disable pulling device status from addresses
+- ifstatus: report slaves device as enslaved
+- fixed to not reset master device name on success
+- lower printout of debug messages (bnc#891036)
+- nanny: correctly initialize timeout variable to
+  busy wait instead to wasting cpu using poll with
+  a 0 timeout (bnc#895970)</comment>
+    <requestid>249930</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>48ea5428d8d90b34f2871808cb45bd42</srcmd5>
+    <version>0.6.10</version>
+    <time>1411221074</time>
+    <user>coolo</user>
+    <comment>- version 0.6.10
+- ifconfig: apply address lease priorities same as for routes
+  to dhcp6 to takeover addresses from guessed lower-priority
+  leases e.g. after restart and adjust lifetime on renewal.
+- routes: lookup and accept custom table names defined in the
+  /etc/iproute2/rt_tables file and set forgotten route table
+  netlink attibute if provided by the kernel (bnc#885007).
+- ethernet: do not fail when some ethtool operation is not
+  supported (bnc#897264)
+- fsm: add link-masterdev relation when all dependencies are
+  already created and detect existing/conflicting masterdev
+  references.</comment>
+    <requestid>250245</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>40313bcdaa4084efc8cb2d87a69b507a</srcmd5>
+    <version>0.6.11</version>
+    <time>1411926935</time>
+    <user>coolo</user>
+    <comment>- version 0.6.11
+- client-state: Do not fail on parsing empty origin and uuid
+  (bnc#890084)
+- hwaddr: change hwaddr only when valid (bnc#898622)
+- ifup/ifstatus: no failure report on failed/deferred lease,
+  correctly OR grouped leas status (bnc#896188)
+- ifup,ifreload: wait for all tentative addresses
+- config: improved allowed update mask/defaults
+- man: added startmode hotplug and use-nanny (bnc#896403),
+-      Introduce ifcfg-dhcp man page covering DHCLIENT and
+       DHCLIENT6 vars, remove template reference from ifup(8),
+       ifcfg-wireless(5), reference ifcfg-dhcp(5)
+- README: updated / improved
+- rpm: dbus policies as noreplace config (bnc#897775),
+       reload dbus in wicked-service post-install (bnc#897775)
+- fsm: corrected device hierarchy structure print
+- routes: generate routes also without IP (bnc#895219),
+          show a note about not matching routes (bnc#895219)
+- ethernet: lower ethtool not supported messages to debugs</comment>
+    <requestid>252509</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b81d150da9fe6167e0d988a66db9a8a7</srcmd5>
+    <version>0.6.12</version>
+    <time>1413060104</time>
+    <user>coolo</user>
+    <comment>- version 0.6.12
+- ethernet: Do not fail when ETHTOOL_GSET/SSET fails
+  (bnc#900401, bnc#900112)
+- dbus: omit ethernet speed, duplex, autoneg properties if not
+  supported by the driver
+- ethtool: independent ioctl requests are handled separately: 
+  if one fails it does not stop the following ones
+- wireless: request assosciation even if link was up; linkup
+  indicates assosciation, rather than explicit linkAssosciate
+  event (bnc#893665)
+- bonding: ignore redundant slaves in configs with a warning
+- fsm: Generate default config for children in existing relation
+- compat: prefer /etc/hostname over /etc/HOSTNAME and warn about
+  missed global configs (bnc#887910)</comment>
+    <requestid>254980</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>aa79c0d399b115a25875be9344eb74a6</srcmd5>
+    <version>0.6.13</version>
+    <time>1418251580</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.13
+- sysctl: do not fail on read-only proc e.g. in LXC (bsc#904432)
+- netlink: recover from netlink event socket errors and allow to
+  configure the event socket buffer sizes (bsc#905421)
+- fixed some memory and a file descriptor leak
+- bonding: add encap2+3 and 3+4 xmit-hash-policies (bsc#905750)
+- client: apply suse ifcfg alias label (bsc#907683)
+- netlink: retry on DUMP_INTR and AGAIN (bsc#904776)
+- gcrypt: do not fail when wicked has been build using a newer
+  but compatible library than the currently used (bsc#906217)
+- compat: use info level on unspecified ip (bsc#904903)
+- compat: fix tap group node generation (bsc#904380)
+- sit,ipip,gre: generate tunnel config on change (bsc#901402)
+- fsm: always refresh worker on device-ready event and match only
+  ready devices against config workers (bsc#904061)
+- fsm: perform tentative check on all started interfaces with
+  nanny (bsc#900951)</comment>
+    <requestid>264500</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ac9193098aeea72b43df2e03e4efc08c</srcmd5>
+    <version>0.6.14</version>
+    <time>1419159727</time>
+    <user>coolo</user>
+    <comment>- version 0.6.14
+- client: fixed segfault in status (bsc#908554)
+- bonding: add new/missed bonding options (bsc#905750)
+- systemd: service ordering dependencies (bsc#895600,bsc#901337)</comment>
+    <requestid>265914</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>fb0bcc9afb42277bb69df719756b67b2</srcmd5>
+    <version>0.6.15</version>
+    <time>1422216853</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.15
+- nanny: use ifindex to reference workers in managed devices
+  and hold worker references when starting fsm (bsc#904061)
+- nanny: Always reference mdev's worker by ifindex (bsc#904061)
+- nanny: register discovered devices only when ready (bsc#904061)
+- events: query and update device name on events (bsc#904061)
+- udev: verify netdev index and update name at start, disable
+  ready handling if udev is not used, e.g. in LXC (bug#904061)
+- xml: don't require parent's control node in config (bsc#901517)
+- wireless: use string dict entry for WIRELESS_AP/bssid (bsc#911315)
+- extensions: fixed false errors from hostname update (bsc#910323)
+- tuntap: typo fix causing to not set IFF_NO_PI flag
+- fixed some memory leaks in client and dbus object code
+- doc/ChangeLog: do not omit merge commits which contain bug refs</comment>
+    <requestid>282549</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d8a0dd3be036194657fdc62141eb4070</srcmd5>
+    <version>0.6.17</version>
+    <time>1424622325</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.17
+- nanny: fixed a memory-leak on policy load failure
+- wickedd: fixed broken dummy0 autocreation workaround
+
+- version 0.6.16
+- ifreload: segfault fix to require argument for --timeout option
+- client/nanny: initial handing of link-detection/require-link and
+  timeout control flags (LINK_REQUIRED, LINK_READY_WAIT variables in
+  suse ifcfg) to continue setup without ready link when requested in
+  the config or based on device requirements (bsc#911562,bsc#914792).
+- client/nanny: wait for event ACKs from wickedd instead to continue
+  on successful request results where possible, to minimize the risk
+  of an event backlog (bsc#905421).
+- client/nanny: fsm timer and cleanup related fixes and improvements,
+  fix to use &quot;device-setup&quot; (MAC, bond/bridge options, ...) as state
+  name instead of &quot;device-up&quot; and use &quot;device-up&quot; as state when the
+  device/link is administratively set UP. Separated waitLinkUp method
+  to wait for link/carrier from linkUp setting it administratively UP.
+- wickedd: fix to handle automatically created dummy0 interface
+- wireless: consider auth-proto parameter (wpa1|wpa2) (bsc#911299)
+- ipv6: add accept-dad sysctl support, fix accept-ra constants
+- dhcp4: do not set/query mtu if set in the config (bsc#904323)
+- dhcp4: limit MTU to be lower-equal 576 as before
+- dhcp4: completed user-class option support permitting an rfc3004
+  formatted option or as non-rfc, but widely used string (bsc#909307)</comment>
+    <requestid>286740</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>2156dc4678145107560c49955f17c6e6</srcmd5>
+    <version>0.6.17</version>
+    <time>1426680126</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>291050</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fe8da3c8358c9be146a3236155af577f</srcmd5>
+    <version>0.6.18</version>
+    <time>1430113578</time>
+    <user>coolo</user>
+    <comment>- version 0.6.18
+- initial pre/post-up/down script and systemd service start support
+  (bsc#920070,boo#907215)
+- fixed lease address owner and lifetime tracking to update address
+  lifetimes on dhcp6 renewal, correctly drop (requesting/deferred)
+  leases in wickedd not (yet) existing as lease in dhcp supplicants
+  and avoid address exists error messages (bsc#920889,bsc#907694)
+- add missed wpa_supplicant's wireless mode names (bsc#927616)
+- schema: require macvlan lower device same as vlan (bsc#927065)
+- fixes to use only ready devices by name to avoid dependency
+  confusion mapping config to wrong device, event races and wrong
+  use of the link-up instead of the wireless link-associated event
+  (bsc#918662,bsc#921218).</comment>
+    <requestid>303888</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3d4acfa750f5e5cc21c67094d4f6670e</srcmd5>
+    <version>0.6.19</version>
+    <time>1437059596</time>
+    <user>coolo</user>
+    <comment>- version 0.6.19
+- dhcp4: improve invalid dhcp options handling (boo#918069)
+- dhcp6: just drop an info lease on release request and stop
+- dhcp6: refresh ipv6 link on newprefix in auto mode to
+  workaround, that the kernel does not send us events about
+  mode change when RA timers are unspecified (bsc#934067)
+- ethtool: do not warn when reading ethtool settings while
+  netlink newlink processing and the device is already gone.
+- ibft: ignore invalid default gateway (0.0.0.0 and ::)
+  provided by the firmware (bsc#903759)
+- wireless: handle ANY for WPA-EAP methods and send passwd
+  when phase2 method isn't set (boo#927615)
+- bonding: don't insist, that arp_validate=none default is
+  valid in active-backup mode only (boo#919573)
+- wickedd: fix to send requested device-up event ack
+- nanny: fix error handling for NULL policy objects and fix
+  to not compare iftype to a dbus class name (boo#931288)
+- nanny: ensure a device is ready to satisfy a policy match
+- nanny: fixes improving delete and hotplug handling
+- ifup: do not recurse when generating nanny policy matches
+- ifreload: properly handle some config rename cases
+- fsm: ensure to process events in order and don't advance
+  fsm state from events when device state outdistances it.
+- schema: cleanup netif-reference meta:require checks.
+- spec: require util-linux-systemd providing logger (bsc#911310)
+- conditionally enable nanny use (boo#915025,bsc#916402)</comment>
+    <requestid>315003</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>12f7f8e8e1f00ea39e26d785016ef647</srcmd5>
+    <version>0.6.20</version>
+    <time>1438750146</time>
+    <user>coolo</user>
+    <comment>- version 0.6.20
+- spec: enable nanny use by default (fate#318977)
+- ifconfig: handle link up of externally enslaved devices
+  (fate#318840) 
+- ifcfg: generate link master from master config,
+  added MASTER_DEVICE variable
+- fsm: master/slave transition dependency and state check fixes
+- fsm: improve subordinate device relation updating and logging
+- fsm: reference count config nodes to avoid memleaks
+- ethtool: fix option tables terminator (bsc#925276)
+- scripts: fixed typo breaking wicked scheme scripts
+- sysfs: fixed memleak while reading device path
+- client: client: config parsing, origin processing, root-directory
+  cleanup and memory leak fixes.
+- xml: fixes to memory leaks, location functions cleanup
+- firmware: properly extract discovery type and path</comment>
+    <requestid>319830</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b32b3d8745d3497412534a351d2d5484</srcmd5>
+    <version>0.6.23</version>
+    <time>1441954997</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.23
+- ovs: initial openvswitch bridge support (fate#318840)
+- team: fix segfault on discovery failure
+- nanny: register device object also on device-up event
+
+- version 0.6.22
+- fsm: do not run post-up scripts when leases defer (bsc#940239)
+- team: configurable teamd support and ctl detection (fate#318389)
+  [- 0001-teamd-create-teamd-run-directory-when-missed.patch]
+
+- Add 0001-teamd-create-teamd-run-directory-when-missed.patch:
+  Make sure /run/teamd directory is created on config generation.
+
+- version 0.6.21
+- team: initial team device support (fate#318389)
+- ifstatus: fixed error return code and quiet option (bsc#939142)</comment>
+    <requestid>329534</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f67742adf9949a7c9d709bb47e0286bf</srcmd5>
+    <version>0.6.24</version>
+    <time>1443071813</time>
+    <user>coolo</user>
+    <comment>- version 0.6.24
+- auto4: initial autoip and dhcp4 fallback fix (bsc#899985)
+- ethtool: update to the most recent ethtool.h, fixed
+  advertised mode and flags (bsc#927309)
+- dhcp4: verify received client-id, accept hex encoded id
+- ovs: fixes for ovs bridge handling
+- make: fixed to add linux header copies as noinst</comment>
+    <requestid>331819</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5b5254d47243bc9ceac98b9faff1985c</srcmd5>
+    <version>0.6.25</version>
+    <time>1443896984</time>
+    <user>coolo</user>
+    <comment>- version 0.6.25
+- compat: read complete sysctl file set (bsc#928459)
+- wireless: fixed to parse/format hex escapes in essid (bsc#928459)</comment>
+    <requestid>333779</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>480ede4bbc580b688adb80884fb53fa4</srcmd5>
+    <version>0.6.26</version>
+    <time>1445092722</time>
+    <user>coolo</user>
+    <comment>- version 0.6.26
+- nanny: add link device references to policy match (bsc#941611)
+  This causes, that nanny checks and waits until the configuration
+  for link references is applied by ifup (master device worker is
+  available) in order to not start managing ports/slaves and fail
+  on unresolvable requirements with &quot;document error&quot; first.
+  Unavailable reference matches caused a timing race, where nanny
+  omits to enslave ports into master (e.g. a dummy into ovsbr),
+  but was not limited to ovs setups.
+- dhcp4: fix to request offer by default in --test (bsc#942278)
+- teamd: adjust permissions of the teamd interface config to be
+  owned by teamd user if available and to always re-read dbus
+  busname from the service file (bsc#947542)</comment>
+    <requestid>337465</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ee01b109a31998a1fcd262e55451859e</srcmd5>
+    <version>0.6.27</version>
+    <time>1446049117</time>
+    <user>dimstar_suse</user>
+    <comment>- vesion 0.6.27
+- nanny: fix policy file reading and objects references (boo#916035)
+- ovs: use --may-exist option in add-port (bsc#951315) commands to
+  avoid error messages when the port is already in the db.
+- netconfig: do not refresh unrelated details in supplicants
+- service: fixed wicked client and nanny dependencies (bsc#950333).
+- service: restart wickedd* on dbus restart (bsc#941964)
+- fsm: do not follow link-up checks on configured master devices
+  not involved in the current ifup operation (bsc#948423).
+- client: added more comfortable &quot;wicked test dhcp[46]&quot; commands
+  executing the wickedd-dhcp[46] in their --test mode (bsc#942278)</comment>
+    <requestid>340387</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>35cbb84da3faa74a39ce3637777dea91</srcmd5>
+    <version>0.6.28</version>
+    <time>1447766459</time>
+    <user>dimstar_suse</user>
+    <comment>- fsm: dynamically resolve references and requirements (bsc#954289)
+- nanny: do not pull in and rearm subordinate workers (bsc#954289)
+- nanny: fix managed policy list handling (bsc#953107)
+- ifup: do not update policy when it has been created and recheck
+  with a name filter list instead to enable separately to avoid a
+  race condition (bsc#953107)
+- ovs: do not require link on ovs-system device</comment>
+    <requestid>344078</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1fd534b6d1f25a62e42058f3cdec2261</srcmd5>
+    <version>0.6.29</version>
+    <time>1448960502</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.29
+- rpm: do not use systemctl show in scripts (bsc#955778)
+  systemctl show makes a systemd query and does not work in
+  a chroot or when systemd is not available and using it in
+  RPM scripts breaks offline update. Replaced with readlink.
+- team: fix to use proper names of ethtool delay options
+- nanny: skip recheck when no policy configured (bsc#953107)
+
+- version 0.6.28</comment>
+    <requestid>345488</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>3458461b82205473b3ce44b3708102e4</srcmd5>
+    <version>0.6.30</version>
+    <time>1454628613</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.30
+- wireless: fix EAP inconsistencies and add missing auth method
+  names to translation maps (bsc#936514, boo#927615).
+- ipv6: clear old address list before applying new fixing to not
+  wait full time in the client-side tentative address check
+- fsm: do not segfault on device hierarchy loops but (bnc#959356)
+- fsm: handle down/step back events in ifup flow instead to try to
+  workaround in nanny (bsc#955864).
+- man: documented how to declare several team link watches.
+- ethtool: map da,none,other port types (bsc#957944).
+- ipv4: removed pointless broadcast calculations and send to the
+  kernel only if explicitly requested in ifcfg file or by dhcp
+  options. The kernel has an own logic to automatically calculate
+  related settings as needed. Also removed broadcast setting from
+  ifcfg-lo to not override kernel's setup (bsc#944710).</comment>
+    <requestid>356682</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>29015fe04f8fde3d43768f1fbf0eda85</srcmd5>
+    <version>0.6.30</version>
+    <time>1456432926</time>
+    <user>dimstar_suse</user>
+    <comment>- fsm: do not segfault on device hierarchy loops (bnc#959356);
+  corrected pull#618 fix to not reset master and use its name then.
+  [+ 0001-fsm-do-not-use-master-name-after-reset-bsc-959356.patch]</comment>
+    <requestid>360888</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>0579ad028c3b44ae62b58130ed2be22e</srcmd5>
+    <version>0.6.31</version>
+    <time>1460101116</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.31
+- xml: fix to not assert on too long entities or missed semicolon
+  and fixed pointer use on DOCTYPE related parse error.
+- ifconfig: readd broadcast calculation (bcs#971629).
+  While the kernel does not need it and calculates itself, e.g.
+  glibc getbroadcastnets function used by yp expect it to be set.
+- ifup: let ovs bridges pull ovs-system config and omit ovs-system
+  master reference in policy match (bsc#964019)
+- fsm: fixed a negated check causing a segmentation fault in some
+  cases where the vlan config references a device without config.
+- bonding: call setup routine at the end of create (bsc#964877),
+  fixed mismatched carrier-detect and validate-targets attributes
+  in schema and dbus, permit to set bonding's hardware address,
+  process bonding settings in newlink events and switched to create
+  and setup also bonding the master device via netlink by default.
+- xml-schema: do not add description node to enums
+- ifreload: let ifdown delete team instances (bsc#954012,bsc#964477)
+- fsm: reset device_api of deleted workers (bsc#954012)
+- removed patch included in the source archive
+  [- 0001-fsm-do-not-use-master-name-after-reset-bsc-959356.patch]</comment>
+    <requestid>385131</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>088f92e0746de4471d5c75624b38b262</srcmd5>
+    <version>0.6.32</version>
+    <time>1462051643</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.32
+- tunnel: add device binding support (fate#317977)
+- gre: fix flags use, added missed keyed gre options
+- doc: added an initial FAQ to the documentation
+- util: fix null string and string array in compare
+- ipv6: cleaned up IPv6 RA PI and RDNSS processing
+- ipv6: receive IPv6 RA DNSSL options forwarded by kernel
+- dhcp6: refresh ipv6 link on each prefix event to fix workaround
+  for missed NEWLINK event on changes caused by RA (boo#972471).
+- macvlan: fix enum values for BRIDGE and PASSTHRU modes (boo#974231)</comment>
+    <requestid>390219</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>af5e5edbcabda9a15a9b2a4518a88443</srcmd5>
+    <version>0.6.33</version>
+    <time>1462696765</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.33
+- route: initial routing policy rules support (fate#312217)</comment>
+    <requestid>393544</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>d8397d0a3e8835a5712966b0b48b3f45</srcmd5>
+    <version>0.6.34</version>
+    <time>1464014247</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.34
+- utils: fix for ni_string_set to set empty pointers
+- team: fix for unclosed file descriptor and string memleak
+- ppp: initial implementation of PPPoE support
+  (fate#317976,bsc#865573,boo#913861)</comment>
+    <requestid>397035</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>ba9ba06a08ebe842e6b0932c19088640</srcmd5>
+    <version>0.6.35</version>
+    <time>1464863846</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.35
+- spec: removed ppp service template macro calls (fate#317976)
+- bonding: support for new v3.7.1 netlink options in 4.4 kernel
+- linux: update included headers to 4.4, add if_addr.h</comment>
+    <requestid>398341</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>b28a9b9ffc0fd35535dc60d47a3a7b35</srcmd5>
+    <version>0.6.36</version>
+    <time>1465847569</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.36
+- ifreload: make output more informative (bsc#982952)
+- rules: do not fail when kernel support is missed (bsc#981887)
+- nanny: reapply policies on device renames (bsc#973355)
+- iflist: fixed macvlan/macvtap link info data parsing
+- auto6: apply rdnss/dnssl and wait for autoconf (bsc#902897,boo#916613)</comment>
+    <requestid>401114</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>9d3c8206f4303b35d2ad86e9b9d37911</srcmd5>
+    <version>0.6.37</version>
+    <time>1471504618</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>418031</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a6928b774fa3cc6900066b80d9b1ae98</srcmd5>
+    <version>0.6.38</version>
+    <time>1475480011</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.38
+- addrconf: rewrite to run lease updates in background jobs and use
+  netconfig 0.84 batch support if available (bsc#989741).
+  Fixed auto4 and dhcp supplicants to explicitly stop device before
+  unregistering dbus object to disarm it and return release request
+  result before sensing the released event.
+  Fixed fsm to not advance fsm state on unrelated events and use new
+  call to refresh addresses from kernel for tentative checks in ifup.</comment>
+    <requestid>430454</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>b0730e8fd1c0e02ca31d786fb3cec58c</srcmd5>
+    <version>0.6.38</version>
+    <time>1476429957</time>
+    <user>dimstar_suse</user>
+    <comment>- dhcp: fixed to properly append dhcp option data.
+  Bug introduced by changes applied in version 0.6.37 (bsc#988954).
+  [+ 0001-dhcp-fixed-to-properly-append-dhcp-option-data.patch]</comment>
+    <requestid>434192</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>026207dc3bd9f753c7bed4450cc85f36</srcmd5>
+    <version>0.6.39</version>
+    <time>1479734519</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.39
+- dhcp: suport to define and request custom options (bsc#988954),
+  documented in wicked-config(5) and ifcfg-dhcp(5) manual pages.
+- dhcp6: fix refresh on newprefix workaround (boo#972471)
+- dhcp4: do not fail in capture on link type change (bsc#975466)
+- dhcp4: ignore invalid options, do not discard complete message
+  (https://github.com/openSUSE/wicked/issues/671)
+- dhcp4: log and add sender (server or relay) ethernet hw-address
+  to the lease (https://github.com/openSUSE/wicked/issues/663)
+- ifdown: show reasons to skip an action (bsc#997027)
+- ifconfig: fix to consider address scope in dbus model (bsc#988794)
+- bonding: set the primary slave in the master at enslave of the
+  primary when it were not yet ready while bond setup (bsc#998413)
+- removed patch included in this version
+  [- 0001-dhcp-fixed-to-properly-append-dhcp-option-data.patch]</comment>
+    <requestid>440824</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>0da7931150c9d3544fd545f692f2f68b</srcmd5>
+    <version>0.6.40</version>
+    <time>1494441255</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.40
+- fsm: clone bound config and cleanup references fixing ifindex
+  reference handling in iBFT vlan configuration (bsc#1030053)
+- updater: fix to not leave orphaned bg jobs on device delete,
+  causing to block processing of synchronized jobs (bsc#1029133)
+- vxlan: initial support (boo#1026780)
+- dhcp: correct and complete fqdn option support (bsc#1025757)
+- bonding: properly send primary reselect to kernel (bsc#1027231)
+- dbus: fix caller-uid timeout to 15sec, not 15ms (bsc#1026683)
+- ethtool: handle ring,coalesce,eee parameters (bsc#1007909)
+- bond: fix xmit-hash-policy option mismatch (bsc#1021914)
+- ifconfig: avoid timeouts on large number of IPs by performing
+  ipv4 duplicate address detection, apply and sending gratuitous
+  ARP for chunks of multiple addresses at once (bsc#1009801)</comment>
+    <requestid>492860</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>56145c47fce6d9e84ea526e3e7e21332</srcmd5>
+    <version>0.6.41</version>
+    <time>1502011955</time>
+    <user>maxlin_factory</user>
+    <comment>- version 0.6.41
+- dhcp6: fix to send up to 5 release retransmissions
+- ifconfig: do not stop adding routes on one bad route (bsc#1036619)
+- dhcp4: fix to use rfc4361 client-id on infiniband (bsc#1022872)
+- man: ifcfg.5: Fix directory name for compatibility scripts
+- dhcp4: own check for user class id strings (bsc#1045522)
+- dhcp: cleanup common option update flags (bsc#1027099)
+- vxlan: convert ifcfg VXLAN_REMOTE_IP to remote-ip</comment>
+    <requestid>512934</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>a3c9fa893cefd555a053c0119517bea4</srcmd5>
+    <version>0.6.42</version>
+    <time>1512546871</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.42
+- spec: use new _fillupdir macro for fillup-templates (boo#1069468)
+- dhcp: clear hostname on lease recovery/reboot (bsc#1057007)
+- firewall: add firewalld and zone support (fate#320794)
+- ifconfig: cleanup slaves before enslaving (bsc#1036675)
+- ethtool: add rxvlan, txvlan, ntuple and rxhash offloads
+- ethtool: handle channel parameters (bsc#1043883)</comment>
+    <requestid>547132</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>48ce2f9f19ccb616e4e08b07481645bd</srcmd5>
+    <version>0.6.43</version>
+    <time>1513676568</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.43
+- ifconfig: set MTU even if device is up (bsc#1059292)
+- dhcp6: reapply confirmed addresses, also on any confirm
+  status other to not-on-link</comment>
+    <requestid>557547</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>9e7cf63061f94155972a85ed6fcbb445</srcmd5>
+    <version>0.6.43</version>
+    <time>1514502086</time>
+    <user>dimstar_suse</user>
+    <comment>- wickedd: clear master references on slaves when a master gets
+  deleted and the deletion event arrives before unenslave event
+  to avoid a bridge reenslave failure on restart (bsc#1061051).
+  [+ 0001-wickedd-explicitly-unbind-slaves-on-deletion.patch]</comment>
+    <requestid>559071</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>207a1d2b6d70a8b94cab09b29d9f0d6c</srcmd5>
+    <version>0.6.44</version>
+    <time>1517668815</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.44
+- dhcp4: use rfc4361 client-id as new default for ethernet on sle15
+  (fate#323576). It can be also enabled/disabled in wicked-config(5).
+- client: fixed broken wicked arp utility command (bsc#1078245)
+- cleanup: add mising/explicit designated field initializers
+- pkgconfig: fix to request libnl3 instead of libnl1
+- dbus: add missing DBUS_ERROR_FAILED type to a dbus_set_error call
+  and enforce formatting input as string when an extension did not
+  returned any error message.
+- Removed patch included in the source archive
+  [- 0001-wickedd-explicitly-unbind-slaves-on-deletion.patch]</comment>
+    <requestid>572059</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>e642f82d68585ce6e789d7656aad0a3a</srcmd5>
+    <version>0.6.45</version>
+    <time>1519746984</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.45
+- ibft: no IP setup on bnx2x storage-only interfaces (bsc#1072343)
+- fixed format, self compare and always true issues</comment>
+    <requestid>580048</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>96e6a05161ed09457ae0a2bab6bc98e9</srcmd5>
+    <version>0.6.47</version>
+    <time>1521904031</time>
+    <user>dimstar_suse</user>
+    <comment>- version-0.6.47
+- ipoib: do not fail setup on mode or umcast set failure (bsc#1084462)
+- bond: avoid reenslave failure in fail_over_mac mode (bsc#1083670)
+- Fix show-xml filtering by interface name (issue #735,bsc#954758)
+
+- version-0.6.46
+- ifconfig: refresh state before link reenslave hotfix (bsc#1061051
+- ethtool: query priv-flags bitmap first (bsc#1085020)
+- util: fix a memory leak in ni_var_array_free
+- client: refactor arp utility to add missed arp ping (bsc#1078245)
+- dbus: omit zero-length hwaddr data properties</comment>
+    <requestid>590735</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>8589a9216414470029be7af3b8f08e2a</srcmd5>
+    <version>0.6.48</version>
+    <time>1528195807</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.48
+- address cache-info and lease acquisition time fixes and cleanups
+- ethtool: streamline options available on all devices (bsc#1085786)
+- dhcp4: expose broadcast response as DHCLIENT_BROADCAST in ifcfg</comment>
+    <requestid>613509</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>9d13a49bd709e2852d8a913e8efbefb1</srcmd5>
+    <version>0.6.49</version>
+    <time>1538377510</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.49
+- dhcp6: fix to properly decline dynamic addresses
+- extensions: do not use /etc/HOSTNAME artifact (bsc#972463)
+- ethtool: call offload ioctl if requested by offload name,
+  e.g. tso has been splitted into several features and the
+  old STSO offload ioctl sets multiple features at once.
+- ethtool: add missing pause support (bsc#1102871)
+- dhcp6: refresh info using rfc4242 info-refresh-time
+- dhcp6: add ia and ia addr list search utilities, improve
+  status utils and use timeval struct in ia acquired times
+- dhcp6: restart on NotOnLink status request reply
+- ifcfg: show unknown/invalid bootproto as error
+- dhcp6: Fix server preference and weight option behaviour
+- dhcp6: retrigger duplicate detection on all address updates
+- man: add ifcfg-lo.5 manual page
+- man: add missing documentation for DHCLIENT6_CLIENT_ID
+- man: improved create-cid docs in wicked-config(5) (bsc#1084527)</comment>
+    <requestid>637065</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>49afc6e2b6ef056b48eef1335f146ed1</srcmd5>
+    <version>0.6.50</version>
+    <time>1539251046</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.50
+- firewall: do not assign default zone, but pass as is (bsc#1109147)
+- nanny: fix memory leaks on fast create-delete calls (bsc#1095818)
+  + fsm: cleanup worker reset (reinit) vs. free
+  + fsm: do not process or pass pending workers to nanny
+  + nanny: catch init failures in device registration
+  + netdev: allow NULL in get and put functions
+  + model: fix to call (netif) dbus object destructors
+  + model: removed server specific call in netif destroy
+  + fsm: handle NULL in worker get and release calls
+  + fsm: process device delete event separately
+  + calls: split get netif service and netif list utils
+  + xml-schema: fix range constraint values parsing
+  + xml-schema: remove underscores from ni_xs_type_new
+  + xml-schema: fix type leak around ni_xs_build_one_type
+  + fsm: free worker control mode on worker free
+  + xpath: trace and free complete xpath expression tree
+  + nanny: fix config leak in ni_nanny_recheck_policy
+  + dbus: free pending call in ni_dbus_connection_call
+  + dbus: free dbus_message_iter_get_signature result</comment>
+    <requestid>640060</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>aaf7083b457b2c3a853d9e5d32aa1195</srcmd5>
+    <version>0.6.51</version>
+    <time>1541666355</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.51
+- wireless: fix eap peap auth mapping for wpa-supplicant (bsc#1026807)
+- vxlan: fix to convert dst_port to network byte order</comment>
+    <requestid>644846</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>da59f757541702f77cc96fd1220f85fe</srcmd5>
+    <version>0.6.52</version>
+    <time>1542749069</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.52
+- wickedd: fix netdev detection bootstrap race (bsc#1107579)
+- compat: fix ifcfg parsing crash if network/config is missed</comment>
+    <requestid>649574</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>d02a5fc49923ac611181adf8d806a832</srcmd5>
+    <version>0.6.53</version>
+    <time>1548537680</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.53
+- dhcp: request hostname/fqdn option in the tester (bsc#1118378)
+- build: link with relro by default for binary hardening</comment>
+    <requestid>668420</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>96dff5bb8d56c5d2a496f6958e81c5d2</srcmd5>
+    <version>0.6.54</version>
+    <time>1554749465</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.54
+- switch to use systemd notify and prevent event backlog at start
+  by calling udevadm settle before starting wickedd (bsc#1118206)
+- dhcp6: don't discard confirm reply without status (bsc#1127340)
+- ethtool: set lro legacy flag and not txvlan (bsc#1123555)
+- init memory before use in ioctl
+- fsm: fix find pending worker loop segfault (boo#1106809)</comment>
+    <requestid>691820</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>9e85aa7a4b6f342ec382b4b99468d97a</srcmd5>
+    <version>0.6.55</version>
+    <time>1565962399</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.55
+- dhcp6: do not default to a /64 address prefix-length (bsc#1132280)
+  Add an address-length aka DHCLIENT6_ADDRESS_LENGTH ifcfg option, which
+  permits to specify explicit prefix-length to use for the DHCPv6 address
+  and override detection using RA prefix info and a default to /128.
+- time: use boot time for timer instead of real time (bsc#1129986)
+- dhcp: Consistently log dhcp xid and enabled to log dhcp6 timings line.
+- dhcp6: lower unexpected xid messages to debug level
+- systemd: change to depend on udev settle service (bsc#1136034,bsc#1132774)
+  Calling udevadm settle directly caused systemd to kill wicked services.
+- bridge: honour ifcfg LLADDR and set link address (bsc#1042123,boo#1142670)
+- rfkill: fix switch statement to check enum variable not a constant (bsc#1140117)
+- man: ifcfg-ovs-bridge(5): recommend STARTMODE=nfsroot
+- dhcp4: nullify defer timer pointer when timeout (openSUSE/wicked#798)
+- dhcp4: fix to request routing options when custom options are used (bsc#1132326)
+- testing: add ifbind.sh helper script allowing to test hotplugging</comment>
+    <requestid>723357</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="hal-flash" project="openSUSE:Factory">
+  <title>HAL Flash compatibility library</title>
+  <description>HAL is no longer included in several Linux distributions, but Flash requires HAL for DRM content playback.  This library provides a minimal implementation that calls UDisks and DBus methods</description>
+  <devel project="devel:openSUSE:Factory" package="hal-flash"/>
+</package>

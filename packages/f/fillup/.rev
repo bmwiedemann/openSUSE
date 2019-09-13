@@ -1,0 +1,194 @@
+<revisionlist>
+  <revision rev="1" vrev="123">
+    <srcmd5>35b2fa9416dd52e901a11c336a360a9a</srcmd5>
+    <version>1.42</version>
+    <time>1166483755</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="242">
+    <srcmd5>35b2fa9416dd52e901a11c336a360a9a</srcmd5>
+    <version>1.42</version>
+    <time>1166483755</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="243">
+    <srcmd5>1e23da617e3e7012f220b897f006bf3b</srcmd5>
+    <version>1.42</version>
+    <time>1224729044</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="244">
+    <srcmd5>bf2c737167f958d24bdbeb4ac269216e</srcmd5>
+    <version>1.42</version>
+    <time>1251300290</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/fillup based on submit request 18868 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="5" vrev="246">
+    <srcmd5>bf2c737167f958d24bdbeb4ac269216e</srcmd5>
+    <version>1.42</version>
+    <time>1251300290</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/fillup based on submit request 18868 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="6" vrev="247">
+    <srcmd5>48b1df3615d67215cecc0aad70901ef2</srcmd5>
+    <version>1.42</version>
+    <time>1261143017</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/fillup based on submit request 26849 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="248">
+    <srcmd5>f189ad2f0bc78267a2745e18efcfead1</srcmd5>
+    <version>1.42</version>
+    <time>1261826369</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/fillup based on submit request 27548 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="249">
+    <srcmd5>2a4565457efdc63370b97da821261042</srcmd5>
+    <version>1.42</version>
+    <time>1268923532</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="251">
+    <srcmd5>2a4565457efdc63370b97da821261042</srcmd5>
+    <version>1.42</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="252">
+    <srcmd5>2a4565457efdc63370b97da821261042</srcmd5>
+    <version>1.42</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="253">
+    <srcmd5>6cb2f27d0e37f265b2afec71c1ba0bde</srcmd5>
+    <version>1.42</version>
+    <time>1279652353</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/fillup based on submit request 43445 from user coolo
+</comment>
+    <requestid>43445</requestid>
+  </revision>
+  <revision rev="12" vrev="256">
+    <srcmd5>6cb2f27d0e37f265b2afec71c1ba0bde</srcmd5>
+    <version>1.42</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="257">
+    <srcmd5>b8f41c2b60d394ab468593adb98ef083</srcmd5>
+    <version>1.42</version>
+    <time>1308213686</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>73778</requestid>
+  </revision>
+  <revision rev="14" vrev="258">
+    <srcmd5>bee2965a9f9e9d092f94cab98960b702</srcmd5>
+    <version>1.42</version>
+    <time>1308213704</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73778
+</comment>
+  </revision>
+  <revision rev="15" vrev="259">
+    <srcmd5>d7f452323a6137bd599d52ec206ea6d2</srcmd5>
+    <version>1.42</version>
+    <time>1316516070</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83518 from jengelh)</comment>
+    <requestid>83729</requestid>
+  </revision>
+  <revision rev="16" vrev="260">
+    <srcmd5>75d2392eac6e17e8d0e787ff63d3fbf9</srcmd5>
+    <version>1.42</version>
+    <time>1317744568</time>
+    <user>oertel</user>
+    <comment>- cross-build workarounds: disable %build section testing, use fake
+  gcc script to work around build system deficiencies (forwarded request 86382 from uli_suse)</comment>
+    <requestid>86504</requestid>
+  </revision>
+  <revision rev="17" vrev="262">
+    <srcmd5>75d2392eac6e17e8d0e787ff63d3fbf9</srcmd5>
+    <version>1.42</version>
+    <time>1319181878</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="263">
+    <srcmd5>0884650ed4e45b9c2c975ed6589e3333</srcmd5>
+    <version>1.42</version>
+    <time>1323191366</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="264">
+    <srcmd5>ecf92900d0a35ef176269e5c06657edb</srcmd5>
+    <version>1.42</version>
+    <time>1329215033</time>
+    <user>coolo</user>
+    <comment>- place binary into /usr tree (UsrMerge project)</comment>
+    <requestid>103530</requestid>
+  </revision>
+  <revision rev="20" vrev="266">
+    <srcmd5>ecf92900d0a35ef176269e5c06657edb</srcmd5>
+    <version>1.42</version>
+    <time>1340183329</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="268">
+    <srcmd5>ecf92900d0a35ef176269e5c06657edb</srcmd5>
+    <version>1.42</version>
+    <time>1359108878</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="270">
+    <srcmd5>ecf92900d0a35ef176269e5c06657edb</srcmd5>
+    <version>1.42</version>
+    <time>1379662341</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="272">
+    <srcmd5>ecf92900d0a35ef176269e5c06657edb</srcmd5>
+    <version>1.42</version>
+    <time>1409300877</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="273">
+    <srcmd5>a04c24bdc2db9223d8f5c04d68f41957</srcmd5>
+    <version>1.42</version>
+    <time>1415365633</time>
+    <user>dimstar_suse</user>
+    <comment>- Also return back the /bin/fillup provides line
+
+- Keep /bin/fillup as a symlink in the package: there are hundreds
+  of RPMs out there referencing it in the %post scriptlets, when
+  any of the %*fillup* macros was used. Even updating the macro
+  will not make the existing RPMs magically be fixed.
+
+- Cleanup the mess in spec with spec-cleaner</comment>
+    <requestid>259499</requestid>
+  </revision>
+  <revision rev="25" vrev="274">
+    <srcmd5>5fa56f66b5cb388ba7009ceaf607917e</srcmd5>
+    <version>1.42</version>
+    <time>1512041505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545038</requestid>
+  </revision>
+</revisionlist>

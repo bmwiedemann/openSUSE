@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0eda86e86df88143ec84164e9c03e919</srcmd5>
+    <version>0.05</version>
+    <time>1418054189</time>
+    <user>dimstar_suse</user>
+    <comment>new dep</comment>
+    <requestid>263785</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e6d89e00d81fde46d18321554582a93c</srcmd5>
+    <version>0.05</version>
+    <time>1508197889</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with perl 5.26</comment>
+    <requestid>533547</requestid>
+  </revision>
+</revisionlist>

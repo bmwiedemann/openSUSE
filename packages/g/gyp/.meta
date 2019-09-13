@@ -1,0 +1,5 @@
+<package name="gyp" project="openSUSE:Factory">
+  <title>Generate Your Projects</title>
+  <description>GYP is a tool to generates native Visual Studio, Xcode and SCons and/or make build files from a platform-independent input format. Its syntax is a universal cross-platform build representation that still allows sufficient per-platform flexibility to accommodate irreconcilable differences</description>
+  <devel project="devel:tools:building" package="gyp"/>
+</package>

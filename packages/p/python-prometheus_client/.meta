@@ -1,0 +1,5 @@
+<package name="python-prometheus_client" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-prometheus_client"/>
+</package>

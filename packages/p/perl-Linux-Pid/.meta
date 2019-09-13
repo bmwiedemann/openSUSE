@@ -1,0 +1,5 @@
+<package name="perl-Linux-Pid" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Linux-Pid"/>
+</package>

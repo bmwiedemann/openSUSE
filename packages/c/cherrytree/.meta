@@ -1,0 +1,7 @@
+<package name="cherrytree" project="openSUSE:Factory">
+  <title>A hierarchical note taking application</title>
+  <description>A hierarchical note taking application, featuring rich text and syntax
+highlighting, storing all the data (including images) in a single xml
+file with extension &quot;.ctd&quot;.</description>
+  <devel project="GNOME:Apps" package="cherrytree"/>
+</package>

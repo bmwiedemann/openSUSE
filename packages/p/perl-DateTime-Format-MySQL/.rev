@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3ade263103c8c9bd91cf508db9f7fa5</srcmd5>
+    <version>0.04</version>
+    <time>1305706060</time>
+    <user>saschpe</user>
+    <comment>needed by perl-Moose</comment>
+    <requestid>69289</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6b492d2de71f2e6ca9dfa9f6d1a89532</srcmd5>
+    <version>0.04</version>
+    <time>1305706081</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69289
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6b492d2de71f2e6ca9dfa9f6d1a89532</srcmd5>
+    <version>0.04</version>
+    <time>1319182259</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>171a12af2851bd52067ba3ffb90aa94c</srcmd5>
+    <version>0.04</version>
+    <time>1321875512</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92100</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>5ff3fc17147c08b39746830d5fcdd0a9</srcmd5>
+    <version>0.04</version>
+    <time>1323193206</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>5ff3fc17147c08b39746830d5fcdd0a9</srcmd5>
+    <version>0.04</version>
+    <time>1340183828</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>5ff3fc17147c08b39746830d5fcdd0a9</srcmd5>
+    <version>0.04</version>
+    <time>1359109643</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>5ff3fc17147c08b39746830d5fcdd0a9</srcmd5>
+    <version>0.04</version>
+    <time>1379663634</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>5ff3fc17147c08b39746830d5fcdd0a9</srcmd5>
+    <version>0.04</version>
+    <time>1409302249</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f4041ff87ca75c7717aa9089d4c722f0</srcmd5>
+    <version>0.05</version>
+    <time>1429658280</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.05
+  + Added parsing of MySQL fractional seconds (microseconds).
+  * Allowed additional valid MySQL formats (delimiters in DATE and TIME
+    fields using punctuation, 'T' separator between DATE and TIME and
+    single-digit time or date values).</comment>
+    <requestid>298088</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>db06bdcd090930f58b92efcea321f60a</srcmd5>
+    <version>0.06</version>
+    <time>1455701118</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359214</requestid>
+  </revision>
+</revisionlist>

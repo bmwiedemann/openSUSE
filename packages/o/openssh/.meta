@@ -1,0 +1,11 @@
+<package name="openssh" project="openSUSE:Factory">
+  <title>Secure Shell Client and Server (Remote Login Program)</title>
+  <description>SSH (Secure Shell) is a program for logging into and executing commands
+on a remote machine. It is intended to replace rsh (rlogin and rsh) and
+provides openssl (secure encrypted communication) between two untrusted
+hosts over an insecure network.
+
+xorg-x11 (X Window System) connections and arbitrary TCP/IP ports can
+also be forwarded over the secure channel.</description>
+  <devel project="network" package="openssh"/>
+</package>

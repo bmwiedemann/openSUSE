@@ -1,0 +1,13 @@
+<package name="lua-toluapp" project="openSUSE:Factory">
+  <title>C/C++ with Lua Integration Tool</title>
+  <description>tolua++ is an extended version of tolua, a tool to integrate C/C++ code with
+Lua. tolua++ includes new features oriented to c++ such as:
+* support for std::string as a basic type (this can be turned off by a command
+  line option)
+* support for class templates
+as well as other features and bugfixes. 
+
+</description>
+  <devel project="devel:languages:lua" package="lua-toluapp"/>
+  <url>http://www.codenix.com/~tolua/</url>
+</package>

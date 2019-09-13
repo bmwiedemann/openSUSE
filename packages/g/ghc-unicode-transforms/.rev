@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d89a62d14efa8aae06f35ec022530496</srcmd5>
+    <version>0.2.1</version>
+    <time>1492169624</time>
+    <user>maxlin_factory</user>
+    <comment>initial version</comment>
+    <requestid>480556</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f685b6fd216b359976afb0c05ddd3437</srcmd5>
+    <version>0.3.2</version>
+    <time>1504206074</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513527</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>594f07953a5740bd0e7cfb53930c24c5</srcmd5>
+    <version>0.3.4</version>
+    <time>1527675312</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-unicode-transforms to the latest version.</comment>
+    <requestid>607913</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>219782ae05092f23c8e67bda43846937</srcmd5>
+    <version>0.3.4</version>
+    <time>1532161446</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623883</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f95cd8956e8a7c580f7ea730949bd9af</srcmd5>
+    <version>0.3.4</version>
+    <time>1540451205</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643482</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c3a72a3ab04817c8cad0c18d7d85c0d1</srcmd5>
+    <version>0.3.5</version>
+    <time>1544094992</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>650508</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e4d8f20580ae119c3c8f2b88c7805d6e</srcmd5>
+    <version>0.3.6</version>
+    <time>1560971527</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710644</requestid>
+  </revision>
+</revisionlist>

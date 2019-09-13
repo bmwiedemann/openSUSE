@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0215b2bb2834f951945d34ff51152415</srcmd5>
+    <version>4.7.2~git20140403</version>
+    <time>1396622466</time>
+    <user>coolo</user>
+    <comment>Activate phonon4qt5-backend-gstreamer. Follow up to sr#228919 - with the exception this is package for Qt5.</comment>
+    <requestid>228928</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fa58773769cf48870db40e0364730e6a</srcmd5>
+    <version>4.7.2~git20140403</version>
+    <time>1400092057</time>
+    <user>coolo</user>
+    <comment>Adjust filelists to kf5-filesystem changes</comment>
+    <requestid>233198</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>630dff28ae4d48050ee7b0fe0f900822</srcmd5>
+    <version>4.7.2~git20140403</version>
+    <time>1403508253</time>
+    <user>coolo</user>
+    <comment>- Install license
+- Update tarball to latest snapshot</comment>
+    <requestid>238208</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>34ab1586471f510ac7d4dc93b062891a</srcmd5>
+    <version>4.7.80</version>
+    <time>1408196574</time>
+    <user>lnussel</user>
+    <comment>- Update to 4.7.80
+   * 4.8 beta: PA interaction improvements, documentation fixes and standard bugfixes
+- Bump phonon4qt5 (Build)Requires to 4.7.80</comment>
+    <requestid>244480</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>34ab1586471f510ac7d4dc93b062891a</srcmd5>
+    <version>4.7.80</version>
+    <time>1409302605</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ab872b2010cbbcfbbfe25c2dde920236</srcmd5>
+    <version>4.8.0</version>
+    <time>1413987828</time>
+    <user>coolo</user>
+    <comment>Update to 4.8.0</comment>
+    <requestid>257675</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5d4422a0821877cfd52a83710148e5db</srcmd5>
+    <version>4.8.2</version>
+    <time>1420619891</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.8.2</comment>
+    <requestid>266834</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>07eb6f8a21320d7a19c35261cea2db0d</srcmd5>
+    <version>4.8.2</version>
+    <time>1448400570</time>
+    <user>coolo</user>
+    <comment>- Added Fix-finding-recent-versions-of-GStreamer.patch: search for
+  gstreamer in new location since gstreamer &gt;= 1.6</comment>
+    <requestid>345493</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>164c85c871a6607ba034de4599ba787d</srcmd5>
+    <version>4.9.0</version>
+    <time>1463124095</time>
+    <user>dimstar_suse</user>
+    <comment>4.9.0</comment>
+    <requestid>394079</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>85323e1f12ec0a3ba629e87766211093</srcmd5>
+    <version>4.9.1</version>
+    <time>1564488094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717524</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>60160b60033064b484d8ae58c2d81ebb</srcmd5>
+    <version>4.10.0</version>
+    <time>1567848604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727329</requestid>
+  </revision>
+</revisionlist>

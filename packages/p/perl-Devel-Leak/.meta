@@ -1,0 +1,6 @@
+<package name="perl-Devel-Leak" project="openSUSE:Factory">
+  <title>Utility for looking for perl objects that are not reclaimed</title>
+  <description>The perl-Devel-Leak package
+</description>
+  <devel project="devel:languages:perl" package="perl-Devel-Leak"/>
+</package>

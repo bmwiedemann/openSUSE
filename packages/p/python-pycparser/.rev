@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a0c3a7af85a65dea4524fafc028d59c</srcmd5>
+    <version>2.10</version>
+    <time>1376514164</time>
+    <user>scarabeus_factory</user>
+    <comment>dep of python-cffi</comment>
+    <requestid>186704</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2a0c3a7af85a65dea4524fafc028d59c</srcmd5>
+    <version>2.10</version>
+    <time>1379664251</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>2a0c3a7af85a65dea4524fafc028d59c</srcmd5>
+    <version>2.10</version>
+    <time>1409302953</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0270c2ae549e7e76344e18905c789c6e</srcmd5>
+    <version>2.12</version>
+    <time>1431982645</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307465</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>718bc22a0702055c99d49c1271552e56</srcmd5>
+    <version>2.14</version>
+    <time>1453508141</time>
+    <user>dimstar_suse</user>
+    <comment>fixed</comment>
+    <requestid>353984</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ed72b7bc49d9b1331d6a4905312c1f83</srcmd5>
+    <version>2.17</version>
+    <time>1492617799</time>
+    <user>dimstar_suse</user>
+    <comment>- sort out duplicate rpmlintrc
+
+- update to 2.17
+  - PR #121: Update bundled PLY version to 3.8
+  - Issue #117: Fix parsing of extra semi-colons inside structure declarations.
+  - PR #109: Update c_generator to add {} around nested named initializers.
+  - PR #101: Added support for parsing pragmas into the AST.
+  - Additional fake headers and typedefs, manifest fixes (#97, #106, #111).
+  - Testing with Python 3.5 instead of 3.3 now (3.4 and 3.5 are the 3.x versions
+    tested).
+  - PR #145: More complete support for offsetof()
+  - Issue #116: Fix line numbers recorded for empty and compound statements.
+  - Minor performance improvement to the invalid string literal regex.
+- drop upstreamed 0002-Add-missing-typedef-sa_family_t-from-sys-socket.h.patch
+- move source url to pypi
+
+- update for multipython build
+- move fake_libc to site-packages, where it can be found by pkg_resources
+  * this also prevents file conflict between python2 and python3
+- fix-lexer-build.patch: fix build process to better generate parser/lexer
+  files</comment>
+    <requestid>482557</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b70733b41de0e6171e001d9d79bae546</srcmd5>
+    <version>2.18</version>
+    <time>1525697572</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.18:
+  - PR #161 &amp; #184: Update bundled PLY version to 3.10
+  - PR #158: Add support for the __int128 type.
+  - PR #169: Handle more tricky TYPEID in declarators.
+  - PR #178: Add columns to the coord of each node
+</comment>
+    <requestid>603203</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4325fcd8f4766a66acc8b644be690a24</srcmd5>
+    <version>2.19</version>
+    <time>1538502192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637731</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>38fbc45ecc4ba3aa417f780afc54948d</srcmd5>
+    <version>2.19</version>
+    <time>1544816814</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655858</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d0833b75fa7a885252437fe0e3fbf886</srcmd5>
+    <version>2.19</version>
+    <time>1547540066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664444</requestid>
+  </revision>
+</revisionlist>

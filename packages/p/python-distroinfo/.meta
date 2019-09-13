@@ -1,0 +1,6 @@
+<package name="python-distroinfo" project="openSUSE:Factory">
+  <title></title>
+  <description>Python module for parsing, validating and querying distribution/packaging
+metadata stored in human readable and reviewable text/YAML files.</description>
+  <devel project="devel:languages:python" package="python-distroinfo"/>
+</package>

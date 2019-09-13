@@ -1,0 +1,18 @@
+<package name="libxml2" project="openSUSE:Factory">
+  <title>A Library to Manipulate XML Files</title>
+  <description>The XML C library was initially developed for the GNOME project. It is
+now used by many programs to load and save extensible data structures
+or manipulate any kind of XML files.
+
+This library implements a number of existing standards related to
+markup languages, including the XML standard, name spaces in XML, XML
+Base, RFC 2396, XPath, XPointer, HTML4, XInclude, SGML catalogs, and
+XML catalogs. In most cases, libxml tries to implement the
+specification in a rather strict way. To some extent, it provides
+support for the following specifications, but does not claim to
+implement them: DOM, FTP client, HTTP client, and SAX.
+
+The library also supports RelaxNG. Support for W3C XML Schemas is in
+progress.</description>
+  <devel project="devel:libraries:c_c++" package="libxml2"/>
+</package>

@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>235efd1b70a1d950f175709f66f58dc7</srcmd5>
+    <version>5.2.122</version>
+    <time>1435870015</time>
+    <user>dimstar_suse</user>
+    <comment>add openpgm to openSUSE:Factory, mandatory for newest libzmq</comment>
+    <requestid>312207</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>35cc499490848c3b33be20db18dbb28d</srcmd5>
+    <version>5.2.122</version>
+    <time>1507755701</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libpgm-5.2.122-reproducible.patch to make build reproducible
+  (boo#1047218)</comment>
+    <requestid>532698</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cbe5157ed306bbe126d8a050e28ea9cf</srcmd5>
+    <version>5.2.122</version>
+    <time>1508946456</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536403</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6891fc2ca28ba8ee8bd1ff33872d35ef</srcmd5>
+    <version>5.2.122</version>
+    <time>1522225973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591551</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d75aa762f17830f48aebc34915885c61</srcmd5>
+    <version>5.2.122</version>
+    <time>1532774179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623569</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>0e4c5db9a9aa5bf265cc05975d112bd2</srcmd5>
+    <version>5.2.122</version>
+    <time>1550049344</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport patches from upstream to avoid adding a non-existing
+  foo/lib/pgm-5.2/include directory to pkg-config's CFLAGS which
+  breaks applications using strict compiler flags, and to make the
+  build reproducible regardless of the reported system/architecture
+Added:
+- libpgm-5.2.122-pkg-config-do-not-add-I-to-non-existing-directory.patch
+- libpgm-5.2.122-reproducible-architecture.patch</comment>
+    <requestid>669095</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>5aedce6ba884d6188de66470e634530f</srcmd5>
+    <version>5.2.122</version>
+    <time>1566893607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725291</requestid>
+  </revision>
+</revisionlist>

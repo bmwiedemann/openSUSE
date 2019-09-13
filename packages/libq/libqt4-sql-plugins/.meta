@@ -1,0 +1,13 @@
+<package name="libqt4-sql-plugins" project="openSUSE:Factory">
+  <title>Qt 4 SQL related libraries</title>
+  <description>Qt is a set of libraries for developing applications.
+
+This package contains base tools, like string, xml, and network
+handling.</description>
+  <devel project="openSUSE:Factory" package="libqt4"/>
+  <debuginfo>
+    <disable/>
+    <disable/>
+    <disable/>
+  </debuginfo>
+</package>

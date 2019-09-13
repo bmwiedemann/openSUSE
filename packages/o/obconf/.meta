@@ -1,0 +1,7 @@
+<package name="obconf" project="openSUSE:Factory">
+  <title>Openbox Configuration Tool</title>
+  <description>This is the official application from the Openbox developers to
+configure the Openbox window manager. It is not needed, but highly
+recommended when installing Openbox.</description>
+  <devel project="X11:lxde" package="obconf"/>
+</package>

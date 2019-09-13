@@ -1,0 +1,8 @@
+<package name="polkit-qt-1" project="openSUSE:Factory">
+  <title>PolicyKit Library Qt Bindings</title>
+  <description>Polkit-qt-1 aims to make it easy for Qt developers to take advantage of
+PolicyKit API. It is a convenience wrapper around QAction and
+QAbstractButton that lets you integrate those two components easily
+with PolicyKit.</description>
+  <devel project="KDE:Distro:Factory" package="polkit-qt-1"/>
+</package>

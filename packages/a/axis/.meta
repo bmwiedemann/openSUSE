@@ -1,0 +1,6 @@
+<package name="axis" project="openSUSE:Factory">
+  <title>Apache implementation of the SOAP</title>
+  <description>Apache Axis is an implementation of the SOAP (&quot;Simple Object Access
+Protocol&quot;) submission to W3C.</description>
+  <devel project="Java:packages" package="axis"/>
+</package>

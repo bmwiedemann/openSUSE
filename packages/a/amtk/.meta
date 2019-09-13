@@ -1,0 +1,6 @@
+<package name="amtk" project="openSUSE:Factory">
+  <title>Actions, Menus and Toolbars Kit Library</title>
+  <description>“Actions, Menus and Toolbars Kit” or just AMTK is a basic
+GtkUIManager replacement based on GAction.</description>
+  <devel project="GNOME:Factory" package="amtk"/>
+</package>

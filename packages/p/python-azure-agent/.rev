@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>96461a1e08485f36da28093356e850d2</srcmd5>
+    <version>2.2.13</version>
+    <time>1498202262</time>
+    <user>dimstar_suse</user>
+    <comment>- Initialization code for Azure</comment>
+    <requestid>503396</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f6c5b9033daa05f29d2270d046240368</srcmd5>
+    <version>2.2.14</version>
+    <time>1502366687</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>513714</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2d67dba122dde214eb3afb523809f439</srcmd5>
+    <version>2.2.17</version>
+    <time>1505920447</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in dependency
+
+- Update to version 2.2.17 (bsc#1058974, bsc#1058975)
+  + Remove paa_noref_local_install.patch, included upstream
+  + Setup build for Python 3 for distros &gt; SLE 12
+  + [#879] -- OS.EnableFirewall=y breaks load balanced sets probing
+- From 2.2.16
+  + [#865] -- The agent should retry ETIMEDOUT (110) IOErrors
+- From 2.2.15
+  + [#783] -- The agent fails to use the standard Linux environment variables
+    for HTTP proxy
+  + [#784] -- Adjust http retry and logging
+  + [#786] -- Add Provisioning.SshHostKeyPairType=auto to support ssh-keygen -A
+  + [#791] -- Prevent bloating sudoers waagent when agent has problem
+  + [#792] -- Clearlinux distro_name does not match
+  + [#796] -- Accommodate new Clear Linux distro string in os-release
+  + [#798] -- Support Ubuntu RDMA driver update
+  + [#800] -- HostGAPlugin still use proxy while auto-updating
+  + [#801] -- Agent fails to clean-up PID files
+  + [#807] -- The agent should not emit duplicate events
+  + [#808] -- The agent should more gracefully handle out-of-space disk
+    errors (IOError 28)
+  + [#811] -- Comments inline in /etc/waagent.conf cause config to not be read
+  + [#812] -- Agent fails and isn't recoverable if an extension's log
+    directory is not present anymore
+  + [#823] -- Show config options in use
+  + [#830] -- Ensure VM identifier is properly ordered
+  + [#845] -- ')' is missed in show-configuration
+  + [#850] -- Cannot get to state 'Running' with Provisioning.Enabled=n</comment>
+    <requestid>527525</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a56f96c80a4cd9efe9160133572e597b</srcmd5>
+    <version>2.2.17</version>
+    <time>1507197535</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530890</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>83907eb6a0b55963c991afd2b1b4d9c0</srcmd5>
+    <version>2.2.18</version>
+    <time>1508503650</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535329</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9588cf191a7ddae6f75a6f467ff6b7cb</srcmd5>
+    <version>2.2.18</version>
+    <time>1515623921</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix RDMA driver package version install issue (bsc#1074865)
+  + Added paa_rdma_install_proper_driver.patch</comment>
+    <requestid>563322</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>3e1156504b0d68d501f6fbff601bd19b</srcmd5>
+    <version>2.2.18</version>
+    <time>1518813862</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>577091</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>0c487d9b55d2c58312d31c4a05e1a6a1</srcmd5>
+    <version>2.2.18</version>
+    <time>1520503076</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>583706</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>f16e74622496f992b7377894e978469b</srcmd5>
+    <version>2.2.18</version>
+    <time>1533214605</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620732</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fb73ae485c5c7c7b3ddc245040e16573</srcmd5>
+    <version>2.2.36</version>
+    <time>1552902182</time>
+    <user>dimstar_suse</user>
+    <comment>- Add paa_cve_2019-0804.patch (bsc#1127838)
+  - An issue with swapfile handling in the agent creates a data leak situation
+    that exposes system memory data.
+
+- Update to 2.2.36 (bsc#1119542)
+  - Remove, included upstream
+    + paa_fix_driver_install_detect.patch
+    + paa_rdma_install_proper_driver.patch
+    + 0001-Obtain-platform-information-in-Python-version-depend.patch
+    + 0001-Detect-openSUSE-and-SLES.patch
+    + 0001-Handle-the-disapperance-of-net-tools.patch
+    + 0001-Properly-detect-SLES-15-for-rdma-support.patch
+  - Forward port agent-no-auto-update.patch
+  - [#1451] Do not utf-8 encode telemetry messages
+- From 2.2.35
+  + [#1434] Use files instead of pipes to capture stdout/stderr
+  + [#1431] Prevent multiple downloads of zips
+  + [#1418] Add main module to Python's egg
+  + [#1416] Fix UTF-8 encoding for telemetry payload
+  + [#1408] Honor the 'no_proxy' flag
+  + [#1391, #1401, #1441] Azure Stack improvements
+  + [#1384] Write status file in WALinuxAgent lib folder
+  + [#1375] Add support for Redhat
+  + [#1373] Handle different kernel builds on SUSE Linux Enterprise
+  + [#1365, #1385, #1389] Fixes for RDMA
+- From 2.2.34
+  + [#1397] Send events when extensions fail to complete operation
+  + [#1394/#1366] Fix the threshold telemetry issue
+  + [#1298] Implementing extension sequencing in azure Linux agent
+  + [#1340] Allow Clear Linux detection in python2 and python3</comment>
+    <requestid>685775</requestid>
+  </revision>
+</revisionlist>

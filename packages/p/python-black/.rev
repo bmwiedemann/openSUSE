@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a5fef6c7f095a505fee872020accefc</srcmd5>
+    <version>18.6b4</version>
+    <time>1535705120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632123</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f0e820bc581bbdf1f40100d1d43736f</srcmd5>
+    <version>18.9b0</version>
+    <time>1538672510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639818</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d10193581f42344ff8b48fbadb3370c2</srcmd5>
+    <version>19.3b0</version>
+    <time>1553263848</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.3b0:
+   * No obvious changelog</comment>
+    <requestid>687397</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7350b7fc3d8243890a7dd99e211ef2ae</srcmd5>
+    <version>19.3b0</version>
+    <time>1560536667</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip randomly failing test (only in OBS)</comment>
+    <requestid>707610</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+<package name="codec2" project="openSUSE:Factory">
+  <title>Low bit rate speech codec</title>
+  <description>Codec 2 is a speech codec designed for communications quality speech
+between 700 and 3200 bit/s.
+
+</description>
+  <devel project="hardware:sdr" package="codec2"/>
+  <url>http://rowetel.com/codec2.html</url>
+</package>

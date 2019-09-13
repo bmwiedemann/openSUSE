@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5258979caed1a72da292ac5f9d1cc1ec</srcmd5>
+    <version>1.2.4</version>
+    <time>1535122935</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain orcania in Factory</comment>
+    <requestid>628427</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>57beaf405020497976442cce31cac459</srcmd5>
+    <version>1.2.4</version>
+    <time>1535367532</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631407</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a7901cfdbc8c620004068ec2bdd62913</srcmd5>
+    <version>1.2.9</version>
+    <time>1546946839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662384</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>03ff4e6ab27f4f05b358b322b8c61196</srcmd5>
+    <version>2.0.0</version>
+    <time>1562591504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713852</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0d8835a65061c07a6bb09fb013f13fec</srcmd5>
+    <version>2.0.1</version>
+    <time>1563914153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717660</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,168 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>fdd78f23201bdf53eb3d8566913a92b3</srcmd5>
+    <version>1.02</version>
+    <time>1209351383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="8">
+    <srcmd5>7a226404d3b739aad300f66ea31129a0</srcmd5>
+    <version>1.02</version>
+    <time>1211539667</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e19e083bbd4881ee33f74d387afb07de</srcmd5>
+    <version>1.03</version>
+    <time>1218674031</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e19e083bbd4881ee33f74d387afb07de</srcmd5>
+    <version>1.03</version>
+    <time>1218674031</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>00f4390268c3ff8019ed97abc4bd30df</srcmd5>
+    <version>1.03</version>
+    <time>1268926121</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>00f4390268c3ff8019ed97abc4bd30df</srcmd5>
+    <version>1.03</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>00f4390268c3ff8019ed97abc4bd30df</srcmd5>
+    <version>1.03</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>98d71b43b63d7966456a27bdd56028b5</srcmd5>
+    <version>1.05</version>
+    <time>1282571576</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sdparm based on submit request 45624 from user dirkmueller
+</comment>
+    <requestid>45624</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>98d71b43b63d7966456a27bdd56028b5</srcmd5>
+    <version>1.05</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9f7ee24b8bc5763bb3f0294f2ef0e5fb</srcmd5>
+    <version>1.06</version>
+    <time>1306309463</time>
+    <user>saschpe</user>
+    <comment>Update to 1.06 (forwarded request 71175 from dimstar)</comment>
+    <requestid>71213</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b979f544ca9a5541638a56a898e85259</srcmd5>
+    <version>1.06</version>
+    <time>1306309481</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71213
+</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>b979f544ca9a5541638a56a898e85259</srcmd5>
+    <version>1.06</version>
+    <time>1319182459</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>9101fa029c299668a2537b77462561c3</srcmd5>
+    <version>1.06</version>
+    <time>1323194584</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3d123e6a2ce6ba5a8fc25f4d524b3740</srcmd5>
+    <version>1.07</version>
+    <time>1335190392</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.07 
+  - LB provisioning + Block limits VPD pages to sbc3r27
+  - Enhanced phy control page: optical mode enabled (spl-r07)
+  - Phy control and discover page: sync to spl2r02
+  - sync with spc4r31+32 (handle status good with sense)
+  - extented inquiry VPD: add POA_SUP, HRA_SUP and VSA_SUP
+  - application tag mode page subcode 0xf0-&gt;0x2 (sbc3r28)
+  - add 'sinq' pseudo VPD page for standard inquiry response
+  - add power consumption mode and VPD pages (spc4r33)
+  - point out some mode page numbers are vendor specific</comment>
+    <requestid>114940</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>3d123e6a2ce6ba5a8fc25f4d524b3740</srcmd5>
+    <version>1.07</version>
+    <time>1340184204</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>3d123e6a2ce6ba5a8fc25f4d524b3740</srcmd5>
+    <version>1.07</version>
+    <time>1359110390</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0533d7cab15a663dfa58f748b809e164</srcmd5>
+    <version>1.08</version>
+    <time>1371457259</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.08 (forwarded request 179023 from jengelh)</comment>
+    <requestid>179066</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>0533d7cab15a663dfa58f748b809e164</srcmd5>
+    <version>1.08</version>
+    <time>1379664640</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>a8449c76948dea7552643715f1c1afb4</srcmd5>
+    <version>1.08</version>
+    <time>1383035724</time>
+    <user>coolo</user>
+    <comment>clean up (forwarded request 204447 from posophe)</comment>
+    <requestid>205006</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>a8449c76948dea7552643715f1c1afb4</srcmd5>
+    <version>1.08</version>
+    <time>1409303343</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2e20b6c26177e55e58e8f954bbc0d7ef</srcmd5>
+    <version>1.09</version>
+    <time>1420021316</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266607</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e5d33d51bb0f64439af203d5824453e2</srcmd5>
+    <version>1.10</version>
+    <time>1473102692</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423846</requestid>
+  </revision>
+</revisionlist>

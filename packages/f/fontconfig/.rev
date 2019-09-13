@@ -1,0 +1,799 @@
+<revisionlist>
+  <revision rev="1" vrev="17">
+    <srcmd5>602dd3fad4f20d86fe7fae766fe33b40</srcmd5>
+    <version>2.4.1</version>
+    <time>1166483759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="24">
+    <srcmd5>17f87097e2a15e5e909facddf95ba0d3</srcmd5>
+    <version>2.4.1</version>
+    <time>1169829848</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="26">
+    <srcmd5>473f5592bc13991f0f6fae932d29be95</srcmd5>
+    <version>2.4.1</version>
+    <time>1170979510</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f1f437a1a29f63057afbc8b62e0e2ccf</srcmd5>
+    <version>2.4.2</version>
+    <time>1172150382</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>be983fbf8eb7ef19689dd77785d1923b</srcmd5>
+    <version>2.4.2</version>
+    <time>1173918841</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>94fd0bbd77ca58c8f82677b426971097</srcmd5>
+    <version>2.4.2</version>
+    <time>1174681279</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>02b9843e2ac9557aa1ea47735f3b8bef</srcmd5>
+    <version>2.4.2</version>
+    <time>1177697522</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="47">
+    <srcmd5>cfe112039c18ba2c70ef7ba5e24c551c</srcmd5>
+    <version>2.4.2</version>
+    <time>1192494267</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="48">
+    <srcmd5>81c8528c114b84c39b056500b8d821d1</srcmd5>
+    <version>2.4.2</version>
+    <time>1192549850</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="59">
+    <srcmd5>f5774bf01322e36f13d86592827743b2</srcmd5>
+    <version>2.4.2</version>
+    <time>1197999434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="79">
+    <srcmd5>36f380704526bbaf5f0163d2371d54a0</srcmd5>
+    <version>2.4.2</version>
+    <time>1207829605</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="87">
+    <srcmd5>51057fde8e495eb34649985539ad5abe</srcmd5>
+    <version>2.4.2</version>
+    <time>1211406070</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="88">
+    <srcmd5>ae4e86d3ed276225f92674ca19f432fd</srcmd5>
+    <version>2.4.2</version>
+    <time>1211820385</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="109">
+    <srcmd5>9df5ff608a89e0a5f6713240290075c1</srcmd5>
+    <version>2.4.2</version>
+    <time>1219954398</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>98fd33822f59f71d04c9a271bd39b2fb</srcmd5>
+    <version>2.6.0</version>
+    <time>1221260677</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>14368970dadc4080b0e3b1ddfb76c953</srcmd5>
+    <version>2.6.0</version>
+    <time>1222262609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>ac69ddbdf189b70cffdd151f1e768099</srcmd5>
+    <version>2.6.0</version>
+    <time>1225710306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>6ca15c4f4bf89b1ef67a50b514ec0966</srcmd5>
+    <version>2.6.0</version>
+    <time>1226101917</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>5db540bf0f09b6f1bb3b02a075caeaca</srcmd5>
+    <version>2.6.0</version>
+    <time>1227885869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>ddcaf99ce7ee681d7e7bab2c54d05e8d</srcmd5>
+    <version>2.6.0</version>
+    <time>1229340615</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>c9bdfa928ce951cdab5c0d6f3e7cb7d1</srcmd5>
+    <version>2.6.0</version>
+    <time>1233266710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>a37cf7f1854983fbf862fe2547f09de7</srcmd5>
+    <version>2.6.0</version>
+    <time>1233957615</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="12">
+    <srcmd5>9cc388e8daa4e2aa9a7a216c53d915d8</srcmd5>
+    <version>2.6.0</version>
+    <time>1235425833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d1b1ab3ca6204d26740d31acc65e9f0e</srcmd5>
+    <version>2.7.0</version>
+    <time>1247839819</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>d5c499bc74a51c281c546415ffd3413b</srcmd5>
+    <version>2.7.0</version>
+    <time>1251908138</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/fontconfig based on submit request 19389 from user tiwai
+</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>d5c499bc74a51c281c546415ffd3413b</srcmd5>
+    <version>2.7.0</version>
+    <time>1251908138</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/fontconfig based on submit request 19389 from user tiwai
+</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>e87c219f6945dcb3c6d9fa74582e94e7</srcmd5>
+    <version>2.7.0</version>
+    <time>1257843506</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/fontconfig based on submit request 23972 from user tiwai
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>16935aa23dfc0352787bfa9c17941183</srcmd5>
+    <version>2.8.0</version>
+    <time>1260272908</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/fontconfig based on submit request 25757 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>8da1feb16973280b89fc522837723c81</srcmd5>
+    <version>2.8.0</version>
+    <time>1262128641</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/fontconfig based on submit request 27734 from user tiwai
+</comment>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>41e728014c00f5c5cb6f48b2156cfa19</srcmd5>
+    <version>2.8.0</version>
+    <time>1266973485</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/fontconfig based on submit request 33078 from user coolo
+</comment>
+    <requestid>33078</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>326e742025330757956e6c0adea47438</srcmd5>
+    <version>2.8.0</version>
+    <time>1268923553</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>465bfb5d1ea00d4247753276910f4e2a</srcmd5>
+    <version>2.8.0</version>
+    <time>1270638996</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/fontconfig based on submit request 37095 from user coolo
+</comment>
+    <requestid>37095</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>5ed22cd19e3901d7a7f68db175ad1701</srcmd5>
+    <version>2.8.0</version>
+    <time>1275655739</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/fontconfig based on submit request 41102 from user coolo
+</comment>
+    <requestid>41102</requestid>
+  </revision>
+  <revision rev="34" vrev="8">
+    <srcmd5>5ed22cd19e3901d7a7f68db175ad1701</srcmd5>
+    <version>2.8.0</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="35" vrev="9">
+    <srcmd5>5ed22cd19e3901d7a7f68db175ad1701</srcmd5>
+    <version>2.8.0</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="36" vrev="10">
+    <srcmd5>f5d94108d5b10589351b631409c402a9</srcmd5>
+    <version>unknown</version>
+    <time>1284038012</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/fontconfig based on submit request 47265 from user pgajdos
+</comment>
+    <requestid>47265</requestid>
+  </revision>
+  <revision rev="37" vrev="11">
+    <srcmd5>2d67fc21ddd54daea4ace32397602fee</srcmd5>
+    <version>2.8.0</version>
+    <time>1289568536</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52835 from user pgajdos
+</comment>
+    <requestid>52835</requestid>
+  </revision>
+  <revision rev="38" vrev="12">
+    <srcmd5>58e6fabbcc1fbcca8dd7a7453674ad86</srcmd5>
+    <version>2.8.0</version>
+    <time>1289568543</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52835
+</comment>
+  </revision>
+  <revision rev="39" vrev="13">
+    <srcmd5>bd4fc076c2373635ef60cfb3882428bd</srcmd5>
+    <version>2.8.0</version>
+    <time>1290785815</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53949 from user pgajdos
+</comment>
+    <requestid>53949</requestid>
+  </revision>
+  <revision rev="40" vrev="14">
+    <srcmd5>4c130181f62cb6724b00ce06ce193b95</srcmd5>
+    <version>2.8.0</version>
+    <time>1290785820</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53949
+</comment>
+  </revision>
+  <revision rev="41" vrev="15">
+    <srcmd5>147c3dd763e2547d4e6184b36cfbb96c</srcmd5>
+    <version>2.8.0</version>
+    <time>1291729235</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54950 from user pgajdos
+</comment>
+    <requestid>54950</requestid>
+  </revision>
+  <revision rev="42" vrev="16">
+    <srcmd5>c25626eed2c7deed3c198fb13b904c1d</srcmd5>
+    <version>2.8.0</version>
+    <time>1291729243</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54950
+</comment>
+  </revision>
+  <revision rev="43" vrev="17">
+    <srcmd5>7d1fb15b3f8641cc9b97db476b167e5b</srcmd5>
+    <version>2.8.0</version>
+    <time>1295943041</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 58950 from user coolo
+</comment>
+    <requestid>58950</requestid>
+  </revision>
+  <revision rev="44" vrev="18">
+    <srcmd5>ea64c9788bf42d57386147ba75b27f97</srcmd5>
+    <version>2.8.0</version>
+    <time>1295943057</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 58950
+</comment>
+  </revision>
+  <revision rev="45" vrev="21">
+    <srcmd5>ea64c9788bf42d57386147ba75b27f97</srcmd5>
+    <version>2.8.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="46" vrev="22">
+    <srcmd5>1ba67d396a86649e4ce8a2fc9c6542e2</srcmd5>
+    <version>2.8.0</version>
+    <time>1317626290</time>
+    <user>lrupp</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)</comment>
+    <requestid>86150</requestid>
+  </revision>
+  <revision rev="47" vrev="23">
+    <srcmd5>83abb11486133cd136c2c9fdfe787353</srcmd5>
+    <version>2.8.0</version>
+    <time>1317909738</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: force host architecture (forwarded request 86696 from uli_suse)</comment>
+    <requestid>86705</requestid>
+  </revision>
+  <revision rev="48" vrev="25">
+    <srcmd5>83abb11486133cd136c2c9fdfe787353</srcmd5>
+    <version>2.8.0</version>
+    <time>1319181881</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="49" vrev="26">
+    <srcmd5>dd9f0138469b001456927acef3b8aaac</srcmd5>
+    <version>2.8.0</version>
+    <time>1319550795</time>
+    <user>coolo</user>
+    <comment>- add /etc/fonts/local.conf [bnc#722427]</comment>
+    <requestid>89256</requestid>
+  </revision>
+  <revision rev="50" vrev="27">
+    <srcmd5>9c9d53fd97b6ca3df4d0efb75ae698a0</srcmd5>
+    <version>2.8.0</version>
+    <time>1320740632</time>
+    <user>coolo</user>
+    <comment>- Support symbol visibility features
+- Use O_CLOEXEC where needed in libfontconfig, callers may fork()
+  and we end up leaking library internal fds to their child processes. (forwarded request 90181 from elvigia)</comment>
+    <requestid>90502</requestid>
+  </revision>
+  <revision rev="51" vrev="28">
+    <srcmd5>2f0ee6102ba696dc64c65e07edf75c91</srcmd5>
+    <version>2.8.0</version>
+    <time>1324483209</time>
+    <user>coolo</user>
+    <comment>license update: MIT
+Just list MIT in the spec file - this is not a dual license (forwarded request 96714 from babelworx)</comment>
+    <requestid>96721</requestid>
+  </revision>
+  <revision rev="52" vrev="29">
+    <srcmd5>d4bae5acee42f91a820779285496d3cb</srcmd5>
+    <version>2.8.0</version>
+    <time>1325846618</time>
+    <user>coolo</user>
+    <comment>- The O_CLOEXEC patch missed one case, in particular the 
+  loading of configuration files, this has been fixed. (forwarded request 98503 from elvigia)</comment>
+    <requestid>98507</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>c4f270a04c6b10cdc3b7c05362f53077</srcmd5>
+    <version>2.9.0</version>
+    <time>1334692687</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113746</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>44d00f7d9b4c1de185f2e754da271346</srcmd5>
+    <version>2.9.0</version>
+    <time>1338991593</time>
+    <user>coolo</user>
+    <comment>- fix Chinese Mono font.
+
+- set WenQuanYi Micro He as default Chinese font.
+
+- don't install 29-liberation-aliases.conf, because 
+  30-metric-aliases.conf already contains these bindings
+
+- DejaVu Sans, Droid Sans, Liberation Sans: use 
+  hintslight with BCI (instead of hintfull with BCI)
+- DejaVu Serif, Droid Serif, Liberation Serif: use
+  hintslight with BCI (instead of hintfull with BCI)
+- DejaVu Sans Mono, Droid Sans Mono, Liberation Mono: keep
+  hintfull with BCI
+- Cantarell: use hintfull with autohinter
+
+- turn autohinter for Verdana (BCI off)</comment>
+    <requestid>123369</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>44d00f7d9b4c1de185f2e754da271346</srcmd5>
+    <version>2.9.0</version>
+    <time>1340183334</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>74bbe64e0be9adb689156fc6a3fc7ce4</srcmd5>
+    <version>2.9.0</version>
+    <time>1340625099</time>
+    <user>coolo</user>
+    <comment>- Revisit SUSE-specific config (bnc#766319):
+  * Split suse-hinting.conf to a part defining the default
+    autohint and a part defining the default hintstyle depending on
+    autohint.  These are now put in conf.d/11-suse-hinting.conf and
+    16-suse-hintstyle.conf, so that extra packages may put their
+    own autohint value between them.
+  * Move suse-bitmaps.conf to conf.d, too
+  * Move optional configs modified by fonts-config to fonts-config
+    package itself
+- Set autohint=true for IPA* fonts as well as MS fonts;
+  hintslight will be chosen automatically (bnc#766319)
+- Add missing IPAex* fonts to suse-generic-names.conf lists.
+- Obsolete ipa-fonts-config package as the default configs are now
+  included in this package (forwarded request 124898 from tiwai)</comment>
+    <requestid>124918</requestid>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>ad9113602512b221b515d29e94744dfd</srcmd5>
+    <version>2.9.0</version>
+    <time>1341326759</time>
+    <user>coolo</user>
+    <comment>It would be nice to get this change into 12.2, especially because of:
+- add &lt;prefer&gt; and &lt;default&gt; aliases for Droid fonts into SUSE-specific 
+  config; if they are not present and e. g. system with only droid font 
+  installed, you get &quot;Droid Sans&quot; instead of &quot;Droid Sans Mono&quot; even if
+  &quot;monospace&quot; requested; that causes e. g. gvim displaying glyphs with 
+  additional space</comment>
+    <requestid>126985</requestid>
+  </revision>
+  <revision rev="58" vrev="7">
+    <srcmd5>f8f8911e9f86e305178f832908cc04ae</srcmd5>
+    <version>2.9.0</version>
+    <time>1343672779</time>
+    <user>coolo</user>
+    <comment>- added configuration for croscorefonts
+
+- hintnone for IPA fonts [bnc#766319]</comment>
+    <requestid>129078</requestid>
+  </revision>
+  <revision rev="59" vrev="8">
+    <srcmd5>1be1a1362b27abe640880bc5065f86e7</srcmd5>
+    <version>2.9.0</version>
+    <time>1347882906</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133911</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f80b30a12ed49c370d2849719c97e807</srcmd5>
+    <version>2.10.0</version>
+    <time>1349241189</time>
+    <user>coolo</user>
+    <comment>- turn off autohinter for Verdana again, which implies using BCI
+  with hintstyle=3 [bnc#737215], [bnc#781631]
+
+- updated to 2.10.0:
+  * /etc/fonts/conf.avail is deprecated and is packaged only
+    for compatibility reasons; package should install its *.conf 
+    files in its data dir and link it into /etc/fonts/conf.d as 
+    usual
+  * introduced warning -- &lt;alias&gt; should not contain more &lt;family&gt;s 
+  * introduced warning -- &lt;test&gt; should not contain more values
+  * introduced warning -- reading configurations from ~/.fonts.conf 
+    is deprecated; move ~/.fonts.conf into $XDG_CONFIG_HOME/fontconfig/fonts.conf
+    (the same for ~/.fonts.conf.d, see 
+     http://freedesktop.org/software/fontconfig/fontconfig-user.html)</comment>
+    <requestid>136212</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>2a279c36a80bc8a790b2a11efa7d9e0a</srcmd5>
+    <version>2.10.2</version>
+    <time>1354711895</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>144038</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>2a279c36a80bc8a790b2a11efa7d9e0a</srcmd5>
+    <version>2.10.2</version>
+    <time>1359108885</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>8e7536d3c78d50d9fff6d7a784802ff6</srcmd5>
+    <version>2.10.2</version>
+    <time>1360762625</time>
+    <user>coolo</user>
+    <comment>- added mapping Arial Narrow &lt;-&gt; Liberation Sans Narrow into
+  metric-aliases.conf [bnc#762695]
+  * metric-arial-narrow.patch</comment>
+    <requestid>155318</requestid>
+  </revision>
+  <revision rev="64" vrev="5">
+    <srcmd5>2627163eb57b91e372656376393847da</srcmd5>
+    <version>2.10.2</version>
+    <time>1362462208</time>
+    <user>coolo</user>
+    <comment>- build with automake 1.13</comment>
+    <requestid>157225</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>3fa922f9d03e245f0caa9d454ff46c8b</srcmd5>
+    <version>2.10.91</version>
+    <time>1363096747</time>
+    <user>coolo</user>
+    <comment>Push from GNOME:Next to Factory - please review and forward. This version is required by GNOME 3.8, to be pushed to Factory soon (forwarded request 158520 from dimstar)</comment>
+    <requestid>158544</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>6c353da71b263cd91f4923c448930604</srcmd5>
+    <version>2.10.91</version>
+    <time>1363946510</time>
+    <user>coolo</user>
+    <comment>- use autohinter for Anonymous Pro
+  http://www.marksimonson.com/info/anonymous-pro-usage-notes</comment>
+    <requestid>160392</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>3d8e3fca5a04345b00fe863cff173633</srcmd5>
+    <version>2.10.92</version>
+    <time>1365337294</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.10.92
+  + support FC_POSTSCRIPT_NAME (fdo#38737)
+  + Fix a SIGSEGV on FcPatternGet* with NULL pattern
+  + Fix crash with FcConfigSetCurrent(NULL)
+  + Do not copy FC_*LANG_OBJECT even if it's not available on the 
+    pattern
+  + Added a --sysroot like option to fc-cache (fdo#59456)
+  + Add OpenType feature tags support (fdo#50497)
+  + Fix fc-cache crash caused by looking up NULL object incorrectly
+  + Add mode=&quot;delete&quot; to &lt;edit&gt; (fdo#23757)
+  + Use AM_MISSING_PROG instead of hardcoding missing
+  + Add font-file hash (fdo#50733)
+  + Add Culmus foundry to the vendor list
+  + Fix broken conf.d/10-autohint.conf and conf.d/10-unhinted.conf 
+    (fdo#60748)
+  + Add Liberation Sans Narrow to 30-metric-aliases.conf (fdo#60783)
+- Automake 1.11 is required, so bump the BuildRequires (forwarded request 162893 from sumski)</comment>
+    <requestid>162901</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>8af3eb5fea4ae72534bb07529655d4be</srcmd5>
+    <version>2.10.92</version>
+    <time>1365927254</time>
+    <user>coolo</user>
+    <comment>- dropped metric-arial-narrow.patch (upstreamed)
+- dropped metric-croscore.patch (upstreamed)
+- /etc/conf.d/55-local.conf
+- tag /etc/fonts/conf.d/*.conf files as %config, not
+  %config(noreplace)
+- /etc/fonts/conf.d/README now mentions correct template dir
+  [bnc#810034]
+  * conf.d-readme-templatedir.patch
+- revert the change from Mon May 28 11:53:08 UTC 2012 because
+  hintslight implies autohinter. Rather render Liberation, DejaVu
+  and Droid sans serif and serif fonts with BCI, even if it means
+  thin (sometimes too much, see Liberation Sans 'R') glyphs. It
+  should be readable (less blurred). I'll add fontconfig hinting
+  profile in near future which will force autohinter for those
+  which like more thick fonts even if sometimes more blurred.</comment>
+    <requestid>163714</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>8573ef1771f8e4a13caf3cce0fe1dc4d</srcmd5>
+    <version>2.10.92</version>
+    <time>1368478032</time>
+    <user>coolo</user>
+    <comment>- Add fontconfig-fix-webfont.patch: Fix webfont issue (bnc#819467). (forwarded request 175177 from dimstar)</comment>
+    <requestid>175186</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>54a86aed210df4762412ac4f3694c9b4</srcmd5>
+    <version>2.10.93</version>
+    <time>1369640960</time>
+    <user>coolo</user>
+    <comment>Update to version 2.10.93 (forwarded request 176292 from sumski)</comment>
+    <requestid>176349</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>834f9a5d82016d29d22594b86e526a46</srcmd5>
+    <version>2.10.95</version>
+    <time>1378133864</time>
+    <user>coolo</user>
+    <comment>Update to version 2.10.95 (forwarded request 196969 from sumski)</comment>
+    <requestid>196987</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>834f9a5d82016d29d22594b86e526a46</srcmd5>
+    <version>2.10.95</version>
+    <time>1379662355</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>da19b860412199bf9d8a5166fbe669c2</srcmd5>
+    <version>2.11.0</version>
+    <time>1381735565</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to final 2.11.0
+
+As we probably don't want a prerelease in 13.1, please checkin there also (forwarded request 202988 from sumski)</comment>
+    <requestid>203024</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>dafe298b6e23ee5999591ed5372a3db6</srcmd5>
+    <version>2.11.0</version>
+    <time>1386527196</time>
+    <user>coolo</user>
+    <comment>- Add
+  0001-Fix-inversion-between-Tinos-and-Cousine-in-the-comme.patch:
+  fix error in 30-metric-aliases.conf comments (fdo#72395).
+- Add
+  0002-Add-metric-aliases-for-additional-Google-ChromeOS-fo.patch:
+  add compat fonts for Cambria, Caladea and Symbol (fdo#72395). (forwarded request 209633 from MargueriteSu)</comment>
+    <requestid>209634</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>6fe452eb148fda705415464f0b8dd28c</srcmd5>
+    <version>2.11.0</version>
+    <time>1391948253</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221209</requestid>
+  </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>2680ded0574f9fef34d79abdb5014cbd</srcmd5>
+    <version>2.11.0</version>
+    <time>1394130570</time>
+    <user>coolo</user>
+    <comment>- removed iso639-{1,2} and local.conf.instsys
+- *.conf files moved to fonts-config package (forwarded request 224055 from pgajdos)</comment>
+    <requestid>224058</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>f90fd3641f3100f22ede7304ef94651a</srcmd5>
+    <version>2.11.1</version>
+    <time>1395897164</time>
+    <user>coolo</user>
+    <comment>Update to 2.11.1 (forwarded request 227378 from sumski)</comment>
+    <requestid>227431</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>f90fd3641f3100f22ede7304ef94651a</srcmd5>
+    <version>2.11.1</version>
+    <time>1409300891</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>c42d651f669275d15b9b63eb003775a2</srcmd5>
+    <version>2.11.1</version>
+    <time>1417643478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>263483</requestid>
+  </revision>
+  <revision rev="80" vrev="5">
+    <srcmd5>aad949b49ade7f49461f291e7aabc6a1</srcmd5>
+    <version>2.11.1</version>
+    <time>1432157752</time>
+    <user>dimstar_suse</user>
+    <comment>Some cleanup</comment>
+    <requestid>307900</requestid>
+  </revision>
+  <revision rev="81" vrev="6">
+    <srcmd5>0c5ebaa7f1830fab44704f857586edaa</srcmd5>
+    <version>2.11.1</version>
+    <time>1458121392</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369243</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>61a05f3ee83ad30ed25c44ca5e78be47</srcmd5>
+    <version>2.12.0</version>
+    <time>1468869758</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407840</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>c24fde90c399bda077d1750a5b16cc80</srcmd5>
+    <version>2.12.1</version>
+    <time>1471428210</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418999</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>78a3c3b376c9fe2553fd2229372f9530</srcmd5>
+    <version>2.12.1</version>
+    <time>1489019449</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460495</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>590b14b84c40749c86ce7f95a1ef9e7f</srcmd5>
+    <version>2.12.3</version>
+    <time>1497949035</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.12.3:
+      Don't call perror() if no changes happens in errno
+      Fix FcCacheOffsetsValid()
+      Fix the build issue with gperf 3.1
+      Fix the build issue on GNU/Hurd
+      Update a bit for the changes in FreeType 2.7.1
+      Add the description of FC_LANG envvar to the doc
+      Bug 101202 - fontconfig FTBFS if docbook-utils is installed
+      Correct cache version info in doc/fontconfig-user.sgml
+      Avoid conflicts with integer width macros from TS 18661-1:2014
+      Fix PostScript font alias name
+      Update aliases for URW June 2016
+- removed unneeded:
+  - fontconfig-glibc-2.25.patch
+  - make-check.patch</comment>
+    <requestid>501142</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>1e266c4a7ed094704761f7673885b53c</srcmd5>
+    <version>2.12.3</version>
+    <time>1499880816</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509319</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>41ea9eb38f963ac48bbf22f10ce0c171</srcmd5>
+    <version>2.12.4</version>
+    <time>1502365395</time>
+    <user>maxlin_factory</user>
+    <comment>- Version update to 2.12.4:
+  * Various distcheck errors
+  * FcCharSetHash(): use the 'numbers' values to compute the hash
+  * fc-lang: gracefully handle the case where the last language initial is &amp;lt; 'z'
+  * Fix an off-by-one error in FcLangSetIndex()
+  * Fix erroneous test on language id in FcLangSetPromote()
+  * FcLangSetCompare(): fix bug when two charsets come from different &quot;buckets&quot;
+  * Treat C.UTF-8 and C.utf8 locales as built in the C library
+- Remove merged upstream fontconfig-locale_c.utf8.patch
+- Remove fontconfig-doc archive, the generated output is already
+  present in the upstream released tarball
+- Remove unused configure options (forwarded request 511827 from scarabeus_iv)</comment>
+    <requestid>511829</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>0d5bad4a8f90ee0cec8a87d29cf2fd4f</srcmd5>
+    <version>2.12.6</version>
+    <time>1510664906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540045</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>f07dfa5a065ba25c5e0f66a3e9a37a4a</srcmd5>
+    <version>2.12.6</version>
+    <time>1516020836</time>
+    <user>dimstar_suse</user>
+    <comment>- fc-query: remove redundant debug output
+  + fontconfig-remove-debug-output.patch</comment>
+    <requestid>565620</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>b59c4bf014a5fee6bdb62187ff542c25</srcmd5>
+    <version>2.13.1</version>
+    <time>1549311546</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>666325</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>023f2689c8a29341b9db0064988b44b3</srcmd5>
+    <version>2.13.1</version>
+    <time>1551023771</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673056</requestid>
+  </revision>
+</revisionlist>

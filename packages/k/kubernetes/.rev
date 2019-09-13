@@ -1,0 +1,409 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7477ec4d655a04d94f4ac6cd6830b7f5</srcmd5>
+    <version>1.3.10</version>
+    <time>1486306055</time>
+    <user>dimstar_suse</user>
+    <comment>this excludes i586</comment>
+    <requestid>452164</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>88108f2e5eff0fc9bf7ee05a5e2ad8cd</srcmd5>
+    <version>1.6.1</version>
+    <time>1495268010</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495530</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>94caea9e42853ffa3938a7fce662c997</srcmd5>
+    <version>1.6.1</version>
+    <time>1497944432</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504584</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ce6c100b5714e5173ccdb60939975b72</srcmd5>
+    <version>1.7.0</version>
+    <time>1502562326</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>513801</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8459b228df5033d94039749d81f6b2d5</srcmd5>
+    <version>1.7.0</version>
+    <time>1503593718</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518169</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ab640b73450fa8c285837c51735ef58b</srcmd5>
+    <version>1.7.0</version>
+    <time>1505502226</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523709</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b9e7f07d0bee3731e44db1e3d0957473</srcmd5>
+    <version>1.7.6</version>
+    <time>1505920311</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527275</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c7c4a3d3ee05062398adc9472fd81763</srcmd5>
+    <version>1.7.7</version>
+    <time>1507391375</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529921</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>aaa7e80c33e2a164c75055bffefd9b78</srcmd5>
+    <version>1.7.7</version>
+    <time>1509787521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538619</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>19321f22af15aa32c6e10c17a3c317f6</srcmd5>
+    <version>1.8.4</version>
+    <time>1511949174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545929</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8f8003f53b184cd4ef9a881c1795dcb5</srcmd5>
+    <version>1.8.5</version>
+    <time>1513245767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556663</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3611f56b9e294f3314645050f72e5035</srcmd5>
+    <version>1.8.7</version>
+    <time>1516634444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568077</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>caa751897ea0531e8ad812c51115139a</srcmd5>
+    <version>1.8.7</version>
+    <time>1517516923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570579</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>11973f783baf3f2d143913151b29b453</srcmd5>
+    <version>1.9.3</version>
+    <time>1518950548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576931</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>060c07d1981d3483855d35a3cb7d775e</srcmd5>
+    <version>1.9.3</version>
+    <time>1520503154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583964</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a8ec7fb8aa282111e8dbec61adc82472</srcmd5>
+    <version>1.9.4</version>
+    <time>1521052803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586397</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>599881b66f5298b56c294c986cff35e4</srcmd5>
+    <version>1.9.5</version>
+    <time>1521904518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590088</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f874770a79766d9c6dcbeff840d61376</srcmd5>
+    <version>1.9.6</version>
+    <time>1522225952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591494</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>3f66f8bfad98df3271bb3ea58321de05</srcmd5>
+    <version>1.9.6</version>
+    <time>1523875723</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>596323</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>7729ad46160b4d9d4b6d27648647ebb8</srcmd5>
+    <version>1.9.6</version>
+    <time>1524144803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598482</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>aab44ee3da6a752eeae0c4dc98e2a7b7</srcmd5>
+    <version>1.9.7</version>
+    <time>1524742738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601108</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>92f9083d287a764be86e740bd1e07cb7</srcmd5>
+    <version>1.9.8</version>
+    <time>1528897201</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616060</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cf326d6a39726b61ea6466834b49426c</srcmd5>
+    <version>1.10.4</version>
+    <time>1530087557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617520</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>501bb6c5c451802c23b25eab59247c83</srcmd5>
+    <version>1.10.5</version>
+    <time>1531813329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623024</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>08d8621054aece07dea9eba5c510198c</srcmd5>
+    <version>1.10.5</version>
+    <time>1531947373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623498</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>9ba7a99a292698018e9f670243a12b06</srcmd5>
+    <version>1.10.5</version>
+    <time>1533214796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626939</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5fbe5eab9af392b229a3d77ad81a0866</srcmd5>
+    <version>1.11.1</version>
+    <time>1533732729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627961</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>99ca0d2ce4eec5e740931ef6ab450aa6</srcmd5>
+    <version>1.11.1</version>
+    <time>1533800032</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove rich dependencies to avoid problems with build tooling</comment>
+    <requestid>628345</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>824ea2a38adc6b7b7326580303b29f9b</srcmd5>
+    <version>1.11.1</version>
+    <time>1534322212</time>
+    <user>dimstar_suse</user>
+    <comment>First version of kubernetes where kubeadm worked in testing! Please merge</comment>
+    <requestid>629006</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>18dccdbc9938870cd4c4e15046656972</srcmd5>
+    <version>1.11.1</version>
+    <time>1536147905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630738</requestid>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>d8ee6673f26a9483592949fb7b6b0d4b</srcmd5>
+    <version>1.11.1</version>
+    <time>1537115447</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635569</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>115e37d7ebd3b7a56e1bf974347252dd</srcmd5>
+    <version>1.12.0</version>
+    <time>1541509545</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage with cri-o in :B</comment>
+    <requestid>646444</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>9a8d88b2fa72955a20ddc6fab9e80bec</srcmd5>
+    <version>1.12.0</version>
+    <time>1542122541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646934</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>dd06eddf9ed24a89c82a56cf5b8c0b37</srcmd5>
+    <version>1.13.0</version>
+    <time>1544441306</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Update to version v1.13.0
+  * kubeadm now GA
+  * Full Changelog: https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.13.md#urgent-upgrade-notes
+- Drop obsolete do-not-gc-sle-kubic-images.patch (container-feeder no longer used)
+- No longer require cri-tools to perfectly match k8s version
+
+- Update to version v1.12.3
+- CVE-2018-1002105: Fix critical security issue in kube-apiserver upgrade request proxy handler</comment>
+    <requestid>656788</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>99161a8af29a5b312d1a7703c2f298e0</srcmd5>
+    <version>1.13.2</version>
+    <time>1547539721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664589</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>81fd01c77e02eb0e21893bcd0cedb1d3</srcmd5>
+    <version>1.13.2</version>
+    <time>1549311688</time>
+    <user>coolo</user>
+    <comment>- Remove source conditionals for CaaSP
+
+- Make Kubernetes package re-usable for CaaSP once again
+  * Add apiserver, config, controller-manager, kubelet, kubelet-config.yaml, proxy, scheduler</comment>
+    <requestid>666751</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9fd6e9046bc43ead3feaf99b9fb03224</srcmd5>
+    <version>1.13.3</version>
+    <time>1549916280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>672444</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>83a505e90fa1800e5dca3b48c924164d</srcmd5>
+    <version>1.13.4</version>
+    <time>1551686921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680453</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>6ba649ba90c5706e3f14841becbf90f6</srcmd5>
+    <version>1.13.4</version>
+    <time>1552491679</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>684659</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7ccc4238fa2ea203fe3b15f0b85cb122</srcmd5>
+    <version>1.14.0</version>
+    <time>1554371915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.0:
+  * Full Changelog: https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.14.md
+  * bump required minimum go version to 1.12.1 (strings package compatibility)
+
+- Update to version 1.14.0:
+  * Full Changelog: https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.14.md
+  * kubeadm now auto detects which CRI runtimes are available
+  * bump required minimum go version to 1.12.1 (strings package compatibility)
+  * Restore machine readability to the print-join-command output
+- Remove obsolete patch kubeadm-Support-Kernel-5.0-gh74355.patch
+- Remove obsolete patch make-e2e_node-run-over-distro-bins.patch</comment>
+    <requestid>688666</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>762b9357e9176c7a6a7898f65ecb791c</srcmd5>
+    <version>1.14.0</version>
+    <time>1555321907</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix go 1.12.1 BuildRequires 
+
+- Reformat spec file with spec-cleaner
+
+- Fix go 1.12.1 BuildRequires 
+
+- Reformat spec file with spec-cleaner 
+- Remove references to 'is_susecaasp' macro in spec file
+- Remove unused config files related to previous version of CaaSP</comment>
+    <requestid>693685</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>38a8f51b92780e03c8ad0829052118a4</srcmd5>
+    <version>1.14.1</version>
+    <time>1556621778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697850</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>c69108f61ebf9e0de0339c1dd3ee67a5</srcmd5>
+    <version>1.15.0</version>
+    <time>1563223413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714888</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>251a449e940f221e32a6615f8f37d566</srcmd5>
+    <version>1.15.0</version>
+    <time>1564137403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716634</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5057db0ba263016589707b5dcd9c0c93</srcmd5>
+    <version>1.15.2</version>
+    <time>1565178908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721083</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>c5db67076f821febc484188cb6e47e5b</srcmd5>
+    <version>1.15.2</version>
+    <time>1565876559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721977</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>0390553fb456c5ca76eeab470709eefd</srcmd5>
+    <version>1.15.2</version>
+    <time>1566664911</time>
+    <user>dimstar_suse</user>
+    <comment>- kubelet: only start after we have network, else if kubelet 
+  starts to early it could get confused and never recovers
+  [bsc#1143813]</comment>
+    <requestid>724955</requestid>
+  </revision>
+</revisionlist>

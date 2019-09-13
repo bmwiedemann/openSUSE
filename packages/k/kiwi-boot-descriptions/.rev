@@ -1,0 +1,119 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d569b613edf8f203ebc00268676b500c</srcmd5>
+    <version>1.1.0</version>
+    <time>1518426852</time>
+    <user>dimstar_suse</user>
+    <comment>KIWI has moved its extra boot code into dracut modules.
+The custom KIWI boot descriptions are kept for
+compatibility in its own package as alternative
+solution</comment>
+    <requestid>574137</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4f83aea93a953893367252363276b19e</srcmd5>
+    <version>1.1.0</version>
+    <time>1519218619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update meta packages structure for the buildservice</comment>
+    <requestid>578321</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d2f7f8439a51a6bb72c1a18d7742a86e</srcmd5>
+    <version>1.1.0</version>
+    <time>1521579230</time>
+    <user>dimstar_suse</user>
+    <comment>- Added jing as required package in the *-requires sub packages</comment>
+    <requestid>587522</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>05189e87ba3a2c1d205b65c910fa161a</srcmd5>
+    <version>1.1.0</version>
+    <time>1530993407</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure root entry in fstab is created for pxe
+    
+  On pxe deployment via netboot the root entry in fstab was
+  not created even if the client config file contains a DISK
+  setup
+
+- Add kiwi-image-tbz-requires to provide kiwi-image:tbz</comment>
+    <requestid>620212</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>38fbf02a5fa4c7246600131abfd426d3</srcmd5>
+    <version>1.1.0</version>
+    <time>1536678547</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631166</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>5487f3d90dd35c930a5169d04ca748ae</srcmd5>
+    <version>1.1.0</version>
+    <time>1539590703</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>640113</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>3e217aaeca0872151399471e7f2a0481</srcmd5>
+    <version>1.1.0</version>
+    <time>1551784580</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679469</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>565d9d1c2aa2e42a9e8b449a2f2e11d7</srcmd5>
+    <version>1.1.0</version>
+    <time>1552380423</time>
+    <user>dimstar_suse</user>
+    <comment>- custom_boot/functions.sh: add support for PLABEL in config
+- Update spec file:
+  * syslinux is only available on x86*, so requires it only for x86
+  * Run format spec file
+</comment>
+    <requestid>682370</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>440b12a30b2c73252b17393d878df20f</srcmd5>
+    <version>1.1.0</version>
+    <time>1556207514</time>
+    <user>maxlin_factory</user>
+    <comment>- Added netboot definitions for Leap 15.1 (boo#1132839)</comment>
+    <requestid>697593</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>84922bf3c82ec43371faef769603fe7a</srcmd5>
+    <version>1.1.0</version>
+    <time>1559481439</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706520</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>d01236597ce03763f18e2b0544f6208f</srcmd5>
+    <version>1.1.0</version>
+    <time>1563366180</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>715448</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>e8c846cbe7a44220edba2068f4847ac3</srcmd5>
+    <version>1.1.0</version>
+    <time>1565864713</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>721005</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>5d3fa3ecf8609ab05ce27297a9e4c988</srcmd5>
+    <version>1.1.0</version>
+    <time>1567168626</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>726546</requestid>
+  </revision>
+</revisionlist>

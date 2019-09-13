@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>638721c8654a82081e2be2e31c88c06b</srcmd5>
+    <version>0.5.1</version>
+    <time>1312452249</time>
+    <user>saschpe</user>
+    <comment>A new ibus-module for Vietnamese</comment>
+    <requestid>76797</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9a9516a7063f60d63c0ee0252948e08b</srcmd5>
+    <version>0.5.1</version>
+    <time>1312452259</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76797
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4bb78cadc0e16e70ef6f85b51bd502e3</srcmd5>
+    <version>0.6.0</version>
+    <time>1318527715</time>
+    <user>lrupp</user>
+    <comment>- Updated to 0.6.0
+  this fixes the build with ibus-1.4 (bnc#723591)</comment>
+    <requestid>87611</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4bb78cadc0e16e70ef6f85b51bd502e3</srcmd5>
+    <version>0.6.0</version>
+    <time>1319181980</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>76d24ee6fead1118a9f9943181e11983</srcmd5>
+    <version>0.6.0</version>
+    <time>1323191932</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fe4dbe55b8bd76f083c9e154fd0a422b</srcmd5>
+    <version>0.6.1</version>
+    <time>1332415970</time>
+    <user>coolo</user>
+    <comment>- Update to 0.6.1
+  Fix build fail with ibus-1.4.1 (forwarded request 110361 from swyear)</comment>
+    <requestid>110408</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>fe4dbe55b8bd76f083c9e154fd0a422b</srcmd5>
+    <version>0.6.1</version>
+    <time>1340183450</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>fe4dbe55b8bd76f083c9e154fd0a422b</srcmd5>
+    <version>0.6.1</version>
+    <time>1359109066</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>fe4dbe55b8bd76f083c9e154fd0a422b</srcmd5>
+    <version>0.6.1</version>
+    <time>1379662647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>fe4dbe55b8bd76f083c9e154fd0a422b</srcmd5>
+    <version>0.6.1</version>
+    <time>1409301203</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>28b981068b6905b373fe2b1846926449</srcmd5>
+    <version>0.6.1</version>
+    <time>1466413611</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402900</requestid>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>18b1cde75e57a7999569c1e632c3aca6</srcmd5>
+    <version>0.6.1</version>
+    <time>1565695370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722607</requestid>
+  </revision>
+</revisionlist>

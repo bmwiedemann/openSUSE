@@ -1,0 +1,7 @@
+<package name="perl-HTML-Encoding" project="openSUSE:Factory">
+  <title>Determine the encoding of HTML/XML/XHTML documents</title>
+  <description>HTML::Encoding helps to determine the encoding of HTML and XML/XHTML documents.
+
+Packaged by Sierk Bornemann.</description>
+  <devel project="devel:languages:perl" package="perl-HTML-Encoding"/>
+</package>

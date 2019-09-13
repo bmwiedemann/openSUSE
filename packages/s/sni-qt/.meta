@@ -1,0 +1,5 @@
+<package name="sni-qt" project="openSUSE:Factory">
+  <title>sni-qt</title>
+  <description></description>
+  <devel project="KDE:Distro:Factory" package="sni-qt"/>
+</package>

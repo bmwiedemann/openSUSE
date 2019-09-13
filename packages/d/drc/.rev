@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd0f6f77cac81e8421e8464c032339ab</srcmd5>
+    <version>3.2.2</version>
+    <time>1528492357</time>
+    <user>dimstar_suse</user>
+    <comment>- init, 3.2.2
+</comment>
+    <requestid>613234</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>21de8df84c0f12aea51e6342b857835f</srcmd5>
+    <version>3.2.2</version>
+    <time>1533292834</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix license. 
+- Update RPM groups.
+</comment>
+    <requestid>627219</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1df7591ffbbe6681c231772334f78d27</srcmd5>
+    <version>3.2.3</version>
+    <time>1563994226</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.3
+- Drop lsconv-fix-invalid-fread-usage.diff (fixed upstream)
+</comment>
+    <requestid>718276</requestid>
+  </revision>
+</revisionlist>

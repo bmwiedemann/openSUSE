@@ -1,0 +1,526 @@
+<revisionlist>
+  <revision rev="1" vrev="16">
+    <srcmd5>c7b21ce71af00d9779deb58fc58b89de</srcmd5>
+    <version>3.13.9</version>
+    <time>1168901478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>71afcf66d08c37fe6083baad9f5ece87</srcmd5>
+    <version>3.14.0</version>
+    <time>1176390140</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="18">
+    <srcmd5>c5227dc23d7a4df9d139bf510c1261d1</srcmd5>
+    <version>3.14.0</version>
+    <time>1179963057</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e10108da6b46d22f46a8d6d4afeaf312</srcmd5>
+    <version>3.14.1</version>
+    <time>1183582758</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>65a3cfb563edc2c5f5a8e6a6d51bd0a9</srcmd5>
+    <version>3.14.1</version>
+    <time>1185231979</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="17">
+    <srcmd5>c11efdfa736f1d33a80d5f4078af8d4a</srcmd5>
+    <version>3.14.1</version>
+    <time>1187908832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e4be1b9dd0eb2226609b6ff743e74226</srcmd5>
+    <version>3.14.2</version>
+    <time>1200346055</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a0cb567ea0da0994d1eb8cb061326e81</srcmd5>
+    <version>3.14.3</version>
+    <time>1201081336</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>90ac6229197b0c0b73984a8c61ef189f</srcmd5>
+    <version>3.14.3</version>
+    <time>1203383918</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>7f3d573603c34886ffeacfe16ec07d35</srcmd5>
+    <version>3.14.3</version>
+    <time>1203553928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e9cbfddcac48e85ab8d939d6fe2cae72</srcmd5>
+    <version>3.14.4</version>
+    <time>1216062600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="44">
+    <srcmd5>adbe0fc79797e4b55fd2a7b97449eb9f</srcmd5>
+    <version>3.14.4</version>
+    <time>1221829940</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>137415fd14612f4d6d6f09a38c20aa36</srcmd5>
+    <version>3.14.5</version>
+    <time>1233181661</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b5e3cc7451aae00ec9ecfe1ac4791db1</srcmd5>
+    <version>3.14.5</version>
+    <time>1235654856</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>276254102a0c8e313dc93fc685b54d62</srcmd5>
+    <version>3.14.5</version>
+    <time>1244242776</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4d7a541013ac873ece4c66de69b996da</srcmd5>
+    <version>3.14.6</version>
+    <time>1246633058</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>4d7a541013ac873ece4c66de69b996da</srcmd5>
+    <version>3.14.6</version>
+    <time>1246633058</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>42748716299fbf34f16c49b48b0639f7</srcmd5>
+    <version>3.14.6</version>
+    <time>1256914001</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/apcupsd based on submit request 23484 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>540b2ba17b1f70422ef0d69fc408a15b</srcmd5>
+    <version>3.14.6</version>
+    <time>1266488331</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/apcupsd based on submit request 32656 from user seife
+</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>5fd8d1d27530a3ec24ae856dbcd95054</srcmd5>
+    <version>3.14.6</version>
+    <time>1268922896</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>3029d57da1f05e131afb89edf1b12fa6</srcmd5>
+    <version>3.14.6</version>
+    <time>1270057107</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/apcupsd based on submit request 36475 from user coolo
+</comment>
+    <requestid>36475</requestid>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>3029d57da1f05e131afb89edf1b12fa6</srcmd5>
+    <version>3.14.6</version>
+    <time>1278667336</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>3029d57da1f05e131afb89edf1b12fa6</srcmd5>
+    <version>3.14.6</version>
+    <time>1278678563</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>40379e63086188c9d6b7bb3282f6b135</srcmd5>
+    <version>3.14.6</version>
+    <time>1280743181</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/apcupsd based on submit request 44154 from user prusnak
+</comment>
+    <requestid>44154</requestid>
+  </revision>
+  <revision rev="25" vrev="14">
+    <srcmd5>40379e63086188c9d6b7bb3282f6b135</srcmd5>
+    <version>3.14.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="26" vrev="15">
+    <srcmd5>9189a213316f9bd098f87875fffebc10</srcmd5>
+    <version>3.14.6</version>
+    <time>1301040811</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65190 from user licensedigger
+</comment>
+    <requestid>65190</requestid>
+  </revision>
+  <revision rev="27" vrev="16">
+    <srcmd5>bea76dea67222568713ddd7a14a31388</srcmd5>
+    <version>3.14.6</version>
+    <time>1301040820</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65190
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>918b46d844f1069198002b6021289da1</srcmd5>
+    <version>3.14.8</version>
+    <time>1309856560</time>
+    <user>saschpe</user>
+    <comment>- Updated to version 3.14.8:
+  * Implement battery calibration and self-test interval in apctest
+    for USB models.
+  * Add support for turning the UPS off completely.
+  * Updates of SNMP code.
+  * Add support for reading battery voltage from the PowerSummary.
+  * Switch time/date output format to simplified ISO.
+  * Compilation warning fixes.
+  * Other bug fixes and improvements.
+  * Documentation improvements.
+- Removed HAL support.
+
+- fixed apcupsd-lite path in init script
+  (reported later as bnc#703592)</comment>
+    <requestid>75357</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>2e3b58ea2d676814eeffcfaaa5efacb4</srcmd5>
+    <version>3.14.8</version>
+    <time>1309856574</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75357
+</comment>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>8161f341e55c2c02760028865cb58f42</srcmd5>
+    <version>3.14.8</version>
+    <time>1312357276</time>
+    <user>saschpe</user>
+    <comment>- Fixed init check to succeed with unmounted /usr (bnc#703592#c23).</comment>
+    <requestid>77706</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>2378497a2ebf4ded8a1c5a2b39814439</srcmd5>
+    <version>3.14.8</version>
+    <time>1312357307</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77706
+</comment>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>567ac9fd455d58d9bd1b479ec6f6257b</srcmd5>
+    <version>3.14.8</version>
+    <time>1314608455</time>
+    <user>saschpe</user>
+    <comment>- Implemented hibernate on power fail (bnc#703592#c39).</comment>
+    <requestid>79878</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>211011efb103f4691f34c781affcae43</srcmd5>
+    <version>3.14.8</version>
+    <time>1314608464</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79878
+</comment>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>cde983a93b7feadf43a48d9fc9e9d668</srcmd5>
+    <version>3.14.8</version>
+    <time>1316439430</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile as discussed on oSC2011/opensuse-packaging
+- Use %_smp_mflags for parallel build (forwarded request 82986 from jengelh)</comment>
+    <requestid>82996</requestid>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>b5fc85f0cb85d9fd75a9f42881c0886d</srcmd5>
+    <version>3.14.8</version>
+    <time>1318939023</time>
+    <user>saschpe</user>
+    <comment>avoid race condition on exit (bnc#724487) (forwarded request 88164 from mkubecek)</comment>
+    <requestid>88432</requestid>
+  </revision>
+  <revision rev="36" vrev="10">
+    <srcmd5>b5fc85f0cb85d9fd75a9f42881c0886d</srcmd5>
+    <version>3.14.8</version>
+    <time>1319181772</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="37" vrev="11">
+    <srcmd5>c9e9bf5aded93d809e4462dd0e2d3ba8</srcmd5>
+    <version>3.14.8</version>
+    <time>1323190719</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="38" vrev="12">
+    <srcmd5>a19eccc97134e973cd44699b8676a374</srcmd5>
+    <version>3.14.8</version>
+    <time>1324830778</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97678 from coolo)</comment>
+    <requestid>97753</requestid>
+  </revision>
+  <revision rev="39" vrev="13">
+    <srcmd5>4cdfd9351c16daf72cfe1381a2d054da</srcmd5>
+    <version>3.14.8</version>
+    <time>1328093554</time>
+    <user>coolo</user>
+    <comment>- Mark all files in /etc/apcupsd as config files. Their editing
+  sometimes makes sense (bnc#744358).</comment>
+    <requestid>102286</requestid>
+  </revision>
+  <revision rev="40" vrev="14">
+    <srcmd5>262d05a90e0bfd9f01a063f3120f4f3c</srcmd5>
+    <version>3.14.8</version>
+    <time>1328717840</time>
+    <user>coolo</user>
+    <comment>- fix ppc64 build (forwarded request 103291 from k0da)</comment>
+    <requestid>103292</requestid>
+  </revision>
+  <revision rev="41" vrev="15">
+    <srcmd5>cb5b700641bb5c4541427fd2eb252d3e</srcmd5>
+    <version>3.14.8</version>
+    <time>1330692409</time>
+    <user>coolo</user>
+    <comment>Fix build. (forwarded request 107709 from a_jaeger)</comment>
+    <requestid>107711</requestid>
+  </revision>
+  <revision rev="42" vrev="16">
+    <srcmd5>3765cf1b22b3dc41e07cd1469cfcb75b</srcmd5>
+    <version>3.14.8</version>
+    <time>1338476555</time>
+    <user>coolo</user>
+    <comment>Fix openSUSE:Factory:Staging/apcupsd build failure
+http://lists.opensuse.org/opensuse-factory/2012-05/msg00752.html (forwarded request 122790 from jengelh)</comment>
+    <requestid>122799</requestid>
+  </revision>
+  <revision rev="43" vrev="18">
+    <srcmd5>3765cf1b22b3dc41e07cd1469cfcb75b</srcmd5>
+    <version>3.14.8</version>
+    <time>1340183177</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f6b30e8ef9c149554e706486bb3654aa</srcmd5>
+    <version>3.14.10</version>
+    <time>1357920631</time>
+    <user>coolo</user>
+    <comment>Remove apcupsd-largebuf-overflow.patch (forwarded request 148012 from a_jaeger)</comment>
+    <requestid>148014</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>b18ee2aa927e44fd84be1e5ca18a5155</srcmd5>
+    <version>3.14.10</version>
+    <time>1358198383</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0
+ (forwarded request 148109 from babelworx)</comment>
+    <requestid>148122</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>b18ee2aa927e44fd84be1e5ca18a5155</srcmd5>
+    <version>3.14.10</version>
+    <time>1359108659</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>c58ea3d985ba68b396a2a25061691a91</srcmd5>
+    <version>3.14.10</version>
+    <time>1362983036</time>
+    <user>coolo</user>
+    <comment>apcupsd lives in /usr/sbin, not /sbin (forwarded request 158184 from dimstar)</comment>
+    <requestid>158187</requestid>
+  </revision>
+  <revision rev="48" vrev="7">
+    <srcmd5>c58ea3d985ba68b396a2a25061691a91</srcmd5>
+    <version>3.14.10</version>
+    <time>1379661978</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="49" vrev="8">
+    <srcmd5>981aeab3b809cbf91dabf4cf50b8b085</srcmd5>
+    <version>3.14.10</version>
+    <time>1390975933</time>
+    <user>coolo</user>
+    <comment>fix bnc#837337 (forwarded request 213539 from posophe)</comment>
+    <requestid>215427</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>09258dea1e2d730349ff62b66962aaf6</srcmd5>
+    <version>3.14.11</version>
+    <time>1392832561</time>
+    <user>coolo</user>
+    <comment>- Updated to version 3.14.11:
+  * APC MODBUS protocol support over RS232
+    For more see ReleaseNotes.
+- Verify GPG signature.
+- Remove obsolete apcupsd-early-powerdown script.
+- Remove upgrade scripts for SuSE Linux 8 and SLES 8.
+- Do not call powersave-notify (regression bnc#856907). (forwarded request 222091 from sbrabec)</comment>
+    <requestid>222093</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>ffce6754ecb8e836db9ca536ed28f5c2</srcmd5>
+    <version>3.14.11</version>
+    <time>1400355794</time>
+    <user>coolo</user>
+    <comment>- %service_add_pre in  %pre section missing, added. (forwarded request 234116 from msmeissn)</comment>
+    <requestid>234417</requestid>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>ffce6754ecb8e836db9ca536ed28f5c2</srcmd5>
+    <version>3.14.11</version>
+    <time>1409300503</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>a69c0d62ff3375843f9faac5293fe84d</srcmd5>
+    <version>3.14.11</version>
+    <time>1409998720</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247639</requestid>
+  </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>af70f79a7c7361c474d78755e4a41dfe</srcmd5>
+    <version>3.14.11</version>
+    <time>1416505389</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262183</requestid>
+  </revision>
+  <revision rev="55" vrev="7">
+    <srcmd5>f2ed133c9b7c1b82a34a213b372fb032</srcmd5>
+    <version>3.14.11</version>
+    <time>1417643413</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix removal of HALT_POWERDOWN_INSERT (bsc#907702). (forwarded request 263770 from sbrabec)</comment>
+    <requestid>263771</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>f688981bb89fd4309cbee0be569003c7</srcmd5>
+    <version>3.14.13</version>
+    <time>1429346356</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297200</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>ce7e1e69b7085c732966eb5130f04531</srcmd5>
+    <version>3.14.13</version>
+    <time>1430595361</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304338</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>1606925f6c06aebad878f5f715d7c4c3</srcmd5>
+    <version>3.14.13</version>
+    <time>1436888711</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316468</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>0c4018d15c47d104bcf9a340708f9f60</srcmd5>
+    <version>3.14.14</version>
+    <time>1466326116</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401613</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>87ce783299cf745ab58dc56d2fecb9d1</srcmd5>
+    <version>3.14.14</version>
+    <time>1482785150</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>445652</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>0a79a810e9d032d55a0ce152d41b9119</srcmd5>
+    <version>3.14.14</version>
+    <time>1504521335</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520255</requestid>
+  </revision>
+  <revision rev="62" vrev="4">
+    <srcmd5>eeaaad2515006969a77e7667ef3bacdc</srcmd5>
+    <version>3.14.14</version>
+    <time>1511595751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545068</requestid>
+  </revision>
+  <revision rev="63" vrev="5">
+    <srcmd5>2389d092ec9bf0498274c42b907341bb</srcmd5>
+    <version>3.14.14</version>
+    <time>1513762839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558675</requestid>
+  </revision>
+  <revision rev="64" vrev="6">
+    <srcmd5>6b647ac539846cf7afda2263f0ef0ee1</srcmd5>
+    <version>3.14.14</version>
+    <time>1521499185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588548</requestid>
+  </revision>
+  <revision rev="65" vrev="7">
+    <srcmd5>f24863332e2c7dd347df499186c995f9</srcmd5>
+    <version>3.14.14</version>
+    <time>1521716833</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use path based dependency but use normal package name</comment>
+    <requestid>589741</requestid>
+  </revision>
+  <revision rev="66" vrev="8">
+    <srcmd5>6b68bb3c3621171ce5a7a0b1a3ad7cb8</srcmd5>
+    <version>3.14.14</version>
+    <time>1562843695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713343</requestid>
+  </revision>
+  <revision rev="67" vrev="9">
+    <srcmd5>b645ce44df83f666ed1bb3af630b6ce8</srcmd5>
+    <version>3.14.14</version>
+    <time>1565695496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722800</requestid>
+  </revision>
+  <revision rev="68" vrev="10">
+    <srcmd5>a805fec4f621568ef0b1d79eaa967ad3</srcmd5>
+    <version>3.14.14</version>
+    <time>1566291589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724697</requestid>
+  </revision>
+</revisionlist>

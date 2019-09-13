@@ -1,0 +1,5 @@
+<package name="telepathy-accounts-signon" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="telepathy-accounts-signon"/>
+</package>

@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>15cef2600f00badc8a702cb003565c2e</srcmd5>
+    <version>0.17.1</version>
+    <time>1493819694</time>
+    <user>dimstar_suse</user>
+    <comment>single-spec version of python3-llvmlite, which is already in openSUSE:Factory.
+This version works with llvm 4.</comment>
+    <requestid>489479</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>69a52087e8d27464353e438c0e14409b</srcmd5>
+    <version>0.20.0</version>
+    <time>1510150258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539613</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6bd4900af9b4e99ba54604d78e6032ec</srcmd5>
+    <version>0.21.0</version>
+    <time>1515876489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563675</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>71f1c10676438c81dc3dd31b762b7b13</srcmd5>
+    <version>0.22.0</version>
+    <time>1524576836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600092</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6aaa87d244bf618e5a55fc5317f66da4</srcmd5>
+    <version>0.23.0</version>
+    <time>1527487677</time>
+    <user>dimstar_suse</user>
+    <comment>This needs to go together with llvm update currently in queue</comment>
+    <requestid>610235</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3bb2ef3cdb099ac0c76e3d4a49f0b7bc</srcmd5>
+    <version>0.23.2</version>
+    <time>1529919767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618810</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7db85780759ef23bed9508a43e62eabf</srcmd5>
+    <version>0.24.0</version>
+    <time>1531592661</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.24.0:
+  * Various small fixes
+  * ppc64le issues</comment>
+    <requestid>622446</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8c65cd73d38d3b46623a2cf9b01f12ad</srcmd5>
+    <version>0.25.0</version>
+    <time>1539251903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640984</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b0fdadf171c314107f8dd31c24046145</srcmd5>
+    <version>0.26.0</version>
+    <time>1543828343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653424</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b960437e7a6fef3d8907b6a5e5f02cca</srcmd5>
+    <version>0.27.0</version>
+    <time>1550151354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674714</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b9a8987cf01a9075e1a65665ee5931f9</srcmd5>
+    <version>0.27.1</version>
+    <time>1551025032</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677768</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1aecf18a8d4412afc64821ea5d2de3ad</srcmd5>
+    <version>0.28.0</version>
+    <time>1552902214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685824</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6ed6a9542ebd7c9c62e36f70443c7a6e</srcmd5>
+    <version>0.29.0</version>
+    <time>1560971682</time>
+    <user>dimstar_suse</user>
+    <comment>- Package examples
+- Make sure tests use installed version
+- update to version 0.29.0
+  * This release upgrades to LLVM 8.0 for all supported platforms except PPC64LE.
+    Due to numerous problems with LLVM 8.0 running on PPC64LE,
+    we have decided to use LLVM 7.1, which is more stable on PPC64LE.
+    In addition, non-host LLVM targets, AMDGPU, NVPTX, and WebAssembly, are enabled
+    and they are available in our `llvmlite` builds.
+  * Revert &quot;LLVM 7 changed memset intrinsic signature, adjust it&quot;
+  * Depend on enum34 using PEP 508 environment markers
+  * Upgrade to llvm8
+  * Support loading from current directory and egg files
+  * Add missing fastmath flags from LLVM 7
+  * LLVM 7 changed memset intrinsic signature, adjust it
+</comment>
+    <requestid>710933</requestid>
+  </revision>
+</revisionlist>

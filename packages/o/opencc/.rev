@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4add7597e55a3d57aaf7ddc8e1b8bda9</srcmd5>
+    <version>0.3.0</version>
+    <time>1329406536</time>
+    <user>coolo</user>
+    <comment>Fixed License</comment>
+    <requestid>103156</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e2c3526d0655be2b834d19314bd995c</srcmd5>
+    <version>0.3.0git.1324715872</version>
+    <time>1329487255</time>
+    <user>coolo</user>
+    <comment>- trigger the service so it's true</comment>
+    <requestid>105456</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ad42419f18a673c5b52d35261c3676ae</srcmd5>
+    <version>0.3.0git.1324715872</version>
+    <time>1338971641</time>
+    <user>coolo</user>
+    <comment> (forwarded request 123321 from MargueriteSu)</comment>
+    <requestid>123322</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ad42419f18a673c5b52d35261c3676ae</srcmd5>
+    <version>0.3.0git.1324715872</version>
+    <time>1340183752</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e6e302e2a67c474b787bc411c8347309</srcmd5>
+    <version>0.3.0git.1324715872</version>
+    <time>1340723353</time>
+    <user>coolo</user>
+    <comment> (forwarded request 125951 from MargueriteSu)</comment>
+    <requestid>126043</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c28e139a05d7550c54f3aa40b38beab8</srcmd5>
+    <version>0.3.0.git20121105</version>
+    <time>1352700273</time>
+    <user>coolo</user>
+    <comment> (forwarded request 140150 from MargueriteSu)</comment>
+    <requestid>140151</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c28e139a05d7550c54f3aa40b38beab8</srcmd5>
+    <version>0.3.0.git20121105</version>
+    <time>1359109536</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ae637689ebf5b4a1d8274440cf541a40</srcmd5>
+    <version>0.4.3</version>
+    <time>1372925560</time>
+    <user>coolo</user>
+    <comment>- update version 0.4.3
+  * add interface: `opencc_convert_utf8_free`
+  * fix memeory leak problem for nodejs plugin (forwarded request 181811 from MargueriteSu)</comment>
+    <requestid>181812</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>ae637689ebf5b4a1d8274440cf541a40</srcmd5>
+    <version>0.4.3</version>
+    <time>1379663417</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>ae637689ebf5b4a1d8274440cf541a40</srcmd5>
+    <version>0.4.3</version>
+    <time>1409302030</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f81a1b2f2406f4e29a59019361284835</srcmd5>
+    <version>1.0.2</version>
+    <time>1424121184</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286195</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c57efd8b85c4edf1d0c07b8fa4b45eaa</srcmd5>
+    <version>1.0.3</version>
+    <time>1439385281</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322014</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6a9f7291698220eeb79a7a514bafa84d</srcmd5>
+    <version>1.0.3.1</version>
+    <time>1458120952</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>370773</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4aad138141f6b42ff6675404216aec4d</srcmd5>
+    <version>1.0.5</version>
+    <time>1507628204</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.5
+  * Fix link error for mingw
+  * Try fix error nodejs_version=4; Platform: x86
+  * Add support for node stable &amp;amp;&amp;amp; remove v0.12 
+  * Update artifacts
+  * Artifacts for appveyor (forwarded request 531749 from hillwood)</comment>
+    <requestid>531776</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>ff4c98a06b6ebbea9f4971969259a986</srcmd5>
+    <version>1.0.5</version>
+    <time>1510665196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540156</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>82264dcd6689c4114b2b99a5438a8c43</srcmd5>
+    <version>1.0.5</version>
+    <time>1515505026</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python3 for all the operations do not implicitely inherit py2
+</comment>
+    <requestid>561790</requestid>
+  </revision>
+</revisionlist>

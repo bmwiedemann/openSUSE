@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>601e8516140815c5f88c26bc5ff2a523</srcmd5>
+    <version>1.3</version>
+    <time>1505335004</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix name of rpmlintrc.</comment>
+    <requestid>523787</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>06dd16457cbae51bfa1c4600c33a4cb2</srcmd5>
+    <version>1.3</version>
+    <time>1507197732</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix LICENSE and copyright statement in LICENSE.
+
+- Remove spec_fix.pl, use multibuild instead.
+- Add RPM macros to be used together with macros.hpc from suse-hpc. (forwarded request 531170 from eeich)</comment>
+    <requestid>531171</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>835581c9d5311de5a8a0d0312965a100</srcmd5>
+    <version>1.3</version>
+    <time>1507391440</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532079</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b81d03aa826ce79dc11d8f7fc442cebf</srcmd5>
+    <version>1.3</version>
+    <time>1511274816</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Requires: for lua-lmod to base package.
+- Add Provides/Conflicts: to macro package:
+  only one version of this macro package can
+  can be installed at the same time. (forwarded request 543908 from eeich)</comment>
+    <requestid>543912</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ac868c6e6c492c1c12bf055fc1334fa9</srcmd5>
+    <version>1.3</version>
+    <time>1517424755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc v.7 for SLES-12 builds.
+- Set the 'granularity' for selection to the
+  granularity of GNU toolchain versions we
+  distinguish: For major versions until 4,
+  this is 2 versions, for anything above it
+  is just the major version.
+- On TW/Factory add explicit dependency to the 
+  compiler major version package. This is to make 
+  sure package gets rebuilt when this versions 
+  changes.</comment>
+    <requestid>571207</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b3bde967f3cdcc09926ddb2e8faa7fa6</srcmd5>
+    <version>1.3</version>
+    <time>1542666765</time>
+    <user>dimstar_suse</user>
+    <comment>- Define _hpc_gnu_module (bsc#1116458). (forwarded request 650044 from eeich)</comment>
+    <requestid>650049</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e045484abc7a9668bfbf5a142639112b</srcmd5>
+    <version>1.4</version>
+    <time>1551113086</time>
+    <user>coolo</user>
+    <comment>- Add links from the generic compiler binary names cc, cpp, c++
+  and fc to the compiler specific names in the package private
+  binary directory. (forwarded request 674821 from eeich)</comment>
+    <requestid>674844</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bd355cf01052b4e2ae81c63437876b41</srcmd5>
+    <version>1.4</version>
+    <time>1566912005</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc v.6, v.8 and v.9.
+  for SLE-12 HPC: v.6, v.7, v.8 (jsc#SLE-7765)
+  for SLE-15 &amp;amp; SLE-15-SP1: gcc v.7, v.8 (jsc#SLE-7766)
+- For the base compiler add a Provides: for the versioned form. (forwarded request 724405 from eeich)</comment>
+    <requestid>724406</requestid>
+  </revision>
+</revisionlist>

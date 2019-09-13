@@ -1,0 +1,6 @@
+<package name="octave-forge-parallel" project="openSUSE:Factory">
+  <title></title>
+  <description>Parallel execution package.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-parallel"/>
+</package>

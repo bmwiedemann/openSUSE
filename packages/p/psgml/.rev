@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>4456b0d38e85153ff5025227c5f00188</srcmd5>
+    <version>1.3.2</version>
+    <time>1168904010</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="50">
+    <srcmd5>31f84396a0d01246d8460026392f47d7</srcmd5>
+    <version>1.3.2</version>
+    <time>1175169639</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="240">
+    <srcmd5>31f84396a0d01246d8460026392f47d7</srcmd5>
+    <version>1.3.2</version>
+    <time>1175169639</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="241">
+    <srcmd5>76baee5b337a68a93a2e850e418b592f</srcmd5>
+    <version>1.3.2</version>
+    <time>1245277096</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="242">
+    <srcmd5>ebd872bbf73cdbb7ce78f19283c4f338</srcmd5>
+    <version>1.3.2</version>
+    <time>1251294847</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/psgml based on submit request 18819 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="6" vrev="244">
+    <srcmd5>ebd872bbf73cdbb7ce78f19283c4f338</srcmd5>
+    <version>1.3.2</version>
+    <time>1251294847</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/psgml based on submit request 18819 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="245">
+    <srcmd5>3c9ccbb0792046033193b8071a620b91</srcmd5>
+    <version>1.3.2</version>
+    <time>1260973293</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/psgml based on submit request 26671 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="246">
+    <srcmd5>ef5d8568e98f3ed21697389e1daceb75</srcmd5>
+    <version>1.3.2</version>
+    <time>1268925796</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="247">
+    <srcmd5>273c225b4bfddecbb8e3e218cdb064a0</srcmd5>
+    <version>1.3.2</version>
+    <time>1274208902</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/psgml based on submit request 40253 from user oertel
+</comment>
+    <requestid>40253</requestid>
+  </revision>
+  <revision rev="10" vrev="249">
+    <srcmd5>273c225b4bfddecbb8e3e218cdb064a0</srcmd5>
+    <version>1.3.2</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="250">
+    <srcmd5>273c225b4bfddecbb8e3e218cdb064a0</srcmd5>
+    <version>1.3.2</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="253">
+    <srcmd5>273c225b4bfddecbb8e3e218cdb064a0</srcmd5>
+    <version>1.3.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="255">
+    <srcmd5>273c225b4bfddecbb8e3e218cdb064a0</srcmd5>
+    <version>1.3.2</version>
+    <time>1319182372</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="256">
+    <srcmd5>d1fc0dd5121e45cad09c70927a40cbe2</srcmd5>
+    <version>1.3.2</version>
+    <time>1323194004</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="258">
+    <srcmd5>d1fc0dd5121e45cad09c70927a40cbe2</srcmd5>
+    <version>1.3.2</version>
+    <time>1340184020</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="259">
+    <srcmd5>43451347e41cb4c1e51c3ec7961aef99</srcmd5>
+    <version>1.3.2</version>
+    <time>1341257583</time>
+    <user>coolo</user>
+    <comment>- Add fix for new emacs 24.1, compare with
+  https://lists.gnu.org/archive/html/emacs-devel/2011-12/msg00259.html</comment>
+    <requestid>126909</requestid>
+  </revision>
+  <revision rev="17" vrev="260">
+    <srcmd5>c69e8cdb09461a0671b8d07f4467ee1c</srcmd5>
+    <version>1.3.2</version>
+    <time>1347893940</time>
+    <user>coolo</user>
+    <comment>- Add BuildRequires on makeinfo to fix Factory build 
+
+You can see the build failure in openSUSE:Factory project. (forwarded request 134400 from namtrac)</comment>
+    <requestid>134438</requestid>
+  </revision>
+  <revision rev="18" vrev="262">
+    <srcmd5>c69e8cdb09461a0671b8d07f4467ee1c</srcmd5>
+    <version>1.3.2</version>
+    <time>1359109960</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="264">
+    <srcmd5>c69e8cdb09461a0671b8d07f4467ee1c</srcmd5>
+    <version>1.3.2</version>
+    <time>1379664079</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="266">
+    <srcmd5>c69e8cdb09461a0671b8d07f4467ee1c</srcmd5>
+    <version>1.3.2</version>
+    <time>1409302757</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>60444cef633d3a67c6ab4c4505a82676</srcmd5>
+    <version>1.4.1</version>
+    <time>1418737766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>265399</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>7aa4d54f49ae5ef0c59b65998f458b2f</srcmd5>
+    <version>1.4.1</version>
+    <time>1519145758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578221</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>95f3fd5d530a3d8992417dc8432f896a</srcmd5>
+    <version>1.4.1</version>
+    <time>1532445916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624795</requestid>
+  </revision>
+</revisionlist>

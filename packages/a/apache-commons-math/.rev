@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3e7564bbbfed503b3ea130e054d6276</srcmd5>
+    <version>3.5</version>
+    <time>1447146150</time>
+    <user>dimstar_suse</user>
+    <comment>One of the dependency of a speech soft I'm working on</comment>
+    <requestid>341014</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>630c7e5e90ec53a2c5eec5a387c13d1a</srcmd5>
+    <version>3.6.1</version>
+    <time>1488641836</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461319</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2576a23379ef0546cd2ccdaa190004ff</srcmd5>
+    <version>3.6.1</version>
+    <time>1495442915</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove needless requires
+
+- New build dependency: javapackages-local 
+- Fixed requires</comment>
+    <requestid>497063</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0e5d85a1bfa66f13ba619446319a094f</srcmd5>
+    <version>3.6.1</version>
+    <time>1505416822</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>526117</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>b7286b4a5fdabfbf3464d8569a3d9b04</srcmd5>
+    <version>3.6.1</version>
+    <time>1530993492</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620754</requestid>
+  </revision>
+</revisionlist>

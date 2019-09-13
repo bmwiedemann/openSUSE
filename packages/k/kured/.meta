@@ -1,0 +1,6 @@
+<package name="kured" project="openSUSE:Factory">
+  <title>Kubernetes Reboot Daemon</title>
+  <description>Kured (KUbernetes REboot Daemon) is a Kubernetes daemonset that performs safe automatic node reboots when the need to do so is indicated by the package management system of the underlying OS.</description>
+  <devel project="devel:kubic" package="kured"/>
+  <url>https://github.com/weaveworks/kured</url>
+</package>

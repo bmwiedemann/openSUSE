@@ -1,0 +1,203 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>695d4a62f948eef4fd7c62e5e5d44a5e</srcmd5>
+    <version>4.4</version>
+    <time>1327403889</time>
+    <user>coolo</user>
+    <comment>New package: accounting app, pushed by community</comment>
+    <requestid>100902</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>695d4a62f948eef4fd7c62e5e5d44a5e</srcmd5>
+    <version>4.4</version>
+    <time>1340183436</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>695d4a62f948eef4fd7c62e5e5d44a5e</srcmd5>
+    <version>4.4</version>
+    <time>1359109048</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d7dc1aab687a62329a02f0302d4524d2</srcmd5>
+    <version>4.5</version>
+    <time>1363104940</time>
+    <user>coolo</user>
+    <comment>push staged updates from GNOME:Apps</comment>
+    <requestid>158678</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d7dc1aab687a62329a02f0302d4524d2</srcmd5>
+    <version>4.5</version>
+    <time>1379662615</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>983c57d6e5aca29768539862eb085401</srcmd5>
+    <version>4.5.5</version>
+    <time>1391604185</time>
+    <user>coolo</user>
+    <comment>Update to ver 4.5.5 (forwarded request 220641 from Zaitor)</comment>
+    <requestid>220731</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5a25f3fee998a87d78245a29d66e4ae3</srcmd5>
+    <version>4.5.6</version>
+    <time>1393780966</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 4.5.6:
+  + This is a stable maintenance release.
+  + Bugs fixed: lp#1285326, lp#1285164, lp#1277622, lp#1276377,
+    lp#1275534, lp#1273848. (forwarded request 224355 from Zaitor)</comment>
+    <requestid>224361</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5a25f3fee998a87d78245a29d66e4ae3</srcmd5>
+    <version>4.5.6</version>
+    <time>1409301169</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>730c30cbc196a78248753f89eff823ac</srcmd5>
+    <version>4.6.3</version>
+    <time>1421787292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.3:
+  + New: enhanced categories completion (complete is done with
+    partial match on both categories and subcategories).
+  + Change: win32: upgraded to libofx 0.9.9.
+  + Bugfixes:
+    - lp#1351098 win32: OFX import freeze HomeBank.
+    - lp#1349160 layout are not persisted well on maximized
+      windows.</comment>
+    <requestid>282114</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ce2469505b56d79f5bcec4b43b51ede6</srcmd5>
+    <version>5.0.0</version>
+    <time>1423669464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285126</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6736749061ec13590e809e23ae2a9000</srcmd5>
+    <version>5.0.1</version>
+    <time>1428652366</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294917</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>06d6fe61d511f41a882ddc0b87cc1887</srcmd5>
+    <version>5.0.2</version>
+    <time>1431247608</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305771</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ec1738bd63e48088e8d0138764c0d43f</srcmd5>
+    <version>5.0.3</version>
+    <time>1434133865</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311605</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>940b3e72ca160f8f3f9bcb998166b996</srcmd5>
+    <version>5.0.6</version>
+    <time>1452027338</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352023</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d99c59c4aee4b4f907532bd278450936</srcmd5>
+    <version>5.0.9</version>
+    <time>1473548120</time>
+    <user>dimstar_suse</user>
+    <comment>Version update</comment>
+    <requestid>426297</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>014e35087d0302f5682d3fb377f193bd</srcmd5>
+    <version>5.1.4</version>
+    <time>1489759600</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479297</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e3fab47b09510e4686808fe218f3a7eb</srcmd5>
+    <version>5.1.5</version>
+    <time>1500275407</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, resub tweakedx2 (forwarded request 509414 from Zaitor)</comment>
+    <requestid>509992</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>576d74afdeb881c5cf52e18dc8651332</srcmd5>
+    <version>5.1.6</version>
+    <time>1506453365</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 5.1.6. Comment added. (forwarded request 528449 from luc14n0)</comment>
+    <requestid>528647</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2133b76e03c18f7903020654182718d6</srcmd5>
+    <version>5.1.7</version>
+    <time>1516634441</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 5.1.7. (forwarded request 567527 from luc14n0)</comment>
+    <requestid>568071</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7cf2d233c26e2e11aac208ca5524a514</srcmd5>
+    <version>5.1.8</version>
+    <time>1524238038</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 5.1.8. (forwarded request 596057 from luc14n0)</comment>
+    <requestid>596177</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fc8d36bbc471305d914ea4be9cafbb1e</srcmd5>
+    <version>5.2.1</version>
+    <time>1537787508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636742</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ca7cff1022f26db2697bab305bd4d74d</srcmd5>
+    <version>5.2.3</version>
+    <time>1553635944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687763</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f66d542060125c051f3accb53d1f9c00</srcmd5>
+    <version>5.2.6</version>
+    <time>1558948495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.6:
+  + Changes:
+    - access to the show all transaction with the toolbar
+  + Bugfixes:
+    - #1829630 homebank: _cairo_arc_in_direction(): homebank killed by SIGABRT 
+    - #1829076 status &quot;no category&quot; filter not working
+    - #1829603 multi currencies problem in Trend Time Report
+  + Wishes:
+    - #1829007 prefill txn dialog with account if single
+    - #1828209 multiple edit could allow updating transaction amount
+    - #1809022 detail txn show only category amount split part
+    - #1792749 main window date 'other...' consistency (forwarded request 705570 from jubalh)</comment>
+    <requestid>705590</requestid>
+  </revision>
+</revisionlist>

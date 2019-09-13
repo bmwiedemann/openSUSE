@@ -1,0 +1,14 @@
+<package name="python-xarray" project="openSUSE:Factory">
+  <title>N-D labeled arrays and datasets in Python</title>
+  <description>xarray (formerly xray) is a python-pandas-like and pandas-compatible
+toolkit for analytics on multi-dimensional arrays. It provides
+N-dimensional variants of the python-pandas labeled data structures,
+rather than the tabular data that pandas uses.
+
+The Common Data Model for self-describing scientific data is used.
+The dataset is an in-memory representation of a netCDF file.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-xarray"/>
+  <url>http://github.com/pydata/xarray</url>
+</package>

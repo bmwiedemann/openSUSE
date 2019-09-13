@@ -1,0 +1,175 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95d208f8fe74c7d527f0185d461ef327</srcmd5>
+    <version>2.1.43</version>
+    <time>1390214595</time>
+    <user>coolo</user>
+    <comment>new openstack dep</comment>
+    <requestid>213884</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>95d208f8fe74c7d527f0185d461ef327</srcmd5>
+    <version>2.1.43</version>
+    <time>1409302985</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02dd908a72c1e00cb875150ee33a33f3</srcmd5>
+    <version>2.1.49</version>
+    <time>1409902459</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247487</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>354a9388c44c21ff870564684a372b8d</srcmd5>
+    <version>2.1.51</version>
+    <time>1431795723</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307484</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ebd15ef32ee2d2098d3438380247eedf</srcmd5>
+    <version>2.1.60</version>
+    <time>1461855327</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391133</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b09a723708f818048a26a2f0adda72b9</srcmd5>
+    <version>2.1.60</version>
+    <time>1463124247</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394944</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>2ce4c05f58c6f4f4b3d120f5862bbbed</srcmd5>
+    <version>2.1.60</version>
+    <time>1464014330</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396658</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>a7a6a19c2398e553ca60da8e52f1305a</srcmd5>
+    <version>2.1.60</version>
+    <time>1467205833</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404554</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>34aed862d4002082cf5cf112c82b6a39</srcmd5>
+    <version>2.1.63</version>
+    <time>1493020083</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487880</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ab225064246e931d8d40277f427841b9</srcmd5>
+    <version>2.1.63</version>
+    <time>1493363614</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491071</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>53ffda53537410094cda3747d8c5b072</srcmd5>
+    <version>2.1.63</version>
+    <time>1499292243</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508175</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b21542223576a797f13ebfdc6d1965e9</srcmd5>
+    <version>2.1.64</version>
+    <time>1512042291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.fb64
+  *Improve ALUA and TCMU support, as well as moving the default 
+   directory for APTPL files from /var/target to /etc/target
+   for better FHS compliance.
+  *Remove patch Switch-target-driver-DB-root-dir-to-etc-target.patch
+   from the spec file because upstream already has this change.</comment>
+    <requestid>546175</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a3d75f0e2e864e9f3305b3313f6d34e0</srcmd5>
+    <version>2.1.64</version>
+    <time>1515623745</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the conflict to the rtslib properly
+
+- Drop the epydoc dependency/documentation generating from the package
+  to allow building in py3 only enviroment
+
+- Converting RPM SPEC file to singlespec format (bsc#1045332),
+  updating SPEC file only.
+- ran 'spec-cleaner' on SPEC file to clean it up.
+- Converted from manually-added rtslib-fb-2.1.fb64.tar.gz to
+  tar_scm service-retrieved rtslib-fb-2.1.fb64.tar.xz</comment>
+    <requestid>562902</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>023f0dd67c9099fcd207348df659b57e</srcmd5>
+    <version>2.1.64</version>
+    <time>1516880455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569368</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>f929ccfeca04664cb76eebdd48caf7c1</srcmd5>
+    <version>2.1.64</version>
+    <time>1519747091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579975</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b3ee2aa2f5648b73d238f2aadd90a49e</srcmd5>
+    <version>2.1.67</version>
+    <time>1523448035</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595002</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3f057f6f5e8e7a7207554f75c27f0842</srcmd5>
+    <version>2.1.67</version>
+    <time>1524144562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597224</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1149ea8e2f64ba07c0997b560df3f5b3</srcmd5>
+    <version>2.1.69</version>
+    <time>1540200194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643053</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>bd3aff17c5f6e41b2b1d8e520424e3f0</srcmd5>
+    <version>2.1.69</version>
+    <time>1546535389</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit, repo-checker has a stale review</comment>
+    <requestid>662617</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>d6b420a7dab09e6a2d6105673c5d953f</srcmd5>
+    <version>2.1.69</version>
+    <time>1550574167</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677187</requestid>
+  </revision>
+</revisionlist>

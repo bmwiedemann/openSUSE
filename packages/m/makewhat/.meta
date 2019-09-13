@@ -1,0 +1,7 @@
+<package name="makewhat" project="openSUSE:Factory">
+  <title>Create a whatis Database</title>
+  <description>The man system in SUSE Linux (package man) does not need a whatis
+database. Nevertheless some manual browsers, such as tkman, still need
+this database. For this reason, we included this package.</description>
+  <devel project="Base:System" package="makewhat"/>
+</package>

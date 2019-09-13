@@ -1,0 +1,13 @@
+<package name="myman" project="openSUSE:Factory">
+  <title>Text based Pacman clone</title>
+  <description>MyMan is a video game for color and monochrome text
+terminals in the genre of Namco's Pac-Man.
+It includes many maze variations and several tile
+and sprite sets, ranging from large ASCII art through
+large pseudo-bitmap Unicode or CP437 graphics to
+single characters.
+
+</description>
+  <devel project="games" package="myman"/>
+  <url>http://myman.sourceforge.net/</url>
+</package>

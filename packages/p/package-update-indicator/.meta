@@ -1,0 +1,5 @@
+<package name="package-update-indicator" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:xfce" package="package-update-indicator"/>
+</package>

@@ -1,0 +1,12 @@
+<package name="bff4" project="openSUSE:Factory">
+  <title>Fast Brainfuck interpreter</title>
+  <description>Optimizing brainfuck implementation of dialect based on Daniel's dbfi (see &quot;A very short self-interpreter&quot;)
+
+This interpreter has only one input: program and input to the program have to be separated with ! e.g. &quot;,.!a&quot; prints 'a' To use it in interactive mode paste your program as input.
+
+This program can be compiled with LNR macro defined. LNR is another optimization of linear loops (where '&lt;&gt;' balanced), e.g. [-&gt;+&gt;++&lt;&lt;]. Linear loop is then executed in one step.
+
+Oleg Mazonka 4.12.06  http://mazonka.com/</description>
+  <devel project="devel:languages:misc" package="bff4"/>
+  <url>http://mazonka.com/brainf/</url>
+</package>

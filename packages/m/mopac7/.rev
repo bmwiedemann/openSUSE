@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6261065fbba45f31fff38fc178e1571c</srcmd5>
+    <version>1.15</version>
+    <time>1425377660</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>288011</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>01a058a9768d4bcd1f721898b19ef949</srcmd5>
+    <version>1.15</version>
+    <time>1453998157</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file
+- Do not ship .la file</comment>
+    <requestid>355459</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b6357164ec81623286a351d20c21f9ed</srcmd5>
+    <version>1.15</version>
+    <time>1485862984</time>
+    <user>dimstar_suse</user>
+    <comment>- Update compiler flags</comment>
+    <requestid>453242</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3f8d59d3a88f3799391b8f4b90a4272a</srcmd5>
+    <version>1.15</version>
+    <time>1497274194</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mopac7-fortify.patch to fix building on latest Factory</comment>
+    <requestid>501329</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>27aa03a048826518f43e5700b992d13b</srcmd5>
+    <version>1.15</version>
+    <time>1559375326</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705926</requestid>
+  </revision>
+</revisionlist>

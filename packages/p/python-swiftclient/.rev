@@ -1,0 +1,468 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d13e859b3ddc9e16bcfa1772049d487c</srcmd5>
+    <version>1.1.1+git.1348270267.57dfd21</version>
+    <time>1352700302</time>
+    <user>coolo</user>
+    <comment>Shiny new OpenStack API client based on SUSE Cloud</comment>
+    <requestid>140646</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>81223bc15c8a127878a70668b4540a88</srcmd5>
+    <version>1.2.0.25.g7df9cad+git.1355914385.7df9cad</version>
+    <time>1358198769</time>
+    <user>coolo</user>
+    <comment>Pushing OpenStack Folsom to Factory, see http://lists.opensuse.org/opensuse-factory/2013-01/msg00150.html</comment>
+    <requestid>148323</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>81223bc15c8a127878a70668b4540a88</srcmd5>
+    <version>1.2.0.25.g7df9cad+git.1355914385.7df9cad</version>
+    <time>1359110129</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>13f974b6c68ea0b6d513f636be251635</srcmd5>
+    <version>1.2.0.26.gf65f96b</version>
+    <time>1369641511</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176001</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7ad417383edd55f765796c4be257f92e</srcmd5>
+    <version>1.4.0</version>
+    <time>1371217688</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>178501</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>28ebfb34a1d48348421f0df7e2e5b3b2</srcmd5>
+    <version>1.4.0.32</version>
+    <time>1372863172</time>
+    <user>coolo</user>
+    <comment>- update to master branch
+- update requires 
+
+- upgrade to 1.4.0.7 ; BuildRequire python-pbr python-d2to1
+
+- update to 1.4.0
+- downgrade to released version (1.3.0)
+
+- BuildRequire python (for the ssl module)</comment>
+    <requestid>181573</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a9aa31ef63771a1cf3819eb83f33de3a</srcmd5>
+    <version>1.4.0.35</version>
+    <time>1373470336</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.4.0.35:
+  + Note '-V 2' is necessary for auth 2.0
+
+- Update to version 1.4.0.34:
+  + Add -p option to download command.</comment>
+    <requestid>182630</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>35737e2a3eb2f654ccb539b4927c434f</srcmd5>
+    <version>1.5.0.17</version>
+    <time>1376858350</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186637</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1ff6d0cd043cf911c7bb37a4dcbecc65</srcmd5>
+    <version>1.5.0.23</version>
+    <time>1379328449</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.5.0.23:
+  + Remove redundant unit suffix
+  + Added support for running the tests under PyPy with tox
+
+- Update to version 1.5.0.20:
+  + Add a NullHandler when setting up library logging
+  + Reformat help outputs</comment>
+    <requestid>197423</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1ff6d0cd043cf911c7bb37a4dcbecc65</srcmd5>
+    <version>1.5.0.23</version>
+    <time>1379664294</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d4f65b513e515b2031ea315a88f441e8</srcmd5>
+    <version>1.6.0.3</version>
+    <time>1380201264</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.6.0.3:
+  + fix bug with replace old *LOs
+
+- fix requires 
+
+- Update to version 1.6.0.1:
+  + Sync with global requirements</comment>
+    <requestid>200456</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>80eb93593e0d97569b87953c8358e357</srcmd5>
+    <version>1.7.0</version>
+    <time>1382088907</time>
+    <user>scarabeus_factory</user>
+    <comment>- go with released version 1.7.0:
+  * no changes</comment>
+    <requestid>203655</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3de2b3713362a0feee18c74031e56f3f</srcmd5>
+    <version>1.7.0</version>
+    <time>1394392786</time>
+    <user>coolo</user>
+    <comment>- Replace git_tarballs source service with download_files and set_version
+  + Use upstream URL as source (enables verification)
+
+- Add refresh_patches source service</comment>
+    <requestid>225085</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f9c40cef82e32f5e5a367913afa2a2a7</srcmd5>
+    <version>2.0.3</version>
+    <time>1396546832</time>
+    <user>coolo</user>
+    <comment>- switch to released version 2.0.3 
+
+- Update to version python-swiftclient-2.0.3.16.g100419c:
+  * Make bin/swift testable part 1
+
+- Update to version python-swiftclient-2.0.3.15.g070dd48:
+  * Fix temporary pypy gate issue with setuptools
+  * Copy Swift's .mailmap to swiftclient repo
+
+- Update to version python-swiftclient-2.0.3.11.g8ff7d56:
+  * Use six.StringIO instead of StringIO.StringIO
+
+- Update to version python-swiftclient-2.0.3.9.gd721dc7:
+  * Improve help strings
+
+- Update to version python-swiftclient-2.0.3.7.g41f5763:
+  * TCP port is appended two time in ClientException
+
+- Update to version python-swiftclient-2.0.3.5.g07dd668:
+  * add &quot;info&quot; as an alias to &quot;capabilities&quot;
+
+- Update to version python-swiftclient-2.0.3.4.gd2f3563:
+  2.0.3
+  * Help string format persistent
+  * Make the help strings constant
+
+- Update to version python-swiftclient-2.0.2.14.g52893e3:
+  * Add LengthWrapper in put_object to honor content_length param
+  * Updated from global requirements
+  * swift.1 manpage fix for groff warnings</comment>
+    <requestid>227779</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>f9c40cef82e32f5e5a367913afa2a2a7</srcmd5>
+    <version>2.0.3</version>
+    <time>1409303001</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b7727b689b0e8745474aa4f1a47cfa82</srcmd5>
+    <version>2.4.0</version>
+    <time>1441173229</time>
+    <user>coolo</user>
+    <comment>- Use %{version} in source
+- Switch to version 2.4.0
+
+- Update to version python-swiftclient-2.4.0.post2:
+  2.4.0
+  * Include unsupported url scheme with ClientException
+
+- Update to version python-swiftclient-2.3.1.post60:
+  * Mention --segment-size option after 413 response
+
+- Update to version python-swiftclient-2.3.1.post59:
+  * Add improvements to MD5 validation
+  * Unindent a chunk of st_list
+
+- Update to version python-swiftclient-2.3.1.post56:
+  * Release connection after consuming the content
+  * Fix crash when stat'ing objects with non-ascii names
+
+- Update to version python-swiftclient-2.3.1.post52:
+  * Verify MD5 of uploaded objects
+  * Fix crash with -l, -d /, and pseudo folders
+
+- Update to version python-swiftclient-2.3.1.post48:
+  * add functional tox target
+
+- add dependency on python-setuptools (bnc#914910)
+
+- Update to version python-swiftclient-2.3.1.post47:
+  * Add help message for &quot;&lt;subcommand&gt; --help&quot;
+  * Fix missing ca-certificate parameter to get_auth</comment>
+    <requestid>328087</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6c30891546715a9d1e19d56db736086c</srcmd5>
+    <version>2.6.0</version>
+    <time>1446208962</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+  * Several CLI options have learned short options. The usage strings have
+    been updated to reflect this.
+  * Added --no-shuffle option to the CLI download command.
+  * Added --absolute option for CLI TempURL generation and the corresponding
+    parameter to utils.generate_temp_url(). This allows for an exact, specific
+    time to be used for the TempURL expiry time.
+  * CLI arguments are now always decoded as UTF-8.
+  * Stop Connection class modifying os_options parameter.
+  * Reduce memory usage for download/delete.
+  * The swift service API now logs and reports the traceback
+    on failed operations.
+  * Increase httplib._MAXHEADERS to 256 to work around header limits in recent
+    Python releases.
+  * Added minimal working service token support to client.py.
+  * Various other minor bug fixes and improvements.
+  * The CLI learned an &quot;auth&quot; subcommand which returns bash environment
+    snippets for auth credentials.
+  * The CLI --version option is now more explicit by calling itself
+    &quot;python-swiftclient&quot; rather than the name of the binary.
+  * Now validates the checksum of each chunk of a large object as it is
+    uploaded.
+  * Fixes uploading an object with a relative path.
+  * Added the ability to download objects to a particular folder.
+  * Now correctly removes all old segments of an object when replacing a
+    Dynamic Large Object (DLO).
+  * The --skip-identical option now works properly when downloading
+    large objects.
+  * The client.get_object() response learned a .read([length]) method.
+  * Fixed an issue where an intermediate caching/proxy service could cause</comment>
+    <requestid>337165</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c1956316dd6cb68cfb9a02cd41d83986</srcmd5>
+    <version>3.0.0</version>
+    <time>1463652861</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * Python 2.6 and Python 3.3 support has been removed. Currently
+    supported and tested versions of Python are Python 2.7 and Python 3.4.
+  * Do not reveal sensitive headers in swiftclient log messages by default.
+    This is controlled by the client.logger_settings dictionary. Setting the
+    `redact_sensitive_headers` key to False prevents the information hiding. If
+    the value is True (the default), the `reveal_sensitive_prefix` controls
+    the maximum length of any sensitive header value logged. The default is
+    16 to match the default in Swift.
+  * Object downloads that fail partway through will now retry with a Range
+    request to read the rest of the object.
+  * Object uploads will be retried if the source supports seek/tell or has a
+    reset() method.
+  * Delete requests will use the cluster's bulk delete feature, if available,
+    for requests that would require a lot of individual deletes.
+  * The delete CLI option now accepts a --prefix option to delete objects that
+    start with the given prefix (similar to the same-named option for list).
+  * Add support for the auth-version to be specified using
+    --os-identity-api-version or OS_IDENTITY_API_VERSION
+    for compatibility with other openstack client command
+    line options.
+  * --debug and --info command-line options now work anywhere in the command.
+  * Objects can now be uploaded to pseudo-directories with the CLI.
+  * Fixed an issue with uploading a large object that includes a unicode path.
+  * swiftclient can now auth against Keystone using only a project (tenant)
+    and a token. This is useful when the client doesn't have access to the
+    password for a user but otherwise has been granted access.
+  * Various other minor bug fixes and improvements.
+  * This is the very last release to support Python 2.6. Any further
+    development on the 2.7.x release series will only be for security bugfixes.</comment>
+    <requestid>393966</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>f7bfbcfb403d1374143000aa91c3afe7</srcmd5>
+    <version>3.0.0</version>
+    <time>1475242227</time>
+    <user>dimstar_suse</user>
+    <comment>- update _service and switch to upstream spec file</comment>
+    <requestid>425304</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1d3ef81f3f1b171735fa536573f28950</srcmd5>
+    <version>3.1.0</version>
+    <time>1476351084</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 3.1.0
+  * Include response headers in ClientExceptions
+  * Add copy object method
+  * Support client certificate/key
+  * Add new doc structure and contents for swiftclient
+  * Add --json option to `swift capabilities` / `swift info`
+  * Convert numeric and boolean header values to strings
+  * Correct doc string for http_conn argument
+  * authors/changelog updates for 3.1.0 release
+  * Add tests for thread option validation
+  * Drop *.dbm* before running tests
+  * fixing nit picks in python-swiftclient doc
+  * boolean logic cleanup in service.Swift[Copy|Post]Object
+  * Query string functionality for containers
+  * Check responses when retrying bodies
+  * Add python version constraint python&gt;=2.7
+  * Use mock patch to handle get_auth_keystone
+  * Default to v3 auth if we find a (user|project)-domain-(name|id) option
+  * Initialise delete_object mock before it's called
+  * Accept gzip-encoded API responses
+  * Use application/directory content-type for dir markers
+  * Fix examples and missing code-block
+  * Strip leading/trailing whitespace from headers
+  * Move other-requirements.txt to bindep.txt
+  * Suppress InsecureRequestWarning when using --insecure
+  * reenable sidebar links
+  * Migrated contributing file from .md to .rst
+  * Fixed a typo in SwiftService API doc
+  * Move python-keystoneclient to &quot;extras&quot;
+  * Pull option processing out to service.py</comment>
+    <requestid>434264</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bb6ea169a81d13f50907bfe060994208</srcmd5>
+    <version>3.3.0</version>
+    <time>1487681050</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.3.0:
+  - Remove redundant space in docstring
+  - Update help text around container ACL syntax
+  - remove swiftclient/openstack/common/* in the .coveragerc
+  - prefix-based tempurls support
+  - Adding keystoneauth sessions support
+  - Fix typo in shell.py
+  - Add v1password keystoneauth plugin
+  - TrivialFix: Removed redundant 'the'
+  - Add Constraints support
+  - Replace 'assertEqual(None, ...)' with 'assertIsNone(...)'
+  - Show team and repo badges on README
+  - modify 'swift &lt;sub_command&gt; —help' display
+  - Installs futures only for python 2.7 and 2.6
+  - Fix intermittent test failure
+  - Make object option dependent on container in usage strings
+  - Fixed inconsistent positional arguments naming
+  - Replace assertTrue(a in b) with assertIn(a, b)
+  - Correct the example keystone session code imports
+  - Change Examples from headings to topics
+  - Typo fix
+  - 3.3.0 authors/changelog update
+  - Use ConfigParser instead of SafeConfigParser
+  - Fix 'url' to 'URL'
+  - Accept more types of input for headers/meta
+  - Make tempurl subcommand insist on whole number seconds
+  - add pypy to the bindep &quot;test&quot; profile
+  - Require newer version of oslosphinx
+  - Make tempurl command check for valid object path
+  - Add commands examples for copy and delete</comment>
+    <requestid>456759</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bf9aa7a29f13f98d38912e4b7bedc16b</srcmd5>
+    <version>3.4.0</version>
+    <time>1503927127</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.4.0
+  - ISO 8601 timestamps for tempurl
+  - Fix MockHttpResponse to be more like the Real
+  - merged openstack-manuals content with existing content
+  - Buffer reads from disk
+  - Option to ignore mtime metadata entry.
+  - Allow for uploads from standard input.
+  - Optimize the link address
+  - Fix some reST field lists in docstrings
+  - Change swift.o.o URL
+  - Update the documentation link for doc migration
+  - Fix logging of the gzipped body
+  - moved cli doc to the right place for new links process
+  - Don't recommend to overwrite imported `session` variable
+  - Do not set Content-Type to '' with new requests.
+  - Close file handle after upload job
+  - Tolerate RFC-compliant ETags
+  - respect bulk delete page size and fix logic error
+  - Stop sending X-Static-Large-Object headers
+  - [trivial] Be consistent in using example.com
+  - Removing duplicated doc from client-api
+  - Skip checksum validation on partial downloads
+  - 3.4.0 authors/changelog update
+  - Expose --prefix as an option for st_delete</comment>
+    <requestid>515028</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>35f2ce789d593a5db36f1221754cacd3</srcmd5>
+    <version>3.4.0</version>
+    <time>1516804102</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to singlespec</comment>
+    <requestid>567542</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>28ad988fc31c457a1ad3ef32b371d0c2</srcmd5>
+    <version>3.5.0</version>
+    <time>1521499018</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template
+
+- update to version 3.5.0 (bsc#1078607)
+  - Add support for versionless endpoints
+  - Update tox_install.sh to align for sphinx jobs
+  - Remove setting of version/release from releasenotes
+  - authors/changelog updates for 3.5.0 release
+  - Allow for object uploads &gt; 5GB from stdin.
+  - Trying out the new releasenotes jobs
+  - Make tox runnable in a directory with spaces
+  - Add pypy-devel for RPM-based systems
+  - Add releasenotes tox env
+  - Revert &quot;Add Constraints support&quot;
+  - Allow --meta on upload</comment>
+    <requestid>583359</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d18b1a3e1be5414b11d04d0fb86838bf</srcmd5>
+    <version>3.6.0</version>
+    <time>1536327575</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633122</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0f1d9aa5629adb50153523bb77e5a5bd</srcmd5>
+    <version>3.7.0</version>
+    <time>1556916200</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.7.0
+  - Stop leaking quite so many connections
+  - authors/changelog updates for release
+  - Switch to stestr
+  - Add .idea into .gitignore
+  - Make py36 unit test job voting
+  - Use template for lower-constraints
+  - Update reno for stable/rocky
+  - Add python 3.6 unit test job
+  - import zuul job settings from project-config
+  - Add release note link in README
+  - Change openstack-dev to openstack-discuss
+  - update .functests to run stestr
+  - Add py37 check/gate jobs; add py37 to default tox env list
+  - Stop lazy importing keystoneclient
+  - add python 3.6 unit test job
+  - Add Python 3.6 classifier to setup.cfg
+  - switch documentation job to new PTI
+  - Add delimiter to get_account().
+  - fix tox python3 overrides
+  - Update release to 3.7.0
+  - Use Swift's in-tree DSVM test
+  - Update hacking version
+  - py2 functional testing</comment>
+    <requestid>692880</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,357 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b1c7ed51d60a1e14f64ad304ab36cc4</srcmd5>
+    <version>14</version>
+    <time>1495133098</time>
+    <user>dimstar_suse</user>
+    <comment>Fix rdma-ndd conflict</comment>
+    <requestid>495631</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cc27a8c83a14fe3de0dbe6cda41a0fa4</srcmd5>
+    <version>14</version>
+    <time>1496392364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>500404</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>882b72265d1f3706b4fd589ec4c32361</srcmd5>
+    <version>14</version>
+    <time>1497687690</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>503764</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ecfe1aedfbcd185af12f57a169737c66</srcmd5>
+    <version>14</version>
+    <time>1499880858</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508740</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>16c062d97fb7752c4fd243cb393224a7</srcmd5>
+    <version>14</version>
+    <time>1501406741</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511833</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>2e62f956119aca4faa0c2eee9ca0ecfb</srcmd5>
+    <version>14</version>
+    <time>1502559842</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515456</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>09d8c5f6a6bb7e1ba38c9fd3473a4a34</srcmd5>
+    <version>15</version>
+    <time>1504520449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15-rc3-52-gd3ca56f1
+  * Fix rdma-sriov.service dependencies and remove install section
+  * 50-libmlx4.conf is not a config file
+
+- Update to v15-rc3-45-gd366c01a
+  * Drop obsolete workarounds
+  * Drop rdma.service
+  * Add rdma-sriov.service
+  * Switch to the new udev system
+- Prevent uninstall from trying to stop srp_daemon_port@.service
+
+- Update to v15-rc3-26-g2f5779a7
+- Prevent rdma-core services to be stopped or restarted during
+  uninstall and updates
+- Do not use service_* macros on services that do not need them
+- Remove provides for old &lt;provider&gt;-rdmav2 packages
+  as they are not compatible anymore due to ABI changes
+- Use upstream spec file.
+
+- Update to v15-rc3
+  - Add flow steering drop action
+  - mmio_flush_write fixes
+  - Fixes for uclibc
+  - Add common mmio accessor routines and remove per provider mmio
+    routines
+  - qedr fixes
+  - Lots of fixes for debian packaging
+  - Copyright fixes
+  - Properly conflict with infiniband-diags
+  - Add direct verbs support to mlx4 provider
+  - Improvement to Travis CI checking
+  - Enforce kernel coding style in rdma-core
+  - Add initial verbs hotplug support
+  - Sparse annotations
+  - Systemd updates for srp_daemon and iwpmd
+  - Red Hat packaging fixes
+  - Properly make the entire rdma-core support udev hotplug activation
+  - Packaging fixes related to the joining of packages and globs that are
+    no longer valid
+- Drop rdma-core-s390x.patch as it was merged upstream
+- Remove legacy systemd macros</comment>
+    <requestid>519959</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b72ab58397e9a1df1000a2622d2c3b18</srcmd5>
+    <version>15</version>
+    <time>1505989953</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to rdma-core v15
+  * Remove dracut requirement</comment>
+    <requestid>527008</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>700f7fafbad2284f531153e9f6441730</srcmd5>
+    <version>15</version>
+    <time>1508503128</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport patches from upstream:
+  * ibacm-Incorrect-usage-of-BE-byte-order-of-MLID-attach-detach_mcast.patch
+    Fixes a byte order issue which causes ibacm to fail to join a multicast
+    group on recent on recent kernels. (bsc#1063639, bsc#1063697)
+  * ibacm-Incorrect-list-used-for-subnet-list-causes-a-segfault.patch
+    Fixes a sefgault of ibacm when a provider other than default
+    is set (bsc#1063642, bsc#1063698)</comment>
+    <requestid>534982</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>db90dbee58efb220eb32f67f053fdeae</srcmd5>
+    <version>15</version>
+    <time>1509820085</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport patch from upstream:
+  * libqedr-fix-inline-data-copy.patch
+    Fix data integrity issue while sending inline data (bsc#1050543, fate#322894)</comment>
+    <requestid>538289</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>9cddc3902da646223b9fda2e26cc1a26</srcmd5>
+    <version>15</version>
+    <time>1510665310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540249</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>56a22f6d7996780b4f6bee011ddba7f0</srcmd5>
+    <version>15.1</version>
+    <time>1512292110</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to rdma-core v15.1
+ * Backport CI checks on centos/SUSE from master
+ * Stable ABI auto checks
+ * Backport fixes:
+   * verbs: Do not block QP attr_masks used by older kernels
+   * libibumad/umad.c: In get_port, ignore sysfs rate file errors
+   * bnxt_re/lib: fix the memory barrier call during poll-cq
+   * bnxt_re/lib: increment psn in case of 0 length packets
+   * libqedr: fix inline data copy
+   * verbs: Fix declaration of C++ include file in C-block
+   * verbs: Fix C++ compilation break
+   * verbs: fix compilation error with ICC
+   * hns: Fix create QP structure layout
+   * ibacm: Incorrect list used for subnet list causes a segfault
+   * ibacm: Incorrect usage of BE byte order of MLID attach/detach_mcast()
+- Remove patches that were merged to v15.1:
+ * bnxt_re-lib-fix-the-memory-barrier-call-during-poll-cq.patch
+ * bnxt_re-lib-increment-psn-in-case-of-0-length-packets.patch
+ * ibacm-Incorrect-list-used-for-subnet-list-causes-a-segfault.patch
+ * ibacm-Incorrect-usage-of-BE-byte-order-of-MLID-attach-detach_mcast.patch
+ * libibumad-umad.c-In-get_port-ignore-sysfs-rate-file-errors.patch
+ * libqedr-fix-inline-data-copy.patch
+ * verbs-Do-not-block-QP-attr_masks-used-by-older-kernels.patch</comment>
+    <requestid>546275</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>30548c9223b7e1efbe689c4d669b1af5</srcmd5>
+    <version>15.1</version>
+    <time>1512766041</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bcond to use curl-mini by default for building</comment>
+    <requestid>548060</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fbda3e8e45373f1463b819ddf89ce323</srcmd5>
+    <version>16</version>
+    <time>1513162595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to rdma-core v16
+  * No release notes available</comment>
+    <requestid>555879</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>8ee3c45db4393b891a782524ed1727e8</srcmd5>
+    <version>16</version>
+    <time>1514027890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558103</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>9d4d869f5d23f0982601ddd85301d7b9</srcmd5>
+    <version>16</version>
+    <time>1515260781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561307</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b499dffc3ee4956b995b9f1548a160d6</srcmd5>
+    <version>16.1</version>
+    <time>1516546110</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Remove-the-obsolete-libibcm-library.patch to drop obsolete libibcm.
+  * Official upstream drop will be in v17
+  * Drop now to avoid submitting libibcm to SLE15
+
+- Update to rdma-core v16.1:
+ * Backport fixes:
+   * srp_daemon: Don't create async_ev_thread if only run once
+   * srp_daemon: handle SM lid change
+   * srp_daemon: fix CQ handling
+- Drop srp_daemon-Don-t-create-async_ev_thread-if-only-run-once.patch,
+  srp_daemon-fix-CQ-handling.patch, and
+  srp_daemon-handle-SM-lid-change.patch as they were merged upstream.</comment>
+    <requestid>567771</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1b47f0f7a5660b728e2ef7ec44a078d1</srcmd5>
+    <version>16.2</version>
+    <time>1517606459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571752</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a7f84a67b2fe35c95697cf70aca3359e</srcmd5>
+    <version>16.3</version>
+    <time>1520160721</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>580927</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>65f61d139f2d853b1708a159e0a09de4</srcmd5>
+    <version>16.4</version>
+    <time>1521579108</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to rdma-core v16.4 (bsc#1084456)
+ * Backport fixes:
+   * cxgb4: add new device pci ids.
+   * mlx5: Fix referencing uninitialized var in create_qp error flow
+   * Ensure all public headers compile in C++ mode
+   * providers/i40iw: Skip CQEs for destroyed QP
+   * ibacm: Support FDR and EDR rates</comment>
+    <requestid>586463</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>6d5774692d1ad0c9d6783e211659c436</srcmd5>
+    <version>16.4</version>
+    <time>1521904254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589767</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>0424114f12956d2a4cf0a877f8cd5be0</srcmd5>
+    <version>16.4</version>
+    <time>1525121497</time>
+    <user>dimstar_suse</user>
+    <comment>- Add umad-Do-not-check-for-umad-sysfs-files-in-umad_init.patch to fix
+  umad/ibstat support on RoCE hardware (bsc#1088441).</comment>
+    <requestid>601126</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>36ec504994db815dd0b12cfb447a315d</srcmd5>
+    <version>18.1</version>
+    <time>1530566860</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove pandoc BuildRequires
+  * Add prebuilt-pandoc.sh to pre-generate the man pages
+  * Add prebuilt-pandoc.tgz containing pre-generated man pages
+  * Extract man pages in the appropriate directory during build
+
+- Update to rdma-core v18.1
+  * Fix compilation issue with recent glibc
+- Drop Remove-the-obsolete-libibcm-library.patch and
+  umad-Do-not-check-for-umad-sysfs-files-in-umad_init.patch as they were
+  fixed upstream.
+
+- Update to rdma-core v16.5
+ * Backport fixes:
+   * buildilb: Fix -msse breakage on ARM builds
+   * buildlib: Use -msse if the compiler does not support target(sse) (bsc#1086910)
+   * suse: do not call %service rules on a template file (bsc#1093170)
+   * mlx5: Convert ah_attr static rate to mlx5 static rate
+   * ccan: Add array_size.h file
+   * iwpmd: Initialize address of sockaddr
+   * mlx5: Fix need_uuar_lock when there are no medium bfregs
+   * verbs: Fix wrong clean up flow in ibv_rc_pingpong
+   * Match kernel ABI to for 4.17 for 32 bit
+   * librdmacm: Set errno correctly if status is positive
+   * verbs: Remove bogus cq_fd
+   * verbs: Fix typo in copying IBV_FLOW_SPEC_UDP/TCP 'val'</comment>
+    <requestid>616908</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>d75fa7dcb1cf1e4b5969e45e8083c158</srcmd5>
+    <version>18.1</version>
+    <time>1535440989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630815</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6233a6f8f41d044ef583aa537020ff69</srcmd5>
+    <version>20.1</version>
+    <time>1541509975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644615</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>be978ea0c26a9db6340e7e0d25e5d795</srcmd5>
+    <version>21</version>
+    <time>1545866622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657867</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>89363b4917bfe0d8c45e4db872982d92</srcmd5>
+    <version>22.1</version>
+    <time>1549630079</time>
+    <user>coolo</user>
+    <comment>- Update to rdma-core v22.1 (bsc#1104280)
+  * No release notes available</comment>
+    <requestid>672084</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>3bcddfc92e1e07876d23fac6afb4c14e</srcmd5>
+    <version>22.1</version>
+    <time>1551686889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680357</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e10376d65cd84d3e6748781830e7b000</srcmd5>
+    <version>23.0</version>
+    <time>1555830208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695955</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>decbf2e4e48bde44b40a6c0c870e3333</srcmd5>
+    <version>23.1</version>
+    <time>1558426898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702609</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,775 @@
+<revisionlist>
+  <revision rev="1" vrev="33">
+    <srcmd5>f300385e3050741ab87665b7029cd980</srcmd5>
+    <version>1.0</version>
+    <time>1220536785</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="36">
+    <srcmd5>591c3856120729f04f03f123f6b15ef3</srcmd5>
+    <version>1.0</version>
+    <time>1220575553</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="42">
+    <srcmd5>a043356e40bd03f57d758e01cacfd94b</srcmd5>
+    <version>1.0</version>
+    <time>1221495141</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="43">
+    <srcmd5>7951fc353b28d0314b6f252d7c8a6965</srcmd5>
+    <version>1.0</version>
+    <time>1222269791</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="44">
+    <srcmd5>716780562848eb83578e11a21727a0ed</srcmd5>
+    <version>1.0</version>
+    <time>1222766731</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="45">
+    <srcmd5>45ca0f1252ed19fd69d6bb0472ea5f1e</srcmd5>
+    <version>1.0</version>
+    <time>1223309099</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="46">
+    <srcmd5>7323487d9605c4be2f868290f6925e41</srcmd5>
+    <version>1.0</version>
+    <time>1223460207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="47">
+    <srcmd5>b2dd95be131c34c2246a5b8fb0cd5b4f</srcmd5>
+    <version>1.0</version>
+    <time>1223909426</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="48">
+    <srcmd5>8894175ee13f774ed9c4cdfc02db954a</srcmd5>
+    <version>1.0</version>
+    <time>1224000924</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="49">
+    <srcmd5>472ea6fa5cf5a5ee552ecc9197b5c15b</srcmd5>
+    <version>1.0</version>
+    <time>1224682297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="50">
+    <srcmd5>8f324bfebaf303931dd58747b9397962</srcmd5>
+    <version>1.0</version>
+    <time>1224693763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="51">
+    <srcmd5>6e2c6661c4a2390186ce1b99f4b3e3bd</srcmd5>
+    <version>1.0</version>
+    <time>1224757698</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="53">
+    <srcmd5>6d99b84642c1199f9df1a2e274884676</srcmd5>
+    <version>1.0</version>
+    <time>1225577695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="55">
+    <srcmd5>83ed387c7af918d2dc1e0dc56af89ccc</srcmd5>
+    <version>1.0</version>
+    <time>1235160372</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="57">
+    <srcmd5>1aef4de394b1a1679c1b5b953f57721a</srcmd5>
+    <version>1.0</version>
+    <time>1235430191</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="58">
+    <srcmd5>c7a88a55aa8eba08ad48a3526845a233</srcmd5>
+    <version>1.0</version>
+    <time>1243001207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="59">
+    <srcmd5>aaf2fcdc174c3b444f2d58ce0acc233c</srcmd5>
+    <version>1.0</version>
+    <time>1243334083</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="60">
+    <srcmd5>3d9c079dcc711adec1b3c1478ccf178e</srcmd5>
+    <version>1.0</version>
+    <time>1244828978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="61">
+    <srcmd5>f90cba47ae3b02b8d28438038d351092</srcmd5>
+    <version>1.0</version>
+    <time>1244902525</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="62">
+    <srcmd5>b2e28153c3224f745f6f8b2683013ae9</srcmd5>
+    <version>1.0</version>
+    <time>1246706874</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="63">
+    <srcmd5>45241a329d218786a208a079f8fa651a</srcmd5>
+    <version>1.0</version>
+    <time>1248881664</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="64">
+    <srcmd5>5af96ef01d10a11d85e27b96d15ee26f</srcmd5>
+    <version>1.0</version>
+    <time>1248951728</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="65">
+    <srcmd5>295d3427ca8d93482da07838a3fcb4f7</srcmd5>
+    <version>1.0</version>
+    <time>1249863548</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="67">
+    <srcmd5>295d3427ca8d93482da07838a3fcb4f7</srcmd5>
+    <version>1.0</version>
+    <time>1249863548</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="68">
+    <srcmd5>363919a82aa6982cfdba15aa2570d03c</srcmd5>
+    <version>1.0</version>
+    <time>1256144560</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/post-build-checks based on submit request 22749 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="26" vrev="69">
+    <srcmd5>14482728f95963ff441332573a84f21b</srcmd5>
+    <version>1.0</version>
+    <time>1258386674</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/post-build-checks based on submit request 24418 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="27" vrev="70">
+    <srcmd5>f3efb5145113d3d584713eb4dfee998d</srcmd5>
+    <version>1.0</version>
+    <time>1263297349</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/post-build-checks based on submit request 29065 from user coolo
+</comment>
+  </revision>
+  <revision rev="28" vrev="71">
+    <srcmd5>52e7fc47b7fa797f2a74718f286a6bbd</srcmd5>
+    <version>1.0</version>
+    <time>1266508091</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/post-build-checks based on submit request 32565 from user oertel
+</comment>
+  </revision>
+  <revision rev="29" vrev="72">
+    <srcmd5>027e06b33dc3de559a6c9aea8fa04f54</srcmd5>
+    <version>1.0</version>
+    <time>1266974697</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/post-build-checks based on submit request 33248 from user oertel
+</comment>
+    <requestid>33248</requestid>
+  </revision>
+  <revision rev="30" vrev="73">
+    <srcmd5>b3651ada26b1fecef5e0938ca75dd2b5</srcmd5>
+    <version>1.0</version>
+    <time>1268925754</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="31" vrev="74">
+    <srcmd5>2c204d7cd2d76b94d288e377a2c692e9</srcmd5>
+    <version>1.0</version>
+    <time>1271191151</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/post-build-checks based on submit request 37252 from user oertel
+</comment>
+    <requestid>37252</requestid>
+  </revision>
+  <revision rev="32" vrev="75">
+    <srcmd5>eac2a31e48c7722dc6bb3e09957643e7</srcmd5>
+    <version>1.0</version>
+    <time>1273241222</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/post-build-checks based on submit request 39595 from user lrupp
+</comment>
+    <requestid>39595</requestid>
+  </revision>
+  <revision rev="33" vrev="76">
+    <srcmd5>9eb24491c526a7c1f0b6313912ce6119</srcmd5>
+    <version>1.0</version>
+    <time>1275437021</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/post-build-checks based on submit request 40939 from user oertel
+</comment>
+    <requestid>40939</requestid>
+  </revision>
+  <revision rev="34" vrev="78">
+    <srcmd5>9eb24491c526a7c1f0b6313912ce6119</srcmd5>
+    <version>1.0</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="35" vrev="79">
+    <srcmd5>9eb24491c526a7c1f0b6313912ce6119</srcmd5>
+    <version>1.0</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="36" vrev="80">
+    <srcmd5>e6024e642f2711f59a59c84226ee3e8d</srcmd5>
+    <version>1.0</version>
+    <time>1288970446</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52186 from user elvigia
+</comment>
+    <requestid>52186</requestid>
+  </revision>
+  <revision rev="37" vrev="81">
+    <srcmd5>f4ba5fa78f9614032c3f6619f9b702d6</srcmd5>
+    <version>1.0</version>
+    <time>1288970452</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52186
+</comment>
+  </revision>
+  <revision rev="38" vrev="82">
+    <srcmd5>d94219ab2279f1a9cf72b71d03e97bac</srcmd5>
+    <version>1.0</version>
+    <time>1289223495</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52388 from user lnussel
+</comment>
+    <requestid>52388</requestid>
+  </revision>
+  <revision rev="39" vrev="83">
+    <srcmd5>b9497bbfc4259aa1d7a7da70dd00544e</srcmd5>
+    <version>1.0</version>
+    <time>1289223502</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52388
+</comment>
+  </revision>
+  <revision rev="40" vrev="84">
+    <srcmd5>e371b550c72c8a5f10be0527ab2d5e8d</srcmd5>
+    <version>1.0</version>
+    <time>1291815401</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55035 from user lnussel
+</comment>
+    <requestid>55035</requestid>
+  </revision>
+  <revision rev="41" vrev="85">
+    <srcmd5>926c26e660eefdfe9248aab6aecabc2f</srcmd5>
+    <version>1.0</version>
+    <time>1291815414</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55035
+</comment>
+  </revision>
+  <revision rev="42" vrev="88">
+    <srcmd5>926c26e660eefdfe9248aab6aecabc2f</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="43" vrev="89">
+    <srcmd5>41e402c0f5067e2fb8ffcf11f889ad16</srcmd5>
+    <version>1.0</version>
+    <time>1300701943</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64584 from user oertel
+</comment>
+    <requestid>64584</requestid>
+  </revision>
+  <revision rev="44" vrev="90">
+    <srcmd5>f5b30a9f9de5e77bc7c34c780628746c</srcmd5>
+    <version>1.0</version>
+    <time>1300701951</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64584
+</comment>
+  </revision>
+  <revision rev="45" vrev="91">
+    <srcmd5>feeb2da325c62c8d7430beca061a4b19</srcmd5>
+    <version>1.0</version>
+    <time>1301039967</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65188 from user licensedigger
+</comment>
+    <requestid>65188</requestid>
+  </revision>
+  <revision rev="46" vrev="92">
+    <srcmd5>5d9592b92da3897a44bfd54e43e66fc6</srcmd5>
+    <version>1.0</version>
+    <time>1301039981</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65188
+</comment>
+  </revision>
+  <revision rev="47" vrev="93">
+    <srcmd5>188522e89ae2bf5241412589dd9eb3cf</srcmd5>
+    <version>1.0</version>
+    <time>1308827729</time>
+    <user>saschpe</user>
+    <comment>- fix strict-aliasing compiler check with gcc 4.6
+
+- re-enable fatal checks in 04-check-filelist as the deadline has
+  passed</comment>
+    <requestid>74352</requestid>
+  </revision>
+  <revision rev="48" vrev="94">
+    <srcmd5>d8ad67d3792626cd9fcc4e1ac5a75f8f</srcmd5>
+    <version>1.0</version>
+    <time>1308827738</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74352
+</comment>
+  </revision>
+  <revision rev="49" vrev="95">
+    <srcmd5>99e59a6560c460463dfa2192bfbfef95</srcmd5>
+    <version>1.0</version>
+    <time>1311674688</time>
+    <user>saschpe</user>
+    <comment>- Fix filelist check for new rpm</comment>
+    <requestid>77035</requestid>
+  </revision>
+  <revision rev="50" vrev="96">
+    <srcmd5>bffc9e0983f5a59da2256d5ea06a111a</srcmd5>
+    <version>1.0</version>
+    <time>1311674706</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77035
+</comment>
+  </revision>
+  <revision rev="51" vrev="98">
+    <srcmd5>bffc9e0983f5a59da2256d5ea06a111a</srcmd5>
+    <version>1.0</version>
+    <time>1319182365</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="52" vrev="99">
+    <srcmd5>81d564ef8426dc92a6d70880bbfcda44</srcmd5>
+    <version>1.0</version>
+    <time>1319207234</time>
+    <user>coolo</user>
+    <comment>- use /.build.packages instead of /usr/src/packages if it exists</comment>
+    <requestid>88827</requestid>
+  </revision>
+  <revision rev="53" vrev="100">
+    <srcmd5>29abb80bee96c9b6140198a6297c4aff</srcmd5>
+    <version>1.0</version>
+    <time>1322292493</time>
+    <user>coolo</user>
+    <comment>- make &quot;packaged twice&quot; fatal if packages do not conflict (forwarded request 93712 from coolo)</comment>
+    <requestid>93713</requestid>
+  </revision>
+  <revision rev="54" vrev="101">
+    <srcmd5>85f6facfe5cf897d6db988c9dcdc66e8</srcmd5>
+    <version>1.0</version>
+    <time>1322483873</time>
+    <user>coolo</user>
+    <comment>- ignore files that are %ghost in both packages</comment>
+    <requestid>93983</requestid>
+  </revision>
+  <revision rev="55" vrev="102">
+    <srcmd5>0b6221bef65e71841a00eeea6bfd4509</srcmd5>
+    <version>1.0</version>
+    <time>1322757591</time>
+    <user>coolo</user>
+    <comment>- fix usage of perl's index()</comment>
+    <requestid>94780</requestid>
+  </revision>
+  <revision rev="56" vrev="103">
+    <srcmd5>95e157f9e1e7b99a3bbcfa395d0ed185</srcmd5>
+    <version>1.0</version>
+    <time>1323193956</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="57" vrev="104">
+    <srcmd5>fe2e26e8d0795fa3513d8e897a309fda</srcmd5>
+    <version>1.0</version>
+    <time>1323265157</time>
+    <user>coolo</user>
+    <comment>- ignore debuginfo and debugsource packages for packaged-twice</comment>
+    <requestid>95699</requestid>
+  </revision>
+  <revision rev="58" vrev="105">
+    <srcmd5>78c04749feb6286554d0a8bccc01962c</srcmd5>
+    <version>1.0</version>
+    <time>1324458187</time>
+    <user>coolo</user>
+    <comment>- ignore empty rpm as in 09-check-packaged-twice as those will be
+  detected by rpmlint rules with a clear message (forwarded request 97166 from WernerFink)</comment>
+    <requestid>97177</requestid>
+  </revision>
+  <revision rev="59" vrev="106">
+    <srcmd5>d4c910ffcc9f5b9205be9da69bc5179f</srcmd5>
+    <version>1.0</version>
+    <time>1338280486</time>
+    <user>coolo</user>
+    <comment>- strim white space in check_gcc_output - this reduces the time
+  to check an openSUSE-images log file (38M mostly whitespace due
+  to zypper output) from several hours to some seconds</comment>
+    <requestid>122570</requestid>
+  </revision>
+  <revision rev="60" vrev="107">
+    <srcmd5>161160ef134dbb73f0cad920feebb84a</srcmd5>
+    <version>1.0</version>
+    <time>1338903272</time>
+    <user>coolo</user>
+    <comment>- ld.so is basically empty nowadays, so put together a config file
+  just to ignore rpaths</comment>
+    <requestid>123447</requestid>
+  </revision>
+  <revision rev="61" vrev="109">
+    <srcmd5>161160ef134dbb73f0cad920feebb84a</srcmd5>
+    <version>1.0</version>
+    <time>1340184013</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="62" vrev="110">
+    <srcmd5>33d710318d285520aae0975029367bc1</srcmd5>
+    <version>1.0</version>
+    <time>1340733789</time>
+    <user>coolo</user>
+    <comment>- use mkpackage from aaa_base, more advanced
+- merge package patches into git
+
+- Update reserved init script names from LANANA.
+  The current authoritative list is currently found here:
+  http://stewbenedict.org/lsb/lanana/lsbreg/init/init.txt 
+
+## also for 12.2 I guess</comment>
+    <requestid>126209</requestid>
+  </revision>
+  <revision rev="63" vrev="111">
+    <srcmd5>62fbd80f3561091d7c60ab996a42c23d</srcmd5>
+    <version>1.0</version>
+    <time>1348148900</time>
+    <user>coolo</user>
+    <comment>- with rpm 4.10, two packages packaging the same directory with
+  different owners is a bug - so catch it early</comment>
+    <requestid>134689</requestid>
+  </revision>
+  <revision rev="64" vrev="112">
+    <srcmd5>1d56bfc513327bcae5fe9d9b14cfc0ff</srcmd5>
+    <version>1.0</version>
+    <time>1348427407</time>
+    <user>coolo</user>
+    <comment>- change the permissions check to use chkstat directly,
+  possibly this check outdated itself though</comment>
+    <requestid>135433</requestid>
+  </revision>
+  <revision rev="65" vrev="113">
+    <srcmd5>dbf5de4bb1f78ecd20b2998a09286c00</srcmd5>
+    <version>1.0</version>
+    <time>1349437645</time>
+    <user>coolo</user>
+    <comment>- merge /proc mount/umounting patch from AJ
+- add _service file to easily recreate the tarball from git</comment>
+    <requestid>137023</requestid>
+  </revision>
+  <revision rev="66" vrev="114">
+    <srcmd5>a6f8b75321b37c7187650f0c92729e29</srcmd5>
+    <version>1.0</version>
+    <time>1351537806</time>
+    <user>coolo</user>
+    <comment>- the scripts call awk, so we need to require it</comment>
+    <requestid>139572</requestid>
+  </revision>
+  <revision rev="67" vrev="115">
+    <srcmd5>1a0dab829622bdd8588692b45ef6ed0b</srcmd5>
+    <version>1.0</version>
+    <time>1352908374</time>
+    <user>coolo</user>
+    <comment>- Remove timestamp prefix in check_gcc_output (thanks to schwab) (forwarded request 141217 from oertel)</comment>
+    <requestid>141227</requestid>
+  </revision>
+  <revision rev="68" vrev="116">
+    <srcmd5>a4d364a6087774362826a4224c64c92c</srcmd5>
+    <version>1.0</version>
+    <time>1355478079</time>
+    <user>coolo</user>
+    <comment>- buildrequire malloc check</comment>
+    <requestid>144963</requestid>
+  </revision>
+  <revision rev="69" vrev="118">
+    <srcmd5>a4d364a6087774362826a4224c64c92c</srcmd5>
+    <version>1.0</version>
+    <time>1359109942</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="70" vrev="120">
+    <srcmd5>a4d364a6087774362826a4224c64c92c</srcmd5>
+    <version>1.0</version>
+    <time>1379664051</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="71" vrev="121">
+    <srcmd5>e83997158030c068d99163c2f48896b7</srcmd5>
+    <version>1.0</version>
+    <time>1381753807</time>
+    <user>scarabeus_factory</user>
+    <comment>- make use of the same findfileconflicts as the one repo-checker uses
+- switched repo location to github (forwarded request 203202 from coolo)</comment>
+    <requestid>203203</requestid>
+  </revision>
+  <revision rev="72" vrev="122">
+    <srcmd5>a47ab3125becc48c6b4d2ddae2e21144</srcmd5>
+    <version>1.0</version>
+    <time>1386613087</time>
+    <user>coolo</user>
+    <comment>- merge rest of quoting fixes from schwab
+
+- fix quoting in libtool deps check (forwarded request 210029 from oertel)</comment>
+    <requestid>210037</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>9842645a1e9507f3e60833d2e33babf6</srcmd5>
+    <version>13.2+git20131209.3ee7eba</version>
+    <time>1389208101</time>
+    <user>coolo</user>
+    <comment>- switch to _service file to avoid silent tar updates
+
+- remove mounting and unmounting of /proc - build handles it</comment>
+    <requestid>213075</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>1256d98003d3394485f0d3898c538564</srcmd5>
+    <version>13.2+git20140109.507e5c2</version>
+    <time>1389285379</time>
+    <user>coolo</user>
+    <comment>- the switching to services undid the mounting fix - without me
+  noticing. Now really pushed to the right git and redid tar</comment>
+    <requestid>213281</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>f0b3844b0a9f5e1340b9c3ad68f84f74</srcmd5>
+    <version>13.2+git20140131.590c07b</version>
+    <time>1391323428</time>
+    <user>coolo</user>
+    <comment>- adapt uname linking in specfile to /usr move (bnc#860600) 
+
+- adapt uname.sh helper to 3.XX.Y kernel versioning scheme
+- obs removes dashes...
+- fix mktar to match service file
+- do not mount and umount /proc in checks - the build script handles that (forwarded request 220485 from oertel)</comment>
+    <requestid>220533</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>eb69bc6555f8b86d648ee2a7738bbe10</srcmd5>
+    <version>13.2+git20140204.5b17faa</version>
+    <time>1391614169</time>
+    <user>coolo</user>
+    <comment>- do not remove libgcc or libstdc++ packages in install-check (forwarded request 220819 from oertel)</comment>
+    <requestid>220937</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>67e19656b3d30467f39b38cd666af63c</srcmd5>
+    <version>13.2+git20140204.5b17faa</version>
+    <time>1393600887</time>
+    <user>scarabeus_factory</user>
+    <comment>- test for existence before trying to modify /etc/sysconfig/clock (forwarded request 223249 from oertel)</comment>
+    <requestid>223259</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>6166246852e01d78cd5f61479bf0f1b1</srcmd5>
+    <version>13.2+git20140318.f24deaf</version>
+    <time>1395212584</time>
+    <user>coolo</user>
+    <comment>- also allow -MM additional to -MD to asssume were only generating deps (forwarded request 226569 from oertel)</comment>
+    <requestid>226594</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>6166246852e01d78cd5f61479bf0f1b1</srcmd5>
+    <version>13.2+git20140318.f24deaf</version>
+    <time>1409302731</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>e706d0eadc62a634cdebe17a15b37a9a</srcmd5>
+    <version>13.2+git20141007.c6e35c3</version>
+    <time>1413382775</time>
+    <user>coolo</user>
+    <comment>- Update to version 13.2+git20141007.c6e35c3:
+  + Fix check for skipping libgcc/libstdc++</comment>
+    <requestid>254619</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>ddb9828a79b46f07298db5943c0adc6d</srcmd5>
+    <version>13.2+git20150324.8993d63</version>
+    <time>1427313913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+git20150324.8993d63:
+  + an empty main() is now allowed in C, use a different function</comment>
+    <requestid>292583</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>eb4b52a5413481f07e684728780995c8</srcmd5>
+    <version>13.2+git20150810.2703d2a</version>
+    <time>1442638312</time>
+    <user>coolo</user>
+    <comment>- Update to version 13.2+git20150810.2703d2a:
+  + Fix quoting of TOPDIR in regex pattern
+  + Skip 03-check-binary-kernel-log for kernel-docs package</comment>
+    <requestid>321582</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>5af871370305c388e089f8b537425fdd</srcmd5>
+    <version>13.2+git20160512.be9650e</version>
+    <time>1463221395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+git20160512.be9650e:
+  * Do not remove packages that had a corresponding -mini installed</comment>
+    <requestid>394978</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>be1e645bfb3249bd14ae1a34563a541d</srcmd5>
+    <version>84.87+git20170411.08a40e3</version>
+    <time>1495883105</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20170411.08a40e3:
+  * use PYTHONHASHSEED=0
+
+- Update to version 84.87+git20170411.50017fe:
+  * use fixed hash seed values for perl+python
+  * Support new buffer overflow format for GCC7.</comment>
+    <requestid>487317</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>636e931c0a27c8da32dab6b62a6bde85</srcmd5>
+    <version>84.87+git20170712.7ededdb</version>
+    <time>1500892131</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510267</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>a22efc1fd311e724e7540cb778bc9966</srcmd5>
+    <version>84.87+git20170929.5b244d1</version>
+    <time>1509035929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20170929.5b244d1:
+  * Fix performance regression in warning match regexp</comment>
+    <requestid>535830</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>b62d867b12a037274d041840545b07b8</srcmd5>
+    <version>84.87+git20171124.8f470bc</version>
+    <time>1512546366</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20171124.8f470bc:
+  * export QT_HASH_SEED
+  * Fix incorrect matching due to greedy regexp (Fixes: #14)
+  * Also treat c++ as a valid compiler
+  * check_gcc_output: drop ansi escape sequences (colors)
+    before checking for warnings</comment>
+    <requestid>545255</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>c5360d0096d2676a3657665f936b0cdb</srcmd5>
+    <version>84.87+git20171221.9eed556</version>
+    <time>1517234046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568221</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>593efd08a4dd3470943136deeed3cfce</srcmd5>
+    <version>84.87+git20180412.b38aed4</version>
+    <time>1523956128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20180412.b38aed4:
+  * Mark test as broken due to GCC 8 and fortification.</comment>
+    <requestid>595800</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>ceea8e02b805f762b376890733ed70fe</srcmd5>
+    <version>84.88+git20180809.3be1b09</version>
+    <time>1535440711</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.88+git20180809.3be1b09:
+  * Warnings for core files, no errors yet
+  * QT_HASH_SEED has to be 0</comment>
+    <requestid>628432</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>d8642f27591803cdb33848afb6a0a37f</srcmd5>
+    <version>84.88+git20180920.ef3d8cb</version>
+    <time>1538377348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.88+git20180920.ef3d8cb:
+  * 50-check-kernel-build-id
+    - add archs i686 ppc ppc64 s390 armv6l armv7l
+
+- Update to version 84.88+git20180920.51eb861:
+  * 50-check-kernel-build-id
+    - regroup checks for image and debuginfo
+    - make arch list a little more robust
+    - Handle i586. Also improve error handling when arch not found.
+    - Change err() to return 0. Only return 1 if we successfully
+      compared the id's and there was a discrepancy.
+    - change file mode to 755 for 50-check-kernel-build-id to match
+      all other checks
+  * make all OBS tex pdf builds reproducible by exporting
+    FORCE_SOURCE_DATE as 1
+
+- Update to version 84.88+git20180917.23b80ae:
+  * check for -fstack-clash-protection instead of -fmessage-length,
+    as that one will be removed from optflags
+  * Add kernel-build-id consistency check</comment>
+    <requestid>636914</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>26cff77eec345f30af7fdb14039b949f</srcmd5>
+    <version>84.88+git20181015.ceb5c96</version>
+    <time>1540818800</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.88+git20181015.ceb5c96:
+  * Add suse-ignored-rpaths.conf (bsc#1109470)</comment>
+    <requestid>642056</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>b7c823e809b9c2e87e0227a165d98185</srcmd5>
+    <version>84.88+git20190702.429d0e0</version>
+    <time>1562591374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.88+git20190702.429d0e0:
+  * Completly don't use ghosts like files
+  * Ignore ghosts
+
+- Disable LTO as some warnings are emitted late and
+  disappear with usage of -c (boo#1138834).</comment>
+    <requestid>713060</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>b6522593a9c068026da1021d47666dbb</srcmd5>
+    <version>84.88+git20190716.5a0e034</version>
+    <time>1564413863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715664</requestid>
+  </revision>
+</revisionlist>

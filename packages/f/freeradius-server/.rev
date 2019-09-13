@@ -1,0 +1,752 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>fab44be0f4964df696d5d0f6c7440ddb</srcmd5>
+    <version>2.0.1</version>
+    <time>1201836803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>69b7f1956f7a3c7ef865857875657e72</srcmd5>
+    <version>2.0.3</version>
+    <time>1206067067</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="15">
+    <srcmd5>8ff8889704af2b4fdcfd48959576f734</srcmd5>
+    <version>2.0.3</version>
+    <time>1210029449</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="20">
+    <srcmd5>b1c79d71d64d070b45ceb938ab741dc1</srcmd5>
+    <version>2.0.3</version>
+    <time>1210938528</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d6de813a1027697492c9573888d82080</srcmd5>
+    <version>2.0.5</version>
+    <time>1216930673</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="19">
+    <srcmd5>815e70a035905c4c3639cb60233e091a</srcmd5>
+    <version>2.0.5</version>
+    <time>1219797810</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="20">
+    <srcmd5>03a4c116307102951ffc68bffe66cb96</srcmd5>
+    <version>2.0.5</version>
+    <time>1219881805</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5514f29fb0f2df8e29d2c3b420a17cdd</srcmd5>
+    <version>2.1.0</version>
+    <time>1220990978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>c1f75655280c3deb3a3ed1d404dcf671</srcmd5>
+    <version>2.1.0</version>
+    <time>1221475096</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>488c5c32f5136fd7f5eb275b92234d01</srcmd5>
+    <version>2.1.1</version>
+    <time>1223547510</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>48b13e696d84ee987425b2f85aca9ef2</srcmd5>
+    <version>2.1.1</version>
+    <time>1231515591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>82a4322716ee9b93406d9d281a5fa907</srcmd5>
+    <version>2.1.1</version>
+    <time>1231521930</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>54c7051bf3572de51d0ebe7ffa200459</srcmd5>
+    <version>2.1.1</version>
+    <time>1233957947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c16d8bcf3635e2eec17b1a0da7521484</srcmd5>
+    <version>2.1.3</version>
+    <time>1234288154</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b5dc8d2585086d1ae8602003d1e2c0f9</srcmd5>
+    <version>2.1.3</version>
+    <time>1239101717</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3cc00cc2cf6dafa6aa7930415ec638ef</srcmd5>
+    <version>2.1.6</version>
+    <time>1243954818</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>757bce33f6e829a1727d6e48c1eb8311</srcmd5>
+    <version>2.1.6</version>
+    <time>1245469806</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>757bce33f6e829a1727d6e48c1eb8311</srcmd5>
+    <version>2.1.6</version>
+    <time>1245469806</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>8dda0234e02be8fe59dd1a2d59fb3440</srcmd5>
+    <version>2.1.6</version>
+    <time>1256076970</time>
+    <user>autobuild</user>
+    <comment>Copy from network/freeradius-server based on submit request 22431 from user puzel
+</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>9e78111f82b0f5e11e9843f4903f5b7a</srcmd5>
+    <version>2.1.6</version>
+    <time>1256211014</time>
+    <user>autobuild</user>
+    <comment>Copy from network/freeradius-server based on submit request 22845 from user puzel
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d32639ccdb9911ae7a8688f5b930de21</srcmd5>
+    <version>2.1.7</version>
+    <time>1261144224</time>
+    <user>autobuild</user>
+    <comment>Copy from network/freeradius-server based on submit request 26986 from user puzel
+</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>344b01531786ad5dbcee6f71b093e21d</srcmd5>
+    <version>2.1.8</version>
+    <time>1268267928</time>
+    <user>autobuild</user>
+    <comment>Copy from network/freeradius-server based on submit request 34479 from user puzel
+</comment>
+    <requestid>34479</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>4baca0f83624b58eff9bf7a8e75ec9c0</srcmd5>
+    <version>2.1.8</version>
+    <time>1268354959</time>
+    <user>autobuild</user>
+    <comment>Copy from network/freeradius-server based on submit request 34615 from user puzel
+</comment>
+    <requestid>34615</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>d25d60be6c3a5074bb44d0d9e3a0c071</srcmd5>
+    <version>2.1.8</version>
+    <time>1268923586</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>8b883e065a50c928ff048cae116c0bd2</srcmd5>
+    <version>2.1.8</version>
+    <time>1272922226</time>
+    <user>autobuild</user>
+    <comment>Copy from network/freeradius-server based on submit request 39308 from user puzel
+</comment>
+    <requestid>39308</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7feef77b24576327683dd017c436bba8</srcmd5>
+    <version>2.1.9</version>
+    <time>1277194217</time>
+    <user>autobuild</user>
+    <comment>Copy from network/freeradius-server based on submit request 41852 from user puzel
+</comment>
+    <requestid>41852</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>7feef77b24576327683dd017c436bba8</srcmd5>
+    <version>2.1.9</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>7feef77b24576327683dd017c436bba8</srcmd5>
+    <version>2.1.9</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>0811988f9c36d1c35faa262a1d315293</srcmd5>
+    <version>2.1.9</version>
+    <time>1284768363</time>
+    <user>autobuild</user>
+    <comment>Copy from network/freeradius-server based on submit request 48358 from user puzel
+</comment>
+    <requestid>48358</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8559d15373dc6940a615ca854196206c</srcmd5>
+    <version>2.1.10</version>
+    <time>1286401849</time>
+    <user>autobuild</user>
+    <comment>Copy from network/freeradius-server based on submit request 49719 from user puzel
+</comment>
+    <requestid>49719</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>8559d15373dc6940a615ca854196206c</srcmd5>
+    <version>2.1.10</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>7de41dbb291d20f5d97642971b8b1f55</srcmd5>
+    <version>2.1.10</version>
+    <time>1306488925</time>
+    <user>saschpe</user>
+    <comment>- Supress timestamps in binaries, breaks build-compare. (forwarded request 71198 from elvigia)</comment>
+    <requestid>71527</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>6687fa63ab011bdb070d0d45fc12c79b</srcmd5>
+    <version>2.1.10</version>
+    <time>1306488947</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71527
+</comment>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>19456184fa27b4eb99a2f3c81a5bb9b7</srcmd5>
+    <version>2.1.11</version>
+    <time>1309166181</time>
+    <user>saschpe</user>
+    <comment>update to 2.1.11</comment>
+    <requestid>74449</requestid>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>067902cd69bff994a0ec41d979c22237</srcmd5>
+    <version>2.1.11</version>
+    <time>1309166194</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74449
+</comment>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>be3ffa25b55270cdc14fcf8a07e629a2</srcmd5>
+    <version>2.1.11</version>
+    <time>1317744600</time>
+    <user>oertel</user>
+    <comment>- fixed interaction with eDirectory (bnc#720620) (forwarded request 85107 from vitezslav_cizek)</comment>
+    <requestid>86239</requestid>
+  </revision>
+  <revision rev="37" vrev="9">
+    <srcmd5>be3ffa25b55270cdc14fcf8a07e629a2</srcmd5>
+    <version>2.1.11</version>
+    <time>1319181884</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3490d33fbe3d1e7d302106b761285da1</srcmd5>
+    <version>2.1.12</version>
+    <time>1319206089</time>
+    <user>coolo</user>
+    <comment>- update to 2.1.12
+    Feature improvements
+	* Updates to dictionary.erx, dictionary.siemens, dictionary.starent,
+	  dictionary.starent.vsa1, dictionary.zyxel, added dictionary.symbol
+	* Added support for PCRE from Phil Mayers
+	* Configurable file permission in rlm_linelog
+	* Added &quot;relaxed&quot; option to rlm_attr_filter.  This copies attributes
+	  if at least one match occurred.
+	* Added documentation on dynamic clients.
+	  See raddb/modules/dynamic_clients.
+	* Added support for elliptical curve cryptography.
+	  See ecdh_curve in raddb/eap.conf.
+	* Added support for 802.1X MIBs in checkrad
+	* Added support for %{rand:...}, which generates a uniformly
+	  distributed number between 0 and the number you specify.
+	* Created &quot;man&quot; pages for all installed commands, and documented
+	  options for all commands.  Patch from John Dennis.
+	* Allow radsniff to decode encrypted VSAs and CoA packets.
+	  Patch from Bjorn Mork.
+	* Always send Message-Authenticator in radtest. Patch from John Dennis.
+	  radclient continues to be more flexible.
+	* Updated Oracle schema and queries
+	* Added SecurID module.  See src/modules/rlm_securid/README</comment>
+    <requestid>88732</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>161d1886bbd9a08712cb1255fc6903ef</srcmd5>
+    <version>2.1.12</version>
+    <time>1323191408</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>a3ea4f1d2d51888ba1b318449fa56897</srcmd5>
+    <version>2.1.12</version>
+    <time>1339363172</time>
+    <user>coolo</user>
+    <comment>- Use the new 'su' logrotate option (bnc#677335)
+
+- Enable the same CFLAGS as for other hardware</comment>
+    <requestid>124362</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>a3ea4f1d2d51888ba1b318449fa56897</srcmd5>
+    <version>2.1.12</version>
+    <time>1340183338</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>bda7e46a1494fdef8bfd4c7639e5fc8f</srcmd5>
+    <version>2.2.0</version>
+    <time>1347487323</time>
+    <user>namtrac</user>
+    <comment>- update to 2.2.0 
+  - see /usr/share/doc/packages/freeradius-server/ChangeLog
+    for complete list of changes in this release
+  - fixes CVE-2012-3547 (bnc#777834)
+  - dropped freeradius-server-2.1.6-overflow.patch (upstream)
+  - dropped freeradius-server-sha1-default.patch (upstream)
+  - refreshed freeradius-server-fix-cert-bootstrap.patch (forwarded request 133519 from vitezslav_cizek)</comment>
+    <requestid>133604</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>c73e908ca767d16a1a3735c6e5bea6b8</srcmd5>
+    <version>2.2.0</version>
+    <time>1349944807</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137506</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>c73e908ca767d16a1a3735c6e5bea6b8</srcmd5>
+    <version>2.2.0</version>
+    <time>1359108889</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>59e96bafa9bf6037f553cd07a17c2574</srcmd5>
+    <version>2.2.0</version>
+    <time>1363340068</time>
+    <user>coolo</user>
+    <comment>- fixed a bug in the logrotate script (bnc#797292) (forwarded request 159427 from vitezslav_cizek)</comment>
+    <requestid>159505</requestid>
+  </revision>
+  <revision rev="46" vrev="6">
+    <srcmd5>a9d1b6b6168dd4d5d9a4b9ab41636e95</srcmd5>
+    <version>2.2.0</version>
+    <time>1378550115</time>
+    <user>scarabeus_factory</user>
+    <comment>-&gt;</comment>
+    <requestid>197517</requestid>
+  </revision>
+  <revision rev="47" vrev="8">
+    <srcmd5>a9d1b6b6168dd4d5d9a4b9ab41636e95</srcmd5>
+    <version>2.2.0</version>
+    <time>1379662365</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8a5763d1861459ffb8dc89cea4f27d0d</srcmd5>
+    <version>3.0.0</version>
+    <time>1382446278</time>
+    <user>scarabeus_factory</user>
+    <comment>- don't build with experimental modules
+- fix packaging bugs:
+  * install init scripts only on &lt;= 11.4
+  * install systemd unit
+  * add %defattr for submodules (forwarded request 204232 from vitezslav_cizek)</comment>
+    <requestid>204250</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>021e48e4daedb31665141e0bbc4075a0</srcmd5>
+    <version>3.0.1</version>
+    <time>1392112508</time>
+    <user>coolo</user>
+    <comment>- update to 3.0.1
+    Feature improvements
+    * Add &quot;timeout&quot; to exec, and &quot;ntlm_auth_timeout&quot; to mschap.
+      So that run-away child processes are caught earlier.
+    * Allow TLS clients to use &quot;proto = tls&quot;, in which case
+      TLS is required.  The shared secret is then set to &quot;radsec&quot;.
+    * More documentation in the tls virtual server.
+    * Add &quot;date&quot; module for date formatting.
+      See raddb/mods-available/date.
+    * Added unit test suite for internal server functionality
+    * When loading &quot;update&quot; sections, check if the RHS is a literal
+      value.  If so, syntax check it immediately.
+    * Update LDAP module documentation and functionality.
+      The generic attribute can now update lists.
+    * Updated dictionary.extreme.
+    * Update sqlippool to do clears as a separate transaction,
+      and at most once per second.  This should help MySQL.
+    * Respect control:Response-Packet-Type for all types of
+      requests.
+    * Add support for SSL encryption to the MySQL driver.
+    * Allow arbitrary connection parameters to be used with the
+      PostgreSQL driver.
+    * Changes to the OpenLDAP schema to fully expose functionality
+      of the new LDAP module.
+    * Update debian packaging to include a freeradius-config
+      package. This package may be provided as a site local
+      package to avoid fighting with the preinstalled config
+      files.
+    Bug fixes
+    * Use correct field for ARP setting in DHCP.</comment>
+    <requestid>221398</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>3fd1019500ab2256440c568b8de189ab</srcmd5>
+    <version>3.0.1</version>
+    <time>1393935762</time>
+    <user>coolo</user>
+    <comment>- fix for CVE-2014-2015 (bnc#864576)
+  * denial of service in rlm_pap hash processing
+  * added freeradius-server-CVE-2014-2015.patch
+
+- remove the old 3.0.0 sources (forwarded request 224192 from vitezslav_cizek)</comment>
+    <requestid>224384</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>384415d85f993f906ef244d0d9059c49</srcmd5>
+    <version>3.0.3</version>
+    <time>1400681950</time>
+    <user>coolo</user>
+    <comment>- update to 3.0.3
+	Many bugfixes
+	Feature improvements
+	* Everything now builds with no warnings from the C compiler,
+	  clang static analyzer, or cppcheck.
+	* rlm_ldap now supports defining the LDAP attribute name via
+	  backticked expansion (i.e. shell command) in
+	  RADIUS &lt;-&gt; LDAP mappings.
+	* rlm_ldap now supports older style generic attributes.
+	* dynamic expansions (e.g. &quot;%{expr:1 + 2}&quot; are now parsed
+	  when the server starts.  Syntax errors in the strings
+	  are caught, and a descriptive error is printed.
+	* Static regular expressions (e.g. /a*b/) are now parsed
+	  when the server starts.  Syntax errors in the strings
+	  are caught, and a descriptive error is printed.
+	* dynamic expansions are cached after being parsed.  They are
+	  no longer re-parsed at run-time for every request.
+	* regular expressions are now parsed and cached when the server
+	  starts.
+	* Added the %{rest:} expansion to rlm_rest, which will send
+	  a GET request to the URL passed as the format string.
+	  Any body text will be written to the expansion buffer.
+	* rlm_rest now available as a debian package.
+	* When an 'if' condition statically evaluates to true/false,
+	  unlang does more static optimization.  For examples, see
+	  src/tests/keywords/if-skip
+	* All modules are marked as safe for '-C', which lets the
+	  dynamic expansion checks work in more situations.
+	* Added 'none' and 'custom' rlm_rest body types. 'custom'
+	  allows sending of arbitrary expanded text and content-type (forwarded request 234679 from vitezslav_cizek)</comment>
+    <requestid>234720</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>a208bcaa3a0cfd43c9bb538b607bc8a4</srcmd5>
+    <version>3.0.3</version>
+    <time>1407158082</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243572</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>a208bcaa3a0cfd43c9bb538b607bc8a4</srcmd5>
+    <version>3.0.3</version>
+    <time>1409300901</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>240bb8c5f06c1f412b223e81c0605c69</srcmd5>
+    <version>3.0.5</version>
+    <time>1419331840</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266133</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e15e5c9f05b7dcbda8346cbf12213da6</srcmd5>
+    <version>3.0.6</version>
+    <time>1421333930</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not disable as-needed build
+- Remove the with_sysconfig switch and just stick with versions
+
+- update to 3.0.6
+  - fixes a segmentation fault in PEAP module (bnc#912588)
+  Feature improvements:
+  * radmin / raddebug conditional errors are printed to the output, instead of being discarded.
+  * raddebug will exit if condition set with -c was invalid.
+  * radmin auto-reconnects if the connection to the server has gone away.
+  * rlm_cache now has submodule support. See raddb/mods-available/cache
+  * New memcached driver for rlm_cache. See raddb/mods-available/cache
+  * Add support for &amp;Attribute-Name[*] in conditions. See &quot;man unlang&quot; for details.
+  * Add &amp;Attribute-Name[n] which gets the last instance of an attribute e.g. Module-Failure-Message[n].
+  * Allow for redundant string expansions. See the &quot;instantiate&quot; section of radiusd.conf.
+  * When checking IP addresses in conditions, make the right side be parsed as an IP prefix.
+  * Support JIT compilation of compiled regular expressions when built with libpcre.
+  * Support named capture groups with &quot;%{regex:&lt;name&gt;}&quot; when built with libpcre.
+  * Increase regular expression capture groups from 8 to 32.
+  * Emit error markers for badly formed regular expressions.
+  * Allow 'm' flag to enable multiline mode in regular expressions.
+  * Support limited implicit attribute conversion in update sections.
+  * Support casting between IPv6 and IPv4 where the IPv6 address has the v4/v6 mapping prefix (::ffff:).</comment>
+    <requestid>281294</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>cabc0ea9136246996d561e1432d1810c</srcmd5>
+    <version>3.0.8</version>
+    <time>1429948396</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298812</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>bc4d4b0ebb240784f7d8d338686ef3ce</srcmd5>
+    <version>3.0.9</version>
+    <time>1437059724</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315642</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>515ae5b4790fcc83f316db3b988b2421</srcmd5>
+    <version>3.0.9</version>
+    <time>1439190963</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix boo#912714: freeradius can't use ntlm_auth
+  * Create winbind group
+  * Add radiusd to winbind group</comment>
+    <requestid>321226</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>deefd728f47190c031d2d74e30060fe6</srcmd5>
+    <version>3.0.10</version>
+    <time>1444130874</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336653</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>c3b50331fc4f08cb482a5d90c4d72e19</srcmd5>
+    <version>3.0.11</version>
+    <time>1453998205</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355853</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>fbd024701686595527ddb4ace30f5839</srcmd5>
+    <version>3.0.11</version>
+    <time>1473349134</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425081</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>36af5cb9aebf7984250ec36a66f12d05</srcmd5>
+    <version>3.0.12</version>
+    <time>1475359799</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>432174</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>c18b5e65813cd5b6e1b84778192b658a</srcmd5>
+    <version>3.0.12</version>
+    <time>1484132593</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448419</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>0c07236ac663358e7f4d9c5a9e5856e0</srcmd5>
+    <version>3.0.12</version>
+    <time>1486635379</time>
+    <user>dimstar_suse</user>
+    <comment>- Merge changes from SLE to openSUSE (FATE#322416):
+  * freeradius-server-radclient-init-error-buffer.patch - make sure
+    we initialize error buffer. bsc#911886: radclient error free()
+    invalid pointer
+  * freeradius-server-opensslversion.patch: remove OpenSSL version
+    check and assume we know what we are doing. (bnc#1013311)
+  * merge .changes file, mostly.
+- do not attempt to detect &quot;vulnerable&quot; OpenSSL versions. SUSE
+  security fixes do not necessarily bump version numbers as
+  does upstream OpenSSL (bnc#1021375)
+- do not generate certificates in %post. End-user needs to do this
+  manually.
+- keep FreeTDS disabled on SLE12 - we never shipped it enabled
+- require OpenSSL 1.0+
+- use pkgconfig(systemd) instead of plain systemd as BuildRequires
+- don't list manual pages as %doc
+
+- Add upstream keyring
+- 2 new modules: rlm_sql_freetds and rlm_eap_fast</comment>
+    <requestid>455207</requestid>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>c55d2badc1925d2659ada33ec8e12d83</srcmd5>
+    <version>3.0.12</version>
+    <time>1488479234</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459264</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>393b896c32fe31b7be863fbe7c81bbf1</srcmd5>
+    <version>3.0.13</version>
+    <time>1489345443</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477789</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>2f5ab161660c198377e2cd3b59b77333</srcmd5>
+    <version>3.0.13</version>
+    <time>1490026156</time>
+    <user>dimstar_suse</user>
+    <comment>this is needed so package is identical to SP3 version</comment>
+    <requestid>480000</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>5b7145b857b268664bfd8541d4457f1d</srcmd5>
+    <version>3.0.14</version>
+    <time>1496225989</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499629</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>0737513b97c82886e75ad8bed0a0230d</srcmd5>
+    <version>3.0.15</version>
+    <time>1500456141</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511084</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>7690c4d460e12027f1177a009c591f67</srcmd5>
+    <version>3.0.15</version>
+    <time>1503926239</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518837</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>c902eee0ca8d1b9dcb8c247242c43498</srcmd5>
+    <version>3.0.15</version>
+    <time>1505920330</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix permissions of radiusd.service (bnc#1053654)</comment>
+    <requestid>527291</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>1fc44c90a92fb0dc32eac19139b321e5</srcmd5>
+    <version>3.0.16</version>
+    <time>1516634233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564437</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>e8870a8fd9d7faa9c38de6beb5abda7c</srcmd5>
+    <version>3.0.17</version>
+    <time>1524238163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597709</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>1f9a1ca2d657ffadaeb6b6b6f8b52a48</srcmd5>
+    <version>3.0.17</version>
+    <time>1530087762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619197</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>53e69d386865a6e366e90278b388c64d</srcmd5>
+    <version>3.0.18</version>
+    <time>1551386633</time>
+    <user>coolo</user>
+    <comment>- reformat changelog mostly by wrapping lines
+- add missing bug numbers for security fixes
+
+- update to 3.0.18
+* cleanup_delay can now be 30 seconds. This helps with proxies that have packet loss.
+* Do-Not-Respond policies can now be set in the &quot;post-auth&quot; section.
+* Encode / Decode ADSL Forum DHCP options.
+* Fix module ordering issues. e.g. when &quot;sqlippool&quot; needs &quot;sql&quot;.
+  See the &quot;instantiate&quot; section of radiusd.conf.
+* Add Big Switch dictionary. Fixes #2252.
+* Add sql_session_start policy (raddb/policy.d/accounting)
+  This minimizes race conditions when using Simultaneous-Use (#2257).
+* For rlm_perl, all variables are now tainted by default.
+  See raddb/mods-available/perl, and the &quot;perl_flags&quot; configuration item.
+  This change should only affect people who are using variables in
+  insecure ways.
+* Allow &quot;sqlcounter&quot; module to be listed in &quot;post-auth&quot;.
+* Add support for IPv6 attributes in SQL. Fixes #2280
+* The server is better at handling fail-over for outbound RadSec and
+  TCP connections. Fixes #2284.
+* The server is now more aggressive about retrying failed outbound
+  RadSec and TCP connections. Fixes #2284.
+* Add TLS-Session-Version and TLS-Session-Cipher-Suite to the &quot;session_state&quot; list.
+* Add expansion for Radsec connections. &quot;%{listen:TLS-...}&quot; for
+  TLS-Client-Cert-* and TLS-Cert-* attributes.
+* Add notes on running &quot;ldapsearch&quot; using the parameters from the LDAP module.
+* &quot;ipaddr&quot; attributes can now be cast to &quot;integer&quot; type attributes
+  in an &quot;update&quot; section.
+* Move main thread queue to using atomic queues. This should help
+  with contention in high load scenarios.</comment>
+    <requestid>679792</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>f7c3ed6c1f773692d2d81202ca275bfd</srcmd5>
+    <version>3.0.19</version>
+    <time>1554978016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693123</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>d68f6fdebbb5e29cd3e3af01616c7210</srcmd5>
+    <version>3.0.19</version>
+    <time>1559029393</time>
+    <user>dimstar_suse</user>
+    <comment>Only reference updates. No changes.</comment>
+    <requestid>705679</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>c0db3e276b1ea30b1daeb8463b2d4c4a</srcmd5>
+    <version>3.0.19</version>
+    <time>1559581097</time>
+    <user>dimstar_suse</user>
+    <comment>backport missing change from SLE
+
+- install license as %license instead of documentation</comment>
+    <requestid>707189</requestid>
+  </revision>
+</revisionlist>

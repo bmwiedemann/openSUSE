@@ -1,0 +1,5 @@
+<package name="python-delegator.py" project="openSUSE:Factory">
+  <title></title>
+  <description>Subprocesses for Humans 2.0</description>
+  <devel project="devel:languages:python" package="python-delegator.py"/>
+</package>

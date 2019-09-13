@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f61237f1f10b1801829d34a6fc422573</srcmd5>
+    <version>0.0+git20190806.343b886</version>
+    <time>1566291576</time>
+    <user>dimstar_suse</user>
+    <comment>Dracut / GRUB scripts for the Ignition package - these scripts &quot;enable&quot; Ignition, e.g. to configure an existing image on first boot.
+
+Required to implement boo#1138725.</comment>
+    <requestid>724628</requestid>
+  </revision>
+</revisionlist>

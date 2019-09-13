@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>31018062b3662357f12130985d30218b</srcmd5>
+    <version>0.5.0</version>
+    <time>1526578407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610100</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ccccd931d1b7ae9ae7acd219051a83ae</srcmd5>
+    <version>0.7.0</version>
+    <time>1545648481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660759</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d531a6de0e4172ebd893b395c890e988</srcmd5>
+    <version>0.7.0</version>
+    <time>1564994165</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix_pandas_0_25.patch
+  Fix for building with pandas 0.25.0
+  See: gh#altair-viz/vega_datasets#24
+  From: gh#altair-viz/vega_datasets#25</comment>
+    <requestid>720124</requestid>
+  </revision>
+</revisionlist>

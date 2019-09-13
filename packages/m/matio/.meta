@@ -1,0 +1,5 @@
+<package name="matio" project="openSUSE:Factory">
+  <title>library for reading and writing MATLAB MAT files</title>
+  <description>matio is an open-source library for reading and writing MATLAB MAT files. This library is designed for use by programs/libraries that do not have access or do not want to rely on MATLAB's shared library.</description>
+  <devel project="science" package="matio"/>
+</package>

@@ -1,0 +1,12 @@
+<package name="perl-Test-UseAllModules" project="openSUSE:Factory">
+  <title>Do use_ok() for all the MANIFESTed modules</title>
+  <description>I'm sick of writing 00_load.t (or something like that) that'll do use_ok()
+for every module I write. I'm sicker of updating 00_load.t when I add
+another file to the distro. This module reads MANIFEST to find modules to
+be tested and does use_ok() for each of them. Now all you have to do is
+update MANIFEST. You don't have to modify the test any more (hopefully).
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Test-UseAllModules"/>
+  <url>http://search.cpan.org/dist/Test-UseAllModules</url>
+</package>

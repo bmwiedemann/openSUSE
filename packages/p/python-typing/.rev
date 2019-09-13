@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c14af65d32c1df42364d2c7ba1f82304</srcmd5>
+    <version>3.6.1</version>
+    <time>1493369215</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by a bunch of openSUSE:Factory packages, like python-M2Crypto</comment>
+    <requestid>490037</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a11f8b13d826a476db2ade90787f982b</srcmd5>
+    <version>3.6.1</version>
+    <time>1500669414</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509136</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d7941a9e647b89dbb699070ecaf1914b</srcmd5>
+    <version>3.6.2</version>
+    <time>1505331473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523754</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fda36e318fce9384150cd0f338140d9d</srcmd5>
+    <version>3.6.4</version>
+    <time>1519218462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577964</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>62fe18323505014e3bc8f1650f8f6ed9</srcmd5>
+    <version>3.6.4</version>
+    <time>1527276834</time>
+    <user>dimstar_suse</user>
+    <comment>- Actually skip the py3 as it caused bit of fuzz but reduce the
+  code still
+
+- Do not bother reducing the stuff to not build on 3.6, it is
+  just providing noop package which does not hurt anything and
+  saves 10 magic lines in spec</comment>
+    <requestid>611338</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f90bef9df70d6896a1c020488c29fa0c</srcmd5>
+    <version>3.6.4</version>
+    <time>1530993269</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for older distros again</comment>
+    <requestid>620616</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>3386c51a237bf614b3617c52ccfde1c4</srcmd5>
+    <version>3.6.4</version>
+    <time>1545866942</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659729</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>811a4671ff0db684474a56d2eca09a63</srcmd5>
+    <version>3.6.6</version>
+    <time>1551687131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680763</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>96ea7b284f8e4c3eed2012833b4cc1b5</srcmd5>
+    <version>3.7.4</version>
+    <time>1564484820</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in pytest, causes circular deps
+
+- Update to 3.7.4:
+ - No upstream changelog available.
+- Use pytest for tests because of an upstream bug.</comment>
+    <requestid>719533</requestid>
+  </revision>
+</revisionlist>

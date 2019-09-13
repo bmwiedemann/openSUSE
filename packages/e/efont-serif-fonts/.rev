@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="668">
+    <srcmd5>06777d5236d18b6e1459999221bc6a50</srcmd5>
+    <version>20010312</version>
+    <time>1336472780</time>
+    <user>coolo</user>
+    <comment>Moving M17N/efont-serif-ttf to M17N:fonts/efont-serif-fonts.</comment>
+    <requestid>116403</requestid>
+  </revision>
+  <revision rev="2" vrev="669">
+    <srcmd5>c62ce88d45e67784b80251ff2063dabf</srcmd5>
+    <version>20010312</version>
+    <time>1338016969</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122123</requestid>
+  </revision>
+  <revision rev="3" vrev="671">
+    <srcmd5>c62ce88d45e67784b80251ff2063dabf</srcmd5>
+    <version>20010312</version>
+    <time>1340183300</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="672">
+    <srcmd5>808c806820e73933e308a2bd2ee677be</srcmd5>
+    <version>20010312</version>
+    <time>1347617754</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133927</requestid>
+  </revision>
+  <revision rev="5" vrev="674">
+    <srcmd5>808c806820e73933e308a2bd2ee677be</srcmd5>
+    <version>20010312</version>
+    <time>1359108841</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="676">
+    <srcmd5>808c806820e73933e308a2bd2ee677be</srcmd5>
+    <version>20010312</version>
+    <time>1379662281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="678">
+    <srcmd5>808c806820e73933e308a2bd2ee677be</srcmd5>
+    <version>20010312</version>
+    <time>1409300817</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

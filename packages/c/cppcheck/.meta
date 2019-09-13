@@ -1,0 +1,22 @@
+<package name="cppcheck" project="openSUSE:Factory">
+  <title>A tool for static C/C++ code analysis</title>
+  <description>This program tries to detect bugs that your C/C++ compiler don't see. Cppcheck is versatile. You can check non-standard code that includes various compiler extensions, inline assembly code, etc. Checking covers for example these errors:
+
+ * Out of bounds
+ * Uninitialized member variable 'classname::varname'
+ * Using 'memfunc' on class
+ * Using 'memfunc' on struct that contains a 'std::classname'
+ * Class Base which is inherited by class Derived does not have a virtual destructor
+ * Memory leak: varname
+ * Resource leak: varname
+ * Deallocating a deallocated pointer: varname
+ * Using 'varname' after it is deallocated / released
+ * Invalid radix in call to strtol or strtoul. Must be 0 or 2-36
+ * Overlapping data buffer varname
+ * Unsigned division. The result will be wrong.
+ * Unusual pointer arithmetic
+
+See http://cppcheck.wiki.sourceforge.net/ for more details.</description>
+  <devel project="devel:tools" package="cppcheck"/>
+  <url>http://cppcheck.wiki.sourceforge.net/</url>
+</package>

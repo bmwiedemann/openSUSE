@@ -1,0 +1,5 @@
+<package name="neomutt" project="openSUSE:Factory">
+  <title>neomutt</title>
+  <description>The NeoMutt Project is hoping to kick-start development on the Mutt project.</description>
+  <devel project="server:mail" package="neomutt"/>
+</package>

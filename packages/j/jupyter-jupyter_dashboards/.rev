@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8580f7e80499fb930337b4f5cdf953eb</srcmd5>
+    <version>0.7.0</version>
+    <time>1558515449</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename to to match jupyter package naming guidelines.
+- Avoid bashim in scriptlet
+- Use || true syntax instead of exit 0
+- Use %license tag
+- Add missing certifi dependency
+- initial version
+</comment>
+    <requestid>698386</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>552cc5bf55ddd51ed41b347b39def268</srcmd5>
+    <version>0.2.0</version>
+    <time>1541152418</time>
+    <user>dimstar_suse</user>
+    <comment>high-level cross-platform audio toolkit for Python</comment>
+    <requestid>645964</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>54ff6fb0ff3f9e569f356ba7f565db9d</srcmd5>
+    <version>0.2.0</version>
+    <time>1542281956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647236</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8396ac60e08336afed3c5a46151d3342</srcmd5>
+    <version>0.2.2</version>
+    <time>1546946866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662730</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f85a1238e79584e5e26e7016fe91688f</srcmd5>
+    <version>0.3.0</version>
+    <time>1554189683</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to source release
+- Update to 0.3.0:
+  * Various docu updates
+  * Support python 3.5</comment>
+    <requestid>689375</requestid>
+  </revision>
+</revisionlist>

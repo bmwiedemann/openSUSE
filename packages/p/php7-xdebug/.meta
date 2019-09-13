@@ -1,0 +1,6 @@
+<package name="php7-xdebug" project="openSUSE:Factory">
+  <title>Extended PHP debugger</title>
+  <description>The Xdebug extension helps you debugging your script by providing a lot of valuable debug information.</description>
+  <devel project="server:php:extensions:php7" package="php7-xdebug"/>
+  <url>https://xdebug.org/</url>
+</package>

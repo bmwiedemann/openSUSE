@@ -1,0 +1,254 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>fb5a41b9e1fb4e9f9a49bbb7b87ce966</srcmd5>
+    <version>4.40.0</version>
+    <time>1175568214</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24c364fe9492a1a595760d892298e68b</srcmd5>
+    <version>4.41.0</version>
+    <time>1185534316</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>ca30e7bbcd6d4db57428a99d50c5f840</srcmd5>
+    <version>4.41.0</version>
+    <time>1187203081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c975177d159e190ac4067e3854a0a3ca</srcmd5>
+    <version>4.50.1</version>
+    <time>1220666943</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c975177d159e190ac4067e3854a0a3ca</srcmd5>
+    <version>4.50.1</version>
+    <time>1220666943</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>de46167782c68e2c43ed385454f938ce</srcmd5>
+    <version>4.50.1</version>
+    <time>1268926480</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>829a749d4435003e9895f71b2cc28779</srcmd5>
+    <version>4.50.1</version>
+    <time>1272915250</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/wavpack based on submit request 39196 from user plater
+</comment>
+    <requestid>39196</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>829a749d4435003e9895f71b2cc28779</srcmd5>
+    <version>4.50.1</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>829a749d4435003e9895f71b2cc28779</srcmd5>
+    <version>4.50.1</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>e2ddeaabe6aa8e8e5e07add6c12062f1</srcmd5>
+    <version>4.60.1</version>
+    <time>1291995654</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55256 from user elvigia
+</comment>
+    <requestid>55256</requestid>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>143a066c6c566b4185205a75fccb8f8e</srcmd5>
+    <version>4.60.1</version>
+    <time>1291995662</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55256
+</comment>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>143a066c6c566b4185205a75fccb8f8e</srcmd5>
+    <version>4.60.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>4877659bd62bef834e348fcca3482bed</srcmd5>
+    <version>4.60.1</version>
+    <time>1299506500</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63518 from user plater
+</comment>
+    <requestid>63518</requestid>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>061d551c757a1d432857a1fd2e61b1ef</srcmd5>
+    <version>4.60.1</version>
+    <time>1299506509</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63518
+</comment>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>061d551c757a1d432857a1fd2e61b1ef</srcmd5>
+    <version>4.60.1</version>
+    <time>1319182558</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>4770867da4b2c19281b612bc9b48355e</srcmd5>
+    <version>4.60.1</version>
+    <time>1322259196</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93640 from coolo)</comment>
+    <requestid>93649</requestid>
+  </revision>
+  <revision rev="17" vrev="19">
+    <srcmd5>c70e726b3b082eae188420122fa5cd34</srcmd5>
+    <version>4.60.1</version>
+    <time>1329405897</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104574 from coolo)</comment>
+    <requestid>104914</requestid>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>c70e726b3b082eae188420122fa5cd34</srcmd5>
+    <version>4.60.1</version>
+    <time>1340184320</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>c70e726b3b082eae188420122fa5cd34</srcmd5>
+    <version>4.60.1</version>
+    <time>1359110558</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>77270c644a57f8d38349d5051fb57043</srcmd5>
+    <version>4.60.99</version>
+    <time>1372744057</time>
+    <user>coolo</user>
+    <comment>- update to WavPack 4.70-beta (packaged as 4.60.99)
+* 4GB file support on 32-bit OS
+* memcpy() not always used correctly (Linux targets)
+* unsigned char issue (ARM targets)
+* use temporary files for safer overwriting (forwarded request 180518 from elvigia)</comment>
+    <requestid>181697</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>77270c644a57f8d38349d5051fb57043</srcmd5>
+    <version>4.60.99</version>
+    <time>1379664948</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>77270c644a57f8d38349d5051fb57043</srcmd5>
+    <version>4.60.99</version>
+    <time>1409303628</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>492f92b55475bb6ac1eb5e3bcab9effc</srcmd5>
+    <version>5.1.0</version>
+    <time>1510665474</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.0
+  * new: command-line tagging utility (wvtag)
+  * added: option to import ID3v2.3 tags from Sony DSF files
+  * fixed: fuzz test failures from AFL reported on SourceForge
+  * improved: DSD decimation filter (less HF rolloff &amp; CPU use)
+  * fixed: non-byte audio depths (12-bit, 20-bit) not showing
+  * fixed: rare case of noise-shaping triggering a lossy mute
+  * fixed: recognize UTF-8 BOM when reading text files
+  * fixed: a few portability issues
+- Includes changes from 5.0.0:
+  * new: input formats (RF64, Wave64, and CAF)
+  * removed: support for legacy WavPack files (&lt; 4.0)
+  * added: lossless DSD audio in Philips DSDIFF and Sony DSF files
+  * fixed: seeking in &gt; 2GB WavPack files (new stream reader)
+  * fixed: accept &gt; 4GB source audio files (all formats)
+  * improved: increase maximum samples from 2^32 to 2^40
+  * added: block checksums for robustness to corruption
+  * added: support for non-standard channel identities
+  * added: block decoder for streaming applications
+  * added: new pdf documentation
+- For other changes, see upstream:
+  * https://github.com/dbry/WavPack/blob/master/ChangeLog
+- cleanup with spec-cleaner
+- remove wavpack-fix_pkgconfig.patch, fixed upstream in:
+  * d440649aa113797a50e94285c8c037dc2ad7a5a9
+  * 779a2e62783acc6a46f75dd89359e95079ef708a
+  * 7846e95eb1c3fa97da41dfe96de532c2df5ad281
+- remove license.txt, use upstream copying file instead
+- Drop Requires, Provides and Obsoletes, as the SUSE versions they
+  were needed for are now EOL.</comment>
+    <requestid>540442</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>c95ddfc4fe2781d84e576c39be4cc096</srcmd5>
+    <version>5.1.0</version>
+    <time>1510837197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541907</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>34c78a016e54528bbc06da173d2aa3aa</srcmd5>
+    <version>5.1.0</version>
+    <time>1519218603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578288</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>8608fd34099e20b4516ae29578188f0d</srcmd5>
+    <version>5.1.0</version>
+    <time>1547554476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663576</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>291afdbf1f6fb58dd14e51bb206a5f60</srcmd5>
+    <version>5.1.0~git20190420.22977b2</version>
+    <time>1565962356</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.0~git20190420.22977b2:
+  * Switch to github service to collect all the CVE fixes as releases
+    are not really happening often
+  * bsc#1133384 CVE-2019-11498
+  * bsc#1141337 CVE-2019-1010315
+  * bsc#1141338 CVE-2019-1010318
+  * bsc#1141339 CVE-2019-1010317
+  * bsc#1141334 CVE-2019-1010319
+- Remove merged patches:
+  * CVE-2018-19840.patch
+  * CVE-2018-19841.patch
+  * CVE-2018-7253.patch
+  * CVE-2018-7254.patch
+  * wavpack-CVE-2018-6767.patch</comment>
+    <requestid>723265</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>806064628e2f30c73499674bc8c4e2cd</srcmd5>
+    <version>5.1.0+71.22977b2</version>
+    <time>1567580287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727175</requestid>
+  </revision>
+</revisionlist>

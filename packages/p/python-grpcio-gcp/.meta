@@ -1,0 +1,5 @@
+<package name="python-grpcio-gcp" project="openSUSE:Factory">
+  <title></title>
+  <description>gRPC extensions for Google Cloud Platform</description>
+  <devel project="devel:languages:python" package="python-grpcio-gcp"/>
+</package>

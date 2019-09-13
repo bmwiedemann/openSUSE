@@ -1,0 +1,5 @@
+<package name="libqmatrixclient" project="openSUSE:Factory">
+  <title>libqmatrixclient</title>
+  <description>Library for Qt5 based Matrix clients like Quaternion</description>
+  <devel project="network:messaging:matrix" package="libqmatrixclient"/>
+</package>

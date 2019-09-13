@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>07318c398cc378893e7bdcd55a0bc920</srcmd5>
+    <version>0.9.1</version>
+    <time>1168902758</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="61">
+    <srcmd5>e0db3dda4c0aa78bddbddd3627b47408</srcmd5>
+    <version>0.9.1</version>
+    <time>1176849320</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="229">
+    <srcmd5>e0db3dda4c0aa78bddbddd3627b47408</srcmd5>
+    <version>0.9.1</version>
+    <time>1176849320</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="230">
+    <srcmd5>0dade7b08bb41ecf4b21e63ba94ee3db</srcmd5>
+    <version>0.9.1</version>
+    <time>1245259976</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="231">
+    <srcmd5>ba66c18d4f59c646b0c4b0cf4ae8bd64</srcmd5>
+    <version>0.9.1</version>
+    <time>1248447285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="233">
+    <srcmd5>ba66c18d4f59c646b0c4b0cf4ae8bd64</srcmd5>
+    <version>0.9.1</version>
+    <time>1248447285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="234">
+    <srcmd5>7b31310f1c5685d483143636ee5b7811</srcmd5>
+    <version>0.9.1</version>
+    <time>1268923550</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1d9cf9880f54180525af841db7eaeac0</srcmd5>
+    <version>1.0.0</version>
+    <time>1270247089</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/fluidsynth-dssi based on submit request 36760 from user plater
+</comment>
+    <requestid>36760</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1d9cf9880f54180525af841db7eaeac0</srcmd5>
+    <version>1.0.0</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1d9cf9880f54180525af841db7eaeac0</srcmd5>
+    <version>1.0.0</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>1d9cf9880f54180525af841db7eaeac0</srcmd5>
+    <version>1.0.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>961415d35cbf87ec479ca4885dfb5529</srcmd5>
+    <version>1.0.0</version>
+    <time>1317626283</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 86008 from coolo)</comment>
+    <requestid>86073</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>961415d35cbf87ec479ca4885dfb5529</srcmd5>
+    <version>1.0.0</version>
+    <time>1319181881</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>8e77290bfb4219e4c9d4730cc6dc2228</srcmd5>
+    <version>1.0.0</version>
+    <time>1323191390</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>8e77290bfb4219e4c9d4730cc6dc2228</srcmd5>
+    <version>1.0.0</version>
+    <time>1340183333</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>8e77290bfb4219e4c9d4730cc6dc2228</srcmd5>
+    <version>1.0.0</version>
+    <time>1359108883</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>8e77290bfb4219e4c9d4730cc6dc2228</srcmd5>
+    <version>1.0.0</version>
+    <time>1379662351</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>8e77290bfb4219e4c9d4730cc6dc2228</srcmd5>
+    <version>1.0.0</version>
+    <time>1409300888</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2775f9bc4d4dda2a52ef7d8ed302b131</srcmd5>
+    <version>1.9.9+git13012019</version>
+    <time>1554749615</time>
+    <user>dimstar_suse</user>
+    <comment>Update to pre 2.0.0 git snapshot 1.9.9+git13012019 to fix Factory build and removed obsolete patch
+  fluidsynth-dssi-nogtk1.diff</comment>
+    <requestid>692201</requestid>
+  </revision>
+</revisionlist>

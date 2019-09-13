@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48bf6416abf168d6fe237eea1cbf3bff</srcmd5>
+    <version>0.5.5</version>
+    <time>1523350434</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to release 0.5.5
+  * add LIB_INSTALL_DIR variable in cmake
+- Update to release 0.5.4
+  * fix freetype discovery in cmake
+- Update to release 0.5.3
+  * fix segfault if shape doesn't contain title
+- Use gcc7 on Leap 42.3, gcc6 does not handle -fstack-clash-protection
+- Use %license for LICENSE
+- Build with gcc6, fix build failure for Leap
+- Update to release 0.5.2
+ * fix error in setting title field with titles containing &quot;&amp;&quot;
+ * add XML_PARSE_HUGE in xml parsing to allow big image blobs.
+ * better precision for image dimensions (keep 10 decimals)
+- Update to release 0.5.0
+ * adding support to convert wmf blob (using libwmf)
+ * requires new libraries as dependencies: libwmf and freetype)
+ * requires libemf2svg version &gt;= 1.0.0
+ * cleaner and more explicit dependencies resolving in cmake
+- Drop libvisio2svg_link_xml2.patch
+- require gcc-c++ &gt;= 5 to avoid broken std::regex_replace
+- initial package version
+</comment>
+    <requestid>593317</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>87f21543eae29371a500a241ed4d87b4</srcmd5>
+    <version>0.5.5</version>
+    <time>1531135648</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621064</requestid>
+  </revision>
+</revisionlist>

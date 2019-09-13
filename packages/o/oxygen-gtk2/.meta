@@ -1,0 +1,18 @@
+<package name="oxygen-gtk2" project="openSUSE:Factory">
+  <title>A Port of the default KDE Widget Theme (Oxygen), to GTK 2.x</title>
+  <description>
+Oxygen-Gtk2 is a port of the default KDE widget theme (Oxygen), to gtk 2.x.
+
+It's primary goal is to ensure visual consistency between gtk-based and qt-based
+applications running under KDE. A secondary objective is to also have a
+stand-alone nice looking gtk theme that would behave well on other Desktop
+Environments.
+
+Unlike other attempts made to port the KDE oxygen theme to gtk, this attempt does
+not depend on Qt (via some Qt to Gtk conversion engine), nor does render the
+widget appearance via hard coded pixmaps, which otherwise breaks everytime some
+setting is changed in KDE.
+</description>
+  <devel project="KDE:Extra" package="oxygen-gtk2"/>
+  <url>https://projects.kde.org/projects/playground/artwork/oxygen-gtk/</url>
+</package>

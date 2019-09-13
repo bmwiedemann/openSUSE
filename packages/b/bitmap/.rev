@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>562dd3bf90e950566389fc571868e6f1</srcmd5>
+    <version>1.0.6</version>
+    <time>1336470963</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115330</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>562dd3bf90e950566389fc571868e6f1</srcmd5>
+    <version>1.0.6</version>
+    <time>1340183202</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>562dd3bf90e950566389fc571868e6f1</srcmd5>
+    <version>1.0.6</version>
+    <time>1359108701</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e70630bd748b14fa25075d7f3f0551ea</srcmd5>
+    <version>1.0.7</version>
+    <time>1369640561</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.0.7 (forwarded request 176193 from Zaitor)</comment>
+    <requestid>176247</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e70630bd748b14fa25075d7f3f0551ea</srcmd5>
+    <version>1.0.7</version>
+    <time>1379662037</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>592d01b94579c88d847cd0d363025f32</srcmd5>
+    <version>1.0.7</version>
+    <time>1391765134</time>
+    <user>scarabeus_factory</user>
+    <comment>- fixed license to X11 in specfile</comment>
+    <requestid>221102</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>592d01b94579c88d847cd0d363025f32</srcmd5>
+    <version>1.0.7</version>
+    <time>1409300565</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>85cd2056d333574eeb3621b8696f10fa</srcmd5>
+    <version>1.0.8</version>
+    <time>1421874846</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>282191</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b821952a18842419933c255fbf01ac88</srcmd5>
+    <version>1.0.9</version>
+    <time>1550048553</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.9:
+  * This release fixes a long standing bug in the bitmap editor
+    where operations would not work properly when NumLock was on.</comment>
+    <requestid>673352</requestid>
+  </revision>
+</revisionlist>

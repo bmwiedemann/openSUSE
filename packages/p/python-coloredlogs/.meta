@@ -1,0 +1,14 @@
+<package name="python-coloredlogs" project="openSUSE:Factory">
+  <title>Colored terminal output for Python's logging module</title>
+  <description>The `coloredlogs` package enables colored terminal output for Python's logging_
+module. The ColoredFormatter_ class inherits from `logging.Formatter`_ and uses
+`ANSI escape sequences`_ to render your logging messages in color. It uses only
+standard colors so it should work on any UNIX terminal. It's currently tested
+on Python 2.6, 2.7, 3.4, 3.5 and PyPy. On Windows `coloredlogs` automatically
+pulls in Colorama_ as a dependency and enables ANSI escape sequence translation
+using Colorama.
+
+</description>
+  <devel project="devel:languages:python" package="python-coloredlogs"/>
+  <url>https://coloredlogs.readthedocs.io</url>
+</package>

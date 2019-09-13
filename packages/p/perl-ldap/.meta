@@ -1,0 +1,5 @@
+<package name="perl-ldap" project="openSUSE:Factory">
+  <title>Client Interface for LDAP Servers</title>
+  <description>A Client interface for LDAP servers.</description>
+  <devel project="devel:languages:perl" package="perl-ldap"/>
+</package>

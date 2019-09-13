@@ -1,0 +1,8 @@
+<package name="imgp" project="openSUSE:Factory">
+  <title>Image resizer and rotator.</title>
+  <description>A command line image resizer and rotator for JPEG and PNG images
+based on python-Pillow.
+
+</description>
+  <devel project="graphics" package="imgp"/>
+</package>

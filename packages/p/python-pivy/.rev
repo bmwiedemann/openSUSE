@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b6ae0b2e5d7d5ba5cd554db95942cba</srcmd5>
+    <version>0.5.0hg.609</version>
+    <time>1494345701</time>
+    <user>dimstar_suse</user>
+    <comment>needed for arch module of FreeCAD</comment>
+    <requestid>487956</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4cb7ebc560f380992b7687286204bf63</srcmd5>
+    <version>0.6.2</version>
+    <time>1508316646</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533184</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4e2a82660540eb7f437e8e217dd6b371</srcmd5>
+    <version>0.6.2</version>
+    <time>1513677494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557950</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9f0cfa5040961b4c5e1fa01a1babd9cb</srcmd5>
+    <version>0.6.2</version>
+    <time>1516634382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567966</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b59aeed766bed3a15d86e0da98a5db06</srcmd5>
+    <version>0.6.4</version>
+    <time>1539251838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640958</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e336591f4dc7d6610695831c7035fafe</srcmd5>
+    <version>0.6.4</version>
+    <time>1549458470</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671954</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>a6f0e16342d6211160d6822c3d0f25f6</srcmd5>
+    <version>0.6.4</version>
+    <time>1560337854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702650</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="thryomanes-fonts" project="openSUSE:Factory">
+  <title>Greek TrueType Fonts</title>
+  <description>These fonts include a complete set of Cyrillic letters and improved
+italic characters.
+</description>
+  <devel project="M17N:fonts" package="thryomanes-fonts"/>
+</package>

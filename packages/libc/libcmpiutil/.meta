@@ -1,0 +1,9 @@
+<package name="libcmpiutil" project="openSUSE:Factory">
+  <title>Library of utility functions for CMPI providers</title>
+  <description>Libcmpiutil is a library of utility functions for CMPI providers.  The
+goal is to reduce the amount of repetitive work done in most CMPI
+providers by encapsulating common procedures with more &quot;normal&quot; APIs. 
+This extends from operations like getting typed instance properties to
+standardizing method dispatch and argument checking.</description>
+  <devel project="systemsmanagement:wbem" package="libcmpiutil"/>
+</package>

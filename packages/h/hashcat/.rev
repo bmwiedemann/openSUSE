@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>45ef981a78c2429570d738732d5335c2</srcmd5>
+    <version>2.00</version>
+    <time>1451178011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>349266</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1470a78faef5c471687ce13701f6cf76</srcmd5>
+    <version>3.00</version>
+    <time>1468482529</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>407733</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a59e1ec2eb0fe88b7672ebc53f383b0b</srcmd5>
+    <version>5.1.0</version>
+    <time>1553611296</time>
+    <user>dimstar_suse</user>
+    <comment>- Update license field.
+- hashcat v5.1.0:</comment>
+    <requestid>685166</requestid>
+  </revision>
+</revisionlist>

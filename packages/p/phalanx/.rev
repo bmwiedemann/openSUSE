@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="512">
+    <srcmd5>95b1d02c474c50215dd807c3ec0a83e1</srcmd5>
+    <version>22</version>
+    <time>1168903954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="645">
+    <srcmd5>95b1d02c474c50215dd807c3ec0a83e1</srcmd5>
+    <version>22</version>
+    <time>1168903954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="646">
+    <srcmd5>1660c5e9cd9cfa193dacd953f243e7f9</srcmd5>
+    <version>22</version>
+    <time>1245277033</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="648">
+    <srcmd5>1660c5e9cd9cfa193dacd953f243e7f9</srcmd5>
+    <version>22</version>
+    <time>1245277033</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="649">
+    <srcmd5>4fb88230a37498eef27591839651b34d</srcmd5>
+    <version>22</version>
+    <time>1268925695</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="651">
+    <srcmd5>4fb88230a37498eef27591839651b34d</srcmd5>
+    <version>22</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="652">
+    <srcmd5>4fb88230a37498eef27591839651b34d</srcmd5>
+    <version>22</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="655">
+    <srcmd5>4fb88230a37498eef27591839651b34d</srcmd5>
+    <version>22</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="657">
+    <srcmd5>4fb88230a37498eef27591839651b34d</srcmd5>
+    <version>22</version>
+    <time>1319182331</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="658">
+    <srcmd5>69417a9ca762b97ea011192ecf4b8448</srcmd5>
+    <version>22</version>
+    <time>1323193825</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="659">
+    <srcmd5>46378f90868b4ab5f6a7f8d9d5cb5907</srcmd5>
+    <version>22</version>
+    <time>1336452464</time>
+    <user>coolo</user>
+    <comment>Commit this before we get another conflict...</comment>
+    <requestid>116128</requestid>
+  </revision>
+  <revision rev="12" vrev="661">
+    <srcmd5>46378f90868b4ab5f6a7f8d9d5cb5907</srcmd5>
+    <version>22</version>
+    <time>1340183965</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f88ba816c3e0d4221231785f746be5ee</srcmd5>
+    <version>22.9</version>
+    <time>1347618825</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134074</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>f88ba816c3e0d4221231785f746be5ee</srcmd5>
+    <version>22.9</version>
+    <time>1359109870</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>6af3471165b4c20e14e07dcaba13f10f</srcmd5>
+    <version>22.9</version>
+    <time>1369641419</time>
+    <user>coolo</user>
+    <comment>Castling vs. phalanx has been broken ever since it was updated to XXIII beta... surprised I was the first to notice. This is already fixed upstream but not (yet) in a released beta.
+
+Maybe we shouldn't package phalanx betas. :) (forwarded request 176068 from Golbats_Everywhere)</comment>
+    <requestid>176250</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>6af3471165b4c20e14e07dcaba13f10f</srcmd5>
+    <version>22.9</version>
+    <time>1379663945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>6af3471165b4c20e14e07dcaba13f10f</srcmd5>
+    <version>22.9</version>
+    <time>1409302602</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ec4e09060ae6373180d4e1bfe3469636</srcmd5>
+    <version>23</version>
+    <time>1416505397</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to XXIII final
+  * Xboard protocol version 2 compatibility.
+  * New -n commandline option to limit nodes per second. 
+  * New -z commandline option to randomize root moves.
+  * Easy levels now don't play instantly, but use time.
+  * DrawScore (contempt factor) adjusted in endgames towards 
+    positive values to avoid playing dead draws like KRKR.
+  * Minor engine fixes.
+  * see HISTORY for details</comment>
+    <requestid>262278</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7a59cec0ea5d5c83493db902fbc280c2</srcmd5>
+    <version>24</version>
+    <time>1431981370</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>307827</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>52d7161f8eb4bc25786cf9a410d0e8a8</srcmd5>
+    <version>25</version>
+    <time>1479837559</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to XXV
+  Better time management to use more time if the best move changed
+  recently.  Search improvements: Added simple ProbCut, tuned null move
+  and LMR, simplified check evasion extension.  Static evaluation bug
+  fixes, several of them submitted by Fabrice Lecouvey, thanks.  New
+  parameter to root moves randomization, it can now be limited
+  to first N moves of the game.  New opening book generated from
+  KingBase Lite 03/2016 (http://www.kingbase-chess.net/).</comment>
+    <requestid>441317</requestid>
+  </revision>
+</revisionlist>

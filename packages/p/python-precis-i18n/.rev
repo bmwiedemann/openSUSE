@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>279954c76ad130caca3b1f4517e6293d</srcmd5>
+    <version>1.0.0</version>
+    <time>1542750196</time>
+    <user>dimstar_suse</user>
+    <comment>Required by Gajim 1.1.</comment>
+    <requestid>650295</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e8f8485c999c90c0abe93f6b380a2e1e</srcmd5>
+    <version>1.0.1</version>
+    <time>1563914385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * Fixed a dict/set syntax typo that has no runtime effect (6ae6876).
+  * Test forward compatibility of derived props test files as Unicode version increases.
+  * Test Unicode 11.0 (Python 3.7).
+- Switch to github tarball for all test fixtures</comment>
+    <requestid>717855</requestid>
+  </revision>
+</revisionlist>

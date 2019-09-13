@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7c50ec10dd14237505a972da936bc7bb</srcmd5>
+    <version>2.3.3</version>
+    <time>1465335929</time>
+    <user>dimstar_suse</user>
+    <comment>colour: A model for human colour/color perception dep of graphviz/darcs</comment>
+    <requestid>394979</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3144c01f1262d283346360b0e2d0aa94</srcmd5>
+    <version>2.3.3</version>
+    <time>1469081000</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411360</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d40a9ff189984a84f213736fe5762402</srcmd5>
+    <version>2.3.3</version>
+    <time>1505503654</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524305</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>efb910bf3babf241616dc79b68401c05</srcmd5>
+    <version>2.3.4</version>
+    <time>1527674683</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-colour to the latest version.</comment>
+    <requestid>607768</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>75fbb96abdec0f2752d7139bde6a4b7f</srcmd5>
+    <version>2.3.4</version>
+    <time>1532445364</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623742</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ee19e6f660d859e40c9e9b655c4a3a91</srcmd5>
+    <version>2.3.4</version>
+    <time>1540448606</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643367</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fb3d0f90335e0944d3875cf97efd66a9</srcmd5>
+    <version>2.3.5</version>
+    <time>1557653675</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>701760</requestid>
+  </revision>
+</revisionlist>

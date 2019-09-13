@@ -1,0 +1,5 @@
+<package name="texi2roff" project="openSUSE:Factory">
+  <title>texinfo</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="Publishing" package="texi2roff"/>
+</package>

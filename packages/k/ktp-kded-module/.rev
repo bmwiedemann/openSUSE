@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57dc1bcc345e95568b4a88a607901fcc</srcmd5>
+    <version>18.12.3</version>
+    <time>1553700003</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit KDE Telepathy as requested in boo#1116043</comment>
+    <requestid>687662</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5238658bb6ec7a5f012ca2e7a6bfdc70</srcmd5>
+    <version>19.04.0</version>
+    <time>1556023117</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Telepathy 19.04.0</comment>
+    <requestid>696980</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5c5c2d96856314a7cf4b3a11a25f72f4</srcmd5>
+    <version>19.04.1</version>
+    <time>1557751868</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Telepathy 19.04.1 (forwarded request 702138 from wolfi323)</comment>
+    <requestid>702363</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>19ae9a81d35efcf7e017ff2f9aee89ed</srcmd5>
+    <version>19.04.2</version>
+    <time>1560459595</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.04.2</comment>
+    <requestid>708729</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>30515e3e426253de8a38ecddd27d1ee5</srcmd5>
+    <version>19.08.0</version>
+    <time>1566240995</time>
+    <user>dimstar_suse</user>
+    <comment>Applications 19.08.0 (forwarded request 723532 from cgiboudeaux)</comment>
+    <requestid>723726</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a70e97948766784f7e5ab076137dd754</srcmd5>
+    <version>19.08.1</version>
+    <time>1568024843</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.1 (forwarded request 728705 from luca_b)</comment>
+    <requestid>728909</requestid>
+  </revision>
+</revisionlist>

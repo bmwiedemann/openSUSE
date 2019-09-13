@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c2d4d02922193cae8dccc4b9821366fd</srcmd5>
+    <version>0.48</version>
+    <time>1315238997</time>
+    <user>lrupp</user>
+    <comment>long time no see</comment>
+    <requestid>80965</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>767fbf39c39169ff543f00bb8c555c18</srcmd5>
+    <version>0.48</version>
+    <time>1315239009</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80965
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>767fbf39c39169ff543f00bb8c555c18</srcmd5>
+    <version>0.48</version>
+    <time>1319182269</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>622eb92b11bfba646a08ff8bda7c8ab8</srcmd5>
+    <version>0.48</version>
+    <time>1323193308</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>622eb92b11bfba646a08ff8bda7c8ab8</srcmd5>
+    <version>0.48</version>
+    <time>1340183844</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>622eb92b11bfba646a08ff8bda7c8ab8</srcmd5>
+    <version>0.48</version>
+    <time>1359109675</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba46e59deca49f986f2298cc5f68de90</srcmd5>
+    <version>1.02</version>
+    <time>1370581223</time>
+    <user>coolo</user>
+    <comment>- license update: Artistic-2.0 and OFL-1.1
+  Test fonts are OFL-1.1 licensed
+
+- updated to 1.02
+ * Add IO::String prerequisite to make BSD and other testing environments happy
+ 
+ * Major change to glyph creation/editing -- now utilizes ' isDirty' flag
+ * Add support for:
+ *    V4 OS/2 table
+ *    Reading WOFF fonts
+ *    MarkFilterSets in GDEF
+ *    Feature parameters (for cvxx, ssxx and size features)
+ *    Additional Graphite tables (Silf, Glac, and Gloc)
+ * Updated MS Lang IDs to Dec 2011
+ * Finish implementation of coverage table sorting
+ * Copyright and licensing updated to CPAN requirements
+ * Bug fixes
+ 
+ * Ensure coverage tables are properly sorted
+ * Additional OT tags (from OpenType 1.6)
+ * Bug fixes
+ 
+ * Add support for Graphite Sill table
+ * Handle kerning tables version &gt; 0
+ * Bug fixes
+ 
+ * Bug fixes
+ * Change Copyright to Artistic License 2.0
+
+- fix license</comment>
+    <requestid>177797</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>ba46e59deca49f986f2298cc5f68de90</srcmd5>
+    <version>1.02</version>
+    <time>1379663683</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b69d4d447bb7ee11c22059d924d82ddd</srcmd5>
+    <version>1.03</version>
+    <time>1385705011</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208456</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>04a3f1d5aab325039751d24c60494fb6</srcmd5>
+    <version>1.04</version>
+    <time>1393610475</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223904</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>93fb9eb994b2b32b30caede100639efe</srcmd5>
+    <version>1.04</version>
+    <time>1394866049</time>
+    <user>coolo</user>
+    <comment>fix changes file (forwarded request 226026 from computersalat)</comment>
+    <requestid>226028</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>93fb9eb994b2b32b30caede100639efe</srcmd5>
+    <version>1.04</version>
+    <time>1409302304</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>46829fd2af319c46a87655cacce26985</srcmd5>
+    <version>1.05</version>
+    <time>1429186404</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296998</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5b055b96e721eb972d82f68ec196a901</srcmd5>
+    <version>1.06</version>
+    <time>1474886157</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424234</requestid>
+  </revision>
+</revisionlist>

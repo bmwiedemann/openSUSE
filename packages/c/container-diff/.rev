@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a56110f7ff436e3cb2195551840ed9bd</srcmd5>
+    <version>0.6.2</version>
+    <time>1517606491</time>
+    <user>dimstar_suse</user>
+    <comment>- Add container-diff v0.6.2: container-diff is a tool to analyze and diff
+  container images.
+</comment>
+    <requestid>571476</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5197c05817ed312e826fa5b16ed81bb8</srcmd5>
+    <version>0.7.0</version>
+    <time>1519396296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579336</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d54c5c3705969ba120173a7d56e52794</srcmd5>
+    <version>0.8.0</version>
+    <time>1521716839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589755</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3980340b47cb65d4526c566bfa21272b</srcmd5>
+    <version>0.9.0</version>
+    <time>1524237995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595547</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>069ae3e3a9817ee2b8a35fae2ee61444</srcmd5>
+    <version>0.9.0</version>
+    <time>1528897027</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615155</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1dbe128354dc4021ae99d5b0f7282619</srcmd5>
+    <version>0.11.0</version>
+    <time>1530304508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619544</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>23567fb70d0f7bd598a01f76cfa4e1fc</srcmd5>
+    <version>0.13.1</version>
+    <time>1541865501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645686</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dde6bb403b67a4a04613f9924d81aa6e</srcmd5>
+    <version>0.15.0</version>
+    <time>1566463954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724842</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f13aca142d4e1930bc9ae3e7d61376f9</srcmd5>
+    <version>0.15.0</version>
+    <time>1566665255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725673</requestid>
+  </revision>
+</revisionlist>

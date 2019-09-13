@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="348">
+    <srcmd5>d1b7b53e4cc86475f8f66d4e55696ede</srcmd5>
+    <version>1.02</version>
+    <time>1168902368</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="413">
+    <srcmd5>febe4c59697b60b38664503ae52b1b4e</srcmd5>
+    <version>1.02</version>
+    <time>1196643266</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="468">
+    <srcmd5>febe4c59697b60b38664503ae52b1b4e</srcmd5>
+    <version>1.02</version>
+    <time>1196643266</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ddcd990eb3a724af6dad8c7a9e4a532f</srcmd5>
+    <version>1.03d</version>
+    <time>1234198134</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ac71cdd2d79e13b36ba8c5905d6e3d8a</srcmd5>
+    <version>1.03d</version>
+    <time>1234353849</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>ac71cdd2d79e13b36ba8c5905d6e3d8a</srcmd5>
+    <version>1.03d</version>
+    <time>1234353849</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>a3af40a9c2c9a2467fdcb0f6ebdedfe6</srcmd5>
+    <version>1.03d</version>
+    <time>1268923100</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>a3af40a9c2c9a2467fdcb0f6ebdedfe6</srcmd5>
+    <version>1.03d</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>a3af40a9c2c9a2467fdcb0f6ebdedfe6</srcmd5>
+    <version>1.03d</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>a3af40a9c2c9a2467fdcb0f6ebdedfe6</srcmd5>
+    <version>1.03d</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>b30fd5ef98d6aa9c72945a4a1f68c345</srcmd5>
+    <version>1.03d</version>
+    <time>1316616853</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82911 from jengelh)</comment>
+    <requestid>83820</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>850f87b6f8854fec530aa7d197a970ba</srcmd5>
+    <version>1.96</version>
+    <time>1318761651</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>87783</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>850f87b6f8854fec530aa7d197a970ba</srcmd5>
+    <version>1.96</version>
+    <time>1319181791</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>2c956557b4268d8c25665bebfb8e44d4</srcmd5>
+    <version>1.96</version>
+    <time>1323190872</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>2c956557b4268d8c25665bebfb8e44d4</srcmd5>
+    <version>1.96</version>
+    <time>1340183209</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>2c956557b4268d8c25665bebfb8e44d4</srcmd5>
+    <version>1.96</version>
+    <time>1359108710</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>2c956557b4268d8c25665bebfb8e44d4</srcmd5>
+    <version>1.96</version>
+    <time>1379662047</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d3abb0e9153660b9c3de77cfabec23b0</srcmd5>
+    <version>1.97</version>
+    <time>1406836225</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243006</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>d3abb0e9153660b9c3de77cfabec23b0</srcmd5>
+    <version>1.97</version>
+    <time>1409300575</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>8c0038e9264d065a1017fb8404f6aa00</srcmd5>
+    <version>1.97</version>
+    <time>1413616183</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257406</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>02a3bbf5a1dd4f8c8b42a838f2175e7d</srcmd5>
+    <version>1.97</version>
+    <time>1466333603</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file with spec-cleaner
+- Use configure and make install
+- Add patches (both from Fedora):
+  * bonnie++-1.96-minmax.patch (building with gcc6 - boo#985139)
+  * bonnie++-1.96-makefile.patch (fixes installation using make)</comment>
+    <requestid>403458</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0c7b7a78b5c23c5fcb8d1c736b1f490a</srcmd5>
+    <version>1.97.2</version>
+    <time>1479150963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.97.2</comment>
+    <requestid>440150</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8ca11009a23239e92f3de1dbce794a81</srcmd5>
+    <version>1.97.3</version>
+    <time>1490965744</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.97.3:</comment>
+    <requestid>482551</requestid>
+  </revision>
+</revisionlist>

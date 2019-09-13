@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee4045e568b52340e3a2221035d78f17</srcmd5>
+    <version>0.2</version>
+    <time>1346082476</time>
+    <user>coolo</user>
+    <comment>Used by openSUSE sysadmins.</comment>
+    <requestid>131750</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ee4045e568b52340e3a2221035d78f17</srcmd5>
+    <version>0.2</version>
+    <time>1359110571</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>ee4045e568b52340e3a2221035d78f17</srcmd5>
+    <version>0.2</version>
+    <time>1379664963</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>6679aa7da09601a6f5a23b1d6548269c</srcmd5>
+    <version>0.2</version>
+    <time>1392115605</time>
+    <user>coolo</user>
+    <comment>- withlock is now distributed as a tarball, which is generally 
+  easier for packaging on some platforms (at least Solaris). The 
+  only other change: updated copyright year. (forwarded request 221721 from poeml)</comment>
+    <requestid>221784</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0cf500f8c2362f6cd11287a6bb0b6a40</srcmd5>
+    <version>0.3</version>
+    <time>1395848534</time>
+    <user>coolo</user>
+    <comment>- update to 0.3
+  * At exit, unlink the lock file only if a lock was actually obtained.
+    When waiting for a lock (using -w option) and timing out, the file
+    was removed nevertheless. Thanks Bernhard Wiedemann for finding this
+    bug and providing such a good test case, so the fix was easy.
+    See https://bugzilla.novell.com/show_bug.cgi?id=864785 (forwarded request 227498 from poeml)</comment>
+    <requestid>227507</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fbe07f63a768616a5185cad629931416</srcmd5>
+    <version>0.3</version>
+    <time>1408353831</time>
+    <user>lnussel</user>
+    <comment>Never mind the changes file, the author confirmed this is the right fix. So it is tested.</comment>
+    <requestid>244819</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>fbe07f63a768616a5185cad629931416</srcmd5>
+    <version>0.3</version>
+    <time>1409303642</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>455b9277186f797483ca0d4cfac9f965</srcmd5>
+    <version>0.4</version>
+    <time>1434383457</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312046</requestid>
+  </revision>
+</revisionlist>

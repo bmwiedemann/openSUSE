@@ -1,0 +1,6 @@
+<package name="lxtask" project="openSUSE:Factory">
+  <title>Lightweight Task Manager</title>
+  <description>LXTask is a lightweight Task Manager.
+This is the default LXDE task manager.</description>
+  <devel project="X11:lxde" package="lxtask"/>
+</package>

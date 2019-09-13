@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c6c77f0eb3cc3c265f5567706b155834</srcmd5>
+    <version>1.0.0</version>
+    <time>1485511285</time>
+    <user>dimstar_suse</user>
+    <comment>New monitoring package</comment>
+    <requestid>445333</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>00813438840c4b71991df236845a1710</srcmd5>
+    <version>1.0.0</version>
+    <time>1560338071</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>708855</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cddf5b5cbc306796c6dc586aea30693f</srcmd5>
+    <version>0.20.0</version>
+    <time>1524576776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599936</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>388eb16559c347097a9e7ce8e8e1b0bf</srcmd5>
+    <version>0.20.0</version>
+    <time>1545648328</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659728</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>07a67f451c3550d1b55006c132b58595</srcmd5>
+    <version>19.0.0</version>
+    <time>1560862671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710323</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3b8d2fc61249b64bd5a2c9bb97203325</srcmd5>
+    <version>19.0.0</version>
+    <time>1564576081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719794</requestid>
+  </revision>
+</revisionlist>

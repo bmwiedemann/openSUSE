@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>755cbd7d4c4105fe46cf20dda2631035</srcmd5>
+    <version>1.3</version>
+    <time>1405253174</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>240146</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>755cbd7d4c4105fe46cf20dda2631035</srcmd5>
+    <version>1.3</version>
+    <time>1409301633</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3a60d7091cca504fb49760e054ae227d</srcmd5>
+    <version>1.4</version>
+    <time>1420755605</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>277012</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>de826895c153bc195ade4cc3d5ccbd03</srcmd5>
+    <version>1.6</version>
+    <time>1464204096</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397334</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>636460546d6ab8ee6673f6ef74c83ab6</srcmd5>
+    <version>1.6</version>
+    <time>1467205273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6 (bsc#979645 CVE-2016-3698):
+    non-link-local</comment>
+    <requestid>402452</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>93ae1e1c9809d2b0e5180d95c5122d83</srcmd5>
+    <version>1.6</version>
+    <time>1520415068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582546</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>230f9d8c5fbe8186593823ce9d1953c8</srcmd5>
+    <version>1.7</version>
+    <time>1541509677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644345</requestid>
+  </revision>
+</revisionlist>

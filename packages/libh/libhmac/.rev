@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>796833b86def6df4a6fa7bb66aaa5a3b</srcmd5>
+    <version>0~20130331</version>
+    <time>1366811772</time>
+    <user>coolo</user>
+    <comment>Joachim Metz has created a set of c libraries used by security tools.  The libxxx packages often include basic applications sub-packages which are useful by themselves.</comment>
+    <requestid>173109</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>73385acd6a42ff1c7a96605a741f289a</srcmd5>
+    <version>0~20130714</version>
+    <time>1375765266</time>
+    <user>coolo</user>
+    <comment>Update to 0~20130714
+part of summer 2013 libyal refresh for opensuse 13.1</comment>
+    <requestid>185946</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>73385acd6a42ff1c7a96605a741f289a</srcmd5>
+    <version>0~20130714</version>
+    <time>1379662977</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1b513f30a09683e2101cf917de82f689</srcmd5>
+    <version>0~20140112</version>
+    <time>1408021097</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244642</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1b513f30a09683e2101cf917de82f689</srcmd5>
+    <version>0~20140112</version>
+    <time>1409301588</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>39b5539d92f68b71c3dd88c1b392fcad</srcmd5>
+    <version>0~20150104</version>
+    <time>1422626623</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282292</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ffa5e6be39c524ed5af90c57488660e1</srcmd5>
+    <version>3.4.3</version>
+    <time>1493580203</time>
+    <user>dimstar_suse</user>
+    <comment>replaces sr#486017</comment>
+    <requestid>487137</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4dd08cc88a2d582f1e2df953f5216b51</srcmd5>
+    <version>3.4.3</version>
+    <time>1494263038</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>493336</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>83edc474b0f1856dcc2544e0096d10cc</srcmd5>
+    <version>3.4.10</version>
+    <time>1509722819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538323</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a4b6158dc2ba016068734b68cf3e3bb0</srcmd5>
+    <version>3.6.2</version>
+    <time>1521579618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588643</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7bee227ac0cd15c386f35717bcb8a185</srcmd5>
+    <version>3.6.2</version>
+    <time>1523029728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593900</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c7c56573b842eaf713d8f1141ab9990e</srcmd5>
+    <version>3.6.2</version>
+    <time>1528492589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614554</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>45c5651405426cec6899d7b75b0f2d77</srcmd5>
+    <version>3.6.2</version>
+    <time>1530866857</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621109</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e03870f0228202e28bc793b826d18c6c</srcmd5>
+    <version>3.6.13</version>
+    <time>1562843680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713267</requestid>
+  </revision>
+</revisionlist>

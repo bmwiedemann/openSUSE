@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>643530ea46f8bbe5332b490c8fde5859</srcmd5>
+    <version>1.1.0</version>
+    <time>1326796446</time>
+    <user>coolo</user>
+    <comment>let devel package require the lib package instead of the package
+for the binaries</comment>
+    <requestid>100200</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2f5d624a3c62ebbec3900dd743ae4a2b</srcmd5>
+    <version>1.1.0</version>
+    <time>1329476785</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Add patch to fix use of implicitly-defined functions</comment>
+    <requestid>105531</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2f5d624a3c62ebbec3900dd743ae4a2b</srcmd5>
+    <version>1.1.0</version>
+    <time>1340183713</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>2f5d624a3c62ebbec3900dd743ae4a2b</srcmd5>
+    <version>1.1.0</version>
+    <time>1359109468</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>2f5d624a3c62ebbec3900dd743ae4a2b</srcmd5>
+    <version>1.1.0</version>
+    <time>1379663320</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>68e686cd0d9b83980dfbd9cb5d2fb276</srcmd5>
+    <version>1.1.4</version>
+    <time>1380296842</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200729</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>14b1e8c203bc1fd6c523d8f74f0d8593</srcmd5>
+    <version>1.1.4</version>
+    <time>1392137328</time>
+    <user>coolo</user>
+    <comment>- add baselibs.conf to satisfy libqt5-base-32bit (forwarded request 221843 from coolo)</comment>
+    <requestid>221844</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>14b1e8c203bc1fd6c523d8f74f0d8593</srcmd5>
+    <version>1.1.4</version>
+    <time>1409301938</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8b629140d21554c129fb86b4bf312563</srcmd5>
+    <version>1.1.5</version>
+    <time>1425566071</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288628</requestid>
+  </revision>
+</revisionlist>

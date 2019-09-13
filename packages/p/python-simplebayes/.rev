@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20beb7919e94df6aef7560058eaf3b5a</srcmd5>
+    <version>1.5.8</version>
+    <time>1485382795</time>
+    <user>dimstar_suse</user>
+    <comment>required for Paperwork</comment>
+    <requestid>441026</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fac68c271efae0f6fb00485963a6bd07</srcmd5>
+    <version>1.5.8</version>
+    <time>1513677406</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop check phase again as upstream does not distribute the tests
+  and does not tag properly on github
+
+- Use python singlespec</comment>
+    <requestid>557302</requestid>
+  </revision>
+</revisionlist>

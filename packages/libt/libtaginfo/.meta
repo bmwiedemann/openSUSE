@@ -1,0 +1,11 @@
+<package name="libtaginfo" project="openSUSE:Factory">
+  <title>Library for reading media metadata (tags)</title>
+  <description>libtaginfo is a convenience wrapper for taglib with C and vala
+bindings.
+
+Features are reading/writing fields like: Artist, Album, Title, Genre,
+AlbumArtist, Comments, Disk number, Compilation flag, User labels,
+Embedded Images, Lyrics, Audio properties (length, bitrate, samplerate,
+channels ...), ...</description>
+  <devel project="multimedia:libs" package="libtaginfo"/>
+</package>

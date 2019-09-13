@@ -1,0 +1,1222 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a71820b2974abddb54319ba25f5b0fe</srcmd5>
+    <version>0.9.3</version>
+    <time>1166545053</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>047c5c639c08c82442627875db1203ab</srcmd5>
+    <version>0.9.4</version>
+    <time>1183051576</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="28">
+    <srcmd5>e84b791f7b18b65d4cd22ca58f0e08de</srcmd5>
+    <version>0.9.4</version>
+    <time>1189420908</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a6b86f523fab011062e53b4f00d92268</srcmd5>
+    <version>0.9.5</version>
+    <time>1193066665</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>03629e7117eed88a08223d16f7184cf5</srcmd5>
+    <version>1.0</version>
+    <time>1206653161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>7cbccd28b55b441fdfe99c85dd898a33</srcmd5>
+    <version>1.0</version>
+    <time>1208733880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ac390579afea562be2e95d497606db1</srcmd5>
+    <version>1.0.1</version>
+    <time>1214255907</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="15">
+    <srcmd5>6b63508c90e2f9bf45920a08184fc0d1</srcmd5>
+    <version>1.0.1</version>
+    <time>1215810508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="42">
+    <srcmd5>d6d713e4e5fd5dfdc7c89c7865614053</srcmd5>
+    <version>1.0.1</version>
+    <time>1218154255</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="43">
+    <srcmd5>678ebbbabfeb953264447b197a6134fb</srcmd5>
+    <version>1.0.1</version>
+    <time>1218208885</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>21522ba178be224b1de14d36b79275eb</srcmd5>
+    <version>1.0.2</version>
+    <time>1218841732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="26">
+    <srcmd5>c3f90b2b1d40f61a87e82b1c811b6c1c</srcmd5>
+    <version>1.0.2</version>
+    <time>1223308032</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="27">
+    <srcmd5>360e34b5765435e35da320cac483bf45</srcmd5>
+    <version>1.0.2</version>
+    <time>1228565163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3e9e0cc4a06a24bc5a244cd11334d8ad</srcmd5>
+    <version>1.1.2</version>
+    <time>1231461245</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>45d835c5940e60d6f7a3da7162bc2b0b</srcmd5>
+    <version>1.1.2</version>
+    <time>1233268928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>10fe657ca5f94c48f9641ff7bcb534b8</srcmd5>
+    <version>1.1.2</version>
+    <time>1236268222</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>49869a5967c58ce83975f062f2cbc6e8</srcmd5>
+    <version>1.2</version>
+    <time>1236269001</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>97880f8254c8772ce4988256818d333b</srcmd5>
+    <version>1.2.1</version>
+    <time>1240868252</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>eb5bfb72acc3076e2f54cd1e67f011d9</srcmd5>
+    <version>1.3</version>
+    <time>1246707213</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4ff5ab257c3095537cd0156611795d0d</srcmd5>
+    <version>1.3.1</version>
+    <time>1248732049</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>4ff5ab257c3095537cd0156611795d0d</srcmd5>
+    <version>1.3.1</version>
+    <time>1248732049</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>70a27d91b49ed84ec85a476592a084f4</srcmd5>
+    <version>1.4.3</version>
+    <time>1265751388</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/mercurial based on submit request 31956 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bda88016058944f5f45e440c92fa7811</srcmd5>
+    <version>1.5</version>
+    <time>1268355105</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/mercurial based on submit request 34649 from user dirkmueller
+</comment>
+    <requestid>34649</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>658b37365ee69463394c679221987fe8</srcmd5>
+    <version>1.5</version>
+    <time>1268924928</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>658b37365ee69463394c679221987fe8</srcmd5>
+    <version>1.5</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>658b37365ee69463394c679221987fe8</srcmd5>
+    <version>1.5</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>080e82d30fc52b4456d3aff48ca5b773</srcmd5>
+    <version>1.6</version>
+    <time>1279608139</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/mercurial based on submit request 43434 from user elvigia
+</comment>
+    <requestid>43434</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5cf82a150cac78a9045e555e0e06ff5b</srcmd5>
+    <version>1.6.3</version>
+    <time>1285601908</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/mercurial based on submit request 49175 from user coolo
+</comment>
+    <requestid>49175</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>179773c014d2e1fda1595b354c42fd09</srcmd5>
+    <version>1.6.4</version>
+    <time>1286803615</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/mercurial based on submit request 50201 from user coolo
+</comment>
+    <requestid>50201</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3803b4afc76d435bbb0112e59b994f53</srcmd5>
+    <version>1.7</version>
+    <time>1289842757</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52865 from user wrosenauer
+</comment>
+    <requestid>52865</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>711b68efd6ee7760a9d90dc370aecbe3</srcmd5>
+    <version>1.7</version>
+    <time>1289842763</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52865
+</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6654f8570a8e92444b8c74a30ad9b3e2</srcmd5>
+    <version>1.7.1</version>
+    <time>1290252932</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53377 from user wrosenauer
+</comment>
+    <requestid>53377</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>bcbd9190c65528ec13ffe12fec920163</srcmd5>
+    <version>1.7.2</version>
+    <time>1291587146</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54386 from user wrosenauer
+</comment>
+    <requestid>54386</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>660afbf9cffbfe887098b3b979667649</srcmd5>
+    <version>1.7.3</version>
+    <time>1294663702</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57578 from user wrosenauer
+</comment>
+    <requestid>57578</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>c2bf882375805f59e19e34544f971820</srcmd5>
+    <version>1.7.3</version>
+    <time>1294663725</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57578
+</comment>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>b725e5cbee75a7345a653662702d1eb6</srcmd5>
+    <version>1.7.3</version>
+    <time>1296608817</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59477 from user wrosenauer
+</comment>
+    <requestid>59477</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>0fa64bf410ade5047bec6c5481c84a41</srcmd5>
+    <version>1.7.3</version>
+    <time>1296608827</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59477
+</comment>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>4193afe0d1dda1d8a67dc928b88aa140</srcmd5>
+    <version>1.7.5</version>
+    <time>1297387779</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60527 from user elvigia
+</comment>
+    <requestid>60527</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>55dd0a3e133e2f87037d6105fdbbe3b4</srcmd5>
+    <version>1.7.5</version>
+    <time>1297387784</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60527
+</comment>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>55dd0a3e133e2f87037d6105fdbbe3b4</srcmd5>
+    <version>1.7.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>2ad91852611a882ca0e6006655a17917</srcmd5>
+    <version>1.8</version>
+    <time>1299674273</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63713 from user wrosenauer
+</comment>
+    <requestid>63713</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2aa690889bd922878a5782ab68ae768f</srcmd5>
+    <version>1.8.1</version>
+    <time>1301303123</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65266 from user licensedigger
+</comment>
+    <requestid>65266</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>f0d6d4f4dd5414fb1497df363908b123</srcmd5>
+    <version>1.8.1</version>
+    <time>1301303131</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65266
+</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>58ddca5dc5415b509c6560bc32cc43bb</srcmd5>
+    <version>1.8.2</version>
+    <time>1303117550</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67657 from user coolo
+</comment>
+    <requestid>67657</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>b00b1bd8368a5ff4a39b88bf7dc880c4</srcmd5>
+    <version>1.8.2</version>
+    <time>1303117558</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67657
+</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1d98576607a67eaf7096dac0fb1aba66</srcmd5>
+    <version>1.8.3</version>
+    <time>1306488513</time>
+    <user>saschpe</user>
+    <comment>update to 1.8.3 (forwarded request 71596 from wrosenauer)</comment>
+    <requestid>71597</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9fddde4d6feba03a245d83d15b12a0e5</srcmd5>
+    <version>1.9</version>
+    <time>1310372596</time>
+    <user>saschpe</user>
+    <comment>update</comment>
+    <requestid>75902</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>a2b31a6e9a1a469e4d76a730255c48ce</srcmd5>
+    <version>1.9</version>
+    <time>1310975587</time>
+    <user>azouhr</user>
+    <comment></comment>
+    <requestid>76345</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>a57e843a353a2eedbead373e84d6300a</srcmd5>
+    <version>1.9</version>
+    <time>1310975602</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 76345
+</comment>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>e2945f55caa154594b1b743bc0c7ebd7</srcmd5>
+    <version>1.9.2</version>
+    <time>1314882505</time>
+    <user>saschpe</user>
+    <comment>(also SLE_10 builds again)
+- upstream update 1.9.2
+  * commands: clarify that 'hg heads foo' shows heads on branch foo
+  * dispatch: don't rewrap aliases that have the same definition
+  * graphlog: attempt to fix index overrun (issue2912)
+  * http: pass user to readauthforuri() (fix 4a43e23b8c55)
+  * http: strip credentials from urllib2 manager URIs (issue2885)
+  * parsers: avoid pointer aliasing
+  * subrepo: fix cloning of repos from urls without slash after host (issue2970)
+  * ui: pass ' ' to raw_input when prompting
+  * url: really handle urls of the form file:///c:/foo/bar/ correctly
+- changes in version 1.9.1
+  * dispatch: make sure global options on the command line take precedence
+  * eol: ignore IOError from deleted files in commitctx
+  * hgcia: set default value of strip to -1 (issue2891)
+  * hgweb: do not ignore [auth] if url has a username (issue2822)
+  * hgweb: handle 'baseurl' configurations with leading slash (issue2934)
+  * hgweb: raw file mimetype guessing configurable, off by default (BC) (issue2923)
+  * httpclient: import ca33b88d143c from py-nonblocking-http (issue2932)
+  * patch: fix parsing patch files containing CRs not followed by LFs
+  * rebase: block collapse with keepbranches on multiple named branches (issue2112)
+  * rebase: reset bookmarks (issue2265 and issue2873)
+  * revert: restore check for uncommitted merge (issue2915) (BC)
+  * revsets: catch type error on tip^p1(tip) (issue2884)
+  * revsets: do the right thing with x^:y (issue2884)
+  * subrepo: handle adding svn subrepo with a svn:external file in it (issue2931)
+  * subrepo: use working copy of .hgsub to filter status (issue2901)
+  * url: store and assume the query part of an url is in escaped form (issue2921)
+  * util: rename the util.localpath that uses url to urllocalpath (issue2875)
+  * verify: filter messages about missing null manifests (issue2900) (forwarded request 80393 from ammler)</comment>
+    <requestid>80398</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>e228322d249f81f9f6be3548b2d8f7d1</srcmd5>
+    <version>1.9.2</version>
+    <time>1314882520</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80398
+</comment>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>020d281749cfeaf76eb94ef6cd4cff27</srcmd5>
+    <version>1.9.2</version>
+    <time>1315233525</time>
+    <user>lrupp</user>
+    <comment>(I would like to fix local service ;-)
+- no need to recompress to bz2 anymore
+- add tests blacklist (forwarded request 80720 from ammler)</comment>
+    <requestid>80799</requestid>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>f8342ccf6e677095af4ded224e8fc752</srcmd5>
+    <version>1.9.2</version>
+    <time>1315233538</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80799
+</comment>
+  </revision>
+  <revision rev="54" vrev="7">
+    <srcmd5>f8342ccf6e677095af4ded224e8fc752</srcmd5>
+    <version>1.9.2</version>
+    <time>1319182176</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>cc6d53eb8b17224283f521cc5dd8d9be</srcmd5>
+    <version>1.9.3</version>
+    <time>1319552186</time>
+    <user>coolo</user>
+    <comment>There seems a new bug in obs causing aggregate not working anymore, so SLE does not build because of missing docutils
+- upstream update 1.9.3
+  * setup: build inotify for sys.platform='linux*'
+  * bundlerepo: add argument check before unlink
+  * hgweb: properly check for bookmarks when drawing graph
+  * http: handle push of bundles &gt; 2 GB again (issue3017)
+  * keyword: preserve file mode when overwriting
+  * osutil: avoid accidentally destroying the True object in isgui (issue2937)
+  * patch: correctly handle non-tabular Subject: line
+  * patch: handle 'gitpatches' being empty, but not none
+  * record: use command wrapper properly for qnew/qrefresh (issue3001)
+  * setdiscovery: fix hang when #heads&gt;200 (issue2971)
+  * ui: also swap sys.stdout with self.fout in _readline
+  * ui: write traceback to self.ferr
+  * url: Remove the proxy env variables only when needed (issue2451)
+  * url: parse fragments first (issue2997)
+  * util: fix crash converting an invalid future date to string
+  * util: wrap lines with multi-byte characters correctly (issue2943) (forwarded request 88942 from ammler)</comment>
+    <requestid>88949</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>93555d71aec1483451cd0f5d926f0ca5</srcmd5>
+    <version>2.0.2</version>
+    <time>1327087479</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100788</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>c245477a55824d7cee5495fe94a1f944</srcmd5>
+    <version>2.1</version>
+    <time>1328717936</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>103192</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>43bd9db054d6586a2029d6466cd9749c</srcmd5>
+    <version>2.1.1</version>
+    <time>1330966823</time>
+    <user>coolo</user>
+    <comment>- update to version 2.1.1
+  * bugfix release
+    http://mercurial.selenic.com/wiki/WhatsNew (forwarded request 107955 from wrosenauer)</comment>
+    <requestid>107956</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>2e6b8ae8d0be11c868caba79d580f360</srcmd5>
+    <version>2.1.2</version>
+    <time>1335190296</time>
+    <user>coolo</user>
+    <comment> (forwarded request 114973 from wrosenauer)</comment>
+    <requestid>114974</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>575a83fec6893ee5176478687739cbcd</srcmd5>
+    <version>2.2.1</version>
+    <time>1337578107</time>
+    <user>coolo</user>
+    <comment> (forwarded request 121208 from wrosenauer)</comment>
+    <requestid>121209</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>e30e5947c912669985a76e7e6712fb99</srcmd5>
+    <version>2.2.2</version>
+    <time>1339701044</time>
+    <user>coolo</user>
+    <comment> (forwarded request 124935 from wrosenauer)</comment>
+    <requestid>124936</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>e30e5947c912669985a76e7e6712fb99</srcmd5>
+    <version>2.2.2</version>
+    <time>1340183696</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>eae94585314c6f09b1dae18ffbe96b13</srcmd5>
+    <version>2.2.3</version>
+    <time>1343677818</time>
+    <user>coolo</user>
+    <comment> (forwarded request 129350 from wrosenauer)</comment>
+    <requestid>129351</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>a5d14befc139bb5debf232c32679ac3c</srcmd5>
+    <version>2.3.1</version>
+    <time>1347347566</time>
+    <user>coolo</user>
+    <comment>- update to version 2.3.1
+  http://mercurial.selenic.com/wiki/WhatsNew
+- Spec file: fixed files-attr-not-set warning (forwarded request 133305 from thomas-schraitle)</comment>
+    <requestid>133314</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>783593baf7a26cd67c3e8c9075a0b232</srcmd5>
+    <version>2.3.2</version>
+    <time>1349673318</time>
+    <user>coolo</user>
+    <comment> (forwarded request 137416 from wrosenauer)</comment>
+    <requestid>137417</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>5a98cb51ea26a13db21851e99ec9469d</srcmd5>
+    <version>2.4</version>
+    <time>1352700264</time>
+    <user>coolo</user>
+    <comment> (forwarded request 140822 from wrosenauer)</comment>
+    <requestid>140825</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>a90abf4c82716f4c016c08ce42eb91f5</srcmd5>
+    <version>2.4.1</version>
+    <time>1356731108</time>
+    <user>namtrac</user>
+    <comment> (forwarded request 146525 from wrosenauer)</comment>
+    <requestid>146528</requestid>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>a90abf4c82716f4c016c08ce42eb91f5</srcmd5>
+    <version>2.4.1</version>
+    <time>1359109441</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>b046be0ec8187cf6818dac20439080e5</srcmd5>
+    <version>2.4.2</version>
+    <time>1359465831</time>
+    <user>coolo</user>
+    <comment>update to verison 2.4.2</comment>
+    <requestid>150008</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>690c2b6956d2d4d0f5e8991353c1c58d</srcmd5>
+    <version>2.5.1</version>
+    <time>1360612224</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>155126</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>a886c9f2752c4a3ad4854125255e4b70</srcmd5>
+    <version>2.5.4</version>
+    <time>1365337412</time>
+    <user>coolo</user>
+    <comment>fixes an urgent regression in merging with subrepos introduced in 2.5 (forwarded request 163009 from thomas-schraitle)</comment>
+    <requestid>163011</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>6e7b477ed12c786b447185e33fefdee8</srcmd5>
+    <version>2.6.1</version>
+    <time>1370431807</time>
+    <user>coolo</user>
+    <comment>- update to version 2.6.1 (2013-05-14)
+    * convert
+        fix bug of wrong CVS path parsing without port number (issue3678)
+    * help/config
+        note 64-bit Windows registry key used with 32-bit Python
+    * hfs+
+        rewrite percent-escaper (issue3918)
+    * hgignore
+        fix regression with hgignore directory matches (issue3921)
+    * highlight
+        fix page layout with empty first and last lines
+    * largefiles
+        check existence of the file with case awareness of the filesystem
+        check unknown files with case awareness of the filesystem
+    * pathencode
+        grow buffers to increase safety margin
+    * revert
+        ensure that copies and renames are honored (issue3920)
+    * subrepo
+        open files in 'rb' mode to read exact data in (issue3926)
+    * windows
+        check target type before actual unlinking to follow POSIX semantics 
+- update to 2.6 (2013-05-01)
+    * addremove
+        improve performance
+    * amend
+        support amending merge changesets (issue3778)
+    * ancestor
+        a new algorithm that is faster for nodes near tip
+    * annotate (forwarded request 176984 from pcerny)</comment>
+    <requestid>176985</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>5fe37ea677c071e0adf98c9d2934a29c</srcmd5>
+    <version>2.6.2</version>
+    <time>1371456670</time>
+    <user>coolo</user>
+    <comment> (forwarded request 179133 from wrosenauer)</comment>
+    <requestid>179134</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>a6c7391f699a320f1a44814543d70367</srcmd5>
+    <version>2.6.3</version>
+    <time>1373985802</time>
+    <user>coolo</user>
+    <comment> (forwarded request 183218 from wrosenauer)</comment>
+    <requestid>183219</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>baa5c0e710a4d6e0afe80e054381a3a6</srcmd5>
+    <version>2.7.1</version>
+    <time>1378416090</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>197447</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>baa5c0e710a4d6e0afe80e054381a3a6</srcmd5>
+    <version>2.7.1</version>
+    <time>1379663282</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>738f254c408290d9cb764db191c9a575</srcmd5>
+    <version>2.7.2</version>
+    <time>1381474758</time>
+    <user>scarabeus_factory</user>
+    <comment> (forwarded request 202783 from wrosenauer)</comment>
+    <requestid>202784</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>2315985c04649a37a4a7322b3005d2a1</srcmd5>
+    <version>2.7.2</version>
+    <time>1382618466</time>
+    <user>scarabeus_factory</user>
+    <comment>- Drop dependency on python-roman, python-docutils' module docutils.utils.roman
+  should be sufficient
+- Drop checks for obsolete distributions
+- Drop dependency on rcs, it doesn't seem to be used anywhere and was
+  added in 2006
+- Depend on openssl-certs if %sles_version is defined (for our IBS friends)
+- Require python-docutils instead of the obsolete docutils
+
+- Refresh mercurial-docutils-compat.diff to fix build in sles11sp3</comment>
+    <requestid>204502</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>1f6bfff1c85cd61f24246f8d82e2a9a9</srcmd5>
+    <version>2.8</version>
+    <time>1385387911</time>
+    <user>coolo</user>
+    <comment> (forwarded request 208128 from wrosenauer)</comment>
+    <requestid>208228</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>ccab7e9cbe6dbe4093a49b2d22b1ed96</srcmd5>
+    <version>2.8.1</version>
+    <time>1387208148</time>
+    <user>coolo</user>
+    <comment> (forwarded request 210838 from wrosenauer)</comment>
+    <requestid>210840</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>c916ca15fd33ff2f69fa9cd83cfaa967</srcmd5>
+    <version>2.8.2</version>
+    <time>1389610990</time>
+    <user>coolo</user>
+    <comment> (forwarded request 213320 from wrosenauer)</comment>
+    <requestid>213321</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>a3bf7d579e1d622e7d0b557c8bdbf1f6</srcmd5>
+    <version>2.9</version>
+    <time>1392731114</time>
+    <user>coolo</user>
+    <comment>New upstream release (forwarded request 222598 from develop7)</comment>
+    <requestid>222599</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>5cb1b5f340f61b4886656bcf8bd0f17b</srcmd5>
+    <version>2.9.1</version>
+    <time>1394806607</time>
+    <user>coolo</user>
+    <comment>New upstream release
+
+- update to version 2.9.1
+  * coal: hgweb style adds extra blank line in file view (issue4136)
+  * hg.openpath: use url.islocal to tell if the path is local (issue3624)
+  * hgweb: hack around mimetypes encoding thinko (issue4160)
+  * hooks: only disable/re-enable demandimport when it's already enabled
+  * merge: add &quot;other&quot; file node in the merge state file
+  * merge: audit the right destination file when merging with dir rename
+  * merge: don't overwrite file untracked after remove, abort with 'untracked files'
+  * merge: record the &quot;other&quot; node in merge state
+  * pathencode: eliminate signed integer warnings
+  * pull: close peer repo on completion (issue2491) (issue2797)
+  * purge: avoid duplicate output for --print (issue4092)
+  * rebase: do not try to reactivate deleted divergent bookmark
+  * resolve: use &quot;other&quot; changeset from merge state (issue4163)
+  * verify: do not prevent verify repository containing hidden changesets (forwarded request 225867 from develop7)</comment>
+    <requestid>225869</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>e3076abecefc0230a2589fa528fa4b3f</srcmd5>
+    <version>3.0</version>
+    <time>1399660227</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>233248</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>8afcf91984f4952a9eb90617a05baefb</srcmd5>
+    <version>3.0.1</version>
+    <time>1402403924</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236590</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>aa372f4af97d5d5486c57e9286fb363e</srcmd5>
+    <version>3.0.2</version>
+    <time>1406146032</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241954</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>c87947496ed5320569aa670caa51d1d7</srcmd5>
+    <version>3.0.2</version>
+    <time>1406869677</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243231</requestid>
+  </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>c87947496ed5320569aa670caa51d1d7</srcmd5>
+    <version>3.0.2</version>
+    <time>1409301887</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>54a15e428fc14f56d3d33bc2279879a7</srcmd5>
+    <version>3.1.1</version>
+    <time>1410795690</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249246</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>ad142e54ed64b713152ad4289cf4e1b2</srcmd5>
+    <version>3.1.2</version>
+    <time>1412533931</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>253951</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>038da6d5f4b83beebb31809c8d65b5e8</srcmd5>
+    <version>3.2.2</version>
+    <time>1418737759</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265345</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>c57a30b73921c849643d5c956f334b76</srcmd5>
+    <version>3.2.2</version>
+    <time>1418840150</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265473</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>c8d507c7b60c93858ae7bdfda4c730b9</srcmd5>
+    <version>3.2.3</version>
+    <time>1419249265</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266066</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>a62995b06a139b244e93fb1301d5de5a</srcmd5>
+    <version>3.3</version>
+    <time>1423130481</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284113</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>d9605c6872a0916006ca986eaaa47aa2</srcmd5>
+    <version>3.3.2</version>
+    <time>1425566451</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288681</requestid>
+  </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>9477f1b52a229ffb8739f0d079f256c9</srcmd5>
+    <version>3.3.2</version>
+    <time>1426495342</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290768</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>a873783a9852242ca4fcce8c502e17c7</srcmd5>
+    <version>3.3.3</version>
+    <time>1428192252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294350</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>761e4fb18473a86cf5fb1fba8133b9ec</srcmd5>
+    <version>3.4</version>
+    <time>1430780173</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305299</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>39d62e7f86063882943fd9932b5d82ad</srcmd5>
+    <version>3.4.2</version>
+    <time>1438421749</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318543</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>cf4417217286971da8bcfa552941139b</srcmd5>
+    <version>3.5</version>
+    <time>1438795078</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320549</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>cab751bdcb5088f44636a23199dc47bd</srcmd5>
+    <version>3.5.1</version>
+    <time>1443071851</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>332004</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>0be1a5f273e2f9fce77ab630eee0b8be</srcmd5>
+    <version>3.5.2</version>
+    <time>1445511345</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336286</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>e74f371443e115444e91a3a360fcdb8e</srcmd5>
+    <version>3.6.1</version>
+    <time>1447353542</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343761</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>3a3069bb5b861193f793233250f159bd</srcmd5>
+    <version>3.6.2</version>
+    <time>1449995891</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>347726</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>91ec6084db463bb50258bef3e0a8d271</srcmd5>
+    <version>3.7.1</version>
+    <time>1455272526</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358813</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>12ff0cd18734605efb2b48c2c427f08e</srcmd5>
+    <version>3.7.2</version>
+    <time>1458333388</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>371295</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>7d32be03f36c0eda5f7890bd210a1eb3</srcmd5>
+    <version>3.7.3</version>
+    <time>1459717498</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>381852</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>856818fd670fecdc8193e2d3a0118e69</srcmd5>
+    <version>3.8.1</version>
+    <time>1463497686</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>394745</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>b3a48992db5cf1840c9c283019bc1251</srcmd5>
+    <version>3.8.2</version>
+    <time>1464075231</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396473</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>280b9be3394733a6f758370da365facb</srcmd5>
+    <version>3.8.3</version>
+    <time>1467359435</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401522</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>46bf102c7a2961bb02ef75928f32b904</srcmd5>
+    <version>3.9</version>
+    <time>1470413626</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416467</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>434dcd6e20269174b4a39a497a3814e0</srcmd5>
+    <version>3.9.1</version>
+    <time>1474976480</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428827</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>bcdc24d360248cb49c042fb1088cea63</srcmd5>
+    <version>4.0</version>
+    <time>1478174177</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438227</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>a7876900fa3809269dbf34430641872c</srcmd5>
+    <version>4.0.2</version>
+    <time>1484131996</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449071</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>4b9db3668b6b24a58de738d63105473f</srcmd5>
+    <version>4.1</version>
+    <time>1486388019</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453983</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>a7e26e407a64e4d40feea3a8b7851c7b</srcmd5>
+    <version>4.1.2</version>
+    <time>1491895776</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485724</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>497362e9cde19756d6cec1085ec8d0e5</srcmd5>
+    <version>4.2</version>
+    <time>1494441347</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493304</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>07a93b91677dd2a81560fcd3c8723ea9</srcmd5>
+    <version>4.2.2</version>
+    <time>1499880668</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508496</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>9cc6c875c59844e61100586d9b2dc514</srcmd5>
+    <version>4.2.3</version>
+    <time>1502963087</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515999</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>a917335678313319e80c8fd406eb868f</srcmd5>
+    <version>4.3.1</version>
+    <time>1503592077</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517363</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>7e495a6ca179a315548129dd3a186a89</srcmd5>
+    <version>4.4</version>
+    <time>1510241120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539146</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>2174db8d49fe3824c2e92da486add0ab</srcmd5>
+    <version>4.4.1</version>
+    <time>1510665834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540758</requestid>
+  </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>58d5fd869b1b4f1779b4d3065f501249</srcmd5>
+    <version>4.4.1</version>
+    <time>1513677119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555201</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>4bc21b0915b1c080b7206eaaf83f0eb9</srcmd5>
+    <version>4.5</version>
+    <time>1517931971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572497</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>7e0abbf3d43f253588d5b1460b011221</srcmd5>
+    <version>4.5.2</version>
+    <time>1520852832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584101</requestid>
+  </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>0376230a55b0aa4fbdcb458cce1bc1a4</srcmd5>
+    <version>4.5.2</version>
+    <time>1521579115</time>
+    <user>dimstar_suse</user>
+    <comment>Add references 4.5.2 changelog: CVE-2018-1000132,bsc#1085211 (forwarded request 587444 from AndreasStieger)</comment>
+    <requestid>587447</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>9e5f9c3c186797b0bd0c465ef7328561</srcmd5>
+    <version>4.5.3</version>
+    <time>1523029548</time>
+    <user>dimstar_suse</user>
+    <comment>Mercurial 4.5.3 (forwarded request 593607 from develop7)</comment>
+    <requestid>593608</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>de1b10030b2a945851daa9399e6795c6</srcmd5>
+    <version>4.6</version>
+    <time>1526737200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606526</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>8957992fe0aabc9614bb9ebd98945d1a</srcmd5>
+    <version>4.6.1</version>
+    <time>1529065989</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615162</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>79f9402e3b57fd8029afb29fb6fac8e8</srcmd5>
+    <version>4.6.2</version>
+    <time>1530866306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620520</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>3f1def96c5ec52f44d92e6d2c83f8672</srcmd5>
+    <version>4.7</version>
+    <time>1534774619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628885</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>4c6a5bc5b142c52d3a545356f16b6978</srcmd5>
+    <version>4.7.1</version>
+    <time>1536327298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633459</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>5f85174e4dc235b17e37878a542cd235</srcmd5>
+    <version>4.7.2</version>
+    <time>1539093071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639720</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>4e50a5513e575f8cefa84e5a0ed5e1ec</srcmd5>
+    <version>4.8</version>
+    <time>1542012649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647104</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>7b150e625d63fc2d136bdb4ceccfbb6e</srcmd5>
+    <version>4.8.1</version>
+    <time>1544441231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>654391</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>6512276c10227403089c299da8e4eb8c</srcmd5>
+    <version>4.8.2</version>
+    <time>1547539874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664058</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>0981e6103fabad31caf4d38160723ce2</srcmd5>
+    <version>4.9</version>
+    <time>1549361889</time>
+    <user>coolo</user>
+    <comment>Mercurial 4.9</comment>
+    <requestid>670876</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>4d6b7c0a75c6872dd0821d8973ae3f74</srcmd5>
+    <version>4.9.1</version>
+    <time>1553262794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686857</requestid>
+  </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>04b6cc6d223374a9937f94dbb419ec03</srcmd5>
+    <version>4.9.1</version>
+    <time>1555329566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693793</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>53b209148e489c26fcc35838dea55ff2</srcmd5>
+    <version>5.0</version>
+    <time>1558129251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703223</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>76771bac27ee5b876bb894453a498d7d</srcmd5>
+    <version>5.0.1</version>
+    <time>1561643598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710975</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>1f03f34116e8a7fbcf3b6b575515b684</srcmd5>
+    <version>5.0.2</version>
+    <time>1563018191</time>
+    <user>dimstar_suse</user>
+    <comment>- Mercurial 5.0.2
+  A regularly scheduled bugfix release.
+  + commands
+    * Help fixes on hg mv and hg cp
+  + unsorted
+    * debugrevlog: fix average size computation for empty data (issue6167)
+    * Fix an obscure data corruption bug with musl libc 
+      (and presumably others). 
+      See https://www.mercurial-scm.org/repo/hg-committed/rev/97ada9b8d51b 
+      for more details.
+      
+</comment>
+    <requestid>714272</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>4aa2726dd143e58b1df1ccb427fd3813</srcmd5>
+    <version>5.1</version>
+    <time>1565179161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720585</requestid>
+  </revision>
+</revisionlist>

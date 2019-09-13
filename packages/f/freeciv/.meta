@@ -1,0 +1,13 @@
+<package name="freeciv" project="openSUSE:Factory">
+  <title>Free Civilization Clone</title>
+  <description>A clone of the well known game Civilization by Microprose.
+
+Every player is the leader of an imaginary nation. The aim of the game
+can be to create a prospering civilization with commerce and knowledge
+exchange or (more often) the extinction of all other civilizations.
+
+To start a new game, first start the server 'civserver,' then start the
+client 'civclient'. Have fun!
+</description>
+  <devel project="games" package="freeciv"/>
+</package>

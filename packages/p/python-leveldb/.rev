@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea4c1096c9d423c988d52a62a17213c6</srcmd5>
+    <version>0.193</version>
+    <time>1441146938</time>
+    <user>dimstar_suse</user>
+    <comment>runtime dependency for deepin-music-player</comment>
+    <requestid>325444</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9ab00a5b5f634f2d7194db225a5d35d9</srcmd5>
+    <version>0.20</version>
+    <time>1514028025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559309</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6a4614e07d10f6378bc9d9da027659e4</srcmd5>
+    <version>0.20</version>
+    <time>1554458443</time>
+    <user>dimstar_suse</user>
+    <comment>- Execute testsuite
+- Run fdupes</comment>
+    <requestid>690283</requestid>
+  </revision>
+</revisionlist>

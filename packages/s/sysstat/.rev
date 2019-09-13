@@ -1,0 +1,690 @@
+<revisionlist>
+  <revision rev="1" vrev="36">
+    <srcmd5>386d64059a6b072d81352b4630221e7d</srcmd5>
+    <version>6.0.2</version>
+    <time>1168904315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>33c54a44695acbb2d3959d292efaf714</srcmd5>
+    <version>7.0.4</version>
+    <time>1170921457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>472f1ab373207ca07e8aad1f23c1f4b8</srcmd5>
+    <version>7.0.4</version>
+    <time>1170980348</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>280001e4099af0e92604141ef71f718c</srcmd5>
+    <version>7.1.2</version>
+    <time>1173919814</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e0359c9616e0a99d748c46e2aa894e4c</srcmd5>
+    <version>7.1.3</version>
+    <time>1176850801</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ba670d2a7f6a2ec00e8ccb4a3add75e</srcmd5>
+    <version>7.1.4</version>
+    <time>1178229919</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>b00487b5ab888096b5c75bd5429a3811</srcmd5>
+    <version>7.1.4</version>
+    <time>1181054399</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>11252950a83655dd4479778f28903b90</srcmd5>
+    <version>7.1.5</version>
+    <time>1181666381</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d7dc4e33e71fe76e05ac1f85fe682dc6</srcmd5>
+    <version>7.1.6</version>
+    <time>1184087420</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>17a2e7af6ffd87ea6903be156f3cd792</srcmd5>
+    <version>8.0.1</version>
+    <time>1191423771</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>9f8bd0d73c6b290b1825c3c6cd4ad764</srcmd5>
+    <version>8.0.1</version>
+    <time>1192552183</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5ffb2967bbc2c6c97c8f6ad134b1b1a9</srcmd5>
+    <version>8.0.2</version>
+    <time>1193741420</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>04299ed7368cc47d57d3183954b43d3e</srcmd5>
+    <version>8.0.3</version>
+    <time>1195612072</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8ba39c2b4e8052f81ea868af12f3e301</srcmd5>
+    <version>8.0.4</version>
+    <time>1199931251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="19">
+    <srcmd5>bc846a338bce7ff68e41fd07b037211b</srcmd5>
+    <version>8.0.4</version>
+    <time>1207182236</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="33">
+    <srcmd5>dc3f945d2b3019cf32271af89aa907db</srcmd5>
+    <version>8.0.4</version>
+    <time>1214430889</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="34">
+    <srcmd5>535b68ad288c3a99820b55dab158c2fd</srcmd5>
+    <version>8.0.4</version>
+    <time>1214495608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>527a91034e086f0b975251ca5911b459</srcmd5>
+    <version>8.1.5</version>
+    <time>1219436575</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>9636ddb51b0239609e0db07cc7a283c1</srcmd5>
+    <version>8.1.5</version>
+    <time>1220884436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>c964cfbf86ad5ddaa6e99f43a14617ea</srcmd5>
+    <version>8.1.5</version>
+    <time>1222441006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e418bafd42eb753885544c336b1c7259</srcmd5>
+    <version>9.0.0</version>
+    <time>1236005879</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>98308fcc92afedc538caba1fc00174c3</srcmd5>
+    <version>9.0.1</version>
+    <time>1236638089</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e85faf93db70788daadccbefcf54d386</srcmd5>
+    <version>9.0.3</version>
+    <time>1243940428</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>f693ba81c63fcb2f9137b1f843bef06d</srcmd5>
+    <version>9.0.3</version>
+    <time>1244638662</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8f67864aeb3dfbbe9790266e4c77ffbb</srcmd5>
+    <version>9.0.4</version>
+    <time>1249678185</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>8f67864aeb3dfbbe9790266e4c77ffbb</srcmd5>
+    <version>9.0.4</version>
+    <time>1249678185</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>304243015f0e94e321db2b9c9cdf0c93</srcmd5>
+    <version>9.0.4</version>
+    <time>1268926272</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>3d02dbf62b5a8c94067379b678668519</srcmd5>
+    <version>9.0.4</version>
+    <time>1275065301</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysstat based on submit request 40794 from user puzel
+</comment>
+    <requestid>40794</requestid>
+  </revision>
+  <revision rev="29" vrev="7">
+    <srcmd5>3d02dbf62b5a8c94067379b678668519</srcmd5>
+    <version>9.0.4</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>3d02dbf62b5a8c94067379b678668519</srcmd5>
+    <version>9.0.4</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>afdc9dad79ea3b10ccc71a17e505323a</srcmd5>
+    <version>9.0.4</version>
+    <time>1283164892</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysstat based on submit request 46603 from user elvigia
+</comment>
+    <requestid>46603</requestid>
+  </revision>
+  <revision rev="32" vrev="9">
+    <srcmd5>9ab22b1d8a0a10b2d56e402e4bb11ec0</srcmd5>
+    <version>9.0.6.1</version>
+    <time>1287758032</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51210 from user oertel
+</comment>
+    <requestid>51210</requestid>
+  </revision>
+  <revision rev="33" vrev="10">
+    <srcmd5>f057d6ec1d82c17d371d03aa63de8f80</srcmd5>
+    <version>9.0.6.1</version>
+    <time>1287758038</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51210
+</comment>
+  </revision>
+  <revision rev="34" vrev="11">
+    <srcmd5>a6da7520161002b83b0db916f7a4486e</srcmd5>
+    <version>9.0.6.1</version>
+    <time>1288702426</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51830 from user coolo
+</comment>
+    <requestid>51830</requestid>
+  </revision>
+  <revision rev="35" vrev="12">
+    <srcmd5>6cbb30f86c44dfa293496d8049273925</srcmd5>
+    <version>9.0.6.1</version>
+    <time>1288702433</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51830
+</comment>
+  </revision>
+  <revision rev="36" vrev="15">
+    <srcmd5>6cbb30f86c44dfa293496d8049273925</srcmd5>
+    <version>9.0.6.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="37" vrev="16">
+    <srcmd5>fd409208d8fc94c498273da8a43a381f</srcmd5>
+    <version>9.0.6.1</version>
+    <time>1299507397</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63547 from user puzel
+</comment>
+    <requestid>63547</requestid>
+  </revision>
+  <revision rev="38" vrev="17">
+    <srcmd5>df2c6a2da61cf2c48fa0732900cf33d4</srcmd5>
+    <version>9.0.6.1</version>
+    <time>1299507404</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63547
+</comment>
+  </revision>
+  <revision rev="39" vrev="16">
+    <srcmd5>bbc94fe96bfc75eeeeaa3331a10af554</srcmd5>
+    <version>10.0.1</version>
+    <time>1309246534</time>
+    <user>saschpe</user>
+    <comment>update to 10.0.1</comment>
+    <requestid>74656</requestid>
+  </revision>
+  <revision rev="40" vrev="17">
+    <srcmd5>af29656c6fcc42f7c6ab53207b6c32ce</srcmd5>
+    <version>10.0.1</version>
+    <time>1309246546</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74656
+</comment>
+  </revision>
+  <revision rev="41" vrev="18">
+    <srcmd5>b703191dd03d7bdc2dd0120c901fdb6d</srcmd5>
+    <version>10.0.1</version>
+    <time>1313070066</time>
+    <user>saschpe</user>
+    <comment>enable boot.sysstat service on new installation (bnc#711574)</comment>
+    <requestid>78495</requestid>
+  </revision>
+  <revision rev="42" vrev="19">
+    <srcmd5>f2cab2c1ad6607c99abd3c9d555cb2a6</srcmd5>
+    <version>10.0.1</version>
+    <time>1313070076</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78495
+</comment>
+  </revision>
+  <revision rev="43" vrev="18">
+    <srcmd5>3ac56c850782cf2ba240b13263ab3af7</srcmd5>
+    <version>10.0.2</version>
+    <time>1316504197</time>
+    <user>lrupp</user>
+    <comment>update to 10.0.2</comment>
+    <requestid>83377</requestid>
+  </revision>
+  <revision rev="44" vrev="19">
+    <srcmd5>a8f5e5660aca204c0bba2bf8773c83fc</srcmd5>
+    <version>10.0.2</version>
+    <time>1318941011</time>
+    <user>saschpe</user>
+    <comment>- Add systemd service for sysstat (bnc#723858). (forwarded request 88237 from fcrozat)</comment>
+    <requestid>88241</requestid>
+  </revision>
+  <revision rev="45" vrev="21">
+    <srcmd5>a8f5e5660aca204c0bba2bf8773c83fc</srcmd5>
+    <version>10.0.2</version>
+    <time>1319182501</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="46" vrev="22">
+    <srcmd5>54c7cb15e3d5a817ff7335d0e3697049</srcmd5>
+    <version>10.0.2</version>
+    <time>1319716415</time>
+    <user>coolo</user>
+    <comment>- Generate the reports before midnight and simplify the cron file
+  (bnc#720609) 
+
+- don't enable sysstat by default (bnc#725791)
+- don't use /var/lock (bnc#725785)</comment>
+    <requestid>89482</requestid>
+  </revision>
+  <revision rev="47" vrev="23">
+    <srcmd5>403ecc0647c81e2fc9a19edf27337bff</srcmd5>
+    <version>10.0.2</version>
+    <time>1320937518</time>
+    <user>coolo</user>
+    <comment>- add sysstat-fix-iostat-crash.patch (bnc#729130)</comment>
+    <requestid>90804</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ac555fdafa9a672843b835b4b5b95fb7</srcmd5>
+    <version>10.0.3</version>
+    <time>1325658719</time>
+    <user>coolo</user>
+    <comment>- update to sysstat-10.0.3 
+  * sadf: New output format added: JSON (JavaScript Object
+    Notation). This format can be displayed with sadf's option -j.
+  * [Jürgen Heinemann]: Fixed a bug in sadf XML output.
+  * [Jürgen Heinemann]: Fixed several bugs in DTD and XSD
+    documents.
+  * [Petr Uzel]: Fixed random crash with iostat when called with
+    option -N [NOVELL Bug#729130].
+  * sadf manual page updated.
+- drop sysstat-fix-iostat-crash.patch (merged upstream)</comment>
+    <requestid>97672</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>08ed10f4da8ba1288a85a0ed982fbbbf</srcmd5>
+    <version>10.0.3</version>
+    <time>1329391706</time>
+    <user>coolo</user>
+    <comment>- pass '-S ALL' to first run of sadc after boot to properly
+  include disk and interrupt statistics in the reports (bnc#746517)</comment>
+    <requestid>105166</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9b9e927f59b6331ebcb0bc5f729fd88f</srcmd5>
+    <version>10.0.4</version>
+    <time>1331900798</time>
+    <user>coolo</user>
+    <comment>- update to 10.0.4</comment>
+    <requestid>109176</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c12f4c8c303a59b61693784e24830dec</srcmd5>
+    <version>10.0.5</version>
+    <time>1337578363</time>
+    <user>coolo</user>
+    <comment>- update to 10.0.5
+  * [Alain Chereau]: Options -g and -T added to iostat. These options
+    enable the user to display statistics for groups of devices.
+  * [Vitezslav Cizek]: sadc now overwrites its standard daily data
+    file when this file is from a past month.
+    - fixes bnc#758356
+  * sadf: Change time format from HH-MM-SS to HH:MM:SS in the
+    various reports displayed by sadf.
+  * XSD document updated: Added a maxOccurs indicator for the timestamp element.
+  * Added option --enable-collect-all to configure script. This
+    option tells sadc to collect all possible activities, including optional ones.
+  * [Peter Schiffer]: Set exit code to 0 for sa2 shell script.
+  * NLS updated. Croatian translation added.
+  * iostat and sadc manual pages updated.
+  * FAQ updated.
+  * CREDITS file updated. (forwarded request 121313 from vitezslav_cizek)</comment>
+    <requestid>121362</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>c12f4c8c303a59b61693784e24830dec</srcmd5>
+    <version>10.0.5</version>
+    <time>1340184252</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>4adea0a07f64a9a55f4ccb58ee7c7afe</srcmd5>
+    <version>10.0.5</version>
+    <time>1350590619</time>
+    <user>coolo</user>
+    <comment>- increased the default number of days for how long will sysstat
+  keep the log files (fate#313767) (forwarded request 138374 from vitezslav_cizek)</comment>
+    <requestid>138470</requestid>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>45792e46c812fa2d55460f8431c1a1ea</srcmd5>
+    <version>10.0.5</version>
+    <time>1352908972</time>
+    <user>coolo</user>
+    <comment>- fixed two typos in spec related to service unit, which prevented
+  succesful startup (bnc#783886)
+- service unit included hardcoded /usr/lib, so patching
+  sysstat.service to use correct libdir (forwarded request 141157 from vitezslav_cizek)</comment>
+    <requestid>141228</requestid>
+  </revision>
+  <revision rev="55" vrev="7">
+    <srcmd5>45792e46c812fa2d55460f8431c1a1ea</srcmd5>
+    <version>10.0.5</version>
+    <time>1359110457</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="56" vrev="9">
+    <srcmd5>45792e46c812fa2d55460f8431c1a1ea</srcmd5>
+    <version>10.0.5</version>
+    <time>1379664756</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="10">
+    <srcmd5>1b18496d08704ecb598ecc2ea9aab0f0</srcmd5>
+    <version>10.0.5</version>
+    <time>1383144846</time>
+    <user>scarabeus_factory</user>
+    <comment>Made required changes (forwarded request 205008 from posophe)</comment>
+    <requestid>205140</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>69a980ce7b417d7a8c76312f0a26c320</srcmd5>
+    <version>10.2.0</version>
+    <time>1383656008</time>
+    <user>coolo</user>
+    <comment>- update to 10.2.0
+  * This version mainly focuses on pidstat, with several bug fixes
+    and the addition of a new option (-v) enabling the user to
+    display the number of threads and file descriptors associated
+    with tasks.
+- refreshed some of the patches
+- move the lib64 patching from %prep (overwrites service unit on
+  every quilt setup) (forwarded request 205712 from vitezslav_cizek)</comment>
+    <requestid>205820</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>c5f6edc15695183b23933e021bd87447</srcmd5>
+    <version>10.2.1</version>
+    <time>1390976232</time>
+    <user>coolo</user>
+    <comment>- update to 10.2.1
+  * Added new --enable-copy-only option to configure script.
+    This option may be useful when creating sysstat package to
+    make sure that files are only copied to $DESTDIR and that
+    no service is activated (eg. for distro using systemd).
+  * pidstat: Add a new metric to pidstat I/O statistics:
+    per-task block I/O delays.
+  * Take $DESTDIR variable into account when installing sysstat
+    service used by systemd.
+  * sadf -H, sadf -j and sadf -x now also display the file
+    creation time.
+  * Use sizeof() instead of hardcoded size values.
+  * pidstat manual page updated.
+  * Cosmetic fixes.
+  * NLS updated.
+- rename nfsiostat to nfsiostat-sysstat because of a name collision
+  with a binary from nfs-utils (bnc#814447)
+  * added sysstat-rename_nfsiostat.patch (forwarded request 215264 from vitezslav_cizek)</comment>
+    <requestid>215345</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>d54307fea1b0263003f8b5c1f937da17</srcmd5>
+    <version>10.2.1</version>
+    <time>1399032209</time>
+    <user>coolo</user>
+    <comment>- remove %ghost in /var/run, see
+  http://lists.opensuse.org/opensuse-packaging/2014-04/msg00046.html (forwarded request 231642 from coolo)</comment>
+    <requestid>231812</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>c120a5294b920a4021b82ea4a39a8bf5</srcmd5>
+    <version>11.0.0</version>
+    <time>1405685037</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241404</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>c120a5294b920a4021b82ea4a39a8bf5</srcmd5>
+    <version>11.0.0</version>
+    <time>1409303440</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>a01cd3bbf7d1f350f1ebdc47cc5f7ef3</srcmd5>
+    <version>11.0.3</version>
+    <time>1424622424</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287196</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>66353b9a9c69f87d09b5fbe6bc093bf3</srcmd5>
+    <version>11.0.4</version>
+    <time>1431981123</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307716</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e22f110bc82609dbe5a82a7675bd7ff1</srcmd5>
+    <version>11.0.5</version>
+    <time>1435171933</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313195</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>ee85806b51175c72e3d07066433e0749</srcmd5>
+    <version>11.0.6</version>
+    <time>1441822885</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330038</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>5381968487ca69499c618690884f1ff8</srcmd5>
+    <version>11.0.8</version>
+    <time>1448400814</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345006</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>720fc213af4a43edb809833d3c42d807</srcmd5>
+    <version>11.0.8</version>
+    <time>1464484349</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397914</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>fb8df5ed3fb4fc1af89e006cbcfad2d6</srcmd5>
+    <version>11.4.3</version>
+    <time>1487592925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.4.3 release
+  * check the CHANGES file for detailed informations, too long
+- Refresh patches:
+  * sysstat-8.0.4-sysconfdir.diff
+  * sysstat-8.1.6-sa1sa2lock.diff
+- Remove patch that was converted to sed:
+  * sysstat-9.0.4-no-build-date.patch</comment>
+    <requestid>459005</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>3537cb4fbdb38918a43576c2529da12d</srcmd5>
+    <version>11.4.3</version>
+    <time>1491896299</time>
+    <user>maxlin_factory</user>
+    <comment>- Properly specify you want to be started by multi-user.target
+  bsc#1031674</comment>
+    <requestid>484039</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>202e7c906ca44d7dec921cd16bf482fc</srcmd5>
+    <version>11.6.1</version>
+    <time>1509722809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538307</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>b94287475697330aa62c4893cc0fade3</srcmd5>
+    <version>11.6.3</version>
+    <time>1524838189</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 11.6.3:
+  * A possible crash related to the new binary format used by sar, which could
+    happen when buffers needed to be reallocated to accomodate more devices
+    added to the system,
+  * The %CPU value displayed by pidstat for processes using more than 100%
+    of a core.
+
+- Remove Requires on update-desktop-files on subpackage, it is
+  useless.</comment>
+    <requestid>601842</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>9164d015e2064c950b9f0ccd130246db</srcmd5>
+    <version>11.6.4</version>
+    <time>1529667354</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>618309</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>5a25992cc93d33c3d471266c576490f5</srcmd5>
+    <version>12.0.1</version>
+    <time>1534322285</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 12.0.1:
+  * sadf: SVG: Remove id tag from individual graphs. Use activities
+    identification numbers for id tags.
+  * sadf: SVG: Add new option &quot;showtoc&quot;, which can be used to display
+    the list of activities for which there are graphs (&quot;table of
+    contents&quot;).
+  * sadf: SVG: Improve output for softnet activity: Add a discontinuity in
+    graph when corresponding CPU is marked offline.
+  * sadf: SVG: Improve function used to assess SVG canvas height.
+  * sadf: SVG: Fix core dumped on buffers reallocation.
+  * sar/sadf: Devices list management code refactoring.
+  * sa_conv.c: Use write_all() function instead of write() to handle possible
+    signal interruptions.
+  * spec file updated: No longer create a debug package.
+  * Remove many warnings from gcc v7/v8.
+  * README file updated.
+  * Manual pages updated.
+
+- Update to 11.6.5:
+  * sadf: SVG: Display graphs for swap utilization in packed mode.
+  * sadf: SVG: Don't take into account activities with no graphs when
+    calculating canvas height.
+  * sadf: SVG: Don't insert a gap in SVG output if an activity is not
+    displayed.
+  * sadf: SVG: Fix possible negative value in graphs coordinates.</comment>
+    <requestid>629179</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>d39a9434b1dcbeebe66ff4fecb235e4b</srcmd5>
+    <version>12.0.2</version>
+    <time>1539758502</time>
+    <user>dimstar_suse</user>
+    <comment>- Up to 12.0.2:
+  * This version mainly includes bugfixes</comment>
+    <requestid>642241</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>92b0b5d89e76e2448348f0766a505308</srcmd5>
+    <version>12.0.2</version>
+    <time>1540200177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642999</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>9820db5486d06ea1b754ff1d3f530c33</srcmd5>
+    <version>12.0.2</version>
+    <time>1542124944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648619</requestid>
+  </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>2c5ba3b60b9ceeff3ef79f99f6b52bcd</srcmd5>
+    <version>12.0.2</version>
+    <time>1543400100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652184</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>90664920cddcc4c0dff01e2abe79b1f1</srcmd5>
+    <version>12.0.3</version>
+    <time>1551023760</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673022</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>518138d9c1af8684e76b80d44684cdf3</srcmd5>
+    <version>12.0.5</version>
+    <time>1559642935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706769</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>0a7fe0b92ef39fea783d58773dee3b43</srcmd5>
+    <version>12.0.6</version>
+    <time>1567168773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726603</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,290 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9fca1f8bb851ad5311a0edcc7216241e</srcmd5>
+    <version>1.74</version>
+    <time>1168903870</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>01570fbbb2fbe447c6ab10e0f643c245</srcmd5>
+    <version>1.76</version>
+    <time>1176394517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>24763891c40c7cd20a31c4dc2ef1fa80</srcmd5>
+    <version>1.77</version>
+    <time>1179395532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>522183c6c1f331c1e485809b9c185de9</srcmd5>
+    <version>2.02</version>
+    <time>1197573710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9fed8684df712a700fd963294c96b975</srcmd5>
+    <version>2.03</version>
+    <time>1214262126</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ab207b0a192e87272cce0335070cfe35</srcmd5>
+    <version>2.04</version>
+    <time>1221235917</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ab207b0a192e87272cce0335070cfe35</srcmd5>
+    <version>2.04</version>
+    <time>1221235917</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>a1ac817b2037c81a478a261bbe32c00d</srcmd5>
+    <version>2.04</version>
+    <time>1263293305</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-MailTools based on submit request 29245 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>338b59ff5dbf86f9465867c6b5f3134f</srcmd5>
+    <version>2.05</version>
+    <time>1263489333</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-MailTools based on submit request 29462 from user anicka
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3c0c812f578fed48a4d219fb107e501a</srcmd5>
+    <version>2.06</version>
+    <time>1266974663</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-MailTools based on submit request 33264 from user anicka
+</comment>
+    <requestid>33264</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>73b35bedbf0e37135c9216736437e3b7</srcmd5>
+    <version>2.06</version>
+    <time>1268925530</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>73b35bedbf0e37135c9216736437e3b7</srcmd5>
+    <version>2.06</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>73b35bedbf0e37135c9216736437e3b7</srcmd5>
+    <version>2.06</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9a82163293f5914bdd3403653f7a8844</srcmd5>
+    <version>2.07</version>
+    <time>1286311005</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-MailTools based on submit request 49793 from user anicka
+</comment>
+    <requestid>49793</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0e06b160bddc469e48f62c86107ce80b</srcmd5>
+    <version>2.07</version>
+    <time>1287486529</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51005 from user coolo
+</comment>
+    <requestid>51005</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>a952a56b5fd0b46644df02e572796bf0</srcmd5>
+    <version>2.07</version>
+    <time>1287486534</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51005
+</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>f5ec17b77e817f177f78bbf7f7e3f1d9</srcmd5>
+    <version>2.07</version>
+    <time>1291583084</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54587 from user coolo
+</comment>
+    <requestid>54587</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>97de640ebcfb4015fc1f4c739c58253b</srcmd5>
+    <version>2.07</version>
+    <time>1291583091</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54587
+</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>97de640ebcfb4015fc1f4c739c58253b</srcmd5>
+    <version>2.07</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>41bbf7aa9d776e11bc6cf98bbcc4739c</srcmd5>
+    <version>2.08</version>
+    <time>1309516754</time>
+    <user>saschpe</user>
+    <comment>- corrected license (same as Perl)
+- removed authors
+
+- update to 2.08:
+  * respect errors on closing an Mail::Mailer::smtp/::smtps connection
+  * Mail::Internet should accept Net::SMTP::SSL as well (RT#68590)</comment>
+    <requestid>73959</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>253592cee9aad6a2c1206e199d12a4b8</srcmd5>
+    <version>2.08</version>
+    <time>1309516768</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73959
+</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>253592cee9aad6a2c1206e199d12a4b8</srcmd5>
+    <version>2.08</version>
+    <time>1319182286</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>709c3415bbcc75e729481953f4212c09</srcmd5>
+    <version>2.08</version>
+    <time>1323193444</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>565758cb16919f0af523fdfac31158eb</srcmd5>
+    <version>2.09</version>
+    <time>1331627885</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108970</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>565758cb16919f0af523fdfac31158eb</srcmd5>
+    <version>2.09</version>
+    <time>1340183873</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>565758cb16919f0af523fdfac31158eb</srcmd5>
+    <version>2.09</version>
+    <time>1359109735</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>674fc672ac6e194c4692b43095eb7e83</srcmd5>
+    <version>2.12</version>
+    <time>1373982980</time>
+    <user>coolo</user>
+    <comment>- update to 2.12</comment>
+    <requestid>183078</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>674fc672ac6e194c4692b43095eb7e83</srcmd5>
+    <version>2.12</version>
+    <time>1379663740</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>674fc672ac6e194c4692b43095eb7e83</srcmd5>
+    <version>2.12</version>
+    <time>1409302372</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c5fac330ed8b513eb9210875739d25a6</srcmd5>
+    <version>2.14</version>
+    <time>1429989419</time>
+    <user>coolo</user>
+    <comment>- updated to 2.14
+   see /usr/share/doc/packages/perl-MailTools/ChangeLog
+  version 2.14: Fri Nov 21 17:12:42 CET 2014
+  
+  	Fixes:
+  
+  	- threads and Mail::Field initiation
+  	  rt.cpan.org#99153 [Autumn Lansing] and [Arne Becker]
+  
+  	Improvements:
+  
+  	- warn when loading of some Mail::Field::* fails [Arne Becker]
+  
+  version 2.13: Sun Jan  5 18:52:25 CET 2014
+  
+  	Fixes:
+  
+  	- optional 'from' and 'on' component in in-reply-to are comments
+  	  rt.cpan.org#89371 [Ward Vandewege]
+  	- mailcap \\ -&gt; \
+  	  rt.cpan.org#89802 [Kevin Ryde]
+  
+  	Improvements:
+  
+  	- fix typos  rt.cpan.org#87188 [D Steinbrunner]
+- remove obsolete incsearch.diff</comment>
+    <requestid>297718</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6297c475604556c5570360bc29b54424</srcmd5>
+    <version>2.16</version>
+    <time>1462865150</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393899</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a2a9197877965a9648dd0587675aea99</srcmd5>
+    <version>2.18</version>
+    <time>1464964474</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397868</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>576f970c9dd223862328d7fe46c7a0df</srcmd5>
+    <version>2.19</version>
+    <time>1503999268</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518508</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>38c282763f969e9521957b9d2084a4d2</srcmd5>
+    <version>2.20</version>
+    <time>1518281651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573784</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>83252ad068d5718b6db7d09c925b6e54</srcmd5>
+    <version>2.21</version>
+    <time>1559580564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704716</requestid>
+  </revision>
+</revisionlist>

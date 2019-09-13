@@ -1,0 +1,321 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b6748ba2fe55ae423f50fdd6122288ed</srcmd5>
+    <version>1.2.1</version>
+    <time>1381475038</time>
+    <user>scarabeus_factory</user>
+    <comment>Update license statement to allow for GPL-2.0+, and copyright notices in
+the sources.</comment>
+    <requestid>201565</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c44fd4779ee99a5d2ebbe6162e87bce</srcmd5>
+    <version>1.2.1</version>
+    <time>1382174005</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>203830</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>416dd8a4e64b6f7010dccf3410c9b8c5</srcmd5>
+    <version>1.2.1</version>
+    <time>1396020493</time>
+    <user>coolo</user>
+    <comment>- sbd: Allow the watchdog to be explicitly disabled (bnc#865365)
+- rpm: use the short git hash in the changelog from now on.
+- cs: b96ac28
+
+- systemd: ensure that sbd is activated after systemd module loading and
+  the iSCSI initator (bnc#869612)
+- Start-up: make sbd wait a configurable amount of time for devices to
+  appear on boot (bnc#869612)
+- Downgrade the logging during the initial wait to a debug log to avoid
+  log flooding.
+- cs: 512b71dc209744e505bf62d7ccddb70854fe7407</comment>
+    <requestid>227767</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4e21a81a94c817bed72a05d70267c179</srcmd5>
+    <version>1.2.1</version>
+    <time>1401644475</time>
+    <user>coolo</user>
+    <comment>- added necessary macros for systemd files (forwarded request 235160 from jsegitz)</comment>
+    <requestid>235809</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4cbf9a1f9a02c08288556ea3d41c6548</srcmd5>
+    <version>1.2.1+git.1401980427.6f717f5</version>
+    <time>1403508230</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>238065</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>718e71b9f4dc1c6b8cc339f4588dc22a</srcmd5>
+    <version>1.2.1.git.1408100832.f0a4a63</version>
+    <time>1408957452</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>245770</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>718e71b9f4dc1c6b8cc339f4588dc22a</srcmd5>
+    <version>1.2.1.git.1408100832.f0a4a63</version>
+    <time>1409303318</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d5edf4762bffc46dd980e7b479de3d0a</srcmd5>
+    <version>1.2.1.git.1409904429.39dee2a</version>
+    <time>1446764652</time>
+    <user>dimstar_suse</user>
+    <comment>- pacemaker: Prevent potential segfault caused by use-of-NULL on checking node state (bsc#950415)
+  * bug-950415_sbd-pacemaker-segfault.patch
+
+- Update to version 1.2.1.git.1409904429.39dee2a:
+  + Medium: adjust timeout for s390(x) to be compatible with vmwatchdog (bnc#895103)</comment>
+    <requestid>342422</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>91517b9590d4ce98cfff1071325e159b</srcmd5>
+    <version>1.2.1.git.1409904429.39dee2a</version>
+    <time>1457353427</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362999</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>13701d1b05c418c77eaf6e3cf78ca269</srcmd5>
+    <version>1.2.1.git.1463482437.d6bd23a</version>
+    <time>1466681753</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403351</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8a7f9a8b153b2c1e8362b36040584224</srcmd5>
+    <version>1.2.1.git.1463482437.d6bd23a</version>
+    <time>1467360068</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405674</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>6265d8c67c47eea415e43ea5ab4ea312</srcmd5>
+    <version>1.2.1.git.1463482437.d6bd23a</version>
+    <time>1469081986</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412391</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>0cf75b1859788e98be0f06b49e68905f</srcmd5>
+    <version>1.2.1.git.1463482437.d6bd23a</version>
+    <time>1472731415</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424066</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>18c155d4445464cb1cf8a0317cbb8a6a</srcmd5>
+    <version>1.2.1</version>
+    <time>1489345335</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477300</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>c10fbd40264180839a61b31b1d652303</srcmd5>
+    <version>1.2.1</version>
+    <time>1490965743</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>482549</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1cfcdb04e0c48115ce362b685995fca4</srcmd5>
+    <version>1.3.0</version>
+    <time>1497274419</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>502575</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>bc70792187f2b681ff308c09384340c0</srcmd5>
+    <version>1.3.0</version>
+    <time>1500275497</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>510262</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>325302a9754608c751a72ed3926a58fd</srcmd5>
+    <version>1.3.0</version>
+    <time>1500670251</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511847</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b1483d5b3ccc7254652182261a481b97</srcmd5>
+    <version>1.3.1+20171130.ecbdf9c</version>
+    <time>1512216723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.1+20171130.ecbdf9c:
+  * Build: cluster-servant: Compile with pacemaker-2.0
+
+- Fix: build error with glibc 2.25
+- Fix: gcc format string error
+- Upstream version cs: a7a7d792b9922f19bbace276c8a154e157a4f99c
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+- Bump to 1.3.1
+- Add commands to test/query watchdogs
+- Upstream version cs: a74b4d25a3eb93fe1abbe6e3ebfd2b16cf48873f (v1.3.1)
+
+- man: Call &quot;-P&quot; option &quot;Pacemaker integration&quot; in the description (bsc#1033600)
+- sbd-inquisitor: Do not use watchdog if the conflicting options &quot;-W&quot; and &quot;-w /dev/null&quot; are both supplied (bsc#1047376)
+  * Drop bug-1047376_sbd-not-use-watchdog-conflicting-options.patch which has been merged upstream
+- sbd-inquisitor: Enable pacemaker integration by default as advertised in sysconfig.sbd (bsc#1046421, bsc#1033600)
+  * Drop bug-1046421_sbd-enable-pacemaker-integration-by-default.patch which has been merged upstream
+- sbd-inquisitor: Respect the obsolete option SBD_WATCHDOG for backward compatibility (bsc#1047372)
+  * Drop bug-1047372_sbd-SBD_WATCHDOG-compatibility.patch which has been merged upstream
+- Upstream version cs: 681ce1acbda12754eb97fb91f9a7306ff368452f
+
+- cluster-servant: check for corosync 2Node mode
+- disk-servant: signal reset request via exit-code
+- improve reboot after sysrq_trigger
+- Upstream version cs: 8a0800cc906d7bb8f8ac0d5664bdf691b2ca7690
+
+- sbd-inquisitor: Do not create duplicate servants (bsc#1033934, bsc#1065748)
+- sbd-inquisitor: Correctly look up servant by device name (bsc#1033934, bsc#1065748)</comment>
+    <requestid>547090</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c3c7eec4072e93ba88e3a1e245b0afdd</srcmd5>
+    <version>1.3.1+20171220.1e93740</version>
+    <time>1514502308</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.1+20171220.1e93740:
+- Fix: systemd: make pacemaker &amp; dlm wait for sbd-start to complete
+- Doc: sbd.sysconfig: mention timeout caveat with SBD_DELAY_START (bsc#1074038)
+
+- Build: cluster-servant: Compile with pacemaker-2.0</comment>
+    <requestid>559652</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4c8069851f9bfeba800f49026a30a1f8</srcmd5>
+    <version>1.3.1+20180202.cc3e4cb</version>
+    <time>1517932108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572562</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>5649e68a5365d6c41fc00072b73d4035</srcmd5>
+    <version>1.3.1+20180202.cc3e4cb</version>
+    <time>1518187923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574442</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9c8d6131ebb8c6b64332ce3cc71c3a94</srcmd5>
+    <version>1.3.1+20180316.8873890</version>
+    <time>1521499104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588123</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8cdd9c0e53042f3473a25a2571e5bf3d</srcmd5>
+    <version>1.3.1+20180507.e102d9e</version>
+    <time>1526489027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.1+20180507.e102d9e:
+- sbd-md: return error if faied to list any devices (bsc#1086650)
+- sbd-cluster: let scan do the job of proc-parsing
+- sbd-cluster: search for pacemaker-remoted
+
+- Update to version 1.3.1+20180502.970d913:
+- Log: upgrade important messages and downgrade unimportant ones (bsc#1091839)
+- Log: change sbd's default logging level to LOG_NOTICE (bsc#1091839) (forwarded request 609119 from yan_gao)</comment>
+    <requestid>609120</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9875327f2c12a5daa94e434ed037f26e</srcmd5>
+    <version>1.3.1+20180703.f95b98e</version>
+    <time>1533045595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626137</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>36a4b230b53d15997b2d4032a2c9d341</srcmd5>
+    <version>1.3.1+20180920.bf16663</version>
+    <time>1538672566</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.1+20180920.bf16663:
+- sbd-common: avoid statting potential links
+- sbd-inquisitor: SBD_DELAY_START can be configured with a delay value (bsc#1107321)
+- sbd-common: don't follow symlinks outside /dev for watchdog (forwarded request 639920 from yan_gao)</comment>
+    <requestid>639933</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>bb81060ae2bc36fc870137579e790d15</srcmd5>
+    <version>1.4.0+20190123.1829c40</version>
+    <time>1548704994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0+20190123.1829c40:
+- sbd.sysconfig: watchdog timeout set in the on-disk metadata takes precedence
+- sbd.8.pod: use the generic term &quot;cluster services&quot; instead of the specific &quot;openais&quot; (bsc#1112918)
+
+- Update to version 1.4.0+20190114.7f33d1a (v1.4.0)
+
+- Update to version 1.3.1+20181218.dbae8ab:
+- make timeout-action executed by sbd configurable
+- use pacemaker's new pe api with constructors/destructors (forwarded request 669073 from yan_gao)</comment>
+    <requestid>669074</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>060e047f292b1045aae4abe4cd65d65d</srcmd5>
+    <version>1.4.0+20190326.c38c5e6</version>
+    <time>1554380020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0+20190326.c38c5e6:
+- sbd-pacemaker: bail out of status earlier
+- sbd-pacemaker: make handling of cib-connection loss more robust
+
+- Update to version 1.4.0+20190311.0159a3c:
+- sbd-cluster: finalize cmap connection if disconnected from cluster (bsc#1128059)
+
+- Update to version 1.4.0+20190201.f949aa8:
+- fail earlier on invalid servants (forwarded request 691440 from yan_gao)</comment>
+    <requestid>691441</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c90d8c27c3130039a92fb759f498366c</srcmd5>
+    <version>1.4.0+20190514.e9be8d9</version>
+    <time>1562591441</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0+20190514.e9be8d9:
+- sbd-inquisitor: Avoid flooding logs with messages that hint the default/configured timeout action (bsc#1134496)
+
+- Update to version 1.4.0+20190416.5e3283c:
+- sbd-inquisitor: overhaul device-list-parser
+- sbd-inquisitor: free timeout action on bail out
+- sbd-md: prevent unrealistic overflow on sector io calc (forwarded request 713615 from yan_gao)</comment>
+    <requestid>713616</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5176eaf2cf1202246ea597b6578e9481</srcmd5>
+    <version>1.4.0+20190612.398628b</version>
+    <time>1564994475</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>720707</requestid>
+  </revision>
+</revisionlist>

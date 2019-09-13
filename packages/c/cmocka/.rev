@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a403d0ea645cca13322fa30f8398450f</srcmd5>
+    <version>0.2.0</version>
+    <time>1360075284</time>
+    <user>coolo</user>
+    <comment>A unit testing framework for C.</comment>
+    <requestid>151253</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>35074b0d05d124e72456606b897a33a8</srcmd5>
+    <version>0.3.0</version>
+    <time>1370425401</time>
+    <user>coolo</user>
+    <comment>Update to version 0.3.0</comment>
+    <requestid>177644</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>858ca8234c07eada1d2125a3c88c5f0b</srcmd5>
+    <version>0.3.1</version>
+    <time>1373654551</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.1
+  * Fixed pointer conversion on s390 and ppc (32bit big endian).
+  * Fixed the customer_database test on big endian.</comment>
+    <requestid>182793</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>858ca8234c07eada1d2125a3c88c5f0b</srcmd5>
+    <version>0.3.1</version>
+    <time>1379662123</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4972694541c5ed1acea1bab4f37f331f</srcmd5>
+    <version>0.3.2</version>
+    <time>1384854297</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>207462</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>10e65056701b94b0811366e25bcca1ac</srcmd5>
+    <version>0.4.0</version>
+    <time>1398418431</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>230775</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>10e65056701b94b0811366e25bcca1ac</srcmd5>
+    <version>0.4.0</version>
+    <time>1409300655</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>80a6fd3869769ead06ae215287db376d</srcmd5>
+    <version>0.4.0</version>
+    <time>1409761365</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>247081</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6683d757b82dcb30b8d1968d4a23d45c</srcmd5>
+    <version>0.4.1</version>
+    <time>1410509016</time>
+    <user>coolo</user>
+    <comment>Update to version 0.4.1.</comment>
+    <requestid>248636</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4ad7235a9a75643ca0b3f6b9226c2614</srcmd5>
+    <version>1.0.0</version>
+    <time>1424255960</time>
+    <user>dimstar_suse</user>
+    <comment>Update to cmocka 1.0</comment>
+    <requestid>286452</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bd7edae0c0d91f0971f7f013f39de2cc</srcmd5>
+    <version>1.0.1</version>
+    <time>1426680360</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build in TW</comment>
+    <requestid>291045</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>13839062ae2e643fee89b7bcc1792775</srcmd5>
+    <version>1.0.1</version>
+    <time>1437657734</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>317872</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>25797cbaada9abc6d22b4555fc1354c5</srcmd5>
+    <version>1.1.0</version>
+    <time>1477904035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>437296</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7be92c60b0e6040a58d23f7cb898362d</srcmd5>
+    <version>1.1.1</version>
+    <time>1492417375</time>
+    <user>maxlin_factory</user>
+    <comment>Bugfix release version 1.1.1.</comment>
+    <requestid>486462</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aa218e9dc123f68cce8b93963c3ad33b</srcmd5>
+    <version>1.1.2</version>
+    <time>1536094137</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix packaging the documentation
+- Added 0001-cmake-Only-support-building-docs-the-on-cmake-3.9.patch
+- Update to version 1.1.2
+  * Added function to filter tests (cmocka_set_test_filter)
+  * Added new mocking example (uptime)
+  * Fixed fixture error reporting
+  * Fixed compiler flags detection
+  * Some improvement for API documentation
+- Added HTML documentation
+</comment>
+    <requestid>632444</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9d50e66c1f1e1c0dfb13bde345fab1c6</srcmd5>
+    <version>1.1.3</version>
+    <time>1538502163</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.3
+  * Fixed subunit output on failures
+  * Do not abort if a test is skipped
+  * Switched to Modern CMake
+- Removed 0001-cmake-Only-support-building-docs-the-on-cmake-3.9.patch
+</comment>
+    <requestid>638974</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9eaf56c40f95f030adf9f99e0178e815</srcmd5>
+    <version>1.1.5</version>
+    <time>1554276179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  * Added cmocka_set_skip_filter()
+  * cmocka version 1.1.4
+  * Added assert_float(_not)_equal()
+  * Added expect_any_always()
+  * Small bug fixes
+</comment>
+    <requestid>689374</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>1c9e9ac940112b098b7b4eb0672ef5a1</srcmd5>
+    <version>1.1.5</version>
+    <time>1556474232</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697461</requestid>
+  </revision>
+</revisionlist>

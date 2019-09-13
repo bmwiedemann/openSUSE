@@ -1,0 +1,723 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4f2ee07e8d01537807760941175a41c5</srcmd5>
+    <version>2.0.9</version>
+    <time>1168903718</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="22">
+    <srcmd5>f319b2b2e1c89d9b0fe4acb46ba51556</srcmd5>
+    <version>2.0.9</version>
+    <time>1180998717</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="61">
+    <srcmd5>004c5c1573373a572d9745ce0b9bed01</srcmd5>
+    <version>2.0.9</version>
+    <time>1200611081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="70">
+    <srcmd5>572bd0257ea0f1845297b83b06c446ef</srcmd5>
+    <version>2.0.9</version>
+    <time>1203426861</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="90">
+    <srcmd5>a4e11ff6973b2aacdcca160583f972b2</srcmd5>
+    <version>2.0.9</version>
+    <time>1211500713</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="91">
+    <srcmd5>d29a353ab9b4227290a0614aee3f7ac6</srcmd5>
+    <version>2.0.9</version>
+    <time>1211821871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="93">
+    <srcmd5>c2bf380f14dcdc32c0311a4f5383a73b</srcmd5>
+    <version>2.0.9</version>
+    <time>1212229523</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="142">
+    <srcmd5>c2bf380f14dcdc32c0311a4f5383a73b</srcmd5>
+    <version>2.0.9</version>
+    <time>1212229523</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="143">
+    <srcmd5>96bfe95f63efdc04f1c9436477add624</srcmd5>
+    <version>2.0.9</version>
+    <time>1225213780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="144">
+    <srcmd5>5b6e275f88589be644b00b28764b50d9</srcmd5>
+    <version>2.0.9</version>
+    <time>1228129917</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="145">
+    <srcmd5>f15b55078b3a7bea3732610324ab168d</srcmd5>
+    <version>2.0.9</version>
+    <time>1234907981</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e4c647e19b2f02772c15c09d361d3930</srcmd5>
+    <version>2.1.0.18</version>
+    <time>1244638561</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>94537a8a59158e87f4ac5b6966766d5d</srcmd5>
+    <version>2.1.0.18</version>
+    <time>1254534021</time>
+    <user>autobuild</user>
+    <comment>Copy from network/openvpn based on submit request 21597 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>94537a8a59158e87f4ac5b6966766d5d</srcmd5>
+    <version>2.1.0.18</version>
+    <time>1254534021</time>
+    <user>autobuild</user>
+    <comment>Copy from network/openvpn based on submit request 21597 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5cd465ef2530367b1d20b56132ab2d5e</srcmd5>
+    <version>2.1.0.20</version>
+    <time>1261143796</time>
+    <user>autobuild</user>
+    <comment>Copy from network:vpn/openvpn based on submit request 26924 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9f81c7dc8c06c096a020e33aa94d19a2</srcmd5>
+    <version>2.1.1</version>
+    <time>1268355148</time>
+    <user>autobuild</user>
+    <comment>Copy from network:vpn/openvpn based on submit request 34608 from user mtomaschewski
+</comment>
+    <requestid>34608</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>d2cf87eae1ae515fe82b75964b137627</srcmd5>
+    <version>2.1.1</version>
+    <time>1268925242</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>75a677d30c64e0224f1a86a94c0ee1a0</srcmd5>
+    <version>2.1.1</version>
+    <time>1277141112</time>
+    <user>autobuild</user>
+    <comment>Copy from network:vpn/openvpn based on submit request 41476 from user mtomaschewski
+</comment>
+    <requestid>41476</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>75a677d30c64e0224f1a86a94c0ee1a0</srcmd5>
+    <version>2.1.1</version>
+    <time>1278667374</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>75a677d30c64e0224f1a86a94c0ee1a0</srcmd5>
+    <version>2.1.1</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>f651c278360a71a387d64fe597917a85</srcmd5>
+    <version>unknown</version>
+    <time>1284371336</time>
+    <user>autobuild</user>
+    <comment>Copy from network:vpn/openvpn based on submit request 47569 from user a_jaeger
+</comment>
+    <requestid>47569</requestid>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>ba722adfbc635e8837c5dea6258f3433</srcmd5>
+    <version>2.1.4</version>
+    <time>1290096286</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53127 from user mtomaschewski
+</comment>
+    <requestid>53127</requestid>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>0a8c9748bcf5a5c8586754a8b71b47d3</srcmd5>
+    <version>2.1.4</version>
+    <time>1290096296</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53127
+</comment>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>0a8c9748bcf5a5c8586754a8b71b47d3</srcmd5>
+    <version>2.1.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="25" vrev="13">
+    <srcmd5>e5103c1c5d58436d085f6658e7e5160d</srcmd5>
+    <version>2.1.4</version>
+    <time>1298032064</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61581 from user mtomaschewski
+</comment>
+    <requestid>61581</requestid>
+  </revision>
+  <revision rev="26" vrev="14">
+    <srcmd5>4505ebb7be64efb6d3ee24be4e2ba280</srcmd5>
+    <version>2.1.4</version>
+    <time>1298032077</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61581
+</comment>
+  </revision>
+  <revision rev="27" vrev="15">
+    <srcmd5>542690f4f11e6069075c72cc77769a3d</srcmd5>
+    <version>2.1.4</version>
+    <time>1305187651</time>
+    <user>azouhr</user>
+    <comment></comment>
+    <requestid>67011</requestid>
+  </revision>
+  <revision rev="28" vrev="16">
+    <srcmd5>02a9b7e5779f910ad323da50dfbd3d52</srcmd5>
+    <version>2.1.4</version>
+    <time>1305187660</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 67011
+</comment>
+  </revision>
+  <revision rev="29" vrev="14">
+    <srcmd5>5c35b8153e1a4c8519c6bb898ef3255f</srcmd5>
+    <version>2.2.1</version>
+    <time>1310461286</time>
+    <user>saschpe</user>
+    <comment>update to 2.2.1 -- workaround for bnc#675406</comment>
+    <requestid>76057</requestid>
+  </revision>
+  <revision rev="30" vrev="15">
+    <srcmd5>aedd8fd144e91aa0c0514e20dd7e5d99</srcmd5>
+    <version>2.2.1</version>
+    <time>1310461298</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76057
+</comment>
+  </revision>
+  <revision rev="31" vrev="16">
+    <srcmd5>5389395217d0916c2e285ed4690ec9b3</srcmd5>
+    <version>2.2.1</version>
+    <time>1314713479</time>
+    <user>darix</user>
+    <comment>bnc#675406 + ssl memory use improvement, non-ghost-in-var-run</comment>
+    <requestid>80110</requestid>
+  </revision>
+  <revision rev="32" vrev="17">
+    <srcmd5>03457a0a08da9f17b172ce0db20bd3b4</srcmd5>
+    <version>2.2.1</version>
+    <time>1314713488</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 80110
+</comment>
+  </revision>
+  <revision rev="33" vrev="19">
+    <srcmd5>03457a0a08da9f17b172ce0db20bd3b4</srcmd5>
+    <version>2.2.1</version>
+    <time>1319182220</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="34" vrev="20">
+    <srcmd5>67f5dd93de23ced990de562b53ced355</srcmd5>
+    <version>2.2.1</version>
+    <time>1323192897</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="35" vrev="21">
+    <srcmd5>9bab4705ef5c1dfba140612bfa1cd1f1</srcmd5>
+    <version>2.2.1</version>
+    <time>1323351954</time>
+    <user>coolo</user>
+    <comment>Fix source URLs. (forwarded request 95882 from a_jaeger)</comment>
+    <requestid>95925</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>075b8f6795f3dae238b6028ed1b2c59c</srcmd5>
+    <version>2.2.2</version>
+    <time>1329400734</time>
+    <user>coolo</user>
+    <comment>update to openvpn-2.2.2</comment>
+    <requestid>105261</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>f8cf9e3065af1b8dc5c8a8eb3d6f520d</srcmd5>
+    <version>2.2.2</version>
+    <time>1334641661</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113791</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>f8cf9e3065af1b8dc5c8a8eb3d6f520d</srcmd5>
+    <version>2.2.2</version>
+    <time>1340183765</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>88641133a6d0896108283f653efe710a</srcmd5>
+    <version>2.2.2</version>
+    <time>1345728627</time>
+    <user>namtrac</user>
+    <comment>license update: GPL-2.0-with-openssl-exception and LGPL-2.1
+openssl has an openssl exception (also, it is GPL-2.0 only) (forwarded request 131365 from babelworx)</comment>
+    <requestid>131378</requestid>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>677746afcdb8efd8601168c75f1cfdfe</srcmd5>
+    <version>2.2.2</version>
+    <time>1348231944</time>
+    <user>coolo</user>
+    <comment>reopen fix (bnc#781106), autostart list (bnc#692440)</comment>
+    <requestid>135135</requestid>
+  </revision>
+  <revision rev="41" vrev="7">
+    <srcmd5>01dbbc92605d96ced7da4024acc6a070</srcmd5>
+    <version>2.2.2</version>
+    <time>1348562608</time>
+    <user>coolo</user>
+    <comment>- fix ciaran's previous license entry. the license has a SUSE prefix (forwarded request 135257 from coolo)</comment>
+    <requestid>135287</requestid>
+  </revision>
+  <revision rev="42" vrev="8">
+    <srcmd5>b39ea5cde9206b3ba9f956982a7d4c8c</srcmd5>
+    <version>2.2.2</version>
+    <time>1355476476</time>
+    <user>coolo</user>
+    <comment>Verify GPG signature: Perform build-time offline GPG verification.
+Please verify that included keyring matches your needs.
+For manipulation with the offline keyring, please use gpg-offline tool from openSUSE:Factory, devel-tools-building or Base:System.
+See the man page and/or /usr/share/doc/packages/gpg-offline/PACKAGING.HOWTO.
+
+If you need to build your package for older products and don't want to mess spec file with ifs, please follow PACKAGING.HOWTO:
+you can link or aggregate gpg-offline from
+devel:tools:building or use following trick with &quot;osc meta prjconf&quot;:
+
+--- Cut here ----
+%if 0%{?suse_version} &amp;lt;= 1220
+Substitute: gpg-offline
+%endif
+
+Macros:
+%gpg_verify(dnf) \
+%if 0%{?suse_version} &amp;gt; 1220\
+echo &quot;WARNING: Using %%gpg_verify macro from prjconf, not from gpg-offline package.&quot;\
+gpg-offline --directory=&quot;%{-d:%{-d*}}%{!-d:%{_sourcedir}}&quot; --package=&quot;%{-n:%{-n*}}%{!-n:%{name}}&quot;&quot;%{-f: %{-f*}}&quot; --verify %{**}\
+%else\
+echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping %{**} GPG signature verification!&quot;\
+%endif\
+%nil
+----------------- (forwarded request 143916 from sbrabec)</comment>
+    <requestid>144034</requestid>
+  </revision>
+  <revision rev="43" vrev="10">
+    <srcmd5>b39ea5cde9206b3ba9f956982a7d4c8c</srcmd5>
+    <version>2.2.2</version>
+    <time>1359109554</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="11">
+    <srcmd5>f0108bef6ddb0ca54f515dc553178ba9</srcmd5>
+    <version>2.2.2</version>
+    <time>1359438386</time>
+    <user>coolo</user>
+    <comment>- Join openvpn.service systemd cgroup in start when needed, e.g.
+  when starting with further parameters. (bnc#781106) (forwarded request 150170 from mtomaschewski)</comment>
+    <requestid>150171</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>91dbd258e007af3730ae57606c7cb245</srcmd5>
+    <version>2.3.0</version>
+    <time>1364323707</time>
+    <user>coolo</user>
+    <comment>Cleanup spec file. (forwarded request 161209 from a_jaeger)</comment>
+    <requestid>161219</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>1b697de412b4df0c85ed5a4aeb620ee0</srcmd5>
+    <version>2.3.0</version>
+    <time>1366730734</time>
+    <user>coolo</user>
+    <comment>- Fixed to enable systemd support in configure
+- Fixed openvpn-tmpfile.conf to use GID root, there is no openvpn group.
+- Added openvpn.target file allowing to handle all instances at once.
+- Fixed to install the service template correctly as openvpn@.service.
+  Use &quot;systemctl enable openvpn@foo.service&quot; to enable instance using
+  /etc/openvpn/foo.conf.
+- Disabled systemd variant of restart on update rpm macro, adopted other
+  macros to use openvpn.target to e.g. stop all instances on uninstall.</comment>
+    <requestid>173037</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>6c71f2d3804472a498aa0af40585ef18</srcmd5>
+    <version>2.3.0</version>
+    <time>1368695929</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>175267</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7b666eb19dcfed5db3ab4c7a1c8a1fa3</srcmd5>
+    <version>2.3.2</version>
+    <time>1370447177</time>
+    <user>coolo</user>
+    <comment>Updated from 2.3.0 to 2.3.2. Detailed changes are in .changes file. (forwarded request 177312 from mrdocs)</comment>
+    <requestid>177757</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>19b8e0d4e088ac70795f0f1fcf96a991</srcmd5>
+    <version>2.3.2</version>
+    <time>1377717383</time>
+    <user>coolo</user>
+    <comment>Add a section about how to control all or a named configuration with the
+help of systemctl to the README.SUSE file. (forwarded request 196569 from lmuelle)</comment>
+    <requestid>196606</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>19b8e0d4e088ac70795f0f1fcf96a991</srcmd5>
+    <version>2.3.2</version>
+    <time>1379663448</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>cf8bf379adda7ebbccb711f6bc0676ca</srcmd5>
+    <version>2.3.2</version>
+    <time>1383545317</time>
+    <user>coolo</user>
+    <comment>- Fixed invalid mode in exec bit removal call from doc files</comment>
+    <requestid>205448</requestid>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>2246834a5030b691a541293672b755f6</srcmd5>
+    <version>2.3.2</version>
+    <time>1388657718</time>
+    <user>coolo</user>
+    <comment>- Readded rcopenvpn helper script under systemd (bnc#848070)
+- Fixed a typo (forwarded request 211245 from mtomaschewski)</comment>
+    <requestid>212028</requestid>
+  </revision>
+  <revision rev="53" vrev="7">
+    <srcmd5>41227dd2d18ac5bc28c0236dadb674f7</srcmd5>
+    <version>2.3.2</version>
+    <time>1389725542</time>
+    <user>coolo</user>
+    <comment>- Updated README.SUSE, documented also the rcopenvpn compatibility
+  wrapper script (bnc#848070).</comment>
+    <requestid>213853</requestid>
+  </revision>
+  <revision rev="54" vrev="8">
+    <srcmd5>edae14afd84e43b1456a4b95109efc67</srcmd5>
+    <version>2.3.2</version>
+    <time>1390231464</time>
+    <user>coolo</user>
+    <comment>- openvpn-fips140-2.3.2.patch: Allow usage of SHA1 instead of MD5 in
+  some internal checking routines. This allows operation in FIPS 140-2
+  mode. (forwarded request 214077 from msmeissn)</comment>
+    <requestid>214487</requestid>
+  </revision>
+  <revision rev="55" vrev="9">
+    <srcmd5>cbfb1a9a547bc669eeb646058f697fa2</srcmd5>
+    <version>2.3.2</version>
+    <time>1400682041</time>
+    <user>coolo</user>
+    <comment>- use %_rundir for %ghost directory - leaving /var/run everywhere
+  else (forwarded request 233447 from coolo)</comment>
+    <requestid>234694</requestid>
+  </revision>
+  <revision rev="56" vrev="10">
+    <srcmd5>69972266a53e8c613eac26a2aad71706</srcmd5>
+    <version>2.3.2</version>
+    <time>1402403959</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236695</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>7778b3611aae93891bab1d7bd90d98d1</srcmd5>
+    <version>2.3.4</version>
+    <time>1409252732</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246648</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>7778b3611aae93891bab1d7bd90d98d1</srcmd5>
+    <version>2.3.4</version>
+    <time>1409302072</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>a212853b6500c71bf5bcb3a8b9648471</srcmd5>
+    <version>2.3.5</version>
+    <time>1415347568</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>260087</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4286586c7ce0d6099be63f4058f4ae11</srcmd5>
+    <version>2.3.6</version>
+    <time>1417643277</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.6 fixing a denial-of-service vulnerability
+  where an authenticated client could stop the server by triggering
+  a server-side ASSERT (bnc#907764,CVE-2014-8104).
+  See ChangeLog file for a complete list of changes.</comment>
+    <requestid>263672</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>34c80f8fc1217c4ef69252c618e72714</srcmd5>
+    <version>2.3.6</version>
+    <time>1425031187</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>287767</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>e6d086ed40f38171ed354791cf449e73</srcmd5>
+    <version>2.3.6</version>
+    <time>1426064279</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290007</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>8dc3a406fb7a21994785539b83b588de</srcmd5>
+    <version>2.3.7</version>
+    <time>1435652176</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313672</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>6812870f34fcf2a693ad0ace2b5f685a</srcmd5>
+    <version>2.3.8</version>
+    <time>1439274424</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321625</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>ae937f9e2a2834f9de4675ad38ceef8a</srcmd5>
+    <version>2.3.8</version>
+    <time>1439818510</time>
+    <user>dimstar_suse</user>
+    <comment>Add revert-daemonize.patch, looks like under systemd the stdin
+and stdout are not TTYs by default. This reverts to previous
+behaviour fixing bsc#941569</comment>
+    <requestid>322617</requestid>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>9650b0876709d0ad3dd3f3a4b39e1417</srcmd5>
+    <version>2.3.8</version>
+    <time>1440337414</time>
+    <user>coolo</user>
+    <comment>- Removed obsolete --with-lzo-headers option, readded LFS_CFLAGS.
+- Moved openvpn-plugin.h into a devel package, removed .gitignore</comment>
+    <requestid>324534</requestid>
+  </revision>
+  <revision rev="67" vrev="4">
+    <srcmd5>d4ac104e797225ee92abf0df50fe3708</srcmd5>
+    <version>2.3.8</version>
+    <time>1450605161</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>348337</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>2d2a201723b7f5cc317ea0279639cc17</srcmd5>
+    <version>2.3.10</version>
+    <time>1452122714</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352204</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>0e4a04aa8ee75445d48048b099d2e448</srcmd5>
+    <version>2.3.11</version>
+    <time>1465336121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400152</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>e8bc5e57afc7c5b994fd39a10432b303</srcmd5>
+    <version>2.3.11</version>
+    <time>1474016501</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427634</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>aad20932d5601513c4ee08d8f9ad86c7</srcmd5>
+    <version>2.3.11</version>
+    <time>1480420218</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442517</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>868d8c9485bd269fb8cb41e21ff8d987</srcmd5>
+    <version>2.3.13</version>
+    <time>1484041920</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449352</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>c9a49acd72fabf73448775c08a1e5d4b</srcmd5>
+    <version>2.3.14</version>
+    <time>1485383627</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452118</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>4149cb0cde7ea28b9f4916fb0d6b4254</srcmd5>
+    <version>2.3.14</version>
+    <time>1494262961</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>492826</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>fdb1ef2d41b31661cec4c60ae280fd80</srcmd5>
+    <version>2.4.2</version>
+    <time>1497274213</time>
+    <user>dimstar_suse</user>
+    <comment>- Update tp 2.4.2
+    - auth-token: Ensure tokens are always wiped on de-auth
+    - Make --cipher/--auth none more explicit on the risks
+    - Use SHA256 for the internal digest, instead of MD5
+    - Deprecate --ns-cert-type
+    - Deprecate --no-iv
+    - Support --block-outside-dns on multiple tunnels
+    - Limit --reneg-bytes to 64MB when using small block ciphers
+    - Fix --tls-version-max in mbed TLS builds
+  Details changelogs are avilable in 
+  https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24
+  [*0001-preform-deferred-authentication-in-the-background.patch
+   *openvpn-2.3.x-fixed-multiple-low-severity-issues.patch
+   *openvpn-fips140-2.3.2.patch]
+- pkcs11-helper-devel &gt;= 1.11 is needed for openvpn-2.4.2
+- cleanup the spec file</comment>
+    <requestid>501452</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>7d34d7adcb87ba52af5443c66e9462bc</srcmd5>
+    <version>2.4.2</version>
+    <time>1497944469</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504783</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>00ab820007958349c2f4e0670d9e1ce9</srcmd5>
+    <version>2.4.3</version>
+    <time>1507197726</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531163</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>4a81620d879e3dc2ca7e62da32704cd9</srcmd5>
+    <version>2.4.3</version>
+    <time>1507755724</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533032</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>22dbf518d3a05775351104e0b77c2bb2</srcmd5>
+    <version>2.4.3</version>
+    <time>1511595830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545137</requestid>
+  </revision>
+  <revision rev="80" vrev="4">
+    <srcmd5>759ba1ff6dc6d98064737194292c1c15</srcmd5>
+    <version>2.4.3</version>
+    <time>1519218757</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>578447</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>af675141a35d3f43b4422f43d8fc0ca9</srcmd5>
+    <version>2.4.6</version>
+    <time>1525121650</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.6:
+  * CVE-2018-9336, bsc#1090839: Fix potential double-free() in
+    Interactive Service
+  * Delete the IPv6 route to the &quot;connected&quot; network on tun close
+  * Management: warn about password only when the option is in use
+  * Avoid overflow in wakeup time computation
+
+- Remove --askpass again, because it was also asking for a password
+  when none was needed. As a workaround for keys that need a
+  password, the &quot;askpass&quot; statement should be added to the config
+  file (bsc#1078026).
+- Use Type=notify in openvpn.service to reflect what openvpn is
+  actually doing.
+- Import the new signing key from upstream.
+- Remove obsolete configure switch --enable-password-save .
+
+- Update to 2.4.5
+  * New features
+    + The new option --tls-cert-profile can be used to restrict the
+      set of allowed crypto algorithms in TLS certificates in mbed
+      TLS builds. The default profile is 'legacy' for now, which
+      allows SHA1+, RSA-1024+ and any elliptic curve certificates.
+      The default will be changed to the 'preferred' profile in the
+      future, which requires SHA2+, RSA-2048+ and any curve.
+    + openvpnserv: Add support for multi-instances (to support
+      multiple parallel OpenVPN installations, like EduVPN and
+      regular OpenVPN)
+    + Use P_DATA_V2 for server-&gt;client packets too (better packet
+      alignment)
+    + improve management interface documentation</comment>
+    <requestid>601900</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>c729e56d4a5dce465c1cc5f1412cba55</srcmd5>
+    <version>2.4.7</version>
+    <time>1564413791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717528</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>d070e42e1d91936b3802863125e9a743</srcmd5>
+    <version>2.4.7</version>
+    <time>1565864640</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>720978</requestid>
+  </revision>
+</revisionlist>

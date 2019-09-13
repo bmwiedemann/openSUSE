@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2453fd7f9eb8e4ed61196cebc5837dcb</srcmd5>
+    <version>1.4.0</version>
+    <time>1508316651</time>
+    <user>dimstar_suse</user>
+    <comment>new package, dependency of avocado</comment>
+    <requestid>533672</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ed72e3b569ddb2ec412673a030524ccc</srcmd5>
+    <version>1.5.1</version>
+    <time>1532774705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.1:
+  * No changelog available
+- Correct dependencies
+- Run tests</comment>
+    <requestid>625772</requestid>
+  </revision>
+</revisionlist>

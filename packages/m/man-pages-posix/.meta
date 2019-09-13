@@ -1,0 +1,15 @@
+<package name="man-pages-posix" project="openSUSE:Factory">
+  <title>POSIX Manual Pages</title>
+  <description>A large collection of man pages (reference material) from the IEEE Std
+1003.1, 2003 Edition, Standard for Information Technology -- Portable
+Operating System Interface (POSIX), The Open Group Base Specifications
+Issue 6, Copyright (C) 2001-2003 by the Institute of Electrical and
+Electronics Engineers, Inc and The Open Group.003.1, 2003 Edition,
+Standard for Information Technology -- Portable Operating System
+Interface (POSIX), The Open Group Base Specifications Issue 6,
+Copyright (C) 2001-2003 by the Institute of Electrical and Electronics
+Engineers, Inc and The Open Group.  The man pages are organized into
+the following sections: 0p: POSIX headers 1p: POSIX utilities 3p: POSIX
+functions</description>
+  <devel project="Documentation" package="man-pages-posix"/>
+</package>

@@ -1,0 +1,152 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81d8e123396208ea59fd86e15408a548</srcmd5>
+    <version>20081208</version>
+    <time>1249916207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>81d8e123396208ea59fd86e15408a548</srcmd5>
+    <version>20081208</version>
+    <time>1249916207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1300ddbf6b5fb3369b07b89d959bee28</srcmd5>
+    <version>20081208</version>
+    <time>1263294480</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Business-ISBN-Data based on submit request 29228 from user coolo
+</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>fd455e8c484e661ff909ee194cad54b5</srcmd5>
+    <version>20081208</version>
+    <time>1268925374</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>fd455e8c484e661ff909ee194cad54b5</srcmd5>
+    <version>20081208</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>fd455e8c484e661ff909ee194cad54b5</srcmd5>
+    <version>20081208</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>14db9491d2499279ad176ebcbef544f2</srcmd5>
+    <version>unknown</version>
+    <time>1283789577</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Business-ISBN-Data based on submit request 47138 from user computersalat
+</comment>
+    <requestid>47138</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>9d3943f8d530ca8c038c4f548b13e8d6</srcmd5>
+    <version>20081208</version>
+    <time>1292242102</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55696 from user coolo
+</comment>
+    <requestid>55696</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>8f75db765cf88aacf64182699ad1fa90</srcmd5>
+    <version>20081208</version>
+    <time>1292242108</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55696
+</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>8f75db765cf88aacf64182699ad1fa90</srcmd5>
+    <version>20081208</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>8f75db765cf88aacf64182699ad1fa90</srcmd5>
+    <version>20081208</version>
+    <time>1319182242</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>854aee8e6944a3004d06da5802d0239e</srcmd5>
+    <version>20081208</version>
+    <time>1323193079</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>854aee8e6944a3004d06da5802d0239e</srcmd5>
+    <version>20081208</version>
+    <time>1340183797</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>854aee8e6944a3004d06da5802d0239e</srcmd5>
+    <version>20081208</version>
+    <time>1359109603</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0b58d41f8025e61d596b4fb422b1804b</srcmd5>
+    <version>20120719.001</version>
+    <time>1371137480</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>178530</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0b58d41f8025e61d596b4fb422b1804b</srcmd5>
+    <version>20120719.001</version>
+    <time>1379663561</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>0b58d41f8025e61d596b4fb422b1804b</srcmd5>
+    <version>20120719.001</version>
+    <time>1409302173</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>831efb004fb0744af989d87b4374b6a5</srcmd5>
+    <version>20140910.001</version>
+    <time>1411627349</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>251646</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f0253acb5c48ea2cf4b887c34dd6bf77</srcmd5>
+    <version>20140910.002</version>
+    <time>1424779142</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20140910.002
+    * Look in the current directory for RangeMessage.xml if it's
+      not in other locations. This can help with various Perl app
+      packagers. (But, also try ISBN_RANGE_MESSAGE env var)
+- add fix-provides.diff to avoid providing ::ISBN without data</comment>
+    <requestid>286761</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f7276b5ad218a92a3309e21311a00de5</srcmd5>
+    <version>20140910.003</version>
+    <time>1450605155</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>349643</requestid>
+  </revision>
+</revisionlist>

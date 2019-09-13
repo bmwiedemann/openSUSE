@@ -1,0 +1,5 @@
+<package name="muffin" project="openSUSE:Factory">
+  <title>A small window manager for Cinnamon Desktop</title>
+  <description>Muffin is a small window manager, using GTK+ and Clutter to do everything. Muffin is the clutter-based evolution of Metacity, which, as the  author says, is a &quot;Boring window manager for the adult in you. Many  window managers are like Marshmallow Froot Loops; Metacity is like Cheerios.&quot;</description>
+  <devel project="X11:Cinnamon:Factory" package="muffin"/>
+</package>

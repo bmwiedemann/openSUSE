@@ -1,0 +1,5 @@
+<package name="wxWidgets-docs" project="openSUSE:Factory">
+  <title>wxWidgets Documentation</title>
+  <description>This package contains wxWidgets documentation in HTML format.</description>
+  <devel project="X11:wxWidgets" package="wxWidgets-docs"/>
+</package>

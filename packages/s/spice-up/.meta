@@ -1,0 +1,5 @@
+<package name="spice-up" project="openSUSE:Factory">
+  <title>Spice-Up</title>
+  <description>Create Simple and Beautiful presentations</description>
+  <devel project="X11:Pantheon:Apps" package="spice-up"/>
+</package>

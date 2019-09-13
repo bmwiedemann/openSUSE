@@ -1,0 +1,1062 @@
+<revisionlist>
+  <revision rev="1" vrev="46">
+    <srcmd5>72a29da6363bb3934c1cb6b12c481a81</srcmd5>
+    <version>93r</version>
+    <time>1168620313</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="53">
+    <srcmd5>f41ab76941f18f52c16494ddadd8be3d</srcmd5>
+    <version>93r</version>
+    <time>1175121852</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4c5191ed12e1814610ce70f3cc790f6d</srcmd5>
+    <version>93s</version>
+    <time>1175629009</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6fc15e02cd3be08e950fdc682a0f96a1</srcmd5>
+    <version>93s</version>
+    <time>1175711779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="15">
+    <srcmd5>fd360cbd5775fe3533e2dea1f4057442</srcmd5>
+    <version>93s</version>
+    <time>1180106812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="23">
+    <srcmd5>3841cf73e9a86504f0bea774c63d28b5</srcmd5>
+    <version>93s</version>
+    <time>1182275534</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="24">
+    <srcmd5>15db863d321fdc17757bc8a30488a0b1</srcmd5>
+    <version>93s</version>
+    <time>1182359702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="49">
+    <srcmd5>a280ffd868df3e2edfeeb7e6fde7f6cf</srcmd5>
+    <version>93s</version>
+    <time>1191366120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="57">
+    <srcmd5>489e7b57799305962b71854c7d1d6e30</srcmd5>
+    <version>93s</version>
+    <time>1193669862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="62">
+    <srcmd5>5170c4176a45f0efd0f81547e1219501</srcmd5>
+    <version>93s</version>
+    <time>1195464291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="64">
+    <srcmd5>7bf4afac53fbcc6aa997412e8be6c32d</srcmd5>
+    <version>93s</version>
+    <time>1195780310</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="65">
+    <srcmd5>6ea0f46706de4cbe5415e28c30776c3d</srcmd5>
+    <version>93s</version>
+    <time>1195823469</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="82">
+    <srcmd5>dcff78d57d53495568fb375e20a9dfe9</srcmd5>
+    <version>93s</version>
+    <time>1201479255</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="87">
+    <srcmd5>d90efbb2df78d241673876a4d752a38f</srcmd5>
+    <version>93s</version>
+    <time>1203035243</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="97">
+    <srcmd5>12ac7386911f273eb9f8cdebda9674f9</srcmd5>
+    <version>93s</version>
+    <time>1205927959</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="98">
+    <srcmd5>5bcf4b8d92e0a559cc32268cbde4b247</srcmd5>
+    <version>93s</version>
+    <time>1206544732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="107">
+    <srcmd5>938e8a51bde247942a2399f36ab94070</srcmd5>
+    <version>93s</version>
+    <time>1210030427</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>517bacbe542954db880960219c33459a</srcmd5>
+    <version>93t</version>
+    <time>1222268494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="151">
+    <srcmd5>517bacbe542954db880960219c33459a</srcmd5>
+    <version>93t</version>
+    <time>1222268494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="152">
+    <srcmd5>44ce5262616283f3722829ef993b2dfe</srcmd5>
+    <version>93t</version>
+    <time>1223571019</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="153">
+    <srcmd5>e9f4311817c6fd20f81b4cb6390ff460</srcmd5>
+    <version>93t</version>
+    <time>1223908508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="154">
+    <srcmd5>a7e00cc3381bc7651e26f25293edaf4a</srcmd5>
+    <version>93t</version>
+    <time>1224000092</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="155">
+    <srcmd5>362afddb33fddfa54b2ed98a2dc82307</srcmd5>
+    <version>93t</version>
+    <time>1225711195</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="156">
+    <srcmd5>89ffda48baaca812355ea3b0bd0bcd8c</srcmd5>
+    <version>93t</version>
+    <time>1226067466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="157">
+    <srcmd5>ddb0840c9126631ca6ee95353cf11029</srcmd5>
+    <version>93t</version>
+    <time>1229610529</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="158">
+    <srcmd5>9ce6366fbb450d17b6346493ad261b54</srcmd5>
+    <version>93t</version>
+    <time>1234459360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="159">
+    <srcmd5>c7e8670a5e21865d62b4c9c44dd8d72d</srcmd5>
+    <version>93t</version>
+    <time>1240512645</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="160">
+    <srcmd5>971a086709f193d958d7af1e2517240c</srcmd5>
+    <version>93t</version>
+    <time>1243463820</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="161">
+    <srcmd5>ac44f98a3e2d10319b5aa4903cdd61f0</srcmd5>
+    <version>93t</version>
+    <time>1245447562</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="162">
+    <srcmd5>8fb9b46ffd904bcb5b989d3554f8b269</srcmd5>
+    <version>93t</version>
+    <time>1249573457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="163">
+    <srcmd5>bbdaaf25881546a86b82a0852f5363e7</srcmd5>
+    <version>93t</version>
+    <time>1250177022</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 17433 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="32" vrev="164">
+    <srcmd5>c61cf3d36e07d0b96e9fe496130bd018</srcmd5>
+    <version>93t</version>
+    <time>1251475260</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 18822 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="33" vrev="166">
+    <srcmd5>c61cf3d36e07d0b96e9fe496130bd018</srcmd5>
+    <version>93t</version>
+    <time>1251475260</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 18822 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="34" vrev="167">
+    <srcmd5>75d2c63a0117cdd787fcb4738d8d1883</srcmd5>
+    <version>93t</version>
+    <time>1260544114</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 26258 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="35" vrev="168">
+    <srcmd5>1b6f96ef9400604c2560f39d8bba5865</srcmd5>
+    <version>93t</version>
+    <time>1260549093</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 26264 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="36" vrev="169">
+    <srcmd5>93a2a858fcec2d799138e5e52f332df3</srcmd5>
+    <version>93t</version>
+    <time>1261433508</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 27334 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="37" vrev="170">
+    <srcmd5>bbc3b9ca49d2b887e1281ac0a6e47892</srcmd5>
+    <version>93t</version>
+    <time>1267955872</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 34220 from user coolo
+</comment>
+    <requestid>34220</requestid>
+  </revision>
+  <revision rev="38" vrev="171">
+    <srcmd5>227b347fbb71cea8c5152f4bb0d15575</srcmd5>
+    <version>93t</version>
+    <time>1268068665</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 34342 from user WernerFink
+</comment>
+    <requestid>34342</requestid>
+  </revision>
+  <revision rev="39" vrev="172">
+    <srcmd5>bfdd69077eeaa6caaeaecb4b1c617099</srcmd5>
+    <version>93t</version>
+    <time>1268411696</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 34511 from user WernerFink
+</comment>
+    <requestid>34511</requestid>
+  </revision>
+  <revision rev="40" vrev="173">
+    <srcmd5>fc39d7de666e5689d2640c7102f48d54</srcmd5>
+    <version>93t</version>
+    <time>1268924319</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="41" vrev="174">
+    <srcmd5>542a292697968d205f5616f8bdee9528</srcmd5>
+    <version>93t</version>
+    <time>1271251042</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 37473 from user WernerFink
+</comment>
+    <requestid>37473</requestid>
+  </revision>
+  <revision rev="42" vrev="175">
+    <srcmd5>1a436e5719c5936b080c4e2dd70f1b3d</srcmd5>
+    <version>93t</version>
+    <time>1272914437</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 39305 from user WernerFink
+</comment>
+    <requestid>39305</requestid>
+  </revision>
+  <revision rev="43" vrev="177">
+    <srcmd5>1a436e5719c5936b080c4e2dd70f1b3d</srcmd5>
+    <version>93t</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="44" vrev="178">
+    <srcmd5>1a436e5719c5936b080c4e2dd70f1b3d</srcmd5>
+    <version>93t</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="45" vrev="179">
+    <srcmd5>dc13f1782e89d3282b100f3f640af181</srcmd5>
+    <version>93t</version>
+    <time>1286800667</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 50094 from user WernerFink
+</comment>
+    <requestid>50094</requestid>
+  </revision>
+  <revision rev="46" vrev="180">
+    <srcmd5>c41879a8c04d8349535a6638f81c6801</srcmd5>
+    <version>93t</version>
+    <time>1286807414</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/ksh based on submit request 50214 from user WernerFink
+</comment>
+    <requestid>50214</requestid>
+  </revision>
+  <revision rev="47" vrev="181">
+    <srcmd5>be65dbfef168eb409f7e7a28a757f61e</srcmd5>
+    <version>93t</version>
+    <time>1287487106</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51040 from user WernerFink
+</comment>
+    <requestid>51040</requestid>
+  </revision>
+  <revision rev="48" vrev="182">
+    <srcmd5>3e53ef961a8e9a5f7353b63e08c9229b</srcmd5>
+    <version>93t</version>
+    <time>1287487113</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51040
+</comment>
+  </revision>
+  <revision rev="49" vrev="183">
+    <srcmd5>3913eef2c07110289c76a04dabd56eb0</srcmd5>
+    <version>93t</version>
+    <time>1287677136</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51192 from user WernerFink
+</comment>
+    <requestid>51192</requestid>
+  </revision>
+  <revision rev="50" vrev="184">
+    <srcmd5>455795f1b499eab7b43262b91ddf6c98</srcmd5>
+    <version>93t</version>
+    <time>1287677156</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51192
+</comment>
+  </revision>
+  <revision rev="51" vrev="185">
+    <srcmd5>65f03d3e6a9c2a8dcf6a124a883bfb99</srcmd5>
+    <version>93t</version>
+    <time>1293577872</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56711 from user coolo
+</comment>
+    <requestid>56711</requestid>
+  </revision>
+  <revision rev="52" vrev="186">
+    <srcmd5>c5917c5be9bec8cc14867c95ba57e77f</srcmd5>
+    <version>93t</version>
+    <time>1293577882</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56711
+</comment>
+  </revision>
+  <revision rev="53" vrev="189">
+    <srcmd5>c5917c5be9bec8cc14867c95ba57e77f</srcmd5>
+    <version>93t</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="54" vrev="190">
+    <srcmd5>463096345fa0087a8e183ac4fc06442e</srcmd5>
+    <version>93t</version>
+    <time>1301985060</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 65932 from user coolo
+</comment>
+    <requestid>65932</requestid>
+  </revision>
+  <revision rev="55" vrev="191">
+    <srcmd5>7fa8616d472fa2caeb251d8b7c93527c</srcmd5>
+    <version>93t</version>
+    <time>1301985072</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 65932
+</comment>
+  </revision>
+  <revision rev="56" vrev="192">
+    <srcmd5>52a41d9cd5883d1dce553cf2d1d1233c</srcmd5>
+    <version>93t</version>
+    <time>1305534510</time>
+    <user>saschpe</user>
+    <comment>- Add workaround to enforce synchronization on here documents done
+  for forked sub shell or processes (bnc#690623)</comment>
+    <requestid>70215</requestid>
+  </revision>
+  <revision rev="57" vrev="193">
+    <srcmd5>bf00271503839386b7a16c272adcf96e</srcmd5>
+    <version>93t</version>
+    <time>1305534523</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70215
+</comment>
+  </revision>
+  <revision rev="58" vrev="194">
+    <srcmd5>ba0cb9733baa0cccac69e9115e7469ec</srcmd5>
+    <version>93t</version>
+    <time>1306400825</time>
+    <user>saschpe</user>
+    <comment>- gcc dumps out poerpc64 even on powerpc which does break the
+  binary in a very special way e.g. in getopt(3)
+- do not use CC but CCFLAGS and HOSTTYPE at make time</comment>
+    <requestid>71183</requestid>
+  </revision>
+  <revision rev="59" vrev="195">
+    <srcmd5>e484be3d6cfecaeae05dc1ea0660b2aa</srcmd5>
+    <version>93t</version>
+    <time>1306400836</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71183
+</comment>
+  </revision>
+  <revision rev="60" vrev="196">
+    <srcmd5>56883114f82c13ba0cb09da72cafed53</srcmd5>
+    <version>93t</version>
+    <time>1306925188</time>
+    <user>saschpe</user>
+    <comment>- Correct timetype.sh ... nevertheless typeset -T does not work
+  with array types as this requires ksh93u</comment>
+    <requestid>72408</requestid>
+  </revision>
+  <revision rev="61" vrev="197">
+    <srcmd5>6797b8adb066de0981429f600e33fb6f</srcmd5>
+    <version>93t</version>
+    <time>1306925197</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72408
+</comment>
+  </revision>
+  <revision rev="62" vrev="198">
+    <srcmd5>1c9f20d45204657fe4b087fa9d9e7414</srcmd5>
+    <version>93t</version>
+    <time>1308317165</time>
+    <user>saschpe</user>
+    <comment>- Fix off by one error which should make timetype.sh work now
+- Update the array fix as well as the pipe fix
+- This also fixes bnc#677790
+
+- Avoid redirection in subshell if an eval was used (bnc#697394)
+
+- Extend Shift.JIS patch to avoid breakage of the parsers above
+- Avoid mounting 3D file system as this does not exist on linux</comment>
+    <requestid>74013</requestid>
+  </revision>
+  <revision rev="63" vrev="199">
+    <srcmd5>b83b78087a5802b15d9ef0461f77b924</srcmd5>
+    <version>93t</version>
+    <time>1308317182</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74013
+</comment>
+  </revision>
+  <revision rev="64" vrev="200">
+    <srcmd5>e4728c48930b5ce517e8652bcabfaf74</srcmd5>
+    <version>93t</version>
+    <time>1309853701</time>
+    <user>saschpe</user>
+    <comment>- Avoid crash on unset of function within the same function</comment>
+    <requestid>75337</requestid>
+  </revision>
+  <revision rev="65" vrev="201">
+    <srcmd5>0cc7c7f84a9d5ebafc4cafe96d364fb6</srcmd5>
+    <version>93t</version>
+    <time>1309853717</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75337
+</comment>
+  </revision>
+  <revision rev="66" vrev="202">
+    <srcmd5>69f4ca1f0bc8de62869f79b44a7bbd33</srcmd5>
+    <version>93t</version>
+    <time>1310129898</time>
+    <user>saschpe</user>
+    <comment>- Check for ascii8 troff device, if not available use utf8 
+
+- Extract messages from ksh source code automagic by using msgcc and
+  libpp from upstream ast-base packages (realted to bnc#703854) only
+  missing are the translations for those messages
+
+- Drop locale support as it is out of sync since year 2000 (bnc#703854)</comment>
+    <requestid>75844</requestid>
+  </revision>
+  <revision rev="67" vrev="203">
+    <srcmd5>0cc75155e9802ceba545d21abdbe7a72</srcmd5>
+    <version>93t</version>
+    <time>1310129910</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75844
+</comment>
+  </revision>
+  <revision rev="68" vrev="205">
+    <srcmd5>0cc75155e9802ceba545d21abdbe7a72</srcmd5>
+    <version>93t</version>
+    <time>1319182059</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>9ecfd777bab97af86c22c274b6ced3a2</srcmd5>
+    <version>93u</version>
+    <time>1321627543</time>
+    <user>coolo</user>
+    <comment>- Implement a patch for both regressions reported here
+  mailman.research.att.com/pipermail/ast-developers/2011q3/000951.html 
+
+- Add patch from mailing list to avoid stupid crahs on empty job list. 
+
+- Fix a typo in the patch 
+
+- Add and modify a patch from David korn to be able to handle multi
+  byte characters at the boundary of the buffer used for parsing
+  here documents (bnc#705032) 
+
+- Update to 2011-06-30 of ksh93u which includes our patches for
+  several problems (e.g. Shift.JIS, S390, bnc#697394):
+  11-06-22 The shell compiler now supports process substitution.
+  11-06-22 +Added code to support process substitution on systems that do
+           not supply the /dev/fd directory.
+  11-06-21 Fixed extraneous jobs Done messages when builin is at the end of a
+           pipeline.
+  11-06-20 Fixed two regression tests.
+  11-06-20 Fixed a bug introduced on last update.
+  11-06-14 A bug with pipefail in which the shell would wait for background
+           jobs to complete has been fixed.
+  11-06-09 A bug which caused the options.sh regression test to fail on OS390
+           Linux has been fixed.  The bug could also have affected other systems.
+  11-06-07 A number of changes to support the still undocuments namespace option
+           have been added.
+  11-06-06 A bug in which command substitution of eval would hang when it  had
+           standard error redirected to standard output has been fixed.
+  11-06-01 A bug in case statement fall through (;&amp;) ignoring set -e was fixed.
+  11-06-01 A bug in which creating a left or right justified upper or lowercase</comment>
+    <requestid>91924</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>d7a2d14b90b5ed3d04cc7c3d9adbd4ea</srcmd5>
+    <version>93u</version>
+    <time>1323192124</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>8fcd0cf8410103f5199748434f935fc1</srcmd5>
+    <version>93u</version>
+    <time>1325007353</time>
+    <user>coolo</user>
+    <comment>- Don't run tests in qemu - they fail (forwarded request 97300 from dirkmueller)</comment>
+    <requestid>98248</requestid>
+  </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>ef8b8e6df86c165fa559f07522311b08</srcmd5>
+    <version>93u</version>
+    <time>1327500119</time>
+    <user>coolo</user>
+    <comment>- Make ex really work that is vim is required for build otherwise
+  libpp API does not work correct
+
+- Make sigexec using a contolling terminal
+
+- Avoid compiler optimizers which may cause asynchrony behaviour
+
+- Update to 2012-01-01 of ksh93u+ which includes some of our patches
+  12-01-01 A timing problem with &gt;; has been fixed.
+  12-01-01 A macro expansion memory leak has been fixed.
+  11-12-26 A bug in array assignments of the form arr=( $arr[i] ...) in which
+           arr was not unset before the assignment has been fixed. 
+  11-12-20 A number of code changes were made based on the results of errors
+           indicated by static code analysis.
+  11-12-13 In vi edit mode a lteral &lt;TAB&gt; can now be entered by preceding it
+           with a backshash.
+  11-12-13 When tab is entered for completion after a ' or &quot;, the ' and &quot;
+           characters are no longer deleted.
+  11-12-07 A bug in which a program in the current direcotry with a . in the
+           name could fail to execute when both PATH and FPATH end with :. has
+           been fixed.
+  11-12-07 I fixed a bug in which a variable expansion in a large here-document
+           could be expanded to a null string.
+  11-12-06 An optimization to read was added in the case the the read command
+           was redirected from a file.
+  11-12-06 Changes were made to make the line limit for read unlimited by
+           default.
+  11-12-05 A bug in which unsetting an array variable did not completely clear
+           the variable in some cases has been fixed.
+  11-12-02 +The printf alternative character # when applied to the %q format will</comment>
+    <requestid>101404</requestid>
+  </revision>
+  <revision rev="73" vrev="5">
+    <srcmd5>e6ac0b1cc3c5f0cce4dd3803b73fb8a5</srcmd5>
+    <version>93u</version>
+    <time>1328649175</time>
+    <user>coolo</user>
+    <comment>- Update to 2012-02-02 of ksh93u+ which includes some of our patches
+  and fixes for the observerd memory leaks
+  12-02-02  A bug in the ulimit option table was fixed.
+  12-01-26  A bug in which a set command that did not change monitor could
+            effect the behavior of the monitor when monitor mode is on is fixed.
+  12-01-21 +You can now test whether the shell implements a math function using
+            typeset -f .sh.math.name, where name is the name of the function.
+  12-01-21  A bug in which typeset -L and typeset -R did not handle multibyte
+            characters correctly has been fixed.
+  12-01-20  A bug that could cause the shell to hang waiting for an incorrect
+            job pid has been fixed.
+  12-01-19  A memory leak which occured for a nested command subtiution has been
+            fixed.
+  12-01-17  A bug in which typeset -u PS1 could enable the uppercase attribute
+            for some other variables, for exampe, HISTFILE has been fixed.
+  12-01-16  A bug in which .sh.match was not correct after a substring match when
+            the replacement string contained a substring match has been fixed.
+  12-01-12 +Files that are sourced from profile files are now read and executed
+            one command at a time so that alias definitions take effect as they
+            do for profile files.
+  12-01-12  A bug in which whence -p would find a function if one existed and
+            there was no command of that name on PATH.
+  12-01-11  Change b_* prototype (int, char**, void*) =&gt; (int, char**, Shbltin_t*).
+  12-01-05  A bug in which read was not terminating for a signal that had a trap
+            set has been fixed.
+  libast:
+  12-01-31 spawnveg.c: fix transient bug that made invalid setpgid() call
+  12-01-27 pathpath.c: fix buffer size math when internal allocation requested
+  12-01-24 malloc.c: fix _vmkeep() bug that did not return previous state
+  12-01-23 malloc.c: add VMALLOC_OPTIONS=break to try sbrk() block allocator first</comment>
+    <requestid>102927</requestid>
+  </revision>
+  <revision rev="74" vrev="6">
+    <srcmd5>69df6cc059f718be8c9b4e95ecf7ac73</srcmd5>
+    <version>93u</version>
+    <time>1330151419</time>
+    <user>coolo</user>
+    <comment>- Remove check-build.sh as the memory leaks are fixed now
+
+- Avoid possible problems pointed out by a gcc warning about overflow
+  in arraysubscript, that is use full size of structure Namval as
+  well as access this area at position 0 
+
+- Update to 2012-02-14 of ksh93u+ which includes the real fix for
+  the IFS crash, the ulimit, and the mem leaks (bnc#743244, bnc#744355,
+  bnc#744589, and bnc#744992) as well as other fixes like:
+  12-02-14 A bug in which ^Z did not stop a pipeline when the last component
+           was a shell built-in has been fixed.
+  12-02-14 getconf(&quot;PATH&quot;) used to initialize ed(1) path.
+  12-02-13 +In earlier version read from standard input would fail when called
+           from the KEYBD trap.  Now read options -N, -n, and -t should work
+           when called from a KEYBD trap.
+  12-02-13 If FCEDIT is not set and fc is invoked without the -e option,
+           ed will be invoked if found instead of /bin/ed. 
+  12-02-10 Another bug in the saving and restoring of IFS in a subshell
+           that caused a core dump has been fixed.
+  12-02-08 A bug in which .sh.fun disciplines could be cleared after a
+           function completes has been fixed.
+  12-02-08 A bug in job control in which the foregroup process group was not
+           set correctly after restarting a stopped pipeline has been fixed.
+  12-02-07 A bug in which numbers with leading zeros could be treated as
+           octal constants outside of ((...)) has been fixed.
+  12-02-06 A bug in arithmetic with compound variables containing multiple
+           array elements has been fixed.
+  libast:
+  12-02-10 sfvprintf.c: fix 1 byte too long buffer access
+  12-02-07 malloc.c/features/vmalloc: add gnu __malloc_hook tests</comment>
+    <requestid>106791</requestid>
+  </revision>
+  <revision rev="75" vrev="7">
+    <srcmd5>490ba4edb85f36d5d7ec3512c29a6b36</srcmd5>
+    <version>93u</version>
+    <time>1331147371</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108335</requestid>
+  </revision>
+  <revision rev="76" vrev="8">
+    <srcmd5>86fc065e1dc955cef0a9cbefa5a35cd7</srcmd5>
+    <version>93u</version>
+    <time>1332763282</time>
+    <user>coolo</user>
+    <comment>- Port and readd memory leak patch to put_ifs() of sh/init.c
+- Make sigexec more smart to help the pty helper binary to work as
+  this helper is used in the test suite
+
+- Update to 2012-02-29 of ksh93u+ for final version
+  12-02-29 A bug which could lead to a core dump when more that four shared
+	   libraries were added with the builtin command has been fixed.
+  12-02-29 Fixed a few bugs which caused SIGCHLD to be blocked preventing
+	   background jobs from being reaped until a foreground job was run.
+  12-02-27 A bug in which sh -c for a simple command caused a fork() has been
+	   fixed.
+  12-02-27 A timing bug on systems such as AIX that doesn't support vfork()
+	   that could cause the exist status to get lost has been fixed.
+  12-02-22 A private file descriptor that was not close-on-exec for a command
+	   substitution and has been fixed.
+  pty:
+  12-02-28 pty.c: change --verbose[=level] to --debug=level
+  libast:
+  12-03-10 misc/optget.c: HELP_index for &quot;PLUGIN&quot; too
+  12-02-29 include/shcmd.h: PLUGIN_VERSION 20111111 for cdt disc/meth change
+  12-02-29 comp/spawnveg.c: fix sigcritical() to include waitpid() for internal child
+  12-02-29 malloc.c: make __malloc_hook initialization thread safe
+  12-02-24 comp/iconv.c: fix winix UTF-8 vs UCS-2 over-conversion
+  12-02-24 astsa/*.h: clean up header guards
+  12-02-24 astsa/astsa.omk: clean up standalone old make makefile interactions
+  12-02-21 misc/cmdarg.c: fix bug that set argv[0]
+  libcoshell:
+  12-02-22 coinit.c: handle non-identifier export var names
+  libpp:
+  12-02-29 pp.probe: handle predefined function-like macro definitions</comment>
+    <requestid>109966</requestid>
+  </revision>
+  <revision rev="77" vrev="9">
+    <srcmd5>8f4bed3ee94d39ff2178acdaec02e68f</srcmd5>
+    <version>93u</version>
+    <time>1338030558</time>
+    <user>coolo</user>
+    <comment>- Better check on update for postun scriptlet and error correct with
+  an posttrans scriptlet, that is do not remove /etc/ksh.kshrc on
+  an update of an older ksh version (bnc#759730)</comment>
+    <requestid>121907</requestid>
+  </revision>
+  <revision rev="78" vrev="10">
+    <srcmd5>358fd396fc2713112b90a7a49bbe283d</srcmd5>
+    <version>93u</version>
+    <time>1338998549</time>
+    <user>coolo</user>
+    <comment>- Do not ignore backslashes/escapes for read builtin (bnc#765171)</comment>
+    <requestid>123805</requestid>
+  </revision>
+  <revision rev="79" vrev="12">
+    <srcmd5>358fd396fc2713112b90a7a49bbe283d</srcmd5>
+    <version>93u</version>
+    <time>1340183538</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="80" vrev="13">
+    <srcmd5>90508463b841f713367f27a0a783c462</srcmd5>
+    <version>93u</version>
+    <time>1343673088</time>
+    <user>coolo</user>
+    <comment>- Fix qemu-user build by not evaluating ps output that doesn't reflect
+  what the virtual processes see (forwarded request 128876 from dirkmueller)</comment>
+    <requestid>128902</requestid>
+  </revision>
+  <revision rev="81" vrev="14">
+    <srcmd5>b82671be0a9f76bff8684600a3e2bf45</srcmd5>
+    <version>93u</version>
+    <time>1348427189</time>
+    <user>coolo</user>
+    <comment>- Add polling builtin patch (bnc #779888)</comment>
+    <requestid>134897</requestid>
+  </revision>
+  <revision rev="82" vrev="15">
+    <srcmd5>35d3a2af958f6a554c121939244e9d7d</srcmd5>
+    <version>93u</version>
+    <time>1350646325</time>
+    <user>coolo</user>
+    <comment>- Do not chrash if the value of an environment variable is NULL (bnc#785266)</comment>
+    <requestid>138476</requestid>
+  </revision>
+  <revision rev="83" vrev="16">
+    <srcmd5>b540c4382a0c9570e3fc1dc66bf5124a</srcmd5>
+    <version>93u</version>
+    <time>1351264292</time>
+    <user>coolo</user>
+    <comment>- Make last patch smart that is use /dev/shm for temporary file
+  descriptors
+
+- Add a workaround for filled /tmp file systems (bnc#786134)
+- Check for subshell if tmp file can be used otherwise use a
+  a pipe (bnc#786134)
+- Restore shell variables before any outpur will be placed in
+  a temp file or buffer (bnc#786134)
+
+- Be able to export justified and zerofilled variables (bnc#785360)
+- This requires that variables with this attributes should be really
+  cleared if unset</comment>
+    <requestid>139271</requestid>
+  </revision>
+  <revision rev="84" vrev="17">
+    <srcmd5>d71f74587eefe3836381bf6599aaecb9</srcmd5>
+    <version>93u</version>
+    <time>1351870843</time>
+    <user>coolo</user>
+    <comment>- add explicit buildrequire on grof for man pages (forwarded request 139463 from coolo)</comment>
+    <requestid>139565</requestid>
+  </revision>
+  <revision rev="85" vrev="18">
+    <srcmd5>8782035c00346c696fd69c891130e6b5</srcmd5>
+    <version>93u</version>
+    <time>1356703395</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146512</requestid>
+  </revision>
+  <revision rev="86" vrev="20">
+    <srcmd5>8782035c00346c696fd69c891130e6b5</srcmd5>
+    <version>93u</version>
+    <time>1359109207</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="87" vrev="21">
+    <srcmd5>b95939ef57ba1a87e6ed1de5c8d57b92</srcmd5>
+    <version>93u</version>
+    <time>1359730128</time>
+    <user>coolo</user>
+    <comment>- Finally found the reason for bnc#795324, that is avoid to free
+  data which is used lateron in the has tree of reloaded shell
+  functions.
+
+- Avoid to skip builtin functions of the gcc if the libast does not
+  provide them. Maybe related, to bnc#795324, where a crash happens
+  in libc strcmp() if optimized for sse2 on AMD Opteron[tm] 6128.</comment>
+    <requestid>150665</requestid>
+  </revision>
+  <revision rev="88" vrev="22">
+    <srcmd5>b2aca1c919e77028ff37ecfe057eb8d3</srcmd5>
+    <version>93u</version>
+    <time>1360612109</time>
+    <user>coolo</user>
+    <comment>- Do not use Shift-JIS work around with UTF-8 
+
+- Update to 2012-08-01 of ksh93u+ for bugfix version
+  12-08-01 A bug that ignored interrupts for some builtins (e.g. cmdtst::grep) 
+	   that read from stdin has been fixed.
+  12-08-01 A bug that interpreted &quot;cd .foo&quot; as &quot;cd foo&quot; has been fixed.
+  12-07-30 Added automatic restart for EINTR for ioctl, tcgetattr, and tcsetattr.
+  12-07-23 A scoping error with namrefs to compound associative arrays has
+	   been fixed.
+  12-07-20 A bug where builtin -d /path/foo deleted foo has been fixed.
+  12-07-18 A bug in which /dev/stdout did not work in command substitution on
+	   some systems has been fixed.
+  12-07-17 A bug in which the restricted option set in a subshell prevented
+	   some variables from getting restored when the subshell completed
+	   has been fixed.
+  12-07-09 A bug in which the directory is not restored after a subshell changes
+	   the name of the directory for subshells executed in the same process
+	   has been fixed.
+  12-07-09 A bug in which file descriptors created with {n}&lt; file were not being
+	   closed has been fixed.
+  12-07-09 The 12-04-04 fix for cd .. was not correct causing cd /etc;cd .. to
+	   remain in /etc.  This has been fixed.
+  12-07-02 A bug in which builtin name did now work for builtins found in a
+	   library added by builtin -f lib has been fixed.
+  12-07-02 A bug in the edit modes which &lt;tab&gt; after a directory did not refresh
+	   the input line has been fixed.
+  12-07-02 A bug in which an exit status &gt; 256 corresponding to a signal was
+	   not returned by a function to indicate a signal exit has been fixed.
+  12-06-28 Fix ulimit -a to list (Kibytes) instead of (kbytes).
+  12-06-27 Fix unitialized data reference for &lt;CR&gt; as first char in --vi mode.</comment>
+    <requestid>151594</requestid>
+  </revision>
+  <revision rev="89" vrev="23">
+    <srcmd5>2403caa9af43a1d32e2d4a6196550325</srcmd5>
+    <version>93u</version>
+    <time>1361117056</time>
+    <user>coolo</user>
+    <comment>- Avoid segmentation fault on typeset on ENV variable (bnc#803613)</comment>
+    <requestid>155544</requestid>
+  </revision>
+  <revision rev="90" vrev="24">
+    <srcmd5>3673da64ec6601feee4bcb75aa2dcd79</srcmd5>
+    <version>93u</version>
+    <time>1362119026</time>
+    <user>coolo</user>
+    <comment>- Add patch ksh93-heredoclex.dif: substitution in here-document
+  results in syntax error (bnc#804998)</comment>
+    <requestid>156831</requestid>
+  </revision>
+  <revision rev="91" vrev="25">
+    <srcmd5>b38edd8e13848edb41e233ec180b8a8d</srcmd5>
+    <version>93u</version>
+    <time>1364323688</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161265</requestid>
+  </revision>
+  <revision rev="92" vrev="26">
+    <srcmd5>8f02fa2b96d7c8066b2d6f78fda55357</srcmd5>
+    <version>93u</version>
+    <time>1375370093</time>
+    <user>coolo</user>
+    <comment>- Use own subsection 1ast in manual section 1 to avoid name space
+  conflicts
+
+- Add patch ksh93-alias-k.dif as fix for bnc#824187
+
+- Add patch ksh93-fdstatus.dif as fix for bnc#814135 and bnc#808449</comment>
+    <requestid>185466</requestid>
+  </revision>
+  <revision rev="93" vrev="27">
+    <srcmd5>95f2c98c54e98b572bea3fa9d9c0f1cf</srcmd5>
+    <version>93u</version>
+    <time>1377258857</time>
+    <user>scarabeus_factory</user>
+    <comment>- rediff ksh-qemu.patch (forwarded request 195373 from dirkmueller)</comment>
+    <requestid>196085</requestid>
+  </revision>
+  <revision rev="94" vrev="29">
+    <srcmd5>95f2c98c54e98b572bea3fa9d9c0f1cf</srcmd5>
+    <version>93u</version>
+    <time>1379662837</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="95" vrev="30">
+    <srcmd5>1daa543b0505197c223ef33e9cd2524a</srcmd5>
+    <version>93u</version>
+    <time>1379921846</time>
+    <user>coolo</user>
+    <comment>- Make vmbalance awk script more clear for small vm page sizes
+
+- Extend patch ksh93-fdstatus.dif to solve bnc#835885
+- Modify patch ksh93-builtin.dif to reduce timeouts of pty utility</comment>
+    <requestid>199721</requestid>
+  </revision>
+  <revision rev="96" vrev="31">
+    <srcmd5>96ebb3a83fa66c802a60f6dabd4251ac</srcmd5>
+    <version>93u</version>
+    <time>1383825184</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>205892</requestid>
+  </revision>
+  <revision rev="97" vrev="32">
+    <srcmd5>07dc4cb7ea4542e43100e39f72b265bd</srcmd5>
+    <version>93u</version>
+    <time>1384246225</time>
+    <user>coolo</user>
+    <comment>pdksh has been removed from Factory and /etc/ksh.kshrc is now only delivered and used by ksh, thus take ownership /etc/ksh.kshrc (forwarded request 205161 from gberh)</comment>
+    <requestid>206489</requestid>
+  </revision>
+  <revision rev="98" vrev="33">
+    <srcmd5>a550e83f28aea569bf05da2f3d445244</srcmd5>
+    <version>93u</version>
+    <time>1385738569</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208693</requestid>
+  </revision>
+  <revision rev="99" vrev="34">
+    <srcmd5>6be5bfc7c6574f4376b8769d34fd740b</srcmd5>
+    <version>93u</version>
+    <time>1385756719</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add patch ksh93-pwd.dif to fix crash if cwd is gone (bnc#852160)</comment>
+    <requestid>208929</requestid>
+  </revision>
+  <revision rev="100" vrev="35">
+    <srcmd5>8991e316175595af87ad807791512922</srcmd5>
+    <version>93u</version>
+    <time>1386757719</time>
+    <user>coolo</user>
+    <comment>Please forward to factory
+- Recognize ppc64le (setting HOSTTYPE to powerpc64le) (forwarded request 209697 from matz2)</comment>
+    <requestid>209882</requestid>
+  </revision>
+  <revision rev="101" vrev="36">
+    <srcmd5>7009fe922153a85bc000f6a4e394171d</srcmd5>
+    <version>93u</version>
+    <time>1394030194</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>224073</requestid>
+  </revision>
+  <revision rev="102" vrev="37">
+    <srcmd5>519e2be287b94dc2b2fa81b8f13274a5</srcmd5>
+    <version>93u</version>
+    <time>1399377679</time>
+    <user>coolo</user>
+    <comment>- avoid hanging build on probe run (forwarded request 232664 from dirkmueller)</comment>
+    <requestid>232679</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>f88d44d3734a6ee6d644a36c1ab35db9</srcmd5>
+    <version>93v</version>
+    <time>1405520181</time>
+    <user>coolo</user>
+    <comment>- Update to 2014-06-26 of ksh93v- version
+  * A bug on some systems in which cd to a directory without execute
+    permission would not fail has been fixed.
+  * The BASH_SOURCE variable was added when ksh is run in bash mode.
+  * The -D and -E options have been added to the complete builtin.
+  * References to dgk@research.att.com were deleted.
+  * The -l flag to trap and the -p flag to umask were added as in bash.
+  * In bash mode ${!parameter} is treated like ${$parameter}.
+  * Fixed a bug in which eval inside a dot script invoked by a profile file
+    terminated the dot script prematurely after running the eval command.
+  * Added parameter expansion operator ${$parameter} for variables and
+    positional parameters.
+  * Added -a option to read which is equivalent to -A.
+  * Fixed a bug in builtin -p.
+  * Added -n option to builtin to disable builtins.
+  * Fixed a couple of file completion bugs.
+  * When compiled with the SHOPT_BASH and run with the name bash,
+    the shell now uses dynamic scoping for name() and function name. 
+    In addition the builtins declare and local are supported.
+    The SHOPT_BASH option is on by default in the Makefile.
+    More work remains with the bash compatibility option.
+  * Fixed a bug in vi command completion in which tab did not work
+    after a space.
+  * Replaced the -p option for read with -p prompt.  For backword
+    compatibility, if a coprocess is running and prompt begins with -
+    or is a valid variable name, -p causes the read from a pipe.
+  * Modified the -u option for read and print so that it accepts the
+    option argument p to indicate the coprocess file descriptor.
+- Remove patch ksh93-cd_pwd.dif and ksh93-jobs.dif as now upstream</comment>
+    <requestid>239905</requestid>
+  </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>681ce3965e9584feac9d55d9a098c5a9</srcmd5>
+    <version>93v</version>
+    <time>1405685019</time>
+    <user>coolo</user>
+    <comment>- Skip signal test as currently ksh93 uses malloc() within signal
+  handlers and this cause deadlocks even with libast memory
+  management</comment>
+    <requestid>241334</requestid>
+  </revision>
+  <revision rev="105" vrev="3">
+    <srcmd5>c084873e27d05b15b154ce9e25a8c56b</srcmd5>
+    <version>93v</version>
+    <time>1407072978</time>
+    <user>coolo</user>
+    <comment>- Disable patch ksh93-backticks.dif as it breaks several test cases 
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-  Add patch ksh93-backticks.dif to allow the ksh to use more than
+   65536 characters in the output of old fashion `...` commands (bnc#887320)</comment>
+    <requestid>243337</requestid>
+  </revision>
+  <revision rev="106" vrev="5">
+    <srcmd5>c084873e27d05b15b154ce9e25a8c56b</srcmd5>
+    <version>93v</version>
+    <time>1409301425</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="107" vrev="6">
+    <srcmd5>091560830ad8434a8682ad4dd7c62092</srcmd5>
+    <version>93v</version>
+    <time>1435652361</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314334</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>d0f7b863e05c1a4cb3874da7066200f7</srcmd5>
+    <version>93vu</version>
+    <time>1513852183</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>558827</requestid>
+  </revision>
+</revisionlist>

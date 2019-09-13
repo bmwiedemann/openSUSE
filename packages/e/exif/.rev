@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>75111901818a18ee7235b23f240ecfc7</srcmd5>
+    <version>0.6.13</version>
+    <time>1168902716</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="40">
+    <srcmd5>89ec24480f98b6accc69969e348bba8b</srcmd5>
+    <version>0.6.13</version>
+    <time>1172922363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7288ac0f0021ab183ba96bf556818b25</srcmd5>
+    <version>0.6.15</version>
+    <time>1179955082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="95">
+    <srcmd5>7288ac0f0021ab183ba96bf556818b25</srcmd5>
+    <version>0.6.15</version>
+    <time>1179955082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>51b590348ec5e6bea49a61f93b29833e</srcmd5>
+    <version>0.6.16.1</version>
+    <time>1224690613</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b52c79f21dd71d3500bbd24eef45176d</srcmd5>
+    <version>0.6.17</version>
+    <time>1226167976</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b52c79f21dd71d3500bbd24eef45176d</srcmd5>
+    <version>0.6.17</version>
+    <time>1226167976</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f7cd02b830b04a0da26dcbfb5f225df2</srcmd5>
+    <version>0.6.19</version>
+    <time>1258388834</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/exif based on submit request 24494 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>506218df33d4ad118f2bf274507d95d7</srcmd5>
+    <version>0.6.19</version>
+    <time>1268923498</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>506218df33d4ad118f2bf274507d95d7</srcmd5>
+    <version>0.6.19</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>506218df33d4ad118f2bf274507d95d7</srcmd5>
+    <version>0.6.19</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8a28b6dfd8424c1415283a395e3adb21</srcmd5>
+    <version>0.6.20</version>
+    <time>1292859938</time>
+    <user>darix</user>
+    <comment>Accepted submit request 56284 from user msmeissn
+</comment>
+    <requestid>56284</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7929e2ec236997ee4719614d12f9d5bc</srcmd5>
+    <version>0.6.20</version>
+    <time>1292859952</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 56284
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>7929e2ec236997ee4719614d12f9d5bc</srcmd5>
+    <version>0.6.20</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>67e4e8250852c372cc74503d9381e450</srcmd5>
+    <version>0.6.20</version>
+    <time>1316443927</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83466 from jengelh)</comment>
+    <requestid>83499</requestid>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>67e4e8250852c372cc74503d9381e450</srcmd5>
+    <version>0.6.20</version>
+    <time>1319181871</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>f3a135cd8fce0b686fac32105c2adb06</srcmd5>
+    <version>0.6.20</version>
+    <time>1323191326</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>f3a135cd8fce0b686fac32105c2adb06</srcmd5>
+    <version>0.6.20</version>
+    <time>1340183314</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fa06ab034ab35311162099bbdaeada5b</srcmd5>
+    <version>0.6.21</version>
+    <time>1347618136</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134076</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>fa06ab034ab35311162099bbdaeada5b</srcmd5>
+    <version>0.6.21</version>
+    <time>1359108861</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>fa06ab034ab35311162099bbdaeada5b</srcmd5>
+    <version>0.6.21</version>
+    <time>1379662317</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>fa06ab034ab35311162099bbdaeada5b</srcmd5>
+    <version>0.6.21</version>
+    <time>1409300848</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>cc7f3423a94d9fb41f3b7b3761913080</srcmd5>
+    <version>0.6.21</version>
+    <time>1419897020</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>266782</requestid>
+  </revision>
+</revisionlist>

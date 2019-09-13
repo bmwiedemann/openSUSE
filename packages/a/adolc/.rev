@@ -1,0 +1,272 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d1cda419b71be02a338e6ac7998bc393</srcmd5>
+    <version>MACRO</version>
+    <time>1287010657</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/adolc based on submit request 50236 from user polyconvex
+</comment>
+    <requestid>50236</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>229033dc6aa5b2dfd7dd2eeba97b0040</srcmd5>
+    <version>2.1.10</version>
+    <time>1287155649</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/adolc based on submit request 50802 from user coolo
+</comment>
+    <requestid>50802</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b61dcf76518a73b2f0cfa40bb52ef68e</srcmd5>
+    <version>2.1.12</version>
+    <time>1289862763</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52916 from user polyconvex
+</comment>
+    <requestid>52916</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b61dcf76518a73b2f0cfa40bb52ef68e</srcmd5>
+    <version>2.1.12</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e798cf75fa2eaa34bf3df211abf539b8</srcmd5>
+    <version>2.2.0</version>
+    <time>1303211012</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67857 from user licensedigger
+</comment>
+    <requestid>67857</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8462592d34b682cea82f949721bc02dc</srcmd5>
+    <version>2.2.0</version>
+    <time>1303211030</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67857
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e51c18f81d7b183bc277feef7956d440</srcmd5>
+    <version>2.2.1</version>
+    <time>1308063738</time>
+    <user>saschpe</user>
+    <comment>- update to upstream release 2.2.1
+  * allow reading hexadecimal and octal numbers in .adolcrc
+  * bugfix for direct reverse callsequence after trace
+  * reimplemented nonl_dom as arrays instead of linked lists</comment>
+    <requestid>73507</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e174b7b31bec2bb20ab0b8a4a8e7cc99</srcmd5>
+    <version>2.2.1</version>
+    <time>1316439222</time>
+    <user>lrupp</user>
+    <comment>- Implement baselibs for package; remove redundant tags/sections (forwarded request 82578 from jengelh)</comment>
+    <requestid>82660</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9e5ba9293fc88ebae91e06b27761c474</srcmd5>
+    <version>2.2.1</version>
+    <time>1317905884</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: use %__cc, %__cxx macros (forwarded request 86675 from uli_suse)</comment>
+    <requestid>86709</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>9fbe7394fdc35e696cc780c82f8f92d3</srcmd5>
+    <version>2.2.1</version>
+    <time>1317914458</time>
+    <user>oertel</user>
+    <comment>- update Colpack to new version 1.0.4
+  * some memory allocation bugfixes</comment>
+    <requestid>86910</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>9fbe7394fdc35e696cc780c82f8f92d3</srcmd5>
+    <version>2.2.1</version>
+    <time>1319181766</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>5a896ab52523696aeb50b0cbe56e0619</srcmd5>
+    <version>2.2.1</version>
+    <time>1331579484</time>
+    <user>coolo</user>
+    <comment>see bnc#739158 for a discussion</comment>
+    <requestid>107491</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2805a7ecd115d26663df7b62c3671d03</srcmd5>
+    <version>2.3.0</version>
+    <time>1333109897</time>
+    <user>coolo</user>
+    <comment>- Update to new upsteam version 2.3.0
+  * list of changes in the release announcement
+    see http://list.coin-or.org/pipermail/adol-c/2012-March/000804.html
+  * licensing modified
+    see http://list.coin-or.org/pipermail/adol-c/2012-March/000805.html
+- Update License tag in accordance with above change
+- Remove ColPack, it can be packaged in its own package with v1.0.6
+- Add a BuildRequires for ColPack-devel
+
+This sr is also a followup to sr#111146 that submits the separate
+ColPack package. Please review that request before reviewing this one.
+Thanks.</comment>
+    <requestid>111147</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>2805a7ecd115d26663df7b62c3671d03</srcmd5>
+    <version>2.3.0</version>
+    <time>1340183166</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>988f820a2fafe33614e9cd8e34ae4e71</srcmd5>
+    <version>2.3.0</version>
+    <time>1347838122</time>
+    <user>namtrac</user>
+    <comment>Clarify changes description as requested. Indeed build is fixed for &quot;SLE 11 SP2&quot; and not &quot;SLE 11&quot;. (forwarded request 134431 from scorot)</comment>
+    <requestid>134432</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>988f820a2fafe33614e9cd8e34ae4e71</srcmd5>
+    <version>2.3.0</version>
+    <time>1359108642</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>93618565094eca2a1b1985bf4925d44c</srcmd5>
+    <version>2.4.1</version>
+    <time>1363899694</time>
+    <user>coolo</user>
+    <comment>- Update to upstream version 2.4.1
+  * list of changes in the release announcement
+    see http://list.coin-or.org/pipermail/adol-c/2013-January/000882.html
+    and http://list.coin-or.org/pipermail/adol-c/2013-March/000887.html</comment>
+    <requestid>160371</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>93618565094eca2a1b1985bf4925d44c</srcmd5>
+    <version>2.4.1</version>
+    <time>1379661951</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>897c46f0c41af58266f49b1bf0f0a8ad</srcmd5>
+    <version>2.5.0</version>
+    <time>1393394235</time>
+    <user>coolo</user>
+    <comment>- Update to upstream version 2.5.0
+  * An overhaul of the internal memory management to make it
+    more efficient
+  * Support for the AdjoinableMPI API (thanks to Jean Utke)
+  * Overhaul of the external functions interface (thanks to Jean Utke)
+  * Support for piecewise linearizations of piecewise smooth functions
+  * Support for pkg-config (thanks to Oliver Sander)
+  * Computations on the NVIDIA-GPU in forward mode using CUDA
+  * Overhaul of the traceless forward mode.
+  * Support for sparsity in traceless forward mode.
+  * Fixes in higher order tensor propagation
+  * Fix a function name conflict
+       address() -&gt; tensor_address()
+  * Various other small misceleneous fixes
+- Patch added
+  * no-return-in-non-void-adouble_tl_cpp.patch</comment>
+    <requestid>223818</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>51119652635cb28875d34f69b2b0b15d</srcmd5>
+    <version>2.5.2</version>
+    <time>1409118342</time>
+    <user>coolo</user>
+    <comment>- Update to upstream version 2.5.2 
+  * incorporated bugfixes since 2.5.1
+
+- Update to upstream version 2.5.1
+  * Lots of bugfixes
+- Added a couple of post release bugfixes from trunk
+- Removed patch incorporated upstream
+  * no-return-in-non-void-adouble_tl_cpp.patch</comment>
+    <requestid>245163</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>51119652635cb28875d34f69b2b0b15d</srcmd5>
+    <version>2.5.2</version>
+    <time>1409300473</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>47fbb3f4c8c15c74b8803224f26a8525</srcmd5>
+    <version>2.5.2</version>
+    <time>1429973204</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298663</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2a1e72e4fe97e236dce91e7d40ce335d</srcmd5>
+    <version>2.6.0</version>
+    <time>1452721356</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353236</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ade3e74f95ad302d773d79522ae89b40</srcmd5>
+    <version>2.6.1</version>
+    <time>1467359784</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>402739</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>66289a87a9fcdd3ca3addff422ee49d0</srcmd5>
+    <version>2.6.2</version>
+    <time>1473548004</time>
+    <user>dimstar_suse</user>
+    <comment>- upadte to version 2.6.2
+  * fixes for corner case crashes</comment>
+    <requestid>424804</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>a2a422ff6071049c72d4938251f7a0f5</srcmd5>
+    <version>2.6.2</version>
+    <time>1486773109</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455242</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3e016f685107d48dd95c65b6b8a55315</srcmd5>
+    <version>2.6.3</version>
+    <time>1529066122</time>
+    <user>maxlin_factory</user>
+    <comment>- Install license using %license
+- Install documentation using %doc instead of manually
+- Cleanup long description by only having one verbose copy in long
+  description
+- spec file cleanup
+
+- Update to version 2.6.3:
+  * Fix bug in memory deallocation in taylor.c.
+  * Reduced interface directional active gradient.</comment>
+    <requestid>615999</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>4fb074fc318a482c7f25c8e15c087fdb</srcmd5>
+    <version>2.6.3</version>
+    <time>1533887133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628244</requestid>
+  </revision>
+</revisionlist>

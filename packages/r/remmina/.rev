@@ -1,0 +1,366 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>98c3e60ca7ea5ab9103841e3be348514</srcmd5>
+    <version>0.9.3</version>
+    <time>1318501528</time>
+    <user>lrupp</user>
+    <comment>Please add remmina</comment>
+    <requestid>86911</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>98c3e60ca7ea5ab9103841e3be348514</srcmd5>
+    <version>0.9.3</version>
+    <time>1319182425</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a7719bb71cbfac1533d00a2e36ac128d</srcmd5>
+    <version>1.0.0</version>
+    <time>1334216943</time>
+    <user>coolo</user>
+    <comment>- use original tarball name to fix download check
+
+- disable the NX plugin by default
+
+- added separare patch remmina-fix-install-paths.patch in order to
+  fix the installation paths
+- specfile cleanup
+- removed remmina-plugins-common, now provided by the main package
+- split off -lang subpackage
+
+- rewrote spec for using cmake
+- merged with remmina-plugins into one source package (upstream
+  now diestributes a single tarball with plugins)
+- update to version 1.0.0
+  + Main program design and functionality:
+    * Switch to the CMake build system
+    * Refactoring of code style
+    * Changing file name convention
+  + RDP protocol related:
+    * Support for FreeRDP 1.0
+    * Support for RemoteFX
+    * Support for Network Level Authentication
+    * Added certificate validation prompt
+- added remmina-fix-linker-issue.patch which fixes a linking issue
+  (backport from upstream git)
+- added remmina-fix-desktop-file.patch which fixes the installation
+  of the .desktop file (backport from upstream git)
+- added remmina-gtk-2-22-support.patch in order to build on
+  openSUSE 11.4 with GTK 2.22 as upstream requires 2.24+</comment>
+    <requestid>112281</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a7719bb71cbfac1533d00a2e36ac128d</srcmd5>
+    <version>1.0.0</version>
+    <time>1340184142</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>ab9e471be0b9edf17f5d063084f06522</srcmd5>
+    <version>1.0.0</version>
+    <time>1345630624</time>
+    <user>namtrac</user>
+    <comment>Remove inline copy of libvncserver and build against the shared library, this partially fixes bnc#775609, please forward to 12.2</comment>
+    <requestid>131132</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>c3c42ebc6673faf228f6ddd0753f7e69</srcmd5>
+    <version>1.0.0</version>
+    <time>1345809170</time>
+    <user>namtrac</user>
+    <comment>- add missing dependency on gnutls</comment>
+    <requestid>131415</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c3c42ebc6673faf228f6ddd0753f7e69</srcmd5>
+    <version>1.0.0</version>
+    <time>1359110284</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>d98b3070f3a0c0631b35fef0ef138361</srcmd5>
+    <version>1.0.0</version>
+    <time>1364240530</time>
+    <user>coolo</user>
+    <comment>- enable TLS-support in VNC plugin (bnc#804320)
+- add remmina-fix-scrolling-in-vnc-plugin.patch which fixes
+  scrolling in the VNC plugin (backport from upstream git)
+- add remmina-close-ssh-tunnel-on-disconnect.patch in order to
+  close SSH tunnels on disconnect and avoid freezing (backport from
+  upstream git)
+- remmina-fix-window-resize.patch which fixes resizing the window
+  (backport from upstream git)
+- add remmina-fix-fullscreen-with-multiple-monitors.patch which
+  fixes fullscreen mode with multiple monitors (backport from
+  upstream git) (forwarded request 160807 from gberh)</comment>
+    <requestid>160808</requestid>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>d98b3070f3a0c0631b35fef0ef138361</srcmd5>
+    <version>1.0.0</version>
+    <time>1379664447</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>d98b3070f3a0c0631b35fef0ef138361</srcmd5>
+    <version>1.0.0</version>
+    <time>1409303180</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>d140d3cb5ec01caa0fc144c358d256cb</srcmd5>
+    <version>1.0.0</version>
+    <time>1412690442</time>
+    <user>coolo</user>
+    <comment>- add remmina-vte-2.91-support.patch in order to support building
+  against vte-2.91 for openSUSE &gt;= 13.2
+- rename README.SuSE to README.SUSE
+
+- fix build against Factory</comment>
+    <requestid>254498</requestid>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>532dcf817d45b3a7e6e7e67078151392</srcmd5>
+    <version>1.0.0</version>
+    <time>1421959783</time>
+    <user>dimstar_suse</user>
+    <comment>- amend remmina-fix-install-paths.patch to fix the installation of
+  headers (gh#FreeRDP/Remmina#292)</comment>
+    <requestid>282445</requestid>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>a8cf0053464600b61f2e65e08c021411</srcmd5>
+    <version>1.0.0</version>
+    <time>1441727182</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329747</requestid>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>17c1fc68d453167058431170d69aa9f5</srcmd5>
+    <version>1.0.0</version>
+    <time>1446465312</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341779</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9f954be60a3fb04a2c7a7996dd5b719e</srcmd5>
+    <version>1.2.0~rcgit.13</version>
+    <time>1469081871</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412255</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3c96fac9b6e88b5bf4694954c902cd57</srcmd5>
+    <version>1.2.0~rcgit.18</version>
+    <time>1497786612</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496744</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ba37fcaee1db34422af9589467aec1db</srcmd5>
+    <version>1.2.0~rcgit.18</version>
+    <time>1503392956</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517866</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>74aebe4e07555bdbc34ea1f237161811</srcmd5>
+    <version>1.2.0~rcgit.20</version>
+    <time>1504617475</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520818</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2f60ace4c2fe86690a81651a0f4fc168</srcmd5>
+    <version>1.2.0~rcgit.21</version>
+    <time>1507897152</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533626</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7306ab256024b4cb00025d6678983541</srcmd5>
+    <version>1.2.0~rcgit.24</version>
+    <time>1509722757</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>538217</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>088bb1fcc52b1966a8a8b10e09c1c07d</srcmd5>
+    <version>1.2.0~rcgit.26</version>
+    <time>1515505992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562290</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>af29804f68d335af4063ab2da7becc22</srcmd5>
+    <version>1.2.0~rcgit.27</version>
+    <time>1519145810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578289</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b22243f8d9a0827fdeac67eff86ee80b</srcmd5>
+    <version>1.2.0~rcgit.28</version>
+    <time>1522935232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593556</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fcde428623fdbeda4af38e56c3e8cb1c</srcmd5>
+    <version>1.2.0~rcgit.29</version>
+    <time>1523447986</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594891</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2fcda5b66601a001110eb7a3f3f9e83e</srcmd5>
+    <version>1.2.30</version>
+    <time>1527001334</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611148</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8c1e42186a9943ee8126ddbb553f0787</srcmd5>
+    <version>1.2.30.1</version>
+    <time>1527605547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612718</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e5f50b273763519f42ec6f410893c088</srcmd5>
+    <version>1.2.31.2</version>
+    <time>1533887394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628237</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7a920b64707ef5328013e83c234230e9</srcmd5>
+    <version>1.2.31.4</version>
+    <time>1535538375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631905</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>608d22da8b6e516da7dd626d4a097163</srcmd5>
+    <version>1.2.32</version>
+    <time>1540319854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643583</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ef4b470b457ba4ccc2269967cd3e52fd</srcmd5>
+    <version>1.2.32.1</version>
+    <time>1542750232</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgraded to 1.2.32.1
+  * Add desktop-gnome-platform and fix themes in SNAP
+  * Implement smartcard name setting
+  * man+help: elaborate on file types of -connect and -edit cmd line options
+  * RDP: add FREERDP_ERROR_SERVER_DENIED_CONNECTION message
+  * Removing X11Forwarding code as it is wrong and causing issues
+  * Updated turkish translation
+</comment>
+    <requestid>650376</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>26d695810dd343f712703d758e29056b</srcmd5>
+    <version>1.3.0</version>
+    <time>1548335595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667748</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>cb193d5152d91ae8b2f9b6d05235beac</srcmd5>
+    <version>1.3.1</version>
+    <time>1549017898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669464</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b6be1682a4f9bdbfff643981255b456a</srcmd5>
+    <version>1.3.2</version>
+    <time>1549140596</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670543</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>3838f7ead9e01c2e8e504d960c189003</srcmd5>
+    <version>1.3.2</version>
+    <time>1550151147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674420</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>da1bef75853085efb16cf0591eaf4a05</srcmd5>
+    <version>1.3.2</version>
+    <time>1551386689</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>680076</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5eb810b8e05353676c3346d47f81fa41</srcmd5>
+    <version>1.3.3</version>
+    <time>1551455332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.3.3</comment>
+    <requestid>680353</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>843ddd0db95fc0cf946dff75ebc06be1</srcmd5>
+    <version>1.3.4</version>
+    <time>1552491708</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>684553</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>4fce687fe9a665b3ad9fa3d700d8e471</srcmd5>
+    <version>1.3.4</version>
+    <time>1553084404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686370</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7bbb0443b1e2cc41f4f09472c00b81c9</srcmd5>
+    <version>1.3.5</version>
+    <time>1565097067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721012</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>dcfb10329a0e9554d3515a91ec883b3b</srcmd5>
+    <version>1.3.6</version>
+    <time>1567010188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726604</requestid>
+  </revision>
+</revisionlist>

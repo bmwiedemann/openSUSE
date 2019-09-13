@@ -1,0 +1,6 @@
+<package name="tea" project="openSUSE:Factory">
+  <title>Small yet full featured text editor</title>
+  <description>TEA is a Qt-based text editor for UNIX-like systems.
+With an ultimate small size TEA provides you hundreds of functions.</description>
+  <devel project="editors" package="tea"/>
+</package>

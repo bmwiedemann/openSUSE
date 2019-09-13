@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>750caa386a46c9a2b28becf55bf82629</srcmd5>
+    <version>1.6.1</version>
+    <time>1387390865</time>
+    <user>coolo</user>
+    <comment>resubmit HEAD</comment>
+    <requestid>201235</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f921778cf5e1a9e7912b4a71263e9da3</srcmd5>
+    <version>1.6.2</version>
+    <time>1388774665</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.6.2
+  + improved indicator font customization
+  + explicit declaration of internal libxklavier functions
+    from lingnomekbd:
+    https://git.gnome.org/browse/libgnomekbd/commit/?id=18332fedc6a24e4efeecfdc78a006140c667568a
+    https://bugzilla.gnome.org/show_bug.cgi?id=643754 (forwarded request 212559 from posophe)</comment>
+    <requestid>212560</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1d0b53d16124cc50f567fe1d158f6479</srcmd5>
+    <version>1.8.0</version>
+    <time>1395495867</time>
+    <user>coolo</user>
+    <comment>Push X11:M:N to X11:M:F; new libraries (external dependencies) and a lot of renamed packages</comment>
+    <requestid>225327</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1d0b53d16124cc50f567fe1d158f6479</srcmd5>
+    <version>1.8.0</version>
+    <time>1409301615</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>35e41dcbc222e3112f2b3641fba8ca2d</srcmd5>
+    <version>1.10.0</version>
+    <time>1435652315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314200</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>422fb7dc9029b94e83b82e16b779fc3b</srcmd5>
+    <version>1.10.0</version>
+    <time>1445287906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>339180</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e00f53d4619f486897e5f52b9a606fa2</srcmd5>
+    <version>1.12.0</version>
+    <time>1447234217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>342762</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5f7678d650d337ff0a505f4686732a2d</srcmd5>
+    <version>1.12.1</version>
+    <time>1449145883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>346769</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>569703557d1060564444725ea80193cd</srcmd5>
+    <version>1.14.0</version>
+    <time>1460740164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>386760</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>146426cc870bc9255060eeab9c6dfbff</srcmd5>
+    <version>1.14.1</version>
+    <time>1464595151</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>398778</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b86228f493924d2f3b0d63027fd52065</srcmd5>
+    <version>1.16.0</version>
+    <time>1474807341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>429528</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3777500538a894a47eb990b1d2f1d83a</srcmd5>
+    <version>1.18.0</version>
+    <time>1490026271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481117</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fc3886de0cde9189ee8d0892492fbf4e</srcmd5>
+    <version>1.18.2</version>
+    <time>1491896937</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>487012</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7213b81072097f5f94dcb6f7ffa3b05d</srcmd5>
+    <version>1.20.0</version>
+    <time>1521579559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587914</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>62f09a2754b08ca4b59b69e232bb712b</srcmd5>
+    <version>1.20.1</version>
+    <time>1524237999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595707</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>002ca0ab5e158b3923bb946e8d5e5b9d</srcmd5>
+    <version>1.20.2</version>
+    <time>1530304093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617230</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>428b2e1d324a407c02d8da03c907ee65</srcmd5>
+    <version>1.22.0</version>
+    <time>1558036997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0.</comment>
+    <requestid>682552</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8c8d0b0969c8a07a6be5c7bd7ac80d64</srcmd5>
+    <version>1.23.0</version>
+    <time>1564576482</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>719949</requestid>
+  </revision>
+</revisionlist>

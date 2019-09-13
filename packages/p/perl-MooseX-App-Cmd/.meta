@@ -1,0 +1,15 @@
+<package name="perl-MooseX-App-Cmd" project="openSUSE:Factory">
+  <title>Command module for MooseX</title>
+  <description>This module marries App::Cmd with MooseX::Getopt.
+
+Use it like App::Cmd advises (especially see App::Cmd::Tutorial), swapping
+App::Cmd::Command for MooseX::App::Cmd::Command.
+
+Then you can write your moose commands as moose classes, with
+MooseX::Getopt defining the options for you instead of &quot;opt_spec&quot;
+returning a Getopt::Long::Descriptive spec.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-MooseX-App-Cmd"/>
+  <url>http://search.cpan.org/dist/MooseX-App-Cmd</url>
+</package>

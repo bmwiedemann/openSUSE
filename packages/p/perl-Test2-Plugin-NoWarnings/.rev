@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>086e06b2e5deebf56fd2f437f9232a08</srcmd5>
+    <version>0.05</version>
+    <time>1496926942</time>
+    <user>dimstar_suse</user>
+    <comment>needed for adi:23</comment>
+    <requestid>501205</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c5517f1bb1413aeb522bdbba315878d0</srcmd5>
+    <version>0.06</version>
+    <time>1497016685</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502479</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aea72fff1109a51f988f6037a0ef23f1</srcmd5>
+    <version>0.07</version>
+    <time>1557170030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700742</requestid>
+  </revision>
+</revisionlist>

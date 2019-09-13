@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c2fe76828290770f033a280df1aa6bab</srcmd5>
+    <version>1.3.0</version>
+    <time>1553809691</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Requires
+- Just Obsolete, don't Conflict as well
+- Add Conflicts to python-* subpackages
+- Clean up the SPEC file and use more macros
+- Add remove-unittest2.patch to remove necessity to use python-unittest2 BR.
+- Change all URLs to the new location.
+- Fix RPM groups. Trim bias from descriptions.
+- Add subunit Python subpackages
+  FIXME: this is without remove-unittest2.patch
+- Initial effort to repackage originally Fedora package for
+  version 1.3.0.
+</comment>
+    <requestid>686167</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>272871ba80575ec1c3e5c0dbadcaa665</srcmd5>
+    <version>1.3.0</version>
+    <time>1554930550</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for older distros by adding the singlespec macros</comment>
+    <requestid>692028</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bf0add3dcdedef08501196196d98e40a</srcmd5>
+    <version>1.3.0</version>
+    <time>1555574156</time>
+    <user>dimstar_suse</user>
+    <comment>- fix dependency for subunit-filters
+
+- fix package naming of the python subpackages to follow
+  packaging policy
+
+- add explicit unittest2 buildrequires
+
+- add obsoletes
+
+- drop subunit-unbundle-iso8601.patch: there is no room for fedora
+  specific patches in opensuse and the iso8601 pypi module is completely
+  incompatible with that this version, so nothing works
+- remove-unittest2.patch, subunit-decode-binary-to-unicode.patch
+  needed to get it back to a working state</comment>
+    <requestid>694864</requestid>
+  </revision>
+</revisionlist>

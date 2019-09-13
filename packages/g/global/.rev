@@ -1,0 +1,438 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b2d947b500636427795ae687a6ac80f</srcmd5>
+    <version>5.2</version>
+    <time>1168902867</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7aa0578da87d0e41281920d80abc49ef</srcmd5>
+    <version>5.4</version>
+    <time>1170062796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>012d80a39031bf0f72094c12c8011f24</srcmd5>
+    <version>5.4.1</version>
+    <time>1173774395</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>116891e75e72d1a474af1ac379e1a8cf</srcmd5>
+    <version>5.4.1</version>
+    <time>1175264993</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9b9dd4f043021a57223a3cbb96d8a456</srcmd5>
+    <version>5.5</version>
+    <time>1178554352</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0f64b69a63d0d91e8987865d61ae6cc7</srcmd5>
+    <version>5.6</version>
+    <time>1184083225</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>55cbc71f3d6a37938f615ae0a80a2ec0</srcmd5>
+    <version>5.6.2</version>
+    <time>1193741406</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f89c1673ce904b533bb422d7522c9e48</srcmd5>
+    <version>5.7</version>
+    <time>1206544306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="51">
+    <srcmd5>f89c1673ce904b533bb422d7522c9e48</srcmd5>
+    <version>5.7</version>
+    <time>1206544306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9be1143d0738941d60ee87ace96f1784</srcmd5>
+    <version>5.7.4</version>
+    <time>1231869007</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>48272c483fbb8cab1cc2e9583a3f136c</srcmd5>
+    <version>5.7.5</version>
+    <time>1237334144</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>48272c483fbb8cab1cc2e9583a3f136c</srcmd5>
+    <version>5.7.5</version>
+    <time>1237334144</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5f165001ae733d0c4a53443dac12c96e</srcmd5>
+    <version>5.7.6</version>
+    <time>1258388618</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/global based on submit request 24304 from user puzel
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e05829d92ae106ef6dfc870f9c52e806</srcmd5>
+    <version>5.7.7</version>
+    <time>1262865457</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/global based on submit request 28016 from user puzel
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>51041f08d41ac3f0993a1b5f6303bc0d</srcmd5>
+    <version>5.8</version>
+    <time>1265750501</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/global based on submit request 31643 from user puzel
+</comment>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>21ecb4a7448ba7480b8a83dc95af9746</srcmd5>
+    <version>5.8</version>
+    <time>1268923738</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>21ecb4a7448ba7480b8a83dc95af9746</srcmd5>
+    <version>5.8</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>21ecb4a7448ba7480b8a83dc95af9746</srcmd5>
+    <version>5.8</version>
+    <time>1278678578</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>20a0811f34557ef2769a06a2b516124d</srcmd5>
+    <version>5.9.1</version>
+    <time>1279919827</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/global based on submit request 43637 from user puzel
+</comment>
+    <requestid>43637</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b527fc45f3112f4d96a118f547ebd3f6</srcmd5>
+    <version>5.9.2</version>
+    <time>1284768297</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/global based on submit request 48376 from user puzel
+</comment>
+    <requestid>48376</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>b527fc45f3112f4d96a118f547ebd3f6</srcmd5>
+    <version>5.9.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>13933d775fe14f574e080e39983c3b2a</srcmd5>
+    <version>5.9.2</version>
+    <time>1300097945</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63997 from user coolo
+</comment>
+    <requestid>63997</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>d73f27b105405ec407241f8f30da0010</srcmd5>
+    <version>5.9.2</version>
+    <time>1300097960</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63997
+</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>1b514582ad2a8bb503c7c8b02d42966a</srcmd5>
+    <version>5.9.4</version>
+    <time>1300271473</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64164 from user puzel
+</comment>
+    <requestid>64164</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>993d582dc9c936460bd78fdc78c46873</srcmd5>
+    <version>5.9.4</version>
+    <time>1300271481</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64164
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a975f30279a5f0710d90382d284ff8de</srcmd5>
+    <version>5.9.5</version>
+    <time>1305712151</time>
+    <user>saschpe</user>
+    <comment>update to 5.9.5</comment>
+    <requestid>70526</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d3d76417e922e55be2b2ada5fa1a2174</srcmd5>
+    <version>5.9.6</version>
+    <time>1307519498</time>
+    <user>saschpe</user>
+    <comment>upate to global-5.9.6</comment>
+    <requestid>72867</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>eae7135bd809564587463df9b9dc4170</srcmd5>
+    <version>5.9.7</version>
+    <time>1309531955</time>
+    <user>saschpe</user>
+    <comment>update to global-5.9.7</comment>
+    <requestid>74986</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4f54664c9e5bbc2cffa652f7d1919969</srcmd5>
+    <version>6.0</version>
+    <time>1315562533</time>
+    <user>saschpe</user>
+    <comment>update to global-6.0</comment>
+    <requestid>81588</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>75e49b49d9be079b54fb39d1d3d406a4</srcmd5>
+    <version>6.1</version>
+    <time>1318761908</time>
+    <user>lrupp</user>
+    <comment>- update to global-6.1</comment>
+    <requestid>87836</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>ee15288a71c834681b7ed3290ee7dc2b</srcmd5>
+    <version>6.1</version>
+    <time>1318939473</time>
+    <user>saschpe</user>
+    <comment>add libtool as buildrequire to avoid a hidden require from projconfig (forwarded request 87940 from coolo)</comment>
+    <requestid>88166</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>ee15288a71c834681b7ed3290ee7dc2b</srcmd5>
+    <version>6.1</version>
+    <time>1319181910</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>f0a8f0fe57cf67369b885e452630275b</srcmd5>
+    <version>6.1</version>
+    <time>1323191592</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9e0cb9a50d4a43b66f1046b3638a64b4</srcmd5>
+    <version>6.2</version>
+    <time>1328086665</time>
+    <user>coolo</user>
+    <comment>- update to global-6.2</comment>
+    <requestid>102180</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e5d8a17f978870a82a8f83a4abda096a</srcmd5>
+    <version>6.2.1</version>
+    <time>1330081477</time>
+    <user>coolo</user>
+    <comment>update to 6.2.1</comment>
+    <requestid>106767</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ab7621b14ec2f6dda0aa5cfe8ee8f120</srcmd5>
+    <version>6.2.2</version>
+    <time>1338280402</time>
+    <user>coolo</user>
+    <comment>- update to global-6.2.2 
+[BUG FIXED]
+  - configure: The --disable-gtagscscope option didn't avoid
+    building gtags-cscope completely. So, ./configure failed when
+    there is no curses library.  Now it avoids building
+    gtags-cscope completely.
+  - htags: Imported a patch to fix htags on Windows Vista+ (tmpfile
+    wants to create its file in the root directory, which is not
+    writable by normal users).</comment>
+    <requestid>122563</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>afcae73941db48ca2fdf7c4f9d603130</srcmd5>
+    <version>6.2.4</version>
+    <time>1338528009</time>
+    <user>coolo</user>
+    <comment>- update to global-6.2.4 
+[BUG FIXED]
+  - Built-in parser: When attribute specifier appeared immediately
+    after the `struct', `union' or `enum' keyword, GLOBAL could not
+    pick up tag name.  Now it works correctly.
+[CHANGES]
+ - New facilities:
+  - gtags: --single-update option support addition of a file.
+  - global: New --single-update option.
+  - gtags.el: New custom variables:
+    - gtags-ignore-case
+    - gtags-auto-update.
+  - gtags.vim: New custom variables 'Gtags_Auto_Update' (default 0).</comment>
+    <requestid>123004</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>afcae73941db48ca2fdf7c4f9d603130</srcmd5>
+    <version>6.2.4</version>
+    <time>1340183371</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>afcae73941db48ca2fdf7c4f9d603130</srcmd5>
+    <version>6.2.4</version>
+    <time>1359108944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>afcae73941db48ca2fdf7c4f9d603130</srcmd5>
+    <version>6.2.4</version>
+    <time>1379662464</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="9">
+    <srcmd5>afcae73941db48ca2fdf7c4f9d603130</srcmd5>
+    <version>6.2.4</version>
+    <time>1409301001</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4fc7784828463b559664499d0ba363c8</srcmd5>
+    <version>6.3.2</version>
+    <time>1410204548</time>
+    <user>coolo</user>
+    <comment>- update to globa-6.3.2
+- see /usr/share/doc/packages/global/NEWS for complete list
+  of changes since 6.2.4</comment>
+    <requestid>248043</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6cb512081cc0936d91e39e397b00061b</srcmd5>
+    <version>6.4</version>
+    <time>1427736812</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293600</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>846bc52311f5791c893004d295399c75</srcmd5>
+    <version>6.4</version>
+    <time>1432488727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies
+- Enable exuberant-ctags
+- Enable sqlite3 support</comment>
+    <requestid>308439</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>262010c60d7a71659b89f13c8b07a8e2</srcmd5>
+    <version>6.5</version>
+    <time>1438899857</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320758</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5226f8c05deb81cb3b3a143e4b2ad99f</srcmd5>
+    <version>6.5.1</version>
+    <time>1443585089</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333185</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>89b96861e681a9ba5b8e9c305e59b1f0</srcmd5>
+    <version>6.5.2</version>
+    <time>1450364098</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.5.2
+  * See attached NEWS for detailed list of changes</comment>
+    <requestid>349299</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9089d392276d120c862caac2c8669ee9</srcmd5>
+    <version>6.5.3</version>
+    <time>1459002278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>376200</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>23e429fbee36b7c09463674c8dd5354e</srcmd5>
+    <version>6.5.4</version>
+    <time>1459238431</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>380514</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>5ad81ec9e854c5a88806153a6e7aa344</srcmd5>
+    <version>6.5.4</version>
+    <time>1465938398</time>
+    <user>dimstar_suse</user>
+    <comment>- set correctly path paths for parsers (bnc#977967)
+  new patch: fix_paths.patch</comment>
+    <requestid>395202</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>bd825f2bdf54f5751ac1d09743690965</srcmd5>
+    <version>6.5.6</version>
+    <time>1484132587</time>
+    <user>dimstar_suse</user>
+    <comment>GNU global 6.5.6 (forwarded request 448130 from AndreasStieger)</comment>
+    <requestid>448134</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>9935b06dde4c1f5ebdce906e3591fb3d</srcmd5>
+    <version>6.5.7</version>
+    <time>1497274093</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498466</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>568f0711bb380f8d215a751bf32ce392</srcmd5>
+    <version>6.6.1</version>
+    <time>1513677478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557822</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>66d7acdf82e949a851bdc5b9a3bcb7f3</srcmd5>
+    <version>6.6.3</version>
+    <time>1553635934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687299</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>00fe3d5cc0789e2b353c3e482bf9046c</srcmd5>
+    <version>6.6.3</version>
+    <time>1561406014</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to python3
+- Update dependcies
+- Get rid of env usage</comment>
+    <requestid>711692</requestid>
+  </revision>
+</revisionlist>

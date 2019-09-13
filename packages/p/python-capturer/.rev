@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>23908ea18c877010dd9af58cfd4b0dff</srcmd5>
+    <version>2.4</version>
+    <time>1526371628</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-coloredlogs</comment>
+    <requestid>603730</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cead2618eb809795a27308850e059790</srcmd5>
+    <version>2.4</version>
+    <time>1528897091</time>
+    <user>maxlin_factory</user>
+    <comment>- Ensure neutrality of description. (forwarded request 615072 from jengelh)</comment>
+    <requestid>615178</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>44450090e68ce0c40f9845da7d0c8eae</srcmd5>
+    <version>2.4</version>
+    <time>1544726466</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653963</requestid>
+  </revision>
+</revisionlist>

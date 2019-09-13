@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e63b047af5cb0a826e2b2329e397c07d</srcmd5>
+    <version>1.5.2</version>
+    <time>1481153447</time>
+    <user>dimstar_suse</user>
+    <comment>Early submission for GNOME 3.24 - new dependency, maintained by the GNOME Team</comment>
+    <requestid>442697</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7b9f0200f38bc82358ddf6aac552e78c</srcmd5>
+    <version>1.5.2</version>
+    <time>1481654039</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445396</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>74738dc8f4ff026dad6eeccaf9640d80</srcmd5>
+    <version>1.6.0</version>
+    <time>1490220036</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>476930</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>55fc88ebedbca53eb8b5df3fc15d8ef1</srcmd5>
+    <version>1.6.0</version>
+    <time>1503061157</time>
+    <user>dimstar_suse</user>
+    <comment>- on i586, disable sse2 for the moment, otherwise the package
+  fails in the testsuite on the &quot;box&quot; test (forwarded request 515828 from oertel)</comment>
+    <requestid>516870</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e8c6a033051418e9e71edc396b8b8a44</srcmd5>
+    <version>1.6.0</version>
+    <time>1512386102</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546766</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>18a195b2eccec9c5c9ca8ff82db9cd2e</srcmd5>
+    <version>1.6.2</version>
+    <time>1519557390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579315</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>71061ff1bb5c58a0d583ee7e8a799986</srcmd5>
+    <version>1.8.0</version>
+    <time>1521051874</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583588 from dimstar)</comment>
+    <requestid>584751</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b7babd42aa46b19d822406770cb72f51</srcmd5>
+    <version>1.8.2</version>
+    <time>1529666818</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617316</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8fd9b60cbc6e35a0da36a707eff0511b</srcmd5>
+    <version>1.8.6</version>
+    <time>1554114680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689310</requestid>
+  </revision>
+</revisionlist>

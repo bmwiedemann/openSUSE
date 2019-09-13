@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54764beb800a3338d126db64a71ff695</srcmd5>
+    <version>0.9.1</version>
+    <time>1476350986</time>
+    <user>dimstar_suse</user>
+    <comment>Change sxhkd and dmenu to be recommended, not required.</comment>
+    <requestid>433323</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2a8883e3231b954de10ea45f3e751bdc</srcmd5>
+    <version>0.9.2</version>
+    <time>1486968567</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455898</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4c9abc335bbd97ce4ad9dce4ef5c4aeb</srcmd5>
+    <version>0.9.3</version>
+    <time>1506340804</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528537</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e3d5cdf8709598d26d93c295ece5ea07</srcmd5>
+    <version>0.9.3</version>
+    <time>1522226067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591770</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>337c7112b0f59afe40439fb22d0fa9ee</srcmd5>
+    <version>0.9.4</version>
+    <time>1522404474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592196</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>619216b1bd970c43f3e355ea3d743ee6</srcmd5>
+    <version>0.9.5</version>
+    <time>1523616635</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595808</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6de1eff3044de2a44569aefd8cd42751</srcmd5>
+    <version>0.9.7</version>
+    <time>1551276602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 0.9.7:
+  * Bug fix for &quot;single_monocle does not work for the first node on
+  a desktop&quot;
+- From 0.9.5 to 0.9.6
+- Additions
+  * New wm command: --restart. It was already possible to restart
+    bspwm without loosing the current state through
+    --{dump,load}-state, but this command will also keep the
+    existing subscribers intact.
+  * New settings: automatic_scheme, removal_adjustment.
+    The automatic insertion mode now provides three ways of
+    inserting a new node: spiral, longest_side (the default)
+    and alternate. Those schemes are described in the README.
+  * New settings: ignore_ewmh_struts, presel_feedback,
+    {top,right,bottom,left}_monocle_padding.
+  * New node descriptor: smallest.
+  * New desktop modifier: active.
+- Changes
+  * The focused and active modifiers now mean the same
+    thing across every object.
+  * Fullscreen windows are no longer sent to the above layer.
+    Within the same layer, fullscreen windows are now above floating
+    windows. If you want a floating window to be above a fullscreen
+    window, you'll need to rely on layers.
+  * Pseudo-tiled windows now shrink automatically.
+- Removals
+  * The paddingless_monocle setting was removed (and subsumed).
+</comment>
+    <requestid>679689</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>54fff835c807e0c7a2efbb25485e85d4</srcmd5>
+    <version>0.9.7</version>
+    <time>1553436072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687820</requestid>
+  </revision>
+</revisionlist>

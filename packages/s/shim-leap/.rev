@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>29f838dc3d66540e5afd69ededcb8e2b</srcmd5>
+    <version>0.9</version>
+    <time>1481272251</time>
+    <user>dimstar_suse</user>
+    <comment>The shim binary from Leap 42.2</comment>
+    <requestid>443760</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>15110aba976f207347dd38f571ae8e0c</srcmd5>
+    <version>0.9</version>
+    <time>1483048304</time>
+    <user>lnussel_factory</user>
+    <comment>- Update shim to 0.9-13.1
+  + Update shim-install to support &quot;--no-nvram&quot; and improve
+    removable media and fallback mode handling (bsc#985568,
+    bsc#999818) (Fix from mchang@suse.com)</comment>
+    <requestid>447868</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e0bb42896d1bbeca15159484154b699b</srcmd5>
+    <version>0.9</version>
+    <time>1487462599</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458606</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>15110aba976f207347dd38f571ae8e0c</srcmd5>
+    <version>0.9</version>
+    <time>1487713631</time>
+    <user>dimstar_suse</user>
+    <comment>Revert shim-leap</comment>
+    <requestid>459557</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>762c03fed7dfc34c1d01abe6f8ecca05</srcmd5>
+    <version>0.9</version>
+    <time>1493363599</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490912</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>37ee3e0ae4ef84252e32112b3f4a9144</srcmd5>
+    <version>14</version>
+    <time>1524742703</time>
+    <user>dimstar_suse</user>
+    <comment>Update shim to 14-lp150.4.1, new signature from Microsoft (forwarded request 600828 from mlin7442)</comment>
+    <requestid>600832</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b7677b9a8810d114ea00d16a495400de</srcmd5>
+    <version>14</version>
+    <time>1526463648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607410</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>15ecf6462b1e154697defaf15873bfd0</srcmd5>
+    <version>14</version>
+    <time>1528897097</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615203</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>00fe0ee80f0250fdf20ffa675ccc260a</srcmd5>
+    <version>14</version>
+    <time>1544095148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655468</requestid>
+  </revision>
+</revisionlist>

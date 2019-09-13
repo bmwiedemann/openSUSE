@@ -1,0 +1,5 @@
+<package name="pdisk" project="openSUSE:Factory">
+  <title>Partitioning tool for PPC Macs</title>
+  <description>This tool allows you to edit Mac partition tables.</description>
+  <devel project="Base:System" package="pdisk"/>
+</package>

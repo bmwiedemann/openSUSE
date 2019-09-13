@@ -1,0 +1,11 @@
+<package name="kernel-syms" project="openSUSE:Factory">
+  <title>Kernel Symbol Versions (modversions)</title>
+  <description>Kernel symbols, such as functions and variables, have version
+information attached to them. This package contains the symbol versions
+for the standard kernels.
+
+This package is needed for compiling kernel module packages with proper
+package dependencies.</description>
+  <devel project="openSUSE:Factory" package="kernel-source"/>
+  <bcntsynctag>kernel-source</bcntsynctag>
+</package>

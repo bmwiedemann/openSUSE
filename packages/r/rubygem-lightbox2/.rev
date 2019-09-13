@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2bb46620ea317991e0de681ec9751dac</srcmd5>
+    <version>2.10.0</version>
+    <time>1552380947</time>
+    <user>dimstar_suse</user>
+    <comment>Initialize package</comment>
+    <requestid>684095</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d00bc6b444a18604b4958468688fb286</srcmd5>
+    <version>2.10.0.2</version>
+    <time>1552464824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684243</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>43467475911bcf698ead3d719acb7734</srcmd5>
+    <version>2.11.0</version>
+    <time>1560970820</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706002</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1a40b6e90f2c8b953d60899183126367</srcmd5>
+    <version>2.11.1.1</version>
+    <time>1563259286</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 715363 from mschnitzer)</comment>
+    <requestid>715364</requestid>
+  </revision>
+</revisionlist>

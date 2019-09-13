@@ -1,0 +1,695 @@
+<revisionlist>
+  <revision rev="1" vrev="66">
+    <srcmd5>1f4217eba6a474ae0838583f32e579ea</srcmd5>
+    <version>10.1</version>
+    <time>1168904416</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>959b735c6391569be7faf1961fa7c91f</srcmd5>
+    <version>10.3</version>
+    <time>1173919225</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="7">
+    <srcmd5>dfbec1f466c4f78f7c0556064d994bcd</srcmd5>
+    <version>10.3</version>
+    <time>1177415849</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="8">
+    <srcmd5>1ceeae1b3adfcbcfeeb872bd481b1aa2</srcmd5>
+    <version>10.3</version>
+    <time>1177425599</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>344b48dfcde468ad49fec44410ccfb69</srcmd5>
+    <version>10.3</version>
+    <time>1177606955</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>0b33365dd1978cd708e6d2d449674ef4</srcmd5>
+    <version>10.3</version>
+    <time>1177800926</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="14">
+    <srcmd5>819b902951943faf5ae7d16c61034e56</srcmd5>
+    <version>10.3</version>
+    <time>1178226571</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="17">
+    <srcmd5>205f27651f4481d5ee1ee861048cd459</srcmd5>
+    <version>10.3</version>
+    <time>1178872560</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="18">
+    <srcmd5>56335a1a81bd891ffd0e2ebf781c0153</srcmd5>
+    <version>10.3</version>
+    <time>1178891197</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="20">
+    <srcmd5>d512cd24d2ed6b439e9fffefaa24073c</srcmd5>
+    <version>10.3</version>
+    <time>1179393910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="22">
+    <srcmd5>f858928b761a6f80346c1a9272fb245c</srcmd5>
+    <version>10.3</version>
+    <time>1179763807</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="25">
+    <srcmd5>5288aa2a9ce7507e1ab76fa0085c5a2d</srcmd5>
+    <version>10.3</version>
+    <time>1180639721</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="32">
+    <srcmd5>128046f418ea882b36e94cf8c6b34ada</srcmd5>
+    <version>10.3</version>
+    <time>1182464641</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="34">
+    <srcmd5>78bc395a030cf2d0119835361aef27e0</srcmd5>
+    <version>10.3</version>
+    <time>1183593066</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="35">
+    <srcmd5>b76109ac6a16bcc0925940d03545a7d5</srcmd5>
+    <version>10.3</version>
+    <time>1183656451</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="39">
+    <srcmd5>381c8c44ee1ba8b870765eb69d20addd</srcmd5>
+    <version>10.3</version>
+    <time>1184784279</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="45">
+    <srcmd5>3249f88ac34821b3d943b6d678a85007</srcmd5>
+    <version>10.3</version>
+    <time>1186412471</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="47">
+    <srcmd5>d5f6d4ceadbf54e478c30aa4ca3b3529</srcmd5>
+    <version>10.3</version>
+    <time>1186757954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="49">
+    <srcmd5>5158aa10288361f46bb2da291d68dd1c</srcmd5>
+    <version>10.3</version>
+    <time>1187201663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="51">
+    <srcmd5>89bf625e2f1f01f5786badcc7fa32ffa</srcmd5>
+    <version>10.3</version>
+    <time>1187369222</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="53">
+    <srcmd5>0aef671dc07b8c7337a2c34d28febb3e</srcmd5>
+    <version>10.3</version>
+    <time>1187906574</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="56">
+    <srcmd5>42cd4132c1509ac627f7667c40141e44</srcmd5>
+    <version>10.3</version>
+    <time>1188226161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="58">
+    <srcmd5>6c7c172ef43616bef70fecaff2c7a025</srcmd5>
+    <version>10.3</version>
+    <time>1188505562</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="60">
+    <srcmd5>016d44e70b04843dc704d27bb174e6d6</srcmd5>
+    <version>10.3</version>
+    <time>1189701416</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="62">
+    <srcmd5>8da9cc922685afd45230fc5d16d818fa</srcmd5>
+    <version>10.3</version>
+    <time>1190221527</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="72">
+    <srcmd5>e6016f0e1518b5b36c6bf86e2829d08d</srcmd5>
+    <version>10.3</version>
+    <time>1196435219</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="75">
+    <srcmd5>0c74b6cc7c6ba927e4d018f0c6d67cf0</srcmd5>
+    <version>10.3</version>
+    <time>1197925211</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="78">
+    <srcmd5>9f36ecbbcce53b2ec270df0e2478ee9f</srcmd5>
+    <version>10.3</version>
+    <time>1200100695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="83">
+    <srcmd5>b58e9c0150b1f3da50745acd1a1bc126</srcmd5>
+    <version>10.3</version>
+    <time>1201365597</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="88">
+    <srcmd5>d760660f7fdf97d25d6fc3218436535d</srcmd5>
+    <version>10.3</version>
+    <time>1202487315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="92">
+    <srcmd5>851c9528a6825e628fe4105f6fae6b5e</srcmd5>
+    <version>10.3</version>
+    <time>1202927709</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="99">
+    <srcmd5>4d1dc83ef626d16c58c8b3a9a54b7b4a</srcmd5>
+    <version>10.3</version>
+    <time>1206059225</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="104">
+    <srcmd5>c47f2dbe8036478d26a39d7993a3ca41</srcmd5>
+    <version>10.3</version>
+    <time>1206677137</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3d28562b7206cf17ef0d417b69df826c</srcmd5>
+    <version>11.0</version>
+    <time>1207471164</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>d2cdb2db3e35bdfc2263a3d73975a4ce</srcmd5>
+    <version>11.0</version>
+    <time>1209128895</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>c6c559696403d98e78bed496532c7fab</srcmd5>
+    <version>11.0</version>
+    <time>1209201914</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="9">
+    <srcmd5>664c63253554b86b3b94cae382c27045</srcmd5>
+    <version>11.0</version>
+    <time>1210093430</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="11">
+    <srcmd5>f5014614039cbf091a0a9a832d1b8b80</srcmd5>
+    <version>11.0</version>
+    <time>1210378008</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="13">
+    <srcmd5>92bc2541fc273deafd4183ead79915d8</srcmd5>
+    <version>11.0</version>
+    <time>1210975258</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="15">
+    <srcmd5>a39ca840ed396a5db26bf04ea548a5d8</srcmd5>
+    <version>11.0</version>
+    <time>1211400495</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="16">
+    <srcmd5>771259dba26c9731b1907d10c56b8dc8</srcmd5>
+    <version>11.0</version>
+    <time>1211499044</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="17">
+    <srcmd5>871d656f54146dc3da3466b095d7b482</srcmd5>
+    <version>11.0</version>
+    <time>1211499210</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="18">
+    <srcmd5>1ab28737baf17b787e5db35817dbcfca</srcmd5>
+    <version>11.0</version>
+    <time>1211819719</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="19">
+    <srcmd5>5b1805960dc3a6c0ffeec12e6f8c5834</srcmd5>
+    <version>11.0</version>
+    <time>1211836606</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="21">
+    <srcmd5>304ed4c0a7d888a1cebb18525ae9d93a</srcmd5>
+    <version>11.0</version>
+    <time>1212228480</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="23">
+    <srcmd5>280f6620b8d182d0487fe800ede84614</srcmd5>
+    <version>11.0</version>
+    <time>1212788766</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="28">
+    <srcmd5>1c5d47b2ec3f7b57d773c5bdef3e94fc</srcmd5>
+    <version>11.0</version>
+    <time>1216418436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="42">
+    <srcmd5>d8fa03c3dc341e78e8a8479106d17625</srcmd5>
+    <version>11.0</version>
+    <time>1219438315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="44">
+    <srcmd5>2b11115004ec0a4a46435e0f95e0a571</srcmd5>
+    <version>11.0</version>
+    <time>1219710250</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="47">
+    <srcmd5>03d22b07201accc1a54b612bf2c79944</srcmd5>
+    <version>11.0</version>
+    <time>1220641037</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="53">
+    <srcmd5>1b01263f03c539dce80a99f69e848200</srcmd5>
+    <version>11.0</version>
+    <time>1222270727</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="54">
+    <srcmd5>da27db93968c4e9e78a028fac42a0476</srcmd5>
+    <version>11.0</version>
+    <time>1222442427</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="55">
+    <srcmd5>e1d3aad0674c7e29b019e356239cba23</srcmd5>
+    <version>11.0</version>
+    <time>1223302433</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="56">
+    <srcmd5>1f8f164cac28d09fdf3b3db9ce8878d3</srcmd5>
+    <version>11.0</version>
+    <time>1223910019</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="57">
+    <srcmd5>9d4e11cbd4627576d1ffc1895cb36fe2</srcmd5>
+    <version>11.0</version>
+    <time>1224855235</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="58">
+    <srcmd5>4deb853dc0dd3a037c713a3af27f6d91</srcmd5>
+    <version>11.0</version>
+    <time>1225577966</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>854a23e5cab2acb3a00a61fc38035476</srcmd5>
+    <version>11.1</version>
+    <time>1225670319</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>80bfa9a0368cf89a44c41a5f1b0afeb7</srcmd5>
+    <version>11.1</version>
+    <time>1243937973</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>e0208d29b2686935d94c39189633c79c</srcmd5>
+    <version>11.1</version>
+    <time>1244818702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>4c0be36bafa010de284aa6da592c9255</srcmd5>
+    <version>11.1</version>
+    <time>1247840570</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="6">
+    <srcmd5>4c0be36bafa010de284aa6da592c9255</srcmd5>
+    <version>11.1</version>
+    <time>1247840570</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>6093998727cef5264e014f26e55fccf0</srcmd5>
+    <version>11.1</version>
+    <time>1257326933</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/update-desktop-files based on submit request 23639 from user coolo
+</comment>
+  </revision>
+  <revision rev="63" vrev="8">
+    <srcmd5>107f1589eecac26e01ed406309c89316</srcmd5>
+    <version>11.1</version>
+    <time>1268926433</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="64" vrev="9">
+    <srcmd5>ce67ef9bb761629f839caee16b6bfa58</srcmd5>
+    <version>11.1</version>
+    <time>1271190129</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/update-desktop-files based on submit request 37478 from user vuntz
+</comment>
+    <requestid>37478</requestid>
+  </revision>
+  <revision rev="65" vrev="10">
+    <srcmd5>97ec94f88a599213867c3d9666733b17</srcmd5>
+    <version>11.1</version>
+    <time>1276094803</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/update-desktop-files based on submit request 41220 from user vuntz
+</comment>
+    <requestid>41220</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>c1ec51ab297b1a7f34d790ca79949f09</srcmd5>
+    <version>11.3</version>
+    <time>1277134674</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/update-desktop-files based on submit request 41823 from user vuntz
+</comment>
+    <requestid>41823</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>c1ec51ab297b1a7f34d790ca79949f09</srcmd5>
+    <version>11.3</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>c1ec51ab297b1a7f34d790ca79949f09</srcmd5>
+    <version>11.3</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>693cd679205ffb4d8fcffe1eb81ff052</srcmd5>
+    <version>11.3</version>
+    <time>1279538614</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/update-desktop-files based on submit request 42725 from user dirkmueller
+</comment>
+    <requestid>42725</requestid>
+  </revision>
+  <revision rev="70" vrev="5">
+    <srcmd5>04f822de9a156631af0b11b969225ff0</srcmd5>
+    <version>11.3</version>
+    <time>1286806737</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/update-desktop-files based on submit request 50171 from user coolo
+</comment>
+    <requestid>50171</requestid>
+  </revision>
+  <revision rev="71" vrev="6">
+    <srcmd5>c034d2fd73129612ba1fa41e223407a5</srcmd5>
+    <version>11.3</version>
+    <time>1293579289</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56764 from user dirkmueller
+</comment>
+    <requestid>56764</requestid>
+  </revision>
+  <revision rev="72" vrev="7">
+    <srcmd5>b921efb5885cbcb458df7bf8b80921d6</srcmd5>
+    <version>11.3</version>
+    <time>1293579296</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56764
+</comment>
+  </revision>
+  <revision rev="73" vrev="8">
+    <srcmd5>409b3788a0fa743cb583119813fb4478</srcmd5>
+    <version>11.3</version>
+    <time>1296229715</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59144 from user coolo
+</comment>
+    <requestid>59144</requestid>
+  </revision>
+  <revision rev="74" vrev="9">
+    <srcmd5>932c5d94ae4a8e9f73e5bca1cfd764a2</srcmd5>
+    <version>11.3</version>
+    <time>1296229720</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59144
+</comment>
+  </revision>
+  <revision rev="75" vrev="12">
+    <srcmd5>932c5d94ae4a8e9f73e5bca1cfd764a2</srcmd5>
+    <version>11.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="76" vrev="7">
+    <srcmd5>6916f0838f1801f28111121d78239e77</srcmd5>
+    <version>12.1</version>
+    <time>1307430398</time>
+    <user>saschpe</user>
+    <comment>- ship desktop.attr together with the .prov script for rpm
+  automatic mimehandler provides</comment>
+    <requestid>72818</requestid>
+  </revision>
+  <revision rev="77" vrev="8">
+    <srcmd5>8d0bbfaba36f5471932a4da821108e85</srcmd5>
+    <version>12.1</version>
+    <time>1307430407</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72818
+</comment>
+  </revision>
+  <revision rev="78" vrev="9">
+    <srcmd5>97ed97e3b5d9b801037550d8a41d804f</srcmd5>
+    <version>12.1</version>
+    <time>1317547039</time>
+    <user>lrupp</user>
+    <comment>Use NoDisplay=true instead of X-SuSE-Unimportant=true (forwarded request 85482 from vuntz)</comment>
+    <requestid>85578</requestid>
+  </revision>
+  <revision rev="79" vrev="11">
+    <srcmd5>97ed97e3b5d9b801037550d8a41d804f</srcmd5>
+    <version>12.1</version>
+    <time>1319182541</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="80" vrev="12">
+    <srcmd5>3c9e8598936d4a198dc071abc265a321</srcmd5>
+    <version>12.1</version>
+    <time>1323195040</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="81" vrev="13">
+    <srcmd5>7cb4ee72c0b2453b882875e7ccf1ab2b</srcmd5>
+    <version>12.1</version>
+    <time>1323869716</time>
+    <user>coolo</user>
+    <comment>- split brp-trim-desktopfiles that installs a brp script to trim all 
+  .desktop files without need of an extra macro</comment>
+    <requestid>96477</requestid>
+  </revision>
+  <revision rev="82" vrev="14">
+    <srcmd5>e424abb74953226aa3d382c0085d352b</srcmd5>
+    <version>12.1</version>
+    <time>1324387689</time>
+    <user>coolo</user>
+    <comment>- give warning for old options instead of error
+
+- use sed with inline option to avoid leaving temporary files behind
+
+- desktop.attr should be reenabled in rpm again</comment>
+    <requestid>96846</requestid>
+  </revision>
+  <revision rev="83" vrev="15">
+    <srcmd5>baf8cdafed696f3926cff43ceb5773d8</srcmd5>
+    <version>12.1</version>
+    <time>1334692990</time>
+    <user>coolo</user>
+    <comment>- accept new XFCE category (forwarded request 113407 from gberh)</comment>
+    <requestid>113814</requestid>
+  </revision>
+  <revision rev="84" vrev="17">
+    <srcmd5>baf8cdafed696f3926cff43ceb5773d8</srcmd5>
+    <version>12.1</version>
+    <time>1340184299</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="85" vrev="19">
+    <srcmd5>baf8cdafed696f3926cff43ceb5773d8</srcmd5>
+    <version>12.1</version>
+    <time>1359110528</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="86" vrev="20">
+    <srcmd5>6fd2c65520465ca7c329412cb847abc3</srcmd5>
+    <version>12.1</version>
+    <time>1371647819</time>
+    <user>coolo</user>
+    <comment>- Add Categories introduced in the new Desktop Menu Specification
+  (map-desktop-category.sh, bnc#443364), map removed PuzzleGame. (forwarded request 179606 from sbrabec)</comment>
+    <requestid>179631</requestid>
+  </revision>
+  <revision rev="87" vrev="22">
+    <srcmd5>6fd2c65520465ca7c329412cb847abc3</srcmd5>
+    <version>12.1</version>
+    <time>1379664891</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="88" vrev="23">
+    <srcmd5>8703c19ff9c9721451d19e3f45df5efb</srcmd5>
+    <version>12.1</version>
+    <time>1380301719</time>
+    <user>coolo</user>
+    <comment>- make sure the files can be split correctly (bnc#841090)</comment>
+    <requestid>201059</requestid>
+  </revision>
+  <revision rev="89" vrev="24">
+    <srcmd5>7d2ed185ea7f1e317422d964d920fe2f</srcmd5>
+    <version>12.1</version>
+    <time>1401958192</time>
+    <user>coolo</user>
+    <comment>- also allow X-SuSE-YaST-High_Availability (forwarded request 236030 from coolo)</comment>
+    <requestid>236117</requestid>
+  </revision>
+  <revision rev="90" vrev="25">
+    <srcmd5>76564ea3bac76fae12a209e005d7e9f9</srcmd5>
+    <version>12.1</version>
+    <time>1404306269</time>
+    <user>coolo</user>
+    <comment>- just take all *.desktop files in /usr/share (trying to fix autoyast
+  translations)</comment>
+    <requestid>239135</requestid>
+  </revision>
+  <revision rev="91" vrev="26">
+    <srcmd5>afa043d88ec0638739154bc09e837ec7</srcmd5>
+    <version>12.1</version>
+    <time>1406366871</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242263</requestid>
+  </revision>
+  <revision rev="92" vrev="28">
+    <srcmd5>afa043d88ec0638739154bc09e837ec7</srcmd5>
+    <version>12.1</version>
+    <time>1409303578</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="93" vrev="29">
+    <srcmd5>ee2aabb27d370076d3c337181c337aae</srcmd5>
+    <version>12.1</version>
+    <time>1411630411</time>
+    <user>coolo</user>
+    <comment>- fix find call, type expects one char</comment>
+    <requestid>251514</requestid>
+  </revision>
+  <revision rev="94" vrev="30">
+    <srcmd5>087a267561a0c64037f7765a3477784a</srcmd5>
+    <version>12.1</version>
+    <time>1416824074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262011</requestid>
+  </revision>
+  <revision rev="95" vrev="31">
+    <srcmd5>cc7db76e84aaed8169d8a97f9d55d07e</srcmd5>
+    <version>12.1</version>
+    <time>1417643543</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263575</requestid>
+  </revision>
+  <revision rev="96" vrev="32">
+    <srcmd5>b1a48c68e70d2101694cd4b02e4c4183</srcmd5>
+    <version>12.1</version>
+    <time>1446048998</time>
+    <user>dimstar_suse</user>
+    <comment>- go back to a specific directory list instead of all in /usr/share
+  (boo#904524)</comment>
+    <requestid>340702</requestid>
+  </revision>
+  <revision rev="97" vrev="33">
+    <srcmd5>d21b35811f393518e7a3f66ebc84667f</srcmd5>
+    <version>12.1</version>
+    <time>1493455631</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487503</requestid>
+  </revision>
+  <revision rev="98" vrev="34">
+    <srcmd5>78933215ee55f44e07f0827abd5febf5</srcmd5>
+    <version>12.1</version>
+    <time>1501406658</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove translations for Name,GenericName and Comment only in the
+  [Desktop Entry] section to avoid breaking desktop action translations</comment>
+    <requestid>510908</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>34b4f21c461d6ec90cf3c7edf9c57bde</srcmd5>
+    <version>84.87</version>
+    <time>1521192881</time>
+    <user>dimstar_suse</user>
+    <comment>- create separate subpackage that extracts translations from desktop
+  files but does not actually strip them. Needed for SLE. (forwarded request 587471 from lnussel)</comment>
+    <requestid>587473</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>1012c6efea34f03c531ccbc5faf510b3</srcmd5>
+    <version>84.87</version>
+    <time>1529919222</time>
+    <user>dimstar_suse</user>
+    <comment>- Update map-desktop-category.sh to include updated Education, Science
+  and Graphics categories (boo#1074711) (forwarded request 618028 from favogt)</comment>
+    <requestid>618221</requestid>
+  </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>619f6d12ce26f7b1cee1b7e4faf34177</srcmd5>
+    <version>84.87</version>
+    <time>1561194310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710688</requestid>
+  </revision>
+</revisionlist>

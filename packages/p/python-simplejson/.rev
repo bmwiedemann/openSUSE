@@ -1,0 +1,351 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>889a472fc7fbd8e41790402c41413239</srcmd5>
+    <version>2.0.9</version>
+    <time>1248663374</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>889a472fc7fbd8e41790402c41413239</srcmd5>
+    <version>2.0.9</version>
+    <time>1248663374</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>bb6d356b55030bdc71321e8536435df2</srcmd5>
+    <version>2.0.9</version>
+    <time>1268925886</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>bb6d356b55030bdc71321e8536435df2</srcmd5>
+    <version>2.0.9</version>
+    <time>1278667385</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>bb6d356b55030bdc71321e8536435df2</srcmd5>
+    <version>2.0.9</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b9d76ea148c2716d3f1bb5a3ff1c7d33</srcmd5>
+    <version>2.1.1</version>
+    <time>1284765019</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-simplejson based on submit request 48274 from user coolo
+</comment>
+    <requestid>48274</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b9d76ea148c2716d3f1bb5a3ff1c7d33</srcmd5>
+    <version>2.1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>72d233256f3e415dce1ba237782a8820</srcmd5>
+    <version>2.1.3</version>
+    <time>1299578771</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 63286 from user saschpe
+</comment>
+    <requestid>63286</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9a96cd632aa4510822f8699aae5dbbbf</srcmd5>
+    <version>2.1.3</version>
+    <time>1299578795</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 63286
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8e62e066e8a22cf6af625a7b87ac589a</srcmd5>
+    <version>2.1.6</version>
+    <time>1311080706</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>74905</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d923a7d5b1be37ed481145b7a4502a14</srcmd5>
+    <version>2.1.6</version>
+    <time>1311080728</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 74905
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e47931fa5198fd0adb4f5eb9eb668a48</srcmd5>
+    <version>2.2.1</version>
+    <time>1317025055</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>83928</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e47931fa5198fd0adb4f5eb9eb668a48</srcmd5>
+    <version>2.2.1</version>
+    <time>1319182405</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>84d31c96a9fdd5c6aeffcc2d4dbb3d30</srcmd5>
+    <version>2.2.1</version>
+    <time>1323194267</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7f671cfc7a53813276af0066aa275ccf</srcmd5>
+    <version>2.4.0</version>
+    <time>1331627949</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.4.0:
+  * New bigint_as_string option for encoder to trade JavaScript number
+    precision issues for type issues.
+- Run testsuite
+- Package README.rst, CHANGES.txt and LICENSE.txt</comment>
+    <requestid>109038</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2cbe31488dd2b92ea71209c9dabdb318</srcmd5>
+    <version>2.5.2</version>
+    <time>1338284677</time>
+    <user>coolo</user>
+    <comment>- Clean up spec file
+- Update to version 2.5.2: (forwarded request 122373 from TheBlackCat)</comment>
+    <requestid>122374</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>2cbe31488dd2b92ea71209c9dabdb318</srcmd5>
+    <version>2.5.2</version>
+    <time>1340184091</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>943bb4db15baf5a07fc1e943643a60df</srcmd5>
+    <version>2.6.1</version>
+    <time>1346914995</time>
+    <user>coolo</user>
+    <comment>Update to 2.6.1 (forwarded request 132438 from poorboywilly)</comment>
+    <requestid>132595</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>61c1e0a82679b28762be53bd797f5f10</srcmd5>
+    <version>2.6.2</version>
+    <time>1349251592</time>
+    <user>coolo</user>
+    <comment>Update to 2.6.2 (forwarded request 136434 from poorboywilly)</comment>
+    <requestid>136436</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>db079d11426b2f6ec23774c92970eeab</srcmd5>
+    <version>3.0.5</version>
+    <time>1358666280</time>
+    <user>coolo</user>
+    <comment>Made required changes (forwarded request 148421 from posophe)</comment>
+    <requestid>148579</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>db079d11426b2f6ec23774c92970eeab</srcmd5>
+    <version>3.0.5</version>
+    <time>1359110122</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f5c58e5e3a6c9c3a22fdb9b52a7e62d2</srcmd5>
+    <version>3.0.8</version>
+    <time>1361548861</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 155989 from posophe)</comment>
+    <requestid>155993</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d87e2a1734de4e9feefaf86d38e225e8</srcmd5>
+    <version>3.1.3</version>
+    <time>1365928752</time>
+    <user>coolo</user>
+    <comment>- Disable building on python3 &lt; 3.3 since it is not supported
+- Update to version 3.1.3 (forwarded request 163737 from TheBlackCat) (forwarded request 163738 from TheBlackCat)</comment>
+    <requestid>163739</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b0940f97b72b1993ab3d8be1cac892e2</srcmd5>
+    <version>3.3.0</version>
+    <time>1368451618</time>
+    <user>coolo</user>
+    <comment>Updated package to latest version 3.3.0 (forwarded request 174803 from bgaechter)</comment>
+    <requestid>174816</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>5f5b50b471b80773fa64a7574f5002e4</srcmd5>
+    <version>3.3.0</version>
+    <time>1371650321</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>180006</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>5f5b50b471b80773fa64a7574f5002e4</srcmd5>
+    <version>3.3.0</version>
+    <time>1379664283</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>812861ddac250fec6bcad2aeb7fd1926</srcmd5>
+    <version>3.3.0</version>
+    <time>1382693547</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204658</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>528bbb709fc72b150bd8a33903f99c2a</srcmd5>
+    <version>3.3.1</version>
+    <time>1383568876</time>
+    <user>coolo</user>
+    <comment>- update to 3.3.1:
+  * JSONDecodeError exceptions can now be pickled (forwarded request 205479 from dirkmueller)</comment>
+    <requestid>205483</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2087348821848d9cb546e03a2bbfe1d4</srcmd5>
+    <version>3.4.1</version>
+    <time>1400682209</time>
+    <user>coolo</user>
+    <comment>Update to 3.4.1 (forwarded request 234838 from TheBlackCat)</comment>
+    <requestid>234839</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7ba51eb7e4566cc5b5eada8b06b072b5</srcmd5>
+    <version>3.5.2</version>
+    <time>1402227416</time>
+    <user>coolo</user>
+    <comment>- update to 3.5.2:
+  * Fix Windows build with VS2008
+ Version 3.5.1 released 2014-05-21
+ * Consistently reject int_as_string_bitcount settings that are not
+    positive integers
+ Version 3.5.0 released 2014-05-20
+ * Added int_as_string_bitcount encoder option
+ * Fixed potential crash when encoder created with incorrect options (forwarded request 235927 from dirkmueller)</comment>
+    <requestid>236021</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>7ba51eb7e4566cc5b5eada8b06b072b5</srcmd5>
+    <version>3.5.2</version>
+    <time>1409302991</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d6d9aabae2a5ddb7db4fbd295933fa67</srcmd5>
+    <version>3.6.5</version>
+    <time>1431982775</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307488</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>dfc31deaed0ded251faed60eb183a8fd</srcmd5>
+    <version>3.8.2</version>
+    <time>1480693136</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442062</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ee73cffb0f50d01b86eab6e217f534b4</srcmd5>
+    <version>3.10.0</version>
+    <time>1492617678</time>
+    <user>dimstar_suse</user>
+    <comment>- fix pypi url
+
+- Switch to single-spec build
+- Update to 3.10.0
+  * Add RawJSON class to allow a faster path for already encoded JSON.
+- From 3.9.0
+  * Workaround for bad behavior in string subclasses
+  * Fix warnings flagged by -3
+  * Update readthedocs documentation links
+  * Add build status badge to README</comment>
+    <requestid>481829</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6c0aec4cb97ac060154bdc66178b92b2</srcmd5>
+    <version>3.11.1</version>
+    <time>1502707030</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515233</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2353bc47791e94ed6c3e6b6fe755a9b2</srcmd5>
+    <version>3.12.0</version>
+    <time>1510406276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539601</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>df7a658d8a1f05ac8fca924b68bb1a74</srcmd5>
+    <version>3.13.2</version>
+    <time>1512216676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546023</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>de1231450b629bee0caf70c5f344a29d</srcmd5>
+    <version>3.14.0</version>
+    <time>1526030769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605123</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c3e74c84e3c92790c572e15fdd518735</srcmd5>
+    <version>3.15.0</version>
+    <time>1527001283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610880</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>bed6e4e559c9f18e8ee4f62c73980573</srcmd5>
+    <version>3.16.0</version>
+    <time>1530993420</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not package tests
+
+- specfile:
+  * be more specific in %files:
+    %{python_sitearch}/* -&gt; %{python_sitearch}/simplejson*
+- update to version 3.16.0:
+  * Restore old behavior with regard to the type of decoded empty
+    strings with speedups enabled on Python 2.x
+    https://github.com/simplejson/simplejson/pull/225
+  * Add python_requires to setup.py to help pip
+    https://github.com/simplejson/simplejson/pull/224
+  * Fix CSS in docs when built locally
+    https://github.com/simplejson/simplejson/pull/222</comment>
+    <requestid>620217</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>26e2a5434e406f02f19d2d28e6fce6c9</srcmd5>
+    <version>3.16.1</version>
+    <time>1537436338</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634498</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="system-users" project="openSUSE:Factory">
+  <title>Provide system accounts</title>
+  <description>This package provides various system users and their directories
+
+</description>
+  <devel project="Base:System" package="system-users"/>
+</package>

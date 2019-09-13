@@ -1,0 +1,5 @@
+<package name="pinfo" project="openSUSE:Factory">
+  <title>Lynx-style Info Browser</title>
+  <description>Pinfo is a curses based, Lynx-style info browser.</description>
+  <devel project="utilities" package="pinfo"/>
+</package>

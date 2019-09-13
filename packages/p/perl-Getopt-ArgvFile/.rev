@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>afd3d707b253ab0a39a06853c01abf6c</srcmd5>
+    <version>1.11</version>
+    <time>1338284737</time>
+    <user>coolo</user>
+    <comment>needed by tex</comment>
+    <requestid>122481</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>afd3d707b253ab0a39a06853c01abf6c</srcmd5>
+    <version>1.11</version>
+    <time>1340183846</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>afd3d707b253ab0a39a06853c01abf6c</srcmd5>
+    <version>1.11</version>
+    <time>1359109679</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>afd3d707b253ab0a39a06853c01abf6c</srcmd5>
+    <version>1.11</version>
+    <time>1379663687</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>afd3d707b253ab0a39a06853c01abf6c</srcmd5>
+    <version>1.11</version>
+    <time>1409302308</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

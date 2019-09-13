@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4092bedeaadcdeef3304333d0e24955b</srcmd5>
+    <version>2.3.10</version>
+    <time>1452611580</time>
+    <user>dimstar_suse</user>
+    <comment>latex2rtf is a translator program to convert LaTeX formatted text files into “rich text format” (RTF) files. RTF is a published standard format by Microsoft. This standard can be ambiguous in places, but RTF is supported by many text editors. Specifically, it is supported by Microsoft Word. This means that the conversion of a LaTeX document to RTF allows anyone with a copy of Word to convert LaTeX files to Word .doc or .docx files.
+
+The previous errors pointed by babelworx were corrected.</comment>
+    <requestid>352826</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f33ac62131b54779b4b2c9456d15f094</srcmd5>
+    <version>2.3.10</version>
+    <time>1465336036</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch ` latex2rtf-fix-memory-leak.patch` to fix a memory leak in `abbreviate` function. For more information, see:
+    https://sourceforge.net/p/latex2rtf/mailman/message/35132586/
+
+This was causing random segmentation faults.</comment>
+    <requestid>399890</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c7fbb509280cc84813c207b82dcb3263</srcmd5>
+    <version>2.3.11a</version>
+    <time>1471105839</time>
+    <user>dimstar_suse</user>
+    <comment>Version bump to 2.3.11a</comment>
+    <requestid>418329</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5629cc87e7bf8a15bd856e4db88014b0</srcmd5>
+    <version>2.3.16</version>
+    <time>1498995510</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507547</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a20d8bbb3ed3c362d4aa2684332c5b2c</srcmd5>
+    <version>2.3.16</version>
+    <time>1512734469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555027</requestid>
+  </revision>
+</revisionlist>

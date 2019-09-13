@@ -1,0 +1,16 @@
+<package name="perl-asa" project="openSUSE:Factory">
+  <title>Lets your class/object say it works like something else</title>
+  <description>Perl 5 doesn't natively support Java-style interfaces, and it doesn't
+support Perl 6 style roles either.
+You can get both of these things in half a dozen different ways via
+various CPAN modules, but they usually require that you buy into &quot;their
+way&quot; of implementing your code.
+Other have turned to &quot;duck typing&quot;.
+This is, for the most part, a fairly naive check that says &quot;can you do
+this method&quot;, under the &quot;if it looks like a duck, and quacks like a duck,
+then it must be a duck&quot;.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-asa"/>
+  <url>http://search.cpan.org/dist/asa</url>
+</package>

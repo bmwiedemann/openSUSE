@@ -1,0 +1,16 @@
+<package name="perl-Mail-DKIM" project="openSUSE:Factory">
+  <title>Signs/verifies Internet mail with DKIM/DomainKey signatures</title>
+  <description>This module implements the various components of the DKIM and DomainKeys
+message-signing and verifying standards for Internet mail. It currently
+tries to implement these specifications:
+
+* RFC4871, for DKIM
+
+* RFC4870, for DomainKeys
+
+The module uses an object-oriented interface. You use one of two different
+classes, depending on whether you are signing or verifying a message. To
+sign, use the the Mail::DKIM::Signer manpage class. To verify, use the the
+Mail::DKIM::Verifier manpage class. Simple, eh?</description>
+  <devel project="devel:languages:perl" package="perl-Mail-DKIM"/>
+</package>

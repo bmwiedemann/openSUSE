@@ -1,0 +1,7 @@
+<package name="strawberry" project="openSUSE:Factory">
+  <title>Strawberry Music Player</title>
+  <description>Strawberry is a audio player and music collection organizer.
+It is a fork of Clementine. The name is inspired by the band Strawbs.
+</description>
+  <devel project="multimedia:apps" package="strawberry"/>
+</package>

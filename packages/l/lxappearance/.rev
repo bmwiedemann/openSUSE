@@ -1,0 +1,242 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85a409c0d235d8ce267eaa06c01b677d</srcmd5>
+    <version>0.3.0</version>
+    <time>1261401328</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxappearance based on submit request 26635 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>19b6166f32284ca59cc321237f06dbc5</srcmd5>
+    <version>0.4.0</version>
+    <time>1263502962</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxappearance based on submit request 29416 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9c22ab2adff7c3dbb50f66b3731c4866</srcmd5>
+    <version>0.4.0</version>
+    <time>1268924866</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>61342060dbdb2f8d64ee74f48970c7be</srcmd5>
+    <version>0.4.0</version>
+    <time>1270598442</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxappearance based on submit request 37131 from user anubisg1
+</comment>
+    <requestid>37131</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>61342060dbdb2f8d64ee74f48970c7be</srcmd5>
+    <version>0.4.0</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>61342060dbdb2f8d64ee74f48970c7be</srcmd5>
+    <version>0.4.0</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>e33dddc34bac2f8795cee5d1105f65c0</srcmd5>
+    <version>0.4.0</version>
+    <time>1281660105</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxappearance based on submit request 45430 from user anubisg1
+</comment>
+    <requestid>45430</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>420094e7ff2b0de5dd3a8c5297936d10</srcmd5>
+    <version>0.5.0</version>
+    <time>1287959050</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51309 from user anubisg1
+</comment>
+    <requestid>51309</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0a954127c5d6312f4832182a6f1c2a33</srcmd5>
+    <version>0.5.0</version>
+    <time>1287959067</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51309
+</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>0a954127c5d6312f4832182a6f1c2a33</srcmd5>
+    <version>0.5.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>4a6237eca802d66bd17595bbf1539901</srcmd5>
+    <version>0.5.0</version>
+    <time>1304352603</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67099</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>d3754a49c63d407f7b397b61e0b96a26</srcmd5>
+    <version>0.5.0</version>
+    <time>1304352623</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67099
+</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>d8a458e99b362aa673d34af897e5fa37</srcmd5>
+    <version>0.5.0</version>
+    <time>1311581537</time>
+    <user>saschpe</user>
+    <comment>spec file clean up, recommend obconf plugin</comment>
+    <requestid>76900</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>5ca68f14e0fc3ee4bcf1fbc0640eb5d4</srcmd5>
+    <version>0.5.0</version>
+    <time>1311581546</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76900
+</comment>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>cedd161671864c13ec68fca36f48a988</srcmd5>
+    <version>0.5.1</version>
+    <time>1312188029</time>
+    <user>saschpe</user>
+    <comment>new upstream version 0.5.1</comment>
+    <requestid>77460</requestid>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>e1c1a11ff72fe63994035c5cd9a3ec75</srcmd5>
+    <version>0.5.1</version>
+    <time>1312188045</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77460
+</comment>
+  </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>8a5f183933d767d11e05bf80732d9198</srcmd5>
+    <version>0.5.1</version>
+    <time>1317049431</time>
+    <user>oertel</user>
+    <comment>Fixed typos in lxappearance.spec (forwarded request 84335 from aturrini)</comment>
+    <requestid>84827</requestid>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>db43041bcbf17b15a76925fd22cec2fd</srcmd5>
+    <version>0.5.1</version>
+    <time>1317049443</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 84827
+</comment>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>db43041bcbf17b15a76925fd22cec2fd</srcmd5>
+    <version>0.5.1</version>
+    <time>1319182163</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="15">
+    <srcmd5>7634fc6b7f3ace38b4149244e8abde5f</srcmd5>
+    <version>0.5.1</version>
+    <time>1323192443</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b7365cc705dd02259e1e8c4e328cfe44</srcmd5>
+    <version>0.5.2</version>
+    <time>1338991696</time>
+    <user>coolo</user>
+    <comment>new upstream verswion</comment>
+    <requestid>123776</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>b7365cc705dd02259e1e8c4e328cfe44</srcmd5>
+    <version>0.5.2</version>
+    <time>1340183679</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>b7365cc705dd02259e1e8c4e328cfe44</srcmd5>
+    <version>0.5.2</version>
+    <time>1359109415</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>b7365cc705dd02259e1e8c4e328cfe44</srcmd5>
+    <version>0.5.2</version>
+    <time>1379663212</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6c271fdc67968e3f25c014a987595ffb</srcmd5>
+    <version>0.5.5</version>
+    <time>1390395199</time>
+    <user>coolo</user>
+    <comment>* Version update
+* Fixes bugs #852004 and #841542 by enabling dbus in configure (forwarded request 214633 from jcsl)</comment>
+    <requestid>214634</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>6c271fdc67968e3f25c014a987595ffb</srcmd5>
+    <version>0.5.5</version>
+    <time>1409301831</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>912b9229c9c90a51a5bf661d6e8fb444</srcmd5>
+    <version>0.5.5</version>
+    <time>1409761353</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246950</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e3614f013736f395e6080b9820eb3859</srcmd5>
+    <version>0.5.6</version>
+    <time>1411377096</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250591</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1aab3ee2c8ba2f671205221e1c09e8b3</srcmd5>
+    <version>0.6.0</version>
+    <time>1414140489</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258157</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>359d9f3ae664b0093aced7000433d0fd</srcmd5>
+    <version>0.6.1</version>
+    <time>1414218808</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258267</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6d046568566d438ad06369f034542579</srcmd5>
+    <version>0.6.2</version>
+    <time>1484232900</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448638</requestid>
+  </revision>
+</revisionlist>

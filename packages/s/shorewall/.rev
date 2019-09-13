@@ -1,0 +1,1988 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e67d9f10f940822799f16dae0a6b8961</srcmd5>
+    <version>4.4.20.3</version>
+    <time>1313071089</time>
+    <user>saschpe</user>
+    <comment>New package see http://lists.opensuse.org/opensuse-factory/2011-06/msg00358.html</comment>
+    <requestid>74031</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fb404d771f16b27cd40e6e2d85463108</srcmd5>
+    <version>4.4.20.3</version>
+    <time>1313071104</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74031
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7a70b758c35c2968956941acec0caf2a</srcmd5>
+    <version>4.4.22.3</version>
+    <time>1314022466</time>
+    <user>saschpe</user>
+    <comment>-  removed ifupdown scripts from %post section and added to %files
+  section
+
+-  She-bang removal  according to upstream 
+
+&quot;The prog.header* files become the first part of the compiled script, so
+must contain '#!'.
+
+It can be removed from the lib.* files. I have it there primarily to
+cause Emacs to automatically choose shell mode when I edit the files.
+
+Currently, the function 'show_connection_filter()' (*/lib.cli), depends
+on the '#!' in an scfilter.&quot;
+
+Therefore removed the she-bang from:
+    /usr/share/shorewall/lib.*
+    /usr/share/shorewall6/lib.*
+    /usr/share/shorewall-lite/lib.*
+    /usr/share/shorewall6-lite/lib.*
+
+- reworked rpmlintrc as shorewall-4.4.22.rpmlintrc
+
+
+
+- Update to 4.4.22.3. Corrections in this release are below.
+  * On older distributions where 'shorewall show capabilities'
+    indicates 'Connection Tracking Match: Not Available', harmless
+    Perl diagnostics like the following could be issued:
+        Use of uninitialized value $list in pattern match (m//) 
+        at /usr/share/shorewall/Shorewall/Config.pm line 1273,
+        &lt;$currentfile&gt; line 14.
+        Use of uninitialized value $list in split 
+        at /usr/share/shorewall/Shorewall/Config.pm line 1275,
+        &lt;$currentfile&gt; line 14.
+  * On older distributions where 'shorewall show capabilities'
+    indicates 'Mangle FORWARD Chain: Not Available', entries in the
+    ecn file generated the following Perl Diagnostic:
+        Use of uninitialized value in hash element 
+    at /usr/share/shorewall/Shorewall/Chains.pm line 1119.
+	
+  * Previously, if a provider interface was derived from an optional
+    wildcard entry in /etc/shorewall/providers, then the interface
+    was never considered to be usable.
+    Example:
+    /etc/shorewall/interfaces:
+    #ZONE    INTERFACE   BROADCAST    OPTIONS
+      net ppp+     -  optionsl
+    /etc/shorewall/providers:net
+    #PROVIDER  NUMBER  MARK  INTERFACE ...
+     ISP1   1   1 ppp0 
+  * When 'shorewall update' or 'shorewall6 update' results in no change
+    to the .conf file, a message is issued, the .bak file is removed
+    and the command terminates without error.</comment>
+    <requestid>79443</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c76b18678c17b0d75933b809a537645e</srcmd5>
+    <version>4.4.22.3</version>
+    <time>1314022484</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79443
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7fcf76eba048cebd09e7a8c708cd1a15</srcmd5>
+    <version>4.4.23.3</version>
+    <time>1316465843</time>
+    <user>lrupp</user>
+    <comment>- Update to 4.4.23.3
+  * When providers were present that specify neither 'balance' nor
+    'fallback', then the following message was issued during
+    compilation and 'enable' of the interface would fail.
+    Use of uninitialized value $weight in concatenation (.) or
+    string  at /usr/share/shorewall/Shorewall/Providers.pm line 644.
+  * TC_ENABLED=Shared was broken in Shorewall 4.4.23, 4.4.23.1 and
+    4.4.23.2. It produced a  shell script with syntax errors.
+- Backported patches removed. 
+
+- Update to 4.4.23.2  For more details see changelog.txt and
+  releasenotes.txt
+- Support of systemd for openSUSE 12.1
+- Backported patches WEIGHT.patch and SHARED.patch fixing a
+  harmless message and traffic shaping issues respectively</comment>
+    <requestid>82716</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>24601539c5ed5831060802074a7bfbcb</srcmd5>
+    <version>4.4.23.3</version>
+    <time>1317546926</time>
+    <user>lrupp</user>
+    <comment>- reworked systemd related rpm macros for 12.1 due to new systemd
+  macros are in effect
+- removed %clean macro as it not needed</comment>
+    <requestid>85485</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7323b8e8b06f9505e3ca9fc84b3b67cd</srcmd5>
+    <version>4.4.24</version>
+    <time>1318248742</time>
+    <user>oertel</user>
+    <comment>- Update to 4.4.24. For more details see changelog.txt and
+  releasenotes.txt
+ 
+  * This release includes all problem corrections from releases
+    4.4.23.1-4.4.23.3.
+  * The 'fallback' option without =&lt;weight&gt; previously produced
+    invalid  'ip' commands.</comment>
+    <requestid>87228</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ae3c2672f57efd2135e10d88da20016c</srcmd5>
+    <version>4.4.24.1</version>
+    <time>1318762650</time>
+    <user>lrupp</user>
+    <comment>- Update to 4.4.24.1
+ 
+  * When the logical and physical name of an interface were
+    different, including the logical name in the tcdevices file
+    caused the device's classes to be ignored. This defect was
+    introduced in  Shorewall 4.4.23.
+  * Remove the ExecReload from all services, since systemd
+    doesn't allow an ExecReload for OneShot services. Also, add a
+    missing After=network.target to shorewall.service.
+- Fixed Url typo in the spec</comment>
+    <requestid>88044</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>ae3c2672f57efd2135e10d88da20016c</srcmd5>
+    <version>4.4.24.1</version>
+    <time>1319182467</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>77ef14f246a2f2ad54335846dcb7f7c0</srcmd5>
+    <version>4.4.25.1</version>
+    <time>1320232699</time>
+    <user>coolo</user>
+    <comment>- Update to 4.4.25.1 For more details see changelog.txt and
+  releasenotes.txt
+  * A'refresh' command with no chains or tables specified will
+    now reload chains created by entries in the BLACKLIST section of
+    the rules file.
+  * The rules compiler previously failed to detect the 'Flow
+    Filter' capability. That capability is now correctly detected.
+  * The IN_BANDWIDTH handling changes in 4.4.25 was incompatible
+    with moribund distributions such as RHEL4. Restoring IN_BANDWIDTH
+    functionality on those releases required a new 'Basic Filter'
+    capability.
+ 
+
+- Update to 4.4.25 For more details see changelog.txt and
+  releasenotes.txt
+ * A defect in the optimizer that allowed incompatible rules to be
+   combined has been corrected.
+ * Routes and rules added as a result of entries in
+   /etc/shorewall6/providers were previously not deleted by 
+   'stop' or 'restart'. Repeated 'restart' commands could
+   therefore  lead to an incorrect routing configuration.
+ * Previously, capital letters were disallowed in IPv6 addresses.
+   They are now permitted.
+ * If the COPY column in /etc/shorewall6/providers was non-empty,
+   previously a run-time error could occur when copying a table.
+   The diagnostic produced by ip was:
+       Either &quot;to&quot; is duplicate, or &quot;cache&quot; is garbage
+ * When copying IPv6 routes, the generated script previously
+   attempted to copy 'cache' entries. Those entries are now omitted.
+ * Previously, the use of large provider numbers could cause some</comment>
+    <requestid>89890</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4a211a45136a334d08551d9384a12304</srcmd5>
+    <version>4.4.25.2</version>
+    <time>1320677545</time>
+    <user>coolo</user>
+    <comment>-  Update to 4.4.25.2 For more details see changelog.txt and
+   releasenotes.txt
+   
+   * Previously, if all the following were true:
+    - AUTOMAKE=Yes
+    - Current compiled script (/var/lib/shorewall/firewall or
+      /var/lib/shorewall6/firewall) up to date
+    - LEGACY_FASTSTART=No
+    - There was a saved configuration
+    then rather than start the current configuration, 'shorewall 
+    start -f' or 'shorewall6 start -f' would incorrectly restore
+    the saved  configuration.
+    * The DropSmurfs and TCPFlags actions are now available in
+    Shorewall6. They were previously omitted from the IPv6 
+    actions.std file.
+    * The 'rawpost' table was previously omitted from the output of 
+    the 'dump' command. It is now displayed.
+    * Previously, if a configuration contained more than one wildcard
+    interface (physical name ending in '+'), then the generated script
+    might not work properly with Shorewall-init. This defect dates back
+    to the introduction of Shorewall-init.</comment>
+    <requestid>90215</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>576c237174ddd8c8f9d530b2cb1a727c</srcmd5>
+    <version>4.4.25.3</version>
+    <time>1321274654</time>
+    <user>coolo</user>
+    <comment>- Update to 4.4.25.3  For more details see changelog.txt and
+   releasenotes.txt
+  * Correction of the produced ruleset when wildchars are used in
+    the zone configuration</comment>
+    <requestid>91026</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dd7c26a40e4c67d28d4b5faa3a46680a</srcmd5>
+    <version>4.4.26</version>
+    <time>1323085534</time>
+    <user>coolo</user>
+    <comment>- Update to 4.4.26 For more details see changelog.txt and
+  releasenotes.txt
+  * This release includes all corrections included in 4.4.25.1
+    through .3.
+  * In 4.4.25, ACCEPT behaved in the BLACKLIST section the same way
+    as in the other rules file sections. This could lead to
+    connections  being accepted inadvertently.
+    Now, ACCEPT behaves like WHITELIST; that is, it exempts the
+    packet from the remaining rules in the BLACKLIST section.
+  * Previously, Shorewall did not detect the ULOG and NFLOG
+    capabilities. This lead to run-time failures during 'start' and
+    'restart' as well as confusing error messages during
+    compilation  when ULOG or NFLOG was used when the LOG target was
+    not available.
+    ULOG and NFLOG are now detected capabilities so, if you use a
+    capabilities file, you will need to regenerate it in order to
+    use these log levels.
+  * The SAME tcrules target was broken in Shorewall 4.4.22. It now
+    works correctly again.
+  * Previously, 'shorewall6 update' did not update shorewall6.conf.
+    The command now works as expected.
+  * In earlier releases, the compiler was attempting to process the
+    params file before it was aware of the setting of CONFIG_PATH.
+    This could cause the params file to be missed if it was not located
+    in /etc/shorewall[6] or in the directory named in the start
+    (restart,compile,check,...) command.
+    Now, /sbin/shorewall[6] passes $CONFIG_PATH to the compiler
+    (/usr/share/shorewall/compiler.pl) in the new '--config_path'
+    option.</comment>
+    <requestid>95243</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>94d532699ca42d576b2f1497e530be9a</srcmd5>
+    <version>4.4.26</version>
+    <time>1323194646</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>60b5993fd447be5dbe2d51786d5839e7</srcmd5>
+    <version>4.4.26.1</version>
+    <time>1323961663</time>
+    <user>coolo</user>
+    <comment>- Update to 4.4.26.1 For more details see  chnagelog.txt and
+  releasenotes.txt
+ * The Perl module version numbers have now been updated to
+   reflect changes in 4.4.26.
+ * The 4.4.26 rules compiler does not issue a warning when a
+   capabilities file was generated with Shorewall 4.4.25, even
+   though new capabilities were added in 4.4.26. This has been
+   corrected so that a warning is generated.
+ * When TC_ENABLED=Shared, CLASSIFY rules could not be used in the
+   tcrules file. Thanks to a patch from Chris Boot, this now works
+   as expected.
+ * The quoted part of the progress message 'Provider &quot;...&quot;
+   compiled' was inadvertently omitted by a change in Shorewall 4.4.23.
+   That text has now been restored.</comment>
+    <requestid>96568</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>96e3af88f12214f355518a6b313fa53e</srcmd5>
+    <version>4.4.27.2</version>
+    <time>1326962679</time>
+    <user>coolo</user>
+    <comment>- Update to 4.4.27.2. For more details see changelog.txt and
+  releasenotes.txt
+  * A long-standing problem with Shorewall's 'save' facility has
+    been discovered. The defect can cause rules to be dropped during
+    'save' so that they are not available to be reapplied during
+    'restore'. This can occur in 'safe-restart' when the prompt is
+    not acknowledged or when it is acknowledged with 'n'.
+    The problem can occur when:
+    a)	There are IPSEC zones or hosts present; and
+    b)  GOTO Target support is available in the kernel and
+        iptables.
+    Example of rule that will be dropped:
+      -A eth2_fwd -m policy --dir in --pol ipsec -g AAA_frwd
+    The defective code has been corrected so that rules are no
+    longer dropped.
+ 
+
+- Update to 4.4.27.1. For more details see changelog.txt and
+  releasenotes.txt 
+  * When optimization category 4 is used, unconditional jumps at
+    the end of chains are replaced with the rules in the target
+    chain. This can result in rulesets that are considerably larger
+    than necessary. Beginning with this release, replacement will
+    only occur if:
+    a) The jump is the only reference to the target chain; or
+    b) The target chain contains 3 or less rules.
+  * The feature introduced in 4.4.25 that allowed provider names in
+    the  'enable' and 'disable' commands was only implemented for
+    'enable'. It is now implemented for 'disable' as well.
+  * When detecting IPv6 global addresses through an interface,</comment>
+    <requestid>100354</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0a174d39a74adbb33536218e831646ad</srcmd5>
+    <version>4.4.27.3</version>
+    <time>1327404139</time>
+    <user>coolo</user>
+    <comment>- Update to 4.4.27.3 For more details see changelog.txt and
+  releasenotes.txt
+  * Previously, if USE_DEFAULT_RT=Yes and 'loose' was specified on
+    all providers, then no routing rule targeting the main routing
+    table was generated. This has been corrected so that
+    USE_DEFAULT_RT=Yes always results in such a rule at
+     priority 999.
+   * Shorewall 4.4.27 broke Shorewall-init functionality. It is
+     restored in this release.</comment>
+    <requestid>101029</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>73687e308c0c01dcd15ddcc5ae5e5fb8</srcmd5>
+    <version>4.5.1.1</version>
+    <time>1332501052</time>
+    <user>coolo</user>
+    <comment>- Fixed missing-rclink rpmlint errors as suggested in declined 
+  request #109645
+ 
+  * no-reload-entry for shorewall-init is harmless as shorewall-init
+    should not do a reload anyway. If more info is needed please look
+    http://shorewall.net/Anatomy.html
+
+- Update to 4.5.1.1 For more details see changelog.txt and
+  releasenotes.txt
+  * When checking or compiling for export (-e option),
+    /sbin/shorewall would previously issue a warning message if
+    the SHOREWALL_SHELL specified in the remote
+    firewall's shorewall.conf did not exist.
+  * The changes to TOS handling in 4.5.1 are incompatible with
+    older releases such as RHEL5 and derivatives. That has been
+    corrected.
+  * The rules compiler now verifies that the protocol is TCP, UDP,
+    SCTP or DCCP when checking a port range (low:high or low-high).
+  * Previously, start or restart using the init script would fail
+    with an error message referencing 'SHOREWALL_INIT_SCRIPT'.
+    This defect was not visible to users that set AUTOMAKE=Yes or 
+    that run Shorewall-init. 
+
+- Update to 4.5.1 For more details see changelog.txt and
+  releasenotes.txt
+  * This release includes all defect repair from versions
+    4.5.0.1-4.5.0.3.
+  * A typo has been corrected in the blrules man pages.
+  * Previously, if the interface appearing in the HOSTS column of
+    /etc/shorewall6/hosts was not defined in
+    /etc/shorewall6/interfaces, then the compiler would terminate
+    with a Perl diagnostic:
+      Can't use an undefined value as a HASH reference at
+      /usr/share/shorewall/Shorewall/Zones.pm line 1817,
+      &lt;$currentfile&gt; line ...
+  * The compiler was previously failing to validate the contents of
+    the LENGTH and TOS columns in /etc/shorewall/tcrules. The</comment>
+    <requestid>110125</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c2651d991a41459b986e1c61d8b45c96</srcmd5>
+    <version>4.5.2.2</version>
+    <time>1334641790</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.2.2 For more details see changelog.txt and
+  releasenotes.txt
+  * If a shorewallrc file is passed to the 4.5.2.1 Shorewall-core 	
+    install.sh, subsequent compilations fail. The error message
+    indicates that the compiler is looking for lib.core, but the
+    pathname has embedded spaces.
+  * The 4.5.2.1 Shorewall/Shorewall6 installer installs an
+    incorrect file as /etc/shorewall[6]/Makefile. 
+
+- Update to 4.5.2.1 For more details see changelog.txt and
+  releasenotes.txt
+  * In release 4.5.2, if an INCLUDE directive appeared inside a ?IF
+    ... ?ENDIF sequence, then the following error would be
+    generated after the included file had been read:
+    	  ERROR: Missing ?ENDIF to match the ?IF at line ...
+  * An error in the shorewallrc.apple file has been corrected.
+  * The shorewallrc.redhat file has been change to conform to
+    Fedora packaging guidelines.
+  * The output of the 'version -a' command reflected incorrect
+    versions when Shorewall-core 4.5.2 was installed. That has been
+    corrected.
+ 
+
+- Update to 4.5.2 For more details see changelog.txt and
+  releasenotes.txt 
+  * The generated firewall script includes code to automatically
+    create ipsets that are referenced but that don't exist. That code
+    was broken in releases 4.4.22 and later. This defect has been
+    corrected. As part of the fix, the generated script will now
+    issue a warning message when it creates an ipset.</comment>
+    <requestid>113832</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>daea9afaa1b1167215aa60c2da9e720c</srcmd5>
+    <version>4.5.2.4</version>
+    <time>1336452515</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.2.4 For more details see changelog.txt and
+  releasenotes.txt
+  * The 'shorewall reset' command now correctly resets the IPv4
+    packet and byte counters; previously, it was resetting the IPv6
+    counters.
+  * The Shorewall installer now modifies the Chains.pm file for
+    Digest::SHA depencency when $DESTDIR is set, provided that
+    $BUILD = $HOST. This allows rpm to automatically generate the correct
+    module dependency.</comment>
+    <requestid>116207</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8306ad3a11ad6c3532cbbe63ea7b5c0f</srcmd5>
+    <version>4.5.3.1</version>
+    <time>1337195389</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.3.1 For more details see changelog.txt and
+  releasenotes.txt
+ * Previously, nested conditionals did not work correctly in all
+   cases. In particular:
+     ?IF $FALSE
+   	 ?IF $FALSE
+              foo
+             bar
+         ?ENDIF
+         baz
+         bop
+     ?ENDIF
+    In this case, the lines 'baz' and 'bodyp' were incorrectly
+    included when they should have beeen omitted.
+  * The 'balance' routing table is now cleared if there are no
+    'balance' providers.
+  * Previously, the compiler generated an invalid 'ip add route'
+    command if an IPv6 provider had '-' in the GATEWAY column.
+  * As noted in the Migration Considerations, the generated
+    firewall script maintains the interface .status files used by
+    LSM and SWPING. Up to now, however, the 'disable' command did
+    not update the .status file. That has been corrected. As part
+    of the change, the 'isusable' script is no longer consulted by
+    the'enable' command.
+ 
+
+- Update to 4.5.3 For more details see changelog.txt and
+  releasenotes.txt
+  * The LOCKFILE setting in shorewall.conf and shorewall6.conf had
+    inadvertently become undocumented. It is now documented again.</comment>
+    <requestid>121134</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0c8814a12bce50aece196c0276276976</srcmd5>
+    <version>4.5.4</version>
+    <time>1338280579</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.4 For more details see changelog.txt and
+  releasenotes.txt
+  * When EXPORTMODULES=No in shorewall.conf, the error messages
+    have been eliminated
+  * If the configuration settings in the PACKET MARK LAYOUT section
+    of shorewall.conf (shorewall6.conf) had empty settings, the
+    'update' command would previously set them to their default
+    settings. It now  leaves them empty.
+  * Previously, Shorewall used 'unreachable' routes to null-route
+    the RFC1918 subnets. This approach has two drawbacks:
+     - It can cause problems for IPSEC in that it can cause packets
+       to be rejected rather than encrypted and forwarded.
+     - It can return 'host unreachable' ICMPs to other systems that
+       attempt to route RFC1918 addresses through the firewall.
+     To eliminate these problems, Shorewall now uses 'blackhole'
+     routes. 
+     Such routes don't interfere with IPSEC and silently drop
+     packets  rather than return an ICMP.
+  * The 'default' routing table is now cleared if there are no
+     'fallback' providers. 
+  * Tproxy implementation has been reworked. For more details
+    please consult the releasenotes.txt and changelog.txt</comment>
+    <requestid>122613</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5bd89910f7c04b268323c359805b23e6</srcmd5>
+    <version>4.5.4.1</version>
+    <time>1338569656</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.4.1 For more details see changelog.txt and
+  releasenotes.txt
+  * Beginning with Shorewall 4.4.22, the 'pptpserver' tunnel type
+    has been configured as a PPTP client running on the firewall
+    rather than as a server on the firewall. It is now correctly
+    configured as  a server.
+  * The shorewall-accounting (5) and shorewall6-accounting (5)
+    documentation for the IPSEC column is incorrect. Rather than
+    'accountin' and 'accountout', the chain names should be
+    'accipsecin' and 'accipsecout'.
+  *  IPSEC accounting did not work if the accounting file was
+     sectioned. Beginning with this release, the IPSEC column can
+     be specified in any section. As always, the IPSEC column
+     contains a comma-separated  list of items. In the FORWARD
+     chain, the first (or only) item in the list must be either
+     'in' or 'out' to indicate whether the rule  matches incoming
+     packets that have been decrypted ('in') or outgoing packets
+     that will be encrypted ('out'). There are no restrictions with
+     respect to which chain IPSEC rules can appear in  a sectioned
+     file.</comment>
+    <requestid>123172</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cff6c068825d1d185adbaef77760804c</srcmd5>
+    <version>4.5.5</version>
+    <time>1339363275</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.5 For more details see changelog.txt and
+  releasnotes.txt
+  * This release includes all defect repair from Shorewall 4.5.4.1
+     and 4.5.4.2.
+  * The Shorewall compiler sometimes must defer generating a rule
+    until runtime. This is done by placing shell commands in its
+    internal representation of a chain. These commands are then
+    executed at run time to create the final rule.
+    If all of the following were true, then an incorrect ruleset
+    could be generated:
+    + Optimization level 4 was set.
+    + A chain (chain A) containing shell commands had three or
+      fewer rules and commands.
+    + The last rule in a second chain was a conditional jump to
+     chain A.
+     Under these conditions, the rules and commands in Chain A
+  * The Shorewall-core configure and configure.pl script were
+    treating SYSCONFDIR as a synonym for CONFDIR making it
+    impossible to set SYSCONFDIR. 
+
+- Update to 4.5.4.2 For more details see changelog.txt and
+  releasenotes.txt
+  * The problems corrected section of the 4.5.4.1 release notes was
+    missing the third problem corrected in the release. It has now
+    been added.
+  * A number of problems in Shorewall-init have been corrected:
+     + If more than one product was listed in the PRODUCTS setting
+       in /etc/default/shorewall-init (/etc/sysconfig/shorewall-init)
+       then the second product would not be started/stopped.
+     + Shorewall-init used 'restart' in response to an optional</comment>
+    <requestid>124348</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8f650dd7e6da364f7a23fed4717e3327</srcmd5>
+    <version>4.5.5.1</version>
+    <time>1339839918</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>125144</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>8f650dd7e6da364f7a23fed4717e3327</srcmd5>
+    <version>4.5.5.1</version>
+    <time>1340184214</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>564b081813b030ec433b6e6bac90b362</srcmd5>
+    <version>4.5.5.3</version>
+    <time>1341220432</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.5.3 For more details see changelog.txt and
+  releasenotes.txt
+  * When logical interface names were used, an entry in tcrules
+    that included a classid could result in the compiler failing with
+    this Perl diagnostic:
+      Can't use an undefined value as an ARRAY reference at
+      /usr/share/shorewall/Shorewall/Tc.pm line nnn, &lt;$currentfile&gt;
+      line 20. (forwarded request 126786 from toganm)</comment>
+    <requestid>126787</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b5f78f781137ed1f391406577e938f4d</srcmd5>
+    <version>4.5.6</version>
+    <time>1342083166</time>
+    <user>namtrac</user>
+    <comment>- Update to 4.5.6 For more details see changelog.txt and
+  releasenotes.txt 
+  * This release includes the defect repairs from Shorewall 4.5.5.1
+     through 4.5.5.4.
+  * Previously, the tcrules file was not processed when
+    TC_ENABLED=No. That meant that to use features like TPROXY, it
+    was  necessary to set TC_ENABLED=Yes and create a dummy
+    /etc/shorewall/tcstart file. Now, only MANGLE_ENABLED=Yes is
+    required. (forwarded request 127518 from toganm)</comment>
+    <requestid>127519</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>49f79674a72d89b4f606741b7905b67d</srcmd5>
+    <version>4.5.6.2</version>
+    <time>1344523916</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.6.2 For more details see changelog.txt and
+  releasenotes.txt
+  * The compiler now generates an error when a SOURCE interface is
+    specified in a rule where the SOURCE zone is the firewall
+    itself.
+  * Previously, entries in /etc/shorewall/notrack that specified a
+    Vserver zone in the SOURCE column were omitted from the
+    generated  ruleset.
+  * The set of helpers available in the notrack file and in the
+    HELPER column of the tcrules file was incorrect:
+     - The Amanda helper requires a UDP port -- Shorewall was
+       requiring
+       TCP.
+     - The H323 module supplies two helpers: 'RAW' and 'Q.931';
+       Shorewall only accepted 'h323'.
+     - The Netbios NS module supplies the 'netbios-ns' helper;
+       Shorewall
+       only accepted 'netbios_ns'.
+  * The conditional directive '?IF 0' generated an error from the
+    compiler. It now causes following lines to be omitted. (forwarded request 130454 from toganm)</comment>
+    <requestid>130455</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>09d7196f96d93e71b63a3e920a8d9d9f</srcmd5>
+    <version>4.5.7</version>
+    <time>1346080072</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.7 For more details see changelog.txt and
+  releasenotes.txt
+  * This release includes the defect repair from Shorewall 4.5.6.2.
+  * The command 'shorewall enable pppX' could fail with the ip
+    diagnostic Error: either &quot;to&quot; is duplicate, or &quot;weight&quot; is a
+    garbage.
+     Shorewall now generates the correct ip command.
+  * Optimize level 4 could previously combine two rules that each
+    specified the 'policy' match, leading to this iptables-restore
+    failure:
+        policy match: multiple elements but no --strict
+     The optimizer now avoids combining such rules.
+     While this is a long-standing defect in the optimizer, it was
+     exposed by changes in Shorewall 4.5.6.
+   * There were several cases where hard-wired directory names
+     appeared in the tarball installers. These have been replaced
+     with the appropriate shorewallrc variables.
+   * A defect in RHEL 6.3 and derivatives causes 'shorewall show
+     capabilities' to leave an empty ipset in the configuration. The
+     same defect can cause the Shorewall compiler to similarly leave
+     an empty ipset behind.
+     This Shorewall release has a workaround for this problem.
+-  Added Bash &amp;gt;= 4 to BuildRequires
+-  Fix builds for Fedora
+
+    compiler. It now causes following lines to be omitted.
+  releasenotes.txt
+    required.
+     failure. Shorewall now uses the physical name.
+    impossible to set SYSCONFDIR. (forwarded request 131522 from toganm)</comment>
+    <requestid>131525</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>17da6f2d623080106001679cd528ccea</srcmd5>
+    <version>4.5.7.1</version>
+    <time>1346691384</time>
+    <user>namtrac</user>
+    <comment>- Update to 4.5.7.1 For more details see changelog.txt and
+  releasenotes.txt
+  * When using IPSEC in a multi-ISP configuration, it is possible
+    for the kernel to mis-route ESP packets. To date, this problem
+    has only been observed on a system running a 3.5 kernel where
+    traffic is being tunneled through GRE which is in turn being
+    tunneled via IPSEC.
+    This Shorewall release includes a low-cost workaround.
+  * The Netfilter team have announced their intention to remove the
+    NOTRACK target in favor of 'CT --notrack'. Shorewall will now
+    map  NOTRACK to 'CT --notrack' if the CT Target is available.
+  * Previously, the current COMMENT was not being cleared after the
+    blrules file was processed, causing that COMMENT to be used on
+    entries in the rules file. That defect has been corrected.
+- Add a note to the spec for reviewer explaining the configure
+  command usage
+- Removed following opensuse specific patches as they are merged to
+  upstream now
+   + shorewall-lite-4.5.2-init.patch
+   + shorewall6-4.5.2-init.patch
+   + shorewall6-lite-4.5.2-init.patch
+   + shorewall-init-4.4.21_init_sh.patch
+- Added 001-required-stop-fix patch for shorewall-lite/init.suse.sh (forwarded request 132373 from toganm)</comment>
+    <requestid>132376</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>33418485c9535b7139da125a477cc7c8</srcmd5>
+    <version>4.5.7.1</version>
+    <time>1348564070</time>
+    <user>coolo</user>
+    <comment>- Since shorewall executables are in /usr/sbin systemd service
+  files now reflect the correct location (forwarded request 135613 from toganm)</comment>
+    <requestid>135625</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>50822f85812b5b5380228baaebdc786e</srcmd5>
+    <version>4.5.8.1</version>
+    <time>1349673454</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.8.1 For more details see changelog.txt and
+  releasenotes.txt
+  * When ipset version 5 or later was installed, the 'shorewall show
+    dynamic &amp;lt;zone&amp;gt;' command produced no outout and the 'add' command
+    failed with this error message:
+        Zone &amp;lt;zone&amp;gt;, interface &amp;lt;interface&amp;gt; does not have a dynamic
+        host list&quot;
+  * When generating ipset names for dynamic zones, the compiler was
+    dropping dashes ('-') from the interface name and adding a unique
+    suffix. For example the ipset for zone 'foo' and interface 'bar-if'
+    might be 'foo_barif_1'. Dashes are now retained so that the
+    generated set name in this example will be 'foo_bar-if'. This change
+    also allows the 'add' and 'delete' commands to work correctly when
+    the interface name contains one or more dashes.
+    Although dash is documented as being an accepted character in ipset
+    names, names containing a dash would generate an error in some
+    contexts. That has also been corrected.
+  * In most contexts, Shorewall6 has required IPv6 addresses to be
+    enclosed in either angled brackets ( &amp;lt;....&amp;gt; , deprecated) or in
+    square brackets ([....]). This includes network addresses, where
+    both the IPv6 address and the VLSM are required to be within the
+    brackets (e.g., [2001;470:b:787::/64]). This differs from the
+    industry-standard network form in which the IPv6 address is enclosed
+    in square brackets and the VLSM is outside of the brackets (e.g.,
+    [2001:470:b:787::]/64). Beginning with this release, the
+    industry-standard representation is also accepted by Shorewall6.
+    Note: Those of you who read the patches will probably have noticed
+    that much of this change was actually in 4.5.8; because the change
+    was commited late in the 4.5.8 release cycle, we chose not to
+    document the change until it had undergone additional testing. (forwarded request 137407 from toganm)</comment>
+    <requestid>137409</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>41e1ec827aae844af251d48e58d89aec</srcmd5>
+    <version>4.5.8.2</version>
+    <time>1350154965</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.8.2 For more details see changelog.txt and
+  releasenotes.txt
+  * The 'shorewall show' command previously produced no output.
+    That command now works with ipset versions 4 and later.
+  * The change in 4.5.8.1 that enabled industry-standard IPv4
+    address representation broke the ability to place IP ranges or
+    IPv6 ipsets in the hosts file. Those abilities have been
+    restored.
+  * The treatment of the SYSTEMD and INITFILE shorewallrc variables
+    has been inconsistent. The -lite installers ignore INITFILE
+    when SYSTEMD is specified, while the other installers do not.
+    Now, the -lite installers install the .service file if SYSTEMD
+    is specified and they install the sysv-init script if INITFILE
+    is specified. That is consistent with the behavior of the other
+    installers.
+
+-  Added 0001-remote_fs.patch for shorewall-init sysv-init scripts (forwarded request 137828 from toganm)</comment>
+    <requestid>137834</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c31f82dc751527e2bb4253df7c62cef0</srcmd5>
+    <version>4.5.9</version>
+    <time>1351663408</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.9 For more details see changelog.txt and
+  releasenotes.txt
+  * This release contains all defect repair from Shorewall 4.5.8.2.
+  * A typo has been corrected in the shorewallrc.default file.
+  * Beginning with Shorewall 4.5.7.2, Shorewall unconditionally
+    restores the provider mark as the first rule in the mangle
+    table OUTPUT and PREROUTING chains. Previously, the provider
+    mark was restored only if it was non-zero.
+    It has become clear that some users need it one way while
+    others need it the other way. To resolve this issue, a
+    RESTORE_ROUTEMARKS option has been added to shorewall.conf and
+    shorewall6.conf. When this option is set to Yes (the default),
+    the 4.5.7.2 approach is used (always restore the mark, even if
+    it is zero); when it is set to No, the pre-4.5.7.2 behavior is
+    retained (only restore the mark if it is non-zero).
+  * Two error messages produced by the RST action have been
+    corrected. They previously referred to errors in the NotSyn
+    action rather than RST. (forwarded request 139762 from toganm)</comment>
+    <requestid>139763</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c54266bad5d6cbaca8a0589a597f0f6a</srcmd5>
+    <version>4.5.9.1</version>
+    <time>1352732807</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>140857</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>838007736aa01e4e4d933c2bd8505ea8</srcmd5>
+    <version>4.5.9.2</version>
+    <time>1353590791</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.9.2 For more details see changelog.txt and
+  releasenotes.txt
+ * Previously, the rules in the 'routemark' chain did not specify
+   a mask in the MARK target. While a mask isn't strictly necessary
+   in those rules, one has been added to ally fears of those who read
+   the  generated ruleset.
+    Note: The 'routemark' chain is used to apply provider marks to
+    packets received from 'track' provider interfaces. It is
+    traversed  early in the mangle PREROUTING chain when no other
+    marks have yet been applied to the packet.
+ * If exclusion was used with TPROXY in the tcrules file, an
+   invalid  iptables ruleset was generated causing start and
+   restart commands  to fail when running iptables-restore.
+ * Previously, if a provider and its interface had the same name,
+   then the 'enable' command would not work on that interface. (forwarded request 142299 from toganm)</comment>
+    <requestid>142300</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>790b349606b5cc26337c82145c93f067</srcmd5>
+    <version>4.5.10</version>
+    <time>1355156389</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.10 For more details see changelog.txt and
+  releasenotes.txt
+  * This release includes all defect repair included in
+    4.5.9.1-4.5.9.3.
+  * Under rare circumstances, optimize level 16 could produce
+    invalid iptables-restore input which would cause start/restart
+    to fail.
+  * Before this release, the 'started' script was run prior to
+    copying the temporary script file (e.g., /var/lib/shorewall/.start)
+    to /var/dir/shorewall/firewall. If the script failed, the copy
+    would not take place even though the firewall had started
+    successfully. The script is now copied before running the
+    'started' script.
+    If you compare the script generated by this release with one
+    generated by a prior release, We suggest that you ignore
+    whitespace changes (e.g., use the '-w' option in diff); that way,
+    you can see the actual change more clearly.
+  * AUTOCOMMENT=No now works correctly; previously, it behaved the
+    same as AUTOCOMMENT=Yes.
+  * A harmless extraneous comma has been deleted from the rule
+    generated by action.RST. (forwarded request 144821 from toganm)</comment>
+    <requestid>144824</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9f8ac0c744ec5d37340dca3d7e6d2ae1</srcmd5>
+    <version>4.5.10.1</version>
+    <time>1355919866</time>
+    <user>coolo</user>
+    <comment>- Update to 4.5.10.1 For more details see changelog.txt and
+  releasenotes.txt
+  * Correct typo in conntrack module (forwarded request 145719 from toganm)</comment>
+    <requestid>145720</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4fc4c22796fd445976d63cebebce33ac</srcmd5>
+    <version>4.5.11.2</version>
+    <time>1358415814</time>
+    <user>coolo</user>
+    <comment>No package depends on Shorewall, making it a leaf package so the version upgrade does not affect other packages.
+
+There is also a fix for bnc#798525 which corrects the messed systemd service files
+
+This version also corrects fixes some other bugs related to the xtable-addon modules.
+
+http://lists.opensuse.org/opensuse-factory/2013-01/msg00229.html
+
+Thanks 
+
+Togan</comment>
+    <requestid>148719</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>4fc4c22796fd445976d63cebebce33ac</srcmd5>
+    <version>4.5.11.2</version>
+    <time>1359110403</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a1085dcad6330dd074b9b2adbdd5127b</srcmd5>
+    <version>4.5.13</version>
+    <time>1362732680</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157818</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>de7d4722fd799e3edea455cb4a48fea6</srcmd5>
+    <version>4.5.14</version>
+    <time>1363693168</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159847</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f4916523109b7467a7e1b382a31d934f</srcmd5>
+    <version>4.5.15</version>
+    <time>1366088230</time>
+    <user>coolo</user>
+    <comment>Update to 4.5.15 version</comment>
+    <requestid>162737</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>fdc3f52b26e92ec6894ee3f79d50abd2</srcmd5>
+    <version>4.5.17.1</version>
+    <time>1370516393</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.5.17.1 For more details see changelog.txt and
+  releasenotes.txt.  
+   * The following warning message may be emitted inappropriately
+     when running shorewall 4.5.17. The message is no longer issued.
+      The rule(s) generated by  this entry are unreachable and have
+      been discarded
+    * Rules intended to increment nfacct objects would previously be
+      optimized away when they immediately preceded an unconditional
+      jump to the same target. Such rules are now retained.
+    * A bug in the optimizer in 4.5.17 can cause 'set' and 'geoip'
+      matches to be dropped. That has been corrected. 
+- spec file changes
+  * rebased systemd.patch (forwarded request 177859 from toganm)</comment>
+    <requestid>177862</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>9146070dc3e8b71706405e705c93bcf9</srcmd5>
+    <version>4.5.18</version>
+    <time>1372743961</time>
+    <user>coolo</user>
+    <comment>- Spec file changes
+  * Added 0001-Fix-Exec-directory.patch which fixes ExecStart
+    ExecStop path of systemd shorewall-init.service (bnc#827524)
+  * removed  systemd.patch (forwarded request 181606 from toganm)</comment>
+    <requestid>181607</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>449ca83c359c35aeaf7524724e69348b</srcmd5>
+    <version>4.5.19</version>
+    <time>1374702045</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.5.19 For more details see changelog.txt and
+  releasenotes.txt
+  * Previously, the '-q' option did not suppress all output from
+    certain commands such as 'check'. (forwarded request 184206 from toganm)</comment>
+    <requestid>184211</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3a51951c0a1770c5ce5c64978582d31f</srcmd5>
+    <version>4.5.20</version>
+    <time>1377856163</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.5.20 For more details see changelog.txt and
+  releasenotes.txt
+  * A typographical error in the usage text produced by the -h
+    command in the compiled firewall script has been corrected.
+  * The handling of INITSOURCE is now uniform between the standard
+    and the -lite installers.
+  * Previously, when SYSCONFFILE was specified in shorewallrc, the
+    installers would always install default.debian rather than the
+    named file. That has been corrected.
+- Spec file changes
+  * removed the following pathces:
+    0001-Os-release.patch 
+    0001-Fix-Exec-directory.patch (forwarded request 196693 from toganm)</comment>
+    <requestid>196694</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>3a51951c0a1770c5ce5c64978582d31f</srcmd5>
+    <version>4.5.20</version>
+    <time>1379664674</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>fff74dbefb4766e65cfd479e13dee345</srcmd5>
+    <version>4.5.21</version>
+    <time>1380881614</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 4.5.21 For more details see changelog.txt and
+  releasenotes.txt
+  * ip[6]tables 1.4.20 introduced an incompatible change that
+    causes the program to fail if there is another instance of either
+    iptables or ip6tables already running. This behavior can be avoided
+    if the new -w option is specified.
+    To work around this problem, the compiler now uses the -w
+    option (when available) during capabilities determination so that
+    shorewall and shorewall6 compilations can proceed in parallel.
+  * Previously, the Shorewall-init installer unconditionally
+    installed the sysconfig file even when a different SYSCONFFILE was
+    specified. (Thomas D).
+  * /sbin/shorewall-init now includes the correct SYSCONFDIR name
+    in its error message that reports the absense of
+     ${SYSCONFDIR}/shorewall-init. (Thomas D).
+  * /sbin/shorewall-init and the Shorewall-init SysV init scripts
+    now honor the setting of $OPTIONS.
+  * The -lite installers now look in ${SHAREDIR} for the
+    coreversion file rather than in /usr/share/.
+  * If a Shorewall-lite installation used an 
+    /etc/shorewall-lite/vardir file to set a non-standard state
+    directory, the administrative system would send the firewall
+    and firewall.conf files to the wrong directory on the firewall
+    system.
+  * Previously, the compiler verified 'monthdays' specifications in
+    the rules TIME column, but failed to include --monthdays in the
+    generated rule. That omission has been corrected.
+  * The Multicast DNS macros (mDNS and mDNSbi) now allow the entire
+    non-priv port range (1024-65535) for the the dynamic unicast
+    port. Previously, only the Linux 2.6+ dynamic port range (forwarded request 202077 from toganm)</comment>
+    <requestid>202078</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>af908005c13461af3fa99f42a20f4dfa</srcmd5>
+    <version>4.5.21.1</version>
+    <time>1381321135</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 4.5.21.1 For more details see changelog.txt and
+  releasenotes.txt
+  * Problems with the Shorewall Init installer (install.sh) were
+    corrected. These problems affected initial Gentoo and Debian
+    installs.
+  * A problem that prevented multiple ICMP/ICMP6 types to be
+    specified in a rule has been corrected.
+  * Previously, an attempt to specify RAS or Q.931 in the HELPER
+    column  was rejected with an error.
+  * The 'nohostroute' provider option was not honored in the
+    default table when USE_DEFAULT_RT=Yes. (forwarded request 202675 from toganm)</comment>
+    <requestid>202676</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>4949c4451c903962abc56a8824c3a2b0</srcmd5>
+    <version>4.5.21.2</version>
+    <time>1382430162</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 4.5.21.2 For more details see changelog.txt and
+  releasenotes.txt
+  * Previously, the AutoBL action would fail if the kernel and
+    iptables did not support the Recent Match '--reap' option. A new
+    REAP_OPTION  capability has been added to work around this issue.
+  * The Shorewall-core installer no longer reports an error from
+    'cp' stating that it could not stat the shorewallrc file.
+  * When a non-root user attempts to execute 'version -a', the CLI
+    no longer attempts to get the version of the compiled
+    firewall. Previously, the command issued the following
+    diagnostic when run by non-root:
+     /sbin/shorewall: /var/lib/shorewallhorewall/firewall:
+     Permission denied
+  * Shorewall no longer uses 'fgrep' thus allowing for use on
+    systems without that utility. All uses of 'fgrep' have been
+    replaced by 'grep -F'.
+  * Placing |&amp;lt;mark&amp;gt; in the ACTION column of the tcrules file no
+    longer raises a fatal compilation error. (forwarded request 204237 from toganm)</comment>
+    <requestid>204238</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>5e9b2488cbdc8ccd4162a039a7814dc0</srcmd5>
+    <version>4.5.21.4</version>
+    <time>1385391853</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.5.21.4 For more details see changelog.txt and
+  releasenotes.txt
+  * The Broadcast actions have been corrected:
+    - --dst-type BROADCAST has been removed from the IPv6 version
+    - A superfluous DROP rule in the IPv4 version has been
+      suppressed.
+  * Previously, if an HFSC class was specified with dmax but not
+     umax, then the firewall would fail to start with the messages:
+      Nov 14 13:42:42 Setting up Traffic Control...
+      HFSC: Illegal &quot;umax&quot;
+      HFSC: Illegal &quot;sc&quot;
+      ERROR: Command &quot;tc class add dev eth1 parent 1:1 classid
+      1:110  hfsc sc umax b dmax 150ms rate 1575kbit ul rate 3150kbit&quot;
+      Failed
+    That problem has been corrected.
+  * The tcrules file now supports DROP entries to allow early
+    dropping of DOS packets. (forwarded request 208194 from toganm)</comment>
+    <requestid>208195</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>36733a608770ea4b74ad455e5227b539</srcmd5>
+    <version>4.5.21.5</version>
+    <time>1390396287</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.5.21.5 For more details see changelog.txt and
+  releasenotes.txt
+  * A number of minor updates have been made to the documentation
+    and manpages.
+  * The 'postcompile' extension script is now documented at
+    http://www.shorewall.org/shorewall_extension_scripts.htm
+  * The 'add' command previously failed if 'IPSET=' appeared in the
+    shorewall.conf file. This has been corrected. (forwarded request 214539 from toganm)</comment>
+    <requestid>214540</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>14d787b02784c2a08a5fc8542a221a7e</srcmd5>
+    <version>4.5.21.6</version>
+    <time>1391440550</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.5.21.6 For more details see changelog.txt and
+  releasenotes.txt
+  * When a non-terminating target specified logging, the compiler
+    would erroneously generate a 'goto' (-g) iptables command rather
+    than a 'jump' (-j) command. This caused the wrong set of rules
+    to be traversed, usually the catchall 'REJECT' or 'DROP' rule
+    at theend of the INPUT or FORWARD chain.
+    The compiler now generates a 'jump' rule in these cases.
+   * When an interface containing a period (such as a VLAN
+     interfaceterface) was used in an 'add' or 'delete' command,
+     the wrong ipset name was generated, resulting in failure of
+     the command. (forwarded request 220673 from toganm)</comment>
+    <requestid>220674</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>984e4e2d99ee866a0d6bf5a02c17c99f</srcmd5>
+    <version>4.5.21.7</version>
+    <time>1394451861</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.5.21.7 For more details see changelog.txt and
+  releasenotes.txt
+  * The help text for the 'dump' command has been updated to
+    include all valid options.
+  * The behavior of ADMINISABSENTMINDED=No is corrected.
+    Previously, 'shorewall stop' would not block existing connections
+    regardless of the setting of this option. Beginning with this
+    release, the behavior of ADMINISABSENTMINDED=No depends on whether
+    the  routestopped or the stoppedrules file defines the allow
+    connections while the firewall is stopped.
+    If there are entries in /etc/shorewall[6]/routestopped or if
+    there are no entries in /etc/shorewall[6]/stoppedrules, then the
+    behavior of ADMINISABSENTMINDED=No is as documented (existing
+    connections are blocked unles they are allowed by
+    /etc/shorewall[6]/routestopped).  If there are no entries in
+    /etc/shorewall[6]/stoppedrules, then the behavior is as if
+    ADMINISABSENTMINDED=Yes and a warning message is generated. 
+- Add 0001-fix-release-version.patch to correct version info of the
+  releasenotes.txt (forwarded request 225409 from toganm)</comment>
+    <requestid>225410</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>bcaef13edf89d0bde8b8717b807e868d</srcmd5>
+    <version>4.5.21.8</version>
+    <time>1395475921</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.5.21.8 For more details see changelog.txt and
+  releasenotes.txt
+  * If an rtrules entry duplicated a Shorewall-generated route rule but
+    had a lower priority than the generated one has (20000), then a
+    disable/enable sequence on the provider would result in
+    duplicate rules with priority 20000.
+  *  When 'shorewall[6] debug [re]start' was run, any error messages
+    generated because of ip[6]tables command errors would not
+    include '-t table'. 
+- Remove 0001-fix-release-version.patch (forwarded request 226841 from toganm)</comment>
+    <requestid>226842</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>ba8fa120bef09cbe2081fd7c3a67493f</srcmd5>
+    <version>4.5.21.9</version>
+    <time>1396538144</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.5.21.9 For more details see changelog.txt and
+  releasenotes.txt
+  * The output of 'shorewall show capabilities' always showed the
+    'Recent match --reap option' as 'Not Available'. 'shorewall
+    show -fcapabilities' correctly reported the capability.
+  * When a rules file section other than NEW began with a ?COMMENT
+    directive, the comment would erroneously appear in the rule
+    which jumps to the section chain as well as in the rules directly
+    related to the following entries.
+  * Rule comments were omitted from the compiler's 'trace' output
+    in some cases.
+  * When FASTACCEPT=Yes, ESTABLISHED,RELATED accept rules were
+    incorrectly omitted from an interfaces's _in and _fwd chains
+    when 'rpfilter' was specified in the interfaces's entry in
+    /etc/shorewall[6]/interfaces. (forwarded request 228395 from toganm)</comment>
+    <requestid>228396</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>46a9b664ffb58f4c8821c5fd04816c0c</srcmd5>
+    <version>4.6.0</version>
+    <time>1400682653</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.0. For more details see changelog.txt and
+  releasenotes.txt. Since this is a major release for those who are
+  migrating from previous version, it is important to read the
+  above mentioned notes.
+  * This release includes all defect repair from releases up through
+    4.5.21.9.
+- Backported CHECKSUM.patch (forwarded request 234820 from toganm)</comment>
+    <requestid>234821</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f1a9138a2596e0c402aea5f02fc5c386</srcmd5>
+    <version>4.6.0.2</version>
+    <time>1401208282</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.0.2 For more details see changelog.txt and
+  releasenotes.txt
+  * The 'upgrade -A' command now converts the tcrules file to a
+    mangle file. Previously, that didn't happen.
+  * The install components now support RHEL7.
+  * Whitespace issues in the skeleton configuration files have been
+    corrected (Tuomo Soini).
+  * FAQ 2e has been added which describes additional steps required
+    to achieve hairpin NAT on a bridge where the modified packets are
+    to go out the same bridge port as they entered.
+  * shorewall-masq(5) has been corrected to include the word SOURCE
+    on the description of that column. Previously, the description
+    read '(formerly called SUBNET)'.
+  * The output of 'shorewall show filters' once again shows ingress
+    (policing) filters. This works around undocumented changes to
+    the behavior of the 'tc' utility. 
+- removed backported CHECKSUM.patch (forwarded request 235532 from toganm)</comment>
+    <requestid>235533</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>21768d54e08dd65ed1f0fc6e3efeeeaa</srcmd5>
+    <version>4.6.0.3</version>
+    <time>1401899955</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.0.3 For more details see changelog.txt and
+  releasenotes.txt
+  * 1:1 NAT is now enabled in IPv6.
+  * subtle interaction between NAT and sub-zones is explained in
+    shorewall-nat.
+  * The 'show filters' command now works with Simple TC. (forwarded request 236003 from toganm)</comment>
+    <requestid>236004</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>1ed2dda9366e946e275c434a8e9659c4</srcmd5>
+    <version>4.6.1.1</version>
+    <time>1403615754</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.1.1 For more details see changelog.txt and
+  releasenotes.txt
+  * An improved error message is generatred when a server address
+    list is specified in the DEST colume of a DNAT or REDIRECT
+    rule. At one time, iptables supported such lists, but now only
+    a single address or an address range is supported.
+    The previous error message was:
+    ERROR: Unkknown Host (192.168.1.4,192.168.1.22)
+    The new error message is:
+    ERROR: An address list (192.168.1.4,192.1688.1.22) is not
+       allowed in the DEST column of a xxx RULE
+    whenere xxx is DNAT or REDIRECT as appropriate.
+  * Two problems have been corrected in the Shorewall-init Debian
+    init script.
+   + A cosmetic problem which releasenotessulted in 'echo_notdone'
+     being displayed on failure rather than 'nott done'.
+   + More seriously, the test for the existance of compiled
+     firewall scripts was incorrect, with the result that the
+     firewallingall scripts were not executed.
+     These defects, introduced in Shorewall 4.5.17, have now been
+     corrected. 
+- Restating that CHECKSUM.patch is removed since braindead
+  factory-auto scripts do not understand previous comment (forwarded request 238054 from toganm)</comment>
+    <requestid>238055</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>6af6fe3c77a058a00800a0dd61b2b2bf</srcmd5>
+    <version>4.6.1.3</version>
+    <time>1404306322</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.1.3 For more details see changelog.txt and
+  releasenotes.txt
+  * Use of the 'IfEvent' action resulted in a compilation failure:
+     ERROR: -j is only allowed when the ACTION is INLINE with no
+     parameter /usr/share/shorewall/action.IfEvent (line 139)
+     from /etc/shorewall/action.SSHKnock (line 8)
+     from /etc/shorewall/rules (line 31) (forwarded request 239257 from toganm)</comment>
+    <requestid>239258</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>b6dfde89938dc59db2402e7869ebca8f</srcmd5>
+    <version>4.6.1.4</version>
+    <time>1405404051</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>240826</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e16546781f5d506e8a710f5339f70dde</srcmd5>
+    <version>4.6.2.1</version>
+    <time>1405931745</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.2.1 For more details see changelog.txt and
+  releasenotes.txt
+  * Two issues with tcrules processing have been corrected:
+    + SAVE and RESTORE generated fatal compilation errors.
+    + '|' and '&amp;amp;' were ignored. That issue is also present in the
+      processing of the mangle file
+  * Version 4.6.2 changes
+    + The DSCP match in the mangle and tcrules files didn't work
+      with service class names such as EF, BE, CS1, ... 
+    + The SAVE and RESTORE actions were disallowed in the OUTPUT
+      chain in tcrules and mangle; this was a regression from 4.5.21.
+    + Additional ports required by Asus, Supermicro and Dell have
+      beenadded to the IPMI macro (Tuomo Soini).
+    +  Some issues regarding install under Cygwin64 have been
+       addressed.
+      - configure.pl did not understand CYGWIN returned from `uname`
+      - Shorewall-core install.sh did not understand CYGWIN returned
+        from  `uname`.
+      - The Shorewall and Shorewall6 installers tried to run the
+        command 'mkdir -p //etc/shorewall[6]' which is broken in the
+        current Cygwin64. (forwarded request 241675 from toganm)</comment>
+    <requestid>241676</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>2a6eedcf15e53cf3cbeb803e000303df</srcmd5>
+    <version>4.6.2.2</version>
+    <time>1406479638</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.2.2 For more details see changelog.txt and
+  releasenotes.txt
+  * The compiler now correctly detects the IPv6 &quot;Header Match&quot;
+    capability when LOAD_MODULES_ONLY=No.
+  * The compiler now correctly detects the IPv6 &quot;Ipset Match&quot;
+    capability on systems running a 3.14 or later kernel.
+  * The compiler now correctly detects &quot;Arptables JF&quot; capability
+    when LOAD_MODULES_ONLY=No.
+  * The tcfilter manpages previously failed to mention that
+    BASIC_FILTERS=Yes is required to use ipsets in the tcfilters
+    files. (forwarded request 242438 from toganm)</comment>
+    <requestid>242439</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>ebb09f0940254847bddd3cc6e49bc53b</srcmd5>
+    <version>4.6.2.3</version>
+    <time>1406645318</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.2.3 For more details see changelog.txt and
+  releasenotes.txt
+  * Previously, the compiler would fail with a Perl diagnostic if:
+    + Optimize Level 8 was enabled.
+    + Perl 5.20 was being used. This is the current Perl version on
+      Arch Linux.
+    The diagnostic was:
+      Can't use string (&quot;nat&quot;) as a HASH ref while &quot;strict refs&quot; in
+      use at /usr/share/shorewall/Shorewall/Chains.pm line 3486. (forwarded request 242812 from toganm)</comment>
+    <requestid>242813</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>54672d11435dee9f633739d071bb34e7</srcmd5>
+    <version>4.6.2.4</version>
+    <time>1407744436</time>
+    <user>lnussel</user>
+    <comment>- Update to version 4.6.2.4 For more details see changelog.txt and
+  releasenotes.txt
+  
+  + Previously, inline matches were not allowed in action files, even
+    though the documentation stated that they were allowed. (forwarded request 243938 from toganm)</comment>
+    <requestid>243939</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>9b6d2281b3bfa72b55f41237b511e030</srcmd5>
+    <version>4.6.2.5</version>
+    <time>1408089360</time>
+    <user>lnussel</user>
+    <comment>- Update to version 4.6.2.5 For more details see changelog.txt and
+  releasenotes.txt
+  * Previously, when an interface specified the 'physical=' option and
+    the physical interface name was specified in the INTERFACES
+    column of the providers file, compilation would fail with diagnostics
+    similar to the following:
+    Use of uninitialized value $physicalal in pattern match
+    (m//) at /usr/lib/perl5/vendor_perl/5.18.1/
+              Shorewall/Providers.pm line 463, &amp;lt;$currentfile&amp;gt; line
+    ERROR:ERROR A provider interface must have at least one
+        associated zone /zoneopt/etc/shorewall/providers (line 2)
+  * Shorewall-init now works correctly on systems with systemd.
+    By Louis Lagendijk.
+- Remove backported patches
+  * PHYSICALNAME.patch
+  * 0001-Modify-the-preceding-fix-to-work-with-wildcard-inter.patch (forwarded request 244766 from toganm)</comment>
+    <requestid>244767</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>9b6d2281b3bfa72b55f41237b511e030</srcmd5>
+    <version>4.6.2.5</version>
+    <time>1409303362</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b33933fa19a256a60183fcd23baeead8</srcmd5>
+    <version>4.6.3.1</version>
+    <time>1409761354</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.3.1 For more details see changelog.txt and
+  releasenotes.tx
+  * The DNSAmp action released in 4.6.3 matched more packets than it
+    should have. That has now been corrected.
+  * The handling of REJECT in IP[6]TABLES rules has been clarified
+    inthe shorewall-rules(5) and shorewall6-rules(5) manpages.
+  * The following misleading error message has now been corrected:
+      ERROR: The xxx TARGET is now allowed in the filter table
+    The message now reads:
+      ERROR: The xxx TARGET is not allowed in the filter table 
+- Spec fixes
+  * Fixed shorewall-init requires so it needs shoreline-firewall
+    which is an alias for shorewall shorewall6 shorewall-lite and
+    shorewall6-lite packages
+  * shorewall-init package was missing a rc link (forwarded request 247001 from toganm)</comment>
+    <requestid>247002</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>21a1a491825f4005aa38cc195184db6a</srcmd5>
+    <version>4.6.3.2</version>
+    <time>1409902455</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.3.2 For more details see changelog.txt and
+  releasenotes.txt
+  * The shorewall[6]-actions manpages previously contained incorrect
+    examples of the usage of table names with builtin actions.
+    Incorrect:
+    FOOBAR,filter,mangle
+    Correct:
+    FOOBAR   builtin,filters,mangle
+  * Previously, if /etc/iproute2/rt_tables was not writeable, then
+    KEEP_RT_TABLES=No behaved like KEEP_RT_TABLES=Yes. Now, a
+    warning  message is issued if that file is not writeable and
+    KEEP_RT_TABLES is set to No.
+    WARNING: /etc/iproute2/rt_tables is missing or is not
+    writeable
+  * In earlier 4.6.3 versions, the help text from shorewall-lite
+    and shorewall6-lite included two versions of the 'run' command.
+      run &amp;lt;command&amp;gt; [ &amp;lt;parameter&amp;gt; ... ]
+      ..
+      run &amp;lt;function&amp;gt; [ &amp;lt;parameter&amp;gt; ... ]
+    The second one has now been deleted.
+  * New Features:
+    Eric Teeter has contributed a Citrix Goto Meeting macro. (forwarded request 247477 from toganm)</comment>
+    <requestid>247479</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>0c120f052e2099ff57c78b106763ac14</srcmd5>
+    <version>4.6.3.3</version>
+    <time>1410795675</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.3.3 For more details see changelog.txt and
+  releasenotes.txt
+  * Including a PREROUTING SECTION in the accounting file
+    unconditionally resulted in a fatal error:
+    ERROR: The PREROUTING SECTION is not allowed when
+           ACCOUNTING_TABLE=filter
+  * Previously, the compiler could generate many superfluous rules
+    to enforce the 'tcpflags', 'nosmurfs' and 'maclist' interface
+    options. (forwarded request 249073 from toganm)</comment>
+    <requestid>249074</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>e7f9797aa4f12480ed188f6bc3e469c7</srcmd5>
+    <version>4.6.3.4</version>
+    <time>1411404638</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.3.4 For more details see changelog.txt and
+  releasenotes.txt
+  * The 'Universal' configurations previously failed to start with
+    the diagnostic
+      ERROR: No network interface available: Firewall state not
+      changed
+   * A defect introduced in 4.6.3 prevented Shorewall-init from
+     starting when required interfaces were present.
+   * Some defect repair from 4.6.2.5 was inadvertently omitted from
+     4.6.3. In particular, the fix for Shorewall-init on systems
+     running  systemd was omitted. Those fixes have now been merged
+     into this release. (forwarded request 250656 from toganm)</comment>
+    <requestid>250657</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>1b4f8d6c8fd0e7e0885c3aa586486933</srcmd5>
+    <version>4.6.4.3</version>
+    <time>1415289017</time>
+    <user>coolo</user>
+    <comment>- Update to versioin 4.6.4.3 For more details see changelog.txt and
+  releasenotes.txt
+  
+  * The fix for LOG_BACKEND in 4.6.4.2 worked on some older
+    distributions but not on newer ones. This release fixes the
+    problem in the remaining cases. (forwarded request 259741 from toganm)</comment>
+    <requestid>259742</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>75cacede69fef3669af957ed230bc49a</srcmd5>
+    <version>4.6.5.2</version>
+    <time>1416823770</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.5.2 For more details see changelog.txt and
+  releasenotes.txt
+  * LOG_BACKEND=LOG failed at run-time for all but the most recent
+    kernels.
+- Changes in 4.6.5.1
+  * The generated script can now detect an gateway address assigned
+    by later versions of that program (Alan Barrett).
+  * In 4.6.5, the bash-based configure script would issue the
+    following diagnostic if SERVICEDIR was not specified in the
+    shorewallrc file:
+      ./configure: line 199: [SERVICEDIR]=: command not found
+    This was compounded by the fact that all of the released
+    shorewallrc files still specified SYSTEMDDIR rather than
+    SERVICEDIR (Evangelos Foutras)
+  * The shorewallrc.archlinux file now reflects a change in SBINDIR
+    that occurred in Arch Linux in mid 2013 (Evangelos Foutras). (forwarded request 262800 from toganm)</comment>
+    <requestid>262801</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>bf8d5eae96fa8fc119298b374ebefa4e</srcmd5>
+    <version>4.6.5.2</version>
+    <time>1418737698</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not buildrequire openSUSE-release: it's a daily changing
+  package and causes thus frequent rebuilds for no reason.
+  configure and install both try to guess the target from
+  /etc/os-release. So we simply inject BUILD=suse for the openSUSE
+  case. (forwarded request 264937 from dimstar)</comment>
+    <requestid>264965</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>18a7641e835ba9c97274beb866d3d14c</srcmd5>
+    <version>4.6.5.3</version>
+    <time>1418978313</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.5.3 For more details see changelog.txt and
+  releasenotes.txt
+  * The Shorewall-init scripts were using the incorrect
+    variable to set the state directory. Correction provided by
+    Roberto Sanchez.
+  * For normal dynamic zones, the 'add' command failed with a
+    diagnostic such as:
+      ERROR: Zone ast, interface net0 does not have a dynamic host
+      list
+  * When a mark range was used in the marks (tcrules) file, a
+    run-time error occurred while attempting to load the generated
+     ruleset. (forwarded request 265683 from toganm)</comment>
+    <requestid>265684</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>694e32b6948891ee6d2c6b60b30d6946</srcmd5>
+    <version>4.6.5.4</version>
+    <time>1421052597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.5.4 For more details see changelog.txt and
+  releasenotes.txt
+  * The '-c' option of the 'dump' and 'show routing' commands is
+    now documented.
+  * The handling of the 'DIGEST' environmental variable has been
+    corrected in the Shorewall installer. Previously, specifying
+    that option would not correctly update the Chains module which
+    led to a Perl compilation failure.
+  * Handling of ipset names in PORT columns has been corrected.
+    Previously, such usage resulted in an invalid  iptables rule
+    being generated. (forwarded request 280758 from toganm)</comment>
+    <requestid>280759</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>3efd62a433a6b0f233d60e0fea9a9b90</srcmd5>
+    <version>4.6.5.5</version>
+    <time>1421232287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.5.5 For more details see changelog.txt and
+  releasenotes.txt
+  * This release adds Tuomo Soini's fix for Shorewall-init to 4.6.5.5.
+    Previously, the ifupdown scripts were looking in the wrong
+    directory for the firewall script. (forwarded request 280859 from toganm)</comment>
+    <requestid>280861</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>54412a4585f1922e960c4f3d34d98598</srcmd5>
+    <version>4.6.6</version>
+    <time>1421753671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.6 For more details see changlelog.txt and
+  releasenotes.txt As there are many new features with this release
+  please consult the mentioned files.
+  * Previously, a line beginning with 'shell' was interpreted as a
+    shell script. Now, the line must begin with 'SHELL'
+    (case-sensitive).
+    Note that ?SHELL and BEGIN SHELL are still case-insensitive. (forwarded request 281596 from toganm)</comment>
+    <requestid>281597</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>44d762f229cec326f4b7c78bf4073187</srcmd5>
+    <version>4.6.6.1</version>
+    <time>1422134467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.6.1 For more details see changelog.txt and
+  releasenotes.txt
+  * Previously the SAVE and RESTORE actions were erroneously disallowed
+    in the INPUT chain within the mangle file.
+  * The manpage descriptions of the mangle SAVE and RESTORE actions
+    incorrectly required a slash (/) prior to the mask value.
+  * Race conditions could previously occur between the 'start'
+    command and the 'enable' and 'disable' commands.
+  * The 'update' command incorrectly added the INLINE_MATCHES
+    option to shorewall.conf with a default value of 'Yes'. This
+    caused 'start' to fail with invalid iptables rules when the
+    alternate input format using ';' is used.
+  * Previously the LOCKFILE setting was not propagated to the
+    generated script. So when the script was run directly, the script
+    unconditionally used ${VARDIR}/lock. (forwarded request 282633 from toganm)</comment>
+    <requestid>282634</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>e0c2f5cae61d23164186b4a7b12f8615</srcmd5>
+    <version>4.6.6.2</version>
+    <time>1423392149</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.6.2 For more details see changelog.txt and
+  releasenotes.txt
+  * The compiler failed to parse the construct +&amp;lt;ipset&amp;gt;[n] where n is
+    an integer (e.g., +bad[2]).
+  * Orion Paplawski has provided a patch that adds 'ko.xz' to the
+    default MODULE_SUFFIX setting. This change deals with recent
+    Fedora releases where the module names now end with &quot;.ko.xz&quot;.
+    In addition to Orion's patch, the sample configurations have
+    been modified to specify MODULE_SUFFIX=&quot;ko ko.xz&quot;. (forwarded request 284604 from toganm)</comment>
+    <requestid>284605</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>e0f783b42ff503d020f925c4c2ab1c10</srcmd5>
+    <version>4.6.7</version>
+    <time>1426680330</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.7 For more details see changelog.txt and
+  releasenotes.txt
+  * This release includes defect repair from Shorewall 4.6.6.2 and
+    earlier releases.
+  * The 'tunnels' file now supports 'tinc' tunnels.
+  * Previously, the SAME action in the mangle file had a fixed
+    timeout of 300 seconds (5 minutes). That action now allows
+    specification of a different timeout.
+  * It is now possible to add or delete addresses from an ipset
+    with entries in the mangle file. The ADD and DEL actions have
+    the same behavior in the mangle file as they do in the rules
+    file. 
+- Added systemd_version macro in anticipation of detecting the
+  correct service file when systemd version is &amp;gt;= 214 (forwarded request 290980 from toganm)</comment>
+    <requestid>290982</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>e30a47db782e0b2efd3a26483230b000</srcmd5>
+    <version>4.6.8</version>
+    <time>1428192261</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.8 For more details see changelog.txt and
+  releasenotes.txt
+  * This release includes defect repair from Shorewall 4.6.6.2 and
+    earlier releases.
+  * Previously, when the -n option was specified and NetworkManager
+    was installed on the target system, the Shorewall-init installer
+    would still create
+    ${DESTDIR}etc/NetworkManager/dispatcher.d/01-shorewall, regardless
+    of the setting of $CONFDIR. That has been corrected such that
+    the directory
+    ${DESTDIR}${CONFDIR}/NetworkManager/dispatcher.d/01-shorewall
+    is created instead.
+  * Previously, handling of the IPTABLES and IP6TABLES actions in
+    the conntrack file was broken. nfw provided a fix on IRC.
+  * The Shorewall-core and Shorewall6 installers would previously
+    report incorrectly that the product release was not installed.
+    Matt Darfeuille provided fixes. (forwarded request 294498 from toganm)</comment>
+    <requestid>294499</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>f17e496239d85dcbc0b929fdff21174c</srcmd5>
+    <version>4.6.8.1</version>
+    <time>1429107893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.8.1 For more details see changnlog.txt and
+  releasenotes.txt
+  * Previously, when servicd was installed and there were one or
+    more required interfaces, the firewall would fail to start at
+    boot.This has been corrected by Tuomo Soini.
+  * Some startup logic in lib.cli has been deleted. A bug prevented
+    the code from working as intended, so there is no loss of 
+    functionality resulting from deletion of the code. (forwarded request 296592 from toganm)</comment>
+    <requestid>296593</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>d276d4e071eaea8c4720331887ac4190</srcmd5>
+    <version>4.6.9</version>
+    <time>1431247613</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.9 For more details see changelog.txt and
+  releasenotes.txt
+  * This release contains defect repair from Shorewall 4.6.8.1 and
+    earlier releases.
+  * The means for preventing loading of helper modules has been
+    clarified in the documentation.
+  * The SetEvent and ResetEvent actions previously set/reset the
+    event even if the packet did not match the other specified
+    columns. This has been corrected.
+  * Previously, the 'show capabilities' command was ignoring the
+    HELPERS setting. This resulted in unwanted modules being
+    autoloaded  and, when the -f option was given, an incorrect
+    capabilities file was generated.
+  * Previously, when 'wait' was specified for an interface, the
+    generated script erroneously checked for required interfaces on
+    all commands rather than just start, restart and restore. (forwarded request 305794 from toganm)</comment>
+    <requestid>305795</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>0cd0eb5c6dca68fa64b0db3981e7ea62</srcmd5>
+    <version>4.6.10.1</version>
+    <time>1435172494</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>313364</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>a2e95d38fa9d637a20b156b238303e7e</srcmd5>
+    <version>4.6.11</version>
+    <time>1438750196</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.6.11 For more details see changelog.txt and
+  releasenotes.txt
+  * Previously, when the -c option was given to the 'compile'
+    command, the progress message &quot;Compiling...&quot; was issued before
+    it was determined if compilation was necessary.  Now, that message
+    is suppressed when re-compilation is not required.
+  * Previously, when the -c option was given to the 'compile'
+    command, the 'postcompile' extension script was executed even when
+    there was no (re-)compilation. Now, the 'postcompile' script is
+    only invoked  when a new script is generated.
+  * If CONFDIR was other than /etc, then ordinary users would not 
+    receive a clear error message when they attempted to execute
+    one of the commands that change the firewall state.
+  * Previously, IPv4 DHCP client broadcasts were blocked by the
+    'rpfilter' interface option. That has been corrected.
+  * The 'update' command incorrectly added the INLINE_MATCHES
+    option to shorewall6.conf with a default value of 'Yes'. This
+    caused 'start' to fail with invalid ip6tables rules when the alternate
+    input format using ';' is used.
+    Note: This last issue is not documented in the release notes
+    included with the release. (forwarded request 316607 from toganm)</comment>
+    <requestid>316608</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>68be150adb8e59497b4e0b83ac4c3d7d</srcmd5>
+    <version>4.6.13</version>
+    <time>1442474462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.13 For more details see changelog.txt and
+  realeasenotes.txt
+  * The 'rules' file manpages have been corrected regarding the
+    packets that are processed by rules in the NEW section.
+  * Parsing of IPv6 address ranges has been corrected. Previously,
+    use of ranges resulted in 'Invalid IPv6 Address' errors.
+  * The shorewall6-hosts man page has been corrected to show the
+    proper contents of the HOST(S) column.
+  * Previously, INLINE statements in the mangle file were not 
+    recognized if a chain designator (:F, :P, etc.) followingowed 
+    INLINE(...). As a consequence, additional matches following
+    a semicolon were interpreted as column/value pairs unless
+    INLINE_MATCHES=Yes, resulting in compilation failure.
+  * Inline matches on IP[6]TABLE rules could be ignored if
+    INLINE_MATCHES=No. They are now recognized.
+  * Specifying an action with a logging level in one of the
+    _DEFAULT options in shorewall[6].conf
+    (e.g., REJECT_DEFAULT=Reject:info) produced a compilation error:
+      ERROR: Invalid value (:info) for first Reject parameter
+           /usr/share/shorewall/action.Rejectect (line 52)
+    That has been corrected. Note, however, that specifying logging
+    with a default action tends to defeat one of the main purposes
+    of default actions which is to suppress logging.
+  * Previously, it was necessary to set TC_EXPERT=Yes to have full
+    access to the user mark in fw marks. That has been corrected so
+    that any place that a mark or mask can be specified, both the
+    TC mark and the User mark are accessible. (forwarded request 331029 from toganm)</comment>
+    <requestid>331030</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>716890f77506e48a48e46cb293571cac</srcmd5>
+    <version>4.6.13.4</version>
+    <time>1458120961</time>
+    <user>dimstar_suse</user>
+    <comment>Update to last bugfix 4.x series 
+Thanks for your consideration.
+Maintainer status is accepted since togan has disappear
+Will serve as maintenance sr for Leap + Factory submission (forwarded request 367131 from bruno_friedmann)</comment>
+    <requestid>371244</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>71c471096a9c00409da8bada97291073</srcmd5>
+    <version>5.0.15</version>
+    <time>1483955472</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>447292</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>eee1702a6467ceea76272871ef462789</srcmd5>
+    <version>5.1.3</version>
+    <time>1489653815</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to last stable 5.1.3 
+  For details see changelog.txt and releasenotes.txt containing all
+  informations for a correct upgrade path.
+- Packaging Redone patches for var-fillup
+  + shorewall-fillup-install.patch
+  + shorewall-init-fillup-install.patch
+  + shorewall-lite-fillup-install.patch
+
+- Upgrade to stable 5.1.1 
+  For details see changelog.txt and releasenotes.txt containing all
+  informations for a correct upgrade path.
+- Packaging:
+  + use proper %{} syntax
+  + Adjust year copyright
+  + Remove attr on sbindir symlink
+  + Move Samples and Contrib to doc package (forwarded request 479769 from bruno_friedmann)</comment>
+    <requestid>479770</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>afc3abe8e64405bf2fd456bf0fda6df2</srcmd5>
+    <version>5.1.3.1</version>
+    <time>1490026398</time>
+    <user>dimstar_suse</user>
+    <comment>Update to bugfix release.</comment>
+    <requestid>481217</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>5cf493da99e84803f92547060ac0f1d2</srcmd5>
+    <version>5.1.3.2</version>
+    <time>1490707374</time>
+    <user>maxlin_factory</user>
+    <comment>- Bugfix release 5.1.3.2
+  Previously, if a Shorewall Variable (e.g., @chain) was the target
+  of a conditional ?RESET directive (one that was enclosed in ?if.
+  ?else...?endif logic), the compiler could incorrectly use an
+  existing chain created from the action rather than creating a new
+  (and different) chain. That has been corrected.
+  Previously, if alternate input format specified a column that had
+  already been specified, the contents of that column were silently
+  overwritten. Now, a warning message is issued stating that the
+  prior value has been replaced by the newer value. (forwarded request 482666 from bruno_friedmann)</comment>
+    <requestid>482804</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>7f05b214e5aed019ab50e6941d2034e9</srcmd5>
+    <version>5.1.4.2</version>
+    <time>1497786654</time>
+    <user>dimstar_suse</user>
+    <comment>- Bugfix and enhancement release 5.1.4.2
+  complete changelog is available
+  http://shorewall.net/pub/shorewall/5.1/shorewall-5.1.4/releasenotes.txt
+- Main changes
+  All IPv6 standard actions have been deleted and their logic
+  has been added to their IPv4 counterparts who can now handle
+  both address families.
+  Previously, ?error and ?require messages as well as verbose ?info
+  and ?warning messages (those that report the file and line numbers)
+  generated from an action file would report the action file name and
+  line number rather than the file and line number where the action
+  was invoked. The file and line number where the action was invoked
+  were listed second. Beginning with this release, the invoking file
+  and line number are listed first and the action file and line number
+  are not reported. This allows for creation of clearer messages.
+  
+  IPv6 UPnP support (including MINIUPNPD) is now available.
+  A PERL_HASH_SEED option has been added to allow the Perl hash seed
+  to be specified.  See shorewall.conf(5) and perlsec(1) for details. (forwarded request 503677 from bruno_friedmann)</comment>
+    <requestid>504332</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>3cb297bffabb4f61aef8f0b5cb9c847f</srcmd5>
+    <version>5.1.4.3</version>
+    <time>1499152218</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507225</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>023c292b4d41be4924a32454770f27e0</srcmd5>
+    <version>5.1.4.4</version>
+    <time>1500275397</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509976</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>45bf7e39d74f18cd6e4f09a72e6c7e53</srcmd5>
+    <version>5.1.4.4</version>
+    <time>1502892865</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516780</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>685432c47aa2c9502dc343e76e939a65</srcmd5>
+    <version>5.1.5.2</version>
+    <time>1503926273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518886</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>c72592632ad6e2ba83523582dac65fc6</srcmd5>
+    <version>5.1.8.1</version>
+    <time>1511193892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542468</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>d43ffb92819f2a425bfd196ca633d7ad</srcmd5>
+    <version>5.1.12.3</version>
+    <time>1521193467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587570</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>357829aee30aaf647c3dc20916887d4b</srcmd5>
+    <version>5.1.12.4</version>
+    <time>1523875860</time>
+    <user>dimstar_suse</user>
+    <comment>- Changes in 5.1.12.3
+  Problems Corrected:
+  When 'reset' and 'dst' were specified to the IfEvent action,
+  the action would incorrectly attempt to reset the event for the
+  SOURCE IP address rather than the DEST address. That has been
+  corrected. (forwarded request 596669 from bruno_friedmann)</comment>
+    <requestid>596753</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>0dfd077d5dc740fc2adeee1e4ac58dc8</srcmd5>
+    <version>5.2.2</version>
+    <time>1549458379</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670881</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>2523783f5500cc138592b88bfc1f3fc9</srcmd5>
+    <version>5.2.3</version>
+    <time>1551113779</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678539</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>d680a503a100f5a1ac49408c70045367</srcmd5>
+    <version>5.2.3.1</version>
+    <time>1551455279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680054</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>ac37f921d1666daade59b2f30f2bb42f</srcmd5>
+    <version>5.2.3.3</version>
+    <time>1555329588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694187</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>fac7004405e1633708e81707c6d06925</srcmd5>
+    <version>5.2.3.4</version>
+    <time>1568379602</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>730211</requestid>
+  </revision>
+</revisionlist>

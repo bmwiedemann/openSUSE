@@ -1,0 +1,533 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>8a05f9731bba70e1af0145757e3b768e</srcmd5>
+    <version>1.6.4</version>
+    <time>1207686609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>8a05f9731bba70e1af0145757e3b768e</srcmd5>
+    <version>1.6.4</version>
+    <time>1207686609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>6b9801b7a408e3be6484d348e39e6702</srcmd5>
+    <version>1.6.4</version>
+    <time>1245337361</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>6b9801b7a408e3be6484d348e39e6702</srcmd5>
+    <version>1.6.4</version>
+    <time>1245337361</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5e7aa4e5139b08958cc7de6b696109c5</srcmd5>
+    <version>1.8.8</version>
+    <time>1260978861</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/Botan based on submit request 26756 from user psmt
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c86428c261bf0940f7fabe4e4419402d</srcmd5>
+    <version>1.8.8</version>
+    <time>1261352260</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/Botan based on submit request 27269 from user oertel
+</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>eddec67063305833d211fbe6056c4932</srcmd5>
+    <version>1.8.8</version>
+    <time>1261434945</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/Botan based on submit request 27371 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>446b63a36dc2456edb236fef8cc661bb</srcmd5>
+    <version>1.8.8</version>
+    <time>1263483461</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/Botan based on submit request 28926 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>21681af00e14b8167b3590e9498c1a63</srcmd5>
+    <version>1.8.8</version>
+    <time>1268352659</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/Botan based on submit request 34490 from user coolo
+</comment>
+    <requestid>34490</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>81e5246404d75a0b18f0413483af0fb5</srcmd5>
+    <version>1.8.8</version>
+    <time>1268922709</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>81e5246404d75a0b18f0413483af0fb5</srcmd5>
+    <version>1.8.8</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>81e5246404d75a0b18f0413483af0fb5</srcmd5>
+    <version>1.8.8</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8de4fb2a09b6067650f366458dcc9f06</srcmd5>
+    <version>1.8.10</version>
+    <time>1283514683</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/Botan based on submit request 46980 from user psmt
+</comment>
+    <requestid>46980</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>8de4fb2a09b6067650f366458dcc9f06</srcmd5>
+    <version>1.8.10</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>088d2c92b2da0b0c5bc1b2107fd507b9</srcmd5>
+    <version>1.10.0</version>
+    <time>1308822244</time>
+    <user>saschpe</user>
+    <comment>Update to 1.10.0</comment>
+    <requestid>74320</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>0813ff2e84bbb2005a73eba7435d6495</srcmd5>
+    <version>1.10.0</version>
+    <time>1308822253</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74320
+</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>382ac82708cfb2ea5c19278ffc56004d</srcmd5>
+    <version>1.10.0</version>
+    <time>1309855068</time>
+    <user>saschpe</user>
+    <comment>Make Botan own its docdir</comment>
+    <requestid>75336</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>f5c9bd05d4f285b08e6d4482b340df50</srcmd5>
+    <version>1.10.0</version>
+    <time>1309855082</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75336
+</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>74819b72d6992cbcfdbb0d886ef761e0</srcmd5>
+    <version>1.10.0</version>
+    <time>1316438614</time>
+    <user>lrupp</user>
+    <comment>- Implement baselibs.conf for package
+- Remove obsolete/redundant tags (forwarded request 82560 from jengelh)</comment>
+    <requestid>82563</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>74819b72d6992cbcfdbb0d886ef761e0</srcmd5>
+    <version>1.10.0</version>
+    <time>1319181748</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>c0a4c1e8144c4b490a020e7292642543</srcmd5>
+    <version>1.10.0</version>
+    <time>1323190890</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>954c7d35cd9323dffa8130273ad51b26</srcmd5>
+    <version>1.10.0</version>
+    <time>1328711826</time>
+    <user>coolo</user>
+    <comment>- little spec cleanup</comment>
+    <requestid>102974</requestid>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>954c7d35cd9323dffa8130273ad51b26</srcmd5>
+    <version>1.10.0</version>
+    <time>1340183148</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>a186b99e609e9636eec2f2cd7221f951</srcmd5>
+    <version>1.10.0</version>
+    <time>1345638960</time>
+    <user>namtrac</user>
+    <comment>- don't fiddle with march settings, we want the distro defaults
+  (fixes build on ARM) (forwarded request 131010 from dirkmueller)</comment>
+    <requestid>131026</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6568dc5b605f07bcf420b65bd89cdfef</srcmd5>
+    <version>1.10.3</version>
+    <time>1348149595</time>
+    <user>coolo</user>
+    <comment>Needed for upcoming qt-creator</comment>
+    <requestid>135080</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>6568dc5b605f07bcf420b65bd89cdfef</srcmd5>
+    <version>1.10.3</version>
+    <time>1359108613</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>1bacce0841eac8b5e728ca97075c786c</srcmd5>
+    <version>1.10.3</version>
+    <time>1363082796</time>
+    <user>coolo</user>
+    <comment>- aarch64-support.patch: add support for aarch64</comment>
+    <requestid>158550</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c7c8c8a4e5eabd2d20cd86935d6022c7</srcmd5>
+    <version>1.10.5</version>
+    <time>1363691452</time>
+    <user>coolo</user>
+    <comment>Update to 1.10.5 (forwarded request 159650 from cgiboudeaux)</comment>
+    <requestid>159819</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>c7c8c8a4e5eabd2d20cd86935d6022c7</srcmd5>
+    <version>1.10.5</version>
+    <time>1379661903</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a93f54182039ff4f9757afb1395ca0a1</srcmd5>
+    <version>1.10.6</version>
+    <time>1384265009</time>
+    <user>coolo</user>
+    <comment>Update Botan to 1.10.6 (forwarded request 206590 from netsroth)</comment>
+    <requestid>206606</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>37899c2bfa8d58a7209cc0d64d6b8673</srcmd5>
+    <version>1.10.6</version>
+    <time>1386757694</time>
+    <user>coolo</user>
+    <comment>- Add ppc64le architecture
+- added patches:
+  * ppc64le-support.patch (forwarded request 209893 from k0da)</comment>
+    <requestid>209925</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>f269fff6bfe04f42d680dbbeb9365c31</srcmd5>
+    <version>1.10.6</version>
+    <time>1393935642</time>
+    <user>coolo</user>
+    <comment>- change license to BSD-2-Clause as requested by legal (forwarded request 224433 from oertel)</comment>
+    <requestid>224457</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>87a644a3846a91ab48c811496aaec1e3</srcmd5>
+    <version>1.10.8</version>
+    <time>1399810593</time>
+    <user>coolo</user>
+    <comment>- Update to 1.10.8
+  * Fix a bug in primality testing introduced in 1.8.3 which caused
+    only a single random base, rather than a sequence of random bases,
+    to be used in the Miller-Rabin test. This increased the
+    probability that a non-prime would be accepted, for instance a
+    1024 bit number would be incorrectly classed as prime with
+    probability around 2^-40. Reported by Jeff Marrison.
+  * The key length limit on HMAC has been raised to 512 bytes,
+    allowing the use of very long passphrases with PBKDF2.
+- Update to 1.10.7
+  * OAEP had two bugs, one of which allowed it to be used even if the
+    key was too small, and the other of which would cause a crash
+    during decryption if the EME data was too large for the associated
+    key. (forwarded request 233310 from netsroth)</comment>
+    <requestid>233386</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>87a644a3846a91ab48c811496aaec1e3</srcmd5>
+    <version>1.10.8</version>
+    <time>1409300424</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>c6b211e40014d86881782d2d31b56a1c</srcmd5>
+    <version>1.10.8</version>
+    <time>1436887228</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>313845</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>39fea840a7eaffe39da61efe9fc052d4</srcmd5>
+    <version>1.10.10</version>
+    <time>1439631535</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Source0 URL
+
+- bump SONAME to libbotan-1_10-1
+- Update to 1.10.10
+  * SECURITY: The BER decoder would crash due to reading from offset 0
+    of an empty vector if it encountered a BIT STRING which did not
+    contain any data at all. As the type requires a 1 byte field this
+    is not valid BER but could occur in malformed data. Found with
+    afl. CVE-2015-5726
+  * SECURITY: The BER decoder would allocate a fairly arbitrary amount
+    of memory in a length field, even if there was no chance the read
+    request would succeed. This might cause the process to run out of
+    memory or invoke the OOM killer. Found with afl. CVE-2015-5727
+  * Due to an ABI incompatible (though not API incompatible) change in
+    this release, the version number of the shared object has been
+    increased.
+  * The default TLS policy no longer allows RC4.
+  * Fix a signed integer overflow in Blue Midnight Wish that may cause
+    incorrect computations or undefined behavior.
+- Update to 1.10.9
+  * Fixed EAX tag verification to run in constant time
+  * The default TLS policy now disables SSLv3.
+  * A crash could occur when reading from a blocking random device if
+    the device initially indicated that entropy was available but a
+    concurrent process drained the entropy pool before the read was
+    initiated.
+  * Fix decoding indefinite length BER constructs that contain a
+    context sensitive tag of zero. Github pull 26 from Janusz Chorko.
+  * The botan-config script previously tried to guess its prefix from
+    the location of the binary. However this was error prone, and now</comment>
+    <requestid>323035</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>6098439ee5b3c5b3159365d5fd2a5df4</srcmd5>
+    <version>1.10.10</version>
+    <time>1451177925</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350686</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>44b20ffda779fd35457b517cb16e6b00</srcmd5>
+    <version>1.10.12</version>
+    <time>1455190344</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357528</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>4b085f90fa20dbeb8f4bfb7e430f5461</srcmd5>
+    <version>1.10.12</version>
+    <time>1463652258</time>
+    <user>dimstar_suse</user>
+    <comment>Fix paths</comment>
+    <requestid>395169</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2de42a82f98c9f14c5c025f9d8ea7876</srcmd5>
+    <version>1.10.13</version>
+    <time>1479300377</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440337</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ef44108329dbe177fe276725e6f457e4</srcmd5>
+    <version>1.10.14</version>
+    <time>1484474989</time>
+    <user>dimstar_suse</user>
+    <comment>Fix the last known security bug</comment>
+    <requestid>447972</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ba217fa14018f7d0911aebebde663082</srcmd5>
+    <version>1.10.16</version>
+    <time>1492714079</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.16 (Fixes CVE-2017-2801, bsc#1033605) (forwarded request 487836 from dmolkentin)</comment>
+    <requestid>487837</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>ed5cae21778ba365403bfd80e33b9f55</srcmd5>
+    <version>1.10.16</version>
+    <time>1506955833</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528603</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>3ae577ade0b215d65ce4da09e2bbfa79</srcmd5>
+    <version>1.10.17</version>
+    <time>1507628043</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531210</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>8ab08cacb257073716bd3c1ed9f9dacc</srcmd5>
+    <version>1.10.17</version>
+    <time>1509787451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538113</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8eddfdabe54e2f91300d3d76428d8a57</srcmd5>
+    <version>2.4.0</version>
+    <time>1519486719</time>
+    <user>dimstar_suse</user>
+    <comment>- drop explicit package requirements
+- split binary package and documentation from dynamic library package
+- merge back Botan2 package to Botan with changelog history
+- drop Botan patches
+    aarch64-support.patch - doesn't seem to be required anymore
+    Botan-fix_install_paths.patch - doesn't seem to be required
+    no-cpuid-header.patch - SLE11 not target anymore
+    Botan-fix_pkgconfig.patch - this seem to be wrong
+    Botan-no-buildtime.patch - not needed anymore
+    dont-set-mach-value.diff - doesn't apply, unclear and undocumented why it is there
+    Botan-inttypes.patch - not required
+    Botan-ull_constants.patch.bz2 - no reason anymore
+
+- change group of libbotan-%{version_suffix} to 'System/Libraries' as
+  requested on review
+
+- Don't drop -fstack-clash-protection for openSUSE 42.3 - we just
+  need the Update repository present.
+
+- Rename libbotan-devel to libbotan2-devel. We can't have clashing
+  packages in the archive because Botan1 and Botan2 provide the
+  same -devel binary. Botan2 is also no API compatible with Botan.
+
+- fix expected version after bump in baselibs.conf too
+
+- fix unknown flag -fstack-clash-protection for openSUSE 42.3
+- rename to Botan2
+- drop Botan2-INT_MAX.patch as not needed anymore
+- Bump to libbotan 2.4
+  Changes and new features: (forwarded request 578006 from sleep_walker)</comment>
+    <requestid>578047</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>42105b48e2c763c4507c19b9a3222eea</srcmd5>
+    <version>2.4.0</version>
+    <time>1519683946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580043</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ed90aa1974500e65e3d5869c611a44b1</srcmd5>
+    <version>2.5.0</version>
+    <time>1523029648</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Botan 2.5
+  * Fix error in certificate wildcard matching (CVE-2018-9127), where a
+    wildcard cert for b*.example.com would be accepted as a match for any host
+    with name *b*.example.com (GH #1519)
+  * Add support for RSA-PSS signatures in TLS (GH #1285)
+  * Ed25519 certificates are now supported (GH #1501)
+  * Many optimizations in ECC operations. ECDSA signatures are 8-10 times
+    faster. ECDSA verification is about twice as fast. ECDH key agreement is
+    3-4 times faster. (GH #1457 #1478)
+  * Implement product scanning Montgomery reduction, which improves
+    Diffie-Hellman and RSA performance by 10 to 20% on most platforms. (GH
+    #1472)
+  * DSA signing and verification performance has improved by 30-50%.
+  * Add a new Credentials_Manager callback that specifies which CAs the server
+    has indicated it trusts (GH #1395 fixing #1261)
+  * Add new TLS::Callbacks methods that allow creating or removing extensions,
+    as well as examining extensions sent by the peer (GH #1394 #1186)
+  * Add new TLS::Callbacks methods that allow an application to negotiate use
+    of custom elliptic curves. (GH #1448)
+  * Add ability to create custom elliptic curves (GH #1441 #1444)
+  * Add support for POWER8 AES instructions (GH #1459 #1393 #1206)
+  * Fix DSA/ECDSA handling of hashes longer than the group order (GH #1502
+    #986)
+  * The default encoding of ECC public keys has changed from compressed to
+    uncompressed point representation. This improves compatability with some
+    common software packages including Golang’s standard library. (GH #1480
+    #1483)
+  * It is now possible to create DNs with custom components. (GH #1490 #1492)
+  * It is now possible to specify the serial number of created certificates,
+    instead of using the default 128-bit random integer. (GH #1489 #1491)</comment>
+    <requestid>593756</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>9a9f0cc148a377b3a1536dbad61263bc</srcmd5>
+    <version>2.6.0</version>
+    <time>1523448236</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595522</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>00b5eeb301557eecae3ab3602254041f</srcmd5>
+    <version>2.6.0</version>
+    <time>1523616738</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>596223</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>40c5c344020f905ffa7c29864c41e440</srcmd5>
+    <version>2.7.0</version>
+    <time>1533045854</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix version in baselibs.conf (forwarded request 626673 from dmolkentin)</comment>
+    <requestid>626674</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>69af23825714399c64f86c2681f900b5</srcmd5>
+    <version>2.10.0</version>
+    <time>1554458209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Botan 2.10
+  * Bump SONAME
+  * Warning: XMSS currently implements draft-06 which is not compatible with
+    the final RFC 8391 specification. A PR is open to fix this, however it will
+    break all current uses of XMSS. If you are currently using XMSS please
+    comment at https://github.com/randombit/botan/pull/1858. Otherwise the PR
+    will be merged and support for draft-06 will be removed starting in 2.11.
+  * Added a new certificate store implementation that can access the MacOS
+    keychain certificate store. (GH #1830)
+  * Redesigned Memory_Pool class, which services allocations out of a set of
+    pages locked into memory (using mlock/VirtualLock). It is now faster and
+    with improved exploit mitigations. (GH #1800)
+  * Add BMI2 implementations of SHA-512 and SHA-3 which improve performance by
+    25-35% on common CPUs. (GH #1815)
+  * Unroll SHA-3 computation improving performance by 10-12% (GH #1838)
+  * Add a Thread_Pool class. It is now possible to run the tests in multiple
+    threads with --test-threads=N flag to select the number of threads to use.
+    Use --test-threads=0 to run with as many CPU cores as are available on the
+    current system. The default remains single threaded. (GH #1819)
+  * XMSS signatures now uses a global thread pool instead of spawning new
+    threads for each usage. This improves signature generation performance by
+    between 10% and 60% depending on architecture and core count. (GH #1864)
+  * Some functions related to encoding and decoding BigInts have been
+    deprecated. (GH #1817)
+  * Binary encoding and decoding of BigInts has been optimized by performing
+    word-size operations when possible. (GH #1817)
+  * Rename the exception Integrity_Failure to Invalid_Authentication_Tag to
+    make its meaning and usage more clear. The old name remains as a typedef.
+    (GH #1816)
+  * Support for using Boost filesystem and MSVCâ€™s std::filesystem have been</comment>
+    <requestid>691275</requestid>
+  </revision>
+</revisionlist>

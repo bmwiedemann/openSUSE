@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b0d7153d3e46da4030f13763aa4b834</srcmd5>
+    <version>1.6.0</version>
+    <time>1387391328</time>
+    <user>coolo</user>
+    <comment>Mate for OpenSUSE see http://lists.opensuse.org/opensuse-factory/2013-09/msg00387.html</comment>
+    <requestid>199592</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>811e013821620c2c9ba158042fa64cff</srcmd5>
+    <version>1.6.1</version>
+    <time>1388774739</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.6.1
+  + Applet, add gsettings_SCHEMAS_in_in var for EXTRA_DIST
+  + Add applet ui file to EXTRA_DIST
+  + Fix EXTRADIST for maximus schemas
+  + Correct typo EXTRA_DIST for window picker applet
+  + Silence libtool warnings
+  + Remove trailing whitespace
+  + Fix long delay with different window managers
+    Closes #6 (https://github.com/mate-desktop/mate-netbook/issues/6)
+  + Add -lm to the linker
+    Fixes /usr/bin/ld: note: 'cos@@GLIBC_2.0' is defined in DSO
+    /lib/i386-linux-gnu/libm.so.6 so try adding it to the linker
+    command line
+  + Remove ALL_LINGUAS from configure script
+- Remove export LDFLAGS=&quot;$LDFLAGS -lm&quot;; fixed by upstream (forwarded request 212587 from posophe)</comment>
+    <requestid>212588</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>70f35c2b26e934e8a6362cc7b5a28d46</srcmd5>
+    <version>1.8.0</version>
+    <time>1395495879</time>
+    <user>coolo</user>
+    <comment>Push X11:M:N to X11:M:F; new libraries (external dependencies) and a lot of renamed packages</comment>
+    <requestid>225341</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>70f35c2b26e934e8a6362cc7b5a28d46</srcmd5>
+    <version>1.8.0</version>
+    <time>1409301867</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ac3be19aaa16986c05da03d9a50461d</srcmd5>
+    <version>1.8.1</version>
+    <time>1412533897</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253758</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>97cb20cc34437936da1a8c0d96defb81</srcmd5>
+    <version>1.10.0</version>
+    <time>1436112137</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314228</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c4d5b43c565b3a0903c61a23cb260325</srcmd5>
+    <version>1.12.0</version>
+    <time>1447234235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>342776</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>15077073bb966f6da994704b6107b39a</srcmd5>
+    <version>1.14.0</version>
+    <time>1460740218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>386805</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>09582ed563e1b49e35aac4d36173b6d0</srcmd5>
+    <version>1.16.0</version>
+    <time>1474807391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>429543</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2e8992538a1aac87ea59fd9edcaa5525</srcmd5>
+    <version>1.16.1</version>
+    <time>1476351075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>434231</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d6bc7ed0e42569340d6cd65566f106e8</srcmd5>
+    <version>1.18.0</version>
+    <time>1490026323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481134</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ce2bbea0db39ec51fbd8a9ae0af4a89e</srcmd5>
+    <version>1.18.1</version>
+    <time>1494938753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>494920</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ae12eed483714af92cc43b3e83b6d2be</srcmd5>
+    <version>1.18.2</version>
+    <time>1510232193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>536598</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e12a81061cf189f588ad726cbc5ea0b4</srcmd5>
+    <version>1.20.0</version>
+    <time>1521579437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586570</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8794801b2390f563866587b0982f47fb</srcmd5>
+    <version>1.20.1</version>
+    <time>1530304161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617576</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cf43cfee4bc00fea17365bff52c01fe2</srcmd5>
+    <version>1.22.0</version>
+    <time>1558037050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0.</comment>
+    <requestid>682570</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>035ac7073e15e43a84f35c4d19c04e26</srcmd5>
+    <version>1.22.1</version>
+    <time>1558516640</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.1.</comment>
+    <requestid>704497</requestid>
+  </revision>
+</revisionlist>

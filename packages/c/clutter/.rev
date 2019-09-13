@@ -1,0 +1,678 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>74caf55384ef6253934c076d2871b5c8</srcmd5>
+    <version>0.8.0</version>
+    <time>1216235780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fb33725420c3529ec9a189954d9a85c9</srcmd5>
+    <version>0.8.0</version>
+    <time>1217635925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>853b172a41c79ef65090e75e7d71fedb</srcmd5>
+    <version>0.8.0</version>
+    <time>1224711718</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f4aa1c1bcc1dfa12c14c6c89c7901541</srcmd5>
+    <version>0.8.0</version>
+    <time>1225122170</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c7ee6a0c1bc6dcccb76fb1f20c256da7</srcmd5>
+    <version>0.8.0</version>
+    <time>1227880294</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1db64c6c9d517a0a2269d6fb4a0c81d6</srcmd5>
+    <version>0.8.6</version>
+    <time>1233953052</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d900e5a55f6a5038ffeeb007bd238676</srcmd5>
+    <version>0.8.8</version>
+    <time>1235389260</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8d9ccc022866ad6297cbd468dbee3bec</srcmd5>
+    <version>0.8.8</version>
+    <time>1241452855</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>42b44ce149c850449b8b962026d934a2</srcmd5>
+    <version>0.9.2</version>
+    <time>1244826015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f1d411d6d7cddbc5c8902b9c47bc30c8</srcmd5>
+    <version>1.0.0</version>
+    <time>1249067241</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1410fec52155ad40187a6d10e5f4d0b1</srcmd5>
+    <version>1.0.4</version>
+    <time>1251985824</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 19694 from user vuntz
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>41cef4071467fcab83941eb72fc4324e</srcmd5>
+    <version>1.0.6</version>
+    <time>1254784984</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 21724 from user vuntz
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>41cef4071467fcab83941eb72fc4324e</srcmd5>
+    <version>1.0.6</version>
+    <time>1254784984</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 21724 from user vuntz
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a80721e4f52725c0050decfa65dbb14d</srcmd5>
+    <version>1.1.2</version>
+    <time>1260262962</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 25799 from user vuntz
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7c051bbe23b3601d94227cf75ae3c16b</srcmd5>
+    <version>1.1.4</version>
+    <time>1263824185</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 29706 from user vuntz
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>21f39210d77d699c557aa7eee0d7fdab</srcmd5>
+    <version>1.1.10</version>
+    <time>1265915429</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 32232 from user vuntz
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d24f1f33dcda07c844134565e5cd27c1</srcmd5>
+    <version>1.1.14</version>
+    <time>1267752309</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 33919 from user dimstar
+</comment>
+    <requestid>33919</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>48fd0c4ff812f13bb868846596720377</srcmd5>
+    <version>1.1.14</version>
+    <time>1268923200</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e13aaf9911dad42b9187c2a186bdf009</srcmd5>
+    <version>1.2.2</version>
+    <time>1268955524</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 35189 from user MBoman
+</comment>
+    <requestid>35189</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d0ff3a53139c3d0778628214037ab018</srcmd5>
+    <version>1.2.4</version>
+    <time>1270057999</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 36282 from user vuntz
+</comment>
+    <requestid>36282</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1fc514a24ac14b00549cc81236eacafa</srcmd5>
+    <version>1.2.8</version>
+    <time>1273790001</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 39923 from user dimstar
+</comment>
+    <requestid>39923</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1fc514a24ac14b00549cc81236eacafa</srcmd5>
+    <version>1.2.8</version>
+    <time>1278667339</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>1fc514a24ac14b00549cc81236eacafa</srcmd5>
+    <version>1.2.8</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bd6a1b2c7b8ee2e1399bdcdf9b4d5572</srcmd5>
+    <version>1.3.10</version>
+    <time>1281385840</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 45033 from user vuntz
+</comment>
+    <requestid>45033</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>012aef6d5f91b343780f8d4c08de197d</srcmd5>
+    <version>1.3.12</version>
+    <time>1282939303</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 46434 from user vuntz
+</comment>
+    <requestid>46434</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c1e1fe5e8878600645ae8836db9240d9</srcmd5>
+    <version>1.3.14</version>
+    <time>1285280513</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 48887 from user vuntz
+</comment>
+    <requestid>48887</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a100858942411072c7a71f6cd2da6732</srcmd5>
+    <version>1.4.0</version>
+    <time>1287153691</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/clutter based on submit request 50653 from user vuntz
+</comment>
+    <requestid>50653</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>43af63414a0977017192e0512a049ebc</srcmd5>
+    <version>1.4.2</version>
+    <time>1291996195</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55398 from user vuntz
+</comment>
+    <requestid>55398</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8864d168b6e0cdb8d2d706aa14ee6a09</srcmd5>
+    <version>1.5.12</version>
+    <time>1295284054</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58518 from user dimstar
+</comment>
+    <requestid>58518</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>a214d763dcfcdf9f3b9403b04af3af24</srcmd5>
+    <version>1.5.12</version>
+    <time>1295284065</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58518
+</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>66cef14c4ecc3e1cec975c6bf5fd9a50</srcmd5>
+    <version>1.6.0</version>
+    <time>1296607137</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59557 from user dimstar
+</comment>
+    <requestid>59557</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>66cef14c4ecc3e1cec975c6bf5fd9a50</srcmd5>
+    <version>1.6.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>aa72feb2e0bc4a230425895d12189c6c</srcmd5>
+    <version>1.6.14</version>
+    <time>1304335078</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69017</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0962909c08484aee2d142473ace694fe</srcmd5>
+    <version>1.7.4</version>
+    <time>1310130087</time>
+    <user>saschpe</user>
+    <comment>Update to 1.7.4</comment>
+    <requestid>75831</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>65a7124818f6e97c29fa6b8121f0d358</srcmd5>
+    <version>1.7.6</version>
+    <time>1312382003</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>77770</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b44d12535ebf60f722e87dc12639e11c</srcmd5>
+    <version>1.7.14</version>
+    <time>1315559447</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81449</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7f64ea443edea24d61309132e8327b49</srcmd5>
+    <version>1.8.0</version>
+    <time>1317740113</time>
+    <user>oertel</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85609</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3b6a4f0459ffca089f6e8068c8455c1c</srcmd5>
+    <version>1.8.2</version>
+    <time>1318939126</time>
+    <user>saschpe</user>
+    <comment>Update to 1.8.2 - Bugfixes and translations (forwarded request 88267 from dimstar)</comment>
+    <requestid>88312</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>3b6a4f0459ffca089f6e8068c8455c1c</srcmd5>
+    <version>1.8.2</version>
+    <time>1319181814</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9beb52c1cc0d310d94923caca342957a</srcmd5>
+    <version>1.9.2</version>
+    <time>1326106973</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>98985</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>44739e82645e7a4aa7894887380cc57a</srcmd5>
+    <version>1.9.2</version>
+    <time>1326796343</time>
+    <user>coolo</user>
+    <comment>Add obsoletes for smoother upgrades (forwarded request 99645 from vuntz)</comment>
+    <requestid>99683</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>22de637182384f2aa680e67579bf8fde</srcmd5>
+    <version>1.9.8</version>
+    <time>1327583889</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>101588</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>89f0788e6b2bf18dbc31b59513efa5ae</srcmd5>
+    <version>1.9.10</version>
+    <time>1329405125</time>
+    <user>coolo</user>
+    <comment>Pushing most G:F bits</comment>
+    <requestid>105075</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f53274fff4dbcc015c0f123faa0728b0</srcmd5>
+    <version>1.9.12</version>
+    <time>1330692429</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>107240</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>73119d112d07200e5406ac78fc8d73b6</srcmd5>
+    <version>1.9.14</version>
+    <time>1332500687</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>109385</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>fdbb2543e05ad387320f65e184ea3a67</srcmd5>
+    <version>1.10.0</version>
+    <time>1333013730</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111675</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d00fed12e5bf94af82430e2611125483</srcmd5>
+    <version>1.10.2</version>
+    <time>1335165130</time>
+    <user>coolo</user>
+    <comment>Add workaround for broken build (forwarded request 114609 from dimstar)</comment>
+    <requestid>114836</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1ca38a67c31cdcdd01b2c28eef9290c2</srcmd5>
+    <version>1.10.4</version>
+    <time>1337674119</time>
+    <user>coolo</user>
+    <comment>push G:F</comment>
+    <requestid>121412</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>7f9eb1c0a19f68e7d8b4b1ce4c2763cd</srcmd5>
+    <version>1.10.6</version>
+    <time>1339076252</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>123630</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>7f9eb1c0a19f68e7d8b4b1ce4c2763cd</srcmd5>
+    <version>1.10.6</version>
+    <time>1340183239</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>339f1689d567602207b5d5fbfee5c6c9</srcmd5>
+    <version>1.10.8</version>
+    <time>1340619805</time>
+    <user>coolo</user>
+    <comment>Update to 1.10.8 (forwarded request 125435 from dimstar)</comment>
+    <requestid>125560</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>b861cf933a0374425eb05ddf7c780160</srcmd5>
+    <version>1.12.0</version>
+    <time>1349368670</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136641</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>e8993e30e8f46d2723622c1a3bfe2e75</srcmd5>
+    <version>1.12.2</version>
+    <time>1350640645</time>
+    <user>coolo</user>
+    <comment>Udpate to 1.12.2 (forwarded request 138491 from dimstar)</comment>
+    <requestid>138561</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>e8993e30e8f46d2723622c1a3bfe2e75</srcmd5>
+    <version>1.12.2</version>
+    <time>1359108753</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a00938f7a180a61cad258ccc37c7be18</srcmd5>
+    <version>1.14.0</version>
+    <time>1365024800</time>
+    <user>coolo</user>
+    <comment>Fix stupid builderror.... No changes entry for tweak (forwarded request 161840 from Zaitor)</comment>
+    <requestid>161854</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>91d10ebd758fc4433072d56d1575ff36</srcmd5>
+    <version>1.14.2</version>
+    <time>1366983533</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.8.1 to Factory - mostly small bug fixes over the existing 3.8.0 we have</comment>
+    <requestid>173212</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>3e9d0f1575631fd9672ead7d3ad86aa2</srcmd5>
+    <version>1.14.4</version>
+    <time>1368690476</time>
+    <user>coolo</user>
+    <comment>Update to 1.14.4 (forwarded request 175695 from Zaitor)</comment>
+    <requestid>175769</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>9a2e18c902d1df4ffef03eda88d6370b</srcmd5>
+    <version>1.15.2</version>
+    <time>1373978012</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.4 - hopefully in the for #oSC13</comment>
+    <requestid>183153</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>fc432d0cb9eece3456bb22e0b9135492</srcmd5>
+    <version>1.15.90</version>
+    <time>1378296462</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.90</comment>
+    <requestid>196211</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>8f1ed75eb38e670c779e0855e9922bdc</srcmd5>
+    <version>1.15.92</version>
+    <time>1378996905</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.9.91</comment>
+    <requestid>198099</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>8f1ed75eb38e670c779e0855e9922bdc</srcmd5>
+    <version>1.15.92</version>
+    <time>1379662120</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e997d17cfb9c89710035b7a7af7314ce</srcmd5>
+    <version>1.15.96</version>
+    <time>1379938633</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.92</comment>
+    <requestid>199961</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>96c4f7827174ff852edc9fdb01adb248</srcmd5>
+    <version>1.16.0</version>
+    <time>1380294447</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200884</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>d65e616396cc42976191d9984b32e715</srcmd5>
+    <version>1.16.2</version>
+    <time>1388217933</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>212110</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>3629bd09257f7afd6a6691a6d9a0d432</srcmd5>
+    <version>1.16.4</version>
+    <time>1391019547</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.16.4 (bnc#860916):
+  + Performance improvements, avoid using hardware picking as much
+    as possible; do not queue redraws when not needed, and rely on
+    clipped redraws more.
+  + Accessibility fixes.
+  + Bugs fixed: bgo#710227, bgo#719747, bgo#712563, bgo#722220,
+    bgo#722188, bgo#719901, bgo#719563, bgo#719367, bgo#719368.</comment>
+    <requestid>215440</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>f9a258628cf0fda031c769a04ae8af72</srcmd5>
+    <version>1.16.4</version>
+    <time>1394103175</time>
+    <user>coolo</user>
+    <comment>- Add clutter-bgo724788.patch: Fix rendering problems with recent
+  (stable) nvidia drivers (bgo#724788).</comment>
+    <requestid>224694</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>e242091a1b70be8eb7f9651e2fcde83e</srcmd5>
+    <version>1.18.2</version>
+    <time>1399317254</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231670</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>7f515e01c34f9c30c9158794d4b4ad1d</srcmd5>
+    <version>1.18.4</version>
+    <time>1408089326</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244617</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>7f515e01c34f9c30c9158794d4b4ad1d</srcmd5>
+    <version>1.18.4</version>
+    <time>1409300651</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>e99d2d6c4d0fce3fa25d335fba6beadc</srcmd5>
+    <version>1.20.0</version>
+    <time>1412098775</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251852 from Zaitor)</comment>
+    <requestid>252143</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>9df43aa4535b6bda641dd1b59273fd55</srcmd5>
+    <version>1.20.0</version>
+    <time>1418840371</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265366</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>72a91b882e7d9b73551be4596d1bcd94</srcmd5>
+    <version>1.22.0</version>
+    <time>1427736273</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292815 from dimstar)</comment>
+    <requestid>293006</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>beb8f7c1a9d364d5c431a409aca69ead</srcmd5>
+    <version>1.22.2</version>
+    <time>1431978501</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>306758</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>9bcddc6dbaaeaf57c2b64b359f1c1da7</srcmd5>
+    <version>1.22.2</version>
+    <time>1432158091</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307942</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>615c220fbbe890d3287485ab6673a665</srcmd5>
+    <version>1.22.4</version>
+    <time>1436111698</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314538</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>cad16c0485c99f06c9c05c10ffe80df2</srcmd5>
+    <version>1.24.0</version>
+    <time>1444140716</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 331446 from dimstar)</comment>
+    <requestid>331731</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>12e73781d424f3979801233fce7f7fab</srcmd5>
+    <version>1.24.2</version>
+    <time>1445796642</time>
+    <user>coolo</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 339436 from Zaitor)</comment>
+    <requestid>339849</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>ed2b47338a6cba1b71ba8c41bb43e627</srcmd5>
+    <version>1.26.0</version>
+    <time>1459255039</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.26.0 (forwarded request 376716 from dimstar)</comment>
+    <requestid>376878</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>89bfc3ecc436415c845b8e2fa72b5ea3</srcmd5>
+    <version>1.26.0</version>
+    <time>1460480227</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385359</requestid>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>981f3d7f78a01ec3854c9f213df583a9</srcmd5>
+    <version>1.26.0</version>
+    <time>1467359586</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404170</requestid>
+  </revision>
+  <revision rev="81" vrev="4">
+    <srcmd5>6251b8af8344e2bbde20a9522acd937b</srcmd5>
+    <version>1.26.0</version>
+    <time>1471428137</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>418942</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>2cc50845db0e6b45e210c654faf97d83</srcmd5>
+    <version>1.26.2</version>
+    <time>1496225589</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496388</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>37b457bcbef8e805e2fd399dec1a9941</srcmd5>
+    <version>1.26.2</version>
+    <time>1505331838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update descriptions, RPM groups and old macros. (forwarded request 522316 from jengelh)</comment>
+    <requestid>522336</requestid>
+  </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>d457b36dcf55eab83b43f7b03cb82dcb</srcmd5>
+    <version>1.26.2</version>
+    <time>1505502398</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the SLE12 / Leap42 build_wayland_backend conditional.
+- remove some whitespaces (forwarded request 526085 from zhangxiaofei)</comment>
+    <requestid>526149</requestid>
+  </revision>
+  <revision rev="85" vrev="4">
+    <srcmd5>b1cc659398769fbc21e9a27e176e04e0</srcmd5>
+    <version>1.26.2</version>
+    <time>1521051880</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583590 from dimstar)</comment>
+    <requestid>584753</requestid>
+  </revision>
+  <revision rev="86" vrev="5">
+    <srcmd5>b17d082f36030d7fc0de8506b0332222</srcmd5>
+    <version>1.26.2</version>
+    <time>1556914744</time>
+    <user>dimstar_suse</user>
+    <comment>Disable LTO (boo#1133118). (forwarded request 697421 from marxin)</comment>
+    <requestid>699587</requestid>
+  </revision>
+</revisionlist>

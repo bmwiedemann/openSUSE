@@ -1,0 +1,6 @@
+<package name="bugreporter" project="openSUSE:Factory">
+  <title>SuSE Bug Reporter</title>
+  <description>Bug reporting / querying tool for openSUSE. Provides interaction with Novell's Bugzilla.</description>
+  <devel project="devel:openSUSE:Factory" package="bugreporter"/>
+  <url>https://github.com/mihneadb/suse_bug_reporter</url>
+</package>

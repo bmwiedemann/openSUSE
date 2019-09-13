@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51bb93630ec5607c7454e682ab13971d</srcmd5>
+    <version>2.2.1</version>
+    <time>1445511519</time>
+    <user>dimstar_suse</user>
+    <comment>Replacement of nagios-plugins-mysql_health</comment>
+    <requestid>339344</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c8398cb61ef1d4a11d1325dede4dfa4f</srcmd5>
+    <version>2.2.2</version>
+    <time>1471428290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419265</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6d488d5464ed12561cbbc414571acd06</srcmd5>
+    <version>3.0.0.5</version>
+    <time>1483955275</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>446955</requestid>
+  </revision>
+</revisionlist>

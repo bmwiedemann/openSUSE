@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c5603a43c0b9ceb263908039c39fdb1</srcmd5>
+    <version>0.2.0</version>
+    <time>1329823606</time>
+    <user>coolo</user>
+    <comment>New package to add a wallpaper based on weather information</comment>
+    <requestid>103669</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1c5603a43c0b9ceb263908039c39fdb1</srcmd5>
+    <version>0.2.0</version>
+    <time>1340184321</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>88f7e1a0241d08d46095fdc7379ee66f</srcmd5>
+    <version>0.2.0</version>
+    <time>1348573628</time>
+    <user>coolo</user>
+    <comment>tweak (forwarded request 135496 from dimstar)</comment>
+    <requestid>135497</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>88f7e1a0241d08d46095fdc7379ee66f</srcmd5>
+    <version>0.2.0</version>
+    <time>1359110561</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>88f7e1a0241d08d46095fdc7379ee66f</srcmd5>
+    <version>0.2.0</version>
+    <time>1379664951</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>88f7e1a0241d08d46095fdc7379ee66f</srcmd5>
+    <version>0.2.0</version>
+    <time>1409303631</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a3d49a9da1a95a7dab74b9345a93709</srcmd5>
+    <version>0.3.8</version>
+    <time>1332752947</time>
+    <user>coolo</user>
+    <comment>- Initial package (required by Qt5)</comment>
+    <requestid>110565</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7a3d49a9da1a95a7dab74b9345a93709</srcmd5>
+    <version>0.3.8</version>
+    <time>1340184336</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7a3d49a9da1a95a7dab74b9345a93709</srcmd5>
+    <version>0.3.8</version>
+    <time>1359110594</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>7c6bb02bc177b616317dfcc44c004942</srcmd5>
+    <version>0.3.8</version>
+    <time>1363950683</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160123</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>7c6bb02bc177b616317dfcc44c004942</srcmd5>
+    <version>0.3.8</version>
+    <time>1379664996</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0d39310feb43741353c3a9442499dc08</srcmd5>
+    <version>0.3.9</version>
+    <time>1403176780</time>
+    <user>coolo</user>
+    <comment>- update to release 0.3.9
+  * Mark DEPTH_MASK as Unsigned int
+  * Add autogen.sh to EXTRA_DIST.
+  * Follow changes in m4 submodule.
+  * config: add bug URL to AC_INIT
+  * config: replace deprecated use of AC_OUTPUT with AC_CONFIG_FILES
+  * config: use AC_CONFIG_HEADERS to create a config.h file
+  * config: remove old dead code for documentation
+  * config: add missing COPYING file
+  * make: use AM_CPPFLAGS rather than per-target libxcb_render_util_la_CPPFLAGS
+  * make: using EXTRA_DIST for xcb-renderutil.pc.in is redundant
+  * make: there should be no attempt to remove any Makefile.in file
+  * make: compile the library with standard xorg warning flags
+  * Fix compilation and linking issues with C++
+  * Check submodules before running autoconf.</comment>
+    <requestid>237491</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0d39310feb43741353c3a9442499dc08</srcmd5>
+    <version>0.3.9</version>
+    <time>1409303678</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

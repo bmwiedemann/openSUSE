@@ -1,0 +1,6 @@
+<package name="systemtap-docs" project="openSUSE:Factory">
+  <title>Documents and examples for systemtap</title>
+  <description>SystemTap is an instrumentation system for systems running Linux 2.6.
+This package contains the documents and examples for systemtap.</description>
+  <devel project="openSUSE:Factory" package="systemtap"/>
+</package>

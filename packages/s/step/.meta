@@ -1,0 +1,11 @@
+<package name="step" project="openSUSE:Factory">
+  <title>Step - A interactive physics simulator</title>
+  <description>Step is an interactive physical simulator. It works like this: you
+place some bodies on the scene, add some forces such as gravity or
+springs, then click &quot;Simulate&quot; and Step shows you how your scene will
+evolve according to the laws of physics. You can change every property
+of bodies/forces in your experiment (even during simulation) and see
+how this will change evolution of the experiment. With Step you can not
+only learn but feel how physics works !</description>
+  <devel project="KDE:Applications" package="step"/>
+</package>

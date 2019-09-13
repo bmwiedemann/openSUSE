@@ -1,0 +1,421 @@
+<revisionlist>
+  <revision rev="1" vrev="26">
+    <srcmd5>1af288a3bdafafb2784ed5b3cc7d202b</srcmd5>
+    <version>2.6</version>
+    <time>1166483729</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>433fba375fb24d97173ed7ca7f0a7090</srcmd5>
+    <version>2.9</version>
+    <time>1185492174</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="8">
+    <srcmd5>856b3f0530355afa142df060c4fd6e2f</srcmd5>
+    <version>2.9</version>
+    <time>1187369144</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="10">
+    <srcmd5>a98fbe3b6a89c10e8c1ffa7aef91eb1c</srcmd5>
+    <version>2.9</version>
+    <time>1187628615</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="18">
+    <srcmd5>11131b574369aa0027a1848e13660fef</srcmd5>
+    <version>2.9</version>
+    <time>1191365395</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="21">
+    <srcmd5>357acc55a2fa860db3d8159283bf7798</srcmd5>
+    <version>2.9</version>
+    <time>1193270402</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="24">
+    <srcmd5>978be44f9f5bddbfa9fa020938671197</srcmd5>
+    <version>2.9</version>
+    <time>1194562344</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="27">
+    <srcmd5>dae08f9478c9ec0a40418b08727ab025</srcmd5>
+    <version>2.9</version>
+    <time>1196356597</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="44">
+    <srcmd5>82ca171868fafe8cb86656aedc243185</srcmd5>
+    <version>2.9</version>
+    <time>1205512255</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="49">
+    <srcmd5>474b66fb99e343bb38b7311f94686680</srcmd5>
+    <version>2.9</version>
+    <time>1207449433</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="51">
+    <srcmd5>0175c556f8142020ec0567d63f79f462</srcmd5>
+    <version>2.9</version>
+    <time>1208023416</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="63">
+    <srcmd5>b781c07dcd0b0f223283f7e89ceeaf05</srcmd5>
+    <version>2.9</version>
+    <time>1215211934</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="66">
+    <srcmd5>45bb1986d74c730a70771b792b7583e6</srcmd5>
+    <version>2.9</version>
+    <time>1216410679</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="73">
+    <srcmd5>d6bd0bd5c5f37e213550c5c78a854ffe</srcmd5>
+    <version>2.9</version>
+    <time>1217627193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="75">
+    <srcmd5>85a38081afaa86ab1033d09f3a241a1a</srcmd5>
+    <version>2.9</version>
+    <time>1217845839</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="91">
+    <srcmd5>19d960105a47680f1fc37747753f8452</srcmd5>
+    <version>2.9</version>
+    <time>1245337533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>54920e2405335a08bc9503d5c8675d1f</srcmd5>
+    <version>2.10</version>
+    <time>1247236746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4859ed9dad536ea3b02bc295b7dabab3</srcmd5>
+    <version>2.10</version>
+    <time>1247847111</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>d758c1aecf23b48548fe1fa03055e0b4</srcmd5>
+    <version>2.10</version>
+    <time>1250177925</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/cpio based on submit request 17559 from user mseben
+</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>d758c1aecf23b48548fe1fa03055e0b4</srcmd5>
+    <version>2.10</version>
+    <time>1250177925</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/cpio based on submit request 17559 from user mseben
+</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>555d15a1673ee28f50f9072dacb78c0d</srcmd5>
+    <version>2.10</version>
+    <time>1258364421</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/cpio based on submit request 24243 from user mseben
+</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>417c8108be439c9217c1997103b99939</srcmd5>
+    <version>2.10</version>
+    <time>1261824771</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/cpio based on submit request 27608 from user coolo
+</comment>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>fab88c4f89b7c567fb5e721f212509a5</srcmd5>
+    <version>2.10</version>
+    <time>1268331290</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/cpio based on submit request 34550 from user mseben
+</comment>
+    <requestid>34550</requestid>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>e2e619c7ecbfdad37c6ad6f13625cbc8</srcmd5>
+    <version>2.10</version>
+    <time>1268923248</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>549b85376596d116961af7ac0ac1a2e0</srcmd5>
+    <version>2.11</version>
+    <time>1269561268</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/cpio based on submit request 35735 from user mseben
+</comment>
+    <requestid>35735</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>3af868b21ac139ebae1cc3eafee65e0d</srcmd5>
+    <version>2.11</version>
+    <time>1278088603</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/cpio based on submit request 42423 from user elvigia
+</comment>
+    <requestid>42423</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>3af868b21ac139ebae1cc3eafee65e0d</srcmd5>
+    <version>2.11</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>3af868b21ac139ebae1cc3eafee65e0d</srcmd5>
+    <version>2.11</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>c168de9c823c6632abea590aebd3f334</srcmd5>
+    <version>2.11</version>
+    <time>1281736807</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/cpio based on submit request 45296 from user puzel
+</comment>
+    <requestid>45296</requestid>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>81d7c73c9a9816f34e451e75d4fb4bcf</srcmd5>
+    <version>2.11</version>
+    <time>1283511777</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/cpio based on submit request 46860 from user elvigia
+</comment>
+    <requestid>46860</requestid>
+  </revision>
+  <revision rev="31" vrev="8">
+    <srcmd5>f829ac974b8ddd8a90950476962d3aad</srcmd5>
+    <version>2.11</version>
+    <time>1289409190</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52557 from user puzel
+</comment>
+    <requestid>52557</requestid>
+  </revision>
+  <revision rev="32" vrev="9">
+    <srcmd5>3b28d04d2adeb8175bbb470d327f7989</srcmd5>
+    <version>2.11</version>
+    <time>1289409195</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52557
+</comment>
+  </revision>
+  <revision rev="33" vrev="12">
+    <srcmd5>3b28d04d2adeb8175bbb470d327f7989</srcmd5>
+    <version>2.11</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="34" vrev="13">
+    <srcmd5>f026579cbd11063d2028f2d1644db036</srcmd5>
+    <version>2.11</version>
+    <time>1316459230</time>
+    <user>lrupp</user>
+    <comment>- fix typos in spec file</comment>
+    <requestid>83033</requestid>
+  </revision>
+  <revision rev="35" vrev="15">
+    <srcmd5>f026579cbd11063d2028f2d1644db036</srcmd5>
+    <version>2.11</version>
+    <time>1319181824</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="36" vrev="16">
+    <srcmd5>d61467c13eb9ef2262e636825b5eb668</srcmd5>
+    <version>2.11</version>
+    <time>1327087394</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100885</requestid>
+  </revision>
+  <revision rev="37" vrev="17">
+    <srcmd5>e6915c77eadd1f15acc97dcc917ca33e</srcmd5>
+    <version>2.11</version>
+    <time>1328622303</time>
+    <user>coolo</user>
+    <comment>- leave binary in /usr (UsrMerge project), link to binary from /bin</comment>
+    <requestid>102897</requestid>
+  </revision>
+  <revision rev="38" vrev="19">
+    <srcmd5>e6915c77eadd1f15acc97dcc917ca33e</srcmd5>
+    <version>2.11</version>
+    <time>1340183250</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="39" vrev="20">
+    <srcmd5>7683f977e859fe4a5c2c16189ca8805a</srcmd5>
+    <version>2.11</version>
+    <time>1342772171</time>
+    <user>coolo</user>
+    <comment>Fix build with missing gets declaration (glibc 2.16) (forwarded request 128196 from a_jaeger)</comment>
+    <requestid>128242</requestid>
+  </revision>
+  <revision rev="40" vrev="22">
+    <srcmd5>7683f977e859fe4a5c2c16189ca8805a</srcmd5>
+    <version>2.11</version>
+    <time>1359108769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="23">
+    <srcmd5>d77ecf7b4dc9dcab5b5e34a1658ddfee</srcmd5>
+    <version>2.11</version>
+    <time>1363946481</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160431 from m_meister)</comment>
+    <requestid>160434</requestid>
+  </revision>
+  <revision rev="42" vrev="24">
+    <srcmd5>e7626da85856f37935e1a731873d3709</srcmd5>
+    <version>2.11</version>
+    <time>1377633614</time>
+    <user>coolo</user>
+    <comment>- add a missing fix from SLE for bnc#830779 (original bug bnc#658031)
+  added paxutils-rtapelib_mtget.patch (forwarded request 196003 from vitezslav_cizek)</comment>
+    <requestid>196028</requestid>
+  </revision>
+  <revision rev="43" vrev="26">
+    <srcmd5>e7626da85856f37935e1a731873d3709</srcmd5>
+    <version>2.11</version>
+    <time>1379662151</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="27">
+    <srcmd5>c0189c1d00145d464491648b4c7af5f6</srcmd5>
+    <version>2.11</version>
+    <time>1406886506</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242848</requestid>
+  </revision>
+  <revision rev="45" vrev="28">
+    <srcmd5>2ecb4302b25f87a1ddb953015dfdd653</srcmd5>
+    <version>2.11</version>
+    <time>1408964383</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245584</requestid>
+  </revision>
+  <revision rev="46" vrev="30">
+    <srcmd5>2ecb4302b25f87a1ddb953015dfdd653</srcmd5>
+    <version>2.11</version>
+    <time>1409300678</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="31">
+    <srcmd5>03cf695c7a902329936ad81e5440b596</srcmd5>
+    <version>2.11</version>
+    <time>1409407447</time>
+    <user>coolo</user>
+    <comment>- Improve on RPM group classification (forwarded request 246892 from jengelh)</comment>
+    <requestid>246938</requestid>
+  </revision>
+  <revision rev="48" vrev="32">
+    <srcmd5>d85d52d85cb86b711a8925e768911bad</srcmd5>
+    <version>2.11</version>
+    <time>1418251422</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263797</requestid>
+  </revision>
+  <revision rev="49" vrev="33">
+    <srcmd5>c6e5a067ff51351e956a5720695a94e4</srcmd5>
+    <version>2.11</version>
+    <time>1420754458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>267039</requestid>
+  </revision>
+  <revision rev="50" vrev="34">
+    <srcmd5>34425efcd3c79a79b4d4624ae6a75a23</srcmd5>
+    <version>2.11</version>
+    <time>1427109090</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291082</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>974fea19d26f68a5e974f4a3dc374719</srcmd5>
+    <version>2.12</version>
+    <time>1444833297</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337422</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>4c793a61afe92d8bf9ce46746da97c75</srcmd5>
+    <version>2.12</version>
+    <time>1456334935</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360532</requestid>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>77820cc93487ead9f29935568e328433</srcmd5>
+    <version>2.12</version>
+    <time>1457945790</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend mt_st as it is not hard dependency
+
+- fix typos in the description
+- add 'Require: mt_st' in order not to surprise users by the missing
+  'mt' binary
+
+- Disable mt building: this binary from mt_st package offers
+  advanced capabilities with the same functionality.
+- Enable rmt building: 'dump' package no longer include it, besides 
+  cpio code base for rmt is more fresh.
+- Reflect those changes in the package description.</comment>
+    <requestid>366498</requestid>
+  </revision>
+  <revision rev="54" vrev="4">
+    <srcmd5>cc0352c48aef2b4c6d9acf491bda11a1</srcmd5>
+    <version>2.12</version>
+    <time>1494441096</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487331</requestid>
+  </revision>
+  <revision rev="55" vrev="5">
+    <srcmd5>96c99f5780bc8bdbbb9821e706c5dfaf</srcmd5>
+    <version>2.12</version>
+    <time>1537436293</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636113</requestid>
+  </revision>
+  <revision rev="56" vrev="6">
+    <srcmd5>0d6fc750d8512dfb7a7ecf4cf9437267</srcmd5>
+    <version>2.12</version>
+    <time>1538502014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638679</requestid>
+  </revision>
+</revisionlist>

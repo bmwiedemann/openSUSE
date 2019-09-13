@@ -1,0 +1,5 @@
+<package name="ido" project="openSUSE:Factory">
+  <title>Indicator Display Objects</title>
+  <description>Widgets and other objects used for indicators.</description>
+  <devel project="X11:Unity" package="ido"/>
+</package>

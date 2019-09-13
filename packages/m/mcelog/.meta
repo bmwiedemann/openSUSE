@@ -1,0 +1,12 @@
+<package name="mcelog" project="openSUSE:Factory">
+  <title>Log Machine Check Events</title>
+  <description>mcelog retrieves machine check events from an x86-64 kernel in a cron
+job, decodes them, and logs them to /var/log/mcelog.
+
+A machine check event is a hardware error detected by the CPU.
+
+It should run on any x86-64 system.
+
+In addition, it allows decoding machine check kernel panic messages.</description>
+  <devel project="Base:System" package="mcelog"/>
+</package>

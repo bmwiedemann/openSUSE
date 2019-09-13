@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c46c3a36c33fc482c7c1b7046618f054</srcmd5>
+    <version>0.8.1</version>
+    <time>1527933429</time>
+    <user>dimstar_suse</user>
+    <comment>Interval data type for python</comment>
+    <requestid>606170</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d2046d173fd8495d6f3f28f701666660</srcmd5>
+    <version>0.8.1</version>
+    <time>1535705134</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix pytest call so it works on 42.3</comment>
+    <requestid>632128</requestid>
+  </revision>
+</revisionlist>

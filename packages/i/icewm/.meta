@@ -1,0 +1,9 @@
+<package name="icewm" project="openSUSE:Factory">
+  <title>Window Manager with a Taskbar</title>
+  <description>A window manager for the X Window System that can emulate the look of
+Windows '95, OS/2 Warp 3, OS/2 Warp 4, and Motif and tries to take the
+best features from those systems. IceWM features multiple workspaces,
+opaque move and resize, a taskbar, a window list, mailbox status, and a
+digital clock. It is fast and small.</description>
+  <devel project="X11:windowmanagers" package="icewm"/>
+</package>

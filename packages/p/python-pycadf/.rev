@@ -1,0 +1,235 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e8577511b41c34b4dbdfb4a123858fab</srcmd5>
+    <version>0.3</version>
+    <time>1393394113</time>
+    <user>coolo</user>
+    <comment>new awesome openstack dep</comment>
+    <requestid>222300</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>11ccdec082860d598791de6cd752a477</srcmd5>
+    <version>0.4.1</version>
+    <time>1394392664</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.4.1:
+  + catch empty json body
+- Changes from version 0.4:
+  + add constant for security service
+  + audit middleware in pycadf
+  + oslo common code sync and requirements cleanup
+  + Rollback change to that Install configs into /etc
+  + Update .gitreview after repo rename
+  + Install configs into /etc, not /usr/etc
+- Changes from version 0.3.1:
+  + update audit_map
+  + update build_typeURI to drop query string
+  + sync common code and requirements
+  + add path to event
+  + mask token values
+  + adjust typeURI to capture target better
+  + Python 3: update setup.cfg to advertise python 3 compatibility
+- Fixed requirements</comment>
+    <requestid>224847</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9e8986315fd4689ed210469901c612ac</srcmd5>
+    <version>0.5</version>
+    <time>1396770923</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.5:
+  * Updated from global requirements
+  * add OpenStack Foundation as author
+  * pycadf documentation
+  * Updated from global requirements
+  * add docstrings to functions
+- Add _service file for easier updates</comment>
+    <requestid>228556</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c622c9033dd1ffba9efda6fa5af50cab</srcmd5>
+    <version>0.5.1</version>
+    <time>1401899964</time>
+    <user>coolo</user>
+    <comment>- update to 0.5.1:
+  * sync oslo
+  * remove token from notifier middleware
+  * Updated from global requirements
+  * reorder documentation
+  * import run_cross_tests.sh from incubator (forwarded request 235490 from dirkmueller)</comment>
+    <requestid>236016</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c622c9033dd1ffba9efda6fa5af50cab</srcmd5>
+    <version>0.5.1</version>
+    <time>1409302953</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4c38d7de5f7382aef430ff9ff7c42354</srcmd5>
+    <version>1.1.0</version>
+    <time>1446208930</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Adding barbican specific base resources
+  * Updated from global requirements
+  * ensure id is not empty
+  * Add api_audit_map.conf for Ceilometer project
+  * Remove script already nuked from oslo-incubator
+  * Add unit tests to increase coverage of cadftype
+  * Remove run_cross_tests.sh
+  * drop audit middleware
+  * Add trove conf file to setup.cfg
+  * Added a testcase to cover ValueError in tag.py
+  * Add test to cover mask value for utils.mask_value
+  * Uncap library requirements for liberty
+  * update README.rst to include additional links
+  * Remove empty _templates folder
+  * Add a section for audit maps
+  * Fix formatting error for geolocation note
+  * add a new set of release notes
+  * Clean up pycadf's doc landing page
+  * Add api_audit_map.conf for Trove project
+  * Additional doc clean up
+  * cleanup documentation
+  * Add deprecation message to Audit API
+  * Do not depend on endpoint id existing in the service catalog
+  * Fix oslo.messaging link in docs
+  * Use oslo_context
+  * Use oslo namespaces
+  * Add a new CADF type for keystone trusts
+  * add helper module
+  * Add new CADF taxonomy types</comment>
+    <requestid>337145</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8a947721eb5752e7758d4285766648b0</srcmd5>
+    <version>2.1.0</version>
+    <time>1462342765</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * Updated from global requirements
+  * Add docstring validation
+  * Adding ironic api specific audit map configuration
+  * Updated from global requirements
+  * Updated from global requirements
+  * Enable cadf support for Heat
+  * Fix wrong use of comma
+  * Updated from global requirements
+  * remove suport for py33
+  * Put py34 first in the env order of tox
+  * relax id validation
+  * Updated from global requirements
+  * Remove Python 2.6 classifier
+  * Remove python 2.6 and cleanup tox.ini
+  * make generate_uuid return valid uuid
+  * Updated from global requirements
+  * Add authenticate and evaluate actions
+  * Change ceilometer endpoint name from telemetry to metering
+  * No need for Oslo Incubator Sync
+  * Document and update existing hacking violations
+  * Add shields.io version/downloads links/badges into README.rst
+  * Include changelog/history in docs
+  * Fix event example
+  * Add event name
+  * Event doc indentation issue
+  * Updated from global requirements
+  * Updated from global requirements
+  * Fixed typo error
+- Adjust Requires according to requirements.txt</comment>
+    <requestid>384381</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>21234d80d48218e5b0b8146db752376b</srcmd5>
+    <version>2.4.0</version>
+    <time>1476350935</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.0
+  * Remove discover from test-requirements
+  * Updated from global requirements
+  * Fix order of arguments in assertEqual
+  * Don't include openstack/common in flake8 exclude list
+
+- update to 2.3.0:
+  * Add missing os-volumes_boot to nova_api_audit_map.conf
+  * Updated from global requirements
+  * Updated from global requirements
+  * Remove unused pngmath Sphinx extension
+  * Updated from global requirements
+- update _service and switch to upstream spec template</comment>
+    <requestid>433098</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b7437824f4c7c884f7c20939db0487fe</srcmd5>
+    <version>2.5.0</version>
+    <time>1487680901</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 2.5.0
+  * Remove references to Python 3.4
+  * Add Constraints support
+  * cleanup string
+  * Show team and repo badges on README
+  * Changed the home-page link
+  * Updated from global requirements
+  * Clean oslo.i18n</comment>
+    <requestid>456648</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b76630c8e7314b0095392d35fdcd41ed</srcmd5>
+    <version>2.6.0</version>
+    <time>1505920397</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.6.0
+  - Make `is_valid` more flexible with uuid validation
+  - Updated from global requirements
+  - Use https for *.openstack.org references</comment>
+    <requestid>527395</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3b1b421229c93b5fec9d6ebeb93e2c9a</srcmd5>
+    <version>2.7.0</version>
+    <time>1521499009</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template
+
+- update to version 2.7.0 (bsc#1078607)
+  - Turn on warning-is-error for sphinx build
+  - Removed references to events api
+  - Stopping using norm_ns
+  - Update URL in docs as per the doc-migration spec
+  - Adding panko_api_audit_map.conf to pycadf
+  - Adding gnocchi_api_audit_map.conf to pycadf
+  - Avoid tox_install.sh for constraints support
+  - Updated from global requirements
+  - Switch from oslosphinx to openstackdocstheme
+  - changed 'target_endpoint_type' value</comment>
+    <requestid>583356</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>201898554d9c4d298505bbc88d850312</srcmd5>
+    <version>2.8.0</version>
+    <time>1536327566</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633116</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>00306509135614df076173ea2269aea1</srcmd5>
+    <version>2.9.0</version>
+    <time>1556916188</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.9.0
+  - add lib-forward-testing-python3 test job
+  - Change openstack-dev to openstack-discuss
+  - import zuul job settings from project-config
+  - Enabling FIPS mode by using sha256 instead of md5
+  - Add release note for MD5 hash removal
+  - Don't quote {posargs} in tox.ini
+  - switch documentation job to new PTI
+  - add python 3.6 unit test job
+  - Switch to stestr
+  - Use templates for cover and lower-constraints</comment>
+    <requestid>692874</requestid>
+  </revision>
+</revisionlist>

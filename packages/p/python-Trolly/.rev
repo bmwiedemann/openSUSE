@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00096cc9e4c16b7e896ff0f206d362e8</srcmd5>
+    <version>0.1.0</version>
+    <time>1365791726</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>163503</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ac9b640f26272c5414a3e57ecb3c9e5c</srcmd5>
+    <version>0.1.1</version>
+    <time>1372760931</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.1.1:
+  + setup.py now requires httplib2</comment>
+    <requestid>180839</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ac9b640f26272c5414a3e57ecb3c9e5c</srcmd5>
+    <version>0.1.1</version>
+    <time>1379664119</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>ac9b640f26272c5414a3e57ecb3c9e5c</srcmd5>
+    <version>0.1.1</version>
+    <time>1409302807</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e2fefc833defcbb087b140de16bf00ac</srcmd5>
+    <version>0.2.1</version>
+    <time>1431981321</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307813</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9475379bcaa45dab934179a35022ab7d</srcmd5>
+    <version>0.2.2</version>
+    <time>1504521106</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519857</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>361040a224370c4c107f6f877c5111a1</srcmd5>
+    <version>0.2.2</version>
+    <time>1544189735</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix tests and remove unnecessary BR for nose.
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655680</requestid>
+  </revision>
+</revisionlist>

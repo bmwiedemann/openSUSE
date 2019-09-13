@@ -1,0 +1,7 @@
+<package name="gpa" project="openSUSE:Factory">
+  <title>GNU Privacy Assistant</title>
+  <description>Gnu Privacy Assistant (GPA) is a graphical user interface for Gnu
+Privacy Guard (GPG) for displaying keyrings, manipulating keys,
+checking signatures, and signing, decrypting, and encrypting files.</description>
+  <devel project="GNOME:Apps" package="gpa"/>
+</package>

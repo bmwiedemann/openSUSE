@@ -1,0 +1,5 @@
+<package name="pmidi" project="openSUSE:Factory">
+  <title>A Command Line MIDI Player for ALSA</title>
+  <description>pmidi is a command line MIDI player for ALSA.</description>
+  <devel project="multimedia:apps" package="pmidi"/>
+</package>

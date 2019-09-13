@@ -1,0 +1,235 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf2d4997f4f580ba2784288635d9d4f1</srcmd5>
+    <version>0.8.0</version>
+    <time>1416048086</time>
+    <user>dimstar_suse</user>
+    <comment>fixed license tag</comment>
+    <requestid>260808</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b67308e562ba3372db759e71f2eb49c5</srcmd5>
+    <version>0.8.0</version>
+    <time>1419809412</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266384</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c30f40346e491288b435caa293b637d3</srcmd5>
+    <version>0.8.0</version>
+    <time>1422959977</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283579</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b672a7fe5bed779983e9ce9275da0bc4</srcmd5>
+    <version>0.9.0</version>
+    <time>1424117295</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>284982</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c7dde7b5d96fa21ab9066fa51b83fdaf</srcmd5>
+    <version>0.9.0</version>
+    <time>1424827041</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed %build and %install to use cmake macros (forwarded request 287069 from sfalken)</comment>
+    <requestid>287399</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5a153c685243bce89883a55d49956439</srcmd5>
+    <version>0.10.0</version>
+    <time>1447454140</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343356</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eece880fe06499b2813220dc4d7dbd84</srcmd5>
+    <version>0.11.0</version>
+    <time>1475750655</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>432280</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5842796b9172cefe46da3a9ca216f4f8</srcmd5>
+    <version>0.11.1</version>
+    <time>1489415578</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>476948</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fde8802f53c84eb29dac31f32f1483a9</srcmd5>
+    <version>0.12.0</version>
+    <time>1508876593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Set an informal patch version
+  * Don't export github templates
+  * Flag unused vars in onServiceOwnerChanged
+  * Fix missing variable declaration
+  * Handle QML (as @PCMan suggested)
+  * Use mime functions added by @PCMan
+  * Loading and saving window/splitter size
+  * Central positioning with respect to parent
+  * Set window title correctly
+  * Qt version conditions
+  * Just made it compilable
+  * Handle mime-type filters for file dialog. Set custom file dialog labels.
+  * Update options properly.
+  * Implement a basic file dialog helper using libfm-qt's Fm::FileDialog.
+  * Avoid using Qt-specific keywords such as signal/slot and foreach. Instead, use macros.
+  * LXQtPlatformTheme: Make Qt use default palette (#22)
+  * LXQtPlatformTheme: Add icon FollowColorScheme config (#21)
+  * Prevent a possible C++11 range for detach (#20)
+  * Use the CMake MODULE library type.
+  * LXQtPlatformTheme: Propagate wheelScrollLines
+  * LXQtPlatformTheme: Do not provide own palette
+  * Fix multiple StatusNotifierItems.
+  * Bump year
+  * Updates lxqt-build-tools required version
+- Update Source URLs
+- Update to 0.11.1:
+  * Use lxqt-build-tools
+  * Use the new lxqt-build-tools package
+  * Remove cpack (#14)
+- Update to 0.11.0:
+  * Add Qt5XdgIconLoader as dependency (#13)
+  * Update README.md
+  * statusnotifieritem: Correctly handle menu
+  * Cleaned up licenses
+  * Use XdgIconLoader library (#10)
+  * xdgIconThemePaths: Use QString::SkipEmptyParts
+  * xdgIconThemePaths: Remove duplicated paths
+  * Adds $XDG_DATA_HOME to the XdgIconThemePaths
+  * Bump year in AUTHORS
+- Add keyring
+- Require pkgconfig(Qt5XdgIconLoader) instead of pkgconfig(Qt5Xdg)
+  because IconLoader has its own package now and got split out
+  of libqt5xdg.
+- Upstream release 0.10.0
+- Changed %build and %install to use cmake macros 
+- New upstream version 0.9.0
+- Added conditionals to enable Fedora Builds 
+- lxqt-qtplugin is using private QPA API, which can, and does break BC
+  even in point releases, so we need to hardcode libQt5Gui5 version
+- Fixed license tag 
+- new upstream version 0.8.0 
+- removed unused build requires 
+- spec file clean up 
+- removed fedora spec, split into subproject
+  Del: lxqt-qtplugin-Fedora_20.spec 
+- ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-qtplugin-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-qtplugin-0.7.0.tar.xz
+  Del:  _service 
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-qtplugin.spec  
+  Add: lxqt-qtplugin.changes
+</comment>
+    <requestid>535980</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>89837c6f1f280249e0dc14068745b581</srcmd5>
+    <version>0.13.0</version>
+    <time>1530304221</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * lxqtplatformtheme: Initialize “folowColorScheme” once
+  * Fix icon colorizing at startup
+  * Remember the view mode
+- Update to 0.12.0:
+  * Set an informal patch version
+  * Don't export github templates
+  * Flag unused vars in onServiceOwnerChanged
+  * Fix missing variable declaration
+  * Handle QML (as @PCMan suggested)
+  * Use mime functions added by @PCMan
+  * Loading and saving window/splitter size
+  * Central positioning with respect to parent
+  * Set window title correctly
+  * Qt version conditions
+  * Just made it compilable
+  * Handle mime-type filters for file dialog. Set custom file dialog labels.
+  * Update options properly.
+  * Implement a basic file dialog helper using libfm-qt's Fm::FileDialog.
+  * Avoid using Qt-specific keywords such as signal/slot and foreach. Instead, use macros.
+  * LXQtPlatformTheme: Make Qt use default palette (#22)
+  * LXQtPlatformTheme: Add icon FollowColorScheme config (#21)
+  * Prevent a possible C++11 range for detach (#20)
+  * Use the CMake MODULE library type.
+  * LXQtPlatformTheme: Propagate wheelScrollLines
+  * LXQtPlatformTheme: Do not provide own palette
+  * Fix multiple StatusNotifierItems.
+  * Bump year
+  * Updates lxqt-build-tools required version
+- Update Source URLs
+- Update to 0.11.1:
+  * Use lxqt-build-tools
+  * Use the new lxqt-build-tools package
+  * Remove cpack (#14)
+- Update to 0.11.0:
+  * Add Qt5XdgIconLoader as dependency (#13)
+  * Update README.md
+  * statusnotifieritem: Correctly handle menu
+  * Cleaned up licenses
+  * Use XdgIconLoader library (#10)
+  * xdgIconThemePaths: Use QString::SkipEmptyParts
+  * xdgIconThemePaths: Remove duplicated paths
+  * Adds $XDG_DATA_HOME to the XdgIconThemePaths
+  * Bump year in AUTHORS
+- Add keyring
+- Require pkgconfig(Qt5XdgIconLoader) instead of pkgconfig(Qt5Xdg)
+  because IconLoader has its own package now and got split out
+  of libqt5xdg.
+- Upstream release 0.10.0
+- Changed %build and %install to use cmake macros 
+- New upstream version 0.9.0
+- Added conditionals to enable Fedora Builds 
+- lxqt-qtplugin is using private QPA API, which can, and does break BC
+  even in point releases, so we need to hardcode libQt5Gui5 version
+- Fixed license tag 
+- new upstream version 0.8.0 
+- removed unused build requires 
+- spec file clean up 
+- removed fedora spec, split into subproject
+  Del: lxqt-qtplugin-Fedora_20.spec 
+- ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-qtplugin-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-qtplugin-0.7.0.tar.xz
+  Del:  _service 
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-qtplugin.spec  
+  Add: lxqt-qtplugin.changes
+</comment>
+    <requestid>618042</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b13d743e98ba212a7328849b4ed3d132</srcmd5>
+    <version>0.14.0</version>
+    <time>1551113373</time>
+    <user>coolo</user>
+    <comment>- Update to 0.14.0:
+  * Dynamically load libfm-qt on demand to create
+    the file dialog helper.
+  * Don't use automatic string conversions
+  * Improved cmake scripting
+    - Set cmake_minimum_required to 3.1.0
+    - Removed locale compile definitons
+    - Removed the superfluous libfm-qt dependency
+- Move translation from lxqt-l10n into package
+</comment>
+    <requestid>670393</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-setuptools" project="openSUSE:Factory">
+  <title>Download, build, install, upgrade, and uninstall Python packages -- easily!</title>
+  <description>setuptools is a collection of enhancements to the Python distutils (for Python 2.3 and up) that allow you to more easily build and distribute Python packages, especially ones that have dependencies on other packages.</description>
+  <devel project="devel:languages:python" package="python-setuptools"/>
+</package>

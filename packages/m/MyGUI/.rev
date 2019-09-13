@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1681c6eeb0c2a49e1764bc658bc67a11</srcmd5>
+    <version>3.2.2</version>
+    <time>1515876206</time>
+    <user>dimstar_suse</user>
+    <comment>- Update descriptions
+- remove unneeded Cg requires
+- Update to upstream MyGUI 3.2.2:
+ -- Core --
+ * Fixed eventChangeMouseFocus and eventChangeKeyFocus not being triggered in certain cases.
+ -- Widgets --
+ * ComboBox: Fixed mouse events incorrectly going to the widget below the ComboBox when clicking on an item.
+ * ScrollBar: Added button repeat support, ScrollBar buttons will trigger repeatedly so long as the mouse is held down.
+ -- Platforms --
+ * OpenGLPlatform: Added option to use system GLEW library.
+ * OgrePlatform: Improved performance of OgreDataManager::isDataExist.
+ * OgrePlatform: Fixed build failure regarding boost libraries used by Ogre not being found.
+ -- Resources --
+ * ResourceManualFont: Added API to create a ResourceManualFont in code rather than from XML.
+ -- Tools --
+ * Fixed broken file dialog directory listing on Linux and make sure files are sorted.
+- Updated MyGUI-gcc47-visibility.patch
+- Updated MyGUI-lib_suffix.patch 
+- Build MyGUI 3.2.1 
+- fix build on 13.1+:
+  * freetype includes are now in include/freetype2
+  * OGRE needs libboost_system on linker commandline
+- Created a gcc 4.7 patch, visibility is much more strict in gcc 4.7 
+- Build MyGUI 3.20 
+- remove runtime dependency on dejavu
+- shlib policy: must not obsolete a package providing a
+  different basename
+- fix build on 12.1+ by ignoring error removing non-existant file
+- Remove conflicting %debug_package: OBS deals with that already
+- Remove unnecessary %clean section
+- based on a package by Toni Graffy
+</comment>
+    <requestid>556659</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b051b13a0e762937a3b374a6ffd1121b</srcmd5>
+    <version>3.2.2</version>
+    <time>1516880421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569341</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9c0b7303510c41dbddd22779546c6ede</srcmd5>
+    <version>3.2.2</version>
+    <time>1548537747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668660</requestid>
+  </revision>
+</revisionlist>

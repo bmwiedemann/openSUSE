@@ -1,0 +1,207 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>d36d6f065e8127ab8e19e4cc1c1a53b6</srcmd5>
+    <version>0.7.0</version>
+    <time>1168903590</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="38">
+    <srcmd5>0b34b9ba32cc634cfc6a7b3bf5748332</srcmd5>
+    <version>0.7.0</version>
+    <time>1169080620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="95">
+    <srcmd5>1ab616a9273df36a389546750e19c1cc</srcmd5>
+    <version>0.7.0</version>
+    <time>1186683914</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="128">
+    <srcmd5>3ac244766da66b2078c54fa53a4f55c0</srcmd5>
+    <version>0.7.0</version>
+    <time>1192132710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="190">
+    <srcmd5>ade7df0d7bdc1dce00e591b4bcad661b</srcmd5>
+    <version>0.7.0</version>
+    <time>1204763569</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="191">
+    <srcmd5>c1b8deeeaae92801939de3b90033c2df</srcmd5>
+    <version>0.7.0</version>
+    <time>1205254111</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3c1fe561878a631d0b5d9581986ed39e</srcmd5>
+    <version>0.7.2</version>
+    <time>1209647637</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="72">
+    <srcmd5>3c1fe561878a631d0b5d9581986ed39e</srcmd5>
+    <version>0.7.2</version>
+    <time>1209647637</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="73">
+    <srcmd5>86a56e1396a37edf0cbe557957abdacc</srcmd5>
+    <version>0.7.2</version>
+    <time>1228565555</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="77">
+    <srcmd5>449431b462f88336272a5577f713f64a</srcmd5>
+    <version>0.7.2</version>
+    <time>1234024680</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="79">
+    <srcmd5>4d53a7d3d0f64320c5b4fe42de3d23b8</srcmd5>
+    <version>0.7.2</version>
+    <time>1236806200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="81">
+    <srcmd5>4d53a7d3d0f64320c5b4fe42de3d23b8</srcmd5>
+    <version>0.7.2</version>
+    <time>1236806200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="82">
+    <srcmd5>94210db2afd1bdfd0bf1b3fee5c97c9c</srcmd5>
+    <version>0.7.2</version>
+    <time>1268925056</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="84">
+    <srcmd5>94210db2afd1bdfd0bf1b3fee5c97c9c</srcmd5>
+    <version>0.7.2</version>
+    <time>1278667370</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="85">
+    <srcmd5>94210db2afd1bdfd0bf1b3fee5c97c9c</srcmd5>
+    <version>0.7.2</version>
+    <time>1278678599</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="88">
+    <srcmd5>94210db2afd1bdfd0bf1b3fee5c97c9c</srcmd5>
+    <version>0.7.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="89">
+    <srcmd5>fedad58ab27ff5bcb18d60a150e55089</srcmd5>
+    <version>0.7.2</version>
+    <time>1305187426</time>
+    <user>azouhr</user>
+    <comment></comment>
+    <requestid>66965</requestid>
+  </revision>
+  <revision rev="18" vrev="90">
+    <srcmd5>9d13906f1594b811b0b0a6f0d2dd71e0</srcmd5>
+    <version>0.7.2</version>
+    <time>1305187435</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 66965
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a9c75181c628eaf311b5b4ca184a782c</srcmd5>
+    <version>0.7.2+git20110615</version>
+    <time>1308299568</time>
+    <user>saschpe</user>
+    <comment>Fix build (forwarded request 73760 from vuntz)</comment>
+    <requestid>73802</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>aae1b952cc5220f8c777f93e11eebf6b</srcmd5>
+    <version>0.7.2+git20110615</version>
+    <time>1308299579</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73802
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>facf60c978c6ff820603ad3856ad0955</srcmd5>
+    <version>0.7.3</version>
+    <time>1310369207</time>
+    <user>saschpe</user>
+    <comment>Update to 0.7.3 (forwarded request 75951 from vuntz)</comment>
+    <requestid>75968</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>facf60c978c6ff820603ad3856ad0955</srcmd5>
+    <version>0.7.3</version>
+    <time>1319182195</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>fec6f1b285739e79b6b6747bd72d93bc</srcmd5>
+    <version>0.7.3</version>
+    <time>1322481292</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93793 from coolo)</comment>
+    <requestid>93853</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>c5720d99b9fe277246ed2ac5aca73c0f</srcmd5>
+    <version>0.7.3</version>
+    <time>1323192674</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>c5720d99b9fe277246ed2ac5aca73c0f</srcmd5>
+    <version>0.7.3</version>
+    <time>1340183724</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>c5720d99b9fe277246ed2ac5aca73c0f</srcmd5>
+    <version>0.7.3</version>
+    <time>1359109491</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="11">
+    <srcmd5>c5720d99b9fe277246ed2ac5aca73c0f</srcmd5>
+    <version>0.7.3</version>
+    <time>1379663347</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="13">
+    <srcmd5>c5720d99b9fe277246ed2ac5aca73c0f</srcmd5>
+    <version>0.7.3</version>
+    <time>1409301959</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="14">
+    <srcmd5>2a58060ff630fec6db49dc3493dc666a</srcmd5>
+    <version>0.7.3</version>
+    <time>1525121861</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop Requires: gnome-icon-theme; the appropriate icon is
+  provided by adwaita-icon-theme (pulled in by gtk3) already. (forwarded request 601905 from badshah400)</comment>
+    <requestid>602477</requestid>
+  </revision>
+  <revision rev="30" vrev="15">
+    <srcmd5>b3cc1e589305be1a3f75cd98a7cd2e92</srcmd5>
+    <version>0.7.3</version>
+    <time>1525343582</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure neutrality of descriptions. (forwarded request 602654 from jengelh)</comment>
+    <requestid>602996</requestid>
+  </revision>
+</revisionlist>

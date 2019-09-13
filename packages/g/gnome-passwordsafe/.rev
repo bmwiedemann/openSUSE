@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d7568e23f89d9809952570207fc0e994</srcmd5>
+    <version>3.30.2</version>
+    <time>1543528751</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>652236</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>46cd660767453f3d3b7a48ba7534bb30</srcmd5>
+    <version>3.32.0</version>
+    <time>1556916237</time>
+    <user>dimstar_suse</user>
+    <comment>- Password Safe 3.32 brings usability optimizations and some feature additions.
+  + Added references for linking of properties between multiple entries
+  + Added entry and group metadata dialog
+  + Added notes editor dialog with search utility
+  + Added entry duplication feature
+  + Reworked entry and group moving utility
+  + Improved editing mode performance
+  + Fixed various issues
+- Add new Requires: python3-pycryptodome python3-lxml
+  python3-pwquality (also BuildRequires: pkgconfig(pwquality))
+  python3-argon2-cffi (forwarded request 693200 from hellcp)</comment>
+    <requestid>693295</requestid>
+  </revision>
+</revisionlist>

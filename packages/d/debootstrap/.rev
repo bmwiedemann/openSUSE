@@ -1,0 +1,186 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be87c1fb2c4d04b85654e962f3d74f63</srcmd5>
+    <version>1.0.40</version>
+    <time>1337004827</time>
+    <user>coolo</user>
+    <comment>New package for Factory.
+See http://lists.opensuse.org/opensuse-factory/2012-05/msg00164.html for a little bit of context.</comment>
+    <requestid>120724</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>be87c1fb2c4d04b85654e962f3d74f63</srcmd5>
+    <version>1.0.40</version>
+    <time>1340183274</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b43a888c3fc03b83e00ea0660d982f3b</srcmd5>
+    <version>1.0.42</version>
+    <time>1341813356</time>
+    <user>coolo</user>
+    <comment>update to 1.0.42</comment>
+    <requestid>127323</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>09d96f8f1e9b60cc0595594d600394e0</srcmd5>
+    <version>1.0.43</version>
+    <time>1352358228</time>
+    <user>coolo</user>
+    <comment>upstream update</comment>
+    <requestid>140506</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>09d96f8f1e9b60cc0595594d600394e0</srcmd5>
+    <version>1.0.43</version>
+    <time>1359108804</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3e9816d913f6fbce08d45e7b94bc0c71</srcmd5>
+    <version>1.0.48</version>
+    <time>1365337266</time>
+    <user>coolo</user>
+    <comment>update to 1.0.48 (forwarded request 162912 from flichtenheld)</comment>
+    <requestid>162914</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dcf07c5fac28a2edec4d2cd4c546b106</srcmd5>
+    <version>1.0.49</version>
+    <time>1367826673</time>
+    <user>coolo</user>
+    <comment>update to 1.0.49 (forwarded request 174576 from flichtenheld)</comment>
+    <requestid>174577</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>65831d753546673d1d595660270e3125</srcmd5>
+    <version>1.0.51</version>
+    <time>1369640724</time>
+    <user>coolo</user>
+    <comment>update to 1.0.51 (forwarded request 176099 from flichtenheld)</comment>
+    <requestid>176100</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>65831d753546673d1d595660270e3125</srcmd5>
+    <version>1.0.51</version>
+    <time>1379662214</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b2cbae27f861be4da922d4d6aaaa62c3</srcmd5>
+    <version>1.0.60</version>
+    <time>1401899970</time>
+    <user>coolo</user>
+    <comment> (forwarded request 236041 from toabctl)</comment>
+    <requestid>236043</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b2cbae27f861be4da922d4d6aaaa62c3</srcmd5>
+    <version>1.0.60</version>
+    <time>1409300750</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>540c9bc52cc6431f3e71cf26d9d7e339</srcmd5>
+    <version>1.0.65</version>
+    <time>1416994415</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262902</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2e13f7d77ad1a883e2226dff17b69969</srcmd5>
+    <version>1.0.67</version>
+    <time>1427109533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292197</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>893de65bdb07c840a53de145ce4de22e</srcmd5>
+    <version>1.0.70</version>
+    <time>1434383385</time>
+    <user>dimstar_suse</user>
+    <comment>- bump to 1.0.70
+  * Use tr instead of (missing in d-i) xargs (Closes:
+      #785693). Thanks, Julian Schauder!
+  * Make sure to deduplicate package list in download_release to
+      avoid issues while counting downloaded packages. The failure
+      path could lead to printing some strange integer (Closes:
+      #709751, #768445, #785276, #774752).  This was reported to
+      mostly happen whenever --no-resolve-deps is used.
+      
+  * Add support for --force-check-gpg so that one can
+      programmatically make sure keyring checks are used and that
+      no fallback to an https mirror happens (Closes: #661501,
+      #733179, #775454).  * Switch default mirror from
+      ftp.us.debian.org to the new, official http redirector
+      service: httpredir.debian.org
+  * Make it possible to override the MAKEDEV variable (Closes: #734743).
+      Thanks, Wookey!
+  * Update Standards to 3.9.6 (checked)
+  * Support the jessie-kfreebsd suite, by using the same script as
+      jessie (a symlink to sid) (Closes: #784927). (forwarded request 311984 from sleep_walker)</comment>
+    <requestid>311986</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1419369b8d3bfcd7391cf2e3f9593fc0</srcmd5>
+    <version>1.0.72</version>
+    <time>1438794889</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320515</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>30d09adac0897a112c59429cc0e107bc</srcmd5>
+    <version>1.0.73</version>
+    <time>1446465335</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341932</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8c1fcfc8c780edabdb7c91a1062b95e3</srcmd5>
+    <version>1.0.75</version>
+    <time>1448400840</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>346064</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8911eda0fd88b36f6c213c0762ae8965</srcmd5>
+    <version>1.0.79</version>
+    <time>1457353689</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>366525</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>73ef29eafd933959ecbcee478cc8c46b</srcmd5>
+    <version>1.0.90</version>
+    <time>1498840943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>506978</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a2043faeb475552a141a48b21cd56e0c</srcmd5>
+    <version>1.0.97</version>
+    <time>1524144811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598520</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3d914bb8b1426c0512fbf238d8278e93</srcmd5>
+    <version>1.0.115</version>
+    <time>1564994139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720098</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>05eccae09f20ef31d95e3260aeec8379</srcmd5>
+    <version>3.3.75</version>
+    <time>1243440874</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>05eccae09f20ef31d95e3260aeec8379</srcmd5>
+    <version>3.3.75</version>
+    <time>1243440874</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>5e4ae3b880a7619ba0c71a4b7981db6c</srcmd5>
+    <version>3.3.75</version>
+    <time>1259347041</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/berkeleydb based on submit request 25198 from user mvyskocil
+</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>cadd4c2d5eb77569036040cc2b432927</srcmd5>
+    <version>3.3.75</version>
+    <time>1268923018</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>cadd4c2d5eb77569036040cc2b432927</srcmd5>
+    <version>3.3.75</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>cadd4c2d5eb77569036040cc2b432927</srcmd5>
+    <version>3.3.75</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>cadd4c2d5eb77569036040cc2b432927</srcmd5>
+    <version>3.3.75</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>9531ca643a9c4cced8470610f3711500</srcmd5>
+    <version>3.3.75</version>
+    <time>1316766040</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82898 from jengelh)</comment>
+    <requestid>84350</requestid>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>9531ca643a9c4cced8470610f3711500</srcmd5>
+    <version>3.3.75</version>
+    <time>1319181787</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>6e38b6644e720cba60d37911642d3d7b</srcmd5>
+    <version>3.3.75</version>
+    <time>1322481188</time>
+    <user>coolo</user>
+    <comment>- fix manuals packaged twice (forwarded request 93595 from coolo)</comment>
+    <requestid>93750</requestid>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>5bf0f2efb0a5eb09fe4f5df7f38134a0</srcmd5>
+    <version>3.3.75</version>
+    <time>1323190840</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>5bf0f2efb0a5eb09fe4f5df7f38134a0</srcmd5>
+    <version>3.3.75</version>
+    <time>1340183200</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2414f15eb729128a1f3bcd83e89ba189</srcmd5>
+    <version>5.0.58</version>
+    <time>1355910545</time>
+    <user>coolo</user>
+    <comment>- drop useless repack to tar.bz2 - use pristine tarball from upstream 
+
+- Update to 5.0.58 version:
+  * The file format change enabled significant improvements in operation
+    performance, memory and disk footprint, and concurrency of databases 
+    with duplicate keys. Due to these changes, an upgrade utility must 
+  	be run before opening an environment with this release, if the environment 
+  	was created using JE 4.1 or earlier. See the Upgrade Procedure below for 
+  	more information.
+  * An application which uses JE replication may not upgrade directly
+  	from JE 4.0 to JE 5.0. Instead, the upgrade must be done from JE 4.0 to 
+  	JE 4.1 and then to JE 5.0. Applications already at JE 4.1 are not affected. 
+  	Upgrade guidance can be found in the new chapter, &quot;Upgrading a JE
+    Replication Group&quot;, in the &quot;Getting Started with BDB JE High Availability&quot; guide.
+- Use the %doc macro to copy documents in doc directory
+- Remove redundants documentation files with fdupes</comment>
+    <requestid>145742</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>2414f15eb729128a1f3bcd83e89ba189</srcmd5>
+    <version>5.0.58</version>
+    <time>1359108698</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>108a912fb6bdc68627bbbfb7ae9cee69</srcmd5>
+    <version>5.0.58</version>
+    <time>1370425217</time>
+    <user>coolo</user>
+    <comment>license update: Sleepycat
+Sleepycat,  not BSD-3-Clause (forwarded request 176741 from babelworx)</comment>
+    <requestid>176759</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>d7ed3a110fc383c11581f00ab890d594</srcmd5>
+    <version>5.0.58</version>
+    <time>1378998302</time>
+    <user>scarabeus_factory</user>
+    <comment>jpackage-utils collison fix</comment>
+    <requestid>198680</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>d7ed3a110fc383c11581f00ab890d594</srcmd5>
+    <version>5.0.58</version>
+    <time>1379662031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>19b21d17b2bb7e08c7fd3549be585ba4</srcmd5>
+    <version>5.0.58</version>
+    <time>1405522175</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240332</requestid>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>19b21d17b2bb7e08c7fd3549be585ba4</srcmd5>
+    <version>5.0.58</version>
+    <time>1409300558</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>ed8ea07d0ae1080534ced1d29413d27c</srcmd5>
+    <version>5.0.58</version>
+    <time>1505507533</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>526354</requestid>
+  </revision>
+  <revision rev="21" vrev="12">
+    <srcmd5>ea3d3d1fe06ab49b6895c80010ec880d</srcmd5>
+    <version>5.0.58</version>
+    <time>1530993554</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620773</requestid>
+  </revision>
+</revisionlist>

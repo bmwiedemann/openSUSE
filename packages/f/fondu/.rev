@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>644cffff5b979982c2e4e7661d16dc40</srcmd5>
+    <version>1.0.060102</version>
+    <time>1310045375</time>
+    <user>saschpe</user>
+    <comment>please add to factory and add me as maintainer/bugowner. I have had this in my home repo too long.</comment>
+    <requestid>74106</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>07390356e1febbffb1b5efae60dd2ff5</srcmd5>
+    <version>1.0.060102</version>
+    <time>1310045394</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74106
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8e4bb9df8ae6babbaf8bd4ab1f721058</srcmd5>
+    <version>1.0.060102</version>
+    <time>1316504297</time>
+    <user>lrupp</user>
+    <comment>SR#83534 update: File is now compiled with RPM_OPT_FLAGS, but the quality of the upstream code is still subpar. My two patches just fix the compilation. (forwarded request 83612 from jengelh)</comment>
+    <requestid>83624</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>8e4bb9df8ae6babbaf8bd4ab1f721058</srcmd5>
+    <version>1.0.060102</version>
+    <time>1319181881</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>ca37cb6050d5afe9b2c00f1625d60eb1</srcmd5>
+    <version>1.0.060102</version>
+    <time>1324830845</time>
+    <user>coolo</user>
+    <comment>license update: BSD-3-Clause
+The package is BSD-3-Clause not MIT (look at the License file). Use SPDX format. (forwarded request 96785 from babelworx)</comment>
+    <requestid>96941</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>ca37cb6050d5afe9b2c00f1625d60eb1</srcmd5>
+    <version>1.0.060102</version>
+    <time>1340183334</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>ca37cb6050d5afe9b2c00f1625d60eb1</srcmd5>
+    <version>1.0.060102</version>
+    <time>1359108884</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>ca37cb6050d5afe9b2c00f1625d60eb1</srcmd5>
+    <version>1.0.060102</version>
+    <time>1379662353</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>ca37cb6050d5afe9b2c00f1625d60eb1</srcmd5>
+    <version>1.0.060102</version>
+    <time>1409300889</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="rofi-calc" project="openSUSE:Factory">
+  <title>Do live calculations in rofi</title>
+  <description>A rofi plugin that uses libqalculate's qalc to parse natural language input and provide results.
+
+Since this uses libqalculate's amazing qalc you can try natural language queries such 500 + 25% or 5000 EUR to USD or 150 to hex. It can also solve linear equations on the fly. Try 60x + 30 = 50, for instance.</description>
+  <devel project="X11:Utilities" package="rofi-calc"/>
+</package>

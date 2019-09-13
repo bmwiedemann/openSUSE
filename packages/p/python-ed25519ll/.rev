@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>91cc37407add8520d8822f420492338c</srcmd5>
+    <version>0.6</version>
+    <time>1376993911</time>
+    <user>scarabeus_factory</user>
+    <comment>dependency of python-wheel</comment>
+    <requestid>186717</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>91cc37407add8520d8822f420492338c</srcmd5>
+    <version>0.6</version>
+    <time>1379664171</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>91cc37407add8520d8822f420492338c</srcmd5>
+    <version>0.6</version>
+    <time>1409302864</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>cdd177e54d3f7502dc78c1d6fed7f449</srcmd5>
+    <version>0.6</version>
+    <time>1527675805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612881</requestid>
+  </revision>
+</revisionlist>

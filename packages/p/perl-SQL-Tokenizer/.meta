@@ -1,0 +1,19 @@
+<package name="perl-SQL-Tokenizer" project="openSUSE:Factory">
+  <title>A simple SQL tokenizer</title>
+  <description>SQL::Tokenizer is a simple tokenizer for SQL queries. It does not claim to
+be a parser or query verifier. It just creates sane tokens from a valid SQL
+query.
+
+It supports SQL with comments like:
+
+ -- This query is used to insert a message into
+ -- logs table
+ INSERT INTO log (application, message) VALUES (?, ?)
+
+Also supports '''', '&quot;&quot;' and '\'' escaping methods, so tokenizing queries
+like the one below should not be a problem:
+
+ INSERT INTO log (application, message)
+ VALUES ('myapp', 'Hey, this is a ''single quoted string''!')</description>
+  <devel project="devel:languages:perl" package="perl-SQL-Tokenizer"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="openEMS" project="openSUSE:Factory">
+  <title></title>
+  <description>openEMS is a free and open-source electromagnetic field solver using the EC-FDTD method.</description>
+  <devel project="science" package="openEMS"/>
+</package>

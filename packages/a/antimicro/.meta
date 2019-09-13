@@ -1,0 +1,13 @@
+<package name="antimicro" project="openSUSE:Factory">
+  <title>AntiMicro</title>
+  <description>AntiMicro is a graphical program used to map 
+keyboard keys and mouse controls to a game-pad.
+This program is useful for playing PC games
+using a game-pad that do not have any form of
+built-in game-pad support. 
+However, you can use this program to control
+any desktop application with a game-pad.
+  </description>
+  <devel project="hardware" package="antimicro"/>
+  <url>https://github.com/AntiMicro/antimicro</url>
+</package>

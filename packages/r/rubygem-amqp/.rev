@@ -1,0 +1,201 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9762586baaae41af30579e03c548ac6d</srcmd5>
+    <version>0.6.7</version>
+    <time>1339477813</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>123529</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9762586baaae41af30579e03c548ac6d</srcmd5>
+    <version>0.6.7</version>
+    <time>1340184156</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>49240bb8b2268b0365385c4241d54549</srcmd5>
+    <version>0.6.7</version>
+    <time>1342424311</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>127924</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>37a73e701c5b2561e2943fa49144a998</srcmd5>
+    <version>0.9.8</version>
+    <time>1353266794</time>
+    <user>namtrac</user>
+    <comment>license update: BSD-2-Clause or Ruby
+Package claims to be under the same license as Ruby and even points to the URL for the Ruby license. In the past couple of months the license of Ruby changed from GPL-2.0 or Ruby to BSD-2-Clause or Ruby (forwarded request 140527 from babelworx)</comment>
+    <requestid>140541</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>37a73e701c5b2561e2943fa49144a998</srcmd5>
+    <version>0.9.8</version>
+    <time>1359110305</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5528700ddf1de5c7d8eb756c75e6dffb</srcmd5>
+    <version>1.0.2</version>
+    <time>1368772472</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>175900</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5528700ddf1de5c7d8eb756c75e6dffb</srcmd5>
+    <version>1.0.2</version>
+    <time>1379664497</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1161b0f383d5f88e3a4cebd47b045ee3</srcmd5>
+    <version>1.0.3</version>
+    <time>1383231134</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>204156</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0673873a25477ed57df674a8bed037d4</srcmd5>
+    <version>1.1.0</version>
+    <time>1383810324</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>205870</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>da84ad0edd5beb27940e95aa261e239c</srcmd5>
+    <version>1.1.3</version>
+    <time>1385442857</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208255</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>accb09fde4ebf52df2374b5f887dd1b1</srcmd5>
+    <version>1.1.5</version>
+    <time>1385793640</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208865</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9a3376cc8b0392036f708884e5d818a5</srcmd5>
+    <version>1.1.7</version>
+    <time>1387271087</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210852</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7fe5ff02e601ec98c1f5640d8161c7a2</srcmd5>
+    <version>1.2.0</version>
+    <time>1390482233</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214676</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>564c255a9991e9d4df53c35512025820</srcmd5>
+    <version>1.3.0</version>
+    <time>1393089440</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.3.0
+  ### Exchange-to-Exchange Bindings Support
+  
+  amqp gem now supports [Exchange-to-Exchange Bindings](http://www.rabbitmq.com/e2e.html), a RabbitMQ
+  extension.
+  
+  `AMQP::Exchange#bind` and `AMQP::Exchange#unbind` work very much like `AMQP::Queue#bind` and
+  `AMQP::Queue#unbind`, with the argument exchange being the source one.
+  
+  ### Internal Exchange Declaration
+  
+  amqp gem now supports declaration of internal exchanges
+  (used via exchange-to-exchange bindings, cannot be published to
+  by clients).
+  
+  To declare an exchange as internal, add `:internal =&gt; true` to
+  declaration options.
+  ### Initial Connection Failures Retries
+  
+  Set connection status to closed on connection failure, which
+  means connection retries succeed.</comment>
+    <requestid>223466</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>df21accb6c4785d98a730ddadc285be5</srcmd5>
+    <version>1.4.1</version>
+    <time>1405404055</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.4.1
+ ### Server-Named Queue Recovery Fix
+ 
+ Server-named queues are now correctly recovered again.
+ 
+ Contributed by Jack C Hong.
+ 
+ 
+ 
+ ## Changes Between 1.3.x and 1.4.0
+ 
+ ### connection.blocked Support
+ 
+ [connection.blocked](https://www.rabbitmq.com/connection-blocked.html) notifications
+ are now correctly supported by the library.</comment>
+    <requestid>240858</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>df21accb6c4785d98a730ddadc285be5</srcmd5>
+    <version>1.4.1</version>
+    <time>1409303216</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>83063672e28bb0babe800b0c9b247a5c</srcmd5>
+    <version>1.5.0</version>
+    <time>1413209499</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255492</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>eb7b852515e8aa7d448a4e0537026be0</srcmd5>
+    <version>1.5.1</version>
+    <time>1454628677</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>326693</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5e92e0f04966af2b40696623e14758d7</srcmd5>
+    <version>1.6.0</version>
+    <time>1460482445</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385095</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>73ad1a4efcf128e0cca783c28af40f78</srcmd5>
+    <version>1.7.0</version>
+    <time>1491895906</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>456614</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f90eb1b49a853e6b874e824f7c8a1ec7</srcmd5>
+    <version>1.8.0</version>
+    <time>1518426800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574041</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+<package name="apache2-mod_security2" project="openSUSE:Factory">
+  <title>ModSecurity Open Source Web Application Firewall</title>
+  <description>ModSecurity(TM) is an open source intrusion detection and prevention
+engine for web applications (or a web application firewall). Operating
+as an Apache Web server module or standalone, the purpose of
+ModSecurity is to increase web application security, protecting web
+applications from known and unknown attacks.</description>
+  <devel project="Apache:Modules" package="apache2-mod_security2"/>
+</package>

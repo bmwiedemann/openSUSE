@@ -1,0 +1,11 @@
+<package name="perl-Crypt-DES" project="openSUSE:Factory">
+  <title>Perl DES encryption module</title>
+  <description>The module implements the Crypt::CBC interface, which has the following
+methods
+
+* blocksize
+  =item keysize
+  =item encrypt
+  =item decrypt</description>
+  <devel project="devel:languages:perl" package="perl-Crypt-DES"/>
+</package>

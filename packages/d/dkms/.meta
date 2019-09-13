@@ -1,0 +1,5 @@
+<package name="dkms" project="openSUSE:Factory">
+  <title>dkms</title>
+  <description>Dynamic Kernel Module Support (DKMS) is a framework used to generate Linux kernel modules whose sources do not generally reside in the Linux kernel source tree. DKMS enables kernel device drivers to be automatically rebuilt when a new kernel is installed.</description>
+  <devel project="X11:Bumblebee" package="dkms"/>
+</package>

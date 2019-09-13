@@ -1,0 +1,244 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>f8b73c94d97b238b2191e65bba9a4ab6</srcmd5>
+    <version>0.2</version>
+    <time>1244689759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>4e2100b20df1da09b2241960907f2662</srcmd5>
+    <version>0.2</version>
+    <time>1245363542</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>74c320385ba153ed057d69ffb7cff9ed</srcmd5>
+    <version>0.2</version>
+    <time>1246706325</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>3186568f5e14eb44376ba5eb87c4c1d8</srcmd5>
+    <version>0.2</version>
+    <time>1254534513</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/vhostmd based on submit request 21358 from user jfehlig
+</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>3186568f5e14eb44376ba5eb87c4c1d8</srcmd5>
+    <version>0.2</version>
+    <time>1254534513</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/vhostmd based on submit request 21358 from user jfehlig
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6efcfc9ada6f559ac5765ea0c9494b33</srcmd5>
+    <version>0.3</version>
+    <time>1263833333</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/vhostmd based on submit request 29831 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e2b64c926604a4cb402d3c1708064307</srcmd5>
+    <version>0.3</version>
+    <time>1268926451</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8714054b9511d168aa1e0953eefeb89c</srcmd5>
+    <version>0.4</version>
+    <time>1271375144</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/vhostmd based on submit request 37870 from user jfehlig
+</comment>
+    <requestid>37870</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8714054b9511d168aa1e0953eefeb89c</srcmd5>
+    <version>0.4</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>8714054b9511d168aa1e0953eefeb89c</srcmd5>
+    <version>0.4</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>8714054b9511d168aa1e0953eefeb89c</srcmd5>
+    <version>0.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>8714054b9511d168aa1e0953eefeb89c</srcmd5>
+    <version>0.4</version>
+    <time>1319182550</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>4592b55470c389c489b609cdef96c68d</srcmd5>
+    <version>0.4</version>
+    <time>1323085563</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>95345</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>7da159482d5780eb48113c7bb3e3d329</srcmd5>
+    <version>0.4</version>
+    <time>1323195103</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>7da159482d5780eb48113c7bb3e3d329</srcmd5>
+    <version>0.4</version>
+    <time>1340184311</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>7da159482d5780eb48113c7bb3e3d329</srcmd5>
+    <version>0.4</version>
+    <time>1359110543</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>7da159482d5780eb48113c7bb3e3d329</srcmd5>
+    <version>0.4</version>
+    <time>1379664921</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>8ff55cb3c169a5746d27e18fa15b883a</srcmd5>
+    <version>0.4</version>
+    <time>1387453091</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>211130</requestid>
+  </revision>
+  <revision rev="19" vrev="18">
+    <srcmd5>c37ab6d0ff826d04d50e5e456d69ab49</srcmd5>
+    <version>0.4</version>
+    <time>1402947370</time>
+    <user>coolo</user>
+    <comment>Updated vhostmd package for Factory.  Includes fixes to the
+default configuration to work better with both KVM and Xen.
+
+- Further updates to vmhostd.xml
+  - Support both xen and non-xen hypervisors (kvm)
+  - Document reserved characters in 'action' field
+  - Revert xen_version back to major/minor/extra to maintain compatability
+    with xend
+  - Minor syntax and legibility cleanup
+  vhostmd-conf.patch
+  bnc#872736
+
+- Various updates to vmhostd.xml
+  - Replace xm commands with xl commands
+  - Add /sbin and /bin to &lt;path&gt;
+  - Use xen_version for VirtualizationProductInfo
+  vhostmd-conf.patch</comment>
+    <requestid>237312</requestid>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>c37ab6d0ff826d04d50e5e456d69ab49</srcmd5>
+    <version>0.4</version>
+    <time>1409303605</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>46e6cc7c96de0656d5562197609ba30d</srcmd5>
+    <version>0.4</version>
+    <time>1415748096</time>
+    <user>dimstar_suse</user>
+    <comment>AM_INIT_AUTOMAKE should be called earlier in configure.ac.  Add
+this improvement to build-fix.patch, and rename to the more
+appropriate build-improvements.patch.
+
+- Improve build scripts
+  Replace build-fix.patch with build-improvements.patch
+
+- Fix Factory build
+  build-fix.patch</comment>
+    <requestid>260790</requestid>
+  </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>6a923fbd8bbbedec137a7bcc77cbcd0d</srcmd5>
+    <version>0.4</version>
+    <time>1421959761</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282305</requestid>
+  </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>21fd8293488183f1d5b85f50f18091af</srcmd5>
+    <version>0.4</version>
+    <time>1493580232</time>
+    <user>dimstar_suse</user>
+    <comment>Another attempt after more spec file cleanup.
+
+- Add systemd service file
+  add-systemd-service.patch
+  bsc#1036427
+- Replace build-improvements.patch with
+  modernize-build-files.patch sent upstream</comment>
+    <requestid>491974</requestid>
+  </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>27b115a9c7195ee0e328de7d3296a605</srcmd5>
+    <version>0.4</version>
+    <time>1493708095</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492273</requestid>
+  </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>04959710e6569f31b7943fa397ef7b7a</srcmd5>
+    <version>0.4</version>
+    <time>1525210205</time>
+    <user>dimstar_suse</user>
+    <comment>Another minor fix to the systemd service file and an improved
+changelog entry.
+
+- vhostmd.service: fix typo and move Documentation from [Service]
+  to [Unit] section
+  bsc#1090769</comment>
+    <requestid>602627</requestid>
+  </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>8d5a670e7c80fdefa9d42195ca34c82c</srcmd5>
+    <version>0.4</version>
+    <time>1530866613</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620925</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4b193886b41498f6e1eb4c27c3b2664f</srcmd5>
+    <version>1.0</version>
+    <time>1544095126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655415</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>74e020607fb17c83191f9968861e63d9</srcmd5>
+    <version>1.1</version>
+    <time>1555237399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693805</requestid>
+  </revision>
+</revisionlist>

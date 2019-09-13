@@ -1,0 +1,6 @@
+<package name="octave-forge-nan" project="openSUSE:Factory">
+  <title></title>
+  <description>A statistics and machine learning toolbox for data with and w/o missing values.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-nan"/>
+</package>

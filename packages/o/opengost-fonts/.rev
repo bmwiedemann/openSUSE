@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3b2eae33b450167d3974f57fdc148a4</srcmd5>
+    <version>0.2</version>
+    <time>1334641640</time>
+    <user>coolo</user>
+    <comment>Useful fonts for Russian users.</comment>
+    <requestid>113314</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e3b2eae33b450167d3974f57fdc148a4</srcmd5>
+    <version>0.2</version>
+    <time>1340183754</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1324474ae5ab473111e59b098c1c76f3</srcmd5>
+    <version>0.3</version>
+    <time>1347355621</time>
+    <user>coolo</user>
+    <comment>Update to 0.3.</comment>
+    <requestid>133339</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1324474ae5ab473111e59b098c1c76f3</srcmd5>
+    <version>0.3</version>
+    <time>1359109538</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>1324474ae5ab473111e59b098c1c76f3</srcmd5>
+    <version>0.3</version>
+    <time>1379663422</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>1324474ae5ab473111e59b098c1c76f3</srcmd5>
+    <version>0.3</version>
+    <time>1409302034</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f4501c7b7d0b69f050126ffbb5bc0a8c</srcmd5>
+    <version>5.1.23</version>
+    <time>1374417298</time>
+    <user>coolo</user>
+    <comment>moved from Nonfree to main factory</comment>
+    <requestid>183790</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>957d45c47c955875d2d168b785b2d7de</srcmd5>
+    <version>5.1.23</version>
+    <time>1374605988</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>184113</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>68606c2549cad8f30488346c80afba21</srcmd5>
+    <version>5.1.23</version>
+    <time>1379319534</time>
+    <user>coolo</user>
+    <comment>- Drop t1lib from buildrequires, no longer in Factory (forwarded request 198912 from mvyskocil)</comment>
+    <requestid>198913</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>68606c2549cad8f30488346c80afba21</srcmd5>
+    <version>5.1.23</version>
+    <time>1379665085</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>68606c2549cad8f30488346c80afba21</srcmd5>
+    <version>5.1.23</version>
+    <time>1409303772</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>2c5de125c643bd4bd425bea607d3163c</srcmd5>
+    <version>5.1.23</version>
+    <time>1426064287</time>
+    <user>dimstar_suse</user>
+    <comment>- Change categories to 'Education;Science;Math;', as 'Edutainmnent'
+  is no longer valid. (forwarded request 290022 from dimstar)</comment>
+    <requestid>290023</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8d6f0e0da1e5d7ed2974e694b374e5bb</srcmd5>
+    <version>5.1.25</version>
+    <time>1426680298</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290926</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1e455060a483c86bb8d9ef11ba866e29</srcmd5>
+    <version>5.1.25</version>
+    <time>1495267924</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493058</requestid>
+  </revision>
+</revisionlist>

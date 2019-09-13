@@ -1,0 +1,9 @@
+<package name="csync2" project="openSUSE:Factory">
+  <title>Cluster synchronization tool</title>
+  <description>Csync2 is a cluster synchronization tool. It can be used to keep files
+on multiple hosts in a cluster in sync. Csync2 can handle complex
+setups with much more than just 2 hosts, handle file deletions and can
+detect conflicts. It is expedient for HA-clusters, HPC-clusters, COWs
+and server farms.</description>
+  <devel project="network:ha-clustering:Factory" package="csync2"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="cmark" project="openSUSE:Factory">
+  <title>CommonMark parsing and rendering library and program in C</title>
+  <description>cmark is the C reference implementation of CommonMark, a rationalized version of Markdown syntax with a spec. (For the JavaScript reference implementation, see commonmark.js.)
+
+It provides a shared library (libcmark) with functions for parsing CommonMark documents to an abstract syntax tree (AST), manipulating the AST, and rendering the document to HTML, groff man, LaTeX, CommonMark, or an XML representation of the AST. It also provides a command-line program (cmark) for parsing and rendering CommonMark documents.</description>
+  <devel project="devel:libraries:c_c++" package="cmark"/>
+</package>

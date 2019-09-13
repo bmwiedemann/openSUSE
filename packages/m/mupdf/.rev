@@ -1,0 +1,519 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5be9479beba8a3444223ec0f9726f9f</srcmd5>
+    <version>1.1</version>
+    <time>1363692136</time>
+    <user>coolo</user>
+    <comment>New package: mupdf -- a lightweight pdf reader</comment>
+    <requestid>158555</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4bda972c1dcb3c8bb77d9349dff0a838</srcmd5>
+    <version>1.2</version>
+    <time>1365484078</time>
+    <user>coolo</user>
+    <comment>- update to version 1.2
+  - Change licensing terms to GNU AGPL (from GNU GPL).
+  - Renamed 'mubusy' to 'mutool'.
+  - Add support for Javascript and forms handling.
+  - PDF 1.7 Extension Level 8 encryption implemented.
+  - Oversized and stroke text clipping implemented.
+  - Prototype transition support.
+  - Add fz_open_document_with_stream to allow non-file based
+    operation.
+  - Text searching API.
+  - Highlight and copy text selection API.
+  - Pass matrices and rectangles by reference for improved
+    performance.
+  - Change shadings to decompose at render times; massive memory
+    savings.
+  - Performance enhancements for color conversion and fax
+    decompression.
+  - ARM optimisations for color conversion and bitmap scaling.
+  - Bitmap subsampling stage introduced, with ARM optimisations.
+  - Type 3 fonts; glyphs are now handled as display lists.
+  - Scan converter performance improvements.
+  - Fix many SEGVs with out of spec files.
+  - Various rendering fixes. (forwarded request 162971 from gberh)</comment>
+    <requestid>163014</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0160cc7c19aa4991dd866d9fd3d5f1cf</srcmd5>
+    <version>1.2</version>
+    <time>1367237236</time>
+    <user>coolo</user>
+    <comment>A hack to prevent 3d-party software linking error:
+[ 2226s] Linking CXX shared library libleechcraft_monocle_mu.so
+[ 2226s] /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../x86_64-suse-linux/bin/ld: /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/libfitz.a(dev_null.o): relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a shared object; recompile with -fPIC
+[ 2226s] /usr/lib64/gcc/x86_64-suse-linux/4.7/../../../../lib64/libfitz.a: could not read symbols: Bad value
+[ 2226s] collect2: error: ld returned 1 exit status
+[ 2226s] make[2]: *** [plugins/monocle/plugins/mu/libleechcraft_monocle_mu.so] Error 1
+[ 2226s] make[1]: *** [plugins/monocle/plugins/mu/CMakeFiles/leechcraft_monocle_mu.dir/all] Error 2
+[ 2226s] make[1]: *** Waiting for unfinished jobs.... (forwarded request 173632 from DarkSS)</comment>
+    <requestid>173657</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ac04f55cb3da14b54d4c65137cfe3f72</srcmd5>
+    <version>1.2</version>
+    <time>1367486724</time>
+    <user>coolo</user>
+    <comment>- fix broken setting of CFLAGS introduced by the previous change (forwarded request 173778 from gberh)</comment>
+    <requestid>174036</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d48b5e0d0b1f8fcefce45ef224b97af4</srcmd5>
+    <version>1.2</version>
+    <time>1372434544</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>180828</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>d48b5e0d0b1f8fcefce45ef224b97af4</srcmd5>
+    <version>1.2</version>
+    <time>1379663324</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e5db5759f8bf1559d932662ec402a15e</srcmd5>
+    <version>1.3</version>
+    <time>1389026738</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to version 1.3
+  * Windows RT viewer app for MuPDF.
+  * Library changes to support progressive loading (display PDF
+    files as they download). Windows/Linux/MacOS viewer supports
+    this using curl.
+  * Incremental updates to PDF files are now (optionally) preserved
+    on loading/saving.
+  * Prototype support for checking PDF Digital Signatures.
+  * Initial annotation support (strike-out, underline, highlight
+   and ink) (library and android builds only).
+  * Fix operation on Android API level 8.
+  * Android redraw optimisations.
+  * Android app now supports Google Cloud Print.
+  * Android app translated into many languages.
+  * Android support for more architectures.
+  * Improvements to store (avoid collisions causing unnecessary
+    evictions).
+  * Windows apps use Unicode filenames now.
+  * PDF function handling improved; functions can now be passed to
+    devices without 'sampling'.
+  * PDF image handling improved; images can now be passed to
+   devices without decompression.
+  * Indexed images are no longer uncompressed at load time, saving
+    memory.
+  * Caching of rendered tiles for speed.
+  * Improved text analysis mode, capable of spotting
+    columns/indents, right-to-left text etc.
+  * HTML output mode now includes image output.
+  * PDF password encoding handling improved.
+  * MuPDF now opens Jpeg, Tiff and PNG files directly. (forwarded request 212849 from gberh)</comment>
+    <requestid>212883</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8496484fba3dd68e8f5b780b08b746f6</srcmd5>
+    <version>1.3</version>
+    <time>1392731120</time>
+    <user>coolo</user>
+    <comment>- add mupdf-fix-array-overflow.patch in order to fix a stack-based
+  buffer overflow in xps_parse_color() (bnc#863975) (forwarded request 222307 from gberh)</comment>
+    <requestid>222656</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f5fd78f6700d71a53e48989843cb6c25</srcmd5>
+    <version>1.4</version>
+    <time>1402948535</time>
+    <user>coolo</user>
+    <comment>- fix source url
+
+- update to version 1.4
+  * Headline changes:
+    * CMYK rendering (mudraw PWG and PAM formats)
+    * TIFF viewer (with multi-page support).
+    * Added MuJS Javascript interpreter.
+      * MuJS is the default, V8 and JavaScriptCore are compile time
+        options.
+      * Javascript support has to be explicitly enabled with
+        pdf_enable_js.
+      * All viewers now have JavaScript enabled in the default
+        builds.
+  * Viewers:
+    * X11: Horizontal scroll wheel support.
+    * X11: Status bar display with warnings.
+    * Android: Digital signatures.
+    * iOS: Links, form filling, annotation editing, and javascript.
+    * iOS: Reflow mode.
+    * WinRT: Printing.
+    * WinRT: Improved zooming behaviour.
+  * Tools:
+    * mudraw: Banded rendering with -B /band-height/.
+    * mudraw: Select output format with -F /format/.
+    * mudraw: Write to stdout if you use '-' as the output file
+      name.
+    * mudraw: Add TGA output format.
+    * mudraw: Improved SVG output.
+    * mutool show: Write output to file instead of stdout with -o
+      /filename/.</comment>
+    <requestid>235867</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b7123e9c916408d88193278536ae4129</srcmd5>
+    <version>1.5</version>
+    <time>1409170693</time>
+    <user>coolo</user>
+    <comment>- update to version 1.5
+  * This is a bugfix release: dozens of bugs have been found and
+    exterminated!
+  * A typo resulting in a potential stack overflow that could
+    corrupt files when saving edits to a PDF has been fixed.
+    Another bug which caused a significant slowdown has also been
+    fixed.</comment>
+    <requestid>246433</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b7123e9c916408d88193278536ae4129</srcmd5>
+    <version>1.5</version>
+    <time>1409301943</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>da5af2c482532d1a143dd949d126fef5</srcmd5>
+    <version>1.6</version>
+    <time>1420755617</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.6
+  * Features:
+    + Color detection device (mudraw -T).
+    + Sepia mode full-page color tinting in X11 and win32 viewer 
+      (keybinding: shift-C).
+    + Re-implement printf and strtod due to portability issue with
+      locales and number formatting.
+    + Add experimental 'gsview' project: a Windows Modern UI viewer.
+    + Improve XML parser interface. 
+  * Bug fixes:
+    + CBZ page ordering
+    + ZIP64 support
+    + iOS and Android bug fixes
+    + Miscellaneous minor fixes</comment>
+    <requestid>280003</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>29c63b70ba61507e4d85f31e5ad0909c</srcmd5>
+    <version>1.7</version>
+    <time>1429658133</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298070</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7b080bfae07027688b4672d8eda6d3c2</srcmd5>
+    <version>1.7a</version>
+    <time>1440479897</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324935</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5241544513f685bae7809ab0548828cf</srcmd5>
+    <version>1.8</version>
+    <time>1447766445</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8
+  * New URW fonts with greek and cyrillic.
+  * 64-bit file support.
+  * Updated FreeType to version 2.6.1.
+  * Various font substitution bug fixes.
+  * Fix setjmp/longjmp behaviour which could cause optimizing
+    compilers to misbehave.
+  * EPUB improvements: User style sheets, GIF images, Table of Contents,
+    CJK text, Page margins and many bug fixes.</comment>
+    <requestid>344043</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7be71b681f167e507470c2bea2b72065</srcmd5>
+    <version>1.8</version>
+    <time>1448400641</time>
+    <user>coolo</user>
+    <comment>- Ship mupdf-x11-curl as default mupdf. Drop non-curl version.
+- Drop mujstest as it seems to be a test utility.</comment>
+    <requestid>345176</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>75bc1dd6098d2b97a44a5de25eef30db</srcmd5>
+    <version>1.8</version>
+    <time>1459002060</time>
+    <user>dimstar_suse</user>
+    <comment>- Set to best anti-alias mode (8) by default.</comment>
+    <requestid>377157</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>626ea3843567691844615a60409fd008</srcmd5>
+    <version>1.9</version>
+    <time>1461855007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9
+  * Bidirectional layout for Arabic and Hebrew scripts.
+  * Shaping complex scripts for EPUB text layout.
+  * Noto fallback fonts for EPUB layout.
+  * mutool create:
+    - Create new PDF files from scratch.
+    - Read an annotated content stream in a text file and write a
+      PDF file, automatically embedding font and image resources.
+  * mutool run:
+    - Run javascript scripts with MuPDF bindings.
+    - The interface is similar to the new Java interface.
+  * mutool draw:
+    - Optional multi-threaded operation (Windows and pthreads).
+    - Optional low memory mode (primarily for testing).</comment>
+    <requestid>390653</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>99a9efa744e5e708cfa48938bd392af0</srcmd5>
+    <version>1.9a</version>
+    <time>1462447115</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>392941</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>c0edeeb9ec823f96704e283e360d46ab</srcmd5>
+    <version>1.9a</version>
+    <time>1469742219</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2016-6265.patch to fix a use-after-free bsc#990195</comment>
+    <requestid>412765</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e8ebfd2c6bc0f7e8d51d03eb2abaebfe</srcmd5>
+    <version>1.10</version>
+    <time>1480584258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10
+  * FictionBook (FB2) e-book support.
+  * Simple SVG parser (a small subset of SVG only).
+  * mutool convert: a new document conversion tool and interface.
+  * Multi-threaded rendering in mudraw.
+  * Updated base 14 fonts from URW.
+  * New CJK font with language specific variants.
+  * Hyperlink support in EPUB.
+  * Alpha channel is now optional in pixmaps.
+  * More aggressive purging of cached objects.
+  * Partial image decoding for lower memory use when banding.
+  * Reduced default set of built-in CMap tables to the minimum required.
+  * FZ_ENABLE_PDF, _XPS, _JS, to disable features at compile time.
+  * Function level linking.
+  * Dropped pdf object generation numbers from public interfaces.
+  * Simplified PDF page, xobject, and annotation internals.
+  * Closing and freeing devices and writers are now separate steps.
+  * Improved PDF annotation editing interface (still a work in progress).
+  * Document writer interface.
+  * Banded image writer interface.
+- Drop CVE-2016-6265.patch and mupdf-fix-openjpeg2.patch,
+  both are fixed upstream.</comment>
+    <requestid>441873</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>baf9d9ab6d0c5c25fb2a425ecb64dc26</srcmd5>
+    <version>1.10a</version>
+    <time>1482418812</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to version 1.10a
+  * A bug with mutool and saving PDF files using the 'ascii'
+    option has been fixed.
+- Add fix-openjpeg-flags.patch to stop defining OPJ_STATIC,
+  this is https://github.com/uclouvain/openjpeg/issues/802</comment>
+    <requestid>447294</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>58191277c92aa8863b0b3c98a7d4049c</srcmd5>
+    <version>1.10a</version>
+    <time>1485862380</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2016-10132.patch, CVE-2016-10133.patch and
+  CVE-2016-10141.patch to fix CVE-2016-10132, CVE-2016-10133 and
+  CVE-2016-10141 bsc#1019877</comment>
+    <requestid>452699</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>30f4c1172aa123f5061f280fe6cc3dc2</srcmd5>
+    <version>1.10a</version>
+    <time>1486716377</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2017-5627.patch and CVE-2017-5628.patch fixes
+  CVE-2017-5627 and CVE-2017-5628 bsc#1022503 bsc#1022504</comment>
+    <requestid>454978</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>af31e724ce2e64fefadc7fc76eccaddb</srcmd5>
+    <version>1.10a</version>
+    <time>1487149207</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bsc1023760.patch to fix writing svg output to stdout if no
+  output specified bsc#1023760
+
+- Add CVE-2017-5896.patch to fix a heap overflow
+  CVE-2017-5896 bsc#1023761 bsc#1024679</comment>
+    <requestid>456000</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>77a408dfaf2c4d13676e86d48d8d5e31</srcmd5>
+    <version>1.10a</version>
+    <time>1493880720</time>
+    <user>dimstar_suse</user>
+    <comment>- mupdf is not a terminal app boo#1036637</comment>
+    <requestid>491698</requestid>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>a21cd643a04b27b10536b7ce4a8c6f30</srcmd5>
+    <version>1.10a</version>
+    <time>1496821848</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499527</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>fd8a0c3ec0ce3cd424aafd5da8c62565</srcmd5>
+    <version>1.10a</version>
+    <time>1502559186</time>
+    <user>maxlin_factory</user>
+    <comment>- Add CVE-2016-10221.patch, CVE-2016-8728.patch and
+  CVE-2017-7976.patch to fix CVE-2016-10221, CVE-2016-8728,
+  CVE-2016-8729 and CVE-2017-7976
+  bsc#1032140 bsc#1039850 bsc#1052029</comment>
+    <requestid>514182</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c90f1322dbfd7ba27dda2fc9d1299a72</srcmd5>
+    <version>1.11</version>
+    <time>1510665496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540468</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>219c61c51a508b96e121d632500c6253</srcmd5>
+    <version>1.12.0</version>
+    <time>1516443867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564446</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>c41c75095eed565909b6ec8832d85ed4</srcmd5>
+    <version>1.12.0</version>
+    <time>1516970117</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2017-17858.patch to fix an heap-based buffer overflow
+  CVE-2017-17858 bsc#1077161 
+
+- Add CVE-2018-5686.patch to fix an infinite loop
+  CVE-2018-5686 bsc#1075936
+
+- Fixes CVE-2017-15369 (bsc#1063413), CVE-2017-15587 (bsc#1064027)</comment>
+    <requestid>569433</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>c5e1b10af65b229b234fd5432dadd6b8</srcmd5>
+    <version>1.12.0</version>
+    <time>1517824161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572218</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>5b16b7595c3f629bca7bd80760c39a39</srcmd5>
+    <version>1.12.0</version>
+    <time>1518187480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573349</requestid>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>38f309e978600332fd650556e8aa316a</srcmd5>
+    <version>1.12.0</version>
+    <time>1518596373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575495</requestid>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>263612425dd24ee7f0caa45ba383d66e</srcmd5>
+    <version>1.12.0</version>
+    <time>1518813483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576860</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7c3393bda0bc30a566cc7d93961f8d93</srcmd5>
+    <version>1.13.0</version>
+    <time>1524643128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599916</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>5c9b006ac6a178f53d160969114d57ee</srcmd5>
+    <version>1.13.0</version>
+    <time>1525256225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602788</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8815ef8ee97d32bdb36b1924a5fd4fe8</srcmd5>
+    <version>1.14.0</version>
+    <time>1553611398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685966</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>227a075c1f27a26668a2365d3f413356</srcmd5>
+    <version>1.16.1</version>
+    <time>1566243466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16.1
+  * Changes in version 1.16.1:
+    * Bugfixes
+  * Changes in version 1.16.0:
+    * api: Major overhaul of color management architecture.
+    * api: Improved functions to verify/sign PDF documents.
+    * api: Number tree accessor function pdf_lookup_number.
+    * api: Parse and handle more options for PWG output.
+    * api: Removed obsolete gproof document type.
+    * api: User callbacks for warning and error messages.
+    * epub: Changed default page size to A5.
+    * epub: Draw embedded SVG documents in EPUB/XHTML.
+    * epub: New Noto fonts covering more unicode scripts.
+    * epub: Support small-caps font-variant.
+    * pdf: Add Redact annotation type and function to apply redactions.
+    * pdf: Add/remove/change encryption and password when saving PDF files.
+    * pdf: Improvements to text handling in PDF filter processor.
+    * pdf: MP and DP operators now call begin/end_layer device methods.
+    * pdf: New and improved progressive loading.
+    * svg: Draw external images in SVG documents.
+    * mutool show: Add 'form' selector to list PDF form fields.
+    * mutool sign: Sign PDF documents from the command line.
+    * mutool sign: Verify signatures in PDF documents from the command line.
+    * viewer: Option to save a script of user actions for replay with mutool run.
+    * viewer: Runtime toggle for ICC and spot rendering.
+    * viewer: Tooltip when hovering over a link in mupdf-gl.
+  * Changes in version 1.15.0:
+    * WebAssembly build target and examples.
+    * Improved forms API in both C and Java bindings.
+    * Improved forms JavaScript support.</comment>
+    <requestid>724125</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>0adbaecda342157b908e137fd4586938</srcmd5>
+    <version>1.16.1</version>
+    <time>1568191034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729872</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,249 @@
+<revisionlist>
+  <revision rev="1" vrev="45">
+    <srcmd5>f3f4b4d70e516184293914e26e797d5a</srcmd5>
+    <version>1.0.6</version>
+    <time>1197892660</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="54">
+    <srcmd5>b5c40a61da5781788d0eabf30d3e5581</srcmd5>
+    <version>1.0.6</version>
+    <time>1200613402</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="66">
+    <srcmd5>676bb7a4d27856e20e07b0251500dcdd</srcmd5>
+    <version>1.0.6</version>
+    <time>1203147284</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="70">
+    <srcmd5>98e54eb07daefcbfaa30d4bea6732e14</srcmd5>
+    <version>1.0.6</version>
+    <time>1204219407</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>90cd386c43986cb8f2ec877a01057aaa</srcmd5>
+    <version>1.0.7</version>
+    <time>1207462151</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b99a54625a97efe150a70a96274f9890</srcmd5>
+    <version>1.0.7</version>
+    <time>1207858012</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e715f7cf37cc842c5d583829eef763c3</srcmd5>
+    <version>1.0.8</version>
+    <time>1216995037</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f1d23852a9e03666852b2a5f29334bc0</srcmd5>
+    <version>1.0.8</version>
+    <time>1231894552</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6352bef1afc974694d544640c1171f3f</srcmd5>
+    <version>1.0.9</version>
+    <time>1260953469</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/redland based on submit request 26642 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>fe20f95534bb0acc246c44fa84eaff8b</srcmd5>
+    <version>1.0.9</version>
+    <time>1260978753</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/redland based on submit request 26771 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2494206c42aa386b2bb126d5062f86dc</srcmd5>
+    <version>1.0.10</version>
+    <time>1262861286</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/redland based on submit request 27981 from user Beineri
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>bf3b80e710cca475d39f09dd7543a70d</srcmd5>
+    <version>1.0.10</version>
+    <time>1268925968</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>bf3b80e710cca475d39f09dd7543a70d</srcmd5>
+    <version>1.0.10</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>bf3b80e710cca475d39f09dd7543a70d</srcmd5>
+    <version>1.0.10</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>04c620db7cfe866714faffec502f5075</srcmd5>
+    <version>1.0.12</version>
+    <time>1287505933</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51055 from user dirkmueller
+</comment>
+    <requestid>51055</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d6ab0c6ed248c79d5c8d1bde72ba8d79</srcmd5>
+    <version>1.0.12</version>
+    <time>1287505941</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51055
+</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>d6ab0c6ed248c79d5c8d1bde72ba8d79</srcmd5>
+    <version>1.0.12</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>51b9292449ce46fca5746f9e88af179f</srcmd5>
+    <version>1.0.12</version>
+    <time>1299587987</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63617 from user coolo
+</comment>
+    <requestid>63617</requestid>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>ed748e7d735f81405de9e765a7d211c4</srcmd5>
+    <version>1.0.12</version>
+    <time>1299587994</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63617
+</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>5048b535ba2d6c5ff2f44237db3f1638</srcmd5>
+    <version>1.0.14</version>
+    <time>1316504148</time>
+    <user>lrupp</user>
+    <comment>Update version 1.0.14. This version supports raptor v2. Unfortunately I had to strip the bindings part from the package as that this no longer builds alongside the libraries itself. I have created a separate package (redland-bindings) which I will submit to the X11:common:Factory devel project and from there to Factory</comment>
+    <requestid>83584</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>5048b535ba2d6c5ff2f44237db3f1638</srcmd5>
+    <version>1.0.14</version>
+    <time>1319182424</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>d1d10a52a2ffb1bdd7904c1a59973135</srcmd5>
+    <version>1.0.14</version>
+    <time>1321460474</time>
+    <user>coolo</user>
+    <comment>A patch was added to open files with a specific parameter to prevent races and leaks. This patch seems however only valid for 12.1 and higher. </comment>
+    <requestid>91746</requestid>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>40b460c01824527fcd442ec3ffc84363</srcmd5>
+    <version>1.0.14</version>
+    <time>1323194383</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>28f46de0ae1ad42a729b902f8178ea1c</srcmd5>
+    <version>1.0.15</version>
+    <time>1325007514</time>
+    <user>coolo</user>
+    <comment>Update to Redland 1.0.15</comment>
+    <requestid>97645</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>72ca2c30d53ee8a79a2571d514eea0a7</srcmd5>
+    <version>1.0.15</version>
+    <time>1337005113</time>
+    <user>coolo</user>
+    <comment>Added support for PostgreSQL RDF backing store. Removed the -devel package and libpq5 require as commented in SR #116777 (forwarded request 117690 from deadpoint)</comment>
+    <requestid>120692</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>72ca2c30d53ee8a79a2571d514eea0a7</srcmd5>
+    <version>1.0.15</version>
+    <time>1340184140</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7f56600c3a577301809dac89b4e5486b</srcmd5>
+    <version>1.0.16</version>
+    <time>1357576780</time>
+    <user>coolo</user>
+    <comment>- Update to 1.0.16
+  * Fixed Issues: [1]#0000443, [2]#0000460, [3]#0000497, [4]#0000518,
+    [5]#0000519
+  * Postgres, MySQL and Hashes storage bug fixes.
+  * Multiple other API bug fixes
+  * Multiple build fixes to help building on Windows.
+  * Requires Raptor 2.0.7 or newer
+  * librdf_model_contains_statement() and librdf_storage_contains_
+    statement() now return 0 for invalid statements (forwarded request 146933 from sumski)</comment>
+    <requestid>146938</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>7f56600c3a577301809dac89b4e5486b</srcmd5>
+    <version>1.0.16</version>
+    <time>1359110281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>ca0cd128edd31d55c5113eaf908cbe65</srcmd5>
+    <version>1.0.16</version>
+    <time>1371562385</time>
+    <user>coolo</user>
+    <comment>- Add redland-db6.diff to make it look for libdb 6.0
+- Implement shlib packaging guidelines (forwarded request 179114 from jengelh)</comment>
+    <requestid>179352</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>ca0cd128edd31d55c5113eaf908cbe65</srcmd5>
+    <version>1.0.16</version>
+    <time>1379664441</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="8">
+    <srcmd5>ca0cd128edd31d55c5113eaf908cbe65</srcmd5>
+    <version>1.0.16</version>
+    <time>1409303174</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>59c77a93b24a3def0146b48051281105</srcmd5>
+    <version>1.0.17</version>
+    <time>1426680068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>290934</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>3b583e979e4138f9fceeceee5702de6a</srcmd5>
+    <version>1.0.17</version>
+    <time>1552380604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683595</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="cava" project="openSUSE:Factory">
+  <title>Console-based Audio Visualizer for Alsa</title>
+  <description>C.A.V.A. is a bar spectrum audio visualizer for the Linux terminal using ALSA, pulseaudio or fifo buffer for input.
+
+</description>
+  <devel project="multimedia:apps" package="cava"/>
+  <url>https://github.com/karlstav/cava</url>
+</package>

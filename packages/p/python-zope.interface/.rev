@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9f05aa3922e7c472e45b02ac571965b8</srcmd5>
+    <version>3.7.0</version>
+    <time>1315863866</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>81114</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5839f3480794786e878293522da8c093</srcmd5>
+    <version>3.8.0</version>
+    <time>1317025104</time>
+    <user>saschpe</user>
+    <comment>- Update to version 3.8.0:
+  * New module zope.interface.registry
+  * No longer Python 2.4 compatible (tested under 2.5, 2.6, 2.7, and 3.2).</comment>
+    <requestid>84597</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5839f3480794786e878293522da8c093</srcmd5>
+    <version>3.8.0</version>
+    <time>1319182410</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b09ec1d7e0540cbae8bc34d12aecab01</srcmd5>
+    <version>3.8.0</version>
+    <time>1323194306</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8721fe2f02834ea30dc3642e4a311527</srcmd5>
+    <version>3.8.0</version>
+    <time>1328202015</time>
+    <user>coolo</user>
+    <comment>- Simplified macro usage</comment>
+    <requestid>102385</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>8721fe2f02834ea30dc3642e4a311527</srcmd5>
+    <version>3.8.0</version>
+    <time>1340184103</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bb15f4d753f772d7ed86d695ca4a1357</srcmd5>
+    <version>4.0.1</version>
+    <time>1353514535</time>
+    <user>coolo</user>
+    <comment>Updated to 4.0.1 (forwarded request 138053 from saschpe)</comment>
+    <requestid>142024</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>753c5f7282b58f7f02536bdd81545a78</srcmd5>
+    <version>4.0.3</version>
+    <time>1358415340</time>
+    <user>coolo</user>
+    <comment>Update and python3 support (forwarded request 148442 from posophe)</comment>
+    <requestid>148566</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>753c5f7282b58f7f02536bdd81545a78</srcmd5>
+    <version>4.0.3</version>
+    <time>1359110153</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>2fbaa7eeb2733466f786d067a398ebdd</srcmd5>
+    <version>4.0.3</version>
+    <time>1372064711</time>
+    <user>coolo</user>
+    <comment>remove duplicated spec file</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0fd5ee56c4f23012e50a9551229cbf07</srcmd5>
+    <version>4.0.5</version>
+    <time>1378238783</time>
+    <user>coolo</user>
+    <comment>- add unzip to BuildRequires
+
+- Ship upstream tarbal (zipfile) and fix Source URL
+
+- Updated to 4.0.5:
+  * Fixed a bug where a decorated method caused false positive failures on verifyClass().
+- Updated to 4.0.4:
+  * Fixed a bug that was revealed by porting zope.traversing. During a loop, the loop body modified a weakref dict causing a RuntimeError error.
+- generate documentation in -doc package
+- enable tests</comment>
+    <requestid>186707</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0fd5ee56c4f23012e50a9551229cbf07</srcmd5>
+    <version>4.0.5</version>
+    <time>1379664323</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>31f4eb81d28971321576dc5cf0a1ce15</srcmd5>
+    <version>4.0.5</version>
+    <time>1387737444</time>
+    <user>scarabeus_factory</user>
+    <comment>fix bootstrap issue (forwarded request 211458 from coolo)</comment>
+    <requestid>211658</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>beafdf645ac656aca42b53d60fc76277</srcmd5>
+    <version>4.1.0</version>
+    <time>1393394118</time>
+    <user>coolo</user>
+    <comment>Update to 4.1.0, update source URL (no .zip available for this version). (forwarded request 222500 from poorboywilly)</comment>
+    <requestid>222541</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>beafdf645ac656aca42b53d60fc76277</srcmd5>
+    <version>4.1.0</version>
+    <time>1409303032</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>724e206a066d4f03f8c8ba2e42af11d6</srcmd5>
+    <version>4.1.1</version>
+    <time>1411927080</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>251732</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8e20a2462f49b8f063bf5014886aebd2</srcmd5>
+    <version>4.1.2</version>
+    <time>1432157821</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307903</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7ed5a13af0b65c5827e171395a13417c</srcmd5>
+    <version>4.3.1</version>
+    <time>1480018750</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441358</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bc015146ccfa367c90a6a1d5bb911e97</srcmd5>
+    <version>4.4.2</version>
+    <time>1498638743</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505397</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2cc24438bfff45894fb2410bac61ddd0</srcmd5>
+    <version>4.5.0</version>
+    <time>1535701890</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 4.5.0:
+  * Allow registering and unregistering instance methods as listeners. See issue 12 and PR 102.
+  * Synchronize and simplify zope/__init__.py. See issue 114
+  * Avoid exceptions when the __annotations__ attribute is added to interface definitions with Python 3.x type hints. See issue 98.
+  * Fix the possibility of a rare crash in the C extension when deallocating items. See issue 100.</comment>
+    <requestid>631966</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5ccb355e919fe7e0ef7aafed93a59b2b</srcmd5>
+    <version>4.5.0</version>
+    <time>1544816740</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>655596</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>946d69c2ba92916ace1e9b3671d560c4</srcmd5>
+    <version>4.6.0</version>
+    <time>1554833862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691792</requestid>
+  </revision>
+</revisionlist>

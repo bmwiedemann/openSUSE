@@ -1,0 +1,6 @@
+<package name="libmpdclient" project="openSUSE:Factory">
+  <title>libmpdclient</title>
+  <description>A stable, documented, asynchronous API library for interfacing MPD (Music Player Daemon)
+in the C, C++ &amp; Objective C languages.</description>
+  <devel project="multimedia:libs" package="libmpdclient"/>
+</package>

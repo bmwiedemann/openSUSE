@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a6bd46f4fd32aa8b07ffa5249d3f0b2</srcmd5>
+    <version>0.6.7</version>
+    <time>1553611284</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>685035</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f4dd08210fb31d7f8c4c4e433236bd9c</srcmd5>
+    <version>0.6.7</version>
+    <time>1554372279</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim bias from description.
+
+- initial commit</comment>
+    <requestid>690282</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2f65fb4b31b527edfb2675ed83696b01</srcmd5>
+    <version>0.7.1</version>
+    <time>1558515152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704529</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7c0528e760b9aba5cd7657677cdc2b9e</srcmd5>
+    <version>0.7.3</version>
+    <time>1567423477</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop no longer necessary disable_test.patch
+- Replace %doc entry docs/ with docs/* to avoid extra sub-directory
+- Added Suggests: python-Js2Py for optional runtime dependency
+- Update to v0.7.3
+  * Added a new tool called Serialize, that stores Lark's internal
+    state as JSON. That will allow for integration with other languages.
+  * Minor bugfix regarding line-counting and the \s regex
+- from v0.7.2
+  * Lark now allows you to specify the start symbol when calling
+    Lark.parse() (requires pre-declaration of all possible start states,
+    see the start option)
+  * Negative priority now allowed in rules and terminals
+  * Also includes many minor bugfixes, optimizations, and improvements
+    to documentation</comment>
+    <requestid>726282</requestid>
+  </revision>
+</revisionlist>

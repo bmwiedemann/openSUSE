@@ -1,0 +1,5 @@
+<package name="drbd-utils" project="openSUSE:Factory">
+  <title>DRBD utils</title>
+  <description>Distributed Replicated Block Device tools</description>
+  <devel project="network:ha-clustering:Factory" package="drbd-utils"/>
+</package>

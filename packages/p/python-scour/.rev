@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eaa5e5bd5224d6655ec81e0df89c1201</srcmd5>
+    <version>0.26</version>
+    <time>1329215204</time>
+    <user>coolo</user>
+    <comment>this is the key dependency of the open source google music client Nuvola Player. I hope it could be accepted and then I could submit that client to Factory quickly without submit it to nuvola devel repository. thanks for approving.</comment>
+    <requestid>102419</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>eaa5e5bd5224d6655ec81e0df89c1201</srcmd5>
+    <version>0.26</version>
+    <time>1340184090</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>eaa5e5bd5224d6655ec81e0df89c1201</srcmd5>
+    <version>0.26</version>
+    <time>1359110117</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>eaa5e5bd5224d6655ec81e0df89c1201</srcmd5>
+    <version>0.26</version>
+    <time>1379664280</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>eaa5e5bd5224d6655ec81e0df89c1201</srcmd5>
+    <version>0.26</version>
+    <time>1409302987</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3559aa0af1ce1250649aaa81186c7cf3</srcmd5>
+    <version>0.30</version>
+    <time>1432071418</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307485</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ed311171860bf9b0901651e4465b9a7a</srcmd5>
+    <version>0.30</version>
+    <time>1467360071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>405681</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>42179bea2da04ec4f5838f1dafe15e0a</srcmd5>
+    <version>0.35</version>
+    <time>1486389793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>449068</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ebd42b1eec8bf46e16d771aaf6ff08d6</srcmd5>
+    <version>0.35</version>
+    <time>1486465681</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455030</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ea4514fb257b6696854a118d3e9121f9</srcmd5>
+    <version>0.37</version>
+    <time>1554189732</time>
+    <user>dimstar_suse</user>
+    <comment>- Conflict with old scour to avoid conflict on /usr/bin/scour
+
+- Run spec-cleaner to remove few whitespacing problems
+
+- require six &gt;= 1.9.0
+
+- version update to 0.37
+  * Fix escaping of quotes in attribute values.
+  * A lot of performance improvements.
+  * Fix exception when removing duplicated gradients while
+    `--keep-unreferenced-defs` is used.
+  * Remove some illegal optimizations of `m0 0` sub-path commands.
+  * Fix and improve handling of boolean flags in elliptical arc path
+    commands.
+  * Fix exception when using two-number forms of the filter attributes
+    `baseFrequency`, `order`, `radius` and `stdDeviation`.
+  * Improve whitespace handling in text nodes fixing an issue where
+    scouring added spaces in error and reducing file size in many cases.
+  * Drop official support for Python 3.3.
+- etc. see HISTORY.md for details.
+- build also python3 variant
+- run unit tests
+- package LICENSE and *.md</comment>
+    <requestid>690315</requestid>
+  </revision>
+</revisionlist>

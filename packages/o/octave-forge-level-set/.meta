@@ -1,0 +1,6 @@
+<package name="octave-forge-level-set" project="openSUSE:Factory">
+  <title></title>
+  <description>Routines for calculating the time-evolution of the level-set equation and extracting geometric information from the level-set function.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-level-set"/>
+</package>

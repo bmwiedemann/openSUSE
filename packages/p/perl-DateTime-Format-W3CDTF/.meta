@@ -1,0 +1,6 @@
+<package name="perl-DateTime-Format-W3CDTF" project="openSUSE:Factory">
+  <title>Parse and format W3CDTF datetime strings</title>
+  <description>This module understands the W3CDTF date/time format, an ISO 8601 profile, defined at http://www.w3.org/TR/NOTE-datetime. This format as the native date format of RSS 1.0.
+It can be used to parse these formats in order to create the appropriate objects.</description>
+  <devel project="devel:languages:perl" package="perl-DateTime-Format-W3CDTF"/>
+</package>

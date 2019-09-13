@@ -1,0 +1,5 @@
+<package name="kiwi-boot-descriptions" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization:Appliances:Builder" package="kiwi-boot-descriptions"/>
+</package>

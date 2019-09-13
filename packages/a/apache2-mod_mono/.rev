@@ -1,0 +1,247 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>837b52b5603ee7855cc37ba0e47fe5ce</srcmd5>
+    <version>1.2.1</version>
+    <time>1168901475</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="14">
+    <srcmd5>e478ac7cf40708c755b7ea84d32dfb7b</srcmd5>
+    <version>1.2.1</version>
+    <time>1169513421</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="32">
+    <srcmd5>622a15b572ec5d8fbdda49baaeac013f</srcmd5>
+    <version>1.2.1</version>
+    <time>1178648626</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6f04cfa85cf5e39bb08e0ca1c4fe9af6</srcmd5>
+    <version>1.2.4</version>
+    <time>1181316709</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>649f1765f29c09a22c7466842f547367</srcmd5>
+    <version>1.2.5</version>
+    <time>1186166080</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>ac6df05db91008aa7402b91fa59887e0</srcmd5>
+    <version>1.2.5</version>
+    <time>1187431400</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>d6a277221eb200a4802cb625670a9440</srcmd5>
+    <version>1.2.5</version>
+    <time>1188567329</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>48aa896d4bca9ea7964c1d10a0f9688b</srcmd5>
+    <version>1.2.6</version>
+    <time>1200373852</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>acc967e27807b3075a9b808f3e6e66ec</srcmd5>
+    <version>1.9</version>
+    <time>1206543802</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d97d50155558fdbf0260c33d6ea49ae4</srcmd5>
+    <version>2.0</version>
+    <time>1220352080</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c0bf547cded980e8a3cb9b2c6f5aca37</srcmd5>
+    <version>2.4</version>
+    <time>1239100933</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3c4839873611c39119590792975e3e0b</srcmd5>
+    <version>2.4.2</version>
+    <time>1250906184</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/apache2-mod_mono based on submit request 18449 from user ajorgensen
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>3c4839873611c39119590792975e3e0b</srcmd5>
+    <version>2.4.2</version>
+    <time>1250906184</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/apache2-mod_mono based on submit request 18449 from user ajorgensen
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>936e8ae0a6424f9b43aae5be365c720d</srcmd5>
+    <version>2.6</version>
+    <time>1264643536</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/apache2-mod_mono based on submit request 30637 from user ajorgensen
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0a712c695789b33518c259ae3711d5a6</srcmd5>
+    <version>2.6.3</version>
+    <time>1268838501</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/apache2-mod_mono based on submit request 34987 from user ajorgensen
+</comment>
+    <requestid>34987</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>401d50980bc277b4b66d96a866c91f11</srcmd5>
+    <version>2.6.3</version>
+    <time>1268922888</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>401d50980bc277b4b66d96a866c91f11</srcmd5>
+    <version>2.6.3</version>
+    <time>1278667336</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>401d50980bc277b4b66d96a866c91f11</srcmd5>
+    <version>2.6.3</version>
+    <time>1278678563</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7d71eb37d29bea06bb5b5c1023c455e9</srcmd5>
+    <version>2.8</version>
+    <time>1288972946</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52090 from user ajorgensen
+</comment>
+    <requestid>52090</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>bd40557cdb41897a245672479435b3af</srcmd5>
+    <version>2.8</version>
+    <time>1288972951</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52090
+</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>bd40557cdb41897a245672479435b3af</srcmd5>
+    <version>2.8</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1e5efd0f826b0a8e039a5b9d824eb259</srcmd5>
+    <version>2.10</version>
+    <time>1298402282</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62534 from user ajorgensen
+</comment>
+    <requestid>62534</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>269fc8f1a1601b9be2db17a95f4d47bc</srcmd5>
+    <version>2.10</version>
+    <time>1298402291</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62534
+</comment>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>0f6a6492245ddd9d90da917fabc4839e</srcmd5>
+    <version>2.10</version>
+    <time>1298455490</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62592 from user ajorgensen
+</comment>
+    <requestid>62592</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>16b90ad86089dc5436a48ae29c1f8d12</srcmd5>
+    <version>2.10</version>
+    <time>1298455500</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62592
+</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>e310af8b43fb544c540131518ded184d</srcmd5>
+    <version>2.10</version>
+    <time>1316680802</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82764 from jengelh)</comment>
+    <requestid>84255</requestid>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>e310af8b43fb544c540131518ded184d</srcmd5>
+    <version>2.10</version>
+    <time>1319181771</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>ba8582be0f951090515650a3c6b939fc</srcmd5>
+    <version>2.10</version>
+    <time>1323190716</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>ba8582be0f951090515650a3c6b939fc</srcmd5>
+    <version>2.10</version>
+    <time>1340183176</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="30" vrev="12">
+    <srcmd5>ba8582be0f951090515650a3c6b939fc</srcmd5>
+    <version>2.10</version>
+    <time>1359108657</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="13">
+    <srcmd5>34f67065e75b7362a3cbf4077a7639a9</srcmd5>
+    <version>2.10</version>
+    <time>1359580667</time>
+    <user>coolo</user>
+    <comment>- Add apache2-mod_mono-apache24.patch: Fix build with Apache 2.4
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system. (forwarded request 150445 from dimstar)</comment>
+    <requestid>150446</requestid>
+  </revision>
+  <revision rev="32" vrev="15">
+    <srcmd5>34f67065e75b7362a3cbf4077a7639a9</srcmd5>
+    <version>2.10</version>
+    <time>1379661975</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="17">
+    <srcmd5>34f67065e75b7362a3cbf4077a7639a9</srcmd5>
+    <version>2.10</version>
+    <time>1409300500</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4e301788c98ef900641f1e649c807bbf</srcmd5>
+    <version>3.12</version>
+    <time>1432723963</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308840</requestid>
+  </revision>
+</revisionlist>

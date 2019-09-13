@@ -1,0 +1,5 @@
+<package name="xterm" project="openSUSE:Factory">
+  <title>The basic X terminal program</title>
+  <description>This package contains the basic X.Org terminal program.</description>
+  <devel project="X11:terminals" package="xterm"/>
+</package>

@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be58dd0e9ab648557a48d2f3cc9939d6</srcmd5>
+    <version>1.2</version>
+    <time>1361192364</time>
+    <user>coolo</user>
+    <comment>Dependency of python-keyring update (sr#155086)wq</comment>
+    <requestid>155301</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>be58dd0e9ab648557a48d2f3cc9939d6</srcmd5>
+    <version>1.2</version>
+    <time>1379664263</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b99285cad1ba1825ca90685bbc827aee</srcmd5>
+    <version>1.2</version>
+    <time>1382693394</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204637</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e71239bf3c3ec952b8a0e95a59e8480b</srcmd5>
+    <version>2.0</version>
+    <time>1385388291</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 208205 from posophe)</comment>
+    <requestid>208206</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e71239bf3c3ec952b8a0e95a59e8480b</srcmd5>
+    <version>2.0</version>
+    <time>1409302968</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eed240f513e05540adc3a0c01fc415dd</srcmd5>
+    <version>2.6.1</version>
+    <time>1440337344</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>322392</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1a39353f0ca9b056af651b771eae1c03</srcmd5>
+    <version>2.9</version>
+    <time>1473103114</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424250</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e6711a4ef51082f8ba0b677971ed7fd7</srcmd5>
+    <version>2.11.1</version>
+    <time>1489020407</time>
+    <user>dimstar_suse</user>
+    <comment>- fix requirements for broken python-setuptools_scm (forwarded request 477289 from matejcik)</comment>
+    <requestid>477290</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0d5a8ff8e19297bff0dfd1f0394e8b7c</srcmd5>
+    <version>2.12.1</version>
+    <time>1506678579</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528800</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>947cb1923a7401ca4206d01c98e4ebc6</srcmd5>
+    <version>2.12.1</version>
+    <time>1507627998</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530884</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f2bc57a068fd6cc9311dabe45aa1c133</srcmd5>
+    <version>2.12.2</version>
+    <time>1509530927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537524</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>eeff201f76ab1b3a8ea4bacbff1edfa7</srcmd5>
+    <version>3.0</version>
+    <time>1510406247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539569</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>69fe66894a2fa4d94b15280ae55c2f84</srcmd5>
+    <version>4.0</version>
+    <time>1519218455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577963</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>413c99bc8a5125ccf69ea24f14e4cad5</srcmd5>
+    <version>4.2</version>
+    <time>1522225641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590887</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f14ab335d1219e79995a563778ec4f70</srcmd5>
+    <version>4.4</version>
+    <time>1551215721</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip tests as they try to pull stuff from pip and as such
+  are unusable for OBS validation
+
+- Update to 4.4:
+  * #43: Detect condition where declarative config will cause errors and emit a UserWarning with guidance on necessary actions.
+  * #42: Update project metadata, including pyproject.toml declaration.
+
+- Update URL to match reality
+- Run tests</comment>
+    <requestid>678211</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1e915f73ae971d6fc10aa2f2b113f7db</srcmd5>
+    <version>5.1</version>
+    <time>1560861927</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1:
+  * #42: Prefer pyproject.toml
+  * Refresh package metadata.</comment>
+    <requestid>707092</requestid>
+  </revision>
+</revisionlist>

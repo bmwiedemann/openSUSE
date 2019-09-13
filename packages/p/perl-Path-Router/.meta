@@ -1,0 +1,5 @@
+<package name="perl-Path-Router" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Path-Router"/>
+</package>

@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>da4bb66ee14b637a158c49b67f2d07b2</srcmd5>
+    <version>0.6.0</version>
+    <time>1448553665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>344993</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0033407cc44c4a6de2e76d70603782db</srcmd5>
+    <version>0.6.0</version>
+    <time>1462428748</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>381228</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6aac8d0ca9fca211f9aae4972f2c9f89</srcmd5>
+    <version>0.6.1</version>
+    <time>1473548056</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423360</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>027b3b6e097b6291da0d7ef4988a4f8f</srcmd5>
+    <version>0.6.1</version>
+    <time>1509722763</time>
+    <user>dimstar_suse</user>
+    <comment>- Add explicit BuildRequires for Qt5Sql/Qt5Widgets devel packages,
+  as these are no longer implicitly required by vtk-devel
+</comment>
+    <requestid>538231</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4a165666938439c46729d659684f9b60</srcmd5>
+    <version>0.6.1</version>
+    <time>1510960926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542666</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>a35524a805e78398a6cd67b8984c87a6</srcmd5>
+    <version>0.6.1</version>
+    <time>1529667134</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617704</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e0487d3a4a9211d54b026b873a87c421</srcmd5>
+    <version>0.6.2</version>
+    <time>1546946620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.2
+  * cmake: fix vtk include dirs
+  * fix vtk polydata exports
+- Add QCSXCAD-vtk.patch - fix build on TW, avoid implicitly requiring
+  all VTK modules, leading to missing libraries.
+</comment>
+    <requestid>658627</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9bd24bf8abad23c7ba1e5bb95133b523</srcmd5>
+    <version>0.6.2</version>
+    <time>1554372533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691337</requestid>
+  </revision>
+</revisionlist>

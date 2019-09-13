@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7ccf6976ce8600925699753ffdd26c1</srcmd5>
+    <version>1.9.73</version>
+    <time>1389102699</time>
+    <user>coolo</user>
+    <comment>Addition of keepassx...</comment>
+    <requestid>209642</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a94e494a23e149b4837267e310200043</srcmd5>
+    <version>2.0~alpha5</version>
+    <time>1392110896</time>
+    <user>coolo</user>
+    <comment>update to 2.0-alpha5 - and fix build in Factory (forwarded request 221330 from dimstar)</comment>
+    <requestid>221337</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>73661f316ceb8dd2e665d461f59564dc</srcmd5>
+    <version>2.0~alpha6</version>
+    <time>1407158079</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>243515</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f3ed52158632ef05deb650977ddd4b10</srcmd5>
+    <version>2.0~alpha6</version>
+    <time>1409118372</time>
+    <user>coolo</user>
+    <comment>- keepassx-noselftest.patch: do not run internal selftest as it requires
+  libgcrypt checksums which we not always have.
+
+- Add keepassx-ppc64le.patch: Set correct endianess for ppc64le.</comment>
+    <requestid>246348</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>f3ed52158632ef05deb650977ddd4b10</srcmd5>
+    <version>2.0~alpha6</version>
+    <time>1409301353</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>1d51df4c70e9647ceae94cfcddb5ff80</srcmd5>
+    <version>2.0~alpha6</version>
+    <time>1409761387</time>
+    <user>coolo</user>
+    <comment>- KeyFileHandling.patch:
+  Process &quot;--keyfile&quot; option correct with following behaviour:
+  * Invoking 
+    	     keepassx --keyfile kf_02.key db_02.kdbx
+    now results in immediate opening of database db_02.kdbx
+    if kf_02.key contains the correct key!
+  * This also works if the name of the key file is changed, e.g. 
+    	     keepassx --keyfile kf_02b.key db_02.kdbx
+  * This also works if as per config file additional databases e.g.
+    db_01.kdbx and db_03.kdbx are being opened - each of these databases
+    displays its own password/keyfile dialog, accordingly.
+  * This behaviour can be used to invoke keepassx by autostart
+    with a key extracted from kwallet and w/o exposing the key on the
+    process list as command line argument</comment>
+    <requestid>247185</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9d6e2bf59cbd39a9decee4313b9b1308</srcmd5>
+    <version>2.0~beta1</version>
+    <time>1438421921</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319469</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a493db7b5c20c7eef9c3c193ec7fe178</srcmd5>
+    <version>2.0~beta2</version>
+    <time>1446719746</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342408</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b31a1a83ff3a0fb8fd05494d6c207db6</srcmd5>
+    <version>2.0</version>
+    <time>1449687285</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348078</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>57c728c94b0729481c47c99243737269</srcmd5>
+    <version>2.0</version>
+    <time>1453508181</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable test suite that was accidentally disabled earlier
+  (boo#959078). (forwarded request 354604 from dimstar)</comment>
+    <requestid>354605</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>09142283a6ec8f15edcc5f877cefc6db</srcmd5>
+    <version>2.0.2</version>
+    <time>1455272558</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358859</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>edd7f8bea0fd7a8bd1fc3fccfda99d68</srcmd5>
+    <version>2.0.2</version>
+    <time>1455610721</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358986</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>a70d9352ad9d419c7ff979404738e900</srcmd5>
+    <version>2.0.2</version>
+    <time>1456434570</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361232</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>339b2254e556c1dd6ba804f64a1c2206</srcmd5>
+    <version>2.0.2</version>
+    <time>1459002469</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378876</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>85a1ac483da5a478cad4f491445c4b57</srcmd5>
+    <version>2.0.3</version>
+    <time>1476780191</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435471</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>90da0e613e6535b68714ea2dedac6469</srcmd5>
+    <version>2.0.3</version>
+    <time>1485863193</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453388</requestid>
+  </revision>
+</revisionlist>

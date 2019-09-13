@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>abd89d36eeaf459a85f902988947be51</srcmd5>
+    <version>2.0.1</version>
+    <time>1173871680</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="14">
+    <srcmd5>2cc4266b25a6b53cb2129be4d694bdbb</srcmd5>
+    <version>2.0.1</version>
+    <time>1177273981</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="21">
+    <srcmd5>c3e6dc2303af0a8d04a3fcc069b7982b</srcmd5>
+    <version>2.0.1</version>
+    <time>1178225296</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="41">
+    <srcmd5>6bde2f69a48b91c9db815d03422fd65d</srcmd5>
+    <version>2.0.1</version>
+    <time>1182721937</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="232">
+    <srcmd5>6bde2f69a48b91c9db815d03422fd65d</srcmd5>
+    <version>2.0.1</version>
+    <time>1182721937</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="233">
+    <srcmd5>4e0a669196379a4aa4e7f0013b802bc2</srcmd5>
+    <version>2.0.1</version>
+    <time>1245260116</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="235">
+    <srcmd5>4e0a669196379a4aa4e7f0013b802bc2</srcmd5>
+    <version>2.0.1</version>
+    <time>1245260116</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="236">
+    <srcmd5>ead154db7801c108b26add13397663f1</srcmd5>
+    <version>2.0.1</version>
+    <time>1268923825</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="238">
+    <srcmd5>ead154db7801c108b26add13397663f1</srcmd5>
+    <version>2.0.1</version>
+    <time>1278667347</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="239">
+    <srcmd5>ead154db7801c108b26add13397663f1</srcmd5>
+    <version>2.0.1</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="242">
+    <srcmd5>ead154db7801c108b26add13397663f1</srcmd5>
+    <version>2.0.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="244">
+    <srcmd5>ead154db7801c108b26add13397663f1</srcmd5>
+    <version>2.0.1</version>
+    <time>1319181929</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="245">
+    <srcmd5>e834c87ec2bbebee078d51ab193f6fe7</srcmd5>
+    <version>2.0.1</version>
+    <time>1323191703</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="247">
+    <srcmd5>e834c87ec2bbebee078d51ab193f6fe7</srcmd5>
+    <version>2.0.1</version>
+    <time>1340183393</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="248">
+    <srcmd5>818a62e8a2685ec75bd1a41b326a95dd</srcmd5>
+    <version>2.0.1</version>
+    <time>1351974635</time>
+    <user>coolo</user>
+    <comment>- add buildrequire groff (forwarded request 139534 from coolo)</comment>
+    <requestid>139842</requestid>
+  </revision>
+  <revision rev="16" vrev="250">
+    <srcmd5>818a62e8a2685ec75bd1a41b326a95dd</srcmd5>
+    <version>2.0.1</version>
+    <time>1359108971</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="251">
+    <srcmd5>739349655932b332c2bf5f75f96dc977</srcmd5>
+    <version>2.0.1</version>
+    <time>1379076368</time>
+    <user>scarabeus_factory</user>
+    <comment>- drop javadoc package</comment>
+    <requestid>198849</requestid>
+  </revision>
+  <revision rev="18" vrev="253">
+    <srcmd5>739349655932b332c2bf5f75f96dc977</srcmd5>
+    <version>2.0.1</version>
+    <time>1379662513</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="255">
+    <srcmd5>739349655932b332c2bf5f75f96dc977</srcmd5>
+    <version>2.0.1</version>
+    <time>1409301051</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="256">
+    <srcmd5>8a757396db1ecf1b118135bafa190e40</srcmd5>
+    <version>2.0.1</version>
+    <time>1412799228</time>
+    <user>coolo</user>
+    <comment>- Cleanup a bit with spec-cleaner</comment>
+    <requestid>254502</requestid>
+  </revision>
+  <revision rev="21" vrev="257">
+    <srcmd5>4d902ae7b0df23cb271db239e6c4d5f0</srcmd5>
+    <version>2.0.1</version>
+    <time>1484041727</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to java-devel as gcj is getting deprecated
+- Remove unused dependencies</comment>
+    <requestid>448901</requestid>
+  </revision>
+  <revision rev="22" vrev="258">
+    <srcmd5>7e66e155a3c3581cacbbab9b0b56b878</srcmd5>
+    <version>2.0.1</version>
+    <time>1505416873</time>
+    <user>dimstar_suse</user>
+    <comment>Don't require classpath which is basically java-gcj-compat</comment>
+    <requestid>526176</requestid>
+  </revision>
+  <revision rev="23" vrev="259">
+    <srcmd5>6ab143111aec1cc4a51e53b80d17a1c2</srcmd5>
+    <version>2.0.1</version>
+    <time>1530993670</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620795</requestid>
+  </revision>
+  <revision rev="24" vrev="260">
+    <srcmd5>9da47c947788412b0434d6c054d98d59</srcmd5>
+    <version>2.0.1</version>
+    <time>1553809727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689159</requestid>
+  </revision>
+</revisionlist>

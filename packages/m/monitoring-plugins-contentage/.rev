@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a025a5028ca4b20fca99a52936d90580</srcmd5>
+    <version>0.6</version>
+    <time>1406896481</time>
+    <user>coolo</user>
+    <comment>renamed package nagios-plugins-contentage</comment>
+    <requestid>243045</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>faee50907e2f39fc8584581ad580a935</srcmd5>
+    <version>0.6</version>
+    <time>1407942484</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>244189</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>faee50907e2f39fc8584581ad580a935</srcmd5>
+    <version>0.6</version>
+    <time>1409301913</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,505 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7ff427195e22ec687585ef86afd4a31</srcmd5>
+    <version>1.16</version>
+    <time>1166483876</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aeab22ffd656bcd66b62947c33c9df60</srcmd5>
+    <version>1.16.1</version>
+    <time>1169646205</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="14">
+    <srcmd5>219d3ab48899486a399f95514b6b322c</srcmd5>
+    <version>1.16.1</version>
+    <time>1179395985</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="16">
+    <srcmd5>8f431ee0e166a65a053f7179cf2f1ced</srcmd5>
+    <version>1.16.1</version>
+    <time>1179839530</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3db03e0f3753e97d4195592a83496b39</srcmd5>
+    <version>1.17</version>
+    <time>1182417550</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>0da279f5bbe6879f746aabb58bf75778</srcmd5>
+    <version>1.17</version>
+    <time>1187370132</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>35f0df401f124a6ed52bce181c73a390</srcmd5>
+    <version>1.17</version>
+    <time>1187628945</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="17">
+    <srcmd5>2dbda4414af0896f44cb2f113a73068c</srcmd5>
+    <version>1.17</version>
+    <time>1188569008</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="22">
+    <srcmd5>bad107d0bf1c78bd97915c6c8fc963f0</srcmd5>
+    <version>1.17</version>
+    <time>1191366833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>105421cf5b1d71b612b36ea4778062d4</srcmd5>
+    <version>1.18</version>
+    <time>1191839575</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3b49e10f0c849844624bac5f1d033791</srcmd5>
+    <version>1.19</version>
+    <time>1195136519</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="24">
+    <srcmd5>6558c79d55c160bfe6061ad9388c5746</srcmd5>
+    <version>1.19</version>
+    <time>1206726863</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a33c11e93fe8a5431caeb22d00c9be3b</srcmd5>
+    <version>1.20</version>
+    <time>1214431072</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="23">
+    <srcmd5>a360aabf82a298d523a7783e5d99bea1</srcmd5>
+    <version>1.20</version>
+    <time>1227279223</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2ce28b190fcfd3a98071c1fa807b0fa3</srcmd5>
+    <version>1.21</version>
+    <time>1234353495</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>312a49bd1b1208c6f3305f38db5c0adb</srcmd5>
+    <version>1.21</version>
+    <time>1236116777</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d0d61840fef3d7fd3c9fd91f6fa39305</srcmd5>
+    <version>1.21</version>
+    <time>1251909716</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/tar based on submit request 19518 from user prusnak
+</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>d0d61840fef3d7fd3c9fd91f6fa39305</srcmd5>
+    <version>1.21</version>
+    <time>1251909716</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/tar based on submit request 19518 from user prusnak
+</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>1a0036dcd2fcff0204d524db9af9718d</srcmd5>
+    <version>1.21</version>
+    <time>1263225142</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/tar based on submit request 29082 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a17a348b2ef86c2864cf3cf370b46f95</srcmd5>
+    <version>1.22</version>
+    <time>1266508764</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/tar based on submit request 32575 from user mseben
+</comment>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>dadd004727f6d34b08990ae8d77b9159</srcmd5>
+    <version>1.22</version>
+    <time>1268355235</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/tar based on submit request 34548 from user mseben
+</comment>
+    <requestid>34548</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>9e246c9df547ac0ec17222bb801ceeb8</srcmd5>
+    <version>1.22</version>
+    <time>1268926296</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2b34dd59a0a40639712c3acd92049c53</srcmd5>
+    <version>1.23</version>
+    <time>1269566177</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/tar based on submit request 35527 from user mseben
+</comment>
+    <requestid>35527</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2b34dd59a0a40639712c3acd92049c53</srcmd5>
+    <version>1.23</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>2b34dd59a0a40639712c3acd92049c53</srcmd5>
+    <version>1.23</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>d9a5a1359dbb568b1ce1233a542f8462</srcmd5>
+    <version>1.23</version>
+    <time>1279914938</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/tar based on submit request 43685 from user coolo
+</comment>
+    <requestid>43685</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>fe1a6fa6ee2ee6a79d1e9c50a2875683</srcmd5>
+    <version>1.25</version>
+    <time>1289412859</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52594 from user puzel
+</comment>
+    <requestid>52594</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>69a8dbf820ce7bae27d8099b69f82849</srcmd5>
+    <version>1.25</version>
+    <time>1289412867</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52594
+</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>570ae9fb1935f30f4dd2fa08ea945472</srcmd5>
+    <version>1.25</version>
+    <time>1290592401</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53858 from user puzel
+</comment>
+    <requestid>53858</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>2dc2ba7f6c5e579d1d20d023f83dd006</srcmd5>
+    <version>1.25</version>
+    <time>1290592407</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 53858
+</comment>
+  </revision>
+  <revision rev="31" vrev="8">
+    <srcmd5>2dc2ba7f6c5e579d1d20d023f83dd006</srcmd5>
+    <version>1.25</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>0d41544278497fc3fd119a9c420e22b6</srcmd5>
+    <version>1.26</version>
+    <time>1300180888</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64152 from user puzel
+</comment>
+    <requestid>64152</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>73d5ef2d2369f04d8223d6885a72a8b6</srcmd5>
+    <version>1.26</version>
+    <time>1300180895</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64152
+</comment>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>9cbac70681446fcb92c37cd2526b2dd4</srcmd5>
+    <version>1.26</version>
+    <time>1318345547</time>
+    <user>lrupp</user>
+    <comment>minor portability fixes (forwarded request 86660 from rudi_m)</comment>
+    <requestid>87300</requestid>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>9cbac70681446fcb92c37cd2526b2dd4</srcmd5>
+    <version>1.26</version>
+    <time>1319182506</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>a15d1fba73b20660b15e1a98a2578d52</srcmd5>
+    <version>1.26</version>
+    <time>1320232773</time>
+    <user>coolo</user>
+    <comment>- disable testsuite on qemu build</comment>
+    <requestid>89781</requestid>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>70ec41c3c895bc968ed7aac21c176ce2</srcmd5>
+    <version>1.26</version>
+    <time>1323194842</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="38" vrev="9">
+    <srcmd5>e2f66e215f5b0fcd43ac2676e82a7a7b</srcmd5>
+    <version>1.26</version>
+    <time>1329221493</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103847</requestid>
+  </revision>
+  <revision rev="39" vrev="10">
+    <srcmd5>b2610e26368c61a64ac000e16bf6b226</srcmd5>
+    <version>1.26</version>
+    <time>1335190419</time>
+    <user>coolo</user>
+    <comment>- disable 'runtime checks' in m4/*.m4 that override
+  system calls with custom implementations to workaround
+  very old kernel/libc bugs (dating 2003-2009)
+  we do not ship those buggy components nowdays.
+
+- Switch to default archive type to POSIX.1-2001, which is ten years
+  old and has no limits on filesize,filename length etc. (forwarded request 114887 from elvigia)</comment>
+    <requestid>114946</requestid>
+  </revision>
+  <revision rev="40" vrev="12">
+    <srcmd5>b2610e26368c61a64ac000e16bf6b226</srcmd5>
+    <version>1.26</version>
+    <time>1340184258</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="41" vrev="13">
+    <srcmd5>0401f7a46aae7116fa162f2e2bb07c5d</srcmd5>
+    <version>1.26</version>
+    <time>1342626686</time>
+    <user>coolo</user>
+    <comment>Fix build failure with glibc 2.16 (forwarded request 128098 from a_jaeger)</comment>
+    <requestid>128110</requestid>
+  </revision>
+  <revision rev="42" vrev="15">
+    <srcmd5>0401f7a46aae7116fa162f2e2bb07c5d</srcmd5>
+    <version>1.26</version>
+    <time>1359110463</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="16">
+    <srcmd5>2671d9fa929d3481629a25f9284aa1de</srcmd5>
+    <version>1.26</version>
+    <time>1359997380</time>
+    <user>coolo</user>
+    <comment>- Add config-guess-sub-update.patch:
+  Update config.guess/sub for aarch64</comment>
+    <requestid>150873</requestid>
+  </revision>
+  <revision rev="44" vrev="17">
+    <srcmd5>e6d03b33c89c1d0fd553bd2fe298087d</srcmd5>
+    <version>1.26</version>
+    <time>1365174567</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162764 from namtrac)</comment>
+    <requestid>162790</requestid>
+  </revision>
+  <revision rev="45" vrev="18">
+    <srcmd5>00a5d7fa23906a7504281d8542c02607</srcmd5>
+    <version>1.26</version>
+    <time>1377630740</time>
+    <user>coolo</user>
+    <comment>- added fix for paxutils rtapelib which is bundled with tar.
+  the very same fix was added to cpio too (bnc#658031)
+  * paxutils-rtapelib_mtget.patch (forwarded request 196361 from vitezslav_cizek)</comment>
+    <requestid>196441</requestid>
+  </revision>
+  <revision rev="46" vrev="20">
+    <srcmd5>00a5d7fa23906a7504281d8542c02607</srcmd5>
+    <version>1.26</version>
+    <time>1379664768</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>591f88301ef0b6320809a65751238393</srcmd5>
+    <version>1.27</version>
+    <time>1382720064</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 1.27 (forwarded request 204762 from AndreasStieger)</comment>
+    <requestid>204817</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>dc6fdc087f26633ff31711146c9ec29a</srcmd5>
+    <version>1.27.1</version>
+    <time>1389435152</time>
+    <user>coolo</user>
+    <comment>Add patch name into changes file to comply with the requirements (forwarded request 213373 from llipavsky)</comment>
+    <requestid>213376</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>27d91e6f3b37cdc6b2cd29de30d43845</srcmd5>
+    <version>1.27.1</version>
+    <time>1396770840</time>
+    <user>coolo</user>
+    <comment>- fix an infinite loop in handle_option (bnc#867919 and bnc#870422)
+  * added tar-fix_eternal_loop_in_handle_option.patch (forwarded request 227619 from vitezslav_cizek)</comment>
+    <requestid>228059</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>b5e6fa54349bf44cf5ea05c24ebc9832</srcmd5>
+    <version>1.27.1</version>
+    <time>1406886507</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242908</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>359f799a09069a838c36605229902219</srcmd5>
+    <version>1.28</version>
+    <time>1407158074</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243513</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>359f799a09069a838c36605229902219</srcmd5>
+    <version>1.28</version>
+    <time>1409303451</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>52185e1f3a8458f637487b8e08501f5b</srcmd5>
+    <version>1.28</version>
+    <time>1409407449</time>
+    <user>coolo</user>
+    <comment>- Improve on RPM group classification (forwarded request 246894 from jengelh)</comment>
+    <requestid>246939</requestid>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>0a3f8fb7fadfdceba7145b64b4ba2a97</srcmd5>
+    <version>1.28</version>
+    <time>1417438819</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262571</requestid>
+  </revision>
+  <revision rev="55" vrev="6">
+    <srcmd5>56538fbdc55d1ab64c99821d039c98d2</srcmd5>
+    <version>1.28</version>
+    <time>1419334382</time>
+    <user>dimstar_suse</user>
+    <comment>- build with PIE (forwarded request 266046 from msmeissn)</comment>
+    <requestid>266056</requestid>
+  </revision>
+  <revision rev="56" vrev="7">
+    <srcmd5>1586583fbd254a755c4a70de29b6e58e</srcmd5>
+    <version>1.28</version>
+    <time>1424430014</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285634</requestid>
+  </revision>
+  <revision rev="57" vrev="8">
+    <srcmd5>a2d96c26aef2d9d4a0c411df45f3c3c2</srcmd5>
+    <version>1.28</version>
+    <time>1429768512</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295801</requestid>
+  </revision>
+  <revision rev="58" vrev="9">
+    <srcmd5>b6c5bca63c31db9be2473952f3c656ac</srcmd5>
+    <version>1.28</version>
+    <time>1459845593</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>381333</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>1f06656917cf02c63078df3540f14b16</srcmd5>
+    <version>1.29</version>
+    <time>1465335784</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399684</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>40cd40b8304e042e1585c024b415f647</srcmd5>
+    <version>1.29</version>
+    <time>1479073805</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439592</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>e6bd6aaca5adf422c6a43187d4ea0e5e</srcmd5>
+    <version>1.29</version>
+    <time>1482417934</time>
+    <user>lnussel_factory</user>
+    <comment>- update tar-1.29-extract_pathname_bypass.patch to the upstream
+  one that fixes POINTYFEATHER issue but it doesn't limit append or
+  create operations as the initial patch did [bsc#1012633]
+  [CVE-2016-6321] (forwarded request 446474 from vitezslav_cizek)</comment>
+    <requestid>446602</requestid>
+  </revision>
+  <revision rev="62" vrev="4">
+    <srcmd5>262c626e673d998cbfd1b70e00befcf1</srcmd5>
+    <version>1.29</version>
+    <time>1491210266</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>482896</requestid>
+  </revision>
+  <revision rev="63" vrev="5">
+    <srcmd5>233c707bac3c34c2e94b7d9c25fdb76f</srcmd5>
+    <version>1.29</version>
+    <time>1495010698</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489624</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>bcaef599783447c4d50d110e2d9dc274</srcmd5>
+    <version>1.30</version>
+    <time>1526462475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606478</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>fd40d92f9b3ffc2d7578fbf751c5d7e4</srcmd5>
+    <version>1.31</version>
+    <time>1553699603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688152</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>6a766df1cec9b9552fa6b677a6ffba2b</srcmd5>
+    <version>1.32</version>
+    <time>1560337145</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705919</requestid>
+  </revision>
+</revisionlist>

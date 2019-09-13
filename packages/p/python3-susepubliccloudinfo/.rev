@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bb387a7f1af6621b8f39a687781f9b7</srcmd5>
+    <version>1.0.0</version>
+    <time>1504521057</time>
+    <user>dimstar_suse</user>
+    <comment>Add to Factory.</comment>
+    <requestid>519708</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fa7a5e04e7d48855fbe1c5268d35808f</srcmd5>
+    <version>1.0.2</version>
+    <time>1517234268</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>570021</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd6d1f60d0c41ff1746d185f3b5296c7</srcmd5>
+    <version>1.0.4</version>
+    <time>1535370477</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>628568</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b7345e60a4cd3c634ebb215ac337108e</srcmd5>
+    <version>1.1.0</version>
+    <time>1551276390</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679451</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f0ebc70b9d742dd448ed26b1f4c1148e</srcmd5>
+    <version>1.2.1</version>
+    <time>1565695048</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>722103</requestid>
+  </revision>
+</revisionlist>

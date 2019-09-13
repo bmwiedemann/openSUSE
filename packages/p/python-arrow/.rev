@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5fb247807f18ccee462856911732d4a</srcmd5>
+    <version>0.10.0</version>
+    <time>1503592962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>513036</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4eab19e7db530d8e32a7429fa1b5f410</srcmd5>
+    <version>0.12.1</version>
+    <time>1519145797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578276</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c199a7f212dfc3c16e12bc37b0cfc770</srcmd5>
+    <version>0.12.1</version>
+    <time>1519218824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578603</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d41e4c5b610958c7d8700d0d6e8bedfb</srcmd5>
+    <version>0.12.1</version>
+    <time>1544631909</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653919</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>37f311f36826145a605c50ce89e39db8</srcmd5>
+    <version>0.13.0</version>
+    <time>1548064901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667296</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>07624f72bf8f33040f137a66bf04276e</srcmd5>
+    <version>0.13.0</version>
+    <time>1548704822</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with python 3.7:
+  * arrow-py37.patch</comment>
+    <requestid>667743</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>efddfc0c2712154484d5922d8ff9c4cd</srcmd5>
+    <version>0.13.1</version>
+    <time>1552039275</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.1:
+  * Support for python3.7
+- Remove merged patch arrow-py37.patch</comment>
+    <requestid>682132</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7c4d0135a4e88d9e4d5813e0287ce249</srcmd5>
+    <version>0.14.2</version>
+    <time>1560862104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708935</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ab97541ec560cf745c7f6a49ece2c3df</srcmd5>
+    <version>0.14.4</version>
+    <time>1565096950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720894</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d86cca48e01a99560ad990a8038638e</srcmd5>
+    <version>0.10.2</version>
+    <time>1417643475</time>
+    <user>dimstar_suse</user>
+    <comment>Simple integration of Flask and WTForms, including CSRF, file upload and Recaptcha integration.
+
+Required for python-puppetboard SR# 263316</comment>
+    <requestid>263326</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d1767e7c3b03e70f02c5494637c956bf</srcmd5>
+    <version>0.11</version>
+    <time>1427445667</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293193</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>17bf1da69e3054fa553eb94b9dd5824a</srcmd5>
+    <version>0.14.2</version>
+    <time>1507628544</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521769</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e7f6bd251a1fbc8a09283297f0e8eec1</srcmd5>
+    <version>0.14.2</version>
+    <time>1516970358</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix whitespace and drop the subpkg wrt previous commit
+
+- Added python-itsdangerous requirements
+- disabled sphinx build html docs and doc packages because of build errors.</comment>
+    <requestid>569481</requestid>
+  </revision>
+</revisionlist>

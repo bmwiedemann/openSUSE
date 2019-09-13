@@ -1,0 +1,193 @@
+<revisionlist>
+  <revision rev="1" vrev="52">
+    <srcmd5>8920459a4d2daea9b67bb42f97e6305c</srcmd5>
+    <version>1.4.4</version>
+    <time>1168214681</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="64">
+    <srcmd5>56be81fee54a69ce7ad5211a91efc0a4</srcmd5>
+    <version>1.4.4</version>
+    <time>1175628827</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="66">
+    <srcmd5>c7a30daf67e0469573704bee64bcffcc</srcmd5>
+    <version>1.4.4</version>
+    <time>1176849474</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="72">
+    <srcmd5>f72edfb04e50172fafe572b1d723d0a5</srcmd5>
+    <version>1.4.4</version>
+    <time>1178167401</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="75">
+    <srcmd5>5e9d2dd0bd1fede54295385a49a1300c</srcmd5>
+    <version>1.4.4</version>
+    <time>1178231003</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9d6601fa3fd66546e6b9b71bf9d4bb55</srcmd5>
+    <version>1.4.6</version>
+    <time>1185820217</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="35">
+    <srcmd5>7cbc23c9764c4085290fc3abcea6230e</srcmd5>
+    <version>1.4.6</version>
+    <time>1192129738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ca2ad7cd36965d8a300e49c359e2e810</srcmd5>
+    <version>1.4.7</version>
+    <time>1196288144</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="113">
+    <srcmd5>ca2ad7cd36965d8a300e49c359e2e810</srcmd5>
+    <version>1.4.7</version>
+    <time>1196288144</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="114">
+    <srcmd5>3a725598d2e7ae10047108124be03ff3</srcmd5>
+    <version>1.4.7</version>
+    <time>1245364308</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="115">
+    <srcmd5>656cce404b9892804f3eaab5b33a02fb</srcmd5>
+    <version>1.4.7</version>
+    <time>1245469073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="117">
+    <srcmd5>656cce404b9892804f3eaab5b33a02fb</srcmd5>
+    <version>1.4.7</version>
+    <time>1245469073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="118">
+    <srcmd5>cb1fa276c4ff17d2c0b0910932fe418f</srcmd5>
+    <version>1.4.7</version>
+    <time>1258388337</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/jack-rack based on submit request 24490 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="14" vrev="119">
+    <srcmd5>9dfa145dfddb441c1d17b537ffbb698a</srcmd5>
+    <version>1.4.7</version>
+    <time>1268924064</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="121">
+    <srcmd5>9dfa145dfddb441c1d17b537ffbb698a</srcmd5>
+    <version>1.4.7</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="122">
+    <srcmd5>9dfa145dfddb441c1d17b537ffbb698a</srcmd5>
+    <version>1.4.7</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="125">
+    <srcmd5>9dfa145dfddb441c1d17b537ffbb698a</srcmd5>
+    <version>1.4.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="126">
+    <srcmd5>6487f69c805c57d6acfe57d24a158f61</srcmd5>
+    <version>1.4.7</version>
+    <time>1315233128</time>
+    <user>lrupp</user>
+    <comment>- Fix build with as-needed and no-add-needed (forwarded request 80794 from elvigia)</comment>
+    <requestid>80959</requestid>
+  </revision>
+  <revision rev="19" vrev="127">
+    <srcmd5>57d44b019b512bca271538fbf324fec7</srcmd5>
+    <version>1.4.7</version>
+    <time>1315233141</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80959
+</comment>
+  </revision>
+  <revision rev="20" vrev="128">
+    <srcmd5>c5675f2bfa4943738f629c4328989964</srcmd5>
+    <version>1.4.7</version>
+    <time>1316445851</time>
+    <user>lrupp</user>
+    <comment>- added Patch3 (jack-rack-ld_fix.diff) to fix the build for factory (forwarded request 82729 from Marcus_H)</comment>
+    <requestid>82731</requestid>
+  </revision>
+  <revision rev="21" vrev="130">
+    <srcmd5>c5675f2bfa4943738f629c4328989964</srcmd5>
+    <version>1.4.7</version>
+    <time>1319181999</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="131">
+    <srcmd5>44a959161eb071c58d0261c7f7977b14</srcmd5>
+    <version>1.4.7</version>
+    <time>1323113596</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95147 from coolo)</comment>
+    <requestid>95202</requestid>
+  </revision>
+  <revision rev="23" vrev="132">
+    <srcmd5>1f9da9b14f1c9d5d000ac3405a8a15b5</srcmd5>
+    <version>1.4.7</version>
+    <time>1323192001</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="134">
+    <srcmd5>1f9da9b14f1c9d5d000ac3405a8a15b5</srcmd5>
+    <version>1.4.7</version>
+    <time>1340183474</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="136">
+    <srcmd5>1f9da9b14f1c9d5d000ac3405a8a15b5</srcmd5>
+    <version>1.4.7</version>
+    <time>1359109098</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="138">
+    <srcmd5>1f9da9b14f1c9d5d000ac3405a8a15b5</srcmd5>
+    <version>1.4.7</version>
+    <time>1379662693</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="140">
+    <srcmd5>1f9da9b14f1c9d5d000ac3405a8a15b5</srcmd5>
+    <version>1.4.7</version>
+    <time>1409301258</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="141">
+    <srcmd5>b24ff7287fb09b0d6b1984cd9f4ec658</srcmd5>
+    <version>1.4.7</version>
+    <time>1518813819</time>
+    <user>dimstar_suse</user>
+    <comment>Disabled gnome support to fix Factory build, see boo#1078841
+Ran spec cleaner and enabled alsa and libxml2 support.
+Removed obsolete 10.2 patch jack-rack-gtk-old-tooltip-fix.diff
+</comment>
+    <requestid>576995</requestid>
+  </revision>
+</revisionlist>

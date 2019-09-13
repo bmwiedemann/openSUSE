@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ac8f865e9871b248897674205015319</srcmd5>
+    <version>0.12.0</version>
+    <time>1564994286</time>
+    <user>dimstar_suse</user>
+    <comment>The new package which is the first step of getting rid of BoringSSL in favor of OpenSSL. Maintaining BoringSSL is painful, but OpenShift people managed to get Envoy and Istio working with OpenSSL:
+
+https://maistra.github.io/ 
+https://github.com/Maistra</comment>
+    <requestid>720243</requestid>
+  </revision>
+</revisionlist>

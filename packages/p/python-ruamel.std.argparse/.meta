@@ -1,0 +1,5 @@
+<package name="python-ruamel.std.argparse" project="openSUSE:Factory">
+  <title>python-ruamel.std.argparse</title>
+  <description>Enhancements to argparse</description>
+  <devel project="devel:languages:python" package="python-ruamel.std.argparse"/>
+</package>

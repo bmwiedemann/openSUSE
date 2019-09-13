@@ -1,0 +1,295 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d29c6d2580ace1684c6fb53cc229731</srcmd5>
+    <version>2006_04_R1</version>
+    <time>1168903219</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>367c6790e687840eb10fe910a9665f0a</srcmd5>
+    <version>2007_01_R1b</version>
+    <time>1170979846</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>9852b85c7aa706eccef7c3adfd39bd70</srcmd5>
+    <version>2007_01_R1b</version>
+    <time>1172778638</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>fc97f9b671636f7d422485a24a58c296</srcmd5>
+    <version>2007_01_R1b</version>
+    <time>1175248255</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="69">
+    <srcmd5>49abfacc0be71cadd63512f098b13126</srcmd5>
+    <version>2007_01_R1b</version>
+    <time>1190382569</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b46e05f521ce4f1b557bc348e23a96c2</srcmd5>
+    <version>2007_10_R1</version>
+    <time>1193846761</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>21ee2f97b97d3a97220f3102aef79b19</srcmd5>
+    <version>2007_10_R1</version>
+    <time>1196899188</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="23">
+    <srcmd5>9b50a88f8521dbb054446fb0f9275772</srcmd5>
+    <version>2007_10_R1</version>
+    <time>1203035048</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="27">
+    <srcmd5>e075304f94f25787e76d9b56b3ee4e50</srcmd5>
+    <version>2007_10_R1</version>
+    <time>1203640482</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8d6944778c94de1681da1051931a3ad5</srcmd5>
+    <version>2008_05_R1</version>
+    <time>1217644161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>3257282cfaede3f758040f1625e11f42</srcmd5>
+    <version>2008_05_R1</version>
+    <time>1220274390</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="26">
+    <srcmd5>679b5084e4020e00c2b590be087c8d3a</srcmd5>
+    <version>2008_05_R1</version>
+    <time>1231435731</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="27">
+    <srcmd5>0eaf0327b89b6b1de3d765aae808faed</srcmd5>
+    <version>2008_05_R1</version>
+    <time>1244543197</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9d14ebda47574ece9de9d6b41f58d3ec</srcmd5>
+    <version>2009_06_R1</version>
+    <time>1249513385</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>47fd1bb0dbe4cac5e98293a231b8c5d4</srcmd5>
+    <version>2009_06_R1</version>
+    <time>1251496801</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/kismet based on submit request 19027 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>47fd1bb0dbe4cac5e98293a231b8c5d4</srcmd5>
+    <version>2009_06_R1</version>
+    <time>1251496801</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/kismet based on submit request 19027 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>01210e947d00c06ae59bc41a486e5544</srcmd5>
+    <version>2009_06_R1</version>
+    <time>1268924291</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e99ce32fdb5350625d5ac6aab2a74446</srcmd5>
+    <version>2010_01_R1</version>
+    <time>1272585202</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/kismet based on submit request 39156 from user prusnak
+</comment>
+    <requestid>39156</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e99ce32fdb5350625d5ac6aab2a74446</srcmd5>
+    <version>2010_01_R1</version>
+    <time>1278667355</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>e99ce32fdb5350625d5ac6aab2a74446</srcmd5>
+    <version>2010_01_R1</version>
+    <time>1278678586</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>e99ce32fdb5350625d5ac6aab2a74446</srcmd5>
+    <version>2010_01_R1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>309c2e882378e999ac6d5906d81e342e</srcmd5>
+    <version>2010_01_R1</version>
+    <time>1317212688</time>
+    <user>saschpe</user>
+    <comment>- Cleanup spec file and fix build for &lt; openSUSE 12.1 (forwarded request 85122 from namtrac)</comment>
+    <requestid>85196</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a64f24bfd441fed3c7ce34235be18112</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1317543217</time>
+    <user>lrupp</user>
+    <comment>updated to 2011-03-R2 (forwarded request 85424 from msmeissn)</comment>
+    <requestid>85493</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>a64f24bfd441fed3c7ce34235be18112</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1319182048</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>2b35d6043487804e45f6e4b2b2254e84</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1323192106</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>2b35d6043487804e45f6e4b2b2254e84</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1340183529</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>5d73c686ed1690ae94943320531094ed</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1342866584</time>
+    <user>namtrac</user>
+    <comment>- fix ppc64 build (forwarded request 128461 from k0da)</comment>
+    <requestid>128506</requestid>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>beecf5cf9c4f5345b7df2ae4f4e6233d</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1355473586</time>
+    <user>coolo</user>
+    <comment>Verify GPG signature: Perform build-time offline GPG verification.
+Please verify that included keyring matches your needs.
+For manipulation with the offline keyring, please use gpg-offline tool from openSUSE:Factory, devel-tools-building or Base:System.
+See the man page and/or /usr/share/doc/packages/gpg-offline/PACKAGING.HOWTO.
+
+If you need to build your package for older products and don't want to mess spec file with ifs, please follow PACKAGING.HOWTO:
+you can link or aggregate gpg-offline from
+devel:tools:building or use following trick with &quot;osc meta prjconf&quot;:
+
+--- Cut here ----
+%if 0%{?suse_version} &lt;= 1220
+Substitute: gpg-offline
+%endif
+
+Macros:
+%gpg_verify(dnf) \
+%if 0%{?suse_version} &gt; 1220\
+echo &quot;WARNING: Using %%gpg_verify macro from prjconf, not from gpg-offline package.&quot;\
+gpg-offline --directory=&quot;%{-d:%{-d*}}%{!-d:%{_sourcedir}}&quot; --package=&quot;%{-n:%{-n*}}%{!-n:%{name}}&quot;&quot;%{-f: %{-f*}}&quot; --verify %{**}\
+%else\
+echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping %{**} GPG signature verification!&quot;\
+%endif\
+%nil
+-----------------
+ (forwarded request 143889 from sbrabec)</comment>
+    <requestid>143970</requestid>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>beecf5cf9c4f5345b7df2ae4f4e6233d</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1359109191</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="11">
+    <srcmd5>09f4db444011d6d8c7a43032658b0357</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1361633744</time>
+    <user>coolo</user>
+    <comment>- Verify GPG signature only for 12.3 and up, fixing 12.2 build
+- verify in prep section, and only if macro is available (forwarded request 156190 from AndreasStieger)</comment>
+    <requestid>156191</requestid>
+  </revision>
+  <revision rev="31" vrev="12">
+    <srcmd5>2b08fefa04df8a3e0ddb6de5b07f2792</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1370431704</time>
+    <user>coolo</user>
+    <comment>- do not hardcode automake 1.12 (forwarded request 177033 from coolo)</comment>
+    <requestid>177037</requestid>
+  </revision>
+  <revision rev="32" vrev="14">
+    <srcmd5>2b08fefa04df8a3e0ddb6de5b07f2792</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1379662812</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>23be13a9cb9ef2bce204a30551050ac6</srcmd5>
+    <version>2013_03_R1b</version>
+    <time>1401644466</time>
+    <user>coolo</user>
+    <comment>- version 2013-03-R1b 
+* While this does not have major new features 
+(phy-neutral is still in development) 
+it includes a long list of bugfixes, 
+including better ncurses color support, radiotap fixes, 
+better interface control when setting channels, memory leak fixes, 
+better packaging for distros, and various other quirks.
+- Switch build to libnl3. (forwarded request 235594 from elvigia)</comment>
+    <requestid>235784</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>23be13a9cb9ef2bce204a30551050ac6</srcmd5>
+    <version>2013_03_R1b</version>
+    <time>1409301391</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>0265982934d11953d1d61a63f6fa5d05</srcmd5>
+    <version>2013_03_R1b</version>
+    <time>1411926862</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>252636</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4314723b3c34f42349877c57fa674dd6</srcmd5>
+    <version>2016_01_R1</version>
+    <time>1461855382</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>391419</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7474f416e365f2a445bf8721ee642a9a</srcmd5>
+    <version>2016_07_R1</version>
+    <time>1467897032</time>
+    <user>dimstar_suse</user>
+    <comment>- Kismet 2016-07-R1:
+ * nl8011 support is fixed so finding the vif device works again
+ * full 5GHz channel discovery works now
+ * memory leaks in the drone are fixed 
+ * some ncurses compile bugs are resolved (forwarded request 406872 from mnhauke)</comment>
+    <requestid>406877</requestid>
+  </revision>
+</revisionlist>

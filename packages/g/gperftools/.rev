@@ -1,0 +1,236 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ec64d6ce37a36219e8e6d00b9e0f24e</srcmd5>
+    <version>2.0</version>
+    <time>1337195247</time>
+    <user>coolo</user>
+    <comment>As google-perftools-devel has been renamed to gperftools-devel, latest version</comment>
+    <requestid>120964</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0ec64d6ce37a36219e8e6d00b9e0f24e</srcmd5>
+    <version>2.0</version>
+    <time>1340183407</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>5f652e23a6e45594da0fc02c47c17f6d</srcmd5>
+    <version>2.0</version>
+    <time>1343030441</time>
+    <user>coolo</user>
+    <comment>Fix build with glibc 2.16 (forwarded request 128613 from a_jaeger)</comment>
+    <requestid>128705</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>90386217aedb690b065e2ad75f271ec1</srcmd5>
+    <version>2.0</version>
+    <time>1357127822</time>
+    <user>namtrac</user>
+    <comment>- spinlock-rand.patch fixes an issue encountered on PPC with 
+  undefined conversions from 'base::subtle::Atomic64*' to 'const 
+  volatile Atomic32*' (forwarded request 146470 from k0da)</comment>
+    <requestid>146520</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>90386217aedb690b065e2ad75f271ec1</srcmd5>
+    <version>2.0</version>
+    <time>1359108995</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6183ac674e026fb02433fbf6af2bae9d</srcmd5>
+    <version>2.1</version>
+    <time>1375364166</time>
+    <user>coolo</user>
+    <comment>- gperftools 2.1, released 30 July 2013.
+  * fixes for building on newer platforms. Notably, there's now initial
+    support for x32 ABI (--enable-minimal only at this time))
+  * Some fixes for debug allocation on POWER/Linux 
+  * new getNumericProperty stats for cache sizes
+  * added HEAP_PROFILER_TIME_INTERVAL variable (see documentation)
+  * added environment variable to control heap size (TCMALLOC_HEAP_LIMIT_MB)
+  * added environment variable to disable release of memory back to OS
+    (TCMALLOC_DISABLE_MEMORY_RELEASE)
+  * cpu profiler can now be switched on and off by sending it a signal
+    (specified in CPUPROFILESIGNAL)
+  * (issue 491) fixed race-ful spinlock wake-ups
+  * (issue 496) added some support for fork-ing of process that is using
+    tcmalloc
+  * (issue 368) improved memory fragmentation when large chunks of
+    memory are allocated/freed (forwarded request 184993 from ganglia)</comment>
+    <requestid>185078</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6db223a5c33069b02c3dde503aa1b8f6</srcmd5>
+    <version>2.1</version>
+    <time>1376391217</time>
+    <user>scarabeus_factory</user>
+    <comment>Update gperftools to allow building with older autoconf \(2.59\), so that gperftools can build on SLE10. (forwarded request 186776 from ganglia)</comment>
+    <requestid>186780</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>6db223a5c33069b02c3dde503aa1b8f6</srcmd5>
+    <version>2.1</version>
+    <time>1379662545</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1d5449f75133014dbe512f8eec369c17</srcmd5>
+    <version>2.2</version>
+    <time>1400824301</time>
+    <user>coolo</user>
+    <comment>Update to latest release, 2.2; Released 3 May 2014; removed patches that have been incorporated upstream. (forwarded request 235130 from ganglia)</comment>
+    <requestid>235134</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>181cc7f598d8f96f5140c0c0d5d17a37</srcmd5>
+    <version>2.2</version>
+    <time>1402946782</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237519</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>181cc7f598d8f96f5140c0c0d5d17a37</srcmd5>
+    <version>2.2</version>
+    <time>1409301087</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>54d5f04aca7ea57300b52524b508e085</srcmd5>
+    <version>2.2</version>
+    <time>1410967497</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249186</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>fd677afceac31fe1761170a86d03638b</srcmd5>
+    <version>2.2</version>
+    <time>1412098829</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253074</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dd6a1fd8b6ebcd67a61ffd19eae0c6c8</srcmd5>
+    <version>2.4</version>
+    <time>1421232319</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280978</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>23753f8cc162abf25327b5029a0e609f</srcmd5>
+    <version>2.4</version>
+    <time>1446465315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341818</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1bf1c05f04a335535c1524c16a2df621</srcmd5>
+    <version>2.5</version>
+    <time>1459002441</time>
+    <user>dimstar_suse</user>
+    <comment>- gperftools 2.5, available 12 March 2016.
+  See https://github.com/gperftools/gperftools/releases
+  * Bryan Chan has contributed s390x support
+  * stacktrace capturing via libgcc's _Unwind_Backtrace was implemented
+    (for architectures with missing or broken libunwind).
+  * &quot;emergency malloc&quot; was implemented. Which unbreaks recursive calls
+    to malloc/free from stacktrace capturing functions (such us glib'c
+    backtrace() or libunwind on arm). It is enabled by
+    --enable-emergency-malloc configure flag or by default on arm when
+    --enable-stacktrace-via-backtrace is given. It is another fix for a
+    number common issues people had on platforms with missing or broken
+    libunwind.
+  * C++14 sized-deallocation is now supported (on gcc 5 and recent
+    clangs). It is off by default and can be enabled at configure time
+    via --enable-sized-delete. On GNU/Linux it can also be enabled at
+    run-time by either TCMALLOC_ENABLE_SIZED_DELETE environment variable
+    or by defining tcmalloc_sized_delete_enabled function which should
+    return 1 to enable it.
+  * we've lowered default value of transfer batch size to 512. Previous
+    value (bumped up in 2.1) was too high and caused performance
+    regression for some users. 512 should still give us performance
+    boost for workloads that need higher transfer batch size while not
+    penalizing other workloads too much.
+  * Brian Silverman's patch finally stopped arming profiling timer
+    unless profiling is started.
+  * Andrew Morrow has contributed support for obtaining cache size of the
+    current thread and softer idling (for use in MongoDB).
+  * we've implemented few minor performance improvements, particularly
+    on malloc fast-path.
+  * issue that caused spurious profiler_unittest.sh failures was fixed.</comment>
+    <requestid>378351</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>80c1bf82d12e861a867e25770980fd4b</srcmd5>
+    <version>2.5</version>
+    <time>1470413830</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416648</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>0e9970be25ca9255b0c4af2fa2fbe7b5</srcmd5>
+    <version>2.5</version>
+    <time>1493019957</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>485196</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>5b1eedbb621caa96889dc8c175178cf5</srcmd5>
+    <version>2.5</version>
+    <time>1503589210</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516766</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>e16a2c7a45bbb33722f9087466c0c696</srcmd5>
+    <version>2.5</version>
+    <time>1521192822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587411</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>0092e5b8c4946132a2670a26dbafd172</srcmd5>
+    <version>2.5</version>
+    <time>1522317048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591005</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>d7f24af1a20ede76648503feabc7ec43</srcmd5>
+    <version>2.5</version>
+    <time>1529665936</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617022</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7f784283dc9fa37768c77853f892dd10</srcmd5>
+    <version>2.7</version>
+    <time>1552571481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683596</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>055a47d8707846455651e40b657d8b25</srcmd5>
+    <version>2.7</version>
+    <time>1567677846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720528</requestid>
+  </revision>
+</revisionlist>

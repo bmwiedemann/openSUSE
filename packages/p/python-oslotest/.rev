@@ -1,0 +1,288 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>23673c4f9278c320b79bf3cbd1afbbd9</srcmd5>
+    <version>0.1</version>
+    <time>1396005159</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>227737</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>faefdd3704d63e660d919c61144e0a9b</srcmd5>
+    <version>1.0.0</version>
+    <time>1396452333</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.0:
+  * Import run_cross_tests.sh from oslo-incubator
+  * Fix up documentation files
+  * Fake logger as instance attribute
+  * Require testrepository and other tools at runtime
+  * Updated from global requirements
+  * Add tool to run cross-project tests
+- Fix dependencies
+- Use testrepository to run tests</comment>
+    <requestid>228564</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>faefdd3704d63e660d919c61144e0a9b</srcmd5>
+    <version>1.0.0</version>
+    <time>1409302939</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>36b189cbf6351099993eeee4059d7bfb</srcmd5>
+    <version>1.1.0</version>
+    <time>1411926859</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.0:
+  * no change compared to 1.1.0.0a2
+
+- update to 1.1.0.0a2:
+  * Add fixture for mock.patch.multiple
+  * Ensure that mock.patch.stopall is called last
+  * Remove differences between Python 2.x and 3.x versions
+  * Require six
+  * Add documentation for running oslo_debug_heler.sh
+  * Restructure oslotest docs
+  * Add pdb support to tox with debug helper shell script
+  * Updated from global requirements
+  * Cleaning up index.rst file
+  * Add known issue about time.time mocking
+  * Updated from global requirements
+  * Add API documentation
+  * Moving to use the mock module found in Python3
+
+- add drop-mox-dependency.diff 
+
+- update to 1.1.0.0a1:
+  * Update to hacking 0.9.2
+  * Cleanup mock patches on BaseTestCase tearDown(
+  * Add unit test for olsotest base class
+  * fix .gitreview after rename
+  * Sync new sphinx requirement spec
+  * Set log level to default value
+  * Updated from global requirements
+  * Update cross-test directions
+  * Update project name in doc build</comment>
+    <requestid>252602</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2ef1f9848a2792638d66bab259d33e26</srcmd5>
+    <version>1.5.1</version>
+    <time>1434550575</time>
+    <user>coolo</user>
+    <comment>Update to 1.5.0 - python-oslo.config in Factory requires at least 1.2.0, we currently have 1.1.0</comment>
+    <requestid>312079</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>393bc14163fe60384e3e97a39dfb124e</srcmd5>
+    <version>1.10.0</version>
+    <time>1441173246</time>
+    <user>coolo</user>
+    <comment>- update to 1.10.0:
+  * Allow TRACE and integer logging levels for 'OS_DEBUG'
+  * Updated from global requirements
+
+- update to 1.9.0:
+  * Fix use of mock
+  * Add documentation for cross-project unit testing
+  * Updated from global requirements
+  * Fix build break with Fixtures 1.3
+  * Updated from global requirements
+
+- update to 1.8.0:
+  * Updated from global requirements
+  * Allow ``OS_DEBUG`` environment variable to specify log level
+  * Updated from global requirements
+  * always rebuild cross-test venv
+  * Add CreateFileWithContent fixture
+  * Create ConfigureLogging fixture
+  * Create CaptureOutput fixture
+  * Create Timeout wrapper fixture
+  * Document the mock attribute for mockpatch
+
+- update to 1.7.0:
+  * Updated from global requirements
+  * Fix argument handling in oslo_run_cross_tests
+  * Add class to deal with clouds.yaml support
+  * Remove unneeded runtime pbr dep
+  * Updated from global requirements
+  * Advertise support for Python3.4 / Remove support for Python 3.3
+  * Do not sync run_cross_tests.sh</comment>
+    <requestid>328097</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b280cbc92fc14e3c33e900d4423cf0e7</srcmd5>
+    <version>2.0.0</version>
+    <time>1462342800</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Updated from global requirements
+  * Remove Python 2.6 classifier
+  * mockpatch: deprecate in favor of native fixtures
+  * Remove python 2.6 and cleanup tox.ini
+  * Updated from global requirements
+  * Fix coverage configuration and execution
+  * Updated from global requirements
+  * Add documentation about using oslo_debug_helper
+  * add oslo.config a test requirement
+  * clean up readme and doc title
+  * clean up toctree
+  * auto-generate API documentation
+  * Fix the home-page with Oslotest wikipage
+  * Fixup docstrings
+  * Updated from global requirements
+  * Updated from global requirements
+- Switch to .spec from rpm-packaging upstream project</comment>
+    <requestid>392936</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5662f898a2a451bffa13a492f9a94cc6</srcmd5>
+    <version>2.8.0</version>
+    <time>1472731367</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.0:
+  * Import mock so that it works on Python 3.x
+  * Fix parameters of assertEqual are misplaced
+  * Updated from global requirements
+  * Add Python 3.5 classifier and venv
+
+- update to 2.6.0:
+  * Updated from global requirements
+  * Remove mockpatch re-implementations
+
+- update to 2.4.0:
+  * Updated from global requirements
+  * Update .gitreview for stable/mitaka
+  * Add some gitignore files
+  * move unit tests into the oslotest package
+  * Updated from global requirements
+  * Hack to get back stopall cleanup behavior feature
+  * Fix misspelling
+  * Updated from global requirements
+  * Trival: Remove 'MANIFEST.in'</comment>
+    <requestid>423689</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>73ba329e6e9674598c38085232cd126b</srcmd5>
+    <version>2.10.0</version>
+    <time>1475242253</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.10.0
+  * A DisableModules fixture that removes modules from path
+  * Updated from global requirements</comment>
+    <requestid>426099</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ca05729aa5bdd1de7206e0fb39cde6ba</srcmd5>
+    <version>2.13.0</version>
+    <time>1487681216</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.13.0:
+  - Add Constraints support
+  - Updated from global requirements
+  - Show team and repo badges on README
+  - Changed the home-page link
+  - Add reno for release notes management
+  - Remove testscenarios from requirements</comment>
+    <requestid>457592</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>993e2d4c44633334836a5e912dd4a950</srcmd5>
+    <version>2.17.0</version>
+    <time>1503927099</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.17.0
+  - Remove pbr warnerrors in favor of sphinx check
+  - Trivial fix style in document
+  - Using fixtures instead of deprecated mockpatch module
+  - rearrange content to fit the new standard layout
+  - Update URLs in documents according to document migration
+  - [Fix gate]Update test requirement
+  - Update reno for stable/ocata
+  - Remove support for py34
+  - Updated from global requirements
+  - Switch from oslosphinx to openstackdocstheme</comment>
+    <requestid>515002</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>aeb639373bd36363c0552e5951ca0632</srcmd5>
+    <version>2.18.1</version>
+    <time>1512547166</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.18.1
+  - Update reno for stable/pike
+  - Use assertIsNone(...) instead of assertIs(None,...)
+  - Updated from global requirements
+  - Deprecate oslotest.functional</comment>
+    <requestid>548449</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b80fdb76e358881b72f3b2a9fc87ea77</srcmd5>
+    <version>3.2.0</version>
+    <time>1516804082</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.0
+  - Remove -U from pip install
+  - Remove setting of version/release from releasenotes
+  - Avoid tox_install.sh for constraints support
+  - Remove oslotest.mockpatch
+  - Adds mock autospec fixture
+  - Updated from global requirements</comment>
+    <requestid>567282</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8a45cca6d0e6deb0bb7946af250c0cc3</srcmd5>
+    <version>3.2.0</version>
+    <time>1521499007</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583354</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6e5e529f74f86eb6670e224763692c67</srcmd5>
+    <version>3.4.2</version>
+    <time>1536327562</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633114</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0a886cf350ebab5e35b8e1dc5f52fdd7</srcmd5>
+    <version>3.6.0</version>
+    <time>1538374693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638870</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c65a1b64dcaf511298790d63655c637d</srcmd5>
+    <version>3.7.1</version>
+    <time>1555053223</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.7.1
+  - Add release note link in README
+  - Add DEFAULT_TIMEOUT and TIMEOUT_SCALING_FACTOR
+  - Change python3.5 job to python3.7 job on Stein+
+  - Change openstack-dev to openstack-discuss
+  - Update hacking version
+  - Update reno for stable/rocky
+  - Fix requirements check ci in oslotest
+  - Fix nits in timeout change
+  - add python 3.6 unit test job
+  - Title underline too long
+  - import zuul job settings from project-config
+  - Use templates for cover and lower-constraints
+  - Don't quote {posargs} in tox.ini</comment>
+    <requestid>692871</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>ec45de21ea657866ff3a568fec81c03d</srcmd5>
+    <version>3.7.1</version>
+    <time>1565864738</time>
+    <user>dimstar_suse</user>
+    <comment>- added 0001-Stop-testing-mock-functionality.patch</comment>
+    <requestid>721086</requestid>
+  </revision>
+</revisionlist>

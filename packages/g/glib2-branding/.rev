@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c433c474f0ac03d23ee24f3940cdddcd</srcmd5>
+    <version>15</version>
+    <time>1513676984</time>
+    <user>dimstar_suse</user>
+    <comment>Renamed, restructured variant of glib2-branding-openSUSE, simplified, unified</comment>
+    <requestid>557321</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>26778f24716fa735696b232e1db8a5d5</srcmd5>
+    <version>15</version>
+    <time>1513762855</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert &quot;Update .gschema.override.in: evolution.desktop has been
+  renamed to org.gnome.Evolution.desktop.&quot;: This will only be valid
+  with GNOME 3.28.
+
+- Use variable flavor instead of BUILD_FLAVOR: obs is only
+  replacing the first occurence.</comment>
+    <requestid>558723</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2d141d6e06a95d2babd09e2a5f852fda</srcmd5>
+    <version>15</version>
+    <time>1521051934</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 3.28</comment>
+    <requestid>584819</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5f07a3949df727f8f8f4d4fa50dcbb21</srcmd5>
+    <version>15</version>
+    <time>1525611630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update .gschema.override.in: referring the implementation of
+  bsc#1077332, fully enable gnome-software notification which is
+  now used on both leap15 and sle15 to replace the legacy g-s-d
+  notification method (boo#1090042). (forwarded request 603348 from yfjiang)</comment>
+    <requestid>603689</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8c198fca543c1d505ecd886fab4e5489</srcmd5>
+    <version>15</version>
+    <time>1530473148</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend sound-theme-freedesktop by both openSUSE and SLE.
+  (bsc#1097595) (forwarded request 619657 from qkzhu)</comment>
+    <requestid>619720</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>33b231ba63e1542733c90fb19e33a6d7</srcmd5>
+    <version>15</version>
+    <time>1542122854</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gnome_defaults: evince.desktop has been renamed to
+  org.gnome.Evince.desktop with GNOME 3.30. (forwarded request 647312 from iznogood)</comment>
+    <requestid>647326</requestid>
+  </revision>
+</revisionlist>

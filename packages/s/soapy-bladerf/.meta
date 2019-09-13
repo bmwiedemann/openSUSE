@@ -1,0 +1,9 @@
+<package name="soapy-bladerf" project="openSUSE:Factory">
+  <title>SoapySDR BladeRF module</title>
+  <description>Soapy BladeRF - BladeRF device support for Soapy SDR.
+A Soapy module that supports BladeRF devices within the Soapy API.
+
+</description>
+  <devel project="hardware:sdr" package="soapy-bladerf"/>
+  <url>https://github.com/pothosware/SoapyBladeRF/wiki</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="fann" project="openSUSE:Factory">
+  <title>fann</title>
+  <description>Fast Artificial Neural Network Library</description>
+  <devel project="devel:libraries:c_c++" package="fann"/>
+</package>

@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bc855fe8593b4a9b4a646c2b3af3da5</srcmd5>
+    <version>0.1.9</version>
+    <time>1515623534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556875</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8d0c4e0eda75f400c0903d7e6dca4f23</srcmd5>
+    <version>0.2.3</version>
+    <time>1522832703</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.3:
+  * fixed top margin for record controls
+  * move indicator function
+  * Merge pull request #31 from GitHaarek/patch-1
+  * http to https and url fixes
+  * pot + German
+- Update to 0.2.2:
+  * Update com.github.artemanufrij.screencast.appdata.xml
+  * Update com.github.artemanufrij.screencast.desktop
+  * Tweak the capitalisation of some sentences
+  * Improve .desktop comment and generic name slightly
+  * Update lt.po
+  * fixed es.po
+  * fix instand recording from plank
+  * fixed area recording
+  * Update README.md
+  * new pot file
+  * code style
+  * removed unused this.hide ();
+  * application behavior
+  * small improvements
+  * pause on focus
+- Add appindicator dependency
+</comment>
+    <requestid>593087</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>494b38eb458df565f19383c8c45b0301</srcmd5>
+    <version>0.2.4</version>
+    <time>1523875778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596529</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>90bf9048e87153d0c74a9bfc24bd9f4c</srcmd5>
+    <version>0.3.0</version>
+    <time>1535704876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629644</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8c06f9989b5ccd13cebaf4e7f70c4a27</srcmd5>
+    <version>1.0.0</version>
+    <time>1564483094</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release (forwarded request 717667 from awissu)</comment>
+    <requestid>719644</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,226 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be0769652ea3bb9175c97ed8e8e90874</srcmd5>
+    <version>2.1.3</version>
+    <time>1285283269</time>
+    <user>autobuild</user>
+    <comment>Copy from server:http/varnish based on submit request 48519 from user jengelh
+</comment>
+    <requestid>48519</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>be0769652ea3bb9175c97ed8e8e90874</srcmd5>
+    <version>2.1.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>181558e472a32d341e9e984315212854</srcmd5>
+    <version>2.1.3</version>
+    <time>1309350404</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67020</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>da67cb6d537ce552d5b90071f9d80dda</srcmd5>
+    <version>2.1.3</version>
+    <time>1309350414</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67020
+</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>da67cb6d537ce552d5b90071f9d80dda</srcmd5>
+    <version>2.1.3</version>
+    <time>1319182547</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>16ac69e441978a2be5ca66f6ce7b1439</srcmd5>
+    <version>3.0.2</version>
+    <time>1331579837</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.0.2
+* Add support for ESI and gzip
+* Handle objects larger than 2G
+* HTTP Range support is now enabled by default
+* &quot;307 Temporary redirect&quot; is now considered cacheable
+* see ChangeLog (packaged) or
+  http://varnish-cache.org/trac/browser/doc/changes.rst
+  for details
+- Note that the -s file,/var/cache/varnish,524288 argument (check
+  /etc/sysconfig/varnish) needs at least &quot;1M&quot; instead of 524288
+  or the daemon will not start anymore.
+- Add systemd unit files</comment>
+    <requestid>107492</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>16ac69e441978a2be5ca66f6ce7b1439</srcmd5>
+    <version>3.0.2</version>
+    <time>1340184308</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d5de5cba0779fddb62c68ac9a48ca6b0</srcmd5>
+    <version>3.0.3</version>
+    <time>1349633165</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137391</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d5de5cba0779fddb62c68ac9a48ca6b0</srcmd5>
+    <version>3.0.3</version>
+    <time>1359110538</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>d5de5cba0779fddb62c68ac9a48ca6b0</srcmd5>
+    <version>3.0.3</version>
+    <time>1379664909</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>d90915e667d2f951aceeaf0c8185cee0</srcmd5>
+    <version>3.0.3</version>
+    <time>1381735962</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>203103</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>346d795b51867d44dbe50207d39090d7</srcmd5>
+    <version>3.0.3</version>
+    <time>1383379674</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add 0001-Make-up-our-mind-Any-req.-we-receive-from-the-client.patch
+  (CVE-2013-4484, bnc#48451)</comment>
+    <requestid>205573</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>614db1fdf02ebe48dc363e05861e4c0d</srcmd5>
+    <version>3.0.5</version>
+    <time>1391770577</time>
+    <user>scarabeus_factory</user>
+    <comment>- Updated to 3.0.5</comment>
+    <requestid>220760</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>614db1fdf02ebe48dc363e05861e4c0d</srcmd5>
+    <version>3.0.5</version>
+    <time>1409303597</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>baa966f836e199440d88f1f9cf140d64</srcmd5>
+    <version>4.0.3</version>
+    <time>1427736797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.0.3</comment>
+    <requestid>293478</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c2fb04151fd7ff55612bf960804cee60</srcmd5>
+    <version>4.1.1</version>
+    <time>1455701205</time>
+    <user>dimstar_suse</user>
+    <comment>- disable silent rules in spec file.
+- enable testsuite for varnish. (forwarded request 359616 from evshmarnev)</comment>
+    <requestid>359622</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>bb58ddb36c83d397c7499fd414591194</srcmd5>
+    <version>4.1.1</version>
+    <time>1458228895</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>373113</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>70b2eeab467e565bf7c9e0d7046f988b</srcmd5>
+    <version>4.1.2</version>
+    <time>1462051910</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>392907</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e77c959c38a36323cafe1fb72ec71a66</srcmd5>
+    <version>4.1.2</version>
+    <time>1471688830</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on openSUSE:Factory i586 (forwarded request 419852 from dimstar)</comment>
+    <requestid>419880</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>92923fb65a407a3706a592ce5a7e874a</srcmd5>
+    <version>5.0.0</version>
+    <time>1475589650</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433078</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5085a5f0af5d56e0f53ba010bb9d19fa</srcmd5>
+    <version>5.0.0</version>
+    <time>1495011342</time>
+    <user>dimstar_suse</user>
+    <comment>Fix current failure on openSUSE:Factory - NOTE: with the introduction of gcc7, this package will be failing again (forwarded request 495480 from dimstar)</comment>
+    <requestid>495484</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b6d8a3fd327a39abcff2633974bed76d</srcmd5>
+    <version>5.1.2</version>
+    <time>1498742085</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506720</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>5661fc41358b8d62c09cb6317ef9ff77</srcmd5>
+    <version>5.1.2</version>
+    <time>1511517392</time>
+    <user>dimstar_suse</user>
+    <comment>Replace references to /var/adm/fillup-templates with new %_fillupdir macro (boo#1069468) (forwarded request 544794 from RBrownSUSE)</comment>
+    <requestid>544987</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7c104d7be6903f7ba2ee124b4c380dd0</srcmd5>
+    <version>6.0.0</version>
+    <time>1526041649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 6.0.0</comment>
+    <requestid>602965</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cc3977a208ab2734fbcbd1006aade2b7</srcmd5>
+    <version>6.2.0</version>
+    <time>1553700174</time>
+    <user>dimstar_suse</user>
+    <comment>6.2.0</comment>
+    <requestid>689081</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>83ee045829cac4d8516a100bbbfe8954</srcmd5>
+    <version>6.2.0</version>
+    <time>1566894513</time>
+    <user>dimstar_suse</user>
+    <comment>- Add uninit.patch.</comment>
+    <requestid>726298</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c12fcf9c13449aae36bd28fc6bfd33a0</srcmd5>
+    <version>6.2.1</version>
+    <time>1567680385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.2.1
+  * Bugfix for CVE-2019-15892 [boo#1149382]</comment>
+    <requestid>728299</requestid>
+  </revision>
+</revisionlist>

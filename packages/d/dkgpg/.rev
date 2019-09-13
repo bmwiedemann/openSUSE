@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7663b01ada674f6e57f293153f6caed</srcmd5>
+    <version>1.0.5</version>
+    <time>1518426879</time>
+    <user>dimstar_suse</user>
+    <comment>New package, requires libTMCG, which is also staged for Factory (request 574539)</comment>
+    <requestid>574541</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>beb13693f3696f2fd3873760d36a276b</srcmd5>
+    <version>1.0.5</version>
+    <time>1518950743</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>577617</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>439b6be2709471b4e1c66d214b122945</srcmd5>
+    <version>1.0.6</version>
+    <time>1521904453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589665</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c2cd057fd18423a4e61d4b525d412111</srcmd5>
+    <version>1.0.7</version>
+    <time>1531947159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621611</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>55ba3382436fab29edf0636dd72a5014</srcmd5>
+    <version>1.0.8</version>
+    <time>1537787570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637010</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f5f154a4394a95fdc788a832b53734c2</srcmd5>
+    <version>1.0.9</version>
+    <time>1542124678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648405</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>13bb3102c6ca83d163ebf2e5de8ae041</srcmd5>
+    <version>1.1.0</version>
+    <time>1544539711</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+    This release supports Authenticated Encryption with Associated Data (AEAD)
+    in accordance to RFC 4880bis (draft); this can be enforced with the new
+    added option &quot;-a&quot; when  dkg-(d)encrypt is used. For using domain parameters,
+    as described in RFC 7919, one should specify the new option &quot;-r&quot;, when
+    dkg-gencrs is used. Last, for key generation (dkg-generate) the timestamp
+    option was added ( &quot;--timestamping&quot;) which sets a key usage flag.</comment>
+    <requestid>656870</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>958baeee7bb236918f65d50afa9d368f</srcmd5>
+    <version>1.1.1</version>
+    <time>1556622324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698935</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f6ae8127dd08b4d1a4bbb358bba76b79</srcmd5>
+    <version>1.1.2</version>
+    <time>1559580655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706877</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>44f472aeda1b8b5a86c6faaa16d99dde</srcmd5>
+    <version>1.1.3</version>
+    <time>1563808697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717436</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5b3b94c6bf3bf501b734de0dd7a8baa</srcmd5>
+    <version>0.1.5</version>
+    <time>1168903448</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="11">
+    <srcmd5>229d28d1df49c6b13fc2b80bfd1a8262</srcmd5>
+    <version>0.1.5</version>
+    <time>1168992963</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8debe0b446f089fabc1f07678256e7c</srcmd5>
+    <version>0.1.7</version>
+    <time>1201195782</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3bf72863c6af66e072f7d5156c9bdab6</srcmd5>
+    <version>0.1.7</version>
+    <time>1201206008</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="17">
+    <srcmd5>866f068b0183076ff2e307033b04e819</srcmd5>
+    <version>0.1.7</version>
+    <time>1207777479</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="19">
+    <srcmd5>57fc464e3630bfaf8a204b037d9e9ef7</srcmd5>
+    <version>0.1.7</version>
+    <time>1208266818</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="32">
+    <srcmd5>360e0ae753e6cbdeb82d291a98691f3c</srcmd5>
+    <version>0.1.7</version>
+    <time>1215808537</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c390f5ad6137a2b5835810c81b90fe78</srcmd5>
+    <version>0.2.1</version>
+    <time>1244470457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6ec5c6f09118cf1524eeb99678a97bd1</srcmd5>
+    <version>0.2.3</version>
+    <time>1250905297</time>
+    <user>autobuild</user>
+    <comment>Copy from server:monitoring/logdigest based on submit request 18472 from user poeml
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>6ec5c6f09118cf1524eeb99678a97bd1</srcmd5>
+    <version>0.2.3</version>
+    <time>1250905297</time>
+    <user>autobuild</user>
+    <comment>Copy from server:monitoring/logdigest based on submit request 18472 from user poeml
+</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>bfd6dac6d2eeddbaa22c2151c1bae923</srcmd5>
+    <version>0.2.3</version>
+    <time>1268924845</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bdae9fde9f7e95f271cca7318e0b5d86</srcmd5>
+    <version>0.2.4</version>
+    <time>1268990575</time>
+    <user>autobuild</user>
+    <comment>Copy from server:monitoring/logdigest based on submit request 35068 from user coolo
+</comment>
+    <requestid>35068</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>bdae9fde9f7e95f271cca7318e0b5d86</srcmd5>
+    <version>0.2.4</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>bdae9fde9f7e95f271cca7318e0b5d86</srcmd5>
+    <version>0.2.4</version>
+    <time>1278678594</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>bdae9fde9f7e95f271cca7318e0b5d86</srcmd5>
+    <version>0.2.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>bdae9fde9f7e95f271cca7318e0b5d86</srcmd5>
+    <version>0.2.4</version>
+    <time>1319182158</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>8747e492bdbd679831914dd13d62b737</srcmd5>
+    <version>0.2.4</version>
+    <time>1323440702</time>
+    <user>coolo</user>
+    <comment>- add automake as buildrequire to avoid implicit dependency (forwarded request 95127 from coolo)</comment>
+    <requestid>95335</requestid>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>c728f63e60deb664f227f944f5ad8aa0</srcmd5>
+    <version>0.2.4</version>
+    <time>1323773340</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+
+There are no GPL-2.0 (only) files in the package nor any indication that there is a restriction to version 2 only of the GPL. According to the terms of the GPL itself, this makes the package GPL-2.Ã0+ (using SPDX syntax) (forwarded request 96102 from babelworx)</comment>
+    <requestid>96412</requestid>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>c728f63e60deb664f227f944f5ad8aa0</srcmd5>
+    <version>0.2.4</version>
+    <time>1340183672</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>c728f63e60deb664f227f944f5ad8aa0</srcmd5>
+    <version>0.2.4</version>
+    <time>1359109407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>c728f63e60deb664f227f944f5ad8aa0</srcmd5>
+    <version>0.2.4</version>
+    <time>1379663188</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="17">
+    <srcmd5>386a08f2e6da7725890370127253c97d</srcmd5>
+    <version>0.2.4</version>
+    <time>1387798481</time>
+    <user>scarabeus_factory</user>
+    <comment> (forwarded request 211956 from wrosenauer)</comment>
+    <requestid>212001</requestid>
+  </revision>
+  <revision rev="23" vrev="19">
+    <srcmd5>386a08f2e6da7725890370127253c97d</srcmd5>
+    <version>0.2.4</version>
+    <time>1409301814</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="20">
+    <srcmd5>ff79f4ec839efef29c282b4291355c84</srcmd5>
+    <version>0.2.4</version>
+    <time>1567680278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728282</requestid>
+  </revision>
+</revisionlist>

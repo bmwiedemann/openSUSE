@@ -1,0 +1,7 @@
+<package name="aqbanking" project="openSUSE:Factory">
+  <title>Library for Online Banking Functions and Financial Data Import and Export</title>
+  <description>AqBanking is a generic online banking interface. It allows multiple
+back-ends (currently HBCI) and multiple front-ends (such as KDE, GNOME,
+or console) to be used.</description>
+  <devel project="Office" package="aqbanking"/>
+</package>

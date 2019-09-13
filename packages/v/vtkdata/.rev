@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e00090efb749185f3e08028e06b2a40</srcmd5>
+    <version>5.8.0</version>
+    <time>1336452550</time>
+    <user>coolo</user>
+    <comment>vtkdata package, needed for new vtk</comment>
+    <requestid>116115</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>532b49c8092b8f9c3ad4094d869f31f4</srcmd5>
+    <version>5.10.0</version>
+    <time>1338477078</time>
+    <user>coolo</user>
+    <comment>- Remove Copyright.txt, its now in the distribution
+- Remove Data/2h2o.out file due to licensing problem, bnc#764509
+
+- Update to version 5.10.0:
+  + No detailed changelog available.</comment>
+    <requestid>122732</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>532b49c8092b8f9c3ad4094d869f31f4</srcmd5>
+    <version>5.10.0</version>
+    <time>1340184318</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3f5ae534e15b6d6d1a8989428389377e</srcmd5>
+    <version>5.10.1</version>
+    <time>1351688760</time>
+    <user>coolo</user>
+    <comment>Update to version 5.10.1 (to be checked in with the vtk sr#139529) (forwarded request 139530 from Dmitry_R)</comment>
+    <requestid>139571</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3f5ae534e15b6d6d1a8989428389377e</srcmd5>
+    <version>5.10.1</version>
+    <time>1359110554</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1b84218721af7c195fedfcee5db96a6f</srcmd5>
+    <version>6.0.0</version>
+    <time>1373984817</time>
+    <user>coolo</user>
+    <comment>factory-auto rejected it in 182971 (forwarded request 182974 from Mailaender)</comment>
+    <requestid>182992</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1b84218721af7c195fedfcee5db96a6f</srcmd5>
+    <version>6.0.0</version>
+    <time>1379664943</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4414df60c5628506a8a09623fe25a965</srcmd5>
+    <version>6.1.0</version>
+    <time>1391666442</time>
+    <user>coolo</user>
+    <comment>Update to version 6.1.0 (forwarded request 220955 from badshah400)</comment>
+    <requestid>221010</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>4414df60c5628506a8a09623fe25a965</srcmd5>
+    <version>6.1.0</version>
+    <time>1409303623</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0873689b5e147b85d5212f4b635c696a</srcmd5>
+    <version>6.2.0</version>
+    <time>1427274063</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292519</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1a2a5cecbfd8767ae6626b0d72990ec0</srcmd5>
+    <version>6.3.0</version>
+    <time>1442638530</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331900</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d7400bfad2b07fd2bc1ef6a68940deba</srcmd5>
+    <version>7.0.0</version>
+    <time>1456434302</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360705</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f6f8bf1c9a6dc74893f2194133b0bf10</srcmd5>
+    <version>7.1.0</version>
+    <time>1485682384</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442052</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>de5c5527bacfbfb5789d22d347fc886e</srcmd5>
+    <version>8.0.0</version>
+    <time>1503593038</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514114</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4d33af64b3dcfdac68cd7ee00c78f36a</srcmd5>
+    <version>8.1.2</version>
+    <time>1543311835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652021</requestid>
+  </revision>
+</revisionlist>

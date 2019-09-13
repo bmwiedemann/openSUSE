@@ -1,0 +1,212 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8a4c385912f3616ca46f16f7d83b2ebd</srcmd5>
+    <version>1.2.0.20100102</version>
+    <time>1268992800</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/ibus-hangul based on submit request 34897 from user coolo
+</comment>
+    <requestid>34897</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>508cc1abdcb468bc5f22b278a8d33c82</srcmd5>
+    <version>1.2.0.20100102</version>
+    <time>1269619422</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/ibus-hangul based on submit request 35651 from user tiwai
+</comment>
+    <requestid>35651</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>508cc1abdcb468bc5f22b278a8d33c82</srcmd5>
+    <version>1.2.0.20100102</version>
+    <time>1278667351</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>508cc1abdcb468bc5f22b278a8d33c82</srcmd5>
+    <version>1.2.0.20100102</version>
+    <time>1278678582</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>508cc1abdcb468bc5f22b278a8d33c82</srcmd5>
+    <version>1.2.0.20100102</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>db03de44f177e851cf90ab4405aad02e</srcmd5>
+    <version>1.3.1</version>
+    <time>1309180570</time>
+    <user>saschpe</user>
+    <comment>- Update to 1.3.1;
+  including fixes for new ibus-1.3.x</comment>
+    <requestid>74626</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2765ad3007094240ee8a4edcb2319d6b</srcmd5>
+    <version>1.3.1</version>
+    <time>1309180581</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74626
+</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>93f207c8d19e04ee0e7e82f8338a5efc</srcmd5>
+    <version>1.3.1</version>
+    <time>1316459427</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>83038</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>ed617318c57a1bd34d588f8bc6214b21</srcmd5>
+    <version>1.3.1</version>
+    <time>1318527698</time>
+    <user>lrupp</user>
+    <comment>- Fix build with ibus-1.4, the patch taken from Fedora (bnc#723591)
+- Fix the installation path of setup program</comment>
+    <requestid>87612</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>ed617318c57a1bd34d588f8bc6214b21</srcmd5>
+    <version>1.3.1</version>
+    <time>1319181978</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>3eb9dd7b64cd978f3dc99b8e4d22a13a</srcmd5>
+    <version>1.3.1</version>
+    <time>1323340102</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94794 from coolo)</comment>
+    <requestid>94869</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4f1256a39504e4e39908853a702ea757</srcmd5>
+    <version>1.4.0</version>
+    <time>1332752483</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.0
+   * Require ibus 1.4
+   * Add desktop menu for ibus-setup-hangul
+   * Add an option for automatic reordering
+   * Add an option for a word preedit text
+   * Update MS IME compatible symbol table
+   * Use surrounding text feature on converting to hanja</comment>
+    <requestid>110647</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>4f1256a39504e4e39908853a702ea757</srcmd5>
+    <version>1.4.0</version>
+    <time>1340183447</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>259d91b5630e977a1ac4451cb7ddc16d</srcmd5>
+    <version>1.4.1</version>
+    <time>1340890106</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.1
+ * Handle exceptions properly in ibus-setup-hangul
+   https://github.com/choehwanjin/ibus-hangul/pull/5
+ * Update icon files
+ * Support ibus icon symbol feature (forwarded request 126268 from hillwood)</comment>
+    <requestid>126269</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>13f9d5924cdf8609ea5711b93887ef5b</srcmd5>
+    <version>1.4.1</version>
+    <time>1342866570</time>
+    <user>namtrac</user>
+    <comment>- Fix the installation path of setup program for ppc as well (forwarded request 128290 from k0da)</comment>
+    <requestid>128449</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>a43c7181efdd948155e212f913f41a60</srcmd5>
+    <version>1.4.1</version>
+    <time>1349243171</time>
+    <user>coolo</user>
+    <comment>- Use %{_lib} for the installation path (forwarded request 136552 from AndreasSchwab)</comment>
+    <requestid>136565</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>a43c7181efdd948155e212f913f41a60</srcmd5>
+    <version>1.4.1</version>
+    <time>1359109061</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b15d5fef74cbdf7da3141939dd08ddce</srcmd5>
+    <version>1.4.2</version>
+    <time>1359462838</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.2
+  * Use Gobject Introspection
+  * GNOME Control Center integration
+  * Miscellaneous bug fixes (forwarded request 150004 from hillwood)</comment>
+    <requestid>150005</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>b15d5fef74cbdf7da3141939dd08ddce</srcmd5>
+    <version>1.4.2</version>
+    <time>1379662638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>b15d5fef74cbdf7da3141939dd08ddce</srcmd5>
+    <version>1.4.2</version>
+    <time>1409301194</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1f5ca0b739918d856ba188ced610ef7b</srcmd5>
+    <version>1.5.0</version>
+    <time>1414218796</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258125</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>582016c5339b4a947514324e8769122b</srcmd5>
+    <version>1.5.2~git20181223.10c4795</version>
+    <time>1551113749</time>
+    <user>coolo</user>
+    <comment>- update to version 1.5.2~git20181223.10c4795:
+  * Add test code for UString
+  * Implement preedit mode option
+  * Implement IBusEngine::set_capabilities method
+  * Listen to 'use-event-forwarding' option change event
+  * Fix event processing priority for hanja conversion
+  * Fix interger overflow on h_ibus_text_get_substring()
+  * Add AppStream metainfo
+  * setup: Add window &quot;destroy&quot; event handling
+  * Add Escape to off-keys default value
+- changes in 1.5.1
+  * correct more spacings
+  * correct capitalization of setup labels
+  * check if ibus and ibus config is running
+  * fix wrong space order problem
+  * add disable-latin-mode option
+  * setup: set GLib app name explicitly
+  * setup: fix PyGI warnings
+  * reparent IBusHangulEngine from IBusEngineSimple to handle Compose key
+  * migrate IBusConfig to GSettings
+  * add use-event-forwarding option
+  * setup: Don't use GtkDialog
+  * intialized local variable as NULL
+  * update initial_input_mode on GSettings &quot;changed&quot;
+- use python3
+- add python3-gobject as Requires (boo#1124568)
+</comment>
+    <requestid>678523</requestid>
+  </revision>
+</revisionlist>

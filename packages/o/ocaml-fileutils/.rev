@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48e02f7418f6913055f228de077eac0b</srcmd5>
+    <version>0.5.0</version>
+    <time>1476874801</time>
+    <user>dimstar_suse</user>
+    <comment>fate#320836</comment>
+    <requestid>414558</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1cb48cf0273bb65db61dc072a8964e08</srcmd5>
+    <version>0.5.2</version>
+    <time>1503061394</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Update to version 0.5.2
+  Fix non POSIX behavior of cp with links when &quot;recurse:false&quot;.
+  Test file existence with Unix.LargeFile.lstat in FileUtilRM.
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>517013</requestid>
+  </revision>
+</revisionlist>

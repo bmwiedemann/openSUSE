@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="67">
+    <srcmd5>613c08b222c7587ef5207d20125eec57</srcmd5>
+    <version>8</version>
+    <time>1226049824</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="108">
+    <srcmd5>b8cdf92656b0816e1e951c5d89e457e5</srcmd5>
+    <version>8</version>
+    <time>1245364238</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="110">
+    <srcmd5>b8cdf92656b0816e1e951c5d89e457e5</srcmd5>
+    <version>8</version>
+    <time>1245364238</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6d6352beb9a59b9e36d323aabdadf3e0</srcmd5>
+    <version>9</version>
+    <time>1260545294</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/ipw-firmware based on submit request 26175 from user seife
+</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e18047b3472b0a75559229a4a3486570</srcmd5>
+    <version>9</version>
+    <time>1268924040</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>e18047b3472b0a75559229a4a3486570</srcmd5>
+    <version>9</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>e18047b3472b0a75559229a4a3486570</srcmd5>
+    <version>9</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>e18047b3472b0a75559229a4a3486570</srcmd5>
+    <version>9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>e18047b3472b0a75559229a4a3486570</srcmd5>
+    <version>9</version>
+    <time>1319181993</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>cc3d908a0b6adc32469d63bd6b163c8e</srcmd5>
+    <version>9</version>
+    <time>1324415526</time>
+    <user>coolo</user>
+    <comment>- as spdx.org has no concept of firmware, we decided to mark it as
+  SUSE-Firmware (forwarded request 96645 from coolo)</comment>
+    <requestid>96653</requestid>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>cc3d908a0b6adc32469d63bd6b163c8e</srcmd5>
+    <version>9</version>
+    <time>1340183467</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>cc3d908a0b6adc32469d63bd6b163c8e</srcmd5>
+    <version>9</version>
+    <time>1359109089</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="16">
+    <srcmd5>bed228974b63b912581862775e953723</srcmd5>
+    <version>9</version>
+    <time>1360503374</time>
+    <user>coolo</user>
+    <comment>- PreReq modutils instead of module-init-tools otherwise 
+ we cannot switch to kmod cleanly (forwarded request 150843 from elvigia)</comment>
+    <requestid>155017</requestid>
+  </revision>
+  <revision rev="14" vrev="18">
+    <srcmd5>bed228974b63b912581862775e953723</srcmd5>
+    <version>9</version>
+    <time>1379662681</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="20">
+    <srcmd5>bed228974b63b912581862775e953723</srcmd5>
+    <version>9</version>
+    <time>1409301244</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

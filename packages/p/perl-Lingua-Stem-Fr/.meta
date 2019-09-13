@@ -1,0 +1,13 @@
+<package name="perl-Lingua-Stem-Fr" project="openSUSE:Factory">
+  <title>Perl French Stemming</title>
+  <description>This module use the a modified version of the Porter Stemming Algorithm to
+return a stemmed words.
+
+Authors:
+--------
+    Sébastien Darribere-Pleyt, &lt;sebastien.darribere@lefute.com&gt;
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Lingua-Stem-Fr"/>
+  <url>http://search.cpan.org/dist/Lingua-Stem-Fr/</url>
+</package>

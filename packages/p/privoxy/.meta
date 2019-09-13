@@ -1,0 +1,7 @@
+<package name="privoxy" project="openSUSE:Factory">
+  <title>The Internet Junkbuster - HTTP Proxy Server</title>
+  <description>The Internet Junkbuster - HTTP Proxy Server: A non-caching HTTP proxy
+server that runs between a web browser and a web server and filters
+contents as described in the configuration files.</description>
+  <devel project="server:proxy" package="privoxy"/>
+</package>

@@ -1,0 +1,612 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a728202d7d5fde20011c9cc48fb04d8a</srcmd5>
+    <version>2012.1+git.1348955975.6c127df</version>
+    <time>1352700295</time>
+    <user>coolo</user>
+    <comment>Shiny new OpenStack API client based on SUSE Cloud</comment>
+    <requestid>140637</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4c8b03d5a66d297a8c8a6d1a0e900c0c</srcmd5>
+    <version>0.2.1.3.gd37a3fb+git.1357543650.d37a3fb</version>
+    <time>1358198733</time>
+    <user>coolo</user>
+    <comment>Pushing OpenStack Folsom to Factory, see http://lists.opensuse.org/opensuse-factory/2013-01/msg00150.html</comment>
+    <requestid>148320</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4c8b03d5a66d297a8c8a6d1a0e900c0c</srcmd5>
+    <version>0.2.1.3.gd37a3fb+git.1357543650.d37a3fb</version>
+    <time>1359110060</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4a09551b87d2fcfdb85b44b1b194cb42</srcmd5>
+    <version>0.2.1.3.gd37a3fb+git.1357543650.d37a3fb</version>
+    <time>1362732211</time>
+    <user>coolo</user>
+    <comment>Update to latest Folsom + fixes to make things really work</comment>
+    <requestid>157844</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ea7019413745b108e1e5981116a46c8d</srcmd5>
+    <version>0.2.3</version>
+    <time>1367237862</time>
+    <user>coolo</user>
+    <comment>- switch to released version of the tarball (0.2.3)
+
+- update to 0.2.3.1 
+
+- Drop +git.$TIMESTAMP.$COMMITHASH version suffix
+--------------------------------------------------------------------
+- Update to version 0.2.2.79+git.1363478707.d62bbdf:
+  + Switch to final 1.1.0 oslo.config release
+  + Make keystone client handle the response code 300.
+  + Make auth_token lazy load the auth_version.
+  + Use v2.0 api by default in auth_token middleware
+  + Retry http_request and json_request failure.
+  + update v3 domains - remove public/private namespace
+  + Doc info and other readability improvements
+--------------------------------------------------------------------
+- Update to version 0.2.2.67+git.1363133193.d782a99:
+  + Fix auth-token middleware to understand v3 tokens
+--------------------------------------------------------------------
+- Update to version 0.2.2.66+git.1362996313.ae36809:
+  + Sync memorycache and timeutils from oslo.
+  + Save test_auth_token_middleware from unlimited recursion
+  + Work better in server env with no keyrings
+  + Switch to oslo.config.
+  + Remove test dep on name of dir (bug 1124283)
+  + help text improvements
+--------------------------------------------------------------------
+- Update to version 0.2.2.56+git.1362138053.3ce3fe8:
+  + Improve error message for missing endpoint
+--------------------------------------------------------------------
+- Update to version 0.2.2.55+git.1361729982.58cb347:</comment>
+    <requestid>173346</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9d98a7d04cdddfbeadbf1964c371cd47</srcmd5>
+    <version>0.2.3</version>
+    <time>1371152598</time>
+    <user>coolo</user>
+    <comment>Update to latest Grizzly</comment>
+    <requestid>178485</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8b10d1f13ec7a86c9fdf2593e661c179</srcmd5>
+    <version>0.3.1.15</version>
+    <time>1374400782</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.1.13:
+  + Ec2Signer : Modify v4 signer to match latest boto
+- Update to version 0.3.1.11:
+  + Sync install_venv_common from oslo
+  + Fix and enable gating on H402
+- Update to version 0.3.1.8:
+  + Add name arguments to keystone command.
+- Update to version 0.3.1.6:
+  + Remove endpoint.name attribute from v3 manager (bug 1191152)
+- Update to version 0.3.1.4:
+  + Log cms_verify issues as warnings (not errors).
+
+- Update to version 0.3.1.2:
+  + Fix auth_token.py bad signing_dir log message
+  + Flake8 should ignore build folder
+
+- Add 0001-Use-ServiceCatalog.factory-the-object-has-no-__init_.patch:
+  Backport of https://review.openstack.org/#/c/35103/
+
+- remove 0001-Python-2.6-compatibility-for-tests-test_keyring.py.patch 
+
+- Add 0001-Python-2.6-compatibility-for-tests-test_keyring.py.patch:
+  Backport of https://review.openstack.org/#/c/33239/
+
+- remove nose dependencies 
+
+- remove python-distribute dependency 
+- update requires from pip/test-requires 
+
+- Add new build dependencies:</comment>
+    <requestid>183606</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8b10d1f13ec7a86c9fdf2593e661c179</srcmd5>
+    <version>0.3.1.15</version>
+    <time>1379664205</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b3aff67c3c7765d0d8de8a00c1f1d8ba</srcmd5>
+    <version>0.3.2.72</version>
+    <time>1380201258</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.2.72:
+  + Allow blank to email in user-update
+  + Change Babel to a runtime requirement
+
+- Update to version 0.3.2.68:
+  + Decode the non-english username str to unicode
+
+- Update to version 0.3.2.66:
+  + Convert tests to HTTPretty and reorganize
+
+- 0001-Add-workaround-for-OSError-raised-by-Popen.communica.patch 
+
+- Update to version 0.3.2.64:
+  + Don't need to init testr explicitly
+
+- Update to version 0.3.2.62:
+  + Deprecation warning should be 'pending'
+
+- Update to version 0.3.2.60:
+  + Support client generate literal ipv6 auth_uri base on auth_host
+  + Replace HttpConnection in auth_token with Requests
+  + Set example timestamps to 2038-01-18T21:14:07Z
+
+- Update to version 0.3.2.55:
+  + Allow Hacking 0.7.x or later
+
+- Update to version 0.3.2.53:
+  + Deprecation warning for the CLI
+
+- update requires</comment>
+    <requestid>200413</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>925ef4fc51fb057d2c24ec4bfdc90135</srcmd5>
+    <version>0.3.2.78</version>
+    <time>1380297716</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200725</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b4d031e6e60fe27ef1c363c3db1397ec</srcmd5>
+    <version>0.4.0</version>
+    <time>1382088892</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 0.4.0:
+  + Refactor for testability of an upcoming change
+  + Fix H202 assertRaises Exception
+  + Normalize datetimes to account for tz
+- Set _service to fixed revision (around Havana release)
+- Rebased 0001-Add-workaround-for-OSError-raised-by-Popen.communica.patch
+
+- Update to version 0.3.2.82:
+  + Log user info in auth_token middleware
+  + Add auth_uri in conf to avoid unnecessary warning</comment>
+    <requestid>203658</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cf041c19f2ea94ad0829f5a49fef0b65</srcmd5>
+    <version>0.4.1</version>
+    <time>1390200927</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>214226</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>688eafd8ec7303b3372b1df0e6365fbd</srcmd5>
+    <version>0.4.1</version>
+    <time>1394392393</time>
+    <user>coolo</user>
+    <comment>- Backport patch to ask for password interactively for keystone
+ user-create:
+ + 0001-Interactive-prompt-for-create-user.patch
+
+- Replace git_tarballs source service with download_files and set_version
+  + Use upstream URL as source (enables verification)
+
+- Rebased patches:
+  + 0001-Add-workaround-for-OSError-raised-by-Popen.communica.patch (only offset)
+  + 0001-Make-ROOTDIR-determination-more-robust.patch (only offset)
+
+- Add refresh_patches source service</comment>
+    <requestid>225088</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a4fed729dc08ac1d2719de4c619315f1</srcmd5>
+    <version>0.7.0</version>
+    <time>1396543030</time>
+    <user>coolo</user>
+    <comment>-  switch to released version 0.7.0
+- Update to version python-keystoneclient-0.7.0.4.g6a6c8d7:
+  * Adds to Keystone to convert V2 endpoints to V3
+  0.7.0
+  * Add 'methods' to all v3 test tokens
+
+- Update to version python-keystoneclient-0.6.0.112.g16ca306:
+  * Improve language in update_password() validation error
+  * Handle URLs via the session and auth_plugins
+  * Add a method for changing a user's password in v3
+  * sanity check memcached availability before running tests against it
+  * Start using positional decorator
+  * Fix passing get_token kwargs to get_access
+  * Add a positional decorator
+  * Discover should support other services
+  * Enforce scope mutual exclusion for trusts
+
+- Update to version python-keystoneclient-0.6.0.94.g82c1ec7:
+  * add functional test for cache pool
+  * Don't use a connection pool unless provided
+
+- Update to version python-keystoneclient-0.6.0.91.g28c8439:
+  * add pooling for cache references
+
+- Update to version python-keystoneclient-0.6.0.89.gb63bd9c:
+  * Docs link to middlewarearchitecture
+
+- Update to version python-keystoneclient-0.6.0.88.g194b037:
+  * Fix doc build errors
+  * Generate module docs</comment>
+    <requestid>227717</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cd8d6cb05d3b3152cb2ba25ed51e2d1f</srcmd5>
+    <version>0.7.1</version>
+    <time>1397501049</time>
+    <user>coolo</user>
+    <comment>- update to 0.7.1:
+  * Adds to Keystone to convert V2 endpoints to V3</comment>
+    <requestid>230003</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>cd8d6cb05d3b3152cb2ba25ed51e2d1f</srcmd5>
+    <version>0.7.1</version>
+    <time>1409302903</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b1f2678fc44781d2a4ab2944c37e19d1</srcmd5>
+    <version>0.11.0</version>
+    <time>1412533854</time>
+    <user>coolo</user>
+    <comment>New upstream release</comment>
+    <requestid>253518</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>390c5d57469ba4f87c8e754c016873c7</srcmd5>
+    <version>1.3.1</version>
+    <time>1436888587</time>
+    <user>coolo</user>
+    <comment>- renaming to to %name-rpmlintrc
+- update to 1.3.1:
+  * Fix s3_token middleware parsing insecure option (bnc#928205, CVE-2015-1852)
+
+- Use %{version} in source
+
+- Switch to version 1.3.0
+
+- Update to version python-keystoneclient-1.3.0.post31:
+  * Inherited role domain calls on keystoneclient v3
+
+- Update to version python-keystoneclient-1.3.0.post29:
+  * Uncap library requirements for liberty
+  * Make process_header private
+
+- Update to version python-keystoneclient-1.3.0.post25:
+  * Fix s3_token middleware parsing insecure option (bnc#928205, CVE-2015-1852)
+
+- Update to version python-keystoneclient-1.3.0.post24:
+  * Fix tests to work with requests&lt;2.3
+
+- Update to version python-keystoneclient-1.3.0.post23:
+  * Increase minimum token life required
+  * Update sample data with audit ids
+  * pep8 fix for CMS
+
+- Update to version python-keystoneclient-1.3.0.post18:
+  * Return None for missing trust_id in fixture
+  * Provide a generic auth plugin loader</comment>
+    <requestid>315471</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3344bbb3532bc91e11196731db395424</srcmd5>
+    <version>1.3.2</version>
+    <time>1437657783</time>
+    <user>coolo</user>
+    <comment>- update to 1.3.2:
+  * Updated from global requirements and fix env variables passthrought</comment>
+    <requestid>317964</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3df4010c2b517be185164f570369af18</srcmd5>
+    <version>1.6.0</version>
+    <time>1440658473</time>
+    <user>coolo</user>
+    <comment>- update to 1.6.0:
+  * Add EC2 CRUD credential support to v3 API
+  * A Default CLI plugin
+  * Fixed grammatical errors in the V2 Client API doc
+  * Fixe example code in Using Sessions page
+  * Fix auth required message translation
+  * Revert &quot;Remove keystoneclient.middleware&quot;
+  * Revert &quot;Remove unused fixtures&quot;
+  * Add docstrings for ``protocol`` parameter
+  * Typo in openstack client help
+  * Pass OS_* env vars fix for tox 2.0
+  * Remove unused fixtures
+  * Updated from global requirements
+  * Use 'mapping_id' instead of 'mapping' in federation protocol tests
+  * Use 'id' instead of 'protocol_id' in federation protocol tests
+  * Drop use of 'oslo' namespace package
+  * Don't autodoc the test suite
+  * Sync from oslo incubator
+  * Removes temporary fix for doc generation
+  * Ensure that failing responses are logged
+  * Prompt for password on CLI if not provided
+  * Adapter version is a tuple
+  * Remove keystoneclient.middleware
+  * Document non-standard encoding of the PKI token
+  * Add endpoint and service ids to fixtures
+  * Uncap library requirements for liberty
+  * Provide a means to get all installed plugins
+  * Fix s3_token middleware parsing insecure option
+  * Make process_header private
+  * Fix tests to work with requests&lt;2.3</comment>
+    <requestid>318394</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1cc775970a868a46ad07b9451d66fe9d</srcmd5>
+    <version>1.7.2</version>
+    <time>1446208961</time>
+    <user>dimstar_suse</user>
+    <comment>- update 1.7.2:
+  * Redirect on 303 in SAML plugin
+  * HTTPClient/region_name deprecation test updates
+  * Updated from global requirements
+  * Update .gitreview for stable/liberty
+- adjust Requires according to requirements.txt
+
+- update to 1.7.1:
+  * Adding back exception mapping for ConnectionError
+  * Update path to subunit2html in post_test_hook
+  * Deprecate create Discover without session
+  * Mask passwords when logging the HTTP response
+  * Updated from global requirements
+  * Update deprecation text for Session properties
+  * Proper deprecation for httpclient.USER_AGENT
+  * Deprecate create HTTPClient without session
+  * Fix Accept header in SAML2 requests
+  * Fixes missing socket attribute error during init_poolmanager
+  * Updated from global requirements
+  * Expose token_endpoint.Token as admin_token
+  * Proper deprecation for UserManager project argument
+  * Proper deprecation for CredentialManager data argument
+  * Deprecate create v3 Client without session
+  * Deprecate create v2_0 Client without session
+  * Proper deprecation for Session.get_token()
+  * Deprecate use of cert and key
+  * Proper deprecation for Session.construct()
+  * Deprecate ServiceCatalog.get_urls() with no attr
+  * Deprecate ServiceCatalog(region_name)
+  * Updated from global requirements</comment>
+    <requestid>337164</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9b8901d7751708c216082a376babddf6</srcmd5>
+    <version>2.3.1</version>
+    <time>1462342749</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.1:
+  * Revert &quot;Support `truncated` flag returned by identity service&quot;
+  * Updated from global requirements
+  * Support `truncated` flag returned by identity service
+  * Updated from global requirements
+  * Support creation of domain specific roles
+  * Add back a bandit tox job
+  * Implied Roles
+  * add release notes for deprecated auth bits
+  * Updated from global requirements
+  * Updated from global requirements
+  * Make pep8 *the* linting interface
+  * Handle exception on UnicodeDecodError in logging of request
+  * Updated from global requirements
+  * Deprecate adapter
+  * Deprecate auth plugins from keystoneclient
+  * Deprecate Session
+  * Remove python 2.5 workaround
+  * Update keyring requirements
+  * Update translation setup
+  * Bandit profile updates
+  * Missing defaults in the create() method in the v2 ServiceManager
+  * Remove Babel from requirements.txt
+  * use positional library instead of utils
+  * Replace TestResponse with requests_mock
+  * Use positional library instead of local code
+  * Remove argparse from requirements
+  * Adds an option to include names in role assignment lists
+  * Updated from global requirements
+  * Remove bandit tox environment</comment>
+    <requestid>384354</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>585d7eab8c50b0c6e54e1699866863be</srcmd5>
+    <version>3.5.0</version>
+    <time>1475242214</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 3.5.0
+  * Add policy functional tests
+  * Follow up patch for Improve docs for v3 roles
+  * Improve docs for v3 roles
+  * Follow up patch for Improve docs for v3 domains
+  * Add project functional tests
+  * Fix no content return type doc
+  * Improve docs for v3 auth
+  * Follow up patch for Add ec2 functional tests
+  * Reuse Domain and Project resouce definitions
+  * Follow up patch for Improve docs for v3 ec2
+  * Do not send user ids as payload
+  * Add auth functional tests
+  * Improve docs for v3 endpoints
+  * Follow up patch for Improve docs for v3 services
+  * Add Python 3.5 classifier
+  * Add role functional tests
+  * Add endpoint functional tests
+  * Use assertEqual() instead of assertDictEqual()
+  * Correct test_implied_roles
+  * Add service functional tests
+  * Improve docs for v3 policies
+  * Move other-requirements.txt to bindep.txt
+  * Follow up patch for Improve docs for v3 policies
+  * Improve docs for v3 ec2
+  * Remove unused LOG
+  * Remove print in tests.functional.v3.test_implied_roles
+  * Add region functional tests
+  * Use the adapter instead of the client in tests
+  * Add ec2 functional tests</comment>
+    <requestid>425292</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9048c815e2ac143616acb4c4acafaa21</srcmd5>
+    <version>3.10.0</version>
+    <time>1487680804</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.10.0:
+  - remove hacking checks from keystoneclient
+  - Refactor test_domain_configs
+  - Support domain-specific configuration management
+  - Do not add last_request_id
+  - Only log application/json in session to start
+  - re-work inference rule bindings
+  - standardize release note page ordering
+  - Enable release notes translation
+  - Replace 'assertFalse(a in b)' with 'assertNotIn(a, b)'
+  - Remove deprecated 'data' credential argument
+  - Deprecate the generic client
+  - Use AUTH_INTERFACE object from keystoneauth
+  - X-Serivce-Token should be hashed in the log
+  - [doc] remove auth plugin docs
+  - Update reno for stable/newton
+  - Remove references to Python 3.4
+  - Add Constraints support
+  - Updated coverage configuration file
+  - Do not log binary data during request
+  - Show team and repo badges on README
+  - Prevent MemoryError when logging response bodies
+  - TrivialFix: Using assertIsNone() instead of assertEqual(None)
+  - Fix typo in httpclient.py
+  - Fix some spelling mistaks in base.py &amp; auth.py
+  - Minor docstring fix in mappings.py
+  - Use exceptions from Keystoneauth
+  - Enable code coverage report in console output
+  - Increase readability of 'find()' method and small improvements
+  - Removes unnecessary utf-8 encoding</comment>
+    <requestid>456062</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>145b26b509fdd2b2502fd617ba7a1d76</srcmd5>
+    <version>3.13.0</version>
+    <time>1503927040</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.13.0
+  - Update URLs in documents according to document migration
+  - Change locations of docs for intersphinx
+  - Moved release note to the correct path
+  - Use https for *.openstack.org references
+  - Bring back intersphinx reference to keystoneauth
+  - Switch from oslosphinx to openstackdocstheme
+  - Fix html_last_updated_fmt for Python3
+  - Add support for endpoint group CRUD
+  - Remove unused log
+  - Add support for endpoint group filtering
+  - Add support for specifying role ids when creating trust
+  - Fix 12 warnings when building keystoneclient docs
+  - Replace six.iteritems() with .items()
+  - Remove log translations in python-keystoneclient
+  - Update reno for stable/ocata
+  - Fix boto version strip regex
+  - Remove pbr warnerrors in favor of sphinx check
+  - Updated from global requirements
+  - Fix failing PY2 and PY3 gate jobs
+  - Stop using oslotest.mockpatch</comment>
+    <requestid>514888</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>84dd9499da4ad022187199f5a13f9692</srcmd5>
+    <version>3.14.0</version>
+    <time>1516804011</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.14.0
+  - Remove functional tests for v2.0 API
+  - Use generic user for both zuul v2 and v3
+  - Update reno for stable/pike
+  - Remove use of positional decorator
+  - Remove setting of version/release from releasenotes
+  - Adds bandit nosec flag to hashlib.sha1
+  - Handle UTC+00:00 in datetime strings
+  - Imported Translations from Zanata
+  - Avoid tox_install.sh for constraints support
+  - Updated from global requirements</comment>
+    <requestid>567262</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b2726ee8d9c301105d48c2998a6450f9</srcmd5>
+    <version>3.15.0</version>
+    <time>1518601833</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.15.0 (bsc#1078607)
+  - Create doc/requirements.txt
+  - Add system role functionality
+  - Add CRUD support for application credentials
+  - Updated from global requirements
+  - Add project tags to keystoneclient</comment>
+    <requestid>575938</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>86c9e9f71badbdbf3a8f4352c226fe88</srcmd5>
+    <version>3.15.0</version>
+    <time>1521498886</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583304</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>dda64f4ba14aa40552f5af8d3a5b74a4</srcmd5>
+    <version>3.17.0</version>
+    <time>1536327458</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633075</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>357e755b6e0e2c9da99873e3de1228e5</srcmd5>
+    <version>3.19.0</version>
+    <time>1556916058</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.19.0
+  - Switch to stestr
+  - Deprecate region enabled parameter
+  - refactor the getid method in keystoneclient/base.py
+  - Use python3 for functional tests
+  - import zuul job settings from project-config
+  - Add release note link in README
+  - Add Response class to return request-id to caller
+  - Add py36 tox environment
+  - Change openstack-dev to openstack-discuss
+  - Fix keystoneclient-devstack-functional job
+  - Update reno for stable/rocky
+  - Don't quote {posargs} in tox.ini
+  - add python 3.6 unit test job
+  - Add return-request-id-to-caller function(v3/contrib)
+  - Import legacy keystoneclient-dsvm-functional
+  - Add Python 3.6 classifier to setup.cfg
+  - add lib-forward-testing-python3 test job
+  - Make the functional test voting
+  - Convert functional tests to Zuulv3
+  - switch documentation job to new PTI
+  - Add return-request-id-to-caller function(v3)
+  - fix misspelling of 'default'
+  - Update hacking version
+  - Update IdentityProviderManager docstring
+  - Add release notes for return-request-id-to-caller
+  - add python 3.7 unit test job
+  - Use templates for cover and lower-constraints</comment>
+    <requestid>692832</requestid>
+  </revision>
+</revisionlist>

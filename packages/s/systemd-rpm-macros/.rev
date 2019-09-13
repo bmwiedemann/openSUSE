@@ -1,0 +1,425 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>878efcba4be9d30882151e56734f564c</srcmd5>
+    <version>unknown</version>
+    <time>1371736276</time>
+    <user>coolo</user>
+    <comment>add link</comment>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>878efcba4be9d30882151e56734f564c</srcmd5>
+    <version>unknown</version>
+    <time>1379664759</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b2b77e54ac60ab364aa3d6fe1f21f46d</srcmd5>
+    <version>2</version>
+    <time>1391781401</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5bc770bf96cc4ff524374b38dcfda697</srcmd5>
+    <version>2</version>
+    <time>1392111994</time>
+    <user>coolo</user>
+    <comment>- Make systemd rpm macros package a separate to avoid rebuild of
+  the full package tree if systemd package change</comment>
+    <requestid>221246</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>e1f0f27c854b4e60935aa87976944bcd</srcmd5>
+    <version>2</version>
+    <time>1393601124</time>
+    <user>scarabeus_factory</user>
+    <comment>- Require coreutils as rm and touch are used</comment>
+    <requestid>224203</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>ec3f948643cc54fd997a0a86cd22c66e</srcmd5>
+    <version>2</version>
+    <time>1396770839</time>
+    <user>coolo</user>
+    <comment>- Add a %_ntpunitsdir macro 
+
+- Add support to not restart services if running in YaST2 or
+  if DISABLE_RESTART_ON_UPDATE is set to yes [bnc#858429]</comment>
+    <requestid>227774</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>ec3f948643cc54fd997a0a86cd22c66e</srcmd5>
+    <version>2</version>
+    <time>1409303442</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>3c9d24ec998cebaebf0be23d74ba2001</srcmd5>
+    <version>2</version>
+    <time>1413739644</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256919</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>44878f44db63c2e1c62abfe015519b0d</srcmd5>
+    <version>2</version>
+    <time>1417438825</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263010</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>2ae40ae6278b216a0dfea6601d06d0f5</srcmd5>
+    <version>2</version>
+    <time>1422594048</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280857</requestid>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>22cc3d6f0fb06746d2767987c8bd2d49</srcmd5>
+    <version>2</version>
+    <time>1437477878</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315790</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>553954c45e478174024baa3ab43f5a35</srcmd5>
+    <version>3</version>
+    <time>1442638295</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320740</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c8f4855803bbb153d79e0dcc2875735e</srcmd5>
+    <version>3</version>
+    <time>1444833269</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>332066</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>2b4666f0123434f39e32dba899a986b3</srcmd5>
+    <version>3</version>
+    <time>1448553640</time>
+    <user>dimstar_suse</user>
+    <comment>- Support of DISABLE_STOP_ON_REMOVAL and DISABLE_RESTART_ON_UPDATE 
+  from /etc/sysconfig/service (bsc#955996)</comment>
+    <requestid>345465</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>ea345afdbc61bb983db4de62932ed174</srcmd5>
+    <version>3</version>
+    <time>1457179494</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow the packagers to specify the options -f and -n on the
+  macros %service_del_preun(), %service_del_postun(), %systemd_post(),
+  and %systemd_preun() (boo#968405) 
+
+- Also honor DISABLE_STOP_ON_REMOVAL and DISABLE_RESTART_ON_UPDATE
+  when specified by a package directly in the .spec file. Some
+  package know that a restart of their service is fatal
+  (boo#968405).</comment>
+    <requestid>365189</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>e469d3b770dbaa44f037d0de3c49caf1</srcmd5>
+    <version>3</version>
+    <time>1465750211</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400387</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>fe83626e7cc0c754cad588a950315cd4</srcmd5>
+    <version>3</version>
+    <time>1484818533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449718</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>de73fd7855d1de773f7b590a93f407d1</srcmd5>
+    <version>3</version>
+    <time>1490132555</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479261</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>e22e9b8dc80b3af24d7200d7bb8ae029</srcmd5>
+    <version>3</version>
+    <time>1497273018</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501312</requestid>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>7ef65e54f3d2bfe00d2f4741465162a3</srcmd5>
+    <version>3</version>
+    <time>1510659628</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>540274</requestid>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>0284ea95476eb8c553184011a57adfa8</srcmd5>
+    <version>3</version>
+    <time>1511273865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542585</requestid>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>e88b43e6e9feff945ef0fc15bbb8404b</srcmd5>
+    <version>3</version>
+    <time>1514907099</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557293</requestid>
+  </revision>
+  <revision rev="23" vrev="12">
+    <srcmd5>721e7425b0355a93c01f15adf366b65e</srcmd5>
+    <version>3</version>
+    <time>1516970062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568183</requestid>
+  </revision>
+  <revision rev="24" vrev="13">
+    <srcmd5>5b4a313535726c39ff7509899dd34e95</srcmd5>
+    <version>3</version>
+    <time>1518812790</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix %systemd_post(): it's never called during package removal
+  Also make it useful by restoring its original implementation.
+- Import more definitions from upstream (v237)
+- Fix system_user_post macro for usage with RPM 4.14, backport from
+  https://github.com/systemd/systemd/commit/e67ba783.
+- Move macros.systemd in /usr/lib/rpm
+  The file is not supposed to be customized by the user.
+- Make %systemd_add_pre() more similar to %systemd_add_post()
+  The main advantage is that we pass only one argument to
+  systemd-sysv-convert script. The later can now be improved/rewritten
+  to handle only one argument and return a useful exit status.
+- Make sure to apply presets if packages start shipping units during upgrades (bsc#1071543)
+  If a package started shipping units during upgrade only sysv
+  migration was done. However if the package didn't ship any sysv
+  scripts before no presets were applied.
+  Now during upgrades, preset are always applied (still only during
+  the first time the units are installed) then followed by the sysv
+  migration machinery.
+  The downside of this is that migrated services can have symlinks in
+  both runlevel.target.wants/ (created by the sysv migration) and in
+  the directory specified by the [Install] sections (created by
+  &quot;systemctl preset&quot;)...
+  The whole thing should be rewritten.
+- Make sure to clean up &quot;new-in-upgrade&quot; tag file (bsc#1059627)
+  The tag file might have been incorrectly left by a preceding update.
+- Restore previous changes
+- Revert previous changes
+  Also added reasons why the previous changes would be needed.
+- Don't execute systemd-tmpfiles if we run in transactional update
+  mode
+  If you do transactional updates, it doesn't make any sense to
+  execute the tmpfiles. They will only create a lot of directories,
+  files or symlinks in empty directories without any use and later
+  hidden under the real mount points. With transactional updates, you
+  should do such things always during the boot phase, as designed by
+  systemd (and like Fedora and RHEL doing, but in their use case it's
+  in my opinion a bug).
+- Remove a useless test in %service_add_pre()
+  The test was placed where the condition '[ &quot;$FIRST_ARG&quot; -gt 1 ]' was
+  always true.
+- BuildIgnore systemd-rpm-macros: a small cycle that can be
+  avoided. system-rpm-macros is being pulled in by rpm-build as
+  conveniance to the packagers.
+- Reference bsc#956849 to please the new OBS 'sanity' check (bsc#1041386)
+  %tmpfiles_create is already part of the version shipped by Factory
+  so there's nothing to do here execpt mentioning (bsc#956849).
+- Kill preset macros
+  The last users have been fixed so these macros are no more used by
+  any package.
+  The introduction of them was a bad idea and only the branding preset
+  package is still using a similar mechanism but at least it's now
+  self contained in this package. Also the package calls now a shell
+  script instead of rpm macros.
+  Upstream is working on making this completely obsolete so the preset
+  branding package could be cleaned up for good.
+- RPM group fix
+- %service_add_post() suppress daemon-reload when in installation 
+  system (bsc#982343)
+- Allow the packagers to specify the options -f and -n on the
+  macros %service_del_preun(), %service_del_postun(), %systemd_post(),
+  and %systemd_preun() (boo#968405) 
+- Also honor DISABLE_STOP_ON_REMOVAL and DISABLE_RESTART_ON_UPDATE
+  when specified by a package directly in the .spec file. Some
+  package know that a restart of their service is fatal
+  (boo#968405).
+- Support of DISABLE_STOP_ON_REMOVAL and DISABLE_RESTART_ON_UPDATE 
+  from /etc/sysconfig/service (bsc#955996)
+- Skip %systemd_preset_* during the clean installation to prevent
+  presetting of all services (boo#946216).
+- Add %systemd_preset_pre and %systemd_preset_posttrans that will
+  do one shot presetting of all services with changed system
+  preset. It makes possible to to fix bad default service state
+  (bnc#900935#c46, FATE#318949, FATE#317727, bnc#921075).
+- Increment version to 3.
+- Check for presence/executability of systemd programs before
+  executing them, and do not suppress warnings/errors resulting
+  from them.
+- Update with new macros from systemd 218
+- Remove empty sections from specfile
+- Mark /etc/rpm/macros.systemd as configuration file 
+- Apply then delete patch systemd-daemon-reload-before-service-restart.patch
+- Add orignal systemd macros as well (boo#807164)
+- make systemd aware of changed unit file content after update
+  add systemd-daemon-reload-before-service-restart.patch 
+ 
+- Add a %_ntpunitsdir macro 
+- Add support to not restart services if running in YaST2 or
+  if DISABLE_RESTART_ON_UPDATE is set to yes [bnc#858429]
+- Require coreutils as rm and touch are used
+- Make systemd rpm macros package a separate to avoid rebuild of
+  the full package tree if systemd package change 
+- Resync with systemd v205 macros
+- New package with systemd rpm macros to avoid unnecessary build time
+  dependencies
+</comment>
+    <requestid>576778</requestid>
+  </revision>
+  <revision rev="25" vrev="14">
+    <srcmd5>a13436e18db50e099f3bae776c9927ca</srcmd5>
+    <version>3</version>
+    <time>1527276830</time>
+    <user>dimstar_suse</user>
+    <comment>- remove confusing --user before --global
+  Backport from
+  https://github.com/systemd/systemd/commit/28d36da64a7a23a55e8d0a139f2620384fd058b3.
+  This was spotted in bsc#1090785.
+- Fix %systemd_post(): it's never called during package removal
+  Also make it useful by restoring its original implementation.
+- Import more definitions from upstream (v237)
+- Fix system_user_post macro for usage with RPM 4.14, backport from
+  https://github.com/systemd/systemd/commit/e67ba783.
+- Move macros.systemd in /usr/lib/rpm
+  The file is not supposed to be customized by the user.
+- Make %systemd_add_pre() more similar to %systemd_add_post()
+  The main advantage is that we pass only one argument to
+  systemd-sysv-convert script. The later can now be improved/rewritten
+  to handle only one argument and return a useful exit status.
+- Make sure to apply presets if packages start shipping units during upgrades (bsc#1071543)
+  If a package started shipping units during upgrade only sysv
+  migration was done. However if the package didn't ship any sysv
+  scripts before no presets were applied.
+  Now during upgrades, preset are always applied (still only during
+  the first time the units are installed) then followed by the sysv
+  migration machinery.
+  The downside of this is that migrated services can have symlinks in
+  both runlevel.target.wants/ (created by the sysv migration) and in
+  the directory specified by the [Install] sections (created by
+  &quot;systemctl preset&quot;)...
+  The whole thing should be rewritten.
+- Make sure to clean up &quot;new-in-upgrade&quot; tag file (bsc#1059627)
+  The tag file might have been incorrectly left by a preceding update.
+- Restore previous changes
+- Revert previous changes
+  Also added reasons why the previous changes would be needed.
+- Don't execute systemd-tmpfiles if we run in transactional update
+  mode
+  If you do transactional updates, it doesn't make any sense to
+  execute the tmpfiles. They will only create a lot of directories,
+  files or symlinks in empty directories without any use and later
+  hidden under the real mount points. With transactional updates, you
+  should do such things always during the boot phase, as designed by
+  systemd (and like Fedora and RHEL doing, but in their use case it's
+  in my opinion a bug).
+- Remove a useless test in %service_add_pre()
+  The test was placed where the condition '[ &quot;$FIRST_ARG&quot; -gt 1 ]' was
+  always true.
+- BuildIgnore systemd-rpm-macros: a small cycle that can be
+  avoided. system-rpm-macros is being pulled in by rpm-build as
+  conveniance to the packagers.
+- Reference bsc#956849 to please the new OBS 'sanity' check (bsc#1041386)
+  %tmpfiles_create is already part of the version shipped by Factory
+  so there's nothing to do here execpt mentioning (bsc#956849).
+- Kill preset macros
+  The last users have been fixed so these macros are no more used by
+  any package.
+  The introduction of them was a bad idea and only the branding preset
+  package is still using a similar mechanism but at least it's now
+  self contained in this package. Also the package calls now a shell
+  script instead of rpm macros.
+  Upstream is working on making this completely obsolete so the preset
+  branding package could be cleaned up for good.
+- RPM group fix
+- %service_add_post() suppress daemon-reload when in installation 
+  system (bsc#982343)
+- Allow the packagers to specify the options -f and -n on the
+  macros %service_del_preun(), %service_del_postun(), %systemd_post(),
+  and %systemd_preun() (boo#968405) 
+- Also honor DISABLE_STOP_ON_REMOVAL and DISABLE_RESTART_ON_UPDATE
+  when specified by a package directly in the .spec file. Some
+  package know that a restart of their service is fatal
+  (boo#968405).
+- Support of DISABLE_STOP_ON_REMOVAL and DISABLE_RESTART_ON_UPDATE 
+  from /etc/sysconfig/service (bsc#955996)
+- Skip %systemd_preset_* during the clean installation to prevent
+  presetting of all services (boo#946216).
+- Add %systemd_preset_pre and %systemd_preset_posttrans that will
+  do one shot presetting of all services with changed system
+  preset. It makes possible to to fix bad default service state
+  (bnc#900935#c46, FATE#318949, FATE#317727, bnc#921075).
+- Increment version to 3.
+- Check for presence/executability of systemd programs before
+  executing them, and do not suppress warnings/errors resulting
+  from them.
+- Update with new macros from systemd 218
+- Remove empty sections from specfile
+- Mark /etc/rpm/macros.systemd as configuration file 
+- Apply then delete patch systemd-daemon-reload-before-service-restart.patch
+- Add orignal systemd macros as well (boo#807164)
+- make systemd aware of changed unit file content after update
+  add systemd-daemon-reload-before-service-restart.patch 
+ 
+- Add a %_ntpunitsdir macro 
+- Add support to not restart services if running in YaST2 or
+  if DISABLE_RESTART_ON_UPDATE is set to yes [bnc#858429]
+- Require coreutils as rm and touch are used
+- Make systemd rpm macros package a separate to avoid rebuild of
+  the full package tree if systemd package change 
+- Resync with systemd v205 macros
+- New package with systemd rpm macros to avoid unnecessary build time
+  dependencies
+</comment>
+    <requestid>611238</requestid>
+  </revision>
+  <revision rev="26" vrev="15">
+    <srcmd5>365840dcf7d5bb31b3716a35e48c91c0</srcmd5>
+    <version>3</version>
+    <time>1544440933</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653628</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>bc8a40c8cb4a70cda046313a80e315c5</srcmd5>
+    <version>4</version>
+    <time>1551686909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680402</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>5506d87c531c894d7acde79defe19f64</srcmd5>
+    <version>4</version>
+    <time>1552599735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684199</requestid>
+  </revision>
+</revisionlist>

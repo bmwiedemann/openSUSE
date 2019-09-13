@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b69434ecf5b879d7a2096cdc6affe4c9</srcmd5>
+    <version>0.11.0.2</version>
+    <time>1448553767</time>
+    <user>dimstar_suse</user>
+    <comment>optparse-applicative: Utilities and combinators for parsing command line options</comment>
+    <requestid>345710</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>23e551c88be5e0b0fc36d7efc45a00ba</srcmd5>
+    <version>0.12.0.0</version>
+    <time>1452262972</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.0.0
+* Add &quot;missing&quot; error condition descriptions when required flags and arguments
+    are not provided.
+* Allow multiple short flags to be concatenated together behind a single
+    hyphen, e.g. &quot;-xcf&quot;.
+* Updated dependency bounds on process and ansi-wl-pprint.
+* Add Show and Eq instances to some types for easier debugging.
+* Add defaultPrefs, a default preferences value (forwarded request 352145 from mimi_vx)</comment>
+    <requestid>352183</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0da578479a05d171893a60792c2b424a</srcmd5>
+    <version>0.12.1.0</version>
+    <time>1453998243</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.1.0
+* Improve subparser contexts to improve usage error texts
+* Fixed bugs (forwarded request 355982 from mimi_vx)</comment>
+    <requestid>355984</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7d0887e6d533e5bb24201a17cb445d8f</srcmd5>
+    <version>0.12.1.0</version>
+    <time>1468999718</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411940</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c586b88d6fb05072891e490c028e94b2</srcmd5>
+    <version>0.13.1.0</version>
+    <time>1489482341</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461667</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>62697e988210ff8ab3b12fc65562ab92</srcmd5>
+    <version>0.13.2.0</version>
+    <time>1492169919</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485148</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a0e3f43ed485f5b66bad3ca6d2f23eeb</srcmd5>
+    <version>0.13.2.0</version>
+    <time>1505505753</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525112</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0055a43487fd8e53c6494c91cd6b18d8</srcmd5>
+    <version>0.14.2.0</version>
+    <time>1527675070</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-optparse-applicative to the latest version.</comment>
+    <requestid>607849</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>91a36193fb2569c6ba91f1b3a4dc18d1</srcmd5>
+    <version>0.14.2.0</version>
+    <time>1532161298</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623822</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2eeaa8b35ba582f9a58eba4a13452a26</srcmd5>
+    <version>0.14.3.0</version>
+    <time>1540448264</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642884</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>378abc7f6cd613fca1ce0cbfc02cad4f</srcmd5>
+    <version>0.14.3.0</version>
+    <time>1560971483</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710634</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a04c36d2425e556f744dd0741a572728</srcmd5>
+    <version>0.15.0.0</version>
+    <time>1564413995</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>715416</requestid>
+  </revision>
+</revisionlist>

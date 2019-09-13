@@ -1,0 +1,6 @@
+<package name="qore-mysql-module" project="openSUSE:Factory">
+  <title>MySQL Module for the Qore Programming Language</title>
+  <description>MySQL DBI driver module for the Qore Programming Language (&quot;mysql&quot;). The MySQL driver is character set aware and supports multithreading, transaction management, and stored procedure execution.
+</description>
+  <devel project="devel:languages:misc" package="qore-mysql-module"/>
+</package>

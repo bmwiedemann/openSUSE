@@ -1,0 +1,13 @@
+<package name="msitools" project="openSUSE:Factory">
+  <title>Tools to inspect and build Windows Installer (.MSI) files</title>
+  <description>msitools is a set of programs to inspect and build Windows Installer
+(.MSI) files.  It is based on libmsi, a portable library to read and
+write .MSI files.
+
+msitools plans to be a solution for packaging and deployment of
+cross-compiled Windows applications.
+
+</description>
+  <devel project="devel:tools" package="msitools"/>
+  <url>https://wiki.gnome.org/msitools</url>
+</package>

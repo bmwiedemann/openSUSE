@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6eb654787c4e365a7983e6593c8e41c8</srcmd5>
+    <version>1.6.0</version>
+    <time>1557141692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693139</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>80fe24c17c67c5f8dbcfd944bedf7179</srcmd5>
+    <version>1.7.0</version>
+    <time>1563808806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * Adjusted acs endpoint to extract NameQualifier and SPNameQualifier from
+    SAMLResponse.
+  * Adjusted single logout service to provide NameQualifier and SPNameQualifier
+    to logout method.
+  * Add getNameIdNameQualifier to Auth and SamlResponse.
+  * Extend logout method from Auth and LogoutRequest constructor to support.
+  * Added get_in_response_to method to Response and LogoutResponse classes
+  * Update defusexml dependency</comment>
+    <requestid>717586</requestid>
+  </revision>
+</revisionlist>

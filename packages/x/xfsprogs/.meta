@@ -1,0 +1,16 @@
+<package name="xfsprogs" project="openSUSE:Factory">
+  <title>Utilities for managing the XFS file system</title>
+  <description>A set of commands to use the XFS file system, including mkfs.xfs.
+
+XFS is a high performance journaling file system which originated on
+the SGI IRIX platform.	It is completely multithreaded. It can support
+large files and large file systems, extended attributes, and variable
+block sizes.It is extent based and makes extensive use of Btrees
+(directories, extents, and free space) to aid both performance and
+scalability.
+
+Refer to the documentation at http://oss.sgi.com/projects/xfs/ for
+complete details.  This implementation is on-disk compatible with the
+IRIX version of XFS.</description>
+  <devel project="filesystems" package="xfsprogs"/>
+</package>

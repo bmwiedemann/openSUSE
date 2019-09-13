@@ -1,0 +1,386 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c27327d372aab70d05c0e8fe1cd40e01</srcmd5>
+    <version>1.6.2</version>
+    <time>1249863191</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0b141814ce28931365e42b4b66838700</srcmd5>
+    <version>1.6.2</version>
+    <time>1250514000</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/liblouis based on submit request 17892 from user vuntz
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5c619b6dc9aa2f9fc4f955fcea16b3d4</srcmd5>
+    <version>1.7.0</version>
+    <time>1251988324</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/liblouis based on submit request 19759 from user vuntz
+</comment>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5c619b6dc9aa2f9fc4f955fcea16b3d4</srcmd5>
+    <version>1.7.0</version>
+    <time>1251988324</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/liblouis based on submit request 19759 from user vuntz
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5cfbdb20d62a35cbd98f08f54c688f68</srcmd5>
+    <version>1.8.0</version>
+    <time>1260269753</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/liblouis based on submit request 25873 from user vuntz
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d97e1717f29d284cb560a959f2550616</srcmd5>
+    <version>1.8.0</version>
+    <time>1268924620</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>d97e1717f29d284cb560a959f2550616</srcmd5>
+    <version>1.8.0</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>d97e1717f29d284cb560a959f2550616</srcmd5>
+    <version>1.8.0</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>db8318088ec84ed5b87b59c5aea5f67d</srcmd5>
+    <version>2.1.1</version>
+    <time>1283163685</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/liblouis based on submit request 46553 from user vuntz
+</comment>
+    <requestid>46553</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>db8318088ec84ed5b87b59c5aea5f67d</srcmd5>
+    <version>2.1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>df71866499e0b49d6a105e248bb3f413</srcmd5>
+    <version>2.3.0</version>
+    <time>1306842127</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>72006</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e09c21869d846ad78c7019b1a989dc94</srcmd5>
+    <version>2.3.0</version>
+    <time>1306842136</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72006
+</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>e09c21869d846ad78c7019b1a989dc94</srcmd5>
+    <version>2.3.0</version>
+    <time>1319182108</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>a47080aa8c4a54eb1aab48c4ca77d0d3</srcmd5>
+    <version>2.3.0</version>
+    <time>1323192265</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>638e88b0845ad1e559c45d65019790e6</srcmd5>
+    <version>2.3.0</version>
+    <time>1323192266</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>670f3b9bf4eef4d36b807c4a2d0b46b7</srcmd5>
+    <version>2.4.1</version>
+    <time>1330453462</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>107280</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>670f3b9bf4eef4d36b807c4a2d0b46b7</srcmd5>
+    <version>2.4.1</version>
+    <time>1340183602</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>024b7d5241b3c17ce00cfae59e8eff0d</srcmd5>
+    <version>2.4.1</version>
+    <time>1347487419</time>
+    <user>namtrac</user>
+    <comment>Create tools/doc subpackages and fix licensing issue (forwarded request 133528 from dimstar)</comment>
+    <requestid>133666</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>809e10027078e0720cb19d5192cd4355</srcmd5>
+    <version>2.5.1</version>
+    <time>1349252863</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136745</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1fb3765a202ceecc69c0ae9c37dfa02a</srcmd5>
+    <version>2.5.2</version>
+    <time>1357569080</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 146298 from dimstar)</comment>
+    <requestid>146948</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>1d4b69fc09880f0c9ca28ab417e1a42a</srcmd5>
+    <version>2.5.2</version>
+    <time>1358412340</time>
+    <user>coolo</user>
+    <comment>Addition of python3 louis.
+Having the py3 bindings available will be beneficial for the GNOME:STABLE:3.6 repository, as next orca version will be py3 based..</comment>
+    <requestid>148309</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>1d4b69fc09880f0c9ca28ab417e1a42a</srcmd5>
+    <version>2.5.2</version>
+    <time>1359109300</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cd96fe0ee8a53180159fc2146b1c9528</srcmd5>
+    <version>2.5.3</version>
+    <time>1372527765</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.3, as announced</comment>
+    <requestid>181299</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>cd96fe0ee8a53180159fc2146b1c9528</srcmd5>
+    <version>2.5.3</version>
+    <time>1379662997</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2cefd324eadc29474915b23e086bbe4a</srcmd5>
+    <version>2.5.4</version>
+    <time>1396020288</time>
+    <user>coolo</user>
+    <comment>-Update to version 2.5.4: 
+  + New features
+    - Added function lou_registerTableResolver for plugging in a
+      table resolver callback from your host language.
+  + Bug Fixes
+    - Fixed ENDSEGMENT indicator in computer Braille.
+    - Emphasized words should now be contracted consistently.
+    - Fixed several problems with back-translation. A slash within
+      a number and strings such as 5-inch-diameter and
+      25-year-old-man should now back-translate correctly.
+    - Fixed a problem with syllable opcode.
+    - Fix warnings with gcc 4.8.2.
+    - When a table is specified with an absolute or relative path,
+      the &quot;includes&quot; in that table will now work as expected,
+      meaning files in the same directory will be found.
+  + Braille Table Improvements to fr-bfu-comp8, en-us-g2,
+    en-ueb-g2, BUlgarian, en-gb-g1, Nemeth, Slovenian, Norwegian,
+    Nepali, Danish.
+  + Backwards incompatible changes
+    - Delete the table chardefs-ueb.cti as these rules are now
+      provided by en-ueb-chardefs.uti
+- Update source URL.
+- COPYING.LIB has been renamed to COPYING.LESSER
+- Use fdupes for base package.
+
+-Update to version 2.5.4: 
+  + New features
+    - Added function lou_registerTableResolver for plugging in a
+      table resolver callback from your host language.
+  + Bug Fixes (forwarded request 227761 from mgorse)</comment>
+    <requestid>228063</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>2cefd324eadc29474915b23e086bbe4a</srcmd5>
+    <version>2.5.4</version>
+    <time>1409301613</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2b8367a1148ba8d816cdc968a47e8e22</srcmd5>
+    <version>2.6.4</version>
+    <time>1447353516</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343209</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>93a2131b09eb0830955446f5e988e78c</srcmd5>
+    <version>2.6.4</version>
+    <time>1452721349</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353223</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>82f46712f41acf56a28418e7841d98f3</srcmd5>
+    <version>2.6.4</version>
+    <time>1459254368</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>364382</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>264098c562da2feb53a2dac5f7545288</srcmd5>
+    <version>2.6.4</version>
+    <time>1471428092</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>418935</requestid>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>f2f7cd136f9d6f898cfdd9f07ae9e277</srcmd5>
+    <version>2.6.4</version>
+    <time>1487461516</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456053</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4938ba1556bdac8c4411e9e3dc0442e8</srcmd5>
+    <version>3.3.0</version>
+    <time>1505331809</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522032</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>8e04511051f8a3bb731b997366258c01</srcmd5>
+    <version>3.3.0</version>
+    <time>1507280246</time>
+    <user>dimstar_suse</user>
+    <comment>- Redo package summaries, and compact/trim descriptions for size.
+not all subpackages need the full blurb. (forwarded request 530874 from jengelh)</comment>
+    <requestid>531098</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>e1cd108d4a2c9e61ee7ed88bfcb3949b</srcmd5>
+    <version>3.3.0</version>
+    <time>1520502508</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581267 from dimstar)</comment>
+    <requestid>582839</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>577d9c768ef1c82b1f8a0bd5820029cb</srcmd5>
+    <version>3.5.0</version>
+    <time>1527933317</time>
+    <user>dimstar_suse</user>
+    <comment>- Added CVE-2018-11410.patch: Fix a buffer overflow in table parsing
+  (bsc#1094685 CVE-2018-11410).
+
+- Updated to version 3.5.0:
+  - New features
+    - The same name can now be used in more than one ~class~ rule. The effect
+      is that both set of characters become part of that one class.
+  - Bug fixes
+    - Fix a regression in inputPositions thanks to Bert Frees
+    - Treat characters within the range ~compbrlStart~ and ~compbrlEnd~ as a
+      special case. This fixes many if not most of the problems with cursor
+      position and the ~compbrlAtCursor~ mode. Thanks to Dave Mielke.
+    - Fix ~swapdd~ opcode thanks to Bert Frees
+    - Fix negation of attribute matcher in multipass expressions thanks to Bert Frees
+  - Braille table improvements
+  - Backwards incompatible changes
+    - The translation mode ~comp8Dots~ has been removed as it was never really
+      implemented anyway
+    - Support for the ~pass1Only~ flag has now been removed. Thanks to Bue
+      Vester-Andersen.
+    - The old UEB tables ~UEBC-g1.ctb~ and ~UEBC-g2.ctb~ have been removed as
+      the have been superseded by ~en-ueb-g1.ctb~ and ~en-ueb-g2.ctb~.
+    - The french tables ~fr-2007.ctb~, ~fr-fr-g1.utb~, ~fr-fr-g2.ctb~,
+      ~fr-ca-g1.utb~ and ~fr-ca-g2.ctb~ have been removed. Use
+      ~fr-bfu-comp6.utb~ for 6 dots literary, ~fr-bfu-comp8.utb~ for 8 dots computer
+      and ~fr-bfu-g2.ctb~ for contracted braille instead.
+- Updated to version 3.4.0:
+  - New features
+    - Add support for ~inputPos~ and ~outputPos~ checking in
+      ~lou_checkyaml~ thanks to Bue Vester-Andersen. See the manual for (forwarded request 612252 from kbabioch)</comment>
+    <requestid>612861</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b327ec871bfd8c2258a0f7b474637d0a</srcmd5>
+    <version>3.6.0</version>
+    <time>1529666074</time>
+    <user>maxlin_factory</user>
+    <comment>New upstream release</comment>
+    <requestid>616350</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>9b8cdc586978e79bbe764acfda684443</srcmd5>
+    <version>3.6.0</version>
+    <time>1533292143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626546</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3cd336f65b27be5b3e26396b00d94acd</srcmd5>
+    <version>3.7.0</version>
+    <time>1539756798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638279</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7cff541149ed9e256a5e4866bcd6aeee</srcmd5>
+    <version>3.8.0</version>
+    <time>1547539785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664084</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>f7c15be648b5e92319c1fff09f1913ba</srcmd5>
+    <version>3.8.0</version>
+    <time>1548537395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666690</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>35ccdc50b378a029acb9abe7124f354a</srcmd5>
+    <version>3.8.0</version>
+    <time>1551468479</time>
+    <user>coolo</user>
+    <comment>- Add gcc9-fixed-memory-leaks-created-by-block-scope-compound-l.patch
+  (boo#1122169).
+</comment>
+    <requestid>678969</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>74ecce7a979716c75c34811c9ae60f8e</srcmd5>
+    <version>3.8.0</version>
+    <time>1554189413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689946</requestid>
+  </revision>
+</revisionlist>

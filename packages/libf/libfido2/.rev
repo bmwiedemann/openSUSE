@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b19f383fc05766917cc1aa2d29c9c18</srcmd5>
+    <version>0.3.0</version>
+    <time>1538672446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639500</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>88c4ea41de546114c112b47a191b55a4</srcmd5>
+    <version>0.4.0</version>
+    <time>1547130192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664054</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8a373eb569497fdd992affce2bdbfba8</srcmd5>
+    <version>1.0.0</version>
+    <time>1555488553</time>
+    <user>dimstar_suse</user>
+    <comment>- Added Conflicts to libfido2-0_4_0 to make sure upgrade goes smoothly as
+  outline in sr#690566 
+
+- Split utilities into sub-package libfido2-utils and package man pages
+  correctly (bsc#1131163)
+
+- Version 1.0.0 (released 2019-03-21)
+  * Native HID support on Linux, MacOS, and Windows.
+  * fido2-{assert,cred}: new -u option to force U2F on dual authenticators.
+  * fido2-assert: support for multiple resident keys with the same RP.
+  * Strict checks for CTAP2 compliance on received CBOR payloads.
+  * Better fuzzing harnesses.
+  * Documentation and reliability fixes.</comment>
+    <requestid>694717</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f74f8258a4a8005e58210a6689f9ad8e</srcmd5>
+    <version>1.0.0</version>
+    <time>1556022945</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696748</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>155e402c58af644dd94e2f1d9fc12967</srcmd5>
+    <version>1.1.0</version>
+    <time>1560862571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706147</requestid>
+  </revision>
+</revisionlist>

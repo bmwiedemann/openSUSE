@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d02e4d05f208a4d9a39ab8d36b8f1e1</srcmd5>
+    <version>0.10.7</version>
+    <time>1517932045</time>
+    <user>dimstar_suse</user>
+    <comment>Update description in spec file</comment>
+    <requestid>572403</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>de34fcefffed6d05f226a7b8b15297b9</srcmd5>
+    <version>0.10.7</version>
+    <time>1518443162</time>
+    <user>dimstar_suse</user>
+    <comment>- Add qtile to update-alternatives</comment>
+    <requestid>575585</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>291935e411e0ea83a6e0c24c61c3ce95</srcmd5>
+    <version>0.10.7</version>
+    <time>1519396267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579208</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>da0597b28ea1e09e9b7889407763f75b</srcmd5>
+    <version>0.11.1+20180305.e741d3fe</version>
+    <time>1521052698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585478</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78d6a2ad0e055cea46810bb4796ad3d3</srcmd5>
+    <version>0.11.1+20180406.68ddde55</version>
+    <time>1523447912</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594769</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1640c57a0461f7ab6ef4c5584b58e5fd</srcmd5>
+    <version>0.11.1+20180513.39ced15a</version>
+    <time>1526488970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>609036</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e5bd5247eeba92cf6db76528775ab793</srcmd5>
+    <version>0.12.0</version>
+    <time>1533045542</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>625973</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b573eec8b5a8bed5c33895e5f15fa717</srcmd5>
+    <version>0.13.0</version>
+    <time>1557916446</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename rpmlintrc to qtile-rpmlintrc 
+
+- Update to version 0.13.0:
+  * Deprecation
+    wmii layout is deprecated in terms of columns layout, which has the
+    same behavior with different defaults, see the wmii definition for
+    more details
+  * Features
+    - add svg handling for images
+    - allow addgroup command to set the layout
+    - add command to get current log level
+    - allow groupbox to hide unused groups
+    - add caps lock indicator widget
+    - add custom_command to check_update widget
+  * Bugfixes
+     - better shutdown handling
+     - fix clientlist current client tracking
+     - fix typo in up command on ratiotile layout
+     - various fixes to check_update widget
+     - fix 0 case for resize screen
+- Add rpmlintrc to ignore warning related to dqtile-cmd
+- Add python3-cairocffi-pixbuf dependency 
+- Increase python3-cairocffi dependency version</comment>
+    <requestid>702846</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4be0687de9f69d9ca467063a06b68080</srcmd5>
+    <version>0.14.2</version>
+    <time>1561970688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712733</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ca68559cec2fa41a347eb491942edd10</srcmd5>
+    <version>0.14.2</version>
+    <time>1565695414</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase required cairocffi version</comment>
+    <requestid>722651</requestid>
+  </revision>
+</revisionlist>

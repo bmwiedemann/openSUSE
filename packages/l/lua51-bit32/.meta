@@ -1,0 +1,7 @@
+<package name="lua51-bit32" project="openSUSE:Factory">
+  <title>Lua 5.2 bit manipulation library</title>
+  <description>bit32 is the native Lua 5.2 bit manipulation library, in the version from Lua 5.3
+it is compatible with Lua 5.1, 5.2 and 5.3
+</description>
+  <devel project="devel:languages:lua" package="lua51-bit32"/>
+</package>

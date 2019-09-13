@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0fcbdf08a7e3705baa5fe280563242eb</srcmd5>
+    <version>4.4.4</version>
+    <time>1509036269</time>
+    <user>dimstar_suse</user>
+    <comment>Add to Factory (FATE#321719).</comment>
+    <requestid>536567</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cdfb24ed9e2d6b8808750af39b142981</srcmd5>
+    <version>4.4.4</version>
+    <time>1510578316</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Requires: for the netcdf library/devel package to the
+  netcdf-fortran library/devel package for HPC. (forwarded request 541145 from eeich)</comment>
+    <requestid>541146</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>879c3fc50103f2e9b0dc463800f36f53</srcmd5>
+    <version>4.4.4</version>
+    <time>1511274802</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in modules file which made help less useful.
+
+- Fix modules file: only use %hpc_bindir if it really exists
+- Translate '-' to '_' for env-variable. (forwarded request 542048 from eeich)</comment>
+    <requestid>543902</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>936fa87f9377f1359794e6a9d0ed15a5</srcmd5>
+    <version>4.4.4</version>
+    <time>1517932020</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the module load command for netcdf to reflect the change
+  to 'pnetcdf' for MPI versions following (boo#1075933). (forwarded request 570207 from eeich)</comment>
+    <requestid>570208</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>39d15c560e668725cbdff9e1403d3876</srcmd5>
+    <version>4.4.4</version>
+    <time>1519308021</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for openmpi2 for HPC (FATE#325089).
+
+- Fix summary in module files (bnc#1080259).</comment>
+    <requestid>574864</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>4f630048f8fcb3f9e8834907f1d7ad76</srcmd5>
+    <version>4.4.4</version>
+    <time>1522317398</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix hdf5 devel package dependency of static HPC library package
+  to pull in the HPC variant (boo#1087090). (forwarded request 591671 from eeich)</comment>
+    <requestid>591676</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>e09e74c4f64a31070b2e72140d01d490</srcmd5>
+    <version>4.4.4</version>
+    <time>1525210379</time>
+    <user>dimstar_suse</user>
+    <comment>- (Temporarily) disable fpr S390* as a check test for netcdf fails
+  currently on BE (bsc#1091474). (forwarded request 602628 from eeich)</comment>
+    <requestid>602642</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f2510f08be8d77848c5b75723b4312b2</srcmd5>
+    <version>4.4.5</version>
+    <time>1567423482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726778</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ef3efc8fb639233cf902a09aa17378a</srcmd5>
+    <version>0.003001</version>
+    <time>1311608027</time>
+    <user>darix</user>
+    <comment>indirect dep of hermes</comment>
+    <requestid>76492</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9b0938d7950e59e09a45af1a08f48553</srcmd5>
+    <version>0.003001</version>
+    <time>1311608041</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 76492
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9b0938d7950e59e09a45af1a08f48553</srcmd5>
+    <version>0.003001</version>
+    <time>1319182251</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>991b1161d654665d5d56e866362c3895</srcmd5>
+    <version>0.003001</version>
+    <time>1323193151</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f7bd996730213ff25257430586cea213</srcmd5>
+    <version>0.004001</version>
+    <time>1330434878</time>
+    <user>coolo</user>
+    <comment>- updated to 0.004001
+    - Updated version number of Contextual::Return::Failure
+      to placate CPAN indexer
+    - Improved error messages for bare handlers in bad contexts (thanks Mathew)
+    - Work around problems with Test::More and caller
+    - Fixed context propagation bugs in FIXED and ACTIVE modifiers
+    - Added STRICT modifier to prevent fallbacks
+      (i.e. impose strict typing on return values)
+    - Fixed annoying POD nit (thanks Salvatore)</comment>
+    <requestid>107117</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>31b65e06948efabe66f9a67c89b3b3e3</srcmd5>
+    <version>0.004002</version>
+    <time>1331037633</time>
+    <user>coolo</user>
+    <comment>- updated to 0.004002
+  Fixed significant typo (Carp:carp -&gt; Carp::carp)
+     (thanks everyone who reported it)</comment>
+    <requestid>108080</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d2d255f165b845e369cfd0a8723fb3ce</srcmd5>
+    <version>0.004003</version>
+    <time>1338476887</time>
+    <user>coolo</user>
+    <comment>- updated to 0.004003
+   - Doc patch (thanks Fabrizio)
+   - Patched failures.t to account from bleadperl changes
+     (thanks Zefram!)</comment>
+    <requestid>122890</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>d2d255f165b845e369cfd0a8723fb3ce</srcmd5>
+    <version>0.004003</version>
+    <time>1340183816</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>eeda1561327b3d3045d8d0d58f6288fc</srcmd5>
+    <version>0.004003</version>
+    <time>1343639904</time>
+    <user>namtrac</user>
+    <comment>- workaround build failure under qemu user emulation (forwarded request 128987 from dirkmueller)</comment>
+    <requestid>129122</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>4998b3b0657e718a529df88df956831a</srcmd5>
+    <version>0.004003</version>
+    <time>1346914803</time>
+    <user>coolo</user>
+    <comment>- also fails on native, fix build on ARM (forwarded request 132053 from dirkmueller)</comment>
+    <requestid>132474</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>769e892a266475f85ff03df69e29c6c2</srcmd5>
+    <version>0.004007</version>
+    <time>1356082303</time>
+    <user>coolo</user>
+    <comment>- update to 0.004007
+  - Further patch to failures.t
+  - Added redefinition of Scalar::Util::blessed() to avoid nasty
+    surprises (thanks Andrew!)
+  - Added confess() and cluck() overrides
+    and fixed caller() override to set @DB::args when appropriate
+  - Further patch for t/confess.t
+    (Thanks, David!)
+  - Circumvented annoying undef-as-key warnings in Perl 5.17+
+  - Honour @CARP_NOT's when reporting context
+  - Added BLESSED handler for better control over how blessed() lies
+  - Upgraded reimplementation of blessed() to make more sense
+- reanable tests for ARM (fixed upstream)
+- fix ppc test failures
+- provide Build.PL to be able to use create_packlist=0 (forwarded request 145673 from k0da)</comment>
+    <requestid>146109</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>769e892a266475f85ff03df69e29c6c2</srcmd5>
+    <version>0.004007</version>
+    <time>1359109627</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>769e892a266475f85ff03df69e29c6c2</srcmd5>
+    <version>0.004007</version>
+    <time>1379663600</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>769e892a266475f85ff03df69e29c6c2</srcmd5>
+    <version>0.004007</version>
+    <time>1409302219</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>85044d6533743285f08b88e7c54a54ec</srcmd5>
+    <version>0.004010</version>
+    <time>1485040728</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443132</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>251bd6f1d88edc270d984d76d07f342f</srcmd5>
+    <version>0.004012</version>
+    <time>1492714676</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489034</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cc5e9fb50aff564864e836a153042962</srcmd5>
+    <version>0.004014</version>
+    <time>1493455980</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490181</requestid>
+  </revision>
+</revisionlist>

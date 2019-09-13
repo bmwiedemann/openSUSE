@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>758b1bebb15d73bc8cbbb70aaf529d73</srcmd5>
+    <version>3.0.0</version>
+    <time>1476350856</time>
+    <user>dimstar_suse</user>
+    <comment>removed setBadness (seemed useless anyways)</comment>
+    <requestid>420693</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>963e5515351436240e42c8d40e3ec3c5</srcmd5>
+    <version>3.0.4</version>
+    <time>1516222540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558235</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d5d8eb9d25e019269bdcb71943277fe4</srcmd5>
+    <version>3.0.4</version>
+    <time>1526463793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607722</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b21be035cf5423ff51cac3f95f39a40b</srcmd5>
+    <version>3.0.4</version>
+    <time>1537018785</time>
+    <user>maxlin_factory</user>
+    <comment>- Move patches and sources out of %ifarch conditions
+- Remove 'fpcsrc/packages/nvapi/nvapi.pas' due to license problems
+- Add patch to fix aarch64 build:
+  * fpc-fix_aarch64.patch
+- Add aarch64 support
+</comment>
+    <requestid>635531</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>b2eaa0b5defd3ca3d0daf44c728688af</srcmd5>
+    <version>3.0.4</version>
+    <time>1552902133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685594</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>80d334a1c473894c1f45cd6748a0d29a</srcmd5>
+    <version>3.0.4</version>
+    <time>1567423264</time>
+    <user>dimstar_suse</user>
+    <comment>- Use _multibuild for building the doc subpackage. This removes e.g.
+  TeXLive, python and X11 from the dependency chain of the main package.
+- Remove noarch for doc subpackage as we need to use %ifarch
+- Use separate subpackages for documentation and examples, and make
+  both noarch.
+- Make PDF documentation build reproducible
+- Use tex(foo) style BuildRequires, only request what is really needed.
+- Install COPYING* in licensedir
+- Drop gpm and ncurses runtime requires (not used by the compiler,
+  but only for some of the examples).
+- Remove defattr and BuildRoot from spec file.</comment>
+    <requestid>726979</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+<package name="google-lekton-fonts" project="openSUSE:Factory">
+  <title>Monospaced Typewriter Font</title>
+  <description>
+Lekton has been designed at ISIA Urbino, Italy, and is inspired by some of the typefaces used on the Olivetti typewriters.
+
+It was designed by: Paolo Mazzetti, Luciano Perondi, Raffaele Flaùto, Elena Papassissa, Emilio Macchia, Michela Povoleri, Tobias Seemiller, Riccardo Lorusso, Sabrina Campagna, Elisa Ansuini, Mariangela Di Pinto, Antonio Cavedoni, Marco Comastri, Luna Castroni, Stefano Faoro, Daniele Capo, and Jan Henrik Arnold.
+
+</description>
+  <devel project="M17N:fonts" package="google-lekton-fonts"/>
+  <url>http://www.lekton.info/</url>
+</package>

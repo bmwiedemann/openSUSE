@@ -1,0 +1,8 @@
+<package name="lodepng" project="openSUSE:Factory">
+  <title>PNG encoder and decoder in C and C++</title>
+  <description>Header-only PNG encoder and decoder in C and C++.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="lodepng"/>
+  <url>http://lodev.org/lodepng/</url>
+</package>

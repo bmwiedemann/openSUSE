@@ -1,0 +1,10 @@
+<package name="keepassxc" project="openSUSE:Factory">
+  <title>Qt5-based Password Manager</title>
+  <description>A password manager or safe which manages your passwords. Databases
+are locked with a master key/password or a key disk. The databases
+are encrypted using AES and Twofish.
+
+</description>
+  <devel project="security:keepassxc" package="keepassxc"/>
+  <url>https://www.keepassxc.org/</url>
+</package>

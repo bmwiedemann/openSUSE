@@ -1,0 +1,301 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>46f07e22addb5fe4d5bc9918c9ab26ef</srcmd5>
+    <version>0.31</version>
+    <time>1168903789</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c2070eb4615106d305d4ae30b42f8f98</srcmd5>
+    <version>0.32</version>
+    <time>1185494687</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1aeb444fef902a120d24e27e810d82b3</srcmd5>
+    <version>0.33</version>
+    <time>1201127247</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fed3bc5eceac442e5ce32becfac04e41</srcmd5>
+    <version>0.34</version>
+    <time>1207180082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="15">
+    <srcmd5>25b159267fe911263bcc374ba07caa2d</srcmd5>
+    <version>0.34</version>
+    <time>1215552700</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cbbfb8c7ad7938a82d9828336f13169b</srcmd5>
+    <version>0.35</version>
+    <time>1223306049</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6ad876148dc640ffd55120308e067aca</srcmd5>
+    <version>0.35</version>
+    <time>1227283356</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ad6e1d6561199a9b99a13be4983fb784</srcmd5>
+    <version>0.36</version>
+    <time>1232501664</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6c806e906fd0339a06f1333f1faa133d</srcmd5>
+    <version>0.38</version>
+    <time>1235428891</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>18a292e608503f6d3f30ec65bd65c410</srcmd5>
+    <version>0.39</version>
+    <time>1249320977</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>18a292e608503f6d3f30ec65bd65c410</srcmd5>
+    <version>0.39</version>
+    <time>1249320977</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>941f73e3941ea155984e962a941ed7d2</srcmd5>
+    <version>0.39</version>
+    <time>1263303650</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-BerkeleyDB based on submit request 29202 from user coolo
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b60cdccdf6ae84e75d065e61824d8a28</srcmd5>
+    <version>0.41</version>
+    <time>1263835247</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-BerkeleyDB based on submit request 29650 from user anicka
+</comment>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3c591aa0709c5ccefa56a3ebf78a23ac</srcmd5>
+    <version>0.41</version>
+    <time>1268925371</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a3c8848d651c5af3ecbbb339efd379a5</srcmd5>
+    <version>0.42</version>
+    <time>1269618971</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-BerkeleyDB based on submit request 35817 from user anicka
+</comment>
+    <requestid>35817</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>a3c8848d651c5af3ecbbb339efd379a5</srcmd5>
+    <version>0.42</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>a3c8848d651c5af3ecbbb339efd379a5</srcmd5>
+    <version>0.42</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ac75ab39b178ab72404dcff6dd3c7989</srcmd5>
+    <version>0.43</version>
+    <time>1281313530</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-BerkeleyDB based on submit request 44740 from user computersalat
+</comment>
+    <requestid>44740</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>13f4dfb973b9b251f9ef8ad9c09f8821</srcmd5>
+    <version>0.43</version>
+    <time>1291581412</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54468 from user coolo
+</comment>
+    <requestid>54468</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>791a570eeeab18623c1db2146e88a0b2</srcmd5>
+    <version>0.43</version>
+    <time>1291581419</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54468
+</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>791a570eeeab18623c1db2146e88a0b2</srcmd5>
+    <version>0.43</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>cdd68095ea435bc6b0a624945f1313c5</srcmd5>
+    <version>0.48</version>
+    <time>1308827843</time>
+    <user>saschpe</user>
+    <comment>- update to 0.48
+        * Fixed test harness issue with Heap.t
+          RT #68818
+0.47  1st June 2011
+        * Add support for new Heap database format.
+        * Changes to build with BDB 5.2
+0.46  18th October 2010
+        * Fixed bug with db_pget when the DB_GET_BOTH flag is used.
+0.45  17th October 2010
+        * Fixed bug with c_pget when the DB_GET_BOTH flag is used.
+0.44  2nd August 2010
+        * Added support for db_exists and lock_detect.
+          Thanks to Alex Lovatt for the patch.</comment>
+    <requestid>74375</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>40d13c59250fb138b3e3b9028281eb26</srcmd5>
+    <version>0.48</version>
+    <time>1308827852</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74375
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ca580e861a5d9c25930991eee903cd3d</srcmd5>
+    <version>0.49</version>
+    <time>1312810252</time>
+    <user>saschpe</user>
+    <comment>- update to 0.49
+        * Documentation updated courtesy of Mike Caron
+        * croak if attempt to freeze berkeleydb object
+          [RT #69985]</comment>
+    <requestid>78259</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>ca580e861a5d9c25930991eee903cd3d</srcmd5>
+    <version>0.49</version>
+    <time>1319182241</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>8e71a67d018adc22cc09e98ca0329b41</srcmd5>
+    <version>0.49</version>
+    <time>1323193060</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ab1bea49d7761ed64f80f38ae1ba59a7</srcmd5>
+    <version>0.50</version>
+    <time>1329383196</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103901</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>ab1bea49d7761ed64f80f38ae1ba59a7</srcmd5>
+    <version>0.50</version>
+    <time>1340183796</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>ab1bea49d7761ed64f80f38ae1ba59a7</srcmd5>
+    <version>0.50</version>
+    <time>1359109602</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>24bbb219c354fbff5ac69b219965e504</srcmd5>
+    <version>0.51</version>
+    <time>1370513935</time>
+    <user>coolo</user>
+    <comment>- updated to 0.51
+   * Rework FETCHSIZE
+     [RT #75691] (forwarded request 177470 from coolo)</comment>
+    <requestid>177475</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5becab29ad451cd8387ea074c11e18ca</srcmd5>
+    <version>0.52</version>
+    <time>1371813527</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 0.52
+* Updates for BDB 6.0 - Added Blob support (forwarded request 179029 from jengelh)</comment>
+    <requestid>179033</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>5becab29ad451cd8387ea074c11e18ca</srcmd5>
+    <version>0.52</version>
+    <time>1379663559</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1821e1b553b38d8b90a2b2d40ae3c45f</srcmd5>
+    <version>0.53</version>
+    <time>1381063986</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202250</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>19f0f8ebdfeffdaf418ac5116ea6533c</srcmd5>
+    <version>0.54</version>
+    <time>1385490242</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208435</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>19f0f8ebdfeffdaf418ac5116ea6533c</srcmd5>
+    <version>0.54</version>
+    <time>1409302170</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>bcfa08d02518be755d76b54e6e31456d</srcmd5>
+    <version>0.55</version>
+    <time>1429186399</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296983</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9993a4272fcfa999d7774ca42dfb3006</srcmd5>
+    <version>0.61</version>
+    <time>1554115169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690161</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>111ba794dbc68e4e37de76e47f9f6bbe</srcmd5>
+    <version>0.62</version>
+    <time>1563790900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717469</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>560f10b98eaa09579fe81d2dc9d5a446</srcmd5>
+    <version>0.63</version>
+    <time>1563914268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717805</requestid>
+  </revision>
+</revisionlist>

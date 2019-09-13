@@ -1,0 +1,240 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7459d70ca1a8d949975d1c65f753b881</srcmd5>
+    <version>4.0.2</version>
+    <time>1363511239</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>159170</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>94a54915d6505a59d88e3fbbd55215ca</srcmd5>
+    <version>4.0.3</version>
+    <time>1364898466</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.0.3</comment>
+    <requestid>162054</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a55530623b0f5bce4f9624a462dc748</srcmd5>
+    <version>4.0.4</version>
+    <time>1365425606</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.0.4
+* This release fixes bugs in IT effects including volume column
+  slide to note, pan setting, vibrato depth adjustments, portamento
+  after fadeout, panbrello waveform setting, tremolo depth, and
+  random waveform.</comment>
+    <requestid>163094</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>631e137e0dcb87284378be3cf71f66be</srcmd5>
+    <version>4.1.1</version>
+    <time>1367565455</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.1.1
+- CVE-2013-1980, bnc#816454</comment>
+    <requestid>174356</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e3a1b274448cd4a445bf0dd3f966a8c2</srcmd5>
+    <version>4.1.3</version>
+    <time>1368695444</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.1.3</comment>
+    <requestid>175215</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2efa2d1d8157847a63701d2760d60ef7</srcmd5>
+    <version>4.1.4</version>
+    <time>1369641169</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.1.4
+* This release fixes an array initialization in the IT loader.</comment>
+    <requestid>176127</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>17ea996f84c2dbae6d8d45fc0263686a</srcmd5>
+    <version>4.1.5</version>
+    <time>1370426211</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>177572</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>17ea996f84c2dbae6d8d45fc0263686a</srcmd5>
+    <version>4.1.5</version>
+    <time>1379663140</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b0f6209e4aa561f6f9f2200303f808b4</srcmd5>
+    <version>4.2.0</version>
+    <time>1384252652</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.2.0</comment>
+    <requestid>206455</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3c70fe88f8e22820335ef0612553325e</srcmd5>
+    <version>4.2.1</version>
+    <time>1389099378</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212878</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fdd9a490015973f4b3958b70af756a15</srcmd5>
+    <version>4.2.3</version>
+    <time>1391077907</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>215137</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e6eaa40ec2e5e54d1617d008718ee911</srcmd5>
+    <version>4.2.5</version>
+    <time>1393937210</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.2.5</comment>
+    <requestid>224465</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>21fb6716b2dd867b781044c64cbef565</srcmd5>
+    <version>4.2.7</version>
+    <time>1397986624</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to new upstream release 4.2.7</comment>
+    <requestid>230786</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2f0bc474650d59cad5f1f6ea12f22e80</srcmd5>
+    <version>4.2.8</version>
+    <time>1407744475</time>
+    <user>lnussel</user>
+    <comment>- Update to new upstream release 4.2.8</comment>
+    <requestid>244157</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>2f0bc474650d59cad5f1f6ea12f22e80</srcmd5>
+    <version>4.2.8</version>
+    <time>1409301770</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ef4a467133ccf0e52250b2f820c6df57</srcmd5>
+    <version>4.3.0</version>
+    <time>1412589998</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.3.0</comment>
+    <requestid>254071</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0c1219fe857ffe1dd11e9cb4e116602f</srcmd5>
+    <version>4.3.2</version>
+    <time>1418737727</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>265115</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>2179f5fc5efcc02ccabcfbaa8333145c</srcmd5>
+    <version>4.3.2</version>
+    <time>1420429388</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>267145</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>847dde1f8dd17cba6883856293c04e4e</srcmd5>
+    <version>4.3.4</version>
+    <time>1423130469</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284077</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>90a5cdd259a48919bbbe63a5f78b90d6</srcmd5>
+    <version>4.3.5</version>
+    <time>1425892216</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.3.5</comment>
+    <requestid>289856</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b88835cc53b03013ea8ef5d13bf53041</srcmd5>
+    <version>4.3.6</version>
+    <time>1427313965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.3.6</comment>
+    <requestid>293090</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>236731a22e24cb826e71601af943827c</srcmd5>
+    <version>4.3.8</version>
+    <time>1429107731</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.3.8</comment>
+    <requestid>295807</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>20f4306cf32dc6559ef65ec4404181f6</srcmd5>
+    <version>4.3.9</version>
+    <time>1435652195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.3.9</comment>
+    <requestid>313819</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>491858940ed8a4a19de59391c2e28095</srcmd5>
+    <version>4.3.10</version>
+    <time>1453280078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.3.10</comment>
+    <requestid>354428</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>bdb781d7fe0812a74f10ea41d2889424</srcmd5>
+    <version>4.3.11</version>
+    <time>1456434298</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>360666</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1b901dcd024f26f0c44860e4ae05225f</srcmd5>
+    <version>4.3.13</version>
+    <time>1466501420</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>400647</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>18bee0752b212ad5dad94070567cbe87</srcmd5>
+    <version>4.4.0</version>
+    <time>1469628807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.4.0</comment>
+    <requestid>415285</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a766ee7f07e9fc8ffb9d9d7bf926b168</srcmd5>
+    <version>4.4.1</version>
+    <time>1486968687</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.4.1</comment>
+    <requestid>456387</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>c4efa450c25423f01b15662bed23dff7</srcmd5>
+    <version>4.4.1</version>
+    <time>1566894288</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO, as it leads to a build error
+  &quot;&lt;artificial&gt;:(.text.startup+0xb0): undefined reference to `xmp_set_player'&quot;
+- Modernize specfile.</comment>
+    <requestid>726088</requestid>
+  </revision>
+</revisionlist>

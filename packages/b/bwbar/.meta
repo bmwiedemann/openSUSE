@@ -1,0 +1,15 @@
+<package name="bwbar" project="openSUSE:Factory">
+  <title>Bandwidth usage bar</title>
+  <description>bwbar is a small program that generates a text and a graphical readout
+of the current bandwidth use to be displayed on a web page.
+
+It is used, among others, at http://www.kernel.org/.
+
+Authors:
+--------
+    H. Peter Anvin &lt;hpa@zytor.com&gt;
+
+</description>
+  <devel project="network:utilities" package="bwbar"/>
+  <url>http://www.kernel.org/pub/software/web/bwbar/</url>
+</package>

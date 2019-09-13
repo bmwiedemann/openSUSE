@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1d73b62a485b802422f6431b704ba178</srcmd5>
+    <version>0.0.1+20170929.git_r32_b195256</version>
+    <time>1507391436</time>
+    <user>dimstar_suse</user>
+    <comment>caasp-cli package for caasp 3.0</comment>
+    <requestid>531779</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>837c24bac639a81693c9d5e1ba7e6ab9</srcmd5>
+    <version>0.0.1+20180207.git_r35_7606f5c</version>
+    <time>1518697652</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>576831</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>72021d4b8e33f22d3bc29ea6b446cc30</srcmd5>
+    <version>0.0.1+20180207.git_r35_7606f5c</version>
+    <time>1519844579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580920</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3d821eedb5bda4d98dcb3d22afd3fe25</srcmd5>
+    <version>3.0.0+20180509.git_r37_ac6784a</version>
+    <time>1526023073</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>606226</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f37c4bb0c60b8ea4eaf20afd70fc7ee5</srcmd5>
+    <version>3.0.0+20180515.git_r38_8943b1e</version>
+    <time>1526489037</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>609131</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5eb206abdf927b2d591883b2c98b71f3</srcmd5>
+    <version>3.0.0+20180515.git_r38_8943b1e</version>
+    <time>1544726992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657784</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fdf9d871b8680bedeb5156ca45299aea</srcmd5>
+    <version>1.0.4</version>
+    <time>1336471173</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115386</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fdf9d871b8680bedeb5156ca45299aea</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184151</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>fdf9d871b8680bedeb5156ca45299aea</srcmd5>
+    <version>1.0.4</version>
+    <time>1359110299</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>fdf9d871b8680bedeb5156ca45299aea</srcmd5>
+    <version>1.0.4</version>
+    <time>1379664476</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4b81d17e66701645f06413b5339cc1d5</srcmd5>
+    <version>1.0.5</version>
+    <time>1405520383</time>
+    <user>coolo</user>
+    <comment>- update to release 1.0.5 
+- supersedes rstart.diff
+- U_Fix-.-configure-error-sysconfdir-command-not-found.patch
+  * upstream fix
+- specfile cleanup</comment>
+    <requestid>241083</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>4b81d17e66701645f06413b5339cc1d5</srcmd5>
+    <version>1.0.5</version>
+    <time>1409303205</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

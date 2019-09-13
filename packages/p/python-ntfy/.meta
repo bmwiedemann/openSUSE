@@ -1,0 +1,5 @@
+<package name="python-ntfy" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-ntfy"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="crossc" project="openSUSE:Factory">
+  <title>Portable C wrapper for SPIRV-Cross</title>
+  <description>This package contains crossc, a portable C wrapper for SPIRV-Cross.</description>
+  <devel project="X11:Wayland" package="crossc"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="staging-build-key" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:openSUSE:Factory" package="staging-build-key"/>
+</package>

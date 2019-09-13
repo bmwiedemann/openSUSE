@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>534230594066d9be875d1563595f4c03</srcmd5>
+    <version>1.0.0</version>
+    <time>1507755479</time>
+    <user>dimstar_suse</user>
+    <comment>breaking up the Azure SDK</comment>
+    <requestid>531815</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>686239ddf89a7411a64c6f568cb48b11</srcmd5>
+    <version>1.0.0</version>
+    <time>1518601917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576313</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0d916e7be354d05ab1b5c34864549613</srcmd5>
+    <version>2.0.0</version>
+    <time>1526220291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605134</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>60ce85e45f34f1aa91f52e73fcdadea9</srcmd5>
+    <version>4.0.0</version>
+    <time>1537971205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>637942</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e29966f13376577859abffe24cf0449b</srcmd5>
+    <version>4.0.0</version>
+    <time>1557833986</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-security
+  + python-azure-mgmt-sqlvirtualmachine
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-advisor &amp;gt;= 2.0.1
+  + python-azure-mgmt-authorization &amp;gt;= 0.51.1
+  + python-azure-mgmt-batch &amp;gt;= 6.0.0
+  + python-azure-mgmt-batchai &amp;gt;= 2.0.0
+  + python-azure-mgmt-cdn &amp;gt;= 3.0.0
+  + python-azure-mgmt-cognitiveservices &amp;gt;= 3.0.0
+  + python-azure-mgmt-commerce &amp;gt;= 1.0.1
+  + python-azure-mgmt-compute &amp;gt;= 4.4.0
+  + python-azure-mgmt-consumption &amp;gt;= 2.0.0
+  + python-azure-mgmt-containerinstance &amp;gt;= 1.4.0
+  + python-azure-mgmt-containerregistry &amp;gt;= 2.7.0
+  + python-azure-mgmt-containerservice &amp;gt;= 4.4.0
+  + python-azure-mgmt-cosmosdb &amp;gt;= 0.5.2
+  + python-azure-mgmt-datafactory &amp;gt;= 0.7.0
+  + python-azure-mgmt-datamigration &amp;gt;= 2.1.0
+  + python-azure-mgmt-devtestlabs &amp;gt;= 3.0.0
+  + python-azure-mgmt-dns &amp;gt;= 2.1.0
+  + python-azure-mgmt-eventgrid &amp;gt;= 2.0.0
+  + python-azure-mgmt-eventhub &amp;gt;= 2.3.0
+  + python-azure-mgmt-hanaonazure &amp;gt;= 0.4.0
+  + python-azure-mgmt-hdinsight &amp;gt;= 0.2.1
+  + python-azure-mgmt-iotcentral &amp;gt;= 1.0.0
+  + python-azure-mgmt-iothub &amp;gt;= 0.7.0
+  + python-azure-mgmt-keyvault &amp;gt;= 1.1.0
+  + python-azure-mgmt-kusto &amp;gt;= 0.3.0
+  + python-azure-mgmt-logic &amp;gt;= 4.0.0 (forwarded request 694370 from glaubitz)</comment>
+    <requestid>694568</requestid>
+  </revision>
+</revisionlist>

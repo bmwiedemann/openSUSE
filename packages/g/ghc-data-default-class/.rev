@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb7db7886d9d833a57403ab3be4f4698</srcmd5>
+    <version>0.0.1</version>
+    <time>1432188902</time>
+    <user>coolo</user>
+    <comment>new splitted part of data-default package</comment>
+    <requestid>306821</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>46e0141d4e0090dfc4a6b5a514822379</srcmd5>
+    <version>0.0.1</version>
+    <time>1469081695</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411648</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>69a94258ba42a26e2ffe3778fede4f8b</srcmd5>
+    <version>0.1.2.0</version>
+    <time>1476875025</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433384</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8ff0d1eb927b0d0421c444ddcba91b05</srcmd5>
+    <version>0.1.2.0</version>
+    <time>1505503997</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524380</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>a4d954789010d1eed0f041dd61d431e1</srcmd5>
+    <version>0.1.2.0</version>
+    <time>1527675495</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609774</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>ffb7ab8bef4e6c762555944062323f3b</srcmd5>
+    <version>0.1.2.0</version>
+    <time>1532445435</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- initial commit</comment>
+    <requestid>623754</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>64e99d1cfb9c88f62d5f5b407d9fec5e</srcmd5>
+    <version>0.1.2.0</version>
+    <time>1540448652</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643378</requestid>
+  </revision>
+</revisionlist>

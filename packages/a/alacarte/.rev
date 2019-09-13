@@ -1,0 +1,474 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c1f031a80789bfaa2e0182cb4fa607d0</srcmd5>
+    <version>0.10.3</version>
+    <time>1168275242</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>627444bf128ca95ea3a7df8857eb6181</srcmd5>
+    <version>0.10.3</version>
+    <time>1169510729</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9e3428cfe2aa4f29e60879604cb0dc83</srcmd5>
+    <version>0.11.3</version>
+    <time>1173305460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>60d5cfa0119a5371b28999b394d26d2a</srcmd5>
+    <version>0.11.3</version>
+    <time>1173400908</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="18">
+    <srcmd5>d162e110ef94936d3c7c997cf0f2a1d0</srcmd5>
+    <version>0.11.3</version>
+    <time>1178733734</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="55">
+    <srcmd5>9322766bd5827a658643143a8e59a999</srcmd5>
+    <version>0.11.3</version>
+    <time>1186674006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6f3af0681a68b4a006e78ceb77eab1ce</srcmd5>
+    <version>0.11.4</version>
+    <time>1204758008</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e3e837accb697343a8ac8d73d3fff3eb</srcmd5>
+    <version>0.11.5</version>
+    <time>1205256873</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>a18fc3da68eae2b9d22bf14b5159662c</srcmd5>
+    <version>0.11.5</version>
+    <time>1208129390</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="77">
+    <srcmd5>2c1db8419ab22b83c0326ea38b6178e3</srcmd5>
+    <version>0.11.5</version>
+    <time>1221251984</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>596b15c27b99c2a2a624d2a6164f3a80</srcmd5>
+    <version>0.11.6</version>
+    <time>1223571977</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>addffb672618625dec46e26c3412d5c8</srcmd5>
+    <version>0.11.6</version>
+    <time>1224923189</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b2a9fcf983c9d4bcbf12a80d0f5c0df1</srcmd5>
+    <version>0.11.6</version>
+    <time>1232500700</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6ac5a21224ccba437bf73c3d179c1359</srcmd5>
+    <version>0.11.8</version>
+    <time>1233949772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>839b7d1601722207d80b8b14b684d22b</srcmd5>
+    <version>0.11.9</version>
+    <time>1235389159</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1a7580bee0c800f06177a2b2a06ee5ac</srcmd5>
+    <version>0.11.10</version>
+    <time>1237410847</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1d027753d895a25396d522bb3f9080f1</srcmd5>
+    <version>0.12.1</version>
+    <time>1242855811</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4a4d539a8a156b17894d5ecc4b412284</srcmd5>
+    <version>0.12.1</version>
+    <time>1250515688</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/alacarte based on submit request 17829 from user vuntz
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d2e478f3e5a483a689ca0b8de0ac595f</srcmd5>
+    <version>0.12.3</version>
+    <time>1253649139</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/alacarte based on submit request 20721 from user dimstar
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9d8619fa08c1e42b166e58927232c6e6</srcmd5>
+    <version>0.12.4</version>
+    <time>1254796621</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/alacarte based on submit request 21715 from user vuntz
+</comment>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>9d8619fa08c1e42b166e58927232c6e6</srcmd5>
+    <version>0.12.4</version>
+    <time>1254796621</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/alacarte based on submit request 21715 from user vuntz
+</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>88b109e3c91d950e2a23101ef445b494</srcmd5>
+    <version>0.12.4</version>
+    <time>1260261411</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/alacarte based on submit request 25786 from user vuntz
+</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>58beeb9ed260bd8f44800b695fff85b8</srcmd5>
+    <version>0.12.4</version>
+    <time>1268922861</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8218394832657a728e2292a054809b6e</srcmd5>
+    <version>0.13.1</version>
+    <time>1270057012</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/alacarte based on submit request 36273 from user vuntz
+</comment>
+    <requestid>36273</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>8218394832657a728e2292a054809b6e</srcmd5>
+    <version>0.13.1</version>
+    <time>1278667335</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>8218394832657a728e2292a054809b6e</srcmd5>
+    <version>0.13.1</version>
+    <time>1278678562</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>c04dbaa8fcdc38c03e73da5277a81dcb</srcmd5>
+    <version>unknown</version>
+    <time>1283790534</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/alacarte based on submit request 47299 from user dimstar
+</comment>
+    <requestid>47299</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>2ac2d9551eb32c776c4fc7595aad15f6</srcmd5>
+    <version>0.13.2</version>
+    <time>1284765943</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/alacarte based on submit request 48225 from user dimstar
+</comment>
+    <requestid>48225</requestid>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>2606e5271516abe2bef8457e20d98d35</srcmd5>
+    <version>0.13.2</version>
+    <time>1297643782</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61008 from user vuntz
+</comment>
+    <requestid>61008</requestid>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>265f5752ba41a0f6cadfa1dd43248375</srcmd5>
+    <version>0.13.2</version>
+    <time>1297643788</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61008
+</comment>
+  </revision>
+  <revision rev="31" vrev="10">
+    <srcmd5>265f5752ba41a0f6cadfa1dd43248375</srcmd5>
+    <version>0.13.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="32" vrev="11">
+    <srcmd5>a4e9a4ff3bbc17a9e99da0d4e84a49cb</srcmd5>
+    <version>0.13.2</version>
+    <time>1311577344</time>
+    <user>saschpe</user>
+    <comment>Add alacarte-no-settings.menu.patch (forwarded request 76761 from vuntz)</comment>
+    <requestid>76778</requestid>
+  </revision>
+  <revision rev="33" vrev="12">
+    <srcmd5>f80c63001044ee86dfaa0ec626c40cc8</srcmd5>
+    <version>0.13.2</version>
+    <time>1311577352</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76778
+</comment>
+  </revision>
+  <revision rev="34" vrev="13">
+    <srcmd5>434a1fd948f254b3f7141e5a9de846df</srcmd5>
+    <version>0.13.2</version>
+    <time>1315559132</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81438</requestid>
+  </revision>
+  <revision rev="35" vrev="14">
+    <srcmd5>a599c1c7807e2bef9c9e698d9b268451</srcmd5>
+    <version>0.13.2</version>
+    <time>1315559140</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81438
+</comment>
+  </revision>
+  <revision rev="36" vrev="15">
+    <srcmd5>1d6659e5fe87d86f44e8570b7dcf73fa</srcmd5>
+    <version>0.13.2</version>
+    <time>1317541630</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85590</requestid>
+  </revision>
+  <revision rev="37" vrev="17">
+    <srcmd5>1d6659e5fe87d86f44e8570b7dcf73fa</srcmd5>
+    <version>0.13.2</version>
+    <time>1319181767</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="38" vrev="18">
+    <srcmd5>e3ab0e5b53624fa2c3b14a4ae8d48b15</srcmd5>
+    <version>0.13.2</version>
+    <time>1319822090</time>
+    <user>coolo</user>
+    <comment>Added desktop menu categories to make alacarte appear as Accessories</comment>
+    <requestid>89644</requestid>
+  </revision>
+  <revision rev="39" vrev="19">
+    <srcmd5>abd129b47cc8c8c325af583ddddf7d96</srcmd5>
+    <version>0.13.2</version>
+    <time>1322738605</time>
+    <user>coolo</user>
+    <comment>- Added alacarte-support-exo-desktop-item-edit.patch in order to
+  support exo-desktop-item-edit as an alternative to
+  gnome-desktop-item-edit (bnc#728482)</comment>
+    <requestid>94233</requestid>
+  </revision>
+  <revision rev="40" vrev="20">
+    <srcmd5>f564cd6e9c6de7328e5b647e3a537503</srcmd5>
+    <version>0.13.2</version>
+    <time>1323190664</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a0c20651ab03065cf0f8d6ef770985fa</srcmd5>
+    <version>0.13.4</version>
+    <time>1340033375</time>
+    <user>coolo</user>
+    <comment>Push latest G:F</comment>
+    <requestid>125202</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>a0c20651ab03065cf0f8d6ef770985fa</srcmd5>
+    <version>0.13.4</version>
+    <time>1340183167</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a1b7300fdb32cf13a251efaa3b22ab93</srcmd5>
+    <version>3.5.5</version>
+    <time>1348924887</time>
+    <user>coolo</user>
+    <comment>Backport patches from 12.2:Update into Factory.. we don't want to loose them. (forwarded request 136264 from Zaitor)</comment>
+    <requestid>136291</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>18732815609790e7fb51bd4b1e26fbdb</srcmd5>
+    <version>3.6.1</version>
+    <time>1350564879</time>
+    <user>coolo</user>
+    <comment>Update to ver 3.6.1 and Drop patch for real.... (forwarded request 138547 from Zaitor)</comment>
+    <requestid>138557</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>4bce6e6a4d198b5e6a8766ffaa21651d</srcmd5>
+    <version>3.6.1</version>
+    <time>1358082314</time>
+    <user>coolo</user>
+    <comment>- Add alacarte-force-Gtk3.patch: Force the use of Gtk 3. Gtk2 was
+  not designed for use with introspection and some interfaces fail
+  (bnc#798181, bgo#691599). (forwarded request 148177 from Zaitor)</comment>
+    <requestid>148249</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>4bce6e6a4d198b5e6a8766ffaa21651d</srcmd5>
+    <version>3.6.1</version>
+    <time>1359108644</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d1d335cac82ac8398b1812a168ccabd9</srcmd5>
+    <version>3.7.90</version>
+    <time>1364895499</time>
+    <user>coolo</user>
+    <comment>Update to 3.7.90</comment>
+    <requestid>161963</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a4731529a59372c1abe4231bef6c84a2</srcmd5>
+    <version>3.9.91</version>
+    <time>1378889896</time>
+    <user>coolo</user>
+    <comment>Update to 3.9.91</comment>
+    <requestid>198054</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>a4731529a59372c1abe4231bef6c84a2</srcmd5>
+    <version>3.9.91</version>
+    <time>1379661955</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>7f39dcc219e0cd4c26e5464a142316f0</srcmd5>
+    <version>3.10.0</version>
+    <time>1380294361</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200875</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>f04501b3a3ca7ae988a42be5c640cc82</srcmd5>
+    <version>3.10.0</version>
+    <time>1380475346</time>
+    <user>coolo</user>
+    <comment>- Correct alacarte-nohelp.patch: only remove the accelerator,
+  nothing else (bnc#842988). (forwarded request 201300 from Zaitor)</comment>
+    <requestid>201311</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>c6a1ce7f49617f1676e2ad38738384e8</srcmd5>
+    <version>3.10.0</version>
+    <time>1387204730</time>
+    <user>coolo</user>
+    <comment>- Drop alacarte_system_edit_mode.patch: after almost 5 year needing
+  rebase, the feature can't possible be important enough. (forwarded request 210738 from Zaitor)</comment>
+    <requestid>210939</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>9df1128b82af6100e7740abbb4a8bdf3</srcmd5>
+    <version>3.11.91</version>
+    <time>1399317236</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231658</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>009adb885052950f6b643f6b958869e6</srcmd5>
+    <version>3.11.91</version>
+    <time>1407912490</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244059</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>009adb885052950f6b643f6b958869e6</srcmd5>
+    <version>3.11.91</version>
+    <time>1409300477</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>076eefd6c60495abfc9c553ea7406ac8</srcmd5>
+    <version>3.11.91</version>
+    <time>1412589971</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254052</requestid>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>995b490f9b1fad7bdbe3c98dc5b5e2f5</srcmd5>
+    <version>3.11.91</version>
+    <time>1462696747</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393520</requestid>
+  </revision>
+  <revision rev="58" vrev="7">
+    <srcmd5>6cce89c6669ccac9bc26ca234087d80f</srcmd5>
+    <version>3.11.91</version>
+    <time>1464964027</time>
+    <user>dimstar_suse</user>
+    <comment>- Added alacarte-trans.patch made by qzhao@suse.org for SLE to fix
+  untranslated texts (bnc#947793). Adds a gettext function to
+  ItemEditor.py to make alacarte translatable and modify alacarte.ui:
+  use original text, translate all PO tranlation files. Modified
+  under Stanislav Brabec's review result.</comment>
+    <requestid>399126</requestid>
+  </revision>
+  <revision rev="59" vrev="8">
+    <srcmd5>74c0ce4872a8bc4218b985e2560684b8</srcmd5>
+    <version>3.11.91</version>
+    <time>1471504546</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418411</requestid>
+  </revision>
+  <revision rev="60" vrev="9">
+    <srcmd5>1f8ad3df3d1584ecc14f417fa88fa248</srcmd5>
+    <version>3.11.91</version>
+    <time>1505502377</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526065</requestid>
+  </revision>
+  <revision rev="61" vrev="10">
+    <srcmd5>c10779d228a8e11da82ba05beb70bd02</srcmd5>
+    <version>3.11.91</version>
+    <time>1517606500</time>
+    <user>dimstar_suse</user>
+    <comment>- Migrate to python3 (bsc#1075771):</comment>
+    <requestid>571675</requestid>
+  </revision>
+  <revision rev="62" vrev="11">
+    <srcmd5>5a93c93d735e04b89bdd99387011b55e</srcmd5>
+    <version>3.11.91</version>
+    <time>1521052598</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583539 from dimstar)</comment>
+    <requestid>584703</requestid>
+  </revision>
+  <revision rev="63" vrev="12">
+    <srcmd5>7ea16dc5583be8201869ac0a2810de92</srcmd5>
+    <version>3.11.91</version>
+    <time>1549017913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669782</requestid>
+  </revision>
+</revisionlist>

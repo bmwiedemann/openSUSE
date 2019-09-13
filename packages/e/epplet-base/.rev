@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="30">
+    <srcmd5>0dbe16020d43e36e7912ec900304ca55</srcmd5>
+    <version>0.9</version>
+    <time>1168902701</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6c1a1bfe3e0b1663a38f4374d6395f3f</srcmd5>
+    <version>0.10</version>
+    <time>1208719196</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="16">
+    <srcmd5>dea67b0e8f59da7b93a342d2570c2e4e</srcmd5>
+    <version>0.10</version>
+    <time>1214248824</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="51">
+    <srcmd5>0525b4ca0c6992732400390984efc52d</srcmd5>
+    <version>0.10</version>
+    <time>1239837609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="53">
+    <srcmd5>0525b4ca0c6992732400390984efc52d</srcmd5>
+    <version>0.10</version>
+    <time>1239837609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="54">
+    <srcmd5>2acc96af76c8c4beb35914831641ad68</srcmd5>
+    <version>0.10</version>
+    <time>1264075727</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:windowmanagers/epplet-base based on submit request 29891 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="55">
+    <srcmd5>f4daa6e85efd03d651d475f70fae5317</srcmd5>
+    <version>0.10</version>
+    <time>1268923478</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="57">
+    <srcmd5>f4daa6e85efd03d651d475f70fae5317</srcmd5>
+    <version>0.10</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="58">
+    <srcmd5>f4daa6e85efd03d651d475f70fae5317</srcmd5>
+    <version>0.10</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="61">
+    <srcmd5>f4daa6e85efd03d651d475f70fae5317</srcmd5>
+    <version>0.10</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="62">
+    <srcmd5>1112a11c27eba723d3f86df6a4e547fd</srcmd5>
+    <version>0.10</version>
+    <time>1317740179</time>
+    <user>oertel</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85999 from coolo)</comment>
+    <requestid>86241</requestid>
+  </revision>
+  <revision rev="12" vrev="64">
+    <srcmd5>1112a11c27eba723d3f86df6a4e547fd</srcmd5>
+    <version>0.10</version>
+    <time>1319181868</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="65">
+    <srcmd5>3a4de4b18b4966b83759e2b1cd18afeb</srcmd5>
+    <version>0.10</version>
+    <time>1323191303</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="66">
+    <srcmd5>5259375a17c8f71a03b3c232666108bc</srcmd5>
+    <version>0.10</version>
+    <time>1332999719</time>
+    <user>coolo</user>
+    <comment>Fix build on Factory (forwarded request 111224 from dimstar)</comment>
+    <requestid>111372</requestid>
+  </revision>
+  <revision rev="15" vrev="68">
+    <srcmd5>5259375a17c8f71a03b3c232666108bc</srcmd5>
+    <version>0.10</version>
+    <time>1340183309</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="70">
+    <srcmd5>5259375a17c8f71a03b3c232666108bc</srcmd5>
+    <version>0.10</version>
+    <time>1359108855</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="72">
+    <srcmd5>5259375a17c8f71a03b3c232666108bc</srcmd5>
+    <version>0.10</version>
+    <time>1379662301</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="73">
+    <srcmd5>bf1d63fc4b48d65cbaea733bd9460b63</srcmd5>
+    <version>0.10</version>
+    <time>1408524661</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>245059</requestid>
+  </revision>
+  <revision rev="19" vrev="75">
+    <srcmd5>bf1d63fc4b48d65cbaea733bd9460b63</srcmd5>
+    <version>0.10</version>
+    <time>1409300837</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="76">
+    <srcmd5>05aab825207435f33efaeb8ebc86b62f</srcmd5>
+    <version>0.10</version>
+    <time>1417438899</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263581</requestid>
+  </revision>
+  <revision rev="21" vrev="77">
+    <srcmd5>0dc8c2a75b568f29084fde560b5f7a3b</srcmd5>
+    <version>0.10</version>
+    <time>1506955990</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529930</requestid>
+  </revision>
+</revisionlist>

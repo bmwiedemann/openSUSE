@@ -1,0 +1,10 @@
+<package name="gnucash" project="openSUSE:Factory">
+  <title>Personal Finance Manager</title>
+  <description>GnuCash is a personal finance manager. A check book-like register GUI
+allows you to enter and track bank accounts, stocks, income, and even
+currency trades. A full set of reports allows you to see the state
+ofyour finances. The interface is designed to be simple and easy to
+use, but is backed with double-entry accounting principles to
+ensurebalanced books.</description>
+  <devel project="GNOME:Apps" package="gnucash"/>
+</package>

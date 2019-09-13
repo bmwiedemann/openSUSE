@@ -1,0 +1,5 @@
+<package name="jq" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="jq"/>
+</package>

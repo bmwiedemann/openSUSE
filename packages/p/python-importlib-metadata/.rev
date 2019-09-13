@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>87762cbc9faa8449ddc2186f87ee5207</srcmd5>
+    <version>0.8</version>
+    <time>1549624359</time>
+    <user>coolo</user>
+    <comment>needed by pygments-pytest</comment>
+    <requestid>672296</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>711a41e2a488f90d83826845ecf3af7f</srcmd5>
+    <version>0.8</version>
+    <time>1551215780</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing setuptools_scm dependency to fix generated egg.info
+
+- Some packages request importlib_metadata to ease living provide
+  this symbol too</comment>
+    <requestid>679240</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bb56b26d280f9f44479e3edab0e92d73</srcmd5>
+    <version>0.17</version>
+    <time>1560861904</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove do-not-test-pip.patch as it seems no longer needed
+
+- Update to 0.17:
+  * Don't crash if there exists an EGG-INFO directory on sys.path.
+  * Update docstrings to match PEP 8. Closes #63.
+  * Merged modules into one module. Closes #62.
+  * Add support for eggs.  !65; Closes #19.
+  * Support generic zip files (not just wheels).  Closes #59
+  * Support zip files with multiple distributions in them.  Closes #60
+  * Fully expose the public API in importlib_metadata.__all__.
+  * The Distribution ABC is now officially part of the public API.
+  * Fixed support for older single file egg-info formats.  Closes #43.
+  * Fixed a testing bug when $CWD has spaces in the path.  Closes #50.
+  * Fixed issue where entry points without an attribute would raise an Exception.
+  * Removed unused name parameter from entry_points(). Closes #44.
+  * DistributionFinder classes must now be instantiated before being placed on sys.meta_path.</comment>
+    <requestid>707073</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>31e59c4ff251f9386f42abdcee88b946</srcmd5>
+    <version>0.17</version>
+    <time>1564484434</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixup the requires for the SLE-12 build
+
+- Enable python-pathlib2 build dependency for suse_version &lt; 1500 to fix SLE-12 build</comment>
+    <requestid>714235</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8a5cccd42acbec7b0999f8a48b68ad1c</srcmd5>
+    <version>0.17</version>
+    <time>1565178831</time>
+    <user>dimstar_suse</user>
+    <comment>- This package is part of python 3.8 and we don't need to build
+  it there
+- Do not require importlib_resources on python3.7 where it is
+  part of core python</comment>
+    <requestid>720057</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9c6d3fac992ed4f998122ac8ee234814</srcmd5>
+    <version>0.19</version>
+    <time>1565362300</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.19
+ * restrain over-eager egg metadata resolution.
+ * Add support for entry points with colons in the name.
+ * Parse entry points case sensitively. 
+ * Add a version constraint on the backport configparser package</comment>
+    <requestid>721543</requestid>
+  </revision>
+</revisionlist>

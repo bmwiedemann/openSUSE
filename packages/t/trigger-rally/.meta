@@ -1,0 +1,5 @@
+<package name="trigger-rally" project="openSUSE:Factory">
+  <title>Trigger Rally</title>
+  <description>A fast-paced open source rally racing game.</description>
+  <devel project="games" package="trigger-rally"/>
+</package>

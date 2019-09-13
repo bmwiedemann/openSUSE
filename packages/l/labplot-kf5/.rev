@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a59f5bf8b73e01746fa55b794b2b30dc</srcmd5>
+    <version>2.1.0</version>
+    <time>1447353618</time>
+    <user>dimstar_suse</user>
+    <comment>Frameworks 5 version of labplot, which is already in openSUSE:Factory
+
+This version fixes the conflict with labplot</comment>
+    <requestid>341338</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>70bb0e54d23aa0135be60ea978a03718</srcmd5>
+    <version>2.2.0</version>
+    <time>1465129240</time>
+    <user>dimstar_suse</user>
+    <comment>new upstream version including a fix for Tumbleweed</comment>
+    <requestid>399043</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>52c0094a1b5d50cd82bba13c340b42bf</srcmd5>
+    <version>2.2.0</version>
+    <time>1468999068</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>409005</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c825c4b5a10741adc6e1db13736983b</srcmd5>
+    <version>2.3.0</version>
+    <time>1469831273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415432</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e960d48678a7a601680d31d833cb3d21</srcmd5>
+    <version>2.3.0</version>
+    <time>1473241684</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424911</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>882afa65521a4fe329a0b0244ed73aeb</srcmd5>
+    <version>2.4.0</version>
+    <time>1494442226</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493059</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>86b1048f3f57517e5cf110588348e619</srcmd5>
+    <version>2.4.0</version>
+    <time>1528492475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614281</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b358375137f2866f3548d72f5b719c5e</srcmd5>
+    <version>2.5.0</version>
+    <time>1530304452</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618946</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>700a050ddbec337c2682b25712935380</srcmd5>
+    <version>2.6.0</version>
+    <time>1559643287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707393</requestid>
+  </revision>
+</revisionlist>

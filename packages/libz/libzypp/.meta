@@ -1,0 +1,5 @@
+<package name="libzypp" project="openSUSE:Factory">
+  <title>Package, Patch, Pattern, and Product Management</title>
+  <description>Package, Patch, Pattern, and Product Management</description>
+  <devel project="zypp:Head" package="libzypp"/>
+</package>

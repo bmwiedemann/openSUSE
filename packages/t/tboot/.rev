@@ -1,0 +1,519 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf1565a182f4692c34aa5c812b8d614b</srcmd5>
+    <version>20101005</version>
+    <time>1304061996</time>
+    <user>saschpe</user>
+    <comment>new trusted boot loader, fixed %install section, prepare_spec</comment>
+    <requestid>68696</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d84d09773b9cc5b3f7c94667b9fc7852</srcmd5>
+    <version>20110520</version>
+    <time>1306745062</time>
+    <user>saschpe</user>
+    <comment>Add verbose changelog as requested by Factory maintainers (forwarded request 71748 from namtrac)</comment>
+    <requestid>71777</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d84d09773b9cc5b3f7c94667b9fc7852</srcmd5>
+    <version>20110520</version>
+    <time>1319182507</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ba522af920829cc014db87dca88b606e</srcmd5>
+    <version>20110520</version>
+    <time>1326965721</time>
+    <user>coolo</user>
+    <comment>patching license field to be in spdx.org format, for legal team to review before forward (forwarded request 100009 from babelworx)</comment>
+    <requestid>100211</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9453498646d90abeddebb107e33ead6b</srcmd5>
+    <version>20120115_1.7.0</version>
+    <time>1330692618</time>
+    <user>coolo</user>
+    <comment>updated to 1.7.0 (forwarded request 107436 from msmeissn)</comment>
+    <requestid>107684</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a3549de67b4afb24e4e7e70a0da801be</srcmd5>
+    <version>20120115_1.7.0</version>
+    <time>1336035651</time>
+    <user>coolo</user>
+    <comment>exclusive arch</comment>
+    <requestid>115551</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b47f786958bb46a9c22fc82a5ea9d65a</srcmd5>
+    <version>20120115_1.7.0</version>
+    <time>1338528273</time>
+    <user>coolo</user>
+    <comment>- adjust to changed zlib api</comment>
+    <requestid>123067</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>b47f786958bb46a9c22fc82a5ea9d65a</srcmd5>
+    <version>20120115_1.7.0</version>
+    <time>1340184259</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>97a1c185ba0040271d8768e311005f49</srcmd5>
+    <version>20120929_1.7.2</version>
+    <time>1350155126</time>
+    <user>coolo</user>
+    <comment>- updated to 1.7.2/20120929
+  Add Makefile for docs to install man pages.
+  Add man pages for tools
+  Add grub-mkconfig helper scripts for tboot case in GRUB2
+  Fix for deb build in ubuntu
+  Fix S3 issue brought by c/s 308
+  Fix a S4 hang issue and a potential shutdown reset issue
+  Fix build with new zlib 1.2.7.
+  Initialize event log when S3
+  Update README to change upstream repo url from bughost.org to sf.net.
+- updated to 1.7.1/20120427
+  Fix cmdline size in tb_polgen
+  Add description for option min_ram in README.
+  new tboot cmdline option &quot;min_ram=0xXXXXXX&quot;
+  Update test-patches/tpm-test.patch to fit in latest code.
+- zlib patch upstreamed.
+- spec file adjustments
+- tboot-fix.patch: fixed printf type mismatch</comment>
+    <requestid>137924</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>25cff70882c60e99a67e2f8ad3aaac74</srcmd5>
+    <version>20121228_1.7.3</version>
+    <time>1357827616</time>
+    <user>coolo</user>
+    <comment>- updated to 1.7.3/20121228
+  Update README with updated code repository url.
+  Fix grub2 scripts to be compatible with more distros.
+  Update README for RACM launch support
+  Add a new option &quot;call_racm=true|false&quot; for revocation acm(RACM) launch
+  Fix potential buffer overrun &amp; memory leak in crtpconf.c
+  Fix a potential buffer overrun in lcptools/lock.c
+  Print cmdline in multi-lines
+  Optional print TXT.ERRORCODE under level error or info
+  Fix side effects of tboot log level macros in tools
+  Update readme for the new detail log level
+  Classify all logs into different log levels
+  Add detail log level and the macros defined for log level
+  Fix acmod_error_t type to correctly align all bits in 4bytes</comment>
+    <requestid>147564</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>25cff70882c60e99a67e2f8ad3aaac74</srcmd5>
+    <version>20121228_1.7.3</version>
+    <time>1359110464</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>32a995666a90baa1b22a1cdb1d6f7409</srcmd5>
+    <version>20130705_1.7.4</version>
+    <time>1376295428</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 1.7.4/20130705
+  Fix possible empty submenu block in generated grub.cfg
+  Add a call_racm=check option for easy RACM launch result check
+  Fix type check for revocation ACM.</comment>
+    <requestid>186376</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>32a995666a90baa1b22a1cdb1d6f7409</srcmd5>
+    <version>20130705_1.7.4</version>
+    <time>1379664770</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e0432d8bc03877cb0a5f625a55c72812</srcmd5>
+    <version>20130705_1.8.0</version>
+    <time>1391323214</time>
+    <user>coolo</user>
+    <comment>- updated to 1.8.0/20130705
+  Update README for TPM2 support
+  tpm2 support
+  Adding sha256 algorithm implementation
+  Update README for TPM NV measuring
+  Update README for EFI support
+  Fix typo in tboot/Makefile
+  Increase the supported maximum number of cpus from 256 to 512
+  Extend tboot policy supporting measuring TPM NV
+  EFI support via multiboot2 changes
+  Fix typo in common/hash.c
+  Fix verification for extended data elements in txt heap</comment>
+    <requestid>220446</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>171be0cb1352e5200606b1b5a4ccbdca</srcmd5>
+    <version>20130705_1.8.0</version>
+    <time>1392873818</time>
+    <user>coolo</user>
+    <comment>- fixed path for /usr/share/grub2/grub-mkconfig_lib in our grub2
+  snippets. (bnc#864633) (forwarded request 223108 from msmeissn)</comment>
+    <requestid>223109</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>c5b01a94ae2523006d725bc67749fb28</srcmd5>
+    <version>20130705_1.8.0</version>
+    <time>1399032213</time>
+    <user>coolo</user>
+    <comment>- tboot-cs381.patch: generate tboot entries correctly, from Intel.
+  bnc#875581 (forwarded request 232174 from msmeissn)</comment>
+    <requestid>232175</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>7fce6527231fe1b5c76ce15139ab02c5</srcmd5>
+    <version>20130705_1.8.0</version>
+    <time>1400682679</time>
+    <user>coolo</user>
+    <comment>- updated to 1.8.1/20140516
+  Fix build error &quot;may be used uninitialized&quot;
+  Reset eventlog when S3
+  Update tboot version to 1.8.1 in grub title
+  Fix grub cfg file generation scripts for SLES12
+  Fix seal failure issue
+  tpm2 lcptools
+  Restore local apic base for AP
+  Fix typo in hash_alg_to_string()
+  Change to create primary object only once
+  Add prepare_tpm call in S3 path to ensure locality 0 was released before senter
+  Fix possible dead loop in print_bios_data when bios_data version 4
+  Fix possible null pointer dereference in loader.c
+  Fix possible null pointer dereference in tpm_12.c and tpm_20.c
+  Avoid buffer overrun when append tpm12 eventlog
+  Fix possible NULL pointer dereference
+  Fix one event log issue caused by wrong append and print operation
+  Fix error &quot;unsupported hash alg&quot; for agile extend policy
+  Fix warning &quot;ACM info_table version mismatch&quot;
+  Update the tpm family detection with a general way
+  Fix a lcp tools issue caused by redefining TB_HALG_SHA1 from 0 to 4
+  Assign g_tpm a value for no tpm case to avoid NULL checks
+  Fix crash when TPM is missing
+  Fix infinite loop in determine_multiboot_type()
+  Fix typo in tpm20_init() and remove unused variable
+  Allow the to-be-measured nv to be protected by AUTHWRITE
+  Check cpu vendor id to avoid unexpected behavior in non-intel cpu
+  Change to detect TPM family only once
+  Fix some typos caused by copy-paste
+- removed tboot-cs381.patch: upstream</comment>
+    <requestid>234703</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2fd50d6df730fae28e96d5dde8c0664d</srcmd5>
+    <version>20140728_1.8.2</version>
+    <time>1406645304</time>
+    <user>coolo</user>
+    <comment>- updated to 1.8.2/20140728
+  Security Fix: TBOOT Argument Measurement Vulnerability for GRUB2 + ELF Kernels
+  fix werror in 32 bit build environment
+- tboot-fix.patch: removed, fixed differently upstream.</comment>
+    <requestid>242740</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>2fd50d6df730fae28e96d5dde8c0664d</srcmd5>
+    <version>20140728_1.8.2</version>
+    <time>1409303453</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f460c89eeb35b8134d8944f1b49368bb</srcmd5>
+    <version>20140728_1.8.3</version>
+    <time>1431753275</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>307319</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ea988f7fbe3c88d9c4ffb5e9b6bdfd9f</srcmd5>
+    <version>20160518_1.9.4</version>
+    <time>1463738169</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.9.4/20160518 (FATE#320665)
+  Added TPM 2.0 CRB support
+  Increased BSP and AP stacks to avoid stack overflow 
+  Added an ACPI_RSDP structure g_rsdp in tboot to avoid potential memory overwritten issue on TPM 2.0 UEFI platforms
+  Added support to both Intel TPM nv index set and TCG TPM nv index set
+  grub2: tboot doesn't skip first argument any more
+  grub2: sanitize whitespace in command lines        
+  grub2: Allow addition of policy data in grub.cfg
+  grub2 support: allow the user to customize the command line
+  Mitigated S3 resume delay by adjusting LZ_MAX_OFFSET to 5000 in lz.c.        
+  Added SGX TPM  nv index support
+  Add 64 bit ELF object support
+  Gentoo Hardened, which uses the GRSecurity and PaX patch sets
+  Disable -fstack-check in CFLAG for compatibility with Gentoo Linux.
+  Enhanced tboot compatiblity running on non-Intel TXT platform with a fix of is_launched()
+  LCP documentation improvements
+- tboot-grub2-suse.patch: refreshed
+- tboot-grub2-fix-xen-submenu-name.patch: refreshed
+- tboot-fix-stackoverflow.patch: upstream in 1.9.4
+
+- tboot-fix-stackoverflow.patch: fix a excessive stack usage pattern
+  that could lead to resets/crashes (bsc#967441)
+
+- Updated to 1.8.3/20140728 FATE#318542</comment>
+    <requestid>396765</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>880c4657bf322e660092c912904df8a1</srcmd5>
+    <version>20160518_1.9.4</version>
+    <time>1467359938</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405019</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>639b88cfa67df0667119307879ad7717</srcmd5>
+    <version>20160518_1.9.4</version>
+    <time>1486717420</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 20161216: v1.9.5 (FATE#321510)
+  + Add 2nd generation of LCP creation tool source codes for TPM 2.0 platforms.
+  + Add user guide for 2nd generation LCP creation tool
+  + Provide workaround for Intel PTT(Platform Trust Technology) &amp; Linux PTT driver.
+  + Add new fields in Linux kernel header struct to accommodate Linux kernel new capabilities.
+  + Fix a pointer dereference regression in the tboot native Linux loader which manifests itself as a system reset.
+  + Fix the issue of overwriting tboot when the loaded elf kernel is located below tboot.
+  + Add support to release TPM localities when tboot exits to linux kernel.
+  + Fix the evtlog dump function for tpm2 case.
+  + Initiaize kernel header comdline buffer before copying kernel cmdline arguments to the buffer to avoid random 
+  + data at end of the original cmdline contents.
+  + Move tpm_detect() to an earlier stage so as to get tpm interface initialized before checking TXT platform capabilities.</comment>
+    <requestid>455509</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>e9e238965b06c7dc62fa15f8b4482de8</srcmd5>
+    <version>20160518_1.9.4</version>
+    <time>1487029654</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim filler words from description; use modern macros over
+  shell vars. (forwarded request 456106 from jengelh)</comment>
+    <requestid>456116</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>bfe14e15905a128843253cc3d0284c5b</srcmd5>
+    <version>20160518_1.9.4</version>
+    <time>1493580271</time>
+    <user>dimstar_suse</user>
+    <comment>Add reproducible.patch to call gzip -n to make build fully reproducible (forwarded request 492188 from bmwiedemann)</comment>
+    <requestid>492191</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>dafc0c3f28738719cce0332403a417a6</srcmd5>
+    <version>20160518_1.9.4</version>
+    <time>1496681421</time>
+    <user>dimstar_suse</user>
+    <comment>- tboot-gcc7.patch: fix some gcc7 warnings that lead to errors. (bsc#1041264)
+
+- fixes a boot issue on Skylake (bsc#964408) (forwarded request 500929 from msmeissn)</comment>
+    <requestid>500930</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7278e844ae9e81d143c6675197de6106</srcmd5>
+    <version>20170711_1.9.6</version>
+    <time>1500670079</time>
+    <user>dimstar_suse</user>
+    <comment>update to new upstream version 1.9.6:
+- removed following patches, because they're now included upstream:
+	* reproducible.patch
+	* tboot-grub2-suse.patch
+	* tboot-gcc7.patch
+- Changes in this version:
+	* GCC7 fix, adds generic FALLTHROUGH notations to avoid warnings appearing on GCC7
+        * Ensure Tboot never overwrites modules in the process of moving them.
+        * Add support to x2APIC, which uses 32 bit APIC ID.
+        * Fix S3 secrets sealing/unsealing failures
+        * Support OpenSSL 1.1.0+ for ECDSA signature verification.
+        * Support OpenSSL 1.1.0+ for RSA key manipulation.
+        * Adds additional checks to prevent the kernel image from being overwritten.
+        * Added TCG TPM event log support.
+        * Pass through the EFI memory map that's provided by grub2.
+        * Fix a null pointer dereference bug when Intel TXT is disabled in BIOS.
+        * Adjust KERNEL_CMDLINE_OFFSET from 0x9000 to 0x8D00.
+        * Bounds checking on the kernel_cmdline string.</comment>
+    <requestid>511178</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>ddd8f4f1bd1abd6787e608e7a3ef2b12</srcmd5>
+    <version>20170711_1.9.6</version>
+    <time>1510406392</time>
+    <user>dimstar_suse</user>
+    <comment>- tboot-openssl-1-1-0.patch: make package compatible with OpenSSL 1.1.0.
+  There's no upstream release containing this patch yet. The patch builds
+  against OpenSSL 1.0.x as well. This is for SLE-15 support (bnc#1067229).</comment>
+    <requestid>540236</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>17730e2dc5b1b158a8ba5277a1dc7d1d</srcmd5>
+    <version>20170711_1.9.6</version>
+    <time>1510837468</time>
+    <user>dimstar_suse</user>
+    <comment>- tboot-CVE-2017-16837.patch: fix a major security issue in tboot. tboot
+  failed to validate a number of immutable function pointers, which could
+  allow an attacker to bypass the chain of trust and execute arbitrary code
+  (bnc#1068390, CVE-2017-16837).</comment>
+    <requestid>542218</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>49ec04a28dbf1eed4ba3418227862055</srcmd5>
+    <version>20170711_1.9.6</version>
+    <time>1519145730</time>
+    <user>dimstar_suse</user>
+    <comment>- tboot-distributor.patch: don't add GNU/Linux to grub menu entries. SUSE's
+  grub2 itself doesn't do it as well. (bnc#1078262)
+- perform update of bootloader configuration after installation via
+  %posttrans. (bnc#1078262)</comment>
+    <requestid>578146</requestid>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>d2d0e50fb202beff4a126dbd895515f3</srcmd5>
+    <version>20170711_1.9.6</version>
+    <time>1519308180</time>
+    <user>dimstar_suse</user>
+    <comment>- Also cover cleanup of bootloader configuration after package removal.
+  (bnc#1078262)</comment>
+    <requestid>578926</requestid>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>64bd70db21468b603adc41a5496d677b</srcmd5>
+    <version>20170711_1.9.6</version>
+    <time>1521193430</time>
+    <user>dimstar_suse</user>
+    <comment>- tboot-signature-segfault.patch: Intermediate patch necessary for
+  tboot-ssl-broken.patch. Upstream tried to fix OpenSSL issues here, but
+  failed to do so.
+- tboot-ssl-broken.patch: Fixed memory corruption when using OpenSSL
+  functionality like in lcp2_crtpollist (bnc#1083693). Fix has not yet been
+  commented on by upstream (posted on tboot-devel mailing list).</comment>
+    <requestid>587462</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a3c45c2810daf48e97f4694cce8c9ecd</srcmd5>
+    <version>20170711_1.9.7</version>
+    <time>1535963745</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream version 1.9.7. This in mainly a bugfix release:
+        Fix a lot of issues in tools reported by klocwork scan.
+        Fix a lot of issues in tboot module reported by klocwork scan.
+        Remove a redundant tboot option
+        Fix indent in heap.c
+        Fix 4 issues along with extpol=agile option
+        Mitigations for tpm interposer attacks
+        Add an option in tboot to force SINIT to use the legacy TPM2 log format.
+        Add support for appending to a TPM2 TCG style event log.
+        Ensure tboot log is available even when measured launch is skipped.
+        Add centos7 instructions for Use in EFI boot mode.
+        Fix memory leak and invalid reads and writes issues.
+        Fix TPM 1.2 locality selection issue.
+        Fix a null pointer dereference bug when Intel TXT is disabled.
+        Optimize tboot docs installation.
+        Fix security vulnerabilities rooted in tpm_if structure and g_tpm variable.
+        The size field of the MB2 tag is the size of the tag header + the size
+        Fix openssl-1.0.2 double frees
+        Make policy element stm_elt use unique type name
+        lcptools-v2 utilities fixes
+        port to openssl-1.1.0
+        Reset debug PCR16 to zero.
+        Fix a logical error in function bool evtlog_append(...).
+- removed tboot-CVE-2017-16837.patch: now contained in tarball
+- removed tboot-openssl-1-1-0.patch: now contained in tarball
+- removed tboot-signature-segfault.patch: now contained in tarball
+- removed tboot-ssl-broken.patch: now contained in tarball</comment>
+    <requestid>632523</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>c5806b6b662b167684be025b8cf2fe50</srcmd5>
+    <version>20170711_1.9.7</version>
+    <time>1536094597</time>
+    <user>dimstar_suse</user>
+    <comment>- package new upstream tarball for 1.9.7. It seems the tarball was replaced
+  upstream without notice, because some version numbers have not been
+  incremented.
+- tboot-grub2-fix-menu-in-xen-host-server.patch: rebased
+- tboot-grub2-fix-xen-submenu-name.patch: rebased</comment>
+    <requestid>632828</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>1f75e05c1eddde7981504ab87f330d95</srcmd5>
+    <version>20170711_1.9.7</version>
+    <time>1537018876</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>635703</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3161fc878d9aaa74973644439c0d1318</srcmd5>
+    <version>20170711_1.9.8</version>
+    <time>1540451490</time>
+    <user>dimstar_suse</user>
+    <comment>- update to new upstream release 1.9.8:
+        - Skip tboot launch error index read/write when ignore prev err option is true
+        - s3-fix: fix a stack overflow caused by enlarged tb_hash_t union
+        - S3 fix: revert the mis-changed type casting in changeset 522:8e881a07c059
+        - S3-fix: Adding option save_vtd=true to opt-in the vtd table restore
+- rebased patches to match new upstream version</comment>
+    <requestid>644201</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>989a59f0bfcd5a95b83c6b93a5e40488</srcmd5>
+    <version>20170711_1.9.8</version>
+    <time>1548064372</time>
+    <user>dimstar_suse</user>
+    <comment>incorporate FATE number in changes file for SLE-15-SP1 (bsc#1121860)</comment>
+    <requestid>665950</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>be0c4684881e96ff043b39637f336db1</srcmd5>
+    <version>20190520_1.9.10</version>
+    <time>1558427960</time>
+    <user>dimstar_suse</user>
+    <comment>- update to new upstream release 1.9.10:
+    - changes from 1.9.10:
+        - lcp-gen2: update with latest version (wxWidgets wildcard bugfix)
+        - print latest tag in logs
+        - add support for 64bit framebuffer address
+    - changes from 1.9.9:
+        - tools: fix some dereference-NULL issues reported by klocwork
+        - tools: replace banned mem/str fns with corresponding ones in safestringlib
+        - Add safestringlib code to support replacement of banned mem/str fns
+        - lcptools: remove tools supporting platforms before 2008
+        - tboot: update string/memory fn name to differentiate from c lib
+        - Fix a harmless overflow caused by wrong loop limits
+- rebased patches to match new upstream version</comment>
+    <requestid>704217</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>aefe4570bdc0555507f5af53c54f70a0</srcmd5>
+    <version>20190520_1.9.10</version>
+    <time>1560862560</time>
+    <user>dimstar_suse</user>
+    <comment>- add disable-address-of-packed-member-warning.patch: taken over patch found
+  in the Fedora package to disable a new gcc-9 warning that breaks the build.</comment>
+    <requestid>705831</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>9558af65c53e09dc6878cf69c98e7453</srcmd5>
+    <version>20190520_1.9.10</version>
+    <time>1562843935</time>
+    <user>dimstar_suse</user>
+    <comment>- explicitly disable gcc9 link time optimization to fix the build and avoid
+  trouble in low level tboot code.</comment>
+    <requestid>714590</requestid>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>1989813288ba2b76dc26b1dc6064b38d</srcmd5>
+    <version>20190520_1.9.10</version>
+    <time>1563259310</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO in more elegant way (boo#1141323). (forwarded request 715441 from marxin)</comment>
+    <requestid>715443</requestid>
+  </revision>
+</revisionlist>

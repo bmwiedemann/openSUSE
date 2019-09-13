@@ -1,0 +1,17 @@
+<package name="geary" project="openSUSE:Factory">
+  <title>A lightweight email reader for the GNOME desktop</title>
+  <description>In 2011 Yorba broke ground on a new email application for the GNOME desktop. Codenamed Geary, Yorba plans to bring to the open source community a new lightweight, easy-to-use, feature-rich email client. Our long-term vision for Geary is an email client built for daily use that can be used in place of or alongside Web-based email services. Features we're planning include: 
+
+Full IMAP support, making email synchronization a breeze 
+Tight integration with popular Web mail services, including Gmail, Yahoo! Mail, and Mobile Me 
+Full-featured WYSIWYG editor for composing emails 
+Threaded / conversation views 
+Lightning fast as-you-type email search 
+Desktop notification of new email 
+Support for multiple email accounts 
+Offline mode 
+Full support for popular IMAP servers, including Dovecot 
+
+For more information about planned features, see the Geary roadmap.</description>
+  <devel project="GNOME:Apps" package="geary"/>
+</package>

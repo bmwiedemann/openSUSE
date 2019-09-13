@@ -1,0 +1,13 @@
+<package name="gnome-do" project="openSUSE:Factory">
+  <title>A powerful, speedy, and sexy remote control for your GNOME Desktop</title>
+  <description>GNOME Do allows you to quickly search for many objects present in your
+GNOME desktop environment (applications, Evolution contacts, Firefox
+bookmarks, files, artists and albums in Rhythmbox, Pidgin buddies) and
+perform commonly used commands on those objects (Run, Open, Email,
+Chat, Play, etc.).
+
+GNOME Do is inspired by Quicksilver (http://quicksilver.blacktree.com)
+and GNOME Launch Box
+(http://developer.imendio.com/projects/gnome-launch-box).</description>
+  <devel project="GNOME:Apps" package="gnome-do"/>
+</package>

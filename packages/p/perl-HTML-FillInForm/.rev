@@ -1,0 +1,184 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7108dc535c89f094f99cc20f95b1c50</srcmd5>
+    <version>1.06</version>
+    <time>1168903844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9a339d80a1645a36f0818f0a8ec979a7</srcmd5>
+    <version>2.00</version>
+    <time>1191839228</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="65">
+    <srcmd5>9a339d80a1645a36f0818f0a8ec979a7</srcmd5>
+    <version>2.00</version>
+    <time>1191839228</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="66">
+    <srcmd5>672863a93abf9c8baacbea70d26bfd8b</srcmd5>
+    <version>2.00</version>
+    <time>1245337535</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="68">
+    <srcmd5>672863a93abf9c8baacbea70d26bfd8b</srcmd5>
+    <version>2.00</version>
+    <time>1245337535</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="69">
+    <srcmd5>bf279561edb2aefdc8b65c8eafef7012</srcmd5>
+    <version>2.00</version>
+    <time>1263502355</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-HTML-FillInForm based on submit request 29547 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="70">
+    <srcmd5>0c8c9b565f26ff17a6ef077188630c2d</srcmd5>
+    <version>2.00</version>
+    <time>1268925483</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="72">
+    <srcmd5>0c8c9b565f26ff17a6ef077188630c2d</srcmd5>
+    <version>2.00</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="73">
+    <srcmd5>0c8c9b565f26ff17a6ef077188630c2d</srcmd5>
+    <version>2.00</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="74">
+    <srcmd5>20bc8c175283fd53ee30fce8105a614a</srcmd5>
+    <version>2.00</version>
+    <time>1291582555</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54727 from user coolo
+</comment>
+    <requestid>54727</requestid>
+  </revision>
+  <revision rev="11" vrev="75">
+    <srcmd5>785768c7bc2b360c35498771d947a043</srcmd5>
+    <version>2.00</version>
+    <time>1291582561</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54727
+</comment>
+  </revision>
+  <revision rev="12" vrev="78">
+    <srcmd5>785768c7bc2b360c35498771d947a043</srcmd5>
+    <version>2.00</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="74">
+    <srcmd5>75868d52fbe46fe4b1d37698f43886ca</srcmd5>
+    <version>2.1</version>
+    <time>1314779305</time>
+    <user>saschpe</user>
+    <comment>- update to 2.1
+  * Fixed disable_fields option (#52667 Dirk Braun, Goro Fuji)
+  * Add an option to clear absent checkboxes (#44101 Alex Kapranoff)
+  * Fix incorrectly multiple escaped data in list context
+  (#34081 Miika Pekkarinen)
+  * Allow FIF to process the new &lt;input&gt; field  types (URL, email, and number) 
+  as defined in the HTML5 draft and already implemented by the iPhone.
+  * (Michael Fisher)
+  * Allow alternate parsing class (Mark Stosberg) mark 
+  invalid fields (Sam Tregar)
+- licence correction</comment>
+    <requestid>80180</requestid>
+  </revision>
+  <revision rev="14" vrev="75">
+    <srcmd5>ac0737ee4bcaaaa0f7e6f3da3aa44937</srcmd5>
+    <version>2.1</version>
+    <time>1314779316</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80180
+</comment>
+  </revision>
+  <revision rev="15" vrev="77">
+    <srcmd5>ac0737ee4bcaaaa0f7e6f3da3aa44937</srcmd5>
+    <version>2.1</version>
+    <time>1319182273</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="78">
+    <srcmd5>d57c63b259b8dd7dbec24a870714a398</srcmd5>
+    <version>2.1</version>
+    <time>1323193344</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="80">
+    <srcmd5>d57c63b259b8dd7dbec24a870714a398</srcmd5>
+    <version>2.1</version>
+    <time>1340183850</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="82">
+    <srcmd5>d57c63b259b8dd7dbec24a870714a398</srcmd5>
+    <version>2.1</version>
+    <time>1359109687</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>064154dc0cc86a6346e52f64b9af0d52</srcmd5>
+    <version>2.11</version>
+    <time>1371137657</time>
+    <user>coolo</user>
+    <comment>- updated to 2.11
+  * Updated tests so that they pass with Perl 5.18 (Mark Stosberg)</comment>
+    <requestid>178348</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>064154dc0cc86a6346e52f64b9af0d52</srcmd5>
+    <version>2.11</version>
+    <time>1379663696</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a8b67244317b8eeee470e5534b4a86e5</srcmd5>
+    <version>2.20</version>
+    <time>1393089118</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223482</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>a8b67244317b8eeee470e5534b4a86e5</srcmd5>
+    <version>2.20</version>
+    <time>1409302317</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f2c61f916160d2bad8ff67985a4cc5f4</srcmd5>
+    <version>2.21</version>
+    <time>1429186435</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297044</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>3c82fe6b0cc0bf75f9a95c7095abf477</srcmd5>
+    <version>2.21</version>
+    <time>1440871486</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327574</requestid>
+  </revision>
+</revisionlist>

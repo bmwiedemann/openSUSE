@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e32dcd9d1d4b061d7e4f2cce984f67ac</srcmd5>
+    <version>0.3.15</version>
+    <time>1448553760</time>
+    <user>dimstar_suse</user>
+    <comment>monad-logger: A class of monads which can log messages.</comment>
+    <requestid>345707</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d47d2628f7398e6853ab136281f49c63</srcmd5>
+    <version>0.3.16</version>
+    <time>1450856962</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.16
+* Provide default monadLoggerLog implementation</comment>
+    <requestid>348699</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>52e2a2fa587a843e645ce50d8d7689d7</srcmd5>
+    <version>0.3.17</version>
+    <time>1453416205</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.17 
+* log to a chan (forwarded request 354514 from mimi_vx)</comment>
+    <requestid>354565</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>58cd79bb8708e5062d0766cf89a630a6</srcmd5>
+    <version>0.3.18</version>
+    <time>1455190649</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.18
+* Added logTHShow and logDebugSH, logInfoSH, etc. Accepts an argument of 
+    Show a =&amp;gt; a instead of just Text. (forwarded request 358310 from mimi_vx)</comment>
+    <requestid>358311</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>edfb189fe31a5dcb18daffad51a98257</srcmd5>
+    <version>0.3.19</version>
+    <time>1468360370</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.1.9
+* Add CallStack-based functions and Control.Monad.Logger.CallStack module</comment>
+    <requestid>407633</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5a4bd3c303124d89bcfce896831abf51</srcmd5>
+    <version>0.3.19</version>
+    <time>1468999664</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411927</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7653c42ab9c222f73b6ff016444f98b1</srcmd5>
+    <version>0.3.20</version>
+    <time>1478289681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.20 with cabal2obs.</comment>
+    <requestid>438574</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cd926d80a3c445fb1129cfb8714f55dc</srcmd5>
+    <version>0.3.20.1</version>
+    <time>1481272663</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442865</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>565c260989d24c00674ecfa31a216f24</srcmd5>
+    <version>0.3.20.2</version>
+    <time>1488559876</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461664</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>603f4410f8b3d0fa461702fda91fee97</srcmd5>
+    <version>0.3.21</version>
+    <time>1491896575</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485144</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>48cea9eb9cec0aaa0641b5e7897deeb8</srcmd5>
+    <version>0.3.22</version>
+    <time>1492516254</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>489017</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8000023a704b66a4f1fc501f471ae920</srcmd5>
+    <version>0.3.24</version>
+    <time>1496534273</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>499713</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b830d11d5707b7a26eccdabdb22bffdb</srcmd5>
+    <version>0.3.28.5</version>
+    <time>1527675056</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-monad-logger to the latest version.</comment>
+    <requestid>607840</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>542fbd447eed7e17c047565ef9f16ea7</srcmd5>
+    <version>0.3.28.5</version>
+    <time>1532161275</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+* Added logTHShow and logDebugSH, logInfoSH, etc. Accepts an argument of
+- update to 0.3.17</comment>
+    <requestid>623811</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4df4d3f3f48e025ab8c9b1328d90cd58</srcmd5>
+    <version>0.3.29</version>
+    <time>1533412442</time>
+    <user>dimstar_suse</user>
+    <comment>Add xmonad, xmobar, and their dependencies to Factory.</comment>
+    <requestid>627277</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>22b143b9b777e50496ba994ebbb52e2f</srcmd5>
+    <version>0.3.29</version>
+    <time>1540448839</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643422</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>af124f2472f810f0cc6427c19409657e</srcmd5>
+    <version>0.3.30</version>
+    <time>1541746365</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646359</requestid>
+  </revision>
+</revisionlist>

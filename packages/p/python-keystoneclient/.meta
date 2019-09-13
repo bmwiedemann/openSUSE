@@ -1,0 +1,5 @@
+<package name="python-keystoneclient" project="openSUSE:Factory">
+  <title></title>
+  <description>This is a client for the OpenStack Keystone API. There's a Python API (the keystoneclient module), and a command-line script (keystone). The Keystone 2.0 API is still a moving target, so this module will remain in &quot;Beta&quot; status until the API is finalized and fully implemented.</description>
+  <devel project="Cloud:OpenStack:Factory" package="python-keystoneclient"/>
+</package>

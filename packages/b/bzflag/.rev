@@ -1,0 +1,231 @@
+<revisionlist>
+  <revision rev="1" vrev="23">
+    <srcmd5>74364013e5dd8833e249e679d6ee6eb7</srcmd5>
+    <version>2.0.8</version>
+    <time>1168468587</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="27">
+    <srcmd5>9c41463e6c5bb4f72222bc560cb0bd9e</srcmd5>
+    <version>2.0.8</version>
+    <time>1173917777</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="32">
+    <srcmd5>8b19fd36d897864b8916ef5a78c3e803</srcmd5>
+    <version>2.0.8</version>
+    <time>1176762595</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="83">
+    <srcmd5>57358e7b4b4a71b51dc4022d3a444950</srcmd5>
+    <version>2.0.8</version>
+    <time>1192549647</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>af27600e2558842535d6768022553bd0</srcmd5>
+    <version>2.0.10</version>
+    <time>1200604334</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="27">
+    <srcmd5>ae9cfa11c7e655c0ef4ec6a6e18c7046</srcmd5>
+    <version>2.0.10</version>
+    <time>1207563145</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0cc583d058b0695c52aa92265615c699</srcmd5>
+    <version>2.0.10svn200804211445</version>
+    <time>1208795790</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fcd49d33640fab9d2986601bc8521b40</srcmd5>
+    <version>2.0.12</version>
+    <time>1220882394</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>fcd49d33640fab9d2986601bc8521b40</srcmd5>
+    <version>2.0.12</version>
+    <time>1220882394</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>6090dbc8d290acbc1737fa81b083c2d8</srcmd5>
+    <version>2.0.12</version>
+    <time>1268923138</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>fb4e38bac93a578e517528f089c52a1f</srcmd5>
+    <version>2.0.12</version>
+    <time>1268991398</time>
+    <user>autobuild</user>
+    <comment>Copy from games/bzflag based on submit request 35180 from user coolo
+</comment>
+    <requestid>35180</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>983eb00f696531d0dde0ff8d7b024639</srcmd5>
+    <version>2.0.16</version>
+    <time>1270589044</time>
+    <user>autobuild</user>
+    <comment>Copy from games/bzflag based on submit request 37092 from user prusnak
+</comment>
+    <requestid>37092</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>983eb00f696531d0dde0ff8d7b024639</srcmd5>
+    <version>2.0.16</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>983eb00f696531d0dde0ff8d7b024639</srcmd5>
+    <version>2.0.16</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>983eb00f696531d0dde0ff8d7b024639</srcmd5>
+    <version>2.0.16</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b35a1cbbd79ccfb5556881bdc23e7634</srcmd5>
+    <version>2.4.0</version>
+    <time>1310380048</time>
+    <user>saschpe</user>
+    <comment>Update to 2.4.0 (forwarded request 75524 from jmcdough)</comment>
+    <requestid>75903</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3fcfabcf95aa024ba622e3c2c2525274</srcmd5>
+    <version>2.4.0</version>
+    <time>1310380063</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75903
+</comment>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>86cbf39eee14a0fa6c022cb6486a77d4</srcmd5>
+    <version>2.4.0</version>
+    <time>1317740063</time>
+    <user>oertel</user>
+    <comment>add libtool as buildrequire to make the spec file more reliable</comment>
+    <requestid>86301</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>86cbf39eee14a0fa6c022cb6486a77d4</srcmd5>
+    <version>2.4.0</version>
+    <time>1319181800</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>47095aad75c642bc4c61036e030069b5</srcmd5>
+    <version>2.4.0</version>
+    <time>1323190934</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>95ce9e5a887792c9c08506c5e4e97191</srcmd5>
+    <version>2.4.0</version>
+    <time>1334641443</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113779</requestid>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>4063142021ec0de52cdd5890b49c7561</srcmd5>
+    <version>2.4.0</version>
+    <time>1336423431</time>
+    <user>coolo</user>
+    <comment>- Use system c-ares and glew
+- Stop using autoreconf</comment>
+    <requestid>116019</requestid>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>4063142021ec0de52cdd5890b49c7561</srcmd5>
+    <version>2.4.0</version>
+    <time>1340183222</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>4063142021ec0de52cdd5890b49c7561</srcmd5>
+    <version>2.4.0</version>
+    <time>1359108724</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ab1160d105366f413193368482e18df1</srcmd5>
+    <version>2.4.2</version>
+    <time>1366232521</time>
+    <user>coolo</user>
+    <comment>Update to version 2.4.2 (forwarded request 171280 from worldcitizen)</comment>
+    <requestid>171287</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>ab1160d105366f413193368482e18df1</srcmd5>
+    <version>2.4.2</version>
+    <time>1379662069</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>ab1160d105366f413193368482e18df1</srcmd5>
+    <version>2.4.2</version>
+    <time>1409300599</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>6980b1aeb5cd8c34331c9eb5de60d1aa</srcmd5>
+    <version>2.4.2</version>
+    <time>1511949151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545564</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>20042b376be2c2a60d09ccc025f0bfb5</srcmd5>
+    <version>2.4.12</version>
+    <time>1515876027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559890</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>6d31282f181016801a456d6acbb36ce8</srcmd5>
+    <version>2.4.12</version>
+    <time>1553611504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688334</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>49a797f2a4f733b5bcb3f255ba6bb183</srcmd5>
+    <version>2.4.12</version>
+    <time>1553888579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689728</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>759bc8c75bb64f30c1a65a6e20c7465b</srcmd5>
+    <version>2.4.18</version>
+    <time>1560536661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704653</requestid>
+  </revision>
+</revisionlist>

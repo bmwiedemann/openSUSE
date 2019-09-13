@@ -1,0 +1,211 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d526452aefaa606f31008e8789aa43a8</srcmd5>
+    <version>2.29</version>
+    <time>1289421788</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52604 from user coolo
+</comment>
+    <requestid>52604</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5565ea6057449af42be958536025da94</srcmd5>
+    <version>2.29</version>
+    <time>1289421793</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52604
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e9f14bbf2e68d8d385cc1b47580d55bc</srcmd5>
+    <version>2.29</version>
+    <time>1291582890</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54573 from user coolo
+</comment>
+    <requestid>54573</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a3466b8ff5b5460c83d5d9bbc243a4bf</srcmd5>
+    <version>2.29</version>
+    <time>1291582896</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54573
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6b2d84c25f9ae88f9a3376015dde9978</srcmd5>
+    <version>2.30</version>
+    <time>1295309566</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58624 from user coolo
+</comment>
+    <requestid>58624</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5d9e15c1fff5962ffb1abd01dfdbc1ff</srcmd5>
+    <version>2.30</version>
+    <time>1295309575</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58624
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>5d9e15c1fff5962ffb1abd01dfdbc1ff</srcmd5>
+    <version>2.30</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>94b572bfba761b2bbdda78e47e543ab5</srcmd5>
+    <version>2.32</version>
+    <time>1316437742</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>82384</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>94b572bfba761b2bbdda78e47e543ab5</srcmd5>
+    <version>2.32</version>
+    <time>1319182282</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>9ed9394f77bdf9f4d363afa1b40c56b0</srcmd5>
+    <version>2.32</version>
+    <time>1321875721</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92218</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>d765d37a99f4f25ffed56bc8b7c2e510</srcmd5>
+    <version>2.32</version>
+    <time>1323193410</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>d765d37a99f4f25ffed56bc8b7c2e510</srcmd5>
+    <version>2.32</version>
+    <time>1340183864</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>d765d37a99f4f25ffed56bc8b7c2e510</srcmd5>
+    <version>2.32</version>
+    <time>1359109713</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>238856d6dce2f07bc2fbd95646368de4</srcmd5>
+    <version>2.34</version>
+    <time>1370447476</time>
+    <user>coolo</user>
+    <comment>- updated to 2.34
+       - work around bugs in perl 5.18 breaking more than 100
+          widely used modules, without a fix in sight because
+          p5pers don't care about CPAN anymore.
+       - when canonicalising, only allocate up to 64 hash key
+          pointers on the stack. for larger hashes, use the heap,
+          to avoid using too much stackspace.
+        - discuss the problem with setlocale (reported by a few victims).
+       - internal encode/decode XS wrappers did not expect stack
+          moves caused by callbacks (analyzed and testcase by Jesse Luehrs).
+       - add bencode as to/from option in bin/json_xs.
+        - add -e option to json_xs, and none and string in/out formats.</comment>
+    <requestid>177740</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>238856d6dce2f07bc2fbd95646368de4</srcmd5>
+    <version>2.34</version>
+    <time>1379663723</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2acaa1212728eef4210934e777157015</srcmd5>
+    <version>3.01</version>
+    <time>1386333920</time>
+    <user>coolo</user>
+    <comment>- updated to 3.01
+      - backport to perls &lt; 5.18 (reported by Paul Howarth).
+      - implemented an object tagging extension (using the
+         Types::Serialiser serialisation protocol).
+      - reworked the documentation regarding object serialisation,
+         add a new OBJECT SERIALISATION section that explains the
+         whole process.
+      - new setting: allow_tags.
+      - switch to Types::Serialiser booleans.
+      - remove to_json/from_json.
+      - other minor improvements to the documentation.</comment>
+    <requestid>208246</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>2acaa1212728eef4210934e777157015</srcmd5>
+    <version>3.01</version>
+    <time>1409302348</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b860cac11a54688a769f9cac9c835b49</srcmd5>
+    <version>3.02</version>
+    <time>1461855172</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.02
+   see /usr/share/doc/packages/perl-JSON-XS/Changes
+  TODO: how to cope with tagged values and standard json decoders
+  TODO: investigate magic (Eric Brine)</comment>
+    <requestid>370284</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8344beb9074651474a30e52cb953b8c0</srcmd5>
+    <version>3.03</version>
+    <time>1479502975</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440744</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>62b8be9d66639d3185fa0b1a6f125f93</srcmd5>
+    <version>3.04</version>
+    <time>1504521393</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520423</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ed743336353658b64dc55d787078f48b</srcmd5>
+    <version>4.0</version>
+    <time>1544632032</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.0
+   see /usr/share/doc/packages/perl-JSON-XS/Changes
+</comment>
+    <requestid>655789</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>61b27e0b03a256d52e7a102fc32146f4</srcmd5>
+    <version>4.01</version>
+    <time>1551687779</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.01
+   see /usr/share/doc/packages/perl-JSON-XS/Changes
+  4.01 Sun Feb 24 05:03:30 CET 2019
+  	- fix some stack corruption caused mostly when calling methods
+            in list context (tewstcase by Wesley Schwengle).</comment>
+    <requestid>680855</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5930e01b7467c55f9fba666ad1fb0a3f</srcmd5>
+    <version>4.02</version>
+    <time>1552206774</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682373</requestid>
+  </revision>
+</revisionlist>

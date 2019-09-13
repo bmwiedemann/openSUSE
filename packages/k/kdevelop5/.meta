@@ -1,0 +1,5 @@
+<package name="kdevelop5" project="openSUSE:Factory">
+  <title>kdevelop5</title>
+  <description></description>
+  <devel project="KDE:Extra" package="kdevelop5"/>
+</package>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc5f1ba0678b3cb7fc747732f44b70c9</srcmd5>
+    <version>3.8.1</version>
+    <time>1526371761</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-SpeechRecognition required by mycroft-core</comment>
+    <requestid>603824</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>929dbf7a80f4e198dacd839b8c725141</srcmd5>
+    <version>3.8.1</version>
+    <time>1545223936</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659362</requestid>
+  </revision>
+</revisionlist>

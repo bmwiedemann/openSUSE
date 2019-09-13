@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8720c99b59c09d995d6c7fbad1479ed3</srcmd5>
+    <version>0.6</version>
+    <time>1340618030</time>
+    <user>coolo</user>
+    <comment>required for accelerated qemu build</comment>
+    <requestid>125694</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>13f55cfe9bd93f51ac916c1bcc57ef4f</srcmd5>
+    <version>0.6</version>
+    <time>1342083026</time>
+    <user>namtrac</user>
+    <comment>exclude on broken archs</comment>
+    <requestid>127571</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>13f55cfe9bd93f51ac916c1bcc57ef4f</srcmd5>
+    <version>0.6</version>
+    <time>1359109577</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>13f55cfe9bd93f51ac916c1bcc57ef4f</srcmd5>
+    <version>0.6</version>
+    <time>1379663512</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>28ffb238e109f7f95130a00767597fcd</srcmd5>
+    <version>0.8</version>
+    <time>1407236418</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.8
+  * No changelog upstream</comment>
+    <requestid>243462</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>28ffb238e109f7f95130a00767597fcd</srcmd5>
+    <version>0.8</version>
+    <time>1409302120</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>234469df2ea6acb1064c3021e37f5eec</srcmd5>
+    <version>0.8</version>
+    <time>1439556374</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322305</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>007f72f1c07a4b9de865e57e3a59b900</srcmd5>
+    <version>0.9</version>
+    <time>1459002265</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>376023</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2462a67a28dd7bb8953bbaf6262d3b2e</srcmd5>
+    <version>0.9</version>
+    <time>1459845823</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>383163</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>aefb846b3823f23f0d3c060fa5bff325</srcmd5>
+    <version>0.9</version>
+    <time>1542580226</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file
+- Install license file</comment>
+    <requestid>649273</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>31e3199c064b97122502dea7e7bb3b22</srcmd5>
+    <version>0.10</version>
+    <time>1566894505</time>
+    <user>dimstar_suse</user>
+    <comment>- Changelog and packaging cleanups
+- Fix download url
+
+- Update to version 0.10
+  * remove no-rpath-prebuilt.patch - applied upstream
+  * Lots of bug fixes see https://github.com/NixOS/patchelf/commits/master</comment>
+    <requestid>726292</requestid>
+  </revision>
+</revisionlist>

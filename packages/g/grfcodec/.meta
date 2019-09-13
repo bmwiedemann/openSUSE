@@ -1,0 +1,6 @@
+<package name="grfcodec" project="openSUSE:Factory">
+  <title>GRFCodec</title>
+  <description>make grfs for openttd extra</description>
+  <devel project="games" package="grfcodec"/>
+  <url>http://dev.openttdcoop.org/projects/grfcodec/</url>
+</package>

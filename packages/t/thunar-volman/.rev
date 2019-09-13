@@ -1,0 +1,273 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>507c1cf199137166e112eb6902edb7b0</srcmd5>
+    <version>0.1.2</version>
+    <time>1173872391</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="81">
+    <srcmd5>ead1db838bd78bf67d50d71d356510c3</srcmd5>
+    <version>0.1.2</version>
+    <time>1193068683</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="202">
+    <srcmd5>ead1db838bd78bf67d50d71d356510c3</srcmd5>
+    <version>0.1.2</version>
+    <time>1193068683</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>159517701e9cf6337716ae15e3e08cd6</srcmd5>
+    <version>0.2.0</version>
+    <time>1232067276</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b864777af099d2f6933b0148ea569325</srcmd5>
+    <version>0.3.80</version>
+    <time>1239747633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b864777af099d2f6933b0148ea569325</srcmd5>
+    <version>0.3.80</version>
+    <time>1239747633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>a17e0fd1326d0d02f67461fd331ebcab</srcmd5>
+    <version>0.3.80</version>
+    <time>1268926334</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>a17e0fd1326d0d02f67461fd331ebcab</srcmd5>
+    <version>0.3.80</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>a17e0fd1326d0d02f67461fd331ebcab</srcmd5>
+    <version>0.3.80</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>83ce91a04e314d1b929a78a17162b903</srcmd5>
+    <version>0.5.2</version>
+    <time>1291586673</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54779 from user anubisg1
+</comment>
+    <requestid>54779</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5a4fa082f198ae99841e2361fae9558d</srcmd5>
+    <version>0.5.2</version>
+    <time>1291586678</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54779
+</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>b692eb2b028435a7f39f3bce68f656f1</srcmd5>
+    <version>0.5.2</version>
+    <time>1294667958</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57389 from user gberh
+</comment>
+    <requestid>57389</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>d5cc6a4933faba3788e7b7f71d44e2db</srcmd5>
+    <version>0.5.2</version>
+    <time>1294667968</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57389
+</comment>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>fc79f25a91fbd5fc2963c33c4730e5dc</srcmd5>
+    <version>0.6.0</version>
+    <time>1295310380</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58596 from user gberh
+</comment>
+    <requestid>58596</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>64fcff97092a6c4269b5a75355fba904</srcmd5>
+    <version>0.6.0</version>
+    <time>1295310390</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58596
+</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>64fcff97092a6c4269b5a75355fba904</srcmd5>
+    <version>0.6.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>b2bc172ce8c35e98bdc898474366e22d</srcmd5>
+    <version>0.6.0</version>
+    <time>1298031835</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61703 from user gberh
+</comment>
+    <requestid>61703</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>93a29a810778f7ef6204de4a82d85da7</srcmd5>
+    <version>0.6.0</version>
+    <time>1298031841</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61703
+</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>aa42296b0c8a3ef0447799bef912f299</srcmd5>
+    <version>0.6.0</version>
+    <time>1318578540</time>
+    <user>lrupp</user>
+    <comment>- added thunar-volman-branding-upstream package for &gt;= 12.1</comment>
+    <requestid>87769</requestid>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>aa42296b0c8a3ef0447799bef912f299</srcmd5>
+    <version>0.6.0</version>
+    <time>1319182518</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="12">
+    <srcmd5>22aa0974315abbe824508a1ba21d1351</srcmd5>
+    <version>0.6.0</version>
+    <time>1323194908</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0b716ea4adc01627eff0b8ed2fe44231</srcmd5>
+    <version>0.6.1</version>
+    <time>1334824863</time>
+    <user>coolo</user>
+    <comment>- update to version 0.6.1
+  - do not make icon names translatable
+  - auto generate the ChangeLog
+  - translation updates
+
+- correct dependencies
+- specfile cleanup</comment>
+    <requestid>112515</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f297373e477c93720275a7be9af6a2f7</srcmd5>
+    <version>0.8.0</version>
+    <time>1336470553</time>
+    <user>coolo</user>
+    <comment>- update to version 0.8.0
+  - translation updates
+
+- enable thunar-volman-branding-upstream for all openSUSE versions
+
+- update to version 0.7.1
+  - translation updates
+
+- update to version 0.7.0
+  - show in correct settings category
+- drop thunar-volman-brp-desktop-friendly-icon.patch, not needed
+  any more</comment>
+    <requestid>116151</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>f297373e477c93720275a7be9af6a2f7</srcmd5>
+    <version>0.8.0</version>
+    <time>1340184273</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>f297373e477c93720275a7be9af6a2f7</srcmd5>
+    <version>0.8.0</version>
+    <time>1359110489</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>f297373e477c93720275a7be9af6a2f7</srcmd5>
+    <version>0.8.0</version>
+    <time>1379664819</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>f297373e477c93720275a7be9af6a2f7</srcmd5>
+    <version>0.8.0</version>
+    <time>1409303495</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d5321d0ca2db5ef35ff891635dab9d16</srcmd5>
+    <version>0.8.1</version>
+    <time>1425891950</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.12</comment>
+    <requestid>289365</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>30182fff83f8dbc031b5680356ad3f14</srcmd5>
+    <version>0.8.1</version>
+    <time>1512848001</time>
+    <user>dimstar_suse</user>
+    <comment>add thunar-volman-use-udisks-hints.diff (bnc#949808) (forwarded request 555548 from seife)</comment>
+    <requestid>555549</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>bc7aab21ece7e14bde468ccd4f5c24b7</srcmd5>
+    <version>0.9.0</version>
+    <time>1529501121</time>
+    <user>maxlin_factory</user>
+    <comment>update to version 0.9.0 (forwarded request 617412 from seife)</comment>
+    <requestid>617422</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>46b7f62eac5a29a78b27958a1470d32a</srcmd5>
+    <version>0.9.1</version>
+    <time>1546535350</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.1
+  - Allow compilation against libxfce4ui 4.12 (bxo#14100)
+  - Use transient notifications
+  - Visual improvements (bxo#14650)
+  - Add support for Blu-ray media (bxo#13297)
+  - Relicense tvm-burn-cd.svg (bxo#11204)
+  - Autobrowse of removable media opens Thunar, not the user-selected file
+    manager (bxo#9537)
+  - Translation updates
+- Remove obsolete patch thunar-volman-0.9-fix-build-with-xfce-4.12.patch
+</comment>
+    <requestid>662531</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c04eef9bae6ce14eb49578b4d9f49c2d</srcmd5>
+    <version>0.9.4</version>
+    <time>1564576254</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.9.4</comment>
+    <requestid>719858</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>514448513b0d0afa04fcbadae3a1acf8</srcmd5>
+    <version>0.9.5</version>
+    <time>1565963469</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project X11:xfce</comment>
+    <requestid>723974</requestid>
+  </revision>
+</revisionlist>

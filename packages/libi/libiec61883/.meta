@@ -1,0 +1,18 @@
+<package name="libiec61883" project="openSUSE:Factory">
+  <title>Implementation of IEC 61883</title>
+  <description>This library is an implementation of IEC 61883, part 1 (CIP, plug
+registers, and CMP), part 2 (DV-SD), part 4 (MPEG2-TS), and part 6
+(AMDTP). Outside of IIDC, nearly all FireWire multimedia devices use
+IEC 61883 protocols.
+
+The libiec61883 library provides a higher level API for streaming DV,
+MPEG-2 and audio over Linux IEEE 1394. This includes both reception and
+transmission. It uses the new &quot;rawiso&quot; API of libraw1394, which
+transparently provides mmap-ed DMA for efficient data transfer. It also
+represents the third generation of I/O technology for Linux 1394 for
+these media types thereby removing the complexities of additional
+kernel modules, /dev nodes, and procfs. It also consolidates features
+for plug control registers and connection management that previously
+existed in experimental form in an unreleased version of libavc1394.</description>
+  <devel project="multimedia:libs" package="libiec61883"/>
+</package>

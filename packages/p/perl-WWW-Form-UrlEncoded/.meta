@@ -1,0 +1,9 @@
+<package name="perl-WWW-Form-UrlEncoded" project="openSUSE:Factory">
+  <title>Parser and Builder for Application/X-Www-Form-Urlencoded</title>
+  <description>WWW::Form::UrlEncoded provides application/x-www-form-urlencoded parser and builder. This module aims to have compatibility with other CPAN modules like HTTP::Body's urlencoded parser.
+
+This module try to use WWW::Form::UrlEncoded::XS by default and fail to it, use WWW::Form::UrlEncoded::PP instead
+</description>
+  <devel project="devel:languages:perl" package="perl-WWW-Form-UrlEncoded"/>
+  <url>https://metacpan.org/release/WWW-Form-UrlEncoded</url>
+</package>

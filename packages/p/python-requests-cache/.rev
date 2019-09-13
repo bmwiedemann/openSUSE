@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c06fdc3fe5496187cf6d86bd59293d70</srcmd5>
+    <version>0.4.13</version>
+    <time>1523616570</time>
+    <user>maxlin_factory</user>
+    <comment>- Initial release 
+</comment>
+    <requestid>595212</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dfe9ddbfab94d161eddf318da7b14634</srcmd5>
+    <version>0.4.13</version>
+    <time>1545648190</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659641</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e7362c1554c3a9e8bf7bc897017ff67f</srcmd5>
+    <version>0.5.0</version>
+    <time>1557264009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701310</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f4812961811b1db66c1e09949d92b7c9</srcmd5>
+    <version>0.5.2</version>
+    <time>1568190950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.2:
+  * Fix DeprecationWarning from collections #140</comment>
+    <requestid>729800</requestid>
+  </revision>
+</revisionlist>

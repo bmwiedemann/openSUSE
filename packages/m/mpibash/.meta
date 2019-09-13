@@ -1,0 +1,5 @@
+<package name="mpibash" project="openSUSE:Factory">
+  <title>Parallel scripting right from the Bourne-Again Shell</title>
+  <description></description>
+  <devel project="science:HPC" package="mpibash"/>
+</package>

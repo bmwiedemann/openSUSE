@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="24">
+    <srcmd5>2d4a7c739852deeab1412f29ef5d71f8</srcmd5>
+    <version>5.0.18</version>
+    <time>1168904206</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="234">
+    <srcmd5>e582b7fe56f4e7add796112e8c54f75c</srcmd5>
+    <version>5.0.18</version>
+    <time>1217253347</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="238">
+    <srcmd5>6c138e9d96ff7fb410bdb5b53a82c4ba</srcmd5>
+    <version>5.0.18</version>
+    <time>1217371554</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="261">
+    <srcmd5>2f5fbfa0a16e1d4b3e82d21d84ee64de</srcmd5>
+    <version>5.0.18</version>
+    <time>1245340312</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="263">
+    <srcmd5>2f5fbfa0a16e1d4b3e82d21d84ee64de</srcmd5>
+    <version>5.0.18</version>
+    <time>1245340312</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="264">
+    <srcmd5>fda6c5a30782a129e2a632b4416de93a</srcmd5>
+    <version>5.0.18</version>
+    <time>1268926148</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="266">
+    <srcmd5>fda6c5a30782a129e2a632b4416de93a</srcmd5>
+    <version>5.0.18</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="267">
+    <srcmd5>fda6c5a30782a129e2a632b4416de93a</srcmd5>
+    <version>5.0.18</version>
+    <time>1278678619</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="268">
+    <srcmd5>bc4d7fdac54749d94f8f914cf8766499</srcmd5>
+    <version>5.0.18</version>
+    <time>1289839543</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52368 from user mvyskocil
+</comment>
+    <requestid>52368</requestid>
+  </revision>
+  <revision rev="10" vrev="269">
+    <srcmd5>eefe17e30519909c9a442b1b185887b7</srcmd5>
+    <version>5.0.18</version>
+    <time>1289839561</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52368
+</comment>
+  </revision>
+  <revision rev="11" vrev="272">
+    <srcmd5>eefe17e30519909c9a442b1b185887b7</srcmd5>
+    <version>5.0.18</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="274">
+    <srcmd5>eefe17e30519909c9a442b1b185887b7</srcmd5>
+    <version>5.0.18</version>
+    <time>1319182463</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="275">
+    <srcmd5>4c66f43d45ed92f88b21540cb133d996</srcmd5>
+    <version>5.0.18</version>
+    <time>1323194621</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="277">
+    <srcmd5>4c66f43d45ed92f88b21540cb133d996</srcmd5>
+    <version>5.0.18</version>
+    <time>1340184210</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="279">
+    <srcmd5>4c66f43d45ed92f88b21540cb133d996</srcmd5>
+    <version>5.0.18</version>
+    <time>1359110397</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="280">
+    <srcmd5>a5747469a8824a48bba7621b3a1e1588</srcmd5>
+    <version>5.0.18</version>
+    <time>1377430360</time>
+    <user>scarabeus_factory</user>
+    <comment>- drop javadoc package</comment>
+    <requestid>196102</requestid>
+  </revision>
+  <revision rev="17" vrev="282">
+    <srcmd5>a5747469a8824a48bba7621b3a1e1588</srcmd5>
+    <version>5.0.18</version>
+    <time>1379664651</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="283">
+    <srcmd5>c947dd0a409f1ee2881ad6846ffba22f</srcmd5>
+    <version>5.0.18</version>
+    <time>1406914016</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner.
+- Fix update-alternatives code</comment>
+    <requestid>242663</requestid>
+  </revision>
+  <revision rev="19" vrev="285">
+    <srcmd5>c947dd0a409f1ee2881ad6846ffba22f</srcmd5>
+    <version>5.0.18</version>
+    <time>1409303352</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="286">
+    <srcmd5>a1a8cb272aab3973c25d23308060796e</srcmd5>
+    <version>5.0.18</version>
+    <time>1507280089</time>
+    <user>dimstar_suse</user>
+    <comment>Don't just java-gcj-compat + fix build with jdk9</comment>
+    <requestid>530810</requestid>
+  </revision>
+</revisionlist>

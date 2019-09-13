@@ -1,0 +1,9 @@
+<package name="prun-ohpc" project="openSUSE:Factory">
+  <title>Convenience utility for parallel job launch</title>
+  <description>                                                                                                                                         
+    prun provides a unified, script-based wrapper for launching parallel jobs                                                                           
+  within a resource manager for a variety of MPI families.                                                                                              
+  </description>
+  <devel project="network:cluster:ohpc" package="prun-ohpc"/>
+  <url>https://github.com/openhpc/ohpc</url>
+</package>

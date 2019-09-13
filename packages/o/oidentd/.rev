@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf1f682c662ad09e42f266fbb4cc7fad</srcmd5>
+    <version>2.0.8</version>
+    <time>1168903646</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="122">
+    <srcmd5>cf1f682c662ad09e42f266fbb4cc7fad</srcmd5>
+    <version>2.0.8</version>
+    <time>1168903646</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="123">
+    <srcmd5>18462f75fa293ccf97f1938c7961c1fe</srcmd5>
+    <version>2.0.8</version>
+    <time>1245276601</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="125">
+    <srcmd5>18462f75fa293ccf97f1938c7961c1fe</srcmd5>
+    <version>2.0.8</version>
+    <time>1245276601</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="126">
+    <srcmd5>693a613a631bb8761c7320e58ae2c28d</srcmd5>
+    <version>2.0.8</version>
+    <time>1263304677</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/oidentd based on submit request 29030 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="127">
+    <srcmd5>4229756ffac7cb7d12a34ab380e12997</srcmd5>
+    <version>2.0.8</version>
+    <time>1268925183</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="129">
+    <srcmd5>4229756ffac7cb7d12a34ab380e12997</srcmd5>
+    <version>2.0.8</version>
+    <time>1278667372</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="130">
+    <srcmd5>4229756ffac7cb7d12a34ab380e12997</srcmd5>
+    <version>2.0.8</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="133">
+    <srcmd5>4229756ffac7cb7d12a34ab380e12997</srcmd5>
+    <version>2.0.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="135">
+    <srcmd5>4229756ffac7cb7d12a34ab380e12997</srcmd5>
+    <version>2.0.8</version>
+    <time>1319182210</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="136">
+    <srcmd5>048154a11d9d64c4eb682a3a1bc256c2</srcmd5>
+    <version>2.0.8</version>
+    <time>1323341515</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95116 from coolo)</comment>
+    <requestid>95184</requestid>
+  </revision>
+  <revision rev="12" vrev="138">
+    <srcmd5>048154a11d9d64c4eb682a3a1bc256c2</srcmd5>
+    <version>2.0.8</version>
+    <time>1340183747</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="140">
+    <srcmd5>048154a11d9d64c4eb682a3a1bc256c2</srcmd5>
+    <version>2.0.8</version>
+    <time>1359109529</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="142">
+    <srcmd5>048154a11d9d64c4eb682a3a1bc256c2</srcmd5>
+    <version>2.0.8</version>
+    <time>1379663407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="144">
+    <srcmd5>048154a11d9d64c4eb682a3a1bc256c2</srcmd5>
+    <version>2.0.8</version>
+    <time>1409302020</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="145">
+    <srcmd5>9786eeb561214795cb897cdfa9a25995</srcmd5>
+    <version>2.0.8</version>
+    <time>1424117696</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286384</requestid>
+  </revision>
+  <revision rev="17" vrev="146">
+    <srcmd5>262bdab4feaaeb4f0576d1cea8d888c0</srcmd5>
+    <version>2.0.8</version>
+    <time>1433920565</time>
+    <user>dimstar_suse</user>
+    <comment>- Force gnu89 inline semantics (forwarded request 311242 from Andreas_Schwab)</comment>
+    <requestid>311275</requestid>
+  </revision>
+  <revision rev="18" vrev="147">
+    <srcmd5>70b6ae626aed0f1e36545e5431d9c7d2</srcmd5>
+    <version>2.0.8</version>
+    <time>1447146238</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343270</requestid>
+  </revision>
+  <revision rev="19" vrev="148">
+    <srcmd5>d259eed6d3e4a21add4459e431ad0fa1</srcmd5>
+    <version>2.0.8</version>
+    <time>1453416163</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354152</requestid>
+  </revision>
+  <revision rev="20" vrev="149">
+    <srcmd5>4431d4c078bd11c4a46c8cd198e9e7d6</srcmd5>
+    <version>2.0.8</version>
+    <time>1511517274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544853</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a888d7aeb53a09aeb801ccabc1ab782c</srcmd5>
+    <version>2.2.3</version>
+    <time>1527605607</time>
+    <user>dimstar_suse</user>
+    <comment>oidentd 2.2.3</comment>
+    <requestid>612847</requestid>
+  </revision>
+</revisionlist>

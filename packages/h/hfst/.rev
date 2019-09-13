@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b4c7bd1d948ff4cd3254c6417d5674c3</srcmd5>
+    <version>3.12.2</version>
+    <time>1497362868</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>491778</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1ece090f94652c6c960274bd43a136c6</srcmd5>
+    <version>3.12.2</version>
+    <time>1504617595</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc7.diff</comment>
+    <requestid>521031</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>82d01b08afbf741af637363f45053fba</srcmd5>
+    <version>3.15.0</version>
+    <time>1566551369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.15.0</comment>
+    <requestid>725398</requestid>
+  </revision>
+</revisionlist>

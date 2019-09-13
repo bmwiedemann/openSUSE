@@ -1,0 +1,6 @@
+<package name="libwnck" project="openSUSE:Factory">
+  <title>Window Navigator Construction Kit (Library Package)</title>
+  <description>The Window Navigator Construction Kit is a library that can be used to
+write task lists, pagers, and similar GNOME programs.</description>
+  <devel project="GNOME:Factory" package="libwnck"/>
+</package>

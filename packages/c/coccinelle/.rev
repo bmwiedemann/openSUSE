@@ -1,0 +1,199 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b306322219df58555bb096f9a9b98962</srcmd5>
+    <version>0.2.5</version>
+    <time>1296609781</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59367 from user jengelh
+</comment>
+    <requestid>59367</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ecbb872667814bf66a0ff6c1d251472</srcmd5>
+    <version>0.2.5</version>
+    <time>1296609793</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59367
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>0ecbb872667814bf66a0ff6c1d251472</srcmd5>
+    <version>0.2.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b62662cdcbaaf72fb723df0d102ce57</srcmd5>
+    <version>1.0.0</version>
+    <time>1316617083</time>
+    <user>saschpe</user>
+    <comment>Resubmit for #83954 after syncing comment headers.
+- Update to new upstream release 1.0.0
+*[...]see http://coccinelle.lip6.fr/distrib/changes.html for details</comment>
+    <requestid>84115</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4b62662cdcbaaf72fb723df0d102ce57</srcmd5>
+    <version>1.0.0</version>
+    <time>1319181817</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>dc74b78b58ed03f8ba5a324591f38621</srcmd5>
+    <version>1.0.0</version>
+    <time>1329391146</time>
+    <user>coolo</user>
+    <comment>- patch license to follow spdx.org standard</comment>
+    <requestid>105179</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>dc74b78b58ed03f8ba5a324591f38621</srcmd5>
+    <version>1.0.0</version>
+    <time>1340183242</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>ee53d6aa122354b354fe7d8ac256d336</srcmd5>
+    <version>1.0.0</version>
+    <time>1347618123</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134068</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>a159aeb6dbb4def0181fc53a9ea202da</srcmd5>
+    <version>1.0.0</version>
+    <time>1349944707</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137819</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>a159aeb6dbb4def0181fc53a9ea202da</srcmd5>
+    <version>1.0.0</version>
+    <time>1359108758</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>018440177207cfa9ca799fc4e6036f1e</srcmd5>
+    <version>1.0.0~rc17</version>
+    <time>1368449008</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.0.0~rc17</comment>
+    <requestid>174925</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>018440177207cfa9ca799fc4e6036f1e</srcmd5>
+    <version>1.0.0~rc17</version>
+    <time>1379662128</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>018440177207cfa9ca799fc4e6036f1e</srcmd5>
+    <version>1.0.0~rc17</version>
+    <time>1409300659</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3e36f798456b2a0eb503f42c62592203</srcmd5>
+    <version>1.0.0~rc21</version>
+    <time>1410528316</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.0.0~rc21</comment>
+    <requestid>248729</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8ad33a86ffb6f736ed2519f7cb8dcf76</srcmd5>
+    <version>1.0.0~rc22</version>
+    <time>1413048383</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>254876</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>16dc1ed4099867fac261ca1d48112547</srcmd5>
+    <version>1.0.0~rc22</version>
+    <time>1417160687</time>
+    <user>dimstar_suse</user>
+    <comment>fix spatch link. The target did not exist. (forwarded request 263223 from jirislaby)</comment>
+    <requestid>263229</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>aeec8201224ffb4e818e12ccc58a4b7e</srcmd5>
+    <version>1.0.0~rc24</version>
+    <time>1424622383</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286978</requestid>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>d044211d96c86856b96a339ea5541409</srcmd5>
+    <version>1.0.0</version>
+    <time>1430891372</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.0.0
+  * see changes.txt for full list of changes (forwarded request 305443 from pluskalm)</comment>
+    <requestid>305444</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bfec155121ca967c4211dea7cdc3fa1f</srcmd5>
+    <version>1.0.2</version>
+    <time>1440658556</time>
+    <user>coolo</user>
+    <comment>- Update to 1.0.2</comment>
+    <requestid>325459</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>233d8225068b3b7c1f8892a45d587c42</srcmd5>
+    <version>1.0.4</version>
+    <time>1450955774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.4</comment>
+    <requestid>348978</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>4e930bbb6a15e70c7558cb2860801e78</srcmd5>
+    <version>1.0.4</version>
+    <time>1470413766</time>
+    <user>dimstar_suse</user>
+    <comment>make the check script happy</comment>
+    <requestid>415235</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>179e5fe47dfd8451c2cdd9575c22ae33</srcmd5>
+    <version>1.0.6</version>
+    <time>1512547222</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>548610</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>8883100b3d97aa2ceb89ea3e0dc593e9</srcmd5>
+    <version>1.0.6</version>
+    <time>1516804360</time>
+    <user>dimstar_suse</user>
+    <comment>- Build under rpm 4.14</comment>
+    <requestid>568888</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>0bc8e4c05f323c5131ba91af2f0fb454</srcmd5>
+    <version>1.0.6</version>
+    <time>1565097074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721041</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fa79bf2727248581b808eb904fd20d75</srcmd5>
+    <version>1.0.7</version>
+    <time>1567168889</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>727033</requestid>
+  </revision>
+</revisionlist>

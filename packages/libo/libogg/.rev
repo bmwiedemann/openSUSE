@@ -1,0 +1,254 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>079d2d27e3339b66a0e82edd067abd8c</srcmd5>
+    <version>1.1.3</version>
+    <time>1168903357</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="43">
+    <srcmd5>63803e2a44e5afdf91b3c68d9556fa29</srcmd5>
+    <version>1.1.3</version>
+    <time>1176763070</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="84">
+    <srcmd5>c1adf66cd412537f87508d7f7802cbcc</srcmd5>
+    <version>1.1.3</version>
+    <time>1197573324</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="85">
+    <srcmd5>92455460ea4f868c7276f92152078319</srcmd5>
+    <version>1.1.3</version>
+    <time>1207830696</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="86">
+    <srcmd5>df16e06347bbe1ae0d6f12b26c60d52b</srcmd5>
+    <version>1.1.3</version>
+    <time>1210968999</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="88">
+    <srcmd5>df16e06347bbe1ae0d6f12b26c60d52b</srcmd5>
+    <version>1.1.3</version>
+    <time>1210968999</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="89">
+    <srcmd5>fc403ec534b7f8aad117003ad9eb665c</srcmd5>
+    <version>1.1.3</version>
+    <time>1231436552</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>193acab2d00d25d1534c90143ee685fb</srcmd5>
+    <version>1.1.4</version>
+    <time>1249574249</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>193acab2d00d25d1534c90143ee685fb</srcmd5>
+    <version>1.1.4</version>
+    <time>1249574249</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>6c83847748b8fcede207074c946421ee</srcmd5>
+    <version>1.1.4</version>
+    <time>1258365086</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libogg based on submit request 24114 from user tiwai
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>757b6c351b47d3d4e7beb9b8a5074a4a</srcmd5>
+    <version>1.1.4</version>
+    <time>1262129191</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libogg based on submit request 27744 from user tiwai
+</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>7aaacf8f291b6a1a4306de1cfccbe151</srcmd5>
+    <version>1.1.4</version>
+    <time>1268924664</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>7aaacf8f291b6a1a4306de1cfccbe151</srcmd5>
+    <version>1.1.4</version>
+    <time>1278667361</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>7aaacf8f291b6a1a4306de1cfccbe151</srcmd5>
+    <version>1.1.4</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>80584f243ed0c8e3fd7b97504fbc3850</srcmd5>
+    <version>1.2.1</version>
+    <time>1291814133</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55023 from user plater
+</comment>
+    <requestid>55023</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e4629e39166e6166240f122cc6322838</srcmd5>
+    <version>1.2.1</version>
+    <time>1291814212</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55023
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>be66ccc426b515f25d7de4856084f2d4</srcmd5>
+    <version>1.2.2</version>
+    <time>1295013100</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58116 from user coolo
+</comment>
+    <requestid>58116</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>98897404a79a0906c22f23cbafac1872</srcmd5>
+    <version>1.2.2</version>
+    <time>1295013115</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58116
+</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>98897404a79a0906c22f23cbafac1872</srcmd5>
+    <version>1.2.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>b55f077d5649ae940ac3ef75b8ad115e</srcmd5>
+    <version>1.2.2</version>
+    <time>1315762196</time>
+    <user>saschpe</user>
+    <comment>- replace _service with real file</comment>
+    <requestid>81702</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>5c15741769b1f043e16c9443d6070fda</srcmd5>
+    <version>1.2.2</version>
+    <time>1315762207</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81702
+</comment>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>5c15741769b1f043e16c9443d6070fda</srcmd5>
+    <version>1.2.2</version>
+    <time>1319182117</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4d8368a1fb7a617a76daa6761843a2ad</srcmd5>
+    <version>1.3.0</version>
+    <time>1321886834</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.3.0
+  * Add ogg_stream_flush_fill() call
+    This produces longer packets on flush, similar to
+    what ogg_stream_pageout_fill() does for single pages.
+- run spec-cleaner on it
+- remove &quot;SLES10 -&gt; SLES11 upgrade path&quot; parts since the upgrade
+  already happened and anyway the entry in bugzilla is not public (forwarded request 92758 from RedDwarf)</comment>
+    <requestid>92810</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>4b8cf58b33bdc2572aad30c5f540c707</srcmd5>
+    <version>1.3.0</version>
+    <time>1323192289</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>e926ea88daf74fba66b66a4b29b35725</srcmd5>
+    <version>1.3.0</version>
+    <time>1325007410</time>
+    <user>coolo</user>
+    <comment>- own aclocal directory
+
+- -O20 optimization level does not exist, use -O3</comment>
+    <requestid>98146</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>e926ea88daf74fba66b66a4b29b35725</srcmd5>
+    <version>1.3.0</version>
+    <time>1340183615</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>e926ea88daf74fba66b66a4b29b35725</srcmd5>
+    <version>1.3.0</version>
+    <time>1359109317</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>e926ea88daf74fba66b66a4b29b35725</srcmd5>
+    <version>1.3.0</version>
+    <time>1379663028</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>03ad762f188c4e533139ee12e1d2733c</srcmd5>
+    <version>1.3.1</version>
+    <time>1393342895</time>
+    <user>scarabeus_factory</user>
+    <comment>Xiph libogg 1.3.1 (forwarded request 223582 from AndreasStieger)</comment>
+    <requestid>223738</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>03ad762f188c4e533139ee12e1d2733c</srcmd5>
+    <version>1.3.1</version>
+    <time>1409301647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>42ec10b000e6b03a9c48bd702d128e0b</srcmd5>
+    <version>1.3.2</version>
+    <time>1424068578</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>285857</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>aae3efc8b2eff8336c9caa384e96fc85</srcmd5>
+    <version>1.3.2</version>
+    <time>1489653240</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478917</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5e3373b8678eac4de1f34fd89b940613</srcmd5>
+    <version>1.3.3</version>
+    <time>1522403895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591555</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>eb4f7383a4c54e0970343c44f867574c</srcmd5>
+    <version>1.3.4</version>
+    <time>1567852332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727572</requestid>
+  </revision>
+</revisionlist>

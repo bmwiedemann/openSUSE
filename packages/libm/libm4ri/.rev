@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8fd3b5e6ce0b20d84cafde71669cb18b</srcmd5>
+    <version>0.0.20120613</version>
+    <time>1354712163</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>143619</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8fd3b5e6ce0b20d84cafde71669cb18b</srcmd5>
+    <version>0.0.20120613</version>
+    <time>1359109301</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>8fd3b5e6ce0b20d84cafde71669cb18b</srcmd5>
+    <version>0.0.20120613</version>
+    <time>1379662999</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6844cf2e101f22dc8de1a9fcde1c872a</srcmd5>
+    <version>0~20130416</version>
+    <time>1391613673</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 20130416</comment>
+    <requestid>220919</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>06776d9127b306281b55321331a9fcdf</srcmd5>
+    <version>0~20130416</version>
+    <time>1393936985</time>
+    <user>coolo</user>
+    <comment>- Package description update</comment>
+    <requestid>224549</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>06776d9127b306281b55321331a9fcdf</srcmd5>
+    <version>0~20130416</version>
+    <time>1409301614</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9d4d780220042c81f1ac8c04b61fde48</srcmd5>
+    <version>0~20140914</version>
+    <time>1413263442</time>
+    <user>coolo</user>
+    <comment>- Update to new upstrea mrelease 20140914</comment>
+    <requestid>255156</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3adc9466823bd8cfa4820b94d229f6e2</srcmd5>
+    <version>0~20140914</version>
+    <time>1447696301</time>
+    <user>dimstar_suse</user>
+    <comment>- Update with new homepage URLs and in-spec comment updates.</comment>
+    <requestid>344372</requestid>
+  </revision>
+</revisionlist>

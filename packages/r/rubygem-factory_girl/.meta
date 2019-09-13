@@ -1,0 +1,8 @@
+<package name="rubygem-factory_girl" project="openSUSE:Factory">
+  <title>factory_girl provides a framework and DSL for defining and using model instance factories</title>
+  <description>factory_girl provides a framework and DSL for defining and using factories - less error-prone, more explicit, and all-around easier to work with than fixtures.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-factory_girl"/>
+  <url>http://thoughtbot.com/projects/factory_girl</url>
+</package>

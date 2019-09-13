@@ -1,0 +1,196 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1291382614af28bf70a6913e634c1e7a</srcmd5>
+    <version>1.0.1</version>
+    <time>1288974622</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52237 from user hennevogel
+</comment>
+    <requestid>52237</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>26de98eb72fb34860402ff72bd79e0a0</srcmd5>
+    <version>1.0.1</version>
+    <time>1288974627</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52237
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>517cab35e7595c0567bb6d6005828752</srcmd5>
+    <version>1.1</version>
+    <time>1290099672</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53348 from user hennevogel
+</comment>
+    <requestid>53348</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7aa9cdf581b0631bba5327e1dd8dbd24</srcmd5>
+    <version>1.1</version>
+    <time>1290099680</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53348
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7aa9cdf581b0631bba5327e1dd8dbd24</srcmd5>
+    <version>1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>6809e6b6c693d6de28f9d21d4234efe7</srcmd5>
+    <version>1.1</version>
+    <time>1301579741</time>
+    <user>darix</user>
+    <comment>Accepted submit request 65616 from user coolo
+</comment>
+    <requestid>65616</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>9b46552ccec114e6f04b0d3ab00f4cff</srcmd5>
+    <version>1.1</version>
+    <time>1301579751</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 65616
+</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>9b46552ccec114e6f04b0d3ab00f4cff</srcmd5>
+    <version>1.1</version>
+    <time>1319182405</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>45d01378b1f4a72836eda6aebe759735</srcmd5>
+    <version>1.1.3</version>
+    <time>1327087516</time>
+    <user>coolo</user>
+    <comment>- Update to v1.1.3
+  * Don't clobber environ if the variable SPT_NOENV is set
+  * Fixed segfault when the module is imported under vim (bnc#739242)
+
+- Provide python3 spec file
+
+
+- Update to v1.1.3
+  * Don't clobber environ if the variable SPT_NOENV is set
+  * Fixed segfault when the module is imported under vim (bnc#739242)
+
+- Provide python3 spec file
+
+- Spec file cleanup:
+  * changed license to BSD3c
+  * packaded documentation files
+  * fixed build non-SUSE distros
+
+- Update to version 1.1
+  * add support python3
+
+- Initial package, Version 1.0.1</comment>
+    <requestid>99880</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>45d01378b1f4a72836eda6aebe759735</srcmd5>
+    <version>1.1.3</version>
+    <time>1340184091</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>4e20b46be745ddefce068836a5675cdf</srcmd5>
+    <version>1.1.3</version>
+    <time>1340726568</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126152</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>57e6197f64f5ca9bba020e9ac26cd957</srcmd5>
+    <version>1.1.6</version>
+    <time>1348148700</time>
+    <user>coolo</user>
+    <comment>Update to 1.1.6, simplify %build section, fix %files section. (forwarded request 133716 from poorboywilly)</comment>
+    <requestid>134633</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>864303aaad29f84e6e05447654e84192</srcmd5>
+    <version>1.1.6</version>
+    <time>1358016434</time>
+    <user>namtrac</user>
+    <comment>- Fix typo in Requires line (p3_ver -&gt; py3_ver)</comment>
+    <requestid>148173</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>864303aaad29f84e6e05447654e84192</srcmd5>
+    <version>1.1.6</version>
+    <time>1359110121</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>4a423cec8ec70b820254bc2d7079ae0c</srcmd5>
+    <version>1.1.6</version>
+    <time>1362745841</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157737</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>8364f8ed5ae8c2ad4ac401a5bf61f4ab</srcmd5>
+    <version>1.1.6</version>
+    <time>1371650082</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>180003</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9c223d3918042d93823476b7a88546bd</srcmd5>
+    <version>1.1.7</version>
+    <time>1379342130</time>
+    <user>coolo</user>
+    <comment>Update to 1.1.7 (forwarded request 199064 from poorboywilly)</comment>
+    <requestid>199190</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>9c223d3918042d93823476b7a88546bd</srcmd5>
+    <version>1.1.7</version>
+    <time>1379664281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bd9c9260cd51e8bcde7ff32c941779ba</srcmd5>
+    <version>1.1.8</version>
+    <time>1385562733</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208595</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>bd9c9260cd51e8bcde7ff32c941779ba</srcmd5>
+    <version>1.1.8</version>
+    <time>1409302989</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>54695a89358c00d1adb9b59f41626411</srcmd5>
+    <version>1.1.10</version>
+    <time>1501840727</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>508801</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>a7687ba521926c57ffac9037bbac552d</srcmd5>
+    <version>1.1.10</version>
+    <time>1551687858</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests and add skip-failing-tests.patch to skip failing tests
+  (gh#dvarrazzo/py-setproctitle#60)</comment>
+    <requestid>681144</requestid>
+  </revision>
+</revisionlist>

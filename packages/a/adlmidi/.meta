@@ -1,0 +1,5 @@
+<package name="adlmidi" project="openSUSE:Factory">
+  <title>adlmidi</title>
+  <description></description>
+  <devel project="multimedia:apps" package="adlmidi"/>
+</package>

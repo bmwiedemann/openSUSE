@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5b1a55f771240050f77245b57d85a7cd</srcmd5>
+    <version>1.0.0</version>
+    <time>1493819733</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>489593</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bb1461cbaea45ac9a81346a11974f972</srcmd5>
+    <version>1.0.0</version>
+    <time>1504521374</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520370</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5c5b789c62042bc3d591cb648a297f52</srcmd5>
+    <version>1.1.0</version>
+    <time>1527583322</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Fix-compile-on-32bit.patch to make it build on 32bit
+  (kde#394330)
+- Don't install office-chart-area icon from breeze to hicolor
+  anymore, heaptrack comes with its own application icon now
+- Mark license files as %license instead of %doc
+- Install README.md as well, it contains instructions on how to use
+  it
+
+- Update to version 1.1.0:
+  * Stability and performance improvements
+  * When extended debug information is available, stack traces now include inlined frames.
+  * Split debug information in separate files is now supported.
+  * Compressed debug information is properly handled.
+  * The embedded flamegraph view is now searchable.
+  * More details available on https://www.kdab.com/heaptrack-v1-1-0-release/
+- Remove patches, now upstream:
+  * fix-build.patch</comment>
+    <requestid>611714</requestid>
+  </revision>
+</revisionlist>

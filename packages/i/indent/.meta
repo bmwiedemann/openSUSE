@@ -1,0 +1,8 @@
+<package name="indent" project="openSUSE:Factory">
+  <title>Indent Formats C Source Code</title>
+  <description>indent can be used to make code easier to read. It can also convert
+from one style of writing C code to another. indent understands a
+substantial amount of C syntax, but it also tries to cope with
+incomplete and malformed syntax.</description>
+  <devel project="devel:tools" package="indent"/>
+</package>

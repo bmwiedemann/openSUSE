@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>94873b07ca4744d782eea36c8b231962</srcmd5>
+    <version>0.2.2</version>
+    <time>1503592686</time>
+    <user>dimstar_suse</user>
+    <comment>new package xorgxrdp, the Xorg drivers for xrdp</comment>
+    <requestid>510033</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4d67926997bc9e6a539373cfda879eab</srcmd5>
+    <version>0.2.3</version>
+    <time>1504617388</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520593</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b7c2f7a616c22cff867b8670bdb626d3</srcmd5>
+    <version>0.2.4</version>
+    <time>1507065464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530424</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9ca2cf77dce8fbca70ab77ea11fe5519</srcmd5>
+    <version>0.2.5</version>
+    <time>1515506001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562292</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c8a2f497de83f56d55a236420cfd44cc</srcmd5>
+    <version>0.2.5</version>
+    <time>1517516980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571627</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7a2eb8e6f0a4ddbc8ea11ee7bac6934f</srcmd5>
+    <version>0.2.6</version>
+    <time>1523956775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597311</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>58ce8a4cfe1f2d64a4acb0b85a98af37</srcmd5>
+    <version>0.2.7</version>
+    <time>1530653689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620400</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1dab2c5f0a2e1d49f23dba23d4ff97c0</srcmd5>
+    <version>0.2.7</version>
+    <time>1533549293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627610</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>672f3c3defec6419e6f1245f21eab2f8</srcmd5>
+    <version>0.2.8</version>
+    <time>1537787575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637022</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d65792cbcce62b8e58efe548e11bebcf</srcmd5>
+    <version>0.2.9</version>
+    <time>1545376952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660283</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>feca99bb54eef5838434f3b6dba26dc8</srcmd5>
+    <version>0.2.9</version>
+    <time>1556817412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699566</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2669d3a97dc0b038476ef076ee09304b</srcmd5>
+    <version>0.2.10</version>
+    <time>1560459983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709675</requestid>
+  </revision>
+</revisionlist>

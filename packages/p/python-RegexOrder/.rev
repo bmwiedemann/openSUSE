@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3046727996b81010fcdde020477fa7d8</srcmd5>
+    <version>0.2</version>
+    <time>1530866438</time>
+    <user>dimstar_suse</user>
+    <comment>needed by python-extratools</comment>
+    <requestid>620103</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7f82965379908f6be62ee837f24c870f</srcmd5>
+    <version>0.2</version>
+    <time>1532774665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625729</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>287d2725516110865b20d8568d5acb9b</srcmd5>
+    <version>0.2</version>
+    <time>1535705115</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not require devel package
+- Require python 3.6 or newer (print syntax)</comment>
+    <requestid>632119</requestid>
+  </revision>
+</revisionlist>

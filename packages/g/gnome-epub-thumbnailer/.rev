@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a025cc2665b8321d48132a0ce471cd52</srcmd5>
+    <version>1.3</version>
+    <time>1377629248</time>
+    <user>coolo</user>
+    <comment>New package; used by nautilus for thumbnailing</comment>
+    <requestid>196318</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a025cc2665b8321d48132a0ce471cd52</srcmd5>
+    <version>1.3</version>
+    <time>1379662485</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>46a3223d6d9890d2ce36a9a30059666e</srcmd5>
+    <version>1.4</version>
+    <time>1396008916</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.4:
+  + Create covers for encrypted MOBI files as well.
+  + Fix crash when there's no cover in MOBI files.
+  + Fix crash when the EPub cover cannot be found.
+  + Print warnings when we cannot find the metafile, or when
+    reading empty EPub files.
+  + Fix crash handling files in trash or recent locations. (forwarded request 227646 from Zaitor)</comment>
+    <requestid>228056</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>46a3223d6d9890d2ce36a9a30059666e</srcmd5>
+    <version>1.4</version>
+    <time>1409301021</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f80e5f5949a3df87eff4688493f2c80a</srcmd5>
+    <version>1.5</version>
+    <time>1421959750</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282272</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4847cea4b5052c955c9d39a3ec25fb18</srcmd5>
+    <version>1.5</version>
+    <time>1520329641</time>
+    <user>dimstar_suse</user>
+    <comment>Resub, even if I disagree that keeping it building for stable version is fruitful as long as the same version is in those releases already. (forwarded request 581955 from iznogood)</comment>
+    <requestid>582656</requestid>
+  </revision>
+</revisionlist>

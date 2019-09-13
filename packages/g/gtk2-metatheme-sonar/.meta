@@ -1,0 +1,5 @@
+<package name="gtk2-metatheme-sonar" project="openSUSE:Factory">
+  <title>GTK+ and Metacity Sonar Theme</title>
+  <description>GTK+ and Metacity theme created for openSUSE 11.2.</description>
+  <devel project="GNOME:Factory" package="gtk2-metatheme-sonar"/>
+</package>

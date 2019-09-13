@@ -1,0 +1,13 @@
+<package name="php7-pear-Net_SMTP" project="openSUSE:Factory">
+  <title>An implementation of the SMTP protocol</title>
+  <description>Provides an implementation of the SMTP protocol using PEAR's Net_Socket class.
+
+  Author:
+
+    * Chuck Hagenbuch [Wishlist] (lead)
+    * Jon Parise [Wishlist] (lead)
+
+
+</description>
+  <devel project="server:php:applications" package="php7-pear-Net_SMTP"/>
+</package>

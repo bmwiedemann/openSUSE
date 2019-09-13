@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>068d2862fb8ce04a809500abc9b429f3</srcmd5>
+    <version>1.6.4</version>
+    <time>1407912505</time>
+    <user>lnussel</user>
+    <comment>Update to version in SLE12</comment>
+    <requestid>239582</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>068d2862fb8ce04a809500abc9b429f3</srcmd5>
+    <version>1.6.4</version>
+    <time>1409301227</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b3a4e333a586da2009529310958b2cee</srcmd5>
+    <version>1.6.4</version>
+    <time>1424117682</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286116</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9653f413a35a587fe2947f72a43141e9</srcmd5>
+    <version>1.6.6</version>
+    <time>1446989760</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342334</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cc18b0984eb566afd8549632a3e5cedb</srcmd5>
+    <version>1.6.7</version>
+    <time>1495133092</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove rdma-ndd now provided by the rdma-core package (bsc#1039146).
+
+- Update to version 1.6.7 (fate#321867)
+  * No short changelog available; please read the ChangeLog file
+- Use packaged rdma-ndd service file
+- Unify spec and patches with SLE12</comment>
+    <requestid>495521</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>285f26a72c8ef95b97cb5ae9f72d8dad</srcmd5>
+    <version>2.0.0</version>
+    <time>1498120476</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 2.0.0 (fate#323533)
+  * No short changelog available; please read the ChangeLog file
+- rdma-ndd was removed from infiniband-diags (now in rdma-core)
+- libibmad is now part of infiniband-diags
+- Remove obsolete infiniband-diags-rpmlintrc
+- Add _service to fetch from upstream repo
+- Add baselibs.conf for libibnetdisc and libibmad</comment>
+    <requestid>504261</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>48e615fe1d445c1088b0d445b234cd92</srcmd5>
+    <version>2.0.0</version>
+    <time>1499162037</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>507147</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7fdd7d37c13393816f086688904414eb</srcmd5>
+    <version>2.0.0</version>
+    <time>1504896019</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521521</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d53ae09de41569c691e1c2bba54bab9f</srcmd5>
+    <version>2.1.0</version>
+    <time>1533887017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628000</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3919bf046f9428f497eaf84dab85c6fe</srcmd5>
+    <version>2.1.0</version>
+    <time>1555053047</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license for license files</comment>
+    <requestid>692503</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b0df5efc2255f6bd26057e31ab151e25</srcmd5>
+    <version>2.2.0</version>
+    <time>1558426874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702592</requestid>
+  </revision>
+</revisionlist>

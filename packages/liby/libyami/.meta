@@ -1,0 +1,5 @@
+<package name="libyami" project="openSUSE:Factory">
+  <title>libyami</title>
+  <description>Yet Another Media Infrastructure: Intel VA-API Media codec interface to hardware acceleration</description>
+  <devel project="multimedia:libs" package="libyami"/>
+</package>

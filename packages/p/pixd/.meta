@@ -1,0 +1,10 @@
+<package name="pixd" project="openSUSE:Factory">
+  <title>Colourful visualization tool for binary files</title>
+  <description>pixd is a tool for visualizing binary data using a colour palette.
+It is in a lot of ways akin to a hexdump tool, except using coloured
+squares to represent each octet.
+
+</description>
+  <devel project="devel:tools" package="pixd"/>
+  <url>https://github.com/FireyFly/pixd.git</url>
+</package>

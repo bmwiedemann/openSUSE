@@ -1,0 +1,12 @@
+<package name="perl-Iterator-Util" project="openSUSE:Factory">
+  <title>Essential utilities for the Iterator class</title>
+  <description>This module implements many useful functions for creating and manipulating
+iterator objects.
+
+An &quot;iterator&quot; is an object, represented as a code block that generates the
+&quot;next value&quot; of a sequence, and generally implemented as a closure. For
+further information, including a tutorial on using iterator objects, see
+the the Iterator manpage documentation.</description>
+  <devel project="devel:languages:perl" package="perl-Iterator-Util"/>
+  <url>http://search.cpan.org/dist/Iterator-Util/</url>
+</package>

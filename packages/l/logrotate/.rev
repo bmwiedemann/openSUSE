@@ -1,0 +1,569 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>1eac4beb7f04c53c8b9011156dd831a7</srcmd5>
+    <version>3.7.4</version>
+    <time>1168903449</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4e5252532c6419c79fae858017173517</srcmd5>
+    <version>3.7.5</version>
+    <time>1187281165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="12">
+    <srcmd5>0546f825c18f2dd3b1911744f46cb42d</srcmd5>
+    <version>3.7.5</version>
+    <time>1193852061</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="28">
+    <srcmd5>929547c12095b8d733458619f2618b06</srcmd5>
+    <version>3.7.5</version>
+    <time>1201823145</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="62">
+    <srcmd5>5dac32516357c4538c1f1f4b260b39e2</srcmd5>
+    <version>3.7.5</version>
+    <time>1218754689</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="67">
+    <srcmd5>7a79c50127abab670dcb8ab5c93b4eb9</srcmd5>
+    <version>3.7.5</version>
+    <time>1219358507</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="70">
+    <srcmd5>6014a739a00fe156f1d0d3ff9f4d9e62</srcmd5>
+    <version>3.7.5</version>
+    <time>1219709685</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d132410ded8022fa63bb674257dc20ea</srcmd5>
+    <version>3.7.7</version>
+    <time>1220652500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>7ccae80db214d24dd50bcdaadbbe73d6</srcmd5>
+    <version>3.7.7</version>
+    <time>1223310499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>a0352bf6ecd3335f591b00c7ce615c93</srcmd5>
+    <version>3.7.7</version>
+    <time>1224692508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>f1c3729429ff4067bf701e0c06430dad</srcmd5>
+    <version>3.7.7</version>
+    <time>1229349318</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>daa2e0805e082c6ee1b2de2ab64385e8</srcmd5>
+    <version>3.7.8</version>
+    <time>1236554757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>daa2e0805e082c6ee1b2de2ab64385e8</srcmd5>
+    <version>3.7.8</version>
+    <time>1236554757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>add2b5ee68dadf990c4556e235aca1be</srcmd5>
+    <version>3.7.8</version>
+    <time>1263483126</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/logrotate based on submit request 29004 from user coolo
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>a5441a1900326efde671815ebf4dd390</srcmd5>
+    <version>3.7.8</version>
+    <time>1268924847</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>a5441a1900326efde671815ebf4dd390</srcmd5>
+    <version>3.7.8</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>a5441a1900326efde671815ebf4dd390</srcmd5>
+    <version>3.7.8</version>
+    <time>1278678594</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9139d6363fc3f3ef588a77942a716a24</srcmd5>
+    <version>3.7.9</version>
+    <time>1282664695</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/logrotate based on submit request 45720 from user puzel
+</comment>
+    <requestid>45720</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>985e7b6ee1791e9085385d38a86f9d10</srcmd5>
+    <version>3.7.9</version>
+    <time>1284751524</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/logrotate based on submit request 48132 from user puzel
+</comment>
+    <requestid>48132</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>a238a546ac840da3bede144c43851292</srcmd5>
+    <version>3.7.9</version>
+    <time>1290093241</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53330 from user elvigia
+</comment>
+    <requestid>53330</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>e9555bb98e3bed62ea31ca337a513ec9</srcmd5>
+    <version>3.7.9</version>
+    <time>1290093246</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53330
+</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>e9555bb98e3bed62ea31ca337a513ec9</srcmd5>
+    <version>3.7.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>f6a8015475cca22f5640d00e28276dc3</srcmd5>
+    <version>3.7.9</version>
+    <time>1305791166</time>
+    <user>saschpe</user>
+    <comment>- add logrotate-CVE-2011-1098.patch (bnc#677336)
+- add logrotate-shred-CVE-2011-1154.patch (bnc#679661)
+- add logrotate-CVE-2011-1155.patch (bnc#679662) (forwarded request 70307 from puzel)</comment>
+    <requestid>70590</requestid>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>482b6717cb94b610f41e40bd50c3ac9f</srcmd5>
+    <version>3.7.9</version>
+    <time>1305791177</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70590
+</comment>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>b15f038ad6a71165ef8038a933f0f6fe</srcmd5>
+    <version>3.7.9</version>
+    <time>1313394071</time>
+    <user>saschpe</user>
+    <comment>- Change compression scheme to xz. This should give smaller resulting filesizes. (forwarded request 78660 from jengelh)</comment>
+    <requestid>78690</requestid>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>bd2752feba3bd8fdc9c3c2c8db3423c1</srcmd5>
+    <version>3.7.9</version>
+    <time>1313394079</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78690
+</comment>
+  </revision>
+  <revision rev="27" vrev="12">
+    <srcmd5>4d03985927b836bef0edac1847cddfd9</srcmd5>
+    <version>3.7.9</version>
+    <time>1315410927</time>
+    <user>saschpe</user>
+    <comment>- allow whitespace separated options in compressoptions (bnc#711780) (forwarded request 81344 from vitezslav_cizek)</comment>
+    <requestid>81349</requestid>
+  </revision>
+  <revision rev="28" vrev="13">
+    <srcmd5>294c30561aec7e7f9d8600fea251a65e</srcmd5>
+    <version>3.7.9</version>
+    <time>1315410932</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81349
+</comment>
+  </revision>
+  <revision rev="29" vrev="12">
+    <srcmd5>2e03ac18237c20cda1ea87942eec7e8a</srcmd5>
+    <version>3.8.1</version>
+    <time>1315910273</time>
+    <user>saschpe</user>
+    <comment>- update to 3.8.1
+- dropped CVE patches as they were merged to upstream
+- changelog
+  - fixed 1 memory leak in prerotateSingleLog
+  - do not redirect logrotate errors to /dev/null in cron script
+  - fixed &quot;size&quot; directive parsing
+  - handle situation when acl_get_fd is supported, but acl_set_fd is not
+  - added &quot;maxsize&quot; directive (see man page)
+  - added &quot;dateyesterday&quot; option (see man page)
+  - fixed crash when config file had exactly 4096*N bytes
+  - added WITH_ACL make option to link against -lacl and preserve ACLs
+    during rotation
+  - added &quot;su&quot; option to define user/group for rotation. Logrotate now
+    skips directories which are world writable or writable by group
+    which is not &quot;root&quot; unless &quot;su&quot; directive is used.
+  - fixed CVE-2011-1098: race condition by creation of new files
+  - fixed possible shell injection when using &quot;shred&quot; directive (CVE-2011-1154)
+  - fixed escaping of file names within 'write state' action (CVE-2011-1155)
+  - better 'size' directive description
+  - fixed possible buffer-overflow when reading config files (forwarded request 81574 from vitezslav_cizek)</comment>
+    <requestid>81985</requestid>
+  </revision>
+  <revision rev="30" vrev="13">
+    <srcmd5>f7752aa5422d705a6c34c31653923f40</srcmd5>
+    <version>3.8.1</version>
+    <time>1315910278</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81985
+</comment>
+  </revision>
+  <revision rev="31" vrev="14">
+    <srcmd5>f502cd398e0cbaf1a42d7a9d18395f6e</srcmd5>
+    <version>3.8.1</version>
+    <time>1317744805</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86412 from uli_suse)</comment>
+    <requestid>86421</requestid>
+  </revision>
+  <revision rev="32" vrev="16">
+    <srcmd5>f502cd398e0cbaf1a42d7a9d18395f6e</srcmd5>
+    <version>3.8.1</version>
+    <time>1319182158</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="33" vrev="17">
+    <srcmd5>f19554afd56b2c3919c749749853d350</srcmd5>
+    <version>3.8.1</version>
+    <time>1323192432</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="34" vrev="19">
+    <srcmd5>f19554afd56b2c3919c749749853d350</srcmd5>
+    <version>3.8.1</version>
+    <time>1340183672</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="35" vrev="21">
+    <srcmd5>f19554afd56b2c3919c749749853d350</srcmd5>
+    <version>3.8.1</version>
+    <time>1359109407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="22">
+    <srcmd5>41db772040067d47fb8abe1342e43ba0</srcmd5>
+    <version>3.8.1</version>
+    <time>1366232770</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 171009 from m_meister)</comment>
+    <requestid>171244</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7b057dee9c7f6848a288c6c226e895af</srcmd5>
+    <version>3.8.5</version>
+    <time>1374932879</time>
+    <user>coolo</user>
+    <comment>- update to 3.8.5
+  * dropped logrotate-3.7.9-compressoptions.patch (upstream)
+  * refreshed other patches
+  Changelog:
+  - Improved rotation during daylight saving time and between timezone
+    changes.
+  - Fixed ACL setting problem caused by ext3 erroneously reporting ENOSYS
+    instead of ENOSUP.
+  - Do not continue with rotation if state file is corrupted.
+  - Make logrotate.status creation atomic.
+  - Allow &quot;hourly&quot; rotation. See manpage for more information.
+  - Use &quot;/bin/echo&quot; in tests. Fixes tests execution in Dash.
+  - Do no try to parse config files bigger than 16MB.
+  - Improved manpage consistency and formatting.
+  - Fix race condition between acl_set_fd() and fchmod().
+  - Added --version command line option
+  - Disable ACL tests if logrotate is not compiled WITH_ACL support or if 
+    ACLs are not supported by the system running tests
+  - Disable SELinux tests if logrotate is not compiled WITH_SELINUX support
+    or if SELinux is not supported by the system running tests
+  - Fixed bug which prevented skipping particular log file config
+    if the config contained errors.
+  - Fixed skipping of configs containing firstaction/lastaction scripts
+    with '}' character in case of error before these scripts.
+  - Support also 'K' unit for *size directives.
+  - Added preremove option to let admin to do something with the old logs
+    before they are removed by logrotate.
+  - Fixed possible loop in tabooext parsing.
+  - Move code to set SELinux context before compressLogFile calls to create
+    compressed log files with the proper context. (forwarded request 184333 from vitezslav_cizek)</comment>
+    <requestid>184344</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>653ac879aee6f89a39ff88bee6a568c1</srcmd5>
+    <version>3.8.5</version>
+    <time>1375628204</time>
+    <user>coolo</user>
+    <comment>- mention in the manpage that = is an allowed separator in the
+  config file (bnc#831072)
+  * added logrotate-manpage_config_clarification.patch (forwarded request 185585 from vitezslav_cizek)</comment>
+    <requestid>185648</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>b16e3b20b63af7acb62fe78b0d8c716e</srcmd5>
+    <version>3.8.5</version>
+    <time>1377332065</time>
+    <user>scarabeus_factory</user>
+    <comment>- install COPYING file (bnc#817870) (forwarded request 195700 from vitezslav_cizek)</comment>
+    <requestid>196105</requestid>
+  </revision>
+  <revision rev="40" vrev="5">
+    <srcmd5>b16e3b20b63af7acb62fe78b0d8c716e</srcmd5>
+    <version>3.8.5</version>
+    <time>1379663188</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f970c3b69fd470c9ed21b6861c2a03ef</srcmd5>
+    <version>3.8.7</version>
+    <time>1384246240</time>
+    <user>coolo</user>
+    <comment>- update to 3.8.7, fix bnc#849436
+- Changelog 3.8.7:
+  * Fixed --force/-f option handling together with &quot;size&quot; directive
+    (3.8.5 regression).
+  * Use &quot;logrotate_tmp_t&quot; context for SELinux tests and if this
+    context does not exist, skip SELinux related tests.
+- Changelog 3.8.6
+  * Fixed memory corruption caused by rotation directory which
+    does not exist with &quot;sharedscripts&quot; together with &quot;prerotate&quot;
+    script. (forwarded request 206232 from vitezslav_cizek)</comment>
+    <requestid>206478</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>ab08943255aa82b71ebf0382c9894e6f</srcmd5>
+    <version>3.8.7</version>
+    <time>1384422030</time>
+    <user>scarabeus_factory</user>
+    <comment>- enable acl support to preserve ACLs during rotation (forwarded request 206599 from rudi_m)</comment>
+    <requestid>206708</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>463e933b1806f9dff50113f703563d3c</srcmd5>
+    <version>3.8.7</version>
+    <time>1396621925</time>
+    <user>coolo</user>
+    <comment>- BuildRequire systemd 197 or later.
+
+- Migrate from cron to systemd timer units, this is overall 
+  the most important package to migrate since it is one 
+  of the very few base components that hard-require cron. (forwarded request 228893 from elvigia)</comment>
+    <requestid>228906</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>4613b3a69d9d68f706c06c0a3a36b2a0</srcmd5>
+    <version>3.8.7</version>
+    <time>1396709268</time>
+    <user>coolo</user>
+    <comment>- Also, avoid logrotate unit activation when the system is 
+  on battery power. (forwarded request 228918 from elvigia)</comment>
+    <requestid>229041</requestid>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>c821fc601a46cea5639b21901b56ba12</srcmd5>
+    <version>3.8.7</version>
+    <time>1404972992</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239268</requestid>
+  </revision>
+  <revision rev="46" vrev="7">
+    <srcmd5>c821fc601a46cea5639b21901b56ba12</srcmd5>
+    <version>3.8.7</version>
+    <time>1409301815</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f43dc714fa20a19b14384a98488c1b08</srcmd5>
+    <version>3.8.9</version>
+    <time>1424622029</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286942</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>2d0eef124c842628c5fa94aededf5989</srcmd5>
+    <version>3.8.9</version>
+    <time>1432305151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308146</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>05fb954fffb9115533a21e210064be41</srcmd5>
+    <version>3.9.1</version>
+    <time>1436111852</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>313101</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8f27da59e40195a06df143d7a0623a6e</srcmd5>
+    <version>3.10.0</version>
+    <time>1476997514</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434552</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>676caf78bcca3d8d2a65fc440c0aced8</srcmd5>
+    <version>3.10.0</version>
+    <time>1479502739</time>
+    <user>dimstar_suse</user>
+    <comment>- Move logrotate.status to /var/lib/misc following FHS/LSB and
+  making implementing read-only root filesystem much easier.
+  [FATE#322036]
+- Add patch:
+  * logrotate-var-lib-misc.patch</comment>
+    <requestid>440634</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>ef107b8b5fa2b6c94c02526e504d2dda</srcmd5>
+    <version>3.10.0</version>
+    <time>1479904529</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix post scriptlet condition bnc#1011120</comment>
+    <requestid>441184</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>244310f08912c6027e67af26b66d34b9</srcmd5>
+    <version>3.10.0</version>
+    <time>1480692981</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 3.10.0 fate#322037:</comment>
+    <requestid>441975</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>8f4bcdaf4d6288f39ae63e151a229e27</srcmd5>
+    <version>3.11.0</version>
+    <time>1483554469</time>
+    <user>lnussel_factory</user>
+    <comment>- Remove all patches merged upstream:
+  * logrotate-addextension.patch
+  * logrotate-autoext.patch
+  * logrotate-conf.patch
+  * logrotate-fix-test62_with_bash-4.4.patch
+  * logrotate-manpage_config_clarification.patch
+  * logrotate-var-lib-misc.patch
+  * logrotate-3.7.8-suse.patch</comment>
+    <requestid>447969</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>f53195b1b023a46c20cd7155578ddd0f</srcmd5>
+    <version>3.11.0</version>
+    <time>1484040947</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 3.11.0:
+  * Merges from distribution patchsets and small fixes around</comment>
+    <requestid>448869</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>42c66abe6f382d362709a090044a8069</srcmd5>
+    <version>3.12.3</version>
+    <time>1499880634</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 3.12.3:
+  * Fixed accident removal of rotated files with dateext. (#118)
+  * Line comments inside globs in config files are now skipped. (#109)
+  * logrotate now recovers from a corrupted state file. (#45)
+  * createolddir now creates old directory as unprivileged user. (#114)
+  * weekly rotations are now predictable and configurable. (#93)
+  * Errors in config files are no longer treated as fatal errors. (#81)
+  * configure --with-default-mail-command specifies default mail command. (#100)
+  * Fixed heap buffer overflow when parsing crafted config file. (#33)
+  * build fixes related to -Werror (#119) and -Werror=format= (#108)
+  * configure --enable-werror now controls use of the -Werror flag (#123)
+  * copy and copytruncate directives now work together again
+  * unlink() is no longer preceded by open() unless shred is enabled (#124)
+  * compress and uncompress now take commands from $PATH, too (#122)
+- By default disable werror while building
+
+- Remove aaa_base compat setting that is from 2003, we do not
+  support such migration anymore</comment>
+    <requestid>508717</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>a10d867d67ff50cb2108c1d231324701</srcmd5>
+    <version>3.13.0</version>
+    <time>1516091096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562152</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>75f94f042ee1879c886f6aeb39daaf15</srcmd5>
+    <version>3.13.0</version>
+    <time>1522934941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593192</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>7280071f9081b10e8eca9f29626d09be</srcmd5>
+    <version>3.13.0</version>
+    <time>1529665879</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614893</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>99ece8146eb337d68dc68499b1bc429a</srcmd5>
+    <version>3.14.0</version>
+    <time>1537436425</time>
+    <user>maxlin_factory</user>
+    <comment>- Rebase the logrotate-3.13.0-systemd_add_home_env.patch to be
+  unified patch again
+
+- Use noun phrase. Trim filler wording from description.
+  Add a note that it is unrelated to journald.
+
+- Version update to 3.14.0:
+  * make configure show support status for SELinux and ACL at the end
+  * make logrotate build again on FreeBSD
+  * move wtmp and btmp definitions from logrotate.conf to
+    separate configuration files in logrotate.d
+  * print a warning about logrotate doing nothing when -d is used
+  * do not reject executable config files
+  * add hardening options to logrotate.service in examples
+  * fix spurious compressor failure when using su and compress
+  * keep logrotate version in .tarball-version in release tarballs
+  * introduce the hourago configuration directive
+  * ignore empty patterns in tabooext to avoid exclusion of everything
+  * properly report skipped test cases instead of pretending success</comment>
+    <requestid>635479</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>12adc11caeb0a34d5325b582cf701f0e</srcmd5>
+    <version>3.15.0</version>
+    <time>1554833797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691700</requestid>
+  </revision>
+</revisionlist>

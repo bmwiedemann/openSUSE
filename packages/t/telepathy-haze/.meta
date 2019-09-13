@@ -1,0 +1,6 @@
+<package name="telepathy-haze" project="openSUSE:Factory">
+  <title>A libpurple connection manager for Telepathy</title>
+  <description>A connection manager for Telepathy that provides support for AIM, ICQ,
+MSN, Yahoo! and Groupwise using Pidgin's libpurple.</description>
+  <devel project="GNOME:Factory" package="telepathy-haze"/>
+</package>

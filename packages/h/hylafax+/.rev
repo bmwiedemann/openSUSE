@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9c2bdc314305f022da3a3a995328079</srcmd5>
+    <version>5.5.5</version>
+    <time>1416048070</time>
+    <user>dimstar_suse</user>
+    <comment>Rename README.SuSE plus other suggested changes</comment>
+    <requestid>260045</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2fce2e5ecf4f7bd349128a7e63497bd4</srcmd5>
+    <version>5.5.5</version>
+    <time>1416994391</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>262818</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e9294d1fc78e77da9fcd2b41b3dd4187</srcmd5>
+    <version>5.5.5</version>
+    <time>1419546021</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>266301</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>09fe63044cdcbf92647459c29375d7f1</srcmd5>
+    <version>5.5.5</version>
+    <time>1424117703</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286390</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>724b379106dc2c5069c8215e7f2e7879</srcmd5>
+    <version>5.5.5</version>
+    <time>1424622410</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287107</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b8967b033a331b63167f763bc79363bf</srcmd5>
+    <version>5.5.5</version>
+    <time>1425566391</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288611</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>86138cd99e5e4936cd8a1e400a7defc7</srcmd5>
+    <version>5.5.5</version>
+    <time>1426485622</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290493</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>f23a70cdee9eb4dec0800f6fc790540d</srcmd5>
+    <version>5.5.5</version>
+    <time>1430891368</time>
+    <user>dimstar_suse</user>
+    <comment>changed as discussed (forwarded request 305409 from DocB)</comment>
+    <requestid>305434</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3a951f10749aa40c01410cfba9956f2a</srcmd5>
+    <version>5.5.6</version>
+    <time>1437384140</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317417</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e50b353bd6379fd6b74d193607bc937a</srcmd5>
+    <version>5.5.6</version>
+    <time>1450695855</time>
+    <user>dimstar_suse</user>
+    <comment>Run cron jobs only if hylafax+ has been set up</comment>
+    <requestid>348932</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>3e1f88e0526274f9e35f40ae7536bf38</srcmd5>
+    <version>5.5.6</version>
+    <time>1451674084</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>351056</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>56dfac7a72d3fa9937c3e46a8f048727</srcmd5>
+    <version>5.5.7</version>
+    <time>1455790062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>360017</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>879e1f0b859401bd88f3e131d481f97c</srcmd5>
+    <version>5.5.8</version>
+    <time>1459717639</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>383451</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>53d3fead1ee11728ef0221bb9b7b7024</srcmd5>
+    <version>5.5.9</version>
+    <time>1491469378</time>
+    <user>maxlin_factory</user>
+    <comment>update to version 5.5.9 (forwarded request 484871 from DocB)</comment>
+    <requestid>485027</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>e6b440547e4f3d43be390b711974fa99</srcmd5>
+    <version>5.5.9</version>
+    <time>1502366608</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>511877</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>033aed12509e825a3e5fce668238ceb8</srcmd5>
+    <version>5.5.9</version>
+    <time>1510506632</time>
+    <user>dimstar_suse</user>
+    <comment>- bnc1052195 localized Email notification chops german Umlauts
+  correction in bin/notify common_functions dictionary
+  * notification.diff</comment>
+    <requestid>541041</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>dab6a2ffc32760f1626000203339c888</srcmd5>
+    <version>5.5.9</version>
+    <time>1519747230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580621</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>a9f7519880f44a2e2c0fd8debe492614</srcmd5>
+    <version>5.5.9</version>
+    <time>1520253835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582383</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>3839e607c799568d55fae12b966cb34c</srcmd5>
+    <version>5.5.9</version>
+    <time>1526220398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606645</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>4ecc773387d95b4e1fc4099a5ad4f2b8</srcmd5>
+    <version>5.5.9</version>
+    <time>1529402666</time>
+    <user>maxlin_factory</user>
+    <comment>- boo#1091476: hfaxd needs to run as root
+  otherwise error message '550 Cannot set privileges'
+</comment>
+    <requestid>617332</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ad482a10c60abcf4d380ea330e760278</srcmd5>
+    <version>5.6.0</version>
+    <time>1535367576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631545</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0d12e46107ca13b72dac70ba181d681c</srcmd5>
+    <version>5.6.1</version>
+    <time>1537360262</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636444</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>19d524e7af15aa7fe18a908ab4e9e700</srcmd5>
+    <version>5.6.1</version>
+    <time>1537787523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636843</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>39d32435b3c08b9c54bc09cef90ddda2</srcmd5>
+    <version>5.6.1</version>
+    <time>1542282033</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use tabs in spec
+
+- boo#1115532 JBIG-in-tiff conversion added 
+  (Build Requirement tiff, libtiff)</comment>
+    <requestid>648961</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>ab08e20e1848b4ad50aeb95066041719</srcmd5>
+    <version>5.6.1</version>
+    <time>1543528757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652283</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>b175f12184375ff0f17d0233c206c0c9</srcmd5>
+    <version>5.6.1</version>
+    <time>1548335690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667905</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a9b159d33d66087954d2c4e3bd431fe8</srcmd5>
+    <version>7.0.0</version>
+    <time>1563790815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716617</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>29f060cef2e94e074762bb9f0c6c67c4</srcmd5>
+    <version>1.1.5</version>
+    <time>1174274941</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="40">
+    <srcmd5>bf4b9e8eb39c2303d3133fccf0d9fc8e</srcmd5>
+    <version>1.1.5</version>
+    <time>1194563577</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="60">
+    <srcmd5>24b806306d735cfa6a53e7fc1dd82a98</srcmd5>
+    <version>1.1.5</version>
+    <time>1204761576</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e9c4a55191f3b0c347e206257224629e</srcmd5>
+    <version>1.1.6</version>
+    <time>1206066883</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="39">
+    <srcmd5>e9c4a55191f3b0c347e206257224629e</srcmd5>
+    <version>1.1.6</version>
+    <time>1206066883</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="41">
+    <srcmd5>2efd6675bdbedb1615ce339569238dd6</srcmd5>
+    <version>1.1.6</version>
+    <time>1235426155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="43">
+    <srcmd5>2efd6675bdbedb1615ce339569238dd6</srcmd5>
+    <version>1.1.6</version>
+    <time>1235426155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="44">
+    <srcmd5>a78207ed1ce3639463cf0ab68e96e44f</srcmd5>
+    <version>1.1.6</version>
+    <time>1268923585</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="46">
+    <srcmd5>a78207ed1ce3639463cf0ab68e96e44f</srcmd5>
+    <version>1.1.6</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="47">
+    <srcmd5>a78207ed1ce3639463cf0ab68e96e44f</srcmd5>
+    <version>1.1.6</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="50">
+    <srcmd5>a78207ed1ce3639463cf0ab68e96e44f</srcmd5>
+    <version>1.1.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="51">
+    <srcmd5>ba9e1247c3a79e76427b24ba0e8e0547</srcmd5>
+    <version>1.1.6</version>
+    <time>1299662681</time>
+    <user>saschpe</user>
+    <comment>Copy from IBS home:dec16180:ldig:branches:SUSE:Factory:Head/freeradius-client based on submit request 11074 from user dec16180
+</comment>
+  </revision>
+  <revision rev="13" vrev="52">
+    <srcmd5>ae2d2c37d172834eb62fa3bd84260d29</srcmd5>
+    <version>1.1.6</version>
+    <time>1317744587</time>
+    <user>oertel</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 86012 from coolo)</comment>
+    <requestid>86234</requestid>
+  </revision>
+  <revision rev="14" vrev="54">
+    <srcmd5>ae2d2c37d172834eb62fa3bd84260d29</srcmd5>
+    <version>1.1.6</version>
+    <time>1319181884</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="55">
+    <srcmd5>4ab8c3a5d306c74e98be70cd25a97106</srcmd5>
+    <version>1.1.6</version>
+    <time>1329391201</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104045</requestid>
+  </revision>
+  <revision rev="16" vrev="57">
+    <srcmd5>4ab8c3a5d306c74e98be70cd25a97106</srcmd5>
+    <version>1.1.6</version>
+    <time>1340183337</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="59">
+    <srcmd5>4ab8c3a5d306c74e98be70cd25a97106</srcmd5>
+    <version>1.1.6</version>
+    <time>1359108889</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="61">
+    <srcmd5>4ab8c3a5d306c74e98be70cd25a97106</srcmd5>
+    <version>1.1.6</version>
+    <time>1379662364</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="63">
+    <srcmd5>4ab8c3a5d306c74e98be70cd25a97106</srcmd5>
+    <version>1.1.6</version>
+    <time>1409300900</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b9d36af2db43caafbaa7ad17676ace14</srcmd5>
+    <version>1.1.7</version>
+    <time>1429948426</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>303535</requestid>
+  </revision>
+</revisionlist>

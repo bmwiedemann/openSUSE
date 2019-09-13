@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8a8da753e91ecd4006e916a696ae6d50</srcmd5>
+    <version>1.0.28</version>
+    <time>1396158929</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>227784</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7428f33f82da9f20ecfe38c740dd2a76</srcmd5>
+    <version>1.0.28</version>
+    <time>1400682197</time>
+    <user>coolo</user>
+    <comment>added python-pydot-1.0.28_fix_pyparser_2_incompatibility.patch to fix incompatibility when using pydot with pyparser 2 (forwarded request 232538 from anubisg1)</comment>
+    <requestid>234692</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>7428f33f82da9f20ecfe38c740dd2a76</srcmd5>
+    <version>1.0.28</version>
+    <time>1409302954</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e1a77d2df12eaf9954fc0a7d0d58ccf</srcmd5>
+    <version>1.2.3</version>
+    <time>1478377514</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438183</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d67aeb080a54ebd562e7466b6f33d41e</srcmd5>
+    <version>1.2.3</version>
+    <time>1493819672</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489386</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a1d86862223679e7b8e30fe8e5f7fa07</srcmd5>
+    <version>1.2.4</version>
+    <time>1515506007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562297</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a91beb08a8ac9a5bfe8b13110590000b</srcmd5>
+    <version>1.2.4</version>
+    <time>1545648383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659831</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>10465e7cab832a239c1e39f6e9930391</srcmd5>
+    <version>1.4.1</version>
+    <time>1554712341</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip one failing test:
+  * pydot-skip-test.patch
+- Enable testsuite and add tests dependencies
+
+- Update to 1.4.1:
+  * Make graph, edge, node attributes order deterministic
+  *  Fix string formatting after catching error (#201)
+  * Installation of pydot in conda env on Windows directly supported
+  * Fixed comparing of SHA hash in regression tests (which fail now)
+  * Dropped Python 2.6 support (#185)
+  * Move errno from os to builtin. Fixes #177 (#191, #182)</comment>
+    <requestid>691521</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e760187d04df34ca80752a9fd9f4eb37</srcmd5>
+    <version>0~20130722</version>
+    <time>1375728439</time>
+    <user>coolo</user>
+    <comment>new package to read Microsoft PST/OST files.
+Part of summer 2013 libyal refresh for opensuse 13.1</comment>
+    <requestid>185876</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e760187d04df34ca80752a9fd9f4eb37</srcmd5>
+    <version>0~20130722</version>
+    <time>1379663046</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eab4c67a33be3c1de0ceddb30caab947</srcmd5>
+    <version>0~20131028</version>
+    <time>1408634708</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>245639</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>eab4c67a33be3c1de0ceddb30caab947</srcmd5>
+    <version>0~20131028</version>
+    <time>1409301665</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0154f263dfeddbe4d014b6314e2471c3</srcmd5>
+    <version>0~20161119</version>
+    <time>1487462547</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457507</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7c8db3b705f0312565f431dee2039ad8</srcmd5>
+    <version>0~20180714</version>
+    <time>1560337819</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to v0~20180714
+	* several bug fixes
+	* see github log
+- update which internal packages from libyal are used.  Now only libcpath
+</comment>
+    <requestid>696106</requestid>
+  </revision>
+</revisionlist>

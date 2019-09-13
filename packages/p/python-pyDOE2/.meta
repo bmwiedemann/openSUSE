@@ -1,0 +1,5 @@
+<package name="python-pyDOE2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:numeric" package="python-pyDOE2"/>
+</package>

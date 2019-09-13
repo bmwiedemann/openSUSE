@@ -1,0 +1,330 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd65249b12cfed57af15c11472e2c541</srcmd5>
+    <version>1.49</version>
+    <time>1168903818</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>91015c77e86ae9019eca576d3f10b770</srcmd5>
+    <version>2.6.0</version>
+    <time>1208736078</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9c29d7fae05ac6d4b1a9d2946471afea</srcmd5>
+    <version>2.6.0</version>
+    <time>1208908142</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>448f6ba2adcb7095dd988d5e35286eb4</srcmd5>
+    <version>2.10.3</version>
+    <time>1221235757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b537eed8cd6e361c4919bc63c6b3953</srcmd5>
+    <version>2.15.1</version>
+    <time>1250122364</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DBD-Pg based on submit request 17621 from user rmax
+</comment>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8b537eed8cd6e361c4919bc63c6b3953</srcmd5>
+    <version>2.15.1</version>
+    <time>1250122364</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DBD-Pg based on submit request 17621 from user rmax
+</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>e3db1dc9baf4f76f250ace8d113dbbe2</srcmd5>
+    <version>2.15.1</version>
+    <time>1263301018</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DBD-Pg based on submit request 29292 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>9bceba6b9cc95e5786a9f9c703872caf</srcmd5>
+    <version>2.15.1</version>
+    <time>1268925411</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e860f262a227b49f95427790331e69bb</srcmd5>
+    <version>2.16.1</version>
+    <time>1270587332</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DBD-Pg based on submit request 37114 from user computersalat
+</comment>
+    <requestid>37114</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a90850b1c72960bfe9e867f89d6daeb8</srcmd5>
+    <version>2.17.0</version>
+    <time>1270722879</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DBD-Pg based on submit request 37283 from user computersalat
+</comment>
+    <requestid>37283</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>147208d1a14e783c38e73b830d20d6f6</srcmd5>
+    <version>2.17.1</version>
+    <time>1271867160</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DBD-Pg based on submit request 38446 from user computersalat
+</comment>
+    <requestid>38446</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>147208d1a14e783c38e73b830d20d6f6</srcmd5>
+    <version>2.17.1</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>147208d1a14e783c38e73b830d20d6f6</srcmd5>
+    <version>2.17.1</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>440ea00318de8e6d2646e0d188886340</srcmd5>
+    <version>2.17.2</version>
+    <time>1291305529</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54292 from user computersalat
+</comment>
+    <requestid>54292</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>ce114b8d75fda400370b1a574d066867</srcmd5>
+    <version>2.17.2</version>
+    <time>1291305537</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54292
+</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>5251d1c15a2ddd25875a23f4b57ffc8d</srcmd5>
+    <version>2.17.2</version>
+    <time>1291581925</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54516 from user coolo
+</comment>
+    <requestid>54516</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>fb68bebb19bec004d559d9c52de7af69</srcmd5>
+    <version>2.17.2</version>
+    <time>1291581929</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54516
+</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>fb68bebb19bec004d559d9c52de7af69</srcmd5>
+    <version>2.17.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>25bde3ef1526791c5efe9eb39dccca96</srcmd5>
+    <version>2.18.0</version>
+    <time>1302512686</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66552 from user coolo
+</comment>
+    <requestid>66552</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>db9041f55068c9221c8e3e50922914f4</srcmd5>
+    <version>2.18.0</version>
+    <time>1302512694</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66552
+</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>db9041f55068c9221c8e3e50922914f4</srcmd5>
+    <version>2.18.0</version>
+    <time>1319182255</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>aa31f2c4c30c1581974882d4fe88f728</srcmd5>
+    <version>2.18.1</version>
+    <time>1322738713</time>
+    <user>coolo</user>
+    <comment>- update to 2.18.1
+  - Fix LANG testing issue [GSM] (CPAN bug #56705)
+  - Fix bug when async commands issued immediately after a COPY. 
+    [GSM] (CPAN bug #68041)</comment>
+    <requestid>94382</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>4ad926f8e562db2569ffa1ece7281381</srcmd5>
+    <version>2.18.1</version>
+    <time>1323193212</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>4ad926f8e562db2569ffa1ece7281381</srcmd5>
+    <version>2.18.1</version>
+    <time>1340183821</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>4ad926f8e562db2569ffa1ece7281381</srcmd5>
+    <version>2.18.1</version>
+    <time>1359109634</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e35893bbb3f55095b45119b41c35a850</srcmd5>
+    <version>2.19.3</version>
+    <time>1367932844</time>
+    <user>coolo</user>
+    <comment>update to 2.19.3  (forwarded request 174450 from deadpoint)</comment>
+    <requestid>174678</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>e35893bbb3f55095b45119b41c35a850</srcmd5>
+    <version>2.19.3</version>
+    <time>1379663612</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>e7810eaf8cb543352ed10087791d48b9</srcmd5>
+    <version>2.19.3</version>
+    <time>1391082739</time>
+    <user>coolo</user>
+    <comment> (forwarded request 214789 from kpetsch)</comment>
+    <requestid>214791</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e6cdffa273fbc545c8f366e32c2587d2</srcmd5>
+    <version>3.0.0</version>
+    <time>1395848493</time>
+    <user>coolo</user>
+    <comment>Update to version 3.0.0 which fixes the currently failing tests in Factory. (forwarded request 227547 from cyberiad)</comment>
+    <requestid>227551</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5f5d84671bfbc3b2f693f17cffaed8a2</srcmd5>
+    <version>3.1.1</version>
+    <time>1397042117</time>
+    <user>coolo</user>
+    <comment>update to version 3.1.1 (forwarded request 229331 from cyberiad)</comment>
+    <requestid>229350</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b06fa67234689a72b0e10c816a02ead1</srcmd5>
+    <version>3.2.0</version>
+    <time>1400256722</time>
+    <user>coolo</user>
+    <comment>update to version 3.2.0 (forwarded request 234271 from cyberiad)</comment>
+    <requestid>234274</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e2504432e9cea6cda077ca2d746dd136</srcmd5>
+    <version>3.2.1</version>
+    <time>1401644457</time>
+    <user>coolo</user>
+    <comment>update to version 3.2.1 (forwarded request 235731 from cyberiad)</comment>
+    <requestid>235749</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>21a3c7606a70732ed7e7d5160de1dd03</srcmd5>
+    <version>3.3.0</version>
+    <time>1401899973</time>
+    <user>coolo</user>
+    <comment>update to version 3.3.0 (forwarded request 236007 from cyberiad)</comment>
+    <requestid>236062</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>21737d4b38c20029dccb862786048f1f</srcmd5>
+    <version>3.4.1</version>
+    <time>1408957443</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245750</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>21737d4b38c20029dccb862786048f1f</srcmd5>
+    <version>3.4.1</version>
+    <time>1409302231</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ce45ef66bd08bbe381dfc6339cd1bea8</srcmd5>
+    <version>3.5.0</version>
+    <time>1422287241</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282811</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1a54dc7919cb6cbb78fab799d8cabbe5</srcmd5>
+    <version>3.5.1</version>
+    <time>1427983464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293999</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8d40fb05984b9fe8d330ddf669c836a7</srcmd5>
+    <version>3.5.3</version>
+    <time>1449687256</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 3.5.3 (forwarded request 347934 from cyberiad)</comment>
+    <requestid>347938</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>3dea7c6bff4e6d6001841c7417014ba3</srcmd5>
+    <version>3.5.3</version>
+    <time>1491469279</time>
+    <user>maxlin_factory</user>
+    <comment>- Fixed sle_version macro
+- Removed %clean section</comment>
+    <requestid>482777</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>adb07021adc1752105576c74c08543c7</srcmd5>
+    <version>3.5.3</version>
+    <time>1504620433</time>
+    <user>dimstar_suse</user>
+    <comment>- Just use postgresql-server everywhere and leave it up to prjconf,
+  SLE12 has no 94 in maintenance anymore</comment>
+    <requestid>519654</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>64101b4a2d5c91f898bb189388c45475</srcmd5>
+    <version>3.7.4</version>
+    <time>1518697329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576478</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>c890d5a91ec407e088ee519352e2ffb5</srcmd5>
+    <version>3.7.4</version>
+    <time>1551298453</time>
+    <user>coolo</user>
+    <comment>- apply disable-attr.patch to disable broken test:
+  https://rt.cpan.org/Public/Bug/Display.html?id=128529</comment>
+    <requestid>679440</requestid>
+  </revision>
+</revisionlist>

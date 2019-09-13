@@ -1,0 +1,8 @@
+<package name="rubygem-method_source" project="openSUSE:Factory">
+  <title>retrieve the sourcecode for a method</title>
+  <description>retrieve the sourcecode for a method
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-method_source"/>
+  <url>http://banisterfiend.wordpress.com</url>
+</package>

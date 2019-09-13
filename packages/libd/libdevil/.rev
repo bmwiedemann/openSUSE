@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe46bd187625d8fd326824e6fc2f6b5a</srcmd5>
+    <version>1.7.8</version>
+    <time>1380738206</time>
+    <user>scarabeus_factory</user>
+    <comment>would you mind submitting that to Factory? A package of mine uses it</comment>
+    <requestid>199632</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b2f00c31ddfdf31023219024a9cdda48</srcmd5>
+    <version>1.7.8</version>
+    <time>1380864348</time>
+    <user>coolo</user>
+    <comment>Just safeguard to ensure clarity</comment>
+    <requestid>201994</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b2f00c31ddfdf31023219024a9cdda48</srcmd5>
+    <version>1.7.8</version>
+    <time>1409301536</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>0aeb4f5452af0a2a46748598a7504e7e</srcmd5>
+    <version>1.7.8</version>
+    <time>1435652227</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313892</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>3832b42cca94a77e1800773623149f20</srcmd5>
+    <version>1.7.8</version>
+    <time>1496225985</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499616</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>4e346a2aa63cb121ff3d4d09dcbe039d</srcmd5>
+    <version>1.7.8</version>
+    <time>1524144438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>594546</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>84967234320794d579b2534359b22f52</srcmd5>
+    <version>1.7.8</version>
+    <time>1526463625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607331</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>69bdffeb4c866cce67a62f8222150b8a</srcmd5>
+    <version>1.7.8</version>
+    <time>1566464020</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1144245: Remove JPEG2000 support due to dropping dependency
+  on libjasper
+- Run spec-cleaner</comment>
+    <requestid>724950</requestid>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>3e66770aaaf1cd4e36c434e145ffa534</srcmd5>
+    <version>1.7.8</version>
+    <time>1568379600</time>
+    <user>lnussel_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>730204</requestid>
+  </revision>
+</revisionlist>

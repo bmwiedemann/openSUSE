@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54bf4c53a1ed30b8be6a34750d2c77a6</srcmd5>
+    <version>0.9.0</version>
+    <time>1554458660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691444</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5f33ec230daedb1f08e5331efb8008e2</srcmd5>
+    <version>0.9.0</version>
+    <time>1557141675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692224</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d189e8ae62fcacde897faa8f8f4f928e</srcmd5>
+    <version>0.10.0</version>
+    <time>1558939154</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  * Various minor fixes and tweaks
+  * CI integration fixes</comment>
+    <requestid>705390</requestid>
+  </revision>
+</revisionlist>

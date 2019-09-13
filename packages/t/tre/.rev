@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4dcf25aeee91eba88b90b5d9fc03a50a</srcmd5>
+    <version>0.8.0</version>
+    <time>1262865831</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/tre based on submit request 28061 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>34371623edec1e1e9fef38ae81c3ca8f</srcmd5>
+    <version>0.8.0</version>
+    <time>1268926375</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>34371623edec1e1e9fef38ae81c3ca8f</srcmd5>
+    <version>0.8.0</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>34371623edec1e1e9fef38ae81c3ca8f</srcmd5>
+    <version>0.8.0</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>34371623edec1e1e9fef38ae81c3ca8f</srcmd5>
+    <version>0.8.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>34371623edec1e1e9fef38ae81c3ca8f</srcmd5>
+    <version>0.8.0</version>
+    <time>1319182529</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>956832feb33ec8f781105f0f375e0f06</srcmd5>
+    <version>0.8.0</version>
+    <time>1328718063</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+- Enable pkgconfig provides</comment>
+    <requestid>103179</requestid>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>8867904839fbe8e395746a347f2d72c0</srcmd5>
+    <version>0.8.0</version>
+    <time>1336492926</time>
+    <user>coolo</user>
+    <comment>- license update: BSD-3-Clause
+  Package is predominantly BSD-3-Clause licensed. This spec file license
+  update makes the openSUSE package license substantially similar to the
+  Fedora package license&quot;</comment>
+    <requestid>116744</requestid>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>8867904839fbe8e395746a347f2d72c0</srcmd5>
+    <version>0.8.0</version>
+    <time>1340184285</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>8867904839fbe8e395746a347f2d72c0</srcmd5>
+    <version>0.8.0</version>
+    <time>1359110505</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>8867904839fbe8e395746a347f2d72c0</srcmd5>
+    <version>0.8.0</version>
+    <time>1379664845</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>426809a7b6cb48e803f1991642111b59</srcmd5>
+    <version>0.8.0_git201402282055</version>
+    <time>1399611552</time>
+    <user>coolo</user>
+    <comment>- Added chicken.patch to correct Python build failures
+- Referenced a git pull request to justify the patch. (forwarded request 232982 from bjones)</comment>
+    <requestid>233045</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>426809a7b6cb48e803f1991642111b59</srcmd5>
+    <version>0.8.0_git201402282055</version>
+    <time>1409303528</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>23a2232cbc9c68ee7a31047ec7c5f4c7</srcmd5>
+    <version>0.8.0_git201402282055</version>
+    <time>1516359245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567305</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,235 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>d90a1b3cb9486cf895352222e22564f8</srcmd5>
+    <version>2.9</version>
+    <time>1168904738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="138">
+    <srcmd5>d90a1b3cb9486cf895352222e22564f8</srcmd5>
+    <version>2.9</version>
+    <time>1168904738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="139">
+    <srcmd5>fa38414a31e9db3f561e9587d3882815</srcmd5>
+    <version>2.9</version>
+    <time>1224730369</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="141">
+    <srcmd5>fa38414a31e9db3f561e9587d3882815</srcmd5>
+    <version>2.9</version>
+    <time>1224730369</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="142">
+    <srcmd5>1498db6c21916622ab4af7eede9ee15f</srcmd5>
+    <version>2.9</version>
+    <time>1268926809</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3aaa2bca3abf70ddd254b397da116f32</srcmd5>
+    <version>2.11</version>
+    <time>1271807787</time>
+    <user>autobuild</user>
+    <comment>Copy from network/yp-tools based on submit request 38361 from user kukuk
+</comment>
+    <requestid>38361</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9f6b19da60b41d105b2a03f093932855</srcmd5>
+    <version>2.12</version>
+    <time>1271866351</time>
+    <user>autobuild</user>
+    <comment>Copy from network/yp-tools based on submit request 38415 from user kukuk
+</comment>
+    <requestid>38415</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9f6b19da60b41d105b2a03f093932855</srcmd5>
+    <version>2.12</version>
+    <time>1278667399</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9f6b19da60b41d105b2a03f093932855</srcmd5>
+    <version>2.12</version>
+    <time>1278678634</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>9f6b19da60b41d105b2a03f093932855</srcmd5>
+    <version>2.12</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>f5ff641ed68a84ddc3dfb72b1b4770c2</srcmd5>
+    <version>2.12</version>
+    <time>1305191881</time>
+    <user>azouhr</user>
+    <comment>- Don't build against libxcrypt (not necessary).</comment>
+    <requestid>70050</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>c04f0269bb04acf47deb3fecd98c6698</srcmd5>
+    <version>2.12</version>
+    <time>1305191888</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 70050
+</comment>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>c04f0269bb04acf47deb3fecd98c6698</srcmd5>
+    <version>2.12</version>
+    <time>1319182644</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>51bcecac032dfd888cf52e0c89e5840d</srcmd5>
+    <version>2.12</version>
+    <time>1323195665</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>ceeb34276a36289fbc17149633e33920</srcmd5>
+    <version>2.12</version>
+    <time>1329751223</time>
+    <user>coolo</user>
+    <comment>- keep all binaries in /usr (UsrMerge project)</comment>
+    <requestid>105739</requestid>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>ceeb34276a36289fbc17149633e33920</srcmd5>
+    <version>2.12</version>
+    <time>1340184417</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>ceeb34276a36289fbc17149633e33920</srcmd5>
+    <version>2.12</version>
+    <time>1359110772</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b61dfc62eccd4e518c6c903160bc6b43</srcmd5>
+    <version>2.14</version>
+    <time>1365792465</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.14 (minor bugfix release)
+
+- Update to version 2.13 (autoconf meta data update)
+
+- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls</comment>
+    <requestid>163450</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>b61dfc62eccd4e518c6c903160bc6b43</srcmd5>
+    <version>2.14</version>
+    <time>1379665186</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>b61dfc62eccd4e518c6c903160bc6b43</srcmd5>
+    <version>2.14</version>
+    <time>1409303869</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a246e2b2850a895d716be5c62fad793d</srcmd5>
+    <version>3.0.1</version>
+    <time>1417246769</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>263251</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ace508eecc81e0173d4e5f3db5718c60</srcmd5>
+    <version>3.0.1</version>
+    <time>1417869935</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264115</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>d64da6f5c04a266cc2adcb2532554d3c</srcmd5>
+    <version>3.0.1</version>
+    <time>1418737648</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264845</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>a3a81c4b41269abf9ceda94971364f30</srcmd5>
+    <version>3.0.1</version>
+    <time>1419159858</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265790</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>231cd424573df1bad44669030e940932</srcmd5>
+    <version>3.3</version>
+    <time>1428272695</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>294213</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7c79421c8f11347184ab582d8e999461</srcmd5>
+    <version>4.2.2</version>
+    <time>1460363268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>384462</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>9a856456236ade97e9d7801ab2ad685b</srcmd5>
+    <version>4.2.2</version>
+    <time>1472026016</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-add ypdomainname and nisdomainname for SLE12 and Leap 42.x
+  [bsc#994532]</comment>
+    <requestid>420475</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>ad3850b129dbcce6d03fb3e14c5ceff7</srcmd5>
+    <version>4.2.2</version>
+    <time>1510664806</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup dangling symlinks after de-installation
+
+- Prepare for transactional update and read-only root filesystem
+  - create /var/yp with tmpfiles.d</comment>
+    <requestid>539858</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>8047c4327adffe2cca7be7640a2b55fe</srcmd5>
+    <version>4.2.2</version>
+    <time>1519554783</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license instead of %doc [bsc#1082318]</comment>
+    <requestid>579488</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8f0eb47e1337e3b2826de69da750e2e7</srcmd5>
+    <version>4.2.3</version>
+    <time>1522403956</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.3
+  - Re-add yptest [issues/#4]
+  - Lower compiler warnings [bsc#1084633]</comment>
+    <requestid>591643</requestid>
+  </revision>
+</revisionlist>

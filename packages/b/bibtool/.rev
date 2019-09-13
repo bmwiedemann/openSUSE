@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>77d773d19f660a7b6b15c1e930d06161</srcmd5>
+    <version>2.60</version>
+    <time>1438421658</time>
+    <user>dimstar_suse</user>
+    <comment>Somehow usefull package, no harm in having it in factory</comment>
+    <requestid>316910</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7734cb4b232f5a7bac95f07d1c93050c</srcmd5>
+    <version>2.63</version>
+    <time>1454921305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.36
+  * Combined rewrite and delete bug fixed.
+  * Minor improvements for the distribution.
+  * README renamed to README.md to comply with the conventions of 
+    the GitHub repository.
+
+- Update to 2.61
+  * New resource rename.field introduced to conditionally rename a 
+    field.
+  * Duplicate file doc/bibtool.tex in the distribution tar ball 
+    eliminated.</comment>
+    <requestid>358211</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e63eae3f379a28fd3a6a6488616c4e72</srcmd5>
+    <version>2.63</version>
+    <time>1471428304</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop -doc subpackage as building it is getting more and more
+  difficult</comment>
+    <requestid>419356</requestid>
+  </revision>
+</revisionlist>

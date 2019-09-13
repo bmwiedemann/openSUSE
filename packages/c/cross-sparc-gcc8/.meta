@@ -1,0 +1,6 @@
+<package name="cross-sparc-gcc8" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="gcc8"/>
+  <bcntsynctag>gcc8</bcntsynctag>
+</package>

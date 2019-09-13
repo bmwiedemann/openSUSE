@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3772bbb125f2be1f8dfcc6597b7b3a2b</srcmd5>
+    <version>1.1</version>
+    <time>1394450302</time>
+    <user>coolo</user>
+    <comment>Init libepoxy package. We'll need it for kwin 5, and Stefan didn't thought it's a good idea to put it in X11:XOrg (sr#224114)</comment>
+    <requestid>224818</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>79f20557970f450497754f86070f956a</srcmd5>
+    <version>1.2</version>
+    <time>1400742251</time>
+    <user>coolo</user>
+    <comment>Update to 1.2 (forwarded request 234429 from sumski)</comment>
+    <requestid>234495</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>79f20557970f450497754f86070f956a</srcmd5>
+    <version>1.2</version>
+    <time>1409301546</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c2dfd054dbddfd29ea5530344f88247b</srcmd5>
+    <version>1.2</version>
+    <time>1424068571</time>
+    <user>coolo</user>
+    <comment>- u_sort-the-providers-by-their-enum-not-by-their-functi.patch
+  * sort the providers by their enum not by their function name;
+    patch by coolo (bnc#917533)</comment>
+    <requestid>285778</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>913865ff3bcefdd06dac3d07817bd218</srcmd5>
+    <version>1.2</version>
+    <time>1427653050</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf in order to build 32bit packages.</comment>
+    <requestid>293295</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7f3c018db2a28bd4578d7ec78fa42018</srcmd5>
+    <version>1.3.1</version>
+    <time>1437657723</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317738</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba1850d8c58517da904b5ec818bea4be</srcmd5>
+    <version>1.4.1</version>
+    <time>1489175197</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477060</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>42e856aeb781742b738858b804197c39</srcmd5>
+    <version>1.4.3</version>
+    <time>1496932686</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501393</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>10c7ab2d185293f352cb64a074af6751</srcmd5>
+    <version>1.4.3</version>
+    <time>1516091999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563541</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3592d7d8cfc9a24dca22ae755b5758f1</srcmd5>
+    <version>1.5.0</version>
+    <time>1520160743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581003</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a31f9cddf8ac8129ac896ec3f639be0c</srcmd5>
+    <version>1.5.3</version>
+    <time>1540447784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642992</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>30adaa578494e5e4cffbe869a203c97c</srcmd5>
+    <version>1.5.3</version>
+    <time>1555830087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695294</requestid>
+  </revision>
+</revisionlist>

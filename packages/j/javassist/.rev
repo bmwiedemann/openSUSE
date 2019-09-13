@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>fdfbf3dc4e0de6a9bf719b55bcfaa1c0</srcmd5>
+    <version>3.5</version>
+    <time>1336423605</time>
+    <user>coolo</user>
+    <comment>add javassist to Factory, needed for updated mysql-connector-java</comment>
+    <requestid>115820</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>fdfbf3dc4e0de6a9bf719b55bcfaa1c0</srcmd5>
+    <version>3.5</version>
+    <time>1340183483</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>fdfbf3dc4e0de6a9bf719b55bcfaa1c0</srcmd5>
+    <version>3.5</version>
+    <time>1359109114</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>7aa732b882f309cb26811bb85bcf1783</srcmd5>
+    <version>3.5</version>
+    <time>1363156370</time>
+    <user>coolo</user>
+    <comment>license update: LGPL-2.1+ or MPL-1.1
+This is a dual license so the operator is ^or^ not ^and^ (forwarded request 157920 from babelworx)</comment>
+    <requestid>157921</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>c5f6684671d144bb18bdbf824b84b990</srcmd5>
+    <version>3.5</version>
+    <time>1378899524</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198284</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>c5f6684671d144bb18bdbf824b84b990</srcmd5>
+    <version>3.5</version>
+    <time>1379662707</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>c5f6684671d144bb18bdbf824b84b990</srcmd5>
+    <version>3.5</version>
+    <time>1409301274</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>3ac896f9aef99b663e7644cd69c32243</srcmd5>
+    <version>3.5</version>
+    <time>1409914798</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247424</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5671fecaa31bf6c0c44131ff856e7e6f</srcmd5>
+    <version>3.19.0</version>
+    <time>1422594216</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282936</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9bc60f78f86148b1c4648dfd534d6379</srcmd5>
+    <version>3.21.0</version>
+    <time>1497112380</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 3.21.0:
+  * various compiler settings
+  * Require java &gt;= 1.6</comment>
+    <requestid>502546</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3c36c7bef50e4cb31a761ad91915b94e</srcmd5>
+    <version>3.21.0</version>
+    <time>1505334028</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>522249</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>55edbfa7ce21c04f48aca14d98ae9273</srcmd5>
+    <version>3.23.1</version>
+    <time>1539590762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640536</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e5699f0aeaf9fe1bd77f9098c07f0111</srcmd5>
+    <version>3.23.1</version>
+    <time>1539869431</time>
+    <user>dimstar_suse</user>
+    <comment>Package uses apis introduced in java 9</comment>
+    <requestid>642070</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>75471b7f4c1c1cd6d47e898b90b1e108</srcmd5>
+    <version>3.23.1</version>
+    <time>1541666385</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>644927</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>fc2e5cc94a0b233a9849f3f536c970cc</srcmd5>
+    <version>3.23.1</version>
+    <time>1556474389</time>
+    <user>maxlin_factory</user>
+    <comment>- Added patch:
+  * javassist-java8-compat.patch
+    - Allow building on systems that do not have java 9 or higher
+</comment>
+    <requestid>696968</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="73">
+    <srcmd5>91f8f68a58f6c40d316a55435ffe7929</srcmd5>
+    <version>0.98.8.20030520</version>
+    <time>1168903952</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="250">
+    <srcmd5>91f8f68a58f6c40d316a55435ffe7929</srcmd5>
+    <version>0.98.8.20030520</version>
+    <time>1168903952</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="251">
+    <srcmd5>220d792b833d8070b7aa58bd04acfad5</srcmd5>
+    <version>0.98.8.20030520</version>
+    <time>1245277013</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="253">
+    <srcmd5>220d792b833d8070b7aa58bd04acfad5</srcmd5>
+    <version>0.98.8.20030520</version>
+    <time>1245277013</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e1d9109053b7da3adfbd8f65239becc7</srcmd5>
+    <version>0.99.0.20040219</version>
+    <time>1259334828</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database:postgresql/pgaccess based on submit request 25157 from user rmax
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e9d5b632860ce4785a041ce4706602dc</srcmd5>
+    <version>0.99.0.20040219</version>
+    <time>1268925692</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>e9d5b632860ce4785a041ce4706602dc</srcmd5>
+    <version>0.99.0.20040219</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>e9d5b632860ce4785a041ce4706602dc</srcmd5>
+    <version>0.99.0.20040219</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>e9d5b632860ce4785a041ce4706602dc</srcmd5>
+    <version>0.99.0.20040219</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>e9d5b632860ce4785a041ce4706602dc</srcmd5>
+    <version>0.99.0.20040219</version>
+    <time>1319182330</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>5fc401cc1b1c031995d0f3b63bb3f488</srcmd5>
+    <version>0.99.0.20040219</version>
+    <time>1333000008</time>
+    <user>coolo</user>
+    <comment>license update: PostgreSQL
+SPDX format as per spdx.org/licenses/PostgreSQL (forwarded request 111414 from babelworx)</comment>
+    <requestid>111591</requestid>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>5fc401cc1b1c031995d0f3b63bb3f488</srcmd5>
+    <version>0.99.0.20040219</version>
+    <time>1340183964</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>5fc401cc1b1c031995d0f3b63bb3f488</srcmd5>
+    <version>0.99.0.20040219</version>
+    <time>1359109869</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>5fc401cc1b1c031995d0f3b63bb3f488</srcmd5>
+    <version>0.99.0.20040219</version>
+    <time>1379663945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="19">
+    <srcmd5>5fc401cc1b1c031995d0f3b63bb3f488</srcmd5>
+    <version>0.99.0.20040219</version>
+    <time>1409302600</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

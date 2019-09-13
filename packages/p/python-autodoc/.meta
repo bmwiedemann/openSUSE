@@ -1,0 +1,6 @@
+<package name="python-autodoc" project="openSUSE:Factory">
+  <title>Python mocking and unit testing library</title>
+  <description>	  Python mock can mimick any other Python class, and then be examined to see what methods have been called and what the parameters to the call were.
+  </description>
+  <devel project="devel:languages:python" package="python-autodoc"/>
+</package>

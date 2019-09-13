@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="23">
+    <srcmd5>8404e215e5be50572e359b2efac62556</srcmd5>
+    <version>1.1.1</version>
+    <time>1168903108</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="234">
+    <srcmd5>0573a4e5e54e881673c05bafd2e6a4e2</srcmd5>
+    <version>1.1.1</version>
+    <time>1217980113</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="236">
+    <srcmd5>0573a4e5e54e881673c05bafd2e6a4e2</srcmd5>
+    <version>1.1.1</version>
+    <time>1217980113</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="237">
+    <srcmd5>778e92eac12ad2a73b4dc6e4f9fbeef1</srcmd5>
+    <version>1.1.1</version>
+    <time>1268924110</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="239">
+    <srcmd5>778e92eac12ad2a73b4dc6e4f9fbeef1</srcmd5>
+    <version>1.1.1</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="240">
+    <srcmd5>778e92eac12ad2a73b4dc6e4f9fbeef1</srcmd5>
+    <version>1.1.1</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="243">
+    <srcmd5>778e92eac12ad2a73b4dc6e4f9fbeef1</srcmd5>
+    <version>1.1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="245">
+    <srcmd5>778e92eac12ad2a73b4dc6e4f9fbeef1</srcmd5>
+    <version>1.1.1</version>
+    <time>1319182004</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="246">
+    <srcmd5>36aab83706dcca7381c0a5ae77b828ed</srcmd5>
+    <version>1.1.1</version>
+    <time>1323192022</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="247">
+    <srcmd5>a8e351b1a1efe094ff2c572d4cd6906c</srcmd5>
+    <version>1.1.1</version>
+    <time>1339822534</time>
+    <user>coolo</user>
+    <comment>- fix build with java7
+- use non-versioned javadocdir</comment>
+    <requestid>125081</requestid>
+  </revision>
+  <revision rev="11" vrev="249">
+    <srcmd5>a8e351b1a1efe094ff2c572d4cd6906c</srcmd5>
+    <version>1.1.1</version>
+    <time>1340183479</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="251">
+    <srcmd5>a8e351b1a1efe094ff2c572d4cd6906c</srcmd5>
+    <version>1.1.1</version>
+    <time>1359109107</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="253">
+    <srcmd5>a8e351b1a1efe094ff2c572d4cd6906c</srcmd5>
+    <version>1.1.1</version>
+    <time>1379662700</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="254">
+    <srcmd5>93c8048e917bbec2ce996cc1c987dbe7</srcmd5>
+    <version>1.1.1</version>
+    <time>1406005073</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>241454</requestid>
+  </revision>
+  <revision rev="15" vrev="256">
+    <srcmd5>93c8048e917bbec2ce996cc1c987dbe7</srcmd5>
+    <version>1.1.1</version>
+    <time>1409301266</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="257">
+    <srcmd5>c2998a1bcaa91ec2495ed15f4e4cb006</srcmd5>
+    <version>1.1.1</version>
+    <time>1444285489</time>
+    <user>coolo</user>
+    <comment>- Update URL to link to live domain
+- Fix bnc#920813 CVE-2015-0254, patch taken from debian:
+  * CVE-2015-0254.patch</comment>
+    <requestid>336663</requestid>
+  </revision>
+  <revision rev="17" vrev="258">
+    <srcmd5>915ff81347072fe24bba797005833248</srcmd5>
+    <version>1.1.1</version>
+    <time>1505920168</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527059</requestid>
+  </revision>
+</revisionlist>

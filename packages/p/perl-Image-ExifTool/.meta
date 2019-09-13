@@ -1,0 +1,59 @@
+<package name="perl-Image-ExifTool" project="openSUSE:Factory">
+  <title>Read and write meta information</title>
+  <description>ExifTool provides an extensible set of perl modules to read and write meta
+information in a wide variety of files, including the maker note
+information of many digital cameras by various manufacturers such as Canon,
+Casio, FujiFilm, HP, JVC/Victor, Kodak, Leaf, Minolta/Konica-Minolta,
+Nikon, Olympus/Epson, Panasonic/Leica, Pentax/Asahi, Ricoh, Samsung, Sanyo,
+Sigma/Foveon and Sony.
+
+Below is a list of file types and meta information formats currently
+supported by ExifTool (r = read, w = write, c = create):
+
+  File Types
+  ------------+-------------+-------------+-------------+------------
+  3FR   r     | DVB   r     | M2TS  r     | PAGES r     | RW2   r/w  
+  3G2   r     | DYLIB r     | M4A/V r     | PBM   r/w   | RWL   r/w
+  3GP   r     | EIP   r     | MEF   r/w   | PDF   r/w   | RWZ   r
+  ACR   r     | EPS   r/w   | MIE   r/w/c | PEF   r/w   | RM    r
+  AFM   r     | ERF   r/w   | MIFF  r     | PFA   r     | SO    r
+  AI    r/w   | EXE   r     | MKA   r     | PFB   r     | SR2   r/w
+  AIFF  r     | EXIF  r/w/c | MKS   r     | PFM   r     | SRF   r
+  APE   r     | F4A/V r     | MKV   r     | PGM   r/w   | SRW   r/w
+  ARW   r/w   | FLA   r     | MNG   r/w   | PICT  r     | SVG   r
+  ASF   r     | FLAC  r     | MOS   r/w   | PMP   r     | SWF   r
+  AVI   r     | FLV   r     | MOV   r     | PNG   r/w   | THM   r/w
+  BMP   r     | FPX   r     | MP3   r     | PPM   r/w   | TIFF  r/w
+  BTF   r     | GIF   r/w   | MP4   r     | PPT   r     | TTC   r
+  COS   r     | GZ    r     | MPC   r     | PPTX  r     | TTF   r
+  CR2   r/w   | HDP   r/w   | MPG   r     | PS    r/w   | VRD   r/w/c
+  CRW   r/w   | HTML  r     | MPO   r/w   | PSB   r/w   | WAV   r
+  CS1   r/w   | ICC   r/w/c | MQV   r     | PSD   r/w   | WDP   r/w
+  DCM   r     | IIQ   r     | MRW   r/w   | PSP   r     | WEBP  r
+  DCP   r/w   | IND   r/w   | NEF   r/w   | QTIF  r     | WEBM  r
+  DCR   r     | ITC   r     | NRW   r/w   | RA    r     | WMA   r
+  DFONT r     | JNG   r/w   | NUMBERS r   | RAF   r/w   | WMV   r
+  DIVX  r     | JP2   r/w   | ODP   r     | RAM   r     | X3F   r/w
+  DJVU  r     | JPEG  r/w   | ODS   r     | RAR   r     | XCF   r
+  DLL   r     | K25   r     | ODT   r     | RAW   r/w   | XLS   r
+  DNG   r/w   | KDC   r     | OGG   r     | RIFF  r     | XLSX  r
+  DOC   r     | KEY   r     | ORF   r/w   | RSRC  r     | XMP   r/w/c
+  DOCX  r     | LNK   r     | OTF   r     | RTF   r     | ZIP   r
+
+  Meta Information
+  ----------------------+----------------------+---------------------
+  EXIF           r/w/c  |  Kodak Meta     r/w  |  Picture Info   r
+  GPS            r/w/c  |  FotoStation    r/w  |  Adobe APP14    r
+  IPTC           r/w/c  |  PhotoMechanic  r/w  |  MPF            r
+  XMP            r/w/c  |  JPEG 2000      r    |  Stim           r
+  MakerNotes     r/w/c  |  DICOM          r    |  APE            r
+  Photoshop IRB  r/w/c  |  Flash          r    |  Vorbis         r
+  ICC Profile    r/w/c  |  FlashPix       r    |  SPIFF          r
+  MIE            r/w/c  |  QuickTime      r    |  DjVu           r
+  JFIF           r/w/c  |  Matroska       r    |  M2TS           r
+  Ducky APP12    r/w/c  |  GeoTIFF        r    |  PE/COFF        r
+  PDF            r/w/c  |  PrintIM        r    |  AVCHD          r
+  CIFF           r/w    |  ID3            r    |  ZIP            r
+  AFCP           r/w    |  Ricoh RMETA    r    |  (and more)</description>
+  <devel project="devel:languages:perl" package="perl-Image-ExifTool"/>
+</package>

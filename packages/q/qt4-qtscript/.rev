@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90e2e979c279301be4c895550543d8ce</srcmd5>
+    <version>0.2.0</version>
+    <time>1327922909</time>
+    <user>coolo</user>
+    <comment>qt4-qtscript is back again with Qt 4.8 support</comment>
+    <requestid>101659</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>90e2e979c279301be4c895550543d8ce</srcmd5>
+    <version>0.2.0</version>
+    <time>1340184131</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>cbc040f44dd286812cacd7c2600b847a</srcmd5>
+    <version>0.2.0</version>
+    <time>1342172051</time>
+    <user>namtrac</user>
+    <comment>fixed arm build, please forward to factory (forwarded request 127760 from adrianSuSE)</comment>
+    <requestid>127761</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>c1b9ae10b4811040d0ca8eaf20f0315d</srcmd5>
+    <version>0.2.0</version>
+    <time>1347347955</time>
+    <user>coolo</user>
+    <comment>- Use %{optflags} and %{?_smp_mflags} (forwarded request 133413 from AndreasSchwab)</comment>
+    <requestid>133416</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>c1b9ae10b4811040d0ca8eaf20f0315d</srcmd5>
+    <version>0.2.0</version>
+    <time>1359110264</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>c1b9ae10b4811040d0ca8eaf20f0315d</srcmd5>
+    <version>0.2.0</version>
+    <time>1379664419</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>c1b9ae10b4811040d0ca8eaf20f0315d</srcmd5>
+    <version>0.2.0</version>
+    <time>1409303146</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>e1b7a6e08cf078e41c5a85f00f4fb988</srcmd5>
+    <version>0.2.0</version>
+    <time>1498045846</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504537</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>c4818dd56b2246aeaba310680965fe67</srcmd5>
+    <version>0.2.0</version>
+    <time>1512433557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547671</requestid>
+  </revision>
+</revisionlist>

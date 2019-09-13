@@ -1,0 +1,190 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>2dacea68e61ae1225742e60cde1a1e83</srcmd5>
+    <version>3.0.3</version>
+    <time>1200454757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="14">
+    <srcmd5>73d651b11b5aa8f1c868af82abbf41ea</srcmd5>
+    <version>3.0.3</version>
+    <time>1204197981</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b3fb564e0feb030594613a78a614ff10</srcmd5>
+    <version>3.1.0</version>
+    <time>1207164366</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="45">
+    <srcmd5>b3fb564e0feb030594613a78a614ff10</srcmd5>
+    <version>3.1.0</version>
+    <time>1207164366</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="46">
+    <srcmd5>88b3782f0af9c51b65e2219a7df99bcc</srcmd5>
+    <version>3.1.0</version>
+    <time>1245365876</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="48">
+    <srcmd5>88b3782f0af9c51b65e2219a7df99bcc</srcmd5>
+    <version>3.1.0</version>
+    <time>1245365876</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="49">
+    <srcmd5>3d0bff6c8d9b6207352ffa5bda673334</srcmd5>
+    <version>3.1.0</version>
+    <time>1268924548</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="51">
+    <srcmd5>3d0bff6c8d9b6207352ffa5bda673334</srcmd5>
+    <version>3.1.0</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="52">
+    <srcmd5>3d0bff6c8d9b6207352ffa5bda673334</srcmd5>
+    <version>3.1.0</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8dd3cab51efa61fbf4aabecce3bdf726</srcmd5>
+    <version>3.5.0</version>
+    <time>1296607670</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59517 from user seife
+</comment>
+    <requestid>59517</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5298807e6cc020d81b882743aa9257c1</srcmd5>
+    <version>3.5.0</version>
+    <time>1296607682</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59517
+</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>5298807e6cc020d81b882743aa9257c1</srcmd5>
+    <version>3.5.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>5298807e6cc020d81b882743aa9257c1</srcmd5>
+    <version>3.5.0</version>
+    <time>1319182086</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>0243690c2497cc643de47c3dd89e0393</srcmd5>
+    <version>3.5.0</version>
+    <time>1323192205</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>0243690c2497cc643de47c3dd89e0393</srcmd5>
+    <version>3.5.0</version>
+    <time>1340183578</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>0243690c2497cc643de47c3dd89e0393</srcmd5>
+    <version>3.5.0</version>
+    <time>1359109261</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>4ca85a3c67b76e16314dc38eec61b255</srcmd5>
+    <version>3.5.0</version>
+    <time>1359452857</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections from specfile</comment>
+    <requestid>149935</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>46ff0b3dfe2a23522d0158eea0d6244c</srcmd5>
+    <version>4.0.0</version>
+    <time>1372325789</time>
+    <user>coolo</user>
+    <comment>- Update to 4.0.0:
+  * modify configuration APIs to use eXosip_set_option
+  * fix bug: do not create new PRACK if it already exist for an answer.
+  * use ephemaral port in standard TCP and TLS version.
+  * return tid number so that we can match the response event.
+  * use system independant time for osip_gettimeofday on unix platform.
+  * major API update: several &quot;struct eXosip_t&quot; can be
+    handled at the same time. This can be used to have several
+    transport layer running at the same time.
+  * many tiny other change. (forwarded request 180741 from Fisiu)</comment>
+    <requestid>181072</requestid>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>4ca85a3c67b76e16314dc38eec61b255</srcmd5>
+    <version>3.5.0</version>
+    <time>1374049510</time>
+    <user>coolo</user>
+    <comment>Revert the latest commit: linphone is not working yet with new
+exosip API: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=709860 (forwarded request 181816 from Fisiu)</comment>
+    <requestid>182381</requestid>
+  </revision>
+  <revision rev="20" vrev="16">
+    <srcmd5>4ca85a3c67b76e16314dc38eec61b255</srcmd5>
+    <version>3.5.0</version>
+    <time>1379662933</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="17">
+    <srcmd5>e2418948744c79ad5141d0e9635fb884</srcmd5>
+    <version>3.5.0</version>
+    <time>1398785729</time>
+    <user>coolo</user>
+    <comment>- libeXosip2-sslverifypaths.patch: set default SSL verify locations (bnc#871099)
+- build with -O2 (--disable-debug) (forwarded request 231888 from msmeissn)</comment>
+    <requestid>231997</requestid>
+  </revision>
+  <revision rev="22" vrev="19">
+    <srcmd5>e2418948744c79ad5141d0e9635fb884</srcmd5>
+    <version>3.5.0</version>
+    <time>1409301543</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b0cf0dca77ca356e0dfa012044d4610d</srcmd5>
+    <version>4.1.0</version>
+    <time>1410785427</time>
+    <user>coolo</user>
+    <comment>Update to 4.1.0, package requires specific version of libosip2 now. </comment>
+    <requestid>249070</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d1eb101e56befcf98e02b448f7323087</srcmd5>
+    <version>5.0.0</version>
+    <time>1515505939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561495</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>d1b5aecd2fc69e688a31496b692004c0</srcmd5>
+    <version>5.0.0</version>
+    <time>1524576911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600359</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9329e3598598ff2a10f41a0ecceee2a</srcmd5>
+    <version>2.1.0</version>
+    <time>1415953133</time>
+    <user>dimstar_suse</user>
+    <comment>Activate libqca-qt5 package</comment>
+    <requestid>260467</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f5f545619bd53955bdb58991a3ab8cc</srcmd5>
+    <version>2.1.0.3</version>
+    <time>1424121124</time>
+    <user>coolo</user>
+    <comment>- Update to 2.1.0.3
+  * Allow co-installability with Qt4 build
+- Remove conflict with libqca2-devel
+- Bump required cmake version to 2.8.12
+- Added ansi.diff, rh#1182200
+- Added 0001-Add-missing-QIODevice-include.patch, fixes build with
+  Qt 5.5</comment>
+    <requestid>286228</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f9189b17917700308bc465fa7358de70</srcmd5>
+    <version>2.1.1</version>
+    <time>1443897011</time>
+    <user>coolo</user>
+    <comment>- Update to 2.1.1
+  * No changelog provided
+- Drop Use-Q_SLOTS-Q_SIGNALS.patch and 0001-Add-missing-QIODevice-include.patch
+
+- Added Use-Q_SLOTS-Q_SIGNALS.patch from upstream: allow building
+  without QT_NO_KEYWORDS define</comment>
+    <requestid>336047</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a7a7400349e347d7644d104a19d1f4e1</srcmd5>
+    <version>2.1.1</version>
+    <time>1464689504</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398283</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>30a0a1be72095f8c7c97425fc7c0e0b6</srcmd5>
+    <version>2.1.1</version>
+    <time>1504896198</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519816</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>51cf6c073d133a3d9152d992dd28befa</srcmd5>
+    <version>2.1.3</version>
+    <time>1507391171</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530292</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5d4c7ddacfaa57d0309e2403076c8973</srcmd5>
+    <version>2.1.3</version>
+    <time>1508768357</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532956</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0f46ada767ea37c4855e1dfe62b1db7d</srcmd5>
+    <version>2.1.3</version>
+    <time>1514569671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560098</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>91f90f21972f9c93829bb9317370cff3</srcmd5>
+    <version>2.2.1</version>
+    <time>1556915781</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix source URL
+
+- Update to 2.2.1
+  * support for openssl 1.1
+  * support for AES GCM and AES CCM modes
+  * new base64 convenience functions
+  * new botan2 support
+  * new hkdf support
+  * various build improvements and (deprecation) cleanups
+- Drop patches merged upstream:
+  * 0001-Revert-tlsunittest-disable-some-ciphers.patch
+  * 0002-Disable-missed-openssl-cipher-suites.patch
+  * 0003-Add-support-for-OpenSSL-1.1.0.patch
+  * ansi.diff
+- Rename qca-2.1.3-fixDSA.patch to qca-2.2.1-fixDSA.patch and
+  rebase it
+- Re-enable pkcs11, there is no openssl conflict anymore
+- Don't hardcode the certstore path anymore, ca-certificates is
+  BuldRequired so this can be detected automatically
+
+- Fix segfault when creating DSA keys
+  * [qca-2.1.3-fixDSA.patch]
+  * bsc#1108634
+
+- Fix source URL
+
+- Update to 2.2.1
+  * support for openssl 1.1
+  * support for AES GCM and AES CCM modes
+  * new base64 convenience functions</comment>
+    <requestid>698222</requestid>
+  </revision>
+</revisionlist>

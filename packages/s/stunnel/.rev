@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9cb13543e4619cf5161a1ae2ec1d8d77</srcmd5>
+    <version>5.36</version>
+    <time>1477904125</time>
+    <user>dimstar_suse</user>
+    <comment>Submitting updated stunnel to openSUSE Factory</comment>
+    <requestid>437238</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a11f2c5c73b6cceb4f41b6cdf41f803c</srcmd5>
+    <version>5.38</version>
+    <time>1481272765</time>
+    <user>dimstar_suse</user>
+    <comment>update to 5.38 (forwarded request 444868 from stroeder)</comment>
+    <requestid>444872</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a09203e51409dd8497607f9cb1e1039b</srcmd5>
+    <version>5.39</version>
+    <time>1483555206</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>448532</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a665a6554a697d4c6a0b67493485583</srcmd5>
+    <version>5.40</version>
+    <time>1485769815</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453225</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>abafa8c9c11f3e2897fdca5f456b9b52</srcmd5>
+    <version>5.40</version>
+    <time>1486968677</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456147</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b4425d7db2509788167bf30520039000</srcmd5>
+    <version>5.41</version>
+    <time>1491469350</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484794</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ba7a1c0fdbad5e0c9631e68a6941d445</srcmd5>
+    <version>5.41</version>
+    <time>1491896772</time>
+    <user>maxlin_factory</user>
+    <comment>- Require package config for libsystemd to help the configure script
+  to detect and enable systemd socket activation (boo#1032557) 
+- Refresh patch stunnel-listenqueue-option.patch</comment>
+    <requestid>486002</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>786055985db7738fcc7d40a0f3f9cfbe</srcmd5>
+    <version>5.42</version>
+    <time>1503393005</time>
+    <user>dimstar_suse</user>
+    <comment>- add more verbose change log:
+  Version 5.42, 2017.07.16, urgency: HIGH
+- New features
+	* &quot;redirect&quot; also supports &quot;exec&quot; and not only &quot;connect&quot;.
+	* PKCS#11 engine DLL updated to version 0.4.7.
+- Bugfixes
+	* Fixed premature cron thread initialization causing hangs.
+	* Fixed &quot;verifyPeer = yes&quot; on OpenSSL &lt;= 1.0.1.
+	* Fixed pthreads support on OpenSolaris.
+- update to version 5.42
+</comment>
+    <requestid>517929</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b970b411241d8e86e32486281c9d0d77</srcmd5>
+    <version>5.42</version>
+    <time>1512386174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547614</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>be0f5bdccfa0b8f5565b0f244051a7d4</srcmd5>
+    <version>5.44</version>
+    <time>1517606496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571634</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4c663877a19b68d2a1e323f6550fa073</srcmd5>
+    <version>5.44</version>
+    <time>1517932203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573241</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>14b65f602d2922847c0b6b8cd38ba602</srcmd5>
+    <version>5.44</version>
+    <time>1518025332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573623</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0e4b121298f2327008c6378258942779</srcmd5>
+    <version>5.49</version>
+    <time>1542012299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648234</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>d2ab6d11b011bd3ee181e16f6d665a77</srcmd5>
+    <version>5.49</version>
+    <time>1551215962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678202</requestid>
+  </revision>
+</revisionlist>

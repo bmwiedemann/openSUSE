@@ -1,0 +1,5 @@
+<package name="sca-patterns-edir" project="openSUSE:Factory">
+  <title>Supportconfig Analysis Patterns for eDirectory</title>
+  <description>Supportconfig Analysis (SCA) appliance patterns to identify known issues relating to all versions of eDirectory</description>
+  <devel project="Novell:NTS:Unstable" package="sca-patterns-edir"/>
+</package>

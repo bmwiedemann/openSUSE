@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2aa1d082a30e97de721a544b4edd7f33</srcmd5>
+    <version>0.1.0</version>
+    <time>1543224286</time>
+    <user>dimstar_suse</user>
+    <comment>- guile-gcrypt at version 0.1.0 a dependency of guix
+</comment>
+    <requestid>650358</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3e8c608e5e716f50c78bea8192420f87</srcmd5>
+    <version>0.1.0</version>
+    <time>1564414333</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>719578</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="perl-String-Escape" project="openSUSE:Factory">
+  <title>Backslash escapes, quoted phrase, word elision, etc.</title>
+  <description>sorry, no description found</description>
+  <devel project="devel:languages:perl" package="perl-String-Escape"/>
+</package>

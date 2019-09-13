@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7f0fcdc3d694c66f130bf7e64ee9b6b</srcmd5>
+    <version>0.3</version>
+    <time>1485383028</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>447960</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4c2ccc9cdee3df57ab79de25268ee865</srcmd5>
+    <version>0.3.1</version>
+    <time>1494262996</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.1:
+  * Wrap notifications_registry lookup in try block not to show
+    irrelevant errors.
+  * Add LICENSE file.
+- Convert to singlespec.
+- Fix license.</comment>
+    <requestid>493199</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c1cf98b7fd0aabcadbf2095c68c09b76</srcmd5>
+    <version>0.3.1</version>
+    <time>1498995526</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build for Leap 42.3, which does not have a singlespec version
+  of python-dbus (boo#1046811).
+
+I'd like to submit this to Leap:42.3 as soon as it's get to Factory.</comment>
+    <requestid>507570</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>eca23d5fd0d0869c0ea1e627758205cc</srcmd5>
+    <version>0.3.1</version>
+    <time>1546535184</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call
+- Use singlespec everywhere as we rather update packages on older
+  releases to be singlespeced instead of using py2 only variants</comment>
+    <requestid>656832</requestid>
+  </revision>
+</revisionlist>

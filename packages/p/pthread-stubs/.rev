@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50b9db8c09d034bf20326fba092cacfa</srcmd5>
+    <version>0.3</version>
+    <time>1399317073</time>
+    <user>coolo</user>
+    <comment>Create package; added COPYING to %doc</comment>
+    <requestid>232228</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>50b9db8c09d034bf20326fba092cacfa</srcmd5>
+    <version>0.3</version>
+    <time>1409302764</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>354924cbf1b6114dae20ec2b82a65f52</srcmd5>
+    <version>0.4</version>
+    <time>1489866462</time>
+    <user>dimstar_suse</user>
+    <comment>- release 0.4
+  * This new release stops providing stubs, but instead expects
+    libc to do so. On platforms where this is not the case, 
+    &quot;-pthread&quot; is injected via our pkg-config file instead. This
+    was done to make loading libpthread (indirectly) via dlopen()
+    work correctly in the presence of pthread-stubs.</comment>
+    <requestid>479464</requestid>
+  </revision>
+</revisionlist>

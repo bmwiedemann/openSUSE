@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>461f3f1728960b904c74c191e8eea98d</srcmd5>
+    <version>0.0.1</version>
+    <time>1328712003</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>102907</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>461f3f1728960b904c74c191e8eea98d</srcmd5>
+    <version>0.0.1</version>
+    <time>1340183640</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>461f3f1728960b904c74c191e8eea98d</srcmd5>
+    <version>0.0.1</version>
+    <time>1359109359</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>461f3f1728960b904c74c191e8eea98d</srcmd5>
+    <version>0.0.1</version>
+    <time>1379663098</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>461f3f1728960b904c74c191e8eea98d</srcmd5>
+    <version>0.0.1</version>
+    <time>1409301725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>637cf3a2c22e2f4af78a0a4e7d6e1a82</srcmd5>
+    <version>0.3.20150131</version>
+    <time>1424255868</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286203</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>92edd66843a52dbcecc71f89ffd7d7dd</srcmd5>
+    <version>0.5.20150702</version>
+    <time>1450605136</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5.20150702
+  * Important bug fix issue #11 (missing file not included in 0v4).
+  * 2 Minor bug fixes caught on Coverity scan, free() and if c=3.
+  * Re-edit lib and tests to be more accommodating of older compilers.
+  * Verify libspiro output data is correct for test curves {0,1,2,4}.</comment>
+    <requestid>349191</requestid>
+  </revision>
+</revisionlist>

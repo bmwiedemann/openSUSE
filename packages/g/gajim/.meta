@@ -1,0 +1,23 @@
+<package name="gajim" project="openSUSE:Factory">
+  <title>Full-featured XMPP client written in Python and Gtk2</title>
+  <description>The goal of Gajim is to provide a full featured and easy to use Jabber/XMPP client. Gajim works nicely with MATE or GNOME, but does not require neither to run.
+
+Features:
+* Tabbed chat window and single window modes
+* Group chat support (with Multi-User Chat protocol), invitation, chat to group chat transformation, minimize group chat to roster
+* Emoticons, avatars, PEP (user activity, mood and tune)
+* Audio / video conferences
+* File transfer, room bookmarks
+* Metacontacts support
+* Trayicon, speller, extended chat history functionalities
+* TLS, GPG and End-To-End encryption support (with SSL legacy support)
+* Transport registration support
+* Service discovery including nodes, user search
+* Wikipedia, dictionary and search engine lookup
+* Multiple accounts support
+* DBus capabilities. Read more information
+* XML console
+* Link local (bonjour / zeroconf), BOSH
+* Other features via plugins</description>
+  <devel project="network" package="gajim"/>
+</package>

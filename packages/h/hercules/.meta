@@ -1,0 +1,13 @@
+<package name="hercules" project="openSUSE:Factory">
+  <title>Hercules IBM Mainframe Emulator</title>
+  <description>Hercules is an emulator for the IBM System/370, ESA/390, and
+z/Architecture series of mainframe computers. It is capable of running
+any IBM operating system and applications that a real system will run,
+as long as the hardwre needed is emulated. Hercules can emulate FBA and
+CKD DASD, tape, printer, card reader, card punch, channel-to-channel
+adapter, and printer-keyboard and 3270 terminal devices.
+
+Hercules information can be found on the web at
+http://www.conmicro.cx/hercules .</description>
+  <devel project="Emulators" package="hercules"/>
+</package>

@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dfbb03937539594a1d6304b053e07a8b</srcmd5>
+    <version>0.9991</version>
+    <time>1423732954</time>
+    <user>dimstar_suse</user>
+    <comment>Cool new package</comment>
+    <requestid>285098</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7cd57c2a6d87d39f8994b81e8fae5809</srcmd5>
+    <version>0.9992</version>
+    <time>1429346464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297761</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8c7d021340037f5a7e2fb56b4f01b260</srcmd5>
+    <version>0.9992</version>
+    <time>1450955789</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sqliteodbc-rpmlintrc
+  * this is not regular shared library but plugin for unixODBC</comment>
+    <requestid>349479</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ee6ea6a3de907ab176fdc622480af0c9</srcmd5>
+    <version>0.9992</version>
+    <time>1454921258</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing build dependencies</comment>
+    <requestid>357632</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d493e23ff04c39076b33007188d1eb4a</srcmd5>
+    <version>0.9992</version>
+    <time>1455701169</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>359485</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c81538272c422aa785206f508073e743</srcmd5>
+    <version>0.9993</version>
+    <time>1459936334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9223</comment>
+    <requestid>383736</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7ecf13926864f6c20bc49181f92c93da</srcmd5>
+    <version>0.9995</version>
+    <time>1481390955</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9225:
+	* update to SQLite 3.15.2
+	* don't statically buffer result of localeconv()
+	* increased some internal string buffers
+	* fixes in SQLSetPos() 
+	* fix locking in xpath module, thanks Abramo Bagnara
+- Changes for version 0.9994:
+	* update to SQLite 3.13.0
+	* fix to present file names with slashes to sqlite3_load_extension()</comment>
+    <requestid>445021</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0b62d07ca018d654692ac23e9ea8d01c</srcmd5>
+    <version>0.9996</version>
+    <time>1552985961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685965</requestid>
+  </revision>
+</revisionlist>

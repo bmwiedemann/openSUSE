@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b3f4ebe9daa3c170f2dfd72b04b30221</srcmd5>
+    <version>0.7.2</version>
+    <time>1515505925</time>
+    <user>dimstar_suse</user>
+    <comment>request to add latte-dock to openSUSE:Factory</comment>
+    <requestid>561424</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d2e19f30a0810553565e2db5653d151a</srcmd5>
+    <version>0.7.4</version>
+    <time>1521579570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588155</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>745b4360cddbbeb824ad001b02463a34</srcmd5>
+    <version>0.8.0</version>
+    <time>1532774431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624135</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9bb4cffdeed37fa4c5d3a3477938aab7</srcmd5>
+    <version>0.8.1</version>
+    <time>1537787553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636938</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0afd1d698fa8a06621da61302a72867e</srcmd5>
+    <version>0.8.2</version>
+    <time>1540819343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644961</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b8a16b1a831bb214030614f33b31b0b5</srcmd5>
+    <version>0.8.3</version>
+    <time>1543224696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651504</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b6f1645c865f5abbe4628f5f5ea8dbaa</srcmd5>
+    <version>0.8.4</version>
+    <time>1546246035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662054</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d43f1c50eaa5646b8f08842b493314e3</srcmd5>
+    <version>0.8.5</version>
+    <time>1548704925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668897</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c1effd4fd52dddb0a07770c1a4fd6345</srcmd5>
+    <version>0.8.6</version>
+    <time>1550402505</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676646</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>de13ed2a13a5d8a09db9eda4b37eebdb</srcmd5>
+    <version>0.8.7</version>
+    <time>1551687815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681068</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>efd9332f0c1ec787185a8345731b04f5</srcmd5>
+    <version>0.8.8</version>
+    <time>1555329601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694234</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8dc98bda23763ff1ef28867a99544131</srcmd5>
+    <version>0.8.9</version>
+    <time>1562159710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713124</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7fe1568cab290a2d96f4a3fa5004b4f6</srcmd5>
+    <version>0.9.1</version>
+    <time>1565694952</time>
+    <user>dimstar_suse</user>
+    <comment>- Include COPYING* as %license
+
+- Update to 0.9.1
+  * When preview windows left click action is used then for single
+    windows it is just activating them without triggering the
+    preview window (kde#410417)
+  * Consider the case when a horizontal and a vertical Latte
+    dock/panel are touching each other and the vertical one is
+    isBusy desktop background case, in such case the horizontal
+    view is also changing to isBusy state
+  * Fix blurred icons for items size that should not be blurred
+    e.g. 48px and &gt;=64px (kde#410365)
+  * Fix geometries calculation under !compositing environment
+    (kde#410370)
+  * Forward pressed/released event to applets even when parabolic
+    effect is enabled. The issue was pretty obvious with
+    lock/logout plasma applet (kde#410350)
+  * Update progress badge properly (kde#410318)
+  * Fix tasks icons pixelization when being dragged
+  * Wayland: show preview window for grouped tasks when clicked
+    (kde#410408)
+
+- Update to 0.9.0
+  * Smart Coloring
+    + maximum contrast with desktop background when needed
+    + use active or touching window color scheme to paint
+      dock/panel contents
+    + use reverse colors from plasma theme, meaning dark plasma
+      themes can provide also whitish docks/panels
+  * Self-packaged Indicators that can be installed from kde store</comment>
+    <requestid>721107</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>450b524f9c4265097239f7cd5022d2bb</srcmd5>
+    <version>0.9.2</version>
+    <time>1567849960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728575</requestid>
+  </revision>
+</revisionlist>

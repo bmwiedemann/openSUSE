@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="24">
+    <srcmd5>5a287be2bc9e39e5c0613b092e6be623</srcmd5>
+    <version>1.2.6</version>
+    <time>1168903141</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="230">
+    <srcmd5>000a853e43cd139a776ab92fec7d4fd6</srcmd5>
+    <version>1.2.6</version>
+    <time>1216997505</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="232">
+    <srcmd5>5dd4788760c70c5b26aca8580bb70d7d</srcmd5>
+    <version>1.2.6</version>
+    <time>1217200230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="258">
+    <srcmd5>45fba220c4a34e1bfccd3ff4023d091b</srcmd5>
+    <version>1.2.6</version>
+    <time>1245364569</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="260">
+    <srcmd5>45fba220c4a34e1bfccd3ff4023d091b</srcmd5>
+    <version>1.2.6</version>
+    <time>1245364569</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="261">
+    <srcmd5>9570a7f40cf6e6eb423fede3ca2d5de6</srcmd5>
+    <version>1.2.6</version>
+    <time>1268924139</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="263">
+    <srcmd5>9570a7f40cf6e6eb423fede3ca2d5de6</srcmd5>
+    <version>1.2.6</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="264">
+    <srcmd5>9570a7f40cf6e6eb423fede3ca2d5de6</srcmd5>
+    <version>1.2.6</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="265">
+    <srcmd5>0ea43d48360180324037465b7e04d9a4</srcmd5>
+    <version>1.2.6</version>
+    <time>1289839579</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52373 from user mvyskocil
+</comment>
+    <requestid>52373</requestid>
+  </revision>
+  <revision rev="10" vrev="266">
+    <srcmd5>43a62bff0040e398b39b7eb4fd03ef66</srcmd5>
+    <version>1.2.6</version>
+    <time>1289839590</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52373
+</comment>
+  </revision>
+  <revision rev="11" vrev="269">
+    <srcmd5>43a62bff0040e398b39b7eb4fd03ef66</srcmd5>
+    <version>1.2.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="271">
+    <srcmd5>43a62bff0040e398b39b7eb4fd03ef66</srcmd5>
+    <version>1.2.6</version>
+    <time>1319182014</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="272">
+    <srcmd5>f5fe7972c03d02585e4b552a60ee0d82</srcmd5>
+    <version>1.2.6</version>
+    <time>1323192044</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="274">
+    <srcmd5>f5fe7972c03d02585e4b552a60ee0d82</srcmd5>
+    <version>1.2.6</version>
+    <time>1340183488</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="276">
+    <srcmd5>f5fe7972c03d02585e4b552a60ee0d82</srcmd5>
+    <version>1.2.6</version>
+    <time>1359109126</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="277">
+    <srcmd5>d5e660053cb3f1f757143f73aa3433e1</srcmd5>
+    <version>1.2.6</version>
+    <time>1377430325</time>
+    <user>scarabeus_factory</user>
+    <comment>- don't build javadoc
+- use 1.5 source/target</comment>
+    <requestid>196074</requestid>
+  </revision>
+  <revision rev="17" vrev="279">
+    <srcmd5>d5e660053cb3f1f757143f73aa3433e1</srcmd5>
+    <version>1.2.6</version>
+    <time>1379662719</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="281">
+    <srcmd5>d5e660053cb3f1f757143f73aa3433e1</srcmd5>
+    <version>1.2.6</version>
+    <time>1409301287</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="282">
+    <srcmd5>625f7aa11c032639e26f375fbc527894</srcmd5>
+    <version>1.2.6</version>
+    <time>1507280103</time>
+    <user>dimstar_suse</user>
+    <comment>Build with whatever provides java-devel</comment>
+    <requestid>530817</requestid>
+  </revision>
+</revisionlist>

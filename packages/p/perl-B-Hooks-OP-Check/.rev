@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ecbc56380bf796effd0f3a3d62b7faeb</srcmd5>
+    <version>0.19</version>
+    <time>1324831087</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>97579</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ecbc56380bf796effd0f3a3d62b7faeb</srcmd5>
+    <version>0.19</version>
+    <time>1340183794</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>ecbc56380bf796effd0f3a3d62b7faeb</srcmd5>
+    <version>0.19</version>
+    <time>1359109599</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>ecbc56380bf796effd0f3a3d62b7faeb</srcmd5>
+    <version>0.19</version>
+    <time>1379663555</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>ecbc56380bf796effd0f3a3d62b7faeb</srcmd5>
+    <version>0.19</version>
+    <time>1409302166</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>02173adb8265ee297a92fd4a0e2f1afa</srcmd5>
+    <version>0.21</version>
+    <time>1495637466</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.21
+   see /usr/share/doc/packages/perl-B-Hooks-OP-Check/Changes</comment>
+    <requestid>497828</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>96960af88b9701b6915c409e16058e93</srcmd5>
+    <version>0.22</version>
+    <time>1503925464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514082</requestid>
+  </revision>
+</revisionlist>

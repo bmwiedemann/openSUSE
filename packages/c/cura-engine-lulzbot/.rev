@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3149cbfab08f8e4dedc6623d898bb1b0</srcmd5>
+    <version>3.2.16</version>
+    <time>1524238030</time>
+    <user>dimstar_suse</user>
+    <comment>For openSUSE:Factory:Staging:adi:21</comment>
+    <requestid>596115</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>53e99da3ef755e200f80276c4d38e55f</srcmd5>
+    <version>3.2.19</version>
+    <time>1525779541</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.19
+  * version update only
+
+- update to version 3.2.18
+  * version only
+
+- Link private lib_CuraEngine statically to binary
+- Use CMAKE_POSITION_INDEPENDENT_CODE instead of mangling CFLAGS</comment>
+    <requestid>605136</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>19b11cea48fb5abc51750399110c1662</srcmd5>
+    <version>3.2.20</version>
+    <time>1526372141</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>607034</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>60760681255dad218e8045dd98d80334</srcmd5>
+    <version>3.2.22</version>
+    <time>1531135739</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>621272</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6d90c64a96ae420e1836b0d437883fec</srcmd5>
+    <version>3.2.24</version>
+    <time>1533732756</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.24
+  * version update only
+
+- use upstream libArcus instead of lulzbot flavor
+
+- update to version 3.2.23
+  * version update only</comment>
+    <requestid>627594</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>121858b90d888bc86953262ecb336028</srcmd5>
+    <version>3.2.28</version>
+    <time>1537964635</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.28
+  * version update only
+  * obsoletes fix-build.patch</comment>
+    <requestid>638248</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>79bac62384a3a76e2af1a0277eff6f55</srcmd5>
+    <version>3.6.4</version>
+    <time>1551113549</time>
+    <user>coolo</user>
+    <comment>- fix 32bit build
+  * adding fix-32bit-build.patch
+
+- update to version 3.6.4
+  * no code changes
+
+- update to version 3.6.1
+  https://code.alephobjects.com/w/cura-lulzbot/
+- run test suite during build
+- Add fix-build.patch to use upstream libArcus lib
+
+- update to version 3.2.32
+  * version update only
+
+- update to version 3.2.29
+  * version update only</comment>
+    <requestid>677941</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9917672726f721c40b8aab6cf99eb773</srcmd5>
+    <version>3.6.5</version>
+    <time>1554833929</time>
+    <user>dimstar_suse</user>
+    <comment>3.6.5 update</comment>
+    <requestid>692494</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7f2119ec41cd6027c26fbe80af312eb2</srcmd5>
+    <version>3.6.9</version>
+    <time>1560800091</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with current libArcus
+- fix build with gcc9 (CuraEngine-gcc9.patch)
+
+- update to version 3.6.9
+   T7039: Fixed material first layer flow setting
+
+- update to version 3.6.8
+  * no code changes
+
+- update to version 3.6.7
+  * no code changes
+
+- update to version 3.6.6
+    T6357: Changed extruder switch mechanics
+    T5146: fixed extruder slowing if time &lt; min_layer_time</comment>
+    <requestid>710360</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b3aaf080e3eab0bf34c832796633d814</srcmd5>
+    <version>3.6.10</version>
+    <time>1561557873</time>
+    <user>dimstar_suse</user>
+    <comment>version 3.6.10</comment>
+    <requestid>712058</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>888a0aae69553acf87e03e57885e28ca</srcmd5>
+    <version>3.6.18</version>
+    <time>1565963493</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>724031</requestid>
+  </revision>
+</revisionlist>

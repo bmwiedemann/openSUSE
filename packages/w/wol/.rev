@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa64bef4221295bb9d5b6b7d1f24f2cd</srcmd5>
+    <version>0.7.1</version>
+    <time>1168904485</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="96">
+    <srcmd5>d6aa573c79dd3722cbad6f518c31266f</srcmd5>
+    <version>0.7.1</version>
+    <time>1203958129</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="97">
+    <srcmd5>3233d436c40035118538392ea966c933</srcmd5>
+    <version>0.7.1</version>
+    <time>1203988500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="137">
+    <srcmd5>3233d436c40035118538392ea966c933</srcmd5>
+    <version>0.7.1</version>
+    <time>1203988500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="138">
+    <srcmd5>1be6a9ae8b23d59c08f3fe7bbe30ad01</srcmd5>
+    <version>0.7.1</version>
+    <time>1245363704</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="140">
+    <srcmd5>1be6a9ae8b23d59c08f3fe7bbe30ad01</srcmd5>
+    <version>0.7.1</version>
+    <time>1245363704</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="141">
+    <srcmd5>c946d092bad983c18696125c9a0378ab</srcmd5>
+    <version>0.7.1</version>
+    <time>1268926503</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="143">
+    <srcmd5>c946d092bad983c18696125c9a0378ab</srcmd5>
+    <version>0.7.1</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="144">
+    <srcmd5>c946d092bad983c18696125c9a0378ab</srcmd5>
+    <version>0.7.1</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="147">
+    <srcmd5>c946d092bad983c18696125c9a0378ab</srcmd5>
+    <version>0.7.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="148">
+    <srcmd5>cc41696161b5c783484a52a5a99b867d</srcmd5>
+    <version>0.7.1</version>
+    <time>1316448465</time>
+    <user>lrupp</user>
+    <comment>Fixed typo in wol.spec (forwarded request 82226 from aturrini)</comment>
+    <requestid>82243</requestid>
+  </revision>
+  <revision rev="12" vrev="150">
+    <srcmd5>cc41696161b5c783484a52a5a99b867d</srcmd5>
+    <version>0.7.1</version>
+    <time>1319182570</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="151">
+    <srcmd5>1ad58411d22fb72ca52d6fd13d33a607</srcmd5>
+    <version>0.7.1</version>
+    <time>1323195194</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="153">
+    <srcmd5>1ad58411d22fb72ca52d6fd13d33a607</srcmd5>
+    <version>0.7.1</version>
+    <time>1340184325</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="155">
+    <srcmd5>1ad58411d22fb72ca52d6fd13d33a607</srcmd5>
+    <version>0.7.1</version>
+    <time>1359110574</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="156">
+    <srcmd5>43365f5ef11e3b56620fdf100f0061e3</srcmd5>
+    <version>0.7.1</version>
+    <time>1365174881</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162739 from namtrac)</comment>
+    <requestid>162784</requestid>
+  </revision>
+  <revision rev="17" vrev="158">
+    <srcmd5>43365f5ef11e3b56620fdf100f0061e3</srcmd5>
+    <version>0.7.1</version>
+    <time>1379664966</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="160">
+    <srcmd5>43365f5ef11e3b56620fdf100f0061e3</srcmd5>
+    <version>0.7.1</version>
+    <time>1409303645</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="161">
+    <srcmd5>b172bb955667ed6fae27166c45983817</srcmd5>
+    <version>0.7.1</version>
+    <time>1510836995</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh spec-file via spec-cleaner.
+- Add package wol-udev-rules for activation wol via magic packet on ethernet devices.
+- Separated localization files in a separate lang-package.
+</comment>
+    <requestid>541247</requestid>
+  </revision>
+  <revision rev="20" vrev="162">
+    <srcmd5>f12368dac47a40a988981f4118f30047</srcmd5>
+    <version>0.7.1</version>
+    <time>1520932955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585197</requestid>
+  </revision>
+</revisionlist>

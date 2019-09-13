@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a48a228000937cbeb32dc9cfc3d28d36</srcmd5>
+    <version>1.2.10+139</version>
+    <time>1439969377</time>
+    <user>dimstar_suse</user>
+    <comment>New python module to allow poertable executable files to be parsed.</comment>
+    <requestid>323885</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a82bc174f54f9a431e0f8fa5e96706ed</srcmd5>
+    <version>2017.11.5</version>
+    <time>1510661050</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>541564</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8568a739f4255ce052c419b281ecfc31</srcmd5>
+    <version>2018.8.8</version>
+    <time>1542889506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650574</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f54e1a4dde5ddc1e338279685d7918a6</srcmd5>
+    <version>2018.8.8</version>
+    <time>1545648064</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659547</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8bb4aca7cba3226c4d0b854b58152d73</srcmd5>
+    <version>2019.4.18</version>
+    <time>1556622225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697757</requestid>
+  </revision>
+</revisionlist>

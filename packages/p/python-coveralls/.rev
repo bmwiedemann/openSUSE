@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6de02584df9c3fb5a7a7777e294bb54a</srcmd5>
+    <version>1.2.0</version>
+    <time>1526371714</time>
+    <user>dimstar_suse</user>
+    <comment>Widely used test coverage tool</comment>
+    <requestid>603784</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>66a0235318f742f364b6353864c9b957</srcmd5>
+    <version>1.2.0</version>
+    <time>1528897058</time>
+    <user>maxlin_factory</user>
+    <comment>- Generalize the description for any use case and replace weird
+  non-telling phrases like &quot;ruin your security&quot;. (forwarded request 615079 from jengelh)</comment>
+    <requestid>615171</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b804f0fe5c33a690a80dae09127ee593</srcmd5>
+    <version>1.2.0</version>
+    <time>1544726523</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653995</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dc1a7338795d12a9a9777f369ea83b16</srcmd5>
+    <version>1.7.0</version>
+    <time>1554458319</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * api: support pull requests on buildkite (#197) (2700e3e2)
+  * cli: ensure upload failures trigger cli failures (16192b84)
+
+- Update to 1.6.0:
+  * too many to enumerate, see CHANGELOG.md
+- Run tests</comment>
+    <requestid>688727</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a0f817abd5a6fc317ddcc248656bd0c2</srcmd5>
+    <version>1.8.0</version>
+    <time>1560459778</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0:
+ * flag: allow disabling SSL verification
+ * git: fix support for case where git binary is missing</comment>
+    <requestid>709416</requestid>
+  </revision>
+</revisionlist>

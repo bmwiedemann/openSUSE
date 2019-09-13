@@ -1,0 +1,164 @@
+<revisionlist>
+  <revision rev="1" vrev="14">
+    <srcmd5>07d0c9dcb751fb411944c4d3cc8ab40a</srcmd5>
+    <version>0.28.0.0</version>
+    <time>1168903037</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="39">
+    <srcmd5>1081870ef7552655cb5af83a6fbafa59</srcmd5>
+    <version>0.28.0.0</version>
+    <time>1175169526</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="62">
+    <srcmd5>7eafc945cb98a2943e3ff6388c8de799</srcmd5>
+    <version>0.28.0.0</version>
+    <time>1181827761</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="63">
+    <srcmd5>51363e0dd30d23bb2d55f822c14b2be8</srcmd5>
+    <version>0.28.0.0</version>
+    <time>1181860356</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c9593b1bb7f38105ab7ff1b3c1c3c021</srcmd5>
+    <version>0.34.0.2</version>
+    <time>1186167269</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b8dfc561817a210d558afced7c81a05d</srcmd5>
+    <version>0.36.0.5</version>
+    <time>1206871345</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>df3fdbe0d7f1624e9a8c1c001e327257</srcmd5>
+    <version>0.36.0.11</version>
+    <time>1218675274</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="20">
+    <srcmd5>1d5ef8a3e5dfcfa5793134e95d9f8080</srcmd5>
+    <version>0.36.0.11</version>
+    <time>1224003855</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>10e260458b480208f6afd2039e5bbc81</srcmd5>
+    <version>0.38.0.4</version>
+    <time>1239101838</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>38a552184e4dbad7b026d510f0a8889e</srcmd5>
+    <version>0.40.0.1</version>
+    <time>1250906111</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/ikvm based on submit request 18451 from user ajorgensen
+</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>38a552184e4dbad7b026d510f0a8889e</srcmd5>
+    <version>0.40.0.1</version>
+    <time>1250906111</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/ikvm based on submit request 18451 from user ajorgensen
+</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>996e6b43e88585f8a248db289fa13192</srcmd5>
+    <version>0.40.0.1</version>
+    <time>1268924003</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>996e6b43e88585f8a248db289fa13192</srcmd5>
+    <version>0.40.0.1</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>996e6b43e88585f8a248db289fa13192</srcmd5>
+    <version>0.40.0.1</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>996e6b43e88585f8a248db289fa13192</srcmd5>
+    <version>0.40.0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>19aa449fcf071ee061fc4bb1b6b66d48</srcmd5>
+    <version>0.44.0.5</version>
+    <time>1306158752</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>66989</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>6fefe659d2c5ac1fa35a61b935d9820b</srcmd5>
+    <version>0.44.0.5</version>
+    <time>1306158778</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 66989
+</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>6fefe659d2c5ac1fa35a61b935d9820b</srcmd5>
+    <version>0.44.0.5</version>
+    <time>1319181986</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>68439ecc82a8e5aea1f9a2c9c5c4d56c</srcmd5>
+    <version>0.44.0.5</version>
+    <time>1323191956</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>68439ecc82a8e5aea1f9a2c9c5c4d56c</srcmd5>
+    <version>0.44.0.5</version>
+    <time>1340183457</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>68439ecc82a8e5aea1f9a2c9c5c4d56c</srcmd5>
+    <version>0.44.0.5</version>
+    <time>1359109075</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>68439ecc82a8e5aea1f9a2c9c5c4d56c</srcmd5>
+    <version>0.44.0.5</version>
+    <time>1379662661</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="13">
+    <srcmd5>68439ecc82a8e5aea1f9a2c9c5c4d56c</srcmd5>
+    <version>0.44.0.5</version>
+    <time>1409301219</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b82a79b5cdc19339228a0c521dde40fb</srcmd5>
+    <version>8.0.5449.1</version>
+    <time>1422024440</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282462</requestid>
+  </revision>
+</revisionlist>

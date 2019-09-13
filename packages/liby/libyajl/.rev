@@ -1,0 +1,179 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>514b14a490b6673a0b4b9a14599d9ebe</srcmd5>
+    <version>1.0.11</version>
+    <time>1295149382</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>514b14a490b6673a0b4b9a14599d9ebe</srcmd5>
+    <version>1.0.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>89026dbcafe8fa8a40f182bd60e3bb4b</srcmd5>
+    <version>1.0.11</version>
+    <time>1302508931</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66555 from user coolo
+</comment>
+    <requestid>66555</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>6b5810e8dcd4ccc7f3eaa04a641d01ff</srcmd5>
+    <version>1.0.11</version>
+    <time>1302508939</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66555
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>fdcde1da2691511fd881a34162a1f083</srcmd5>
+    <version>1.0.11</version>
+    <time>1307370412</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>72070</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>622e7c21c5b8227fed1dbd976b523bc4</srcmd5>
+    <version>1.0.11</version>
+    <time>1307370420</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72070
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4aeadc0f0be561166942f7c87d9344ec</srcmd5>
+    <version>2.0.1</version>
+    <time>1313397641</time>
+    <user>saschpe</user>
+    <comment>- update to 2.0.1</comment>
+    <requestid>78666</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>30c2bfed11642915e5fec3b84923d919</srcmd5>
+    <version>2.0.1</version>
+    <time>1313397649</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78666
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7c9711573b33a29f045095553d699a5f</srcmd5>
+    <version>2.0.1</version>
+    <time>1313655463</time>
+    <user>saschpe</user>
+    <comment>- bump baselibs.conf</comment>
+    <requestid>79054</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>ab0ba7c8169f3c5678d13e9b301c4dec</srcmd5>
+    <version>2.0.1</version>
+    <time>1313655474</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79054
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>b764d303bf2b61810404f56a8db284c6</srcmd5>
+    <version>2.0.1</version>
+    <time>1316447669</time>
+    <user>lrupp</user>
+    <comment>- Add libyajl-devel to baselibs (forwarded request 82537 from jengelh)</comment>
+    <requestid>82542</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>b764d303bf2b61810404f56a8db284c6</srcmd5>
+    <version>2.0.1</version>
+    <time>1319182149</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>92376280a51c62811b94354e3c813307</srcmd5>
+    <version>2.0.1</version>
+    <time>1323192389</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>06ee05b67713e61e0bc22b3e0719d143</srcmd5>
+    <version>2.0.1</version>
+    <time>1329242603</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104003</requestid>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>06ee05b67713e61e0bc22b3e0719d143</srcmd5>
+    <version>2.0.1</version>
+    <time>1340183659</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>06ee05b67713e61e0bc22b3e0719d143</srcmd5>
+    <version>2.0.1</version>
+    <time>1359109383</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>06ee05b67713e61e0bc22b3e0719d143</srcmd5>
+    <version>2.0.1</version>
+    <time>1379663142</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>06ee05b67713e61e0bc22b3e0719d143</srcmd5>
+    <version>2.0.1</version>
+    <time>1409301773</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>faaf9baf32a36ef8f79a2a1545721a61</srcmd5>
+    <version>2.1.0</version>
+    <time>1415288983</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259773</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>827f85e82256e985ce925df9448ffde2</srcmd5>
+    <version>2.1.0</version>
+    <time>1430246566</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>304052</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>c843bfeee58e447dde4236f280eab5ee</srcmd5>
+    <version>2.1.0</version>
+    <time>1522403877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591552</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>d933c4dcd1c1091a33374637e8c970fb</srcmd5>
+    <version>2.1.0</version>
+    <time>1554372259</time>
+    <user>dimstar_suse</user>
+    <comment>- Install pkgconfig into libdir instead of datadir with libyajl-pkgconfig.patch
+- Use autosetup and cmake_build macro
+- Rename macro soname to sover</comment>
+    <requestid>690893</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>311cf8b4a7c3cacdbf39da80d1cef7ab</srcmd5>
+    <version>2.1.0</version>
+    <time>1567677811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720526</requestid>
+  </revision>
+</revisionlist>

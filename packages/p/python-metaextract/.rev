@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b981a95919ee512e9990e59d2c70935</srcmd5>
+    <version>0.0.6</version>
+    <time>1476350866</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>423646</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8fc587297dd75693cafc9dfffea308d9</srcmd5>
+    <version>0.0.7</version>
+    <time>1477644374</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>436510</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b1b24141ac1ea58bfb1283812e5a4031</srcmd5>
+    <version>0.0.9</version>
+    <time>1488322307</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 0.0.9
+  * Improve tests with extras_require
+  * Fix documentation link in README
+  * Post release version bump to 0.0.9
+  * Support &quot;python_requires&quot;
+  * Use same version for doc and sdist
+  * Add doc badge to README
+  * Use already used python interpreter
+  * Post release version bump to 0.0.8
+  * Use Sphinx to build documentation</comment>
+    <requestid>460992</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5d9904cbdfb340588ee535b264698a6d</srcmd5>
+    <version>1.0.0</version>
+    <time>1488408225</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 1.0.0
+  * Allow to specify the used python interpreter
+  * Fix utils import in python3 case
+  * Post release version bump to 1.0.0</comment>
+    <requestid>461143</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5714538fffc535cd9547e8521fa27ec0</srcmd5>
+    <version>1.0.2</version>
+    <time>1493235814</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 1.0.2
+  * Fix entrypoint typo 'metaextact'</comment>
+    <requestid>490296</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7d52ba96ccb98c8adc95eb7358f5d2e5</srcmd5>
+    <version>1.0.2</version>
+    <time>1494262949</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491671</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c61f0a37b52985c5fa24411f228f035a</srcmd5>
+    <version>1.0.3</version>
+    <time>1505920153</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3:
+  * Release 1.0.3
+  * Test python 3.6 instead of 3.5
+  * Fix json serialization for dict_items on py3 (#4)</comment>
+    <requestid>527030</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>153b1aedbcb2647c819c13aebfba22b6</srcmd5>
+    <version>1.0.4</version>
+    <time>1530303848</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.4:
+  * Convert sets used in entry_points to lists
+  * Fix unittests
+  * Post release version bump to 1.0.4
+- use %license macro</comment>
+    <requestid>615426</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>715bdf853ab4bae7019d70a1f288067f</srcmd5>
+    <version>1.0.5</version>
+    <time>1542012134</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.5:
+  * Add more key from setup.py to output
+  * tests: Only check expected key/value pairs
+  * Post release version bump to 1.0.5</comment>
+    <requestid>647637</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>85e035596c9200c30a9ac44cbad3420f</srcmd5>
+    <version>1.0.5</version>
+    <time>1545647980</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659493</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>729aa1d4035614b814457d9caf3cf05e</srcmd5>
+    <version>1.0.5</version>
+    <time>1554458227</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>687611</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>7620e4651cdf82641c1538baa7ff8214</srcmd5>
+    <version>1.0.5</version>
+    <time>1561406012</time>
+    <user>dimstar_suse</user>
+    <comment>- run the testsuite in %check</comment>
+    <requestid>711683</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5c821cca3ae4caa5900e22cbed3ab7f3</srcmd5>
+    <version>1.0.6</version>
+    <time>1565267036</time>
+    <user>dimstar_suse</user>
+    <comment>- Capitalize summary to make rpmlint happy
+
+- update to 1.0.6:
+  * Switch to python 3.7
+  * travis: Use py36 for pep8 tox env
+  * Fix tests when using pytest &gt;= 5</comment>
+    <requestid>721692</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6d27e68b9d25079ba2962f49621bca46</srcmd5>
+    <version>1.0.6</version>
+    <time>1566900093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726395</requestid>
+  </revision>
+</revisionlist>

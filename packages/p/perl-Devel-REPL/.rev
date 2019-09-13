@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b234ed419f0b9b9482594b857e1067a3</srcmd5>
+    <version>1.003012</version>
+    <time>1325767744</time>
+    <user>coolo</user>
+    <comment>already reviewed by legal-team</comment>
+    <requestid>98484</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5eb6db482d304c669431ab62db777eb5</srcmd5>
+    <version>1.003013</version>
+    <time>1338903241</time>
+    <user>coolo</user>
+    <comment>- updated to 1.003013
+  - Make Sys::SigAction optional dependency for Win32 systems
+  - Apply some plugin related patchs from Caleb Cushing</comment>
+    <requestid>123333</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5eb6db482d304c669431ab62db777eb5</srcmd5>
+    <version>1.003013</version>
+    <time>1340183831</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c9e7e57912e3d30935192f481aed2cd0</srcmd5>
+    <version>1.003014</version>
+    <time>1354529820</time>
+    <user>coolo</user>
+    <comment>- updated to 1.003014
+   - now using native Moose attribute traits, instead of the deprecated
+     MooseX::AttributeHelper (thanks, Justin Hunter!)
+   - now using namespace::autoclean rather than namespace::clean (thanks, Karen
+     Etheridge!)</comment>
+    <requestid>143719</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c9e7e57912e3d30935192f481aed2cd0</srcmd5>
+    <version>1.003014</version>
+    <time>1359109648</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>c9e7e57912e3d30935192f481aed2cd0</srcmd5>
+    <version>1.003014</version>
+    <time>1379663646</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cbd73a3063852724efcc89ec07b67fe6</srcmd5>
+    <version>1.003025</version>
+    <time>1385704999</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208411</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>cbd73a3063852724efcc89ec07b67fe6</srcmd5>
+    <version>1.003025</version>
+    <time>1409302261</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>26836ba76ec3ef3c9a6ecbac466b546e</srcmd5>
+    <version>1.003026</version>
+    <time>1410967533</time>
+    <user>coolo</user>
+    <comment>- updated to 1.003026
+  - fix inclusion of of optional plugin prereqs when installation is run
+    non-interactively</comment>
+    <requestid>249338</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d64d1230823898c86fc73641d94e0af1</srcmd5>
+    <version>1.003027</version>
+    <time>1453508202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355234</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>31ba334133d2cb5dcda2db4a113ceab7</srcmd5>
+    <version>1.003028</version>
+    <time>1456434282</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360658</requestid>
+  </revision>
+</revisionlist>

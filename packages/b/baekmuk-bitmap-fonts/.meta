@@ -1,0 +1,6 @@
+<package name="baekmuk-bitmap-fonts" project="openSUSE:Factory">
+  <title>Baekmuk Fonts (Korean Fonts for the X Window System, Bitmap Version)</title>
+  <description>Baekmuk Fonts (Korean fonts for the X Window System, bitmap version).
+</description>
+  <devel project="M17N:fonts" package="baekmuk-bitmap-fonts"/>
+</package>

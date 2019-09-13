@@ -1,0 +1,683 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>461e25535696adf4e9e48ec20e921d86</srcmd5>
+    <version>22.3</version>
+    <time>1166483853</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="27">
+    <srcmd5>38a3855d7f1ae9e977b3ca7dd2ea80a8</srcmd5>
+    <version>22.3</version>
+    <time>1175185568</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5fa96666fb7a85611c50737e4f2a2f9d</srcmd5>
+    <version>22.5</version>
+    <time>1177595515</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>987f080d57e10cb9a7bd312e37c37046</srcmd5>
+    <version>22.5</version>
+    <time>1177606692</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="31">
+    <srcmd5>2aad8809e77c66ee608404c4f5288410</srcmd5>
+    <version>22.5</version>
+    <time>1191537508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef0b62f7f2330d89cc4700a2ad71adea</srcmd5>
+    <version>22.6</version>
+    <time>1198098841</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="28">
+    <srcmd5>bd769ca3e65a53f2a49fd9d1fa39d052</srcmd5>
+    <version>22.6</version>
+    <time>1211422474</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="42">
+    <srcmd5>8cbf6c8666076222a2886bb566ca2d20</srcmd5>
+    <version>22.6</version>
+    <time>1218154450</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="49">
+    <srcmd5>86c818ac751e64538b0ff3593e51bc01</srcmd5>
+    <version>22.6</version>
+    <time>1219429032</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="52">
+    <srcmd5>3d4c233d60b25bb121d3fb6cb0b54765</srcmd5>
+    <version>22.6</version>
+    <time>1220275979</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="59">
+    <srcmd5>fa84854b5a6d3883942ba9a88d1b8e25</srcmd5>
+    <version>22.6</version>
+    <time>1222269901</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="60">
+    <srcmd5>7a23a23a166399dbd520b61acb1dfae0</srcmd5>
+    <version>22.6</version>
+    <time>1223309323</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="61">
+    <srcmd5>1f786229898e5fe9c10f14d5b5c10be6</srcmd5>
+    <version>22.6</version>
+    <time>1223571702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="62">
+    <srcmd5>a23fa9bacf424f69615e2e8dc4e6f8db</srcmd5>
+    <version>22.6</version>
+    <time>1236786245</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="63">
+    <srcmd5>ac2c0e02c1ac8a54596b1e8d5ce69609</srcmd5>
+    <version>22.6</version>
+    <time>1237304936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="64">
+    <srcmd5>f190748c395c9da6a35f5236affc720b</srcmd5>
+    <version>22.6</version>
+    <time>1238686150</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5590cf584f2f8757c753cf22c8caedd3</srcmd5>
+    <version>22.7</version>
+    <time>1242416810</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>19b32a728c641256af581a17a9f19135</srcmd5>
+    <version>22.7</version>
+    <time>1243463266</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>97dd3a527d655cb4d208d25c218248bc</srcmd5>
+    <version>22.7</version>
+    <time>1247843210</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>cef789c85a1f00f13ee3bfeff58cdc5c</srcmd5>
+    <version>22.7</version>
+    <time>1250176638</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/psmisc based on submit request 17311 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>745f5dd3fd1999ff1534b5198c038ecb</srcmd5>
+    <version>22.7</version>
+    <time>1252579231</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/psmisc based on submit request 20293 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>2288104d58f270ae3ef7b8b3b4a69b37</srcmd5>
+    <version>22.7</version>
+    <time>1255358831</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/psmisc based on submit request 22183 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>e4d964bce7a968a462494b5cd70ad051</srcmd5>
+    <version>22.7</version>
+    <time>1255373931</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/psmisc based on submit request 22288 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>e4d964bce7a968a462494b5cd70ad051</srcmd5>
+    <version>22.7</version>
+    <time>1255373931</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/psmisc based on submit request 22288 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>87e03a81d70ce29a89ad272b66d301bd</srcmd5>
+    <version>22.7</version>
+    <time>1263480454</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/psmisc based on submit request 29429 from user coolo
+</comment>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>0824220969027338017134b9a08c713c</srcmd5>
+    <version>22.7</version>
+    <time>1267751150</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/psmisc based on submit request 33904 from user WernerFink
+</comment>
+    <requestid>33904</requestid>
+  </revision>
+  <revision rev="27" vrev="12">
+    <srcmd5>4e64451f3353d0844efb52fc3d71f2fd</srcmd5>
+    <version>22.7</version>
+    <time>1268925802</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="28" vrev="14">
+    <srcmd5>4e64451f3353d0844efb52fc3d71f2fd</srcmd5>
+    <version>22.7</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="29" vrev="15">
+    <srcmd5>4e64451f3353d0844efb52fc3d71f2fd</srcmd5>
+    <version>22.7</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>376b222ab019b4144a0caab72c4d436a</srcmd5>
+    <version>22.12</version>
+    <time>1279541864</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/psmisc based on submit request 42883 from user WernerFink
+</comment>
+    <requestid>42883</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1d43498adfff3e8c455f31f5fd654aee</srcmd5>
+    <version>22.13</version>
+    <time>1284990506</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/psmisc based on submit request 48511 from user prusnak
+</comment>
+    <requestid>48511</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>8b868c79e1b2ce610b21017a8879cbb2</srcmd5>
+    <version>22.13</version>
+    <time>1287153851</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/psmisc based on submit request 50811 from user WernerFink
+</comment>
+    <requestid>50811</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>7c5afaa323c8c276371ab2627d8ceb4e</srcmd5>
+    <version>22.13</version>
+    <time>1297386451</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60389 from user WernerFink
+</comment>
+    <requestid>60389</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>647c5c0835c3dcbf4c90e5b3f60793a3</srcmd5>
+    <version>22.13</version>
+    <time>1297386465</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60389
+</comment>
+  </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>647c5c0835c3dcbf4c90e5b3f60793a3</srcmd5>
+    <version>22.13</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7866be087557ebba712ee97135e161cc</srcmd5>
+    <version>22.14</version>
+    <time>1309249778</time>
+    <user>saschpe</user>
+    <comment>Update to version 22.14:</comment>
+    <requestid>74716</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>266a8a9cb75019f177a0472ec1e141c5</srcmd5>
+    <version>22.14</version>
+    <time>1309249795</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74716
+</comment>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>9d2586b8771c06ab463205858f20ad48</srcmd5>
+    <version>22.14</version>
+    <time>1315909855</time>
+    <user>saschpe</user>
+    <comment>- Update to pre version 22.15
+  + Really apply patch for SF#31110178 RH#651794
+  + Conditionally use fork before stat calls
+  + Patch from Corrina Vinschen for compiling on cygwin
+  + Remove doubled content in src/lists.h
+  + Add another 2 for thread brackets in pstree.c
+- Change fork before stat calls to be in best case a second process
+  using two pipes for bidirectional communication with main.</comment>
+    <requestid>81924</requestid>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>9c09515332f69649ef9545f0135a6bd1</srcmd5>
+    <version>22.14</version>
+    <time>1315909860</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81924
+</comment>
+  </revision>
+  <revision rev="40" vrev="5">
+    <srcmd5>23e8cc6209bbe16170fe4d14474a94e3</srcmd5>
+    <version>22.14</version>
+    <time>1317212744</time>
+    <user>saschpe</user>
+    <comment>- back out the timeout patch, it breaks fuser on i586 completely
+  (bnc#720882)</comment>
+    <requestid>85293</requestid>
+  </revision>
+  <revision rev="41" vrev="6">
+    <srcmd5>983c556d0a3e1c6e62d7d84d5cf6fe2c</srcmd5>
+    <version>22.14</version>
+    <time>1317740459</time>
+    <user>oertel</user>
+    <comment>- Fix segfault in pstree, patch by Tetsuo Handa (bnc#718915). (forwarded request 86232 from michal-m)</comment>
+    <requestid>86251</requestid>
+  </revision>
+  <revision rev="42" vrev="7">
+    <srcmd5>ae7b18ba55bbc0f54e221d63cb8c6adf</srcmd5>
+    <version>22.14</version>
+    <time>1317829647</time>
+    <user>lrupp</user>
+    <comment>- Handle internal size of structure stat by including config.h
+  to avoid size missmatch during copy result back (bnc#720882)</comment>
+    <requestid>86648</requestid>
+  </revision>
+  <revision rev="43" vrev="8">
+    <srcmd5>0a855703c3b287c3baa7a8982a94a30a</srcmd5>
+    <version>22.14</version>
+    <time>1318000054</time>
+    <user>oertel</user>
+    <comment>- Make main fuser process more robust against broken pipe and check
+  for helper process within a SIGCHLD handler</comment>
+    <requestid>87071</requestid>
+  </revision>
+  <revision rev="44" vrev="9">
+    <srcmd5>8f2757dab1d1f889d1264439dc6d8923</srcmd5>
+    <version>22.14</version>
+    <time>1318350119</time>
+    <user>lrupp</user>
+    <comment>- Use __builtin___strcpy_ instead of __builtin___strcpy_chk to avoid
+  trouble with char path[0] tag in struct handle (bnc#723304)</comment>
+    <requestid>87410</requestid>
+  </revision>
+  <revision rev="45" vrev="11">
+    <srcmd5>8f2757dab1d1f889d1264439dc6d8923</srcmd5>
+    <version>22.14</version>
+    <time>1319182373</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="46" vrev="12">
+    <srcmd5>f221a9fb40e1400f3bf2c891a956bd5e</srcmd5>
+    <version>22.14</version>
+    <time>1326292673</time>
+    <user>coolo</user>
+    <comment>Update tarball from upstream. (forwarded request 99411 from a_jaeger)</comment>
+    <requestid>99412</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>bbadb2c1aaca34de5d501dd4a51c9081</srcmd5>
+    <version>22.16</version>
+    <time>1330434900</time>
+    <user>coolo</user>
+    <comment>- Update to version 22.16
+  * Use strncpy for COMM_LEN and make it 18 characters to cover
+    brackets in name.
+  * don't change COMM_LEN, it breaks matching long commands
+    Debian #661145
+  * Enable some harden AM_CFLAGS by default, use configure option
+    --disable-harden-flags to not use it.
+  * Use ENOENT not EBADE for FreeBSD Debian #631566
+  * Fix prstat typos
+  * Stop zombies by using waitpid Ubuntu #876387 by Peter Holik, SF#3429674
+  * Fixed minor older/younger typo in killall.1 thanks to Maikel Linke
+  * Correct defines for timeout in configure.ac</comment>
+    <requestid>107198</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>67e819ffe514bf979b460687df1b224b</srcmd5>
+    <version>22.16</version>
+    <time>1332148338</time>
+    <user>coolo</user>
+    <comment>- Submit ASCII null fix in pstree upsrtream
+- Submit support for static background process for stat system call
+  upstream
+- Rebuild package with upstream patches</comment>
+    <requestid>109130</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>67e819ffe514bf979b460687df1b224b</srcmd5>
+    <version>22.16</version>
+    <time>1340184021</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>fa9c0bd41d609ec023eaacb0a0e5b15f</srcmd5>
+    <version>22.20</version>
+    <time>1356098537</time>
+    <user>coolo</user>
+    <comment>- Update to version 22.20 + upstream patch 
+  * Make usage of linked lists of devices found in
+    /proc/self/mountinfo optional
+  * Make timeout() in timeout.c work with shared mmap to
+    reduce the load due write/read the stat buffers
+  * Add list_sort() to lists.h to be able to sort lists
+  * pstree sorts properly on names Debian #682014
+  * fuser -m regresion fixed SF #3559232, thanks to hanpt
+  * pstree finds orphaned processes SF#3537508
+  * fuser finds unix sockets again SF #3502649
+  * pstree finds pid 0 stops looping Debian #687829
+  * killall with no args exits again SF #3536526
+  * Added AC_CANONICAL_TARGET for target_os Debian #673485
+  * sed doesn't have [0-9]+ replace with [0-9][0-9]*
+  * assert in killall triggered for small lifetimes Debian #628617
+  * killall MAX_NAMES off by one Debian #677428
+  * Removed remaining parts of pidof
+  * fuser uses correct timeout_stat define Debian #661723
+  * fuser is not compiled on hurd-i386 Debian #673485
+  * No TEXTRELS in src/lists built as PIE on x86
+  * Fake pstree root for kernels with hidepid turned on
+  * More fixes for Cygwin SF Patch #3511920
+  * pstree can show PGIDs SF Patch #3471056
+- This should fix the bug reported by Madhu</comment>
+    <requestid>145783</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>fa9c0bd41d609ec023eaacb0a0e5b15f</srcmd5>
+    <version>22.20</version>
+    <time>1359109961</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>e4c8d4c415fc2dbb9ca2a4b9a7586d8b</srcmd5>
+    <version>22.20</version>
+    <time>1360577402</time>
+    <user>coolo</user>
+    <comment>- peekfd hasn't been ported to aarch64 yet (forwarded request 155004 from Andreas_Schwab)</comment>
+    <requestid>155067</requestid>
+  </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>e4c8d4c415fc2dbb9ca2a4b9a7586d8b</srcmd5>
+    <version>22.20</version>
+    <time>1379664081</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="54" vrev="7">
+    <srcmd5>ac0b15b1a8e4950696668a0f9d23647e</srcmd5>
+    <version>22.20</version>
+    <time>1382035093</time>
+    <user>scarabeus_factory</user>
+    <comment>- peekfd-m68k.patch: Port peekfd to m68k (forwarded request 203580 from Andreas_Schwab)</comment>
+    <requestid>203605</requestid>
+  </revision>
+  <revision rev="55" vrev="8">
+    <srcmd5>22b024adcdf4bdb9c4da7245d6ba1587</srcmd5>
+    <version>22.20</version>
+    <time>1382618483</time>
+    <user>scarabeus_factory</user>
+    <comment>Some improvements (forwarded request 204437 from posophe)</comment>
+    <requestid>204495</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>31ed2ee33b39eb1a3c80ae989b9561b2</srcmd5>
+    <version>22.21</version>
+    <time>1395897359</time>
+    <user>coolo</user>
+    <comment>- Update to version 22.21
+  * Missing comma in fuser(1) added Debian #702391
+  * pstree uses COLUMN env variable Debian #717017
+  * pstree shows proper thread names SF Bug#57
+  * pstree shows namespace options SF Patch#30
+  * killall.1 minor fixes SF Bug#59
+  * peekfd for m68k SF Patch#31
+  * Fixing some derefefed pointers SF Patch#32
+  * Minor typos in man pages SF Bug#61 Bug#60
+  * fuser -m and -M flags work either way Debian #606178
+- Remove patch
+  psmisc-22.20-pstree.patch as now part of upstream
+  peekfd-m68k.patch as now part of upstream
+- Port the patches
+  psmisc-22.20-upstream.patch which becomes psmisc-22.21-upstream.patch
+  psmisc-22.20.dif which becomes psmisc-22.21.dif
+  psmisc-22.12-pstree.patch which becomes psmisc-22.21-pstree.patch</comment>
+    <requestid>227334</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>7d7a7402dbe1b826ad544096415b24a9</srcmd5>
+    <version>22.21</version>
+    <time>1398499123</time>
+    <user>coolo</user>
+    <comment>- add patch to fix fuser -M option active all the time (bnc#874983)
+  psmisc-git-3638cc55b4d08851faba46635d737b24d016665b.patch (forwarded request 231322 from oertel)</comment>
+    <requestid>231389</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>7d7a7402dbe1b826ad544096415b24a9</srcmd5>
+    <version>22.21</version>
+    <time>1409302760</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>e87a2dc04175cf1e2d6575801d8ea078</srcmd5>
+    <version>22.21</version>
+    <time>1428192204</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>293786</requestid>
+  </revision>
+  <revision rev="60" vrev="6">
+    <srcmd5>70660a65de74b2cc287bac89e00fd732</srcmd5>
+    <version>22.21</version>
+    <time>1432377800</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308332</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>240c3cc35f07af0b1734f4473e880165</srcmd5>
+    <version>23.0</version>
+    <time>1498286049</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 23.0
+  * killall: Fix process age race condition !11 Debian #822861
+  * killall: only use scope of current namespace by default
+  * killall: better parsing of command names
+  * pstree: add cgroup namespaces !10
+  * peekfd: Help give long options too !5
+  * killall: correctly report when 32+ procs match !8
+  * prtat: Remove duplicate options in man page !3 Debian #846387
+  * pslog: New program to check what logs are open merge !1
+  * fuser: increase path length for octal escaping SF [#37]
+  * Make usage of linked lists of devices found in
+    /proc/self/mountinfo optional
+  * Make timeout() in timeout.c work with shared mmap to
+    reduce the load due write/read the stat buffers
+  * Add list_sort() to lists.h to be able to sort lists
+  * fuser: Fixed typo for  -M flag. Debian #740275
+  * pstree: by default doesn't show threadnames, use -t to show
+    as it disables compaction. SF [#33] Debian #815902
+  * pstree: Removed need for PATH_MAX Debian #750405
+  * pstree: ignores disappeared processes. SF [#34]
+  * killall: -o and -y work with -r flags. SF [#64]
+  * m4/gettext.m4: Upgrade to gettext-0.19.4.
+  * m4/iconv.m4: Upgrade to gettext-0.19.4.
+  * m4/lib-ld.m4: Upgrade to gettext-0.19.4.
+  * m4/lib-link.m4: Upgrade to gettext-0.19.4.
+  * m4/lib-prefix.m4: Upgrade to gettext-0.19.4.
+  * m4/nls.m4: Upgrade to gettext-0.19.4.
+  * m4/po.m4: Upgrade to gettext-0.19.4.
+  * m4/progtest.m4: Upgrade to gettext-0.19.4.
+  * configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.19.4.</comment>
+    <requestid>505275</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>37fcc393d52bd8eab03decf7d072bea1</srcmd5>
+    <version>23.0</version>
+    <time>1498995445</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch psmisc-23.0-killall.patch to remove left over debug
+  output in killall utility (boo#1046237)</comment>
+    <requestid>506747</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>65cf14828c4f6403077f8cde8bab1bf1</srcmd5>
+    <version>23.0</version>
+    <time>1499880606</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patches
+  * psmisc-22.21-lessnfs.patch
+  * psmisc-22.21-mntpt.patch
+  * psmisc-23.0-net.patch
+- Add patch
+  0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  from https://gitlab.com/bitstreamout/psmisc/tree/mountinfo
+  which is a heavily rework fuser used on NFS
+  * Use mountinfo to be able to use the mount identity
+    which allows to distinguish different mounts with the
+    same device number as it happens with NFS shares.
+  * Smaller cleanup as support of chroot environments
+    and older systems.
+  * Add support for name_to_handle_at() system call to
+    get the real mount ID for each file
+- Use test suite of psmisc in %check rpm section
+
+- Add patch psmisc-23.0-net.patch to reenable network support
+  broken to my own upstream commit</comment>
+    <requestid>508459</requestid>
+  </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>3a7d67bf5789c224e036c0f6c8536b9b</srcmd5>
+    <version>23.0</version>
+    <time>1501406440</time>
+    <user>dimstar_suse</user>
+    <comment>- Update patch
+  0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch</comment>
+    <requestid>509834</requestid>
+  </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>f7e9e45de9f1074a48a4a39142ded499</srcmd5>
+    <version>23.0</version>
+    <time>1505989919</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch psmisc-23.0-killall-signals.patch to fix boo#1058990
+  by prior scanning for signal names in the arguments of killall</comment>
+    <requestid>526990</requestid>
+  </revision>
+  <revision rev="66" vrev="6">
+    <srcmd5>ae4dfb8147d40ef467eb2cc7629dfffc</srcmd5>
+    <version>23.0</version>
+    <time>1508769504</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  to run even on older kernels missing mnt_id tag in fdinfo</comment>
+    <requestid>534218</requestid>
+  </revision>
+  <revision rev="67" vrev="7">
+    <srcmd5>5374b2079a79be0ba4c22d6bca047a55</srcmd5>
+    <version>23.0</version>
+    <time>1527084404</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  to let fuser -m also work for private mounts as well (boo#1093665)</comment>
+    <requestid>610044</requestid>
+  </revision>
+  <revision rev="68" vrev="8">
+    <srcmd5>dfc9c254ed97650a90ad8e72c8e02967</srcmd5>
+    <version>23.0</version>
+    <time>1529919321</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  to make fuser option -m &lt;block_device&gt; work even with mountinfo
+  (bsc#1098697)</comment>
+    <requestid>618536</requestid>
+  </revision>
+  <revision rev="69" vrev="9">
+    <srcmd5>cbad1eb3e784ab69ac3bd3a6a7a10c31</srcmd5>
+    <version>23.0</version>
+    <time>1538377594</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>637680</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>53ca588b98ee246dccadc848b1f90ff0</srcmd5>
+    <version>23.2</version>
+    <time>1541509310</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch 0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch
+  to support older systems with statx kernel support 
+
+- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  to respect autofs as well as afs file system 
+- Add patch 0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch
+  to use statx(2) system call since kernel 4.12. Now it is possible
+  to avoid sync with remote file servers as well as trigger autofs
+  mounts due stat(x) calls.
+
+- Support also btrFS entries in mountinfo, that is use stat(2) to
+  determine the device of the mounted subvolume (bsc#1098697, bsc#1112780) 
+
+- Update to version 23.2
+  * misc: Command names increased from 16 to 64 characters
+  * buildsys: signals.c depends on signames.h !16
+  * docs: Fix fuser.1 groff errors Debian #900225
+  * killall: look at all namespaces by default
+  * killall: Fix -INT option parsing #11
+  * killall: ignore -n 0 #15
+  * killall: another crack at fixing getopt #12 #13
+  * peekfd: Attach to all threads option !15
+  * pslog: Define PATH_MAX if required Debian:#905797
+- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+- Remove patches now upstream solved
+  * psmisc-23.0-killall-signals.patch
+  * psmisc-23.0-killall.patch
+- Modify and rename patch psmisc-23.0.dif which now becomes psmisc-v23.2.dif</comment>
+    <requestid>646331</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>3be6229ed50ddab6b0dbf6a614e76f5b</srcmd5>
+    <version>23.2</version>
+    <time>1542666516</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  to handle sub volumes of the btrFS (bsc#1112780)</comment>
+    <requestid>649178</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>e3e05210dadacc155b9f261a42bfa9e4</srcmd5>
+    <version>23.2</version>
+    <time>1544440913</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  * Always initialize head of simple linked list (bsc#1098697)
+  * stat(2) on binary does not see subvol dev</comment>
+    <requestid>653088</requestid>
+  </revision>
+</revisionlist>

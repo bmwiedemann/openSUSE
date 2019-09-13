@@ -1,0 +1,5 @@
+<package name="ayatana-ido" project="openSUSE:Factory">
+  <title>Ayatana Indicator Display Objects</title>
+  <description>Widgets and other objects used for indicators.</description>
+  <devel project="X11:Unity" package="ayatana-ido"/>
+</package>

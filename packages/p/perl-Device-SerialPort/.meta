@@ -1,0 +1,6 @@
+<package name="perl-Device-SerialPort" project="openSUSE:Factory">
+  <title>Linux/POSIX emulation of Win32::SerialPort functions</title>
+  <description>This module provides an object-based user interface essentially identical
+to the one provided by the Win32::SerialPort module.</description>
+  <devel project="devel:languages:perl" package="perl-Device-SerialPort"/>
+</package>

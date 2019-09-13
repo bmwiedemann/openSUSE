@@ -1,0 +1,5 @@
+<package name="xcowsay" project="openSUSE:Factory">
+  <title>displays a cute cow and message on your Linux desktop. Inspired by the original cowsay.</title>
+  <description></description>
+  <devel project="X11:Utilities" package="xcowsay"/>
+</package>

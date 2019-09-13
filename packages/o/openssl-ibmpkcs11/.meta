@@ -1,0 +1,5 @@
+<package name="openssl-ibmpkcs11" project="openSUSE:Factory">
+  <title>openSSL Dynamic PKCS #11 Engine</title>
+  <description>openSSL Dynamic PKCS #11 Engine</description>
+  <devel project="security:tls" package="openssl-ibmpkcs11"/>
+</package>

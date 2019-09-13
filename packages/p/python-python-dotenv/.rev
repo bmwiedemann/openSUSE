@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7332b791d68405431f9834b5e843613d</srcmd5>
+    <version>0.10.1</version>
+    <time>1550668521</time>
+    <user>maxlin_factory</user>
+    <comment>- Initial spec for 0.10.1
+</comment>
+    <requestid>677632</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>627dc218b21324012b0f93968fb4bca6</srcmd5>
+    <version>0.10.1</version>
+    <time>1552207017</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682595</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>53787be66405a4405353263ea96a1ddf</srcmd5>
+    <version>0.10.2</version>
+    <time>1558939152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.2:
+  * Add type hints and expose them to users (@qnighy)(#172)
+  * load_dotenv and dotenv_values now accept an encoding parameter, defaults to None (@theskumar)(@earlbread)(#161)
+  * Fix str/unicode inconsistency in Python 2: values are always str now. (@bbc2)(#121)
+  * Fix Unicode error in Python 2, introduced in 0.10.0. (@bbc2)(#176)</comment>
+    <requestid>705389</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5b3d45931363da9ef44c091dec59a677</srcmd5>
+    <version>0.10.3</version>
+    <time>1563808814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.3:
+  * Small cleanups</comment>
+    <requestid>717596</requestid>
+  </revision>
+</revisionlist>

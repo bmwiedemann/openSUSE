@@ -1,0 +1,8 @@
+<package name="perl-Mouse" project="openSUSE:Factory">
+  <title>Moose minus the antlers</title>
+  <description>This module provides some useful test functions for Mouse based classes.
+It is an experimental first release, so comments and suggestions are very
+welcome.</description>
+  <devel project="devel:languages:perl" package="perl-Mouse"/>
+  <url>http://search.cpan.org/perldoc?Mouse</url>
+</package>

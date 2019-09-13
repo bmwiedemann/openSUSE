@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>94c0f153d45873139d7abc36ca3f0fe9</srcmd5>
+    <version>0.16</version>
+    <time>1507570989</time>
+    <user>dimstar_suse</user>
+    <comment>required for perl-File-Flock adi:1</comment>
+    <requestid>531233</requestid>
+  </revision>
+</revisionlist>

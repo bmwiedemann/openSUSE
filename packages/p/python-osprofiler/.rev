@@ -1,0 +1,171 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc7e7d3d438bff2f0cdfd9f179e5adb7</srcmd5>
+    <version>1.2.0</version>
+    <time>1462342769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>387870</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b94e07fb1f6222425956a32d0120ca15</srcmd5>
+    <version>1.3.0</version>
+    <time>1464014420</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgraded to version 1.3.0
+  * Add hepler to trace sessions
+  * Add an error tip when trace_id is not found
+  * Add a similar link with reference to similar projects/libraries
+  * Continue work on standardizing osprofiler docs
+  * Remove dead/broken link to example
+  * Updates to doc conf.py to look the same as other projects
+  * Clean thread local profiler object after usage
+  * Avoid tracing class and static methods
+  * Avoid multiple tracing when applying meta or class decorator
+  * Remove outdated version
+  * Dont claim copyright for future years
+  * Use pkg_resources to get version
+  * Enable bandit in gate
+  * Fallback if git is absent
+  * It's unnecessary set deprecate group for option 'enabled'
+  * Add CONTRIBUTING.rst</comment>
+    <requestid>397362</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d54ce0a6947564442d28c886b6c62c84</srcmd5>
+    <version>1.4.0</version>
+    <time>1475242187</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425281</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>72f51122a550c120fe12b57153dc9473</srcmd5>
+    <version>1.11.0</version>
+    <time>1503927000</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.11.0
+  - devstack: make option hmac_keys configurable
+  - Add functional test for notifier backend
+  - Add Jaeger to list of similar projects
+  - Highlight last trace for OSprofiler html output
+  - Upgrade libraries, add highlight for JSON data
+  - doc: Fix formatting
+  - Switch to &quot;topics&quot; keyword for messaging driver
+  - Python 3.4 support is removed
+  - Fix mistake in split meta string
+  - Update reno for stable/ocata
+  - Expose connection_string parameter into DevStack plugin
+  - Add magnum to devstack config
+  - Fix error message for invalid trace
+  - rearrange existing documentation to fit the new standard layout
+  - Move implemeted specs to implemented directory
+  - Add zun to devstack config
+  - Update .gitignore
+  - Update URLs in documents according to document migration
+  - Revert &quot;Change list_opts to dictionary style&quot;
+  - Change list_opts to dictionary style
+  - Improve error reporting for Ceilometer driver
+  - Enable warning-is-error in doc build
+  - Replace oslo.messaging.get_transport with get_notification_transport
+  - Change some bindings to one-time bindings
+  - devstack: use project conf file env variables
+  - Increase angular digest iteration limit
+  - Remove extra white spaces in json output
+  - Cleanup code of DevStack plugin
+  - Remove unused imports</comment>
+    <requestid>514868</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>75fa3ba124db1be0fce1d638ff99bf3c</srcmd5>
+    <version>1.14.0</version>
+    <time>1516222599</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.14.0
+  - Remove unused parameters from Profiler class
+  - Make dependency on oslo.messaging runtime only
+  - Update reno for stable/pike
+  - Add loading local static files option of template.html
+  - Do not require OpenStack authentication to run osprofiler CLI
+  - Improve unit test coverage
+  - Make test_notifier independent of test case execution order
+  - Remove dependency on oslo.log library
+  - Extend messaging driver to support reporting
+  - Handle and report SQLAlchemy errors
+  - Add function/sql results to trace info</comment>
+    <requestid>565775</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2005ae6e73e9e83b7cf8b180f05314e5</srcmd5>
+    <version>1.15.2</version>
+    <time>1519747037</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.15.2
+  - Update .gitreview for stable/queens
+  - Check profiler instance before initialize
+- Switch to stable/queens spec template
+
+- update to version 1.15.1
+  - Add kwargs to WsgiMiddleware __init__
+  - Add functional test for Redis driver
+  - Add Zuul job for functional testing
+  - Remove setting of version/release from releasenotes
+  - Make collector configurable in DevStack plugin
+  - Add filter for OSprofiler html output
+  - Update the invalid doc links to the right ones in osprofiler docs</comment>
+    <requestid>579518</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f69e8ec2c848b4403bf27461fd701d9d</srcmd5>
+    <version>2.3.0</version>
+    <time>1536327564</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633115</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e2a9778174b4f6414f894f1b4c2d221c</srcmd5>
+    <version>2.3.0</version>
+    <time>1552464780</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Add-sqlalchemy-collector.patch and
+  0001-Don-t-fail-if-sqlalchemy-driver-fails-to-initialize.patch
+  Backport of the sqlalchemy collector driver to store traces
+  in a SQL database</comment>
+    <requestid>684223</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>47a2ad03e4ae66c8dd59b9fb5ef6f731</srcmd5>
+    <version>2.6.0</version>
+    <time>1556916182</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.6.0
+  - Switch to stestr
+  - When shortening span-ids, check if they're already short
+  - Do not insert osprofiler filter into Neutron api-paste pipeline
+  - Change python3.5 job to python3.7 job on Stein+
+  - import zuul job settings from project-config
+  - [devstack] Add support for elasticsearch backend
+  - Change openstack-dev to openstack-discuss
+  - Update reno for stable/rocky
+  - Update min tox version to 2.0
+  - Don't quote {posargs} in tox.ini
+  - add python 3.6 unit test job
+  - Make tracing of SQL statements configurable in DevStack plugin
+  - add lib-forward-testing-python3 test job
+  - build universal wheels
+  - Reload keystone to apply osprofiler config
+  - Allow test path to be overridden
+  - Add sqlalchemy collector
+  - Configure Jaeger collector in DevStack
+  - add password for connecting redis-sentinel
+  - Add support for mongodb backend in devstack plugin
+  - In DevStack install Redis client library via pip, not as system package
+  - Use $STACK_USER variable in install_jaeger function
+  - Change http to https in reference link
+  - In case of an error, always add message
+  - Use templates for cover and lower-constraints
+- remove 0001-Add-sqlalchemy-collector.patch and 0001-Don-t-fail-if-sqlalchemy-driver-fails-to-initialize.patch</comment>
+    <requestid>692872</requestid>
+  </revision>
+</revisionlist>

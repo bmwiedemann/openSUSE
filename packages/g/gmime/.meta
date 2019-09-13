@@ -1,0 +1,6 @@
+<package name="gmime" project="openSUSE:Factory">
+  <title>MIME Parser and Utility Library</title>
+  <description>GMime is a C/C++ library for parsing and creating messages using
+the Multipurpose Internet Mail Extension (MIME).</description>
+  <devel project="GNOME:Factory" package="gmime"/>
+</package>

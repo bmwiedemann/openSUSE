@@ -1,0 +1,37 @@
+<package name="thessalonica-theano-fonts" project="openSUSE:Factory">
+  <title>Theano Classical Fonts</title>
+  <description>Theano Classical Fonts include three fonts listed below. Each font is
+currently available just in one weight/shape (regular) and contains
+Latin, Greek and Cyrillic letters.
+
+Theano Didot.
+A classicist face, with both its Roman and Greek parts implemented in
+Didot style. Unlike Old Standard, this font is designed from French
+sources.
+
+Theano Modern.
+A font with Greek letters designed in the Porsonic style. Unlike most
+modern implementation, it is based on Figgins Pica No. 3 / Small Pica
+No. 2 — probably the most successful and once the most popular Greek
+face of a Porsonic origin — rather than on later Monotype's design.
+The accompanying Latin font is implemented in the Modern style and
+modelled after English Modern faces of later 19th century, often used
+alonglide with Porsonic Greek types.
+
+Theano Old Style.
+A modernized &quot;Old Style&quot; Greek font with a large number of historic
+ligatures and alternate forms, modelled after some early 19th century
+types designed by Figgins' type foundry. It is accompanied by a Latin
+face based on some &quot;Old Style&quot; Roman fonts of the late 19th and early
+20th century.
+
+
+
+Authors:
+--------
+    Alexey Kryukov &lt;alexios@thessalonica.org.ru&gt;
+
+</description>
+  <devel project="M17N:fonts" package="thessalonica-theano-fonts"/>
+  <url>http://www.thessalonica.org.ru/en/theano.html</url>
+</package>

@@ -1,0 +1,6 @@
+<package name="python-jaraco.itertools" project="openSUSE:Factory">
+  <title>jaraco.itertools Tools for working with iterables</title>
+  <description>jaraco.itertools Tools for working with iterables.
+Complements itertools and more_itertools.</description>
+  <devel project="devel:languages:python" package="python-jaraco.itertools"/>
+</package>

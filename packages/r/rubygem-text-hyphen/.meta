@@ -1,0 +1,6 @@
+<package name="rubygem-text-hyphen" project="openSUSE:Factory">
+  <title>Multilingual word hyphenation according to modified TeX hyphenation pattern files</title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-text-hyphen"/>
+  <url>http://rubyforge.org/projects/text-format/</url>
+</package>

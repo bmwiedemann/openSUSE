@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5eac2903c6905d6f7af1b0be258f5d54</srcmd5>
+    <version>0.3.1</version>
+    <time>1527933960</time>
+    <user>dimstar_suse</user>
+    <comment>Set attributes of target function or class</comment>
+    <requestid>612077</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>47237a40bb920bcb66bd7e69944bb5f8</srcmd5>
+    <version>0.3.1</version>
+    <time>1533045705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626407</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>39f5b8b5a3d07d9a282bd8251e798ff7</srcmd5>
+    <version>0.3.1</version>
+    <time>1544631921</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653924</requestid>
+  </revision>
+</revisionlist>

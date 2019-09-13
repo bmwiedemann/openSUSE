@@ -1,0 +1,5 @@
+<package name="bin86" project="openSUSE:Factory">
+  <title>An 8086 Assembler and Linker</title>
+  <description>An 8086 assembler and linker.</description>
+  <devel project="devel:tools:compiler" package="bin86"/>
+</package>

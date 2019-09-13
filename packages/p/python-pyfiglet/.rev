@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>33b10ff027390b024d049e4fd7eb2611</srcmd5>
+    <version>0.7.6</version>
+    <time>1542281942</time>
+    <user>dimstar_suse</user>
+    <comment>Indirect dependency of python-tonescale.  python-tonescale requires python-pyprel, and python-pyprel requires this.</comment>
+    <requestid>646699</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c62ad64b2e2e3526888b57a241b1b4cd</srcmd5>
+    <version>0.7.6</version>
+    <time>1544817223</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653696</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2247803841da573d974b8c03d0842c00</srcmd5>
+    <version>0.8.post1</version>
+    <time>1558532361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701748</requestid>
+  </revision>
+</revisionlist>

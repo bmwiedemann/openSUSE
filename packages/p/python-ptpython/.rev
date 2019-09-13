@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57da4e48004fdbb696a505ec2c3d8fdb</srcmd5>
+    <version>0.41</version>
+    <time>1527933770</time>
+    <user>dimstar_suse</user>
+    <comment>Python REPL build on top of prompt_toolkit</comment>
+    <requestid>612060</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>68ca80d9c8bd18b8aa13dc2ce5c62553</srcmd5>
+    <version>2.0.3</version>
+    <time>1540819319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644905</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e7b165465b7cbf435b774023f1669311</srcmd5>
+    <version>2.0.3</version>
+    <time>1545648089</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659566</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0ff85449b6daeb3f8a03565de8a15f0a</srcmd5>
+    <version>2.0.3</version>
+    <time>1549361938</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671248</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eee2e8589dc7417983d4800f78bcbabc</srcmd5>
+    <version>2.0.4</version>
+    <time>1559643133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707269</requestid>
+  </revision>
+</revisionlist>

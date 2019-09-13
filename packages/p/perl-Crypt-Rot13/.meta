@@ -1,0 +1,5 @@
+<package name="perl-Crypt-Rot13" project="openSUSE:Factory">
+  <title>Rot13 (Caesar) encryption for perl</title>
+  <description>This package provides ROT13 Algorithm (Caesar) as a Perl module.</description>
+  <devel project="devel:languages:perl" package="perl-Crypt-Rot13"/>
+</package>

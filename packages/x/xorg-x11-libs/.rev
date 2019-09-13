@@ -1,0 +1,953 @@
+<revisionlist>
+  <revision rev="1" vrev="20">
+    <srcmd5>38710d71a7496e592e07c985c8720b8c</srcmd5>
+    <version>7.2</version>
+    <time>1166483920</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="26">
+    <srcmd5>1e5d797c5d7bae21ad8ae8af09c9fa08</srcmd5>
+    <version>7.2</version>
+    <time>1166545697</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="27">
+    <srcmd5>336e4f53333a42c2caea83222889c7cd</srcmd5>
+    <version>7.2</version>
+    <time>1166611310</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="29">
+    <srcmd5>b5ef774aad0947f920a7c1255c20d237</srcmd5>
+    <version>7.2</version>
+    <time>1167347555</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="32">
+    <srcmd5>da7cd457cb6a58af502a7d4f38be899a</srcmd5>
+    <version>7.2</version>
+    <time>1168012321</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="35">
+    <srcmd5>f2b9ed92cb14b697ba84f1ad04cef2ee</srcmd5>
+    <version>7.2</version>
+    <time>1168562331</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="36">
+    <srcmd5>398e10bef592f9f18ff7ca46e5257606</srcmd5>
+    <version>7.2</version>
+    <time>1168618653</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="37">
+    <srcmd5>7bab7327418b8eeecdf268e358670e39</srcmd5>
+    <version>7.2</version>
+    <time>1169829821</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="40">
+    <srcmd5>602732f22582058d896ab29b996ebb9c</srcmd5>
+    <version>7.2</version>
+    <time>1172152373</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="41">
+    <srcmd5>f38039940bf212d71f65e0d59300a1c1</srcmd5>
+    <version>7.2</version>
+    <time>1172230064</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="42">
+    <srcmd5>b47bad3f3f15eeb5e98d964f7c37d41a</srcmd5>
+    <version>7.2</version>
+    <time>1172243232</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="44">
+    <srcmd5>2af20020dd2247f05613d3ca8ec70411</srcmd5>
+    <version>7.2</version>
+    <time>1172929133</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="45">
+    <srcmd5>93158c67187b1fc083de88fb514cb3f6</srcmd5>
+    <version>7.2</version>
+    <time>1173105316</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="47">
+    <srcmd5>527a4fe8d57ebbffd0ba74b558816b40</srcmd5>
+    <version>7.2</version>
+    <time>1173919898</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="48">
+    <srcmd5>f6373af6f73d828debd0ae306bba8787</srcmd5>
+    <version>7.2</version>
+    <time>1174196748</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="53">
+    <srcmd5>f4b05fe1499938718e9159ee278144ca</srcmd5>
+    <version>7.2</version>
+    <time>1176394893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="57">
+    <srcmd5>8e7df0cc32fea6a445c16b4f3eda1c6f</srcmd5>
+    <version>7.2</version>
+    <time>1178231663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="70">
+    <srcmd5>041314578a126852fbb289b8245e2b9d</srcmd5>
+    <version>7.2</version>
+    <time>1181255258</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="75">
+    <srcmd5>83c87022ef09515c421b5ab9c9d27b5f</srcmd5>
+    <version>7.2</version>
+    <time>1183587718</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="77">
+    <srcmd5>7165137d5b3b5a58f4688db2eb9f042d</srcmd5>
+    <version>7.2</version>
+    <time>1184067246</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="83">
+    <srcmd5>0ef16426278fb11128784425c0a39b6e</srcmd5>
+    <version>7.2</version>
+    <time>1186154225</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="85">
+    <srcmd5>fc5184748734e7f110c82d35835444a7</srcmd5>
+    <version>7.2</version>
+    <time>1186693805</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="89">
+    <srcmd5>26b1c9f325468b797c9d0b048fd84d45</srcmd5>
+    <version>7.2</version>
+    <time>1187914375</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="91">
+    <srcmd5>190c6f871455af33bcb726081d605f50</srcmd5>
+    <version>7.2</version>
+    <time>1187993387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="93">
+    <srcmd5>3be0a62f05d4e46c0ba95324a1e1a0e8</srcmd5>
+    <version>7.2</version>
+    <time>1188230210</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="95">
+    <srcmd5>03d313041ea4920b44603dfd67168df8</srcmd5>
+    <version>7.2</version>
+    <time>1188510193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="97">
+    <srcmd5>b7e066954b445a732d677011c6106853</srcmd5>
+    <version>7.2</version>
+    <time>1189421564</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>cc78c2b615211c5595ed38ee0db8ae5c</srcmd5>
+    <version>7.3</version>
+    <time>1191423940</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="13">
+    <srcmd5>44e980f0d7014cbcdf7196607704b678</srcmd5>
+    <version>7.3</version>
+    <time>1195464474</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="15">
+    <srcmd5>675e145079f1a702a7bd37e06f46c390</srcmd5>
+    <version>7.3</version>
+    <time>1195778797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="29">
+    <srcmd5>834425cd9628b8edd17ce3e0bb7571b7</srcmd5>
+    <version>7.3</version>
+    <time>1201367131</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="38">
+    <srcmd5>5951f0de51a5076a1ead108e84cb31f6</srcmd5>
+    <version>7.3</version>
+    <time>1204320062</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="40">
+    <srcmd5>7fec2e6cfb085410c13140a5e8eab6ad</srcmd5>
+    <version>7.3</version>
+    <time>1204929604</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="43">
+    <srcmd5>9db253a89aaadfa6d1a28a40a5d4484b</srcmd5>
+    <version>7.3</version>
+    <time>1206063076</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="48">
+    <srcmd5>5ab9039a7246219fa9294e9377d550a5</srcmd5>
+    <version>7.3</version>
+    <time>1207466849</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="50">
+    <srcmd5>aa8dc6cd03e9db9835e518c98e083063</srcmd5>
+    <version>7.3</version>
+    <time>1207834614</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="58">
+    <srcmd5>fe0bb42ceb89a6dd011d83b811fe374d</srcmd5>
+    <version>7.3</version>
+    <time>1211052453</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="60">
+    <srcmd5>608f12ee310d1542bb9bf55de95bbc71</srcmd5>
+    <version>7.3</version>
+    <time>1211426567</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="61">
+    <srcmd5>a7023a4a8dfcd203571ee15e9aee536f</srcmd5>
+    <version>7.3</version>
+    <time>1211500960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="66">
+    <srcmd5>05539afeb3c650f8b172d94fafc5ae44</srcmd5>
+    <version>7.3</version>
+    <time>1214179126</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="68">
+    <srcmd5>397938066037dc43d8b9a3254328b166</srcmd5>
+    <version>7.3</version>
+    <time>1215215560</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="70">
+    <srcmd5>3a039df3aed9ae38690f593a911228de</srcmd5>
+    <version>7.3</version>
+    <time>1215806277</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="72">
+    <srcmd5>0e801294ef47140807253bb099f5114d</srcmd5>
+    <version>7.3</version>
+    <time>1216411437</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="78">
+    <srcmd5>3a56bb2f1d9554f8013ffacbe07fa34b</srcmd5>
+    <version>7.3</version>
+    <time>1217630037</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="91">
+    <srcmd5>4212afd96a80b95ad9116bba8cdd6a34</srcmd5>
+    <version>7.3</version>
+    <time>1220053758</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="93">
+    <srcmd5>5186fb85510dbd969cd5754cfc975d5e</srcmd5>
+    <version>7.3</version>
+    <time>1220641094</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="97">
+    <srcmd5>4eb9eaa2488a4217f377857163e42368</srcmd5>
+    <version>7.3</version>
+    <time>1220829210</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="98">
+    <srcmd5>e310f23779d92834d9609f13fe746d54</srcmd5>
+    <version>7.3</version>
+    <time>1220884571</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>9a8c1d2838de170d4e9744e663a1254b</srcmd5>
+    <version>7.4</version>
+    <time>1221234452</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>b23e2c00976d6c7cf030aa7716832644</srcmd5>
+    <version>7.4</version>
+    <time>1222271025</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>6cf73343534848b9ee83b67152a48740</srcmd5>
+    <version>7.4</version>
+    <time>1225637113</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>9a4108c3a1b4fe90352d030e8d86e5e4</srcmd5>
+    <version>7.4</version>
+    <time>1227013069</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="7">
+    <srcmd5>63353533e076802526d43f39d65886bc</srcmd5>
+    <version>7.4</version>
+    <time>1227884971</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="8">
+    <srcmd5>4dc8870e2b94bf483e4ed7c30a7058cc</srcmd5>
+    <version>7.4</version>
+    <time>1229343578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="9">
+    <srcmd5>a342b9e07e2fe4f5b74fc1e2f827fc5a</srcmd5>
+    <version>7.4</version>
+    <time>1233935278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="10">
+    <srcmd5>100845907fa623c721497b688eefe070</srcmd5>
+    <version>7.4</version>
+    <time>1234143182</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="11">
+    <srcmd5>fc06e2569dbf7d5cb66dba037514f770</srcmd5>
+    <version>7.4</version>
+    <time>1234455434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="12">
+    <srcmd5>af3b465d617b09bf655b703f4103eb8e</srcmd5>
+    <version>7.4</version>
+    <time>1234783564</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="13">
+    <srcmd5>f2352019482848c87489f24cebd48ab4</srcmd5>
+    <version>7.4</version>
+    <time>1235646980</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="14">
+    <srcmd5>1932662386b9abd7f43c9823e65cd2a1</srcmd5>
+    <version>7.4</version>
+    <time>1235659711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="15">
+    <srcmd5>64ab8bf4b4644ceff827bfdc10e01e87</srcmd5>
+    <version>7.4</version>
+    <time>1235954532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="16">
+    <srcmd5>1a35034c8d6177ff8c80fae627ddb297</srcmd5>
+    <version>7.4</version>
+    <time>1236555210</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="17">
+    <srcmd5>1edfde06e3cc4d9fcf374960bdcf0070</srcmd5>
+    <version>7.4</version>
+    <time>1236785701</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="64" vrev="18">
+    <srcmd5>0b494a34e5a1fab572fcb72c38422bf7</srcmd5>
+    <version>7.4</version>
+    <time>1240510714</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="65" vrev="19">
+    <srcmd5>96e85105e5f2736a7e48275aa795e80a</srcmd5>
+    <version>7.4</version>
+    <time>1240957578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="66" vrev="20">
+    <srcmd5>a549cc572b83a4894dbf2f7d3ebb556d</srcmd5>
+    <version>7.4</version>
+    <time>1243938192</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="67" vrev="21">
+    <srcmd5>5ec58009f82d9ef82b13df0f9e516df4</srcmd5>
+    <version>7.4</version>
+    <time>1244234101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="68" vrev="22">
+    <srcmd5>d5d233110c0374a3310b044ec1e22abf</srcmd5>
+    <version>7.4</version>
+    <time>1244818442</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="69" vrev="23">
+    <srcmd5>da4f8db25d653f1faf17d1f4e2c046fd</srcmd5>
+    <version>7.4</version>
+    <time>1247073762</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="70" vrev="24">
+    <srcmd5>ca24dbaed5f978e01c93fd2f36a6fa0e</srcmd5>
+    <version>7.4</version>
+    <time>1251474719</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libs based on submit request 18590 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="71" vrev="26">
+    <srcmd5>ca24dbaed5f978e01c93fd2f36a6fa0e</srcmd5>
+    <version>7.4</version>
+    <time>1251474719</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libs based on submit request 18590 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="72" vrev="27">
+    <srcmd5>7c2a1bfd7046682b1fc366e6a34318be</srcmd5>
+    <version>7.4</version>
+    <time>1258970449</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libs based on submit request 24701 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="73" vrev="28">
+    <srcmd5>125b3e8825ed85f33109c2ff62fface7</srcmd5>
+    <version>7.4</version>
+    <time>1260950950</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libs based on submit request 26524 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="74" vrev="29">
+    <srcmd5>aa8ba16a7a4dd8e7683e6eb8cd96499d</srcmd5>
+    <version>7.4</version>
+    <time>1264065088</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libs based on submit request 29873 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="75" vrev="30">
+    <srcmd5>cc0eefe1d3a59318fcf01585ed284c06</srcmd5>
+    <version>7.4</version>
+    <time>1266508452</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libs based on submit request 32832 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="76" vrev="31">
+    <srcmd5>fcb95a866190de14ed28f0cfc981e5b3</srcmd5>
+    <version>7.4</version>
+    <time>1268926661</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>bd549421a3f5a0639c2b33872b206c49</srcmd5>
+    <version>7.5</version>
+    <time>1270639109</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libs based on submit request 37022 from user sndirsch
+</comment>
+    <requestid>37022</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>128ffa5faf60958388870d472375a662</srcmd5>
+    <version>7.5</version>
+    <time>1271186100</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libs based on submit request 37664 from user sndirsch
+</comment>
+    <requestid>37664</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>3ed561f3ad58ba18a68ab9b785399d67</srcmd5>
+    <version>7.5</version>
+    <time>1273239172</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libs based on submit request 39535 from user sndirsch
+</comment>
+    <requestid>39535</requestid>
+  </revision>
+  <revision rev="80" vrev="4">
+    <srcmd5>3ed561f3ad58ba18a68ab9b785399d67</srcmd5>
+    <version>7.5</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="81" vrev="5">
+    <srcmd5>3ed561f3ad58ba18a68ab9b785399d67</srcmd5>
+    <version>7.5</version>
+    <time>1278678627</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="82" vrev="6">
+    <srcmd5>0d001d80f1b3d91abe77ecee0152b0d8</srcmd5>
+    <version>7.5</version>
+    <time>1282663232</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libs based on submit request 46049 from user sndirsch
+</comment>
+    <requestid>46049</requestid>
+  </revision>
+  <revision rev="83" vrev="7">
+    <srcmd5>c51c6aaac9b1721049f5c397614831b3</srcmd5>
+    <version>unknown</version>
+    <time>1284040415</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libs based on submit request 47188 from user sndirsch
+</comment>
+    <requestid>47188</requestid>
+  </revision>
+  <revision rev="84" vrev="8">
+    <srcmd5>20c63d35e610f84205e553127a02de80</srcmd5>
+    <version>7.5</version>
+    <time>1288261514</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51439 from user sndirsch
+</comment>
+    <requestid>51439</requestid>
+  </revision>
+  <revision rev="85" vrev="9">
+    <srcmd5>4aea1883438995b2f2195435d812f1f5</srcmd5>
+    <version>7.5</version>
+    <time>1288261518</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51439
+</comment>
+  </revision>
+  <revision rev="86" vrev="10">
+    <srcmd5>9aeb7695a930d6412ff84b1a7438d755</srcmd5>
+    <version>7.5</version>
+    <time>1288276880</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51593 from user sndirsch
+</comment>
+    <requestid>51593</requestid>
+  </revision>
+  <revision rev="87" vrev="11">
+    <srcmd5>5aecd1df717750361e9932d99c27b562</srcmd5>
+    <version>7.5</version>
+    <time>1288276885</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51593
+</comment>
+  </revision>
+  <revision rev="88" vrev="12">
+    <srcmd5>8551fec70b0d927242dfb2b3e5ffea7d</srcmd5>
+    <version>7.5</version>
+    <time>1288341025</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51621 from user sndirsch
+</comment>
+    <requestid>51621</requestid>
+  </revision>
+  <revision rev="89" vrev="13">
+    <srcmd5>3148265bfe2d8f1358fe7f371fad1802</srcmd5>
+    <version>7.5</version>
+    <time>1288341030</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51621
+</comment>
+  </revision>
+  <revision rev="90" vrev="14">
+    <srcmd5>80243cf27ca5bd7c17551df9d3604301</srcmd5>
+    <version>7.5</version>
+    <time>1288691181</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51949 from user sndirsch
+</comment>
+    <requestid>51949</requestid>
+  </revision>
+  <revision rev="91" vrev="15">
+    <srcmd5>169ca6ed338e4d1c84c0fe82add3c970</srcmd5>
+    <version>7.5</version>
+    <time>1288691188</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51949
+</comment>
+  </revision>
+  <revision rev="92" vrev="16">
+    <srcmd5>4f7d693a1dcf5f6e7610180be322241b</srcmd5>
+    <version>7.5</version>
+    <time>1290426227</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53631 from user sndirsch
+</comment>
+    <requestid>53631</requestid>
+  </revision>
+  <revision rev="93" vrev="17">
+    <srcmd5>aee047626192ef3ac29372a1d8293cb3</srcmd5>
+    <version>7.5</version>
+    <time>1290426242</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 53631
+</comment>
+  </revision>
+  <revision rev="94" vrev="18">
+    <srcmd5>33c77525529d09284232729c382d1a3e</srcmd5>
+    <version>7.5</version>
+    <time>1291160616</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54203 from user sndirsch
+</comment>
+    <requestid>54203</requestid>
+  </revision>
+  <revision rev="95" vrev="19">
+    <srcmd5>c68bc4e54daaf0d253f5f20a282b6186</srcmd5>
+    <version>7.5</version>
+    <time>1291160621</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54203
+</comment>
+  </revision>
+  <revision rev="96" vrev="20">
+    <srcmd5>2320122f5f68180a9a035d58c195ced8</srcmd5>
+    <version>7.5</version>
+    <time>1291219309</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54261 from user sndirsch
+</comment>
+    <requestid>54261</requestid>
+  </revision>
+  <revision rev="97" vrev="21">
+    <srcmd5>a3953440fa829822f05506f68145a198</srcmd5>
+    <version>7.5</version>
+    <time>1291219316</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54261
+</comment>
+  </revision>
+  <revision rev="98" vrev="22">
+    <srcmd5>566de25d775ab1a6b1ad698d54d7e1db</srcmd5>
+    <version>7.5</version>
+    <time>1292239904</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55685 from user sndirsch
+</comment>
+    <requestid>55685</requestid>
+  </revision>
+  <revision rev="99" vrev="23">
+    <srcmd5>fa276e8111320af92429e017ec7c9b05</srcmd5>
+    <version>7.5</version>
+    <time>1292239917</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55685
+</comment>
+  </revision>
+  <revision rev="100" vrev="14">
+    <srcmd5>7f78d495b6d1795db91b8edf738145ef</srcmd5>
+    <version>7.6</version>
+    <time>1293579776</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56490 from user sndirsch
+</comment>
+    <requestid>56490</requestid>
+  </revision>
+  <revision rev="101" vrev="15">
+    <srcmd5>a14ba4f931e66705fccce43add964d88</srcmd5>
+    <version>7.6</version>
+    <time>1293579784</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56490
+</comment>
+  </revision>
+  <revision rev="102" vrev="18">
+    <srcmd5>a14ba4f931e66705fccce43add964d88</srcmd5>
+    <version>7.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="103" vrev="19">
+    <srcmd5>e3bc6a0f6f3e4d0d041cd83dc5cde2d5</srcmd5>
+    <version>7.6</version>
+    <time>1308040773</time>
+    <user>saschpe</user>
+    <comment>- removed libXTrap-pcfix.diff:
+  * This patch is rather irrelevant to us. We are not even
+    going to submit it to upstream.</comment>
+    <requestid>73284</requestid>
+  </revision>
+  <revision rev="104" vrev="20">
+    <srcmd5>375d5f6c4ef57a8948f7e0f75b6ac613</srcmd5>
+    <version>7.6</version>
+    <time>1308040784</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73284
+</comment>
+  </revision>
+  <revision rev="105" vrev="21">
+    <srcmd5>fff033065003e1c847fed88c5e779583</srcmd5>
+    <version>7.6</version>
+    <time>1314890314</time>
+    <user>saschpe</user>
+    <comment>- split off libpciaccess to avoid build cycles; latest intel driver
+  now buildrequires libpciaccess
+
+- Don't delete .la files for SLE11-SP1</comment>
+    <requestid>80478</requestid>
+  </revision>
+  <revision rev="106" vrev="22">
+    <srcmd5>9071daae73166fa64144e8974c2dc38d</srcmd5>
+    <version>7.6</version>
+    <time>1314890325</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80478
+</comment>
+  </revision>
+  <revision rev="107" vrev="23">
+    <srcmd5>a7e0faa6c09d31026117301b2b2a426a</srcmd5>
+    <version>7.6</version>
+    <time>1315238442</time>
+    <user>lrupp</user>
+    <comment>- U_libXfont_LZW-decompress-fix-for-CVE-2011-2895.patch
+  * LZW decompress: fix for CVE-2011-2895 (bnc #709851)</comment>
+    <requestid>80684</requestid>
+  </revision>
+  <revision rev="108" vrev="24">
+    <srcmd5>f8aca7c7ed1d9b82917588672a9a59df</srcmd5>
+    <version>7.6</version>
+    <time>1315238457</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80684
+</comment>
+  </revision>
+  <revision rev="109" vrev="26">
+    <srcmd5>f8aca7c7ed1d9b82917588672a9a59df</srcmd5>
+    <version>7.6</version>
+    <time>1319182609</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="110" vrev="27">
+    <srcmd5>c379ad7a1af02d60c8a8dcc29cb803f9</srcmd5>
+    <version>7.6</version>
+    <time>1322073510</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency</comment>
+    <requestid>93253</requestid>
+  </revision>
+  <revision rev="111" vrev="28">
+    <srcmd5>473ee007e580e9204c5d1f21fe183237</srcmd5>
+    <version>7.6</version>
+    <time>1323195428</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="112" vrev="29">
+    <srcmd5>83af1ce327c839565247a7cf00703d36</srcmd5>
+    <version>7.6</version>
+    <time>1326448837</time>
+    <user>coolo</user>
+    <comment>- xcb-util 0.3.8
+  * Split up atom, aux event into their own repository.
+  * Create a single shared library and header file.
+  * Remove namespaceless pre-defined atoms.
+  * Remove synchronous xcb_atom_get().
+  * Remove useless xcb_atom_get_fast*() and xcb_atom_get_name().
+  * Delete redundant core-protocol error codes.
+  * Delete callback-based APIs for events, properties, and replies.
+  * Link with -no-undefined.
+  * Add AM_MAINTAINER_MODE for vendors.
+- remove AUTHORS from description
+- switch {?jobs:-j%jobs} to {?_smp_mflags}</comment>
+    <requestid>100025</requestid>
+  </revision>
+  <revision rev="113" vrev="30">
+    <srcmd5>e501731c6b86ce8c6ae6cb193d783f78</srcmd5>
+    <version>7.6</version>
+    <time>1326962689</time>
+    <user>coolo</user>
+    <comment>- provide fake libxcb-atom.so.1 (bnc #741465) for older openSUSE
+  releases since it apparently vanished with xcb-util 0.3.8 :-(</comment>
+    <requestid>100225</requestid>
+  </revision>
+  <revision rev="114" vrev="31">
+    <srcmd5>b8b54492dac5c996c2d99def05c911cb</srcmd5>
+    <version>7.6</version>
+    <time>1327093699</time>
+    <user>coolo</user>
+    <comment>- create the full set of fake libxcb-* libs being replaced now
+  by libxcb-util (reported by email)</comment>
+    <requestid>100753</requestid>
+  </revision>
+  <revision rev="115" vrev="32">
+    <srcmd5>af0dce3ae082a8891d142d4ebd69b3f2</srcmd5>
+    <version>7.6</version>
+    <time>1327486161</time>
+    <user>coolo</user>
+    <comment>- fixed typo in generating fake xcb libs; fake xcb libs don't need
+  to be provided explicitely via spec file, since this Provides is
+  already picked up from the generated xcb libs themselves</comment>
+    <requestid>101109</requestid>
+  </revision>
+  <revision rev="116" vrev="33">
+    <srcmd5>1b65645f970f2dbdc916f89829bf65dd</srcmd5>
+    <version>7.6</version>
+    <time>1329477432</time>
+    <user>coolo</user>
+    <comment>- turned -devel package into a meta package, which now requires
+  all the previously required packages by adding the appropriate 
+  pkgconfig(...) Requires
+
+- back to real libs package, but no longer preferred in project 
+
+- please rebuild !!! 
+
+- no longer package anything, since libs are now packaged
+  seperately ==&gt; dummy package
+
+- instead of using LD_PRELOAD link the fake libs against the
+  freshly introduced libxcb-util; hope this works out ...
+  Still this does not help on openSuSE 11.4 (bnc#742297)
+
+- still we need a LD_PRELOAD for the freshly introduced libxcb-util;
+  added this to /etc/profile.d/xorg-x11-libs.{csh,sh}; seems to
+  help on openSUSE 12.1, but apparently not on openSUSE 11.4 
+  (bnc #742297)</comment>
+    <requestid>105540</requestid>
+  </revision>
+  <revision rev="117" vrev="34">
+    <srcmd5>cfbf8fb9c5e2671f9bdae0be7c81d0c6</srcmd5>
+    <version>7.6</version>
+    <time>1329560519</time>
+    <user>coolo</user>
+    <comment>- readd all the devel libs lost during the split as pkgconfig requires</comment>
+    <requestid>105775</requestid>
+  </revision>
+  <revision rev="118" vrev="35">
+    <srcmd5>d44dd68f6320183475bb60af38f0057a</srcmd5>
+    <version>7.6</version>
+    <time>1330151514</time>
+    <user>coolo</user>
+    <comment>- devel package: fixed devel requires for libpciaccess, added the
+  remaining requires: liblbxutil-devel, xbitmaps-devel,
+  xorg-x11-fonts-devel
+
+- there is no value in manually adding the pkgconfig provides of 
+  package names we already know (bnc#748486)
+  The pkgconfig provides of random X libraries can change at any
+  time and it would be necessary to touch this meta package without
+  any additional gain.
+
+- fixed xcb-util Requires for openSUSE &lt;= 12.1</comment>
+    <requestid>106789</requestid>
+  </revision>
+  <revision rev="119" vrev="36">
+    <srcmd5>902a10b414b3b6bcdd443d2c0e3d8527</srcmd5>
+    <version>7.6</version>
+    <time>1336471592</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115485</requestid>
+  </revision>
+  <revision rev="120" vrev="38">
+    <srcmd5>902a10b414b3b6bcdd443d2c0e3d8527</srcmd5>
+    <version>7.6</version>
+    <time>1340184379</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="121" vrev="40">
+    <srcmd5>902a10b414b3b6bcdd443d2c0e3d8527</srcmd5>
+    <version>7.6</version>
+    <time>1359110672</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="122" vrev="41">
+    <srcmd5>4f684006e925feb7865b9acbf6933c1d</srcmd5>
+    <version>7.6</version>
+    <time>1359742517</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 150717 from coolo)</comment>
+    <requestid>150722</requestid>
+  </revision>
+  <revision rev="123" vrev="43">
+    <srcmd5>4f684006e925feb7865b9acbf6933c1d</srcmd5>
+    <version>7.6</version>
+    <time>1379665105</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="124" vrev="44">
+    <srcmd5>3126c57d656cc87479318bd869d43c50</srcmd5>
+    <version>7.6</version>
+    <time>1389628413</time>
+    <user>coolo</user>
+    <comment>- libvnc/libXcliplist have been part of xf4vnc. Since we moved from
+  xf4vnc to tigervnc, they are of no use any longer. So no longer
+  require them at all.</comment>
+    <requestid>213599</requestid>
+  </revision>
+  <revision rev="125" vrev="45">
+    <srcmd5>071bbc2f44001d1b0af284a634d8b89d</srcmd5>
+    <version>7.6</version>
+    <time>1399317078</time>
+    <user>coolo</user>
+    <comment>- removed requires to libWindowsWM-devel, which never has been
+  required by anyone on non-Windows platforms 
+
+- xorg-x11-devel: remove requires to xorg-x11-proto-devel, which has
+  been replaced by pthread-stubs and numerous *proto packages</comment>
+    <requestid>232522</requestid>
+  </revision>
+  <revision rev="126" vrev="47">
+    <srcmd5>071bbc2f44001d1b0af284a634d8b89d</srcmd5>
+    <version>7.6</version>
+    <time>1409303789</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>cd02716b9a1416e83773d5cd8f9f27da</srcmd5>
+    <version>7.6.1</version>
+    <time>1517516861</time>
+    <user>dimstar_suse</user>
+    <comment>- raised version number of package; improved definitions for
+  provide/obsolete of xorg-x11-util-devel so makedepend, lndir,
+  gccmakedep, xorg-cf-files and xorg-sgml-doctools no longer
+  conflict with xorg-x11-devel package (bsc#1077489)
+
+- Directly require packages, which were required by
+  xorg-x11-util-devel meta package; provide/obsolete
+  xorg-x11-util-devel now (bsc#1077489)</comment>
+    <requestid>571487</requestid>
+  </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>2a5dba7fe39ac191d3ae72256a6af8b1</srcmd5>
+    <version>7.6.1</version>
+    <time>1561882600</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer require libXTrap-devel and libXxf86misc-devel on
+  TW/factory, which is no longer supported with xorgproto 2019.1</comment>
+    <requestid>712079</requestid>
+  </revision>
+</revisionlist>

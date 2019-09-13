@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e7f4138c02f81f3649ed6e5f235b9db</srcmd5>
+    <version>1.2.5</version>
+    <time>1533292694</time>
+    <user>dimstar_suse</user>
+    <comment>x</comment>
+    <requestid>627085</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4d4bb32b6619fb5bb4b9a0fe576293a0</srcmd5>
+    <version>1.2.5</version>
+    <time>1548064818</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove generic tests directory</comment>
+    <requestid>666981</requestid>
+  </revision>
+</revisionlist>

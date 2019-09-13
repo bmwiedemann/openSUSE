@@ -1,0 +1,11 @@
+<package name="complexity" project="openSUSE:Factory">
+  <title>Compute the complexity of C source code</title>
+  <description>
+Complexity a tool designed for analyzing the complexity of “C” program functions.
+It is very similar to the McCabe scoring, but addresses several issues not considered
+in that scoring scheme.
+
+</description>
+  <devel project="devel:tools:statica" package="complexity"/>
+  <url>https://www.gnu.org/software/complexity/</url>
+</package>

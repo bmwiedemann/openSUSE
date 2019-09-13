@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae42f8aa875244fc88fb3a9f8e655710</srcmd5>
+    <version>2.1.4</version>
+    <time>1503593452</time>
+    <user>dimstar_suse</user>
+    <comment>Replaced python3-audioread, which is already in openSUSE:Factory.</comment>
+    <requestid>516018</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>72e0f7b57c17b634aa76f10828c483da</srcmd5>
+    <version>2.1.5</version>
+    <time>1506679035</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529152</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4badabeac413dbdfdbb75fb9a4d02442</srcmd5>
+    <version>2.1.6</version>
+    <time>1542281921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646456</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0710343127c6f14721dff3755dcabf62</srcmd5>
+    <version>2.1.6</version>
+    <time>1544631999</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+- Add missing BR</comment>
+    <requestid>655589</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>532408c9cc761ecfe07f47175f13c245</srcmd5>
+    <version>2.1.6</version>
+    <time>1551216006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678953</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a3e928f739312900faa56cf812cf3c6e</srcmd5>
+    <version>2.1.8</version>
+    <time>1564576602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720014</requestid>
+  </revision>
+</revisionlist>

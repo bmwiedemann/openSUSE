@@ -1,0 +1,23 @@
+<package name="perl-Test-Assert" project="openSUSE:Factory">
+  <title>Assertion methods for those who like JUnit.</title>
+  <description>This class provides a set of assertion methods useful for writing tests.
+The API is based on JUnit4 and the Test::Unit::Lite manpage and the methods
+die on failure.
+
+These assertion methods might be not useful for common the Test::Builder
+manpage-based (the Test::Simple manpage, the Test::More manpage, etc.) test
+units.
+
+The assertion methods can be used in class which is derived from
+'Test::Assert' or used as standard Perl functions after importing them into
+user's namespace.
+
+'Test::Assert' can also wrap standard the Test::Simple manpage, the
+Test::More manpage or other the Test::Builder manpage-based tests.
+
+The assertions can be also used for run-time checking.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Test-Assert"/>
+  <url>http://search.cpan.org/dist/Test-Assert/</url>
+</package>

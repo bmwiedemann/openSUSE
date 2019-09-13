@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aae2280457465ae48e78727495625ef4</srcmd5>
+    <version>1.0</version>
+    <time>1250516727</time>
+    <user>autobuild</user>
+    <comment>Copy from home:nikanth/ullae-veliyae based on submit request 18033 from user nikanth
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44e4ca00615e4ce8d675354ca0563d50</srcmd5>
+    <version>1.0</version>
+    <time>1251910427</time>
+    <user>autobuild</user>
+    <comment>Copy from home:a_jaeger:branches:openSUSE:Factory/ullae-veliyae based on submit request 19500 from user a_jaeger
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>44e4ca00615e4ce8d675354ca0563d50</srcmd5>
+    <version>1.0</version>
+    <time>1251910427</time>
+    <user>autobuild</user>
+    <comment>Copy from home:a_jaeger:branches:openSUSE:Factory/ullae-veliyae based on submit request 19500 from user a_jaeger
+</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>38b321297d74b9285dc6aa9a680ee675</srcmd5>
+    <version>1.0</version>
+    <time>1268926411</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>38b321297d74b9285dc6aa9a680ee675</srcmd5>
+    <version>1.0</version>
+    <time>1278667393</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>38b321297d74b9285dc6aa9a680ee675</srcmd5>
+    <version>1.0</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>38b321297d74b9285dc6aa9a680ee675</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>38b321297d74b9285dc6aa9a680ee675</srcmd5>
+    <version>1.0</version>
+    <time>1319182537</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>d7df4c0e4db08af0b08d6ba07672972f</srcmd5>
+    <version>1.0</version>
+    <time>1323195023</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>d7df4c0e4db08af0b08d6ba07672972f</srcmd5>
+    <version>1.0</version>
+    <time>1340184295</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>d7df4c0e4db08af0b08d6ba07672972f</srcmd5>
+    <version>1.0</version>
+    <time>1359110521</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="20">
+    <srcmd5>d7df4c0e4db08af0b08d6ba07672972f</srcmd5>
+    <version>1.0</version>
+    <time>1379664879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="22">
+    <srcmd5>d7df4c0e4db08af0b08d6ba07672972f</srcmd5>
+    <version>1.0</version>
+    <time>1409303566</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

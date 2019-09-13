@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb4fff3abecfa268d0424e8fa6c905ad</srcmd5>
+    <version>0.0.10</version>
+    <time>1545223770</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-Orange3</comment>
+    <requestid>652693</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e95be8083b84140364d4582f06899f38</srcmd5>
+    <version>0.0.10</version>
+    <time>1548335664</time>
+    <user>dimstar_suse</user>
+    <comment>- Grammar fixes.
+</comment>
+    <requestid>667872</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>38a532a56f8360d715c01498db0f1277</srcmd5>
+    <version>0.0.10</version>
+    <time>1552039349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682259</requestid>
+  </revision>
+</revisionlist>

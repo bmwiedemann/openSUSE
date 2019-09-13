@@ -1,0 +1,5 @@
+<package name="python-jupyter-contrib-nbextensions" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:jupyter" package="python-jupyter-contrib-nbextensions"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="PyGreSQL" project="openSUSE:Factory">
+  <title>Python Client Library for PostgreSQL</title>
+  <description>PyGreSQL is a Python module that interfaces to a PostgreSQL database.
+It embeds the PostgreSQL query library to allow easy use of PostgreSQL
+features from a Python script.</description>
+  <devel project="server:database:postgresql" package="PyGreSQL"/>
+</package>

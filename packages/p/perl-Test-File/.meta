@@ -1,0 +1,8 @@
+<package name="perl-Test-File" project="openSUSE:Factory">
+  <title>Check file attributes</title>
+  <description>Perl module to test file attributes.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Test-File"/>
+  <url>http://search.cpan.org/dist/Test-File</url>
+</package>

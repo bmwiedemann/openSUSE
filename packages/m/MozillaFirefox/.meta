@@ -1,0 +1,7 @@
+<package name="MozillaFirefox" project="openSUSE:Factory">
+  <title>Mozilla Firefox Web Browser</title>
+  <description>Mozilla Firefox is a standalone web browser, designed for standards
+compliance and performance.  Its functionality can be enhanced via a
+plethora of extensions.</description>
+  <devel project="mozilla:Factory" package="MozillaFirefox"/>
+</package>

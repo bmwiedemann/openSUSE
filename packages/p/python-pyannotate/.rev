@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eea4313073f8763f582e98261638ea46</srcmd5>
+    <version>1.0.5</version>
+    <time>1520253811</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package for version 1.0.5
+</comment>
+    <requestid>582232</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9b213fd804852bdb7ee10b57890adf49</srcmd5>
+    <version>1.0.5</version>
+    <time>1525426186</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix grammar in description.
+</comment>
+    <requestid>603202</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>84efc6e55276732127ae6bb82ced6475</srcmd5>
+    <version>1.0.5</version>
+    <time>1545648102</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659576</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b9e2da1da592b2b4308596ae70801b02</srcmd5>
+    <version>1.0.7</version>
+    <time>1558939176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.7:
+  * No upstream changelog
+- Run testsuite</comment>
+    <requestid>705396</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,13 @@
+<package name="cups-airprint" project="openSUSE:Factory">
+  <title>AirPrint for CUPS printers</title>
+  <description>Tools for setting up AirPrint for CUPS printers on openSUSE.
+
+AirPrint is an Apple technology that helps you create full-quality printed output from iOS or OS X devices without the need to download or install drivers.
+
+Some printers support AirPrint natively; for those you don't need this package. For any other printer, if it can be printed to via CUPS on openSUSE, this package provides the additional tools and configuration files needed to add AirPrint support.
+
+Some post-install configuration changes have to be performed manually to make AirPrint work; please follow the instructions in:
+  /usr/share/doc/packages/cups-airprint/README.SUSE
+</description>
+  <devel project="Printing" package="cups-airprint"/>
+</package>

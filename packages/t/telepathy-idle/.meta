@@ -1,0 +1,5 @@
+<package name="telepathy-idle" project="openSUSE:Factory">
+  <title>IRC support for Telepathy</title>
+  <description>Telepathy-idle provides IRC support for Telepathy.</description>
+  <devel project="GNOME:Factory" package="telepathy-idle"/>
+</package>

@@ -1,0 +1,8 @@
+<package name="python-gunicorn" project="openSUSE:Factory">
+  <title>gunicorn</title>
+  <description>Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX. It's a pre-fork
+worker model ported from Ruby's Unicorn_ project. The Gunicorn server is broadly
+compatible with various web frameworks, simply implemented, light on server
+resource usage, and fairly speedy.</description>
+  <devel project="devel:languages:python" package="python-gunicorn"/>
+</package>

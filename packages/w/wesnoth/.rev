@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cbf74713ba26ae414b4271cdf0e62789</srcmd5>
+    <version>1.12.6</version>
+    <time>1479150709</time>
+    <user>dimstar_suse</user>
+    <comment>Changes to sr#419235:
+Fixed changes to fulfill openSUSEs guidelines regarding format of changes-files.
+
+Original description:
+A model Open Source game.</comment>
+    <requestid>419637</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>63b92d953c48305959fb5d9229abc4dc</srcmd5>
+    <version>1.12.6</version>
+    <time>1486218132</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454385</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>42268d778d4ecc5d880bab32ec50edfb</srcmd5>
+    <version>1.12.6</version>
+    <time>1505139477</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch link-boost.patch that adds missing boost-system linkage.
+- Use cmake macro
+- Removed duplicated filesystem structure from fs subpackage.
+- spec file cleanup.
+- Added missing license (EPL-1.0 in 3rd-party source)</comment>
+    <requestid>522265</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>133c253a1cf29cff8c7b2ccf4b0b0c9f</srcmd5>
+    <version>1.14.1</version>
+    <time>1527582455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606842</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6279c86fea204c4c1967bb75403d8659</srcmd5>
+    <version>1.14.2</version>
+    <time>1527934220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613085</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ca61e7e08ab27b5222e54ca0b239960a</srcmd5>
+    <version>1.14.3</version>
+    <time>1529402199</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616327</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9f5b040dacfc30a25213d3f9e8a8b91e</srcmd5>
+    <version>1.14.4</version>
+    <time>1533045797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626510</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c0f0250e5a706bb442189ca5235f734d</srcmd5>
+    <version>1.14.5</version>
+    <time>1537883065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637908</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0e1330cb5d112aca392fd0e7e2c05d11</srcmd5>
+    <version>1.14.5</version>
+    <time>1544189801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655724</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1e4db94ba53db10345fddfa8e23ab202</srcmd5>
+    <version>1.14.5</version>
+    <time>1548064825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666986</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8ce811b9fe6e3d0722b61e7625bdedbb</srcmd5>
+    <version>1.14.6</version>
+    <time>1551114005</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678888</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>129309507661a0200bce91f6b2a036e8</srcmd5>
+    <version>1.14.6</version>
+    <time>1554372427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691004</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>10bc08e87f67f18b88e614d62e86d898</srcmd5>
+    <version>1.15.1</version>
+    <time>1566551408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725442</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>287af5f012d1e389c741a6a2c4279b35</srcmd5>
+    <version>1.0.1.1</version>
+    <time>1357127806</time>
+    <user>namtrac</user>
+    <comment>New package for Haskell Platform. See: http://lists.opensuse.org/opensuse-factory/2012-12/msg00178.html. Fixed source validator issue.</comment>
+    <requestid>146689</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>287af5f012d1e389c741a6a2c4279b35</srcmd5>
+    <version>1.0.1.1</version>
+    <time>1359108929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>02b641be44f7745d3cf9f68db99a70e6</srcmd5>
+    <version>1.0.1.1</version>
+    <time>1375363975</time>
+    <user>coolo</user>
+    <comment>Update to Haskell Platform 2013.2.0.0 (forwarded request 185263 from ptrommler)</comment>
+    <requestid>185304</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>02b641be44f7745d3cf9f68db99a70e6</srcmd5>
+    <version>1.0.1.1</version>
+    <time>1379662435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>8367aafbf92b6afb09e9bd7d0f076c2a</srcmd5>
+    <version>1.0.1.1</version>
+    <time>1408957483</time>
+    <user>coolo</user>
+    <comment>enable PowerPC builds</comment>
+    <requestid>246010</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>8367aafbf92b6afb09e9bd7d0f076c2a</srcmd5>
+    <version>1.0.1.1</version>
+    <time>1409300970</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>9b1cb6374fbcebdc1a113e7e40a55bf9</srcmd5>
+    <version>1.0.1.1</version>
+    <time>1417031698</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260164</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fb886026c7b83f9c675acf1d0dd964d4</srcmd5>
+    <version>1.1</version>
+    <time>1431493983</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306404</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d4b1557513f545bd231788943ca752ee</srcmd5>
+    <version>1.1</version>
+    <time>1469081623</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411620</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>2b7fe8cab35175baedb096ef2bb27908</srcmd5>
+    <version>1.1</version>
+    <time>1486773707</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>454900</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>2a1c8c84cdfb815ff55b32c5649011ee</srcmd5>
+    <version>1.1</version>
+    <time>1505506078</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525254</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>2e2d1bdab2f61e818fcb4ec0e8a605f1</srcmd5>
+    <version>1.1</version>
+    <time>1527675616</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609811</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>de5bb2cc49da5b76420ddfde5cf49716</srcmd5>
+    <version>1.1</version>
+    <time>1532445674</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- regenerate spec file
+- more transparent packaging (fewer macros)
+- expand macro in name tag to help source validator
+- make service localonly for Factory submission
+- added summary and description to spec file
+- Enable hscolour
+- Add exclusive archs.
+- Initial packaging.</comment>
+    <requestid>623837</requestid>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>27a427f24e2b3f960dfe3cf5c2310466</srcmd5>
+    <version>1.1</version>
+    <time>1540450978</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643444</requestid>
+  </revision>
+</revisionlist>

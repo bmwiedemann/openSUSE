@@ -1,0 +1,354 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af0cbdb7fa5e38276fdefecf9fc28b37</srcmd5>
+    <version>1.2.3</version>
+    <time>1453799686</time>
+    <user>dimstar_suse</user>
+    <comment>- Python SDK for AWS, python-boto does no longer receive any new feature
+  development. New features are only available through python-boto3</comment>
+    <requestid>354942</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9788736be84d8e303de83b9ed650d5d8</srcmd5>
+    <version>1.2.3</version>
+    <time>1455190670</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>358518</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>54e92bd9b7b7f6c03655d419be51df40</srcmd5>
+    <version>1.3.0</version>
+    <time>1460631947</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix version requirement for botocore
+
+- Update to version 1.3.0 (bsc#974705)
+  + feature:Session: Add get_available_partitions and get_available_regions
+     methods to determine partitions and a service's available regions.
+  + feature:EC2: Update resource model to include Route resources. (issue 532)
+- From 1.2.6 - (2016-03-01)
+  + bugfix:Resources: Properly alias identifiers which are also in the shape.
+- From 1.2.5 - (2016-02-25)
+  + bugfix:S3: Forward extra_args when using multipart downloads. (issue 503)
+- From 1.2.4 - (2016-02-18)
+  + feature:EC2: Add delete_tags() action to Instance resource. (issue 459)
+  + feature:Session: Add region_name property on session. (issue 414)
+  + bugfix:S3: Fix issue with hanging downloads. (issue 471)</comment>
+    <requestid>386427</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b61b14cf6d47a631a4d0242169259d1</srcmd5>
+    <version>1.3.1</version>
+    <time>1465336185</time>
+    <user>dimstar_suse</user>
+    <comment>- fix source url
+
+- Update to 1.3.1
+  + feature:S3: Add custom load to ObjectSummary
+  + feature:Session: Add method to get session credentials
+  + bugfix:DynamoDB: Ensure batch writer never sends more than flush_amount (#483)
+  + feature:Resources: Add get_available_subresources to Resources (#113)</comment>
+    <requestid>400253</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>10c5d51b75448566e1c1c1cc0df7bac7</srcmd5>
+    <version>1.4.2</version>
+    <time>1485383169</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451175</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e6137a2126af4e4ba26ed087d738bfee</srcmd5>
+    <version>1.4.4</version>
+    <time>1495133310</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495651</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1360622c4fd385b4d9be882b3caa9744</srcmd5>
+    <version>1.4.7</version>
+    <time>1505507480</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.7
+  + botocore: Raised minor version dependency for botocore
+- From 1.4.6
+  + Logging: Switch log levels from INFO to DEBUG (#1208)
+- From 1.4.5
+  + s3: Add a LifecycleConfiguration resource to resolve issues with the
+    existing Lifecycle resource.
+
+- Update to version 1.4.4</comment>
+    <requestid>526213</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8218e26fb5d560ec3398773fdac011b3</srcmd5>
+    <version>1.4.7</version>
+    <time>1511595827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545136</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>21871726393b71bed36af10a2a784e06</srcmd5>
+    <version>1.4.8</version>
+    <time>1513245307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555397</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>643f78e933d3d143aefa1714f0e1396f</srcmd5>
+    <version>1.5.1</version>
+    <time>1513677469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557784</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8820d5f12511e5af502521e25988faac</srcmd5>
+    <version>1.7.4</version>
+    <time>1524576718</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.7.4:
+  api-change:ssm: [botocore] Update ssm client to latest version
+  api-change:workmail: [botocore] Update workmail client to latest version
+  api-change:dms: [botocore] Update dms client to latest version
+  api-change:mediapackage: [botocore] Update mediapackage client to latest version
+  api-change:glue: [botocore] Update glue client to latest version
+  api-change:clouddirectory: [botocore] Update clouddirectory client to latest version
+
+- update to version 1.7.2
+ - api-change:batch: [botocore] Update batch client to latest version
+- update to version 1.7.1
+ - enhancementshield [botocore] Added paginator for list_protections operation.
+ - api-change:ssm: [botocore] Update ssm client to latest version
+- update to version 1.7.0
+ - api-change:s3: [botocore] Update s3 client to latest version
+ - api-change:sagemaker: [botocore] Update sagemaker client to latest version
+ - api-change:acm: [botocore] Update acm client to latest version
+ - api-change:config: [botocore] Update config client to latest version
+ - api-change:transcribe: [botocore] Update transcribe client to latest version
+ - api-change:secretsmanager: [botocore] Update secretsmanager client to latest version
+ - api-change:acm-pca: [botocore] Update acm-pca client to latest version
+ - api-change:cloudwatch: [botocore] Update cloudwatch client to latest version
+ - feature:s3: Add support for S3 Select. Amazon S3 Select is an Amazon S3 feature that makes it easy to retrieve specific data from the contents of an object using simple SQL expressions without having to retrieve the entire object. With this release of the Amazon S3 SDK, S3 Select API (SelectObjectContent) is now generally available in all public regions. This release supports retrieval of a subset of data using SQL clauses, like SELECT and WHERE, from delimited text files and JSON objects in Amazon S3 through the SelectObjectContent API available in AWS S3 SDK.
+ - api-change:fms: [botocore] Update fms client to latest version
+- update to version 1.6.23
+ - api-change:lambda: [botocore] Update lambda client to latest version
+ - api-change:devicefarm: [botocore] Update devicefarm client to latest version
+ - api-change:translate: [botocore] Update translate client to latest version
+- update to version 1.6.22
+ - api-change:cloudfront: [botocore] Update cloudfront client to latest version</comment>
+    <requestid>596739</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>18d9fd3b028c1c13612bf3d48babb44d</srcmd5>
+    <version>1.7.17</version>
+    <time>1526023030</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.10.17:
+  * api-change:rds: [botocore] Update rds client to latest version
+  * api-change:ec2: [botocore] Update ec2 client to latest version
+  * api-change:budgets: [botocore] Update budgets client to latest version
+  * api-change:rds: [botocore] Update rds client to latest version
+  * api-change:ec2: [botocore] Update ec2 client to latest version
+  * api-change:alexaforbusiness: [botocore] Update alexaforbusiness client to latest version
+  * api-change:s3: [botocore] Update s3 client to latest version
+  * api-change:budgets: [botocore] Update budgets client to latest version
+  * api-change:es: [botocore] Update es client to latest version
+  * api-change:guardduty: [botocore] Update guardduty client to latest version
+  * api-change:config: [botocore] Update config client to latest version
+  * api-change:secretsmanager: [botocore] Update secretsmanager client to latest version
+  * api-change:appsync: [botocore] Update appsync client to latest version
+  * api-change:acm: [botocore] Update acm client to latest version
+  * api-change:codepipeline: [botocore] Update codepipeline client to latest version
+  * api-change:ssm: [botocore] Update ssm client to latest version
+  * api-change:ec2: [botocore] Update ec2 client to latest version
+  * api-change:guardduty: [botocore] Update guardduty client to latest version
+  * api-change:alexaforbusiness: [botocore] Update alexaforbusiness client to latest version
+  * api-change:route53domains: [botocore] Update route53domains client to latest version
+  * api-change:workspaces: [botocore] Update workspaces client to latest version
+  * api-change:sagemaker: [botocore] Update sagemaker client to latest version
+  * api-change:dynamodb: [botocore] Update dynamodb client to latest version
+  * api-change:glacier: [botocore] Update glacier client to latest version
+  * api-change:secretsmanager: [botocore] Update secretsmanager client to latest version
+  * api-change:rekognition: [botocore] Update rekognition client to latest version
+  * api-change:xray: [botocore] Update xray client to latest version
+  * api-change:codedeploy: [botocore] Update codedeploy client to latest version
+  * api-change:secretsmanager: [botocore] Update secretsmanager client to latest version</comment>
+    <requestid>606110</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1b2b4baa0e2bd52fc5c630cd8bb9b202</srcmd5>
+    <version>1.7.40</version>
+    <time>1529501580</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617766</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3d1008a1809d5241b9884ead3cfb9331</srcmd5>
+    <version>1.7.62</version>
+    <time>1532445905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624784</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1ea896d1dda2325b5df91341bd5975ff</srcmd5>
+    <version>1.7.75</version>
+    <time>1535370481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629061</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ea310fde82eab5bc25460a78727630b4</srcmd5>
+    <version>1.8.1</version>
+    <time>1536876069</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635364</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d315163172c958f9bfd128e2d1571a2d</srcmd5>
+    <version>1.9.38</version>
+    <time>1541666953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646687</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d328b7d1b2cc83ad2afa2095462c3aab</srcmd5>
+    <version>1.9.38</version>
+    <time>1542012120</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build for openSUSE Leap 42.3
+  + urllib3 needs the ssl module, which in Leap 42.3 is delivered by python
+    and not python-base. Set explicit build dependency on python</comment>
+    <requestid>647585</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>356c4d920ffb3558453f487d1f5b3aac</srcmd5>
+    <version>1.9.57</version>
+    <time>1543953324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653584</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>090be60e213e6f723cf9a1402e5859d9</srcmd5>
+    <version>1.9.74</version>
+    <time>1546946963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663353</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fdd9331691f14df0801462ba960e6d24</srcmd5>
+    <version>1.9.84</version>
+    <time>1549017915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669801</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d302127c5f72a942fa6008dfdbc304ac</srcmd5>
+    <version>1.9.93</version>
+    <time>1550151320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674657</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7537d1dd432c692b8df8e09072b03fca</srcmd5>
+    <version>1.9.96</version>
+    <time>1550402512</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676666</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>f0acb9931725fa0e3cadcc7597815d08</srcmd5>
+    <version>1.9.96</version>
+    <time>1551952240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682161</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>bc4e2635c7001e1d56d54a3b9a4c412c</srcmd5>
+    <version>1.9.96</version>
+    <time>1552572077</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use python_module in requires, it breaks up resolver</comment>
+    <requestid>684724</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>33314bf6f73483f0247b15d938191240</srcmd5>
+    <version>1.9.127</version>
+    <time>1554930606</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692159</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6c209148733aa6600703fb008d6ab219</srcmd5>
+    <version>1.9.147</version>
+    <time>1558515308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704245</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>73a8c6da71d7006b83364facdf724f59</srcmd5>
+    <version>1.9.156</version>
+    <time>1559029223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705435</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>16b7e9cbfadef8bdf164c6601a8162b2</srcmd5>
+    <version>1.9.166</version>
+    <time>1560862227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709415</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0a31da74f2b24844e691acab44cf8330</srcmd5>
+    <version>1.9.172</version>
+    <time>1561493794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711563</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>360e5999c06280c6ee0b27ed86c94cba</srcmd5>
+    <version>1.9.179</version>
+    <time>1561970628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712412</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5ed2972c5916c995e535f0a3e3f86b98</srcmd5>
+    <version>1.9.188</version>
+    <time>1563701392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715685</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0bb7a24a0c5fa0d5910834b2ccf87250</srcmd5>
+    <version>1.9.213</version>
+    <time>1566893687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725324</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8663eb29cc283b6d1bc74e9ba5763ae7</srcmd5>
+    <version>1.3.1</version>
+    <time>1539593190</time>
+    <user>dimstar_suse</user>
+    <comment>- Separate Azure Storage package into components</comment>
+    <requestid>641210</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>595412e96f17355a06f956d66cbd4af2</srcmd5>
+    <version>1.4.0</version>
+    <time>1557833933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694347 from glaubitz)</comment>
+    <requestid>694558</requestid>
+  </revision>
+</revisionlist>

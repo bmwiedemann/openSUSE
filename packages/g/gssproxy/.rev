@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b52b5239a71d70a1396c09bb6abba741</srcmd5>
+    <version>0.7.0</version>
+    <time>1507571246</time>
+    <user>dimstar_suse</user>
+    <comment>New package needed for full NFS/kerberos support</comment>
+    <requestid>532715</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>74fbf08a84ca56be1a8f4878cead5435</srcmd5>
+    <version>0.8.2</version>
+    <time>1562056730</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to disable one test that fails in OBS only:
+  * disable-failing-test.patch
+
+- Update to 0.8.2:
+  * no actual changelog, many bugfixes and friends
+- Remove no longer appplicable stuff:
+  * 0001-Add-support-for-the-NO_CI_FLAG-credentials-option.REVERT
+  * 0002-Add-test-to-check-setting-cred-options.REVERT
+  * 0003-Include-header-for-writev.patch
+  * gp_config.fix
+- Remove localy created .pc files (forwarded request 712803 from scarabeus_iv)</comment>
+    <requestid>712804</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f32511fde3ab27caf69f0478f228640e</srcmd5>
+    <version>0.8.2</version>
+    <time>1562591451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713631</requestid>
+  </revision>
+</revisionlist>

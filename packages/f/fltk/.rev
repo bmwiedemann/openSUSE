@@ -1,0 +1,328 @@
+<revisionlist>
+  <revision rev="1" vrev="9">
+    <srcmd5>3f0b4f65b78e4f337de417cbfc38c85d</srcmd5>
+    <version>1.1.7</version>
+    <time>1168902756</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="41">
+    <srcmd5>71631c7f31e0732fd36bd2b87baeec28</srcmd5>
+    <version>1.1.7</version>
+    <time>1176762695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="78">
+    <srcmd5>028fa4c773ba8cf0ab88cde5d0cc5b27</srcmd5>
+    <version>1.1.7</version>
+    <time>1188506786</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3fc18d6195955b332b3192b27c09cbff</srcmd5>
+    <version>1.1.8</version>
+    <time>1207862917</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>307db5f69b81789d0d4630052514e4b6</srcmd5>
+    <version>1.1.9</version>
+    <time>1215528958</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="33">
+    <srcmd5>5d66f5fb1c77f04d3c530b964d4dc71f</srcmd5>
+    <version>1.1.9</version>
+    <time>1244559660</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="34">
+    <srcmd5>354bfe159e3a86f659e1a465ca38756d</srcmd5>
+    <version>1.1.9</version>
+    <time>1246285438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="35">
+    <srcmd5>20233cc7f08505939c99599dd8c1aecb</srcmd5>
+    <version>1.1.9</version>
+    <time>1249576729</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="37">
+    <srcmd5>20233cc7f08505939c99599dd8c1aecb</srcmd5>
+    <version>1.1.9</version>
+    <time>1249576729</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d78efd224fa4cf70eebc48cf15e74367</srcmd5>
+    <version>1.1.9.9</version>
+    <time>1259923121</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/fltk based on submit request 25490 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9e15d1a71ce07af9485961ed87dc4c9a</srcmd5>
+    <version>1.1.9.9</version>
+    <time>1261824826</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/fltk based on submit request 27536 from user Beineri
+</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>3620a036a9e5a29c94346a7d70ac84f8</srcmd5>
+    <version>1.1.9.9</version>
+    <time>1268923547</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>74bad4f0aa842fbbb2ec356893234b5f</srcmd5>
+    <version>1.1.9.9</version>
+    <time>1270117958</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/fltk based on submit request 36519 from user pgajdos
+</comment>
+    <requestid>36519</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>74bad4f0aa842fbbb2ec356893234b5f</srcmd5>
+    <version>1.1.9.9</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>74bad4f0aa842fbbb2ec356893234b5f</srcmd5>
+    <version>1.1.9.9</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>205096427f9cc4ef686e022585adf080</srcmd5>
+    <version>1.1.10</version>
+    <time>1282937322</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/fltk based on submit request 46360 from user pgajdos
+</comment>
+    <requestid>46360</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>205096427f9cc4ef686e022585adf080</srcmd5>
+    <version>1.1.10</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bcd642a4a8acb6516257041858cdc5e2</srcmd5>
+    <version>1.3.0</version>
+    <time>1310480260</time>
+    <user>saschpe</user>
+    <comment>- updated to 1.3.0:
+    * Added UTF-8 Unicode support throughout FLTK and Fluid
+    * Added Fl_Tree widget for hierarchical views
+    * Added Fl_Table widget for widget layout
+    * Added Fl_Native_Filechooser as a widget and global options
+    * etc., see CHANGES
+    * removed upstreamed and unneeded patches</comment>
+    <requestid>76116</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>6d0d8a5993caeed7718047d603938119</srcmd5>
+    <version>1.3.0</version>
+    <time>1316681071</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+- Implement baselibs config (forwarded request 83531 from jengelh)</comment>
+    <requestid>84290</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>6d0d8a5993caeed7718047d603938119</srcmd5>
+    <version>1.3.0</version>
+    <time>1319181880</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>a21064fc19af85d38cf578108bc42386</srcmd5>
+    <version>1.3.0</version>
+    <time>1323191386</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>4216a895107266547aeb4b1cb34c8b0a</srcmd5>
+    <version>1.3.0</version>
+    <time>1325007315</time>
+    <user>coolo</user>
+    <comment>- buildrequires automake
+
+- fixed linking library with as-needed [bnc#736410]
+  * as-needed.patch</comment>
+    <requestid>97814</requestid>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>18ee8ee6ed9e32327bc9d196f961ec58</srcmd5>
+    <version>1.3.0</version>
+    <time>1329754971</time>
+    <user>coolo</user>
+    <comment>- let the devel package buildrequire xorg-x11-devel (forwarded request 106038 from coolo)</comment>
+    <requestid>106049</requestid>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>18ee8ee6ed9e32327bc9d196f961ec58</srcmd5>
+    <version>1.3.0</version>
+    <time>1340183333</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>7c9c8ae34c9edbc39a52fbc4cfa82bbb</srcmd5>
+    <version>1.3.0</version>
+    <time>1343672708</time>
+    <user>coolo</user>
+    <comment>- buildrequires on specific library sonames is breaking build</comment>
+    <requestid>128956</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e45f4b1b54e4f3a25773a13b7177c661</srcmd5>
+    <version>1.3.1</version>
+    <time>1354094338</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143251</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>64abfb6c8ce97c7617bc9b75a173afd9</srcmd5>
+    <version>1.3.2</version>
+    <time>1359017705</time>
+    <user>coolo</user>
+    <comment>Everything in home:pgajdos:fltk builds.
+
+Feel free to revert the update to submit it to Factory or to leave the request on hold until 12.3. (forwarded request 149610 from RedDwarf)</comment>
+    <requestid>149680</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>64abfb6c8ce97c7617bc9b75a173afd9</srcmd5>
+    <version>1.3.2</version>
+    <time>1359108883</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>5c8d2237cf3745bcacfbbe9e4b7093e0</srcmd5>
+    <version>1.3.2</version>
+    <time>1359452624</time>
+    <user>coolo</user>
+    <comment>- by previous change, files of fltk maint package was moved to 
+  fltk-devel, keeping fltk empty; thus:
+  * libfltk1 obsoletes fltk
+  * fltk-devel provides fltk</comment>
+    <requestid>149930</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>b4c3ec92dcd30f2b621900acdb4bd83f</srcmd5>
+    <version>1.3.2</version>
+    <time>1362992690</time>
+    <user>coolo</user>
+    <comment>- added a fltk-devel-static subpackage to transport libfltk*.a 
+  as needed by Documentation:Tools/flpsed. (forwarded request 157407 from jnweiger)</comment>
+    <requestid>157480</requestid>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>b4c3ec92dcd30f2b621900acdb4bd83f</srcmd5>
+    <version>1.3.2</version>
+    <time>1379662350</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="9">
+    <srcmd5>b4c3ec92dcd30f2b621900acdb4bd83f</srcmd5>
+    <version>1.3.2</version>
+    <time>1409300886</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="10">
+    <srcmd5>0f41103258be147a6b358291e7b64fd1</srcmd5>
+    <version>1.3.2</version>
+    <time>1414826039</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258435</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>fb3059d183ce116799550e4a3e0ca60a</srcmd5>
+    <version>1.3.3</version>
+    <time>1421959683</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.3
+  +Very much changes; please have a look on CHANGES file
+- Remove fltk-1.3.2-underlinking.patch; merged upstream
+
+  user interface toolkit for X (UNIXÂ®), OpenGL, and WIN32 (MicrosoftÂ®
+  WindowsÂ® NT 4.0, 95, or 98)</comment>
+    <requestid>281512</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>f491a2d0e1a1543e6bf809f75aed620f</srcmd5>
+    <version>1.3.3</version>
+    <time>1422594680</time>
+    <user>dimstar_suse</user>
+    <comment>Do not use internal function from ftlk_gl. (forwarded request 282849 from dimstar)</comment>
+    <requestid>283085</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>eb835c992bf377986d25de1f405e6aaa</srcmd5>
+    <version>1.3.4</version>
+    <time>1480071837</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.3.4: see CHANGES
+- remove fltk-1.3.3-do-not-use-internal-ABI.patch (upstreamed)</comment>
+    <requestid>441236</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>19c3e58317da20ec1afcba81871de7dc</srcmd5>
+    <version>1.3.4</version>
+    <time>1487259732</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly package %{_docdir}/fltk-devel in order to fix build
+  with RPM 4.13.0. (forwarded request 455817 from dimstar)</comment>
+    <requestid>456634</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>e5969ea87211cff1d6161267850f4911</srcmd5>
+    <version>1.3.4</version>
+    <time>1501406689</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop patch fltk-1.3.2-do_not_add_unneeded_extra_dependencies.patch
+  as upstream closed the ticked stating it is wrong
+- Add patch fltk-1.3.4-fltk_config.patch (forwarded request 510969 from scarabeus_iv)</comment>
+    <requestid>510970</requestid>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>7adab26e8bb20617e48eef16350d58ce</srcmd5>
+    <version>1.3.4</version>
+    <time>1502559703</time>
+    <user>maxlin_factory</user>
+    <comment>- Trim description, drop TM/R marks according to guidelines. (forwarded request 512401 from jengelh)</comment>
+    <requestid>514861</requestid>
+  </revision>
+  <revision rev="40" vrev="5">
+    <srcmd5>e307bc246e0b075772109652372e566b</srcmd5>
+    <version>1.3.4</version>
+    <time>1517668653</time>
+    <user>dimstar_suse</user>
+    <comment>- added xcursor dependency [bsc#1077881]</comment>
+    <requestid>570580</requestid>
+  </revision>
+  <revision rev="41" vrev="6">
+    <srcmd5>6ce974e8554e1e725dd71dd19b5842ba</srcmd5>
+    <version>1.3.4</version>
+    <time>1567679355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723014</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+<package name="perl-URI" project="openSUSE:Factory">
+  <title>Uniform Resource Identifiers (absolute and relative)</title>
+  <description>This module implements the URI class. Objects of this class represent
+&quot;Uniform Resource Identifier references&quot; as specified in RFC 2396 (and
+updated by RFC 2732).
+
+URI objects can be used to access and manipulate the various
+components that make up these strings.  There are also methods to
+combine URIs in various ways.</description>
+  <devel project="devel:languages:perl" package="perl-URI"/>
+</package>

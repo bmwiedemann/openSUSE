@@ -1,0 +1,10 @@
+<package name="laf-plugin" project="openSUSE:Factory">
+  <title>Support for third-party components in look-and-feel libraries</title>
+  <description>The main LookAndFeel class instantiates and queries ComponentPluginManager to get the details of third-party UI components. The constructor of PluginManager gets the XML descriptor name. The plugin class LafComponentPlugin contains a number of functions:
+
+* initialize and uninitalize - should be called by the main LookAndFeel class on initialization and unitialization.
+* getDefaults - returns collection of all settings for custom components. Can also return settings for core Swing components, effectively overriding the settings of the LAF 
+  </description>
+  <devel project="Java:packages" package="laf-plugin"/>
+  <url>https://laf-plugin.dev.java.net/</url>
+</package>

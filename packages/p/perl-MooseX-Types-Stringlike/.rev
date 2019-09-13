@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20ddfeb1959ee62bb8e1be886d8b30df</srcmd5>
+    <version>0.001</version>
+    <time>1375783445</time>
+    <user>coolo</user>
+    <comment>needed by other moosex madeness</comment>
+    <requestid>185839</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>20ddfeb1959ee62bb8e1be886d8b30df</srcmd5>
+    <version>0.001</version>
+    <time>1379663777</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>116a6b8f8265252b34db4ec605b34d54</srcmd5>
+    <version>0.002</version>
+    <time>1385490428</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208430</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>abddc71f4c46ad4cb865137d0c03ad2e</srcmd5>
+    <version>0.003</version>
+    <time>1406360528</time>
+    <user>coolo</user>
+    <comment>- updated to 0.003
+     [Added]
+ 
+     - new ArrayRefOfStringlike, ArrayRefOfStringable types to facilitate
+       coercion of lists</comment>
+    <requestid>242343</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>abddc71f4c46ad4cb865137d0c03ad2e</srcmd5>
+    <version>0.003</version>
+    <time>1409302416</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

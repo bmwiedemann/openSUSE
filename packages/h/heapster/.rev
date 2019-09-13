@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d0cb5e9824f961e3517667ebdc133db</srcmd5>
+    <version>1.4.3</version>
+    <time>1524144736</time>
+    <user>dimstar_suse</user>
+    <comment>- Submit to Factory ahead of CaaSP V4
+- Replace %__-type macro indirections. Replace old $RPM_ shell
+  vars.
+- initial commit
+</comment>
+    <requestid>597886</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7a171c678b1b9768078a772fb86ae9df</srcmd5>
+    <version>1.4.3</version>
+    <time>1528492501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614365</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>446895c5f0f3ad614472c996d9381351</srcmd5>
+    <version>1.4.3</version>
+    <time>1544726996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657786</requestid>
+  </revision>
+</revisionlist>

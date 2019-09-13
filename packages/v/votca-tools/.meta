@@ -1,0 +1,9 @@
+<package name="votca-tools" project="openSUSE:Factory">
+  <title>VOTCA's tools library</title>
+  <description>VOTCA is a software package which focuses on the analysis of molecular
+dynamics data, the development of systematic coarse-graining techniques as
+well as methods used for simulating microscopic charge transport in
+disordered semiconductors.
+</description>
+  <devel project="science" package="votca-tools"/>
+</package>

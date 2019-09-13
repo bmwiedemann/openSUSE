@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>44e8b3e31873d4ed2cbd4e0abfccbe93</srcmd5>
+    <version>0.5.0</version>
+    <time>1368695325</time>
+    <user>coolo</user>
+    <comment>Package that will be required by libreoffice-4.1.</comment>
+    <requestid>175735</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>44e8b3e31873d4ed2cbd4e0abfccbe93</srcmd5>
+    <version>0.5.0</version>
+    <time>1379662982</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e709472efdf54c450d0ca94416039fad</srcmd5>
+    <version>0.5.0</version>
+    <time>1391077787</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner and make the outputs verbose.</comment>
+    <requestid>215167</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b0b5b732297adef4e886bf6a99234085</srcmd5>
+    <version>0.7.0</version>
+    <time>1406479609</time>
+    <user>coolo</user>
+    <comment>Lo 4.3.0.3 submission</comment>
+    <requestid>242303</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b0b5b732297adef4e886bf6a99234085</srcmd5>
+    <version>0.7.0</version>
+    <time>1409301596</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d78f63f97ae7d9dc8b1960d0ac0ba616</srcmd5>
+    <version>0.9.0</version>
+    <time>1427445562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>292864</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>fcf2c09e305c1c63c654184ae30205b8</srcmd5>
+    <version>0.9.0</version>
+    <time>1427735457</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293559</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>acca09a3f0f6d6ab15de94db6981d3e5</srcmd5>
+    <version>0.9.1</version>
+    <time>1429606165</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.9.1:
+  * various triv bugfixes
+  * Build with tests and work this time</comment>
+    <requestid>295669</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>edfa6b80ff9ad0bf91e4d1b60df055e7</srcmd5>
+    <version>0.11.0</version>
+    <time>1457685460</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.11.0:
+  * Switch to mdds-1.0
+  * Various fixes
+  * Python3 bindings obsoleted python2 ones</comment>
+    <requestid>367542</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b251db1c45d2e3e69300e5e91c45efd9</srcmd5>
+    <version>0.11.1</version>
+    <time>1465938305</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.11.1:
+  * Switch to mdds-1.2
+  * Few small fixes</comment>
+    <requestid>397938</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>771d380c2f5c2b8c9fe32e8db9b19e4c</srcmd5>
+    <version>0.12.1</version>
+    <time>1487461333</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453859</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>691e5b684374c4758075fc63c27a1225</srcmd5>
+    <version>0.13.0</version>
+    <time>1515505672</time>
+    <user>dimstar_suse</user>
+    <comment>To go with lo6.0
+
+- Version update to 0.13.0:
+  * Step lock update with orcus
+  * Various fixes / fuzzer crashes resolved</comment>
+    <requestid>554745</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>91ae515c6f8762a8acdb934426633eaf</srcmd5>
+    <version>0.13.0</version>
+    <time>1519307984</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename python3 package to match up naming conventions
+- Install license file</comment>
+    <requestid>576923</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>75d423ff831781d4eefd9be05ed414e2</srcmd5>
+    <version>0.14.1</version>
+    <time>1548537558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668090</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>cbe9afcb6b66b084d20db80937f602c9</srcmd5>
+    <version>0.14.1</version>
+    <time>1552380640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682400</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>60ca247e5285ec899a9e8d589c28f371</srcmd5>
+    <version>0.15.0</version>
+    <time>1566479022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723934</requestid>
+  </revision>
+</revisionlist>

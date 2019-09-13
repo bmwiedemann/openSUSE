@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>ac8dc1c7a1b186f68b874dd0704ba7f8</srcmd5>
+    <version>0.12</version>
+    <time>1168903937</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="69">
+    <srcmd5>944fc1262adb4cc2e9afcaf84968130b</srcmd5>
+    <version>0.12</version>
+    <time>1180900846</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>972697ef1aa521327501b3f9a5d22c8a</srcmd5>
+    <version>0.16</version>
+    <time>1197649264</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6c11a627004a3bb0ad2ebcbb5f74281a</srcmd5>
+    <version>0.96</version>
+    <time>1221236017</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9bb82e6d11873c7280954be7a624d1a2</srcmd5>
+    <version>0.96</version>
+    <time>1232067129</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b4589953f5660dbe8cdbef0ba22f03a4</srcmd5>
+    <version>0.96</version>
+    <time>1263483295</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-SAX based on submit request 28941 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>028b6f7decc3ea525ad019cdeb109f7f</srcmd5>
+    <version>0.96</version>
+    <time>1268925664</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>028b6f7decc3ea525ad019cdeb109f7f</srcmd5>
+    <version>0.96</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>028b6f7decc3ea525ad019cdeb109f7f</srcmd5>
+    <version>0.96</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>4552ba7b27929d8d7874a4856ef25c1a</srcmd5>
+    <version>0.96</version>
+    <time>1291128447</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54123 from user coolo
+</comment>
+    <requestid>54123</requestid>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>514c22715faf6b73b50c09b898f69b22</srcmd5>
+    <version>0.96</version>
+    <time>1291128454</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54123
+</comment>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>db047cbaffcc126792595525bc3fe8d8</srcmd5>
+    <version>0.96</version>
+    <time>1292240394</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55719 from user coolo
+</comment>
+    <requestid>55719</requestid>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>18b11c52a53d97d39b7642f60cc9c327</srcmd5>
+    <version>0.96</version>
+    <time>1292240405</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55719
+</comment>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>18b11c52a53d97d39b7642f60cc9c327</srcmd5>
+    <version>0.96</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>264c4072f5b30a30d45790f995a68fe7</srcmd5>
+    <version>0.99</version>
+    <time>1316447984</time>
+    <user>lrupp</user>
+    <comment>- licence correction to same as Perl
+- update to 0.99
+  - functionally identical to 0.96
+  - requires XML::SAX::Base (not bundled within since 0.99)</comment>
+    <requestid>81967</requestid>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>264c4072f5b30a30d45790f995a68fe7</srcmd5>
+    <version>0.99</version>
+    <time>1319182323</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>65ac34de9a9f1d615cdeb9933e2fbe81</srcmd5>
+    <version>0.99</version>
+    <time>1323193793</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>65ac34de9a9f1d615cdeb9933e2fbe81</srcmd5>
+    <version>0.99</version>
+    <time>1340183954</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>65ac34de9a9f1d615cdeb9933e2fbe81</srcmd5>
+    <version>0.99</version>
+    <time>1359109853</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>20d3206c235378282f3ca67630298f40</srcmd5>
+    <version>0.99</version>
+    <time>1366178694</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164066 from namtrac)</comment>
+    <requestid>164081</requestid>
+  </revision>
+  <revision rev="21" vrev="22">
+    <srcmd5>20d3206c235378282f3ca67630298f40</srcmd5>
+    <version>0.99</version>
+    <time>1379663922</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="24">
+    <srcmd5>20d3206c235378282f3ca67630298f40</srcmd5>
+    <version>0.99</version>
+    <time>1409302573</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>81eb442002c6124d2f8113c7472c1425</srcmd5>
+    <version>1.00</version>
+    <time>1519902042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579898</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>4f5fd9053a43d9a223fe1959e575b634</srcmd5>
+    <version>1.00</version>
+    <time>1532774256</time>
+    <user>dimstar_suse</user>
+    <comment>- Install a %ghost ParserDetails.ini and add pureperl to it</comment>
+    <requestid>624064</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>14d739d8fe4b8795a17a86aa453a5cc4</srcmd5>
+    <version>1.02</version>
+    <time>1561049615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710399</requestid>
+  </revision>
+</revisionlist>

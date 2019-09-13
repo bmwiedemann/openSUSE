@@ -1,0 +1,6 @@
+<package name="pavumeter" project="openSUSE:Factory">
+  <title>PulseAudio Volume Meter</title>
+  <description>PulseAudio Volume Meter (pavumeter) is a simple GTK volume meter for
+the PulseAudio sound server.</description>
+  <devel project="GNOME:Apps" package="pavumeter"/>
+</package>

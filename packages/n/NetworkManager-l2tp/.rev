@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b293a07c3b6cabb575834f091a9a74de</srcmd5>
+    <version>1.2.8</version>
+    <time>1504102925</time>
+    <user>dimstar_suse</user>
+    <comment>Introduce to TW (after I don't remember how many years we waited for reviews)</comment>
+    <requestid>519160</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>39678a2cc982c048ea2d5fb568e224af</srcmd5>
+    <version>1.2.8</version>
+    <time>1520588487</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581402 from dimstar)</comment>
+    <requestid>582893</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3e88a519b66127f75e6fd1d1079b10a5</srcmd5>
+    <version>1.2.8</version>
+    <time>1526463599</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 596954 from dimstar)</comment>
+    <requestid>607006</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e7889fdcdc753060468dbe4ee7df74b9</srcmd5>
+    <version>1.2.12</version>
+    <time>1555488278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693131</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+<package name="logdigest" project="openSUSE:Factory">
+  <title>Mail Digests of System Log Files to the System Administrator</title>
+  <description>Logdigest, run by cron at night, greps through system log files
+(var/log/messages, /var/log/mail, etc.) to find &quot;interesting&quot; content.
+
+Lines matching the regular expressions in /etc/logdigest are simply
+ignored. More expressions can be added to /etc/logdigest/ignore.local.
+See /etc/logdigest/config for some general settings.
+
+The results are mailed to the sysadmin daily.</description>
+  <devel project="server:monitoring" package="logdigest"/>
+</package>

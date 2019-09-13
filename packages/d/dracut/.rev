@@ -1,0 +1,1551 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a87a9750e980b1f0de4bc8277ad71b7</srcmd5>
+    <version>023</version>
+    <time>1344368970</time>
+    <user>namtrac</user>
+    <comment>dracut is a cross-distribution mkinitrd replacement</comment>
+    <requestid>130279</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ca2b6e24fd14b9404284fa2339670516</srcmd5>
+    <version>023</version>
+    <time>1348925161</time>
+    <user>coolo</user>
+    <comment>- Add initramfs-non-world-readable.patch: fix CVE-2012-4453
+  (bnc#782734). (forwarded request 136344 from fcrozat)</comment>
+    <requestid>136369</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>60c3cb9d5f29d2b7d966bff89ed2d08f</srcmd5>
+    <version>024</version>
+    <time>1352214312</time>
+    <user>coolo</user>
+    <comment>Update for dracut to be more openSUSE like (forwarded request 140221 from tittiatcoke)</comment>
+    <requestid>140223</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8d0ae2772fedba72e848a905210531f1</srcmd5>
+    <version>024</version>
+    <time>1355221432</time>
+    <user>coolo</user>
+    <comment>- dracut wants &quot;strip&quot; installed which is part of binutils
+  recommend that package (forwarded request 144446 from elvigia)</comment>
+    <requestid>144457</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>8d0ae2772fedba72e848a905210531f1</srcmd5>
+    <version>024</version>
+    <time>1359108827</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8faeae560e1d704d14791791626694a7</srcmd5>
+    <version>025</version>
+    <time>1359457613</time>
+    <user>coolo</user>
+    <comment>- Require modutils instead of module-init-tools. (forwarded request 150207 from elvigia)</comment>
+    <requestid>150222</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ec34cace66b88e841dbe8fe62c4ac0f9</srcmd5>
+    <version>025</version>
+    <time>1359997088</time>
+    <user>coolo</user>
+    <comment>- BuildRequires: pkgconfig(systemd) so %{_unitdir} is defined
+  and systemd integration works.. (forwarded request 150851 from elvigia)</comment>
+    <requestid>150858</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8489486b3e0327c65536e6ac8a11b944</srcmd5>
+    <version>025_git201302211113</version>
+    <time>1361633630</time>
+    <user>coolo</user>
+    <comment>- Update to 025_git201302211113
+* Support out-of-tree and updated drivers in initramfs creation
+* shutdown: call &quot;losetup -D&quot; on shutdown
+* Mount /proc before including dracut-lib.sh.
+* dracut.sh: make /var/log a symlink to /run/log
+* systemd/dracut-pre-pivot.sh: remove /dev/root symlink after shell
+* kernel-modules: Add ehci support for kernel 3.8+
+* Other bugfixes (forwarded request 156022 from elvigia)</comment>
+    <requestid>156170</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>522c7cbc0f9d53540cf0625cca19e50f</srcmd5>
+    <version>026_git201303111758</version>
+    <time>1363254964</time>
+    <user>coolo</user>
+    <comment>-  dracut-026
+- introduce /usr/lib/dracut/dracut.conf.d/ drop-in directory
+  /usr/lib/dracut/dracut.conf.d/*.conf can be overwritten by the same
+  filenames in /etc/dracut.conf.d.
+  Packages should use /usr/lib/dracut/dracut.conf.d rather than
+  /etc/dracut.conf.d for drop-in configuration files.
+  /etc/dracut.conf and /etc/dracut.conf.d belong to the system administrator.
+- uses systemd-198 native initrd units
+- totally rely on the fstab-generator in systemd mode for block devices
+- dracut systemd now uses dracut.target rather than basic.target
+- dracut systemd services optimize themselves away
+- fixed hostonly parameter generation
+- turn off curl globbing (fixes IPv6)
+- modify the udev rules on install and not runtime time
+- enable initramfs building without kernel modules (fixed regression)
+- in the initqueue/timeout,
+  reset the main loop counter, as we see new udev events or initqueue/work
+- fixed udev rule installation (forwarded request 158774 from elvigia)</comment>
+    <requestid>158778</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c6d1d9f32f627cd3c0cb77e7cce9261f</srcmd5>
+    <version>026_git201303180829</version>
+    <time>1363858718</time>
+    <user>coolo</user>
+    <comment>- Update to 026_git201303180829
+* bugfixes
+* adds bash completion Support
+- Most importantly, fix the (silly) compatibility patch 
+  that changes the name from initramfs to initrd that went broken
+  in last update (all initrds were suffixed by .img) (forwarded request 160131 from elvigia)</comment>
+    <requestid>160166</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>31fc6d4cc9c5ce607b5e89ae33f5cd42</srcmd5>
+    <version>027_git201304121327</version>
+    <time>1366812281</time>
+    <user>coolo</user>
+    <comment>Update of dracut. Now that systemd &gt; 198 is in Factory, dracut can be submitted.</comment>
+    <requestid>173091</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>82644171f39873cb2d69a4852cd7da4d</srcmd5>
+    <version>027_git201304121327</version>
+    <time>1368449220</time>
+    <user>coolo</user>
+    <comment>- Recommend pigz for faster/parallel compression (forwarded request 174864 from elvigia)</comment>
+    <requestid>174904</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5cf90dcc0b7c45cc6d437a5e3b7d35d1</srcmd5>
+    <version>027_git201306061213</version>
+    <time>1370788461</time>
+    <user>coolo</user>
+    <comment>- version 027_git201306061213
+*  setup correct system time and time zone in initrd
+* systemd integration bugfixes
+* lvm bugfixes. (forwarded request 177940 from elvigia)</comment>
+    <requestid>177972</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c4d5cc1c5c9c3aecfc9b0797a7734fc1</srcmd5>
+    <version>029</version>
+    <time>1371645765</time>
+    <user>coolo</user>
+    <comment>- version 029 
+* fixes for the networking modules
+* fixes for systemd integration
+* fixes for the i18n module (removes dracut-font.patch now upstream) (forwarded request 179369 from elvigia)</comment>
+    <requestid>179381</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>15dfc601f71d0a610f74ed01908c1c33</srcmd5>
+    <version>029</version>
+    <time>1372428174</time>
+    <user>coolo</user>
+    <comment>- Require pigz instead of gzip (forwarded request 181202 from elvigia)</comment>
+    <requestid>181227</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>39a972ad330df499c11189229cf3f8fb</srcmd5>
+    <version>029_git201307171236</version>
+    <time>1374490716</time>
+    <user>coolo</user>
+    <comment>Update.</comment>
+    <requestid>183915</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>856abe138c7511aa7f7aa3a73c83c64e</srcmd5>
+    <version>030_git201307241235</version>
+    <time>1375594138</time>
+    <user>coolo</user>
+    <comment>Update and drop of an non-existing package</comment>
+    <requestid>185703</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ba830b74ab3013ffee2f00bbbca3d3ee</srcmd5>
+    <version>032</version>
+    <time>1378891846</time>
+    <user>coolo</user>
+    <comment>- After testing, we need to correct a major problem, /usr/bin/mount
+ most be installed in /bin/mount on the initrd otherwise boot fails.
+
+- version 032 
+- add parameter --print-cmdline
+- dracut now creates the initramfs without udevadm
+that means the udev database does not have to populated
+and the initramfs can be built in a chroot with
+/sys /dev /proc mounted.
+- renamed dracut_install() to inst_multiple() for consistent naming
+- if $libdirs is unset, fall back to ld.so.cache paths
+- always assemble /usr device in initramfs
+- bash module added (disable it, if you really want dash)
+- continue to boot, if the main loop times out, in systemd mode
+- removed inst*() shell pure versions, dracut-install binary is in charge now
+- fixed ifcfg file generation for vlan
+- do not include adjtime and localtime anymore
+- fixed generation of zfcp.conf of CMS setups
+- install vt102 terminfo
+- dracut_install() is still there for backwards compat
+- do not strip files in FIPS mode
+- fixed iBFT interface configuration
+- fs-lib: install fsck and fsck.ext*
+- shutdown: fixed killall_proc_mountpoint()
+- network: also wait for ethernet interfaces to setup
+- fixed checking for FIPS mode
+
+- version 031_git201308011055
+* systemd: add support for kmod static devnodes
+* crypt: Wait for udev to settle before unlocking disk (forwarded request 197948 from elvigia)</comment>
+    <requestid>197965</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>ba830b74ab3013ffee2f00bbbca3d3ee</srcmd5>
+    <version>032</version>
+    <time>1379662253</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f40430a944d86cf37ff5c1cee108aaa4</srcmd5>
+    <version>033</version>
+    <time>1379919122</time>
+    <user>coolo</user>
+    <comment>- save a few seconds on boot by always including the autofs4 
+  kernel module in the initrd
+
+- dracut 033 
+- improved hostonly device recognition
+- improved hostonly module recognition
+- do not install udev rules from /etc in generic mode
+- fixed LABEL= parsing for swap devices
+- fixed iBFT network setup
+- removed caching of kernel cmdline
+- bcache: support new blkid
+- ifup with dhcp, if no &quot;ip=&quot; specified for the interface
+- fixed ifup udev rules (forwarded request 200059 from elvigia)</comment>
+    <requestid>200075</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b5fca9ad867e026cafdb89c1e096cd2f</srcmd5>
+    <version>033</version>
+    <time>1381062760</time>
+    <user>coolo</user>
+    <comment>This time dracut should have the full functionality. Integrated with the mkinitrd calls during installation of the kernels and also updating the grub2 bootloader. </comment>
+    <requestid>202177</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>0acc3e559e0a0b17426657463eba444c</srcmd5>
+    <version>033</version>
+    <time>1381153749</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to mainline git version 033, b7d1b6f904a5b0bdd9a5ad19149f3.
+- Remove all patches which went mainline:
+  	 generalize_early_cpio.patch
+	 microcode_cleanup.patch
+	 acpi_override.patch
+	 mkinitrd_allow_no_option.patch
+	 mkinitrd_allow_multiple_args.patch
+	 quiet_options.patch
+	 implement_default.patch
+	 root_fs.patch
+	 suse_host_only.patch
+- Fix missing root fs slash in lib/udev/rules.d resulting in:
+  /var/tmp/initramfs.Lusf6flib/udev/rules.d
+- bcache: removed, it's in the upstream bcache-tools package
+  mainline git commit: 49268028b90f6344f79e3510d2
+- Fix bad she-bang in mkinitrd_setup_dummy</comment>
+    <requestid>202490</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>4a68a2077a9c560f63e98e309a1f6f24</srcmd5>
+    <version>033</version>
+    <time>1381304617</time>
+    <user>scarabeus_factory</user>
+    <comment>This should fix again the fact that dracut doesn't create initrd's !! </comment>
+    <requestid>202646</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>a60c8851f5284d87bd7b03dcfb1fb87c</srcmd5>
+    <version>033</version>
+    <time>1381735484</time>
+    <user>scarabeus_factory</user>
+    <comment>Just for Factory :) </comment>
+    <requestid>203116</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>203daf157d6b772695a8ae9b990c885d</srcmd5>
+    <version>034</version>
+    <time>1381753561</time>
+    <user>scarabeus_factory</user>
+    <comment>- version 034 
+* fcoe: add FCoE UEFI boot device support
+* rootfs-block: add support for the rootfallback= kernel 
+  cmdline option
+* btrfs: use inst_hook to install the timeout hook (forwarded request 203195 from elvigia)</comment>
+    <requestid>203199</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>0c2ebba2f57f05e2987b9025f57b6a7d</srcmd5>
+    <version>034</version>
+    <time>1382011317</time>
+    <user>scarabeus_factory</user>
+    <comment>- remove use_all_paths_udev.patch, /lib/udev.. is a symlink 
+  to /usr nowadays this confuses other parts of the code causing
+  errors/warnings during the initrd generation. (forwarded request 203550 from elvigia)</comment>
+    <requestid>203557</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>5f21f0620f6ee81710bdc9d3e87976a1</srcmd5>
+    <version>034</version>
+    <time>1382377922</time>
+    <user>scarabeus_factory</user>
+    <comment>Remove not needed logrotate Requires (forwarded request 204070 from sumski)</comment>
+    <requestid>204122</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>5d9eae74b87716d85b82e31481ee9e27</srcmd5>
+    <version>034</version>
+    <time>1385738545</time>
+    <user>coolo</user>
+    <comment>- Update with patches from git repository:
+   * kernel-modules: add ohci-pci to the list of forced module installs
+   * Run 'xz' and 'lzma' with multiple threads
+   * systemd: do not exit the initqueue, if systemd asks a password
+   * iscsi,nbd: do not fail in hostonly mode
+   * dracut-functions.sh: Avoid loading unnecessary 32-bit libraries
+     for 64-bit initrds
+   * fips: also install /etc/system-fips in the initramfs
+   * dracut.modules.7.asc: removed empty section
+   * dracut.sh: fixed PATH shortener
+   * dracut.spec: move /sbin/dracut to /usr/sbin/dracut
+   * iscsi/nbd: do not try to mount the whole disk, if root= is missing
+   * fips: include crct10dif_generic
+   * Handle crypto modules with and without modaliases
+   * usrmount/module-setup.sh: fixed typo
+   * lvm: always install thin utils for lvm
+   * kernel-modules(ARM): add mmc_block usb_storage to static list of
+     kernel mods
+   * dracut-functions.sh:check_block_and_slaves*() skip LVM internal devs
+   * mkdir basic dirs in /run
+   * network/fcoe: only redirect output to loginit.pipe, if exists
+   * dracut.sh: no need to make subdirs in run
+   * dracut.sh: also mkdir /run/lock, which is copied to
+   * lvm: fix thin recognition
+   * Add lzo, lz4 compression and read INITRD_COMPRESS
+   * remove resume-genrules.sh
+   * resume: fix swap detection in hostonly
+   * base/init.sh: also mkdir /run/lock
+   * dmsquash-live: add /dev/mapper/live-base
+   * Doc: cleanup, extend and split and reuse (forwarded request 208892 from hreinecke)</comment>
+    <requestid>208895</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>1f4f5351e225b05d67051622cf54acfb</srcmd5>
+    <version>034</version>
+    <time>1388774608</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212343</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>700eea20c92d7eca053c29bef0a0846b</srcmd5>
+    <version>034</version>
+    <time>1389703065</time>
+    <user>coolo</user>
+    <comment>Exit without calling update-bootloader (bnc#858268):
+Add:  dracut_do_not_update_booloader_if_no_kernel_is_found.patch
+Adding:
+Requires:       systemd-sysvinit
+which has reboot, halt and other binaries dracut likes to add to the initrd.
+Cleanup and adjust to latest mainline:
+Dropping as these are included in the latest update_git_v034_to_head patch:
+Drop: 0001-95dasd-Install-kernel-modules-only-once.patch
+Drop: 0002-95dasd-Only-install-module-if-normalize_dasd_arg-is-.patch
+Drop: 0003-95dasd_mod-make-dasd_cio_free-optional.patch
+Drop: 0004-95zfcp-Make-installation-optional.patch
+Drop: 0005-95znet-Make-installation-optional.patch
+Drop: 0007-Fixup-keymap-setting-for-openSUSE.patch
+Drop: 0008-Add-DASD-configuration-for-SuSE.patch
+Drop: 0009-Add-zfcp-scripts-for-SUSE.patch
+Drop: 0010-Make-logfile-configurable.patch
+Drop: 0011-mkinitrd-suse-Add-SUSE-compability-wrapper-for-dracu.patch
+Drop: 0012-mkinitrd-suse.8.asc-Add-manpage-for-SUSE-compat-mkin.patch
+Drop: 0015-Fixup-script-permissions.patch
+Drop: 0016-Remove-shebang-from-shell-completion-files.patch
+Drop: dracut-git-update.patch
+Rebase: 0013-Correct-paths-for-openSUSE.patch
+This is a rename of dracut-git-update.patch to:
+Add:  dracut_git_v034_to_head.patch</comment>
+    <requestid>213779</requestid>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>f32b1f138c4e9a4aba92baca0d394ca4</srcmd5>
+    <version>034</version>
+    <time>1389713720</time>
+    <user>coolo</user>
+    <comment>- Correctly fix previous issue:
+  Exit without calling update-bootloader (bnc#858268)
+  Currently mkinitrd will always exit early without creating an initrd at all.
+  Rebase: dracut_do_not_update_booloader_if_no_kernel_is_found.patch
+- Remove an obsolete comment from .spec file</comment>
+    <requestid>213880</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0e8820718bfb9a0e2bed54af28cd262f</srcmd5>
+    <version>036</version>
+    <time>1392110825</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner.
+
+- Version bump to 036 removing the need for patching from git.
+- removed patch:
+  * dracut_git_v034_to_head.patch (forwarded request 221497 from scarabeus_iv)</comment>
+    <requestid>221499</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>9e64b044376e75bf617171811c6934d4</srcmd5>
+    <version>036</version>
+    <time>1392576449</time>
+    <user>coolo</user>
+    <comment>Adding SUSE ifcfg flavor to 45ifcfg module. (forwarded request 222385 from pwieczorkiewicz)</comment>
+    <requestid>222418</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>0038b237f1db0f15c3f179d35c901515</srcmd5>
+    <version>036</version>
+    <time>1393656417</time>
+    <user>coolo</user>
+    <comment>- Make sure that --add-drivers is not called with whitespace string which
+  will lead to a &quot;read line&quot; user input request and things may get stuck at
+  installation.
+  - Add: dracut-fix-whitespace-add-drivers_call.patch
+- Remove s390 grub module again -&gt; this will go into grub2 package
+  (ask rw@suse.de for details)
+  Delete/remove: s390_add-user-space-grub-rule.patch
+- Add installkernel script which installs the kernel when:
+  make install
+  is invoked. The script from mkinitrd has been taken over and adopted.
+  Added source: dracut-installkernel
+  bnc#862990 (forwarded request 224246 from trenn)</comment>
+    <requestid>224249</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>c0fd2ac0ac5dd91ed062c48f3ec5c7ac</srcmd5>
+    <version>036</version>
+    <time>1394030208</time>
+    <user>scarabeus_factory</user>
+    <comment>- Merge all dracut-* packages to one dracut.rpm package.
+  Subpackages only had one or two minor files not worth splitting a package
+  or dracut-network had important modules which should (like former main
+  dracut package) always get installed
+- libcap does not exist and libcap2 or friends are not needed
+  -&gt; remove Requires: libcap
+- Reorder (sort) the files section a bit (forwarded request 224659 from trenn)</comment>
+    <requestid>224666</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>1e3716c9893d9cd081d0939f1e6f7a54</srcmd5>
+    <version>036</version>
+    <time>1394566290</time>
+    <user>coolo</user>
+    <comment>- bnc#830060 - Dracut is missing warpclock/hwclock
+  Add dracut-warpclock_module.patch (forwarded request 225030 from trenn)</comment>
+    <requestid>225032</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>f53b39ca888965be175e02e9841d7a00</srcmd5>
+    <version>036</version>
+    <time>1395156092</time>
+    <user>coolo</user>
+    <comment>- Add support for 70-persistent-net.rules in dracut (bnc#868375)
+  Add: dracut-install-persistent-rule.patch (forwarded request 226409 from rmilasan)</comment>
+    <requestid>226430</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>82f99518ac49ee88d71cfaeac077407c</srcmd5>
+    <version>036</version>
+    <time>1395897158</time>
+    <user>coolo</user>
+    <comment>- Fix installkernel script bnc#862990 (forwarded request 227495 from trenn)</comment>
+    <requestid>227496</requestid>
+  </revision>
+  <revision rev="39" vrev="8">
+    <srcmd5>3c76834f4a6b740f98fea926e8084e06</srcmd5>
+    <version>036</version>
+    <time>1396327585</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>228197</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d4201fb2a806f6a27a297634cd061e37</srcmd5>
+    <version>037</version>
+    <time>1397220034</time>
+    <user>coolo</user>
+    <comment>- Do not always try to add iscsi module, let its check function decide
+- Copmress initrd with xz --check=crc32 -6 by default (forwarded request 229637 from trenn)</comment>
+    <requestid>229643</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>29db381aef7024dc68eb3210f27433e7</srcmd5>
+    <version>037</version>
+    <time>1397330898</time>
+    <user>coolo</user>
+    <comment>- Install correct rule files for multipath support (bnc#873151)
+  Add: 0020-95udev-rules-Include-correct-sg3_utils-rules.patch
+  Add: 0021-90multipath-install-correct-multipath-rules.patch
+
+- Compress initrd with xz --check=crc32 -6 by default (forwarded request 229723 from hreinecke)</comment>
+    <requestid>229770</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>c21c6014749c04fb95796c621addf809</srcmd5>
+    <version>037</version>
+    <time>1398505497</time>
+    <user>coolo</user>
+    <comment>- Enable multipath correctly during booting (bnc#873686)
+  Add: 0022-90multipath-Fixup-service-file-for-booting.patch (forwarded request 230295 from hreinecke)</comment>
+    <requestid>230299</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>4a3dfa9188158df7698fa76d9ac0bb68</srcmd5>
+    <version>037</version>
+    <time>1399017112</time>
+    <user>coolo</user>
+    <comment>- Update to lateste git HEAD 48b7ab1b35adf1f3f09f883ef14ea0a3fba1e468
+    Added:     dracut_v37_to_HEAD.patch
+    Modified:  0013-Correct-paths-for-openSUSE.patch
+    Modified:  mdraid-setup.patch
+    Modified:  replace_dhclient_with_wickedd_dhcp_supplicants.patch
+    Deleted:   0018-fstab-do-not-mount-and-fsck-from-fstab-if-using-syst.patch
+    Deleted:   0019-dracut-initqueue-service-runs-before-remote-fs-pre.t.patch
+- Fix lvm and other possible not working thing due to new parameter:
+  hostonly-cmdline which has to be active by default
+    bnc#874000 bnc#874905 bnc#874363
+    Added:     mkinird_differ_host_and_cmdline_only_properly.patch
+- Make write-ifcfg-suse.sh more update robust
+  Avoid rebasing of diff with every update touching this file by adding
+  write-ifcfg-suse.sh as source file and copy/link in .spec file.
+    Modified:  change_write_ifcfg_to_suse.patch (forwarded request 232233 from trenn)</comment>
+    <requestid>232235</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>b79442cf66be1dd13584d18989903990</srcmd5>
+    <version>037</version>
+    <time>1399703529</time>
+    <user>coolo</user>
+    <comment>- Do not inst binaries explicitly into /bin or /usr/bin, it is already taken
+  care of internally for that:
+     Delete 0006-Install-bin-mount.patch
+     Modify 0013-Correct-paths-for-openSUSE.patch
+- Do not stop trying to load drivers (via add-drivers or filesystems) if one
+  fails
+     Add 0025-dracut_continue_adding_modules_also_on_error.patch
+- Introduce force-drivers. mkinitrd should use this one instead of add-drivers
+  later, if accepted mainline
+     Add
+  0026-force_to_add_and_load_kernel_modules_other_than_via_boot_param.patch (forwarded request 232961 from trenn)</comment>
+    <requestid>232986</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>5a3a92fad2619068511f0765308e386a</srcmd5>
+    <version>037</version>
+    <time>1400355993</time>
+    <user>coolo</user>
+    <comment>- By Hannes Reinecke &lt;hare@suse.com&gt;:
+  - Fixup FCoE booting (bnc#877288)
+    * Add 0027-95fcoe-Store-current-configuration-in-dracut-cmdline.patch
+    * Add 0028-95fcoe-update-fcoe-interface-check.patch
+    * Add 0029-95fcoe-start-lldpad-separately.patch
+- Cleanup host_only variable using in mkinitrd
+- Remove --force parameter from mkinitrd, we always force anyway
+    * Add 0030-dracut-mkinitd_cleanup_force_host_only_var.patch
+- Remove acpi parameter from mkinitrd, this is done differently nowadays
+- Adjust manpage accordingly (forwarded request 234196 from trenn)</comment>
+    <requestid>234197</requestid>
+  </revision>
+  <revision rev="46" vrev="7">
+    <srcmd5>84b2812cb910ee8824c65fe0ae20a9bd</srcmd5>
+    <version>037</version>
+    <time>1400825117</time>
+    <user>coolo</user>
+    <comment>  fixup rootfs-generator installation path (bnc#878714)
+  Add 0032-98systemd-fixup-rootfs-generator-installation-path.patch (forwarded request 234813 from trenn)</comment>
+    <requestid>234814</requestid>
+  </revision>
+  <revision rev="47" vrev="8">
+    <srcmd5>870182005b7cec0021cf4aae8d7b6dde</srcmd5>
+    <version>037</version>
+    <time>1403070620</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237617</requestid>
+  </revision>
+  <revision rev="48" vrev="9">
+    <srcmd5>d43c136d23471fd752d38174dc510401</srcmd5>
+    <version>037</version>
+    <time>1403686138</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238337</requestid>
+  </revision>
+  <revision rev="49" vrev="10">
+    <srcmd5>13853f8c355607e0b1a007b000ff62e1</srcmd5>
+    <version>037</version>
+    <time>1404157400</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238847</requestid>
+  </revision>
+  <revision rev="50" vrev="11">
+    <srcmd5>4478882416b264243a6a6065edc81766</srcmd5>
+    <version>037</version>
+    <time>1405573063</time>
+    <user>coolo</user>
+    <comment>- Print stored dracut commandline during initramfs build
+  * Add: 0101-Print-stored-dracut-commandline-during-initramfs-bui.patch
+- Align dev_unit_name() with systemd's function
+  * Add: 0102-Align-dev_unit_name-with-systemd-s-function.patch
+- Fixup missing separators in rootfs-block cmdline
+  * Add: 0103-Fixup-missing-separators-in-rootfs-block-cmdline.patch
+- Generate fallback mount unit for root filesystem (bnc#855258)
+  * Add: 0104-Generate-fallback-mount-unit-for-root-filesystem.patch
+- 95iscsi: parse output from iscsiadm correctly (bnc#886199)
+  * Add: 0105-95iscsi-parse-output-from-iscsiadm-correctly.patch
+- Add btrfs rescue utilities:
+  * Add: 0100-Add-btrfs-rescue-utilities.patch
+
+- 90btrfs: Install rescue utilities to initrd
+  * Add: 0100-btrfs-add-initrd-rescue-utilities.patch
+
+- 40network: create /var/lib/wicked in ifup.sh (bnc#885141)
+  * Add: 0089-40network-create-var-lib-wicked-in-ifup.sh.patch
+- dracut: caps: Remove whole caps module
+  * Add: 0090-dracut-caps-Remove-whole-caps-module.patch
+- dracut: biosdevname: Only install if present
+  * Add: 0091-dracut-biosdevname-In-SUSE-biosdevname-package-is-in.patch
+- dracut: nbd: Only complain of missing binary in hostonly mode
+  if rootfs is on nbd
+  * Add: 0092-dracut-nbd-Only-complain-of-missing-binary-in-hoston.patch
+- 95iscsi: generate commandline for software iscsi (bnc#880108)
+  * Add: 0093-95iscsi-generate-commandline-for-software-iscsi.patch
+- Implement shortcut 'ip=&lt;ifname&gt;:static' for static configuration
+  * Add: 0094-Implement-shortcut-ip-ifname-static-for-static-confi.patch
+- 95iscsi: use static configuration for software iscsi (bnc#884768)</comment>
+    <requestid>239989</requestid>
+  </revision>
+  <revision rev="51" vrev="12">
+    <srcmd5>1e814235aa05001d25729e28127cad32</srcmd5>
+    <version>037</version>
+    <time>1406442338</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241735</requestid>
+  </revision>
+  <revision rev="52" vrev="13">
+    <srcmd5>243f02f912b206f40d12b19f4939f875</srcmd5>
+    <version>037</version>
+    <time>1407318099</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243696</requestid>
+  </revision>
+  <revision rev="53" vrev="14">
+    <srcmd5>b512994ffd1a745fec37816cf017ebad</srcmd5>
+    <version>037</version>
+    <time>1408550035</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244814</requestid>
+  </revision>
+  <revision rev="54" vrev="15">
+    <srcmd5>b512994ffd1a745fec37816cf017ebad</srcmd5>
+    <version>037</version>
+    <time>1408550035</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244814</requestid>
+  </revision>
+  <revision rev="55" vrev="16">
+    <srcmd5>de33bff59f37b24d57d1c8a61b74b759</srcmd5>
+    <version>037</version>
+    <time>1408957370</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245583</requestid>
+  </revision>
+  <revision rev="56" vrev="18">
+    <srcmd5>de33bff59f37b24d57d1c8a61b74b759</srcmd5>
+    <version>037</version>
+    <time>1409300788</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="19">
+    <srcmd5>7377ddc28b6bc92ed1803691a249cb02</srcmd5>
+    <version>037</version>
+    <time>1409417756</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246857</requestid>
+  </revision>
+  <revision rev="58" vrev="20">
+    <srcmd5>3e83900dabbbf3fe11a5ba0b97926d2d</srcmd5>
+    <version>037</version>
+    <time>1409998653</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247545</requestid>
+  </revision>
+  <revision rev="59" vrev="21">
+    <srcmd5>862b4fdb65e8c1b834fa163c54271080</srcmd5>
+    <version>037</version>
+    <time>1410513546</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248602</requestid>
+  </revision>
+  <revision rev="60" vrev="22">
+    <srcmd5>f64c8dd9a82ede5c6069ea2cc5e68ba3</srcmd5>
+    <version>037</version>
+    <time>1411556947</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250672</requestid>
+  </revision>
+  <revision rev="61" vrev="23">
+    <srcmd5>069d6c49a63502623ca7b75e1422b45a</srcmd5>
+    <version>037</version>
+    <time>1412155317</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>251839</requestid>
+  </revision>
+  <revision rev="62" vrev="24">
+    <srcmd5>30b07343fceabd833772e91df60e59eb</srcmd5>
+    <version>037</version>
+    <time>1412533843</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253649</requestid>
+  </revision>
+  <revision rev="63" vrev="25">
+    <srcmd5>d31e3492783db7f73530576db7ce98cd</srcmd5>
+    <version>037</version>
+    <time>1413616099</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256766</requestid>
+  </revision>
+  <revision rev="64" vrev="26">
+    <srcmd5>56f69afa62c497902432532379b6bafd</srcmd5>
+    <version>037</version>
+    <time>1416994520</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262933</requestid>
+  </revision>
+  <revision rev="65" vrev="27">
+    <srcmd5>377095f5003ac2f26074fced15c30baf</srcmd5>
+    <version>037</version>
+    <time>1418978290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265548</requestid>
+  </revision>
+  <revision rev="66" vrev="28">
+    <srcmd5>524324e2cdaa4fcfb1b5b076d3db39c2</srcmd5>
+    <version>037</version>
+    <time>1421873582</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>280879</requestid>
+  </revision>
+  <revision rev="67" vrev="29">
+    <srcmd5>53701c9244ecdeececcbbddd94048ffe</srcmd5>
+    <version>037</version>
+    <time>1423258611</time>
+    <user>dimstar_suse</user>
+    <comment>- regenerate the initrds on updating this package (or the -fips
+  subpackage)
+
+- Apply patch for systemd-journald SIGTERMing on boot bnc#915575
+  * 0167-do-not-symlink-var-log-to-run-log.patch</comment>
+    <requestid>284157</requestid>
+  </revision>
+  <revision rev="68" vrev="30">
+    <srcmd5>a8bcc2baa3c585d5d95350f08ba71f8a</srcmd5>
+    <version>037</version>
+    <time>1424430012</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285118</requestid>
+  </revision>
+  <revision rev="69" vrev="31">
+    <srcmd5>7d7fbc995da77e99839d25cf88ef0f56</srcmd5>
+    <version>037</version>
+    <time>1425217790</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288168</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>b758ec7c266724e5eab15fb66055005b</srcmd5>
+    <version>041</version>
+    <time>1429186273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to dracut mainline version 041.
+  Half of the patches got integrated mainline.
+  Some others have been merged together when it made sense some have
+  been left out, but are still in the repository as they need some special
+  treating and mainline discussion whether/how they get added. These are
+  also not urgently needed, but are debugging patches.
+  I broke the rule here to mention every added/deleted/modified patch as
+  every patch is touched and every 2nd  got removed (mainline integrated).
+  I also re-ordered the patches in the PatchXY: area for easier merging them
+  and get them discussed and posted mainline easier, topic by topic.
+- Patches merged in the git tracking repository:
+  0065-95iscsi-Fixup-bnx2i-offload-booting.patch
+  0028-95udev-rules-Include-correct-sg3_utils-rules.patch
+  0135-lvm-Fix-12819a579900b9691e2-check-for-existance-of-6.patch
+  0100-Add-btrfs-rescue-utilities.patch
+  0067-95fcoe-check-always-returns-255.patch
+  0138-warpclock-Do-not-use-warpclock-module-on-S390-x-hwcl.patch
+  0077-90multipath-add-missing-11-dm-mpath.rules-file.patch
+  0042-Enhance-suse.conf-example-with-SUSE-specific-setting.patch
+  0161-Fix-error-message-when-there-are-no-internal-kernel-.patch
+  0111-90mdraid-Remove-line-for-offroot-detection.patch
+  0129-Revert-commit-6ecab258710d158a7a6-and-only-do-not-wa.patch
+  0041-mkinitd-suse-remove-hostonly-and-hostonly-cmdline.patch
+  0030-95iscsi-Autodetect-iSCSI-firmware.patch
+  0052-99base-Add-chown-binary.patch
+  0105-95iscsi-parse-output-from-iscsiadm-correctly.patch
+  0101-Print-stored-dracut-commandline-during-initramfs-bui.patch
+  0096-dracut-Fix-error-local-can-only-be-used-in-a-functio.patch
+  0043-40network-always-add-network-module.patch
+  0035-Introduce-force-drivers-parameter-and-force_drivers-.patch</comment>
+    <requestid>295666</requestid>
+  </revision>
+  <revision rev="71" vrev="32">
+    <srcmd5>044f4ffefafefdd320de7777e933c12f</srcmd5>
+    <version>037</version>
+    <time>1429436587</time>
+    <user>dimstar_suse</user>
+    <comment>Revert - 0.41 causes multipath failures</comment>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>3ffd3f025d383a76055a533ae27b13fa</srcmd5>
+    <version>041</version>
+    <time>1431368746</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305875</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>85de62b4aeeec98f34d3eb8ef69003e4</srcmd5>
+    <version>043</version>
+    <time>1437059868</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314859</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>b5f66e95aafaabb089f54ef1e1a0262b</srcmd5>
+    <version>043</version>
+    <time>1438076495</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318855</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>7a2eebd4120540d621dec0fe49ddcef8</srcmd5>
+    <version>043</version>
+    <time>1440479860</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324737</requestid>
+  </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>2b80d33165403e07b21e64aacfd82dc0</srcmd5>
+    <version>043</version>
+    <time>1441296034</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328140</requestid>
+  </revision>
+  <revision rev="77" vrev="5">
+    <srcmd5>336ec514956d2652642e61f149dfad7a</srcmd5>
+    <version>043</version>
+    <time>1443357122</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>333165</requestid>
+  </revision>
+  <revision rev="78" vrev="6">
+    <srcmd5>138b757fe029ecfcfe8f2ce6c7284e43</srcmd5>
+    <version>043</version>
+    <time>1443793125</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335670</requestid>
+  </revision>
+  <revision rev="79" vrev="7">
+    <srcmd5>a49722fb1f57035ba6a2a28a65fd29c6</srcmd5>
+    <version>043</version>
+    <time>1444833749</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336706</requestid>
+  </revision>
+  <revision rev="80" vrev="8">
+    <srcmd5>3a8505ab85fcabd5c100d09e6d9b6dbb</srcmd5>
+    <version>043</version>
+    <time>1445675067</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>339477</requestid>
+  </revision>
+  <revision rev="81" vrev="9">
+    <srcmd5>d9512124b24fe235259ecb3d164954c4</srcmd5>
+    <version>043</version>
+    <time>1446989752</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342657</requestid>
+  </revision>
+  <revision rev="82" vrev="10">
+    <srcmd5>f8069bdfcf02f1bc2dc8273c7f045036</srcmd5>
+    <version>043</version>
+    <time>1447353379</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343975</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>108b184fe26279e60f6fd4bd02c2718f</srcmd5>
+    <version>044</version>
+    <time>1448957820</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346374</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>dd090cd0f349453b64a4c86276256582</srcmd5>
+    <version>044</version>
+    <time>1454491160</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357095</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>84a98acd2b66b7ffd457bf4f27421a2e</srcmd5>
+    <version>044</version>
+    <time>1455272534</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358323</requestid>
+  </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>4590c80dc027eda2757545651fafccf4</srcmd5>
+    <version>044</version>
+    <time>1456433954</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359936</requestid>
+  </revision>
+  <revision rev="87" vrev="5">
+    <srcmd5>6518105300c1fd8cadebd11014c57d96</srcmd5>
+    <version>044</version>
+    <time>1459717611</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>381258</requestid>
+  </revision>
+  <revision rev="88" vrev="6">
+    <srcmd5>3ce85381408b6442d1dc2ded0d034237</srcmd5>
+    <version>044</version>
+    <time>1460480254</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>385518</requestid>
+  </revision>
+  <revision rev="89" vrev="7">
+    <srcmd5>398dd12015bd0caf94cddf7b3a0b32c2</srcmd5>
+    <version>044</version>
+    <time>1465847673</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400539</requestid>
+  </revision>
+  <revision rev="90" vrev="8">
+    <srcmd5>a6501c6535f71e7b7a6f8c45f52245ef</srcmd5>
+    <version>044</version>
+    <time>1468169202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406416</requestid>
+  </revision>
+  <revision rev="91" vrev="9">
+    <srcmd5>ac6a61e161bd92c5b21b1fa0932cb7c5</srcmd5>
+    <version>044</version>
+    <time>1470413646</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416595</requestid>
+  </revision>
+  <revision rev="92" vrev="10">
+    <srcmd5>81f8495705f346281bb536163e26c899</srcmd5>
+    <version>044</version>
+    <time>1473102995</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename patch:
+  * From 0211-fix_multipath_check_hostonly.patch
+    to 0303-fix_multipath_check_hostonly.patch
+- Rename patch:
+  * From 0213-10i18n-keymap-find.patch
+    to 0213-Fix-wrong-keymap-inclusion.patch
+
+- 95fcoe: Do not complain about missing /etc/hba.conf (bsc#980539)
+  * Add 0215-95fcoe-Do-not-complain-about-missing-etc-hba.conf.patch
+- 95fcoe: silence lldpad warnings
+  * Add 0216-95fcoe-silence-lldpad-warnings.patch
+- 95fcoe: Allow to specify the FCoE mode via the fcoe= parameter
+  * Add 0217-95fcoe-Allow-to-specify-the-FCoE-mode-via-the-fcoe-p.patch
+- 40network: allow persistent interface names (bsc#995284)
+  * Add 0218-40network-allow-persistent-interface-names.patch
+- 95fcoe: use interface names instead of MAC addresses
+  * Add 0219-95fcoe-use-interface-names-instead-of-MAC-addresses.patch
+- 95fcoe: always set AUTO_VLAN for fcoemon (bsc#995019)
+  * Add 0220-95fcoe-always-set-AUTO_VLAN-for-fcoemon.patch
+- 95fcoe: Add shutdown script (bsc#994860)
+  * Add 0221-95fcoe-Add-shutdown-script.patch
+- 90dm: Fixup shutdown script (bsc#994860)
+  * Add 0222-90dm-Fixup-shutdown-script.patch
+- 90dm: fixup dependency cycle between MD and DM shutdown (bsc#994860)
+  * Add 0223-90dm-fixup-dependency-cycle-between-MD-and-DM-shutdo.patch
+- 90multipath: Start daemon after udev settle (bsc#986734)
+  * Add 0304-90multipath-Start-daemon-after-udev-settle.patch
+- 90multipath: load dm_multipath module during startup
+  * Add 0305-90multipath-load-dm_multipath-module-during-startup.patch
+- 90multipath: add shutdown script (bsc#994860)</comment>
+    <requestid>424271</requestid>
+  </revision>
+  <revision rev="93" vrev="11">
+    <srcmd5>1eb6f70727ddf808fa54129a70df2c57</srcmd5>
+    <version>044</version>
+    <time>1473408986</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425185</requestid>
+  </revision>
+  <revision rev="94" vrev="12">
+    <srcmd5>93cfabb4b713af08890d53557125a971</srcmd5>
+    <version>044</version>
+    <time>1473679367</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing whitespace for md raid suse kernel param parsing (bsc#970215)
+*modify: 0059-99suse-Add-SUSE-specific-initrd-parsing.patch</comment>
+    <requestid>426296</requestid>
+  </revision>
+  <revision rev="95" vrev="13">
+    <srcmd5>2ba27fa787df8df88b119398a0f9d0d4</srcmd5>
+    <version>044</version>
+    <time>1476428740</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434733</requestid>
+  </revision>
+  <revision rev="96" vrev="14">
+    <srcmd5>1eab0ac3926512a19cae94c3acacc669</srcmd5>
+    <version>044</version>
+    <time>1477134191</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435708</requestid>
+  </revision>
+  <revision rev="97" vrev="15">
+    <srcmd5>d5d2ac1ffcfa13e912cb12d79baaaeca</srcmd5>
+    <version>044</version>
+    <time>1478951937</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439371</requestid>
+  </revision>
+  <revision rev="98" vrev="16">
+    <srcmd5>60ffeace8eaa9184b572c41b166b0f38</srcmd5>
+    <version>044</version>
+    <time>1479299491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440405</requestid>
+  </revision>
+  <revision rev="99" vrev="17">
+    <srcmd5>9b50e6a1ecaef1fb938886bdc61a5a14</srcmd5>
+    <version>044</version>
+    <time>1480584027</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442515</requestid>
+  </revision>
+  <revision rev="100" vrev="18">
+    <srcmd5>1a784e8d69c215b80f3822b9c92334ae</srcmd5>
+    <version>044</version>
+    <time>1482418784</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446825</requestid>
+  </revision>
+  <revision rev="101" vrev="19">
+    <srcmd5>5e258611473b76eda4e89b483bfc88ac</srcmd5>
+    <version>044</version>
+    <time>1484132016</time>
+    <user>dimstar_suse</user>
+    <comment>- purge-kernels: Handle kgraft patches (bsc#1017141)
+  Cleanup unused code. (forwarded request 448998 from michal-m)</comment>
+    <requestid>449075</requestid>
+  </revision>
+  <revision rev="102" vrev="20">
+    <srcmd5>a80acf22f923333ee84a705ae0e78eca</srcmd5>
+    <version>044</version>
+    <time>1485250135</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451178</requestid>
+  </revision>
+  <revision rev="103" vrev="21">
+    <srcmd5>498d507abab51668e6cbbdccda471a27</srcmd5>
+    <version>044</version>
+    <time>1486045802</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453415</requestid>
+  </revision>
+  <revision rev="104" vrev="22">
+    <srcmd5>ffeedbcdbb75635c5caae7404df69e29</srcmd5>
+    <version>044</version>
+    <time>1488124840</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>459992</requestid>
+  </revision>
+  <revision rev="105" vrev="23">
+    <srcmd5>1b1d4944d20ae4c9f2dcd4b57ec5f938</srcmd5>
+    <version>044</version>
+    <time>1490786513</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>482462</requestid>
+  </revision>
+  <revision rev="106" vrev="24">
+    <srcmd5>1c2af3907dc59ca1b410c5b4efd43fc4</srcmd5>
+    <version>044</version>
+    <time>1493103337</time>
+    <user>dimstar_suse</user>
+    <comment>----------------------- --------------------------------------------
+- Ensure hisi_sas_v2_hw gets included (bsc#1034597)
+  * adds 0515-90kernel-modules-also-add-block-device-driver-revers.patch (forwarded request 489776 from dmolkentin)</comment>
+    <requestid>489777</requestid>
+  </revision>
+  <revision rev="107" vrev="25">
+    <srcmd5>0b16f228443a0e6796c64e604c7c24fc</srcmd5>
+    <version>044</version>
+    <time>1494441134</time>
+    <user>dimstar_suse</user>
+    <comment>- 90kernel-modules: Ensure phy drivers are loaded in initrd (bsc#1034893) 
+  * adds 0519-90kernel-modules-Ensure-phy-drivers-are-loaded-in-in.patch
+
+- 90kernel-modules: Fix backlight on Cherrytrail devices (boo#1034785)
+  * adds 0518-90kernel-modules-Fix-backlight-on-Cherrytrail-device.patch
+
+- 95fcoe: fix rules generation (osc#1036323)
+  * adds 0517-95fcoe-fixup-fcoe-genrules.sh-for-VN2VN-mode.patch (forwarded request 491555 from dmolkentin)</comment>
+    <requestid>491558</requestid>
+  </revision>
+  <revision rev="108" vrev="26">
+    <srcmd5>9aeda2e3a7ab63ad082aa5134c85c5bc</srcmd5>
+    <version>044</version>
+    <time>1495283320</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert: &quot;Require version &amp;gt;= 3.18 btrfsprogs, rather than conflicting with
+  an older one&quot;. Dracut should never depend on optional components (forwarded request 494559 from dmolkentin)</comment>
+    <requestid>494563</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>211017a0e4549f7ae076a623dfab7654</srcmd5>
+    <version>044.1</version>
+    <time>1497944021</time>
+    <user>dimstar_suse</user>
+    <comment>- Suppress nonsensical error message (bsc#1032029)
+  adds 0524-Suppress-nonsensical-error-message-bsc-1032029.patch (forwarded request 504691 from dmolkentin)</comment>
+    <requestid>504692</requestid>
+  </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>2d5aa14921f930c8db0097119f7f0d39</srcmd5>
+    <version>044.1</version>
+    <time>1500274967</time>
+    <user>dimstar_suse</user>
+    <comment>- switch fips checking to use the libkcapi based fipscheck toolset (bsc#1048565)
+ * adds 0527-switch-fips-checking-to-use-the-libkcapi-based-fipsc.patch
+
+- iscsiroot: call handle_firmware only for non-iface invocations (bsc#1032284)
+ * adds 0526-iscsiroot-call-handle_firmware-only-for-non-iface-in.patch (forwarded request 510120 from dmolkentin)</comment>
+    <requestid>510121</requestid>
+  </revision>
+  <revision rev="111" vrev="3">
+    <srcmd5>d01bbf9eb070cdf0cf755ccc006c1e4c</srcmd5>
+    <version>044.1</version>
+    <time>1502011441</time>
+    <user>maxlin_factory</user>
+    <comment>- Ensure dracut.sh responds properly to hostonly cmdline (bsc#1048748)
+  * adds 0528-Ensure-dracut.sh-responds-properly-to-hostonly_cmdli.patch (forwarded request 514053 from dmolkentin)</comment>
+    <requestid>514054</requestid>
+  </revision>
+  <revision rev="112" vrev="4">
+    <srcmd5>edb13cad91992db33ff81b1e7af78d05</srcmd5>
+    <version>044.1</version>
+    <time>1503392817</time>
+    <user>dimstar_suse</user>
+    <comment>Fix patch names (forwarded request 517608 from dmolkentin)</comment>
+    <requestid>517609</requestid>
+  </revision>
+  <revision rev="113" vrev="5">
+    <srcmd5>1056cfdd6037d8311fb5f407c007b5ad</srcmd5>
+    <version>044.1</version>
+    <time>1504981420</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521992</requestid>
+  </revision>
+  <revision rev="114" vrev="6">
+    <srcmd5>11c7e9d9521e1e7a76436a6409e0566a</srcmd5>
+    <version>044.1</version>
+    <time>1507570575</time>
+    <user>dimstar_suse</user>
+    <comment>- Add IMA functionality (fate#323289)
+  This is implemented as a sub module analogous to FIPS 
+  * adds 0539-Add-IMA-functionality-fate-323289.patch</comment>
+    <requestid>532412</requestid>
+  </revision>
+  <revision rev="115" vrev="7">
+    <srcmd5>3a726dc6e68aa775f941ca49ed449f8f</srcmd5>
+    <version>044.1</version>
+    <time>1508323851</time>
+    <user>dimstar_suse</user>
+    <comment>- Check the proper variable for a custom IMA keys directory (cherry-picked)
+  Part of fate#323289.
+ * adds 0540-Check-the-proper-variable-for-a-custom-IMA-keys-dire.patch (forwarded request 534348 from dmolkentin)</comment>
+    <requestid>534349</requestid>
+  </revision>
+  <revision rev="116" vrev="8">
+    <srcmd5>35644e4b76cb86953d42827f3a13f4f4</srcmd5>
+    <version>044.1</version>
+    <time>1509036032</time>
+    <user>dimstar_suse</user>
+    <comment>- This is to support predictable interface names (boo#960669)
+ * adds 0541-Make-sure-70-persistent-net.rules-is-included-in-ini.patch 
+- Include crc32c Intel module when using btrfs (bsc#1011554)
+ * adds 0542-Include-crc32c-intel-module-when-using-btrfs.patch</comment>
+    <requestid>535999</requestid>
+  </revision>
+  <revision rev="117" vrev="9">
+    <srcmd5>8c52b4f3615f4bf5c912152d5fdbd497</srcmd5>
+    <version>044.1</version>
+    <time>1510320973</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure 0541-Make-sure-70-persistent-net.rules-is-included-in-ini.patch
+  is not applied on SLE. (forwarded request 538552 from dmolkentin)</comment>
+    <requestid>538553</requestid>
+  </revision>
+  <revision rev="118" vrev="10">
+    <srcmd5>6a232bfb14b71a7564e478b2e0abe85f</srcmd5>
+    <version>044.1</version>
+    <time>1513453651</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch back to fipvlan for bnx2fc (bsc#1052840)
+  * adds 0548-95fcoe-Switch-back-to-using-fipvlan-for-bnx2fc.patch
+- Fix task limit in emergency.service (same as in dracut-emergency.service) (bsc#1019938)
+  * adds 0547-Fix-task-limit-in-emergency.service-the-same-change-.patch (forwarded request 557323 from dmolkentin)</comment>
+    <requestid>557324</requestid>
+  </revision>
+  <revision rev="119" vrev="11">
+    <srcmd5>09a4c73fe07e7df04463fc3d778304a6</srcmd5>
+    <version>044.1</version>
+    <time>1517424508</time>
+    <user>dimstar_suse</user>
+    <comment>* Adds 0553-98integrity-support-loading-x509-into-the-trusted-bu.patch
+  * Adds 0554-98integrity-support-X.509-only-EVM-configuration.patch (forwarded request 569524 from dmolkentin)</comment>
+    <requestid>569525</requestid>
+  </revision>
+  <revision rev="120" vrev="12">
+    <srcmd5>4c0fff743376b036c53e7963fbfba64d</srcmd5>
+    <version>044.1</version>
+    <time>1518513961</time>
+    <user>dimstar_suse</user>
+    <comment>- 95qeth_rules: Add new module to copy qeth rules (FATE#323440)
+  * Adds 0556-95qeth_rules-Add-new-module-to-copy-qeth-rules.patch 
+- Avoid executing emergency hook twice
+  * Adds 0555-Avoid-executing-emergency-hooks-twice.patch (forwarded request 574764 from dmolkentin)</comment>
+    <requestid>574781</requestid>
+  </revision>
+  <revision rev="121" vrev="13">
+    <srcmd5>5465d75571277d047d1e5e8910b4aa8a</srcmd5>
+    <version>044.1</version>
+    <time>1519554803</time>
+    <user>dimstar_suse</user>
+    <comment>- 40network: disable arping, it is no longer part of default installation (bsc#1078245)
+  * Adds 0557-40network-make-arping-optional.patch
+- 40network: replace brctl, it is longer part of default installation (bsc#1078245)
+  * Adds 0558-40network-remove-brctl-dependency.patch (forwarded request 579515 from dmolkentin)</comment>
+    <requestid>579516</requestid>
+  </revision>
+  <revision rev="122" vrev="14">
+    <srcmd5>9b2fcdc5a9b2ffec634e02a040a9202b</srcmd5>
+    <version>044.1</version>
+    <time>1520852980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584473</requestid>
+  </revision>
+  <revision rev="123" vrev="15">
+    <srcmd5>147b42366335b84d1e2eb40cd03e2c55</srcmd5>
+    <version>044.1</version>
+    <time>1521903967</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license instead of %doc [bsc#1082318] (forwarded request 588503 from kukuk)</comment>
+    <requestid>588545</requestid>
+  </revision>
+  <revision rev="124" vrev="16">
+    <srcmd5>571442fe1433d516978df39c327b9392</srcmd5>
+    <version>044.1</version>
+    <time>1524400518</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not attempt to run purge-kernels.service on ro rootfs (bsc#1087880) (forwarded request 598534 from dmolkentin)</comment>
+    <requestid>598536</requestid>
+  </revision>
+  <revision rev="125" vrev="17">
+    <srcmd5>8d7f564f16da5cbe9b36731203494e57</srcmd5>
+    <version>044.1</version>
+    <time>1525121489</time>
+    <user>dimstar_suse</user>
+    <comment>- 01fips: fix FIPS mode on SLES 15 (bsc#1074984)
+  * adds 0567-Fix-booting-with-fips-1-on-SLES-15.patch (forwarded request 601123 from dmolkentin)</comment>
+    <requestid>601124</requestid>
+  </revision>
+  <revision rev="126" vrev="18">
+    <srcmd5>f9bc3441d7f534bbe6696a3c57ff8d8b</srcmd5>
+    <version>044.1</version>
+    <time>1529322613</time>
+    <user>maxlin_factory</user>
+    <comment>- 40network: Fix static network setup (bsc#1091099)
+  * adds 0571-40network-Fix-static-network-setup.patch
+- lsinitrd: Fix cat: write error: Broken pipe error (bsc#1094603)
+  * adds 0572-lsinitrd-no-more-cat-write-error-Broken-pipe.patch
+  * adds 0573-lsinitrd.sh-quote-filename-in-extract_files.patch (forwarded request 616866 from dmolkentin)</comment>
+    <requestid>616867</requestid>
+  </revision>
+  <revision rev="127" vrev="19">
+    <srcmd5>14ced1c71ead7e452540161c0f588735</srcmd5>
+    <version>044.1</version>
+    <time>1530087475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618958</requestid>
+  </revision>
+  <revision rev="128" vrev="20">
+    <srcmd5>abab24339ad826ec5387329076c5d601</srcmd5>
+    <version>044.1</version>
+    <time>1537263357</time>
+    <user>maxlin_factory</user>
+    <comment>- Add kernel-syms to list of packages to remove with purge-kernels (bsc#1104090).
+- Skip kernels that cannot be removed by purge-kernels due to dependencies and
+  continue removing other kernels (bsc#1104090).
+
+- Fix finding btrfs devices (bsc#1104178).
+  * add 0574-s-find_btrfs_devs-btrfs_devs.patch (forwarded request 634785 from michals)</comment>
+    <requestid>634918</requestid>
+  </revision>
+  <revision rev="129" vrev="21">
+    <srcmd5>0435d4afaf689a8c2ff365a6dcd6f4ef</srcmd5>
+    <version>044.1</version>
+    <time>1540447871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642088</requestid>
+  </revision>
+  <revision rev="130" vrev="22">
+    <srcmd5>f6f9da72f0780a081cf367a4b4000cff</srcmd5>
+    <version>044.1</version>
+    <time>1541514921</time>
+    <user>dimstar_suse</user>
+    <comment>hostonly files (bsc#1090884) (forwarded request 645916 from dmolkentin)</comment>
+    <requestid>645917</requestid>
+  </revision>
+  <revision rev="131" vrev="23">
+    <srcmd5>3f91e6df8be81b8f9d748e719d531334</srcmd5>
+    <version>044.1</version>
+    <time>1548769541</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove invalid &quot;FONT_MAP=none&quot; from vconsole.conf (osc#1013573) (forwarded request 668711 from dmolkentin)</comment>
+    <requestid>668712</requestid>
+  </revision>
+  <revision rev="132" vrev="24">
+    <srcmd5>2d7a7683ad87cc928ce879588ef98248</srcmd5>
+    <version>044.1</version>
+    <time>1549630006</time>
+    <user>coolo</user>
+    <comment>- 91zipl: Don't use contents of commented lines (osc#1119499)
+  * adds 0591-91zipl-Don-t-use-contents-of-commented-lines.patch (forwarded request 672495 from dmolkentin)</comment>
+    <requestid>672496</requestid>
+  </revision>
+  <revision rev="133" vrev="25">
+    <srcmd5>4589edaacd895892b0f12f35d6aacc0b</srcmd5>
+    <version>044.1</version>
+    <time>1551024440</time>
+    <user>coolo</user>
+    <comment>- Avoid &quot;Failed to chown ... Operation not permitted&quot; when run from non-root,
+  by not copying xattrs. (osc#1092178)
+  * adds 0593-dracut-only-copy-xattr-if-root.patch 
+
+- Correct fix for displaying text on emergency consoles (boo#1124088)
+  * removes 0589-Fix-displaying-text-on-emergency-consoles.patch
+  * adds 0589-Fix-98dracut-systemd-dracut-emergency.sh.patch
+- 95iscsi: handle qedi like bnx2i (bsc#1113712)
+  * adds 0592-95iscsi-handle-qedi-like-bnx2i.patch</comment>
+    <requestid>677134</requestid>
+  </revision>
+  <revision rev="134" vrev="26">
+    <srcmd5>4b259a2baeca15e07e2a0d895f14bac8</srcmd5>
+    <version>044.1</version>
+    <time>1551784509</time>
+    <user>dimstar_suse</user>
+    <comment>- purge-kernels: Avoid endless loop when uninstalling kernels that depend on
+  KMPs which in themselves depend on other packages (bsc#1125327) (forwarded request 678943 from dmolkentin)</comment>
+    <requestid>678954</requestid>
+  </revision>
+  <revision rev="135" vrev="27">
+    <srcmd5>08a6f562d51aee7a700169770194eb0a</srcmd5>
+    <version>044.1</version>
+    <time>1552380623</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 684092 from dmolkentin)</comment>
+    <requestid>684094</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>beb49e20afccc37c30f20accc4e2d5c5</srcmd5>
+    <version>044.2</version>
+    <time>1552990108</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version to 044.2 to provide a version to lock on to (bsc#1127891) (forwarded request 685049 from dmolkentin)</comment>
+    <requestid>685052</requestid>
+  </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>25075356a273ad64bb8026158d21213d</srcmd5>
+    <version>044.2</version>
+    <time>1556914016</time>
+    <user>dimstar_suse</user>
+    <comment>- dracut-lib.sh:dev_unit_name() guard against $dev beginning with &quot;-&quot; (bsc#1132448)
+  * adds 0601-base-dracut-lib.sh-dev_unit_name-guard-against-dev-b.patch 
+
+- 95iscsi: avoid error messages when building initrd, multipath timeouts
+  (bsc#1130114, bsc#1130107, bsc#1121238)
+  * adds 0595-iscsi-don-t-continue-waiting-if-the-root-device-is-p.patch
+  * adds 0596-network-stop-waiting-for-interfaces-if-root-device-i.patch
+  * adds 0597-iscsiroot-parse_iscsi_root-overwrites-command-line-a.patch
+  * adds 0598-iscsiroot-there-s-never-more-than-one-target-per-cal.patch
+  * adds 0599-iscsiroot-try-targets-only-once.patch
+  * adds 0600-iscsiroot-remove-bashisms.patch
+
+  (bsc#1089332) (forwarded request 698238 from dmolkentin)</comment>
+    <requestid>698239</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>39fc5ea1ca4162b61d87f1897d24662d</srcmd5>
+    <version>049+git92.951f754b</version>
+    <time>1559029239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705447</requestid>
+  </revision>
+  <revision rev="139" vrev="3">
+    <srcmd5>820a7da3739f02c37770c584e67050a7</srcmd5>
+    <version>044.2</version>
+    <time>1559288493</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 0.44 - https://bugzilla.opensuse.org/show_bug.cgi?id=1136927</comment>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>1c91dbee06289336ba521643494b36ed</srcmd5>
+    <version>049+git94.aef7a52b</version>
+    <time>1561195414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710354</requestid>
+  </revision>
+  <revision rev="141" vrev="4">
+    <srcmd5>623639ff6730be4fd8e82cb5d247fa6f</srcmd5>
+    <version>044.2</version>
+    <time>1561372510</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 044.2 - https://bugzilla.opensuse.org/show_bug.cgi?id=1136977</comment>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>fcf431307382e0619be590b327d7f67d</srcmd5>
+    <version>049+git104.1244eed7</version>
+    <time>1563701551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 049+git104.1244eed7:
+  * mkinitrd-suse.sh: remove trailing &quot;|&quot;
+
+- Update to version 049+git103.c8d99b62:
+  * Add support for compressed kernel modules (boo#1135854)
+
+- Update to version 049+git102.9ee0c387:
+  * dracut-install: Add support for compressed firmware files (boo#1136677)
+
+- Update to version 049+git101.17c579a0:
+  * call netroot on wicked dhcp setup
+  * nfsroot follow ifcfg settings for boot protocol
+
+- Update to version 049+git99.76df40e7:
+  * 95fcoe: Fix startup when fcoe module is included (boo#1136977)
+  * tests: Ignore .testdir 
+  * Add support for riscv64
+  * mkinitrd-suse.sh: simplify get_kernel_version (bsc#1139939)
+  * 95dasd-rules &amp; 95zfcp_rules: Look for correct rule name (bsc#1137784)
+
+- Update to version 049+git94.aef7a52b:
+  * ucode: properly include early only ucode
+  * keep network device naming scheme on upgrade (bsc#1136927)
+
+- Bump to 049
+- Patches are now maintained in git
+  * Removed 0012-40network-Fix-race-condition-when-wait-for-networks.patch
+  * Removed 0013-40network-always-start-netroot-in-ifup.sh.patch
+  * Removed 0015-40network-replace-dhclient-with-wickedd-dhcp-supplic.patch
+  * Removed 0016-Add-new-s390x-specific-rule-files.patch</comment>
+    <requestid>717099</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>1a5e3e6722d7aa3784c83321edaec1ad</srcmd5>
+    <version>049+git108.6c9d1156</version>
+    <time>1567421023</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 049+git108.6c9d1156:
+  * dracut-init.sh: Nuke unused install_kmod_with_fw function
+  * dracut-install: Support the compressed firmware files correctly (boo#1146769)
+  * dracut: let module handling function accept optional path option
+  * dracut.sh: Fix udevdir detection</comment>
+    <requestid>726198</requestid>
+  </revision>
+</revisionlist>

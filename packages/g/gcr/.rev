@@ -1,0 +1,269 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c2251a97f0eb7d6b6eafa6b1edbcbc5b</srcmd5>
+    <version>3.3.3.1</version>
+    <time>1326104107</time>
+    <user>coolo</user>
+    <comment>New package: gcr got split from gnome-keyring upstream, and is now a dependency for GNOME 3.4</comment>
+    <requestid>98882</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6cdccf291dd1a030c4773e50e193a9ba</srcmd5>
+    <version>3.3.4</version>
+    <time>1327484199</time>
+    <user>coolo</user>
+    <comment>Pushing bits of G:F that are fine (mostly update to 3.3.4)</comment>
+    <requestid>101170</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>14653601fcc1a62082dc37118558b149</srcmd5>
+    <version>3.3.5</version>
+    <time>1329391233</time>
+    <user>coolo</user>
+    <comment>Pushing most G:F bits</comment>
+    <requestid>105093</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>99141801602f3ec0c6cc8071275f7ac3</srcmd5>
+    <version>3.3.90</version>
+    <time>1331899991</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>109402</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>167f668e02223dc0546c548b83603c59</srcmd5>
+    <version>3.4.0</version>
+    <time>1333013983</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111695</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08d9005b26fd2b8dcad985a4e18b4327</srcmd5>
+    <version>3.4.1</version>
+    <time>1334927642</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>114637</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>08d9005b26fd2b8dcad985a4e18b4327</srcmd5>
+    <version>3.4.1</version>
+    <time>1340183353</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>edd68b1da7acd538a2806d5a30596dd2</srcmd5>
+    <version>3.6.0</version>
+    <time>1349252676</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136665</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7f5b9d3bcad18ca63d3d70f268d80dbd</srcmd5>
+    <version>3.6.1</version>
+    <time>1350632622</time>
+    <user>coolo</user>
+    <comment>Update to 3.6.1 (forwarded request 138273 from dimstar)</comment>
+    <requestid>138621</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>50899097c7558bf53381f900c91c1c04</srcmd5>
+    <version>3.6.2</version>
+    <time>1353508764</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>142088</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f965d621b6399a3e1088625b650f4989</srcmd5>
+    <version>3.6.2</version>
+    <time>1355464296</time>
+    <user>coolo</user>
+    <comment>- Add baselibs.conf in order to provide these -32bit packages:
+  + libgck-1-0.
+  + libgck-devel.
+  + libgcr-3-1 (Needed by libgdata13-32bit).
+  + libgcr-devel. (forwarded request 144847 from vuntz)</comment>
+    <requestid>145099</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>f965d621b6399a3e1088625b650f4989</srcmd5>
+    <version>3.6.2</version>
+    <time>1359108909</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cb1b2a34e9469f810403c8a5e5dcf91f</srcmd5>
+    <version>3.8.0</version>
+    <time>1365175524</time>
+    <user>coolo</user>
+    <comment>Update to 3.8.0</comment>
+    <requestid>162144</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7c87bb888bc025947d157357884ff289</srcmd5>
+    <version>3.8.1</version>
+    <time>1366983765</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.8.1 to Factory - mostly small bug fixes over the existing 3.8.0 we have</comment>
+    <requestid>173224</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c769cb7bd6872a58b7a11c97560bac98</srcmd5>
+    <version>3.9.1</version>
+    <time>1370425908</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.1 - been running it for a while now.</comment>
+    <requestid>176658</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6fe019f883fa131daa4c23308a28af6d</srcmd5>
+    <version>3.9.90</version>
+    <time>1377717279</time>
+    <user>coolo</user>
+    <comment>Update to 3.9.90 (forwarded request 196468 from Zaitor)</comment>
+    <requestid>196515</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f383d7fdb65e4e3f7fc9718fd88667ff</srcmd5>
+    <version>3.9.91</version>
+    <time>1378892106</time>
+    <user>coolo</user>
+    <comment>Update to 3.9.91</comment>
+    <requestid>198107</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>f383d7fdb65e4e3f7fc9718fd88667ff</srcmd5>
+    <version>3.9.91</version>
+    <time>1379662395</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4deb7595cdc9d9391c56828a5e57c8a8</srcmd5>
+    <version>3.10.0</version>
+    <time>1380294612</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200899</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3ac30f9a7b9f5e5934929d9a71a0ad1a</srcmd5>
+    <version>3.10.1</version>
+    <time>1382017830</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.10.1 - GNOME Stable branch - Translations only (forwarded request 203554 from RBrownCCB)</comment>
+    <requestid>203590</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>513a2445a3ff90f6436b10039eec5c73</srcmd5>
+    <version>3.12.0</version>
+    <time>1399317276</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231690</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5de3555a262fae621236d28b4c6e857c</srcmd5>
+    <version>3.12.2</version>
+    <time>1400588748</time>
+    <user>coolo</user>
+    <comment>Stable update (forwarded request 234377 from Zaitor)</comment>
+    <requestid>234555</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>5de3555a262fae621236d28b4c6e857c</srcmd5>
+    <version>3.12.2</version>
+    <time>1409300930</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>05b6bb4cbf18fefaa0d68a5526290636</srcmd5>
+    <version>3.14.0</version>
+    <time>1412098758</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251866 from Zaitor)</comment>
+    <requestid>252131</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e463305dfd63a4ebd24c015827067672</srcmd5>
+    <version>3.15.92</version>
+    <time>1427735532</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME:Factory - without pcheck</comment>
+    <requestid>291911</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4e89338086e845ded0086988696a0653</srcmd5>
+    <version>3.16.0</version>
+    <time>1431978944</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>306765</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5dfef8805f430407e39a0fe2abe8f751</srcmd5>
+    <version>3.18.0</version>
+    <time>1444142196</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 334753 from dimstar)</comment>
+    <requestid>335052</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d37640069ad0d0a4aaa5c5fcc9cb942e</srcmd5>
+    <version>3.20.0</version>
+    <time>1459255824</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 380349 from Zaitor)</comment>
+    <requestid>380946</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>512459ab12095b554aaf9eb584fedc64</srcmd5>
+    <version>3.20.0</version>
+    <time>1472594616</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423532</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>4a4c7056a308f505ba2729289fa559fd</srcmd5>
+    <version>3.20.0</version>
+    <time>1473102907</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424172</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>a96f58172a0a33232482de941e882e06</srcmd5>
+    <version>3.20.0</version>
+    <time>1519844465</time>
+    <user>dimstar_suse</user>
+    <comment>- Use SPDX3.0 license tags and package COPYING as %license.
+
+- Add explicit pkgconfig(pango) and pkgconfig(cairo) BuildRequires: 
+  closer alignment with what configure checks for.</comment>
+    <requestid>580406</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>669d6013f45cf438cb3a63dd083ceb1a</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052071</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0 (forwarded request 585958 from dimstar)</comment>
+    <requestid>586197</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>90b3dcdbd1647fd9b60b020cddd38830</srcmd5>
+    <version>3.28.1</version>
+    <time>1548537437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667737</requestid>
+  </revision>
+</revisionlist>

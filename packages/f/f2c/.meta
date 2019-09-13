@@ -1,0 +1,6 @@
+<package name="f2c" project="openSUSE:Factory">
+  <title>A Fortran-77 to C Translator</title>
+  <description>Contains libf2c.so.0.11, ported by Rob Hooft. This package uses an
+'f77' script that hides the C translation process from the user.</description>
+  <devel project="devel:languages:misc" package="f2c"/>
+</package>

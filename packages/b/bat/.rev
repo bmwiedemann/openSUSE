@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40faa2d8c5170e3eba701ba2220fda4f</srcmd5>
+    <version>0.7.1</version>
+    <time>1539251375</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the description's grammar.
+- Update to version 0.7.1
+ - Inital packaging @ 0.5.0
+</comment>
+    <requestid>639562</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>009bfbd0b8c058752a5fc146863ae41d</srcmd5>
+    <version>0.10.0</version>
+    <time>1551284855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674149</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0207ed13e7d2155821a06555ad748a3b</srcmd5>
+    <version>0.11.0</version>
+    <time>1560970634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703434</requestid>
+  </revision>
+</revisionlist>

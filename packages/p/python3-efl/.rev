@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5559277a56f2872030c8f591334b7a35</srcmd5>
+    <version>1.18.0</version>
+    <time>1475055036</time>
+    <user>dimstar_suse</user>
+    <comment>This will replace python-efl once accepted.
+
+Note for Legal: This is the same as the python-efl package but built against a different python version</comment>
+    <requestid>426900</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ee4e072f758a79f2e5ec416052d958df</srcmd5>
+    <version>1.19.0</version>
+    <time>1498639011</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude x86, cc1 uses too much memory atm
+
+- Add a _constraints file to fix out of mem issues
+
+- Update to 1.19.0
+  * changes in line with 1.19.X changes in efl</comment>
+    <requestid>506475</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c127119a311583e38d3d327540975d8a</srcmd5>
+    <version>1.20.0</version>
+    <time>1505502200</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521041</requestid>
+  </revision>
+</revisionlist>

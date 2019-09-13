@@ -1,0 +1,470 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4d309c94497d94b5b185b25fc9a14ec</srcmd5>
+    <version>2.7.1</version>
+    <time>1329751074</time>
+    <user>coolo</user>
+    <comment>please review, needed for openstack</comment>
+    <requestid>104952</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f782853f2899ad2e5e83b67090ab808b</srcmd5>
+    <version>2.7.1</version>
+    <time>1335190370</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>115038</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ecfba87ac2a7c912e23c6644b8a8da9e</srcmd5>
+    <version>2.8.2</version>
+    <time>1337005106</time>
+    <user>coolo</user>
+    <comment>version 2.8.2
+ (forwarded request 116820 from matwey)</comment>
+    <requestid>120767</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ecfba87ac2a7c912e23c6644b8a8da9e</srcmd5>
+    <version>2.8.2</version>
+    <time>1340184135</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f6a72c16acff727285a722433bda2ded</srcmd5>
+    <version>2.8.7</version>
+    <time>1355733439</time>
+    <user>coolo</user>
+    <comment>some init script and sysconfig cleanup, add OCF RA for use with pacemaker (forwarded request 145495 from rhafer)</comment>
+    <requestid>145498</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f6a72c16acff727285a722433bda2ded</srcmd5>
+    <version>2.8.7</version>
+    <time>1359110271</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a1effc2ee5717e0620a34af55a6d5d83</srcmd5>
+    <version>3.0.4</version>
+    <time>1363900387</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160222</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1da48f395987aeaa3bbe285e00a5e2a4</srcmd5>
+    <version>3.0.4</version>
+    <time>1365140222</time>
+    <user>coolo</user>
+    <comment>- Change init script to properly daemonize (patch by jdsn) (bnc#807540)
+
+- Added systemd .service file</comment>
+    <requestid>162588</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>528fde63e8084a91e5dc3731ee8dbb4b</srcmd5>
+    <version>3.0.4</version>
+    <time>1367487943</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174176</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>5262c3d2503d9e76f837ef60ae0b5152</srcmd5>
+    <version>3.0.4</version>
+    <time>1370430586</time>
+    <user>coolo</user>
+    <comment>- Fixing logrotate errors (bnc#775867)</comment>
+    <requestid>176776</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>43169eb8a7a904d9d43a5263335c13e9</srcmd5>
+    <version>3.1.3</version>
+    <time>1372925826</time>
+    <user>coolo</user>
+    <comment>- update to 3.1.3:
+  * Eager synchronisation of mirror queue slaves
+  * Automatic cluster partition healing
+  * Charts in the management plugin
+  * Queue length limits
+  * Bug fixes
+  * Fixes a security bug in federation</comment>
+    <requestid>181896</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1f4b0fa8f4c114c6b6ba83f410e367e6</srcmd5>
+    <version>3.1.5</version>
+    <time>1379319190</time>
+    <user>coolo</user>
+    <comment>- update to 3.1.5:
+  * various security fixes and bugfixes
+  * see http://www.rabbitmq.com/release-notes/README-3.1.5.txt
+  * see http://www.rabbitmq.com/release-notes/README-3.1.4.txt</comment>
+    <requestid>199019</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>1f4b0fa8f4c114c6b6ba83f410e367e6</srcmd5>
+    <version>3.1.5</version>
+    <time>1379664429</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>f7b4b9156dc58e69d9697c091b0b4835</srcmd5>
+    <version>3.1.5</version>
+    <time>1379926851</time>
+    <user>coolo</user>
+    <comment>- fix syntax error in wrapper script</comment>
+    <requestid>199866</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>c63c7c213f3942d8f1f26d00a7dee92b</srcmd5>
+    <version>3.1.5</version>
+    <time>1389385329</time>
+    <user>coolo</user>
+    <comment>- add Provides: erlang-gen_server2 to erlang-rabbitmq_client
+(many people want gen_server2, which is a part of rabbitmq)</comment>
+    <requestid>213074</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a8f712b7569299a1b09f344dadeecd1d</srcmd5>
+    <version>3.2.3</version>
+    <time>1391157853</time>
+    <user>coolo</user>
+    <comment>- update to 3.2.3:
+  * This release fixes a number of bugs in the broker and federation plugin
+  * Improvements to the LDAP and shovel plugins are also included
+
+- install a config file by default 
+  add fix-syntax-error-in-example-conf.patch
+
+- update to 3.2.2:
+  * federated queues and features enhanced policies for aspects of the broker
+  * This release fixes a number of bugs in the broker and plugins</comment>
+    <requestid>220412</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>81b46e4bd47ccf867a83296785de07d9</srcmd5>
+    <version>3.2.4</version>
+    <time>1396005188</time>
+    <user>coolo</user>
+    <comment>- update to 3.2.4:
+  * Several bug fixes, no detailed changelog available
+- remove fix-syntax-error-in-example-conf.patch: merged upstream</comment>
+    <requestid>227726</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2af5fde9cb9c02a52ccfc434e628200b</srcmd5>
+    <version>3.3.0</version>
+    <time>1396726888</time>
+    <user>coolo</user>
+    <comment>- update to 3.3.0:
+  * long list of security, bugfixes and enhancements
+  * see http://www.rabbitmq.com/release-notes/README-3.3.0.txt
+
+- Add ocf-fixes.patch to fix issues in the OCF file:
+  - use the wrapper function to call rabbitmqctl for stop, so that
+    we interpret correctly the exit code.
+  - accept 1 as valid exit code from &quot;rabbitmqctl status&quot;, instead
+    of totally breaking when we get it.
+- We use a patch as the OCF file comes from upstream, so it's
+  better to keep the changes isolated.</comment>
+    <requestid>228984</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>7fbc002e4af1c225a3de6c0f3c0d9b2c</srcmd5>
+    <version>3.3.0</version>
+    <time>1397986603</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>230690</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d0c379534f7b723d1a679d37f1060caa</srcmd5>
+    <version>3.3.1</version>
+    <time>1399377773</time>
+    <user>coolo</user>
+    <comment>- update to 3.3.1:
+  * Bug fixes
+  * Security fixes to MQTT and shovel
+  * see http://www.rabbitmq.com/release-notes/README-3.3.1.txt
+
+- do not install init script on systemd distros</comment>
+    <requestid>232714</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>3bd574390f19e6e717e484846a1d0b4b</srcmd5>
+    <version>3.3.1</version>
+    <time>1406645306</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>242760</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>3bd574390f19e6e717e484846a1d0b4b</srcmd5>
+    <version>3.3.1</version>
+    <time>1409303159</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2daecdd60e4b879706222dbf74c751f5</srcmd5>
+    <version>3.3.5</version>
+    <time>1411370656</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>250564</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>040a4a74b4af6ab6fedaecec72ca85a2</srcmd5>
+    <version>3.3.5</version>
+    <time>1417643266</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263606</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7183f99366c65e8390b706011e587b08</srcmd5>
+    <version>3.4.3</version>
+    <time>1421959746</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.3:
+   * prevent XSS attack in table key names (since 2.4.0)
+     (CVE-2015-0862)
+   * prevent XSS attack in policy names (since 3.4.0)
+      (CVE-2015-0862)
+   * prevent XSS attack in client details in the connections list
+      (CVE-2015-0862)
+   * prevent XSS attack in user names in the vhosts list or the vhost names
+      in the user list (since 2.4.0)
+      (CVE-2015-0862)
+   * prevent XSS attack in the cluster name (since 3.3.0)
+      (CVE-2015-0862)
+   * prevent /api/* from returning text/html error messages which could
+      act as an XSS vector (since 2.1.0)
+   * fix response-splitting vulnerability in /api/downloads (since 2.1.0)
+   * do not trust X-Forwarded-For header when enforcing 'loopback_users' 
+     (CVE-2014-9494)
+   * disable SSLv3 by default to prevent the POODLE attack
+   * see https://www.rabbitmq.com/release-notes/README-3.4.3.txt
+   * see https://www.rabbitmq.com/release-notes/README-3.4.2.txt
+   * see https://www.rabbitmq.com/release-notes/README-3.4.1.txt
+   * see https://www.rabbitmq.com/release-notes/README-3.4.0.txt</comment>
+    <requestid>282244</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8695ed669f9aa2a95714e2ea5a28ec46</srcmd5>
+    <version>3.5.1</version>
+    <time>1429606341</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>297970</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>cebcc820f38e41a151b6b9c87017daf7</srcmd5>
+    <version>3.5.4</version>
+    <time>1464853093</time>
+    <user>dimstar_suse</user>
+    <comment>Fix bsc#973999
+- rabbitmq-server.service: increase NOFILE limit per documentation
+- rabbitqm-server.ocf: add OCF_RESKEY_limit_nofile parameter
+  default as 65535
+
+- rabbitmqctl: clear CMDLINE before appending
+
+- update to 3.5.4:
+  Runtime I/O thread pool size is now 64 instead of 30 by default.
+  This reduces time spent waiting for file I/O operations to complete
+  on machines with 8 or more cores.
+  * https://github.com/rabbitmq/rabbitmq-server/releases/tag/rabbitmq_v3_5_4
+
+- rabbitmq-server.service: switch to type=Notify in order to
+  avoid cookie creation race
+
+- update to 3.5.3:
+  3.5.2 and 3.5.3 are bugfix releases. See:
+  * https://github.com/rabbitmq/rabbitmq-server/releases/tag/rabbitmq_v3_5_2
+  * https://github.com/rabbitmq/rabbitmq-server/releases/tag/rabbitmq_v3_5_3</comment>
+    <requestid>398332</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0ba218355d62547c4cdd8608096115bd</srcmd5>
+    <version>3.6.6</version>
+    <time>1487260937</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456795</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>910e3a926fbc9fa53f2583e437313752</srcmd5>
+    <version>3.6.6</version>
+    <time>1488480204</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461727</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>a98cd8d6fcb4f8563328b4ba5d4ffb48</srcmd5>
+    <version>3.6.6</version>
+    <time>1491896719</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485789</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>aa5818d4da98d22ef4321a8ae599906a</srcmd5>
+    <version>3.6.11</version>
+    <time>1503593758</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518408</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1153809461d98ac47433113ec337c7a0</srcmd5>
+    <version>3.6.14</version>
+    <time>1511595740</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>544918</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>6fc04ead69fba3e2ef0a91c30a4af93f</srcmd5>
+    <version>3.6.14</version>
+    <time>1511817519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545917</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>3727bfa08e6b531717649df290a9fcc9</srcmd5>
+    <version>3.6.14</version>
+    <time>1513245826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556830</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>b24339c6c95ae6e60f12920bf37c1fea</srcmd5>
+    <version>3.6.14</version>
+    <time>1516634460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568174</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>dad33a6c8146498b6de20c2a3f1fe434</srcmd5>
+    <version>3.6.15</version>
+    <time>1516804291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568554</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>cd98f415df24a4e0ee39fc97ce73b2ad</srcmd5>
+    <version>3.6.15</version>
+    <time>1527675791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612848</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>96bc982165a141371e932cb4155c6c67</srcmd5>
+    <version>3.6.16</version>
+    <time>1536679160</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 3.6.16:
+  Bug fixes:
+  + Queue master locator min-masters incorrectly calculated the number of masters.
+  + Maximum supported number of queue priorities (255) is now enforced
+  Enhancements:
+  + queue.delete operations will now force delete queues that don't have a promotable master
+  + Lock contention in internal database is now much lower when a node with a lot of exclusive queues
+shuts down or is otherwise considered to be unavailable by peers
+  + Default max number of channels allowed on a connection (a.k.a. channel_max) has been lowered from 65535 to 2047.
+The new default is much safer and will reduce the effect application channel leaks have on node resource consumption. This is a potentially breaking change.</comment>
+    <requestid>634752</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>765b7ffcda78a90c40306e31a4c55fa0</srcmd5>
+    <version>3.7.9</version>
+    <time>1548064107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664121</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>54cda96c17b316244b2c8801081e045a</srcmd5>
+    <version>3.7.10</version>
+    <time>1548335574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667694</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a156345d7d9f0fbd2b6f601061eb95b3</srcmd5>
+    <version>3.7.11</version>
+    <time>1549286707</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670893</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ac9bd0ce8808f11bc2894f6c1a2bb680</srcmd5>
+    <version>3.7.12</version>
+    <time>1550402494</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676615</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>396a06fb770aec9e6b7988a82f370571</srcmd5>
+    <version>3.7.13</version>
+    <time>1552464939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684443</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f19f5ec875207d463dd708043e9520af</srcmd5>
+    <version>3.7.14</version>
+    <time>1554458420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690084</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>0792130eecfe2efc23476c13426caacc</srcmd5>
+    <version>3.7.14</version>
+    <time>1557084102</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700431</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>15a22ea0f8478e17113e139d2ee62b3e</srcmd5>
+    <version>3.7.15</version>
+    <time>1558516647</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704519</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>760ec4206908a4f73d0d5cbb51ebd77b</srcmd5>
+    <version>3.7.16</version>
+    <time>1563701607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716266</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>40ca9288e1b875c6a6cb848ad979d573</srcmd5>
+    <version>3.7.17</version>
+    <time>1566463887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724742</requestid>
+  </revision>
+</revisionlist>

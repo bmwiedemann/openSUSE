@@ -1,0 +1,7 @@
+<package name="libcstring" project="openSUSE:Factory">
+  <title> Library for cross-platform C string functions</title>
+  <description>A library for cross-platform C string functions.
+
+libcstring is part of the libyal library collection</description>
+  <devel project="security:forensics" package="libcstring"/>
+</package>

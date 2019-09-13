@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9823f502949b45eadc26b925884c6a5</srcmd5>
+    <version>1.1</version>
+    <time>1548062899</time>
+    <user>dimstar_suse</user>
+    <comment>python-argparse-manpage is soon to be a requirement of 389-ds's command line
+tools.</comment>
+    <requestid>660242</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7cd0aa072d3c8a753fd9b83ab4bad474</srcmd5>
+    <version>1.1</version>
+    <time>1558351092</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github tarball
+  - Enable tests
+  - Get license file
+- Run fdupes
+- Add support for older distros than Tumbleweed
+- Use noun phrase in summary. Repair grammar issues in description.
+</comment>
+    <requestid>704089</requestid>
+  </revision>
+</revisionlist>

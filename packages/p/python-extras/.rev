@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ce529785278d9f262ae63f4597c7387</srcmd5>
+    <version>0.0.2</version>
+    <time>1358198695</time>
+    <user>coolo</user>
+    <comment>Future OpenStack dependency</comment>
+    <requestid>148433</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7ce529785278d9f262ae63f4597c7387</srcmd5>
+    <version>0.0.2</version>
+    <time>1359110028</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>21bc968e33a58238f3c7e4d3df4b7d58</srcmd5>
+    <version>0.0.3</version>
+    <time>1367487559</time>
+    <user>coolo</user>
+    <comment>- update to 0.0.3:
+  * Fix support with older testtools (forwarded request 173730 from dirkmueller)</comment>
+    <requestid>173780</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c1f3dd002f7c614c7b94ab23cc1148b7</srcmd5>
+    <version>0.0.3</version>
+    <time>1370432126</time>
+    <user>coolo</user>
+    <comment>dep for python-testscenarios</comment>
+    <requestid>176924</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>a78aefb97c0eda7e838d4d76446d6af6</srcmd5>
+    <version>0.0.3</version>
+    <time>1371652624</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179817</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>a78aefb97c0eda7e838d4d76446d6af6</srcmd5>
+    <version>0.0.3</version>
+    <time>1379664174</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>d897af1374bbce9fbc356a10ad752f9e</srcmd5>
+    <version>0.0.3</version>
+    <time>1386064089</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>209159</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>dc2fbb1aa86a21e12b5f61ee55507554</srcmd5>
+    <version>0.0.3</version>
+    <time>1394806670</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>225930</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>dc2fbb1aa86a21e12b5f61ee55507554</srcmd5>
+    <version>0.0.3</version>
+    <time>1409302867</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c293858d9561fe6815456b11258dde64</srcmd5>
+    <version>1.0.0</version>
+    <time>1472731395</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423955</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>026ccd7ee36c88931b4311fc16ab3a06</srcmd5>
+    <version>1.0.0</version>
+    <time>1493363533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>484784</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>c066159b3c3d05ed990e101174e68828</srcmd5>
+    <version>1.0.0</version>
+    <time>1544094903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655394</requestid>
+  </revision>
+</revisionlist>

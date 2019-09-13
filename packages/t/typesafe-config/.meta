@@ -1,0 +1,5 @@
+<package name="typesafe-config" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="typesafe-config"/>
+</package>

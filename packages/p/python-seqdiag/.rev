@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5dbf664e92dc46d3667e93ffefadbabc</srcmd5>
+    <version>0.9.5</version>
+    <time>1524144539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596320</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ea39c787b900774075e809916849328e</srcmd5>
+    <version>0.9.5</version>
+    <time>1545648376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659827</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>45fc6aa4b81da56ce19c4788601fe6e8</srcmd5>
+    <version>0.9.6</version>
+    <time>1556622258</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.6:
+  * Python 3.7 compatibility</comment>
+    <requestid>697923</requestid>
+  </revision>
+</revisionlist>

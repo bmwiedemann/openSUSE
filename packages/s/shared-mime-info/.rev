@@ -1,0 +1,476 @@
+<revisionlist>
+  <revision rev="1" vrev="27">
+    <srcmd5>662ffcfd1b93317ef8223aae607bb6a0</srcmd5>
+    <version>0.19</version>
+    <time>1168275167</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7515c4644d00b31a5439a7377d0c2d25</srcmd5>
+    <version>0.20</version>
+    <time>1171925836</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="7">
+    <srcmd5>18de633e369e259f50e5607d8c5c30d9</srcmd5>
+    <version>0.20</version>
+    <time>1175870131</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7720e74e057f2d9917e99a9f263ba803</srcmd5>
+    <version>0.22</version>
+    <time>1186174057</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="27">
+    <srcmd5>ec083404abd9a23be6e411a7027ebb93</srcmd5>
+    <version>0.22</version>
+    <time>1198000598</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d35a102d1c1fd80b80c65164a2cf91d8</srcmd5>
+    <version>0.23</version>
+    <time>1198348455</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>f2dd4f3f86825cdd5af3d92f5b2895f7</srcmd5>
+    <version>0.23</version>
+    <time>1201532969</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c1472d88068894a45dbedca2efc24f68</srcmd5>
+    <version>0.51</version>
+    <time>1219433875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>e76e30178dad8701b85b90a65cb1fe94</srcmd5>
+    <version>0.51</version>
+    <time>1224694124</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0368b18bc4b6ec6a8ea1beb72f274797</srcmd5>
+    <version>0.60</version>
+    <time>1235390378</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>0368b18bc4b6ec6a8ea1beb72f274797</srcmd5>
+    <version>0.60</version>
+    <time>1235390378</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b087d52320087bb37593de2c3128fc87</srcmd5>
+    <version>0.70</version>
+    <time>1260270883</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/shared-mime-info based on submit request 25904 from user vuntz
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>67e0ad1422cbfd55334c73f926a7b687</srcmd5>
+    <version>0.71</version>
+    <time>1265913646</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/shared-mime-info based on submit request 32300 from user vuntz
+</comment>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a52d83c7110e8e32a3d210f1006c86c1</srcmd5>
+    <version>0.71</version>
+    <time>1266508006</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/shared-mime-info based on submit request 32816 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>f86464c802043c62b102626e386e068d</srcmd5>
+    <version>0.71</version>
+    <time>1268926163</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>f86464c802043c62b102626e386e068d</srcmd5>
+    <version>0.71</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>f86464c802043c62b102626e386e068d</srcmd5>
+    <version>0.71</version>
+    <time>1278678619</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>06458af534405da9fc70a35749b4760b</srcmd5>
+    <version>0.71</version>
+    <time>1281368277</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/shared-mime-info based on submit request 45144 from user vuntz
+</comment>
+    <requestid>45144</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1f635c3f88fd6f25addd842c80450672</srcmd5>
+    <version>0.80</version>
+    <time>1287143856</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/shared-mime-info based on submit request 50779 from user vuntz
+</comment>
+    <requestid>50779</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cdd6c7ea22b63ed096368ef21970a7d1</srcmd5>
+    <version>0.90</version>
+    <time>1291992683</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55413 from user vuntz
+</comment>
+    <requestid>55413</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>08cbe425276446ea4db25e64e25cbfee</srcmd5>
+    <version>0.90</version>
+    <time>1292239811</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55785 from user vuntz
+</comment>
+    <requestid>55785</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>e0c365d05f89fa3f73b5e9491fcf405a</srcmd5>
+    <version>0.90</version>
+    <time>1292239832</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55785
+</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>21ce9c8cdf69cbe1bd5802a9d60d7b58</srcmd5>
+    <version>0.90</version>
+    <time>1292758946</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56115 from user vuntz
+</comment>
+    <requestid>56115</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>e53e85f2073dca352cfbad0f3329342d</srcmd5>
+    <version>0.90</version>
+    <time>1292758961</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56115
+</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>f9170aca958851eff3458f7ac5b52f7e</srcmd5>
+    <version>0.90</version>
+    <time>1296235860</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59196 from user vuntz
+</comment>
+    <requestid>59196</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>4b368d38898a72356387560cfd0774f3</srcmd5>
+    <version>0.90</version>
+    <time>1296235869</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59196
+</comment>
+  </revision>
+  <revision rev="27" vrev="10">
+    <srcmd5>4b368d38898a72356387560cfd0774f3</srcmd5>
+    <version>0.90</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b01c4e7d4a827a56dc953903504f0209</srcmd5>
+    <version>0.91</version>
+    <time>1317546908</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85717</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>3906ee763c037e3b325154fa058765f2</srcmd5>
+    <version>0.91</version>
+    <time>1317626706</time>
+    <user>lrupp</user>
+    <comment>BuildIgnore shared-mime-info... we can't require *self to build</comment>
+    <requestid>86131</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>3906ee763c037e3b325154fa058765f2</srcmd5>
+    <version>0.91</version>
+    <time>1319182467</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>699cfc6a59db7cabc08ac41c0ed4b4c1</srcmd5>
+    <version>0.91</version>
+    <time>1323194638</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6ce76c71090e9f2c6a96ddf8569aab43</srcmd5>
+    <version>1.0</version>
+    <time>1327093678</time>
+    <user>coolo</user>
+    <comment>Pushing small bits of G:F</comment>
+    <requestid>100721</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>61f2e246ade65b65c1251c25592f41b2</srcmd5>
+    <version>1.0</version>
+    <time>1330434973</time>
+    <user>coolo</user>
+    <comment>Fix build after libxml2 change (forwarded request 107006 from vuntz)</comment>
+    <requestid>107024</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>a452f837eca400e16fc5495b069272cf</srcmd5>
+    <version>1.0</version>
+    <time>1332147556</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>109454</requestid>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>a452f837eca400e16fc5495b069272cf</srcmd5>
+    <version>1.0</version>
+    <time>1340184214</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>415cf61226536fd7bbcb9ee62b102d4b</srcmd5>
+    <version>1.0</version>
+    <time>1343137135</time>
+    <user>coolo</user>
+    <comment>Split out lang package.. no importance.. just cleaning up old bugs (forwarded request 128591 from Zaitor)</comment>
+    <requestid>128799</requestid>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>415cf61226536fd7bbcb9ee62b102d4b</srcmd5>
+    <version>1.0</version>
+    <time>1359110402</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>cb19e8ada467b0a534c6e9a885b74e8c</srcmd5>
+    <version>1.1</version>
+    <time>1361349389</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1:
+  + Many mime-type changes
+  + Specification changes:
+    - Fix mimetype names used as examples.
+    - Document that the first extension is the main one.
+    - Fix missing plural.
+  + Honor NOCONFIGURE=1.
+  + Allow builders to not run make check by default.
+  + Fix build for platforms with executable extensions.
+  + Disable checks when cross compiling.
+  + Use non-installed update-mime-database in install-data-hook.
+  + Use native update-mime-database for install when cross
+    compiling.
+  + Add a local-test target to print mime in.
+- Pass --disable-default-make-check to configure: we prefer to
+  execute make check in the separate %check section.
+- Add a %check section and execute make check (forwarded request 155668 from Zaitor)</comment>
+    <requestid>155854</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>cb19e8ada467b0a534c6e9a885b74e8c</srcmd5>
+    <version>1.1</version>
+    <time>1379664663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4724e2e31177a6f410b04f99d42c55b0</srcmd5>
+    <version>1.2</version>
+    <time>1380718157</time>
+    <user>coolo</user>
+    <comment>Update to 1.2 (forwarded request 201515 from RBrownCCB)</comment>
+    <requestid>201574</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>baea8e6371766dad099f623b8f5032ef</srcmd5>
+    <version>1.2</version>
+    <time>1392270701</time>
+    <user>coolo</user>
+    <comment>- Export ac_cv_func_fdatasync=no before calling configure, to
+  workaround the issue described in fdo#70366, where fdatasync()
+  is called on each update-mime-database invocation</comment>
+    <requestid>221806</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d55c76e9a7677e36e0db25f1624ed35a</srcmd5>
+    <version>1.3</version>
+    <time>1397540121</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.3:
+  + Mime-type changes:
+    - Add Aliases for OpenOffice Base and StarWriter.
+    - Add Apple Keynote 5 mime-type.
+    - Add mimetype for compressed FictionBook2.
+    - Don't recognize all .asc files as application/pgp-encrypted.
+    - Add tree magic for the Kindle e-book reader.
+    - Add LZ4 archive type.
+    - Add PC Engine, GameCube and Wii &quot;ROM&quot; types.
+    - Add audio/x-opus+ogg mime-type.
+    - Add image/webp mime-type.
+    - Prefer application/vnd.ms-asf to video/x-ms-asf.
+    - Add application/x-riff mime-type.
+    - Add JSON mime-type.
+    - Add *.jsm glob for Javascript.
+    - Add magic and glob patterns for compressed x-spss-sav files.
+    - JavaScript and CSS are not subclasses of text/x-csrc.
+    - Remove *.CSSL glob for CSS files.
+  + Call g_type_init() only with older glib.
+  + Fix failures on NetBSD.
+  + Store MEDIA/SUBTYPE.xml files in lowercase.</comment>
+    <requestid>229839</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>d55c76e9a7677e36e0db25f1624ed35a</srcmd5>
+    <version>1.3</version>
+    <time>1409303360</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8fec8c16bd94de2936dff4d570f9d2ca</srcmd5>
+    <version>1.4</version>
+    <time>1424693166</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286776</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0c7c613dff44e93141b317a072c1caf9</srcmd5>
+    <version>1.5</version>
+    <time>1444140790</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 331693 from dimstar)</comment>
+    <requestid>331769</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2a75707aa2e7291f17e95dd2af401194</srcmd5>
+    <version>1.6</version>
+    <time>1459254468</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>364571</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>b16d5cf065f4e0fa9173a3961b657338</srcmd5>
+    <version>1.6</version>
+    <time>1467359862</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401989</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>426144dac7dc5cffefba89bc9b58b38b</srcmd5>
+    <version>1.6</version>
+    <time>1470217277</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415571</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>12710d0f0c2eac98314c5f925242f11d</srcmd5>
+    <version>1.7</version>
+    <time>1474115893</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 426853 from Zaitor)</comment>
+    <requestid>427730</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>deb7a567d786f6fe1d95ed10b6c85c3e</srcmd5>
+    <version>1.8</version>
+    <time>1481459001</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444663</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>e93f345a95580b5ed42ee2e9572ef9f3</srcmd5>
+    <version>1.8</version>
+    <time>1499880749</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508932</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>cbda84f142adb708975c9917ab2cca06</srcmd5>
+    <version>1.9</version>
+    <time>1506340262</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 527049 from Zaitor)</comment>
+    <requestid>528344</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>ecde8fed0d0ef9a69bbd307bc976ff20</srcmd5>
+    <version>1.9</version>
+    <time>1508508771</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop obsolete mime-info-to-mime (boo#1062631). (forwarded request 533405 from sbrabec)</comment>
+    <requestid>533694</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>0b30fbe909a354e960375672a138ed6b</srcmd5>
+    <version>1.9</version>
+    <time>1521051886</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583605 from dimstar)</comment>
+    <requestid>584768</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>3af77a97af90ae97e58e4cb9bb261ac6</srcmd5>
+    <version>1.10</version>
+    <time>1541666626</time>
+    <user>dimstar_suse</user>
+    <comment>Update shared-mime-info to 1.10 (forwarded request 644164 from seanlew)</comment>
+    <requestid>644295</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3304bfffc98a3b1e7f0726d1eb6e597f</srcmd5>
+    <version>1.12</version>
+    <time>1554276335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688445</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>8ddc4a3aef25ae214b46f8a6e9ad58d9</srcmd5>
+    <version>1.12</version>
+    <time>1556914108</time>
+    <user>dimstar_suse</user>
+    <comment>- Move RPM macros file to correct directory in /usr (forwarded request 695111 from kukuk)</comment>
+    <requestid>695164</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>81880e976021e0869d536e5586023115</srcmd5>
+    <version>1.12</version>
+    <time>1558036617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701855</requestid>
+  </revision>
+</revisionlist>

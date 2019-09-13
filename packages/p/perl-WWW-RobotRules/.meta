@@ -1,0 +1,9 @@
+<package name="perl-WWW-RobotRules" project="openSUSE:Factory">
+  <title>database of robots.txt-derived permissions</title>
+  <description>This module parses _/robots.txt_ files as specified in &quot;A Standard for
+Robot Exclusion&quot;, at &lt;http://www.robotstxt.org/wc/norobots.html&gt; Webmasters
+can use the _/robots.txt_ file to forbid conforming robots from accessing
+parts of their web site.</description>
+  <devel project="devel:languages:perl" package="perl-WWW-RobotRules"/>
+  <url>http://search.cpan.org/dist/WWW-RobotRules/</url>
+</package>

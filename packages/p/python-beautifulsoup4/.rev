@@ -1,0 +1,294 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ab07a6b7742a709629210dd1242d9e0f</srcmd5>
+    <version>4.1.3</version>
+    <time>1357893525</time>
+    <user>coolo</user>
+    <comment>Added a python3 spec file.</comment>
+    <requestid>147914</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f8f66494e665dd58ab85c3d86309a4c5</srcmd5>
+    <version>4.1.3</version>
+    <time>1358016425</time>
+    <user>namtrac</user>
+    <comment>- Fix runtime python dependency</comment>
+    <requestid>148172</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f8f66494e665dd58ab85c3d86309a4c5</srcmd5>
+    <version>4.1.3</version>
+    <time>1359109997</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>3e546a0b22d33c5ae94c83cfa3e4aa48</srcmd5>
+    <version>4.1.3</version>
+    <time>1362745580</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157716</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>e49e828abb8347610796826d222da3d5</srcmd5>
+    <version>4.1.3</version>
+    <time>1367502961</time>
+    <user>coolo</user>
+    <comment>- remove lxml support (fails unit test) (forwarded request 173972 from dirkmueller)</comment>
+    <requestid>174254</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>205a1dbc47fc7cfa3a8ebcf8ab47d8b8</srcmd5>
+    <version>4.2.0</version>
+    <time>1369641474</time>
+    <user>coolo</user>
+    <comment>Update to  4.2.0
+Re-enable lxml in python2
+Build and package documentation (forwarded request 176044 from TheBlackCat)</comment>
+    <requestid>176045</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c0655a24f3dbb3b878eb6d839440b381</srcmd5>
+    <version>4.2.0</version>
+    <time>1371544575</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>179365</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>01b74ecd95082ba3e24b626cb5273030</srcmd5>
+    <version>4.2.1</version>
+    <time>1372527802</time>
+    <user>coolo</user>
+    <comment>- Update upstream URL
+
+- update to 4.2.1:
+ * The default XML formatter will now replace ampersands even if they
+   appear to be part of entities. That is, &quot;&amp;lt;&quot; will become
+   &quot;&amp;amp;lt;&quot;. The old code was left over from Beautiful Soup 3, which
+   didn't always turn entities into Unicode characters.
+ 
+   If you really want the old behavior (maybe because you add new
+   strings to the tree, those strings include entities, and you want
+   the formatter to leave them alone on output), it can be found in
+   EntitySubstitution.substitute_xml_containing_entities(). [bug=1182183]
+ 
+ * Gave new_string() the ability to create subclasses of
+   NavigableString. [bug=1181986]
+ 
+ * Fixed another bug by which the html5lib tree builder could create a
+   disconnected tree. [bug=1182089]
+ 
+ * The .previous_element of a BeautifulSoup object is now always None,
+   not the last element to be parsed. [bug=1182089]
+ 
+ * Fixed test failures when lxml is not installed. [bug=1181589]
+ 
+ * html5lib now supports Python 3. Fixed some Python 2-specific
+   code in the html5lib test suite. [bug=1181624]
+ 
+ * The html.parser treebuilder can now handle numeric attributes in
+   text when the hexidecimal name of the attribute starts with a
+   capital X. Patch by Tim Shirley. [bug=1186242]</comment>
+    <requestid>181164</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b066642efd29faae35efce48ae8c0902</srcmd5>
+    <version>4.2.1</version>
+    <time>1374161625</time>
+    <user>coolo</user>
+    <comment>make package workable for SLES11 SP3 (forwarded request 183598 from cberendt)</comment>
+    <requestid>183602</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>cf9cb161a1d40333296ebd7cf19540e2</srcmd5>
+    <version>4.2.1</version>
+    <time>1374491719</time>
+    <user>coolo</user>
+    <comment>remove .buildinfo before installation to remove rpmlint warning (forwarded request 183773 from cberendt)</comment>
+    <requestid>183949</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>cf9cb161a1d40333296ebd7cf19540e2</srcmd5>
+    <version>4.2.1</version>
+    <time>1379664131</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6f6c828f0a8341e8ab4e4aba30bba7ba</srcmd5>
+    <version>4.3.2</version>
+    <time>1382520640</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 4.3.2</comment>
+    <requestid>204385</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>387214c9f81aade10a0f46593d74f482</srcmd5>
+    <version>4.3.2</version>
+    <time>1389277858</time>
+    <user>coolo</user>
+    <comment>- Add beautifulsoup4-lxml-fixes.patch: LXML fixes</comment>
+    <requestid>213193</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>387214c9f81aade10a0f46593d74f482</srcmd5>
+    <version>4.3.2</version>
+    <time>1409302821</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>f156e26965871481a689fabefb3359b3</srcmd5>
+    <version>4.3.2</version>
+    <time>1438421820</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318750</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e2930b83ab5f24b9030fe593ef26ee2c</srcmd5>
+    <version>4.4.0</version>
+    <time>1439190949</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320117</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a16303e0ea914d30384b2fe1c8724fd2</srcmd5>
+    <version>4.4.1</version>
+    <time>1447766616</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344873</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>15428f76e1afd8a9a06c419bef085b98</srcmd5>
+    <version>4.5.1</version>
+    <time>1475055028</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424403</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c7ec49bc51735d7c5307c2e77c136ad3</srcmd5>
+    <version>4.5.3</version>
+    <time>1493368670</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487697</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>dbc96d87a711945dc74b66d0bdff7fa5</srcmd5>
+    <version>4.5.3</version>
+    <time>1497362806</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501448</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e8d040c4eb801594d2cc455be999b2e3</srcmd5>
+    <version>4.6.0</version>
+    <time>1501406410</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>509648</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ecdaa0f67459bccd773908011d21d6de</srcmd5>
+    <version>4.6.0</version>
+    <time>1502707079</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516159</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>8f9ddad56e533de1b8cc58602acf2620</srcmd5>
+    <version>4.6.0</version>
+    <time>1520253447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580806</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>8421336839f15bb7d4f55243c868571e</srcmd5>
+    <version>4.6.0</version>
+    <time>1520415581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583697</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>4988c96372d284d1e4310a9c8adda6e6</srcmd5>
+    <version>4.6.0</version>
+    <time>1532160486</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean SPEC file
+  Use py.test for running the tests instead of nosetests, which
+  breaks with python 3.7.
+</comment>
+    <requestid>623247</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>99dbc8275e2bfe2902dfcfe6dd6b7279</srcmd5>
+    <version>4.6.1</version>
+    <time>1533732325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627527</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9ae7470c454f8e894bc7fdbb3d9b2c05</srcmd5>
+    <version>4.6.3</version>
+    <time>1544816799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655715</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e617e81a58069616731714275d1e330e</srcmd5>
+    <version>4.7.1</version>
+    <time>1551687063</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not generate doc for py2 and py3 variant they are the same
+  so keep just one around
+- Update to 4.7.1:
+  * Fixed a significant performance problem introduced in 4.7.0. [bug=1810617]
+  * Fixed an incorrectly raised exception when inserting a tag before or
+    after an identical tag. [bug=1810692]
+  * Beautiful Soup will no longer try to keep track of namespaces that
+    are not defined with a prefix; this can confuse soupselect. [bug=1810680]
+  * Tried even harder to avoid the deprecation warning originally fixed in
+     4.6.1. [bug=1778909]
+  * Beautiful Soup's CSS Selector implementation has been replaced by a
+    dependency on Isaac Muse's SoupSieve project (the soupsieve package
+    on PyPI). The good news is that SoupSieve has a much more robust and
+    complete implementation of CSS selectors, resolving a large number
+    of longstanding issues. The bad news is that from this point onward,
+    SoupSieve must be installed if you want to use the select() method.
+  * Added the PageElement.extend() method, which works like list.append().
+     [bug=1514970]
+  * PageElement.insert_before() and insert_after() now take a variable
+     number of arguments. [bug=1514970]
+  * Fix a number of problems with the tree builder that caused
+    trees that were superficially okay, but which fell apart when bits
+    were extracted. Patch by Isaac Muse. [bug=1782928,1809910]
+  * Fixed a problem with the tree builder in which elements that
+    contained no content (such as empty comments and all-whitespace
+    elements) were not being treated as part of the tree. Patch by Isaac
+    Muse. [bug=1798699]
+  * Fixed a problem with multi-valued attributes where the value
+    contained whitespace. Thanks to Jens Svalgaard for the
+    fix. [bug=1787453]</comment>
+    <requestid>680471</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ed7d80b8707f2cd441bd40686e39701c</srcmd5>
+    <version>4.8.0</version>
+    <time>1564484712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717648</requestid>
+  </revision>
+</revisionlist>

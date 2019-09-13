@@ -1,0 +1,227 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f76c88dbde98f669a26b638c7242d9d4</srcmd5>
+    <version>1.12.3.2</version>
+    <time>1396451962</time>
+    <user>coolo</user>
+    <comment>fixed license tag</comment>
+    <requestid>227799</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f76c88dbde98f669a26b638c7242d9d4</srcmd5>
+    <version>1.12.3.2</version>
+    <time>1409300967</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f4135a95c841d413bf6087c5d04b9154</srcmd5>
+    <version>1.12.4.2</version>
+    <time>1432188709</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306286</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>040d661424ab5b7ce59c99578dff9bb3</srcmd5>
+    <version>1.12.4.3</version>
+    <time>1433232411</time>
+    <user>dimstar_suse</user>
+    <comment>- change license file to COPYING 
+
+- update to 1.12.4.3</comment>
+    <requestid>309507</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e7cef94a89d66acdc41c717c06181ed9</srcmd5>
+    <version>1.12.4.4</version>
+    <time>1433920544</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.4.4</comment>
+    <requestid>311101</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0f17b5984099f552eda43a0b3a4e1fbb</srcmd5>
+    <version>1.12.4.5</version>
+    <time>1437384172</time>
+    <user>coolo</user>
+    <comment>- update to 1.12.4.5</comment>
+    <requestid>317521</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>02e6d30bf790d656050a7b2688d26a8b</srcmd5>
+    <version>1.12.4.7</version>
+    <time>1444130664</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.4.7</comment>
+    <requestid>333997</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ce052330d7309ef4c61adf9768621e9c</srcmd5>
+    <version>1.16.0.1</version>
+    <time>1454491165</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.16.0.1
+* Added Attr field to Image and Link.
+* Added SoftBreak constructor to Inline (forwarded request 355987 from mimi_vx)</comment>
+    <requestid>355988</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>947303337825c8685be16e7590b2642a</srcmd5>
+    <version>1.16.1</version>
+    <time>1455701151</time>
+    <user>dimstar_suse</user>
+    <comment>-  update to 1.16.1
+* Export pandocTypesVersion from Text.Pandoc.Definition. (forwarded request 359346 from mimi_vx)</comment>
+    <requestid>359347</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9ea2ad42c98f34b99cf44c63991a5a1d</srcmd5>
+    <version>1.16.1</version>
+    <time>1468999227</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411628</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f26906a9e6166fcd838ef68967a0e018</srcmd5>
+    <version>1.16.1.1</version>
+    <time>1473103230</time>
+    <user>dimstar_suse</user>
+    <comment>version update (forwarded request 421665 from psimons)</comment>
+    <requestid>421748</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>695ec7122bb43a18640bce79b926a55b</srcmd5>
+    <version>1.17.0.5</version>
+    <time>1488559889</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461669</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>233554103f29097a9e330d5d7fe86289</srcmd5>
+    <version>1.17.0.5</version>
+    <time>1489345512</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>478546</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>3ccd5c48de33a0a0a350ecfe3bcf6a7d</srcmd5>
+    <version>1.17.0.5</version>
+    <time>1491896578</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485149</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>af5a681648976053c703eb41d4d1aa73</srcmd5>
+    <version>1.17.0.5</version>
+    <time>1496534091</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494180</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>c17c0522bb66c161115a92949dd99664</srcmd5>
+    <version>1.17.0.5</version>
+    <time>1499291968</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>506844</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>c1b78ca8038deef4323ad5b1b693d437</srcmd5>
+    <version>1.17.0.5</version>
+    <time>1505505784</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525123</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f5fbd6fef7292571e39e69425311f799</srcmd5>
+    <version>1.17.4.2</version>
+    <time>1527675076</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-pandoc-types to the latest version.</comment>
+    <requestid>607851</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a018f7db976983df589794a4bbcdb146</srcmd5>
+    <version>1.17.5.1</version>
+    <time>1532445657</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update pandoc-types to version 1.17.5.1.
+  [1.17.5.1]
+    * Declare the ToMetaValue instance for String as OVERLAPPING (#46).
+  [1.17.5]
+    * Bump upper bounds for aeson, base.
+    * Allow building on older ghc versions (George Wilson).
+    * Text.Pandoc.Arbitrary: generate SoftBreaks and LineBreaks
+      (Alexander Krotov).
+    * Pad table rows up to maximum row length, to guarantee that
+      all rows have the same number of columns
+      (see jgm/pandoc#4059, Francesco Occhipinti).
+    * Make String an instance of ToMetaValue (Alexander Krotov).
+
+- update to 1.12.4.5
+- update to 1.12.4.4
+- change license file to COPYING
+- update to 1.12.4.2
+- update to 1.12.3.2
+- needed for pandoc 1.12.2.1
+- merged d:l:haskell changes
+- merged defattr change from d:l:h
+- update to 1.12.1
+* macros not spanning multiple spec file sections
+- part of pandoc 1.10 release
+- cabal2spec 0.25.5 template for spec file
+- rpmlint: filter debuginfo warning
+- upgrade to 1.9.1 from upstream</comment>
+    <requestid>623824</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2fa56681d1b57e5770296bf54450617d</srcmd5>
+    <version>1.17.5.2</version>
+    <time>1540451280</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>643498</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fcb38beeb928ed3afef704d40b83e384</srcmd5>
+    <version>1.17.5.4</version>
+    <time>1541746372</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646361</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>91c54d31f3bf465698ecb326a10c281a</srcmd5>
+    <version>1.17.5.4</version>
+    <time>1554276454</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>690197</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>bd37068dac270d4072a689c4d83703fc</srcmd5>
+    <version>1.17.5.4</version>
+    <time>1560971490</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710636</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>69ec307a70b6ef4b6a4c16b4affc66d9</srcmd5>
+    <version>1.17.6</version>
+    <time>1567092108</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>726812</requestid>
+  </revision>
+</revisionlist>

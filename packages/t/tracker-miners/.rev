@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7266c480d51b4c04bd41e09e5a16d9ef</srcmd5>
+    <version>2.0.0</version>
+    <time>1505332561</time>
+    <user>dimstar_suse</user>
+    <comment>2.0.0 -stable</comment>
+    <requestid>523812</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>29219c727a1ae048f7a9f05ad17b1bcc</srcmd5>
+    <version>2.0.0</version>
+    <time>1506955879</time>
+    <user>dimstar_suse</user>
+    <comment>Add upstream bug fix patches (forwarded request 528425 from Zaitor)</comment>
+    <requestid>528641</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0381aead97321ede008ea4891002c11e</srcmd5>
+    <version>2.0.1</version>
+    <time>1507280514</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.0.1 (forwarded request 531594 from dimstar)</comment>
+    <requestid>531698</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d2e260fb89aa2ecddb91596e2b4a2976</srcmd5>
+    <version>2.0.2</version>
+    <time>1507896535</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 532453 from Zaitor)</comment>
+    <requestid>532847</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ff6b96d087ea31fc2aa5ec0f3acd74a0</srcmd5>
+    <version>2.0.3</version>
+    <time>1512055878</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 542605 from dimstar)</comment>
+    <requestid>544209</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>781c50907a038966d043e1b17b6b62fb</srcmd5>
+    <version>2.0.3</version>
+    <time>1516091299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562540</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d2ad9bdf7d175fa881df18cbee21655a</srcmd5>
+    <version>2.0.4</version>
+    <time>1518025146</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 573626 from dimstar)</comment>
+    <requestid>573683</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>89cebe6d021843c582b445a087e84494</srcmd5>
+    <version>2.0.4</version>
+    <time>1520502342</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581190 from dimstar)</comment>
+    <requestid>582784</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>408012474e9dc9e22fa8a714e5416448</srcmd5>
+    <version>2.1.0</version>
+    <time>1533214179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625581</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>edce03307e0623846c0e3340e1497905</srcmd5>
+    <version>2.1.4</version>
+    <time>1536147889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633227</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>be6c51c68dcd73c4bbbc632a0c491d2d</srcmd5>
+    <version>2.1.5</version>
+    <time>1539757063</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 638559 from iznogood)</comment>
+    <requestid>638696</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>57bb229916f663a9b9a2e75cba9a9a29</srcmd5>
+    <version>2.1.6</version>
+    <time>1551468473</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.1.6:
+  + Multiple meson build fixes.
+  + Test fixes.
+  + Updated translations.
+</comment>
+    <requestid>678968</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cd56daefcf053cda45d9887d1c96637a</srcmd5>
+    <version>2.2.1</version>
+    <time>1552989981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684877</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4946ff46fecdc5242ebb16501411dc5a</srcmd5>
+    <version>2.2.2</version>
+    <time>1557169948</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 700468 from iznogood)</comment>
+    <requestid>700574</requestid>
+  </revision>
+</revisionlist>

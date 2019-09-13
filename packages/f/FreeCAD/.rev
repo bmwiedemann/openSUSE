@@ -1,0 +1,171 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b157eb857582b46c90a7feaebbcbd3bf</srcmd5>
+    <version>0.16</version>
+    <time>1485040307</time>
+    <user>dimstar_suse</user>
+    <comment>fix issue with lacking zipios dependency    Using the internal, one for now, since FreeCAD needs currently a specific version. new request with minor code change.</comment>
+    <requestid>418216</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ebac2c657a7dfb9c4844cf8bf0be93a2</srcmd5>
+    <version>0.16</version>
+    <time>1508316642</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533180</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c6cdf64b3341a4554f18d406616d9978</srcmd5>
+    <version>0.16.6712</version>
+    <time>1510241258</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>540131</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f5d6b6f472d4f00289a391be2599b5cf</srcmd5>
+    <version>0.16.6712</version>
+    <time>1513583921</time>
+    <user>dimstar_suse</user>
+    <comment>fix build</comment>
+    <requestid>557258</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3746506ee0b4c54f2d2eece203003bfd</srcmd5>
+    <version>0.16.6712</version>
+    <time>1515260973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561795</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dbd532e5ead36fa6fe068407cbfe74a4</srcmd5>
+    <version>0.17</version>
+    <time>1525779562</time>
+    <user>dimstar_suse</user>
+    <comment>drop med-tools from adi project
+
+- temporary disable FEM module
+  * it works fine, but requires hdf5 version 1.8 via med-tools,
+    which currently conflicts in openSUSE distro.
+- Fix draft module crash
+  (got merged upstream for 0.18 fix-draft-module-with-python3.patch)
+
+- apply current 0.17 branch (branch_update.patch)
+  In first place for occt 7.2 fixes
+
+- fix crash in Draft module with python 3
+
+- cleanup python qt deps (pyside2 only now)
+
+- update to version 0.17
+  2 years of work: https://www.freecadweb.org/wiki/Release_notes_0.17
+- switching to Qt5
+  (fix-build.diff 0001-find-openmpi2-include-files.patch)
+  (the old 0.16 fork had obsolete temporary patches remove-qtwebkit.patch and
+   remove-webgui.patch)</comment>
+    <requestid>605255</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b6961685a83fd23b2e3906d3963830ac</srcmd5>
+    <version>0.17</version>
+    <time>1527277151</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with Qt 5.11 (forwarded request 610724 from cgiboudeaux)</comment>
+    <requestid>611499</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>13920397223e7f753c8da7dc15a34c11</srcmd5>
+    <version>0.17</version>
+    <time>1529667151</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617706</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>63cc091bb2f081ef26508ec135d8e052</srcmd5>
+    <version>0.17.1534399137.9948ee4f1</version>
+    <time>1536327629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633536</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d0bbbf3c0a1b1add5a8e8f6df866390d</srcmd5>
+    <version>0.17.1545162057.e1db7bff8</version>
+    <time>1549624186</time>
+    <user>coolo</user>
+    <comment>- update to current branch:
+  - Spreadsheet: Fixed issue #3361.
+
+- Add upstream patches to fix build with python 3.7:
+  * get-rid-of-private-function-_PyImport_FixupBuiltin-for-__FreeCADBase__-module.patch
+  * get-rid-of-private-function-_PyImport_FixupBuiltin-for-FreeCAD-and-FreeCADGui-modules.patch</comment>
+    <requestid>671003</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5b18e76429e447b69584e1121c110d2e</srcmd5>
+    <version>0.17.1545162057.e1db7bff8</version>
+    <time>1551386376</time>
+    <user>coolo</user>
+    <comment>- disable builds for 32bit and s390x, test suite fails and it makes no
+  sense to use FreeCAD on small systems or mainframes...
+
+- Fix build with GCC 8, add fix-gcc8-build-failure.patch
+- Add 0001-Use-GL_RGB32F-instead-of-GL_RGB32F_ARB.patch, fix building
+  on AArch64.
+- Remove openmpi build dependencies, erroneously required for VTK
+  previously.
+  Drop 0001-find-openmpi2-include-files.patch
+
+- enable FEM module
+- disable builds for 32bit and s390x, test suite fails and it makes no
+  sense to use FreeCAD on small systems or mainframes...</comment>
+    <requestid>676501</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>c9fb1fb723f28b938701224b1660a1dd</srcmd5>
+    <version>0.17.1545162057.e1db7bff8</version>
+    <time>1552299378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update URL: to use https://
+- Reorder BuildRequires alphabetically, remove duplicates (forwarded request 683026 from StefanBruens)</comment>
+    <requestid>683694</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>d13f26371e91cfaadd144e3718b42dfe</srcmd5>
+    <version>0.17.1545162057.e1db7bff8</version>
+    <time>1552901962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685413</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5160ddecae095824e361121b52495918</srcmd5>
+    <version>0.18</version>
+    <time>1554458242</time>
+    <user>dimstar_suse</user>
+    <comment>Version update to 0.18, now with fixed deps and test suite</comment>
+    <requestid>688190</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>24bc1984e3614e5f175b6c94e47dd1d5</srcmd5>
+    <version>0.18.1</version>
+    <time>1554712593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.1
+  * FEM module fixes
+  * crash fixes
+  * Qt5 bugs with external display</comment>
+    <requestid>691894</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4d98674c292f997ed1c186d106dfcd3a</srcmd5>
+    <version>0.18.3</version>
+    <time>1567849586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720109</requestid>
+  </revision>
+</revisionlist>

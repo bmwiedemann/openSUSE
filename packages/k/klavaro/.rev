@@ -1,0 +1,190 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>295b8bcb3e8d81f7347e5f6633f7a179</srcmd5>
+    <version>1.9.3</version>
+    <time>1314780265</time>
+    <user>saschpe</user>
+    <comment>I want to add klavaro(http://en.opensuse.org/Klavaro) package into Factory. This package is going to be maintained in Education project</comment>
+    <requestid>80149</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8d3db0b80c8b60e9da6d9a05216f7c06</srcmd5>
+    <version>1.9.3</version>
+    <time>1314780281</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80149
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>8d3db0b80c8b60e9da6d9a05216f7c06</srcmd5>
+    <version>1.9.3</version>
+    <time>1319182050</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>cdec0075034b1a1de2d660cc63bfe656</srcmd5>
+    <version>1.9.3</version>
+    <time>1323192111</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>513e6d054eb343610b58d6b7560550de</srcmd5>
+    <version>1.9.4</version>
+    <time>1330966796</time>
+    <user>coolo</user>
+    <comment>- update to 1.9.4
+- fix linking with gmodule-2.0
+</comment>
+    <requestid>107932</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>513e6d054eb343610b58d6b7560550de</srcmd5>
+    <version>1.9.4</version>
+    <time>1340183531</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a890aedf746341097527c5bae75a1148</srcmd5>
+    <version>1.9.5</version>
+    <time>1342523229</time>
+    <user>coolo</user>
+    <comment>update to 1.9.5</comment>
+    <requestid>128047</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2bb231b0523216bd5d49507e6aae1fcc</srcmd5>
+    <version>1.9.6</version>
+    <time>1358875087</time>
+    <user>coolo</user>
+    <comment>- updated to 1.9.6:
+  + Added:
+    - Kyrgyz translation (partial)
+    - Telugu translation (partial)
+    - Workman (US) layout
+  + Changed:
+    - Explicit linking with gmodule  -2.0, to avoid problem with
+      Implicit DSO linking (in Fedora).
+    - Orange color for keys now a bit darker.
+    - Basic lessons with only 2 letters are 4 lines only.
+    - Russian internal sub  -dictionary changed, because of
+       spelling errors.
+  + Updated:
+    - Automake files (1.11.6)
+    - Basque translation
+    - Russian translation
+- removed klavaro-1.9.4-dso.patch (fixed upstream)</comment>
+    <requestid>149337</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>2bb231b0523216bd5d49507e6aae1fcc</srcmd5>
+    <version>1.9.6</version>
+    <time>1359109192</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2c592d0c33c790abbc660d6660786441</srcmd5>
+    <version>1.9.7</version>
+    <time>1362550930</time>
+    <user>coolo</user>
+    <comment>- updated to 1.9.7:
+  + Added: 
+    - Bulgarian translation
+  + Updated:
+    - Kyrgyz translation
+    - Galician translation
+  + Changed:
+    - Galician text for fluidity practice, it had content 
+      with violence.
+    - Galician words for speed practice.
+    - Filtering progress charts according to keyboard (basic 
+      &amp; adapt) or language (velo &amp; fluid). 
+      See side effects on NEWS!
+    - Dismissing keys which are not in the current keyboard 
+      (keyset), in the error/speed accounting process for the 
+      adapt personal practicing. Results for these are saved now 
+      in specific files, for each keyboard. 
+      See side effects on NEWS!</comment>
+    <requestid>156353</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cb076bc9eaed23c2364cad21b4923903</srcmd5>
+    <version>1.9.9</version>
+    <time>1378633283</time>
+    <user>scarabeus_factory</user>
+    <comment>update to build 1.9.9 from 1.9.7</comment>
+    <requestid>197812</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>cb076bc9eaed23c2364cad21b4923903</srcmd5>
+    <version>1.9.9</version>
+    <time>1379662815</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>424538815ea891a0d95ed60b2e898bd2</srcmd5>
+    <version>2.01</version>
+    <time>1392184976</time>
+    <user>coolo</user>
+    <comment>Update to 2.01</comment>
+    <requestid>221066</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>424538815ea891a0d95ed60b2e898bd2</srcmd5>
+    <version>2.01</version>
+    <time>1409301397</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c3856461549a44dd9d2656a705cee682</srcmd5>
+    <version>3.00</version>
+    <time>1409761349</time>
+    <user>coolo</user>
+    <comment>- update to 3.00</comment>
+    <requestid>246940</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c95839f6b0788261176aea2800fb58fa</srcmd5>
+    <version>3.01</version>
+    <time>1410509002</time>
+    <user>coolo</user>
+    <comment>- update to 3.01</comment>
+    <requestid>248420</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>752eff8c3d191eeae65f5d935d2eeea5</srcmd5>
+    <version>3.02</version>
+    <time>1473103318</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.02</comment>
+    <requestid>424340</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>1062ddaf2bae8f0a739d4c86936e2e6d</srcmd5>
+    <version>3.02</version>
+    <time>1487261068</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456940</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ac9063c31ef5023a05eb026267d2353b</srcmd5>
+    <version>3.03</version>
+    <time>1503593235</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.03</comment>
+    <requestid>514823</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>e475ce205a5099fb3e76bbf1d2a0f1a7</srcmd5>
+    <version>3.03</version>
+    <time>1521716731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589406</requestid>
+  </revision>
+</revisionlist>

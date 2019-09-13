@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8176f87f2a397bb848ffb086b520fdbc</srcmd5>
+    <version>0.10.0</version>
+    <time>1452535875</time>
+    <user>dimstar_suse</user>
+    <comment>As this package will be required by letsencrypt, it would be great to have it in factory...</comment>
+    <requestid>351312</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>32ac83896960c84fc3e85453206ccfa7</srcmd5>
+    <version>0.10.0</version>
+    <time>1526646510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610250</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8556873002560c6f4578944dc9ca35c2</srcmd5>
+    <version>0.14.0</version>
+    <time>1551455418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.0:
+  * Fixes for python3.6 and 3.7
+  * Various lint fixes
+- Make sure we run tests
+- add patch skip-test.patch that skips test that does not work
+  in our test enviroment</comment>
+    <requestid>680493</requestid>
+  </revision>
+</revisionlist>

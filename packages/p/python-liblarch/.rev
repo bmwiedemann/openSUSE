@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>703d492fcc0110cc7e4631b8db8b605a</srcmd5>
+    <version>0.1.0</version>
+    <time>1330619212</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>107541</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>703d492fcc0110cc7e4631b8db8b605a</srcmd5>
+    <version>0.1.0</version>
+    <time>1340184064</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>bca61958369ff3ef2818474ad1cd0123</srcmd5>
+    <version>0.1.0</version>
+    <time>1357238427</time>
+    <user>namtrac</user>
+    <comment>Fix building on SLES 11 (forwarded request 146916 from TheBlackCat)</comment>
+    <requestid>146919</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>bca61958369ff3ef2818474ad1cd0123</srcmd5>
+    <version>0.1.0</version>
+    <time>1359110063</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>62a41ea65718a73e9d2ab59773094ba2</srcmd5>
+    <version>2.1.0</version>
+    <time>1360241482</time>
+    <user>coolo</user>
+    <comment>Update - We have to drop the standalone python-liblarch_gtk package. This release is NOT backwards compatible. Needed for gtg we have in factory and 12.3 (forwarded request 151353 from Zaitor)</comment>
+    <requestid>151438</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>62a41ea65718a73e9d2ab59773094ba2</srcmd5>
+    <version>2.1.0</version>
+    <time>1379664210</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>62a41ea65718a73e9d2ab59773094ba2</srcmd5>
+    <version>2.1.0</version>
+    <time>1409302908</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ae9f82e86f78e633850f855190596c48</srcmd5>
+    <version>3.0</version>
+    <time>1533732788</time>
+    <user>dimstar_suse</user>
+    <comment>- Reflect deps properly on what is needed
+- Add patch to work properly under py2:
+  * libarch-py2compat.patch
+
+- Trim bias from descriptions.
+
+- Clean up SPEC file
+- Upgrade to 3.0 ... just minor upgrades, py3k port
+
+- singlespec auto-conversion
+
+  + Added a new object : viewcount</comment>
+    <requestid>627833</requestid>
+  </revision>
+</revisionlist>

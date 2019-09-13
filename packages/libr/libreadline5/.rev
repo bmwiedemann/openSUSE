@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="109">
+    <srcmd5>6551b22e23a90305b92ee0a78eaa6814</srcmd5>
+    <version>5.2</version>
+    <time>1236100397</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="110">
+    <srcmd5>d916118430d6ab0f769ee6e1358866c9</srcmd5>
+    <version>5.2</version>
+    <time>1240868294</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="111">
+    <srcmd5>bdc39aabf3da0af2ee990044e34231fd</srcmd5>
+    <version>5.2</version>
+    <time>1244593031</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="113">
+    <srcmd5>bdc39aabf3da0af2ee990044e34231fd</srcmd5>
+    <version>5.2</version>
+    <time>1244593031</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="114">
+    <srcmd5>348e8a93ac77ffc03724d27868dfee7d</srcmd5>
+    <version>5.2</version>
+    <time>1258388054</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libreadline5 based on submit request 24431 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="6" vrev="115">
+    <srcmd5>120546e1d52bebff82e3aecccbecb6a7</srcmd5>
+    <version>5.2</version>
+    <time>1265379385</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libreadline5 based on submit request 31529 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="116">
+    <srcmd5>f7c810a0b15d8c50031504e5396a69b8</srcmd5>
+    <version>5.2</version>
+    <time>1268924704</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="118">
+    <srcmd5>f7c810a0b15d8c50031504e5396a69b8</srcmd5>
+    <version>5.2</version>
+    <time>1278667362</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="119">
+    <srcmd5>f7c810a0b15d8c50031504e5396a69b8</srcmd5>
+    <version>5.2</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="122">
+    <srcmd5>f7c810a0b15d8c50031504e5396a69b8</srcmd5>
+    <version>5.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="124">
+    <srcmd5>f7c810a0b15d8c50031504e5396a69b8</srcmd5>
+    <version>5.2</version>
+    <time>1319182128</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="125">
+    <srcmd5>9c14954533e035feb99342f20be7ba52</srcmd5>
+    <version>5.2</version>
+    <time>1323192326</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="126">
+    <srcmd5>066b94d9444f5b7a538f169abea0c68e</srcmd5>
+    <version>5.2</version>
+    <time>1324830950</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97528 from coolo)</comment>
+    <requestid>97872</requestid>
+  </revision>
+  <revision rev="14" vrev="128">
+    <srcmd5>066b94d9444f5b7a538f169abea0c68e</srcmd5>
+    <version>5.2</version>
+    <time>1340183628</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="130">
+    <srcmd5>066b94d9444f5b7a538f169abea0c68e</srcmd5>
+    <version>5.2</version>
+    <time>1359109338</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="132">
+    <srcmd5>066b94d9444f5b7a538f169abea0c68e</srcmd5>
+    <version>5.2</version>
+    <time>1379663066</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="134">
+    <srcmd5>066b94d9444f5b7a538f169abea0c68e</srcmd5>
+    <version>5.2</version>
+    <time>1409301694</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="135">
+    <srcmd5>fc7567196a0b7135ce7fabafe56becb8</srcmd5>
+    <version>5.2</version>
+    <time>1494345505</time>
+    <user>dimstar_suse</user>
+    <comment>- Be sure that readline version 5 does not be mixed by accident
+  with current readline version</comment>
+    <requestid>492607</requestid>
+  </revision>
+  <revision rev="19" vrev="136">
+    <srcmd5>2b3d1c6a2441d7da12252111206c5287</srcmd5>
+    <version>5.2</version>
+    <time>1495283397</time>
+    <user>dimstar_suse</user>
+    <comment>- Shut up yet an other bot, the licensedigger
+  by adding the now missed COPYING
+
+- Remove unnecessary %clean section
+- Replace boilerplate summary</comment>
+    <requestid>495622</requestid>
+  </revision>
+  <revision rev="20" vrev="137">
+    <srcmd5>db973ef0ef354b2e53fbb74528ba34b3</srcmd5>
+    <version>5.2</version>
+    <time>1517606403</time>
+    <user>dimstar_suse</user>
+    <comment>- Add check for %{ext_man} macro 
+
+- Use %{ext_man} and explicitly remove %{_infodir}/dir before creating
+  package to allow builds on RHEL and derived Linux distributions</comment>
+    <requestid>571621</requestid>
+  </revision>
+  <revision rev="21" vrev="138">
+    <srcmd5>23bd3608632a56e6f45db9ba854c4630</srcmd5>
+    <version>5.2</version>
+    <time>1567677792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720525</requestid>
+  </revision>
+</revisionlist>

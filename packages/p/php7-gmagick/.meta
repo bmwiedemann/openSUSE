@@ -1,0 +1,9 @@
+<package name="php7-gmagick" project="openSUSE:Factory">
+  <title>Wrapper to the GraphicsMagick library</title>
+  <description>
+Gmagick is a native php extension to create and modify images using the GraphicsMagick API.
+This extension requires GraphicsMagick.
+  </description>
+  <devel project="server:php:extensions:php7" package="php7-gmagick"/>
+  <url>https://pecl.php.net/package/gmagick</url>
+</package>

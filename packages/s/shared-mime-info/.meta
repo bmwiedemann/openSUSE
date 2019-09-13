@@ -1,0 +1,11 @@
+<package name="shared-mime-info" project="openSUSE:Factory">
+  <title>Shared MIME Database</title>
+  <description>This package contains:
+
+- The freedesktop.org shared MIME database spec.
+
+- The merged GNOME and KDE databases, in the new format.
+
+- The update-mime-database command, used to install new MIME data.</description>
+  <devel project="GNOME:Factory" package="shared-mime-info"/>
+</package>

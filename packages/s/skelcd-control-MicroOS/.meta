@@ -1,0 +1,5 @@
+<package name="skelcd-control-MicroOS" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="YaST:Head" package="skelcd-control-MicroOS"/>
+</package>

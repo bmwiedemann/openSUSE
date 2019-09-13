@@ -1,0 +1,246 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4b8502d8ff0a5bf5bd047c691819f12a</srcmd5>
+    <version>44_20160526</version>
+    <time>1466501424</time>
+    <user>dimstar_suse</user>
+    <comment>Upstream repackaged the source fixing all the problematic licensed files.</comment>
+    <requestid>401895</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>66613bf6949e3306b0d5aa26cc35cd70</srcmd5>
+    <version>2017_20160722</version>
+    <time>1477410216</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 2017_20160722
+  * static_partitioner class is now a fully supported feature.
+  * async_node class is now a fully supported feature.
+  * For 64-bit platforms, quadrupled the worst-case limit on the amount
+    of memory the Intel TBB allocator can handle.
+  * Added TBB_USE_GLIBCXX_VERSION macro to specify the version of GNU
+    libstdc++ when it cannot be properly recognized, e.g. when used
+    with Clang on Linux* OS. Inspired by a contribution from David A.
+  * Added graph/stereo example to demostrate tbb::flow::async_msg.
+  * Removed a few cases of excessive user data copying in the flow graph.
+  * Reworked split_node to eliminate unnecessary overheads.
+  * Added support for C++11 move semantics to the argument of
+    tbb::parallel_do_feeder::add() method.
+  * Added C++11 move constructor and assignment operator to
+    tbb::combinable template class.
+  * Added tbb::this_task_arena::max_concurrency() function and
+    max_concurrency() method of class task_arena returning the maximal
+    number of threads that can work inside an arena.
+  * Deprecated tbb::task_arena::current_thread_index() static method;
+    use tbb::this_task_arena::current_thread_index() function instead.
+- License changed to Apache-2.0
+- Please see included CHANGES file for all changes.</comment>
+    <requestid>428381</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f702b1449ca84141313fbfca743e2351</srcmd5>
+    <version>2017_20161004</version>
+    <time>1478377574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2017_20161004
+  * Fixed the issue with task_arena::execute() not being processed
+    when the calling thread cannot join the arena.</comment>
+    <requestid>438484</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>85b9dbbc941b8d3e10c7d7cb19295a60</srcmd5>
+    <version>2017_20161128</version>
+    <time>1481654025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2017_20161128 release
+  * Added template class gfx_factory to the flow graph API. It
+    implements the Factory concept for streaming_node to offload
+    computations to Intel processor graphics.
+  * Fixed a possible deadlock caused by missed wakeup signals in
+    task_arena::execute().</comment>
+    <requestid>445382</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1e9b3221b97c0d8080e422528ade44e4</srcmd5>
+    <version>2017_20170226</version>
+    <time>1489345267</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2017_20170226 release
+  * Added support for C++11 move semantics in parallel_do.
+  * Constructors for many classes, including graph nodes, concurrent
+    containers, thread-local containers, etc., are declared explicit
+    and cannot be used for implicit conversions anymore.
+  * Added a workaround for bug 16657 in the GNU C Library (glibc)
+    affecting the debug version of tbb::mutex.
+  * Fixed a crash in pool_identify() called for an object allocated in
+    another thread.</comment>
+    <requestid>477056</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>56e8d5f8ff1d879376e3d5584e29fd5e</srcmd5>
+    <version>2017_20170226</version>
+    <time>1493020117</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing include files boo#1034842</comment>
+    <requestid>489245</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2fcd2e505db8c71f9bca22ea57b5daa3</srcmd5>
+    <version>2017_20170412</version>
+    <time>1495637511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2017_20170412 release
+  * Added a blocking terminate extension to the task_scheduler_init
+    class that allows an object to wait for termination of worker
+    threads.</comment>
+    <requestid>497973</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b7f3ce839347681c04895405fbcca86a</srcmd5>
+    <version>2017_20170412</version>
+    <time>1496226001</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499650</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5eb3aebe7f2cbf0e62d7548d8055e917</srcmd5>
+    <version>2018_20170726</version>
+    <time>1506340534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2018 release
+  * Now fully supports this_task_arena::isolate() function.
+  * Parallel STL, an implementation of the C++ standard library
+    algorithms with support for execution policies, has been
+    introduced.
+  * Fixed a bug preventing use of streaming_node and opencl_node
+    with Clang.
+  * Fixed this_task_arena::isolate() function to work correctly
+    with parallel_invoke and parallel_do algorithms.
+  * Fixed a memory leak in composite_node.
+  * Fixed an assertion failure in debug tbbmalloc binaries when
+    TBBMALLOC_CLEAN_ALL_BUFFERS is used.</comment>
+    <requestid>528061</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>df229838a46b4417327a7588757ae71c</srcmd5>
+    <version>2018_20170726</version>
+    <time>1510321239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539294</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>702b270c5244ac8161a80784abc17b39</srcmd5>
+    <version>2018_U2</version>
+    <time>1513676621</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2018_U2
+  * lambda-friendly overloads for parallel_scan.
+  * support of static and simple partitioners in
+    parallel_deterministic_reduce.
+  * initial support for Flow Graph Analyzer to do parallel_for.
+  * reservation support in overwrite_node and write_once_node.
+  * Fixed a potential deadlock scenario in the flow graph that
+    affected Intel® TBB 2018 Initial Release.
+  * Fixed constructors of concurrent_hash_map to be exception-safe.
+  * Fixed auto-initialization in the main thread to be cleaned up at shutdown.
+  * Fixed a crash when tbbmalloc_proxy is used together with dbghelp.
+  * Fixed static_partitioner to assign tasks properly in case of nested parallelism.
+</comment>
+    <requestid>557681</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>db6147fe551d8520dbaad5ccb9859d3f</srcmd5>
+    <version>2018_20171205</version>
+    <time>1514502110</time>
+    <user>dimstar_suse</user>
+    <comment>- Add disable-irml.patch to disable linking to libirml
+- Actually update to tarball to 2018_U2 release</comment>
+    <requestid>559074</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b897c02cc4f711a17424287ab54ce337</srcmd5>
+    <version>2018_20171205</version>
+    <time>1516091513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562780</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>2387f9243851158061ed5328bafaf2be</srcmd5>
+    <version>2018_20171205</version>
+    <time>1533627610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626897</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>a5a7961f9e4b90b36f9e1a3729218fc5</srcmd5>
+    <version>2018_20171205</version>
+    <time>1536678576</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>631253</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c831321d94ae5d90a606499606b3e733</srcmd5>
+    <version>2019_20190320</version>
+    <time>1556621732</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2019_U5
+  * Too many changes to list, please see the included CHANGES file.
+- Install TBBConfig*.cmake</comment>
+    <requestid>697786</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a5e92b12c2d75b0c22734857050b280d</srcmd5>
+    <version>2019_20190410</version>
+    <time>1558128997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2019_U6
+  * Added support for enqueuing tbb::task into tbb::task_arena
+    (https://github.com/01org/tbb/issues/116).
+  * Improved support for allocator propagation on concurrent_hash_map
+    assigning and swapping.
+  * Improved scalable_allocation_command cleanup operations to release
+    more memory buffered by the calling thread.
+  * Separated allocation of small and large objects into distinct memory
+    regions, which helps to reduce excessive memory caching inside the
+    TBB allocator.
+- Disable python2 support</comment>
+    <requestid>702777</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>28de5b3c631ed223d3b1c29f586be4c3</srcmd5>
+    <version>2019_20190605</version>
+    <time>1560457766</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cmake-remove-include-path.patch to remove setting include
+  path since we already install under /usr/include and this fixes
+  idiot OpenCV trying to do -isystem $TBB_INCLUDE_DIR
+
+- Update to version 2019_U8
+  * Fixed a bug in TBB 2019 Update 7 that could lead to incorrect memory
+    reallocation on Linux (https://github.com/intel/tbb/issues/148).
+  * Fixed enqueuing tbb::task into tbb::task_arena not to fail on threads
+    with no task scheduler initialized
+    (https://github.com/intel/tbb/issues/116).
+
+- Update to version 2019_U7
+  * Added TBBMALLOC_SET_HUGE_SIZE_THRESHOLD parameter to set the
+    lower bound for allocations that are not released back to OS
+    unless a cleanup is explicitly requested.
+  * Added zip_iterator::base() method to get the tuple of underlying
+    iterators.
+  * Improved async_node to never block a thread that sends a message
+    through its gateway.
+  * Extended decrement port of the tbb::flow::limiter_node to accept
+    messages of integral types.
+  * Removed the number_of_decrement_predecessors parameter from the
+    constructor of flow::limiter_node. To allow its usage, set
+    TBB_DEPRECATED_LIMITER_NODE_CONSTRUCTOR macro to 1.
+  * Added ordered associative containers:
+    concurrent_{map,multimap,set,multiset} (requires C++11).</comment>
+    <requestid>708277</requestid>
+  </revision>
+</revisionlist>

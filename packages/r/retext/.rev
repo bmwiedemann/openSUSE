@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4086948b08557508ea1e20d47f8af5d5</srcmd5>
+    <version>3.1.0</version>
+    <time>1344172895</time>
+    <user>coolo</user>
+    <comment>ReText is a simple but powerful text editor for Markdown and reStructuredText.</comment>
+    <requestid>129488</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4086948b08557508ea1e20d47f8af5d5</srcmd5>
+    <version>3.1.0</version>
+    <time>1359110286</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a837d491693c5984b342c41b7dcb2c24</srcmd5>
+    <version>4.0.0</version>
+    <time>1361821421</time>
+    <user>coolo</user>
+    <comment>fix errors (forwarded request 156256 from MargueriteSu)</comment>
+    <requestid>156257</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a837d491693c5984b342c41b7dcb2c24</srcmd5>
+    <version>4.0.0</version>
+    <time>1379664452</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1bc0409f8d7fef7047be1228914bad4e</srcmd5>
+    <version>4.1.2</version>
+    <time>1397736545</time>
+    <user>scarabeus_factory</user>
+    <comment>update to latest python3 version, packaged and submitted the dependencies to devel:languages:python3 (forwarded request 230312 from Mailaender)</comment>
+    <requestid>230346</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9677ac461caf89e240f947f312b4ad98</srcmd5>
+    <version>4.1.3</version>
+    <time>1405573082</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237396</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b239012e893b20dc18bb969b773e2e61</srcmd5>
+    <version>5.0.0</version>
+    <time>1406479647</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242544</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b239012e893b20dc18bb969b773e2e61</srcmd5>
+    <version>5.0.0</version>
+    <time>1409303184</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>22739e27d0d4074f1dea7129a607f80a</srcmd5>
+    <version>5.0.1</version>
+    <time>1419159910</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>266014</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>cd79574615e782a94089a813a51c13e6</srcmd5>
+    <version>5.0.1</version>
+    <time>1420619947</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280063</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f67adea7ece1c74369e42eadc0b5dce1</srcmd5>
+    <version>5.0.2</version>
+    <time>1433920588</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311329</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2374bc57bf8433ab9c48fc118f5988c7</srcmd5>
+    <version>5.1.0</version>
+    <time>1436112166</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314918</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1fb5729ecd31d6c87ec9f5b0ac3095b7</srcmd5>
+    <version>5.3.0</version>
+    <time>1450955837</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350462</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d7fa1ba42efa19fd104db0c789ff52eb</srcmd5>
+    <version>6.0.0</version>
+    <time>1463498190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>396067</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>67fbe62efcfc1ee6a97d72eb95116de5</srcmd5>
+    <version>6.0.0</version>
+    <time>1484132619</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in patch
+
+- Add retext-add-appdata-description.patch to add a helpful
+  description to the appdata file; changes taken from upstream.</comment>
+    <requestid>449481</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3769eae6b00f6a7035e6c08154f22bd9</srcmd5>
+    <version>7.0.0</version>
+    <time>1538502557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639503</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9c72f13230b3e97653072d9b060a5b89</srcmd5>
+    <version>7.0.4</version>
+    <time>1546535336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662474</requestid>
+  </revision>
+</revisionlist>

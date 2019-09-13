@@ -1,0 +1,13 @@
+<package name="4pane" project="openSUSE:Factory">
+  <title>A multi-pane, detailed-list file manager</title>
+  <description>4Pane is a multi-pane, detailed-list file manager. It is designed to
+be fully-featured without bloat, and aims for speed rather than visual effects.
+In addition to standard file manager features, it offers multiple undo and redo
+of most operations (including deletions), archive management including 'virtual
+browsing' inside archives, multiple renaming/duplication of files, a terminal
+emulator and user-defined tools.
+
+</description>
+  <devel project="X11:Utilities" package="4pane"/>
+  <url>http://4pane.co.uk</url>
+</package>

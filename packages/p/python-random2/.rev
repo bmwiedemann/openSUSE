@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb1db9a0e06ee124fcffba6051335e6d</srcmd5>
+    <version>1.0.1</version>
+    <time>1380218155</time>
+    <user>coolo</user>
+    <comment>needed by python-ZODB3, which replaced now-deleted python-zodb3</comment>
+    <requestid>200306</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bb1db9a0e06ee124fcffba6051335e6d</srcmd5>
+    <version>1.0.1</version>
+    <time>1409302977</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>0a2b43f7856c8975b1a3e3cfd7c5dff3</srcmd5>
+    <version>1.0.1</version>
+    <time>1498910727</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 506709 from alois)</comment>
+    <requestid>506975</requestid>
+  </revision>
+</revisionlist>

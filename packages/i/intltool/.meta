@@ -1,0 +1,8 @@
+<package name="intltool" project="openSUSE:Factory">
+  <title>Internationalization Tool Collection</title>
+  <description>Some scripts to support translators working on GNOME and similar
+programs. Data available in XML files (.oaf, .desktop, .sheet, and
+more) can be extracted into PO files. After translation, the new
+information is written back into the XML files.</description>
+  <devel project="GNOME:Factory" package="intltool"/>
+</package>

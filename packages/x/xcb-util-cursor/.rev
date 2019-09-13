@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f8c09c4f8c62471a165639c37762108a</srcmd5>
+    <version>0.1.1</version>
+    <time>1391777358</time>
+    <user>scarabeus_factory</user>
+    <comment>needed for example to build the latest version of i3 (windowmanager)</comment>
+    <requestid>215334</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f8c09c4f8c62471a165639c37762108a</srcmd5>
+    <version>0.1.1</version>
+    <time>1409303676</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e34872113885c96419c4384d5d19c121</srcmd5>
+    <version>0.1.2</version>
+    <time>1427736851</time>
+    <user>dimstar_suse</user>
+    <comment>- added baselibs.conf as source to specfile 
+
+- Update to version 0.1.2:
+  + Use CFSwapInt32LittleToHost from CoreFoundation.h on Mac OS X
+    to implement le32toh.
+  + Check submodules before running autoconf.
+  + darwin: Use OSByteOrder.h rather than CF.
+  + Perform safety check before trying to load glyph cursor</comment>
+    <requestid>293679</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e5852c12796dc852c282ed9be6473ff9</srcmd5>
+    <version>0.1.2</version>
+    <time>1462178610</time>
+    <user>dimstar_suse</user>
+    <comment>- removed u_fix-issue-with-gcc.patch
+  * patch was only necessary with gcc in 2013, when building
+    'awesome' against the static library; we do not ship the static
+    libary (did we ever?)
+    https://lists.freedesktop.org/archives/xcb/2016-April/010737.html</comment>
+    <requestid>391547</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b90ea8d037e9355f82143dfc169cba41</srcmd5>
+    <version>0.1.3</version>
+    <time>1463738055</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>395523</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>18c99605be2898599b9378919be395dd</srcmd5>
+    <version>0.1.3</version>
+    <time>1509820106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538316</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d7944f130a3e8cc4dcfb98040ecaa6bf</srcmd5>
+    <version>1.1.2</version>
+    <time>1474622920</time>
+    <user>dimstar_suse</user>
+    <comment>Python library to parse hl7-messages.
+Required for GNU Health</comment>
+    <requestid>421006</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>81c6b0a96261051ef95d60b721a6693e</srcmd5>
+    <version>1.1.2</version>
+    <time>1474723731</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>429764</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c82bf14b7ea2b38d570a3159895b04d</srcmd5>
+    <version>1.2.0</version>
+    <time>1498120817</time>
+    <user>dimstar_suse</user>
+    <comment>Release 3.2 of GNU Health</comment>
+    <requestid>505303</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>700b9fd14ba2bcf290bcc5595957f277</srcmd5>
+    <version>1.2.0</version>
+    <time>1498995504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>507529</requestid>
+  </revision>
+</revisionlist>

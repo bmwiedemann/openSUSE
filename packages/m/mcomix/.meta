@@ -1,0 +1,5 @@
+<package name="mcomix" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:apps" package="mcomix"/>
+</package>

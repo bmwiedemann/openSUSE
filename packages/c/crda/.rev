@@ -1,0 +1,208 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>867ea535e8570558f3b1ced0d1ed3388</srcmd5>
+    <version>1.0.1</version>
+    <time>1234270196</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>33ca3811edc2317ba350e2cffe4e046a</srcmd5>
+    <version>1.0.1</version>
+    <time>1236005174</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>72e6ba8838791e63c850867124d9eb37</srcmd5>
+    <version>1.1.0</version>
+    <time>1248957112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc6c209bea31da765dc3512859fc156f</srcmd5>
+    <version>1.1.0_git200910101747</version>
+    <time>1255357464</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/crda based on submit request 22275 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>cc6c209bea31da765dc3512859fc156f</srcmd5>
+    <version>1.1.0_git200910101747</version>
+    <time>1255357464</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/crda based on submit request 22275 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9a0e4914e37ec94c0688192445c5c68f</srcmd5>
+    <version>1.1.1</version>
+    <time>1267955743</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/crda based on submit request 34215 from user coolo
+</comment>
+    <requestid>34215</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b5b7f92eca2042a514d8651fcc4058e7</srcmd5>
+    <version>1.1.1</version>
+    <time>1268923254</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>b5b7f92eca2042a514d8651fcc4058e7</srcmd5>
+    <version>1.1.1</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>b5b7f92eca2042a514d8651fcc4058e7</srcmd5>
+    <version>1.1.1</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>b5b7f92eca2042a514d8651fcc4058e7</srcmd5>
+    <version>1.1.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>2d54ccf2adc87506782ee97729238870</srcmd5>
+    <version>1.1.1</version>
+    <time>1316440635</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 83139 from jengelh)</comment>
+    <requestid>83160</requestid>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>2d54ccf2adc87506782ee97729238870</srcmd5>
+    <version>1.1.1</version>
+    <time>1319181826</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>9af3ca7e3908d9d9d62f540d2bd341b7</srcmd5>
+    <version>1.1.1</version>
+    <time>1323191071</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>5ee5da76a7b57a842862ac0be6f8832b</srcmd5>
+    <version>1.1.1</version>
+    <time>1328622308</time>
+    <user>coolo</user>
+    <comment>usrMerge project - move files from toplevel to /usr (forwarded request 102719 from rjschwei)</comment>
+    <requestid>102994</requestid>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>7ed169c11a955a69cb145f7d7d26496f</srcmd5>
+    <version>1.1.1</version>
+    <time>1330520761</time>
+    <user>coolo</user>
+    <comment>- use correct filepath in udev rule (/usr/sbincrda -&gt; /usr/sbin/crda) (forwarded request 107430 from pcerny)</comment>
+    <requestid>107439</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>7ed169c11a955a69cb145f7d7d26496f</srcmd5>
+    <version>1.1.1</version>
+    <time>1340183251</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7fbd090f0133846111bbc13d20280268</srcmd5>
+    <version>1.1.2</version>
+    <time>1347487294</time>
+    <user>namtrac</user>
+    <comment>don't use %name (forwarded request 133676 from posophe)</comment>
+    <requestid>133706</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>41c9cbad6c0e66311f5ff6a5ed52220f</srcmd5>
+    <version>1.1.2</version>
+    <time>1347617737</time>
+    <user>namtrac</user>
+    <comment>license update: ISC
+License is ISC, not BSD-3-Clause (forwarded request 134144 from babelworx)</comment>
+    <requestid>134146</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>c96c9d196fcf7fa073a916edac00f0d0</srcmd5>
+    <version>1.1.2</version>
+    <time>1350591036</time>
+    <user>coolo</user>
+    <comment>- Fix build with udev rules directory new location. (forwarded request 138488 from fcrozat)</comment>
+    <requestid>138663</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>c96c9d196fcf7fa073a916edac00f0d0</srcmd5>
+    <version>1.1.2</version>
+    <time>1359108772</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>6ab3ccfca920814f25df092612b3b353</srcmd5>
+    <version>1.1.2</version>
+    <time>1363954356</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160544 from m_meister)</comment>
+    <requestid>160556</requestid>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>6ab3ccfca920814f25df092612b3b353</srcmd5>
+    <version>1.1.2</version>
+    <time>1379662155</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f0d993b0646857dcb524c2439e496e19</srcmd5>
+    <version>1.1.3</version>
+    <time>1385817608</time>
+    <user>coolo</user>
+    <comment>- use libnl3 which is now supported 
+
+- update to 1.1.3 release (no changelog)
+- run %udev_rules_update in %post if defined
+- Correct _udevrulesdir definition for old distros (forwarded request 208207 from elvigia)</comment>
+    <requestid>208554</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>f0d993b0646857dcb524c2439e496e19</srcmd5>
+    <version>1.1.3</version>
+    <time>1409300682</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>606d4b92c2db3c6c0be963eeb7ce9e7b</srcmd5>
+    <version>3.18</version>
+    <time>1437223115</time>
+    <user>coolo</user>
+    <comment>fix license string according to comment in sr#314329 (forwarded request 316709 from seife)</comment>
+    <requestid>316710</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>d97b45342107e6e088654277696ea54a</srcmd5>
+    <version>3.18</version>
+    <time>1464689441</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397946</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>49ff59332e4cb9080fb6979ed5f14dee</srcmd5>
+    <version>3.18</version>
+    <time>1497687575</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501355</requestid>
+  </revision>
+</revisionlist>

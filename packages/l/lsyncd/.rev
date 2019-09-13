@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d7c68bcbd08918b4e61e317137be63d0</srcmd5>
+    <version>2.0.4</version>
+    <time>1305185034</time>
+    <user>azouhr</user>
+    <comment>
+Lsyncd watches a local directory trees event monitor interface (inotify). It aggregates and combines events for a few seconds and then spawns one (or more) process(es) to synchronize the changes. By default this is rsync. Lsyncd is thus a light-weight live mirror solution that is comparatively easy to install not requiring new filesystems or blockdevices and does not hamper local filesystem performance.
+
+Rsync+ssh is an advanced action configuration that uses a SSH to act file and directory moves directly on the target instead of retransmitting the move destination over the wire.
+
+Fine-grained customizaton can be achieved through the config file. Custom action configs can even be written from scratch in cascading layers ranging from shell scripts to code written in the Lua language. This way simplicity can be balanced with powerfulness. See the manual for details Lsyncd20Manual
+
+License: GPLv2 or any later GPL version.</comment>
+    <requestid>65364</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>325a0cbb42c2f421e0f8bd0f3910d490</srcmd5>
+    <version>2.0.4</version>
+    <time>1305185058</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 65364
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>325a0cbb42c2f421e0f8bd0f3910d490</srcmd5>
+    <version>2.0.4</version>
+    <time>1319182160</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e84e045de336624faba6058cadf829f9</srcmd5>
+    <version>2.0.4</version>
+    <time>1323192439</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>499ec228e7a64d77a19e8fba7a620a43</srcmd5>
+    <version>2.0.5</version>
+    <time>1332239352</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>109672</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>499ec228e7a64d77a19e8fba7a620a43</srcmd5>
+    <version>2.0.5</version>
+    <time>1340183676</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>745379696315ac27f08c93f3aa8eb791</srcmd5>
+    <version>2.0.7</version>
+    <time>1352732717</time>
+    <user>coolo</user>
+    <comment>- Build against LUA 5.2</comment>
+    <requestid>140845</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>745379696315ac27f08c93f3aa8eb791</srcmd5>
+    <version>2.0.7</version>
+    <time>1359109411</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aacf2632eb1efabb58cf2a4f18ed14f8</srcmd5>
+    <version>2.1.4</version>
+    <time>1365425626</time>
+    <user>coolo</user>
+    <comment>- update to 2.1.4
+- remove lua 5.2 patch (https://github.com/axkibe/lsyncd/pull/148) (forwarded request 151450 from factory-maintainer)</comment>
+    <requestid>163064</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>aacf2632eb1efabb58cf2a4f18ed14f8</srcmd5>
+    <version>2.1.4</version>
+    <time>1379663202</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>aacf2632eb1efabb58cf2a4f18ed14f8</srcmd5>
+    <version>2.1.4</version>
+    <time>1409301824</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a86a34a7d3d35c6d00f0156bf64ea160</srcmd5>
+    <version>2.1.5</version>
+    <time>1439274400</time>
+    <user>dimstar_suse</user>
+    <comment>Also submit older fix</comment>
+    <requestid>321553</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>72c3cbf6ef263e4e06e5c361f231e950</srcmd5>
+    <version>2.1.5</version>
+    <time>1495267859</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly package files installed by make install into _docdir:
+  rpm 4.13 no longer implicitly packages those files. (forwarded request 479753 from dimstar)</comment>
+    <requestid>495453</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>46e32801b6e76f15692b886864270036</srcmd5>
+    <version>2.1.5</version>
+    <time>1517932132</time>
+    <user>dimstar_suse</user>
+    <comment>Replace references to /var/adm/fillup-templates with new %_fillupdir macro (boo#1069468) (forwarded request 544808 from RBrownSUSE)</comment>
+    <requestid>572994</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>db037fe1f45c097f7f060390b1f415c7</srcmd5>
+    <version>2.1.5</version>
+    <time>1524838141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601610</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f49fd95693b1a90e3f85b8ad1bf83cd4</srcmd5>
+    <version>2.2.3</version>
+    <time>1533214681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626100</requestid>
+  </revision>
+</revisionlist>

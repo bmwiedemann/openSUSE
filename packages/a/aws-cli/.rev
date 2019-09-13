@@ -1,0 +1,287 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f746d8f4e423a8c1097768f760123a97</srcmd5>
+    <version>1.2.13</version>
+    <time>1394516793</time>
+    <user>coolo</user>
+    <comment>- command line tools to manage AWS</comment>
+    <requestid>224661</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f746d8f4e423a8c1097768f760123a97</srcmd5>
+    <version>1.2.13</version>
+    <time>1409300544</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>786ac85769ec75c7a4529fea0f678d76</srcmd5>
+    <version>1.5.3</version>
+    <time>1417031731</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>259206</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f391dc3a468514a4873b3d7be4d89a7d</srcmd5>
+    <version>1.7.1</version>
+    <time>1421787290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.1 (bnc#905354)
+  + bugfix:``aws s3 cp``: Fix issue with parts of a file being
+    downloaded more than once when streaming to stdout
+    (`issue 1087 &lt;https://github.com/aws/aws-cli/pull/1087&gt;`__)
+  + bugfix:``--no-sign-request``: Fix issue where requests were still trying to
+    be signed even though user used the ``--no-sign-request`` flag.
+    (`botocore issue 433 &lt;https://github.com/boto/botocore/pull/433&gt;`__)
+  + bugfix:``aws cloudsearchdomain search``: Fix invalid signatures when
+    using the ``aws cloudsearchdomain search`` command
+    (`issue 976 &lt;https://github.com/aws/aws-cli/issues/976&gt;`__)
+  + feature:``aws cloudhsm``: Add support for AWS CloudHSM.
+  + feature:``aws ecs``: Add support for ``aws ecs``, the Amazon EC2
+    Container Service (ECS)
+  + feature:``aws rds``: Add Encryption at Rest and CloudHSM Support.
+  + feature:``aws ec2``: Add Classic Link support
+  + feature:``aws cloudsearch``: Update ``aws cloudsearch`` command
+    to latest version
+  + bugfix:``aws cloudfront wait``: Fix issue where wait commands did not
+    stop waiting when a success state was reached.
+    (`botocore issue 426 &lt;https://github.com/boto/botocore/pull/426&gt;`_)
+  + bugfix:``aws ec2 run-instances``: Allow binary files to be passed to
+    ``--user-data``
+    (`botocore issue 416 &lt;https://github.com/boto/botocore/pull/416&gt;`_)
+  + bugfix:``aws cloudsearchdomain suggest``: Add ``--suggest-query``
+    option to fix the argument being shadowed by the top level
+    ``--query`` option.
+    (`issue 1068 &lt;https://github.com/aws/aws-cli/pull/1068&gt;`__)
+  + bugfix:``aws emr``: Fix issue with endpoints for ``eu-central-1`` and
+    ``cn-north-1``
+    (`botocore issue 423 &lt;https://github.com/boto/botocore/pull/423&gt;`__)</comment>
+    <requestid>281660</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>27e551de303e89dfad2f42fa428cf700</srcmd5>
+    <version>1.7.29</version>
+    <time>1432982029</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.7.29 (bnc#905354)
+  + Follow up to previous update to address compatibility with latest
+    amazon-ecs-agent
+  + From 1.7.28
+    - feature:aws ec2: Add support for Spot Fleet.
+    - feature:aws opsworks: Add support for custom AutoScaling.
+    - feature:aws elasticbeanstalk: Update model to latest version.
+  + From 1.7.27
+    - feature:aws ds: Add support for AWS Directory Service.
+    - feature:aws ec2: Add support for VPC endpoints for Amazon S3.
+    - feature:aws ec2: Add support for EIP Migration.
+    - feature:aws logs: Add support for filtering log events.
+  + From 1.7.26
+    - feature:aws glacier: Add support for vault policies.
+    - bugfix:aws iam create-open-id-connect-provider: Fix issue where the
+      --url parameter would try to retrieve the contents from the url instead
+      of use the url as its value. (issue 1317)
+    - bugfix:aws workspaces: Fix issue where throttling errors were not
+      being retried (botocore issue 529)
+  + From 1.7.25
+    - feature:aws dynamodb query: Add support for KeyConditonExpression.
+  + From 1.7.24
+    - feature:aws help topics: Add support for listing available help topics.
+    - feature:aws help config-vars: Add help topic for configuration variables.
+    - feature:aws help return-codes: Add help topic for return codes.
+    - feature:aws help s3-config: Add help topic for configuration of s3
+      commands.
+    - bugfix:aws lambda create-function/update-function-code: Improve
+      error message when invalid --zip-file values are provided (issue 1296)
+    - feature:aws ec2: Add support for new VM Import APIs, including</comment>
+    <requestid>308965</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b989081df563386a07598b74331c2892</srcmd5>
+    <version>1.7.31</version>
+    <time>1435053348</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>311201</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>de311c3ac41846d6dd7146a7f82cfc1f</srcmd5>
+    <version>1.7.42</version>
+    <time>1440658516</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>322471</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>921c70a5e5d9f686d6486426554e5fd0</srcmd5>
+    <version>1.8.12</version>
+    <time>1445350948</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>339349</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bcbcde0dc7fad7c03a1b61eeacf7835f</srcmd5>
+    <version>1.9.12</version>
+    <time>1450695892</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>349441</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6b16ede562fc00f7bf7a0337073a50aa</srcmd5>
+    <version>1.10.19</version>
+    <time>1461855295</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>390638</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff23c5a145f927c525bb03378030231f</srcmd5>
+    <version>1.11.29</version>
+    <time>1483955809</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447428</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4f4e5992afbddb53afab41cb34e9d083</srcmd5>
+    <version>1.11.104</version>
+    <time>1498202321</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.104 (bsc#1044370)
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.11.104/CHANGELOG.rst</comment>
+    <requestid>505741</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ed99894f8e5a0c1d63aace6172589d03</srcmd5>
+    <version>1.11.185</version>
+    <time>1510406426</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.185 (boo#1066528)
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.11.185/CHANGELOG.rst
+  + Forward port hide_py_pckgmgmt.patch
+
+- Update to version 1.11.151
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.11.151/CHANGELOG.rst
+  + Forward port hide_py_pckgmgmt.patch
+- Remove build capability for SLE 11
+- Set up for Python 3 build distro &gt; SLE 12 openSUSE Leap 42.x</comment>
+    <requestid>540355</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e6ec0ac1773e2a4a4d4caf5a132e7ae3</srcmd5>
+    <version>1.11.185</version>
+    <time>1510578535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541221</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2cef47d111d31818f314016376612dd5</srcmd5>
+    <version>1.15.40</version>
+    <time>1529667236</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617767</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1a5c228723caab359682a8f13eb6e6a5</srcmd5>
+    <version>1.15.63</version>
+    <time>1532527835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624786</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>64dd7966448cd293cbf59b1dd882c5c1</srcmd5>
+    <version>1.15.76</version>
+    <time>1535367466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629037</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8b572b4403d7f63a9e3e8fcb956ff0b0</srcmd5>
+    <version>1.16.1</version>
+    <time>1537264076</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636198</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>28a1156f96173a5faeac4fa7ca86a443</srcmd5>
+    <version>1.16.48</version>
+    <time>1541746421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646684</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c32b19d9fea7b8c044c3d1e9d2a054a7</srcmd5>
+    <version>1.16.61</version>
+    <time>1543953494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653841</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3fb224e8fdbf3f4d8b6814007e2d0e71</srcmd5>
+    <version>1.16.84</version>
+    <time>1547130046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663354</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1797fe45155b3b2e8e069d594fdcd0c2</srcmd5>
+    <version>1.16.94</version>
+    <time>1549018095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670337</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d960a05508e927f2ee301e52a2111f09</srcmd5>
+    <version>1.16.103</version>
+    <time>1550221313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674658</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f21637ae4501aadb38d800b2eff99f76</srcmd5>
+    <version>1.16.176</version>
+    <time>1561049687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709459</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cac5bf288e1d9c6393a1aa25b07ca58e</srcmd5>
+    <version>1.16.182</version>
+    <time>1561641921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711561</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a4b6ebb04e0484a120b4a75a2bd158b2</srcmd5>
+    <version>1.16.189</version>
+    <time>1562056703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712413</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b2c76da156af13692dd9ab1e82e1309b</srcmd5>
+    <version>1.16.223</version>
+    <time>1567001002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725326</requestid>
+  </revision>
+</revisionlist>

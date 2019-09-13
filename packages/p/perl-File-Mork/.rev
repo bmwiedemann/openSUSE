@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>168d2c3b1a3e05ec68389ffce4b1a33a</srcmd5>
+    <version>0.3</version>
+    <time>1308061461</time>
+    <user>saschpe</user>
+    <comment>perl-File-Mork is directly from cpan.  The specfile was created via cpanspec.
+
+It gets the source via _service, which I'm not sure is a good or bad thing for factory.
+
+This is the first of several perl modules I need for a application I want to submit to factory, so please provide feedback of any issues.</comment>
+    <requestid>72671</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b54264712ce6b9178e5ab235efe53810</srcmd5>
+    <version>0.3</version>
+    <time>1308061471</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72671
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b54264712ce6b9178e5ab235efe53810</srcmd5>
+    <version>0.3</version>
+    <time>1319182266</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f901500c1026ddf2bcf9fd65bf9ef3f8</srcmd5>
+    <version>0.3</version>
+    <time>1321886949</time>
+    <user>coolo</user>
+    <comment>- remove _service</comment>
+    <requestid>92829</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>41b34010268cd3e8c2f82043009c3190</srcmd5>
+    <version>0.3</version>
+    <time>1332999980</time>
+    <user>coolo</user>
+    <comment>license update: MIT
+SPDX (forwarded request 111310 from babelworx)</comment>
+    <requestid>111371</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>41b34010268cd3e8c2f82043009c3190</srcmd5>
+    <version>0.3</version>
+    <time>1340183840</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>41b34010268cd3e8c2f82043009c3190</srcmd5>
+    <version>0.3</version>
+    <time>1359109667</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>41b34010268cd3e8c2f82043009c3190</srcmd5>
+    <version>0.3</version>
+    <time>1379663674</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>41b34010268cd3e8c2f82043009c3190</srcmd5>
+    <version>0.3</version>
+    <time>1409302289</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>704271daf0860838ab945ee04f30fac0</srcmd5>
+    <version>0.4</version>
+    <time>1450955852</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update with license forced to stay as MIT</comment>
+    <requestid>350555</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c071031c94c737f7fd48448f7c309b1f</srcmd5>
+    <version>0.4</version>
+    <time>1465336063</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>400037</requestid>
+  </revision>
+</revisionlist>

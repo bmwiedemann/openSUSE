@@ -1,0 +1,32 @@
+<package name="perl-namespace-autoclean" project="openSUSE:Factory">
+  <title>Keep imports out of your namespace</title>
+  <description>When you import a function into a Perl package, it will naturally also be
+available as a method.
+
+The 'namespace::autoclean' pragma will remove all imported symbols at the
+end of the current package's compile cycle. Functions called in the package
+itself will still be bound by their name, but they won't show up as methods
+on your class or instances.
+
+This module is very similar to namespace::clean, except it will clean all
+imported functions, no matter if you imported them before or after you
+'use'd the pragma. It will also not touch anything that looks like a
+method, according to 'Class::MOP::Class::get_method_list'.
+
+If you're writing an exporter and you want to clean up after yourself (and
+your peers), you can use the '-cleanee' switch to specify what package to
+clean:
+
+  package My::MooseX::namespace::autoclean;
+  use strict;
+
+  use namespace::autoclean (); # no cleanup, just load
+
+  sub import {
+      namespace::autoclean-&gt;import(
+        -cleanee =&gt; scalar(caller),
+      );
+  }</description>
+  <devel project="devel:languages:perl" package="perl-namespace-autoclean"/>
+  <url>http://search.cpan.org/dist/namespace-autoclean/</url>
+</package>

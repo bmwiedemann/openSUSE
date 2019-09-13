@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>94ee49b32ea410e2943c6be6508cd263</srcmd5>
+    <version>1.6.0</version>
+    <time>1387391146</time>
+    <user>coolo</user>
+    <comment>Mate for OpenSUSE see http://lists.opensuse.org/opensuse-factory/2013-09/msg00387.html</comment>
+    <requestid>199788</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7c0f5849886dcb805a6ed17d03ef3c67</srcmd5>
+    <version>1.8.0</version>
+    <time>1395495877</time>
+    <user>coolo</user>
+    <comment>Push X11:M:N to X11:M:F; new libraries (external dependencies) and a lot of renamed packages</comment>
+    <requestid>225338</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7c0f5849886dcb805a6ed17d03ef3c67</srcmd5>
+    <version>1.8.0</version>
+    <time>1409301865</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d4b91638618927477972e855694aab32</srcmd5>
+    <version>1.10.0</version>
+    <time>1435652325</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314239</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e1d2b9e88ee097c4cfc99ef81c05893b</srcmd5>
+    <version>1.12.0</version>
+    <time>1447234239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>342781</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d45c9d06a59c80525ca3cd9a5c5c10b1</srcmd5>
+    <version>1.14.0</version>
+    <time>1460740200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>386790</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d5ea9c5174cc27da2957805ef597363</srcmd5>
+    <version>1.16.0</version>
+    <time>1474807384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>429541</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1f2f518edbe19049d0ed50d8a252d284</srcmd5>
+    <version>1.18.0</version>
+    <time>1490026307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481130</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ac24abdfc9fd3dab785c3ccd3d650c9e</srcmd5>
+    <version>1.18.1</version>
+    <time>1494263056</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>493368</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b702f12e222f196c3430dc58d36503f2</srcmd5>
+    <version>1.20.0</version>
+    <time>1521579427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586562</requestid>
+  </revision>
+</revisionlist>

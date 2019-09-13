@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e13bcfc415c88e0940ee0ce94484cfa</srcmd5>
+    <version>0~20121224</version>
+    <time>1366358026</time>
+    <user>coolo</user>
+    <comment>Joachim Metz has created a set of c libraries used by security tools.  The libxxx packages often include basic applications sub-packages which are useful by themselves.</comment>
+    <requestid>163812</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2bf323107ba7c1b4f75e1ed10bd651a3</srcmd5>
+    <version>0~20130609</version>
+    <time>1375284201</time>
+    <user>coolo</user>
+    <comment>update to 0~20130609
+Part of summer 2013 libyal refresh for opensuse 13.1</comment>
+    <requestid>185028</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2bf323107ba7c1b4f75e1ed10bd651a3</srcmd5>
+    <version>0~20130609</version>
+    <time>1379662921</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>384f98186ca39445119f63c5d2baab17</srcmd5>
+    <version>0~20130904</version>
+    <time>1381474480</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202756</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9e04353249ad7c102e3fcd1930b99929</srcmd5>
+    <version>0~20140105</version>
+    <time>1408089354</time>
+    <user>lnussel</user>
+    <comment>update to v0~20140105</comment>
+    <requestid>244718</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9e04353249ad7c102e3fcd1930b99929</srcmd5>
+    <version>0~20140105</version>
+    <time>1409301526</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3d7ad89745be27c4b966624a69acf993</srcmd5>
+    <version>0~20150101</version>
+    <time>1420833129</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280116</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>186d3cf8923d448bb775545e4adb8046</srcmd5>
+    <version>0~20170109</version>
+    <time>1487681264</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458547</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b885420faf6139bef3e0dba4b4d302e1</srcmd5>
+    <version>0~20170311</version>
+    <time>1507197427</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0~20170311
+	* worked on tests
+- update to v0~2017019
+	* worked on tests
+	* updated dependencies
+	* corrections in include header
+	* update man page: libcsplit.3
+- update to v0~20150101
+	* 2015 update - minimal changes
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- start using libcstring from OBS, not internal version
+- update to v0~20140105
+	* updated dependencies
+	* 2014 update
+- remove libcsplit-pkgconfig.diff - it was an extraneous file
+- update to v0~20130904
+        * code cleanup
+- update to v0~20130609
+	* Fix in .pc.in file
+	* small changes
+	* removed unused LIBCSPLIT_SEPARATOR
+	* textual changes
+	* updated dependencies
+	* fix for Libs in .pc file
+	* 2013 update
+- remove pkgconfig patch, now upstream
+- changed to gz compression to eliminate conversion after download
+- run spec-cleaner
+- Initial package (version 0~20121224) for build.opensuse.org
+</comment>
+    <requestid>530562</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1321f6d0041856e40bec49d06a4c2a11</srcmd5>
+    <version>0~20190102</version>
+    <time>1557141702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693949</requestid>
+  </revision>
+</revisionlist>

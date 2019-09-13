@@ -1,0 +1,25 @@
+<package name="libreiserfs" project="openSUSE:Factory">
+  <title>ReiserFS File System Access Library</title>
+  <description>This is a library for reiserfs file system access and manipulation. The
+primary goal is to develop the nice, full functionality library that
+can be linked to any projects that needed reiserfs file system access.
+These include GNU Parted, GNU GRUB, Yaboot, Partimage, and EVMS.
+
+The second goal is high maintainability source code.
+
+The third goal is to develop an alternative set of the reiserfs
+programs as small and nice front-ends to this library.
+
+libreiserfs has a number of high level APIs for accessing reiserfs file
+systems. There are main file system code (reiserfs_fs_open,
+reiserfs_fs_close, reiserfs_fs_create, reiserfs_fs_resize,
+reiserfs_fs_journal_tune, etc), journal code, bitmap code, directories
+and files access code, and device abstraction layer.
+
+progsreiserfs supports versions 3.5 and 3.6 with standard and relocated
+journal. It also supports all possible block sizes supported by the
+kernel (2.4.18 with patches or 2.4.19).
+
+The project home page is http://reiserfs.linux.kiev.ua/.</description>
+  <devel project="filesystems" package="libreiserfs"/>
+</package>

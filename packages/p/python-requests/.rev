@@ -1,0 +1,653 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b13d77103805387fc45693702d5f2965</srcmd5>
+    <version>0.10.8</version>
+    <time>1331900611</time>
+    <user>coolo</user>
+    <comment>Useful Python lib</comment>
+    <requestid>108727</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>471160b44e277efd2e4d01dd70f4920b</srcmd5>
+    <version>0.11.2</version>
+    <time>1336580429</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116919</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b45ed8e1cdb8a54f0fce620cb4d51177</srcmd5>
+    <version>0.12.1</version>
+    <time>1339477801</time>
+    <user>coolo</user>
+    <comment>- Use a slightly different approach for bnc#761500, try to use /etc/ssl/certs
+  but use /etc/ssl/ca-bundle.pem as a fallback. The previous fix didn't work
+  for me as (my) Python ssl module doesn't support cert directories...
+- No need to check SUSE versions for python-certifi, it only is/was
+  part of openSUSE:Factory for a brief period of time
+
+- Load directory-based cert store in openSUSE &gt;= 12.2
+
+- Update to 0.12.1
+  * New Response.json property
+  * Ability to add string file uploads
+  * Fix out-of-range issue with iter_lines
+  * Fix iter_content default size
+  * Fix POST redirects containing files
+- 0.12.0 (2012-05-02)
+  * EXPERIMENTAL OAUTH SUPPORT!
+  * Proper CookieJar-backed cookies interface with awesome dict-like interface.
+  * Speed fix for non-iterated content chunks.
+  * Move pre_request to a more usable place.
+  * New pre_send hook.
+  * Lazily encode data, params, files
+  * Load system Certificate Bundle if certify isn't available.
+  * Cleanups, fixes.
+- Add python-chardet and python-oauthlib requirements
+- Run test suite (added python-distribute build requirement to enable)</comment>
+    <requestid>121921</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b45ed8e1cdb8a54f0fce620cb4d51177</srcmd5>
+    <version>0.12.1</version>
+    <time>1340184089</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e574512094eaf081c16fb827979eaec6</srcmd5>
+    <version>0.13.1</version>
+    <time>1340726269</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126137</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>adc128ce41d2a7945c151ba204876725</srcmd5>
+    <version>0.14.1</version>
+    <time>1351193202</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139141</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b8e1c9ee478529fd846821cd230e730a</srcmd5>
+    <version>0.14.2</version>
+    <time>1353514066</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>142225</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eb3268f8930edbb92d4c34bdcc49eb5e</srcmd5>
+    <version>1.1.0</version>
+    <time>1358689412</time>
+    <user>coolo</user>
+    <comment>- Set license to &quot;Apache-2.0 and LGPL-2.1+ and MIT&quot;, according to
+  https://github.com/kennethreitz/requests/issues/1111, the base
+  license is Apache-2.0 but requests ships two libraries (bnc#799119):
+  + charade: LGPL-2.1+ 
+  + urllib3: MIT
+
+- Initial python3 support
+
+- Update to version 1.1.0:
+  * CHUNKED REQUESTS
+  * Support for iterable response bodies
+  * Assume servers persist redirect params
+  * Allow explicit content types to be specified for file data
+  * Make merge_kwargs case-insensitive when looking up keys
+
+
+- Set license to &quot;Apache-2.0 and LGPL-2.1+ and MIT&quot;, according to
+  https://github.com/kennethreitz/requests/issues/1111, the base
+  license is Apache-2.0 but requests ships two libraries (bnc#799119):
+  + charade: LGPL-2.1+ 
+  + urllib3: MIT
+
+- Initial python3 support</comment>
+    <requestid>148913</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>eb3268f8930edbb92d4c34bdcc49eb5e</srcmd5>
+    <version>1.1.0</version>
+    <time>1359110115</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6bf1c316d2ddf9aed23e7627ff62a13c</srcmd5>
+    <version>1.2.0</version>
+    <time>1368696432</time>
+    <user>coolo</user>
+    <comment>- update to 1.2.0: 
+ * Fixed cookies on sessions and on requests
+ * Significantly change how hooks are dispatched - hooks now receive all the
+  arguments specified by the user when making a request so hooks can make a
+  secondary request with the same parameters. This is especially necessary for
+  authentication handler authors
+ * certifi support was removed
+ * Fixed bug where using OAuth 1 with body ``signature_type`` sent no data
+ * Major proxy work thanks to @Lukasa including parsing of proxy authentication
+  from the proxy url
+ * Fix DigestAuth handling too many 401s
+ * Update vendored urllib3 to include SSL bug fixes
+ * Allow keyword arguments to be passed to ``json.loads()`` via the
+  ``Response.json()`` method
+ * Don't send ``Content-Length`` header by default on ``GET`` or ``HEAD``
+   requests
+ * Add ``elapsed`` attribute to ``Response`` objects to time how long a request
+   took.
+ * Fix ``RequestsCookieJar``
+ * Sessions and Adapters are now picklable, i.e., can be used with the
+  mutiprocessing library
+  Update charade to version 1.0.3
+
+- update to 1.2.0:
+ * Fixed cookies on sessions and on requests
+ * Significantly change how hooks are dispatched - hooks now receive all the
+  arguments specified by the user when making a request so hooks can make a
+  secondary request with the same parameters. This is especially necessary for
+  authentication handler authors
+ * certifi support was removed (forwarded request 175233 from dirkmueller)</comment>
+    <requestid>175242</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c0da01690ca5e929240716d2abe8e8e7</srcmd5>
+    <version>1.2.3</version>
+    <time>1370432159</time>
+    <user>coolo</user>
+    <comment>- update to 1.2.3:
+ * Python 3.3.2 compatibility
+ * Always percent-encode location headers
+ * Fix connection adapter matching to be most-specific first
+ * new argument to the default connection adapter for passing a block argument
+ * prevent a KeyError when there's no link headers (forwarded request 176685 from dirkmueller)</comment>
+    <requestid>176813</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8befb55a776082da76a04e9b9052d5e2</srcmd5>
+    <version>1.2.3</version>
+    <time>1371650026</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179993</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>1ecfb2b6c8800230509d9ae0bb495442</srcmd5>
+    <version>1.2.3</version>
+    <time>1374777076</time>
+    <user>coolo</user>
+    <comment>- Add no-default-cacert.patch: completely ignore the internal CA
+  bundle and point to /etc/ssl/certs/. This works because we
+  patched python to do the right thing when a directory is used
+  there instead of a file.
+- Manually remove requests/cacert.pem (better than doing that in
+  the patch, since it's big) too. (forwarded request 184317 from vuntz)</comment>
+    <requestid>184322</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>1ecfb2b6c8800230509d9ae0bb495442</srcmd5>
+    <version>1.2.3</version>
+    <time>1379664275</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>5b63b9c9e12ae413bb969e7be2d3049b</srcmd5>
+    <version>1.2.3</version>
+    <time>1382693462</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204649</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e2a16242260db4942e199fbf6fe663cd</srcmd5>
+    <version>2.0.1</version>
+    <time>1383896347</time>
+    <user>coolo</user>
+    <comment>- update to 2.0.1
+- changes in 2.0.1:
+ - Updated included CA Bundle with new mistrusts and automated process for the future
+ - Added MD5-sess to Digest Auth
+ - Accept per-file headers in multipart file POST messages.
+ - Fixed: Don't send the full URL on CONNECT messages.
+ - Fixed: Correctly lowercase a redirect scheme.
+ - Fixed: Cookies not persisted when set via functional API.
+ - Fixed: Translate urllib3 ProxyError into a requests ProxyError derived from ConnectionError.
+ - Updated internal urllib3 and chardet.
+- changes in 2.0.0:
+ - Keys in the Headers dictionary are now native strings on all Python versions,
+   i.e. bytestrings on Python 2, unicode on Python 3.
+ - Proxy URLs now *must* have an explicit scheme. A ``MissingSchema`` exception
+   will be raised if they don't.
+ - Timeouts now apply to read time if ``Stream=False``.
+ - ``RequestException`` is now a subclass of ``IOError``, not ``RuntimeError``.
+ - Added new method to ``PreparedRequest`` objects: ``PreparedRequest.copy()``.
+ - Added new method to ``Session`` objects: ``Session.update_request()``. This
+   method updates a ``Request`` object with the data (e.g. cookies) stored on
+   the ``Session``.
+ - Added new method to ``Session`` objects: ``Session.prepare_request()``. This
+   method updates and prepares a ``Request`` object, and returns the
+   corresponding ``PreparedRequest`` object.
+ - Added new method to ``HTTPAdapter`` objects: ``HTTPAdapter.proxy_headers()``.
+   This should not be called directly, but improves the subclass interface.
+ - ``httplib.IncompleteRead`` exceptions caused by incorrect chunked encoding
+   will now raise a Requests ``ChunkedEncodingError`` instead.
+ - Invalid percent-escape sequences now cause a Requests ``InvalidURL``
+   exception to be raised. (forwarded request 206076 from Nijel)</comment>
+    <requestid>206124</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>640c56ef78009d327701fd6a67365045</srcmd5>
+    <version>2.0.1</version>
+    <time>1386664492</time>
+    <user>coolo</user>
+    <comment>- Add no-default-cacert-sles.patch: use this patch when building
+  for SLES, since python in SLES and openSUSE behave differently
+  when it comes to SSL, and no-default-cacert.patch is wrong for
+  SLES. (forwarded request 210028 from vuntz)</comment>
+    <requestid>210031</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>216bb18f8f44a078727d794532f18fc8</srcmd5>
+    <version>2.3.0</version>
+    <time>1402947154</time>
+    <user>coolo</user>
+    <comment>- Update tarball to the one upstream is publishing.
+
+- Update to version 2.3.0
+  + New ``Response`` property ``is_redirect``, which is true when the
+    library could have processed this response as a redirection (whether
+    or not it actually did).
+  + The ``timeout`` parameter now affects requests with both ``stream=True``
+    and ``stream=False`` equally.
+  + The change in v2.0.0 to mandate explicit proxy schemes has been reverted.
+    Proxy schemes now default to ``http://``.
+  + The ``CaseInsensitiveDict`` used for HTTP headers now behaves like a normal
+    dictionary when references as string or viewd in the interpreter.
+  + No longer expose Authorization or Proxy-Authorization headers on redirect.
+    Fix CVE-2014-1829 and CVE-2014-1830 respectively.
+  + Authorization is re-evaluated each redirect.
+  + On redirect, pass url as native strings.
+  + Fall-back to autodetected encoding for JSON when Unicode detection fails.
+  + Headers set to ``None`` on the ``Session`` are now correctly not sent.
+  + Correctly honor ``decode_unicode`` even if it wasn't used earlier in the
+    same response.
+  + Stop advertising ``compress`` as a supported Content-Encoding.
+  + The ``Response.history`` parameter is now always a list.
+  + Many, many ``urllib3`` bugfixes.- Fixes incorrect parsing of proxy
+    credentials that contain a literal or encoded '#' character.
+  + Assorted urllib3 fixes.
+  + New exception: ``ContentDecodingError``. Raised instead of ``urllib3``
+    ``DecodeError`` exceptions.
+  + Avoid many many exceptions from the buggy implementation of
+    ``proxy_bypass`` on OS X in Python 2.6.
+  + Avoid crashing when attempting to get authentication credentials</comment>
+    <requestid>237323</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>216bb18f8f44a078727d794532f18fc8</srcmd5>
+    <version>2.3.0</version>
+    <time>1409302980</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e15a589debf86a82bfb49898f8c4a73c</srcmd5>
+    <version>2.4.1</version>
+    <time>1410509013</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248630</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>d31075ad72c7b76422eb18a43a563bc6</srcmd5>
+    <version>2.4.1</version>
+    <time>1417643300</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263759</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ed74a8f326de18821c22f09867ac3470</srcmd5>
+    <version>2.5.2</version>
+    <time>1424827092</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287544</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4c26f913805975702746dd76d4decbe6</srcmd5>
+    <version>2.6.0</version>
+    <time>1429606437</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298191</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>8f35e3bdf3a9afe9c5e3d8e0245c821c</srcmd5>
+    <version>2.6.0</version>
+    <time>1436888626</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315859</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e8acecc2f814829dd5ab421af7c28eaf</srcmd5>
+    <version>2.7.0</version>
+    <time>1438421833</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.7.0</comment>
+    <requestid>319000</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>68f3798e01fcb7e82f1d5543ae248868</srcmd5>
+    <version>2.7.0</version>
+    <time>1438899884</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320849</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>ad2cb95a45681e49b588f4592ef2a9f1</srcmd5>
+    <version>2.7.0</version>
+    <time>1443068052</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331875</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>53288c6f75e11f28fcad2fe0d1f55b7d</srcmd5>
+    <version>2.8.0</version>
+    <time>1445287896</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339109</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1620a557426ce2b1ad7d70b4e8cdfb1f</srcmd5>
+    <version>2.8.1</version>
+    <time>1445860124</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.1:
+  - Update certificate bundle to match ``certifi`` 2015.9.6.2's weak certificate
+    bundle.
+  - Fix a bug in 2.8.0 where requests would raise ``ConnectTimeout`` instead of
+    ``ConnectionError``
+  - When using the PreparedRequest flow, requests will now correctly respect the
+    ``json`` parameter. Broken in 2.8.0.
+  - When using the PreparedRequest flow, requests will now correctly handle a
+    Unicode-string method name on Python 2. Broken in 2.8.0.
+
+- remove requests-do-not-use-bundle.patch (bsc#947357)
+
+- fix requires</comment>
+    <requestid>340326</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>db699a36bd1eb04df56925fb2b780980</srcmd5>
+    <version>2.8.1</version>
+    <time>1451674100</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351195</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a42ba1135ebbc20810d030f36ab4f6cc</srcmd5>
+    <version>2.9.1</version>
+    <time>1456434499</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361137</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>cff2f362f0f412302adf20ac7300c836</srcmd5>
+    <version>2.9.1</version>
+    <time>1458228927</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373515</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>2c7aa163035561737ceaf21208dad5de</srcmd5>
+    <version>2.10.0</version>
+    <time>1465336189</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10.1:
+  * SOCKS Proxy Support! (requires PySocks; $ pip install requests[socks])
+  * Updated bundled urllib3 to 1.15.1.
+  * Change built-in CaseInsensitiveDict (used for headers) to use OrderedDict
+    as its underlying datastore.
+  * Don't use redirect_cache if allow_redirects=False
+  * When passed objects that throw exceptions from ``tell()``, send them via
+    chunked transfer encoding instead of failing.
+  * Raise a ProxyError for proxy related connection issues.</comment>
+    <requestid>400255</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>cff2f362f0f412302adf20ac7300c836</srcmd5>
+    <version>2.9.1</version>
+    <time>1466679533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>404211</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>2c7aa163035561737ceaf21208dad5de</srcmd5>
+    <version>2.10.0</version>
+    <time>1467360066</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>405654</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>c914b08cb4c2548df9087a5901056089</srcmd5>
+    <version>2.9.1</version>
+    <time>1467897128</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:python-requests revision:34</comment>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>2c7aa163035561737ceaf21208dad5de</srcmd5>
+    <version>2.10.0</version>
+    <time>1468700016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>408704</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4dc06bbd805eb922afed3b195d8ce399</srcmd5>
+    <version>2.11.1</version>
+    <time>1473103104</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424241</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1295030f25d76dc7bc5824ebef6c64a9</srcmd5>
+    <version>2.12.4</version>
+    <time>1483959040</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448449</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ecc2aee4aa8eefdfd14a71e038b13050</srcmd5>
+    <version>2.13.0</version>
+    <time>1490316783</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481403</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>aa4c0ace080a35d83903484c9bab5ae3</srcmd5>
+    <version>2.13.0</version>
+    <time>1494937805</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494948</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>517b3d3504e3dfdbb0b9ddcd30de7f6b</srcmd5>
+    <version>2.13.0</version>
+    <time>1497362794</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501303</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>028282729b1da7dc28d1dc139af7b3bf</srcmd5>
+    <version>2.18.1</version>
+    <time>1499162270</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507839</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f355f50d2c1789c3cee43062c3754b37</srcmd5>
+    <version>2.18.2</version>
+    <time>1502707014</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515216</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>23c2b307d385dc0bd7c2075c7387e9f2</srcmd5>
+    <version>2.18.4</version>
+    <time>1506955699</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529890</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>abbe62bde6c5212369daa0d093510ded</srcmd5>
+    <version>2.18.4</version>
+    <time>1520253272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580800</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>de03285197eade2d977ce72c3f4a4137</srcmd5>
+    <version>2.18.4</version>
+    <time>1520852723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583919</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>51b04c00a258c1fd814b0348c17915d4</srcmd5>
+    <version>2.19.1</version>
+    <time>1530741239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620399</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>1716b594c2a6fe106cccd2e7c58d0015</srcmd5>
+    <version>2.19.1</version>
+    <time>1532160553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624090</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>1036c153c49f62cf6114c2bf133cb14b</srcmd5>
+    <version>2.19.1</version>
+    <time>1533627773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627626</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>65fa65b6387f435ae6878605b6884af0</srcmd5>
+    <version>2.20.0</version>
+    <time>1541513982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645472</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>0cbcddec9d5d30bf1870b187c13aa610</srcmd5>
+    <version>2.20.0</version>
+    <time>1542012637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646695</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ec937e1c3c510ee4e0e227159bf41717</srcmd5>
+    <version>2.20.1</version>
+    <time>1543399779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651559</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>796a57c30e05643eb784a94bddf0343c</srcmd5>
+    <version>2.20.1</version>
+    <time>1546535128</time>
+    <user>dimstar_suse</user>
+    <comment>- Move name ahead of version in spec file to resolve build issues
+  on older distributions
+- fdupe more thoroughly.</comment>
+    <requestid>662199</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>e9d9f74791e9a9a5c8cc9ecaabf708e7</srcmd5>
+    <version>2.20.1</version>
+    <time>1548704744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664989</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>23d4279601730805e41992fb0c29b2a3</srcmd5>
+    <version>2.21.0</version>
+    <time>1549629992</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671885</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>cd6299762ffa1c5aa1fa412abc45f045</srcmd5>
+    <version>2.21.0</version>
+    <time>1551215745</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip one more test that is flaky 
+
+- Do not depend on python-py
+- Update few of the requirements</comment>
+    <requestid>678959</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>4e6af4559c0cf032ed03fea1c96ce3eb</srcmd5>
+    <version>2.21.0</version>
+    <time>1556311317</time>
+    <user>maxlin_factory</user>
+    <comment>- Do not hardcode version requirements in setup.py allowing us to
+  update and verify functionality on our own:
+  * requests-no-hardcoded-version.patch</comment>
+    <requestid>697101</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>e6492e018c5939f2cc15c256808bb9d0</srcmd5>
+    <version>2.22.0</version>
+    <time>1558939037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.22.0:
+  * Requests now supports urllib3 v1.25.2. (note: 1.25.0 and 1.25.1 are incompatible)
+- Rebase requests-no-hardcoded-version.patch</comment>
+    <requestid>705386</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>90087df4b3017e1b039e614912a42882</srcmd5>
+    <version>2.22.0</version>
+    <time>1564484636</time>
+    <user>dimstar_suse</user>
+    <comment>- Hardcode pytest 3.x series as upstream even in git does not work
+  with newer versions (they pinned the release)</comment>
+    <requestid>717463</requestid>
+  </revision>
+</revisionlist>

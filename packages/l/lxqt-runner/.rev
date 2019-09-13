@@ -1,0 +1,240 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5c49f7bc2f20a447040d083e2592083</srcmd5>
+    <version>0.8.0</version>
+    <time>1416048088</time>
+    <user>dimstar_suse</user>
+    <comment>fixed license tag</comment>
+    <requestid>260809</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>543414739996df548af0e5f3972a47f2</srcmd5>
+    <version>0.8.0</version>
+    <time>1422959979</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283580</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>055519e3b3f5ad89aa753d2b9c57271f</srcmd5>
+    <version>0.9.0</version>
+    <time>1424117279</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>284974</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d47dc187e201793eb24bfc07e0e411f2</srcmd5>
+    <version>0.9.0</version>
+    <time>1424827039</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed %build and %install to use cmake macros (forwarded request 287073 from sfalken)</comment>
+    <requestid>287398</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e376639dd54162b0d641b22f4fb10dba</srcmd5>
+    <version>0.10.0</version>
+    <time>1447454146</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343363</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>023da4aee9c7ada6a096a6d60d083a65</srcmd5>
+    <version>0.11.0</version>
+    <time>1475750661</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>432281</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5e2ddd61c03eb46831ee6b437b5058a0</srcmd5>
+    <version>0.11.1</version>
+    <time>1489415539</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460153</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9f2b02b64e1664cc4fe27554d2d0c483</srcmd5>
+    <version>0.12.0</version>
+    <time>1508876597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Set patch version
+  * Don't export github templates
+  * Update CMakeLists.txt
+  * Fixed typo in Lithuanian
+  * Drops Qt5Core_VERSION_STRING
+  * set Qt::AA_UseHighDpiPixmaps to true
+  * Fix pedantic warning
+  * ui: Add option to show particular count of items
+  * runner: Make usage of history configurable
+  * commanditemmodel: Remove unused methods
+  * Added QCommandLineParser and basic cli interface to lxqt-runner
+  * Added LXQT_RUNNER_PATCH_VERSION
+  * Fixes a FTBFS in superbuild mode
+  * Added merged autostart to CMakeLists.txt
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Update desktop entries and Replace fr_FR by fr
+  * Update Greek translation (el) Remove country variant from language code
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Updates the build system to use the Targets infrastructure
+  * Drops hardcoded /etc/xdg paths
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * remove dead template lines switch OnlyShowIn from Razor -&gt; LXQt stringchanges LxQt -&gt; LXQt
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Bump year
+- Update to 0.11.1:
+  * MathItem: Honor system locale (#52)
+  * Use the new MenuCache configuration CMake module
+  * Fixes FTBFS when libmenu-cache was installed to non-standard location
+  * Remove cpack (#49)
+  * - Fix endif placement when test for MATH library.
+- Update to 0.11.0:
+  * Add README.md
+  * Math: Enhance evaluation logic
+  * Math: Use libmuparser for math evaluation
+  * runner: Follow virtual desktop switching
+  * Properly hide the runner when it loses focus
+  * runner: Sort history items by relevance
+  * build: Use external translations (#41)
+  * ts-files removal (#40)
+  * Use QString() instead of &quot;&quot;
+  * Fix layout and focus to get history items right
+  * Bump year
+  * main: Add activation by running second instance
+  * Italian translation update
+  * dialog: Default icons
+  * dialog: Fill background
+  * upd: lxqt-runner_hu.ts
+  * Update lxqt-runner_it.ts
+- Add keyring
+- Remove Qt5Script in favour of libmuparser as BuildRequire
+- Upstream release 0.10.0
+- Changed %build and %install to use cmake macros 
+- New upstream version 0.9.0
+- Added -lang subpackage
+- Added conditionals to enable Fedora builds 
+- Fixed license tag 
+- new upstream version 0.8.0 
+- spec file cleanup for factory 
+- Specfile Cleanup 
+- removed fedora specfile, split into subproject
+  Del: lxqt-runner-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-runner-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-runner-0.7.0.tar.xz
+  Del:  _service 
+- Intial Source Upload
+  Add: _service
+  Add: lxqt-runner.spec
+  Add: lxqt-runner.changes 
+</comment>
+    <requestid>535981</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d10bf64d3ab59f68d34f010b30ae08e9</srcmd5>
+    <version>0.13.0</version>
+    <time>1530304218</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequire for pkgconfig(libmenu-cache):
+  Seems to create problems under some conditions.
+  See https://forum.lxqt.org/t/release-lxqt-0-13-0/301
+- Update to 0.13.0:
+  * AppLinkItem: Make genericName searchable
+- Update to 0.12.0:
+  * Set patch version
+  * Don't export github templates
+  * Update CMakeLists.txt
+  * Fixed typo in Lithuanian
+  * Drops Qt5Core_VERSION_STRING
+  * set Qt::AA_UseHighDpiPixmaps to true
+  * Fix pedantic warning
+  * ui: Add option to show particular count of items
+  * runner: Make usage of history configurable
+  * commanditemmodel: Remove unused methods
+  * Added QCommandLineParser and basic cli interface to lxqt-runner
+  * Added LXQT_RUNNER_PATCH_VERSION
+  * Fixes a FTBFS in superbuild mode
+  * Added merged autostart to CMakeLists.txt
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Update desktop entries and Replace fr_FR by fr
+  * Update Greek translation (el) Remove country variant from language code
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Updates the build system to use the Targets infrastructure
+  * Drops hardcoded /etc/xdg paths
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * remove dead template lines switch OnlyShowIn from Razor -&gt; LXQt stringchanges LxQt -&gt; LXQt
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Bump year
+- Update to 0.11.1:
+  * MathItem: Honor system locale (#52)
+  * Use the new MenuCache configuration CMake module
+  * Fixes FTBFS when libmenu-cache was installed to non-standard location
+  * Remove cpack (#49)
+  * - Fix endif placement when test for MATH library.
+- Update to 0.11.0:
+  * Add README.md
+  * Math: Enhance evaluation logic
+  * Math: Use libmuparser for math evaluation
+  * runner: Follow virtual desktop switching
+  * Properly hide the runner when it loses focus
+  * runner: Sort history items by relevance
+  * build: Use external translations (#41)
+  * ts-files removal (#40)
+  * Use QString() instead of &quot;&quot;
+  * Fix layout and focus to get history items right
+  * Bump year
+  * main: Add activation by running second instance
+  * Italian translation update
+  * dialog: Default icons
+  * dialog: Fill background
+  * upd: lxqt-runner_hu.ts
+  * Update lxqt-runner_it.ts
+- Add keyring
+- Remove Qt5Script in favour of libmuparser as BuildRequire
+- Upstream release 0.10.0
+- Changed %build and %install to use cmake macros 
+- New upstream version 0.9.0
+- Added -lang subpackage
+- Added conditionals to enable Fedora builds 
+- Fixed license tag 
+- new upstream version 0.8.0 
+- spec file cleanup for factory 
+- Specfile Cleanup 
+- removed fedora specfile, split into subproject
+  Del: lxqt-runner-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-runner-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-runner-0.7.0.tar.xz
+  Del:  _service 
+- Intial Source Upload
+  Add: _service
+  Add: lxqt-runner.spec
+  Add: lxqt-runner.changes 
+</comment>
+    <requestid>618041</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>28324a2a23221cf7882eb801e0f0bf8c</srcmd5>
+    <version>0.14.0</version>
+    <time>1551113377</time>
+    <user>coolo</user>
+    <comment>- Update to 0.14.0:
+  * Installed former missed man page
+- Move translation from lxqt-l10n into package
+</comment>
+    <requestid>670394</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="glib2-branding" project="openSUSE:Factory">
+  <title>Definition of GNOME Default Applications</title>
+  <description>This branding-style package sets default applications in GNOME in
+openSUSE.
+</description>
+  <devel project="GNOME:Factory" package="glib2-branding"/>
+</package>

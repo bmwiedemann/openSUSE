@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>991fa21179f82be9260d95d50536e312</srcmd5>
+    <version>0.8</version>
+    <time>1548062908</time>
+    <user>dimstar_suse</user>
+    <comment>dependency for rstudio</comment>
+    <requestid>660525</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f320c91b702f9aba79838d4f9425ae9d</srcmd5>
+    <version>0.8</version>
+    <time>1551784746</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679500</requestid>
+  </revision>
+</revisionlist>

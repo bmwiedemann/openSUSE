@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4f1969b7d13510ca78c361d738482174</srcmd5>
+    <version>1.2</version>
+    <time>1551883757</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>681850</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1d1ec4876352180a5939978c7726923c</srcmd5>
+    <version>1.2</version>
+    <time>1552572120</time>
+    <user>dimstar_suse</user>
+    <comment>Add runtime dependencies</comment>
+    <requestid>684778</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7e1b7681904e788c562c586b64652579</srcmd5>
+    <version>1.2</version>
+    <time>1552902161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685621</requestid>
+  </revision>
+</revisionlist>

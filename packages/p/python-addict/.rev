@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5654c60e71eb33c724bbb2d0fd64e06e</srcmd5>
+    <version>2.1.2</version>
+    <time>1527605283</time>
+    <user>dimstar_suse</user>
+    <comment>A dictionary using both attribute and item syntax</comment>
+    <requestid>605906</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a27827d632ddf459fe8e18472078f880</srcmd5>
+    <version>2.1.2</version>
+    <time>1544631875</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653904</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fa501a22bb2734d9655ed089f487c1ec</srcmd5>
+    <version>2.2.0</version>
+    <time>1553263225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * In this release it's easier / better to inherit from a Dict instance
+- Switch to github tarball to get license and tests</comment>
+    <requestid>682107</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fd1966bc5ca54ea5befd4f0464bae2cf</srcmd5>
+    <version>2.2.1</version>
+    <time>1556622348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.1:
+  * Include tests in sdist</comment>
+    <requestid>699148</requestid>
+  </revision>
+</revisionlist>

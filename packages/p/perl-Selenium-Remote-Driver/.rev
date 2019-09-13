@@ -1,0 +1,188 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16f933c1bed532b393a220efdd017304</srcmd5>
+    <version>0.23</version>
+    <time>1424255908</time>
+    <user>dimstar_suse</user>
+    <comment>on my mission to use all perl modules in openQA</comment>
+    <requestid>286342</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>abf91662f3693560c331394d6bc79416</srcmd5>
+    <version>0.24</version>
+    <time>1428652425</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295072</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4c19e9e379d358cd2817964c09c572e3</srcmd5>
+    <version>1.02</version>
+    <time>1484041911</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.02
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+  1.02   12-13-2016
+          (bundled firefox driver version: 3.0.0b2)
+  
+          [NEW FEATURES]
+          - #288: @vkatsikaris: Add context endpoints for Firefox
+  
+          [BUG FIXES]
+          - #279, #281: @richi235: Fix errors in IDE plugin script generator
+          - #291, #292, #299: Handle spec element key format
+  
+  1.00   09-01-2016
+          (bundled firefox driver version: 3.0.0b2)
+  
+          [BREAKING]
+          - For users of Selenium::Firefox, FF support defaults to v48;
+            if you have FF47 installed, your existing scripts will require
+            modification. See docs in Selenium::Firefox for more info.
+  
+          [NEW FEATURES]
+          - #271: Support geckodriver &amp; FF48
+          - #260: Update firefox artifacts to 3.0.0b2 to support FF47
+          - #259: Allow users to pass in existing FF profile dir
+          - #276: Simplify recordings to enable easier releases
+  
+          [BUG FIXES]
+          - Encode Firefox profiles without newlines for Sel 3.0 compatibility
+          - #272: Remove unnecessary sleeps for successful waits
+          - #270: Fix bug in find_child_element default finder</comment>
+    <requestid>449351</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8c8dece59759373f3dac340179f7a73e</srcmd5>
+    <version>1.12</version>
+    <time>1487260981</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456909</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8759c66c20e5c8cb0321bad82f0821d</srcmd5>
+    <version>1.20</version>
+    <time>1496225936</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498861</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2d511c1cdac9f30ae7b363cef9077d95</srcmd5>
+    <version>1.21</version>
+    <time>1516804168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568392</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5e0041816089aa9b771f4a1fcb7b1916</srcmd5>
+    <version>1.23</version>
+    <time>1517323470</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.23
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+  1.23   01-29-2018 TEODESIAN
+          [BUG FIXES]
+          - Fix issue on legacy chrome/driver with get/set window pos by forcing fallback to JSONWire methods.
+
+- updated to 1.22
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+  1.22   01-25-2018 TEODESIAN
+          [BUG FIXES]
+          - Fix issue where is_enabled() polyfill on WD3 servers was checking the wrong attribute.
+          - Fix issue where Firefox/Chrome capabilities were not correctly passed
+          - Make some JS polyfill failures non-fatal</comment>
+    <requestid>570839</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>57b7fcbfaf41b1aa3642f27de4203cb2</srcmd5>
+    <version>1.24</version>
+    <time>1518813936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577184</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eb3da78c64a56d74786be5159f5d4b2d</srcmd5>
+    <version>1.26</version>
+    <time>1519747076</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579756</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f5dcd390bb2d97ac61da3aa1c62deace</srcmd5>
+    <version>1.27</version>
+    <time>1523447926</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594793</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>eee774d594336b0581e040bff7beda05</srcmd5>
+    <version>1.28</version>
+    <time>1529667061</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615380</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>914b3b530b756713707ca93c906e68d8</srcmd5>
+    <version>1.29</version>
+    <time>1535705004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631333</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bc26b151afe121b4891954686a3fa26f</srcmd5>
+    <version>1.30</version>
+    <time>1537360155</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636330</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2f18d12553f6d7622fd1712e78cfd921</srcmd5>
+    <version>1.31</version>
+    <time>1548064485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666112</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>ca38776e81acc3c2610b0469fda4e0e0</srcmd5>
+    <version>1.31</version>
+    <time>1548452703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668410</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1b1cf62c9aaf2a0083cc75b6fbb557ef</srcmd5>
+    <version>1.32</version>
+    <time>1560537776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709933</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>55131f371b7fbdd4d2f2abadd262fa15</srcmd5>
+    <version>1.33</version>
+    <time>1560971634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710858</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>b8154a171741d729591d808c027ef6a2</srcmd5>
+    <version>1.33</version>
+    <time>1565362408</time>
+    <user>dimstar_suse</user>
+    <comment>- Delete libibushandler.so also on x86: we don't have the old
+  libibus.so.2 available in the distro. (forwarded request 719612 from dimstar)</comment>
+    <requestid>721728</requestid>
+  </revision>
+</revisionlist>

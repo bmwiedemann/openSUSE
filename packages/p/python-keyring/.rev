@@ -1,0 +1,381 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c3a8e9a39fffc849ec23ba2b16f8f320</srcmd5>
+    <version>0.9.1</version>
+    <time>1358786713</time>
+    <user>coolo</user>
+    <comment>needed by osc for storing passwords in kwallet/gnome-keyring</comment>
+    <requestid>149314</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c3a8e9a39fffc849ec23ba2b16f8f320</srcmd5>
+    <version>0.9.1</version>
+    <time>1359110059</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2331586258919055b6c14c2ccabf282e</srcmd5>
+    <version>1.2.2</version>
+    <time>1361634081</time>
+    <user>coolo</user>
+    <comment>- Drop old SUSE checks
+- Add python-unittest2 build requirement to make sure the testsuite
+  passes on SLE_11_SP2
+
+- Update to version 1.2.2:
+  * Fixed handling situations when user cancels kwallet dialog or denies
+    access for the app.
+- Add new dependencies
+- FIx shebang rpmlint warnings</comment>
+    <requestid>155086</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d35b3b38a376e346eeedbf3114230adb</srcmd5>
+    <version>1.2.2</version>
+    <time>1364652022</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161759</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1e620269ad54bd92e627c0e5dc37905b</srcmd5>
+    <version>1.5</version>
+    <time>1372925668</time>
+    <user>coolo</user>
+    <comment>- update to 1.5:
+  * SecretService: allow deleting items created using previous python-keyring versions.
+  * Use secretstorage.get_default_collection if it's available.
+  * Switch GnomeKeyring backend to use native libgnome-keyring via GObject
+  Introspection, not the obsolete python-gnomekeyring module 
+  * Use the SecretStorage library to implement the Secret Service backend
+  (instead of using dbus directly)
+  * Now the keyring supports prompting for and deleting passwords
+- do not unconditionally recommend python-kde4
+- python-gnomekeyring is not needed anymore (forwarded request 181903 from dirkmueller)</comment>
+    <requestid>181909</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>04287b6e4dcd614f4067edcfc0d482b6</srcmd5>
+    <version>1.6</version>
+    <time>1374493922</time>
+    <user>coolo</user>
+    <comment>- update to 1.6:
+  - Use the same attributes (``username`` / ``service``) as the SecretService
+    backend uses, allow searching for old ones for compatibility.
+  - Also set ``application`` attribute.
+  - Correctly handle all types of errors, not only ``CANCELLED`` and ``NO_MATCH``.
+  - Avoid printing warnings to stderr when GnomeKeyring is not available.
+  - Use a better label for passwords, the same as GNOME Keyring backend uses. (forwarded request 183721 from dirkmueller)</comment>
+    <requestid>183947</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>04287b6e4dcd614f4067edcfc0d482b6</srcmd5>
+    <version>1.6</version>
+    <time>1379664205</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d2cb84a7e60d3fcb04c25a6745f98119</srcmd5>
+    <version>3.0.5</version>
+    <time>1380297696</time>
+    <user>coolo</user>
+    <comment>- update to 3.0.5:
+  * Simplified the implementation of ``keyring.core.load_keyring``. It now uses
+  ``__import__`` instead of loading modules explicitly.
+  * Renamed ``keyring.util.platform`` to ``keyring.util.platform_``. 
+  * Ensure that modules are actually imported even in Mercurial's Demand Import
+  environment.
+  * Removed support for Python 2.5.
+  * Removed names in ``keyring.backend`` moved in 1.1 and previously retained
+  for compatibilty.
+  *  GnomeKeyring: fix availability checks, and make sure the warning
+  message from pygobject is not printed.
+  *  Prioritized backend support. The primary interface for Keyring backend
+  classes has been refactored to now emit a 'priority' based on the current
+  environment (operating system, libraries available, etc). These priorities
+  provide an indication of the applicability of that backend for the current
+  environment. Users are still welcome to specify a particular backend in
+  configuration, but the default behavior should now be to select the most
+  appropriate backend by default. (forwarded request 201031 from dirkmueller)</comment>
+    <requestid>201071</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0c5f1ff80b498daad6a6882941454d1b</srcmd5>
+    <version>3.3</version>
+    <time>1386604847</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3
+  * KWallet backend will now honor the KDE_FULL_SESSION environment
+    variable as found on openSUSE.
+- Changes from 3.2.1
+  * SecretService backend: use a different function to check that the
+    backend is functional. The default collection may not exist, but
+    the collection will remain usable in that case.
+    Also, make the error message more verbose.
+    Resolves https://bugs.launchpad.net/bugs/1242412.
+- Changes from 3.2
+  * Issue #120: Invoke KeyringBackend.priority during load_keyring
+    to ensure that any keyring loaded is actually viable (or raises
+    an informative exception).
+  * Issue #123: fix removing items.
+  * Correctly escape item name when removing.
+  * Use with statement when working with files.
+  * Add a test for removing one item in group.
+  * Issue #81: Added experimental support for third-party backends.
+    See keyring.core._load_library_extensions for information on
+    supplying a third-party backend.
+- Changes from 3.1
+  * All code now runs natively on both Python 2 and Python 3, 
+    no 2to3 conversion is required.
+  * Testsuite: clean up, and make more use of unittest2 methods. (forwarded request 209858 from posophe)</comment>
+    <requestid>209859</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>409c4b0dd884c12ada88eed8935001dc</srcmd5>
+    <version>3.6</version>
+    <time>1395297164</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.6:
+  * Add support for packages that wish to bundle keyring by using relative
+    imports throughout.
+- Changes from version 3.5:
+  * Issue #49: Give the backend priorities a 1.5 multiplier bump when an
+    XDG_CURRENT_DESKTOP environment variable matches the keyring's target
+    environment.
+  * Issue #99: Clarified documentation on location of config and data files.
+    Prepared the code base to treat the two differently on Unix-based systems.
+    For now, the behavior is unchanged.
+- Changes from version 3.4:
+  * Extracted FileBacked and Encrypted base classes.
+  * Add a pyinstaller hook to expose backend modules. Ref #124
+  * Pull request #41: Use errno module instead of hardcoding error codes.
+  * SecretService backend: correctly handle cases when user dismissed
+    the collection creation or unlock prompt.</comment>
+    <requestid>226392</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>409c4b0dd884c12ada88eed8935001dc</srcmd5>
+    <version>3.6</version>
+    <time>1409302902</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>41fb6702422cca456bd8f52e9bc09c79</srcmd5>
+    <version>3.6</version>
+    <time>1410361281</time>
+    <user>coolo</user>
+    <comment>- reduce/fix build requires (forwarded request 248129 from dirkmueller)</comment>
+    <requestid>248130</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d14f15c01ea16ef04d6632592867b91a</srcmd5>
+    <version>4.0</version>
+    <time>1413616085</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256657</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6515037c57c7b704acc27c942e8e6781</srcmd5>
+    <version>4.0</version>
+    <time>1415866898</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260930</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>096dcefaeead038d4cc41dea6150053c</srcmd5>
+    <version>5.3</version>
+    <time>1432070210</time>
+    <user>dimstar_suse</user>
+    <comment>resubmit with fixed license</comment>
+    <requestid>307762</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4bab46fb11a545ef1a378ae86b08a166</srcmd5>
+    <version>5.4</version>
+    <time>1441954967</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329461</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>a4092c0863618632f7c135a5eee51d26</srcmd5>
+    <version>5.4</version>
+    <time>1443071774</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331684</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>db5f88f77d62d1a9bfd278c088fafb57</srcmd5>
+    <version>5.7</version>
+    <time>1450695808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.7
+- Removed CONTRIBUTORS.txt because not available in upstream
+  source anymore.
+- dropped patches keyring-import-gi.patch and keyring-gnome-3.18.patch
+  because they were obsoleted by fixes in upstream source
+5.7
+---
+* Issue #177: Resolve default keyring name on Gnome using the API.
+* Issue #145: Add workaround for password exposure through
+  process status for most passwords containing simple
+  characters.
+5.6
+---
+* Allow keyring to be invoked from command-line with
+  ``python -m keyring``.
+5.5.1
+-----
+* Issue #156: Fixed test failures in ``pyfs`` keyring related to
+  0.5 release.
+5.5
+---
+* Pull Request #176: Use recommended mechanism for checking
+  GnomeKeyring version.</comment>
+    <requestid>349379</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b457e58c7c98ab390c79e1c021cd342c</srcmd5>
+    <version>7.1.2</version>
+    <time>1454149842</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355697</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2b8e6894b2b76929dac80a0c90687bee</srcmd5>
+    <version>9.0</version>
+    <time>1462865185</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393985</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ea2b36ca1c6d647001b62c85562d961f</srcmd5>
+    <version>9.0</version>
+    <time>1465750393</time>
+    <user>dimstar_suse</user>
+    <comment>- require python-setuptools (see bsc#983147)</comment>
+    <requestid>400242</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a2e727a9e4a21a65c9496362d8cff27d</srcmd5>
+    <version>9.3.1</version>
+    <time>1473349038</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419341</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1dc969cca64ea246a5715a7fd7ce9c2c</srcmd5>
+    <version>10.0.2</version>
+    <time>1479381816</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440407</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a79fa0f964034639620eaa313dd2ca95</srcmd5>
+    <version>10.2</version>
+    <time>1485167386</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451180</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ef1b66908be5227bed43e4d5ff3e4d12</srcmd5>
+    <version>10.3.2</version>
+    <time>1494937710</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492693</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d906183aeb79ef950323ffa80b45b596</srcmd5>
+    <version>10.4.0</version>
+    <time>1503591482</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518327</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0c775defa13508f76ef1488d2bd6930a</srcmd5>
+    <version>10.5.0</version>
+    <time>1512292104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546273</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>9db0be50fe489054867d1395a347009b</srcmd5>
+    <version>10.5.0</version>
+    <time>1516970323</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building in py3 only enviroment
+- Remove the test conditional which was always on anyway</comment>
+    <requestid>568852</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3e11b9843eae02c122ef37ed71893e1c</srcmd5>
+    <version>13.0.0</version>
+    <time>1531135641</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620965</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7c70fefa4a9280036d59218fe69420b9</srcmd5>
+    <version>13.2.1</version>
+    <time>1531947285</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>623136</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>6b40891dcc2d2bed026d90a10ba42728</srcmd5>
+    <version>13.2.1</version>
+    <time>1537115389</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>635405</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3b33b51dc6c2142ce09da1319e0c5216</srcmd5>
+    <version>15.1.0</version>
+    <time>1539869343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641907</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c01d70fb14188e22e9f52f0a06749906</srcmd5>
+    <version>18.0.0</version>
+    <time>1551468537</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679266</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>ff7062daf1461b3f575d3405e60742a0</srcmd5>
+    <version>18.0.0</version>
+    <time>1552039260</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert the test removal pending fix of upstream bug:
+  https://github.com/jaraco/keyrings.alt/issues/33</comment>
+    <requestid>682032</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>59b6c62ae682dc8751b656009e9ea05a</srcmd5>
+    <version>18.0.1</version>
+    <time>1553888357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689757</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>3266eaad85a8205b2c15c87156d0f49b</srcmd5>
+    <version>0.120</version>
+    <time>1331899823</time>
+    <user>coolo</user>
+    <comment>Moving M17N/culmus to M17N:fonts/culmus-fonts.</comment>
+    <requestid>108523</requestid>
+  </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>59eb60353cda5d955e71d54125dcd11d</srcmd5>
+    <version>0.120</version>
+    <time>1338016957</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122121</requestid>
+  </revision>
+  <revision rev="3" vrev="9">
+    <srcmd5>59eb60353cda5d955e71d54125dcd11d</srcmd5>
+    <version>0.120</version>
+    <time>1340183265</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d6a003c306c29bc147efd610d908eef0</srcmd5>
+    <version>0.121</version>
+    <time>1344368952</time>
+    <user>namtrac</user>
+    <comment>- updated to 0.121:
+  * Frank Ruehl CLM now supports diacritics.
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);</comment>
+    <requestid>130308</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d6a003c306c29bc147efd610d908eef0</srcmd5>
+    <version>0.121</version>
+    <time>1359108790</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f2746d5e84e64039564909ae9721debe</srcmd5>
+    <version>0.130</version>
+    <time>1364408564</time>
+    <user>coolo</user>
+    <comment>- updated to 0.130:
+* Added new TrueType font &quot;Shofar&quot; by Yoram Gnat. Complete family with
+  diacritics and cantillation marks. The font is inspired by Koren type, with
+  redesigned letter forms and the height-to-width ratio.</comment>
+    <requestid>161225</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f2746d5e84e64039564909ae9721debe</srcmd5>
+    <version>0.130</version>
+    <time>1379662191</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>f2746d5e84e64039564909ae9721debe</srcmd5>
+    <version>0.130</version>
+    <time>1409300725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b99b0c6a0d31850de82c2de175e89f64</srcmd5>
+    <version>0.132</version>
+    <time>1526220286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603973</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="luvcview" project="openSUSE:Factory">
+  <title>Simple V4L2 application using sdl</title>
+  <description>luvcview is a simple V4L2 application using sdl</description>
+  <devel project="graphics" package="luvcview"/>
+</package>

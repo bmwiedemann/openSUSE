@@ -1,0 +1,5 @@
+<package name="dreampie" project="openSUSE:Factory">
+  <title>DreamPie</title>
+  <description>DreamPie is a Python shell which is designed to be reliable and fun.</description>
+  <devel project="devel:languages:python" package="dreampie"/>
+</package>

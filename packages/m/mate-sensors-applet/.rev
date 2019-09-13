@@ -1,0 +1,183 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a632a92285df6f57aa157d1eaa279fc</srcmd5>
+    <version>1.6.0</version>
+    <time>1387391799</time>
+    <user>coolo</user>
+    <comment>submit HEAD</comment>
+    <requestid>200839</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ff454f8313e6010f9214316991f9bac3</srcmd5>
+    <version>1.6.1</version>
+    <time>1388774758</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.6.1
+  + Add dist-hook for ChangeLog and various fixes/cleanups
+  + Add gsettings_SCHEMAS_in_in variable
+  + Remove ltmain.sh, will be brought in automatically
+  + Silence autofoo warnings
+  + Update AC_INIT_AUTOMAKE for make dist
+  + Fix indentation (forwarded request 212570 from posophe)</comment>
+    <requestid>212571</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0436720a029f916085f9e6b49c4cf307</srcmd5>
+    <version>1.8.0</version>
+    <time>1395495890</time>
+    <user>coolo</user>
+    <comment>Push X11:M:N to X11:M:F; new libraries (external dependencies) and a lot of renamed packages</comment>
+    <requestid>225348</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0436720a029f916085f9e6b49c4cf307</srcmd5>
+    <version>1.8.0</version>
+    <time>1409301870</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3402657be79019f13d8c21d4d182761a</srcmd5>
+    <version>1.10.2</version>
+    <time>1436112132</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314221</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>629cf5c7d6c6b36d1fb5c530fbb3caf2</srcmd5>
+    <version>1.10.3</version>
+    <time>1436888651</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>316031</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fc0a9ce7be929e273a33c89e9a2a6999</srcmd5>
+    <version>1.10.4</version>
+    <time>1437478064</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>317771</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5d72c140b53848e665223095db4aedc3</srcmd5>
+    <version>1.12.0</version>
+    <time>1447234244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>342784</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>57f62b30e1aabc0862cda6bb05e7aa1c</srcmd5>
+    <version>1.12.1</version>
+    <time>1448957997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>346848</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>593dab9b731963227daabd2e7b1f0f17</srcmd5>
+    <version>1.14.0</version>
+    <time>1460740235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>386826</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>291fa9300abbc17fa7b829e2b9e3b94f</srcmd5>
+    <version>1.16.0</version>
+    <time>1474807416</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>429549</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2fd0ef45c8e70b02af3e49846932d7b9</srcmd5>
+    <version>1.16.1</version>
+    <time>1486635559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>455532</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>97afcc20a56fbcf12e0fb41f43e85d93</srcmd5>
+    <version>1.18.0</version>
+    <time>1490026355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481140</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bee2ee65500376a8724174870b51efc2</srcmd5>
+    <version>1.18.1</version>
+    <time>1492417649</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487708</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aee7591c4d9670023bb613cfd99b16b4</srcmd5>
+    <version>1.18.2</version>
+    <time>1494938749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>494918</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5e520e1281e5298b19cc50eefc51fc9d</srcmd5>
+    <version>1.18.3</version>
+    <time>1510232198</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>536606</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cbcb6dbbffcbc5e7469897a1376bc935</srcmd5>
+    <version>1.20.1</version>
+    <time>1521579451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586581</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>59ac53a8be3318c85f2ac210a0f81d8b</srcmd5>
+    <version>1.20.2</version>
+    <time>1529402678</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617337</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>99351cb21929a8b79b5509b101875b75</srcmd5>
+    <version>1.20.3</version>
+    <time>1546946785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.3.</comment>
+    <requestid>661274</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d23da7126c0453d7bbb7c17679131955</srcmd5>
+    <version>1.22.0</version>
+    <time>1558037073</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0.</comment>
+    <requestid>682577</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f99defe381758295e07d379a27570325</srcmd5>
+    <version>1.22.1</version>
+    <time>1560970679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.1.</comment>
+    <requestid>704560</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2e504120860e407059e5348c958b9c96</srcmd5>
+    <version>1.23.0</version>
+    <time>1564576535</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>719964</requestid>
+  </revision>
+</revisionlist>

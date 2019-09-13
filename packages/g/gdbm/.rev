@@ -1,0 +1,320 @@
+<revisionlist>
+  <revision rev="1" vrev="231">
+    <srcmd5>869e446a74e3b893a2a82339043435dc</srcmd5>
+    <version>1.8.3</version>
+    <time>1166483792</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="313">
+    <srcmd5>93edb464ce37d268aac3f60107197039</srcmd5>
+    <version>1.8.3</version>
+    <time>1199136059</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="327">
+    <srcmd5>c5e277b28461aa781171d20e759de3e7</srcmd5>
+    <version>1.8.3</version>
+    <time>1204325791</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="335">
+    <srcmd5>5f05070541b4ed0a7b7e1a8403735326</srcmd5>
+    <version>1.8.3</version>
+    <time>1207829747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="370">
+    <srcmd5>5f05070541b4ed0a7b7e1a8403735326</srcmd5>
+    <version>1.8.3</version>
+    <time>1207829747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="371">
+    <srcmd5>cc719b7b3585c785d33b85a9d96605a3</srcmd5>
+    <version>1.8.3</version>
+    <time>1227880844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="372">
+    <srcmd5>832d73c510b1510d3a5bf42c3c401a5d</srcmd5>
+    <version>1.8.3</version>
+    <time>1229340670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="374">
+    <srcmd5>832d73c510b1510d3a5bf42c3c401a5d</srcmd5>
+    <version>1.8.3</version>
+    <time>1229340670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="375">
+    <srcmd5>fe52cfd373e7439c115cea0a05420013</srcmd5>
+    <version>1.8.3</version>
+    <time>1260272937</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/gdbm based on submit request 25721 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="10" vrev="376">
+    <srcmd5>b7581c1b957331161efef9e2e28b2764</srcmd5>
+    <version>1.8.3</version>
+    <time>1263478915</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/gdbm based on submit request 29102 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="11" vrev="377">
+    <srcmd5>df5385f6946b24776a2858ca9c44b32a</srcmd5>
+    <version>1.8.3</version>
+    <time>1268923687</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="378">
+    <srcmd5>ee46fc473983ebf359bfbc4baa4970d2</srcmd5>
+    <version>1.8.3</version>
+    <time>1278075169</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/gdbm based on submit request 42203 from user prusnak
+</comment>
+    <requestid>42203</requestid>
+  </revision>
+  <revision rev="13" vrev="380">
+    <srcmd5>ee46fc473983ebf359bfbc4baa4970d2</srcmd5>
+    <version>1.8.3</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="381">
+    <srcmd5>ee46fc473983ebf359bfbc4baa4970d2</srcmd5>
+    <version>1.8.3</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="382">
+    <srcmd5>0e181ffc5604e94910d4e44c3056a256</srcmd5>
+    <version>1.8.3</version>
+    <time>1283511036</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/gdbm based on submit request 46608 from user elvigia
+</comment>
+    <requestid>46608</requestid>
+  </revision>
+  <revision rev="16" vrev="383">
+    <srcmd5>c3712261e705f20367cfef7785e6f1a1</srcmd5>
+    <version>1.8.3</version>
+    <time>1285084603</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/gdbm based on submit request 48662 from user pgajdos
+</comment>
+    <requestid>48662</requestid>
+  </revision>
+  <revision rev="17" vrev="386">
+    <srcmd5>c3712261e705f20367cfef7785e6f1a1</srcmd5>
+    <version>1.8.3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="387">
+    <srcmd5>9ad0ccda195d19d9448f0953769322c7</srcmd5>
+    <version>1.8.3</version>
+    <time>1317626362</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 86021 from coolo)</comment>
+    <requestid>86066</requestid>
+  </revision>
+  <revision rev="19" vrev="389">
+    <srcmd5>9ad0ccda195d19d9448f0953769322c7</srcmd5>
+    <version>1.8.3</version>
+    <time>1319181898</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="390">
+    <srcmd5>67276a465121980abef77c45abf3055c</srcmd5>
+    <version>1.8.3</version>
+    <time>1323191501</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="391">
+    <srcmd5>3b86e8968f2894fd981f4e247e38508f</srcmd5>
+    <version>1.8.3</version>
+    <time>1328952509</time>
+    <user>coolo</user>
+    <comment>- fix baselibs.conf
+
+- Name library package according to shlib policy
+- Update description, source text from GNU homepage
+
+- Remove redundant tags/sections
+- Replace /usr/%_lib by simpler %_libdir</comment>
+    <requestid>102973</requestid>
+  </revision>
+  <revision rev="22" vrev="392">
+    <srcmd5>c264786998a0e8a69489e3cce95d61b3</srcmd5>
+    <version>1.8.3</version>
+    <time>1331147346</time>
+    <user>coolo</user>
+    <comment>Fixed typos in gdbm.spec descriptions (forwarded request 107777 from aturrini)</comment>
+    <requestid>107778</requestid>
+  </revision>
+  <revision rev="23" vrev="394">
+    <srcmd5>c264786998a0e8a69489e3cce95d61b3</srcmd5>
+    <version>1.8.3</version>
+    <time>1340183354</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6723a987e80fe02475f72b6ad8f25c43</srcmd5>
+    <version>1.10</version>
+    <time>1348734300</time>
+    <user>coolo</user>
+    <comment>updated baselibs.conf. sorry I forgot it. (forwarded request 135590 from MargueriteSu)</comment>
+    <requestid>135889</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>6723a987e80fe02475f72b6ad8f25c43</srcmd5>
+    <version>1.10</version>
+    <time>1359108910</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>a77f15cc03ccc21846acf28f6cc3c21d</srcmd5>
+    <version>1.10</version>
+    <time>1360228685</time>
+    <user>coolo</user>
+    <comment>license update: GPL-3.0+
+See the COPYING file (forwarded request 151441 from babelworx)</comment>
+    <requestid>151444</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>90b6bb65fee5d4125a41e69a6428cabe</srcmd5>
+    <version>1.10</version>
+    <time>1362462225</time>
+    <user>coolo</user>
+    <comment>- buildrequire makeinfo</comment>
+    <requestid>157224</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>33f335a3bb2629e41ff697dc34b188fd</srcmd5>
+    <version>1.10</version>
+    <time>1362637213</time>
+    <user>coolo</user>
+    <comment>Rebase. (forwarded request 157562 from jengelh)</comment>
+    <requestid>157563</requestid>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>33f335a3bb2629e41ff697dc34b188fd</srcmd5>
+    <version>1.10</version>
+    <time>1379662399</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4b92bc7388c43a41400177f8b022440f</srcmd5>
+    <version>1.11</version>
+    <time>1396770846</time>
+    <user>coolo</user>
+    <comment>- update to 1.11:
+  * Improved dump format.
+  * New function: gdbm_count.
+  * New utilities: gdbm_dump and gdbm_load.
+  * gdbmtool</comment>
+    <requestid>228299</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>28ffa4a3c2af7b00dc766dbd6b42ba19</srcmd5>
+    <version>1.11</version>
+    <time>1408524639</time>
+    <user>lnussel</user>
+    <comment>- Add obsoletes to baselibs.conf. (forwarded request 245088 from fcrozat)</comment>
+    <requestid>245152</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>28ffa4a3c2af7b00dc766dbd6b42ba19</srcmd5>
+    <version>1.11</version>
+    <time>1409300932</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>6f7c11ab16e39995380e4c905e825f0a</srcmd5>
+    <version>1.11</version>
+    <time>1425031007</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287206</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3573449475a8d7f97d22da1f74f0a6c8</srcmd5>
+    <version>1.12</version>
+    <time>1464299541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12
+  * New configuration variable COMPATINCLUDEDIR
+- Small spec file cleanups (forwarded request 396680 from pluskalm)</comment>
+    <requestid>396725</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>fc0acc9dff5c63ea98a602a7ba84cf19</srcmd5>
+    <version>1.13</version>
+    <time>1526829547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610471</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9fa2c4f97f7d998b76f17e29ec62b13f</srcmd5>
+    <version>1.14.1</version>
+    <time>1527276810</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.14.1:
+  * Manpage formating issues
+  * Make gdbm_error thread-safe
+  * Improve database reproducibility
+  * Fix build with --enable-gdbm-export
+- Rebase patch gdbm-no-build-date.patch (forwarded request 611494 from scarabeus_iv)</comment>
+    <requestid>611495</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>055a3d621e52ba94bcd98a93add49169</srcmd5>
+    <version>1.18.1</version>
+    <time>1549623794</time>
+    <user>coolo</user>
+    <comment>- update to 1.18.1:
+  * Fix debian bug 910911: This restores backward compatibility with
+    databases created by version 1.8 (and some later versions, with
+    mmapped I/O disabled).
+
+- update to 1.18:
+  * Fix directory entry validation
+  * Fix improper use of GDBM_DEBUG macro
+  * Fix spurious error from gdbm_dump and gdbm_export
+  * Make sure gdbm_sync always returns a meaningful value
+- includes changes from 1.17:
+  * Fix bug in gdbm_dump function, it did not clear the
+    GDBM_ITEM_NOT_FOUND error marker, which is set upon its normal
+    termination
+- changes upstreamed:
+  * gdbm_close() and gdbm_sync() now return 0 on success. On error,
+    they return -1 and set gdbm_errno and errno to the appropriate
+    error codes - drop gdbm-close-and-sync-return-value.patch
+
+- update to 1.16:
+  * Fix typo
+  * New gdbmtool variables: coalesce and centfree
+  * src/falloc.c (avail_lookup): Remove the start parameter.
+                 (_gdbm_put_av_elem): Rewrite the &quot;can_merge&quot; loop.
+- added gdbm-close-and-sync-return-value.patch
+  see https://puszcza.gnu.org.ua/bugs/index.php?399
+
+- update to 1.15:
+  * Extensive database consistency checking
+  * Improved error checking</comment>
+    <requestid>645670</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7eb0d1fec4b5cc3d52e89f3692c03f61</srcmd5>
+    <version>0.08</version>
+    <time>1453998276</time>
+    <user>dimstar_suse</user>
+    <comment>Dochazka dependency</comment>
+    <requestid>356218</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>be73e19a485e163e2be330342eb04c0a</srcmd5>
+    <version>0.11</version>
+    <time>1461334998</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>379635</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>559f94105be737ca6ddc0f25415c2b9f</srcmd5>
+    <version>0.13</version>
+    <time>1462051772</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>391544</requestid>
+  </revision>
+</revisionlist>

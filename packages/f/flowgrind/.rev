@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3e8adcb60ac174d8a05824c310dbfc3</srcmd5>
+    <version>0.7.5</version>
+    <time>1429606276</time>
+    <user>dimstar_suse</user>
+    <comment>New, usefull package</comment>
+    <requestid>296828</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24bc581fba4065a7b23cb9c0318cc493</srcmd5>
+    <version>0.8.0</version>
+    <time>1490965752</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.8.0:
+  * Now uses UUID to uniquely identify daemons with same address 
+    (unfortunately that makes flowgrind incompatible with earlier
+    releases)
+  * Includes a lot of bugfixes, to name a few:
+    + No cwnd column in output)
+    + buffer overlow in daemon with 2048 flows
+    + segfault in argparser
+    + DEBUG_MSG is not thread-safe
+    + Time to string conversion seriously broken
+    + -U option expects flow endpoint as argument
+    + Traffic Generation: contradicting examples</comment>
+    <requestid>482585</requestid>
+  </revision>
+</revisionlist>

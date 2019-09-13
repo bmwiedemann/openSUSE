@@ -1,0 +1,5 @@
+<package name="spectre-meltdown-checker" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="spectre-meltdown-checker"/>
+</package>

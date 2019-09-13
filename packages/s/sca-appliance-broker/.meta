@@ -1,0 +1,5 @@
+<package name="sca-appliance-broker" project="openSUSE:Factory">
+  <title>Supportconfig Analysis Appliance Broker</title>
+  <description>Monitors inbound supportconfig archives and is responsible for assigning new and retry archives states for appropriate agent analysis.</description>
+  <devel project="Novell:NTS:Unstable" package="sca-appliance-broker"/>
+</package>

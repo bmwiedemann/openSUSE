@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42648fcb125592bb429108d91069b504</srcmd5>
+    <version>2.0</version>
+    <time>1366793422</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>172963</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>42648fcb125592bb429108d91069b504</srcmd5>
+    <version>2.0</version>
+    <time>1379664300</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ab0bcaec1ad00e9636ea51baa8d0b30d</srcmd5>
+    <version>2.0</version>
+    <time>1382693655</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204674</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eca8e6ac14ecb20f53b7d1093783efd3</srcmd5>
+    <version>2.1</version>
+    <time>1385292742</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208039</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>eca8e6ac14ecb20f53b7d1093783efd3</srcmd5>
+    <version>2.1</version>
+    <time>1409303009</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cfbc8ae9788917989cd6eb1dee507b84</srcmd5>
+    <version>3.3.0</version>
+    <time>1434133816</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307809</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b8c601cd583ca6b251fdb33617b01e46</srcmd5>
+    <version>3.5.0</version>
+    <time>1456924881</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360907</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b3509a1319dbc09fc15363cb653e6b99</srcmd5>
+    <version>3.6.0</version>
+    <time>1525779386</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github tarball
+- Update url
+- Update to version 3.6.0:
+  * Most notably support for python3 and various tweaks
+- Add patch to work with new pip:
+  * tweepy-pip2.10.patch</comment>
+    <requestid>603035</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>69a78ee736d33d1bf9817b44ed520a13</srcmd5>
+    <version>3.6.0</version>
+    <time>1534100045</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in unittest2</comment>
+    <requestid>628598</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>412f65873852337d07fd1ffc0ef79aa0</srcmd5>
+    <version>3.7.0</version>
+    <time>1554189647</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688352</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>08b79983a357634010531626d229ed60</srcmd5>
+    <version>3.8.0</version>
+    <time>1563808772</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.8.0:
+  * see CHANGELOG.md</comment>
+    <requestid>717563</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,184 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4bed4ca669977e741c706667ee4f6619</srcmd5>
+    <version>3.6.0</version>
+    <time>1407744443</time>
+    <user>lnussel</user>
+    <comment>Fix all issues</comment>
+    <requestid>244011</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4bed4ca669977e741c706667ee4f6619</srcmd5>
+    <version>3.6.0</version>
+    <time>1409301936</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fffc420e301d0ce0358f3a2b07295366</srcmd5>
+    <version>4.0.0</version>
+    <time>1426064259</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289862</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ee06153bc797f11efb9aa6e113fc2aac</srcmd5>
+    <version>4.4.0</version>
+    <time>1468869852</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408924</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4d8128e56b5c621980647ab259cba533</srcmd5>
+    <version>4.6.0</version>
+    <time>1494442221</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>492827</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>950aa3fd0192520ab75cc432ac02ffcf</srcmd5>
+    <version>4.6.0</version>
+    <time>1495883922</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>498278</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0da4a5e078278919e235342523f0b490</srcmd5>
+    <version>4.6.0</version>
+    <time>1496226069</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mstflint-gcc7.patch for GCC7 support (forwarded request 499769 from NMoreyChaisemartin)</comment>
+    <requestid>499770</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>bdb66ea05cc874131bf88405f2ff9442</srcmd5>
+    <version>4.6.0</version>
+    <time>1498485259</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505929</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a9797d4e5ba0242d0b6dda33ed51b718</srcmd5>
+    <version>4.7.0</version>
+    <time>1502629077</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515859</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6d0195202e3aa2fbe3412ea077e3b6c0</srcmd5>
+    <version>4.8.0</version>
+    <time>1510761334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v4.8.0-2
+  * Drop proprietary Mellanox file
+
+- Update to v4.8.0-1, No info of changes available (bsc#1046293, fate#322949)
+- Update mstflint-gcc7.patch to the latest sources</comment>
+    <requestid>540248</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a2467892b6ab75cc628eee269c8d784c</srcmd5>
+    <version>4.9.0</version>
+    <time>1521716633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589146</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>10b62b8f2642bfe4d68d562562ed9c08</srcmd5>
+    <version>4.9.0</version>
+    <time>1522225891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591116</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>5810e02d83ca2cc2f084fd872549cd51</srcmd5>
+    <version>4.9.0</version>
+    <time>1529919781</time>
+    <user>dimstar_suse</user>
+    <comment>- Update patches to fit science:HPC worflow
+  - Remove old format patches
+    - mstflint-4.4.0-implicit-declaration.patch
+    - mstflint-4.4.0-no-date-time.patch
+    - mstflint-armv6_arch.patch
+    - mstflint-armv7_arch.patch
+    - mstflint-gcc7.patch
+    - mstflint-s390_arch.patch
+  - Replaced with new format patches
+    - Remove-date-time-info-from-build.patch
+    - Add-s390-s390x-support.patch
+    - Add-armv6-and-armv7-support.patch
+    - Fix-gcc7-and-gcc8.patch
+      - Patch was updated to also fix Gcc8 compilation issues
+  - Drop obsolete patch
+    - mstfint-mtcr_ul_no_static_lib.patch
+- Update to v4.9.0-3
+  - No release notes available</comment>
+    <requestid>618884</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>da3ccf11b87f830b7309d47531cef749</srcmd5>
+    <version>4.10.0</version>
+    <time>1543224233</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Fixed-licenses-of-files.patch from upstream that
+  fixes license issues (bsc#1086923)
+
+- Update to v4.10.0-3 (fate#325998)
+  - Added mstcongestion 
+- Add fix-race-condition-during-install.patch
+  to fix install on parallel builds
+
+- Update to v4.10.0-2
+  - mstfwreset not supported
+  - mstflint now handles all the burn parameters when MCC
+    is enabled and displays the secure-FW CS tokens.
+  - mstconfig
+    - Added the option to query partial parameters
+    - Added the following new parameters:
+        FLEX_PARSER_PROFILE_ENABLE
+        ECPF_ESWITCH_MANAGER
+        ECPF_PAGE_SUPPLIER
+        SAFE_MODE_ENABLE
+        SAFE_MODE_THERSHOLD
+        BOOT_UNDI_NETWORK_WAIT
+  - Fixed bug in firmware burning flow
+- Refresh patchest against latest sources:
+  - Remove-date-time-info-from-build.patch
+  - Add-s390-s390x-support.patch
+  - Add-armv6-and-armv7-support.patch
+  - Fix-gcc7-and-gcc8.patch</comment>
+    <requestid>650123</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>79b5d89ea951380937cc354d31cf8e59</srcmd5>
+    <version>4.11.0</version>
+    <time>1550221323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674857</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d03136e7040330d6ec6e5f46518afcab</srcmd5>
+    <version>4.11.0</version>
+    <time>1553888585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689744</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>361bc67644afa3da2a60ad673951a7c7</srcmd5>
+    <version>4.11.0</version>
+    <time>1567850009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728695</requestid>
+  </revision>
+</revisionlist>

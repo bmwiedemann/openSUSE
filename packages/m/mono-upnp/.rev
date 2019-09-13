@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>26ef8798420e504b6eee3ad8121130d7</srcmd5>
+    <version>0.1.0</version>
+    <time>1331037589</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>105529</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1e258308257f8d6d53a9b024cf0eb820</srcmd5>
+    <version>0.1.1</version>
+    <time>1334216523</time>
+    <user>coolo</user>
+    <comment>Update to 0.1.1 + fix pkg-config files (forwarded request 112810 from vuntz)</comment>
+    <requestid>112951</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1e258308257f8d6d53a9b024cf0eb820</srcmd5>
+    <version>0.1.1</version>
+    <time>1340183708</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>1e258308257f8d6d53a9b024cf0eb820</srcmd5>
+    <version>0.1.1</version>
+    <time>1359109457</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e420c74766309b024089f3aa23982a4e</srcmd5>
+    <version>0.1.2</version>
+    <time>1366954860</time>
+    <user>coolo</user>
+    <comment>Fixup old .changes entries and as such the reason for it not entering Factory... see SR#171219 decline message (forwarded request 173102 from dimstar)</comment>
+    <requestid>173370</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>e420c74766309b024089f3aa23982a4e</srcmd5>
+    <version>0.1.2</version>
+    <time>1379663307</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>e420c74766309b024089f3aa23982a4e</srcmd5>
+    <version>0.1.2</version>
+    <time>1409301920</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

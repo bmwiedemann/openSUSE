@@ -1,0 +1,8 @@
+<package name="adobe-sourcesanspro-fonts" project="openSUSE:Factory">
+  <title>A set of OpenType fonts designed for user interfaces</title>
+  <description>Source Sans is a set of OpenType fonts that have been designed to work well in user interface (UI) environments, as well as in text setting for screen and print.
+
+</description>
+  <devel project="M17N:fonts" package="adobe-sourcesanspro-fonts"/>
+  <url>http://sourceforge.net/projects/sourcesans.adobe/</url>
+</package>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8752ba99d4516e9cbba4fd322f5ae9bb</srcmd5>
+    <version>0.4.2</version>
+    <time>1434012673</time>
+    <user>dimstar_suse</user>
+    <comment>Addiiton of python-requests-oauthlib as a dependency to python-tweepy</comment>
+    <requestid>311466</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a96bde9baf18933d27fee688c113fc0e</srcmd5>
+    <version>0.7.0</version>
+    <time>1485863203</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453397</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>58bb78e90f8c92a46e1b9df2518b310a</srcmd5>
+    <version>0.8.0</version>
+    <time>1495011256</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494947</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>be9f4e559c7d7f6edbeb005d90d0674b</srcmd5>
+    <version>0.8.0</version>
+    <time>1545648205</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659647</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5521d6bc59e47257ba462421c1e956d3</srcmd5>
+    <version>1.2.0</version>
+    <time>1551276334</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>676945</requestid>
+  </revision>
+</revisionlist>

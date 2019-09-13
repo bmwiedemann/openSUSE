@@ -1,0 +1,306 @@
+<revisionlist>
+  <revision rev="1" vrev="25">
+    <srcmd5>6d2043794e216e3d95c8b70810128a06</srcmd5>
+    <version>20060510</version>
+    <time>1168904529</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="49">
+    <srcmd5>f24b3fbf12ed696bec59e528e32c2264</srcmd5>
+    <version>20060510</version>
+    <time>1177077856</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="54">
+    <srcmd5>922b4bd99646b5a574a5924b4b632af4</srcmd5>
+    <version>20060510</version>
+    <time>1177967204</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c99ef926b74846b70947cb28fe069529</srcmd5>
+    <version>20070427</version>
+    <time>1184629975</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>ff45972c93a9cb3ec8eedbaa5a60c2cd</srcmd5>
+    <version>20070427</version>
+    <time>1187906630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="49">
+    <srcmd5>4d45c9ed5668aaf0bf9c21edbaa44e82</srcmd5>
+    <version>20070427</version>
+    <time>1196892133</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="53">
+    <srcmd5>ffe6f01d4ff182074ec098821e32d7c5</srcmd5>
+    <version>20070427</version>
+    <time>1198265741</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="107">
+    <srcmd5>551cfeaf35c74254d3e056421dff6a99</srcmd5>
+    <version>20070427</version>
+    <time>1210936824</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="155">
+    <srcmd5>551cfeaf35c74254d3e056421dff6a99</srcmd5>
+    <version>20070427</version>
+    <time>1210936824</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="156">
+    <srcmd5>35e73ab2fc24a3bf5a5bb66f9e79be34</srcmd5>
+    <version>20070427</version>
+    <time>1245363947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>50c4d4d673295c2037f3a724f7670a02</srcmd5>
+    <version>20090217</version>
+    <time>1251409995</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs-packages based on submit request 18735 from user tiwai
+</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>50c4d4d673295c2037f3a724f7670a02</srcmd5>
+    <version>20090217</version>
+    <time>1251409995</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs-packages based on submit request 18735 from user tiwai
+</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>bba4cf90f51d11bba51328f40aaad788</srcmd5>
+    <version>20090217</version>
+    <time>1260195777</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs-packages based on submit request 25609 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>b1318cde735446ce47210314a6caac64</srcmd5>
+    <version>20090217</version>
+    <time>1260535885</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs-packages based on submit request 26130 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>d68d3857a742927fd4be6816ff9a0ff7</srcmd5>
+    <version>20090217</version>
+    <time>1266975216</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs-packages based on submit request 33122 from user WernerFink
+</comment>
+    <requestid>33122</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>b055002932ad2901791b272a6eca4e75</srcmd5>
+    <version>20090217</version>
+    <time>1268926554</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>cacce972ec1b34b17c75ff3131037ff3</srcmd5>
+    <version>20090217</version>
+    <time>1270085188</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs-packages based on submit request 36262 from user WernerFink
+</comment>
+    <requestid>36262</requestid>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>f34242e0c07f80b10c720faf4347d093</srcmd5>
+    <version>20090217</version>
+    <time>1274133101</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs-packages based on submit request 40111 from user WernerFink
+</comment>
+    <requestid>40111</requestid>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>f34242e0c07f80b10c720faf4347d093</srcmd5>
+    <version>20090217</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>f34242e0c07f80b10c720faf4347d093</srcmd5>
+    <version>20090217</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="15">
+    <srcmd5>f34242e0c07f80b10c720faf4347d093</srcmd5>
+    <version>20090217</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="17">
+    <srcmd5>f34242e0c07f80b10c720faf4347d093</srcmd5>
+    <version>20090217</version>
+    <time>1319182583</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="18">
+    <srcmd5>96c2552b0b47f39d6b0a87b16dc2f1e5</srcmd5>
+    <version>20090217</version>
+    <time>1323195266</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6ae889115601db9aa24731271adfbdc5</srcmd5>
+    <version>20120214</version>
+    <time>1332239807</time>
+    <user>coolo</user>
+    <comment>- Update to sumo-2012-02-14
+  * as there are a lot of changes you may read
+    https://bitbucket.org/xemacs/xemacs-packages/changesets</comment>
+    <requestid>109498</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>edeabbdd554f12160d1a7fe272a05cc6</srcmd5>
+    <version>20120214</version>
+    <time>1333022912</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>111810</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>edeabbdd554f12160d1a7fe272a05cc6</srcmd5>
+    <version>20120214</version>
+    <time>1340184342</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>2309de9619df37851e9fd3533971cba5</srcmd5>
+    <version>20120214</version>
+    <time>1341220856</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126758</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>c62099eef319e7c5a7a3c39b2c9f0e8d</srcmd5>
+    <version>20120214</version>
+    <time>1343139497</time>
+    <user>coolo</user>
+    <comment>- Make it build with lateswt TeXLive 2012</comment>
+    <requestid>128819</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2e771bd22b8c5841c55bfe1c3fb84ffe</srcmd5>
+    <version>20120625</version>
+    <time>1345728742</time>
+    <user>namtrac</user>
+    <comment>hi I try to implement all &quot;to do&quot; from your mail, contact me if you have any questions! (forwarded request 130732 from ailin_nemui)</comment>
+    <requestid>130741</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b245f8d78b0b3599978662954dcca78c</srcmd5>
+    <version>20120911</version>
+    <time>1349374136</time>
+    <user>coolo</user>
+    <comment>hi are you interested in minor updates? (forwarded request 136991 from ailin_nemui)</comment>
+    <requestid>137017</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f4c233879c99abb9c32bd9ecc1b4b45a</srcmd5>
+    <version>20121119</version>
+    <time>1353514990</time>
+    <user>coolo</user>
+    <comment>minor update to latest ver (forwarded request 141943 from ailin_nemui)</comment>
+    <requestid>142037</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>f4c233879c99abb9c32bd9ecc1b4b45a</srcmd5>
+    <version>20121119</version>
+    <time>1359110603</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c8f27c38a17df8a8cb95ac5b089a4642</srcmd5>
+    <version>20130130</version>
+    <time>1359646890</time>
+    <user>coolo</user>
+    <comment>let's all help test the new tramp. cheers (forwarded request 150542 from ailin_nemui)</comment>
+    <requestid>150568</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>15a9c127e9a38cf80605c09a416c844c</srcmd5>
+    <version>20130319</version>
+    <time>1365948761</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>163457</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>14e656c48eff062692142fcec5c601bc</srcmd5>
+    <version>20130822</version>
+    <time>1378133426</time>
+    <user>coolo</user>
+    <comment>hope obs likes it this time :-&gt; (forwarded request 196967 from ailin_nemui)</comment>
+    <requestid>196968</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>14e656c48eff062692142fcec5c601bc</srcmd5>
+    <version>20130822</version>
+    <time>1379665013</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>14e656c48eff062692142fcec5c601bc</srcmd5>
+    <version>20130822</version>
+    <time>1409303695</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>7de273007f82da301e6fafb296c4d256</srcmd5>
+    <version>20130822</version>
+    <time>1423732963</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch xemacs-packages-20130822-tramp.patch
+  to fix problem of not loaded subr-more (boo#857207)</comment>
+    <requestid>285655</requestid>
+  </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>e6401c758598724972f41572542e4ba1</srcmd5>
+    <version>20130822</version>
+    <time>1425892153</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>289540</requestid>
+  </revision>
+  <revision rev="40" vrev="8">
+    <srcmd5>08767c2b8b1322433df8fff6694995ea</srcmd5>
+    <version>20130822</version>
+    <time>1448720384</time>
+    <user>dimstar_suse</user>
+    <comment>- Change encoding order in application defaults of xemacs and
+  xemacs-packages to avoid breakdown of FontSet scheme of libX11
+  at startup (bsc#952361)</comment>
+    <requestid>346547</requestid>
+  </revision>
+  <revision rev="41" vrev="9">
+    <srcmd5>dd520d752ee7557c77fa7df6175f593a</srcmd5>
+    <version>20130822</version>
+    <time>1499152343</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507947</requestid>
+  </revision>
+</revisionlist>

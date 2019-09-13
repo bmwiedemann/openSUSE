@@ -1,0 +1,6 @@
+<package name="perl-Gtk2-Unique" project="openSUSE:Factory">
+  <title>Perl bindings for the C library &quot;libunique&quot;</title>
+  <description>Perl bindings for the C library &quot;libunique&quot; that provides a mechanism for writing single instance applications. If you launch a single instance application twice, the second instance will either just quit or will send a message to the running instance.</description>
+  <devel project="devel:languages:perl" package="perl-Gtk2-Unique"/>
+  <url>http://search.cpan.org/dist/Gtk2-Notify/</url>
+</package>

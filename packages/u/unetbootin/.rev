@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>316965c0d6e685c76924ea1ebc2e19a3</srcmd5>
+    <version>0.0.608</version>
+    <time>1420754470</time>
+    <user>dimstar_suse</user>
+    <comment>Useful, at least for myself ;-)</comment>
+    <requestid>265225</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>97b1ddc6952ab234452cce2d8074c035</srcmd5>
+    <version>0.0.608</version>
+    <time>1421753763</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281939</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>76790331e9fa6816ace50cd3b9815142</srcmd5>
+    <version>0.0.613</version>
+    <time>1440658629</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>326419</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>95bfc59ac258a840b18366874af8aaf3</srcmd5>
+    <version>0.0.613</version>
+    <time>1449687149</time>
+    <user>dimstar_suse</user>
+    <comment>- exclude from build on aarch64, not installable</comment>
+    <requestid>347719</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e37989290b47d39d4e5eb55f0f73d7e8</srcmd5>
+    <version>0.0.625</version>
+    <time>1467359996</time>
+    <user>dimstar_suse</user>
+    <comment>rebase patches, fix changelog (forwarded request 405374 from computersalat)</comment>
+    <requestid>405376</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5e39759ef9301750689a7a6753000606</srcmd5>
+    <version>0.0.647</version>
+    <time>1497944417</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504536</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>065be0c245530d91d91f7399a990ed01</srcmd5>
+    <version>0.0.655</version>
+    <time>1502186373</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514992</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e46ece2e84598897e9304fa66012add0</srcmd5>
+    <version>0.0.657</version>
+    <time>1531947184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621764</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3b8df9ff4371fa8eefeb015784cf13c9</srcmd5>
+    <version>0.0.661</version>
+    <time>1556023161</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697038</requestid>
+  </revision>
+</revisionlist>

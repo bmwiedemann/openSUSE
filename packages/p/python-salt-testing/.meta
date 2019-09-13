@@ -1,0 +1,6 @@
+<package name="python-salt-testing" project="openSUSE:Factory">
+  <title>python-salt-testing</title>
+  <description>Python-salt-testing provides test tools for several SaltStack projects.
+</description>
+  <devel project="systemsmanagement:saltstack" package="python-salt-testing"/>
+</package>

@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14ff927f37e2b29a16a6840086dfe61f</srcmd5>
+    <version>0.9.6</version>
+    <time>1354888360</time>
+    <user>namtrac</user>
+    <comment>Initial submit to Factory</comment>
+    <requestid>144278</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>14ff927f37e2b29a16a6840086dfe61f</srcmd5>
+    <version>0.9.6</version>
+    <time>1359110616</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9dd8df87058accc9e8c260485200f91b</srcmd5>
+    <version>0.9.6</version>
+    <time>1363953937</time>
+    <user>coolo</user>
+    <comment>- Add mibstore.patch, fixes build with xorg-server 1.14 
+- No longer install this driver by default</comment>
+    <requestid>160468</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7b5108ed823df5400ed290bbe3793ee5</srcmd5>
+    <version>0.9.6</version>
+    <time>1377248991</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195918</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>7b5108ed823df5400ed290bbe3793ee5</srcmd5>
+    <version>0.9.6</version>
+    <time>1379665031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>7b5108ed823df5400ed290bbe3793ee5</srcmd5>
+    <version>0.9.6</version>
+    <time>1409303715</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>65ebfffab80476f90c3f93e17992c504</srcmd5>
+    <version>0.9.6</version>
+    <time>1480693381</time>
+    <user>dimstar_suse</user>
+    <comment>- u_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch 
+  * Adapt Block/WakeupHandler signature for ABI 23</comment>
+    <requestid>442926</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ac816f1001eed275f55cabccd3beb3ed</srcmd5>
+    <version>0.9.7</version>
+    <time>1485250538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.7
+  * Remove mibstore.h
+  * Adapt Block/WakeupHandler signature for ABI 23
+- supersedes U_Remove-mibstore.h.patch,
+  u_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch</comment>
+    <requestid>451425</requestid>
+  </revision>
+</revisionlist>

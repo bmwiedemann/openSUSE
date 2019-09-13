@@ -1,0 +1,6 @@
+<package name="libvoikko" project="openSUSE:Factory">
+  <title>Spellchecker and Hyphenator for Finnish Language</title>
+  <description>Voikko is a Finnish spellchecker and hyphenator based on Malaga and
+Suomi-Malaga.</description>
+  <devel project="devel:libraries:c_c++" package="libvoikko"/>
+</package>

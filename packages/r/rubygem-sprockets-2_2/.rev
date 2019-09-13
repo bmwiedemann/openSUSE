@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0b42aba6830de8960e52fd8024a08f45</srcmd5>
+    <version>2.2.1</version>
+    <time>1352908892</time>
+    <user>coolo</user>
+    <comment>required by rails 3.2.9</comment>
+    <requestid>141205</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>780639e3cf1c3ef8752b5bd7184896e5</srcmd5>
+    <version>2.2.2</version>
+    <time>1357038262</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146664</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>780639e3cf1c3ef8752b5bd7184896e5</srcmd5>
+    <version>2.2.2</version>
+    <time>1359110349</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a6c39f967f7c84cce6aacb939d14f0da</srcmd5>
+    <version>2.2.2</version>
+    <time>1366473719</time>
+    <user>coolo</user>
+    <comment>- use update-alternatives</comment>
+    <requestid>172492</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>a6c39f967f7c84cce6aacb939d14f0da</srcmd5>
+    <version>2.2.2</version>
+    <time>1379664577</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>c35070f6c41779adc77e5248d3eb3578</srcmd5>
+    <version>2.2.2</version>
+    <time>1385817867</time>
+    <user>coolo</user>
+    <comment>- fix usage of u-a</comment>
+    <requestid>208580</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>c35070f6c41779adc77e5248d3eb3578</srcmd5>
+    <version>2.2.2</version>
+    <time>1409303287</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f7a590026e684136c09d2654f95acd85</srcmd5>
+    <version>2.2.3</version>
+    <time>1416823974</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 2.2.3, no changelog
+- use new gem packaging</comment>
+    <requestid>260804</requestid>
+  </revision>
+</revisionlist>

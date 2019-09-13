@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56be70f7b95a5f52bb9675b029e191fe</srcmd5>
+    <version>6.01</version>
+    <time>1300455062</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64411 from user vitezslav_cizek
+</comment>
+    <requestid>64411</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0aed91165b658db2bdba11f75b34c616</srcmd5>
+    <version>6.01</version>
+    <time>1300455071</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64411
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e5aa0b348e8851020ced150c90b75a7a</srcmd5>
+    <version>6.02</version>
+    <time>1301574121</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65644 from user coolo
+</comment>
+    <requestid>65644</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ac872d04f1f495c3de3c1a3a0982bf3e</srcmd5>
+    <version>6.02</version>
+    <time>1301574133</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65644
+</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>ac872d04f1f495c3de3c1a3a0982bf3e</srcmd5>
+    <version>6.02</version>
+    <time>1319182266</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bad3986582d52fd3ae4e711c4a13f943</srcmd5>
+    <version>6.03</version>
+    <time>1324475892</time>
+    <user>coolo</user>
+    <comment>- update to 6.03 
+    Minor mistake in module description
+    Fixes to the parsing of 'ls -l' file modes [RT#71054]</comment>
+    <requestid>97109</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d7c38d7edc9056e223a380b5ffb289e1</srcmd5>
+    <version>6.04</version>
+    <time>1329405720</time>
+    <user>coolo</user>
+    <comment>- updated to 6.04
+    Minor mistake in module description
+    Test parsing of dosftp listings
+    This modulue works with 5.6.2</comment>
+    <requestid>105344</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>d7c38d7edc9056e223a380b5ffb289e1</srcmd5>
+    <version>6.04</version>
+    <time>1340183839</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>d7c38d7edc9056e223a380b5ffb289e1</srcmd5>
+    <version>6.04</version>
+    <time>1359109666</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>d7c38d7edc9056e223a380b5ffb289e1</srcmd5>
+    <version>6.04</version>
+    <time>1379663673</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>d7c38d7edc9056e223a380b5ffb289e1</srcmd5>
+    <version>6.04</version>
+    <time>1409302288</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+<package name="sslscan" project="openSUSE:Factory">
+  <title>SSL cipher scanning tool</title>
+  <description>SSLScan determines what ciphers are supported on SSL-based services,
+such as HTTPS. Furthermore, SSLScan will determine the preferred
+ciphers of the SSL service.
+
+</description>
+  <devel project="security" package="sslscan"/>
+  <url>https://www.titania-security.com/labs/sslscan</url>
+</package>

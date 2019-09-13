@@ -1,0 +1,214 @@
+<revisionlist>
+  <revision rev="1" vrev="79">
+    <srcmd5>990c696282a0c913a67e66cd7e4ec876</srcmd5>
+    <version>0.3.1</version>
+    <time>1331492624</time>
+    <user>coolo</user>
+    <comment>new package, camera remote control application with photobooth style qualities</comment>
+    <requestid>107334</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f223dfbb3097ae19b4bb56224cb0c1da</srcmd5>
+    <version>0.3.3</version>
+    <time>1338569671</time>
+    <user>coolo</user>
+    <comment>- Updated to 0.3.3
+ * Fix deadlock when starting app with glib &gt;= 2.32
+ * Remove use of deprecated API calls  
+ * Remove use of deprecated GTK widgets
+ * Fix debugging with glib &gt;= 2.32
+ * Fix creation of session browser widget to avoid warnings
+ * Refresh translations
+ * Fix check for glib-compile-schemas binary
+
+- buildrequire glib2-tools</comment>
+    <requestid>123175</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f223dfbb3097ae19b4bb56224cb0c1da</srcmd5>
+    <version>0.3.3</version>
+    <time>1340183306</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d2e52922df9169b71eaac2b9fc0b08b3</srcmd5>
+    <version>0.4.1</version>
+    <time>1349721040</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137376</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d2e52922df9169b71eaac2b9fc0b08b3</srcmd5>
+    <version>0.4.1</version>
+    <time>1359108851</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>4ff125d1a2711d62f12be7bf65145dc1</srcmd5>
+    <version>0.4.1</version>
+    <time>1360950233</time>
+    <user>coolo</user>
+    <comment>- entangle-libgphoto25.patch: libgphoto2 2.5 port. (forwarded request 155464 from msmeissn)</comment>
+    <requestid>155466</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0377bc2485ec067b334f1a5bf9a24970</srcmd5>
+    <version>0.5.3</version>
+    <time>1378294060</time>
+    <user>coolo</user>
+    <comment>- Release 0.5.3 - &quot;Photon&quot; - 2013-08-28
+  * Move file name of image thumbnails to tooltip popup
+  * Add --disable-schemas-compile configure arg to
+    disable schema compilation
+  * Remove &quot;Encoding&quot; key from desktop file
+  * Fix massive memory leak in pixbuf loading
+  * Fix thread safety in camera control updates which caused
+    hangs in GTK
+  * Fix updating of control readonly state when camera modes
+    change
+  
+- Release 0.5.2 - &quot;Graviton&quot; - 2013-08-17
+  * Split histogram into RGB colour channels
+  * Fix aperture / shutter speed calculations in status bar
+  * Only import files with known image extensions
+  * Use case insensitive file extension check to detect raw files
+  * Set saner defaults for processing raw files to fix Canon
+    raw display
+  * Set preferences before loading session to fix settings
+    for initial image load
+  * Apply orientation from EXIF images if image file has none
+  * Remove left over debug prints
+  * Add support for linear histogram display mode
+  * Support 'h' key to toggle linear/log histogram mode
+  * Ensure all events are emitted in main thread
+  * Remove use of deprecated GDK thread APIs
+  * Use GtkGrid instead of deprecated GtkTable
+  * Ensure status bar is constant size when scaling image
+  * Preserve scrollbar offsets when switching images
+  * Make metadata extraction more robust wrt missing fields</comment>
+    <requestid>196868</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0377bc2485ec067b334f1a5bf9a24970</srcmd5>
+    <version>0.5.3</version>
+    <time>1379662296</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dd3518e56f53571a79ca73d6041268a8</srcmd5>
+    <version>0.5.4</version>
+    <time>1387461726</time>
+    <user>coolo</user>
+    <comment>- Release 0.5.4 - &quot;Up&quot; - 2013-12-15
+ * Ensure thumbnail directory exists when saving thumbnails
+ * Fix memory leak generating thumbnails from raw images
+ * Add an appdata XML file for GNOME software center
+ * Create a dedicated camera actions menu
+ * Fix include of gexiv2 header files
+ * Fix image selection for onion skinning in preview mode
+ * Display selected image when cancelling preview
+ * Fix empty tooltips on capture/preview buttons
+ * Fix scaling for preview image in onion skinning mode
+ * Increase emphasis of top image in onion skinning mode
+ * Improve granularity of manual focus and add extra
+   '&lt;' and '&gt;' key accelerators for coarse focus
+ * Fix leak of image exiting preview mode
+ * Make progress toolbar button permanently visible</comment>
+    <requestid>211393</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>222dd0861f509c387a0c96935f2a5e01</srcmd5>
+    <version>0.6.0</version>
+    <time>1399390690</time>
+    <user>coolo</user>
+    <comment>- Release 0.6.0 - &quot;Down&quot; - 2014-05-02
+ * Add a demonstration plugin for setting up a captive photo box display mode
+ * Switch to use Python3 for plugin engine instead of JavaScript
+ * Use GTK dark theme
+ * Require GNOME symbolic icon theme to be installed
+ * Switch to require lcms2 instead of lcms
+ * Move application icon into a standard directory mandated to work with the appdata tools
+ * Make manual focus work with Canon EOS cameras
+ * Disable flickering progress bar in preview mode with Canon EOS cameras
+ * Remove use of deprecated GTK methods/classes/constants
+ * Remove use of gexiv2 method which is not long exported
+ * Remove use of deprecated libpeas methods
+ * Add GTK-DOC transfer annotations / docs to all methods
+ * Avoid loosing camera capabilities on disconnect
+ * Fix off by one in histogram tables causing memory corruption
+ * Mark appdata / desktop files for translation
+ * Fix typos in README file
+ * Fix inverted tests when checking if range widget changed
+ * Avoid storm of expose events due to auto-drawer widget
+ * Avoid never ending circular update of controls causing errors in some camera modes
+ * Add workaround for crazy D5100 camera serial number
+ * Add customizable highlight/background for images
+ * Avoid reference leak of windows preventing proper cleanup
+ * Remove camera manual/about/driver help windows since it did not contain any info useful to users
+ * Filter list of cameras in connect dialog to only those which support capture/preview
+ * Don't auto connect to cameras which don't support capture or preview
+ * Ensure parent window is set on dialogs to prevent them falling behind main window
+ * Fix crash with latest GTK due to incorrect overriding of GtkApplication startup method
+ * Update to cope with changed GExiv API version
+ * Refreshed translations from transifex</comment>
+    <requestid>232662</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>222dd0861f509c387a0c96935f2a5e01</srcmd5>
+    <version>0.6.0</version>
+    <time>1409300832</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>495eac284cbca642f01b53322657f2af</srcmd5>
+    <version>0.7.0</version>
+    <time>1450084447</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 347924 from posophe)</comment>
+    <requestid>347925</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ef6ec116e845c6c7d42f9125df961819</srcmd5>
+    <version>0.7.1</version>
+    <time>1500975658</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512294</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a36f0ba27cf86a21b2f46e79926a7d65</srcmd5>
+    <version>2.0</version>
+    <time>1551024892</time>
+    <user>coolo</user>
+    <comment>- update to version 2.0
+  * Require gobject introspection &gt;= 1.54
+  * Require GTK3 &gt;= 3.22
+  * Fix dependency on libraw
+  * Fix variable name in photobox plugin
+  * Document some missing keyboard shortcuts
+  * Fix upper bound in histogram to display clipped pixel
+  * Refresh translations
+  * Option to highlight over exposed pixels in red
+  * Disable noisy compiler warning
+  * Remove use of deprecated application menu concept
+  * Fix image redraw when changing some settings
+  * Update mailing list address in appdaat
+  * Add more fields to appdata content
+  * Fix reference counting during window close
+  * Use correct API for destroying top level windows
+  * Fix unmounting of cameras with newer gvfs URI naming scheme
+  * Avoid out of bounds read of property values
+  * Fix many memory leaks
+  * Workaround for combo boxes not displaying on Wayland
+  * Fix race condition in building enums
+  * Fix setting of gschema directory during startup
+  * Set env to ensure plugins can find introspection typelib
+- entangle-desktop.patch: dropped, included desktop file is ok</comment>
+    <requestid>676684</requestid>
+  </revision>
+</revisionlist>

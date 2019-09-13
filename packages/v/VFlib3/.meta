@@ -1,0 +1,11 @@
+<package name="VFlib3" project="openSUSE:Factory">
+  <title>Versatile Font Library</title>
+  <description>VFlib is a font library written in C language with several functions to
+obtain bitmaps of fonts.  Unique feature of VFlib is that fonts in
+different formats are accessed by unified interface.
+
+VFlib supports the following font formats: TeX fonts:	    PK, GF, VF,
+TFM Omega TeX fonts: OFM (level 0), OVF X Window fonts:  PCF, BDF Other
+fonts:	   TrueType, Type 1, HBF, Syotai Club, JG, ekanji</description>
+  <devel project="M17N" package="VFlib3"/>
+</package>

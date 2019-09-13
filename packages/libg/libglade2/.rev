@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="33">
+    <srcmd5>3ca6a0a157ccec1ee375719d090a0694</srcmd5>
+    <version>2.6.0</version>
+    <time>1168187108</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="36">
+    <srcmd5>3971e115340014689d1bcc7ea61c1242</srcmd5>
+    <version>2.6.0</version>
+    <time>1170864137</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>67f4adad7cc462ca46f29ff7165b3cd6</srcmd5>
+    <version>2.6.1</version>
+    <time>1184350789</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7582806f93244d716f7b64077b3ca13c</srcmd5>
+    <version>2.6.1</version>
+    <time>1185632828</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>53b55f0f8476880809ab7f50821b8264</srcmd5>
+    <version>2.6.2</version>
+    <time>1186072975</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="76">
+    <srcmd5>28c97edffa72312d26058cddff1ead36</srcmd5>
+    <version>2.6.2</version>
+    <time>1207830325</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2a0fbcf97b1752271333cf2fdf1f0589</srcmd5>
+    <version>2.6.3</version>
+    <time>1219960221</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>9138e9bb296e66d13c94c3fb2b624272</srcmd5>
+    <version>2.6.3</version>
+    <time>1231436088</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>ddb20ab361fb176fd6decc6f85c86388</srcmd5>
+    <version>2.6.3</version>
+    <time>1232626297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>00b276288e6e20b54ed2727d5c1cbcda</srcmd5>
+    <version>2.6.4</version>
+    <time>1238086512</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>00b276288e6e20b54ed2727d5c1cbcda</srcmd5>
+    <version>2.6.4</version>
+    <time>1238086512</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>c34ad32cdf8c50a65f8c9b3e63e8b1f9</srcmd5>
+    <version>2.6.4</version>
+    <time>1262129083</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libglade2 based on submit request 27851 from user vuntz
+</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>fa4a0536f34139b143f4369e6562f381</srcmd5>
+    <version>2.6.4</version>
+    <time>1268924574</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>fa4a0536f34139b143f4369e6562f381</srcmd5>
+    <version>2.6.4</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>fa4a0536f34139b143f4369e6562f381</srcmd5>
+    <version>2.6.4</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>428ba1d11fbb93cf10be351130adc0d6</srcmd5>
+    <version>2.6.4</version>
+    <time>1287143265</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libglade2 based on submit request 50747 from user vuntz
+</comment>
+    <requestid>50747</requestid>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>428ba1d11fbb93cf10be351130adc0d6</srcmd5>
+    <version>2.6.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>428ba1d11fbb93cf10be351130adc0d6</srcmd5>
+    <version>2.6.4</version>
+    <time>1319182096</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="15">
+    <srcmd5>653b1840ae7ccb284669a60461969326</srcmd5>
+    <version>2.6.4</version>
+    <time>1323192220</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>653b1840ae7ccb284669a60461969326</srcmd5>
+    <version>2.6.4</version>
+    <time>1340183588</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="19">
+    <srcmd5>653b1840ae7ccb284669a60461969326</srcmd5>
+    <version>2.6.4</version>
+    <time>1359109277</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="20">
+    <srcmd5>9d7373c1b34db96c8bd5ce794e3957b5</srcmd5>
+    <version>2.6.4</version>
+    <time>1364897617</time>
+    <user>coolo</user>
+    <comment>spec cleeanup</comment>
+    <requestid>161977</requestid>
+  </revision>
+  <revision rev="23" vrev="22">
+    <srcmd5>9d7373c1b34db96c8bd5ce794e3957b5</srcmd5>
+    <version>2.6.4</version>
+    <time>1379662958</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>9d7373c1b34db96c8bd5ce794e3957b5</srcmd5>
+    <version>2.6.4</version>
+    <time>1409301570</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>a6cd5a2dba0b7669c6aec2708b3dd191</srcmd5>
+    <version>2.6.4</version>
+    <time>1520502683</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ineffective --with-pic. (forwarded request 582932 from jengelh)</comment>
+    <requestid>583020</requestid>
+  </revision>
+</revisionlist>

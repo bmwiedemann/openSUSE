@@ -1,0 +1,9 @@
+<package name="mininet" project="openSUSE:Factory">
+  <title>Network emulator for rapid prototyping of Software Defined Networks (SDN)</title>
+  <description>Mininet emulates a complete network of hosts, links, and switches on a single
+machine. Mininet is useful for interactive development, testing, and demos, especially
+those using OpenFlow and SDN. OpenFlow-based network controllers prototyped in
+Mininet can usually be transferred to hardware with minimal changes for full
+line-rate execution.</description>
+  <devel project="network" package="mininet"/>
+</package>

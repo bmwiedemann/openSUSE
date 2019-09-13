@@ -1,0 +1,244 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b1bfef9e012fe22fdd37e9f6630ae56</srcmd5>
+    <version>1.2.0.20091127</version>
+    <time>1268992820</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/ibus-anthy based on submit request 34896 from user coolo
+</comment>
+    <requestid>34896</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7bf6bf450d75b7cd9c1fa131cb263a2c</srcmd5>
+    <version>1.2.0.20091127</version>
+    <time>1269619483</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/ibus-anthy based on submit request 35650 from user tiwai
+</comment>
+    <requestid>35650</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7bf6bf450d75b7cd9c1fa131cb263a2c</srcmd5>
+    <version>1.2.0.20091127</version>
+    <time>1278667351</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7bf6bf450d75b7cd9c1fa131cb263a2c</srcmd5>
+    <version>1.2.0.20091127</version>
+    <time>1278678582</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>7bf6bf450d75b7cd9c1fa131cb263a2c</srcmd5>
+    <version>1.2.0.20091127</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>48d91138509a7ee30f639b3177543666</srcmd5>
+    <version>1.2.6</version>
+    <time>1309174571</time>
+    <user>saschpe</user>
+    <comment>- Update to 1.2.6 
+  translation updates; gconf-SEGV fix; fixes for new ibus; etc</comment>
+    <requestid>74621</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>165644d7441077f8bb4d4d292986913a</srcmd5>
+    <version>1.2.6</version>
+    <time>1309174583</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74621
+</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b1cd8f410f921a608f32d11b444b2bda</srcmd5>
+    <version>1.2.6</version>
+    <time>1311582357</time>
+    <user>saschpe</user>
+    <comment>- Add missing locale-specific provides tag (bnc#707712)</comment>
+    <requestid>76793</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>ec3e1b9522e698d0519cfe31e3a46b7a</srcmd5>
+    <version>1.2.6</version>
+    <time>1311582368</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76793
+</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>ec3e1b9522e698d0519cfe31e3a46b7a</srcmd5>
+    <version>1.2.6</version>
+    <time>1319181978</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>298c5726c6348c385b545f0216640201</srcmd5>
+    <version>1.2.6</version>
+    <time>1323191920</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3bf7a3ad8789d54bd34871a2ba6ff626</srcmd5>
+    <version>1.3.99.20120327</version>
+    <time>1339392654</time>
+    <user>coolo</user>
+    <comment>- update to 1.3.99.20120327(1.4rc).</comment>
+    <requestid>124321</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>3bf7a3ad8789d54bd34871a2ba6ff626</srcmd5>
+    <version>1.3.99.20120327</version>
+    <time>1340183446</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1fa52ae1a7bc8fd24c12754d8173a80e</srcmd5>
+    <version>1.2.7</version>
+    <time>1340890089</time>
+    <user>coolo</user>
+    <comment>- back to version 1.2.7, as 1.4rc is still too unstable and
+  doesn't work on M17N/12.1 systems at all (forwarded request 126157 from hillwood)</comment>
+    <requestid>126189</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>1fa52ae1a7bc8fd24c12754d8173a80e</srcmd5>
+    <version>1.2.7</version>
+    <time>1359109060</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>aed2905f9b3c3d527c4215fc9ae47373</srcmd5>
+    <version>1.5.3</version>
+    <time>1373294842</time>
+    <user>coolo</user>
+    <comment>- update to 1.5.3
+  * Fixed some bugs
+
+- update to 1.5.0
+  * Added ibus menu customization.
+  * Added us layout table for Kana.
+  * Added keyboard layout customization.
+  * Enabled IBusProperty.symbol with ibus 1.5 .
+  * Add a .desktop file for ibus-setup-anthy
+  * Updated configure.ac to use ibus pygobject3.
+  * Converted pygtk2 to gir gtk3.
+  * Added to sync the user config xml between versions.
+  * Updated translations.
+  * Added ibus menu customization.
+  * Replaced the legacy icon gtk-preferences with preferences-desktop.
+  * Added el.po.
+  * Fixed to delete arch depended lines. (#884031)
+
+- update to 1.4.99.20121006.
+  * Fixed GtkBuilder bindtextdomain in ibus-setup.
+  * Updated configure.ac to use ibus pygobject3.
+  * Fixed MBCS dict file names (#1479)
+  * Add a .desktop file for ibus-setup-anthy
+  * Added IBUS_VERSION_TEST to make sure the latest ibus is used.
+  * First round of string fixes.
+  * Added anthy themed icon.
+  * Used ibus_config_get_values
+  * Added old repeated chars in symbol.t and oldchar.t
+  * Fixed IBus.Bus.get_config is null. (#848023)
+  * Fixed GLib.Variant.dup_strv for pygobject3 3.3.4 or later. (#854161) (forwarded request 182455 from hillwood)</comment>
+    <requestid>182458</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>aed2905f9b3c3d527c4215fc9ae47373</srcmd5>
+    <version>1.5.3</version>
+    <time>1379662635</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8510a292a462d39c69ac3dc4bbd985b2</srcmd5>
+    <version>1.5.4</version>
+    <time>1381257309</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.5.4
+  * Removed g_type_init() calls.
+  * Fixed ibus-engine-anthy --xml without display
+  * Fixed kana_voiced_consonant_no_rule for 'bo'.
+  * Fixed dicts.
+  * Updated symbol.t with Seiza.
+  * Added Era dict.
+  * Updated source files with the latest GPL 2.0.
+  * Imported anthy zipcode.t into ibus-anthy.
+  * Added to check the input purpose for gnome-shell password dialog.
+  * Implemented ISO 14755 with Ctrl+Shift+u in LATIN mode.
+  * Extracted prefix in ANTHY_ZIPCODE_FILE for sh test. (forwarded request 202618 from MargueriteSu)</comment>
+    <requestid>202625</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>86fba1a7a835ecc4aad7e66e7682429b</srcmd5>
+    <version>1.5.5</version>
+    <time>1395750154</time>
+    <user>coolo</user>
+    <comment> (forwarded request 227217 from hillwood)</comment>
+    <requestid>227218</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>86fba1a7a835ecc4aad7e66e7682429b</srcmd5>
+    <version>1.5.5</version>
+    <time>1409301193</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f9cf0d5e3ab52401633ee65707f18114</srcmd5>
+    <version>1.5.6</version>
+    <time>1411926866</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252675</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0d004fd1afe23e2d08f3c64b2ea4bd72</srcmd5>
+    <version>1.5.7</version>
+    <time>1439385198</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321775</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>a1b497efd694facde570c507d7ce7c29</srcmd5>
+    <version>1.5.7</version>
+    <time>1443585070</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333045</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>582749da72dffedd797bb920c49b2e29</srcmd5>
+    <version>1.5.7</version>
+    <time>1444130730</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335452</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4911854fa0042dd8ad3498d6398e5d5e</srcmd5>
+    <version>1.5.9</version>
+    <time>1496327570</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498364</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c5fa8c5212ea2b29d1e1373ff5e74275</srcmd5>
+    <version>1.5.10</version>
+    <time>1522750341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593006</requestid>
+  </revision>
+</revisionlist>

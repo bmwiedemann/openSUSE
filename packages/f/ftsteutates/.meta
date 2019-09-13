@@ -1,0 +1,8 @@
+<package name="ftsteutates" project="openSUSE:Factory">
+  <title>Kernel module ftsteutates</title>
+  <description>
+System monitoring and thermal management for Fujitsu mainboards (D34xx).
+  </description>
+  <devel project="hardware" package="ftsteutates"/>
+  <url>ftp://ftp.ts.fujitsu.com/pub/Mainboard-OEM-Sales/Services/</url>
+</package>

@@ -1,0 +1,591 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95e3e01587f5a76450be8b3e8060ca24</srcmd5>
+    <version>0.8.3</version>
+    <time>1430891322</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>298786</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>14129e15fca89d6de8736727bdb01e99</srcmd5>
+    <version>0.9.1</version>
+    <time>1430980153</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305585</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>84e415cbad4892b92301adbb0eb16535</srcmd5>
+    <version>0.9.2</version>
+    <time>1432888794</time>
+    <user>dimstar_suse</user>
+    <comment>- Try to fix build for both Factory and packman
+  * We neeed to sync this up
+
+- Version bump to 0.9.2:
+  * Various opengl fixes
+  * Fulscreen behaviour fixes for some WMs
+  * Various other small fixes
+
+- Sync buildrequires with packman spec-file
+
+- Sync with packman spec-file
+
+- Update to 0.9.1</comment>
+    <requestid>308899</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7e8fa726733f3c443088f8ee13cfe8fa</srcmd5>
+    <version>0.10.0</version>
+    <time>1441726776</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version of WAF to match upstream
+
+- Update to v0.10.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.10.0
+    for the complete changelog.</comment>
+    <requestid>328892</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a5e3fdc649f29d2950fe7aa5d431cca</srcmd5>
+    <version>0.11.0</version>
+    <time>1443068155</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333098</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8a4bda9599c0c6a4b1ecd974f7b22299</srcmd5>
+    <version>0.13.0</version>
+    <time>1447587994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.13.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.13.0
+    for the complete changelog.
+
+- Update to v0.12.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.12.0
+    for the complete changelog.
+
+- Add a 265x256 resolution app icon</comment>
+    <requestid>343512</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e94d8734b9b71c0f3f939b41a7814421</srcmd5>
+    <version>0.13.0</version>
+    <time>1449687061</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347385</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39fbaac6c9c4f29d1c165d7a69e2c6fe</srcmd5>
+    <version>0.14.0</version>
+    <time>1450284178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.14.0
+    for the complete changelog.
+
+- Remove mpg123 as dependency, thus losing need of being on packman.
+  We use the mad implementation anyway if we had FPU and everything
+  we support has to have it anyway.
+
+- Sort out the ffmpeg deps to reduce conditionals</comment>
+    <requestid>348806</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e0ef71d9294837a9e7cb4a2a12e8aa93</srcmd5>
+    <version>0.14.0</version>
+    <time>1451674047</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide and obsolete mplayer2 as per packman discussion</comment>
+    <requestid>350672</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2f652cad85ed347e22c999f61c8fc665</srcmd5>
+    <version>0.15.0</version>
+    <time>1453508213</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the --enable-gpl3 options and revert the license to GPL-2.0+ 
+
+- Backported commit 5053f4c to fix hang problem with smplayer
+  (bug ref. #2729) mpv-0.15.0_fix_NULL_ptr.patch
+
+- Update to v0.15.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.15.0
+    for the complete changelog.
+- Install mpv.conf &amp; input.conf
+
+- Set license to GPL-3.0+ so we can enable more OpenGL functionality.
+- Add pkgconfig(gl) build dependency.</comment>
+    <requestid>355373</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8596060f52bd6e538c137d8ee9dbc365</srcmd5>
+    <version>0.15.0</version>
+    <time>1456242896</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a mpv_gpl3 condition to build mpv as GPL-3.0+ on Packman.</comment>
+    <requestid>359453</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>09c7dfac3120243e65701425b3f88b07</srcmd5>
+    <version>0.16.0</version>
+    <time>1456821907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.16.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.16.0
+    for the complete changelog.
+- Drop mpv-0.15.0_fix_NULL_ptr.patch, fixed upstream.
+- Don't install mpv.png as upstream now ships a mpv.svg</comment>
+    <requestid>362822</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4e0e374307b22dc9d9f7da342d353485</srcmd5>
+    <version>0.17.0</version>
+    <time>1460632020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies of desktop and icon handling scriplets
+
+- Update to version 0.17.0
+  * See https://github.com/mpv-player/mpv/releases/tag/v0.17.0 
+    for full changelog</comment>
+    <requestid>387891</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a9829dedfdcbf2e158d5db07b606cdb5</srcmd5>
+    <version>0.18.0</version>
+    <time>1466977957</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404788</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>63bcc6eaf1a01cad049c60e1c17dc4d9</srcmd5>
+    <version>0.18.1</version>
+    <time>1468580000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update waf to 1.9.1
+
+- Force rebuilding with every minor update of ffmpeg
+
+- Update to version 0.18.1
+  * Note: Running mpv with different versions of the 
+    FFmpeg/Libav libraries than it was compiled with
+    is no longer supported. Even supposedly ABI-compatible
+    versions have been a source of trouble, and it creates 
+    far too much complexity with little to no benefit,
+    coupled with absurd and unusable FFmpeg API artifacts.
+    Instead, mpv will exit with an error when such a 
+    situation is detected.
+    This simply means that mpv needs to be rebuilt whenever 
+    FFmpeg libraries change.
+  New Features:
+  * d3d: implement screenshots for --hwdec=d3d11va
+  * vo_opengl: add output_size uniform to custom shader
+  * vo_opengl: implement the Panasonic V-Log function 
+    (#3157)
+  * vo_opengl: implement ARIB STD-B68 (HLG) HDR TRC
+  Options and oommands:
+  * command: pack sub image data in overlay-add command
+  * options: deprecate --heartbeat-cmd
+  * audio: deprecate --softvol
+  * audio: drop --softvol=no and --softvol=auto (#3322)
+  Fixes and minor enhancements:
+  * video: fix deinterlace filter handling on pixel 
+    format changes
+  * x11: silence xdg-screensaver</comment>
+    <requestid>408289</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c4e9ae6c543166e050015380715b05ad</srcmd5>
+    <version>0.19.0</version>
+    <time>1471428349</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419506</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>65bd598062d634cecf74be5701c9ce44</srcmd5>
+    <version>0.20.0</version>
+    <time>1472379489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>423269</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>f986d7baae22c811c6c8c84f4cb092a5</srcmd5>
+    <version>0.20.0</version>
+    <time>1473241556</time>
+    <user>dimstar_suse</user>
+    <comment>- Add exact dependency on all libav* packages not just libavcodec.</comment>
+    <requestid>424433</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e35cb24c556ada007c419deffdff3145</srcmd5>
+    <version>0.21.0</version>
+    <time>1477219898</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436479</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>11fd64453c4444c9b3d79b1f4dfc45cd</srcmd5>
+    <version>0.21.0</version>
+    <time>1478289741</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not require equal libav soname version we were built with
+  OBS rebuilds packages as needed and it is over the head
+  * mpv-make-ffmpeg-version-check-non-fatal.patch</comment>
+    <requestid>438681</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>176a1afa2a4c59f740ddc0916b7db7fa</srcmd5>
+    <version>0.22.0</version>
+    <time>1479734769</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441086</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>403ee011079b1a077aa1601b416ebb24</srcmd5>
+    <version>0.22.0</version>
+    <time>1480693298</time>
+    <user>dimstar_suse</user>
+    <comment>  OBS rebuilds packages as needed and it is over the head bsc#1012600</comment>
+    <requestid>442715</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f4a02cfa3368fcccae3f87ee84383b6a</srcmd5>
+    <version>0.23.0</version>
+    <time>1483048345</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to version 0.23.0
+  * Now requires at least FFmpeg 3.2.2.
+  Changed features:
+  * vo_rpi: partially undeprecate
+  Added features:
+  * vo_opengl: hwdec_cuda: Support P016 output surfaces
+  Removed features:
+  * charset_conv: drop enca and libguess support in favor of
+    uchardet
+  * vf_vdpaurb: remove this filter in favor of --hwdec=vdpau-copy
+  Added options and commands:
+  * TOOLS/autoload: allow disabling through script-opts
+  * demux, stream: add --access-references to prevent opening
+    referenced files
+  Deprecated options and commands:
+  * options: deprecate codec family selection in --vd/--ad
+  Removed options and commands
+  * options: remove deprecated sub-option handling for --vo
+    and --ao
+  Fixes and minor enhancements:
+  * Windows: window styles improvements (allow minimizing
+    borderless/fullscreen window) (#2229, #2451)
+  * ad_spdif: Fix crash when spdif muxer is not available
+  * audio: fix --audio-stream-silence with ao_alsa
+  * audio: fix --audio-stream-silence with ao_wasapi
+  * build: drop build-time dependency on Perl
+  * build: support linking ANGLE (previously loaded dynamically)
+  * d3d11va: unconditionally load D3D DLLs (#3348)
+  * demux_mkv: fix seeking in some broken files (#3920)
+  * hwdec_cuda: allow building without CUDA SDK (load CUDA
+    dynamically)
+  * osc: don't hide playlist buttons, just disable
+  * osc: fix possible race condition in right timecode
+  * osc: topbar: use same styles as bottombar
+  * player: don't print format detection error when aborting
+    loading
+  * vdpau: fix vaapi probing if libvdpau-va-gl1 is present
+  * video: use demuxer-signaled duration for last video
+    frame (#3924)</comment>
+    <requestid>447915</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>cc104de9dcdbbdb6f74ffb6e2e86ec1b</srcmd5>
+    <version>unknown</version>
+    <time>1485512012</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451555</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>439fd884087f866d0a4dda74c2d878ef</srcmd5>
+    <version>unknown</version>
+    <time>1486968710</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456497</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>412706a554986a74f36c52330f781e67</srcmd5>
+    <version>unknown</version>
+    <time>1489345529</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478667</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>bb1eb5d9942a8e8a69313017fcce202e</srcmd5>
+    <version>unknown</version>
+    <time>1491469264</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482740</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>d8d52683a6ba7e24f0d7bb2e8e952c8e</srcmd5>
+    <version>unknown</version>
+    <time>1492011391</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486711</requestid>
+  </revision>
+  <revision rev="29" vrev="7">
+    <srcmd5>c84794289d61af04b55db64d6e00a76e</srcmd5>
+    <version>unknown</version>
+    <time>1495010897</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh patch mpv-make-ffmpeg-version-check-non-fatal.patch
+  * Rather delete the warning as whole, in OBS concept we detect
+    abi changes and it misleads the users of stable distributions
+    to worry something broke
+
+- Remove the pdf build, it is same as manpage
+- Switch to python3 subpkgs as we use python3 anyway (Fixes TW build)
+
+- Dropped openal. It's pointless these days and it creates
+  a problem when used with pulse (gh#mpv-player/mpv#4311)
+- Removed portaudio requirement (support was dropped in
+  0.8.0!)
+
+- Update to version 0.25.0
+  * Support for some optical media functionality (DVD/CD) is now 
+    disabled by default.
+  * More parts of the player are now licensed under LGPL. In 
+    particular:
+      + OSD symbol font
+      + ass_mp, sd_ass
+      + common.h
+      + demux/packet
+      + demux_mkv (with minor exceptions), ebml, matroska.h
+      + sd_lavc
+      + sub/osd
+    Thanks to all contributors who have agreed to relicensing of 
+    their changes! See #2033 for details.
+  * Starting with this release, releases will be tagged on the 
+    master branch. The release/current branch is thus abandoned.
+  Added features:</comment>
+    <requestid>493786</requestid>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>2e503bd9ac6c81b8297e54a356efdb4d</srcmd5>
+    <version>unknown</version>
+    <time>1495637411</time>
+    <user>dimstar_suse</user>
+    <comment>- Depend on lua-5.1 as 5.3 is incompatible wrt bsc#1040034</comment>
+    <requestid>497159</requestid>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>147b07a0bdf20146c344d9e323856c70</srcmd5>
+    <version>unknown</version>
+    <time>1502974953</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517162</requestid>
+  </revision>
+  <revision rev="32" vrev="10">
+    <srcmd5>58bd67df52ee9fe9e1251eb923c1fd0f</srcmd5>
+    <version>unknown</version>
+    <time>1503308267</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517779</requestid>
+  </revision>
+  <revision rev="33" vrev="11">
+    <srcmd5>530be52a03915c0a90923fd56946a915</srcmd5>
+    <version>unknown</version>
+    <time>1503393009</time>
+    <user>dimstar_suse</user>
+    <comment>- Build only against luajit and not lua where possible
+- Comment on why we depend on lua (for bash_completion generating)</comment>
+    <requestid>517935</requestid>
+  </revision>
+  <revision rev="34" vrev="12">
+    <srcmd5>8d63c5ab221925882cd0863e1b039a14</srcmd5>
+    <version>unknown</version>
+    <time>1503482089</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly enable libsmbclient</comment>
+    <requestid>518116</requestid>
+  </revision>
+  <revision rev="35" vrev="13">
+    <srcmd5>9a5c4c3960931b15db3fbb20dc9dcff8</srcmd5>
+    <version>unknown</version>
+    <time>1503593746</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518388</requestid>
+  </revision>
+  <revision rev="36" vrev="14">
+    <srcmd5>7cd59456f9e18f45355d79fa73faea18</srcmd5>
+    <version>unknown</version>
+    <time>1505335022</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523894</requestid>
+  </revision>
+  <revision rev="37" vrev="15">
+    <srcmd5>d4ce6e8d71bed2579866ad3a4a6282ff</srcmd5>
+    <version>unknown</version>
+    <time>1508946480</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536484</requestid>
+  </revision>
+  <revision rev="38" vrev="16">
+    <srcmd5>547e177a3ad6dabf8eb466260dd19d1a</srcmd5>
+    <version>unknown</version>
+    <time>1509722872</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly use python3 when building
+- Enable libva on wayland
+</comment>
+    <requestid>538353</requestid>
+  </revision>
+  <revision rev="39" vrev="17">
+    <srcmd5>8a5c370b82b2671e4dbfb1bf842634b9</srcmd5>
+    <version>unknown</version>
+    <time>1510660828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541532</requestid>
+  </revision>
+  <revision rev="40" vrev="18">
+    <srcmd5>fa4809fe53f8c62e8aecf04d252a80b4</srcmd5>
+    <version>unknown</version>
+    <time>1510912639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542497</requestid>
+  </revision>
+  <revision rev="41" vrev="19">
+    <srcmd5>834c6e2664e915e3fdc8b28a2e6e589b</srcmd5>
+    <version>unknown</version>
+    <time>1511817470</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>545754</requestid>
+  </revision>
+  <revision rev="42" vrev="20">
+    <srcmd5>9e37aedc27a0789aa35f492acab5dd22</srcmd5>
+    <version>unknown</version>
+    <time>1513677106</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>548113</requestid>
+  </revision>
+  <revision rev="43" vrev="21">
+    <srcmd5>6dc6614291a34edb2dfe82101e7a554a</srcmd5>
+    <version>unknown</version>
+    <time>1518282020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575224</requestid>
+  </revision>
+  <revision rev="44" vrev="22">
+    <srcmd5>32b703eeee7db1253ac24be2367cb48c</srcmd5>
+    <version>unknown</version>
+    <time>1518697556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576483</requestid>
+  </revision>
+  <revision rev="45" vrev="23">
+    <srcmd5>c110b9d086167af5373b3d4df5b634a1</srcmd5>
+    <version>unknown</version>
+    <time>1521579673</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not enable smbclient twice, it is in normal opts too</comment>
+    <requestid>589033</requestid>
+  </revision>
+  <revision rev="46" vrev="24">
+    <srcmd5>ebc6821ce13738a49edeb7ec3bfd6ab5</srcmd5>
+    <version>unknown</version>
+    <time>1530002221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613658</requestid>
+  </revision>
+  <revision rev="47" vrev="25">
+    <srcmd5>9ac8c3f414d75b13afdba448a38e5999</srcmd5>
+    <version>unknown</version>
+    <time>1532361732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624655</requestid>
+  </revision>
+  <revision rev="48" vrev="26">
+    <srcmd5>72c9e376b7cc5b4875ed3284de9d8cb0</srcmd5>
+    <version>unknown</version>
+    <time>1538672466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.29.1
+  Fixes and minor enhancements:
+  * af_rubberband: Fix for A-V drift on seeking.
+  * ao_alsa: Fixes to remove spam during pausing and end-of-file.
+  * ao_jack: Fix for mpv attempting to connect to non-standard devices such as MIDI.
+  * ao_openal: Drop support for Apple's bundled OpenAL due to lack of features to successfully build.
+  * ao_pulse: Fix for audio buffer length calculation.
+  * demux_lavf: Fix EDL playback of certain DASH streams.
+  * demux_lavf: Mark v4l streams as not seekable.
+  * demux_raw: Fix for gapless playback from raw audio input.
+  * drm_atomic: Fix to enable video output with devices without a video overlay plane.
+  * encode: Fix for crashes in case of failure to write to output.
+  * encode: Fix for encoding when utilizing lavfi-complex.
+  * Fix to strip HDR peak metadata if attached to SDR video (#6111)
+  * manpage: Misc fixups.
+  * stream_{smb,file}: Fix for partial writes to buffers.
+  * stream_libarchive: Fix hang when an out-of-bound seek happens.
+  * stream_smb: Fix for crashes due to libsmbclient and threading (#5936).
+  * vo_gpu: Fix for corruption when multiple compute shaders override each others' block sizes (#6083).
+  * ytdl_hook: Always load &quot;ytdl://&quot; URLs with ytdl_hook first.
+  * ytdl_hook: Fix audio streams not being picked up for some sites.
+</comment>
+    <requestid>639655</requestid>
+  </revision>
+  <revision rev="49" vrev="27">
+    <srcmd5>ffcdbe81b2f4c95f60b95096e98439f1</srcmd5>
+    <version>unknown</version>
+    <time>1540819316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644890</requestid>
+  </revision>
+  <revision rev="50" vrev="28">
+    <srcmd5>13989aacaf3481951b773c076cec40d0</srcmd5>
+    <version>unknown</version>
+    <time>1543224382</time>
+    <user>dimstar_suse</user>
+    <comment>- Add vulkan dependency per bsc#1115120</comment>
+    <requestid>651041</requestid>
+  </revision>
+  <revision rev="51" vrev="29">
+    <srcmd5>30119f6bdaf286c9ced351c13cd50236</srcmd5>
+    <version>unknown</version>
+    <time>1566479103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725238</requestid>
+  </revision>
+  <revision rev="52" vrev="30">
+    <srcmd5>7e1cc37a0f0b048c45b6c950b040b0e7</srcmd5>
+    <version>unknown</version>
+    <time>1567581164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727819</requestid>
+  </revision>
+</revisionlist>

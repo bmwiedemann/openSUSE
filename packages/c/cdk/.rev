@@ -1,0 +1,195 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ee31258a4cf7d5ec0fdde8f25980fa8</srcmd5>
+    <version>4.9.13</version>
+    <time>1168902402</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="43">
+    <srcmd5>d095bcd8ac4f387d63193baca0f51a97</srcmd5>
+    <version>4.9.13</version>
+    <time>1175161797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="137">
+    <srcmd5>d095bcd8ac4f387d63193baca0f51a97</srcmd5>
+    <version>4.9.13</version>
+    <time>1175161797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="138">
+    <srcmd5>6287424141f4b84f92ea2ca80b95fac5</srcmd5>
+    <version>4.9.13</version>
+    <time>1238017629</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="139">
+    <srcmd5>51b1780470015cbcbfa53826c49e0584</srcmd5>
+    <version>4.9.13</version>
+    <time>1251747450</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cdk based on submit request 19316 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="141">
+    <srcmd5>51b1780470015cbcbfa53826c49e0584</srcmd5>
+    <version>4.9.13</version>
+    <time>1251747450</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cdk based on submit request 19316 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="142">
+    <srcmd5>90bbea2633469ce0a4246f67ee63098f</srcmd5>
+    <version>4.9.13</version>
+    <time>1266884023</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cdk based on submit request 33069 from user coolo
+</comment>
+    <requestid>33069</requestid>
+  </revision>
+  <revision rev="8" vrev="143">
+    <srcmd5>d2fa58567485380944f1a89f287625c3</srcmd5>
+    <version>4.9.13</version>
+    <time>1268923156</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="145">
+    <srcmd5>d2fa58567485380944f1a89f287625c3</srcmd5>
+    <version>4.9.13</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="146">
+    <srcmd5>d2fa58567485380944f1a89f287625c3</srcmd5>
+    <version>4.9.13</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="149">
+    <srcmd5>d2fa58567485380944f1a89f287625c3</srcmd5>
+    <version>4.9.13</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="150">
+    <srcmd5>ea81a8ec8eeb606419804f60edf78b09</srcmd5>
+    <version>4.9.13</version>
+    <time>1316617029</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 83070 from jengelh)</comment>
+    <requestid>83891</requestid>
+  </revision>
+  <revision rev="13" vrev="151">
+    <srcmd5>f5acbe36d827ed93a5bfaab0df0d3d93</srcmd5>
+    <version>4.9.13</version>
+    <time>1317626045</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85962 from coolo)</comment>
+    <requestid>86091</requestid>
+  </revision>
+  <revision rev="14" vrev="153">
+    <srcmd5>f5acbe36d827ed93a5bfaab0df0d3d93</srcmd5>
+    <version>4.9.13</version>
+    <time>1319181805</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="154">
+    <srcmd5>35f52cfa0a5a56cb33608504b04f8ebe</srcmd5>
+    <version>4.9.13</version>
+    <time>1323190959</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="156">
+    <srcmd5>35f52cfa0a5a56cb33608504b04f8ebe</srcmd5>
+    <version>4.9.13</version>
+    <time>1340183230</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="158">
+    <srcmd5>35f52cfa0a5a56cb33608504b04f8ebe</srcmd5>
+    <version>4.9.13</version>
+    <time>1359108738</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="160">
+    <srcmd5>35f52cfa0a5a56cb33608504b04f8ebe</srcmd5>
+    <version>4.9.13</version>
+    <time>1379662095</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="162">
+    <srcmd5>35f52cfa0a5a56cb33608504b04f8ebe</srcmd5>
+    <version>4.9.13</version>
+    <time>1409300624</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9d481b5f25f42e6ce0eee77fa6839feb</srcmd5>
+    <version>5.0.20141106</version>
+    <time>1419897009</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed url, added .asc and keyring
+
+- Update to version 5.0.20141106
+  + Too many things to list; please read the changelog file
+- Cleanup specfile
+- Split out cdk library to a lib subpackage
+- Update Url and source download Url
+- Remove obsolete cdk-4.9.13.dif</comment>
+    <requestid>266614</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>882e668cd6b60ef96eb7034fd4570100</srcmd5>
+    <version>5.0.20150928</version>
+    <time>1446647619</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342087</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b2684dec5f885d119ff9b775b94c79aa</srcmd5>
+    <version>5.0.20190224</version>
+    <time>1551284971</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove debugging code from spec file
+
+- Update to version 5.0.20190224
+  + use HDR_ROOTNAME rather than PACKAGE in top-level makefile, to
+    simplify building cdk and cdkw packages with non-conflicting paths.
+  + add &quot;check&quot; rule to top-level makefile, for testing Arch Linux
+    package.
+  + modify test-package for RPMs to work with SUSE and Mageia.
+- Enable wide version of libcdk(w)
+- Enable ABI soname of the shared libraries
+  + Somehow strange ABI 6.2.4 but RELEASE version is still 5.0
+
+- Update to version 5.0.20190220
+  * 2019/02/20
+    + updated rpm spec-file, for test-builds.
+    + added pkgsrc files, for test-builds.
+    + updated FreeBSD port-files, for test-builds.
+    + add getCdkTitle, which uses new display encoding &quot;&lt;#10&gt;&quot; for newline
+      in the example which demonstrates it, mentry_ex2 (prompted by
+      discussion with Stéphane Goujet).
+    + fix similar memory leaks in setCDKRadioItems and setCDKSelectionItems
+    + fix memory leak in setCDKScrollItems (report by Stéphane Goujet).
+    + make functionKey parameter to getchCDKObject optional
+      (suggested by Stéphane Goujet).
+    + modify test-packages to adjust includes in cdk.h when using test
+      package for ncurses6 which would confuse test-package for cdk-perl.
+    + change shlib-version in test-package to &quot;abi&quot;, for better
+      compatibility with the test-package for cdk-perl.
+    + add manpage for cdk5-config
+    + documentation improvements (report by Stéphane Goujet).</comment>
+    <requestid>679736</requestid>
+  </revision>
+</revisionlist>

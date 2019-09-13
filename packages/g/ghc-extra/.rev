@@ -1,0 +1,208 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>887825e37969b1be68da11d91ca2c560</srcmd5>
+    <version>1.1</version>
+    <time>1432190210</time>
+    <user>coolo</user>
+    <comment>A library of extra functions for the standard Haskell libraries. Most functions
+are simple additions, filling out missing functionality.</comment>
+    <requestid>307866</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f9c9345b8ca8c1716123c01c2bbe95c</srcmd5>
+    <version>1.4.1</version>
+    <time>1440337386</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324472</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0d9011406d3b3806864863ccc3ee07af</srcmd5>
+    <version>1.4.2</version>
+    <time>1443068107</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.2
+ * Make concatMapM/mapMaybeM faster</comment>
+    <requestid>332337</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d8cbc147cbb7aafca178c48c9bfa8961</srcmd5>
+    <version>1.4.3</version>
+    <time>1452535923</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.3
+* Add Data.Version.Extra (forwarded request 352977 from mimi_vx)</comment>
+    <requestid>352982</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3731985e15bfc42e81331727517c7176</srcmd5>
+    <version>1.4.5</version>
+    <time>1462261031</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.5
+* change fileEq on files that do not exist to be an error
+* add mconcatMap and mconcatMapM
+* add fileEq
+* add isMac (forwarded request 393190 from mimi_vx)</comment>
+    <requestid>393191</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5af0e4d55edf83f62929bbe51e4ea525</srcmd5>
+    <version>1.4.6</version>
+    <time>1463498147</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.6
+* add maybeM and eitherM (forwarded request 395530 from mimi_vx)</comment>
+    <requestid>395531</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>53bdcfdeea50ab98235f7b96ed9b67ea</srcmd5>
+    <version>1.4.7</version>
+    <time>1464204505</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.7
+* add concatForM (forwarded request 397620 from mimi_vx)</comment>
+    <requestid>397621</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fe5942db224b93dca6e98d61335937cb</srcmd5>
+    <version>1.4.8</version>
+    <time>1464690301</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.8
+* Add displayException (forwarded request 398886 from mimi_vx)</comment>
+    <requestid>398887</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0d27e64bfe65d67779aafa667b32b840</srcmd5>
+    <version>1.4.9</version>
+    <time>1465336093</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.9
+* add Line 1 (forwarded request 400112 from mimi_vx)</comment>
+    <requestid>400113</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>30fd50954aa2d947e481928acaab0562</srcmd5>
+    <version>1.4.10</version>
+    <time>1466814053</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.10
+* Add Data.Typeable.Extra containing typeRep, Proxy, (:~:)
+
+* add line1 (forwarded request 403542 from mimi_vx)</comment>
+    <requestid>403543</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f3518945b5085470e51a9fcdac3f460c</srcmd5>
+    <version>1.4.10</version>
+    <time>1469081151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411401</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f2edcd8ed2928ae16e0add4ef930d194</srcmd5>
+    <version>1.5.1</version>
+    <time>1489482276</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461629</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>88f5c3f541baaea3b5c4af98ce82c39f</srcmd5>
+    <version>1.5.2</version>
+    <time>1494088109</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491466</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>31bdff3c3857a73e2ba5fc4ec1f402b4</srcmd5>
+    <version>1.5.3</version>
+    <time>1499291929</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>506806</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d8d26ecdbe45e72d157aabde30e0ad8d</srcmd5>
+    <version>1.5.3</version>
+    <time>1505504340</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524498</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c47800c959220dc8a2b30a0351242260</srcmd5>
+    <version>1.6.6</version>
+    <time>1527674833</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-extra to the latest version.</comment>
+    <requestid>607794</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>055ac512a6aca6a9cb8b9eab327448b7</srcmd5>
+    <version>1.6.9</version>
+    <time>1532445512</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update extra to version 1.6.9.
+  1.6.9, released 2018-07-12
+      Add loop, the non-monadic version of loopM
+      #36, add whenMaybe and whenMaybeM
+
+- Update extra to version 1.6.8.
+  1.6.8, released 2018-05-24
+      Add notNull
+      Add listDirectories
+  1.6.7, released 2018-05-23
+      #35, add fold1M and fold1M_
+      #34, lots of documentation typos
+
+- initial commit of extra package</comment>
+    <requestid>623768</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>08f15aa19a8deb3f0aa1ea0951c7dd47</srcmd5>
+    <version>1.6.13</version>
+    <time>1540448168</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642857</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9e5aa5e860cba0078999ecb9039cac27</srcmd5>
+    <version>1.6.14</version>
+    <time>1545376869</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>658075</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>89484b1588b48980f09d6c6d807154b6</srcmd5>
+    <version>1.6.15</version>
+    <time>1556475155</time>
+    <user>maxlin_factory</user>
+    <comment>version update</comment>
+    <requestid>698549</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>af3166cc03f41fb0413e07705eb56c0e</srcmd5>
+    <version>1.6.17</version>
+    <time>1560338318</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>709200</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>03fba4d2c9fd751059cb0d940c04698d</srcmd5>
+    <version>1.6.18</version>
+    <time>1566665053</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>725519</requestid>
+  </revision>
+</revisionlist>

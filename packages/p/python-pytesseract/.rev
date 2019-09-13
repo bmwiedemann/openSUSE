@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fa3c7e83182ae25c83ff51a2e631cb8e</srcmd5>
+    <version>0.2.0</version>
+    <time>1527933747</time>
+    <user>dimstar_suse</user>
+    <comment>Python wrapper for google's Tesseract-OCR</comment>
+    <requestid>612058</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b7501923bb4556b5be12f7939c287f2</srcmd5>
+    <version>0.2.0</version>
+    <time>1533045668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626383</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4d133ba53e4c7e3d26675201c3db56f1</srcmd5>
+    <version>0.2.0</version>
+    <time>1545648147</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659606</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>16105b3e303ea51500b7f7d0f6a37e1d</srcmd5>
+    <version>0.2.6</version>
+    <time>1558037229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703002</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cf90d91adf29e4c21f43c2086b56bc67</srcmd5>
+    <version>0.2.7</version>
+    <time>1563808824</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.7:
+  * no upstream changelog</comment>
+    <requestid>717602</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c2d43736ab4378145d564a86ce0c1bfb</srcmd5>
+    <version>0.3.0</version>
+    <time>1568190989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * no upstream changelog</comment>
+    <requestid>729832</requestid>
+  </revision>
+</revisionlist>

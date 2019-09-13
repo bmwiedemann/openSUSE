@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4b4a43b198ac6f7a66b73dfe07b235d5</srcmd5>
+    <version>0.0.9</version>
+    <time>1448553818</time>
+    <user>dimstar_suse</user>
+    <comment>file-embed: Use Template Haskell to embed file contents directly.</comment>
+    <requestid>345843</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>db4294b6e03388a999829bd1dc97fa81</srcmd5>
+    <version>0.0.9.1</version>
+    <time>1453998270</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.0.9.1
+* embedStringFile</comment>
+    <requestid>356185</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4d87b27796c5e07a802679c20a8bf312</srcmd5>
+    <version>0.0.10</version>
+    <time>1462051818</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.0.10
+* makeRelativeToProject (forwarded request 391616 from mimi_vx)</comment>
+    <requestid>391617</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3c05cd7654ec21c8b9c60486c66c2a7b</srcmd5>
+    <version>0.0.10</version>
+    <time>1469081561</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411600</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5d9d70da9c5fa9f29b4a80112e10dacf</srcmd5>
+    <version>0.0.10</version>
+    <time>1505504374</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524513</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>37e6fc5e548d8e66b8901f14d47d03fc</srcmd5>
+    <version>0.0.10.1</version>
+    <time>1527674848</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-file-embed to the latest version.</comment>
+    <requestid>607797</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0a5732d8caed9fd1b0c7f6f6afbce693</srcmd5>
+    <version>0.0.10.1</version>
+    <time>1532445524</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- correct licence to BSD-2-Clause</comment>
+    <requestid>623772</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>38a17b19b1ae05b594c407911fef394d</srcmd5>
+    <version>0.0.11</version>
+    <time>1533412438</time>
+    <user>dimstar_suse</user>
+    <comment>Add xmonad, xmobar, and their dependencies to Factory.</comment>
+    <requestid>627276</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6e219e2bd1bd9dc28b442b17c8feed05</srcmd5>
+    <version>0.0.11</version>
+    <time>1540448727</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643393</requestid>
+  </revision>
+</revisionlist>

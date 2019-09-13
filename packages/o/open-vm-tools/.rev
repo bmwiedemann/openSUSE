@@ -1,0 +1,731 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>d3596214629f31f89c4863e587fadded</srcmd5>
+    <version>2008.04.14</version>
+    <time>1208994444</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="6">
+    <srcmd5>d02adff5f68a243346cbcc8b3e999f29</srcmd5>
+    <version>2008.04.14</version>
+    <time>1209389979</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="16">
+    <srcmd5>78a3af9b591e00490cb932fcd1bf5a66</srcmd5>
+    <version>2008.04.14</version>
+    <time>1211500730</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="18">
+    <srcmd5>6b827931afd0873a452459f4b781fecd</srcmd5>
+    <version>2008.04.14</version>
+    <time>1212448051</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="23">
+    <srcmd5>47a06144898d94e470e9e9325cc9373b</srcmd5>
+    <version>2008.04.14</version>
+    <time>1214259261</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>158975f2415b84ecf9d338044978d0a9</srcmd5>
+    <version>2008.09.03</version>
+    <time>1220662725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>9d0524328ee06e94a9b334bddc629486</srcmd5>
+    <version>2008.09.03</version>
+    <time>1222269460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a993a9a3868718706076617e5933c0bc</srcmd5>
+    <version>2008.12.23</version>
+    <time>1232327814</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ab29494fea37fd68c097b002762f1173</srcmd5>
+    <version>2009.01.21</version>
+    <time>1232962964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1e4f50f80319578c55e912ed9edaf2c2</srcmd5>
+    <version>2009.05.22</version>
+    <time>1244640614</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fa9de0cae00df42d35720827acba365d</srcmd5>
+    <version>2009.07.22</version>
+    <time>1249921431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>fa9de0cae00df42d35720827acba365d</srcmd5>
+    <version>2009.07.22</version>
+    <time>1249921431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>17a564f5e22c1804b87d8d1403b1eb14</srcmd5>
+    <version>2009.12.16</version>
+    <time>1263034138</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization:VMware/open-vm-tools based on submit request 28337 from user coolo
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c72272de32ac800d250146b7b8f92a08</srcmd5>
+    <version>2010.01.19</version>
+    <time>1265845493</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization:VMware/open-vm-tools based on submit request 32026 from user dimstar
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9dcfa39855d71c09650c07377d4979bf</srcmd5>
+    <version>2010.02.23</version>
+    <time>1267786511</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization:VMware/open-vm-tools based on submit request 33843 from user dimstar
+</comment>
+    <requestid>33843</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>83812864779265f87c3a46b25236a1fd</srcmd5>
+    <version>2010.02.23</version>
+    <time>1268925191</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>c60aaffbefe9ae7ab87a326d0ccd7429</srcmd5>
+    <version>2010.02.23</version>
+    <time>1269379635</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization:VMware/open-vm-tools based on submit request 35544 from user prusnak
+</comment>
+    <requestid>35544</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3c43a3923c6515a3a4815119afb9e122</srcmd5>
+    <version>2010.03.20</version>
+    <time>1269566852</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization:VMware/open-vm-tools based on submit request 35696 from user prusnak
+</comment>
+    <requestid>35696</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>9db6de3efd531ea94af50c9579dd9ed9</srcmd5>
+    <version>2010.03.20</version>
+    <time>1270669122</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization:VMware/open-vm-tools based on submit request 37195 from user dimstar
+</comment>
+    <requestid>37195</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>a62da760d538867d94db8f487eeda45f</srcmd5>
+    <version>2010.03.20</version>
+    <time>1276097495</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization:VMware/open-vm-tools based on submit request 41214 from user dimstar
+</comment>
+    <requestid>41214</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>a62da760d538867d94db8f487eeda45f</srcmd5>
+    <version>2010.03.20</version>
+    <time>1278667372</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>a62da760d538867d94db8f487eeda45f</srcmd5>
+    <version>2010.03.20</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3b4968c460b1957e67e5a3f40f925693</srcmd5>
+    <version>2010.11.17</version>
+    <time>1291047069</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 53970 from user dimstar
+</comment>
+    <requestid>53970</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>080e19be9341b9ede662b5713b6d58c7</srcmd5>
+    <version>2010.11.17</version>
+    <time>1291047093</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 53970
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8ab53ea52b7b1b9aadba20cbd80de81c</srcmd5>
+    <version>2010.12.19</version>
+    <time>1293578553</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56603 from user dimstar
+</comment>
+    <requestid>56603</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>640757eee5f29fdbcdc094130c774de0</srcmd5>
+    <version>2010.12.19</version>
+    <time>1293578565</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56603
+</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>640757eee5f29fdbcdc094130c774de0</srcmd5>
+    <version>2010.12.19</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>cb735859f78d240513ef975050fddc54</srcmd5>
+    <version>2011.03.28</version>
+    <time>1304073876</time>
+    <user>saschpe</user>
+    <comment>update to newer version.</comment>
+    <requestid>68493</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>d41156ad7366206c3d42b95ba7166bf8</srcmd5>
+    <version>2011.03.28</version>
+    <time>1304073889</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68493
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3ee013d3c59372c52d72fbae8e9a65b8</srcmd5>
+    <version>2011.04.25</version>
+    <time>1304339071</time>
+    <user>saschpe</user>
+    <comment>Update to 2011.04.25 - Hopefully this time the right version.</comment>
+    <requestid>68993</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>055c584ec2ae4ddac272f0cebfe5a78a</srcmd5>
+    <version>2011.05.27</version>
+    <time>1307610269</time>
+    <user>saschpe</user>
+    <comment>- updated to 2011.05.27:
+  + Mostly cleanups and a few bug fixes.
+- fixes [bnc#673267] [bnc#690491]
+
+- use -Wno-unused-but-set in optflags so it will not fail build
+  while using -Werror
+
+- added check in initscript whether VMTOOLSUSER_BIN exists</comment>
+    <requestid>72783</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>d7332c71f8840122f717302900396944</srcmd5>
+    <version>2011.05.27</version>
+    <time>1307610280</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72783
+</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>10c089cc1b4b75dc19513e545a5c8ec9</srcmd5>
+    <version>8.8.0</version>
+    <time>1317024579</time>
+    <user>saschpe</user>
+    <comment>Update to version 8.8.0 from Stable Tree.
+This requires the updated permissions package to be in Factory (See SR84576), otherwise it will fail.</comment>
+    <requestid>84644</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>10c089cc1b4b75dc19513e545a5c8ec9</srcmd5>
+    <version>8.8.0</version>
+    <time>1319182212</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>07dec32c1e989e97c91714a2dea926f6</srcmd5>
+    <version>8.8.0</version>
+    <time>1323192893</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7572aef2baf30f1fd70dda60bd5b1303</srcmd5>
+    <version>8.8.1</version>
+    <time>1329242669</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104266</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>0ebfbc8a41c1e57d0241d5cb8548eb02</srcmd5>
+    <version>8.8.1</version>
+    <time>1331900350</time>
+    <user>coolo</user>
+    <comment>- added call to vmware-rpctool in %preun to unset the installed
+  version [bnc#748517]</comment>
+    <requestid>109533</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>8d58aedf57cd0b2ac4e2e565621ef8c5</srcmd5>
+    <version>8.8.1</version>
+    <time>1334216647</time>
+    <user>coolo</user>
+    <comment>- Build vmci as first module and copy Modules.symvers to source of
+  all subsequent modules to be built. Fixes issues where vmhgfs for
+  example does not have all symbols available and fails to load
+  [bnc#703959].
+
+- Add a tools.conf to the package. All settings are left to default
+  except [guestinfo] / disable-perf-mon=1, which resolves
+  bnc#698181. (forwarded request 112078 from dimstar)</comment>
+    <requestid>112902</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>71f443f38852b64c289618c3b63f41f9</srcmd5>
+    <version>8.8.2</version>
+    <time>1336035551</time>
+    <user>coolo</user>
+    <comment>Update to 8.8.2 (forwarded request 112911 from dimstar)</comment>
+    <requestid>115674</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>20cfe5b8ffd828eaf24e821370ed3aff</srcmd5>
+    <version>8.8.2</version>
+    <time>1339362090</time>
+    <user>coolo</user>
+    <comment>Fix build with kernel 3.4</comment>
+    <requestid>124215</requestid>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>20cfe5b8ffd828eaf24e821370ed3aff</srcmd5>
+    <version>8.8.2</version>
+    <time>1340183749</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>3cd55cb99f52c59050bbe17a54af0037</srcmd5>
+    <version>8.8.2</version>
+    <time>1347618771</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134010</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>af988d7fb3b972c91f16929dc6ff0a1c</srcmd5>
+    <version>9.2.0</version>
+    <time>1350150880</time>
+    <user>coolo</user>
+    <comment>Update to 9.2.0 - Fix build with kernel 3.6</comment>
+    <requestid>137955</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>af988d7fb3b972c91f16929dc6ff0a1c</srcmd5>
+    <version>9.2.0</version>
+    <time>1359109532</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>84a92ba4fa6bfecddf6170fe648f9639</srcmd5>
+    <version>9.2.0</version>
+    <time>1362731386</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 157055 from coolo)</comment>
+    <requestid>157265</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>328cc13b0cdf00d96973e4ff109b7cc5</srcmd5>
+    <version>9.2.2</version>
+    <time>1366954940</time>
+    <user>coolo</user>
+    <comment>- Add open-vm-tools-kernel-3.8.patch: Fix build with kernel 3.8.x.
+
+- Update to version 9.2.0:
+  + Fixes for HGFS driver to compile on newer kernels (3.6).
+  + vmsync driver is disabled on kernels 3.0+ as vmbackup plugin
+    uses FIFREEZE/FITHAW standard ioctls.
+  + Fixes for Copy/Paste (and C&amp;P is temporarily disabled on
+    Solaris due to C++ library issues).
+- Rebase open-vm-tools-kernel-3.6.patch: mostly fixed upstream.
+- No longer build vmblock.ko: it's been obsoleted in favor of
+  vmblock-fuse.
+- Change vmtoolsd to use vmware-vmblock-fuse instead of vmblock.ko,
+  using the new mount point /var/run/vmblock-fuse.
+- Add fuse Requires, as we now use vmblock-fuse.
+* Fixes bnc#803157.</comment>
+    <requestid>173303</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>5416d09f56e6dfbd31a4d66ba97333e2</srcmd5>
+    <version>9.2.3</version>
+    <time>1368477985</time>
+    <user>coolo</user>
+    <comment>Update to 9.2.3</comment>
+    <requestid>175305</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>60050358f501f0fb60040fe7bf63dbe7</srcmd5>
+    <version>9.2.3</version>
+    <time>1378897107</time>
+    <user>coolo</user>
+    <comment>- Really drop open-vm-tools-kernel-3.8.patch (osc rm).
+- Drop open-vm-tools-kernel-3.6.patch: fixed upstream.
+- Inject -Wno-unused-local-typedefs into CFLAGS.
+- Only build vmsync up to openSUSE 12.3.
+- Disable build of vmhgfs (and related tools) on openSUSE &gt; 12.3,
+  as the module fails and VMWare is unresponsive in providing a
+  fix. Maybe one day, when there is actual commitment, the module
+  and the related tools / mount-helpers can be re-enabled (see also
+  bnc#834369).
+- Wrap the KMP Package in a condition to only build when there are
+  actually modules to be built (vm_modules not empty).
+- Do not require vmware-guest-kmp from the main package if we do
+  not built KMP packages (if there are no modules to be built).</comment>
+    <requestid>198375</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>60050358f501f0fb60040fe7bf63dbe7</srcmd5>
+    <version>9.2.3</version>
+    <time>1379663412</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>08b7985f47055c93d382f825e5afe22d</srcmd5>
+    <version>9.2.3</version>
+    <time>1383551397</time>
+    <user>coolo</user>
+    <comment>- Supplement the -gui package on xorg-x11-server instead of
+  xorg-x11 as the latter is only a meta-package, that is not
+  installed on all machines (bnc#848505).</comment>
+    <requestid>205605</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c99d9ca63a90ce7ff3cedff649db6039</srcmd5>
+    <version>9.4.0</version>
+    <time>1395897034</time>
+    <user>coolo</user>
+    <comment>Fixed issues in .changes and .spec, brought back libvmtools0 (forwarded request 226514 from mlatimer)</comment>
+    <requestid>227605</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>7e3dd16e600ff95e1014f24eed6b4f0d</srcmd5>
+    <version>9.4.0</version>
+    <time>1400173967</time>
+    <user>coolo</user>
+    <comment>- added forgotten %pre snippet for service addition, this made
+  systemd service not auto-start. bnc#870737 (forwarded request 233890 from msmeissn)</comment>
+    <requestid>233898</requestid>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>e87e35eb646c1fbe8384b42b1421dfad</srcmd5>
+    <version>9.4.0</version>
+    <time>1400588584</time>
+    <user>coolo</user>
+    <comment>Start vmware-user-suid-wrapper unconditionally (bnc#876074) (forwarded request 234364 from mlatimer)</comment>
+    <requestid>234535</requestid>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>e87e35eb646c1fbe8384b42b1421dfad</srcmd5>
+    <version>9.4.0</version>
+    <time>1409302024</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>4efe85d94116dcf91a137b3a2d02c49a</srcmd5>
+    <version>9.4.6</version>
+    <time>1420531623</time>
+    <user>dimstar_suse</user>
+    <comment>Work around pesign messing up RPM scriptlets - not sure if/when
+this is ever going to be fixed</comment>
+    <requestid>267265</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>b29bbb1c7d35bb74e5bc9ae03e0d0c8b</srcmd5>
+    <version>9.4.6</version>
+    <time>1424622374</time>
+    <user>dimstar_suse</user>
+    <comment>- Add open-vm-tools-linux-3.19.0.patch: Fix building of vmhgfs with
+  Kernel 3.19.0+.
+
+- Add open-vm-tools-linux-3.19.0.patch: Fix building of vmhgfs with
+  Kernel 3.19.0+.</comment>
+    <requestid>286926</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>038cfd1e34da5475838f1c604280ea0d</srcmd5>
+    <version>9.4.6</version>
+    <time>1430980133</time>
+    <user>coolo</user>
+    <comment>Fix applying of patch with kernel 4.0</comment>
+    <requestid>305460</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>d9ad35c33f7f9d5889b894c64c7cc7cb</srcmd5>
+    <version>9.10.0</version>
+    <time>1433577264</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>310515</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>c327fb5fc42ce095c6b5eb3e93fe077a</srcmd5>
+    <version>9.10.0</version>
+    <time>1435653885</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314326</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>ed9fc2798301c3c4ced78aab20bf14ee</srcmd5>
+    <version>9.10.2</version>
+    <time>1439385146</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop KMP related .spec and .changes file (bsc#938593) (for now
+  we keep the logic in the .spec file, in case we want to resurrect
+  it).
+
+- Update to open-vm-tools-9.10.2-2822639
+  + Fix various compilation errors
+  + Retry sending vmbackup event with elevated privileges
+  + Add a -h option to vgauth
+  + Workaround NFS open bug by retrying on ESTALE
+  + Fix the HGFS protocol opcode to differentiate headers
+  + Thaw filesystems when the snapshot commit message to VMX fails
+- Drop upstream patches included in 9.10.2:
+  - toolboxcmd-fix-logic.patch
+  - asm_x86.patch
+
+  * Add asm_x86.patch
+  dependency problem for i586 architectures
+- Ensure xutils builds properly under older versions of gcc
+- Remove modprobe of deprecated vmsync module from SysV init script.
+  for SLES11SP4 and SLES12.
+- Use fuse-devel instead of pkgconfig(fuse) in SLES11SP4.</comment>
+    <requestid>321638</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>77ac6d56c4511f14c8328c3db6c07ecf</srcmd5>
+    <version>9.10.2</version>
+    <time>1440135687</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>324382</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>d24ff62f423164e122b784bcd078c802</srcmd5>
+    <version>10.0.0</version>
+    <time>1442130300</time>
+    <user>dimstar_suse</user>
+    <comment>Update to open-vm-tools 10.0.0</comment>
+    <requestid>330428</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>e60e218f70715f845e51ac438c484d5a</srcmd5>
+    <version>10.0.0</version>
+    <time>1445675377</time>
+    <user>coolo</user>
+    <comment>Remove vgauth dependency in services file if vgauth is not enabled</comment>
+    <requestid>340509</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>3a99ffd656c0448a5d9b3a5ae820a8b4</srcmd5>
+    <version>10.0.0</version>
+    <time>1446465305</time>
+    <user>dimstar_suse</user>
+    <comment>Update to match changes in devel project for issue in Leap (bsc#952645)</comment>
+    <requestid>341723</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>2c7d74303870df80628aeb8659101066</srcmd5>
+    <version>10.0.5</version>
+    <time>1461855358</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391293</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>b4ee617e647421ca2320c698fed641a1</srcmd5>
+    <version>10.0.7</version>
+    <time>1462178688</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392958</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>f2f9dddf1d00b3d80e048d62aa473ee6</srcmd5>
+    <version>10.0.7</version>
+    <time>1467359949</time>
+    <user>dimstar_suse</user>
+    <comment>submitting r334 so we can move on</comment>
+    <requestid>405101</requestid>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>11eb874ad8037d810e4f2b9d361af08a</srcmd5>
+    <version>10.0.7</version>
+    <time>1468580030</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408356</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>f62bbd86806cd78421f06d789b8e68a1</srcmd5>
+    <version>10.1.0</version>
+    <time>1480786080</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443236</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>72414c776ab0afcf6bd787db4ab20ece</srcmd5>
+    <version>10.1.0</version>
+    <time>1486635477</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455367</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>06f81a8cf7e4b0117850064e1684d6fd</srcmd5>
+    <version>10.1.0</version>
+    <time>1487681506</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459314</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>6940d2198e545997b186a7eba5174e82</srcmd5>
+    <version>10.1.5</version>
+    <time>1491896401</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484369</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>efb373501f1e6c04e8448905bcf818b0</srcmd5>
+    <version>10.1.10</version>
+    <time>1503593720</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518316</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>3274a76f77db62c463fe487e130e4300</srcmd5>
+    <version>10.1.15</version>
+    <time>1508769830</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534282</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>62a7ecb166391064a3e321e3911d0504</srcmd5>
+    <version>10.2.0</version>
+    <time>1514028005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558997</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>7db3d819738a97788cf9fd66a2cf7e8f</srcmd5>
+    <version>10.2.0</version>
+    <time>1518601944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576372</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>b9f69c5a9479046a0677c8d43fa36388</srcmd5>
+    <version>10.2.5</version>
+    <time>1526646481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610176</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>a0f6687104fcf1827c4a76dbf0d417fa</srcmd5>
+    <version>10.3.0</version>
+    <time>1535370487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629475</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>8bb78583c305d463e8d8d257162f0192</srcmd5>
+    <version>10.3.0</version>
+    <time>1539589405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641752</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>706611e3534075cf1f4bdcf6ba0d24a5</srcmd5>
+    <version>10.3.5</version>
+    <time>1542012154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647650</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>c0e9c6d4cf8417f77191686fddbe5c1e</srcmd5>
+    <version>10.3.5</version>
+    <time>1549916209</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>672901</requestid>
+  </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>9d1f9d609d9df54fae074a705d68b80b</srcmd5>
+    <version>10.3.5</version>
+    <time>1552048122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681566</requestid>
+  </revision>
+  <revision rev="83" vrev="4">
+    <srcmd5>3d5f5512bd9a591553dc91c2366c2270</srcmd5>
+    <version>10.3.5</version>
+    <time>1552989952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684789</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>a7cda91fe76270539ef185dabc643a6f</srcmd5>
+    <version>10.3.10</version>
+    <time>1554189403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689916</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>46b2a994940b251099b9f6fb08a3d555</srcmd5>
+    <version>10.3.10</version>
+    <time>1557389342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701425</requestid>
+  </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>b81cbaf8722204b349d0f2a065633ee4</srcmd5>
+    <version>10.3.10</version>
+    <time>1565694693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722089</requestid>
+  </revision>
+</revisionlist>

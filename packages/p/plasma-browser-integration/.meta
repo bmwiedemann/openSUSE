@@ -1,0 +1,7 @@
+<package name="plasma-browser-integration" project="openSUSE:Factory">
+  <title>Plasma Browser Extension</title>
+  <description>Browser extension (WebExtension for Chromium and Firefox) for better integration into the KDE Plasma desktop environment.
+
+It provides better facilities for notifications and download progress reporting, media control integration and much more.</description>
+  <devel project="KDE:Frameworks5" package="plasma-browser-integration"/>
+</package>

@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc1b8cc985a837a9dee082738dc15e36</srcmd5>
+    <version>5.3</version>
+    <time>1290561672</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52900 from user coolo
+</comment>
+    <requestid>52900</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>08ceab56a5598b7d8e1c6377b1e659d2</srcmd5>
+    <version>5.3</version>
+    <time>1290561678</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 52900
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>08ceab56a5598b7d8e1c6377b1e659d2</srcmd5>
+    <version>5.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>0f78291fa7314db2562c9be84e1bb27d</srcmd5>
+    <version>5.3</version>
+    <time>1316766010</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82896 from jengelh)</comment>
+    <requestid>84348</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>0f78291fa7314db2562c9be84e1bb27d</srcmd5>
+    <version>5.3</version>
+    <time>1319181786</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>2355db5ac44848ea9af2dc437a527822</srcmd5>
+    <version>5.3</version>
+    <time>1323190829</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>2355db5ac44848ea9af2dc437a527822</srcmd5>
+    <version>5.3</version>
+    <time>1340183198</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>2355db5ac44848ea9af2dc437a527822</srcmd5>
+    <version>5.3</version>
+    <time>1359108696</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>0d11fceb7b5560a0d91e9d2c3034f153</srcmd5>
+    <version>5.3</version>
+    <time>1378998299</time>
+    <user>scarabeus_factory</user>
+    <comment>jpackage-utils collison fix</comment>
+    <requestid>198679</requestid>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>0d11fceb7b5560a0d91e9d2c3034f153</srcmd5>
+    <version>5.3</version>
+    <time>1379662029</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>0d11fceb7b5560a0d91e9d2c3034f153</srcmd5>
+    <version>5.3</version>
+    <time>1409300555</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>109a93b662bcf33d8079f2b79b87e036</srcmd5>
+    <version>5.3</version>
+    <time>1505507528</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>526342</requestid>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>d3df5a610eefff7864678df9ad710379</srcmd5>
+    <version>5.3</version>
+    <time>1530993548</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620770</requestid>
+  </revision>
+</revisionlist>

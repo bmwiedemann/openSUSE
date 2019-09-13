@@ -1,0 +1,6 @@
+<package name="yast2-nis-server" project="openSUSE:Factory">
+  <title>YaST2 - Network Information Services (NIS) Server Configuration</title>
+  <description>The YaST2 component for NIS server configuration. NIS is a service
+similar to yellow pages.</description>
+  <devel project="YaST:Head" package="yast2-nis-server"/>
+</package>

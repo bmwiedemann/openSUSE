@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b0139e7654d2e3312fa88ec766931691</srcmd5>
+    <version>0.3</version>
+    <time>1505238833</time>
+    <user>dimstar_suse</user>
+    <comment>new package cloud-netconfig (scripts to automatically manage network interfaces in public cloud frameworks)</comment>
+    <requestid>522278</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e293d9df1756bdcd44a422d241797d2</srcmd5>
+    <version>0.4</version>
+    <time>1507755728</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533034</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad08c0d192e4014ec9eacea69455a261</srcmd5>
+    <version>0.6</version>
+    <time>1510322321</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Provides/Conflicts statements to spec file
+
+- Prepare for SLE11 submission (bsc#1063292)
+
+- Update to version 0.6:
+  + Use tested and supported metadata API versions
+
+- Update to version 0.5
+  + New API version for Azure metadata server
+  + Wait for the metadata server in EC2</comment>
+    <requestid>540361</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d27efbd64617c5f1fa85a947f8716cc8</srcmd5>
+    <version>0.6</version>
+    <time>1515876552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563882</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>66067970c6804b1d355a3ba643d10a25</srcmd5>
+    <version>0.6</version>
+    <time>1517234279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570138</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b93c0f94b3dd2580df29f505db16f2ce</srcmd5>
+    <version>0.7</version>
+    <time>1527934470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613451</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3b0f068773da9556c7f632ccfa3e109e</srcmd5>
+    <version>0.9</version>
+    <time>1549286710</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670896</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f3ffc48bb9cddb6c1a3fd9369f2e8434</srcmd5>
+    <version>1.0</version>
+    <time>1558532484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704720</requestid>
+  </revision>
+</revisionlist>

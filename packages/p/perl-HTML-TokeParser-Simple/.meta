@@ -1,0 +1,14 @@
+<package name="perl-HTML-TokeParser-Simple" project="openSUSE:Factory">
+  <title>Easy to use HTML::TokeParser interface</title>
+  <description>HTML::TokeParser::Simple is a subclass of HTML::TokeParser that uses
+easy-to-remember method calls to work with the tokens.  Rather than
+try to remember a bunch of array indices or try to write a bunch of
+constants for them, you can now do something like:
+
+ $token-&gt;is_start_tag( 'form' )
+
+Instead of
+
+ $token-&gt;[0] eq 'S' and $token-&gt;[1] eq 'form'</description>
+  <devel project="devel:languages:perl" package="perl-HTML-TokeParser-Simple"/>
+</package>

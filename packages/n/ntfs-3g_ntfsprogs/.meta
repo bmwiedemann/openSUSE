@@ -1,0 +1,7 @@
+<package name="ntfs-3g_ntfsprogs" project="openSUSE:Factory">
+  <title>NTFS Support in Userspace</title>
+  <description>NTFS-3G allows for read/write access to NTFS partitions which can be
+shared with Windows XP, Windows Server 2003, Windows 2000, Windows
+Vista and Windows Seven.</description>
+  <devel project="filesystems" package="ntfs-3g_ntfsprogs"/>
+</package>

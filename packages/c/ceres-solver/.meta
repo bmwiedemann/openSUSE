@@ -1,0 +1,11 @@
+<package name="ceres-solver" project="openSUSE:Factory">
+  <title>Cerse Solver</title>
+  <description>
+    Ceres Solver is an open source C++ library for modeling and solving large,
+    complicated optimization problems. It can be used to solve Non-linear
+    Least Squares problems with bounds constraints and general unconstrained
+    optimization problems. It is a mature, feature rich, and performant
+    library that has been used in production at Google since 2010.
+  </description>
+  <devel project="science" package="ceres-solver"/>
+</package>

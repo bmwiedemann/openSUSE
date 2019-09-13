@@ -1,0 +1,8 @@
+<package name="telepathy-gabble" project="openSUSE:Factory">
+  <title>XMPP connection manager for Telepathy</title>
+  <description>Gabble is a Jabber/XMPP connection manager for the Telepathy framework,
+currently supporting single user chats, multi user chats and
+voice/video calls. Install this package to use Telepathy instant
+messaging clients with Jabber/XMPP servers, including Google Talk.</description>
+  <devel project="GNOME:Factory" package="telepathy-gabble"/>
+</package>

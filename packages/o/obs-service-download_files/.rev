@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2dd81357470d19c4e599e45749bdee6</srcmd5>
+    <version>0.1</version>
+    <time>1306933673</time>
+    <user>saschpe</user>
+    <comment>for our new checkin process</comment>
+    <requestid>71298</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>089c1b1b0f8e067c6410d2537facb822</srcmd5>
+    <version>0.1</version>
+    <time>1306933684</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71298
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fabf3c6eeba5889a6576b531a690eefb</srcmd5>
+    <version>0.1</version>
+    <time>1310392094</time>
+    <user>saschpe</user>
+    <comment>fixes</comment>
+    <requestid>76042</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7bdd3f09fd2718c1a0b2b120b90f4a20</srcmd5>
+    <version>0.1</version>
+    <time>1310392103</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76042
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>7bdd3f09fd2718c1a0b2b120b90f4a20</srcmd5>
+    <version>0.1</version>
+    <time>1319182208</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8510a5e1b547391cdd13e7733fbfd7ce</srcmd5>
+    <version>0.3</version>
+    <time>1325658330</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>97065</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>3e0e0bf919ed119869944d72d1122699</srcmd5>
+    <version>0.3</version>
+    <time>1329242661</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104064</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>3e0e0bf919ed119869944d72d1122699</srcmd5>
+    <version>0.3</version>
+    <time>1340183743</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b6ef4bac88958cff39d54d397f358926</srcmd5>
+    <version>0.4</version>
+    <time>1347618719</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134104</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>425e307e250f35da1f8475849fd7533f</srcmd5>
+    <version>0.4</version>
+    <time>1353413392</time>
+    <user>coolo</user>
+    <comment>- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+
+error masked by || : (forwarded request 141981 from dimstar)</comment>
+    <requestid>142002</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>425e307e250f35da1f8475849fd7533f</srcmd5>
+    <version>0.4</version>
+    <time>1359109524</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>3e9bcf7cc920b27613af7ead3ff75f0f</srcmd5>
+    <version>0.4</version>
+    <time>1372059322</time>
+    <user>coolo</user>
+    <comment>- move the setting of the wget command inside the loop to start
+  new on every iteration. Prevents interference of a specified
+  http user agent or output file name with the next loop iteration,
+  as it happens when several sources are present in the spec file. (forwarded request 180493 from AndreasStieger)</comment>
+    <requestid>180495</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e7ba93012b2e64268103ba5d1ce697fb</srcmd5>
+    <version>0.5</version>
+    <time>1372173341</time>
+    <user>coolo</user>
+    <comment>- Fix download from github by explicitly specifying output file.
+- Use local scope where possible.
+- Add bash comparsions instead of posix ones as bash invoke them
+  faster.
+- Remove urlextension variable which was always empty. (forwarded request 180717 from scarabeus_iv)</comment>
+    <requestid>180804</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>de7e9e22ae99d07d7507f6f6f05e3e36</srcmd5>
+    <version>0.5</version>
+    <time>1374604445</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184121</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>de7e9e22ae99d07d7507f6f6f05e3e36</srcmd5>
+    <version>0.5</version>
+    <time>1379663397</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>3946e9ee88b72488843d7fa3b90ba28d</srcmd5>
+    <version>0.5</version>
+    <time>1387897586</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212169</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>03de7d9b943a6b891deb8b1d3cd5ae3d</srcmd5>
+    <version>0.5+git.1391604570.4196eab</version>
+    <time>1391765224</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add source service tar_scm to fetch sources moved to 
+  https://github.com/openSUSE/obs-service-download_files
+- Run spec-cleaner (forwarded request 221100 from saschpe)</comment>
+    <requestid>221119</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>842b69a25e4a9253d14dad89319e2ebd</srcmd5>
+    <version>0.5+git.1392281610.962de91</version>
+    <time>1392790868</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.5+git.1392281610.962de91:
+  + Generate changes entries from special files (forwarded request 222125 from saschpe)</comment>
+    <requestid>222780</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>842b69a25e4a9253d14dad89319e2ebd</srcmd5>
+    <version>0.5+git.1392281610.962de91</version>
+    <time>1409302011</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d523823ff8ec7a2c2d330336b2197812</srcmd5>
+    <version>0.5.1.git.1426665567.a5a06e5</version>
+    <time>1427313944</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>292924</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e1abd0e4cd39ea0a8b0f4ff6df0fc296</srcmd5>
+    <version>0.5.1.git.1437716073.690c01e</version>
+    <time>1438615270</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318888</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>733420155006d1e7a079be14ce2bfc00</srcmd5>
+    <version>0.5.1.git.1455712026.9c0a4a0</version>
+    <time>1456434626</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>361277</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>4e7f6c6d9695ad185b4f4a0aaf004e41</srcmd5>
+    <version>0.5.1.git.1455712026.9c0a4a0</version>
+    <time>1458228882</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>372777</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d1c478b31d066bbac9eeaf3cba08876f</srcmd5>
+    <version>0.6.0.git.1502884469.0993a01</version>
+    <time>1507755799</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533178</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9e2efc0ab701a574f53b526ac6aabf9b</srcmd5>
+    <version>0.6.1.git.1529965817.d9a3ff4</version>
+    <time>1530993732</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621325</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8fcd806179cec4c619e9a8c9c88d0373</srcmd5>
+    <version>0.6.2</version>
+    <time>1536327674</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>633564</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>136f7b980561cda7738ea05a0829dcff</srcmd5>
+    <version>0.6.2</version>
+    <time>1551276519</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679572</requestid>
+  </revision>
+</revisionlist>

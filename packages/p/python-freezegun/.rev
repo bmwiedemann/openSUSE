@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c288ced611b64ac3fb713c34660cf0e5</srcmd5>
+    <version>0.3.9</version>
+    <time>1503593710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>518100</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>aeda48fe4fa60884f6e1abc349bdc226</srcmd5>
+    <version>0.3.9</version>
+    <time>1519554738</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop python-sure BuildRequires. Add python-mock BuildRequires.</comment>
+    <requestid>579634</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ed49d02ce54c3ff067568062c02e25f6</srcmd5>
+    <version>0.3.10</version>
+    <time>1531813063</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.10 
+- add _u_p37_tests.patch
+ * Performance improvements
+ * Coroutine support (forwarded request 622945 from mimi_vx)</comment>
+    <requestid>622946</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>92999bdb79d474d317d439a4d61ba4d8</srcmd5>
+    <version>0.3.10</version>
+    <time>1536575387</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>633129</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2dda7989e74860c3460ccd24f26724d0</srcmd5>
+    <version>0.3.11</version>
+    <time>1548704766</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.11:
+    * Performance improvements
+    * Fix nesting time.time
+    * Add nanosecond property
+- Remove nose dependency by adding denose.patch
+- Remove _u_p37_tests.patch, which is superseeded by new release.
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>666515</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fc75712b89dd2206a6ec5f6c91c02dbc</srcmd5>
+    <version>0.3.11</version>
+    <time>1549630091</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672122</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>631bfe3d4c90d0fe02df5cf6210709dc</srcmd5>
+    <version>0.3.12</version>
+    <time>1562327223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713090</requestid>
+  </revision>
+</revisionlist>

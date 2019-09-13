@@ -1,0 +1,12 @@
+<package name="cuneiform" project="openSUSE:Factory">
+  <title>OCR System</title>
+  <description>Cuneiform is an multi-language OCR system originally developed and open
+sourced by Cognitive Technologies. Cuneiform was originally a Windows
+program, which was ported to Linux by Jussi Pakkanen.
+Supported languages: eng ger fra rus swe spa ita ruseng ukr srp hrv pol
+dan por dut cze rum hun bul slo lav lit est tur.
+
+</description>
+  <devel project="Publishing" package="cuneiform"/>
+  <url>http://launchpad.net/cuneiform-linux</url>
+</package>

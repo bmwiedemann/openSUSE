@@ -1,0 +1,11 @@
+<package name="dictd" project="openSUSE:Factory">
+  <title>Electronic Online Dictionaries</title>
+  <description>This package contains two programs. With dict, you have access to
+powerful electronic dictionaries on the Internet. With dictd, you can
+set up your own dictionary. To look up, for example, the word 'grunt',
+just type &quot;dict grunt&quot; at a command line. See the man pages of dict and
+dictd for details.
+</description>
+  <devel project="Education" package="dictd"/>
+  <url>http://dict.org/</url>
+</package>

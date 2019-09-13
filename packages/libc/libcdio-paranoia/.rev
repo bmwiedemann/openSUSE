@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c977868cdc636c8ae63082307e7bae6</srcmd5>
+    <version>0.0.4c905cc</version>
+    <time>1339705554</time>
+    <user>coolo</user>
+    <comment>New package which was previously part of libcdio but split off by upstream due to licence issues (see bnc#756564) Needed by qmmp.</comment>
+    <requestid>122742</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5c977868cdc636c8ae63082307e7bae6</srcmd5>
+    <version>0.0.4c905cc</version>
+    <time>1340183569</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>5c977868cdc636c8ae63082307e7bae6</srcmd5>
+    <version>0.0.4c905cc</version>
+    <time>1359109249</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e0c564fff2fc815b3840f4601dcafae9</srcmd5>
+    <version>10.2+0.90</version>
+    <time>1361604202</time>
+    <user>coolo</user>
+    <comment>Candidate for 12.3 as discussed in http://lists.opensuse.org/opensuse-factory/2013-02/msg00340.html. The problem affects at least the latest version of qmmp and audacious.
+
+- Update to version 10.2+0.90
+  * First stable version
+- Add libcdio-paranoia-10.2+0.90-include_path.patch</comment>
+    <requestid>156072</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e0c564fff2fc815b3840f4601dcafae9</srcmd5>
+    <version>10.2+0.90</version>
+    <time>1379662913</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>e0c564fff2fc815b3840f4601dcafae9</srcmd5>
+    <version>10.2+0.90</version>
+    <time>1409301517</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6357bf7809ccc0d2ccb640d5a4a066a6</srcmd5>
+    <version>10.2+0.93+1</version>
+    <time>1424827007</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284866</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4416a0cc6aabc47449c36da8e3734e97</srcmd5>
+    <version>10.2+0.93+1</version>
+    <time>1443071834</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331902</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b708985c0357bbb4edd32a8910d33895</srcmd5>
+    <version>10.2+0.93+1</version>
+    <time>1451045147</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350484</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>59b5fdcf4c22f7ffbc57006bd2e53e57</srcmd5>
+    <version>10.2+2.0.0</version>
+    <time>1549311017</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>668998</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>29d2f6dc2b654f3ec7f126881f4aea43</srcmd5>
+    <version>0.9.2</version>
+    <time>1271375874</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/xsynth-dssi based on submit request 35780 from user plater
+</comment>
+    <requestid>35780</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>29d2f6dc2b654f3ec7f126881f4aea43</srcmd5>
+    <version>0.9.2</version>
+    <time>1278667397</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>29d2f6dc2b654f3ec7f126881f4aea43</srcmd5>
+    <version>0.9.2</version>
+    <time>1278678631</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1dc62597548d8d046e931f0f27937803</srcmd5>
+    <version>0.9.3</version>
+    <time>1288268993</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51537 from user coolo
+</comment>
+    <requestid>51537</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>746f6ad76527b9b29824ebe72dcfafa1</srcmd5>
+    <version>0.9.3</version>
+    <time>1288269003</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51537
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>56d0958faf181712f2071f594e82d9f7</srcmd5>
+    <version>0.9.4</version>
+    <time>1291133463</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53996 from user plater
+</comment>
+    <requestid>53996</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>00844fa39e5824f5e6d883748f423c60</srcmd5>
+    <version>0.9.4</version>
+    <time>1291133472</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53996
+</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>00844fa39e5824f5e6d883748f423c60</srcmd5>
+    <version>0.9.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>00844fa39e5824f5e6d883748f423c60</srcmd5>
+    <version>0.9.4</version>
+    <time>1319182617</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>ccc5cde5395a18953a52b82ad94d0af5</srcmd5>
+    <version>0.9.4</version>
+    <time>1323195493</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>242d3b3185b2dd22d34a226b6b1f0ff3</srcmd5>
+    <version>0.9.4</version>
+    <time>1324831389</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97750 from coolo)</comment>
+    <requestid>97781</requestid>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>242d3b3185b2dd22d34a226b6b1f0ff3</srcmd5>
+    <version>0.9.4</version>
+    <time>1340184387</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>242d3b3185b2dd22d34a226b6b1f0ff3</srcmd5>
+    <version>0.9.4</version>
+    <time>1359110699</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>242d3b3185b2dd22d34a226b6b1f0ff3</srcmd5>
+    <version>0.9.4</version>
+    <time>1379665123</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>242d3b3185b2dd22d34a226b6b1f0ff3</srcmd5>
+    <version>0.9.4</version>
+    <time>1409303810</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>8350895ec8e7c7208402b0b47ba157d2</srcmd5>
+    <version>0.9.4</version>
+    <time>1412533936</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253984</requestid>
+  </revision>
+</revisionlist>

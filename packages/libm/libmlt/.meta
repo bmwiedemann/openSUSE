@@ -1,0 +1,12 @@
+<package name="libmlt" project="openSUSE:Factory">
+  <title>Multimedia framework designed and developed for television broadcasting</title>
+  <description>MLT is an open source multimedia framework, designed and developed for
+television broadcasting. It provides a toolkit for broadcasters, video editors,
+media players, transcoders, web streamers and many more types of applications.
+The functionality of the system is provided via an assortment of ready to use
+tools, XML authoring components, and an extensible plug-in based API.
+
+</description>
+  <devel project="multimedia:libs" package="libmlt"/>
+  <url>http://mlt.sourceforge.net/</url>
+</package>

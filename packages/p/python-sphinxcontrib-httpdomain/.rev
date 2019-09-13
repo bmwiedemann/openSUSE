@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>413f2b738dffef7ef339d016fce28109</srcmd5>
+    <version>1.1.7</version>
+    <time>1354109694</time>
+    <user>coolo</user>
+    <comment>Please add, future OpenStack dependency</comment>
+    <requestid>142499</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>413f2b738dffef7ef339d016fce28109</srcmd5>
+    <version>1.1.7</version>
+    <time>1359110126</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>be14adea06b7176e1ab96c34d932ece6</srcmd5>
+    <version>1.1.8</version>
+    <time>1368696575</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.8:
+ * Added better support for docstrings in flask.views.MethodView
+ * Added jsonparameter along side form and query parameters.
+ * Fixed issue with undefined Value and umethod variables.
+ * Now http Pygments lexer can Handle continuous header lines well.
+ * Added undoc-blueprints flag option to autoflask directive.
+ * Fixed issue #29, a bug that autoflask directive raised
+   UnicodeDecodeError when it contains non-ASCII characters.
+ * Added endpoints flag option to autoflask directive. (forwarded request 175234 from dirkmueller)</comment>
+    <requestid>175244</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>44ca342ca3b6afbb2c6c55116e4b7af4</srcmd5>
+    <version>1.1.9</version>
+    <time>1376392886</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.1.9:
+  * Add sphinx.ext.autodoc-style HTTP API reference builder (from Bottle) (forwarded request 186465 from dirkmueller)</comment>
+    <requestid>186536</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>44ca342ca3b6afbb2c6c55116e4b7af4</srcmd5>
+    <version>1.1.9</version>
+    <time>1379664287</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aa4dd7c939e248fc7a279a8cded1aa36</srcmd5>
+    <version>1.2.0</version>
+    <time>1382378534</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.2.0:
+  * Add tornado support (forwarded request 204188 from dirkmueller)</comment>
+    <requestid>204192</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>aa4dd7c939e248fc7a279a8cded1aa36</srcmd5>
+    <version>1.2.0</version>
+    <time>1409302997</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>10eb09cbab2a3603af20612879a88abf</srcmd5>
+    <version>1.3.0</version>
+    <time>1410967619</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249859</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>47fb0c411ace72e1e0a3b5adbf86f9f4</srcmd5>
+    <version>1.4.0</version>
+    <time>1470773680</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417068</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>34a819a8c1b0b56e31e08fc7dfccba1e</srcmd5>
+    <version>1.5.0</version>
+    <time>1480018988</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441231</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>feeaf35ad5704cd76d0e9831a81840a8</srcmd5>
+    <version>1.5.0</version>
+    <time>1499415403</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508303</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>af2d859df98f0715fbb99e94192e888f</srcmd5>
+    <version>1.5.0</version>
+    <time>1507755389</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527181</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>041cda34c5cfb735c52f1d7179b5acf0</srcmd5>
+    <version>1.5.0</version>
+    <time>1546535177</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix %pycache_only in %files
+
+- Remove wrong BR on python-sphinxcontrib
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>656822</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>daa49d2eee47f21b8566b2715327d3d3</srcmd5>
+    <version>1.7.0</version>
+    <time>1556621969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697381</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>798d70976fc4001de08b27f5e2023fb2</srcmd5>
+    <version>1.7.0</version>
+    <time>1562159720</time>
+    <user>dimstar_suse</user>
+    <comment>- Sort out a bit to pass the tests again</comment>
+    <requestid>713191</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>55eaa7f7e033d9b02dcd39121c369471</srcmd5>
+    <version>1.7.0</version>
+    <time>1562327349</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.7.0 (bsc#1139695)</comment>
+    <requestid>713560</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>9dbc3bd84fb70311342aca77ee0a2513</srcmd5>
+    <version>1.7.0</version>
+    <time>1564483129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719687</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>6ea008832708c5bf906ee354f78f28a1</srcmd5>
+    <version>1.7.0</version>
+    <time>1566894375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726223</requestid>
+  </revision>
+</revisionlist>

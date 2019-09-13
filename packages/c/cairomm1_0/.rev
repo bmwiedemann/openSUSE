@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1168e5f93d20d9ca2e585ea92e452575</srcmd5>
+    <version>1.12.2</version>
+    <time>1481105475</time>
+    <user>dimstar_suse</user>
+    <comment>Rename of cairomm, which gets a new ABI</comment>
+    <requestid>443601</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9bf35a1aa8ff60bf93afe56cf14a8bc0</srcmd5>
+    <version>1.12.2</version>
+    <time>1521051766</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583503 from dimstar)</comment>
+    <requestid>584670</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>96a44b5e3a9bae3ac6bc6a194a753dcf</srcmd5>
+    <version>1.12.2</version>
+    <time>1556914692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696527</requestid>
+  </revision>
+</revisionlist>

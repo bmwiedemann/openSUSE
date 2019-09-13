@@ -1,0 +1,11 @@
+<package name="azure-cli-role" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'role' Command Module for Role-Based Access Control (RBAC)</title>
+  <description>Microsoft Azure CLI 'role' Command Module for Role-Based Access Control (RBAC)
+
+This package is for the 'role' module.
+i.e. 'az role'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-role"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

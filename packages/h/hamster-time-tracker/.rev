@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>104c0335fdb4b54ef48822bd73973d84</srcmd5>
+    <version>unknown</version>
+    <time>1553611346</time>
+    <user>dimstar_suse</user>
+    <comment>Merged changes requested by factory review.</comment>
+    <requestid>685387</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>589f9043621fe18453b2b9f8fcb55e81</srcmd5>
+    <version>unknown</version>
+    <time>1557654224</time>
+    <user>dimstar_suse</user>
+    <comment>* added 0007-drop-convenience.js.patch
+  * added 0008-make-test-style-set-esversion-to-6-for-GNOME-3.32.patch
+  * added 0009-Mark-GNOME-3.32-as-supported-all-others-as-unsupport.patch
+  * added 0010-Port-GObject-classes-to-JS6-classes.patch
+  * added 0011-add-jshint-validthis-to-silence-warnings-about-stric.patch
+  * added 0012-todaysFactsWidget-add-missing-bind.patch
+  * added 0013-replace-Lang.bind-with-function-.bind.patch
+  * added 0014-Port-non-GObject-class-to-JS6.patch
+  * added 0015-extension.js-add-jshint-validthis-hints.patch
+  * added 0016-extension.js-fix-indentation-after-previous-change.patch
+  * added 0017-Don-t-log-ACTIVITIES-at-every-refresh.patch
+  * added 0018-doc-remove-broken-link-to-usejsdoc.org.patch (forwarded request 702004 from mwilck)</comment>
+    <requestid>702005</requestid>
+  </revision>
+</revisionlist>

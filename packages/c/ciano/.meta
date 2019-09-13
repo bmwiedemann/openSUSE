@@ -1,0 +1,5 @@
+<package name="ciano" project="openSUSE:Factory">
+  <title>App Ciano</title>
+  <description>A multimedia file converter</description>
+  <devel project="X11:Pantheon:Apps" package="ciano"/>
+</package>

@@ -1,0 +1,8 @@
+<package name="libidl" project="openSUSE:Factory">
+  <title>IDL Parsing Library</title>
+  <description>LibIDL is a small library for creating parse trees of CORBA
+v2.2-compliant Interface Definition Language (IDL) files. IDL is a
+specification for defining interfaces that can be used between
+different CORBA implementations.</description>
+  <devel project="GNOME:Factory" package="libidl"/>
+</package>

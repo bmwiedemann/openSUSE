@@ -1,0 +1,196 @@
+<revisionlist>
+  <revision rev="1" vrev="7">
+    <srcmd5>5b9816f48c960d447a09f2cfd7f6a476</srcmd5>
+    <version>1.43</version>
+    <time>1168903841</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>04fe69635695e27b801fd1c9ee204689</srcmd5>
+    <version>1.44</version>
+    <time>1177626765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="174">
+    <srcmd5>04fe69635695e27b801fd1c9ee204689</srcmd5>
+    <version>1.44</version>
+    <time>1177626765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="175">
+    <srcmd5>3688971f4b8d702dc44a267b98144167</srcmd5>
+    <version>1.44</version>
+    <time>1245337483</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="177">
+    <srcmd5>3688971f4b8d702dc44a267b98144167</srcmd5>
+    <version>1.44</version>
+    <time>1245337483</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="178">
+    <srcmd5>e04aaf64d819ba7e92d82619c4790381</srcmd5>
+    <version>1.44</version>
+    <time>1263295061</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-GDGraph based on submit request 29189 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="179">
+    <srcmd5>a9566d8a9de05878f181b7eb03a6934d</srcmd5>
+    <version>1.44</version>
+    <time>1268925476</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="181">
+    <srcmd5>a9566d8a9de05878f181b7eb03a6934d</srcmd5>
+    <version>1.44</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="182">
+    <srcmd5>a9566d8a9de05878f181b7eb03a6934d</srcmd5>
+    <version>1.44</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="183">
+    <srcmd5>bdc73ecaef016573677fc24671c65e2f</srcmd5>
+    <version>1.44</version>
+    <time>1291582480</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54545 from user coolo
+</comment>
+    <requestid>54545</requestid>
+  </revision>
+  <revision rev="11" vrev="184">
+    <srcmd5>652f610fb7013f5b3e9d64c917928555</srcmd5>
+    <version>1.44</version>
+    <time>1291582485</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54545
+</comment>
+  </revision>
+  <revision rev="12" vrev="187">
+    <srcmd5>652f610fb7013f5b3e9d64c917928555</srcmd5>
+    <version>1.44</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="188">
+    <srcmd5>361ada82450af49c9b1d7e01abf1bbb5</srcmd5>
+    <version>1.44</version>
+    <time>1306309861</time>
+    <user>saschpe</user>
+    <comment>- license correction (same as Perl)
+- added new dependencies (bnc#676080)
+- spec renewal (forwarded request 68657 from vitezslav_cizek)</comment>
+    <requestid>68934</requestid>
+  </revision>
+  <revision rev="14" vrev="189">
+    <srcmd5>4cacf9ba6d5bc941d0f1777417cab40f</srcmd5>
+    <version>1.44</version>
+    <time>1306309874</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68934
+</comment>
+  </revision>
+  <revision rev="15" vrev="191">
+    <srcmd5>4cacf9ba6d5bc941d0f1777417cab40f</srcmd5>
+    <version>1.44</version>
+    <time>1319182270</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="192">
+    <srcmd5>77aefe62defe9e542832c20fc25979bd</srcmd5>
+    <version>1.44</version>
+    <time>1323193315</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="194">
+    <srcmd5>77aefe62defe9e542832c20fc25979bd</srcmd5>
+    <version>1.44</version>
+    <time>1340183845</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="196">
+    <srcmd5>77aefe62defe9e542832c20fc25979bd</srcmd5>
+    <version>1.44</version>
+    <time>1359109677</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="198">
+    <srcmd5>77aefe62defe9e542832c20fc25979bd</srcmd5>
+    <version>1.44</version>
+    <time>1379663686</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d518ee47178a9683c0063d4c721e3418</srcmd5>
+    <version>1.48</version>
+    <time>1380778021</time>
+    <user>coolo</user>
+    <comment>update to 1.48 (forwarded request 201625 from deadpoint)</comment>
+    <requestid>201871</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>d518ee47178a9683c0063d4c721e3418</srcmd5>
+    <version>1.48</version>
+    <time>1409302307</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>25a3b9806f28133887018515fd370af3</srcmd5>
+    <version>1.54</version>
+    <time>1485040645</time>
+    <user>dimstar_suse</user>
+    <comment>- remove GDGraph-trim_miter.diff as still not upstream
+
+- updated to 1.54
+   see /usr/share/doc/packages/perl-GDGraph/CHANGES
+  1.54 21 Nov 2016
+  
+  - Disable two Y axes alignment when any y[12]_{min,max}_value is defined
+    RT#62665
+
+- updated to 1.53
+   see /usr/share/doc/packages/perl-GDGraph/CHANGES
+  1.53 08 Jul 2016
+  
+  - Fix 'Illegal division by zero' when x_min_value and x_max_value
+    are defined and x_tick_number set to 'auto' RT#73185
+    Thanks to Bob Rogers, https://github.com/ruz/GDGraph/pull/12
+
+- updated to 1.52
+   see /usr/share/doc/packages/perl-GDGraph/CHANGES
+  1.52 28 Jan 2016
+  
+  - y1_min_range and y2_min_range instead of min_range_1 and min_range_2,
+    niether were documented before.
+  - Update documentation in regards to all *_min_range options available.
+
+- updated to 1.51
+   see /usr/share/doc/packages/perl-GDGraph/CHANGES
+
+- updated to 1.49
+   see /usr/share/doc/packages/perl-GDGraph/CHANGES</comment>
+    <requestid>442357</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d6decfc00a259e7a063f7367694c2147</srcmd5>
+    <version>1.54</version>
+    <time>1492011324</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>486460</requestid>
+  </revision>
+</revisionlist>

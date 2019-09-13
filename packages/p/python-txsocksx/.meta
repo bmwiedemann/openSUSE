@@ -1,0 +1,6 @@
+<package name="python-txsocksx" project="openSUSE:Factory">
+  <title>Twisted client endpoints for SOCKS{4,4a,5}</title>
+  <description>txsocksx is SOCKS4/4a and SOCKS5 client endpoints for Twisted 10.1
+or greater.</description>
+  <devel project="network" package="python-txsocksx"/>
+</package>

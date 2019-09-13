@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7cb4a15f79acec277fae604680f53567</srcmd5>
+    <version>1.0.2</version>
+    <time>1333355478</time>
+    <user>coolo</user>
+    <comment>Port of YUICompressor's cssmin for Ruby</comment>
+    <requestid>111934</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7cb4a15f79acec277fae604680f53567</srcmd5>
+    <version>1.0.2</version>
+    <time>1340184158</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7cb4a15f79acec277fae604680f53567</srcmd5>
+    <version>1.0.2</version>
+    <time>1359110310</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f56bf38cebc5d6572d258a945c99e853</srcmd5>
+    <version>1.0.3</version>
+    <time>1363900444</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>160189</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f56bf38cebc5d6572d258a945c99e853</srcmd5>
+    <version>1.0.3</version>
+    <time>1379664513</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>f56bf38cebc5d6572d258a945c99e853</srcmd5>
+    <version>1.0.3</version>
+    <time>1409303224</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>dfbd89eecdf87b7569924348752a8d50</srcmd5>
+    <version>1.0.3</version>
+    <time>1413355907</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256278</requestid>
+  </revision>
+</revisionlist>

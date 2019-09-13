@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e09e8eeddb21c633a4aff2ff5a354217</srcmd5>
+    <version>0.1.2</version>
+    <time>1530866431</time>
+    <user>dimstar_suse</user>
+    <comment>required by python-extratools</comment>
+    <requestid>620102</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b95f0d7254db954ec2fea590e64083a8</srcmd5>
+    <version>0.1.2</version>
+    <time>1532774669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625730</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a30943aaec3aabf654a856acf98c35f5</srcmd5>
+    <version>0.1.2</version>
+    <time>1535705110</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove devel dependency
+- Require python 3.6+</comment>
+    <requestid>632114</requestid>
+  </revision>
+</revisionlist>

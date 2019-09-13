@@ -1,0 +1,5 @@
+<package name="neard" project="openSUSE:Factory">
+  <title>NFC Stack for Linux</title>
+  <description>The Near Field Communication stack for Linux.</description>
+  <devel project="hardware" package="neard"/>
+</package>

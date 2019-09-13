@@ -1,0 +1,7 @@
+<package name="NetworkManager-fortisslvpn" project="openSUSE:Factory">
+  <title>NetworkManager-fortisslvpn</title>
+  <description>Fortinet compatible SSLVPN support for NetworkManager
+  </description>
+  <devel project="GNOME:Factory" package="NetworkManager-fortisslvpn"/>
+  <url>https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn</url>
+</package>

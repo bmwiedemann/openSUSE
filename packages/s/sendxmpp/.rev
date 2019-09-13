@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c157ea7c1fef7c47dffa28794fd7f496</srcmd5>
+    <version>1.22</version>
+    <time>1314195584</time>
+    <user>saschpe</user>
+    <comment>a new package:
+
+sendxmpp is a perl-script to send xmpp (jabber) messages, similar to what
+mail(1) does for mail. 
+
+The project's homepage is http://sendxmpp.platon.sk/
+It's using CVS for code management.
+
+The program has been around since about 2004.
+It's included in Fedora and Debian distributions.
+
+It's licensed under GPLv2.</comment>
+    <requestid>79658</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cef1ecc71ea2c3a2db784432b74bd64b</srcmd5>
+    <version>1.22</version>
+    <time>1314195601</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79658
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>cef1ecc71ea2c3a2db784432b74bd64b</srcmd5>
+    <version>1.22</version>
+    <time>1319182462</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>eea2124d9fa1d6534c2934bbc6148f35</srcmd5>
+    <version>1.22</version>
+    <time>1323194613</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>eea2124d9fa1d6534c2934bbc6148f35</srcmd5>
+    <version>1.22</version>
+    <time>1340184208</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>eea2124d9fa1d6534c2934bbc6148f35</srcmd5>
+    <version>1.22</version>
+    <time>1359110395</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>eea2124d9fa1d6534c2934bbc6148f35</srcmd5>
+    <version>1.22</version>
+    <time>1379664647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>eea2124d9fa1d6534c2934bbc6148f35</srcmd5>
+    <version>1.22</version>
+    <time>1409303349</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c1413b3d1d8f8e6123074cf7874f5961</srcmd5>
+    <version>1.24</version>
+    <time>1427274059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292509</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc577065c826297a3d607f23deb06d1c</srcmd5>
+    <version>3.0.3</version>
+    <time>1513677010</time>
+    <user>dimstar_suse</user>
+    <comment>New package brought over from Packman, needed wxsvg which is now in Factory also has dvdisaster runtime requirement. see sr#546136</comment>
+    <requestid>546137</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4943eee967ad1f7fd7d9eebd3348ed39</srcmd5>
+    <version>3.0.4</version>
+    <time>1517516942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571463</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ccd8ed6727a54bca9397381d6c184eff</srcmd5>
+    <version>3.0.4</version>
+    <time>1522225928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591267</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b718822f06d53c13f3207309f2d38e11</srcmd5>
+    <version>3.0.4</version>
+    <time>1526737450</time>
+    <user>dimstar_suse</user>
+    <comment>Drop pkgconfig(libgnomeui-2.0) BuildRequires, using libgnomeui is not mandatory.
+- Drop conditional wxWidgets-3_0-devel BuildRequires, no current
+  openSUSE release provides it.
+- Use ffmpeg3 versions of pkgconfig(libav*)
+</comment>
+    <requestid>610611</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>581b0026bae2530943375de697dc5bb8</srcmd5>
+    <version>3.0.4</version>
+    <time>1550151392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674859</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>b99441a630e816da078546978361a12d</srcmd5>
+    <version>3.0.4</version>
+    <time>1554712820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692144</requestid>
+  </revision>
+</revisionlist>

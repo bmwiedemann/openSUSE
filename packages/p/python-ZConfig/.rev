@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>91cee0a846292b32b81c89da279a7eee</srcmd5>
+    <version>3.0.3</version>
+    <time>1380297765</time>
+    <user>coolo</user>
+    <comment>needed by python-ZODB3, which replaced now-deleted python-zodb3
+
+source URL fixed</comment>
+    <requestid>200702</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dd9d3977d3571fadf30775125da7501a</srcmd5>
+    <version>3.0.4</version>
+    <time>1397736690</time>
+    <user>scarabeus_factory</user>
+    <comment>Update + update-alternatives (forwarded request 230404 from posophe)</comment>
+    <requestid>230405</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dd9d3977d3571fadf30775125da7501a</srcmd5>
+    <version>3.0.4</version>
+    <time>1409302811</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dae334167099e2f19140b60c1c87e4dc</srcmd5>
+    <version>3.2.0</version>
+    <time>1499510008</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 506522 from alois)</comment>
+    <requestid>506972</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1548c86cd23d8a6c6d624d657f8e712b</srcmd5>
+    <version>3.4.0</version>
+    <time>1551784979</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0:
+  * Many changes have been made in the support for logging configurations
+  * Drop support for Python 3.3.
+  * Add support for Python 3.7.
+  * Drop support for 'python setup.py test'. See issue 38.
+  * Add support for example in section and multisection, and include those examples in generated documentation. See https://github.com/zopefoundation/ZConfig/pull/5.
+  * Fix configuration loaders to decode byte data using UTF-8 instead of the default encoding (usually ASCII). See issue 37.</comment>
+    <requestid>681395</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a417d808b9dc6b5a4fdf72cc8dbc4fb5</srcmd5>
+    <version>3.5.0</version>
+    <time>1565096925</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.5.0
+  * Add support for documenting schema files contained in packages to
+    the Sphinx extension. See `issue 59
+    &amp;lt;https://github.com/zopefoundation/ZConfig/issues/59&amp;gt;`_. (forwarded request 719614 from pgajdos)</comment>
+    <requestid>719651</requestid>
+  </revision>
+</revisionlist>

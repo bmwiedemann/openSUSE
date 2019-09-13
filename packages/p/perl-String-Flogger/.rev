@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0032f704edc995326935de2da51ec12</srcmd5>
+    <version>1.101241</version>
+    <time>1304930377</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66763</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>054c6d7c8a0dd95b755ef871d37a5848</srcmd5>
+    <version>1.101241</version>
+    <time>1304930389</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66763
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>054c6d7c8a0dd95b755ef871d37a5848</srcmd5>
+    <version>1.101241</version>
+    <time>1319182306</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5f6d801d4f38b7599a37dd266ea0efca</srcmd5>
+    <version>1.101241</version>
+    <time>1321875958</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92127</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>458896753be98ea02174bed3f05f2ab3</srcmd5>
+    <version>1.101241</version>
+    <time>1323193642</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>458896753be98ea02174bed3f05f2ab3</srcmd5>
+    <version>1.101241</version>
+    <time>1340183919</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>458896753be98ea02174bed3f05f2ab3</srcmd5>
+    <version>1.101241</version>
+    <time>1359109797</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b468aea41e35bca2b2c01b6a904d0204</srcmd5>
+    <version>1.101243</version>
+    <time>1370518130</time>
+    <user>coolo</user>
+    <comment>- updated to 1.101243
+          use horrible hack to avoid dying when a data structure to log
+          contains an object
+          make -&gt;flog({...}) act like -&gt;flog([ '%s', {...} ])
+          (thanks, Randy Stauner) (forwarded request 177585 from coolo)</comment>
+    <requestid>177595</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b468aea41e35bca2b2c01b6a904d0204</srcmd5>
+    <version>1.101243</version>
+    <time>1379663842</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4b1f3ab11e9b9eeecd1309f322931731</srcmd5>
+    <version>1.101244</version>
+    <time>1385473311</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208469</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>4b1f3ab11e9b9eeecd1309f322931731</srcmd5>
+    <version>1.101244</version>
+    <time>1409302484</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0e565fabea3d5dd4530760216c61abc5</srcmd5>
+    <version>1.101245</version>
+    <time>1429186362</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296686</requestid>
+  </revision>
+</revisionlist>

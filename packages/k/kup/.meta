@@ -1,0 +1,5 @@
+<package name="kup" project="openSUSE:Factory">
+  <title>kup</title>
+  <description>kernel.org update tool</description>
+  <devel project="devel:tools" package="kup"/>
+</package>

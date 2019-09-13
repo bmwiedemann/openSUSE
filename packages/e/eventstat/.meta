@@ -1,0 +1,11 @@
+<package name="eventstat" project="openSUSE:Factory">
+  <title>Kernel event states monitoring tool</title>
+  <description>Eventstat periodically dumps out the current kernel event state.It keeps track
+of current events and outputs the change in events on each output update.
+The tool requires sudo to run since it needs to write to /proc/timer_stats to
+start and stop the event monitoring. 
+
+</description>
+  <devel project="server:monitoring" package="eventstat"/>
+  <url>http://kernel.ubuntu.com/~cking/eventstat/</url>
+</package>

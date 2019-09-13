@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>45bf3ee2e66b133c9614c1ed275b2b9c</srcmd5>
+    <version>1.0</version>
+    <time>1499510079</time>
+    <user>dimstar_suse</user>
+    <comment>abi-dumper, can feed data to abi-compliance-checker  and abi-tracker</comment>
+    <requestid>508413</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>75e5d2c924d90af931e1338053331bd8</srcmd5>
+    <version>1.1</version>
+    <time>1504617361</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520532</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6007432f8de120930a1dace37e5e8e73</srcmd5>
+    <version>1.1</version>
+    <time>1562843692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713295</requestid>
+  </revision>
+</revisionlist>

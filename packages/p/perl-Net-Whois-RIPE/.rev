@@ -1,0 +1,238 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b33b1c6c0ffd58fa5da9db80a77f4632</srcmd5>
+    <version>1.23</version>
+    <time>1203738394</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="55">
+    <srcmd5>b33b1c6c0ffd58fa5da9db80a77f4632</srcmd5>
+    <version>1.23</version>
+    <time>1203738394</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="56">
+    <srcmd5>4a712a865ed1dc61620cdc3135072299</srcmd5>
+    <version>1.23</version>
+    <time>1245337798</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="58">
+    <srcmd5>4a712a865ed1dc61620cdc3135072299</srcmd5>
+    <version>1.23</version>
+    <time>1245337798</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="59">
+    <srcmd5>3d8b4b2186603e57ace5236b995c9def</srcmd5>
+    <version>1.23</version>
+    <time>1263298557</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-Whois-RIPE based on submit request 28970 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a1f4ee643c7ea77a9e069d05c8d47b04</srcmd5>
+    <version>1.31</version>
+    <time>1264613837</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-Whois-RIPE based on submit request 30425 from user anicka
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1b63e941936ec2d275bf32d9ddbb197f</srcmd5>
+    <version>1.31</version>
+    <time>1268925548</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>1b63e941936ec2d275bf32d9ddbb197f</srcmd5>
+    <version>1.31</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>1b63e941936ec2d275bf32d9ddbb197f</srcmd5>
+    <version>1.31</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>46ee82e44173f4ca1b085a4b716579d0</srcmd5>
+    <version>1.31</version>
+    <time>1287486630</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51012 from user coolo
+</comment>
+    <requestid>51012</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>cd8d3b556fff1eee162d0c6a09826728</srcmd5>
+    <version>1.31</version>
+    <time>1287486634</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51012
+</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>059e2a63ffc27eb8b38d8d8bc1d96141</srcmd5>
+    <version>1.31</version>
+    <time>1291583372</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54614 from user coolo
+</comment>
+    <requestid>54614</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>f4e61fef9f3705c5f0b2d642538e931e</srcmd5>
+    <version>1.31</version>
+    <time>1291583376</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54614
+</comment>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>f4e61fef9f3705c5f0b2d642538e931e</srcmd5>
+    <version>1.31</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2f08e6641d8490a86bf331edf4c2e34c</srcmd5>
+    <version>2.00003</version>
+    <time>1300355753</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64348 from user computersalat
+</comment>
+    <requestid>64348</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>cafa33aebf82856017191d62a846ef5d</srcmd5>
+    <version>2.00003</version>
+    <time>1300355763</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64348
+</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>cafa33aebf82856017191d62a846ef5d</srcmd5>
+    <version>2.00003</version>
+    <time>1319182293</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b4bcbe0779e3e61d71a366daadfa6fbf</srcmd5>
+    <version>2.00008</version>
+    <time>1319718727</time>
+    <user>coolo</user>
+    <comment>- update to 2.00008
+  - New option that enables unfiltered object output responses.
+    This produces objects that can be presented back to the
+    RIPE Database for updating.</comment>
+    <requestid>89538</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5b8957d404fa6a48a06fde90f6f15d00</srcmd5>
+    <version>2.00009</version>
+    <time>1322738723</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>94341</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3e408698718b39bbcdfb0a6efc0dc6dc</srcmd5>
+    <version>2.00009</version>
+    <time>1323193528</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>3e408698718b39bbcdfb0a6efc0dc6dc</srcmd5>
+    <version>2.00009</version>
+    <time>1340183893</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>3e408698718b39bbcdfb0a6efc0dc6dc</srcmd5>
+    <version>2.00009</version>
+    <time>1359109765</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2b71ce19532b7ba9e31f0d48b41d3c4d</srcmd5>
+    <version>2.004001</version>
+    <time>1375195597</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184800</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>45a0f0b5ab34dde92cd74866209d2fd4</srcmd5>
+    <version>2.004002</version>
+    <time>1376381934</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186505</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>45a0f0b5ab34dde92cd74866209d2fd4</srcmd5>
+    <version>2.004002</version>
+    <time>1379663796</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b4386c8d1089b1206c463e7f5b4f57ef</srcmd5>
+    <version>2.005001</version>
+    <time>1395750344</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>227176</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>b4386c8d1089b1206c463e7f5b4f57ef</srcmd5>
+    <version>2.005001</version>
+    <time>1409302433</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>262fe31cabb479b8458ea7cb60fcc67b</srcmd5>
+    <version>2.005005</version>
+    <time>1429186475</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297112</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>974319a2f8797e0844c078d4e24ff660</srcmd5>
+    <version>2.006</version>
+    <time>1443585054</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332501</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>520bf3fc53ee5ac09257b8145e5e3444</srcmd5>
+    <version>2.006001</version>
+    <time>1510761178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539957</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9844051cbce0303330cd17005c3feeab</srcmd5>
+    <version>2.006002</version>
+    <time>1551687728</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.006002
+   see /usr/share/doc/packages/perl-Net-Whois-RIPE/Changes
+</comment>
+    <requestid>680653</requestid>
+  </revision>
+</revisionlist>

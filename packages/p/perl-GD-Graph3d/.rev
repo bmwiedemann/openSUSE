@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>c3eec5f88436ee4462d2663ac48801ae</srcmd5>
+    <version>0.63</version>
+    <time>1168903840</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="243">
+    <srcmd5>c3eec5f88436ee4462d2663ac48801ae</srcmd5>
+    <version>0.63</version>
+    <time>1168903840</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="244">
+    <srcmd5>1beaf266a6fb5d1bd4ddcec050855206</srcmd5>
+    <version>0.63</version>
+    <time>1245337492</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="246">
+    <srcmd5>1beaf266a6fb5d1bd4ddcec050855206</srcmd5>
+    <version>0.63</version>
+    <time>1245337492</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="247">
+    <srcmd5>0f02c164bb023fbbf13c929173341a3a</srcmd5>
+    <version>0.63</version>
+    <time>1263502375</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-GD-Graph3d based on submit request 29441 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="248">
+    <srcmd5>64672f9463c69a20185df53c38f3705e</srcmd5>
+    <version>0.63</version>
+    <time>1268925475</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="250">
+    <srcmd5>64672f9463c69a20185df53c38f3705e</srcmd5>
+    <version>0.63</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="251">
+    <srcmd5>64672f9463c69a20185df53c38f3705e</srcmd5>
+    <version>0.63</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="252">
+    <srcmd5>b091e35319b364d8afb380a8c30d36cc</srcmd5>
+    <version>0.63</version>
+    <time>1291582469</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54546 from user coolo
+</comment>
+    <requestid>54546</requestid>
+  </revision>
+  <revision rev="10" vrev="253">
+    <srcmd5>0b8b986d1f827005ccf1f0339bf6a783</srcmd5>
+    <version>0.63</version>
+    <time>1291582474</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54546
+</comment>
+  </revision>
+  <revision rev="11" vrev="256">
+    <srcmd5>0b8b986d1f827005ccf1f0339bf6a783</srcmd5>
+    <version>0.63</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="258">
+    <srcmd5>0b8b986d1f827005ccf1f0339bf6a783</srcmd5>
+    <version>0.63</version>
+    <time>1319182269</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="259">
+    <srcmd5>1526857faec88f01990aca78c5b9b1cc</srcmd5>
+    <version>0.63</version>
+    <time>1321875630</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92189</requestid>
+  </revision>
+  <revision rev="14" vrev="260">
+    <srcmd5>b43309abce510265031829ae361643e6</srcmd5>
+    <version>0.63</version>
+    <time>1323193317</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="262">
+    <srcmd5>b43309abce510265031829ae361643e6</srcmd5>
+    <version>0.63</version>
+    <time>1340183845</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="264">
+    <srcmd5>b43309abce510265031829ae361643e6</srcmd5>
+    <version>0.63</version>
+    <time>1359109677</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="265">
+    <srcmd5>0a9952db5c536030216e580151c0c6a2</srcmd5>
+    <version>0.63</version>
+    <time>1379076203</time>
+    <user>scarabeus_factory</user>
+    <comment>- own %{perl_vendorarch}/auto/GD dir (forwarded request 198524 from pgajdos)</comment>
+    <requestid>198608</requestid>
+  </revision>
+  <revision rev="18" vrev="267">
+    <srcmd5>0a9952db5c536030216e580151c0c6a2</srcmd5>
+    <version>0.63</version>
+    <time>1379663685</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="268">
+    <srcmd5>9e1a548f63cfae1d2492137d21bc5655</srcmd5>
+    <version>0.63</version>
+    <time>1389896114</time>
+    <user>coolo</user>
+    <comment>- own all subdirectories</comment>
+    <requestid>214100</requestid>
+  </revision>
+  <revision rev="20" vrev="270">
+    <srcmd5>9e1a548f63cfae1d2492137d21bc5655</srcmd5>
+    <version>0.63</version>
+    <time>1409302306</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="271">
+    <srcmd5>6c3f161057e4bd6715b849f980ec8753</srcmd5>
+    <version>0.63</version>
+    <time>1521499190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588549</requestid>
+  </revision>
+</revisionlist>

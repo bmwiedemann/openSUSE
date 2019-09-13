@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51b024087a50766ca8b6df31385206f8</srcmd5>
+    <version>0.6.1</version>
+    <time>1560970743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705603</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>faa0dcf15e802bd2624c20094a577d3a</srcmd5>
+    <version>0.8.0</version>
+    <time>1563790874</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to rbac-manager 0.8.0
+  - detecting changes to role bindings owned by RBAC Definitions 
+    and repairing to desired state (#52)
+  - initial work on watching resources owned by rbac definitions
+  - improved reconciliation logic mostly working, better tests still needed
+  - back to controller-runtime for namespace</comment>
+    <requestid>717346</requestid>
+  </revision>
+</revisionlist>

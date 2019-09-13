@@ -1,0 +1,5 @@
+<package name="python-metamagic.json" project="openSUSE:Factory">
+  <title></title>
+  <description>Fast JSON encoder</description>
+  <devel project="devel:languages:python" package="python-metamagic.json"/>
+</package>

@@ -1,0 +1,280 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>9058ab494b382a11445949cad2b11396</srcmd5>
+    <version>3.3.5</version>
+    <time>1250006225</time>
+    <user>autobuild</user>
+    <comment>Copy from security:SELinux/setools based on submit request 14277 from user prusnak
+</comment>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d6b61dc59f7479f839ad9199a2ffcdc4</srcmd5>
+    <version>3.3.5</version>
+    <time>1252581053</time>
+    <user>autobuild</user>
+    <comment>Copy from security:SELinux/setools based on submit request 20120 from user prusnak
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>d6b61dc59f7479f839ad9199a2ffcdc4</srcmd5>
+    <version>3.3.5</version>
+    <time>1252581053</time>
+    <user>autobuild</user>
+    <comment>Copy from security:SELinux/setools based on submit request 20120 from user prusnak
+</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1befe041ad4f1f2efb1377fbd017faff</srcmd5>
+    <version>3.3.6</version>
+    <time>1268150822</time>
+    <user>autobuild</user>
+    <comment>Copy from security:SELinux/setools based on submit request 34373 from user prusnak
+</comment>
+    <requestid>34373</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d8950e6de7d4a4cb6483719dc7109bbe</srcmd5>
+    <version>3.3.6</version>
+    <time>1268926149</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d8950e6de7d4a4cb6483719dc7109bbe</srcmd5>
+    <version>3.3.6</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>d8950e6de7d4a4cb6483719dc7109bbe</srcmd5>
+    <version>3.3.6</version>
+    <time>1278678619</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>d8950e6de7d4a4cb6483719dc7109bbe</srcmd5>
+    <version>3.3.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>7d6c3fc436f4210c412ccbd099d587f3</srcmd5>
+    <version>3.3.6</version>
+    <time>1306745097</time>
+    <user>saschpe</user>
+    <comment>Add setools-swig-2x.patch to correctly detect swig 2.x (forwarded request 71385 from namtrac)</comment>
+    <requestid>71668</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>ec1964ccb39173638b1bcb39cf35cfc3</srcmd5>
+    <version>3.3.6</version>
+    <time>1306745111</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71668
+</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>ec1964ccb39173638b1bcb39cf35cfc3</srcmd5>
+    <version>3.3.6</version>
+    <time>1319182464</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>890aa716b986724c81191f651eb97f89</srcmd5>
+    <version>3.3.6</version>
+    <time>1327087530</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100866</requestid>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>42c89f0aa5666489a19daa93077e570f</srcmd5>
+    <version>3.3.6</version>
+    <time>1329383430</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104540 from coolo)</comment>
+    <requestid>104744</requestid>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>06c5771e7636ec5643654d4dfedd6560</srcmd5>
+    <version>3.3.6</version>
+    <time>1339701063</time>
+    <user>coolo</user>
+    <comment>- fix build with swig-2.0.7 (untested, though)</comment>
+    <requestid>124974</requestid>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>06c5771e7636ec5643654d4dfedd6560</srcmd5>
+    <version>3.3.6</version>
+    <time>1340184210</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>b9f2a0c3f889a95106bff29e62c32e20</srcmd5>
+    <version>3.3.6</version>
+    <time>1341316966</time>
+    <user>coolo</user>
+    <comment>- add setools-am121.patch to fix build with automake 1.12.1 (forwarded request 126959 from coolo)</comment>
+    <requestid>126961</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>95695eb4f6a354c6de195a2d13955986</srcmd5>
+    <version>3.3.7</version>
+    <time>1346400098</time>
+    <user>coolo</user>
+    <comment>- Add setools-3.3.6-libsepol.patch to fix compilation with new
+  libsepol (forwarded request 131878 from namtrac)</comment>
+    <requestid>131891</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>b450ef42d028c0a7394171123064ab1e</srcmd5>
+    <version>3.3.7</version>
+    <time>1351265575</time>
+    <user>coolo</user>
+    <comment>- add explicit buildrequire on libbz2-devel (forwarded request 139262 from coolo)</comment>
+    <requestid>139266</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>b450ef42d028c0a7394171123064ab1e</srcmd5>
+    <version>3.3.7</version>
+    <time>1359110398</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>bc4eadb8d4390ebb932542274b12eeaf</srcmd5>
+    <version>3.3.7</version>
+    <time>1365140231</time>
+    <user>coolo</user>
+    <comment>- added patches:
+  * 0006-Changes-to-support-named-file_trans-rules.patch
+  * 0007-Remove-unused-variables.patch
+    - these two add support for named file trans rules
+  * add-to-header-define_cond_filename_trans.patch
+    - add missing define_cond_filename_trans() declaration (forwarded request 162516 from vitezslav_cizek)</comment>
+    <requestid>162576</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>2bfde179968d27fc848fdefee9a318ec</srcmd5>
+    <version>3.3.7</version>
+    <time>1379076399</time>
+    <user>scarabeus_factory</user>
+    <comment>- javapackages-tools in buildrequires (forwarded request 198868 from pgajdos)</comment>
+    <requestid>198922</requestid>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>2bfde179968d27fc848fdefee9a318ec</srcmd5>
+    <version>3.3.7</version>
+    <time>1379664652</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>4345c70633754c3433ddb953b12d35f3</srcmd5>
+    <version>3.3.7</version>
+    <time>1381781148</time>
+    <user>scarabeus_factory</user>
+    <comment>- don't fail if there are no never-allow rules in the policy
+- remove dangling symlink /usr/bin/seaudit (bnc#812285)
+  * added 0003-Since-we-do-not-ship-neverallow-rules-all-always-fai.patch (forwarded request 203214 from vitezslav_cizek)</comment>
+    <requestid>203215</requestid>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>4ab2ac9c80bfbda348a20b62366cdac0</srcmd5>
+    <version>3.3.7</version>
+    <time>1401208221</time>
+    <user>coolo</user>
+    <comment>- add patch: setools-3.3.7-libselinux-2.3.patch
+  fix build with libselinux-2.3 (forwarded request 235465 from oertel)</comment>
+    <requestid>235491</requestid>
+  </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>4ab2ac9c80bfbda348a20b62366cdac0</srcmd5>
+    <version>3.3.7</version>
+    <time>1409303353</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6577a2cb5442c54d6dbe584216e4db7c</srcmd5>
+    <version>3.3.8</version>
+    <time>1427313900</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292400</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>065e76a9ee288db7fd09d78b63f48ee9</srcmd5>
+    <version>3.3.8</version>
+    <time>1472477791</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>422159</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>366903b21570d53cd7b4de53daca3939</srcmd5>
+    <version>3.3.8</version>
+    <time>1498639006</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506438</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>4fe6650f32ad378f245b88057b31ca90</srcmd5>
+    <version>3.3.8</version>
+    <time>1507280681</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531744</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b3676c917974a08509b3ab093818f25f</srcmd5>
+    <version>4.1.1</version>
+    <time>1530303887</time>
+    <user>dimstar_suse</user>
+    <comment>- Added warning.patch in former change to prevent warnings from
+  stopping the build
+
+- Upgrade to 4.1.1
+
+- Update to version 4.0.1. SETools was reimplemented in Python.
+- Doesn't build
+  * setools-libs
+  * setools-java
+  * setools-tcl
+  * setools-devel
+  anymore since the files are not povided anymore
+- Dropped
+  * add-to-header-define_cond_filename_trans.patch
+  * implicit-fortify-decl.patch
+  * setools-3.3.5-javacflags.patch
+  * setools-3.3.5-nonvoid.patch
+  * setools-3.3.5-strcmp.patch
+  * setools-am121.patch
+  * setools-libsepol.patch
+  * setools-setup_py-prefix.patch
+  * setools-swig-2.0.7.patch
+  * setools-swig-2x.patch
+  * setools-tclass.patch</comment>
+    <requestid>615934</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5a4c4f360bd13c5afb08686df79053d1</srcmd5>
+    <version>4.2.0</version>
+    <time>1544632252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657421</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>42fc6bc21f2b07ca60995ca5502cfa07</srcmd5>
+    <version>4.2.1</version>
+    <time>1549458390</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671815</requestid>
+  </revision>
+</revisionlist>

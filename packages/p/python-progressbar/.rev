@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aac401b70abd48098827971faea8c7f0</srcmd5>
+    <version>2.3</version>
+    <time>1328202005</time>
+    <user>coolo</user>
+    <comment>Python is awesome</comment>
+    <requestid>102358</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bbdf984e8cb67834109a5b4d00fb8405</srcmd5>
+    <version>2.3</version>
+    <time>1338280545</time>
+    <user>coolo</user>
+    <comment>- Fix building on openSUSE 11.4
+- spec file cleanups (forwarded request 122288 from TheBlackCat) (forwarded request 122289 from TheBlackCat)</comment>
+    <requestid>122290</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>bbdf984e8cb67834109a5b4d00fb8405</srcmd5>
+    <version>2.3</version>
+    <time>1340184077</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f5ec4aeacecbe274685b8a276b7f3208</srcmd5>
+    <version>2.3</version>
+    <time>1347347890</time>
+    <user>coolo</user>
+    <comment>Restore BuildRequires: python3  This package depends on hash algorithms that are only available if python3 is installed, python3-devel will not pull them in.  Building will fail if  BuildRequires: python3 is removed. (forwarded request 132976 from TheBlackCat)</comment>
+    <requestid>132977</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f528bb729fd3dcd06a7326f0084acb93</srcmd5>
+    <version>2.3+hg20121105.3c94a3a1ebe1</version>
+    <time>1352908861</time>
+    <user>coolo</user>
+    <comment>- Update to 2.3+hg20121105.3c94a3a1ebe1
+  + See mercurial changes
+
+- Correctly fix non-executable-script rpmlint warning
+- No need to explicitly require python(abi), RPM does that since ages
+- Cleanup old SUSE version checks
+
+- Update to 2.3+hg20121105.3c94a3a1ebe1
+  + See mercurial changes
+- Add progressbar-python3-relative-imports.patch: Fix import paths</comment>
+    <requestid>140914</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f528bb729fd3dcd06a7326f0084acb93</srcmd5>
+    <version>2.3+hg20121105.3c94a3a1ebe1</version>
+    <time>1359110091</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>32a56aec0137c0bd4d7b33048c7bfacf</srcmd5>
+    <version>2.3+hg20121105.3c94a3a1ebe1</version>
+    <time>1371653110</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179934</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>32a56aec0137c0bd4d7b33048c7bfacf</srcmd5>
+    <version>2.3+hg20121105.3c94a3a1ebe1</version>
+    <time>1379664244</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>8db479c9aed41f6d41dcb10b49f7eb4c</srcmd5>
+    <version>2.3+hg20121105.3c94a3a1ebe1</version>
+    <time>1382693215</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204627</requestid>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>8db479c9aed41f6d41dcb10b49f7eb4c</srcmd5>
+    <version>2.3+hg20121105.3c94a3a1ebe1</version>
+    <time>1409302948</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>71d1c1a1649185433d72282b33e622ca</srcmd5>
+    <version>2.3+hg20121105.3c94a3a1ebe1</version>
+    <time>1504617323</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519997</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b7f757580ff4ca9ac89b5c05c50cf7cd</srcmd5>
+    <version>2.5</version>
+    <time>1539342686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641313</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c77f8e9bb608fdb533d8cab87f173028</srcmd5>
+    <version>2.5</version>
+    <time>1545648084</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659563</requestid>
+  </revision>
+</revisionlist>

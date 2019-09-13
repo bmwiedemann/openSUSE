@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc2b4d9cbb33467c2fbaf37b24d3c644</srcmd5>
+    <version>0.9.3</version>
+    <time>1474623074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>424400</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f18183490115a55267278d2326dcbb5</srcmd5>
+    <version>1.5.3</version>
+    <time>1476351026</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433977</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b472c015d8f27df76912274fd9b2b544</srcmd5>
+    <version>1.5.7</version>
+    <time>1502892643</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510810</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dcc1f2fc313825ad2a5567e9828c4439</srcmd5>
+    <version>1.5.9</version>
+    <time>1513245406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555886</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>38c34c8946e923ae8bc90692a0c32b8f</srcmd5>
+    <version>1.5.10</version>
+    <time>1526372025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606565</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8280810b53a62fd4f5004b0d7997b94a</srcmd5>
+    <version>2.0.2</version>
+    <time>1527934289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613142</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>286c224cb563144c24fd7c7161745db8</srcmd5>
+    <version>2.0.2</version>
+    <time>1545648248</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659680</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c1e1f976aea2df282e56446a8968c79c</srcmd5>
+    <version>2.1.0</version>
+    <time>1553611557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * Small updates to docs and tests for Python 3.7.
+  * Change imports for Abstract Base Classes to collections.abc to avoid warnings in Python 3.7.
+  * SortedDict methods iterkeys, iteritems, itervalues, viewkeys, viewitems, and viewvalues are not implemented for Python 2. Attribute lookup now raises :exc:`AttributeError`.
+  * Accessing SortedDict.iloc will emit DeprecationWarning.
+  * SortedSet.__rsub__ erroneously reversed its arguments. The method has been removed in favor of the inherited Set.__rsub__ which has a correct implementation.
+  * :class:`SortedKeysView` and :class:`SortedValuesView` set-operations now return :class:`SortedSet` objects to better match the semantics of version 1.
+- use github tarball for tests</comment>
+    <requestid>688684</requestid>
+  </revision>
+</revisionlist>

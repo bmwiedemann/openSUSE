@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9877dceb5ccca9e77bfdc1deb9fa0bf6</srcmd5>
+    <version>0.11.0</version>
+    <time>1475750535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>430284</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>52ef012a32c6ada6f55b0e51ea6ab597</srcmd5>
+    <version>0.11.1</version>
+    <time>1489415558</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460517</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3137ba28c0743a74679e3771cc645a8</srcmd5>
+    <version>0.12.0</version>
+    <time>1508876605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Bump version to 0.12.0
+  * Don't export github templates
+  * Added Lithuanian language
+  * liblxqt dont make sense here
+  * Copied issue template
+  * Drops Qt5Core_VERSION_STRING
+  * set Qt::AA_UseHighDpiPixmaps to true
+  * Added default CMAKE_BUILD_TYPE and versioning (#29)
+  * added Polish translation
+  * Add obconf-qt_ca.desktop (Catalan)
+  * Update AUTHORS
+  * Added *da.desktop
+</comment>
+    <requestid>535985</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0d41037d0a7158db6c7e70731f7649fd</srcmd5>
+    <version>0.13.0</version>
+    <time>1530303819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Bumped minor version to 13
+  * Spanish translation update
+  * CMake: Prevent in-source builds
+  * fixed lxde mentions
+  * Add Traditional Chinese translation
+  * Add Traditional Chinese translation
+  * Add Simplified Chinese translation
+  * Fixes Qt4 build
+  * cmake: Use LXQtCompilerSettings
+  * cmake: Handle CMP0071
+  * cmake: Make it compile with Qt4
+  * cmake: Update CMake minimum required version
+</comment>
+    <requestid>618037</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>910a8fab01d4a04d04365b992815c0a3</srcmd5>
+    <version>0.14.0</version>
+    <time>1551113385</time>
+    <user>coolo</user>
+    <comment>- Update to 0.14.0:
+  * Fixed dysfunctional *.obt Archive generation
+- Move translation from lxqt-l10n into package
+- Update to 0.13.0:
+  * Bumped minor version to 13
+  * Spanish translation update
+  * CMake: Prevent in-source builds
+  * fixed lxde mentions
+  * Add Traditional Chinese translation
+  * Add Traditional Chinese translation
+  * Add Simplified Chinese translation
+  * Fixes Qt4 build
+  * cmake: Use LXQtCompilerSettings
+  * cmake: Handle CMP0071
+  * cmake: Make it compile with Qt4
+  * cmake: Update CMake minimum required version
+- Update to 0.12.0:
+  * Bump version to 0.12.0
+  * Don't export github templates
+  * Added Lithuanian language
+  * liblxqt dont make sense here
+  * Copied issue template
+  * Drops Qt5Core_VERSION_STRING
+  * set Qt::AA_UseHighDpiPixmaps to true
+  * Added default CMAKE_BUILD_TYPE and versioning (#29)
+  * added Polish translation
+  * Add obconf-qt_ca.desktop (Catalan)
+  * Update AUTHORS
+  * Added *da.desktop
+- Update to 0.11.1:
+  * Create obconf-qt_fr.desktop
+  * Use the LXQtCompilerSettings
+  * Use lxqt-build-tools translation modules
+  * Use the new lxqt-build-tools package
+  * Remove cpack (#22)
+  * README.md: Update dependencies
+- Update to 0.11.0:
+  * Bump version to 0.2.0 (#20)
+  * Extend README.md
+  * occured -&gt; occurred
+  * build: Use external translations
+  * ts-files removal
+  * Bump year
+  * Work around grep 2.23 new behaviour
+  * Don't track $IDE settings
+  * Japanese translation update
+  * Reflect replacement README --&gt; README.md in CMakeLists.txt
+  * Use markdown for README
+  * Update translations
+  * Fix license file
+  * Hungarian translations added
+  * src/CMakeLists.txt: do not completely overwrite CMAKE_CXX_FLAGS
+  * Use GNUInstallDirs
+  * Small build fix (themes dir path)
+  * Update German translation
+  * Update translations.
+  * Update the About dialog.
+  * Port missing &quot;Dock&quot; options from obconf gtk+ version.
+  * Support changing the name of desktops.
+  * German translation
+  * Default to Qt5
+- Remove obconf-qt-0.1.0_qt5-support.patch
+- Added conditionals and BuildRequires for building on Fedora 
+- spec file cleanup for factory 
+- Specfile cleanup 
+- Removed fedora specfile, split into subproject
+  Del:  obconf-qt-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  obconf-qt-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  obconf-qt-0.1.0.tar.xz
+  Del:  _service 
+- Initial Source Upload
+  Add: _service
+  Add: obconf-qt.spec
+  Add: obconf-qt.changes 
+</comment>
+    <requestid>670398</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a681ef6490e990be4dd5ba828fbe9cb3</srcmd5>
+    <version>0.14.1</version>
+    <time>1551455385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.1:
+  * Only translations was changed</comment>
+    <requestid>680442</requestid>
+  </revision>
+</revisionlist>

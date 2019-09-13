@@ -1,0 +1,12 @@
+<package name="xplanet" project="openSUSE:Factory">
+  <title>Planets as Background Pictures or Interactive Animations</title>
+  <description>Xplanet can display the earth or other planets in the background of
+your display, similar to xearth or xglobe.  Additionally, it can run in
+interactive mode allowing you to rotate or zoom the planet.  Also, with
+an included script, it is very easy to combine map files with current
+satellite cloud images. See
+/usr/share/doc/packages/xplanet/README.SuSE.  For screenshots and more
+interesting information, have a look at the Xplanet home page:
+http://xplanet.sourceforge.net/</description>
+  <devel project="Education" package="xplanet"/>
+</package>

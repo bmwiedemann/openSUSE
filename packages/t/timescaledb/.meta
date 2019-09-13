@@ -1,0 +1,7 @@
+<package name="timescaledb" project="openSUSE:Factory">
+  <title>PostgreSQL extension for time-series</title>
+  <description>An open-source time-series database optimized for fast ingest and complex queries. Engineered up from PostgreSQL, packaged as an extension. 
+
+more on http://www.timescale.com/</description>
+  <devel project="server:database:postgresql" package="timescaledb"/>
+</package>

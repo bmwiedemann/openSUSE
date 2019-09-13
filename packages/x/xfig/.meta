@@ -1,0 +1,13 @@
+<package name="xfig" project="openSUSE:Factory">
+  <title>Facility for Interactive Generation of Figures under the X Window System</title>
+  <description>Xfig is a menu-driven tool that allows the user to draw and manipulate
+objects interactively in an X Window System window.  The resulting
+pictures can be saved, printed on PostScript printers, or converted to
+a variety of other formats (to allow inclusion in LaTeX documents, for
+example).
+
+Documentation: /usr/share/doc/packages/xfig &amp; man xfig
+
+Examples: /usr/share/doc/packages/xfig/TheExamples</description>
+  <devel project="graphics" package="xfig"/>
+</package>

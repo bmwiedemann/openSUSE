@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>edb3163b4999ee35ed8ce78d467ab163</srcmd5>
+    <version>1.1.10</version>
+    <time>1370790291</time>
+    <user>coolo</user>
+    <comment>Dependency of rubygem-vagrant</comment>
+    <requestid>177870</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e80c092a6a0409e4feee594505de32d2</srcmd5>
+    <version>1.1.10</version>
+    <time>1377248845</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195943</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e80c092a6a0409e4feee594505de32d2</srcmd5>
+    <version>1.1.10</version>
+    <time>1379664539</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b6fceb665822dfb2f317cd7ceddf19a</srcmd5>
+    <version>1.1.11</version>
+    <time>1389611018</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>213068</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c4e572e97850edb1e427f616d12f6624</srcmd5>
+    <version>1.1.10</version>
+    <time>1392962263</time>
+    <user>coolo</user>
+    <comment>- reverted to version 1.1.10, version 1.1.11 was yanked because of bugs (forwarded request 223266 from rsblendido)</comment>
+    <requestid>223279</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b9debfb728d5fb0901d70e5d9d104fe5</srcmd5>
+    <version>1.1.10</version>
+    <time>1393310228</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223643</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>b9debfb728d5fb0901d70e5d9d104fe5</srcmd5>
+    <version>1.1.10</version>
+    <time>1409303246</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>379e35bd7f819eec8e03dae9cfbae9fc</srcmd5>
+    <version>1.1.10</version>
+    <time>1413263425</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>255060</requestid>
+  </revision>
+</revisionlist>

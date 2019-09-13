@@ -1,0 +1,5 @@
+<package name="fio" project="openSUSE:Factory">
+  <title>Flexible I/O Tester/Benchmarker</title>
+  <description>fio is an I/O tool meant to be used both for benchmark and stress/hardware verification. It has support for 4 different types of I/O engines (sync, mmap, libaio, posixaio), I/O priorities (for newer Linux kernels), rate I/O, forked or threaded jobs, and much more. It can work on block devices as well as files. fio accepts job descriptions in a simple-to-understand text format. Several example job files are included. fio displays all sorts of I/O performance information, such as completion and submission latencies (avg/mean/deviation), bandwidth stats, cpu and disk utilization, and more.</description>
+  <devel project="benchmark" package="fio"/>
+</package>

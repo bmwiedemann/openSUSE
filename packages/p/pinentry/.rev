@@ -1,0 +1,446 @@
+<revisionlist>
+  <revision rev="1" vrev="53">
+    <srcmd5>ef409c67d5b0037a9a3d82653427bf52</srcmd5>
+    <version>0.7.2</version>
+    <time>1167993509</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="64">
+    <srcmd5>91d19f169e92b727b4b383a2b046400b</srcmd5>
+    <version>0.7.2</version>
+    <time>1175211328</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="115">
+    <srcmd5>3f252e14c97a317ca3b835a64f19a81d</srcmd5>
+    <version>0.7.2</version>
+    <time>1189528429</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="177">
+    <srcmd5>ef989e9035893a51a05e3bbb14e98dc3</srcmd5>
+    <version>0.7.2</version>
+    <time>1206918731</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="181">
+    <srcmd5>9e4d971a08b3b3e18d48a74858ff4157</srcmd5>
+    <version>0.7.2</version>
+    <time>1207857723</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7776caa0a09081a26f492ad0ecf07c0b</srcmd5>
+    <version>0.7.5</version>
+    <time>1208736294</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="19">
+    <srcmd5>522c98fd43ec2b584d30370cfdce809f</srcmd5>
+    <version>0.7.5</version>
+    <time>1214263244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="28">
+    <srcmd5>2acb6b4c970b9374598cf363fb6a5589</srcmd5>
+    <version>0.7.5</version>
+    <time>1216953554</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="60">
+    <srcmd5>9cbe4d2a715cd88d9fd4be0e3515fb0c</srcmd5>
+    <version>0.7.5</version>
+    <time>1226068808</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="61">
+    <srcmd5>51e6680e6572896f5720b49644e24d4c</srcmd5>
+    <version>0.7.5</version>
+    <time>1226327626</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="62">
+    <srcmd5>c12a95c24fffd46152dfa99bf483c8f3</srcmd5>
+    <version>0.7.5</version>
+    <time>1243545261</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>00035999ab972493b24190d62e9ce7b4</srcmd5>
+    <version>0.7.6</version>
+    <time>1246289233</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>35de04996d3dbd4256073191cc96d767</srcmd5>
+    <version>0.7.6</version>
+    <time>1247080035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>1d897ecaacda647b2001778365587459</srcmd5>
+    <version>0.7.6</version>
+    <time>1250865709</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pinentry based on submit request 18422 from user puzel
+</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>571c8f2ef0587a6f0ab6ba38d80ee7eb</srcmd5>
+    <version>0.7.6</version>
+    <time>1255353714</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pinentry based on submit request 21959 from user puzel
+</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>571c8f2ef0587a6f0ab6ba38d80ee7eb</srcmd5>
+    <version>0.7.6</version>
+    <time>1255353714</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pinentry based on submit request 21959 from user puzel
+</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>3e4a91bc01c23ed9ef972f2fa11532c2</srcmd5>
+    <version>0.7.6</version>
+    <time>1263483200</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pinentry based on submit request 29072 from user coolo
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2afb9f6e7794bb55719eaf2dc7f8496c</srcmd5>
+    <version>0.8.0</version>
+    <time>1268830765</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pinentry based on submit request 35035 from user puzel
+</comment>
+    <requestid>35035</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>116277839af951c66b74cb90e72c29ac</srcmd5>
+    <version>0.8.0</version>
+    <time>1268925714</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>116277839af951c66b74cb90e72c29ac</srcmd5>
+    <version>0.8.0</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>116277839af951c66b74cb90e72c29ac</srcmd5>
+    <version>0.8.0</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>3ad107a38accee7ac39b20e2cb9a771e</srcmd5>
+    <version>0.8.0</version>
+    <time>1282570832</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pinentry based on submit request 46000 from user puzel
+</comment>
+    <requestid>46000</requestid>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>81f51fdeb9e99ff956a1e381bb49b6d3</srcmd5>
+    <version>0.8.0</version>
+    <time>1286314569</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pinentry based on submit request 49824 from user elvigia
+</comment>
+    <requestid>49824</requestid>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>81f51fdeb9e99ff956a1e381bb49b6d3</srcmd5>
+    <version>0.8.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>fa68061cfe60c9c7b705a076174a82e2</srcmd5>
+    <version>0.8.1</version>
+    <time>1301059371</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65199 from user licensedigger
+</comment>
+    <requestid>65199</requestid>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>1d48be456d241163b7f6dd1e4dce6545</srcmd5>
+    <version>0.8.1</version>
+    <time>1301059379</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65199
+</comment>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>d2cbd689d826f4d15397d6d6affafaff</srcmd5>
+    <version>0.8.1</version>
+    <time>1316448083</time>
+    <user>lrupp</user>
+    <comment>- enable paste for pinentry-gtk2 and pinentry-qt4 (bnc#690514) (forwarded request 82453 from vitezslav_cizek)</comment>
+    <requestid>83381</requestid>
+  </revision>
+  <revision rev="28" vrev="11">
+    <srcmd5>d2cbd689d826f4d15397d6d6affafaff</srcmd5>
+    <version>0.8.1</version>
+    <time>1319182358</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="12">
+    <srcmd5>7a944e43c7904f6e93e24e838652c75d</srcmd5>
+    <version>0.8.1</version>
+    <time>1319635929</time>
+    <user>coolo</user>
+    <comment>- fix pinentry-qt4 not to allow triggering IM (bnc#725471)</comment>
+    <requestid>89329</requestid>
+  </revision>
+  <revision rev="30" vrev="13">
+    <srcmd5>bc7d9d53da5af582ed021f8176842f72</srcmd5>
+    <version>0.8.1</version>
+    <time>1322073454</time>
+    <user>coolo</user>
+    <comment>- patch that fixes Glib warning (bnc#730453)
+- add -ltinfo to fix build</comment>
+    <requestid>93197</requestid>
+  </revision>
+  <revision rev="31" vrev="14">
+    <srcmd5>ac6b8b5d7a2fc61e00c3d21e6fb5c012</srcmd5>
+    <version>0.8.1</version>
+    <time>1323185069</time>
+    <user>coolo</user>
+    <comment>- fixed licence of the pinentry-qt subpackage (bnc#734792)
+
+- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>95546</requestid>
+  </revision>
+  <revision rev="32" vrev="15">
+    <srcmd5>a92f68b6b83bfe6e0b529a3803366a76</srcmd5>
+    <version>0.8.1</version>
+    <time>1323193910</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="33" vrev="17">
+    <srcmd5>a92f68b6b83bfe6e0b529a3803366a76</srcmd5>
+    <version>0.8.1</version>
+    <time>1340184002</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="34" vrev="19">
+    <srcmd5>a92f68b6b83bfe6e0b529a3803366a76</srcmd5>
+    <version>0.8.1</version>
+    <time>1359109927</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="20">
+    <srcmd5>b0b1d435f547e7edb313334b541380ff</srcmd5>
+    <version>0.8.1</version>
+    <time>1366633892</time>
+    <user>coolo</user>
+    <comment>- %makeinstall instead of %make install.
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+- Add GPG checking</comment>
+    <requestid>172838</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>fc2c12a474ca2f7940f643cf09e28d36</srcmd5>
+    <version>0.8.3</version>
+    <time>1377090018</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 0.8.3 (forwarded request 195639 from AndreasStieger)</comment>
+    <requestid>195691</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>fc2c12a474ca2f7940f643cf09e28d36</srcmd5>
+    <version>0.8.3</version>
+    <time>1379664031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>17e862361f019ee616d9acb04a805770</srcmd5>
+    <version>0.8.3</version>
+    <time>1388395678</time>
+    <user>coolo</user>
+    <comment>- disable qt3 support to avoid maintaining qt3 forever (forwarded request 211922 from coolo)</comment>
+    <requestid>212166</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>17e862361f019ee616d9acb04a805770</srcmd5>
+    <version>0.8.3</version>
+    <time>1409302703</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a789e0d273380b2e470cc4606c940a54</srcmd5>
+    <version>0.8.4</version>
+    <time>1412155332</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252018</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>b5939e291914d5aff4452a9d67933a14</srcmd5>
+    <version>0.8.4</version>
+    <time>1414776434</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257913</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>97162d5af813387ad9694817a00bf39a</srcmd5>
+    <version>0.9.0</version>
+    <time>1415953102</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>259872</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d262e2d7310bec6dda3f90e77bdde6bb</srcmd5>
+    <version>0.9.1</version>
+    <time>1427313854</time>
+    <user>dimstar_suse</user>
+    <comment>0.9.1 and gcc5 fix</comment>
+    <requestid>292559</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>88bc3867ba942f694476ff4016c7ed1a</srcmd5>
+    <version>0.9.1</version>
+    <time>1427653074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293330</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>eca08f893ff4360f6e0e73962bc13260</srcmd5>
+    <version>0.9.2</version>
+    <time>1431673373</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306659</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b77a9beeb8c5e77360b5dfd4afe5343f</srcmd5>
+    <version>0.9.3</version>
+    <time>1433744922</time>
+    <user>dimstar_suse</user>
+    <comment>pinentry 0.9.3</comment>
+    <requestid>310584</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9cf395683de0657e90cfc1a8abf261f6</srcmd5>
+    <version>0.9.4</version>
+    <time>1434133786</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311651</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>234f057b7396449b320248b928758dd3</srcmd5>
+    <version>0.9.5</version>
+    <time>1437059883</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314872</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>a14fcdefaae022faae7979924cabd5b5</srcmd5>
+    <version>0.9.5</version>
+    <time>1437803048</time>
+    <user>coolo</user>
+    <comment>fix changelog (forwarded request 318223 from AndreasStieger)</comment>
+    <requestid>318224</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>65a8c4b900f9d7f83f60e60f7dd57363</srcmd5>
+    <version>0.9.6</version>
+    <time>1445092663</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>336927</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>8c5815d05b59900c7af8f8312f6ab8cc</srcmd5>
+    <version>0.9.6</version>
+    <time>1446049052</time>
+    <user>dimstar_suse</user>
+    <comment>- add pinentry-qt4-fix-qstring-conversion.patch (bsc#951307)</comment>
+    <requestid>340246</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>f6e304aa8c86dd4041c74b379832867d</srcmd5>
+    <version>0.9.7</version>
+    <time>1450471933</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348929</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>217b86d68eb325826c0b28a42da7a3f5</srcmd5>
+    <version>0.9.7</version>
+    <time>1453280051</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353465</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>4a25d958fbbaa127d664237dcef36155</srcmd5>
+    <version>0.9.7</version>
+    <time>1454150051</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355358</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>802ebc2973cd3c967319493e6ce2d29c</srcmd5>
+    <version>0.9.7</version>
+    <time>1470508626</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415792</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>29cf9e70b36ff96e463169de0e374a42</srcmd5>
+    <version>1.0.0</version>
+    <time>1482784802</time>
+    <user>lnussel_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447379</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2de911ed6909ee08503338198fb8c1c6</srcmd5>
+    <version>1.1.0</version>
+    <time>1513342767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556383</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>e69c2962fb67e6acf797966ff71db542</srcmd5>
+    <version>1.1.0</version>
+    <time>1519844090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580139</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>53d0a8f95338699df8c76704e52a4e1f</srcmd5>
+    <version>1.1.0</version>
+    <time>1564575239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718568</requestid>
+  </revision>
+</revisionlist>

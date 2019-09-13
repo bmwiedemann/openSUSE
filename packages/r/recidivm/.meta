@@ -1,0 +1,8 @@
+<package name="recidivm" project="openSUSE:Factory">
+  <title>Tool for estimating peak virtual memory use</title>
+  <description>recidivm estimates the target program's peak virtual memory use by running it multiple times with different memory limits.
+
+</description>
+  <devel project="devel:tools" package="recidivm"/>
+  <url>http://jwilk.net/software/recidivm</url>
+</package>

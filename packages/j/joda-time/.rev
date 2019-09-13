@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38f950a4ea4418dd8a2cdaa0f0e34dbf</srcmd5>
+    <version>1.6</version>
+    <time>1272584785</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/joda-time based on submit request 39084 from user mvyskocil
+</comment>
+    <requestid>39084</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>38f950a4ea4418dd8a2cdaa0f0e34dbf</srcmd5>
+    <version>1.6</version>
+    <time>1278667354</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>38f950a4ea4418dd8a2cdaa0f0e34dbf</srcmd5>
+    <version>1.6</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>38f950a4ea4418dd8a2cdaa0f0e34dbf</srcmd5>
+    <version>1.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>38f950a4ea4418dd8a2cdaa0f0e34dbf</srcmd5>
+    <version>1.6</version>
+    <time>1319182015</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>42ee564de4e639d75a1e89a51071313f</srcmd5>
+    <version>1.6</version>
+    <time>1323192046</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>42ee564de4e639d75a1e89a51071313f</srcmd5>
+    <version>1.6</version>
+    <time>1340183489</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>42ee564de4e639d75a1e89a51071313f</srcmd5>
+    <version>1.6</version>
+    <time>1359109127</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>04bfa69210ba1f5d1dde98241427c370</srcmd5>
+    <version>1.6</version>
+    <time>1378998281</time>
+    <user>scarabeus_factory</user>
+    <comment>jpackage-utils collison fix</comment>
+    <requestid>198695</requestid>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>04bfa69210ba1f5d1dde98241427c370</srcmd5>
+    <version>1.6</version>
+    <time>1379662721</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>140ca71ebe85aec09c57458a91044812</srcmd5>
+    <version>1.6</version>
+    <time>1405101950</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240350</requestid>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>140ca71ebe85aec09c57458a91044812</srcmd5>
+    <version>1.6</version>
+    <time>1409301289</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>86000cb7d434257e2fc859ff6b66685d</srcmd5>
+    <version>1.6</version>
+    <time>1505920297</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527270</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e9780be4c23f3dbf6ba027cc605a1967</srcmd5>
+    <version>2.10.1</version>
+    <time>1551386332</time>
+    <user>coolo</user>
+    <comment>Update to 2.10.1</comment>
+    <requestid>672971</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="642">
+    <srcmd5>b21479cef8cfbeabc5e55b66246b1ddf</srcmd5>
+    <version>20020904</version>
+    <time>1334641837</time>
+    <user>coolo</user>
+    <comment>Moving M17N/xfntjp to M17N:fonts/x11-japanese-bitmap-fonts.</comment>
+    <requestid>112206</requestid>
+  </revision>
+  <revision rev="2" vrev="643">
+    <srcmd5>39fd0b8eb0b95c9491abbdc5171693ef</srcmd5>
+    <version>20020904</version>
+    <time>1334818275</time>
+    <user>coolo</user>
+    <comment>- license SUSE-Public-Domain and HPND</comment>
+    <requestid>114399</requestid>
+  </revision>
+  <revision rev="3" vrev="644">
+    <srcmd5>fcf4e12d40ca577d319aba68a405e04e</srcmd5>
+    <version>20020904</version>
+    <time>1338017436</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122201</requestid>
+  </revision>
+  <revision rev="4" vrev="646">
+    <srcmd5>fcf4e12d40ca577d319aba68a405e04e</srcmd5>
+    <version>20020904</version>
+    <time>1340184331</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="647">
+    <srcmd5>bf1a1b657d6e8c0dc1cd216222a50ec4</srcmd5>
+    <version>20020904</version>
+    <time>1347619350</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134002</requestid>
+  </revision>
+  <revision rev="6" vrev="649">
+    <srcmd5>bf1a1b657d6e8c0dc1cd216222a50ec4</srcmd5>
+    <version>20020904</version>
+    <time>1359110585</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="651">
+    <srcmd5>bf1a1b657d6e8c0dc1cd216222a50ec4</srcmd5>
+    <version>20020904</version>
+    <time>1379664983</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="653">
+    <srcmd5>bf1a1b657d6e8c0dc1cd216222a50ec4</srcmd5>
+    <version>20020904</version>
+    <time>1409303661</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="654">
+    <srcmd5>4ceec5e107ed6df47e70b57657c1af5e</srcmd5>
+    <version>20020904</version>
+    <time>1493580248</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492131</requestid>
+  </revision>
+</revisionlist>

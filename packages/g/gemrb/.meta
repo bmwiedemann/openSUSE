@@ -1,0 +1,5 @@
+<package name="gemrb" project="openSUSE:Factory">
+  <title>GemRB</title>
+  <description>GemRB (Game engine made with pre-Rendered Background) is a portable open-source implementation of Bioware's Infinity Engine. It was written to support pseudo-3D role playing games based on the Dungeons &amp; Dragons ruleset like Baldur's Gate and Icewind Dale series, Planescape: Torment.</description>
+  <devel project="games" package="gemrb"/>
+</package>

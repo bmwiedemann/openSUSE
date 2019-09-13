@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07dd46ba65ce2b5db6366d9f6a9356eb</srcmd5>
+    <version>0.11.0</version>
+    <time>1519747126</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package (0.11.0)
+</comment>
+    <requestid>580066</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a7f554407cf4eb84ad20dde7599e2d9a</srcmd5>
+    <version>0.12.0</version>
+    <time>1544726808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.0
+  * Support h11 ~0.8.1.
+  * Support Python 3.7.
+  * Make the close-handshake more explicit, by sending a close
+    frame on reciept of a close frame.
+  * Bugfix fix deflate after a non-compressable message.
+  * Bugfix connection header acceptance, by accepting Connection
+    header values that are comma separated lists.
+- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>654112</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6598240b0417f3ab93178cf461a5272b</srcmd5>
+    <version>0.14.0</version>
+    <time>1554833984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692671</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3bc9240b006bc17952ad1b372c0c3196</srcmd5>
+    <version>0.14.1</version>
+    <time>1559375866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706558</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>697c7a7dad91a286d538aa49944e6c16</srcmd5>
+    <version>0.15.0</version>
+    <time>1565695141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722197</requestid>
+  </revision>
+</revisionlist>

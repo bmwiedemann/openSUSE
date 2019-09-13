@@ -1,0 +1,5 @@
+<package name="aopalliance" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="aopalliance"/>
+</package>

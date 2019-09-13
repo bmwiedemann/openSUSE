@@ -1,0 +1,5 @@
+<package name="ghostscript-fonts-grops" project="openSUSE:Factory">
+  <title>Ghostscript fonts imported to groff for use with grops</title>
+  <description>A version of PostScript® driver for Groff to support characters outside ISO Latin 1 character set (bnc#856842).</description>
+  <devel project="M17N:fonts" package="ghostscript-fonts-grops"/>
+</package>

@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>99025c1610cd55735ca4d5cd77dea564</srcmd5>
+    <version>0.7.20</version>
+    <time>1390482660</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>214558</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f763abc4b4d4263a091c9843f2237a4</srcmd5>
+    <version>0.8.0</version>
+    <time>1406557271</time>
+    <user>coolo</user>
+    <comment>- updated to version 0.8.0
+ * Rename Moneta::Adapters::Mongo to Moneta::Adapters::MongoOfficial
+ * Add Moneta::Adapters::MongoMoped
+ * Drop Ruby 1.8 support</comment>
+    <requestid>242696</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1f763abc4b4d4263a091c9843f2237a4</srcmd5>
+    <version>0.8.0</version>
+    <time>1409303255</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b1b52c45864dcfae3d8c82cfd723d9e3</srcmd5>
+    <version>0.8.0</version>
+    <time>1413263549</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255839</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f6360aa775e292cfdb325aabd1dbe99a</srcmd5>
+    <version>0.8.1</version>
+    <time>1483047940</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447122</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3a2a30ef8f3a9b366e589235e7c342be</srcmd5>
+    <version>1.0.0</version>
+    <time>1490132956</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479653</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bf170ebc8cd21b7df0d75b44ddeb5536</srcmd5>
+    <version>1.1.0</version>
+    <time>1554114998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689704</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c4a389340fa8f55836a0e96a9ded1c18</srcmd5>
+    <version>1.1.1</version>
+    <time>1560970834</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706009</requestid>
+  </revision>
+</revisionlist>

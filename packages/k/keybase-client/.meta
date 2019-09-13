@@ -1,0 +1,5 @@
+<package name="keybase-client" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="keybase-client"/>
+</package>

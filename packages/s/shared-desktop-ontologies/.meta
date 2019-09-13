@@ -1,0 +1,8 @@
+<package name="shared-desktop-ontologies" project="openSUSE:Factory">
+  <title>Shared Desktop Ontologies</title>
+  <description>Open Semantic Collaboration Architecture Foundation (OSCAF) ontologies
+and reference code development. This project is used by maintainers from
+open source projects to maintain standards for the interoperability of
+desktop and web applications.</description>
+  <devel project="X11:common:Factory" package="shared-desktop-ontologies"/>
+</package>

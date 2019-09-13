@@ -1,0 +1,5 @@
+<package name="flatpak-builder" project="openSUSE:Factory">
+  <title>flatpak-builder</title>
+  <description></description>
+  <devel project="GNOME:Factory" package="flatpak-builder"/>
+</package>

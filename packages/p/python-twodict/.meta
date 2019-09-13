@@ -1,0 +1,10 @@
+<package name="python-twodict" project="openSUSE:Factory">
+  <title>Simple two way ordered dictionary for Python</title>
+  <description>TwoWayOrderedDict is a custom dictionary in which one can get the
+key:value relationship but can also get the value:key relationship.
+It also remembers the order in which the items were inserted and
+supports almost all the features of the built-in dict.
+
+</description>
+  <devel project="devel:languages:python" package="python-twodict"/>
+</package>

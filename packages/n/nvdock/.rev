@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bdc5c52120fc43916521411be3b28699</srcmd5>
+    <version>1.02</version>
+    <time>1305629987</time>
+    <user>darix</user>
+    <comment>please add nvdock to factory</comment>
+    <requestid>69515</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>481be66840e978e14c1660918f381772</srcmd5>
+    <version>1.02</version>
+    <time>1305629999</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 69515
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>481be66840e978e14c1660918f381772</srcmd5>
+    <version>1.02</version>
+    <time>1319182206</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>ad904e07c0ab367bdfe891e9f9ab813a</srcmd5>
+    <version>1.02</version>
+    <time>1323192774</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>ad904e07c0ab367bdfe891e9f9ab813a</srcmd5>
+    <version>1.02</version>
+    <time>1340183740</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>ad904e07c0ab367bdfe891e9f9ab813a</srcmd5>
+    <version>1.02</version>
+    <time>1359109520</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>ad904e07c0ab367bdfe891e9f9ab813a</srcmd5>
+    <version>1.02</version>
+    <time>1379663392</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>ad904e07c0ab367bdfe891e9f9ab813a</srcmd5>
+    <version>1.02</version>
+    <time>1409302005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

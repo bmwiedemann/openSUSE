@@ -1,0 +1,223 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>45ba5f3ccd7ba4337d5a00865bd9a2ac</srcmd5>
+    <version>0.1.2</version>
+    <time>1207708946</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>795c0f4eb74b5056001776949433a065</srcmd5>
+    <version>0.1.3</version>
+    <time>1217368345</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>63116664a75bbad35757e76b0a54ab2c</srcmd5>
+    <version>0.1.3</version>
+    <time>1217629742</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b06baeeb13214ab3bfb56fdec51fa654</srcmd5>
+    <version>0.1.3</version>
+    <time>1224718015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b06baeeb13214ab3bfb56fdec51fa654</srcmd5>
+    <version>0.1.3</version>
+    <time>1224718015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>59d6ac090803adcbcdea37d1e7ada346</srcmd5>
+    <version>0.1.3</version>
+    <time>1268924767</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>59d6ac090803adcbcdea37d1e7ada346</srcmd5>
+    <version>0.1.3</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>59d6ac090803adcbcdea37d1e7ada346</srcmd5>
+    <version>0.1.3</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e4db950b1ed970a5c1ac6b296dcb685b</srcmd5>
+    <version>0.2.0</version>
+    <time>1291825857</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55221 from user msmeissn
+</comment>
+    <requestid>55221</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d8938c8a21931455c2810a368da303cc</srcmd5>
+    <version>0.2.0</version>
+    <time>1291825863</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55221
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>d8938c8a21931455c2810a368da303cc</srcmd5>
+    <version>0.2.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>49f62eadbe3cd424dee84d831ad6c00f</srcmd5>
+    <version>0.2.0</version>
+    <time>1306221283</time>
+    <user>saschpe</user>
+    <comment>- Do not include build dates in documentation, messes up build-compare (forwarded request 71082 from elvigia)</comment>
+    <requestid>71085</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>30404c5b27cb39d38d24eaa1ab2527cd</srcmd5>
+    <version>0.2.0</version>
+    <time>1306221290</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71085
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6f45f9421293740cbcbb0510e040e10b</srcmd5>
+    <version>0.2.1</version>
+    <time>1317829567</time>
+    <user>lrupp</user>
+    <comment>Upgrade to libwpg 0.2.1 (forwarded request 86550 from fstrba)</comment>
+    <requestid>86636</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>6f45f9421293740cbcbb0510e040e10b</srcmd5>
+    <version>0.2.1</version>
+    <time>1319182146</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>2a8cdf409fa24397a37d80986210498a</srcmd5>
+    <version>0.2.1</version>
+    <time>1323192375</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>b8955b01f084f38874f6c869777d71be</srcmd5>
+    <version>0.2.1</version>
+    <time>1327484284</time>
+    <user>coolo</user>
+    <comment>- Build with -fvisibility-inlines-hidden (forwarded request 101200 from elvigia)</comment>
+    <requestid>101203</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>542f9870aa1709c531df3e9151af70c5</srcmd5>
+    <version>0.2.1</version>
+    <time>1328890664</time>
+    <user>coolo</user>
+    <comment>Forward</comment>
+    <requestid>103130</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>542f9870aa1709c531df3e9151af70c5</srcmd5>
+    <version>0.2.1</version>
+    <time>1340183654</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>542f9870aa1709c531df3e9151af70c5</srcmd5>
+    <version>0.2.1</version>
+    <time>1359109376</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>89834557e23b2cf6ad7ead8fde00ba37</srcmd5>
+    <version>0.2.1</version>
+    <time>1366232723</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 170993 from m_meister)</comment>
+    <requestid>171086</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>29747b85c6a9e67c72e0797de6dc0dba</srcmd5>
+    <version>0.2.2</version>
+    <time>1366379072</time>
+    <user>coolo</user>
+    <comment>- Upgrade to upstream 0.2.1
+  - Add MPL 2.0+ as license under which libwpg is distributed
+  - Numerous coverity fixes
+- Remove integrated patch (forwarded request 172400 from fstrba)</comment>
+    <requestid>172402</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>29747b85c6a9e67c72e0797de6dc0dba</srcmd5>
+    <version>0.2.2</version>
+    <time>1379663132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>48e36a84b9ec13e16b171ed482a81310</srcmd5>
+    <version>0.2.2</version>
+    <time>1383575193</time>
+    <user>coolo</user>
+    <comment>- Use verbose build, disable werror, drop conditional for docs.</comment>
+    <requestid>205514</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>e66e84ed1c7e761b5b6a6e442caf763f</srcmd5>
+    <version>0.2.2</version>
+    <time>1391077893</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner and noarch the documentation.</comment>
+    <requestid>215142</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>91110f1519376062dbccf2fdf52cf9f9</srcmd5>
+    <version>0.3.0</version>
+    <time>1406479621</time>
+    <user>coolo</user>
+    <comment>Lo 4.3.0.3 submission</comment>
+    <requestid>242311</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>91110f1519376062dbccf2fdf52cf9f9</srcmd5>
+    <version>0.3.0</version>
+    <time>1409301762</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5cfae15aed14da112c1f33eada86417a</srcmd5>
+    <version>0.3.1</version>
+    <time>1451895632</time>
+    <user>dimstar_suse</user>
+    <comment>0.3.1</comment>
+    <requestid>351353</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8db9d85819f38fb40613e826a6ecd8b1</srcmd5>
+    <version>0.3.2</version>
+    <time>1505757255</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove requires that are not needed on the devel pkg
+
+- Version bump to 0.3.2:
+  * Require C++11 for build.
+  * Fix a couple of issues found by oss-fuzz.
+  * Improve performance of reading image data from WPG2 files.
+  * Various minor code cleanups.</comment>
+    <requestid>526049</requestid>
+  </revision>
+</revisionlist>

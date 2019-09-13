@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c536453fa886798adab4b11f6d4f34b</srcmd5>
+    <version>20170720~pre.1494969671.f54b6f9</version>
+    <time>1502366526</time>
+    <user>maxlin_factory</user>
+    <comment>3D Printer control app, CLI and UI</comment>
+    <requestid>505566</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>52a69b2ab2d36a3735b40ee704fd860a</srcmd5>
+    <version>2.0.0~rc5.1522069560.e0ee40a</version>
+    <time>1532293463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624274</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b074e1bded24b8f55ec756caf7ad07fe</srcmd5>
+    <version>2.0.0~rc5.1522069560.e0ee40a</version>
+    <time>1540988214</time>
+    <user>dimstar_suse</user>
+    <comment>- fix dependency to python3 modules (esp. wxWidgets)</comment>
+    <requestid>645480</requestid>
+  </revision>
+</revisionlist>

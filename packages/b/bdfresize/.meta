@@ -1,0 +1,6 @@
+<package name="bdfresize" project="openSUSE:Factory">
+  <title>A Tool for Resizing BDF Format Fonts</title>
+  <description>bdfresize is a command for magnifying or shrinking fonts described in
+the standard BDF format.</description>
+  <devel project="M17N" package="bdfresize"/>
+</package>

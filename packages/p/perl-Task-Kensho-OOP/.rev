@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>478d432bcad9244fc01357d5c38c1009</srcmd5>
+    <version>0.28</version>
+    <time>1326104206</time>
+    <user>coolo</user>
+    <comment>new perl module</comment>
+    <requestid>97056</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>478d432bcad9244fc01357d5c38c1009</srcmd5>
+    <version>0.28</version>
+    <time>1340183925</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>478d432bcad9244fc01357d5c38c1009</srcmd5>
+    <version>0.28</version>
+    <time>1359109805</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>478d432bcad9244fc01357d5c38c1009</srcmd5>
+    <version>0.28</version>
+    <time>1379663856</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ce32320526dc7e59790724184bf6a23c</srcmd5>
+    <version>0.35</version>
+    <time>1393253585</time>
+    <user>coolo</user>
+    <comment>- updated to 0.35
+           - updated recommendations for Async, CLI, ModuleDev, Scalability,
+             WebDev
+ 
+ 0.34004   2014-01-22 (TRIAL RELEASE)
+           - still more pod and metadata tweaks
+ 
+ 0.34003   2014-01-22 (TRIAL RELEASE)
+           - more pod and metadata tweaks
+ 
+ 0.34002   2014-01-21 (TRIAL RELEASE)
+           - fix mangled abstract in META.*
+           - fixed missing list of recommendations in Task::Kensho pod
+ 
+ 0.34001   2014-01-21 (TRIAL RELEASE)
+           - fix munging of ::Hackery preamble into stopwords
+           - fixed bugtracker metadata (now indicating github issues)
+           - distributions split apart again, with new! and enhanced!
+             Dist::Zilla generation magic
+ 
+ 0.34      2013-08-20 01:27:07Z (TRIAL RELEASE)
+           - distributions reunified under Task-Kensho, and now auto-generated
+             from a master YAML file using Dist::Zilla
+ 
+ 0.33      2012-06-24
+           - Task::Kensho::Testing:
+             - Retired Test::Exception and replaced with Test::Fatal
+             - added Test::Deep, Test::Requires and Test::NoWarnings
+           - Task::Kensho::WebDev: added Plack</comment>
+    <requestid>223623</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ce32320526dc7e59790724184bf6a23c</srcmd5>
+    <version>0.35</version>
+    <time>1409302500</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d57b1489d4a320dedaffc03ee9ea1ab7</srcmd5>
+    <version>0.38</version>
+    <time>1410967534</time>
+    <user>coolo</user>
+    <comment>- updated to 0.38
+           - WebDev: Template::Toolkit is not indexed (see RT#92588) -
+             refer to Template instead
+           - subtask distributions now just use regular prereqs on their
+             component modules, rather than using optional_features metadata
+           - Task-Kensho now once again prompts at install time for each
+             subtask to be optionally installed
+ 
+ 0.37      2014-08-16
+           - ModuleDev: Switch Carp::Always over to Devel::Confess (per mst)
+           - ModuleDev: Add Data::Printer (per Sawyer X)
+           - ModuleDev: Add Devel::Dwarn (per mst)
+           - Toolchain: Add Pinto (per Sawyer X)
+           - Toolchain: Add App::FatPacker (per perigrin)
+ 
+ 0.36      2014-03-08
+           - fix pod markup error in main Task::Kensho distribution
+           - module list revisions to CLI, Dates, Toolchain, WebCrawling,
+             WebDev</comment>
+    <requestid>249339</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6e0e489aa7ae94096c9bfa1cefafe8ad</srcmd5>
+    <version>0.39</version>
+    <time>1465129245</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399314</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6aab4adb7ef505a9679133105491382a</srcmd5>
+    <version>0.40</version>
+    <time>1544632049</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655828</requestid>
+  </revision>
+</revisionlist>

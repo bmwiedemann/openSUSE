@@ -1,0 +1,119 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c15eaf153e7621d51c14f1184d39b9c</srcmd5>
+    <version>0.101620</version>
+    <time>1306311803</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66713</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c34344eef3068369bf7345442f07aaa6</srcmd5>
+    <version>0.101620</version>
+    <time>1306311817</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66713
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c34344eef3068369bf7345442f07aaa6</srcmd5>
+    <version>0.101620</version>
+    <time>1319182257</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7160c50c8c3fdf4b2d2ea20b47622311</srcmd5>
+    <version>0.101621</version>
+    <time>1321875475</time>
+    <user>coolo</user>
+    <comment>- update to 0.101621
+   document the \-escaping behavior of sections</comment>
+    <requestid>92506</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>37e121bdde9c225408551f39a1008faa</srcmd5>
+    <version>0.101621</version>
+    <time>1323193192</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>37e121bdde9c225408551f39a1008faa</srcmd5>
+    <version>0.101621</version>
+    <time>1340183825</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>37e121bdde9c225408551f39a1008faa</srcmd5>
+    <version>0.101621</version>
+    <time>1359109639</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>defadfdac540a9cba0af376cf1d93925</srcmd5>
+    <version>0.101622</version>
+    <time>1374491084</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183673</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>defadfdac540a9cba0af376cf1d93925</srcmd5>
+    <version>0.101622</version>
+    <time>1379663626</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a2d6f8ae6a1b66d49d970b17a807ab7f</srcmd5>
+    <version>0.200003</version>
+    <time>1385490299</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208391</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d1fb2a0d106fd4537fc09259463fe0f9</srcmd5>
+    <version>0.200004</version>
+    <time>1386843577</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210530</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0f798424336156ac03448acff1619aac</srcmd5>
+    <version>0.200005</version>
+    <time>1392023841</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 0.200005
+       - open DATA handles both :raw and :bytes to avoid content munging on
+         Win32 (thanks, Kenichi Ishigaki!)
+       - This is not yet a perfect solution for Win32.</comment>
+    <requestid>221517</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a1bdf10942e36cd447ce3cf1100b2bac</srcmd5>
+    <version>0.200006</version>
+    <time>1395148559</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226453</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>a1bdf10942e36cd447ce3cf1100b2bac</srcmd5>
+    <version>0.200006</version>
+    <time>1409302243</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bf8ea1f3d45f2efc7097990c64198108</srcmd5>
+    <version>0.200007</version>
+    <time>1500670017</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509388</requestid>
+  </revision>
+</revisionlist>

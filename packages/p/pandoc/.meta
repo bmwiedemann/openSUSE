@@ -1,0 +1,9 @@
+<package name="pandoc" project="openSUSE:Factory">
+  <title>Conversion between markup formats</title>
+  <description>Pandoc is a Haskell library for converting from one markup format to another, and a command-line tool that uses this library. It can read markdown and (subsets of) reStructuredText, HTML, and LaTeX, and it can write markdown, reStructuredText, HTML, LaTeX, ConTeXt, Docbook, OpenDocument, ODT, RTF, MediaWiki, groff man pages, and S5 HTML slide shows.
+
+Pandoc extends standard markdown syntax with footnotes, embedded LaTeX, definition lists, tables, and other features. A compatibility mode is provided for those who need a drop-in replacement for Markdown.pl. 
+
+In contrast to existing tools for converting markdown to HTML, which use regex substitutions, pandoc has a modular design: it consists of a set of readers, which parse text in a given format and produce a native representation of the document, and a set of writers, which convert this native representation into a target format. Thus, adding an input or output format requires only adding a reader or writer.</description>
+  <devel project="devel:languages:haskell" package="pandoc"/>
+</package>

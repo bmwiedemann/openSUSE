@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>465b3c26342e969c5592669364d67780</srcmd5>
+    <version>0.5.2</version>
+    <time>1355130693</time>
+    <user>coolo</user>
+    <comment>http://lists.opensuse.org/opensuse-factory/2012-12/msg00020.html</comment>
+    <requestid>144326</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>465b3c26342e969c5592669364d67780</srcmd5>
+    <version>0.5.2</version>
+    <time>1359110305</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>465b3c26342e969c5592669364d67780</srcmd5>
+    <version>0.5.2</version>
+    <time>1379664498</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>465b3c26342e969c5592669364d67780</srcmd5>
+    <version>0.5.2</version>
+    <time>1409303216</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>0fd9993112ee60098a2fdde07565c04d</srcmd5>
+    <version>0.5.2</version>
+    <time>1413355908</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256280</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>03286bebca95888cd6937970ea98334d</srcmd5>
+    <version>0.5.2</version>
+    <time>1486046624</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453914</requestid>
+  </revision>
+</revisionlist>

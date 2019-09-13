@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>954c50acea3c12f60837d5572409f5d3</srcmd5>
+    <version>0.9.29</version>
+    <time>1524576859</time>
+    <user>dimstar_suse</user>
+    <comment>Eolie is a Web browser for the GNOME Desktop. It provides:
+* Firefox sync support
+* Secret password store
+* A modern UI</comment>
+    <requestid>600119</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>447b69facddbd47ec1ab41fe0cae8b1d</srcmd5>
+    <version>0.9.31</version>
+    <time>1525121867</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.31:
+  * Fix a crash when closing a website.
+- Update to version 0.9.30:
+  * Fix webkit crashes.
+  * Fix WebView popover. (forwarded request 602132 from 1Antoine1)</comment>
+    <requestid>602478</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a181b2c08a685f0a7328fa14d0d46f8f</srcmd5>
+    <version>0.9.32</version>
+    <time>1525426336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603933</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>56a143250ff85f5404926266392d791a</srcmd5>
+    <version>0.9.34</version>
+    <time>1526573128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.34:
+  * Fix search provider.
+- Update to version 0.9.33:
+  * Bug fixes.
+- Set required minimum version of gtk+ to 3.20. (forwarded request 609932 from 1Antoine1)</comment>
+    <requestid>610030</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>762e7f51774cf96fee0e737261cc9101</srcmd5>
+    <version>0.9.35</version>
+    <time>1527605609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.35:
+  * Fix Ctrl + clic feature. (forwarded request 611919 from 1Antoine1)</comment>
+    <requestid>612864</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c302efc718b23d354ad3313999b2bb0</srcmd5>
+    <version>0.9.36</version>
+    <time>1535538420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.36:
+  * Bug fixes.
+- Update git repository URL in _service.
+</comment>
+    <requestid>632024</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ca47e7f44dd3b48d19bd898d402cd432</srcmd5>
+    <version>0.9.37</version>
+    <time>1537787556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636954</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>93a93eae62e1c6293320cae4ee5c370a</srcmd5>
+    <version>0.9.40</version>
+    <time>1538672469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639662</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f60f461a52daf5cbd2e4ced29499b664</srcmd5>
+    <version>0.9.41</version>
+    <time>1539013493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640132</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>88ea9b08d9660712559a95b2d2fc1f57</srcmd5>
+    <version>0.9.45</version>
+    <time>1539758605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642510</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2675fce7751f2071ab9c6898aa23ceba</srcmd5>
+    <version>0.9.51</version>
+    <time>1548064746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666681</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e59adccb9614bd07011be39248feb27c</srcmd5>
+    <version>0.9.52</version>
+    <time>1551216015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.52:
+  * Bug fixes.
+</comment>
+    <requestid>678976</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4f596dc19ce3d3c289e5b033fe9c1e19</srcmd5>
+    <version>0.9.60</version>
+    <time>1553635941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687761</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c598017e52b4abd7d369db4c46efe2b5</srcmd5>
+    <version>0.9.61</version>
+    <time>1556817627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699938</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>616dd19295caeaa1f426facd02e94c67</srcmd5>
+    <version>0.9.62</version>
+    <time>1558690258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704814</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7c3444a492b60ffcbc283b4a208c2a25</srcmd5>
+    <version>0.9.63</version>
+    <time>1566551345</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.63:
+  * Bug fixes.</comment>
+    <requestid>725380</requestid>
+  </revision>
+</revisionlist>

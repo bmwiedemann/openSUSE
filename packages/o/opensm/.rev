@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3ed2f49382e76b7eb8056784a49f67b</srcmd5>
+    <version>3.3.17</version>
+    <time>1407744432</time>
+    <user>lnussel</user>
+    <comment>Copy OFED 3.12 packages from SLE12</comment>
+    <requestid>239627</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ad675733447cae7b77436db65abae9f</srcmd5>
+    <version>3.3.17</version>
+    <time>1407912557</time>
+    <user>lnussel</user>
+    <comment>Very minor fix</comment>
+    <requestid>244322</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>0ad675733447cae7b77436db65abae9f</srcmd5>
+    <version>3.3.17</version>
+    <time>1409302047</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>b65fc627efe7d2684170a693517b5653</srcmd5>
+    <version>3.3.17</version>
+    <time>1409583559</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247033</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>094da8b18582901863a997ad68d210a2</srcmd5>
+    <version>3.3.19</version>
+    <time>1426064255</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289860</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3030553b9229ea7abcba837d96b326b8</srcmd5>
+    <version>3.3.20</version>
+    <time>1497016634</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501896</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a69ae18e7a9ca79ddd72b9ba91399b43</srcmd5>
+    <version>3.3.20</version>
+    <time>1497274585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>503045</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>505380ba8e2afa9740d5965dfff90e41</srcmd5>
+    <version>3.3.20</version>
+    <time>1498485075</time>
+    <user>dimstar_suse</user>
+    <comment>- Have new libs packages obsolete the old opensm-libs3
+
+- Implement shared library packaging guideline
+- Rectify opensm-type_punning.patch:
+  a union does not fix type punning problems (let alone
+  misalignmened pointers), one must use memcpy.</comment>
+    <requestid>505931</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>bdb1c35b0b64f6eb1017fa75a63d078d</srcmd5>
+    <version>3.3.20</version>
+    <time>1512041831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544878</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>63d64b46d092a65d3e2a94b4478bb4cd</srcmd5>
+    <version>3.3.20</version>
+    <time>1515260777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561306</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>304666b2d5297526f96ef79db4ce3a85</srcmd5>
+    <version>3.3.20</version>
+    <time>1530087365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617012</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fa277fc19164e241b344daf4f4c7b34d</srcmd5>
+    <version>3.3.21</version>
+    <time>1542012600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646568</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a143cbf958a0d115e83a4922506ed2dc</srcmd5>
+    <version>3.3.22</version>
+    <time>1555928588</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>695785</requestid>
+  </revision>
+</revisionlist>

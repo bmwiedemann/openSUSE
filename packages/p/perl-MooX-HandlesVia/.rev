@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f818d898e5ce64a49d690793a4b11493</srcmd5>
+    <version>0.001005</version>
+    <time>1411017169</time>
+    <user>coolo</user>
+    <comment>needed for GnuPG::Interface</comment>
+    <requestid>249531</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3fdd3430513c86c8f6fa71c87b697206</srcmd5>
+    <version>0.001008</version>
+    <time>1429107977</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296664</requestid>
+  </revision>
+</revisionlist>

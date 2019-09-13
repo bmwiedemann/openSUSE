@@ -1,0 +1,596 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f37bc45baade57ab08dce8ecc947629f</srcmd5>
+    <version>0.7.1</version>
+    <time>1312462868</time>
+    <user>darix</user>
+    <comment>Please add</comment>
+    <requestid>77040</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5ae06d00cc3acd176ba1b68ffc81781a</srcmd5>
+    <version>0.7.1</version>
+    <time>1312462878</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 77040
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8e96e2de726b0b013955456c4510488e</srcmd5>
+    <version>0.7.2</version>
+    <time>1317024789</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>84233</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8e96e2de726b0b013955456c4510488e</srcmd5>
+    <version>0.7.2</version>
+    <time>1319182380</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>1b34525e2fd516846252fcfd91c4a338</srcmd5>
+    <version>0.7.2</version>
+    <time>1322216009</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>93072</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>687631c24990ca61bcad4ef7f6e8d577</srcmd5>
+    <version>0.7.2</version>
+    <time>1323194270</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d4bd6ba9f9e24e1dd0de9865cb5e5701</srcmd5>
+    <version>0.7.5</version>
+    <time>1329215209</time>
+    <user>coolo</user>
+    <comment>update to 0.7.5 (forwarded request 103506 from rhafer)</comment>
+    <requestid>103514</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>32500c8fe5ab7d73a2c53ad4b430396a</srcmd5>
+    <version>0.7.5</version>
+    <time>1329922491</time>
+    <user>coolo</user>
+    <comment>- Fixed SLE_11 build by disabling the testsuite for it (forwarded request 106445 from saschpe)</comment>
+    <requestid>106446</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>537a893c03f6719d8b21fef00670a3d5</srcmd5>
+    <version>0.7.6</version>
+    <time>1336468529</time>
+    <user>coolo</user>
+    <comment>Resubmit with fixed sources</comment>
+    <requestid>116281</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0cfed04d33c564ab20d30091c5c9e611</srcmd5>
+    <version>0.7.7</version>
+    <time>1337578240</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121278</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d7d3ffce0942bd23f1ba574989ac184d</srcmd5>
+    <version>0.7.7</version>
+    <time>1338280567</time>
+    <user>coolo</user>
+    <comment>- Fix building on openSUSE 11.4
+- spec file cleanups (forwarded request 122292 from TheBlackCat) (forwarded request 122294 from TheBlackCat)</comment>
+    <requestid>122295</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>d7d3ffce0942bd23f1ba574989ac184d</srcmd5>
+    <version>0.7.7</version>
+    <time>1340184032</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>871317efe69fb5dcab4902e9f4e2bea4</srcmd5>
+    <version>0.7.9</version>
+    <time>1352215320</time>
+    <user>coolo</user>
+    <comment>Update to 0.7.9 (forwarded request 140019 from termim)</comment>
+    <requestid>140296</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>0d55e4599fcbc4958ce55035112d0b2d</srcmd5>
+    <version>0.7.9</version>
+    <time>1354530636</time>
+    <user>coolo</user>
+    <comment>Remove openSUSE 11.4 spec file workarounds (forwarded request 143686 from TheBlackCat)</comment>
+    <requestid>143687</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>c22a6e8869744ee02effe1da58b3eca5</srcmd5>
+    <version>0.7.9</version>
+    <time>1356731248</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146431</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>c22a6e8869744ee02effe1da58b3eca5</srcmd5>
+    <version>0.7.9</version>
+    <time>1359109984</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>1c400862ae7eb22149ab81765aa64255</srcmd5>
+    <version>0.7.9</version>
+    <time>1362732487</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157710</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7a7245508b59e2fca92c085e31dc4b36</srcmd5>
+    <version>0.7.10</version>
+    <time>1362746413</time>
+    <user>coolo</user>
+    <comment>- update to 0.7.10:
+  * orm
+  + [bug] Fixed Session accounting bug whereby replacing
+    a deleted object in the identity map with another
+    object of the same primary key would raise a
+    &quot;conflicting state&quot; error on rollback(),
+    if the replaced primary key were established either
+    via non-unitofwork-established INSERT statement
+    or by primary key switch of another instance.
+    [ticket:2583]
+  * oracle
+  + [bug] changed the list of cx_oracle types that are
+    excluded from the setinputsizes() step to only include
+    STRING and UNICODE; CLOB and NCLOB are removed.  This
+    is to work around cx_oracle behavior which is broken
+    for the executemany() call.  In 0.8, this same change 
+    is applied however it is also configurable via the
+    exclude_setinputsizes argument. [ticket:2561]
+  * mysql
+  + [feature] Added &quot;raise_on_warnings&quot; flag to OurSQL
+    dialect.  [ticket:2523]
+  + [feature] Added &quot;read_timeout&quot; flag to MySQLdb
+    dialect.  [ticket:2554]
+
+- update to 0.7.10:
+  * orm
+  + [bug] Fixed Session accounting bug whereby replacing
+    a deleted object in the identity map with another
+    object of the same primary key would raise a
+    &quot;conflicting state&quot; error on rollback(),</comment>
+    <requestid>157972</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>788af9b509e6a7f8ea0decd83c4ad56e</srcmd5>
+    <version>0.7.10</version>
+    <time>1371651775</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179707</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>57ebfcef6cb626cd71c15393e12b850c</srcmd5>
+    <version>0.7.10</version>
+    <time>1374671407</time>
+    <user>coolo</user>
+    <comment>fixing build requirement from python-sqlite to python-pysqlite to also build on SLES11 SP3 (forwarded request 183985 from cberendt)</comment>
+    <requestid>184054</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>4b3fc0453845f521a216a08115ef5af7</srcmd5>
+    <version>0.7.10</version>
+    <time>1376393048</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add SQLAlchemy-0.7.10-SLES-drop-failing-tests.patch: Cheat with 
+  dropping tests to fix testsuite on SLE-11</comment>
+    <requestid>186709</requestid>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>4b3fc0453845f521a216a08115ef5af7</srcmd5>
+    <version>0.7.10</version>
+    <time>1379664116</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1831b33c71139f3ab6c888481e6d86fb</srcmd5>
+    <version>0.8.3</version>
+    <time>1383545337</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.8.3:
+  + See http://docs.sqlalchemy.org/en/latest/changelog/changelog_08.html#change-0.8.3
+- Drop outdated patches
+  + SQLAlchemy-0.7.10-SLES-drop-failing-tests.patch
+  + sqlalchemy-0.7-logging.patch
+
+- Require python-setuptools instead of distribute (upstreams merged)</comment>
+    <requestid>205263</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0a5eadf50b9b04b97329783e3018cc6c</srcmd5>
+    <version>0.8.6</version>
+    <time>1397042149</time>
+    <user>coolo</user>
+    <comment>- update to 0.8.6:
+  + See http://docs.sqlalchemy.org/en/rel_0_9/changelog/changelog_08.html#change-0.8.6 (forwarded request 229362 from dirkmueller)</comment>
+    <requestid>229367</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d5aa3b2dd675abe61f2f98e2127e5c4b</srcmd5>
+    <version>0.9.6</version>
+    <time>1405573090</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241014</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>d5aa3b2dd675abe61f2f98e2127e5c4b</srcmd5>
+    <version>0.9.6</version>
+    <time>1409302803</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>139276c398382d9a2a6e0f2de9e291e2</srcmd5>
+    <version>0.9.7</version>
+    <time>1410795658</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248990</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4b24d8b9ff0e5d12787d6dde4baaa56f</srcmd5>
+    <version>0.9.8</version>
+    <time>1420833058</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280588</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f22c5ed206da1d125624f6ac872a09fe</srcmd5>
+    <version>0.9.9</version>
+    <time>1429769094</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298601</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>51e13d07a91b1a9b25a55d3c52e8014f</srcmd5>
+    <version>1.0.4</version>
+    <time>1432545236</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308523</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2161ed741791a666b1ba7c7a0e5b3eb7</srcmd5>
+    <version>1.0.5</version>
+    <time>1434550587</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312318</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>364ca859e8fb9dd5cd0e2addb8592940</srcmd5>
+    <version>1.0.8</version>
+    <time>1444130863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336459</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>58b4a260dbe4db46e2e345f2caf576de</srcmd5>
+    <version>1.0.11</version>
+    <time>1452535939</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353053</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>fbfa991420f49048eb1aff19bda5a03d</srcmd5>
+    <version>1.0.11</version>
+    <time>1455701072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358855</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c09c9d6c53a19c6896f04c8b0975315a</srcmd5>
+    <version>1.0.13</version>
+    <time>1465336238</time>
+    <user>dimstar_suse</user>
+    <comment>- fix source url
+
+- update to 1.0.13:
+  * see http://docs.sqlalchemy.org/en/latest/changelog/changelog_10.html#change-1.0.12
+    and http://docs.sqlalchemy.org/en/latest/changelog/changelog_10.html#change-1.0.13
+Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
+    <requestid>400455</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9499c82d2a008bb41d41e5a69588f5f8</srcmd5>
+    <version>1.0.15</version>
+    <time>1476109186</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428019</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a03056e9a212da8dc660cbd2def27b60</srcmd5>
+    <version>1.1.9</version>
+    <time>1493368869</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489145</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>31bb8a18e3a9b040246191d89a8e8fb1</srcmd5>
+    <version>1.1.9</version>
+    <time>1493819809</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492343</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>6be4d40bb91dc6a4d6c53b6450ea1a42</srcmd5>
+    <version>1.1.9</version>
+    <time>1494088275</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493131</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>704ac3d97022735571cf631d7da7245c</srcmd5>
+    <version>1.1.11</version>
+    <time>1499754445</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509133</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b9be6f95c7cfb38f5078181df96bb8cf</srcmd5>
+    <version>1.1.12</version>
+    <time>1502366764</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515249</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2029b2967a2c17672abd6055577f823d</srcmd5>
+    <version>1.1.14</version>
+    <time>1506524129</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528894</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>25b104ee97a68e684bc276f7eb5b244b</srcmd5>
+    <version>1.2.0</version>
+    <time>1514983207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561265</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>fa99c56015dd041bfa624d8508c82932</srcmd5>
+    <version>1.2.1</version>
+    <time>1516444004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566980</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>698ba274a0bc31b9fb59e8fad845597e</srcmd5>
+    <version>1.2.2</version>
+    <time>1517234335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570418</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5d396b53a5a5f1a4b7e3b322bc911178</srcmd5>
+    <version>1.2.3</version>
+    <time>1519145678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577965</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>84b63dc6f7d1e0f78bdac6fa5064d5f7</srcmd5>
+    <version>1.2.4</version>
+    <time>1519555616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579760</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1daca908f36f3d0c40d1980f4ea0a821</srcmd5>
+    <version>1.2.5</version>
+    <time>1520588682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584214</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>85cd57de5755801577df39822a5261c9</srcmd5>
+    <version>1.2.6</version>
+    <time>1523447886</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594667</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9c71c14a3ee1b3eec057cb720b428bf8</srcmd5>
+    <version>1.2.7</version>
+    <time>1524742646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599639</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>8b7373995305aa1e0efb2b304a5d04f1</srcmd5>
+    <version>1.2.8</version>
+    <time>1530087727</time>
+    <user>dimstar_suse</user>
+    <comment>- add upstream fix_test_reflection.patch to fix tests with new sqlite (forwarded request 619105 from mimi_vx)</comment>
+    <requestid>619112</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>01cdace115619ec4799a3e0afea65f3b</srcmd5>
+    <version>1.2.9</version>
+    <time>1530567189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620083</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>5fefc163e714bc9078f97066da352fbd</srcmd5>
+    <version>1.2.10</version>
+    <time>1531592760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622792</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>2ae9c1647ea25fb8003c991571680f7f</srcmd5>
+    <version>1.2.11</version>
+    <time>1535367583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631547</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>75aee618a51fa7a4e3caf3aeeeef6adb</srcmd5>
+    <version>1.2.12</version>
+    <time>1537964671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638276</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>41986c7d36319c0194c40118f31a53fc</srcmd5>
+    <version>1.2.13</version>
+    <time>1541510937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646013</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>11a21449578a30ee98e7fb33d64d7bd4</srcmd5>
+    <version>1.2.14</version>
+    <time>1542012358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648375</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>b301d8c05ab640233a980c47e9bbe07b</srcmd5>
+    <version>1.2.14</version>
+    <time>1545223931</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659356</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>80e2025c97850f432e72a85e55e09fea</srcmd5>
+    <version>1.2.18</version>
+    <time>1551024204</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678417</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>18ce4a6a252ddb0885b867d9b4a0fe2f</srcmd5>
+    <version>1.3.0</version>
+    <time>1552039291</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix test failure from upstream test.patch
+
+- Update to versrion 1.3.0:
+  * See https://docs.sqlalchemy.org/en/latest/changelog/migration_13.html
+    for deprecation list with this version
+  * For the changes see https://docs.sqlalchemy.org/en/latest/changelog/changelog_13.html</comment>
+    <requestid>682172</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>e36f29ce8d9f743b8afd909616500606</srcmd5>
+    <version>1.3.1</version>
+    <time>1552380370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683645</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>65c8e653819aeda17313c2f8f30606cf</srcmd5>
+    <version>1.3.2</version>
+    <time>1555321817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693001</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>f0f45da16b026a263499917d550b099e</srcmd5>
+    <version>1.3.3</version>
+    <time>1556474381</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696966</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>1d447a737d577330f36bb4d809c8ea20</srcmd5>
+    <version>1.3.4</version>
+    <time>1560862097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708934</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>a3e4e81d500c2fecb390fea08d46fa32</srcmd5>
+    <version>1.3.5</version>
+    <time>1561882448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711669</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>2247e0afed7f895330cfa83c2fbc0c0b</srcmd5>
+    <version>1.3.6</version>
+    <time>1564301923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717942</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>27aab5b62418023df372a42978379042</srcmd5>
+    <version>1.3.6</version>
+    <time>1566463977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724866</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>229bf54994acd66ebb94db33f54d6392</srcmd5>
+    <version>1.3.7</version>
+    <time>1566893493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725980</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>cd4e5d073348d7ca1de8e7a8087f1609</srcmd5>
+    <version>1.3.8</version>
+    <time>1567852252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727458</requestid>
+  </revision>
+</revisionlist>

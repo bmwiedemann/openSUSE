@@ -1,0 +1,245 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>483b1c9f3bdb3d770808461c7c000da3</srcmd5>
+    <version>0.2.0</version>
+    <time>1209005845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="77">
+    <srcmd5>483b1c9f3bdb3d770808461c7c000da3</srcmd5>
+    <version>0.2.0</version>
+    <time>1209005845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6c52cf78f6b8660fc79fe5875c5c8ce0</srcmd5>
+    <version>0.2.1</version>
+    <time>1224757872</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>477fa53ec12723073ec3353a93a4da3c</srcmd5>
+    <version>0.3.0</version>
+    <time>1240594123</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5490281c4c6d643185d136908201a60c</srcmd5>
+    <version>0.3.1</version>
+    <time>1244824644</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bb2c30edfdc7f6e196044cc95e712fc8</srcmd5>
+    <version>0.3.1</version>
+    <time>1249066424</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fdf6925d150db2562aaa4ffdd272faee</srcmd5>
+    <version>0.3.2</version>
+    <time>1252017045</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/telepathy-haze based on submit request 19788 from user vuntz
+</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>fdf6925d150db2562aaa4ffdd272faee</srcmd5>
+    <version>0.3.2</version>
+    <time>1252017045</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/telepathy-haze based on submit request 19788 from user vuntz
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9a3fd9d84d67cbe8a2094a6d7cd83af1</srcmd5>
+    <version>0.3.3</version>
+    <time>1265913063</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/telepathy-haze based on submit request 32304 from user vuntz
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f52c721f478fd1bfa577c4fb42652b8c</srcmd5>
+    <version>0.3.3</version>
+    <time>1268926312</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ca809d131d780fd3953e3c19ec7d3bd3</srcmd5>
+    <version>0.3.4</version>
+    <time>1268989372</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/telepathy-haze based on submit request 35251 from user MBoman
+</comment>
+    <requestid>35251</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ca809d131d780fd3953e3c19ec7d3bd3</srcmd5>
+    <version>0.3.4</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ca809d131d780fd3953e3c19ec7d3bd3</srcmd5>
+    <version>0.3.4</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>10904cd409f6838a5acf4bdc2fce371c</srcmd5>
+    <version>0.4.0</version>
+    <time>1281398712</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/telepathy-haze based on submit request 45151 from user vuntz
+</comment>
+    <requestid>45151</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>10904cd409f6838a5acf4bdc2fce371c</srcmd5>
+    <version>0.4.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7fe0990d2c6308dda481da5876b96870</srcmd5>
+    <version>0.5.0</version>
+    <time>1310372068</time>
+    <user>saschpe</user>
+    <comment>Update to 0.5.0 (forwarded request 75958 from vuntz)</comment>
+    <requestid>75970</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f6c466c493e26b563d00af9e06c035a7</srcmd5>
+    <version>0.5.0</version>
+    <time>1310372081</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75970
+</comment>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>ed2526cc8078f904ea07c4f148011daf</srcmd5>
+    <version>0.5.0</version>
+    <time>1315564034</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81544</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>c6f3f3f38a803bd785cd0b213f211f89</srcmd5>
+    <version>0.5.0</version>
+    <time>1315564048</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81544
+</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>c6f3f3f38a803bd785cd0b213f211f89</srcmd5>
+    <version>0.5.0</version>
+    <time>1319182511</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>ff1261b048507b87d0667a3ddf65d196</srcmd5>
+    <version>0.5.0</version>
+    <time>1323194876</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>206dee574d8af359b27ecdcb2b3e77f2</srcmd5>
+    <version>0.6.0</version>
+    <time>1334217222</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>113201</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>206dee574d8af359b27ecdcb2b3e77f2</srcmd5>
+    <version>0.6.0</version>
+    <time>1340184264</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>206dee574d8af359b27ecdcb2b3e77f2</srcmd5>
+    <version>0.6.0</version>
+    <time>1359110470</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2d2acc0db16bd120fd8a24b82f70a1fa</srcmd5>
+    <version>0.7.0</version>
+    <time>1364928250</time>
+    <user>coolo</user>
+    <comment>Push G:Factory</comment>
+    <requestid>162204</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>11d8d3f51e1cdc97c84439270673c274</srcmd5>
+    <version>0.7.0</version>
+    <time>1373984661</time>
+    <user>coolo</user>
+    <comment>- Add telepathy-haze-handle-purple_account_request_password.patch:
+  handle account_request_password query from libpurple. (forwarded request 183129 from fcrozat)</comment>
+    <requestid>183142</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>11d8d3f51e1cdc97c84439270673c274</srcmd5>
+    <version>0.7.0</version>
+    <time>1379664784</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0408ebb0b6eed664e9a78baa2ebb6fcd</srcmd5>
+    <version>0.7.1</version>
+    <time>1379927113</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.92</comment>
+    <requestid>200045</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b04d6dcebb53b3e85f7468cb1b9d02bf</srcmd5>
+    <version>0.8.0</version>
+    <time>1380809403</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 0.8.0 - Stable release resulting from 0.7.x branch - Wanted for 13.1 (forwarded request 201966 from RBrownCCB)</comment>
+    <requestid>201980</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>b04d6dcebb53b3e85f7468cb1b9d02bf</srcmd5>
+    <version>0.8.0</version>
+    <time>1409303463</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>7067abd1719b211b25f85ba252f97aca</srcmd5>
+    <version>0.8.0</version>
+    <time>1452377588</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352106</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>424f1cde45cc5d343be2f5b20ea700bf</srcmd5>
+    <version>0.8.0</version>
+    <time>1459254680</time>
+    <user>dimstar_suse</user>
+    <comment>Fresh up spec and add patch from upstream git. (forwarded request 375771 from Zaitor)</comment>
+    <requestid>376350</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>0e180919fd2fbd27ca20cd6d57b3a96e</srcmd5>
+    <version>0.8.0</version>
+    <time>1520502570</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581367 from dimstar)</comment>
+    <requestid>582865</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c19ffc808000b2cdd35131c2073f558</srcmd5>
+    <version>14.0.0</version>
+    <time>1449145830</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for python-torbrowser-launcher (Request#346437)</comment>
+    <requestid>346438</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0f7b4ede2c7f6459c22d920fec373b1d</srcmd5>
+    <version>16.0.0</version>
+    <time>1468579513</time>
+    <user>dimstar_suse</user>
+    <comment>update to newest version (forwarded request 399867 from winski)</comment>
+    <requestid>399887</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6b7654b703f208841219a5e7473bd152</srcmd5>
+    <version>16.0.0</version>
+    <time>1499754293</time>
+    <user>dimstar_suse</user>
+    <comment>Convert to singlespec (forwarded request 507533 from okurz)</comment>
+    <requestid>507914</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f7f3c037a1ee9ef7acc41a939af9951</srcmd5>
+    <version>17.0.0</version>
+    <time>1537964603</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop some SLE11 code that is quite useless today
+
+- Update to 17.0.0:
+  * Deprecations:
+    - Since Chrome 58 and Firefox 48 both don’t accept certificates 
+      that contain only a Common Name, its usage is hereby 
+      deprecated in service_identity too. We have been raising 
+      a warning since 16.0.0 and the support will be removed in 
+      mid-2018 for good.
+  * Changes:
+    - When service_identity.SubjectAltNameWarning is raised, the 
+      Common Name of the certificate is now included in the warning
+      message. #17
+    - Added cryptography.x509 backend for verifying certificates.
+      #18
+    - Wildcards (*) are now only allowed if they are the leftmost 
+      label in a certificate. This is common practice by all major 
+      browsers. #19</comment>
+    <requestid>638027</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2cd9689b38c8dbd4c0e562420a2d943f</srcmd5>
+    <version>17.0.0</version>
+    <time>1538502573</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639564</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2830c30f350658693bb99d1795b71d0d</srcmd5>
+    <version>17.0.0</version>
+    <time>1545866908</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659668</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>84588765834446e9ba80f3c32cce11bb</srcmd5>
+    <version>18.1.0</version>
+    <time>1551468607</time>
+    <user>coolo</user>
+    <comment>- update to 18.1.0
+- drop fetch-intersphinx-inventories.sh
+- drop local-intersphinx-inventories.patch
+- cleanup spec + enable tests
+ * pyOpenSSL is optional now if you use service_identity.cryptography.* only.
+ * Added support for iPAddress subjectAltNames.
+
+- add fetch-intersphinx-inventories.sh to the sources
+
+- add local-intersphinx-inventories.patch for generating the docs
+  correctly
+- add fetch-intersphinx-inventories.sh to fetch the inventories</comment>
+    <requestid>680512</requestid>
+  </revision>
+</revisionlist>

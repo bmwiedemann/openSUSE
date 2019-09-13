@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cae89ed60a946e7e8d8e48e3b74f7979</srcmd5>
+    <version>0.28</version>
+    <time>1179801773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>528f6bdf49cb0fb7cd30a3946f23d614</srcmd5>
+    <version>0.30</version>
+    <time>1200613473</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="54">
+    <srcmd5>528f6bdf49cb0fb7cd30a3946f23d614</srcmd5>
+    <version>0.30</version>
+    <time>1200613473</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="55">
+    <srcmd5>c81dffffc581b644559fc550bdea5b70</srcmd5>
+    <version>0.30</version>
+    <time>1245339978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="57">
+    <srcmd5>c81dffffc581b644559fc550bdea5b70</srcmd5>
+    <version>0.30</version>
+    <time>1245339978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="58">
+    <srcmd5>88f00d55c997b83e2a81128c9329d183</srcmd5>
+    <version>0.30</version>
+    <time>1268925986</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00ecbdd24fb3fdda266c443f2509d25c</srcmd5>
+    <version>0.36</version>
+    <time>1270587103</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rlwrap based on submit request 37105 from user hennevogel
+</comment>
+    <requestid>37105</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>00ecbdd24fb3fdda266c443f2509d25c</srcmd5>
+    <version>0.36</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>00ecbdd24fb3fdda266c443f2509d25c</srcmd5>
+    <version>0.36</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1565bbccdcb4ccc1e90278349e1e2427</srcmd5>
+    <version>0.37</version>
+    <time>1285064988</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rlwrap based on submit request 48508 from user prusnak
+</comment>
+    <requestid>48508</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>1565bbccdcb4ccc1e90278349e1e2427</srcmd5>
+    <version>0.37</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>1565bbccdcb4ccc1e90278349e1e2427</srcmd5>
+    <version>0.37</version>
+    <time>1319182428</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>e3d44decd468da1abb0ab8a227cdf10b</srcmd5>
+    <version>0.37</version>
+    <time>1323194415</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>e3d44decd468da1abb0ab8a227cdf10b</srcmd5>
+    <version>0.37</version>
+    <time>1340184146</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>e3d44decd468da1abb0ab8a227cdf10b</srcmd5>
+    <version>0.37</version>
+    <time>1359110291</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>e3d44decd468da1abb0ab8a227cdf10b</srcmd5>
+    <version>0.37</version>
+    <time>1379664459</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>e3d44decd468da1abb0ab8a227cdf10b</srcmd5>
+    <version>0.37</version>
+    <time>1409303192</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cd62c56bee5a13313fc83b1b9dd5927d</srcmd5>
+    <version>0.42</version>
+    <time>1423130376</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282306</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>deb79af82855f815ecabd25d40c58930</srcmd5>
+    <version>0.43</version>
+    <time>1506108871</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.43:
+ * New features
+   - Filters can now be written in python 
+   - Filters can respond to hotkeys (i.e. single keypresses bound to rlwrap-hotkey in .inputrc)
+ * Bug fixes
+   - rlwrap now always searches terminfo before termcap.
+   - playing back a readline macro consisting of more than one line would crash rlwrap.
+   - rlwrap --one-shot could accept more than one line when input in quick succession.</comment>
+    <requestid>528066</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>9aed8b5c2601645b90eb89c56095f638</srcmd5>
+    <version>0.43</version>
+    <time>1536327728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633750</requestid>
+  </revision>
+</revisionlist>

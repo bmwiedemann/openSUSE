@@ -1,0 +1,5 @@
+<package name="python-requestbuilder" project="openSUSE:Factory">
+  <title>python-requestbuilder</title>
+  <description>Command line-driven HTTP request builder</description>
+  <devel project="Cloud:Eucalyptus" package="python-requestbuilder"/>
+</package>

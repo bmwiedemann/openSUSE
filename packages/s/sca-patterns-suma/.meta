@@ -1,0 +1,5 @@
+<package name="sca-patterns-suma" project="openSUSE:Factory">
+  <title>Supportconfig Analysis Patterns for SUSE Manager</title>
+  <description>Supportconfig Analysis (SCA) patterns to identify known issues relating to all versions of SUSE Manager</description>
+  <devel project="Novell:NTS:Unstable" package="sca-patterns-suma"/>
+</package>

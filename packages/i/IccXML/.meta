@@ -1,0 +1,12 @@
+<package name="IccXML" project="openSUSE:Factory">
+  <title>IccXML library</title>
+  <description>IccLibXML library acts as an extension of SampleICC's IccProfLib.
+This extension provides Inherited classes for the classes in IccProfLib
+that provide additional I/O routines to read and write the classes as
+XML files.  As such, it provides the means of converting ICC profiles
+into and out of an XML format (hereafter referred to as icc.XML).
+Documentation for the schema for the icc.XML in the library can be
+found as part the ICCXML project distribution.   IccLibXML also uses
+libxml2 for the purposes of parsing XML files.</description>
+  <devel project="multimedia:color_management" package="IccXML"/>
+</package>

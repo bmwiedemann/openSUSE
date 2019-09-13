@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61383fb59122465cb1fe656b84c17ec5</srcmd5>
+    <version>3.3.10</version>
+    <time>1563914273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717810</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f0cfd5dc0b202b8048c5b5dd39327032</srcmd5>
+    <version>3.3.10</version>
+    <time>1568190187</time>
+    <user>dimstar_suse</user>
+    <comment>- Add wrapper for etcd [bsc#1149392]</comment>
+    <requestid>728700</requestid>
+  </revision>
+</revisionlist>

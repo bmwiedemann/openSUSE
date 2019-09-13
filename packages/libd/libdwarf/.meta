@@ -1,0 +1,5 @@
+<package name="libdwarf" project="openSUSE:Factory">
+  <title>Documentation for libdwarf</title>
+  <description>Documentation for libdwarf.</description>
+  <devel project="devel:tools" package="libdwarf"/>
+</package>

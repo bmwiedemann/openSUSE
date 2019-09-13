@@ -1,0 +1,11 @@
+<package name="azure-cli-storage" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'storage' Command Module</title>
+  <description>Microsoft Azure CLI 'storage' Command Module
+
+This package is for the 'storage' module.
+i.e. 'az storage'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-storage"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

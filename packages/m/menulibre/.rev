@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54ec1f7bd8e46c508c6b7d219180adea</srcmd5>
+    <version>2.2.0</version>
+    <time>1539589353</time>
+    <user>dimstar_suse</user>
+    <comment>- New package  
+- Trim filler wording from description.
+- Fixed dependencies and others (see change log).
+- Please note thattypelib(gtk) = 3.0 needed as RB to prevent some Python module errors during build
+- More infos: https://lists.opensuse.org/opensuse-factory/2018-10/msg00109.html</comment>
+    <requestid>641719</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2a2480da8e294dfcb1f633b1a2e161a7</srcmd5>
+    <version>2.2.1</version>
+    <time>1560970957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706728</requestid>
+  </revision>
+</revisionlist>

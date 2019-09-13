@@ -1,0 +1,117 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>130f14392dd915f401c0718b55aa5fb3</srcmd5>
+    <version>0.19</version>
+    <time>1335165391</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>109041</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>130f14392dd915f401c0718b55aa5fb3</srcmd5>
+    <version>0.19</version>
+    <time>1340184094</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>130f14392dd915f401c0718b55aa5fb3</srcmd5>
+    <version>0.19</version>
+    <time>1359110128</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>130f14392dd915f401c0718b55aa5fb3</srcmd5>
+    <version>0.19</version>
+    <time>1379664292</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>999fa2035b7ed03e8b6da11e4029bd2e</srcmd5>
+    <version>0.19</version>
+    <time>1382693594</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204667</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>060708f6732e116c75df0081845839ad</srcmd5>
+    <version>0.20</version>
+    <time>1384768439</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 0.20
+  + A new CaptureTracer has been added to storm.testing, for capturing all SQL
+    statements executed by Storm. It can be used like this:
+    with CaptureTracer() as tracer:
+      # Run queries
+      pass
+    print tracer.queries  # Print all queries run in the context manager block
+
+    You will need the python-fixtures package in order to use this feature.
+  + Setuptools &lt;http://pypi.python.org/pypi/setuptools&gt; is now required
+    to run setup.py. This makes it much easier to install the majority
+    of the dependencies required to run the test suite in its entirety.
+  + Disconnection errors arising from PostgreSQL are now more reliably
+    detected, especially with regard to recent libpq updates in Ubuntu.
+    There are also disconnection tests that simulate sudden termination
+    of pgbouncer &lt;http://pgfoundry.org/projects/pgbouncer/&gt;.
+  + Insert expressions now support multi-row and subquery INSERT
+    statements.
+  + Support in the postgres backend to use the RETURNING extension for UPDATE
+    statement, optionally specifying the columns to return.
+    (PostgreSQL &gt;= 8.2 only)
+  + Add a new Distinct expression for pre-pending the 'DISTINCT' token to
+    SQL expressions that support it (like columns).
+  + Switch to REPEATABLE READ as isolation level for Postgres. If you use
+    psycopg2 &lt; 2.4, it doesn't change anything. For psycopg2 2.4 and newer, it
+    will keep the same behavior on Postgres &lt; 9 as it's equivalent to
+    SERIALIZABLE, but it will be less strict on Postgres &gt;= 9.
+  + Add support for two-phase commits, using the DB API version 2.0, which
+    is only supported by PostgreSQL.
+  + ZStormResourceManager now has a schema_stamp_dir optional instance attribute
+    that, if set, will be used to to save timestamps of the schema's patch
+    packages, so schema upgrades will be performed only when needed.
+  + When a SQLObjectResultSet object was sliced with slice.start and
+    slice.end both zero (sqlobject[0:0]), the full, unsliced resultset
+    was returned (bug #872086).
+  + Fixes some test failures around Django disconnections from
+    PostgreSQL stores.
+  + Some of the proxy-less disconnection tests were causing segfaults,
+    so they're now run in a subprocess via subunit's IsolatedTestCase,
+    when it's available.
+  + Fix a few non-uses of super() in TestHelper.
+  + Abort the transaction and reset ZStorm at the end of
+    tests/zope/README.txt.
+  + Fix the ./test script to not import tests until after local eggs
+    have been added to sys.path. This ensures that all possible features
+    are available to the tests.
+  + If transaction.commit() fails, call transaction.abort() to rollback
+    everything and leave the transaction in a clean state when using Django's
+    ZopeTransactionMiddleware and DatabaseWrapper.
+  + It's now again possible to use the Desc() expression when passing an
+    order_by parameter to a ReferenceSet (bug #620369).
+- Use sources tarball from Pypi</comment>
+    <requestid>207356</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>060708f6732e116c75df0081845839ad</srcmd5>
+    <version>0.20</version>
+    <time>1409302999</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>ffb69da99bf4c868ef9a1f6f51e74290</srcmd5>
+    <version>0.20</version>
+    <time>1528492380</time>
+    <user>dimstar_suse</user>
+    <comment>Clean up SPEC file and converstion to the single spec (py3k switched
+off, though)
+Don't package tests/ directory
+New patch, storm-0.20-remove-ez_setup.patch ... ez_setup breaks py3k
+and it is unnecessary, so I just remove it from setup.py</comment>
+    <requestid>613319</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d43c6c6bbd3a659ccf8a78d0135aaac</srcmd5>
+    <version>3.4.4</version>
+    <time>1529066236</time>
+    <user>maxlin_factory</user>
+    <comment>An RPC library for python</comment>
+    <requestid>613562</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c1b28cdec9578f5decf4442800523871</srcmd5>
+    <version>3.4.4</version>
+    <time>1549017855</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>668133</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f0b62a24ae85bba7cf36602535f909da</srcmd5>
+    <version>4.0.2</version>
+    <time>1559375093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705224</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4dfcefcbb6328b57884571172affb05e</srcmd5>
+    <version>4.0.2</version>
+    <time>1559902744</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test execution to make sure we run it under all interpreters</comment>
+    <requestid>707749</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e042e3c8e7293de162dc73ba1110a21e</srcmd5>
+    <version>4.1.0</version>
+    <time>1560459773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709404</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ab1f7593a42c7be2f06b506249de8e8</srcmd5>
+    <version>4.1.1</version>
+    <time>1568190944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.1:
+  * Fixed netref.class_factory id_pack usage per #339 and added test cases
+  * Name pack casted in _unbox to fix IronPython bug. Fixed #337
+  * Increased chunk size to improve multi-client response time and throughput of large data #329
+  * Added warning to _remote_tb when the major version of local and remote mismatch (#332)
+  * OneShotServer termination was fixed by WilliamBruneau (#343)
+  * Known issue with 3.8 for CodeType parameters (may drop Python2 support first)</comment>
+    <requestid>729790</requestid>
+  </revision>
+</revisionlist>

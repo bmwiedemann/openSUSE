@@ -1,0 +1,179 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea48dd27519da1e7638a6b4e2be4cb71</srcmd5>
+    <version>1.0.1</version>
+    <time>1386063099</time>
+    <user>coolo</user>
+    <comment>This is a renamed version of python-logilab-astng.  It is needed for the new version of python-pylint, which is already in openSUSE:Factory</comment>
+    <requestid>208820</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ebdfab592022045536cd767894664b9e</srcmd5>
+    <version>1.1.1</version>
+    <time>1406146022</time>
+    <user>coolo</user>
+    <comment>Update to 1.1.1
+
+python-logilab-common is in openSUSE:Factory so this builds now.</comment>
+    <requestid>241906</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>da37120df428cd876f4a270de1631111</srcmd5>
+    <version>1.2.0</version>
+    <time>1407942496</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244309</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>da37120df428cd876f4a270de1631111</srcmd5>
+    <version>1.2.0</version>
+    <time>1409302817</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>592e592af39853c62f8a808c24587376</srcmd5>
+    <version>1.2.1</version>
+    <time>1415199305</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259679</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef108854745adc9f5ed97e1a0523ac92</srcmd5>
+    <version>1.3.0</version>
+    <time>1416823738</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262555</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1b629af02d7c2530f629cec359ec2f62</srcmd5>
+    <version>1.3.2</version>
+    <time>1418054216</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264412</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>852d4818b84b7cc1d05a19e7618a8f22</srcmd5>
+    <version>1.3.4</version>
+    <time>1424288205</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286632</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aab832594cc984bf9fa2d7c61f99ded8</srcmd5>
+    <version>1.3.6</version>
+    <time>1426680334</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290995</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>06497aa6daa8cd7fbf16bade729ebe6f</srcmd5>
+    <version>1.4.3</version>
+    <time>1452721572</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353384</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3cdfdb7d1421740cb7788437add7fa5c</srcmd5>
+    <version>1.4.4</version>
+    <time>1461334963</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360901</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a6daa43963c09d726304ec577accd943</srcmd5>
+    <version>1.4.9.git.1489768950.31f21cd</version>
+    <time>1492011115</time>
+    <user>maxlin_factory</user>
+    <comment>- update for singlespec
+- update to 1.4.9
+  * classes can now know their definition-time arguments
+  * getitem() now accepts node objects
+  * explicit namespace package support
+  * see more details in ChangeLog
+- update to 2.0-pre-release git version for python 3.6 support
+  (boo#1026174)
+- enable test suite for all pythons</comment>
+    <requestid>481993</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f196b9ddb7e29a95e5ede1df79a64936</srcmd5>
+    <version>1.6.1</version>
+    <time>1516880221</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.6.1:
+  * Various fixes for python3
+  * Various pylint issues fixes
+  * For detailed log see ChangeLog
+- Disable tests for now as they seem to fail, upstream knows</comment>
+    <requestid>568846</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ce5e8a825981d0a786c2e4da75263f09</srcmd5>
+    <version>1.6.5</version>
+    <time>1532160458</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.6.5:
+  * Many various bugfixes making the pylint tests pass
+  * For details see ChangeLog</comment>
+    <requestid>623122</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>02bfce2aca9b4a3f3d2f9b537cecf37e</srcmd5>
+    <version>2.0.4</version>
+    <time>1537966411</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim future goals and history lesson from description.
+  Use noun phrase in summary.
+
+- Version update to 2.0.4:
+  * only supports python3.0+
+  * Many many changes see ChangeLog fixes</comment>
+    <requestid>636609</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cf9311d13fd95c292735c2367dd200e8</srcmd5>
+    <version>2.1.0</version>
+    <time>1544816789</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.1.0:
+  * Many changes around, see ChangeLog file</comment>
+    <requestid>655705</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>45bf4a1ea6bfdcfafab0362c328e5c3b</srcmd5>
+    <version>2.1.0</version>
+    <time>1546535058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662218</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5650ad2f22b52496feb89b0eb2a718d6</srcmd5>
+    <version>2.2.4</version>
+    <time>1552039281</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.1:
+  * Many changes inside, see ChangeLog</comment>
+    <requestid>682136</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>87fab61adb5134f4c2df32f97411aeda</srcmd5>
+    <version>2.2.5</version>
+    <time>1553888223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.5:
+  * The last except handler wins when inferring variables bound in an except handler.
+
+- Update to 2.2.4:</comment>
+    <requestid>687619</requestid>
+  </revision>
+</revisionlist>

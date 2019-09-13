@@ -1,0 +1,194 @@
+<revisionlist>
+  <revision rev="1" vrev="33">
+    <srcmd5>5771858cfd8c9b1a5442f582c4e811aa</srcmd5>
+    <version>6.0</version>
+    <time>1168901506</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="64">
+    <srcmd5>285884efc99054bec89f7620780d9f7f</srcmd5>
+    <version>6.0</version>
+    <time>1178129801</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="72">
+    <srcmd5>5fefb2cb32dcc8ca4186357e387bcf2f</srcmd5>
+    <version>6.0</version>
+    <time>1181060643</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="82">
+    <srcmd5>6dbfffb461e82126d9f6ce03a492f21c</srcmd5>
+    <version>6.0</version>
+    <time>1185541604</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="92">
+    <srcmd5>28e9bbf48bdb0fa22b70126cfcb40a79</srcmd5>
+    <version>6.0</version>
+    <time>1188836582</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="158">
+    <srcmd5>28e9bbf48bdb0fa22b70126cfcb40a79</srcmd5>
+    <version>6.0</version>
+    <time>1188836582</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="159">
+    <srcmd5>5115591cc473e31901beafa0f092cd69</srcmd5>
+    <version>6.0</version>
+    <time>1224728812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="160">
+    <srcmd5>8adca59183808b23b115b02645701899</srcmd5>
+    <version>6.0</version>
+    <time>1232409487</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="162">
+    <srcmd5>8adca59183808b23b115b02645701899</srcmd5>
+    <version>6.0</version>
+    <time>1232409487</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="163">
+    <srcmd5>9bacaea908e157a6c3b109b4ffda6512</srcmd5>
+    <version>6.0</version>
+    <time>1268922939</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="165">
+    <srcmd5>9bacaea908e157a6c3b109b4ffda6512</srcmd5>
+    <version>6.0</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="166">
+    <srcmd5>9bacaea908e157a6c3b109b4ffda6512</srcmd5>
+    <version>6.0</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="167">
+    <srcmd5>232a2fe7c7bcbec16557a1b6a5d9e280</srcmd5>
+    <version>6.0</version>
+    <time>1279543371</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/aspell-en based on submit request 42813 from user pgajdos
+</comment>
+    <requestid>42813</requestid>
+  </revision>
+  <revision rev="14" vrev="170">
+    <srcmd5>232a2fe7c7bcbec16557a1b6a5d9e280</srcmd5>
+    <version>6.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aad2238e301d86b1f959e4754a5767ed</srcmd5>
+    <version>7.1</version>
+    <time>1304605561</time>
+    <user>saschpe</user>
+    <comment>Updated to version 7.1-0, Spec file updates (forwarded request 66638 from adra)</comment>
+    <requestid>66642</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ed369065d79aacba25fd2f97fe08fae8</srcmd5>
+    <version>7.1</version>
+    <time>1304605583</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66642
+</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>ed369065d79aacba25fd2f97fe08fae8</srcmd5>
+    <version>7.1</version>
+    <time>1319181777</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>bf51bf5671f27e8902ff83814898ce11</srcmd5>
+    <version>7.1</version>
+    <time>1330618718</time>
+    <user>coolo</user>
+    <comment>license update: MIT and BSD-3-Clause
+Use SPDX format (using same license form as Fedora for this package) (forwarded request 107555 from babelworx)</comment>
+    <requestid>107557</requestid>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>bf51bf5671f27e8902ff83814898ce11</srcmd5>
+    <version>7.1</version>
+    <time>1340183183</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>bf51bf5671f27e8902ff83814898ce11</srcmd5>
+    <version>7.1</version>
+    <time>1359108670</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>bf51bf5671f27e8902ff83814898ce11</srcmd5>
+    <version>7.1</version>
+    <time>1379661994</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="13">
+    <srcmd5>bf51bf5671f27e8902ff83814898ce11</srcmd5>
+    <version>7.1</version>
+    <time>1409300520</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2db19e0ef9d43d839b33942175b92fd8</srcmd5>
+    <version>2015.04.24</version>
+    <time>1431676484</time>
+    <user>coolo</user>
+    <comment>- updated to 2015.03.24:
+  * Updated to SCOWL 2015.02.15 which added a large number of new words
+    such as &quot;inbox&quot;, &quot;smartphone&quot;, and &quot;selfie&quot; and removed some
+    problematic words.</comment>
+    <requestid>306361</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0c127d89c49b934f56e64ea3b0e5104e</srcmd5>
+    <version>2016.11.20</version>
+    <time>1480071848</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2016.11.20:
+  * various new words (see SCOWL-README for other changes)</comment>
+    <requestid>441242</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1986679ffaa32c055aa6ce05aed4618e</srcmd5>
+    <version>2017.08.24</version>
+    <time>1515504930</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>559808</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>38305457762d446285786addc3ce0868</srcmd5>
+    <version>2018.04.16</version>
+    <time>1534321897</time>
+    <user>dimstar_suse</user>
+    <comment>- run fdupes only on dictionary data
+- update keyring to include all upstream signatures
+- update URL
+
+- Use SourceURL
+- Use GPG signed source
+- updated to 2018.04.16
+  * various new words (see SCOWL-README for other changes)</comment>
+    <requestid>628787</requestid>
+  </revision>
+</revisionlist>

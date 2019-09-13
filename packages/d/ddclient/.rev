@@ -1,0 +1,347 @@
+<revisionlist>
+  <revision rev="1" vrev="24">
+    <srcmd5>3f41cf094c24f9599e59ad200ccceea4</srcmd5>
+    <version>3.7.0</version>
+    <time>1168260893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b883987b4cdc823d59284e40e289544</srcmd5>
+    <version>3.7.1</version>
+    <time>1171293524</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ccce7ab5c6803696355fdb5d15364baa</srcmd5>
+    <version>3.7.1</version>
+    <time>1171367772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>1d0604306587b606cdff0996025715f9</srcmd5>
+    <version>3.7.1</version>
+    <time>1175627782</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="15">
+    <srcmd5>6dc30f27b46d5c622d16062fb455d612</srcmd5>
+    <version>3.7.1</version>
+    <time>1178229461</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f8e5eb8be65884735d437b11fa98c90c</srcmd5>
+    <version>3.7.2</version>
+    <time>1181826997</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1324734559dddcb18576bce6cc788932</srcmd5>
+    <version>3.7.3</version>
+    <time>1186677066</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>580e93faf32b6ab0a3e34f6b4b4bc6a8</srcmd5>
+    <version>3.7.3</version>
+    <time>1188506360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="73">
+    <srcmd5>580e93faf32b6ab0a3e34f6b4b4bc6a8</srcmd5>
+    <version>3.7.3</version>
+    <time>1188506360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="74">
+    <srcmd5>6d7cdf1c57381eb9792a549523dcd8ea</srcmd5>
+    <version>3.7.3</version>
+    <time>1233143155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>033f86fe1d45e58207a50621141e884b</srcmd5>
+    <version>3.8.0</version>
+    <time>1233181960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>41feadcef8bac172b24fe5a75ef7b2cb</srcmd5>
+    <version>3.8.0</version>
+    <time>1233697630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f109485bd21d422781e9dfe5dbe629b5</srcmd5>
+    <version>3.8.0</version>
+    <time>1251298521</time>
+    <user>autobuild</user>
+    <comment>Copy from network/ddclient based on submit request 18765 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>72c9a0047bca821d496b14e609d1b67c</srcmd5>
+    <version>3.8.0</version>
+    <time>1251749839</time>
+    <user>autobuild</user>
+    <comment>Copy from network/ddclient based on submit request 19262 from user coolo
+</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>72c9a0047bca821d496b14e609d1b67c</srcmd5>
+    <version>3.8.0</version>
+    <time>1251749839</time>
+    <user>autobuild</user>
+    <comment>Copy from network/ddclient based on submit request 19262 from user coolo
+</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>ba28f82583746d7ea49b8ccd1ee0f763</srcmd5>
+    <version>3.8.0</version>
+    <time>1258389327</time>
+    <user>autobuild</user>
+    <comment>Copy from network/ddclient based on submit request 24472 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>38c05feb496478a84c293d53b9e7168b</srcmd5>
+    <version>3.8.0</version>
+    <time>1268923304</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>38c05feb496478a84c293d53b9e7168b</srcmd5>
+    <version>3.8.0</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>38c05feb496478a84c293d53b9e7168b</srcmd5>
+    <version>3.8.0</version>
+    <time>1278678570</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>38c05feb496478a84c293d53b9e7168b</srcmd5>
+    <version>3.8.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="15">
+    <srcmd5>3d68592f82bd2a5977c09071e49bd2ff</srcmd5>
+    <version>3.8.0</version>
+    <time>1314885888</time>
+    <user>saschpe</user>
+    <comment>- work on init-script so that start/status/stop at least work
+  (bnc#267306) (forwarded request 80051 from oertel)</comment>
+    <requestid>80461</requestid>
+  </revision>
+  <revision rev="22" vrev="16">
+    <srcmd5>060512af17490b5cddf94343193ef371</srcmd5>
+    <version>3.8.0</version>
+    <time>1314885896</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80461
+</comment>
+  </revision>
+  <revision rev="23" vrev="17">
+    <srcmd5>a2e22b7c1d6396ccbb52e0a76ce392bc</srcmd5>
+    <version>3.8.0</version>
+    <time>1316692497</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines) (forwarded request 83227 from jengelh)</comment>
+    <requestid>84423</requestid>
+  </revision>
+  <revision rev="24" vrev="18">
+    <srcmd5>d3016f89d017a234e7db2abc3cc15cc5</srcmd5>
+    <version>3.8.0</version>
+    <time>1318761750</time>
+    <user>lrupp</user>
+    <comment>- upgrade Suggests for perl-IO-Socket-SSL to Recommends
+  (bnc#723688) (forwarded request 87998 from oertel)</comment>
+    <requestid>88055</requestid>
+  </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>d3016f89d017a234e7db2abc3cc15cc5</srcmd5>
+    <version>3.8.0</version>
+    <time>1319181843</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="21">
+    <srcmd5>f23f0a08842d1ae9843a33138cf8aa44</srcmd5>
+    <version>3.8.0</version>
+    <time>1319205723</time>
+    <user>coolo</user>
+    <comment>- remove leftover debug line in init script (forwarded request 88719 from oertel)</comment>
+    <requestid>88803</requestid>
+  </revision>
+  <revision rev="27" vrev="22">
+    <srcmd5>2140571541ca46e998523d51e4c0933a</srcmd5>
+    <version>3.8.0</version>
+    <time>1323191125</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8f3d53443b58316c45d3f3b841a0f8ed</srcmd5>
+    <version>3.8.1</version>
+    <time>1326796358</time>
+    <user>coolo</user>
+    <comment>update to 3.8.1 (forwarded request 99508 from computersalat)</comment>
+    <requestid>100287</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>8f3d53443b58316c45d3f3b841a0f8ed</srcmd5>
+    <version>3.8.1</version>
+    <time>1340183273</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>248936be980f282fed751e7efd2ed36e</srcmd5>
+    <version>3.8.1</version>
+    <time>1348573179</time>
+    <user>coolo</user>
+    <comment>use /etc instead of /etc/ddclient(bnc#781699) (forwarded request 135797 from BinLi)</comment>
+    <requestid>135839</requestid>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>f6e2bd68682ef7a8d89e7eb0b1dbeb04</srcmd5>
+    <version>3.8.1</version>
+    <time>1351263618</time>
+    <user>coolo</user>
+    <comment>rework config patch, add example for selfhost (forwarded request 139222 from computersalat)</comment>
+    <requestid>139255</requestid>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>f6e2bd68682ef7a8d89e7eb0b1dbeb04</srcmd5>
+    <version>3.8.1</version>
+    <time>1359108803</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>832733a4f01e2b4ae57eb1c458ed1de5</srcmd5>
+    <version>3.8.1</version>
+    <time>1368690559</time>
+    <user>coolo</user>
+    <comment>fix init script: start ddclient with &quot;/usr/bin/perl ddclient&quot;,
+otherwise startproc will falsely report that starting failed. (forwarded request 175698 from seife)</comment>
+    <requestid>175736</requestid>
+  </revision>
+  <revision rev="34" vrev="9">
+    <srcmd5>500c2ba20593840f974d657b67bcf67a</srcmd5>
+    <version>3.8.1</version>
+    <time>1369640658</time>
+    <user>coolo</user>
+    <comment>more init-script fixes, sorry, should have run more tests :-) (forwarded request 175891 from seife)</comment>
+    <requestid>176259</requestid>
+  </revision>
+  <revision rev="35" vrev="11">
+    <srcmd5>500c2ba20593840f974d657b67bcf67a</srcmd5>
+    <version>3.8.1</version>
+    <time>1379662213</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="12">
+    <srcmd5>96157bfc61de765b3eea0380b3d20256</srcmd5>
+    <version>3.8.1</version>
+    <time>1384246202</time>
+    <user>coolo</user>
+    <comment>Made required changes. sysvinit script is broken according to rpmlint (log 12.2 )
+I can't fix it as I don't know sysvinit scripts (forwarded request 204930 from posophe)</comment>
+    <requestid>206487</requestid>
+  </revision>
+  <revision rev="37" vrev="13">
+    <srcmd5>289bd9f1d16ce1b305bc36b884b8e75c</srcmd5>
+    <version>3.8.1</version>
+    <time>1386275724</time>
+    <user>coolo</user>
+    <comment>- fix the breakage from last submission
+  * service file was put into tmpfiles.d
+  * tmpfiles config was put into systemd service dir
+  * rcddclient link was broken (pointed to &quot;service&quot; file)
+- fix rpmlint warnings, also introduced by last submission:
+  * service files and tmpdir config are neither config files nor
+    should be executable
+- package is noarch, mark it as such
+- documentation should not have executable bit set (forwarded request 209397 from seife)</comment>
+    <requestid>209398</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3ed60eadc48489554631a7650642343a</srcmd5>
+    <version>3.8.2</version>
+    <time>1388757467</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to upstream version 3.8.2 (forwarded request 212506 from benoit_monin)</comment>
+    <requestid>212716</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>202d3d917fb092cb29a1e2654cf7c39f</srcmd5>
+    <version>3.8.2</version>
+    <time>1400825308</time>
+    <user>coolo</user>
+    <comment>update/fix systemd stuff (forwarded request 235113 from computersalat)</comment>
+    <requestid>235114</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>ee5b566d62735b2bd86be3b2d6732da8</srcmd5>
+    <version>3.8.2</version>
+    <time>1404306305</time>
+    <user>coolo</user>
+    <comment>Create user and group ddclient if not already present</comment>
+    <requestid>239154</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>ee5b566d62735b2bd86be3b2d6732da8</srcmd5>
+    <version>3.8.2</version>
+    <time>1409300748</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>221e1e5f15b60813ac1835bfdf6f4eaf</srcmd5>
+    <version>3.8.2</version>
+    <time>1452611555</time>
+    <user>dimstar_suse</user>
+    <comment>fix for boo#903588, recover deleted changes, some fixes (forwarded request 352663 from computersalat)</comment>
+    <requestid>352664</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>554649b170ca563fe87b03ae03ad5abd</srcmd5>
+    <version>3.8.3</version>
+    <time>1486218175</time>
+    <user>dimstar_suse</user>
+    <comment>fix changelog (forwarded request 454409 from computersalat)</comment>
+    <requestid>454410</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>27d5ddede91842cf11018cb2177a2bbb</srcmd5>
+    <version>3.8.3</version>
+    <time>1511517367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544946</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e034f16eff00639259d07b17a6640d74</srcmd5>
+    <version>3.9.0</version>
+    <time>1539757482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639343</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>8792b5ba143b52df1a08900831e39995</srcmd5>
+    <version>3.9.0</version>
+    <time>1550574036</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>676976</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="cinnamon-screensaver" project="openSUSE:Factory">
+  <title>Cinnamon screensaver and locker</title>
+  <description>cinnamon-screensaver is a screensaver and locker that aims to have simple, sane and secure defaults, and be well integrated with the Cinnamon Desktop.</description>
+  <devel project="X11:Cinnamon:Factory" package="cinnamon-screensaver"/>
+</package>

@@ -1,0 +1,164 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>d2cdcaeead2a7793d7fd1b27db142131</srcmd5>
+    <version>1.0</version>
+    <time>1289863129</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52783 from user mvyskocil
+</comment>
+    <requestid>52783</requestid>
+  </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>cf8dbfbc505bd587ae38a3ce92eb972f</srcmd5>
+    <version>1.0</version>
+    <time>1289863134</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52783
+</comment>
+  </revision>
+  <revision rev="3" vrev="10">
+    <srcmd5>cf8dbfbc505bd587ae38a3ce92eb972f</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="12">
+    <srcmd5>cf8dbfbc505bd587ae38a3ce92eb972f</srcmd5>
+    <version>1.0</version>
+    <time>1319182603</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="13">
+    <srcmd5>5acc9b5ce93cb92b89654c6edb51924d</srcmd5>
+    <version>1.0</version>
+    <time>1324483265</time>
+    <user>coolo</user>
+    <comment>- fix the license to BSD-3-Clause (bnc#737022) 
+
+- fix license to be in spdx.org format</comment>
+    <requestid>96749</requestid>
+  </revision>
+  <revision rev="6" vrev="15">
+    <srcmd5>5acc9b5ce93cb92b89654c6edb51924d</srcmd5>
+    <version>1.0</version>
+    <time>1340184375</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="17">
+    <srcmd5>5acc9b5ce93cb92b89654c6edb51924d</srcmd5>
+    <version>1.0</version>
+    <time>1359110665</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="18">
+    <srcmd5>fbf8bed427e300df119d7a5b80202baa</srcmd5>
+    <version>1.0</version>
+    <time>1378985209</time>
+    <user>scarabeus_factory</user>
+    <comment>- use add_maven_depmap from javapackages-tools
+
+- Move from jpackage-utils to javapackage-tools</comment>
+    <requestid>198463</requestid>
+  </revision>
+  <revision rev="9" vrev="20">
+    <srcmd5>fbf8bed427e300df119d7a5b80202baa</srcmd5>
+    <version>1.0</version>
+    <time>1379665094</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2913fc66a925e9d85f57dab91b8e542d</srcmd5>
+    <version>1.5</version>
+    <time>1381227117</time>
+    <user>scarabeus_factory</user>
+    <comment>- Build with junit4 
+
+- Update to 1.5
+  * If one node in the comparison has children while the other one
+    has not, XMLUnit 1.5 will signal a CHILD_NODELIST_LEN GTH
+    difference and CHILD_NODE_NOT_FOUND differences for each child
+    node of the node that has children in addition to a
+    HAS_CHILD_NODES difference.
+  1.4:
+  * xsi:type attributes now have their value interpreted as a QName and will
+    compare as identical if their namespace URI and local
+    names match even if they use different prefixes
+  1.3:
+  * Try to match control Element with first unmatched test one instead of
+    creating CHILD_NODE_NOT_FOUND
+  1.2:
+  * null XPath on missing node
+  * SAXParserFactory can be configured
+  * new Validator class to validate schema definitions
+  1.1:
+  * Support for XML Namespaces in XPath processing
+  * Support for XML Schema validation using any JAXP compliant parser
+- dropped xmlunit-java5-enum.patch, not needed
+- dropped xmlunit-no-javac-target.patch, not needed
+- put userguide to javadoc package</comment>
+    <requestid>202582</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>fb4ef26cd2f0e89fbe1cb930cd1be727</srcmd5>
+    <version>1.5</version>
+    <time>1405522155</time>
+    <user>coolo</user>
+    <comment>- Drop xmlunit1.0.zip as it is not used anywhere.
+
+- Cleanup with spec-cleaner a bit.
+
+- Depend on junit not junit4. Replace ant-trax with ant.</comment>
+    <requestid>240419</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>fb4ef26cd2f0e89fbe1cb930cd1be727</srcmd5>
+    <version>1.5</version>
+    <time>1409303781</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>6d60e2cf6f3d1da727edd4918493f4c6</srcmd5>
+    <version>1.5</version>
+    <time>1417809891</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264102</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>fc85110915c1bd5b57686e941e9afaea</srcmd5>
+    <version>1.5</version>
+    <time>1427983203</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292652</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>b6f4a2045d82a950634e4ecee937dde5</srcmd5>
+    <version>1.5</version>
+    <time>1495442833</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496598</requestid>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>5f59268213ca9919dfa86fe9c055f545</srcmd5>
+    <version>1.5</version>
+    <time>1505920215</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527224</requestid>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>b098f7057e4a801c45e702bac053aa7e</srcmd5>
+    <version>1.5</version>
+    <time>1543953373</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653658</requestid>
+  </revision>
+</revisionlist>

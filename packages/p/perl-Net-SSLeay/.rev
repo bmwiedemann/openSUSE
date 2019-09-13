@@ -1,0 +1,324 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>fad6ddbd0678b84daaf691604a420fa3</srcmd5>
+    <version>1.35</version>
+    <time>1217818181</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="19">
+    <srcmd5>06695c631cfdbc3739566611a473b30b</srcmd5>
+    <version>1.35</version>
+    <time>1245337789</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="21">
+    <srcmd5>06695c631cfdbc3739566611a473b30b</srcmd5>
+    <version>1.35</version>
+    <time>1245337789</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="22">
+    <srcmd5>e41bcd22f2979224582262a75645b57a</srcmd5>
+    <version>1.35</version>
+    <time>1263223507</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-SSLeay based on submit request 28394 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3dfb843cc8c6ab32967e772bc4b71049</srcmd5>
+    <version>1.36</version>
+    <time>1266974678</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-SSLeay based on submit request 33262 from user anicka
+</comment>
+    <requestid>33262</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>58de65b832327a6d3e69587cb0e09c54</srcmd5>
+    <version>1.36</version>
+    <time>1268925546</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>58de65b832327a6d3e69587cb0e09c54</srcmd5>
+    <version>1.36</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>58de65b832327a6d3e69587cb0e09c54</srcmd5>
+    <version>1.36</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>0dfc905b784e0be6d4b22bc84a00fc35</srcmd5>
+    <version>1.36</version>
+    <time>1279565684</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-SSLeay based on submit request 43325 from user computersalat
+</comment>
+    <requestid>43325</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>f56abdfae7fd283c014e89f6d7cb5e3d</srcmd5>
+    <version>1.36</version>
+    <time>1291583332</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54611 from user coolo
+</comment>
+    <requestid>54611</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>3a8267599e6934b81d9dc5eb495dfaa5</srcmd5>
+    <version>1.36</version>
+    <time>1291583340</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54611
+</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>3a8267599e6934b81d9dc5eb495dfaa5</srcmd5>
+    <version>1.36</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>3a8267599e6934b81d9dc5eb495dfaa5</srcmd5>
+    <version>1.36</version>
+    <time>1319182293</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d85779829c590fa10d8f9cab8317e96e</srcmd5>
+    <version>1.42</version>
+    <time>1329476882</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>105370</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0d9a1b373c2195840bafa6a1cd456dfb</srcmd5>
+    <version>1.42</version>
+    <time>1339767710</time>
+    <user>coolo</user>
+    <comment>license update: OpenSSL
+ (forwarded request 124911 from babelworx)</comment>
+    <requestid>125064</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>0d9a1b373c2195840bafa6a1cd456dfb</srcmd5>
+    <version>1.42</version>
+    <time>1340183893</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>0d9a1b373c2195840bafa6a1cd456dfb</srcmd5>
+    <version>1.42</version>
+    <time>1359109764</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0f5f52841f73c64d1f15a27a59e91222</srcmd5>
+    <version>1.55</version>
+    <time>1373396142</time>
+    <user>coolo</user>
+    <comment>- new version 1.55
+  * Added support for TLSV1_1 and TLSV1_2 methods with
+    SSL_CTX_tlsv1_1_new(), SSL_CTX_tlsv1_2_new(), TLSv1_1_method() and
+    TLSv1_2_method(), where available in the underlying openssl.
+  * Added CRL support functions X509_CRL_get_ext(),
+    X509_CRL_get_ext_by_NID(), X509_CRL_get_ext_count(). Patch from
+    Franck Youssef.
+  * Added support for SSL_get_tlsa_record_byname() required for DANE
+    support in openssl*1.0.2 and later. SSL_get_tlsa_record_byname()
+    was added to OpenSSL with the financial assistance of .SE.
+  * Added X509_NAME_new and X509_NAME_hash, patched by Franck Youssef.
+  * Added support for SSL_export_keying_material where present
+  * Net::SSLeay::ASN1_INTEGER_get, since it works differntly on 32 and
+    64 bit platforms. Updated author and distribution location details
+    to airspayce.com
+  * Fixed a few compiler warnings in SSLeay.xs.  Most of them are just
+    signed/unsigned pointer mismatches but there is one that actually
+    fixes returning what would be an arbitrary value off the stack
+    from get_my_thread_id if it happened to be called in a
+    non*threaded build.
+  * Added SSL_set_tlsext_host_name, SSL_get_servername,
+    SSL_get_servername_type, SSL_CTX_set_tlsext_servername_callback
+    for server side Server Name Indication (SNI) support. Patched by
+    kmx.
+  * Improvements to Net::SSLeay::read to make it easier to use with
+    non*blocking IO Added documentation about how to mitigatxe various
+    SSL/TLS vulnerabilities.
+  * initializes the SSL library at most once. 
+  * Patch from kmx to protect SSLeay_add_ssl_algorithms from multiple
+    loads and reentrancy in multi*threaded perls. (forwarded request 181902 from lnussel)</comment>
+    <requestid>182615</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>0f5f52841f73c64d1f15a27a59e91222</srcmd5>
+    <version>1.55</version>
+    <time>1379663795</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>407dc6b2a23b1d25bbdebe9e558ee709</srcmd5>
+    <version>1.55</version>
+    <time>1380876236</time>
+    <user>scarabeus_factory</user>
+    <comment>- disable checks on qemu user build (hangs) (forwarded request 201954 from dirkmueller)</comment>
+    <requestid>202106</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b8b4c838371c1b9bcb34e0248cc3a6e7</srcmd5>
+    <version>1.58</version>
+    <time>1392222729</time>
+    <user>coolo</user>
+    <comment>- updated to 1.58
+      Always use size_t for strlen() return value, requested by Alexander Bluhm.
+      t/external/20_cert_chain.t was missing from dist.
+      Version number in META.yml was incorrect
+      Improvements to test t/external/20_cert_chain.t to provoke following bug:
+      Fixed crash due to SSL_get_peer_cert_chain incorrectly free'ing the chain
+      after use.
+      Fixed a problem when compiling against openssl where OPENSSL_NO_EC is set.
+ 
+ 1.57 2014-01-09
+      Fixed remaining problems with test suite: pod coverage and kwalitee tests
+      are only enabled with RELEASE_TESTING=1
+ 
+ 1.56 2014-01-08
+      Fixed a typo in documentation of BEAST Attack, patched by gregor
+      herrmann.
+      Added LICENSE file copied form OpenSSL distribution to prevent complaints
+      from various versions of kwalitee.
+      Adjusted license: in META.yml to be 'openssl'
+      Adds support for the basic operations necessary to support ECDH for PFS,
+      e.g. EC_KEY_new_by_curve_name, EC_KEY_free and SSL_CTX_set_tmp_ecdh.
+      Improvements to t/handle/external/50_external.t to handle the case when a
+      test connection was not possible. Patched by Alexandr Ciornii.
+      Added support for ALPN TLS extension. Patch from Lubomir Rintel. Tested
+      with openssl-1.0.2-stable-SNAP-20131205.
+      Fix an use-after-free error. Patch from Lubomir Rintel.
+      Fixed a problem with  Invalid comparison on OBJ_cmp result in
+      t/local/36_verify.t. Contributed by paul.
+      Added support for get_peer_cert_chain(). Patch by Markus Benning.
+      Fixed a bug that could cause stack faults: mixed up PUTBACK with SPAGAIN in ssleay_RSA_generate_key_cb_invoke()</comment>
+    <requestid>221510</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5fcc6864e511ba512313757b7a009e98</srcmd5>
+    <version>1.64</version>
+    <time>1403070466</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237018</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>5fcc6864e511ba512313757b7a009e98</srcmd5>
+    <version>1.64</version>
+    <time>1409302431</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>74e18cea6c74b7efcf75f914ba8c9122</srcmd5>
+    <version>1.68</version>
+    <time>1423595841</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.68
+      Fixed a problem on OSX when macports openssl 1.x is installed: headers from
+      macport were found but older OSX openssl libraries were linked, resulting
+      in &quot;Symbol not found: _EVP_MD_do_all_sorted&quot;.
+      Added notes about runtime error &quot;no OPENSSL_Applink&quot;, when calling
+      Net::SSLeay::P_PKCS12_load_file.
+ 
+ 
+ 1.67 2015-01-17
+      Improvements to inc/Module/Install/PRIVATE/Net/SSLeay.pm to handle the
+      case whe there are muliple OPENSSLs installed. Patch from HBRAND
+      Fixed a documentation error in get_peer_cert_chain, reported by tejas.
+      Fixed a problem with building on Windows that prevented correct OpenSSL
+      directory detection with version 1.0.1j as delivered with Shining Light OpenSSL.
+      Fixed a problem with building on Windows that prevented finding MT or MD
+      versions of SSL libraries.
+      Updated doc in README.Win32 to build with Microsoft Visual Studio 2010 Express.
+      Added Windows crypt32 library to Windows linking as some compilers/platforms seem to
+      require it and it is innocuous otherwise. For Steve Hay.
+      Fixed a failure in t/external/20_cert_chain.t where some platforms do not
+      have HTTPS in /etc/services. Reported and patched by Gisle Aas.
+      Recent 1.0.2 betas have dropped the SSLv3_method function. 
+      This patch leaves out the function on newer versions, much the same as
+      the SSLv2 deprecation is handled. Patch from Tom Molesworth.
+      Fix the ALPN test, which was incorrectly failing on OpenSSL due to the
+      LibreSSL check (earlier versions bailed out before that line).Patch from
+      Tom Molesworth. 
+ 
+ 1.66 2014-08-21
+      Fixed compile problem with perl prior to 5.8.8, similar to</comment>
+    <requestid>284487</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>b494e105d66f7181620c4d24d5f17308</srcmd5>
+    <version>1.68</version>
+    <time>1428652130</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295073</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5a5cfa154935c6a9d5827d1948d0a02b</srcmd5>
+    <version>1.69</version>
+    <time>1436111632</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314474</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c462767b5bd302e05fc613a8a0506177</srcmd5>
+    <version>1.81</version>
+    <time>1503999358</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517887</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0e644c95e582a35d893d4a6fb0e36a87</srcmd5>
+    <version>1.85</version>
+    <time>1536678822</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>633282</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>4f00e89f1c20c5dffe486d719890fed7</srcmd5>
+    <version>1.85</version>
+    <time>1548334903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666157</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>829c1fc45e37354b2042f871c5a89416</srcmd5>
+    <version>1.86_07</version>
+    <time>1552464593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681764</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>fd5937ed831367c8c807c6e6a72c397b</srcmd5>
+    <version>1.88</version>
+    <time>1559375003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705653</requestid>
+  </revision>
+</revisionlist>

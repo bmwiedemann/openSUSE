@@ -1,0 +1,5 @@
+<package name="adns" project="openSUSE:Factory">
+  <title>Advanced Easy-to-Use Asynchronous-Capable DNS Utilities</title>
+  <description>adns includes a collection of useful DNS resolver utilities.</description>
+  <devel project="devel:libraries:c_c++" package="adns"/>
+</package>

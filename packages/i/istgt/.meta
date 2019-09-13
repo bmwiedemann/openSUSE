@@ -1,0 +1,21 @@
+<package name="istgt" project="openSUSE:Factory">
+  <title>istgt</title>
+  <description>
+	This software (istgt) is the implementation of iSCSI target
+	(refer to RFC3720 about iSCSI) developed for FreeBSD.
+	It includes iSCSI protocol processor and SPC-3 (SCSI Primary
+	Commands - 3) based logical unit emulation.
+
+	Key Features:
+	* MCS/MPIO for failover (up to 255 concurrent sessions)
+	* Multipath I/O (only support Microsoft MPIO/VMware ESXi)
+	* SPC-3 Persistent Reservation for cluster nodes
+	* 64bit LBA for over 2TB
+	* Header/Data digest by CRC32C
+	* CHAP w/Mutual authentication
+	* Multiple LUNs and ACLs for portals
+	* IPv6/IPv4 dual support 
+  </description>
+  <devel project="devel:openSUSE:Factory" package="istgt"/>
+  <url>http://www.peach.ne.jp/archives/istgt/</url>
+</package>

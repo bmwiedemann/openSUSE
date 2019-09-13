@@ -1,0 +1,5 @@
+<package name="scim-chewing" project="openSUSE:Factory">
+  <title>Chewing input method module for SCIM</title>
+  <description>Chewing input method module for SCIM.</description>
+  <devel project="M17N" package="scim-chewing"/>
+</package>

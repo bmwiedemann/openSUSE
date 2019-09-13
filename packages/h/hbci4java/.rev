@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6334cfdb5d9dd9271e71f7cb64b1949e</srcmd5>
+    <version>2.5.12.hibiscus.2.6.17</version>
+    <time>1479150703</time>
+    <user>dimstar_suse</user>
+    <comment>required for Hibiscus</comment>
+    <requestid>419271</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>44ffdf9d981c6f1a0a0411c6d3dcc4fa</srcmd5>
+    <version>2.5.12.hibiscus.2.6.18</version>
+    <time>1479734827</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441149</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>77e1c2881d65a937965987d38bf70264</srcmd5>
+    <version>2.5.12.hibiscus.2.6.18</version>
+    <time>1505920113</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>526962</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>2d673fda7aef417cf4db5699fbabc1cd</srcmd5>
+    <version>2.5.12.hibiscus.2.6.18</version>
+    <time>1514028071</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk10</comment>
+    <requestid>559398</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>f43157d0554836c4eb579cbc90e7019f</srcmd5>
+    <version>2.5.12.hibiscus.2.6.18</version>
+    <time>1520253953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582574</requestid>
+  </revision>
+</revisionlist>

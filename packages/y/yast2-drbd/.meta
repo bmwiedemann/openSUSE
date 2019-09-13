@@ -1,0 +1,8 @@
+<package name="yast2-drbd" project="openSUSE:Factory">
+  <title>YaST2 - DRBD Configuration</title>
+  <description>YaST2 - Configuration of Distributed Replicated Block Devices. With
+this module you can configure a distributed storage system, frequently
+used on high availability (HA) clusters.
+</description>
+  <devel project="YaST:Head" package="yast2-drbd"/>
+</package>

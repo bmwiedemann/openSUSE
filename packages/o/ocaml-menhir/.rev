@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>635b98490fe5e71ef875b094be173ab6</srcmd5>
+    <version>20160504</version>
+    <time>1468579603</time>
+    <user>dimstar_suse</user>
+    <comment>coccinelle
+ocaml 4.03 (fate#320836)</comment>
+    <requestid>404357</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1759119aeb6f628474737b24f1d81efc</srcmd5>
+    <version>20170712</version>
+    <time>1503592922</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Update to version 20170712
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>512533</requestid>
+  </revision>
+</revisionlist>

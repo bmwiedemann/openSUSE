@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f07166098294ab1b04269d9fd536cd8</srcmd5>
+    <version>1.0+git20180925.fe4e47c</version>
+    <time>1537971385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638332</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cd07498ebb333a1e54926a661d569938</srcmd5>
+    <version>1.0+git20181001.0248077</version>
+    <time>1538502494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20181001.0248077:
+  * fix variable name</comment>
+    <requestid>639408</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f769e5478ca1e61eca9101889e835fa5</srcmd5>
+    <version>1.0+git20181004.228275e</version>
+    <time>1538672601</time>
+    <user>dimstar_suse</user>
+    <comment>- Install update-checker-migration only on SLE.
+
+- Update to version 1.0+git20181004.228275e:
+  * Use &quot;C&quot; locale for sorting.
+  * Use python3 to build html pages
+
+- Add requires to perl-Config-IniFiles and SUSEConnect library</comment>
+    <requestid>639953</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>69713a637232194ac0c5f901c5c4b522</srcmd5>
+    <version>1.0+git20181104.a2c4ebf</version>
+    <time>1543953305</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653530</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1bfdaf490793817e337d07eb97220a9f</srcmd5>
+    <version>1.0+git20181205.79dad1e</version>
+    <time>1544095054</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20181205.79dad1e:
+  * Fix syntax error in OnCalendar entry [bsc#1118321]
+
+- Fixes [boo#1117647]</comment>
+    <requestid>655308</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d88035c627487da364b6decd73820feb</srcmd5>
+    <version>1.0+git20181210.70430e2</version>
+    <time>1544441426</time>
+    <user>dimstar_suse</user>
+    <comment>- update-checker.conf-CaaSP.patch: change systemd profile default
+  output to salt.
+
+- Update to version 1.0+git20181210.70430e2:
+  * Fix fallback to global section, if special section does not exist.
+  * Use systemd profile in configuration file for systemd services.
+  * Document --profile option
+  * Implement --profile option
+  * Fix typo
+  * Use rubygem-inifiles to read configuration file
+- Add rubygem-inifile requirement for update-checker-migration</comment>
+    <requestid>656784</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8db6c9b6cf17cd0b7f1553bf6196f9c1</srcmd5>
+    <version>1.0+git20181210.70430e2</version>
+    <time>1549017977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670129</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>1270298641e59fb0981a95bc38cabbef</srcmd5>
+    <version>1.0+git20181210.70430e2</version>
+    <time>1559902598</time>
+    <user>dimstar_suse</user>
+    <comment>- Add coreutils PreRequires for systemd service macros</comment>
+    <requestid>707774</requestid>
+  </revision>
+</revisionlist>

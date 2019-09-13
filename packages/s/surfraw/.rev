@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec605aad903d8b782c50e7398a0e5851</srcmd5>
+    <version>2.3.0</version>
+    <time>1522062200</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile cleaned
+    * remove redefinition of libdir
+    * fix elvis location
+    * remove uneeded build dependencies
+    * use only xdg to define browser
+- pkg meta changed to ensure neutrality of description
+
+</comment>
+    <requestid>590311</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d3f8904aab29afae47d2be6bd84dd66b</srcmd5>
+    <version>2.3.0</version>
+    <time>1560971600</time>
+    <user>dimstar_suse</user>
+    <comment>Fix missing patch in changes files
+Add reproducible build support</comment>
+    <requestid>710794</requestid>
+  </revision>
+</revisionlist>

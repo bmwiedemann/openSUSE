@@ -1,0 +1,7 @@
+<package name="jhbuild" project="openSUSE:Factory">
+  <title>Tool to build GNOME</title>
+  <description>Jhbuild is a tool used to build the whole GNOME desktop from the
+git source, however, it can be used to build other projects
+creating a moduleset for it.</description>
+  <devel project="GNOME:Apps" package="jhbuild"/>
+</package>

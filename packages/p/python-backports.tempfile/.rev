@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>318320fc27afd5805d499edbcc086d5f</srcmd5>
+    <version>1.0</version>
+    <time>1528022066</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-jupyter_matlab_kernel</comment>
+    <requestid>606235</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cdb9cd651e5628d5870cc767b41638fb</srcmd5>
+    <version>1.0</version>
+    <time>1544726360</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653938</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8cb97e43b45d86e83a85053c04e9dd2e</srcmd5>
+    <version>1.0</version>
+    <time>1552901953</time>
+    <user>dimstar_suse</user>
+    <comment>- Sort out and skip python3 builds
+
+- Activate test suite</comment>
+    <requestid>685394</requestid>
+  </revision>
+</revisionlist>

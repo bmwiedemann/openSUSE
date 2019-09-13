@@ -1,0 +1,6 @@
+<package name="python-rustcfg" project="openSUSE:Factory">
+  <title>Rust cfg expression parser in Python</title>
+  <description>This package provides a Python module for parsing Config.toml files.</description>
+  <devel project="devel:languages:rust" package="python-rustcfg"/>
+  <url>https://pagure.io/fedora-rust/python-rustcfg</url>
+</package>

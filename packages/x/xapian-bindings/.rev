@@ -1,0 +1,256 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7c37a1d17b29a8f9855d1e2d83543e94</srcmd5>
+    <version>1.2.7</version>
+    <time>1316618754</time>
+    <user>saschpe</user>
+    <comment>Resubmitted with the required changes for spec-file and changes</comment>
+    <requestid>84086</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e8fdd2a06fbc4ae6865a0b956b30f0e9</srcmd5>
+    <version>1.2.7</version>
+    <time>1316681581</time>
+    <user>saschpe</user>
+    <comment>- remove %debug_package macro</comment>
+    <requestid>84251</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e8fdd2a06fbc4ae6865a0b956b30f0e9</srcmd5>
+    <version>1.2.7</version>
+    <time>1319182577</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7f3d6591a1dd5aae739115df96c0a0b0</srcmd5>
+    <version>1.2.7</version>
+    <time>1323195222</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d5b19eea5ea55dd313e269fb5de531b1</srcmd5>
+    <version>1.2.8</version>
+    <time>1325767819</time>
+    <user>coolo</user>
+    <comment>- update to 1.2.8:
+  * Wrap user-subclassable functor objects by allowing the user to pass a
+    Lua function where the functor object would be passed in the C++ API.
+  * Fix &quot;PHP Notice:  Undefined variable: r in xapian.php&quot;.  (Fixes bug#576)
+  * The PHP bindings will now work again with a version of PHP built with ZTS
+    enabled (which is the default on Microsoft Windows).  This was broken by
+    the changes to support subclassing in PHP in the version of SWIG used since
+    1.2.6.
+  * Add a module docstring.  (Fixes bug #573)
+  * The python testsuite now checks for object leaks during each testcase.
+  * In test_matchingterms_iter, run the code we're testing for leaks twice, and
+    only check for leaks the second time to avoid falsely reporting a leak when
+    some cached value gets initialised under Python 2.5.
+  * Wrap optional prefix parameter to Database::allterms. (forwarded request 98789 from dirkmueller)</comment>
+    <requestid>98791</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d5b19eea5ea55dd313e269fb5de531b1</srcmd5>
+    <version>1.2.8</version>
+    <time>1340184332</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>75c77a7b9e5cf8e0da2ac7436b709e0a</srcmd5>
+    <version>1.2.12</version>
+    <time>1357632889</time>
+    <user>coolo</user>
+    <comment>replaced-swig-zend-error-noreturn-flag.patch</comment>
+    <requestid>147311</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>75c77a7b9e5cf8e0da2ac7436b709e0a</srcmd5>
+    <version>1.2.12</version>
+    <time>1359110588</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3bb62d4d3b9fced925368298d336a32</srcmd5>
+    <version>1.2.15</version>
+    <time>1370431434</time>
+    <user>coolo</user>
+    <comment>Update to version 1.2.15</comment>
+    <requestid>177012</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a3bb62d4d3b9fced925368298d336a32</srcmd5>
+    <version>1.2.15</version>
+    <time>1379664988</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b41fec62149e5ce9fff7da02e3fb0b1a</srcmd5>
+    <version>1.2.16</version>
+    <time>1387453096</time>
+    <user>coolo</user>
+    <comment>Update to version 1.2.16. This brings the bindings back in line again with the xapian-core package</comment>
+    <requestid>211402</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>93e0cc852effc40e8d9423cc00fb575c</srcmd5>
+    <version>1.2.17</version>
+    <time>1391082989</time>
+    <user>coolo</user>
+    <comment>Update to 1.2.17 (forwarded request 215583 from sumski)</comment>
+    <requestid>215596</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>93e0cc852effc40e8d9423cc00fb575c</srcmd5>
+    <version>1.2.17</version>
+    <time>1409303668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>659d018f4c57d884e45af031fe5023ed</srcmd5>
+    <version>1.2.19</version>
+    <time>1413987764</time>
+    <user>coolo</user>
+    <comment>Update to Xapian 1.2.19</comment>
+    <requestid>257876</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>ad93cbb4e5ccbdd35a7e36ee3ec336d3</srcmd5>
+    <version>1.2.19</version>
+    <time>1424622388</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286984</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8c94963333cee8ca6fe847a4408ad4cc</srcmd5>
+    <version>1.2.20</version>
+    <time>1426174743</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290380</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>61b5d71091b54ceda6078259c0a9488b</srcmd5>
+    <version>1.2.20</version>
+    <time>1428064488</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294157</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>12075436dda9d93aa5ad4cceeee7cc6f</srcmd5>
+    <version>1.2.21</version>
+    <time>1432281274</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.2.21</comment>
+    <requestid>308203</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>06ca9f5dd5f0a0f8a5c5cf003c909a67</srcmd5>
+    <version>1.2.21</version>
+    <time>1437549595</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317794</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>aaebdbfe2191d9ff45b2254d13769138</srcmd5>
+    <version>1.2.23</version>
+    <time>1461335152</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>390764</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9ed8239e2e778dede4a8ad5132124c1e</srcmd5>
+    <version>1.4.0</version>
+    <time>1471688822</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.4.0</comment>
+    <requestid>407426</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c5e76cd8394bf946b63d0b82c7a154a4</srcmd5>
+    <version>1.4.1</version>
+    <time>1480952070</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443786</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2ad86341dd85f957d17e8ce852ba2353</srcmd5>
+    <version>1.4.3</version>
+    <time>1489345201</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>468645</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>f3271cc11544fa2018e8a12ee36926aa</srcmd5>
+    <version>1.4.3</version>
+    <time>1498638999</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506393</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4cc9844b161da42e6815ed31a6a672fd</srcmd5>
+    <version>1.4.4</version>
+    <time>1499168572</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507413</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>c36742ff363fe296c4f8213cfe76288b</srcmd5>
+    <version>1.4.4</version>
+    <time>1505239073</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523631</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0f6347fc554c6df60c58ae7992df0caf</srcmd5>
+    <version>1.4.5</version>
+    <time>1513762793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558313</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b5ebc09303c3b5ddc26ad0d0cc889f9e</srcmd5>
+    <version>1.4.6</version>
+    <time>1532681847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625433</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ecfb46e31b3fed6e07ff2c1ffaaa8fc8</srcmd5>
+    <version>1.4.7</version>
+    <time>1541666831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644361</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1409b166c262838699b16b98d5f2839c</srcmd5>
+    <version>1.4.9</version>
+    <time>1543224425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651066</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>7eefc280ba59c739e20912fbce9ee274</srcmd5>
+    <version>1.4.9</version>
+    <time>1560459985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709676</requestid>
+  </revision>
+</revisionlist>

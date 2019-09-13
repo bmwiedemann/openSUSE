@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54c592af3dbb140da73a62bc570597e5</srcmd5>
+    <version>0.3.16</version>
+    <time>1336423734</time>
+    <user>coolo</user>
+    <comment>New package contributed by community: pandora.com client</comment>
+    <requestid>115342</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cdbdcd1343eb6cf62cd4f4ce254b461d</srcmd5>
+    <version>0.3.17</version>
+    <time>1337955506</time>
+    <user>coolo</user>
+    <comment>Adjust license tag, fix bnc#763416 (forwarded request 121796 from dimstar)</comment>
+    <requestid>121797</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cdbdcd1343eb6cf62cd4f4ce254b461d</srcmd5>
+    <version>0.3.17</version>
+    <time>1340184003</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>cdbdcd1343eb6cf62cd4f4ce254b461d</srcmd5>
+    <version>0.3.17</version>
+    <time>1359109929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>cdbdcd1343eb6cf62cd4f4ce254b461d</srcmd5>
+    <version>0.3.17</version>
+    <time>1379664033</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>cdbdcd1343eb6cf62cd4f4ce254b461d</srcmd5>
+    <version>0.3.17</version>
+    <time>1409302706</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dfa21c119d8716e701ba1c0cd1a082cf</srcmd5>
+    <version>1.0.0</version>
+    <time>1412098574</time>
+    <user>coolo</user>
+    <comment>Update to 1.0.0</comment>
+    <requestid>243916</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>03ed49b885e7ff88baba8449b9f74ba9</srcmd5>
+    <version>1.0.1</version>
+    <time>1417809885</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>264089</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1b837ed72be5e6753b43695cd86739c2</srcmd5>
+    <version>1.0.1</version>
+    <time>1460482346</time>
+    <user>dimstar_suse</user>
+    <comment>- Call fdupes only over pyton3_sitelib: ensure that
+  /usr/share/icons contains actual files and not symlinks.</comment>
+    <requestid>384495</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5816db75c7f21cf787ded5b6e7561290</srcmd5>
+    <version>1.2.1</version>
+    <time>1470413874</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace python3-gobject Requires with python3-gobject-Gdk since
+  this was split for X-less setups, but pitos uses Gdk features.
+
+- Update to 1.2.1:
+  + Show a useful error dialog if no secret service found
+  + Improvements to handling login credential changes
+  + Fix icon name for main window
+  + notification_icon: Fix visible toggle with AppIndicator going out of sync
+  + mpris: Fix GetCurrentSong() in legacy interface
+- Changes from 1.2.0:
+  + Migrate build system to Autotools
+  + Migrate settings to GSettings
+  + Store password with SecretService (libsecret)
+  + Remove all dependencies on dbus-python
+  + Add extensive keyboard shortcuts for the main window
+    + Add Keyboard Shortcuts help window on Gtk 3.20+
+  + Add initial support for translations (translators needed!)
+  + Add explicit content filter option
+  + Fix high CPU usage with Ubuntu's default theme
+  + Redesign all dialogs to use Headerbars
+  + Redesign stations dropdown as a Popover with searching and sorting
+  + Improve integration with Flatpak
+    + Use Gio to open URIs
+    + Rename icons and data files to match app id
+  + mpris:
+    + Effectively rewritten to better follow the spec
+    + Reference album art as locally downloaded files
+  + notify: Fix Ubuntu sometimes showing wrong art
+  + lastfm: Fix now playing not being set
+- Changes from 1.1.2:</comment>
+    <requestid>416969</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1317f4e105b7f9478fc0b4a2ea34f1b8</srcmd5>
+    <version>1.4.1</version>
+    <time>1539251331</time>
+    <user>dimstar_suse</user>
+    <comment>(Not sure why it hasn't been forwarded yet)
+
+- Update to version 1.4.1:
+  + Change default quality to high (mp3)
+  + Mark application as DBusActivatable
+  + MPRIS: Fix potential unhandled exception
+  + Mediakeys: Handle keyboards with a dedicated pause key
+  + Mediakeys: Fix support on GNOME-Shell 3.26+ and MATE
+  + Notify: Improve behavior on various notification servers
+- Changes from version 1.4.0:
+  + Add new plugin that inhibits screensaver/suspend during
+    playback
+  + Add new plugin adding a 10-band equalizer
+  + Add new plugin that automatically normalizes volume between
+    tracks
+  + Add help entry (F1) that opens the wiki
+  + Replace build system with Meson
+  + Automatically detect if the user has Pandora One
+  + Improve saving and restoring window position
+  + Improve plugin loading performance and error reporting
+  + Notification Icon: Improve detecting if a tray is available
+  + Notification Icon: Add option to use symbolic icon
+- Changes from version 1.3.1:
+  + Fix exception on Python 3.6+
+  + Add ability to create stations based upon current song/artist
+  + Show useful error on renaming Thumbprint Radio
+  + Show useful error on creating already existing station
+  + Minor buffering improvements
+  + lastfm: Improve preferences and offer to deauthorize account
+  + mpris: Add extension for ratings and remove legacy interface
+  + mediakeys: Fix on future versions of GNOME 3.24.2+
+  + mediakeys: Avoid using keybinder on Wayland (old keybinder
+    would crash)
+- Changes from version 1.3.0:
+  + Add support for MPRIS TrackList and PlayList interface
+  + Add dynamic rating and cover icons based upon theme colors
+  + Add plugin for logging to systemd journal
+  + Add symbolic icon
+  + Add man page
+  + Improve handling playlist expiration
+  + Improve search in stations list
+  + Improve accessibility of UI
+  + Improve buffering behavior
+  + Improve libsecret support
+  + Remove dependency on libnotify
+  + Fix disabling keybindings plugin when using keybinder
+  + Fix notification icon trying to load on Wayland
+  + Fix failure to reconnect on login expiration
+  + Fix some plugins not being enabled by default
+  + Fix handling error on MPRIS plugin failure
+  + Fix migrating configs from &lt; 0.3.18
+- Switch to meson buildsystem, add meson BuildRequires and
+  corresponding macros.
+- Add pithos-fix-deprecated-pygobject.patch: Fix deprecated
+  PyGObject usage.
+- Conditionalize post(un) handling, no longer needed for modern
+  versions of openSUSE.
+- Drop fdupes BuildRequires and macro, no longer needed.
+</comment>
+    <requestid>639232</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d59ab82e528e0f000cf355a306495821</srcmd5>
+    <version>1.4.1</version>
+    <time>1559375781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706391</requestid>
+  </revision>
+</revisionlist>

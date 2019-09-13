@@ -1,0 +1,5 @@
+<package name="ibus-libzhuyin" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="M17N" package="ibus-libzhuyin"/>
+</package>

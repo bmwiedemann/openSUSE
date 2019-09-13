@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d2edd7bf8375e6aec7c1fee7eb32480</srcmd5>
+    <version>unknown</version>
+    <time>1498741360</time>
+    <user>dimstar_suse</user>
+    <comment>Make sure License is shipt</comment>
+    <requestid>500363</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8973fb08042218622ed79ee418d2e218</srcmd5>
+    <version>unknown</version>
+    <time>1506195206</time>
+    <user>dimstar_suse</user>
+    <comment>Release 0.9.8
+https://github.com/openSUSE/geekodoc/releases/tag/v0.9.8 
+Release 0.9.8
+* GeekoDoc
+  * Restrict Possible Values in format Attribute (#24)
+  * Fix outdated Schematron rules (#22)
+  * Implement task elements (#20)
+  * Adapt content model of task* elements (#1)
+  * Add test cases and use Travis to check schema
+* Spec file:
+  * Correct summary
+</comment>
+    <requestid>527718</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f10cf13a89d07075ad6f269205f9cf15</srcmd5>
+    <version>unknown</version>
+    <time>1508503669</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535437</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ee3fde69bcb239fa3fb1bc9bd8ab6b0e</srcmd5>
+    <version>unknown</version>
+    <time>1509036377</time>
+    <user>dimstar_suse</user>
+    <comment>Release 1.0.0
+https://github.com/openSUSE/geekodoc/releases/tag/v1.0.0
+* Geekodoc
+  * Missing mediaobject in cover (#30)
+* Novdoc
+  no changes 
+</comment>
+    <requestid>536832</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>64024f4865d13c33b3fefe183d5be4ec</srcmd5>
+    <version>unknown</version>
+    <time>1517323480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570858</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>2a492080aec0fc8f5c33c32ec673e5ba</srcmd5>
+    <version>unknown</version>
+    <time>1518281898</time>
+    <user>dimstar_suse</user>
+    <comment>- Bugfix release 1.0.2.1
+https://github.com/openSUSE/geekodoc/releases/tag/v1.0.2.1
+* Correct version in GeekoDoc schema
+* Add missing 'fig' value (#43)
+* Improve test suite
+- Add bcond_with tests to activate test suite 
+- Release 1.0.2
+https://github.com/openSUSE/geekodoc/releases/tag/v1.0.2
+Only a package release without any changes in the schemas.
+Fixes issue #41 to reduce number of files in packages
+ 
+- Remove number of files in package; fixes openSUSE/geekodoc#41
+  some files are only useful for development
+</comment>
+    <requestid>574639</requestid>
+  </revision>
+</revisionlist>

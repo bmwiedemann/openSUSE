@@ -1,0 +1,409 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a06ff3b0dd7123a36dd815278421a23</srcmd5>
+    <version>3.8.0</version>
+    <time>1366289884</time>
+    <user>coolo</user>
+    <comment>New package - gnome-photos</comment>
+    <requestid>171362</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>72f71c38dc77496b3a102b00e1b703b6</srcmd5>
+    <version>3.8.2</version>
+    <time>1368694282</time>
+    <user>coolo</user>
+    <comment>Update to 3.8.2 (forwarded request 175714 from Zaitor)</comment>
+    <requestid>175772</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>068261ea12a7471116c62f2e9ea02690</srcmd5>
+    <version>3.9.4</version>
+    <time>1373980338</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.4 - hopefully in the for #oSC13</comment>
+    <requestid>183168</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0813133d64ec82f037cc32638a6f0d5c</srcmd5>
+    <version>3.9.5.1</version>
+    <time>1376648477</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add dbus(dleyna-renderer-service) Recommends: gnome-photos allows
+  to send the output to a DLNA renderer. (forwarded request 186791 from Zaitor)</comment>
+    <requestid>186952</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cbe5f7ede3a53eb79b1d62656cdebb7b</srcmd5>
+    <version>3.9.90</version>
+    <time>1377872896</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.90</comment>
+    <requestid>196240</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0e8b6a68d15c6f2e2e3724df970f0139</srcmd5>
+    <version>3.9.91</version>
+    <time>1378996899</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.9.91</comment>
+    <requestid>198072</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0e8b6a68d15c6f2e2e3724df970f0139</srcmd5>
+    <version>3.9.91</version>
+    <time>1379662499</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ad3a7be5afb1ccdf49987b81cecf485a</srcmd5>
+    <version>3.9.92</version>
+    <time>1379941242</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.92</comment>
+    <requestid>200001</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5c413ed1c7fc2a8d98a2e27cb0e17309</srcmd5>
+    <version>3.10.0</version>
+    <time>1380295628</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200936</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2041c4aa0b7d61edf2c10fa4eed73efe</srcmd5>
+    <version>3.10.1</version>
+    <time>1381826472</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.10.1 - Stable branch - translations only... (forwarded request 203250 from Zaitor)</comment>
+    <requestid>203256</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b91d6e615b671403eb139d7ce7efc31d</srcmd5>
+    <version>3.10.2</version>
+    <time>1385290352</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory</comment>
+    <requestid>207671</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ae34105cdbd0e40710566a077f5d23a5</srcmd5>
+    <version>3.12.1</version>
+    <time>1399317331</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231731</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ae34105cdbd0e40710566a077f5d23a5</srcmd5>
+    <version>3.12.1</version>
+    <time>1409301035</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1192a8e0366bca9d357ae04381ea25f1</srcmd5>
+    <version>3.14.0</version>
+    <time>1412098706</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251904 from Zaitor)</comment>
+    <requestid>252095</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4db6dc4be85978f634f113dc09c080ee</srcmd5>
+    <version>3.14.2</version>
+    <time>1416347198</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.14.2</comment>
+    <requestid>261798</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>615ed518e453a3541260f799e7f1155a</srcmd5>
+    <version>3.16.0</version>
+    <time>1427735857</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292751 from dimstar)</comment>
+    <requestid>292944</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>82a3bd1ff9e3d872715aa9a20e8f6118</srcmd5>
+    <version>3.16.2</version>
+    <time>1431979959</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307024</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fb39f9a2403806999e9e400bc4ccfd0a</srcmd5>
+    <version>3.18.0</version>
+    <time>1444142070</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 333028 from Zaitor)</comment>
+    <requestid>333084</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6aa0cfb0ad94b2a0f29491d4b02ab8c1</srcmd5>
+    <version>3.18.1</version>
+    <time>1445860067</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 339388 from Zaitor)</comment>
+    <requestid>339807</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0d6b09204edefcd1d167ce79979260b6</srcmd5>
+    <version>3.18.2</version>
+    <time>1447234279</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343203</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>97a73215ed45d40db8b29eca81b800ed</srcmd5>
+    <version>3.20.0</version>
+    <time>1459254887</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 376641 from dimstar)</comment>
+    <requestid>376824</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f43a3535b4947695dc143230cfdc1570</srcmd5>
+    <version>3.20.1</version>
+    <time>1460739997</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390159</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ec98214ece9acfd65f1e664207ed828c</srcmd5>
+    <version>3.20.2</version>
+    <time>1466814172</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404182</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5c9ed14288cc416988f1ce1aad210285</srcmd5>
+    <version>3.20.3</version>
+    <time>1470851774</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418315</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0812e733a617a0fda7a1d69a0338fcc2</srcmd5>
+    <version>3.22.0</version>
+    <time>1474623268</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 428366 from Zaitor)</comment>
+    <requestid>429054</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8ad802deaa751fd065b5034b9f0a884d</srcmd5>
+    <version>3.22.1</version>
+    <time>1476779249</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435366</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3be44838d7c8715924f9746677abf69a</srcmd5>
+    <version>3.22.2</version>
+    <time>1478779784</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 438804 from Zaitor)</comment>
+    <requestid>439124</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d0d12807927a5c9f83c037343b5b86ad</srcmd5>
+    <version>3.22.3</version>
+    <time>1484041214</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449334</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d10337730c4d753f01f77e830f2abc83</srcmd5>
+    <version>3.22.4</version>
+    <time>1487461233</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458599</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ece8636b2f6e58eb3b213e9ec35fe93d</srcmd5>
+    <version>3.24.0</version>
+    <time>1490220919</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.0 (forwarded request 481806 from dimstar)</comment>
+    <requestid>481810</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>dd2082a9466141cde524189231001f1e</srcmd5>
+    <version>3.24.1</version>
+    <time>1493455837</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.1 (forwarded request 490788 from dimstar)</comment>
+    <requestid>490923</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b858f924190563196ec5eb8d6a2ac1cd</srcmd5>
+    <version>3.24.2</version>
+    <time>1495132822</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 494378 from Zaitor)</comment>
+    <requestid>494449</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>283f71747b03e52c4740b3d3b4a63be9</srcmd5>
+    <version>3.24.3</version>
+    <time>1504520623</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 518905 from Zaitor)</comment>
+    <requestid>519088</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>26ee1b94651347fa92647ae52e117a9f</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332487</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.26.0 (forwarded request 523618 from dimstar)</comment>
+    <requestid>523662</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f4e6ed08d242386bdcc277cbf58b8472</srcmd5>
+    <version>3.26.1</version>
+    <time>1507280330</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 531139 from Zaitor)</comment>
+    <requestid>531200</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ea51d3b01691e07f85b97d88e52ff94b</srcmd5>
+    <version>3.26.2</version>
+    <time>1510321448</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.26.2 (forwarded request 538875 from luc14n0)</comment>
+    <requestid>539260</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>eeb43a6becd5359d14e39ed240d2ce4b</srcmd5>
+    <version>3.26.2</version>
+    <time>1512546647</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548513</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>02e6b43fec317d6c5e78ee6fc9fc6e56</srcmd5>
+    <version>3.26.3</version>
+    <time>1513676798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.26.3:
+  + Bugs fixed: bgo#785376.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + gnome-photos-main-toolbar-dont-leak.patch.
+  + gnome-photos-nb-translations.patch.
+  + gnome-photos-properties-dialog-dont-leak.patch.</comment>
+    <requestid>557168</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>b76b9ac4826d5454a84e730f8405b31b</srcmd5>
+    <version>3.26.3</version>
+    <time>1518025100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572959</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e6bfc934eb10e4f76492dd10452cd3f0</srcmd5>
+    <version>3.27.92</version>
+    <time>1521051911</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.27.92 (forwarded request 583682 from dimstar)</comment>
+    <requestid>584798</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>cffcfb520f04fe22a7264780a586dc24</srcmd5>
+    <version>3.28.0</version>
+    <time>1521903893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.28.0:
+  + Don't use an intermediate Imports sub-directory for imported
+    content (glgo#GNOME/gnome-photos#89).
+  + Updated translations. (forwarded request 587681 from dimstar)</comment>
+    <requestid>587683</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>5a41e38c6f7aa554f88e07d3249ddd63</srcmd5>
+    <version>3.28.0</version>
+    <time>1525343522</time>
+    <user>dimstar_suse</user>
+    <comment>Note: Only ack this sub after doing a branch of graphics babl/gegl  into GNOME:Factory -- needs new gegl
+
+- Add gnome-photos-Bump-minimum-GEGL-version.patch: build: Bump
+  minimum GEGL version to 0.4.0.
+- Following the above, replace pkgconfig(gegl-0.3) with
+  pkgconfig(gegl-0.4) and add libtool BuildRequires aswell as
+  passing autoreconf since the patch touches the buildsystem.
+- Add gnome-photos-export-unbreak-empty-trash-button.patch:
+  export-notification: Unbreak the &quot;Empty Trash&quot; button. (forwarded request 602146 from iznogood)</comment>
+    <requestid>602462</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9126e5035ede23c9cf48a52c1570166a</srcmd5>
+    <version>3.28.1</version>
+    <time>1536833326</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 3.28.1:
+  + Bugs fixed: tests: Update for renamed application ID
+    (glgo#GNOME/gnome-photos#100).
+  + Updated translations.
+- Drop gnome-photos-export-unbreak-empty-trash-button.patch: Fixed
+  upstream. (forwarded request 633526 from iznogood)</comment>
+    <requestid>633717</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e05efdbfb810f4fbf9e27e67802c4b20</srcmd5>
+    <version>3.30.1</version>
+    <time>1539757109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638829</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>98d13a6a49d00ce93be4b2f86efcd0bf</srcmd5>
+    <version>3.30.1</version>
+    <time>1541508771</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-photos-on-demand-activate-dleyna.patch: Don't activate
+  dleyna-renderer-service when Photos starts up (bsc#992420,
+  glgo#GNOME/gnome-photos#75). (forwarded request 643057 from JonathanKang)</comment>
+    <requestid>643718</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>5251a48eee9e5053ed06a92d483f95d5</srcmd5>
+    <version>3.30.1</version>
+    <time>1545222193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656601</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d37014b4a7e2a53694428a8280ad4771</srcmd5>
+    <version>3.32.0</version>
+    <time>1556914487</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695577 from dimstar)</comment>
+    <requestid>695747</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8724569f890a818a68180f5e8b3dac6b</srcmd5>
+    <version>3.32.1</version>
+    <time>1566664977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724998</requestid>
+  </revision>
+</revisionlist>

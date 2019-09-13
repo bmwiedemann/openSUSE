@@ -1,0 +1,12 @@
+<package name="rocksndiamonds-data" project="openSUSE:Factory">
+  <title>Data files for Rocks'n'Diamonds</title>
+  <description>This is a nice little game with color graphics and sound for your Unix system
+with color X11.  You need an 8-Bit color display or better.  It will not work
+on black&amp;white systems, and maybe not on gray scale systems.
+
+If you know the game Boulder Dash (Commodore C64) or Emerald Mine (Amiga),
+you know what Rocks'n'Diamonds is about.
+
+Data files (levels, tapes, graphics, music, sound) for Rocks'n'Diamonds.</description>
+  <devel project="games" package="rocksndiamonds-data"/>
+</package>

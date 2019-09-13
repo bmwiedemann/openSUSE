@@ -1,0 +1,5 @@
+<package name="mate-common" project="openSUSE:Factory">
+  <title>[OK] Common scripts and macros to develop with MATE</title>
+  <description>mate-common is an extension to autoconf, automake and libtool for the MATE environment and MATE using  applications. Included are mate-autogen.sh and several macros to help in MATE source trees.</description>
+  <devel project="X11:MATE:Factory" package="mate-common"/>
+</package>

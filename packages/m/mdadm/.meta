@@ -1,0 +1,7 @@
+<package name="mdadm" project="openSUSE:Factory">
+  <title>Utility for Configuring MD Setup</title>
+  <description>Mdadm is a program that can be used to control Linux md devices. It is
+intended to provide all the functionality of the mdtools and raidtools
+programs but with a very different interface.</description>
+  <devel project="Base:System" package="mdadm"/>
+</package>

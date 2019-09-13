@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>557ed1fa758cf8de1ae02c63c152cab4</srcmd5>
+    <version>0.8.0</version>
+    <time>1405611093</time>
+    <user>coolo</user>
+    <comment>I intend to submit python-pandas to openSUSE:Factory.  python-pandas is a tool that makes it easy to do complex data import, export, and manipulation.  It has become one of the critical tools for data analysis in python, like python-numpy, python-scipy, python-matplotlib, and IPython (all of which are in openSUSE:Factory).
+
+This is a dependency of python-pandas.</comment>
+    <requestid>241240</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>557ed1fa758cf8de1ae02c63c152cab4</srcmd5>
+    <version>0.8.0</version>
+    <time>1409302780</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c814946b431ad1425ece336c121280f5</srcmd5>
+    <version>1.0.0</version>
+    <time>1430387437</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304346</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>24f0297165721cbaf7bee3f6e811ee52</srcmd5>
+    <version>1.2.0</version>
+    <time>1480018975</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441228</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>670db166c1fc3b3cb8673269147fcf2a</srcmd5>
+    <version>1.2.0</version>
+    <time>1493819690</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489415</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8926ee7f58d6397a9df89bc60d5420d9</srcmd5>
+    <version>1.2.1</version>
+    <time>1507570868</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530454</requestid>
+  </revision>
+</revisionlist>

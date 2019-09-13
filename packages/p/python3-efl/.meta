@@ -1,0 +1,5 @@
+<package name="python3-efl" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Enlightenment:Factory" package="python3-efl"/>
+</package>

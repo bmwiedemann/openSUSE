@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>f32918b252a73b2b87a7017f6902ab7c</srcmd5>
+    <version>4.28</version>
+    <time>1336471860</time>
+    <user>coolo</user>
+    <comment>Moving M17N/terminus-font to M17N:fonts/terminus-bitmap-fonts.</comment>
+    <requestid>116360</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>1ccb0a666abad76da07f016d335057c0</srcmd5>
+    <version>4.28</version>
+    <time>1338017367</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122187</requestid>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>1ccb0a666abad76da07f016d335057c0</srcmd5>
+    <version>4.28</version>
+    <time>1340184268</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>4097138504bd866f32e0950eabcea47e</srcmd5>
+    <version>4.28</version>
+    <time>1341220651</time>
+    <user>coolo</user>
+    <comment>fix builds for 12.2 (forwarded request 126721 from MargueriteSu)</comment>
+    <requestid>126722</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef53bf78fd596ac9e39d747abf867694</srcmd5>
+    <version>4.38</version>
+    <time>1347619187</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133987</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ef53bf78fd596ac9e39d747abf867694</srcmd5>
+    <version>4.38</version>
+    <time>1359110474</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>ef53bf78fd596ac9e39d747abf867694</srcmd5>
+    <version>4.38</version>
+    <time>1379664790</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>a580bc7f0cedf4784bff89a599eb3d4d</srcmd5>
+    <version>4.38</version>
+    <time>1386156683</time>
+    <user>coolo</user>
+    <comment>correct license and added OFL.TXT to %doc due to preview rejected SR.</comment>
+    <requestid>209323</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>a580bc7f0cedf4784bff89a599eb3d4d</srcmd5>
+    <version>4.38</version>
+    <time>1409303471</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>41445bfb1022bb5d41d05e3462f37281</srcmd5>
+    <version>4.39</version>
+    <time>1416823761</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262737</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>37c40f8402015c5b53715e54438298c6</srcmd5>
+    <version>4.40</version>
+    <time>1492170051</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>487261</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>12f5d113319328f2e2c5a140ddc7b003</srcmd5>
+    <version>4.46</version>
+    <time>1498551704</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506320</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>086ae215f07d8a9add429c46a05b347a</srcmd5>
+    <version>4.47</version>
+    <time>1546246044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662100</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>db1461d3993a4e6f585708944c744e39</srcmd5>
+    <version>4.48</version>
+    <time>1564414213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719418</requestid>
+  </revision>
+</revisionlist>

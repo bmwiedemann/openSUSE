@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fd8df3cd2e22bc7e31d50ccd2876db40</srcmd5>
+    <version>0.11</version>
+    <time>1404157497</time>
+    <user>coolo</user>
+    <comment>Useful thing for translation analyze</comment>
+    <requestid>237940</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fd8df3cd2e22bc7e31d50ccd2876db40</srcmd5>
+    <version>0.11</version>
+    <time>1409302725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3cf737b020acb1cf7e7760b3beefcdd3</srcmd5>
+    <version>0.12</version>
+    <time>1409725817</time>
+    <user>coolo</user>
+    <comment>Version upgrade to 0.12</comment>
+    <requestid>247211</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ceea29262a4fe3f5af7557f7032fddfd</srcmd5>
+    <version>0.12</version>
+    <time>1414066824</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257978</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>026dff1e9c0a92e5cfacc0c84d9af85f</srcmd5>
+    <version>0.12</version>
+    <time>1503592997</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>513055</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>68abc8f72ca682562ad7d61e8519ae5f</srcmd5>
+    <version>0.12</version>
+    <time>1545223877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659274</requestid>
+  </revision>
+</revisionlist>

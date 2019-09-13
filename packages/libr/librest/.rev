@@ -1,0 +1,212 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1ab7dc4b086c4d2bf959f6e251056285</srcmd5>
+    <version>unknown</version>
+    <time>1287870737</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51302 from user dimstar
+</comment>
+    <requestid>51302</requestid>
+  </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>b9fed56fbad17773e1bf7ad8dd57d308</srcmd5>
+    <version>0.6.1</version>
+    <time>1287870769</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51302
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>75596956637656ca488eb545e1e1f3e0</srcmd5>
+    <version>0.6.3</version>
+    <time>1291995793</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55323 from user vuntz
+</comment>
+    <requestid>55323</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>426ed298c2ac507c568b7aa298a758b9</srcmd5>
+    <version>0.6.3</version>
+    <time>1291995801</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55323
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>426ed298c2ac507c568b7aa298a758b9</srcmd5>
+    <version>0.6.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>95f09cb996e09cdb319a6a663abddd20</srcmd5>
+    <version>0.7.10</version>
+    <time>1304343443</time>
+    <user>saschpe</user>
+    <comment>Pushing G:A changes related to GNOME 3 (either needed by GNOME 3, or needed to build with GNOME 3)</comment>
+    <requestid>69144</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7dde2638878cc521f983a33844fe7183</srcmd5>
+    <version>0.7.10</version>
+    <time>1304343458</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69144
+</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>7dde2638878cc521f983a33844fe7183</srcmd5>
+    <version>0.7.10</version>
+    <time>1319182133</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>70abec02781f74131f7846e0e5549645</srcmd5>
+    <version>0.7.12</version>
+    <time>1325846743</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98934</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>85f5f2c2ef76accbc20c9e1087f95e99</srcmd5>
+    <version>0.7.12</version>
+    <time>1326203462</time>
+    <user>coolo</user>
+    <comment>push from G:A / fixes build in Factory.</comment>
+    <requestid>99563</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b30d514ea75841950811edbc05d7a6b8</srcmd5>
+    <version>0.7.12</version>
+    <time>1337196919</time>
+    <user>coolo</user>
+    <comment>Add  baselibs.conf (forwarded request 117038 from dimstar)</comment>
+    <requestid>120902</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>b30d514ea75841950811edbc05d7a6b8</srcmd5>
+    <version>0.7.12</version>
+    <time>1340183634</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5c205e2001182dbba295cc288bd52705</srcmd5>
+    <version>0.7.90</version>
+    <time>1347347436</time>
+    <user>coolo</user>
+    <comment>Repush ... comments fixed (forwarded request 133107 from vuntz)</comment>
+    <requestid>133268</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>5c205e2001182dbba295cc288bd52705</srcmd5>
+    <version>0.7.90</version>
+    <time>1359109348</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>6cfcab41db5cb747a4ef60e9c8e2483d</srcmd5>
+    <version>0.7.90</version>
+    <time>1374050064</time>
+    <user>coolo</user>
+    <comment>- Add librest-fix-build-without-ca-certificates.patch: Fix build
+  with configure --without-ca-certificates.
+- Pass --without-ca-certificates to configure instead of
+  --with-ca-certificates=/etc/ssl/ca-bundle.pem (bnc#825903). (forwarded request 182876 from dimstar)</comment>
+    <requestid>183475</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>8b141a67ee2ad17881e09b34055d2acf</srcmd5>
+    <version>0.7.90</version>
+    <time>1378713267</time>
+    <user>coolo</user>
+    <comment>revert (forwarded request 197541 from Zaitor)</comment>
+    <requestid>197827</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>8b141a67ee2ad17881e09b34055d2acf</srcmd5>
+    <version>0.7.90</version>
+    <time>1379663080</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>06aabb223da8fb35d326305808c91313</srcmd5>
+    <version>0.7.91</version>
+    <time>1396622210</time>
+    <user>coolo</user>
+    <comment>Update - fixed a typo (forwarded request 228949 from dimstar)</comment>
+    <requestid>228950</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>06aabb223da8fb35d326305808c91313</srcmd5>
+    <version>0.7.91</version>
+    <time>1409301703</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0ff3b2309468b74f9e38105e578c2a17</srcmd5>
+    <version>0.7.92</version>
+    <time>1410528295</time>
+    <user>coolo</user>
+    <comment>Update to 0.7.92</comment>
+    <requestid>248247</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>031346a543c73f1ee66ec3e4219c5820</srcmd5>
+    <version>0.7.93</version>
+    <time>1426795573</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291277</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c3a3ecec172ad9976488da423692b725</srcmd5>
+    <version>0.8.0</version>
+    <time>1462442989</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392270</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>4ff7fa6c8ef506e6c93640a0b1523dda</srcmd5>
+    <version>0.8.0</version>
+    <time>1464964428</time>
+    <user>dimstar_suse</user>
+    <comment>Sync package with SLE12SP2 - just for easier tracking (forwarded request 399224 from dimstar)</comment>
+    <requestid>399448</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>f6fd9a9c9afae589ac41c6e973bd6484</srcmd5>
+    <version>0.8.0</version>
+    <time>1507896371</time>
+    <user>dimstar_suse</user>
+    <comment>- Use librest-0_7-0 as shared library name, similar to how it is
+  done for libmwaw-0_3.
+- Drop redundant %clean section; use %_smp_mflags for parallel
+  build.
+</comment>
+    <requestid>532468</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e4bd5dab898ed6f086568f3483451f01</srcmd5>
+    <version>0.8.1</version>
+    <time>1509530826</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.8.1 (forwarded request 535180 from dimstar)</comment>
+    <requestid>537541</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>2833c546be0b9a2b420a81a3f75bcd3d</srcmd5>
+    <version>0.8.1</version>
+    <time>1520502164</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581249 from dimstar)</comment>
+    <requestid>582696</requestid>
+  </revision>
+</revisionlist>

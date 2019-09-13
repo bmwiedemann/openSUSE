@@ -1,0 +1,9 @@
+<package name="whois" project="openSUSE:Factory">
+  <title>Whois Client Program</title>
+  <description>This is a new whois (RFC 954) client rewritten from scratch by Marco
+d'Itri. It is derived from and compatible with the usual BSD and RIPE
+whois(1) programs. It is intelligent and can automatically select the
+appropriate whois server for most queries. This package also contains
+mkpasswd, a simple front-end to crypt(3).</description>
+  <devel project="network:utilities" package="whois"/>
+</package>

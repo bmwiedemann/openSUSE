@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7780979cd30d01086f14436371e3428f</srcmd5>
+    <version>2.0.6</version>
+    <time>1485167686</time>
+    <user>dimstar_suse</user>
+    <comment>required for Paperwork 1.0</comment>
+    <requestid>447734</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1951852b868a50114ce25cb2fdb730c9</srcmd5>
+    <version>2.0.13</version>
+    <time>1564994196</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.0.13
+  - WIA: Support of Canon MG3051: Fix getting data from the drivers
+    (a Python byte buffer was reused instead of being duplicated)
+  - WIA: Support of Epson Perfection scanners: Handle resolution range correctly
+    (3 values provided instead of 2)
+  - Sane: Support of Epson DS-310: Do not try to set a value on an option that
+    can have only one value. Sane driver may return an error.
+  - WIA: Support of Epson WorkForce ES-300W:
+    * call to seek(0) wasn't handled properly
+    * scan must be done on root WIAItem
+  2018-03-05 : 2.0.12:
+  - Build method has been changed: Use now &quot;make install&quot; instead of
+    &quot;python3 ./setup.py install&quot;
+  - WIA: Add traces (from the C++ code, but using the Python logging module)
+  - WIA: Fix behavior regarding feeders (Brother MFC-7360N for instance)
+  2018-02-22 : 2.0.11:
+  - Add pyinsane2.__version__
+  - Sane: Normalize behavior between single and multi scan: Single scan must raise a StopIteration
+    after the first EOFError
+  - Sane/daemon: remove trace that reduced badly the performances
+  - Build: Add Makefile (if working directly on the Git version, please use now
+    'make install' instead of 'python3 ./setup.py install')
+  2017-07-11 : 2.0.10:
+  - Now works with 'setup.py develop' (thanks to Matthieu Coudron)
+  - WIA: Some drivers (Lexmark for instance) returns WIA_ERROR_PAPER_EMPTY when
+    calling transfer-&gt;Download() instead of returning a shorted image (like HP)
+  - MacOSX + Sane: disable dedicated process workaround (doesn't work)
+  - WIA: Minor optimisation (Use collections.deque() instead of list.pop())
+  - Sane/exit(): Exit gracefully
+  2016-12-06 : 2.0.9:</comment>
+    <requestid>720153</requestid>
+  </revision>
+</revisionlist>

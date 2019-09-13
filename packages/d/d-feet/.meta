@@ -1,0 +1,7 @@
+<package name="d-feet" project="openSUSE:Factory">
+  <title>Graphical D-Bus Debugger</title>
+  <description>D-Feet is a graphical D-Bus debugger.  D-Bus is an RPC library used on
+the Desktop.  D-Feet can be used to inspect D-Bus objects of running
+programs and invoke methods on those objects.</description>
+  <devel project="GNOME:Apps" package="d-feet"/>
+</package>

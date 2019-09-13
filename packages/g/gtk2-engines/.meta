@@ -1,0 +1,5 @@
+<package name="gtk2-engines" project="openSUSE:Factory">
+  <title>Engines for GTK2 Themes</title>
+  <description>This package contains the theme engine libraries for GTK2.</description>
+  <devel project="GNOME:Factory" package="gtk2-engines"/>
+</package>

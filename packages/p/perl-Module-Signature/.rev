@@ -1,0 +1,220 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>376a0d85f45bce78a3823ad66080abb5</srcmd5>
+    <version>0.64</version>
+    <time>1280738328</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Module-Signature based on submit request 43892 from user computersalat
+</comment>
+    <requestid>43892</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7bf54c72a9eb246cccc3bd56ebbd22fb</srcmd5>
+    <version>unknown</version>
+    <time>1283789401</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Module-Signature based on submit request 47131 from user computersalat
+</comment>
+    <requestid>47131</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7f70c275b0916396768fb6418c949f7a</srcmd5>
+    <version>unknown</version>
+    <time>1284126658</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Module-Signature based on submit request 47547 from user computersalat
+</comment>
+    <requestid>47547</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>30d57022b473868ca1b2901365936126</srcmd5>
+    <version>0.66</version>
+    <time>1291999030</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55379 from user coolo
+</comment>
+    <requestid>55379</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8a0c7246f12a48fd8d342d6985dffb7e</srcmd5>
+    <version>0.66</version>
+    <time>1291999035</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55379
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>8a0c7246f12a48fd8d342d6985dffb7e</srcmd5>
+    <version>0.66</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>8a0c7246f12a48fd8d342d6985dffb7e</srcmd5>
+    <version>0.66</version>
+    <time>1319182288</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>97b71b0e7fe33c705f1a2cd29e6d14c7</srcmd5>
+    <version>0.68</version>
+    <time>1324831139</time>
+    <user>coolo</user>
+    <comment>license update: CC0-1.0 and (GPL-1.0+ or Artistic-1.0)
+License purports to be CC zero, not CC-BY. Also, see the script/cpansign and Module/Signature (line 88+) files for Perl licenses (forwarded request 96990 from babelworx)</comment>
+    <requestid>96991</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>97b71b0e7fe33c705f1a2cd29e6d14c7</srcmd5>
+    <version>0.68</version>
+    <time>1340183877</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>97b71b0e7fe33c705f1a2cd29e6d14c7</srcmd5>
+    <version>0.68</version>
+    <time>1359109741</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>13614c28a897c4451657ba7a9b6f3c00</srcmd5>
+    <version>0.73</version>
+    <time>1375641660</time>
+    <user>coolo</user>
+    <comment>- fix souce url
+
+- update to 0.73
+  * fix for bnc#828010 (CVE-2013-2145)
+    https://bugzilla.novell.com/process_bug.cgi
+    https://bugzilla.redhat.com/show_bug.cgi?id=971096
+  * Properly redo the previous fix using File::Spec-&gt;file_name_is_absolute.
+- [Changes for 0.72 - Wed Jun  5 23:19:02 CST 2013]
+  * Only allow loading Digest::* from absolute paths in @INC,
+    by ensuring they begin with \ or / characters.
+    Contributed by: Florian Weimer (CVE-2013-2145)
+- [Changes for 0.71 - Tue Jun  4 18:24:10 CST 2013]
+  * Constrain the user-specified digest name to /^\w+\d+$/.
+  * Avoid loading Digest::* from relative paths in @INC.
+    Contributed by: Florian Weimer (CVE-2013-2145)
+- [Changes for 0.70 - Thu Nov 29 01:45:54 CST 2012]
+  * Don't check gpg version if gpg does not exist.
+    This avoids unnecessary warnings during installation
+    when gpg executable is not installed.
+    Contributed by: Kenichi Ishigaki
+- [Changes for 0.69 - Fri Nov  2 23:04:19 CST 2012]
+  * Support for gpg under these alternate names:
+    gpg gpg2 gnupg gnupg2
+    Contributed by: Michael Schwern</comment>
+    <requestid>185844</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>13614c28a897c4451657ba7a9b6f3c00</srcmd5>
+    <version>0.73</version>
+    <time>1379663750</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>13614c28a897c4451657ba7a9b6f3c00</srcmd5>
+    <version>0.73</version>
+    <time>1409302387</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1c402a7461bf9fe0e0cfc2a2b616d875</srcmd5>
+    <version>0.78</version>
+    <time>1429346454</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.78
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+  [Changes for 0.78 - Thu Apr  9 16:58:27 CST 2015]
+  
+  * Fix verify() use from cpanm and CPAN.pm.
+  
+    Contributed by: ANDK
+  
+  [Changes for 0.77 - Wed Apr  8 19:36:50 CST 2015]
+  
+  * Include the latest public keys of PAUSE, ANDK and AUDREYT.
+  
+  * Clarify scripts/cpansign copyright to CC0.
+  
+    Reported by: @pghmcfc
+  
+  [Changes for 0.76 - Wed Apr  8 18:05:48 CST 2015]
+  
+  * Fix signature tests by defaulting to verify(skip=&gt;1)
+    when $ENV{TEST_SIGNATURE} is true.
+  
+    Reported by: @pghmcfc
+  
+  [Changes for 0.75 - Tue Apr  7 04:56:09 CST 2015]
+  
+  Two more issues reported by John Lightsey:
+  
+  * Update ChangeLog.
+  
+  * More protection of @INC from relative paths.</comment>
+    <requestid>297722</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d93629010ca28ca20eaaeb772f06b918</srcmd5>
+    <version>0.79</version>
+    <time>1432072180</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307956</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c6481ea94a9aeeaacb58bea660b1a12c</srcmd5>
+    <version>0.79</version>
+    <time>1452850947</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353515</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>300dd27f9aecee398d8b9a8dda523ab7</srcmd5>
+    <version>0.80</version>
+    <time>1466326098</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401471</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2b44ddc4989f03ea90af790d81a77b4b</srcmd5>
+    <version>0.81</version>
+    <time>1473798297</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427105</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>50a5dd3504eb3b5e1be906d750ba0fa2</srcmd5>
+    <version>0.81</version>
+    <time>1507065522</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530693</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>07937d5cdbe63f786b6df6b961a5fd1a</srcmd5>
+    <version>0.82</version>
+    <time>1535441072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631788</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8026251cf469c62c78434b4b74ba97f1</srcmd5>
+    <version>0.83</version>
+    <time>1535705254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632247</requestid>
+  </revision>
+</revisionlist>

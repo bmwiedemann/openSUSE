@@ -1,0 +1,10 @@
+<package name="lxmenu-data" project="openSUSE:Factory">
+  <title>A tool to build desktop menu for LXDE </title>
+  <description>LXSession is the default X11 session manager of LXDE.
+(LXDE: Lightweight X11 Desktop Environment)
+http://lxde.sourceforge.net/
+
+This package provides files required to build freedesktop.org 
+menu spec-compliant desktop menus for LXDE.</description>
+  <devel project="X11:lxde" package="lxmenu-data"/>
+</package>

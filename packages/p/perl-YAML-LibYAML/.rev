@@ -1,0 +1,165 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>256cf2b8a7ca00e5f723bb831c34000b</srcmd5>
+    <version>0.35</version>
+    <time>1303211126</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66786 from user babelworx
+</comment>
+    <requestid>66786</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f51bca2877a4404513f1056f37caf860</srcmd5>
+    <version>0.35</version>
+    <time>1303211149</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66786
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5cf389d74e4e113a31c96ba7efe3deb5</srcmd5>
+    <version>0.37</version>
+    <time>1317626686</time>
+    <user>lrupp</user>
+    <comment>bugfixes</comment>
+    <requestid>86148</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5cf389d74e4e113a31c96ba7efe3deb5</srcmd5>
+    <version>0.37</version>
+    <time>1319182325</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>584ed4092292da80fe302f447f041e48</srcmd5>
+    <version>0.37</version>
+    <time>1323193809</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>66372aa8c01e5bec755c8f8eaabb1fc1</srcmd5>
+    <version>0.37</version>
+    <time>1336035579</time>
+    <user>coolo</user>
+    <comment>CVE-2012-1152: added patch to fix multiple format string flaws: A remote attacker could provide a specially-crafted YAML document, which once processed by the perl-YAML-LibYAML interface would lead to perl-YAML-LibYAML based process crash. bnc#751503</comment>
+    <requestid>115553</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d38b757be216f301a1a773b1caa98a1d</srcmd5>
+    <version>0.38</version>
+    <time>1338476940</time>
+    <user>coolo</user>
+    <comment>- updated to 0.38
+  - Apply SPROUT++ deparse test patch. Thanks!</comment>
+    <requestid>122856</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>d38b757be216f301a1a773b1caa98a1d</srcmd5>
+    <version>0.38</version>
+    <time>1340183957</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>d38b757be216f301a1a773b1caa98a1d</srcmd5>
+    <version>0.38</version>
+    <time>1359109859</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>d38b757be216f301a1a773b1caa98a1d</srcmd5>
+    <version>0.38</version>
+    <time>1379663929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>81385e5ea54eb3f05d4de8006153d8d9</srcmd5>
+    <version>0.44</version>
+    <time>1406793836</time>
+    <user>coolo</user>
+    <comment>- updated to 0.44
+  - Doc fix. GitHub-Issue-#6. Thanks to Debian Perl Group for finding this.
+ 
+ 0.43 Sat Jul 12 10:04:07 PDT 2014
+  - Test::Base tests needed 'inc' in @INC
+ 
+ 0.42 Fri Jul 11 14:45:58 PDT 2014
+  - Switch to Zilla::Dist
+  - No longer dep on Test::Base, Spiffy, and Filter::Util::Call
+  - Remove test/changes.t
+ 
+ 0.41 Wed Mar 13 10:34:55 PDT 2013
+  - Removed another C++ // style comment. jdb++
+ 
+ 0.40 Tue Mar 12 11:05:34 PDT 2013
+  - Removed C++ // style comments, for better portability. jdb++
+ 
+ 0.39 Mon Feb 11 18:08:04 PST 2013
+  - Using the latest libyaml codebase
+  - https://github.com/yaml/libyaml/tree/perl-yaml-xs
+  - Changes have been made to start moving libyaml to 1.2</comment>
+    <requestid>242911</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>81385e5ea54eb3f05d4de8006153d8d9</srcmd5>
+    <version>0.44</version>
+    <time>1409302581</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>256ea21102085ec6b53dc35e3bc63fab</srcmd5>
+    <version>0.59</version>
+    <time>1424118107</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>285478</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2bde16b3812742abab1d8532dbc19c13</srcmd5>
+    <version>0.59</version>
+    <time>1427445495</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292508</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3692b2c4a59993ee4105e4f2069af9c9</srcmd5>
+    <version>0.72</version>
+    <time>1535367432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631336</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a38b29727af353601482ddedd4f89401</srcmd5>
+    <version>0.74</version>
+    <time>1538374463</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.74
+  * Fix tests on older perls
+  * Support back to perl.5.8.1
+- Cleaned with spec-cleaner
+</comment>
+    <requestid>637099</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>af704098819ed010b460c128a1c5f7b1</srcmd5>
+    <version>0.79</version>
+    <time>1561049624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710400</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ebb53a64d69511c081dd3c8bea64069e</srcmd5>
+    <version>0.80</version>
+    <time>1567580525</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727224</requestid>
+  </revision>
+</revisionlist>

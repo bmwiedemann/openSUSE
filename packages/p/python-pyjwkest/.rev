@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5bc88de08ae4d906a8e78e233abf765b</srcmd5>
+    <version>1.4.0</version>
+    <time>1556022933</time>
+    <user>maxlin_factory</user>
+    <comment>- Activate test suite, using GitHub archive for the tests
+- Rename peek.py to jwpeek.py
+- Add missing runtime dependencies
+- Use fdupes, fix executable bits and hashbangs
+- Remove build dependency on devel
+- initial package of upstream release 1.4.0 (Python Singlespec)
+</comment>
+    <requestid>695465</requestid>
+  </revision>
+</revisionlist>

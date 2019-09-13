@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="15">
+    <srcmd5>d448d7e235415a9c31a1385bbc8f767b</srcmd5>
+    <version>0.2.1</version>
+    <time>1168904179</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>398b548e662bce5ec8dd4fe843681497</srcmd5>
+    <version>0.2.2</version>
+    <time>1177363537</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="94">
+    <srcmd5>bfb8aa96f6277335a4f9ec935a52ddd9</srcmd5>
+    <version>0.2.2</version>
+    <time>1194565803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="230">
+    <srcmd5>bfb8aa96f6277335a4f9ec935a52ddd9</srcmd5>
+    <version>0.2.2</version>
+    <time>1194565803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="231">
+    <srcmd5>d197826c30271a2070f65130f871e6a9</srcmd5>
+    <version>0.2.2</version>
+    <time>1245340234</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="233">
+    <srcmd5>d197826c30271a2070f65130f871e6a9</srcmd5>
+    <version>0.2.2</version>
+    <time>1245340234</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="234">
+    <srcmd5>dc0abfb91217ef5c165550971cc2b67c</srcmd5>
+    <version>0.2.2</version>
+    <time>1268926095</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="236">
+    <srcmd5>dc0abfb91217ef5c165550971cc2b67c</srcmd5>
+    <version>0.2.2</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="237">
+    <srcmd5>dc0abfb91217ef5c165550971cc2b67c</srcmd5>
+    <version>0.2.2</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="240">
+    <srcmd5>dc0abfb91217ef5c165550971cc2b67c</srcmd5>
+    <version>0.2.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="242">
+    <srcmd5>dc0abfb91217ef5c165550971cc2b67c</srcmd5>
+    <version>0.2.2</version>
+    <time>1319182454</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="243">
+    <srcmd5>933a965bf5422b52a63f2f904094b9f8</srcmd5>
+    <version>0.2.2</version>
+    <time>1322481437</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93810 from coolo)</comment>
+    <requestid>93840</requestid>
+  </revision>
+  <revision rev="13" vrev="244">
+    <srcmd5>a4eaa675ea51d89859613a60a364134d</srcmd5>
+    <version>0.2.2</version>
+    <time>1323194545</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="245">
+    <srcmd5>a92ec5be37fc7e141e800533b12990da</srcmd5>
+    <version>0.2.2</version>
+    <time>1339352388</time>
+    <user>coolo</user>
+    <comment>- Should we remove all the &quot;Provides: locale(....)&quot;?
+- remove &quot;Provides: locale(zh)&quot; from spec (forwarded request 123999 from swyear)</comment>
+    <requestid>124008</requestid>
+  </revision>
+  <revision rev="15" vrev="246">
+    <srcmd5>bc4aa3369ba18e151e81d4d999d9b49f</srcmd5>
+    <version>0.2.2</version>
+    <time>1339761952</time>
+    <user>coolo</user>
+    <comment>- remove locale provides for avoiding automatic installation</comment>
+    <requestid>124927</requestid>
+  </revision>
+  <revision rev="16" vrev="248">
+    <srcmd5>bc4aa3369ba18e151e81d4d999d9b49f</srcmd5>
+    <version>0.2.2</version>
+    <time>1340184199</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="250">
+    <srcmd5>bc4aa3369ba18e151e81d4d999d9b49f</srcmd5>
+    <version>0.2.2</version>
+    <time>1359110384</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c643354ae56ea1ba7f5f6474c19ace42</srcmd5>
+    <version>0.2.3</version>
+    <time>1375782882</time>
+    <user>coolo</user>
+    <comment>update version 0.2.3 (forwarded request 186000 from MargueriteSu)</comment>
+    <requestid>186001</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>c643354ae56ea1ba7f5f6474c19ace42</srcmd5>
+    <version>0.2.3</version>
+    <time>1379664629</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>c643354ae56ea1ba7f5f6474c19ace42</srcmd5>
+    <version>0.2.3</version>
+    <time>1409303333</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>d71d1ee40da5f774789d53e192515476</srcmd5>
+    <version>0.2.3</version>
+    <time>1443068033</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331515</requestid>
+  </revision>
+</revisionlist>

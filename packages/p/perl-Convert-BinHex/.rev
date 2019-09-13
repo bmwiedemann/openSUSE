@@ -1,0 +1,171 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de5076e079b6948a41f06555f6693da8</srcmd5>
+    <version>1.119</version>
+    <time>1249998757</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Convert-BinHex based on submit request 17363 from user anicka
+</comment>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>de5076e079b6948a41f06555f6693da8</srcmd5>
+    <version>1.119</version>
+    <time>1249998757</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Convert-BinHex based on submit request 17363 from user anicka
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>89eb05a000371f129ef085ef53059aef</srcmd5>
+    <version>1.119</version>
+    <time>1268925397</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>89eb05a000371f129ef085ef53059aef</srcmd5>
+    <version>1.119</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>89eb05a000371f129ef085ef53059aef</srcmd5>
+    <version>1.119</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>19831956d198f04d4b5d42a740b18136</srcmd5>
+    <version>1.119</version>
+    <time>1291581766</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54496 from user coolo
+</comment>
+    <requestid>54496</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>8c9e144e0795ff3b43d0ecb36e46ec0e</srcmd5>
+    <version>1.119</version>
+    <time>1291581771</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54496
+</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>8c9e144e0795ff3b43d0ecb36e46ec0e</srcmd5>
+    <version>1.119</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>6b22dfc849718436d19a1b8fc39a74b6</srcmd5>
+    <version>1.119</version>
+    <time>1302891898</time>
+    <user>darix</user>
+    <comment>Accepted submit request 67057 from user coolo
+</comment>
+    <requestid>67057</requestid>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>0b0a4eda5629be63d1cf46c6de7db372</srcmd5>
+    <version>1.119</version>
+    <time>1302891908</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67057
+</comment>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>aa3bc022e085b6a022749b496dde9b56</srcmd5>
+    <version>1.119</version>
+    <time>1314779281</time>
+    <user>saschpe</user>
+    <comment>Standardized &quot;Authors:&quot; format in description of perl-Convert-BinHex.spec (forwarded request 80263 from aturrini)</comment>
+    <requestid>80280</requestid>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>b26aedaaf9631d6b1488b61e6eafcd85</srcmd5>
+    <version>1.119</version>
+    <time>1314779291</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80280
+</comment>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>b26aedaaf9631d6b1488b61e6eafcd85</srcmd5>
+    <version>1.119</version>
+    <time>1319182252</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>775235272110f9edc8cdf559eeae2813</srcmd5>
+    <version>1.119</version>
+    <time>1321875415</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92340</requestid>
+  </revision>
+  <revision rev="15" vrev="20">
+    <srcmd5>03e3171750cc230020c9a030cdff897b</srcmd5>
+    <version>1.119</version>
+    <time>1323193153</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="22">
+    <srcmd5>03e3171750cc230020c9a030cdff897b</srcmd5>
+    <version>1.119</version>
+    <time>1340183816</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>03e3171750cc230020c9a030cdff897b</srcmd5>
+    <version>1.119</version>
+    <time>1359109628</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="26">
+    <srcmd5>03e3171750cc230020c9a030cdff897b</srcmd5>
+    <version>1.119</version>
+    <time>1379663601</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>34849e3283426749929baba51575891f</srcmd5>
+    <version>1.123</version>
+    <time>1385490287</time>
+    <user>coolo</user>
+    <comment>- update to 1.123:
+  + Fixed pod error in debinhex and added pod tests
+  + Added unit tests for OO and CRC code
+  + Moved to Dist::Zilla's OurPkgVersion for keeping $VERSIONs in sync</comment>
+    <requestid>208402</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b6f921d81ed9dae9a648e63160953b13</srcmd5>
+    <version>1.123</version>
+    <time>1396538044</time>
+    <user>coolo</user>
+    <comment>- regenerate with cpanspec to fix build</comment>
+    <requestid>228739</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>b6f921d81ed9dae9a648e63160953b13</srcmd5>
+    <version>1.123</version>
+    <time>1409302221</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>84c65b0a81f332e84ff7a5bef337e9b4</srcmd5>
+    <version>1.125</version>
+    <time>1447766606</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344842</requestid>
+  </revision>
+</revisionlist>

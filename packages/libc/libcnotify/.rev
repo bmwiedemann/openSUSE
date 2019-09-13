@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2feff195dd1883b3b885633b5609f998</srcmd5>
+    <version>0~20121224</version>
+    <time>1366357825</time>
+    <user>coolo</user>
+    <comment>Joachim Metz has created a set of c libraries used by security tools.  The libxxx packages often include basic applications sub-packages which are useful by themselves.</comment>
+    <requestid>163826</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>41a8a4c718ef7aa52980696bdd3a307d</srcmd5>
+    <version>0~20130609</version>
+    <time>1375284300</time>
+    <user>coolo</user>
+    <comment>update to v0~20130609
+Summer 2013 libyal refresh for openSUSE 13.1 (forwarded request 184994 from gregfreemyer)</comment>
+    <requestid>184998</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>41a8a4c718ef7aa52980696bdd3a307d</srcmd5>
+    <version>0~20130609</version>
+    <time>1379662918</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>72e7145eda987282b11d8a294e2edb83</srcmd5>
+    <version>0~20140105</version>
+    <time>1408089342</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244692</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>72e7145eda987282b11d8a294e2edb83</srcmd5>
+    <version>0~20140105</version>
+    <time>1409301522</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2b963b1c97639744663ae09eb362b47f</srcmd5>
+    <version>0~20150101</version>
+    <time>1420927503</time>
+    <user>dimstar_suse</user>
+    <comment>Part of libyal 2015 refresh - may need to go to ring D.  libcstring is a dependency and is currently in ring D.</comment>
+    <requestid>280461</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ee48e0ca50367262fba6f63e2c5d0841</srcmd5>
+    <version>0~20170107</version>
+    <time>1487681247</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458544</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>95c2aa29dd0bb957c46e2f983c50574f</srcmd5>
+    <version>0~20170311</version>
+    <time>1507197438</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0~20170311
+	* worked on tests</comment>
+    <requestid>530564</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d23eb1f76c75af5b79ebedd3de3ec5ab</srcmd5>
+    <version>0~20180102</version>
+    <time>1557141714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693952</requestid>
+  </revision>
+</revisionlist>

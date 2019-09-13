@@ -1,0 +1,7 @@
+<package name="nuoveXT2-icon-theme" project="openSUSE:Factory">
+  <title>This package provides the default LXDE icon theme</title>
+  <description>This package provides the default LXDE icon theme.
+nuoveXT2-icon-theme is no more maintained from his author so
+LXDE project decided to maintain it and keep working on it</description>
+  <devel project="X11:lxde" package="nuoveXT2-icon-theme"/>
+</package>

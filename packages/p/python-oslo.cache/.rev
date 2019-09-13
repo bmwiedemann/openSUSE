@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50a4bd9619e2cab42bc12a17266204a7</srcmd5>
+    <version>1.17.0</version>
+    <time>1487680907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>456655</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8a793c09a01391cd2e4c31f1a624bbda</srcmd5>
+    <version>1.25.0</version>
+    <time>1503927080</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.25.0
+  - Change locations of docs for intersphinx
+  - Remove log translations
+  - Imported Translations from Zanata
+  - Fix error in cache.configure_cache_region usage doc
+  - etcd3 : get rid of ast_literal
+  - Improve backend configuration help text
+  - Remove unused/duplicated logging import
+  - update the doc URLs
+  - rearrange content to fit the new standard layout
+  - Add kwarg function key generator
+  - [Fix gate]Update test requirement
+  - switch from oslosphinx to openstackdocstheme
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Replaces uuid.uuid4 with uuidutils.generate_uuid()
+  - Update reno for stable/ocata
+  - Switch to oslo_log
+  - turn on warning-is-error in doc build
+  - Check reStructuredText documents for common style issues.
+  - Updated from global requirements
+  - etcd3 driver for oslo.cache
+  - Optimize the link address</comment>
+    <requestid>514986</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2a5f2e81ce10bac32ccd4862c81ea27d</srcmd5>
+    <version>1.28.0</version>
+    <time>1516804054</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.28.0
+  - Update the documentation link for doc migration
+  - Follow the new PTI for document build
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - Imported Translations from Zanata
+  - Add more cache backend options
+  - add bandit to pep8 job
+  - Updated from global requirements</comment>
+    <requestid>567272</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e7aed26192a3dacf34b8c454f49c967e</srcmd5>
+    <version>1.28.0</version>
+    <time>1521498934</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583334</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1125fa7c6adc5ea6520cd71483c9c14b</srcmd5>
+    <version>1.30.1</version>
+    <time>1536327520</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633095</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f5c8b2b2ae3d1ebf2df275be41299ce</srcmd5>
+    <version>1.30.3</version>
+    <time>1551215923</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.30.3
+  - Config dict arguments.url must be a list
+  - Switch to stestr
+  - Update .gitreview for stable/rocky
+  - import zuul job settings from project-config
+  - Only split url arg with memcache backend</comment>
+    <requestid>672173</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d82a980ad1e97ec60f8826be2f1ca797</srcmd5>
+    <version>1.33.2</version>
+    <time>1556916120</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.33.2
+  - Update mailinglist from dev to discuss
+  - Drop expired connections before retrieving from the queue
+  - fix tox python3 overrides
+  - Config dict arguments.url must be a list
+  - Update the requirements to match global-requirements for dogpile.cache
+  - Switch to stestr
+  - tox: Fix typo
+  - uncap dogpile
+  - Fix memcache pool client in monkey-patched environments
+  - Imported Translations from Zanata
+  - Always build universal wheels
+  - Update reno for stable/rocky
+  - Clean up .gitignore references to personal tools
+  - Add release notes link to README
+  - Don't quote {posargs} in tox.ini
+  - Use template for lower-constraints
+  - add lib-forward-testing-python3 test job
+  - add python 3.6 unit test job
+  - Only split url arg with memcache backend
+  - import zuul job settings from project-config
+  - fix dogpile.cache issue due to the new usage of decorate in the lib</comment>
+    <requestid>692852</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>07ed784e1e615d94ee6ead3589761c11</srcmd5>
+    <version>1.33.3</version>
+    <time>1560338162</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.33.3
+  - OpenDev Migration Patch
+  - Update .gitreview for stable/stein
+  - Pass `flush_on_reconnect` to memcache pooled backend
+  - Update UPPER_CONSTRAINTS_FILE for stable/stein</comment>
+    <requestid>709042</requestid>
+  </revision>
+</revisionlist>

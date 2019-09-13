@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40762c4379ad0b133735ff1339964f2e</srcmd5>
+    <version>0.2.0</version>
+    <time>1555588708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694807</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2d0fd0044d3eccf385d55958cec2a5aa</srcmd5>
+    <version>0.2.1</version>
+    <time>1555691939</time>
+    <user>dimstar_suse</user>
+    <comment>- Release version 0.2.1
+  - kubicctl: use admin certificates if there are no root user
+    certificates</comment>
+    <requestid>695675</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d2d34b081a44cb748370117fc5312e1a</srcmd5>
+    <version>0.4.0</version>
+    <time>1556312155</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.4.0
+  - Rework communication for removing nodes
+  - Add support for cilium
+  - Bug fixes
+
+- Update to version 0.3.0
+  - Add support for RBAC management to kubicctl
+  - Add support to create user certificates to kubicctl</comment>
+    <requestid>698209</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>81f9407cfee90feee31deae82cfc914b</srcmd5>
+    <version>0.5.0</version>
+    <time>1559727529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0
+  - Improve documentation
+  - Fix typos in help text
+  - Run kubicd-init.service only after time is set [bsc#1136246]
+  - Create user certificate on server side and download it
+  - Use cilium k8s yaml file from cilium package</comment>
+    <requestid>707186</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1ba58f2300e60bb52c92041b6100fcd8</srcmd5>
+    <version>0.5.1</version>
+    <time>1560457882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1
+  - Use local flannel.yaml file to deploy flannel</comment>
+    <requestid>708360</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d1632150ab063ef11fdddb828989f554</srcmd5>
+    <version>0.6.1</version>
+    <time>1561493868</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.1
+  - Store kubeadm join token for 23 hours to not create too many for every single node
+  - Fix kubernetes version argument for kubeadm
+  - Open rbac.conf with every call, else we don't see our own changes
+
+- Don't build on i586 to make some scripts happy...
+
+- Update to version 0.6.0
+  - Add --adv-addr option to kubicctl init
+  - Refactor code
+  - Many, many bug fixes
+
+- Add requires to the k8s-yaml files we really always need</comment>
+    <requestid>711323</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6ae969ef12db402e54607cf9e399661a</srcmd5>
+    <version>0.6.2</version>
+    <time>1561731107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.2
+  - New function: destroy whole cluster
+  - Remove Nodes: allow to specify multiple nodes or '*' for all nodes
+  - Fix timeout option for draining nodes</comment>
+    <requestid>712149</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>94af1a2ce87532f2f5291871f2b82683</srcmd5>
+    <version>0.7.0</version>
+    <time>1564483018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.0
+  - Add multi master support
+
+- Update to version 0.6.3
+  - Unifiy function to reset the master
+  - Cleanup behind kubeadm reset, else kubeadm init will fail
+  - Add support for weave and make it the default pod network</comment>
+    <requestid>719575</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d72dbccc9eee9470c35945d17b491d56</srcmd5>
+    <version>0.8.2</version>
+    <time>1565694632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.2
+  - Implement new status API call
+  - Update pod network and kured daemonsets in case of kubernetes
+    upgrade
+
+- Update to version 0.8.1
+  - Unify and fix kubernetes version handling for installation
+    and upgrade
+
+- Update to version 0.8.0
+  - Rework adding and removing of nodes to make this more
+    robust and support master nodes</comment>
+    <requestid>721975</requestid>
+  </revision>
+</revisionlist>

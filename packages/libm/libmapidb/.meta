@@ -1,0 +1,7 @@
+<package name="libmapidb" project="openSUSE:Factory">
+  <title>Library to access the Exchange MAPI database format.</title>
+  <description>Library access the Exchange MAPI database format.
+
+Part of the libyal library family.</description>
+  <devel project="security:forensics" package="libmapidb"/>
+</package>

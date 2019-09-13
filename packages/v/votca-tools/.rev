@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79f40a283173e9f5883896113e7f35a9</srcmd5>
+    <version>1.2.3</version>
+    <time>1388657737</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>210819</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>79f40a283173e9f5883896113e7f35a9</srcmd5>
+    <version>1.2.3</version>
+    <time>1409303619</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e49a304f2d96653ec9d11e79c0fe4c96</srcmd5>
+    <version>1.2.4</version>
+    <time>1409998741</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247786</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5976ea53c99fa4b8c715e5cef0512eb4</srcmd5>
+    <version>1.3~rc1</version>
+    <time>1445287871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>338751</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>34b47cc8754930e7e94c75b2398ea241</srcmd5>
+    <version>1.3</version>
+    <time>1453416237</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354733</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a372a5f874950d56497e22351936491a</srcmd5>
+    <version>1.3.1</version>
+    <time>1472111762</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>420609</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ebc2026bc5a4b9303f7f17657c37f0bf</srcmd5>
+    <version>1.4</version>
+    <time>1485769797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>453176</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0f90f935d21bfec1cd90a76a40505528</srcmd5>
+    <version>1.4</version>
+    <time>1486135784</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454253</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3c3a7b933fe294642364f14c2ef8c6f8</srcmd5>
+    <version>1.4.1</version>
+    <time>1504521550</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520512</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>47410be61ae78027c3966e16d96afc8c</srcmd5>
+    <version>1.5</version>
+    <time>1551386298</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670458</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>0d29dd72d87048f81480fc923e14e8da</srcmd5>
+    <version>1.5</version>
+    <time>1553611419</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with boost-1.69</comment>
+    <requestid>686798</requestid>
+  </revision>
+</revisionlist>

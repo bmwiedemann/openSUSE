@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fa78ac81fb73a7c1991decdf2a27dc4e</srcmd5>
+    <version>0.12.20</version>
+    <time>1504815201</time>
+    <user>dimstar_suse</user>
+    <comment>Bringing back rzsz to factory as the new maintainer:
+- remove _link to factory to build the package in the devel project
+- change source to tar.gz: upstream does not provide tar.bz2
+- also ignore ZMODEMtcp* tests failure for s390x</comment>
+    <requestid>520918</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3919573de0ef49cc33623cad4d70a486</srcmd5>
+    <version>0.12.20</version>
+    <time>1516634390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567976</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>78106fbe0bcef6a4489d0e3f523472ad</srcmd5>
+    <version>0.12.21~rc</version>
+    <time>1523350452</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.12.21~rc bsc#1086416:
+  * RC candidate from 1999 containing bunch of trivial fxies that
+    most other distributions ship
+- Rebase patches:
+  * lrzsz-0.12.20-automake-1.13.patch
+  * lrzsz-autotools.patch
+  * lrzsz-po.patch</comment>
+    <requestid>593726</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>472b32c9487282404abb8734d6f67158</srcmd5>
+    <version>0.12.21~rc</version>
+    <time>1524144719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.21~rc bsc#1086416 bsc#1090051 CVE-2018-10195:</comment>
+    <requestid>597805</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>beaa93bc5e94ed2143758c151c9b3a99</srcmd5>
+    <version>0.12.21~rc</version>
+    <time>1563259281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715357</requestid>
+  </revision>
+</revisionlist>

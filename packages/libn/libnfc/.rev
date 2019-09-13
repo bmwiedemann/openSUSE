@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3ce5ff624d9438d2605eae6cde1c939</srcmd5>
+    <version>1.6.0</version>
+    <time>1347376575</time>
+    <user>coolo</user>
+    <comment>Clarify licensing of package and subpackages (bnc#779566)</comment>
+    <requestid>133566</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d3ce5ff624d9438d2605eae6cde1c939</srcmd5>
+    <version>1.6.0</version>
+    <time>1359109312</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f600903d703c8cb32c44047a0e0365ed</srcmd5>
+    <version>1.6.0</version>
+    <time>1363954530</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160391</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>70924f12199e94ab230b9043a50178a3</srcmd5>
+    <version>1.7.0~rc7</version>
+    <time>1370447105</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.7.0~rc7
+* New PN532 over SPI driver
+* libnfc can now use a configuration file for special setups, or
+  feature activation. (/etc/nfc/libnfc.conf)
+- Remove libnfc-01-automake.diff, merged upstream</comment>
+    <requestid>177758</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>70924f12199e94ab230b9043a50178a3</srcmd5>
+    <version>1.7.0~rc7</version>
+    <time>1379663019</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6ba1ee29314bfa493deada70bb5b352a</srcmd5>
+    <version>1.7.0</version>
+    <time>1388394507</time>
+    <user>coolo</user>
+    <comment>- Update to final release 1.7.0</comment>
+    <requestid>212202</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e08e24ee5f0d2176efb3a4310b2344d5</srcmd5>
+    <version>1.7.1</version>
+    <time>1408353847</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>245017</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e08e24ee5f0d2176efb3a4310b2344d5</srcmd5>
+    <version>1.7.1</version>
+    <time>1409301638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>3cf239cad358f6416e8f91b4efce4e2f</srcmd5>
+    <version>1.7.1</version>
+    <time>1427313934</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>292890</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>c042795f2e48117c1930100f70936272</srcmd5>
+    <version>1.7.1</version>
+    <time>1499754476</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>509252</requestid>
+  </revision>
+</revisionlist>

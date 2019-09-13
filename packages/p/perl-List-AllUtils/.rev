@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc8cbb66f850c9b9417e9b6f73aecc19</srcmd5>
+    <version>0.02</version>
+    <time>1338370926</time>
+    <user>coolo</user>
+    <comment>TeXLive build depend on this</comment>
+    <requestid>122662</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fc8cbb66f850c9b9417e9b6f73aecc19</srcmd5>
+    <version>0.02</version>
+    <time>1340183867</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>fc8cbb66f850c9b9417e9b6f73aecc19</srcmd5>
+    <version>0.02</version>
+    <time>1359109721</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>fc8cbb66f850c9b9417e9b6f73aecc19</srcmd5>
+    <version>0.02</version>
+    <time>1379663728</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2f2e2057edaa0ab9e6863d7dec3ee5fb</srcmd5>
+    <version>0.05</version>
+    <time>1382361237</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202442</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ae9b3c10a22f859b2e5c3b8d3d7a866d</srcmd5>
+    <version>0.07</version>
+    <time>1385490355</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208419</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>16fe4a30fe91e4dc04decd5fdbb54db1</srcmd5>
+    <version>0.08</version>
+    <time>1405760670</time>
+    <user>coolo</user>
+    <comment>- updated to 0.08
+ - This version now works with both List::MoreUtils 0.28-0.33 and the latest
+   trial version, 0.400_006. Note that it does not work with earlier versions
+   of 0.400.</comment>
+    <requestid>241311</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>16fe4a30fe91e4dc04decd5fdbb54db1</srcmd5>
+    <version>0.08</version>
+    <time>1409302355</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>60e98b211869fb5b1c8015fe86aa1a27</srcmd5>
+    <version>0.09</version>
+    <time>1429657674</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296655</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>97d909ec01ac5388ae56a1df37ef3e88</srcmd5>
+    <version>0.11</version>
+    <time>1469080306</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404964</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d2a1f6f237e6a06f788771810e6d2eb8</srcmd5>
+    <version>0.12</version>
+    <time>1477134085</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435667</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>192f921e53052e835976f508f12ceb63</srcmd5>
+    <version>0.14</version>
+    <time>1487259999</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456907</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ac8a1a8277bc18d4db6f5dbdd1ba1544</srcmd5>
+    <version>0.15</version>
+    <time>1545866612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657816</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0abb73d403648df2745d88adcffa3ff7</srcmd5>
+    <version>2.4.0</version>
+    <time>1544631990</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 2.4.0:
+    * Added support in MySQL driver for opening a connection
+      based on a Unix socket (thanks to rafis)
+    * Added connection ping method (thanks to rafis)
+    * Added Makefile for mingw (thanks to watercoldyi)
+    * Bug correction on retrieving varchar2 data (thanks to David
+      Gao)
+- Rewrite to multibuild, standard openSUSE Lua SPEC file.
+- Initial build.
+- Add luasql-fix-configuration.patch: Clean up building and add rpm
+  optflags.
+</comment>
+    <requestid>655423</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="workrave" project="openSUSE:Factory">
+  <title>Recovery and prevention of Repetitive Strain Injury program</title>
+  <description>Workrave is a program that assists in the recovery and prevention of Repetitive Strain Injury (RSI). The program frequently alerts you to take micro-pauses, rest breaks and restricts you to your daily limit.
+
+</description>
+  <devel project="X11:Utilities" package="workrave"/>
+  <url>http://www.workrave.org</url>
+</package>

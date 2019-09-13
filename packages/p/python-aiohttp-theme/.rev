@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aae1051402659001c7f3c4cfc9fba839</srcmd5>
+    <version>0.1.4</version>
+    <time>1521052678</time>
+    <user>dimstar_suse</user>
+    <comment>dep of python-aiohttp</comment>
+    <requestid>585249</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>55a563a826af46fead6d00744a4f3351</srcmd5>
+    <version>0.1.4</version>
+    <time>1544631879</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653906</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>569d501a2f06f6c41044537c93b5d150</srcmd5>
+    <version>0.1.5</version>
+    <time>1551785026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.5:
+  * Various background css fixes</comment>
+    <requestid>681427</requestid>
+  </revision>
+</revisionlist>

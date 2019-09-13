@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00ae3ac56e8119354f6c1a7877ea2fb7</srcmd5>
+    <version>4.3.0</version>
+    <time>1509722796</time>
+    <user>dimstar_suse</user>
+    <comment>Brought over from Packman</comment>
+    <requestid>538285</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>68447049f746f44c9c86a93bf09b4458</srcmd5>
+    <version>4.3.0</version>
+    <time>1525209746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599614</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>92c482b7c6943e217b6f572a0e961c4c</srcmd5>
+    <version>4.3.0</version>
+    <time>1550151382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674745</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-sympy" project="openSUSE:Factory">
+  <title>Python library for symbolic mathematics</title>
+  <description>SymPy is a Python library for symbolic mathematics. It aims to become a full-featured computer algebra system (CAS) while keeping the code as simple as possible in order to be comprehensible and easily extensible. SymPy is written entirely in Python and does not require any external libraries.</description>
+  <devel project="devel:languages:python:numeric" package="python-sympy"/>
+</package>

@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9bf5dc6b4c0f53ae0ac1a48bf3d563f0</srcmd5>
+    <version>0.18</version>
+    <time>1329476941</time>
+    <user>coolo</user>
+    <comment>Package needed for submissions to GNOME:Apps - weather-wallpaper. Legal review done by babelworx in SR 102798 and fixed thereafter in SR 102856...</comment>
+    <requestid>103794</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>505d07b495b21040c3e384472a6d7911</srcmd5>
+    <version>0.19</version>
+    <time>1333437616</time>
+    <user>coolo</user>
+    <comment>Updated to 0.19. (forwarded request 112021 from malcolmlewis)</comment>
+    <requestid>112133</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>505d07b495b21040c3e384472a6d7911</srcmd5>
+    <version>0.19</version>
+    <time>1340184082</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>505d07b495b21040c3e384472a6d7911</srcmd5>
+    <version>0.19</version>
+    <time>1359110099</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>505d07b495b21040c3e384472a6d7911</srcmd5>
+    <version>0.19</version>
+    <time>1379664256</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>505d07b495b21040c3e384472a6d7911</srcmd5>
+    <version>0.19</version>
+    <time>1409302959</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bc683f091d009ac59a79df4782f1b356</srcmd5>
+    <version>0.20</version>
+    <time>1431795705</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307469</requestid>
+  </revision>
+</revisionlist>

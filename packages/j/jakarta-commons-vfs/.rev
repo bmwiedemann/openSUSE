@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>5e7c245b74d7aaee3f2ba1f532d9fa96</srcmd5>
+    <version>1.0</version>
+    <time>1243478278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>5e7c245b74d7aaee3f2ba1f532d9fa96</srcmd5>
+    <version>1.0</version>
+    <time>1243478278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>c2a4d5f32d444522315276a6f2ad0572</srcmd5>
+    <version>1.0</version>
+    <time>1268924108</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>c2a4d5f32d444522315276a6f2ad0572</srcmd5>
+    <version>1.0</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>c2a4d5f32d444522315276a6f2ad0572</srcmd5>
+    <version>1.0</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>c2a4d5f32d444522315276a6f2ad0572</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>c2a4d5f32d444522315276a6f2ad0572</srcmd5>
+    <version>1.0</version>
+    <time>1319182004</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>767d611dd23543d3819076eab402f3b3</srcmd5>
+    <version>1.0</version>
+    <time>1323192020</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>767d611dd23543d3819076eab402f3b3</srcmd5>
+    <version>1.0</version>
+    <time>1340183479</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>767d611dd23543d3819076eab402f3b3</srcmd5>
+    <version>1.0</version>
+    <time>1359109105</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>504693484392c1aae1587ece507be051</srcmd5>
+    <version>1.0</version>
+    <time>1378725089</time>
+    <user>coolo</user>
+    <comment>- use add_maven_depmap</comment>
+    <requestid>197553</requestid>
+  </revision>
+  <revision rev="12" vrev="20">
+    <srcmd5>ad7da678fc142ca1c4d64bb7076be873</srcmd5>
+    <version>1.0</version>
+    <time>1378899531</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198279</requestid>
+  </revision>
+  <revision rev="13" vrev="22">
+    <srcmd5>ad7da678fc142ca1c4d64bb7076be873</srcmd5>
+    <version>1.0</version>
+    <time>1379662699</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="24">
+    <srcmd5>ad7da678fc142ca1c4d64bb7076be873</srcmd5>
+    <version>1.0</version>
+    <time>1409301264</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="25">
+    <srcmd5>f9db4223a7dadc550fca4775f74047d2</srcmd5>
+    <version>1.0</version>
+    <time>1427982990</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292620</requestid>
+  </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>b08dd14dd98bdb4189628395b9495623</srcmd5>
+    <version>1.0</version>
+    <time>1495268074</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with new javapackages-tools
+- Cleanup unused conditionals</comment>
+    <requestid>496780</requestid>
+  </revision>
+  <revision rev="17" vrev="27">
+    <srcmd5>9de2381a58f87e1e06dbf20d48250adc</srcmd5>
+    <version>1.0</version>
+    <time>1505920158</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527033</requestid>
+  </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>8c22c0cc97a43a6f91b776afcf8ee423</srcmd5>
+    <version>1.0</version>
+    <time>1548704890</time>
+    <user>dimstar_suse</user>
+    <comment>sanitize dependencies</comment>
+    <requestid>668559</requestid>
+  </revision>
+  <revision rev="19" vrev="29">
+    <srcmd5>3da74c1bf45c5ae6d4d21df83f91c33b</srcmd5>
+    <version>1.0</version>
+    <time>1551785170</time>
+    <user>dimstar_suse</user>
+    <comment>- Install all three built jar files
+- Associate the right pom file with the corresponding artifacts
+- Remove unnecessary sources and simplify the ant build
+</comment>
+    <requestid>681619</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="libfcache" project="openSUSE:Factory">
+  <title>Library to provide generic file data cache functions</title>
+  <description>Library to provide generic file data cache functions for the libyal family of libraries.
+</description>
+  <devel project="security:forensics" package="libfcache"/>
+</package>

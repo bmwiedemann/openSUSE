@@ -1,0 +1,13 @@
+<package name="perl-Test-Strict" project="openSUSE:Factory">
+  <title>Check syntax, presence of use strict; and test coverage</title>
+  <description>The most basic test one can write is &quot;does it compile ?&quot;. This module tests if the code compiles and play nice with 'Test::Simple' modules.
+
+Another good practice this module can test is to &quot;use strict;&quot; in all perl files.
+
+By setting a minimum test coverage through 'all_cover_ok()', a code author can ensure his code is tested above a preset level of *kwality* throughout the development cycle.
+
+Along with the Test::Pod, this module can provide the first tests to setup for a module author.
+</description>
+  <devel project="devel:languages:perl" package="perl-Test-Strict"/>
+  <url>http://search.cpan.org/dist/Test-Strict/</url>
+</package>

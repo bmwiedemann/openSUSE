@@ -1,0 +1,5 @@
+<package name="appimaged" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="system:packagemanager" package="appimaged"/>
+</package>

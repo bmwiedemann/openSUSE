@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>451e86dd4de4af721ba2348605577d91</srcmd5>
+    <version>0.1.8</version>
+    <time>1526371730</time>
+    <user>dimstar_suse</user>
+    <comment>Extensions to the python itertools module</comment>
+    <requestid>603809</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7cd22535056724d17e441e01a58293d9</srcmd5>
+    <version>0.1.8</version>
+    <time>1545647994</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659501</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9fafa8b6b2e11b77e668b16a5158dcbd</srcmd5>
+    <version>0.1.9</version>
+    <time>1558532498</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.1.9
+  * no upstream changelog</comment>
+    <requestid>704736</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d8f156c64a5e40efe35e16fca061f183</srcmd5>
+    <version>0.1.10</version>
+    <time>1564576151</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>719834</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>47d17deaf833b9c3bef0ef12e2da9ea9</srcmd5>
+    <version>0.1.12</version>
+    <time>1567679647</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.12:
+  * no upstream changelog</comment>
+    <requestid>724510</requestid>
+  </revision>
+</revisionlist>

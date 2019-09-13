@@ -1,0 +1,5 @@
+<package name="kdesvn" project="openSUSE:Factory">
+  <title>KDE Subversion Client</title>
+  <description>kdesvn is a GUI client for subversion repositories.</description>
+  <devel project="KDE:Extra" package="kdesvn"/>
+</package>

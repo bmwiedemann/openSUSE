@@ -1,0 +1,5 @@
+<package name="watchman" project="openSUSE:Factory">
+  <title>A file watching service</title>
+  <description>Watchman exists to watch files and record when they change. It can also trigger actions (such as rebuilding assets) when matching files change.</description>
+  <devel project="filesystems" package="watchman"/>
+</package>

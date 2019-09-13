@@ -1,0 +1,6 @@
+<package name="octave-forge-specfun" project="openSUSE:Factory">
+  <title></title>
+  <description>Special functions including ellipitic functions, etc.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-specfun"/>
+</package>

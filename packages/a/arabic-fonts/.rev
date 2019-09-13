@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>4ad40bf312f70b17aa31ff7a68a2bb0a</srcmd5>
+    <version>0.20091208</version>
+    <time>1332239098</time>
+    <user>coolo</user>
+    <comment>Moving M17N/fonts-arabic to M17N:fonts/arabic-fonts.</comment>
+    <requestid>109908</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>49bc78212c7360673af36b534fbb7ee5</srcmd5>
+    <version>0.20091208</version>
+    <time>1338016886</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122109</requestid>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>49bc78212c7360673af36b534fbb7ee5</srcmd5>
+    <version>0.20091208</version>
+    <time>1340183178</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>e9db09dab3308a84fb032b82302f33bd</srcmd5>
+    <version>0.20091208</version>
+    <time>1347617549</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133915</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>e9db09dab3308a84fb032b82302f33bd</srcmd5>
+    <version>0.20091208</version>
+    <time>1359108661</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>5d88d36d8097e50c2ca72825001d738e</srcmd5>
+    <version>unknown</version>
+    <time>1372508527</time>
+    <user>coolo</user>
+    <comment>- new font: Amiri 0.106 [bnc#825961]
+
+- arabic-fonts splitted into subpackages [bnc#825954]
+- new font: KacstOne 5.0 [bnc#825955]
+- %if-0-out Haydar and Nesf2 family because of missing license
+  specification</comment>
+    <requestid>180970</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>5d88d36d8097e50c2ca72825001d738e</srcmd5>
+    <version>unknown</version>
+    <time>1379661981</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>dfc1327f3bb1fd4259df64a8a1f5a871</srcmd5>
+    <version>unknown</version>
+    <time>1400006553</time>
+    <user>coolo</user>
+    <comment>- Amiri font updated to 0.107
+  * New glyphs:
+   - Arabic math letters from Arabic Mathematical Alphabetic Symbols block
+     (U+1EE00–U+1EEFF).
+   - Optional support for placing the kasra below the shadda, with “ss05”
+     feature.
+   - Missing proportional LTR digits in the slanted font.
+  * Fixes:
+   - Reverted the lowering of marks above wide isolated glyphs, it made the marks
+     look weird relative to other ones.
+   - Fixed the position of marks above qaf of ﻖﺣ.
+   - Dropped the special combination in ﺖﻤﺧ&lt;200d&gt; when it is follow vowelled as
+     it was too crowded.
+   - Fixed the position of sukun over shadda.
+   - Fixed the side bearings of ﺙﺭ, ﺚﻧ and sisters so that the dots do not clash
+     with preceding glyphs.
+   - Positive kerning between ﻡﺮﻴﻧ and likes.
+   - Slight kerning between the period and closing quotes.
+   - Made sure the italic European digits are really tabular.
+- package regular font instead of webfonts</comment>
+    <requestid>233530</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>e3945e839dfc1a1e5b5bd47301199e8d</srcmd5>
+    <version>unknown</version>
+    <time>1400681930</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234891</requestid>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>e3945e839dfc1a1e5b5bd47301199e8d</srcmd5>
+    <version>unknown</version>
+    <time>1409300506</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>cf2c1bdddd91ce40bef1e301eb9ee9a2</srcmd5>
+    <version>unknown</version>
+    <time>1488124816</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459944</requestid>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>da4a8a552b3b183954e6813c34c6f755</srcmd5>
+    <version>unknown</version>
+    <time>1494096266</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492128</requestid>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>0f44755c6434ce1be6223f1197a1b904</srcmd5>
+    <version>unknown</version>
+    <time>1553262664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687135</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="gnump3d" project="openSUSE:Factory">
+  <title>GNU MP3 Streaming Server</title>
+  <description>gnump3d is a simple server that allows you to stream MP3s and OGG
+Vorbis files across a network.</description>
+  <devel project="multimedia:apps" package="gnump3d"/>
+</package>

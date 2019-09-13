@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3175de2a3efb60d6c295990f372329fb</srcmd5>
+    <version>0.1.1</version>
+    <time>1398434956</time>
+    <user>coolo</user>
+    <comment>fcitx qt5 input module</comment>
+    <requestid>230845</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e568e0cbf0c40ca490cefe03191515ec</srcmd5>
+    <version>0.1.2</version>
+    <time>1402403943</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236655</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e568e0cbf0c40ca490cefe03191515ec</srcmd5>
+    <version>0.1.2</version>
+    <time>1409300864</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>dab5113ee54b50da8e2baa4507fd7d05</srcmd5>
+    <version>0.1.2</version>
+    <time>1410967498</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249193</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9aebe6ae8de4945e353bb372930c7651</srcmd5>
+    <version>0.1.2</version>
+    <time>1418737717</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265051</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3bab5384382aab790457bf2d72163699</srcmd5>
+    <version>1.0.1</version>
+    <time>1428949864</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>295585</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eae4055f8d3bd29b345fb4f6a1c85f0a</srcmd5>
+    <version>1.0.2</version>
+    <time>1433145370</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309396</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>262b1907936ceafd6b36c044ae0b76d3</srcmd5>
+    <version>1.0.3</version>
+    <time>1436888592</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315688</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5bb38a69728e756a02688b1669a89a55</srcmd5>
+    <version>1.0.4</version>
+    <time>1441147004</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328283</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a193fc63bb266d1e7a02bb2d100c70c5</srcmd5>
+    <version>1.0.5</version>
+    <time>1450955833</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350458</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>94db0c7451e77672cebb55452d98d2d6</srcmd5>
+    <version>1.0.6</version>
+    <time>1480786085</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443496</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2a034909938360aa08c50df02808c40a</srcmd5>
+    <version>1.1.0</version>
+    <time>1487149546</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456445</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0e87e14386e2f4223f2686c69985aecd</srcmd5>
+    <version>1.2.1</version>
+    <time>1513677535</time>
+    <user>dimstar_suse</user>
+    <comment>- update version 1.2.1
+  * fix issue #27 and #28
+  * Add relative rect support
+- changes in version 1.2.0
+  * Relicense platforminputcontext/ to BSD
+  * do the real unwatch
+  * prefer to recheck the availability after original service gone
+  * set display type for fcitx5
+  * add fcitx 5 format support
+  * Adapt changes in fcitx5-qt to fix commitPreedit.
+  * implement compatibility layer for fcitx5
+  * try to reimplement im module with lgpl free code
+  * make sure that quickphrae editor does not compile with qt4 header
+  * move quickphrase editor to fcitx-qt5
+- changes in version 1.1.1
+  * fix high dpi screen position, only happen when you have two
+    high dpi screen
+  * use new cmake for package config
+  * enforce cmake 3.1
+  * handle the missing password flag
+  * QInputMethod::update shouldn't be used by input method,
+    just do query
+  * workaround some qquickwidget bug
+</comment>
+    <requestid>558108</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>374b0cb8baafe8164489ee9bdf1abcfb</srcmd5>
+    <version>1.2.2</version>
+    <time>1518514180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575530</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>e1125bb0312bef1d24e4d963604fef8f</srcmd5>
+    <version>1.2.2</version>
+    <time>1525023457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602233</requestid>
+  </revision>
+</revisionlist>

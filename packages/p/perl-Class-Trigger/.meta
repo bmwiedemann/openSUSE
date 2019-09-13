@@ -1,0 +1,5 @@
+<package name="perl-Class-Trigger" project="openSUSE:Factory">
+  <title>Class::Trigger</title>
+  <description>Class-Trigger - Mixin to add / call inheritable triggers</description>
+  <devel project="devel:languages:perl" package="perl-Class-Trigger"/>
+</package>

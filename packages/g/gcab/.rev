@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d739f112ba301779bd47bcb02dbcc471</srcmd5>
+    <version>0.4</version>
+    <time>1363255028</time>
+    <user>coolo</user>
+    <comment>New package, gnome cab viewer</comment>
+    <requestid>158798</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d739f112ba301779bd47bcb02dbcc471</srcmd5>
+    <version>0.4</version>
+    <time>1379662385</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>d739f112ba301779bd47bcb02dbcc471</srcmd5>
+    <version>0.4</version>
+    <time>1409300921</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>19bdf634f77986cdba8102432ca0da2f</srcmd5>
+    <version>0.4</version>
+    <time>1420754526</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280056</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>859cf3bbb0dc2285de301f3211bc6eca</srcmd5>
+    <version>0.5</version>
+    <time>1426064323</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290114</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d3d686197cf3d5705c2f4b163b4179ff</srcmd5>
+    <version>0.5</version>
+    <time>1427445523</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcab-checksum.patch: fix checksum computation (bgo#746580).</comment>
+    <requestid>292528</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e8bb6a348f957045863bac4467343953</srcmd5>
+    <version>0.6</version>
+    <time>1428064458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293761</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>892048214f02799a67e5822b0254b2ea</srcmd5>
+    <version>0.7</version>
+    <time>1460480232</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385365</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>427b94270e46c8635d1a5e89bef76baa</srcmd5>
+    <version>0.8</version>
+    <time>1516970236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568732</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7311210608f3fca04482c4dbd5353073</srcmd5>
+    <version>1.1</version>
+    <time>1521052024</time>
+    <user>dimstar_suse</user>
+    <comment>- Update description. (forwarded request 585261 from jengelh)</comment>
+    <requestid>585849</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>dc9aab37195971175843a9f520892ce5</srcmd5>
+    <version>1.1</version>
+    <time>1527933324</time>
+    <user>dimstar_suse</user>
+    <comment>Add an upstream patch since I'm already touching the package:
+
+- Add gcab-fix-installing-the-includes.patch: build-sys: fix
+  installing the includes (bgo#793388). (forwarded request 612289 from iznogood)</comment>
+    <requestid>612865</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>51e401b4b59bfa20a0991b76e90d5a67</srcmd5>
+    <version>1.2</version>
+    <time>1545223553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657454</requestid>
+  </revision>
+</revisionlist>

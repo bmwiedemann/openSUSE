@@ -1,0 +1,7 @@
+<package name="gtkhtml" project="openSUSE:Factory">
+  <title>Lightweight HTML rendering/printing/editing engine</title>
+  <description>GtkHTML is a lightweight HTML rendering/printing/editing engine. It
+was originally based on KHTMLW, part of the KDE project, but is now
+being developed independently.</description>
+  <devel project="GNOME:Factory" package="gtkhtml"/>
+</package>

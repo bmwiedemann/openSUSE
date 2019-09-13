@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f6379ed31bce73d40462b6322f081c0</srcmd5>
+    <version>1.5.3</version>
+    <time>1199850478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8ca939e27983e98d43a7ed66c4d7e420</srcmd5>
+    <version>1.5.4</version>
+    <time>1217648241</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>69841fa93c9fafeb5d423860f9ca66fc</srcmd5>
+    <version>1.6.0</version>
+    <time>1220664965</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>257d8642eb2ffbe3cc6d92620f1701c1</srcmd5>
+    <version>1.6.0</version>
+    <time>1234475387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>9d737e2efd61317c1665cd300cde9e57</srcmd5>
+    <version>1.6.0</version>
+    <time>1243939108</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>fc42b0bcd35559cdaf9393f5260e21a5</srcmd5>
+    <version>1.6.0</version>
+    <time>1245277437</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e929fb11956a89666748136c7c87bc17</srcmd5>
+    <version>1.6.1</version>
+    <time>1249655504</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e929fb11956a89666748136c7c87bc17</srcmd5>
+    <version>1.6.1</version>
+    <time>1249655504</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>7c6dd7aafd7d92a3f48ef961416c8e48</srcmd5>
+    <version>1.6.1</version>
+    <time>1268926085</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>7c6dd7aafd7d92a3f48ef961416c8e48</srcmd5>
+    <version>1.6.1</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>7c6dd7aafd7d92a3f48ef961416c8e48</srcmd5>
+    <version>1.6.1</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>7c6dd7aafd7d92a3f48ef961416c8e48</srcmd5>
+    <version>1.6.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f5cea15e67f6a12988d3e067929afa98</srcmd5>
+    <version>1.6.2</version>
+    <time>1316088851</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>82111</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7f3d4faf2f08efa49dbddb4522265081</srcmd5>
+    <version>1.6.2</version>
+    <time>1316088860</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82111
+</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>7f3d4faf2f08efa49dbddb4522265081</srcmd5>
+    <version>1.6.2</version>
+    <time>1319182451</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>fedab73be8e04a9d84b7440da12dfa20</srcmd5>
+    <version>1.6.2</version>
+    <time>1323194525</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>855855a26a59b3821ecbc8cad9350692</srcmd5>
+    <version>1.6.2</version>
+    <time>1333388960</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 109805 from dimstar)</comment>
+    <requestid>112187</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>855855a26a59b3821ecbc8cad9350692</srcmd5>
+    <version>1.6.2</version>
+    <time>1340184196</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>855855a26a59b3821ecbc8cad9350692</srcmd5>
+    <version>1.6.2</version>
+    <time>1359110380</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>855855a26a59b3821ecbc8cad9350692</srcmd5>
+    <version>1.6.2</version>
+    <time>1379664621</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>855855a26a59b3821ecbc8cad9350692</srcmd5>
+    <version>1.6.2</version>
+    <time>1409303324</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>54710d244cd4f0a2c4e15ca096fdbaab</srcmd5>
+    <version>1.6.3</version>
+    <time>1413389468</time>
+    <user>coolo</user>
+    <comment>- Update to 1.6.3
+  Bugfix release:
+  Bugs:
+  * 3519016 wbemcli does not support EmbeddedObject attr of PARAMVALUE
+  * 3514126 wbemcli does not compile with GCC 4.7
+  * 3495602 Fix for ID 3202420 (CDATA escape) breaks cim clients
+  * 0002626 Add IPv6 LLA support to wbemcli
+  * 0002627 Add -w option to wbemcli
+  * 0002665 Add -e100 option to wbemcli
+  * 0002629 Do not attempt connect if missing cacert
+  * 0002721 wbemcli does not accept dot in userid:password
+  * 0002626 bugfix for IPv6 LLA support
+- Drop sblim-wbemcli-gcc47.patch, upstreamed</comment>
+    <requestid>256626</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>81a8bc1f71b93e733ced285d36d7c95b</srcmd5>
+    <version>1.6.3</version>
+    <time>1463498112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>395074</requestid>
+  </revision>
+</revisionlist>

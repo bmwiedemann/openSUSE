@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>643bf869cfb2e65ef3076bbec2463816</srcmd5>
+    <version>4.0.1</version>
+    <time>1363105173</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>158521</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ad09a562f8d4cc67344fdd5056872491</srcmd5>
+    <version>4.0.2</version>
+    <time>1366233536</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>171046</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1f0175019ba209f3b3de1b85424947b1</srcmd5>
+    <version>4.0.5</version>
+    <time>1368714340</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.0.5</comment>
+    <requestid>175578</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9cb2faa518d1d5490d60809ea4a1ce40</srcmd5>
+    <version>4.0.6</version>
+    <time>1370431502</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176745</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9cb2faa518d1d5490d60809ea4a1ce40</srcmd5>
+    <version>4.0.6</version>
+    <time>1379665098</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4361fe1477fff4f2774bc041582316cb</srcmd5>
+    <version>4.0.7</version>
+    <time>1393938004</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.0.7</comment>
+    <requestid>224466</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c515c8eb87f65a30ae92cf104f3277bd</srcmd5>
+    <version>4.0.8</version>
+    <time>1407744476</time>
+    <user>lnussel</user>
+    <comment>- Update to new upstream release 4.0.8</comment>
+    <requestid>244158</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c515c8eb87f65a30ae92cf104f3277bd</srcmd5>
+    <version>4.0.8</version>
+    <time>1409303784</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ff4a163905076db329872c40c0fe4d48</srcmd5>
+    <version>4.0.9</version>
+    <time>1412625890</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.0.9</comment>
+    <requestid>254074</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>396627cced8bd9a9f88dca99b51853cf</srcmd5>
+    <version>4.0.10</version>
+    <time>1418112868</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.0.10</comment>
+    <requestid>264486</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9c9525f56e41931cad80a8653cf5b631</srcmd5>
+    <version>4.1.0</version>
+    <time>1469742445</time>
+    <user>dimstar_suse</user>
+    <comment>put into adi:32</comment>
+    <requestid>415308</requestid>
+  </revision>
+</revisionlist>

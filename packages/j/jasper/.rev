@@ -1,0 +1,352 @@
+<revisionlist>
+  <revision rev="1" vrev="16">
+    <srcmd5>23089f90852cd71c8cc8e6ca0595e794</srcmd5>
+    <version>1.701.0</version>
+    <time>1168903110</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f9626a13f205026f9775ced029df9962</srcmd5>
+    <version>1.900.1</version>
+    <time>1177012011</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="87">
+    <srcmd5>ad09da5d3d37e2f4227e3b60bcddce0f</srcmd5>
+    <version>1.900.1</version>
+    <time>1207829996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="133">
+    <srcmd5>ad09da5d3d37e2f4227e3b60bcddce0f</srcmd5>
+    <version>1.900.1</version>
+    <time>1207829996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="134">
+    <srcmd5>701bf2a905b7f457bd38303aa4fefb42</srcmd5>
+    <version>1.900.1</version>
+    <time>1226937957</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="135">
+    <srcmd5>e82174f3409e7fb530928b35e4addab0</srcmd5>
+    <version>1.900.1</version>
+    <time>1231951990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="137">
+    <srcmd5>e82174f3409e7fb530928b35e4addab0</srcmd5>
+    <version>1.900.1</version>
+    <time>1231951990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="138">
+    <srcmd5>2b95ff95a36f48847ea188bae03dc377</srcmd5>
+    <version>1.900.1</version>
+    <time>1262968226</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/jasper based on submit request 28058 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="9" vrev="139">
+    <srcmd5>e3c88768628c3f42509aed726f5d18a9</srcmd5>
+    <version>1.900.1</version>
+    <time>1268924114</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="141">
+    <srcmd5>e3c88768628c3f42509aed726f5d18a9</srcmd5>
+    <version>1.900.1</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="142">
+    <srcmd5>e3c88768628c3f42509aed726f5d18a9</srcmd5>
+    <version>1.900.1</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="143">
+    <srcmd5>ee9320987adc565029c245bf015cf617</srcmd5>
+    <version>1.900.1</version>
+    <time>1280486771</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/jasper based on submit request 44185 from user prusnak
+</comment>
+    <requestid>44185</requestid>
+  </revision>
+  <revision rev="13" vrev="144">
+    <srcmd5>8d671266f61ea636dc2120ad666659ee</srcmd5>
+    <version>1.900.1</version>
+    <time>1280841530</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/jasper based on submit request 44341 from user coolo
+</comment>
+    <requestid>44341</requestid>
+  </revision>
+  <revision rev="14" vrev="147">
+    <srcmd5>8d671266f61ea636dc2120ad666659ee</srcmd5>
+    <version>1.900.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="148">
+    <srcmd5>f9d21702e37577d91c90acff4120228e</srcmd5>
+    <version>1.900.1</version>
+    <time>1317909881</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: use %configure macro (forwarded request 86692 from uli_suse)</comment>
+    <requestid>86701</requestid>
+  </revision>
+  <revision rev="16" vrev="150">
+    <srcmd5>f9d21702e37577d91c90acff4120228e</srcmd5>
+    <version>1.900.1</version>
+    <time>1319182005</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="151">
+    <srcmd5>a022001e5ff566b5507e47328f8bb59b</srcmd5>
+    <version>1.900.1</version>
+    <time>1321268090</time>
+    <user>coolo</user>
+    <comment>add buildrequire libtool (forwarded request 91120 from coolo)</comment>
+    <requestid>91159</requestid>
+  </revision>
+  <revision rev="18" vrev="152">
+    <srcmd5>08d8de82d9368b2bbfe584a6ab3ee510</srcmd5>
+    <version>1.900.1</version>
+    <time>1323192024</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="154">
+    <srcmd5>08d8de82d9368b2bbfe584a6ab3ee510</srcmd5>
+    <version>1.900.1</version>
+    <time>1340183480</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="155">
+    <srcmd5>f27b1038074669cf3b75a28ece462e8b</srcmd5>
+    <version>1.900.1</version>
+    <time>1358022231</time>
+    <user>namtrac</user>
+    <comment>- remove suse_update_config (forwarded request 148210 from coolo)</comment>
+    <requestid>148224</requestid>
+  </revision>
+  <revision rev="21" vrev="157">
+    <srcmd5>f27b1038074669cf3b75a28ece462e8b</srcmd5>
+    <version>1.900.1</version>
+    <time>1359109109</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="158">
+    <srcmd5>79195d6b18f090c5dad3a764efa68682</srcmd5>
+    <version>1.900.1</version>
+    <time>1364896522</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161574 from m_meister)</comment>
+    <requestid>161576</requestid>
+  </revision>
+  <revision rev="23" vrev="159">
+    <srcmd5>48ce740d4e315430fdd86a4b9b8a8596</srcmd5>
+    <version>1.900.1</version>
+    <time>1379178621</time>
+    <user>scarabeus_factory</user>
+    <comment>- added no-undef-true-false.patch to fix [bnc#839584] (forwarded request 198432 from pgajdos)</comment>
+    <requestid>199046</requestid>
+  </revision>
+  <revision rev="24" vrev="161">
+    <srcmd5>48ce740d4e315430fdd86a4b9b8a8596</srcmd5>
+    <version>1.900.1</version>
+    <time>1379662701</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="162">
+    <srcmd5>4335f8d0428e22c18a4d91089f6d6157</srcmd5>
+    <version>1.900.1</version>
+    <time>1395156078</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>226007</requestid>
+  </revision>
+  <revision rev="26" vrev="164">
+    <srcmd5>4335f8d0428e22c18a4d91089f6d6157</srcmd5>
+    <version>1.900.1</version>
+    <time>1409301267</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="165">
+    <srcmd5>12ca5d4a3cfb7f45ade09dbe6fca5c87</srcmd5>
+    <version>1.900.1</version>
+    <time>1419159808</time>
+    <user>coolo</user>
+    <comment>- fixed CVE-2014-8137, CVE-2014-8137 (bnc#909474, bnc#909475)
+  + jasper-CVE-2014-8137.patch
+  + jasper-CVE-2014-8138.patch
+
+- fixed possible overflow CVE-2014-9029 (bnc#906364)
+  + jasper-overflow-bnc906364.patch</comment>
+    <requestid>265905</requestid>
+  </revision>
+  <revision rev="28" vrev="166">
+    <srcmd5>841f0029dee9898983abe82ce4fcbf91</srcmd5>
+    <version>1.900.1</version>
+    <time>1422134382</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed CVE-2014-8157, CVE-2014-8158 (bnc#911837)
+  + jasper-CVE-2014-8157.patch
+  + jasper-CVE-2014-8158.patch</comment>
+    <requestid>282566</requestid>
+  </revision>
+  <revision rev="29" vrev="167">
+    <srcmd5>5722c2d1c8751afc0eb4b1a05caa512c</srcmd5>
+    <version>1.900.1</version>
+    <time>1437299120</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316074</requestid>
+  </revision>
+  <revision rev="30" vrev="168">
+    <srcmd5>2e8f72af0cfa4b324fe0c2ed3edc4451</srcmd5>
+    <version>1.900.1</version>
+    <time>1453508117</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2016-1867 bsc#961886</comment>
+    <requestid>353788</requestid>
+  </revision>
+  <revision rev="31" vrev="169">
+    <srcmd5>0e8c2a2d021866476b7224ce331b7fa3</srcmd5>
+    <version>1.900.1</version>
+    <time>1454833355</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#963983 CVE-2016-2089 (better patch)</comment>
+    <requestid>357303</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ea32f5b9ab138c1261adc812abc4c1ec</srcmd5>
+    <version>1.900.14</version>
+    <time>1477644176</time>
+    <user>dimstar_suse</user>
+    <comment>Add into changelog more of relevant bugs</comment>
+    <requestid>437501</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>2bf8a61e2b19df7470d0614ff5831b7e</srcmd5>
+    <version>1.900.14</version>
+    <time>1478167744</time>
+    <user>dimstar_suse</user>
+    <comment>- Update summaries. Use %_smp_mflags for parallel build. (forwarded request 437628 from jengelh)</comment>
+    <requestid>437634</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>83b69a3ea231c2e56a4b77f6aff601a4</srcmd5>
+    <version>1.900.14</version>
+    <time>1481794903</time>
+    <user>dimstar_suse</user>
+    <comment>Several vulnerabilities</comment>
+    <requestid>445585</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>fa100f1a85d805e3f2a7bdff7b4452f3</srcmd5>
+    <version>1.900.14</version>
+    <time>1482784666</time>
+    <user>lnussel_factory</user>
+    <comment>CVE-2016-9591</comment>
+    <requestid>447277</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>fc180b2f1ef6a507712cbc0acb19d5cb</srcmd5>
+    <version>1.900.14</version>
+    <time>1489176026</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477393</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>6604281ca0aee8b56136345ae8fd0f57</srcmd5>
+    <version>1.900.14</version>
+    <time>1489866574</time>
+    <user>dimstar_suse</user>
+    <comment>Misc. sec. fixes</comment>
+    <requestid>480785</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>adcc4445c0ce8e4c56f85f327825d931</srcmd5>
+    <version>1.900.14</version>
+    <time>1490965279</time>
+    <user>maxlin_factory</user>
+    <comment>Follow-up for CVE-2016-9583</comment>
+    <requestid>483773</requestid>
+  </revision>
+  <revision rev="39" vrev="8">
+    <srcmd5>7d92d7ab2eb552ea5af877ef1f886b13</srcmd5>
+    <version>1.900.14</version>
+    <time>1500274919</time>
+    <user>dimstar_suse</user>
+    <comment>Few security fixes</comment>
+    <requestid>509748</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>32ce552f5827ef4fd05c47c83d3f8b85</srcmd5>
+    <version>2.0.14</version>
+    <time>1522934839</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to jasper 2.0.14 + bsc#1087020</comment>
+    <requestid>593093</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>6e8f633aefdd79b3f114daf1ebeb2ecf</srcmd5>
+    <version>2.0.14</version>
+    <time>1552571456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684439</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>cc4a7d47c5c9af0945d96d197d3d95f4</srcmd5>
+    <version>2.0.14</version>
+    <time>1553262734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687178</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b01a416a50be066043c26bebe129f7bf</srcmd5>
+    <version>2.0.16</version>
+    <time>1553699623</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.16:
+  * Fix assertion failure JPC_NOMINALGAIN (CVE-2016-9396) (#50)
+  * Fix build on Windows 10 (#162)
+  * Improve README
+  * Fix build with CMake 2.x
+  * Add missing dereference operators (#178, #157)
+  * Check data in jas_image (CVE-2018-19539) (#196)
+- Remove because contained in new release:
+  * jasper-CVE-2018-19539.patch
+  * 0001-jpc_cs-reject-all-but-JPC_COX_INS-and-JPC_COX_RFT.patch
+  * Remove 0001-Added-a-fix-from-nrusch-to-allow-JasPer-to-be-build-.patch
+- Run spec-cleaner</comment>
+    <requestid>688203</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>33e499491c7903b0a6238a25cf94cc9b</srcmd5>
+    <version>2.0.16</version>
+    <time>1560458193</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1117508 CVE-2018-19540: Fix heap based overflow in jas_icctxtdesc_input
+  Add jasper-CVE-2018-19540.patch: Make sure asclen is at least 1
+- bsc#1117507 CVE-2018-19541: Fix heap based overread in jas_image_depalettize
+  Add jasper-CVE-2018-19541.patch: Check number of lutents</comment>
+    <requestid>708034</requestid>
+  </revision>
+</revisionlist>

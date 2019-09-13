@@ -1,0 +1,8 @@
+<package name="bird" project="openSUSE:Factory">
+  <title>The BIRD Internet Routing Daemon - IPv4</title>
+  <description>The BIRD project aims to develop a fully functional dynamic IP routing daemon
+primarily targeted on (but not limited to) Linux, FreeBSD and other UNIX-like
+systems</description>
+  <devel project="network" package="bird"/>
+  <url>http://bird.network.cz/</url>
+</package>

@@ -1,0 +1,413 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>706136a6963be1acbffcc2c31ea8b88e</srcmd5>
+    <version>3</version>
+    <time>1332999746</time>
+    <user>coolo</user>
+    <comment>New package for hyper-v guests, from sles11sp1+</comment>
+    <requestid>111267</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>77acb5e57795ee2573b45ee8b0780fd8</srcmd5>
+    <version>3</version>
+    <time>1336468484</time>
+    <user>coolo</user>
+    <comment>- update insserv part, see comments in OBS submit request #112701</comment>
+    <requestid>116278</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ca97cff40badd1fb982b7abc60149c14</srcmd5>
+    <version>3</version>
+    <time>1337667353</time>
+    <user>coolo</user>
+    <comment>- check origin of netlink messages, use recvfrom() [bnc#761200]
+
+- do not package modprobe.conf rule in main package
+  prevents loading of ata_piix which is required for cdrom access</comment>
+    <requestid>121665</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>ca97cff40badd1fb982b7abc60149c14</srcmd5>
+    <version>3</version>
+    <time>1340183445</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>4ec0c4cbf9c86324f8571776f4e73f61</srcmd5>
+    <version>3</version>
+    <time>1346829429</time>
+    <user>coolo</user>
+    <comment>- remove restart_on_update in postun section
+  the daemon can not be restarted at this point, and the new daemon
+  may not be 100 percent compatible with the currently running
+  kernel</comment>
+    <requestid>132497</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>404aad5cb41243a0ab40f5a5d82de4a4</srcmd5>
+    <version>4</version>
+    <time>1351013862</time>
+    <user>coolo</user>
+    <comment>- update hv_kvp_daemon
+  Return the full kernel version
+  Don't return loopback addresses
+
+- bump to version 4
+- update kv_kvp_daemon to 3.7-rc1 state [fate#31441]
+  support KVP IP Injection, helper scripts go to /usr/lib/hyper-v/bin:
+  hv_get_dhcp_info, hv_get_dns_info, hv_set_ifconfig
+- remove usage of absolute paths in runlevel script
+
+  kernel [bnc#770763]</comment>
+    <requestid>138030</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e4c8fa6b26abbf909ad9ade9c2ac0fc4</srcmd5>
+    <version>4</version>
+    <time>1351874218</time>
+    <user>coolo</user>
+    <comment>- update hv_set_ifconfig to work with our ifcfg
+
+- update kv_kvp_daemon to 3.7-rc1 state [fate#314441]</comment>
+    <requestid>139921</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>387a15f1bfa7b31e990296f753fd11b4</srcmd5>
+    <version>4</version>
+    <time>1354274503</time>
+    <user>coolo</user>
+    <comment>- update hv_set_ifconfig, use single index for static ipv4/ipv6 [bnc#790469]
+
+- update hv_set_ifconfig further to work with our ifcfg [bnc#790469]
+
+- update hv_get_dhcp_info to work with our ifcfg [bnc#790469]
+- remove cat usage from hv_get_dns_info
+- add quoting to hv_set_ifconfig to make it more robust
+
+- remove code to build kmp, it was not enabled because the
+  drivers are now in kernel since a long time. [bnc#676890]
+
+- Netlink source address validation allows DoS [bnc#791605, CVE-2012-5532]
+  bugfix for recvfrom check from bnc#761200
+
+- check origin of netlink messages, use recvfrom() [bnc#761200, CVE-2012-2669]</comment>
+    <requestid>143411</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>387a15f1bfa7b31e990296f753fd11b4</srcmd5>
+    <version>4</version>
+    <time>1359109058</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e4cee8e2962a978dfe2b577c0bd86d57</srcmd5>
+    <version>5</version>
+    <time>1373981578</time>
+    <user>coolo</user>
+    <comment>- update hv_kvp_daemon (merge 0783d72fa from v3.9-rc1)
+  Fix how ifcfg-* file is created
+
+- update hv_kvp_daemon (changes up to 3.11-rc1):
+  Improve error logging in KVP daemon.
+  Fix file descriptor leaks
+  Check retrun value of strchr call
+  Check return value of poll call
+  Check return value of setsockopt call
+  daemon should check type of received Netlink msg
+  daemon setsockopt should use options macros
+  daemon should subscribe only to CN_KVP_IDX group
+
+- Fix a bug in IPV6 subnet enumeration (bnc#828714)
+
+- Update hv_vss_daemon (bnc#811033)
+
+- add hv_vss_daemon (fate#314921)
+  helper to support host initiated backup
+
+- build hv_kvp_daemon with -D_GNU_SOURCE to get O_CLOEXEC
+
+- update hv_kvp_daemon
+  Use CLOEXEC when opening kvp_pool files
+  Fix permissions of created directory and files
+  Fix /var subdirectory (move state files from /var/opt to /var/lib)
+  Fix string types</comment>
+    <requestid>183123</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>057bd9caa3813db8955bffc2196f4fbc</srcmd5>
+    <version>5</version>
+    <time>1375332877</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>185068</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>3934b540a5fdfbe39a4a67fd839da90d</srcmd5>
+    <version>5</version>
+    <time>1375372517</time>
+    <user>coolo</user>
+    <comment>- Fix send/recv buffer allocation (bnc#828714)</comment>
+    <requestid>185444</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>7bb4e72904faa64c33d10a235fe29637</srcmd5>
+    <version>5</version>
+    <time>1375901051</time>
+    <user>coolo</user>
+    <comment>- cache FQDN in kvp_daemon to avoid timeouts (bnc#828714)
+- use full nlmsghdr in netlink_send
+- correct payload size in netlink_send
+- use single send+recv buffer
+- log errors to syslog in kvp_set_ip_info
+- check return value of system in hv_kvp_daemon
+- in kvp_set_ip_info free mac_addr right after usage
+- check return value of daemon to fix compiler warning.</comment>
+    <requestid>186287</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>9276d4e26c62e011d2f7765df567af85</srcmd5>
+    <version>5</version>
+    <time>1377248778</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195900</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>63bc1ba1313ca2b94dbdd8af9b82d3ca</srcmd5>
+    <version>5</version>
+    <time>1378646854</time>
+    <user>coolo</user>
+    <comment>- Update Supplements: modalias(dmi:*)</comment>
+    <requestid>197898</requestid>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>63bc1ba1313ca2b94dbdd8af9b82d3ca</srcmd5>
+    <version>5</version>
+    <time>1379662629</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>81ea3299a738c73360cecdb11f7f74b1</srcmd5>
+    <version>6</version>
+    <time>1388075889</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212260</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>9e8e722a596b36060383455f1f92dd43</srcmd5>
+    <version>6</version>
+    <time>1391077541</time>
+    <user>coolo</user>
+    <comment>- Start daemons on demand via udev rules because the guest services
+  are optional.
+- If systemd is used daemons live in libdir, they are not usercallable apps
+
+- Add hv_fcopy_daemon for post 13.1 releases (fate#315887)
+  hyper-v.tools.hv.hv_fcopy_daemon.c</comment>
+    <requestid>215284</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>65f8c27fba8c20a3add52e3cce849776</srcmd5>
+    <version>6</version>
+    <time>1392222136</time>
+    <user>coolo</user>
+    <comment>- Update hv_fcopy_daemon, kernel name changed to /dev/vmbus/hv_fcopy</comment>
+    <requestid>221975</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>182aa00781b2aa256bf8f2515b6b0a43</srcmd5>
+    <version>6</version>
+    <time>1395146791</time>
+    <user>coolo</user>
+    <comment>- Package /usr/lib/udev to fix build error</comment>
+    <requestid>225703</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>abef11611fdd13eeb8f8208857d9144c</srcmd5>
+    <version>6</version>
+    <time>1397450600</time>
+    <user>coolo</user>
+    <comment>- Handle the case when the target file exists correctly in hv_fcopy_daemon
+- vssdaemon: Ignore VFAT mounts during the Freeze operation</comment>
+    <requestid>229699</requestid>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>42dbbd56252ca39363eb8cdf252078af</srcmd5>
+    <version>6</version>
+    <time>1401184275</time>
+    <user>coolo</user>
+    <comment>- copy mask2pfxlen from /etc/sysconfig/network/scripts/functions
+  to hv_set_ifconfig (bnc#879256)
+
+- Start hyper-v helpers manually with helper script in inst-sys</comment>
+    <requestid>235401</requestid>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>2e18fe601b518e58dc151d5f14d0381b</srcmd5>
+    <version>6</version>
+    <time>1405253145</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>239930</requestid>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>2e18fe601b518e58dc151d5f14d0381b</srcmd5>
+    <version>6</version>
+    <time>1409301187</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>a1a449040282c490a35dcdd9dd5fbbd9</srcmd5>
+    <version>6</version>
+    <time>1412799204</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>254607</requestid>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>de2751613bd1d49ac06163b13925f28f</srcmd5>
+    <version>6</version>
+    <time>1415866895</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260839</requestid>
+  </revision>
+  <revision rev="27" vrev="12">
+    <srcmd5>38babb27ad1fca307e1ec63d0a9c1fc4</srcmd5>
+    <version>6</version>
+    <time>1417870041</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263753</requestid>
+  </revision>
+  <revision rev="28" vrev="13">
+    <srcmd5>8666ee1794aaa855b31cab54e7502273</srcmd5>
+    <version>6</version>
+    <time>1418978285</time>
+    <user>dimstar_suse</user>
+    <comment>- Start hv_kvp_daemon after network-online.target (bnc#910353)
+- ignore ENOBUFS and ENOMEM in the KVP daemon
+- vssdaemon: skip all filesystems mounted readonly (bnc#909864)
+- vssdaemon: report freeze errors</comment>
+    <requestid>265533</requestid>
+  </revision>
+  <revision rev="29" vrev="14">
+    <srcmd5>347c7048d982ffcc899ece0a48e22d65</srcmd5>
+    <version>6</version>
+    <time>1422594188</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282930</requestid>
+  </revision>
+  <revision rev="30" vrev="15">
+    <srcmd5>26ab6bdb9db04ed296612872a4980d48</srcmd5>
+    <version>6</version>
+    <time>1430132265</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>298824</requestid>
+  </revision>
+  <revision rev="31" vrev="16">
+    <srcmd5>02bd8bbcf6e272d00cf93a081704b4ee</srcmd5>
+    <version>6</version>
+    <time>1431248156</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>305763</requestid>
+  </revision>
+  <revision rev="32" vrev="17">
+    <srcmd5>e5fd7a7643b53923dac1528a7ef4f8ee</srcmd5>
+    <version>6</version>
+    <time>1443896979</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>333769</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5b371210de0945ad872e9e401a0dc6f5</srcmd5>
+    <version>7</version>
+    <time>1496821824</time>
+    <user>dimstar_suse</user>
+    <comment>- add Conflicts with kernel &lt; 4.2 (fate#320485)
+- vss: fix the write()'s argument: error -&gt; vss_msg
+- remove repeated HV_FCOPY string
+- report ENOSPC errors in hv_fcopy_daemon
+- fcopy: full handshake support
+- vss: full handshake support
+- vss: use misc char device to communicate with kernel
+- kvp: use misc char device to communicate with kernel</comment>
+    <requestid>498992</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>cedc6a08ad6fccecd748ff29872033c3</srcmd5>
+    <version>7</version>
+    <time>1498995462</time>
+    <user>dimstar_suse</user>
+    <comment>- Check VSS daemon is listening before a hot backup (bnc#1029693)
+- fix a compile warning in snprintf
+- kvp: ensure kvp device fd is closed on exec
+- lsvmbus: add pci pass-through UUID</comment>
+    <requestid>506781</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>da53adb80dcc7297e4a53f6af952f648</srcmd5>
+    <version>7</version>
+    <time>1516091454</time>
+    <user>dimstar_suse</user>
+    <comment>- update buffer handling in hv_fcopy_daemon
+- remove unnecessary header files and netlink related code
+- Avoid reading past allocated blocks from KVP file
+- fix snprintf warning in kvp_daemon
+- properly handle long paths
+- kvp: configurable external scripts path
+- vss: Thaw the filesystem and continue if freeze call has timed out
+- vss: Skip freezing filesystems backed by loop</comment>
+    <requestid>562485</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>21893f3bc9deeb905e5b38270e5dd0cc</srcmd5>
+    <version>7</version>
+    <time>1522934826</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid reading past allocated blocks from KVP file (bnc#1087658)</comment>
+    <requestid>593085</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>3a5654d130bc5231010949c3c5c94d24</srcmd5>
+    <version>7</version>
+    <time>1527276974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update lsvmbus interpreter from env(1) to python3(1) (bsc#1093910)</comment>
+    <requestid>611145</requestid>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>a5a5a769d6b79956a4e9e0feda553221</srcmd5>
+    <version>7</version>
+    <time>1534543020</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>628366</requestid>
+  </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>c25b578401887004f3cf0db8814e6fc9</srcmd5>
+    <version>7</version>
+    <time>1539250820</time>
+    <user>dimstar_suse</user>
+    <comment>- fcopy: set 'error' in case an unknown operation was requested (c2d68afb)
+
+- Update lsvmbus interpreter from python3(1) to python(1)
+  because SLE12 lacks python3 support (bsc#1093910)
+
+- vss: fix loop device detection (07136793)
+- Fix IP reporting by KVP daemon with SRIOV (4ba63412)
+- Fix a bug in the key delete code (86503bd3)
+- fix compiler warnings about major/target_fname (1330fc35)
+- PRIVATE hyper-v.compare-with-upstream.sh</comment>
+    <requestid>640773</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,239 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e806ba6751446117ada358a461986da</srcmd5>
+    <version>0.17</version>
+    <time>1168903036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="31">
+    <srcmd5>c51fe50ec539614e01865e3f66bea25c</srcmd5>
+    <version>0.17</version>
+    <time>1175185097</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="52">
+    <srcmd5>771a5678fc84ecec2c54d502a77da21d</srcmd5>
+    <version>0.17</version>
+    <time>1185493487</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="125">
+    <srcmd5>771a5678fc84ecec2c54d502a77da21d</srcmd5>
+    <version>0.17</version>
+    <time>1185493487</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="126">
+    <srcmd5>8c67af6158197eb248a3e98a8073a214</srcmd5>
+    <version>0.17</version>
+    <time>1245364094</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="127">
+    <srcmd5>492334c98a2a372b966cb41094677266</srcmd5>
+    <version>0.17</version>
+    <time>1251297369</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iftop based on submit request 18797 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="129">
+    <srcmd5>492334c98a2a372b966cb41094677266</srcmd5>
+    <version>0.17</version>
+    <time>1251297369</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iftop based on submit request 18797 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="8" vrev="130">
+    <srcmd5>c5e28ed1b44ac151e28eae843e03aa15</srcmd5>
+    <version>0.17</version>
+    <time>1258388381</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iftop based on submit request 24484 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="9" vrev="131">
+    <srcmd5>915a1870132745a79b743badbb27f940</srcmd5>
+    <version>0.17</version>
+    <time>1259756026</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iftop based on submit request 25242 from user lrupp
+</comment>
+  </revision>
+  <revision rev="10" vrev="132">
+    <srcmd5>ea79b8d53be15cf96cae149cec998fc4</srcmd5>
+    <version>0.17</version>
+    <time>1268924003</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="134">
+    <srcmd5>ea79b8d53be15cf96cae149cec998fc4</srcmd5>
+    <version>0.17</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="135">
+    <srcmd5>ea79b8d53be15cf96cae149cec998fc4</srcmd5>
+    <version>0.17</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="138">
+    <srcmd5>ea79b8d53be15cf96cae149cec998fc4</srcmd5>
+    <version>0.17</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>52eb7f053c3acdce5737c07c47d095b1</srcmd5>
+    <version>0.99.1</version>
+    <time>1303801303</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67005 from user mrdocs
+</comment>
+    <requestid>67005</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>713c73505ba092ff01411bd5130d091e</srcmd5>
+    <version>0.99.1</version>
+    <time>1303801316</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67005
+</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>713c73505ba092ff01411bd5130d091e</srcmd5>
+    <version>0.99.1</version>
+    <time>1319181985</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>1f4a3ca1f20164a63ddd50d45ad78d54</srcmd5>
+    <version>0.99.1</version>
+    <time>1323191954</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f0768ea99c2b3cb370b47c8effaec899</srcmd5>
+    <version>0.99.2</version>
+    <time>1334215613</time>
+    <user>coolo</user>
+    <comment>- update to 1.0pre2:
+  * reverse IPv6 using all methods except ares
+  * faster switching of graph scale
+  * fixed support for DLT_NULL
+  * fix for segfault on interfaces with no MAC address
+  * improved interface autodetect
+  * a stab at implementing support for radiotap interfaces (DLT 127).
+- updated iftop-manpage.patch to fix manpage formatting warning
+- remove INSTALL from installed files
+- removed revious source
+- removed iftop-1.0-includes_fix.patch
+- removed counter_hash.h (forwarded request 112262 from AndreasStieger)</comment>
+    <requestid>112266</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f0768ea99c2b3cb370b47c8effaec899</srcmd5>
+    <version>0.99.2</version>
+    <time>1340183456</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>a4f74c1e48af867fce94672e19692860</srcmd5>
+    <version>0.99.2</version>
+    <time>1355473086</time>
+    <user>coolo</user>
+    <comment>- Properly handle multicast packages
+- Define USE_GETIFADDRS to use getifaddrs for better IPv6 support (forwarded request 145021 from AndreasSchwab)</comment>
+    <requestid>145022</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>a4f74c1e48af867fce94672e19692860</srcmd5>
+    <version>0.99.2</version>
+    <time>1359109074</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>85a2cf31b2a757861a4a381310c5a58b</srcmd5>
+    <version>0.99.2</version>
+    <time>1362637274</time>
+    <user>coolo</user>
+    <comment>- Use ncursesw6
+- fix a number of implicit declarations and 
+  implicit-pointer-decl warnings (iftop-implicit-pointer-decl.patch) (forwarded request 157408 from elvigia)</comment>
+    <requestid>157543</requestid>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>85a2cf31b2a757861a4a381310c5a58b</srcmd5>
+    <version>0.99.2</version>
+    <time>1379662659</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6c56d56e552d0370d7b1a28d1461d27f</srcmd5>
+    <version>0.99.3</version>
+    <time>1388913886</time>
+    <user>coolo</user>
+    <comment>update to 1.0pre3 (forwarded request 212723 from pbleser)</comment>
+    <requestid>212757</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cad2ce615dcbdfb88fa25749ca59bf47</srcmd5>
+    <version>0.99.4</version>
+    <time>1392447911</time>
+    <user>coolo</user>
+    <comment>iftop 1.0pre4 (forwarded request 222280 from AndreasStieger)</comment>
+    <requestid>222283</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>425576aa3083f01fd6ea10d63c5ea014</srcmd5>
+    <version>0.99.4</version>
+    <time>1399545510</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>232901</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>7634868f9b7fc4f9e260f1cbfc46bf65</srcmd5>
+    <version>0.99.4</version>
+    <time>1405178114</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>240771</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>7634868f9b7fc4f9e260f1cbfc46bf65</srcmd5>
+    <version>0.99.4</version>
+    <time>1409301216</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>fdfe3ee757222098418f04cdbe3b78dc</srcmd5>
+    <version>0.99.4</version>
+    <time>1551284970</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679570</requestid>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>1b022b16f9d4c113817bc30ce8ead806</srcmd5>
+    <version>0.99.4</version>
+    <time>1555928810</time>
+    <user>maxlin_factory</user>
+    <comment>- added 006-iftop-choose_first_running_interface.patch:
+  Choose first running interface, rather than first &quot;up&quot; interface
+- apply/use 0001-Prefer-ncurses6w.patch only on newer distributions
+
+  terabit. 10gbit is not uncommon, 100gbit 40 and 100 gbit are coming,</comment>
+    <requestid>696487</requestid>
+  </revision>
+</revisionlist>

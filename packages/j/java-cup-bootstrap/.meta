@@ -1,0 +1,16 @@
+<package name="java-cup-bootstrap" project="openSUSE:Factory">
+  <title>LALR Parser Generator in Java</title>
+  <description>java-cup is a LALR Parser Generator in Java. With v0.11, you can: *
+   use CUP in an Ant-Target
+
+* start CUP by a simple command like java -jar java-cup-11a.jar
+   myGrammar.cup
+
+* use generic parametrized classes (since Java 1.5) as datatypes for
+   non
+
+* terminals and terminals
+
+* have Your own symbol classes</description>
+  <devel project="openSUSE:Factory" package="java-cup"/>
+</package>

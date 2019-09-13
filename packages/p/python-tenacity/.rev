@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>44794decc373fc64e33330a531758083</srcmd5>
+    <version>3.7.1</version>
+    <time>1487680823</time>
+    <user>dimstar_suse</user>
+    <comment>New package needed for OpenStack components</comment>
+    <requestid>456069</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5859a753e532a5508040fe5865a60739</srcmd5>
+    <version>4.4.0</version>
+    <time>1503393086</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  * Document wait\_random\_exponential strategy
+  * Rename wait\_full\_jitter to wait\_random\_exponential
+  * Add retry\_unless\_exception\_type
+  * Add missing ')' to README.rst
+  * Do not duplicate statistics fields in instance
+  * Do not start trial\_start\_time as an attribute
+  * Add an example on how to combine stop conditions
+  * Put a link to the GitHub issue of retrying about the fork
+  * feat: added wait\_full\_jitter
+  * Add new event based sleep and stop
+  * Add \`wraps' method directly on Retrying object
+  * wait: handle OverflowError
+  * doc: raise Exception in example so they actually work
+  * Remove weird example with retry\_if\_io\_error
+  * Bump version for new feature
+  * Add Python 3.6 support
+  * Add retry\_if\_not\_result class to compliment the existing retry\_if\_result class
+  * Fix six minimum version
+  * doc: rewrite the before explanation
+  * Add \_\_call\_\_ on BaseRetrying class
+  * Document before and after keywords
+  * Remove useless MANIFEST
+  * Remove non-working PyPI download image
+  * Bump hacking to 0.13
+  * Use Python 3 for pep8 tox target
+  * Remove deprecated wait\_jitter (forwarded request 518052 from tbechtold)</comment>
+    <requestid>518053</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>06e90e9fdbe7d144094d91aa66a91808</srcmd5>
+    <version>4.5.0</version>
+    <time>1510406445</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>540371</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0620c521fc719ab63fbae9c5df36b85b</srcmd5>
+    <version>4.8.0</version>
+    <time>1515876456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563549</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8c1fc785dcac3b4aa3553fcd8f95cac2</srcmd5>
+    <version>4.12.0</version>
+    <time>1540200231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643129</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>04baa7e0d46b007b9f7c3ab9099793cf</srcmd5>
+    <version>4.12.0</version>
+    <time>1545648301</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659708</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1c693c7e345361075d9217a93e8f4506</srcmd5>
+    <version>4.12.0</version>
+    <time>1547540233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664987</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ab79e1aa1cd0afcb58d4d0e9219e8f72</srcmd5>
+    <version>5.0.4</version>
+    <time>1556023155</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697030</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>878aaaa7859868acf4c5118b240dfb03</srcmd5>
+    <version>5.1.1</version>
+    <time>1567010304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726743</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>506f005eb1ae41efcdb60cbae356306e</srcmd5>
+    <version>1.1.91</version>
+    <time>1472731372</time>
+    <user>dimstar_suse</user>
+    <comment>New package in the GNOME 3.22 stack</comment>
+    <requestid>423823</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b42b73409a3f70e7d812a88993d87c9e</srcmd5>
+    <version>1.2.0</version>
+    <time>1474623294</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 428610 from Zaitor)</comment>
+    <requestid>429067</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>68e20f018f1b7acce0a5fefcc8df75e3</srcmd5>
+    <version>1.2.1</version>
+    <time>1477511315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437401</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b057dcda0a56160d02b36a633424d07e</srcmd5>
+    <version>1.2.2</version>
+    <time>1497871357</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504286</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0e25bbcef91194ff53bf11891421de45</srcmd5>
+    <version>1.2.3</version>
+    <time>1505331973</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522819</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0a705cc17b8ea5caabd5031d3de671c0</srcmd5>
+    <version>1.2.3</version>
+    <time>1520588583</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SRPM group. (forwarded request 583008 from jengelh)</comment>
+    <requestid>583032</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>98ca365d4f5948f88b1f12086949bca6</srcmd5>
+    <version>1.4.2</version>
+    <time>1536094470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2:
+  + Hide category chooser on scores dialog when not needed.
+- Changes from version 1.4.1:
+  + Fix invalid cast in scores dialog.
+- Changes from version 1.4.0:
+  + Fix Scores.Context.get_high_scores() returning unordered
+    scores.
+  + Ensure all public objects are usable when created with
+    g_object_new().
+  + Build with --abi-stability (requires valac 0.40). Bump soname.
+- Following upstream changes, bump soname to 3, use define sover to
+  ease future bumps.
+- Drop gnome-common BuildRequires and remove conditional autogen
+  call, we are using a prestine tarball.
+- Add make_build, actually build the libs ourselves, not just
+  install the upstream ones. Use autosetup macro. (forwarded request 629277 from iznogood)</comment>
+    <requestid>629368</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>feaee973e50ce149684bbe0334d772a4</srcmd5>
+    <version>1.4.3</version>
+    <time>1547540130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657489</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b480fce9994872824da5e1c879da6cbc</srcmd5>
+    <version>1.4.4</version>
+    <time>1567581271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727930</requestid>
+  </revision>
+</revisionlist>

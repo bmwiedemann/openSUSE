@@ -1,0 +1,251 @@
+<revisionlist>
+  <revision rev="1" vrev="34">
+    <srcmd5>71727d0406d3f151c12ee2eba5d591a9</srcmd5>
+    <version>3.0</version>
+    <time>1168274913</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="38">
+    <srcmd5>495705ee670be9bd36347dd9ca5b8d3d</srcmd5>
+    <version>3.0</version>
+    <time>1171560641</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="40">
+    <srcmd5>8cf61a4552795bfc73e05caca8d3a2e7</srcmd5>
+    <version>3.0</version>
+    <time>1173203917</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f4c5d8be84db398c12e13c155d755af6</srcmd5>
+    <version>3.2</version>
+    <time>1184086764</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dc40dc164f1f7aa1d7b608fe1b3be9b9</srcmd5>
+    <version>3.3</version>
+    <time>1201279339</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>02dd5733a83eaedef046e93753a8642d</srcmd5>
+    <version>3.4</version>
+    <time>1201825340</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9cc28295342e12e417b7655a711233b6</srcmd5>
+    <version>3.4</version>
+    <time>1202491063</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7b88320cd45c929832298807fd7a4b71</srcmd5>
+    <version>3.4</version>
+    <time>1202636233</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>b9e48471c5b34f17a9ec32252ad12f96</srcmd5>
+    <version>3.4</version>
+    <time>1202661144</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7b6dd9c9f4d6204a1f6578f070b9054e</srcmd5>
+    <version>3.5</version>
+    <time>1207445973</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>6798dadb81e18632a236a017ad61786f</srcmd5>
+    <version>3.5</version>
+    <time>1207831154</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dbf5bb2a23879307946c1ba79d7190c0</srcmd5>
+    <version>3.6</version>
+    <time>1214099192</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ae9e1c73c6115a57dd45e22f295394d7</srcmd5>
+    <version>3.7</version>
+    <time>1221250674</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>81346555303f4ba724d620e90f738890</srcmd5>
+    <version>3.7</version>
+    <time>1233019145</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>95367e6235577a3d8b92ed2fb2675d5c</srcmd5>
+    <version>3.8</version>
+    <time>1233940087</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>24e136d0a3ea4b291bef391c3860ecd2</srcmd5>
+    <version>3.9</version>
+    <time>1238108309</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8b0013bf1b8e084396216e95ca26d1fa</srcmd5>
+    <version>4.0</version>
+    <time>1249317563</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>8b0013bf1b8e084396216e95ca26d1fa</srcmd5>
+    <version>4.0</version>
+    <time>1249317563</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ada60258525c093d478e07ee13c258e7</srcmd5>
+    <version>5.0</version>
+    <time>1263819422</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libxklavier based on submit request 29752 from user vuntz
+</comment>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6b86d3a61996a29b111ff6a0a36a13e2</srcmd5>
+    <version>5.0</version>
+    <time>1268924776</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>6b86d3a61996a29b111ff6a0a36a13e2</srcmd5>
+    <version>5.0</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>6b86d3a61996a29b111ff6a0a36a13e2</srcmd5>
+    <version>5.0</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>6b86d3a61996a29b111ff6a0a36a13e2</srcmd5>
+    <version>5.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>618d781e2beb08d8e794efecc33683a8</srcmd5>
+    <version>5.1</version>
+    <time>1304342515</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69121</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>825262c9d013a76dae3340bb07a06777</srcmd5>
+    <version>5.1</version>
+    <time>1317976323</time>
+    <user>lrupp</user>
+    <comment>Add iso-codes Requires (forwarded request 86951 from vuntz)</comment>
+    <requestid>86983</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>825262c9d013a76dae3340bb07a06777</srcmd5>
+    <version>5.1</version>
+    <time>1319182148</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>ee3d787bb488efb5129d8b304f695c38</srcmd5>
+    <version>5.1</version>
+    <time>1323192385</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1298cc50ed51fcf673517e26e19305ad</srcmd5>
+    <version>5.2</version>
+    <time>1327696023</time>
+    <user>coolo</user>
+    <comment>New version</comment>
+    <requestid>101626</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1bf55a0bde41046f836177913d105d8c</srcmd5>
+    <version>5.2.1</version>
+    <time>1329824333</time>
+    <user>coolo</user>
+    <comment>Push..</comment>
+    <requestid>106168</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>1bf55a0bde41046f836177913d105d8c</srcmd5>
+    <version>5.2.1</version>
+    <time>1340183657</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a69188990b8b7634fadc59e656fb4791</srcmd5>
+    <version>5.3</version>
+    <time>1348646938</time>
+    <user>coolo</user>
+    <comment>Update to 5.3 (forwarded request 135593 from Zaitor)</comment>
+    <requestid>135984</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>a69188990b8b7634fadc59e656fb4791</srcmd5>
+    <version>5.3</version>
+    <time>1359109381</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>a69188990b8b7634fadc59e656fb4791</srcmd5>
+    <version>5.3</version>
+    <time>1379663139</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>a69188990b8b7634fadc59e656fb4791</srcmd5>
+    <version>5.3</version>
+    <time>1409301769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>a4f19c792b4162fa0754b3911722f062</srcmd5>
+    <version>5.3</version>
+    <time>1414218761</time>
+    <user>coolo</user>
+    <comment>- Discontinue the use of xorg-x11-devel metapackage, just
+  buildrequire pkgconfig(xi), pkgconfig(x11), pkgconfig(xkbfile).</comment>
+    <requestid>257807</requestid>
+  </revision>
+  <revision rev="36" vrev="9">
+    <srcmd5>b36b492e8ec962ecbc74d8e63e36f487</srcmd5>
+    <version>5.3</version>
+    <time>1455272427</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357243</requestid>
+  </revision>
+  <revision rev="37" vrev="10">
+    <srcmd5>47b8c6b9e3e9d94242f622c2e6db00f5</srcmd5>
+    <version>5.3</version>
+    <time>1520502731</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix RPM groups. Update summaries. Remove --with-pic. (forwarded request 583037 from jengelh)</comment>
+    <requestid>583048</requestid>
+  </revision>
+</revisionlist>

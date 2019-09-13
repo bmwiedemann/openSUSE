@@ -1,0 +1,12 @@
+<package name="librtas-doc" project="openSUSE:Factory">
+  <title>Libraries to provide access to RTAS calls and RTAS events</title>
+  <description>The librtas shared library provides userspace with an interface through
+which certain RTAS calls can be made.  The library uses either of the
+RTAS User Module or the RTAS system call to direct the kernel in making
+these calls.
+
+The librtasevent shared library provides users with a set of
+definitions and common routines useful in parsing and dumping the
+contents of RTAS events.</description>
+  <devel project="openSUSE:Factory" package="librtas"/>
+</package>

@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="11">
+    <srcmd5>877346513cae19108cc77d37524badfc</srcmd5>
+    <version>1.0</version>
+    <time>1444285453</time>
+    <user>coolo</user>
+    <comment>audaspace used to be part of blender and is now a separate package that will be needed to build blender from version 2.80 onwards.</comment>
+    <requestid>335610</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1e638d25b4b7eb8eedc271adbb970b8c</srcmd5>
+    <version>1.1</version>
+    <time>1445287949</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339467</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>30532b4f96f16f68a04c2968644c6b79</srcmd5>
+    <version>1.1</version>
+    <time>1445860128</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340465</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f720820df8885fa7a7a26f1a79e7cf26</srcmd5>
+    <version>1.2</version>
+    <time>1467359936</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404997</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>cab2e0dd282fc8f215aef9255bbe9fb2</srcmd5>
+    <version>1.2</version>
+    <time>1467705134</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406195</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f90eed29cb33c4f8da0f98554535699c</srcmd5>
+    <version>1.3.0</version>
+    <time>1487029630</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456018</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>81ef7ed4d368df56a3c4daa4d13a642c</srcmd5>
+    <version>1.3.0</version>
+    <time>1488479323</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>459651</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>cf1068c002f5c0033f3297d5e2fd8894</srcmd5>
+    <version>1.3.0</version>
+    <time>1491896178</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483755</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>6055c04d1cf0aeda3c8f5c56bc8baf67</srcmd5>
+    <version>1.3.0</version>
+    <time>1507065435</time>
+    <user>dimstar_suse</user>
+    <comment>- Moved lib*.so plugin symlinks from the devel package to the
+  pluginsn package as a temporary work around for boo#1057965
+  reported upstream https://github.com/audaspace/audaspace/issues/10
+</comment>
+    <requestid>528251</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>8bdec4bda6a5d15f87e03f0f8f1abb19</srcmd5>
+    <version>1.3.0</version>
+    <time>1508434378</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534903</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>d1dd8b5f18724bad6947187b7150cad1</srcmd5>
+    <version>1.3.0</version>
+    <time>1508876678</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536246</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>2c7046dc800b3117b871ad79b52596d7</srcmd5>
+    <version>1.3.0</version>
+    <time>1525209791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599679</requestid>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>b39ff56d58b82516c0afabb0d6b19eef</srcmd5>
+    <version>1.3.0</version>
+    <time>1530866792</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621079</requestid>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>24a35a200af245887be9dd78665a817a</srcmd5>
+    <version>1.3.0</version>
+    <time>1550151113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674398</requestid>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>1642800e27342132dcb6bdc86f9c1347</srcmd5>
+    <version>1.3.0</version>
+    <time>1563018594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714776</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,152 @@
+<revisionlist>
+  <revision rev="1" vrev="13">
+    <srcmd5>13dc8d9be1fd9ab2fcc016bab3f5e4c1</srcmd5>
+    <version>1.3.0</version>
+    <time>1168904002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c3995092ce168107cc6409e8fcff6abc</srcmd5>
+    <version>1.3.4</version>
+    <time>1178292936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="14">
+    <srcmd5>05cf947cb133866ed0b0a4cd4888137f</srcmd5>
+    <version>1.3.4</version>
+    <time>1182124181</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="56">
+    <srcmd5>8db2d14279108e39352d3cf86e1d9abc</srcmd5>
+    <version>1.3.4</version>
+    <time>1203641125</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="77">
+    <srcmd5>df6671c2eeed829dd95c60781abea840</srcmd5>
+    <version>1.3.4</version>
+    <time>1215554243</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="85">
+    <srcmd5>6e58262fafb473945ec5dcbb9e8e0a75</srcmd5>
+    <version>1.3.4</version>
+    <time>1217647707</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="92">
+    <srcmd5>6a4fb7807a281d39281e9802c018536a</srcmd5>
+    <version>1.3.4</version>
+    <time>1220052517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="97">
+    <srcmd5>f513efb5aa76259be9e82bea501898e1</srcmd5>
+    <version>1.3.4</version>
+    <time>1221282455</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="99">
+    <srcmd5>f513efb5aa76259be9e82bea501898e1</srcmd5>
+    <version>1.3.4</version>
+    <time>1221282455</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="100">
+    <srcmd5>496d661a938208c73f85284b77a8186a</srcmd5>
+    <version>1.3.4</version>
+    <time>1268925782</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="102">
+    <srcmd5>496d661a938208c73f85284b77a8186a</srcmd5>
+    <version>1.3.4</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="103">
+    <srcmd5>496d661a938208c73f85284b77a8186a</srcmd5>
+    <version>1.3.4</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="106">
+    <srcmd5>496d661a938208c73f85284b77a8186a</srcmd5>
+    <version>1.3.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="108">
+    <srcmd5>496d661a938208c73f85284b77a8186a</srcmd5>
+    <version>1.3.4</version>
+    <time>1319182369</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="109">
+    <srcmd5>3f1a918b5fa556b409d214795334ebbe</srcmd5>
+    <version>1.3.4</version>
+    <time>1324458191</time>
+    <user>coolo</user>
+    <comment>- use original tarball
+
+- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>97009</requestid>
+  </revision>
+  <revision rev="16" vrev="110">
+    <srcmd5>319bf7533b801aa8724feff32db89299</srcmd5>
+    <version>1.3.4</version>
+    <time>1329242755</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104048</requestid>
+  </revision>
+  <revision rev="17" vrev="112">
+    <srcmd5>319bf7533b801aa8724feff32db89299</srcmd5>
+    <version>1.3.4</version>
+    <time>1340184017</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="114">
+    <srcmd5>319bf7533b801aa8724feff32db89299</srcmd5>
+    <version>1.3.4</version>
+    <time>1359109950</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="116">
+    <srcmd5>319bf7533b801aa8724feff32db89299</srcmd5>
+    <version>1.3.4</version>
+    <time>1379664064</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="117">
+    <srcmd5>974b1af1735a612de1e7f3d7611d0b9d</srcmd5>
+    <version>1.3.4</version>
+    <time>1407391703</time>
+    <user>coolo</user>
+    <comment>- Changed file names README.SUSE and LIESMICH.SUSE, because it is 
+  the right SUSE spelling (bnc#889011). (forwarded request 243771 from vwallfahrer)</comment>
+    <requestid>243772</requestid>
+  </revision>
+  <revision rev="21" vrev="119">
+    <srcmd5>974b1af1735a612de1e7f3d7611d0b9d</srcmd5>
+    <version>1.3.4</version>
+    <time>1409302743</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cd3ecfb03554a44328b82aaf9626c722</srcmd5>
+    <version>1.4.0</version>
+    <time>1426485629</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290531</requestid>
+  </revision>
+</revisionlist>

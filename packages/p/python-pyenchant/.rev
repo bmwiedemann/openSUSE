@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f1f85ceae6549333bc792d6ff9b9ceb</srcmd5>
+    <version>1.6.5</version>
+    <time>1330619217</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>107327</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c3b7de7fad1955590fe327c71800da92</srcmd5>
+    <version>1.6.5</version>
+    <time>1336423827</time>
+    <user>coolo</user>
+    <comment>- Add python 3 package
+- Clean up python 2 spec file (forwarded request 116080 from TheBlackCat)</comment>
+    <requestid>116081</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e1900e063b1a9df0275aefc0ce152c80</srcmd5>
+    <version>1.6.5</version>
+    <time>1337578232</time>
+    <user>coolo</user>
+    <comment>- Add full url to source
+- Make python 3 package noarch like the python 2 package
+- Fix rpmlint warnings (forwarded request 121378 from TheBlackCat)</comment>
+    <requestid>121379</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e1900e063b1a9df0275aefc0ce152c80</srcmd5>
+    <version>1.6.5</version>
+    <time>1340184081</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>e925e9e6b1e0b1d72917118291fd5d72</srcmd5>
+    <version>1.6.5</version>
+    <time>1354109646</time>
+    <user>coolo</user>
+    <comment>Removed openSUSE 11.4 spec file workarounds (forwarded request 142804 from TheBlackCat) (forwarded request 142809 from TheBlackCat)</comment>
+    <requestid>142811</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>e925e9e6b1e0b1d72917118291fd5d72</srcmd5>
+    <version>1.6.5</version>
+    <time>1359110097</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>fbcfd1794d4b3a3779c655be49db367c</srcmd5>
+    <version>1.6.5</version>
+    <time>1371653217</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179954</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>7bc6eec0b9b3d79f4802d31bd47c3d32</srcmd5>
+    <version>1.6.5</version>
+    <time>1379342077</time>
+    <user>coolo</user>
+    <comment>Fix build broken by attempted download of distribute (forwarded request 199067 from poorboywilly)</comment>
+    <requestid>199192</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>7bc6eec0b9b3d79f4802d31bd47c3d32</srcmd5>
+    <version>1.6.5</version>
+    <time>1379664252</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>7bc6eec0b9b3d79f4802d31bd47c3d32</srcmd5>
+    <version>1.6.5</version>
+    <time>1409302954</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2ece39b1876f229300b7ea37b0655bbe</srcmd5>
+    <version>1.6.6</version>
+    <time>1431795699</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307466</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c10579182b99b503bdf632a37f7e46a9</srcmd5>
+    <version>1.6.11</version>
+    <time>1504814915</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519987</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e9331c077c541a2234d232a0ddef4ad0</srcmd5>
+    <version>2.0.0</version>
+    <time>1535701865</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Support for enchant2, py3 fixes
+- Add patch to prefer enchant2 when both available:
+  * enchant2.patch</comment>
+    <requestid>631372</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b5cdd91ca75366f8f07c76435c29a624</srcmd5>
+    <version>2.0.0</version>
+    <time>1547554497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663620</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>be034b0d73cb459c255e4d67f478ca0e</srcmd5>
+    <version>2.0.0</version>
+    <time>1564484622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717458</requestid>
+  </revision>
+</revisionlist>

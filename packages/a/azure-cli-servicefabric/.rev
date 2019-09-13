@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd6c42bf7fd9ffd902a2948fdc39378f</srcmd5>
+    <version>0.0.4</version>
+    <time>1510322098</time>
+    <user>dimstar_suse</user>
+    <comment>- Submit Azure CLI 2.0 to openSUSE Factory.</comment>
+    <requestid>534080</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>51c2cd5ae06381c58d33f43e737bce00</srcmd5>
+    <version>0.0.9</version>
+    <time>1518597115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574825</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>766dea783c81179e2f7aabf12a933877</srcmd5>
+    <version>0.0.12</version>
+    <time>1526220197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600069</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>79aec692980a8000986e15458f92dbdd</srcmd5>
+    <version>0.1.2</version>
+    <time>1539593253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641220</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b261f2ffdcec8800c53093c75ee5bcd7</srcmd5>
+    <version>0.1.12</version>
+    <time>1558515744</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Azure CLI to latest version</comment>
+    <requestid>696861</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>10a532477134cde395ff11fe6098de60</srcmd5>
+    <version>0.1.12</version>
+    <time>1559727930</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Azure CLI build on SLE-12 (forwarded request 707520 from glaubitz)</comment>
+    <requestid>707581</requestid>
+  </revision>
+</revisionlist>

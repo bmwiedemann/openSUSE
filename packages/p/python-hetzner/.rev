@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f7c1ecbd64ed22d10b3414d5e9af0f2</srcmd5>
+    <version>0.8.0</version>
+    <time>1530087709</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain python-hetzner in Factory</comment>
+    <requestid>619015</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>103cf568c2a3fe70656857c98df8ff86</srcmd5>
+    <version>0.8.1</version>
+    <time>1551785010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Fix few pep8 issues
+  * Support ssh pubkeys in rescue</comment>
+    <requestid>681409</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>400666f807572cef3d1086e594fca0bc</srcmd5>
+    <version>0.8.2</version>
+    <time>1559029419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705707</requestid>
+  </revision>
+</revisionlist>

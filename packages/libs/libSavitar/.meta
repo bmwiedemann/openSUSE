@@ -1,0 +1,5 @@
+<package name="libSavitar" project="openSUSE:Factory">
+  <title>libSavitar</title>
+  <description>C++ implementation of 3mf loading with SIP python bindings</description>
+  <devel project="science" package="libSavitar"/>
+</package>

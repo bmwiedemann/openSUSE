@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7aca1f637eb735a22dac87f0cac06757</srcmd5>
+    <version>0.11.1</version>
+    <time>1424430072</time>
+    <user>dimstar_suse</user>
+    <comment>This will be a dependency for the upcoming new hawk version, it's runtime requirement for rubygem-axiom-types.</comment>
+    <requestid>286642</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3465026889773ff0f40ef3b6e99cbd90</srcmd5>
+    <version>0.11.2</version>
+    <time>1456821760</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>358683</requestid>
+  </revision>
+</revisionlist>

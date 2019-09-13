@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d6c8d3be869c58a628abd6c89ec1fe5</srcmd5>
+    <version>unknown</version>
+    <time>1284469222</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-desktop2 based on submit request 47812 from user vuntz
+</comment>
+    <requestid>47812</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8a0077de2b2f016ba532e82b000ef8b9</srcmd5>
+    <version>2.31.92</version>
+    <time>1285279630</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-desktop2 based on submit request 48915 from user vuntz
+</comment>
+    <requestid>48915</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5670286bbc7ff2678d61d5a1f8d2b4ae</srcmd5>
+    <version>2.32.0</version>
+    <time>1287143916</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-desktop2 based on submit request 50690 from user vuntz
+</comment>
+    <requestid>50690</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4d5b45b3b640f0dad87f83342101efbc</srcmd5>
+    <version>2.32.1</version>
+    <time>1290249420</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53473 from user vuntz
+</comment>
+    <requestid>53473</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>390ace9507749866f04b308e5c72ed63</srcmd5>
+    <version>2.32.1</version>
+    <time>1292768274</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56093 from user vuntz
+</comment>
+    <requestid>56093</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6b3f2a6bd1ff6aba738942ee18cc5a63</srcmd5>
+    <version>2.32.1</version>
+    <time>1292768282</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56093
+</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>779a51bac69ce114328edb88799f1bd5</srcmd5>
+    <version>2.32.1</version>
+    <time>1297642018</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60902 from user vuntz
+</comment>
+    <requestid>60902</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>12e191c6eec8c3b44284606305cabc35</srcmd5>
+    <version>2.32.1</version>
+    <time>1297642031</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60902
+</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>12e191c6eec8c3b44284606305cabc35</srcmd5>
+    <version>2.32.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>9ce42673708d6722af3f005e9e44ee14</srcmd5>
+    <version>2.32.1</version>
+    <time>1304420137</time>
+    <user>darix</user>
+    <comment>Push for GNOME 3; there is no license change (it was rejected earlier with 'Please also mention the license change (reason?)')</comment>
+    <requestid>69352</requestid>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>850beaf0082fff862a451c1e45101764</srcmd5>
+    <version>2.32.1</version>
+    <time>1304420146</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 69352
+</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>2750e495a8ca18670a644f670a9809ac</srcmd5>
+    <version>2.32.1</version>
+    <time>1312382031</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>77793</requestid>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>894e0212c2320db20b2930387c10b3de</srcmd5>
+    <version>2.32.1</version>
+    <time>1312382038</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77793
+</comment>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>894e0212c2320db20b2930387c10b3de</srcmd5>
+    <version>2.32.1</version>
+    <time>1319181916</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>201c929b89d4a06f37042d6858492ede</srcmd5>
+    <version>2.32.1</version>
+    <time>1323191625</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>201c929b89d4a06f37042d6858492ede</srcmd5>
+    <version>2.32.1</version>
+    <time>1340183377</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="19">
+    <srcmd5>201c929b89d4a06f37042d6858492ede</srcmd5>
+    <version>2.32.1</version>
+    <time>1359108953</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="20">
+    <srcmd5>a31700d0d0f37c8a5fb953dc51818deb</srcmd5>
+    <version>2.32.1</version>
+    <time>1364895961</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161374 from vuntz)</comment>
+    <requestid>161774</requestid>
+  </revision>
+  <revision rev="19" vrev="22">
+    <srcmd5>a31700d0d0f37c8a5fb953dc51818deb</srcmd5>
+    <version>2.32.1</version>
+    <time>1379662481</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="23">
+    <srcmd5>ad34bb1c4e881425cbe41dbbf2c7d6bf</srcmd5>
+    <version>2.32.1</version>
+    <time>1379941100</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>200136</requestid>
+  </revision>
+  <revision rev="21" vrev="25">
+    <srcmd5>ad34bb1c4e881425cbe41dbbf2c7d6bf</srcmd5>
+    <version>2.32.1</version>
+    <time>1409301016</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="26">
+    <srcmd5>2106f99fbabcbf1014bed3f05ccc6d87</srcmd5>
+    <version>2.32.1</version>
+    <time>1521052612</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583597 from dimstar)</comment>
+    <requestid>584761</requestid>
+  </revision>
+</revisionlist>

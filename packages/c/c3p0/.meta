@@ -1,0 +1,5 @@
+<package name="c3p0" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="c3p0"/>
+</package>

@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4cb24a91f9f67edf17b101694e802460</srcmd5>
+    <version>2.82</version>
+    <time>1407236426</time>
+    <user>coolo</user>
+    <comment>Resolved bnc#889897: deleted Extras and Glut dirs.</comment>
+    <requestid>243492</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4cb24a91f9f67edf17b101694e802460</srcmd5>
+    <version>2.82</version>
+    <time>1409301509</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5ebaf228fb3924c1d89b404069b366b9</srcmd5>
+    <version>2.83.7</version>
+    <time>1462697134</time>
+    <user>dimstar_suse</user>
+    <comment>new upstream release</comment>
+    <requestid>393645</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>fc9774ed5343d56e0f9da1e730ac7895</srcmd5>
+    <version>2.83.7</version>
+    <time>1463498128</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>395130</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f21513da8db690aac232b864b6d78863</srcmd5>
+    <version>2.83.7</version>
+    <time>1468360281</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406689</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>35db403f22aa41187759f5bbb81ed53e</srcmd5>
+    <version>2.86.1</version>
+    <time>1504981593</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522153</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>69e4a8078d4f3ea0a2f9a7ff33e8305f</srcmd5>
+    <version>2.88</version>
+    <time>1560970937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706536</requestid>
+  </revision>
+</revisionlist>

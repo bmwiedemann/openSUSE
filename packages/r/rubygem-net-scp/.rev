@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72aebdfc2730a22f85e9b7907a396820</srcmd5>
+    <version>1.0.4</version>
+    <time>1331579793</time>
+    <user>coolo</user>
+    <comment>An OBS-related gems</comment>
+    <requestid>108459</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>72aebdfc2730a22f85e9b7907a396820</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184168</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>72aebdfc2730a22f85e9b7907a396820</srcmd5>
+    <version>1.0.4</version>
+    <time>1359110329</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1c11da17a61ea50c224905de407db0b8</srcmd5>
+    <version>1.1.0</version>
+    <time>1364900162</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161847</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7286ecadbd91bcf481711be1d1984953</srcmd5>
+    <version>1.1.1</version>
+    <time>1369641636</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176314</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>282d012357f4b25a64389d0d5a1cef3b</srcmd5>
+    <version>1.1.2</version>
+    <time>1374759262</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183999</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>282d012357f4b25a64389d0d5a1cef3b</srcmd5>
+    <version>1.1.2</version>
+    <time>1379664548</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>119f6886ad9d37c2bf4923ab38fef2fd</srcmd5>
+    <version>1.2.1</version>
+    <time>1400682570</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234908</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>119f6886ad9d37c2bf4923ab38fef2fd</srcmd5>
+    <version>1.2.1</version>
+    <time>1409303258</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>a0e67497536d0c7caf5cb4e9beb9755a</srcmd5>
+    <version>1.2.1</version>
+    <time>1413263433</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>255085</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9c9b4ab8234a5b2d8432421b3222f06b</srcmd5>
+    <version>2.0.0</version>
+    <time>1554114996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689703</requestid>
+  </revision>
+</revisionlist>

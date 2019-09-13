@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cdb60b8ec42aba51290ae64725e1caca</srcmd5>
+    <version>4.7.0</version>
+    <time>1529667032</time>
+    <user>maxlin_factory</user>
+    <comment>I want to maintain hyperscan in Factory</comment>
+    <requestid>615242</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>902139a5b9c46505237e07407e9c9428</srcmd5>
+    <version>5.0.0</version>
+    <time>1531947201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621868</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cb61971d2d41931c5f6cd543b558bbf5</srcmd5>
+    <version>5.0.0</version>
+    <time>1537883062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637887</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>00f949e5b27e06a5482a71bfad969dce</srcmd5>
+    <version>5.1.0</version>
+    <time>1550151329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674670</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1d86db5901fcfa6751b0202e8bd855b6</srcmd5>
+    <version>5.1.1</version>
+    <time>1554977837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692973</requestid>
+  </revision>
+</revisionlist>

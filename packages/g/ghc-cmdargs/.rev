@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>73899b2782f2fac2ebfb9c928c8859f9</srcmd5>
+    <version>0.10.12</version>
+    <time>1432190141</time>
+    <user>coolo</user>
+    <comment>Command line argument processing</comment>
+    <requestid>307779</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8092be4a89ed2266a3c9dbb4b009273f</srcmd5>
+    <version>0.10.13</version>
+    <time>1432636587</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.13
+* support Ratio in some places</comment>
+    <requestid>308687</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2f56c85dfbcc01d7c859fa05a80028fa</srcmd5>
+    <version>0.10.14</version>
+    <time>1456243054</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.14
+* ensure correct line breaks in HTML help output
+* preserve manual \n in help messages
+* reformat the README
+
+- add group to devel package (forwarded request 360795 from mimi_vx)</comment>
+    <requestid>360796</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>db1da9829a455e6a0b95ae4836d311e3</srcmd5>
+    <version>0.10.14</version>
+    <time>1469081314</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411522</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1919b65272261790ae1a11ecb5ecfea1</srcmd5>
+    <version>0.10.17</version>
+    <time>1492170081</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487384</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3d53636622d6d58fe7addea1cd9b4c99</srcmd5>
+    <version>0.10.17</version>
+    <time>1505503640</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524300</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b4fdfd2e206e0a13303762beaee43bf7</srcmd5>
+    <version>0.10.20</version>
+    <time>1527674659</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-cmdargs to the latest version.</comment>
+    <requestid>607767</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bf8ea8194c36f6e87b0e1ea8dca691b6</srcmd5>
+    <version>0.10.20</version>
+    <time>1540448600</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643366</requestid>
+  </revision>
+</revisionlist>

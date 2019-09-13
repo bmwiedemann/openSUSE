@@ -1,0 +1,9 @@
+<package name="libmikmod" project="openSUSE:Factory">
+  <title>MikMod Sound Library</title>
+  <description>Libmikmod is a portable sound library, capable of playing samples as
+well as module files. It was originally written by Jean-Paul Mikkers
+(MikMak) for DOS. It supports OSS /dev/dsp, ALSA, and Esound and can
+also write wav files. Supported file formats include mod, stm, s3m,
+mtm, xm, and it.</description>
+  <devel project="multimedia:libs" package="libmikmod"/>
+</package>

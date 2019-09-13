@@ -1,0 +1,18 @@
+<package name="perl-Sub-Name" project="openSUSE:Factory">
+  <title>Assigns a new name to referenced sub</title>
+  <description>This module has only one function, which is also exported by default:
+
+  subname NAME, CODEREF
+
+Assigns a new name to referenced sub. If package specification is omitted in
+the name, then the current package is used. The return value is the sub.
+
+The name is only used for informative routines (caller, Carp, etc). You won't
+be able to actually invoke the sub by the given name. To allow that, you need
+to do glob-assignment yourself.
+
+Note that for anonymous closures (subs that reference lexicals declared outside
+the sub itself) you can name each instance of the closure differently, which
+can be very useful for debugging.</description>
+  <devel project="devel:languages:perl" package="perl-Sub-Name"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="ghc-blaze-markup" project="openSUSE:Factory">
+  <title>A blazingly fast markup combinator library for Haskell</title>
+  <description>Core modules of a blazingly fast markup combinator library for the Haskell programming language. The Text.Blaze module is a good starting point, as well as this tutorial: http://jaspervdj.be/blaze/tutorial.html. </description>
+  <devel project="devel:languages:haskell" package="ghc-blaze-markup"/>
+</package>

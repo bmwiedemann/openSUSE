@@ -1,0 +1,258 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>c40831490bfc41da202aaed131945059</srcmd5>
+    <version>2.0.1</version>
+    <time>1199850476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2a256ca53f35ee917e086db7d3ac7703</srcmd5>
+    <version>2.0.3</version>
+    <time>1206070486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="12">
+    <srcmd5>3378351387f680c0f1e1237ee6c1affd</srcmd5>
+    <version>2.0.3</version>
+    <time>1211423352</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f05f97c39135f139b534e72f5f58bc1</srcmd5>
+    <version>2.1.0</version>
+    <time>1220991706</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>dd1001cb0ff7d222d4d272ce24048992</srcmd5>
+    <version>2.1.0</version>
+    <time>1223734858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>8640c1df2e6f1e0117b3a4982032e787</srcmd5>
+    <version>2.1.0</version>
+    <time>1227011863</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>36d3ac879d590b44530f8f538685df9e</srcmd5>
+    <version>2.2.0</version>
+    <time>1243475891</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ca9e8bfb9dbba77cd1379dcc443ed350</srcmd5>
+    <version>2.2.0</version>
+    <time>1245277427</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>ca9e8bfb9dbba77cd1379dcc443ed350</srcmd5>
+    <version>2.2.0</version>
+    <time>1245277427</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>20b982e39f62089f947a565eb54aa3df</srcmd5>
+    <version>2.2.1</version>
+    <time>1268268872</time>
+    <user>autobuild</user>
+    <comment>Copy from systemsmanagement:wbem/sblim-sfcc based on submit request 34558 from user kwk
+</comment>
+    <requestid>34558</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>0cec4a41925007e139fa8fb3075b7086</srcmd5>
+    <version>2.2.1</version>
+    <time>1268926081</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>0cec4a41925007e139fa8fb3075b7086</srcmd5>
+    <version>2.2.1</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>0cec4a41925007e139fa8fb3075b7086</srcmd5>
+    <version>2.2.1</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>0cec4a41925007e139fa8fb3075b7086</srcmd5>
+    <version>2.2.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>152eef55e0688fdd68766056cf7cfbfa</srcmd5>
+    <version>2.2.3</version>
+    <time>1316088837</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>82107</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b39a11411d4f01e655766bc03713f882</srcmd5>
+    <version>2.2.3</version>
+    <time>1316088846</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82107
+</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>b39a11411d4f01e655766bc03713f882</srcmd5>
+    <version>2.2.3</version>
+    <time>1319182450</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>15e5a53a1db72ca284846bbd13ba9dde</srcmd5>
+    <version>2.2.3</version>
+    <time>1320937496</time>
+    <user>coolo</user>
+    <comment>- don't call curl_global_cleanup (upstream id 3435363)</comment>
+    <requestid>90805</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>fa0874efb89de206828b500cd0489da7</srcmd5>
+    <version>2.2.3</version>
+    <time>1322481422</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency</comment>
+    <requestid>93964</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>25acfb0c24a67d5dad184b30479aca43</srcmd5>
+    <version>2.2.3</version>
+    <time>1328890788</time>
+    <user>coolo</user>
+    <comment>fix license format</comment>
+    <requestid>103278</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>f77ff99494e1f76674aeedccd6717ce8</srcmd5>
+    <version>2.2.3</version>
+    <time>1331627979</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108979</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>727efac35f288353c6c5b804c1e51da9</srcmd5>
+    <version>2.2.4</version>
+    <time>1339767612</time>
+    <user>coolo</user>
+    <comment>- Update to 2.2.4
+  Bugfix release, fixing:
+  - 3344403: Beam, unitialized vars
+  - 3344757: Beam, deref of potential Null pointers.
+  - 3344917: Beam, file leak
+  - 3528819: Crash in getInstance when instance has NULL properties
+  - 3530609: Various BEAM Errors
+  - 3435363: Wrong call of curl_global_cleanup()</comment>
+    <requestid>124783</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>727efac35f288353c6c5b804c1e51da9</srcmd5>
+    <version>2.2.4</version>
+    <time>1340184196</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>1e03f9b317b70ab4f17187915fa28f0c</srcmd5>
+    <version>2.2.4</version>
+    <time>1353514954</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>142119</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ef4dc9fa4d9f197229f123dfead9f197</srcmd5>
+    <version>2.2.5</version>
+    <time>1356211084</time>
+    <user>coolo</user>
+    <comment>- update to 2.2.5
+  - 3586680: improve error reporting in cmciConnect2
+  - 3566968: sfcc enumInstances fails to parse the xml
+  - 3555103: wrong declaration of release attribute in _CIMCArgsFT
+  - 3547832: memory leak in backend/cimxml/grammer.c
+- drop patches, all included in 2.2.5</comment>
+    <requestid>146241</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>ef4dc9fa4d9f197229f123dfead9f197</srcmd5>
+    <version>2.2.5</version>
+    <time>1359110379</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>ef4dc9fa4d9f197229f123dfead9f197</srcmd5>
+    <version>2.2.5</version>
+    <time>1379664620</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5e94261f1b6eef024ac6f9c66c2aa96a</srcmd5>
+    <version>2.2.6</version>
+    <time>1382012860</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 2.2.6
+  - updated tests to match (upstream tix#79)
+  - sfcc cannot reconnect with sfcb if sfcb restarts (upstream tix#79)
+  - SFCC should dlopen the versioned .so (upstream #2658)
+  - Remove Large Volume Support from SFCC (upstream #2648)
+  - adjustments to fix for (upstream #2646)
+  - sblim-sfcc does not compile on apple systems (upstream #2646)
+  - Now compiles under OS X.
+  - 3529678: getClass does not expose method information</comment>
+    <requestid>203469</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>ebe75a0fef819fb5a206d6f278cd428a</srcmd5>
+    <version>2.2.6</version>
+    <time>1389334581</time>
+    <user>coolo</user>
+    <comment>Updating .changes notes to match the upstream release notes.</comment>
+    <requestid>211878</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0091d47694630188092e4b858e858f6a</srcmd5>
+    <version>2.2.7</version>
+    <time>1396163457</time>
+    <user>coolo</user>
+    <comment>
+- Update to 2.2.7
+  New Features:
+  - [bugs:#2692] SFCC: SfcbLocal interface should expose markHeap()
+    and releaseHeap()
+  Bugs:
+  - [bugs:#2728] Missing tag definition for REFARRAY
+  - [bugs:#2729] Improper type handling for EmbeddedObject in PARAMVALUE
+  - [bugs:#2730] More memory leaks in backend/cimxml/grammer.c</comment>
+    <requestid>228144</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>0091d47694630188092e4b858e858f6a</srcmd5>
+    <version>2.2.7</version>
+    <time>1409303322</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f15fa0e52ac3007d77431d9aa9d20b98</srcmd5>
+    <version>2.2.8</version>
+    <time>1515342159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561269</requestid>
+  </revision>
+</revisionlist>

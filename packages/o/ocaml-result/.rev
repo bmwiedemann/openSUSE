@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fedca2ef896379452baa953d1263eb66</srcmd5>
+    <version>1.2</version>
+    <time>1517234254</time>
+    <user>dimstar_suse</user>
+    <comment>It is a compatibility module that allows projects to use the new result type defined in OCaml &gt;= 4.03 while staying compatible with older version of OCaml.
+
+It is a dependency of the next version of Haxe (v4.0.0).</comment>
+    <requestid>568455</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>331d010638441eb94d3808477e3386ef</srcmd5>
+    <version>1.4</version>
+    <time>1567849968</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4:
+  * Support for OCaml 4.08.
+  * Switch to dune.
+- Changes from version 1.3:
+  * Switch to jbuilder.</comment>
+    <requestid>728576</requestid>
+  </revision>
+</revisionlist>

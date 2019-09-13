@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f571cbb22cd0dfe546f534e9039e8a5a</srcmd5>
+    <version>1.21</version>
+    <time>1525121894</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory</comment>
+    <requestid>602518</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>96e1c75a43b5cb32e85b6bcc7c021f74</srcmd5>
+    <version>1.29</version>
+    <time>1551216054</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.29
+  + Add Fedora GPG keys for Fedora 30 and 31
+  + Add Fedora GPG key for IoT Edition
+  + Add Red Hat Enterprise Linux 8 Beta GPG keys
+  + Add various vendor repository GPG keys
+</comment>
+    <requestid>679070</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="rubygem-js-routes" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-js-routes"/>
+</package>

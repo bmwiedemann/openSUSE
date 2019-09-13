@@ -1,0 +1,6 @@
+<package name="cmus" project="openSUSE:Factory">
+  <title>Text-mode music player</title>
+  <description>C* Music Player is a small and fast text mode (ncurses-based) music player
+for Unix-like operating systems.</description>
+  <devel project="multimedia:apps" package="cmus"/>
+</package>

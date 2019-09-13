@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2910db58b3113e89724d0dbb41c917bd</srcmd5>
+    <version>0.12</version>
+    <time>1372136304</time>
+    <user>coolo</user>
+    <comment>needed for Plack</comment>
+    <requestid>179402</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2910db58b3113e89724d0dbb41c917bd</srcmd5>
+    <version>0.12</version>
+    <time>1379663681</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>2910db58b3113e89724d0dbb41c917bd</srcmd5>
+    <version>0.12</version>
+    <time>1409302301</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ab5e5e77b19cce173b5c34ca7aa5f8f3</srcmd5>
+    <version>0.13</version>
+    <time>1521052684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585301</requestid>
+  </revision>
+</revisionlist>

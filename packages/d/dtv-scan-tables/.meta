@@ -1,0 +1,5 @@
+<package name="dtv-scan-tables" project="openSUSE:Factory">
+  <title>Scan data for digital TV</title>
+  <description></description>
+  <devel project="vdr" package="dtv-scan-tables"/>
+</package>

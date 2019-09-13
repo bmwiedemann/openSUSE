@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5a6dfa331fb1796f373c4dfaef902393</srcmd5>
+    <version>0.20</version>
+    <time>1310132042</time>
+    <user>saschpe</user>
+    <comment>useful package maintained by perl maintainers</comment>
+    <requestid>75394</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6e3badba710439f82cc9ef8e3bac8527</srcmd5>
+    <version>0.20</version>
+    <time>1310132054</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75394
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6e3badba710439f82cc9ef8e3bac8527</srcmd5>
+    <version>0.20</version>
+    <time>1319182329</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>63d9840125f0adf41bd596e39f9e7531</srcmd5>
+    <version>0.21</version>
+    <time>1321875807</time>
+    <user>coolo</user>
+    <comment>- update to 0.21
+    - When using the tie() fallback ensure we do not obliterate a
+      foreign tie()
+    - Better document how to disable the tie() fallback
+    - Only invoke the deleted sub stashing if we run udner a debugger
+      (avoid runtime penalty of Sub::Name/Sub::Identify)
+    - Spellfixes (RT#54388)
+    - When B::Hooks::EndOfScope is not available, switch to a simple
+      tie() of %^H. While it can not 100% replace B::H::EOS, it does
+      everything n::c needs</comment>
+    <requestid>91963</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1ca1c03b646afdc83e83ca5a5d9e9f09</srcmd5>
+    <version>0.21</version>
+    <time>1323193493</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d6fbaa6b46d2cdacf4a16f2ac1470045</srcmd5>
+    <version>0.22</version>
+    <time>1329215145</time>
+    <user>coolo</user>
+    <comment>- updated to 0.22
+    - Simplify the &gt;= 5.10 PP variant even more - move the hook from
+      DESTROY into DELETE
+    - Force explicit callback invocation order on 5.8 PP
+    - Replace the %^H tie approach with fieldhashes, fixes all known
+      corner cases and caveats on supported perls &gt;= 5.8.1 (FC)
+    - Compile away the debugger fixup on perls &gt;= 5.15.5 (FC)
+    - More robust handling of the tied %^H in pure perl mode (RT#73402)
+    - Limit the debugger workarounds to perls between 5.8.8 and 5.14,
+      extend debugger support to all perl versions (FC) (RT#69862)
+    - If possible, automatically install (but not load) the debugger
+      workaround libraries on perls between 5.8.8 and 5.14 (RT#72368)
+    - Add back dropped NAME section (RT#70259)</comment>
+    <requestid>103788</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2cf230064aefafaa653a1e78b5ae5729</srcmd5>
+    <version>0.22</version>
+    <time>1331627896</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108972</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b8a402dbca7db155da4c4b21abfd043f</srcmd5>
+    <version>0.23</version>
+    <time>1332763313</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>111083</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b8a402dbca7db155da4c4b21abfd043f</srcmd5>
+    <version>0.23</version>
+    <time>1340183962</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>b8a402dbca7db155da4c4b21abfd043f</srcmd5>
+    <version>0.23</version>
+    <time>1359109866</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c28fd9e28be282f9e5eaa2a9a011d054</srcmd5>
+    <version>0.24</version>
+    <time>1368772429</time>
+    <user>coolo</user>
+    <comment>- updated to 0.24
+    - Properly skip debugger test when optional deps not available
+    - Make sure pure-perl tests pass correctly on space-containing
+      paths (RT#77528)
+    - Remove all the pure-perl fallback code and depend on PP-capable
+      B::H::EOS 0.12</comment>
+    <requestid>175756</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>c28fd9e28be282f9e5eaa2a9a011d054</srcmd5>
+    <version>0.24</version>
+    <time>1379663940</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f9ccb5ac291b95070866efa5ab701590</srcmd5>
+    <version>0.25</version>
+    <time>1395147525</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226061</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>f9ccb5ac291b95070866efa5ab701590</srcmd5>
+    <version>0.25</version>
+    <time>1409302594</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1e38ca5828a33db9fb4a47117655ad8c</srcmd5>
+    <version>0.26</version>
+    <time>1445287771</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337599</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>27ab031ae50a913e3ec4ccf337cdb2e3</srcmd5>
+    <version>0.27</version>
+    <time>1464204549</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397834</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9915dcdaa7cc25abe04bb37e56230b91</srcmd5>
+    <version>0.3</version>
+    <time>1521052827</time>
+    <user>dimstar_suse</user>
+    <comment>new package to go along with adwaita-qt (better theme integration of QT5 applications under GNOME)</comment>
+    <requestid>586724</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d239fb7d488bdfc941cbd0bd02f9cbde</srcmd5>
+    <version>0.5</version>
+    <time>1552572148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684868</requestid>
+  </revision>
+</revisionlist>

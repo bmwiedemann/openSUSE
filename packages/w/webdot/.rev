@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>231658496a3a00869765c542ca0a6dde</srcmd5>
+    <version>2.6</version>
+    <time>1168904455</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="62">
+    <srcmd5>8358d491c3225e27e7ad52f1f8b821a8</srcmd5>
+    <version>2.6</version>
+    <time>1176924610</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="241">
+    <srcmd5>8358d491c3225e27e7ad52f1f8b821a8</srcmd5>
+    <version>2.6</version>
+    <time>1176924610</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="242">
+    <srcmd5>d6a537dd44db60878b559a1427ff522d</srcmd5>
+    <version>2.6</version>
+    <time>1245277715</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="243">
+    <srcmd5>ce5dfacbee0e6362e6f802f6626c9b1f</srcmd5>
+    <version>2.6</version>
+    <time>1253144841</time>
+    <user>autobuild</user>
+    <comment>Copy from home:psmt:branches:graphics/webdot based on submit request 20457 from user psmt
+</comment>
+  </revision>
+  <revision rev="6" vrev="245">
+    <srcmd5>ce5dfacbee0e6362e6f802f6626c9b1f</srcmd5>
+    <version>2.6</version>
+    <time>1253144841</time>
+    <user>autobuild</user>
+    <comment>Copy from home:psmt:branches:graphics/webdot based on submit request 20457 from user psmt
+</comment>
+  </revision>
+  <revision rev="7" vrev="246">
+    <srcmd5>8a4bab3196b1fb63be88faf63c5c1cb3</srcmd5>
+    <version>2.6</version>
+    <time>1268926486</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="248">
+    <srcmd5>8a4bab3196b1fb63be88faf63c5c1cb3</srcmd5>
+    <version>2.6</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="249">
+    <srcmd5>8a4bab3196b1fb63be88faf63c5c1cb3</srcmd5>
+    <version>2.6</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="252">
+    <srcmd5>8a4bab3196b1fb63be88faf63c5c1cb3</srcmd5>
+    <version>2.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="254">
+    <srcmd5>8a4bab3196b1fb63be88faf63c5c1cb3</srcmd5>
+    <version>2.6</version>
+    <time>1319182559</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="255">
+    <srcmd5>6404db4c28356f00f92454695594e1d3</srcmd5>
+    <version>2.6</version>
+    <time>1323195159</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="257">
+    <srcmd5>6404db4c28356f00f92454695594e1d3</srcmd5>
+    <version>2.6</version>
+    <time>1340184321</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7c529dd9f48e4ce54b79be9302d8d444</srcmd5>
+    <version>2.26</version>
+    <time>1357128120</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146758</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>7c529dd9f48e4ce54b79be9302d8d444</srcmd5>
+    <version>2.26</version>
+    <time>1359110563</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>7c529dd9f48e4ce54b79be9302d8d444</srcmd5>
+    <version>2.26</version>
+    <time>1379664952</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>886eb3ab780a6cfab748d590f1020a9c</srcmd5>
+    <version>2.30</version>
+    <time>1386570431</time>
+    <user>coolo</user>
+    <comment>Fix URL</comment>
+    <requestid>209673</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>886eb3ab780a6cfab748d590f1020a9c</srcmd5>
+    <version>2.30</version>
+    <time>1409303631</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

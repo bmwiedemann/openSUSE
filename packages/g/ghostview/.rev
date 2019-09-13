@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="223">
+    <srcmd5>9695991d5c0c24c7c06736054603700c</srcmd5>
+    <version>1.5</version>
+    <time>1168902852</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="275">
+    <srcmd5>fed5beab4db9b5e07d0029c75d3cca9e</srcmd5>
+    <version>1.5</version>
+    <time>1183653443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="343">
+    <srcmd5>ee7721d92ceaed30cc8a84899d669a10</srcmd5>
+    <version>1.5</version>
+    <time>1200303894</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="371">
+    <srcmd5>b5d38711f27aee36a37e1732bbcbbf2d</srcmd5>
+    <version>1.5</version>
+    <time>1207690002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="420">
+    <srcmd5>b5d38711f27aee36a37e1732bbcbbf2d</srcmd5>
+    <version>1.5</version>
+    <time>1207690002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="421">
+    <srcmd5>04c03bf6d808a56f5327935f91399920</srcmd5>
+    <version>1.5</version>
+    <time>1245363629</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="423">
+    <srcmd5>04c03bf6d808a56f5327935f91399920</srcmd5>
+    <version>1.5</version>
+    <time>1245363629</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="424">
+    <srcmd5>4dd54b2dc743d65321628d8bad46ced1</srcmd5>
+    <version>1.5</version>
+    <time>1268923713</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="426">
+    <srcmd5>4dd54b2dc743d65321628d8bad46ced1</srcmd5>
+    <version>1.5</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="427">
+    <srcmd5>4dd54b2dc743d65321628d8bad46ced1</srcmd5>
+    <version>1.5</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="430">
+    <srcmd5>4dd54b2dc743d65321628d8bad46ced1</srcmd5>
+    <version>1.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="432">
+    <srcmd5>4dd54b2dc743d65321628d8bad46ced1</srcmd5>
+    <version>1.5</version>
+    <time>1319181904</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="433">
+    <srcmd5>d2c168622f87e80cd9b71a4927d826ed</srcmd5>
+    <version>1.5</version>
+    <time>1320769611</time>
+    <user>coolo</user>
+    <comment>- Add Num_Lock as modifire for Button Down (bnc#727906)</comment>
+    <requestid>90545</requestid>
+  </revision>
+  <revision rev="14" vrev="434">
+    <srcmd5>7edfffa89b0652284b3701e9ce11174f</srcmd5>
+    <version>1.5</version>
+    <time>1323191553</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="436">
+    <srcmd5>7edfffa89b0652284b3701e9ce11174f</srcmd5>
+    <version>1.5</version>
+    <time>1340183364</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="438">
+    <srcmd5>7edfffa89b0652284b3701e9ce11174f</srcmd5>
+    <version>1.5</version>
+    <time>1359108934</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="440">
+    <srcmd5>7edfffa89b0652284b3701e9ce11174f</srcmd5>
+    <version>1.5</version>
+    <time>1379662445</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="442">
+    <srcmd5>7edfffa89b0652284b3701e9ce11174f</srcmd5>
+    <version>1.5</version>
+    <time>1409300982</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="443">
+    <srcmd5>9619b89ca38fe146e73429b09fba243a</srcmd5>
+    <version>1.5</version>
+    <time>1470413796</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable parallel build and remove old specfile tags/sections (forwarded request 416178 from jengelh)</comment>
+    <requestid>416350</requestid>
+  </revision>
+  <revision rev="20" vrev="444">
+    <srcmd5>dd23d7314b6cc6e06f078152167b4d86</srcmd5>
+    <version>1.5</version>
+    <time>1519844550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580397</requestid>
+  </revision>
+</revisionlist>

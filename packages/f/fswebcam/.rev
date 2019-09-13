@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3abd424697a3ed074716d0037396bc44</srcmd5>
+    <version>20140113</version>
+    <time>1405178084</time>
+    <user>coolo</user>
+    <comment>Small app for webcams, useful for automation in any kind of
+scripts, eg. for time laps movies or surveillance</comment>
+    <requestid>240230</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3abd424697a3ed074716d0037396bc44</srcmd5>
+    <version>20140113</version>
+    <time>1409300909</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

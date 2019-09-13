@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d1ca0ad202d87a54b5ab157276ad120</srcmd5>
+    <version>0.5</version>
+    <time>1324478510</time>
+    <user>coolo</user>
+    <comment>New package: susepaste</comment>
+    <requestid>96689</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2fc8b03e73e03ea76466c1e597eefff9</srcmd5>
+    <version>0.5</version>
+    <time>1329242936</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104028</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2fc8b03e73e03ea76466c1e597eefff9</srcmd5>
+    <version>0.5</version>
+    <time>1340184247</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>2fc8b03e73e03ea76466c1e597eefff9</srcmd5>
+    <version>0.5</version>
+    <time>1359110451</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>2fc8b03e73e03ea76466c1e597eefff9</srcmd5>
+    <version>0.5</version>
+    <time>1379664747</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>2fc8b03e73e03ea76466c1e597eefff9</srcmd5>
+    <version>0.5</version>
+    <time>1409303430</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>586726013ac8690dd76c727c7ae07549</srcmd5>
+    <version>0.5</version>
+    <time>1511817468</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file with spec-cleaner</comment>
+    <requestid>545746</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c55072a11665b10fa55cc5494565355c</srcmd5>
+    <version>0.6</version>
+    <time>1565695342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722571</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>51f7f0831a45466f15e3e833efa95d69</srcmd5>
+    <version>0.6</version>
+    <time>1567010217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726612</requestid>
+  </revision>
+</revisionlist>

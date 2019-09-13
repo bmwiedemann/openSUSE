@@ -1,0 +1,5 @@
+<package name="plasma-mycroft" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:voice-assistant" package="plasma-mycroft"/>
+</package>

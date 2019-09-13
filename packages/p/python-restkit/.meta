@@ -1,0 +1,8 @@
+<package name="python-restkit" project="openSUSE:Factory">
+  <title>Restkit</title>
+  <description>Restkit is an HTTP resource kit for Python. It allows you to easily access to HTTP resource and build objects around it. It's the base of couchdbkit a Python CouchDB framework.
+
+Restkit is a full HTTP client using pure socket calls and its own HTTP parser. It's not based on httplib or urllib2.</description>
+  <devel project="devel:languages:python" package="python-restkit"/>
+  <url>PUT_UPSTREAM_URL_HERE</url>
+</package>

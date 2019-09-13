@@ -1,0 +1,5 @@
+<package name="atlascpp" project="openSUSE:Factory">
+  <title>Atlas-C++</title>
+  <description>Atlas-C++ is the C++ implementation of the WorldForge networking protocol library.</description>
+  <devel project="games" package="atlascpp"/>
+</package>

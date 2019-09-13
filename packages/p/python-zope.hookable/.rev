@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3687b2776c9f332cb0e41daaadf3d683</srcmd5>
+    <version>4.0.1</version>
+    <time>1388396099</time>
+    <user>coolo</user>
+    <comment>Hookable object support
+
+New dependency of python-Pyramid</comment>
+    <requestid>211666</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3687b2776c9f332cb0e41daaadf3d683</srcmd5>
+    <version>4.0.1</version>
+    <time>1409303031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>230db2d51559502f068c546d21d96dee</srcmd5>
+    <version>4.0.4</version>
+    <time>1431980583</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.4
+- point the source URL to pypi
+- rename CHANGES.txt to CHANGES.rst: changed upstream
+- rename README.txt to README.rst: changed upstream (forwarded request 307347 from benoit_monin)</comment>
+    <requestid>307502</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9fa44e6803b99c9ad6d160592745bea1</srcmd5>
+    <version>4.0.4</version>
+    <time>1499754353</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 508893 from alois)</comment>
+    <requestid>508925</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dcafbb2201441d1c00669d96baff6284</srcmd5>
+    <version>4.2.0</version>
+    <time>1554458752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691704</requestid>
+  </revision>
+</revisionlist>

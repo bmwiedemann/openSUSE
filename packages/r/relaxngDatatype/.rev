@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>45fa728be4aedc175c7bfaa1fcef2cde</srcmd5>
+    <version>1.0</version>
+    <time>1219633073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>45fa728be4aedc175c7bfaa1fcef2cde</srcmd5>
+    <version>1.0</version>
+    <time>1219633073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7d0385abb8329ec4adb6b292d80ea8fb</srcmd5>
+    <version>1.0</version>
+    <time>1268925971</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>7d0385abb8329ec4adb6b292d80ea8fb</srcmd5>
+    <version>1.0</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>7d0385abb8329ec4adb6b292d80ea8fb</srcmd5>
+    <version>1.0</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>7d0385abb8329ec4adb6b292d80ea8fb</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>7d0385abb8329ec4adb6b292d80ea8fb</srcmd5>
+    <version>1.0</version>
+    <time>1319182425</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>68fe8c5343d5ec3060cda32e6071017f</srcmd5>
+    <version>1.0</version>
+    <time>1323194390</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>68fe8c5343d5ec3060cda32e6071017f</srcmd5>
+    <version>1.0</version>
+    <time>1340184141</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>68fe8c5343d5ec3060cda32e6071017f</srcmd5>
+    <version>1.0</version>
+    <time>1359110283</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>4859c8b770038dd78c5e304357c82f68</srcmd5>
+    <version>1.0</version>
+    <time>1378899484</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198309</requestid>
+  </revision>
+  <revision rev="12" vrev="21">
+    <srcmd5>4859c8b770038dd78c5e304357c82f68</srcmd5>
+    <version>1.0</version>
+    <time>1379664446</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="22">
+    <srcmd5>46384b632ee0d8486d20a1dfa4d413b1</srcmd5>
+    <version>1.0</version>
+    <time>1405931694</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>241531</requestid>
+  </revision>
+  <revision rev="14" vrev="24">
+    <srcmd5>46384b632ee0d8486d20a1dfa4d413b1</srcmd5>
+    <version>1.0</version>
+    <time>1409303178</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="25">
+    <srcmd5>8a105404e515fb3fbfc2aad0b1ed540a</srcmd5>
+    <version>1.0</version>
+    <time>1497112413</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete javadoc to bootstrap using gcj
+- Add patch no-javadoc.patch</comment>
+    <requestid>502560</requestid>
+  </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>b5d0a08cff96a3e2c35face231605d0a</srcmd5>
+    <version>1.0</version>
+    <time>1505334124</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>522866</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>80775f7a662fe0174b50610f56900b20</srcmd5>
+    <version>2011.1</version>
+    <time>1512546828</time>
+    <user>dimstar_suse</user>
+    <comment>Newer version</comment>
+    <requestid>546966</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>a90f7216b093eb1d28147f4467a99b1c</srcmd5>
+    <version>2011.1</version>
+    <time>1541666390</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>644928</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>67662f5fe93056b4fc219b77c845565c</srcmd5>
+    <version>2011.1</version>
+    <time>1545996770</time>
+    <user>dimstar_suse</user>
+    <comment>Depend on sonatype-oss-parent</comment>
+    <requestid>660079</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>5895ce274e65f7f72e3ec66ca275bcaa</srcmd5>
+    <version>2011.1</version>
+    <time>1555237244</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not depend on the parent pom and remove its reference from the
+  pom.xml files, since we are not building using Maven.
+- Install unversioned jar/pom files
+</comment>
+    <requestid>693103</requestid>
+  </revision>
+</revisionlist>

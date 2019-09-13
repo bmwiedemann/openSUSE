@@ -1,0 +1,8 @@
+<package name="osmo-sip-connector" project="openSUSE:Factory">
+  <title>MNCC to SIP bridge for osmo-nitb</title>
+  <description>Use the osmo-nitb MNCC interface and bridge it to SIP.
+
+</description>
+  <devel project="network:telephony" package="osmo-sip-connector"/>
+  <url>http://openbsc.osmocom.org/</url>
+</package>

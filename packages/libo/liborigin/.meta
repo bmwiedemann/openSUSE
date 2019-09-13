@@ -1,0 +1,8 @@
+<package name="liborigin" project="openSUSE:Factory">
+  <title>Library for reading OriginLab OPJ project files</title>
+  <description>A library for reading OriginLab OPJ project files.
+Features:
+* reads any worksheets with all columns
+* supports 4.1, 5.0, 6.0, 6.1, 7.0, 7.5 projects</description>
+  <devel project="science" package="liborigin"/>
+</package>

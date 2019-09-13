@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ef4766b3907e81616035bdf3267d547</srcmd5>
+    <version>0.10.4</version>
+    <time>1512140004</time>
+    <user>dimstar_suse</user>
+    <comment>Introduce flatpak-builder to TW</comment>
+    <requestid>539818</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0a3bc6ca1433853784d32d327a1c34c3</srcmd5>
+    <version>0.10.5</version>
+    <time>1512386171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.5:
+  + Add support for running tests during the build (disable with
+    --disable-tests).
+  + New build-option append-pkg-config to append to
+    PKG_CONFIG_PATH.
+  + --state-dir option lets you reuse a single directory instead of
+    scattered .flatpak-builder dirs for builds, downloads and cache
+    data.
+  + git: Allow updates with non-fastforwarded branched.
+  + Don't fail if app ships both appdata and metainfo file.
+  + Support --log-system/session-bus in --run.
+
+- Adjust RPM groups.</comment>
+    <requestid>547565</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0c19ab0c8644852b91d264b843dca8dd</srcmd5>
+    <version>0.10.6</version>
+    <time>1514983160</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.6:
+  + New checksum types for file/archive sources: md5, sha1, sha512.
+  + Support including source snippets from another file, similar to
+    how module includes are supported.
+  + The app id renaming in the appdata file is now more careful to
+    avoid renaming other parts.
+  + The cache default repo format for new caches is now
+    bare-user-only which means building with flatpak-builder works
+    on filesystems that don't support xattrs.
+  + New --install argument will install the finished build using
+    the new flatpak install install-directly-from-local-repo
+    feature. This makes it easier to test local builds.</comment>
+    <requestid>560739</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>24833160ebecba0d1a54baf549406a21</srcmd5>
+    <version>0.10.9</version>
+    <time>1520329675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.9:
+  + Support -y argument, which passes it on to flatpak install, etc.
+  + Fix build on glibc 2.27.
+- Changes from version 0.10.8:
+  + Fix build on recent glibc.
+- Changes from version 0.10.7:
+  + Add support for --socket=fallback-x11.
+  + Fix assert in --install.
+  + Fix --disable-updates for git sources.
+  + When mirroring git repos, use a temporary download dir.
+  + Support running flatpak-builder inside a flatpak sandbox. (forwarded request 583075 from fcrozat)</comment>
+    <requestid>583076</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>86524aea08a72231087e8fc892c4a3b3</srcmd5>
+    <version>0.10.9</version>
+    <time>1521052617</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583609 from dimstar)</comment>
+    <requestid>584772</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fed80a36b4441a366491688beadcfad0</srcmd5>
+    <version>0.10.10</version>
+    <time>1525343586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.10:
+  + We now support yaml manifest as well as json.
+  + New source type &quot;svn&quot; to download subversion checkouts.
+  + New source type &quot;dir&quot; for local directories.
+  + Set FLATPAK_BUILDER_N_JOBS in environment during build.
+  + If not using ccache, enforce it of. This helps builds with
+    meson as they pick up ccache by default, which makes no
+    sense when there is no persistent storage for ccache to use.
+  + New options prepend--path similar to the existing append--path
+    ones, but prepending instead.
+  + New argument --no-shallow-clone which disables any shallow
+    clone optimizations.
+  + New inherit-sdk-extensions property similar to
+    inherit-extensions, but is not inherited in the platform.
+  + We now ignore json keys starting with &quot;//&quot; and &quot;__&quot; allowing
+    these to be used for comments.
+  + Fixed a bug that caused --install to not work properly.
+  + New argument --extension-tag for using the new tagged extension
+    feature.
+  + The build metadata now records which extensions were produced
+    as part of a build.
+  + New property add-build-extensions allows creating exension
+    points that can be used during the build.
+  + flatpak-builder --run now also binds /run/build-runtime to the
+    builds, allowing it to work when building runtimes. (forwarded request 602907 from iznogood)</comment>
+    <requestid>603001</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>484f976bbb098f479b1f1c27314ee894</srcmd5>
+    <version>1.0.0</version>
+    <time>1536833418</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.0.0:
+  + Respect no-parallel-make with ninja.
+  + Fixed regression in data: uris.
+  + Warn about deprecated cmake property.
+  + Make X-Flatpak-RenamedFrom a list.
+  + Fix handling of mirror uris with no terminating slash.
+  + Take arch into account for --skip-if-unchanged.
+  + Fix --run when run inside a flatpak sandbox.
+  + Ensure GIT commiter env var is set when applying git patches.
+  + Keep x-* properties in the manifest when creating
+    manifest.json.
+  + New property paths in patch source to apply multiple patches. (forwarded request 631733 from iznogood)</comment>
+    <requestid>631774</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dfc6e0f19eec9afe6934de9fc032b4d1</srcmd5>
+    <version>1.0.1</version>
+    <time>1545648417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660478</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>470c7537ac0d05724b7cadaf03be27b7</srcmd5>
+    <version>1.0.3</version>
+    <time>1549017919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669854</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>bbc57c25d4c1528bb1273f580844ff0c</srcmd5>
+    <version>1.0.3</version>
+    <time>1550151207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674491</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1bd175c4ab4980dfdc32f81d2c9cf044</srcmd5>
+    <version>1.0.7</version>
+    <time>1559375773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706390</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>eebb869c48efdd0e321129934035efa1</srcmd5>
+    <version>1.0.8</version>
+    <time>1568379711</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>730444</requestid>
+  </revision>
+</revisionlist>

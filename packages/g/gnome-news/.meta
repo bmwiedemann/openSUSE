@@ -1,0 +1,5 @@
+<package name="gnome-news" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="gnome-news"/>
+</package>

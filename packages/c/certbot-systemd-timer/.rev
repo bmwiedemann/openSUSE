@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5b0c2473ad717f1759c6a26433f7fe90</srcmd5>
+    <version>0.0</version>
+    <time>1553436025</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase in summary.
+- Add systemd-rpm-macros BuildRequirement for %service_*.
+- Add systemd as a runtime dependency, as the package's main
+  purpose is the timer unit.
+- specfile now respects SUSE installation process
+- optional systemd timer to handle certbot certificate renewals 
+  borrowed from Fedora
+</comment>
+    <requestid>687647</requestid>
+  </revision>
+</revisionlist>

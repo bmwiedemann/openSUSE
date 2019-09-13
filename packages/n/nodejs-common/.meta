@@ -1,0 +1,5 @@
+<package name="nodejs-common" project="openSUSE:Factory">
+  <title>NodeJS Common</title>
+  <description>Common files that help run correct Node version in mixed environment.</description>
+  <devel project="devel:languages:nodejs" package="nodejs-common"/>
+</package>

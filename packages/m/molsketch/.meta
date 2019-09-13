@@ -1,0 +1,6 @@
+<package name="molsketch" project="openSUSE:Factory">
+  <title>molsKetch</title>
+  <description>molsKetch is a tool for drawing schematic representations of molecules, better known as molecular structures.</description>
+  <devel project="science" package="molsketch"/>
+  <url>http://molsketch.sourceforge.net/</url>
+</package>

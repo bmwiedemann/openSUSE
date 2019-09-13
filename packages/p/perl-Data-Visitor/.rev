@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78b3c984b7c5834feb1e88ae2137a757</srcmd5>
+    <version>0.27</version>
+    <time>1311082024</time>
+    <user>saschpe</user>
+    <comment>new dep of hermes</comment>
+    <requestid>76246</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6548461cc69ab1e200a34c0c0d159694</srcmd5>
+    <version>0.27</version>
+    <time>1311082038</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76246
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6548461cc69ab1e200a34c0c0d159694</srcmd5>
+    <version>0.27</version>
+    <time>1319182257</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>2ae39f223b582b224ba5bab7152918bf</srcmd5>
+    <version>0.27</version>
+    <time>1323193197</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>178277215113d901406ab558d0225f48</srcmd5>
+    <version>0.28</version>
+    <time>1330618982</time>
+    <user>coolo</user>
+    <comment>- updated to 0.28
+   - convert to dzil
+   - bump namespace::clean dep
+   - better error message if Data::Alias isn't found
+   - doc fixes</comment>
+    <requestid>107118</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>178277215113d901406ab558d0225f48</srcmd5>
+    <version>0.28</version>
+    <time>1340183826</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>178277215113d901406ab558d0225f48</srcmd5>
+    <version>0.28</version>
+    <time>1359109640</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9cacbb032b80b5dd9076a844762c2d5a</srcmd5>
+    <version>0.30</version>
+    <time>1374387108</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183837</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9cacbb032b80b5dd9076a844762c2d5a</srcmd5>
+    <version>0.30</version>
+    <time>1379663629</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>9cacbb032b80b5dd9076a844762c2d5a</srcmd5>
+    <version>0.30</version>
+    <time>1409302245</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40402eee7d65bcb4fbe0c8e4403bdebc</srcmd5>
+    <version>0.28.0</version>
+    <time>1411987205</time>
+    <user>coolo</user>
+    <comment>mk-configure is a lightweight replacement for GNU autotools, written in bmake (portable version of NetBSD make), POSIX shell and 
+POSIX utilities.</comment>
+    <requestid>250700</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>798e29ec855f8452b09f3f8ef1dd9f29</srcmd5>
+    <version>0.29.0</version>
+    <time>1417643308</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263808</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d7cd7eeab0e1d4f6ee4a57bab7b6ea33</srcmd5>
+    <version>0.29.1</version>
+    <time>1453280079</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354439</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2e7fcfb9bb7bf36ed5b8bdb67783d84c</srcmd5>
+    <version>0.29.1</version>
+    <time>1464690285</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398808</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2719b21e77939fc977aabe96f0b4b217</srcmd5>
+    <version>0.30.0</version>
+    <time>1533627908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627778</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a7861b231500148cbe4505d0098c0fa6</srcmd5>
+    <version>0.31.0</version>
+    <time>1555322005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694135</requestid>
+  </revision>
+</revisionlist>

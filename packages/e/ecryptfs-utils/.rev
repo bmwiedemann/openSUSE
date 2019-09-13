@@ -1,0 +1,390 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>da519f46b078803bf4b596a4597ff5a1</srcmd5>
+    <version>5</version>
+    <time>1168902672</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c497ae9e19575af0912484002dba5d17</srcmd5>
+    <version>10</version>
+    <time>1173103157</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6ad84e0a2aa3111f802502e729665dba</srcmd5>
+    <version>10</version>
+    <time>1173198980</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9c1bf6bcc806c729cc1942e8fc77f740</srcmd5>
+    <version>10</version>
+    <time>1174433976</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a08ed41508b4804a217570736b30f46c</srcmd5>
+    <version>18</version>
+    <time>1185541632</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>93a674e1ea9c56fed6d8ffc5f4fc3403</srcmd5>
+    <version>18</version>
+    <time>1185721363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>3986f82e5a7a804c00f2ea4aa833956e</srcmd5>
+    <version>18</version>
+    <time>1186174987</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4250b555f6daf6460840b282e1603a28</srcmd5>
+    <version>40</version>
+    <time>1203987306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cd1d9114a7dd5d92422bf2a1841e91b0</srcmd5>
+    <version>41</version>
+    <time>1207265184</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>4e7eb4f69d8162008ab1f448fd2b94d8</srcmd5>
+    <version>41</version>
+    <time>1207829463</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e389593916001e736d07b3a2507c920e</srcmd5>
+    <version>50</version>
+    <time>1215812625</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d8f722949bce36f2faa44f1d0dfe8e75</srcmd5>
+    <version>56</version>
+    <time>1219568544</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3459afa3937a8eac66dd6cfdb1647d7e</srcmd5>
+    <version>58</version>
+    <time>1222378181</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8f81be65ec3225e785024cf7ce7d8ef1</srcmd5>
+    <version>61</version>
+    <time>1224855779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a1cadc01efb07109a398be2e915c2949</srcmd5>
+    <version>61</version>
+    <time>1246694212</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>a1cadc01efb07109a398be2e915c2949</srcmd5>
+    <version>61</version>
+    <time>1246694212</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>33024bdca6b30e998fededd78e920868</srcmd5>
+    <version>61</version>
+    <time>1266973234</time>
+    <user>autobuild</user>
+    <comment>Copy from security/ecryptfs-utils based on submit request 33321 from user coolo
+</comment>
+    <requestid>33321</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>aebe8262c438fb60b5fb1d8a37a1212b</srcmd5>
+    <version>61</version>
+    <time>1268923431</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>56a25cfb30dae26372a4d6890e9faeb6</srcmd5>
+    <version>83</version>
+    <time>1269619620</time>
+    <user>autobuild</user>
+    <comment>Copy from security/ecryptfs-utils based on submit request 35643 from user coolo
+</comment>
+    <requestid>35643</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>de40fb488c90cf034ce00787fbac2783</srcmd5>
+    <version>83</version>
+    <time>1271189908</time>
+    <user>autobuild</user>
+    <comment>Copy from security/ecryptfs-utils based on submit request 37728 from user coolo
+</comment>
+    <requestid>37728</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>de40fb488c90cf034ce00787fbac2783</srcmd5>
+    <version>83</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>de40fb488c90cf034ce00787fbac2783</srcmd5>
+    <version>83</version>
+    <time>1278678573</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>de40fb488c90cf034ce00787fbac2783</srcmd5>
+    <version>83</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>bd979369dfed957fbea24cabcf64b422</srcmd5>
+    <version>87</version>
+    <time>1307361388</time>
+    <user>saschpe</user>
+    <comment>updated to 87</comment>
+    <requestid>67851</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>53834240f88e8bcde9944d09f495e8f6</srcmd5>
+    <version>87</version>
+    <time>1307361399</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67851
+</comment>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>1aaaa0a916b8891f152ae347afa980ba</srcmd5>
+    <version>90</version>
+    <time>1313148252</time>
+    <user>saschpe</user>
+    <comment>updated to version 90</comment>
+    <requestid>78547</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>ee71002d8d98cb6cc4f02503a81d193a</srcmd5>
+    <version>90</version>
+    <time>1313148261</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78547
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d3ba862061f182f71ea033f08066eae6</srcmd5>
+    <version>92</version>
+    <time>1316617407</time>
+    <user>saschpe</user>
+    <comment>update to 92</comment>
+    <requestid>83947</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>207a658d1d82c02cba3d429701df5724</srcmd5>
+    <version>92</version>
+    <time>1317805685</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85994 from coolo)</comment>
+    <requestid>86097</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>207a658d1d82c02cba3d429701df5724</srcmd5>
+    <version>92</version>
+    <time>1319181861</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>5f3dfd3f5ee3adae04ba10bf7666d12d</srcmd5>
+    <version>92</version>
+    <time>1323191264</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e9c2e568a967695ead33425dbda7411a</srcmd5>
+    <version>96</version>
+    <time>1333013812</time>
+    <user>coolo</user>
+    <comment>updated to v96 ... make setuid root for mount.ecryptfs_private ready</comment>
+    <requestid>111599</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>e15fd6fa6c05c7d87dfd71e70ae28af1</srcmd5>
+    <version>96</version>
+    <time>1334215267</time>
+    <user>coolo</user>
+    <comment>- patch so ecryptfs-setup-swap executes boot.crypto</comment>
+    <requestid>113066</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>e15fd6fa6c05c7d87dfd71e70ae28af1</srcmd5>
+    <version>96</version>
+    <time>1340183299</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>8b221f68b4a30956de13f4ad0fae5e26</srcmd5>
+    <version>96</version>
+    <time>1341560220</time>
+    <user>coolo</user>
+    <comment>- hook pam_ecryptfs into pam session and auth bnc#755475
+
+- added security improvements to mount.ecryptfs_private
+  and pam_ecryptfs (bnc#740110)</comment>
+    <requestid>127166</requestid>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>e681689ff8c3e2094ac5bfd04da1f558</srcmd5>
+    <version>96</version>
+    <time>1342097208</time>
+    <user>coolo</user>
+    <comment>- also supply MS_NODEV to avoid exposing device files
+  if someone got them on the encrypted media.
+
+- point the desktop link to the right .desktop file
+- build mount.ecryptfs_private with -pie/-fpie</comment>
+    <requestid>127636</requestid>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>e681689ff8c3e2094ac5bfd04da1f558</srcmd5>
+    <version>96</version>
+    <time>1359108839</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>74573ae21a04672e3dcb43d2fa8f3aaa</srcmd5>
+    <version>103</version>
+    <time>1375783468</time>
+    <user>coolo</user>
+    <comment>updated to version 103, cleaned/fixed up patches, added tagging patches. (forwarded request 185986 from deadpoint)</comment>
+    <requestid>186007</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>091f02e44d9a69765a06e2c3b6a76f94</srcmd5>
+    <version>103</version>
+    <time>1376857779</time>
+    <user>scarabeus_factory</user>
+    <comment>- fix %postun to not run pam-config on update (bnc#814098, bnc#834993)</comment>
+    <requestid>195444</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>091f02e44d9a69765a06e2c3b6a76f94</srcmd5>
+    <version>103</version>
+    <time>1379662278</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>2f2c912c51204c0226f1b4f6220ee44f</srcmd5>
+    <version>103</version>
+    <time>1408524676</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>245182</requestid>
+  </revision>
+  <revision rev="42" vrev="7">
+    <srcmd5>2f2c912c51204c0226f1b4f6220ee44f</srcmd5>
+    <version>103</version>
+    <time>1409300814</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8f413b395c43616b15a05218225b72f6</srcmd5>
+    <version>104</version>
+    <time>1409902464</time>
+    <user>coolo</user>
+    <comment>- update to 104
+  - lots of bugfixes, apparently from static code checking</comment>
+    <requestid>247554</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>862c57d02bab2bdbcf0ddd56c2557b96</srcmd5>
+    <version>106</version>
+    <time>1431668595</time>
+    <user>coolo</user>
+    <comment>- updated to 106
+  - new passphrase wrapping method, including the salt to fix
+    CVE-2014-9687 / bsc#920160
+  - various bugfixes</comment>
+    <requestid>306383</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>8d9a062e35b3982bb8497b10a4e1d9ff</srcmd5>
+    <version>106</version>
+    <time>1444285580</time>
+    <user>coolo</user>
+    <comment>- Do not ship .la files
+
+- Cleanup spec file with spec-cleaner
+- Update autotool dependencies
+- Split library and devel packages
+- Use desktop file macros
+- Use fdupes to reduce duplicities</comment>
+    <requestid>336994</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b5329c7e15a7aa9c82dfa175eb1fd43c</srcmd5>
+    <version>108</version>
+    <time>1445287946</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 108
+  * This release does not have a changelog. (forwarded request 339360 from pluskalm)</comment>
+    <requestid>339370</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>6a8f6d58c404a2d17f142f0cc0675ebd</srcmd5>
+    <version>108</version>
+    <time>1453508188</time>
+    <user>dimstar_suse</user>
+    <comment>- validate-mount-destination-fs-type.patch: A local user could have
+  escalated privileges by mounting over special filesystems (bsc#962052
+  CVE-2016-1572) (forwarded request 355041 from msmeissn)</comment>
+    <requestid>355042</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>2e512b16c10f1d7e57e4bfd2bd9a24d8</srcmd5>
+    <version>108</version>
+    <time>1489345494</time>
+    <user>dimstar_suse</user>
+    <comment>- Edited %files section to clear unpackaged files builderror in
+  openSUSE:Factory (forwarded request 478016 from sfalken)</comment>
+    <requestid>478022</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0520f87b9cfc7e84b4540fa950e78d91</srcmd5>
+    <version>111</version>
+    <time>1510761545</time>
+    <user>dimstar_suse</user>
+    <comment>- The license is GPL-2.0 (without + / or later)
+
+- Update to 111
+  * upstream provides no changelog
+- add ecryptfs-utils-openssl11.patch to support build with
+  OpenSSL 1.1 (bsc#1066937)
+
+- drop validate-mount-destination-fs-type.patch (upstream)</comment>
+    <requestid>541775</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>e91efb3311854dc7b1627e5041556517</srcmd5>
+    <version>111</version>
+    <time>1519218837</time>
+    <user>dimstar_suse</user>
+    <comment>- drop python2 support (needs to be replaced by python3 support)
+  (bsc#1081587)</comment>
+    <requestid>578631</requestid>
+  </revision>
+</revisionlist>

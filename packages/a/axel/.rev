@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b29a984ed612b6e3c02bdc4457bae5f1</srcmd5>
+    <version>2.4</version>
+    <time>1493020148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>489641</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ac0672fdb4a20868bf7ab4eab03bf3b1</srcmd5>
+    <version>2.15</version>
+    <time>1510506196</time>
+    <user>dimstar_suse</user>
+    <comment>- added more documentation files and license to package
+- update to 2.15 (see ChangeLog for release notes and all changes
+  since 2.4)
+- switch to new github url
+- run spec-cleaner
+- drop all patches
+  * axel-fix_buffer_overflow.patch
+    + upstreamed in 425dd156b76f2377a3e386324c282bdcdac90a40
+  * axel-getaddrinfo.patch
+    + upstreamed in cc1142b8de01e182cbaf4cc8a606c80696d8c0b8
+  * axel-fix-url-max-length.patch
+    + upstreamed in ce40ee76c25a84f386128927fcd0bab4e9751268
+  * axel-2.4-configure.patch
+    + unneeded
+</comment>
+    <requestid>540717</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0afb282794cc777085d46570f8965c80</srcmd5>
+    <version>2.16</version>
+    <time>1511817530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546012</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>df8486700a58783cb2362f5cc1146669</srcmd5>
+    <version>2.16.1</version>
+    <time>1522503457</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.16.1:
+ * no noteable changes
+</comment>
+    <requestid>592739</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9debbd64c2e9887a40853e86b60aacb9</srcmd5>
+    <version>2.16.1</version>
+    <time>1559375417</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706057</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1aecdfbc2c2d71cbded1a496a30885c2</srcmd5>
+    <version>2.17.3</version>
+    <time>1560760486</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>710220</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,3297 @@
+<revisionlist>
+  <revision rev="1" vrev="31">
+    <srcmd5>050af3679dcfe41bff6596972fbf1392</srcmd5>
+    <version>7.2</version>
+    <time>1166453306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="32">
+    <srcmd5>831144550f9e6d9e6c148f8775138583</srcmd5>
+    <version>7.2</version>
+    <time>1166460905</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="33">
+    <srcmd5>43fa7ddd1a5926d8c03ebc0bfd137b12</srcmd5>
+    <version>7.2</version>
+    <time>1166545896</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="39">
+    <srcmd5>8fced372d6c894e34d4eac9eec693c4b</srcmd5>
+    <version>7.2</version>
+    <time>1168448690</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="41">
+    <srcmd5>822ad145a1a8ee6ef999676f4b5df664</srcmd5>
+    <version>7.2</version>
+    <time>1168819217</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="42">
+    <srcmd5>fa44ebbd45cb7d5765b5b1568ac9d4f6</srcmd5>
+    <version>7.2</version>
+    <time>1168902994</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="43">
+    <srcmd5>dd7efd1f950af1af2d2ac0314d21cf0c</srcmd5>
+    <version>7.2</version>
+    <time>1168993151</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="44">
+    <srcmd5>0fded9f0e3d7a24b3c9f4553cea8dab4</srcmd5>
+    <version>7.2</version>
+    <time>1169081325</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="45">
+    <srcmd5>0667b49b9aafe247e95cf729c6fde584</srcmd5>
+    <version>7.2</version>
+    <time>1169601739</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="46">
+    <srcmd5>7c10b7edd0c4fdcf22ff5577e34fd946</srcmd5>
+    <version>7.2</version>
+    <time>1169660894</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="47">
+    <srcmd5>622d5a544b4d94cc4466fcaf49b8a537</srcmd5>
+    <version>7.2</version>
+    <time>1169665116</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="48">
+    <srcmd5>d3558f17b904b6ce198082ba08e8a892</srcmd5>
+    <version>7.2</version>
+    <time>1169770118</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="49">
+    <srcmd5>971ad4ffb246bf33d1315195a688284e</srcmd5>
+    <version>7.2</version>
+    <time>1170088580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="50">
+    <srcmd5>b742e4b7a8c406735466371014c996b3</srcmd5>
+    <version>7.2</version>
+    <time>1170429004</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="54">
+    <srcmd5>7a0cb3109402ec725925afdfcb8e273d</srcmd5>
+    <version>7.2</version>
+    <time>1171924237</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="56">
+    <srcmd5>31317835a125bd9add685cc8da8ebe48</srcmd5>
+    <version>7.2</version>
+    <time>1173228854</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="58">
+    <srcmd5>a472617de476f5c9b068162b6d032831</srcmd5>
+    <version>7.2</version>
+    <time>1173568680</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="60">
+    <srcmd5>1afeb1d8977102863ef4af30b6a75eb8</srcmd5>
+    <version>7.2</version>
+    <time>1173919930</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="61">
+    <srcmd5>46904d3944d198e23c3e6df626f3fd18</srcmd5>
+    <version>7.2</version>
+    <time>1173979033</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="62">
+    <srcmd5>753451bf37337146c234f5cbf4ee0604</srcmd5>
+    <version>7.2</version>
+    <time>1174350176</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="65">
+    <srcmd5>315df88382b07ebdeac266c26ec2b092</srcmd5>
+    <version>7.2</version>
+    <time>1175123337</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="66">
+    <srcmd5>a194102aedd27bb1f2cb7506399283df</srcmd5>
+    <version>7.2</version>
+    <time>1175265300</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="69">
+    <srcmd5>a79e4d74af10a44992872550279360c8</srcmd5>
+    <version>7.2</version>
+    <time>1176394933</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="70">
+    <srcmd5>79ac9b2bbd2dd69ec3fad7b6b5310cc5</srcmd5>
+    <version>7.2</version>
+    <time>1177077704</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="71">
+    <srcmd5>0f032dd886b316797e33b8d3eee990dc</srcmd5>
+    <version>7.2</version>
+    <time>1177276155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="74">
+    <srcmd5>7bbea84eef25a73dfc3474f05778b697</srcmd5>
+    <version>7.2</version>
+    <time>1177532938</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="76">
+    <srcmd5>b2e73eed029385c97b2db5bcc211b784</srcmd5>
+    <version>7.2</version>
+    <time>1177688898</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="77">
+    <srcmd5>5e06956446e1547c7ccb39c5526b8787</srcmd5>
+    <version>7.2</version>
+    <time>1177764335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="79">
+    <srcmd5>b7ff8c09f1e78dba636fe4f74f3ffb74</srcmd5>
+    <version>7.2</version>
+    <time>1178231706</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="88">
+    <srcmd5>5ec687f2781d2d1462964b09472e6871</srcmd5>
+    <version>7.2</version>
+    <time>1179916122</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="94">
+    <srcmd5>1b3514cd98757e79f21cc1b2dfbc473b</srcmd5>
+    <version>7.2</version>
+    <time>1181215029</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="98">
+    <srcmd5>a538971a2010d8c33408156311e78448</srcmd5>
+    <version>7.2</version>
+    <time>1182464231</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="99">
+    <srcmd5>a3d8f465d4909546a24741c4d7199063</srcmd5>
+    <version>7.2</version>
+    <time>1182678905</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="101">
+    <srcmd5>f4098c95621f68dce44d41dca9746304</srcmd5>
+    <version>7.2</version>
+    <time>1183587831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="104">
+    <srcmd5>ee97aa18ff2824f993c993f98db783c9</srcmd5>
+    <version>7.2</version>
+    <time>1184427599</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="106">
+    <srcmd5>e72fa8e7bcdafb79334e36731f2e1a05</srcmd5>
+    <version>7.2</version>
+    <time>1185034372</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="114">
+    <srcmd5>869241996e809148c03839c1189c2f87</srcmd5>
+    <version>7.2</version>
+    <time>1186427004</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="117">
+    <srcmd5>1c644c8ff3bf57e7da8be6adb3dd4b19</srcmd5>
+    <version>7.2</version>
+    <time>1186912137</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="121">
+    <srcmd5>8d2b09426d8edf99ec3736c75e7d93fb</srcmd5>
+    <version>7.2</version>
+    <time>1187432310</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="123">
+    <srcmd5>ab85aa8fe72229d4f3cd19b099290add</srcmd5>
+    <version>7.2</version>
+    <time>1187914406</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="129">
+    <srcmd5>0f39e87eb6fc9f77d65ea709658287b7</srcmd5>
+    <version>7.2</version>
+    <time>1188578635</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="131">
+    <srcmd5>4d90bda0e5bfff38a999761dbce73d37</srcmd5>
+    <version>7.2</version>
+    <time>1189105615</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="134">
+    <srcmd5>8de64e63cef6161b160c434a3a7b840a</srcmd5>
+    <version>7.2</version>
+    <time>1189421642</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="136">
+    <srcmd5>2cc5526cf49d0d0c535baa08d0b8f889</srcmd5>
+    <version>7.2</version>
+    <time>1189528281</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="142">
+    <srcmd5>4d4bb0850d9d2e746aeaadc09aaf324e</srcmd5>
+    <version>7.2</version>
+    <time>1190497409</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5490f731d0ddd2931f6ee1631b46c979</srcmd5>
+    <version>7.3</version>
+    <time>1191367285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>3b3f08a84444cf84a4af40836e0397ad</srcmd5>
+    <version>7.3</version>
+    <time>1191423964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>564c6e4c6b842c1449f9c370a71a6b1d</srcmd5>
+    <version>7.3</version>
+    <time>1191460390</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>3160ca76abeecb4065d94a10e08cb60c</srcmd5>
+    <version>7.3</version>
+    <time>1191537653</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="7">
+    <srcmd5>2bf021f7317871e160933260fbc696b3</srcmd5>
+    <version>7.3</version>
+    <time>1191968568</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="12">
+    <srcmd5>1f275b8d51edc59acf2975e4ce260cf1</srcmd5>
+    <version>7.3</version>
+    <time>1192894924</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="15">
+    <srcmd5>9c5803a2377859db98d3bb442e22de31</srcmd5>
+    <version>7.3</version>
+    <time>1193183215</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="21">
+    <srcmd5>b3afe55fbe735dfc15f3c6bfb8c5f090</srcmd5>
+    <version>7.3</version>
+    <time>1193964056</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="25">
+    <srcmd5>a2282362a204d15c41000f95b9eef9ab</srcmd5>
+    <version>7.3</version>
+    <time>1194986529</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="27">
+    <srcmd5>096dc8cca95e7b857f4e0c53830489c5</srcmd5>
+    <version>7.3</version>
+    <time>1195171004</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="29">
+    <srcmd5>d04d67336e8d69243548989ae962bcbf</srcmd5>
+    <version>7.3</version>
+    <time>1195464493</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="31">
+    <srcmd5>2fe6abf37b8f4ed6e4b7f9bd7754af03</srcmd5>
+    <version>7.3</version>
+    <time>1195778820</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="34">
+    <srcmd5>ae8d080051afab5aa5f46f01bcc8ea3c</srcmd5>
+    <version>7.3</version>
+    <time>1196290517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="36">
+    <srcmd5>58c4246317be97ae7d20a5f60c37c13a</srcmd5>
+    <version>7.3</version>
+    <time>1196901928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="38">
+    <srcmd5>e09c5e0c6e543e69e52dbfc23ed2aa3f</srcmd5>
+    <version>7.3</version>
+    <time>1197551530</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="51">
+    <srcmd5>abaedfd958140aba9abceeee75fbb93a</srcmd5>
+    <version>7.3</version>
+    <time>1201368178</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="53">
+    <srcmd5>9ff9b7f0ef2fc634f4fb8d64fa658101</srcmd5>
+    <version>7.3</version>
+    <time>1201534963</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="55">
+    <srcmd5>14014fc80136f4297c07a0a84e7d88da</srcmd5>
+    <version>7.3</version>
+    <time>1201910951</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="64" vrev="58">
+    <srcmd5>fa4a47aa6611eb9380b5c607447e4553</srcmd5>
+    <version>7.3</version>
+    <time>1202500441</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="65" vrev="67">
+    <srcmd5>c9fcd6507e05360dff657e6cb540f96a</srcmd5>
+    <version>7.3</version>
+    <time>1203958197</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="66" vrev="73">
+    <srcmd5>9cbe7b872d1a34c8a935cf730b6b33c6</srcmd5>
+    <version>7.3</version>
+    <time>1204930207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="67" vrev="77">
+    <srcmd5>2d5eaf349a7c772cfa1d510752a1a013</srcmd5>
+    <version>7.3</version>
+    <time>1206063875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="68" vrev="78">
+    <srcmd5>427e26ff7af4091c9cd34b2a228ea6ed</srcmd5>
+    <version>7.3</version>
+    <time>1206064062</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="69" vrev="83">
+    <srcmd5>1393dbcf9021ba7269447e1bf495a851</srcmd5>
+    <version>7.3</version>
+    <time>1207183366</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="70" vrev="85">
+    <srcmd5>49ebe2c20506b2ae406588d7db4c742b</srcmd5>
+    <version>7.3</version>
+    <time>1207466965</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="71" vrev="86">
+    <srcmd5>bb5958e283aa1176f8a11a1c4cb08ae4</srcmd5>
+    <version>7.3</version>
+    <time>1207595291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="72" vrev="88">
+    <srcmd5>31e5af727985989fd32a0b52d37a22d6</srcmd5>
+    <version>7.3</version>
+    <time>1207771472</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="73" vrev="89">
+    <srcmd5>16e62b90238263461ce0067ee3325d85</srcmd5>
+    <version>7.3</version>
+    <time>1207822134</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="74" vrev="91">
+    <srcmd5>efc5ee7ae86a12544ee1e56e5a3804fc</srcmd5>
+    <version>7.3</version>
+    <time>1208698743</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="75" vrev="92">
+    <srcmd5>0384babdfa5ea1149c5fc728b9bf41f4</srcmd5>
+    <version>7.3</version>
+    <time>1208815544</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="76" vrev="98">
+    <srcmd5>2e0b713d336b76967eeadfa852923f70</srcmd5>
+    <version>7.3</version>
+    <time>1210031110</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="77" vrev="103">
+    <srcmd5>127fe0999768c86b6d09e73cba3ac2f0</srcmd5>
+    <version>7.3</version>
+    <time>1210943318</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="78" vrev="104">
+    <srcmd5>4a27918cd023aee9e8e6a29e1624f005</srcmd5>
+    <version>7.3</version>
+    <time>1210986796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="79" vrev="106">
+    <srcmd5>5d18b88cce9c625b38315b2d134f22e1</srcmd5>
+    <version>7.3</version>
+    <time>1211836714</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="80" vrev="112">
+    <srcmd5>554229771c2df9037e9cc18cccf73de1</srcmd5>
+    <version>7.3</version>
+    <time>1214435953</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="81" vrev="114">
+    <srcmd5>afa9da4f294e3f2f50f5fcf1e9546776</srcmd5>
+    <version>7.3</version>
+    <time>1215216028</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="82" vrev="115">
+    <srcmd5>357cc38c76b95fcf5b81f108b85e3126</srcmd5>
+    <version>7.3</version>
+    <time>1215561964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="83" vrev="117">
+    <srcmd5>47ab87182061e162442acec8e5de774e</srcmd5>
+    <version>7.3</version>
+    <time>1215735964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="84" vrev="119">
+    <srcmd5>b90c4a16a83b73b8be58a806eeaac534</srcmd5>
+    <version>7.3</version>
+    <time>1215806327</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="85" vrev="121">
+    <srcmd5>8a83048184a7944cb02030ff480d2813</srcmd5>
+    <version>7.3</version>
+    <time>1216053745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="86" vrev="123">
+    <srcmd5>f18f61676af3353f40abfca56e3c6d60</srcmd5>
+    <version>7.3</version>
+    <time>1216416369</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="87" vrev="127">
+    <srcmd5>38554ff980e08f096491756620fcad2b</srcmd5>
+    <version>7.3</version>
+    <time>1216930930</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="88" vrev="132">
+    <srcmd5>d8c1a51eea9c3ceb0a60c954f74dcfbc</srcmd5>
+    <version>7.3</version>
+    <time>1217647580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="89" vrev="137">
+    <srcmd5>045838d026750d4931465ceba89c7087</srcmd5>
+    <version>7.3</version>
+    <time>1217980776</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="90" vrev="139">
+    <srcmd5>f3cd373f897c96aed96f1dce02c7649b</srcmd5>
+    <version>7.3</version>
+    <time>1218065826</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="91" vrev="141">
+    <srcmd5>8718467e7a3cefe0947e77698856bf4d</srcmd5>
+    <version>7.3</version>
+    <time>1218188951</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="92" vrev="156">
+    <srcmd5>7752232542947280cd62d46f06d53080</srcmd5>
+    <version>7.3</version>
+    <time>1220054268</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="93" vrev="160">
+    <srcmd5>11b4d2f23ae21ffbdce98051beda0f73</srcmd5>
+    <version>7.3</version>
+    <time>1220641239</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>3e91b9272d01435ed2206d67814da8ac</srcmd5>
+    <version>7.4</version>
+    <time>1221234607</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>a39fc6513d398416994c440b55ee4bfa</srcmd5>
+    <version>7.4</version>
+    <time>1221301702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="96" vrev="5">
+    <srcmd5>11f377435420d86c52b09ff336390f19</srcmd5>
+    <version>7.4</version>
+    <time>1222271091</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="97" vrev="6">
+    <srcmd5>ac683d0ac0f7441b5c5947f3c4105692</srcmd5>
+    <version>7.4</version>
+    <time>1223304656</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="98" vrev="7">
+    <srcmd5>2a7e076d3c25f6fcc19118d1dbfd9425</srcmd5>
+    <version>7.4</version>
+    <time>1223735444</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="99" vrev="8">
+    <srcmd5>8cbb4b65b76a2ef1e1db94593e445ad8</srcmd5>
+    <version>7.4</version>
+    <time>1223764461</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="100" vrev="9">
+    <srcmd5>d923f961bfabef8f01faafe300cffbea</srcmd5>
+    <version>7.4</version>
+    <time>1224758064</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="101" vrev="10">
+    <srcmd5>2f68fd844e78cfad265589c4edb0b5bd</srcmd5>
+    <version>7.4</version>
+    <time>1224978429</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="102" vrev="11">
+    <srcmd5>e0188c40e983a846f92be2db83d1097f</srcmd5>
+    <version>7.4</version>
+    <time>1225151187</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="103" vrev="12">
+    <srcmd5>d69c9928829e6250c2e9969f6a45eac5</srcmd5>
+    <version>7.4</version>
+    <time>1225818486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="104" vrev="13">
+    <srcmd5>727f7a7d3dc40f8c2366c9a922f7cfb2</srcmd5>
+    <version>7.4</version>
+    <time>1226069675</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="105" vrev="14">
+    <srcmd5>1022f869df6c23e8fac91497d62b826d</srcmd5>
+    <version>7.4</version>
+    <time>1226172761</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="106" vrev="15">
+    <srcmd5>59b225c22a67766beb10a608875eb8b6</srcmd5>
+    <version>7.4</version>
+    <time>1227013127</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="107" vrev="16">
+    <srcmd5>7f2b3eaa25f2e27bbe731cbcb61329b0</srcmd5>
+    <version>7.4</version>
+    <time>1227429535</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="108" vrev="17">
+    <srcmd5>be8f8b3e77b49cf94f626e7e28aa8134</srcmd5>
+    <version>7.4</version>
+    <time>1227885051</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="109" vrev="18">
+    <srcmd5>34749ebf915c2a20e7488c369cd8529f</srcmd5>
+    <version>7.4</version>
+    <time>1231463445</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="110" vrev="19">
+    <srcmd5>bff2a43959d0ba04a35ed4afe5a1c1df</srcmd5>
+    <version>7.4</version>
+    <time>1232328048</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="111" vrev="22">
+    <srcmd5>ab26b160bced2df709296797fee59e77</srcmd5>
+    <version>7.4</version>
+    <time>1233267939</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="112" vrev="24">
+    <srcmd5>04a1d1b89ba041b2c82831da20c353e2</srcmd5>
+    <version>7.4</version>
+    <time>1233935329</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="113" vrev="25">
+    <srcmd5>23f6ea8b5ead5a63900b8394a9108a3a</srcmd5>
+    <version>7.4</version>
+    <time>1234783596</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="114" vrev="27">
+    <srcmd5>15ea92393866496657c4cee949dbf726</srcmd5>
+    <version>7.4</version>
+    <time>1235616208</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="115" vrev="28">
+    <srcmd5>2ee3710aaaaf25dda0c47f46a2c9fd81</srcmd5>
+    <version>7.4</version>
+    <time>1235953185</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="116" vrev="29">
+    <srcmd5>193662570c15eed3e46cebb16ec06b47</srcmd5>
+    <version>7.4</version>
+    <time>1236100692</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="117" vrev="30">
+    <srcmd5>e2e5de005eca34d478da3281261e4e66</srcmd5>
+    <version>7.4</version>
+    <time>1236175325</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="118" vrev="31">
+    <srcmd5>993216d504294154d9952ce6db0af401</srcmd5>
+    <version>7.4</version>
+    <time>1236555229</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="119" vrev="32">
+    <srcmd5>ba785d6a3bc4d3c7c8db9e140ef9e664</srcmd5>
+    <version>7.4</version>
+    <time>1236796479</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="120" vrev="33">
+    <srcmd5>b370c90e54f4a6f65f29ef9538c75f0b</srcmd5>
+    <version>7.4</version>
+    <time>1237923273</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="121" vrev="34">
+    <srcmd5>9764f614dd2d4c01ebc09639c5d8aa34</srcmd5>
+    <version>7.4</version>
+    <time>1239808078</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="122" vrev="35">
+    <srcmd5>355d204192c11957dfbbc472a1fd8413</srcmd5>
+    <version>7.4</version>
+    <time>1240959515</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="123" vrev="36">
+    <srcmd5>21c156054f703cfea010df847b5dd412</srcmd5>
+    <version>7.4</version>
+    <time>1241131907</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="124" vrev="37">
+    <srcmd5>175cda9a32f0b75e9fc5db266feec923</srcmd5>
+    <version>7.4</version>
+    <time>1243545647</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="125" vrev="38">
+    <srcmd5>5c042aecfbb954ab79d60e6cb7cb19d5</srcmd5>
+    <version>7.4</version>
+    <time>1243983506</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="126" vrev="39">
+    <srcmd5>85893cb381a9afc8987f8163cd8532d0</srcmd5>
+    <version>7.4</version>
+    <time>1244236101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="127" vrev="40">
+    <srcmd5>572dba0ffd6ad87211ef58b30a823581</srcmd5>
+    <version>7.4</version>
+    <time>1244243576</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="128" vrev="41">
+    <srcmd5>06a2ac160fb6927fa3b84f36df094e7c</srcmd5>
+    <version>7.4</version>
+    <time>1244562787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="129" vrev="42">
+    <srcmd5>3adcb96b4830ab9e89d50cecfcdedbe5</srcmd5>
+    <version>7.4</version>
+    <time>1244822694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="130" vrev="43">
+    <srcmd5>77fd60f18fd583cb0f1a941e357622c2</srcmd5>
+    <version>7.4</version>
+    <time>1245456339</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="131" vrev="44">
+    <srcmd5>6d41ff0ff78f2de626b56a82434c102d</srcmd5>
+    <version>7.4</version>
+    <time>1246287474</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="132" vrev="45">
+    <srcmd5>8d89ea0f00d103ecb688211e51dfd40b</srcmd5>
+    <version>7.4</version>
+    <time>1246631296</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="133" vrev="46">
+    <srcmd5>cb84180a348814e52320b0892a016025</srcmd5>
+    <version>7.4</version>
+    <time>1247090541</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="134" vrev="47">
+    <srcmd5>a3a05e6ad5c70a2e1cee64ab8e30f079</srcmd5>
+    <version>7.4</version>
+    <time>1249317456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="135" vrev="48">
+    <srcmd5>19b0caeb6c05bed683177d7d57a2d06e</srcmd5>
+    <version>7.4</version>
+    <time>1249415536</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="136" vrev="49">
+    <srcmd5>33416499c6835b370f69a919ece1a07b</srcmd5>
+    <version>7.4</version>
+    <time>1250088656</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 17483 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="137" vrev="50">
+    <srcmd5>30d1b3b7700ba6332a5c1e8a4e3cfa79</srcmd5>
+    <version>7.4</version>
+    <time>1250211338</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 17751 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="138" vrev="51">
+    <srcmd5>5e4228c1852b9585ac6fbf321be7113d</srcmd5>
+    <version>7.4</version>
+    <time>1251484220</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 19080 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="139" vrev="52">
+    <srcmd5>53980fcd8617e42dae54bc9053179340</srcmd5>
+    <version>7.4</version>
+    <time>1252580070</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 20273 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="140" vrev="53">
+    <srcmd5>f4d259c0faba5ea5b79a3c87d0451add</srcmd5>
+    <version>7.4</version>
+    <time>1253136007</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 20317 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="141" vrev="54">
+    <srcmd5>a466a6bdfebc48ad4bcc96e01f98cdaf</srcmd5>
+    <version>7.4</version>
+    <time>1253656655</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 20674 from user mhopf
+</comment>
+  </revision>
+  <revision rev="142" vrev="55">
+    <srcmd5>14cd50e16d1d6240255ca535788ae34e</srcmd5>
+    <version>7.4</version>
+    <time>1254228572</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 21255 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="143" vrev="56">
+    <srcmd5>321fd63bc37a4f2c895980faf39fd30d</srcmd5>
+    <version>7.4</version>
+    <time>1254255771</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 21377 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="144" vrev="57">
+    <srcmd5>036d1eca8b70339cfc75a21fa4704ee7</srcmd5>
+    <version>7.4</version>
+    <time>1254524115</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 21450 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="145" vrev="58">
+    <srcmd5>9b341f28722c5dd01732cd9c75f95e4e</srcmd5>
+    <version>7.4</version>
+    <time>1254958146</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 21946 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="146" vrev="59">
+    <srcmd5>11fe7da388bd48cff48dd21666b15437</srcmd5>
+    <version>7.4</version>
+    <time>1255342518</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 22138 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="147" vrev="60">
+    <srcmd5>f214a0eaa745caf283a2a9edff445a63</srcmd5>
+    <version>7.4</version>
+    <time>1255374208</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 22294 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="148" vrev="62">
+    <srcmd5>f214a0eaa745caf283a2a9edff445a63</srcmd5>
+    <version>7.4</version>
+    <time>1255374208</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 22294 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="149" vrev="63">
+    <srcmd5>ab576a5573e3d7ca02afef2d60ba1bfd</srcmd5>
+    <version>7.4</version>
+    <time>1256083609</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 22584 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="150" vrev="64">
+    <srcmd5>dc06d333e71df290df1b224199c7d9dd</srcmd5>
+    <version>7.4</version>
+    <time>1257162484</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 23559 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="151" vrev="65">
+    <srcmd5>872ceb60dec25bcfa609c82216c92f3f</srcmd5>
+    <version>7.4</version>
+    <time>1259753315</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 25245 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="152" vrev="66">
+    <srcmd5>8eaf3ccea84a86ca600ae87adde80133</srcmd5>
+    <version>7.4</version>
+    <time>1260954441</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 26343 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="153" vrev="67">
+    <srcmd5>cd9c2ea676462946a06a8fd60e77a6f4</srcmd5>
+    <version>7.4</version>
+    <time>1263819842</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 29877 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="154" vrev="68">
+    <srcmd5>7856257c308f6f5861626b2011f8b68b</srcmd5>
+    <version>7.4</version>
+    <time>1266508607</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 32619 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="155" vrev="69">
+    <srcmd5>d686fdedfc79ff5b23d5bedd416c46ff</srcmd5>
+    <version>7.4</version>
+    <time>1266975255</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 32986 from user sndirsch
+</comment>
+    <requestid>32986</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>d7549656e3950c3837f4c1b173f38374</srcmd5>
+    <version>7.5_1.7.6</version>
+    <time>1268831415</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 35020 from user sndirsch
+</comment>
+    <requestid>35020</requestid>
+  </revision>
+  <revision rev="157" vrev="2">
+    <srcmd5>99639ede906f9a8ce515fbdc2b3b6664</srcmd5>
+    <version>7.5_1.7.6</version>
+    <time>1268926665</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>688b4dfd8f1bdde489096705f562cbdf</srcmd5>
+    <version>7.5_1.7.99.902</version>
+    <time>1269563266</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 35701 from user sndirsch
+</comment>
+    <requestid>35701</requestid>
+  </revision>
+  <revision rev="159" vrev="2">
+    <srcmd5>bf408b03090fa175660413cbade020dc</srcmd5>
+    <version>7.5_1.7.99.902</version>
+    <time>1269616928</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 35764 from user sndirsch
+</comment>
+    <requestid>35764</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>799545aaa7f7f004562335c94ef8e560</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1270246328</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 36767 from user sndirsch
+</comment>
+    <requestid>36767</requestid>
+  </revision>
+  <revision rev="161" vrev="2">
+    <srcmd5>dba685d7eb70821c2fb0dddbd5663431</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1270597952</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 37142 from user sndirsch
+</comment>
+    <requestid>37142</requestid>
+  </revision>
+  <revision rev="162" vrev="3">
+    <srcmd5>08c142812d05b0df7380f16428155d81</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1270723105</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 37343 from user sndirsch
+</comment>
+    <requestid>37343</requestid>
+  </revision>
+  <revision rev="163" vrev="4">
+    <srcmd5>609af33f8d5a3e03e48371aa41780c23</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1271185720</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 37642 from user sndirsch
+</comment>
+    <requestid>37642</requestid>
+  </revision>
+  <revision rev="164" vrev="5">
+    <srcmd5>c9516acf085140397f4d8cb231ac6d4c</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1271865519</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 38450 from user sndirsch
+</comment>
+    <requestid>38450</requestid>
+  </revision>
+  <revision rev="165" vrev="6">
+    <srcmd5>e27fe7434dc25a298ecd472d7066d46d</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1272316584</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 38875 from user sndirsch
+</comment>
+    <requestid>38875</requestid>
+  </revision>
+  <revision rev="166" vrev="7">
+    <srcmd5>921ed1615712095d8c4d04b511712f20</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1273789993</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 39692 from user sndirsch
+</comment>
+    <requestid>39692</requestid>
+  </revision>
+  <revision rev="167" vrev="8">
+    <srcmd5>5f9d31e93db41a1386be31c0ae9684dc</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1275259231</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 40839 from user sndirsch
+</comment>
+    <requestid>40839</requestid>
+  </revision>
+  <revision rev="168" vrev="9">
+    <srcmd5>6d2bd074d56eeadae2cb5cfb6c572546</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1277828810</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 42215 from user sndirsch
+</comment>
+    <requestid>42215</requestid>
+  </revision>
+  <revision rev="169" vrev="10">
+    <srcmd5>6d2bd074d56eeadae2cb5cfb6c572546</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="170" vrev="11">
+    <srcmd5>6d2bd074d56eeadae2cb5cfb6c572546</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1278678631</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="171" vrev="12">
+    <srcmd5>9a654270e0bd61effb59f24f1c3ecb60</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1279563488</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 43290 from user sndirsch
+</comment>
+    <requestid>43290</requestid>
+  </revision>
+  <revision rev="172" vrev="13">
+    <srcmd5>30156c207fd04e37900229a3a60a5c14</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1280955941</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 44522 from user sndirsch
+</comment>
+    <requestid>44522</requestid>
+  </revision>
+  <revision rev="173" vrev="14">
+    <srcmd5>ab505c39d41d64ddf645f130ad4806bc</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1281401664</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 45200 from user sndirsch
+</comment>
+    <requestid>45200</requestid>
+  </revision>
+  <revision rev="174" vrev="15">
+    <srcmd5>cfb35d1fc01c3b33b9a54ec8b191c154</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1281659472</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 45319 from user sndirsch
+</comment>
+    <requestid>45319</requestid>
+  </revision>
+  <revision rev="175" vrev="16">
+    <srcmd5>b99daf562f7d72315871917548b34730</srcmd5>
+    <version>7.5_1.8.0</version>
+    <time>1282570329</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 45855 from user sndirsch
+</comment>
+    <requestid>45855</requestid>
+  </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>858feff313dc0fa9b0bf6e5ac8eadaae</srcmd5>
+    <version>7.5_1.9.0</version>
+    <time>1282813767</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 46214 from user sndirsch
+</comment>
+    <requestid>46214</requestid>
+  </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>5d62f00247ab16dba731283c5fe1b829</srcmd5>
+    <version>7.5_1.9.0.901</version>
+    <time>1286047909</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 49655 from user sndirsch
+</comment>
+    <requestid>49655</requestid>
+  </revision>
+  <revision rev="178" vrev="2">
+    <srcmd5>164764423a94ec3139521486578b384b</srcmd5>
+    <version>7.5_1.9.0.901</version>
+    <time>1287153876</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 50817 from user sndirsch
+</comment>
+    <requestid>50817</requestid>
+  </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>3fb372a08339603385811c0b5ed67065</srcmd5>
+    <version>7.5_1.9.0.902</version>
+    <time>1287224723</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-server based on submit request 50847 from user sndirsch
+</comment>
+    <requestid>50847</requestid>
+  </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>f5650cbadb44cd56c77286f70a4d68dc</srcmd5>
+    <version>7.5_1.9.1</version>
+    <time>1287959142</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51315 from user sndirsch
+</comment>
+    <requestid>51315</requestid>
+  </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>9d31f813ac83e1279b3735452f10bf6e</srcmd5>
+    <version>7.5_1.9.2</version>
+    <time>1288699478</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51951 from user sndirsch
+</comment>
+    <requestid>51951</requestid>
+  </revision>
+  <revision rev="182" vrev="2">
+    <srcmd5>a553d93a3259791b81c521001ef830d0</srcmd5>
+    <version>7.5_1.9.2</version>
+    <time>1288699484</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51951
+</comment>
+  </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>44350072a02a3b6f2a89b5dceb3fcd2a</srcmd5>
+    <version>7.5_1.9.2.901</version>
+    <time>1289831681</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52977 from user sndirsch
+</comment>
+    <requestid>52977</requestid>
+  </revision>
+  <revision rev="184" vrev="2">
+    <srcmd5>7cc0aaa20fadc587f80090d3142dad35</srcmd5>
+    <version>7.5_1.9.2.901</version>
+    <time>1289831692</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52977
+</comment>
+  </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>f4cea0b2ae71e7cf391d076efd91c0bf</srcmd5>
+    <version>7.5_1.9.2.902</version>
+    <time>1291586374</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54746 from user sndirsch
+</comment>
+    <requestid>54746</requestid>
+  </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>2256afa40bc3d320e29248f59a3ddb40</srcmd5>
+    <version>7.5_1.9.3</version>
+    <time>1292768743</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 55907 from user sndirsch
+</comment>
+    <requestid>55907</requestid>
+  </revision>
+  <revision rev="187" vrev="2">
+    <srcmd5>f8700202d83af3d035cc4fbb4e5d0d1e</srcmd5>
+    <version>7.5_1.9.3</version>
+    <time>1292844435</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56369 from user sndirsch
+</comment>
+    <requestid>56369</requestid>
+  </revision>
+  <revision rev="188" vrev="3">
+    <srcmd5>739efb80cbb5275bab436430fe3c1917</srcmd5>
+    <version>7.5_1.9.3</version>
+    <time>1292844444</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56369
+</comment>
+  </revision>
+  <revision rev="189" vrev="2">
+    <srcmd5>66975e364df785d477f56724a62e6b06</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1293579836</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56775 from user sndirsch
+</comment>
+    <requestid>56775</requestid>
+  </revision>
+  <revision rev="190" vrev="3">
+    <srcmd5>78aba0c31b6558c140624668a350563d</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1293579850</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56775
+</comment>
+  </revision>
+  <revision rev="191" vrev="4">
+    <srcmd5>3d7ab0c98549c0a1637d52b87f0ebb33</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1294047824</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56994 from user sndirsch
+</comment>
+    <requestid>56994</requestid>
+  </revision>
+  <revision rev="192" vrev="5">
+    <srcmd5>e2183a43fb6eacaf69257f76ff0c515c</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1294047831</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56994
+</comment>
+  </revision>
+  <revision rev="193" vrev="6">
+    <srcmd5>faea5750c45d2a8f14954daf85683c9a</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1294653483</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57566 from user sndirsch
+</comment>
+    <requestid>57566</requestid>
+  </revision>
+  <revision rev="194" vrev="7">
+    <srcmd5>391e08859762540b7a8e83af80b43575</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1294653495</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57566
+</comment>
+  </revision>
+  <revision rev="195" vrev="8">
+    <srcmd5>d242a5bf91bfadd1a3155e05f8746c3b</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1294819268</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57766 from user sndirsch
+</comment>
+    <requestid>57766</requestid>
+  </revision>
+  <revision rev="196" vrev="9">
+    <srcmd5>1b44432ab3acaeb800741e86e389e7b5</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1294819281</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57766
+</comment>
+  </revision>
+  <revision rev="197" vrev="10">
+    <srcmd5>e3b4d45710c0afabaf4dff54ce735028</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1296767306</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59951 from user sndirsch
+</comment>
+    <requestid>59951</requestid>
+  </revision>
+  <revision rev="198" vrev="11">
+    <srcmd5>a5f0c109a758142279df09418612a3ea</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1296767314</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59951
+</comment>
+  </revision>
+  <revision rev="199" vrev="12">
+    <srcmd5>89c49a762ee39a9d58ab9f52a3215ebc</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1297509330</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60616 from user sndirsch
+</comment>
+    <requestid>60616</requestid>
+  </revision>
+  <revision rev="200" vrev="13">
+    <srcmd5>f61db2cae30b7e1838469945b1b59a2b</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1297509337</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60616
+</comment>
+  </revision>
+  <revision rev="201" vrev="16">
+    <srcmd5>f61db2cae30b7e1838469945b1b59a2b</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="202" vrev="17">
+    <srcmd5>ab306924632a6db38c66be446b79e454</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1298028652</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61231 from user mhopf
+</comment>
+    <requestid>61231</requestid>
+  </revision>
+  <revision rev="203" vrev="18">
+    <srcmd5>1bd244e0970b72ed2c485a206318023d</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1298028660</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61231
+</comment>
+  </revision>
+  <revision rev="204" vrev="19">
+    <srcmd5>fa0e7b4dd8b81aa7f6e66418edb33dee</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1298810288</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62916 from user sndirsch
+</comment>
+    <requestid>62916</requestid>
+  </revision>
+  <revision rev="205" vrev="20">
+    <srcmd5>dca9245939c5a539ed918dfdc09f23f0</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1298810299</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62916
+</comment>
+  </revision>
+  <revision rev="206" vrev="21">
+    <srcmd5>f836e888a89fdbb133d3be7c6b2a7f54</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1300438273</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64441 from user sndirsch
+</comment>
+    <requestid>64441</requestid>
+  </revision>
+  <revision rev="207" vrev="22">
+    <srcmd5>81d89d3c3217a84c05567e8874737775</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1300438281</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64441
+</comment>
+  </revision>
+  <revision rev="208" vrev="23">
+    <srcmd5>d4623c10e76e39eb118435c1144be3ce</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1301559930</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65325 from user coolo
+</comment>
+    <requestid>65325</requestid>
+  </revision>
+  <revision rev="209" vrev="24">
+    <srcmd5>eaba07c10d48a3e7a33a7986604a0257</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1301559942</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65325
+</comment>
+  </revision>
+  <revision rev="210" vrev="25">
+    <srcmd5>90a53dcbc8826934795ba075b559c6af</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1302764884</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66910 from user coolo
+</comment>
+    <requestid>66910</requestid>
+  </revision>
+  <revision rev="211" vrev="26">
+    <srcmd5>15b7a1b8b2acdb1da2159a6bfd58b289</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1302764893</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66910
+</comment>
+  </revision>
+  <revision rev="212" vrev="27">
+    <srcmd5>fd6f38240d3b3ec3d5add2ae0eb52270</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1303505468</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 68098 from user coolo
+</comment>
+    <requestid>68098</requestid>
+  </revision>
+  <revision rev="213" vrev="28">
+    <srcmd5>f2866416ef2d0c68838d887b30712124</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1303505483</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 68098
+</comment>
+  </revision>
+  <revision rev="214" vrev="29">
+    <srcmd5>5538940e35db5db27bde40768ff2618e</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1306912894</time>
+    <user>saschpe</user>
+    <comment>- xorg-server-xf4vnc-fix-keyboard-layout-handling.diff
+  Consolidate adapted patches for bugs 400520, 605015, and 660797 into
+  single patch:
+  - xorg-server-xf4vnc-bug660797-fix-keycode-lookup-and-isolevel3shift.diff
+  - xorg-server-xf4vnc-bug660797-multilayout.diff
+  - xorg-server-xf4vnc-bug605015-fix-keyboard-handling-xinput.diff
+- Fix *major* memory leak introduced by original 1.9 enabling patch
+
+- xorg-server-xf4vnc-bug660797-multilayout.diff
+  - bnc #605015, 660797, fallout of fix from May 10:
+    Keyboard handling was not XKB aware, which lead to a multitude of issues.
+    Situation with this patch is not perfect, but way better.
+
+- xorg-server-xf4vnc-bug660797-fix-keycode-lookup-and-isolevel3shift.diff
+  - bnc #400520, fallout of previous fix:
+    Analysis for shift/level3 event faking was broken, leading to e.g
+    Shift+PgUp not being recognized correctly.</comment>
+    <requestid>72269</requestid>
+  </revision>
+  <revision rev="215" vrev="30">
+    <srcmd5>cc46720b27c9fcd96e71a080b923a88e</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1306912904</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72269
+</comment>
+  </revision>
+  <revision rev="216" vrev="31">
+    <srcmd5>512822492e9e229d2a9afd8afb1992db</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1311754056</time>
+    <user>saschpe</user>
+    <comment>- update:
+  * randr1_1-sig11.diff
+    removed accidentally forgotten debugging code.
+  * u_OS-acpi-Reconnect-to-acpid-when-it-gets-restarted.patch
+    made socket non-blocking. Idea taken from a pach for SLES11.
+
+- don't look for 10-evdev.conf for anything older than 11.3
+  (this includes SLE-11).
+
+- remove use-last-screen.patch:
+  This patch has been rejected upstream. We will try to resolve
+  this issue differently by not providing any screen, monitor or
+  device section.
+
+- remove disable-fbblt-opt.diff:
+  We are unable to reproduce this issue any more.
+  So let's remove the workaround and start from scratch
+  when issue resurfaces and find a proper fix. 
+
+- fixed bug-197858_dpms.diff:
+  removed pieces that have been solved differently today.
+
+- remove moblin-use_preferred_mode_for_all_outputs.diff:
+  remove moblin specific patches.
+
+- rename edit_data_sanity_check.diff -&gt; edid_data_sanity_check.diff
+
+- remove p_xkills_wrong_client.diff:
+  made obsolete by commit b7f3618f.</comment>
+    <requestid>77125</requestid>
+  </revision>
+  <revision rev="217" vrev="32">
+    <srcmd5>25e7cef1105540785852bd2b9a91df8b</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1311754067</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77125
+</comment>
+  </revision>
+  <revision rev="218" vrev="33">
+    <srcmd5>2b00b1706be99872a13e75505af18d55</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1314881927</time>
+    <user>saschpe</user>
+    <comment>- U_xserver_fix-pixmaps-lifetime-tracking.patch
+  * avoid crash when enabling the desktop icons in gnome3
+   (bnc#701199)
+
+- u_xf4nvc_missing-libz.patch
+  * Xvnc no longer can rely on the toolchain to add the required
+    libs, it uses directly.</comment>
+    <requestid>80236</requestid>
+  </revision>
+  <revision rev="219" vrev="34">
+    <srcmd5>a5b9dce9659882aaba4a0516dd6771e6</srcmd5>
+    <version>7.6_1.9.3</version>
+    <time>1314881937</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80236
+</comment>
+  </revision>
+  <revision rev="220" vrev="33">
+    <srcmd5>4cad9e19bf2c8546e43e74b56c56223c</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1315816739</time>
+    <user>saschpe</user>
+    <comment>- update to xorg-server 1.10.4
+- VNC patches completely redone by Egbert Eich (N-VNC-*)
+- Xvnc-pthread.diff: small buildfix required for factory
+- removed obsolete patches
+  * EXA-mixed-ModifyPixmapHeader-pitch-fixes.-bug-33929.patch
+  * Replace-malloc-with-calloc-to-initialize-the-buffers.patch
+  * U_xserver_fix-pixmaps-lifetime-tracking.patch
+  * commit-5c6a2f9.diff
+  * pad-size-of-system-memory-copy-for-1x1-pixmaps
+  * record-avoid-crash-when-calling-RecordFlushReplyBuff.patch
+  * xorg-server-stop-cpu-eating.diff
+- adjusted patches
+  * bug534768-prefer_local_symbols.patch
+  * zap_warning_xserver.diff
+- disabled patches for now
+  * 0001-Xinput-Catch-missing-configlayout-when-deleting-dev.patch
+  * cache-xkbcomp-output-for-fast-start-up.patch
+  * xserver-bg-none-root.patch
+  * 0001-Prevent-XSync-Alarms-from-senslessly-calling-CheckTr.patch
+-  set VIDEO_ABI_VERSION = 10 and INPUT_ABI_VERSION = 12 in specfile</comment>
+    <requestid>81831</requestid>
+  </revision>
+  <revision rev="221" vrev="34">
+    <srcmd5>3c81d8e5df4a51bcca9291de1de889b0</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1315816747</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81831
+</comment>
+  </revision>
+  <revision rev="222" vrev="35">
+    <srcmd5>962dff0358f0de2402df97f1814c8453</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1319024170</time>
+    <user>coolo</user>
+    <comment>- U_Don-t-call-deleted-Block-WakeupHandler.patch:
+  Don't call deleted Bloxk/WakeupHandler() - this avoids
+  crashes when handlers are unregistered from within a handler
+  which are in the call chain behind the current handler
+  (bnc #723777).
+
+- zap_warning_xserver.diff:
+  Fix man page to match changed behavior.</comment>
+    <requestid>88656</requestid>
+  </revision>
+  <revision rev="223" vrev="37">
+    <srcmd5>962dff0358f0de2402df97f1814c8453</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1319182610</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="224" vrev="38">
+    <srcmd5>e5c0175390183161ce3b3e8bc067cfeb</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1320937705</time>
+    <user>coolo</user>
+    <comment>- u_record-fix-sig11.patch
+  * If you aren't using the Record extension (and you aren't), you
+    can work around the bug by moving the code which accesses the
+    (non-existant) request buffer inside the loop looking at the
+    recording contexts (of which there should be none). 
+    (bnc #728964, fdo #36930)</comment>
+    <requestid>90845</requestid>
+  </revision>
+  <revision rev="225" vrev="39">
+    <srcmd5>526d6b191cb3209a7ea8cb0e7911e5c3</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1322073535</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency</comment>
+    <requestid>93255</requestid>
+  </revision>
+  <revision rev="226" vrev="40">
+    <srcmd5>30e335922d2eaaa93d69f038f7a5b78d</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1322814527</time>
+    <user>coolo</user>
+    <comment>- also package list.h in s390 so that sax2-tools can build
+
+- complete s390 fixes 
+
+- fix build on s390/s390x</comment>
+    <requestid>94696</requestid>
+  </revision>
+  <revision rev="227" vrev="41">
+    <srcmd5>268e8c7a74e3697206940b4b870ea729</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1323195456</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="228" vrev="42">
+    <srcmd5>aa466945ad6c227113f9f538ad69dc6f</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1326448841</time>
+    <user>coolo</user>
+    <comment>- U_dix-send-focus-events-to-the-immediate-parent-44079.patch/
+  U_dix-on-PointerRootWin-send-a-FocusIn-to-the-sprite-w.patch
+  * fixed very visible bug in XI2 handling exposed by a gtk+
+    bugfix (bnc #740332, fdo #44079)</comment>
+    <requestid>100026</requestid>
+  </revision>
+  <revision rev="229" vrev="43">
+    <srcmd5>1a3f47519c8de2adfcb5cd906bb11287</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1326965726</time>
+    <user>coolo</user>
+    <comment>- added /usr/share/fonts/misc/sgi to Xserver core font rendering
+  fontpath (bnc#738961)</comment>
+    <requestid>100555</requestid>
+  </revision>
+  <revision rev="230" vrev="44">
+    <srcmd5>4474c22f43cfe69fd2741168880c07a2</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1329477077</time>
+    <user>coolo</user>
+    <comment>- fixed buildreqs due to splitted xorg-x11-libs</comment>
+    <requestid>105541</requestid>
+  </revision>
+  <revision rev="231" vrev="45">
+    <srcmd5>fd8267acef5f916322158b3a268382f2</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1331039238</time>
+    <user>coolo</user>
+    <comment>- fixed buildreqs due to reorganization of libvnc/vncproto</comment>
+    <requestid>107479</requestid>
+  </revision>
+  <revision rev="232" vrev="46">
+    <srcmd5>a449d026196a1ce475d39a4b6dc9861c</srcmd5>
+    <version>7.6_1.10.4</version>
+    <time>1332511910</time>
+    <user>coolo</user>
+    <comment>- Parallel build with %_smp_mflags; strip redundant sections/tags
+- Use pkgconfig symbols for BuildRequires/Requires</comment>
+    <requestid>110728</requestid>
+  </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>0e59dcfbc4e5b3c8a655c863a7792149</srcmd5>
+    <version>7.6_1.12.1</version>
+    <time>1336471599</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115487</requestid>
+  </revision>
+  <revision rev="234" vrev="2">
+    <srcmd5>32d6b51467383d931d43739352f6775a</srcmd5>
+    <version>7.6_1.12.1</version>
+    <time>1337580298</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121271</requestid>
+  </revision>
+  <revision rev="235" vrev="3">
+    <srcmd5>46e1e279dda0a5334f6c8434f76a3398</srcmd5>
+    <version>7.6_1.12.1</version>
+    <time>1338284254</time>
+    <user>coolo</user>
+    <comment>- no longer use obsolete %run_permissions; replaced it by 
+  %set_permissions (bnc#764101)
+
+- added patches to implement GLX_ARB_create_context extensions
+  required for OpenGL 3.0 support (not upstream yet)</comment>
+    <requestid>122414</requestid>
+  </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>b2c002ed9c7b4635bb61b9cbfbe59e9d</srcmd5>
+    <version>7.6_1.12.2</version>
+    <time>1338569662</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.12.2</comment>
+    <requestid>122974</requestid>
+  </revision>
+  <revision rev="237" vrev="2">
+    <srcmd5>70ad0446fdeb85b9a8b31450caedf257</srcmd5>
+    <version>7.6_1.12.2</version>
+    <time>1339362033</time>
+    <user>coolo</user>
+    <comment>- let xorg-x11-server require Mesa, since that package includes
+  the DRI drivers (including the &quot;swrast&quot; DRI driver for software
+  rendering), which are required by GLX and AIGLX extensions
+  (bnc#765241)</comment>
+    <requestid>124234</requestid>
+  </revision>
+  <revision rev="238" vrev="3">
+    <srcmd5>a7b864a56a61bd83b161fabcaf0b223a</srcmd5>
+    <version>7.6_1.12.2</version>
+    <time>1339707283</time>
+    <user>coolo</user>
+    <comment>- change xorg-x11 requires to a requires for xkbcomp (xorg-x11 is
+  meanwhile a meta package, which requires any X sample app
+  package); background: Xserver uses xkbcomp on startup for
+  creating the cache file for xkb keyboard map.</comment>
+    <requestid>125007</requestid>
+  </revision>
+  <revision rev="239" vrev="5">
+    <srcmd5>a7b864a56a61bd83b161fabcaf0b223a</srcmd5>
+    <version>7.6_1.12.2</version>
+    <time>1340184379</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="240" vrev="6">
+    <srcmd5>d722a8353283ecdbc222d123b3a73571</srcmd5>
+    <version>7.6_1.12.2</version>
+    <time>1340725393</time>
+    <user>coolo</user>
+    <comment>- removed redundant buildrequires to xorg-x11 meta package</comment>
+    <requestid>126161</requestid>
+  </revision>
+  <revision rev="241" vrev="1">
+    <srcmd5>bd88e20dd8e4623b6c601fc41dd7f980</srcmd5>
+    <version>7.6_1.12.3</version>
+    <time>1341922692</time>
+    <user>coolo</user>
+    <comment>Update of the Xorg Server 1.12 Branch to 1.12.3 (forwarded request 127434 from &amp;lt;bound method Request.get_creator of &amp;lt;osc.core.Request instance at 0x1d91830&amp;gt;&amp;gt;)</comment>
+    <requestid>127467</requestid>
+  </revision>
+  <revision rev="242" vrev="2">
+    <srcmd5>41ea0bf74ffe6b86ddae6d935a9a8301</srcmd5>
+    <version>7.6_1.12.3</version>
+    <time>1342626792</time>
+    <user>coolo</user>
+    <comment>- renamed patches of previous change according to our policy
+  u_* --&gt; U_* (since these were rebased on upstream patches) 
+
+- Add patches u_dri2_add_DRI2CreateDrawable2.patch and 
+  u_0012-glx_Free_reference_to_destroyed_GLX_drawable.patch to fix
+  seemingly random crashes of the X stack [bnc#769553]; patches
+  came from upstream git commits, and were rebased to apply to
+  present version cleanly.</comment>
+    <requestid>128078</requestid>
+  </revision>
+  <revision rev="243" vrev="3">
+    <srcmd5>9681653fd64f774aa3a2c53a1424d622</srcmd5>
+    <version>7.6_1.12.3</version>
+    <time>1343033216</time>
+    <user>coolo</user>
+    <comment>- u_Do-not-use-intel-driver-on-Poulsbo-Oaktrail-Medfield.patch
+  * Do not use intel driver on Poulsbo, Oaktrail, Medfield, CDV.
+    IDs stolen from Kernel psb driver. (bnc#772279)
+  * obsoletes xorg-detect-psb.patch</comment>
+    <requestid>128620</requestid>
+  </revision>
+  <revision rev="244" vrev="1">
+    <srcmd5>b575d19765b149765e94e9b37b807799</srcmd5>
+    <version>7.6_1.13.0</version>
+    <time>1347723078</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134022</requestid>
+  </revision>
+  <revision rev="245" vrev="2">
+    <srcmd5>44f2e1f6f09b5f2f9409122a1e0b451c</srcmd5>
+    <version>7.6_1.13.0</version>
+    <time>1348574684</time>
+    <user>coolo</user>
+    <comment>- N_driver-autoconfig.diff
+  * &quot;ati&quot; needs to be the second choice right after &quot;fglrx&quot;; there
+    must not be a gap between &quot;fglrx&quot; and &quot;ati&quot; introduced by 
+    removing &quot;radeonhd&quot; from this list by the previous change
+
+- N_driver-autoconfig.diff:
+  * removed radeonhd and unichrome from driver list, since no
+    longer supported upstream</comment>
+    <requestid>135792</requestid>
+  </revision>
+  <revision rev="246" vrev="3">
+    <srcmd5>c53d158ea808d1acc8248be3860848a3</srcmd5>
+    <version>7.6_1.13.0</version>
+    <time>1349252269</time>
+    <user>coolo</user>
+    <comment>(see https://bugzilla.novell.com/show_bug.cgi?id=632737#c27 for details)
+
+- /usr/bin/Xorg is no longer listed in /etc/permissions - remove 
+  %set_permissions and %verify_permissions and re-enable rpm permission
+  check (bnc#632737 #c27) (forwarded request 135729 from cboltz)</comment>
+    <requestid>136543</requestid>
+  </revision>
+  <revision rev="247" vrev="4">
+    <srcmd5>b065cabf850431c804a4bfcf96d9b505</srcmd5>
+    <version>7.6_1.13.0</version>
+    <time>1350385126</time>
+    <user>coolo</user>
+    <comment>- u_vgaHW-no-legacy.patch
+  * likely fixes build on ppc</comment>
+    <requestid>138209</requestid>
+  </revision>
+  <revision rev="248" vrev="5">
+    <srcmd5>bb1c9c654feaabacaf7b4866dfa1eccc</srcmd5>
+    <version>7.6_1.13.0</version>
+    <time>1351663463</time>
+    <user>coolo</user>
+    <comment>- U_EXA-Track-source-mask-pixmaps-more-explicitly-for-Co.patch
+  Track source/mask pixmaps more explicitly for Composite fallback regions.
+  In particular, make sure pExaScr-&gt;src/maskPix are cleared when the
+  corresponding pictures aren't associated with drawables, i.e. solid or
+  gradient pictures. Without this, we would in some cases associate the
+  source/mask region with unrelated pixmaps from previous Composite
+  fallbacks, resulting in random corruption. (bnc#786153, fdo#47266)</comment>
+    <requestid>139765</requestid>
+  </revision>
+  <revision rev="249" vrev="6">
+    <srcmd5>1a7898e5074be705b99a12527dd25efb</srcmd5>
+    <version>7.6_1.13.0</version>
+    <time>1354888742</time>
+    <user>namtrac</user>
+    <comment>- Let the old Xfig program find the ghostscript fonts (bnc#784305) 
+
+- Update N_autoconfig_fallback_fbdev_first.diff to ensure
+  modesetting driver is used before fbdev.</comment>
+    <requestid>144524</requestid>
+  </revision>
+  <revision rev="250" vrev="1">
+    <srcmd5>a8c4efb6bd17c7f2e3b5edb525708ff4</srcmd5>
+    <version>7.6_1.13.1</version>
+    <time>1355925087</time>
+    <user>coolo</user>
+    <comment>Update to version 1.13.1
+
+Can we safely remove the unused VNC patches now? (forwarded request 145459 from tobijk)</comment>
+    <requestid>145663</requestid>
+  </revision>
+  <revision rev="251" vrev="2">
+    <srcmd5>a9fe8fb3e477cf2150c52dee5efcbe2e</srcmd5>
+    <version>7.6_1.13.1</version>
+    <time>1357829989</time>
+    <user>coolo</user>
+    <comment>- let xorg-x11-server require xkeyboard-config again, since Xvfb
+  is part of this package and requires keyboard files as well
+  (bnc#797124)</comment>
+    <requestid>147513</requestid>
+  </revision>
+  <revision rev="252" vrev="3">
+    <srcmd5>6a68f286c9a349231c833eebde671905</srcmd5>
+    <version>7.6_1.13.1</version>
+    <time>1358417173</time>
+    <user>coolo</user>
+    <comment>- disabled build of VNC (xf4vnc), which finally has been replaced
+  by the seperate xorg-x11-Xvnc source package (tigervnc)</comment>
+    <requestid>148390</requestid>
+  </revision>
+  <revision rev="253" vrev="5">
+    <srcmd5>6a68f286c9a349231c833eebde671905</srcmd5>
+    <version>7.6_1.13.1</version>
+    <time>1359110674</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>cd023d0483de57d70105fd251495deb2</srcmd5>
+    <version>7.6_1.13.2</version>
+    <time>1359731751</time>
+    <user>coolo</user>
+    <comment>Update to version 1.13.2 (forwarded request 150627 from tobijk)</comment>
+    <requestid>150729</requestid>
+  </revision>
+  <revision rev="255" vrev="2">
+    <srcmd5>56ecb69e6c28c3249d84d1e068c9a5f3</srcmd5>
+    <version>7.6_1.13.2</version>
+    <time>1361440001</time>
+    <user>coolo</user>
+    <comment>- added u_init_framebuffer_base.patch: initialize buffer.base to fix 
+  Xorg segfault in virtualbox guest (bnc#799480)</comment>
+    <requestid>155904</requestid>
+  </revision>
+  <revision rev="256" vrev="3">
+    <srcmd5>58039ba1f0328413fea4fdb0d93f02ca</srcmd5>
+    <version>7.6_1.13.2</version>
+    <time>1362733108</time>
+    <user>coolo</user>
+    <comment>- u_aarch64-support.patch: Basic support for aarch64. (forwarded request 157838 from Andreas_Schwab)</comment>
+    <requestid>157850</requestid>
+  </revision>
+  <revision rev="257" vrev="1">
+    <srcmd5>7dfc6e69295ad43d9938ca12d56ac1bb</srcmd5>
+    <version>7.6_1.14.0</version>
+    <time>1363340953</time>
+    <user>coolo</user>
+    <comment>- rebased u_aarch64-support.patch and reenabled it 
+
+- u_aarch64-support.patch: Basic support for aarch64 disabled for
+  the initial build of 1.14.0!
+
+- Update to version 1.14.0:
+  Here's the 1.14 X server release; the last couple of weeks
+  yielded a couple of useful bug fixes, but nothing that earth
+  shattering.
+  + a bunch of fixes to the touch device
+  + a few fixes to the GPU hotplug bits
+  + software rendering speedups (due to using the new pixman APIs)
+  + elimination of a lot of warning messages (we've still too many)
+  + pointer barriers work
+There are lots of other fixes too, as always thanks to all who provided
+patches, review and comments for this release!
+
+- Update to version 1.14 RC2 1.13.99.902:
+  + Remove upstreamed patches:
+  u_Do-not-use-intel-driver-on-Poulsbo-Oaktrail-Medfield.patch (patch225)</comment>
+    <requestid>159248</requestid>
+  </revision>
+  <revision rev="258" vrev="4">
+    <srcmd5>1412897478efb086b5814d5b51be949c</srcmd5>
+    <version>7.6_1.13.2</version>
+    <time>1363596852</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:xorg-x11-server revision:256</comment>
+  </revision>
+  <revision rev="259" vrev="2">
+    <srcmd5>18941cd8681296c4b0e3a83e21405955</srcmd5>
+    <version>7.6_1.14.0</version>
+    <time>1365496083</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162711 from namtrac)</comment>
+    <requestid>162807</requestid>
+  </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>aa1fb7361f56e1bdec850c5787616c9e</srcmd5>
+    <version>7.6_1.14.1</version>
+    <time>1366292506</time>
+    <user>coolo</user>
+    <comment>- u_disable-acpi-code.patch
+  * Don't build the ACPI code (bnc#805304)
+
+- Update to version 1.14.1:
+  This release contains the fix for CVE-2013-1940, see here for more
+  detail: http://lists.x.org/archives/xorg-devel/2013-April/036014.html
+  In the remainder we have two build fixes, a couple of comment fixes and a
+  change to the list.h code to inline the xorg_list_init function. Fairly
+  unintrusive, the lot.</comment>
+    <requestid>172342</requestid>
+  </revision>
+  <revision rev="261" vrev="2">
+    <srcmd5>94372d67fd940adc646c33deecc8e3ec</srcmd5>
+    <version>7.6_1.14.1</version>
+    <time>1369642391</time>
+    <user>coolo</user>
+    <comment>- Update u_aarch64-support.patch: disable x86 asm also on aarch64 (forwarded request 175022 from Andreas_Schwab)</comment>
+    <requestid>176234</requestid>
+  </revision>
+  <revision rev="262" vrev="3">
+    <srcmd5>17f5de34ed79631d433d124dd9f29950</srcmd5>
+    <version>7.6_1.14.1</version>
+    <time>1370790409</time>
+    <user>coolo</user>
+    <comment>- u_xserver_xvfb-randr.patch
+  * Add randr support to Xvfb (bnc#823410) (forwarded request 177931 from michalsrb)</comment>
+    <requestid>177969</requestid>
+  </revision>
+  <revision rev="263" vrev="4">
+    <srcmd5>df108fd51e8165a7e107e9fb6161d0bb</srcmd5>
+    <version>7.6_1.14.1</version>
+    <time>1371724383</time>
+    <user>coolo</user>
+    <comment>One dri2 bug less :&gt; (forwarded request 180042 from tobijk)</comment>
+    <requestid>180055</requestid>
+  </revision>
+  <revision rev="264" vrev="1">
+    <srcmd5>4bef51bf29d2ad9fb147e62c8e57771e</srcmd5>
+    <version>7.6_1.14.2</version>
+    <time>1372840089</time>
+    <user>coolo</user>
+    <comment>Update to 1.14.2 (forwarded request 181758 from sumski)</comment>
+    <requestid>181761</requestid>
+  </revision>
+  <revision rev="265" vrev="2">
+    <srcmd5>87822da12836be219a6cae5fadd64f2e</srcmd5>
+    <version>7.6_1.14.2</version>
+    <time>1376298498</time>
+    <user>scarabeus_factory</user>
+    <comment>- Delete N_0001-Xinput-Catch-missing-configlayout-when-deleting-dev.patch:
+  This patch is no longer appicable. The code has been reworked completely
+  thus the problem fixed with this most likely no longer exists.
+- Delete N_Use-external-tool-for-creating-backtraces-on-crashes.patch:
+  This feature has multiple issues, there is no reason to keep the patch
+  around. (forwarded request 186606 from eeich)</comment>
+    <requestid>186610</requestid>
+  </revision>
+  <revision rev="266" vrev="3">
+    <srcmd5>37d428bd73f4f17925e982cf6870175b</srcmd5>
+    <version>7.6_1.14.2</version>
+    <time>1378898710</time>
+    <user>coolo</user>
+    <comment>- removed modprobe options for NVIDIA kernel module, since these
+  have been moved to the NVIDIA packages themselves</comment>
+    <requestid>198196</requestid>
+  </revision>
+  <revision rev="267" vrev="1">
+    <srcmd5>7b61fe542db98821c0035b3b48e1150e</srcmd5>
+    <version>7.6_1.14.3</version>
+    <time>1379342255</time>
+    <user>coolo</user>
+    <comment>update to version 1.14.3 (forwarded request 199030 from tobijk)</comment>
+    <requestid>199201</requestid>
+  </revision>
+  <revision rev="268" vrev="3">
+    <srcmd5>7b61fe542db98821c0035b3b48e1150e</srcmd5>
+    <version>7.6_1.14.3</version>
+    <time>1379665105</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="269" vrev="4">
+    <srcmd5>431c991310c3b71950f26ba46638ada3</srcmd5>
+    <version>7.6_1.14.3</version>
+    <time>1382012943</time>
+    <user>scarabeus_factory</user>
+    <comment>- u_Avoid-use-after-free-in-dix-dixfonts.c-doImageText.patch
+  * Fixes a security issue, in which an authenticated X client
+   can cause an X server to use memory after it was freed, 
+   potentially leading to crash and/or memory corruption.
+   (CVE-2013-4396, bnc#843652)</comment>
+    <requestid>203393</requestid>
+  </revision>
+  <revision rev="270" vrev="1">
+    <srcmd5>83a6ad5da67a2e31fa0213980e996a42</srcmd5>
+    <version>7.6_1.14.3.901</version>
+    <time>1383036167</time>
+    <user>coolo</user>
+    <comment>- Update to prerelease 1.14.4-rc1 (1.14.3.901)
+  * bugfixes
+  * fixes for security issue CVE-2013-4396
+- obsoletes u_Avoid-use-after-free-in-dix-dixfonts.c-doImageText.patch
+
+- Add U_randr_dont_directly_set_changed_bits_in_randr_screen.patch,
+  U_randr_report_changes_when_we_disconnect_a_GPU_slave.patch,
+  u_randr_send_rrproviderchangenotify_event.patch,
+  u_randr_send_rrresourcechangenotify_event.patch,
+  u_randr_deliver_output_and_crtc_events_of_attached_output.patch,
+  u_randr_allow_rrselectinput_for_providerchange_and_resourcechange_events.patch
+  * Send randr 1.4 events to allow tools to react to new providers. (fate#316408, fate#316409)</comment>
+    <requestid>204958</requestid>
+  </revision>
+  <revision rev="271" vrev="2">
+    <srcmd5>c8b4f9a8b7e68f61b7a112eb9a2554ab</srcmd5>
+    <version>7.6_1.14.3.901</version>
+    <time>1383732148</time>
+    <user>coolo</user>
+    <comment>- N_randr_fix_abi.patch
+  * Fixes compatibility with nvidia binary drivers. (bnc#849152)</comment>
+    <requestid>205939</requestid>
+  </revision>
+  <revision rev="272" vrev="3">
+    <srcmd5>b4c410b4561eaaba0f4d5563ea8983d9</srcmd5>
+    <version>7.6_1.14.3.901</version>
+    <time>1385442967</time>
+    <user>coolo</user>
+    <comment>- N_x86emu-include-order.patch: Change include order to avoid conflict
+  with system header, remove duplicate definitions (forwarded request 205990 from Andreas_Schwab)</comment>
+    <requestid>208302</requestid>
+  </revision>
+  <revision rev="273" vrev="4">
+    <srcmd5>db8c242e3cdef163c248921809e0e0c2</srcmd5>
+    <version>7.6_1.14.3.901</version>
+    <time>1385654028</time>
+    <user>coolo</user>
+    <comment>- Fix naming convention for last patch
+
+- Add U_xserver_enable_grabdevice_by_default_for_non_seat0.patch
+  * See http://cgit.freedesktop.org/xorg/xserver/commit/?id=c73c36b537f996574628e69681833ea37dec2b6e</comment>
+    <requestid>208804</requestid>
+  </revision>
+  <revision rev="274" vrev="1">
+    <srcmd5>7ed1048160efe29ee89b63e94c0c0b30</srcmd5>
+    <version>7.6_1.14.99.904</version>
+    <time>1386932482</time>
+    <user>coolo</user>
+    <comment>use the now released &quot;official&quot; snapshot and add more information to the changes entry (forwarded request 210585 from tobijk)</comment>
+    <requestid>210648</requestid>
+  </revision>
+  <revision rev="275" vrev="2">
+    <srcmd5>f327b74c4be5acf429346947aba845eb</srcmd5>
+    <version>7.6_1.14.99.904</version>
+    <time>1387271214</time>
+    <user>coolo</user>
+    <comment>- u_exa-only-draw-valid-trapezoids.patch
+  * Fix possible x server crash using invalid trapezoids.
+    (bnc#853846 CVE-2013-6424) (forwarded request 210810 from michalsrb)</comment>
+    <requestid>210822</requestid>
+  </revision>
+  <revision rev="276" vrev="3">
+    <srcmd5>2ea66e8fe1b28774bf9ae451aa58aea2</srcmd5>
+    <version>7.6_1.14.99.904</version>
+    <time>1387434124</time>
+    <user>coolo</user>
+    <comment>-  Add u_keep_non_seat0_x_server_from_touching_vts.patch
+   * See: http://cgit.freedesktop.org/~jwrdegoede/xserver/commit/?id=405e2805d3903a8a631f01924593a227c634f05d
+   * Pull request to main xserver git tree scheduled after 1.15 release (forwarded request 211037 from lbssousa)</comment>
+    <requestid>211231</requestid>
+  </revision>
+  <revision rev="277" vrev="1">
+    <srcmd5>05ee2a6d91023cf3b943352e5576f427</srcmd5>
+    <version>7.6_1.14.99.905</version>
+    <time>1387737559</time>
+    <user>scarabeus_factory</user>
+    <comment>update to version 1.14.99.905 (1.15 RC5) (forwarded request 211840 from tobijk)</comment>
+    <requestid>211843</requestid>
+  </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>d5cfb2f04e188d8724e7aaea0ea60433</srcmd5>
+    <version>7.6_1.15.0</version>
+    <time>1388757691</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to version 1.15.0 (forwarded request 212443 from tobijk)</comment>
+    <requestid>212698</requestid>
+  </revision>
+  <revision rev="279" vrev="2">
+    <srcmd5>d3feab3c2a882a2aae4124ad81827ac9</srcmd5>
+    <version>7.6_1.15.0</version>
+    <time>1389108500</time>
+    <user>coolo</user>
+    <comment>- Also build with --disable-linux-apm as lnx_apm.lo is still
+  built even if --disable-linux-acpi is used.
+  Both are obsolete and very likely dangerous to use nowadays. (forwarded request 212756 from elvigia)</comment>
+    <requestid>213026</requestid>
+  </revision>
+  <revision rev="280" vrev="3">
+    <srcmd5>23be7db2ef6357b8c56ff082d7938bcd</srcmd5>
+    <version>7.6_1.15.0</version>
+    <time>1390380314</time>
+    <user>coolo</user>
+    <comment>- removed N_randr_fix_abi.patch, since it caused the crash with
+  current NVIDIA drivers built against xorg-server 1.15 (bnc#858827)
+
+- changed license back to MIT, since xf4nc is no longer patched
+  into X.Org sources (bnc#856905)</comment>
+    <requestid>214080</requestid>
+  </revision>
+  <revision rev="281" vrev="4">
+    <srcmd5>e3d3c903d1ec66a625c2f20114bd1566</srcmd5>
+    <version>7.6_1.15.0</version>
+    <time>1391183230</time>
+    <user>coolo</user>
+    <comment>- Rename u_keep_non_seat0_x_server_from_touching_vts.patch to U_keep_non_seat0_x_server_from_touching_vts.patch, since it's now upstreamed.
+  * See: http://cgit.freedesktop.org/xorg/xserver/commit/?id=46cf2a60934076bf568062eb83121ce90b6ff596 (forwarded request 215606 from lbssousa)</comment>
+    <requestid>215614</requestid>
+  </revision>
+  <revision rev="282" vrev="5">
+    <srcmd5>d1538395e6b457d2672e29fdab330752</srcmd5>
+    <version>7.6_1.15.0</version>
+    <time>1392112770</time>
+    <user>coolo</user>
+    <comment>- remove creation of libxf86config which was once used bu SaX2.</comment>
+    <requestid>221308</requestid>
+  </revision>
+  <revision rev="283" vrev="6">
+    <srcmd5>ec5ff99bebc3fd5a8f499433faf6055d</srcmd5>
+    <version>7.6_1.15.0</version>
+    <time>1394130568</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>224477</requestid>
+  </revision>
+  <revision rev="284" vrev="1">
+    <srcmd5>ad706d5aa1431515b808370911571f09</srcmd5>
+    <version>7.6_1.15.99.901.7</version>
+    <time>1395513976</time>
+    <user>coolo</user>
+    <comment>- obsolete glamor-devel from the correct package (forwarded request 227099 from coolo)</comment>
+    <requestid>227104</requestid>
+  </revision>
+  <revision rev="285" vrev="1">
+    <srcmd5>3f3d5f4620611b085d636f5d5eafe1cf</srcmd5>
+    <version>7.6_1.15.99.902</version>
+    <time>1397220033</time>
+    <user>coolo</user>
+    <comment>Ooops, forgot you havent included the X11:Wayland Repository.
+1) You could take this and disable XWayland for 13.1 and below, or
+2) Add &lt;path project=&quot;X11:Wayland&quot; repository=&quot;openSUSE_13.1&quot;/&gt; to the Meta Section of 13.1, so we could at least test this with 13.1 (forwarded request 229516 from tobijk)</comment>
+    <requestid>229522</requestid>
+  </revision>
+  <revision rev="286" vrev="1">
+    <srcmd5>5234f2430fd5e805e6f49be8a206d71b</srcmd5>
+    <version>7.6_1.15.99.902.2</version>
+    <time>1398533702</time>
+    <user>coolo</user>
+    <comment>- Add missing BuildRequires (forwarded request 231330 from tobijk)</comment>
+    <requestid>231359</requestid>
+  </revision>
+  <revision rev="287" vrev="2">
+    <srcmd5>fa287917ea944b1af74bfbd92fc14711</srcmd5>
+    <version>7.6_1.15.99.902.2</version>
+    <time>1399317079</time>
+    <user>coolo</user>
+    <comment>- Add new patches to make non-seat0 X servers work properly with non-KMS video drivers:
+  + u_xfree86-allow-fallback-to-PCI-bus-probe-for-non-seat0-seats.patch
+  + u_xfree86-add-new-key-MatchSeat-to-xorg-conf.patch
+  + u_xfree86-add-short-description-about-MatchSeat-key-in-xorg-conf-man-page.patch (forwarded request 232245 from lbssousa)</comment>
+    <requestid>232703</requestid>
+  </revision>
+  <revision rev="288" vrev="1">
+    <srcmd5>ffcf63b4941ab46252ad618de954ab95</srcmd5>
+    <version>7.6_1.15.99.902.5</version>
+    <time>1400218195</time>
+    <user>coolo</user>
+    <comment>- Remove upstreamed patches:
+- u_xfree86-allow-fallback-to-PCI-bus-probe-for-non-seat0-seats.patch
+  (patch108)
+- u_xfree86-add-new-key-MatchSeat-to-xorg-conf.patch (patch109)
+- u_xfree86-add-short-description-about-MatchSeat-key-in-xorg-conf-man-page.patch
+  (patch110)
+
+- Remove N_fix_XWAYLAND_SCANNER_undefined.diff
+  Configure line is gone</comment>
+    <requestid>233834</requestid>
+  </revision>
+  <revision rev="289" vrev="2">
+    <srcmd5>6db5fa691ce9b02f89b4c99b12cff218</srcmd5>
+    <version>7.6_1.15.99.902.5</version>
+    <time>1401685467</time>
+    <user>coolo</user>
+    <comment>- %post: 
+  * move SaX2 generated xorg.conf file to xorg.conf.sle11
+    Only in very rare cases a static X configuration is still
+    required on sle12. And, in some cases the migration from a
+    static sle11 X configuration to a static sle12 X configuration
+    is not possible at all, e.g. some video and input drivers
+    are no longer available on sle12. In short, trying to migrate
+    will result in more harm than benefit. (bnc#877315)
+  * remove dangling link /etc/X11/XF86Config (bnc#879360, comment#15)
+  * prevent %postun of NVIDIA/fglrx driver packages from
+    restoring xorg.conf backup or running sax2 as fallback
+    to create a new xorg.conf (bcn#877315)
+
+- Fix crash in abnormal condition (bnc#879666, bnc#879489):
+  * u_connection-avoid-crash-when-CloseWellKnownConnections-gets-called-twice.patch
+    Fix a crash when CloseWellKnownConnections() gets called twice.
+    This can happen if FatalError() is called in the shutdown procedure.
+  * u_CloseConsole-Don-t-report-FatalError-when-shutting-down.patch
+    Don't call FatalError() on errors in console ioctls when in shutdown.
+
+- Added n_xserver-optimus-autoconfig-hack.patch for FATE#316410. This
+  is a little hack to make the X server autoconfigure the output sinks
+  for Optimus laptops.  This lets them automatically use outputs that
+  are only wired to a certain GPU. To be removed once our desktop
+  tools can configure this easily.</comment>
+    <requestid>235667</requestid>
+  </revision>
+  <revision rev="290" vrev="1">
+    <srcmd5>c0f3e39356b5fb55015ec9090b753a4b</srcmd5>
+    <version>7.6_1.15.99.903</version>
+    <time>1402996968</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236460</requestid>
+  </revision>
+  <revision rev="291" vrev="1">
+    <srcmd5>bc70ee056e1317f73e3e56bc28711a3f</srcmd5>
+    <version>7.6_1.15.99.904</version>
+    <time>1405253153</time>
+    <user>coolo</user>
+    <comment>- update to 1.16RC4
+  * non-PCI device support stuff merged 
+- supersedes u_arch-Fix-image-and-bitmap-byte-order-for-ppc64le.patch</comment>
+    <requestid>239981</requestid>
+  </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>28113dd5e16364427b146d401c145964</srcmd5>
+    <version>7.6_1.16.0</version>
+    <time>1405750582</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241410</requestid>
+  </revision>
+  <revision rev="293" vrev="2">
+    <srcmd5>b2b6cf6fcbb3981aea2b9f525b49034d</srcmd5>
+    <version>7.6_1.16.0</version>
+    <time>1407331905</time>
+    <user>coolo</user>
+    <comment>- U_BellProc-Send-bell-event-on-core-protocol-bell-when-requested.patch
+  Send XKB bell event on core protocol bell if such an event is requested.
+  This allows to override the system beep by a desktop provided sound
+  instead of silently ignore it (bnc#890323).</comment>
+    <requestid>243660</requestid>
+  </revision>
+  <revision rev="294" vrev="3">
+    <srcmd5>e1f731e2be0d874315fd1e90879b2299</srcmd5>
+    <version>7.6_1.16.0</version>
+    <time>1407744414</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>243888</requestid>
+  </revision>
+  <revision rev="295" vrev="4">
+    <srcmd5>fe638a44dfd74dfe13132f42b5e3d4a6</srcmd5>
+    <version>7.6_1.16.0</version>
+    <time>1408089504</time>
+    <user>lnussel</user>
+    <comment>- only add /etc/alternatives/libglx.so as ghost on suse &gt;= 1315
+
+- added /etc/alternatives/libglx.so as ghost
+- moved libglx-xorg.so to xorg/xorg-libglx.so to avoid messup in case
+  anybody runs ldconfig in modules/extensions
+
+- make use of update-alternatives for libglx.so (FATE#317822) 
+
+- Change U_ to u_ as these patches are not upstream yet:
+  * U_render-Don-t-generate-invalid-pixman-format-when-using-a-24bpp-framebuffer-with-a-32bit-depth-visual.patch
+    --&gt; u_render-Don-t-generate-invalid-pixman-format-when-using-a-24bpp-framebuffer-with-a-32bit-depth-visual.patch
+  * U_fb-Correctly-implement-CopyArea-when-using-a-window-with-depth-32-and-24bpp.patch
+    --&gt; u_fb-Correctly-implement-CopyArea-when-using-a-window-with-depth-32-and-24bpp.patch
+  (bnc#890599).</comment>
+    <requestid>244555</requestid>
+  </revision>
+  <revision rev="296" vrev="5">
+    <srcmd5>68da6e6094cc2039f6601c5b027d2bb0</srcmd5>
+    <version>7.6_1.16.0</version>
+    <time>1408549959</time>
+    <user>lnussel</user>
+    <comment>- no longer add /usr/lib[64]/xorg/modules/updates to module path
+  (FATE#317822)</comment>
+    <requestid>244830</requestid>
+  </revision>
+  <revision rev="297" vrev="6">
+    <srcmd5>e8996b7a7d440d04e580caa83d10947f</srcmd5>
+    <version>7.6_1.16.0</version>
+    <time>1409212915</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245733</requestid>
+  </revision>
+  <revision rev="298" vrev="8">
+    <srcmd5>e8996b7a7d440d04e580caa83d10947f</srcmd5>
+    <version>7.6_1.16.0</version>
+    <time>1409303790</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="299" vrev="1">
+    <srcmd5>541df8a1714f0c5e109077fb6c8dc2d7</srcmd5>
+    <version>7.6_1.16.1</version>
+    <time>1411472734</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250582</requestid>
+  </revision>
+  <revision rev="300" vrev="2">
+    <srcmd5>d18968021cd607b34e92d9e46f0d86f0</srcmd5>
+    <version>7.6_1.16.1</version>
+    <time>1412252009</time>
+    <user>coolo</user>
+    <comment>- Backport upstream patches to enable Xephyr window placement
+  via new &quot;-output&quot; option or new &quot;-screen WxH+X+Y&quot; syntax.
+  * U_kdrive_extend_screen_option_syntax.patch
+  * U_ephyr_enable_screen_window_placement.patch
+  * U_ephyr_add_output_option_support.patch</comment>
+    <requestid>253170</requestid>
+  </revision>
+  <revision rev="301" vrev="3">
+    <srcmd5>a16167e792688a3c6af35e07b5def1ed</srcmd5>
+    <version>7.6_1.16.1</version>
+    <time>1414744753</time>
+    <user>coolo</user>
+    <comment>- XServer looks for dri.pc during configure. dri.pc is currently
+  provided by a Mesa devel package, which is pulled in by other
+  requirements, but it might be better to explicitly require dri.pc.</comment>
+    <requestid>258467</requestid>
+  </revision>
+  <revision rev="302" vrev="4">
+    <srcmd5>3e640fd670168a7af4a6677c54fbf01e</srcmd5>
+    <version>7.6_1.16.1</version>
+    <time>1416048273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260595</requestid>
+  </revision>
+  <revision rev="303" vrev="1">
+    <srcmd5>23a03a82c5a76ebe04282864f9b55a43</srcmd5>
+    <version>7.6_1.16.2</version>
+    <time>1416994525</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>262965</requestid>
+  </revision>
+  <revision rev="304" vrev="1">
+    <srcmd5>68a341d9a0e008b4a7269a78c1f5f73a</srcmd5>
+    <version>7.6_1.17.0</version>
+    <time>1423595859</time>
+    <user>dimstar_suse</user>
+    <comment>- u_symbols-Fix-sdksyms.sh-to-cope-with-gcc5.patch
+  Fix sdksyms.sh to work with gcc5 (bnc#916580).
+
+- Update to version 1.17.0:
+  + Continued work to strip out stale code and clean up the server.
+    Thousands of lines of unnecessary code have disappeared yet again.
+  + The modesetting driver has been merged into the server code base,
+    simplifying ongoing maintenance by coupling it to the X server
+    ABI/API release schedule. This now includes DRI2 support (so that GLX
+    works correctly) along with Glamor support (which handles DRI3).
+  + Lots of Glamor improvements, including a rewrite of the core protocol
+    rendering functions.
+- Remove upstream patches:
+  + Patch130: U_BellProc-Send-bell-event-on-core-protocol-bell-when-requested.patch
+  + Patch131: U_fb-Fix-invalid-bpp-for-24bit-depth-window.patch
+  + Patch200: U_kdrive_extend_screen_option_syntax.patch
+  + Patch201: U_ephyr_enable_screen_window_placement.patch
+  + Patch202: U_ephyr_add_output_option_support.patch
+
+- Add xorg-x11-server-source package that contains patched xserver
+  sources used to build xorg-x11-Xvnc.</comment>
+    <requestid>284506</requestid>
+  </revision>
+  <revision rev="305" vrev="1">
+    <srcmd5>b5850becad8e9f6b14979c0c4786f45a</srcmd5>
+    <version>7.6_1.17.1</version>
+    <time>1423812855</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285549</requestid>
+  </revision>
+  <revision rev="306" vrev="2">
+    <srcmd5>173d755d5b4dce5e6d50694afc4f90a0</srcmd5>
+    <version>7.6_1.17.1</version>
+    <time>1424112000</time>
+    <user>coolo</user>
+    <comment>- u_ad-hoc-fix-for-mmap-s-truncated-offset-parameter-on-.patch 
+  * ad hoc fix for mmap's truncated offset parameter on 32bit
+    (bnc#917385)
+- N_Force-swcursor-for-KMS-drivers-without-hw-cursor-sup.patch
+  * hwcursor still considered broken in cirrus KMS ((bnc#864141,
+    bnc#866152)</comment>
+    <requestid>286386</requestid>
+  </revision>
+  <revision rev="307" vrev="3">
+    <srcmd5>3b520df951adbf06ed9e22ca1b3212df</srcmd5>
+    <version>7.6_1.17.1</version>
+    <time>1425031693</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable systemd-logind integration support:
+  + Add pkgconfig(libsystemd-logind) and pkgconfig(dbus-1)
+    BuildRequires.
+  + Pass --enable-systemd-logind to configure.</comment>
+    <requestid>287362</requestid>
+  </revision>
+  <revision rev="308" vrev="4">
+    <srcmd5>9393685f8b378fe2eaedb3eaca666624</srcmd5>
+    <version>7.6_1.17.1</version>
+    <time>1428064388</time>
+    <user>dimstar_suse</user>
+    <comment>- U_os-XDMCP-options-like-query-etc-should-imply-listen.patch
+  * Enable listening on tcp when using -query. (bnc#924914)</comment>
+    <requestid>293718</requestid>
+  </revision>
+  <revision rev="309" vrev="5">
+    <srcmd5>04249f190dcdb1d117723459417bdae5</srcmd5>
+    <version>7.6_1.17.1</version>
+    <time>1430165208</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298211</requestid>
+  </revision>
+  <revision rev="310" vrev="6">
+    <srcmd5>be5174a2531bc96b9a5fc304fb67bafa</srcmd5>
+    <version>7.6_1.17.1</version>
+    <time>1433144710</time>
+    <user>dimstar_suse</user>
+    <comment>- U_int10-Fix-error-check-for-pci_device_map_legacy.patch
+  * int10: Fix error check for pci_device_map_legacy
+    pci_device_map_legacy returns 0 on success (bsc#932319).</comment>
+    <requestid>309268</requestid>
+  </revision>
+  <revision rev="311" vrev="7">
+    <srcmd5>610fc5988c63ed0972c410766d498723</srcmd5>
+    <version>7.6_1.17.1</version>
+    <time>1433577208</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310424</requestid>
+  </revision>
+  <revision rev="312" vrev="8">
+    <srcmd5>6e613043c04de3eccec6f846366f6324</srcmd5>
+    <version>7.6_1.17.1</version>
+    <time>1433920520</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311307</requestid>
+  </revision>
+  <revision rev="313" vrev="9">
+    <srcmd5>ccd26f7f01dae693d246f8977c3f1c08</srcmd5>
+    <version>7.6_1.17.1</version>
+    <time>1434550520</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>311800</requestid>
+  </revision>
+  <revision rev="314" vrev="1">
+    <srcmd5>f17aa0e46a7054a364894db14071e737</srcmd5>
+    <version>7.6_1.17.2</version>
+    <time>1436111791</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.17.2:
+  Pick up a pile of fixes from master. Notable highlights:
+  + Fix for CVE-2015-3164 in Xwayland
+  + Fix int10 setup for vesa
+  + Fix regression in server-interpreted auth
+  + Fix fb setup on big-endian CPUs
+  + Build fix for for gcc5
+- Dropped patches:
+  + Patch110: u_connection-avoid-crash-when-CloseWellKnownConnections-gets-called-twice.patch
+  + Patch113: u_symbols-Fix-sdksyms.sh-to-cope-with-gcc5.patch
+  + Patch116: U_os-XDMCP-options-like-query-etc-should-imply-listen.patch
+  + Patch118: U_int10-Fix-error-check-for-pci_device_map_legacy.patch
+  + Patch119: U_xwayland-enable-access-control-on-open-socket.patch
+  + Patch120: U_os-support-new-implicit-local-user-access-mode.patch
+  + Patch121: U_xwayland-default-to-local-user-if-no-xauth-file-given.patch
+  + Patch2000: U_systemd-logind-filter-out-non-signal-messages-from.patch
+  + Patch2001: U_systemd-logind-dont-second-guess-D-Bus-default-tim.patch
+- Changed patches to work with the new version:
+  + Patch114: u_ad-hoc-fix-for-mmap-s-truncated-offset-parameter-on-.patch
+
+As a sidenote: i had to add choose one libatomic within X11:XOrg project-config
+to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
+    <requestid>312689</requestid>
+  </revision>
+  <revision rev="315" vrev="2">
+    <srcmd5>6b3d80f53d182e8e4d1a25287b221d82</srcmd5>
+    <version>7.6_1.17.2</version>
+    <time>1437477949</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317587</requestid>
+  </revision>
+  <revision rev="316" vrev="3">
+    <srcmd5>637a057e3d9260ac0258dada5802dcec</srcmd5>
+    <version>7.6_1.17.2</version>
+    <time>1438794830</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>319542</requestid>
+  </revision>
+  <revision rev="317" vrev="4">
+    <srcmd5>101917290719c72b3f9a1061355dd49f</srcmd5>
+    <version>7.6_1.17.2</version>
+    <time>1443896988</time>
+    <user>coolo</user>
+    <comment>- u_vesa-Add-VBEDPMSGetCapabilities-VBEDPMSGet.patch
+  Add VBEDPMSGetCapabilities() and VBEDPMSGet() functions
+  (bsc#947356, boo#947493).</comment>
+    <requestid>333911</requestid>
+  </revision>
+  <revision rev="318" vrev="1">
+    <srcmd5>756a31b5b4467e7072ee8d02ea3983f5</srcmd5>
+    <version>7.6_1.17.4</version>
+    <time>1446238358</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.17.4:
+  Minor brown-bag release. The important fix here is Martin's
+  clientsWritable change which fixes a crash when built against
+  xproto 7.0.28.
+- supersedes u_0001-os-make-sure-the-clientsWritable-fd_set-is-initializ.patch
+
+- Update to version 1.17.3:
+  Various bugfixes across the board.  The most visible changes
+  include fixing GLX extension setup under Xwayland and other
+  non-Xorg servers (enabling core contexts in more scenarios),
+  and various stability fixes to glamor and the Present extension.
+- supersededs the following patches:
+  * u_randr_allow_rrselectinput_for_providerchange_and_resourcechange_events.patch
+  * u_CloseConsole-Don-t-report-FatalError-when-shutting-down.patch
+- removed evdev xorg.conf.d snippet since it's meanwhile shipped with
+  evdev driver itself (since version 2.10.0)</comment>
+    <requestid>341481</requestid>
+  </revision>
+  <revision rev="319" vrev="1">
+    <srcmd5>886569c111df43d673b7788b572dba22</srcmd5>
+    <version>7.6_1.18.0</version>
+    <time>1447766404</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.18.0
+  - refreshed N_zap_warning_xserver.diff,
+    N_Force-swcursor-for-KMS-drivers-without-hw-cursor-sup.patch
+  - supersedes u_fbdevhw.diff, 
+    U_linux-Add-linux_parse_vt_settings-and-linux_get_keep.patch,
+    U_linux-Add-a-may_fail-paramter-to-linux_parse_vt_sett.patch,
+    U_systemd-logind-Only-use-systemd-logind-integration-t.patch</comment>
+    <requestid>343968</requestid>
+  </revision>
+  <revision rev="320" vrev="2">
+    <srcmd5>d3411556e59915d3ad3d46042eaf4762</srcmd5>
+    <version>7.6_1.18.0</version>
+    <time>1450284102</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>347153</requestid>
+  </revision>
+  <revision rev="321" vrev="3">
+    <srcmd5>2e280945dab9eea5bb98b6bed06f38f0</srcmd5>
+    <version>7.6_1.18.0</version>
+    <time>1452027217</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351818</requestid>
+  </revision>
+  <revision rev="322" vrev="4">
+    <srcmd5>4280903e87a07023e21ec1ff42a9d86b</srcmd5>
+    <version>7.6_1.18.0</version>
+    <time>1452611519</time>
+    <user>dimstar_suse</user>
+    <comment>- Add test for defined macro %build_xwayland
+  This can be used to enable the build of Xwayland and the
+  package xorg-x11-server-wayland using a macro in projconf
+  (boo#960487).
+
+- Split out Xwayland:
+  * Build a package xorg-x11-server-wayland
+  * Limit build to Factory (boo#960487).</comment>
+    <requestid>352831</requestid>
+  </revision>
+  <revision rev="323" vrev="5">
+    <srcmd5>5f2cbca56b8570c122c86f4c514931c9</srcmd5>
+    <version>7.6_1.18.0</version>
+    <time>1452721380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353270</requestid>
+  </revision>
+  <revision rev="324" vrev="6">
+    <srcmd5>ad2ca79812c44d1a755b8d87ef2891e7</srcmd5>
+    <version>7.6_1.18.0</version>
+    <time>1453508130</time>
+    <user>dimstar_suse</user>
+    <comment>- u_Panning-Set-panning-state-in-xf86RandR12ScreenSetSize.patch
+  Fix panning when configured in xorg.conf* (boo#771521).
+
+- Handle source-file-list in build not prep
+- N_xorg-x11-server-rpmmacros.patch:
+  Delete: Process xorg-x11-server.macros in install</comment>
+    <requestid>353924</requestid>
+  </revision>
+  <revision rev="325" vrev="1">
+    <srcmd5>5446a4da64ac30bab9174e7e5bab52b5</srcmd5>
+    <version>7.6_1.18.1</version>
+    <time>1455701411</time>
+    <user>dimstar_suse</user>
+    <comment>- u_pci-primary-Fix-up-primary-PCI-device-detection-for-the-platfrom-bus.patch
+  Fix up primary device detection for the platform bus to fix the Xserver
+  on older iMacs (boo#835975).
+
+- Update to version 1.18.1:
+  First release in the 1.18 stable branch. Major themes are bugfixes in
+  glamor, the modesetting driver, and the Present extension.
+  Xwayland users may want to apply the following pair of patches in
+  addition to this release:
+  https://patchwork.freedesktop.org/patch/72945/raw/
+  https://patchwork.freedesktop.org/patch/72951/raw/
+  which combined fix an input issue when hotplugging monitors. Both are
+  likely to be included in a future release unless testing discovers
+  further problems.
+- Remove upstreamed patches:
+  + ux_xserver_xvfb-randr.patch
+  + U_systemd-logind-do-not-rely-on-directed-signals.patch
+  + U_kdrive-UnregisterFd-Fix-off-by-one.patch
+  + U_modesetting-should-not-reference-gbm-when-it-s-not-d.patch</comment>
+    <requestid>358787</requestid>
+  </revision>
+  <revision rev="326" vrev="2">
+    <srcmd5>1636571287cbd848eecee0c80ada0520</srcmd5>
+    <version>7.6_1.18.1</version>
+    <time>1456733555</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 50-extensions.conf
+  Disable the DGA extension by default (boo#947695).
+
+- Replaced u_confine_to_shape.diff
+  by u_01-Improved-ConfineToShape.patch
+  and u_02-DIX-ConfineTo-Don-t-bother-about-the-bounding-box-when-grabbing-a-shaped-window.patch.</comment>
+    <requestid>361541</requestid>
+  </revision>
+  <revision rev="327" vrev="3">
+    <srcmd5>65074994d3782c3bd4e095bedf3e542b</srcmd5>
+    <version>7.6_1.18.1</version>
+    <time>1457359370</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367500</requestid>
+  </revision>
+  <revision rev="328" vrev="1">
+    <srcmd5>e85dc5376943f977a91da9137fe31054</srcmd5>
+    <version>7.6_1.18.2</version>
+    <time>1459238114</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for a driver specific PCI IDs files supplementing
+  what's in xf86VideoPtrToDriverList(). PCI ID lists may be held
+  in /etc/X11/xorg_pci_ids (boo#972126).
+
+- Update version to 1.18.2:
+  A big pile of updates in this one. Highlights include:
+  * glamor is updated to use OpenGL core profiles if available, which
+    should improve memory usage and performance on modern hardware, and got
+    some other performance improvements for rpi and other GLES platforms
+  * DRI2, DRI3, and Present all received correctness fixes for hangs,
+    crashes, and other weirdness
+  * Xwayland server has been updated to support the Xv and the
+    xf86vidmode extensions for better compatibility, and fixed some bugs
+    with output hotplug and pointer updates
+  * Xwin saw improvements to window and clipboard management, and a few
+    new keyboard layouts
+- Remove upstreamed patches:
+  + U_kdrive-evdev-update-keyboard-LEDs-22302.patch</comment>
+    <requestid>377691</requestid>
+  </revision>
+  <revision rev="329" vrev="1">
+    <srcmd5>eaa46fa741a866b7d6669302c865fc30</srcmd5>
+    <version>7.6_1.18.3</version>
+    <time>1462260870</time>
+    <user>dimstar_suse</user>
+    <comment>- removed u_exa-only-draw-valid-trapezoids.patch; no longer needed
+  since pixman 0.32.0
+
+- removed no longer needed patch
+  u_ad-hoc-fix-for-mmap-s-truncated-offset-parameter-on-.patch, see
+  https://lists.x.org/archives/xorg-devel/2016-April/049493.html for
+  upstream discussion; obsoleted by upstream patch
+  https://cgit.freedesktop.org/xorg/xserver/commit/?id=4962c8c08842d9d3ca66d254b1ce4cacc4fb3756, which is already in xorg-server 1.18.3
+
+- Add permission verification for SUID wrapper
+- Disable SUID wrapper per default until reviewed
+
+-  n_Install-Avoid-failure-on-wrapper-installation.patch:
+   rename to:
+    N_Install-Avoid-failure-on-wrapper-installation.patch
+-  u_xorg-wrapper-Drop-supplemental-group-IDs.patch:
+   Drop supplementary group privileges.
+-  u_xorg-wrapper-build-Build-position-independent-code.patch:
+   Build position independent.
+
+- n_Install-Avoid-failure-on-wrapper-installation.patch:
+  Fix up build for wrapper.
+- Place SUID wrapper into a separate package: 
+  xorg-x11-server-wrapper
+
+- Set configure option --enable-suid-wrapper for TW:
+  This way, the SUID wrapper is built which allows to run the Xserver
+  as root even though the the DM instance runs as user. This allows to
+  support drivers which require direct HW access.</comment>
+    <requestid>393308</requestid>
+  </revision>
+  <revision rev="330" vrev="2">
+    <srcmd5>46abf73bdeb9268af2f534e618d5552b</srcmd5>
+    <version>7.6_1.18.3</version>
+    <time>1463124164</time>
+    <user>dimstar_suse</user>
+    <comment>- modesetting.ids:
+  Add file for PCI IDs of ASICs which the modesetting rather
+  than the native driver should be used for.
+  This includes all Intel Gen9+ hardware (boo#978954).</comment>
+    <requestid>394519</requestid>
+  </revision>
+  <revision rev="331" vrev="3">
+    <srcmd5>c98745668a49b56504e1378d8e3dd3d5</srcmd5>
+    <version>7.6_1.18.3</version>
+    <time>1463498049</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace
+  N_Force-swcursor-for-KMS-drivers-without-hw-cursor-sup.patch
+  by
+  N_Disable-HW-Cursor-for-cirrus-and-mgag200-kernel-modules.patch
+  Only disable HW cursor for cirrus and mgag200. This should fix
+  a regression introduced by using modesetting for Intel gen9+ 
+  (boo#980124).</comment>
+    <requestid>396135</requestid>
+  </revision>
+  <revision rev="332" vrev="4">
+    <srcmd5>2dfd98448e1dbbae1d6046890758dece</srcmd5>
+    <version>7.6_1.18.3</version>
+    <time>1464299631</time>
+    <user>dimstar_suse</user>
+    <comment>- U_modesetting-set-driverPrivate-to-NULL-after-closing-fd.patch:
+  modesetting: Avoid crash in FreeRec() by NULLing a pointer which
+  may still be used (boo#981268).</comment>
+    <requestid>397617</requestid>
+  </revision>
+  <revision rev="333" vrev="1">
+    <srcmd5>5b6250ac44a060077a976b90bc30df90</srcmd5>
+    <version>7.6_1.18.4</version>
+    <time>1469628518</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>414984</requestid>
+  </revision>
+  <revision rev="334" vrev="2">
+    <srcmd5>1390dde36f67d3976eb5e4e6934aceb8</srcmd5>
+    <version>7.6_1.18.4</version>
+    <time>1479381774</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440389</requestid>
+  </revision>
+  <revision rev="335" vrev="3">
+    <srcmd5>c7859653832bd80bbaf669c64a8fe4cc</srcmd5>
+    <version>7.6_1.18.4</version>
+    <time>1483959097</time>
+    <user>dimstar_suse</user>
+    <comment>Manual merge the systemd fix to unblock system v232</comment>
+  </revision>
+  <revision rev="336" vrev="1">
+    <srcmd5>355ab24af05d355a8f245e173a04b13d</srcmd5>
+    <version>1.19.0</version>
+    <time>1484232280</time>
+    <user>dimstar_suse</user>
+    <comment>rebase-post-manual-systemd-fix-merged-in-TW</comment>
+    <requestid>449319</requestid>
+  </revision>
+  <revision rev="337" vrev="1">
+    <srcmd5>08d03f0dd5a433c3a60435fee275f07c</srcmd5>
+    <version>1.19.1</version>
+    <time>1484771359</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450001</requestid>
+  </revision>
+  <revision rev="338" vrev="2">
+    <srcmd5>49429e2cefa88a709bdcaa687bb2b560</srcmd5>
+    <version>1.19.1</version>
+    <time>1485862467</time>
+    <user>dimstar_suse</user>
+    <comment>- N_driver-autoconfig.diff:
+  FGLRX does not support new x-server. This change fixes bad 
+  behavior(with empty config) when radeon ddx loads with amdgpu
+  kernel module on SI and CIK cards, and x-server cannot start.
+  Radeon ddx with radeon kernel module loads without any problem.</comment>
+    <requestid>452723</requestid>
+  </revision>
+  <revision rev="339" vrev="3">
+    <srcmd5>f078cb7e117d1f309a3775c946e478a5</srcmd5>
+    <version>1.19.1</version>
+    <time>1487149247</time>
+    <user>dimstar_suse</user>
+    <comment>- U_xfree86-Take-the-input-lock-for-xf86RecolorCursor.patch
+  * fixes random crashes in X in multihead mode if one of the
+    monitors is vertically oriented (bnc #1023845)
+
+- N_driver-autoconfig.diff:
+  No longer try to load &quot;amdgpu&quot; DDX by default for all GPUs with
+  ATI vendor ID; this is now handled instead by an &quot;OutputClass&quot; 
+  section via kernel driver match, which has been added as config
+  file to xf86-video-amdgpu driver package (bnc#1023385)</comment>
+    <requestid>456014</requestid>
+  </revision>
+  <revision rev="340" vrev="4">
+    <srcmd5>63ae0f1279c6994a73f712f66dcce9e9</srcmd5>
+    <version>1.19.1</version>
+    <time>1487767692</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459533</requestid>
+  </revision>
+  <revision rev="341" vrev="1">
+    <srcmd5>b360262108cbe19a8e5025eabac4b15f</srcmd5>
+    <version>1.19.2</version>
+    <time>1489174930</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>476780</requestid>
+  </revision>
+  <revision rev="342" vrev="1">
+    <srcmd5>3f7de3ddddc6a56c175407c5b6b9bef8</srcmd5>
+    <version>1.19.3</version>
+    <time>1490132743</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480845</requestid>
+  </revision>
+  <revision rev="343" vrev="2">
+    <srcmd5>dda18b38924cdf12781007560407821d</srcmd5>
+    <version>1.19.3</version>
+    <time>1497687680</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for additional sle issue entries:
+  CVE-2017-2624, bnc#1025029, bnc#1025084, bnc#1025035
+
+- update build requirements
+
+- modesetting.ids: no longer hardcode Intel's Skylake, Broxton, 
+  and Kabylake IDs to modesetting driver; xf86-video-intel is no
+  longer installed by default on these, so it will fallback to 
+  modesetting driver anyway; still you now can easily switch back
+  to intel driver by installing xf86-video-intel package 
+  (boo#1042873)</comment>
+    <requestid>502781</requestid>
+  </revision>
+  <revision rev="344" vrev="3">
+    <srcmd5>32a8aee59ac9fb6d9516677c8d06c6d6</srcmd5>
+    <version>1.19.3</version>
+    <time>1499509528</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Xi-Do-not-try-to-swap-GenericEvent.patch,
+  U_Xi-Verify-all-events-in-ProcXSendExtensionEvent.patch,
+  U_Xi-Zero-target-buffer-in-SProcXSendExtensionEvent.patch,
+  U_dix-Disallow-GenericEvent-in-SendEvent-request.patch
+  * Fix security issues in event handling. (bnc#1035283,
+    CVE-2017-10971, CVE-2017-10972)</comment>
+    <requestid>508731</requestid>
+  </revision>
+  <revision rev="345" vrev="4">
+    <srcmd5>96a06b3b3053e925020894bbe1d76b60</srcmd5>
+    <version>1.19.3</version>
+    <time>1500669391</time>
+    <user>dimstar_suse</user>
+    <comment>- disable Xwayland for s390x again; it was wrong to enable it; 
+  there is no Wayland on s390x and will most likely never exist,
+  since there is no gfx card on such systems and no gfx emulation
+  either (bsc#1047173)
+
+- u_Use-better-fallbacks-to-generate-cookies-if-arc4rand.patch 
+  If arc4random_buf() is not available for generating cookies:
+  * use getentropy(), if available (which was only recently added to
+    glibc)
+  * use getrandom() via syscall(), if available (there was no glibc
+    wrapper for this syscall for a long time)
+  * if all else fails, directly read from /dev/urandom as before, but
+    employ O_CLOEXEC, do an OsAbort() in case the random data couldn't be
+    read to avoid unsecure situations. Don't know if that's too hard a
+    measure but it shouldn't actually occur except on maximum number of
+    FDs reached
+  (bsc#1025084)</comment>
+    <requestid>510318</requestid>
+  </revision>
+  <revision rev="346" vrev="5">
+    <srcmd5>c57a9d0e92b23ed80f2100010484ae66</srcmd5>
+    <version>1.19.3</version>
+    <time>1504814920</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519998</requestid>
+  </revision>
+  <revision rev="347" vrev="1">
+    <srcmd5>d897a1f93f67388aac74f517c7d49204</srcmd5>
+    <version>1.19.4</version>
+    <time>1507628151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531745</requestid>
+  </revision>
+  <revision rev="348" vrev="1">
+    <srcmd5>317fe5bcef4b551c5414d52bf342fe0d</srcmd5>
+    <version>1.19.5</version>
+    <time>1508769366</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533781</requestid>
+  </revision>
+  <revision rev="349" vrev="2">
+    <srcmd5>c8a73993f9bec99f0a39b80bbd200c4b</srcmd5>
+    <version>1.19.5</version>
+    <time>1510837119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541788</requestid>
+  </revision>
+  <revision rev="350" vrev="3">
+    <srcmd5>f8c9b7a513d35b2fae2c032e134a0103</srcmd5>
+    <version>1.19.5</version>
+    <time>1512041798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544864</requestid>
+  </revision>
+  <revision rev="351" vrev="4">
+    <srcmd5>53203d53dd2589a4cb4dad625460bee8</srcmd5>
+    <version>1.19.5</version>
+    <time>1513343004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556490</requestid>
+  </revision>
+  <revision rev="352" vrev="1">
+    <srcmd5>53ddf6fc61fb7e30cad9956d6608e38d</srcmd5>
+    <version>1.19.6</version>
+    <time>1516091466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562546</requestid>
+  </revision>
+  <revision rev="353" vrev="2">
+    <srcmd5>065fdf9ed21178ebc33514eef3a69481</srcmd5>
+    <version>1.19.6</version>
+    <time>1516443749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566439</requestid>
+  </revision>
+  <revision rev="354" vrev="3">
+    <srcmd5>797bb36ca05ccf6cc5f4b3cfa2db0b78</srcmd5>
+    <version>1.19.6</version>
+    <time>1518513911</time>
+    <user>dimstar_suse</user>
+    <comment>- U_0001-animcur-Use-fixed-size-screen-private.patch,
+  U_0002-animcur-Return-the-next-interval-directly-from-the-t.patch,
+  U_0003-animcur-Run-the-timer-from-the-device-not-the-screen.patch,
+  U_0004-animcur-Fix-transitions-between-animated-cursors.patch
+  * There is a bug in version 1.19 of the X.org X server that can
+    cause an infinite recursion in the animated cursor code, which
+    has been fixed by these patches (boo#1080312)
+- supersedes u_cursors-animation.patch (boo#1020061)</comment>
+    <requestid>574738</requestid>
+  </revision>
+  <revision rev="355" vrev="4">
+    <srcmd5>fdef0dce4333847dfdf418a30f2d84f9</srcmd5>
+    <version>1.19.6</version>
+    <time>1519554839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579002</requestid>
+  </revision>
+  <revision rev="356" vrev="5">
+    <srcmd5>163e1d4f15a779bb252b1c03b0ac9389</srcmd5>
+    <version>1.19.6</version>
+    <time>1520502975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583459</requestid>
+  </revision>
+  <revision rev="357" vrev="6">
+    <srcmd5>f70647c8bb3407abc7794bb4a4c50d77</srcmd5>
+    <version>1.19.6</version>
+    <time>1522403962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591648</requestid>
+  </revision>
+  <revision rev="358" vrev="7">
+    <srcmd5>4ad870dfe344f885d791860b8d3a648b</srcmd5>
+    <version>1.19.6</version>
+    <time>1524400318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597729</requestid>
+  </revision>
+  <revision rev="359" vrev="1">
+    <srcmd5>21d1ee879e9b5fcbba0a380fd3b29c25</srcmd5>
+    <version>1.20.0</version>
+    <time>1532295498</time>
+    <user>dimstar_suse</user>
+    <comment>- u_modesetting-Fix-cirrus-24bpp-breakage.patch
+  * Fix breakage of cirrus 24bpp support on modesetting driver
+    (bsc#1101699)
+
+- Remove /var/lib/X11 and its symlink, it is no longer needed and
+  doesn't work with transaction-updates (FATE#325524).
+- Move README.compiled to another location and use tmpfiles to
+  copy it at runtime.
+
+- U_modesetting-use-drmmode_bo_import-for-rotate_fb.patch
+  * fixes rotation in modesetting driver (regression with
+    xorg-server 1.20.0, fdo#106715)
+  * might also fix boo#1099812 ...
+
+- U_xkb-Fix-heap-overflow-caused-by-optimized-away-min.patch
+  * Fix heap overflow caused by unexpected optimization, which was
+    possible because of relying on undefined behavior.
+    (boo#1099113)
+
+- U_Xext-shm-Refuse-to-work-for-remote-clients.patch
+  * Avoid access to System V shared memory segment on the X server
+    side for clients forwarded via SSH. Also prevent them from
+    hanging while waiting for the reply from the ShmCreateSegment
+    request. (boo#1097227)
+
+- Remove n_add-dummy-xf86DisableRandR.patch
+  * After upgrade to 1.20.0 the API officially no longer includes
+    xf86DisableRandR, so there is no need to add it back.
+
+- Update to version 1.20.0:
+  New features:
+  + RANDR 1.6, which enables leasing RANDR resources to a client for its 
+    exclusive use (e.g. head mounted displays)
+  + Depth 30 support in glamor and the modesetting driver
+  + A meson-based build system, parallel to autotools
+  + Pageflipping support for PRIME output sinks
+  + OutputClass device matching for xorg.conf
+  + Input grab and tablet support in Xwayland
+- Remove upstream patches:
+  + u_xorg-x11-server-reproducible.patch
+     Solved slightly different
+  + u_os-inputthread-Force-unlock-when-stopping-thread.patch
+  + u_xfree86-add-default-modes-for-16-9-and-16-10.patch
+  + U_xwayland-Don-t-process-cursor-warping-without-an-xwl.patch
+  + U_xwayland-Give-up-cleanly-on-Wayland-socket-errors.patch
+  + U_xwayland-avoid-race-condition-on-new-keymap.patch
+  + U_xwayland-remove-dirty-window-unconditionally-on-unre.patch
+  + U_0001-animcur-Use-fixed-size-screen-private.patch
+  + U_0002-animcur-Return-the-next-interval-directly-from-the-t.patch
+  + U_0003-animcur-Run-the-timer-from-the-device-not-the-screen.patch
+  + U_0004-animcur-Fix-transitions-between-animated-cursors.patch
+  + U_xfree86-Remove-broken-RANDR-disabling-logic-v4.patch
+- Adapt patches to work with the new release:
+  + N_zap_warning_xserver.diff
+  + N_fix_fglrx_screendepth_issue.patch
+  + n_xserver-optimus-autoconfig-hack.patch
+  + u_Use-better-fallbacks-to-generate-cookies-if-arc4rand.patch
+  + u_xorg-wrapper-build-Build-position-independent-code.patch</comment>
+    <requestid>624084</requestid>
+  </revision>
+  <revision rev="360" vrev="2">
+    <srcmd5>07a061b2ab8c5ab19c8920e2b5d8b7a2</srcmd5>
+    <version>1.20.0</version>
+    <time>1533214145</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed build on s390(x)</comment>
+    <requestid>625417</requestid>
+  </revision>
+  <revision rev="361" vrev="1">
+    <srcmd5>1740804d5bdd1cfa84083dd68bacd21a</srcmd5>
+    <version>1.20.1</version>
+    <time>1534774657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629001</requestid>
+  </revision>
+  <revision rev="362" vrev="1">
+    <srcmd5>151e037d15c49683541db4d22bde3145</srcmd5>
+    <version>1.20.2</version>
+    <time>1540199178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642109</requestid>
+  </revision>
+  <revision rev="363" vrev="1">
+    <srcmd5>05be9eff0cfa5e2343194efbe66d338d</srcmd5>
+    <version>1.20.3</version>
+    <time>1541666528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.3
+  * Disable -logfile and -modulepath when running with elevated
+    privileges (bsc#1112020)
+  * LogFilePrep: add a comment to the unsafe format string.
+  * xfree86: fix readlink call</comment>
+    <requestid>645321</requestid>
+  </revision>
+  <revision rev="364" vrev="2">
+    <srcmd5>5916cc66ca03b7eaf80ade4353b680a6</srcmd5>
+    <version>1.20.3</version>
+    <time>1543223864</time>
+    <user>dimstar_suse</user>
+    <comment>- xorg-server 1.20.3 (see changelog below) superseded the 
+  following patch we used in sle15 before (bsc#1112020, CVE-2018-14665):
+  - U_Disable-logfile-and-modulepath-when-running-with-ele.patch
+
+- U_dix-window-Use-ConfigureWindow-instead-of-MoveWindow.patch
+  * Fix abort triggered by some uses of screensaver. (bsc#1114822)
+
+- added missing superseded patch to changelog
+  + U_glx-Do-not-call-into-Composite-if-it-is-disabled.patch</comment>
+    <requestid>651109</requestid>
+  </revision>
+  <revision rev="365" vrev="3">
+    <srcmd5>5d7e10059ee62f9f95177004cc360cca</srcmd5>
+    <version>1.20.3</version>
+    <time>1547554486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663606</requestid>
+  </revision>
+  <revision rev="366" vrev="4">
+    <srcmd5>bfbb13af15f211fe693a5899cad7e594</srcmd5>
+    <version>1.20.3</version>
+    <time>1549311844</time>
+    <user>coolo</user>
+    <comment>- get rid of meta packages still requiring/recommending obsolete
+  drivers packages (boo#1121525)
+
+- provide/obsolete no longer existing xf86-video-ast,
+ xf86-video-cirrus on sle15 (bsc#1120282)</comment>
+    <requestid>668327</requestid>
+  </revision>
+  <revision rev="367" vrev="1">
+    <srcmd5>c00c0d75c5a808e55e639eb23c0c25b3</srcmd5>
+    <version>1.20.4</version>
+    <time>1551468369</time>
+    <user>coolo</user>
+    <comment>- xorg-server 1.20.4
+  * A variety of bugfixes across the board, but primarily in
+    Xwayland. Thanks to all who contributed with testing and
+    fixes!</comment>
+    <requestid>679815</requestid>
+  </revision>
+  <revision rev="368" vrev="2">
+    <srcmd5>5f916731378e000c8a9c9ebcf0c24ff7</srcmd5>
+    <version>1.20.4</version>
+    <time>1553635824</time>
+    <user>dimstar_suse</user>
+    <comment>- Add systemd-rpm-macros BuildRequire for %tmpfiles_*.</comment>
+    <requestid>688667</requestid>
+  </revision>
+  <revision rev="369" vrev="3">
+    <srcmd5>18098e52a0954657a047fd979ce1a4a9</srcmd5>
+    <version>1.20.4</version>
+    <time>1556474335</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697779</requestid>
+  </revision>
+  <revision rev="370" vrev="1">
+    <srcmd5>aec85bbb795e17eb125ded09dd10a1ba</srcmd5>
+    <version>1.20.5</version>
+    <time>1559642894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706740</requestid>
+  </revision>
+  <revision rev="371" vrev="2">
+    <srcmd5>06d416aaca9d2fd5cdb5159c54ecf0ba</srcmd5>
+    <version>1.20.5</version>
+    <time>1564993802</time>
+    <user>dimstar_suse</user>
+    <comment>- move xorg.conf.d snippets from /etc/X11/xorg.conf.d to
+  /usr/share/X11/xorg.conf.d (boo#1139692)</comment>
+    <requestid>719825</requestid>
+  </revision>
+  <revision rev="372" vrev="3">
+    <srcmd5>a406f15e00c7ec09b43ada37fcd36984</srcmd5>
+    <version>1.20.5</version>
+    <time>1567580306</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches required for NVIDIA's PRIME render offload support,
+  which is available since release 435.xx:
+  0001-xsync-Add-resource-inside-of-SyncCreate-export-SyncC.patch,
+  0002-GLX-Add-a-per-client-vendor-mapping.patch,
+  0003-GLX-Use-the-sending-client-for-looking-up-XID-s.patch,
+  0004-GLX-Add-a-function-to-change-a-clients-vendor-list.patch,
+  0005-GLX-Set-GlxServerExports-major-minor-Version.patch</comment>
+    <requestid>727185</requestid>
+  </revision>
+</revisionlist>

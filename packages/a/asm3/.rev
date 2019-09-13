@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b6c71f20e1cbc64b20c2d7368f35b94a</srcmd5>
+    <version>3.3.1</version>
+    <time>1406145986</time>
+    <user>coolo</user>
+    <comment>for some time in java:packages</comment>
+    <requestid>241347</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b6c71f20e1cbc64b20c2d7368f35b94a</srcmd5>
+    <version>3.3.1</version>
+    <time>1409300519</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>498e5f1039db76fbe19b0c5eed432c7a</srcmd5>
+    <version>3.3.1</version>
+    <time>1505507503</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>526293</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>084d3a89bdcb1af3318c9c54018cd000</srcmd5>
+    <version>3.3.2</version>
+    <time>1535367457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628768</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a075acbe5751a842c775413d8b52c685</srcmd5>
+    <version>3.3.2</version>
+    <time>1549458415</time>
+    <user>coolo</user>
+    <comment>Add maven pom files and compat versions</comment>
+    <requestid>671848</requestid>
+  </revision>
+</revisionlist>

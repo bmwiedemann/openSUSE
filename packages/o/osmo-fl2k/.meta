@@ -1,0 +1,11 @@
+<package name="osmo-fl2k" project="openSUSE:Factory">
+  <title>SDR driver for FL2000 based USB 3.0 to VGA adapters</title>
+  <description>Osmo-fl2k allows to use USB 3.0 to VGA adapters based on the
+Fresco Logic FL2000 chip as general purpose DACs and SDR transmitter
+generating a continuous stream of samples by avoiding the HSYNC and
+VSYNC blanking intervals.
+
+</description>
+  <devel project="hardware:sdr" package="osmo-fl2k"/>
+  <url>https://osmocom.org/projects/osmo-fl2k/wiki</url>
+</package>

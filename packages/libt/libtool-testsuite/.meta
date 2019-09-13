@@ -1,0 +1,6 @@
+<package name="libtool-testsuite" project="openSUSE:Factory">
+  <title>A Tool to Build Shared Libraries</title>
+  <description>GNU libtool is a set of shell scripts to automatically configure UNIX
+architectures to build shared libraries in a generic fashion.</description>
+  <devel project="openSUSE:Factory" package="libtool"/>
+</package>

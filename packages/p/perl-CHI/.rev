@@ -1,0 +1,152 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7341a7a1c709f0bdae9508b010e0c73</srcmd5>
+    <version>0.47</version>
+    <time>1311584243</time>
+    <user>saschpe</user>
+    <comment>needed by Data-Util</comment>
+    <requestid>76226</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fc56f4aeade59aa6b76f7d1eca4834ad</srcmd5>
+    <version>0.47</version>
+    <time>1311584256</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76226
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>fc56f4aeade59aa6b76f7d1eca4834ad</srcmd5>
+    <version>0.47</version>
+    <time>1319182243</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>56d6f323cf79a38238836c862881aad2</srcmd5>
+    <version>0.49</version>
+    <time>1319828661</time>
+    <user>coolo</user>
+    <comment>update to 0.49 (forwarded request 89304 from tabraham1)</comment>
+    <requestid>89437</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>31c21df487c5e0c45ce7cca2f023d607</srcmd5>
+    <version>0.49</version>
+    <time>1323193099</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0cab2dfb9dbcf2c849cfab6a3448cd6d</srcmd5>
+    <version>0.50</version>
+    <time>1329405664</time>
+    <user>coolo</user>
+    <comment>update to version 0.50 (forwarded request 105312 from tabraham1)</comment>
+    <requestid>105316</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f0f4ef7c0fd97f5ca274391b5399752e</srcmd5>
+    <version>0.52</version>
+    <time>1331900408</time>
+    <user>coolo</user>
+    <comment>update to 0.52 (forwarded request 108990 from tabraham1)</comment>
+    <requestid>109119</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f0f4ef7c0fd97f5ca274391b5399752e</srcmd5>
+    <version>0.52</version>
+    <time>1340183799</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>f0f4ef7c0fd97f5ca274391b5399752e</srcmd5>
+    <version>0.52</version>
+    <time>1359109606</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8a344e94e1c8349d5bed7016064ce2c4</srcmd5>
+    <version>0.56</version>
+    <time>1368713722</time>
+    <user>coolo</user>
+    <comment>- updated to 0.56
+ * Fixes
+   - Mention testing_driver_class in CHI/Driver/Development.pm - RT #78921 (Nigel Horne)
+ 
+ * Tests
+   - Add test_multiple_processes for testing drivers under concurrent writes - RT #79132 (Nigel Horne)
+ 
+ * Docs
+   - Mention that driver tests are responsible for their own cleanup - RT #79100 (Nigel Horne)
+   - Various spelling fixes thanks to Pod::Spell
+ 
+ * Improvements
+   - Compute derived/aggregate stats in CHI::Stats::parse_stats_logs
+ 
+ * Fixes
+   - Eliminate &quot;=for html&quot; POD entries, which were mangling metacpan.org output (Pedro Melo)
+ 
+ ** Incompatible Changes **
+   - ** Switch CHI::Stats format to JSON for easier generation and parsing
+ 
+ * Improvements
+   - Measure time elapsed in get, set, and compute; record in logs and stats. Only
+     measure when debug logging or stats are enabled.
+   - compute() now handles list or scalar caller context
+   - The driver parameter now accepts full classes prefixed by '+', as is standard.
+     driver_class is still accepted for backward compatibility but no longer documented.
+ 
+ * Fixes
+   - compute() no longer modifies passed-in options hashref
+   - Fix get_multi_* with partially empty l1 cache - perl-chi/pull/12 (Mike Cartmell)</comment>
+    <requestid>175759</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dce72d999052842532949c9e9f4058a1</srcmd5>
+    <version>0.58</version>
+    <time>1375779850</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184384</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>dce72d999052842532949c9e9f4058a1</srcmd5>
+    <version>0.58</version>
+    <time>1379663566</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>dce72d999052842532949c9e9f4058a1</srcmd5>
+    <version>0.58</version>
+    <time>1409302178</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0031930064e1b603c1b690d15f5fea5b</srcmd5>
+    <version>0.59</version>
+    <time>1429107725</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295805</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c37504666069b75e36b54b88f18572c4</srcmd5>
+    <version>0.59</version>
+    <time>1430165312</time>
+    <user>coolo</user>
+    <comment>- fix requires to Time::Duration</comment>
+    <requestid>303825</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>74318621b3763b875ac7891ed4e304db</srcmd5>
+    <version>0.60</version>
+    <time>1443068104</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332267</requestid>
+  </revision>
+</revisionlist>

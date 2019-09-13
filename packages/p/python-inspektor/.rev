@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b26ba1c3b37d9ddaf30a0f2e301e5aae</srcmd5>
+    <version>0.4.5</version>
+    <time>1507571229</time>
+    <user>dimstar_suse</user>
+    <comment>new package, dependency of avocado framework</comment>
+    <requestid>532672</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5eea305bcd63971225082301d7841efd</srcmd5>
+    <version>0.5.1</version>
+    <time>1532774699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1:
+  * No changelog available</comment>
+    <requestid>625771</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f3768e57db7d72d28091e043aacdae9c</srcmd5>
+    <version>0.5.1</version>
+    <time>1539093255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies to match latest python packaging changes</comment>
+    <requestid>640758</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1083095f971468c7add958eb429d29a7</srcmd5>
+    <version>0.5.1</version>
+    <time>1546535341</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not run tests on old distributions</comment>
+    <requestid>662482</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>99f6fb8651ee38a5c9a2618e20653bda</srcmd5>
+    <version>0.5.2</version>
+    <time>1555488579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.2
+  * No changelog available
+- Use pypi url for source</comment>
+    <requestid>694765</requestid>
+  </revision>
+</revisionlist>

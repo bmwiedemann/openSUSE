@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dcbd7931baa3d2de0d9f313875827e0f</srcmd5>
+    <version>0.15.0.1</version>
+    <time>1545647841</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>658876</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8d3da3c99efd2e46c60d6dbaa415588e</srcmd5>
+    <version>0.15.0.1</version>
+    <time>1545996914</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>661498</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d1a9d06bb15cde6c79f9a99f1d46150d</srcmd5>
+    <version>0.16.0.2</version>
+    <time>1550402416</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>674302</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>95977e9967e0d362cf96055376f18fe8</srcmd5>
+    <version>0.16.1</version>
+    <time>1551025127</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>678030</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c61c21cd27a9b52b16610ebccc46c699</srcmd5>
+    <version>0.16.1.1</version>
+    <time>1551883639</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>681685</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>98a55bf186521cb57c3854733511a5b6</srcmd5>
+    <version>0.16.1.3</version>
+    <time>1552985984</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>686010</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bd526e0a6de59f8e9725d94960387552</srcmd5>
+    <version>0.16.2</version>
+    <time>1556475191</time>
+    <user>maxlin_factory</user>
+    <comment>version update</comment>
+    <requestid>698554</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f97d4b5b2f0da034b65529c498b3472b</srcmd5>
+    <version>0.16.2</version>
+    <time>1560971486</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710635</requestid>
+  </revision>
+</revisionlist>

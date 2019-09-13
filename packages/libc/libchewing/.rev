@@ -1,0 +1,280 @@
+<revisionlist>
+  <revision rev="1" vrev="15">
+    <srcmd5>ad5b1e258792190d525b0b8105061f0b</srcmd5>
+    <version>0.3.0</version>
+    <time>1168903293</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="40">
+    <srcmd5>7000947468db313c9a2cd4f15ad88e85</srcmd5>
+    <version>0.3.0</version>
+    <time>1175121864</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="41">
+    <srcmd5>15c772316b3cb8f874481615f534ea37</srcmd5>
+    <version>0.3.0</version>
+    <time>1176159633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="82">
+    <srcmd5>0151f62b57944ca3a411ba56ac52ee5e</srcmd5>
+    <version>0.3.0</version>
+    <time>1196899506</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="135">
+    <srcmd5>0151f62b57944ca3a411ba56ac52ee5e</srcmd5>
+    <version>0.3.0</version>
+    <time>1196899506</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="136">
+    <srcmd5>332052bd59a7a1a5a85122933e249f26</srcmd5>
+    <version>0.3.0</version>
+    <time>1233189672</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>da0e7353718952ed0a9bbead7ffdb48c</srcmd5>
+    <version>0.3.2</version>
+    <time>1248172093</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>246ab5bc5280d062dbdf7d16b284b95b</srcmd5>
+    <version>0.3.2</version>
+    <time>1253560515</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/libchewing based on submit request 20643 from user tiwai
+</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>246ab5bc5280d062dbdf7d16b284b95b</srcmd5>
+    <version>0.3.2</version>
+    <time>1253560515</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/libchewing based on submit request 20643 from user tiwai
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>10885ca5057fbce15fb0875d7a98940a</srcmd5>
+    <version>0.3.2</version>
+    <time>1257850964</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/libchewing based on submit request 23976 from user tiwai
+</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>387ef587048cc05eb8500e7d0cbccc4a</srcmd5>
+    <version>0.3.2</version>
+    <time>1267801358</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/libchewing based on submit request 34161 from user coolo
+</comment>
+    <requestid>34161</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>ef09fcd473f0e8b93108dd41ee43a619</srcmd5>
+    <version>0.3.2</version>
+    <time>1268924525</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>ef09fcd473f0e8b93108dd41ee43a619</srcmd5>
+    <version>0.3.2</version>
+    <time>1278667357</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>ef09fcd473f0e8b93108dd41ee43a619</srcmd5>
+    <version>0.3.2</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>ef09fcd473f0e8b93108dd41ee43a619</srcmd5>
+    <version>0.3.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5bfa54bee2ee6f9729ea947dfeb8c0bd</srcmd5>
+    <version>0.3.3</version>
+    <time>1309180849</time>
+    <user>saschpe</user>
+    <comment>- Update to libchewing 0.3.3:
+  Fix setfault, improved python-binding, build fixes, etc;
+  see http://chewing.csie.net/news.html for details</comment>
+    <requestid>74650</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>09141a646d899640337d711a806e3a5e</srcmd5>
+    <version>0.3.3</version>
+    <time>1309180871</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74650
+</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>09141a646d899640337d711a806e3a5e</srcmd5>
+    <version>0.3.3</version>
+    <time>1319182079</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>1246bcdf13610d218a6a676917e5b2ac</srcmd5>
+    <version>0.3.3</version>
+    <time>1321268357</time>
+    <user>coolo</user>
+    <comment>add buildrequire libtool (forwarded request 91138 from coolo)</comment>
+    <requestid>91164</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>a83369db13d0e0e28273a29efb21a14b</srcmd5>
+    <version>0.3.3</version>
+    <time>1323192174</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>a83369db13d0e0e28273a29efb21a14b</srcmd5>
+    <version>0.3.3</version>
+    <time>1340183570</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9211bd512c34de8010919c9717fc83ef</srcmd5>
+    <version>0.3.4</version>
+    <time>1358666504</time>
+    <user>coolo</user>
+    <comment>- Split libchewing.so.* into subpackage libchewing3 
+
+- Update to libchewing 0.3.4
+- Remove libchewing-gcc-fix.diff (upstream rewrite this part)
+- Improve the description of libchewing API
+    Simplified examples to illustrate the usage are added
+- Revise libchewing API. Check the documentation for details
+- Support THL (Taiwan Huayu Luomapinyin) and MPS2 Pinyin keyboard layout
+- Reimplementation of unit test framework. No external 'check' package is required
+- Fix several phrase errors
+    Add exceptional phrase as well
+- Improved developer and user guide
+- Introduce CMake based build system, which is convenient to MS-Windows based environments.
+- Add --enable-gcov to enable gcov coverage
+- Fix possible strncat() overflow
+- Consistent checks for bopomofo sequence internally
+- Handle incomplete bopomofo with space key properly
+- Internal structure refactoring
+- Read hash path from CHEWING_PATH environment variable
+- Make libchewing thread-safe
+- Fix IM crash by changing default candidate per page to 10
+- Fix the detection of ncursesw
+- Fix the usage of autotools
+- Update and tune symbols
+- Fix valgrind warning
+- Fix several compilation warnings
+- Fix GCC visibility availability for Darwin specific PIC code
+- Fix hash table initialization and its memory leakage
+- Support building with mingw32 toolchain
+- Fix GNU Hurd build (forwarded request 148785 from swyear)</comment>
+    <requestid>149231</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>9211bd512c34de8010919c9717fc83ef</srcmd5>
+    <version>0.3.4</version>
+    <time>1359109250</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>d449d108e73cf3334fe396c14353590a</srcmd5>
+    <version>0.3.4</version>
+    <time>1359465334</time>
+    <user>coolo</user>
+    <comment>babelworx said I have to include a LGPL COPYING, but the COPYING file is already LGPL 2.1...just resubmit for further instruction</comment>
+    <requestid>150174</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>d9f20bcc3193bac9fede7530dd85d0d7</srcmd5>
+    <version>0.3.4</version>
+    <time>1366722638</time>
+    <user>coolo</user>
+    <comment>- fix baselibs.conf - there is no libchewing-32bit</comment>
+    <requestid>172979</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1960242cb311590f914450e7dfbfb964</srcmd5>
+    <version>0.3.4.git20130424</version>
+    <time>1366975627</time>
+    <user>coolo</user>
+    <comment>fix bnc#808338 (forwarded request 173456 from MargueriteSu)</comment>
+    <requestid>173457</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>ffb2605af65f1f904c9307a7848fcd89</srcmd5>
+    <version>0.3.4.git20130424</version>
+    <time>1367222057</time>
+    <user>coolo</user>
+    <comment>revert unnessary renaming (forwarded request 173543 from MargueriteSu)</comment>
+    <requestid>173544</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1659a7c2738cdb02cef8a8c72e98fbc1</srcmd5>
+    <version>0.3.5</version>
+    <time>1375783452</time>
+    <user>coolo</user>
+    <comment>update version 0.3.5</comment>
+    <requestid>185999</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>1659a7c2738cdb02cef8a8c72e98fbc1</srcmd5>
+    <version>0.3.5</version>
+    <time>1379662916</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f5883836fbb661b27cedfe5dd72fc298</srcmd5>
+    <version>0.4.0</version>
+    <time>1402946817</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236658</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>f5883836fbb661b27cedfe5dd72fc298</srcmd5>
+    <version>0.4.0</version>
+    <time>1409301520</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9bc3129025df9a55f1ae3ef3018047c6</srcmd5>
+    <version>0.4.0+git20150820.285b47d</version>
+    <time>1441726734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>328335</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>dbafab2f2ae9e7dcc8fea8e3fbdb2abb</srcmd5>
+    <version>0.5.1+git20171114.3df07c9</version>
+    <time>1511817482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545781</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>952fd107764998976c9d54fc6641c37d</srcmd5>
+    <version>0.5.1+git20171114.3df07c9</version>
+    <time>1566665133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725572</requestid>
+  </revision>
+</revisionlist>

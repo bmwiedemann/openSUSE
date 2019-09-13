@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9753f62ea5293bbe151bfd846e92048</srcmd5>
+    <version>0.1.0</version>
+    <time>1475750560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>430286</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b80b42714f4ddd2195233a294f41eddb</srcmd5>
+    <version>0.2.0</version>
+    <time>1489415555</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460516</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>124aeaf98e8739dde895a3d11f30f4ba</srcmd5>
+    <version>0.3.0</version>
+    <time>1508876609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * Bump version to 0.3.0
+  * correct spelling mistake
+  * Added Lithuanian .desktop file
+  * liblxqt make no sense here
+  * Copied issue template
+  * set Qt::AA_UseHighDpiPixmaps to true
+  * Added version to cli options
+  * Added default CMAKE_BUILD_TYPE and versioning
+  * added pl.desktop
+  * ui: Use &quot;changes-prevent-symbolic&quot; icon
+  * MainWindow: Remove old GTK remnants
+  * Add Catalan translation
+  * Channel: Add slider snapping to 100%
+  * Channel: Address compiler warnings
+  * Channel: Align slider controls correclty
+  * Channel: Add ticks to volume slider
+  * Channel: Use percentage for volume scale
+  * devicewidgte: Re-add device renaming
+  * MainWindow: Force using the size from previous run
+  * MainWindow: Add quit shortcut
+  * Added pavucontrol-qt_da.desktop
+</comment>
+    <requestid>535987</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6ac45864bc0f825c1cef72401f210d58</srcmd5>
+    <version>0.4.0</version>
+    <time>1530304211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Bumped minor version to 4
+  * Spanish translation update
+  * Qt5.11 beta: xxxwidget: include QAction explicitely
+  * CMake: Prevent in-source builds
+  * build: Use pkg-config's *_LDFLAGS
+  * fix http -&gt; https
+  * Fixed mentions of LXDE
+  * pavucontrol: Remove unique application constraint
+  * Add Simplified Chinese desktop entry
+</comment>
+    <requestid>618035</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0daa56826a5c1612355fa6bcdb0a4dc2</srcmd5>
+    <version>0.14.0</version>
+    <time>1551113394</time>
+    <user>coolo</user>
+    <comment>- Update to 0.14.0:
+  * Treat the ‘off’ card profile specifically
+  * Mainwindow: Don’t use deprecated libpulse members
+- Move translation from lxqt-l10n into package
+</comment>
+    <requestid>670399</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>891b5130f884cb3615c737b79e1ebcb1</srcmd5>
+    <version>0.14.1</version>
+    <time>1551455380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.1:
+  * Only translations was changed</comment>
+    <requestid>680440</requestid>
+  </revision>
+</revisionlist>

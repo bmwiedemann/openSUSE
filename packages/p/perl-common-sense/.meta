@@ -1,0 +1,40 @@
+<package name="perl-common-sense" project="openSUSE:Factory">
+  <title>Save a tree AND a kitten (sane defaults for Perl programs)</title>
+  <description>This module implements some sane defaults for Perl programs, as defined
+by two typical (or not so typical - use your common sense) specimens of
+Perl coders. In fact, after working out details on which warnings and
+strict modes to enable and make fatal, we found that we (and our code
+written so far, and others) fully agree on every option, even though we
+never used warnings before, so it seems this module indeed reflects a
+&quot;common&quot; sense among some long-time Perl coders.
+
+The basic philosophy behind the choices made in common::sense can be
+summarised as: &quot;enforcing strict policies to catch as many bugs as
+possible, while at the same time, not limiting the expressive power
+available to the programmer&quot;.
+
+Two typical examples of how this philosophy is applied in practise is
+the handling of uninitialised and malloc warnings:
+
+*uninitialised*
+    &quot;undef&quot; is a well-defined feature of perl, and enabling warnings for
+    using it rarely catches any bugs, but considerably limits you in
+    what you can do, so uninitialised warnings are disabled.
+
+*malloc*
+    Freeing something twice on the C level is a serious bug, usually
+    causing memory corruption. It often leads to side effects much later
+    in the program and there are no advantages to not reporting this, so
+    malloc warnings are fatal by default.
+
+Unfortunately, there is no fine-grained warning control in perl, so
+often whole groups of useful warnings had to be excluded because of a
+single useless warning (for example, perl puts an arbitrary limit on the
+length of text you can match with some regexes before emitting a
+warning, making the whole &quot;regexp&quot; category useless).
+
+What follows is a more thorough discussion of what this module does, and
+why it does it, and what the advantages (and disadvantages) of this
+approach are.</description>
+  <devel project="devel:languages:perl" package="perl-common-sense"/>
+</package>

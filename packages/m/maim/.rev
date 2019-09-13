@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8a6760421145228fa816f2fe459d508c</srcmd5>
+    <version>3.3.41</version>
+    <time>1436112119</time>
+    <user>coolo</user>
+    <comment>Please accept this new RPM.</comment>
+    <requestid>314072</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ff166c236c62c908d270bbb61827dd89</srcmd5>
+    <version>5.5.2</version>
+    <time>1541667047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647043</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a399dd10db6b5c8d6f2206676fdba95d</srcmd5>
+    <version>5.5.2</version>
+    <time>1541746512</time>
+    <user>dimstar_suse</user>
+    <comment>- use correct cmake macros (forwarded request 647298 from mimi_vx)</comment>
+    <requestid>647299</requestid>
+  </revision>
+</revisionlist>

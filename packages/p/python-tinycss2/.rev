@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>620023fbd04770856c9e8a01d4559e54</srcmd5>
+    <version>0.6.1</version>
+    <time>1527583334</time>
+    <user>dimstar_suse</user>
+    <comment>needed by python-CairoSVG and python-WeasyPrint</comment>
+    <requestid>611775</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d0d64488a0b1f3143287b1d4aa780058</srcmd5>
+    <version>0.6.1</version>
+    <time>1548335658</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>667868</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a6a3c8e025ee85ea78aaede089c58889</srcmd5>
+    <version>0.6.1</version>
+    <time>1555691840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694576</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8d0c6d4cb91fc8a443e96f55b4ae798a</srcmd5>
+    <version>1.0.2</version>
+    <time>1557083912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699150</requestid>
+  </revision>
+</revisionlist>

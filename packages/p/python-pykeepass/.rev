@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f071009f96e88e43d5c629f6e637551e</srcmd5>
+    <version>3.0.2</version>
+    <time>1542281900</time>
+    <user>dimstar_suse</user>
+    <comment>New package: python-pykeepass is a python library that allows you to write entries to a KeePass database (depends on sr#645673 and sr#645674)
+</comment>
+    <requestid>645675</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6f662228927d5e8d06173c15b4a981b8</srcmd5>
+    <version>3.0.3</version>
+    <time>1554276505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690678</requestid>
+  </revision>
+</revisionlist>

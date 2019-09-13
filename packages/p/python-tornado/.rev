@@ -1,0 +1,487 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd87bdc144031c43e73ca3e4faa37831</srcmd5>
+    <version>1.2.1</version>
+    <time>1306768053</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67287</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>570c594e74d97b2ec60fec3d8fdee6d5</srcmd5>
+    <version>1.2.1</version>
+    <time>1306768062</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67287
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9035bec88ce74e09d3a90a6e7cf84b19</srcmd5>
+    <version>2.0</version>
+    <time>1311081157</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>74903</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>85279f113f701a48af5ef838c4e03513</srcmd5>
+    <version>2.0</version>
+    <time>1311081167</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 74903
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>fe95581da625c74d66a3b937a89ea981</srcmd5>
+    <version>2.0</version>
+    <time>1315235257</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>80619</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>b08e3bb44a2982c3d60fa71ccde34152</srcmd5>
+    <version>2.0</version>
+    <time>1315235265</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80619
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2160fda984f2e5367585dd30278ead73</srcmd5>
+    <version>2.1</version>
+    <time>1316681513</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>84191</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>2160fda984f2e5367585dd30278ead73</srcmd5>
+    <version>2.1</version>
+    <time>1319182406</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dca5b2f5b3103273b265459a6fd82971</srcmd5>
+    <version>2.1.1</version>
+    <time>1322216012</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>93078</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b7b26f0c1cddf53f374ef44f9053e80a</srcmd5>
+    <version>2.2</version>
+    <time>1329242798</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103945</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a8d8e693154f4425f0f1b891c7bd0a55</srcmd5>
+    <version>2.2</version>
+    <time>1331627954</time>
+    <user>coolo</user>
+    <comment>- Simplified macro usage
+- Use upstream tarball</comment>
+    <requestid>109043</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>2c63617cc8ed1bbd01158b7e655aff80</srcmd5>
+    <version>2.2</version>
+    <time>1333355458</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>111817</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8544bf7ec08bd332647e55c699fac988</srcmd5>
+    <version>2.2.1</version>
+    <time>1336423853</time>
+    <user>coolo</user>
+    <comment>- Fix building python 3 package on openSUSE 11.4 x86_64
+- Removed test for unsupported openSUSE versions (forwarded request 116077 from TheBlackCat)</comment>
+    <requestid>116078</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>328bd6052873ea359a3fda336e3fc0b5</srcmd5>
+    <version>2.2.1</version>
+    <time>1337667508</time>
+    <user>coolo</user>
+    <comment>- Fix rpmlint warnings
+- Improve openSUSE 11.4 build fix
+- Clean up spec file
+
+ (forwarded request 121469 from TheBlackCat)</comment>
+    <requestid>121470</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>330edeeff572040e25e46c153a6b7836</srcmd5>
+    <version>2.3</version>
+    <time>1339076394</time>
+    <user>coolo</user>
+    <comment>- Update to 2.3:
+  - Please check changelog at
+    http://www.tornadoweb.org/documentation/releases/v2.3.0.html 
+
+- Update to 2.3:
+  - Please check changelog at
+    http://www.tornadoweb.org/documentation/releases/v2.3.0.html</comment>
+    <requestid>123460</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>330edeeff572040e25e46c153a6b7836</srcmd5>
+    <version>2.3</version>
+    <time>1340184095</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2a5edbd0cdf438b52a784e50b48eb357</srcmd5>
+    <version>2.4</version>
+    <time>1347347923</time>
+    <user>coolo</user>
+    <comment>Restore BuildRequires: python3  This package depends on hash algorithms that are only available if python3 is installed, python3-devel will not pull them in.  Building will fail if  BuildRequires: python3 is removed. (forwarded request 132978 from TheBlackCat)</comment>
+    <requestid>132979</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>5490917fe646c4108b1d922f303d8c44</srcmd5>
+    <version>2.4</version>
+    <time>1354109709</time>
+    <user>coolo</user>
+    <comment>Removed openSUSE 11.4 spec file workarounds (forwarded request 142762 from TheBlackCat) (forwarded request 142783 from TheBlackCat)</comment>
+    <requestid>142795</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9103c5942b43391f35f898b36c3013c8</srcmd5>
+    <version>2.4.1</version>
+    <time>1354530658</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143807</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>9103c5942b43391f35f898b36c3013c8</srcmd5>
+    <version>2.4.1</version>
+    <time>1359110131</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4c83d0b9ecb8e7db12093db48fe58b0c</srcmd5>
+    <version>3.0</version>
+    <time>1365337572</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>163039</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>792daa2e69a7931531f1e549df0a11b3</srcmd5>
+    <version>3.0.1</version>
+    <time>1366358623</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>172370</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>a461048cf7d7c330bf2f2fab4ddbc36a</srcmd5>
+    <version>3.0.1</version>
+    <time>1372064656</time>
+    <user>coolo</user>
+    <comment>remove duplicated spec file</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ccd2cef1029b4cf4bcbf5bb8c916418b</srcmd5>
+    <version>3.1</version>
+    <time>1376589831</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 3.1:
+  + See http://www.tornadoweb.org/en/stable/releases/v3.1.0.html
+- Fix rpmlint issues properly
+- Use upstream URL</comment>
+    <requestid>188217</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>ccd2cef1029b4cf4bcbf5bb8c916418b</srcmd5>
+    <version>3.1</version>
+    <time>1379664299</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3d9f73c970d9981997aa8f1b2461cfd6</srcmd5>
+    <version>3.1.1</version>
+    <time>1384768450</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to version 3.1.1 (forwarded request 207331 from posophe)</comment>
+    <requestid>207332</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>00ef408dd33ec73d2c554ed701abe936</srcmd5>
+    <version>3.2.1</version>
+    <time>1401208216</time>
+    <user>coolo</user>
+    <comment>Update dependencies
+python-backports.ssl_match_hostname is a critical dependency, tornado will not work without it on python 2.x. (forwarded request 234859 from TheBlackCat)</comment>
+    <requestid>234860</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>00ef408dd33ec73d2c554ed701abe936</srcmd5>
+    <version>3.2.1</version>
+    <time>1409303006</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>42f30b2bd4263d402a1641b60f115420</srcmd5>
+    <version>4.0.2</version>
+    <time>1412533875</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253675</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>eb186d5b6287f76508e0b60025b78cf3</srcmd5>
+    <version>4.1</version>
+    <time>1429769101</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298606</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ce513d7a7e7218d776123e8eba7fc6cd</srcmd5>
+    <version>4.2.1</version>
+    <time>1443585125</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333896</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>a703ae71ae9143b86382e8f41237f393</srcmd5>
+    <version>4.2.1</version>
+    <time>1444130714</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335032</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>06048ea108766beb1715a73bb0d37c7d</srcmd5>
+    <version>4.2.1</version>
+    <time>1445511542</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339767</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>afa1e84e9e60f0c5d1f249a353bb19b3</srcmd5>
+    <version>4.3</version>
+    <time>1450284134</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348071</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>8deb726eca3aa4309b2225b610a22c47</srcmd5>
+    <version>4.3</version>
+    <time>1452535889</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351689</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7fa6e1ef50b81cded741ea9617d2d1e3</srcmd5>
+    <version>4.4.2</version>
+    <time>1480018993</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441234</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>971232123b8e1d6e4b16bca7712db36a</srcmd5>
+    <version>4.4.3</version>
+    <time>1493368591</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>486650</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>fa3fb83c10e09e4a0223579f88256d6e</srcmd5>
+    <version>4.4.3</version>
+    <time>1498485095</time>
+    <user>dimstar_suse</user>
+    <comment>- in %pre, remove egg-info file if installed, because it's being
+  replaced by a directory (bsc#1035604)
+
+- replace the complicated condition for requiring backports.ssl_match_hostname
+  with unconditional requirement for Python &gt;= 2.7.9
+
+- require python-backports.ssl_hostname only on python 2.x</comment>
+    <requestid>505956</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>cf9f8acb6d0acab1f0742374650565c7</srcmd5>
+    <version>4.4.3</version>
+    <time>1502707074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515888</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>6913d16ffec0c8dabd6690e3b0b8507d</srcmd5>
+    <version>4.4.3</version>
+    <time>1508769573</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534452</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>38d1ab01e74ade42a60dc153ad89aabb</srcmd5>
+    <version>4.5.2</version>
+    <time>1513109936</time>
+    <user>dimstar_suse</user>
+    <comment>- Distribute license file
+
+- specfile:
+  * removed tornado-configtest.patch: fixed upstream
+  * update tornado-async-deprecation.patch (partly integrated)
+- update to version 4.5.2:
+  * Tornado now sets the FD_CLOEXEC flag on all file descriptors it
+    creates. This prevents hanging client connections and resource
+    leaks when the tornado.autoreload module (or
+    Application(debug=True)) is used.
+- changes from version 4.5.1:
+  * tornado.log
+    + Improved detection of libraries for colorized logging.
+  * tornado.httputil
+    + url_concat once again treats None as equivalent to an empty
+      sequence.
+- changes from version 4.5.0:
+  * long changelog, see http://www.tornadoweb.org/en/stable/releases/v4.5.0.html
+    for details</comment>
+    <requestid>554804</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>238a6e2e210daaffbd035a9ae0ac85e8</srcmd5>
+    <version>4.5.2</version>
+    <time>1516091737</time>
+    <user>dimstar_suse</user>
+    <comment>- only buildrequire futures / singledispatch if python2 is present
+  (fixes build in environments that don't have python2 at all)</comment>
+    <requestid>561691</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d55fe939eede1add731708ee1b5b5e2e</srcmd5>
+    <version>4.5.3</version>
+    <time>1518697335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576487</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>99a8b03bce580ce2970f05d89ffb5054</srcmd5>
+    <version>4.5.3</version>
+    <time>1520253234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580795</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>91bceb334b11ce5ac9bc43dccaf7bbd1</srcmd5>
+    <version>4.5.3</version>
+    <time>1520852768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584000</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>c4eefa023d8c7fe1fd4418d4c11e2b3b</srcmd5>
+    <version>4.5.3</version>
+    <time>1521903941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587929</requestid>
+  </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>772a4b45f52533133648bfcaccf83b51</srcmd5>
+    <version>4.5.3</version>
+    <time>1525697584</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't require backport_abc for python &gt;= 3.5
+</comment>
+    <requestid>603210</requestid>
+  </revision>
+  <revision rev="48" vrev="6">
+    <srcmd5>6503d8dad661352f06d04740a6d749a1</srcmd5>
+    <version>4.5.3</version>
+    <time>1526219888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606307</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>32ffe6a4dc05adbb03439819fc6decd5</srcmd5>
+    <version>5.1</version>
+    <time>1531813071</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1
+- drop tornado-async-deprecations.patch
+       tornado-testsuite_timeout.patch
+ * support python 3.7
+ * big bunch of changes, please check:
+     http://www.tornadoweb.org/en/stable/releases.html (forwarded request 622947 from mimi_vx)</comment>
+    <requestid>622948</requestid>
+  </revision>
+  <revision rev="50" vrev="7">
+    <srcmd5>91bff23146685d7bde42e605e4106496</srcmd5>
+    <version>4.5.3</version>
+    <time>1531985704</time>
+    <user>dimstar_suse</user>
+    <comment>Revert: tornado 5.1 breaks salt (boo#1101780)</comment>
+  </revision>
+  <revision rev="51" vrev="8">
+    <srcmd5>78bb3ee49c0e664263c1ee1bbeedaa1f</srcmd5>
+    <version>4.5.3</version>
+    <time>1548704733</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch really fixing the tests/tool to work on py3.7:
+  * asyncio.patch
+- Add patch to enlarge key size for openssl 1.1.1:
+  * openssl-cert-size.patch
+
+- Drop patch tornado-async-deprecations.patch that does not fix
+  stuff on py3.7</comment>
+    <requestid>664410</requestid>
+  </revision>
+  <revision rev="52" vrev="9">
+    <srcmd5>4a5415f0099ccc2e48d18ba406f0d186</srcmd5>
+    <version>4.5.3</version>
+    <time>1549140342</time>
+    <user>coolo</user>
+    <comment>- Add patch to skip tests failing with openss-1.1.1; this happens
+  only when using TLS 1.3 so if user wants to use tornado they
+  can hand disable the TLS and continue:
+  * skip-failing-tests.patch
+
+- Import necessary dependencies on Red Hat platforms</comment>
+    <requestid>670099</requestid>
+  </revision>
+  <revision rev="53" vrev="10">
+    <srcmd5>7bbf3acc46bde6d2169bee44527f9109</srcmd5>
+    <version>4.5.3</version>
+    <time>1552380282</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes macro expansion</comment>
+    <requestid>682428</requestid>
+  </revision>
+  <revision rev="54" vrev="11">
+    <srcmd5>e9a3780813b2dd52e2eec1249d6df690</srcmd5>
+    <version>4.5.3</version>
+    <time>1566478949</time>
+    <user>dimstar_suse</user>
+    <comment>- Split tornado versions into their own packages.
+This package now depends on the current preferred version.
+
+This is tornado4 until things settle down.</comment>
+    <requestid>723325</requestid>
+  </revision>
+</revisionlist>

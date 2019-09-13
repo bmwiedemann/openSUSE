@@ -1,0 +1,6 @@
+<package name="yamagi-quake2" project="openSUSE:Factory">
+  <title>Yamagi Quake 2</title>
+  <description>Yamagi Quake II is an enhanced client for id Software's Quake II. The main focus is an unchanged single player experience; the gameplay and graphics are unaltered. It also features: anisotropic filtering and
+multi-sample anti-aliasing, widescreen aspect ratio and unlimited screen size, compatibility with most mods, optional support for retexturing packs and HUD scaling.</description>
+  <devel project="games" package="yamagi-quake2"/>
+</package>

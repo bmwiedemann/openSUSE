@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3e7fdd5e325e6c9babd75c018eae913d</srcmd5>
+    <version>1.3.3</version>
+    <time>1375449969</time>
+    <user>coolo</user>
+    <comment>dependency for libguestfs (fate#312159)</comment>
+    <requestid>185197</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3e7fdd5e325e6c9babd75c018eae913d</srcmd5>
+    <version>1.3.3</version>
+    <time>1379663401</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>3e7fdd5e325e6c9babd75c018eae913d</srcmd5>
+    <version>1.3.3</version>
+    <time>1409302016</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6761ab0dde2eb0f6305d8ea2702e1253</srcmd5>
+    <version>1.5.5</version>
+    <time>1414776450</time>
+    <user>coolo</user>
+    <comment>-  Update to upstream version 1.5.5
+   New ppxopt META variables.
+   Support for OCAMLFIND_TOOLCHAIN environment variable.
+
+- BuildRequire ocaml-rpm-macros
+
+- BuildRequire at least ocaml 4.02
+
+-  Update to upstream version 1.5.3
+   The installation of &quot;bytes&quot; respects now $prefix and the
+   configured destination.
+   New option -pp for &quot;ocamlfind query&quot;, to get preprocessor
+   packages.  Updated the compatibility Bytes module to support
+   extend, init, mapi,  blit_string.
+-  1.5.2: support for the query formats &quot;%+a&quot; and &quot;%+A&quot;.
+   Fix: the &quot;ppx&quot; property is now also path-expanded when
+   interpreted in a toploop.
+   Fix: implicit &quot;ppx&quot; is not path-expanded anymore.
+   Fix: Build bytes.cmxs only if natdynlink is enabled.
+-  1.5.1: includes a file that was missing in 1.5
+-  1.5: Including the &quot;bytes&quot; package that is either a compat
+   package for ocaml &lt; 4.02 or a fake package for ocaml &gt;= 4.02.
+   The package aims at helping to support the transition to the new
+   &quot;bytes&quot; type for mutable strings.
+   Also installing findlib.cmxs if OCaml supports it.
+   Allowing to disable camlp4 (in prep for OCaml-4.02).
+   The &quot;ppx&quot; package property can be specified for constructing
+   ppx-type preprocessor.
+-  1.4.1:ocamldoc: The order of -ppopt arguments was changed by
+   ocamlfind, which is not correct.
+-  1.4: Fixed performance bug when many arguments need to be processed.
+   Auto-configuring ocamldoc.opt if it is found.
+   New config switch -no-custom to prevent that &quot;ocamlfind&quot; is
+   linked in custom-runtime mode (bytecode only).
+   The library dbm is no longer part of OCaml, and now optional in
+   findlib 
+   Support for ocamloptp.
+   New function Topfind.log for controlling the verbosity.
+   Rewritten Fl_metascanner without camlp4</comment>
+    <requestid>258139</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>21ea3fd12c908010c97c313a40901baf</srcmd5>
+    <version>1.6.2</version>
+    <time>1468579571</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to upstream version 1.6.2 (fate#320836)
+   Adding an &quot;ocamldoc&quot; library, providing the cmi's for ocamldoc plugins
+   Support for OCaml-4.03: recognize that the new -color option has an argument
+   Adding support for dynamically loading  packages
+   new &quot;plugin&quot; variable, new  Fl_dynload module.
+   New command &quot;ocamlfind lint&quot; for checking META files
+   Allow to query the location of the META file of a package:
+   &quot;ocamlfind query -format '%m'&quot;
+   Get the install path for the META file of packages:
+   &quot;ocamlfind printconf metapath&quot;
+   The switch -only-show did not work as described.
+
+- Add hardcoded Provides for pre 12.1 repos</comment>
+    <requestid>404353</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fef3d282f9f075fb6e743c25745e3892</srcmd5>
+    <version>1.7.3</version>
+    <time>1503061385</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Update to upstream version 1.7.3
+   Fix regarding num-top: this library is now also  optional, as num.
+   Trying to protect against failures when  several package installs are done in parallel.
+   New subpackage &quot;findlib.top&quot; for the toploop
+   The &quot;num&quot; library is now optional.
+   New command &quot;ocamlfind printppx&quot; that outputs how the ppx preprocessor would be called
+   Support for the raw_spacetime library that comes with OCaml 4.04
+   Require that ocamlc and ocamlc.opt are installed to the same directory
+   &quot;ocamlfind printconf&quot; respects the  environment variable OCAMLFIND_CONF
+   Build with -opaque
+   Preliminary support for native toplevel
+   New options: ocamlfind query -qe -qo
+- drop findlib-1.3.3.patch
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>517010</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d3b786e7ff254fd56cede404f79f6035</srcmd5>
+    <version>1.7.3</version>
+    <time>1566893693</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove /etc/ocamlfind.conf because it is not configuration
+  but built-in constants.</comment>
+    <requestid>725330</requestid>
+  </revision>
+</revisionlist>

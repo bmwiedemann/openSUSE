@@ -1,0 +1,11 @@
+<package name="azure-cli-sql" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'SQL' Command Module</title>
+  <description>Microsoft Azure CLI 'SQL' Command Module
+
+This package is for the 'sql' module.
+i.e. 'az sql'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-sql"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

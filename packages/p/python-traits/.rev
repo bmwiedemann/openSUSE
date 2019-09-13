@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38432ab6bcd64a41fdc14b06ffb89076</srcmd5>
+    <version>4.6.0</version>
+    <time>1527605241</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-enable</comment>
+    <requestid>605793</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a646357e9b2f7b9aa69283ea50485421</srcmd5>
+    <version>5.0.0</version>
+    <time>1551025137</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678045</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5e03280ac8be9f540262e3087875a34f</srcmd5>
+    <version>5.1.0</version>
+    <time>1555574216</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.1.0
+  * Make UUID trait initializable. (#459)
+  * Change default ``FileEditor`` behavior for a ``File`` trait based on
+    whether ``exists=True`` is specified for that trait. (#451, #467)
+  * The changes made in #373 to make dynamically-added traits pickleable have
+    been reverted. (#462)
+  * ``traits.api.python_version`` has been removed. Internals have been
+    refactored to use ``six.PY2`` in preference to ``sys.version_info``.
+    (#449)
+  * Don't depend on the 3rd party ``mock`` library on Python 3; use
+    ``unittest.mock`` instead. (#446)
+- Drop no longer needed avoid_sys_modules_hackery.patch</comment>
+    <requestid>695180</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b722389705e728509b034c988171f99e</srcmd5>
+    <version>5.1.1</version>
+    <time>1556621950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697378</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6398b25afa43f689f85a9a27cc76d6f0</srcmd5>
+    <version>5.1.2</version>
+    <time>1563790910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.2:
+  * Traits documenter no longer generates bad reST for traits whose definition spans multiple source lines. (#494)</comment>
+    <requestid>717484</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>353baab80dc4eff17ba732d0980d4e21</srcmd5>
+    <version>1.0</version>
+    <time>1487384320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>457020</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>248a46a99602cc5f0a02d26c2a5f27be</srcmd5>
+    <version>1.0</version>
+    <time>1504617563</time>
+    <user>dimstar_suse</user>
+    <comment>- Update nvptx-tools.patch to check for getopt to avoid providing
+  an incompatible declaration.</comment>
+    <requestid>520987</requestid>
+  </revision>
+</revisionlist>

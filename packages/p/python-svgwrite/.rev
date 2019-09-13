@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4b7c02541c9238c762fad3780148d8d5</srcmd5>
+    <version>1.1.12</version>
+    <time>1527933590</time>
+    <user>dimstar_suse</user>
+    <comment>Create SVG drawings</comment>
+    <requestid>612043</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c944650bca7ba4e5dcb054f2761174c3</srcmd5>
+    <version>1.1.12</version>
+    <time>1533045683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626392</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>472b3e7acce6b388e2b659a5e0aa38b5</srcmd5>
+    <version>1.1.12</version>
+    <time>1545648299</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659705</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b4721715339c0399ccfe8ded09b31409</srcmd5>
+    <version>1.2.1</version>
+    <time>1546535307</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.2.1:
+  * BUGFIX: Python 2 pretty print encoding issue
+  * NEW: Inkscape extension - support for Inkscape layers
+  * BUGFIX: compatibility with Python 3.7 by fixing re.split() usage</comment>
+    <requestid>662429</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bc21f5ecd851a1590eede79bf7a90313</srcmd5>
+    <version>1.3.1</version>
+    <time>1563808798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.1:
+  * NEW: easy stylesheet embedding: Drawing.embed_stylesheet(content), see example using_fonts.py
+  * NEW: embedded local fonts: Drawing.embed_font(fontname, filename), see example using_fonts.py
+  * NEW: embedded web fonts: Drawing.embed_google_web_font(fontname, uri), see example using_fonts.py
+  * NEW: shapes extension by Christof Hanke
+  * NEW: for write(), save() and saveas(), indentation for pretty print is configurable by Mitar
+  * BUGFIX: converted regex strings in tests to raw strings by tirkarthi</comment>
+    <requestid>717576</requestid>
+  </revision>
+</revisionlist>

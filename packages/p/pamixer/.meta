@@ -1,0 +1,9 @@
+<package name="pamixer" project="openSUSE:Factory">
+  <title>PulseAudio commandline mixer</title>
+  <description>pamixer is like amixer but for PulseAudio. It can control the volume levels
+of the sinks.
+
+</description>
+  <devel project="multimedia:apps" package="pamixer"/>
+  <url>https://github.com/cdemoulins/pamixer</url>
+</package>

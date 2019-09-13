@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1d80a3432e646cfa1527b04ace1c02d7</srcmd5>
+    <version>1.3</version>
+    <time>1515505873</time>
+    <user>dimstar_suse</user>
+    <comment>Primarily for SLE15</comment>
+    <requestid>558614</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>748af6b5a63d73d5d55c364a1554e52e</srcmd5>
+    <version>1.3</version>
+    <time>1516359146</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>563423</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1f61ffc64fc40b1cbfbe5962e73b6de2</srcmd5>
+    <version>1.3</version>
+    <time>1516970352</time>
+    <user>dimstar_suse</user>
+    <comment>Added sle15 detection and processing (bsc#1075250) (forwarded request 569405 from jrecord)</comment>
+    <requestid>569406</requestid>
+  </revision>
+</revisionlist>

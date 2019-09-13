@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>19deab81cc0471e3479d46e1440afc54</srcmd5>
+    <version>1.3.6</version>
+    <time>1334215436</time>
+    <user>coolo</user>
+    <comment>New package submission: gl2ps - OpenGL to PostScript Printing Library. gl2ps can be used in Factory e.g. in vtk which includes an internal copy of gl2ps</comment>
+    <requestid>112042</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>19deab81cc0471e3479d46e1440afc54</srcmd5>
+    <version>1.3.6</version>
+    <time>1340183368</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ef2b476c3b59c74aa393bc5308992c38</srcmd5>
+    <version>1.3.7</version>
+    <time>1349590854</time>
+    <user>coolo</user>
+    <comment>Update to version 1.3.7, Updated build requirements, Removed gl2ps-soversion.patch (fixed upstream) (forwarded request 137319 from adra)</comment>
+    <requestid>137321</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ef2b476c3b59c74aa393bc5308992c38</srcmd5>
+    <version>1.3.7</version>
+    <time>1359108939</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>76dfc8a04a4a137699f1fbcc28a0dd37</srcmd5>
+    <version>1.3.8</version>
+    <time>1364472776</time>
+    <user>coolo</user>
+    <comment>Update to version 1.3.8, Corrected no-copy-dt-needed-entries.patch (forwarded request 161284 from adra)</comment>
+    <requestid>161300</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>64e8d8b13d43e0d09015bd45cf3ccc28</srcmd5>
+    <version>1.3.8</version>
+    <time>1365139858</time>
+    <user>coolo</user>
+    <comment>Fixed BuildRequirements for Factory and SLES (forwarded request 162377 from worldcitizen)</comment>
+    <requestid>162389</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>64e8d8b13d43e0d09015bd45cf3ccc28</srcmd5>
+    <version>1.3.8</version>
+    <time>1379662455</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>64e8d8b13d43e0d09015bd45cf3ccc28</srcmd5>
+    <version>1.3.8</version>
+    <time>1409300992</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>1bd0dc0cb121da41a9c26790bb1425a6</srcmd5>
+    <version>1.3.8</version>
+    <time>1441726969</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329157</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f4ffbb38ebc797fecc1586ab7e0ca1f0</srcmd5>
+    <version>1.3.9</version>
+    <time>1450955748</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347432</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>77fcf0f8d1e1c900165f441c74d4e0c0</srcmd5>
+    <version>1.4.0</version>
+    <time>1499292248</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508199</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a9228f16c5e3ecdb90e09e7e40034c0b</srcmd5>
+    <version>1.4.0</version>
+    <time>1500275329</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509550</requestid>
+  </revision>
+</revisionlist>

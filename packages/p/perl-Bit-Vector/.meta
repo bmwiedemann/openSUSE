@@ -1,0 +1,17 @@
+<package name="perl-Bit-Vector" project="openSUSE:Factory">
+  <title>Bit::Vector Perl module</title>
+  <description>Bit::Vector is an efficient C library which allows you to handle
+bit vectors, sets (of integers), &quot;big integer arithmetic&quot; and
+boolean matrices, all of arbitrary sizes.
+
+The library is efficient (in terms of algorithmical complexity)
+and therefore fast (in terms of execution speed) for instance
+through the widespread use of divide-and-conquer algorithms.
+
+The package also includes an object-oriented Perl module for
+accessing the C library from Perl, and optionally features
+overloaded operators for maximum ease of use.
+
+The C library can nevertheless be used stand-alone, without Perl.</description>
+  <devel project="devel:languages:perl" package="perl-Bit-Vector"/>
+</package>

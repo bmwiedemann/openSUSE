@@ -1,0 +1,1250 @@
+<revisionlist>
+  <revision rev="1" vrev="29">
+    <srcmd5>569db4a065244ef4ba89fcea871a70fe</srcmd5>
+    <version>0.4.7</version>
+    <time>1168903557</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="48">
+    <srcmd5>70029da98225143dfb4650c81c01476f</srcmd5>
+    <version>0.4.7</version>
+    <time>1179395242</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="50">
+    <srcmd5>fd1ad1ba7f0e05aa0beb517933b4a5b2</srcmd5>
+    <version>0.4.7</version>
+    <time>1179763825</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="65">
+    <srcmd5>5c0307fe13e22791fbe7bbdb30dd707d</srcmd5>
+    <version>0.4.7</version>
+    <time>1186087838</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="67">
+    <srcmd5>0d9a4e3625e0bce338e6e535f9dca20c</srcmd5>
+    <version>0.4.7</version>
+    <time>1186758779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="74">
+    <srcmd5>8d76de799dce2417f6607bc5521a9388</srcmd5>
+    <version>0.4.7</version>
+    <time>1188508725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="77">
+    <srcmd5>9fa0bf1b46863f1098b581b5da2e441b</srcmd5>
+    <version>0.4.7</version>
+    <time>1190290532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="118">
+    <srcmd5>ce590dabf5936652b4636e995bf64646</srcmd5>
+    <version>0.4.7</version>
+    <time>1209509262</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="122">
+    <srcmd5>97551c7001806e70a6d7adf6d1067180</srcmd5>
+    <version>0.4.7</version>
+    <time>1210368603</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="125">
+    <srcmd5>71692b2ca1ec3e0899f0305fb0e1e60e</srcmd5>
+    <version>0.4.7</version>
+    <time>1211984858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dd567fe81ae3031d744b17420d97b2c6</srcmd5>
+    <version>0.4.8</version>
+    <time>1216951596</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>3c14530b3e84aa8d915d912f780381a1</srcmd5>
+    <version>0.4.8</version>
+    <time>1219964127</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>5257dd0d6d3393a8d9f4616f9e2fbe43</srcmd5>
+    <version>0.4.8</version>
+    <time>1220654663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>2ecb00206129eb406dd90b46c59d3ee0</srcmd5>
+    <version>0.4.8</version>
+    <time>1222297415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>6245655f1a9f19e72c9c28365b86a4aa</srcmd5>
+    <version>0.4.8</version>
+    <time>1222440762</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="22">
+    <srcmd5>4868cd005c0921826a82ecdf1c199c02</srcmd5>
+    <version>0.4.8</version>
+    <time>1225123375</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="23">
+    <srcmd5>b9ad3f3929d6609da6a79cf3f9a84090</srcmd5>
+    <version>0.4.8</version>
+    <time>1225732533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="24">
+    <srcmd5>371f5b8bc67408e14979e54e8e2c7b63</srcmd5>
+    <version>0.4.8</version>
+    <time>1226006382</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="25">
+    <srcmd5>3a99d591c993bdffc4aa966ea4d5d126</srcmd5>
+    <version>0.4.8</version>
+    <time>1226327184</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="26">
+    <srcmd5>1d159c177ddc352994749d840df577c6</srcmd5>
+    <version>0.4.8</version>
+    <time>1227278251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="27">
+    <srcmd5>6039be94bad97d75b60131c7088adc05</srcmd5>
+    <version>0.4.8</version>
+    <time>1228410328</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="28">
+    <srcmd5>679cc56c1f6d97502a13ef4a36d1ea51</srcmd5>
+    <version>0.4.8</version>
+    <time>1232717451</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="33">
+    <srcmd5>c7957de36985811bd9b70096a68a036e</srcmd5>
+    <version>0.4.8</version>
+    <time>1233019308</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="41">
+    <srcmd5>caeaa07a8a1ffc02e176efc2243b17e5</srcmd5>
+    <version>0.4.8</version>
+    <time>1245456198</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="42">
+    <srcmd5>e39144cd2af26b25cd73a2ca919eded3</srcmd5>
+    <version>0.4.8</version>
+    <time>1250905740</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/multipath-tools based on submit request 18442 from user hreinecke
+</comment>
+  </revision>
+  <revision rev="26" vrev="43">
+    <srcmd5>000d8c93d700871526aa79a246df4e83</srcmd5>
+    <version>0.4.8</version>
+    <time>1252580228</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/multipath-tools based on submit request 20291 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="27" vrev="45">
+    <srcmd5>000d8c93d700871526aa79a246df4e83</srcmd5>
+    <version>0.4.8</version>
+    <time>1252580228</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/multipath-tools based on submit request 20291 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="28" vrev="46">
+    <srcmd5>9cacd6822a5c813721219d38f05c8c07</srcmd5>
+    <version>0.4.8</version>
+    <time>1256303086</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/multipath-tools based on submit request 22867 from user hreinecke
+</comment>
+  </revision>
+  <revision rev="29" vrev="47">
+    <srcmd5>4e67cbf240a22e12960ae098d360c744</srcmd5>
+    <version>0.4.8</version>
+    <time>1265753044</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/multipath-tools based on submit request 31695 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="30" vrev="48">
+    <srcmd5>b8af8cdd52d7979c1c02036ec8d1d4ed</srcmd5>
+    <version>0.4.8</version>
+    <time>1267404305</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/multipath-tools based on submit request 33549 from user coolo
+</comment>
+    <requestid>33549</requestid>
+  </revision>
+  <revision rev="31" vrev="49">
+    <srcmd5>8943b691b084392de2634167e59f3762</srcmd5>
+    <version>0.4.8</version>
+    <time>1268925016</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="32" vrev="50">
+    <srcmd5>e7c9dfd110c8434c1d65d72023feb9a5</srcmd5>
+    <version>0.4.8</version>
+    <time>1278079457</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/multipath-tools based on submit request 42387 from user elvigia
+</comment>
+    <requestid>42387</requestid>
+  </revision>
+  <revision rev="33" vrev="52">
+    <srcmd5>e7c9dfd110c8434c1d65d72023feb9a5</srcmd5>
+    <version>0.4.8</version>
+    <time>1278667369</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="34" vrev="53">
+    <srcmd5>e7c9dfd110c8434c1d65d72023feb9a5</srcmd5>
+    <version>0.4.8</version>
+    <time>1278678599</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="35" vrev="54">
+    <srcmd5>78185a6b4cf0abe78cc3b60596796c4e</srcmd5>
+    <version>0.4.8</version>
+    <time>1286807281</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/multipath-tools based on submit request 50211 from user a_jaeger
+</comment>
+    <requestid>50211</requestid>
+  </revision>
+  <revision rev="36" vrev="55">
+    <srcmd5>91ae7cc4c08abd578251b21c276105f4</srcmd5>
+    <version>0.4.8</version>
+    <time>1290786842</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53999 from user elvigia
+</comment>
+    <requestid>53999</requestid>
+  </revision>
+  <revision rev="37" vrev="56">
+    <srcmd5>bb847534759acd892aa1ab262334573c</srcmd5>
+    <version>0.4.8</version>
+    <time>1290786847</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53999
+</comment>
+  </revision>
+  <revision rev="38" vrev="59">
+    <srcmd5>bb847534759acd892aa1ab262334573c</srcmd5>
+    <version>0.4.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="39" vrev="60">
+    <srcmd5>cbf52af90b255811173106335ee6e0a9</srcmd5>
+    <version>0.4.8</version>
+    <time>1302019321</time>
+    <user>darix</user>
+    <comment>Accepted submit request 65987 from user coolo
+</comment>
+    <requestid>65987</requestid>
+  </revision>
+  <revision rev="40" vrev="61">
+    <srcmd5>f1f3039e448e73c60e62047ec2c2f2ec</srcmd5>
+    <version>0.4.8</version>
+    <time>1302019332</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 65987
+</comment>
+  </revision>
+  <revision rev="41" vrev="62">
+    <srcmd5>e903a72204facf07d3b18d4bcaeb17a0</srcmd5>
+    <version>0.4.8</version>
+    <time>1306741940</time>
+    <user>saschpe</user>
+    <comment>- don't hard require boot.device-mapper in boot.multipath. dm-mod is
+  autoloaded when accessing /dev/mapper/control anyways. (forwarded request 71650 from lnussel)</comment>
+    <requestid>71848</requestid>
+  </revision>
+  <revision rev="42" vrev="63">
+    <srcmd5>265330e745f2738b4ff77a48362644e1</srcmd5>
+    <version>0.4.8</version>
+    <time>1306741951</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71848
+</comment>
+  </revision>
+  <revision rev="43" vrev="64">
+    <srcmd5>9a36db6eab057f78beb3cd4949a400a5</srcmd5>
+    <version>0.4.8</version>
+    <time>1317744841</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86423 from uli_suse)</comment>
+    <requestid>86453</requestid>
+  </revision>
+  <revision rev="44" vrev="66">
+    <srcmd5>9a36db6eab057f78beb3cd4949a400a5</srcmd5>
+    <version>0.4.8</version>
+    <time>1319182188</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="45" vrev="67">
+    <srcmd5>9240c2a3d01f60af067b2b63a6b67f6b</srcmd5>
+    <version>0.4.8</version>
+    <time>1323192631</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="46" vrev="68">
+    <srcmd5>f7a611e62403d243eca626f880c58a6c</srcmd5>
+    <version>0.4.8</version>
+    <time>1335165343</time>
+    <user>coolo</user>
+    <comment>- Run update of initrd at %post and %postun.
+  We need this to make sure initrd reflects the updates.</comment>
+    <requestid>114788</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2862fc3e399c79331c2e7325137c5933</srcmd5>
+    <version>0.4.9</version>
+    <time>1338528095</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.4.9
+- Merge in latest changes from mainline</comment>
+    <requestid>122934</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>9bba98eb2402470f32fbde743b4cc608</srcmd5>
+    <version>0.4.9</version>
+    <time>1339477773</time>
+    <user>coolo</user>
+    <comment>- Drop RUN+=&quot;socket:...&quot; and update the multipath.rule like Fedora
+  does.</comment>
+    <requestid>124461</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>9bba98eb2402470f32fbde743b4cc608</srcmd5>
+    <version>0.4.9</version>
+    <time>1340183715</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>3860d4af85ef6ad066a002dd992fb206</srcmd5>
+    <version>0.4.9</version>
+    <time>1342625635</time>
+    <user>coolo</user>
+    <comment>- Drop patch 0001-multipath.rules.patch, multipath not ready yet.
+
+- Fix the installation of multipath.rules file.</comment>
+    <requestid>128191</requestid>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>edb5d4c5c5781e1485140f6369b52aec</srcmd5>
+    <version>0.4.9</version>
+    <time>1352214840</time>
+    <user>coolo</user>
+    <comment>- Systemd: use default service type instead of forking
+- Systemd: fix spec pre/post scripts. (forwarded request 139959 from elvigia)</comment>
+    <requestid>140069</requestid>
+  </revision>
+  <revision rev="52" vrev="8">
+    <srcmd5>edb5d4c5c5781e1485140f6369b52aec</srcmd5>
+    <version>0.4.9</version>
+    <time>1359109469</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="9">
+    <srcmd5>d00b036bfeaaed3608bebefc23c1e3d5</srcmd5>
+    <version>0.4.9</version>
+    <time>1361117230</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0
+Substantial number of GPL-2.0 files in the package (forwarded request 155532 from babelworx)</comment>
+    <requestid>155540</requestid>
+  </revision>
+  <revision rev="54" vrev="10">
+    <srcmd5>63ccad7bfd66645de4724248961612b1</srcmd5>
+    <version>0.4.9</version>
+    <time>1367486668</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls 
+  - use %setup -c to support the tarball</comment>
+    <requestid>173811</requestid>
+  </revision>
+  <revision rev="55" vrev="12">
+    <srcmd5>63ccad7bfd66645de4724248961612b1</srcmd5>
+    <version>0.4.9</version>
+    <time>1379663323</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>421ff2a1abfbf882f94cb3311007d450</srcmd5>
+    <version>0.5.0</version>
+    <time>1391061341</time>
+    <user>coolo</user>
+    <comment>- Fixup build issues
+
+- Update to official version 0.5.0
+  - remove: multipath-tools-0.4.9.tar.bz2
+  - remove: multipath-tools-0.4.9-opensuse-12.3.diff.bz2
+  - add: multipath-tools-0.5.0.tar.bz2
+  - add: multipath-tools-0.5.0-sles12.diff.bz2
+- Merge:
+  - multipath-tools-make-flexible-install-of-systemd-and-udev-files.patch
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+  add: multipath-tools-make-flexible-install-of-systemd-and-udev-files.patch
+- Systemd: fix spec pre/post scripts.
+- Fix the installation of multipath.rules file.
+  We need this to make sure initrd reflects the updates.</comment>
+    <requestid>215516</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>5eeb15b70db9baf28e84f63f4e16aaca</srcmd5>
+    <version>0.5.0</version>
+    <time>1392617909</time>
+    <user>coolo</user>
+    <comment>- Install kpartx rules with correct prefix for dracut
+- filter for missing property in get_refwwid() (bnc#862250)
+- Double uevent stacksize yet again (bnc#855379)
+- do not fail discovery on individual devices (bnc#860850)
+- Prefer deprecated 'getuid' callout (bnc#861534)
+- Skip paths with empty wwid (bnc#861534)
+- correctly terminate string in strlcpy() (bnc#861534)
+- Don't chop const strings
+- Fixup typo in Makefile
+- display uevent sequence number on 'show daemon' (forwarded request 222359 from hreinecke)</comment>
+    <requestid>222431</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>a914dcbdc85ebc8abe0fac0fda11f043</srcmd5>
+    <version>0.5.0</version>
+    <time>1393935248</time>
+    <user>coolo</user>
+    <comment>- Fixup spec file to correct rules permissions
+
+- Fixup 40-multipath.rules installation
+
+- Add 40-multipath.rules for dracut support (forwarded request 224248 from hreinecke)</comment>
+    <requestid>224387</requestid>
+  </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>fc88cd019221442b6bd57ae286e5b14a</srcmd5>
+    <version>0.5.0</version>
+    <time>1396291391</time>
+    <user>coolo</user>
+    <comment>- Fixup ordering cycle with systemd (bnc#862773)
+- Rebase git repository to match with upstream
+- Revert 'display uevent sequence number'; not required anymore
+
+- downgrade device-mapper requirement to 1.2.78 until 1.2.82
+  is available anywhere (forwarded request 226973 from hreinecke)
+
+I am resubmitting this one as that by accident I rejected the previous submit from dirk</comment>
+    <requestid>228046</requestid>
+  </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>b74cdf954f5c77fa04953758e4974665</srcmd5>
+    <version>0.5.0</version>
+    <time>1397450539</time>
+    <user>coolo</user>
+    <comment>- Install multipath rule under 56-multipath.rules (bnc#873151)
+- Implement option '-u' for uevents (bnc#873151)
+- Remove trailing linefeed from sysfs attributes
+- Make checker_put() and prio_put() idempotent
+- Implement 'list path' CLI command
+- Disable reassign maps per default
+- Allow for NULL path when printing information
+- Fixup wwid blacklist printing
+- Use SCSI_IDENT_.* as the default property whitelist (bnc#872929)
+- Do not call 'blkid' in kpartx.rules
+- Allow empty wwids during discovery (bnc#872712)
+- Always set verbosity to '0' when checking devices (bnc#867840)
+- Fixup multipath rules for booting (bnc#870764)
+- Fixup dependencies in multipathd.service (bnc#872712)
+- Do not print empty device strings during discovery (bnc#872712)
+- Use multipath wwid if path wwid is empty (bnc#872712)
+- Set the correct PID when running in debug mode
+
+- Fixup ordering cycle with systemd (bnc#863218) (forwarded request 229720 from hreinecke)</comment>
+    <requestid>229874</requestid>
+  </revision>
+  <revision rev="61" vrev="6">
+    <srcmd5>3d265ccb34bc536676293b68cdf970cb</srcmd5>
+    <version>0.5.0</version>
+    <time>1400825120</time>
+    <user>coolo</user>
+    <comment>- Fix race condition with systemd (bnc#878809) (forwarded request 234822 from hreinecke)</comment>
+    <requestid>234939</requestid>
+  </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>480e64ea04d0b249559ed7d6653a0c05</srcmd5>
+    <version>0.5.0</version>
+    <time>1403176792</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237264</requestid>
+  </revision>
+  <revision rev="63" vrev="8">
+    <srcmd5>9c725a88ab54db5abc2adca6e5b82718</srcmd5>
+    <version>0.5.0</version>
+    <time>1404157396</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238732</requestid>
+  </revision>
+  <revision rev="64" vrev="9">
+    <srcmd5>a0dfd128a43909f1c8b4df92f3ef9c13</srcmd5>
+    <version>0.5.0</version>
+    <time>1404996895</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239713</requestid>
+  </revision>
+  <revision rev="65" vrev="10">
+    <srcmd5>d758d88b5e45e1cf59cd586d97c89243</srcmd5>
+    <version>0.5.0</version>
+    <time>1406369979</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242171</requestid>
+  </revision>
+  <revision rev="66" vrev="11">
+    <srcmd5>0ba513e1aab1e741603ea5d9d8cadc32</srcmd5>
+    <version>0.5.0</version>
+    <time>1406645283</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242747</requestid>
+  </revision>
+  <revision rev="67" vrev="12">
+    <srcmd5>3654d2ca917050a40c4784907bbde16a</srcmd5>
+    <version>0.5.0</version>
+    <time>1407744520</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>243964</requestid>
+  </revision>
+  <revision rev="68" vrev="13">
+    <srcmd5>cfe83e55b830b10f0d920f2ddc62e1f5</srcmd5>
+    <version>0.5.0</version>
+    <time>1409212911</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245612</requestid>
+  </revision>
+  <revision rev="69" vrev="15">
+    <srcmd5>cfe83e55b830b10f0d920f2ddc62e1f5</srcmd5>
+    <version>0.5.0</version>
+    <time>1409301941</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="70" vrev="16">
+    <srcmd5>c6bb7dada4fc48098d32058651374fe5</srcmd5>
+    <version>0.5.0</version>
+    <time>1409761293</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247116</requestid>
+  </revision>
+  <revision rev="71" vrev="17">
+    <srcmd5>c6e8bdf576cbbad2d51d9a666782f959</srcmd5>
+    <version>0.5.0</version>
+    <time>1410281984</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247482</requestid>
+  </revision>
+  <revision rev="72" vrev="18">
+    <srcmd5>abe49ed90b7be2da079d7b49c11b8431</srcmd5>
+    <version>0.5.0</version>
+    <time>1411127747</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250061</requestid>
+  </revision>
+  <revision rev="73" vrev="19">
+    <srcmd5>f2075b9e10b8b4b0905b19b5d310e856</srcmd5>
+    <version>0.5.0</version>
+    <time>1412155385</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252832</requestid>
+  </revision>
+  <revision rev="74" vrev="20">
+    <srcmd5>4a27fe9ff73621fe56888d9cdc035775</srcmd5>
+    <version>0.5.0</version>
+    <time>1431368737</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298598</requestid>
+  </revision>
+  <revision rev="75" vrev="21">
+    <srcmd5>20fce9ad41bff68f8ced2ec026ae809e</srcmd5>
+    <version>0.5.0</version>
+    <time>1440135272</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>317623</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>a184c05e378a7a70c77d7884fa634063</srcmd5>
+    <version>0.6.1</version>
+    <time>1465595950</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400388</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>eaca9b9df9c05336b777f3d2bb84e881</srcmd5>
+    <version>0.6.1+suse20160704.6e52398</version>
+    <time>1468169155</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407001</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>599a7f1d1f381712a3fdf6cb3e4d78cc</srcmd5>
+    <version>0.6.1+suse20160715.3d44636</version>
+    <time>1469382165</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411694</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>95834b152fdfc43a5db6690a4bfeeccb</srcmd5>
+    <version>0.6.2+suse20160805.dcfa37d</version>
+    <time>1471105788</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417349</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>70e437be9f6c12430d6996f530cb614f</srcmd5>
+    <version>0.6.2+suse20160826.4abd547</version>
+    <time>1473102964</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424221</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>c3ce3ed589b2cf780adb234aeb32a71c</srcmd5>
+    <version>0.6.2+suse20160908.d93a87f</version>
+    <time>1474115606</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426935</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>4484c6930e35612b5dcb7aa0f358f1c9</srcmd5>
+    <version>0.6.2+suse20160919.a385ea7</version>
+    <time>1474622630</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428767</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>f8baa0fa0c56485c9aa7b022272ee74a</srcmd5>
+    <version>0.6.2+suse20160928.8939fb6</version>
+    <time>1476113599</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431530</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>6ff1182b733f1ef5c49bb29a57423a16</srcmd5>
+    <version>0.6.2+suse20160928.8939fb6</version>
+    <time>1487767598</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459476</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>7d5f1dfcdabeff5004262866e8e64f32</srcmd5>
+    <version>0.6.4+103+suse.bcb5d0f4</version>
+    <time>1491567484</time>
+    <user>maxlin_factory</user>
+    <comment>Added bugzilla references to satisfy &quot;leaper&quot; BS review bot for SLES. (forwarded request 482451 from mwilck)</comment>
+    <requestid>482531</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>f2ff931bb7beb163b0a945840e66419f</srcmd5>
+    <version>0.7.1+7+suse.3edc5f7d</version>
+    <time>1494345492</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491767</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>da85d47acc295377ee9d06b65ee705ea</srcmd5>
+    <version>0.7.1+53+suse.07c2f6ac</version>
+    <time>1497949051</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.1+53+suse.07c2f6ac:
+  Merged upstream fixes:
+  * multipath: Merge the DELL MD3xxx device configs
+  * multipath: fix up position independent code
+  * libmultipath: fix partition detection
+  * kpartx: default to running in sync mode
+  * libmultipath: force udev reloads
+  * kpartx: only check for 'no_partitions' feature on dm devices
+  * kpartx: test-kpartx: new unit test program
+  * kpartx: remove is_loop_device
+  * kpartx: relax and improve UUID check in dm_compare_uuid
+  * kpartx: dm_remove_partmaps: support non-dm devices
+  * kpartx: dm_devn: return error for non-existent device
+  * kpartx: don't treat multi-linear mappings as partitions
+  * libmultipath: don't treat multi-linear mappings as partitions
+  * kpartx: use partition UUID for non-DM devices
+  * kpartx: use absolute path for regular files
+  * kpartx: find_loop_by_file: use sysfs
+  * kpartx: include sys/sysmacros.h
+  * libmultipath: print.c: make sure lines are 0-terminated
+  * multipath-tools: fix compilation with gcc &amp;lt; 4.9
+  * libmultipath: print alias with no_path_retry message
+  * multipathd: force reload device on all resizes
+  * libmultipath: refactor calls to get dm device info
+  * libmultipath: fix suspended devs from failed reloads
+  * kpartx: fix device checks
+  * mpath_persist: Don't join threads that don't exist
+  * multipath-tools: document uid_attribute for NVME devices
+  * Makefile: Remove assignments to unused variables (forwarded request 503640 from mwilck)</comment>
+    <requestid>503642</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>6b0bfc1166ca7bcd698f9cacb94202a9</srcmd5>
+    <version>0.7.1+62+suse.62a2c36e</version>
+    <time>1498638838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.1+62+suse.62a2c36e:
+  * kpartx: only check for 'no_partitions' feature on dm devices
+    (bsc#1037533) (forwarded request 505573 from mwilck)</comment>
+    <requestid>505575</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>08f13170e155c48236be11ab064f3161</srcmd5>
+    <version>0.7.2+11+suse.448921a2</version>
+    <time>1503481968</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.2+11+suse.448921a2:
+  * multipath.conf.5: document no_partitions compat support
+  * libmultipath: fixup compat support for 'features &quot;1 no_partitions&quot;'
+
+- Dropped 67-kpartx-compat.rules (SUSE legacy).
+  * symlinks &quot;/dev/mapper/${UUID}_part${X}&quot; are not created any more,
+    only     &quot;/dev/mapper/${UUID}-part${X}&quot; (with &quot;minus&quot;)
+- Dropped automatic kpartx invocation on dmraid devices (fate#323743)  
+- Rebase to upstream multipath-tools 0.7.2:
+- Update to version 0.7.2+8+suse.95e8f43e: (forwarded request 516239 from mwilck)</comment>
+    <requestid>516240</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>97777aca5a097b012a0c0203615fa7a8</srcmd5>
+    <version>0.7.2+44+suse.3a8d750c</version>
+    <time>1504815003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.2+44.3a8d750c:
+  Misc bug fixes:
+  * multipathd: don't flood system with sd_notify calls (bsc#1056011)
+  * libmultipath: add_feature: skip pointless NULL check (bsc#1055635)
+  * libmultipath: add_feature: allow only 1 feature (bsc#1055635)
+  * multipath: delegate dangerous commands to multipathd (bsc#1047639)
+  * libmultipath: fix partition_delimiter config option (bsc#1056526)
+  * kpartx: helper functions for name and uuid generation (bsc#1056508)
+  * kpartx: search partitions by UUID, and rename (bsc#1056508)
+  * kpartx: fix a corner case when renaming partitions (bsc#1056508)
+  * kpartx: -d must work with empty partition table (boo#1056599)
+  * kpartx: only recognize dasd part table on DASD (boo#1056599) 
+  Rework of the udev rules related to multipath and kpartx (bsc#1054363):
+  * libmultipath: support MPATH_UDEV_NO_PATHS_FLAG on map creation
+  * libmultipath: add get_udev_device
+  * libmultipath: get_refwwid: use get_udev_device
+  * libmultipath: use const char* in some dm helpers
+  * libmultipath: add DI_NOIO flag for pathinfo
+  * libmultipath: add dm_get_multipath
+  * multipath: implement &quot;check usable paths&quot; (-C/-U)
+  * 11-dm-mpath.rules: multipath -U for READY check
+  * 11-dm-mpath.rules: import more ID_FS_xxx vars from db
+  * 11-dm-mpath.rules: no need to test before IMPORT
+  * 11-dm-mpath.rules: handle new maps with READY==0
+  * 11-dm-mpath.rules: don't set READY-&amp;gt;ACTIVATION
+  * 11-dm-mpath.rules: Remember DM_ACTIVATION
+  * multipath.rules: set ID_FS_TYPE to &quot;mpath_member&quot;
+  * kpartx.rules: don't rely on DM_DEPS and DM_TABLE_STATE
+  * kpartx.rules: respect DM_UDEV_LOW_PRIORITY_FLAG
+  * kpartx.rules: improved logic for by-uuid and by-label links (forwarded request 520380 from mwilck)</comment>
+    <requestid>520381</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>ca3c356cdedec97fcbc9bf962d56ea8f</srcmd5>
+    <version>0.7.3+10+suse.70ccb55b0439</version>
+    <time>1506340525</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.3+10+suse.70ccb55b0439:
+- Rebase to upstream release 0.7.3
+  * libmultipath: add pthread_cleanup hook for udev monitor
+  * libmultipath: pull functions into util.c
+  * libmultipath: change reservation_key to a be64
+  * libmpathpersist: fix update_prflag code
+  * multipath: add alternate reservation_key method
+  * mpathpersist: add support for prkeys file
+  * multipath-tools: minor edition and corrections in multipath.conf.5
+  * multipath-tools: fix incorrect length for strncmp in uevent.c
+  * multipath-tools: clarify how to dump the multipathd config
+  * multipath-tools: replace &quot;setting: array&quot; with &quot;setting: storage device&quot; at multipath output
+  * libmultipath: sanitize fd handling
+  * multipath-tools: link internal libraries before foreigns
+  * multipath-tools: remove Sun StorEdge T4(6020,6120,6320) arrays from hwtable
+  * multipath-tools: add support for all arrays from Sun StorEdge 3000 family
+  * multipath-tools: add Xiotech iglu blaze arrays to hwtable
+  * multipath-tools: add Dot Hill/Seagate arrays to hwtable
+  * libmultipath: update INFINIDAT builtin config
+  * multipath-tools: add info about adding new hardware
+  * multipath-tools: Remove the limitation of IPC command reply length.
+  * multipath-tools: libdmmp: Improve timeout mechanism
+  * multipath-tools: libdmmp: New function to flush and reconfig
+  * Bump version to 0.7.3
+- minor fixes for upstream 0.7.3
+  * libmultipath: ensure checker-&amp;gt;fd == -1 if not set
+  * libmpathpersist: add support for prkeys file v3
+  * multipath: add man page info for my prkey changes
+- Patch series for NVMe discovery and failover (bsc#1038865)
+  * discovery: sanitize NVMe discovery (forwarded request 528058 from mwilck)</comment>
+    <requestid>528059</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>23914227727e3e18f5c9781c20bf26af</srcmd5>
+    <version>0.7.3+11+suse.4de08d96</version>
+    <time>1508769569</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534396</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>fb4db277f06ed9ecd786dea11508ad46</srcmd5>
+    <version>0.7.3+13+suse.db431514</version>
+    <time>1509723163</time>
+    <user>dimstar_suse</user>
+    <comment>- multipath-tools.spec: package *.so symlinks in -devel pkgs
+  (bsc#1066376)
+- multipath-tools.spec: SLE15: add RADOS support for s390x
+  (bsc#1066380)
+- Fix build error for targets SLE_12, SLE_12_SP1
+  (bsc#1066392) (forwarded request 538656 from mwilck)</comment>
+    <requestid>538663</requestid>
+  </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>ebdc29378253812c43dce248a3ef5df5</srcmd5>
+    <version>0.7.3+13+suse.db431514</version>
+    <time>1510321312</time>
+    <user>dimstar_suse</user>
+    <comment>- added sample code for libmpathpersist (bsc#1066376)
+  * added libmpathpersist-example.c
+- multipath-tools.spec: package libmultipath.so symlink in -devel
+  package (bsc#1066376). We *do not* package header files for
+  libmultipath, as the APIs are not public. (forwarded request 539327 from mwilck)</comment>
+    <requestid>539332</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>d7fedfed5be82f6552a8ed82c5c689c2</srcmd5>
+    <version>0.7.3+30+suse.6b5ed839</version>
+    <time>1516711575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.3+30+suse.6b5ed839:
+  * multipath.rules: temporary rule to obtain ID_WWN for NVMe
+  (bsc#1076828)
+  * libmultipath: ignore natively multipathed NVME devices
+  (bsc#1076828)
+  * multipath.rules: handle NVME devices (bsc#1076828)
+  * FIX &quot;libmultipath: hwtable: multibus for NetApp NVMe-FC&quot;
+  (bsc#1073319)
+  * libmultipath: increase path product_id/rev field size for NVMe
+  (bsc#1073319)
+
+- Update to version 0.7.3+25+suse.7c9920e2:
+  * assemble_map: no newline at end of params string (bsc#1072253)
+
+- Update to version 0.7.3+24+suse.703a61d5:
+  * multipathd.service: drop Before=lvm2-lvmetad.service (bsc#1070427)
+  * libmultipath: hwtable: multibus for NetApp NVMe-FC
+  (bsc#1073319)
+  * libmultipath/propsel: select ALUA prioritizer for RDAC arrays only
+  (bsc#1075539)
+  * libmultipath: get_vpd_sgio: support VPD 0xc9 (bsc#1055949)
+  * libmultipath: sgio_get_vpd: add page argument (bsc#1055949)
+  * libmultipath: fix return code of sgio_get_vpd() (bsc#1055949)
+
+- Update to version 0.7.3+19+suse.0fd18bdd:
+  * multipathd.socket: add WantedBy=sockets.target (bsc#1072253)
+
+- Update to version 0.7.3+18+suse.8c97f433:
+  * multipath -C: decrease log level (bsc#1072504) (forwarded request 567775 from mwilck)</comment>
+    <requestid>567776</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>c69fac450f8f8b2538e70fd48985d0ea</srcmd5>
+    <version>0.7.3+31+suse.6804bb73f72d</version>
+    <time>1517323064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.3+31+suse.6804bb73f72d:
+  * libmultipath: hwtable: no_path_retry=&quot;queue&quot; for NetApp NVMe
+  (bsc#1073319) (forwarded request 569881 from mwilck)</comment>
+    <requestid>569882</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>6d02823b083acba353ea0f529e042a15</srcmd5>
+    <version>0.7.3+38+suse.a16beed5280a</version>
+    <time>1517516759</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.3+38+suse.a16beed5280a:
+  * kpartx: don't delete partitions from partitions (bsc#1078362)
+  * hwtable: add latest updates (bsc#1078363)
+  * multipathd.service: set TasksMax=infinity (bsc#1060616) (forwarded request 571224 from mwilck)</comment>
+    <requestid>571225</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>42cc00a6ff62cc47122a51e941191e15</srcmd5>
+    <version>0.7.3+38+suse.a16beed5280a</version>
+    <time>1518697145</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix whitespace in dracut conf file (bsc#1080562) (forwarded request 575599 from mwilck)</comment>
+    <requestid>575601</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>e904db81faa71ef755ae8e2634b10ee6</srcmd5>
+    <version>0.7.3+52+suse.08a969b7fce0</version>
+    <time>1519554788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.3+52+suse.08a969b7fce0:
+- Add limited support for displaying native NVMe multipath
+  (bsc#1082419)
+  * libmultipath: foreign/nvme: implement path display
+  * multipathd: use foreign API
+  * multipath: use foreign API
+  * libmultipath/foreign: nvme foreign library
+  * libmultipath/print: add &quot;%G - foreign&quot; wildcard
+  * libmultipath: API for foreign multipath handling
+  * libmultipath: print: use generic API for get_x_layout()
+  * libmultipath: print: convert API to generic data type
+  * libmultipath: &quot;generic multipath&quot; interface
+  * libmultipath: add vector_convert()
+  * libmultipath: add vector_free_const()
+  * libmultipath: get rid of selector &quot;hack&quot; in print.c
+- Fix locking errors detected by coverity check (bsc#1082418)
+  * checkers/rbd: missing pthread_lock() on failure path
+  * libmultipath: fix deadlock in tur.c
+
+  (bsc#1075539, bsc#1081241) (forwarded request 579490 from mwilck)</comment>
+    <requestid>579491</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>58709fa3c414394f9abfaa98def42f29</srcmd5>
+    <version>0.7.3+53+suse.140f4937e9e7</version>
+    <time>1519902429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580808</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>d17440cf9d2db345c6929ab298f26909</srcmd5>
+    <version>0.7.3+59+suse.1b6191c26774</version>
+    <time>1521904244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.3+59+suse.1b6191c26774:
+  * libmultipath: don't reject maps with undefined prio (bsc#1085212,
+  bsc#1075129)
+  * multipathd: handle errors in uxlsnr as fatal (bsc#1086025)
+
+- Update to version 0.7.3+57+suse.bb6be4c8b4ca:
+  * multipathd: fix signal blocking logic (bsc#1086025)
+  * multipath-tools: handle exit signal immediately (bsc#1086025)
+  * multipath: fix DEF_TIMEOUT use (bsc#1086014)
+  * multipath-tools: foreign/NVME implementation v2 (upstream accepted)
+    (bsc#1082419) (forwarded request 589742 from mwilck)</comment>
+    <requestid>589743</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>73166561dd54d0a1e1368bdcdc2b8329</srcmd5>
+    <version>0.7.3+60+suse.46ac839</version>
+    <time>1523126854</time>
+    <user>dimstar_suse</user>
+    <comment>Pushing per bsc#1085212, comment 152.
+
+- Fixed license tags in spec file
+  * multipath tools / libmultipath is GPL-2.0-only
+  * libmpathcmd is LGPL-2.0-or-later
+  * kpartx is GPL-2.0-or-later
+  * libdmmp is GPL-3.0-or-later
+  * adopt SPDX format.
+
+- Update to version 0.7.3+60+suse.46ac839:
+  * libmultipath/hwtable: don't hard-code ALUA for IBM IPR
+  (bsc#1085212, bsc#1075129) (forwarded request 593747 from mwilck)</comment>
+    <requestid>593749</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>b215353bf2f5e390875d80a90f882b82</srcmd5>
+    <version>0.7.3+67+suse.8f0c27b</version>
+    <time>1523875433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596332</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>940c526056e9b7e0bc8b8c726f63ecb9</srcmd5>
+    <version>0.7.7+75+suse.6287aef</version>
+    <time>1532527532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623334</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>b805fe6422f72093fa9be74eda7a8175</srcmd5>
+    <version>0.7.7+136+suse.d814d8e</version>
+    <time>1539093122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.7+136+suse.19bb285:
+  Not-yet-merged bug fixes from upstream, and SUSE bug fixes:
+  * multipathd: try SCSI persistent reservations for SCSI only
+  * libmultipath: allow sysfs_pathinfo to return SKIPPED (bsc#1098458)
+  * libmultipath: Fixup updating paths (bsc#1110418)
+  * multipathd: fix memory leak on error in configure (bsc#1110418)
+  * multipathd: remove useless check and fix format
+  * multipathd: minor fixes (bsc#1110418)
+  * multipathd: function return value tweaks (bsc#1110418)
+  * multipath: fix max array size in print_cmd_valid (bsc#1110418)
+  * libmutipath: don't use malformed uevents (bsc#1110418)
+  * libmultipath: fix null dereference int alloc_path_group (bsc#1110418)
+  * libmultipath: fix memory issue in path_latency prio (bsc#1110418)
+  * libmultipath: remove unused code
+  * libmultipath: _install_keyword cleanup
+  * libmultipath: fix length issues in get_vpd_sgio (bsc#1110418)
+  * libmultipath: fix set_int error path
+  * multipathd: decrease log level of uevent messages (bsc#1110586)
+  * multipathd: fix version check for DM_DEV_ARM_POLL ioctl (bsc#1110587)
+  * libmultipath: pathinfo: skip hidden devices (bsc#1110586)
+  * libmultipath: nvme: shorter topology output
+  * libmultipath: nvme: fix path detection for kernel 4.16 (bsc#1091112)
+  * libmultipath: fix gcc 8.1 &quot;truncated output&quot; warnings (bsc#1099007)
+  * (lib)mpathpersist: use O_RDONLY file descriptors (bsc#1093220)
+  * libmpathpersist: fix byte swapping for big endian systems (bsc#1099036)
+  * multipath-tools/tests: add tests for get_unaligned_beXX (bsc#1099036) 
+  * libmultipath: add (get|put)_unaligned_be64 (bsc#1099036)
+  * libmpathpersist: fix stack overflow in mpath_format_readfullstatus()
+  (bsc#1099007)
+  * libmpathpersist: fix typo in mpath_format_readfullstatus (bsc#1099007) (forwarded request 639755 from mwilck)</comment>
+    <requestid>639756</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>5b95ab0080f82ea4f07375422c5f0572</srcmd5>
+    <version>0.7.9+58+suse.0790830</version>
+    <time>1544539494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655694</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>0b00834e0d1938e90ddabae107eb7963</srcmd5>
+    <version>0.7.9+85+suse.766b95e</version>
+    <time>1545376712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658870</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>6a5b7110c88745401967dec38bcdf8f8</srcmd5>
+    <version>0.7.9+111+suse.b4232b7</version>
+    <time>1547129803</time>
+    <user>dimstar_suse</user>
+    <comment>* Fix prio output in &quot;multipathd show topology&quot; (bsc#1119897) (forwarded request 664123 from mwilck)</comment>
+    <requestid>664124</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>a61c0eeecc7b91719b5d3e21cae0fbaf</srcmd5>
+    <version>0.7.9+111+suse.b4232b7</version>
+    <time>1548769450</time>
+    <user>dimstar_suse</user>
+    <comment>Added Requires(post) on suse-module-tools (forwarded request 664883 from mwilck)</comment>
+    <requestid>664884</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>d5b05a38f700d827dea0811216b2b7d9</srcmd5>
+    <version>0.7.9+139+suse.ed9d450</version>
+    <time>1552464467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.9+139+suse.ed9d450:
+  * multipath-tools: Build: properly parse systemd's version
+
+- Add kmod(xyz) style dependencies for SLE15-SP1 
+  (jsc#SLE-3853, fate#326579, bsc#1119414)
+
+- Update to version 0.7.9+138+suse.0edd0a2:
+- Include reviewed fixes from upstream
+  * libmutipath: continue to use old state on PATH_PENDING
+  * libmultipath: disable user_friendly_names for NetApp
+  * multipath: blacklist zram devices
+  * various fixes for martinal path code
+- Bug fixes:
+  * multipathd: Fix miscounting active paths (bsc#1125043)
+  * multipathd: avoid null pointer dereference in LOG_MSG
+  (bsc#1127873)
+  * minor fixes suggested by coverity (bsc#1127879)</comment>
+    <requestid>682522</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>57c41105461cf7121c871f0b01cb2c16</srcmd5>
+    <version>0.8.0+17+suse.a28893f</version>
+    <time>1555329572</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable kmod-style dependencies for multipath-tools package
+  (bsc#1119414)
+- Separate out libmpath0 (bsc#1119414)
+- Spec file improvements
+  * Add Conflicts: for older multipath-tools to libmpath0
+  * Move license files to the libmpath0 package, which contains the
+    code with complex licensing. The executables are GPL-2.0 anyway.
+  * Remove bogus dependency of -devel package on device-mapper
+  * -devel package depends on libmpath0, not multipath-tools
+  * Remove %dir %{_defaultlicensedir} for SLE12-SP3 and newer
+    (John Vandenberg &lt;jayvdb@gmail.com&gt;)
+  * Remove unused /var/cache/multipath directory
+  * Remove check for multipath maps in %pre and %post
+  * Remove SLE11-specific multipathd service stop / start from
+    %pre / %post
+  * Remove obsolete tools from package description (bsc#1129827)
+  * Add -n to %service_del_{pre,post}un for multipathd.socket
+
+- Update to version 0.8.0+17+suse.a28893f:
+  * Code-identical to 0.7.9+139+suse.ed9d450, except for new
+    version number
+- Disable kmod() style dependencies for now, as they are causing
+  problems with image builds (bsc#1119414). They'd been active
+  for SLE15-SP1 only, anyway.
+- _service: determine &quot;tag offset&quot; manually, the patch count
+  determined by git is far too high.
+
+- Fix module name in multipath.conf (bsc#1119414)
+  * The modules-load.d entry must match the filename exactly</comment>
+    <requestid>693797</requestid>
+  </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>d893a33b93cc554f578f7adc2c67cd8c</srcmd5>
+    <version>0.8.0+17+suse.a28893f</version>
+    <time>1555830128</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim %if..%endif guards that do not affect the build result.
+- Combine %service_* calls to reduce generated code.
+- Make use of %make_install. (forwarded request 694606 from jengelh)</comment>
+    <requestid>695322</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>ef941924c2f0ce4948ce3a29a962e36e</srcmd5>
+    <version>0.8.1+8+suse.8c11498</version>
+    <time>1557141439</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable kmod() style dependencies again (bsc#1119414)
+  * For TW, dependencies will be autogenerated
+    (gh#openSUSE/rpm-config-SUSE#3)
+  * For SLE, feature is currently rejected (jsc#SLE-3853)
+- Update to version 0.8.1+8+suse.8c11498:
+  * Avoid deadlock situation during udev settle
+  (bsc#1131789, bsc#1125145)
+    - multipath -u: test socket connection in non-blocking mode
+  * Fix priority handling for offline paths
+  (bsc#1118495)
+- Update to upstream 0.8.1
+  * Avoid device IO in &quot;multipath -u&quot; (bsc#1125145)
+  * multipathd: protect all access to running_state
+  (bsc##1110060, bsc#1110439)
+  * Improve handling of changed WWIDs and temporary failure
+  to obtain WWID. Option &quot;disable_changed_wwids&quot; is now ignored.
+  * Fixes for PATH_PENDING state handling (bsc#1125043) (forwarded request 699727 from mwilck)</comment>
+    <requestid>699729</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>64c7e3a59821002272c4303703dd5789</srcmd5>
+    <version>0.8.1+28+suse.fea562a</version>
+    <time>1561641794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.1+28+suse.fea562a:
+  * mpathpersist: optimize for setups with many LUNs (bsc#1134648)
+  * mpathpersist: add option -f/--batch-file (bsc#1134648)
+  * libmultipath: get_prio(): really don't reset prio for
+    inaccessible paths (bsc#1118495)
+- Upstream bug fixes from dm-devel (bsc#1139369):
+  * multipath: call store_pathinfo with DI_BLACKLIST
+  * multipathd: fix REALLOC_REPLY with max length reply
+  * libmultipath: make vector_foreach_slot_backwards work as expected
+  * multipathd: fix client response for socket activation
+  * various minor fixes (coverity)
+
+  * libmultipath: hwtable: add Lenovo DE series (bsc#1125507) (forwarded request 711931 from mwilck)</comment>
+    <requestid>711933</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>db620ace19fb96f8d03d98c13f539271</srcmd5>
+    <version>0.8.1+59+suse.f947184</version>
+    <time>1562327247</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.1+59+suse.f947184:
+  * libmultipath: trigger uevents for partitions, too (bsc#1140146)
+
+- Update to version 0.8.1+58+suse.2af8f92:
+  * libmultipath: more cautious blacklisting by missing property
+    (don't blacklist paths because of temporarily missing
+     udev properties)
+  * libmultipath: fix memory leak with &quot;uid_attrs&quot; config option
+  * libmultipath: get_uid: straighten the fallback logic
+- Fix SCSI VPD 0x80/0x83 parsing 
+- Fix compiler warnings introduced by gcc 9:
+  * -Wstringop-overflow, -Wstringop-truncation, 
+    -Waddress-of-packed-member
+
+   (bsc#1133861) (forwarded request 713117 from mwilck)</comment>
+    <requestid>713118</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>4a10d249e17354dbd379e4b07a6f3571</srcmd5>
+    <version>0.8.2+11+suse.0f6a649</version>
+    <time>1563701398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715696</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>0e8c9c79b9789dddce56f5303659f019</srcmd5>
+    <version>0.8.2+26+suse.d884195</version>
+    <time>1567423287</time>
+    <user>dimstar_suse</user>
+    <comment>added bug ref and shortened changelog (forwarded request 726994 from mwilck)</comment>
+    <requestid>726995</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>4a5d74bd7c4fa8bdf24b3a23478f9fa1</srcmd5>
+    <version>0.8.2+27+suse.3ff280b</version>
+    <time>1568190308</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.2+27+suse.3ff280b:
+  * Added upstream patch to fix premature path reinstantiation
+    with san_path_err_XX (boo#1149319) (forwarded request 728278 from mwilck)</comment>
+    <requestid>728314</requestid>
+  </revision>
+</revisionlist>

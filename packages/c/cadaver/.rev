@@ -1,0 +1,162 @@
+<revisionlist>
+  <revision rev="1" vrev="36">
+    <srcmd5>30e85e2b5170af88c6a618bf73941db5</srcmd5>
+    <version>0.22.3</version>
+    <time>1168902389</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f945c40de505ed1772bc2f3580425594</srcmd5>
+    <version>0.22.5</version>
+    <time>1169645663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>12ba1c4e8e5885f6114ef35d6b6928d1</srcmd5>
+    <version>0.23.0</version>
+    <time>1191460034</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8c2efc653226554879c7eac0e1321722</srcmd5>
+    <version>0.23.2</version>
+    <time>1206067412</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="47">
+    <srcmd5>8c2efc653226554879c7eac0e1321722</srcmd5>
+    <version>0.23.2</version>
+    <time>1206067412</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="48">
+    <srcmd5>90e2db2bf54b28b96c57ad28c653dd76</srcmd5>
+    <version>0.23.2</version>
+    <time>1245337403</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="50">
+    <srcmd5>90e2db2bf54b28b96c57ad28c653dd76</srcmd5>
+    <version>0.23.2</version>
+    <time>1245337403</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="51">
+    <srcmd5>c9393ddeb9d7bc3bdcf2c1ec36927c3c</srcmd5>
+    <version>0.23.2</version>
+    <time>1265917538</time>
+    <user>autobuild</user>
+    <comment>Copy from network/cadaver based on submit request 32135 from user prusnak
+</comment>
+  </revision>
+  <revision rev="9" vrev="52">
+    <srcmd5>5621f80d4a16b701e9cdfd031a46f7fd</srcmd5>
+    <version>0.23.2</version>
+    <time>1268923142</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="54">
+    <srcmd5>5621f80d4a16b701e9cdfd031a46f7fd</srcmd5>
+    <version>0.23.2</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="55">
+    <srcmd5>5621f80d4a16b701e9cdfd031a46f7fd</srcmd5>
+    <version>0.23.2</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="56">
+    <srcmd5>fed05e3a0783f9a95017b68ea32105e8</srcmd5>
+    <version>unknown</version>
+    <time>1283778679</time>
+    <user>autobuild</user>
+    <comment>Copy from network/cadaver based on submit request 47249 from user prusnak
+</comment>
+    <requestid>47249</requestid>
+  </revision>
+  <revision rev="13" vrev="59">
+    <srcmd5>fed05e3a0783f9a95017b68ea32105e8</srcmd5>
+    <version>unknown</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="61">
+    <srcmd5>fed05e3a0783f9a95017b68ea32105e8</srcmd5>
+    <version>unknown</version>
+    <time>1319181801</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="62">
+    <srcmd5>203596a4bd89eb8cc62af9d8a63e18d0</srcmd5>
+    <version>0.23.3</version>
+    <time>1323184941</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94765 from coolo)</comment>
+    <requestid>95521</requestid>
+  </revision>
+  <revision rev="16" vrev="63">
+    <srcmd5>18a0d3544a408ec7751a3bf23f2e8d4e</srcmd5>
+    <version>0.23.3</version>
+    <time>1323190943</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="64">
+    <srcmd5>6b625f4a0be6589f61030ecba9a43f9c</srcmd5>
+    <version>0.23.3</version>
+    <time>1332752443</time>
+    <user>coolo</user>
+    <comment>- remove obsoluted %suse_update_config macro (forwarded request 110183 from toganm)</comment>
+    <requestid>110825</requestid>
+  </revision>
+  <revision rev="18" vrev="66">
+    <srcmd5>6b625f4a0be6589f61030ecba9a43f9c</srcmd5>
+    <version>0.23.3</version>
+    <time>1340183224</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="68">
+    <srcmd5>6b625f4a0be6589f61030ecba9a43f9c</srcmd5>
+    <version>0.23.3</version>
+    <time>1359108728</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="69">
+    <srcmd5>5d8081141cd7bcb810178280abfe7d5d</srcmd5>
+    <version>0.23.3</version>
+    <time>1372508607</time>
+    <user>coolo</user>
+    <comment>- avoid auto*, fixes build (forwarded request 181163 from coolo)</comment>
+    <requestid>181186</requestid>
+  </revision>
+  <revision rev="21" vrev="71">
+    <srcmd5>5d8081141cd7bcb810178280abfe7d5d</srcmd5>
+    <version>0.23.3</version>
+    <time>1379662079</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="72">
+    <srcmd5>bb869e4e75ec0c81666cb5261db6c0aa</srcmd5>
+    <version>0.23.3</version>
+    <time>1399390671</time>
+    <user>coolo</user>
+    <comment>- Fix build with SSLv2 disabled, use of bundled neon library 
+  was the cause (cadaver-neon.patch) (forwarded request 231582 from elvigia)</comment>
+    <requestid>232531</requestid>
+  </revision>
+  <revision rev="23" vrev="74">
+    <srcmd5>bb869e4e75ec0c81666cb5261db6c0aa</srcmd5>
+    <version>0.23.3</version>
+    <time>1409300607</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

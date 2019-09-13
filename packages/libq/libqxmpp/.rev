@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0ea3e693924db36206762b4426c68f7</srcmd5>
+    <version>0.7.1</version>
+    <time>1347487457</time>
+    <user>namtrac</user>
+    <comment>rename of libqxmpp1</comment>
+    <requestid>133648</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8c859b4d215184405c7acd417d64ebc3</srcmd5>
+    <version>0.7.4</version>
+    <time>1357127952</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146606</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8c859b4d215184405c7acd417d64ebc3</srcmd5>
+    <version>0.7.4</version>
+    <time>1359109336</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>421aecdb378881107f2c51c14255862a</srcmd5>
+    <version>0.7.6</version>
+    <time>1363340486</time>
+    <user>coolo</user>
+    <comment>Ver. 0.7.6 with gtalk fixed and doc-subpackage description fixed up.</comment>
+    <requestid>158784</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b95fdffb34f47213aa64c64e436be710</srcmd5>
+    <version>0.7.6</version>
+    <time>1364158633</time>
+    <user>coolo</user>
+    <comment>- Override LIBDIR instead of moving the library manually (forwarded request 160574 from Andreas_Schwab)</comment>
+    <requestid>160666</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>719a03982cfa600f2588f8d0472f2622</srcmd5>
+    <version>0.7.6</version>
+    <time>1377156196</time>
+    <user>scarabeus_factory</user>
+    <comment>- Full VoIP support was enabled.
+- Spec was fixed up via spec-cleaner. (forwarded request 195622 from DarkSS)</comment>
+    <requestid>195825</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>719a03982cfa600f2588f8d0472f2622</srcmd5>
+    <version>0.7.6</version>
+    <time>1379663063</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>44539d8128093f5f6d96562095e83749</srcmd5>
+    <version>0.7.6+git.2014.03.09</version>
+    <time>1394806602</time>
+    <user>coolo</user>
+    <comment>Source URL was temporary deleted to pass factory-auto: https://build.opensuse.org/request/show/225213 (forwarded request 225214 from DarkSS)</comment>
+    <requestid>225609</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>01c2ca6efdbeec0e7459233cec3d4d98</srcmd5>
+    <version>0.8.0</version>
+    <time>1396009000</time>
+    <user>coolo</user>
+    <comment>- update to 0.8.0
+  * Add organizations info interface to QXmppVCardIq.
+  * Remove deprecated QXmppPresence::Status type.
+- Source URL was put back.
+- Url tag and Source URL were updated to qxmpp.org. (forwarded request 227810 from DarkSS)</comment>
+    <requestid>227820</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>01c2ca6efdbeec0e7459233cec3d4d98</srcmd5>
+    <version>0.8.0</version>
+    <time>1409301689</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>34ca89bdb07034de028624cb8b833735</srcmd5>
+    <version>0.8.2</version>
+    <time>1421753286</time>
+    <user>dimstar_suse</user>
+    <comment>0.8.0→0.8.2;
+Qt5 alternative.</comment>
+    <requestid>280770</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>25769447008f1cd7a87c84acf886846b</srcmd5>
+    <version>0.8.3</version>
+    <time>1426680377</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291080</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>841c1f294bb01beafb94e1d1d6db079f</srcmd5>
+    <version>1.0.0</version>
+    <time>1557263953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701209</requestid>
+  </revision>
+</revisionlist>

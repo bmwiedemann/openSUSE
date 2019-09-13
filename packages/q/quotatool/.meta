@@ -1,0 +1,6 @@
+<package name="quotatool" project="openSUSE:Factory">
+  <title>quotatool for better quotas from the command line</title>
+  <description>quotatool is a utility for setting and manipulating filesystem quotas from the command line. It supports quota on Linux (versions 2.6, 2.4, and 2.2, with ext2, ext3, ReiserFS, and XFS), Solaris, and AIX.</description>
+  <devel project="filesystems" package="quotatool"/>
+  <url>http://quotatool.ekenberg.se/</url>
+</package>

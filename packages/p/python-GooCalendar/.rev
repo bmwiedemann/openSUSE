@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16e2faf843ad1de660342efd6058f9b9</srcmd5>
+    <version>0.2</version>
+    <time>1468360274</time>
+    <user>dimstar_suse</user>
+    <comment>fixed license and package name</comment>
+    <requestid>406320</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>07ace3cfd3ba0e8d2d2fad544c9cfec6</srcmd5>
+    <version>0.3</version>
+    <time>1481272755</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444865</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4611e5bc19cb0c5cb177cfa40c238272</srcmd5>
+    <version>0.4</version>
+    <time>1549017866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668149</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7a9d8b2a7b338c53d736ebe4a2533fd3</srcmd5>
+    <version>0.5</version>
+    <time>1553809783</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5 release:
+  * Actual python3 support using typelib introspection dependencies</comment>
+    <requestid>689360</requestid>
+  </revision>
+</revisionlist>

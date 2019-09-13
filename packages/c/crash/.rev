@@ -1,0 +1,1396 @@
+<revisionlist>
+  <revision rev="1" vrev="58">
+    <srcmd5>82cdc2a441fb4aeb062bb1765715cbef</srcmd5>
+    <version>4.0</version>
+    <time>1166634161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="59">
+    <srcmd5>4e212cfae17dcbfea71a02de321cbb7f</srcmd5>
+    <version>4.0</version>
+    <time>1166798101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="62">
+    <srcmd5>c1bc67168c997b363420d83149e8c6f5</srcmd5>
+    <version>4.0</version>
+    <time>1168903007</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="63">
+    <srcmd5>d109d9eb621ab58354bf8b4ed840379b</srcmd5>
+    <version>4.0</version>
+    <time>1168992487</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="64">
+    <srcmd5>45b8ac093b0c76ff43b435e6ce93c8fd</srcmd5>
+    <version>4.0</version>
+    <time>1169080213</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="65">
+    <srcmd5>75dadf7b7c35021241a9208bcc0180ea</srcmd5>
+    <version>4.0</version>
+    <time>1170150241</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="66">
+    <srcmd5>a6d155566cc90498781696dee1e33ded</srcmd5>
+    <version>4.0</version>
+    <time>1170176796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="67">
+    <srcmd5>315253267b0ff10d5fd299aef819a1cf</srcmd5>
+    <version>4.0</version>
+    <time>1170417702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="69">
+    <srcmd5>a929b8e3031c6c1bf3a5be9137a024e3</srcmd5>
+    <version>4.0</version>
+    <time>1170921891</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="72">
+    <srcmd5>b345418c7fd075e1d2994f76a20c0281</srcmd5>
+    <version>4.0</version>
+    <time>1172401896</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>873b34063e1c2ac7d427bcdf33932921</srcmd5>
+    <version>4.0.3.21</version>
+    <time>1174375102</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>864c2fe9712eaefd74b47560487c3010</srcmd5>
+    <version>4.0.3.21</version>
+    <time>1175161981</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>787aff974bb40ec2e9dd834456065697</srcmd5>
+    <version>4.0.3.22</version>
+    <time>1176390565</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>614e0001fa4274a7b57e81d5c6d979c9</srcmd5>
+    <version>4.0.4.1</version>
+    <time>1177697637</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cf09b66c6b4f7bd703104f361f14286b</srcmd5>
+    <version>4.0.4.2</version>
+    <time>1180997186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2ddaabcbb24df364bee271017b4e3540</srcmd5>
+    <version>4.0.4.3</version>
+    <time>1182677874</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>cc41664dc923a43c0f0cf18da1577d43</srcmd5>
+    <version>4.0.4.3</version>
+    <time>1183655711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6a5e1d24b5231f7f319c11293759fda6</srcmd5>
+    <version>4.0.4.4</version>
+    <time>1185031691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f49d2235b23fa1c2cf17406f474d1383</srcmd5>
+    <version>4.0.4.5</version>
+    <time>1185631716</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e04e6760935426d37cc333bc823e70e0</srcmd5>
+    <version>4.0.4.7</version>
+    <time>1191966777</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>5f0087f9d86449f1d1e42298970be69c</srcmd5>
+    <version>4.0.4.7</version>
+    <time>1192750894</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>63c4a972c81a5d070b909f3a7976f54c</srcmd5>
+    <version>4.0.4.7</version>
+    <time>1193657193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>42ef1642e275753722161e9ab996378d</srcmd5>
+    <version>4.0.4.8</version>
+    <time>1193789339</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>f01e8c491a19ebce9aff1f9f679566f4</srcmd5>
+    <version>4.0.4.8</version>
+    <time>1194642726</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>05fe17d852d2a4356f1b4f51a2e8e8c0</srcmd5>
+    <version>4.0.4.9</version>
+    <time>1195680688</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d5e2f945f78a11a934e08d19fe32ad02</srcmd5>
+    <version>4.0.4.10</version>
+    <time>1196356691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>2a3e247018bc11e67d7f3ccaff9aec12</srcmd5>
+    <version>4.0.4.10</version>
+    <time>1196601728</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7499278f985ac89ce236bc18ba11c51a</srcmd5>
+    <version>4.0.4.11</version>
+    <time>1196966057</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>428d37ec00aca6b7326bb92464dae1c1</srcmd5>
+    <version>4.0.4.12</version>
+    <time>1197551130</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>03114da20d4f2369505119efe4c8c374</srcmd5>
+    <version>4.0.4.12</version>
+    <time>1197887120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>af54ad03bf41c0315540b3e6055ec963</srcmd5>
+    <version>4.0.4.12</version>
+    <time>1198239136</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>67ef41c307ef482b565ebf0851a0dff6</srcmd5>
+    <version>4.0.4.12</version>
+    <time>1199973879</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d9fac2f2a362088cf9361d64179611b0</srcmd5>
+    <version>4.0.4.13</version>
+    <time>1200102154</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>ba600237a1d6307fa7ec3b058cdcc18a</srcmd5>
+    <version>4.0.4.13</version>
+    <time>1201478874</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="10">
+    <srcmd5>ab5af954667d66a19d65dee82111b620</srcmd5>
+    <version>4.0.4.13</version>
+    <time>1201983541</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="12">
+    <srcmd5>9a003f98257dfb6312a78dfed53971ee</srcmd5>
+    <version>4.0.4.13</version>
+    <time>1202491522</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="13">
+    <srcmd5>39667f89ade0de80d66681b6264a6770</srcmd5>
+    <version>4.0.4.13</version>
+    <time>1202500931</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4bcb4c2682bcda02d3479d1167521d56</srcmd5>
+    <version>4.0.5.1</version>
+    <time>1203955335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>63bd0b7c860f140f53e3eb4388f63590</srcmd5>
+    <version>4.0.6.1</version>
+    <time>1204320685</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>00c57258113aba00d3dcb778fa2c4547</srcmd5>
+    <version>4.0.6.1</version>
+    <time>1204759610</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4935ff4d0104a67c05a1e9b54b3a0c0e</srcmd5>
+    <version>4.0.6.2</version>
+    <time>1207212297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>41ccd7b1784c612f906d48045b2b796e</srcmd5>
+    <version>4.0.6.3</version>
+    <time>1209643982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>22fed5852e7fdfc9c4deb6a99cfd28e2</srcmd5>
+    <version>4.0.6.3</version>
+    <time>1210937365</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="22">
+    <srcmd5>5a44fbca5e71f46b88a204365a60028c</srcmd5>
+    <version>4.0.6.3</version>
+    <time>1218833013</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e5b66527e2e5891bd2278b6b20288d27</srcmd5>
+    <version>4.0.7.1</version>
+    <time>1219350435</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>a7b56230d8bb80d426f9c31ba16febde</srcmd5>
+    <version>4.0.7.1</version>
+    <time>1219708006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>908f43142bacaf6275c37aad8da2fedf</srcmd5>
+    <version>4.0.7.1</version>
+    <time>1219708054</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="6">
+    <srcmd5>5befe97925e29c2761685291cf24ebde</srcmd5>
+    <version>4.0.7.1</version>
+    <time>1219708091</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="9">
+    <srcmd5>aed72e15ce117fbbead98b9993b017b6</srcmd5>
+    <version>4.0.7.1</version>
+    <time>1220671753</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b14e22808aaa1bf7fd588b994e42f2bc</srcmd5>
+    <version>4.0.7.2</version>
+    <time>1223311488</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f9e31375c831c7c731e6b6fae473b175</srcmd5>
+    <version>4.0.7.3</version>
+    <time>1223999325</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>9b56b40b70573b89f42fa831e909c90d</srcmd5>
+    <version>4.0.7.4</version>
+    <time>1224003809</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>2c9dbc4704dbf4abc5571a3c93b765e7</srcmd5>
+    <version>4.0.7.4</version>
+    <time>1224690358</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>1aceb426aa7ca271451620ecef37656b</srcmd5>
+    <version>4.0.7.4</version>
+    <time>1224974526</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>bf6623be3c708d008b4e991c9ca73e91</srcmd5>
+    <version>4.0.7.4</version>
+    <time>1226007521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>709e37bbaed37db25dc307102cb97844</srcmd5>
+    <version>4.0.7.4</version>
+    <time>1226328375</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>626f262b1e5f2be8caec8e2a9948f5cc</srcmd5>
+    <version>4.0.7.4</version>
+    <time>1226413688</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="7">
+    <srcmd5>d6d172ed344214f1cb8828216ca26972</srcmd5>
+    <version>4.0.7.4</version>
+    <time>1226936742</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="8">
+    <srcmd5>fc43d216ac6993c24c2cbc84dfd9ec67</srcmd5>
+    <version>4.0.7.4</version>
+    <time>1227880344</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>e2762fdc7ed2c02812c497bfabee3427</srcmd5>
+    <version>4.0.7.5</version>
+    <time>1228748322</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>ac67b314debc1ead4b3d1010bdea5f8e</srcmd5>
+    <version>4.0.7.5</version>
+    <time>1229340185</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>d7203c57bdbae63d058ca840fb38c0da</srcmd5>
+    <version>4.0.7.6</version>
+    <time>1231779086</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>f79a4e41f8304e8578768e8fa7190eb0</srcmd5>
+    <version>4.0.7.6</version>
+    <time>1231976326</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>425ea285481c7e66d1110cc770661790</srcmd5>
+    <version>4.0.7.6</version>
+    <time>1232035218</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>18ddced14b8eb238dcdf2a9ab685641a</srcmd5>
+    <version>4.0.7.6</version>
+    <time>1232842482</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>6d8f96546951f1662d1fabfb9549c8c7</srcmd5>
+    <version>4.0.7.7</version>
+    <time>1234046570</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="67" vrev="10">
+    <srcmd5>dedfdd45a58635f927683c6f008f55f3</srcmd5>
+    <version>4.0.8.9</version>
+    <time>1240964177</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a992bb9ad32d05b900fa52baf038386f</srcmd5>
+    <version>4.0.8.11</version>
+    <time>1246633614</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>30e7006cd05245e8ca9f9648c255fc3f</srcmd5>
+    <version>4.1.0</version>
+    <time>1255357429</time>
+    <user>autobuild</user>
+    <comment>Copy from Kernel:kdump/crash based on submit request 22172 from user ptesarik
+</comment>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>30e7006cd05245e8ca9f9648c255fc3f</srcmd5>
+    <version>4.1.0</version>
+    <time>1255357429</time>
+    <user>autobuild</user>
+    <comment>Copy from Kernel:kdump/crash based on submit request 22172 from user ptesarik
+</comment>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>80555ed426246268c839a6d74b1ad271</srcmd5>
+    <version>4.1.1</version>
+    <time>1261144745</time>
+    <user>autobuild</user>
+    <comment>Copy from Kernel:kdump/crash based on submit request 26981 from user coolo
+</comment>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>32e9a2d9356d34fc81aa815a82b31737</srcmd5>
+    <version>4.1.2</version>
+    <time>1262865351</time>
+    <user>autobuild</user>
+    <comment>Copy from Kernel:kdump/crash based on submit request 28042 from user ptesarik
+</comment>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>279176fff1deed00063f170b5834bbc9</srcmd5>
+    <version>5.0.1</version>
+    <time>1267061875</time>
+    <user>autobuild</user>
+    <comment>Copy from Kernel:kdump/crash based on submit request 33288 from user ptesarik
+</comment>
+    <requestid>33288</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>f882f5fe191d32c25dd03c27bb38f8c9</srcmd5>
+    <version>5.0.1</version>
+    <time>1268700788</time>
+    <user>autobuild</user>
+    <comment>Copy from Kernel:kdump/crash based on submit request 34859 from user coolo
+</comment>
+    <requestid>34859</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>e3c468e1052a484bd6acf18aff115e11</srcmd5>
+    <version>5.0.1</version>
+    <time>1268923253</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>8cbca7368200c6e0707218f820f909d9</srcmd5>
+    <version>5.0.2</version>
+    <time>1270025746</time>
+    <user>autobuild</user>
+    <comment>Copy from Kernel:kdump/crash based on submit request 36090 from user ptesarik
+</comment>
+    <requestid>36090</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>6563a02eaeffc4da33df8da570341133</srcmd5>
+    <version>5.0.2</version>
+    <time>1270588619</time>
+    <user>autobuild</user>
+    <comment>Copy from Kernel:kdump/crash based on submit request 37028 from user ptesarik
+</comment>
+    <requestid>37028</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>402d0ea0dcafe5b11ea4e947ba6e9deb</srcmd5>
+    <version>5.0.3</version>
+    <time>1271808012</time>
+    <user>autobuild</user>
+    <comment>Copy from Kernel:kdump/crash based on submit request 38378 from user bwalle
+</comment>
+    <requestid>38378</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>402d0ea0dcafe5b11ea4e947ba6e9deb</srcmd5>
+    <version>5.0.3</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>402d0ea0dcafe5b11ea4e947ba6e9deb</srcmd5>
+    <version>5.0.3</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>091585c4e793daebcc1717d6ced84c9b</srcmd5>
+    <version>5.0.5</version>
+    <time>1279565846</time>
+    <user>autobuild</user>
+    <comment>Copy from Kernel:kdump/crash based on submit request 42969 from user ptesarik
+</comment>
+    <requestid>42969</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>2c8cfbd4c6d8f62e3f35c3fb4c767198</srcmd5>
+    <version>5.0.7</version>
+    <time>1285065953</time>
+    <user>autobuild</user>
+    <comment>Copy from Kernel:kdump/crash based on submit request 48619 from user ptesarik
+</comment>
+    <requestid>48619</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>02f9ffd6a3443dd7e2649a565eee93b4</srcmd5>
+    <version>5.0.8</version>
+    <time>1287060722</time>
+    <user>autobuild</user>
+    <comment>Copy from Kernel:kdump/crash based on submit request 50571 from user ptesarik
+</comment>
+    <requestid>50571</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>665d7927a29b40a5bf9f8a789fb4c1fa</srcmd5>
+    <version>5.1.0</version>
+    <time>1293577028</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56437 from user ptesarik
+</comment>
+    <requestid>56437</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>5868e66be95a415be2b5692ee3a5789d</srcmd5>
+    <version>5.1.0</version>
+    <time>1293577034</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56437
+</comment>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>6ee46150a5cac514ca15f622c60c36cf</srcmd5>
+    <version>5.1.1</version>
+    <time>1294405115</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57160 from user ptesarik
+</comment>
+    <requestid>57160</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>d9521d5a934207690973fd9122fbcb85</srcmd5>
+    <version>5.1.1</version>
+    <time>1294405136</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57160
+</comment>
+  </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>7d40c5f2598d29ee5d73974010c46a82</srcmd5>
+    <version>5.1.1</version>
+    <time>1294666843</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57469 from user ptesarik
+</comment>
+    <requestid>57469</requestid>
+  </revision>
+  <revision rev="89" vrev="4">
+    <srcmd5>a8c1a00d0bf39202123aba51edb8edeb</srcmd5>
+    <version>5.1.1</version>
+    <time>1294666861</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57469
+</comment>
+  </revision>
+  <revision rev="90" vrev="7">
+    <srcmd5>a8c1a00d0bf39202123aba51edb8edeb</srcmd5>
+    <version>5.1.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>32ff64dd825fb21cdcb8654bb39b8fc6</srcmd5>
+    <version>5.1.5</version>
+    <time>1306417400</time>
+    <user>saschpe</user>
+    <comment>- Update to 5.1.5, mainly gcc 4.6 and kernel 2.6.39 fixes, see
+  http://people.redhat.com/anderson/crash.changelog.html for
+  complete changelog.
+- Refresh crash-sles9-time.patch
+- Dropped the following patches applied upstream:
+    * crash-compressed-booted-kernel
+    * crash-compressed-kernel
+    * crash-missing-declarations.patch
+    * crash-xen-domain_vcpu.patch
+    * crash-xen-opt_sched.patch
+    * crash-xen-per_cpu-init_tss.patch
+    * crash-xen-per_cpu_shift.patch
+    * crash-xen_virt_start.patch (forwarded request 71317 from namtrac)</comment>
+    <requestid>71409</requestid>
+  </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>58d114d72eace44e469f42da25306150</srcmd5>
+    <version>5.1.5</version>
+    <time>1306417415</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71409
+</comment>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>9ea64ac22e024725b13569925b09fe0a</srcmd5>
+    <version>5.1.6</version>
+    <time>1308121952</time>
+    <user>saschpe</user>
+    <comment> (forwarded request 73364 from ptesarik)</comment>
+    <requestid>73368</requestid>
+  </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>1c62e67995a190c6378f0c01cbb7cff4</srcmd5>
+    <version>5.1.6</version>
+    <time>1317542006</time>
+    <user>lrupp</user>
+    <comment>Add the gcore extension as a subpackage for i386 and x86_64. (forwarded request 84544 from leonardocf)</comment>
+    <requestid>85772</requestid>
+  </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>07f34e214f6cecbf94a9ffacf3fbfb04</srcmd5>
+    <version>5.1.6</version>
+    <time>1318457351</time>
+    <user>lrupp</user>
+    <comment>Build a kmp package. (forwarded request 87399 from ptesarik)</comment>
+    <requestid>87401</requestid>
+  </revision>
+  <revision rev="96" vrev="4">
+    <srcmd5>2367f1af7ea29eccb9ba1cac9b01660b</srcmd5>
+    <version>5.1.6</version>
+    <time>1318578425</time>
+    <user>lrupp</user>
+    <comment>Fix bnc#723639 (forwarded request 87758 from ptesarik)</comment>
+    <requestid>87759</requestid>
+  </revision>
+  <revision rev="97" vrev="6">
+    <srcmd5>2367f1af7ea29eccb9ba1cac9b01660b</srcmd5>
+    <version>5.1.6</version>
+    <time>1319181825</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>6c5ec341c2c0eca870bc22395bfd1289</srcmd5>
+    <version>6.0.0</version>
+    <time>1321460254</time>
+    <user>coolo</user>
+    <comment>- Update to crash 6.0.0 from upstream and modifications to compile. (forwarded request 91394 from dmair)</comment>
+    <requestid>91395</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>82797efab8c05c150ed68300b484a339</srcmd5>
+    <version>6.0.0</version>
+    <time>1323191068</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>cf4ad2da9ae323a393a63c2a5a1ce238</srcmd5>
+    <version>6.0.0</version>
+    <time>1325005986</time>
+    <user>coolo</user>
+    <comment>- Fix wrong size parameter in memset call (forwarded request 98277 from namtrac)</comment>
+    <requestid>98308</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>ab89bade5fc3f17482436e106a2561c2</srcmd5>
+    <version>6.0.2</version>
+    <time>1326203449</time>
+    <user>coolo</user>
+    <comment>Upgrade to 6.0.2 (plus fix SLE11 builds).</comment>
+    <requestid>99531</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>78883b7c819345d05525a50e46725c89</srcmd5>
+    <version>6.0.3</version>
+    <time>1329400533</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>105237</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>1c0c12afeca5fda16fa54bdbfd5162cf</srcmd5>
+    <version>6.0.4</version>
+    <time>1331899814</time>
+    <user>coolo</user>
+    <comment>- Update to crash 6.0.4 from upstream and adjust patch locations
+  to match current crash source.
+  6.0.4 changelog is:
+  o Fix to allow the recently-added &quot;mod -g&quot; and &quot;mod -r&quot; options
+    to be used together.
+  o Additional update for 3.1.x and later kernels configured with
+    CONFIG_SLAB, which have replaced the kmem_cache.nodelists[]
+    array with a pointer to an outside array.
+  o Document the &quot;crash [-h|--help] all&quot; option in the crash.8 man 
+    page and in the &quot;crash [-h|--help]&quot; output.
+  o Fix the S390/S390X-specific &quot;s390dbf&quot; command's &quot;hex_ascii&quot;
+    debug data printing routine to prevent the display of
+    non-ASCII characters.
+  o Fix for ARM stack unwinding on 3.2 and later kernels due to
+    commit:
+      http://git.kernel.org/linus/de66a979012dbc66b1ec0125795a3f79ee667b8a
+  o Implemented a new &quot;search -x &lt;count&gt;&quot; option that displays the
+    memory contents before and after any found search target.
+  o  Fix for the x86_64 Xen hypervisor &quot;bt&quot; command.  Without the
+     patch, the contents of the RDX register in exception frames
+     incorrectly shows the contents of the RCX register.
+  o Implementation of a platform-based vmalloc address translation
+    scheme for the 32-bit PPC architecture, introducing suppport
+    for the PPC44X platform while maintaining the current default
+    platform.
+  o Fix for the usage of native gdb commands where the command
+    output is redirected to a pipe and then redirected to a file.
+  o Fix to prevent a crash session that is run over a network
+    connection that is killed/removed from going into 100%
+    cpu-time loop.
+  o Fix for the support of PPC64 compressed kdumps, a regression
+    that was introduced in crash-6.0.3 when support for 32-bit PPC
+    compressed kdumps was implemented.
+  o Fix for the x86_64 &quot;bt&quot; command to prevent the possible
+    skipping of the stack frame just above an exception frame that
+    indicates &quot;[exception RIP: unknown or invalid address]&quot;.
+  Patches with modified target locations are:
+    crash-make-emacs-default.diff
+    crash-sles9-time.patch
+    crash-crosscrash-hint.diff
+    crash-missing-declarations.patch (forwarded request 108994 from dmair)</comment>
+    <requestid>108995</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>8865a0b89079e3fde145f05b7be9500b</srcmd5>
+    <version>6.0.5</version>
+    <time>1333021848</time>
+    <user>coolo</user>
+    <comment>- Update to crash 6.0.5 from upstream and adjust patch positions
+  to match current crash source.
+  6.0.5 changelog is:
+  o Enhancement to the &quot;foreach&quot; command to allow any of the &quot;name&quot;
+    arguments to be POSIX extended regular expressions.  The
+    expression string must be encompassed by &quot;'&quot; characters, and
+    will be matched against the names of all tasks.
+  o Fix for the embedded gdb module's &quot;ptype&quot; command, and by
+    extension, the crash utility's &quot;struct&quot; command, to be able to
+    fully display embedded structure or union members of a
+    structure/union.  Without the patch, if a structure or union is
+    a member of a structure or union that is a member of a
+    structure or union, then it is displayed as &quot;struct {...}&quot; or
+    &quot;union {...}&quot;.
+  o Extend the &quot;ps -l&quot; output to also display the task state next
+    to its last_run/timestamp value.
+  o Enhancement to the &quot;foreach&quot; command which adds a new &quot;state&quot;
+    task-indentifier argument that filters tasks by their task
+    state. The state argument may be any of the task states
+    displayed by the &quot;ps&quot; command: RU, IN, UN, ST, ZO, SW or DE.
+  o Implemented a new pc-&gt;cmd_cleanup function pointer and an
+    optional pc-&gt;cmd_cleanup_arg argument that will allow any
+    command to register a function and an optional argument that
+    will be called after a command has completed successfully, or
+    more likely, unsuccessfully. Normally the only cleanup required
+    for a command is the freeing of buffers that were allocated
+    with GETBUF(), but that is performed automatically after each
+    command is run.  However, with the introduction of the new
+    POSIX regular expression functionality of the &quot;foreach&quot;
+    command, there needed to be a way to call regfree() in the case
+    where where regcomp() was called successfully, but then the
+    command later encountered one of several fatal error
+    conditions. This facility is also available for use by
+    extension module commands.
+  o Enforce the usage of a kernel thread's pgd from its active_mm
+    for the ARM &quot;vtop -c&quot; command; if its active_mm is NULL, make
+    the command fail similarly to the other architectures,
+    displaying the error message &quot;vtop: no active_mm for this
+    kernel thread&quot;.
+  o Fix for the x86_64 &quot;bt&quot; command running against recent kernels
+    if an active task was operating on its IRQ stack when the crash
+    occurred.  Without the patch, the determination of the IRQ
+    exception frame was off-by-8, displaying invalid register data
+    and the error message &quot;bt: WARNING: possibly bogus exception
+    frame&quot;.
+  o Update to handle the vfsmount structure change in 3.3 kernels,
+    in which most members of the vfsmount structure have been moved
+    into a new &quot;struct mount&quot;, and the vfsmount structure has been
+    embedded in the new mount structure.  Without the patch, the
+    following commands will fail, displaying the following error
+    messages:
+      mount: &quot;mount: invalid structure member offset: vfsmount_mnt_list&quot;
+      files: &quot;files: invalid structure member offset: dentry_d_covers&quot;
+         vm: &quot;vm: invalid structure member offset: dentry_d_covers&quot;
+       swap: &quot;swap: invalid structure member offset: dentry_d_covers
+      fuser: &quot;files: invalid structure member offset: dentry_d_covers&quot;
+    The &quot;fuser&quot; command generates the above error because it uses
+    the &quot;files&quot; command behind the scenes.
+  o Fix for the &quot;ps&quot; command to prevent the display of &quot;??&quot; under
+    the ST (task state) column.  Without the patch, in more recent
+    kernels, if more than one bit were set in the task_struct.state
+    field, the state would display &quot;??&quot;.  With the fix, the primary
+    state will always be displayed.
+  o Update to the output of the &quot;set&quot; command when it displays a
+    task's state.  Without the patch, if more than one bit was set
+    in the task_struct.state field, &quot;STATE: (unknown)&quot; would be
+    displayed.  With the fix, all bits in both the task_struct.state
+    and task_struct.exit_state fields are translated.
+  o Implemented a new &quot;vm -P &lt;vma-address&gt;&quot; option, which is similar
+    to &quot;vm -p&quot;, but only does the page translations of the specified
+    VM area of a context.
+  o Add support for the Freescale PowerPC e500mc version of the E500
+    processor chipset, and rework the PPC platform-specific code in
+    order to more easily support new processors.
+  o Implemented a new &quot;gdb&quot; crash environment variable that can be
+    used to alter a crash session's behavior such that all commands
+    are passed directly to the embedded gdb module.  The new mode
+    is turned on and off by entering &quot;set gdb on&quot; and &quot;set gdb off&quot;.
+    When running in this mode, the command prompt will be &quot;gdb&gt;&quot;.
+    In order to execute native crash commands while running in this
+    mode, precede the command with the &quot;crash&quot; directive, for
+    example, &quot;crash ps&quot;.
+  o Fix for a &quot;*** stack smashing detected ***: crash terminated&quot;
+    failure during the initial system banner display on a 32-bit
+    PPC platform.
+  o Redesigned/simplified the internal read_string() function to
+    prevent a potential segmentation violation.
+  o Updates for the 32-bit PPC &quot;vtop&quot; command output:
+      (1) Translate kernel virtual addresses for FSL BOOKE by using 
+          the TLBCAM setting
+      (2) Remove the PMD line from the display
+      (3) Fix the displayed PHYSICAL values of FSL BOOKE PTE format
+  o Fix for crash invocation failure on 3.3-era kernels in which
+    the former standalone &quot;xtime&quot; timespec structure has been moved
+    into the &quot;timekeeper&quot; structure.  Without the patch, the crash
+    session would fail early on with the message &quot;crash: cannot
+    resolve: xtime&quot;. The patch also prevents the crash session
+    failure in the unlikely event that the timespec access fails. (forwarded request 111468 from dmair)</comment>
+    <requestid>111826</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>226ded37a6ac742c880b90bd4fb8bbe9</srcmd5>
+    <version>6.0.6</version>
+    <time>1337577850</time>
+    <user>coolo</user>
+    <comment>upgrade to upstream crash 6.0.6</comment>
+    <requestid>121299</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>6d996bc52d4e0c32e94777f3cf32772b</srcmd5>
+    <version>6.0.7</version>
+    <time>1338582633</time>
+    <user>coolo</user>
+    <comment>- Update to crash 6.0.7 from upstream and adjust patches to apply
+  without offsets. Upstream changes:
+  o Enhanced the search command to allow the searched-for value to
+    be entered as a crash (expression) or a kernel symbol name. The
+    resultant value of an (expression) or kernel symbol value must
+    fit into in the designated value size if -w or -h are used, and
+    neither variant may be used with the -c option.  If found, both
+    the resultant value and the argument input string will be
+    displayed next to the target address(es).
+  o Added a new &quot;search -t&quot; option that will restrict the search to
+    the kernel stack pages of all tasks.  If one or more matches
+    are found in a task's kernel stack, the output is preceded with
+    a task-identifying header.
+  o Fix for the s390x &quot;bt -[tT]&quot; options when run on an active task
+    on a live system.  Without the patch, the options fail with the 
+    message &quot;bt: invalid/stale stack pointer for this task: 0&quot;.
+  o Fix for s390x &quot;vm -p&quot; option, which may show invalid user to
+    physical address translation data if a page is not mapped.
+    Without the patch, a page's translation may indicate
+    &quot;&lt;address&gt;   SWAP: (unknown swap location)  OFFSET: 0&quot;,
+    or show an incorrect swap offset on an actual swap device.
+  o Added new &quot;vm -[xd]&quot; options to be used in conjunction with
+    &quot;vm -[mv]&quot;, which override the current default output format 
+    with hexadecimal or decimal format for just the command instance.  
+    Without the patch, it would require changing the default output 
+    format with &quot;hex&quot; or &quot;dec&quot; prior to executing &quot;vm -[mv]&quot;.  The 
+    new flags may also be used with &quot;foreach vm -[mv]&quot;.
+  o Fix for the s390x &quot;vm -p&quot; and &quot;vtop -u &lt;user-address&gt;&quot; commands
+    if the page containing the relevant PTE is not mapped.  Without
+    the patch, the commands fail with the error message &quot;vm: read
+	.
+	.
+	. (forwarded request 123218 from dmair)</comment>
+    <requestid>123221</requestid>
+  </revision>
+  <revision rev="107" vrev="3">
+    <srcmd5>6d996bc52d4e0c32e94777f3cf32772b</srcmd5>
+    <version>6.0.7</version>
+    <time>1340183251</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="108" vrev="4">
+    <srcmd5>86be99a4b1e551364aed721c6ddea295</srcmd5>
+    <version>6.0.7</version>
+    <time>1343030311</time>
+    <user>coolo</user>
+    <comment>- Enabled support for reading dumpfiles compressed by LZO using
+  makedumpfile version 1.4.4 or later. (forwarded request 128152 from dmair)</comment>
+    <requestid>128153</requestid>
+  </revision>
+  <revision rev="109" vrev="5">
+    <srcmd5>f91b2e961f5b704273e4d3a579592c57</srcmd5>
+    <version>6.0.7</version>
+    <time>1343734179</time>
+    <user>coolo</user>
+    <comment>Fix build with glibc 2.16 (struct siginfo -&gt; siginfo_t). (forwarded request 129195 from a_jaeger)</comment>
+    <requestid>129354</requestid>
+  </revision>
+  <revision rev="110" vrev="7">
+    <srcmd5>f91b2e961f5b704273e4d3a579592c57</srcmd5>
+    <version>6.0.7</version>
+    <time>1359108772</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="111" vrev="8">
+    <srcmd5>c3a7c6755ce44b5488065982a3922a51</srcmd5>
+    <version>6.0.7</version>
+    <time>1359457538</time>
+    <user>coolo</user>
+    <comment>added support for variable-length record kernel log buffer present in kernel 3.5 and later - bnc#796151</comment>
+    <requestid>149968</requestid>
+  </revision>
+  <revision rev="112" vrev="9">
+    <srcmd5>fcdef60ee7a06bffe93acff520df18cb</srcmd5>
+    <version>6.0.7</version>
+    <time>1360008473</time>
+    <user>coolo</user>
+    <comment>- crash-compressed-booted-kernel.patch: Fix for &quot;crash when invoked
+  without arguments fails to analyze the live system&quot; (bnc#777516). (forwarded request 151172 from dmair)</comment>
+    <requestid>151175</requestid>
+  </revision>
+  <revision rev="113" vrev="10">
+    <srcmd5>1b32bd502c59ba76a4c98b4520378591</srcmd5>
+    <version>6.0.7</version>
+    <time>1362494985</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 156514 from coolo)</comment>
+    <requestid>156989</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>f00d5207eb65eb196b628a616d7b4997</srcmd5>
+    <version>6.1.3</version>
+    <time>1370425462</time>
+    <user>coolo</user>
+    <comment>- Correction of 161714 decline comment.
+- Implementation of v6.1.3 from upstream.
+- crash-display-date-fix.patch   - removed, in latest upstream
+- crash-kmem_cache_slab.patch    - removed, in latest upstream
+- crash-siginfo.patch            - removed, in latest upstream
+- crash-var_length_log_rec.patch - removed, in latest upstream
+- eppic-switch-to-system-lib.patch - Implementation of EPPIC via
+  system library rather than retrieve and include in build. Added
+  eppic constants to spec file without removing the sial constants
+  for now.
+- crash-crosscrash-hint.diff    - refreshed
+- crash-make-emacs-default.diff - refreshed
+- crash-sles9-time.patch        - refreshed (forwarded request 176370 from -miska-)</comment>
+    <requestid>177029</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>bfb5bcf9b389d30354eeb9bc834fabf9</srcmd5>
+    <version>7.0.2</version>
+    <time>1379076341</time>
+    <user>scarabeus_factory</user>
+    <comment>Upgrade to crash 7.0.2 (forwarded request 198814 from ptesarik)</comment>
+    <requestid>198815</requestid>
+  </revision>
+  <revision rev="116" vrev="3">
+    <srcmd5>bfb5bcf9b389d30354eeb9bc834fabf9</srcmd5>
+    <version>7.0.2</version>
+    <time>1379662155</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>a7c126545108c140fef8ed4e724da3b9</srcmd5>
+    <version>7.0.3</version>
+    <time>1385138295</time>
+    <user>coolo</user>
+    <comment>- Implementation of 7.0.3 from upstream and patch refresh.
+- Fix for the ARM architecture if the backtrace unwind information 
+  cannot be gathered during session initialization.  Without the patch, 
+  the two unwind-related warning messages indicating &quot;WARNING: UNWIND: 
+  failed to gather unwind_table list&quot; and &quot;WARNING: UNWIND: failed to 
+  initialize module unwind tables&quot; are followed by the fatal error 
+  message &quot;crash: cannot hash task_struct entries&quot;.
+  (anderson@redhat.com)
+- Fix for the &quot;help -[Dn]&quot; dumpfile information display of the GUID EFI
+  table in the header of SADUMP dumpfiles.  Without the patch, only 33 
+  of the 36 bytes in the table are translated.
+  (d.hatayama@jp.fujitsu.com)
+- Fix for the determination of the kernel NR_CPUS configurable for
+  Linux 3.8 and later kernels that are configured with CONFIG_SLAB. 
+  Without the patch, the kernel's compiled-in NR_CPUS value was 
+  incorrectly calculated to be the sum of the kernel's NR_CPUS and
+  MAX_NUMNODES configurables.
+  (anderson@redhat.com)
+     
+- In the next release of makedumpfile, the status field of the 
+  dumpfile header of compressed kdumps will show the compression 
+  type that was utilized.  The &quot;help -[Dn]&quot; output has been updated
+  to display that information.
+  (anderson@redhat.com)
+- For kernels configured with CONFIG_SLAB in which an array_cache
+  pointer referenced by a kmem_cache structure is invalid, the
+  individual cache(s) will be marked as invalid.  During session
+  initialization, the message &quot;crash: kmem_cache: &lt;cache-address&gt;: 
+  invalid array_cache pointer&quot; will be displayed, and during runtime, 
+  attempts to access the cache(s) will result in a message indicating (forwarded request 207895 from dmair)</comment>
+    <requestid>207921</requestid>
+  </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>9eb5d25d56286f98eaa4b56fbd553867</srcmd5>
+    <version>7.0.3</version>
+    <time>1386527178</time>
+    <user>coolo</user>
+    <comment>Fix removal of /boot/vmlinux-$version if it is not compressed.</comment>
+    <requestid>209609</requestid>
+  </revision>
+  <revision rev="119" vrev="3">
+    <srcmd5>dfaa9b1a4e26ed5dd44e5ad3f4ba90ae</srcmd5>
+    <version>7.0.3</version>
+    <time>1389606765</time>
+    <user>coolo</user>
+    <comment>- enable ppc64le (forwarded request 213576 from msmeissn)</comment>
+    <requestid>213659</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>ee9ae3bc41b3ff0ea76ddf652e56ef8a</srcmd5>
+    <version>7.0.4</version>
+    <time>1391077403</time>
+    <user>coolo</user>
+    <comment>- Enable ppc64le:
+  o crash-patch-gdb.patch: allow applying custom gdb patches 
+  o crash-gdb-7.6.series: series file for gdb patches
+  o gdb-7.6-ppc64_sysv_abi_push_float.patch: backported dependency
+  o gdb-7.6-bound_minimal_symbol.patch: dtto
+  o gdb-7.6-add-powerpc64le-linux.patch: dtto
+  o gdb-7.6-update-autoconf-2013-04-24.patch: dtto
+  o gdb-7.6-ppc_insns_match_pattern.patch: dtto
+  o gdb-7.6-floatformat.patch: dtto
+  o gdb-7.6-ppc64-ELFv2-trampoline-match.patch: dtto
+  o gdb-7.6-update-autoconf-2013-06-10.patch: dtto
+  o gdb-7.6-ppc64le.patch: patch used for the gdb package (forwarded request 215044 from ptesarik)</comment>
+    <requestid>215050</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>3f594dc9d50cd0f7a7eac6c3b9cdde9e</srcmd5>
+    <version>7.0.5</version>
+    <time>1392962117</time>
+    <user>coolo</user>
+    <comment>- Implementation of 7.0.5 from upstream, including patch refresh
+  Changelog:
+ - Fix for the &quot;runq -g&quot; option for kernels that are configured with
+   CONFIG_FAIR_GROUP_SCHED, but not CONFIG_CFS_BANDWIDTH.  Without the
+   patch, the command fails with the message &quot;runq: invalid structure 
+   member offset: cfs_rq_throttled&quot;.
+   (vinayakm.list@gmail.com)
+ - Add support for Xen PVH guest types introduced in Xen 4.4.  Without
+   the patch, running against a Xen 4.4 hypervisor binary would fail 
+   during session initialization with the error message &quot;crash: invalid 
+   structure member offset: domain_is_hvm&quot;.  In addition, the PVH guest
+   type is being registered internally as an HVM guest type, the debug
+   &quot;help -X ofs&quot; command's display of the domain_domain_flags offset
+   has been fixed to show it in decimal, and the setting of the internal
+   dc-&gt;domain_flags has been fixed to contain all flags set, not just 
+   the first one found.
+   (dslutz@verizon.com)
+ - Fix for the &quot;kmem -S&quot; command on Linux 3.1 and later kernels that are
+   configured with CONFIG_SLUB.  Because the the page structure's inuse 
+   and objects fields used by SLUB were changed from discrete u16 types
+   to bit-fields within an unsigned int, the display of per-node partial 
+   slab statistics are incorrect.  Without the patch, the TOTAL and 
+   ALLOCATED values are incorrectly shown as equal values, and therefore
+   the FREE value is always zero.
+   (anderson@redhat.com)
+ - Fix for the &quot;kmem -S&quot; command for kernels that are configured with 
+   CONFIG_SLUB.  Eash per-cpu slab object dump may show incorrect 
+   ALLOCATED and FREE values; and as seen on Linux 3.5 and later 
+   kernels, the TOTAL value and the number of individual objects dumped
+   may also be incorrect (too small).
+   (anderson@redhat.com)
+   ... (forwarded request 222786 from dmair)</comment>
+    <requestid>223258</requestid>
+  </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>1e81334b4b6021554a2980285f5961e5</srcmd5>
+    <version>7.0.5</version>
+    <time>1399031679</time>
+    <user>coolo</user>
+    <comment>Fix NMI backtraces (forwarded request 232167 from ptesarik)</comment>
+    <requestid>232168</requestid>
+  </revision>
+  <revision rev="123" vrev="3">
+    <srcmd5>3edeb4cfb177cbf5f4c0177e55bd87e1</srcmd5>
+    <version>7.0.5</version>
+    <time>1400355799</time>
+    <user>coolo</user>
+    <comment>Enable snappy compression (forwarded request 234362 from ptesarik)</comment>
+    <requestid>234363</requestid>
+  </revision>
+  <revision rev="124" vrev="4">
+    <srcmd5>4a001d40d541b829b921da5c73b23ac7</srcmd5>
+    <version>7.0.5</version>
+    <time>1403615757</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>238103</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>720c489ef775cae28a541d44ee4542b2</srcmd5>
+    <version>7.0.7</version>
+    <time>1404996937</time>
+    <user>coolo</user>
+    <comment>Upgrade to 7.0.7 (forwarded request 239876 from ptesarik)</comment>
+    <requestid>239935</requestid>
+  </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>ab5983082ee9d2f31c37a3047e4e02bc</srcmd5>
+    <version>7.0.7</version>
+    <time>1408021078</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244275</requestid>
+  </revision>
+  <revision rev="127" vrev="4">
+    <srcmd5>ab5983082ee9d2f31c37a3047e4e02bc</srcmd5>
+    <version>7.0.7</version>
+    <time>1409300681</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>169feb137fe5d69a11f4948c47c8832b</srcmd5>
+    <version>7.0.8</version>
+    <time>1411370590</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250195</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>0dff54a6870028e19681bf002bc8782f</srcmd5>
+    <version>7.0.9</version>
+    <time>1416994398</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262829</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>1ae1bbfc1b3dd32f076009b9c3900600</srcmd5>
+    <version>7.1.0</version>
+    <time>1425217602</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288043</requestid>
+  </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>e6d4ac28c178490b84a614257e6dee81</srcmd5>
+    <version>7.1.0</version>
+    <time>1427313942</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292916</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>394723a5f46e0d7e7cf8d4e2864c86c2</srcmd5>
+    <version>7.1.1</version>
+    <time>1434133898</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to crash-7.1.1.</comment>
+    <requestid>311720</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>216b3129279ad737ceba551ca562b17f</srcmd5>
+    <version>7.1.3</version>
+    <time>1442130309</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330487</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>c668810dd0c7737085cbd43dd02fbada</srcmd5>
+    <version>7.1.4</version>
+    <time>1454149910</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356701</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>9fd34afb92bb037462c83dd1b4c69cc2</srcmd5>
+    <version>7.1.5</version>
+    <time>1462178649</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392015</requestid>
+  </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>aed8f6fbddc0e89cbe60d7792a636401</srcmd5>
+    <version>7.1.5</version>
+    <time>1465336054</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>399991</requestid>
+  </revision>
+  <revision rev="137" vrev="3">
+    <srcmd5>52f0b195c3437fd40557f9c46ac932a7</srcmd5>
+    <version>7.1.5</version>
+    <time>1468482596</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407919</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>fde57f063f75ffe17b424637ae1d3482</srcmd5>
+    <version>7.1.7</version>
+    <time>1485512106</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade of source tarball to 7.1.7 from upstream, removal of
+  crash-kernel-4.7.patch (source includes it) and refresh of other
+  patches to align with the version. For a detailed changelog of
+  the source tarball see:
+  http://people.redhat.com/anderson/crash.changelog.html (forwarded request 452303 from dmair)</comment>
+    <requestid>452359</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>01f8f03e8f3abe64cf43d2edfb7ec7e8</srcmd5>
+    <version>7.1.8</version>
+    <time>1491896141</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483447</requestid>
+  </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>ada6b69fff2d16c7cc5df7b218bd6021</srcmd5>
+    <version>7.1.8</version>
+    <time>1496226008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>499668</requestid>
+  </revision>
+  <revision rev="141" vrev="3">
+    <srcmd5>363d4c6c61e78e393d3e0724c20a7df7</srcmd5>
+    <version>7.1.8</version>
+    <time>1497274423</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502644</requestid>
+  </revision>
+  <revision rev="142" vrev="4">
+    <srcmd5>61ab6482af287f67b5d78d94e8c62f9d</srcmd5>
+    <version>7.1.8</version>
+    <time>1497603287</time>
+    <user>dimstar_suse</user>
+    <comment>- refresh crash-sles9-time.patch crash-compressed-booted-kernel.patch
+- drop crash-Fix-for-the-PPC64-bt-command-for-non-panicking-activ.patch
+  merged upstram in 7.1.8
+   + crash-Fix-for-the-PPC64-bt-command-for-non-panicking-activ.patch
+ - refresh eppic-support-arm64.patch crash-debuginfo-compressed.patch
+ - drop crash-linux-4.6-printk-flags.patch merged upstream in 7.1.6
+- Fixed a build error on sle_version 120300 for x86_64 by removing
+  build requirement of kernel-syms-rt for it alone (forwarded request 503960 from dmair)</comment>
+    <requestid>503961</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>b7ac882ce15bbcf7c3e9e6291b91860f</srcmd5>
+    <version>7.2.0</version>
+    <time>1510837331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542028</requestid>
+  </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>5020316835f9388dda814283845af986</srcmd5>
+    <version>7.2.0</version>
+    <time>1512042367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546548</requestid>
+  </revision>
+  <revision rev="145" vrev="3">
+    <srcmd5>a41bfa609ab81e19f3159c71ee8512c5</srcmd5>
+    <version>7.2.0</version>
+    <time>1514907325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561080</requestid>
+  </revision>
+  <revision rev="146" vrev="4">
+    <srcmd5>7fde692b392f9de1e9ca2d21c7770e40</srcmd5>
+    <version>7.2.0</version>
+    <time>1515876573</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563935</requestid>
+  </revision>
+  <revision rev="147" vrev="5">
+    <srcmd5>2b1a577d312e2f8d8fe16575f8bcbeab</srcmd5>
+    <version>7.2.0</version>
+    <time>1518426913</time>
+    <user>dimstar_suse</user>
+    <comment>- Added:
+    crash-fix-error-cannot-resolve-schedulers-0001.patch
+    crash-fix-error-cannot-resolve-schedulers-0002.patch
+    crash-extend-direct-mapping-to-5TB.patch
+  Fixes Xen dump files that cannot be opened in hypervisor mode.
+  bsc#1073993
+</comment>
+    <requestid>575231</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>b04f40d9228b280edd8299709f9d4447</srcmd5>
+    <version>7.2.1</version>
+    <time>1522062330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590461</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>2da90decbf967af4123c26e065e5d31b</srcmd5>
+    <version>7.2.3</version>
+    <time>1530866526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620656</requestid>
+  </revision>
+  <revision rev="150" vrev="2">
+    <srcmd5>9ea916b925671dfdc0a1cdf61474e48c</srcmd5>
+    <version>7.2.3</version>
+    <time>1541667038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647007</requestid>
+  </revision>
+  <revision rev="151" vrev="3">
+    <srcmd5>8ea455b278a87ad475d9b5eac3a8679c</srcmd5>
+    <version>7.2.3</version>
+    <time>1551114084</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678956</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>c20e779d48778010e944e261f32cd2da</srcmd5>
+    <version>7.2.5</version>
+    <time>1556107042</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697206</requestid>
+  </revision>
+  <revision rev="153" vrev="2">
+    <srcmd5>a1eeb9e517c789b2f68e591ac52e1f54</srcmd5>
+    <version>7.2.5</version>
+    <time>1559375340</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705930</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>d78fdc07e9c236225303678490c0247b</srcmd5>
+    <version>7.2.6</version>
+    <time>1561732599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712269</requestid>
+  </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>4e5164b9af46577c46d6665a9104f10d</srcmd5>
+    <version>7.2.6</version>
+    <time>1565695641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722902</requestid>
+  </revision>
+  <revision rev="156" vrev="3">
+    <srcmd5>fb2464f275616e29c2da7d5d906cbb84</srcmd5>
+    <version>7.2.6</version>
+    <time>1566665196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725655</requestid>
+  </revision>
+</revisionlist>

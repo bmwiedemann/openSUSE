@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>695cc54799678a9525bab86005c91f12</srcmd5>
+    <version>2.2.3</version>
+    <time>1490317489</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>423127</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7d806033cb608d1e25c27ea6d791773d</srcmd5>
+    <version>2.4.3</version>
+    <time>1492169961</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485182</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e7c69af492f91022b2edb3e06387c791</srcmd5>
+    <version>2.4.4</version>
+    <time>1504206184</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513572</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>28cf3a627b634d9db48f900ecdfdb598</srcmd5>
+    <version>2.4.4</version>
+    <time>1505507367</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525780</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7f0e7b41ad7af47e4c38163b3ee8ceb7</srcmd5>
+    <version>2.5.0</version>
+    <time>1527675388</time>
+    <user>dimstar_suse</user>
+    <comment>Update hspec-discover to the latest version.</comment>
+    <requestid>607962</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f2328eea1606caf85b2c23a8d8f2744a</srcmd5>
+    <version>2.5.5</version>
+    <time>1532445820</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update hspec-discover to version 2.5.5.
+  Upstream does not provide a change log file.
+
+- Update hspec-discover to version 2.5.4.
+  Upstream does not provide a change log file.</comment>
+    <requestid>623905</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cdaab376c5a12eba5b232753f3b15b08</srcmd5>
+    <version>2.5.8</version>
+    <time>1540448384</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642912</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1b9afffa3a088a26ec27c580917af528</srcmd5>
+    <version>2.6.0</version>
+    <time>1541746403</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646368</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3cb5f06e972424cf7586601a3058a3d5</srcmd5>
+    <version>2.7.0</version>
+    <time>1548452622</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>667147</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b6e816898216a70ffa9515626a186197</srcmd5>
+    <version>2.7.1</version>
+    <time>1554276449</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>690184</requestid>
+  </revision>
+</revisionlist>

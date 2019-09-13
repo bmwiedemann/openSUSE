@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>77d63e00ab7f484034ca34ba732bac7a</srcmd5>
+    <version>12.4.0</version>
+    <time>1561641893</time>
+    <user>dimstar_suse</user>
+    <comment>new LTS nodejs for Factory</comment>
+    <requestid>709412</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ae0ccf0aa5d4683b88441f809c5b126c</srcmd5>
+    <version>12.8.1</version>
+    <time>1567091814</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>726171</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a5a06c68a868a80d3157a231b799cdf0</srcmd5>
+    <version>12.10.0</version>
+    <time>1567850038</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.10.0:
+  * deps:
+    + update npm to 6.10.3
+  * fs:
+    + Add recursive option to rmdir()
+    + Allow passing true to emitClose option
+    + Add *timeNs properties to BigInt Stats objects
+  * net:
+    + Allow reading data into a static buffer
+- versioned.patch: refreshed
+
+- Update to 12.9.0:
+  * crypto: Added an oaepHash option to asymmetric encryption which
+    allows users to specify a hash function when using OAEP padding
+  * deps: Updated V8 to 7.6.303.29
+    + Improves the performance of various APIs such as JSON.parse
+      and methods called on frozen arrays.
+    + Adds the Promise.allSettled method.
+    + Improves support of BigInt in Intl methods.
+    + For more information: https://v8.dev/blog/v8-release-76
+  * fs: Added fs.writev, fs.writevSync and filehandle.writev
+    (promise version) methods.
+  * http: Added three properties to OutgoingMessage.prototype:
+    writableObjectMode, writableLength and writableHighWaterMark
+  * stream:
+    + Added an new property 'readableEnded' to readable streams.
+    + Added an new property 'writableEnded' to writable streams.
+- fix_ci_tests.patch: refreshed</comment>
+    <requestid>728964</requestid>
+  </revision>
+</revisionlist>

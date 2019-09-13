@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>41c236ede69cd53f95d382adfdbf78b9</srcmd5>
+    <version>4.0.1</version>
+    <time>1168903964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>572f05284adbd417064e1afa5e472a03</srcmd5>
+    <version>4.1.3</version>
+    <time>1186306624</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6629c165aa6d5853ba1baaa8937411f4</srcmd5>
+    <version>4.2</version>
+    <time>1207683485</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="55">
+    <srcmd5>6629c165aa6d5853ba1baaa8937411f4</srcmd5>
+    <version>4.2</version>
+    <time>1207683485</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="56">
+    <srcmd5>59bfa7f22dda550701cd37286ed928b3</srcmd5>
+    <version>4.2</version>
+    <time>1234172608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="58">
+    <srcmd5>59bfa7f22dda550701cd37286ed928b3</srcmd5>
+    <version>4.2</version>
+    <time>1234172608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="59">
+    <srcmd5>c9d6eb4e2ace1b7ebc7d1fe13a661b66</srcmd5>
+    <version>4.2</version>
+    <time>1268925702</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="61">
+    <srcmd5>c9d6eb4e2ace1b7ebc7d1fe13a661b66</srcmd5>
+    <version>4.2</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="62">
+    <srcmd5>c9d6eb4e2ace1b7ebc7d1fe13a661b66</srcmd5>
+    <version>4.2</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="65">
+    <srcmd5>c9d6eb4e2ace1b7ebc7d1fe13a661b66</srcmd5>
+    <version>4.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bfcfb91bb04e3b538798ec3ab443dbf7</srcmd5>
+    <version>5.0.2</version>
+    <time>1307435863</time>
+    <user>saschpe</user>
+    <comment>update to 5.0.2</comment>
+    <requestid>71716</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>093578564a4d5bd22128a9c22108b8db</srcmd5>
+    <version>5.0.2</version>
+    <time>1307435875</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71716
+</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>093578564a4d5bd22128a9c22108b8db</srcmd5>
+    <version>5.0.2</version>
+    <time>1319182356</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6a10f050f3ea5d15926f8aae47f7803c</srcmd5>
+    <version>5.0.3</version>
+    <time>1319207007</time>
+    <user>coolo</user>
+    <comment>update to 5.0.3, fix bnc#721976 (forwarded request 88879 from computersalat)</comment>
+    <requestid>88880</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>78ba2fa214b8cbce233f82c2e62988b9</srcmd5>
+    <version>5.0.3</version>
+    <time>1323193893</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d36b06e6fc3e48221c0704d8ccde6b5b</srcmd5>
+    <version>5.0.4</version>
+    <time>1333110007</time>
+    <user>coolo</user>
+    <comment>update to 5.0.4, fix for bnc#754694 (CVE-2012-1600) (forwarded request 111890 from computersalat)</comment>
+    <requestid>111891</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d36b06e6fc3e48221c0704d8ccde6b5b</srcmd5>
+    <version>5.0.4</version>
+    <time>1340183998</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>d36b06e6fc3e48221c0704d8ccde6b5b</srcmd5>
+    <version>5.0.4</version>
+    <time>1359109921</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>d36b06e6fc3e48221c0704d8ccde6b5b</srcmd5>
+    <version>5.0.4</version>
+    <time>1379664022</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>947071b6690c26c481462e43aab407ce</srcmd5>
+    <version>5.1</version>
+    <time>1391363042</time>
+    <user>coolo</user>
+    <comment>update to 5.1 (forwarded request 220487 from rsalevsky)</comment>
+    <requestid>220567</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>947071b6690c26c481462e43aab407ce</srcmd5>
+    <version>5.1</version>
+    <time>1409302694</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>c61536b8936bfd728134252e6cd74a3c</srcmd5>
+    <version>5.1</version>
+    <time>1452263005</time>
+    <user>dimstar_suse</user>
+    <comment>fix for boo#951002 (forwarded request 352345 from computersalat)</comment>
+    <requestid>352346</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>8c775cef663625d782013ebf59aa878e</srcmd5>
+    <version>5.1</version>
+    <time>1480786061</time>
+    <user>dimstar_suse</user>
+    <comment>update phpPgAdmin.http, add support for apache 2.4, php7 (forwarded request 443181 from computersalat)</comment>
+    <requestid>443182</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e7ef348364fec621f275587ae7a7d6f0</srcmd5>
+    <version>5.6.0</version>
+    <time>1549017848</time>
+    <user>dimstar_suse</user>
+    <comment>update to 5.6.0 (forwarded request 667152 from computersalat)</comment>
+    <requestid>667153</requestid>
+  </revision>
+</revisionlist>

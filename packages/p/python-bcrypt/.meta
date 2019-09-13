@@ -1,0 +1,8 @@
+<package name="python-bcrypt" project="openSUSE:Factory">
+  <title>Modern password hashing for your software and your servers</title>
+  <description>Modern password hashing for your software and your servers.
+
+</description>
+  <devel project="devel:languages:python" package="python-bcrypt"/>
+  <url>https://github.com/pyca/bcrypt/</url>
+</package>

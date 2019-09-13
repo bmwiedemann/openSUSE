@@ -1,0 +1,9 @@
+<package name="python-text-unidecode" project="openSUSE:Factory">
+  <title>The most basic Text::Unidecode port</title>
+  <description>text-unidecode is the most basic port of the Text::Unidecode Perl library.
+
+There are other Python ports of Text::Unidecode (unidecode and isounidecode). unidecode is GPL; isounidecode doesn’t support Python 3 and uses too much memory.
+
+This port is licensed under Artistic License and supports both Python 2.x and 3.x. If you’re OK with GPL, use unidecode (it has better memory usage and better transliteration quality).</description>
+  <devel project="devel:languages:python" package="python-text-unidecode"/>
+</package>

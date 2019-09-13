@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b860a576b83c846b8c1a0d722627ced6</srcmd5>
+    <version>0.3.4</version>
+    <time>1397042068</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>229099</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b860a576b83c846b8c1a0d722627ced6</srcmd5>
+    <version>0.3.4</version>
+    <time>1409301751</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d0002410c8c2f41de010a6a374af21b1</srcmd5>
+    <version>0.3.4</version>
+    <time>1411926834</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>252426</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>27dacf49c23911565068e2757fee5c47</srcmd5>
+    <version>0.3.4</version>
+    <time>1424117690</time>
+    <user>coolo</user>
+    <comment>- /etc/profile.d/libvdpau-va-gl.{csh,sh}: do not set VDPAU_DRIVER,
+  if NVIDIA's proprietary driver is installed</comment>
+    <requestid>286339</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2e8ba4fe2d11ce062087fccc9129a272</srcmd5>
+    <version>0.3.5</version>
+    <time>1456434411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>360929</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>83e67e31acd879c6c220d46f4d7a25c8</srcmd5>
+    <version>0.3.6</version>
+    <time>1457116229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>365808</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>632b96834ab6e164ab7d3d9725a7a6b9</srcmd5>
+    <version>0.4.0</version>
+    <time>1469628767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>414694</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3d8d258a1aeb75dd60c53abd4f075e74</srcmd5>
+    <version>0.4.2</version>
+    <time>1479299566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>440400</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a17559893939c7f5b0dee78a434d61fe</srcmd5>
+    <version>1.99.21</version>
+    <time>1465481469</time>
+    <user>dimstar_suse</user>
+    <comment>abi compliance checker, as used by the abi compliance checker bot, useful beyond.</comment>
+    <requestid>400323</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>69e18a0611d1add10a947bfa27ec200b</srcmd5>
+    <version>1.99.22</version>
+    <time>1468869871</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408977</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c48bbb691f3c621a4275334e57f8980c</srcmd5>
+    <version>1.99.23</version>
+    <time>1474016507</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427711</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e14618760fc2ca2c9f0dc10c9caa0bfc</srcmd5>
+    <version>1.99.24</version>
+    <time>1476109332</time>
+    <user>dimstar_suse</user>
+    <comment>Fix src url and man page</comment>
+    <requestid>433682</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5814b683a8b4a4b40c606ee57342e2fa</srcmd5>
+    <version>1.99.25</version>
+    <time>1484475394</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449978</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c02316554ce44959a99dffd88d8847fd</srcmd5>
+    <version>2.0</version>
+    <time>1490965779</time>
+    <user>maxlin_factory</user>
+    <comment>new version</comment>
+    <requestid>482669</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5f6dacef5e0b390d2be8f5ada0e8c4c3</srcmd5>
+    <version>2.1</version>
+    <time>1499510084</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508414</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9a522b87b24e9b226ade45e1e362fe7e</srcmd5>
+    <version>2.2</version>
+    <time>1504617357</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520531</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>af6c8da1430b89b910bcad70ad310e8b</srcmd5>
+    <version>2.3</version>
+    <time>1530304116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617401</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1733c5703691f62f5214bdd3ef7d08cf</srcmd5>
+    <version>2.3</version>
+    <time>1533045824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626542</requestid>
+  </revision>
+</revisionlist>

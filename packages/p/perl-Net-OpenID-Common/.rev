@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e746c1a156c049e08fbc6a4e498722b</srcmd5>
+    <version>1.18</version>
+    <time>1395749974</time>
+    <user>coolo</user>
+    <comment>needed for openid support in openqa</comment>
+    <requestid>227097</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1e746c1a156c049e08fbc6a4e498722b</srcmd5>
+    <version>1.18</version>
+    <time>1409302427</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>58979daa9e7f90fb20a2f33e6838b5fa</srcmd5>
+    <version>1.19</version>
+    <time>1415289039</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259921</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>86cca5bfbc8cceecf0fe6274f0106fa7</srcmd5>
+    <version>1.20</version>
+    <time>1455701123</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359219</requestid>
+  </revision>
+</revisionlist>

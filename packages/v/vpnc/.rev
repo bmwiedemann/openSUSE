@@ -1,0 +1,240 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>3bea2baf2d9f15de8bafc9c532b89097</srcmd5>
+    <version>0.5.2r394</version>
+    <time>1251843357</time>
+    <user>autobuild</user>
+    <comment>Copy from network/vpnc based on submit request 18900 from user rwooninck
+</comment>
+  </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>3bea2baf2d9f15de8bafc9c532b89097</srcmd5>
+    <version>0.5.2r394</version>
+    <time>1251843357</time>
+    <user>autobuild</user>
+    <comment>Copy from network/vpnc based on submit request 18900 from user rwooninck
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3fef145efdfbca7d92378a8838164cf4</srcmd5>
+    <version>0.5.3r449</version>
+    <time>1258383766</time>
+    <user>autobuild</user>
+    <comment>Copy from network/vpnc based on submit request 24093 from user rwooninck
+</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>896c846701dd8d929e5941a851192d59</srcmd5>
+    <version>0.5.3r449</version>
+    <time>1261832332</time>
+    <user>autobuild</user>
+    <comment>Copy from network/vpnc based on submit request 27539 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>49ffbb2ac575c2ff82c6730f3744f096</srcmd5>
+    <version>0.5.3r449</version>
+    <time>1263229129</time>
+    <user>autobuild</user>
+    <comment>Copy from network/vpnc based on submit request 28403 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>574b6a3c940f3c1b0f4d5416172f2e4f</srcmd5>
+    <version>0.5.3r449</version>
+    <time>1268926470</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>574b6a3c940f3c1b0f4d5416172f2e4f</srcmd5>
+    <version>0.5.3r449</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>574b6a3c940f3c1b0f4d5416172f2e4f</srcmd5>
+    <version>0.5.3r449</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>0de848abe0581e70a99c5fc828d98f10</srcmd5>
+    <version>0.5.3r449</version>
+    <time>1284766086</time>
+    <user>autobuild</user>
+    <comment>Copy from network/vpnc based on submit request 48291 from user coolo
+</comment>
+    <requestid>48291</requestid>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>0de848abe0581e70a99c5fc828d98f10</srcmd5>
+    <version>0.5.3r449</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>5cddde371ded49242ec39da5077dc9e7</srcmd5>
+    <version>0.5.3r449</version>
+    <time>1312809472</time>
+    <user>saschpe</user>
+    <comment>This resolves the no-ghost-in-var-run rpmlint messages. I don't know why the files were created in the old spec-files, but it seems that vpnc is quite capable of creating them when required. So I removed the unnecessary files from the spec-file</comment>
+    <requestid>78057</requestid>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>30dec7c31a78afc154d77d31c6825dc3</srcmd5>
+    <version>0.5.3r449</version>
+    <time>1312809481</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78057
+</comment>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>30dec7c31a78afc154d77d31c6825dc3</srcmd5>
+    <version>0.5.3r449</version>
+    <time>1319182555</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>e40148399abd1cc75c2564c08406ab14</srcmd5>
+    <version>0.5.3r449</version>
+    <time>1319555876</time>
+    <user>coolo</user>
+    <comment>bnc#726231 (forwarded request 89212 from jengelh)</comment>
+    <requestid>89217</requestid>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>0d10da49cec749aa9b4eb0f0e9b64c80</srcmd5>
+    <version>0.5.3r472</version>
+    <time>1321274766</time>
+    <user>coolo</user>
+    <comment>- update to rev 472 of nortel branch
+  - memleak fix
+  - fritzbox compatibility patches
+  - fix some endianness issues
+  - improve handling of some isakmp delete payloads
+  - fix some format string warnings from debug messages and
+    strict aliasing warnings
+- add a very ugly patch to restart vpnc after lifetime expired (forwarded request 90786 from seife)</comment>
+    <requestid>90980</requestid>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>ed05dea0387d157cf6f6fb8f9cc4c8b7</srcmd5>
+    <version>0.5.3r472</version>
+    <time>1323195136</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e3cf764d60f3adac935aaf6774072806</srcmd5>
+    <version>0.5.3r481</version>
+    <time>1325767814</time>
+    <user>coolo</user>
+    <comment>- Add &quot;vpnc: &quot; prefix to stderr logmessages
+
+- change License field to GPL-2.0+ (bnc#731966)
+
+- update to rev 481 of nortel branch
+  - better version of vpnc-ipid.diff upstream
+  - various code cleanups
+  - log to stdout instead of syslog in debug mode
+
+- fix pidfile writing (/var/run/vpnc does not necessarily exist)</comment>
+    <requestid>98765</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b41e2b251e50cdc7c6b06ed6cbc2ec34</srcmd5>
+    <version>0.5.3r512</version>
+    <time>1328718084</time>
+    <user>coolo</user>
+    <comment>Update to Rev 512. This resolved bnc#712435 as that the vpnc-script is now using netconfig. However this solution does not work with NetworkManager</comment>
+    <requestid>103205</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>b41e2b251e50cdc7c6b06ed6cbc2ec34</srcmd5>
+    <version>0.5.3r512</version>
+    <time>1340184316</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a1d8a1a4cee9837ddba7980868f86bea</srcmd5>
+    <version>0.5.3r517</version>
+    <time>1349854508</time>
+    <user>coolo</user>
+    <comment>Update to rev 517. Also fixes bnc#773379 (/var/run/vpnc directory)</comment>
+    <requestid>137563</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>7cdb936bb0b2996df425650d727185f9</srcmd5>
+    <version>0.5.3r517</version>
+    <time>1353956821</time>
+    <user>coolo</user>
+    <comment>Based on bnc#773379) I am place a file in /etc/tmpfiles.d to ensure that the directory /var/run/vpnc is created on reboot.</comment>
+    <requestid>142852</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>7cdb936bb0b2996df425650d727185f9</srcmd5>
+    <version>0.5.3r517</version>
+    <time>1359110551</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>801e80295af7e42dd1c8f2d97031ab7d</srcmd5>
+    <version>0.5.3r517</version>
+    <time>1368453806</time>
+    <user>coolo</user>
+    <comment>- packages must not install files in /etc/tmpfiles.d/ 
+  which is reserved for the system administrator. (forwarded request 174867 from elvigia)</comment>
+    <requestid>175194</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>801e80295af7e42dd1c8f2d97031ab7d</srcmd5>
+    <version>0.5.3r517</version>
+    <time>1379664939</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>858ddd41141960a0e4f40d31ff84d086</srcmd5>
+    <version>0.5.3r517</version>
+    <time>1400783896</time>
+    <user>coolo</user>
+    <comment>use %_rundir if available</comment>
+    <requestid>234268</requestid>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>858ddd41141960a0e4f40d31ff84d086</srcmd5>
+    <version>0.5.3r517</version>
+    <time>1409303620</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="11">
+    <srcmd5>101ce5c88274cc59033a982da2e0a712</srcmd5>
+    <version>0.5.3r517</version>
+    <time>1411926997</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252236</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>faea9733521b1fd73ff5c952c7b350a5</srcmd5>
+    <version>0.5.3r550</version>
+    <time>1416823985</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261271</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>974d404208f7d6d4be92e7b40cf88130</srcmd5>
+    <version>0.5.3r550</version>
+    <time>1551023625</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677614</requestid>
+  </revision>
+</revisionlist>

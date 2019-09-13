@@ -1,0 +1,9 @@
+<package name="pcsc-reflex60" project="openSUSE:Factory">
+  <title>PCSC driver for Schlumberger Reflex 60 smartcard readers</title>
+  <description>This package contains a driver for the Reflex 62 and Reflex 64 smart
+card readers produced by Schlumberger.
+
+This driver is meant to be used with the PCSC-Lite daemon from the
+pcsc-lite package.</description>
+  <devel project="security:chipcard" package="pcsc-reflex60"/>
+</package>

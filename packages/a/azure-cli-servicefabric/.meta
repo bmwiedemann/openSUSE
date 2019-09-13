@@ -1,0 +1,14 @@
+<package name="azure-cli-servicefabric" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI Service Fabric Module</title>
+  <description>Microsoft Azure CLI Service Fabric Module
+
+This package is for the `sf` module.
+i.e. 'azure sf'
+
+It contains commands that can be used to
+manage Service Fabric clusters.
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-servicefabric"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

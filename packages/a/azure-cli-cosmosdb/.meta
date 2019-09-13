@@ -1,0 +1,11 @@
+<package name="azure-cli-cosmosdb" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'cosmosdb' Command Module</title>
+  <description>Microsoft Azure CLI 'cosmosdb' Command Module
+
+This package is for the 'cosmosdb' module.
+i.e. 'az cosmosdb'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-cosmosdb"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

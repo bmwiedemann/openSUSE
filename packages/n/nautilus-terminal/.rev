@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd1c118f262a9d0cdd5f2c1d7a811713</srcmd5>
+    <version>0.7</version>
+    <time>1295946737</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 55196 from user vuntz
+</comment>
+    <requestid>55196</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0a6c9473aeafafee022dfa5f6af549a7</srcmd5>
+    <version>0.7</version>
+    <time>1295946746</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 55196
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>0a6c9473aeafafee022dfa5f6af549a7</srcmd5>
+    <version>0.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d18d963fafc676570498f53bb265fa07</srcmd5>
+    <version>0.99_bzr9</version>
+    <time>1317543618</time>
+    <user>lrupp</user>
+    <comment>Pushing G:A</comment>
+    <requestid>85566</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d18d963fafc676570498f53bb265fa07</srcmd5>
+    <version>0.99_bzr9</version>
+    <time>1319182195</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>bfed55266b30d5d51fbd5e091d0edc10</srcmd5>
+    <version>0.99_bzr9</version>
+    <time>1323192676</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8335da606ecf7cc0b09784a2ffec75c7</srcmd5>
+    <version>1.0</version>
+    <time>1326988565</time>
+    <user>coolo</user>
+    <comment>Pushing some bits of G:A (mostly new upstream releases)</comment>
+    <requestid>100709</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8335da606ecf7cc0b09784a2ffec75c7</srcmd5>
+    <version>1.0</version>
+    <time>1340183724</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>8335da606ecf7cc0b09784a2ffec75c7</srcmd5>
+    <version>1.0</version>
+    <time>1359109492</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>87c6b5d42057364827f47423ef84de1e</srcmd5>
+    <version>1.0</version>
+    <time>1362462348</time>
+    <user>coolo</user>
+    <comment>- Fix dependencies (bnc#807207):
+  + Add gobject-introspection BuildRequires: Needed for the
+    automatic typelib()-Requires generator.
+  + Drop python-nautilus and python-gobject Requires: they are no
+    longer needed, as nautilus-terminal was ported to pygobject. (forwarded request 157211 from dimstar)</comment>
+    <requestid>157212</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>87c6b5d42057364827f47423ef84de1e</srcmd5>
+    <version>1.0</version>
+    <time>1379663347</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>87c6b5d42057364827f47423ef84de1e</srcmd5>
+    <version>1.0</version>
+    <time>1409301959</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>72b2b0c3263f69bc1f6e5c5043b4e7c4</srcmd5>
+    <version>1.0</version>
+    <time>1413355885</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255632</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>a4f9ca367112313d43615d37c1dcf073</srcmd5>
+    <version>1.0</version>
+    <time>1520503067</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581378 from dimstar)</comment>
+    <requestid>582701</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,175 @@
+<revisionlist>
+  <revision rev="1" vrev="67">
+    <srcmd5>663114e10a25b36341f77ebf9b46cee9</srcmd5>
+    <version>2006c1_suse</version>
+    <time>1215571016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="128">
+    <srcmd5>663114e10a25b36341f77ebf9b46cee9</srcmd5>
+    <version>2006c1_suse</version>
+    <time>1215571016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="129">
+    <srcmd5>04b22dcf707d3fcb0c496438219dc3e1</srcmd5>
+    <version>2006c1_suse</version>
+    <time>1245364126</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="131">
+    <srcmd5>04b22dcf707d3fcb0c496438219dc3e1</srcmd5>
+    <version>2006c1_suse</version>
+    <time>1245364126</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="132">
+    <srcmd5>98afdb202cfbe3303263372197b842f7</srcmd5>
+    <version>2006c1_suse</version>
+    <time>1257845335</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/imap based on submit request 23897 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>11d9f5ce245b8470b7eb2ab4ac7dd61e</srcmd5>
+    <version>2007e_suse</version>
+    <time>1265269900</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/imap based on submit request 29313 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8a5753e07e2ea3e09d8b927d4e00b461</srcmd5>
+    <version>2007e_suse</version>
+    <time>1268924006</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>8a5753e07e2ea3e09d8b927d4e00b461</srcmd5>
+    <version>2007e_suse</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>8a5753e07e2ea3e09d8b927d4e00b461</srcmd5>
+    <version>2007e_suse</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>8a5753e07e2ea3e09d8b927d4e00b461</srcmd5>
+    <version>2007e_suse</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>8a5753e07e2ea3e09d8b927d4e00b461</srcmd5>
+    <version>2007e_suse</version>
+    <time>1319181986</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>677713c5266be5cd8bcaae98be120f13</srcmd5>
+    <version>2007e_suse</version>
+    <time>1323191959</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>677713c5266be5cd8bcaae98be120f13</srcmd5>
+    <version>2007e_suse</version>
+    <time>1340183458</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>677713c5266be5cd8bcaae98be120f13</srcmd5>
+    <version>2007e_suse</version>
+    <time>1359109077</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>677713c5266be5cd8bcaae98be120f13</srcmd5>
+    <version>2007e_suse</version>
+    <time>1379662664</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>14e9a2523e64ea3765c85f2be5514e8b</srcmd5>
+    <version>2007e_suse</version>
+    <time>1389810938</time>
+    <user>coolo</user>
+    <comment>- link libc-client with -lpam (as we link other packages with
+  with --as-needed) (forwarded request 213566 from msmeissn)</comment>
+    <requestid>213735</requestid>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>14e9a2523e64ea3765c85f2be5514e8b</srcmd5>
+    <version>2007e_suse</version>
+    <time>1409301222</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>8c092ec2aa736b1330d7b92ed74dc598</srcmd5>
+    <version>2007e_suse</version>
+    <time>1456821509</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360741</requestid>
+  </revision>
+  <revision rev="19" vrev="22">
+    <srcmd5>6cf4205e1763b9a5c8b70bc5de774da8</srcmd5>
+    <version>2007e_suse</version>
+    <time>1459238167</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>379902</requestid>
+  </revision>
+  <revision rev="20" vrev="23">
+    <srcmd5>73e0fdee4d585bfba819bb65fe70a460</srcmd5>
+    <version>2007e_suse</version>
+    <time>1499415367</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508335</requestid>
+  </revision>
+  <revision rev="21" vrev="24">
+    <srcmd5>6a9ada4b9ae5b9de79074b26af62eecc</srcmd5>
+    <version>2007e_suse</version>
+    <time>1522503306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591541</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8272ba345a66db3b74333c51f04cfed6</srcmd5>
+    <version>2007f_suse</version>
+    <time>1530866886</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621113</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>06d78c021676a4038a433c4d65596368</srcmd5>
+    <version>2007f_suse</version>
+    <time>1563993444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718241</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>cb1d4be38a144918577903b22c5609d5</srcmd5>
+    <version>2007f_suse</version>
+    <time>1565097070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721014</requestid>
+  </revision>
+</revisionlist>

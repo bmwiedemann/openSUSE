@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eafd3215d6a85a1aa3bf9f845bad86a8</srcmd5>
+    <version>0.1.2</version>
+    <time>1556622402</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.1.2
+  * Fixed
+    - Fixed lost of &quot;noarch&quot; packages
+    - Be able to search with dashes in keywords
+- Version 0.1.1
+  * Fixed
+    - Removed XML dump which may cause problems.
+- Version 0.1.0
+  * Added
+    - Search packages from OBS
+    - List properly sorted search result
+    - Use different colors for official, experimental and personal projects
+    - Choose package and install
+    - Keep or remove repository after installation
+</comment>
+    <requestid>699488</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1325f665600dbe17f984fff81f465339</srcmd5>
+    <version>0.2.0</version>
+    <time>1557084082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700365</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0b77ef74b13a538be9f4703de8547ca</srcmd5>
+    <version>0.3.2</version>
+    <time>1557472778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701786</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a24c70073f93f99c229afb12e1603b5d</srcmd5>
+    <version>0.5.0</version>
+    <time>1558690205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704744</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b69a14abca9daa18e658385dcf2f733</srcmd5>
+    <version>0.5.1</version>
+    <time>1559581113</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.5.1
+  * Fixed
+    - Fix dependency not found issue
+</comment>
+    <requestid>707221</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eefb3d87aca8ab001105087a8ff20e87</srcmd5>
+    <version>0.5.2</version>
+    <time>1560338197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709064</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f7264b6e8367b3c755c6260749c7ba12</srcmd5>
+    <version>0.6.0</version>
+    <time>1566243701</time>
+    <user>dimstar_suse</user>
+    <comment>Version 0.6.0</comment>
+    <requestid>724415</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>738ebcc5c73542d8fee0cfe072ada8c3</srcmd5>
+    <version>0.7.0</version>
+    <time>1567168907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727073</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6261b1e2b7154e9a9281348afaca459</srcmd5>
+    <version>1.0.2</version>
+    <time>1336471554</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115475</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f6261b1e2b7154e9a9281348afaca459</srcmd5>
+    <version>1.0.2</version>
+    <time>1340184372</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f6261b1e2b7154e9a9281348afaca459</srcmd5>
+    <version>1.0.2</version>
+    <time>1359110658</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>f6261b1e2b7154e9a9281348afaca459</srcmd5>
+    <version>1.0.2</version>
+    <time>1379665085</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>f6261b1e2b7154e9a9281348afaca459</srcmd5>
+    <version>1.0.2</version>
+    <time>1409303773</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1edddbbd2bd205d069d5b74ebd97a9c</srcmd5>
+    <version>1.0.3</version>
+    <time>1429948451</time>
+    <user>coolo</user>
+    <comment>- Update to release 1.0.3:
+  * This version continues the tradition of only releasing once every
+    5 years, with the latest set of build configuration &amp;
+    documentation improvements.</comment>
+    <requestid>303790</requestid>
+  </revision>
+</revisionlist>

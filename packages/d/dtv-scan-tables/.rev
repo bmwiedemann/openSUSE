@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3a2cf77c6776966bff769b1c347c1208</srcmd5>
+    <version>20130110</version>
+    <time>1358889639</time>
+    <user>coolo</user>
+    <comment>This is what was in dvb package, now it is a separate noarch package because it was split that way in linuxtv.org repositories too. COPYING added.</comment>
+    <requestid>149516</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3a2cf77c6776966bff769b1c347c1208</srcmd5>
+    <version>20130110</version>
+    <time>1359108829</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9d02686eef0c3b030a1cd8d667c527a3</srcmd5>
+    <version>20130412</version>
+    <time>1369640731</time>
+    <user>coolo</user>
+    <comment>update to 20130412</comment>
+    <requestid>176150</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9d02686eef0c3b030a1cd8d667c527a3</srcmd5>
+    <version>20130412</version>
+    <time>1379662257</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>96f7d4f73b74d3c202994ad65049018b</srcmd5>
+    <version>20130412</version>
+    <time>1397041949</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>229214</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>96f7d4f73b74d3c202994ad65049018b</srcmd5>
+    <version>20130412</version>
+    <time>1409300795</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ddd38f3c651a83cf234d204834c713fb</srcmd5>
+    <version>20150208</version>
+    <time>1428652355</time>
+    <user>dimstar_suse</user>
+    <comment>+- update to 20150208
++  * updated scan files
++- use their makefile
++- install v5 dvb files (in a subpackage)</comment>
+    <requestid>294906</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c9bb542829926cdfa7526205dc0cbe86</srcmd5>
+    <version>20150208</version>
+    <time>1446719755</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>342460</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7f2c66824ed33d880a73aa4ca603d1f7</srcmd5>
+    <version>20161227</version>
+    <time>1485167942</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450909</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f98687d4eb575748366cf21097dcbf3c</srcmd5>
+    <version>20170203</version>
+    <time>1489345259</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477007</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff21f9ab1c6ce32db8638c1800b0a691</srcmd5>
+    <version>20170419</version>
+    <time>1494088252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493005</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>44fb53746b1479da024d7b01f908880a</srcmd5>
+    <version>20170530</version>
+    <time>1499880964</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509545</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>99f854240e123d48690f507621a7586b</srcmd5>
+    <version>20171003</version>
+    <time>1508503634</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535286</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1c96bfe9adf566f21401a64afdbc21c8</srcmd5>
+    <version>20180103</version>
+    <time>1524238086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596923</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e5c2407a9b8ef8a6f4b2a092f8c1f268</srcmd5>
+    <version>20180510</version>
+    <time>1528195997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180510: (forwarded request 614023 from pluskalm)</comment>
+    <requestid>614050</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b68e7512df429ff71d8ebb0bd4e80c73</srcmd5>
+    <version>20180927</version>
+    <time>1539869886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642691</requestid>
+  </revision>
+</revisionlist>

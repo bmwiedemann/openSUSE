@@ -1,0 +1,381 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e455a60bda05959a6d0a0a73432b540</srcmd5>
+    <version>2.0.4</version>
+    <time>1407319420</time>
+    <user>coolo</user>
+    <comment>.pc deleted</comment>
+    <requestid>243730</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e4bd9b96780d21128438d7aab7948c40</srcmd5>
+    <version>2.0.5</version>
+    <time>1407744450</time>
+    <user>lnussel</user>
+    <comment>- Update to new upstream release 2.0.5</comment>
+    <requestid>244033</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e4bd9b96780d21128438d7aab7948c40</srcmd5>
+    <version>2.0.5</version>
+    <time>1409301702</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c297132e744316204ce2a4c09d5e731b</srcmd5>
+    <version>2.1.1</version>
+    <time>1418251499</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>264606</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>85c63ee29ec2c495099f21d0dd734f1a</srcmd5>
+    <version>2.1.2</version>
+    <time>1418737758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.1.2</comment>
+    <requestid>265327</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6be04b45758f65fe5ec107326ae408ab</srcmd5>
+    <version>2.1.3</version>
+    <time>1422134476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.1.3</comment>
+    <requestid>282653</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bef573c7b905fc948d4980570f1c9339</srcmd5>
+    <version>2.1.3</version>
+    <time>1423130430</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>283980</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4b22d25423a9fd1786d6e2370445c479</srcmd5>
+    <version>2.1.4</version>
+    <time>1426064248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.4</comment>
+    <requestid>289852</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3e4af6f9af1dab34255e642424403ad7</srcmd5>
+    <version>2.1.6</version>
+    <time>1427109429</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.1.6</comment>
+    <requestid>291640</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b4c1371ee523b11fda034170e6708187</srcmd5>
+    <version>2.1.6</version>
+    <time>1427736767</time>
+    <user>dimstar_suse</user>
+    <comment>- Ship pkgconfig files again</comment>
+    <requestid>293391</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bd6cbe177fdbc2020c227183ee4b8221</srcmd5>
+    <version>2.2.0</version>
+    <time>1435053515</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312788</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7722fd2155e7fb91bbc670fbd2bd1170</srcmd5>
+    <version>2.2.1</version>
+    <time>1437299140</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.2.1 [bnc#937891]</comment>
+    <requestid>316500</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9d9811590d8a7b3ee52ff72f0cb67802</srcmd5>
+    <version>2.2.2</version>
+    <time>1439818528</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid file conflict with ca-certificates by dropping
+  /etc/ssl/certs</comment>
+    <requestid>323546</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>85f662e49d66dd4f8bf9a91c71472744</srcmd5>
+    <version>2.2.2</version>
+    <time>1439969371</time>
+    <user>dimstar_suse</user>
+    <comment>- drop /etc/ssl/cert.pem</comment>
+    <requestid>323662</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>55d02909fb3b4d45cc092e8182920ca5</srcmd5>
+    <version>2.2.3</version>
+    <time>1441727050</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>329406</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fe698ce159d3218cf391e9dbe0d1f493</srcmd5>
+    <version>2.3.0</version>
+    <time>1443770632</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>335428</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e1ec3c0ccd86b69d39f94a0025aaa802</srcmd5>
+    <version>2.3.0</version>
+    <time>1445287938</time>
+    <user>dimstar_suse</user>
+    <comment>Security update for libressl:
+  * CVE-2015-5333: Memory Leak [boo#950707]
+  * CVE-2015-5334: Buffer Overflow [boo#950708]</comment>
+    <requestid>339322</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7a2dc5fdb012bca5e544a70a90520169</srcmd5>
+    <version>2.3.1</version>
+    <time>1447353673</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>343831</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>f5bf16364ffec38aa42312aa9173f5e1</srcmd5>
+    <version>2.3.1</version>
+    <time>1450084456</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>348737</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>abbf69b3d886b5f53cfb31abffd3f245</srcmd5>
+    <version>2.3.2</version>
+    <time>1455032998</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>358505</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>34be97e8c22fdd4bfc30c05158a7a940</srcmd5>
+    <version>2.3.3</version>
+    <time>1459508569</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>382251</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d8adef6210d3955998ce3d571a6aa526</srcmd5>
+    <version>2.3.4</version>
+    <time>1462443147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.3.4</comment>
+    <requestid>393774</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>40686cb0b307f1037af2d70704fa6d18</srcmd5>
+    <version>2.4.0</version>
+    <time>1465847741</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>400809</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>140dd89915a77b6c208b13233b46e0aa</srcmd5>
+    <version>2.4.1</version>
+    <time>1466681788</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>403762</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f2cffa78ae1d06c291b2a8d55128b0c8</srcmd5>
+    <version>2.4.2</version>
+    <time>1470851772</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>418294</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>86fb3a287a99e159c32e33d3a8ac9758</srcmd5>
+    <version>2.5.0</version>
+    <time>1475242509</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.5.0</comment>
+    <requestid>431235</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>4fd7146a8b6e78c320c34a49dde95688</srcmd5>
+    <version>2.5.0</version>
+    <time>1485250856</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ecs.diff [bnc#1019334]</comment>
+    <requestid>451912</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4438cd09e3d4e12e14b565f94d6489a6</srcmd5>
+    <version>2.5.3</version>
+    <time>1492714476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.5.3</comment>
+    <requestid>487723</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>49313352c84bd56d56558c3f8f876cd2</srcmd5>
+    <version>2.5.4</version>
+    <time>1494088241</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.5.4</comment>
+    <requestid>492942</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>11469e155570a3fd7109a7c23e881f94</srcmd5>
+    <version>2.5.4</version>
+    <time>1494346239</time>
+    <user>dimstar_suse</user>
+    <comment>For staging:J</comment>
+    <requestid>493769</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6470b6cd73a5cd1956f68a7b93e5c083</srcmd5>
+    <version>2.5.5</version>
+    <time>1503926189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.5.5</comment>
+    <requestid>518756</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2b1e3e29e213e9a5b7cfdd7ec296ae29</srcmd5>
+    <version>2.6.0</version>
+    <time>1504521318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.6.0</comment>
+    <requestid>520239</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>f0943d8fa1e2503ded6122b408e3a06e</srcmd5>
+    <version>2.6.2</version>
+    <time>1507065492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.6.2</comment>
+    <requestid>530573</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d4056bba0ea5baa907b75ac5b5cb471c</srcmd5>
+    <version>2.6.3</version>
+    <time>1510506182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.6.3</comment>
+    <requestid>540664</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>8dc82441f74a704dff0bc7568599284e</srcmd5>
+    <version>2.6.3</version>
+    <time>1512547160</time>
+    <user>dimstar_suse</user>
+    <comment>- Add extra-symver.diff</comment>
+    <requestid>548437</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b0ce44cca0396088324924967cfd7b06</srcmd5>
+    <version>2.6.4</version>
+    <time>1514569849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.6.4</comment>
+    <requestid>560001</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4d559a94040f20eea58d2b4e75e4a385</srcmd5>
+    <version>2.7.1</version>
+    <time>1522225868</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.7.1</comment>
+    <requestid>591042</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>46cc56f5443024574e79fff345185d6b</srcmd5>
+    <version>2.7.2</version>
+    <time>1522750343</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.7.2</comment>
+    <requestid>593025</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>70c799d8c567d20ba21203c21b8d19a1</srcmd5>
+    <version>2.7.3</version>
+    <time>1525697641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.7.3</comment>
+    <requestid>605050</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>88fcd598f450796c60d0a6d3d3c399ec</srcmd5>
+    <version>2.8.0</version>
+    <time>1533887357</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.0</comment>
+    <requestid>628117</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>ca866d54f9c0cb21fc0a755b4c972813</srcmd5>
+    <version>2.8.0</version>
+    <time>1535123579</time>
+    <user>dimstar_suse</user>
+    <comment>update changelog</comment>
+    <requestid>631235</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e293bd7283dc1d80623e46dbc794159b</srcmd5>
+    <version>2.8.2</version>
+    <time>1540200311</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8.2</comment>
+    <requestid>643317</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>aeec27421b7a3019f8b97deeb6532bec</srcmd5>
+    <version>2.8.2</version>
+    <time>1540545012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644593</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f0b2d8af55fe44876cb0234f11e31e0d</srcmd5>
+    <version>2.8.3</version>
+    <time>1545996883</time>
+    <user>dimstar_suse</user>
+    <comment>Update libressl to 2.8.3 (forwarded request 661264 from seanlew)</comment>
+    <requestid>661289</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>bddcced8031d0f53d0eb843ac7af8e06</srcmd5>
+    <version>2.9.0</version>
+    <time>1552902149</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.9.0</comment>
+    <requestid>685604</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>fb603b7bda59d171d4aba51372147b99</srcmd5>
+    <version>2.9.0</version>
+    <time>1554189737</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openssl(cli) provides. Replace otherproviders conflict
+  by normal Conflict+Provides.</comment>
+    <requestid>690320</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>98382236eb349af0c8abf8ca60459b9a</srcmd5>
+    <version>2.9.2</version>
+    <time>1560970706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.9.2</comment>
+    <requestid>704797</requestid>
+  </revision>
+</revisionlist>

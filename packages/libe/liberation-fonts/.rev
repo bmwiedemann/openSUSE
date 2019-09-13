@@ -1,0 +1,187 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>440ba3a35d8e3089aa5b0c3b0b9811c2</srcmd5>
+    <version>0.1</version>
+    <time>1181615742</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="121">
+    <srcmd5>440ba3a35d8e3089aa5b0c3b0b9811c2</srcmd5>
+    <version>0.1</version>
+    <time>1181615742</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="122">
+    <srcmd5>d1ac2daaa5e86369c7eb6fb177d0429f</srcmd5>
+    <version>0.1</version>
+    <time>1224729436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5641f1af377e3ac9d86d7de7a991dac3</srcmd5>
+    <version>1.04</version>
+    <time>1225711324</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4ab85c3ebd4cb06d95be5ac6ae4f1895</srcmd5>
+    <version>1.03</version>
+    <time>1227997193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>4ab85c3ebd4cb06d95be5ac6ae4f1895</srcmd5>
+    <version>1.03</version>
+    <time>1227997193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>0cbeb8de7a6263270b41492c24bdb97d</srcmd5>
+    <version>1.03</version>
+    <time>1268924553</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>f42a47c17a0a681724b2ba8cf679bd5f</srcmd5>
+    <version>1.03</version>
+    <time>1271371882</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/liberation-fonts based on submit request 37509 from user tiwai
+</comment>
+    <requestid>37509</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>f42a47c17a0a681724b2ba8cf679bd5f</srcmd5>
+    <version>1.03</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>f42a47c17a0a681724b2ba8cf679bd5f</srcmd5>
+    <version>1.03</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5a60e33d9771687fbca5e98dea62f2ab</srcmd5>
+    <version>1.06.0.20100721</version>
+    <time>1294967396</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57994 from user tiwai
+</comment>
+    <requestid>57994</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0758af36881da94ca7c13223a703f947</srcmd5>
+    <version>1.06.0.20100721</version>
+    <time>1294967408</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57994
+</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>0758af36881da94ca7c13223a703f947</srcmd5>
+    <version>1.06.0.20100721</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>0758af36881da94ca7c13223a703f947</srcmd5>
+    <version>1.06.0.20100721</version>
+    <time>1319182087</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>32066d6c5847cce54059739dbd707c13</srcmd5>
+    <version>1.06.0.20100721</version>
+    <time>1320671999</time>
+    <user>coolo</user>
+    <comment>fix bnc725370 (forwarded request 89987 from sreeves1)</comment>
+    <requestid>90007</requestid>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>51525e213708bcace7cfdc86a1e29f7e</srcmd5>
+    <version>1.06.0.20100721</version>
+    <time>1338476777</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-Liberation
+The correct license from the spreadsheet linked at license.opensuse.org (forwarded request 122343 from babelworx)</comment>
+    <requestid>122914</requestid>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>51525e213708bcace7cfdc86a1e29f7e</srcmd5>
+    <version>1.06.0.20100721</version>
+    <time>1340183579</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b89ba9926b6fe03496113650eb234c54</srcmd5>
+    <version>2.00.0</version>
+    <time>1344172807</time>
+    <user>coolo</user>
+    <comment>Update to version 2.00.0, Changed license to OFL-1.1, Build the fonts from sources, Add a Provides: entry for scalable-font-el (forwarded request 129723 from adra)</comment>
+    <requestid>129731</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>42815583dd7b5795873dc1e5b6155f0f</srcmd5>
+    <version>1.07.2</version>
+    <time>1352907852</time>
+    <user>coolo</user>
+    <comment>- downgrade to 1.07.2 [bnc#788838] 
+  (liberation2-fonts package created)</comment>
+    <requestid>141091</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>42815583dd7b5795873dc1e5b6155f0f</srcmd5>
+    <version>1.07.2</version>
+    <time>1359109263</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>42815583dd7b5795873dc1e5b6155f0f</srcmd5>
+    <version>1.07.2</version>
+    <time>1379662937</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b395fb5ea857d3cd01c56521276fd556</srcmd5>
+    <version>1.07.3</version>
+    <time>1396709403</time>
+    <user>coolo</user>
+    <comment>- update to 1.07.3:
+  * Corrected U+2588 shape to match with Dejavu fonts in Mono
+  * Resolved Serbian bug #984428
+  * applied patch to remove kerning for number 1
+  * corrected shape of U+040D #799384</comment>
+    <requestid>228558</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>b395fb5ea857d3cd01c56521276fd556</srcmd5>
+    <version>1.07.3</version>
+    <time>1409301547</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>54ced81a0dcc9b0da58b65ea705ae156</srcmd5>
+    <version>1.07.4</version>
+    <time>1423595747</time>
+    <user>dimstar_suse</user>
+    <comment>Update (forwarded request 284229 from posophe)</comment>
+    <requestid>284272</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>42092110dc2ec032042678a26b2ee50a</srcmd5>
+    <version>1.07.4</version>
+    <time>1518596365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575489</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="seamonkey" project="openSUSE:Factory">
+  <title>The successor of the Mozilla Application Suite</title>
+  <description>Originally based on the Netscape Communicator source, the SeaMonkey
+project grew to be the most advanced web browser currently available.
+It supports new techniques like CSS2, MathML, SVG, XML, transparent
+PNGs, and its look is fully theme-able.</description>
+  <devel project="mozilla:Factory" package="seamonkey"/>
+</package>

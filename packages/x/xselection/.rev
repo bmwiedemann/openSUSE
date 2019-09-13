@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="592">
+    <srcmd5>6372496afa49538a0f9a3050c06db05d</srcmd5>
+    <version>1.6.1</version>
+    <time>1168904630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="787">
+    <srcmd5>6372496afa49538a0f9a3050c06db05d</srcmd5>
+    <version>1.6.1</version>
+    <time>1168904630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="788">
+    <srcmd5>7dde932a1ad6336f169645bfee6573fe</srcmd5>
+    <version>1.6.1</version>
+    <time>1245364090</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="790">
+    <srcmd5>7dde932a1ad6336f169645bfee6573fe</srcmd5>
+    <version>1.6.1</version>
+    <time>1245364090</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="791">
+    <srcmd5>a694b608ec041f44437f233c57ba3886</srcmd5>
+    <version>1.6.1</version>
+    <time>1268926693</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="793">
+    <srcmd5>a694b608ec041f44437f233c57ba3886</srcmd5>
+    <version>1.6.1</version>
+    <time>1278667397</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="794">
+    <srcmd5>a694b608ec041f44437f233c57ba3886</srcmd5>
+    <version>1.6.1</version>
+    <time>1278678631</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="795">
+    <srcmd5>b33e65094d41080f281d67a53e54d00d</srcmd5>
+    <version>1.6.1</version>
+    <time>1289413622</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52515 from user prusnak
+</comment>
+    <requestid>52515</requestid>
+  </revision>
+  <revision rev="9" vrev="796">
+    <srcmd5>4a15ae6f8bc85a9d7bb09a000c8c4397</srcmd5>
+    <version>1.6.1</version>
+    <time>1289413629</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52515
+</comment>
+  </revision>
+  <revision rev="10" vrev="799">
+    <srcmd5>4a15ae6f8bc85a9d7bb09a000c8c4397</srcmd5>
+    <version>1.6.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="801">
+    <srcmd5>4a15ae6f8bc85a9d7bb09a000c8c4397</srcmd5>
+    <version>1.6.1</version>
+    <time>1319182615</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="802">
+    <srcmd5>34f5fb5e953ee85801ae6dc6f4896f0e</srcmd5>
+    <version>1.6.1</version>
+    <time>1323195481</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="804">
+    <srcmd5>34f5fb5e953ee85801ae6dc6f4896f0e</srcmd5>
+    <version>1.6.1</version>
+    <time>1340184384</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="806">
+    <srcmd5>34f5fb5e953ee85801ae6dc6f4896f0e</srcmd5>
+    <version>1.6.1</version>
+    <time>1359110693</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="808">
+    <srcmd5>34f5fb5e953ee85801ae6dc6f4896f0e</srcmd5>
+    <version>1.6.1</version>
+    <time>1379665118</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="810">
+    <srcmd5>34f5fb5e953ee85801ae6dc6f4896f0e</srcmd5>
+    <version>1.6.1</version>
+    <time>1409303805</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="811">
+    <srcmd5>06c54aec90849858a9362730349a5a83</srcmd5>
+    <version>1.6.1</version>
+    <time>1415016730</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259227</requestid>
+  </revision>
+  <revision rev="18" vrev="812">
+    <srcmd5>e20163f88a8eb26c59edeae20efce1cb</srcmd5>
+    <version>1.6.1</version>
+    <time>1415866636</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260724</requestid>
+  </revision>
+  <revision rev="19" vrev="813">
+    <srcmd5>9075d89662d66fd0d469b4db7683ad39</srcmd5>
+    <version>1.6.1</version>
+    <time>1468048951</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>406069</requestid>
+  </revision>
+</revisionlist>

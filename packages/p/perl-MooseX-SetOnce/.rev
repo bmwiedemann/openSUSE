@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f8a0e35ad6554ac770c6c852f3a4d241</srcmd5>
+    <version>0.200001</version>
+    <time>1324458154</time>
+    <user>coolo</user>
+    <comment>new perl module - already reviewed in #66747</comment>
+    <requestid>97089</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f8a0e35ad6554ac770c6c852f3a4d241</srcmd5>
+    <version>0.200001</version>
+    <time>1340183883</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f8a0e35ad6554ac770c6c852f3a4d241</srcmd5>
+    <version>0.200001</version>
+    <time>1359109752</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>f8a0e35ad6554ac770c6c852f3a4d241</srcmd5>
+    <version>0.200001</version>
+    <time>1379663769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>f8a0e35ad6554ac770c6c852f3a4d241</srcmd5>
+    <version>0.200001</version>
+    <time>1409302408</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ccdf7a6ea8fd47f813f0ef1bd4aa5f6c</srcmd5>
+    <version>0.200002</version>
+    <time>1429107811</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296054</requestid>
+  </revision>
+</revisionlist>

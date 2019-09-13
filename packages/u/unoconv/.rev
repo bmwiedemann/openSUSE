@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c0e49fb4bc3aaccbb1c145d5227d700</srcmd5>
+    <version>0.4</version>
+    <time>1306489408</time>
+    <user>saschpe</user>
+    <comment>please add unoconv to factory</comment>
+    <requestid>68119</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bd501abaf42f3fafd3854e6f0a332f52</srcmd5>
+    <version>0.4</version>
+    <time>1306489418</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68119
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>bd501abaf42f3fafd3854e6f0a332f52</srcmd5>
+    <version>0.4</version>
+    <time>1319182540</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f647c9283dbe76be05f533a108a5d154</srcmd5>
+    <version>0.4</version>
+    <time>1319555747</time>
+    <user>coolo</user>
+    <comment>- fixed bnc#718115
+- Added licence header in spec file
+- Removed old changelogs from %changelog section in spec file
+- Add unoconv-libreoffice-support.patch: add support for LibreOffice.
+- Add unoconv-output-argument.patch: deprecate --outputpath in favor of --output, that works in a more reasonable way. Taken from git.</comment>
+    <requestid>88888</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>65c18dd9a71855dd6f4e6f88987df511</srcmd5>
+    <version>0.4</version>
+    <time>1324307433</time>
+    <user>coolo</user>
+    <comment>- COPYING is GPL-2.0+ (forwarded request 96563 from coolo)</comment>
+    <requestid>96564</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>65c18dd9a71855dd6f4e6f88987df511</srcmd5>
+    <version>0.4</version>
+    <time>1340184298</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b1df94cf6272d42ff7b61eebdf2b9dbc</srcmd5>
+    <version>0.6</version>
+    <time>1352124194</time>
+    <user>coolo</user>
+    <comment>update to 0.6 (forwarded request 139645 from etamPL)</comment>
+    <requestid>139646</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b1df94cf6272d42ff7b61eebdf2b9dbc</srcmd5>
+    <version>0.6</version>
+    <time>1359110525</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>b1df94cf6272d42ff7b61eebdf2b9dbc</srcmd5>
+    <version>0.6</version>
+    <time>1379664888</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>b1df94cf6272d42ff7b61eebdf2b9dbc</srcmd5>
+    <version>0.6</version>
+    <time>1409303574</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>033a941d6e534a967a749efda2c5440c</srcmd5>
+    <version>0.6</version>
+    <time>1415201192</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258719</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5df9fb2fcb843bfe1e251b60481028d1</srcmd5>
+    <version>0.7</version>
+    <time>1451983258</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351275</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d9e4c5c939656b102397bdc1ce0723b7</srcmd5>
+    <version>0.8.2</version>
+    <time>1547130228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664307</requestid>
+  </revision>
+</revisionlist>

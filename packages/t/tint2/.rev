@@ -1,0 +1,186 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>152b7ae84101cbcc8c932ef9651dbc98</srcmd5>
+    <version>0.12</version>
+    <time>1438750221</time>
+    <user>coolo</user>
+    <comment>tint2 is a simple panel/taskbar made for modern X window managers. I will maintain it.</comment>
+    <requestid>317039</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a0df590b8c648ca741be9346b591b9aa</srcmd5>
+    <version>0.12.7</version>
+    <time>1455610714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>358935</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>503e1605393e9561fca9b44bd89585d5</srcmd5>
+    <version>0.12.7</version>
+    <time>1459002253</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>375345</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>927495b9d378c42c9fe1636649de4fdb</srcmd5>
+    <version>0.12.9</version>
+    <time>1460482774</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>387549</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dc2768350a3adfb638f22c4edfa65785</srcmd5>
+    <version>0.12.10</version>
+    <time>1463124256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>395011</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>486041e4942d7fc792261cd67a0f166b</srcmd5>
+    <version>0.12.11</version>
+    <time>1468482593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.11:
+  * Fixed crash in tint2conf when adding background
+  * Add correct extension to file name in tint2conf for 'Save as'
+  * Changed main window title in tint2conf</comment>
+    <requestid>407918</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3a86b47b4b586355493e68a5330e4568</srcmd5>
+    <version>0.12.12</version>
+    <time>1473798265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>426998</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c3273b7b334314b1d40e4d24558ce471</srcmd5>
+    <version>0.13.1</version>
+    <time>1489653696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>478874</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0dddaea81a136c9045ad089b9c4a7913</srcmd5>
+    <version>0.14.1</version>
+    <time>1491210330</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>484232</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5385098bb963b3ca683600afb64fab9a</srcmd5>
+    <version>0.14.6</version>
+    <time>1498202308</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.6:
+  Fixes:
+  * Make versioning more robust when building as package
+  * Fix regression in executor (issue #639)
+  * Fix crash when _NET_WM_ICON is set but empty (https://github.com/jmc-88/tint3/issues/21)
+  * Take into account border width when computing text height
+  * Taskbar: Fix task icon size limits
+  * Executor: Do not output last line if it is not terminated by newline
+  * Fixed a couple of memory leaks
+  Enhancements:
+  * Tint2conf: Open current tint2 config automatically when started from tint2
+  * Re-execute tint2 on SIGUSR2.
+    This is useful for preserving config options and environment when updating tint2.
+- Add File: tint2conf.xml</comment>
+    <requestid>505671</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>14c1b7145aa3a06393269546cacfcc2d</srcmd5>
+    <version>15.2</version>
+    <time>1508434374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 15.2:
+  Fixes:
+  * Battery info is now again displayed even when current sensor is missing (https://github.com/jmc-88/tint3/issues/34)
+  * Text elements compute their size correctly (issue #671)
+  * Window order persists on panel restart (issue #615)
+</comment>
+    <requestid>534591</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d2fc70b6268f7b3a0fc4126cb07dd835</srcmd5>
+    <version>15.3</version>
+    <time>1510150253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539588</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bf9d3fe8b4dd2ce9145758b5243d1d9a</srcmd5>
+    <version>16.1</version>
+    <time>1516359150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 16.1:
+  * Executor: updated tooltip documentation (issue #676)
+  * Systray: warn on duplicate config option systray_name_filter (issue #652)
+  * Taskbar: thumbnail support in tooltips
+  * Taskbar: `taskbar_distribute_size = 1` now playes well with `task_align = center` and
+    `task_align = right` (issue #6
+  * Fixed several use-after-free errors in the timer code
+  * Task, Button, Executor: add a bit of slack in the pango text layout,
+    to avoid wrapping due to rounding errors
+- Add ifdef around post/postun
+</comment>
+    <requestid>563608</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ab462caf48cfdaef1d004d00309441b6</srcmd5>
+    <version>16.2</version>
+    <time>1516804274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 16.2:
+  * Proper fix for having too much space between virtual desktop
+    taskbar (issue #688)
+  * Fix bad word wrapping (issue #693)
+  * Preliminary high DPI support</comment>
+    <requestid>568545</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5825292acc7ad263bf0887f1611e17e5</srcmd5>
+    <version>16.4</version>
+    <time>1533214836</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 16.4:
+  * Update AUTHORS
+  * Fix leak in image loading (issue #704)
+  * Fix executors no longer log unless env var DEBUG_EXECUTORS
+    is set
+  * Fix layout in executor (issue #695)
+  * Fix Other small issues</comment>
+    <requestid>627045</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>12bf6307a99cf45fafb1c1e6226057eb</srcmd5>
+    <version>16.6.1</version>
+    <time>1535538399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 16.6.1:
+  * Fix packaging regression for debian (issue #715)
+- Changes from 16.6:
+  * Fix regression in task icon brightness (issue #714)
+- Changes from 16.5:
+  * Add new build script
+  * Add option to sort taskbar by application name
+  * Fix regression in image loading</comment>
+    <requestid>631974</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8a16416cbe37438bb5aaeae49bdb7c51</srcmd5>
+    <version>16.7</version>
+    <time>1564137660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718474</requestid>
+  </revision>
+</revisionlist>

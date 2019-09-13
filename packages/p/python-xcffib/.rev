@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ec8b59af7bd606d60e54ef6872b72ea</srcmd5>
+    <version>0.5.1</version>
+    <time>1517323370</time>
+    <user>dimstar_suse</user>
+    <comment>Submitting package to factory, needed for  python-cairocffi and qtile.</comment>
+    <requestid>570465</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d9ea9abb0d56ba39fb48aa49d78b3f5c</srcmd5>
+    <version>0.5.1</version>
+    <time>1544726726</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654076</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>56810f213af6efa552fa6d2decf5bbdd</srcmd5>
+    <version>0.6.0</version>
+    <time>1548452723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668540</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4736c0aed3a3ae897633c0fa20ed8ada</srcmd5>
+    <version>0.7.0</version>
+    <time>1553888205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Various updates and fixes for ghc/cabal
+  * Drop unnecessary imports
+- Enable tests</comment>
+    <requestid>687601</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e1ac305d7c0fe3b22f16349a2db59b5d</srcmd5>
+    <version>0.8.0</version>
+    <time>1557263567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701054</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>06f696360b4bad7e52b173ae85960c89</srcmd5>
+    <version>0.8.1</version>
+    <time>1561195388</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Testsuite expansion mostly</comment>
+    <requestid>710345</requestid>
+  </revision>
+</revisionlist>

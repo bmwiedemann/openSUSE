@@ -1,0 +1,294 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b9079cc842c2c8ae6e31afea86f083a</srcmd5>
+    <version>1.6.23</version>
+    <time>1174274937</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1d28af3b40cce42f1961bbc3bd51949d</srcmd5>
+    <version>1.6.26</version>
+    <time>1178269586</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>474230d6875870dcdbd6d744b806419c</srcmd5>
+    <version>1.6.26</version>
+    <time>1178833788</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8cd38e2f92dfcb1fdb97764d30141d12</srcmd5>
+    <version>1.6.27</version>
+    <time>1181060687</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>940065782cb50c72795c32dd6a781026</srcmd5>
+    <version>1.6.30</version>
+    <time>1192058891</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d55d493dbccb57bd0bb8465268430328</srcmd5>
+    <version>1.6.31</version>
+    <time>1201712928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>468f3cf1d4a7923cf1b1384b075c9f4e</srcmd5>
+    <version>1.6.32</version>
+    <time>1207265293</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>879c7ffcaf3e3501a6b50371d9b913e6</srcmd5>
+    <version>1.6.34</version>
+    <time>1217640779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="30">
+    <srcmd5>254dcad2a7d6eca85cda13af97e917ca</srcmd5>
+    <version>1.6.34</version>
+    <time>1245338687</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="31">
+    <srcmd5>a38a0bfbce61eff82c6dc1887739ed37</srcmd5>
+    <version>1.6.34</version>
+    <time>1247272496</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>54972e4bb1f284024750b6e9b144cdd5</srcmd5>
+    <version>1.6.36</version>
+    <time>1251298240</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:FOX/fox16 based on submit request 18653 from user lrupp
+</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>54972e4bb1f284024750b6e9b144cdd5</srcmd5>
+    <version>1.6.36</version>
+    <time>1251298240</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:FOX/fox16 based on submit request 18653 from user lrupp
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>800e3c2d7408ee1137dd4bce201ed1af</srcmd5>
+    <version>1.6.37</version>
+    <time>1263307561</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:FOX/fox16 based on submit request 28929 from user coolo
+</comment>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9afd400dd9a98f998ef392c199762678</srcmd5>
+    <version>1.6.37</version>
+    <time>1268923575</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>9afd400dd9a98f998ef392c199762678</srcmd5>
+    <version>1.6.37</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>9afd400dd9a98f998ef392c199762678</srcmd5>
+    <version>1.6.37</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0d8c37e1d9862341df292a4684e63495</srcmd5>
+    <version>1.6.40</version>
+    <time>1283523029</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:FOX/fox16 based on submit request 46902 from user lrupp
+</comment>
+    <requestid>46902</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4c706897b8c875074564128b87789616</srcmd5>
+    <version>1.6.43</version>
+    <time>1297119336</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60248 from user lrupp
+</comment>
+    <requestid>60248</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>c5bf81b53c6c2d994399f2a503f23051</srcmd5>
+    <version>1.6.43</version>
+    <time>1297119344</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60248
+</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>c5bf81b53c6c2d994399f2a503f23051</srcmd5>
+    <version>1.6.43</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>0a524f18d61d857105a4b55093db5863</srcmd5>
+    <version>1.6.43</version>
+    <time>1316503854</time>
+    <user>lrupp</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83544 from jengelh)</comment>
+    <requestid>83670</requestid>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>0a524f18d61d857105a4b55093db5863</srcmd5>
+    <version>1.6.43</version>
+    <time>1319181883</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>71e42a219a74b640724312742cdd4eac</srcmd5>
+    <version>1.6.43</version>
+    <time>1323085404</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>95319</requestid>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>97ddcbd9148fde72c0ada79164cf2a8a</srcmd5>
+    <version>1.6.43</version>
+    <time>1323191402</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c8ae0fb49dcea275c47253467fd753e4</srcmd5>
+    <version>1.6.44</version>
+    <time>1329221141</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103882</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>c8ae0fb49dcea275c47253467fd753e4</srcmd5>
+    <version>1.6.44</version>
+    <time>1340183336</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>49c1bf93a13dcffae4cd58d5054d4cb6</srcmd5>
+    <version>1.6.46</version>
+    <time>1342171871</time>
+    <user>namtrac</user>
+    <comment>- update to 1.6.46:
+  + Small tweak to FXIcon's guessthresh(), thanks to Fanglin.
+  + Fixed quaternion arc() routine. In case of vectors that are 
+    (almost) 180 degrees apart, the wrong quaternion was returned.
+  + Invalid handle issue fixed in FXWindow.
+  + Backported FXPath shell escaping routine.
+- added fox16-remove_date_from_reswrap.patch
+  to remove date from reswrap help to support build compare</comment>
+    <requestid>127770</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>a98d8a87891922c8d92613465f7bb89c</srcmd5>
+    <version>1.6.46</version>
+    <time>1348147857</time>
+    <user>coolo</user>
+    <comment>fixing devel dependencies for ScientificLinux (forwarded request 135083 from behrisch)</comment>
+    <requestid>135089</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>b98c845aaec1751f8713462540afc9f9</srcmd5>
+    <version>1.6.46</version>
+    <time>1348925513</time>
+    <user>coolo</user>
+    <comment>glu dep fix for factory (forwarded request 136307 from behrisch)</comment>
+    <requestid>136343</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e62bebf276b89a276167164adb2d7a14</srcmd5>
+    <version>1.6.47</version>
+    <time>1359017718</time>
+    <user>coolo</user>
+    <comment>- update to 1.6.47:
+  + Prototype of wndproc() was not correct for 64-bit Windows.</comment>
+    <requestid>149696</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>e62bebf276b89a276167164adb2d7a14</srcmd5>
+    <version>1.6.47</version>
+    <time>1359108887</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5ad5a298561929741a2869bd1dd372f4</srcmd5>
+    <version>1.6.49</version>
+    <time>1379327755</time>
+    <user>coolo</user>
+    <comment>- update to 1.6.49:
+  + Check index out of bounds in FXTabBook::setCurrent().</comment>
+    <requestid>199183</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>5ad5a298561929741a2869bd1dd372f4</srcmd5>
+    <version>1.6.49</version>
+    <time>1379662360</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3f4aa8024ed4f4d943d492abbf5a515e</srcmd5>
+    <version>1.6.50</version>
+    <time>1408957444</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>245755</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>3f4aa8024ed4f4d943d492abbf5a515e</srcmd5>
+    <version>1.6.50</version>
+    <time>1409300896</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>bb01699ecfc6b2d4e96de92f1c2a351e</srcmd5>
+    <version>1.6.50</version>
+    <time>1418737744</time>
+    <user>dimstar_suse</user>
+    <comment>- the -devel-static package must require the -devel-package, 
+  see https://en.opensuse.org/openSUSE:Packaging_guidelines#Exception
+
+- Use verifiable https://en.opensuse.org/SourceUrls and
+  original tarball
+- Follow shared library package naming guidelines a bit closer</comment>
+    <requestid>265248</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d33775179ce8ee739f95edc9f71c70bd</srcmd5>
+    <version>1.6.52</version>
+    <time>1479299588</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440437</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ad6f92fbe4664a152fb4b8d29fe6ad50</srcmd5>
+    <version>1.6.54</version>
+    <time>1495133500</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.54:
+  + Fix core dump using old GNU C Library or CYGWIN inside 
+    FXString::vformat.cpp.
+  + Fixed typo in FXString::vformat.cpp.</comment>
+    <requestid>495849</requestid>
+  </revision>
+</revisionlist>

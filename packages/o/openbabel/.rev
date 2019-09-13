@@ -1,0 +1,313 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>13f8e45cda68c15d9610ca7800c42977</srcmd5>
+    <version>2.1.1</version>
+    <time>1192070543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>f5eea9537294767c00253b9d1237ba34</srcmd5>
+    <version>2.1.1</version>
+    <time>1193067519</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>518c4777e3a81ec73638cc11f7e5e03b</srcmd5>
+    <version>2.2.0</version>
+    <time>1216334094</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>76c4b11d6090a582eae58f37b892709b</srcmd5>
+    <version>2.2.0</version>
+    <time>1216654172</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>6b67b8d0b4fe6f2cf2444065fc9f4219</srcmd5>
+    <version>2.2.0</version>
+    <time>1216952081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="29">
+    <srcmd5>14f9501fcbe6dce0002666fb517b9116</srcmd5>
+    <version>2.2.0</version>
+    <time>1245364982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d6e24cf1d8edcff3690327af2c0e4948</srcmd5>
+    <version>2.2.2</version>
+    <time>1248727149</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>d6e24cf1d8edcff3690327af2c0e4948</srcmd5>
+    <version>2.2.2</version>
+    <time>1248727149</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>76aeb1d213ebc6621847d992ab55d842</srcmd5>
+    <version>2.2.2</version>
+    <time>1268925203</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>76aeb1d213ebc6621847d992ab55d842</srcmd5>
+    <version>2.2.2</version>
+    <time>1278667372</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>76aeb1d213ebc6621847d992ab55d842</srcmd5>
+    <version>2.2.2</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>75dd69927dcf4bd891a0014d25332b15</srcmd5>
+    <version>unknown</version>
+    <time>1284375136</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/openbabel based on submit request 47953 from user dirkmueller
+</comment>
+    <requestid>47953</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>cfc126cb937c310778cd6a95a7eed365</srcmd5>
+    <version>2.2.3</version>
+    <time>1286490162</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/openbabel based on submit request 50002 from user dirkmueller
+</comment>
+    <requestid>50002</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>cfc126cb937c310778cd6a95a7eed365</srcmd5>
+    <version>2.2.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7789ee52cd93c3fc17d8adbe226e09e4</srcmd5>
+    <version>2.3.0</version>
+    <time>1309165252</time>
+    <user>saschpe</user>
+    <comment>- use rpm %ifarch
+
+- Updated to OpenBabel 2.3.0
+  * Completely rewritten stereochemistry perception, including support
+    for tetrahedral, square planar, and higher-order stereochemistry.
+  * Dramatically improved canonicalization algorithm (Note that in general, canonical SMILES have changed since the 2.2.x release.)
+  * 2D depiction, including SVG vector graphics generation using code from MCDL.
+  * New Spectrophore generation, contributed by Silicos NV.
+  * New ChargeMethod API including support for partial charge assignment
+    from Gasteiger, MMFF94, QEq, QTPIE methods and plugin interface for
+    adding more.
+  * Improved 3D coordinate generation.
+  * New conformer generation framework, including support for diverse
+    conformer generation and genetic algorithm lowest-energy searching.
+  * Improved user documentation.
+  * Improved aromaticity / Kekule bond assignment.
+  * Improved unit test suite using the CMake-based CTest program.
+  * Improved support for crystallographic unit cells (e.g., in CIF format).
+  * Improved UFF force field method, including hypervalent 5, 6, 7 and higher coordination numbers.
+  * Support for the GAFF (Generalized Amber Force Field) method.
+  * Support for reading geometry optimizations as multiple conformers
+    from Gaussian, GAMESS-US, and other quantum chemistry packages.
+  * Support for reading molecular orbital energies from quantum chemistry formats.
+  * Several memory leaks fixed.
+  * Fixed many compiler warnings.
+  * Fixed support for MinGW and Cygwin environments.
+  * Fixed bugs with Gaussian 09 output files.
+  * Latest released version of the InChI library (1.0.3) generating standard InChI.
+  * Many more bug fixes and small feature improvements.</comment>
+    <requestid>74447</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>1b9686142716ddcd71f716de2fc1b964</srcmd5>
+    <version>2.3.0</version>
+    <time>1309165304</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74447
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>610d260d8e5fb0d7868aaa665700d426</srcmd5>
+    <version>2.3.1</version>
+    <time>1318940642</time>
+    <user>saschpe</user>
+    <comment>- updated to OpenBabel 2.3.1
+  * Better support for unknown stereochemistry, including a &quot;wobbly&quot; bond in 2D depiction.
+  * Many fixes for rare bugs with stereochemical conversions, including unusual valences.
+  * Significantly improved 2D depiction code, improving performance and cis/trans stereochemical accuracy
+  * Added support for direct 2D depiction to PNG files using the Cairo library, if available.
+  * PNG files from Open Babel contain molecular information and can be read to give the MDL Molfile.
+  * SVG files with 2D depiction can now include a grid of molecules with embedded JavaScript to zoom and scroll.
+  * Molecular formulas now include the total charge (e.g., HCO2-)
+  * Added the EEM partial charge model from Bultinck, et. al.
+  * Fixed problems with FastSearch databases larger than 4GB, now checking for large files.
+  * Improved performance with force field minimization, particularly the UFF and GAFF methods.
+  * Several MMFF94 atom typing bugs fixed.
+  * Updated GAFF parameters from the AmberTools distribution.
+  * Improvements in 3D coordinate generation, particularly more accurate sp3 bond angles
+  * Fixed tests for auto-typing molecules with force fields when running through different isomers.
+  * Improvements in scripting bindings, particularly Python, Ruby, and Java
+  * Pybel now uses the built-in 2D depiction, and no longer needs OASA.
+  * Added initial support for MM3 atom typing with the Tinker package
+  * Significant bug fixes for the PDBQT format.
+  * Reading FASTA files can now generate 3D coordinates for single-stranded DNA in addition to the default double-strand.
+  * Support for reading/writing unit cell information from MOPAC files.
+  * Support for re-numbering SMILES by specifying the first and last atoms with -xf and -xl flags.
+  * Better support for InChI -&gt; InChI key generation by direct conversion, rather than re-perception of the InChI.
+  * Fix for rare stack overflow crash in SMARTS perception.
+  * Improved UNIX man pages.
+  * Many bug fixes and small enhancements
+  * New File Formats
+    * Import and Export:
+      * Gromacs GRO
+    * Import:</comment>
+    <requestid>88381</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>610d260d8e5fb0d7868aaa665700d426</srcmd5>
+    <version>2.3.1</version>
+    <time>1319182213</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>f89d7896602952348bbd06c5a94664b5</srcmd5>
+    <version>2.3.1</version>
+    <time>1322814464</time>
+    <user>coolo</user>
+    <comment>- determine arch suffix from _lib macro (forwarded request 94588 from oertel)</comment>
+    <requestid>94596</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>cf0ed8ece5bb72c5f9d2cacc7f948dcf</srcmd5>
+    <version>2.3.1</version>
+    <time>1323192827</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>9a9861778ffe13f64cad977362f8b299</srcmd5>
+    <version>2.3.1</version>
+    <time>1332763299</time>
+    <user>coolo</user>
+    <comment>add openbabel python bindings (forwarded request 110889 from cowsandmilk)</comment>
+    <requestid>110893</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>5836a43696bdf8b55428a370fa8bd943</srcmd5>
+    <version>2.3.1</version>
+    <time>1336580344</time>
+    <user>coolo</user>
+    <comment> (forwarded request 117014 from coolo)</comment>
+    <requestid>117040</requestid>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>5836a43696bdf8b55428a370fa8bd943</srcmd5>
+    <version>2.3.1</version>
+    <time>1340183752</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>2b8c58a1958b6e0e80f2a616c38b0bff</srcmd5>
+    <version>2.3.1</version>
+    <time>1354099307</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143303</requestid>
+  </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>2b8c58a1958b6e0e80f2a616c38b0bff</srcmd5>
+    <version>2.3.1</version>
+    <time>1359109535</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="13">
+    <srcmd5>23ce20097f9ef38042150352cfcaa323</srcmd5>
+    <version>2.3.1</version>
+    <time>1375765483</time>
+    <user>coolo</user>
+    <comment>enable CMAKE_SKIP_INSTALL_RPATH option so RPATH is ommited from install tree</comment>
+    <requestid>185983</requestid>
+  </revision>
+  <revision rev="27" vrev="15">
+    <srcmd5>23ce20097f9ef38042150352cfcaa323</srcmd5>
+    <version>2.3.1</version>
+    <time>1379663416</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="17">
+    <srcmd5>23ce20097f9ef38042150352cfcaa323</srcmd5>
+    <version>2.3.1</version>
+    <time>1409302028</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="18">
+    <srcmd5>19c3f65aabf7d300bf587f8036f8c2ed</srcmd5>
+    <version>2.3.1</version>
+    <time>1435053495</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312730</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fc4d8f0677dca0318c9659eb3648888d</srcmd5>
+    <version>2.3.2</version>
+    <time>1466326223</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402882</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>6505a43dc5c21b2cec0382dff3ae3609</srcmd5>
+    <version>2.3.2</version>
+    <time>1466501446</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403497</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f225d1e69ab7376baef3608343b5cad0</srcmd5>
+    <version>2.4.1</version>
+    <time>1519145769</time>
+    <user>dimstar_suse</user>
+    <comment>require libopenbabel5 for devel</comment>
+    <requestid>578245</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>edbf674bca7b6cb3957c9a57f8c73eba</srcmd5>
+    <version>2.4.1</version>
+    <time>1519308183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578929</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>869641ad7ab222a6e2e5f70d37ee33be</srcmd5>
+    <version>2.4.1</version>
+    <time>1526463716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607497</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>96282c28d9c6aabaefd6fd4189a0fbe8</srcmd5>
+    <version>2.4.1</version>
+    <time>1526488986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>609063</requestid>
+  </revision>
+</revisionlist>

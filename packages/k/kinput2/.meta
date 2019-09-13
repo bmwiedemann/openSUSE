@@ -1,0 +1,6 @@
+<package name="kinput2" project="openSUSE:Factory">
+  <title>Kanji Input Server for the X Window System</title>
+  <description>Kinput2 is an input server for X Window System applications that
+require Japanese text input.</description>
+  <devel project="M17N" package="kinput2"/>
+</package>

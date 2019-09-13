@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>05d6c1db22a7acd600b6f139fa69ec29</srcmd5>
+    <version>1.6.7</version>
+    <time>1338529020</time>
+    <user>coolo</user>
+    <comment>This package is needed by new WebYaST (will be submitted soon)</comment>
+    <requestid>123005</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>05d6c1db22a7acd600b6f139fa69ec29</srcmd5>
+    <version>1.6.7</version>
+    <time>1340184157</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ebeb86817434efb952d3472b61513ce</srcmd5>
+    <version>1.6.8</version>
+    <time>1344065809</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>129748</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7ebeb86817434efb952d3472b61513ce</srcmd5>
+    <version>1.6.8</version>
+    <time>1359110308</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ae78aa3a6f17557cab145aef22a16d43</srcmd5>
+    <version>1.6.10</version>
+    <time>1370432209</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>177243</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ae78aa3a6f17557cab145aef22a16d43</srcmd5>
+    <version>1.6.10</version>
+    <time>1379664505</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>ae78aa3a6f17557cab145aef22a16d43</srcmd5>
+    <version>1.6.10</version>
+    <time>1409303220</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

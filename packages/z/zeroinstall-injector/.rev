@@ -1,0 +1,212 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0eff36577bbdd76ffd2de4cf84d4b262</srcmd5>
+    <version>1.1</version>
+    <time>1310975684</time>
+    <user>saschpe</user>
+    <comment>New package see http://lists.opensuse.org/opensuse-buildservice/2011-06/msg00085.html</comment>
+    <requestid>76315</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>33618fde62444cc4d845b20a9bf346dd</srcmd5>
+    <version>1.1</version>
+    <time>1310975695</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76315
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ea92ab86c67cd79b5615f21589f569d</srcmd5>
+    <version>1.2</version>
+    <time>1313050283</time>
+    <user>saschpe</user>
+    <comment>- Updated to 1.2. For a list of changes, see:
+  http://article.gmane.org/gmane.comp.file-systems.zero-install.devel/4387</comment>
+    <requestid>78330</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7c50fc75c734aae80b101b4da91761c2</srcmd5>
+    <version>1.2</version>
+    <time>1313050297</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78330
+</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>7c50fc75c734aae80b101b4da91761c2</srcmd5>
+    <version>1.2</version>
+    <time>1319182646</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>949bcc10363991a4cb0028405ca1378e</srcmd5>
+    <version>1.4.1</version>
+    <time>1319824106</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.4.1. For a list of changes see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/4643
+
+- Updated to 1.3. For a list of changes see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/4590</comment>
+    <requestid>89575</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9420967b2d6b320e6dc0561fe87eab99</srcmd5>
+    <version>1.5</version>
+    <time>1325348431</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.5. For a list of changes see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/4754 (forwarded request 98419 from talex5)</comment>
+    <requestid>98420</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d119622d19dac574da2fcbc526ca436b</srcmd5>
+    <version>1.6</version>
+    <time>1331987031</time>
+    <user>coolo</user>
+    <comment>Updated license (forwarded request 107042 from talex5)</comment>
+    <requestid>107044</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6faa8edc6cf6a33cefcf3848705ed460</srcmd5>
+    <version>1.7</version>
+    <time>1334217603</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.7. For a list of changes see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/5493 (forwarded request 112806 from talex5)</comment>
+    <requestid>112807</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>6faa8edc6cf6a33cefcf3848705ed460</srcmd5>
+    <version>1.7</version>
+    <time>1340184419</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>246e241a94d37b0481b15d4537670416</srcmd5>
+    <version>1.9</version>
+    <time>1340897054</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.9. For a list of changes see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/6046
+
+- Updated to 1.8. For a list of changes see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/5866 (forwarded request 126366 from talex5)</comment>
+    <requestid>126367</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>08bfff732998076a609c84dc6a113335</srcmd5>
+    <version>1.10</version>
+    <time>1344173086</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.10. For a list of changes see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/6109
+- Python 3 libraries are now also installed, although the commands still
+  default to using Python 2. (forwarded request 129925 from talex5)</comment>
+    <requestid>129926</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>799e8b82af8af96748a324b72674b1b2</srcmd5>
+    <version>1.12</version>
+    <time>1348564170</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.12. For a list of changes see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/6334
+
+- Updated to 1.11. For a list of changes see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/6268 (forwarded request 135664 from talex5)</comment>
+    <requestid>135668</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>568a4d80926741d7b32f9038f73d37a8</srcmd5>
+    <version>1.13</version>
+    <time>1352717078</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.13. For a list of changes, see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/6520 (forwarded request 140804 from talex5)</comment>
+    <requestid>140805</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4235d129885050ba688926a519261290</srcmd5>
+    <version>1.14</version>
+    <time>1358417342</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.14. For a list of changes, see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/6629 (forwarded request 148422 from talex5)</comment>
+    <requestid>148427</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>4235d129885050ba688926a519261290</srcmd5>
+    <version>1.14</version>
+    <time>1359110781</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e33f4b376ee62243887828327b0ec12c</srcmd5>
+    <version>1.15</version>
+    <time>1360873163</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.15. For a list of changes, see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/6686 (forwarded request 155314 from talex5)</comment>
+    <requestid>155315</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>75fc45db9edf3dfae1a787b7f91b37b7</srcmd5>
+    <version>1.16</version>
+    <time>1361821673</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.16. For a list of changes, see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/6730 (forwarded request 156330 from talex5)</comment>
+    <requestid>156332</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>88f9d779d188f43611ccda7c31791a8f</srcmd5>
+    <version>2.0</version>
+    <time>1362733403</time>
+    <user>coolo</user>
+    <comment>- Updated to 2.0. For a list of changes in 2.0, see:
+  http://0install.net/0install-2.0.html (forwarded request 157386 from talex5)</comment>
+    <requestid>157512</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2113b0c5f9e9853f95dc971fb708640a</srcmd5>
+    <version>2.1</version>
+    <time>1365232890</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>162643</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5418eb998eb52e7de6424cf445fb97f0</srcmd5>
+    <version>2.2</version>
+    <time>1367824138</time>
+    <user>coolo</user>
+    <comment>- Updated to 2.2. For a list of changes, see:
+  http://thread.gmane.org/gmane.comp.file-systems.zero-install.devel/6876 (forwarded request 174441 from talex5)</comment>
+    <requestid>174443</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>5418eb998eb52e7de6424cf445fb97f0</srcmd5>
+    <version>2.2</version>
+    <time>1379665191</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b93051c874c412870b8021c133eec2cb</srcmd5>
+    <version>2.3.3</version>
+    <time>1380113074</time>
+    <user>coolo</user>
+    <comment>mdazke required changes (forwarded request 200434 from posophe)</comment>
+    <requestid>200437</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>b93051c874c412870b8021c133eec2cb</srcmd5>
+    <version>2.3.3</version>
+    <time>1409303876</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1db7a9aae3f94ceab63eb10cc60d9f53</srcmd5>
+    <version>0.5.4</version>
+    <time>1469081925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>412316</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6268ed3d6ac5ee1b2129d01a0f389df2</srcmd5>
+    <version>2.0.4</version>
+    <time>1503593636</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove no longer needed patches
+- add more-relaxed-requirements.patch to weaken the very harsh version requirements
+- update to version 2.0.4
+- update to singlespec
+</comment>
+    <requestid>517625</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>208eac9f6c8793752e6e1b8ef21a050f</srcmd5>
+    <version>2.0.4</version>
+    <time>1512042324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546324</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f1dbf93ea661b91b7afec9c62ccfcd88</srcmd5>
+    <version>2.0.4</version>
+    <time>1545223983</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659385</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>de70428c628195d9ddd2cd0d6987e202</srcmd5>
+    <version>2.2.1</version>
+    <time>1550220949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669134</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>414e817beb0693b0389e42dec86d996c</srcmd5>
+    <version>2.4.4</version>
+    <time>1551785211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681664</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7f126ff6ec89c815975d47571db55969</srcmd5>
+    <version>2.4.5</version>
+    <time>1558037444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703518</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6e5657a0cd22386f919dae7666d2f807</srcmd5>
+    <version>2.4.8</version>
+    <time>1564155320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718907</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>545edcb631390c7e3942bf3052078d9e</srcmd5>
+    <version>2.4.11</version>
+    <time>1568379733</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 2.4.11:
+  * Restored fs.path import
+  * Fixed potential race condition in makedirs. Fixes #310
+  * Added missing methods to WrapFS. Fixed #294
+  * MemFS now immediately releases all memory it holds when close() is called, rather than when it gets garbage collected. Closes issue #308.
+  * FTPFS now translates EOFError into RemoteConnectionError. Closes #292
+  * Added automatic close for filesystems that go out of scope. Fixes #298
+  * Fixed broken WrapFS.movedir #322
+  * Added geturl for TarFS and ZipFS for 'fs' purpose. NoURL for 'download' purpose.
+  * Added helpful root path in CreateFailed exception #340
+- remove patch more-relaxed-requirements.patch replaced by sed</comment>
+    <requestid>730453</requestid>
+  </revision>
+</revisionlist>

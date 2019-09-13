@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e20e394107df5d1052c3d6c3bc71f14</srcmd5>
+    <version>1.0.1</version>
+    <time>1561405912</time>
+    <user>dimstar_suse</user>
+    <comment>new package useful for ansible</comment>
+    <requestid>711290</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2392b3ad535e27a3105f73206c978f8e</srcmd5>
+    <version>1.0.1</version>
+    <time>1561970674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712724</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3f0bb5e054f6c49f399d7cc8870d63a7</srcmd5>
+    <version>1.0.1</version>
+    <time>1562591571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714015</requestid>
+  </revision>
+</revisionlist>

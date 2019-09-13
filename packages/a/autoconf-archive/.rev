@@ -1,0 +1,194 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb5cc78bd3ad5fd0bc73fd5bebf5e0bb</srcmd5>
+    <version>2010.10.26</version>
+    <time>1300984924</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65016 from user babelworx
+</comment>
+    <requestid>65016</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f669d26d09f79d78411725ea2fa86492</srcmd5>
+    <version>2010.10.26</version>
+    <time>1300984941</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65016
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1809a0008582eb216d41417128610a94</srcmd5>
+    <version>2010.10.26</version>
+    <time>1301303296</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65226 from user licensedigger
+</comment>
+    <requestid>65226</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>deaf26000d9adda00033b742ef201145</srcmd5>
+    <version>2010.10.26</version>
+    <time>1301303302</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65226
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>deaf26000d9adda00033b742ef201145</srcmd5>
+    <version>2010.10.26</version>
+    <time>1319181780</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>116c4ef4eb13ec96c49b95244d182843</srcmd5>
+    <version>2010.10.26</version>
+    <time>1327922627</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-GPL-3.0+-with-autoconf-exception
+Use SUSE- proprietary extension until license accepted upstream. autoconf-archive is not pure GPL-3.0+ as exceptions are involved (forwarded request 100806 from babelworx)</comment>
+    <requestid>101531</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>116c4ef4eb13ec96c49b95244d182843</srcmd5>
+    <version>2010.10.26</version>
+    <time>1340183188</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b61a5a3c6dac166915e4ccc4f53cf788</srcmd5>
+    <version>2012.11.14</version>
+    <time>1355156113</time>
+    <user>coolo</user>
+    <comment>Update to 2012.11.14 version: (forwarded request 144659 from posophe)</comment>
+    <requestid>144718</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b61a5a3c6dac166915e4ccc4f53cf788</srcmd5>
+    <version>2012.11.14</version>
+    <time>1359108677</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>00b39e071541c2448d6ffd971ace0fe1</srcmd5>
+    <version>2013.06.09</version>
+    <time>1375124324</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 184527 from posophe)</comment>
+    <requestid>184585</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>00b39e071541c2448d6ffd971ace0fe1</srcmd5>
+    <version>2013.06.09</version>
+    <time>1379662005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>00b39e071541c2448d6ffd971ace0fe1</srcmd5>
+    <version>2013.06.09</version>
+    <time>1409300533</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>50d6cf28e94fafe10959b2b450c563ec</srcmd5>
+    <version>2014.10.15</version>
+    <time>1415953098</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>257313</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d44d2b806174ebc7f856a91a24494e5b</srcmd5>
+    <version>2015.02.24</version>
+    <time>1425891813</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289282</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>8518d590c7db06098b701ea7d3af30e5</srcmd5>
+    <version>2015.02.24</version>
+    <time>1432156854</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307621</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e55e1def23439c2fecf5b99ddf50bc22</srcmd5>
+    <version>2015.09.25</version>
+    <time>1443793054</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334099</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>74ab6292d7128cc6ada7d93efab836d0</srcmd5>
+    <version>2015.09.25</version>
+    <time>1445092574</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>338124</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ff0c03f5d44398d454528e44e6651558</srcmd5>
+    <version>2016.03.20</version>
+    <time>1459237983</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378324</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>33b8405f3c8e72f186f738379e7a0634</srcmd5>
+    <version>2016.03.20</version>
+    <time>1467359757</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>382095</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>edf977ff30ded65f2e9355544dbf68e3</srcmd5>
+    <version>2016.09.16</version>
+    <time>1475480127</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>430517</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5d882b331fabd557f9eb8d2f723847fc</srcmd5>
+    <version>2017.03.21</version>
+    <time>1490965485</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 2017.03.21:</comment>
+    <requestid>482269</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>62ef9725f81dae539e7e00905bd78e43</srcmd5>
+    <version>2017.09.28</version>
+    <time>1508769358</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533741</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5da1d80d50a0341c4d32e82b95ec0b6c</srcmd5>
+    <version>2018.03.13</version>
+    <time>1521579195</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2018.03.13:
+  * Add macros packages AX_R_PACKAGE and AX_PROG_DATE
+  * updates for other macros
+- Use %license (boo#1082318) (forwarded request 588142 from AndreasStieger)</comment>
+    <requestid>588143</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3e740c2b2f79558ee27b52b87cf31d3b</srcmd5>
+    <version>2019.01.06</version>
+    <time>1549458264</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>666137</requestid>
+  </revision>
+</revisionlist>

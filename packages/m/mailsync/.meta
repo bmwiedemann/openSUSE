@@ -1,0 +1,6 @@
+<package name="mailsync" project="openSUSE:Factory">
+  <title>The Mail Sync Tool</title>
+  <description>Mailsync is a way of keeping a collection of mailboxes synchronized.
+The mailboxes may be on the local file system or on an IMAP server.</description>
+  <devel project="server:mail" package="mailsync"/>
+</package>

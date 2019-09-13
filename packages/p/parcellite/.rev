@@ -1,0 +1,239 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5590440ae10d8e8091f80844712b652f</srcmd5>
+    <version>0.9.1</version>
+    <time>1255056641</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5590440ae10d8e8091f80844712b652f</srcmd5>
+    <version>0.9.1</version>
+    <time>1255056641</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a3f2bafc66a442ccac1ee698285324af</srcmd5>
+    <version>0.9.1</version>
+    <time>1260981275</time>
+    <user>autobuild</user>
+    <comment>Copy from home:anubisg1:branches:openSUSE:Factory/parcellite based on submit request 26284 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a54db87e83f1651567a174870b6eaab1</srcmd5>
+    <version>0.9.2</version>
+    <time>1263304462</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/parcellite based on submit request 28663 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>85cb41f89683a3e864c57e8ef69bb234</srcmd5>
+    <version>0.9.2</version>
+    <time>1268925307</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8e889379aef62282cab9642b36a53143</srcmd5>
+    <version>0.9.2</version>
+    <time>1270587460</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/parcellite based on submit request 37039 from user anubisg1
+</comment>
+    <requestid>37039</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>ef34a40f29101e34944f21941ebd4554</srcmd5>
+    <version>0.9.2</version>
+    <time>1273791925</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/parcellite based on submit request 39781 from user anubisg1
+</comment>
+    <requestid>39781</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>2fa3ffdac5c8a70f1925a6baf1d0a8e2</srcmd5>
+    <version>0.9.2</version>
+    <time>1276528470</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/parcellite based on submit request 41443 from user prusnak
+</comment>
+    <requestid>41443</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>2fa3ffdac5c8a70f1925a6baf1d0a8e2</srcmd5>
+    <version>0.9.2</version>
+    <time>1278667375</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>2fa3ffdac5c8a70f1925a6baf1d0a8e2</srcmd5>
+    <version>0.9.2</version>
+    <time>1278678608</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>2fa3ffdac5c8a70f1925a6baf1d0a8e2</srcmd5>
+    <version>0.9.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>99c3f3ad57b8417394860b74b03509ba</srcmd5>
+    <version>0.9.2</version>
+    <time>1304351539</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67112</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>ccebb44796c7b0d1328ba0c5d183e1f0</srcmd5>
+    <version>0.9.2</version>
+    <time>1304351548</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67112
+</comment>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>619fab3500e2a7e6bf755af79ee32f80</srcmd5>
+    <version>0.9.2</version>
+    <time>1316447769</time>
+    <user>lrupp</user>
+    <comment>- added Patch3 (parcellite-0.9.1-ld_fix.diff) to fix the build for factory
+  (this needs a autoreconf in the %%build section) (forwarded request 82784 from Marcus_H)</comment>
+    <requestid>82792</requestid>
+  </revision>
+  <revision rev="15" vrev="16">
+    <srcmd5>619fab3500e2a7e6bf755af79ee32f80</srcmd5>
+    <version>0.9.2</version>
+    <time>1319182229</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>be163411a774d7785c3d19b2ba9f8594</srcmd5>
+    <version>0.9.2</version>
+    <time>1323185014</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94822 from coolo)</comment>
+    <requestid>94827</requestid>
+  </revision>
+  <revision rev="17" vrev="18">
+    <srcmd5>8f8b17ec8a61a7130eaeebcd749bbc7f</srcmd5>
+    <version>0.9.2</version>
+    <time>1323192957</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="19">
+    <srcmd5>14e3a709aa240023b5be1479d32fdb83</srcmd5>
+    <version>0.9.2</version>
+    <time>1329242679</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103889</requestid>
+  </revision>
+  <revision rev="19" vrev="21">
+    <srcmd5>14e3a709aa240023b5be1479d32fdb83</srcmd5>
+    <version>0.9.2</version>
+    <time>1340183777</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>79dbf2e183e1e4b1d1e06ab4c191b5e5</srcmd5>
+    <version>1.0.2rc5</version>
+    <time>1356082296</time>
+    <user>coolo</user>
+    <comment>new upstream version </comment>
+    <requestid>146103</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>79dbf2e183e1e4b1d1e06ab4c191b5e5</srcmd5>
+    <version>1.0.2rc5</version>
+    <time>1359109573</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1c81fade69c20802d0aa0edf2a648238</srcmd5>
+    <version>1.1.6</version>
+    <time>1379002173</time>
+    <user>scarabeus_factory</user>
+    <comment>update version 1.1.6 (forwarded request 198440 from MargueriteSu)</comment>
+    <requestid>198621</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>1c81fade69c20802d0aa0edf2a648238</srcmd5>
+    <version>1.1.6</version>
+    <time>1379663504</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>be8d514359a594881b1f65729b6ca7a0</srcmd5>
+    <version>1.1.7</version>
+    <time>1395750294</time>
+    <user>coolo</user>
+    <comment>New upstream version 1.1.7 (forwarded request 227201 from jcsl)</comment>
+    <requestid>227202</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>31d7c64a9db1663f21f2199f4fd9ca88</srcmd5>
+    <version>1.1.7</version>
+    <time>1396174409</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated Spanish translation
+  * added parcellite-1.1.7-Spanish-translation-update.patch (forwarded request 228137 from jcsl)</comment>
+    <requestid>228138</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>913ae716c6b31a73313cbd03ec4325a7</srcmd5>
+    <version>1.1.8</version>
+    <time>1407265856</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243594</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>09ff973192296d770032db8a2a4b9cfd</srcmd5>
+    <version>1.1.8</version>
+    <time>1407485434</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>243873</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>09ff973192296d770032db8a2a4b9cfd</srcmd5>
+    <version>1.1.8</version>
+    <time>1409302113</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>52c006dcc853193a7076ca07d4bd83bb</srcmd5>
+    <version>1.1.9</version>
+    <time>1412533876</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253677</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>63fbd5e7d1798d12bac5bb68c8dbe5f9</srcmd5>
+    <version>1.1.9</version>
+    <time>1416823713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>262300</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c32d52642c65ba36488bd0ccf47e3d80</srcmd5>
+    <version>1.2.1</version>
+    <time>1510660178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539565</requestid>
+  </revision>
+</revisionlist>

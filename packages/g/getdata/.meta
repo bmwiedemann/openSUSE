@@ -1,0 +1,8 @@
+<package name="getdata" project="openSUSE:Factory">
+  <title>Library for reading and writing dirfile data</title>
+  <description>The GetData Project is the reference implementation of the Dirfile Standards, a
+filesystem-based database format for time-ordered binary data. The Dirfile
+database format is designed to provide a fast, simple format for storing and
+reading data.</description>
+  <devel project="KDE:Extra" package="getdata"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="liberation-fonts" project="openSUSE:Factory">
+  <title>Liberation Fonts</title>
+  <description>Free fonts which are metric compatible to &quot;Arial&quot;, &quot;Times New Roman&quot;
+and &quot;Courier New&quot;.</description>
+  <devel project="M17N:fonts" package="liberation-fonts"/>
+</package>

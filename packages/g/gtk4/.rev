@@ -1,0 +1,181 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>202653a67a8addc755f2f43827714547</srcmd5>
+    <version>3.89.1</version>
+    <time>1485041059</time>
+    <user>dimstar_suse</user>
+    <comment>Resolve file conflict with GTK3</comment>
+    <requestid>445169</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4af02c53717ef21453482d546ff768c0</srcmd5>
+    <version>3.89.2</version>
+    <time>1485682592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451937</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3297ac52d4ed42100f13c73c79f08b9f</srcmd5>
+    <version>3.89.4</version>
+    <time>1487592870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457392</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d1d13f9bce2b24ff31b713a6d643c91</srcmd5>
+    <version>3.89.5</version>
+    <time>1490220169</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 479231 from dimstar)</comment>
+    <requestid>479344</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6b62bb2e02e3b13e1ffe9ad758f04e75</srcmd5>
+    <version>3.90.0</version>
+    <time>1493455711</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 489117 from Zaitor)</comment>
+    <requestid>490192</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9ac87f617849296a2aa0e4a4a257c412</srcmd5>
+    <version>3.91.2</version>
+    <time>1505331555</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>520656</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e45a99040f887be36f0127b9a370ccee</srcmd5>
+    <version>3.91.2</version>
+    <time>1505507514</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the SLE12 / Leap42 build_wayland_backend conditional, build
+  with wayland unconditionally. (forwarded request 526163 from zhangxiaofei)</comment>
+    <requestid>526321</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f623939d4a770e4a0a81bb7ef33e4f75</srcmd5>
+    <version>3.92.1</version>
+    <time>1510660171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.92.1:
+  + Drop autotools support. Meson 0.42.1 is now required
+  + Implement most of CSS3 font-variant
+  + Add an Emoji chooser to GtkEntry
+  + Add new input hints for Emoji input
+  + Remaining widgets have been ported to GtkSnapshot
+  + GtkLabel and GtkEntry have been ported to use GSK
+  + Add a way for GtkOverlay to blur behind children. This is has a
+    demo in gtk4-demo
+  + Add support for native file choosers on older OS X versions
+  + Add support for libcloudproviders in GtkPlacesSidebar
+  + Non-windowed widgets are now allowed to have a size of 0x0
+  + Allow tiled windows to be resized. Under wayland, this uses
+    version 2 of the gtk-shell protocol. Under X, it uses the
+    _GTK_EDGE_CONSTRAINTS property
+  + Input handling changes
+    - GdkEvent has new accessors for fields
+    - Traditional event signals (eg ::key-press-event) are now emitted from
+      an event controller
+    - Most widgets inside gtk have stopped using traditional event signals
+    - GDK_SEAT_CAPABILITY_ALL_POINTING now includes touch events
+  + Scrollbars allow middle-click to jump to a position again
+  + Bugs fixed: bgo#639931, bgo#644248, bgo#701296, bgo#705640,
+    bgo#728452, bgo#763517, bgo#766909, bgo#773299, bgo#775074,
+    bgo#775126, bgo#778382, bgo#778811, bgo#780750, bgo#780758,
+    bgo#781757, bgo#782981, bgo#783649, bgo#783669, bgo#784016,
+    bgo#784421, bgo#785210, bgo#785306, bgo#785736, bgo#786144,
+    bgo#786209, bgo#786400, bgo#786469, bgo#786485, bgo#786492,
+    bgo#786553, bgo#786613, bgo#786673, bgo#786794, bgo#786885,
+    bgo#786931, bgo#786932, bgo#786938, bgo#786940, bgo#786956,</comment>
+    <requestid>539478</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ea44a07d7ec7e60e4edaf4134c3cbaaf</srcmd5>
+    <version>3.92.1</version>
+    <time>1514679238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560576</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>627b8fa5d476fbc1de2231a8ea4436c5</srcmd5>
+    <version>3.93.0</version>
+    <time>1517668957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.93.0:
+  + GdkScreen has been removed. All screen-related APIs have
+    equivalents in GdkDisplay.
+  + GdkVisual has been removed.
+  + GdkDeviceManager has been replaced by GdkSeat.
+  + Clipboard handling has been moved from GTK to GDK, and has been
+    modernized to provide an extensible, asynchronous, stream-based
+    API.
+  + The GdkCursor API has been modernized.
+  + Settings and window-state changes have been converted from
+    events to signals on GdkDisplay and GdkWindow, respectively.
+  + GdkEvent has been converted to an opaque GObject.
+  + The GL renderer in GSK has been substantially completed, and is
+    now on par with the Vulkan renderer.
+  + The use of GdkPixbuf in APIs has been reduced, and the
+    GskTexture object has been moved to GDK as GdkTexture, to take
+    its place.
+  + The handling of icon sizes has been changed.
+  + Bugs fixed: bgo#668590, bgo#773299, bgo#775279, bgo#777072,
+    bgo#779009, bgo#779862, bgo#783995, bgo#784314, bgo#785176,
+    bgo#785210, bgo#786123, bgo#787089, bgo#787128, bgo#787142,
+    bgo#787665, bgo#788841, bgo#788898, bgo#789054, bgo#789134,
+    bgo#789149, bgo#789160, bgo#789163, bgo#789198, bgo#789213,
+    bgo#789327, bgo#789357, bgo#789678, bgo#789733, bgo#789777,
+    bgo#789870, bgo#790029, bgo#790031, bgo#790171, bgo#790201,
+    bgo#790287, bgo#790489, bgo#790920, bgo#790963, bgo#791062,
+    bgo#791176, bgo#791281, bgo#791363, bgo#791549, bgo#791650,
+    bgo#791926, bgo#791927.
+  + Updated translations.
+- Drop gtk4-return-nonvoid.patch: fixed upstream. (forwarded request 571064 from dimstar)</comment>
+    <requestid>572146</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>00397297cea061069e49770d67ac3cae</srcmd5>
+    <version>3.93.0</version>
+    <time>1521052582</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583493 from dimstar)</comment>
+    <requestid>584660</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>d77f6c2cce569792ac960492536f26b5</srcmd5>
+    <version>3.93.0</version>
+    <time>1521716938</time>
+    <user>dimstar_suse</user>
+    <comment>t-u-u / boo#1086036 (forwarded request 589299 from dimstar)</comment>
+    <requestid>589990</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>1186f687ad74e41d58bc0832ebc4e836</srcmd5>
+    <version>3.93.0</version>
+    <time>1535123427</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix package name to be uniform immodules -&amp;gt; immodule bsc#1104264 (forwarded request 630761 from scarabeus_iv)</comment>
+    <requestid>630916</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b97b2f0e70cddd6500d94be2e30c103f</srcmd5>
+    <version>3.94.0</version>
+    <time>1538117620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638615</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6552a73a9d11392a2cc7c1ae3e3475ae</srcmd5>
+    <version>3.94.0</version>
+    <time>1556916334</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695565 from dimstar)</comment>
+    <requestid>695737</requestid>
+  </revision>
+</revisionlist>

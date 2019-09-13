@@ -1,0 +1,704 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e37579f2d85c00ca41629f4087486cdc</srcmd5>
+    <version>0.8.3_git201110131555</version>
+    <time>1331039184</time>
+    <user>coolo</user>
+    <comment>Resubmission of Plymouth after comments from darix. Things should now be in a good shape</comment>
+    <requestid>107559</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ffd18d99843011ff08450029b451c2c4</srcmd5>
+    <version>0.8.4</version>
+    <time>1332757086</time>
+    <user>coolo</user>
+    <comment>Update to 0.8.4 final. Resolves the issue of splash not showing on shutdown</comment>
+    <requestid>111026</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>eab52823c11e8a5fd85a2d38ab7cf1b5</srcmd5>
+    <version>0.8.4</version>
+    <time>1333026231</time>
+    <user>coolo</user>
+    <comment>Small changes to be more user friendly. Ensure that the right kernel option is selected so that users will see the plymouth splash</comment>
+    <requestid>111827</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0b7c2ef3ac513c222f44f44258d4905f</srcmd5>
+    <version>0.8.4</version>
+    <time>1334216774</time>
+    <user>coolo</user>
+    <comment>This submit fixes the wrong license file in the branding-opensuse.  It would be great if this update for plymouth could still be included in M3. It has two major changes: The first change is that we now have text support in the initrd and we are able to send messages to users when required (e.g. when asking for password, etc. The second one is that the package now contains an openSUSE theme that fits better with the 12.2 artwork. </comment>
+    <requestid>113079</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>6616796a7a3cf3225b0ceb555d03f033</srcmd5>
+    <version>0.8.4</version>
+    <time>1334745295</time>
+    <user>coolo</user>
+    <comment>Correct the theme name in the post install script of
+plymouth-branding-openSUSE (forwarded request 114125 from gary_lin)</comment>
+    <requestid>114170</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>8eaabbee56767a004a1c0a4828edf108</srcmd5>
+    <version>0.8.4</version>
+    <time>1336580415</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116825</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>1a01fb65453602077506c6ab2689eb4c</srcmd5>
+    <version>0.8.4</version>
+    <time>1337005077</time>
+    <user>coolo</user>
+    <comment>bnc#761403 (forwarded request 120738 from ketheriel)</comment>
+    <requestid>120751</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>633ec57be26db5fb7d2c4be2a12836a8</srcmd5>
+    <version>0.8.4</version>
+    <time>1337578188</time>
+    <user>coolo</user>
+    <comment>Using an adjusted script to make it easier for the user to rebuild the initrd when setting a new theme.</comment>
+    <requestid>121293</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>cca10a46962ae6b3c572da6dccb05c4c</srcmd5>
+    <version>0.8.4</version>
+    <time>1337667479</time>
+    <user>coolo</user>
+    <comment>Latest update for Plymouth. With this Plymouth should be in the right shape to make it default instead of bootsplash/splashy. Fixed the latest bug reported by tigerfoot as reported on IRC and I am ready for plymouth to be the default</comment>
+    <requestid>121679</requestid>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>ebdf294728ec328af0db1bbe1377457b</srcmd5>
+    <version>0.8.4</version>
+    <time>1338528174</time>
+    <user>coolo</user>
+    <comment>Add missing Requires to branding-openSUSE (forwarded request 122949 from vuntz)</comment>
+    <requestid>122988</requestid>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>bf2ec5204e18c13691d352378a546093</srcmd5>
+    <version>0.8.4</version>
+    <time>1338890579</time>
+    <user>coolo</user>
+    <comment>Create the correct default setup so that we have a plymouth bootsplash after installing openSUSE</comment>
+    <requestid>123570</requestid>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>4200bd7a29a83a5cd203b468249d2ad0</srcmd5>
+    <version>0.8.4</version>
+    <time>1339477790</time>
+    <user>coolo</user>
+    <comment>- if we provide bootsplash, we should also make sure to obsolete
+  its version</comment>
+    <requestid>124421</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>4200bd7a29a83a5cd203b468249d2ad0</srcmd5>
+    <version>0.8.4</version>
+    <time>1340184007</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>a1fbfba2f16053442b11d8831b5edee6</srcmd5>
+    <version>0.8.4</version>
+    <time>1340620949</time>
+    <user>coolo</user>
+    <comment>- disable plymouth if init is not systemd (could be e.g. /bin/sh or
+  sysvinit then) (forwarded request 125621 from lnussel)</comment>
+    <requestid>125662</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c409c55200a19a4ef08faad931621a8d</srcmd5>
+    <version>0.8.5.1</version>
+    <time>1340976101</time>
+    <user>coolo</user>
+    <comment>Update to the latest version. This addresses some of the indications from end-users where plymouth did not start with the right KMS setup. This was tested and the new version resolves this. (described in bnc#769209 and bnc#769397). The new version also provides the systemd integration, but is being removed as that this integration is currently still provided by the systemd package itself. It would be good if we could still have this in 12.2</comment>
+    <requestid>126610</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>9b1b3d4f0de9041b3dbbadd082921310</srcmd5>
+    <version>0.8.5.1</version>
+    <time>1341316897</time>
+    <user>coolo</user>
+    <comment>- Provides systemd units, instead of relying on systemd to ship
+  them (bnc#769397).
+- Ensure plymouth--wait-quit.service conflicts with
+  graphical.target. (forwarded request 126896 from fcrozat)</comment>
+    <requestid>126933</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>2455371a1d419c913f891fef05164e35</srcmd5>
+    <version>0.8.5.1</version>
+    <time>1341820913</time>
+    <user>coolo</user>
+    <comment>- don't require intel_drm on ppc (forwarded request 127337 from k0da)</comment>
+    <requestid>127349</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>285ec2c4b4c292588cc35fa6af96e1d9</srcmd5>
+    <version>0.8.6.1</version>
+    <time>1343136819</time>
+    <user>coolo</user>
+    <comment>- Update to 0.8.6.1:
+ + Fix systemd path file generation
+- Changes from 0.8.6:
+ + fix flush_area fast-path
+ + seed random number generator by default for script plugins
+ + allow plymouth to be built without gtk dependency
+ + cope with lack of /etc/os-release better
+ + pull in systemd unit files (bnc#770890)
+ + add support for new &quot;updates&quot; mode for doing package updates
+  (only available for some plugins at the moment)
+- Add plymouth-restore-suspend.patch: revert commit removing
+  suspend/resume support, needed for suspend package.
+- Add plymouth-systemd-target.patch: add missing symlinks to start
+  plymouth on shutdown / reboot / kexec (bnc#770764).
+- Add plymouth-udevadm-path.patch: adapt to udevadm path on
+  openSUSE.
+- Ensure systemctl daemon-reload is called in post / postun
+- Add systemd-no-warning.patch: remove Documentation tag not
+  handled by systemd v44.
+- Update stop-graphical.patch to correct prevent plymouth.quit to
+  start under runlevel 5 (handled by xdm initscript directly). (forwarded request 128720 from fcrozat)</comment>
+    <requestid>128725</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>8ae2b37c2f02fd5b26a28fe03e25735a</srcmd5>
+    <version>0.8.6.1</version>
+    <time>1344065047</time>
+    <user>coolo</user>
+    <comment>- Ship /etc/os-release in the initrd so that the pretty name is
+  displayed in text-splash mode
+- Give the text-splash some SUSE-typical green coloring (forwarded request 129223 from jengelh)</comment>
+    <requestid>129260</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>7a0a0ca01511cee61d50bbee1a9320ba</srcmd5>
+    <version>0.8.6.1</version>
+    <time>1344418116</time>
+    <user>coolo</user>
+    <comment>- remove suspend dependency on ARM (forwarded request 130089 from dirkmueller)</comment>
+    <requestid>130167</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>fb0ce9b24b9e18e73d1ea4b27e8500fb</srcmd5>
+    <version>0.8.6.1</version>
+    <time>1344455815</time>
+    <user>coolo</user>
+    <comment>- Add plymouth-fix-systemd-service.patch: remove dashes next to
+  semi-colons, it confuses systemd. (bnc#774400)
+- Update suse-initrd-support to not start plymouth if kernel
+  cmdline contains &quot;shell&quot; or &quot;plymouth.enable=0&quot; or
+  &quot;rd.plymouth=0&quot;. (forwarded request 130416 from fcrozat)</comment>
+    <requestid>130419</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>96b3ad4971582d1ec0771125e2b7ff92</srcmd5>
+    <version>0.8.6.1</version>
+    <time>1345973616</time>
+    <user>namtrac</user>
+    <comment>- Add plymouth-after-udev-settle.patch: ensure plymouth is started
+  after udev triggers has been started (git + name change due to
+  systemd &lt; 183 in openSUSE 12.2). (forwarded request 131368 from fcrozat)</comment>
+    <requestid>131391</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b954ac4d27fb0e051f3eb168fd45be2b</srcmd5>
+    <version>0.8.7</version>
+    <time>1349673400</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137344</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b3465cd3a80b5c1e32f4e84c71e91547</srcmd5>
+    <version>0.8.7</version>
+    <time>1350044464</time>
+    <user>coolo</user>
+    <comment>Update to plymouth to resolve two issues. First one is regarding pango reporting in the initrd that it can not find fonts and the second one to prevent issues with the DM not able to detect/kill plymouth</comment>
+    <requestid>137860</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>c91741dc60945793ee67c5ec39ad61ae</srcmd5>
+    <version>0.8.7</version>
+    <time>1350451309</time>
+    <user>coolo</user>
+    <comment>Minor update to be compliant with fontconfig 2.10</comment>
+    <requestid>138315</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2dce2d023bc665e481d08b389a52b0d2</srcmd5>
+    <version>0.8.8_git201211022126</version>
+    <time>1352407920</time>
+    <user>namtrac</user>
+    <comment>Dracut scripts (forwarded request 140489 from tittiatcoke)</comment>
+    <requestid>140490</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>781f710e4b8a1572767171ea7020f7e9</srcmd5>
+    <version>0.8.8_git201211022126</version>
+    <time>1352969050</time>
+    <user>coolo</user>
+    <comment>- fix path to systemd-tty-ask-password-agent for newer systemd
+- create the pid file again during boot, the existence of this is
+  a condition for systemd-ask-password-plymouth.service. A proper
+  fix might look different but that get's it going again. (forwarded request 141258 from seife)</comment>
+    <requestid>141259</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>948e2f71e1616e2733d6488b850ff8df</srcmd5>
+    <version>0.8.8_git201211022126</version>
+    <time>1355914284</time>
+    <user>coolo</user>
+    <comment>Patch dropped and added a check to install the right version of the plymouth-scripts package (bnc#793400)</comment>
+    <requestid>145764</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>948e2f71e1616e2733d6488b850ff8df</srcmd5>
+    <version>0.8.8_git201211022126</version>
+    <time>1359109933</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>6aa49719e82865731e3d32e525f47a96</srcmd5>
+    <version>0.8.8_git201211022126</version>
+    <time>1360230385</time>
+    <user>coolo</user>
+    <comment>( please forward to Factory AND 12.3)
+- Rename plymouth-sd-notforking.patch to fix typo in patch name
+- Add plymouth-change-service-name.patch: fix incorrect service
+  names used for dependencies. Now use systemd-reboot.service
+  (replacing reboot.service) and display-manager.service (replacing
+  prefdm.service). (forwarded request 151492 from fcrozat)</comment>
+    <requestid>151515</requestid>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>8b12a55ddb64bf5fcfa9f14e7379c4fd</srcmd5>
+    <version>0.8.8_git201211022126</version>
+    <time>1362131642</time>
+    <user>coolo</user>
+    <comment>Improved %post scripts for when triggered within the build environment. Also it will use not /run/plymouth instead of /var/run</comment>
+    <requestid>156887</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>17612da208965371a77a3fdc171e0fb9</srcmd5>
+    <version>0.8.8_git201304161248</version>
+    <time>1367487100</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>173868</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>1d97cacdb7a61ec2488191afe832ba9f</srcmd5>
+    <version>0.8.8_git201304161248</version>
+    <time>1368508294</time>
+    <user>coolo</user>
+    <comment>- Not only reboot.service is prefixed with systemd- currently
+  but also kexec,halt,poweroff. (forwarded request 175211 from elvigia)</comment>
+    <requestid>175307</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>e7b13812ad718bd30c0660c5e2fdf226</srcmd5>
+    <version>0.8.8_git201304161248</version>
+    <time>1371148268</time>
+    <user>coolo</user>
+    <comment>- Add plymouth-close: do not try to close negative fd.
+- Add plymouth-close-unredirect.patch: do not leak fd when stopping
+  redirection of /dev/console (bnc#811185)
+- Add plymouth-redirect-null.patch: redirect plymouth standard io
+  to /dev/null (bnc#811185)
+- Add plymouth-exit-code.patch: ignore exit code in ExecStartPost.
+- Add plymouth-terminal-session-close.patch: do no try to close
+  terminal session fd if already closed. (forwarded request 178568 from fcrozat)</comment>
+    <requestid>178587</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>3d694445d447ad500e176f3db68a2a55</srcmd5>
+    <version>0.8.8_git201304161248</version>
+    <time>1371544499</time>
+    <user>coolo</user>
+    <comment>- own %{_localstatedir}/log/boot.log
+  and %{_localstatedir}/spool/plymouth/boot.log (as %ghost s) (forwarded request 179217 from elvigia)</comment>
+    <requestid>179312</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>3d8fea0385483f0fa31bf4366e40e4ab</srcmd5>
+    <version>0.8.8_git201304161248</version>
+    <time>1372438528</time>
+    <user>coolo</user>
+    <comment>- Require pigz instead of gzip 
+- ensure plugin requires are versioned. (forwarded request 181201 from elvigia)</comment>
+    <requestid>181228</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>25ecf4e3e6a4dbdc98d351d086c1afff</srcmd5>
+    <version>0.8.8_git201304161248</version>
+    <time>1375370076</time>
+    <user>coolo</user>
+    <comment>Remove an ugly sed routine with a proper upstream patch.</comment>
+    <requestid>185459</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5e5fdeb4233769e0908466948d277ba8</srcmd5>
+    <version>0.8.8_git201308011340</version>
+    <time>1375450106</time>
+    <user>coolo</user>
+    <comment>Update to a newer snapshot which reduces the number of patches in the package. Also this one resolves a possible issue regarding the non-existing prefdm.service</comment>
+    <requestid>185541</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>07d191117195db0b5d7022892fd8fbd5</srcmd5>
+    <version>0.8.8_git201308011340</version>
+    <time>1376857658</time>
+    <user>scarabeus_factory</user>
+    <comment>Pre require plymouth from plymouth-scripts; (bnc#806388). (forwarded request 195439 from lmuelle)</comment>
+    <requestid>195471</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>159fd495b5d6de6c88d4c47db98f4248</srcmd5>
+    <version>0.8.8_git201309032142</version>
+    <time>1378897512</time>
+    <user>coolo</user>
+    <comment>- version 0.8.8_git201309032142
+- All device specific code has been removed because the kernel
+  has been fixed in the meanwhile so plymouth no longer requires
+  libdrm_intel, libdrm_radeon, libdrm_nouveau and can use the generic
+  interface.
+  This commit does not add any new features or bugfixes but removes
+  a huge chunk of unnecessary code. (forwarded request 198402 from elvigia)</comment>
+    <requestid>198404</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>159fd495b5d6de6c88d4c47db98f4248</srcmd5>
+    <version>0.8.8_git201309032142</version>
+    <time>1379664041</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>dfc4318d5aea113abfc0f9bc525fc58b</srcmd5>
+    <version>0.8.8_git201309032142</version>
+    <time>1380297436</time>
+    <user>coolo</user>
+    <comment>- disable plymouth in initrd if the root volume is encrypted. This
+  is a workaround until plymouth is able to handle the prompt
+  correctly (bnc#834063). (forwarded request 200841 from lnussel)</comment>
+    <requestid>201046</requestid>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>cef36f6fdb76df37ad5dc1d0c12a6308</srcmd5>
+    <version>0.8.8_git201309032142</version>
+    <time>1387452478</time>
+    <user>coolo</user>
+    <comment>- Add powerpc64le-linux support. (forwarded request 211264 from uweigand)</comment>
+    <requestid>211268</requestid>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>7f17acc3afe85e2e8cc1ae40d65df14a</srcmd5>
+    <version>0.8.8_git201309032142</version>
+    <time>1392448470</time>
+    <user>coolo</user>
+    <comment>- Add patch
+  0001-Make-plymouthd-real-daemon-and-save-old-log.patch
+  all daemons should call setsid(2) to become a real daemons without
+  controlling terminal.  Beside this the old boot log will help for
+  debugging and for support.</comment>
+    <requestid>222045</requestid>
+  </revision>
+  <revision rev="45" vrev="7">
+    <srcmd5>461afe56803b61b0616ef77f481655b5</srcmd5>
+    <version>0.8.8_git201309032142</version>
+    <time>1399906382</time>
+    <user>coolo</user>
+    <comment>remove mkinitrd support (directly in factory as devel prj can't be submitted atm)</comment>
+  </revision>
+  <revision rev="46" vrev="9">
+    <srcmd5>461afe56803b61b0616ef77f481655b5</srcmd5>
+    <version>0.8.8_git201309032142</version>
+    <time>1409302716</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>799b32fc213e58b497a45edf541d3bbb</srcmd5>
+    <version>0.9.0</version>
+    <time>1411927142</time>
+    <user>coolo</user>
+    <comment>- Update 0001-let-it-become-a-real-daemon.patch to call setsid 
+  only from the child process.
+
+- Add 0001-let-it-become-a-real-daemon.patch to make plymouth
+  a real daemon, fixes part of bnc#889757. Patch by Werner.
+
+- Add plymouth-boot-vga-framebuffer.patch to fix boot_vga
+  problem with framebuffer devices. (bnc#886211)
+
+- Modify plymouth-ignore-cirrusdrm.patch to return as
+  early as possible. Patch by glin@suse.com
+
+- Invert the logic in plymouth-ignore-cirrusdrm.patch bnc#890516
+
+- Add
+  0001-text-step-bar-use-correct-utf-8-multibyte-sequence-f.patch:
+  fix incorrect UTF-8 code used for square [bnc#886148].
+
+- Add plymouth-ignore-cirrusdrm.patch: ignore cirrus drm and use fb
+  instead [bnc#888590]
+
+- Add
+  0001-seat-be-a-little-more-forgiving-in-the-case-there-s-.patch:
+  Be more forgiving with empty seat.
+
+- Update 0001-Some-greenish-openSUSE-colors.patch to also use SUSE
+  colors on tribar [bnc#886148]
+
+- Add
+  0001-libply-splash-core-also-monitor-for-file-removal-in-.patch:</comment>
+    <requestid>252285</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>80c27e2545124866d13af38974dea2de</srcmd5>
+    <version>0.9.0</version>
+    <time>1415866596</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260743</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>30013b33c71828bb8d114bb61bbd8508</srcmd5>
+    <version>0.9.0</version>
+    <time>1443357117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>332679</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>26f5fac2c7c4de4a0a472089618ef165</srcmd5>
+    <version>0.9.0</version>
+    <time>1450471977</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349034</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>b47e14d45ee1eebb5e96aeac3577600b</srcmd5>
+    <version>0.9.2</version>
+    <time>1453280041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353462</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>fdf8f651dc6dc90c33451c53d99d787d</srcmd5>
+    <version>0.9.2</version>
+    <time>1455610693</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358386</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>5ce4d2adc9b560d57f6a1fe8e6560254</srcmd5>
+    <version>0.9.2+git20161215.18dd755</version>
+    <time>1485597655</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch which causes breakage with systemd-vconsole-setup (bsc#1020327):
+  * 0001-let-it-become-a-real-daemon.patch
+- Add upstream patch to fix crash on boot:
+  * 0001-device-manager-handle-NULL-renderer-better.patch
+- Replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch
+  with single patch:
+  * only_use_fb_for_cirrus_bochs.patch (forwarded request 452722 from favogt)</comment>
+    <requestid>452822</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>4a614bcb9e1653197c48f22f662e4d83</srcmd5>
+    <version>0.9.2+git20161215.18dd755</version>
+    <time>1485862258</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453403</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>fd04a8711368b36576e1c3299a86a151</srcmd5>
+    <version>0.9.2+git20170424.6fd5c6b</version>
+    <time>1497602919</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503783</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>40cd72a45baffea36da4eb1ccb6821d9</srcmd5>
+    <version>0.9.2+git20170424.6fd5c6b</version>
+    <time>1512765978</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548021</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>043330623656c99e91c0b10d2056f36d</srcmd5>
+    <version>0.9.3+git20171130.fa66a5b</version>
+    <time>1513851710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558604</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>bfb3deaf0d0b71a5e50d95a812157dba</srcmd5>
+    <version>0.9.3+git20171220.6e9e95d</version>
+    <time>1516880272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568053</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>2d91e30a3b6439db8a5152e388ea2b52</srcmd5>
+    <version>0.9.3+git20171220.6e9e95d</version>
+    <time>1524237819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597605</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>839d345057c79a9e1bf1a8f2b928fbac</srcmd5>
+    <version>0.9.3+git20171220.6e9e95d</version>
+    <time>1533631830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627433</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>f1deb6e05dafb9dedbc14f2949e36bfb</srcmd5>
+    <version>0.9.3+git20180827.0a66272</version>
+    <time>1536094038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632215</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>deb9cb239a34f9a515204722c4771be9</srcmd5>
+    <version>0.9.3+git20181016.a588b3f</version>
+    <time>1540447779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642933</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>ec300cfa2ec31f3591afabc520810a2c</srcmd5>
+    <version>0.9.4+git20181105.f898586</version>
+    <time>1541666571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646578</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>557e147cacb77dc25b8581889e0fc04f</srcmd5>
+    <version>0.9.4+git20181111.118c5ca</version>
+    <time>1542579719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648731</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>efa59530835380ed5fbdd53387e19435</srcmd5>
+    <version>0.9.4+git20181122.aaa140b</version>
+    <time>1543399762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651373</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>452c6756146babcbf77f21a2c8523c49</srcmd5>
+    <version>0.9.4+git20181129.a7ec3e6</version>
+    <time>1543999011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652589</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>f6550c424de2e7bbd5340d75a84f322e</srcmd5>
+    <version>0.9.4+git20181204.0cd0613</version>
+    <time>1544441243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>654615</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>92aaecda1f5ce79f7ed2c0c4b208a152</srcmd5>
+    <version>0.9.4+git20181209.f7d5bb1</version>
+    <time>1545866569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657395</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>cbf04ad2843a51c46e6df890deb25d0b</srcmd5>
+    <version>0.9.4+git20181219.c8f1256</version>
+    <time>1546946112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662410</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>f7e2cb761c325b9a36b56e95c314a30f</srcmd5>
+    <version>0.9.4+git20190304.ed9f201</version>
+    <time>1552571839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684303</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>12053f0e454f6d2d84773d62becb4698</srcmd5>
+    <version>0.9.4+git20190304.ed9f201</version>
+    <time>1553635676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688054</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>8af4816739b56c823c149371ff339653</srcmd5>
+    <version>0.9.4+git20190325+b9f2aac</version>
+    <time>1553809497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689023</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>858117ee742f1b2b7166662bf3a639ce</srcmd5>
+    <version>0.9.4+git20190325+b9f2aac</version>
+    <time>1554833871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692356</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>0eb9f5531b8d3e21541c9c894f97f4c8</srcmd5>
+    <version>0.9.4+git20190325+b9f2aac</version>
+    <time>1560862444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709945</requestid>
+  </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>8877fe93f0db00fe26aa11d52e1eec4d</srcmd5>
+    <version>0.9.4+git20190325+b9f2aac</version>
+    <time>1561970578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712182</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>b8acf31bdc1ffa9715284084d600e0e6</srcmd5>
+    <version>0.9.4+git20190612+9359382</version>
+    <time>1564996729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720963</requestid>
+  </revision>
+</revisionlist>

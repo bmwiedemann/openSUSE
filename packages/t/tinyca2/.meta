@@ -1,0 +1,19 @@
+<package name="tinyca2" project="openSUSE:Factory">
+  <title>A Graphical Tool for Managing a Certification Authority</title>
+  <description>TinyCA is a graphical tool to manage a small Certification Authority
+(CA) using openssl.
+
+TinyCA supports - creation and revocation of x509 - S/MIME
+   certificates.
+
+- PKCS#10 requests.
+
+- exporting certificates as PEM, DER, TXT, and PKCS#12.
+
+- server certificates for use in web servers, email servers, IPsec,
+   and more.
+
+- client certificates for use in web browsers, email clients, IPsec,
+and more.</description>
+  <devel project="security" package="tinyca2"/>
+</package>

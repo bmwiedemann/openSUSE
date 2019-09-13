@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e6c8abe336200538f64efa00666281b</srcmd5>
+    <version>2.9</version>
+    <time>1531135630</time>
+    <user>dimstar_suse</user>
+    <comment>qtest extracts inline unit tests written using a special syntax in
+comments. Those tests are then run using the oUnit framework and the
+qcheck library. The possibilities range from trivial tests -- extremely
+simple to use -- to sophisticated random generation of test cases.
+
+It is a dependency of ptmap, which in turn is a dependency of the next version of Haxe (4.0.0).</comment>
+    <requestid>620346</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>130837f0ffefc62d18d74e59f34c30fe</srcmd5>
+    <version>2.9</version>
+    <time>1532774690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625765</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5d0151308a390f8c32d09fdc34b6bb60</srcmd5>
+    <version>2.9</version>
+    <time>1551025075</time>
+    <user>coolo</user>
+    <comment>Fix build with ocaml-dune 1.7.1.</comment>
+    <requestid>677887</requestid>
+  </revision>
+</revisionlist>

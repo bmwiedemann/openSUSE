@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72ff5ab159d9bc9293930a30a4bec38c</srcmd5>
+    <version>1.0.9</version>
+    <time>1494088044</time>
+    <user>dimstar_suse</user>
+    <comment>Replaces python3- version which is already in openSUSE:Factory.</comment>
+    <requestid>490048</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>76f30c408f9381cc155394bb647f322c</srcmd5>
+    <version>1.0.9</version>
+    <time>1544189889</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655855</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d816af723fa1210333c1189310de9165</srcmd5>
+    <version>1.1.2</version>
+    <time>1554189740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690331</requestid>
+  </revision>
+</revisionlist>

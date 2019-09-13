@@ -1,0 +1,257 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09c1d9022d137538e1cd1163b9a84e52</srcmd5>
+    <version>1.2.0</version>
+    <time>1326988577</time>
+    <user>coolo</user>
+    <comment>Rename of oxygen-gtk package</comment>
+    <requestid>100619</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>620d30c2c70844375ae3d3527274eea9</srcmd5>
+    <version>1.2.1</version>
+    <time>1330618909</time>
+    <user>coolo</user>
+    <comment>Update to 1.2.1, Split the package into gtk2-engine-oxygen and gtk2-theme-oxygen subpackages for consistency with other gtk engines and themes (bnc#747107) (forwarded request 105752 from adra)</comment>
+    <requestid>106026</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b0005b625f36afcccc2442e99e842379</srcmd5>
+    <version>1.2.2</version>
+    <time>1331627859</time>
+    <user>coolo</user>
+    <comment>Update to 1.2.2 (forwarded request 109027 from adra)</comment>
+    <requestid>109034</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1c0e3641156de5c802e8a95b98585dce</srcmd5>
+    <version>1.2.2.1</version>
+    <time>1332752651</time>
+    <user>coolo</user>
+    <comment>Update to 1.2.2.1, Removed dbus-glib-1 build requirement, Updated baselibs.conf (forwarded request 110988 from adra)</comment>
+    <requestid>110994</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8eb3c3bdee03409e3049406dd63fad7</srcmd5>
+    <version>1.2.3</version>
+    <time>1334692829</time>
+    <user>coolo</user>
+    <comment>Update to version 1.2.3 (forwarded request 113728 from mlin7442)</comment>
+    <requestid>114015</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b4ba46feeccf560607347c3d8db8db8d</srcmd5>
+    <version>1.2.4</version>
+    <time>1337096537</time>
+    <user>coolo</user>
+    <comment>update to version 1.2.4 (forwarded request 121018 from mlin7442)</comment>
+    <requestid>121021</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b4ba46feeccf560607347c3d8db8db8d</srcmd5>
+    <version>1.2.4</version>
+    <time>1340183770</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>785c24c5eb9af516865f98ca04e932a9</srcmd5>
+    <version>1.2.5</version>
+    <time>1340617946</time>
+    <user>coolo</user>
+    <comment>Update to version 1.2.5 (forwarded request 125364 from adra)</comment>
+    <requestid>125371</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0cae9fb82e9d0fcd9cd2a9996916fb7b</srcmd5>
+    <version>1.2.5</version>
+    <time>1341219999</time>
+    <user>coolo</user>
+    <comment>Crash fix, fixes #bko 302197, also fixes a crash with the same trace in Java JRE when using Oygen GTK with DB Visualizer 7.1.5:
+
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007fb26d987620, pid=1116, tid=140404932077312
+#
+# JRE version: 6.0_31-b04
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (20.6-b01 mixed mode linux-amd64 compressed oops)
+# Problematic frame:
+# C  [liboxygen-gtk.so+0x11f620]  Oxygen::processTabCloseButton(_GtkWidget*, GtkStateType)+0xb3d0
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+# (forwarded request 126850 from renekrell)</comment>
+    <requestid>126866</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>06edb7a886ff92c30d061344751c278f</srcmd5>
+    <version>1.3.0</version>
+    <time>1343135658</time>
+    <user>coolo</user>
+    <comment>Update to version 1.3.0, Removed the patch for #bko 302197 and JRE crashes (fixed upstream) (forwarded request 128553 from adra)</comment>
+    <requestid>128727</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ca17f4a0eaad2e7e4f42ea9f68f79d84</srcmd5>
+    <version>1.3.1</version>
+    <time>1349455103</time>
+    <user>coolo</user>
+    <comment>update to version 1.3.1 (forwarded request 137205 from mlin7442)</comment>
+    <requestid>137218</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>ca17f4a0eaad2e7e4f42ea9f68f79d84</srcmd5>
+    <version>1.3.1</version>
+    <time>1359109560</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>72ede92444f570f44bca9fa94ac7fafb</srcmd5>
+    <version>1.3.2</version>
+    <time>1359624460</time>
+    <user>coolo</user>
+    <comment>Update to version 1.3.2 (forwarded request 150452 from sumski)</comment>
+    <requestid>150472</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>20159d4788c97c52833bcb6cf44bf912</srcmd5>
+    <version>1.3.2.1</version>
+    <time>1361117476</time>
+    <user>coolo</user>
+    <comment>Update to bugfix release, 1.3.2.1 (forwarded request 155548 from sumski)</comment>
+    <requestid>155567</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>55d1b2f087522637a7c2305e084a4ed2</srcmd5>
+    <version>1.3.3</version>
+    <time>1366812431</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.3.3
+  * Detect aurora as a XUL app (kde#315163)
+  * Bump needed cairo version for cairo_surface_create_for_rectangle()
+    (kde#316066)
+  * Only check pixmap list size in ::isValid (kde#304381) 
+  * Check cursor shape before accepting event for window dragging 
+    (kde#317292)
+  * Fix crash in pidgin when enabling debug (kde#318002)
+  * Fixed memory leaks (kde#318002)</comment>
+    <requestid>173064</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ce29cf41bc22d1886d4a1cd12be55fc7</srcmd5>
+    <version>1.3.4</version>
+    <time>1370430387</time>
+    <user>coolo</user>
+    <comment>Update to 1.3.4</comment>
+    <requestid>177095</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>61d629272c832ddd81a0cb8ea80cc4bb</srcmd5>
+    <version>1.4.0</version>
+    <time>1378126861</time>
+    <user>coolo</user>
+    <comment>Update to 1.4.0</comment>
+    <requestid>196832</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>61d629272c832ddd81a0cb8ea80cc4bb</srcmd5>
+    <version>1.4.0</version>
+    <time>1379663462</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d323c0072c38739dba37292e5801ab96</srcmd5>
+    <version>1.4.1</version>
+    <time>1387261675</time>
+    <user>coolo</user>
+    <comment>Update to version 1.4.1</comment>
+    <requestid>210982</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>82bae36cd239b941bd35cfcfb682cf8a</srcmd5>
+    <version>1.4.3</version>
+    <time>1390976184</time>
+    <user>coolo</user>
+    <comment>Update to 1.4.3</comment>
+    <requestid>215328</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8f14c6c5808bd34871766734ec3fe395</srcmd5>
+    <version>1.4.4</version>
+    <time>1394386331</time>
+    <user>coolo</user>
+    <comment>Update to version 1.4.4</comment>
+    <requestid>225158</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>2b7826cb21ec29ab38b94c483329210e</srcmd5>
+    <version>1.4.4</version>
+    <time>1396020436</time>
+    <user>coolo</user>
+    <comment>Added crashfix from upstream- 0001-make-sure-parent-is-registered-to-innerShadowEngine-.patch, fixes crashes when invoking GTK2 dialogs, bnc#869791, kde#331879</comment>
+    <requestid>227835</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cae5c1e1cb97a0a069257b962ae558b7</srcmd5>
+    <version>1.4.5</version>
+    <time>1397469906</time>
+    <user>coolo</user>
+    <comment>Update to 1.4.5</comment>
+    <requestid>229931</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>cae5c1e1cb97a0a069257b962ae558b7</srcmd5>
+    <version>1.4.5</version>
+    <time>1409302087</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e779934ee0ea9f73ad97191d5f1ea483</srcmd5>
+    <version>1.4.6</version>
+    <time>1414943162</time>
+    <user>coolo</user>
+    <comment>Update to version 1.4.6</comment>
+    <requestid>258908</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>4c7b12a9dcf6ec3bf89a40e99eca46fb</srcmd5>
+    <version>1.4.6</version>
+    <time>1415347505</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259692</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>56e87cd96e211fc3b6dd08c041482a14</srcmd5>
+    <version>1.4.6</version>
+    <time>1439190979</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321263</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>718157cfa6034ef943391bafe52e111e</srcmd5>
+    <version>1.4.6</version>
+    <time>1491907448</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486308</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>427b1e4e44cc0f4278e0891365a06608</srcmd5>
+    <version>1.4.6</version>
+    <time>1557084121</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner
+- Trim the packages description
+
+- Add oxygen-gtk2-1.4.6-xul.patch to fix crashes in newmoon/palemoon</comment>
+    <requestid>700492</requestid>
+  </revision>
+</revisionlist>

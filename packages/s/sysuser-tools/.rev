@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e06beb092f0190a25ca7aa15d260651b</srcmd5>
+    <version>1.1</version>
+    <time>1488479142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>458515</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>28e1b0154766323045a2aa4341f7d33f</srcmd5>
+    <version>1.1</version>
+    <time>1489653807</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't remove 'm' and 'r' entries from sysusers configuration</comment>
+    <requestid>479665</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>98fb2452d70b323f6def70b52b559eef</srcmd5>
+    <version>1.1</version>
+    <time>1496821874</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499622</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b6cce376679fabb023d90ed75b9c27e7</srcmd5>
+    <version>2.0</version>
+    <time>1498202034</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504694</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3a233ea7856f3261e6db1d95adc331d6</srcmd5>
+    <version>2.0</version>
+    <time>1508946208</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533650</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1d595c3cc97997eabfab8f05fb410c28</srcmd5>
+    <version>2.0</version>
+    <time>1558036566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701809</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bdb17da68386ff2d7ec1f9a404fe78b9</srcmd5>
+    <version>3.0</version>
+    <time>1564996706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718888</requestid>
+  </revision>
+</revisionlist>

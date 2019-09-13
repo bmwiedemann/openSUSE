@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>23bec14f6db14da2aca8db3a01128a47</srcmd5>
+    <version>0.9h</version>
+    <time>1375901561</time>
+    <user>coolo</user>
+    <comment>dep for openstack-dashboard</comment>
+    <requestid>186188</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f008ee571e85d569287409a44c3f8ae7</srcmd5>
+    <version>0.9j</version>
+    <time>1376315508</time>
+    <user>scarabeus_factory</user>
+    <comment>Future dependency of openstack-dashboard</comment>
+    <requestid>186725</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f008ee571e85d569287409a44c3f8ae7</srcmd5>
+    <version>0.9j</version>
+    <time>1379664209</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f008ee571e85d569287409a44c3f8ae7</srcmd5>
+    <version>0.9j</version>
+    <time>1409302907</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>3f9013bc2f35b8a5a7227aab98800edc</srcmd5>
+    <version>0.9j</version>
+    <time>1416347129</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261691</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3b32ac71cfb088bff3c4289c526bab35</srcmd5>
+    <version>0.10.2</version>
+    <time>1471428331</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419478</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5d864ff143eac718a15b260498c75010</srcmd5>
+    <version>0.12.0</version>
+    <time>1504521091</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519853</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e9f9c6aeeaab098ed88dfc8621d7b8d8</srcmd5>
+    <version>0.12.0</version>
+    <time>1545647951</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659472</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>707b9ffa0449e26c6472d988c21c582d</srcmd5>
+    <version>0.13.0</version>
+    <time>1551455341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680386</requestid>
+  </revision>
+</revisionlist>

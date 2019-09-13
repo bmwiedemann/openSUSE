@@ -1,0 +1,6 @@
+<package name="octave-forge-symbolic" project="openSUSE:Factory">
+  <title></title>
+  <description>Adds symbolic calculation features to GNU Octave. These include common Computer Algebra System tools such as algebraic operations, calculus, equation solving, Fourier and Laplace transforms, variable precision arithmetic and and other features. Compatibility with other symbolic toolboxes is a goal.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-symbolic"/>
+</package>

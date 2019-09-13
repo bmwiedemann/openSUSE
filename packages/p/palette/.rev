@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>894ced38924623b4689f3f1a1641b632</srcmd5>
+    <version>2.1.0</version>
+    <time>1531592443</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * Updated Grape color to match official elementary palette
+  * Updated icons to match new Grape color
+  * Add translation instructions and update translation link in appdata
+- Update to 2.0.5:
+  * Update website
+- Update to 2.0.4:
+  * Add appdata for 2.0.3 release
+- Update to 2.0.2:
+  * Update version number
+  * Update screenshot
+  * Cheat at contrast
+  * Right-align and monospce hex
+  * Only allow one instance
+  * New popover style
+  * Better popover styles
+  * Update to new icon
+  * Switch to Gtk.MenuButton to fix #10
+  * fix rivet on 32px
+  * New icon, fixes #7
+  * Update PO files
+  * Add .deskop and appdata to pot
+  * Add all the languages!
+  * Remove Granite dep from README
+  * Update README with links
+- Add a new package with translations
+- Initial package
+</comment>
+    <requestid>620064</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>60f9c9e7b0cc72dc95df946a609d8459</srcmd5>
+    <version>2.2.0</version>
+    <time>1531947343</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>623374</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cb76719859137a50228e3fc34f8d7f21</srcmd5>
+    <version>2.2.0</version>
+    <time>1533292650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626942</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d6d350d165edb281fabb345d7c865f17</srcmd5>
+    <version>2.3.0</version>
+    <time>1533887431</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>628273</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>87e6007e555f8f92de283bf2b2d7bcf3</srcmd5>
+    <version>2.3.1</version>
+    <time>1537263968</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>636171</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1fb21712ce7bc3700d883c2aa1afad1b</srcmd5>
+    <version>3.0.0</version>
+    <time>1540319965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643757</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2d82dac66b5804f7215db1c44b284ff9</srcmd5>
+    <version>3.1.2</version>
+    <time>1543953396</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653674</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>57bcdca9e376aa0f2826b916dd0eb9e8</srcmd5>
+    <version>3.1.5</version>
+    <time>1551276439</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679482</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0395c1a88d4a665f9b31610a260ef736</srcmd5>
+    <version>2.7.0</version>
+    <time>1327087505</time>
+    <user>coolo</user>
+    <comment>New package: big set of libpurple/pidgin plugins, requested by community member</comment>
+    <requestid>100764</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0395c1a88d4a665f9b31610a260ef736</srcmd5>
+    <version>2.7.0</version>
+    <time>1340184024</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>0395c1a88d4a665f9b31610a260ef736</srcmd5>
+    <version>2.7.0</version>
+    <time>1359109966</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>0395c1a88d4a665f9b31610a260ef736</srcmd5>
+    <version>2.7.0</version>
+    <time>1379664087</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>0395c1a88d4a665f9b31610a260ef736</srcmd5>
+    <version>2.7.0</version>
+    <time>1409302769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>6141b5abb34855a02281324c8ba94b72</srcmd5>
+    <version>2.7.0</version>
+    <time>1485511414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>447621</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>34ea831faad2f8bb3f2e6aa3ea636c2a</srcmd5>
+    <version>2.7.0</version>
+    <time>1521579662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588895</requestid>
+  </revision>
+</revisionlist>

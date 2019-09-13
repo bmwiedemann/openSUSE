@@ -1,0 +1,500 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>1a7ffe566e425555fd155b61e90ae5d9</srcmd5>
+    <version>5</version>
+    <time>1168902708</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="30">
+    <srcmd5>91e454d09867e3a9bd525c14921de862</srcmd5>
+    <version>5</version>
+    <time>1176391117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bf9fc8f09cc2a3f0c1c4d29525ae5107</srcmd5>
+    <version>6</version>
+    <time>1185541644</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="24">
+    <srcmd5>8ca142e341c1fd6402d9abe56d8e6471</srcmd5>
+    <version>6</version>
+    <time>1198075560</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="75">
+    <srcmd5>183c235ed129ee97130d69bc69075ee3</srcmd5>
+    <version>6</version>
+    <time>1221260380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="78">
+    <srcmd5>62366c42e40128baab77ebe3361d5ae5</srcmd5>
+    <version>6</version>
+    <time>1225816443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="80">
+    <srcmd5>62366c42e40128baab77ebe3361d5ae5</srcmd5>
+    <version>6</version>
+    <time>1225816443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="81">
+    <srcmd5>2319dfd6dd7c85aff479e96f6d35d90f</srcmd5>
+    <version>6</version>
+    <time>1259926038</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/ethtool based on submit request 25406 from user mseben
+</comment>
+  </revision>
+  <revision rev="9" vrev="82">
+    <srcmd5>03a23b4c583e955950b96b320ac456bf</srcmd5>
+    <version>6</version>
+    <time>1263225078</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/ethtool based on submit request 29025 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="83">
+    <srcmd5>fed0b0cc5f7be8ffd2dcb56bad494153</srcmd5>
+    <version>6</version>
+    <time>1268923484</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="85">
+    <srcmd5>fed0b0cc5f7be8ffd2dcb56bad494153</srcmd5>
+    <version>6</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="86">
+    <srcmd5>fed0b0cc5f7be8ffd2dcb56bad494153</srcmd5>
+    <version>6</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7eaf93fed8ed0e8a176f071cad1d5b1c</srcmd5>
+    <version>2.6.34</version>
+    <time>1280503386</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/ethtool based on submit request 44060 from user puzel
+</comment>
+    <requestid>44060</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>83174dd9cfb888f39cdf2fe1353f0e28</srcmd5>
+    <version>2.6.36</version>
+    <time>1290093660</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53299 from user puzel
+</comment>
+    <requestid>53299</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>83174dd9cfb888f39cdf2fe1353f0e28</srcmd5>
+    <version>2.6.36</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>27078ee2f8e8c60b6578d7ba697576c8</srcmd5>
+    <version>2.6.38</version>
+    <time>1300356193</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64246 from user puzel
+</comment>
+    <requestid>64246</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7a81115afdf206ce06e81383901ce6b2</srcmd5>
+    <version>2.6.38</version>
+    <time>1300356202</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64246
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7749aeda324db92f84ed13a484a19b05</srcmd5>
+    <version>3.0</version>
+    <time>1312879809</time>
+    <user>saschpe</user>
+    <comment>update to ethtool-3.0</comment>
+    <requestid>78329</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>1e6a9ca4c261d9d23fd4b22d338f9359</srcmd5>
+    <version>3.0</version>
+    <time>1316469260</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines) (forwarded request 83454 from jengelh)</comment>
+    <requestid>83674</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>1e6a9ca4c261d9d23fd4b22d338f9359</srcmd5>
+    <version>3.0</version>
+    <time>1319181869</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>88e63dc5b79d773662b1925f75d9c598</srcmd5>
+    <version>3.0</version>
+    <time>1323340074</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0
+sfc.c and stmmac.c have GPL-2.0 licenses (forwarded request 95755 from babelworx)</comment>
+    <requestid>95759</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f0e1d8029ce63b9f890d45d4633039ac</srcmd5>
+    <version>3.1</version>
+    <time>1323869598</time>
+    <user>coolo</user>
+    <comment>- update to ethtool-3.1</comment>
+    <requestid>96435</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>7dc4aaadf37fd8fe12782d32ed8e1ff0</srcmd5>
+    <version>3.1</version>
+    <time>1328890402</time>
+    <user>coolo</user>
+    <comment>- keep binary in /usr tree (UsrMerge project)</comment>
+    <requestid>103408</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>65624828cd41ca5e5bed76ca38e148c0</srcmd5>
+    <version>3.2</version>
+    <time>1330434755</time>
+    <user>coolo</user>
+    <comment>update to ethtool-3.2</comment>
+    <requestid>107126</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>ef28f161cb8c1133d367593eeb4ca637</srcmd5>
+    <version>3.2</version>
+    <time>1337955295</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122206</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>ef28f161cb8c1133d367593eeb4ca637</srcmd5>
+    <version>3.2</version>
+    <time>1340183311</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>adf846d626aeea40ad70e7ca80718fe5</srcmd5>
+    <version>3.4.1</version>
+    <time>1340619913</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.4.1
+* This release adds reporting of driver features (&quot;-i&quot;)
+* reporting of supported pause frame modes and of 20G link modes
+* firmware dumps (&quot;-w&quot; and &quot;-W&quot;)
+* external loopback tests (&quot;-t&quot;)
+* reporting and configuring the number of channels/queues
+  (&quot;-l&quot; and &quot;-L&quot;) and time stamping capabilities (&quot;-T&quot;)
+* reporting of pause frame autonegotiation results (&quot;-a&quot;)
+* support for querying and setting all generic net device features
+  (&quot;-k&quot; and &quot;-K&quot;) and private flags
+* dumping of plugin module EEPROM (&quot;-m&quot;) (forwarded request 125196 from jengelh)</comment>
+    <requestid>125199</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>fe180cf84ae88c87fea727b22857af74</srcmd5>
+    <version>3.5</version>
+    <time>1344319537</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.5 
+  * Display support for 1000BASE-KX and 10GBASE-KX4 link modes
+  * Energy-Efficient Ethernet (EEE) configuration
+    (--show-eee and --set-eee options)
+  * Display support for 40G link modes
+  * Fix: Don't trust drivers to null-terminate strings</comment>
+    <requestid>130027</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2855fd625624ef5e637f5c3b23c744b1</srcmd5>
+    <version>3.6</version>
+    <time>1349853548</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.6
+  * Feature: Allow setting MDI-X state (-s option)
+  * Fix: Preserve pause advertising bits when setting speed and
+    duplex with autoneg on (-s option)
+  * Fix: Don't call ioctl to set EEE parameters if they are the
+    same as the current parameters (--set-eee option)</comment>
+    <requestid>137444</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>796782c1a8c540f9b3f2ee7c4b0cebe9</srcmd5>
+    <version>3.7</version>
+    <time>1355910827</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.7 
+  * Fix: Gracefully handle failure of register pretty-printer (-d
+    option)
+  * Feature: Add support for et131x registers (-d option)
+  * Feature: Basic optical diagnostics for SFF-8472 modules (-m
+    option)</comment>
+    <requestid>145609</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>796782c1a8c540f9b3f2ee7c4b0cebe9</srcmd5>
+    <version>3.7</version>
+    <time>1359108857</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>af318df574e1a5c3d4397644867fd98b</srcmd5>
+    <version>3.8</version>
+    <time>1366722479</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.8
+  * Feature: Allow setting destination MAC address in L3/L4 flow
+    spec rules (-N/-U option)
+  * Fix: Show full 64 bits of user-data (-n/-u option)
+  * Fix: Add version check for et131x regs (-d option)
+  * Doc: Improve description of -f, -t, -s, -N/-U, -W options in
+    man page
+  * Fix: Restore 20000baseKR2 cap display (no options)</comment>
+    <requestid>172921</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>164a730d1109a879015d37e25d06bec0</srcmd5>
+    <version>3.10</version>
+    <time>1372953476</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.10 (forwarded request 181944 from jengelh)</comment>
+    <requestid>182155</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>164a730d1109a879015d37e25d06bec0</srcmd5>
+    <version>3.10</version>
+    <time>1379662307</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5620e9159cfa3f0f354b939758a4b575</srcmd5>
+    <version>3.12.1</version>
+    <time>1385386375</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.12.1
+  * Fix: Memory corruption when applying external calibration to
+	SFF-8472 module diagnostics (-m option) 
+  * Feature: Add Intel 82599 and x540 DCB registers to dump
+	(-d option)
+- Changes from 3.12
+  * Fix: Remove alternate method to check for VLAN tag offload on Linux
+	&lt; 2.6.37 (-k/-K options)
+  * Fix: Hide state of VLAN tag offload and LRO if the kernel is too old
+	for us to reliably detect them (-k option)
+  * Feature: Add register dump support for Solarflare SFC9100 family
+	(-d option)
+- Changes from 3.11
+  * Feature: Update Realtek chip list for register dump to match
+	r8169 driver in Linux 3.11 (-d option)
+  * Feature: Add ixgbevf support for register dump (-d option)
+  * Feature: Filter ixgbe register dump according to the specific chip
+	(-d option) (forwarded request 208148 from posophe)</comment>
+    <requestid>208199</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>efc9bb3dc0cce5a7cf519d25a1036fd7</srcmd5>
+    <version>3.12.1</version>
+    <time>1386326715</time>
+    <user>coolo</user>
+    <comment>- Add '-q' command line option to display switch port attributes
+  (bnc#853637, fate#315293)
+- added patches:
+  * ethtool-display-switch-port-attributes.patch</comment>
+    <requestid>209529</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>c05b28a702a68df11b288fb7b53e3dcd</srcmd5>
+    <version>3.12.1</version>
+    <time>1391852035</time>
+    <user>scarabeus_factory</user>
+    <comment>- Drop ethtool-display-switch-port-attributes.patch (failed
+  upstream acceptance and has to be reworked)</comment>
+    <requestid>221136</requestid>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>c05b28a702a68df11b288fb7b53e3dcd</srcmd5>
+    <version>3.12.1</version>
+    <time>1409300843</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f4f2cd1a15315f26ed6b08c2c7e5a36b</srcmd5>
+    <version>3.16</version>
+    <time>1416824271</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.16</comment>
+    <requestid>262201</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>408377a76bc008ebf7a6cab674eb1e0a</srcmd5>
+    <version>3.18</version>
+    <time>1421873574</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.18</comment>
+    <requestid>280790</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3cbc76111262b7b53c43a6c35c4f5db4</srcmd5>
+    <version>4.0</version>
+    <time>1433744777</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.0</comment>
+    <requestid>310851</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>25124b9616fad33c6491e71d2c6beb1d</srcmd5>
+    <version>4.2</version>
+    <time>1445092624</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.2</comment>
+    <requestid>338770</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>cf5651bd69909dd7231ad6f2ed962901</srcmd5>
+    <version>4.5</version>
+    <time>1459001326</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>377307</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>62d373802951ba2aeec84607888309ad</srcmd5>
+    <version>4.6</version>
+    <time>1468869556</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>407745</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>fd715802e172c2ce5086db6d66156c58</srcmd5>
+    <version>4.8</version>
+    <time>1477134093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.8</comment>
+    <requestid>435691</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>313b5b32fbf285bbeee72322b2032a4e</srcmd5>
+    <version>4.10</version>
+    <time>1492417243</time>
+    <user>maxlin_factory</user>
+    <comment>- upgrade to new upstream release 4.10
+- add keyring for tarball verification</comment>
+    <requestid>483738</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>4d3429cd3caf69d551656e1785063400</srcmd5>
+    <version>4.11</version>
+    <time>1497687580</time>
+    <user>dimstar_suse</user>
+    <comment>- update to new upstream release 4.11</comment>
+    <requestid>501398</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>36f60678ee533df5d2b4e7cae26b8f44</srcmd5>
+    <version>4.13</version>
+    <time>1509530808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.13</comment>
+    <requestid>537513</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>2b059688787ccce677c9983babf417f4</srcmd5>
+    <version>4.15</version>
+    <time>1518187472</time>
+    <user>dimstar_suse</user>
+    <comment>- update to new upstream release 4.15</comment>
+    <requestid>573299</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>91cc382d4fc35619cc8b06770919b822</srcmd5>
+    <version>4.15</version>
+    <time>1523029353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593269</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c34d83c8169c50bb35bbc63dfd0d4119</srcmd5>
+    <version>4.16</version>
+    <time>1524576631</time>
+    <user>dimstar_suse</user>
+    <comment>- update to new upstream release 4.16</comment>
+    <requestid>599818</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>bce8a3870a360915d802e2cd18ad7096</srcmd5>
+    <version>4.17</version>
+    <time>1530087464</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to upstream version 4.17</comment>
+    <requestid>618948</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>c5dfa8b948a1086be4708155cc39afb4</srcmd5>
+    <version>4.18</version>
+    <time>1536094133</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.18</comment>
+    <requestid>632400</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>688f1d191830156509d82e51a48c0bba</srcmd5>
+    <version>4.18</version>
+    <time>1537970417</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>636173</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>87474d9f27467609be22f0306d922508</srcmd5>
+    <version>4.19</version>
+    <time>1542012540</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.19</comment>
+    <requestid>646328</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>6971b69a9aa535da65872c9286636e6e</srcmd5>
+    <version>5.0</version>
+    <time>1552990048</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to new upstream release 5.0</comment>
+    <requestid>685010</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>6bc347d8d77f049aed58d7f792b53e59</srcmd5>
+    <version>5.1</version>
+    <time>1558427714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 5.1</comment>
+    <requestid>703942</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>4f1adfb93daa83ece122eb814de39d4e</srcmd5>
+    <version>5.2</version>
+    <time>1564575272</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 5.2</comment>
+    <requestid>718734</requestid>
+  </revision>
+</revisionlist>

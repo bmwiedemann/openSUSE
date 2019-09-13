@@ -1,0 +1,5 @@
+<package name="ed" project="openSUSE:Factory">
+  <title>Standard UNIX Line Editor</title>
+  <description>The standard, old Unix line editor.</description>
+  <devel project="utilities" package="ed"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="R-rlang" project="openSUSE:Factory">
+  <title>Functions for Base Types and Core R and 'Tidyverse' Features</title>
+  <description>A toolbox for working with base types, core R features like the condition system, and core 'Tidyverse' features like tidy evaluation.</description>
+  <devel project="devel:languages:R:released" package="R-rlang"/>
+</package>

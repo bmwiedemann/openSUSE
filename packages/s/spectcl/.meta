@@ -1,0 +1,19 @@
+<package name="spectcl" project="openSUSE:Factory">
+  <title>Interface Builder for Tcl/Tk and Java</title>
+  <description>An interface builder for Tcl/Tk and Java.
+
+Main Features of SpecTcl: * Easy to Learn:SpecTcl's drag &amp; drop
+   interface along with a powerful toolbar and on-line help that
+   make it easy to start building GUI applications.
+
+* Tcl and Java Support: SpecTcl generates both Tcl and Java code.
+   Note: this generates code for the old JDK 1.0
+
+* Platform Independent: SpecTcl runs on all major platforms:
+   Solaris, SunOS, Linux, Windows 95, Windows NT, MacOS, and Irix.
+
+* Constraint Based Geometry Manager: Alignment and resizing of widgets
+(buttons, check boxes, and more.) is automatic. This makes creating
+dynamic UIs and cross platform UIs a snap!</description>
+  <devel project="devel:languages:tcl" package="spectcl"/>
+</package>

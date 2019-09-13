@@ -1,0 +1,5 @@
+<package name="ssdeep" project="openSUSE:Factory">
+  <title>ssdeep</title>
+  <description>ssdeep is a program for computing and matching Context Triggered Piecewise Hashing values. It is based on a spam detector called spamsum by Andrews Trigdell</description>
+  <devel project="security" package="ssdeep"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="KEALib" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Application:Geo" package="KEALib"/>
+</package>

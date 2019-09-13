@@ -1,0 +1,8 @@
+<package name="python-neovim-remote" project="openSUSE:Factory">
+  <title>Support for --remote and friends</title>
+  <description>This package provides an executable called nvr which solves these cases:
+
+    * Controlling nvim processes from the shell. E.g. opening files in another terminal window.
+    * Opening files from within :terminal without starting a nested nvim process.</description>
+  <devel project="editors" package="python-neovim-remote"/>
+</package>

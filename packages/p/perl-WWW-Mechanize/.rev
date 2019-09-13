@@ -1,0 +1,211 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>16ffb0074938b40bd315ae6c92c14c26</srcmd5>
+    <version>1.66</version>
+    <time>1290097860</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52839 from user computersalat
+</comment>
+    <requestid>52839</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>34cea460c3e99577dcf7fbe274e263b3</srcmd5>
+    <version>1.66</version>
+    <time>1290097865</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52839
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c8ba72db7d51478c90c141314d7a3f1d</srcmd5>
+    <version>1.66</version>
+    <time>1291584445</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54691 from user coolo
+</comment>
+    <requestid>54691</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>529c009e205b206c2096d39c8bff8647</srcmd5>
+    <version>1.66</version>
+    <time>1291584453</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54691
+</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>529c009e205b206c2096d39c8bff8647</srcmd5>
+    <version>1.66</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>36cdf435c5e89783d5ab8a99e17423c8</srcmd5>
+    <version>1.66</version>
+    <time>1301472895</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65522 from user coolo
+</comment>
+    <requestid>65522</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>e43df540ead66de96031aade283852c4</srcmd5>
+    <version>1.66</version>
+    <time>1301472902</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65522
+</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>0b9bc07bc7c8e6e97d6e42af5da15782</srcmd5>
+    <version>1.68</version>
+    <time>1306924517</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>72105</requestid>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>7457dcbdd9536e1e64dba4203ecd6f6d</srcmd5>
+    <version>1.68</version>
+    <time>1306924527</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72105
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f2d519be282e36dc4314b98c5ca4aa81</srcmd5>
+    <version>1.70</version>
+    <time>1316461127</time>
+    <user>lrupp</user>
+    <comment>- updated to 1.70
+  [ENHANCEMENTS]
+  Mech now defaults to _not_ running live tests by default.
+  You can still enable them by running &quot;perl Makefile.PL --live&quot;
+  Thanks to RJBS for the suggestion
+  [INTERNALS]
+  The test suite for the local tests was updated</comment>
+    <requestid>83440</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>f2d519be282e36dc4314b98c5ca4aa81</srcmd5>
+    <version>1.70</version>
+    <time>1319182321</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>41c55c4affd9c09267daa4aa9bdc8fea</srcmd5>
+    <version>1.70</version>
+    <time>1323193775</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>41c55c4affd9c09267daa4aa9bdc8fea</srcmd5>
+    <version>1.70</version>
+    <time>1340183950</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>41c55c4affd9c09267daa4aa9bdc8fea</srcmd5>
+    <version>1.70</version>
+    <time>1359109843</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9b449f3580b23d6cfabd7bc16341e77a</srcmd5>
+    <version>1.72</version>
+    <time>1371814386</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 179042 from coolo)</comment>
+    <requestid>179059</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>9b449f3580b23d6cfabd7bc16341e77a</srcmd5>
+    <version>1.72</version>
+    <time>1379663912</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>83ca71034cf7a6d78913481790c52f21</srcmd5>
+    <version>1.73</version>
+    <time>1382361305</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202224</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>83ca71034cf7a6d78913481790c52f21</srcmd5>
+    <version>1.73</version>
+    <time>1409302562</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0cc3d55876068fe559dfb9470f1bc92f</srcmd5>
+    <version>1.74</version>
+    <time>1429107903</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296615</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7558e0f50e691d8253bfcb4d2e4008ff</srcmd5>
+    <version>1.75</version>
+    <time>1443585014</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327745</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>099b8fcceae135ea863e7e00ce225cc2</srcmd5>
+    <version>1.75</version>
+    <time>1448553805</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345745</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b79d519f71e9bf5fd504f3db660d26f7</srcmd5>
+    <version>1.88</version>
+    <time>1540199012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641613</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0450fef853ba2fa2faa6361b4e304088</srcmd5>
+    <version>1.89</version>
+    <time>1542122939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647342</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5455ffba4fb22b962353fd4eef3e7118</srcmd5>
+    <version>1.90</version>
+    <time>1545222359</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655843</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fec0d12089c108ebe07e7d0449d9e408</srcmd5>
+    <version>1.91</version>
+    <time>1548334896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666107</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ddaf9e13e8e5cf7b240d67a516b7afa9</srcmd5>
+    <version>1.92</version>
+    <time>1567420934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726160</requestid>
+  </revision>
+</revisionlist>

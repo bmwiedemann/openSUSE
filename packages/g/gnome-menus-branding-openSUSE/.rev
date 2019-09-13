@@ -1,0 +1,281 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>03a736a938f363d44bcf4df921cf40ae</srcmd5>
+    <version>11.1</version>
+    <time>1217817314</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="32">
+    <srcmd5>af5c79abd2e80eae18fdcd87081314d6</srcmd5>
+    <version>11.1</version>
+    <time>1223309006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="33">
+    <srcmd5>03a736a938f363d44bcf4df921cf40ae</srcmd5>
+    <version>11.1</version>
+    <time>1223382126</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="34">
+    <srcmd5>ad40267d795475021c4c8389c2e593c1</srcmd5>
+    <version>11.1</version>
+    <time>1225816731</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="35">
+    <srcmd5>03a736a938f363d44bcf4df921cf40ae</srcmd5>
+    <version>11.1</version>
+    <time>1225855978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="36">
+    <srcmd5>ad40267d795475021c4c8389c2e593c1</srcmd5>
+    <version>11.1</version>
+    <time>1226680152</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="37">
+    <srcmd5>e0342d6a2bcd2366bec4219e5c25c1b6</srcmd5>
+    <version>11.1</version>
+    <time>1233962445</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="38">
+    <srcmd5>2d1a866f488841de525cabcad62fd269</srcmd5>
+    <version>11.1</version>
+    <time>1249061434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="40">
+    <srcmd5>2d1a866f488841de525cabcad62fd269</srcmd5>
+    <version>11.1</version>
+    <time>1249061434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>81aa2f67e4d8f5351a8f66ecaba350f5</srcmd5>
+    <version>11.3</version>
+    <time>1263830443</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-menus-branding-openSUSE based on submit request 29783 from user vuntz
+</comment>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>976ab2475df770b625d083479aea79ce</srcmd5>
+    <version>11.3</version>
+    <time>1268923781</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>976ab2475df770b625d083479aea79ce</srcmd5>
+    <version>11.3</version>
+    <time>1278667347</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>976ab2475df770b625d083479aea79ce</srcmd5>
+    <version>11.3</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>696a9c10effc471ac57349196b8258d6</srcmd5>
+    <version>11.3</version>
+    <time>1285282921</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-menus-branding-openSUSE based on submit request 48920 from user vuntz
+</comment>
+    <requestid>48920</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d7c69249db78e99345ead87408c7e1b4</srcmd5>
+    <version>11.4</version>
+    <time>1287155516</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-menus-branding-openSUSE based on submit request 50699 from user vuntz
+</comment>
+    <requestid>50699</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>d7c69249db78e99345ead87408c7e1b4</srcmd5>
+    <version>11.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>7464e351ee03ef0993a5be310fb838f3</srcmd5>
+    <version>11.4</version>
+    <time>1304339601</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69068</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>f7f8fcd2d68ba3b33a8c10d6af97602f</srcmd5>
+    <version>11.4</version>
+    <time>1304339611</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69068
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f3b5919f4f4534492fb575dd68f8f68c</srcmd5>
+    <version>12.1</version>
+    <time>1310116480</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F, including GNOME 3.1.3</comment>
+    <requestid>75743</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>9042ba27c2f6c1c0e62745f67a08139d</srcmd5>
+    <version>12.1</version>
+    <time>1310116493</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75743
+</comment>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>ae8c87576736b95073671969895ea4b1</srcmd5>
+    <version>12.1</version>
+    <time>1311583554</time>
+    <user>saschpe</user>
+    <comment>Drop now unused settings.menu (forwarded request 76746 from vuntz)</comment>
+    <requestid>76772</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>d2bc53d615760790277997a15b53c10e</srcmd5>
+    <version>12.1</version>
+    <time>1311583566</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76772
+</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>e0c336884bb9024da20fb4225889944e</srcmd5>
+    <version>12.1</version>
+    <time>1318515441</time>
+    <user>lrupp</user>
+    <comment>Be less strict in requires (forwarded request 87686 from vuntz)</comment>
+    <requestid>87701</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>e0c336884bb9024da20fb4225889944e</srcmd5>
+    <version>12.1</version>
+    <time>1319181920</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>08565ac807291c53ec6dd58faf2c7ffd</srcmd5>
+    <version>12.1</version>
+    <time>1323191654</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>1ab3287121a3fec5cf119c6fe5aa5a7a</srcmd5>
+    <version>12.1</version>
+    <time>1323191654</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>41649ecf168f022b4ebd5676d8b2e0e8</srcmd5>
+    <version>12.2</version>
+    <time>1337955326</time>
+    <user>coolo</user>
+    <comment>Bump version to 12.2 (forwarded request 121884 from dimstar)</comment>
+    <requestid>121956</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>41649ecf168f022b4ebd5676d8b2e0e8</srcmd5>
+    <version>12.2</version>
+    <time>1340183382</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>41649ecf168f022b4ebd5676d8b2e0e8</srcmd5>
+    <version>12.2</version>
+    <time>1359108960</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>a144c90cd384bd57a4e46ef32a2fb8df</srcmd5>
+    <version>12.2</version>
+    <time>1365025552</time>
+    <user>coolo</user>
+    <comment>Update to GNOME 3.8.0</comment>
+    <requestid>162014</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>31dd569c3ffa238bca3aff20eca52781</srcmd5>
+    <version>13.1</version>
+    <time>1378716648</time>
+    <user>coolo</user>
+    <comment>Bump version for 13.1 (forwarded request 197886 from Zaitor)</comment>
+    <requestid>197909</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>31dd569c3ffa238bca3aff20eca52781</srcmd5>
+    <version>13.1</version>
+    <time>1379662494</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>640c005cc73f5505406283ae832dc0af</srcmd5>
+    <version>13.1</version>
+    <time>1380881424</time>
+    <user>scarabeus_factory</user>
+    <comment>- Rebased gnome-menus-branding-remove-X-SuSE-ControlCenter.patch
+  on top of gnome-menus 3.10.0.
+
+- Rebased gnome-menus-branding-remove-X-SuSE-ControlCenter.patch
+  on top of gnome-menus 3.10.0. (forwarded request 202083 from Zaitor)</comment>
+    <requestid>202089</requestid>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>640c005cc73f5505406283ae832dc0af</srcmd5>
+    <version>13.1</version>
+    <time>1409301030</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8894c61796da7316f5603bfdf210d257</srcmd5>
+    <version>13.2</version>
+    <time>1412098605</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.13.91 - Add to Staging:E (forwarded request 248692 from dimstar)</comment>
+    <requestid>248793</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c204929c8530e23855fbfc5aa3e9d581</srcmd5>
+    <version>42.1</version>
+    <time>1446238351</time>
+    <user>coolo</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>341449</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>4922e26f95e29d6227405747882b28b1</srcmd5>
+    <version>42.1</version>
+    <time>1520502247</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581091 from dimstar)</comment>
+    <requestid>582735</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>721dc7f991075cd45860339992d63a40</srcmd5>
+    <version>42.1</version>
+    <time>1556914190</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695658 from dimstar)</comment>
+    <requestid>695678</requestid>
+  </revision>
+</revisionlist>

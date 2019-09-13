@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1538cdc01d14c919663481c9461f5dc6</srcmd5>
+    <version>unknown</version>
+    <time>1340813109</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:preinstallimage-base revision:2</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d8fe30c009fd95301369ad31278868ac</srcmd5>
+    <version>unknown</version>
+    <time>1340813134</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>da95f1f111a9ce066446c584be01780a</srcmd5>
+    <version>unknown</version>
+    <time>1340895130</time>
+    <user>coolo</user>
+    <comment>change scope</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>da95f1f111a9ce066446c584be01780a</srcmd5>
+    <version>unknown</version>
+    <time>1359109952</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>5e1f174902f33a11c1904f53adb80e89</srcmd5>
+    <version>unknown</version>
+    <time>1375771899</time>
+    <user>coolo</user>
+    <comment>change name to avoid conflict</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>5e1f174902f33a11c1904f53adb80e89</srcmd5>
+    <version>unknown</version>
+    <time>1379664067</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>5e1f174902f33a11c1904f53adb80e89</srcmd5>
+    <version>unknown</version>
+    <time>1409302745</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>0f6cda479c534d54d6b3f5b659e42ebb</srcmd5>
+    <version>unknown</version>
+    <time>1525250713</time>
+    <user>dimstar_suse</user>
+    <comment>add ignore on cputype-armv6l</comment>
+    <requestid>602982</requestid>
+  </revision>
+</revisionlist>

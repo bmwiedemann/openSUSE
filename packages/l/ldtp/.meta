@@ -1,0 +1,10 @@
+<package name="ldtp" project="openSUSE:Factory">
+  <title>Linux Desktop Testing Project (LDTP)</title>
+  <description>The GNU/Linux Desktop Testing Project (GNU LDTP) aims to produce a
+high quality test automation framework with cutting-edge tools that
+can be used to test and improve the GNU/Linux or Solaris desktops.
+It uses the Accessibility libraries to discover through the
+application's user interface. The framework also has tools to
+record test-cases based on user actions in an application.</description>
+  <devel project="GNOME:Apps" package="ldtp"/>
+</package>

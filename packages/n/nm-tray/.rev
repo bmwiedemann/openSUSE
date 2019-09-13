@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5a6ce91e72a69cbcc1ee6117812afd72</srcmd5>
+    <version>0.3.0</version>
+    <time>1508876602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * Fix showing section names in menu
+  * Add tray tooltip information
+  * Fix showing duplicated connections upon NM service stop/start
+  * Add (XDG) notifications support
+  * Adapt menu size to changes in underlying models
+  * Add more active connection info
+  * Add support for (existing) VPN connection activation
+  * Show known connections in menu (for activation)
+  * Add edit connections option
+- New Package, version 0.1.0
+  * Pure Qt Implementation of NetworkManager System Tray applet, without ties to plasma-nm
+</comment>
+    <requestid>535984</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9a5688c4637590b3670e1da7ff2ca5ca</srcmd5>
+    <version>0.3.0</version>
+    <time>1529402518</time>
+    <user>maxlin_factory</user>
+    <comment>- Add nm-tray-0.3.0-qt511-headers.patch:
+  To build with Qt 5.11</comment>
+    <requestid>616880</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6e0b37d4a1fd6c418e3ae90383dd9d86</srcmd5>
+    <version>0.4.0</version>
+    <time>1531135753</time>
+    <user>dimstar_suse</user>
+    <comment>- Add nm-tray-0.4.0-correct-version.patch:
+  Use correct version (0.4.0)
+
+- Update to 0.4.0:
+  * Fix .desktop file (make it pass desktop-file-validate)
+  * Make connections editor configurable
+  * Add default configuration file
+  * Add/update translations (Norwegian, Hebrew, Slovak, Czech, Dutch,
+    Polish, French, Catalan, German, Danish, Spanish)
+  * Fix build failures (cmake, Qt v5.11)
+- Remove nm-tray-0.3.0-qt511-headers.patch: upstreamed</comment>
+    <requestid>621285</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8473dd0d93ba730f8ae365e4d3946d77</srcmd5>
+    <version>0.4.1</version>
+    <time>1531813339</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Fix showing context menu showing with legacy xembed tray
+  * Correctly set version number
+- Remove nm-tray-0.4.0-correct-version.patch: upstreamed</comment>
+    <requestid>623087</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fde39872f6657eda5697575c14d2467a</srcmd5>
+    <version>0.4.2</version>
+    <time>1539758439</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2:
+  * Add possibility for requesting scan on wifi
+
+- Update to 0.4.1:</comment>
+    <requestid>642048</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6ce54c450f5f212ffcb758ea6a3ae4e0</srcmd5>
+    <version>0.4.3</version>
+    <time>1565005253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.3:
+  * Add/update translations (Swedish, Brazil, Danish, Turkish, German,
+    Russian, Spanish, Czech, Norwegian Bokmål, Lithuanian, Hebrew, Dutch,
+    French)
+  * Use *-symbolic incons only in *Views
+  * Prevent possible undefined behavior</comment>
+    <requestid>721004</requestid>
+  </revision>
+</revisionlist>

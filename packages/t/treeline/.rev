@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0754678e28a848af0ddd86b085b12085</srcmd5>
+    <version>1.0.0</version>
+    <time>1168904381</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e52ee14d15ac06c34d59bddce78a5d75</srcmd5>
+    <version>1.1.9</version>
+    <time>1186687414</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="26">
+    <srcmd5>4b107ccf18ba01a4fe37f82b7666cd5b</srcmd5>
+    <version>1.1.9</version>
+    <time>1194651091</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>161b473bb4c7f6e3f0956d80f18d4d2d</srcmd5>
+    <version>1.1.10</version>
+    <time>1203034528</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="14">
+    <srcmd5>6f5986960e6f0bda6330ccdbeab5d596</srcmd5>
+    <version>1.1.10</version>
+    <time>1207522054</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>be0790ac2a01a8d201a5049b3d25d736</srcmd5>
+    <version>1.2.0</version>
+    <time>1219438035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9ff21f661d57a56db6614ce443ac35b3</srcmd5>
+    <version>1.2.3</version>
+    <time>1249679843</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9ff21f661d57a56db6614ce443ac35b3</srcmd5>
+    <version>1.2.3</version>
+    <time>1249679843</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>1ea03938210a1bd9ac26de45a7f05eac</srcmd5>
+    <version>1.2.3</version>
+    <time>1268926376</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>1ea03938210a1bd9ac26de45a7f05eac</srcmd5>
+    <version>1.2.3</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>1ea03938210a1bd9ac26de45a7f05eac</srcmd5>
+    <version>1.2.3</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>1ea03938210a1bd9ac26de45a7f05eac</srcmd5>
+    <version>1.2.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>26064b105656835567b5c59ebd6d5e48</srcmd5>
+    <version>1.4.0</version>
+    <time>1303117071</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67667 from user coolo
+</comment>
+    <requestid>67667</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>87fb608415a9567bf69a3f3e031fd425</srcmd5>
+    <version>1.4.0</version>
+    <time>1303117085</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67667
+</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>87fb608415a9567bf69a3f3e031fd425</srcmd5>
+    <version>1.4.0</version>
+    <time>1319182529</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>497fa03e77eae187e2d49ebc43a6f488</srcmd5>
+    <version>1.4.0</version>
+    <time>1323194964</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>497fa03e77eae187e2d49ebc43a6f488</srcmd5>
+    <version>1.4.0</version>
+    <time>1340184285</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>534a476559568744aea88e65ca6f3a1b</srcmd5>
+    <version>1.4.1</version>
+    <time>1352717064</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.4.1:
+  + Fixed failures due to bad internal references when opening
+    encrypted files in multiple windows.
+  + Avoid corruption of user option settings after attempting to
+    automatically open an imported file as the last file used.
+  + Fix problems with imported files when the user sets new files
+    to be encrypted by default.
+  + Prompt the user for a password when copying types from an
+    encrypted TreeLine file.
+- Sources moved to upstream format, tar.gz
+- rpmlint: remove INSTALL in docs; escape macro in comment</comment>
+    <requestid>140844</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>534a476559568744aea88e65ca6f3a1b</srcmd5>
+    <version>1.4.1</version>
+    <time>1359110505</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>534a476559568744aea88e65ca6f3a1b</srcmd5>
+    <version>1.4.1</version>
+    <time>1379664846</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>534a476559568744aea88e65ca6f3a1b</srcmd5>
+    <version>1.4.1</version>
+    <time>1409303529</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cbfee79dbc6e13d3aadd4fbd78f2a8c1</srcmd5>
+    <version>1.9.7</version>
+    <time>1428652488</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295191</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>582ec559d52b8b9c2bae1fc9678072f8</srcmd5>
+    <version>2.0.2</version>
+    <time>1456434334</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360709</requestid>
+  </revision>
+</revisionlist>

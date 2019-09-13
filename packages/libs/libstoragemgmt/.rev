@@ -1,0 +1,173 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe9318660b84f0161236b399ce5fd1b6</srcmd5>
+    <version>1.1.0</version>
+    <time>1430165293</time>
+    <user>coolo</user>
+    <comment>Hopefully ok this time</comment>
+    <requestid>295315</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0e51868e23b0ccd8ec4535850d79e80d</srcmd5>
+    <version>1.1.0</version>
+    <time>1431668661</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307094</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>060cdb861e2a07d1cfed4d2c38cdc1ed</srcmd5>
+    <version>1.2.1</version>
+    <time>1435053395</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup changelog formatting
+- Update dependencies
+
+- Upgrade to version 1.2.1.
+- New sub-pacakges:
+    * libstoragemgmt-megaraid-plugin
+        New plugin in 1.2.0 release.
+    * libstoragemgmt-hpsa-plugin
+        New plugin in 1.2.0 release.
+    * libstoragemgmt-udev
+        The udev file has nothing to do with the libraray.
+        It just scan the SCSI target when got 
+        REPORTED_LUNS_DATA_HAS_CHANGED in udev.
+- New rpmbuild switch: '--without test'
+    Use to skip 'make check' test to save debug time.
+- Fix incorrect post scripts for plugin packages.
+    User case: 
+      The libstoragemgmt daemon need to be restarted on new plugin 
+      install or plugin uninstall, so that the daemon could create 
+      new or stop existing plugin connection. 
+    But old macros:
+    * The %service_del_postun only try-restart daemon on upgrade 
+      which is not required here. 
+    * The %service_del_postun only 'daemon-reload' on uninstall 
+      which is not required here. 
+    * The %service_add_post does not restart daemon.
+    So we have to use hardcoded systemd commands.
+- Add bash-completion script for lsmcli.
+- Use systemd-tmpfiles to create socket file in /run folder.
+- Add %ghost ownership for socket file and folder in /run folder.</comment>
+    <requestid>312475</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>efe96ed5805f949bbda3d30203f04e41</srcmd5>
+    <version>1.2.3</version>
+    <time>1435172736</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313401</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>112a4227b7999f24eda71fee868039ac</srcmd5>
+    <version>1.2.3</version>
+    <time>1455701111</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>359188</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>68c49ac9dad09619a6b0b81d8b4b5f36</srcmd5>
+    <version>1.3.2</version>
+    <time>1464014189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.2 (boo#980653):
+- Upgrade to version 1.3.1 (boo#980041):</comment>
+    <requestid>396717</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7544f01c4ce3d7a943a5cba03d7b7fa2</srcmd5>
+    <version>1.3.2</version>
+    <time>1469382185</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412067</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2af08dcf7eb18931930a99e11e993b11</srcmd5>
+    <version>1.3.4</version>
+    <time>1470851653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.4:
+  * hpsa: Update cacheless variable
+
+- Update to version 1.3.3:
+  * Bug fix release, check this link for detail:
+    https://github.com/libstorage/libstoragemgmt/releases/tag/1.3.3</comment>
+    <requestid>417932</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>02f86991cbe8b9e3a48d1a5a9fbf7da9</srcmd5>
+    <version>1.3.4</version>
+    <time>1486465019</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454107</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bfa36891a91a99446444a231b40e57c5</srcmd5>
+    <version>1.4.0</version>
+    <time>1493369595</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490944</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b8efb2e618b95a3fb0711d078a855a93</srcmd5>
+    <version>1.4.0</version>
+    <time>1495883273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495829</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>1bc8725fcb5748bad083c00e58d49997</srcmd5>
+    <version>1.4.0</version>
+    <time>1497362908</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500390</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d55f1b6fa32ae09dc1b51ae7a426ce2c</srcmd5>
+    <version>1.6.0</version>
+    <time>1515623357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558315</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7f87ccd6ad4bbe37b64235e9979faa7d</srcmd5>
+    <version>1.6.0</version>
+    <time>1523956136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595903</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>c180e6333fc2a6c5d87e176d880f1a93</srcmd5>
+    <version>1.6.0</version>
+    <time>1525611242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603838</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>55539c36e9f5fc0c790b378df16676d2</srcmd5>
+    <version>1.7.0</version>
+    <time>1541746267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646074</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>97fc9cbcbb0e1d31071bee5f144cced0</srcmd5>
+    <version>1.8.1</version>
+    <time>1560337045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705790</requestid>
+  </revision>
+</revisionlist>

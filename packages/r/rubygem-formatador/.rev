@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>59def2b48b5b34ce0aa5187b458398e4</srcmd5>
+    <version>0.2.5</version>
+    <time>1562056675</time>
+    <user>dimstar_suse</user>
+    <comment>I need this package as a dependency of rubygem-fog-core.</comment>
+    <requestid>709913</requestid>
+  </revision>
+</revisionlist>

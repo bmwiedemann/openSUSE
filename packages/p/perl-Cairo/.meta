@@ -1,0 +1,7 @@
+<package name="perl-Cairo" project="openSUSE:Factory">
+  <title>Perl interface to the cairo library</title>
+  <description>Cairo provides Perl bindings for the vector graphics library cairo.
+It supports multiple output targets, including PNG, PDF and SVG.
+Cairo produces identical output on all those targets.</description>
+  <devel project="devel:languages:perl" package="perl-Cairo"/>
+</package>

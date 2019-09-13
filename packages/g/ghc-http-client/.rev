@@ -1,0 +1,312 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50cbbb7fd7ed2e472a542114348e5764</srcmd5>
+    <version>0.4.11.2</version>
+    <time>1432190219</time>
+    <user>coolo</user>
+    <comment>HTTP client engine, intended as a base layer.</comment>
+    <requestid>307875</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d5a80c40b123d725e0d35dfca4eec112</srcmd5>
+    <version>0.4.11.3</version>
+    <time>1433920540</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.11.3
+* Fix getUri to insert &quot;?&quot; to uriQuery when necessary.</comment>
+    <requestid>311099</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b7c0c784fb4d2eacce75d07d6e260ef6</srcmd5>
+    <version>0.4.12</version>
+    <time>1435053567</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.12 
+* Added IsString RequestBody instance</comment>
+    <requestid>312942</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>90ab6a052c317dab45efd5ad9b09416b</srcmd5>
+    <version>0.4.15</version>
+    <time>1436331584</time>
+    <user>coolo</user>
+    <comment>- update to 0.4.15
+* Support proxy authentication in environment variables
+* Ignore empty http_proxy
+* Support for auth via url</comment>
+    <requestid>315211</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2fbfb6bcd743cf89a57281163a2ae935</srcmd5>
+    <version>0.4.16</version>
+    <time>1437059938</time>
+    <user>coolo</user>
+    <comment>- update to 0.4.16
+* Proxy auth for HTTPS</comment>
+    <requestid>316336</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3321667b62cc3e64e9b046b4b58b0c42</srcmd5>
+    <version>0.4.18.1</version>
+    <time>1438750253</time>
+    <user>coolo</user>
+    <comment>- update to 0.4.18.1
+* Case insensitive proxy environment variables
+* Deprecate closeManager</comment>
+    <requestid>318878</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1738b4e341954cf5261ac8cb6d432d63</srcmd5>
+    <version>0.4.20</version>
+    <time>1440480009</time>
+    <user>coolo</user>
+    <comment>- update to 0.4.20 
+* Expose brReadSome
+
+- update to 0.4.19
+* Move HasHttpManager from http-conduit to http-client
+* Chunked request bodies use less TCP packets</comment>
+    <requestid>325729</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>69cfd67c9203640c1db960a86f1e4742</srcmd5>
+    <version>0.4.21</version>
+    <time>1441146968</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.21
+* Support no_proxy environment variable</comment>
+    <requestid>328081</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f6b7a582a428512176f90f706332789c</srcmd5>
+    <version>0.4.22.1</version>
+    <time>1442474366</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.22.1
+* ProxyConnectException now returns Right HttpException.</comment>
+    <requestid>330768</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b4b42d5b83a511bacd72b6e832dec0d7</srcmd5>
+    <version>0.4.23</version>
+    <time>1443068108</time>
+    <user>coolo</user>
+    <comment>- update to 0.4.23 
+* Case insensitive cookie domains</comment>
+    <requestid>332340</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>518c0e82060701170fa553fcb94917df</srcmd5>
+    <version>0.4.24</version>
+    <time>1444130662</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.24
+* Use a new TlsExceptionHostPort exception to indicate the host and port of the 
+  server we were trying to connect to when a TLS exception occurred.</comment>
+    <requestid>333996</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c5ec4888fbeae576455c04fd4bee2268</srcmd5>
+    <version>0.4.26.1</version>
+    <time>1450857009</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.26.1
+* Make sure we never read from or write to closed socket (forwarded request 350156 from mimi_vx)</comment>
+    <requestid>350157</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>33b2a8773d33ae4f6ac183c5a127ff84</srcmd5>
+    <version>0.4.26.2</version>
+    <time>1451390395</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.26.2
+* Fix compilation for GHC 7.4 (forwarded request 351025 from mimi_vx)</comment>
+    <requestid>351040</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2d8b1a9482432c621e34d1d0e4b86f84</srcmd5>
+    <version>0.4.27</version>
+    <time>1453998232</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.27
+* Enable managerModifyRequest to modify checkStatus (forwarded request 355964 from mimi_vx)</comment>
+    <requestid>355965</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>003cbdfe282edeb34975efa566f94598</srcmd5>
+    <version>0.4.28</version>
+    <time>1461335102</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.28
+* Add support for including request method in URL
+* requestManagerOverride
+* RequestBodyIO
+
+- update to 0.4.27.1
+* Incorrect idle connection count in HTTP manager (forwarded request 390424 from mimi_vx)</comment>
+    <requestid>390425</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>938bbbf861c6d9ebef4a7c46cb9c8f59</srcmd5>
+    <version>0.4.29</version>
+    <time>1466814056</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.29
+* Changed the order of connecting a socket and tweaking a socket, such that 
+    the socket tweaking callback now happen before connecting.
+* add setRequestIgnoreStatus
+* Added missing Host: HTTP header for https CONNECT
+* Fix: Redirects will be followed in httpRaw' when reusing a dead connection (forwarded request 403546 from mimi_vx)</comment>
+    <requestid>403547</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8eb14ac253f472f7edbaceca3bf16d4d</srcmd5>
+    <version>0.4.30</version>
+    <time>1467705148</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.30
+* Deprecate parseUrl
+* Add parseUrlThrow, parseRequest, and parseRequest_ (forwarded request 406295 from mimi_vx)</comment>
+    <requestid>406296</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9be3abbbeb9be7b3d9b0ee39f1fe5659</srcmd5>
+    <version>0.4.31</version>
+    <time>1468360368</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.31
+* Added length validation for RequestBodyStream</comment>
+    <requestid>407632</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>b0e42e54ef86d843caa78a5af5b04d86</srcmd5>
+    <version>0.4.31</version>
+    <time>1469081084</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411377</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7d32c00885a8b2a5d53f6a9ca1931d35</srcmd5>
+    <version>0.4.31.1</version>
+    <time>1477135219</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433394</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f05160817c66f19e34b754c6baff371f</srcmd5>
+    <version>0.4.31.2</version>
+    <time>1484232597</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447692</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>255bdcfb31b4e879b2a0a6005fe24f94</srcmd5>
+    <version>0.5.6.1</version>
+    <time>1490026038</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477451</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>56813fa505e6c8ace1a1e7e61ce541b1</srcmd5>
+    <version>0.5.7.0</version>
+    <time>1498120553</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504077</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>85160cb536d523f4b65d5ce1f9e35c02</srcmd5>
+    <version>0.5.7.0</version>
+    <time>1505505030</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524815</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>902dd6ca74cf80063a7215ffdb57d6f7</srcmd5>
+    <version>0.5.12.1</version>
+    <time>1527674985</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-http-client to the latest version.</comment>
+    <requestid>607820</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>318a46e2234a9c7e8a0b07d0db06161b</srcmd5>
+    <version>0.5.13.1</version>
+    <time>1532445595</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update http-client to version 0.5.13.1.
+  ## 0.5.13.1
+  * Add a workaround for a cabal bug [haskell-infra/hackage-trustees#165](https://github.com/haskell-infra/hackage-trustees/issues/165)
+  ## 0.5.13
+  * Adds `setRequestCheckStatus` and `throwErrorStatusCodes` functions.
+    See [#304](https://github.com/snoyberg/http-client/issues/304)
+  * Add `withConnection` function.
+    See [#352](https://github.com/snoyberg/http-client/pull/352).
+
+* Changed the order of connecting a socket and tweaking a socket, such that
+* Make sure we never read from or write to closed socket
+* Use a new TlsExceptionHostPort exception to indicate the host and port of the
+- update to 0.4.23
+- update to 0.4.20
+- update to 0.4.12
+* Fix getUri to insert &quot;?&quot; to uriQuery when necessary.
+- initial commit</comment>
+    <requestid>623793</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>5ad5855dd5cc0dad473a186ce1de0569</srcmd5>
+    <version>0.5.13.1</version>
+    <time>1540448784</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643406</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a2fb790637d063b615ac16b15da07dd9</srcmd5>
+    <version>0.5.14</version>
+    <time>1544094985</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>650505</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6e00926b93440af4a0e8f430f802b66f</srcmd5>
+    <version>0.6.1</version>
+    <time>1548452601</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>667138</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9dfe262ab5cbec6c05cb654bd61c210b</srcmd5>
+    <version>0.6.1.1</version>
+    <time>1551025120</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>678028</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>258a6225ab3ad405a02ad5538ea99549</srcmd5>
+    <version>0.6.2</version>
+    <time>1551883634</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>681683</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6ec532a46b8d268748fa31db166c15d7</srcmd5>
+    <version>0.6.4</version>
+    <time>1556475170</time>
+    <user>maxlin_factory</user>
+    <comment>version update</comment>
+    <requestid>698551</requestid>
+  </revision>
+</revisionlist>

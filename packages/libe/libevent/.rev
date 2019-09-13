@@ -1,0 +1,284 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>ac3353e501b681cf32b11a369936def1</srcmd5>
+    <version>1.2</version>
+    <time>1168903305</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9d02e2b8539046c76d273d8ba004a4bb</srcmd5>
+    <version>1.3a</version>
+    <time>1172442437</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d97d7f1bd76a8373146bd341e9bee834</srcmd5>
+    <version>1.3b</version>
+    <time>1173104800</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d3a0ff521aabcd942e18060dbe5c468f</srcmd5>
+    <version>1.3e</version>
+    <time>1199136413</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>35e498b0586a1198ebbf0dd916fd8fec</srcmd5>
+    <version>1.4.2</version>
+    <time>1206719777</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>74d66921ce657695d168ac52f9a1dfa6</srcmd5>
+    <version>1.4.3</version>
+    <time>1207692981</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1fd7ae205e158a24346fab20cc5d880a</srcmd5>
+    <version>1.4.5</version>
+    <time>1215545919</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="24">
+    <srcmd5>92f9d3902f2cb502b4a9e378d4b28769</srcmd5>
+    <version>1.4.5</version>
+    <time>1222208359</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a0de2d3c846a0df789a9337b6ce6c19f</srcmd5>
+    <version>1.4.9</version>
+    <time>1237317445</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a0de2d3c846a0df789a9337b6ce6c19f</srcmd5>
+    <version>1.4.9</version>
+    <time>1237317445</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1a3c9c0dfb53af58a4c6ebb876ca0539</srcmd5>
+    <version>1.4.12</version>
+    <time>1257853253</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libevent based on submit request 23992 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>83de1c79a8de6a4365a9a097ac4319ba</srcmd5>
+    <version>1.4.12</version>
+    <time>1268924556</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>83de1c79a8de6a4365a9a097ac4319ba</srcmd5>
+    <version>1.4.12</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>83de1c79a8de6a4365a9a097ac4319ba</srcmd5>
+    <version>1.4.12</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>110ef4d9f6b54ea26357b608488879ff</srcmd5>
+    <version>1.4.14b</version>
+    <time>1285280682</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libevent based on submit request 48983 from user coolo
+</comment>
+    <requestid>48983</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>110ef4d9f6b54ea26357b608488879ff</srcmd5>
+    <version>1.4.14b</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ec2a4476fde742ee9ceafde193e9ee30</srcmd5>
+    <version>2.0.10</version>
+    <time>1300981174</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64828 from user coolo
+</comment>
+    <requestid>64828</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>00d62f3bfe28662df566ad72ae20e483</srcmd5>
+    <version>2.0.10</version>
+    <time>1300981183</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64828
+</comment>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>7585058a85d9e5770193ed426a202e55</srcmd5>
+    <version>2.0.10</version>
+    <time>1312442380</time>
+    <user>saschpe</user>
+    <comment>to fix the unresolvables in Gnome:Apps e.g.transmission 2.33
+
+gruss friseer (forwarded request 77922 from Friseer)</comment>
+    <requestid>77947</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>6b4e051ec0ff1d8928c01516239e5854</srcmd5>
+    <version>2.0.10</version>
+    <time>1312442391</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77947
+</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>6b4e051ec0ff1d8928c01516239e5854</srcmd5>
+    <version>2.0.10</version>
+    <time>1319182088</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>dc8e285cff5f05a7086c95936c7d7e35</srcmd5>
+    <version>2.0.10</version>
+    <time>1323192202</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>5f5523afb73485ebbd6960931d578a4a</srcmd5>
+    <version>2.0.10</version>
+    <time>1329405455</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections per specfile guideline suggestions
+- Use &quot;pkgconfig&quot; BR so that the package also works on Redhats.</comment>
+    <requestid>104848</requestid>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>5f5523afb73485ebbd6960931d578a4a</srcmd5>
+    <version>2.0.10</version>
+    <time>1340183581</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7d0fc77a119a275fdd8c66c22eadb140</srcmd5>
+    <version>2.0.19</version>
+    <time>1344064849</time>
+    <user>coolo</user>
+    <comment>- Libevent 2.0.19
+* Fix periodic timeout behavior when time jumps forwar
+* Avoid certain priority inversions 
+* More evdns improvements
+* lots of other bugfixes, see NEWS for details.
+- Provide openssl support.</comment>
+    <requestid>129542</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d5c09b8690113614debfb9ff9034d101</srcmd5>
+    <version>2.0.20</version>
+    <time>1353267016</time>
+    <user>namtrac</user>
+    <comment>update to 2.0.20 (forwarded request 141597 from AndreasStieger)</comment>
+    <requestid>141610</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d5c09b8690113614debfb9ff9034d101</srcmd5>
+    <version>2.0.20</version>
+    <time>1359109264</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c23d9571ceaaf73b13b6683a021dc058</srcmd5>
+    <version>2.0.21</version>
+    <time>1372527756</time>
+    <user>coolo</user>
+    <comment>update version 2.0.21 (forwarded request 181437 from MargueriteSu)</comment>
+    <requestid>181439</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>c23d9571ceaaf73b13b6683a021dc058</srcmd5>
+    <version>2.0.21</version>
+    <time>1379662940</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>c23d9571ceaaf73b13b6683a021dc058</srcmd5>
+    <version>2.0.21</version>
+    <time>1409301550</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>039fad078269d4edeb65c62b826a4614</srcmd5>
+    <version>2.0.22</version>
+    <time>1425031407</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287256</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>87e499e9fbff7fce1eff45a645026890</srcmd5>
+    <version>2.0.22</version>
+    <time>1426793698</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291000</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>46a9566bfea1e312c8a30a66bb17ca5c</srcmd5>
+    <version>2.1.8</version>
+    <time>1487980002</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459639</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>d5427eb9c8e9357f50e44b4aef1f503f</srcmd5>
+    <version>2.1.8</version>
+    <time>1507391273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530889</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>eafc0cb9e4c7fcf493808eea2260a902</srcmd5>
+    <version>2.1.8</version>
+    <time>1532527522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623241</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9d97fcde0d8db96bef1efd9fc17779f9</srcmd5>
+    <version>2.1.10</version>
+    <time>1560337064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705856</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>ab837982a4309a7a0e7469284cb11589</srcmd5>
+    <version>2.1.10</version>
+    <time>1563017733</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix name of library package (bsc#1138369) (forwarded request 712775 from Andreas_Schwab)</comment>
+    <requestid>712816</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>012b4fb568d31504f980323e712bef00</srcmd5>
+    <version>2.1.11</version>
+    <time>1567679508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725008</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="desktop-data-openSUSE" project="openSUSE:Factory">
+  <title>Shared Desktop Files for openSUSE</title>
+  <description>This package contains shared desktop files, like the default
+applications menu structure and the default wallpaper.</description>
+  <devel project="X11:common:Factory" package="desktop-data-openSUSE"/>
+</package>

@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5b0dc0f0ef8d71b72fba99c3b27d53a2</srcmd5>
+    <version>0.3</version>
+    <time>1332501018</time>
+    <user>coolo</user>
+    <comment>minor fixes and fix copyright</comment>
+    <requestid>109854</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d494f444fff0d6bd7a9945e8f0b7adec</srcmd5>
+    <version>0.3dev_git20120325</version>
+    <time>1336580437</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116932</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d494f444fff0d6bd7a9945e8f0b7adec</srcmd5>
+    <version>0.3dev_git20120325</version>
+    <time>1340184143</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>29f85fafb45f38462bc252c4ed9667a9</srcmd5>
+    <version>0.3dev_git20120325</version>
+    <time>1355919737</time>
+    <user>coolo</user>
+    <comment>- Set ExclusiveArch to x86 and ARM
+  see ptrace.c:88 (forwarded request 145621 from k0da)</comment>
+    <requestid>145680</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>29f85fafb45f38462bc252c4ed9667a9</srcmd5>
+    <version>0.3dev_git20120325</version>
+    <time>1359110284</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>29f85fafb45f38462bc252c4ed9667a9</srcmd5>
+    <version>0.3dev_git20120325</version>
+    <time>1379664449</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c86da65f7d94e13171933345e436bb71</srcmd5>
+    <version>0.5</version>
+    <time>1387798380</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 0.5:
+  + Add an early check and error if attaching a process with
+    children.
+- Changes from version 0.4:
+  + Add support for scripting with the -l flag.
+  + Add a French translation of the man page.
+  + Add a -V flag. (forwarded request 211900 from Zaitor)</comment>
+    <requestid>211902</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c86da65f7d94e13171933345e436bb71</srcmd5>
+    <version>0.5</version>
+    <time>1409303182</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7ea84d1bd7558fec554254a8dfa6b7ed</srcmd5>
+    <version>0.6.2</version>
+    <time>1426680400</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291091</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>113223bb5ccb10357bb64d17482e2f29</srcmd5>
+    <version>0.6.2</version>
+    <time>1490026208</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on Factory, CentOS and RHEL</comment>
+    <requestid>480962</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e5caf41c2c8b8a90a29d813b09f1e40b</srcmd5>
+    <version>0.7.0</version>
+    <time>1544632082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655903</requestid>
+  </revision>
+</revisionlist>

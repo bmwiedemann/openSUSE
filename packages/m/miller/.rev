@@ -1,0 +1,117 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5a9fd04eb03372d2ae0a5e109602dad3</srcmd5>
+    <version>5.0.1</version>
+    <time>1490707284</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>478877</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e155ac53c953f4fdacbcedbf94d06be5</srcmd5>
+    <version>5.1.0</version>
+    <time>1492714624</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>488073</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5b35bd34ca2e498bcfec18af9eb4b37e</srcmd5>
+    <version>5.2.2</version>
+    <time>1503926081</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated license
+- Update to 5.2.2
+  * This bugfix release delivers a fix for #147 where a memory
+    allocation failed beyond 4GB.
+- Update to version 5.2.1
+  * Fixes (gh#johnkerl/miller#142) build segfault on non-x86
+    architectures
+- Update to version 5.2.0
+  This release contains mostly feature requests.
+  Features:
+  * The stats1 verb now lets you use regular expressions to
+    specify which field names to compute statistics on, and/or which
+    to group by. Full details are here.
+  * The min and max DSL functions, and the min/max/percentile
+    aggregators for the stats1 and merge-fields verbs, now support
+    numeric as well as string field values. (For mixed string/numeric
+    fields, numbers compare before strings.) This means in particular
+    that order statistics -- min, max, and non-interpolated
+    percentiles -- as well as mode, antimode, and count are now
+    possible on string-only fields. (Of course, any operations
+    requiring arithmetic on values, such as computing sums, averages,
+    or interpolated percentiles, yield an error on string-valued
+    input.)
+  * There is a new DSL function mapexcept which returns a copy of
+    the argument with specified key(s), if any, unset. The motivating
+    use-case is to split records to multiple filenames depending on
+    particular field value, which is omitted from the output: mlr
+    --from f.dat put 'tee &gt; &quot;/tmp/data-&quot;.$a, mapexcept($*, &quot;a&quot;)'
+    Likewise, mapselect returns a copy of the argument with only
+    specified key(s), if any, set. This resolves #137.
+  * A new -u option for count-distinct allows unlashed counts for
+    multiple field names. For example, with -f a,b and without -u,
+    count-distinct computes counts for distinct pairs of a and b field
+    values. With -f a,b and with -u, it computes counts for distinct a
+    field values and counts for distinct b field values separately.
+  * If you build from source, you can now do ./configure without
+    first doing autoreconf -fiv. This resolves #131.
+  * The UTF-8 BOM sequence 0xef 0xbb 0xbf is now automatically
+    ignored from the start of CSV files. (The same is already done for
+    JSON files.) This resolves #138.
+  * For put and filter with -S, program literals such as the 6 in
+    $x = 6 were being parsed as strings. This is not sensible, since
+    the -S option for put and filter is intended to suppress numeric
+    conversion of record data, not program literals. To get string 6
+    one may use $x = &quot;6&quot;.
+  Documentation:
+  * A new cookbook example shows how to compute differences
+    between successive queries, e.g. to find out what changed in
+    time-varying data when you run and rerun a SQL query.
+  * Another new cookbook example shows how to compute
+    interquartile ranges.
+  * A third new cookbook example shows how to compute weighted
+    means.
+  Bugfixes:
+  * CRLF line-endings were not being correctly autodetected when
+    I/O formats were specified using --c2j et al.
+  * Integer division by zero was causing a fatal runtime
+    exception, rather than computing inf or nan as in the
+    floating-point case.
+</comment>
+    <requestid>518550</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>98fc6d48e14b22e9d4788d7d07f4d956</srcmd5>
+    <version>5.3.0</version>
+    <time>1515505988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562288</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fedb7ada07dda29269eda0f637d083b8</srcmd5>
+    <version>5.4.0</version>
+    <time>1539758380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642015</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6952bb12a3d279314db158ce1fddbce7</srcmd5>
+    <version>5.5.0</version>
+    <time>1567423591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727563</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a715a7fc513d823cb3fb1dfb35a7fb62</srcmd5>
+    <version>5.6.0</version>
+    <time>1568379755</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>730525</requestid>
+  </revision>
+</revisionlist>

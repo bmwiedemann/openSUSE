@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5f365c5b25a747faa291e378a629bdf</srcmd5>
+    <version>1.0.0</version>
+    <time>1447234193</time>
+    <user>dimstar_suse</user>
+    <comment>New package, websocket implementation by author of nghtp2</comment>
+    <requestid>340813</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>948ec776f1344efaff5e78a695f19236</srcmd5>
+    <version>1.0.0</version>
+    <time>1500275528</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510288</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>477ef35bc148b3e1d4b5f50d28bc0c80</srcmd5>
+    <version>1.0.0</version>
+    <time>1512433820</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with -fpermissive to avoid build failure on current TW</comment>
+    <requestid>548030</requestid>
+  </revision>
+</revisionlist>

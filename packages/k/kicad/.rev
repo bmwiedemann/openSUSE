@@ -1,0 +1,293 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a8d8ce0f6574720d4c153b14ae7f397f</srcmd5>
+    <version>20130331</version>
+    <time>1375728300</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>181187</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>660fdf926ca0a504779831d2d9f4181f</srcmd5>
+    <version>20130707</version>
+    <time>1376649746</time>
+    <user>scarabeus_factory</user>
+    <comment>- Removed templates to avoid conflict with kicad-library package
+  * kikad-no-templates-install.patch
+- Removed obsolete kicad-2012.01.19-build-with-old-wxwidgets.patch
+
+- Update to version 20130707
+  * no changelog available
+  * removed obsolete kicad-2012.01.19-gcc-4.7.patch</comment>
+    <requestid>186329</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>660fdf926ca0a504779831d2d9f4181f</srcmd5>
+    <version>20130707</version>
+    <time>1379662802</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>38d5d83f55d2f0f08ae74e500a7c0205</srcmd5>
+    <version>20140120</version>
+    <time>1393394306</time>
+    <user>coolo</user>
+    <comment>- Update to version 20140120
+  * Bug fixes (forwarded request 223838 from Dmitry_R)</comment>
+    <requestid>223841</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>38d5d83f55d2f0f08ae74e500a7c0205</srcmd5>
+    <version>20140120</version>
+    <time>1409301378</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>84449d4f2a8393d932b76f35ac012356</srcmd5>
+    <version>20140120</version>
+    <time>1430595613</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304914</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>d55a06e92f83df234c214244cb610e8c</srcmd5>
+    <version>20140120</version>
+    <time>1435870184</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314537</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0b7a82f57be555eaf47649df165a1480</srcmd5>
+    <version>4.0.0~rc1</version>
+    <time>1446049812</time>
+    <user>dimstar_suse</user>
+    <comment>- Set minimal memory size for building: 3500 Mb
+- Update to version 4.0.0-rc1
+  * Drop kicad-gost package
+  * Drop pre_checkin.sh
+  * Drop container_fwd.hpp.patch
+  * Drop kikad-no-templates-install.patch
+- Change license to &quot;GPL-2.0+ and GPL-3.0+&quot; due to source code changes
+- Use user library instead of system
+  * kicad-user-library.patch
+- Replase kicad-libraries package with kicad-library-install.sh
+  script for creation offline library copy.
+  * kicad-library-repos-install.patch</comment>
+    <requestid>334993</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>908327f948c4d25babe88fa914197834</srcmd5>
+    <version>4.0.0~rc2</version>
+    <time>1447146224</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343091</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a3ed97bb992d381e02f444722e978ee2</srcmd5>
+    <version>4.0.0</version>
+    <time>1449384029</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346955</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>12e37e0c9bc2c2565fa25a8340b80ecb</srcmd5>
+    <version>4.0.0</version>
+    <time>1449687121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347655</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9f9caca48c486ac386084b64ff5d102e</srcmd5>
+    <version>4.0.1</version>
+    <time>1449995997</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>348233</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0b1c6b391945a6a1195f6243c3041f75</srcmd5>
+    <version>4.0.2</version>
+    <time>1459002313</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.2
+  * Bugfix release</comment>
+    <requestid>376554</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7627fb9e3c114c4f9535246566a78b87</srcmd5>
+    <version>4.0.2</version>
+    <time>1462865270</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394220</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>b472c1eadff78ba4834dec6413191b0c</srcmd5>
+    <version>4.0.2</version>
+    <time>1468360330</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407166</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bf5ee8c055bf2815f6439313ee385e9a</srcmd5>
+    <version>4.0.3</version>
+    <time>1472478362</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423573</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c454675cd225e1688090178b212f4202</srcmd5>
+    <version>4.0.4</version>
+    <time>1473798283</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427091</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4b06ed9aea66222f92af4735a1f57ed9</srcmd5>
+    <version>4.0.4</version>
+    <time>1479904647</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441514</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c14c5e02d0261a85dfd6ce9e5012adde</srcmd5>
+    <version>4.0.5</version>
+    <time>1485167726</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450336</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>ca70c31337326c64e5a8b659e9354a50</srcmd5>
+    <version>4.0.5</version>
+    <time>1486465223</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453878</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3257eb86abd33a6e5ff71f732fe30c0a</srcmd5>
+    <version>4.0.6</version>
+    <time>1491469283</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482797</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>62356e004bd64ef1e083fcb9c2134fdf</srcmd5>
+    <version>4.0.7</version>
+    <time>1504617505</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520856</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>3a9f677fcb754dadf593b7193ae5ce45</srcmd5>
+    <version>4.0.7</version>
+    <time>1527583477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612272</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>06ca4ca5663a2f117967f8380a8e8912</srcmd5>
+    <version>5.0.0</version>
+    <time>1536094428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627120</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>161a24f3a432ce7be9a0aec24e4c87b9</srcmd5>
+    <version>5.0.0</version>
+    <time>1537360191</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636353</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>92f95fc00492d11ca27886159ad31414</srcmd5>
+    <version>5.0.0</version>
+    <time>1539757527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641063</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b4f4f1f49e8994f4f1cad3771e6ee2cc</srcmd5>
+    <version>5.0.1</version>
+    <time>1541865409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644975</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2461c9b0a0e0eb351399684ffce88469</srcmd5>
+    <version>5.0.2</version>
+    <time>1545141359</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.0.2</comment>
+    <requestid>657552</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>9be8bbc694de56805323beea5c62376b</srcmd5>
+    <version>5.0.2</version>
+    <time>1550668459</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677538</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cbf2c8cac5a486109db8015efdd7a7e9</srcmd5>
+    <version>5.1.0</version>
+    <time>1553263444</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to minor release 5.1.0
+  This version contains critical bugfixes and minor improvements.
+  See http://kicad-pcb.org/blog/2019/03/KiCad-5.1.0-Release/ for details.
+- Remove obsolete kicad-library-repos-install.patch
+- Remove upstream 0001-Use-absolute-path-CMAKE_INSTALL_FULL_LIBDIR-for-3d-v.patch
+</comment>
+    <requestid>685412</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>220a4efc79d547781e78d9912fd420f6</srcmd5>
+    <version>5.1.0</version>
+    <time>1555237401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693813</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b11b18a15b36f5dea3efc7d4eacc4cf5</srcmd5>
+    <version>5.1.2</version>
+    <time>1556916375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to minor release 5.1.2
+  This version contains critical bugfixes and minor improvements.
+  See http://kicad-pcb.org/blog/2019/04/KiCad-5.1.2-Release/ for details.
+- Update to minor release 5.1.1
+  (Withdrawn due to a critical bug in netlist generation)
+</comment>
+    <requestid>697956</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>222b1812fb988d85acfeeef4be97aafe</srcmd5>
+    <version>5.1.4</version>
+    <time>1565695155</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.1.4</comment>
+    <requestid>722207</requestid>
+  </revision>
+</revisionlist>

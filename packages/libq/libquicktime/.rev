@@ -1,0 +1,492 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d17062d628d9efe7f51a0205b097b6a</srcmd5>
+    <version>0.9.10</version>
+    <time>1168903383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3a9b2ddc8507d68383c12a7ce8b9939a</srcmd5>
+    <version>1.0.0</version>
+    <time>1178292397</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b1dd6c8d624651629143155a097ca15a</srcmd5>
+    <version>1.0.0</version>
+    <time>1178733871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>def39911598cb0cbd1ba8d8138059f5e</srcmd5>
+    <version>1.0.0</version>
+    <time>1179067873</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="30">
+    <srcmd5>b1371cf37ee3ebdf7f4be6bb4c034d24</srcmd5>
+    <version>1.0.0</version>
+    <time>1185632882</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>135d292a5912fa1ecf2fc313f0600a92</srcmd5>
+    <version>1.0.2</version>
+    <time>1208696830</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6215e54ae3d37dd21cb768ee8abc7170</srcmd5>
+    <version>1.0.3</version>
+    <time>1216151986</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7278b65ccc6d5e642156483f9d113a5d</srcmd5>
+    <version>1.0.3</version>
+    <time>1216328362</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>7cdd9ea046219896f65f6ce3c2cf66fa</srcmd5>
+    <version>1.0.3</version>
+    <time>1232626377</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7bd7a99bd91d7596653ad618c4c56574</srcmd5>
+    <version>1.1.1</version>
+    <time>1236554497</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9a3ce0d93e9aa685d7d9eb2e74cfc889</srcmd5>
+    <version>1.1.2</version>
+    <time>1245459297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>762a77b377b3c45b218b5f119c1156db</srcmd5>
+    <version>1.1.3</version>
+    <time>1247606349</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>762a77b377b3c45b218b5f119c1156db</srcmd5>
+    <version>1.1.3</version>
+    <time>1247606349</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>79b9c09b3f290b24f599bb83c9412bed</srcmd5>
+    <version>1.1.4</version>
+    <time>1262939665</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libquicktime based on submit request 28272 from user puzel
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>321d5c0a41f3f419f62f3d23a5790440</srcmd5>
+    <version>1.1.5</version>
+    <time>1267404131</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libquicktime based on submit request 33539 from user puzel
+</comment>
+    <requestid>33539</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c8b0d87831775ff231f3da8b8d9dcbde</srcmd5>
+    <version>1.1.5</version>
+    <time>1268924701</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>c8b0d87831775ff231f3da8b8d9dcbde</srcmd5>
+    <version>1.1.5</version>
+    <time>1278667362</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>c8b0d87831775ff231f3da8b8d9dcbde</srcmd5>
+    <version>1.1.5</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>7452153d79bd62ac67a35c5ab3ac6e38</srcmd5>
+    <version>1.1.5</version>
+    <time>1289410666</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52606 from user puzel
+</comment>
+    <requestid>52606</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>7f1c75bfddba2a26b04dcb2355ce63b0</srcmd5>
+    <version>1.1.5</version>
+    <time>1289410674</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52606
+</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>8d18571b0d6d978cc49adf3c65dacd1e</srcmd5>
+    <version>1.2.0</version>
+    <time>1291306563</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54293 from user puzel
+</comment>
+    <requestid>54293</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>4ae6922e698ae46daf3cf8552157e824</srcmd5>
+    <version>1.2.0</version>
+    <time>1291306571</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54293
+</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>c8f6609df18bb01f18638f6a08531713</srcmd5>
+    <version>1.2.1</version>
+    <time>1291587037</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54762 from user puzel
+</comment>
+    <requestid>54762</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>8a572f7a1d3546ca28f62344f93cdd77</srcmd5>
+    <version>1.2.1</version>
+    <time>1291587043</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54762
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f2f1e341078d7f6dd0fef32db2d7fbba</srcmd5>
+    <version>1.2.2</version>
+    <time>1296767364</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59955 from user plater
+</comment>
+    <requestid>59955</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>0f7a4b73ca96ccdb4457c0528c01c2db</srcmd5>
+    <version>1.2.2</version>
+    <time>1296767378</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59955
+</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>0f7a4b73ca96ccdb4457c0528c01c2db</srcmd5>
+    <version>1.2.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>6f4b6369e169acfd1e4f26f667b519fb</srcmd5>
+    <version>1.2.2</version>
+    <time>1305896375</time>
+    <user>saschpe</user>
+    <comment>- fix baselibs.conf
+- allow GTK deprectaed functions (forwarded request 70624 from RedDwarf)</comment>
+    <requestid>70626</requestid>
+  </revision>
+  <revision rev="29" vrev="7">
+    <srcmd5>af6fc070b665103b0dfb8154982ae4c3</srcmd5>
+    <version>1.2.2</version>
+    <time>1305896401</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70626
+</comment>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>35c1224a6e880e5c59be698946b3647c</srcmd5>
+    <version>1.2.2</version>
+    <time>1309166880</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>74596</requestid>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>26c49be2f78ce62acade4a7570c70ab0</srcmd5>
+    <version>1.2.2</version>
+    <time>1309166891</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74596
+</comment>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>56169108a9ebe33345213cda93d3f878</srcmd5>
+    <version>1.2.3</version>
+    <time>1315762215</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>81700</requestid>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>4f64fa3e4d2bec383f98063d8336ef8e</srcmd5>
+    <version>1.2.3</version>
+    <time>1315762221</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81700
+</comment>
+  </revision>
+  <revision rev="34" vrev="11">
+    <srcmd5>4f64fa3e4d2bec383f98063d8336ef8e</srcmd5>
+    <version>1.2.3</version>
+    <time>1319182126</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="35" vrev="12">
+    <srcmd5>d79defc4357d0b34cab27ec09cf86c5d</srcmd5>
+    <version>1.2.3</version>
+    <time>1323192322</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="36" vrev="13">
+    <srcmd5>868e412a07fc2d0ccfb69e089cbc81d6</srcmd5>
+    <version>1.2.3</version>
+    <time>1330582891</time>
+    <user>coolo</user>
+    <comment>- BuildRequire xorg-x11-devel to build lqtplay</comment>
+    <requestid>107389</requestid>
+  </revision>
+  <revision rev="37" vrev="14">
+    <srcmd5>d24d6967ea78e92b4830967ccb26620d</srcmd5>
+    <version>1.2.3</version>
+    <time>1331627793</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108977</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e1f83c498e9db09957fa485474073726</srcmd5>
+    <version>1.2.4</version>
+    <time>1334641564</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113785</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>e1f83c498e9db09957fa485474073726</srcmd5>
+    <version>1.2.4</version>
+    <time>1340183626</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="40" vrev="5">
+    <srcmd5>e1f83c498e9db09957fa485474073726</srcmd5>
+    <version>1.2.4</version>
+    <time>1359109335</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="6">
+    <srcmd5>a01ddbfd4a7408c10601bda173cfd636</srcmd5>
+    <version>1.2.4</version>
+    <time>1363776336</time>
+    <user>coolo</user>
+    <comment>- builds also with libpng16
+  * libpng16.patch (forwarded request 159799 from pgajdos)</comment>
+    <requestid>159801</requestid>
+  </revision>
+  <revision rev="42" vrev="8">
+    <srcmd5>a01ddbfd4a7408c10601bda173cfd636</srcmd5>
+    <version>1.2.4</version>
+    <time>1379663061</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="9">
+    <srcmd5>6ae200a3c87cf4baef625f7f90b228dc</srcmd5>
+    <version>1.2.4</version>
+    <time>1401641898</time>
+    <user>coolo</user>
+    <comment>- disable timestamps in doxygen, make build-compare happy (forwarded request 235612 from elvigia)</comment>
+    <requestid>235701</requestid>
+  </revision>
+  <revision rev="44" vrev="11">
+    <srcmd5>6ae200a3c87cf4baef625f7f90b228dc</srcmd5>
+    <version>1.2.4</version>
+    <time>1409301687</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="12">
+    <srcmd5>e367538fd45b28052c116f90056066a8</srcmd5>
+    <version>1.2.4</version>
+    <time>1413269952</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253832</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6b7d30ddc8ccff472b3c02cc880f2f25</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1425566232</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288099</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>c67575f1b9580b44a0d3c6698e5864a5</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1450284115</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348393</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>820db856b02effb97a379d5e88847a67</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1456242745</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359972</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>6d83378c7a294e0dcae7f49769a7071c</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1470217117</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415087</requestid>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>6954cda3592432214af5f8905efb7a5e</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1487462273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457113</requestid>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>6294d30c7017398985ed9f7677a4198d</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1487680432</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458986</requestid>
+  </revision>
+  <revision rev="52" vrev="7">
+    <srcmd5>21a680ef0f234a90da9854734fb7ae20</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1491907156</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482872</requestid>
+  </revision>
+  <revision rev="53" vrev="8">
+    <srcmd5>030e285d582e8d7acc8ed19638569dcf</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1498995428</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506702</requestid>
+  </revision>
+  <revision rev="54" vrev="9">
+    <srcmd5>1712cfc248f972366c1c6014463e9b5e</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1499754834</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508087</requestid>
+  </revision>
+  <revision rev="55" vrev="10">
+    <srcmd5>080b8f839f0c865ad6dc8c87e63e3ac7</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1503999685</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518683</requestid>
+  </revision>
+  <revision rev="56" vrev="11">
+    <srcmd5>6c73dbf46f347a6c46ea2a05d0d5617c</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1510045007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539030</requestid>
+  </revision>
+  <revision rev="57" vrev="12">
+    <srcmd5>1142bfc1fd8dc8bb660634ce1face460</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1512292283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546674</requestid>
+  </revision>
+  <revision rev="58" vrev="13">
+    <srcmd5>2e590757dd1277992c0c99b27152e4a2</srcmd5>
+    <version>1.2.4cvs20150223</version>
+    <time>1524742491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599788</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>d4f260574ad9df09c68d0d230d9bac9d</srcmd5>
+    <version>1.2.4+git20180207.666c35c</version>
+    <time>1529919418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.4+git20180207.666c35c:
+  * remove generated file that got committed somehow
+  * cleanup - remove all the .cvsignore files
+  * remove another .cvsignore file
+  * remove typo
+  * add a bunch more generated files to ignore
+  * more files added
+  * add more files
+  * switch to .gitignore from .cvsignore
+  * remove m4/avcodec.m4, not needed with changes to configure.ac
+  * don't need avcodec.m4 with changes to configure.ac
+- Remove merged patches:
+  * libquicktime-1.2.4-integer_overflow.patch
+  * libquicktime-1.2.4-multiple_vulnerabilities.patch
+- Remove all local patches:
+  * libquicktime-faad2.patch
+  * libquicktime-1.2.4-ffmpeg2.patch
+  * libquicktime-1.2.4-ffmpeg29.patch
+  * libquicktime-1.2.4-ffmpeg4.patch
+- Readd patches to be rebased from the git:
+  * 0001-Fix-sizeof-call-in-faad2.patch
+  * 0002-Allow-any-avcodec-to-be-detected-by-configure.patch
+  * 0003-Fix-AVCODEC_HEADER-macro-replacement.patch
+  * 0005-ffmpeg4-conversion-fixing-the-erroring-ones-only.patch
+
+- Switch to Git snapshots as upstream moved to git, use _service
+
+- Remove redone patch:
+  * libquicktime-ffmpeg3.patch
+- Add patch to work with ffmpeg4:</comment>
+    <requestid>616485</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>1f26514b644a4c9d89255ac62761b8c0</srcmd5>
+    <version>1.2.4+git20180804.fff99cd</version>
+    <time>1563223380</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove merged patches:
+  * 0001-Fix-sizeof-call-in-faad2.patch
+  * 0002-Allow-any-avcodec-to-be-detected-by-configure.patch
+  * 0003-Fix-AVCODEC_HEADER-macro-replacement.patch
+  * 0005-ffmpeg4-conversion-fixing-the-erroring-ones-only.patch
+
+- Update to version 1.2.4+git20180804.fff99cd:
+  * Should be LIBAVCODEC_LIBS rather than AVCODEC_LIBS in both configure.ac and plugis/ffmpeg/Makfile/am
+  * ffmpeg4 conversion fixing the erroring ones only
+  * Ignore prepared patches in git checkout
+  * Fix AVCODEC_HEADER macro replacement
+  * Allow any avcodec to be detected by configure
+  * Fix sizeof call in faad2</comment>
+    <requestid>714432</requestid>
+  </revision>
+</revisionlist>

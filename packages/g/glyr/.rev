@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8aa0e2656c9bb7897ae586e8432e2fb6</srcmd5>
+    <version>0.9.8</version>
+    <time>1335190244</time>
+    <user>coolo</user>
+    <comment>Required by the Pragha player (will be submitted later)</comment>
+    <requestid>114931</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1cee822fc8d4fdb053bc367d46f70611</srcmd5>
+    <version>0.9.9</version>
+    <time>1336722402</time>
+    <user>coolo</user>
+    <comment>update to 0.9.9</comment>
+    <requestid>120628</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1cee822fc8d4fdb053bc367d46f70611</srcmd5>
+    <version>0.9.9</version>
+    <time>1340183372</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b257ce3bd5287d9beef6bcd6b4714c51</srcmd5>
+    <version>0.9.9</version>
+    <time>1341813417</time>
+    <user>coolo</user>
+    <comment>- fix libdir for ppc64 (forwarded request 127338 from k0da)</comment>
+    <requestid>127351</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6f8e037f7aa4262043f90867ef0bd9f4</srcmd5>
+    <version>1.0.0</version>
+    <time>1349944866</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137748</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f728f34de1fe88ee3780bb90ce6f08c9</srcmd5>
+    <version>1.0.0</version>
+    <time>1353786900</time>
+    <user>coolo</user>
+    <comment>- glyr-pkgconfig.patch Do not inject bogus extra
+  dependencies into the rest of system. (forwarded request 142456 from elvigia)</comment>
+    <requestid>142629</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>299113120a2c22c6d2b2da63dc659061</srcmd5>
+    <version>1.0.0</version>
+    <time>1355058560</time>
+    <user>namtrac</user>
+    <comment>Forgot to add baselibs.conf.</comment>
+    <requestid>144638</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>299113120a2c22c6d2b2da63dc659061</srcmd5>
+    <version>1.0.0</version>
+    <time>1359108946</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>ea544a176ef89aa97f4f24be6feb8296</srcmd5>
+    <version>1.0.0</version>
+    <time>1362414400</time>
+    <user>coolo</user>
+    <comment>- Properly determine LIB_SUFFIX (forwarded request 157169 from Andreas_Schwab)</comment>
+    <requestid>157170</requestid>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>ea544a176ef89aa97f4f24be6feb8296</srcmd5>
+    <version>1.0.0</version>
+    <time>1379662469</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>06bcfd929952e1e3d4476fdd9c0f98a6</srcmd5>
+    <version>1.0.2</version>
+    <time>1386604462</time>
+    <user>coolo</user>
+    <comment>update to 1.0.2</comment>
+    <requestid>209750</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9f404343676bbbbc9b1bd254507e2e66</srcmd5>
+    <version>1.0.2</version>
+    <time>1388774613</time>
+    <user>coolo</user>
+    <comment>Add/update patches.</comment>
+    <requestid>212594</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f62a669f24ed9795d04cb9abf1b7c2b2</srcmd5>
+    <version>1.0.5</version>
+    <time>1392789315</time>
+    <user>coolo</user>
+    <comment>update to 1.0.5</comment>
+    <requestid>222494</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>f62a669f24ed9795d04cb9abf1b7c2b2</srcmd5>
+    <version>1.0.5</version>
+    <time>1409301005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fbd242f7c9fc488fdba00fd57487a4f3</srcmd5>
+    <version>1.0.7</version>
+    <time>1421052602</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.0.7</comment>
+    <requestid>280779</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f4b84bcab949f2c095b09110ec53104c</srcmd5>
+    <version>1.0.8</version>
+    <time>1424121137</time>
+    <user>coolo</user>
+    <comment>update to 1.0.8</comment>
+    <requestid>286226</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>49cda74c027927cdc46089f72a04b132</srcmd5>
+    <version>1.0.9</version>
+    <time>1464014386</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.0.9</comment>
+    <requestid>397299</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c48a291f0c0bba43770ae3e45ebcf9c8</srcmd5>
+    <version>1.0.10</version>
+    <time>1485250290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442032</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>9742f7973bcfb83291338accaae1217a</srcmd5>
+    <version>1.0.10</version>
+    <time>1485682752</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452805</requestid>
+  </revision>
+</revisionlist>

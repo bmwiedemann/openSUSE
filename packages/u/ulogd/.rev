@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5763f336b540e633614f7d8a28d3ec16</srcmd5>
+    <version>2.0.0.beta4</version>
+    <time>1340725211</time>
+    <user>coolo</user>
+    <comment>Rename package: ulogd2 -&gt; ulogd (upstream name)</comment>
+    <requestid>125230</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dbb1b7865a234b2b88cd0fa026649a6b</srcmd5>
+    <version>2.0.0</version>
+    <time>1340896062</time>
+    <user>coolo</user>
+    <comment>- Update to 2.0.0 final release
+* add documentation about SIGUSR2 handling
+* (compile failure-fixing patches were merged, no functional changes)</comment>
+    <requestid>126260</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8734202d1fc6463be4936d66e84c8222</srcmd5>
+    <version>2.0.1.g11</version>
+    <time>1354888342</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>144459</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8734202d1fc6463be4936d66e84c8222</srcmd5>
+    <version>2.0.1.g11</version>
+    <time>1359110521</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5b845a24176b152d3b4083821677ff08</srcmd5>
+    <version>2.0.2</version>
+    <time>1362746534</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.0.2</comment>
+    <requestid>157932</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>5b845a24176b152d3b4083821677ff08</srcmd5>
+    <version>2.0.2</version>
+    <time>1379664880</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c7c6b020876307ed7d8bf30ecd0a6b51</srcmd5>
+    <version>2.0.3</version>
+    <time>1385817887</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208946</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e24fdd8fcee58f44e90030a93aaf7416</srcmd5>
+    <version>2.0.4</version>
+    <time>1398499921</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>231471</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e24fdd8fcee58f44e90030a93aaf7416</srcmd5>
+    <version>2.0.4</version>
+    <time>1409303567</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>f759accb890a78d3d1fe7a0d743904eb</srcmd5>
+    <version>2.0.4</version>
+    <time>1417809844</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-include-keep-a-copy-of-linux-netfilter_ipv4-ipt_ULOG.patch
+  to cope with new linux-glibc-devel which lacks ipt_ULOG.h needed
+  for compilation. (resolve build failure on new linux-glibc-devel)</comment>
+    <requestid>263954</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5da6f4f4e3d509957f15220f9018c790</srcmd5>
+    <version>2.0.5</version>
+    <time>1431980922</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>307671</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b086fb8c286e6e7726faefc082e525c7</srcmd5>
+    <version>2.0.5</version>
+    <time>1489345536</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop init.d script and insserv use.
+- Propagate useradd failure and abort install if necessary.</comment>
+    <requestid>478684</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>57f0dd9e0f0be505caea5446146b1343</srcmd5>
+    <version>2.0.7</version>
+    <time>1531592643</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621108</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>5c80830730e34c2f466420418695e49a</srcmd5>
+    <version>2.0.7</version>
+    <time>1553263762</time>
+    <user>dimstar_suse</user>
+    <comment>fix build failure:
+
+- Add 0001-build-adjust-configure-for-postgresql-10-11.patch</comment>
+    <requestid>687310</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9c625140eb6b4bddbb8e46661d15d194</srcmd5>
+    <version>1.0.0</version>
+    <time>1485511134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>436640</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>16539f967d907d4032a651df4527c982</srcmd5>
+    <version>1.2.0</version>
+    <time>1487681096</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.2.0:
+  - Fix help msg of node-check and node-recover
+  - Replace 'MagicMock' with 'Mock'
+  - Fix 'type_name' in `openstack cluster profile list`
+  - Add AUTHORS and ChangeLog into gitignore
+  - Delete python bytecode file
+  - key=value should be key2=value2
+  - Fix cluster_id field when listing events
+  - fix indentation of reno toctree
+  - Fix receiver list
+  - Add Constraints support
+  - Make shell main() specify return value in exit code
+  - Changed the link to home-page
+  - Show team and repo badges on README
+  - Add plug-in summary for osc doc
+  - Add sort key &quot;oid&quot; in event list
+  - Fix target ID display when listing actions
+  - Fix `openstack  cluster profile validate` bug
+  - Fix error in policy-show
+  - Trivial: Modify the description of profile validate
+  - Fix error in build-info
+  - Fix `openstack  cluster policy vaildate` bug
+  - Revise help string profile list
+  - Revise key1=value to key1=value1
+  - Add missing requirements
+  - Updated from global requirements
+  - Fix error in do_profile_type_list
+  - Change osprofiler option &quot;--profile&quot; to &quot;--os-profile&quot;
+  - Add receiver type instruction
+  - Release note for python-senlinclient 1.1.0</comment>
+    <requestid>456829</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>28b8552fbf9188015cf4bef2063755e4</srcmd5>
+    <version>1.4.0</version>
+    <time>1503927112</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.4.0
+  - OSC command for node op and cluster op
+  - Enable coverage report in console output
+  - Param &quot;response&quot; is not used any more in
+  - Profile id or name is a default profile
+  - Enable some off-by-default checks
+  - Update reno for stable/ocata
+  - import cli-reference from openstack-manuals
+  - Fix hacking requirement for testing
+  - Cleanup sphinx building
+  - Add filter &quot;user_id&quot; for receiver list
+  - Fix SDK version problem
+  - Revise service list help info
+  - Add --config option parameter for cluster-create command
+  - Delete TODO about event-delete, The event-delete
+  - Revert &quot;Revert &quot;Revert &quot;Revert &quot;Fix `openstack  cluster profile validate` bug&quot;&quot;&quot;&quot;
+  - Initial test hooks for functional test
+  - Avoid import internal classes from SDK (3)
+  - Using fixtures.MockPatch instead of mockpatch.Patch
+  - remove redundant value when cluster-show
+  - Add services list
+  - Update imoprt order
+  - Replaces yaml.load() with yaml.safe_load()
+  - Update and optimize documentation links
+  - Fix openstackdocstheme settings
+  - Fix senlin cluster policy list error
+  - Check node status before do cluster-recover action
+  - Fix `openstack cluster service`
+  - Add user_id in receiver list
+  - Revise `senlin service-list`</comment>
+    <requestid>515018</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b71160701b1dbf995636d2e29651d526</srcmd5>
+    <version>1.5.0</version>
+    <time>1516804087</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.5.0
+  - Add profile type ops cli
+  - Switch to Zuul v3 testing
+  - Update reno for stable/pike
+  - Updated from global requirements
+  - Remove setting of version/release from releasenotes
+  - Imported Translations from Zanata
+  - fixes support for osprofiler
+  - Fix the ineffective url links in python-senlinclient docs
+  - Fix delete cluster/node miss force-delete parameter
+  - Add force parameter for cluster and node deletion
+  - Support node-adopt/preview CLI
+  - Fix unit test failure</comment>
+    <requestid>567284</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>47769770d1f43611d2ee207f70b2e9ed</srcmd5>
+    <version>1.7.0</version>
+    <time>1521499014</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.7.0
+  - Q3 release note
+  - Receiver update faild when action value None
+  - Refactored make_client
+  - Zuul: Remove project name
+  - Retire senlin command line tool
+  - Update the home page
+  - Add support for region_name and interface for client connection
+  - Avoid tox_install.sh for constraints support
+  - Fix cluster/node force delete parameter location error
+  - Add basic functional tests
+  - Updated from global requirements
+  - Delete TODO file support action create,delete operation
+- Switch to stable/queens spec template</comment>
+    <requestid>583358</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6be9aa40e969ae8ef16857b7c2183700</srcmd5>
+    <version>1.8.0</version>
+    <time>1536327570</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633120</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3b59e1070870384ccce20e01e82f6141</srcmd5>
+    <version>1.10.1</version>
+    <time>1556916197</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.10.1
+  - Fix calls to functions removed from openstacksdk
+  - Update json module to jsonutils
+  - Imported Translations from Zanata
+  - Use template for lower-constraints
+  - Enable cluster profile only and replace function test
+  - Fix getting action id in Location header
+  - Use latest senlin microversion for Stein
+  - Change openstack-dev to openstack-discuss
+  - import zuul job settings from project-config
+  - Add Stein release notes
+  - Update reno for stable/rocky
+  - Don't quote {posargs} in tox.ini
+  - add python 3.6 unit test job
+  - Add senlinclient support bandit test
+  - Add Python 3.6 classifier to setup.cfg
+  - Bump openstacksdk to 0.24.0
+  - switch documentation job to new PTI
+  - Update hacking version
+  - Fix _get_config_from_profile key building
+  - Update client to account for 409 error in cluster actions
+  - add python 3.7 unit test job
+  - Update python-senlinclient to use current openstacksdk</comment>
+    <requestid>692878</requestid>
+  </revision>
+</revisionlist>

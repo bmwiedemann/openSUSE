@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f133ec5dade6ba71538953b36f259165</srcmd5>
+    <version>0.0.6</version>
+    <time>1525426276</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-humanhash3 required by mycroft-core</comment>
+    <requestid>603821</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>80d034d50dd1bd0f05a3ee249d4940aa</srcmd5>
+    <version>0.0.6</version>
+    <time>1545647893</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659419</requestid>
+  </revision>
+</revisionlist>

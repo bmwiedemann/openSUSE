@@ -1,0 +1,5 @@
+<package name="python-click-completion" project="openSUSE:Factory">
+  <title></title>
+  <description>Fish, Bash, Zsh and PowerShell completion for Click</description>
+  <devel project="devel:languages:python" package="python-click-completion"/>
+</package>

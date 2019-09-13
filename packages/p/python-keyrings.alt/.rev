@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b3ccd945c1853100ce2957aca79e8a6e</srcmd5>
+    <version>3.1</version>
+    <time>1545223790</time>
+    <user>dimstar_suse</user>
+    <comment>Alternate keyring implementations</comment>
+    <requestid>652724</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5d3b5d5067ce45c18ec947284fc54d7c</srcmd5>
+    <version>3.1.1</version>
+    <time>1551687700</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary build dependencies like tox, flake8 and pytest-sugar
+- Activate test suite, and isolate it from python-keyring's test suite
+- Update to v3.1.1
+  * Trap AttributeError in Gnome backend as in some environments
+    it seems that will happen.
+  * Fix issue where a backslash in the service name would cause
+    errors on Registry backend on Windows.
+
+- initial version for v3.1</comment>
+    <requestid>679752</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a1ca33ff4f7c2617fdb594616640b03d</srcmd5>
+    <version>3.1.1</version>
+    <time>1552380752</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the test isolation until upstream issue is fixed properly:
+  * https://github.com/jaraco/keyrings.alt/issues/33</comment>
+    <requestid>682035</requestid>
+  </revision>
+</revisionlist>

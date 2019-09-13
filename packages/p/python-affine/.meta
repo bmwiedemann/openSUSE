@@ -1,0 +1,5 @@
+<package name="python-affine" project="openSUSE:Factory">
+  <title>Affine</title>
+  <description>Matrices describing affine transformation of the plane.</description>
+  <devel project="Application:Geo" package="python-affine"/>
+</package>

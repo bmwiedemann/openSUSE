@@ -1,0 +1,198 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4e69a6ef60f4d5e0ba7fa75cac28208</srcmd5>
+    <version>0.15</version>
+    <time>1309532407</time>
+    <user>darix</user>
+    <comment>Please add python-pybtex, a BibTeX drop-in replacement, bibliography format converter which includes a python interface to bibliography formats</comment>
+    <requestid>74783</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5746190371940fe4b938e415410bf9a2</srcmd5>
+    <version>0.15</version>
+    <time>1309532432</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 74783
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>5746190371940fe4b938e415410bf9a2</srcmd5>
+    <version>0.15</version>
+    <time>1319182401</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6e617b01e5f6edcd8e82b25a27f0b26b</srcmd5>
+    <version>0.15</version>
+    <time>1323194229</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fae9305ca91d04f81a4834e8127d0fe4</srcmd5>
+    <version>0.16</version>
+    <time>1337195357</time>
+    <user>coolo</user>
+    <comment>- update to version 0.16
+  - BibTeX .bib and .bst parsers were completely rewritten; they
+    are now much faster and more BibTeX-compatible
+  - syntax errors and undefined strings in .bib files now result in
+    warnings instead of errors, like in BibTeX
+  - unused entries in .bib files are now skipped, like in BibTeX
+  - the case of entry keys is now preserved (in previous versions
+    they were converted to lowercase)
+  - pythonic style engine now supports sorting
+  - pythonic style engine: fixed nested optional() blocks
+  - fixed parsing of some names with a Last part but no von part
+  - fixed processing of brace-level-one &quot;special characters&quot; in
+    purify$ BibTeX built-in function
+  - added proper error messages on encoding errors in .bib files
+  - the default encoding is now UTF-8 on all platforms
+  - pybtex-convert now preserves the order of entries in BibTeX and
+    BibTeXML files
+  - fixed first_of behavior when non-empty child is followed by a
+    child that has a missing field
+  - fixed crossref lookups when key is not lower case
+  - completed unsrt and plain python styles: they now contain all
+    entry types
+  - added doctree backend for rendering into a tree of docutils
+    nodes
+  - added support for non-string backends</comment>
+    <requestid>121171</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>fae9305ca91d04f81a4834e8127d0fe4</srcmd5>
+    <version>0.16</version>
+    <time>1340184080</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>fae9305ca91d04f81a4834e8127d0fe4</srcmd5>
+    <version>0.16</version>
+    <time>1359110096</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>fae9305ca91d04f81a4834e8127d0fe4</srcmd5>
+    <version>0.16</version>
+    <time>1379664251</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8abcad14ab2e431cc33debbd4a3c08ce</srcmd5>
+    <version>0.17</version>
+    <time>1401184958</time>
+    <user>coolo</user>
+    <comment>- update to version 0.17
+  - Added pybtex-format utility for formatting bibliography files
+    as HTML, LaTeX, and other supported human-readable formats.
+  - Added --strict command line option (all warnings become
+    errors).
+  - Added alpha label style, and alpha and unsrtalpha formatting
+    styles.
+  - Added support for url, eprint, doi, and pubmed fields in unsrt
+    style.
+  - Names with hyphens are now abbreviated correctly
+    (&quot;Jean-Baptiste&quot; becomes &quot;J.-B.&quot;).
+  - width$ now uses cmr10 font metrics, like in BibTeX. Non-latin
+    characters are also supported.
+  - Pythonic style engine now supports @preamble commands.
+  - Warning on missing fields are now more human-readable.
+  - When writing BibTeX files, put entry key on the same line with
+    entry type. Fixes warnings in Jabref.
+  - When using multiple .bib files, macros defined in earlier files
+    are available in subsequent ones (like in BibTeX).
+  - Fixed parsing .bst files with lines consisting of a single %
+    character.
+  - Fixed sorting entries without author in author_year_title
+    sorting style.
+  - Fixed broken CaseInsensitiveDict.get().
+  - CaseInsensitiveDict is now pickleable.
+  - Added support for registering plugins at runtime with
+    pybtex.plugin.register_plugin() - useful for using pybtex as a
+    library.</comment>
+    <requestid>235424</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8d8109307e7cab18bc7f7cad9ed3089a</srcmd5>
+    <version>0.18</version>
+    <time>1409118388</time>
+    <user>coolo</user>
+    <comment>- update to version 0.18
+  - Pybtex is now fully case-insensitive (like BibTeX). As a
+    consequence, IEEEtran styles now work corretly.
+  - Added ``--preserve-case`` optoin to ``pybtex-convert`` (by
+    default all identifiers are converted to lower case).
+  - An erorr is reported if two citations have the same key but
+    different case, like in BibTeX. (Example: ddt1999 and DDT1999).
+  - Fixed parsing unused bibliography entries with strings
+    containing @ characters.
+  - ``entry.max$`` constant is now set to 250, ``global.max$`` is
+    set to 20000, like in BibTeX.
+  - Added ``--strict`` option to ``pybtex-convert`` and
+    ``pybtex-format`` (turns warning to errors).
+  - Strict mode is now enabled by default when using pybtex as a
+    library (exceptions are raised on all errors instead of just
+    printing warnings to stderr).
+    Non-strict error handling is still enabled when using pybtex
+    from the command line, for compatibility with BibTeX. Use
+    ``--strict`` option if you don't like this.
+  - Added missing pybtex-format manpage.</comment>
+    <requestid>246434</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>8d8109307e7cab18bc7f7cad9ed3089a</srcmd5>
+    <version>0.18</version>
+    <time>1409302952</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>8246d9c3e970e0629320ea844fab1a64</srcmd5>
+    <version>0.18</version>
+    <time>1436888669</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316320</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>845e8943152f40191c181c5ef90c16cb</srcmd5>
+    <version>0.19</version>
+    <time>1450856983</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349284</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e5784f2f62b1b68d4df61aac19c3c42b</srcmd5>
+    <version>0.21</version>
+    <time>1515342164</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21:
+  * BibTeX writer now uses latexcodec to encode characters that are
+    not directly supported by the output encoding. Thanks, Hong Xu!
+  * HTML backend: {braced stings} are now wrapped with
+    &lt;span class=&quot;bibtex-protected&quot;&gt; to enable custom CSS styling.
+  * unsrt.py: DOI, PubMed and Arxiv links now use HTTPS instead of
+    HTTP.
+  * unsrt.py: URLs with percent characters are now formatted
+    correctly.
+  * unsrt.py: short page / volume / chapter numbers are now joined
+    with a non-breaking space, like in BibTeX.
+  * unsrt.py: inbook now uses the editor field if the author field
+    is missing, like in BibTeX.
+  * unsrt.py: the words “volume” and “pages” in the beginning of
+    the sentence are now capitalized, like in BibTeX.
+  * unsrt.py: removed unnecessary period between the book title and
+    the comma in inbook.
+  * LaTeX backend: fix encoding tilde (&quot;~&quot;) characters with newer
+    versions of latexcodec.
+  * Fix splitting names with escaped space (&quot;\ &quot;) characters.
+- Convert to singlespec
+</comment>
+    <requestid>561638</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>f3e07fd1d564b444d234cdab77baaf64</srcmd5>
+    <version>2.16</version>
+    <time>1306311303</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66768</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>300c7dc7c4dd64c4d4900e9d36f1bee0</srcmd5>
+    <version>2.16</version>
+    <time>1306311314</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66768
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>607d59f5989cc40f5cb5d34023bbbb73</srcmd5>
+    <version>2.16</version>
+    <time>1306314969</time>
+    <user>saschpe</user>
+    <comment>- Add Switch-2.16-perl514.patch: fix test failures with Perl 5.14,
+  RT #60380 
+
+- recreated by cpanspec 1.78.04</comment>
+    <requestid>71233</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>a4db6ac62d173620b4716e31ba4f8b29</srcmd5>
+    <version>2.16</version>
+    <time>1306314978</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71233
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>a4db6ac62d173620b4716e31ba4f8b29</srcmd5>
+    <version>2.16</version>
+    <time>1319182308</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>1530fbb80e5d53740d57cddce6ef4e9d</srcmd5>
+    <version>2.16</version>
+    <time>1323193668</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>1530fbb80e5d53740d57cddce6ef4e9d</srcmd5>
+    <version>2.16</version>
+    <time>1340183922</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>1530fbb80e5d53740d57cddce6ef4e9d</srcmd5>
+    <version>2.16</version>
+    <time>1359109802</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>1530fbb80e5d53740d57cddce6ef4e9d</srcmd5>
+    <version>2.16</version>
+    <time>1379663850</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>1530fbb80e5d53740d57cddce6ef4e9d</srcmd5>
+    <version>2.16</version>
+    <time>1409302492</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>80c9b29682f707b11a0c4092d4ed75ca</srcmd5>
+    <version>2.17</version>
+    <time>1410967474</time>
+    <user>coolo</user>
+    <comment>- updated to 2.17
+    - tests fixed
+    - patch by Father Chrysostomos
+    - many warnings
+    - recommendation to use given/when
+- removed upstreamed Switch-2.16-perl514.patch</comment>
+    <requestid>249365</requestid>
+  </revision>
+</revisionlist>

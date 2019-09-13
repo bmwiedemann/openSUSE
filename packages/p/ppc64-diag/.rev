@@ -1,0 +1,388 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3596db570312f7719754da2edfb769a</srcmd5>
+    <version>2.3.1</version>
+    <time>1222093746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5927cce0c352aff80e3660d42d8ecd83</srcmd5>
+    <version>2.3.1</version>
+    <time>1222434562</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b5f266de7eb65518e8d05a45dd9fd541</srcmd5>
+    <version>2.3.1</version>
+    <time>1227192260</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>da28316d115077353e6e6ed7f1cd9f6f</srcmd5>
+    <version>2.3.1</version>
+    <time>1228535171</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>362ba3e4ceadf24ebd2cabed81c40d11</srcmd5>
+    <version>2.3.1</version>
+    <time>1228794368</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>72cfc3392ff74d976cccc4dd63b30838</srcmd5>
+    <version>2.3.1</version>
+    <time>1232327897</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>fcb6231924fed584944fdc10a43c3005</srcmd5>
+    <version>2.3.1</version>
+    <time>1245277085</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>fcb6231924fed584944fdc10a43c3005</srcmd5>
+    <version>2.3.1</version>
+    <time>1245277085</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>77498a0e4075b7b37263ae4fa6fea5a3</srcmd5>
+    <version>2.3.1</version>
+    <time>1268925778</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>77498a0e4075b7b37263ae4fa6fea5a3</srcmd5>
+    <version>2.3.1</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>77498a0e4075b7b37263ae4fa6fea5a3</srcmd5>
+    <version>2.3.1</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>77498a0e4075b7b37263ae4fa6fea5a3</srcmd5>
+    <version>2.3.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>77498a0e4075b7b37263ae4fa6fea5a3</srcmd5>
+    <version>2.3.1</version>
+    <time>1319182368</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>25fbe9a7dd6571863ad7ad4a2a7024d9</srcmd5>
+    <version>2.4.2</version>
+    <time>1320672564</time>
+    <user>coolo</user>
+    <comment>- update to 2.4.2 
+  - Minor modifications to GPFS catalog files 
+    and syslog_to_svclog.cpp
+  - Added gpfs files to the catalog, updated ppc64-diag-setup 
+    notification commands
+  - Changed Makefiles and rules.mk to build for the default 
+    architecture rather than -m32
+  - Added ELA code to the package, made changes to the rules.mk 
+    and minor changes to the spec file
+  - Bug fix adding in support for -e and -l, so that root users can
+    be notified of serviceable events. Addresses bug #26192
+  - Added SIGCHLD handler to clean up servicelog notification 
+    scripts
+  - Removed all absolute path references, specifically 
+    to /sbin/lsvpd and lsvpd (forwarded request 90025 from k0da)</comment>
+    <requestid>90109</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6cc126d08c5786e1f9f14859c82c4e1d</srcmd5>
+    <version>2.4.3</version>
+    <time>1336035592</time>
+    <user>coolo</user>
+    <comment>- Change upstream Url
+- fix build with gcc 4.7
+- update to 2.4.3
+  - Added message catalogs for the ipr, ixgb, lpfc, and qla2xxx 
+    drivers
+  - Removed obsolete ppc64_diag_servagent script (forwarded request 115201 from k0da)</comment>
+    <requestid>115202</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>350e0207b74bbcdb01f3df277f76f901</srcmd5>
+    <version>2.4.3</version>
+    <time>1339761913</time>
+    <user>coolo</user>
+    <comment>license update: EPL-1.0
+SPDX format (http://www.spdx.org/licenses) (forwarded request 124928 from babelworx)</comment>
+    <requestid>124971</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>350e0207b74bbcdb01f3df277f76f901</srcmd5>
+    <version>2.4.3</version>
+    <time>1340184016</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6fbeab6ea4b8d570bc6e641eb72f885b</srcmd5>
+    <version>2.5.0</version>
+    <time>1355733426</time>
+    <user>coolo</user>
+    <comment>- update to 2.5.0
+  No upstream changelog provided 
+- add systemd service for rtas_errd (forwarded request 145085 from k0da)</comment>
+    <requestid>145094</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3aa23031755df98a94e6c67a866f8233</srcmd5>
+    <version>2.6.0</version>
+    <time>1356098162</time>
+    <user>coolo</user>
+    <comment>- update to 2.6.0:
+  * Added Light Path Diagnostics code. (moved from powerpc-utils)
+  * Introduced new options to diag_encl command (Jim).
+  * Added bluehawk enclosure diagnostics support (Jim).
+  * Introduced new command &quot;encl_led&quot; to modify identify/fault 
+     indicators for SCSI enclosures (Jim).
+- update ppc64-diag.rtas_errd.patch to not have references to 
+  /var/lock/subsys
+- add ncurses-devel and libvpd2-devel to BuildRequires (forwarded request 146108 from k0da)</comment>
+    <requestid>146115</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>3aa23031755df98a94e6c67a866f8233</srcmd5>
+    <version>2.6.0</version>
+    <time>1359109948</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>48bd130bcb25e167d3008a10609526fc</srcmd5>
+    <version>2.6.1</version>
+    <time>1361821235</time>
+    <user>coolo</user>
+    <comment>- Update to 2.6.1:
+  * Add Handler to handle PRRN RTAS notification
+  * Drop upstreamed ppc64-diag.unistd.patch
+  * Update package desription (forwarded request 156265 from k0da)</comment>
+    <requestid>156266</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>48bd130bcb25e167d3008a10609526fc</srcmd5>
+    <version>2.6.1</version>
+    <time>1379664062</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>1a6b272a0981f00d3bd74afa0906068d</srcmd5>
+    <version>2.6.1</version>
+    <time>1386773031</time>
+    <user>coolo</user>
+    <comment>- enable ppc64le (forwarded request 210435 from k0da)</comment>
+    <requestid>210441</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bc3299c057510af9cec42035825105d3</srcmd5>
+    <version>2.6.2</version>
+    <time>1391082745</time>
+    <user>coolo</user>
+    <comment>- drop ppc64-diag.unistd.patch 
+
+- version update to 2.6.2 (FATE#315459) 
+  - Minor bug fix in diag_encl and encl_led
+- drop ppc64-diag.makefile.patch</comment>
+    <requestid>214763</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>40cc041d70244efd69c126c86978aef5</srcmd5>
+    <version>2.6.3</version>
+    <time>1394555303</time>
+    <user>coolo</user>
+    <comment>version update to 2.6.3 (BNC#867346, FATE#315459) (forwarded request 225432 from jloeser)</comment>
+    <requestid>225433</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4b7f298345f991fbae1b3e75e4b05404</srcmd5>
+    <version>2.6.4</version>
+    <time>1396622487</time>
+    <user>coolo</user>
+    <comment>remove ppc64.stop_service.patch (forwarded request 228068 from jloeser)</comment>
+    <requestid>228302</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8408000507876cab4dea267d2e3b2308</srcmd5>
+    <version>2.6.6</version>
+    <time>1403070624</time>
+    <user>coolo</user>
+    <comment>- Fix Source url 
+
+- added necessary macros for systemd files
+
+- version update to 2.6.6 (BNC#875775)
+  * No upstream changelog provided
+  * need to add include/ncurses path for menu.h in lpd/lp_diag.c 
+- added patches:
+  * ppc64-diag.add_ncurses_include_path.patch</comment>
+    <requestid>235217</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>288249e240998e724a4e78d2e9d026d0</srcmd5>
+    <version>2.6.6</version>
+    <time>1403615774</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238406</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>3bc5bc7bca97d10e2856fb1b07f83802</srcmd5>
+    <version>2.6.6</version>
+    <time>1406272138</time>
+    <user>coolo</user>
+    <comment>- Fix download URL once again 
+
+- Also run the systemd %post snippets within chroots, otherwise
+  we will enable the service (as we always install in chroots).
+  bnc#882450
+- the %service snippets take argument lists.
+
+- updated ppc64-diag-tmpraces.patch to include proper permissions
+  (bnc#882667, CVE-2014-4039)
+- added missing pclose and fclose in default path of get_dt_status()</comment>
+    <requestid>241884</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>3bc5bc7bca97d10e2856fb1b07f83802</srcmd5>
+    <version>2.6.6</version>
+    <time>1409302741</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2d48d820743d5b4b4c9cd98b7fb984cc</srcmd5>
+    <version>2.6.7</version>
+    <time>1410361338</time>
+    <user>coolo</user>
+    <comment>- Fix download service 
+
+- version update to 2.6.7 (BNC#894846)
+  no upstream changelog provided 
+- modified patches:
+  * ppc64-diag-tmpraces.patch
+  * ppc64-diag.add_ncurses_include_path.patch
+  * ppc64-diag.opal_errd.patch
+  * ppc64-diag.rtas_errd.patch
+  * ppc64-diag.varunused.patch</comment>
+    <requestid>248154</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>82b8f31d868ba5a6bec1965e4a165674</srcmd5>
+    <version>2.6.7</version>
+    <time>1411987217</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252498</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>465c6591c3707aba0f273cb90df8048a</srcmd5>
+    <version>2.6.8</version>
+    <time>1433845484</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311195</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7b3ce35317efeb8dd36a7b5f5fb7c51d</srcmd5>
+    <version>2.6.9</version>
+    <time>1438421829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>318893</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>82ccbec951b2b5f84b71ca38add63729</srcmd5>
+    <version>2.6.9</version>
+    <time>1443335980</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>331674</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>292257417d4367f67ee2e3c5b5675b3e</srcmd5>
+    <version>2.7.1</version>
+    <time>1465480988</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394340</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>edb58992a64af97b2575d2c3a01d0785</srcmd5>
+    <version>2.7.2</version>
+    <time>1476997772</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436100</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3b94c63c14296f21c6bb00930c11d209</srcmd5>
+    <version>2.7.3</version>
+    <time>1488480199</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461694</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>da2ec43814c50a40641b4506bd74d21d</srcmd5>
+    <version>2.7.4</version>
+    <time>1508770415</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535938</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>719d33327e4f760a1d2f00b2c1ff942a</srcmd5>
+    <version>2.7.4</version>
+    <time>1513677563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558183</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>e0abde371e9a377ac6748955f4343f34</srcmd5>
+    <version>2.7.4</version>
+    <time>1542012362</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648384</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>8d9189e8f434c0a0a9bb5f9d90389cda</srcmd5>
+    <version>2.7.4</version>
+    <time>1548335585</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop pointless _service file
+- Format with spec-cleaner
+
+- If a system does not have any enclosures, let the daily cron
+  script &quot;run_diag_encl&quot;exit gracefully to prevent bogus
+  error messages in root's mailbox.
+  [bsc#1113097, bsc1113097-run_diag_encl-exit-gracefully.patch]</comment>
+    <requestid>667733</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a1ae0e1867c3151f1b15c73f0589dca4</srcmd5>
+    <version>2.7.5</version>
+    <time>1556817492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699671</requestid>
+  </revision>
+</revisionlist>

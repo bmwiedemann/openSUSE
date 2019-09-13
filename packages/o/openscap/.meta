@@ -1,0 +1,9 @@
+<package name="openscap" project="openSUSE:Factory">
+  <title>Open security access protocols</title>
+  <description>OpenSCAP is a set of open source libraries providing an easier path for integration of the SCAP line of standards.
+
+SCAP is a line of standards managed by NIST with the goal of providing a standard language for the expression of Computer Network Defense related information.
+
+More information about SCAP can be found at nvd.nist.gov. </description>
+  <devel project="security" package="openscap"/>
+</package>

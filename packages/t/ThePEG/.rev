@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e77d9cf76d0389a232f7faa68ef08411</srcmd5>
+    <version>1.9.0</version>
+    <time>1399377820</time>
+    <user>coolo</user>
+    <comment>New package: ThePEG - A high energy physics package.
+
+Depends on 
+* https://build.opensuse.org/request/show/230710
+* https://build.opensuse.org/request/show/230714</comment>
+    <requestid>231499</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e77d9cf76d0389a232f7faa68ef08411</srcmd5>
+    <version>1.9.0</version>
+    <time>1409300451</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f351fe2beddce3e8f0af9539990e72f4</srcmd5>
+    <version>1.9.2</version>
+    <time>1409914807</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247632</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1608673582168219b06e6ac72680aeec</srcmd5>
+    <version>1.9.2</version>
+    <time>1466501453</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403539</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7ff3aae72beeec79f75ea282d6957239</srcmd5>
+    <version>2.0.4</version>
+    <time>1479151001</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440166</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>07e2abdc128c2a3d5c83f2a60172556f</srcmd5>
+    <version>2.0.4</version>
+    <time>1486465511</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454772</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>a8930102f45719f105cf60163b778a48</srcmd5>
+    <version>2.0.4</version>
+    <time>1489345220</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename from libThePEG24 to ThePEG-libs as the package does not
+  satisfy the SLPP guideline: there are a number of non-.so.24
+  files. (forwarded request 456898 from jengelh)</comment>
+    <requestid>476778</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c11c51c11fc3e96fa96f7ebbfd6a4e4a</srcmd5>
+    <version>2.1.1</version>
+    <time>1503593053</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514123</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2270bb0b9f8ecde42b169eb38726bb5b</srcmd5>
+    <version>2.1.1</version>
+    <time>1505334690</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522237</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a441bb36129bebbe8328985d7a405088</srcmd5>
+    <version>2.1.1</version>
+    <time>1506524124</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528886</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3ce367d642481210b56a69b9b92c9f9c</srcmd5>
+    <version>2.1.2</version>
+    <time>1509722841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538337</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>04df24a2e7fddfeea48e02eba4bfad2e</srcmd5>
+    <version>2.1.3</version>
+    <time>1526371469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603190</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>88809be9611ecb5f609ce811e3ba0158</srcmd5>
+    <version>2.1.5</version>
+    <time>1557142002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700426</requestid>
+  </revision>
+</revisionlist>

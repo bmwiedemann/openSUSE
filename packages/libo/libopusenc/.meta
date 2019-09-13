@@ -1,0 +1,5 @@
+<package name="libopusenc" project="openSUSE:Factory">
+  <title>libopusenc</title>
+  <description>A library that provides an easy way to encode Ogg Opus files</description>
+  <devel project="multimedia:libs" package="libopusenc"/>
+</package>

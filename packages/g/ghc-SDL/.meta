@@ -1,0 +1,5 @@
+<package name="ghc-SDL" project="openSUSE:Factory">
+  <title></title>
+  <description>Simple DirectMedia Layer (libSDL) is a cross-platform multimedia library designed to provide low level access to audio, keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer. It is used by MPEG playback software, emulators, and many popular games, including the award winning Linux port of &quot;Civilization: Call To Power.&quot;</description>
+  <devel project="devel:languages:haskell" package="ghc-SDL"/>
+</package>

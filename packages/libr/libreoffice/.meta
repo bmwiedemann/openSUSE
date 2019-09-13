@@ -1,0 +1,39 @@
+<package name="libreoffice" project="openSUSE:Factory">
+  <title>A Free Office Suite (Framework)</title>
+  <description>LibreOffice is a comprehensive office package featuring a word
+processor, a spreadsheet, a presentation program, and much more. This
+package provides only the basic framework. You have to install the
+additional modules to get the required functionality, see packages:
+
+- libreoffice-base
+
+- libreoffice-calc
+
+- libreoffice-draw
+
+- libreoffice-impress
+
+- libreoffice-math
+
+- libreoffice-writer
+
+Some optional features are provided by extra packages, for example:
+
+- libreoffice-mailmerge
+
+- libreoffice-filters
+
+- libreoffice-kde
+
+- libreoffice-gnome
+
+Non-English localizations are provided by extra packges as well, for
+example:
+
+- libreoffice-de
+
+- libreoffice-fr
+
+- libreoffice-it</description>
+  <devel project="LibreOffice:Factory" package="libreoffice"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="osinfo-db" project="openSUSE:Factory">
+  <title>osinfo database files</title>
+  <description>The osinfo database provides information about operating systems and
+hypervisor platforms to facilitate the automated configuration and
+provisioning of new virtual machines</description>
+  <devel project="Virtualization" package="osinfo-db"/>
+</package>

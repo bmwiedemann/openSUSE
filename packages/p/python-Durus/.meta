@@ -1,0 +1,6 @@
+<package name="python-Durus" project="openSUSE:Factory">
+  <title></title>
+  <description>Serves and manages changes to persistent objects being used in
+multiple client processes.</description>
+  <devel project="devel:languages:python" package="python-Durus"/>
+</package>

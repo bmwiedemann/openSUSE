@@ -1,0 +1,342 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c413d50605c9410b7d90349c3decf7e3</srcmd5>
+    <version>0.6.4</version>
+    <time>1343661192</time>
+    <user>namtrac</user>
+    <comment>Please add</comment>
+    <requestid>129081</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f1472b552cda83c38c70fd1d4eaada85</srcmd5>
+    <version>0.6.4</version>
+    <time>1358198681</time>
+    <user>coolo</user>
+    <comment>Add python3 support (forwarded request 148139 from posophe)</comment>
+    <requestid>148362</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f1472b552cda83c38c70fd1d4eaada85</srcmd5>
+    <version>0.6.4</version>
+    <time>1359110004</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6ab24a155638cb39bdccc924063739df</srcmd5>
+    <version>0.6.5.1</version>
+    <time>1367487285</time>
+    <user>coolo</user>
+    <comment>- update to 0.6.5.1: 
+  * Fix requires to python-pyparsing (forwarded request 173721 from dirkmueller)</comment>
+    <requestid>173794</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>bd02b902979cb01b7aaf056ab6c3d1a9</srcmd5>
+    <version>0.6.5.1</version>
+    <time>1371652041</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179759</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8f72673caee01465bcd8f94a7466b2b0</srcmd5>
+    <version>0.6.5.1</version>
+    <time>1375125027</time>
+    <user>coolo</user>
+    <comment>- Backport editor stderr fix (forwarded request 184332 from dheidler)</comment>
+    <requestid>184574</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6dfbb9b50503434809f89042407fe221</srcmd5>
+    <version>0.6.6</version>
+    <time>1376562542</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 0.6.6:
+  * include editor search stderr fix (forwarded request 186919 from dirkmueller)</comment>
+    <requestid>186934</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>743c3457efe2b7979b972eec214e2e01</srcmd5>
+    <version>0.6.6.1</version>
+    <time>1378238580</time>
+    <user>coolo</user>
+    <comment>- update to 0.6.6.1:
+  * go back to pyparsing 1.5.7 (forwarded request 197217 from dirkmueller)</comment>
+    <requestid>197220</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>743c3457efe2b7979b972eec214e2e01</srcmd5>
+    <version>0.6.6.1</version>
+    <time>1379664144</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>9ffd2e57d406a333bf3e24efd4bda7bc</srcmd5>
+    <version>0.6.6.1</version>
+    <time>1379926568</time>
+    <user>coolo</user>
+    <comment>- Add cmd2-pyparsing201.patch: Allow running with pyparsing&gt;=2.0.1</comment>
+    <requestid>199492</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1520b1fa8d61d41f6bde8fd315b3da9e</srcmd5>
+    <version>0.6.7</version>
+    <time>1380608821</time>
+    <user>coolo</user>
+    <comment>- update to 0.6.7:
+  * various python 3.x compat fixes
+- remove cmd2-pyparsing201.patch, merged upstream (forwarded request 201200 from dirkmueller)</comment>
+    <requestid>201417</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>1520b1fa8d61d41f6bde8fd315b3da9e</srcmd5>
+    <version>0.6.7</version>
+    <time>1409302834</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>04256cd8c5a8926c90d0fa9e9fdeed88</srcmd5>
+    <version>0.6.8</version>
+    <time>1420833059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280589</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f52021bd8f45ecbefd4856fe459cb592</srcmd5>
+    <version>0.6.9</version>
+    <time>1480018980</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441229</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2065a1e445046338dcf13b64ec45dc9c</srcmd5>
+    <version>0.7.5</version>
+    <time>1502562404</time>
+    <user>maxlin_factory</user>
+    <comment>- convert to singlespec
+
+- update to 0.7.5:
+  * `case_insensitive` is no longer a runtime-settable parameter, but it was still listed as such
+  * Fixed a recursive loop bug when abbreviated commands are enabled and it could get stuck in the editor forever
+  * Fixed argparse_example.py and pirate.py examples and transcript_regex.txt transcript
+  * Fixed a bug in a unit test which occurred under unusual circumstances
+  * Organized all attributes used to configure the ParserManager into a single location
+  * Set the default value of `abbrev` to `False` (which controls whether or not abbreviated commands are allowed)
+  * Improved implementation of `load` to use command queue instead of nested inner loop
+  * Fixed a couple bugs in interacting with pastebuffer/clipboard on macOS and Linux
+  * Fixed a couple bugs in edit and save commands if called when history is empty
+  * Ability to pipe ``cmd2`` command output to a shell command is now more reliable, particularly on Windows
+  * Fixed a bug in ``pyscript`` command on Windows related to ``\`` being interpreted as an escape
+  * Ensure that path and shell command tab-completion results are alphabetically sorted
+  * Removed feature for load command to load scripts from URLS
+  * Removed presence of a default file name and default file extension
+  * ``load`` command has better error checking and reporting
+  * Clipboard copy and paste functionality is now handled by the **pyperclip** module
+  * ``shell`` command now supports redirection and piping of output
+  * Added a lot of unit tests
+  * Removed pause command
+  * Added a dependency on the **pyperclip** module
+  * Fixed a bug in displaying a span of history items when only an end index is supplied
+  * Fixed a bug which caused transcript test failures to display twice
+  * Added the ability to exclude commands from the help menu (**eof** included by default)
+  * Redundant **list** command removed and features merged into **history** command
+  * Added **pyscript** command which supports tab-completion and running Python scripts with arguments
+  * Improved tab-completion of file system paths, command names, and shell commands
+  * Changed default value of USE_ARG_LIST to True - this affects the beavhior of all **@options** commands</comment>
+    <requestid>514847</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>91e23a0a32584c3dd733ed4b73a098d4</srcmd5>
+    <version>0.7.9</version>
+    <time>1518601931</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.9:
+* Bug Fixes
+    * Fixed a couple broken examples
+* Enhancements
+    * Improved documentation for modifying shortcuts (command aliases)
+    * Made ``pyreadline`` a dependency on Windows to ensure tab-completion works
+* Other changes
+    * Abandoned official support for Python 3.3.  It should still work, just don't have an easy way to test it anymore.
+* Bug Fixes
+    * Fixed ``poutput()`` so it can print an integer zero and other **falsy** things
+    * Fixed a bug which was causing autodoc to fail for building docs on Readthedocs
+    * Fixed bug due to ``pyperclip`` dependency radically changing its project structure in latest version
+* Enhancements
+    * Improved documentation for user-settable environment parameters
+    * Improved documentation for overriding the default supported comment styles
+    * Added ``runcmds_plus_hooks()`` method to run multiple commands w/o a cmdloop
+* Bug Fixes
+    * Added workaround for bug which occurs in Python 2.7 on Linux when ``pygtk`` is installed
+    * ``pfeedback()`` now honors feedback_to_output setting and won't redirect when it is ``False``
+    * For ``edit`` command, both **editor** and **filename** can now have spaces in the name/path
+    * Fixed a bug which occurred when stdin was a pipe instead of a tty due to input redirection
+* Enhancements
+    * ``feedback_to_output`` now defaults to ``False`` so info like command timing won't redirect
+    * Transcript regular expressions now have predictable, tested, and documented behavior
+        * This makes a breaking change to the format and expectations of transcript testing
+        * The prior behavior removed whitespace before making the comparison, now whitespace must match exactly
+        * Prior version did not allow regexes with whitespace, new version allows any regex
+    * Improved display for ``load`` command and input redirection when **echo** is ``True``
+* Bug Fixes
+   * Case-sensitive command parsing was completely broken and has been fixed</comment>
+    <requestid>576369</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>487424328f1e3474a95e1b5f3b5baf95</srcmd5>
+    <version>0.8.9</version>
+    <time>1536876080</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>635404</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4ef2216304f4d7f8f0d188adca486c2d</srcmd5>
+    <version>0.9.4</version>
+    <time>1537971133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637091</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>a7a2c433aa89c23aa364b451d32537c8</srcmd5>
+    <version>0.8.9</version>
+    <time>1538034624</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to the version with py2 support. There are other things, newly ring, depending on it</comment>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>4ef2216304f4d7f8f0d188adca486c2d</srcmd5>
+    <version>0.9.4</version>
+    <time>1538502095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638812</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>787940d6a2ab7f3f631849df60a3f310</srcmd5>
+    <version>0.9.4</version>
+    <time>1544816900</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>656831</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5ee1797d61e1a6f78331684b2530bb1c</srcmd5>
+    <version>0.9.10</version>
+    <time>1551686986</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.10:
+  * Fixed unit test that hangs on Windows
+  * Fixed bug where the ``set`` command was not tab completing from the current ``settable`` dictionary.
+  * Changed edit command to use do_shell() instead of calling os.system()
+  * Fixed issue with echoing strings in StdSim. Because they were being sent to a binary buffer, line buffering
+    was being ignored.
+  * Made quit() and exit() functions available to scripts run with pyscript. This allows those scripts to exit
+    back to the console's prompt instead of exiting the whole application.
+  * Fixed bug when user chooses a zero or negative index when calling ``Cmd.select()``
+  * Restored behavior where ``cmd_echo`` always starts as False in a py script. This was broken in 0.9.5.
+  * **cmdloop** now only attempts to register a custom signal handler for SIGINT if running in the main thread
+  * commands run as a result of ``default_to_shell`` being **True** now run via ``do_shell()`` and are saved
+    to history.
+  * Added more tab completion to pyscript command.
+  * Deleted ``Cmd.colorize()`` and ``Cmd._colorcodes`` which were deprecated in 0.9.5
+  * Replaced ``dir_exe_only`` and  ``dir_only`` flags in ``path_complete`` with optional ``path_filter`` function
+    that is used to filter paths out of completion results.
+  * ``perror()`` no longer prepends &quot;ERROR: &quot; to the error message being printed
+  * Fixed bug introduced in 0.9.5 caused by backing up and restoring `self.prompt` in `pseudo_raw_input`.
+    As part of this fix, continuation prompts will not be redrawn with `async_update_prompt` or `async_alert`.
+  * All platforms now depend on [wcwidth](https://pypi.python.org/pypi/wcwidth) to assist with asynchronous alerts.
+  * Macros now accept extra arguments when called. These will be tacked onto the resolved command.
+  * All cmd2 commands run via `py` now go through `onecmd_plus_hooks`.
+  * Fixed bug where ``get_all_commands`` could return non-callable attributes
+  * Fixed bug where **alias** command was dropping quotes around arguments
+  * Fixed bug where running help on argparse commands didn't work if they didn't support -h
+  * Fixed transcript testing bug where last command in transcript has no expected output
+  * Fixed bugs with how AutoCompleter and ArgparseFunctor handle argparse
+    arguments with nargs=argparse.REMAINDER. Tab completion now correctly
+    matches how argparse will parse the values. Command strings generated by</comment>
+    <requestid>680103</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fe0e3c047a8c20328181b67813df2ff4</srcmd5>
+    <version>0.9.11</version>
+    <time>1553888139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685423</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>a8e33e7882af9bc1b90b25eedf32fc07</srcmd5>
+    <version>0.9.11</version>
+    <time>1555053053</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Requires for older python3 versions</comment>
+    <requestid>692517</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f53af1cdb22a205c197be70369d74254</srcmd5>
+    <version>0.9.12</version>
+    <time>1557083958</time>
+    <user>dimstar_suse</user>
+    <comment>- fix previous commit
+- Update to 0.9.12:
+  - Bug Fixes
+        - Fixed a bug in how redirection and piping worked inside
+          py or pyscript commands
+        - Fixed bug in async_alert where it didn't account for
+          prompts that contained newline characters
+        - Fixed path completion case when CWD is just a slash.
+          Relative path matches were incorrectly prepended with
+          a slash.
+  - Enhancements
+        - Added ability to include command name placeholders in
+          the message printed when trying to run a disabled
+          command.
+        - Added instance attributes to customize error messages
+          without having to override methods. Theses messages can
+          also be colored.
+        - The with_argparser decorators now add the Statement
+          object created when parsing the command line to the
+          argparse.Namespace object they pass to the do_*
+          methods. It is stored in an attribute called
+          __statement__.
+        - This can be useful if a command function needs to know
+          the command line for things like logging.
+        - Added a -t option to the load command for automatically
+          generating a transcript based on a script file
+        - When in a pyscript, the stdout and stderr streams of
+          shell commands and processes being piped to are now
+          captured and included in the CommandResult structure.
+  - Potentially breaking changes
+        - The following commands now write to stderr instead of
+          stdout when printing an error. This will make catching
+          errors easier in pyscript.
+        - Removed *** from beginning of error messages printed by
+          do_help() and default()
+        - Significantly refactored cmd.Cmd class so that all
+          class attributes got converted to instance attributes,
+          also: self.pipe_proc is now called
+          self.cur_pipe_proc_reader and is a ProcReader class.
+        - Shell commands and commands being piped to while in
+          a pyscript will function as if their output is going to
+          a pipe and not a tty. This was necessary to be able to
+          capture their output.
+- fix build for SLE12 and older
+</comment>
+    <requestid>699499</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>931e1b366d01a67469a2147e1b9faad4</srcmd5>
+    <version>0.9.15</version>
+    <time>1565179000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720196</requestid>
+  </revision>
+</revisionlist>

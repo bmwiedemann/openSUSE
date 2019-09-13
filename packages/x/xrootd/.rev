@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ad9874558ddec6175485e8c408a8c3bf</srcmd5>
+    <version>3.2.5</version>
+    <time>1351056033</time>
+    <user>coolo</user>
+    <comment>Required by ROOT (sr#138077)</comment>
+    <requestid>138080</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8abbbeef88618c23fbef3746d0874e09</srcmd5>
+    <version>3.2.6</version>
+    <time>1352732823</time>
+    <user>coolo</user>
+    <comment>update to version 3.2.6</comment>
+    <requestid>140916</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c12cf5ba6d18d8f5119ebd3609730575</srcmd5>
+    <version>3.2.7</version>
+    <time>1355922708</time>
+    <user>coolo</user>
+    <comment>update to version 3.2.7</comment>
+    <requestid>145272</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c12cf5ba6d18d8f5119ebd3609730575</srcmd5>
+    <version>3.2.7</version>
+    <time>1359110689</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>92e8e59109707a1930f0274c2b673da5</srcmd5>
+    <version>3.3.0</version>
+    <time>1362493242</time>
+    <user>coolo</user>
+    <comment>update to 3.3.0</comment>
+    <requestid>157243</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7adcc61e36869249cbd477c1b996a679</srcmd5>
+    <version>3.3.1</version>
+    <time>1363083658</time>
+    <user>coolo</user>
+    <comment>update to 3.3.1 with more information in .changes</comment>
+    <requestid>158604</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fb3e8b27a37318b40fc3d3f0e30d9e09</srcmd5>
+    <version>3.3.2</version>
+    <time>1367827915</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174494</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3a9172e6e10842717dfb18c64d0954bf</srcmd5>
+    <version>3.3.2</version>
+    <time>1378549952</time>
+    <user>scarabeus_factory</user>
+    <comment>-&gt;</comment>
+    <requestid>197536</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>3a9172e6e10842717dfb18c64d0954bf</srcmd5>
+    <version>3.3.2</version>
+    <time>1379665115</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2f381f318104ddece0047f7c9a2911c8</srcmd5>
+    <version>3.3.4</version>
+    <time>1382012957</time>
+    <user>scarabeus_factory</user>
+    <comment>minor update to version 3.3.4</comment>
+    <requestid>203470</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dfc2958090068a1357451245f42f430e</srcmd5>
+    <version>3.3.6</version>
+    <time>1391030615</time>
+    <user>coolo</user>
+    <comment>update to version 3.3.6</comment>
+    <requestid>215531</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9e029688a73e4b3ac4158d9647b9c7dc</srcmd5>
+    <version>3.3.6</version>
+    <time>1403724026</time>
+    <user>coolo</user>
+    <comment>Remove %ghost entry in /var/run to fix rpmlint error</comment>
+    <requestid>238645</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>9e029688a73e4b3ac4158d9647b9c7dc</srcmd5>
+    <version>3.3.6</version>
+    <time>1409303802</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>afb8ac15f328462b9c05a0aeb82ebe4f</srcmd5>
+    <version>3.3.6</version>
+    <time>1466814078</time>
+    <user>dimstar_suse</user>
+    <comment>Add Patch to fix bnc#985167</comment>
+    <requestid>403656</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>135576fd01353d2a4eba324367ab33a8</srcmd5>
+    <version>3.3.6</version>
+    <time>1511517376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544953</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>883ccb4878244091e62793c55f4d4300</srcmd5>
+    <version>3.3.6</version>
+    <time>1514028086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559573</requestid>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>6848bfd567fa2a7f5aeb13b108f73423</srcmd5>
+    <version>3.3.6</version>
+    <time>1520503203</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build for factory, rpc/types.h is gone from glibc-devel,
+  use the one from tirpc-devel instead
+</comment>
+    <requestid>584103</requestid>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>9a853c19878d3d860fd0f4c483ca0812</srcmd5>
+    <version>3.3.6</version>
+    <time>1530866401</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch xrootd-gcc8-fix.patch to fix build with gcc8
+</comment>
+    <requestid>620013</requestid>
+  </revision>
+</revisionlist>

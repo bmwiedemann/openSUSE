@@ -1,0 +1,11 @@
+<package name="azure-cli-acs" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'acs' Command Module</title>
+  <description>Microsoft Azure CLI 'acs' Command Module
+
+This package is for the 'acs' module.
+i.e. 'az acs'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-acs"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

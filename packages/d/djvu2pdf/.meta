@@ -1,0 +1,5 @@
+<package name="djvu2pdf" project="openSUSE:Factory">
+  <title>Converting Djvu files to PDF files</title>
+  <description>A small tool to convert Djvu files to PDF files. Works on Linux, BSD and MacOS.</description>
+  <devel project="Publishing" package="djvu2pdf"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="materia-gtk-theme" project="openSUSE:Factory">
+  <title>A Material Design theme for GNOME/GTK+ based desktop environments</title>
+  <description>Materia (formerly Flat-Plat) is a Material Design theme for GNOME/GTK+ based desktop environments.
+It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, Cinnamon, MATE, Unity, LightDM, GDM, Chrome theme, etc.</description>
+  <devel project="X11:common:Factory" package="materia-gtk-theme"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="hfst-ospell" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="LibreOffice:Factory" package="hfst-ospell"/>
+</package>

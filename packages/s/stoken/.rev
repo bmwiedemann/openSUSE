@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>15f497a3d8e156e10eb8a04336b616d1</srcmd5>
+    <version>0.6</version>
+    <time>1405101939</time>
+    <user>coolo</user>
+    <comment>Token code generator compatible with RSA SecurID 128-bit (AES) token</comment>
+    <requestid>239492</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c7e5598864716e1c28925008b9ca1d46</srcmd5>
+    <version>0.6</version>
+    <time>1405573092</time>
+    <user>coolo</user>
+    <comment>- define BuildRoot
+- add Group for all packages
+- add --disable-static to %configure</comment>
+    <requestid>241077</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c7e5598864716e1c28925008b9ca1d46</srcmd5>
+    <version>0.6</version>
+    <time>1409303420</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fc6a28d60733f111324dec7241aff07e</srcmd5>
+    <version>0.81</version>
+    <time>1427735376</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293413</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9cc0c87f81e3e76fa707a746d188826f</srcmd5>
+    <version>0.92</version>
+    <time>1535370417</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.92:
+  * Fix build with new libtomcrypt
+  * support nette 3.x series
+  * See CHANGES for details</comment>
+    <requestid>629594</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ead2068c0737e849433fe2f9bcbb2d5b</srcmd5>
+    <version>0.39.0</version>
+    <time>1427983388</time>
+    <user>dimstar_suse</user>
+    <comment>atool is a script for managing file archives of various types</comment>
+    <requestid>293706</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5e85aec838ab3382f57dba98b199f80e</srcmd5>
+    <version>0.39.0</version>
+    <time>1431753271</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>307255</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f281b245f16ac835721c66cc6b974ffd</srcmd5>
+    <version>0.39.0</version>
+    <time>1521579499</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file with spec-cleaner
+- Fetch keyring from savannah</comment>
+    <requestid>586683</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fc9643c449a2081330358a8cd05d4a84</srcmd5>
+    <version>0.39.0</version>
+    <time>1530653701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620418</requestid>
+  </revision>
+</revisionlist>

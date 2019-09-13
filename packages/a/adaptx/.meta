@@ -1,0 +1,5 @@
+<package name="adaptx" project="openSUSE:Factory">
+  <title>XSLT Processor Written in Java</title>
+  <description>AdaptX is an extensible stylesheet language (XSL) processor.</description>
+  <devel project="Java:packages" package="adaptx"/>
+</package>

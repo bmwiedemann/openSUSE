@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>08365db5d5db1d845e35298766d184c2</srcmd5>
+    <version>0.59</version>
+    <time>1308301071</time>
+    <user>saschpe</user>
+    <comment>new dep of xsl2csv</comment>
+    <requestid>72825</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f1656dcb2fd5d241389e8628c7b486fe</srcmd5>
+    <version>0.59</version>
+    <time>1308301085</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72825
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f1656dcb2fd5d241389e8628c7b486fe</srcmd5>
+    <version>0.59</version>
+    <time>1319182305</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>1fc7783e4a9689a0f9b534dc071e0919</srcmd5>
+    <version>0.59</version>
+    <time>1323193633</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>1fc7783e4a9689a0f9b534dc071e0919</srcmd5>
+    <version>0.59</version>
+    <time>1340183917</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>1fc7783e4a9689a0f9b534dc071e0919</srcmd5>
+    <version>0.59</version>
+    <time>1359109795</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>1fc7783e4a9689a0f9b534dc071e0919</srcmd5>
+    <version>0.59</version>
+    <time>1379663839</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d04ebdcd764542e129175f36df83c944</srcmd5>
+    <version>0.65</version>
+    <time>1395750350</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>227170</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d04ebdcd764542e129175f36df83c944</srcmd5>
+    <version>0.65</version>
+    <time>1409302479</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

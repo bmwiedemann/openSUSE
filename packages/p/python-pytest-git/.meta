@@ -1,0 +1,5 @@
+<package name="python-pytest-git" project="openSUSE:Factory">
+  <title></title>
+  <description>Git repository fixture for pytest</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-git"/>
+</package>

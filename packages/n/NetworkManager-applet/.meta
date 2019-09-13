@@ -1,0 +1,5 @@
+<package name="NetworkManager-applet" project="openSUSE:Factory">
+  <title>NetworkManager-applet</title>
+  <description></description>
+  <devel project="GNOME:Factory" package="NetworkManager-applet"/>
+</package>

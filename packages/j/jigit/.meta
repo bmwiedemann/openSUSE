@@ -1,0 +1,8 @@
+<package name="jigit" project="openSUSE:Factory">
+  <title>Tools for working with jigdo files</title>
+  <description>
+Utilities written to make jigdo files easier to work with.
+</description>
+  <devel project="multimedia:libs" package="jigit"/>
+  <url>http://www.einval.com/~steve/software/JTE/</url>
+</package>

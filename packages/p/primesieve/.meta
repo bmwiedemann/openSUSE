@@ -1,0 +1,5 @@
+<package name="primesieve" project="openSUSE:Factory">
+  <title>Fast prime number generator</title>
+  <description>primesieve is a command-line program and C/C++ library that generates primes using a highly optimized sieve of Eratosthenes implementation. primesieve can generate primes and prime k-tuplets up to 2^64.</description>
+  <devel project="devel:libraries:c_c++" package="primesieve"/>
+</package>

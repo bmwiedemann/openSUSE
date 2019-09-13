@@ -1,0 +1,5 @@
+<package name="perl-Web-MREST-CLI" project="openSUSE:Factory">
+  <title>CLI components for Web::MREST</title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Web-MREST-CLI"/>
+</package>

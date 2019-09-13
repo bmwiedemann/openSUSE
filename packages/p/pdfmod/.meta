@@ -1,0 +1,5 @@
+<package name="pdfmod" project="openSUSE:Factory">
+  <title>PDF Modifier</title>
+  <description>Devel is G:A</description>
+  <devel project="GNOME:Apps" package="pdfmod"/>
+</package>

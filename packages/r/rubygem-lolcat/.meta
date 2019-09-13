@@ -1,0 +1,5 @@
+<package name="rubygem-lolcat" project="openSUSE:Factory">
+  <title>Add the colors of the rainbow to your terminal a.k.a. Rainbows and Unicorns!</title>
+  <description>This is a console program that transforms text from files or stdin by adding crazy rainbow colors or even animations.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-lolcat"/>
+</package>

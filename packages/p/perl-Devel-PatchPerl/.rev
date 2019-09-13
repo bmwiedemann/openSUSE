@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78b0ee800c9fa96775a2d8ba6a7cf85a</srcmd5>
+    <version>0.62</version>
+    <time>1325658394</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>98163</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ef3d95bc4c4915b4bbc877ddff3d565c</srcmd5>
+    <version>0.66</version>
+    <time>1329391524</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>104868</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ef3d95bc4c4915b4bbc877ddff3d565c</srcmd5>
+    <version>0.66</version>
+    <time>1340183831</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>ef3d95bc4c4915b4bbc877ddff3d565c</srcmd5>
+    <version>0.66</version>
+    <time>1359109648</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>68b2b95eb69aba2c9d13293ee9c28d69</srcmd5>
+    <version>0.90</version>
+    <time>1370592352</time>
+    <user>coolo</user>
+    <comment>- updated to 0.90, see Changes (forwarded request 177350 from coolo)</comment>
+    <requestid>177411</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>061479dcce56405c766207de60fd9ad2</srcmd5>
+    <version>0.96</version>
+    <time>1373986926</time>
+    <user>coolo</user>
+    <comment>- updated to 0.96
+    Fix patch applying for v5.18.0                                                                                                                                                                                                          
+    Fixes a regmatch pointer 32-bit wraparound regression in v5.18.0 
+    Update Midnight BSD hints for 0.4-RELEASE</comment>
+    <requestid>183221</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9c6205a363e1a7844aa71326c63fdc95</srcmd5>
+    <version>1.00</version>
+    <time>1375178540</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184825</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9c6205a363e1a7844aa71326c63fdc95</srcmd5>
+    <version>1.00</version>
+    <time>1379663646</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>35ecd6996f2ee86a1c9206453a83841f</srcmd5>
+    <version>1.14</version>
+    <time>1385490319</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208408</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>447fb30488a2497ddffb141257fa1b04</srcmd5>
+    <version>1.18</version>
+    <time>1393253462</time>
+    <user>coolo</user>
+    <comment>- updated to 1.18
+ Update included hints to v5.19.9 level
+
+- updated to 1.16
+    add extra phony targets to help case insensitive file systems 
+    Configure should check same Berkeley DB header DB_File uses</comment>
+    <requestid>223620</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>447fb30488a2497ddffb141257fa1b04</srcmd5>
+    <version>1.18</version>
+    <time>1409302260</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>df27fb151b5ae5c27f52204a6933c8d5</srcmd5>
+    <version>1.24</version>
+    <time>1411020049</time>
+    <user>coolo</user>
+    <comment>- updated to 1.24
+    Add COW speedup fix for v5.20.0
+      http://perl5.git.perl.org/perl.git/commit/ce861ea79 
+    Look for gpatch if patch is not found</comment>
+    <requestid>250007</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d92bee29cf5cfeadcc9866ea6df854fb</srcmd5>
+    <version>1.32</version>
+    <time>1429346431</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297534</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>55f9f13d47517372b227565c1ccd897c</srcmd5>
+    <version>1.34</version>
+    <time>1430113612</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>304020</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>639e67f51589be42145c2417c8a51631</srcmd5>
+    <version>1.38</version>
+    <time>1436331575</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315160</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4d7e77c313efcfc241b377202fd8e3d4</srcmd5>
+    <version>1.40</version>
+    <time>1450472039</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349477</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>401a7c7e0e566e6fbe12aa9b05980da8</srcmd5>
+    <version>1.42</version>
+    <time>1464204438</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396911</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b269540f0c85a8eee41d9ce25a06a02f</srcmd5>
+    <version>1.44</version>
+    <time>1474886146</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424225</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>201dfcadd1c75f2f984a65549fd59ed3</srcmd5>
+    <version>1.46</version>
+    <time>1485040468</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441669</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>56aac36607d6b55702b6550a03f2b000</srcmd5>
+    <version>1.48</version>
+    <time>1487261011</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456916</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d588afff082dd658996d1e673c2e3869</srcmd5>
+    <version>1.52</version>
+    <time>1530191712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619559</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fb7cf68764dc92cb12083eefd7aa804e</srcmd5>
+    <version>1.54</version>
+    <time>1551468653</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>680360</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f5c3a6e8dc12f6c86e5a6403e9671bf2</srcmd5>
+    <version>1.56</version>
+    <time>1553084337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684914</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cee0e50c183acad22593923835818ee8</srcmd5>
+    <version>1.58</version>
+    <time>1557142053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700737</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4dbe3e3d254be13c4b9b2f79c0a495a7</srcmd5>
+    <version>1.60</version>
+    <time>1558340901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703877</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3a09f4f32baf257a455d5f28107f4490</srcmd5>
+    <version>1.62</version>
+    <time>1559580867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707037</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3af925ae2f2c020178cec9f5f1167856</srcmd5>
+    <version>1.64</version>
+    <time>1560760503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710242</requestid>
+  </revision>
+</revisionlist>

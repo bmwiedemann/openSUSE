@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>44c3c9a71a0af515cd492e45f03b120f</srcmd5>
+    <version>0.6.2</version>
+    <time>1394901431</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>225556</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>44c3c9a71a0af515cd492e45f03b120f</srcmd5>
+    <version>0.6.2</version>
+    <time>1409303432</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>97d03e5e37ae27a38be8e7253e9fbdf9</srcmd5>
+    <version>0.9.4</version>
+    <time>1522935194</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file with spec-cleaner
+
+- Upgrade to 0.9.4
+  * Crash during defs processing.
+  * Crash during use resolving.
+  * The --resolve-use option does not resolve used use now.
+- Add svgcleaner-gui-suse.patch
+
+- Upgrade to 0.9.3, major changes since 0.6.2:
+  * Rewritten from C++ to Rust (3x faster)
+  * Implemented own SVG parser and SVG DOM
+  * GUI is in separated source now
+  * Added a documentation for all cleaning options
+  * Addition of many CLI options
+  * Lots of fixes (see project page for details)
+  * Main package is now svgcleaner
+  * GUI is in svgcleaner-gui</comment>
+    <requestid>593467</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6030e6c6dfe2998326fc14ef1a3239ec</srcmd5>
+    <version>0.9.4</version>
+    <time>1524144790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598457</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>390dfa98eb929c0d1068924a6fb0aad9</srcmd5>
+    <version>0.9.4</version>
+    <time>1529402468</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616716</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1f2deee9e863741155c14414bc5e6d53</srcmd5>
+    <version>0.9.5</version>
+    <time>1539758358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641632</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d04d0317b319d2503c2eadceb333516e</srcmd5>
+    <version>0.9.5</version>
+    <time>1551386334</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673113</requestid>
+  </revision>
+</revisionlist>

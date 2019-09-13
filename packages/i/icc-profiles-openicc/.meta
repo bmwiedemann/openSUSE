@@ -1,0 +1,10 @@
+<package name="icc-profiles-openicc" project="openSUSE:Factory">
+  <title>Color Management Data</title>
+  <description>The color data is provided to be used by color managed applications and
+systems.
+
+
+
+</description>
+  <devel project="multimedia:color_management" package="icc-profiles-openicc"/>
+</package>

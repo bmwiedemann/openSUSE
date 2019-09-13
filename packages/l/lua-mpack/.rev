@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1bf0d21d0353a5772543d5be86ec823a</srcmd5>
+    <version>1.0.6</version>
+    <time>1503592751</time>
+    <user>dimstar_suse</user>
+    <comment>Namespacing of lua (will need one staging)</comment>
+    <requestid>510460</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c857bb5d5f36ac99f98fac8ed86ae24</srcmd5>
+    <version>1.0.6</version>
+    <time>1509461066</time>
+    <user>dimstar_suse</user>
+    <comment>drop lua5.2 from multibuild</comment>
+    <requestid>537635</requestid>
+  </revision>
+</revisionlist>

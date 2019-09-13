@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85af7e44f1e4ed4778861c57dc5887a0</srcmd5>
+    <version>1.0.3</version>
+    <time>1554458477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.0.3
+  * Support for redis 3.2
+  (no effective changes in v1.0.2)
+- Initial spec for v1.0.1
+</comment>
+    <requestid>690884</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>073854d8cab0afaec807d92138846746</srcmd5>
+    <version>1.0.4</version>
+    <time>1566464152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.4:
+  * various bugfixes all around</comment>
+    <requestid>725096</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>33eab179d423f4cb35cab5c69015b5e0</srcmd5>
+    <version>1.0.5</version>
+    <time>1568379782</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 1.0.5:
+  * No upstream changelog</comment>
+    <requestid>730624</requestid>
+  </revision>
+</revisionlist>

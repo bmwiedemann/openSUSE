@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8918a5600eba3c5176183fbf0fd51343</srcmd5>
+    <version>1.0.2</version>
+    <time>1449687191</time>
+    <user>dimstar_suse</user>
+    <comment>uuid-types: Type definitions for Universally Unique Identifiers</comment>
+    <requestid>347752</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dac7acf75f6df021f5b06c4229746c76</srcmd5>
+    <version>1.0.3</version>
+    <time>1459717647</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3 (forwarded request 383496 from mimi_vx)</comment>
+    <requestid>383499</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b9d4e6db12316de0eaa47f8e1332d918</srcmd5>
+    <version>1.0.3</version>
+    <time>1468999447</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411812</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>516d467732ace0b6a178fabd2747d05e</srcmd5>
+    <version>1.0.3</version>
+    <time>1476780073</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434627</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>fedc3f04d1d65c7b24e3582748b7fab9</srcmd5>
+    <version>1.0.3</version>
+    <time>1505506966</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525627</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>2955a35328055cd9a2f5e6884031ef12</srcmd5>
+    <version>1.0.3</version>
+    <time>1527675679</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609828</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>4f8dbc69894066ad9bf1e36722a13dcf</srcmd5>
+    <version>1.0.3</version>
+    <time>1532445801</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623891</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>f866bca531af861754f992955e953c6b</srcmd5>
+    <version>1.0.3</version>
+    <time>1540451218</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643487</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>f46f97df54342ac5ba774f8a27deef76</srcmd5>
+    <version>1.0.3</version>
+    <time>1560971548</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710649</requestid>
+  </revision>
+</revisionlist>

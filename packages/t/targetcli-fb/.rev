@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e79f94c25027fdc383e6fbfa27bb2c96</srcmd5>
+    <version>2.1.43</version>
+    <time>1476780013</time>
+    <user>dimstar_suse</user>
+    <comment>Submitting to factory for the first time, it appears.
+
+This is already in SLE 12 SP2, out of order, so it
+would be great to get it into Factory (and then
+Leap) as soon as possible.</comment>
+    <requestid>434240</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9508b2599b41c687da6e0fb288421228</srcmd5>
+    <version>2.1.43</version>
+    <time>1478377523</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438194</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0deb8ded3e81b775d3c2415a599419a3</srcmd5>
+    <version>2.1.43</version>
+    <time>1493363618</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491077</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>049f15e17bb744fbb68e8d312d59c238</srcmd5>
+    <version>2.1.47</version>
+    <time>1503482104</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518172</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b8c12da1b7e00aa81b8f222d765ff469</srcmd5>
+    <version>2.1.47</version>
+    <time>1516092175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564462</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a4352e68bad1c4ae97167d0b21c16df7</srcmd5>
+    <version>2.1.47</version>
+    <time>1517932154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573103</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b4b25ef9ea975750a4bee8ef3d2052ca</srcmd5>
+    <version>2.1.47</version>
+    <time>1519683932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579974</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>843ebe3c9178e07575dfd8e04f00bfa9</srcmd5>
+    <version>2.1.47</version>
+    <time>1524144560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597223</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>d1df07ab5296f3a570d14c0b12db603a</srcmd5>
+    <version>2.1.47</version>
+    <time>1524400848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599503</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>18050be1e792fad85c304ec74dfde4e4</srcmd5>
+    <version>2.1.49</version>
+    <time>1540200191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643051</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>96808e009e1e69b2f502ac02fb177a68</srcmd5>
+    <version>2.1.49</version>
+    <time>1544264522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656081</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>cab5e45fac8c29277def1c8beb4053e1</srcmd5>
+    <version>2.1.49</version>
+    <time>1549624498</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672535</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>5064e03338ecd244a26d58035e4b5818</srcmd5>
+    <version>2.1.49</version>
+    <time>1558516579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704410</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>357f291b9965c32166b034402fc58023</srcmd5>
+    <version>2.1.49</version>
+    <time>1566291570</time>
+    <user>dimstar_suse</user>
+    <comment>- Added the following upstream patches:
+  * targetcli-fb-fix-raise-exception-error-in-save_backups
+  * iscsi-discovery_auth-enable-is-a-number-not-a-string (bsc#1145685)
+  * saveconfig-compress-the-backup-config-files
+  * do-not-remove-the-first-digit-when-auto-completing-the-tpg-tag
+  * add-emulate_pr-backstore-attribute</comment>
+    <requestid>724620</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>844d28c22515dc7b881546e9b1ed9242</srcmd5>
+    <version>2.1.49</version>
+    <time>1566463991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724877</requestid>
+  </revision>
+</revisionlist>

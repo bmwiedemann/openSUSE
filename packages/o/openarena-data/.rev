@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90307aa401623c0bb1b14e5126910966</srcmd5>
+    <version>0.8.8</version>
+    <time>1489345237</time>
+    <user>dimstar_suse</user>
+    <comment>removed the Authors: section inside the .spec</comment>
+    <requestid>476897</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>50099a48bd756f1d27a7cd4d7183e7cd</srcmd5>
+    <version>0.8.8</version>
+    <time>1490965750</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482575</requestid>
+  </revision>
+</revisionlist>

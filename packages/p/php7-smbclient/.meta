@@ -1,0 +1,7 @@
+<package name="php7-smbclient" project="openSUSE:Factory">
+  <title>A PHP wrapper for libsmbclient</title>
+  <description>smbclient is a PHP extension that uses Samba's libsmbclient library to provide
+Samba related functions and 'smb' streams to PHP programs.</description>
+  <devel project="server:php:extensions:php7" package="php7-smbclient"/>
+  <url>https://github.com/eduardok/libsmbclient-php</url>
+</package>

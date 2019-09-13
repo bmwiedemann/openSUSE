@@ -1,0 +1,5 @@
+<package name="python-fido2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-fido2"/>
+</package>

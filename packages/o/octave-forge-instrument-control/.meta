@@ -1,0 +1,6 @@
+<package name="octave-forge-instrument-control" project="openSUSE:Factory">
+  <title></title>
+  <description>Low level I/O functions for serial, i2c, parallel, tcp, gpib, vxi11 and usbtmc interfaces.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-instrument-control"/>
+</package>

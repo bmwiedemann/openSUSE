@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e766f1c020b37a23fec3dee6348d0ebe</srcmd5>
+    <version>2.0.0</version>
+    <time>1476874754</time>
+    <user>dimstar_suse</user>
+    <comment>fate#320836</comment>
+    <requestid>414552</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>96b3921c949bce1c09e04d19526dbf18</srcmd5>
+    <version>2.0.0</version>
+    <time>1503061329</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>512537</requestid>
+  </revision>
+</revisionlist>

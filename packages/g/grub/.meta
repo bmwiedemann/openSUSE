@@ -1,0 +1,11 @@
+<package name="grub" project="openSUSE:Factory">
+  <title>Grand Unified Boot Loader</title>
+  <description>GNU GRUB is a multiboot boot loader. It was derived from GRUB. It is an
+attempt to produce a boot loader for IBM PC-compatible machines that
+has both the ability to be friendly to beginning or otherwise
+nontechnically interested users and the flexibility to help experts in
+diverse environments. It is compatible with Free/Net/OpenBSD and Linux.
+It supports Win 9x/NT and OS/2 via chainloaders. It has a menu
+interface and a command line interface.</description>
+  <devel project="Base:System" package="grub"/>
+</package>

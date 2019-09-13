@@ -1,0 +1,265 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>ea385ec8ce41c573379434bc1361ac0a</srcmd5>
+    <version>0.9.3</version>
+    <time>1168902412</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>be69923c5466f0b4576164a2c64d96d5</srcmd5>
+    <version>0.9.5</version>
+    <time>1175120321</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="63">
+    <srcmd5>5277f33aabbf611c94124d00a6da4db9</srcmd5>
+    <version>0.9.5</version>
+    <time>1207825830</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="98">
+    <srcmd5>5277f33aabbf611c94124d00a6da4db9</srcmd5>
+    <version>0.9.5</version>
+    <time>1207825830</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9fb14ce382e969ee366e1846ea5f9aef</srcmd5>
+    <version>0.9.6</version>
+    <time>1233952862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0d38d4f40e71c4574700eff244ac40c2</srcmd5>
+    <version>0.9.6</version>
+    <time>1240055582</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>0d38d4f40e71c4574700eff244ac40c2</srcmd5>
+    <version>0.9.6</version>
+    <time>1240055582</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c2cb7c7eb952a27bd5f7fd889bba330a</srcmd5>
+    <version>0.9.8</version>
+    <time>1260262796</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/check based on submit request 25797 from user vuntz
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>093d9dafd37e2e27f16936ebb291e3e5</srcmd5>
+    <version>0.9.8</version>
+    <time>1265913211</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/check based on submit request 32230 from user vuntz
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>7ae2ffc9bcd9d4f27fea8ff0ee880f10</srcmd5>
+    <version>0.9.8</version>
+    <time>1268923167</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>6fa8adf47bc1c5effbba277a02510b5a</srcmd5>
+    <version>0.9.8</version>
+    <time>1272122522</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/check based on submit request 38748 from user coolo
+</comment>
+    <requestid>38748</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>6fa8adf47bc1c5effbba277a02510b5a</srcmd5>
+    <version>0.9.8</version>
+    <time>1278667339</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>6fa8adf47bc1c5effbba277a02510b5a</srcmd5>
+    <version>0.9.8</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>6fa8adf47bc1c5effbba277a02510b5a</srcmd5>
+    <version>0.9.8</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>426020ad698c609a86eba457b0b16b96</srcmd5>
+    <version>0.9.8</version>
+    <time>1317541922</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85607</requestid>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>426020ad698c609a86eba457b0b16b96</srcmd5>
+    <version>0.9.8</version>
+    <time>1319181808</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>a44005dbe0c92a663eb0c86c39d21821</srcmd5>
+    <version>0.9.8</version>
+    <time>1323190970</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="15">
+    <srcmd5>639da6d50863a428f89e5c731d91fa55</srcmd5>
+    <version>0.9.8</version>
+    <time>1325846599</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>98983</requestid>
+  </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>639da6d50863a428f89e5c731d91fa55</srcmd5>
+    <version>0.9.8</version>
+    <time>1340183233</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ecef45e8fb20dec9a9c283593c2a5d64</srcmd5>
+    <version>0.9.9</version>
+    <time>1351837837</time>
+    <user>coolo</user>
+    <comment>Update to 0.9.9 (forwarded request 139139 from Zaitor)</comment>
+    <requestid>139728</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>ecef45e8fb20dec9a9c283593c2a5d64</srcmd5>
+    <version>0.9.9</version>
+    <time>1359108742</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fee723540dbb4b74f50e473b135e1670</srcmd5>
+    <version>0.9.10</version>
+    <time>1366983483</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.8.1 to Factory - mostly small bug fixes over the existing 3.8.0 we have</comment>
+    <requestid>173210</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>fee723540dbb4b74f50e473b135e1670</srcmd5>
+    <version>0.9.10</version>
+    <time>1379662104</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ff9cad722bc4b25417c6a1f27be8912d</srcmd5>
+    <version>0.9.11</version>
+    <time>1383896057</time>
+    <user>coolo</user>
+    <comment>Update to 0.9.11 (forwarded request 206039 from Zaitor)</comment>
+    <requestid>206228</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ada0f91d48429872c3f768c75254e46d</srcmd5>
+    <version>0.9.12</version>
+    <time>1391424018</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.12:
+  + Additional unit tests created for internal and external Check
+    APIs.
+  + Check now compiled on Windows using MSVC when using CMake and
+    NMake. All unit tests pass, though shell script based ones need
+    to be run in the MSYS environment.
+  + Check now compiles on Windows using Visual Studio 10 when using
+    CMake. check_check passes when run from Visual Studios.
+  + Always capture the start and end times of tests when using
+    NO_FORK mode. Previously the end time was not captured,
+    resulting in arbitrary durations being recorded when tests
+    failed. Bug#87.
+  + Added additional configure script checks for support of
+    timer_create() on the target system. This allows for OpenBSD to
+    compile and run all Check's unit tests successfully. 
+  + Added a unit test, check_mem_leaks, which can be used against
+    valgrind to test for memory leaks. No memory leaks were found.
+  + Added tcase_add_loop_test support in checkm.
+  + Add support for logging in Test Anything Protocol (TAP) format.
+  + Refactor Check's assertions to be more like the assert() call
+    in assert.h, in that static source code analyzers can use gcc
+    attributes in the header to make assumptions about the flow of
+    the code. See feature request #29.
+  + Fix ck_assert_ptr_* causing const compilation warnings.
+- Add check-missing-includes.patch: Add missing include in order
+  to fix the build. (forwarded request 220627 from Zaitor)</comment>
+    <requestid>220629</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0da0df1aa9c6ccbd1f8594a05ad254e0</srcmd5>
+    <version>0.9.13</version>
+    <time>1405264572</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239336</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>0da0df1aa9c6ccbd1f8594a05ad254e0</srcmd5>
+    <version>0.9.13</version>
+    <time>1409300635</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0b2b0dc3f57bccda2b8f6c80494e8b29</srcmd5>
+    <version>0.9.14</version>
+    <time>1412098581</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.13.90 for staging and openQA - DO NOT CHECKING - PRERELEASE SOFTWARE</comment>
+    <requestid>246232</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>0c2a64a8394d34c0762145690f9ca318</srcmd5>
+    <version>0.9.14</version>
+    <time>1428790088</time>
+    <user>dimstar_suse</user>
+    <comment>- Implement shared library naming guidelines: move the library to
+  libcheck0. The new package obsoletes 'check', as there is no
+  other content.
+- Do not pass --enable-pic to configure: only static libs profit
+  from this.
+- Add fdupes BuildRequires to eliminate the couple duplicates.
+- Move %install_info_delete from postun to preun: access to the
+  .info files is required for successful execution.</comment>
+    <requestid>294909</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>85ef6468b8fd63708086b4fc6520face</srcmd5>
+    <version>0.10.0</version>
+    <time>1440479885</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324861</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6d8a387974976c088b8bdea2adf48cb7</srcmd5>
+    <version>0.11.0</version>
+    <time>1506678634</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528877</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2715486c56b7da2da28751c2123adc6f</srcmd5>
+    <version>0.12.0</version>
+    <time>1521051896</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583625 from dimstar)</comment>
+    <requestid>584786</requestid>
+  </revision>
+</revisionlist>

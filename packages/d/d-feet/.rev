@@ -1,0 +1,556 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0986acfc53b55e3cd41e09676663fb4</srcmd5>
+    <version>0.1.8</version>
+    <time>1200454143</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="91">
+    <srcmd5>f0986acfc53b55e3cd41e09676663fb4</srcmd5>
+    <version>0.1.8</version>
+    <time>1200454143</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="92">
+    <srcmd5>81e4aaacdee271e94d0f066b8e66cf08</srcmd5>
+    <version>0.1.8</version>
+    <time>1245337772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="93">
+    <srcmd5>0689a105ec3114e8ec50bf72faa2201a</srcmd5>
+    <version>0.1.8</version>
+    <time>1249941689</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="95">
+    <srcmd5>0689a105ec3114e8ec50bf72faa2201a</srcmd5>
+    <version>0.1.8</version>
+    <time>1249941689</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="96">
+    <srcmd5>b9c39eb6d12013f20a1913f4a2aa5875</srcmd5>
+    <version>0.1.8</version>
+    <time>1268923285</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="98">
+    <srcmd5>b9c39eb6d12013f20a1913f4a2aa5875</srcmd5>
+    <version>0.1.8</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="99">
+    <srcmd5>b9c39eb6d12013f20a1913f4a2aa5875</srcmd5>
+    <version>0.1.8</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>47f7d2e5ade4b5a5e50d46e26bc6de1b</srcmd5>
+    <version>0.1.12</version>
+    <time>1295304878</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58462 from user coolo
+</comment>
+    <requestid>58462</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>8b650966aaa19761fbf646f998bbd92f</srcmd5>
+    <version>0.1.12</version>
+    <time>1295304889</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58462
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>8b650966aaa19761fbf646f998bbd92f</srcmd5>
+    <version>0.1.12</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>68b3d78a9592e187c00ca11499b2bb66</srcmd5>
+    <version>0.1.12</version>
+    <time>1313656028</time>
+    <user>saschpe</user>
+    <comment>once again...</comment>
+    <requestid>79197</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>31e3f9048be38e1b821098946aefce2a</srcmd5>
+    <version>0.1.12</version>
+    <time>1313656037</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79197
+</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>31e3f9048be38e1b821098946aefce2a</srcmd5>
+    <version>0.1.12</version>
+    <time>1319181839</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>1a5c775773bd699ec38d64d0a46a0cd8</srcmd5>
+    <version>0.1.12</version>
+    <time>1319205848</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>88913</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8933b5bdab8d2f911dfaae5ca808e380</srcmd5>
+    <version>0.1.14</version>
+    <time>1321460257</time>
+    <user>coolo</user>
+    <comment>Update to 0.1.14</comment>
+    <requestid>91641</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3ea0619754c971b8e1a2464fb511d285</srcmd5>
+    <version>0.1.14</version>
+    <time>1321542168</time>
+    <user>coolo</user>
+    <comment>Desktop macros added and spec file cleanup (forwarded request 91809 from malcolmlewis)</comment>
+    <requestid>91902</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>cb4b26f0052a4ff34e250cfeb3183440</srcmd5>
+    <version>0.1.14</version>
+    <time>1323191159</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>cb4b26f0052a4ff34e250cfeb3183440</srcmd5>
+    <version>0.1.14</version>
+    <time>1340183267</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1ee06e2d0c4e9ae2a9729812ba95b9af</srcmd5>
+    <version>0.1.15</version>
+    <time>1351090935</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.1.15 (forwarded request 138952 from Zaitor)</comment>
+    <requestid>139149</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>96277459a4949b882c2f868d973e54d2</srcmd5>
+    <version>0.3.1</version>
+    <time>1357648512</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.1:
+  + Update setup.py.
+  + Enlarge icon.
+  + Fix icon handling.
+  + Adjust UI.
+  + Fix d-feet icon usage.
+  + Merge branch 'pygi' (use gobject-introspection).
+- Add gobject-introspection BuildRequires: Needed for the typelib()
+  requires rpm magic.
+- Drop gettext and scrollkeeper BuildRequires: no longer needed.
+- Drop dbus-1-pyton and python-gtk Requires: no longer needed after
+  the port to gobject-introspection.
+- Add hicolor-icon-theme BuldRequires: needed for the icon_*
+  macros (it used to be pulled in by python-gtk/gtk2). (forwarded request 145317 from vuntz)</comment>
+    <requestid>147443</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>96277459a4949b882c2f868d973e54d2</srcmd5>
+    <version>0.3.1</version>
+    <time>1359108795</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>adf8fdc68c5d5b2c9b04320ed0f35195</srcmd5>
+    <version>0.3.3</version>
+    <time>1363104681</time>
+    <user>coolo</user>
+    <comment>push staged updates from GNOME:Apps</comment>
+    <requestid>158672</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>181ffae7f61830ded216b34e60b6882d</srcmd5>
+    <version>0.3.4</version>
+    <time>1369734248</time>
+    <user>coolo</user>
+    <comment>Update to 0.3.4 (forwarded request 176424 from Zaitor)</comment>
+    <requestid>176470</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7901fc548271a7cec924793522a6d11a</srcmd5>
+    <version>0.3.5</version>
+    <time>1372145003</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.3.5, fixups after review (forwarded request 180766 from dimstar)</comment>
+    <requestid>180772</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a8a41e89d4d21d128af3d6a230d18fe4</srcmd5>
+    <version>0.3.6</version>
+    <time>1373654705</time>
+    <user>coolo</user>
+    <comment>Update to 0.3.6 (forwarded request 182760 from Zaitor)</comment>
+    <requestid>182778</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>a8a41e89d4d21d128af3d6a230d18fe4</srcmd5>
+    <version>0.3.6</version>
+    <time>1379662200</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f815f3d04a386263cb711ff0d1dd87fe</srcmd5>
+    <version>0.3.7</version>
+    <time>1380475395</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.3.7 (forwarded request 201257 from Zaitor)</comment>
+    <requestid>201266</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>693293f3ee97439131b4b92a0c7ba970</srcmd5>
+    <version>0.3.8</version>
+    <time>1382351320</time>
+    <user>scarabeus_factory</user>
+    <comment>Tweaks post review (forwarded request 204050 from dimstar)</comment>
+    <requestid>204081</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>05ab46ae0d0e98ee713268dab870cbde</srcmd5>
+    <version>0.3.9</version>
+    <time>1405178104</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240738</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>05ab46ae0d0e98ee713268dab870cbde</srcmd5>
+    <version>0.3.9</version>
+    <time>1409300735</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d0e7cd34820e5db5f4aa6a4bb7ca1553</srcmd5>
+    <version>0.3.10</version>
+    <time>1436888633</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315901</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>de6295712cb68711044ef206d1292e98</srcmd5>
+    <version>0.3.11</version>
+    <time>1462178671</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392740</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>94ed173d57335151e52b11017c5a5a03</srcmd5>
+    <version>0.3.12</version>
+    <time>1503925950</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518085</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>352f28ca1a70750e5c0aaaffc4b177ff</srcmd5>
+    <version>0.3.13</version>
+    <time>1512042343</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.13:
+  + Use locale.textdomain otherwise gtkbuilder translations don't
+    work.
+  + gitignore: Ignore generated localized help files.
+  + build:
+    - Put various Autotools droppings in build-aux.
+    - Stop using GNOME_COMPILE_WARNINGS.
+    - Replace deprecated use of gnome-autogen.sh with recommended
+      autogen.sh.
+    - Put third-party macros in m4.
+  + Make pep8 happy.
+  + ExecuteMethodDialog: set_transient_for().
+  + ExecuteMethodDialog: Pretty-print multiple results.
+  + Fix PEP8 305 style error.
+  + Show values that have a logical False representation.
+  + Updated translations.
+- Drop
+  d-feet-Show-values-that-have-logical-False-representation.patch:
+  Fixed upstream.
+- Drop update-desktop-files BuildRequires and
+  suse_update_desktop_file macro, no longer needed.
+- Drop obsolete post(un) handling of icon_theme_cache_post(un),
+  desktop_database_post(un) and glib2_gsettings_schema_post(un), we
+  have file-triggers taking care of this now.
+- Run spec-cleaner, modernize spec, use autosetup and make_build
+  macros.
+- Add
+  d-feet-Show-values-that-have-logical-False-representation.patch:
+  Show values that have a logical False representation. Correctly
+  test whether a value has been retrieved (not None) instead of
+  testing whether the value is logically True to decide on showing
+  it (bgo#783006).
+- Update to version 0.3.12:
+  + Make pep8 happy.
+  + Revert &quot;Don't use Wnck to get app-icons under non-X11&quot;.
+  + Assume Wnck is absent on non-X11.
+  + Specify the Wnck version to silence a warning.
+  + Add Language headers to po files.
+  + Fix desktop file keywords translations.
+  + Updated translations.
+- Update to version 0.3.11:
+  + Don't use Wnck to get app-icons under non-X11.
+  + Add a missing tag to the AppData file.
+  + Update the AppData file to spec version 0.7+.
+  + UI: make the stack animation slide-left-right.
+  + Ignore pep8 E402 error.
+  + Updated translations.
+- Update to version 0.3.10:
+  + Remove deprecated {x,y}pad properties.
+  + Use correct license which is GPL-2.0.
+  + Set transient parent for GtkDialog.
+  + Remove usage of &quot;margin-{left,right}&quot; #2.
+  + Use margin-{start,end} for bus box.
+  + Remove usage of &quot;margin-{left,right}&quot;.
+  + Allow connections to arbitrary buses.
+  + Use open-menu-symbolic for gear icon.
+  + Use the path detected by autoconf instead of hard-coding
+    /usr/bin/python.
+  + Make pep8 happy.
+  + Add missing appdata file to dist tarball.
+  + Add more keywords to desktop file.
+  + Fix desktop file keywords translation.
+  + Update links to wiki homepage.
+  + Updated translations.
+- Update to version 0.3.9:
+  + Wrap method signature in exec dialog.
+  + Remove references to the obsoleted paned_buswatch.
+  + introspection.ui: Use symbolic icons for the reload button.
+  + Make AppData file translatable,
+  + Update wiki page link.
+  + data: Don't run update-desktop-database if DESTDIR is set.
+  + Updated translations.
+- Update to version 0.3.8:
+  + Fix appdata distribution.
+  + Add appdata file for gnome-software.
+  + Update screenshot according to appdata guidelines.
+  + Add screenshot for appdata.
+  + Introspection:
+    - Fix showing unique-name for services with a well-known name.
+    - Use a 'reload' image button instead of a text button.
+  + Pep8 updates.
+  + Change ' to &quot; in .ui files.
+  + Build:
+    - Update ignored files.
+    - Don't use AM_GNU_GETTEXT.
+  + Window:
+    - Keep track of whether Session and System bus are already
+      open.
+    - Allow closing currently visible bus.
+    - Use a GtkStack instead of a GtkNotebook.
+    - Use a GtkHeaderBar and a gear menu.
+  + Bus:
+    - Add margins to the bus box 
+    - Use a GtkSearchEntry instead of the filter box.
+  + Application: Load app menu from ui file.
+  + Fix desktop file keywords translation.
+  + Updated translations.
+- Update to version 0.3.7:
+  + Show inactive bus names in italic.
+  + Also install dfeet-icon-default-service.png.
+  + Update POTFILES.in.
+  + Also show activatable bus names.
+  + Remove duplicate if-clause.
+  + Fix Makefile for data/ui.
+  + threads_init no longer needs to be called.
+  + Bring back the application icons.
+  + Use pformat to show method call results.
+  + Use GtkListBox instead of a TreeView.
+  + Updated translations.
+- Update to version 0.3.6:
+  + Replace live.gnome.org with wiki.gnome.org.
+  + Add a flag to not run the testsuite.
+  + Fix markup string handling for tuple.
+  + Update HACKING.
+  + Updated translations.
+- Update to version 0.3.5:
+  + Fix Annotation handling.
+  + Removed markup from Ui files. See
+    https://live.gnome.org/GnomeGoals/RemoveMarkupInMessages
+  + Add empty (for now) LINGUAS file to satisfy Damned Lies.
+  + Remove unneeded context from strings.
+  + Updated POTFILES.in and POTFILES.skip.)
+  + Use GTestDBus instead of Systembus and Sessionbus.
+  + Use dbus_is_address() instead of dbus_is_supported_address().
+  + Require gobject introspection &amp;gt;= 0.9.6.
+  + GI imports: require Gtk 3.0.
+  + Update HACKING.
+  + Updated translations.
+- Drop d-feet-require-gtk-3.0.patch, fixed upstream.
+- Replace gobject-introspection BuildRequires with
+  pkgconfig(gobject-introspection-1.0), as this is what configure
+  now checks for.
+- Split out lang package and recommend it for install.
+- Add fdupes BuildRequires and make use of it.
+- Update to version 0.3.4:
+  + Update README and HACKING.
+  + Improve the HighContrast icon.
+  + Add missing source.
+  + Add scalable HighContrast icon.
+  + Remove useless text and duplicate icons from scalable logo.
+  + Don't fail if no systembus or sessionbus is available.
+  + Add app menu.
+  + Move window logic to own file and use GtkApplicationWindow.
+  + Add help files.
+  + Check source for pep8.
+  + Fix unittests.
+  + Use correct data dir.
+  + Use autotools for d-feet.
+  + Fix whitespaces.
+- Drop python-setuptools BuildRequires: no longer needed after the
+  move to autotools based build system.
+- Add intltool, yelp-tools, pkgconfig(gio-2.0), python-pep8 and
+  pkgconfig(gtk+-3.0) BuildRequires: needed for the help system and
+  dependencies verified by configure.
+- Update build and install section to use %configure and
+  %make_install instead of the python specific calls.
+- Add glib schema handling script macros to post/postun.
+- Rebase d-feet-require-gtk-3.0.patch.
+- Add d-feet-require-gtk-3.0.patch: Require Gtk 3.0. This helps the
+  automatic dep generator to add the correct dependencies to the
+  rpm (bgo#700163, bnc#818808).
+- Update to version 0.3.3:
+  + Don't close dialog after method execution.
+  + Add close-button to exception dialog.
+  +  Fix needed double click to close method execution dialog.
+  + Update HACKING.
+- Changes from version 0.3.2:
+  + Fix input parameter handling for method execution dialog.
+  + Update requirements in README.
+  + Make d-feet ready for Python 3.
+- Update to version 0.3.1:
+  + Update setup.py.
+  + Enlarge icon.
+  + Fix icon handling.
+  + Adjust UI.
+  + Fix d-feet icon usage.
+  + Merge branch 'pygi' (use gobject-introspection).
+- Add gobject-introspection BuildRequires: Needed for the typelib()
+  requires rpm magic.
+- Drop gettext and scrollkeeper BuildRequires: no longer needed.
+- Drop dbus-1-pyton and python-gtk Requires: no longer needed after
+  the port to gobject-introspection.
+- Add hicolor-icon-theme BuldRequires: needed for the icon_*
+  macros (it used to be pulled in by python-gtk/gtk2).
+- Update to version 0.1.15:
+  + Fixed tree model crash.
+  + Fix crash on empty selection.
+  + Removed gap between window titlebar and menubar.
+  + Import gtk early in a try except block so we catch if display
+    is not set.
+  + Use XDG config dir.
+  + Fix icon globbing in setup.py
+- Update spec file License field from GPLv2+ to GPL-2.0+ to
+  conform with spdx.org identifier.
+- Used spec-cleaner to tidy up spec file.
+- Add icon_theme_cache and desktop_database macros to update
+  icons and desktop entry.
+- Update to version 0.1.14:
+  + Replace old icon with new hi-res icons
+  + Deal with None config values by making them empty strings
+  + Add dbus type wrappers global scope of methods executed by the
+    exec dialog
+  + Remove lingering glade import
+  + Fix quoting and unquoting config lists
+  + Add a reconnect button to the main panel that will allow to
+    close and reconnect the dbus connection for the current tab if
+    this tab address is not either Session Bus or System Bus.
+  + Close the bus connection when we close a connection tab for the
+    buses different than Session Bus and System Bus.
+  + Quote and unquote list items to avoid splitting on comma
+    litterals
+  + Add a persistant history to the combobox in the &quot;connect to
+    other bus&quot; dialog.
+  + Pressing &quot;Enter&quot; in the add connection combobox activates the
+    connect action
+- Drop bugfix_python27_not_start.patch: fixed upstream.
+- Add dbus-1-python Requires that was missing earlier.
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- bugfix for bgo#644701: can't start the d-feet after the previous start
+- when using python2.7,d-feet configuration failed
+- Update to version 0.1.12:
+  + Add the ability to specify a bus on the command line using the
+    --bus-address or -a switch
+  + Fix up some UI bugs
+- Change from version 0.1.11:
+  + Fix .desktop file.
+- Change from version 0.1.10:
+  + Add the rest of the basic types.
+  + Fix for methods that return 0.
+  + Use pprint to slightly prettify method output.
+  + UI fixes.
+- Add python-setuptools BuildRequires.
+- Remove explicit python Requires: it's already set with
+  %py_requires.
+- Add python-gtk Requires.
+- Update Url tag since the project moved to gnome.org.
+- Improve summary.
+- Do not add any category to the desktop file: they're all already
+  there.
+- use new python macros, make it noarch
+- initial check-in: D-Feet 0.1.8 (forwarded request 545330 from Zaitor)</comment>
+    <requestid>546393</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>7d0ea2f9201939a81b5f1f9358dca350</srcmd5>
+    <version>0.3.13</version>
+    <time>1521052576</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop python-pep8 BuildRequires and pass --disable-tests to
+  configure, pep8 is only needed for the test-suite, that we do not
+  even run.
+- Add explicit python3 BuildRequires, and export
+  PYTHON=%%{_bindir}/python3 before calling configure, switch to
+  python3.
+
+- Modernize spec-file by calling spec-cleaner (forwarded request 584457 from dimstar)</comment>
+    <requestid>584653</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4dbd038ed827de487ec20b7830ee6fdc</srcmd5>
+    <version>0.3.14</version>
+    <time>1543223981</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 647683 from iznogood)</comment>
+    <requestid>648439</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>2d907f89752ad3aa68f96bae23ca3e04</srcmd5>
+    <version>0.3.14</version>
+    <time>1544632275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657492</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>fc856a3a73e748441acc87ef69245c0a</srcmd5>
+    <version>0.3.14</version>
+    <time>1546946912</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not have useless arch-dependent libdir in noarch package
+  (boo#1109534).
+</comment>
+    <requestid>663087</requestid>
+  </revision>
+</revisionlist>

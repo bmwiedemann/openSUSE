@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d427094ccf207925464cfa94e47cfe1</srcmd5>
+    <version>2.0.2</version>
+    <time>1399390812</time>
+    <user>coolo</user>
+    <comment>Preparing for scilab
+http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
+    <requestid>232432</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4e72a58bee0c9c821fd4d84b0d5b6dcc</srcmd5>
+    <version>2.0.2</version>
+    <time>1405101952</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240351</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4e72a58bee0c9c821fd4d84b0d5b6dcc</srcmd5>
+    <version>2.0.2</version>
+    <time>1409301289</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>608a071cd17e29277ac5e7ba03cb13af</srcmd5>
+    <version>2.3.1</version>
+    <time>1428790200</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294942</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1e7651d352e6715aa0666e5f2fa9c201</srcmd5>
+    <version>2.3.2</version>
+    <time>1445287815</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>338010</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ecc4ec275953cf8bf7cefd66dd4a0963</srcmd5>
+    <version>2.3.2</version>
+    <time>1458120914</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369726</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6c5d262ca53c893229dd27e2e1a7102c</srcmd5>
+    <version>2.3.2</version>
+    <time>1505920444</time>
+    <user>dimstar_suse</user>
+    <comment>Force building with jdk &lt; 1.9</comment>
+    <requestid>527511</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>d25062e7fbb32f31b7df977c797548a9</srcmd5>
+    <version>2.3.2</version>
+    <time>1507391474</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>532190</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>41466f751b083ffabce67af2e903d2bc</srcmd5>
+    <version>2.3.2</version>
+    <time>1511817443</time>
+    <user>dimstar_suse</user>
+    <comment>- Set TARGET_PLATFORM_ROOT to the root directory, as OBS does not
+  do cross compilation. Fixes build on ARMv7, Aarch64.
+
+Depends on SR#545523 to fully fix ARM compilation.</comment>
+    <requestid>545580</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>29752d1fae54b4a219dc75b2aba3ee46</srcmd5>
+    <version>2.3.2</version>
+    <time>1514983182</time>
+    <user>dimstar_suse</user>
+    <comment>Force build with jdk &lt; 10</comment>
+    <requestid>561164</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>9b7f1c68df852e95f55dae08c83e0d94</srcmd5>
+    <version>2.3.2</version>
+    <time>1515623870</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk10</comment>
+    <requestid>563220</requestid>
+  </revision>
+</revisionlist>

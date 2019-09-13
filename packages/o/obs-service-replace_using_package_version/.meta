@@ -1,0 +1,5 @@
+<package name="obs-service-replace_using_package_version" project="openSUSE:Factory">
+  <title>OBS service that replaces regex with a package version</title>
+  <description></description>
+  <devel project="Virtualization:containers" package="obs-service-replace_using_package_version"/>
+</package>

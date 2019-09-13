@@ -1,0 +1,242 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e569c527d33b04528e1db1232aa40909</srcmd5>
+    <version>1.43</version>
+    <time>1168902608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>87009c52b9e482217a4a55d858cf8690</srcmd5>
+    <version>1.45</version>
+    <time>1197479213</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ba1332d1dbf406a914b7919a4a0b885c</srcmd5>
+    <version>1.46</version>
+    <time>1221258320</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e95a657ab6fd1d28a003a24f74fc40b</srcmd5>
+    <version>1.47</version>
+    <time>1238598286</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>357e6037b855b2ae9733593f15dbe2e9</srcmd5>
+    <version>1.48</version>
+    <time>1250198974</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/diffstat based on submit request 17717 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>357e6037b855b2ae9733593f15dbe2e9</srcmd5>
+    <version>1.48</version>
+    <time>1250198974</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/diffstat based on submit request 17717 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>51ed492a03c5a19f54c5eae2dc28f5e8</srcmd5>
+    <version>1.51</version>
+    <time>1259922914</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/diffstat based on submit request 25494 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b44744793a005096c8fc7a7c88087fc2</srcmd5>
+    <version>1.51</version>
+    <time>1263482762</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/diffstat based on submit request 29047 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>df0cc446d3d2694643ce1749699d4fb9</srcmd5>
+    <version>1.51</version>
+    <time>1268923338</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>df0cc446d3d2694643ce1749699d4fb9</srcmd5>
+    <version>1.51</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>df0cc446d3d2694643ce1749699d4fb9</srcmd5>
+    <version>1.51</version>
+    <time>1278678571</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4eb111f90108d348ed590ca2aeea488a</srcmd5>
+    <version>1.53</version>
+    <time>1285595190</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/diffstat based on submit request 49167 from user coolo
+</comment>
+    <requestid>49167</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2cd7c6edc8d05035c3e8e84b89ee332c</srcmd5>
+    <version>1.54</version>
+    <time>1287052629</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/diffstat based on submit request 50295 from user pgajdos
+</comment>
+    <requestid>50295</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>2cd7c6edc8d05035c3e8e84b89ee332c</srcmd5>
+    <version>1.54</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>2cd7c6edc8d05035c3e8e84b89ee332c</srcmd5>
+    <version>1.54</version>
+    <time>1319181848</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>30d4f0c86af7b60d3848ff57b47a5352</srcmd5>
+    <version>1.55</version>
+    <time>1325846609</time>
+    <user>coolo</user>
+    <comment>- updated to 1.55:
+  * fixed [bnc#739210] -- on commercial license found in diffstat 
+    1.54 (test files)
+  * add -R option, like patch's, to reverse the order of the 
+    comparison.
+- switch on make check
+
+- remove call to suse_update_config (very old work around)
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build</comment>
+    <requestid>98716</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>30d4f0c86af7b60d3848ff57b47a5352</srcmd5>
+    <version>1.55</version>
+    <time>1340183279</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>30d4f0c86af7b60d3848ff57b47a5352</srcmd5>
+    <version>1.55</version>
+    <time>1359108813</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a12b12bf897f3a65c7666e23783ba759</srcmd5>
+    <version>1.56</version>
+    <time>1362736148</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157771</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>07c16bd167aa4c90becbc894d899d13e</srcmd5>
+    <version>1.57</version>
+    <time>1366791583</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>172953</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>07c16bd167aa4c90becbc894d899d13e</srcmd5>
+    <version>1.57</version>
+    <time>1379662226</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a631cd3214b0d86bed1ea8d5997ba47d</srcmd5>
+    <version>1.58</version>
+    <time>1383143135</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 1.58:
+    + add COPYING file (request by Dagobert Michelsen).
+    + improved portability for cross-compiling, by supplying missing
+      getopt function as well as improving checks for popen/pclose
+      prototypes.</comment>
+    <requestid>205197</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>299ad9091874e882ff6d8a575ca5ca15</srcmd5>
+    <version>1.59</version>
+    <time>1403070634</time>
+    <user>coolo</user>
+    <comment>- updated to 1.59:
+  + add -E option to filter escape-sequences, e.g., from colordiff
+    (Ubuntu #1304262).
+  + merge/adapt improvments to makefile and configure script from
+    openembedded.org (forwarded by Ross Burton).
+    + remove unused $(libdir) from makefile &quot;installdirs&quot; target
+    + amend definition in CF_POPEN_TEST to permit use of autoheader.
+    + workaround for gratuitous renaming of AC_ACVERSION in 2.69
+  + added &quot;docs&quot; rule to makefile
+  + improvements to configure macros:
+    + added check for -Wlogical-op to gcc warnings
+    + suppress check for defining _XOPEN_SOURCE on Solaris
+    + trim an unwanted -no-gcc option for Intel compiler
+  + update config.guess, config.sub</comment>
+    <requestid>236615</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>299ad9091874e882ff6d8a575ca5ca15</srcmd5>
+    <version>1.59</version>
+    <time>1409300764</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>a8f17b1371809d05e3d8c66e47639ce5</srcmd5>
+    <version>1.59</version>
+    <time>1429658125</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298049</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7d521b432cd1aa3a0a2ec5ec68afdfa8</srcmd5>
+    <version>1.60</version>
+    <time>1438899379</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320756</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b2af1ae47b849b4006a7e48229ef7dd1</srcmd5>
+    <version>1.61</version>
+    <time>1455032962</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358152</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4ff3763cb5858b6a94ae26de5b5f2fea</srcmd5>
+    <version>1.62</version>
+    <time>1546535120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.62
+  + improve checks for unmodified files when -S and -D options are
+    given.
+  + improve test-packages, to check warning-options.
+  + minor fixes for manpage (Debian #895963)
+  + minor fixes for prefix-stripping with -S option.</comment>
+    <requestid>662193</requestid>
+  </revision>
+</revisionlist>

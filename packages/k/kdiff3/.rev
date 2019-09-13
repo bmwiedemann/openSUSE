@@ -1,0 +1,223 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2485ed10c9b8c879999e00f30fa3c534</srcmd5>
+    <version>0.9.91</version>
+    <time>1168903198</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a9c34a51b7ac9ed92fc2e93d904df14d</srcmd5>
+    <version>0.9.92</version>
+    <time>1176707162</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="33">
+    <srcmd5>5659d14497e5d8d2f0bd713c6183f8c3</srcmd5>
+    <version>0.9.92</version>
+    <time>1181774294</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="236">
+    <srcmd5>5659d14497e5d8d2f0bd713c6183f8c3</srcmd5>
+    <version>0.9.92</version>
+    <time>1181774294</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="237">
+    <srcmd5>72aa877eca5cf201da794a1b78e010b8</srcmd5>
+    <version>0.9.92</version>
+    <time>1226938141</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="238">
+    <srcmd5>f3f15bbcef3b2c6ed125bb5c73273bcb</srcmd5>
+    <version>0.9.92</version>
+    <time>1234743793</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8f702b9cc49c5c4f3c87d250a150e856</srcmd5>
+    <version>0.9.94</version>
+    <time>1235664642</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1d47da954fa77d4e4924b4a590dac5a0</srcmd5>
+    <version>0.9.95</version>
+    <time>1236554422</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8d92ddd9c0ddae46cf163d8f56ca55cd</srcmd5>
+    <version>0.9.95</version>
+    <time>1242817187</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>8d92ddd9c0ddae46cf163d8f56ca55cd</srcmd5>
+    <version>0.9.95</version>
+    <time>1242817187</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>58b56d43985c9ede6176f44ca0783d21</srcmd5>
+    <version>0.9.95</version>
+    <time>1268068667</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdiff3 based on submit request 34300 from user coolo
+</comment>
+    <requestid>34300</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>7eb84ce2a463ea1bad7b7b1d4e3fe2d5</srcmd5>
+    <version>0.9.95</version>
+    <time>1268924214</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>7eb84ce2a463ea1bad7b7b1d4e3fe2d5</srcmd5>
+    <version>0.9.95</version>
+    <time>1278667354</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>7eb84ce2a463ea1bad7b7b1d4e3fe2d5</srcmd5>
+    <version>0.9.95</version>
+    <time>1278678586</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>5abfd3db8879116bb40cd8305689cf9c</srcmd5>
+    <version>0.9.95</version>
+    <time>1281437405</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdiff3 based on submit request 45277 from user Beineri
+</comment>
+    <requestid>45277</requestid>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>5abfd3db8879116bb40cd8305689cf9c</srcmd5>
+    <version>0.9.95</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>9ee76b98d45a0a78c72d993f5eed3fa4</srcmd5>
+    <version>0.9.95</version>
+    <time>1317911795</time>
+    <user>oertel</user>
+    <comment>forward to factory</comment>
+    <requestid>86795</requestid>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>e1ec6dcdf565aa6f60ca5ac23c8d66d2</srcmd5>
+    <version>0.9.96</version>
+    <time>1318428757</time>
+    <user>lrupp</user>
+    <comment>
+- update to 0.9.96:
+  * KDiff3FileItemActionPlugin : Context menu that also works in dolphin (for KDE&gt;=4
+  * Parser for preprocessor commands. (Allows single apostrophs ')
+  * Fix crash on A/B-overview (infinite recursion)
+  * Fix clearcase temp files not deleted problem on windows
+  * KDiff3 plugin: When launching KDiff3 konqueror isn't blocked anymore
+  * String corrections (Frederik Schwarzer)
+  * Fixed writing to KIO.
+  * Fixed white space merge default options</comment>
+    <requestid>87458</requestid>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>e1ec6dcdf565aa6f60ca5ac23c8d66d2</srcmd5>
+    <version>0.9.96</version>
+    <time>1319182040</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>2fbd4e9e64338e762f5964e9b1908a95</srcmd5>
+    <version>0.9.96</version>
+    <time>1323192093</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="15">
+    <srcmd5>2fbd4e9e64338e762f5964e9b1908a95</srcmd5>
+    <version>0.9.96</version>
+    <time>1340183517</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>31e4cecdf08c381fbc43cabacc701afb</srcmd5>
+    <version>0.9.97</version>
+    <time>1354524155</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143294</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>31e4cecdf08c381fbc43cabacc701afb</srcmd5>
+    <version>0.9.97</version>
+    <time>1359109167</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>8ae55733c85214d2aae160db753114c6</srcmd5>
+    <version>0.9.97</version>
+    <time>1368715814</time>
+    <user>coolo</user>
+    <comment>- Add kdiff3-fix-save-relative-path.patch: fix saving merged
+  files.  Patch is from: https://bugs.archlinux.org/task/31813
+  and is already upstream. (forwarded request 174711 from aspiers)</comment>
+    <requestid>174783</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>8ae55733c85214d2aae160db753114c6</srcmd5>
+    <version>0.9.97</version>
+    <time>1379662784</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>b2852e87e8993973532869f35b0134ce</srcmd5>
+    <version>0.9.97</version>
+    <time>1383143931</time>
+    <user>scarabeus_factory</user>
+    <comment>BuildRequire only libkde4-devel, instead of kdebase4-workspace-devel</comment>
+    <requestid>204948</requestid>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>b2852e87e8993973532869f35b0134ce</srcmd5>
+    <version>0.9.97</version>
+    <time>1409301350</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6cd82a4d556c33c8aadad06bfa6dffc7</srcmd5>
+    <version>0.9.98</version>
+    <time>1435172790</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313555</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>a188cc51431e1f1c772d3d37aaf8040f</srcmd5>
+    <version>0.9.98</version>
+    <time>1480584459</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442648</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b4e096c7c3f9aa3d0900fe0fc69d19ce</srcmd5>
+    <version>1.8.1</version>
+    <time>1560862551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704043</requestid>
+  </revision>
+</revisionlist>

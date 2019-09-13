@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3eebfa85bb84a185c4e7fd31e08ce30e</srcmd5>
+    <version>0.8.0</version>
+    <time>1416048078</time>
+    <user>dimstar_suse</user>
+    <comment>fixed license tag</comment>
+    <requestid>260761</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>816203d1eb0d2792ee1754b265349162</srcmd5>
+    <version>0.8.0</version>
+    <time>1422959973</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283577</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fa7c432405bf0cdaf66357822d04baed</srcmd5>
+    <version>0.9.0</version>
+    <time>1424117511</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>285046</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>881ba9fd076fa3fc97704da10a06f9c3</srcmd5>
+    <version>0.9.0</version>
+    <time>1424827048</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed %build and %install to use cmake macros (forwarded request 287066 from sfalken)</comment>
+    <requestid>287402</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0e60ed341a33d5fc7a8d99b3e1cb9ab4</srcmd5>
+    <version>0.10.0</version>
+    <time>1447454137</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343352</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>36a10dfbcf1c835af7d4b5e68c10cc84</srcmd5>
+    <version>0.11.0</version>
+    <time>1475750642</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>432278</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1241ff9b58e3b0111a98ce011f90a4db</srcmd5>
+    <version>0.11.1</version>
+    <time>1489415543</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460155</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>66569362fb2e778d3b5966ee4f7ef362</srcmd5>
+    <version>0.12.0</version>
+    <time>1508876588</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Set patch version
+  * Don't export github templates
+  * Updated Lithuanian translation
+  * Drops Qt5Core_VERSION_STRING
+  * Added QCommandLineParser and basic cli interface to lxqt-policykit-agent
+  * Added default CMAKE_BUILD_TYPE and LXQT_POLKITAGENT_PATCH_VERSION
+  * Fixes a FTBFS in superbuild mode
+  * Added merged autostart to CMakeLists.txt
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Update desktop entries and Replace fr_FR by fr
+  * Update Greek translation (el) Remove country variant from language code
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Updates the build system to use the Targets infrastructure
+  * Drops hardcoded /etc/xdg paths
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * remove dead template lines switch OnlyShowIn from Razor -&gt; LXQt stringchanges LxQt -&gt; LXQt
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Fix typo and correct some sentences
+  * Fixed some more typos
+  * Bump year
+- Update to 0.11.1:
+  * Make CMakeLists.txt more uniform.
+  * Remove cpack (#25)
+- Update to 0.11.0:
+  * agentGui: Use default icon
+  * agentGui: Choose current user in identities combo
+  * agentGui: Handle setting the prompt correctly
+  * agent: Handle multiple identities correctly
+  * Update README.md
+  * Fixed typo prefered -&gt; preferred
+  * Add README.md
+  * build: Use external translations
+  * ts-files removal (#21)
+  * Bump year in AUTHORS
+  * Italian translation update
+  * Updated Russian translation Removed ru_RU file
+  * update: lxqt-policykit-agent_hu.ts
+- Add keyring
+- Upstream release 0.10.0
+- Changed %build and %install to use cmake macros 
+- New upstream version 0.9.0
+- Added -lang subpackage
+- Added conditionals to enable Fedora builds 
+- Fixed License string
+- new upstream version 0.8.0 
+- removed unsed buildrequires 
+- Specfile cleanup 
+- removed fedora spec, split into subproject
+  Del:  lxqt-policykit-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add: lxqt-policykit-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-policykit-0.7.0.tar.xz
+  Del:  _service 
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-policykit.spec
+  Add: lxqt-policykit.changes 
+</comment>
+    <requestid>535978</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>abbe65b678c9edb6fc35a74b2a86abed</srcmd5>
+    <version>0.13.0</version>
+    <time>1530304233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * CMake: Prevent in-source builds
+  * fix razor-qt -&gt; lxqt and http -&gt; https
+  * Fixed some LXDE mentions
+  * Drop Qt foreach
+- Update to 0.12.0:
+  * Set patch version
+  * Don't export github templates
+  * Updated Lithuanian translation
+  * Drops Qt5Core_VERSION_STRING
+  * Added QCommandLineParser and basic cli interface to lxqt-policykit-agent
+  * Added default CMAKE_BUILD_TYPE and LXQT_POLKITAGENT_PATCH_VERSION
+  * Fixes a FTBFS in superbuild mode
+  * Added merged autostart to CMakeLists.txt
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Update desktop entries and Replace fr_FR by fr
+  * Update Greek translation (el) Remove country variant from language code
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Updates the build system to use the Targets infrastructure
+  * Drops hardcoded /etc/xdg paths
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * remove dead template lines switch OnlyShowIn from Razor -&gt; LXQt stringchanges LxQt -&gt; LXQt
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Fix typo and correct some sentences
+  * Fixed some more typos
+  * Bump year
+- Update to 0.11.1:
+  * Make CMakeLists.txt more uniform.
+  * Remove cpack (#25)
+- Update to 0.11.0:
+  * agentGui: Use default icon
+  * agentGui: Choose current user in identities combo
+  * agentGui: Handle setting the prompt correctly
+  * agent: Handle multiple identities correctly
+  * Update README.md
+  * Fixed typo prefered -&gt; preferred
+  * Add README.md
+  * build: Use external translations
+  * ts-files removal (#21)
+  * Bump year in AUTHORS
+  * Italian translation update
+  * Updated Russian translation Removed ru_RU file
+  * update: lxqt-policykit-agent_hu.ts
+- Add keyring
+- Upstream release 0.10.0
+- Changed %build and %install to use cmake macros 
+- New upstream version 0.9.0
+- Added -lang subpackage
+- Added conditionals to enable Fedora builds 
+- Fixed License string
+- new upstream version 0.8.0 
+- removed unsed buildrequires 
+- Specfile cleanup 
+- removed fedora spec, split into subproject
+  Del:  lxqt-policykit-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add: lxqt-policykit-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-policykit-0.7.0.tar.xz
+  Del:  _service 
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-policykit.spec
+  Add: lxqt-policykit.changes 
+</comment>
+    <requestid>618044</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bf76896ca2ac51cb6d7176b834c82677</srcmd5>
+    <version>0.14.0</version>
+    <time>1551113367</time>
+    <user>coolo</user>
+    <comment>- Update to 0.14.0:
+  * Installed former missed man page
+- Move translation from lxqt-l10n into package
+</comment>
+    <requestid>670388</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e908fc5d28186b4d3da411e0e24591aa</srcmd5>
+    <version>0.14.1</version>
+    <time>1551455363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.1:
+  * Only translations was changed</comment>
+    <requestid>680417</requestid>
+  </revision>
+</revisionlist>

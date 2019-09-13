@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9f955c32c9f737cc7a7e8b7bf8659a64</srcmd5>
+    <version>0.1.8</version>
+    <time>1476874918</time>
+    <user>dimstar_suse</user>
+    <comment>Please add this package to Factory since it is required by fluentd which will follow later.</comment>
+    <requestid>429450</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>408a97956be3e63a927f2f437ba93ec2</srcmd5>
+    <version>0.1.9</version>
+    <time>1484475438</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450009</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>34c87927661f114b2459c52955f8bbc1</srcmd5>
+    <version>0.2.3</version>
+    <time>1520329568</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>581505</requestid>
+  </revision>
+</revisionlist>

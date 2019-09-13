@@ -1,0 +1,1032 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3919e62f19f73c666f49a271df40e3f3</srcmd5>
+    <version>1.1.0</version>
+    <time>1349721366</time>
+    <user>coolo</user>
+    <comment>For the license please see the discussion at the opensuse-bar
+mailinglist
+
+http://lists.opensuse.org/opensuse-bar/2012-10/msg00001.html
+
+Thanks</comment>
+    <requestid>137260</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d245db397dfb553bafcab67773c52baf</srcmd5>
+    <version>1.1.0</version>
+    <time>1350680418</time>
+    <user>coolo</user>
+    <comment>- explicit buildrequire netcfg for the test suite
+- license update: SUSE-Public-Domain and BSD-3-Clause
+  sbcl contains some BSD licensed cpomponents</comment>
+    <requestid>138460</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3eda2c20f66e6b25dc72a6805320b42</srcmd5>
+    <version>1.1.1</version>
+    <time>1352093626</time>
+    <user>coolo</user>
+    <comment>- Update to 1.1.1 version
+  * Enhancements and optimizations:
+    + WITH-COMPILATION-UNIT no longer grabs the world-lock.
+    (COMPILE and COMPILE-FILE still do.)
+    + The SPARC backend now supports the precise generational
+    (GENCGC) garbage collection. Enabled by default on
+    Solaris/SPARC and Linux/SPARC. Thanks to Raymond Toy (via
+    CMUCL).
+    + add experimental support for the SB-THREAD feature and the
+    timer facility on Windows. Thanks to Dmitry Kalyanov and Anton
+    Kovalenko. Threads are enabled by default, and this version of
+    SBCL is considered to be the last and final release to
+    officially support building with threads disabled.
+    + The compiler no longer rotates loops in some cases where this
+    transformation actually lead to worse code being generated.
+  * Bug Fixes:
+    + SB-CLTL2:MACROEXPAND-ALL correctly handles shadowing of
+    symbol-macros by lexical bindings.
+    + stack allocation was prevented by high DEBUG declaration in
+    several cases.
+    + SB-EXT:GC-LOGFILE signaled an error when no logfile was set.
+    (thanks to SANO Masatoshi)
+    + PARSE-NATIVE-NAMESTRING performed non-native parsing when
+    :JUNK-ALLOWED was true.
+    + type derivation inferred overly conservative types for unions
+    of array types. (#1050768)
+- rebase sbcl-1.0.54-optflags.patch 
+
+- Change licence SUSE-Public_Domain
+- move example code to doc directory (forwarded request 140046 from toganm)</comment>
+    <requestid>140047</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>16cb2cc6ae5db30ce5e6ed98ca8ae721</srcmd5>
+    <version>1.1.1</version>
+    <time>1353514948</time>
+    <user>coolo</user>
+    <comment>Fix build with glibc 2.17 (forwarded request 141614 from a_jaeger)</comment>
+    <requestid>142030</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>edc840e2b14e8f9e08fbd2effc0f656d</srcmd5>
+    <version>1.1.2</version>
+    <time>1355156356</time>
+    <user>coolo</user>
+    <comment>- Update to 1.1.2 version
+  * Enhancements:
+    + frlocks have been added to SB-CONCURRENCY contrib
+      module.
+    + New feature sb-dynamic-core allows the runtime to
+      be rebuilt or relocated without requiring changes to the core
+      file on all linkage table platforms. Required on Windows.
+      (Thanks to Anton Kovalenko.)
+    + Console I/O streams use UCS-2. (Thanks to Anton Kovalenko.)
+    + Support for the experimental safepoint-based stop-the-world
+       protocol on the PowerPC platform.
+  * Windows related bug fixes:
+- Use sbcl in buildrequires instead of clisp since the package is
+  now available in Factory as well
+  * Added sbclrc.sample and README.openSUSE which explains the usage
+    of the sample init file usage with sbcl 
+  * Patched install.sh to install the above
+    (sbcl-1.1.2-install.patch)
+  * use the customize-target-features.lisp to enable/disable
+    features
+  * disable test-frfrlock sb-concurrency by allowing it to fail on
+    linux see https://bugs.launchpad.net/sbcl/+bug/1087955
+   (sbcl-disable-frlock-test.patch) (forwarded request 144825 from toganm)</comment>
+    <requestid>144827</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>edc840e2b14e8f9e08fbd2effc0f656d</srcmd5>
+    <version>1.1.2</version>
+    <time>1359110370</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ad0412fa7c755b9f7344914f1aa9e48c</srcmd5>
+    <version>1.1.5</version>
+    <time>1362736782</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157700</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2adc159e25dbdbd0ae25f4cf3fd366fa</srcmd5>
+    <version>1.1.6</version>
+    <time>1365425791</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.6
+  * Enhancements:
+    + the continuable error when defknown-ing over extant fndb
+      entries can be ignored by passing :overwrite-fndb-silently
+      t as a keyword argument to sb-c:defknown (after attributes).
+      Useful to allow defknown to be re-loaded. Use with
+      :allow-other-keys t for backward compatibility.
+  * Optimization:
+    + compiler is much faster in compiling SVREF and
+      (SETF SVREF) forms.
+  * Bug fix:
+    + Prevent a make-array transform from modifying source
+      forms causing problems for inlined code. Thanks to Bart Botta.
+      (regression since 1.0.42.11-bis)
+    + clear-output calls the correct gray stream routine,
+      sb-gray:stream-clear-output. (lp#1153257)
+    + an error is signalled for an invalid format modifier:
+      ~&amp;lt;~@&amp;gt;. (lp#1153148)
+    + Better error messages for package operations
+      (lp#1154776)
+    + delete-package on a nonexistent package should signal
+      a cerror. (regression since 1.0.37.44).
+    + bug fix: accessing &amp;amp;MORE (stack allocated &amp;amp;REST) arguments
+      checks bounds.  (lp#1154946, lp#1072112)
+    + bug fix: compiling make-array no longer signals an error when
+      the element-type is an uknown type, a warning is issued instead.
+      Thanks to James Kalenius (lp#1156095)
+    + SEARCH on generic (non-VECTOR non-LIST) sequence types
+      no longer produces wrong results for some inputs.
+      (Thanks to Jan  Moringen.) (lp#1153312) (forwarded request 162687 from toganm)</comment>
+    <requestid>162688</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f3aa57a9614eb24475e08b4725ad0e2b</srcmd5>
+    <version>1.1.7</version>
+    <time>1367488868</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.7
+  * Enhacements:
+    + TRACE :PRINT-ALL handles multiple-valued forms. (#457053)
+  * Bug Fix:
+    + allocation slot option works for condition slots (#1049404)
+      redefining conditions does not lead to multiple evaluations of
+      hairy slot initfunctions anymore (#1164969)
+    + CLASS-DIRECT-DEFAULT-INITARGS now works for condition classes
+      (#1164970)
+    + function constants now work as initforms and default initarg values
+      of conditions (#539517)
+      svref/(setf svref) on symbol macros don't crash the compiler
+      anymore. (Minimal test case provided by James M. Lawrence on
+       sbcl-devel) 
+    + no more bogus ## references when pretty printing backquoted forms
+      with non-trivial structure sharing. (#1161218)
+    + Don't signal an error on (setf (documentation nil 'function) &quot;doc&quot;).
+      Signal a style-warning instead when trying to set documentation
+      of NIL for all other documentation types.)
+    + modular arithmetic involving large constants and conditionals
+      should no longer result in spurious dead code elimination.
+    + our mach exception handler can seemingly called very early in
+      the program execution process on OS X 10.8.0. Try and handle
+      that case robustly, without potentially leaking mach ports
+      too much.
+  * Optimization:
+    + LOGBITP and LOGTEST optimizations from x86 portedto x86_64. 
+- Backport patches from git (these to be removed on next version
+  upgrade
+    0001-Handle-environment-initialization-better.patch (forwarded request 174011 from toganm)</comment>
+    <requestid>174013</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>98f2e9d61ba4eabe965d90d80a4ea747</srcmd5>
+    <version>1.1.8</version>
+    <time>1370516356</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.8
+  * Notice:
+    + The implementation of MAP-ALLOCATED-OBJECTS (the heart of
+      ROOM, plus a few SB-INTROSPECT functions) has been completely
+      rewritten; it may now exhibit different bugs than before.
+  * New feature:
+    + minimal runtime/compiler intrastructure support
+      for SSE SIMD values, as SB-EXT:SIMD-PACK. Enabled on x86-64
+      via the  build-time
+     + sb-simd-pack. This should enable intrinsics extensions
+       as libraries, without patching SBCL itself. 
+  * Enhancement:
+    + RUN-PROGRAM supports a :DIRECTORY argument to set
+      the working directory of the spawned process.
+      (lp#791800) (patch by Matthias Benkard)
+    + boxed vectors (vectors of T or of FIXNUM) can now
+      be stack-allocated on PPC.
+    + &quot;fixed objects&quot; can now be stack-allocated on PPC.
+    + WITH-PINNED-OBJECTS no longer conses on PPC/GENCGC.
+    + (sb-introspect:find-definition-sources-by-name x :vop) now
+      also returns VOPs which do not translate any functions, and
+      finds  defoptimizer types ir2convert and stack-allocate-result.
+    + better type derivation for APPEND, NCONC, LIST.  (lp#538957)
+    + MAP-ALLOCATED-OBJECTS (the heart of ROOM) now walks the heap
+      in a manner similar to the GC rather than its previous ad-hoc
+      scheme, and is therefore no less and possibly more accurate.
+    + fixes and enhancements related to Unicode:
+      - the character database information has been updated to
+        Unicode 6.2;
+      - support for canonical and compatibility decomposition of (forwarded request 177777 from toganm)</comment>
+    <requestid>177778</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>088895b06f261cbc9fe9d74ef09a1a95</srcmd5>
+    <version>1.1.9</version>
+    <time>1372954019</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.9
+  * New feature:
+    + the contrib SB-GMP links with libgmp at runtime to speed up
+    arithmetic on bignums and ratios. (contributed by Stephan
+    Frank)
+  * Enhancement:
+    + disassemble now annotates some previously
+      missing static functions, like LENGTH.
+    + SB-EXT:PRINT-SYMBOL-WITH-PREFIX can be used within ~// to
+      print a symbol with a package prefix.
+    + The debugger and backtracing are more robust against buggy
+      PRINT-OBJECT methods.
+  * Optimization:
+    + calls to static functions on x86-64 use less instructions.
+    + compute encode-universal-time at compile time when possible.
+    + when referencing internal functions as #'x, don't go through
+      an indirect fdefn structure.
+    + SLEEP doesn't cons on non-immediate floats and on ratios.
+    + (mod fixnum) type-checks are performed using one unsigned
+      comparison, instead of two.
+    + enable more modular arithmetic transforms in the presence of
+     conditionals.
+    + bitwise OR forms can now trigger modular arithmetic as well,
+      when the result is known to be negative.
+    + recognize more cases of useless LOGAND/LOGIOR with constants.
+    + comparisons between rationals and constant floats or between
+      integers and constant ratios are now converted to rationals/integers
+      at compile time.
+    + Smaller and faster DOUBLE-FLOAT-LOW-BITS on x86-64.
+  * Bug Fix: (forwarded request 182209 from toganm)</comment>
+    <requestid>182210</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>71c4ef2bb3ebd640782932b7dbca4488</srcmd5>
+    <version>1.1.10</version>
+    <time>1375195682</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.10
+  * Enhancement:
+    + ASDF has been updated to 3.0.2.
+  * Optimization:
+    + stack frames are packed more efficiently on
+      x86oids, which  ought to reduce the frequency of Methuselahn
+      conservative references (it certainly helps with gc.impure.lisp
+      / BUG-936304 on x86).
+    + on x86 and x86-64, integer negation forms like
+     (- * x) are now recognized in modular arithmetic contexts, and
+     compile to native negate, rather than going through bignums only
+     to keep the low bits.
+  * Bug fix
+    + Compiling potential modularic arithmetic forms does
+      not cause type errors when some integer types lack lower or upper
+      bounds.  (lp#1199127)
+    + Non-trivial modular arithmetic forms are always cut to
+      the right  bitwidth before being used in a non-modular context.
+      (lp#1199428)
+    + Multiple catch/unwind blocks in a single function are now
+      allocated in the right stack order on win32. (lp#1072739) (forwarded request 184576 from toganm)</comment>
+    <requestid>184578</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>759e921985eb6480bb576f8f31b07137</srcmd5>
+    <version>1.1.11</version>
+    <time>1377856147</time>
+    <user>coolo</user>
+    <comment>Since this is a leaf package please also checkin for 13.1</comment>
+    <requestid>196704</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>759e921985eb6480bb576f8f31b07137</srcmd5>
+    <version>1.1.11</version>
+    <time>1379664616</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>64d52222d65f3f0c3cc4e9681b43c0e5</srcmd5>
+    <version>1.1.12</version>
+    <time>1380696821</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.12
+  * Enhancement:
+    + Add sb-bsd-sockets:socket-shutdown, for calling
+      shutdown(3). lp#1207483
+    + document extensible sequences.  lp#994528
+  * Optimization:
+    + EQUAL and EQUALP transforms are smarter.  lp#1220084
+    + CHAR-EQUAL is faster for constant and base-char arguments.
+  * Bug fix:
+    + probe-file now can access symlinks to pipes and sockets in
+     /proc/pid/fd on Linux. (reported by Eric Schulte)
+    + SBCL can now be built on Solaris x86-64.
+    + Floating point exceptions do not persist on Solaris anymore.
+    + (setf . a) is pprinted correctly
+    + handle compiler-error in LOAD when it's not run from inside EVAL.
+      lp#1219601
+    + SB-GMP:MPZ-POW no longer segfaults given a non-bignum base.
+    + space allocation of result bignums in SB-GMP is more accurate.
+      lp#1206191
+    + sb-safepoint can now reliably handle signal interruptions of
+      foreign code. lp#1133018
+    + the compiler-macro for MAKE-INSTANCE when emitting &quot;fallback&quot;
+      constructors no longer fails to merge actual and default
+      initargs  lp#1179858
+    + the compiler-macro for MAKE-INSTANCE when emitting &quot;fallback&quot;
+      constructors handles non-KEYWORD initialization arguments more
+      correctly.
+    + loading the SB-SIMPLE-STREAMS contributed module no longer
+      clobbers FILE-NAMESTRING.  lp#884603
+    + class definitions with CPLs inconsistent with their  metaclasses (forwarded request 201589 from toganm)</comment>
+    <requestid>201593</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f4f0b9c6816599b9359e390c40cc185b</srcmd5>
+    <version>1.1.13</version>
+    <time>1383570187</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.13
+  * Optimization:
+    + better distribution of SXHASH over small conses of related
+      values.  (lp#309443)
+    + other improvements to SXHASH:
+      - use the whole of the positive-fixnum range for SXHASH of
+        fixnums
+  * Enhancement:
+    + The error message when calling an undefined alien function
+      includes the name of the function on x86-64.
+    + sb-ext:run-program now supports :environment on Windows.
+    + ASDF is no longer required to load contribs at runtime.
+     (lp#1132254)
+    + when called with a symbol, FIND-RESTART no longer calls
+      COMPUTE-RESTARTS, making it faster and cons less (lp#769615)
+    + FIND-RESTART and COMPUTE-RESTARTS handle huge restart
+      clusters better in some cases
+    + SOME/ANY/other quantification higher-order functions no
+      longer cons. (lp#1070635)
+  * Bug fix:
+    + forward references to classes in fasls can now be loaded.
+      (lp#746132)
+    + don't warn on a interpreted-&gt;compiled function redefinition
+      from the same location.  (patch by Douglas Katzman, lp#1042405)
+    + Create vectors of proper internal length when reading literal
+      vectors from FASLs. (Reported by Jan Moringen)
+    + COMPILE can now succefully compile setf functions.
+     (Reported by Douglas Katzman)
+    + run-program performs more correct escaping of arguments on
+      Windows. (lp#1239242) (forwarded request 205440 from toganm)</comment>
+    <requestid>205444</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e856da4fda9722bebbabafd96ec68f62</srcmd5>
+    <version>1.1.14</version>
+    <time>1385965634</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.14
+  * Optimization:
+    + complicated TYPEP tests are less opaque to the
+      type propagation pass. (lp#1229340)
+    + [N]BUTLAST perform a single pass over the list.
+      (lp#1245697)
+    + EQUALP on structures with raw slots (double-float/complex)
+      no longer conses and is faster.
+    + RESTART-CASE expands to more compact code.
+      Thanks to Jan Moringen. (lp#1249055)
+  * Enhancement:
+    + Top-level defmethod without defgeneric no longer
+      causes  undefined-function warnings in subsequent forms.
+      (lp#503095)
+    + run-sbcl.sh is usefully handled by rlwrap.  Thanks
+      to William Cushing. (lp#1249183)
+    + new function SB-EXT:ASSERT-VERSION-&amp;gt;= accepts a version
+      specification (multiple integer arguments) and signals a
+      continuable error if the current SBCL version is lower (older)
+      than the specification. (lp#674372)
+    + better ARRAY-RANK result derivation. (lp#1252108)
+  * Bug fix:
+    + EQUALP now compares correctly structures with raw slots larger
+      than a single word.
+    + OPEN reports a more meaningful error when an existing file is
+      opened for output with :if-exists :new-version.Thanks to
+      Philip Munksgaard. (lp#455381)
+    + DEFSTRUCTs with NIL as a slot name no longer cause strange
+      CLOS-related errors.  (lp#633911) (forwarded request 208979 from toganm)</comment>
+    <requestid>208980</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>887bef2b046817ce0f67c52db590bdcf</srcmd5>
+    <version>1.1.15</version>
+    <time>1391361146</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.15
+  * New feature:
+    the iterative spilling/coloring register allocator developed
+    by Alexandra Barchunova during Google Summer of Code 2013 is
+    now merged in. By default, it only activates for functions that
+    optimize with (speed 3) and (&amp;gt; speed compilation-speed), but
+    setting sb-regalloc:*register-allocation-method* to :iterative
+    forces its execution. The previous behaviour can be obtained by
+    instead setting that variable to :greedy.
+  * Optimization:
+    + make-array with known element-type and unknown dimensions is
+      much faster.
+    + make-array with unknown element-type is faster as well.
+     (lp#1004501)
+  * Enhancement:
+    + reduced conservativism on GENCGC platforms: conservative roots
+       must be valid-looking tagged pointers or point within a code
+       object, not merely point to within the allocated part of a
+       page, in order to pin a page.
+    + support for &quot;Mac Roman&quot; external format.
+    + encapsulation of named generic functions now happens without
+      altering the identity of the function bound to the name.
+  * Bug fix:
+    + modular arithmetic optimizations do not stumble on dead branches
+      with bad constants. (reported by Douglas Katzman)
+    + CLISP can be used again as a cross-compilation host.
+      (Thanks to Vasily Postnicov, lp#1261451)
+    + run-program crashed with :directory nil. (lp#1265077) (forwarded request 220444 from toganm)</comment>
+    <requestid>220445</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3dd94300ba43dda6e442ef1e42d73c29</srcmd5>
+    <version>1.1.16</version>
+    <time>1393937976</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.16
+  * Enhancement
+    +  SB-EXT:DEFINE-LOAD-TIME-GLOBAL. (lp#1253688)
+    +  Loading fasls with symbols from an undefined package includes
+      the name of the symbol in the error message.
+  * Bug fix
+    + problems when redefining classes and doing TYPEP on classes
+      concurrently. (lp#1272742)
+    + fixes to the x86-64 XCHG instruction:
+      - it was misencoded when used with RAX, R8-R15 registers.
+       (reported by  Eric Marsden)
+      - it was misencoded when used to exchange EAX with itself.
+      - the disassembler wrongly printed XCHG RAX, R8 and the
+        corresponding 32- and 16-bit variations as NOP.
+    + the disassembler outputs source annotations in the right place
+      and no longer randomly drops some of them. (lp#1249205)
+    + fix commutative-arg-swap from introducing undumpable structures
+      into code, prevent code with errors from being compiled.
+      (lp#1276282)
+    + pathnames with :back in their directory component are
+      succeffully resolved.
+    + the deterministic profiler now uses ENCAPSULATE functionality
+      to wrap functions around. (lp#309086) (forwarded request 224330 from toganm)</comment>
+    <requestid>224331</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d98da59372581b7481dbefc10826dd5b</srcmd5>
+    <version>1.1.17</version>
+    <time>1396709291</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.17
+  * Enhancement
+    + printing backtraces respects
+      SB-DEBUG:*DEBUG-PRINT-VARIABLE-ALIST* when printing call
+      arguments  (lp#1261646)
+  * Optimization
+    +  defstruct out-of-line accessor are now as fast as
+       inlined. (lp#1264924)
+  * Bug fix
+    + INVOKE-RESTART-INTERACTIVELY no longer refuses to
+      invoke RESTART instances with a test-function 
+    + STREAM-ERROR-POSITION-INFO fails in fewer situations
+      (lp#1264902)
+    + Change COND error message (lp#1254511)
+    + LOAD is no longer confused when called on a directory.
+      (lp#1077996)
+    + MAKE-CONDITION reports names of missing condition
+      classes properly (lp#1199223)
+    + restore building with clang. (lp#1293643) 
+    + restore building on SPARC (broken since 1.1.15).
+    + improved FreeBSD support.
+    + PPC floating point conversion corrupted stack. 
+- Patches
+  + Remove sbcl-1.0.54-optflags.patch
+  + Add sbcl-1.1.17-optflags.patch based on the removed
+    sbcl-1.0.54-optflags.path (forwarded request 229029 from toganm)</comment>
+    <requestid>229030</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>72361d28ac50d2647cae1a4494a3c3cf</srcmd5>
+    <version>1.1.18</version>
+    <time>1399032188</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.18
+  * Optimization
+    + COERCE is now more effecient for more cases when
+      the type is known at compile-time.  (lp#1309815)
+  * Bug fix
+    + correctly inherit condition initforms. (lp#1300904)
+    + properly pprint literal functions inside nested lists.
+     (lp#1300716)
+    + more-correctly handle array-type unity (broken for
+      ages, causing compilation problems since 1.1.13.x due to
+      smarter TYPEP type propagation reported by jasom in #lisp). 
+
+- Use clisp for those distros and archs where sbcl is not available 
+  yet (forwarded request 232164 from toganm)</comment>
+    <requestid>232165</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0ca231da50e1ce88f537b6e060aa7b6a</srcmd5>
+    <version>1.2.0</version>
+    <time>1401644452</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.0
+  * Bug Fix
+    + read-time-eval backquote context mixup. (lp#1321047)
+    +  MAKE-SEQUENCE works with sequence types defined via
+       DEFTYPE  (lp#1315846, thanks to Mark Cox)
+    + SET-[DISPATCH-]MACRO-CHARACTER should coerce a
+      symbolic function-designator to a function only as needed.
+      (lp#1012335)
+    + remove references to asdf-install from the manual.
+     (lp#1207544, thanks to Thomas Hlavaty)
+    + handle --without-xxx options to make.sh more carefully.
+     (lp#1246665, thanks to Richard M Kreuter)
+    + prevent maybe-delete-exit from doing semantically broken things
+      with local exits. (lp#309099, lp#518099, lp#533930)
+    + attempts to subclass BUILT-IN-CLASSes signal errors,
+      as required by AMOP.  (lp#861004) 
+  * Enhancement
+    + when SAVE-LISP-AND-DIE fails due multiple threads,
+      the report of the signaled conditions lists currently running
+      threads.
+    + ported to ARM linux.
+    + sb-gmp contrib has been updated. (lp#1305266)
+    + new contrib sb-mpfr by Stephan Frank. (forwarded request 235740 from toganm)</comment>
+    <requestid>235741</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>e972c59c06a4521f3eb9e78e35a96963</srcmd5>
+    <version>1.2.0</version>
+    <time>1402947230</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236813</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b06571dce1d814fdf6839ca2a6f04a16</srcmd5>
+    <version>1.2.1</version>
+    <time>1404306288</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.1
+  * Enhancement
+    + GENCGC is enabled on ARM.
+    + better error reporting for invalid calls to local
+      functions.
+    + support for GNU/kFreeBSD distributions.
+      (lp#1079954, thanks  to Christoph Egger)
+    + experimental support for threads on NetBSD/x86-64.
+      (thanks to Robert Swindells)
+    + support for DragonFly BSD.  (lp#1292845, thanks to
+      Vasily  Postnicov)
+  * Bug Fix:
+    + TYPE-OF must not return AND/OR/NOT expressions.  (lp#1317308)
+    + accessing NIL arrays stopped producing errors. (lp#1311421)
+    + DISASSEMBLE no longer prints unwanted stuff. (lp#1251861)
+    + compiling SVREF on unknown types no longer produces scary
+      errors.  (lp#1258716)
+    + assorted LOOP fixes and enhancements. (lp#645534, lp#1322923,
+      lp#700538, lp#613876, lp#695286, lp#798388)
+    + silence compiler notes from the SEARCH transform.
+       (lp#1071310)
+    + array type intersection handles T and unknown element types
+      correctly. (lp#1258716)
+    + fix a corner case in array type unparsing that would result in
+      misleading translations from our internal type representation.
+    + array-rank now sees through union and intersection types.
+     (lp#1310574)
+    + when DECLARE expressions are in the wrong place, be careful not
+      to attempt to evaluate the subforms. (lp#573747; thanks to Roman
+      Marynchak) (forwarded request 239066 from toganm)</comment>
+    <requestid>239067</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2dd530fc9583c4aa28204eb6d6967016</srcmd5>
+    <version>1.2.2</version>
+    <time>1407942493</time>
+    <user>lnussel</user>
+    <comment>-  disable-localport-bsd-sockets-test.patch
+   * disable localport bsd sockets tests broken in kvm builds for
+     openSUSE releases &amp;gt; 13.1 (forwarded request 244288 from toganm)</comment>
+    <requestid>244289</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>2dd530fc9583c4aa28204eb6d6967016</srcmd5>
+    <version>1.2.2</version>
+    <time>1409303317</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>17b255f505cc3070223ac7e730e24367</srcmd5>
+    <version>1.2.3</version>
+    <time>1409761356</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.3
+  * Enhancement:
+    + DOCUMENTATION works on instances of FUNCALLABLE-STANDARD-CLASS
+    + ASSERT reports arguments of calls to lexical functions in
+      additional to global functions.
+    + ASDF updated to 3.1.3
+    + UIOP can be loaded without ASDF.
+  * Bug Fix:
+    + Some methods on CHANGE-CLASS did not finalize the new class
+      before accessing its class-precedence list.
+    + CHANGE-CLASS no longer fails on unbound slots in the source
+      object.
+    + CHANGE-CLASS signals an appropriate error when the destination
+      class is a FORWARD-REFERENCED-CLASS.
+    + CHANGE-CLASS no longer signals bogus TYPE-ERRORs for slots for
+      which initargs have been supplied.
+    + saving cores on ARM was broken since the introduction of GENCGC.
+      (lp#1349795)
+    + macroexpanding a backquoted expression involving &quot;,.&quot; outside
+      of the compiler failed. (lp#1354623)
+- Backported from git for arm builds
+  0002-Fix-array-bound-checking-with-negative-indexes-on-AR.patch (forwarded request 247007 from toganm)</comment>
+    <requestid>247008</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>088c4ab7b7d1f9b7caae9578cf55a35c</srcmd5>
+    <version>1.2.5</version>
+    <time>1415289020</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.5
+  * Enhancement
+   +  sb-bsd-sockets now has basic support for IPv6
+   + An sb-unicode package has been added, containing
+     many functions related to handling Unicode text
+   + The reader now normalizes symbols to Normalization
+     Form KC (NFKC). This behavior can be disabled with
+     SB-EXT:READTABLE-NORMALIZATION
+   + enhancement: a style-warning is signaled if OPTIMIZE
+     declarations multiply specify a quality with differing values.
+     (lp#310267)
+  * Bug fix:
+    + conservatively pointed to pages wipe out unused dwords
+      so that they cannot act as false roots in turn.
+    + the walker's handling of lexical variable and
+      symbol-macro bindings is improved (lp#375326, lp#1368305)
+    + HANDLER-{BIND,CASE} no longer drop into ldb when a
+      clause contains an undefined condition type; regression
+      in 1.1.19( lp#1378939)
+    + in interpreted code, inequality predicates did not
+      type-check arguments that weren't examined, and a 1-argument use
+      of MIN or MAX accepted a complex number. (lp#1373702)
+    + APROPOS and APROPOS-LIST handle inherited symbols correctly.
+      (lp#1364413, thanks to Zach Beane) (forwarded request 259748 from toganm)</comment>
+    <requestid>259750</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>25548711adae50c112b7ac2f7bf82b91</srcmd5>
+    <version>1.2.5</version>
+    <time>1415953163</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>261437</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6373dac84328eacf2c63de075ab7d089</srcmd5>
+    <version>1.2.6</version>
+    <time>1417643296</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.6
+  * enhancement:
+    + SERVE-EVENTS uses the poll() system call in lieu
+      of select() if the OS has the former. Previously poll() was
+      used only if waiting on exactly one file descriptor.
+    + efficiency of access to untagged structure slots
+      is improved on x86-64, and the order of slots in memory is
+      exactly as specified by defstruct, simplifying use of
+      structures as arguments to foreign calls.
+  * bug fix:
+    + SB-DEBUG:ARG now works in all TRACE options which
+      evaluate forms. (lp#1357826)
+    + GC memory corruption during internal memory handling.
+    + duplicate effective-slot-definition objects as compared
+      by EQ on name could be present in CLASS-SLOTS of a class whose
+      metaclass was structure-class or condition-class. (lp#1049423)
+    + HANDLER-BIND with empty bindings works again; regression in
+      1.2.5. (lp#1388707)
+    + ATOMIC-INCF works on structure slots in interpreted code.
+      (lp#1381867)
+    + MAKE-ARRAY properly handles character types like (eql
+      #\a) and (member #\a #\c). (lp#1392068)
+    + bug fix: READ sometimes accidentally preserved a whitespace
+      character after a token when it should not have. (lp#327790) (forwarded request 263736 from toganm)</comment>
+    <requestid>263737</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f19cc8425e961b0e8f903f83237f9e84</srcmd5>
+    <version>1.2.7</version>
+    <time>1420833035</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.7
+  * Optimization:
+    + returning constant values refers to preboxed
+      constants more reliably. (lp#1398785)
+  * Enhancement:
+    + STYLE-WARNING is produced if a compiler-macro is
+      defined for a function after at least one ordinary (not inlined)
+      call to that function was compiled, indicating a likely
+      compilation order problem. Likewise a warning ensues if a call
+      is compiled to a function that is subsequently proclaimed INLINE.
+    + always lose() when something goes wrong while saving a core
+      (instead of just printing an error on stderr in some situations).
+    + frames in the debugger are now restartable by default.
+  * Bug Fix:
+    + restore error handling on Windows x86.
+    + MAKE-SEQUENCE detects type errors in its :INITIAL-ELEMENT
+      at compile-time when possible. (lp#330299)
+    + parsing of malformed type specifiers no longer results in a
+      memory-fault-error.
+    + LOOP properly destructures nested lists in WITH.
+    + MACROEXPANDing the redefinition of an alien structure type no
+      longer signals the wrong error.
+    + PROGV doesn't get confused by forced DEBUG 3 (lp#1405456). (forwarded request 280514 from toganm)</comment>
+    <requestid>280515</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>752136d7ddfe867a0f81776a0f483394</srcmd5>
+    <version>1.2.8</version>
+    <time>1422790218</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.8
+  * Enhancement:
+    +better error and warning messages. (lp#1314767,
+      lp#736383)
+    + backtrace for invalid argument count produces the
+      exact supplied arguments including the extra ones, on x86,
+      x86-64 and ARM.
+    + STYLE-WARNING is signaled for DEFSTRUCT accessors which
+      are used before the structure is defined; similarly for the
+      predicate.
+  * Optimization
+    + FORMAT NIL with only ~a and string arguments is transformed
+      into CONCATENATE.
+    + POSITION and FIND when inlined into code that is compiled
+      with qualities of safety &amp;lt; 2 and speed &amp;gt; space will no longer
+      signal an error on circular lists, but will potentially loop
+      forever if given no :END constraint. As was always the case,
+      calls that are not inlined are safe regardless of lexical
+      policy.
+  * Bug Fix:
+    + CLOS methods compiled with (OPTIMIZE (DEBUG 0))no longer
+      cause debugger failure when printing a backtrace
+    + more resilience to deleted code. (lp#1308328, lp#1390544)
+    + the CLHS example of MAKE-LOAD-FORM involving TREE-WITH-PARENT
+      did not work, and now it does. (forwarded request 283619 from toganm)</comment>
+    <requestid>283620</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>7bb12a4a951e801d91124106086f6077</srcmd5>
+    <version>1.2.8</version>
+    <time>1422960021</time>
+    <user>dimstar_suse</user>
+    <comment>- The release (source) tarball of sbcl-1.2.8 contained an error in
+  the build script, which in some circumstances (chiefly when /bin/sh is
+  bash) would lead to the sbcl built from that tarball to have a
+  lisp-implementation-version of &quot;-dirty&quot;. (forwarded request 283724 from toganm)</comment>
+    <requestid>283726</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>402e9e345a3ae9e2b7f60aaf8c3a27a2</srcmd5>
+    <version>1.2.9</version>
+    <time>1425377689</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.9
+  * Bug Fix:
+    + minor incompatible change and bug fix: unboxed numeric
+      constants on x86oids are arranged in memory differently, and
+      the disassembler  does not show them separately in DISASSEMBLE,
+      but does if DISASSEMBLE-CODE-COMPONENT is used. (lp#1421987)
+    + DEFCLASS handles cyclic {super,meta}class relations better
+     (lp#1418883)
+    + compiler no longer signals an error when compiling certain
+      function calls. (lp#1416704, lp#404441, lp#1417822, lp#1234919)
+    + compiler doesn't stumble on a LOGIOR transform.
+     (lp#1389433)
+    + more robust debugger and backtraces. (lp#1413850,
+      lp#1099500,  lp#1412881, lp#945261, lp#1419205, lp#1409402)
+    + files larger than 4GB can now be compiled.
+    + x86 truncated results from 64-bit foreign functions to
+      32 bits.
+    + file-position didn't work on large files on win32.
+      (lp#1271545)
+    + callbacks from foreign threads can work without enabling
+      sb-safepoint.
+    + sb-introspect:function-lambda-list works properly on
+      interpeted macros. (lp#1387404)
+    + ADJUST-ARRAY properly handles non-adjustable arrays.
+      (lp#886418)
+    + compiler no longer fails to dump a multidimensional
+      array constant involving a circular reference to itself
+    + conditional and nested DX allocation no longer confuse
+      the compiler in STACK analysis. (lp#1044465)
+    + sb-rotate-byte constant folding bug fixed. (lp#1423682) (forwarded request 288295 from toganm)</comment>
+    <requestid>288296</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6da13dc68eb654ec5f53e63e4c698cfb</srcmd5>
+    <version>1.2.10</version>
+    <time>1427983486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.10
+*  One thing that is not mentioned in the release notes, but which
+   has been exercising developers recently, is a warning for the near
+   future: some interfaces which are currently in &quot;early&quot; deprecation
+   status (and so are emitting style-warnings at compilation-time) 
+   will in the next release cycle or two start emitting full warnings,
+   either at compilation time or at load time.  Particular interfaces
+   signalling warnings causing problems to some users include:
+   SB-EXT:QUIT, and the SB-THREAD:SPINLOCK API.  If anyone is using
+   those, now is the time to update to SB-EXT:EXIT and
+   SB-THREAD:MUTEX respectively.  (See also the &quot;Deprecated Interfaces&quot;
+   chapter in the manual).
+  * minor incompatible change:
+    + all SOCKINT::WIN32-* functions have been deprecated with
+      EARLY deprecation state
+    + performing introspection via the system-internal SB-INT:INFO
+      function could expose that :TYPE :TRANSLATOR is not
+      necessarily a function, as it always was before. (Affects
+      swank-fancy-inspector)
+  * enhancement:
+    + The value of SXHASH on bit-vectors of length equal to the
+      word size now depends on the vector's contents instead of
+      being constant; its value on bit-vectors of length divisible
+      by the word size now depends also on the contents of the
+      vector's last word.
+  * bug-fix:
+    + sb-bsd-sockets on win32 uses proper C function declarations.
+      (lp#1426667)
+    + A new dead code elimination phase removes dead code loops
+      that confuse stack analysis. (lp#1255782, lp#308914) (forwarded request 294077 from toganm)</comment>
+    <requestid>294078</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>6c605ca5320ff1c407dbaeccb8bd01e2</srcmd5>
+    <version>1.2.11</version>
+    <time>1430891333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.11
+  * Enhancement:
+    + SET-PPRINT-DISPATCH will warn when given an expression in
+      which any part is unrecognizable as a legal type-specifier.
+      The dispatch table will be altered, but the new entry is 
+      disabled. Subsequent type-defining forms will cause
+      pprint-dispatch tables to  re-examine whether any disabled
+       entries should be enabled. (lp#1429520)
+    + Loading code containing calls to a deprecated  function will,
+      under most circumstances, signal warnings similar to compiling
+      such code.  The usual caveat holds about not detecting calls
+      through a computed name, as in (funcall
+      (intern &quot;DEPRECATED-FUN&quot; &quot;SB-EXT&quot;)).
+    + (SB-EXT:COMPILE-FILE-LINE) is a new macro that expands to a
+      constant (VALUES integer integer) indicating the source 
+      line/column from which it was read, intended for logging Lisp
+      runtime errors in a style similar to that afforded by the C
+      preprocessor __LINE__ macro. Similarly
+      (SB-EXT:COMPILE-FILE-POSITION) returns a position in characters.
+    + improved source locations for VOPs, alien types and declarations.
+  * Bug fix:
+    + Functions in :FINAL deprecation have the correct docstring.
+      No visible change, as no such functions presently exist.
+      (lp#1439151)
+    + (SETF (FDEFINITION this) (FDEFINITION OTHER)) signals an error
+      if OTHER names either a macro or special-operator. (lp#1439921) 
+- Rebase all patches. (forwarded request 305182 from toganm)</comment>
+    <requestid>305183</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>338da433006324f83078103aacb85438</srcmd5>
+    <version>1.2.12</version>
+    <time>1435172604</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>313380</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>269f420f36a89c500117dce39256c523</srcmd5>
+    <version>1.2.13</version>
+    <time>1438750198</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.13
+  * Incompatible change:
+    + on success, TRY-SEMAPHORE and WAIT-ON-SEMAPHORE return the new
+      count
+  * Enhancement:
+    + WAIT-ON-SEMAPHORE accepts a decrement parameter
+    + JOIN-THREAD allows distinguishing timeout vs.
+      abort in all situations
+    + On Windows DBG_PRINTEXCEPTION_C is handled and its
+      message is printed. (#1437947)
+  * Bug-fix:
+    + TRUENAME works properly on broken symlinks presented
+      as directories. (#1458164)
+    + Inlined DPB and DEPOSIT-FIELD don't interfere with
+      left-to-right order of argument evaluation. (#1458190)
+    + (SETF (LDB (BYTE 1 2 JUNK) X) 0) is rightly rejected.
+    + DEFSETF lambda lists should not permit argument
+      destructuring.
+    + calls to (SETF SLOT-VALUE) on a missing slot would in
+      certain situations incorrectly return the result of a
+      SLOT-MISSING method instead of always returning the new
+      value. (#1460381)
+    + a DEFMACRO occurring not at toplevel and capturing
+      parts of its lexical environment (thus being a closure)
+      caused expressions involving the macro name to cause corruption
+      in the pretty-printer due to faulty introspection of the lambda
+      list of a closure.
+    + out of line MAP/MAP-INTO check that the results produced by the
+      function are of the matching sequence type. (#1459581)
+    + pretty-printing of '(LET `((,X ,Y)) :B) is handled correctly. (forwarded request 316611 from toganm)</comment>
+    <requestid>316612</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>63feec52ffd4bed3122dd2d6ca7c191b</srcmd5>
+    <version>1.2.15</version>
+    <time>1443897020</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>335919</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>6dbb269d6d1c6f2638132853508c33ba</srcmd5>
+    <version>1.3.7</version>
+    <time>1471009336</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>414946</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>74e87f26272e0a4117c38eba6191584b</srcmd5>
+    <version>1.3.7</version>
+    <time>1476997788</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436422</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2b3ef969db4a3e87193047301248f1d2</srcmd5>
+    <version>1.3.11</version>
+    <time>1480341885</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441531</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b50bf3c1fc6fe6748bdd3099ece56030</srcmd5>
+    <version>1.3.14</version>
+    <time>1489653812</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479761</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>7d88174720cacfc37086373e2b0bd34b</srcmd5>
+    <version>1.3.16</version>
+    <time>1492073131</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.3.16</comment>
+    <requestid>487526</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>392040f351aa6a08a682be72ea8332c3</srcmd5>
+    <version>1.3.16</version>
+    <time>1494263062</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493370</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e2906016e0764b219d3955f6f6a6aeec</srcmd5>
+    <version>1.4.1</version>
+    <time>1513677036</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547365</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>369cf51790b86fe79d6d6484949132d3</srcmd5>
+    <version>1.4.7</version>
+    <time>1530304191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617837</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a931249dca6bb24f83f95a1e7c1f1ff7</srcmd5>
+    <version>1.5.4</version>
+    <time>1565695396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722647</requestid>
+  </revision>
+</revisionlist>

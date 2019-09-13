@@ -1,0 +1,5 @@
+<package name="kplotting" project="openSUSE:Factory">
+  <title>kplotting</title>
+  <description>KPlotting</description>
+  <devel project="KDE:Frameworks5" package="kplotting"/>
+</package>

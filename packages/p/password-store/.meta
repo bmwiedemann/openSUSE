@@ -1,0 +1,5 @@
+<package name="password-store" project="openSUSE:Factory">
+  <title>Stores, retrieves, generates, and synchronizes passwords</title>
+  <description>With password-store, each password lives inside of a gpg encrypted file whose filename is the title of the website or resource that requires the password. These encrypted files may be organized into meaningful folder hierarchies, copied from computer to computer, and, in general, manipulated using standard command line file management utilities.</description>
+  <devel project="security:privacy" package="password-store"/>
+</package>

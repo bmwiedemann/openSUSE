@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f678eea0d2ff5597d71cf66d5ea4b3a6</srcmd5>
+    <version>8.0.5</version>
+    <time>1283165910</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libfunambol based on submit request 46351 from user saschpe
+</comment>
+    <requestid>46351</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>f678eea0d2ff5597d71cf66d5ea4b3a6</srcmd5>
+    <version>8.0.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa5c3334f214d28076bcd94c757005c5</srcmd5>
+    <version>9.0.1</version>
+    <time>1316459515</time>
+    <user>lrupp</user>
+    <comment>- update to v 9.0 , see changeslog.txt</comment>
+    <requestid>82443</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>aa5c3334f214d28076bcd94c757005c5</srcmd5>
+    <version>9.0.1</version>
+    <time>1319182092</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>796fd7e4779a3d60b6f23b48fee4832e</srcmd5>
+    <version>9.0.1</version>
+    <time>1321269088</time>
+    <user>coolo</user>
+    <comment>add buildrequire libtool (forwarded request 91151 from coolo)</comment>
+    <requestid>91180</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>4b0af7664322e2024b7d824edce9b1ce</srcmd5>
+    <version>9.0.1</version>
+    <time>1321980464</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>92857</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>89bf900fd94ba3d64c27b7c2d91b14f1</srcmd5>
+    <version>9.0.1</version>
+    <time>1323192213</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>89bf900fd94ba3d64c27b7c2d91b14f1</srcmd5>
+    <version>9.0.1</version>
+    <time>1340183585</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>89bf900fd94ba3d64c27b7c2d91b14f1</srcmd5>
+    <version>9.0.1</version>
+    <time>1359109269</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>89bf900fd94ba3d64c27b7c2d91b14f1</srcmd5>
+    <version>9.0.1</version>
+    <time>1379662950</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>89bf900fd94ba3d64c27b7c2d91b14f1</srcmd5>
+    <version>9.0.1</version>
+    <time>1409301561</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>1070bf8a1421ae09a5393286ec9d2272</srcmd5>
+    <version>9.0.1</version>
+    <time>1465938414</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400318</requestid>
+  </revision>
+  <revision rev="13" vrev="16">
+    <srcmd5>136e6f01ce1a8d67ca8372137c6b9bc9</srcmd5>
+    <version>9.0.1</version>
+    <time>1489345527</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478644</requestid>
+  </revision>
+</revisionlist>

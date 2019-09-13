@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4044ddbec1263bc1d08e30a73c89ca74</srcmd5>
+    <version>3.7.0.0</version>
+    <time>1429948364</time>
+    <user>coolo</user>
+    <comment>povray got a licene change and should be good enough for openSUSE now</comment>
+    <requestid>298705</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e574c1d450e06f380cfafe122a99a8b</srcmd5>
+    <version>3.7.0.0</version>
+    <time>1470217491</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>416169</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1030f72b871e3b3e091e264fedc0af9d</srcmd5>
+    <version>3.7.0.0</version>
+    <time>1486465558</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454926</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>48de6b097044eab738b2fc3a7c906467</srcmd5>
+    <version>3.7.0.0</version>
+    <time>1495883785</time>
+    <user>dimstar_suse</user>
+    <comment>Add reproducible.patch to sort input files to make build reproducible (forwarded request 497131 from bmwiedemann)</comment>
+    <requestid>497134</requestid>
+  </revision>
+</revisionlist>

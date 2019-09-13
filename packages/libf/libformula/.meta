@@ -1,0 +1,5 @@
+<package name="libformula" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="LibreOffice:Factory" package="libformula"/>
+</package>

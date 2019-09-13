@@ -1,0 +1,224 @@
+<revisionlist>
+  <revision rev="1" vrev="96">
+    <srcmd5>7f36e745b356f10e665ab1348427e87c</srcmd5>
+    <version>19</version>
+    <time>1168903985</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="124">
+    <srcmd5>44038b3baf872a77e5bdc667189fa1e4</srcmd5>
+    <version>19</version>
+    <time>1172826436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="130">
+    <srcmd5>2e8ec07fb10cb4076a6d214aee5990ce</srcmd5>
+    <version>19</version>
+    <time>1177077566</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="194">
+    <srcmd5>5ddb7f1aaefd1b5ab788f32214d79e0f</srcmd5>
+    <version>19</version>
+    <time>1200612328</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="234">
+    <srcmd5>b0fd9c8fafc9d112e21f69446de0abe8</srcmd5>
+    <version>19</version>
+    <time>1214426771</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="235">
+    <srcmd5>b439c6bc62defeb47e5351b850af89a9</srcmd5>
+    <version>19</version>
+    <time>1232327890</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="263">
+    <srcmd5>2cc282c88c0f90a03c54ac99d211f767</srcmd5>
+    <version>19</version>
+    <time>1266508387</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/portaudio based on submit request 32754 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="264">
+    <srcmd5>e883721f4dcc5658970e7bafe35dedc4</srcmd5>
+    <version>19</version>
+    <time>1268925751</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="266">
+    <srcmd5>e883721f4dcc5658970e7bafe35dedc4</srcmd5>
+    <version>19</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="267">
+    <srcmd5>e883721f4dcc5658970e7bafe35dedc4</srcmd5>
+    <version>19</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="270">
+    <srcmd5>e883721f4dcc5658970e7bafe35dedc4</srcmd5>
+    <version>19</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="271">
+    <srcmd5>837fbddf10c28bf4ce981c61fbfbe06e</srcmd5>
+    <version>19</version>
+    <time>1304926178</time>
+    <user>saschpe</user>
+    <comment>Added baselibs to spec file (forwarded request 69503 from TheBlackCat)</comment>
+    <requestid>69821</requestid>
+  </revision>
+  <revision rev="13" vrev="272">
+    <srcmd5>867072bcb3312cf03442b6bc294f9d15</srcmd5>
+    <version>19</version>
+    <time>1304926189</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69821
+</comment>
+  </revision>
+  <revision rev="14" vrev="274">
+    <srcmd5>867072bcb3312cf03442b6bc294f9d15</srcmd5>
+    <version>19</version>
+    <time>1319182364</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="275">
+    <srcmd5>3c8b0e0b25dd5361e78ae5b053bab73b</srcmd5>
+    <version>19</version>
+    <time>1322134591</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93229 from coolo)</comment>
+    <requestid>93243</requestid>
+  </revision>
+  <revision rev="16" vrev="276">
+    <srcmd5>6123de7b2581a72020f528f0683eb10e</srcmd5>
+    <version>19</version>
+    <time>1323175992</time>
+    <user>coolo</user>
+    <comment>updated to the latest stable version (20110326) (forwarded request 95495 from DaniLeo)</comment>
+    <requestid>95498</requestid>
+  </revision>
+  <revision rev="17" vrev="277">
+    <srcmd5>d8da09cdc1c21203681aec337c3aa36d</srcmd5>
+    <version>19</version>
+    <time>1323193954</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="278">
+    <srcmd5>acfc94179d50575556fec475196a599b</srcmd5>
+    <version>19</version>
+    <time>1327922883</time>
+    <user>coolo</user>
+    <comment>Updated to the latest stable version (forwarded request 101943 from DaniLeo)</comment>
+    <requestid>101944</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>47ef20b5cc6173346143ff763ecb0c50</srcmd5>
+    <version>19_20111121</version>
+    <time>1334216780</time>
+    <user>coolo</user>
+    <comment>- run spec_cleaner
+- use full URL in Source tag
+- add missing provides/obsoletes from previous rename
+- use date in version number: makes more sense and otherwise the
+  obsoletes of the package rename would not work
+- patch __DATE__ and __TIME__ references to help build-compare (forwarded request 112172 from RedDwarf)</comment>
+    <requestid>112290</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>47ef20b5cc6173346143ff763ecb0c50</srcmd5>
+    <version>19_20111121</version>
+    <time>1340184012</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>47ef20b5cc6173346143ff763ecb0c50</srcmd5>
+    <version>19_20111121</version>
+    <time>1359109941</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>7a1fbda60393c7790186d9991bda6091</srcmd5>
+    <version>19_20111121</version>
+    <time>1367904688</time>
+    <user>coolo</user>
+    <comment>license update: MIT
+The correct license for the package is MIT (forwarded request 174626 from babelworx)</comment>
+    <requestid>174627</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>7a1fbda60393c7790186d9991bda6091</srcmd5>
+    <version>19_20111121</version>
+    <time>1379664050</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>34928e5a6620a640215a9d75c34c6e45</srcmd5>
+    <version>19_20140130</version>
+    <time>1397330930</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 229485 from posophe)</comment>
+    <requestid>229585</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>6ddaa7c98d055032ce3b4f5c08a8f359</srcmd5>
+    <version>19_20140130</version>
+    <time>1401641897</time>
+    <user>coolo</user>
+    <comment>- disable timestamps in doxygen too, make build-compare happy (forwarded request 235609 from elvigia)</comment>
+    <requestid>235699</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>6ddaa7c98d055032ce3b4f5c08a8f359</srcmd5>
+    <version>19_20140130</version>
+    <time>1409302729</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>d15f5d66359e59d8f06712f40c42b000</srcmd5>
+    <version>19_20140130</version>
+    <time>1436111671</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314495</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>488217719b0226cd6dde8515498fc1dd</srcmd5>
+    <version>190600_20161030</version>
+    <time>1495267866</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495454</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>c7322a3887ed45bd835ff06afb9dfa7c</srcmd5>
+    <version>190600_20161030</version>
+    <time>1503999391</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517942</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>1db519ec8e527ea2186c9d5bf4ab6b8c</srcmd5>
+    <version>190600_20161030</version>
+    <time>1529066084</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615444</requestid>
+  </revision>
+</revisionlist>

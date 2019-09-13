@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>45cd91f8fcf0640175bce45c3c694967</srcmd5>
+    <version>3.4.3</version>
+    <time>1492714217</time>
+    <user>dimstar_suse</user>
+    <comment>- removed -devel package which is of no use
+- Simplified spec in the build section
+- Enabled tests</comment>
+    <requestid>486445</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9bbff69bfd9cd8f08fbfa3933490e786</srcmd5>
+    <version>3.4.3</version>
+    <time>1499880940</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509435</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9f9e31b963aab15ab6304bce073279f8</srcmd5>
+    <version>3.4.3</version>
+    <time>1520503115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583868</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c5bc2d317e62a3fc0062df5cbc851faf</srcmd5>
+    <version>3.4.3</version>
+    <time>1520778324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585039</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3abd9fb959f05f78c4c454a5efcf94c7</srcmd5>
+    <version>3.4.3</version>
+    <time>1521499097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588043</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>710ddf4d7b3b82f801f1de750e5597e7</srcmd5>
+    <version>3.4.3</version>
+    <time>1526022867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605656</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>bf15c66c44da93187433e50a7b8db92e</srcmd5>
+    <version>3.4.3</version>
+    <time>1550048869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674210</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39106044ac4d9b8dc2b6e225ed384a13</srcmd5>
+    <version>3.4.4</version>
+    <time>1558351048</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to version 3.4.4
+Cleaned up changes</comment>
+    <requestid>703720</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>63f46830f92fbc809a8ab988607228ed</srcmd5>
+    <version>3.4.4</version>
+    <time>1559375435</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706072</requestid>
+  </revision>
+</revisionlist>

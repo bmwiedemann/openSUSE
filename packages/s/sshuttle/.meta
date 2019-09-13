@@ -1,0 +1,9 @@
+<package name="sshuttle" project="openSUSE:Factory">
+  <title>Transparent Proxy VPN</title>
+  <description>Transparent proxy server that works as a poor man's VPN. Forwards over ssh.
+Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.
+
+</description>
+  <devel project="security" package="sshuttle"/>
+  <url>https://github.com/apenwarr/sshuttle</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="dtkwidget" project="openSUSE:Factory">
+  <title>Deepin graphical user interface library</title>
+  <description>Deepint Tool Kit (Dtk) is the base devlopment tool of all C++/Qt Developer work on Deepin.</description>
+  <devel project="X11:Deepin" package="dtkwidget"/>
+</package>

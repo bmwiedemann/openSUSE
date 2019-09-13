@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>462fac8f8778b218454eeac6d468ae40</srcmd5>
+    <version>6.00</version>
+    <time>1335165187</time>
+    <user>coolo</user>
+    <comment>new font</comment>
+    <requestid>114690</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>57669c530b80f3402330f5b35bb1739a</srcmd5>
+    <version>6.00</version>
+    <time>1338016997</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122128</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>57669c530b80f3402330f5b35bb1739a</srcmd5>
+    <version>6.00</version>
+    <time>1340183355</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>1af70d9f52d10a1d355515a12dde00cf</srcmd5>
+    <version>6.00</version>
+    <time>1347617823</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133932</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>1af70d9f52d10a1d355515a12dde00cf</srcmd5>
+    <version>6.00</version>
+    <time>1359108912</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>1af70d9f52d10a1d355515a12dde00cf</srcmd5>
+    <version>6.00</version>
+    <time>1379662401</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dc8117108434138ecb12e20d7845745c</srcmd5>
+    <version>7.12</version>
+    <time>1390394851</time>
+    <user>coolo</user>
+    <comment>- updated to 7.12
+  * no upstream changelog
+  * leaving README of version 6.00 as upstream doesn't provide it
+    anymore</comment>
+    <requestid>214587</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>dc8117108434138ecb12e20d7845745c</srcmd5>
+    <version>7.12</version>
+    <time>1409300934</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f670b9338cfb017c0ff3148354cf944e</srcmd5>
+    <version>8.00</version>
+    <time>1435053637</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 8.00
+added Cypro-Minoan font (ver. 7.81)
+added Cretan font (ver. 7.42) (forwarded request 313093 from alois)</comment>
+    <requestid>313098</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4894e9dc7b54c28c20896ab605ae4363</srcmd5>
+    <version>8.01</version>
+    <time>1453416179</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 8.01 (forwarded request 354403 from alois)</comment>
+    <requestid>354463</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4f657a48b944a1c153bb02c11ddd61dc</srcmd5>
+    <version>8.91</version>
+    <time>1463498184</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>396000</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f26eb73f21c707fd2d234a3aea130902</srcmd5>
+    <version>9.00</version>
+    <time>1481390933</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444711</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a43c7d61ef6cedb41badfbf9e7755a0e</srcmd5>
+    <version>9.17</version>
+    <time>1492170057</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>487263</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c5c6be8ef32ceb64375e2faca1395e35</srcmd5>
+    <version>9.78</version>
+    <time>1515261351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562039</requestid>
+  </revision>
+</revisionlist>

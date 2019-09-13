@@ -1,0 +1,5 @@
+<package name="python-pymacaroons" project="openSUSE:Factory">
+  <title>python-pymacaroons-pynacl</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-pymacaroons"/>
+</package>

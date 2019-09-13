@@ -1,0 +1,5 @@
+<package name="python3-img-proof" project="openSUSE:Factory">
+  <title>Python3 img-proof</title>
+  <description>img-proof provides a command line utility to test images in the Public Cloud (AWS, Azure, GCE, etc.).</description>
+  <devel project="Cloud:Tools" package="python3-img-proof"/>
+</package>

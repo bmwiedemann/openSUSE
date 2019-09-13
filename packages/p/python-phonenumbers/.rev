@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7d4146439020abcabfd292295da80e9f</srcmd5>
+    <version>8.8.2</version>
+    <time>1511426595</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission, necessary dependency for updated matrix-synapse</comment>
+    <requestid>543831</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d4ad6dbd6a1c8a32ea139fb04d3e73c8</srcmd5>
+    <version>8.8.9</version>
+    <time>1515876520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563794</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9a786611a8ea12fa9229db5978ccc21e</srcmd5>
+    <version>8.10.2</version>
+    <time>1546535176</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call
+- Install license file
+- Update to 8.10.2:
+  * no upstream changelog available
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>656816</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>99ca0ff593711abea7e5a705a7940e7e</srcmd5>
+    <version>8.10.8</version>
+    <time>1553611489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688271</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cc009d0ba0407251d6b886dd09e58561</srcmd5>
+    <version>8.10.13</version>
+    <time>1559837758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.10.13:
+  * Updates from upstream project metadata</comment>
+    <requestid>707135</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9f655ab1bed615ec8d52567678bc2799</srcmd5>
+    <version>8.10.15</version>
+    <time>1563914417</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.10.15:
+  * updates to metadata informations</comment>
+    <requestid>717868</requestid>
+  </revision>
+</revisionlist>

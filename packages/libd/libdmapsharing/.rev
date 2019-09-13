@@ -1,0 +1,237 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc73342d49b42f5df129342ab19588cc</srcmd5>
+    <version>unknown</version>
+    <time>1284377429</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libdmapsharing based on submit request 47846 from user vuntz
+</comment>
+    <requestid>47846</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>cc73342d49b42f5df129342ab19588cc</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>3454eeb3f0d24a0da2e010764969d13c</srcmd5>
+    <version>2.0.4</version>
+    <time>1304582443</time>
+    <user>saschpe</user>
+    <comment>Added 32bit compatibility libraries. Added Url (fix for RPMLINT warning). (forwarded request 69470 from TheBlackCat)</comment>
+    <requestid>69614</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>19cb4015026f980a45d004fd1f71ca87</srcmd5>
+    <version>2.0.4</version>
+    <time>1304582456</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69614
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a49fae47d5b26e63e508b7a5835f5e0f</srcmd5>
+    <version>2.1.9</version>
+    <time>1306147480</time>
+    <user>saschpe</user>
+    <comment>Update to stable version 2.1.9 (forwarded request 70971 from plater)</comment>
+    <requestid>70972</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>49648095ddd830a6b74ef205cfa1fdfa</srcmd5>
+    <version>2.1.9</version>
+    <time>1306147490</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70972
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0ec8641b1db4558c2f4ab616998fd097</srcmd5>
+    <version>2.9.12</version>
+    <time>1309773747</time>
+    <user>saschpe</user>
+    <comment>Update to 2.9.12</comment>
+    <requestid>75239</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0ec8641b1db4558c2f4ab616998fd097</srcmd5>
+    <version>2.9.12</version>
+    <time>1319182084</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>766ea5f1edd83998305a4d833d3c2c36</srcmd5>
+    <version>2.9.13</version>
+    <time>1321460320</time>
+    <user>coolo</user>
+    <comment>Update to 2.9.13 (forwarded request 91717 from vuntz)</comment>
+    <requestid>91718</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d4aaf275d49ed71907e68bdae8766665</srcmd5>
+    <version>2.9.13</version>
+    <time>1323192189</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1fdcab996abc70274078b61d520d48c6</srcmd5>
+    <version>2.9.14</version>
+    <time>1326988558</time>
+    <user>coolo</user>
+    <comment>Update to 2.9.14 (forwarded request 100518 from vuntz)</comment>
+    <requestid>100528</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3af0191f6850bc555018ea5e27ca7aa7</srcmd5>
+    <version>2.9.15</version>
+    <time>1334216223</time>
+    <user>coolo</user>
+    <comment>Update to 2.9.15 (forwarded request 113172 from vuntz)</comment>
+    <requestid>113182</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>3af0191f6850bc555018ea5e27ca7aa7</srcmd5>
+    <version>2.9.15</version>
+    <time>1340183576</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>3af0191f6850bc555018ea5e27ca7aa7</srcmd5>
+    <version>2.9.15</version>
+    <time>1359109258</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4650e587279b0ba599c552a2ecf4bc4c</srcmd5>
+    <version>2.9.17</version>
+    <time>1369641097</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.9.17:
+  + Recompile Vala code with libgee-0.8.
+- Changes from version 2.9.16:
+  + Port to GStreamer 1.0
+  + Use libgee 0.8
+- Replace pkgconfig(gstreamer-plugins-base-0.10) BuildRequires with
+  pkgconfig(gstreamer-plugins-base-1.0) and add explicit
+  pkgconfig(gstreamer-app-1.0) BuildRequires. (forwarded request 175784 from Zaitor)</comment>
+    <requestid>176010</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>67a7c8611fcf82950ce26d708aa0ce43</srcmd5>
+    <version>2.9.22</version>
+    <time>1376648470</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 2.9.22 (forwarded request 186938 from Zaitor)</comment>
+    <requestid>186965</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>67a7c8611fcf82950ce26d708aa0ce43</srcmd5>
+    <version>2.9.22</version>
+    <time>1379662929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c248cea3455425d6f3513b94696765f5</srcmd5>
+    <version>2.9.24</version>
+    <time>1387897523</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 2.9.24:
+  + Fix clang warning (bgo#711063).
+  + Avoid OOB read with buggy servers (bgo#711063).
+  + Use strlen() instead of hard-coding string length (bgo#711063).
+- Changes from version 2.9.23:
+  + Replace some assertions in dmap-gst-*-input-stream.c with error
+    handling.
+  + Fix daap-share.c:should_transcode(). (forwarded request 211995 from Zaitor)</comment>
+    <requestid>212124</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>c248cea3455425d6f3513b94696765f5</srcmd5>
+    <version>2.9.24</version>
+    <time>1409301537</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4e8a02c55b2f3402dfc0c9d32a54dca9</srcmd5>
+    <version>2.9.29</version>
+    <time>1423258683</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf to source list.
+
+- Update to version 2.9.29
+  * Make building tests optional
+- Add pkgconfig(gee-0.8) and vala build require; new upstream dependencies</comment>
+    <requestid>284468</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8014cfad240d9bd2ef9664fd76a2e3a1</srcmd5>
+    <version>2.9.30</version>
+    <time>1427313959</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293082</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>68d9432e44a802af9644c86f68346f94</srcmd5>
+    <version>2.9.31</version>
+    <time>1436888644</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315980</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>22e8bc21f650d86127e0408ecd9b979a</srcmd5>
+    <version>2.9.32</version>
+    <time>1448553866</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346208</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>9038bb17bfa8413a0f924208774b4076</srcmd5>
+    <version>2.9.32</version>
+    <time>1450695897</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>349526</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>71154743ae132e27706cb8472d7fa8d2</srcmd5>
+    <version>2.9.34</version>
+    <time>1457426350</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367296</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>756fd619cfb9e798fa320e1646d8737b</srcmd5>
+    <version>2.9.37</version>
+    <time>1489345542</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478745</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b1bec3b3be1594b7592873c87c36e179</srcmd5>
+    <version>2.9.38</version>
+    <time>1498202324</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505743</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>6f1262986bc8368c879010edabe9a917</srcmd5>
+    <version>2.9.38</version>
+    <time>1556914667</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696522</requestid>
+  </revision>
+</revisionlist>

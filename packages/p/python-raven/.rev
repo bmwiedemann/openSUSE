@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>82b2f22b03e88621462be01dc6af9724</srcmd5>
+    <version>6.1.0</version>
+    <time>1505238970</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-raven</comment>
+    <requestid>523383</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b21f38b130a44657b3b586e738220549</srcmd5>
+    <version>6.4.0</version>
+    <time>1516092124</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.4.0
+- added kill_bad_test.patch
+- dropped zconfig_tests.patch
+* [Core] Support for defining sanitized_keys on the client
+* [Django] Support for Django 2.0 Urlresolver
+* [Docs] Several fixes and improvements (forwarded request 563570 from mimi_vx)</comment>
+    <requestid>563571</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e722dfc921652edb7cba18938836da21</srcmd5>
+    <version>6.9.0</version>
+    <time>1533214651</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>625456</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>56f0c6d8c6be8d2babc1f74f82d2d456</srcmd5>
+    <version>6.9.0</version>
+    <time>1534100108</time>
+    <user>dimstar_suse</user>
+    <comment>Remove unnecessary dependency on unittest2 and contextlib2 modules.
+Add remove-unittest2.patch fixing the code.</comment>
+    <requestid>628648</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>62dd49d007ca0dc877574d2547b10f77</srcmd5>
+    <version>6.9.0</version>
+    <time>1545648180</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659634</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>75aae1e9f7b20a5e553e59aa848ad33e</srcmd5>
+    <version>6.10.0</version>
+    <time>1558036770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702933</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2eea77643365f38edf9c015d6e0f93d2</srcmd5>
+    <version>6.10.0</version>
+    <time>1560861894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707053</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>d953db4d91742a7d123688ccb138d51d</srcmd5>
+    <version>6.10.0</version>
+    <time>1564484543</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not depend on pytest-sugar, it is just pretty-formatter</comment>
+    <requestid>717021</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>1adeeb2169f09274c466119874ab471c</srcmd5>
+    <version>6.10.0</version>
+    <time>1567421053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726226</requestid>
+  </revision>
+</revisionlist>

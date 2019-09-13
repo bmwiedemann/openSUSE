@@ -1,0 +1,7 @@
+<package name="davfs2" project="openSUSE:Factory">
+  <title>davfs2</title>
+  <description>davfs2 is a FUSE file system driver that allows you to mount a WebDAV server
+as a local file system
+  </description>
+  <devel project="filesystems" package="davfs2"/>
+</package>

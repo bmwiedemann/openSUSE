@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5aa302156d264257116e7b61d3bf08c9</srcmd5>
+    <version>4.3.0</version>
+    <time>1474370718</time>
+    <user>dimstar_suse</user>
+    <comment>This is a set of updated, modern C++ bindings for the netcdf4 library (which is already in openSUSE:Factory).  Currently the older, deprecated bindings (netcdf-cxx) are in openSUSE:Factory.  These are incompatible with the old versions, but due to a different library name do not conflict.</comment>
+    <requestid>412418</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>09cf330eea63144fec5d07b6d359867b</srcmd5>
+    <version>4.3.0</version>
+    <time>1475242367</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>430550</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>417d4c1c5de2834c19e267c059fe176f</srcmd5>
+    <version>4.3.0</version>
+    <time>1509036266</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Requires for the devel package. (forwarded request 536565 from eeich)</comment>
+    <requestid>536566</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4fc1271c4678b09bbf0e4a7592dc5b66</srcmd5>
+    <version>4.3.0</version>
+    <time>1509461076</time>
+    <user>dimstar_suse</user>
+    <comment>- Add and fix 'standard' build. (forwarded request 537745 from eeich)</comment>
+    <requestid>537746</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6ddf053783eb1c1021b6244907ca4b70</srcmd5>
+    <version>4.3.0</version>
+    <time>1510578281</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Requires: for the netcdf library/devel package to the
+  netcdf-cxx4 library/devel package for HPC. (forwarded request 541143 from eeich)</comment>
+    <requestid>541144</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>3b3ca54e53508b0857d2c843cb1a861e</srcmd5>
+    <version>4.3.0</version>
+    <time>1511274797</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix modules file: only use %hpc_bindir if it really exists
+  - installing the tool package is optional.
+- Translate '-' to '_' for env-variable.
+- Require lua-lmod.
+- Add Requires for library package to tools package. (forwarded request 542045 from eeich)</comment>
+    <requestid>543901</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>928270e61c344586897ed53cc2ca0482</srcmd5>
+    <version>4.3.0</version>
+    <time>1515506055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562357</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>06a248688633ac98ac28eb622d277394</srcmd5>
+    <version>4.3.0</version>
+    <time>1519218652</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix summary in module files (bnc#1080259).</comment>
+    <requestid>574726</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>b57ad171b2347e47d3dd9b922351ea8b</srcmd5>
+    <version>4.3.0</version>
+    <time>1521904570</time>
+    <user>dimstar_suse</user>
+    <comment>- add netcdf-cxx4-testsuite_bigendian.patch (bsc#1086393)
+  skip problematic testcases on bigendian architectures for now
+  looks like netcdf-4.4.X is lacking proper support
+- output test log in case of error in check section of specfile (forwarded request 589838 from oertel)</comment>
+    <requestid>590562</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>4ed06c3fda771350da3c0ba3c1eb502e</srcmd5>
+    <version>4.3.0</version>
+    <time>1524838214</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable non-HPC builds on non-openSUSE systems:
+  a. currently only SUSE products/projects are supported/
+  b. non-HPC builds are not and have never been supported on SLE,
+     on openSUSE they are provided for compatibility reasons
+     (bsc#1091223).</comment>
+    <requestid>601898</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>fa78c0a90e51aceff40fb8a71c48c109</srcmd5>
+    <version>4.3.0</version>
+    <time>1525210337</time>
+    <user>dimstar_suse</user>
+    <comment>- (Temporarily) disable fpr S390* as a check test for netcdf fails
+  currently on BE (bsc#1091474). (forwarded request 602638 from eeich)</comment>
+    <requestid>602641</requestid>
+  </revision>
+</revisionlist>

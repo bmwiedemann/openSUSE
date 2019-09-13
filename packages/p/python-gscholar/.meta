@@ -1,0 +1,5 @@
+<package name="python-gscholar" project="openSUSE:Factory">
+  <title>Python library to query Google Scholar</title>
+  <description>This package provides a python package and CLI to query google scholar and get references in various formats (e.g. bibtex, endnote, etc.)</description>
+  <devel project="devel:languages:python:numeric" package="python-gscholar"/>
+</package>

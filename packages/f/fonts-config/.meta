@@ -1,0 +1,10 @@
+<package name="fonts-config" project="openSUSE:Factory">
+  <title>Configures Fonts for X Windows and other applications</title>
+  <description>Configures Fonts for X Windows and other applications.
+
+Usually fonts-config is called automatically via SuSEconfig (SuSEconfig
+--module fonts), which is usually automatically called by YaST2. You
+can also execute fonts-config directly, which is mainly useful for
+debugging it.</description>
+  <devel project="M17N" package="fonts-config"/>
+</package>

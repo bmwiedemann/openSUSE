@@ -1,0 +1,6 @@
+<package name="libgadu" project="openSUSE:Factory">
+  <title>Library for Handling of Gadu-Gadu Instant Messaging</title>
+  <description>libgadu is a library for handling of protocol of a popular Polish
+instant messenger Gadu-Gadu.</description>
+  <devel project="X11:common:Factory" package="libgadu"/>
+</package>

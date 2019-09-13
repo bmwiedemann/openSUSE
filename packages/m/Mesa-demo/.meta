@@ -1,0 +1,5 @@
+<package name="Mesa-demo" project="openSUSE:Factory">
+  <title>MesaDemos</title>
+  <description>General demo programs and feature demonstrators for Mesa</description>
+  <devel project="X11:XOrg" package="Mesa-demo"/>
+</package>

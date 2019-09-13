@@ -1,0 +1,6 @@
+<package name="lxqt-runner" project="openSUSE:Factory">
+  <title>lxqt-runner</title>
+  <description>Launch applications quickly by typing commands
+</description>
+  <devel project="X11:LXQt" package="lxqt-runner"/>
+</package>

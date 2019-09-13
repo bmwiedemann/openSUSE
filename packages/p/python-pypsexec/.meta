@@ -1,0 +1,11 @@
+<package name="python-pypsexec" project="openSUSE:Factory">
+  <title>Run commands on a remote Windows host using SMB/RPC</title>
+  <description>This library can run commands on a remote Windows host through Python.
+This means that it can be run on any host with Python and does not
+require any binaries to be present or a specific OS. It uses SMB/RPC to
+executable commands in a similar fashion to the popular PsExec tool.
+
+</description>
+  <devel project="devel:languages:python" package="python-pypsexec"/>
+  <url>https://github.com/jborean93/pypsexec</url>
+</package>

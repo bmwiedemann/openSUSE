@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d86313b592cce2cd001a0afe8935aed</srcmd5>
+    <version>2.0.3</version>
+    <time>1553263688</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to single spec
+- Add %license
+- Update to v2.0.3
+- Initial package for v1.1.1
+</comment>
+    <requestid>687162</requestid>
+  </revision>
+</revisionlist>

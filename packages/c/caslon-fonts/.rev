@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="242">
+    <srcmd5>67b73d7d72ac959f8b7c09eba2bf4a62</srcmd5>
+    <version>20031202</version>
+    <time>1333437562</time>
+    <user>coolo</user>
+    <comment>Moving M17N/ttf-caslon to M17N:fonts/caslon-fonts.</comment>
+    <requestid>112012</requestid>
+  </revision>
+  <revision rev="2" vrev="243">
+    <srcmd5>06f5a0485875690c5060696a6d6c2c67</srcmd5>
+    <version>20031202</version>
+    <time>1338016930</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122116</requestid>
+  </revision>
+  <revision rev="3" vrev="245">
+    <srcmd5>06f5a0485875690c5060696a6d6c2c67</srcmd5>
+    <version>20031202</version>
+    <time>1340183228</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="246">
+    <srcmd5>cccb92240fcbdeeb678b2828dc907a4b</srcmd5>
+    <version>20031202</version>
+    <time>1347617711</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133922</requestid>
+  </revision>
+  <revision rev="5" vrev="248">
+    <srcmd5>cccb92240fcbdeeb678b2828dc907a4b</srcmd5>
+    <version>20031202</version>
+    <time>1359108734</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="250">
+    <srcmd5>cccb92240fcbdeeb678b2828dc907a4b</srcmd5>
+    <version>20031202</version>
+    <time>1379662089</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="252">
+    <srcmd5>cccb92240fcbdeeb678b2828dc907a4b</srcmd5>
+    <version>20031202</version>
+    <time>1409300618</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

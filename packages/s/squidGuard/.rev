@@ -1,0 +1,358 @@
+<revisionlist>
+  <revision rev="1" vrev="379">
+    <srcmd5>a052b8b1a1ba071f27fb7fbbefa62c08</srcmd5>
+    <version>1.2.0</version>
+    <time>1168904275</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="418">
+    <srcmd5>f1cf30ffebcf555dcdf8969814d6c40c</srcmd5>
+    <version>1.2.0</version>
+    <time>1175185760</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9e36ae3ece836b5704bcf9efdd99737d</srcmd5>
+    <version>1.2.1</version>
+    <time>1178816190</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="15">
+    <srcmd5>ee31b76134cb5ab0fed903eac8862fe7</srcmd5>
+    <version>1.2.1</version>
+    <time>1183586088</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6d4a22912901cac25f9ef1d6d94535b8</srcmd5>
+    <version>1.3</version>
+    <time>1196336952</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="48">
+    <srcmd5>d0523272fcf4e4c0ff349a10e7884af8</srcmd5>
+    <version>1.3</version>
+    <time>1215560558</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="57">
+    <srcmd5>044bb334daee577a9319a0ca5e75c049</srcmd5>
+    <version>1.3</version>
+    <time>1216954964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="93">
+    <srcmd5>f5a167377ced9c9ade4fc066862c35d1</srcmd5>
+    <version>1.3</version>
+    <time>1245340746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>de552d9de68bc9e46d436158570a0ad3</srcmd5>
+    <version>1.4</version>
+    <time>1254155372</time>
+    <user>autobuild</user>
+    <comment>Copy from home:lrupp/squidGuard based on submit request 21147 from user lrupp
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>de552d9de68bc9e46d436158570a0ad3</srcmd5>
+    <version>1.4</version>
+    <time>1254155372</time>
+    <user>autobuild</user>
+    <comment>Copy from home:lrupp/squidGuard based on submit request 21147 from user lrupp
+</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>8b369d7f70fb2d8e1b28ac5ed83889fa</srcmd5>
+    <version>1.4</version>
+    <time>1263833479</time>
+    <user>autobuild</user>
+    <comment>Copy from server:proxy/squidGuard based on submit request 29349 from user coolo
+</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>92f5670b88280f1506a6ddaa9d06c880</srcmd5>
+    <version>1.4</version>
+    <time>1268926226</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>92f5670b88280f1506a6ddaa9d06c880</srcmd5>
+    <version>1.4</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>92f5670b88280f1506a6ddaa9d06c880</srcmd5>
+    <version>1.4</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>4dd7295b84d86b35c262452536d6b4c8</srcmd5>
+    <version>1.4</version>
+    <time>1279916018</time>
+    <user>autobuild</user>
+    <comment>Copy from server:proxy/squidGuard based on submit request 43577 from user computersalat
+</comment>
+    <requestid>43577</requestid>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>3cba45ecfc7adca726ce29753a5a8d85</srcmd5>
+    <version>1.4</version>
+    <time>1287067486</time>
+    <user>autobuild</user>
+    <comment>Copy from server:proxy/squidGuard based on submit request 50582 from user puzel
+</comment>
+    <requestid>50582</requestid>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>3cba45ecfc7adca726ce29753a5a8d85</srcmd5>
+    <version>1.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="15">
+    <srcmd5>3cba45ecfc7adca726ce29753a5a8d85</srcmd5>
+    <version>1.4</version>
+    <time>1319182486</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="16">
+    <srcmd5>9bb72e0d1de9a403cb38452b7320ce11</srcmd5>
+    <version>1.4</version>
+    <time>1323194738</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="18">
+    <srcmd5>9bb72e0d1de9a403cb38452b7320ce11</srcmd5>
+    <version>1.4</version>
+    <time>1340184235</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="20">
+    <srcmd5>9bb72e0d1de9a403cb38452b7320ce11</srcmd5>
+    <version>1.4</version>
+    <time>1359110432</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>9bb72e0d1de9a403cb38452b7320ce11</srcmd5>
+    <version>1.4</version>
+    <time>1379664725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="24">
+    <srcmd5>9bb72e0d1de9a403cb38452b7320ce11</srcmd5>
+    <version>1.4</version>
+    <time>1409303408</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="25">
+    <srcmd5>eb81bf1b5e7fae27d1e4193c873ab0dc</srcmd5>
+    <version>1.4</version>
+    <time>1411627398</time>
+    <user>coolo</user>
+    <comment>- SuSE -&amp;gt; SUSE [bnc#889003] (forwarded request 251775 from pgajdos)</comment>
+    <requestid>251778</requestid>
+  </revision>
+  <revision rev="25" vrev="26">
+    <srcmd5>77d024ff14e80554c611babc8040fe14</srcmd5>
+    <version>1.4</version>
+    <time>1426064265</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289926</requestid>
+  </revision>
+  <revision rev="26" vrev="27">
+    <srcmd5>2c4ac0f38bed879bbaa7133995cc3808</srcmd5>
+    <version>1.4</version>
+    <time>1427736793</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293470</requestid>
+  </revision>
+  <revision rev="27" vrev="28">
+    <srcmd5>6ce2924e055de3e2d40fdda19a2f447f</srcmd5>
+    <version>1.4</version>
+    <time>1507280624</time>
+    <user>dimstar_suse</user>
+    <comment>- Merge SLE changes into Factory
+- default_config_pathfixes.patch:
+  reference only existing filter lists in default installed config
+  (bnc#961499)
+- add xss_fix_02_2015.patch:
+  o fix XSS possibility in blocked error page by escaping all
+    &lt; and &gt; in the printed url (CVE-2015-8936, bnc#985612)
+- fix URL in README so it doesn't point at non-existent page
+- fix squid 3.4 error witch patch squidGuard-1.4_upgrade.patch
+  see http://bugs.squid-cache.org/show_bug.cgi?id=3978 (bnc#1040757)
+- fix permissions for blacklist, conf, dbhome and logdir, 
+  so other tools like squidguardmanager can access
+- SuSE -&gt; SUSE [bnc#889003]
+- fix squidGuard-CVE-2009-3826.patch patch 
+- add squidGuard-CVE-2009-3700.patch,
+  squidGuard-CVE-2009-3826.patch (bnc#550930)
+- add &quot;missingok&quot; to logrotate configuration
+  (no logfile if never used causing error from cron when
+   running logrotate) 
+- fixed deps for SLES_9
+  o Unknown tag: Recommends:
+- fix deps
+  o PreReq: http_proxy
+  o osc meta -e prjconf Prefer: squid3
+- fixed lost mods from kssingvo 20070702
+  o &quot;Requires: http_proxy&quot;  now, as squid3 is an alternative
+- spec
+  o sorted TAGS
+- rpmlint
+  o non-utf8-spec-file
+- update to 1.4:
+  + some fixes
+  + Added MySQL support for authentication. The database is
+    assumed to be configured on localhost.
+  + Fixed configure.in to comply with the autoconf standard
+  + Fixed broken &quot;make test&quot;
+  + Added new runtime parameter &quot;-P&quot;. This parameter changes
+    the default behaviour from stop (emergency mode) to pass
+    when an error in building the database files occurs. So
+    this parameter only works in connection with the runtime
+    paramter &quot;-C&quot;. Before using &quot;-P&quot; in your environment
+    make sure that nothing breakes when the building of the
+    db files fail.
+  + Added Spanish translation to squidGuard.cgi
+- enabled --nolog option
+- enabled mysql auth
+- removed squidGuard-1.3-bl_less_noise.patch (upstream)
+- adapted squidGuard-1.3-config.patch 
+- split up doc package
+- package the cgi scripts (and babel files) in /srv/www/cgi-bin
+- package blocked.gif in /srv/www/htdocs/images
+- added squidGuard.logrotate script
+- added latest upstream patch (20080714) as two individual patches:
+  * fix for squid complaining about progress bar 
+  * fix if URL was requested which ends with &quot;://&quot;
+- added latest upstream patch (20080613) as trailing_dot.patch
+- &quot;Requires: http_proxy&quot;  now, as squid3 is an alternative
+- update to version 1.3:
+  * Included configurable logging. New configure option --nolog
+    suppress all runtime logmessages. Start and stop is still
+    logged. Default behaviour is now to log the non debug
+    messages except when the runtime option -d is supplied to
+    squidGuard. May need some more finetuning in later versions.
+    (bug 11) Made some slight changes to the outdated FAQ file.
+  * Modified auth code to work with and without ldap (choosing
+    subroutine rfc1738_unescape or sgFindUser in sg.y.in)
+  * Corrected include statement in sg.h.in.
+  * Added patch by Marc Clayton to include a progressbar to the
+    build of the database files (bug 6).
+  * Added patch by Eric Harrison to enable full sed compliance to
+    rewrite statements (bug 7).
+  * Corrected missing evaluation of configure parameters for
+    logdir, dbhome and config file (bug 11).
+  * Added patch from satish to block urls entries that include
+    hostnames (bug 4).
+  * Fixed broken regex evaluation (bug 12)
+  * Fixed a compile problem on some systems (bug 10).
+  * Corrected an issue with the fix for the double slash
+    vulnerability (incorrectly found double slashes) (bug 1). 
+- fixed build/config issues
+- fixes from upstream:
+  * double slash bug fix extracted from Patch-20070513 tarball
+  * regexp bug fix extracted from Patch-20070520 tarball
+  * compiler bug fix extracted from Patch-20070520 tarball
+- upgrade to version 1.2.1:
+  * Fixed multiple slash bypass vulnerabilty.
+  * Fixed some bugs in squidGuard-simple.cgi and added a
+    German version of it.
+  * Fixed encoding bypass vulnerabilty.
+  * Updated y.tab.c.bison and y.tab.h.bison to the recent version.
+  * Fixed bug in user authentication.
+  * Fixed some typos which broke compilation on Sun Solaris
+    when using the Sun CC compiler.
+  * Corrected unproper evaluated if-clause, which broke the
+    BerkeleyDB 2 compatibility.
+  * Fixed minor typo in samples/Makefile.in.
+  * Replaced the sleepycat links from the configure program with
+    the oracle links.
+  * Corrected typo in Makefile.in.
+  * Removed a stupid bug from the Makefile in the docs directory.
+  * Removed references to squidguard.org in Makefile.in in the
+    Doc directory (squidguard.org is down).
+  * Added ISSUES.txt file about known problem with the current
+    code (any information that is missing and should go in there
+    is gladly welcomed).
+  * Release now supports LDAP queries for authentication:
+  * Added Chris Frey's ldap patches and fixes (03, 05, 06,
+    07 and 10; Patches from:
+    http://www.netdirect.ca/software/category.php?cat=SquidGuard).
+  * The LDAP feature can be included during the configure run
+    by setting --with-ldap. 
+  * Added a fix provided by Francesco Ranieri to solve an issue
+    with the (un)escaping of the authentication &quot;domain%5cusername&quot;.
+- adapted configuration related patches
+- add bison and flex BuildRequires
+- converted neededforbuild to BuildRequires
+- don't build as root 
+- added -fno-strict-aliasing
+- fixed db-&gt;open() call, like Thorsten suggested
+- made pathes FHS 2.2 clean
+- added README.SuSE (as suggest in bugzilla #16670)
+- Fix to build without existing squid user
+- Add squid to PreRequires.
+- fix directory permissions 
+- use db package (update to 1.2.0 to make it compile)
+- use buildroot
+- correct permissions in /var/squidGuard
+- rename squigrd -&gt; squidGuard
+- added group tag 
+- installing a useable test configuration
+- initial package of squidGuard Version 1.1.4
+</comment>
+    <requestid>531548</requestid>
+  </revision>
+  <revision rev="28" vrev="29">
+    <srcmd5>28fef4c598bc1b99146df815602a4d40</srcmd5>
+    <version>1.4</version>
+    <time>1518813826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577042</requestid>
+  </revision>
+  <revision rev="29" vrev="30">
+    <srcmd5>7194b1b2426efbe999e63d4be7eea913</srcmd5>
+    <version>1.4</version>
+    <time>1520021413</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup with spec-cleaner
+
+- remove patches that modify generated code instead of template.
+  They are already in the template and are unnedded.
+  + squidGuard-trailing_dot.patch
+  + squidGuard-unusual_url_end.patch
+- update patches removing parts that update generated code
+  + squidGuard-1.4_upgrade.patch
+  + type_fixes.patch
+- remove generated code before applying patches
+- use SPDX 3.0 license and install it correctly
+  squidGuard is GPL-2.0-only</comment>
+    <requestid>580950</requestid>
+  </revision>
+  <revision rev="30" vrev="31">
+    <srcmd5>8e7f8969838f3c89625c0d911db22643</srcmd5>
+    <version>1.4</version>
+    <time>1562843908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714407</requestid>
+  </revision>
+</revisionlist>

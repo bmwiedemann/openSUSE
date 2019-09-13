@@ -1,0 +1,223 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2036e9af7fe3a6a3d0886f66cfb2fd5</srcmd5>
+    <version>3.2.4</version>
+    <time>1432188862</time>
+    <user>coolo</user>
+    <comment>JuicyPixels lib, for work with some image formats , one of new deps for pandoc</comment>
+    <requestid>306755</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ac482374745943ebdc43193c41f9bc4</srcmd5>
+    <version>3.2.5.1</version>
+    <time>1433232362</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.5.1
+* Fixing: utf-8 encoding of Jpg/Types causing problems with Haddock.
+* Adding: Metadata extraction for various file format.
+* Adding: Metadata writing for various file format.
+* Adding: light EXIF mapping.
+* Fix: handling of Tiff with predictors (thanks to Patrick Pelletier)</comment>
+    <requestid>309494</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3d101ad8a17d30b3ed27c476eb49388f</srcmd5>
+    <version>3.2.5.2</version>
+    <time>1433845482</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.5.2
+* Adding: Width &amp; Height metdata to help querying image information without 
+    decompressing the whole.
+* Adding: Source format metadata.</comment>
+    <requestid>311097</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2d88169a4ebfc91a5c5798133510abda</srcmd5>
+    <version>3.2.5.3</version>
+    <time>1438750244</time>
+    <user>coolo</user>
+    <comment>- update to 3.2.5.3
+*  Fix: bumping vector upper bounds.</comment>
+    <requestid>318862</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ece7cdeb5abbaa464ffb523d04e2a967</srcmd5>
+    <version>3.2.6</version>
+    <time>1440658600</time>
+    <user>coolo</user>
+    <comment>- update to 3.2.6
+* Added: imageToTga saving helper function.
+* Fix: don't invert TGA alpha channel.
+* Fix: various typo in documentation.</comment>
+    <requestid>325723</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f6a6419b99cef21996c04620969e3a25</srcmd5>
+    <version>3.2.6.1</version>
+    <time>1441146959</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.6.1
+* Fix: handling of negative height &amp; width in bitmap format
+* Fix: regression on Tiff parsing.</comment>
+    <requestid>328065</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>42bcf6182ed40fc70d7bd5b68dcffd5f</srcmd5>
+    <version>3.2.6.2</version>
+    <time>1447146173</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.6.2
+* Fix: Using minimal GIF version if outputing a single image.</comment>
+    <requestid>342357</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bfc8d7d94597e737177846299ea1b0ed</srcmd5>
+    <version>3.2.6.4</version>
+    <time>1449687167</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.6.4
+* Fix: Fixing unwanted sharing with createMutableImage due to
+        wrongly used INLINE pragma</comment>
+    <requestid>347739</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b8e34de8a834f0ecf0e7dc7421d5af47</srcmd5>
+    <version>3.2.7</version>
+    <time>1453998236</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.7
+* Addition: convertRGB8 and convertRGBA8 helper functions
+* Addition: new output colorspace for JPEG format: Y, RGB &amp;amp; CMYK
+* Addition: RGBA8 bitmap reading (thanks to mtolly)
+* Enhancement: Optimized JPG &amp;amp; Tiff reading (thanks to Calvin Beck)
+* Enhancement: INLINE SPECIALIZE for pixelMap (Pixel8 -&amp;gt; Pixel8) (thx to Calvin Beck)
+* Fix: GHC 8.0 compilation (thanks to phadej) (forwarded request 355970 from mimi_vx)</comment>
+    <requestid>355971</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8e66ae7fe569f7d7a1f52e0ba86993f0</srcmd5>
+    <version>3.2.7.1</version>
+    <time>1465336099</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.7.1
+* Fix: some wrongly infinitely looping JPEG decoding (forwarded request 400118 from mimi_vx)</comment>
+    <requestid>400119</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1cfb1fd69622c9f690088a512cf53eb5</srcmd5>
+    <version>3.2.7.2</version>
+    <time>1467705153</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.7.2
+* Fix: no more libjpeg warning when decoding Juicy.Pixels encoded images. (forwarded request 406337 from mimi_vx)</comment>
+    <requestid>406338</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4e8796664d556b00135df52041fe5a59</srcmd5>
+    <version>3.2.7.2</version>
+    <time>1469081103</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411382</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a5c767399c962c6c1c4a7b8d04a9665e</srcmd5>
+    <version>3.2.8</version>
+    <time>1476874954</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433351</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>db9488c94ddd5e79d731d2b22390cd6d</srcmd5>
+    <version>3.2.8</version>
+    <time>1490026005</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477440</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9753cdec05f842eed1de01248d551885</srcmd5>
+    <version>3.2.8.1</version>
+    <time>1492169833</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485102</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>07da9ae8d4ca42727bf57eef531b4cff</srcmd5>
+    <version>3.2.8.2</version>
+    <time>1499291875</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>506795</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5c5d79e03563a959dbbf18932b97b1c5</srcmd5>
+    <version>3.2.9.5</version>
+    <time>1527675026</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-JuicyPixels to the latest version.</comment>
+    <requestid>607831</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>605bae2cfef98c83d780946e7b6f5679</srcmd5>
+    <version>3.3</version>
+    <time>1532445839</time>
+    <user>dimstar_suse</user>
+    <comment>Please update this package in adi:14.</comment>
+    <requestid>624313</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d03a530b631227841366c366b71b89ef</srcmd5>
+    <version>3.3.1</version>
+    <time>1534774796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update JuicyPixels to version 3.3.1.
+  v3.3.1 August 2018
+  ------------------
+   * Fix: gif decoding of 1bit palette (fix Ornedan)
+   * Fix: end of stream handling for gif's lzw encoding (fix Ornedan)</comment>
+    <requestid>630359</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a1fa567e72a19569ae15aa44c8f44c9e</srcmd5>
+    <version>3.3.2</version>
+    <time>1540448227</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642872</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>64eab808cd826e0c804ab5cfee0b6896</srcmd5>
+    <version>3.3.3</version>
+    <time>1545647846</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>658878</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>4e46160117588fb4a877b97cd356d058</srcmd5>
+    <version>3.3.3</version>
+    <time>1545996926</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>661505</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>014c64cce7aa7f900939b349a29dafc3</srcmd5>
+    <version>3.3.3</version>
+    <time>1560971410</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710618</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>674b8ac35c032a8ae98c23e445bc21fe</srcmd5>
+    <version>3.3.3.1</version>
+    <time>1561882883</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>712498</requestid>
+  </revision>
+</revisionlist>

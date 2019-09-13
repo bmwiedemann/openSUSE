@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>47840dc1859a64a08032d153ef39f715</srcmd5>
+    <version>1.2.7</version>
+    <time>1337273749</time>
+    <user>coolo</user>
+    <comment>- Rename source and binary package from xorg-x11-xtrans-devel to
+  xtrans.
+- Add Provides/Obsoletes for xorg-x11-xtrans-devel to smooth
+  upgrades.
+- Pass --docdir=%{_docdir}/xtrans to configure to install
+  xtrans.xml in the right doc directory, instead of
+  /usr/share/doc/xtrans/).</comment>
+    <requestid>121175</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>47840dc1859a64a08032d153ef39f715</srcmd5>
+    <version>1.2.7</version>
+    <time>1340184388</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ba4cfe0a5a8289023fe6e36a681f845f</srcmd5>
+    <version>1.2.7</version>
+    <time>1348574687</time>
+    <user>coolo</user>
+    <comment>- specfile cleanup</comment>
+    <requestid>135833</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>ba4cfe0a5a8289023fe6e36a681f845f</srcmd5>
+    <version>1.2.7</version>
+    <time>1359110702</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>724a440fdc71702e489aba7db70eee00</srcmd5>
+    <version>1.2.7</version>
+    <time>1365948775</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162709 from namtrac)</comment>
+    <requestid>162747</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>724a440fdc71702e489aba7db70eee00</srcmd5>
+    <version>1.2.7</version>
+    <time>1379665126</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dfaeff1440aee177ea03ebc0ce20a381</srcmd5>
+    <version>1.3.2</version>
+    <time>1386780361</time>
+    <user>coolo</user>
+    <comment>update to xtrans-1.3.2 (forwarded request 206339 from tobijk)</comment>
+    <requestid>208306</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3c5d68e1e840c0d7c5ae432de8201c56</srcmd5>
+    <version>1.3.3</version>
+    <time>1390976263</time>
+    <user>coolo</user>
+    <comment>update to version 1.3.3 (forwarded request 215283 from tobijk)</comment>
+    <requestid>215292</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2f44e2eff2a5004cb6bf25a49e3019c9</srcmd5>
+    <version>1.3.4</version>
+    <time>1396761015</time>
+    <user>coolo</user>
+    <comment>update to 1.3.4 (forwarded request 228369 from tobijk)</comment>
+    <requestid>228405</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f3dc3c402fb0695b8d6c0fdce51d12a5</srcmd5>
+    <version>1.3.4</version>
+    <time>1398533651</time>
+    <user>coolo</user>
+    <comment>- Remove superfluous Require (forwarded request 231328 from tobijk)</comment>
+    <requestid>231356</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>f3dc3c402fb0695b8d6c0fdce51d12a5</srcmd5>
+    <version>1.3.4</version>
+    <time>1409303813</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2ab2b5567999db970385e8bd152ac29f</srcmd5>
+    <version>1.3.5</version>
+    <time>1411627353</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>251648</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0b7d521d5d1947893eb4f6179658688f</srcmd5>
+    <version>1.3.5</version>
+    <time>1496533585</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #320388 (bsc#1041610)</comment>
+    <requestid>499644</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7432337f0a0368fbd388795d2f91e589</srcmd5>
+    <version>1.4.0</version>
+    <time>1553635812</time>
+    <user>dimstar_suse</user>
+    <comment>- n_unifdef-LBXPROXY_t-and-TEST_t.patch
+  * reverse apply in order to fix build of lbxproxy again ...
+
+- Update to version 1.4.0
+  * This release drops a bunch of dead code, including support
+    only used by lbxproxy and pre-1.4.0 versions of libX11, as
+    well as support for obsolete SysV x86 platforms. It also
+    provides some bug fixes &amp; other maintenance work.</comment>
+    <requestid>687690</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>455c87ed6e88c9648862005bac86a7b6</srcmd5>
+    <version>1.4.0</version>
+    <time>1566912012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724418</requestid>
+  </revision>
+</revisionlist>

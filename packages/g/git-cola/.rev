@@ -1,0 +1,325 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0076304e65f6f7a406726693f35fe9ff</srcmd5>
+    <version>2.1.1</version>
+    <time>1423732952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>284776</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>45b6ab635d9413ce76b3cbffbac5d10f</srcmd5>
+    <version>2.1.2</version>
+    <time>1427983408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>293794</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b20e5e7eb2ab68e044a5f586276e1c5b</srcmd5>
+    <version>2.2</version>
+    <time>1434383464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>312087</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea9cd931ad3326532ec2a3da04f5a5e3</srcmd5>
+    <version>2.2.1</version>
+    <time>1434456360</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>312210</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>898d033356814be49cfc5db11ff0575e</srcmd5>
+    <version>2.3</version>
+    <time>1439274397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>321541</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e5f9b5690867808ac72651ce1452b186</srcmd5>
+    <version>2.4</version>
+    <time>1444833933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>338372</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>681cb3f12637089e873dfac19640e92b</srcmd5>
+    <version>2.5</version>
+    <time>1452027302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>351816</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f52ee0e1a3f3f383475775cafd7406e3</srcmd5>
+    <version>2.6</version>
+    <time>1462261027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>393114</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>81f31fda54177449a38ca377b23da042</srcmd5>
+    <version>2.7</version>
+    <time>1470217493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>416246</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2fa17100ad66ce4c75d3ac5956ddd971</srcmd5>
+    <version>2.7</version>
+    <time>1470413876</time>
+    <user>dimstar_suse</user>
+    <comment>This is important update because previous submit contains bug in spec file and git-cola doesn't work.</comment>
+    <requestid>416974</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1a3a1ff605dfd58d897a5a99a9809e89</srcmd5>
+    <version>2.8</version>
+    <time>1472731420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>424100</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>27ace9d2902a5920d611abbd98a6d603</srcmd5>
+    <version>2.9</version>
+    <time>1480342054</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441906</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>025b54b26f6298980655b94116bb968d</srcmd5>
+    <version>2.9.1</version>
+    <time>1480584507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>442665</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6e2076f6bc9e3480457bb24d29dd36d5</srcmd5>
+    <version>2.10</version>
+    <time>1484660199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>450331</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>95ed6e26c28400bc5b1f972628111c2d</srcmd5>
+    <version>2.11</version>
+    <time>1500456198</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>511344</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>89101f79e4f8e4e461024e6c3a3494f2</srcmd5>
+    <version>3.0</version>
+    <time>1511194035</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0</comment>
+    <requestid>543859</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>39b316d8f3a03662889e853fe1986de5</srcmd5>
+    <version>3.1</version>
+    <time>1525426082</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1
+- Usability, bells and whistles
+* The “Browser” widget learned to rename files using “git mv”.
+https://github.com/git-cola/git-cola/issues/239
+* The “Diff” widget learned to diff images. Side-by-side and pixel diff modes allow you to inspect changes to common images formats.
+https://github.com/git-cola/git-cola/issues/444
+https://github.com/git-cola/git-cola/pull/803
+* Git LFS and Git Annex are natively supported by the image diff viewer.
+* Git Annex operations are now included. git annex init can be performed on repositories, and git annex add can be run on untracked files from the status widget. Install git-annex to activate this feature.
+* Git LFS operations are now included. git lfs install can be performed on repositories, and git lfs track can be run on untracked files from the status widget. Install git-lfs to activate this feature.
+* The “Stash” tool learned to stash staged changes only. Select the “Stage Index” option and only staged changes will be stashed away.
+https://github.com/git-cola/git-cola/issues/413
+* The “Stash” tool learned to use vim-like navigation keyboard shortcuts, shows error messages when things go wrong, and now saves the “Stash Index” and “Keep Index” options across sessions.
+* The Edit menu’s “Copy” and “Select All” actions now forward to either the diff, status, recent, or favorites widgets, based on which widget has focus.
+* The “File” and “Edit” menu can now be activated using Alt-{f,e} hotkeys.
+https://github.com/git-cola/git-cola/issues/759
+* It was easy to accidentally trigger the first action in the Status tool’s context menu when using a quick right-click to bring up the menu. A short sub-second delay was added to ensure that the top-most action is not triggered unless enough time has passed. This prevents accidental activation of the first item (typically “Stage” or “Unstage”) without burdening common use cases.
+https://github.com/git-cola/git-cola/pull/755
+https://github.com/git-cola/git-cola/issues/643
+* The “Ctrl+S” hotkey now works for the header items in the Status tool. Selected the “Modified” header item and activating the “Stage” hotkey, for example, will stage all modified files. This works for the “Staged”, “Modified”, and “Untracked” headers. This is not enabled for the “Unmerged” header by design.
+https://github.com/git-cola/git-cola/issues/772
+* The list of “Recent” repositories previously capped the number of repositories shown to 8 repositories. This can be set to a higher value by setting the cola.maxrecent configuration variable.
+https://github.com/git-cola/git-cola/issues/752
+* The “Create Branch” dialog now prevents invalid branch names.
+https://github.com/git-cola/git-cola/issues/765
+* Updated Turkish translation.
+https://github.com/git-cola/git-cola/pull/756
+* Updated Ukrainian translation.
+https://github.com/git-cola/git-cola/pull/753
+* Updated German translation.
+https://github.com/git-cola/git-cola/pull/802
+* Updated Czech translation
+https://github.com/git-cola/git-cola/pull/792
+https://github.com/git-cola/git-cola/pull/806
+* The window title can be configured to not display the absolute path of the repository.
+https://github.com/git-cola/git-cola/issues/775
+* The “Edit Remotes” editor learned to edit remote URLS.
+* Bare repositories can now be created by selecting the “New Bare Repository…” action from the File menu.
+* The “Branches” widget learned to configure upstream branches.
+* A new git cola clone sub-command was added for cloning repositories.
+- Packaging
+* The vendored qtpy library was updated to v1.3.1.
+* The macOS installation was made simpler for better compatibility with Homebrew.
+https://github.com/git-cola/git-cola/issues/636
+* The Windows installer is now much simpler. Git Cola now bundles Python and PyQt5, so users need only install the “Git for Windows” and “Git Cola” installers to get things working.
+- Fixes
+* Uninitialized difftool errors will now be displayed graphically. They were previously going to the shell.
+https://github.com/git-cola/git-cola/issues/457
+* Translations marked “fuzzy” will no longer be used when translating strings.
+https://github.com/git-cola/git-cola/issues/782
+* Deleted unmerged files will now correctly use a deleted icon.
+https://github.com/git-cola/git-cola/issues/479
+* The Ctrl+C “Copy” hotkey on the diff viewer has been fixed.
+https://github.com/git-cola/git-cola/issues/767
+* The “Create Tag” dialog did not correctly handle the case when a signed tag is requested, but no message is provided, and the user chooses to create an unannotated tag instead. This convenience fallback will now properly create an unsigned, unannotated tag.
+https://github.com/git-cola/git-cola/issues/696
+* .gitconfig and .git/config values editable by the Preferences dialog (aka git cola config) will now get unset when set to an empty value. For example, setting a different user.email in the current repository, followed by a subsequent emptying of that field, would previously result in an empty string getting stored in the config. This has been fixed so that the value will now get unset in the config instead.
+https://github.com/git-cola/git-cola/issues/406
+* Spelling and typofixes.
+https://github.com/git-cola/git-cola/pull/748
+* core.commentChar is now honored when set in the local repository .git/config.
+https://github.com/git-cola/git-cola/issues/766
+* The log window was using a format string that did not display correctly in all locales. A locale-aware format is now used.
+https://github.com/git-cola/git-cola/pull/800
+* The dialog displayed when prompting for a reference could sometimes lose focus.
+https://github.com/git-cola/git-cola/pull/804
+</comment>
+    <requestid>602396</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>071ed658edcf1e971cde2e028b5a56f0</srcmd5>
+    <version>3.2</version>
+    <time>1535367587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631602</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>38cf6f10d61f3a717a13d68fa67cd66f</srcmd5>
+    <version>3.2</version>
+    <time>1540200319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643320</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>31e0917a9b7043d738a4767ac3744a8a</srcmd5>
+    <version>3.3</version>
+    <time>1549916597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3
+- Usability, bells and whistles
+* git dag improved how it renders parent commits. (#921)
+* The Branches widget now checks out branches when double-clicked. (#920)
+* The new Submodules widget makes it easy to interact with submodules.
+  Additionally, submodules can now be updated using the Status widget. (#916)
+* Updated Japanese translation. (#914)
+* The “Open Terminal” action now launches a Git Bash shell on Windows. (#913)
+* New menu actions for updating all submodules. (#911)
+* The status widget can now update submodules. (#911)
+* The “Apply Patch” git cola am dialog now includes a diff viewer to display
+  the contents of the selected patch.
+* The “Alt+D” diffstat hotkey now selects the staged/modified/etc. header in
+  the Status widget, which shows the totality of everything that will be committed. (#771)
+* Running “Launch Editor” from the diff editor now opens the editor at the current line. (#898)
+* The textwidth and tabwidth configuration values can now be set per-repository,
+  rather than globally only.
+* Text entry widgets switched to using a block cursor in v3.2.
+  This has been reverted to the original line cursor for consistency with other
+  applications and user expectations. (#889)
+* The “edit at line” feature, used by the “Grep” tool, now supports the Sublime text editor. (#894)
+- Fixes
+* Launching external programs has been improved on Windows. (#925)
+* Improve compatibility when using PySide2. (#912)
+* The Diff Editor was not honoring the configured tab width on startup. (#900)
+* The “Delete Files” feature was creating an unreadable display when many files were selected.
+  Word-wrap the list of files so that the display stays within a sensible size. (#895)
+* Spelling and grammar fixes. (#915) (#891)
+- Development
+* The logo was run through tidy to give it a consistent style.
+  Some technical issues with the logo were improved. (#877)
+* The entire codebase is now checked by flake8, rather than just the module and test directories.
+  This catches things like the pynsist installer scripts. (#884) (#882) (#879)
+- Packaging
+* The vendored qtpy library was updated to v1.6.
+* The Windows installer’s wrapper scripts were missing an import. (#878)
+</comment>
+    <requestid>672702</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>525787298249529d4e73dfedc6d52d13</srcmd5>
+    <version>3.4</version>
+    <time>1560971296</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4
+- Usability, bells and whistles
+* The file browser now includes &quot;Blame&quot; in its context menu.
+  https://github.com/git-cola/git-cola/issues/953
+* The &quot;Push&quot; action now uses &quot;git push --force-with-lease&quot; when using
+  the &quot;Force&quot; option with Git v1.8.5 and newer.
+  https://github.com/git-cola/git-cola/issues/946
+* Updated German translation.
+  https://github.com/git-cola/git-cola/pull/936
+* The `Status` widget learned to optionally display file counts in its
+  category headers, and indent the files displayed in each category.
+  https://github.com/git-cola/git-cola/pull/931
+* The `Branches` widget can now sort branches by their most recent commit.
+  https://github.com/git-cola/git-cola/pull/930
+* `git cola` now includes configurable GUI themes that can be used to style
+  the user interface.  Enable the new themes by configuring `cola.theme`
+  in the preferences window.  See the
+  `cola.theme documentation https://git-cola.readthedocs.io/en/latest/git-cola.html#cola-theme
+  for more details.
+  https://github.com/git-cola/git-cola/pull/924
+* `git cola` now has built-in support for HiDPI displays by enabling
+  Qt's 5.6's `QT_AUTO_SCREEN_SCALE_FACTOR` feature.
+  https://github.com/git-cola/git-cola/issues/938
+* `git cola` now uses HiDPI pixmaps when rendering icons, and the builtin
+  icons have been updated to look sharp when displayed in HiDPI.
+  https://github.com/git-cola/git-cola/pull/932
+- Fixes
+* `git cola`'s &quot;Revert Unstaged Edits&quot; previously checked out from &quot;HEAD^&quot;,
+  when in &quot;Amend&quot; mode, and removing staged changes.  This behavior has been
+  changed to always checkout from the index, which avoids data loss.
+  https://github.com/git-cola/git-cola/issues/947
+* `git cola` has been updated to work with newer versions of `gnome-terminal`
+  and no longer shell-quotes its arguments when launching `gnome-terminal`.
+  The `cola.terminalshellquote` configuration variable can be set to `true` to
+  get the old behavior, or to handle other terminals that take the command to run
+  as a single string instead of as arguments to `execv()`.
+  https://github.com/git-cola/git-cola/pull/935
+* `git dag` now properly handles arbitrary input on Python3.
+  Previously, an exception would be raised when entering `--grep=xxx` where
+  `xxx` is a quoted string with a missing end-quote.
+  https://github.com/git-cola/git-cola/pull/941
+- Development
+* The contribution guidelines for contributors has been updated to mention
+  how to regenerate the `*.mo` message files.
+  https://github.com/git-cola/git-cola/pull/934
+</comment>
+    <requestid>710322</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>bf51f635e7e6c6580b1d6906e2ae22ba</srcmd5>
+    <version>3.4</version>
+    <time>1564483147</time>
+    <user>dimstar_suse</user>
+    <comment>Updated dependency alternatives</comment>
+    <requestid>719704</requestid>
+  </revision>
+</revisionlist>

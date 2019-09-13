@@ -1,0 +1,421 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa7cdfcd434d062482e48a829c278178</srcmd5>
+    <version>0.9.24</version>
+    <time>1317132632</time>
+    <user>saschpe</user>
+    <comment>Licence problem fixed GPL-2.0+</comment>
+    <requestid>84844</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3c278412a3d6f1b4f3dfb3f7f8a096ba</srcmd5>
+    <version>0.9.24</version>
+    <time>1317132637</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 84844
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3c278412a3d6f1b4f3dfb3f7f8a096ba</srcmd5>
+    <version>0.9.24</version>
+    <time>1319181886</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>51d02e5c42fc0dcfd2573a37140337ea</srcmd5>
+    <version>0.9.25</version>
+    <time>1321460268</time>
+    <user>coolo</user>
+    <comment>- upstream upragde to version 0.9.25 bnc#730415
+Bug #696: Traffic overview: display error and problems with the value
+Bug #779: froxlor-0.9.19 ebuild sandbox ACCESS VIOLATION
+Bug #781: Bind forgets to add www. for Subdomains
+Bug #869: Customer search does not work if there is a underscore in the searchtext
+Bug #924: FreeBSD: Postfix missing mydestination
+Bug #926: Small qouta fix
+Bug #928: &quot;Access Froxlor directly via the hostname&quot; activation fails
+Bug #929: User unknown in virtual mailbox table (in reply to RCPT TO command) after mysql-virtual_alias_maps.cf changed
+Bug #930: Froxlor/location/auth basic duplicates
+Bug #932: Ubuntu (lucid) missing config files for nginx
+Bug #940: Missing field content on some configuration instructions
+Bug #946: Changing the hostname fails
+Bug #954: Froxlor package for armel doesn't show up in aptitude 
+Bug #967: &quot;backup_dir&quot; is not in the expected format
+Bug #970: Cron PHP notice
+Bug #974: Customer can change password to something not matching minlength and/or Password Regex
+Feature #111: APS instances overview should display domain, DB and folder
+Feature #948: Disable backup feature by default
+
+Bug #749: wrong location declaration in nginx 1.0 - freebsd 8.2, php-fpm, php 5.3.5
+Bug #761: [Backup] Unnecessary text
+Bug #762: [Backup] FTP password is in plain text
+Bug #787: Display error on traffic bar
+Bug #872: Deleting a customer fails if a MySQL-User is already deleted</comment>
+    <requestid>91613</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c77770ba108b2ad3110bd2f3baa71852</srcmd5>
+    <version>0.9.25</version>
+    <time>1323191425</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bf70f520d7e28830ae2a1728f811ab1c</srcmd5>
+    <version>0.9.26</version>
+    <time>1336423539</time>
+    <user>coolo</user>
+    <comment>- upstream upragde to version 0.9.26
+Bug #430: Updating debian packages resets owner (Froxlor FCGID)
+Bug #705: traffic reports are malformed
+Bug #723: Debian package depends on apache2-mpm-prefork
+Bug #788: Gentoo ebuild requires inexistent useflag
+Bug #962: Froxlor customer change the owner of the linux home dir
+Bug #977: Traffic takes a long time to calculate
+Bug #979: Debian Squeeze: Dovecot quota SQL config
+Bug #982: alias.url directive invalid for awstats using lighttpd
+Bug #983: Official Debian packages is missing /js folder
+Bug #987: typo within german lng file - webserver settings
+Bug #990: nginx: Missing configuration data within virtual host files
+Bug #993: [eBuild] Wrong directory permissions on gentoo
+Bug #999: awstats config file error, incl. bugfix
+Bug #1001: Classic theme, wrong icon path in backup.tpl. incl bug fix
+Bug #1002: classic theme, customer backup can not be enabled and disabled in gui, incl bug fix
+Bug #1004: Cron scripts won't be executed successfully if nameserver is disabled
+Bug #1012: Apache: ServerAlias length limit not obeyed
+Bug #1013: Wrong rc-update command in Gentoo configfiles in DKIM section
+Feature #964: Disable Nameserver
+Feature #976: Allow 100% or more as value for the limit warning message
+Feature #980: nginx configuration: security improvement
+Feature #985: Improve PHP default config of Froxlor</comment>
+    <requestid>116013</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c953f3d85e863918b4be081218f31c0e</srcmd5>
+    <version>0.9.27</version>
+    <time>1336492851</time>
+    <user>coolo</user>
+    <comment>- upstream upragde to version 0.9.27
+Bug #700: APS template errors
+Bug #992: Can't enable FTP Backup
+Bug #1022: Remove php-fpm-specific configuration (files) correctly
+Bug #1025: cron_traffic.php causes mysql error
+Bug #1027: Unavailable repository 'gentoo_prefix' referenced by masters entry in layman
+Bug #1028: Traffic-Cron - missing php-extension?
+Bug #1032: Error while creating a new customer in 0.9.26 (posix_getpwuid())
+Bug #1033: Natural sorting function for customers doesn't work
+Bug #1034: Froxlor Install / Upgraded SysCP: Unknown tables
+Bug #1037: [Security Bug] Customers can access all tickets
+Feature #1010: Provide setting for special logfiles after creating domains
+Feature #1017: Fast CGI Idle Timeout
+Feature #1030: Use the name &quot;Administrator&quot; in the mail body instead of Froxlor-Team
+Feature #1031: Improve customer default index.html file
+Bug #1019: Debian GPG keyserver unreachable
+Bug #1061: Current froxlor ebuilds needs non-existant php use flag &quot;pcre&quot; to build</comment>
+    <requestid>116753</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c953f3d85e863918b4be081218f31c0e</srcmd5>
+    <version>0.9.27</version>
+    <time>1340183340</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>c953f3d85e863918b4be081218f31c0e</srcmd5>
+    <version>0.9.27</version>
+    <time>1359108893</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e5cfbeafb966b16105935e1db54aa0be</srcmd5>
+    <version>0.9.28</version>
+    <time>1363340078</time>
+    <user>coolo</user>
+    <comment>- upstream upragde to version 0.9.28-rc1
+#1064 customers are now able to search their email-addresses in the overview (like domains, etc.)
+#1103 new directory-structure for e-mail accounts.  New added accounts will be stored in a new maildir-structure (e.g.   
+  /var/customers/mail/&lt;customeracc&gt;/&lt;domain&gt;/&lt;mailacc&gt;/Maildir/).   
+  An explanation why this makes sense can be found in the ticket-description. Note: no configuration changes are necessary 
+  and existing accounts do not need to be updated, as the homedir/maildir is read from the database.
+#1107 the default language for users without a language-setting is now determined via HTTP_ACCEPT_LANGUAGE
+#1138 added support for apache-2.4 (note: mod_log_sql is not compatible to apache-2.4)
+#1153 path to nginx's fastcgi_params-file is now customizable (as other distributions/systems do not have it in /etc/nginx/)
+#1067 fixed alias generation when the docroot of a (sub)domain was below the customerdocroot
+#1068 Apply settings for all subdomains in now deactivateable (but will be checked when you re-open the domain-edit view, this is intended!)
+#1075 the default php-cgi listener for nginx is now editable as intended 
+#1079 php-fpm files are generated correctly - due to a double &quot;cleaning&quot; of the php-cgi-configdir, they were created and later removed in the cronjobs
+#1089 + #1118 fixed php-fpm usage on apache-webserver
+#1095 fixed incorrect display of used traffic in admin-overview
+#1097 fixed falsey used private class property in database-class
+#1104 fixed endless-loop in readdir() when bind is not installed but php-fpm is activated
+#1108 fixed problems when disabling a customer / the customer removes one of his database with mysql version &gt;4.1
+#1117 froxlor is now completely using UTF-8 encoding.
+#1119 The classic theme has been removed.  Maintaining two very different themes and the goal to gain usability and simplicity lead to that decision.
+Important information: 
+    support for mod_log_sql will drop in the final 0.9.28 release. If you still use it, please switch to webalizer or awstats
+    support for dovecot-1 on Gentoo will be dropped in 0.9.29 as Gentoo's tree does not include it anymore.
+    support for Debian Lenny has been removed as it is EOL since 6.2.2012.
+    support for Ubuntu Hardy will be deprecated in 0.9.28 and removed in 0.9.29 as it will be unsupported in april 2013.
+    php's safe_mode setting will be removed in the final 0.9.28 release as it is deprecated. (forwarded request 159399 from asemen)</comment>
+    <requestid>159400</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f5ff400488858554eb87d1e1cd4ae92e</srcmd5>
+    <version>0.9.28.1</version>
+    <time>1366087428</time>
+    <user>coolo</user>
+    <comment>- upstream upragde to version 0.9.28.1
+Due to a syntax-error in the updater we had to re-release as version 0.9.28.1
+- upstream upragde to version 0.9.28
+#536 Use complete domain name as default path for DocumentRoot
+#1150 added possibility to add random prefixes to a customers database-name
+#668 fixed FreeBSD 8.2: Bind 9 is missing from list of Daemons
+#758 fixed bug in &quot;Amount of APS installations&quot; counter
+#916 fixed webserver-specific default vHost settings don't work in ligHTTPd
+#1023 fixed Redirect with SSL Enabled Domain
+#1058 fixed bug in &quot;Amount of autoresponders&quot; counter
+#1085 fixed incorrect configuration command for awstats under Gentoo
+#1127 fixed falsely used e-mail sender name
+#1134 updated default parameter list of sendmail-program in php.ini-template
+#1136 fixed falsely added specialsettings to a ssl-redirect
+#1160 fixed usage of empty value for CertificateChainFile (it's allowed)
+#1172 cleaned up language files
+#1173 fixed redirect to &quot;ip:port&quot;
+#1180 fixed clean-up if fcgid/php-fpm configurations (forwarded request 170850 from asemen)</comment>
+    <requestid>170851</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>f5ff400488858554eb87d1e1cd4ae92e</srcmd5>
+    <version>0.9.28.1</version>
+    <time>1379662369</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dae613057569ac72b44b459f1f13a38c</srcmd5>
+    <version>0.9.29</version>
+    <time>1381748601</time>
+    <user>scarabeus_factory</user>
+    <comment>- added configuration files openSUSE 12.x (at Server Configuration)
+  configfiles_index.inc.php.patch
+
+- upstream upragde to version 0.9.29
+Bug #1139: Froxlor package for armhf doesn't show up in aptitude
+Bug #1258: unable to register 'memcache' SSL session cache: Memcache support not enabled
+Bug #1260: Cron Domain-SSL Zertifikat
+Bug #1261: Fehler Apache mod_write
+Feature #587: Provide php.ini Konfiguration for php-fpm</comment>
+    <requestid>202986</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>550444e58a7d15208aac77d0e47a564c</srcmd5>
+    <version>0.9.29</version>
+    <time>1382352922</time>
+    <user>scarabeus_factory</user>
+    <comment>fixed wrong bnc number
+
+- upstream upragde to version 0.9.29 (bnc#846355)</comment>
+    <requestid>204095</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2afdfa20850b2a55f1cf67ded1820031</srcmd5>
+    <version>0.9.30</version>
+    <time>1386063732</time>
+    <user>coolo</user>
+    <comment>- upstream upragde to version 0.9.30 (bnc#846355)
+#365 SSL certificates should be settable per domain
+#581 Allow multiple IPs (IPv4/IPv6) to be used on one domain
+#1007 Userpanel: Show size of mail accounts
+#1270 Show phpinfo() in the admin-panel
+#201 fix SSL-redirect on non-standard SSL-ip/ports
+#1147, #1194 Improve wildcard/www-alias domain-settings for admins and customers
+#1271 remove build-in logrotate feature - provide logrotate-config-template instead
+- fix wrong alias in default-froxlor-server.conf to froxlor</comment>
+    <requestid>209161</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c68695c11d483fdcdbe16e227d23c4f6</srcmd5>
+    <version>0.9.31</version>
+    <time>1387798332</time>
+    <user>scarabeus_factory</user>
+    <comment>- upstream upragde to version 0.9.31 (bnc#846355)
+Completely redesigned dashboard in Sparkle-theme
+#432: added new template-variables for the 'customer welcome email' template: SERVER_HOSTNAME, SERVER_IP, SERVER_PORT and DOMAINNAME
+#722: added logical operators (&lt;, &gt; and =) which can be used when searching for numeric values, e.g. Webspace: &quot;&gt;100&quot;, &quot;&lt;2048&quot; or &quot;=1234&quot;
+#729: Usage of an activation code instead of password reset
+#1051: Enable usage of php-slowlog for FPM users
+#1287: Switch database implementation to PDO
+#701: split tickets in pages on overview and correct sorting
+#1295: make vhost-query of webserver-crons mariadb-compatible
+#1314: when using DKIM and no MX server is given, also add a dkim-TXT entry for the 'mail' a-record
+#1323: fix hardcoded sendmail_path config option in PHP-FPM pool config</comment>
+    <requestid>211817</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ba57a9e725f3c09d651bac99002344e2</srcmd5>
+    <version>0.9.31.2</version>
+    <time>1391360918</time>
+    <user>coolo</user>
+    <comment>- upstream upragde to version 0.9.31.2 (bnc#846355)
+ bugfix-release (0.9.31.1) Due to a tiny bug in the installer, which did not add a new php-configuration correctly.
+  #1331	High ERROR 1064 (42000) at line 718: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '2, 'Froxlor Vhost Config'
+ bugfix release (0.9.31.2) Due to wrong usage of a recently changed function which resulted in wrong default path-values in textfields. 
+  #1329 Parse error bei aufruf Cronjob-Einstellungen (forwarded request 220460 from asemen)</comment>
+    <requestid>220461</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8bc9827118a20786ef9e09f1b9484420</srcmd5>
+    <version>0.9.32.0</version>
+    <time>1394103434</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>224626</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fd544437d341d2b4fadff47136c25cf7</srcmd5>
+    <version>0.9.32.2</version>
+    <time>1396020144</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>228042</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>0cee8f74b5c03dd60536ad851a8ad06b</srcmd5>
+    <version>0.9.32.2</version>
+    <time>1400681956</time>
+    <user>coolo</user>
+    <comment>- updating frolxor howto link in idir/README.SUSE
+  fixing configuration file suse.inc.php</comment>
+    <requestid>234952</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>0cee8f74b5c03dd60536ad851a8ad06b</srcmd5>
+    <version>0.9.32.2</version>
+    <time>1409300906</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1ea7fd34eacf6496260ac591687a0076</srcmd5>
+    <version>0.9.33.1</version>
+    <time>1428949905</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295708</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1cb33f37ba68aca5bc85963af114b0ee</srcmd5>
+    <version>0.9.33.2</version>
+    <time>1439190977</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>321233</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4db443d42be2cc058cae61cff10e8e99</srcmd5>
+    <version>0.9.34</version>
+    <time>1443068122</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332565</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7e459ea953e33d5c9cba97bc8d0aee74</srcmd5>
+    <version>0.9.34.2</version>
+    <time>1455190698</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358714</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e2cd98c14caaf9bd3c61e2938c1626cb</srcmd5>
+    <version>0.9.35.1</version>
+    <time>1462051857</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391697</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>329829ffcac4cca231d277db56eb3c8b</srcmd5>
+    <version>0.9.36</version>
+    <time>1466814201</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404232</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f3087595e8ce05787c405e1fc1a694e1</srcmd5>
+    <version>0.9.37</version>
+    <time>1471853228</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419958</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>23ae75d591634c9872241fe42bc580f5</srcmd5>
+    <version>0.9.38.4</version>
+    <time>1480952082</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>443853</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fd79999f01bb76a83c14af7c4e914b81</srcmd5>
+    <version>0.9.38.6</version>
+    <time>1485383655</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452188</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7139d89970f82b47837b7680102ba1ef</srcmd5>
+    <version>0.9.38.7</version>
+    <time>1486046755</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453993</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0a8b094de86492b582b8f160c29f5d6e</srcmd5>
+    <version>0.9.40.1</version>
+    <time>1562925601</time>
+    <user>dimstar_suse</user>
+    <comment>- removing froxlor-suse-config.diff not needed
+
+patch froxlor-suse-config.diff and 
+patch froxlor-pdns.diff
+added for update the froxlor configuration documentation in UI
+
+- Upstream upgrade to version 0.9.40.1 (bsc#846355)
+  new features besides API that found their way in:
+    - 2FA / TwoFactor Authentication for accounts
+    - MySQL8 compatibility
+    - new implementation of Let's Encrypt (acme.sh)
+    - customizable error/access log handling for webserver (format, level,
+      pipe-to-script, etc.)
+    - lots and lots of bugfixes and small enhancements
+
+- Upstream upgrade to version 0.9.39.5 (bnc#846355)
+- Dropping froxlor from future distributions and (bnc#958100)
+  Factory/Tumbleweed
+- PHP rand function for random number generation fixed in previous
+  version (bnc#1025193) CVE-2016-5100
+
+- upstream upgrade to version 0.9.39 (bnc#846355)
+
+- Add and change of froxlor config files and manual
+
+- Change Requires to enable use with php7</comment>
+    <requestid>714684</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>f0dcecdd09d89032afc60f12c73f49f7</srcmd5>
+    <version>0.9.40.1</version>
+    <time>1567680275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728281</requestid>
+  </revision>
+</revisionlist>

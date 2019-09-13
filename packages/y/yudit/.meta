@@ -1,0 +1,7 @@
+<package name="yudit" project="openSUSE:Factory">
+  <title>Unicode text editor</title>
+  <description>yudit is a unicode package to edit and convert text of different
+languages.
+</description>
+  <devel project="M17N" package="yudit"/>
+</package>

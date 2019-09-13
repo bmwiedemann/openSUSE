@@ -1,0 +1,269 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c72bcc287e2318e8ddff5de62433504f</srcmd5>
+    <version>2.15</version>
+    <time>1168903913</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dce6383cf04803100c0530820e500ec6</srcmd5>
+    <version>2.16</version>
+    <time>1169770013</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2300042c52f0e7ffa21e9f7994827622</srcmd5>
+    <version>2.18</version>
+    <time>1171606334</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4641fa013e596440405d9345beeaec05</srcmd5>
+    <version>2.19</version>
+    <time>1179395536</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a878cdfad66a7c516634aeb4ac522958</srcmd5>
+    <version>2.20</version>
+    <time>1221236004</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d19055dd41a3239d68ce8c3f45d2823e</srcmd5>
+    <version>2.21</version>
+    <time>1248729936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d19055dd41a3239d68ce8c3f45d2823e</srcmd5>
+    <version>2.21</version>
+    <time>1248729936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>417f8a5730dc33076b8ed617cd5474b2</srcmd5>
+    <version>2.22</version>
+    <time>1263297992</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Template-Toolkit based on submit request 28401 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>dc489823b5dad86bd776cc90d83577d6</srcmd5>
+    <version>2.22</version>
+    <time>1263501685</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Template-Toolkit based on submit request 29443 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c286c0aaabd07977cd4af01ac91c9c92</srcmd5>
+    <version>2.22</version>
+    <time>1268925614</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>c286c0aaabd07977cd4af01ac91c9c92</srcmd5>
+    <version>2.22</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>c286c0aaabd07977cd4af01ac91c9c92</srcmd5>
+    <version>2.22</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>e1cdae4bbd1664770e362a02edb75a5e</srcmd5>
+    <version>2.22</version>
+    <time>1292242036</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55715 from user coolo
+</comment>
+    <requestid>55715</requestid>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>51cfe615f1d4a9c3b56b31eabfbe87e2</srcmd5>
+    <version>2.22</version>
+    <time>1292242042</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55715
+</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>51cfe615f1d4a9c3b56b31eabfbe87e2</srcmd5>
+    <version>2.22</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>bdbe661ee7f207de19f0f10d7a98fa88</srcmd5>
+    <version>2.22</version>
+    <time>1298244059</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62118 from user computersalat
+</comment>
+    <requestid>62118</requestid>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>97d23e6980ffa7f2a334d973842b5029</srcmd5>
+    <version>2.22</version>
+    <time>1298244068</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62118
+</comment>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>4edb4451cd6e2cf5111ecf41ec95c77d</srcmd5>
+    <version>2.22</version>
+    <time>1314882776</time>
+    <user>saschpe</user>
+    <comment>Fixed typo and standardized &quot;Authors:&quot; format in description of perl-Template-Toolkit.spec (forwarded request 80266 from aturrini)</comment>
+    <requestid>80283</requestid>
+  </revision>
+  <revision rev="19" vrev="15">
+    <srcmd5>4dd19d4cfce9d1ba4c1e021f99df76f4</srcmd5>
+    <version>2.22</version>
+    <time>1314882787</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80283
+</comment>
+  </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>4dd19d4cfce9d1ba4c1e021f99df76f4</srcmd5>
+    <version>2.22</version>
+    <time>1319182309</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="18">
+    <srcmd5>3d41f877eafb4de7601da9a492050b4f</srcmd5>
+    <version>2.22</version>
+    <time>1323193672</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>febf0814eeeeb0a8ee7f8e10a22dbfb3</srcmd5>
+    <version>2.23</version>
+    <time>1327404037</time>
+    <user>coolo</user>
+    <comment>- update to 2.23:
+  * fixed bug RT#47929 which caused the XS Stash to die mysteriously when
+    calling code that used string evaluation (e.g. DateTime)
+  * fixed bug RT#68722 so that list.defined('alpha') always returns false
+  * added the TRACE_VARS option to keep track of what variables are used in a
+    template; it's not documented yet; see t/trace_vars.t for an example of use
+  * applied patch from RT#48989 to avoid Template::Plugin::Procedural from
+    adding target class' methods AUTOLOAD and new methods multiple times
+  * applied patch from RT#53451 to accept negative epoch times in
+    Template::Plugin::Date
+  * applied patch to add $Template::Directive::WHILE_MAX option to tpage</comment>
+    <requestid>101111</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6fe70e748b222e7cfa969b62024a46bc</srcmd5>
+    <version>2.24</version>
+    <time>1329383221</time>
+    <user>coolo</user>
+    <comment>- update to 2.24
+  * Added text virtual methods: upper, lower, ucfirst, lcfirst, squote,
+    dquote, trim, collapse, html and xml.
+  * Fixed bug RT#67918 - Bug in Makefile.PL command line parsing when 2 =
+    signs were in an arguement.
+  * Fixed bug RT#74335 - Added documentation for some methods that were 
+    lacking it to keep Pod::Coverage happy.</comment>
+    <requestid>104734</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>6fe70e748b222e7cfa969b62024a46bc</srcmd5>
+    <version>2.24</version>
+    <time>1340183926</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>6fe70e748b222e7cfa969b62024a46bc</srcmd5>
+    <version>2.24</version>
+    <time>1359109807</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>6fd1d2dec86414a03c87f2730193939d</srcmd5>
+    <version>2.24</version>
+    <time>1372743623</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>181525</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>cd40643d58b8fd7d01a3d7d0c1fb3fa7</srcmd5>
+    <version>2.25</version>
+    <time>1376381862</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 2.25 upstreaming split_pattern.patch
+  * Jon Jensen fixed the behaviour of split() which changed in Perl 5.18.0
+  * Jay Hannah added repository information for metacpan.org et. al. 
+  * Colin Keith fixed Template::Provider's handling of directories
+  * Kevin Goess made the date plugin accept the ISO8601 &quot;T&quot; separator
+  * David Steinbrunner fixed various typos.
+  * Andreas Koenig silenced recent Pod::Simple warnings
+  * Slaven Rezic silenced warnings in the replace vmethod.
+  * Ricardo Signes made the Image plugin emit extra tags in a predictable order
+  * Johan Vromans added the --link option to ttree.
+  * Smylers added documentation for the ENCODING option.
+  * Andy Wardley made some minor documentation changes relating to github.</comment>
+    <requestid>186018</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>cd40643d58b8fd7d01a3d7d0c1fb3fa7</srcmd5>
+    <version>2.25</version>
+    <time>1379663859</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>cd40643d58b8fd7d01a3d7d0c1fb3fa7</srcmd5>
+    <version>2.25</version>
+    <time>1409302503</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>56370d7fab9a39edb27dc41491e4af17</srcmd5>
+    <version>2.26</version>
+    <time>1431365937</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306175</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e4f0c8c604e7b1e604f5d32af5c44734</srcmd5>
+    <version>2.27</version>
+    <time>1494938010</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489025</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b0ee09be0608a0699d63851df7b69e5d</srcmd5>
+    <version>2.28</version>
+    <time>1541865671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647288</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>377b7af7a5e65d59b775fbc3f9d59124</srcmd5>
+    <version>2.29</version>
+    <time>1556817410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699562</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,281 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61dddee1dff8f9164dac292d7a4d0cc6</srcmd5>
+    <version>0.5.0+r122</version>
+    <time>1427983381</time>
+    <user>dimstar_suse</user>
+    <comment>Usefull benchmark</comment>
+    <requestid>293693</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ca81e9bb4f62ece3eb50d33fe7f380ff</srcmd5>
+    <version>0.5.0~git.20160223</version>
+    <time>1457353436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0~git.20160223
+- Add _service
+- Some spec file cleanups</comment>
+    <requestid>363608</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aba473fb69c10e918be139a93dba2fe6</srcmd5>
+    <version>0.5.0~git.20160318</version>
+    <time>1459002343</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0~git.20160318:
+- Generate manpage</comment>
+    <requestid>376944</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2277cac9912f003018c0c3a62d95f1e7</srcmd5>
+    <version>0.5.0+git.20160414</version>
+    <time>1461855263</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0+git.20160414:</comment>
+    <requestid>390319</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5150811e46bc4d93ed2447a5ed6a11be</srcmd5>
+    <version>0.5.0+git.20160610</version>
+    <time>1465938481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0+git.20160610:
+  * Fixes #44: seqwr deleting test files
+  * Duplicate line
+  * added locking to get_request in lua scripting
+  * Don't lock thread mutex unnecessarily in script_lua.c and sb_cpu.c.
+  * Fix crash introduced by commit 9244fcf.
+  * Adding volatile modifier to tmp variable in memory test</comment>
+    <requestid>401384</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b904a9479f20f85e3fe1f4ff41920e61</srcmd5>
+    <version>0.5.0+git.20160721</version>
+    <time>1470217422</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>415775</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>df3c25e856934ecba5067a3b19f2d3e3</srcmd5>
+    <version>0.5.0+git.20160824</version>
+    <time>1472379497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0+git.20160824:
+  * adjust event generation for a high volume
+  * Fixes #44: seqwr deleting test files
+  * Duplicate line
+  * added locking to get_request in lua scripting
+  * Don't lock thread mutex unnecessarily in script_lua.c and sb_cpu.c.
+  * Fix crash introduced by commit 9244fcf.
+  * Adding volatile modifier to tmp variable in memory test
+  * Fixes #57: Race condition in sb_timer_value()
+  * Fix --with-mysql-libs for MySQL 5.7.
+  * Create indexes after data load in parallel_prepare</comment>
+    <requestid>423376</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f0d652d9e439a542d5ccb4ba9a0aaf31</srcmd5>
+    <version>0.5.0+git.20160922</version>
+    <time>1475242512</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0+git.20160922:
+  * Adjust test_mutex.t to pass on slow machines.
+  * Fix LOCK TABLES statements for multi-table MySQL/MyISAM benchmarks.
+  * Basic tests for oltp.lua against MySQL and PostgreSQL.
+  * Prevent script_oltp_*.t failures on slower machines.
+  * {common,bulkinsert}.lua missing from Makefile
+  * Load script from pkgdatadir if not local
+  * Change lua scripts to 'require common' if a testdir wasn't passed
+  * add libaio-dev to travis
+  * Some typo fixes in the docs.
+- Add sysbench_buffer_overflow.patch
+- Enable internal testsuite</comment>
+    <requestid>431292</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5cc411b738931d2318857aba87aa0d54</srcmd5>
+    <version>1.0.0~git.20161019</version>
+    <time>1477219959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0~git.20161019:</comment>
+    <requestid>436707</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>46015b88cf19457af5d431ab419a0863</srcmd5>
+    <version>1.0.0~git.20170106</version>
+    <time>1484041766</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0~git.20170106:</comment>
+    <requestid>448997</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a86bd5381b4b5ba0ac45acb09163d40d</srcmd5>
+    <version>1.0.6</version>
+    <time>1493363611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to stable release 1.0.6</comment>
+    <requestid>491046</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>598b0bc9e7d1c15a7aa019a708469370</srcmd5>
+    <version>1.0.6</version>
+    <time>1495034323</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494958</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e6cbfab4088ea505942da7f1b223dee4</srcmd5>
+    <version>1.0.7</version>
+    <time>1497274109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7:
+  * Ubuntu Zesty added to package build matrix
+  * fixed GH-130: Mutex Benchmark Documentation
+  * fixed latency reports in the --rate mode
+  * fixed compiler warnings when building against MySQL 8.0 client
+    libraries
+- Drop examples as they are no longer compliant with current syntax</comment>
+    <requestid>499635</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>004a040625d65bc0fdd4def10319e1df</srcmd5>
+    <version>1.0.8</version>
+    <time>1503061549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.8:
+  * fixed api_report test for slow machines (thanks to @jcfp)
+  * fileio: suggest to run prepare step on missing files (thanks to
+    Heinrich Schuchardt)
+  * JSON reports: removed an erroneous trailing comma (GH-139)
+  * added events per second to the CPU benchmark report (GH-140)
+  * fixed db_connect() in legacy SQL API to use the default value
+    for --db-driver (GH-146)
+  * removed busy-wait in the bounded event generation mode (--rate)
+    to avoid CPU hogging</comment>
+    <requestid>517371</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7a6c839b9c378b9c001811abf1d3de7f</srcmd5>
+    <version>1.0.9</version>
+    <time>1505239071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.9:
+  * fixed oltp_delete.lua to not use INSERT statements for
+    consistency with other oltp_* benchmarks (GH-168)
+  * added a workaround for MySQL bug #87337 &quot;8.0.2 reintroduces
+    my_bool to client API&quot;
+  * fixed building on on Debian GNU/kFreeBSD (GH-161)
+  * fixed building against MariaDB 10.2 (thanks to Xavier Bachelot
+    for the patch, GH-160)</comment>
+    <requestid>523612</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f588e93e03e31447ab03e1c7b7600ac2</srcmd5>
+    <version>1.0.10</version>
+    <time>1510232798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539999</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>350642d0faccd13500a36d3e71232b73</srcmd5>
+    <version>1.0.11</version>
+    <time>1513245816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.11:
+  * make statistic counters usable from Lua scripts
+  * fix the PostgreSQL driver to be compatible with CockroachDB
+    (GH-180)
+  * fix oltp_insert.lua to work correctly when both --tables and
+    --threads are greater than 1 (GH-178)
+  * minor documentation updates
+- Fix tests execution in absence of python2</comment>
+    <requestid>556760</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>68be5bdcc3f796bf42222387c0d196b1</srcmd5>
+    <version>1.0.14</version>
+    <time>1527582906</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.14:
+  * reports: fix JSON stats reporter to produce valid JSON
+  * Lua SQL API: don't crash when query_row() is called with a
+    SELECT returning empty result set
+  * Lua SQL API: don't crash when bulk insert API calls are used
+    out of order
+  * regression tests: make PostgreSQL tests compatible with the new
+    dump format introduced in 10.3
+  * regression tests: minor stability and coverage improvements
+  * minor cleanups in build scripts
+  * improve report formatting for long latency values
+  * fileio: --file-extra-flags now accepts a list of flags rather
+    than just a single value
+  * OLTP: re-prepare prepared statements after reconnects, i.e. in
+    cases when a server connection is lost and sysbench is
+    configured to ignore such errors
+  * improve --rate mode precision for high argument values
+  * fix compile-time architecture detection for some Broadwell CPUs
+    which were incorrectly identified as Core 2.
+  * remove build dependency on xxd (and vim-minimal package)
+  * fix Lua API to correctly stop the benchmark when event()
+    returns a value other than nil or false
+  * fix the fileio benchmark when the specified file size is not a
+    multiple of block size
+  * fix the fileio benchmark to throw a descriptive error when the
+    specified file size does not match the size of files created by
+    'prepare'
+  * minor improvements in tests and documentation.
+- Update build dependencies</comment>
+    <requestid>610888</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ecc8ce8dd261172d7d4af837add6bb3a</srcmd5>
+    <version>1.0.15</version>
+    <time>1532161501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.15:
+  * fileio: fix GH-229 (--file-fsync-freq=0 seems to prevent
+    fsync() at the end of the test)
+  * command line: improve parsing of boolean command line options
+  * tests: fix GH-220 (Testsuite api_sql_mysql.t failed ...)
+  * tests: fix GH-223 (test failure on ppc64)
+  * tests: fix opt_help.t to pass when the binary is not configured
+    with MySQL support
+  * MySQL driver: use it by default in DB benchmarks</comment>
+    <requestid>624092</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>a15b3333c15243851cb1e9f5fbb764a3</srcmd5>
+    <version>1.0.15</version>
+    <time>1540988432</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>645540</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6f13749b9ff8be24316a4912e6fe8aa9</srcmd5>
+    <version>1.0.16</version>
+    <time>1545996964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661728</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>0da8c40ea52fbd4aec162675d7a71502</srcmd5>
+    <version>1.0.16</version>
+    <time>1554833969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692604</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b51ee5fa18fd16c60fe6e5621689c27d</srcmd5>
+    <version>1.0.17</version>
+    <time>1567092376</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>726877</requestid>
+  </revision>
+</revisionlist>

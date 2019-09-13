@@ -1,0 +1,443 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>2173d6071fb19e58e66c77108e7e2000</srcmd5>
+    <version>0.2.0</version>
+    <time>1221791301</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5905b29e7eb6158a22d0f2265d865de1</srcmd5>
+    <version>0.2.0</version>
+    <time>1222261731</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ee5ec23afed908749b7dbb9aa58e5b31</srcmd5>
+    <version>0.2.0</version>
+    <time>1222702292</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>884eb86ae2d2cd7b441ac609a0fc55e7</srcmd5>
+    <version>0.3.0</version>
+    <time>1224756789</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8e24df78a0552c0a736140cf9ff0326b</srcmd5>
+    <version>0.4.0</version>
+    <time>1225122200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>18eaad1f952c89ce9ef12b82977c5235</srcmd5>
+    <version>0.4.0</version>
+    <time>1226101731</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c229e6e4fdb189845618c9ecdc1d8565</srcmd5>
+    <version>0.4.0</version>
+    <time>1231434015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>afd64568743603ffbcf42841d6efa8aa</srcmd5>
+    <version>0.4.0</version>
+    <time>1245259136</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>9549bedf0ff2a78aecbf5ba3db97fc25</srcmd5>
+    <version>0.4.0</version>
+    <time>1250870230</time>
+    <user>autobuild</user>
+    <comment>Copy from systemsmanagement:wbem/cmpi-bindings based on submit request 18176 from user kwk
+</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>9549bedf0ff2a78aecbf5ba3db97fc25</srcmd5>
+    <version>0.4.0</version>
+    <time>1250870230</time>
+    <user>autobuild</user>
+    <comment>Copy from systemsmanagement:wbem/cmpi-bindings based on submit request 18176 from user kwk
+</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>ba1188eec2f921eecdcbb8e0df13b0fc</srcmd5>
+    <version>0.4.0</version>
+    <time>1268923206</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>3e45ccecdd6b69dc2bbf3b5279176485</srcmd5>
+    <version>0.4.0</version>
+    <time>1268988486</time>
+    <user>autobuild</user>
+    <comment>Copy from systemsmanagement:wbem/cmpi-bindings based on submit request 35080 from user coolo
+</comment>
+    <requestid>35080</requestid>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>3e45ccecdd6b69dc2bbf3b5279176485</srcmd5>
+    <version>0.4.0</version>
+    <time>1278667339</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>3e45ccecdd6b69dc2bbf3b5279176485</srcmd5>
+    <version>0.4.0</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="16">
+    <srcmd5>3e45ccecdd6b69dc2bbf3b5279176485</srcmd5>
+    <version>0.4.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>9a5abf9c72d833c7b0e270f52ecfcf0c</srcmd5>
+    <version>0.4.16</version>
+    <time>1316001610</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>82091</requestid>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>e3b46c8451d2043b523eaca74965d004</srcmd5>
+    <version>0.4.16</version>
+    <time>1316001617</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82091
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9a47fc200a224e353a06b736fd5cfdb2</srcmd5>
+    <version>0.4.17</version>
+    <time>1317541952</time>
+    <user>lrupp</user>
+    <comment>- Release CMPI objects properly
+- Fix CMPIObjectPath and CMPIInstance constructors
+- v 0.4.17
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build</comment>
+    <requestid>85826</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>9a47fc200a224e353a06b736fd5cfdb2</srcmd5>
+    <version>0.4.17</version>
+    <time>1319181815</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>f08fae7b68f419a0e8843def3bbe9827</srcmd5>
+    <version>0.4.17</version>
+    <time>1323191000</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a653a94a11fd3d274d16d0f718e22162</srcmd5>
+    <version>0.5.1</version>
+    <time>1332415898</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>110447</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cb7bb149dd8fb491eb4f2f41ca3b0794</srcmd5>
+    <version>0.5.4</version>
+    <time>1338280375</time>
+    <user>coolo</user>
+    <comment>- Update to 0.5.4
+  - Fix constructor/destructor names (to adapt to swig 2.0.5 rules)
+
+- Update to 0.5.3
+  - Implement CMPI_DateTime &lt;-&gt; Ruby converions
+  - Fix Char16 handling
+  - Plug one memory leak
+  - Support Ruby 1.9
+  - disable html doc creation in Ruby 1.9
+
+- Update to 0.5.2
+  - Fix CMPIValue &lt;-&gt; CMPIData confusion in Python (Jan Safranek)
+  - Don't build RPM and GEM in parallel</comment>
+    <requestid>122556</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>cb7bb149dd8fb491eb4f2f41ca3b0794</srcmd5>
+    <version>0.5.4</version>
+    <time>1340183240</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>9ad2c453b947e96c219351fe4d899e07</srcmd5>
+    <version>0.5.4</version>
+    <time>1347619441</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134127</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>b3ba0ed5b9823f8a552ced00352eb06f</srcmd5>
+    <version>0.5.4</version>
+    <time>1349720866</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137458</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>b3ba0ed5b9823f8a552ced00352eb06f</srcmd5>
+    <version>0.5.4</version>
+    <time>1359108756</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>47ec13235ca25194d71847813b6ae51d</srcmd5>
+    <version>0.5.4</version>
+    <time>1363775721</time>
+    <user>coolo</user>
+    <comment>license update: BSD-3-Clause and CPL-1.0
+The SUSE licensed code (.mof files) are CPL-1.0, not EPL-1.0 (forwarded request 159934 from babelworx)</comment>
+    <requestid>159952</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>63be254d1f4b21608a0eb24aa1a6a4a9</srcmd5>
+    <version>0.9.5</version>
+    <time>1366357413</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>172372</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>63be254d1f4b21608a0eb24aa1a6a4a9</srcmd5>
+    <version>0.9.5</version>
+    <time>1379662124</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>b781c35dadbc9d5feb6537675dea353e</srcmd5>
+    <version>0.9.5</version>
+    <time>1380199356</time>
+    <user>coolo</user>
+    <comment>- Drop explicit ruby(abi) requires (bnc#842433)</comment>
+    <requestid>200653</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3f63f4d10b5b5682d7d31cf677dcccb8</srcmd5>
+    <version>0.9.7</version>
+    <time>1382173814</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>203832</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a7c02be3a4eee347aafaec437256edeb</srcmd5>
+    <version>0.9.8</version>
+    <time>1387737078</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>211710</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0dd3bcd9a896d37254ad2e792a113b12</srcmd5>
+    <version>0.9.9</version>
+    <time>1395146504</time>
+    <user>coolo</user>
+    <comment>- Update to 0.9.9
+  - Support rdoc from Ruby 2.1</comment>
+    <requestid>225639</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c8ed409c5421547e5f93108af3191fb6</srcmd5>
+    <version>1.0.0</version>
+    <time>1403724011</time>
+    <user>coolo</user>
+    <comment>- Update to 1.0.0
+  - Transport CMPIStatus information from Ruby to CMPI API.
+  - Add Ruby classes representing CMPI error codes.
+  - Capture call results and raise proper exceptions.
+  - Fix Fedora 20 build</comment>
+    <requestid>238609</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>c8ed409c5421547e5f93108af3191fb6</srcmd5>
+    <version>1.0.0</version>
+    <time>1409300655</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>6e625ca8f296904832dca88aa8359c15</srcmd5>
+    <version>1.0.0</version>
+    <time>1422533921</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283278</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5b2313904b1dc3df5380e19fa39ca5d3</srcmd5>
+    <version>1.0.1</version>
+    <time>1431981006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>307688</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3daad13a3c0fce264a33c2ecc2a6a2de</srcmd5>
+    <version>1.0.2</version>
+    <time>1527605599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2
+  - disable ruby documentation for Ruby 2.5.0
+    (rdoc-6.0.1 breaks swig documentation hack)
+- Update to 1.0.1
+  - fix comment characters in .i files for swig 3.0.4
+    (dimstar@opensuse.org)
+    this includes cmpi-bindings-swig-3.0.patch
+  - improve documentation coverage
+- Add cmpi-bindings-swig-3.0.patch: Fix build with SWIG 3.0.
+- Update to 1.0.0
+  - Transport CMPIStatus information from Ruby to CMPI API.
+  - Add Ruby classes representing CMPI error codes.
+  - Capture call results and raise proper exceptions.
+  - Fix Fedora 20 build
+- Update to 0.9.9
+  - Support rdoc from Ruby 2.1
+- Update to 0.9.8
+  - Create Ruby documentation
+  - Split off package cmpi-bindings-ruby-docs
+  - Fix Fedora 19 build
+- Update to 0.9.7
+  Catch and log Ruby exceptions caused by invoke method type
+  conversions.
+- Update to 0.9.6
+  Return correct status for failed method invocation in Ruby.
+------------------------------------------------------------------
+- Drop explicit ruby(abi) requires (bnc#842433)
+- Update to 0.9.5
+  Fix CMPISelectExp also in cmpi_provider.c (indication filters) 
+- Update to 0.9.4
+  - Fix nasty bugs in CMPIObjectPath constructor if reference
+    already contained string properties.
+- Update to 0.9.3
+  - Raise exception on nil assignment to numeric properties
+- Update to 0.9.2
+  Add projections to CMPISelectExp (to support filtering by
+  property in execQuery)
+- Update to 0.9.1
+  CMPISelectExp constructor and match (to support execQuery in
+  providers)
+- license update: BSD-3-Clause and CPL-1.0
+  The SUSE licensed code (.mof files) are CPL-1.0, not EPL-1.0
+- update license to new format
+- Update to 0.9.0
+  - Added full testsuite
+  - Improved CMPI_DateTime handling in Ruby
+  - bug fixes
+- no Ruby in RHEL6 in OBS ?!
+- fix CentOS/RHEL 6 build
+- Adapt trace level according to CMPI_BINDINGS_TRACE_LEVEL
+  environment variable (bnc#767533)
+- Update to 0.5.4
+  - Fix constructor/destructor names (to adapt to swig 2.0.5 rules)
+- Update to 0.5.3
+  - Implement CMPI_DateTime &lt;-&gt; Ruby conversions
+  - Fix Char16 handling
+  - Plug one memory leak
+  - Support Ruby 1.9
+  - disable html doc creation in Ruby 1.9
+- Update to 0.5.2
+  - Fix CMPIValue &lt;-&gt; CMPIData confusion in Python (Jan Safranek)
+  - Don't build RPM and GEM in parallel
+- Update to 0.5.1
+  Confine data_data to wrapping CMPIData, don't convert the value
+  (fixes issue #3 reported by mibanescu)
+- Update to 0.5.0
+  Bugfixes
+  - plug many memory leaks
+  - proper handling of Null value in Python
+  Features
+  - switch to a *much* simpler Ruby API
+  - provide cmpi-bindings as a Ruby gem
+- Proper error handling in CMPIObjectPath constructor
+- v 0.4.18
+- Release CMPI objects properly
+- Fix CMPIObjectPath and CMPIInstance constructors
+- v 0.4.17
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+- Fix Python memory leaks, remove excessive INCREFs
+  (by Mihai Ibanescu)
+- v 0.4.16
+- Fix Python backend loading issue.
+- v 0.4.15
+- Don't pass NULL back to Python, use PyNone instead.
+  (upstream issue #1)
+- Correctly handle state of CMPIData and raise exceptions in
+  case of notFound or badValue when returning CMPIData to the
+  target language.
+- v 0.4.14
+- Replace to_s() with __str__() in Python where applicable
+- v 0.4.13
+- Require CMPIBroker in calls to CMPIObjectPath and CMPIInstance
+  constructors (Perl and Python only)
+- v 0.4.12
+- Provide equality operator for CMPIBroker
+- v 0.4.11
+- Adapt to work with Swig 2.x
+- Install Ruby files into vendor- or site-dir
+  Create cmpi/provider.rb and cmpi/providers dir for Ruby providers
+- simplify the name
+  - use 'cmpi' for Ruby
+  - use 'cmpi-bindings' for Perl
+  - keep 'cmpi_pywbem_bindings' for Python since pywbem is needed
+- Fix SLE10 build.
+- various fixes for other distributions
+- Fixed References up-calls in python bindings (bnc#552571)
+- use new python macros
+- Update to official 0.4.0 release. 
+- Better handling of import errors. 
+- Code cleanup. 
+- Update to latest code, prep for release for python bindings
+- Indication support in python
+- Bump version to 0.4.0
+- Complete Ruby bindings.
+- Small runtime improvement for Python.
+- Bump version to 0.3.0
+- refactor cmpi_provider_{python,ruby}.c,
+  move common lines (75%) to cmpi_provider.c and target language
+  specific lines (25%) to target_{python,ruby}.c 
+- Update to latest code.
+- Better error handling. 
+- rename .py filename to reflect 'pywbem' dependency.
+- fix build for SLE10 in OpenSUSE build service.
+- provide the main package for the debug package. we dont use
+  debug_package_requires here as it would enforce to install both
+  packages.
+   
+- Refactered broker wrapping.   
+- Lots of cleanup.  
+- Support Python threads, do proper locking 
+- Bump version to 0.2.0
+- Initial package.
+</comment>
+    <requestid>612844</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>e866d90c59b084638b4c50a005b1b508</srcmd5>
+    <version>1.0.2</version>
+    <time>1533887535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628381</requestid>
+  </revision>
+</revisionlist>

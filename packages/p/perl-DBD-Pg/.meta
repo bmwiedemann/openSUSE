@@ -1,0 +1,6 @@
+<package name="perl-DBD-Pg" project="openSUSE:Factory">
+  <title>PostgreSQL database driver for the DBI module</title>
+  <description>DBD::Pg is a Perl module that works with the DBI module to provide access
+to PostgreSQL databases.</description>
+  <devel project="devel:languages:perl" package="perl-DBD-Pg"/>
+</package>

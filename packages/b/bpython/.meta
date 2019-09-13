@@ -1,0 +1,10 @@
+<package name="bpython" project="openSUSE:Factory">
+  <title>Fancy Curses Interface to the Python Interactive Interpreter</title>
+  <description>Bpython is an enhanced Python interactive interpreter that uses curses
+and provides the following main features: in-line syntax highlighting;
+readline-like autocompletion with suggestions displayed as you type; expected
+argument specification for functions; a handy pastebin function to quickly
+submit your code and return a URL. Its goal is to bring together a few handy
+ideas to enhance the standard interpreter without getting carried away.</description>
+  <devel project="devel:languages:python" package="bpython"/>
+</package>

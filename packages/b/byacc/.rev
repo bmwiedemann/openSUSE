@@ -1,0 +1,216 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ff45a2135b186655d9253fbcd03e62f4</srcmd5>
+    <version>20100216</version>
+    <time>1315232895</time>
+    <user>lrupp</user>
+    <comment>Please add byacc to Factory</comment>
+    <requestid>80793</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>11b232f174813269e34c8d24cad7db2d</srcmd5>
+    <version>20100216</version>
+    <time>1315232913</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80793
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dd14fe66fdf70e841237e924a5423ef0</srcmd5>
+    <version>20100216</version>
+    <time>1316459136</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82933 from jengelh)</comment>
+    <requestid>82962</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>dd14fe66fdf70e841237e924a5423ef0</srcmd5>
+    <version>20100216</version>
+    <time>1319181799</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>6e5014bb49a92725ef9c1be829871788</srcmd5>
+    <version>20100216</version>
+    <time>1323190926</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>6e5014bb49a92725ef9c1be829871788</srcmd5>
+    <version>20100216</version>
+    <time>1340183221</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>6e5014bb49a92725ef9c1be829871788</srcmd5>
+    <version>20100216</version>
+    <time>1359108723</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5566585dbc5de9fbf60fcc3e86e0e8a5</srcmd5>
+    <version>20130304</version>
+    <time>1375594101</time>
+    <user>coolo</user>
+    <comment>- run test suite 
+- use --program-prefix instead of moving/renaming executables 
+  around.
+
+- byacc 20130304
+* too many since 2010 to list here.. see 
+http://invisible-island.net/byacc/CHANGES (forwarded request 185697 from elvigia)</comment>
+    <requestid>185711</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5566585dbc5de9fbf60fcc3e86e0e8a5</srcmd5>
+    <version>20130304</version>
+    <time>1379662067</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a7f3fdf0e7a0304fe7d3be8555546404</srcmd5>
+    <version>20130925</version>
+    <time>1380216557</time>
+    <user>coolo</user>
+    <comment>bugfix update, in particular the default stack-size, please forward to 13.1</comment>
+    <requestid>200707</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b702998750cb4cbdd5e5593a2381a42c</srcmd5>
+    <version>20140422</version>
+    <time>1401207818</time>
+    <user>coolo</user>
+    <comment>- update to version 20140422
+  * too large number of changes to list here, see the included
+    CHANGES file for a detailed list</comment>
+    <requestid>235428</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f17b240b16074cc0b530bcd774e7914d</srcmd5>
+    <version>20140715</version>
+    <time>1409118386</time>
+    <user>coolo</user>
+    <comment>- update to version 20140715
+  * fix tests
+  * remove obsolete -D option from usage message</comment>
+    <requestid>246429</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f17b240b16074cc0b530bcd774e7914d</srcmd5>
+    <version>20140715</version>
+    <time>1409300597</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c2f96363934f5658d1bbaa51bb9dfa37</srcmd5>
+    <version>20141006</version>
+    <time>1413048392</time>
+    <user>coolo</user>
+    <comment>- update to version 20141006
+  - package/debian/source/format: change to native format to work
+    around regression in Debian packaging.
+  - main.c: correct parameter for umask - for very old mkstemp's -
+    and use type mode_t to quiet compiler warning
+  - configure.in: add configure check for mode_t
+  - reader.c: better fix for get_line, by ensuring there is enough
+    space to null-terminate its result (prompted by discussion with
+    Craig Rodrigues).
+  - main.c: make change to umask before calling mkstemp, as
+    suggested in Coverity #56902
+  - reader.c: adjust logic in copy_action to avoid potential
+    null-pointer dereference (Coverity #56901)
+  - reader.c: adjust logic to avoid potential null-pointer
+    dereference in compile_args (Coverity #63407)
+  - reader.c: eliminate strcpy into fixed-size buffer (Coverity
+    #63408)
+  - yacc.1: document changes made with respect to %parse-param
+  - output.c: add parameters from %parse-param to destructor.  The
+    order of the parameters is intentionally inconsistent with
+    yyparse/yyerror, for &quot;compatibility&quot; with bison.
+  - output.c: use puts_param_types/puts_param_names to output
+    lex_param data.
+  - btyaccpar.c: add casts, change types to fix strict compiler
+    warnings
+  - output.c: gcc-warning
+  - output.c: fix limit when merging real/workaround tables
+  - output.c: for btyacc, it is possible to have no conflicts - but
+    in that case, the &quot;ctable&quot; was not generated at all, while the
+    skeleton uses the table.  The most straightforward (workaround)</comment>
+    <requestid>254941</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ed003fbe20329c29f0dd2d025ddf3bd1</srcmd5>
+    <version>20141128</version>
+    <time>1425217608</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288058</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b090d79d471d4e413ed203e62ed6d1e5</srcmd5>
+    <version>20150711</version>
+    <time>1438899863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320760</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3e5ece34211f86942f8ab3812c609aaf</srcmd5>
+    <version>20160606</version>
+    <time>1468482616</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20160606:
+  * See attached CHANGES for complete list of changes</comment>
+    <requestid>407956</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bbb92815a6fd11afb857221258a5826c</srcmd5>
+    <version>20161202</version>
+    <time>1485862927</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20161202:
+  * See attached CHANGES for complete list of changes</comment>
+    <requestid>453008</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>02523321b7f9be515cc354eeaae9caad</srcmd5>
+    <version>20170201</version>
+    <time>1491907545</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 20170201:
+  * See attached CHANGES for complete list of changes</comment>
+    <requestid>486548</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9e33bd30dbe8cce1c71794961ef41ef0</srcmd5>
+    <version>20170430</version>
+    <time>1496681472</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20170430:
+  * See attached CHANGES for complete list of changes</comment>
+    <requestid>501180</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5cae69089004c7f4f2e6624be05b5f38</srcmd5>
+    <version>20180609</version>
+    <time>1531947230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180609:
+  * See attached CHANGES for complete list of changes</comment>
+    <requestid>622032</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>56f3b4af8b7a8fa311c256e218bd3d28</srcmd5>
+    <version>20190617</version>
+    <time>1560800099</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190617:
+  * See attached CHANGES for complete list of changes</comment>
+    <requestid>710371</requestid>
+  </revision>
+</revisionlist>

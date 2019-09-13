@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3648a7041843f1fc005365dd1ad4e1ed</srcmd5>
+    <version>0.4</version>
+    <time>1557751729</time>
+    <user>dimstar_suse</user>
+    <comment>- Package 0.4 for openSUSE
+- Upgrade to 0.3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+- Update to 0.2.1
+- Update to 0.2
+- Improvements thanks to Igor review
+- Initial packaging
+</comment>
+    <requestid>699599</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4f184c33047b5ea07f41efc37485e99</srcmd5>
+    <version>0.4</version>
+    <time>1558520402</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704654</requestid>
+  </revision>
+</revisionlist>

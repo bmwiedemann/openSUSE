@@ -1,0 +1,5 @@
+<package name="tinyfecvpn" project="openSUSE:Factory">
+  <title>tinyfecvpn</title>
+  <description></description>
+  <devel project="network:utilities" package="tinyfecvpn"/>
+</package>

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2dc12de9dfd39ca60fc1ad1cbabc0898</srcmd5>
+    <version>0.2.1</version>
+    <time>1527933813</time>
+    <user>dimstar_suse</user>
+    <comment>Matching/validating/filtering Python dictionaries</comment>
+    <requestid>612067</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>292ced63c6bada033c35082561c757f2</srcmd5>
+    <version>0.2.1</version>
+    <time>1533045651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626375</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c7507c35b447e35ba7e58a00e8f3d82b</srcmd5>
+    <version>0.2.1</version>
+    <time>1545647942</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659466</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9fd761f36abaa79b4e656df85d10a0b</srcmd5>
+    <version>0.3.0</version>
+    <time>1563993369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * no upstream changelog</comment>
+    <requestid>718124</requestid>
+  </revision>
+</revisionlist>

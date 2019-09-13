@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f2bdc379affd2ec961f63926ebe5600</srcmd5>
+    <version>0.4.3</version>
+    <time>1329476566</time>
+    <user>coolo</user>
+    <comment>- Split xorg-x11-libs into separate packages</comment>
+    <requestid>105448</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1f2bdc379affd2ec961f63926ebe5600</srcmd5>
+    <version>0.4.3</version>
+    <time>1340183555</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>23020800b539fa6274b2d1cbd1ad2f8a</srcmd5>
+    <version>0.4.3</version>
+    <time>1348582257</time>
+    <user>coolo</user>
+    <comment>- specfile cleanup</comment>
+    <requestid>135803</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3a8b1a2b005084862692cca32724b598</srcmd5>
+    <version>0.4.4</version>
+    <time>1357569205</time>
+    <user>coolo</user>
+    <comment>Update to version 0.4.4 (forwarded request 147336 from tobijk)</comment>
+    <requestid>147376</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3a8b1a2b005084862692cca32724b598</srcmd5>
+    <version>0.4.4</version>
+    <time>1359109231</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>ec3efef407dcc223338046c6c039a5aa</srcmd5>
+    <version>0.4.4</version>
+    <time>1363949655</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160086</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>32618e12c6cfe1eefa4bc27fba9213b2</srcmd5>
+    <version>0.4.4</version>
+    <time>1365928444</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 163617 from m_meister)</comment>
+    <requestid>163636</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>32618e12c6cfe1eefa4bc27fba9213b2</srcmd5>
+    <version>0.4.4</version>
+    <time>1379662881</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>857112154513f6ec8df407794f78ee4d</srcmd5>
+    <version>0.4.4</version>
+    <time>1398533646</time>
+    <user>coolo</user>
+    <comment>- Add missing BuildRequires (forwarded request 231324 from tobijk)</comment>
+    <requestid>231352</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>857112154513f6ec8df407794f78ee4d</srcmd5>
+    <version>0.4.4</version>
+    <time>1409301483</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>492d438c557f1f6e2716b14c4433080b</srcmd5>
+    <version>0.4.5</version>
+    <time>1560337301</time>
+    <user>dimstar_suse</user>
+    <comment>- marked baselibs.conf as sourcefile in specfile 
+
+- Update to version 0.4.5
+  * autogen: add default patch prefix
+  * autogen.sh: Implement GNOME Build API
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * autogen.sh: use quoted string variables
+  * configure: Remove AM_MAINTAINER_MODE
+  * Use Xfree rather than XFree for consistency
+  * Update configure.ac bug URL for gitlab migration
+  * Update README for gitlab migration</comment>
+    <requestid>706095</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,220 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>35422c2561aee695a98a8912a122b04f</srcmd5>
+    <version>1.06</version>
+    <time>1206545453</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="42">
+    <srcmd5>35422c2561aee695a98a8912a122b04f</srcmd5>
+    <version>1.06</version>
+    <time>1206545453</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="43">
+    <srcmd5>aab1115f6ff62a2e415c60f71f8934d4</srcmd5>
+    <version>1.06</version>
+    <time>1245338094</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="45">
+    <srcmd5>aab1115f6ff62a2e415c60f71f8934d4</srcmd5>
+    <version>1.06</version>
+    <time>1245338094</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="46">
+    <srcmd5>fe936686dcd5b4cec5c76dbcf1922a21</srcmd5>
+    <version>1.06</version>
+    <time>1268925646</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="48">
+    <srcmd5>fe936686dcd5b4cec5c76dbcf1922a21</srcmd5>
+    <version>1.06</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="49">
+    <srcmd5>fe936686dcd5b4cec5c76dbcf1922a21</srcmd5>
+    <version>1.06</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="50">
+    <srcmd5>72c3854b701db5746d440028145a6ee7</srcmd5>
+    <version>1.06</version>
+    <time>1287580919</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51079 from user coolo
+</comment>
+    <requestid>51079</requestid>
+  </revision>
+  <revision rev="9" vrev="51">
+    <srcmd5>fd386590bb74e5bef6265759b1f0424c</srcmd5>
+    <version>1.06</version>
+    <time>1287580924</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51079
+</comment>
+  </revision>
+  <revision rev="10" vrev="52">
+    <srcmd5>a0ac191eaa6387a1832a7834011a36c7</srcmd5>
+    <version>1.06</version>
+    <time>1291584366</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54684 from user coolo
+</comment>
+    <requestid>54684</requestid>
+  </revision>
+  <revision rev="11" vrev="53">
+    <srcmd5>cb2921f0d02a922bb0b9e40b42cda52a</srcmd5>
+    <version>1.06</version>
+    <time>1291584374</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54684
+</comment>
+  </revision>
+  <revision rev="12" vrev="56">
+    <srcmd5>cb2921f0d02a922bb0b9e40b42cda52a</srcmd5>
+    <version>1.06</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="58">
+    <srcmd5>cb2921f0d02a922bb0b9e40b42cda52a</srcmd5>
+    <version>1.06</version>
+    <time>1319182319</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="59">
+    <srcmd5>b50f323aec3d1f606a22863052ffe23a</srcmd5>
+    <version>1.06</version>
+    <time>1321876181</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92149</requestid>
+  </revision>
+  <revision rev="15" vrev="60">
+    <srcmd5>33f70241d4e9dacdf55bd802c171192a</srcmd5>
+    <version>1.06</version>
+    <time>1323193756</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="62">
+    <srcmd5>33f70241d4e9dacdf55bd802c171192a</srcmd5>
+    <version>1.06</version>
+    <time>1340183947</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="64">
+    <srcmd5>33f70241d4e9dacdf55bd802c171192a</srcmd5>
+    <version>1.06</version>
+    <time>1359109836</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b0a021a63eaf7ffde2443680d0def50f</srcmd5>
+    <version>1.11</version>
+    <time>1370520018</time>
+    <user>coolo</user>
+    <comment>- updated to 1.11
+       - Correct the date (2012 -&gt; 2013) in this file used for V 1.10.
+       - Correct the text at L&lt;Tree::DAG_Node/AUTHOR&gt; so it refers to Artistic License 2.0,
+               which now matches what it says in Build.PL and Makefile.PL. Resolves RT#83088.
+       - Change t/pod.t to look for Test::Pod 1.45, but comment out Test::Pod in Build.PL and Makefile.PL.
+               This means Test::Pod is not used at all if it is not installed. As per RT#83077.
+       - For pre-reqs such as strict, warnings, etc, which ship with Perl, set the version # to 0.
+               Reported as RT#80663 by Father Chrysostomos for Tree::DAG_Node.
+       - New maintainer: Ron Savage
+       - Pre-emptive apologies for any changes which are not back-compat. No such problems are expected, but the
+               introduction of new methods may disconcert some viewers.
+       - Fix RT#78858, reported by Gene Boggs. Audit code for similar problems.
+       - Fix RT#79506. reported by Ron Savage.
+       - Rename ChangeLog to CHANGES, and add Changelog.ini.
+       - Replace all uses of cyclicity_fault() and Carp::croak with die.
+       - Remove unused methods: decommission_root(), cyclicity_allowed(), cyclicity_fault(), inaugurate_root(),
+               no_cyclicity() and _update_links(). OK - cyclicity_fault() was called once. It just died.
+       - Add methods: format_node(), hashref2string(), is_root(), node2string(), tree2string().
+               tree2string($opts, $node) - unlike draw_ascii_tree() - can optionally print the tree starting at any node.
+               Override format_node(), hashref2string(), and node2string() if desired.
+       - Reformat the POD big-time.
+       - Add Build.PL.
+       - Re-write Makefile.PL.
+       - Remove use vars(@ISA $Debug $VERSION). Replace latter 2 with 'our ...'.
+       - Rename t/00_about_verbose.t to t/about.perl.t.
+       - Add scripts/cut.and.paste.subtrees.pl. Warning: Some trees get into an infinite loop.
+       - Add t/cut.and.paste.subtrees.t.        Warning: Some trees get into an infinite loop.
+       - Document the options (discouraged by Sean) supported in the call to new($hashref). (forwarded request 177506 from coolo)</comment>
+    <requestid>177531</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b02b33e0dc19acf2212b4f0eab1f184b</srcmd5>
+    <version>1.12</version>
+    <time>1375202791</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184809</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>b02b33e0dc19acf2212b4f0eab1f184b</srcmd5>
+    <version>1.12</version>
+    <time>1379663906</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1105951887494c08ec891f63b7884e5b</srcmd5>
+    <version>1.18</version>
+    <time>1382361299</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202216</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b1fdf05c43d706ccedadda2e3151cef1</srcmd5>
+    <version>1.22</version>
+    <time>1395216356</time>
+    <user>scarabeus_factory</user>
+    <comment>update</comment>
+    <requestid>225888</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>b1fdf05c43d706ccedadda2e3151cef1</srcmd5>
+    <version>1.22</version>
+    <time>1409302552</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1706b2e1a14f87433aa7d3052723a010</srcmd5>
+    <version>1.29</version>
+    <time>1507571171</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.29
+   see /usr/share/doc/packages/perl-Tree-DAG_Node/Changelog.ini</comment>
+    <requestid>532537</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c161c1eaf45b76de28e52e491f177724</srcmd5>
+    <version>1.30</version>
+    <time>1518514139</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>574923</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ae3100670a49d0779cfca6e0ae8e0983</srcmd5>
+    <version>1.31</version>
+    <time>1519396157</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578711</requestid>
+  </revision>
+</revisionlist>

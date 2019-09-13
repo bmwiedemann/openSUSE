@@ -1,0 +1,188 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0d12c53a4d452e03fadb285d0c6948cf</srcmd5>
+    <version>8.0.1</version>
+    <time>1329215102</time>
+    <user>coolo</user>
+    <comment>- created package for Mesa demos</comment>
+    <requestid>103499</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>85d6f88842bb7e7b77e82359fb62fc45</srcmd5>
+    <version>8.0.1</version>
+    <time>1329476764</time>
+    <user>coolo</user>
+    <comment>- Update package BuildRequires to use pkgconfig symbols</comment>
+    <requestid>105525</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b3072e50eba1af291311077e53931c2c</srcmd5>
+    <version>8.0.1</version>
+    <time>1332239390</time>
+    <user>coolo</user>
+    <comment>- added &quot;-x&quot; subpackage for most common GLX-based demos like
+  glxgears, glxinfo, pbinfo (bnc #748373)</comment>
+    <requestid>109576</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7773f3df5d998ba2862ac300d3264376</srcmd5>
+    <version>8.0.1</version>
+    <time>1337004992</time>
+    <user>coolo</user>
+    <comment>- fixed build by making use of autoreconf</comment>
+    <requestid>120635</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>7773f3df5d998ba2862ac300d3264376</srcmd5>
+    <version>8.0.1</version>
+    <time>1340183151</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>e9c4c756478213a1067c15192f5f7561</srcmd5>
+    <version>8.0.1</version>
+    <time>1348574339</time>
+    <user>coolo</user>
+    <comment>- reverted previous change; seems this is no longer necessary 
+
+- fixed build by replacing these strange osdemo{,16,32} scripts
+  by the proper binaries</comment>
+    <requestid>135764</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>e9c4c756478213a1067c15192f5f7561</srcmd5>
+    <version>8.0.1</version>
+    <time>1359108618</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>63b03b9dea198b66501abcf352aa3b3a</srcmd5>
+    <version>8.1.0</version>
+    <time>1363856010</time>
+    <user>coolo</user>
+    <comment>Update to version 8.1.0
+(Changelog isn't the best, but there is a huge list) (forwarded request 160216 from sumski)</comment>
+    <requestid>160290</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0f60237885291b923a53cc72048347ad</srcmd5>
+    <version>8.1.0</version>
+    <time>1367486662</time>
+    <user>coolo</user>
+    <comment>- let Mesa-demo-x own /usr/lib*/mesa-demos/ and /usr/lib*/mesa-demos/xdemos/
+
+This avoids &quot;not owned by any package&quot; if only the &quot;-x&quot; subpackage is installed. (forwarded request 174179 from cboltz)</comment>
+    <requestid>174238</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>b13423db173aac6517ac588cf87f32ee</srcmd5>
+    <version>8.1.0</version>
+    <time>1371646318</time>
+    <user>coolo</user>
+    <comment>Enable build of gles{1,2} and egl info, and symlink them to %_bindir; Split egl dir/info into separate subpackage (forwarded request 179399 from sumski)</comment>
+    <requestid>179400</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>b13423db173aac6517ac588cf87f32ee</srcmd5>
+    <version>8.1.0</version>
+    <time>1379661910</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>a9a8e39c6532c9170ac2f9d73ec53b29</srcmd5>
+    <version>8.1.0</version>
+    <time>1399703531</time>
+    <user>coolo</user>
+    <comment>- U_drawtex-resolve-glDrawTexfOES-extension-function.patch
+  * drawtex: resolve glDrawTexfOES extension function; fixes build
+    with latest Mesa 10.2-rc1 (fdo#78101)
+- u_drawtex-fixed-compiler-warnings-related-to-use-of-eg.patch
+  * fixes fatal compiler warnings</comment>
+    <requestid>233015</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f8684ba2ad03ff34c8866370d77da6d5</srcmd5>
+    <version>8.2.0</version>
+    <time>1405253149</time>
+    <user>coolo</user>
+    <comment>- Update to version 8.2.0
+  * This new mesa-demos release fixes the build issue against mesa
+    10.2 (fdo#78101) and picks up the latest glxinfo changes.
+- obsoletes patches:
+  * U_drawtex-resolve-glDrawTexfOES-extension-function.patch
+  * u_drawtex-fixed-compiler-warnings-related-to-use-of-eg.patch</comment>
+    <requestid>239968</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>f8684ba2ad03ff34c8866370d77da6d5</srcmd5>
+    <version>8.2.0</version>
+    <time>1409300433</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>a3bc57e78e6c3ea5d1944cb446549c3b</srcmd5>
+    <version>8.2.0</version>
+    <time>1426794010</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291027</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>bbcdbe559eb4cc07d3db23a9e94034f8</srcmd5>
+    <version>8.2.0</version>
+    <time>1436111904</time>
+    <user>coolo</user>
+    <comment>- disabled egl build due to Mesa's removal of skeleton 
+  implementation of EGL_MESA_screen_surface with release 10.6.0
+- removed egl subpackage</comment>
+    <requestid>314376</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d187c634ae88a1e9137dbdd9a9aba009</srcmd5>
+    <version>8.3.0</version>
+    <time>1450364035</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.3.0 
+  * This new mesa-demos release fixes the build issue against
+    mesa 10.6 (Bug #91643) and picks up the latest glxinfo
+    changes.
+- supersedes u_mesa-demos_missing-libs.diff
+- no longer disable egl build</comment>
+    <requestid>348224</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>17433bd053d10e9bd88aeb722f789495</srcmd5>
+    <version>8.3.0</version>
+    <time>1486217939</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453574</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>4f50195e1d9f667d0d1ee2b8663d174d</srcmd5>
+    <version>8.3.0</version>
+    <time>1496822102</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041312)</comment>
+    <requestid>499197</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3f6200701ebe47971289ab5c349ea474</srcmd5>
+    <version>8.4.0</version>
+    <time>1520253352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.4.0
+  * glxinfo now supports OpenGL 4.6
+  * glxinfo prints more OpenGL limits (GL 3.0 up to GL 4.6)
+  * glxinfo gained support for GL_ATI_meminfo and GL_NVX_gpu_memory_info
+  * eglinfo binary is now installed by `make install`
+  * Other misc changes
+- fixed source URLs in specfile</comment>
+    <requestid>582180</requestid>
+  </revision>
+</revisionlist>

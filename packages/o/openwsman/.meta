@@ -1,0 +1,5 @@
+<package name="openwsman" project="openSUSE:Factory">
+  <title>Opensource Implementation of WS-Management</title>
+  <description>Opensource Implementation of WS-Management</description>
+  <devel project="systemsmanagement:wbem" package="openwsman"/>
+</package>

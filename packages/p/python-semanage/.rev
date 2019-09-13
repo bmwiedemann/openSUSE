@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e6a7d46eb24c22d501adb697372bf9b</srcmd5>
+    <version>unknown</version>
+    <time>1306236801</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71053
+</comment>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4e6a7d46eb24c22d501adb697372bf9b</srcmd5>
+    <version>unknown</version>
+    <time>1319182405</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>4e6a7d46eb24c22d501adb697372bf9b</srcmd5>
+    <version>unknown</version>
+    <time>1340184091</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>4e6a7d46eb24c22d501adb697372bf9b</srcmd5>
+    <version>unknown</version>
+    <time>1359110120</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>4e6a7d46eb24c22d501adb697372bf9b</srcmd5>
+    <version>unknown</version>
+    <time>1379664281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>4e6a7d46eb24c22d501adb697372bf9b</srcmd5>
+    <version>unknown</version>
+    <time>1409302989</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

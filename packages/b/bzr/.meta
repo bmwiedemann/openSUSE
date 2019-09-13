@@ -1,0 +1,7 @@
+<package name="bzr" project="openSUSE:Factory">
+  <title>Friendly distributed version control system</title>
+  <description>Bazaar is a distributed version control system designed to be easy to
+use and intuitive, able to adapt to many workflows, reliable, and
+easily extendable.</description>
+  <devel project="devel:tools:scm" package="bzr"/>
+</package>

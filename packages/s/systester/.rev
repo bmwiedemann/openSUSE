@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49860936f5e6932ff6c2ee0a905678a4</srcmd5>
+    <version>1.5.1</version>
+    <time>1429606291</time>
+    <user>dimstar_suse</user>
+    <comment>New package, somehow usefull benchmark/stability test</comment>
+    <requestid>297580</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5562a14367a2491e872a3fd3ad7e941e</srcmd5>
+    <version>1.5.1</version>
+    <time>1430891370</time>
+    <user>dimstar_suse</user>
+    <comment>- Build only on supported architectures</comment>
+    <requestid>305439</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6a275208e3ceb862196f2922eb468797</srcmd5>
+    <version>1.5.1</version>
+    <time>1456434427</time>
+    <user>dimstar_suse</user>
+    <comment>- Build against QT5. 
+  * systester-qt5.patch</comment>
+    <requestid>361019</requestid>
+  </revision>
+</revisionlist>

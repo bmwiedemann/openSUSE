@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7611c0e9f8ff91cff4fd731d066c4fe9</srcmd5>
+    <version>0.3.8</version>
+    <time>1332752931</time>
+    <user>coolo</user>
+    <comment>- Initial package (required by Qt5)</comment>
+    <requestid>110566</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>31ebd8842d5139a97963153805f77660</srcmd5>
+    <version>0.3.9</version>
+    <time>1338890607</time>
+    <user>coolo</user>
+    <comment>- update to version 0.3.9
+  * Add missing xcb_bitops.h.
+  * Don't try to build test_xcb_image_shm if SHM isn't available (for example on MinGW).
+  * Use rand() instead of random() (more portable, for example to MinGW).</comment>
+    <requestid>123089</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>31ebd8842d5139a97963153805f77660</srcmd5>
+    <version>0.3.9</version>
+    <time>1340184336</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>31ebd8842d5139a97963153805f77660</srcmd5>
+    <version>0.3.9</version>
+    <time>1359110593</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>8d11ce3cfcf637180991503d03f9159c</srcmd5>
+    <version>0.3.9</version>
+    <time>1363950672</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160121</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>8d11ce3cfcf637180991503d03f9159c</srcmd5>
+    <version>0.3.9</version>
+    <time>1379664995</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>8d11ce3cfcf637180991503d03f9159c</srcmd5>
+    <version>0.3.9</version>
+    <time>1409303677</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>38fa9cb445bfc0931e24d7fe7e6093bd</srcmd5>
+    <version>0.4.0</version>
+    <time>1413528626</time>
+    <user>coolo</user>
+    <comment>- marked baselibs.conf in specfile as source in order to make
+  factory checkin policy happy
+
+- Update to version 0.4.0:
+  + Pick-up changes in m4 submodule as it's better to have all util repos at same m4 level.
+  + corrected return value documentation for xcb_image_shm_put()
+  + added additional format tests for XY_PIXMAP bit planes
+  + changed test_xcb_image to work with XY_PIXMAP with nontrivial planemask
+  + Fixed get_image to handle xy format with nontrivial plane_mask.
+  + added window names to test_xcb_image windows
+  + increased window size for test_xcb_image for usability
+  + Fixed endianness bug in xy pixmap getimage.
+  + fixed some compiler C90 warnings
+  + config: add bug URL to AC_INIT
+  + config: replace deprecated use of AC_OUTPUT with AC_CONFIG_FILES
+  + config: remove old dead code for documentation
+  + config: use AC_CONFIG_HEADERS to create a config.h file
+  + config: add missing COPYING file
+  + make: there should be no attempt to remove any Makefile.in file
+  + make: using EXTRA_DIST for xcb-util-image.pc.in is redundant
+  + make: image is using X11 Protcol headers, so XPROTO_CFLAGS is required
+  + test: move test cases into their own directory
+  + image: use AM_CPPFLAGS rather than per-target libxcb_image_la_CPPFLAGS
+  + Fix compilation when NDEBUG is defined
+  + Check submodules before running autoconf.</comment>
+    <requestid>256843</requestid>
+  </revision>
+</revisionlist>

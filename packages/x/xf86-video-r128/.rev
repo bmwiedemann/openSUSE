@@ -1,0 +1,201 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9120e1cc4a2bcefaaf62dd4f4e78179f</srcmd5>
+    <version>6.8.2</version>
+    <time>1336471386</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115438</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9120e1cc4a2bcefaaf62dd4f4e78179f</srcmd5>
+    <version>6.8.2</version>
+    <time>1340184349</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4fc48a4019d3462925460570ddd5116f</srcmd5>
+    <version>6.8.4</version>
+    <time>1347723041</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134017</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fef0ae81c14f1d21e541f5783b7df8e6</srcmd5>
+    <version>6.9.1</version>
+    <time>1350365272</time>
+    <user>coolo</user>
+    <comment>Update to ver 6.9.1 (forwarded request 138123 from Zaitor)</comment>
+    <requestid>138152</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>fef0ae81c14f1d21e541f5783b7df8e6</srcmd5>
+    <version>6.9.1</version>
+    <time>1359110614</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>b7eab53e3f88bb8ce2d08f965e06ebdf</srcmd5>
+    <version>6.9.1</version>
+    <time>1363856090</time>
+    <user>coolo</user>
+    <comment>- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333)</comment>
+    <requestid>160266</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>2cc20057bbc7b1449ef447bbfbdfa7ad</srcmd5>
+    <version>6.9.1</version>
+    <time>1377248981</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195914</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>2cc20057bbc7b1449ef447bbfbdfa7ad</srcmd5>
+    <version>6.9.1</version>
+    <time>1379665029</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fb8284a3198fcaf37b7eb5e3bcc0cc91</srcmd5>
+    <version>6.9.2</version>
+    <time>1382720105</time>
+    <user>scarabeus_factory</user>
+    <comment>-  Update to version 6.9.2
+   * this version update fixes for EXA color errors on PowerPC,
+     plus updates to build with xserver 1.13 and 1.14</comment>
+    <requestid>204815</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>fb8284a3198fcaf37b7eb5e3bcc0cc91</srcmd5>
+    <version>6.9.2</version>
+    <time>1409303713</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>34dcc99d0f7a026f405efd5169a0d4d5</srcmd5>
+    <version>6.9.2</version>
+    <time>1423595813</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Only-declare-PCITAG-if-we-need-it.patch
+  * fixes build against xorg-server 1.17</comment>
+    <requestid>284474</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>efdfddde92191d1c9d0795f9be7583a7</srcmd5>
+    <version>6.10.0</version>
+    <time>1430891299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.10.0
+  * various bug fixes 
+- deprecates U_Only-declare-PCITAG-if-we-need-it.patch</comment>
+    <requestid>305334</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2b41fa77857450e8e3ecc6b71a6e78f0</srcmd5>
+    <version>6.10.1</version>
+    <time>1453997897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.10.1
+  * Really fix bitmasks for DDC
+  * Assume CRT in the absence of other monitors</comment>
+    <requestid>355354</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>64e8c3d893ba263a2b66cf5e1ce931ae</srcmd5>
+    <version>6.10.1</version>
+    <time>1481030569</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch
+  * Adapt Block/WakeupHandler signature for ABI 23</comment>
+    <requestid>442922</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>50808922e495d6447d36d915277246fb</srcmd5>
+    <version>6.10.2</version>
+    <time>1485166954</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.10.2
+  * Adapt Block/WakeupHandler signature for ABI 23
+  * Remove gatos advertisement
+  * xextproto 7.1 support update to the source code
+- supersedes  U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch</comment>
+    <requestid>451428</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>0e9772bcb3f9c94a88f7677bd95d4950</srcmd5>
+    <version>6.10.2</version>
+    <time>1496089209</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041399)</comment>
+    <requestid>499442</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>18583e127fc0b93d4f010525f8fb1eb3</srcmd5>
+    <version>6.11.0</version>
+    <time>1532295504</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.11.0
+  * autogen.sh: Implement GNOME Build API
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * configure: Drop AM_MAINTAINER_MODE
+  * Fix typo: Initalizing --&gt; Initializing
+  * xf86-video-r128: remove the GlxSetVisualConfigs stub and friends
+  * Fix for cross build failure
+  * Include &lt;stdint.h&gt; in order to declare uint32_t
+  * Move the location where R128PreInitGamma is called
+  * Move assignment of color depth variables away from R128PreInitVisual
+  * Move the assignment to monitor field of ScrnInfoRec record
+  * Move R128PreInitVisual and R128PreInitGamma calls
+  * Remove R128ProbeDDC
+  * Refactor R128PreInitWeight
+  * Move the location xf86CrtcConfigInit is called inside R128PreInit
+  * Move existing mode setting initialization code into R128LegacyMS
+  * Move R128InitCrtcRegisters to r128_crtc.c
+  * Move R128InitCrtc2Registers to r128_crtc.c
+  * Move R128InitCrtcBase to r128_crtc.c
+  * Move R128InitCrtc2Base to r128_crtc.c
+  * Convert R128Div to an inline function
+  * Move R128InitPLLRegisters to r128_crtc.c
+  * Move R128InitPLL2Registers to r128_crtc.c
+  * Move R128RestoreCrtcRegisters to r128_crtc.c
+  * Move R128RestoreCrtc2Registers to r128_crtc.c
+  * Move R128InitDACRegisters to r128_output.c
+  * Move R128RestoreDACRegisters to r128_output.c
+  * Move R128RestorePLLRegisters to r128_crtc.c
+  * Move R128RestorePLL2Registers to r128_crtc.c
+  * Move R128InitDDARegisters to r128_crtc.c
+  * Move R128InitDDA2Registers to r128_crtc.c
+  * Move the location R128PreInitDRI is called
+  * Deprecate R128TRACE macro when generating debug messages
+  * Remove compilation warnings related to debug messages
+  * Using __func__ string for debug message function identification
+  * Convert tabs to white spaces for r128_output.c
+  * Fix for some RAGE 128 Pro causing out of range display error
+  * Reorganize r128_exa.c
+- supersedes u_Include-stdint.h-in-order-to-declare-uint32_t.patch
+
+- u_Include-stdint.h-in-order-to-declare-uint32_t.patch
+  * fixed build against xorg-server 1.20
+- marked COPYING file correctly as %license</comment>
+    <requestid>624236</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>080378d8ca955b42ad9ef2441263d970</srcmd5>
+    <version>6.11.0</version>
+    <time>1561882593</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer require legacy extension xf86miscproto; no longer
+  provided by xorgproto-2019.1 by default and never needed anyway</comment>
+    <requestid>712078</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e5db23cf5fcd5a6ea6a1ac04f747eff2</srcmd5>
+    <version>0.6</version>
+    <time>1394516790</time>
+    <user>coolo</user>
+    <comment>- dependency of Google Cloud tools</comment>
+    <requestid>223983</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e5db23cf5fcd5a6ea6a1ac04f747eff2</srcmd5>
+    <version>0.6</version>
+    <time>1409303011</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>701c9aeb3e95ddb36e9757781d8e3da6</srcmd5>
+    <version>3.0.0</version>
+    <time>1478289688</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>438582</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>920e4646f0e5aaee90a772a4f8b89119</srcmd5>
+    <version>3.0.0</version>
+    <time>1496327471</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493374</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9069d8b7d95c4ad37ed8ef5573ad6a1d</srcmd5>
+    <version>3.0.0</version>
+    <time>1545648339</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659737</requestid>
+  </revision>
+</revisionlist>

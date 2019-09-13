@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>922dc71579d1484ea6e35368e7b18dec</srcmd5>
+    <version>0.0.6.8</version>
+    <time>1454352943</time>
+    <user>dimstar_suse</user>
+    <comment>redo for staging:adi:49</comment>
+    <requestid>356122</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b08ba90f83af394c89bbd86a779a303c</srcmd5>
+    <version>0.0.6.19</version>
+    <time>1470851747</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>417389</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7402763b31d9f4b37351fb6b3fec997</srcmd5>
+    <version>0.0.6.85</version>
+    <time>1507628546</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream snapshot 0.0.6.85</comment>
+    <requestid>530610</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d5dd7b2486c0b10dd4cfc63bf475072d</srcmd5>
+    <version>0.1.1</version>
+    <time>1514569919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.1.1</comment>
+    <requestid>560209</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8d7af3b3eb050340d64ec8874edacfaa</srcmd5>
+    <version>0.3.0</version>
+    <time>1546695702</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.3.0</comment>
+    <requestid>657187</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>735715a229e0cc52cb9dbb0751940546</srcmd5>
+    <version>0.4.0</version>
+    <time>1551025110</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678016</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6a1ef1c68b1ce4aa1646848969573275</srcmd5>
+    <version>0.6.0</version>
+    <time>1566463797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.6.0</comment>
+    <requestid>723412</requestid>
+  </revision>
+</revisionlist>

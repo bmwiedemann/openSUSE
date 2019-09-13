@@ -1,0 +1,6 @@
+<package name="octave-forge-statistics" project="openSUSE:Factory">
+  <title></title>
+  <description>Additional statistics functions.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-statistics"/>
+</package>

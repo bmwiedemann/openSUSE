@@ -1,0 +1,335 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>67c2633cdbd87da4d2921eac1764c5e0</srcmd5>
+    <version>1.4.0</version>
+    <time>1184985071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9eba176389cffe4374952d8527a842e1</srcmd5>
+    <version>1.5.0</version>
+    <time>1200389748</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="17">
+    <srcmd5>279e912a6cdc9b69939c957e6e96baa5</srcmd5>
+    <version>1.5.0</version>
+    <time>1206068776</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="66">
+    <srcmd5>279e912a6cdc9b69939c957e6e96baa5</srcmd5>
+    <version>1.5.0</version>
+    <time>1206068776</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="67">
+    <srcmd5>456c9cc992499438ec92f40f83146ca6</srcmd5>
+    <version>1.5.0</version>
+    <time>1235663705</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e10121c4b75d4d78be4622f3982f96ee</srcmd5>
+    <version>1.5.1</version>
+    <time>1249656158</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>e10121c4b75d4d78be4622f3982f96ee</srcmd5>
+    <version>1.5.1</version>
+    <time>1249656158</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>1328d2472434aa1dbf512dbabdc2e846</srcmd5>
+    <version>1.5.1</version>
+    <time>1268923731</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>1328d2472434aa1dbf512dbabdc2e846</srcmd5>
+    <version>1.5.1</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>1328d2472434aa1dbf512dbabdc2e846</srcmd5>
+    <version>1.5.1</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>02b9ff8e471eafe8e5257d522ae9b4e0</srcmd5>
+    <version>unknown</version>
+    <time>1284124638</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/glew based on submit request 47642 from user vuntz
+</comment>
+    <requestid>47642</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>cd8e5dff8f68f0a7c16819f364596a38</srcmd5>
+    <version>1.5.8</version>
+    <time>1297113078</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60124 from user plater
+</comment>
+    <requestid>60124</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>bd7ba69c944904c49d28d297e876904f</srcmd5>
+    <version>1.5.8</version>
+    <time>1297113099</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60124
+</comment>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>bd7ba69c944904c49d28d297e876904f</srcmd5>
+    <version>1.5.8</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>71f286c2b5da6fca265e5411af4011eb</srcmd5>
+    <version>1.5.8</version>
+    <time>1306742109</time>
+    <user>saschpe</user>
+    <comment>- remove sublicenses (forwarded request 71701 from coolo)</comment>
+    <requestid>71808</requestid>
+  </revision>
+  <revision rev="16" vrev="15">
+    <srcmd5>9264c8da6110f5487b468012f9d0727b</srcmd5>
+    <version>1.5.8</version>
+    <time>1306742122</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71808
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e6a61e3c2357f4dd76bc37eb10111085</srcmd5>
+    <version>1.6.0</version>
+    <time>1313567930</time>
+    <user>saschpe</user>
+    <comment>Update to 1.6.0 + 2 further commits.
+Don't strip libraries.
+Created glew.c glewinfo.c and includes/ as of today. (forwarded request 78747 from jobermayr)</comment>
+    <requestid>79061</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>0d6b4a0e234ace7f0f7299cbaf6261ad</srcmd5>
+    <version>1.6.0</version>
+    <time>1313567940</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79061
+</comment>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>cfa54b3fdc1cde3f13bcca7c0854f69f</srcmd5>
+    <version>1.6.0</version>
+    <time>1313738249</time>
+    <user>saschpe</user>
+    <comment>- Do not obsolete old library (forwarded request 79259 from elvigia)</comment>
+    <requestid>79260</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>5b28af74fb2ffce0d5ebe47b8a87a9df</srcmd5>
+    <version>1.6.0</version>
+    <time>1313738265</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79260
+</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>c0c017234714b6997c814c8fcf242aec</srcmd5>
+    <version>1.6.0</version>
+    <time>1317740247</time>
+    <user>oertel</user>
+    <comment>- fix baselibs.conf</comment>
+    <requestid>86255</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>c0c017234714b6997c814c8fcf242aec</srcmd5>
+    <version>1.6.0</version>
+    <time>1319181909</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8e98792d7329c8699ec8caa9e455e7d6</srcmd5>
+    <version>1.7.0.git20111104.1441</version>
+    <time>1321460276</time>
+    <user>coolo</user>
+    <comment>- Update to latest git master and merge es branch for supporting more extensions
+- Update extensions</comment>
+    <requestid>91608</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>97257d20c00d399aaa42443538ec8df6</srcmd5>
+    <version>1.7.0.git20111104.1441</version>
+    <time>1323191588</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f81d00313df847380d83cb8198942926</srcmd5>
+    <version>1.7.0.git20111123.2145</version>
+    <time>1325348365</time>
+    <user>coolo</user>
+    <comment>Until a rebuild of supertux2 it bitches:
+supertux2: symbol lookup error: supertux2: undefined symbol: __glewTexParameteri
+
+Bug report upstreamed:
+http://sourceforge.net/tracker/?func=detail&amp;aid=3466541&amp;group_id=67586&amp;atid=523274 (forwarded request 98379 from namtrac)</comment>
+    <requestid>98391</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>c7bab0a87de3198b249c1198b1d61967</srcmd5>
+    <version>1.7.0.git20111123.2145</version>
+    <time>1329823130</time>
+    <user>coolo</user>
+    <comment>make build (forwarded request 106135 from msmeissn)</comment>
+    <requestid>106150</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>c7bab0a87de3198b249c1198b1d61967</srcmd5>
+    <version>1.7.0.git20111123.2145</version>
+    <time>1340183369</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9a80e66706329581dab05f6cb84cea84</srcmd5>
+    <version>1.7.0.git20120216.1819</version>
+    <time>1348231142</time>
+    <user>coolo</user>
+    <comment>- Add explicit glu dependency 
+
+- Update to latest git version
+- Remove obsolete dont-strip.diff</comment>
+    <requestid>135254</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>74e168e434fb48b9e87a7799ae7104ff</srcmd5>
+    <version>1.9.0</version>
+    <time>1349241353</time>
+    <user>coolo</user>
+    <comment>update to latest stable 1.9.0 (forwarded request 135748 from etamPL)</comment>
+    <requestid>136487</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>2421fed859555fe189a6ec09756dc653</srcmd5>
+    <version>1.9.0</version>
+    <time>1351316341</time>
+    <user>coolo</user>
+    <comment>Resubmit - .changes fixed. (forwarded request 139448 from dimstar)</comment>
+    <requestid>139449</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>2421fed859555fe189a6ec09756dc653</srcmd5>
+    <version>1.9.0</version>
+    <time>1359108941</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>2421fed859555fe189a6ec09756dc653</srcmd5>
+    <version>1.9.0</version>
+    <time>1379662459</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>74ac81a4881a433a3513ef3c6b38567a</srcmd5>
+    <version>1.10.0</version>
+    <time>1401641889</time>
+    <user>coolo</user>
+    <comment>Upgrade to glew-1.10.0 needed by upcoming libreoffice-4.3 (forwarded request 235456 from fstrba)</comment>
+    <requestid>235589</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>74ac81a4881a433a3513ef3c6b38567a</srcmd5>
+    <version>1.10.0</version>
+    <time>1409300995</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>e4af6387fdaa69e6c77cf7ab3e2d6f77</srcmd5>
+    <version>1.10.0</version>
+    <time>1409761289</time>
+    <user>coolo</user>
+    <comment>- Fix baselibs.conf (bnc#894331). (forwarded request 247078 from sbrabec)</comment>
+    <requestid>247079</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>a48ff2ec1a738f994d2180c89200a4b2</srcmd5>
+    <version>1.10.0</version>
+    <time>1412142011</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253076</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2e342702ea5cd3cdd4f8f2d40c61b7c2</srcmd5>
+    <version>1.11.0</version>
+    <time>1417869929</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.11.0:
+  * support for OpenGL 4.5
+- Removed patches no longer needed:
+  * glew-1.10.0-destdir.patch</comment>
+    <requestid>264106</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4523c7fa0666d0a3f22b4b3ee93cff35</srcmd5>
+    <version>1.12.0</version>
+    <time>1422611997</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283165</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>daaec1bd9c048a23aee36e60031d76b6</srcmd5>
+    <version>1.12.0</version>
+    <time>1429606201</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295687</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>261694c869322b753c727b596714f240</srcmd5>
+    <version>1.13.0</version>
+    <time>1442130147</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328688</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>18b6632b28550a2e5a45ab7aee5fd4c6</srcmd5>
+    <version>1.13.0</version>
+    <time>1447882284</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344374</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ab757f1cd999949c4c5490aba960a9bf</srcmd5>
+    <version>2.0.0</version>
+    <time>1501406446</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509845</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a3be2c0568183df83eed393beb8c67e0</srcmd5>
+    <version>2.1.0</version>
+    <time>1510667131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541038</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>772ebc92b591941acee25436de206b78</srcmd5>
+    <version>2.2.0</version>
+    <time>1367904956</time>
+    <user>coolo</user>
+    <comment>needed for rails 4</comment>
+    <requestid>173690</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>772ebc92b591941acee25436de206b78</srcmd5>
+    <version>2.2.0</version>
+    <time>1379664510</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0491372c8ab680a328803e06834c2126</srcmd5>
+    <version>2.3.0</version>
+    <time>1406360517</time>
+    <user>coolo</user>
+    <comment>- updated to version 2.3.0</comment>
+    <requestid>242322</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0491372c8ab680a328803e06834c2126</srcmd5>
+    <version>2.3.0</version>
+    <time>1409303222</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>21ac8b8cf8d56014299afedb442ada1d</srcmd5>
+    <version>2.3.0</version>
+    <time>1413263453</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255235</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e79ff32743ad28a8ba8615bef875995d</srcmd5>
+    <version>2.4.1</version>
+    <time>1428652443</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>295083</requestid>
+  </revision>
+</revisionlist>

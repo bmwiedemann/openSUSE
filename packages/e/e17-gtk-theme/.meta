@@ -1,0 +1,5 @@
+<package name="e17-gtk-theme" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Enlightenment:Factory" package="e17-gtk-theme"/>
+</package>

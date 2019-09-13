@@ -1,0 +1,292 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5643d8cb43e67d3bbde165987132044</srcmd5>
+    <version>3.4.9</version>
+    <time>1261402384</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/openbox based on submit request 27212 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b53f069726d231cba538c92e456231d5</srcmd5>
+    <version>3.4.10</version>
+    <time>1263832373</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/openbox based on submit request 29865 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f466736b2c5fc96f60ee74a952243095</srcmd5>
+    <version>3.4.11</version>
+    <time>1265751644</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/openbox based on submit request 31856 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3ce93a48109c1cfdb7a0f10d25ed2b55</srcmd5>
+    <version>3.4.11</version>
+    <time>1267785607</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/openbox based on submit request 33799 from user anubisg1
+</comment>
+    <requestid>33799</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5a274d954de4178ad0357e7a7543f401</srcmd5>
+    <version>3.4.11</version>
+    <time>1268925204</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>07e8612269a8f4415283a4c64a520e4f</srcmd5>
+    <version>3.4.11</version>
+    <time>1269168965</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/openbox based on submit request 35405 from user anubisg1
+</comment>
+    <requestid>35405</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2d076725c0b8009869db1e32271615be</srcmd5>
+    <version>3.4.11.1</version>
+    <time>1271407589</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/openbox based on submit request 38028 from user anubisg1
+</comment>
+    <requestid>38028</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9f2763f9bc120299a56143852dbf9868</srcmd5>
+    <version>3.4.11.2</version>
+    <time>1273937864</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/openbox based on submit request 40073 from user anubisg1
+</comment>
+    <requestid>40073</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>545931d229c93c076c42f55d1f6a7765</srcmd5>
+    <version>3.4.11.2</version>
+    <time>1274138969</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/openbox based on submit request 40224 from user anubisg1
+</comment>
+    <requestid>40224</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>70b24e13c80218f0358cec3f343f7e90</srcmd5>
+    <version>3.4.11.2</version>
+    <time>1275260127</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/openbox based on submit request 40880 from user anubisg1
+</comment>
+    <requestid>40880</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>ae745648294b6576df70208e537a3ddb</srcmd5>
+    <version>3.4.11.2</version>
+    <time>1276468398</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/openbox based on submit request 41385 from user anubisg1
+</comment>
+    <requestid>41385</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>4756301540af0dca86231e7d8c838e02</srcmd5>
+    <version>3.4.11.2</version>
+    <time>1277824822</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/openbox based on submit request 42237 from user anubisg1
+</comment>
+    <requestid>42237</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>4756301540af0dca86231e7d8c838e02</srcmd5>
+    <version>3.4.11.2</version>
+    <time>1278667372</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>4756301540af0dca86231e7d8c838e02</srcmd5>
+    <version>3.4.11.2</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>a27795eea10256a398d571be10ab40e7</srcmd5>
+    <version>3.4.11.2</version>
+    <time>1280849499</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/openbox based on submit request 44428 from user anubisg1
+</comment>
+    <requestid>44428</requestid>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>a27795eea10256a398d571be10ab40e7</srcmd5>
+    <version>3.4.11.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>59851a6c7a0d00c28d2c4a32bf924abc</srcmd5>
+    <version>3.4.11.2</version>
+    <time>1307355123</time>
+    <user>saschpe</user>
+    <comment>call %desktop_database_post/un and %icon_theme_cache_post/un</comment>
+    <requestid>72576</requestid>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>a631927e6baa621fb49f4a6172c6becd</srcmd5>
+    <version>3.4.11.2</version>
+    <time>1307355131</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72576
+</comment>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>9cf66cc3dee99bd3af9ae97aace79e11</srcmd5>
+    <version>3.5.0</version>
+    <time>1313498847</time>
+    <user>saschpe</user>
+    <comment>new upstream version 3.5.0</comment>
+    <requestid>79021</requestid>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>966691beae60d418bc293232d59f8417</srcmd5>
+    <version>3.5.0</version>
+    <time>1313498860</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79021
+</comment>
+  </revision>
+  <revision rev="21" vrev="15">
+    <srcmd5>966691beae60d418bc293232d59f8417</srcmd5>
+    <version>3.5.0</version>
+    <time>1319182213</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="16">
+    <srcmd5>4cead27a12896ca44d6f03668f6dd19d</srcmd5>
+    <version>3.5.0</version>
+    <time>1322134583</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93227 from coolo)</comment>
+    <requestid>93313</requestid>
+  </revision>
+  <revision rev="23" vrev="17">
+    <srcmd5>1aefc2362460e73696700266fcef2b99</srcmd5>
+    <version>3.5.0</version>
+    <time>1323192829</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="19">
+    <srcmd5>1aefc2362460e73696700266fcef2b99</srcmd5>
+    <version>3.5.0</version>
+    <time>1340183752</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>ba89f3dae8a6860f326bdfa9c364098e</srcmd5>
+    <version>3.5.0</version>
+    <time>1345118901</time>
+    <user>namtrac</user>
+    <comment>Fix a serious bug that gtk3 applications may cause openbox crash. (forwarded request 130844 from dramwang)</comment>
+    <requestid>130869</requestid>
+  </revision>
+  <revision rev="26" vrev="22">
+    <srcmd5>ba89f3dae8a6860f326bdfa9c364098e</srcmd5>
+    <version>3.5.0</version>
+    <time>1359109535</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f64a998eccb4b11098ba379612dedf5a</srcmd5>
+    <version>3.5.2</version>
+    <time>1377258714</time>
+    <user>scarabeus_factory</user>
+    <comment>upgrade 3.5.0 -&gt; 3.5.2 (forwarded request 186904 from pbleser)</comment>
+    <requestid>196082</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>f64a998eccb4b11098ba379612dedf5a</srcmd5>
+    <version>3.5.2</version>
+    <time>1379663416</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>1b924a0f6efcf4d6304b931d359ca429</srcmd5>
+    <version>3.5.2</version>
+    <time>1397216513</time>
+    <user>coolo</user>
+    <comment>fixed https://bugzilla.novell.com/show_bug.cgi?GoAheadAndLogIn=1&amp;id=806790 (forwarded request 229629 from moskyto)</comment>
+    <requestid>229633</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>1b924a0f6efcf4d6304b931d359ca429</srcmd5>
+    <version>3.5.2</version>
+    <time>1409302029</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>1b87a4e207a15448009ca1117bfa6c77</srcmd5>
+    <version>3.5.2</version>
+    <time>1410967566</time>
+    <user>coolo</user>
+    <comment>- Cleanup BuildRequires so only exactly what is required is 
+  pulled for build, in particular avoid using metapackage 
+  xorg-x11-dev.
+- Enable verbose build.
+- Use --disable-static instead of just removing the libraries.
+- removed unused openbox-no_nb.patch patch</comment>
+    <requestid>249505</requestid>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>df201471ac52874b1748bf03e0c5c2f4</srcmd5>
+    <version>3.5.2</version>
+    <time>1411627395</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>251776</requestid>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>a54b5dfa23f60a10e46cf4a5ce8902af</srcmd5>
+    <version>3.5.2</version>
+    <time>1412690433</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254388</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8c894918d27b73f84e50426797e6a9f9</srcmd5>
+    <version>3.6.1</version>
+    <time>1438615348</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320127</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>33e9835641ddb641aa3e7db2e5e86110</srcmd5>
+    <version>3.6.1</version>
+    <time>1439191002</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321446</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>aad8d77667f1cfc0dab2cf832c414f8f</srcmd5>
+    <version>3.6.1</version>
+    <time>1445287900</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339123</requestid>
+  </revision>
+</revisionlist>

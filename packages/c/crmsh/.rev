@@ -1,0 +1,1868 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7108f9f69c379d563f753e0f7113141</srcmd5>
+    <version>1.1.0</version>
+    <time>1326378348</time>
+    <user>coolo</user>
+    <comment>New package: crm shell is now split off from pacemaker package (with changes suggested in sr#98026)</comment>
+    <requestid>99775</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8fe79d3f867483902ece1798f80b384b</srcmd5>
+    <version>1.1.0</version>
+    <time>1329391155</time>
+    <user>coolo</user>
+    <comment>Update to latest version (fixes various bugs)</comment>
+    <requestid>104854</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>405cb6fd1b4208f48e936873582b1beb</srcmd5>
+    <version>1.1.0</version>
+    <time>1336035290</time>
+    <user>coolo</user>
+    <comment>Update to support latest pacemaker ticket functionality</comment>
+    <requestid>115598</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>405cb6fd1b4208f48e936873582b1beb</srcmd5>
+    <version>1.1.0</version>
+    <time>1340183252</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>4331b34543f9b431694eccc981588962</srcmd5>
+    <version>1.1.0</version>
+    <time>1347722782</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134090</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7d5bfe1363e0139c53e6bb99c1ed0162</srcmd5>
+    <version>1.2.0</version>
+    <time>1348414299</time>
+    <user>coolo</user>
+    <comment>crmsh.spec update (forwarded request 135037 from dmuhamedagic)</comment>
+    <requestid>135038</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>58f88035e9c36da855c16134ffc9bf04</srcmd5>
+    <version>1.2.0</version>
+    <time>1349628887</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137383</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e341aad9979c87bcc4835512d04e3cb1</srcmd5>
+    <version>1.2.1</version>
+    <time>1350568474</time>
+    <user>coolo</user>
+    <comment>Submit of crmsh v1.2.1 to Factory.</comment>
+    <requestid>138407</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e0a58c9e0d3443c5b635db76a7926a90</srcmd5>
+    <version>1.2.3</version>
+    <time>1355910585</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145795</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f69f1da7d316ff28bc6315ac20c1ed60</srcmd5>
+    <version>1.2.4</version>
+    <time>1356702976</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146435</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9b15a07c2de9cac7531dff7a48049ebf</srcmd5>
+    <version>1.2.4</version>
+    <time>1357567337</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146913</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>9b15a07c2de9cac7531dff7a48049ebf</srcmd5>
+    <version>1.2.4</version>
+    <time>1359108773</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5e0cbf8952718f9f10921cf15932dee2</srcmd5>
+    <version>1.2.5</version>
+    <time>1362730107</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157801</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>79b3119312ac296fddff3eb706dccba0</srcmd5>
+    <version>1.2.6</version>
+    <time>1377628794</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195951</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>79b3119312ac296fddff3eb706dccba0</srcmd5>
+    <version>1.2.6</version>
+    <time>1379662157</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>0e6b9e283c550cb31233576e2368bee0</srcmd5>
+    <version>1.2.6</version>
+    <time>1380294458</time>
+    <user>coolo</user>
+    <comment>Submit for Factory and openSUSE 13.1 Beta1</comment>
+    <requestid>201043</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>b27b660498de64b557a81a798885d3d8</srcmd5>
+    <version>1.2.6</version>
+    <time>1382011285</time>
+    <user>scarabeus_factory</user>
+    <comment>Submit to Factory (please update in 13.1)</comment>
+    <requestid>203479</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>d06c1d18f792388f3332e18c59cf72eb</srcmd5>
+    <version>1.2.6</version>
+    <time>1383809879</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>205887</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0ab401621051513bad637e0baa80eb6a</srcmd5>
+    <version>2.0</version>
+    <time>1386326706</time>
+    <user>coolo</user>
+    <comment>Update with latest upstream fixes</comment>
+    <requestid>209500</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>a66478a229d6057f68b5b5d53599124f</srcmd5>
+    <version>2.0</version>
+    <time>1386693728</time>
+    <user>coolo</user>
+    <comment>Update with bug fixes:
+- medium: parse: rsc_template is not recognized by parser (bnc#854562)
+- medium: vars: Add support for remote-node (bnc#854552)
+- low: cibconfig: add missing config import
+- Add userprefs.py to Makefile
+- Add missing dependency for python-PyYAML (bnc#854060)
+- hb_report: Add support for xz compression (bnc#854060)
+
+</comment>
+    <requestid>210082</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>dd66d06f4e3c8d8361d09bcfa20e1427</srcmd5>
+    <version>2.0</version>
+    <time>1388393399</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212332</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>45427ddd561c4cfe73525c9d4afdc50a</srcmd5>
+    <version>2.0</version>
+    <time>1389610842</time>
+    <user>coolo</user>
+    <comment>- High: scripts: Cluster scripts (fate#316464, fate#309206, fate#316332)
+- Medium: help: Return error if help topic is not found (bug#40821)
+- Medium: crm_gv: Support rsc_template in graphs (bnc#850159)
+- Low: config: Validate boolean values correctly
+- Low: main: Seed random generator on startup
+- Low: main: More informative error on start failure
+- Low: cluster: Use crm_node -l for node list
+- Low: ui_cib: Fix typo in sublevel name: cib.cibconfig -&gt; cib.cibstatus
+- Doc: Updated documentation
+- upstream cs: d2314df6e8a2</comment>
+    <requestid>213451</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>eb10d2dd6f3ba5e938260771520fd384</srcmd5>
+    <version>2.0</version>
+    <time>1390394624</time>
+    <user>coolo</user>
+    <comment>Update with bug fixes and improved functionality. See .changes for more info</comment>
+    <requestid>214625</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>e090792c7938786fb2d2ac4ebb96c3f7</srcmd5>
+    <version>2.0</version>
+    <time>1391440324</time>
+    <user>coolo</user>
+    <comment>Updated with bugzilla id</comment>
+    <requestid>220665</requestid>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>fdb7678da200020b88a138c81c64d49b</srcmd5>
+    <version>2.0</version>
+    <time>1392112994</time>
+    <user>coolo</user>
+    <comment>Bug fixes and improved test suite</comment>
+    <requestid>221568</requestid>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>ee5d96f28a4a059cc311db7b1c3057b6</srcmd5>
+    <version>2.0</version>
+    <time>1392637946</time>
+    <user>coolo</user>
+    <comment>Updated submission with another bug fix.</comment>
+    <requestid>222220</requestid>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>a1f450cb8345e4d315f39ca75279fa3f</srcmd5>
+    <version>2.0</version>
+    <time>1392873668</time>
+    <user>coolo</user>
+    <comment>Two bug fixes.</comment>
+    <requestid>223011</requestid>
+  </revision>
+  <revision rev="28" vrev="10">
+    <srcmd5>15f31e35cc265880efc72241e01bbc7a</srcmd5>
+    <version>2.0</version>
+    <time>1394172278</time>
+    <user>coolo</user>
+    <comment>Bug fixes and improved/updated test suite</comment>
+    <requestid>224915</requestid>
+  </revision>
+  <revision rev="29" vrev="11">
+    <srcmd5>cba3f88b9e1bc988e9f90b75f88cfb98</srcmd5>
+    <version>2.0</version>
+    <time>1394451074</time>
+    <user>coolo</user>
+    <comment>Bug fix in XML comparison function</comment>
+    <requestid>225403</requestid>
+  </revision>
+  <revision rev="30" vrev="12">
+    <srcmd5>24621fe22042238fb128b8c119da2b45</srcmd5>
+    <version>2.0</version>
+    <time>1395148420</time>
+    <user>coolo</user>
+    <comment>Bug fixes</comment>
+    <requestid>226457</requestid>
+  </revision>
+  <revision rev="31" vrev="13">
+    <srcmd5>13fc7400fd8a750ee8db259bb944dec0</srcmd5>
+    <version>2.0</version>
+    <time>1396020057</time>
+    <user>coolo</user>
+    <comment>Fixes and updated syntax</comment>
+    <requestid>227836</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c96aa4c28f4e889e164ce831bd98b5bd</srcmd5>
+    <version>2.0+git5</version>
+    <time>1397041927</time>
+    <user>coolo</user>
+    <comment>Update with new upstream URLs, improved version number + bug fixes</comment>
+    <requestid>229323</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>77f2e48ab2ba4e2736a22e242cdb0e80</srcmd5>
+    <version>2.0+git18</version>
+    <time>1397986611</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>230777</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>02cbf5dacbfc9d889d27826859fedfab</srcmd5>
+    <version>2.0+git38</version>
+    <time>1399031686</time>
+    <user>coolo</user>
+    <comment>Bug fixes</comment>
+    <requestid>232173</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b38275324ed82585ab34f27634a337d6</srcmd5>
+    <version>2.0+git63</version>
+    <time>1400056743</time>
+    <user>coolo</user>
+    <comment>Updated to latest upstream: Bug fixes and new features</comment>
+    <requestid>233774</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>32938c00ad5d63f72428e6603bee9aba</srcmd5>
+    <version>2.0+git73</version>
+    <time>1400173828</time>
+    <user>coolo</user>
+    <comment>Two additional bug fixes</comment>
+    <requestid>233882</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>141f690df4bcaf17e96874c252254cb8</srcmd5>
+    <version>2.0+git85</version>
+    <time>1400355804</time>
+    <user>coolo</user>
+    <comment>Bug fixes</comment>
+    <requestid>234281</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>cbb3443e1baccf4497685292fe1f9adc</srcmd5>
+    <version>2.0+git88</version>
+    <time>1400824294</time>
+    <user>coolo</user>
+    <comment>Bug fixes</comment>
+    <requestid>235135</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ecb2480eb87106cc7733c0a06e4f7206</srcmd5>
+    <version>2.0+git93</version>
+    <time>1401644419</time>
+    <user>coolo</user>
+    <comment>Implements id-ref in nvpairs for fate#316118
+and fixes bnc#880052</comment>
+    <requestid>235592</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>6eb6a602c02f54a65f51bf51d8546f23</srcmd5>
+    <version>2.0+git109</version>
+    <time>1401958203</time>
+    <user>coolo</user>
+    <comment>Same as previous SR, forgot to mention one change in .changes</comment>
+    <requestid>236190</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>0df10401c46a575981ba49a2b4ccf3a1</srcmd5>
+    <version>2.0+git111</version>
+    <time>1402058190</time>
+    <user>coolo</user>
+    <comment>Bugfix (bnc#881369)</comment>
+    <requestid>236369</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3e81929ea536db210e157ca5190a6bbe</srcmd5>
+    <version>2.0+git133</version>
+    <time>1402946745</time>
+    <user>coolo</user>
+    <comment>Mainly bug fixes</comment>
+    <requestid>237245</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>bc5cd4e3041e40f0332585f50759d933</srcmd5>
+    <version>2.0+git147</version>
+    <time>1403508235</time>
+    <user>coolo</user>
+    <comment>Fixes bugs in report/history</comment>
+    <requestid>238105</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>03f955c62485d8c59b2b2ee13af962e3</srcmd5>
+    <version>2.0+git149</version>
+    <time>1403702665</time>
+    <user>coolo</user>
+    <comment>minor bug fix</comment>
+    <requestid>238589</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>170eaa0e16da0d4637b305ce8c7b4bce</srcmd5>
+    <version>2.1+git4</version>
+    <time>1404306302</time>
+    <user>coolo</user>
+    <comment>tagged release 2.1, some minor documentation fixes on top</comment>
+    <requestid>239101</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a132015ffd7824b00b8bbb3dc860f53d</srcmd5>
+    <version>2.1+git6</version>
+    <time>1405101967</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>240417</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>80477d17978ff637ea4ee86e72b92993</srcmd5>
+    <version>2.1+git20</version>
+    <time>1406645322</time>
+    <user>coolo</user>
+    <comment>bug fixes</comment>
+    <requestid>242826</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>0927f59154f8ab63620e6404976032b1</srcmd5>
+    <version>2.1+git26</version>
+    <time>1407265882</time>
+    <user>coolo</user>
+    <comment>- medium: ui_node: Fix handling of default arguments (bnc#889673)
+- medium: crm_pssh: Degrade functionality if pssh is unpatched</comment>
+    <requestid>243689</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>3eb20d7e2f2399c87966a5bee8536f85</srcmd5>
+    <version>2.1+git30</version>
+    <time>1408196273</time>
+    <user>lnussel</user>
+    <comment>- medium: cibconfig: Support crm_diff --no-version (bnc#888726)
+- low: constants: Add requires to list of meta attributes
+- 2.1.0-30-g7a4a34d</comment>
+    <requestid>244808</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>fcf92ec24803c8ad491986325fc0f7be</srcmd5>
+    <version>2.1+git33</version>
+    <time>1408957448</time>
+    <user>coolo</user>
+    <comment>- medium: term: Handle $ in input when rendering (bnc#893011)
+- upstream: 2.1.0-33-g8cb6b59</comment>
+    <requestid>245763</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>cdd6ceb147fb22a5ba78821fa286d166</srcmd5>
+    <version>2.1+git38</version>
+    <time>1409252734</time>
+    <user>coolo</user>
+    <comment>- high: constants: Add acl_target and acl_group to cib_cli_map (bnc#894041)
+- cibconfig: Clean up output from crm_verify (bnc#893138)
+- upstream: 2.1.0-38-g7d05ad6</comment>
+    <requestid>246727</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>cdd6ceb147fb22a5ba78821fa286d166</srcmd5>
+    <version>2.1+git38</version>
+    <time>1409300684</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>91b86ff30816b89bf4223df9f579dbc7</srcmd5>
+    <version>2.1+git48</version>
+    <time>1409810167</time>
+    <user>coolo</user>
+    <comment>- high: scripts: Handle corosync.conf without nodelist in add-node (bnc#862577)
+- medium: cibconfig: Add set command
+- doc: Rename asciidoc files to .adoc
+- high: parse: split shortcuts into valid rules
+- upstream: 2.1.0-48-gc9e9d74</comment>
+    <requestid>247445</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>00304cf510fa29d20e12f48edc9b16e6</srcmd5>
+    <version>2.1+git48</version>
+    <time>1410528324</time>
+    <user>coolo</user>
+    <comment>Drop crmsh-cibadmin_can_patch.patch</comment>
+    <requestid>248941</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>adb2e86887d7851ef71019725aae6e10</srcmd5>
+    <version>2.1+git71</version>
+    <time>1411158459</time>
+    <user>coolo</user>
+    <comment>- high: cibconfig: Add tag:&lt;tag&gt; to get all resources in tag
+- high: cibconfig: Generate valid CLI syntax for attribute lists (bnc#897462)
+- doc: Sort command list in documentation alphabetically
+- doc: Handle command names with underscore
+- low: ra: Add systemd-support to RaOS
+- low: ui_ra: Don't crash when no OCF agents installed
+- low: corosync: Check tools before use
+- low: main: Catch any ValueErrors that may leak through
+- medium: config: Assign default path in all cases
+- low: ui_template: List both templates and configs by default
+- low: ui_configure: add rm as alias for delete
+- low: template: Add 'new &lt;template&gt;' shortcut
+- upstream cs: 2.1.0-71-g0d58e2e</comment>
+    <requestid>250215</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3f24db73113f61370c821da10903c4c8</srcmd5>
+    <version>2.1+git82</version>
+    <time>1411926836</time>
+    <user>coolo</user>
+    <comment>- low: report: Sort list of nodes
+- low: ui_cluster: More informative error message
+- low: main: Replace getopt with optparse
+- high: parse: Allow empty attribute values in nvpairs (bnc#898625)
+- upstream cs: 2.1.0-82-ge8abd85</comment>
+    <requestid>252439</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>61036287fe4c53b59c9854504b4e906f</srcmd5>
+    <version>2.1+git98</version>
+    <time>1413048401</time>
+    <user>coolo</user>
+    <comment>- high: report: Find nodes for any log type (boo#900654)
+- high: hb_report: Collect logs from journald (boo#900654)
+- upstream cs: 2.1.0-98-g2405e74
+
+- high: ui_maintenance: Add maintenance sublevel (bnc#899234)
+- medium: rsctest: Add basic support for systemd services
+- medium: ui_maintenance: Combine action and actionssh into a single command
+- low: rsctest: Better error message for unsupported action
+- low: cibconfig: Improve wording of commit prompt
+- high: cibconfig: Delay reinitialization after commit (bnc#900271)
+- medium: main: Disable interspersed args
+- upstream cs: 2.1.0-95-g744ad66</comment>
+    <requestid>254992</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>3fba7b43eaecd86dfb29f1ef9aa4ab79</srcmd5>
+    <version>2.1+git108</version>
+    <time>1413616184</time>
+    <user>coolo</user>
+    <comment>- medium: xmlutil: Use idmgmt when creating new elements (bnc#901543)
+- high: cibconfig: Don't crash if given an invalid pattern (bnc#901714)
+- high: xmlutil: Filter list of referenced resources (bnc#901714)
+- doc: Clarified note for default-timeouts
+- doc: cibconfig: Add note on inner ids after rename
+- upstream cs: 2.1.0-108-g0824da1</comment>
+    <requestid>257410</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>29f0c6a8534b419e67d75858b6687327</srcmd5>
+    <version>2.2.0~rc1</version>
+    <time>1414613429</time>
+    <user>coolo</user>
+    <comment>- Pre-release 2.2.0-rc1
+- Updated changelog
+
+- medium: ui_resource: Only act on resources (#64)
+- medium: ui_resource: Flatten, then filter (#64)
+- high: ui_resource: Use correct name for error function (bnc#901453)
+- high: ui_resource: resource trace failed if operation existed (bnc#901453)
+- upstream cs: 2.1.0-114-gd51bf56</comment>
+    <requestid>258732</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>b1da4642fc0697adcdebaf037bc47718</srcmd5>
+    <version>2.2.0~rc1</version>
+    <time>1416824142</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>262332</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>a35cfc83998f00b8062a64a300c1a634</srcmd5>
+    <version>2.2.0~rc2</version>
+    <time>1420833050</time>
+    <user>dimstar_suse</user>
+    <comment>- Pre-release 2.2.0-rc2
+- medium: ui_resource: Set probe interval 0 if not set (bnc#905050)
+- doc: Document probe op in resource trace (bnc#905050)
+- low: ui_resource: --reprobe and --refresh are deprecated (bnc#905092)
+- doc: Document deprecation of refresh and reprobe (bnc#905092)
+- medium: parse: Support resource-discovery in location constraints
+- medium: pacemaker: Support pacemaker-next as schema
+- medium: cibconfig: Allow unsupported schemas with warning
+- medium: ra: Use correct path for crmd (#67)
+- medium: cmd_status: Show pending if available, enable extra options
+- high: config: Fix path to system-wide crm.conf (#67)
+- medium: config: Fall back to /etc/crm/crmsh.conf (#67)
+- low: cliformat: Colorize id: as identifier (boo#905338)
+- medium: cibconfig: Revised CIB schema handling
+- medium: ui_configure: Add replace option to commit
+- medium: cibconfig: Don't bump epoch if stripping version
+- medium: ui_context: Lazily import readline
+- medium: ui_configure: selectors in save command
+- medium: config: Add core.ignore_missing_metadata (#68) (boo#905910)
+- Medium: config: add alwayscolor to display output option
+- doc: Clarify documentation for property (boo#905637)
+- doc: Add documentation section describing rule expressions (boo#905637)
+- doc: Link to documentation on rule expressions
+- medium: Allow removing groups even if is_running (boo#905271)
+- medium: cibconfig: Delete containers first in edits (boo#905268)
+- doc: Improved documentation for show and save
+- doc: Add note about modeline for vim syntax
+- medium: ui_history: Fix crash using empty object set
+- utils: append_file: open destination in append-mode (boo#907528)
+- medium: parse: Allow nvpair with no value using name= syntax (#71)
+- medium: parse: Enable name[=value] for nvpair (#71)
+- Low: term: get rid of annying ^O in piped-to-less-R output
+- high: parse: Implicit initial parameter list
+- high: crm_pssh: Switch to python-parallax over pssh (bnc#905116)
+- low: report: Fix references to PSSH
+- low: report: Delay Report creation until use
+- medium: utils: Check if path basename is less (#74)
+- medium: ui_options: Accept prefix or suffix of option as argument
+- medium: Remove CIB version in case no --no-version.
+- low: cibconfig: Use LXML to remove version data more robustly (#75)
+- low: crm_gv: Avoid crashing if passed None in my_edge
+- low: cibconfig: Protect against dereferencing None when building graph</comment>
+    <requestid>280557</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>0717b12648dcf9b75fbef0d746965d00</srcmd5>
+    <version>2.2.0~rc2</version>
+    <time>1422024446</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282474</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>f2127b57e7a2e3d2fc6ad738d7903052</srcmd5>
+    <version>2.2.0~rc2+git48.ge8853fe</version>
+    <time>1422521783</time>
+    <user>dimstar_suse</user>
+    <comment>- medium: crm_pssh: Handle incomplete Option argument
+- medium: constants: Fix transition start detection
+- medium: crm_pssh: Make tar follow symlinks
+- medium: cibconfig: Strip digest from v1 diffs (bnc#914098)
+- low: ui_options: Add underscore aliases for legacy options
+- medium: constants: Update transition regex (#77)
+- medium: cibconfig: Detect v1 format and don't patch container changes (bnc#914098)
+- medium: orderedset: Add OrderedSet type
+- medium: cibconfig: Use orderedset to avoid reordering bugs (#79)
+- medium: xmlutil: Modify sort order of object types
+- low: xmlutil: logic bug in sanity_check_nvpairs
+- high: xmlutil: Treat node type=member as normal (boo#904698)
+- medium: util: Don't fall back to current time
+- medium: report: Fall back to end_ts = start_ts
+- upstream cs: 2.2.0-rc2-48-ge8853fe</comment>
+    <requestid>283024</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>3a329a3fc371b2298f2f435a2d70303e</srcmd5>
+    <version>2.2.0~rc2+git101.ge971f44</version>
+    <time>1425892161</time>
+    <user>dimstar_suse</user>
+    <comment>Update to upstream cs: 2.2.0-rc2-101-ge971f44</comment>
+    <requestid>289562</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>2a72fa7fe1bece6cb455cd51cef4b6c5</srcmd5>
+    <version>2.2.0~rc2+git.1427980503.0475bf7</version>
+    <time>1428652490</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>295194</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>86ec091ce949c8e69f4264da2cbf5348</srcmd5>
+    <version>2.2.0~rc2+git.1429514909.aaf77a6</version>
+    <time>1429606412</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc2+git.1429514909.aaf77a6:
+  + high: crm_pssh: Explicitly set parallax inline option (krig/parallax#1)
+
+- Update to version 2.2.0~rc2+git.1428866384.7e5832c:
+  + low: ui_options: add alias list for show
+  + low: hb_report: Use crmsh config to find pengine/cib dirs (bsc#926377)
+  + medium: utils: Allow 1/0 as boolean values for parameters
+  + high: ui_configure: Add show-property command</comment>
+    <requestid>298162</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>ecb89e30ed7809184bd38d75874c0282</srcmd5>
+    <version>2.2.0~rc2+git.1429973374.667891c</version>
+    <time>1430132702</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc2+git.1429973374.667891c:
+  + dev: Convert to relative imports
+  + parse: Don't require trailing colon in tag definitions</comment>
+    <requestid>304027</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>75790ea81089a81b3be1e950809d663d</srcmd5>
+    <version>2.2.0~rc2+git.1431438882.ae4b493</version>
+    <time>1431668647</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.0~rc2+git.1431438882.ae4b493:
+  + doc: Update the documentation for the upgrade command
+  + high: ui_cluster: Add copy command
+  + low: schema: Don't leak PacemakerError exceptions (#93)
+  + Fix CFLAGS for supporting triplet paths with pacemaker
+  + medium: ui_configure: Wait for DC when removing running resource
+  + Medium: hb_report: use faster zypper interface if available
+  + Low: doc: simplify to make it work with python 2.6
+  + Medium: doc: add history guide</comment>
+    <requestid>306812</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>50a33d40743e8e7083c7acbdf010b4ba</srcmd5>
+    <version>2.2.0~rc2+git.1432560022.4e7baf3</version>
+    <time>1432588493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc2+git.1432560022.4e7baf3:
+  + dev: detect build revision if tarball contains .git
+  + medium: crm_pkg: Fix cluster init bug on RH-based systems
+
+- Update to version 2.2.0~rc2+git.1432219876.3d1027d:
+  + medium: crm_gv: Improved quoting of non-identifier node names (bsc#931837)
+  + low: Fix references to pssh to refer to parallax
+  + medium: crm_gv: Wrap non-identifier names in quotes (bsc#931837)
+  + doc: news: News update for 2.1.4
+  + medium: parse: More robust implicit initial parser
+  + test: Rename test/unit-tests.sh to test/run
+  + medium: parse: Allow implicit initial for groups as well
+  + medium: ui_configure: Add resource as an alias for primitive
+  + high: report: New detection to fix missing transitions (bnc#917131)
+  + test: Fix python 2.6 compatibility issue
+  + low: xmlutil: Update comment to match the code
+  + medium: report: Try to load source as session if possible (bsc#927407)</comment>
+    <requestid>308626</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>ed41f7e55170cf25f9a89905ca73cf6b</srcmd5>
+    <version>2.2.0~rc2+git.1432560022.4e7baf3</version>
+    <time>1433577262</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>310508</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>1320ea5ed516a865a286558e6451a41e</srcmd5>
+    <version>2.2.0~rc3+git.1434151485.7365522</version>
+    <time>1434383352</time>
+    <user>dimstar_suse</user>
+    <comment>- Pre-release 2.2.0-rc3
+- high: Merge rewizards development branch (fate#318211)
+  (fate#318384) (fate#318483) (fate#318482) (fate#318550)</comment>
+    <requestid>311933</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>2e693971226f4ee77ef01de395227e76</srcmd5>
+    <version>2.2.0~rc3+git.1435265407.2865580</version>
+    <time>1435652184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1435265407.2865580:
+  + high: hb_report: find utility scripts after move (bsc#936026)
+  + high: ui_report: Move hb_report to subdirectory (bsc#936026)
+  + high: scripts: subscript values not required if subscript has no parameters / all defaults (fate#318211)
+  + high: Makefile: Don't unstall hb_report using data-manifest (bsc#936026)
+  + medium: scripts: Fix name override for subscripts (fate#318211)
+  + medium: scripts: stop inserting comments as values
+  + medium: report: Fall back to cluster-glue hb_report if necessary (bsc#936026)
+  + low: scripts: Clean up generated CIB (fate#318211)</comment>
+    <requestid>313749</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>a3a8daae09fc0f4e534bc10a9d2a8205</srcmd5>
+    <version>2.2.0~rc3+git.1435949142.a824a98</version>
+    <time>1436112189</time>
+    <user>coolo</user>
+    <comment>+ medium: constants: Add 'provides' meta attribute (bsc#936587)</comment>
+    <requestid>315024</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>9808632837f202afac874dc42f7f65cc</srcmd5>
+    <version>2.2.0~rc3+git.1436439891.2cc4984</version>
+    <time>1436888593</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.0~rc3+git.1436439891.2cc4984</comment>
+    <requestid>315702</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>5fb3ede28fb06c8cbc12de2d14035baf</srcmd5>
+    <version>2.2.0~rc3+git.1438934728.5abada2</version>
+    <time>1439274398</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1438934728.5abada2:
+  + Medium: cibconfig: skip sanity check for properties other than cib-bootstrap-options
+  + high: parse: Add attributes to terminator set (bsc#940920)</comment>
+    <requestid>321551</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>7a9d0fa865198a54092093fbc28bbfcf</srcmd5>
+    <version>2.2.0~rc3+git.1439305144.fbe773c</version>
+    <time>1439385313</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1439305144.fbe773c:
+  + medium: config: Add report_tool_options (bsc#917638)</comment>
+    <requestid>322024</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>e8c39171c25c5d1869ad3ff0f4d77266</srcmd5>
+    <version>2.2.0~rc3+git.1439547680.0877a90</version>
+    <time>1439631574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1439547680.0877a90:
+  + low: main: Bash completion didn't handle sudo correctly
+  + high: hb_report: Correct path to hb_report after move to subdirectory (bsc#936026)
+  + medium: report: Add pacemaker.log to find_node_log list (bsc#941734)
+  + high: hb_report: Prefer pacemaker.log if it exists (bsc#941681)
+  + high: report: Output format from pacemaker has changed (bsc#941681)</comment>
+    <requestid>323083</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>c3620a86712e994ea0fef38532a97027</srcmd5>
+    <version>2.2.0~rc3+git.1440626270.8872dbc</version>
+    <time>1440743225</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.0~rc3+git.1440626270.8872dbc:
+  + low: hb_report: Increase time to wait for the logmark
+  + medium: log_patterns: Remove reference to function name in log patterns (bsc#942906)
+  + low: hb_report: Collect libqb version (bsc#943327)
+  + medium: report: Reintroduce empty transition pruning (bsc#943291)
+  + medium: scripts: Ensure that the Filesystem resource exists [nfsserver] (bsc#898658)
+  + low: scripts: Make virtual IP optional [nfsserver]
+  + high: scripts: Add force parameter to cib and crm actions, and don't pass --force by default
+  + high: scripts: Default to passing --force to crm after all
+  + medium: options: Add --no option
+  + medium: scripts: Use --no option over --force unless force: true is set in the script
+  + high: ui_script: Print cached errors in json run
+
+- Update to version 2.2.0~rc3+git.1440506835.395dad0:
+  + high: report: Update transition edge regexes (bsc#942906)
+  + high: hb_report: Always prefer syslog if available (bsc#942906)
+
+- Update to version 2.2.0~rc3+git.1440493477.255685f:
+  + low: scripts: Catch attempt to pass dict as parameter value
+  + medium: scripts: Switch install default to false (fate#318482)</comment>
+    <requestid>327271</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>fd6ba065894334cd3262706f338edab0</srcmd5>
+    <version>2.2.0~rc3+git.1440887645.cd6ac8a</version>
+    <time>1441054765</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1440887645.cd6ac8a:
+  + doc: Clarify documentation for colocations using node-attribute
+  + high: parse: Fix crash when referencing score types by name (bsc#940194)
+  + low: scripts: Improved script parameter validation
+  + medium: scripts: Add MailTo script</comment>
+    <requestid>328066</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>60db77adffac324f92f809cea098ebfc</srcmd5>
+    <version>2.2.0~rc3+git.1441319359.d823416</version>
+    <time>1441726786</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1441319359.d823416:
+  + high: scripts: Generate actions for includes if none are defined
+  + high: script: Fix subscript agent reference bug
+  + medium: crm_pssh: Timeout is an int (bsc#943820)
+  + medium: scripts: Fix typo in lvm script
+  + low: scripts: [virtual-ip] make lvs_support an advanced parameter
+  + low: constants: Add meta attributes for remote nodes</comment>
+    <requestid>328899</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>ec1a3224cb02055b8b788bf5ada9bbba</srcmd5>
+    <version>2.2.0~rc3+git.1441965248.a9a616d</version>
+    <time>1442130311</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1441965248.a9a616d:
+  + low: scripts: Fix typo in email type verifier
+  + low: scripts: [MailTo] install mailx package
+  + high: scripts: Add enum type to script values
+  + medium: parse: Add support for node attribute as fencing topology target
+  + doc: Improve documentation for the history level
+  + low: ui_history: Swap from and to times if to &lt; from
+  + low: ui_history: Better error handling and documentation for the detail command
+  + medium: report: Add transition tags command (bsc#943470)
+  + medium: report: Mark transitions with errors with a star in info output (bsc#943470)</comment>
+    <requestid>330488</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>20b71dfb60e5ddb590a465fd1f9bc286</srcmd5>
+    <version>2.2.0~rc3+git.1442913222.4ba506b</version>
+    <time>1443068140</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.0~rc3+git.1442913222.4ba506b:
+  + high: config: Remove config.core.supported_schemas (bsc#946893)</comment>
+    <requestid>332936</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>3384d28ebfbe4b5fe06c02676cfd14e9</srcmd5>
+    <version>2.2.0~rc3+git.1443105613.80a246f</version>
+    <time>1443585113</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.0~rc3+git.1443105613.80a246f:
+  + medium: cibconfig: Only warn for grouped children in colocations (bsc#927423)
+
+- Update to version 2.2.0~rc3+git.1443102798.74361f5:
+  + high: ui_node: Show remote nodes in crm node list (bsc#877962)
+  + medium: cibconfig: Warn if configuring constraint on child resource (bsc#927423) (#101)
+  + medium: cibconfig: Allow order constraints on group children (bsc#927423)</comment>
+    <requestid>333483</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>db63f64b8dae213045f72ca0dd0b2221</srcmd5>
+    <version>2.2.0~rc3+git.1443544100.aa2abda</version>
+    <time>1443770630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1443544100.aa2abda:
+  + medium: report: Enable opening .xz-compressed report tarballs
+  + medium: config: Always fall back to /usr/bin:/usr/sbin:/bin:/sbin for programs (bsc#947818)
+  + low: ui_resource: Silence spurious migration non-warning from pacemaker
+  + high: log_patterns_118: Update the correct set of log patterns (bsc#942906)</comment>
+    <requestid>335038</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>6527f5c7abea5669a6c31c45b0068fe4</srcmd5>
+    <version>2.2.0~rc3+git.1444340345.59850ca</version>
+    <time>1444636955</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.0~rc3+git.1444340345.59850ca:
+  + high: utils: Fix cluster_copy_file error when nodes provided (bsc#949603)
+  + low: xmlutil: More informative message when updating resource references after rename
+  + doc: fix some command syntax grammar in the man page
+  + doc: resource-discovery for location constraints
+
+- Update to version 2.2.0~rc3+git.1444133917.3f7f79f:
+  + high: cibconfig: Fix bug in is_edit_valid (bsc#948547)
+  + high: cibconfig: Delete constraints before resources
+
+- Update to version 2.2.0~rc3+git.1444122392.193bf69:
+  + high: cibconfig: Allow nodes and resources with the same ID (bsc#948547)
+  + high: cibconfig: Allow node/rsc id collision in _set_update (bsc#948547)
+  + medium: hb_report: Don't cat binary logs
+  + low: report: Silence tar warning on early stream close</comment>
+    <requestid>337334</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>1ce45568f3317ff286bd590aa58f06bb</srcmd5>
+    <version>2.2.0~rc3+git.1444854254.fc37f7f</version>
+    <time>1445287888</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1444854254.fc37f7f:
+  + high: utils: Handle time zones in parse_time (bsc#949511)
+  + medium: cibconfig: Fix sanity check for attribute-based fencing topology (#110)
+  + medium: ui_script: Optionally print common params
+  + medium: hb_report: Remove reference to function name in event patterns (bsc#942906)
+  + medium: report: Make transitions without end stretch to 2525
+  + doc: add missing &lt;&gt; to fencing_topology syntax
+  + doc: add missing backslash in fencing_topology example
+  + doc: add explanatory comments to fencing_topology
+  + doc: Update the scripts documentation
+  + doc: Fix unclosed block in scripts documentation</comment>
+    <requestid>339067</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>1cdf17c0488dd202d8f128f8f2400f03</srcmd5>
+    <version>2.2.0~rc3+git.1445338389.7433378</version>
+    <time>1445511563</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1445338389.7433378:
+  + high: scripts: Fix DRBD script resource reference (bsc#951028)
+  + low: constants: Tweaked graph colors</comment>
+    <requestid>340046</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>11f7b26324f9547bdc146184a2676024</srcmd5>
+    <version>2.2.0~rc3+git.1446022288.cbb7d77</version>
+    <time>1446049877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1446022288.cbb7d77:
+  + medium: scripts: No optional steps in legacy wizards (bsc#952226)
+  + medium: ui_script: Tag legacy wizards as legacy in show (bsc#952226)
+
+- Update to version 2.2.0~rc3+git.1445863187.686e3ec:
+  + high: utils: Revised time zone handling (bsc#951759)</comment>
+    <requestid>341272</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>7a4504379580c250fdb4ef188937f50c</srcmd5>
+    <version>2.2.0~rc3+git.1446121677.5f4ab3c</version>
+    <time>1446209028</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1446121677.5f4ab3c:
+  + high: scripts: Eval CIB text in correct scope (bsc#952600)
+  + medium: scripts: Check required parameters for optional sub-steps
+  + medium: utils: Fix python 2.6 compatibility</comment>
+    <requestid>341496</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>6e098b5ccae95e2967c17e2255057c0c</srcmd5>
+    <version>2.2.0~rc3+git.1447033314.c640af6</version>
+    <time>1447146209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1447033314.c640af6:
+  + medium: script: (filesystem) create stopped (bsc#952670)
+  + doc: configure load can read from stdin
+  + medium: scripts: Lower copy target to string</comment>
+    <requestid>343067</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>cfb5140cc936b823c75cdd57c39d17bd</srcmd5>
+    <version>2.2.0~rc3+git.1447774225.24dd944</version>
+    <time>1448186438</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.0~rc3+git.1447774225.24dd944:
+  + high: xmlutil: Order is significant in resource_set (bsc#955434)</comment>
+    <requestid>345202</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>69cca3d5b7d351401f64e3d7f2add3f0</srcmd5>
+    <version>2.2.0~rc3+git.1449475283.649c9d2</version>
+    <time>1449687146</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0~rc3+git.1449475283.649c9d2:
+  + high: ui_configure: Move validate-all validation to a separate command (bsc#956442)
+  + high: scripts: Don't delete steps from upgraded wizards (bnc#957925)
+  + medium: scripts: Enable setting category in legacy wizards (bnc#957926)
+  + high: scripts: Don't require scripts to be an array of one element
+  + high: scripts: Conservatively verify scripts that modify the CIB (bsc#951954)
+  + high: ui_resource: Enable start/stop/status for multiple resources at once (bsc#952775)
+  + high: ui_resource: Add constraints and operations commands
+  + high: ui_ra: Add ra validate command (bsc#956442)
+  + high: script: Fix issues found in cluster scripts
+  + low: resource: Fix unban alias for unmigrate</comment>
+    <requestid>347713</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>177606fee1f6f109086a11d0fda1b92f</srcmd5>
+    <version>2.2.0+git.1452874360.0988ac4</version>
+    <time>1453416232</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1452874360.0988ac4:
+  + Release 2.2.0
+  + low: don't use deprecated crm_attribute -U option
+  + high: cibconfig: Fix XML import bug for cloned groups (bsc#959895)
+  + medium: ui_cib: Call crm_shadow in batch mode to avoid spawning subshell (bsc#961392)
+  + high: cibconfig: fail if new object already exists (bsc#959965)
+  + high: cibconfig: Preserve failure through edit (bsc#959965)
+  + low: hb_report: Drop function from event patterns
+  + medium: ui_history: Add events command (bsc#952449)
+  + medium: scripts: Reformat scripts to simplified form
+  + medium: scripts: Load single file yml scripts
+  + low: clidisplay: Avoid crash when colorizing None
+  + medium: cibconfig: Detect false container children
+  + medium: history: Ignore central log
+  + medium: history: Fix live report refresh (bsc#950422) (bsc#927414)</comment>
+    <requestid>354704</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>d996c0c55db6f1aece7c232674d3138b</srcmd5>
+    <version>2.2.0+git.1453451184.2fbd420</version>
+    <time>1453799690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1453451184.2fbd420:
+  + high: history: Parse log lines without timestamp (bsc#955581)
+  + high: scripts: Improved OCFS2 cluster script (bsc#953984)
+  + high: scripts: Add NFS on LVM and DRBD cluster script (bsc#951132)
+  + high: scripts: Add LVM on DRBD cluster script (bsc#951132)
+  + high: scripts: fix broken cluster init script (bsc#963135)
+  + medium: scripts: Updated SBD cluster script
+  + medium: ui_configure: Rename show-property to get-property</comment>
+    <requestid>355339</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>3404fa2bf679779b1bfa34e79e7148cd</srcmd5>
+    <version>2.2.0+git.1454489864.2aa76e4</version>
+    <time>1454921263</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1454489864.2aa76e4:
+  + medium: corosync: added optional parameter [name] to &quot;corosync add-node&quot; function
+  + medium: command: Disable fuzzy matcher for completion (#116)
+
+- Update to version 2.2.0+git.1453820226.445f556:
+  + high: Add &quot;push&quot; method to &quot;configure load&quot; command (fate#320389)
+  + medium: history: update patterns for resource (new lrmd)
+  + medium: cibconfig: add and|or filter combinators to influence filtering (fate#320401)
+  + medium: constants: clone-min meta attribute (new in Pacemaker 1.1.14)
+  + low: maintenance: allow action to be forced
+- Move dependencies of crmsh-test package to post</comment>
+    <requestid>357680</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>6742ec98486dcbc2646e1d887bac8639</srcmd5>
+    <version>2.2.0+git.1455627181.78fd949</version>
+    <time>1456127877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1455627181.78fd949:
+  + medium: ui_configure: Only wait for DC if resources were stopped (#117)
+  + medium: hb_report: Don't collect logs on non-nodes (bsc#959031)
+  + low: Fix title style vs. sentence style in cluster scripts (bsc#892108)</comment>
+    <requestid>360279</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>240b01f4d488811deb2d087392897400</srcmd5>
+    <version>2.2.0+git.1456299101.87fe3c9</version>
+    <time>1456434575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1456299101.87fe3c9:
+  + high: ui_configure: Fix commit force (#120)
+  + medium: config: make multiarch dependency a dynamic include (#119)
+  + low: ui_node: Less cryptic query when fencing node</comment>
+    <requestid>361234</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>5ceb9d4e630ef0e60a12205322b23e4f</srcmd5>
+    <version>2.2.0+git.1458042315.389d264</version>
+    <time>1458228899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1458042315.389d264:
+  + high: history: Faster log parsing (bsc#920278)
+  + medium: ui_node: Use stonith_admin -F to fence remote nodes (bsc#967907)
+  + medium: crm_pssh: Fix live refresh of journalctl logs (bsc#970931)
+  + medium: hb_report: Use server attribute for remote nodes if set (bsc#970819)
+  + medium: ui_node: Add crm node server command
+  + medium: scripts: Simplify SBD script (bsc#968076) (fate#318320)
+  + medium: scripts: inline scripts for call actions
+  + medium: scripts: Don't require sudo for root
+  + medium: scripts: Set sudo and full path for exportfs -v in nfs scripts
+  + medium: scripts: Add nfs-utils to list of packages for nfsserver
+  + low: history: use os.listdir to list history sessions
+  + low: scripts: Fix error in service action
+  + low: logtime: Improve performance of syslog_ts (bsc#970278)
+  + low: hb_report: Print covered time span at exit (bsc#970823)
+  + low: hb_report: Warn if generated report is empty (bsc#970823)
+  + low: log_patterns_118: Add captures to log patterns for tagging (bsc#970278)
+  + low: ui_resource: alias show to get
+  + low: hb_report: Suggest user checks timeframe on empty logs (bsc#970823)
+  + low: logparser: Add cib info to __meta for hawk</comment>
+    <requestid>373203</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>06b0c566d4857306123f24c63a61d98e</srcmd5>
+    <version>2.2.0+git.1458546035.5df0420</version>
+    <time>1459002287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1458546035.5df0420:
+  + medium: scripts: SBD wizard which configures SBD itself (fate#318320)
+  + medium: main: Add -o|--opt to pass extra options for crmsh
+  + medium: hb_report: Add timeout to SSH connection (bsc#971690)
+  + low: command: handle stray regex characters in input
+  + low: scripts: Clean up various scripts
+
+- Fix build-compare by only touching files with timestamps in the future
+  and by not including the rebuild counter in hb_report</comment>
+    <requestid>376278</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>8d4a972f1233a4c9a79b0c90b9330a6d</srcmd5>
+    <version>2.2.0+git.1459359704.8d9b910</version>
+    <time>1459508580</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1459359704.8d9b910:
+  + medium: scripts: Use os.uname() to find hostname (#128)
+  + low: logparser: Don't crash on nodes without logs
+  + low: history: Don't skip nodes without logs
+  + low: parser: ignore case for attr: prefix
+  + low: scripts: Need sudo if non-local call
+  + low: history: update the syslog format matching
+  + low: report: add information about booth
+  + low: report: if present, use the subsecond part from syslog timestamps</comment>
+    <requestid>382320</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>58b1e4e52d5217362a3f034d64e8bd01</srcmd5>
+    <version>2.2.0+git.1461246131.bf3c265</version>
+    <time>1461855333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1461246131.bf3c265:
+  + medium: scripts: Add vmware to data manifest (fate#318320)
+  + medium: ui_node: Fix crash in node fence command (bsc#974902)
+  + low: scripts: Preserve formatting in description for vmware wizard
+  + low: scripts: Better description for sbd
+
+- Update to version 2.2.0+git.1461083981.dab79a4:
+  + high: scripts: VMware fencing using vCenter (fate#318320)
+
+- Update to version 2.2.0+git.1461051741.724349d:
+  + low: cibconfig: Don't mix up CLI name with XML tag
+  + low: constants: Add missing reload operation to parser
+  + low: corosync: Recycle node IDs when possible
+  + low: parse: Don't validate operation name in parser (bsc#975357)
+  + low: scripts: Only print debug output locally unless there were remote actions
+  + low: scripts: Fix watchdog test in sbd-device (fate#318320)
+  + low: scripts: Shouldn't set -e here (fate#318320)
+- Remove bug-974902_crm-node-fence.patch
+
+- medium: ui_node: Fix &quot;crm node fence&quot; (bsc#974902)
+  - bug-974902_crm-node-fence.patch</comment>
+    <requestid>391167</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>9c94f302a914ed9a53cfdef0a13cf35b</srcmd5>
+    <version>2.2.0+git.1462285059.d79cd0d</version>
+    <time>1462443141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1462285059.d79cd0d:
+  + high: ui_root: Add crm verify command
+  + medium: hb_report: Fix broken -S option (#137)
+  + low: hb_report: Fix spurious error on missing events.txt
+  + low: scripts: Note SBD recommendation in vmware script (fate#318320)
+  + low: scripts: Note SBD recommendation in libvirt script (fate#318320)
+
+  + high: history: Faster log parsing (bsc#970278)</comment>
+    <requestid>393648</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>2b26f5befa5651826abc6263eeb37a74</srcmd5>
+    <version>2.2.0+git.1462967444.169c554</version>
+    <time>1463498100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1462967444.169c554:
+  + high: parse: Support for event-driven alerts (fate#320855) (#136)
+  + high: utils: Avoid deadlock if DC changes during idle wait (bsc#978480)
+  + medium: ui_resource: Add force argument to resource cleanup (bsc#979420)
+  + medium: ui_resource: Show utilization in output from crm resource scores
+  + high: ui_resource: Improved resource move/clear/locate commands</comment>
+    <requestid>395001</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>06d719b329e25104b2b5a686b5454dec</srcmd5>
+    <version>2.2.0+git.1463777827.9b402a8</version>
+    <time>1464014423</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1463777827.9b402a8:
+  + high: history: Store live report in per-user directory (bsc#980924)
+  + medium: logparser: Handle read-only access to metadata cache (bsc#980924)
+  + medium: logparser: Fix use-before-declaration error in logparser
+  + medium: history: Report better error when history user is not sudoer (bsc#980924)
+  + low: utils: Clearer error if permission denied when locking (bsc#980924)
+  + low: history: fall back to any log file in report root</comment>
+    <requestid>397384</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>0870a44ddd4cb24752a40af527232991</srcmd5>
+    <version>2.2.0+git.1464769043.9e4df55</version>
+    <time>1465938413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1464769043.9e4df55:
+  * medium: tmpfiles: Create temporary directory if non-existing (bsc#981583)
+
+- Update to version 2.2.0+git.1464237560.fd9e583:
+  + high: constants: Add maintenance to set of known attributes (bsc#981659)
+  + medium: xmlutil: reduce unknown attribute to warning (bsc#981659)
+
+- Update to version 2.2.0+git.1464167894.621fe00:
+  + medium: scripts: no-quorum-policy=ignore is deprecated (bsc#981056)</comment>
+    <requestid>399347</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>6637943f4d3266a28ff0c44b86d1b3df</srcmd5>
+    <version>2.2.0+git.1469918297.1b801f6</version>
+    <time>1470217478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1469918297.1b801f6:
+  * high: hb_report: Skip lines without timestamps in log correctly (bsc#989810)
+  * high: hb_report: Don't collect logs from journalctl if -M is set (bsc#990025)
+  * high: parse: Use original _TARGET_RE
+  * low: Fix a setting example of the alert to become the error
+  * low: scripts: Fix use of non-relative import for ra</comment>
+    <requestid>416123</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>268792dc2687a7fe986437015bf9c5ce</srcmd5>
+    <version>2.2.0+git.1470743271.64d1a40</version>
+    <time>1470773754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1470743271.64d1a40:
+  * medium: constants: Add missing alerts constants (#150) (bsc#992789)</comment>
+    <requestid>417980</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>60e907976a65b11e736622e098a872b0</srcmd5>
+    <version>2.3.0+git.1470991992.7deaa3a</version>
+    <time>1471428296</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git.1470991992.7deaa3a:
+  * Release 2.3.0</comment>
+    <requestid>419344</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>204ad1a4ca9c36bd17e05b93e22d133d</srcmd5>
+    <version>2.3.1+git.1472802925.a4a4041</version>
+    <time>1473241544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.1+git.1472802925.a4a4041:
+  * Require Python 2.6+, not 2.7 (bsc#995611)</comment>
+    <requestid>424397</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>c44253764acaa0e982992ff700c02686</srcmd5>
+    <version>2.3.1+git.1473924149.8abc212</version>
+    <time>1474016524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.1+git.1473924149.8abc212:
+  * high: history: Quote archive tarball name if it contains spaces (bsc#998959)
+  * high: history: Prefer /var/log/messages over ha-log.txt (bsc#998891)</comment>
+    <requestid>427871</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>efbbd890715446f6521ca47ac583e93f</srcmd5>
+    <version>2.3.1+git.1475245522.4172084</version>
+    <time>1476109268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.1+git.1475245522.4172084:
+  * high: cibconfig: Ensure temp CIB is readable by crm_diff (bsc#999683)
+  * high: parse: Support target pattern in fencing topology
+  * medium: ui_configure: option to obscure passwords
+  * medium: cibconfig: Remove from tags when removing object
+  * medium: scripts: Better corosync defaults (bsc#1001164)
+  * medium: scripts: Drop logrotate check from cluster health
+  * low: cmd_status: Highlight plural forms (bsc#996806)</comment>
+    <requestid>433549</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>0223a2526a4faf579ba48ec3e03ca819</srcmd5>
+    <version>2.3.1+git.1477204932.7939b51</version>
+    <time>1477481360</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.1+git.1477204932.7939b51:
+  * medium: corosync: Fix missing variable in del-node
+  * low: crm_pssh: Fix nodenum envvar name
+  * low: cmd_status: More detail in verify output
+  * doc: Fix inverted boolean in resource set documentation</comment>
+    <requestid>437275</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>0b9833d50e2f95fd583f50aaa998e67c</srcmd5>
+    <version>2.3.2+git.1481875498.8cd1dd9</version>
+    <time>1484041438</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447475</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>8f843829191e74be2cb020e2591324a8</srcmd5>
+    <version>2.3.2+git.1483543612.cf853f8</version>
+    <time>1485167947</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>450914</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>65129a8aa120f8e105903764c02513d5</srcmd5>
+    <version>3.0.0</version>
+    <time>1487592831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.0:
+  * give the op's hint when type tab after 'op'
+  * medium: bootstrap: Configure hawk iff package installed</comment>
+    <requestid>453647</requestid>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>b64dbb17861c839da7380dfae1da1e30</srcmd5>
+    <version>3.0.0</version>
+    <time>1488479893</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow empty fencing topology (bsc#1025393)
+- Add 0001-Allow-empty-fencing_topology-bsc-1025393.patch 
+
+- Sync changelog with SLE</comment>
+    <requestid>460814</requestid>
+  </revision>
+  <revision rev="117" vrev="3">
+    <srcmd5>a91d4076d1968303a551d9ac86a34e0c</srcmd5>
+    <version>3.0.0</version>
+    <time>1489653759</time>
+    <user>dimstar_suse</user>
+    <comment>- low: bootstrap: Fix warning for formatting SBD device (bsc#1028704)
+- medium: ui_cluster: Fix init with no arguments (bsc#1028735)
+- low: utils: Use /proc for process discovery
+- Add 0002-low-bootstrap-Fix-warning-for-formatting-SBD-device-.patch
+- Add 0003-medium-ui_cluster-Fix-init-with-no-arguments-bsc-102.patch
+- Add 0004-low-utils-Use-proc-for-process-discovery.patch</comment>
+    <requestid>479431</requestid>
+  </revision>
+  <revision rev="118" vrev="4">
+    <srcmd5>5ff71b632babf392475fd504687e6f4b</srcmd5>
+    <version>3.0.0</version>
+    <time>1493020154</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489715</requestid>
+  </revision>
+  <revision rev="119" vrev="5">
+    <srcmd5>18de2a42cfc465b9a53d180562606f5c</srcmd5>
+    <version>3.0.0</version>
+    <time>1493103545</time>
+    <user>dimstar_suse</user>
+    <comment>- low: bootstrap: Update fix for formatting SBD device (bsc#1028704)
+- medium: bootstrap: Set expected votes based on actual node count (bsc#1033288)
+- Add 0007-medium-bootstrap-Set-expected_votes-based-on-actual-.patch</comment>
+    <requestid>490289</requestid>
+  </revision>
+  <revision rev="120" vrev="6">
+    <srcmd5>3aebf98d6226e9fb9d3f3b631deab24e</srcmd5>
+    <version>3.0.0</version>
+    <time>1493455990</time>
+    <user>dimstar_suse</user>
+    <comment>- high: cibconfig: Graph file output option was reversed (bsc#1036595)
+- Add 0008-high-cibconfig-Graph-file-output-option-was-reversed.patch</comment>
+    <requestid>491593</requestid>
+  </revision>
+  <revision rev="121" vrev="7">
+    <srcmd5>14ffba244484f3481efd00ba7d5eb2cc</srcmd5>
+    <version>3.0.0</version>
+    <time>1494088207</time>
+    <user>dimstar_suse</user>
+    <comment>- doc: geo-join requires --clusters argument (bsc#1037442)
+  * Add 0012-doc-geo-join-requires-clusters-argument-bsc-1037442.patch
+- medium: bootstrap: Check required arguments to geo-join (bsc#1037421)
+  * Add 0011-medium-bootstrap-Check-required-arguments-to-geo-joi.patch 
+- medium: bootstrap: Handle failure to fetch config gracefully (bsc#1037423)
+  * Add 0010-medium-bootstrap-Handle-failure-to-fetch-config-grac.patch
+- medium: bootstrap: Enable &quot;help geo-init&quot; etc. (bsc#1037417)
+  * Add 0009-medium-bootstrap-Enable-help-geo-init-etc.-bsc-10374.patch</comment>
+    <requestid>492677</requestid>
+  </revision>
+  <revision rev="122" vrev="8">
+    <srcmd5>86357c9db37df13ac4842cd9c01bf801</srcmd5>
+    <version>3.0.0</version>
+    <time>1494442398</time>
+    <user>dimstar_suse</user>
+    <comment>- medium: bootstrap: Make arbitrator argument optional (bsc#1038386)
+  * Add 0013-medium-bootstrap-Make-arbitrator-argument-optional-b.patch</comment>
+    <requestid>493999</requestid>
+  </revision>
+  <revision rev="123" vrev="9">
+    <srcmd5>3e0193725f18e4245fc133b507e869f1</srcmd5>
+    <version>3.0.0</version>
+    <time>1497016591</time>
+    <user>dimstar_suse</user>
+    <comment>- medium: history: Revert preference of messages over ha-log.txt (bsc#1031138)
+  * Add 0014-medium-history-Revert-preference-of-messages-over-ha.patch</comment>
+    <requestid>500621</requestid>
+  </revision>
+  <revision rev="124" vrev="10">
+    <srcmd5>4522e4707c28e93c9bf166480b7128ad</srcmd5>
+    <version>3.0.0</version>
+    <time>1498202306</time>
+    <user>dimstar_suse</user>
+    <comment>- high: bootstrap: Add option to enable diskless SBD mode to cluster init (bsc#1045118)
+  * Add 0016-high-bootstrap-Add-option-to-enable-diskless-SBD-mod.patch
+- medium: ui_cluster: Add --force to ha-cluster-remove (bsc#1044071)
+  * Add 0015-medium-ui_cluster-Add-force-to-ha-cluster-remove-bsc.patch</comment>
+    <requestid>505664</requestid>
+  </revision>
+  <revision rev="125" vrev="11">
+    <srcmd5>7f855b1dcc0bf34e55551320d9f711de</srcmd5>
+    <version>3.0.0</version>
+    <time>1498485179</time>
+    <user>dimstar_suse</user>
+    <comment>- medium: bootstrap: Fix watchdog SBD envvars (bsc#1045118)
+  * Add 0019-medium-bootstrap-Fix-watchdog-SBD-envvars-bsc-104511.patch
+- medium: scripts: Relax broadcast IP validation (bsc#1044233)
+  * Add 0018-medium-scripts-Relax-broadcast-IP-validation-bsc-104.patch
+- medium: scripts: Clarify help text for NFS wizard (bsc#1044244)
+  * Add 0017-medium-scripts-Clarify-help-text-for-NFS-wizard-bsc-.patch</comment>
+    <requestid>505852</requestid>
+  </revision>
+  <revision rev="126" vrev="12">
+    <srcmd5>4ac27cdeeb745cfb9f8bbd8317270d94</srcmd5>
+    <version>3.0.0</version>
+    <time>1502366726</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514781</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>0c04ccc1abb2b3c1a244f2f907e73521</srcmd5>
+    <version>3.0.1+git.1504075678.b5dce7ab</version>
+    <time>1504521059</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.1+git.1504075678.b5dce7ab:
+  * low: utils: is_process did not work
+  * low: utils: Use /proc for process discovery
+  * low: bootstrap: Fix formatting of confirmation prompt (bsc#1028704)
+  * medium: bootstrap: Set expected_votes based on actual node count (bsc#1033288)
+  * remove bindnetaddr for unicast(bsc#1030437)
+  * lsb, service, stonith and systemd don't have any providers; so, it shouldn't be completed when type 'tab' after these ra classes.
+  * doc: Document lifetime parameter format
+  * medium: Add support for pacemaker PR#1208
+  * Feature: add rules support to operations
+  * low: bootstrap: Fall back to logging into $TMPDIR/ha-cluster-bootstrap.log
+  * Improved cd completion
+  * Improve ls command outputs
+  * Remove &quot;up/back/end&quot; option at root level
+  * medium: ui_context: Make all the options can be completed
+  * medium: ui_ra: Improve resource agents completion
+  * medium: ui_cluster: Add enable/disable option to enable/disable pacemaker service
+  * medium:command:adjust the 'ls' print width for long options
+  * low:scripts:health: save health-report when run &quot;crm cluster health&quot;
+  * low: ui_cluster: add &quot;delete&quot; alias for &quot;remove&quot; option
+  * low: bootstrap: give a confirm message when remove node
+  * medium: bootstrap: add callback function to check valid port range
+  * medium: ui_cluster: Add cluster rename command
+  * low: ui_cluster: when use help option, do not exit, just print help messages and return
+  * low: ui_cluster: when have an error for optparse, just return and stay at shell
+  * low: ui_cluster: complete node name once
+  * low: help: adjust the help print width
+  * low: ui_cluster: show cluster name in cluster status command
+  * Add missing ')'
+  * low: completers: filter out ms resource when doing promote/demote</comment>
+    <requestid>519746</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>c65aa6033e63c055ab3cd72cadf9fff9</srcmd5>
+    <version>3.0.1+git.1504985015.b695b452</version>
+    <time>1505139758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.1+git.1504985015.b695b452:
+  * medium: ui_node: node attribute/status-attr is about node attr, not for resources
+  * medium: bootstrap: Only call firewall-cmd if firewalld is active</comment>
+    <requestid>522826</requestid>
+  </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>ce1effa1a224ba847673f99bed5810a4</srcmd5>
+    <version>3.0.1+git.1504985015.b695b452</version>
+    <time>1505507531</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct name of python-dateutil package</comment>
+    <requestid>526345</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>d7b8c53fea24b421a975c052925d74bb</srcmd5>
+    <version>4.0.0+git.1509626995.fa880522</version>
+    <time>1509722868</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1509626995.fa880522:
+  * high: bootstrap: revert corosync ports for mcast configuration as well (bsc#1066196)
+  * high: bootstrap: Revert default corosync port to 5405/5404 (bsc#1066196)
+  * medium: NewCommit: ui_configure: complete for ra actions
+  * medium: ui_configure: Replace compl.null to compl.attr_id where an id is required
+  * medium: ui_context: Stop completing when an id is required
+  * low: ui_context: reset term when using help command+ctrlC
+  * low: utils: Stop using deprecated functionality
+
+- Update to version 4.0.0+git.1509449399.1e22e954:
+  * Make sure scripts use python3 (fate#323526)
+  * medium: enable add the second heartbeat line for unicast
+  * medium: bootstrap: check init options before running
+  * low: ui_script: Sort keys when printing JSON
+
+- Update to version 4.0.0+git.1509349758.2bd8a099:
+  * Port to Python 3 (fate#323526)
+  * hb_report: config file for hb_report (fate#321640)</comment>
+    <requestid>538350</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>d3c498dff82e38d7f2c76b46f6bdb978</srcmd5>
+    <version>4.0.0+git.1510233955.43c72bf7</version>
+    <time>1510322271</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1510233955.43c72bf7:
+  * high: bootstrap: Fix readline error in cluster remove (bsc#1067424)
+  * low: bootstrap: Clarify removal warning
+  * low: bootstrap: Avoid printing None instead of NTP service name</comment>
+    <requestid>540211</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>30a3a208d961e70be9069bf97e477816</srcmd5>
+    <version>4.0.0+git.1510563824.1aecfa01</version>
+    <time>1510578448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1510563824.1aecfa01:
+  * high: utils: Use python3 in util scripts (bsc#1067823)
+  * high: bootstrap: Use firewall-offline-cmd for firewalld (bsc#1067498)
+  * medium: hb_report: Verify corosync.conf exists before opening it (bsc#1067456)
+  * low: config: Collect /var/log/ha-cluster-bootstrap.log (bsc#1067438)
+  * medium: bootstrap: Avoid SSH to localhost (bsc#1067324)</comment>
+    <requestid>541206</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>d033882917c95307f8a9ba44e6484ad2</srcmd5>
+    <version>4.0.0+git.1511604050.816cb0f5</version>
+    <time>1511817547</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1511604050.816cb0f5:
+  * high: crm_rpmcheck: Fix bytes to str encoding error (bsc#1069294)
+  * medium: bootstrap: Missing dmidecode on ppc64le (bsc#1069802)
+
+- Update to version 4.0.0+git.1511256861.18b44cfa:
+  * high: bootstrap: Use default IP address for ring0 (bsc#1069142)
+  * medium: scripts: make sure gfs2 can be configured using hawk (bsc#1067123)
+  * medium: bootstrap: fix init vgfs crash if no &quot;-o device&quot; option
+  * medium: bootstrap: fix init storage crash if no value input
+  * medium: ui_configure: fix crash when no args given
+  * medium: filter exist args
+  * low: utils: convert bytes to str (bsc#1067823)
+  * low: ui_context: Continue completing when input is an alias
+  * low: bootstrap: Change error/confirm message with specific device name
+
+  * low: bootstrap: Avoid printing None instead of NTP service name (bsc#1060602)</comment>
+    <requestid>546044</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>20ffc82d621e06bc34dae8af36048729</srcmd5>
+    <version>4.0.0+git.1512406036.adc26906</version>
+    <time>1512547124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1512406036.adc26906:
+  * high: bootstrap: Fix firewall reload command invocation (bsc#1071108)
+
+- Update to version 4.0.0+git.1512395407.e65870b4:
+  * high: bootstrap: Encode, not decode (bsc#1070344)
+
+- Update to version 4.0.0+git.1512385350.d06aa847:
+  * Fix writing non-ascii chars to log (bsc#1070344)
+  * Fix is_program(dmidecode) error (bsc#1070344)
+  * low: ui_configure: fix for 309d2e, remove &quot;id=&quot; in a save way
+  * low: ra: Don't require deprecated parameters (#321)
+  * low: cibconfig: use refresh instead of reset after commit</comment>
+    <requestid>548185</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>cda322fc7913b885b1ea5e905f8bd3e7</srcmd5>
+    <version>4.0.0+git.1513179435.e1d17d7b</version>
+    <time>1513245808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1513179435.e1d17d7b:
+  * high: scripts: Fix Python 3 migration issues in health, check-uptime (bsc#1071519)
+
+- Update to version 4.0.0+git.1513011384.5aebf8a4:
+  * high: parse: Support new alert syntax (#280) (bsc#1069129)
+  * high: parse: Support new container bundles (fate#323415)
+  * low: hb_report: return &quot;&quot; to avoid TypeError
+  * low: ui_configure: use filter_keys replace any_startswith</comment>
+    <requestid>556723</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>5744c0695205f7f8310c2d86e302cafa</srcmd5>
+    <version>4.0.0+git.1515511613.5ee0eb23</version>
+    <time>1515623764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1515511613.5ee0eb23:
+  * high: scripts: Enable complex expressions in when: (bsc#1074835)
+  * medium: hb_report: Support new pacemaker.log location (fate#324508)
+  * low: ui_configure: Complete rsc template correctly
+  * fix: ra: Convert bytes to str
+  * fix: ui_resource: Using crm_failcount instead of crm_attribute(bsc#1074127)</comment>
+    <requestid>563058</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>88eb4f4caf6321f2e349790b77fae71e</srcmd5>
+    <version>4.0.0+git.1515767348.9561209c</version>
+    <time>1515876543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1515767348.9561209c:
+  * medium: ui_cluster: Stop corosync when stopping pacemaker (bsc#1066156)
+  * medium: bootstrap: Don't try to remove full nodes from remote nodes
+  * medium: clvm-vg: update to use LVM-activate RA (bsc#1074835)
+  * medium: clvm: update to use lvmlockd instead of clvmd (bsc#1074835)
+  * low: ui_node: normal is deprecated in favor of member (fate#324508)
+  * low: ui_configure: no complete for rename new_id
+  * low: bootstrap: Don't ssh to localhost in remove
+  * low: ui_configure: improve do_group completer</comment>
+    <requestid>563866</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>7c7d2e689b01b6f321a4d2fb44decc3e</srcmd5>
+    <version>4.0.0+git.1516124911.d66d9d1f</version>
+    <time>1516222704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1516124911.d66d9d1f:
+  * medium: constants: Add bundle to constants (bsc#1076239)
+  * low: xmlutil: Add bundle to sort (bsc#1076239)</comment>
+    <requestid>566488</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>47c1ee2a04da9eccc5ce855602d9fce6</srcmd5>
+    <version>4.0.0+git.1518010150.a58fa637</version>
+    <time>1518025369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1518010150.a58fa637:
+  * high: bootstrap: Add QDevice/QNetd support (bsc#1070961)
+  * medium: hb_report: implement dlm_dump info (bsc#1078710)
+  * fix: hb_report: collect sbd info (bsc#1076389)
+  * fix: hb_report: Collect irregular log file (bsc#1067438)</comment>
+    <requestid>573719</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>d4e8355b059702502ecf40bb206c0d00</srcmd5>
+    <version>4.0.0+git.1518073467.76fb6a0b</version>
+    <time>1518187681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1518073467.76fb6a0b:
+  * high: crm_script: Python2-&gt;3 string conversion crash in wizards (bsc#1074835)</comment>
+    <requestid>574058</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>c723bd926fe8a178f68b15fab21b4a3e</srcmd5>
+    <version>4.0.0+git.1518510059.7a6f94e6</version>
+    <time>1518601854</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1518510059.7a6f94e6:
+  * fix: bootstrap: Create pacemaker_remote authkey(#bsc 1077389)
+  * low: bootstrap: Always ask whether to use sbd
+  * fix: hb_report: got the right file decompressor(bsc#1077553)
+  * medium: hb_report: Avoid calling deprecated network utilities (bsc#1073638)</comment>
+    <requestid>576001</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>eb98984c71c481e05bed5aadf25cd091</srcmd5>
+    <version>4.0.0+git.1519721966.9abd841c</version>
+    <time>1519747198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1519721966.9abd841c:
+  * low: bootstrap: Updated authkey generation (bsc#1077389)
+
+  * fix: bootstrap: Create pacemaker_remote authkey (bsc#1077389)</comment>
+    <requestid>580540</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>faaaf591c579f246c9a15c6cc90b38b2</srcmd5>
+    <version>4.0.0+git.1522278003.cd7ae188</version>
+    <time>1522317478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1522278003.cd7ae188:
+  * high: ui_resource: Undeprecate refresh and remove reprobe (bsc#1084736)</comment>
+    <requestid>592143</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>76ddf005d2305b20043b72425c8fbf30</srcmd5>
+    <version>4.0.0+git.1523435067.43bb4847</version>
+    <time>1523616619</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 4.0.0+git.1523435067.43bb4847:
+  * high: hbreport: adjustment for hbreport (bsc#1088784)</comment>
+    <requestid>595775</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>07662d8ef48ebbf1ca34cb2d64fd6a05</srcmd5>
+    <version>4.0.0+git.1523871649.78999e05</version>
+    <time>1523886348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1523871649.78999e05:
+  * doc: Fix unbalanced example marker (bsc#1075764)</comment>
+    <requestid>596962</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>5ebefb37783a08535aa1c9e20a8e7619</srcmd5>
+    <version>4.0.0+git.1526547258.54aafa1d</version>
+    <time>1526646499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1526547258.54aafa1d:
+  * high: bash_completion: Adjust for non-interactive mode(bsc#1090304)
+  * high: utils: Parse /32 route entries
+  * low: terminal will lose cursor after type ctrl+c(bsc#1090626)
+  * low: ui_configure: Adjust prompt string after help messages(bsc#1090140)
+  * low: bootstrap: Strip spaces before some status descriptions</comment>
+    <requestid>610226</requestid>
+  </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>285af89b5eb33bac448e3adc3a70c710</srcmd5>
+    <version>4.0.0+git.1526547258.54aafa1d</version>
+    <time>1534774741</time>
+    <user>dimstar_suse</user>
+    <comment>- Always require python3-parallax (bsc#1103832)</comment>
+    <requestid>629232</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>16f6d0c8c0ba8046b4799f81d484957a</srcmd5>
+    <version>4.0.0+git.1537860833.be41d63c</version>
+    <time>1537883042</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1537860833.be41d63c:
+  * fix: bootstrap: non interactive unicast cluster init and join(bsc#1109172)
+  * medium: bootstrap: Disable strict host key checking on all ssh invocations
+  * medium: support ocfs2 log collecting
+  * hbreport: process name change for pacemaker 2.0(bsc#1106052)
+  * Fix: bootstrap: &quot;-i&quot; option doesn't work(bsc#1103833, bsc#1103834)
+  * Low: bootstrap: No warning message when using '-q'
+  * high: ra: Support Pacemaker 2.0 daemon names
+  * high: config: Locate pacemaker daemons more intelligently (#67) (bsc#1096783)
+  * Fix: TypeError in logparser.py(bsc#1093433)</comment>
+    <requestid>637867</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>4af7ccf9551278072d5be05fca71939b</srcmd5>
+    <version>4.0.0+git.1537967262.68a0bd1e</version>
+    <time>1538117591</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1537967262.68a0bd1e:
+  * Fix incorrect bindnetaddr in corosync.conf (bsc#1103833) (bsc#1103834)</comment>
+    <requestid>638401</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>7398bdba34999cae9aefb1e2d43d3319</srcmd5>
+    <version>4.0.0+git.1538492109.4b1170b0</version>
+    <time>1538672458</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1538492109.4b1170b0:
+  * medium: bootstrap: Correctly check rrp_mode flag (bsc#1110463)
+  * medium: bootstrap: Pick first match for multiple routes (bsc#1106946)
+  * medium: utils: Use cloud metadata service to discover IP (bsc#1106946)
+  * Fix: bootstrap: change default ip address way for both mcast and unicat(bsc#1109975,bsc#1109974)</comment>
+    <requestid>639615</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>f8266664f064cd0c8192ea2c7fc76bbb</srcmd5>
+    <version>4.0.0+git.1539006450.f80a6308</version>
+    <time>1539013780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1539006450.f80a6308:
+  * medium: bootstrap: Skip netmask check on GCP (bsc#1106946)
+  * medium: utils: Detect local IP on GCP (bsc#1106946)</comment>
+    <requestid>640627</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>a6dac6fa810a401c11c1bf8c4795447c</srcmd5>
+    <version>4.0.0+git.1542103310.dd114188</version>
+    <time>1543953447</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653721</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>d9aa5ffb6201d44ad61e251d3268e59f</srcmd5>
+    <version>4.0.0+git.1543873923.0f9166fd</version>
+    <time>1544095159</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.0+git.1543873923.0f9166fd:
+  * medium: cibverify: Increase log level for verification (bsc#1116559)</comment>
+    <requestid>655551</requestid>
+  </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>9367bfc2b765766b08af03745c077b3c</srcmd5>
+    <version>4.0.0+git.1543873923.0f9166fd</version>
+    <time>1549624271</time>
+    <user>coolo</user>
+    <comment>- Avoid touching files to make build more reproducible
+- Install bash completion to correct location 
+</comment>
+    <requestid>672100</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>3f7cac62cbc49990e038fecd2e9af02a</srcmd5>
+    <version>4.0.0+git.1552985860.56f2db3a</version>
+    <time>1553611519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688380</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>29dfe2a1c3462a7191c6ffd84a88eb9f</srcmd5>
+    <version>4.0.0+git.1557307618.dc73b57b</version>
+    <time>1557472751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701570</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>f7b7f7c1e870bde0f0be5f72edb75f80</srcmd5>
+    <version>4.0.0+git.1558430233.89bb6eec</version>
+    <time>1559029362</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705613</requestid>
+  </revision>
+  <revision rev="158" vrev="2">
+    <srcmd5>07669483f9007e0c6e64eb15bf5305b1</srcmd5>
+    <version>4.0.0+git.1558430233.89bb6eec</version>
+    <time>1560338137</time>
+    <user>dimstar_suse</user>
+    <comment>Clean up changelog entries and fix my mail address (wrong address was used by mistake due to change in osc)</comment>
+    <requestid>708962</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>f313622afc367a38b6ebba8205c0b2f0</srcmd5>
+    <version>4.1.0+git.1561107542.79593cb0</version>
+    <time>1561195476</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to the 4.1.0 version upstream</comment>
+    <requestid>711294</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>37dcf88ae33d817049f97735371e579a</srcmd5>
+    <version>4.1.0+git.1563261260.3b251242</version>
+    <time>1564414047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717840</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>a711142d7250397867dc45b924a277ae</srcmd5>
+    <version>4.1.0+git.1566218232.dbdf060c</version>
+    <time>1566463971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724856</requestid>
+  </revision>
+</revisionlist>

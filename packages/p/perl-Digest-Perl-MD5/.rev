@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fcc9caba4c2db708ccaad818885217ae</srcmd5>
+    <version>1.8</version>
+    <time>1308061526</time>
+    <user>saschpe</user>
+    <comment>new dep</comment>
+    <requestid>72843</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a196499b1577d68f55324b0a8e52a6fd</srcmd5>
+    <version>1.8</version>
+    <time>1308061537</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72843
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a196499b1577d68f55324b0a8e52a6fd</srcmd5>
+    <version>1.8</version>
+    <time>1319182261</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d1c9cbdbb61e910f6508527a134956da</srcmd5>
+    <version>1.8</version>
+    <time>1323265131</time>
+    <user>coolo</user>
+    <comment>- fix license (forwarded request 95541 from coolo)</comment>
+    <requestid>95620</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>d1c9cbdbb61e910f6508527a134956da</srcmd5>
+    <version>1.8</version>
+    <time>1340183832</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>d1c9cbdbb61e910f6508527a134956da</srcmd5>
+    <version>1.8</version>
+    <time>1359109651</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>d1c9cbdbb61e910f6508527a134956da</srcmd5>
+    <version>1.8</version>
+    <time>1379663653</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>814734793baa67ee1d8ba99fb86c9730</srcmd5>
+    <version>1.9</version>
+    <time>1392111870</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>221607</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>814734793baa67ee1d8ba99fb86c9730</srcmd5>
+    <version>1.9</version>
+    <time>1409302266</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

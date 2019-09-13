@@ -1,0 +1,1465 @@
+<revisionlist>
+  <revision rev="1" vrev="19">
+    <srcmd5>6aa8688c11c25a4439018be602c772b0</srcmd5>
+    <version>1.4.0</version>
+    <time>1168904291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="40">
+    <srcmd5>c8563dd06388e87e187accbe11f99062</srcmd5>
+    <version>1.4.0</version>
+    <time>1169746017</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>61788af5d636b551cd49b8d01b4c424f</srcmd5>
+    <version>1.4.3</version>
+    <time>1172443479</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>c2b6a683b06dafc890811f415c1e2d8f</srcmd5>
+    <version>1.4.3</version>
+    <time>1175199866</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="14">
+    <srcmd5>15e9a069b87c3aeae4041eb53b9e5997</srcmd5>
+    <version>1.4.3</version>
+    <time>1177763683</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="17">
+    <srcmd5>f65ff06a372ff014b54c20ea22138130</srcmd5>
+    <version>1.4.3</version>
+    <time>1178228780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="26">
+    <srcmd5>5beefb0d3020a666acd4f270f8c48456</srcmd5>
+    <version>1.4.3</version>
+    <time>1179877318</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ddeea821a45e5cd503059907a53bbf3f</srcmd5>
+    <version>1.4.4</version>
+    <time>1182360797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>fc02e9f1dd44b8956dcd949fe394712e</srcmd5>
+    <version>1.4.4</version>
+    <time>1182464051</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="33">
+    <srcmd5>5704fd1059be620ed95ba3b8345118f7</srcmd5>
+    <version>1.4.4</version>
+    <time>1192227171</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d6cb284c879a882ba967e5480bb1d2c7</srcmd5>
+    <version>1.4.5</version>
+    <time>1192461314</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c0905286505412cfe8d4bc6d4069122e</srcmd5>
+    <version>1.5.0</version>
+    <time>1192552425</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>44d7a42a1456bb6eb11c220233faa681</srcmd5>
+    <version>1.5.0</version>
+    <time>1193356408</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>91a52fa827d3762d906f31ef11df6828</srcmd5>
+    <version>1.5.0</version>
+    <time>1193657452</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>dec9fbc8a694b93bfcf8f7699ab5e6dc</srcmd5>
+    <version>1.5.0</version>
+    <time>1194305903</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>51cc971d979c3df99225872c1e1c280f</srcmd5>
+    <version>1.5.0</version>
+    <time>1194715875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>9501a49ddd3acceb2f09ae17db57807a</srcmd5>
+    <version>1.5.0</version>
+    <time>1195464434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>c0a58876dd77f35d3c93d2cb7fd7c53f</srcmd5>
+    <version>1.5.0</version>
+    <time>1195823633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="20">
+    <srcmd5>bc16e912793a3d0a57e92db6591bb2bb</srcmd5>
+    <version>1.5.0</version>
+    <time>1196104783</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="21">
+    <srcmd5>9c6997ff7dcb3280a92de78d67466e33</srcmd5>
+    <version>1.5.0</version>
+    <time>1197576186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="28">
+    <srcmd5>c9e24cf55338dddb5909e5f4ffde7131</srcmd5>
+    <version>1.5.0</version>
+    <time>1199930955</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="31">
+    <srcmd5>fff5c9161019c70bcdcc3f4e3bd723d9</srcmd5>
+    <version>1.5.0</version>
+    <time>1200874724</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="33">
+    <srcmd5>7487f3260b468d58b829c98674c402cf</srcmd5>
+    <version>1.5.0</version>
+    <time>1201081125</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="35">
+    <srcmd5>7a3ddf1c708a877e89e6d440c11e1e31</srcmd5>
+    <version>1.5.0</version>
+    <time>1201365532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="38">
+    <srcmd5>a464530d39f7b9c2d2487cbb63ed14ba</srcmd5>
+    <version>1.5.0</version>
+    <time>1201909406</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="42">
+    <srcmd5>ccbc9c641e153ce9b6f0a1e5172bedf1</srcmd5>
+    <version>1.5.0</version>
+    <time>1202499753</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="47">
+    <srcmd5>1ace4e14eebe364acbe91a25bfe75896</srcmd5>
+    <version>1.5.0</version>
+    <time>1203036105</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="52">
+    <srcmd5>cfe7bb544984a6cc1bd3b5aaecfb794e</srcmd5>
+    <version>1.5.0</version>
+    <time>1203957759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="54">
+    <srcmd5>e82aa3ad7e5d129ba1d0b558a70c7527</srcmd5>
+    <version>1.5.0</version>
+    <time>1204219456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="58">
+    <srcmd5>61af188495e71bbabb55e602d7a7ce1f</srcmd5>
+    <version>1.5.0</version>
+    <time>1204928575</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="60">
+    <srcmd5>43d713ad8d5f835aca1c8f6c3c1d6c1f</srcmd5>
+    <version>1.5.0</version>
+    <time>1205513869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="63">
+    <srcmd5>d6503da7b4d02c2a1b1f070fdd398dea</srcmd5>
+    <version>1.5.0</version>
+    <time>1206070700</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="72">
+    <srcmd5>6837ff29f618c833bb79f31d8e263be1</srcmd5>
+    <version>1.5.0</version>
+    <time>1208908328</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="74">
+    <srcmd5>fc3a8e6cea981ebd16610bee167400cd</srcmd5>
+    <version>1.5.0</version>
+    <time>1209202818</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="79">
+    <srcmd5>dcfa6820b26c53530351f347dcd5a328</srcmd5>
+    <version>1.5.0</version>
+    <time>1209942550</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="85">
+    <srcmd5>459932c4fb1a7fdb2d5f4fc9d54167e6</srcmd5>
+    <version>1.5.0</version>
+    <time>1210942666</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="88">
+    <srcmd5>25b7332c7f31b86c765af95f9e99768c</srcmd5>
+    <version>1.5.0</version>
+    <time>1211413738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="89">
+    <srcmd5>04541170cd3e5cb458506e40eac23031</srcmd5>
+    <version>1.5.0</version>
+    <time>1211820800</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="90">
+    <srcmd5>d8fbd1ee1c822b07dd9e6e1e8af2d262</srcmd5>
+    <version>1.5.0</version>
+    <time>1211916153</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="92">
+    <srcmd5>ffe00501882f9ec79d62deb7d34cf52a</srcmd5>
+    <version>1.5.0</version>
+    <time>1212230125</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="95">
+    <srcmd5>f0da377571145bd172848955d1b261f6</srcmd5>
+    <version>1.5.0</version>
+    <time>1212681501</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="99">
+    <srcmd5>27f9fce291ac04344b1052ecf93b2342</srcmd5>
+    <version>1.5.0</version>
+    <time>1214490383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="105">
+    <srcmd5>8667e2990a6630abfb100e11bcc6eec3</srcmd5>
+    <version>1.5.0</version>
+    <time>1216160798</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>279e42625f6e4aa053c2e7765d050e68</srcmd5>
+    <version>1.5.1</version>
+    <time>1217649058</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>eec0c444218a8a5bc3ffe559d3ff0e03</srcmd5>
+    <version>1.5.2</version>
+    <time>1220665522</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="9">
+    <srcmd5>127a54971d1005b469cd04651b37e831</srcmd5>
+    <version>1.5.2</version>
+    <time>1222270533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="10">
+    <srcmd5>06d65143dcd4e3e5b570ef38384aeb7c</srcmd5>
+    <version>1.5.2</version>
+    <time>1224694248</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="11">
+    <srcmd5>004c4386e9bc76d342254a72fb246a60</srcmd5>
+    <version>1.5.2</version>
+    <time>1227012089</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="12">
+    <srcmd5>213a3de6124c9483a91f626ba3d68b8f</srcmd5>
+    <version>1.5.2</version>
+    <time>1229446017</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="13">
+    <srcmd5>e6a7c130e053a33e54e26e4c6b45e0e6</srcmd5>
+    <version>1.5.2</version>
+    <time>1229696153</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>0ef26de3589b234a8908290ababfe8e5</srcmd5>
+    <version>1.5.5</version>
+    <time>1231780918</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>a79e7dc1de13d5fe98a683f2e8d7e526</srcmd5>
+    <version>1.5.5</version>
+    <time>1235083927</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>98e8ec7646bb0d5677ccaf8e6bacab56</srcmd5>
+    <version>1.6.1</version>
+    <time>1240056348</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>8c85c97d9e4db20cd268b39108bbe68f</srcmd5>
+    <version>1.6.2</version>
+    <time>1244562598</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>b959a3ae0b4efd1a179bfd03af06c4c8</srcmd5>
+    <version>1.6.2</version>
+    <time>1244593300</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>8a988fd61e6c5b2ad02f25e768f6dd24</srcmd5>
+    <version>1.6.2</version>
+    <time>1245340956</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>a5967b26274d77df9e17b9da9ebe91c6</srcmd5>
+    <version>1.6.2</version>
+    <time>1247130774</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e9c1ee1bc44e9b35d98f28c63279756a</srcmd5>
+    <version>1.6.3</version>
+    <time>1247326632</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>928eb9f147f9faa04404c4f41881bd0f</srcmd5>
+    <version>1.6.3</version>
+    <time>1248540781</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>928eb9f147f9faa04404c4f41881bd0f</srcmd5>
+    <version>1.6.3</version>
+    <time>1248540781</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>f5cd5c460b8432ffbc4f9acbe6d86887</srcmd5>
+    <version>1.6.6</version>
+    <time>1256306456</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/subversion based on submit request 22913 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>1b9fb314a9b03e9f35ae43eaacc175d0</srcmd5>
+    <version>1.6.6</version>
+    <time>1262865824</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/subversion based on submit request 28037 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>b33b31921fc2c5b04af9f10cc9696f77</srcmd5>
+    <version>1.6.9</version>
+    <time>1268069122</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/subversion based on submit request 34322 from user coolo
+</comment>
+    <requestid>34322</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>5b6948933d3bc3da111c9e99cb3fcd3d</srcmd5>
+    <version>1.6.9</version>
+    <time>1268926245</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>5b6948933d3bc3da111c9e99cb3fcd3d</srcmd5>
+    <version>1.6.9</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="66" vrev="5">
+    <srcmd5>5b6948933d3bc3da111c9e99cb3fcd3d</srcmd5>
+    <version>1.6.9</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>9e2382279cc83f4d01f4ee262ccdc0d9</srcmd5>
+    <version>1.6.12</version>
+    <time>1285595588</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/subversion based on submit request 49176 from user coolo
+</comment>
+    <requestid>49176</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>08b743f340ad0c762d5e428e1ab2701d</srcmd5>
+    <version>1.6.13</version>
+    <time>1288263363</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51539 from user coolo
+</comment>
+    <requestid>51539</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>3abf39f4df404264bbf521c4e7ecb6ef</srcmd5>
+    <version>1.6.13</version>
+    <time>1290787087</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53862 from user dirkmueller
+</comment>
+    <requestid>53862</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>6bb081b83bab60c6e95d48aa6d47281e</srcmd5>
+    <version>1.6.13</version>
+    <time>1290787097</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53862
+</comment>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>3cf72b387f995cc5d4b34a701310a143</srcmd5>
+    <version>1.6.15</version>
+    <time>1293579207</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56674 from user dirkmueller
+</comment>
+    <requestid>56674</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>8ac1c8d586743dc7bd4c6aa72cca259f</srcmd5>
+    <version>1.6.15</version>
+    <time>1294965925</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57953 from user coolo
+</comment>
+    <requestid>57953</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>92b663c40894e9a814c211b15f380c58</srcmd5>
+    <version>1.6.15</version>
+    <time>1294965936</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57953
+</comment>
+  </revision>
+  <revision rev="74" vrev="6">
+    <srcmd5>92b663c40894e9a814c211b15f380c58</srcmd5>
+    <version>1.6.15</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>49d60f54b5d008a43f43dbbf5628d1ee</srcmd5>
+    <version>1.6.16</version>
+    <time>1299244350</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63437 from user dirkmueller
+</comment>
+    <requestid>63437</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>de23b4cf24f275cadede7fdbf586ac7d</srcmd5>
+    <version>1.6.16</version>
+    <time>1299244358</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63437
+</comment>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>44e0ab96a305c03f3bdc1ba97159fda5</srcmd5>
+    <version>1.6.17</version>
+    <time>1307369949</time>
+    <user>saschpe</user>
+    <comment>- update to 1.6.17 (bnc#698205):
+  includes security fixes [CVE-2011-1752, CVE-2011-1783, CVE-2011-1921] 
+  User-visible changes:
+    * improve checkout speed on Windows (issue #3719)
+    * make 'blame -g' more efficient on with large mergeinfo (r1094692)
+    * avoid some invalid handle exceptions on Windows (r1095654)
+    * preserve log message with a non-zero editor exit (r1072084)
+    * fix FSFS cache performance on 64-bit platforms (r1103665)
+    * make svn cleanup tolerate obstructed directories (r1091881)
+    * fix deadlock in multithreaded servers serving FSFS repositories (r1104093)
+    * detect very occasional corruption and abort commit (issue #3845)
+    * fixed: file externals cause non-inheritable mergeinfo (issue #3843)
+    * fixed: file externals cause mixed-revision working copies (issue #3816)
+    * fix crash in mod_dav_svn with GETs of baselined resources (r1104126)
+            See CVE-2011-1752, and descriptive advisory at
+            http://subversion.apache.org/security/CVE-2011-1752-advisory.txt
+    * fixed: write-through proxy could direcly commit to slave (r917523)
+    * detect a particular corruption condition in FSFS (r1100213)
+    * improve error message when clients refer to unkown revisions (r939000)
+    * bugfixes and optimizations to the DAV mirroring code (r878607)
+    * fixed: locked and deleted file causes tree conflict (issue #3525)
+    * fixed: update touches locked file with svn:keywords property (issue #3471)
+    * fix svnsync handling of directory copyfrom (issue #3641)
+    * fix 'log -g' excessive duplicate output (issue #3650)
+    * fix svnsync copyfrom handling bug with BDB (r1036429)
+    * server-side validation of svn:mergeinfo syntax during commit (issue #3895)
+    * fix remotely triggerable mod_dav_svn DoS
+            See CVE-2011-1783, and descriptive advisory at
+            http://subversion.apache.org/security/CVE-2011-1783-advisory.txt
+    * fix potential leak of authz-protected file contents</comment>
+    <requestid>72762</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>44e0ab96a305c03f3bdc1ba97159fda5</srcmd5>
+    <version>1.6.17</version>
+    <time>1319182494</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>06e5161c921539939ef80f90ea3edc4e</srcmd5>
+    <version>1.7.1</version>
+    <time>1320741313</time>
+    <user>coolo</user>
+    <comment>- update to 1.7.1
+  * Based on many fixes by stsp.elego.de, many thanks!
+  * License changed to Apache License, version 2
+  * Detecting MIME types with libmagic 
+  * Optimizations of diff, merge and blame
+  * See http://subversion.apache.org/docs/release-notes/1.7
+    for details
+
+- merge in fixes from stsp.elego.de:
+ * Simplify tools install and ship a smaller amount of tools. 
+   Should fix rpmlint complaining about .libs/ directories
+   and various other illegal files ending up in the package.
+   Users are better off downloading the scripts previously shipped
+   in this package directly from the upstream svn repository.
+
+- merge in package description fixes from stsp.elego.de, thanks!
+
+- reenable gnome-keyring/kde4-keyring support for older distros
+  (bnc#713919) 
+
+- pass the serf configure option to subversion's configure script,
+  not to swig's configure script
+
+- add bconditional for libserf support
+
+- fix swig bindings building (bnc#710878)
+
+- run regression tests again, but only for fsfs, as bdb
+  is slow and often runs out of memory</comment>
+    <requestid>90217</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>0298ee2d036b33f8e6e251d87358f402</srcmd5>
+    <version>1.7.1</version>
+    <time>1322259178</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93027 from coolo)</comment>
+    <requestid>93652</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>809aaf86a086161dff587f95ba94dd0b</srcmd5>
+    <version>1.7.2</version>
+    <time>1323705559</time>
+    <user>coolo</user>
+    <comment>update to upstream 1.7.2 (forwarded request 95502 from AndreasStieger)</comment>
+    <requestid>96189</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>8acda4d0e8e0bc35742b9bafb06c8691</srcmd5>
+    <version>1.7.2</version>
+    <time>1325767913</time>
+    <user>coolo</user>
+    <comment>- update license to Apache-2
+- run regression tests for 12.1 again
+- allow builds --without regression_tests
+- subversion.libtool-verbose.patch
+  refresh for moved source lines
+- subversion-swig-perl-install_vendor.patch
+  refresh for moved source lines
+- subversion.libtool-pie-flags.patch
+  refresh for moved source lines
+- subversion.perl.LD_RUN_PATH.patch
+  refresh for moved source lines
+- subversion-no-build-date.patch
+  refresh for moved source lines
+- subversion-neon-systemproxy.patch
+  adjust to changed upstream sources, remove one chunk which would
+  create duplicated lines in patched result (forwarded request 97808 from AndreasStieger)</comment>
+    <requestid>98645</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>d80b175ec2fa972b316577333e360e3d</srcmd5>
+    <version>1.7.3</version>
+    <time>1330619278</time>
+    <user>coolo</user>
+    <comment>- Apache-2 is not a license in spdx.org, pick Apache-2.0 (forwarded request 106367 from coolo)</comment>
+    <requestid>107073</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>9590ba0f5712d9c1b3c182192fb9fafb</srcmd5>
+    <version>1.7.4</version>
+    <time>1332262070</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108973</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>ed53fd2c2d261ac6456e6d52c2afaee4</srcmd5>
+    <version>1.7.5</version>
+    <time>1338528261</time>
+    <user>coolo</user>
+    <comment>- update to upstream 1.7.5
+- Subversion currently does not compile Ruby bindings for 1.9
+  disable to fix build in Factory
+- add subversion-1.7.4-ruby-1.9-RbConfig.patch to use RbConfig
+  instead of Config which is deprecated in Ruby 1.9
+  (committed to upstream trunk)
+- fix conditional configuration for serf support
+- add check that ra_serf is built as configure failed silently
+- Allow unit tests to be run for Factory: --with=regression_tests 
+  replacing the inline conditional (forwarded request 122507 from AndreasStieger)</comment>
+    <requestid>123061</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>ade8e8d7c86d417be1e71e4f2991a4ab</srcmd5>
+    <version>1.7.5</version>
+    <time>1339478192</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>124602</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>4fda80877d8e7949710da6697d8c2fd0</srcmd5>
+    <version>1.7.5</version>
+    <time>1340024019</time>
+    <user>coolo</user>
+    <comment>- make build against neon optional, default on, like serf
+  
+  mainly due to discussion on svn-dev ml about possible
+  removal of ra_neon for 1.8.0 (forwarded request 124760 from AndreasStieger)</comment>
+    <requestid>125139</requestid>
+  </revision>
+  <revision rev="88" vrev="5">
+    <srcmd5>4fda80877d8e7949710da6697d8c2fd0</srcmd5>
+    <version>1.7.5</version>
+    <time>1340184243</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>c8cf587b561e591b47e070b9a7d9117b</srcmd5>
+    <version>1.7.6</version>
+    <time>1345973699</time>
+    <user>namtrac</user>
+    <comment>update to 1.7.6 (forwarded request 130879 from AndreasStieger)</comment>
+    <requestid>131429</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>4df3503cb50d1856af47a9b40541c9cc</srcmd5>
+    <version>1.7.7</version>
+    <time>1349947648</time>
+    <user>coolo</user>
+    <comment>1.7.7 (forwarded request 137649 from AndreasStieger)</comment>
+    <requestid>137650</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>2b37b9565fa03160f0f9281de9c63b1d</srcmd5>
+    <version>1.7.7</version>
+    <time>1355156402</time>
+    <user>coolo</user>
+    <comment>- for package maintainers, add support to run regression tests 
+  over ra_neon and ra_serf (http://) via Apache / mod_dav_svn
+  when built --with=regression_tests (forwarded request 144822 from AndreasStieger)</comment>
+    <requestid>144823</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>a3291ce82064f4ae58066260a003e873</srcmd5>
+    <version>1.7.8</version>
+    <time>1356082525</time>
+    <user>coolo</user>
+    <comment>- update to 1.7.8 [bnc#794676]
+- updated patches
+- extended regression tests support (forwarded request 146184 from AndreasStieger)</comment>
+    <requestid>146185</requestid>
+  </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>a3291ce82064f4ae58066260a003e873</srcmd5>
+    <version>1.7.8</version>
+    <time>1359110447</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="94" vrev="4">
+    <srcmd5>517059f9d2804a2485154d865e727864</srcmd5>
+    <version>1.7.8</version>
+    <time>1363940521</time>
+    <user>coolo</user>
+    <comment>- Copy updated config.{guess,sub} to in-tree swig source for aarch64 (forwarded request 160364 from Andreas_Schwab)</comment>
+    <requestid>160372</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>1c4e98f7d1cea998b52af5df3cc1c10a</srcmd5>
+    <version>1.7.9</version>
+    <time>1365484224</time>
+    <user>coolo</user>
+    <comment>update to 1.7.9 [bnc#813913] (forwarded request 163080 from AndreasStieger)</comment>
+    <requestid>163081</requestid>
+  </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>bf1d543a8911986177d3c6924d5b24b3</srcmd5>
+    <version>1.7.9</version>
+    <time>1366723321</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>172949</requestid>
+  </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>edaf105b0a1298b00fc565830f0b4d16</srcmd5>
+    <version>1.7.9</version>
+    <time>1368714742</time>
+    <user>coolo</user>
+    <comment>- package verify-po.py and other hook scripts as documentation 
+  [bnc#781982]</comment>
+    <requestid>175881</requestid>
+  </revision>
+  <revision rev="98" vrev="4">
+    <srcmd5>7b9eeb69cf48b0abea860d5782581282</srcmd5>
+    <version>1.7.9</version>
+    <time>1369641761</time>
+    <user>coolo</user>
+    <comment>- use svnserveautocheck.sh and davautocheck.sh for unit tests,
+  greatly reducing complexity of spec file and adding support
+  for running unit tests with httpd 2.4 in factory
+- add subversion-1.7.9-davautocheck-LD_LIBRARY_PATH.patch to 
+  not overwrite LD_LIBRARY_PATH in davautocheck.sh to make
+  auth-test pass (forwarded request 176300 from AndreasStieger)</comment>
+    <requestid>176301</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>88baf5afb5399a9b2b4c2f439c7fb2d9</srcmd5>
+    <version>1.7.10</version>
+    <time>1370430936</time>
+    <user>coolo</user>
+    <comment>- build with -std=gnu99 on 12.3 and later to match apache httpd to 
+  avoid configure warning 
+- update to 1.7.10 [bnc#821505]
+  CVE-2013-1968 CVE-2013-2088 CVE-2013-2112</comment>
+    <requestid>177321</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>1a4d8e9804a43aa5065cb704d63ecb4d</srcmd5>
+    <version>1.7.10</version>
+    <time>1371544711</time>
+    <user>coolo</user>
+    <comment>- fix build for 12.3 x86_64 due to choice for libjpeg-devel 
+- fix execution of regression tests on SLE 11</comment>
+    <requestid>179117</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>db67968cd9dc58f82b485bbc46202b80</srcmd5>
+    <version>1.8.0</version>
+    <time>1371647668</time>
+    <user>coolo</user>
+    <comment>Apache Subversion 1.8.0</comment>
+    <requestid>179587</requestid>
+  </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>15a37a603a13a8d8f4d4e496339137ec</srcmd5>
+    <version>1.8.0</version>
+    <time>1372145758</time>
+    <user>coolo</user>
+    <comment>- require krb5-devel to fix factory build
+- remove unrequired BuildIgnore
+- update keyring
+- change swig tarball to pristine upstream file</comment>
+    <requestid>180515</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>77e0e6acf57b718803c3f41bceaac846</srcmd5>
+    <version>1.8.1</version>
+    <time>1374702063</time>
+    <user>coolo</user>
+    <comment>Apache Subversion 1.8.1 [bnc#830031] CVE-2013-4131</comment>
+    <requestid>184224</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>5668423c328060a931280f5b517c0913</srcmd5>
+    <version>1.8.3</version>
+    <time>1378126980</time>
+    <user>coolo</user>
+    <comment>Apache Subversion 1.8.3 (forwarded request 196924 from AndreasStieger)</comment>
+    <requestid>196926</requestid>
+  </revision>
+  <revision rev="105" vrev="3">
+    <srcmd5>5668423c328060a931280f5b517c0913</srcmd5>
+    <version>1.8.3</version>
+    <time>1379664741</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>c18129cc11e693f254460a99dfa56901</srcmd5>
+    <version>1.8.4</version>
+    <time>1383144829</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 1.8.4 [bnc#847103] (forwarded request 205158 from AndreasStieger)</comment>
+    <requestid>205159</requestid>
+  </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>9a7e8f45f8050219bfafbb5828507e51</srcmd5>
+    <version>1.8.4</version>
+    <time>1385143306</time>
+    <user>coolo</user>
+    <comment>- print error logs on on regression test failures
+- always build with and statically link to in-tree SQLite to 
+  prevent performance problems and test failures with SQLite 3.8
+- fix regression tests for ppc/ppc64 architectures, found in
+  openSUSE package build and fixed with upstream developers, adding
+  subversion-1.8.x-fix-ppc-tests.patch
+- improve sqlite and python-ctypes conditionals, the latter not
+  building for any current targets
+- require python-sqlite when running regression tests for all
+  targets, no longer pulled in implicitly
+- update keyring, use Subversion Project Management Committee
+  keyring rather than all committers</comment>
+    <requestid>207634</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>e4c0db3418e0dda03536faef1494a80f</srcmd5>
+    <version>1.8.5</version>
+    <time>1385296409</time>
+    <user>coolo</user>
+    <comment>update to 1.8.5 [bnc#850747]</comment>
+    <requestid>208054</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>4276c70fc3b54f5840a5a1d528f37703</srcmd5>
+    <version>1.8.5</version>
+    <time>1385442890</time>
+    <user>coolo</user>
+    <comment>- CVE redaction for 1.8.5 [bnc#850747]
+- fix build on Factory where ruby 1.9 is no longer available,
+  do not build ruby bindings</comment>
+    <requestid>208334</requestid>
+  </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>3458b01efb3fa13704de1594229cc148</srcmd5>
+    <version>1.8.5</version>
+    <time>1385993496</time>
+    <user>coolo</user>
+    <comment>- add repository benchmarking tool svn-bench to tools subpackage
+- add repository statistics tool fsfs-stats to tools subpackage
+- fix performance problems when dynamically linking against 
+  SQLite 3.8. While this does not create a new working copy format
+  version, working copies that were created with a 1.8 client 
+  linked against SQLite 3.7 need to have &quot;svn upgrade&quot; run once
+  to enjoy the benefits, while otherwise maintaining compatibility.
+  The step is optional and not required for new working copies.
+  Adds subversion-1.8.x-SQLite-3.8.patch based on upstream commits.
+- dynamically link against SQLite as per the above in 13.1 and up.</comment>
+    <requestid>209130</requestid>
+  </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>8c49a183b54e5e06d7f990d79e9298b4</srcmd5>
+    <version>1.8.5</version>
+    <time>1386604907</time>
+    <user>coolo</user>
+    <comment>- add Subversion C API documentation to subversion-devel package
+- fix rpmlint warning W: suse-wrong-suse-capitalisation
+- Copy updated config.{guess,sub} to in-tree swig source also
+  for ppc64le.</comment>
+    <requestid>209835</requestid>
+  </revision>
+  <revision rev="112" vrev="5">
+    <srcmd5>ac31196aa78d6f5084decc363e548e4c</srcmd5>
+    <version>1.8.5</version>
+    <time>1392111939</time>
+    <user>coolo</user>
+    <comment>- fix a remotely triggerable segfault in mod_dav_svn when svn is
+  handling the server root and SVNListParentPath is on
+  [bnc#862459] CVE-2014-0032 (forwarded request 221556 from AndreasStieger)</comment>
+    <requestid>221557</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>3d24645eb0522beefaad71ebe3d5a8fd</srcmd5>
+    <version>1.8.8</version>
+    <time>1392962324</time>
+    <user>coolo</user>
+    <comment>Apache Subversion 1.8.8 (forwarded request 223274 from AndreasStieger)</comment>
+    <requestid>223276</requestid>
+  </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>e4c3a486caa1e84f6e22d51c58a39d6b</srcmd5>
+    <version>1.8.8</version>
+    <time>1398923585</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>232249</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>a194a5b15d5e638cef909af7924794c3</srcmd5>
+    <version>1.8.9</version>
+    <time>1400057184</time>
+    <user>coolo</user>
+    <comment>Apache Subversion 1.8.9 [bnc#877555] (forwarded request 233786 from AndreasStieger)</comment>
+    <requestid>233787</requestid>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>e2c614fa87673cc4835282c27cc515d5</srcmd5>
+    <version>1.8.9</version>
+    <time>1402058186</time>
+    <user>coolo</user>
+    <comment>do not package svnserve pid file in /var/run, fixing Factory (forwarded request 236329 from AndreasStieger)</comment>
+    <requestid>236330</requestid>
+  </revision>
+  <revision rev="117" vrev="3">
+    <srcmd5>4df01f33255c2551fc8eef687af25453</srcmd5>
+    <version>1.8.9</version>
+    <time>1406179924</time>
+    <user>coolo</user>
+    <comment>- do not undef bool in swig, it breaks modern perl versions</comment>
+    <requestid>242106</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>94aab3797b8010919d3f2a44084c9178</srcmd5>
+    <version>1.8.10</version>
+    <time>1407912550</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244247</requestid>
+  </revision>
+  <revision rev="119" vrev="3">
+    <srcmd5>94aab3797b8010919d3f2a44084c9178</srcmd5>
+    <version>1.8.10</version>
+    <time>1409303424</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="120" vrev="4">
+    <srcmd5>3e8c7a628a13e6c3c56d2edc34b7e7ac</srcmd5>
+    <version>1.8.10</version>
+    <time>1410361336</time>
+    <user>coolo</user>
+    <comment>spec file clean-up and unbundling by scarabeus_iv, without ctypesgen not available in openSUSE:Factory</comment>
+    <requestid>248119</requestid>
+  </revision>
+  <revision rev="121" vrev="5">
+    <srcmd5>b9d26771a2cbcff4b7e423f26b639cbe</srcmd5>
+    <version>1.8.10</version>
+    <time>1411721520</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>252007</requestid>
+  </revision>
+  <revision rev="122" vrev="6">
+    <srcmd5>dd198c97cf1e39c2aec3a0e1862f2dce</srcmd5>
+    <version>1.8.10</version>
+    <time>1412098810</time>
+    <user>coolo</user>
+    <comment>Build with python-ctypesgen after it was accepted into factory</comment>
+    <requestid>252739</requestid>
+  </revision>
+  <revision rev="123" vrev="7">
+    <srcmd5>bda106de9f3c7fa3e3b6bc5a8876b7ba</srcmd5>
+    <version>1.8.10</version>
+    <time>1415118540</time>
+    <user>coolo</user>
+    <comment>- Add a versioned runtime requirement for sqlite and pass it to
+  configure via --enable-sqlite-compatibility-version to allow
+  running with sqlite older than at build time but compatible.
+- make build with KDE / WKallet optional to fix build with SLE 12</comment>
+    <requestid>259335</requestid>
+  </revision>
+  <revision rev="124" vrev="8">
+    <srcmd5>77ae01f5acbbdbcf8197537a5b2aad05</srcmd5>
+    <version>1.8.10</version>
+    <time>1416823735</time>
+    <user>dimstar_suse</user>
+    <comment>fix bashisms in mailer-init.sh script</comment>
+    <requestid>262525</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>7e53dac693a5e1bf6a3abe459adfc7d6</srcmd5>
+    <version>1.8.11</version>
+    <time>1418978331</time>
+    <user>dimstar_suse</user>
+    <comment>Apache Subversion 1.8.11 [boo#909935]
+  * CVE-2014-3580: mod_dav_svn DoS from invalid REPORT requests.
+  * CVE-2014-8108: mod_dav_svn DoS from use of invalid transaction
+    names.</comment>
+    <requestid>265818</requestid>
+  </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>6c79a2fd76194015b04ca321363d89d0</srcmd5>
+    <version>1.8.11</version>
+    <time>1420833028</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280440</requestid>
+  </revision>
+  <revision rev="127" vrev="3">
+    <srcmd5>5af6cf56f775bd5db4ddcb994cb5519a</srcmd5>
+    <version>1.8.11</version>
+    <time>1424622404</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with swig 3.0.3 and later</comment>
+    <requestid>287057</requestid>
+  </revision>
+  <revision rev="128" vrev="4">
+    <srcmd5>9f7fa5d99d864333234a6974ce03c46e</srcmd5>
+    <version>1.8.11</version>
+    <time>1426680527</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>291238</requestid>
+  </revision>
+  <revision rev="129" vrev="5">
+    <srcmd5>96e381e311ed5976979b194f2aa285e3</srcmd5>
+    <version>1.8.11</version>
+    <time>1427564341</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>293494</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>ad00d1da17b5e41b1b72fd35f73498b5</srcmd5>
+    <version>1.8.13</version>
+    <time>1427983406</time>
+    <user>dimstar_suse</user>
+    <comment>Apache Subversion 1.8.13
+    (bsc#923793 CVE-2015-0202) 
+    (bsc#923794 CVE-2015-0248)
+    (bsc#923795 CVE-2015-0251)</comment>
+    <requestid>293791</requestid>
+  </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>958e201eae886b50da7b20b593cda90f</srcmd5>
+    <version>1.8.13</version>
+    <time>1428652495</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295241</requestid>
+  </revision>
+  <revision rev="132" vrev="3">
+    <srcmd5>80fd52dd13fa45eac25cb4aabf8603f6</srcmd5>
+    <version>1.8.13</version>
+    <time>1431980634</time>
+    <user>dimstar_suse</user>
+    <comment>- disable failing check-swig-rb, fixing build in Factory</comment>
+    <requestid>307514</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>730cc460feb8a209e0d9a016c4a14f3f</srcmd5>
+    <version>1.8.14</version>
+    <time>1438899900</time>
+    <user>dimstar_suse</user>
+    <comment>- Pass --enable-broken-httpd-auth to configure. Assumes all apache2
+  packages contain security patches regardless of their version number.
+  Should fix the build on SLES12 and perhaps elsewhere.
+
+- fix mod_authz_svn build with -Wunused-variable
+  * subversion-1.8.14-unused-var-authnrequired.patch
+
+- Apache Subversion 1.8.14
+  This release fixes two vulnerabilities:
+  * mod_authz_svn: do not leak information in mixed anonymous/authenticated
+    httpd (dav) configurations (CVE-2015-3184) bnc#939514
+  * do not leak paths that were hidden by path-based authz (CVE-2015-3187)
+    bnc#939517
+  Non-security fixes:
+  * document svn:autoprops
+  * fix 'svn cp ^/A/D/H@1 ^/A' to properly create A
+  * improve conflict prompts for binary files
+  * improve performance of 'ls -v'
+  * improved Sqlite 3.8.9 query performance
+  * fixed issue #4580: 'svn -v st' on file externals reports &quot;?&quot; for user/rev
+  * mod_dav_svn: do not ignore skel parsing errors
+  * detect invalid svndiff data earlier
+  * prevent possible repository corruption on power/disk failures
+  * fixed issue #4577: Read error with some repository nodes
+  * fixed issue #4531: server-side copy (over dav) is slow
+  * swig-pl: fix some stack memory problems
+- Refreshed patch subversion-no-build-date.patch
+- Remove obsoleted patch subversion-1.8.13-fix-sqlite-3.8.9-tests.patch
+- Add patch subversion-1.8.14-httpd-version-number-detection.patch</comment>
+    <requestid>320945</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>565ad037eaacb2d8b8dc400e10cd02ad</srcmd5>
+    <version>1.9.0</version>
+    <time>1440135667</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.9.0</comment>
+    <requestid>324171</requestid>
+  </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>c443601428a01689d708783bfefdbcc3</srcmd5>
+    <version>1.9.0</version>
+    <time>1440658625</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>326410</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>7aa84cd0ac033b0f936d6dee3779a182</srcmd5>
+    <version>1.9.1</version>
+    <time>1441726769</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328820</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>acd2f5a781f8a3ccd85826eb65ea4fc6</srcmd5>
+    <version>1.9.2</version>
+    <time>1443585096</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333214</requestid>
+  </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>51a1a40f79dcb6d5680a4752584f2f23</srcmd5>
+    <version>1.9.2</version>
+    <time>1446719749</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>342426</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>f3130d4cde823abc113a1ccb9e1ebb50</srcmd5>
+    <version>1.9.3</version>
+    <time>1450364090</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349036</requestid>
+  </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>debb42d946ebe9da589c058a359dbc58</srcmd5>
+    <version>1.9.3</version>
+    <time>1457353609</time>
+    <user>dimstar_suse</user>
+    <comment>- make the subversion package conflict with KWallet and Gnome
+  Keyring packages with do not require matching subversion versions 
+  in SLE 12 and openSUSE Leap 42.1 and thus break the main package
+  upon partial upgrade. Fix/workaround for boo#969159</comment>
+    <requestid>365111</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>6399f3e3078fa1113d54db0683923a06</srcmd5>
+    <version>1.9.4</version>
+    <time>1462051897</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391970</requestid>
+  </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>fe398f11784b8ce36cfab00a2053a667</srcmd5>
+    <version>1.9.4</version>
+    <time>1467360006</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop syslog.target from After wrt bnc#983938</comment>
+    <requestid>405451</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>72767b769a102cb77c715017753ea984</srcmd5>
+    <version>1.9.5</version>
+    <time>1480693325</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.9.5:
+  * bsc#1011552 CVE-2016-8734 Unrestricted XML entity expansion in
+    mod_dontdothat and Subversion clients using http(s)://
+- Client-side bugfixes:
+  * fix accessing non-existent paths during reintegrate merge (r1766699 et al)
+  * fix handling of newly secured subdirectories in working copy (r1724448)
+  * info: remove trailing whitespace in --show-item=revision (issue #4660)
+  * fix recording wrong revisions for tree conflicts (r1734106)
+  * gpg-agent: improve discovery of gpg-agent sockets (r1766327)
+  * gpg-agent: fix file descriptor leak (r1766323)
+  * resolve: fix --accept=mine-full for binary files (issue #4647)
+  * merge: fix possible crash (issue #4652)
+  * resolve: fix possible crash (r1748514)
+  * fix potential crash in Win32 crash reporter (r1663253 et al)
+- Server-side bugfixes:
+  * fsfs: fix &quot;offset too large&quot; error during pack (issue #4657)
+  * svnserve: enable hook script environments (r1769152)
+  * fsfs: fix possible data reconstruction error (issue #4658)
+  * fix source of spurious 'incoming edit' tree conflicts (r1770108)
+  * fsfs: improve caching for large directories (r1721285)
+  * fsfs: fix crash when encountering all-zero checksums (r1759686)
+  * fsfs: fix potential source of repository corruptions (r1756266)
+  * mod_dav_svn: fix excessive memory usage with mod_headers/mod_deflate
+    (issue #3084)
+  * mod_dav_svn: reduce memory usage during GET requests (r1757529 et al)
+  * fsfs: fix unexpected &quot;database is locked&quot; errors (r1741096 et al)
+  * fsfs: fix opening old repositories without db/format files (r1720015)
+- Client-side and server-side bugfixes:
+  * fix possible crash when reading invalid configuration files (r1715777)
+- Bindings bugfixes:</comment>
+    <requestid>442781</requestid>
+  </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>5a4062e8c4d7e7e24b28122f99f7755c</srcmd5>
+    <version>1.9.5</version>
+    <time>1489653732</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to build with new RPM in Factory
+- Provide the kwallet auth in main pkg in case kde integration is
+  disabled
+- Use apache2-rpm-macros to get the apache variables</comment>
+    <requestid>479130</requestid>
+  </revision>
+  <revision rev="145" vrev="3">
+    <srcmd5>302a418b1dd44fdf8ab91f81a4e70791</srcmd5>
+    <version>1.9.5</version>
+    <time>1497949169</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503971</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>991321bcfdfdf289a49f384c0054cfdb</srcmd5>
+    <version>1.9.6</version>
+    <time>1499880703</time>
+    <user>dimstar_suse</user>
+    <comment>Apache Subversion 1.9.6, boo#1026936</comment>
+    <requestid>508780</requestid>
+  </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>6e39d773ef0dc02a4d5065926d74f7cd</srcmd5>
+    <version>1.9.6</version>
+    <time>1502011936</time>
+    <user>maxlin_factory</user>
+    <comment>- Add instructions for running svnserve as a user different from
+  &quot;svn&quot;, and remove sysconfig variables that are no longer
+  effective with the systemd unit. bsc#1049448</comment>
+    <requestid>512929</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>1e3145bb378c866c0f36257c35736c42</srcmd5>
+    <version>1.9.7</version>
+    <time>1503591668</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove user changing option inherited from sysconfig from README
+  * Was removed as it does not work on systemd, new section is there
+    describing current approach
+
+- Apache Subversion 1.9.7: 
+  * CVE-2017-9800: A remote attacker could have caused svn clients
+    to execute arbitrary code via specially crafted URLs in
+    svn:externals and svn:sync-from-url properties. (bsc#1051362)</comment>
+    <requestid>516079</requestid>
+  </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>886dec071b65b7adff04c8150a1ccfa0</srcmd5>
+    <version>1.9.7</version>
+    <time>1503999632</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch the KDE condition to match sle15 too</comment>
+    <requestid>518741</requestid>
+  </revision>
+  <revision rev="150" vrev="3">
+    <srcmd5>594bb1c7b425a61684ccf4ac0b457711</srcmd5>
+    <version>1.9.7</version>
+    <time>1507896467</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532714</requestid>
+  </revision>
+  <revision rev="151" vrev="4">
+    <srcmd5>3f5ffe5d6fe87866804f0e14ee5f1d8f</srcmd5>
+    <version>1.9.7</version>
+    <time>1509820057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538276</requestid>
+  </revision>
+  <revision rev="152" vrev="5">
+    <srcmd5>4ada3bd8b6ef277faaf5a0094c1b33a7</srcmd5>
+    <version>1.9.7</version>
+    <time>1512041824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544877</requestid>
+  </revision>
+  <revision rev="153" vrev="6">
+    <srcmd5>2edc3e8881d40f7a0e14a1999371eea8</srcmd5>
+    <version>1.9.7</version>
+    <time>1513941426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558317</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>a69743d6ed461319769f6e68374994a9</srcmd5>
+    <version>1.10.0</version>
+    <time>1524400216</time>
+    <user>dimstar_suse</user>
+    <comment>Apache Subversion 1.10.0 (feature release)
+  * Use %license (boo#1082318)
+  * build with KDE5 KWallet support</comment>
+    <requestid>596761</requestid>
+  </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>5e7d5e92abf2f07a130ed71b40aa253e</srcmd5>
+    <version>1.10.0</version>
+    <time>1525611286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602237</requestid>
+  </revision>
+  <revision rev="156" vrev="3">
+    <srcmd5>13406cfceec4b68f8996dc81cab18618</srcmd5>
+    <version>1.10.0</version>
+    <time>1532593060</time>
+    <user>dimstar_suse</user>
+    <comment>- Use macro to compile python objects, do not do it by hand</comment>
+    <requestid>625285</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>69300eddbfb432fc6b493a9089195696</srcmd5>
+    <version>1.10.2</version>
+    <time>1536678542</time>
+    <user>maxlin_factory</user>
+    <comment>Apache Subversion 1.10.2</comment>
+    <requestid>631124</requestid>
+  </revision>
+  <revision rev="158" vrev="2">
+    <srcmd5>8ca4fa72116b48936ca1cbb031f1f1ed</srcmd5>
+    <version>1.10.2</version>
+    <time>1537263519</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635070</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>fa230dacbfee146df841b509d0c1be16</srcmd5>
+    <version>1.10.3</version>
+    <time>1539589080</time>
+    <user>dimstar_suse</user>
+    <comment>Apache Subversion 1.10.3</comment>
+    <requestid>641754</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>4dd63c9238be079a49663add887e9e1a</srcmd5>
+    <version>1.11.0</version>
+    <time>1542011703</time>
+    <user>dimstar_suse</user>
+    <comment>Apache Subversion 1.11.0</comment>
+    <requestid>647743</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>ea573ab0578658798e77de1ed7f693f6</srcmd5>
+    <version>1.11.1</version>
+    <time>1548061734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667035</requestid>
+  </revision>
+  <revision rev="162" vrev="2">
+    <srcmd5>b1fb9f7c51f14898abea3f33b5c7eab9</srcmd5>
+    <version>1.11.1</version>
+    <time>1548537539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667957</requestid>
+  </revision>
+  <revision rev="163" vrev="3">
+    <srcmd5>ce1e642039cdb26e89dad9c4b31c400a</srcmd5>
+    <version>1.11.1</version>
+    <time>1554114774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688741</requestid>
+  </revision>
+  <revision rev="164" vrev="4">
+    <srcmd5>52cf11ed01645cbdfc930cd5547f6178</srcmd5>
+    <version>1.11.1</version>
+    <time>1556915764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698146</requestid>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>5ec86ab0e3cd027787addee9f7b23b5f</srcmd5>
+    <version>1.12.0</version>
+    <time>1558351020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704031</requestid>
+  </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>74ce73c2c05311d76935a14ae5381937</srcmd5>
+    <version>1.12.2</version>
+    <time>1564996717</time>
+    <user>dimstar_suse</user>
+    <comment>- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+- Update to 1.12.2:
+  * Fix conflict resolver bug: local and incoming edits swapped. (r1863285)
+  * Fix memory lifetime problem in a libsvn_wc error code path. (r1863287)
+  * CVE-2018-11782 bsc#1142743
+  * CVE-2019-0203 bsc#1142721
+
+- Add subversion-1.12.0-swig-4.patch: Fix build with Swig 4
+  (boo#1135747).</comment>
+    <requestid>720475</requestid>
+  </revision>
+  <revision rev="167" vrev="2">
+    <srcmd5>f014fd37958244d60205a69d4faddde8</srcmd5>
+    <version>1.12.2</version>
+    <time>1566248556</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to fix bsc#1142743 and bsc#1142721 CVE-2019-0203
+  CVE-2018-11782:
+  * CVE-2018-11782.patch
+  * CVE-2019-0203.patch
+
+- Apache Subversion 1.8.19 (bsc#1051362):
+  * A malicious, compromised server or MITM may cause svn client to
+    execute arbitrary commands by sending repository content with
+    svn:externals definitions pointing to crafted svn+ssh URLs.
+    CVE-2017-9800
+
+- Apache Subversion 1.8.18 (bsc#1026936):
+  This change makes Subversion resilient to collision attacks,
+  including SHA-1 collision attacks such as &lt;http://shattered.io/&gt;.
+  https://subversion.apache.org/faq#shattered-sha1
+  * fsfs: never attempt to share directory representations
+  * fsfs: make consistency independent of hash algorithms
+  * work around an APR bug related to file truncation
+
+- Package the 'svnauthz' binary.
+
+- Apache Subversion 1.8.17:
+  * bsc#1011552 CVE-2016-8734 Unrestricted XML entity expansion in
+    mod_dontdothat and Subversion clients using http(s)://
+  * Client-side bugfixes:
+    + fix handling of newly secured subdirectories in working copy
+    + ra_serf: fix deleting directories with many files
+    + gpg-agent: properly handle passwords with percent characters
+    + merge: fix crash when merging to a local add
+  * Server-side bugfixes:</comment>
+    <requestid>724598</requestid>
+  </revision>
+</revisionlist>

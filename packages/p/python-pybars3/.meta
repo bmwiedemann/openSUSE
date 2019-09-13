@@ -1,0 +1,5 @@
+<package name="python-pybars3" project="openSUSE:Factory">
+  <title></title>
+  <description>Pybars3 provides a template system for Python which is compatible with Handlebars.js, including numerous features from Handlebars.js 2.0.</description>
+  <devel project="devel:languages:python" package="python-pybars3"/>
+</package>

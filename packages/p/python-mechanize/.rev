@@ -1,0 +1,204 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a106de2535e8fbebb71a2d793797fb7c</srcmd5>
+    <version>0.1.7</version>
+    <time>1278081460</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-mechanize based on submit request 42322 from user coolo
+</comment>
+    <requestid>42322</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aa48ff57e6bd5f55d21e4c3e6cc64ca3</srcmd5>
+    <version>0.1.11</version>
+    <time>1278403227</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-mechanize based on submit request 42634 from user coolo
+</comment>
+    <requestid>42634</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>aa48ff57e6bd5f55d21e4c3e6cc64ca3</srcmd5>
+    <version>0.1.11</version>
+    <time>1278667400</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>aa48ff57e6bd5f55d21e4c3e6cc64ca3</srcmd5>
+    <version>0.1.11</version>
+    <time>1278678636</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c03edc5bc707c76d5aa6ceb9cf517869</srcmd5>
+    <version>0.2.4</version>
+    <time>1288702271</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51928 from user coolo
+</comment>
+    <requestid>51928</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c16d52633f947076d6f03eaeb9f5cba5</srcmd5>
+    <version>0.2.4</version>
+    <time>1288702278</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51928
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>c16d52633f947076d6f03eaeb9f5cba5</srcmd5>
+    <version>0.2.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>333065194fe451061ae1bf6283e2f382</srcmd5>
+    <version>0.2.5</version>
+    <time>1317024978</time>
+    <user>saschpe</user>
+    <comment>- Set license to &quot;(BSD-3-Clause or ZPL-2.1) and BSD-3-Clause&quot;, bnc#719310
+
+- Update to version 0.2.5:
+  * This is essentially a no-changes release to fix easy_install
+    breakage caused by a SourceForge issue
+  * Sourceforge is returning invalid HTTP responses, make download
+    links point to PyPI instead
+  * Include cookietest.cgi in source distribution
+  * Note new IETF cookie standardisation effort
+- Fixed doc-file-dependency rpmlint issue</comment>
+    <requestid>84022</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>333065194fe451061ae1bf6283e2f382</srcmd5>
+    <version>0.2.5</version>
+    <time>1319182396</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>65482ef5e677c20cde85b7a168a560b0</srcmd5>
+    <version>0.2.5</version>
+    <time>1323194190</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>b7544ccea9f583c2ecd70cf38124b184</srcmd5>
+    <version>0.2.5</version>
+    <time>1331627922</time>
+    <user>coolo</user>
+    <comment>- Simplified macro usage</comment>
+    <requestid>109047</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>b7544ccea9f583c2ecd70cf38124b184</srcmd5>
+    <version>0.2.5</version>
+    <time>1340184068</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>b7544ccea9f583c2ecd70cf38124b184</srcmd5>
+    <version>0.2.5</version>
+    <time>1359110069</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>b7544ccea9f583c2ecd70cf38124b184</srcmd5>
+    <version>0.2.5</version>
+    <time>1379664217</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>4e568330754852d278a55dda5a22bd67</srcmd5>
+    <version>0.2.5</version>
+    <time>1382692902</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204594</requestid>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>2ba2c9bc232c6044fb0a93b55bb87d4f</srcmd5>
+    <version>0.2.5</version>
+    <time>1384334285</time>
+    <user>scarabeus_factory</user>
+    <comment>little hacks (forwarded request 206362 from posophe)</comment>
+    <requestid>206363</requestid>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>2ba2c9bc232c6044fb0a93b55bb87d4f</srcmd5>
+    <version>0.2.5</version>
+    <time>1409302916</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3465a678492f5e5b3ede50130ca7c159</srcmd5>
+    <version>0.3.6</version>
+    <time>1533627877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627756</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ba47021cc9fb0e56617976a4a88973de</srcmd5>
+    <version>0.3.6</version>
+    <time>1535705138</time>
+    <user>dimstar_suse</user>
+    <comment>- Require full python2 as it needs SSL module</comment>
+    <requestid>632132</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4862a5b49320bfc02b613c52b4708bad</srcmd5>
+    <version>0.4.0</version>
+    <time>1548064867</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 0.4.0:
+    * Python 3 compatibility
+    * Add a finalize_request_headers callback to Browser to allow 
+      users full control of what headers are sent with every 
+      request
+    * Preserve header ordering when making HTTP requests
+    * Fix processing of http-equiv meta tags incorrectly lower casing 
+      the content
+    * Fix error when a textbox contained within a form contains 
+      unicode characters
+- Add missing BR for testing (Twisted and zope.interface)</comment>
+    <requestid>667161</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>21a6e1d821519717b07107f348cfb107</srcmd5>
+    <version>0.4.1</version>
+    <time>1554749601</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * A couple of python 3 specific fixes for servers with misisng robots.txt
+    files and also errors when using basic/digest auth</comment>
+    <requestid>691805</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fa986fd8ed65f097f86f92bf88097216</srcmd5>
+    <version>0.4.2</version>
+    <time>1558351072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703751</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>961e0f3374ae3a6e8fd4b5c0362c32e2</srcmd5>
+    <version>0.4.3</version>
+    <time>1568379521</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 0.4.3:
+  * When filling forms with unicode strings automatically encode them into
+    the correct encoding fr the HTML page being viewed
+  * Guess content type when uploading files if not specified
+  * py3 compat - Have the version of simple cookies be 0 rather than None</comment>
+    <requestid>730131</requestid>
+  </revision>
+</revisionlist>

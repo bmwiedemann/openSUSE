@@ -1,0 +1,198 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd316e6e37e868b94e1a713aedda7a10</srcmd5>
+    <version>0.17.3</version>
+    <time>1357576445</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>147370</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>cd316e6e37e868b94e1a713aedda7a10</srcmd5>
+    <version>0.17.3</version>
+    <time>1359110098</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>408ecbbe7413a01d9017f427b10b5cc2</srcmd5>
+    <version>0.19.0</version>
+    <time>1376911860</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 0.19.0 for openSUSE &gt;= 12.3 (forwarded request 195541 from TheBlackCat)</comment>
+    <requestid>195542</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>408ecbbe7413a01d9017f427b10b5cc2</srcmd5>
+    <version>0.19.0</version>
+    <time>1379664254</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0a8345e60343d0555fdc0a6771ba9d1b</srcmd5>
+    <version>0.20.0</version>
+    <time>1386693932</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.20.0
+  + Upstream provides no changelog, but you can check
+    https://github.com/libgit2/pygit2/compare/v0.19.0...v0.20.0
+- Fix build on openSUSE &gt;= 12.3 and SLE11SP3
+- Remove obsolete conditionnal macros (forwarded request 210102 from posophe)</comment>
+    <requestid>210103</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>0a8345e60343d0555fdc0a6771ba9d1b</srcmd5>
+    <version>0.20.0</version>
+    <time>1409302957</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4271f079e565af5e2421c0f4e48a9db2</srcmd5>
+    <version>0.21.2</version>
+    <time>1409998682</time>
+    <user>coolo</user>
+    <comment>Fix build for Factory</comment>
+    <requestid>247301</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>50b7cb550133ed84fba1f85a4b4a64e2</srcmd5>
+    <version>0.22.0</version>
+    <time>1423130406</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283924</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>af6553227de62a4af62c5619611257ae</srcmd5>
+    <version>0.23.1</version>
+    <time>1443684572</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334933</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3f63435aac0cae33ce13b9f9f94f5620</srcmd5>
+    <version>0.24.0</version>
+    <time>1460358866</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>386205</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>29eb1217fdbcce144d282bb5c409afef</srcmd5>
+    <version>0.24.0</version>
+    <time>1471428312</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419419</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>b334e22e740c21a8e47275c2a37001e5</srcmd5>
+    <version>0.24.0</version>
+    <time>1478377534</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438238</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3e4856dec93627cac4a85ac2f83a7d7e</srcmd5>
+    <version>0.24.2</version>
+    <time>1485167693</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449839</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a5e2bb5f6064de8da701ed5817b0198f</srcmd5>
+    <version>0.25.0</version>
+    <time>1494088011</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>486850</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f0bf2a4cb0ecc66205a02109d0d8546a</srcmd5>
+    <version>0.26.0</version>
+    <time>1503999841</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518568</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3443057a082c3e4e4a7acce822a00015</srcmd5>
+    <version>0.27.0</version>
+    <time>1526573148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.27.0:
+  * Update to libgit2 v0.27 #783
+  * Fix for GCC 4 #786</comment>
+    <requestid>610062</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3f1376c71f66552a9ea5e4f321342dba</srcmd5>
+    <version>0.27.0</version>
+    <time>1527582908</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix issues on i586 arch:
+  * pygit2-i586.patch</comment>
+    <requestid>610890</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3fc996e8e2bf59951ee136997b7886b3</srcmd5>
+    <version>0.28.0</version>
+    <time>1553809696</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the pygit2-0.28-Remove-pycparser-constraint.patch and replace
+  it with shorter sed
+- Switch to pytest testing:
+  * Fails now but that is pycparser bug https://github.com/eliben/pycparser/issues/305
+- Disable tests temporarily as per above
+
+- Update to 0.28.0
+  * Update to libgit2 v0.28
+  * New ``pygit2.Mailmap``
+  * New ``Repository.apply(...)`` wraps ``git_apply(..)``
+  * Now ``Repository.merge_analysis(...)`` accepts an optional reference parameter
+  * Now ``Repository.add_worktree(...)`` accepts an optional reference parameter
+  * Now it's possible to set SSL certificate locations
+  * Test and documentation improvements
+  * Now ``worktree.path`` returns the path to the worktree directory
+  * Remove undocumented ``worktree.git_path``
+- Remove unneeded patch to fix issues on i586:
+  * pygit2-i586.patch
+- Add patch to remove unneeded constraint on pycparser
+  * pygit2-0.28-Remove-pycparser-constraint.patch</comment>
+    <requestid>688613</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>afbd723bf30eaa3527739dfda036d86b</srcmd5>
+    <version>0.28.0</version>
+    <time>1557141678</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix the pycparser issues as per bellow:
+  * pycparser.patch</comment>
+    <requestid>692230</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b4e08b28fb5e7b429cd7c4c7ac4f62be</srcmd5>
+    <version>0.28.1</version>
+    <time>1558037355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703238</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>11820495f72c73c17954d0679d8ae781</srcmd5>
+    <version>0.28.2</version>
+    <time>1568379680</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 0.28.2:
+  * Fix crash in reflog iteration #901
+  * Support symbolic references in branches.with_commit(..) #910
+  * Documentation updates #909
+  * Test updates #911</comment>
+    <requestid>730403</requestid>
+  </revision>
+</revisionlist>

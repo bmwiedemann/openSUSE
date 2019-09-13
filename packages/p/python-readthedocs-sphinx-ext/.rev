@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>272cf715210e76b8d438e9dc18613d30</srcmd5>
+    <version>0.5.17</version>
+    <time>1558939124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705299</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>61b5015f44eb05496df57b3866a02f57</srcmd5>
+    <version>1.0.0</version>
+    <time>1564484699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0:
+  * no upstream changelog</comment>
+    <requestid>717585</requestid>
+  </revision>
+</revisionlist>

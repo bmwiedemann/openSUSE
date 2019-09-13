@@ -1,0 +1,8 @@
+<package name="iodbc" project="openSUSE:Factory">
+  <title>ODBC compliant driver manager</title>
+  <description>The iODBC Driver Manager is a free implementation of the SAG CLI and
+ODBC compliant driver manager which allows developers to write ODBC
+compliant applications that can connect to various databases using
+appropriate backend drivers.</description>
+  <devel project="devel:libraries:c_c++" package="iodbc"/>
+</package>

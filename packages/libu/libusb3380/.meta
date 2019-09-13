@@ -1,0 +1,8 @@
+<package name="libusb3380" project="openSUSE:Factory">
+  <title>USB3380 abstraction layer for libusb</title>
+  <description>USB3380 abstraction layer for libusb.
+
+</description>
+  <devel project="hardware:sdr" package="libusb3380"/>
+  <url>http://xtrx.io</url>
+</package>

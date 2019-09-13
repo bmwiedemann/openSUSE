@@ -1,0 +1,6 @@
+<package name="python-translation-finder" project="openSUSE:Factory">
+  <title>Translation Finder</title>
+  <description>A translation file finder for Weblate, translation tool with tight version control integration. This library is used by Weblate to discover translation files in a cloned repository.</description>
+  <devel project="devel:languages:python" package="python-translation-finder"/>
+  <url>https://github.com/WeblateOrg/translation-finder</url>
+</package>

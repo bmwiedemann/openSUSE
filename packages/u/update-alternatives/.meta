@@ -1,0 +1,13 @@
+<package name="update-alternatives" project="openSUSE:Factory">
+  <title>Maintain symbolic links determining default commands</title>
+  <description>update-alternatives creates, removes, maintains and displays
+information about the symbolic links comprising the alternatives
+system. It is possible for several programs fulfilling the same or
+similar functions to be installed on a single system at the same time.
+For example, many systems have several text editors installed at once.
+This gives choice to the users of a system, allowing each to use a
+different editor, if desired, but makes it difficult for a program to
+make a good choice of editor to invoke if the user has not specified a
+particular preference.</description>
+  <devel project="openSUSE:Factory" package="dpkg"/>
+</package>

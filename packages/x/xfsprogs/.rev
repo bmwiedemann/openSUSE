@@ -1,0 +1,537 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>e5a4277376a0cea213007f6af3ed777b</srcmd5>
+    <version>2.8.11_1</version>
+    <time>1168904550</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9b185631d634fdace18d1b6ff17945ef</srcmd5>
+    <version>2.8.20</version>
+    <time>1175710407</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c060dde0829e6c17331acfd57d10870e</srcmd5>
+    <version>2.8.21</version>
+    <time>1182531231</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>117b7bbac21f0299fd0389054804abcb</srcmd5>
+    <version>2.9.4</version>
+    <time>1193183173</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>161e83b1d131a9c19ac3523c59f6746b</srcmd5>
+    <version>2.9.5</version>
+    <time>1202143441</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cd1ce38e6fe39d009f2eb20f9bfcde85</srcmd5>
+    <version>2.9.7</version>
+    <time>1206072473</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d55397beb4e1b47cd105852da3f6798d</srcmd5>
+    <version>2.9.8</version>
+    <time>1209647337</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="28">
+    <srcmd5>23a76f291b4e0bdb692da77a62da7ad8</srcmd5>
+    <version>2.9.8</version>
+    <time>1220372578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>082eb1d9f52f22667b487bb3d05661b0</srcmd5>
+    <version>2.10.1</version>
+    <time>1221235107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>214d4519c6e852473fd9f5d7d8ac07f4</srcmd5>
+    <version>2.10.2</version>
+    <time>1229350289</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>710e4aa532e3feb0cd1f64e275e3b40b</srcmd5>
+    <version>2.10.2</version>
+    <time>1231781012</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dea37df0a93e68a6a2c7331ac2949c1e</srcmd5>
+    <version>3.0.1</version>
+    <time>1250120469</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/xfsprogs based on submit request 17572 from user michal-m
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>dea37df0a93e68a6a2c7331ac2949c1e</srcmd5>
+    <version>3.0.1</version>
+    <time>1250120469</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/xfsprogs based on submit request 17572 from user michal-m
+</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>99a5a8e3195b9fba6703363715286b14</srcmd5>
+    <version>3.0.1</version>
+    <time>1268926600</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>2ff53623bda6a33ad9f3d8dd80828643</srcmd5>
+    <version>3.0.1</version>
+    <time>1268987165</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/xfsprogs based on submit request 35275 from user coolo
+</comment>
+    <requestid>35275</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>2ff53623bda6a33ad9f3d8dd80828643</srcmd5>
+    <version>3.0.1</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>2ff53623bda6a33ad9f3d8dd80828643</srcmd5>
+    <version>3.0.1</version>
+    <time>1278678627</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ea65d5199bebb14f3006ab997cd59648</srcmd5>
+    <version>3.1.2</version>
+    <time>1279542783</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/xfsprogs based on submit request 42726 from user dirkmueller
+</comment>
+    <requestid>42726</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bb8ff10cd4793f5851d600a6c3e62156</srcmd5>
+    <version>3.1.4</version>
+    <time>1293579357</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56605 from user dirkmueller
+</comment>
+    <requestid>56605</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>bb8ff10cd4793f5851d600a6c3e62156</srcmd5>
+    <version>3.1.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9bc9d4e76700ccdc64f40a9c9987cf3a</srcmd5>
+    <version>3.1.6</version>
+    <time>1318762944</time>
+    <user>lrupp</user>
+    <comment>- updated to 3.1.6
+  - Re-synch of the header and libxfs files with the kernel
+    code as of Linux 2.6.37, including reviving xfs_repair
+    radix tree code.
+  - Fix a xfs_repair phase 4 hang, thanks to Ajeet Yadav.
+  - Subcommand names within various programs are no longer
+    translated/localized, thanks to Arkadiusz Mi?kiewicz.
+  - Build system fixes, thanks to Ted Ts'o.
+  - Updates to teh xfs_info(8)/xfs_growfs(8) man page, thanks
+    to Roman Ovchinnikov.
+  - xfs_quota &quot;df&quot; no longer reports values twice what they
+    should have been for project quotas.
+  - mkfs.xfs now requires that sub-options are non-empty
+    strings; thanks to Chris Pearson for reporting.
+  - Better handling of short reads in libxfs.
+  - xfs_quota now prints &quot;N/A&quot; rather than a large number for
+    the quota file inode number for disabled quota types.
+  - Bogus (unrelated) mount point entries no longer cause
+    xfs_growfs, xfs_quota, and xfs_io to quit early.
+  - xfs_repair no longer fails when the sector size of an
+    underlying device is larger than the sector size in a
+    hosted filesystem image.
+  - Various other internal improvements, including refactoring
+    and eliminating more build warnings. (forwarded request 87879 from dsterba)</comment>
+    <requestid>87957</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>9bc9d4e76700ccdc64f40a9c9987cf3a</srcmd5>
+    <version>3.1.6</version>
+    <time>1319182597</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>c77092186fa6a355b9736e70c2d746fa</srcmd5>
+    <version>3.1.6</version>
+    <time>1323195348</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>4d0f898426739787bdb43b9323205b40</srcmd5>
+    <version>3.1.6</version>
+    <time>1330007705</time>
+    <user>coolo</user>
+    <comment>- use %configure
+
+- move libs and executables to /usr tree (UsrMerge project)</comment>
+    <requestid>105235</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>4a45d2f9f652bdb25d7ad6eacee0e8a9</srcmd5>
+    <version>3.1.6</version>
+    <time>1331900868</time>
+    <user>coolo</user>
+    <comment>- no need to link the lib in /lib (forwarded request 109525 from coolo)</comment>
+    <requestid>109532</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>b903c7c3e7b3e9859a6bbcc1e6767bb4</srcmd5>
+    <version>3.1.6</version>
+    <time>1337578402</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121283</requestid>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>0cb42cf4b98aaa74f30d4c536b48d5c8</srcmd5>
+    <version>3.1.6</version>
+    <time>1338903388</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>123354</requestid>
+  </revision>
+  <revision rev="28" vrev="10">
+    <srcmd5>0cb42cf4b98aaa74f30d4c536b48d5c8</srcmd5>
+    <version>3.1.6</version>
+    <time>1340184363</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="11">
+    <srcmd5>ac8680303bda85cf180b8136c83a2615</srcmd5>
+    <version>3.1.6</version>
+    <time>1349948092</time>
+    <user>coolo</user>
+    <comment>- Build with readline support; (bnc#783510). (forwarded request 137016 from dmdiss)</comment>
+    <requestid>137790</requestid>
+  </revision>
+  <revision rev="30" vrev="13">
+    <srcmd5>ac8680303bda85cf180b8136c83a2615</srcmd5>
+    <version>3.1.6</version>
+    <time>1359110641</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c6c8c8b5b4457ef099c24c491402a2e9</srcmd5>
+    <version>3.1.11</version>
+    <time>1368714333</time>
+    <user>coolo</user>
+    <comment>- Added patch xfsprogs-avoid-no-return-in-nonvoid-warning.diff to silence
+  (bogus) compiler warnings. (forwarded request 175785 from jankara)</comment>
+    <requestid>175786</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>c6c8c8b5b4457ef099c24c491402a2e9</srcmd5>
+    <version>3.1.11</version>
+    <time>1379665066</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e96d6a256990f8d60349822158785e91</srcmd5>
+    <version>3.2.0</version>
+    <time>1400825117</time>
+    <user>coolo</user>
+    <comment>- Updated to 3.2.0
+  - xfs_repair has full CRC validation and repair
+  - xfs_repair prefetch fix
+  - xfs_repair block tracking scalability fix
+  - disambiguous of CRC validation errors from IO errors.
+  - Improved dangerous mode handling in repair
+  - repair handles garbage in zeroed areas of superblocks better
+  - repair validates dirent ftype field fully
+  - metadump fully supports discontiguous directory blocks
+  - metadump only recalculates CRCs on metadata it obfuscates so as to
+    preserve errors in the metadata where possible.
+  - default log size that mkfs creates is now reverted to the same size
+    as 3.1.x releases create.
+  - mkfs sets the ftype on directory entries correctly during protofile
+    population
+  - xfs_io support O_TMPFILE, flink, FALLOC_FL_ZERO_RANGE and
+    FALLOC_FL_COLLAPSE_RANGE,
+  - logprint handles split entries better
+  - Enable xfs_db write support and xfs_metadump support for CRC
+    enabled filesystems.
+  - Add directory entry filetype support for non-CRC filesystems.
+  - Ensure all inodes created by xfs_repair have a proper d_type set.
+  - Fix build on big endian machines.
+  - Properly handle symlinks to devices on various tool commandlines.
+  - Fix xfs_repair's dirty log detection for 4k sector logs, broken
+    in Alpha1.
+  - Fix a potential segfault in xfs_repair when issuing progress
+    reports.
+  - Fix potential xfs_fsr failures when running w/ selinux.
+  - Stop wasting memory by caching inode structures in xfs_repair - (forwarded request 234728 from jeff_mahoney)</comment>
+    <requestid>234729</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a046bef42ac4d01b63e9eab2c39c116c</srcmd5>
+    <version>3.2.1</version>
+    <time>1406145968</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241872</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>a046bef42ac4d01b63e9eab2c39c116c</srcmd5>
+    <version>3.2.1</version>
+    <time>1409303750</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>99437e1e8c6f9106c20381b0861e9295</srcmd5>
+    <version>3.2.2</version>
+    <time>1418737849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264765</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>6e391448ecb5f2253eae1be9b4f4a759</srcmd5>
+    <version>3.2.2</version>
+    <time>1427109332</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291599</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>de396a57304921136ec4b7b319aa0922</srcmd5>
+    <version>3.2.3</version>
+    <time>1437059769</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316370</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>aca15cec4f7a386dee4ff36d5fe40912</srcmd5>
+    <version>3.2.4</version>
+    <time>1438750126</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>319750</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e966e7a23a5b44e4fe1d3f0125791174</srcmd5>
+    <version>4.2.0</version>
+    <time>1448400617</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345121</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d2a805b0f350ab9ecd7e487449051604</srcmd5>
+    <version>4.3.0</version>
+    <time>1449689585</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346455</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>9ef7f4d24778f1501d00a86721285110</srcmd5>
+    <version>4.3.0</version>
+    <time>1452027221</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351851</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7e8fa572afe7901802861a65e0ae6003</srcmd5>
+    <version>4.5.0</version>
+    <time>1459422121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>381336</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5da2130d5922b120bcbc4b9d10e43e5f</srcmd5>
+    <version>4.9.0</version>
+    <time>1497109809</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497831</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>54bd81f7ab86fcf0a495a1361ad5c6df</srcmd5>
+    <version>4.9.0</version>
+    <time>1498840692</time>
+    <user>dimstar_suse</user>
+    <comment>* Added xfs_repair-clear-pthread_t-when-pthread_create-fails.patch
+  * Added xfs_repair-fix-thread-creation-failure-recovery.patch (forwarded request 505784 from jeff_mahoney)</comment>
+    <requestid>505785</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>577f7334a8227eaddd297ab9fba2bcec</srcmd5>
+    <version>4.9.0</version>
+    <time>1504814910</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519931</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>63e595ca1cdd5af121df06165d62047e</srcmd5>
+    <version>4.13.1</version>
+    <time>1511274157</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building on SLE11
+- Added xfs_io-stat-fix-typo-in-statfs-f_flags.patch
+- Added xfs_io-stat-treat-statfs.f_flags-as-optional.patch
+
+- Update to 4.13.1
+  * mkfs: don't overflow the subopts array
+- Update to 4.13.0
+  * xfs_repair: handle missing extent states
+  * mkfs: pass a custom cowextsize into the created filesystem
+  * xfs_db: version command misses RMAPBT feature string
+  * xfs_repair: don't use do_warn for normal log message
+  * libxfs: remove getcwd/chdir dance from initialization
+  * xfs_repair: take the ag_lock before recording rmap for a bmbt record
+  * mkfs.xfs: Don't stagger AG for a single disk
+  * xfs: fix inobt inode allocation search optimization
+  * xfs_io: clarify the fsmap documentation
+  * fiemap: Fix semantics of max_extents (-n arguments)
+  * xfs_repair: fix thread creation failure recovery
+  * xfs_repair: add prefetch trace calls to debug thread creation failures
+  * xfs_repair: clear pthread_t when pthread_create fails
+  * xfs_io: add seek consistency checks
+  * fsr: fix uninitialized fs usage after timeout
+  * xfs_db: bit fuzzing should read the right bit when flipping
+  * xfs_db: make write/fuzz -c and -d work on non-crc filesystems
+  * xfs_db: free field list when failing out of fuzz
+  * xfs_db: reset metadump output flag
+  * xfs_db: btdump should avoid eval for push and pop of cursor
+  * xfs_db: use TYP_F_CRC_FUNC for inodes &amp; dquots
+  * xfs_db: introduce fuzz command
+  * xfs_db: write values into dir/attr blocks and recalculate CRCs</comment>
+    <requestid>542713</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>def804f746fb653cda94e9778cb4cc63</srcmd5>
+    <version>4.14.0</version>
+    <time>1514027494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559128</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>9df1c7d6caa72e54bce1607d51729de4</srcmd5>
+    <version>4.14.0</version>
+    <time>1518596319</time>
+    <user>dimstar_suse</user>
+    <comment>- xfs_io: fix copy_file_range symbol name collision (bsc#1079756).
+- Added xfs_io-fix-copy_file_range-symbol-name-collision.patch</comment>
+    <requestid>573733</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>df4f32923a2745fa06abd87b0eae8c47</srcmd5>
+    <version>4.15.1</version>
+    <time>1520852878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584277</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>4a92355812c17d65f2b4f474b0e43157</srcmd5>
+    <version>4.15.1</version>
+    <time>1524742480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599764</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>fa466f526a654c8286df66b627c6330e</srcmd5>
+    <version>4.16.1</version>
+    <time>1531469856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621763</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>858dc9e9e6bc3373124ad36ce9ddfe48</srcmd5>
+    <version>4.16.1</version>
+    <time>1537263368</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634927</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>2b0e158f33a030ae84dbd49010e4f930</srcmd5>
+    <version>4.18.0</version>
+    <time>1541508526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v4.18.0
+  * xfs_repair: notify user if free inodes are corrupt
+  * xfs_repair: use extent size validation helpers
+  * xfs_quota: don't stop the directory tree walk at DEPTH 
+  * xfs_scrub: ongoing updates 
+  * xfs_io: document shutdown -f 
+  * xfs_io: wire up online repair ioctls 
+  * misc: adddebian initramfs hook to package 
+  * misc: remove unused macros 
+  * misc: remove many XFS_BUF macros 
+  * Majority of 4.18 libxfs changes merged from kernel
+- Update to v4.17.0
+  * mkfs.xfs: only stat block devices during mkfs init 
+  * xfs_repair: multiple fixes and improvements 
+  * xfs_repair: check and repair quota metadata 
+  * xfs_repair: fix shortform root inode parent 
+  * xfs_db: don't ASSERT on unrecognized metadata 
+  * xfs_db: add superblock info command ala xfs_info 
+  * xfs_spaceman: add superblock info command ala xfs_info 
+  * xfs_info: call xfs_db for unmounted devices 
+  * xfs_io: add online label command 
+  * xfs_io: add O_PATH and O_NOFOLLOW options 
+  * xfs_io: recognize *iB units in copy_range 
+- Removed now-obsolete patches:
+  * xfsprogs-mkfs-avoid-divide-by-zero-when-hardware-reports-opti.patch</comment>
+    <requestid>643281</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>afc6374831eb333a2a8e6457f3c56f62</srcmd5>
+    <version>4.19.0</version>
+    <time>1542749501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650230</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>cec04ad2cf32fa06aa062816f0370efd</srcmd5>
+    <version>4.20.0</version>
+    <time>1552048173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681638</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>01827bda76f895b4e944617a19a0492c</srcmd5>
+    <version>5.0.0</version>
+    <time>1557170097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700875</requestid>
+  </revision>
+</revisionlist>

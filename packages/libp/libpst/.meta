@@ -1,0 +1,9 @@
+<package name="libpst" project="openSUSE:Factory">
+  <title>A library for reading PST files</title>
+  <description>The Libpst utilities include readpst which can convert email messages
+to both mbox and MH mailbox formats, pst2ldif which can convert the
+contacts to .ldif format for import into ldap databases, and pst2dii
+which can convert email messages to the DII load file format used by
+Summation.</description>
+  <devel project="GNOME:Factory" package="libpst"/>
+</package>

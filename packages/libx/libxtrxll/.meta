@@ -1,0 +1,8 @@
+<package name="libxtrxll" project="openSUSE:Factory">
+  <title>XTRX Low-level API library</title>
+  <description>Low level XTRX hardware abstraction library.
+
+</description>
+  <devel project="hardware:sdr" package="libxtrxll"/>
+  <url>http://xtrx.io</url>
+</package>

@@ -1,0 +1,12 @@
+<package name="libofx" project="openSUSE:Factory">
+  <title>OFX Command Parser and API</title>
+  <description>LibOFX is a parser and API designed to allow applications to support
+OFX command responses, usually provided by financial institutions for
+statement downloads. The author says, &quot;To my knowledge, it is the first
+working OpenSource implementations of the OFX (Open Financial eXchange)
+specification on the client side. This project was first started as my
+end of degree project, with the goal of adding OFX support to GnuCash.
+It has since evolved into a generic library, so all OpenSource
+Financial software can benefit from it.&quot;</description>
+  <devel project="X11:common:Factory" package="libofx"/>
+</package>

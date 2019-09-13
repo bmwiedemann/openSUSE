@@ -1,0 +1,6 @@
+<package name="yast2-pkg-bindings" project="openSUSE:Factory">
+  <title>YaST2 - Package Manager Access</title>
+  <description>This package contains a name space for accessing the package manager
+library in YaST2.</description>
+  <devel project="YaST:Head" package="yast2-pkg-bindings"/>
+</package>

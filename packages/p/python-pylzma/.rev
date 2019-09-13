@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>635fc0534acb32fd1d67447d29144797</srcmd5>
+    <version>0.4.6</version>
+    <time>1435053442</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept this new RPM.</comment>
+    <requestid>312544</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4215a3ac8088ceb584845abf46b44a82</srcmd5>
+    <version>0.4.8</version>
+    <time>1443584985</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324801</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7e23920b20a8ba69bd20039c1d15f127</srcmd5>
+    <version>0.4.9</version>
+    <time>1533214632</time>
+    <user>dimstar_suse</user>
+    <comment>- Move urls to github, pypi tarball does not contain tests, upstream
+  fixed it for future releases
+
+- Switch to singlespec
+- Update to 0.4.9:
+  * support python3</comment>
+    <requestid>625449</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0df8b3db41c7af72874844c36eca47f6</srcmd5>
+    <version>0.5.0</version>
+    <time>1547540153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662480</requestid>
+  </revision>
+</revisionlist>

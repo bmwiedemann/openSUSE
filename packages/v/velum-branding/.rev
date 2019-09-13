@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e8ffb2fed5b46e7e2f81956948af8c70</srcmd5>
+    <version>0.0.0+git_r8_6c4b803</version>
+    <time>1527583441</time>
+    <user>dimstar_suse</user>
+    <comment>- Commit 5e28212 by Maximilian Meister mmeister@suse.de
+ copy images, not folder
+ 
+ Signed-off-by: Maximilian Meister &lt;mmeister@suse.de&gt;
+- Commit b15c1b3 by Maximilian Meister mmeister@suse.de
+ add all rights reserved char to SUSE
+ 
+ Signed-off-by: Maximilian Meister &lt;mmeister@suse.de&gt;
+- Initial branding
+</comment>
+    <requestid>612198</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ef45c61c20ade0da18eec11172653cc7</srcmd5>
+    <version>0.0.0+git_r10_5ca0f38</version>
+    <time>1528195981</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>614022</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>63a5aab012732104ef554ee5f0e68f40</srcmd5>
+    <version>0.0.0+git_r20_77ef46f</version>
+    <time>1529066800</time>
+    <user>maxlin_factory</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>616510</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>87f3149e617888a16bb1c37a2ec1a628</srcmd5>
+    <version>0.0.0+git_r22_fe3c5d0</version>
+    <time>1530304540</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>619580</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ada1bc2fe63ed1014b3deb6d21acfe53</srcmd5>
+    <version>0.0.0+git_r22_fe3c5d0</version>
+    <time>1533045729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626425</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ffdb3920578e829e7eb4d3c8ea16b78f</srcmd5>
+    <version>0.0.0+git_r22_fe3c5d0</version>
+    <time>1542282078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649010</requestid>
+  </revision>
+</revisionlist>

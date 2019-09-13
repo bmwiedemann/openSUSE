@@ -1,0 +1,5 @@
+<package name="python-qtwebengine-qt5" project="openSUSE:Factory">
+  <title>Python bindings for the Qt5 WebEngine framework</title>
+  <description>PyQtWebEngine is a set of Python bindings for the Qt5 WebEngine framework. The framework provides the ability to embed web content in applications. The bindings sit on top of PyQt5 and are implemented as three separate modules corresponding to the different libraries that make up the framework.</description>
+  <devel project="KDE:Qt5" package="python-qtwebengine-qt5"/>
+</package>

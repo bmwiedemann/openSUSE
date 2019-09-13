@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2c8aa87773c003e2f5970898ce0f9db</srcmd5>
+    <version>1.2.4</version>
+    <time>1336471433</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115448</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e2c8aa87773c003e2f5970898ce0f9db</srcmd5>
+    <version>1.2.4</version>
+    <time>1340184351</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>798c42d0e21ed67372f70ce8a300493e</srcmd5>
+    <version>1.2.5</version>
+    <time>1347969789</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.5:
+  + Fix build against older X servers.
+  + Fix build against XAA-less server.
+  + Drop useless vgaHW include.
+  + Fall back to shadowfb if XAA is unavailable.</comment>
+    <requestid>134628</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>798c42d0e21ed67372f70ce8a300493e</srcmd5>
+    <version>1.2.5</version>
+    <time>1359110619</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d0f51275a96d1110297005f481105f2e</srcmd5>
+    <version>1.2.5</version>
+    <time>1363856226</time>
+    <user>coolo</user>
+    <comment>- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333)</comment>
+    <requestid>160270</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>876766e9f7a5d994127a99bc1288b133</srcmd5>
+    <version>1.2.5</version>
+    <time>1377249008</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195924</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>876766e9f7a5d994127a99bc1288b133</srcmd5>
+    <version>1.2.5</version>
+    <time>1379665035</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>876766e9f7a5d994127a99bc1288b133</srcmd5>
+    <version>1.2.5</version>
+    <time>1409303718</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>5578971bacd3523804a0ddbd47263f06</srcmd5>
+    <version>1.2.5</version>
+    <time>1423595849</time>
+    <user>dimstar_suse</user>
+    <comment>- U_don-t-use-PCITAG-in-struct-anymore.patch
+  * fixes build against xorg-server 1.17</comment>
+    <requestid>284502</requestid>
+  </revision>
+</revisionlist>

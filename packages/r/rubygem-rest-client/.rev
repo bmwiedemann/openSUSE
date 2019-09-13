@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>97f4681958f71fcc99c97d4f5bde28d5</srcmd5>
+    <version>1.6.7</version>
+    <time>1354712862</time>
+    <user>namtrac</user>
+    <comment>http://lists.opensuse.org/opensuse-factory/2012-12/msg00020.html</comment>
+    <requestid>143813</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>97f4681958f71fcc99c97d4f5bde28d5</srcmd5>
+    <version>1.6.7</version>
+    <time>1359110342</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>97f4681958f71fcc99c97d4f5bde28d5</srcmd5>
+    <version>1.6.7</version>
+    <time>1379664567</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>7f917aa26d2cee62360980a333f067be</srcmd5>
+    <version>1.6.7</version>
+    <time>1396174449</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>228205</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>7f917aa26d2cee62360980a333f067be</srcmd5>
+    <version>1.6.7</version>
+    <time>1409303275</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>b7f2db27f80db8e6344fface6c0ad0d7</srcmd5>
+    <version>1.6.7</version>
+    <time>1413263511</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255466</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>fb134bd7904c0fd97ce36fff7cda2b9e</srcmd5>
+    <version>1.6.7</version>
+    <time>1414066827</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257991</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b70db8d1e9a8464b84e63b485da4ff2c</srcmd5>
+    <version>1.7.3</version>
+    <time>1425217594</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286937</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0ca4765502d2199c4070d1a096b33505</srcmd5>
+    <version>2.0.1</version>
+    <time>1491895946</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>479682</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9f3e33573d6a508016f0922b8750b628</srcmd5>
+    <version>2.0.2</version>
+    <time>1496926867</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497689</requestid>
+  </revision>
+</revisionlist>

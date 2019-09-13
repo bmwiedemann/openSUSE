@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4d86ffd884ebfe5cdc382457a718dc8f</srcmd5>
+    <version>4.47</version>
+    <time>1336423572</time>
+    <user>coolo</user>
+    <comment>New package: glpk - The GNU Linear Programming Kit package (build dependency for octave to be submitted to factory)</comment>
+    <requestid>115902</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4d86ffd884ebfe5cdc382457a718dc8f</srcmd5>
+    <version>4.47</version>
+    <time>1340183372</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3abebde63503896b81727593d62139cf</srcmd5>
+    <version>4.47</version>
+    <time>1354885752</time>
+    <user>namtrac</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Avoid manual library dependencies; make doc subpackage noarch (forwarded request 144391 from jengelh)</comment>
+    <requestid>144468</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>3abebde63503896b81727593d62139cf</srcmd5>
+    <version>4.47</version>
+    <time>1359108945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>03596e3c7c666494b94c84313c01caef</srcmd5>
+    <version>4.48</version>
+    <time>1364895889</time>
+    <user>coolo</user>
+    <comment>- updated to 4.48:
+  * This is a maintainer release.
+  * Some minor changes in API (glpk.h) were made. For details
+    please see ChangeLog.
+  * Some bugs/typos were fixed. Thanks to
+    Raniere Gaia Costa da Silva,
+    Heinrich Schuchardt &lt;xypron.glpk@gmx.de&gt;, and
+    Robbie Morrison &lt;robbie@actrix.co.nz&gt; for reports.</comment>
+    <requestid>161310</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>44bb97c2678010055b526281b5fd45b8</srcmd5>
+    <version>4.52</version>
+    <time>1375112487</time>
+    <user>coolo</user>
+    <comment> (forwarded request 184364 from matwey)</comment>
+    <requestid>184491</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>85349021f30f0df1ae58a8af004a1843</srcmd5>
+    <version>4.52.1</version>
+    <time>1376132698</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to new upstream release 4.52.1 (forwarded request 186283 from jengelh)</comment>
+    <requestid>186353</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>85349021f30f0df1ae58a8af004a1843</srcmd5>
+    <version>4.52.1</version>
+    <time>1379662465</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>03d3fe253d64405e55722b9971675fc0</srcmd5>
+    <version>4.52.1</version>
+    <time>1386776699</time>
+    <user>coolo</user>
+    <comment>- enable tests (forwarded request 210392 from rudi_m)</comment>
+    <requestid>210409</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>240aadaafa6becf975ce012dc45bcd2e</srcmd5>
+    <version>4.54</version>
+    <time>1396291371</time>
+    <user>coolo</user>
+    <comment>- updated to 4.54
+  * Block-triangular LU-factorization was implemented to be used
+    on computing an initial factorization of the basis matrix.
+  * A new version of the Schur-complement-based factorization
+    module was included in the package. Now it can be used along
+    with plain as well as with block-triangular LU-factorization.
+  * The API routine glp_read_mps was changed to remove free rows.
+  * etc. see NEWS for details</comment>
+    <requestid>228257</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>240aadaafa6becf975ce012dc45bcd2e</srcmd5>
+    <version>4.54</version>
+    <time>1409301002</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0ef000af6b35078191a6e8833faefef3</srcmd5>
+    <version>4.55</version>
+    <time>1415866692</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261324</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e28cab8278d4cac56c77f4683efc0366</srcmd5>
+    <version>4.56</version>
+    <time>1444130751</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335915</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b395af90a78fe8b1a569fb1174a1cede</srcmd5>
+    <version>4.57</version>
+    <time>1446989763</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342967</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>220cd20b9fc04fbcd062e182d0158801</srcmd5>
+    <version>4.58</version>
+    <time>1456127873</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360266</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>89f2cf3b0947f4a5de8c3d9b45bc3f85</srcmd5>
+    <version>4.59</version>
+    <time>1458120967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>372714</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0e6d00b9c1de1a722b2abc3699a52c84</srcmd5>
+    <version>4.60</version>
+    <time>1459845802</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.60
+  * src/glpk.h Declarations of all non-documented API routines were 
+    hidden by #ifdef GLP_UNDOC / #endif.
+  * src/simplex/spydual.c An experimental feature (objective 
+    coefficient perturbation) to improve numerical stabilty and 
+    avoid cycling was included in the dual simplex solver.  
+- Enable gmp support</comment>
+    <requestid>382917</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5fcc42de1cc87e8bbf32b752305799ec</srcmd5>
+    <version>4.61</version>
+    <time>1485383453</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451982</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9261255d315a2ecfa427ca5f86425f76</srcmd5>
+    <version>4.63</version>
+    <time>1502186377</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>515029</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a949931acc40f696ad443e256f12011f</srcmd5>
+    <version>4.64</version>
+    <time>1513245531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556099</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9c209d483ac976a51cde2e6e66d06eeb</srcmd5>
+    <version>4.65</version>
+    <time>1530191652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.65:
+  * The following new API routines for LP/MIP preprocessing were added:
+    + glp_npp_alloc_wksp    allocate the preprocessor workspace
+    + glp_npp_load_prob     load original problem instance
+    + glp_npp_preprocess1   perform basic LP/MIP preprocessing
+    + glp_npp_build_prob    build resultant problem instance
+    + glp_npp_postprocess   postprocess solution to resultant problem
+    + glp_npp_obtain_sol    obtain solution to original problem
+    + glp_npp_free_wksp     free the preprocessor workspace
+  * A new, more robust implementation of locally valid simple cover
+    cuts was included in the MIP solver.
+  * The API routine glp_init_iocp was changed to enable long-step
+    option of the dual simplex by default.
+- Add glpk-no_random_return.patch</comment>
+    <requestid>619409</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1db96bffc2f3cbc5a89dcbb7201909ac</srcmd5>
+    <version>4.65</version>
+    <time>1545648422</time>
+    <user>dimstar_suse</user>
+    <comment>- Small packaging change for doc subpackage
+- Enable additional functionality</comment>
+    <requestid>660491</requestid>
+  </revision>
+</revisionlist>

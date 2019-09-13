@@ -1,0 +1,6 @@
+<package name="libunwind" project="openSUSE:Factory">
+  <title>Unwind Library</title>
+  <description>A portable and efficient C programming interface (API) to determine the
+call chain of a program.</description>
+  <devel project="devel:libraries:c_c++" package="libunwind"/>
+</package>

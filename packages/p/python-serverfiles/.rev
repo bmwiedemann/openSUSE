@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7dba77fe0fe3287bb291c16d929b72b3</srcmd5>
+    <version>0.2.1</version>
+    <time>1545223800</time>
+    <user>dimstar_suse</user>
+    <comment>utility to locally store files on a HTTP server</comment>
+    <requestid>652760</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2813f8a210a0b04567c1f84a3af59eb0</srcmd5>
+    <version>0.3.0</version>
+    <time>1553436035</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * no upstream changelog</comment>
+    <requestid>687706</requestid>
+  </revision>
+</revisionlist>

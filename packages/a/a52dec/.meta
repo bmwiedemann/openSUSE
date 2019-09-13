@@ -1,0 +1,7 @@
+<package name="a52dec" project="openSUSE:Factory">
+  <title>Library for decoding ATSC A/52 streams</title>
+  <description>liba52 is a free library for decoding ATSC A/52 streams.
+
+</description>
+  <devel project="multimedia:libs" package="a52dec"/>
+</package>

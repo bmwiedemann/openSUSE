@@ -1,0 +1,8 @@
+<package name="rubygem-faraday" project="openSUSE:Factory">
+  <title>HTTP/REST API client library</title>
+  <description>HTTP/REST API client library.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-faraday"/>
+  <url>http://github.com/technoweenie/faraday</url>
+</package>

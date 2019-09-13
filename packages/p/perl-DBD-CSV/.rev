@@ -1,0 +1,307 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>bf8b3c6e64a99f0e8a222fcc4fc7d77a</srcmd5>
+    <version>0.22</version>
+    <time>1168903816</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="119">
+    <srcmd5>714ce76be35653f05d420c26b1d35909</srcmd5>
+    <version>0.22</version>
+    <time>1217546402</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="138">
+    <srcmd5>92a3dceea8b0c6e6d4d8951d705df1a5</srcmd5>
+    <version>0.22</version>
+    <time>1245337285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="140">
+    <srcmd5>92a3dceea8b0c6e6d4d8951d705df1a5</srcmd5>
+    <version>0.22</version>
+    <time>1245337285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="141">
+    <srcmd5>75ba5435e12f81b6d0c353ca02b88729</srcmd5>
+    <version>0.22</version>
+    <time>1263301038</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DBD-CSV based on submit request 29291 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="142">
+    <srcmd5>eda1c350eeeaa6793704f98a874b837e</srcmd5>
+    <version>0.22</version>
+    <time>1268925409</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3155fd496a6653241df7d480bd76a97c</srcmd5>
+    <version>0.28</version>
+    <time>1270486101</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DBD-CSV based on submit request 36932 from user computersalat
+</comment>
+    <requestid>36932</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3155fd496a6653241df7d480bd76a97c</srcmd5>
+    <version>0.28</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>3155fd496a6653241df7d480bd76a97c</srcmd5>
+    <version>0.28</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>659dba3569c8f31673fefd4bee922819</srcmd5>
+    <version>0.30</version>
+    <time>1279651072</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DBD-CSV based on submit request 43522 from user computersalat
+</comment>
+    <requestid>43522</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d4fd893dd1d18e7fd052ac32c7de1937</srcmd5>
+    <version>0.30</version>
+    <time>1291581900</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54513 from user coolo
+</comment>
+    <requestid>54513</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>320f8e2db87f1a2edcb95c0e41deb423</srcmd5>
+    <version>0.30</version>
+    <time>1291581905</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54513
+</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>320f8e2db87f1a2edcb95c0e41deb423</srcmd5>
+    <version>0.30</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f5f5efbc005d60734e6d4d450a12b933</srcmd5>
+    <version>0.31</version>
+    <time>1301574660</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65639 from user coolo
+</comment>
+    <requestid>65639</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>bf0f7dd198edeb4ea2ba3552150683ff</srcmd5>
+    <version>0.31</version>
+    <time>1301574671</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65639
+</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>e9f1cbc7a1f8a8074284ee5ea9f845ae</srcmd5>
+    <version>0.31</version>
+    <time>1301669639</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65726 from user coolo
+</comment>
+    <requestid>65726</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>21ce7da43cb95c63d27c874fab515767</srcmd5>
+    <version>0.31</version>
+    <time>1301669650</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65726
+</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>f89ba8a3a873293b57e19a5cc0d6cdcf</srcmd5>
+    <version>0.31</version>
+    <time>1302080401</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66190 from user coolo
+</comment>
+    <requestid>66190</requestid>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>f89ba8a3a873293b57e19a5cc0d6cdcf</srcmd5>
+    <version>0.31</version>
+    <time>1319182255</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8344651f570f3832141148bc24337dd4</srcmd5>
+    <version>0.33</version>
+    <time>1321875522</time>
+    <user>coolo</user>
+    <comment>- update to 0.33
+    * NAME / DISTNAME in Makefile.PL
+    * TYPE should be numeric
+    * Added tests for return count of delete statements in do
+    * Upped copyright to 2011
+    * Added tests for return count of update statements (Peter Rabbitson)
+    * Try to catch (more) usernames on Windows as schema names
+    * More cross-checks for META data</comment>
+    <requestid>92488</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>6b2a05bda2212687a48b30bd33e321d0</srcmd5>
+    <version>0.33</version>
+    <time>1323193209</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6a31f198567e49505a62f008dbedef04</srcmd5>
+    <version>0.34</version>
+    <time>1337667461</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121596</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>6a31f198567e49505a62f008dbedef04</srcmd5>
+    <version>0.34</version>
+    <time>1340183820</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>6a31f198567e49505a62f008dbedef04</srcmd5>
+    <version>0.34</version>
+    <time>1359109633</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4f872b58ceb02da1bfd4833363c032db</srcmd5>
+    <version>0.38</version>
+    <time>1372438509</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>180831</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>80cca9d3454772fad2d9d194962ef8c1</srcmd5>
+    <version>0.40</version>
+    <time>1376380225</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184791</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>80cca9d3454772fad2d9d194962ef8c1</srcmd5>
+    <version>0.40</version>
+    <time>1379663610</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f266a8e90018da9dcd160a9192c0f4e4</srcmd5>
+    <version>0.41</version>
+    <time>1385490307</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208436</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>f266a8e90018da9dcd160a9192c0f4e4</srcmd5>
+    <version>0.41</version>
+    <time>1409302230</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f3735fff7a96e185414e19be6716cde4</srcmd5>
+    <version>0.44</version>
+    <time>1411370615</time>
+    <user>coolo</user>
+    <comment>- updated to 0.44
+     * Table names case sensitiveness not tested case-problematic FS's
+     * Fix defaults in doc (annocpan)
+     * Fix typo in SYNOPSIS (RT#97313)
+     * Workaround eof bug in Text::CSV_XS-1.10
+ 
+ 0.43   - 2014-06-30, H.Merijn Brand
+     * Updated copyright to 2014
+     * Unquote schema's in test for cygwin
+     * Extra guards in Makefile.PL for unmet requirements
+ 
+ 0.42   - 2013-08-14, H.Merijn Brand
+     * Optionally skip tests using File::Spec-&gt;tempdir () RT#87684
+     * And document the use of $TMPDIR in README
+     * Make the SYNOPSIS more reflect real-world usage
+     * Detect DBI::Test and use it if available</comment>
+    <requestid>250225</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>642fd44f439646414b5d8a966486fddf</srcmd5>
+    <version>0.48</version>
+    <time>1429346450</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.48
+   see /usr/share/doc/packages/perl-DBD-CSV/ChangeLog
+  0.48	- 2015-02-11, H.Merijn Brand
+      * Update list of valid Text::CSV_XS attributes
+  
+  0.47	- 2015-02-11, H.Merijn Brand
+      * Updated copyright to 2015
+      * Make test-tablename unique for parallel testing
+      * Remove perl recommendation from META as it breaks cpan clients
+  
+  0.46	- 2014-11-08, H.Merijn Brand
+      * Column type CHAR should return 1
+  
+  0.45	- 2014-10-23, H.Merijn Brand
+      * Test unauthorized folder access (RT#99508). Requires DBD::File-0.43
+      * Fix DBI requirement phase (depend more on toolchain) (RT#99732)</comment>
+    <requestid>297717</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e6353afb8353b01d017364ed60bf53a5</srcmd5>
+    <version>0.49</version>
+    <time>1507571161</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.49
+   see /usr/share/doc/packages/perl-DBD-CSV/ChangeLog
+  0.49	- 2016-05-12, H.Merijn Brand
+      * Simplified test-table-name generation
+      * Prefer quote_empty over quote_always for size (Text::CSV_XS =&gt; 1.18)
+      * Add CONTRIBUTING.md
+      * It's 2016
+      * Added docs to warn for reserved words (RT#106529)
+      * Minor spelling corrections (PRC Guillermo O. Freschi)
+      * Test with perl 5.24.0, DBI 1.636, SQL::Statement-1.410, and
+        Text::CSV_XS-1.23</comment>
+    <requestid>532534</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e95177ffe7021fb26054878fd7912e5e</srcmd5>
+    <version>0.53</version>
+    <time>1532774588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625592</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>98c2bc2bd466b39571042ca3a0fc6181</srcmd5>
+    <version>0.54</version>
+    <time>1542012060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647364</requestid>
+  </revision>
+</revisionlist>

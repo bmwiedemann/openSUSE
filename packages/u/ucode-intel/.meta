@@ -1,0 +1,5 @@
+<package name="ucode-intel" project="openSUSE:Factory">
+  <title>ucode-intel</title>
+  <description>Microcode Updates for Intel x86/x86_64 CPUs</description>
+  <devel project="Base:System" package="ucode-intel"/>
+</package>

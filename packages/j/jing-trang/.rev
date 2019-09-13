@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5d4742d825accd78f3b2f4cc51ae79f</srcmd5>
+    <version>20151127</version>
+    <time>1512567986</time>
+    <user>dimstar_suse</user>
+    <comment>replace jing and trang</comment>
+    <requestid>546964</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4e9c40fc6bd3693f10d205d0b3fa6cdb</srcmd5>
+    <version>20151127</version>
+    <time>1513676850</time>
+    <user>dimstar_suse</user>
+    <comment>Some spec-cleaner action</comment>
+    <requestid>557265</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ac2a1b98962eee636eb81c6094f971d1</srcmd5>
+    <version>20151127</version>
+    <time>1541515010</time>
+    <user>dimstar_suse</user>
+    <comment>Depend on newer bsh2 and not on the old bsh</comment>
+    <requestid>645926</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8914ff4c075a036d6feb95b73ef10a5c</srcmd5>
+    <version>20151127</version>
+    <time>1544816648</time>
+    <user>dimstar_suse</user>
+    <comment>Build against xml-commons-apis instead of xerces-j2-xml-apis</comment>
+    <requestid>656910</requestid>
+  </revision>
+</revisionlist>

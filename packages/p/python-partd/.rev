@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dda5d17b5e952a4381d70cea9b812f6e</srcmd5>
+    <version>0.3.8</version>
+    <time>1522596382</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license macro for license.
+- specfile:
+  * add LICENSE.txt to %doc
+- update to version 0.3.8:
+  * BUG: Fixed serialization for Datetime with tz (#25)
+  * Path management (#24)
+  * Add LICENSE.txt to manifest. (#23)
+  * `msgpack.packb` may not have packed utf-8 compatible bytes, so
+    don't … (#22)
+  * Fix pandas/numpy serialization (#21)
+  * Handle categorical indices
+- Update to version 0.3.7
+- Only make hard requirements BuildRequires and Requires.
+- Implement single-spec version.
+- Initial version
+</comment>
+    <requestid>585414</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>debcf3be0bb046d68647cb591b193ef9</srcmd5>
+    <version>0.3.8</version>
+    <time>1545648052</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659538</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0540541a6b20b440b8fb2f0e831ee7b6</srcmd5>
+    <version>0.3.10</version>
+    <time>1559837756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707134</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f6b5415ae7cbcb37e95615d97a8d2407</srcmd5>
+    <version>1.0.0</version>
+    <time>1563914448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * no upstream changelog</comment>
+    <requestid>717898</requestid>
+  </revision>
+</revisionlist>

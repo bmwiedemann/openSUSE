@@ -1,0 +1,459 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c608c1083ef889319cd58acb6868a4cd</srcmd5>
+    <version>1.1.5</version>
+    <time>1339531086</time>
+    <user>coolo</user>
+    <comment>removed obsolete patch</comment>
+    <requestid>122239</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c608c1083ef889319cd58acb6868a4cd</srcmd5>
+    <version>1.1.5</version>
+    <time>1340183337</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d5a802b43377bc346c498f66c5f3b468</srcmd5>
+    <version>1.1.7</version>
+    <time>1343734215</time>
+    <user>coolo</user>
+    <comment>- FreeIPMI 1.1.7 - 07/30/12
+  o In ipmi-sensors and ipmi-sel, fix units output corner case.
+  o In bmc-info, detect unsupported system info corner case.
+  o Update documentation with motherboard support.
+  
+  Special Note: This will likely be the last release of FreeIPMI
+  in the 1.1.X stable branch.
+
+- Fix build: %make_install -&gt; %makeinstall
+
+- FreeIPMI 1.1.6 - 06/28/12
+  - Tools
+  ------
+  o In ipmi-sel, support Supermicro SEL OEM interpretations in
+    --output-event-state.
+  o In ipmi-sel and ipmi-sensors, support additional sensor/SEL
+    interpretations including:
+    - Version Change
+    - System Firmware Progress Transition Severity
+    - Button/Switch Transition Severity
+    - Chassis Transition Severity
+    - POST Memory Resize State
+    - Cable/Interconnect Transition Severity
+    - Boot Error Transition Severity
+    - Slot Connector Transition Severity
+    - Memory State
+    - Memory Transition Severity
+  o In bmc-config, ipmi-chassis-config, ipmi-pef-config, and
+    ipmi-chassis-config, support cipher suite ID argument.
+  o Support Supermicro X9DRi-F OEM sensors and events.</comment>
+    <requestid>129361</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d5a802b43377bc346c498f66c5f3b468</srcmd5>
+    <version>1.1.7</version>
+    <time>1359108889</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6026676c7dcf167961d202853e127e96</srcmd5>
+    <version>1.2.8</version>
+    <time>1372145106</time>
+    <user>coolo</user>
+    <comment>- FreeIPMI 1.2.8 - 06/21/13
+  -------------------------
+  o Fix portability build bug on ARM systems.
+  o Add 'internal IPMI error' troubleshooting to manpages.
+  o Fix bmc-info corner case on Bull 510 systems.
+- drop automake-1_13.patch patch, included upstream
+
+ 
+- FreeIPMI 1.2.6 - 04/29/13
+  -------------------------
+  o Support HP Proliant DL160 G8 OEM sensors.
+  o Support Supermicro X9SCM-iiF OEM sensors and events.
+  o Support output of temperature sampling period to ipmi-dcmi.
+  o Clarify error message when SOL session cannot be stolen in
+    ipmiconsole/libipmiconsole.
+  o Fix dcmi rolling average time period output error
+  o Fix ipmi-dcmi output errors with --get-dcmi-sensor-info.
+  o Fix corner case in calculation of confidentiality pad length with
+    AES-CBC-128 encryption.  Incorrect pad effects some vendor firmware
+    implementations.
+  o Send IPMI 2.0 packets differently than IPMI 1.5 packets, as the
+    former does not require legacy pad data to be appended to
+    payloads.
+  o Fix Intel OEM SEL buffer overflow.
+  o Fix out of trunk source build.
+  Libraries
+  ---------
+  o Support new ipmi_rmcpplus_sendto() and ipmi_rmcpplus_recvfrom()
+    functions.
+  o Support new HP Proliant DL160 G8 OEM sensor events.</comment>
+    <requestid>180714</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d07c80238e0322afdec4e25c0761c1e0</srcmd5>
+    <version>1.2.9</version>
+    <time>1374751137</time>
+    <user>coolo</user>
+    <comment>- FreeIPMI 1.2.9 - 07/17/13
+  -------------------------
+  o Fix threshold output corner case in ipmi-sensors.
+  o Fix invalid declaration in libipmimonitoring header.
+  o Fix older compiler build problems.</comment>
+    <requestid>184045</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d07c80238e0322afdec4e25c0761c1e0</srcmd5>
+    <version>1.2.9</version>
+    <time>1379662363</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6b7bb4cb8277c5638a262e8aac3330de</srcmd5>
+    <version>1.3.1</version>
+    <time>1380294603</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200805</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b44262bd8b3420c5691cfce0b7a2c280</srcmd5>
+    <version>1.3.2</version>
+    <time>1381482254</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202939</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4ccc15a0615e50d1c1806bb64d9f0728</srcmd5>
+    <version>1.3.2</version>
+    <time>1383035098</time>
+    <user>coolo</user>
+    <comment>Add systemd support for openSUSE &gt;= 12.3 (forwarded request 204927 from posophe)</comment>
+    <requestid>205000</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fe5b310f48697f9c73d1ad94f3cc505d</srcmd5>
+    <version>1.3.4</version>
+    <time>1387737146</time>
+    <user>scarabeus_factory</user>
+    <comment>- Prevent crash on systems with more than 601 sensors.
+  Add freeipmi-max-sensor.patch
+
+- FreeIPMI 1.3.4 - 12/12/13
+  -------------------------
+  o Support 'solchannelsupport' workraound in ipmiconsole /
+    IPMICONSOLE_WORKAROUND_SKIP_CHANNEL_PAYLOAD_SUPPORT workaround
+    flag in libipmiconsole.
+  o Fix SDR cache workaround for motherboards with invalid SDR record
+    counts listed.
+  o Workaround Supermicro bug in bmc-watchdog.
+  o Fix error checks in sensor decoding functions, leading to
+    possible problems in ipmi-sensors-config.
+  o Update documentation with additional workarounds for motherboards.
+  o Fix various minor bugs.
+
+- FreeIPMI 1.3.3
+  -------------------------
+  o Add support for intelnm get-node-manager-alert-destination and
+    set-node-manager-alert-destination in ipmi-oem.
+  o Under very verbose mode, ipmi-sel will now record types for OEM
+    records.  This should allow OEM parses outside of FreeIPMI to more
+    effectively parse OEM specific SEL records.
+  o Fix big endian portability bugs.</comment>
+    <requestid>211711</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8fe6deaaab06b4615f270ad439a78662</srcmd5>
+    <version>1.3.4</version>
+    <time>1390246911</time>
+    <user>coolo</user>
+    <comment>- Updated 1.3.4 release from upstream to support ppc64le.</comment>
+    <requestid>214179</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f35e5fba19fea44ec72f8cd5fcf539fc</srcmd5>
+    <version>1.4.0</version>
+    <time>1392447870</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>222211</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e2d6cfbdf655c0a843e1f6157bcb90dc</srcmd5>
+    <version>1.4.1</version>
+    <time>1394103419</time>
+    <user>coolo</user>
+    <comment>- Update to 1.4.1
+  Tools - New Features
+  --------------------
+  o Support 'serialalertsdeferred' workaround in ipmiconsole.
+  o Support 'solpacketseq' workaround in ipmiconsole.
+  o Fix portability issues for Apple / OS X.</comment>
+    <requestid>224628</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ca1e0fc5efbb92bd3c64c95dfb83142f</srcmd5>
+    <version>1.4.3</version>
+    <time>1400173844</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234118</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>63816b6da98dfb82590fd7772b8a7d63</srcmd5>
+    <version>1.4.4</version>
+    <time>1404306287</time>
+    <user>coolo</user>
+    <comment>- Update to 1.4.4
+  o Support retrys of SSIF reads to handle SSIF NACKs.</comment>
+    <requestid>239058</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>000f4189bea4cbf79e7a5d2c21dd7ddb</srcmd5>
+    <version>1.4.5</version>
+    <time>1406645314</time>
+    <user>coolo</user>
+    <comment>- Update to 1.4.5
+  o Fix libipmiconsole calculation bug w/ SOL character send size.
+  o Support Supermicro H8DGU and H8DG6 OEM sensors and events.
+  o Minor documentation updates.</comment>
+    <requestid>242796</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>000f4189bea4cbf79e7a5d2c21dd7ddb</srcmd5>
+    <version>1.4.5</version>
+    <time>1409300899</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>a520540890f1f6aebcdd5f58895e0b98</srcmd5>
+    <version>1.4.5</version>
+    <time>1409761340</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246855</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8852bb9910b34fa09332380849e5df1c</srcmd5>
+    <version>1.4.6</version>
+    <time>1414744786</time>
+    <user>coolo</user>
+    <comment>- Update to 1.4.6
+  o In ipmi-fru, support output of DDR4 SDRAM modules.
+  o Fix EFI probing on non IA64 systems.
+  o Fix corner case in ipmi-raw w/ standard input or --file and
+    empty lines.
+  o Fix parsing corner case in ipmi-chassis.
+  o Support SSIF bridging.</comment>
+    <requestid>258881</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e6bd022535d4ec58d399ef7c16151257</srcmd5>
+    <version>1.4.7</version>
+    <time>1418978319</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>265744</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fd9b4d915bd7fdcb131d694223f30b57</srcmd5>
+    <version>1.4.8</version>
+    <time>1420754586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.8
+  o Fix segfault in crypt code with libgcrypt versions &gt;= 1.6.0.
+  o Fix --fanout command line parse bug.</comment>
+    <requestid>280259</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>271d7ef9518e6205371287f1243e0beb</srcmd5>
+    <version>1.4.8</version>
+    <time>1428391756</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294232</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3f24260f8605d5ccb269418307ae037c</srcmd5>
+    <version>1.4.9</version>
+    <time>1433920569</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>311282</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>38c2d17f2859af309ea90f15a29f0626</srcmd5>
+    <version>1.4.9</version>
+    <time>1435652165</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>313646</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b1e1276b15dc1b3bf225c0f7b2fb6a48</srcmd5>
+    <version>1.4.10</version>
+    <time>1445796792</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>340352</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c56bd2fcc7f87b8c23dd92ea246c6477</srcmd5>
+    <version>1.5.1</version>
+    <time>1449687274</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>348009</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7bc71f990c9bf83808d28e72ab2e936f</srcmd5>
+    <version>1.5.2</version>
+    <time>1465336123</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>400158</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>35fd97232a18c90b6b280f6ba37c840a</srcmd5>
+    <version>1.5.3</version>
+    <time>1470217514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.3
+  o Update Fujitsu OEM extension product id support range.
+  o In ipmiconsole, support --debugfile option for more difficult
+    debugging scenarios.
+  o In all sensor related tools, increase max number of record ids and
+    sensor types that can be handled.
+  o Fix several invalid completion code errors/values.</comment>
+    <requestid>416524</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f2ebea329c11e9fe89a890737bb5de88</srcmd5>
+    <version>1.5.4</version>
+    <time>1476351095</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434283</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bba3ffdf27fc8ef56a1687964cdd80aa</srcmd5>
+    <version>1.5.5</version>
+    <time>1478780969</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>439471</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>23142d6fe89aad6134fdab2d4004477a</srcmd5>
+    <version>1.5.5</version>
+    <time>1489345497</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478036</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cd15edf2b3d123cf543404070e00695d</srcmd5>
+    <version>1.5.6</version>
+    <time>1503592501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.6
+  o In libfreeipmi locate (used by ipmi-locate), use DMI firmware in
+    sysfs if it exists.
+  o Minor mem-leak corner case fix in libfreeipmi.
+  o Minor documentation fixes.
+  o Minor error message clarifications.</comment>
+    <requestid>508438</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f4b93bc1dab4b02d20b72574da09ea40</srcmd5>
+    <version>1.5.7</version>
+    <time>1507755820</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533193</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>c845caeb09114e4a9c2a7de5750bc826</srcmd5>
+    <version>1.5.7</version>
+    <time>1508434403</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535165</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>6b5ac9e9671d7c2983dd32a67ac7d914</srcmd5>
+    <version>1.5.7</version>
+    <time>1511595775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545086</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2d301472800bbb9aa90fc41ee8b66f3a</srcmd5>
+    <version>1.6.2</version>
+    <time>1531135704</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621121</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>81264b5c956c8d42f949fbe0e966dc44</srcmd5>
+    <version>1.6.2</version>
+    <time>1533627803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627672</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>cfa58fee6c5c67a2fa27fb20657b2d2b</srcmd5>
+    <version>1.6.2</version>
+    <time>1535538430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632080</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>c2e56e8be174346fecd5e046d7b2dd10</srcmd5>
+    <version>1.6.2</version>
+    <time>1546946862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662665</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>d3e22649ae0e48c67b0e59b1663b8f67</srcmd5>
+    <version>1.6.2</version>
+    <time>1548064430</time>
+    <user>dimstar_suse</user>
+    <comment>- Add provides:freeipmi:/usr/sbin/ipmiseld to the
+  freeipmi-ipmiseld split package for backward compatibility
+  for now
+- Added pkkgconfig(systemd) which accidentially got removed
+  in one of the previous submissions</comment>
+    <requestid>666005</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>23aac51a9d7806528502f889b9ef6683</srcmd5>
+    <version>1.6.3</version>
+    <time>1551276550</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679584</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8d5978cf1eebd50e59b39deb1b83eb84</srcmd5>
+    <version>1.6.4</version>
+    <time>1567092397</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>726879</requestid>
+  </revision>
+</revisionlist>

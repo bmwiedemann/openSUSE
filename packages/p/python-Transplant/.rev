@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5aeed9acb0bc51936958f314be3c0af</srcmd5>
+    <version>0.8.7</version>
+    <time>1527934011</time>
+    <user>dimstar_suse</user>
+    <comment>Call Matlab from Python</comment>
+    <requestid>612081</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cac82e285f5891546a87553f88a19f70</srcmd5>
+    <version>0.8.7</version>
+    <time>1533045694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626401</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>62a5115d6d17eda997d6b1892b9dab8d</srcmd5>
+    <version>0.8.8</version>
+    <time>1546946758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660785</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>240d5cbfc12d1c00e3d53c96e58129aa</srcmd5>
+    <version>0.8.10</version>
+    <time>1563993431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.10:
+  * fixes (benign) Matlab crash on exit</comment>
+    <requestid>718208</requestid>
+  </revision>
+</revisionlist>

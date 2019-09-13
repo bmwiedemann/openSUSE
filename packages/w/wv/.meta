@@ -1,0 +1,7 @@
+<package name="wv" project="openSUSE:Factory">
+  <title>Library and Tools for Importing  Microsoft Word (tm) Documents</title>
+  <description>WV is a program that can understand the Microsoft Word 8 binary file
+format (Office97). It currently converts Word into HTML, which can then
+be read with a web browser.</description>
+  <devel project="devel:libraries:c_c++" package="wv"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="perl-Module-Install-ExtraTests" project="openSUSE:Factory">
+  <title>Contextual tests that the harness can ignore</title>
+  <description>Adds contextual tests that the harness can ignore.</description>
+  <devel project="devel:languages:perl" package="perl-Module-Install-ExtraTests"/>
+</package>

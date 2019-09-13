@@ -1,0 +1,5 @@
+<package name="apache-commons-vfs2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="apache-commons-vfs2"/>
+</package>

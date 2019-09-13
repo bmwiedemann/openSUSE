@@ -1,0 +1,517 @@
+<revisionlist>
+  <revision rev="1" vrev="26">
+    <srcmd5>4a5e187fc5d9ca0ca45fabe7653e711d</srcmd5>
+    <version>1.0.3</version>
+    <time>1166483726</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5442862044f0847545eb4e720f0eea27</srcmd5>
+    <version>1.0.4</version>
+    <time>1169205902</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>5f64f8a51546bbf3c97548f815d98386</srcmd5>
+    <version>1.0.4</version>
+    <time>1174682541</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>b539795028d2e2a90dce9bf13c8569df</srcmd5>
+    <version>1.0.4</version>
+    <time>1175265488</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="19">
+    <srcmd5>0e2425975c5d12febe78e5a81fc46c5b</srcmd5>
+    <version>1.0.4</version>
+    <time>1180130169</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="22">
+    <srcmd5>1ec2b3210f647b30293d5c4b02cab9f3</srcmd5>
+    <version>1.0.4</version>
+    <time>1180897549</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="23">
+    <srcmd5>bbaa693b366ececd8d4fb571ed88bd7c</srcmd5>
+    <version>1.0.4</version>
+    <time>1180909289</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="46">
+    <srcmd5>1af917bd70b4849e015dbae0e2293d87</srcmd5>
+    <version>1.0.4</version>
+    <time>1194562286</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="52">
+    <srcmd5>6dcf2be29b213a3af76d2afd5dce8b61</srcmd5>
+    <version>1.0.4</version>
+    <time>1197053547</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="69">
+    <srcmd5>f37e6b1daaa0ba38ef5f3eaa990d4313</srcmd5>
+    <version>1.0.4</version>
+    <time>1206543950</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>38b4be2444874e8e1204fd3128bb7c1c</srcmd5>
+    <version>1.0.5</version>
+    <time>1207440024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>aa3a6eeb7f4ad473b6a3567f173c58d8</srcmd5>
+    <version>1.0.5</version>
+    <time>1207825777</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>e4714331c74eb4be561480f7f61ecb50</srcmd5>
+    <version>1.0.5</version>
+    <time>1210967890</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>47792bde9c9b8aa6367eaa99589a98bf</srcmd5>
+    <version>1.0.5</version>
+    <time>1217637180</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="33">
+    <srcmd5>ca61239f467b991a4015ecfaf0af2274</srcmd5>
+    <version>1.0.5</version>
+    <time>1225577735</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="34">
+    <srcmd5>090c746d75a61e1b7fbdd81f1cc3c17c</srcmd5>
+    <version>1.0.5</version>
+    <time>1229340058</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="35">
+    <srcmd5>0b6bc48ce71c19bf2638eb104197d673</srcmd5>
+    <version>1.0.5</version>
+    <time>1244817828</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="37">
+    <srcmd5>0b6bc48ce71c19bf2638eb104197d673</srcmd5>
+    <version>1.0.5</version>
+    <time>1244817828</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="38">
+    <srcmd5>a4d674e69cb99928c56c31eaac9cd1e4</srcmd5>
+    <version>1.0.5</version>
+    <time>1260532553</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/bzip2 based on submit request 26111 from user mseben
+</comment>
+  </revision>
+  <revision rev="20" vrev="39">
+    <srcmd5>cb66dea82a346ed93c5536b39c0a8178</srcmd5>
+    <version>1.0.5</version>
+    <time>1260950147</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/bzip2 based on submit request 26383 from user mseben
+</comment>
+  </revision>
+  <revision rev="21" vrev="40">
+    <srcmd5>9200fee39dcb2d295fc50a79c0a2b27e</srcmd5>
+    <version>1.0.5</version>
+    <time>1261824455</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/bzip2 based on submit request 27566 from user coolo
+</comment>
+  </revision>
+  <revision rev="22" vrev="41">
+    <srcmd5>d5e09b2622a364669a7c5f95df3ce3e3</srcmd5>
+    <version>1.0.5</version>
+    <time>1268923139</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="23" vrev="42">
+    <srcmd5>9b86921688cf02ddea0486fe894797b6</srcmd5>
+    <version>1.0.5</version>
+    <time>1278088502</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/bzip2 based on submit request 42422 from user elvigia
+</comment>
+    <requestid>42422</requestid>
+  </revision>
+  <revision rev="24" vrev="44">
+    <srcmd5>9b86921688cf02ddea0486fe894797b6</srcmd5>
+    <version>1.0.5</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="45">
+    <srcmd5>9b86921688cf02ddea0486fe894797b6</srcmd5>
+    <version>1.0.5</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="46">
+    <srcmd5>1cfdacab1961e26281604396eb0792ab</srcmd5>
+    <version>1.0.5</version>
+    <time>1285084848</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/bzip2 based on submit request 48684 from user puzel
+</comment>
+    <requestid>48684</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b4c5a40844eba057e47a03e0a38cd34b</srcmd5>
+    <version>1.0.6</version>
+    <time>1285278714</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/bzip2 based on submit request 48876 from user puzel
+</comment>
+    <requestid>48876</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>29d55b4446052ed4d199ede561ce9ca0</srcmd5>
+    <version>1.0.6</version>
+    <time>1288961070</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52070 from user puzel
+</comment>
+    <requestid>52070</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>565dd31fdac9300278132b38750f02d8</srcmd5>
+    <version>1.0.6</version>
+    <time>1288961075</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52070
+</comment>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>64fba6228aea38fd13a75b0bd24ac780</srcmd5>
+    <version>1.0.6</version>
+    <time>1291111705</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 54095 from user elvigia
+</comment>
+    <requestid>54095</requestid>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>ba93ce01a40797a75d6b170e441e90c0</srcmd5>
+    <version>1.0.6</version>
+    <time>1291111715</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 54095
+</comment>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>ba93ce01a40797a75d6b170e441e90c0</srcmd5>
+    <version>1.0.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>af264ee60bc85586189ebbf4f4bcdf52</srcmd5>
+    <version>1.0.6</version>
+    <time>1312205085</time>
+    <user>saschpe</user>
+    <comment>- Update baselibs.conf to ship libbz2-devel-32bit (forwarded request 77544 from jengelh)</comment>
+    <requestid>77564</requestid>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>7889941e1237aa34de16a469b25be24c</srcmd5>
+    <version>1.0.6</version>
+    <time>1312205094</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77564
+</comment>
+  </revision>
+  <revision rev="35" vrev="11">
+    <srcmd5>d3b4b9681aa50a427a6f67b6eb62348c</srcmd5>
+    <version>1.0.6</version>
+    <time>1313048334</time>
+    <user>saschpe</user>
+    <comment>bnc#709260</comment>
+    <requestid>78478</requestid>
+  </revision>
+  <revision rev="36" vrev="12">
+    <srcmd5>3ee4cf959e98e3ca50a881d1cdc13570</srcmd5>
+    <version>1.0.6</version>
+    <time>1313048343</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78478
+</comment>
+  </revision>
+  <revision rev="37" vrev="13">
+    <srcmd5>01ec0c6020e536e0eed7b879fa1d2642</srcmd5>
+    <version>1.0.6</version>
+    <time>1317626026</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85957 from coolo)</comment>
+    <requestid>86090</requestid>
+  </revision>
+  <revision rev="38" vrev="15">
+    <srcmd5>01ec0c6020e536e0eed7b879fa1d2642</srcmd5>
+    <version>1.0.6</version>
+    <time>1319181800</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="39" vrev="16">
+    <srcmd5>943b061a9986aa6b840a57d56b455b18</srcmd5>
+    <version>1.0.6</version>
+    <time>1323190935</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="40" vrev="17">
+    <srcmd5>c76ff6ab63ff81b8fdc60c1bc8825488</srcmd5>
+    <version>1.0.6</version>
+    <time>1326292566</time>
+    <user>coolo</user>
+    <comment>- bzlib: open file descriptors with O_CLOEXEC, but just like 
+ the zlib case, only when bzopen() is used and not bzdopen()
+ to avoid messing up with the caller's semantics.
+ It is responsability of to initiator to set that flag in such case.
+- Replace error prone list of exported symbols with proper use of
+  GCC visibility features. (forwarded request 99345 from elvigia)</comment>
+    <requestid>99346</requestid>
+  </revision>
+  <revision rev="41" vrev="18">
+    <srcmd5>6fb56bda6c71e8bece15759029a2aa12</srcmd5>
+    <version>1.0.6</version>
+    <time>1328260924</time>
+    <user>coolo</user>
+    <comment>drop pre-2005 compatibility patch which influences the output of bzip2. it is incredibly weird that one cannot reproduce the same bzip2 after bunzip2 on a non-opensuse system with the same bzip2 version. so, since the patch in question is only there to allow incredibly old bzip2 versions to decompress files created with a newer one it seems just about time to get rid of this patch. (forwarded request 101629 from apachelogger)</comment>
+    <requestid>102198</requestid>
+  </revision>
+  <revision rev="42" vrev="19">
+    <srcmd5>a15be15acc3e96fe3f05e970a72f5d1e</srcmd5>
+    <version>1.0.6</version>
+    <time>1329318871</time>
+    <user>coolo</user>
+    <comment>- Put libraries back into %{_libdir}, /usr merge project. (forwarded request 104180 from elvigia)</comment>
+    <requestid>104194</requestid>
+  </revision>
+  <revision rev="43" vrev="21">
+    <srcmd5>a15be15acc3e96fe3f05e970a72f5d1e</srcmd5>
+    <version>1.0.6</version>
+    <time>1340183222</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="44" vrev="22">
+    <srcmd5>bc7ebd4fc0ec410133b0e6cd9051b902</srcmd5>
+    <version>1.0.6</version>
+    <time>1358863538</time>
+    <user>coolo</user>
+    <comment>- Add %{version} to Obsoletes/Provides 
+
+- Executing autoreconf requires autoconf
+- Set RPM groups to the common ones we use for library and
+  &quot;-devel&quot; packages</comment>
+    <requestid>149490</requestid>
+  </revision>
+  <revision rev="45" vrev="24">
+    <srcmd5>bc7ebd4fc0ec410133b0e6cd9051b902</srcmd5>
+    <version>1.0.6</version>
+    <time>1359108725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="25">
+    <srcmd5>463382650ac05d2855eed1b7996bc192</srcmd5>
+    <version>1.0.6</version>
+    <time>1363946465</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls</comment>
+    <requestid>160421</requestid>
+  </revision>
+  <revision rev="47" vrev="27">
+    <srcmd5>463382650ac05d2855eed1b7996bc192</srcmd5>
+    <version>1.0.6</version>
+    <time>1379662070</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="28">
+    <srcmd5>48b66aba7a78d1ffe0d3e9f904b1d36b</srcmd5>
+    <version>1.0.6</version>
+    <time>1407072934</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243347</requestid>
+  </revision>
+  <revision rev="49" vrev="30">
+    <srcmd5>48b66aba7a78d1ffe0d3e9f904b1d36b</srcmd5>
+    <version>1.0.6</version>
+    <time>1409300599</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="31">
+    <srcmd5>92c6d273eb04d683cb08b63b70cc4e5c</srcmd5>
+    <version>1.0.6</version>
+    <time>1409761234</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247277</requestid>
+  </revision>
+  <revision rev="51" vrev="32">
+    <srcmd5>51ae8936839a3c83609256b58b0953a0</srcmd5>
+    <version>1.0.6</version>
+    <time>1415365636</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>259874</requestid>
+  </revision>
+  <revision rev="52" vrev="33">
+    <srcmd5>df908acf1e3bd4eb51e8d67cbddfad15</srcmd5>
+    <version>1.0.6</version>
+    <time>1419334381</time>
+    <user>dimstar_suse</user>
+    <comment>- build with PIE</comment>
+    <requestid>265912</requestid>
+  </revision>
+  <revision rev="53" vrev="34">
+    <srcmd5>ad32c57b51b136d1bb42cd2bb5b1a3c4</srcmd5>
+    <version>1.0.6</version>
+    <time>1420318841</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup a bit.
+- Remove the profiling stuff as it should not be used nowdays.
+  At least even factory builds without it.
+- Provide libbz2.so.1.0 as other distros do, so we can run tiny
+  things like steam.
+- Respect cflags again, borked by previous commit.</comment>
+    <requestid>266812</requestid>
+  </revision>
+  <revision rev="54" vrev="35">
+    <srcmd5>d3d09b5d7940a1007de41d5c9dc3d840</srcmd5>
+    <version>1.0.6</version>
+    <time>1421787265</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281257</requestid>
+  </revision>
+  <revision rev="55" vrev="36">
+    <srcmd5>1fe392d5215910b7bcfcb3be944a6967</srcmd5>
+    <version>1.0.6</version>
+    <time>1453416018</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove bzip2-faster.patch, it causes a crash with libarchive and
+  valgrind points out uninitialized memory. See
+  https://github.com/libarchive/libarchive/issues/637#issuecomment-170612576</comment>
+    <requestid>353331</requestid>
+  </revision>
+  <revision rev="56" vrev="37">
+    <srcmd5>515b15f2563acbaa1056c54ed4ef1b3a</srcmd5>
+    <version>1.0.6</version>
+    <time>1459717493</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>381849</requestid>
+  </revision>
+  <revision rev="57" vrev="38">
+    <srcmd5>38f2c9a2a1608a57cd078fd120020612</srcmd5>
+    <version>1.0.6</version>
+    <time>1491210257</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>482332</requestid>
+  </revision>
+  <revision rev="58" vrev="39">
+    <srcmd5>8d4401dc3d5bfbd928a671da07094786</srcmd5>
+    <version>1.0.6</version>
+    <time>1497273074</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop implicit pie building
+- Try profiled build
+- Move autoreconf to build section</comment>
+    <requestid>501581</requestid>
+  </revision>
+  <revision rev="59" vrev="40">
+    <srcmd5>92c0470e32ff2173e1582e8b77541a71</srcmd5>
+    <version>1.0.6</version>
+    <time>1510760921</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Fedora and Mageia
+- Update bzip2-1.0.6-autoconfiscated.patch:
+  * Bump version to 1.0.6.
+  * Fix script symlinks on platforms with EXEEXT.
+</comment>
+    <requestid>539673</requestid>
+  </revision>
+  <revision rev="60" vrev="41">
+    <srcmd5>9d04f55a46841d34d1ae25cefa97b30c</srcmd5>
+    <version>1.0.6</version>
+    <time>1520414914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580932</requestid>
+  </revision>
+  <revision rev="61" vrev="42">
+    <srcmd5>39bac5b1fe07c81506ef97c67d097ade</srcmd5>
+    <version>1.0.6</version>
+    <time>1535963539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631047</requestid>
+  </revision>
+  <revision rev="62" vrev="43">
+    <srcmd5>8c478725de736a00cce03dd11b484e54</srcmd5>
+    <version>1.0.6</version>
+    <time>1536094657</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>632937</requestid>
+  </revision>
+  <revision rev="63" vrev="44">
+    <srcmd5>a25601e1777925c211cf8c9c84f3260a</srcmd5>
+    <version>1.0.6</version>
+    <time>1556311271</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696999</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>2f44548be0156ae511af132b023ecf61</srcmd5>
+    <version>1.0.7</version>
+    <time>1562056625</time>
+    <user>dimstar_suse</user>
+    <comment>- Update bug reference
+- Fix downloaded patches
+
+- Update to version 1.0.7:
+  * Fix undefined behavior in the macros SET_BH, CLEAR_BH, &amp;
+    ISSET_BH.
+  * bzip2: Fix return value when combining --test,-t and -q.
+  * bzip2recover: Fix buffer overflow for large argv[0].
+  * bzip2recover: Fix use after free issue with outFile
+    (CVE-2016-3189).
+  * Make sure nSelectors is not out of range (CVE-2019-12900
+    bsc#1139083)
+- Drop patches fixed upstream:
+  * bzip2-unsafe_strcpy.patch.
+  * bzip2-1.0.6-CVE-2016-3189.patch.
+- Refresh patches with quilt.</comment>
+    <requestid>712352</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>40e74ff394e8360fc52b5c0c2a8c6973</srcmd5>
+    <version>1.0.8</version>
+    <time>1564993722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718295</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,183 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>a399df4f4384f4abdc25762e7f712168</srcmd5>
+    <version>1.6.1</version>
+    <time>1243219871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>a399df4f4384f4abdc25762e7f712168</srcmd5>
+    <version>1.6.1</version>
+    <time>1243219871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>6ddcfc9960b7ed4f2807ed1c483ead98</srcmd5>
+    <version>1.6.1</version>
+    <time>1268925912</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>6ddcfc9960b7ed4f2807ed1c483ead98</srcmd5>
+    <version>1.6.1</version>
+    <time>1278667386</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>6ddcfc9960b7ed4f2807ed1c483ead98</srcmd5>
+    <version>1.6.1</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>6ddcfc9960b7ed4f2807ed1c483ead98</srcmd5>
+    <version>1.6.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>6ddcfc9960b7ed4f2807ed1c483ead98</srcmd5>
+    <version>1.6.1</version>
+    <time>1319182414</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>43acd02f323deed123a2478eed1bebd3</srcmd5>
+    <version>1.6.1</version>
+    <time>1323194309</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>43acd02f323deed123a2478eed1bebd3</srcmd5>
+    <version>1.6.1</version>
+    <time>1340184124</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bbbd5b34123d6b1625480460a2d459ad</srcmd5>
+    <version>1.12</version>
+    <time>1351837869</time>
+    <user>coolo</user>
+    <comment>1.12 update, needed by xmlgraphics-fop</comment>
+    <requestid>139397</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>86ac43f67ad01fee647a9cad499e84a2</srcmd5>
+    <version>1.12.1</version>
+    <time>1354712799</time>
+    <user>namtrac</user>
+    <comment>- update to 1.12.1
+  * bugfix release, see
+  * http://jira.codehaus.org/browse/QDOX/fixforversion/18944 (forwarded request 143713 from cobexer)</comment>
+    <requestid>143845</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>86ac43f67ad01fee647a9cad499e84a2</srcmd5>
+    <version>1.12.1</version>
+    <time>1359110256</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>6cf7e6f602fee3fe343f7dbbafdf9903</srcmd5>
+    <version>1.12.1</version>
+    <time>1378899491</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198307</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>6cf7e6f602fee3fe343f7dbbafdf9903</srcmd5>
+    <version>1.12.1</version>
+    <time>1379664407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>9579bade681bae358ed468ff87c00e63</srcmd5>
+    <version>1.12.1</version>
+    <time>1400301791</time>
+    <user>coolo</user>
+    <comment>added xz build requirement and bytecode check for sles. (forwarded request 234184 from deadpoint)</comment>
+    <requestid>234185</requestid>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>227fb29d38331d9d8728167849e87b67</srcmd5>
+    <version>1.12.1</version>
+    <time>1408021055</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244317</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>227fb29d38331d9d8728167849e87b67</srcmd5>
+    <version>1.12.1</version>
+    <time>1409303128</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>dfb23e3cce6dd28d5f7fecb5153d1a28</srcmd5>
+    <version>1.12.1</version>
+    <time>1409551140</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246749</requestid>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>3dd0858b5bdaaeaf1b8830dba6a495f0</srcmd5>
+    <version>1.12.1</version>
+    <time>1497112399</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove maven conditionals
+- Drop javadoc to bootstrap</comment>
+    <requestid>502556</requestid>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>a49e99e54a51fbb70a439146460fceb6</srcmd5>
+    <version>1.12.1</version>
+    <time>1523126815</time>
+    <user>dimstar_suse</user>
+    <comment>Use source and target version 6</comment>
+    <requestid>593705</requestid>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>0a0ba5d755f967a770b40d31f41aa996</srcmd5>
+    <version>1.12.1</version>
+    <time>1541864843</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>646384</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>943cc155eaf8ae00efe11e1c064b4264</srcmd5>
+    <version>2.0.M9</version>
+    <time>1547540061</time>
+    <user>dimstar_suse</user>
+    <comment>Stuffing the changes a bit</comment>
+    <requestid>664422</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>c9ad1d96cbc45a5551c98f654c531124</srcmd5>
+    <version>2.0.M9</version>
+    <time>1549311492</time>
+    <user>coolo</user>
+    <comment>Try to eliminate build cycle</comment>
+    <requestid>666153</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>7bcea09c2823c20e22041b2ec6d1f489</srcmd5>
+    <version>2.0.M9</version>
+    <time>1555237239</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not depend on the parent pom, since we are not building
+  using Maven.
+</comment>
+    <requestid>693102</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8addafe2cb844142d56c6a88933ef2e3</srcmd5>
+    <version>0.12.2</version>
+    <time>1231904588</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b0d84e69dc7fde91597e6e497945d2b3</srcmd5>
+    <version>0.12.2</version>
+    <time>1237331019</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f55f6bbf565592a88d4b45d04a09da44</srcmd5>
+    <version>0.12.2</version>
+    <time>1242816578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>f55f6bbf565592a88d4b45d04a09da44</srcmd5>
+    <version>0.12.2</version>
+    <time>1242816578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>29603848e6e44b3df942db4a9b4d6109</srcmd5>
+    <version>0.12.2</version>
+    <time>1268924659</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>29603848e6e44b3df942db4a9b4d6109</srcmd5>
+    <version>0.12.2</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>29603848e6e44b3df942db4a9b4d6109</srcmd5>
+    <version>0.12.2</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>29603848e6e44b3df942db4a9b4d6109</srcmd5>
+    <version>0.12.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6e8b6646cfb14574ad6893a545fa6785</srcmd5>
+    <version>0.13.0</version>
+    <time>1306742825</time>
+    <user>saschpe</user>
+    <comment>Update to version 0.13.0, Spec file updates, Removed libnova-0.12.2-optflags.patch (forwarded request 70942 from adra)</comment>
+    <requestid>71817</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fbcb528599399dbbc422ef25dc2d7b10</srcmd5>
+    <version>0.14.0</version>
+    <time>1314882100</time>
+    <user>saschpe</user>
+    <comment>Update to version 0.14.0, Spec file updates (forwarded request 80450 from adra)</comment>
+    <requestid>80458</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>fbcb528599399dbbc422ef25dc2d7b10</srcmd5>
+    <version>0.14.0</version>
+    <time>1319182115</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>282c1c31d62a8cca56368794bf6927c7</srcmd5>
+    <version>0.14.0</version>
+    <time>1323192285</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>282c1c31d62a8cca56368794bf6927c7</srcmd5>
+    <version>0.14.0</version>
+    <time>1340183612</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e56d99d0bf3cde084b7439b46c67ee28</srcmd5>
+    <version>0.15.0</version>
+    <time>1349373614</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.15.0:
+  * Bugfix release.
+- Regenerate build system because of errors about libtool during compilation
+  (added libtool build requirement for this).
+- Compile developer documentation (added doxygen build requirement for this).</comment>
+    <requestid>136864</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>3cc6db4ca60f50e5e54ed6e45a22ba43</srcmd5>
+    <version>0.15.0</version>
+    <time>1354096812</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143300</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>3cc6db4ca60f50e5e54ed6e45a22ba43</srcmd5>
+    <version>0.15.0</version>
+    <time>1359109314</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>aa0fb6370818919e22a9eed22e47ebb0</srcmd5>
+    <version>0.15.0</version>
+    <time>1364158603</time>
+    <user>coolo</user>
+    <comment>Added a patch automake-1.13.patch to fix build with automake 1.13 (forwarded request 160723 from adra)</comment>
+    <requestid>160797</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>aa0fb6370818919e22a9eed22e47ebb0</srcmd5>
+    <version>0.15.0</version>
+    <time>1379663023</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>1b7a6f9a05fdc4788a18d742560a679e</srcmd5>
+    <version>0.15.0</version>
+    <time>1401644428</time>
+    <user>coolo</user>
+    <comment>- disable doxyegn timestamps that break build-compare. (forwarded request 235608 from elvigia)</comment>
+    <requestid>235628</requestid>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>1b7a6f9a05fdc4788a18d742560a679e</srcmd5>
+    <version>0.15.0</version>
+    <time>1409301642</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

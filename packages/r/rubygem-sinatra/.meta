@@ -1,0 +1,8 @@
+<package name="rubygem-sinatra" project="openSUSE:Factory">
+  <title>Classy web-development dressed in a DSL</title>
+  <description>Classy web-development dressed in a DSL
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-sinatra"/>
+  <url>http://sinatra.rubyforge.org</url>
+</package>

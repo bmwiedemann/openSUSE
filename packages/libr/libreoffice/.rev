@@ -1,0 +1,2544 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f1bd9396bb97af7a321a2db367365a78</srcmd5>
+    <version>3.2.99.2</version>
+    <time>1287615915</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51147 from user pmladek
+</comment>
+    <requestid>51147</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8a1e2406ff5db347e77dd76b93785ff4</srcmd5>
+    <version>3.2.99.2</version>
+    <time>1287615920</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51147
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>80a3362967afaad98028996211fbbe61</srcmd5>
+    <version>3.2.99.3</version>
+    <time>1290434492</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53656 from user pmladek
+</comment>
+    <requestid>53656</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>395164aa1c9464ff9a79fb3e32e38285</srcmd5>
+    <version>3.2.99.3</version>
+    <time>1290434499</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53656
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a6e004a6d0533c1d77f2020b44f55810</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1291585114</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54415 from user pmladek
+</comment>
+    <requestid>54415</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9bd5d4fa3a13c02688e6d13966a3956e</srcmd5>
+    <version>3.3.0.1</version>
+    <time>1291585123</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54415
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7a8f4ae988f1903ed5e285802993ec13</srcmd5>
+    <version>3.3.0.2</version>
+    <time>1294399300</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57163 from user pmladek
+</comment>
+    <requestid>57163</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d04a1618e84537bd2dc450b16053c0da</srcmd5>
+    <version>3.3.0.2</version>
+    <time>1294399311</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57163
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d6adf120117c2806545dc89e3f42da68</srcmd5>
+    <version>3.3.0.3</version>
+    <time>1295311589</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58534 from user pmladek
+</comment>
+    <requestid>58534</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b0b3fafbf7171e8f84a6496cfaca3ccf</srcmd5>
+    <version>3.3.0.3</version>
+    <time>1295311597</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58534
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>b0b3fafbf7171e8f84a6496cfaca3ccf</srcmd5>
+    <version>3.3.0.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>533db1743bf21fb5fc81b9f18e2314b6</srcmd5>
+    <version>3.3.1.2</version>
+    <time>1298298609</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62264 from user pmladek
+</comment>
+    <requestid>62264</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>74add4d45944e91f6078a1242535df87</srcmd5>
+    <version>3.3.1.2</version>
+    <time>1298298616</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62264
+</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>dbfdeea0b3664f88147a8865d70fe92e</srcmd5>
+    <version>3.3.1.2</version>
+    <time>1299070212</time>
+    <user>darix</user>
+    <comment>Accepted submit request 63105 from user pmladek
+</comment>
+    <requestid>63105</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>cafb190589c31a7ae93564f3e7f1563e</srcmd5>
+    <version>3.3.1.2</version>
+    <time>1299070220</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 63105
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5606fd017e75c0027a6faa1858ef3287</srcmd5>
+    <version>3.3.2.2</version>
+    <time>1300717756</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64595 from user pmladek
+</comment>
+    <requestid>64595</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>18aeff4633699da2808a1f55b4d6ff78</srcmd5>
+    <version>3.3.2.2</version>
+    <time>1300717769</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64595
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>82e492803c6e16181e4794083a17239e</srcmd5>
+    <version>3.3.3.1</version>
+    <time>1310463852</time>
+    <user>oertel</user>
+    <comment>- fixed typo in changelog
+
+- updated to libreoffice-3.3.3.1 (3.3.3-rc1):
+
+old: openSUSE:Factory/libreoffice
+new: LibreOffice:Unstable/libreoffice rev NoneIndex: libreoffice.spec
+===================================================================
+--- libreoffice.spec (revision 17)
++++ libreoffice.spec (revision 31)
+@@ -21,11 +21,11 @@
+ Name:           libreoffice
+ # allow to use xulrunner191 on SLED11-SP1 (bnc#540726)
+ %define		use_xulrunner191	no
+-Version:        3.3.2.2
++Version:        3.3.3.1
+ Release:        1
+ %define         piece             postprocess
+-%define         ooo_build_version 3.3.2.2
+-%define	        ooo_piece_version 3.3.2.2
++%define         ooo_build_version 3.3.3.1
++%define	        ooo_piece_version 3.3.3.1
+ %define         ooo_sourcedirname libreoffice-build-%ooo_piece_version
+ %define         ooo_prefix        %_libdir
+ %define         ooo_home          libreoffice
+@@ -122,7 +122,7 @@
+ BuildRequires:  libreoffice-ure-devel = %version
+ BuildRequires:  libreoffice-writer-devel = %version
+ BuildRequires:  libreoffice-filters-devel = %version
+-License:        LGPLv2.0 ; LGPLv3
++License:        Artistic ; BSD3c ; GPLv2+ ; LPPL .. ; LGPLv2.1+ ; LGPLv3 ; MPL .. ; MIT
+ Group:          Productivity/Office/Suite
+ AutoReqProv:    on
+ Requires:       libreoffice-ure = %version
+@@ -248,7 +248,7 @@
+ 
+ - libreoffice-gnome
+ 
+-Non-English localizations are provided by extra packges as well, for
++Non-English localizations are provided by extra packages as well, for
+ example:
+ 
+ - libreoffice-de
+Index: libreoffice.changes
+===================================================================
+--- libreoffice.changes (revision 17)
++++ libreoffice.changes (revision 31)
+@@ -1,4 +1,47 @@
+ -------------------------------------------------------------------
++Wed Jun  8 17:29:54 CEST 2011 - pmladek@suse.cz
++
++- updated to libreoffice-3.3.3.1 (3.3.3-rc1):
++    * build
++        * lost check boxes status during DOC import/export (fdo#34908)
++        * fixed regression of copy-paste of Writer table formulas (bnc#675961)
++    * calc
++        * sheet deletion crasher (bnc#680272)
++        * disabled auto-complete in Calc filter dialog (fdo#34898)
++        * PRODUCT function doesn't calculate correctly (lp#775608)
++    * extras
++        * replace SO icons to LO icons in Web Wizard (fdo#33229)
++    * filters
++        * avoid possibility of accessing out of range ObjTimes
++    * impress
++        * crash after printing (fdo#33947)
++        * send document as E-mail crasher (bnc#694119)
++    * libs-core
++        * updated license information (fdo#37001)
++        * fix evolution local addressbook integration
++        * potentially bogus file: URIs (fdo#33970, i#109096)
++        * replace &quot;seagull&quot; icons to LibreOffice icons (fdo#37617)
++        * use full path for kdefilepicker helper binary (fdo#31109)
++    * libs-extern
++        * crash in es thesaurus (rhbz#675806)
++    * libs-extern-sys
++        * update de_CH and de_AT dictionaries (fdo#33751)
++    * libs-gui
++        * hidden tabs in Impress tasks panel (fdo#34718)
++    * ure
++        * prefer gcc __sync functions over pthread
++        * allow .NET clients to bootstrap LibreOffice (fdo#35108)
++    * writer
++        * freeze/hang on mailmerge to attached PDF (fdo#32553)
++        * fix the positions of imported fields to avoid crashes (bnc#663622)
++        * correct ODT MIME type and PDF export filter (fdo#31792, fdo#32553)
++
++-------------------------------------------------------------------
++Wed Mar 23 20:08:17 CET 2011 - pmladek@suse.cz
++
++- libreoffice-3.3.2.2 == 3.3.2-rc2 == final
++
++-------------------------------------------------------------------
+ Fri Mar 18 16:40:02 CET 2011 - pmladek@suse.cz
+ 
+ - updated to libreoffice-3.3.2.2 (3.3.2-rc2):
+Index: libreoffice-postprocess-3.3.3.1.tar.bz2
+===================================================================
+Binary file libreoffice-postprocess-3.3.3.1.tar.bz2 added
+Index: libreoffice-postprocess-3.3.2.2.tar.bz2
+===================================================================
+Binary file libreoffice-postprocess-3.3.2.2.tar.bz2 deleted</comment>
+    <requestid>74677</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7341b2fb1f17642a743fc536d29adae6</srcmd5>
+    <version>3.4.2.5</version>
+    <time>1315410102</time>
+    <user>saschpe</user>
+    <comment>- updated to libreoffice-3.4.2.5 (SUSE 3.4.2-rc2)</comment>
+    <requestid>80943</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>46bba33cfab2af09fc699eb78912b34d</srcmd5>
+    <version>3.4.2.5</version>
+    <time>1315410152</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80943
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a990d3b27f4545996255504d591228c7</srcmd5>
+    <version>3.4.2.6</version>
+    <time>1316447445</time>
+    <user>lrupp</user>
+    <comment>3.4.2-rc3 is final; added few extra fixes; fixed build on Factory again</comment>
+    <requestid>82215</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>d19acaf6bec6096b7428c81e1fa37b15</srcmd5>
+    <version>3.4.2.6</version>
+    <time>1317024512</time>
+    <user>saschpe</user>
+    <comment>- Fix build with poppler 0.17.0
+- Add python-lxml dependency for faster translation processing (forwarded request 84617 from namtrac)</comment>
+    <requestid>84623</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>f7374b18cd8f18a080f9f3a6d5f5471e</srcmd5>
+    <version>3.4.2.6</version>
+    <time>1318348720</time>
+    <user>lrupp</user>
+    <comment>- add more detailed categories to desktop files
+
+- svx-globlmn-hrc-build-dep.diff: fix build dependency problem in svx
+- apply libreoffice-poppler-0.17.0.patch only on openSUSE &gt; 11.3;
+  cpp/poppler-version.h is not included in older poppler packages
+
+- desktop-null-display-crash.diff: fix crash on exit.</comment>
+    <requestid>87378</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>f7374b18cd8f18a080f9f3a6d5f5471e</srcmd5>
+    <version>3.4.2.6</version>
+    <time>1319182128</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>41bb24f9f2c08935b916b407c71895d3</srcmd5>
+    <version>3.4.2.6</version>
+    <time>1319452626</time>
+    <user>coolo</user>
+    <comment>- correctly-init-xthreads-in-qt.diff: let Qt call XInitThreads(),
+  so that it knows it's been called (fdo#40298)
+- avoid-wrong-asserts.diff: fix a bad assert; the following fix depends on it
+- horizontal-scrollbars-with-kde-oxygen-style.diff: horizontal scrollbars with
+  KDE Oxygen style (bnc#722918)
+
+- kde4-tooltips-style.diff: tooltips are all black in KDE4 (bnc#723074,
+  fdo#40461)
+- do-not-display-math-in-desktop-menu.diff: do not display math in desktop
+  menu (fdo#41681)
+- desktop-submenu.diff: display LO application in the right desktop submenu
+  (bnc#718694)
+- bash-completion-for-loffice.diff: define bash completion for 'loffice'
+  wrapper (bnc#719656)
+
+- legacy-fragment-import-*.diff: legacy fragment PPTX import (bnc#699334)</comment>
+    <requestid>89119</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>21f94651743a42448f0c3b81d3b316ab</srcmd5>
+    <version>3.4.4.3</version>
+    <time>1324830954</time>
+    <user>coolo</user>
+    <comment>- updated to libreoffice-3.4.4.3 (SUSE 3.4.4-rc1 == final)
+
+- fix sha-bang in unopkg-sync-bundled script
+
+- fix debuginfo missing for some binaries
+
+- fix libreoffice-pyuno so that 'import uno' works in python
+
+- used the internal mysql cppconnector even for openSUSE-12.2;
+
+- updated to libreoffice-3.4.4.3 (SUSE 3.4.4-rc1 == final):</comment>
+    <requestid>97180</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>672b13e45258c8f664cf8075fab71e45</srcmd5>
+    <version>3.4.4.3</version>
+    <time>1327087443</time>
+    <user>coolo</user>
+    <comment>- obsolete OpenOffice_org-help-en-US-devel (bnc#741043)
+
+- added automake into BuildRequires to fix build in Factory
+
+- buildfix-ucb-glib-2.31.diff: fix build with glib-2.31; glib/gthread.h
+  can't be included directly
+- libreoffice-desktop-icons-256x256.tar.bz2: add missing 256x256 desktop
+  icons (bnc#722644)
+
+- add compat symlinks for the old main desktop icon (bnc#724087)
+
+- define %%python_sitelib on SLED11 and older systems to fix installation
+
+- correctly obsolete OpenOffice_org-artwork-devel (bnc#734781)</comment>
+    <requestid>100201</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>95eae912cbcde2a2a6ec030736f1eb5c</srcmd5>
+    <version>3.4.4.3</version>
+    <time>1329242565</time>
+    <user>coolo</user>
+    <comment>- workaround-for-LO-namespace-pollution-breaking-KDE4.diff:
+  workaround for conflicting defines that break build with KDE4 in factory</comment>
+    <requestid>104278</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ecb08fb6dee18b7ce34b621fe4259335</srcmd5>
+    <version>3.4.5.4</version>
+    <time>1331900220</time>
+    <user>coolo</user>
+    <comment>- updated to libreoffice-3.4.5.4 (SUSE 3.4.5-rc2)
+- patch license to follow spdx.org standard
+- update gdocs extension to version 3.0.0; needed to make it working
+  with the current Google Docs interface (bnc#748548)
+- use and/or operator in the license tag</comment>
+    <requestid>108584</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>24e8f6dc36da8d1e184666e0487427cd</srcmd5>
+    <version>3.5.2.2</version>
+    <time>1333560025</time>
+    <user>coolo</user>
+    <comment>- updated to libreoffice-3.5.5.2 (3.5.2-rc2)
+- did some clean up</comment>
+    <requestid>112476</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>219d066ffe68485a3e05bfee16ac496c</srcmd5>
+    <version>3.5.2.2</version>
+    <time>1335454513</time>
+    <user>coolo</user>
+    <comment>this is needed to fix build in Factory
+
+- buildfix-icu-4.9.diff: fix build with icu-4.9; needed for openSUSE-12.2
+
+- clean up configure switches:
+    * move switches from SUSE*.conf to spec files
+    * use --with-system-headers and --with-system-libs to prefer system
+      stuff over internal copies
+    * use --without-system-&lt;library&gt; only for stuff that is not packaged
+      or not patched in the SUSE distribution, for example libvisio,
+      redland, mythes
+    * bin not longer existing options
+- remove unused python-devel from BuildRequires
+- build zip-3.0 only for openSUSE &lt; 11.4
+- add patches for the extra zip-3.0 from the last zip package
+- make sure that parallel build is used for dmake and GNU make
+  build parts
+
+- buildfix-icu-4.9.diff: fix build with icu-4.9; needed for openSUSE-12.2
+
+- clean up configure switches:
+    * move switches from SUSE*.conf to spec files
+    * use --with-system-headers and --with-system-libs to prefer system
+      stuff over internal copies
+    * use --without-system-&lt;library&gt; only for stuff that is not packaged
+      or not patched in the SUSE distribution, for example libvisio,
+      redland, mythes
+    * bin not longer existing options
+- build zip-3.0 only for openSUSE &lt; 11.4
+- add patches for the extra zip-3.0 from the last zip package
+- make sure that parallel build is used for dmake and GNU make
+  build parts</comment>
+    <requestid>114864</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3c6cd8160d7521fb2d974682a60a6288</srcmd5>
+    <version>3.5.3.2</version>
+    <time>1336452359</time>
+    <user>coolo</user>
+    <comment>IMPORTANT: You need to link libreoffice-icon-themes and libreoffice-l10n
+packages to this one. I have moved the corresponding spec files.
+
+As discussed with the autobuild team, it should make the life easier.
+I need to keep the version in sync and update the spec files at the
+same time.
+
+- updated to libreoffice-3.5.3.2 (3.5.3-rc2)</comment>
+    <requestid>116218</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>94f7c5f43e69df4d497fceee376ba534</srcmd5>
+    <version>3.5.4.3</version>
+    <time>1338582681</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>123152</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7d09e5257feb261eaac698bb45532dd0</srcmd5>
+    <version>3.5.4.4</version>
+    <time>1339822616</time>
+    <user>coolo</user>
+    <comment>- updated to libreoffice-3.5.4.4 (SUSE 3.5 beta2, based on upstream 3.5.5-rc1)</comment>
+    <requestid>125089</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>7d09e5257feb261eaac698bb45532dd0</srcmd5>
+    <version>3.5.4.4</version>
+    <time>1340183629</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ad3e3e46d5749e6b1ff9698321a68836</srcmd5>
+    <version>3.5.4.6</version>
+    <time>1341340100</time>
+    <user>coolo</user>
+    <comment>- updated to libreoffice-3.5.4.6 (SUSE 3.5 rc2, based on upstream 3.5.5-rc2)
+
+Please, make sure that this version is in 12.2. We would need maitenance
+update otherwise.</comment>
+    <requestid>126917</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>adca7915e767823a149a45be35cfa997</srcmd5>
+    <version>3.5.4.7</version>
+    <time>1342290758</time>
+    <user>coolo</user>
+    <comment>Hi,
+
+please, forward this into openSUSE-12.1 as well!
+
+This 3rd RC includes some important fixes. It is going to be used for
+the maintenance update (bnc#769793)
+
+- update to libreoffice-3.5.4.7 (SUSE 3.5 rc3, based on upstream 3.5.5-rc3)
+    * clip max entries
+    * XLSX import crasher (fdo#51601)
+    * double border import regression
+    * add SUSE black and white branding
+    * check for invalid tab number (fdo#51667)
+    * query for parameters in Base reports crasher (fdo#51619)
+    * fix MySQL, GDocs, and LanguageTool extension registration
+    * make sure we don't export shapes with negative size (bnc#760997)
+    * make sure all tab pages have the same dimensions (fdo#49921, bnc#769162)
+- reduce build parallelism to reduce build crashes:
+    * dmake support 64 jobs at maximum
+    * do not eat all memory with some huge sources
+- add procps into BuildRequires to check available memory</comment>
+    <requestid>127844</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>f834537fa5e5bec34a3c428dc42b2afb</srcmd5>
+    <version>3.5.4.7</version>
+    <time>1350150822</time>
+    <user>coolo</user>
+    <comment>- Instead of disabling optimizations completely, use -O2. Fixes bnc#780611 (forwarded request 137779 from namtrac)</comment>
+    <requestid>137852</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1a85a4a186f1210170277a08ab25828d</srcmd5>
+    <version>3.6.3.2.3</version>
+    <time>1354887694</time>
+    <user>namtrac</user>
+    <comment>- update to 3.6.3.2.3 (SUSE 3.6-rc3, tag suse-3.6-3, based on upstream 3.6.3.2)</comment>
+    <requestid>143260</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2b392e426fd3fc10b86ed740e0933746</srcmd5>
+    <version>3.6.3.2.4</version>
+    <time>1356210955</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146260</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>2b392e426fd3fc10b86ed740e0933746</srcmd5>
+    <version>3.6.3.2.4</version>
+    <time>1359109339</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>3dc3068a93f672ee8d0d6c335eb8aad7</srcmd5>
+    <version>3.6.3.2.4</version>
+    <time>1359465427</time>
+    <user>coolo</user>
+    <comment>- do-not-delete-PropertyMapEntry-instance.diff: lost charts (bnc#798271) (forwarded request 149943 from pmladek)</comment>
+    <requestid>149945</requestid>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>7e3ac9430f715b3094bdd24295109cbb</srcmd5>
+    <version>3.6.3.2.4</version>
+    <time>1360669919</time>
+    <user>coolo</user>
+    <comment>- enable startup notification (bnc#796875)</comment>
+    <requestid>155135</requestid>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>8c441d2c7e7d3fac5ef38690b2a92fa7</srcmd5>
+    <version>3.6.3.2.4</version>
+    <time>1361378528</time>
+    <user>coolo</user>
+    <comment>- make sure that StartupNotify=true is written into the [Desktop Entry]
+  section (bnc#796875)</comment>
+    <requestid>155895</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3665949d7f20210cc61183d4cdd7fc3a</srcmd5>
+    <version>4.0.2.2.1</version>
+    <time>1366975681</time>
+    <user>coolo</user>
+    <comment>- update to 4.0.2.2.1 (SUSE 4.0-rc1, tag suse-4.0-1, based on upstream 4.0.2.2)</comment>
+    <requestid>172874</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>7158ecead00e9e25865f2988c1bd8547</srcmd5>
+    <version>4.0.3.3.2</version>
+    <time>1368713564</time>
+    <user>coolo</user>
+    <comment>- update to 4.0.3.3.2 (SUSE 4.0-rc2, tag suse-4.0-2, based on upstream 4.0.3.3) (forwarded request 175584 from pmladek)</comment>
+    <requestid>175585</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>f8aa13a3f4e48e4133b4c0062dbfc6f2</srcmd5>
+    <version>4.0.3.3.2</version>
+    <time>1370431732</time>
+    <user>coolo</user>
+    <comment>Fixed build</comment>
+    <requestid>177061</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9d620a4da464efc56338399762ee6f4c</srcmd5>
+    <version>4.0.3.3.4</version>
+    <time>1371458018</time>
+    <user>coolo</user>
+    <comment>- update to 4.0.3.3.4 (SUSE 4.0-rc4, tag suse-4.0-4, based on upstream 4.0.3.3)</comment>
+    <requestid>179012</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>bec89bc975c581c187998240920fb9a7</srcmd5>
+    <version>4.0.3.3.5</version>
+    <time>1374247140</time>
+    <user>coolo</user>
+    <comment>- update to 4.0.3.3.5 (SUSE 4.0-rc5, tag suse-4.0-5, based on upstream 4.0.3.3)</comment>
+    <requestid>183493</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>1a4d5369156d62ac2f45d00742e4d9bc</srcmd5>
+    <version>4.1.0.4</version>
+    <time>1375419956</time>
+    <user>coolo</user>
+    <comment>- update to 4.1.0.4 with very big help from tchvatal@suse.com
+
+IMPORTANT: The package is buildable only with DEBUGINFO disabled!
+There is linked one huge library and it needs more than 6GB memory
+with DEBUGINFO. There is no such build host around :-(
+
+Well, the same problem has appeared also with the older 4.0 packages
+few weeks ago. I wonder if it is realted to the update of BS to
+Ruby on Rails 4.0. Anyway, we were probably always on the edge
+and we just reached it.
+
+I will try to do something about it but it would be great to have
+some more powerful build hosts around. I know that I want to much
+but the huge library is really big optimisation.
+
+Best Regards,
+Petr</comment>
+    <requestid>185225</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>df8d8d7c4fcff2fb6c8b32a23ed2e9bd</srcmd5>
+    <version>4.1.0.4</version>
+    <time>1375595971</time>
+    <user>coolo</user>
+    <comment>- set PYTHON variables using python-config on SLED11 because the pkg-config
+  files are not there
+- set the PYTHON variables only in the main libreoffice.spec because
+  they are not needed to build help
+- build-link-rt.diff: liblt is linked with librt, so we need to link
+  the libmerged with librt as well; it fixes the build on SLED11
+- use -g1 instead of -g to reduce the memory and disk usage with
+  debugging symbols; note that only .o files need about 12GB when
+  compliled with full debugging symbols (forwarded request 185565 from pmladek)</comment>
+    <requestid>185567</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>722d93df7babd3082ac6d2257557b2da</srcmd5>
+    <version>4.1.0.4</version>
+    <time>1376381786</time>
+    <user>scarabeus_factory</user>
+    <comment>- disable jfreereport extention for powerpc64 (forwarded request 186734 from k0da)</comment>
+    <requestid>186759</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>87bfaa914e3e0490c7d941f065e66ee4</srcmd5>
+    <version>4.1.1.2</version>
+    <time>1379076287</time>
+    <user>scarabeus_factory</user>
+    <comment>Needed to have builded lo for beta, tomorow will check if we need some of the underlying libraries.</comment>
+    <requestid>198789</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>87bfaa914e3e0490c7d941f065e66ee4</srcmd5>
+    <version>4.1.1.2</version>
+    <time>1379663068</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>8b0ef3841babda9ca01100629160e58e</srcmd5>
+    <version>4.1.2.3</version>
+    <time>1381322568</time>
+    <user>scarabeus_factory</user>
+    <comment>- Version bump to 4.1.2.3: bugfix release only.
+
+- Version bump to 4.1.2.3: bugfix release only.
+
+- Version bump to 4.1.2.3: bugfix release only.
+
+- Version bump to 4.1.2.3: bugfix release only.
+
+- Version bump to 4.1.2.3: bugfix release only.
+
+- Version bump to 4.1.2.3: bugfix release only.
+
+- Version bump to 4.1.2.3: bugfix release only.
+
+- Version bump to 4.1.2.3: bugfix release only.
+
+- Version bump to 4.1.2.3: bugfix release only.
+
+- Version bump to 4.1.2.3: bugfix release only.
+- Remove upstreamed patch buildfix-neon-0.30.0.diff.
+- Adjust patch jvmfwk-disable-gcj.diff to reflect current state.</comment>
+    <requestid>202644</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>a9abdd8397c21f47f65303ded5d683bd</srcmd5>
+    <version>4.1.3.2</version>
+    <time>1384518413</time>
+    <user>coolo</user>
+    <comment>- Version bump to 4.1.3 bugfix release. News: http://blog.documentfoundation.org/2013/11/01/the-document-foundation-announces-libreoffice-4-1-3/
+
+- Version bump to 4.1.3 bugfix release. News: http://blog.documentfoundation.org/2013/11/01/the-document-foundation-announces-libreoffice-4-1-3/
+
+- Version bump to 4.1.3 bugfix release. News: http://blog.documentfoundation.org/2013/11/01/the-document-foundation-announces-libreoffice-4-1-3/
+
+- Version bump to 4.1.3 bugfix release. News: http://blog.documentfoundation.org/2013/11/01/the-document-foundation-announces-libreoffice-4-1-3/
+
+- Version bump to 4.1.3 bugfix release. News: http://blog.documentfoundation.org/2013/11/01/the-document-foundation-announces-libreoffice-4-1-3/
+
+- Version bump to 4.1.3 bugfix release. News: http://blog.documentfoundation.org/2013/11/01/the-document-foundation-announces-libreoffice-4-1-3/
+
+- Version bump to 4.1.3 bugfix release. News: http://blog.documentfoundation.org/2013/11/01/the-document-foundation-announces-libreoffice-4-1-3/
+
+- Version bump to 4.1.3 bugfix release. News: http://blog.documentfoundation.org/2013/11/01/the-document-foundation-announces-libreoffice-4-1-3/
+
+- Version bump to 4.1.3 bugfix release. News: http://blog.documentfoundation.org/2013/11/01/the-document-foundation-announces-libreoffice-4-1-3/
+
+- Version bump to 4.1.3 bugfix release. News: http://blog.documentfoundation.org/2013/11/01/the-document-foundation-announces-libreoffice-4-1-3/</comment>
+    <requestid>206255</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d0b7a6f0eb4837014950853632443c63</srcmd5>
+    <version>4.2.0.4</version>
+    <time>1392186867</time>
+    <user>coolo</user>
+    <comment>- Fix vlc macro in specfile. (forwarded request 221140 from fcrozat)</comment>
+    <requestid>221141</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>cf2b3cad0a0fd947bcfed97b9b2d4763</srcmd5>
+    <version>4.2.1.1</version>
+    <time>1393611566</time>
+    <user>coolo</user>
+    <comment>- Uk does not have the mythes too in suse.
+
+- Latvians do not have mythes so remove it from the dep.
+
+- Fix installing of sdk symlinks needed for working 3rd party
+  plugins.
+- added patches:
+  * fix-sdk-install.patch
+
+- Version bump to 4.2.1:
+  * Fixes over 100 found bugs found during the first release
+    testing.
+
+- remove duped pt-PT setting
+
+- Fix vlc macro again (thanks rudi)
+- Fix typo in description
+- Fix nl and nn language subpackage incorrectly requiring
+  unexisting thesaurus package.
+
+- Try to provide other older translation packages to avoid
+  various collisions as reported by repo-checker.</comment>
+    <requestid>224193</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>2a428aeeec55fb2342209fe8feefb17e</srcmd5>
+    <version>4.2.1.1</version>
+    <time>1394631979</time>
+    <user>coolo</user>
+    <comment>- Make sure we provide compat oo&lt;something&gt; symlinks.</comment>
+    <requestid>225674</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>172b307aaa57977f86b2f833d199e60f</srcmd5>
+    <version>4.2.2.1</version>
+    <time>1395405212</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>226893</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>bc366f177ca93b09823879c1706ff696</srcmd5>
+    <version>4.2.2.1</version>
+    <time>1396005037</time>
+    <user>coolo</user>
+    <comment>- Require ucpp in sdk. Thanks to cbosdonnat for spotting this.</comment>
+    <requestid>227734</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>2bb756fbede05b97561065d722d8e08c</srcmd5>
+    <version>4.2.2.1</version>
+    <time>1396158947</time>
+    <user>coolo</user>
+    <comment>- Switch Libreoffice Math .desktop to NoDisplay=true [bnc#869648] (forwarded request 228066 from fcrozat)</comment>
+    <requestid>228067</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>888c479426549305eafc3b0e7e8f41cc</srcmd5>
+    <version>4.2.3.3</version>
+    <time>1397216327</time>
+    <user>coolo</user>
+    <comment>- Version bump to 4.2.3:
+  * Bugfix release of 4.3 series
+    - Fixing 100 bugs and 20 of those with Major or higher
+      importance.
+
+- Fix whitespace.
+
+- Fix autotext symlinking to point right path.</comment>
+    <requestid>229626</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>f682701297c31ee7ba377c9a5e9adfeb</srcmd5>
+    <version>4.2.3.3</version>
+    <time>1397500649</time>
+    <user>coolo</user>
+    <comment>- Remove googledoc extension as it is uttery broken and this is
+  safer.
+
+- Require link-to-ooo-home script properly in postun phase.
+  Fixes bnc#749059.</comment>
+    <requestid>229988</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>20187a8336f6f471b1888a0a8f6cfef3</srcmd5>
+    <version>4.2.3.3</version>
+    <time>1397626003</time>
+    <user>coolo</user>
+    <comment>- Fix haning in KDE by applying upstream fix. Will be included
+  in next release.
+- added patches:
+  * kde4-4.2.3.3-timer-mutex.patch
+
+- fix for non-working bluetooth remote control from upstream
+- added patches:
+  * bluez5-support-for-impress-remote.diff</comment>
+    <requestid>230220</requestid>
+  </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>000cbd39ba07222cc41903687417983f</srcmd5>
+    <version>4.2.3.3</version>
+    <time>1399031613</time>
+    <user>coolo</user>
+    <comment>- After dict redesign depend on correct dict packages.</comment>
+    <requestid>231410</requestid>
+  </revision>
+  <revision rev="67" vrev="5">
+    <srcmd5>af1f30c1738635f686ee96f40a03fc9d</srcmd5>
+    <version>4.2.3.3</version>
+    <time>1399317156</time>
+    <user>coolo</user>
+    <comment>- Use correct paths for dicts locations.</comment>
+    <requestid>232633</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>24eb787946e3b281e7c0883ed000e46c</srcmd5>
+    <version>4.2.4.2</version>
+    <time>1399611458</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>233044</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>aa068e75e87df2daba08a1ef5777f206</srcmd5>
+    <version>4.3.0.3</version>
+    <time>1406479630</time>
+    <user>coolo</user>
+    <comment>- Try to finish out the py3 migration.
+- Remove now not needed patch:
+  * wizards-create-temlates-with-python-2.6.diff</comment>
+    <requestid>242433</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>dc24b8c4e40dfe7ac085ec19534824f6</srcmd5>
+    <version>4.3.0.4</version>
+    <time>1409118331</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>244841</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>dc24b8c4e40dfe7ac085ec19534824f6</srcmd5>
+    <version>4.3.0.4</version>
+    <time>1409301697</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>3213fd6201e38aabb3e2a98887d9079e</srcmd5>
+    <version>4.3.1.2</version>
+    <time>1409902448</time>
+    <user>coolo</user>
+    <comment>- Version bump to 4.3.1.2:
+  * First bugfix release of series
+  * Among others contains fixes for CVE-2014-3524 and CVE-2014-3575
+    bnc#893133 and bnc#893141</comment>
+    <requestid>247428</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>17ec16c356667224e6812fd68ea6c8e4</srcmd5>
+    <version>4.3.2.2</version>
+    <time>1412533834</time>
+    <user>coolo</user>
+    <comment>- Fix the timestamp on docu (remove)
+- Try to silence postinst warning during verfication
+- Fix wrong obsolete lines
+
+- Disable mergedlibs for now as it is not tested enough and broke
+- Added patch:
+  * libreoffice-mergedlibs-circular-deps.patch
+
+- Remove configure warning
+
+- Version bump to 4.3.2.2:
+  * Various small bugfixes found from 4.3.1
+
+- Try to handle collada coinmp and gltf properly.
+
+- Do not remove folders too early in the link-to-ooo-home
+  * this fixes warning about trying to remove dir</comment>
+    <requestid>253632</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>47c70e6663e58de999694ee68ece1516</srcmd5>
+    <version>4.3.2.2</version>
+    <time>1413739659</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257319</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>86260a6bc3288beb6cfb5655fe3aa2e1</srcmd5>
+    <version>4.3.3.2</version>
+    <time>1415288982</time>
+    <user>coolo</user>
+    <comment>- Remove no longer needed mergelib patch
+  * libreoffice-mergedlibs-circular-deps.patch
+- Add patch for plasma5 UI selector support
+  * libreoffice-4.3-plasma5-ui-decisions.patch
+
+- Version bump to 4.3.3:
+  * Various upstream fixes included in maintenance branch
+  * fixes bnc#900218 and bnc#900214 CVE-2014-3693</comment>
+    <requestid>259756</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>623ef5e1886d57daeea3cef63e3c84dc</srcmd5>
+    <version>4.3.4.1</version>
+    <time>1416824253</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 4.3.4:
+  * Few small fixes
+  * Fix for calc value ordering &quot;regression&quot;</comment>
+    <requestid>262028</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>ec63b0b7abb41bbed2f3b069e4d76941</srcmd5>
+    <version>4.3.4.1</version>
+    <time>1417643400</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>263586</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>6482f29477c9bc35007482981dd639ab</srcmd5>
+    <version>4.3.4.1</version>
+    <time>1417810051</time>
+    <user>dimstar_suse</user>
+    <comment>- And do it right as it was supposed to be bash variable :)
+
+- Fix typo %{libdir} -&gt; %{_libdir}
+
+- Remove dangling symlinks from previous versions bnc#884942</comment>
+    <requestid>263944</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>2c2235916a1dead77bf4509b3addda78</srcmd5>
+    <version>4.3.5.2</version>
+    <time>1419159795</time>
+    <user>coolo</user>
+    <comment>- Version bump to 4.3.5 release:
+  * Various small fixes
+  * Fix for CVE-2014-9093 bnc#907636</comment>
+    <requestid>265833</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>576d4604faddc4995aac5ce4dc1fa293</srcmd5>
+    <version>4.4.0.1</version>
+    <time>1420755641</time>
+    <user>dimstar_suse</user>
+    <comment>- That verbose switch for configure was really really bad idea
+
+- generic images.zip for galaxy icons seem gone so remove
+- Do not supplement kde3 stuff, it is way beyond obsolete
+
+- Remove vlc conditional
+- korea.xcd is no more so remove
+- Really use mergelib
+
+- Disable telepathy, it really is experimental like hell
+
+- Version bump to 4.4.0rc1:
+  * New 4.4 branch release with additional features
+- Enable collada:
+  * New bundled collada2gltf tarball:
+    4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2
+- Obsoleted patches:
+  * jvmfwk-disable-gcj.diff
+  * libreoffice-4.3-plasma5-ui-decisions.patch
+  * libreoffice-4.3.0.3-themes-symlinks.patch
+  * office-cfg-linux-common-template-dir.diff
+  * libreoffice-boost-1.56.patch
+- Refreshed patches:
+  * officecfg-help-in-usr-share.diff
+  * system-pyuno.diff</comment>
+    <requestid>280127</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>fadadeeff23de79b3b4c3e828b486171</srcmd5>
+    <version>4.4.0.2</version>
+    <time>1421873738</time>
+    <user>coolo</user>
+    <comment>- Version bump to 4.4.0rc2:
+  * Various bugfixes, just bumping to see if we still build fine.</comment>
+    <requestid>281018</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>96d692885f0e045119a6614e0f053db4</srcmd5>
+    <version>4.4.0.3</version>
+    <time>1422959932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>283662</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>bdfb64b115055bae2070934c421c2ce5</srcmd5>
+    <version>4.4.0.3</version>
+    <time>1424432567</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>286505</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>4a6ebe7a78c2ec965a73b6c4170b745d</srcmd5>
+    <version>4.4.1.2</version>
+    <time>1425377380</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 4.4.1 first bugfix release of the series</comment>
+    <requestid>288005</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>e3d6a2e0476f1d92e53de12dcc5549c2</srcmd5>
+    <version>4.4.1.2</version>
+    <time>1426495106</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290648</requestid>
+  </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>dae5e4de6b88706792b056e975ddeb91</srcmd5>
+    <version>4.4.1.2</version>
+    <time>1427736698</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292911</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>525c5796c244d8c37129c790ddf8a395</srcmd5>
+    <version>4.4.2.2</version>
+    <time>1428272702</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 4.4.2:
+  * 2nd bugfix update for the 4.4 series
+
+- BuildRequires:  libodfgen-devel &gt;= 0.1
+
+- added version numbers to some BuildRequires lines
+- build does not require python3-lxml
+- build requires librevenge-devel &gt;= 0.0.1
+- vlc media backend is broken, don't use it. Only gstreamer should be used.</comment>
+    <requestid>294220</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>d16b870cbc9bb653ce33b156830e00ac</srcmd5>
+    <version>4.4.2.2</version>
+    <time>1428790130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>295086</requestid>
+  </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>fb321d4a14dfd2c6366106d0338626f0</srcmd5>
+    <version>4.4.2.2</version>
+    <time>1429657610</time>
+    <user>dimstar_suse</user>
+    <comment>- Hopefully fix bnc#913042.Redo check phase that sometimes broke              
+  .jar generating
+
+- Silence more scarry messages by bnc#900186
+  * Fixes autocorr symlinking
+  * Cleans UNO cache in more pretty way
+
+- Clean up the uno cache removal to not display scarry message
+  bnc#900186
+
+- Remove patch to look for help in /usr/share, we symlink it back to
+  lib, so there is no actual need to search for it directly, migth
+  fix bnc#915996:
+  * officecfg-help-in-usr-share.diff</comment>
+    <requestid>296184</requestid>
+  </revision>
+  <revision rev="90" vrev="4">
+    <srcmd5>f489bc2cb1b9ecbd27f699ddcadd2365</srcmd5>
+    <version>4.4.2.2</version>
+    <time>1430983253</time>
+    <user>coolo</user>
+    <comment>- Disable verbose build to pass check on maximal size of log
+
+- We need pre/post for libreoffice in langpkgs
+
+- Use old java for detection and old commons-lang/codec to pass
+  brp check on java from sle11
+  * 0001-Make-HAVE_JAVA6-be-always-false.patch
+
+- Revert last changeset, it is caused by something else this time:
+  * 0001-Set-source-and-target-params-for-java.patch
+
+- Set source/target for javac when building to work on SLE11:
+  * 0001-Set-source-and-target-params-for-java.patch
+
+- Try to deal with rpath on bundled libs
+
+- Fix python3_sitelib not being around for py2
+
+- Add internal make for too old system
+- One more stab on poppler switch:
+  * 0001-Make-cpp-poppler-version.h-header-optional.patch
+
+- Update the old-poppler patch to work correctly:
+  * 0001-Make-cpp-poppler-version.h-header-optional.patch
+
+- Sort out more external tarballs for the no-system-libs approach
+
+- Add basic external tarballs needed for without-system-libraries
+
+- Add patch to check for poppler more nicely to work on older distros:</comment>
+    <requestid>305391</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>abb66d983bb225483fc4129b8982e3ef</srcmd5>
+    <version>4.4.3.2</version>
+    <time>1431376101</time>
+    <user>coolo</user>
+    <comment>- Version bump to 4.4.3 release:
+  * Various small fixes all around
+
+- Reformat with spec-cleaner</comment>
+    <requestid>306180</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>118400434353c2bcdfcc049ebb5c0707</srcmd5>
+    <version>4.4.3.2</version>
+    <time>1432070403</time>
+    <user>dimstar_suse</user>
+    <comment>- One more fix for help handling bnc#915996</comment>
+    <requestid>307796</requestid>
+  </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>db0832e0f235b239173c98f442113495</srcmd5>
+    <version>4.4.3.2</version>
+    <time>1432981997</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>309068</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>1fccd044e33da2b35e5c562cc58b08aa</srcmd5>
+    <version>5.0.0.3</version>
+    <time>1438615252</time>
+    <user>dimstar_suse</user>
+    <comment>- Add explicit requires over libmysqlclient_r18, should cover bnc#829430
+
+- Add patch to build with old cairo (sle11):
+  * old-cairo.patch
+
+- Version bump to 5.0 rc3:
+  * Various more fixes closing on the 5.0 release
+- Removed upstreamed patches:
+  * fix-old-poppler.patch
+  * mdds-old-gcc.patch
+
+- Try to fix build on SLE11 and remove obsolete patch:
+  * A mdds-old-gcc.patch
+  * D pack-desktop-files-for-optional-filters.diff
+
+- Update to 5.0 rc2:
+  * Few small fixes and updates in internal libraries
+
+- Version bump to 5.0 rc1, remove obsolete patches:
+  * 0001-Fix-could-not-convert-.-const-char-to-const-rtl-OUSt.patch
+  * 0001-writerperfect-fix-gcc-4.7-build.patch
+
+- More chrpat love for sle11
+
+- Add python-importlib to build/requirements on py2 distros
+
+- Provide/obsolete crystal icons so they are purged and not left over
+- Add few patch to get LO in more buildable state on SLE11, all
+  upstreamed:
+  * 0001-Fix-could-not-convert-.-const-char-to-const-rtl-OUSt.patch</comment>
+    <requestid>318095</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>4d60591ebd88bc6dda5f4b2b85c98df6</srcmd5>
+    <version>5.0.0.5</version>
+    <time>1438899338</time>
+    <user>dimstar_suse</user>
+    <comment>- Kill branding-openSUSE, stick to TDF branding.
+
+- Version bump to 5.0 rc5:
+  * Bunch of final touchups here and there
+- Remove some upstreamed patches:
+  * old-cairo.patch</comment>
+    <requestid>320359</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>916f70e30eaca9666b14df1fb016ee83</srcmd5>
+    <version>5.0.1.1</version>
+    <time>1440135546</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>323987</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>7b169d905f88dc53c0c86808ffd3c8e9</srcmd5>
+    <version>5.0.1.2</version>
+    <time>1440871358</time>
+    <user>coolo</user>
+    <comment>- Update constraints to 30 GB on disk
+
+- Version bump to 5.0.1 rc2:
+  * breeze icons extension
+  * Credits update
+  * Various small fixes
+
+- Remove errorous self-obsolete in lang pkgs.
+- Version bump to 4.3.3.2:
+  * Various bugfixes from maintenance branch to copy openSUSE.
+  * Also contains fix for bnc#900214 and bnc#900218 CVE-2014-3693
+- Remove fixes merged upstream:
+  * 0001-fdo-82418-prefer-UTF-8-over-UTF-16.patch
+  * 0001-n-708518-sd-check-that-master-page-matches-when-sett.patch
+- added patches:
+  * 0001-fdo-82418-prefer-UTF-8-over-UTF-16.patch: prefer UTF-8
+    over UTF-16 when importing CSV (fdo#82418).
+  * 0001-n-708518-sd-check-that-master-page-matches-when-sett.patch:
+  fix regression in bullets (bnc#897903).
+- Add masterpage_style_parent.odp as new file for regression test
+  for bullets.</comment>
+    <requestid>327649</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>0e6a8ded251b2e483d1959c4fb7d9535</srcmd5>
+    <version>5.0.3.1</version>
+    <time>1446219319</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>341426</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>9cf409fc9c2d337a08c85aad6694baf4</srcmd5>
+    <version>5.0.3.2</version>
+    <time>1447234170</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable another hsqldb test:
+  * disable-flaky-hsqldb-test.patch
+
+- Version update to 5.0.3.2:
+  * Final tag of 5.0.3 release
+
+  for bnc#910806 CVE-2014-8147, bnc#907636 CVE-2014-9093,
+  bnc#934423 CVE-2015-4551, bnc#910805 CVE-2014-8146,
+  bnc#940838 CVE-2015-5214, bnc#936190 CVE-2015-5213,
+  bnc#936188 CVE-2015-5212, bnc#934423 CVE-2015-45513,
+  bnc#934423 CVE-2015-4551, bnc#910805 CVE-2014-8146,
+  bnc#940838 CVE-2015-5214, bnc#936190 CVE-2015-5213,
+  bnc#936188 CVE-2015-5212, bnc#934423 CVE-2015-45513,
+  bnc#934423 CVE-2015-4551, bnc#910805 CVE-2014-8146,
+  bnc#940838 CVE-2015-5214, bnc#936190 CVE-2015-5213,
+  bnc#936188 CVE-2015-5212, bnc#934423 CVE-2015-4551</comment>
+    <requestid>343268</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>dee52523e50a8685d6e88f1ccb440195</srcmd5>
+    <version>5.0.3.2</version>
+    <time>1450004315</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>347929</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>8dfb52c62fa03a1b95d24f9b216e3464</srcmd5>
+    <version>5.0.4.2</version>
+    <time>1450605104</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349056</requestid>
+  </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>e7638463f3444976faac34dac64ccb53</srcmd5>
+    <version>5.0.4.2</version>
+    <time>1451045136</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350477</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>092a0c13d21ab5b7ae1fe7ea84e44797</srcmd5>
+    <version>5.1.0.2</version>
+    <time>1453508091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0.2:
+  * More small fixes here and there for the RC2 release
+- Remove upstreamed patches:
+  * libreoffice-graphite.patch
+  * libreoffice-uno-py26.patch
+  * libreoffice-kde4-filelist.patch
+  * libreoffice-old-gtkapi.patch
+
+- Reenable collada, debian and fedora both build with it so do the
+  same
+
+- Set ulimit to unlimited prior build to allow better debugging of
+  build crashes
+
+- Add patch attempting to fix build on old gtk2 versions:
+  * libreoffice-old-gtkapi.patch
+
+- Add patch to fix filelist generating after kde3 removal:
+  * libreoffice-kde4-filelist.patch
+
+- Add patch to fix graphite2 bundled build on SLE11:
+  * libreoffice-graphite.patch
+- Add patch to fix build of pyuno with python2.6:
+  * libreoffice-uno-py26.patch
+
+- Version update to 5.1.0.1:
+  * Update few bundled libs for SLE11
+- Drop support for gvfs2
+- Drop kde/kdeab switches
+- Drop lockdown enabler</comment>
+    <requestid>354894</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>b3bb98b754085e8d807ad471813aa586</srcmd5>
+    <version>5.1.0.3</version>
+    <time>1455032969</time>
+    <user>dimstar_suse</user>
+    <comment>- Un-split the gtk3 from separate module 5.1 should be stable enough
+
+- Do not install the appdata xml files twice bnc#965294
+
+- Version update to 5.1.0.3:
+  * Various small fixes on road to final tag
+  * Update internal tarballs for sle11 build
+
+- Fix requires on libmysqlclient_r18 on SLE11
+- Fix a bug on es provides with en-GB
+- Provide l10n-pt from pt-PT</comment>
+    <requestid>358225</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>9c6e3abdbb520675fded3741d00bf619</srcmd5>
+    <version>5.1.0.3</version>
+    <time>1456821337</time>
+    <user>dimstar_suse</user>
+    <comment>- Try to enable libreofficekit integration by mimicking what RH does
+  bnc#965296
+
+- Provide/obsolete the gtk3 subpackage in gnome to allow nice migration
+- %dir the appdata folder to build on leap and older
+
+  * Fixes bnc#967015 CVE-2016-0795 bnc#967014 CVE-2016-0794</comment>
+    <requestid>360718</requestid>
+  </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>1a5729b331093cef2bf275941ee0984b</srcmd5>
+    <version>5.1.0.3</version>
+    <time>1457685481</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with liborcus 0.11
+  * 0001-liborcus-0.11.patch
+
+- Use mdds-1.0
+  * 0001-mdds-1.0.patch
+
+- Appdatastore is everywhere
+
+- Add upstreamed patches to fix patch application on sle11:
+  * 0001-Fix-patch-to-apply-on-SLE11-just-some-unknown-patch-.patch
+  * 0001-Update-etonyek-patch-to-apply-with-sle11-patch.patch
+  * 0001-Fix-python2-build-of-pyuno-with-older-py2-versions.patch
+- Localy disable the services test that SEGVs on sle11
+  * libreoffice-disable-services-check.patch
+
+- Do not bother with kde integration on SLE12</comment>
+    <requestid>368292</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>1968f5a34876f980d971638da337876d</srcmd5>
+    <version>5.1.1.3</version>
+    <time>1458333042</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to detect boost_filesystem headers:
+  * 0002-boost-filesystem1.patch
+  * 0003-boost-filesystem2.patch
+- Add patch to fix rounding bug in test on i586:
+  * libreoffice-hotfix-disablebrokenshapetest.patch
+
+- Version update to 5.1.1.3:
+  * Various bugfixes for the first bugfix release of 5.1 
+- Update patch to build on sle11
+  * 0001-liborcus-0.11.patch</comment>
+    <requestid>372678</requestid>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>c18115b9bade546e5d18889ee49ef4c1</srcmd5>
+    <version>5.1.1.3</version>
+    <time>1459001403</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove services patch, no longer needed everything tweaked upstream:
+  * libreoffice-disable-services-check.patch</comment>
+    <requestid>376038</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>05244f214a9946bab104679c844c25a2</srcmd5>
+    <version>5.1.2.2</version>
+    <time>1460358668</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.1.2.2:
+  * Various small bugfixes all around 5.1 series
+- Remove upstreamed patches:
+  * 0001-Fix-patch-to-apply-on-SLE11-just-some-unknown-patch-.patch
+  * 0001-Fix-python2-build-of-pyuno-with-older-py2-versions.patch
+  * 0001-Update-etonyek-patch-to-apply-with-sle11-patch.patch
+- Refresh patches:
+  * 0001-liborcus-0.11.patch
+  * libreoffice-hotfix-disablebrokenshapetest.patch
+- Fix sle11 build by not using -r on ln command
+- Update the subtag registry to latest version
+
+- Install also gdb pretty printers
+
+- Introduce glade subpackage to match up with fedora and to provide
+  others possibility to work on glade UI for libreoffice</comment>
+    <requestid>385236</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>6af873548f4926b81967444943446f39</srcmd5>
+    <version>5.1.3.1</version>
+    <time>1461855141</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391812</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>ef06b12cb2feb09105da36603bdf4e30</srcmd5>
+    <version>5.2.0.0.beta2</version>
+    <time>1465938360</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.2.0.0.beta2:
+  * More bugfixes on road to 5.2 series
+  * missing-include.patch
+
+- Add patch to fix build missing-include.patch
+
+- Version update to 5.2.0.0.beta1:
+  * Disable support for sle11, not needed anymore
+  * Cleanup the specfile from all the compat conditionals per above
+  * Disable bundled help and point to upstream wiki always (speeds
+    up build quite a bit)
+  * Use pkgconfig style dependencies instead of the develpkgs
+  * Remove all the bundled tarballs that were aedded for sle11
+  * Adjust the constraints a bit to reflect reality
+  * Remove merged patches:
+    * scp2-user-config-suse.diff
+    * 0001-Make-HAVE_JAVA6-be-always-false.patch
+    * 0001-mdds-1.0.patch
+    * 0001-liborcus-0.11.patch
+    * 0002-boost-filesystem1.patch
+    * 0003-boost-filesystem2.patch
+    * bnc856729.patch
+    * bnc939998.patch
+    * bnc945443.patch
+    * bnc945445.patch
+  * Refresh patches:
+    * libreoffice-hotfix-disablebrokenshapetest.patch
+    * system-pyuno.diff
+
+- fix bnc#939998 -  LO-L3: PPT file shows wrong titles</comment>
+    <requestid>400953</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>36c35f62ba84ea6ec8c6b33ff7b48df5</srcmd5>
+    <version>5.2.0.1</version>
+    <time>1467205749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>404778</requestid>
+  </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>c2548de97f11dbb601d0ee3e8af7e1c5</srcmd5>
+    <version>5.2.0.1</version>
+    <time>1467304087</time>
+    <user>dimstar_suse</user>
+    <comment>Fixup straight in oS:F - as discussed on IRC</comment>
+  </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>41ed0d54172f0b4d9e3a40459b295358</srcmd5>
+    <version>5.2.0.1</version>
+    <time>1467896949</time>
+    <user>dimstar_suse</user>
+    <comment>- change BuildRequire from pkgconfig(fbembed) to libfbembed-devel;
+  this is a temporary workaround allowing build both before and
+  after firebird is upgraded to version 3.0 in Factory; once 3.0
+  is there, this will be changed to pkgconfig(fbembed) or
+  pkgconfig(fbclient), based on %suse_version
+- libreoffice-firebird3.patch:
+  build against system libfbclient2 if Firebird 3 detected
+- libreoffice-firebird3-selftest.patch:
+  fix failing selftest when built against Firebird 3 libraries;
+  the failure is caused by database file format change, provide
+  two versions of the test database and let the test select the
+  one that matches Firebird version
+- firebird_integer_x64le_ods12.odb:
+  rpmbuild doesn't support git patches adding binary files, add
+  the ODS12 test database as a source instead
+
+  * Fixes bnc#987553 CVE-2016-4324</comment>
+    <requestid>406393</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>9deedb21d130cbb835845efbdd4e097c</srcmd5>
+    <version>5.2.0.3</version>
+    <time>1469628506</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.2.0.3:
+  * More bugfixes for the first series of the 5.2 branch
+
+- Version update to 5.2.0.2:
+  * Various bugfixes on road to 5.2 this time rc2</comment>
+    <requestid>414495</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>d1d2f137f31bc604fe4b6442fcab99d6</srcmd5>
+    <version>5.2.0.4</version>
+    <time>1470413589</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.2.0.4:
+  * Fixes contained in rc4 of 5.2.0 release</comment>
+    <requestid>416345</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>94583bb7c4d4950863cc11604a25b07d</srcmd5>
+    <version>5.2.0.4</version>
+    <time>1471504555</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419362</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>23339dc0b0a77e66997e91998544fe31</srcmd5>
+    <version>5.2.1.2</version>
+    <time>1472646555</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.2.1.2:
+  * Various fixes for the 5.2 branch release</comment>
+    <requestid>423704</requestid>
+  </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>b6968e1b1c5d458db2ff4c6df7436aec</srcmd5>
+    <version>5.2.1.2</version>
+    <time>1473103072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424141</requestid>
+  </revision>
+  <revision rev="120" vrev="3">
+    <srcmd5>54a58139f1d3182a9ddfeeb4fe000689</srcmd5>
+    <version>5.2.1.2</version>
+    <time>1474115622</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426978</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>29ba0763923d26d5f9ce13b222ff5130</srcmd5>
+    <version>5.2.2.2</version>
+    <time>1475358703</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.2.2.2:
+  * Various fixes for the 5.2 branch</comment>
+    <requestid>431227</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>5f81f30647af4c3ae7bfbd8ff18594f6</srcmd5>
+    <version>5.2.3.3</version>
+    <time>1478687877</time>
+    <user>dimstar_suse</user>
+    <comment>- Add provides/obsoletes for brazilian and chinese to be matched on
+  dvd bnc#1008743
+
+- Update to 5.2.3.3:
+  * small fix from .2 release
+
+- Version update to 5.2.3.2:
+  * Various small fixes in the 5.2 branch
+- Move the firebird db connector to subpackage wrt bsc#1003896
+- Refresh a bit patch 0001-allow-none-gi-support.patch
+
+- Add 0001-allow-none-gi-support.patch: don't use
+  &quot;nullable&quot; for introspection, since it isn't available on SLE12
+  version of gobject-introspection (bsc#1000102).</comment>
+    <requestid>438987</requestid>
+  </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>affbdfcef79e2ef2e7b24439269a7dd5</srcmd5>
+    <version>5.2.3.3</version>
+    <time>1479837420</time>
+    <user>dimstar_suse</user>
+    <comment>- Introduce back scp2-user-config-suse.diff wrt bnc#1010654 as
+  otherwise user configs would disappear with maintenance update...</comment>
+    <requestid>441152</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>2ea2f68daccf75b5401c1c9b973a20d0</srcmd5>
+    <version>5.3.0.3</version>
+    <time>1487461468</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458695</requestid>
+  </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>0975b6fa103034b9f1e54d7d7d7bd4bb</srcmd5>
+    <version>5.3.0.3</version>
+    <time>1487767620</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.2.2.2 CVE-2017-3157:</comment>
+    <requestid>459485</requestid>
+  </revision>
+  <revision rev="126" vrev="3">
+    <srcmd5>50de5817af33393c27c71f0a4b97f36d</srcmd5>
+    <version>5.3.0.3</version>
+    <time>1488124885</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.2.2.2 bsc#1026640 CVE-2017-3157:</comment>
+    <requestid>460020</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>cebedb197b62c7d6c29c120d6136fb21</srcmd5>
+    <version>5.3.1.1</version>
+    <time>1489415394</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477959</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>a6e13174a9f3ec48b03362722584f8dc</srcmd5>
+    <version>5.3.1.2</version>
+    <time>1490132796</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.3.1.2:
+  * official 5.3.1 release
+
+- Add gi-annotation-syntax.patch: the (allow-none) annotations
+  weren't being parsed, leading to breakage on SLE (bsc#1028817)</comment>
+    <requestid>481054</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>ce019346a5c96614566beb0c2f48c89d</srcmd5>
+    <version>5.3.2.1</version>
+    <time>1491907250</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>484034</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>8b78b52facb55d543baee5b018573edb</srcmd5>
+    <version>5.3.2.2</version>
+    <time>1493363513</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide and obsolete the help packages wrt bsc#1035087
+
+- Fixed bnc#959926 LO-L3: Text not rotated properly in LO Impress tables
+  * bnc959926-Implement-text-rotation-for-Impress-table.patch
+
+- Version update to 5.3.2.2:
+  * bsc#1034329 CVE-2017-7882
+  * RC2 for the 5.3.2 release
+
+  * RC1 of the 5.3.2 release
+  * Fixes bsc#1034568 CVE-2017-7870
+  * Fixes bsc#1034192 CVE-2016-10327
+  * RC2 of the 5.3.0 target, stabilizing the lokit
+  * RC candidate stabilizing ont he beta1 bump</comment>
+    <requestid>490246</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>b69374a686eb1cc11e194a85e2c98ded</srcmd5>
+    <version>5.3.3.2</version>
+    <time>1495133224</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.3.3.2 fate#323270:
+  * Update to 5.3.3 release containing bunch of additional fixes
+- Add direct dep on harfbuzz-icu
+
+- Version update to 5.3.3.1:
+  * Also contians fix for bsc#1036975 CVE-2017-8358
+  * Various fixes in 5.3 branch for rc1 of 5.3.3
+
+- Fix syntax error in 0001-allow-none-gi-support.patch
+  (bsc#1028817).
+
+-  Remove upstreamed patch
+   * bnc1010961.diff
+
+- Version update to 5.2.5.1
+  * various bugfixes
+- Remove upstreamed patches
+  * bnc945446-vertical-text-clone-formatting.patch
+  * bnc955548-crash-fix.patch
+  * bnc980734.diff
+- Fix L3 bnc#1014896 LO-L3: Libreoffice calc (writer in fact!) freezing when running a hyphenate all
+  * bnc1014896.diff
+
+- Fix L3 bnc#1010961 LO-L3: Change tracking: everything is a change, and accepting changes
+  * bnc1010961.diff
+
+- Fix L3 bnc#980734 LO-L3: LibreOffice missing contents in PPTX deck
+  * bnc980734.diff
+
+- Fix L3 bnc#945446 LO-L3: Clone Formatting ignores vertical text alignment</comment>
+    <requestid>494638</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>b6207c9b2e2bef311ba8ca02151dc7b2</srcmd5>
+    <version>5.4.0.0.beta2</version>
+    <time>1497949305</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup the License string
+
+- Add patch to fix bsc#1028504:
+  * 0001-undo-clone.patch
+- Add patch to fix test failure on 32bit:
+  * 0001-watermark.patch
+
+- Run tests only on intel 32/64bit
+
+- Version update to 5.4.0.0.beta2:
+  * Ton of fixes over beta1
+  * Oxygen theme is gone
+
+- Install libreofficekit headers
+
+- Artistic was dropped with vigra
+
+- Switch to normal mirror location
+
+- Version update to 5.4.0.0.beta1:
+  * Feature release 5.4 first beta
+- Refresh patch disable-flaky-hsqldb-test.patch
+- Drop merged patches:
+  * bnc959926-Implement-text-rotation-for-Impress-table.patch
+  * gi-annotation-syntax.patch
+
+- Use nss to avoid issues with mixing openssl and nss</comment>
+    <requestid>504708</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>1fada220b8c652cac70cf3afcd27e7e8</srcmd5>
+    <version>5.4.0.1</version>
+    <time>1498638860</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.0.1:
+  * First rc of the series, now only serious bugs will be fixed
+- Drop upstreamed patch 0001-undo-clone.patch
+- Drop upstreamed patch 0001-watermark.patch
+
+- Add suse color palette bsc#1045339</comment>
+    <requestid>506091</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>56a7c0810f18c70a751d00295471dca7</srcmd5>
+    <version>5.4.0.2</version>
+    <time>1500804785</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.4.0.2:
+  * More fixes from 5.4.0 release branch
+- Use system based xmlsec1
+
+- Add api keys for google drive to work bsc#1047167
+  * Copied from chromium</comment>
+    <requestid>510542</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>03d86275d92151c147558c0e6ce08781</srcmd5>
+    <version>5.4.0.3</version>
+    <time>1501227740</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 5.4.0.3:
+  * More bugfixes on 5.4 branch for the final release</comment>
+    <requestid>512226</requestid>
+  </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>7ba7626a9d493704e4c655a4d6f9accf</srcmd5>
+    <version>5.4.0.3</version>
+    <time>1502559745</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514894</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>04d101b4429b77ff267b8b1dadbb5b91</srcmd5>
+    <version>5.4.1.2</version>
+    <time>1505334509</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>524053</requestid>
+  </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>61aed665368cdb6a920526f24b861b3a</srcmd5>
+    <version>5.4.1.2</version>
+    <time>1507391181</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530367</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>514ad77f76526fb79943694c58632f98</srcmd5>
+    <version>5.4.2.2</version>
+    <time>1508508735</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure now plasma5 gets gtk3 UI not the generic one
+
+- Disable kde4 integration on Tumbleweed as libqt4 is build with
+  openssl-1.0 while we need openssl-1.1
+
+- Removed patch:
+  * 0001-tdf-100501-Adapt-to-Java-9-at-least-on-Linux-x86-64.patch
+    + Integrated upstream
+
+- The commons-codec, commons-lang and commons-httpclient are not
+  actually needed
+
+- Version update to 5.4.2.1:
+  * Various bugfixes on 5.4 branch</comment>
+    <requestid>533638</requestid>
+  </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>7bf4bd17a4754f25edf45ccc96da2b84</srcmd5>
+    <version>5.4.2.2</version>
+    <time>1510665503</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>540480</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>0a4dcb9e6ec7e3fd59137982dac00c52</srcmd5>
+    <version>5.4.3.2</version>
+    <time>1512042135</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>545573</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>54ca65b176ed6bfac3328e763d1e973a</srcmd5>
+    <version>6.0.0.1</version>
+    <time>1515505744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561829</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>8ecef4786249a345c234932ea0014eec</srcmd5>
+    <version>6.0.0.2</version>
+    <time>1516443942</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable 2 db tests that are really flaky in OBS
+
+- Fix the lo-provides filtering to allow proper provides to be generated
+
+- Version update to 6.0.0.2:
+  * More fixes in RC2 of 6.0.0 release
+
+- Add requires on kdelibs4 to avoid crashes</comment>
+    <requestid>567405</requestid>
+  </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>caee22c22ae73e5dfa39f21f119ea7bc</srcmd5>
+    <version>6.0.0.2</version>
+    <time>1516971491</time>
+    <user>dimstar_suse</user>
+    <comment>- Require xorg-x11-fonts otherwise nothing is shown
+
+- Do not pull in liberation2-fonts wrt bsc#1077375#c5</comment>
+    <requestid>569245</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>ef912fa6b0047edfd2e3d29fcdbb2a12</srcmd5>
+    <version>6.0.0.3</version>
+    <time>1517824024</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable one more test that fails
+
+- Do not depend on procps
+
+- Version update to 6.0.0.3:
+  * RC3 phase of libreoffice 6.0.0 release</comment>
+    <requestid>572011</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>9e6a5984a337905e02e24c7eb34dd5c7</srcmd5>
+    <version>6.0.1.1</version>
+    <time>1518697419</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure we execute everything with python3
+  * 0001-Use-PYTHON_FOR_BUILD-instead-of-calling-python-direc.patch
+- Bump version of bundled gpgme to 1.9.0
+
+- Version update to 6.0.1.1:
+  * various fixes all around
+  * Fixes data exposure bsc#1080249 CVE-2018-1055 CVE-2018-6871
+- Bump the version of libgpg-error
+- Drop the libreoffice-poppler-0.62.patch merged upstream</comment>
+    <requestid>576776</requestid>
+  </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>c112f86967802cd4af5e2876f886d141</srcmd5>
+    <version>6.0.1.1</version>
+    <time>1519307989</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build properly with orcus-0.13.3:
+  * orcus-0.13.3.patch
+
+- boost_string_fixes.patch: Boost in Leap 42.3 and SLE-12 is lacking
+  some functionality found in newer versions. Workaround the problem.</comment>
+    <requestid>578364</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>222b59519a475694fc346d17c22f76b5</srcmd5>
+    <version>6.0.2.1</version>
+    <time>1520415128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583062</requestid>
+  </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>34d7adef63783285657943cf7c3b0eeb</srcmd5>
+    <version>6.0.2.1</version>
+    <time>1520852784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584288</requestid>
+  </revision>
+  <revision rev="150" vrev="3">
+    <srcmd5>0ed7b75ae9f2c22c00e66633882a94f6</srcmd5>
+    <version>6.0.2.1</version>
+    <time>1521192913</time>
+    <user>dimstar_suse</user>
+    <comment>- Require liberation-fonts instead of Recommends wrt bsc#1083213
+  * Basically we need ANY font, but liberation-fonts are the 
+    Arial/etc. compatible and thus you can view the MS Word
+    documents
+- Drop Build/Require on xorg-x11-fonts
+</comment>
+    <requestid>587514</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>15439e860f9c694dcbb214bb8e007481</srcmd5>
+    <version>6.0.3.1</version>
+    <time>1522316962</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit same source, in the hope to cheat legal-auto</comment>
+    <requestid>592099</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>cd07132e2a5f380c445ab8a38c0e4632</srcmd5>
+    <version>6.0.3.2</version>
+    <time>1522934907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.3.2 fate#324870:
+  * Final 6.0.3 tag for release
+
+- Version update to 5.4.5.1:
+  * Various fuzzying fixes/etc
+  * Fixes data exposure bsc#1080249 CVE-2018-1055
+
+- Version update to 5.4.4.2:
+  * Proper release containing few additional fuzzing fixes
+
+- Version update to 5.4.4.1:
+  * Various fixes on 5.4 branch</comment>
+    <requestid>593178</requestid>
+  </revision>
+  <revision rev="153" vrev="2">
+    <srcmd5>7a2c530629c26c6a62045dd6d05f7d14</srcmd5>
+    <version>6.0.3.2</version>
+    <time>1523126893</time>
+    <user>dimstar_suse</user>
+    <comment>- Reduce the ifarch condition based on new exclusivearch
+- Name directly dependencies that were accidentaly pulled by gtk3
+  before
+
+- Conditionalize gtk3 build as it requires &quot;newer&quot; gnome than the
+  one we ship on SLE12 currently
+
+- Update glib2 requirement to match what code actually uses
+
+- Reduce archs to only those that are really capable of finishing
+  the build</comment>
+    <requestid>593791</requestid>
+  </revision>
+  <revision rev="154" vrev="3">
+    <srcmd5>743223bb842e15322bcd462256c26100</srcmd5>
+    <version>6.0.3.2</version>
+    <time>1523956423</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide and obsolete all the gtk3 disabled stuff if we disable
+  gtk3 to ease migration
+
+- Drop patch libreoffice-lto-failtest.patch as the problem was with
+  memcpy in wrong phases, fixed by cflag -flifetime-dse=1
+
+- Provide and obsolete also libreoffice-branding-SLE
+
+- Use pkgconfig(libpg) instead of posgresql-devel dependency
+
+- Bring back offline help per popular demand as lto saves space
+  we could use with it bsc#915996
+- Update patch to not call python directly during help generating:
+  * 0001-Use-PYTHON_FOR_BUILD-instead-of-calling-python-direc.patch
+
+- Use gpg keys to verify downloaded archives
+
+- Add patch to disable test failing with LTO:
+  * libreoffice-lto-failtest.patch
+
+- Switch to memory-constraints macros to limit threads as needed
+- Enable LTO on libreoffice, 16% smaller binaries, less memory used
+
+  * fixes bsc#1089706 CVE-2018-10120
+  * Also fixes bsc#1089705 CVE-2018-10119</comment>
+    <requestid>597068</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>3a687801edf7adb752213385438b9ac8</srcmd5>
+    <version>6.0.4.1</version>
+    <time>1524742517</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not require update-desktop-files on 15+ bsc#1090737
+
+- Remove aarch64 condition in _constraints
+
+- Drop patch bnc1083525.patch merged upstream
+
+- Fix build with new icu 61+
+  * libreoffice-icu61.patch
+
+- Version update to 6.0.4.1:
+  * Another bugfix update containing &gt;60 bugfixes
+
+- LO-L3: DOCX import: missing table background color
+  * bnc1083525.patch
+
+- Do not enable LTO on older codestreams, too old toolchain
+
+  * Basically we need ANY font, but liberation-fonts are the</comment>
+    <requestid>600833</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>3c90f26cb073fb285b052cb7d4d17ce6</srcmd5>
+    <version>6.0.4.2</version>
+    <time>1526646392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610006</requestid>
+  </revision>
+  <revision rev="157" vrev="2">
+    <srcmd5>9c9075ce599aef885fd5f901c2f2aa42</srcmd5>
+    <version>6.0.4.2</version>
+    <time>1528195816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613639</requestid>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>ae057e2f8d30f65dc415e2c42ebc681f</srcmd5>
+    <version>6.1.0.0.beta2</version>
+    <time>1530741178</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix ca_valencia myspell dictionary name
+
+- Expand disk constraints to not fail on arm64
+
+- Enable display of commands in build logs
+- Diable header-only Boost:System usage on older Leap
+- old-boost.patch: Fix building with older Boost version
+- Bumb disk space constraints. We need more than 32GB.
+
+- Add more translations:
+  * Belarusian
+  * Bodo
+  * Dogri
+  * Frisian
+  * Gaelic
+  * Paraguayan_Guaraní
+  * Upper_Sorbian
+  * Konkani
+  * Kashmiri
+  * Luxembourgish
+  * Monglolian
+  * Manipuri
+  * Burnese
+  * Occitan
+  * Kinyarwanda
+  * Santali
+  * Sanskrit
+  * Sindhi
+  * Sidamo
+  * Tatar</comment>
+    <requestid>620219</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>907b7e3189c302fd4403fc6c0df3fd66</srcmd5>
+    <version>6.1.0.1</version>
+    <time>1531592098</time>
+    <user>dimstar_suse</user>
+    <comment>Fix jdk11 build</comment>
+    <requestid>622316</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>913874a716669199dc5e855eedd09573</srcmd5>
+    <version>6.1.0.2</version>
+    <time>1532681604</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable firebird integration
+
+- Add new language Kabyle
+
+- Version update to 6.1.0.2:
+  * RC2 of the 6.1 series</comment>
+    <requestid>625430</requestid>
+  </revision>
+  <revision rev="161" vrev="2">
+    <srcmd5>83361adbea9c691a0ce9585e647c4679</srcmd5>
+    <version>6.1.0.2</version>
+    <time>1533412514</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to 6.0.4.2 bsc#1091606 CVE-2018-10583:</comment>
+    <requestid>627440</requestid>
+  </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>45d94d185046880240b43034d5fe8237</srcmd5>
+    <version>6.1.0.3</version>
+    <time>1533549199</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 6.1.0.3:
+  * RC3 of 6.1.0 release
+</comment>
+    <requestid>627552</requestid>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>a0b50b29fa1e395e0978fd0adf8c5c31</srcmd5>
+    <version>6.1.1.1</version>
+    <time>1536678828</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>633290</requestid>
+  </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>f8efbaa08d909d86a457466af12b16ad</srcmd5>
+    <version>6.1.2.1</version>
+    <time>1537970547</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 6.1.2.1:
+  * 6.1.2 RC1
+
+- Switch to serf from neon package that is quite dead
+- Remove sysstray configure option as the code was removed
+
+- Update to 6.1.1.2:
+  * 6.1.1 RC2</comment>
+    <requestid>638017</requestid>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>291a457ece49ee6e04bd2ac3d30ec842</srcmd5>
+    <version>6.1.3.1</version>
+    <time>1540199027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.1.3.1:
+  * 6.1.3 RC1</comment>
+    <requestid>641661</requestid>
+  </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>51f7ef6dfe03ba1d39afb824940c852c</srcmd5>
+    <version>6.1.3.2</version>
+    <time>1541510640</time>
+    <user>dimstar_suse</user>
+    <comment>- Honorably mention all the now dropped patches from 6.0 series that
+  are merged by the 6.1 already and as such never entered TW:
+  * bnc1088262.patch
+  * bsc1088263.patch
+  * bsc1095601.patch
+  * bsc1095639.patch
+  * bsc1098891.patch
+
+- Remove libreofficekit files that are not supposed to be
+  installed when the feature is disabled
+
+- Update to 6.1.3.2:
+  * 6.1.3 Final
+  * In this release we have fixes for bsc#1079744 bsc#1088266
+    bsc#1095755 bsc#1110345 bsc#1107012
+
+- Use turkish spellcheck that is now provided by myspell-dictionaries
+
+- Update to 6.1.3.1 fate#326624:
+- bsc#1095639 LO-L3: Exporting to PPTX results in vertical labels being shown horizontally
+  * bsc1095639.patch
+
+- bsc#1098891 LO-L3: Table in PPTX misplaced and partly blue
+  * bsc1098891.patch
+- bsc#1088263 LO-L3: Labels in chart change (from white and other colors) to black when saving as PPTX
+  * bsc1088263.patch
+
+- bsc#1095601 - LO-L3: Exporting to PPTX shifts arrow shapes quite a bit
+  * bsc1095601.patch</comment>
+    <requestid>645726</requestid>
+  </revision>
+  <revision rev="167" vrev="2">
+    <srcmd5>3fad5223c51d49b5bfbbdf3d3788e598</srcmd5>
+    <version>6.1.3.2</version>
+    <time>1542123093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648618</requestid>
+  </revision>
+  <revision rev="168" vrev="3">
+    <srcmd5>bf2ddb7ad5396054100affab1fc5e37b</srcmd5>
+    <version>6.1.3.2</version>
+    <time>1543999154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653791</requestid>
+  </revision>
+  <revision rev="169" vrev="4">
+    <srcmd5>fcf8907a97eaff503e0d8bc64201e13e</srcmd5>
+    <version>6.1.3.2</version>
+    <time>1544539330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655542</requestid>
+  </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>273e0159cb0959a6b4b43cdcd617b84b</srcmd5>
+    <version>6.1.4.2</version>
+    <time>1545866728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660942</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>b9d1e26e18db29df96d9b853d7128fda</srcmd5>
+    <version>6.2.0.3</version>
+    <time>1548537627</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with java-11.2:
+  * java112.patch
+
+- Version update to 6.2.0.3:
+  * 6.2.0 rc3 release
+
+- Reduce disk constraints to 25G it should be enough
+
+- Update to 6.2.0.2:
+  * 6.2.0 rc2 release
+- Switch to the new web based help system bsc#1116451
+- Remove upstreamed patches:
+  * libreoffice-java-sched.patch
+  * 0001-call-System.runFinalizersOnExit-by-reflection-since-.patch
+  * boost_1_69.patch
+  * libreoffice-poppler-0.72.patch
+  * bsc1112114.patch
+- Enable new approach for mariadb connector again
+
+- Version update to 6.1.5.1:
+  * 6.1.5 bugfix release
+- Drop merged patch:
+  * bsc1112113.patch
+
+- [Bug 1112114] LO-L3: [PPTX] SmartArt: Basic rendering of the Organizational Chart
+  * bsc1112114.patch
+
+- Replace libreoffice-poppler-0.71.patch with
+  libreoffice-poppler-0.72.patch and apply it conditionally. Fix
+  build with poppler 0.72.</comment>
+    <requestid>668318</requestid>
+  </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>5593470a8350d24add094b9cc7be564f</srcmd5>
+    <version>6.2.1.2</version>
+    <time>1551952157</time>
+    <user>dimstar_suse</user>
+    <comment>- libreoffice-postgresql.patch: pg_config is meant for linking
+  server extensions, clients should use pkg-config instead to build
+  against libpq. This fixes build with PostgreSQL 11.
+
+- Switch to gcc7 on SLE12
+
+- Update to 6.2.1.2:
+  * mostly just bundles update that we are not using
+
+- Add patch to fix 32bit build:
+  * kde5-32bit-build-fix.patch
+
+- Add patches speeding up install:
+  * 0001-Speed-up-languagepack-installation.patch
+  * libreoffice-no-destdircheck.patch
+
+- Update to 6.2.1.1:
+  * Fixes focus issue wrt bsc#1123455
+  * More stability fixes
+  * Additional fixes for the KDE wrapper
+- Remove merged patches:
+  * java112.patch
+  * kde5-detection.patch
+  * kde5-font-width.patch
+
+- Switch to full KDE stack for KDE Frameworks integration instead
+  of gtk3 KDE wrapper bsc#1123131
+- Add patch to fix detection of KDE session on wayland:
+  * kde5-detection.patch
+- Add patch to fix selection of condensed fonts instead of regular</comment>
+    <requestid>682372</requestid>
+  </revision>
+  <revision rev="173" vrev="2">
+    <srcmd5>679f598ef3f9133d600282ebffb31e95</srcmd5>
+    <version>6.2.1.2</version>
+    <time>1552206533</time>
+    <user>coolo</user>
+    <comment>- Require firebird as default driver for base if enabled
+
+- Add patch to fix bsc#1127857:
+  * 0001-Fix-LTO-segfault-in-libtest_sw_uwriter-test.patch</comment>
+    <requestid>682738</requestid>
+  </revision>
+  <revision rev="174" vrev="3">
+    <srcmd5>634e37d16ec8a7a5e2d16fbcc79db8c9</srcmd5>
+    <version>6.2.1.2</version>
+    <time>1552380674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683725</requestid>
+  </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>482b30675cc84a64ce0d7a39a272cdd0</srcmd5>
+    <version>6.2.2.1</version>
+    <time>1552571744</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.2.1 bsc#1128845:
+  * bundle of 6.2 series fixes
+- Remove merged patches:
+  * 0001-Speed-up-languagepack-installation.patch
+  * kde5-32bit-build-fix.patch</comment>
+    <requestid>684239</requestid>
+  </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>fd7f023c4a894617639eecae425c7301</srcmd5>
+    <version>6.2.2.2</version>
+    <time>1553610993</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the old-icu.patch based on the upstream feedback
+
+- old-boost.patch: update patch to fix build with Boost from SLE-12
+
+- Update to 6.2.2.2:
+  * Few more tweaks over previous RC1
+
+- Add patch to fix build with old icu from Leap 42:
+  * old-icu.patch
+
+- Add patch to fix build on Leap 42:
+  * kde5.patch</comment>
+    <requestid>687580</requestid>
+  </revision>
+  <revision rev="177" vrev="2">
+    <srcmd5>e669f2fe7f95a2ce7cc090b307ddd755</srcmd5>
+    <version>6.2.2.2</version>
+    <time>1554712270</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix diff in generated helpfiles with rebuilds:
+  * 0001-Use-sort-on-finds-to-improve-deterministic-build.patch</comment>
+    <requestid>691492</requestid>
+  </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>f221980bee8aab7c63534151b0721594</srcmd5>
+    <version>6.2.3.2</version>
+    <time>1555492943</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.3.2:
+  * Bugfix release 6.2.3
+- Remove merged patches:
+  * old-boost.patch
+  * libreoffice-postgresql.patch
+  * 0001-Fix-LTO-segfault-in-libtest_sw_uwriter-test.patch
+  * boost_169.patch
+  * kde5.patch
+  * old-icu.patch</comment>
+    <requestid>694222</requestid>
+  </revision>
+  <revision rev="179" vrev="2">
+    <srcmd5>0c85340581170f2dfe97d96b9260f3bb</srcmd5>
+    <version>6.2.3.2</version>
+    <time>1556311416</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 6.2.3.2 fate#327121:
+  * bsc1124658.patch
+
+- Add patch to fix bsc#1124658:
+  * bsc1124658.patch
+
+- Update to 6.1.5.2:
+  * 6.1.5 bugfix release
+  * 6.1.5 bugfix release rc1</comment>
+    <requestid>697773</requestid>
+  </revision>
+  <revision rev="180" vrev="3">
+    <srcmd5>025c2ba5878ccbb39c38d2ecbffaa5da</srcmd5>
+    <version>6.2.3.2</version>
+    <time>1558129305</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703561</requestid>
+  </revision>
+  <revision rev="181" vrev="4">
+    <srcmd5>cfec6b94c2b93d06b4d73ae6b95c5b25</srcmd5>
+    <version>6.2.3.2</version>
+    <time>1558783112</time>
+    <user>dimstar_suse</user>
+    <comment>- If there is no firebird engine we still need java to run hsqldb
+  bsc#1135189
+
+- LO-L3: PPTX: Rectangle turns from green to blue and loses transparency when transparency is set
+  * bsc1135228.patch</comment>
+    <requestid>705180</requestid>
+  </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>2a11eee5b2369baf0ee1293f3fc172d3</srcmd5>
+    <version>6.2.4.2</version>
+    <time>1560337074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.4.2:
+  * Various feature fixes on the 6.2 branch</comment>
+    <requestid>705864</requestid>
+  </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>4c05e97410178a71c8b1ee24b4d2ff7e</srcmd5>
+    <version>6.2.5.2</version>
+    <time>1563018328</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.5.2:
+  * Various bugfixes on the 6.2 branch
+- Remove merged patches:
+  * bsc1124869.patch
+  * bsc1127760.patch
+  * bsc1121874.patch
+  * bsc1135228.patch</comment>
+    <requestid>713360</requestid>
+  </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>971622bdeb213bcab9ab45fab048898a</srcmd5>
+    <version>6.3.0.4</version>
+    <time>1565473518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.3.0.4:
+  * 6.3 RC4
+- Make librelogo standalone subpkg bsc#1144522
+
+- Update to 6.3.0.3:
+  * 6.3 RC3
+
+- Add patch to fix building on older openSUSE releases:
+  * gcc.patch
+
+- Update to 6.3.0.2:
+  * RC2 of 6.3 release
+  * Contains partial fixes for bsc#1061210 later split to two
+    independent bugs
+
+- Update to 6.3.0.1:
+  * First release of 6.3 series bringing more new features
+- Remove merged patch:
+  * 0001-Use-sort-on-finds-to-improve-deterministic-build.patch
+
+- Update to 6.2.5.2 bsc#1141862 CVE-2019-9848 bsc#1141861 CVE-2019-9849:</comment>
+    <requestid>721691</requestid>
+  </revision>
+  <revision rev="185" vrev="2">
+    <srcmd5>dc6bcd9ce9adad6b64fe147edc53d809</srcmd5>
+    <version>6.3.0.4</version>
+    <time>1566479048</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix syntax for RPM on SLE12
+
+- Add patch to build with mdds-1.5:
+  * mdds-1-5.patch
+
+- Update to 6.2.6.2 bsc#1146098 CVE-2019-9850
+  bsc#1146105 CVE-2019-9851 bsc#1146107 CVE-2019-9852:
+  * Various bugfixes of 6.2 branch
+
+- Fix bsc#1133534 LO-L3: [PPTX] SmartArt: Basic rendering of Trapezoid List
+  * bsc1133534.patch</comment>
+    <requestid>724527</requestid>
+  </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>3830b38ceb2e4ca513a637d2c25c9c38</srcmd5>
+    <version>6.3.1.1</version>
+    <time>1567420809</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.3.1.1:
+  * 6.3.1 RC1
+- Remove merged patch:
+  * gcc.patch
+
+- Add one more patch for the old boost:
+  * old-boost2.patch
+
+- Add patch to fix building on SLE12:
+  * old-boost.patch
+
+- Add patch to fix build with SLE12 boost:
+  * 0001-Fix-buidling-with-older-boost.patch</comment>
+    <requestid>726861</requestid>
+  </revision>
+</revisionlist>

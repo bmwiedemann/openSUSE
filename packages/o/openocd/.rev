@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f08c482c50e6bb7d0c9aaf7a02aa07ab</srcmd5>
+    <version>0.7.99+git20140317</version>
+    <time>1400006799</time>
+    <user>coolo</user>
+    <comment>New package, please see http://lists.opensuse.org/opensuse-factory/2014-03/msg00170.html</comment>
+    <requestid>233547</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ad7a3a3b11bac5cd326bde07a1d82c0c</srcmd5>
+    <version>0.8.0</version>
+    <time>1400822891</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235074</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ad7a3a3b11bac5cd326bde07a1d82c0c</srcmd5>
+    <version>0.8.0</version>
+    <time>1409302043</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f488e8208078a371d12016b143fc6621</srcmd5>
+    <version>0.8.0</version>
+    <time>1413048396</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254970</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8202925c2e7009afa22496d60ab3e0d1</srcmd5>
+    <version>0.9.rc1</version>
+    <time>1430132714</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304042</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c556230d3a8563fd63c6efac0f524a4c</srcmd5>
+    <version>0.9.0</version>
+    <time>1434133900</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311722</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>17c9c112ac136d14b246fcb9cfa44017</srcmd5>
+    <version>0.10.0</version>
+    <time>1490318468</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.10.0</comment>
+    <requestid>481108</requestid>
+  </revision>
+</revisionlist>

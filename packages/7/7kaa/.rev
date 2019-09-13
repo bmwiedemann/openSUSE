@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7647922163b74e6ed6bf07a59476a41</srcmd5>
+    <version>2.14.4</version>
+    <time>1415664635</time>
+    <user>dimstar_suse</user>
+    <comment>-------------------------------------------------------------------
+Fri Nov  7 17:04:26 UTC 2014 - nemysis@gmx.ch
+
+- Use for Recommends:%{name}-music Recommends: instead of
+  Requires:%{name}-music, with dimstar help
+
+-------------------------------------------------------------------
+Tue Oct 14 06:30:23 UTC 2014 - nemysis@gmx.ch
+
+- Change Web URL
+
+-------------------------------------------------------------------
+Mon Oct 13 22:26:42 UTC 2014 - nemysis@gmx.ch
+
+- Binary file '7kaa-source-2.14.4.tar.bz2' has changed.
+
+-------------------------------------------------------------------
+Mon Oct 13 21:53:03 UTC 2014 - nemysis@gmx.ch
+
+- Change Source0 to use proper Web URL
+- Use check for openSUSE %if 0%{?suse_version}
+- Use for BuildRequires pkgconfig(SDL_net), pkgconfig(sdl)
+  instead of libSDL_net-devel, SDL-devel
+- Remove BuildRequires for pkgconfig
+
+-------------------------------------------------------------------
+Sat Oct  4 21:02:03 UTC 2014 - nemysis@gmx.ch
+
+- Change %fdupes
+
+-------------------------------------------------------------------
+Mon Sep 29 21:54:09 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation</comment>
+    <requestid>260266</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>10740ccca3dc49afb1c6598444c0a0e2</srcmd5>
+    <version>2.14.5</version>
+    <time>1444130680</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed the last submission with a proper patch (reported upstream) in the same ticket as the other one.</comment>
+    <requestid>334824</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>45089bda8b7f2a6be3ca4051920807d4</srcmd5>
+    <version>2.14.5</version>
+    <time>1466327308</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402814</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c293766aaee27eb7d5f38ab707844c91</srcmd5>
+    <version>2.14.6</version>
+    <time>1476350874</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424877</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7a3bf078ae8cdf59efb896fb8c1e9872</srcmd5>
+    <version>2.14.7</version>
+    <time>1510322174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539085</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>efd14513d6e7221b7fe8c1ced459b538</srcmd5>
+    <version>2.15.1</version>
+    <time>1551386493</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677701</requestid>
+  </revision>
+</revisionlist>

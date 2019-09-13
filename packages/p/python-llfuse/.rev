@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3a5ecf73cacbcf05fe707b777a048409</srcmd5>
+    <version>1.3.4</version>
+    <time>1530304171</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-llfuse required by borgbackup for the mount functionality to work
+(https://bugzilla.suse.com/show_bug.cgi?id=1095725)</comment>
+    <requestid>617713</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fd2095ab40f006d4667bd5b834691c14</srcmd5>
+    <version>1.3.4</version>
+    <time>1535123034</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with new attr:
+  * llfuse-attr-2.4.48.patch
+- Drop contextlib2 dependency
+- Run tests unconditionally</comment>
+    <requestid>628888</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bd2f8894b682e5ff8033d45e12efe39a</srcmd5>
+    <version>1.3.5</version>
+    <time>1538117623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638702</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a1d4c53a14f4c44a47299b82ef87f74f</srcmd5>
+    <version>1.3.6</version>
+    <time>1558516341</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.6
+  * Python-LLFUSE is no longer actively maintained. Unless you are stuck
+    with Python 2.x or libfuse 2.x, we recommended to use the pyfuse3_
+    module instead.
+- Remove upstreamed patch fix-char-cast-to-unsigned-int.patch</comment>
+    <requestid>703195</requestid>
+  </revision>
+</revisionlist>

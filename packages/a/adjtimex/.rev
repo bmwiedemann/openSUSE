@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1664358ead61de144022a854a56ba74a</srcmd5>
+    <version>1.29</version>
+    <time>1364916770</time>
+    <user>coolo</user>
+    <comment>Split from util-linux. PLease add to same pattern as util-linux</comment>
+    <requestid>161212</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1664358ead61de144022a854a56ba74a</srcmd5>
+    <version>1.29</version>
+    <time>1379661950</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>0ff9949012812e5f8a233e1ba196e31f</srcmd5>
+    <version>1.29</version>
+    <time>1400218187</time>
+    <user>coolo</user>
+    <comment>- add COPYING and COPYRIGHT as doc files (forwarded request 233803 from oertel)</comment>
+    <requestid>233812</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>2b4ecb5651f7c7e05081dc066b3fa724</srcmd5>
+    <version>1.29</version>
+    <time>1401958173</time>
+    <user>coolo</user>
+    <comment>- Simplify spec file.
+- Remove UsrMerge compatibility symlink.
+Also copy relevant changes items from util-linux.
+
+The request is equal to 235578, but also removes UsrMerge compatibility symlink (suggested by tchvatal@suse.cz). (forwarded request 235698 from sbrabec)</comment>
+    <requestid>235963</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>2b4ecb5651f7c7e05081dc066b3fa724</srcmd5>
+    <version>1.29</version>
+    <time>1409300471</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

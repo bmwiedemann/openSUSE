@@ -1,0 +1,283 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d2ae5959bd0253b323cab580a529b80</srcmd5>
+    <version>2.2.0</version>
+    <time>1343633879</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>128763</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d0cfd2f14955d6081bef75d4200d2933</srcmd5>
+    <version>2.2.1</version>
+    <time>1353847382</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.1:
+  + Python-Markdown 2.2.1 is a bug-fix release. No new features have been added.
+    However, at least one bug fix does not work in Python 2.4 so that version of
+    Python is no longer supported. For a full list of changes, see the git log.</comment>
+    <requestid>142457</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d0cfd2f14955d6081bef75d4200d2933</srcmd5>
+    <version>2.2.1</version>
+    <time>1359109979</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d0cfd2f14955d6081bef75d4200d2933</srcmd5>
+    <version>2.2.1</version>
+    <time>1379664107</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>69bdb51c4913a42fa8b15ab2f52944c1</srcmd5>
+    <version>2.3.1</version>
+    <time>1389881552</time>
+    <user>coolo</user>
+    <comment>- update to version 2.3.1
+- drop sed call to remove shebangs: fixed upstream (forwarded request 214061 from benoit_monin)</comment>
+    <requestid>214062</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>007ce0bf0d05a5b2989d95899cfaa31f</srcmd5>
+    <version>2.4</version>
+    <time>1393089393</time>
+    <user>coolo</user>
+    <comment>- update to version 2.4
+- fix CRLF in all files: upstream converted to DOS encoding (forwarded request 223300 from benoit_monin)</comment>
+    <requestid>223383</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e13ae84ec8606617948696380d68fc87</srcmd5>
+    <version>2.4</version>
+    <time>1401899963</time>
+    <user>coolo</user>
+    <comment>- disable tests for 11.1 and SLES 10 builds (forwarded request 235464 from frispete)</comment>
+    <requestid>236015</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b781db0012537654ce5654171fc4240d</srcmd5>
+    <version>2.4</version>
+    <time>1405178090</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240286</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>b781db0012537654ce5654171fc4240d</srcmd5>
+    <version>2.4</version>
+    <time>1409302793</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1a6122672a8b9d4396f34def34056e1a</srcmd5>
+    <version>2.5</version>
+    <time>1411127779</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250085</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cfa81e5e35c94ba66beb117ccca3591e</srcmd5>
+    <version>2.5.1</version>
+    <time>1412533912</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253811</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f18ef7300d1cabd94c586c57d5817c7d</srcmd5>
+    <version>2.5.2</version>
+    <time>1417160680</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263160</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8b43b7ccc28b5147f01ea1401f5d6f26</srcmd5>
+    <version>2.6</version>
+    <time>1424779353</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287328</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fcb5c47ffa642a0c49cee90ac460ab0b</srcmd5>
+    <version>2.6.1</version>
+    <time>1426174731</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290290</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>73254983050cf939b0e719f10ffd66e7</srcmd5>
+    <version>2.6.2</version>
+    <time>1429769059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298505</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9f406bf5e6d39d6f3e97740cded6124f</srcmd5>
+    <version>2.6.3</version>
+    <time>1446647576</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341610</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>81947ccb2381edffcdcf57f84e073acb</srcmd5>
+    <version>2.6.4</version>
+    <time>1448186400</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>343155</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1bec3f9fd96f8c08c54bd1b9d5b59558</srcmd5>
+    <version>2.6.5</version>
+    <time>1449145810</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346334</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ab5c16a0fa52fc82dfd2b46f54c50f21</srcmd5>
+    <version>2.6.6</version>
+    <time>1459002498</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>379086</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>38feaebbaace3fab17023dbde66cd00b</srcmd5>
+    <version>2.6.7</version>
+    <time>1474976702</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>430375</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7117146236b7169812239d296690d00d</srcmd5>
+    <version>2.6.8</version>
+    <time>1485682818</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452975</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>a311b70ebb62132f5d739147280263bf</srcmd5>
+    <version>2.6.8</version>
+    <time>1495442861</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496783</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0c69d451b06adab00e83f902e4024401</srcmd5>
+    <version>2.6.9</version>
+    <time>1503132997</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517620</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>733700e88fde72826db5d10fb1290655</srcmd5>
+    <version>2.6.11</version>
+    <time>1515342173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562153</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>6256fb82195af71e20ed4be5dbefce75</srcmd5>
+    <version>2.6.11</version>
+    <time>1521499173</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build/runtime dependency over setuptools wrt bsc#1079287
+- Remove python-devel dependency which is not really needed</comment>
+    <requestid>588542</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>aa3c1356d1acbd3157fdca8f412ca031</srcmd5>
+    <version>2.6.11</version>
+    <time>1533732769</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with python 3.7:
+  * markdown-2.6.11-python37.patch</comment>
+    <requestid>627812</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4a696ed7cee5c452a86b946b51004390</srcmd5>
+    <version>3.0</version>
+    <time>1541508699</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0: major release
+  * backwards-incompatible changes:
+    + enable_attributes keyword deprecated
+    + smart_emphasis keyword and smart_strong extension deprecated
+    + output_formats simplified to html and xhtml
+    + safe_mode and html_replacement_text keywords deprecated
+    + Positional arguments deprecated
+    + Extension name behavior has changed
+    + Extension configuration as part of extension name deprecated
+    + HeaderId extension deprecated
+    + Homegrown OrderedDict has been replaced with a purpose-built
+      Registry
+    + Markdown class instance references
+    + markdown.util.isBlockLevel deprecated
+    + md_globals keyword deprecated from extension API
+    + Added new, more flexible InlineProcessor class
+  * new features:
+    + a new testing framework is included as a part of the Markdown
+      library, which can also be used by third party extensions
+    + a new toc_depth parameter has been added to the Table of
+      Contents Extension
+    +  new toc_tokens attribute has been added to the Markdown class
+       by the Table of Contents Extension
+    + when the Table of Contents Extension is used in conjunction
+      with the Attribute Lists Extension and a data-toc-label
+      attribute is defined on a header, the content of the
+      data-toc-label attribute is now used as the content of the
+      Table of Contents item for that header
+    + additional CSS class names can be appended to Admonitions
+- update and adapt the patch for python-3.7:</comment>
+    <requestid>643640</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>308d5370e906fe7d216be251ecffb77e</srcmd5>
+    <version>3.0</version>
+    <time>1544816905</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>656857</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>740e33d340a23d696809899df016b15d</srcmd5>
+    <version>3.0.1</version>
+    <time>1546946212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662424</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>00f2769d030987c4485b54a3f9591803</srcmd5>
+    <version>3.1</version>
+    <time>1553888289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688991</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d67b799332f86732c33d0d1c94802aa1</srcmd5>
+    <version>3.1.1</version>
+    <time>1558515200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704552</requestid>
+  </revision>
+</revisionlist>

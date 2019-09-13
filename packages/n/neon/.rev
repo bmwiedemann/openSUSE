@@ -1,0 +1,401 @@
+<revisionlist>
+  <revision rev="1" vrev="26">
+    <srcmd5>04f266a5e58c13333ef058e787c14898</srcmd5>
+    <version>0.26.1</version>
+    <time>1168871168</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>036f0f362f5bbc5a6298d5f1f756a759</srcmd5>
+    <version>0.26.3</version>
+    <time>1169646046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="8">
+    <srcmd5>f6c0b7148a2a57fc7ac276c8aa406ffc</srcmd5>
+    <version>0.26.3</version>
+    <time>1175422259</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="13">
+    <srcmd5>3e5673507d6dd932b4ed9d8088b7606a</srcmd5>
+    <version>0.26.3</version>
+    <time>1177685388</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="14">
+    <srcmd5>cf6baffbefd8dfca39993380d5c7a5ba</srcmd5>
+    <version>0.26.3</version>
+    <time>1177763564</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8bc5725762df8632f7c5aebdf52dbe18</srcmd5>
+    <version>0.26.4</version>
+    <time>1184789460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>58f07fbb9aa1697f4582b42d924a1e0a</srcmd5>
+    <version>0.27.1</version>
+    <time>1192132783</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fee4621ec09a73ee4d893ad942fcdbb0</srcmd5>
+    <version>0.27.1</version>
+    <time>1192143986</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>56021dc001cab6f28c8ed72e3f7b2265</srcmd5>
+    <version>0.27.2</version>
+    <time>1196104763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cc082e45e5100841b66114367383de20</srcmd5>
+    <version>0.28.0</version>
+    <time>1203145718</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>e5610a44620bf957e7bfec2e1eaef703</srcmd5>
+    <version>0.28.0</version>
+    <time>1204323962</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>cfab32f9fc708ce2b2a64463df4cc081</srcmd5>
+    <version>0.28.0</version>
+    <time>1204557633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>adbdaf8cf3a819ceae6c11c2836aa176</srcmd5>
+    <version>0.28.2</version>
+    <time>1207458536</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>47f85096be9f255b5cea11d3a5416fe0</srcmd5>
+    <version>0.28.2</version>
+    <time>1207832438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>16317617add7dd144627921140dbf3e5</srcmd5>
+    <version>0.28.2</version>
+    <time>1211105949</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="15">
+    <srcmd5>d1764916c2d2b44e6ed14ebec511e066</srcmd5>
+    <version>0.28.2</version>
+    <time>1212503353</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>86fbe1058c1d96cab4a0e34ba06325dd</srcmd5>
+    <version>0.28.3</version>
+    <time>1219360147</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>962488026fe1c8240c5fe9b2c8864bcb</srcmd5>
+    <version>0.28.3</version>
+    <time>1231461451</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8af0d87bee6728dbf675772185813f23</srcmd5>
+    <version>0.28.4</version>
+    <time>1242421059</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>122a82f68394b231d29239fa98bd57c0</srcmd5>
+    <version>0.28.4</version>
+    <time>1252626535</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/neon based on submit request 20321 from user prusnak
+</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>122a82f68394b231d29239fa98bd57c0</srcmd5>
+    <version>0.28.4</version>
+    <time>1252626535</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/neon based on submit request 20321 from user prusnak
+</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>830d421a8c7f3ee881a07db1ecaa9a8e</srcmd5>
+    <version>0.28.4</version>
+    <time>1266507804</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/neon based on submit request 32744 from user coolo
+</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>3dc8288ac967fbaa312f759f1422f3c3</srcmd5>
+    <version>0.28.4</version>
+    <time>1268925068</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>7f7146cc068ab7057d11141fb9e86a19</srcmd5>
+    <version>0.28.4</version>
+    <time>1271629202</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/neon based on submit request 38163 from user oertel
+</comment>
+    <requestid>38163</requestid>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>7f7146cc068ab7057d11141fb9e86a19</srcmd5>
+    <version>0.28.4</version>
+    <time>1278667370</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>7f7146cc068ab7057d11141fb9e86a19</srcmd5>
+    <version>0.28.4</version>
+    <time>1278678600</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>423248bc3552fc106742ae21c84b75e0</srcmd5>
+    <version>0.29.3</version>
+    <time>1282910820</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/neon based on submit request 46160 from user dirkmueller
+</comment>
+    <requestid>46160</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>423248bc3552fc106742ae21c84b75e0</srcmd5>
+    <version>0.29.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>220c5562b87a484937658c84ed9823ac</srcmd5>
+    <version>0.29.3</version>
+    <time>1305534235</time>
+    <user>saschpe</user>
+    <comment>- Obsoletes: neon must be in the lib package. Otherwise
+  libneon-devel gets installed as replacement for neon on distro
+  upgrade, drawing in lots of other devel stuff. (forwarded request 70103 from lnussel)</comment>
+    <requestid>70144</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>53d5053a277dbf1d13dfec1943e5c1f3</srcmd5>
+    <version>0.29.3</version>
+    <time>1305534246</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70144
+</comment>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>ff0133ca8d35cdfe66c936146ced1bf7</srcmd5>
+    <version>0.29.6</version>
+    <time>1311256732</time>
+    <user>saschpe</user>
+    <comment>- update to 0.29.6:
+  * Don't abort SSL handshake with GnuTLS if a client cert is
+  requested but none is configured/available
+  * Fix GnuTLS build with Nettle
+  * Fix the method string passed to create_request hooks to
+  have the same lifetime as the request object
+  * Docs updates.
+  * Fix GnuTLS handshakes failures with 'TLS warning alert'
+  * Fix SNI support
+  * Fix possible Solaris linker errors if building static library
+  * Fix error handling when pulling a request body from an file
+  * Fix ne_request_dispatch() return value for SOCKS proxy failure cases
+  * Tighten SSL cert ID checks to deny a wildcard match against an IP address</comment>
+    <requestid>76651</requestid>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>46569bdb5c38cab1223c7ab99bf634ae</srcmd5>
+    <version>0.29.6</version>
+    <time>1311256744</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76651
+</comment>
+  </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>b296c13542296816c8042aced1d17f1a</srcmd5>
+    <version>0.29.6</version>
+    <time>1315316662</time>
+    <user>saschpe</user>
+    <comment>- test suite hangs or fails in the OBS, but works locally 
+  disable it.
+
+- Load openssl engines as well, needed to support 
+  AES-NI, fast/hardware provided hash functions and Ivy bridge's
+  RDRAND instruction. (forwarded request 81042 from elvigia)</comment>
+    <requestid>81067</requestid>
+  </revision>
+  <revision rev="34" vrev="8">
+    <srcmd5>fe846ec2f1e95f79791eca16c0dde1e0</srcmd5>
+    <version>0.29.6</version>
+    <time>1315316669</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81067
+</comment>
+  </revision>
+  <revision rev="35" vrev="9">
+    <srcmd5>24b27892971e77a1695731ed7eb7fe1d</srcmd5>
+    <version>0.29.6</version>
+    <time>1319025094</time>
+    <user>coolo</user>
+    <comment>- remove neon-aes-ni.patch temporarily (bnc#720601)</comment>
+    <requestid>88549</requestid>
+  </revision>
+  <revision rev="36" vrev="11">
+    <srcmd5>24b27892971e77a1695731ed7eb7fe1d</srcmd5>
+    <version>0.29.6</version>
+    <time>1319182197</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="37" vrev="12">
+    <srcmd5>74a92dd6ed6d33ae3a5d48d6532356d6</srcmd5>
+    <version>0.29.6</version>
+    <time>1321886893</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92620 from coolo)</comment>
+    <requestid>92703</requestid>
+  </revision>
+  <revision rev="38" vrev="13">
+    <srcmd5>c2bbac4440ea5322a8f80494425fc98f</srcmd5>
+    <version>0.29.6</version>
+    <time>1328098606</time>
+    <user>coolo</user>
+    <comment>- build with libproxy
+- make expat explicit in configure
+- pass ca-bundle.pem to configure
+
+- build with NE_FEATURE_TS_SSL (thread-safe SSL)
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)</comment>
+    <requestid>102161</requestid>
+  </revision>
+  <revision rev="39" vrev="14">
+    <srcmd5>b1d0925e8b3423be62f8fe807ecb459a</srcmd5>
+    <version>0.29.6</version>
+    <time>1336472894</time>
+    <user>coolo</user>
+    <comment>- don't  use ca-bundle.pem. neon correctly uses openssl's default
+  instead (ie the /etc/ssl/certs directory) (forwarded request 116426 from lnussel)</comment>
+    <requestid>116427</requestid>
+  </revision>
+  <revision rev="40" vrev="15">
+    <srcmd5>427e3c3977772c58e49a7df9dece1970</srcmd5>
+    <version>0.29.6</version>
+    <time>1339363188</time>
+    <user>coolo</user>
+    <comment>Tag patch for [bnc#764906] (forwarded request 124331 from AndreasStieger)</comment>
+    <requestid>124349</requestid>
+  </revision>
+  <revision rev="41" vrev="17">
+    <srcmd5>427e3c3977772c58e49a7df9dece1970</srcmd5>
+    <version>0.29.6</version>
+    <time>1340183727</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="42" vrev="19">
+    <srcmd5>427e3c3977772c58e49a7df9dece1970</srcmd5>
+    <version>0.29.6</version>
+    <time>1359109495</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6530827d34993bed9f43bbfb263a9a2d</srcmd5>
+    <version>0.30.0</version>
+    <time>1377249163</time>
+    <user>scarabeus_factory</user>
+    <comment>- version 0.30.0 
+* drop neon-openssl-version.patch
+*  API and ABI backwards-compatible with 0.27.x and later
+*  ne_path_escape: fix excessive memory allocation
+*  added  ne_ssl_clicert_import, ne_ssl_context_get_flag, 
+  ne_set_addrlist2, added ne_addr_canonical..
+* support chunked bodies with negative length passed to 
+  ne_set_request_body_provider
+
+- permanently drop neon-aes-ni.patch which is not applied
+  and obsolete, bug in openSSL already fixed and the ENGINE
+  loading issue addressed in a different fashion. (forwarded request 195764 from elvigia)</comment>
+    <requestid>195779</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>6530827d34993bed9f43bbfb263a9a2d</srcmd5>
+    <version>0.30.0</version>
+    <time>1379663352</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>6530827d34993bed9f43bbfb263a9a2d</srcmd5>
+    <version>0.30.0</version>
+    <time>1409301963</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1b880222525432f707cc938e15df574c</srcmd5>
+    <version>0.30.1</version>
+    <time>1425891820</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289283</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>01a357ad26c1bd725779bef489426306</srcmd5>
+    <version>0.30.2</version>
+    <time>1503999273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.30.2
+  Add support for OpenSSL 1.1.x (Kurt Roeckx).
+  Fix PKCS#11 support under GnuTLS 3.x.
+      PKCS#11 API no longer supported with GnuTLS 2.x
+- cleaned the .spec</comment>
+    <requestid>518509</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>4638a4e0f3d0507af4fe1e086d07649c</srcmd5>
+    <version>0.30.2</version>
+    <time>1522058492</time>
+    <user>dimstar_suse</user>
+    <comment>- Install license
+- replace_manpage_with_links.sh: replace named links with symlinks
+  and stop using fdupes as it just linked linked manpages
+
+- fixed flaky timeout tests for ppc64le (bsc#1085850)
+    * fix_timeout_tests_for_ppc64le.patch</comment>
+    <requestid>589034</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>d12121ca0465e33d4db106151446606d</srcmd5>
+    <version>0.30.2</version>
+    <time>1539250608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639519</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>50aaf5b77b9c24f0d5e196391bdfd9cc</srcmd5>
+    <version>0.30.2</version>
+    <time>1566912031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724491</requestid>
+  </revision>
+</revisionlist>

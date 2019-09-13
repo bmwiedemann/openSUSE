@@ -1,0 +1,12 @@
+<package name="python-geopy" project="openSUSE:Factory">
+  <title>Python Geocoding Toolbox</title>
+  <description>geopy makes it easy for developers to locate the coordinates of addresses, cities,
+countries, and landmarks across the globe using third-party geocoders and other data
+sources, such as wikis.
+
+geopy currently includes support for six geocoders: Google Maps, Yahoo! Maps, Windows
+Local Live (Virtual Earth), geocoder.us, GeoNames, MediaWiki pages (with the GIS
+extension), and Semantic MediaWiki pages.</description>
+  <devel project="Application:Geo" package="python-geopy"/>
+  <url>http://code.google.com/p/geopy</url>
+</package>

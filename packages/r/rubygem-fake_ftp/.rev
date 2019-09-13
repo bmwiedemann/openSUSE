@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50d4b2c9b2514086dc0e6f574535acee</srcmd5>
+    <version>0.1.1</version>
+    <time>1501228067</time>
+    <user>dimstar_suse</user>
+    <comment>dependency needed for vagrant 1.9.5</comment>
+    <requestid>505083</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ca231f0708d261de0674b5136f533e8c</srcmd5>
+    <version>0.3.0</version>
+    <time>1502892749</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514557</requestid>
+  </revision>
+</revisionlist>

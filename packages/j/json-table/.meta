@@ -1,0 +1,10 @@
+<package name="json-table" project="openSUSE:Factory">
+  <title>Transform nested JSON data into tabular data in the shell</title>
+  <description>Jt reads UTF-8 encoded JSON forms from stdin and writes tab separated
+values (or CSV) to stdout. A simple stack-based programming language
+is used to extract values from the JSON input for printing.
+
+</description>
+  <devel project="utilities" package="json-table"/>
+  <url>https://github.com/micha/json-table</url>
+</package>

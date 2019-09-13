@@ -1,0 +1,5 @@
+<package name="med-tools" project="openSUSE:Factory">
+  <title>MED-fichier is a library to store and exchange meshed data or computation results</title>
+  <description>MED-fichier (Modélisation et Echanges de Données, in English Modelisation and Data Exchange) is a library to store and exchange meshed data or computation results. It uses the HDF5 file format to store the data. </description>
+  <devel project="science" package="med-tools"/>
+</package>

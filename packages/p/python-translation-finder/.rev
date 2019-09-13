@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95c2f1987a225e7d0387659d7dc3fec0</srcmd5>
+    <version>1.1</version>
+    <time>1554276484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690627</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d9989182e39e74cc360e54d0e3075f63</srcmd5>
+    <version>1.1</version>
+    <time>1554372418</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use %pytest macro for now to get this in Leap faster</comment>
+    <requestid>690906</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f793437e878dbfc7ca2e3f9f48ce1b58</srcmd5>
+    <version>1.4</version>
+    <time>1557142158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700999</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8bda920f0b88ce8056333e3ab333aa7c</srcmd5>
+    <version>1.5</version>
+    <time>1559581065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5:
+  * Various performance improvements.
+  * Added detection of Fluent translations.
+  * Improved detection of language code within filename.
+  * Added detection of YAML translations.</comment>
+    <requestid>707113</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c5583f7e1258afd0f2a67fe11c5810b3</srcmd5>
+    <version>1.6</version>
+    <time>1563808775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6:
+  * Improved discovery of POT files.
+  * Added support for subtitle files supported in Weblate 3.7.
+  * Improved detection of actual JSON formats.
+  * Added support for detecting PHP files.
+  * Improved detection of YAML formats.</comment>
+    <requestid>717567</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>64df5864befabd22423b51e369c9fb35</srcmd5>
+    <version>1.6</version>
+    <time>1564137577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6 bsc#1142582:</comment>
+    <requestid>718091</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd1c357e972395f2c4f07fbe6b738685</srcmd5>
+    <version>1.1.1</version>
+    <time>1518597235</time>
+    <user>dimstar_suse</user>
+    <comment>Simple DNS resolver for asyncio module.
+
+for me important as dependency for XMPP client poezio, which is 7 years outdated</comment>
+    <requestid>574949</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fd50209d6f501681d27c77f5a2d81511</srcmd5>
+    <version>1.1.1</version>
+    <time>1526372009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606543</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5bb72be031895f9f1dfe236949312f19</srcmd5>
+    <version>1.2.0</version>
+    <time>1551784772</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0
+- Fix dependencies
+ * Add support for Python 3.7
+ * Fix CNAME test
+ * Add examples with `async` and `await`
+ * Fix Python version check
+ * Add gethostbyaddr</comment>
+    <requestid>680482</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eeeb195fc389c8f711c119ebdb7ceaa7</srcmd5>
+    <version>2.0.0</version>
+    <time>1553263807</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0
+ * drop python2 support
+ * Add support for ANY queries</comment>
+    <requestid>687347</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>05cc311d9d4cfbf92081a4ae19ed05de</srcmd5>
+    <version>0.3.0</version>
+    <time>1534543390</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-pytest-astropy, which in turn is required by python-astropy</comment>
+    <requestid>629422</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b30352ee942ccc1227cbfadb3e6430ab</srcmd5>
+    <version>0.3.1</version>
+    <time>1551113491</time>
+    <user>coolo</user>
+    <comment>- Update to 0.3.1:
+  * Fix warnings that occur with pytest-3.7 and later. [#34]
+- Enable tests
+- Add patch from upstream to build with pytest-4.2+:
+  * pytest42.patch</comment>
+    <requestid>676357</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0f727f5faad9e308296d10e2a484d5bf</srcmd5>
+    <version>0.3.2</version>
+    <time>1563790905</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.2:
+  * Fixed compatibility with pytest 4.2 and later. [#38, #40]
+- Remove pytest42.patch merged upstream</comment>
+    <requestid>717481</requestid>
+  </revision>
+</revisionlist>

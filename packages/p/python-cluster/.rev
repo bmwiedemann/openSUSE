@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>68d704c5fa02c11e3f2ac3f90e6a6742</srcmd5>
+    <version>1.4.1</version>
+    <time>1527582538</time>
+    <user>dimstar_suse</user>
+    <comment>Clustering library for python</comment>
+    <requestid>609901</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>acc07f0a037ce55e03ad64a350ea2bf8</srcmd5>
+    <version>1.4.1</version>
+    <time>1529501852</time>
+    <user>maxlin_factory</user>
+    <comment>- Switch from wheel to normal distri packaging bsc#1094323</comment>
+    <requestid>618015</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd805660289a39325050a9da6fbaef2d</srcmd5>
+    <version>1.4.1.post2</version>
+    <time>1564137565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717970</requestid>
+  </revision>
+</revisionlist>

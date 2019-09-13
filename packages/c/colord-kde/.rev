@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6319e99970da4ed73eb0fb7d0d264f45</srcmd5>
+    <version>0.3.0</version>
+    <time>1374503880</time>
+    <user>coolo</user>
+    <comment>Colord-kde package provides utilities for color correction within KDE Workspaces</comment>
+    <requestid>183443</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6319e99970da4ed73eb0fb7d0d264f45</srcmd5>
+    <version>0.3.0</version>
+    <time>1379662135</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>6319e99970da4ed73eb0fb7d0d264f45</srcmd5>
+    <version>0.3.0</version>
+    <time>1409300663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>baa6e45478a6a4a28d287e0f54c2c833</srcmd5>
+    <version>0.3.0</version>
+    <time>1456335782</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with CMake 3.4</comment>
+    <requestid>361253</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bbc4647af1d1c91a6d5666c5e2a94cce</srcmd5>
+    <version>0.5.0</version>
+    <time>1477220037</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436958</requestid>
+  </revision>
+</revisionlist>

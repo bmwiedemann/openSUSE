@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf681560e0e5e70a9570d8b2aa3560ab</srcmd5>
+    <version>1.3.0</version>
+    <time>1336471271</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115409</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bf681560e0e5e70a9570d8b2aa3560ab</srcmd5>
+    <version>1.3.0</version>
+    <time>1340184342</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>bf681560e0e5e70a9570d8b2aa3560ab</srcmd5>
+    <version>1.3.0</version>
+    <time>1359110603</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d57d11f2644c4f0bc5c6e7be73d4ec57</srcmd5>
+    <version>1.3.1</version>
+    <time>1372138699</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.3.1 (forwarded request 180678 from Zaitor)</comment>
+    <requestid>180709</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d57d11f2644c4f0bc5c6e7be73d4ec57</srcmd5>
+    <version>1.3.1</version>
+    <time>1379665011</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>d57d11f2644c4f0bc5c6e7be73d4ec57</srcmd5>
+    <version>1.3.1</version>
+    <time>1409303694</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>59f3bd941edc951c027bb80d99f4958a</srcmd5>
+    <version>1.3.2</version>
+    <time>1430132337</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.2:
+  * Print which option was in error along with usage message
+  * Sprinkle consts in StrCmp to quiet cast warnings
+  * config: Add missing AC_CONFIG_SRCDIR
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Mark required arguments to Xlib error handler as unused
+  * Delete unused NULLSTR macro</comment>
+    <requestid>303661</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>95529c30d95363dc239d6b4649f624f4</srcmd5>
+    <version>1.3.2</version>
+    <time>1561882487</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer require legacy extension xf86miscproto; no longer
+  provided by xorgproto-2019.1 by default</comment>
+    <requestid>711691</requestid>
+  </revision>
+</revisionlist>

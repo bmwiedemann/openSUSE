@@ -1,0 +1,355 @@
+<revisionlist>
+  <revision rev="1" vrev="25">
+    <srcmd5>978460f7467a80090fb0ca7c322b7e83</srcmd5>
+    <version>0.4</version>
+    <time>1168903460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="32">
+    <srcmd5>e94e6801f54ed40ef3139b3f4be0622e</srcmd5>
+    <version>0.4</version>
+    <time>1169745964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="33">
+    <srcmd5>cf43f5e31b99b90de200abb3328a0741</srcmd5>
+    <version>0.4</version>
+    <time>1169849421</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="42">
+    <srcmd5>ab7df29a49a5815901586ba070946611</srcmd5>
+    <version>0.4</version>
+    <time>1176849600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="59">
+    <srcmd5>00303f15d14b0474d6660c4f62177949</srcmd5>
+    <version>0.4</version>
+    <time>1183405272</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="77">
+    <srcmd5>e8cb85fad12f567348a9465655fb1cd6</srcmd5>
+    <version>0.4</version>
+    <time>1191854986</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="81">
+    <srcmd5>ad618f3bb7ec3ec38d28d12f7167a9c1</srcmd5>
+    <version>0.4</version>
+    <time>1192801326</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="91">
+    <srcmd5>376780a3e9397e840447ba8a24671430</srcmd5>
+    <version>0.4</version>
+    <time>1199379071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="104">
+    <srcmd5>b157d367ae0f348c7712ef4b39656b25</srcmd5>
+    <version>0.4</version>
+    <time>1204160427</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="106">
+    <srcmd5>016ce231d34c6e6898a3e56c8bec1c2d</srcmd5>
+    <version>0.4</version>
+    <time>1204285200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="114">
+    <srcmd5>c95d248d833da18dea2fb0a1fd98a581</srcmd5>
+    <version>0.4</version>
+    <time>1207831937</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="152">
+    <srcmd5>c95d248d833da18dea2fb0a1fd98a581</srcmd5>
+    <version>0.4</version>
+    <time>1207831937</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="153">
+    <srcmd5>6fceb459af3627532c8fc0c5dc94dcf8</srcmd5>
+    <version>0.4</version>
+    <time>1225637018</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="154">
+    <srcmd5>e2c4421602849a3313de69e5fa3dbcab</srcmd5>
+    <version>0.4</version>
+    <time>1229349336</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>95039da1532ccf358cf5bcc28ee41b06</srcmd5>
+    <version>0.5.2</version>
+    <time>1243205771</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>95039da1532ccf358cf5bcc28ee41b06</srcmd5>
+    <version>0.5.2</version>
+    <time>1243205771</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>df79a71fc35986eb94cec9a47e109cc5</srcmd5>
+    <version>0.5.2</version>
+    <time>1265918417</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/ltrace based on submit request 32328 from user coolo
+</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>2541e5f8fffdb10d7447c16a4e6e0810</srcmd5>
+    <version>0.5.2</version>
+    <time>1268924858</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>2541e5f8fffdb10d7447c16a4e6e0810</srcmd5>
+    <version>0.5.2</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>2541e5f8fffdb10d7447c16a4e6e0810</srcmd5>
+    <version>0.5.2</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>8d7e6fdf202c1947e59f82e2ba836680</srcmd5>
+    <version>0.5.2</version>
+    <time>1279914798</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/ltrace based on submit request 43697 from user coolo
+</comment>
+    <requestid>43697</requestid>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>8d7e6fdf202c1947e59f82e2ba836680</srcmd5>
+    <version>0.5.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>8d7e6fdf202c1947e59f82e2ba836680</srcmd5>
+    <version>0.5.2</version>
+    <time>1319182160</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>66ede14be2f92a6814ebb2cc8bd4d553</srcmd5>
+    <version>0.5.2</version>
+    <time>1329922421</time>
+    <user>coolo</user>
+    <comment>- build with libelf1 instead of libelf0
+
+- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>106312</requestid>
+  </revision>
+  <revision rev="25" vrev="17">
+    <srcmd5>66ede14be2f92a6814ebb2cc8bd4d553</srcmd5>
+    <version>0.5.2</version>
+    <time>1340183676</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6eb01c2cf4a50f31078087250d88b754</srcmd5>
+    <version>0.5.3</version>
+    <time>1347722922</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133901</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2a60794727fb65a4a5826ae0ef914e86</srcmd5>
+    <version>0.7.1</version>
+    <time>1354526509</time>
+    <user>coolo</user>
+    <comment>- Update to 0.7.1
+  * Version 0.7.1
+  ** Bugfixes
+  *** ltrace.conf.5 is now installed to man5 as it should be
+  *** [PowerPC] A header file necessary for building is now shipped
+  *** [MIPS] Work around duplicate symbol request bug
+  *** Detect VDSO entry in r_debug linkmap with non-empty name
+  *** Temporary files are wiped properly after the test suite has been run
+  *** Parsing typedefs with common prefix now works as it should
+  ** Cofiguration Files
+  *** The following prototypes in ltrace.conf were added or updated
+  *** Duplicate typedefs are now guarded against
+  *** It's now possible to define recursive structures
+  *** New lens &quot;bitvec&quot; is available
+  *** Octal lens renamed to &quot;oct&quot;
+  *** The hex lens can now format floating point arguments
+  * Version 0.7.0
+  ** Tracing
+  *** Full support for tracing multi-threaded processes
+  *** Support for tracing inter-library calls
+  *** Better support for parameter passing (&quot;fetch backend&quot;)
+  *** Awareness of deny_ptrace SELinux boolean
+  *** Limited support for tracing returns from tail call functions
+  *** -e, -x and -l selectors now allow using globs and regular expressions
+  *** -g command line option dropped
+  *** Test suite can now be run under valgrind
+  *** [ppc] Support both BSS and secure PLTs for 32-bit processes
+  *** [mips] Implement software singlestepping
+  *** [mips] Add support for CPIC main programs
+  *** Support tracing PIE binaries</comment>
+    <requestid>143745</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>19c56b0e9d4228600c611510456f8868</srcmd5>
+    <version>0.7.2</version>
+    <time>1355474616</time>
+    <user>coolo</user>
+    <comment>- Update to 0.7.2
+  ** Bugfixes
+  *** (Again) detect VDSO entry in r_debug linkmap with non-empty name
+  *** Fix building with libunwind 1.1
+  *** Fix prototype lookup for -x symbols from shared libraries
+- Remove upstreamed patch ltrace.vdso.patch</comment>
+    <requestid>145020</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>19c56b0e9d4228600c611510456f8868</srcmd5>
+    <version>0.7.2</version>
+    <time>1359109412</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>f2495170e1df496eb8461fbf5b42ecc8</srcmd5>
+    <version>0.7.2</version>
+    <time>1371646005</time>
+    <user>coolo</user>
+    <comment>- Don't warn about unused local typedefs (forwarded request 179601 from AndreasSchwab)</comment>
+    <requestid>179602</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>f2495170e1df496eb8461fbf5b42ecc8</srcmd5>
+    <version>0.7.2</version>
+    <time>1379663203</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>2048d5564152bcc1b59d405e200c24c9</srcmd5>
+    <version>0.7.2</version>
+    <time>1387798368</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>211895</requestid>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>2048d5564152bcc1b59d405e200c24c9</srcmd5>
+    <version>0.7.2</version>
+    <time>1409301825</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>bf8549f84155ea28b99a6f6558969d42</srcmd5>
+    <version>0.7.91</version>
+    <time>1409810154</time>
+    <user>coolo</user>
+    <comment>- Update to git rev 6c6bcc3
+  ** Prototype libraries
+     - Each DSO can now ship an ltrace config file (called prototype
+       library) that ltrace will open when that DSO is loaded to process
+       image.  See ltrace(1) for details.
+     - ltrace.conf is no longer part of installation tarball.  Instead,
+       we now ship libc.so.conf, libm.so.conf, libacl.so.conf, and
+       syscalls.conf.  Those are now istalled to /usr/share/ltrace by
+       default.  /etc/ltrace.conf and $HOME/.ltrace.conf are still
+       loaded if present, and can contain arbitrary user configuration.
+     - The option -F was retrofitted to be a colon-separated list of
+       prototype libraries, and directories to look for prototype
+       libraries in.  On Linux, ltrace looks into XDG_CONFIG_HOME,
+       XDG_CONFIG_DIRS, and /usr/share/ltrace as well.
+     - Wide character strings are supported in prototypes.  Use &quot;string&quot;
+       lens as usual, but use array of integers as underlying type.
+       libc.so.conf now contains prototypes of wide character functions.
+     - Sole void function parameter such as in the following example, is
+       now considered obsolete:
+       | int fork(void); |
+       This use is still accepted, taken to mean &quot;hide(int)&quot;, but
+       produces a warning, and will be removed in future.
+     - Prototypes are now read from DWARF debug info, if available. This
+       complements the data available in config files
+  ** Architectural support
+     - MIPS and MIPSel are now handled by the same backend.
+     - ARMv6, ARMv7 and ARMv8 (AArch64) are supported, including full
+       fetch backend.  ARMv8 backend doesn't support tracing of 32-bit
+       binaries, as currently there's no 32-bit userspace available for
+       ARM64 processors. (forwarded request 247286 from AndreasSchwab)</comment>
+    <requestid>247287</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>fc63d7fd1a2105300d48baf87a050fa3</srcmd5>
+    <version>0.7.91</version>
+    <time>1469382153</time>
+    <user>dimstar_suse</user>
+    <comment>- readdir.patch: Remove use of deprecated readdir_r (forwarded request 408566 from Andreas_Schwab)</comment>
+    <requestid>408568</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>a0e09e4f791310ccf502239044bb8898</srcmd5>
+    <version>0.7.91</version>
+    <time>1512546378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545813</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>2e82d8577c50df4c8d183da68fa6fac6</srcmd5>
+    <version>0.7.91</version>
+    <time>1513676662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556834</requestid>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>16eecb15ea85f12d77fd029a71f819f2</srcmd5>
+    <version>0.7.91</version>
+    <time>1518095383</time>
+    <user>dimstar_suse</user>
+    <comment>- ppc-ptrace.patch: include &amp;lt;asm/ptrace.h&amp;gt; on ppc
+- arm-trace.patch: remove unreachable assignment (forwarded request 573630 from Andreas_Schwab)</comment>
+    <requestid>573631</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>60c40158288019c375efc0aca13185e6</srcmd5>
+    <version>0.7.91</version>
+    <time>1547211633</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc9-printf-s-null-argument.patch: boo#1120789. (forwarded request 662827 from marxin)</comment>
+    <requestid>662839</requestid>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>78022e3979b6f953bde2b0c9ae7871f4</srcmd5>
+    <version>0.7.91</version>
+    <time>1554189502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689797</requestid>
+  </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>fade1f2cf0206b74b0f98066b6fa6e2f</srcmd5>
+    <version>0.7.91</version>
+    <time>1557141432</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc9-Wlto-type-mismatch.patch in order to address LTO warnings
+  (boo#1133256). (forwarded request 699610 from marxin)</comment>
+    <requestid>699688</requestid>
+  </revision>
+</revisionlist>

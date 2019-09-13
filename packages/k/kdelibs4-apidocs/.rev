@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0524779974bd042b3e81167c3ea77a6</srcmd5>
+    <version>unknown</version>
+    <time>1286488818</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdelibs4 based on submit request 49980 from user dirkmueller
+</comment>
+    <requestid>49980</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>f0524779974bd042b3e81167c3ea77a6</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>f0524779974bd042b3e81167c3ea77a6</srcmd5>
+    <version>unknown</version>
+    <time>1319182036</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="8">
+    <srcmd5>f0524779974bd042b3e81167c3ea77a6</srcmd5>
+    <version>unknown</version>
+    <time>1340183511</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>f0524779974bd042b3e81167c3ea77a6</srcmd5>
+    <version>unknown</version>
+    <time>1359109157</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="12">
+    <srcmd5>f0524779974bd042b3e81167c3ea77a6</srcmd5>
+    <version>unknown</version>
+    <time>1379662766</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="14">
+    <srcmd5>f0524779974bd042b3e81167c3ea77a6</srcmd5>
+    <version>unknown</version>
+    <time>1409301338</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

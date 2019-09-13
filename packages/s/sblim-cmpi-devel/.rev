@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>eebbcf87ceacbbf2f91fe35fe294afc9</srcmd5>
+    <version>1.0.4</version>
+    <time>1211165349</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="30">
+    <srcmd5>eebbcf87ceacbbf2f91fe35fe294afc9</srcmd5>
+    <version>1.0.4</version>
+    <time>1211165349</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d47896e9466d95e124b9df932f1c396b</srcmd5>
+    <version>2.0.1</version>
+    <time>1236554962</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b0c8aef94b64ee1da53083fecfd09ad4</srcmd5>
+    <version>2.0.1</version>
+    <time>1236646794</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>800b56ea3a1996fdf74ce98237efa5f0</srcmd5>
+    <version>2.0.1</version>
+    <time>1241787207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>6a81e92b80e26903c9872eb6ef21c13a</srcmd5>
+    <version>2.0.1</version>
+    <time>1242422803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>4357314324e253f9cd6ff900fd1f77bd</srcmd5>
+    <version>2.0.1</version>
+    <time>1245277408</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>4357314324e253f9cd6ff900fd1f77bd</srcmd5>
+    <version>2.0.1</version>
+    <time>1245277408</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>1535582ac108725a9fab92c0e7833cad</srcmd5>
+    <version>2.0.1</version>
+    <time>1268926063</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>bb2f7130d117c1fd8541345fe36a818e</srcmd5>
+    <version>2.0.1</version>
+    <time>1268985087</time>
+    <user>autobuild</user>
+    <comment>Copy from systemsmanagement:wbem/sblim-cmpi-devel based on submit request 35097 from user coolo
+</comment>
+    <requestid>35097</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>bb2f7130d117c1fd8541345fe36a818e</srcmd5>
+    <version>2.0.1</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>bb2f7130d117c1fd8541345fe36a818e</srcmd5>
+    <version>2.0.1</version>
+    <time>1278678617</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>bb2f7130d117c1fd8541345fe36a818e</srcmd5>
+    <version>2.0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>10d34a32f934ae2c216d54c78c872a78</srcmd5>
+    <version>2.0.2</version>
+    <time>1316088822</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>82096</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>af67c63f44ab5e6b95f25e91378525a2</srcmd5>
+    <version>2.0.2</version>
+    <time>1316088830</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82096
+</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>af67c63f44ab5e6b95f25e91378525a2</srcmd5>
+    <version>2.0.2</version>
+    <time>1319182447</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>5d49c0792d4e6c885ef1a82a7f185a4d</srcmd5>
+    <version>2.0.2</version>
+    <time>1322481416</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93827 from coolo)</comment>
+    <requestid>93949</requestid>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>50124a978d5c7406a58fe91f7d55b2b8</srcmd5>
+    <version>2.0.2</version>
+    <time>1330952587</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104132</requestid>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>d824217eaccaff440fa1819d49d913eb</srcmd5>
+    <version>2.0.2</version>
+    <time>1331324879</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108337</requestid>
+  </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>d824217eaccaff440fa1819d49d913eb</srcmd5>
+    <version>2.0.2</version>
+    <time>1340184191</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0ea5a155da0ac938b7da1209d6bd3d4f</srcmd5>
+    <version>2.0.3</version>
+    <time>1344079700</time>
+    <user>coolo</user>
+    <comment>- Update to 2.0.3
+  Bugs Fixed:
+  - 3531598 several CmpiObjectPath methods leak memory
+  - 3531599 replace CMGetCharPtr with CMGetCharsPtr
+  - 3531597 returnData with char type fails
+  - 3531596 CmpiData uses wrong union for unsigned data
+  New Features:
+  - 3531601 add CmpiString constructor for char data
+  - 3531603 no way to determine internal type of CmpiData
+    (add getType function)</comment>
+    <requestid>129541</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>0ea5a155da0ac938b7da1209d6bd3d4f</srcmd5>
+    <version>2.0.3</version>
+    <time>1359110372</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>0cecc4761b569bb5dba84e226920f9fb</srcmd5>
+    <version>2.0.3</version>
+    <time>1366088213</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>163362</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>0cecc4761b569bb5dba84e226920f9fb</srcmd5>
+    <version>2.0.3</version>
+    <time>1379664618</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>0cecc4761b569bb5dba84e226920f9fb</srcmd5>
+    <version>2.0.3</version>
+    <time>1409303320</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

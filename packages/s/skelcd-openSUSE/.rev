@@ -1,0 +1,936 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b05413a1dc5410989fa5d6a7eb967767</srcmd5>
+    <version>2008.6.24</version>
+    <time>1214535723</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a5dcd6d4b3ef89e6c85092a1a00c6cfc</srcmd5>
+    <version>2008.7.22</version>
+    <time>1216722005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8fc090de14ba71a240a27529f3bda570</srcmd5>
+    <version>2008.7.25</version>
+    <time>1216954817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f08ca3edd791accfc273c7e7eb503f80</srcmd5>
+    <version>2008.7.29</version>
+    <time>1217321822</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fb6f3b5299d6e4e1ede536ccd5a9dfa2</srcmd5>
+    <version>2008.8.8</version>
+    <time>1218154649</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fdc3c2bf727c5d01c9441133813e1bb2</srcmd5>
+    <version>2008.8.8</version>
+    <time>1221670015</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e3b5eee258e2acb8000f13c4999b2057</srcmd5>
+    <version>2008.9.17</version>
+    <time>1221671878</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>68c27be875076e57370cfe6c6afed41b</srcmd5>
+    <version>2008.9.17</version>
+    <time>1221827020</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3d9c67568d96e12917b390678c3ce26c</srcmd5>
+    <version>2008.9.19</version>
+    <time>1221830785</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>baf445849318123bb37f54215ba07af8</srcmd5>
+    <version>2008.10.17</version>
+    <time>1224252840</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>50602e80fa4b828ab583bd73f938cf5b</srcmd5>
+    <version>2008.10.24</version>
+    <time>1224856094</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3231ef873f5117e9202797747595b6b9</srcmd5>
+    <version>2008.11.9</version>
+    <time>1226273911</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>69dfacdefa7bc3c5a6cc44df54173f8d</srcmd5>
+    <version>2008.11.10</version>
+    <time>1226309655</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>63d5289768ce8d8c4a7beaed4137a846</srcmd5>
+    <version>2008.11.10</version>
+    <time>1226332420</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b211bfa94efed6071806f2414973fdd1</srcmd5>
+    <version>2008.11.17</version>
+    <time>1226961920</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a006655f9f9dc325a790aa5515e6ef4c</srcmd5>
+    <version>2008.11.20</version>
+    <time>1227194760</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>68ac2521af569b0cbb6e71e65f68f310</srcmd5>
+    <version>2008.11.25</version>
+    <time>1227625900</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>440761995c5fdbfdd62f9e3c2535cccb</srcmd5>
+    <version>2008.11.28</version>
+    <time>1227884732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>97726eb02f39f4236a037bfececc34a6</srcmd5>
+    <version>2008.12.1</version>
+    <time>1228130034</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a9ccf0424fff01f2ca72b2362c34f10a</srcmd5>
+    <version>2009.4.8</version>
+    <time>1239180871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4bc6664221076e8b53ea24410c313d67</srcmd5>
+    <version>2009.9.28</version>
+    <time>1254152063</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/skelcd-openSUSE based on submit request 21184 from user coolo
+</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>75635af54178c85ae588a3a8027726ea</srcmd5>
+    <version>2009.10.3</version>
+    <time>1254532226</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/skelcd-openSUSE based on submit request 21404 from user coolo
+</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>75635af54178c85ae588a3a8027726ea</srcmd5>
+    <version>2009.10.3</version>
+    <time>1254532226</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/skelcd-openSUSE based on submit request 21404 from user coolo
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1b3dfccf27b4c623b8c4e9a9e03eb20a</srcmd5>
+    <version>2010.1.21</version>
+    <time>1264073242</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/skelcd-openSUSE based on submit request 30208 from user coolo
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>17d6be08e07b6b06867ecf4b4784666f</srcmd5>
+    <version>2010.1.25</version>
+    <time>1264431991</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/skelcd-openSUSE based on submit request 30389 from user coolo
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>109fe88f66c3b4fd688e8d20326383eb</srcmd5>
+    <version>2010.2.24</version>
+    <time>1266974898</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/skelcd-openSUSE based on submit request 33195 from user coolo
+</comment>
+    <requestid>33195</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>bc12410958707d64858b3857540e7b7a</srcmd5>
+    <version>2010.3.17</version>
+    <time>1268831789</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/skelcd-openSUSE based on submit request 34937 from user coolo
+</comment>
+    <requestid>34937</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>90e1445fb2f8de21fc2300ae6498ecbb</srcmd5>
+    <version>2010.3.17</version>
+    <time>1268926179</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4fece6a37f8f1151cdfea143ede5a437</srcmd5>
+    <version>2010.5.28</version>
+    <time>1275061492</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/skelcd-openSUSE based on submit request 40644 from user coolo
+</comment>
+    <requestid>40644</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9c03ecdd4e7c1979a07d483eb7d6fedb</srcmd5>
+    <version>2010.6.18</version>
+    <time>1276836127</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/skelcd-openSUSE based on submit request 41631 from user coolo
+</comment>
+    <requestid>41631</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>9c03ecdd4e7c1979a07d483eb7d6fedb</srcmd5>
+    <version>2010.6.18</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>9c03ecdd4e7c1979a07d483eb7d6fedb</srcmd5>
+    <version>2010.6.18</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6c17c71f299e5e8995b45c4c9515151e</srcmd5>
+    <version>2010.8.1</version>
+    <time>1280676102</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/skelcd-openSUSE based on submit request 44220 from user coolo
+</comment>
+    <requestid>44220</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>e0f504e1dab627343b7a2d63ee3f6c0c</srcmd5>
+    <version>unknown</version>
+    <time>1284124852</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/skelcd-openSUSE based on submit request 47687 from user coolo
+</comment>
+    <requestid>47687</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>177d71c43f2d9aa30927996c94163b53</srcmd5>
+    <version>2010.9.10</version>
+    <time>1291584803</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54720 from user coolo
+</comment>
+    <requestid>54720</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9171c65d38d51c4375fb6240a3090f73</srcmd5>
+    <version>2010.12.5</version>
+    <time>1291584808</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54720
+</comment>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>9171c65d38d51c4375fb6240a3090f73</srcmd5>
+    <version>2010.12.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>afd14ef2e1cfb5e3e44ef4ea2b0fb7ad</srcmd5>
+    <version>2011.04.14</version>
+    <time>1304606261</time>
+    <user>saschpe</user>
+    <comment>Update version to 12.1, update license (forwarded request 67261 from a_jaeger)</comment>
+    <requestid>67318</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7add23908e1eb518807cc9c8593a8911</srcmd5>
+    <version>2011.5.5</version>
+    <time>1304606272</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67318
+</comment>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>c8b22ec07f3203f6e9f277b8bade69ad</srcmd5>
+    <version>2011.5.5</version>
+    <time>1306417071</time>
+    <user>saschpe</user>
+    <comment>Update license translations (forwarded request 71383 from a_jaeger)</comment>
+    <requestid>71401</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>04e1cdda9b989869d20b7c3eed6e0a43</srcmd5>
+    <version>2011.5.26</version>
+    <time>1306417082</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71401
+</comment>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>a06ab434a75095e7b23da2940ee01a48</srcmd5>
+    <version>2011.5.26</version>
+    <time>1306846341</time>
+    <user>saschpe</user>
+    <comment>- Fix typos as suggested in bnc#696425 c7
+- Removed . at the end of url and mail  
+
+- fix first paragraph to be less scary : fix bnc#696425
+- fix line width to be less or equal to 69 chars 
+  avoid paging ( coolo recommendation ) (forwarded request 72197 from bruno_friedmann)</comment>
+    <requestid>72213</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>52786132771afc580bb12177f5fcd424</srcmd5>
+    <version>2011.5.31</version>
+    <time>1306846350</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72213
+</comment>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>de2af00becdd634642bad83a828daf86</srcmd5>
+    <version>2011.5.31</version>
+    <time>1306923621</time>
+    <user>saschpe</user>
+    <comment>Update hungarian translation. (forwarded request 72389 from a_jaeger)</comment>
+    <requestid>72395</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0700697d909e21666809877af7af7d55</srcmd5>
+    <version>2011.6.1</version>
+    <time>1306923636</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72395
+</comment>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>0700697d909e21666809877af7af7d55</srcmd5>
+    <version>2011.6.1</version>
+    <time>1319182473</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>8fc2ae680d55ddcd3caf725c7549601e</srcmd5>
+    <version>2011.6.1</version>
+    <time>1319207665</time>
+    <user>coolo</user>
+    <comment>Fix source download description (forwarded request 88713 from a_jaeger)</comment>
+    <requestid>88810</requestid>
+  </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>cc76bbd9358526d36a54211fd06e4f69</srcmd5>
+    <version>2011.6.1</version>
+    <time>1319982156</time>
+    <user>coolo</user>
+    <comment>- gpg needs the .gnupg directory created for some reason now,
+  fix *.asc keys on CDs
+
+- Update description about sources.
+
+- Update Hungarian translation.
+
+- Fix typos as suggested in bnc#696425 c7
+- Removed . at the end of url and mail  
+
+- fix first paragraph to be less scary : fix bnc#696425
+- fix line width to be less or equal to 69 chars 
+  avoid paging ( coolo recommendation )
+
+- Update license translations.
+
+- gpg needs the .gnupg directory created for some reason now,
+  fix *.asc keys on CDs</comment>
+    <requestid>89769</requestid>
+  </revision>
+  <revision rev="49" vrev="6">
+    <srcmd5>7c8141df4cb9517930ff469bd597ab9c</srcmd5>
+    <version>2011.6.1</version>
+    <time>1320232707</time>
+    <user>coolo</user>
+    <comment>- non-oss repo does not need the docu
+
+- non-oss repo does not need the docu</comment>
+    <requestid>89891</requestid>
+  </revision>
+  <revision rev="50" vrev="7">
+    <srcmd5>75f5600872d26ccc80ff1ee93f222f46</srcmd5>
+    <version>2011.6.1</version>
+    <time>1320487726</time>
+    <user>coolo</user>
+    <comment>Update FSF Address ; Do not package empty docu dir for non-oss; fix README.BETA comments. (forwarded request 90091 from a_jaeger)</comment>
+    <requestid>90144</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>20fc252a87cd142395ebe69bfad5475a</srcmd5>
+    <version>2011.11.1</version>
+    <time>1322259173</time>
+    <user>coolo</user>
+    <comment>Change version number to 12.2 (forwarded request 93316 from a_jaeger)</comment>
+    <requestid>93591</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>ee9c619f07224d74774baa6b2cdb4289</srcmd5>
+    <version>2011.11.1</version>
+    <time>1323343604</time>
+    <user>coolo</user>
+    <comment>- YaST is not a license
+
+- YaST is not a license (forwarded request 95574 from coolo)</comment>
+    <requestid>95621</requestid>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>7242effe69378f2ae40b354b6843fff5</srcmd5>
+    <version>2011.11.1</version>
+    <time>1336423950</time>
+    <user>coolo</user>
+    <comment>- openSUSE-build-key no longer contains gpg keyring, so use
+  individual key files instead. (forwarded request 115688 from lnussel)</comment>
+    <requestid>115857</requestid>
+  </revision>
+  <revision rev="54" vrev="4">
+    <srcmd5>19583c8f745b9ffd906ffd91d743d1b8</srcmd5>
+    <version>2011.11.1</version>
+    <time>1339352402</time>
+    <user>coolo</user>
+    <comment>- add license.pl.txt
+- copy the manuals whatever their file names are
+- Update FSF Address in GPL v2 document. (forwarded request 124324 from yecril71pl)</comment>
+    <requestid>124361</requestid>
+  </revision>
+  <revision rev="55" vrev="5">
+    <srcmd5>b210b08885778115e4c140db413ba773</srcmd5>
+    <version>2011.11.1</version>
+    <time>1339531183</time>
+    <user>coolo</user>
+    <comment>- the docu only applies to the main architectures (forwarded request 124623 from coolo)</comment>
+    <requestid>124656</requestid>
+  </revision>
+  <revision rev="56" vrev="6">
+    <srcmd5>604a667e66e37f184f73f4929bcc1604</srcmd5>
+    <version>2011.11.1</version>
+    <time>1339620378</time>
+    <user>coolo</user>
+    <comment>a better wording for license.pl (forwarded request 124740 from yecril71pl)</comment>
+    <requestid>124768</requestid>
+  </revision>
+  <revision rev="57" vrev="7">
+    <srcmd5>434eaf1e2b66ebe785d66c040fbb0ada</srcmd5>
+    <version>2011.11.1</version>
+    <time>1339824191</time>
+    <user>coolo</user>
+    <comment>Update license.es. (forwarded request 124960 from a_jaeger)</comment>
+    <requestid>125159</requestid>
+  </revision>
+  <revision rev="58" vrev="9">
+    <srcmd5>434eaf1e2b66ebe785d66c040fbb0ada</srcmd5>
+    <version>2011.11.1</version>
+    <time>1340184219</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="59" vrev="10">
+    <srcmd5>971c10545c373f14007eec1747a0abf9</srcmd5>
+    <version>2011.11.1</version>
+    <time>1341833045</time>
+    <user>coolo</user>
+    <comment>- fix encoding of polish
+
+- Some fixes for license.es by Javier Llorente.
+
+- a better wording for license.pl
+
+- the docu only applies to the main architectures
+
+- add license.pl.txt
+- copy the manuals whatever their file names are
+- Update FSF Address in GPL v2 document.
+
+- fix encoding of polish</comment>
+    <requestid>127394</requestid>
+  </revision>
+  <revision rev="60" vrev="11">
+    <srcmd5>fdbe5c579b16649a15caaf2fd98c95e6</srcmd5>
+    <version>2011.11.1</version>
+    <time>1342172082</time>
+    <user>namtrac</user>
+    <comment>- actually compress the license.tar as promised 
+
+- actually compress the license.tar as promised</comment>
+    <requestid>127777</requestid>
+  </revision>
+  <revision rev="61" vrev="12">
+    <srcmd5>ea1471f76952422614a3feb89e07b907</srcmd5>
+    <version>2011.11.1</version>
+    <time>1345809180</time>
+    <user>namtrac</user>
+    <comment>- Update Polish translation formatting (bnc#768393) 
+
+- Update Polish translation formatting (bnc#768393)</comment>
+    <requestid>131393</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>7cd82ff24fd6bae44b189d6495e14e6b</srcmd5>
+    <version>2012.10.1</version>
+    <time>1349087884</time>
+    <user>coolo</user>
+    <comment>- update distribution release
+
+- update distribution release</comment>
+    <requestid>136508</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>7cd82ff24fd6bae44b189d6495e14e6b</srcmd5>
+    <version>2012.10.1</version>
+    <time>1359110411</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>1a065a6594b567fbc0bd4d338e265c67</srcmd5>
+    <version>2013.02.08</version>
+    <time>1360331083</time>
+    <user>coolo</user>
+    <comment>- remove autorun.inf, which is wrong on most media (bnc#801873)</comment>
+    <requestid>154917</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>e55ea8acd8432f261e255916fce68968</srcmd5>
+    <version>2013.02.08</version>
+    <time>1360705008</time>
+    <user>coolo</user>
+    <comment>Change postal address to openSUSE team (forwarded request 155240 from a_jaeger)</comment>
+    <requestid>155242</requestid>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>109f001408a8b6454f14f972e2dcaab9</srcmd5>
+    <version>2013.02.08</version>
+    <time>1362732698</time>
+    <user>coolo</user>
+    <comment>- change copyright to SUSE (forwarded request 157528 from lnussel)</comment>
+    <requestid>157609</requestid>
+  </revision>
+  <revision rev="67" vrev="4">
+    <srcmd5>ef7613e6a5d9d2c841dee761d70acdb3</srcmd5>
+    <version>2013.02.08</version>
+    <time>1368468006</time>
+    <user>coolo</user>
+    <comment>- bump to 13.1
+
+- change copyright to SUSE
+
+- bump to 13.1</comment>
+    <requestid>175297</requestid>
+  </revision>
+  <revision rev="68" vrev="5">
+    <srcmd5>2ad27d159a8d53a41ce7b30ad915bb93</srcmd5>
+    <version>2013.02.08</version>
+    <time>1368516692</time>
+    <user>coolo</user>
+    <comment>- fix the previous change</comment>
+    <requestid>175503</requestid>
+  </revision>
+  <revision rev="69" vrev="6">
+    <srcmd5>c73cbfb0b3b58afb8ba5f8fc12ea7775</srcmd5>
+    <version>2013.02.08</version>
+    <time>1375435896</time>
+    <user>coolo</user>
+    <comment>- in projects/architecturs without java, leave out the docu 
+
+- fix the previous change
+
+- in projects/architecturs without java, leave out the docu</comment>
+  </revision>
+  <revision rev="70" vrev="7">
+    <srcmd5>50ee458f7ecc2f235de2fff8ddbed206</srcmd5>
+    <version>2013.02.08</version>
+    <time>1379342185</time>
+    <user>coolo</user>
+    <comment>- docu team no longer wants to produce PDFs, so remove it from
+  DVD and provide them only online</comment>
+    <requestid>199222</requestid>
+  </revision>
+  <revision rev="71" vrev="9">
+    <srcmd5>50ee458f7ecc2f235de2fff8ddbed206</srcmd5>
+    <version>2013.02.08</version>
+    <time>1379664688</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="72" vrev="10">
+    <srcmd5>475da3c74e9ce9717f28cc6826daf53e</srcmd5>
+    <version>2013.02.08</version>
+    <time>1380469956</time>
+    <user>coolo</user>
+    <comment>- update license file according to feedback from Legal (forwarded request 200561 from lnussel)</comment>
+    <requestid>201275</requestid>
+  </revision>
+  <revision rev="73" vrev="11">
+    <srcmd5>dc2fd1fda199a743e8877eb176307801</srcmd5>
+    <version>2013.02.08</version>
+    <time>1382012873</time>
+    <user>scarabeus_factory</user>
+    <comment>- readd license translations (bnc#841252)</comment>
+    <requestid>203389</requestid>
+  </revision>
+  <revision rev="74" vrev="12">
+    <srcmd5>8b861cf0a88aa84fca034629bd9259f9</srcmd5>
+    <version>2013.02.08</version>
+    <time>1382616849</time>
+    <user>scarabeus_factory</user>
+    <comment>- add czech translation of the license
+
+- update polish too</comment>
+    <requestid>204486</requestid>
+  </revision>
+  <revision rev="75" vrev="13">
+    <srcmd5>9440f2371b2b9a6c521991c0ef069bf3</srcmd5>
+    <version>2013.02.08</version>
+    <time>1383655992</time>
+    <user>coolo</user>
+    <comment>- update translations for es and ru
+
+- update translations for es and ru</comment>
+    <requestid>205810</requestid>
+  </revision>
+  <revision rev="76" vrev="14">
+    <srcmd5>62255ac5524a82a5c5f66847a856ddab</srcmd5>
+    <version>2013.02.08</version>
+    <time>1396701765</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>228043</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>70123bdb7460b9f905c9f3369f39dea1</srcmd5>
+    <version>2014.06.04</version>
+    <time>1402403745</time>
+    <user>coolo</user>
+    <comment>- let's claim it's 13.2
+
+- add dutch
+
+- let's claim it's 13.2</comment>
+    <requestid>236228</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>a272b96d816168806f735b7a912795b0</srcmd5>
+    <version>2014.06.04</version>
+    <time>1405264524</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239862</requestid>
+  </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>a272b96d816168806f735b7a912795b0</srcmd5>
+    <version>2014.06.04</version>
+    <time>1409303373</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="80" vrev="5">
+    <srcmd5>5daec43b2ebd583d21ceab41e577536a</srcmd5>
+    <version>2014.06.04</version>
+    <time>1410981881</time>
+    <user>coolo</user>
+    <comment>- modernize the text of README.BETA
+
+- replace all of #VERSION# tags when they exist twice or more
+  within one line
+
+- make the .es and .ru license files world readable
+
+- modernize the text of README.BETA
+
+- replace all of #VERSION# tags when they exist twice or more
+  within one line</comment>
+    <requestid>249882</requestid>
+  </revision>
+  <revision rev="81" vrev="6">
+    <srcmd5>1dde75780adb638709fc3b576e657435</srcmd5>
+    <version>2014.06.04</version>
+    <time>1414219982</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258342</requestid>
+  </revision>
+  <revision rev="82" vrev="7">
+    <srcmd5>4e7cc2e347d4e981b3a10bb756d9e016</srcmd5>
+    <version>2014.06.04</version>
+    <time>1446048881</time>
+    <user>dimstar_suse</user>
+    <comment>- change openSUSE version to Tumbleweed (bnc#925986)
+
+- Release notes are now available in en_US and en_UK: just pick
+  en_US for the CD main content.
+
+- change openSUSE version to Tumbleweed (bnc#925986)
+
+- Release notes are now available in en_US and en_UK: just pick
+  en_US for the CD main content.</comment>
+    <requestid>340642</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>02ecf800e0611a7cd841c6d3d7192312</srcmd5>
+    <version>84.87.20151207.94a820e</version>
+    <time>1449995674</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>347874</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>39e9b9852923bbff908efd3443b1d262</srcmd5>
+    <version>84.87.20160120.19b8aaf</version>
+    <time>1460101100</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384930</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>80e0567f46c8ac86dae3f3ba71c8d96e</srcmd5>
+    <version>84.87.20160413.b700fbb</version>
+    <time>1462260815</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390836</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>4ff41fe42d06bf22f25127af2a25a736</srcmd5>
+    <version>84.87.20160511.ece383f</version>
+    <time>1464075185</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>395133</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>f81bfcb0b1162baed9a724737a9b1604</srcmd5>
+    <version>84.87.20160819.aacef49</version>
+    <time>1472594519</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20160819.aacef49:
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Arabic)
+  * Update year</comment>
+    <requestid>422160</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>431b0bb950865a87ec7dc71a590dff51</srcmd5>
+    <version>84.87.20160831.7dfe5fb</version>
+    <time>1474622542</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20160831.7dfe5fb:
+  * Update license.txt
+  * Merge updated license to translation template
+  * Update pot file (forwarded request 428113 from stfnknorr)</comment>
+    <requestid>428114</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>579a133f74c77b0004cd9a52aa54b8a8</srcmd5>
+    <version>84.87.20160925.e6d19e2</version>
+    <time>1475358280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20160925.e6d19e2:
+  * Translated using Weblate (Asturian)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Ukrainian)</comment>
+    <requestid>430361</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>98fc9e4fc4b102445f6bfbf6ad7e74d2</srcmd5>
+    <version>84.87.20160926.4df50ec</version>
+    <time>1476409124</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433935</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>d56940635d36e7d0e27a746ed7a44db7</srcmd5>
+    <version>84.87.20161026.1627f5e</version>
+    <time>1478167914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20161026.1627f5e:
+  * Drop license.in.po
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Persian)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Ukrainian)</comment>
+    <requestid>437530</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>b95173fec6617584ce5a5ecbb0fd9c93</srcmd5>
+    <version>84.87.20161107.bcb1a98</version>
+    <time>1478625904</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>439161</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>fceaa0ab5b11736e3e58e2db946810dc</srcmd5>
+    <version>84.87.20161221.22db9c6</version>
+    <time>1490132624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>479458</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>84651573d95b2b218a313acfdefebc5f</srcmd5>
+    <version>84.87.20170508.effa251</version>
+    <time>1495132931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20170508.effa251:
+  * Translated using Weblate (Chinese (Taiwan))
+  * add new icon
+  * add .ico icon</comment>
+    <requestid>493480</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>e29314c093771b6334c22bf0adddc48b</srcmd5>
+    <version>84.87.20170606.60aba84</version>
+    <time>1497943984</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 501612 from keichwa)</comment>
+    <requestid>501781</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>be23cc6546f11f4deb8ec646db21519f</srcmd5>
+    <version>84.87.20170608.7282c44</version>
+    <time>1499880888</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509179</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>2c502490ddf0505ae777578a08ad1c7c</srcmd5>
+    <version>84.87.20170712.1dc7ffa</version>
+    <time>1501406693</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510979</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>c61a5399f56cbcf720dfb2ca1346efaa</srcmd5>
+    <version>84.87.20170814.54da904</version>
+    <time>1507391357</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532225</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>345af00e13eea40d91ac42973b05c0d2</srcmd5>
+    <version>84.87.20170814.54da904</version>
+    <time>1511517143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544628</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>8e9320e32951feecd16e89b64cca442e</srcmd5>
+    <version>84.87.20180322.65c3317</version>
+    <time>1522403914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180322.65c3317:
+  * Update year to 2018
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Portuguese (Brazil))</comment>
+    <requestid>591573</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>5842b11ce1663f92170835469ba45e63</srcmd5>
+    <version>84.87.20180406.b4b5de8</version>
+    <time>1523127295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180406.b4b5de8:
+  * add .treeinfo files for virt-install
+
+- add .treeinfo files for virt-manager</comment>
+    <requestid>594032</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>62350beaa93aaa0bcc34c3878f97f5ba</srcmd5>
+    <version>84.87.20180408.24ed1ee</version>
+    <time>1524742369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180408.24ed1ee:
+  * Translated using Weblate (Hindi)
+  * Added translation using Weblate (Hindi)</comment>
+    <requestid>596990</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>4d9123eec7acd07380fc5c8148e4decb</srcmd5>
+    <version>84.87.20180511.5f10599</version>
+    <time>1526462663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180511.5f10599:
+  * Translated using Weblate (German)
+</comment>
+    <requestid>606974</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>bf157a077778c76538d88de44545bf14</srcmd5>
+    <version>84.87.20190113.32a0440</version>
+    <time>1550149947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673556</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>bf255a36a1bc92652032f72799599be8</srcmd5>
+    <version>84.87.20190313.adde7aa</version>
+    <time>1552989916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20190313.adde7aa:
+  * update treeinfo file to 15.1 (boo#1128927)
+  * Change year to 2019
+  * Fix spelling: SuSE -&gt; SUSE</comment>
+    <requestid>684721</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>c1f54d5c957a4a85c5718ae2d3ee9cc3</srcmd5>
+    <version>84.87.20190315.c89f577</version>
+    <time>1553699613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688185</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>2c93cfa5e54b77bc943512cbc34cc015</srcmd5>
+    <version>84.87.20190503.f962d0e</version>
+    <time>1557263546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701034</requestid>
+  </revision>
+</revisionlist>

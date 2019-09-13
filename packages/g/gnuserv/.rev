@@ -1,0 +1,128 @@
+<revisionlist>
+  <revision rev="1" vrev="19">
+    <srcmd5>ffa692d22fc0dfaa4c471a04689d26f8</srcmd5>
+    <version>3.12.6</version>
+    <time>1168902914</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="251">
+    <srcmd5>ffa692d22fc0dfaa4c471a04689d26f8</srcmd5>
+    <version>3.12.6</version>
+    <time>1168902914</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="252">
+    <srcmd5>44e5914d4385ce6cb031563c7ab8229f</srcmd5>
+    <version>3.12.6</version>
+    <time>1224691147</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="254">
+    <srcmd5>44e5914d4385ce6cb031563c7ab8229f</srcmd5>
+    <version>3.12.6</version>
+    <time>1224691147</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="255">
+    <srcmd5>33d1a49f47a90adaf9bab4019818168a</srcmd5>
+    <version>3.12.6</version>
+    <time>1268923840</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="257">
+    <srcmd5>33d1a49f47a90adaf9bab4019818168a</srcmd5>
+    <version>3.12.6</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="258">
+    <srcmd5>33d1a49f47a90adaf9bab4019818168a</srcmd5>
+    <version>3.12.6</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="261">
+    <srcmd5>33d1a49f47a90adaf9bab4019818168a</srcmd5>
+    <version>3.12.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="263">
+    <srcmd5>33d1a49f47a90adaf9bab4019818168a</srcmd5>
+    <version>3.12.6</version>
+    <time>1319181933</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="264">
+    <srcmd5>04825b80c5a72876f30ef6225eda8c3c</srcmd5>
+    <version>3.12.6</version>
+    <time>1323191718</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="265">
+    <srcmd5>b5a23123169d6f4eb7a30e1a2532505e</srcmd5>
+    <version>3.12.6</version>
+    <time>1324830861</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97344 from coolo)</comment>
+    <requestid>97383</requestid>
+  </revision>
+  <revision rev="12" vrev="267">
+    <srcmd5>b5a23123169d6f4eb7a30e1a2532505e</srcmd5>
+    <version>3.12.6</version>
+    <time>1340183398</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="269">
+    <srcmd5>b5a23123169d6f4eb7a30e1a2532505e</srcmd5>
+    <version>3.12.6</version>
+    <time>1359108978</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="271">
+    <srcmd5>b5a23123169d6f4eb7a30e1a2532505e</srcmd5>
+    <version>3.12.6</version>
+    <time>1379662521</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="273">
+    <srcmd5>b5a23123169d6f4eb7a30e1a2532505e</srcmd5>
+    <version>3.12.6</version>
+    <time>1409301059</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="274">
+    <srcmd5>650ae323b6d191e70840bb033999f0b9</srcmd5>
+    <version>3.12.6</version>
+    <time>1510660813</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename README.SuSE to README.SUSE, adhering to the correct
+  spelling.
+</comment>
+    <requestid>541517</requestid>
+  </revision>
+  <revision rev="17" vrev="275">
+    <srcmd5>3838fcc2224e1177ae710983733a4cd3</srcmd5>
+    <version>3.12.6</version>
+    <time>1520415511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583411</requestid>
+  </revision>
+  <revision rev="18" vrev="276">
+    <srcmd5>3e70e8054cec62675a54bac7a801ced3</srcmd5>
+    <version>3.12.6</version>
+    <time>1520503109</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up spec file with spec-clener</comment>
+    <requestid>583852</requestid>
+  </revision>
+</revisionlist>

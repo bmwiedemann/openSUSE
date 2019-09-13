@@ -1,0 +1,850 @@
+<revisionlist>
+  <revision rev="1" vrev="8">
+    <srcmd5>2b2452251682537daff1dabdd3de6efc</srcmd5>
+    <version>2.1.21</version>
+    <time>1168902410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f866a2961a0662c9d00b333b4d87af4a</srcmd5>
+    <version>2.1.22</version>
+    <time>1170417539</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="10">
+    <srcmd5>f109ee5bf7d27da7d6b61840eb5cf425</srcmd5>
+    <version>2.1.22</version>
+    <time>1175421869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="13">
+    <srcmd5>c38d1e803a56b42b834eccce6dde2b0f</srcmd5>
+    <version>2.1.22</version>
+    <time>1177104477</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>11469ff1503c083c3c8b0f716408adc1</srcmd5>
+    <version>2.2.1</version>
+    <time>1181665766</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>42f440f25a7f5de519622745feaeadfd</srcmd5>
+    <version>2.2.1</version>
+    <time>1183454580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>975bd75d6e7ba781ff45266bd46af60b</srcmd5>
+    <version>2.2.2</version>
+    <time>1195679392</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>0e0d3e431712e9951bc3a5bd100de377</srcmd5>
+    <version>2.2.2</version>
+    <time>1196105310</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>09a4806cc5647ce41c3dd8872769215f</srcmd5>
+    <version>2.2.3</version>
+    <time>1200409327</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>647f959e631362d49529e32ad8cc8c0d</srcmd5>
+    <version>2.2.7</version>
+    <time>1214589464</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c8016b45b8c91b07bcbf97a97bb1a02b</srcmd5>
+    <version>2.2.8</version>
+    <time>1221255099</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>80532a6042e4b3f48cbea194060abebc</srcmd5>
+    <version>2.2.8</version>
+    <time>1225122160</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>7f0a19777a0809ec01ee2643c9fcf7b0</srcmd5>
+    <version>2.2.8</version>
+    <time>1239729122</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>c96e83b11f1bd0e4b0942a8a38878d85</srcmd5>
+    <version>2.2.8</version>
+    <time>1249941666</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>4e6c2e6f6893dd1f9284f3498b7af271</srcmd5>
+    <version>2.2.8</version>
+    <time>1252359273</time>
+    <user>autobuild</user>
+    <comment>Copy from systemmanagement/cfengine based on submit request 20082 from user anicka
+</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>4e6c2e6f6893dd1f9284f3498b7af271</srcmd5>
+    <version>2.2.8</version>
+    <time>1252359273</time>
+    <user>autobuild</user>
+    <comment>Copy from systemmanagement/cfengine based on submit request 20082 from user anicka
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>870f335fa0acf93dfeb286a19f40a891</srcmd5>
+    <version>3.0.2</version>
+    <time>1260981799</time>
+    <user>autobuild</user>
+    <comment>Copy from systemmanagement/cfengine based on submit request 26422 from user anicka
+</comment>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>1e4ec745ff1853967f7b4c30d0ef394b</srcmd5>
+    <version>3.0.2</version>
+    <time>1268923164</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>1e4ec745ff1853967f7b4c30d0ef394b</srcmd5>
+    <version>3.0.2</version>
+    <time>1278667339</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>1e4ec745ff1853967f7b4c30d0ef394b</srcmd5>
+    <version>3.0.2</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fddd7d308f3afdaa051da1df100ebb4d</srcmd5>
+    <version>3.0.5p1</version>
+    <time>1282680014</time>
+    <user>autobuild</user>
+    <comment>Copy from systemmanagement/cfengine based on submit request 46023 from user anicka
+</comment>
+    <requestid>46023</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>fddd7d308f3afdaa051da1df100ebb4d</srcmd5>
+    <version>3.0.5p1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d2ed29abd57b5740dcc90d85a7a21424</srcmd5>
+    <version>3.2.0</version>
+    <time>1317914472</time>
+    <user>oertel</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85964 from coolo)</comment>
+    <requestid>86890</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a229f91290ea259e0f57a28170d49fed</srcmd5>
+    <version>3.2.1</version>
+    <time>1318344698</time>
+    <user>lrupp</user>
+    <comment>update to 3.2.1 (forwarded request 87373 from computersalat)</comment>
+    <requestid>87374</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>a229f91290ea259e0f57a28170d49fed</srcmd5>
+    <version>3.2.1</version>
+    <time>1319181807</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>01cd4be048cfdec9d1679f453be78918</srcmd5>
+    <version>3.2.4</version>
+    <time>1331232153</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106491</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>01cd4be048cfdec9d1679f453be78918</srcmd5>
+    <version>3.2.4</version>
+    <time>1340183232</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>090433ee3a82445fe1b016dc8c8ff167</srcmd5>
+    <version>3.4.0</version>
+    <time>1354274423</time>
+    <user>coolo</user>
+    <comment>- update to 3.4.0 final
+
+- fix systemd check (use systemd for openSUSE 12.1 too)
+
+- workaround for potential buffer overflow
+
+- honor filesystem hierachy standard (FHS):
+  - build with --enable-fhs
+- honor documentation
+  - install in /var/cfengine
+- support systemd where applicable
+- update to 3.0.4b2
+  New features:
+  - XML editing capabilities. See the documentation for edit_xml
+    body. Note the new dependency: libxml2.
+  - Implement inheritance of local classes by bundles called using
+    &quot;usebundle&quot;. By default classes are not inherited. See the
+    examples/unit_inherit.cf for an example.
+  - Moved from Nova/Enterprise:
+    - POSIX ACL support,
+    - &quot;outputs&quot; promise type,
+    - remote syslog support.
+  - packages_default_arch_command hook in packages promises, to
+    specify default architecture of the packages on the system.
+  - packages_version_less_command / packages_version_equal_command hooks
+    in packages promises, to specify external command for native package
+    manager versions comparison
+  - Running in Solaris zone is now detected and classes &quot;zone&quot; and
+    &quot;zone_&lt;name&gt;&quot; are created in this case.
+  - VirtualBox support added to guest_environment promises.</comment>
+    <requestid>143517</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>7b146d7c92fbfb36274a26da6a3d99fc</srcmd5>
+    <version>3.4.1</version>
+    <time>1355733201</time>
+    <user>coolo</user>
+    <comment>- update to 3.4.1 final
+  remove cfengine-3.4.0.patch, was accepted upstream
+  3.4.1   (Bugfix and Stability release)
+  New feature/behavior:
+  - cf-execd terminates agent processes that are not responsive
+    for a configurable amount of time (see agent_expireafter in
+    body executor control), defaulting to 1 week
+  Bugfixes:
+  - fix regression of classmatch() failing with hard classes
+    (Redmine #1834)
+  - create promise-defined and persistent classes in correct
+    namespace (Redmine #1836)
+  - several fixes to namespace support
+  - fix several crash bugs caused by buffer overflow and race
+    conditions in cf-serverd
+  - regenerate time classes in cf-execd for each run
+    (Redmine #1838)
+  - edit_xml: fix select_xpath implementation and update
+    documentation
+    NOTE: code that uses select_xpath_region needs to be changed
+          to select_xpath
+  - edit_xml: make sure that text-modification functions don't
+    overwrite child nodes
+  - edit_xml: improve error logging</comment>
+    <requestid>145425</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>a8718430537afbde5d1c3c872e53212b</srcmd5>
+    <version>3.4.1</version>
+    <time>1358198391</time>
+    <user>coolo</user>
+    <comment>- remove suse_update_config (forwarded request 148206 from coolo)</comment>
+    <requestid>148479</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>a8718430537afbde5d1c3c872e53212b</srcmd5>
+    <version>3.4.1</version>
+    <time>1359108740</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9ea527698c31a638897d01f31dfb3bac</srcmd5>
+    <version>3.5.0a1</version>
+    <time>1362730085</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157825</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>468da88461be73820dab04bb2aaf851b</srcmd5>
+    <version>3.5.0a2</version>
+    <time>1364238926</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160917</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>245d4fad7304ff927c2e03d7e0dc5288</srcmd5>
+    <version>3.5.0b1</version>
+    <time>1367580892</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174401</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>4add80ff3cffbe010d7e0d8841f2422c</srcmd5>
+    <version>3.5.0b1</version>
+    <time>1370425313</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176396</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>0f16ee5092af49bb2f59242215ce7384</srcmd5>
+    <version>3.5.0</version>
+    <time>1371733234</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>180167</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e7d44521e64812a0da80c02eccea801b</srcmd5>
+    <version>3.5.1</version>
+    <time>1374161462</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183674</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>d10531b98afef5566c0d6cc46515d299</srcmd5>
+    <version>3.5.1</version>
+    <time>1376129512</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186550</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9ab41893fdfc9dd8e1eb9323dfb4632e</srcmd5>
+    <version>3.5.2</version>
+    <time>1378293452</time>
+    <user>coolo</user>
+    <comment>- Update to 3.5.2
+  Bug-fixes in the CFEngine Core:
+  - fix delayed abortclasses checking (Redmine #2316, #3114, #3003)
+  - fix maplist arguments bug (Redmine #3256)
+  - fix segfaults in cf-pomises (Redmine #3173, 3194)
+  - fix build on Solaris 10/SmartOS (Redmine #3097)
+  - sanitize characters from /etc/issue in sys.flavor for Debian
+    (Redmine #2988)
+  - Fix segfault when dealing with files or data &gt; 4K
+    (Redmine #2912, 2698)
+  - Don't truncate keys to 126 characters in getindices
+    (Redmine #2626)
+  - files created via log_* actions now have mode 600
+    (Redmine #1578)
+  - fix wrong log message when a promise is ignored due to
+    'ifvarclass' not matching
+  - fix lifetime of persistent classes (Redmine #3259)
+  - fix segfault when process_select body had no process_result
+    attribute
+  - Default to AND'ed expression of all specified attributes
+    (Redmine #3224)
+  - include system message in output when acl promises fail
+  - fix invocation of standard_services bundle and corresponding
+    promise compliance (Redmine #2869)
+- run fdupes after install</comment>
+    <requestid>196885</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>9ab41893fdfc9dd8e1eb9323dfb4632e</srcmd5>
+    <version>3.5.2</version>
+    <time>1379662099</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>54b681da0f3788b2a3cae024772173dd</srcmd5>
+    <version>3.5.3</version>
+    <time>1386932121</time>
+    <user>coolo</user>
+    <comment>- Fix packaging
+  - rename cfengine-devel to libpromises-devel
+  - rename libpromises1 to libpromises3
+
+- Update to 3.5.3
+  - Improved security checks of symlink ownership.
+    A symlink created by a user pointing to resources owned by a
+    different user will no longer be followed.
+  - Changed the way package versions are compared in package promises.
+    (Redmine #3314)
+    In previous versions the comparison was inconsistent. This has
+    been fixed, but may also lead to behavior changes in certain
+    cases. In CFEngine 3.5.3, the comparison works as follows:
+    &lt;package-being-considered&gt; &lt;package_select&gt; &lt;package_version&gt;
+    For instance: apache-2.2.31 &quot;&gt;=&quot; &quot;2.2.0&quot; will result in the
+    package being installed.
+  Bug fixes:
+  - fix cf-monitord crash due to incorrect array initialization (Redmine
+    #3180)
+  - fix cf-serverd stat()'ing the file tree every second (Redmine #3479)
+  - correctly populate sys.hardware_addresses variable (Redmine #2936)
+  - add support for Debian's GNU/kfreebsd to build system (Redmine #3500)
+  - fix possible stack corruption in guest_environments promises (Redmine
+    #3552)
+  - work-around hostname trunctation in HP-UX's uname (Redmine #3517)
+  - fix body copy purging of empty directories (Redmine #3429)
+  - make discovery and loading of avahi libraries more robust
+  - compile and packaging fixes for HP-UX, AIX and Solaris
+  - fix fatal error in lsdir() when directory doesn't exist (Redmine
+    #3273)</comment>
+    <requestid>210568</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>70e528791771099dd68442ab809028bc</srcmd5>
+    <version>3.6rc</version>
+    <time>1397736478</time>
+    <user>scarabeus_factory</user>
+    <comment>- Upgrade to 3.6.0rc
+  Bugfix release
+  Full ChangeLog at https://raw.githubusercontent.com/cfengine/core/3.6.x/ChangeLog
+
+- add 0001-Simplify-and-fix-parsing-of-etc-SuSE-release-fixes-i.patch
+  * add 'suse' class for consistency with other vendor classes
+    (fixes #5417)
+  * distinction between &quot;SUSE Linux Enterprise Server&quot; (sles) and
+    &quot;... Desktop&quot; (sled)
+  * distinction between SUSE Linux Enterprise products (suse) and
+    openSUSE (opensuse)
+  * extract version from VERSION and PATCHLEVEL lines instead of
+    first line of /etc/SuSE-release
+
+- merge cfengine-server with cfengine. A policy server only
+  gets cfengine-masterfiles but is otherwise identical to
+  a client.
+
+- install cfengine.SuSEfirewall2
+
+- install cfengine-masterfiles together with cfengine-server only.
+  A cfengine client will get the masterfiles from the server.
+
+- clean up /var/cfengine/inputs cache on removal.
+
+- remove '.unknown' from reported version
+  add drop-revision.patch
+
+- Fix all .service files, type is forking.</comment>
+    <requestid>229693</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>9715f988d9aa8c52f828fb198d57c0aa</srcmd5>
+    <version>3.6rc</version>
+    <time>1399660208</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>233249</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>1a6c8525d9446a2670b7317f919180ce</srcmd5>
+    <version>3.6.0rc2</version>
+    <time>1401644469</time>
+    <user>coolo</user>
+    <comment>- Upgrade to 3.6.0rc2
+  Bugfix release</comment>
+    <requestid>235795</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>ab35d729ac3fc40f140cec8c8965ce4a</srcmd5>
+    <version>3.6.0</version>
+    <time>1403724028</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>238648</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>dfb659bf8361a389f21435110533fdef</srcmd5>
+    <version>3.6.0</version>
+    <time>1404973049</time>
+    <user>coolo</user>
+    <comment>- Decrease install size, drop mysql, postgresql,
+  and libvirt adapters</comment>
+    <requestid>239457</requestid>
+  </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>dfb659bf8361a389f21435110533fdef</srcmd5>
+    <version>3.6.0</version>
+    <time>1409300629</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9b085512937f0b8aa7334dbcd269e848</srcmd5>
+    <version>3.6.2</version>
+    <time>1412851950</time>
+    <user>coolo</user>
+    <comment>- Update to 3.6.2
+ - don't regenerate software_packages.csv every time (Redmine #6441) 
+ - improve verbose message for package_list_command 
+ - fix missing log output on AIX (Redmine #6434) 
+ - assorted fixes to dirname() esp on Windows (Redmine #4716) 
+ - fix package manager detection 
+ - fix build issues on FreeBSD 
+ - allow copying of dead symbolic links (Redmine #6175) 
+ - preserve order in readstringarrayidx (Redmine #6466) 
+ - fix passing of unexpanded variable references to arrays (Redmine #5893) 
+ - use entries for new {admin,deny}_{ips,hostnames} constraints in 
+   the relevant legacy lists (Redmine #6542) 
+ - cope with ps's numeric fields overflowing to the right 
+ - interpret failing function calls in ifvarclass as class not set 
+   (Redmine #6327) 
+ - remove unexpanded lists when extending lists (Redmine #6541) 
+ - infer start-time of a process from elapsed when needed 
+   (Redmine #4094) 
+ - fix input range definition for laterthan() function (Redmine #6530) 
+ - don't add trailing delimiter when join()'ing lists ending with a 
+   null-value (Redmine #6552) 
+ - 9999999999 (ten 9s) or higher has been historically used as an upper 
+   bound in CFEngine code and policy but because of overflow on 32-bit 
+   platforms it caused problems with big numbers.
+   Fixed in two ways: 
+   first change all existing policy uses to 999999999 (nine 9s instead 
+   of eleven 9s), second fix the C code to not wrap-around in case of 
+   overflow, but use the LONG_MAX value (Redmine #6531). 
+ - cf-serverd and other daemons no longer reload their configuration 
+   every minute if CFEngine is built with an inputs directory outside</comment>
+    <requestid>254808</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>2487cdbdc0942af47f8355103ee821b6</srcmd5>
+    <version>3.6.3</version>
+    <time>1418054200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.3
+  New features:
+  - support for HP-UX 11.23 and later
+  - experimental support for Red Hat Enterprise Linux 7
+  Bug fixes:
+  - fix getindices on multi-dimensional arrays (Redmine #6779)
+  - fix mustache template method to run in dryrun mode (Redmine #6739)
+  - set mailto and mailfrom settings for execd in def.cf (Redmine #6702)
+  - fix conflation of multi-index entries in arrays (Redmine #6674)
+  - fix promise locking when transfering using update.cf (Redmine #6623)
+  - update JSON parser to return an error on truncation (Redmine #6608)
+  - fix sys.hardware_addresses not expanded (Redmine #6603)
+  - fix opening database txn /var/cfengine/cf_lastseen.lmdb:
+    MDB_READERS_FULL when running cf-keys --show-hosts (Redmine #6602)
+  - fix segfault (Null pointer dereference) when select_end in
+    delete_lines never matches (Redmine #6589)
+  - fix max_file_size =&gt; &quot;0&quot; not disabling or allowing any size
+    (Redmine #6588)
+  - fix ifvarclass, with iteration over list, failing when deleting
+    files with time condition (Redmine #6577)
+  - fix classes defined with &quot;or&quot; constraint are never set if any value
+    doesn't evaluate to a scalar (Redmine #6569)
+  - update &quot;mailfrom&quot; default in default policy (Redmine #6567)
+  - fix logrotate ambiguity of filename (Redmine #6563)
+  - fix parsing JSON files (Redmine #6549)
+  - reduce write count activity to /var partition (Redmine #6523)
+  - fix files delete attribute incorrectly triggering promise_kept
+    (Redmine #6509)
+  - update services bundle output related to chkconfig when run in
+    inform mode. (Redmine #6492)</comment>
+    <requestid>264240</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>55748763569a60644b615ff7a87770fd</srcmd5>
+    <version>3.6.4</version>
+    <time>1423258667</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>283981</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>d7e8c654a9ae43294c84a9f5e3b714fb</srcmd5>
+    <version>3.6.4</version>
+    <time>1425031162</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287639</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>3b4337a0e0ff313a64aade9fe63f8913</srcmd5>
+    <version>3.6.5</version>
+    <time>1426485634</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.5
+  Features:
+  - Introduced &quot;systemd&quot; hard class. (Redmine #6995)
+  - Added paths to dtrace, zfs and zpool on FreeBSD in masterfiles.
+  Bug fixes:
+  - Fixed build error on certain RHEL5 and SLES10 setups. (Redmine #6841)
+  - Fixed a bug which caused dangling symlinks not to be removed.
+    (Redmine #6582)
+  - Fixed data_readstringarrayidx function not preserving the order of
+    the array it's producing. (Redmine #6920)
+  - Fixed a bug which sometimes caused CFEngine to kill the wrong daemon
+    if both the host and a container inside the host were running
+    CFEngine. (Redmine #6906)
+  - Made sure the rm_rf_depth bundle also deletes the base directory.
+    (Redmine #7009)
+  - Fixed monitord reporting wrongly on open ports. (Redmine #6926)
+  - Skip adding the class when its name is longer than 1024 characters.
+    Fixed core dump when the name is too large. (Redmine #7013)
+  - Fixed detection of stopped process on Solaris. (Redmine #6946)
+  - Fixed infinite loop (Redmine #6992) plus a couple more minor
+    bugs in edit_xml promises.</comment>
+    <requestid>290534</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>b1ec71c8fc99e87887fd5b25130893c9</srcmd5>
+    <version>3.6.5</version>
+    <time>1426680478</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to use proper SSL exponent bnc#922571
+  * cfengine-fips.patch
+
+- Format with spec-cleaner, this is just reordering, no factical
+  change here</comment>
+    <requestid>291192</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>3eecaba518c2f6a886efe297136a9aa2</srcmd5>
+    <version>3.6.5</version>
+    <time>1427983376</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>293689</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>3cff5e1521b2e56c2e7d99e350c50bac</srcmd5>
+    <version>3.6.5</version>
+    <time>1435652163</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>313639</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>127e5a49986e138b8adb06e24d21ea05</srcmd5>
+    <version>3.7.0</version>
+    <time>1438615286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>319522</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>86f46e4c34d8845fa665a9d7d1decec8</srcmd5>
+    <version>3.7.1</version>
+    <time>1442638506</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>331522</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>b04de3e09965275e0a2b8a6205156f1c</srcmd5>
+    <version>3.8.0~b1</version>
+    <time>1448186432</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>345167</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>e50f871fea797c8ff645cfbfa47f8283</srcmd5>
+    <version>3.8.0</version>
+    <time>1449687288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>348080</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>fad32768cf3b2ba6e71072ccd96da8f6</srcmd5>
+    <version>3.8.0</version>
+    <time>1456127827</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>358373</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>ed2c276a8b105bfd98c72294e1defbaf</srcmd5>
+    <version>3.8.2</version>
+    <time>1461335157</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>391240</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>40ab90f4bef4e7c13291a7a42b71756c</srcmd5>
+    <version>3.9.0</version>
+    <time>1466681842</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>404050</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>01c87798246435b1a662841e00690ac2</srcmd5>
+    <version>3.9.1</version>
+    <time>1471009473</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>418963</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>768708b5f20dbea08f7d55e358e38489</srcmd5>
+    <version>3.10.0~b1</version>
+    <time>1480693338</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442822</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>a2e73d98f85540cf9a1c126d788220e9</srcmd5>
+    <version>3.10.0</version>
+    <time>1483555111</time>
+    <user>lnussel_factory</user>
+    <comment>- make_home_dir_for_tests.patch: Make cfengine home directory to
+  avoid spamming logfiles during unit tests (bnc#1016848)
+
+- Update to 3.10.0 (final) - LTS until Dec 2019
+  See https://cfengine.com/company/blog-detail/cfengine-3-10-lts-released/
+  and https://github.com/cfengine/core/blob/3.10.0/ChangeLog
+  for full changelog.
+- rename 0001-Simplify-and-fix-parsing-of-etc-SuSE-release-fixes-i.patch
+  to     0002-Simplify-and-fix-parsing-of-etc-SuSE-release-fixes-i.patch
+- drop cfengine-3.10.0b1.patch, upstream
+
+- Update to 3.10.0 (beta1) - LTS until Dec 2019
+  See https://github.com/cfengine/core/blob/3.10.0b1/ChangeLog
+  for full ChangeLog</comment>
+    <requestid>448344</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>016ae40c1611139d4e7b58fb28f48063</srcmd5>
+    <version>3.10.0</version>
+    <time>1486465373</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454378</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>0ffb956c75404db0ae99535f67969fc0</srcmd5>
+    <version>3.10.0</version>
+    <time>1495133308</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>495617</requestid>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>937aff50024aed0e93bf4825b7b5be71</srcmd5>
+    <version>3.10.0</version>
+    <time>1498742160</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506774</requestid>
+  </revision>
+  <revision rev="69" vrev="5">
+    <srcmd5>e5ae4028b58a827ec7202d653d893f74</srcmd5>
+    <version>3.10.0</version>
+    <time>1499152254</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507759</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>b87afc64fa310a52c280111565ddc8c7</srcmd5>
+    <version>3.11.0</version>
+    <time>1516222553</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0003-CFE-2629-Openssl-1.1-compatibility.patch
+  for openssl-1.1.0 compatibility
+- Update to 3.11.0
+  New Features:
+  - allow function calls in promiser using universal &quot;with&quot;
+    attribute. (CFE-1092)
+  - add example of with attribute (CFE-1092)
+  - Detect Amazon Linux and set &quot;AmazonLinux&quot; hard class and
+    sys.flavour variable.
+  - New sysctlvalue() and data_sysctlvalues() functions from /proc/sys
+    (CFE-2513)
+  - readdata() also auto-detects .yml files as YAML
+  - Added support for ENV and CSV file parsing (CFE-1881)
+  - Added vars and classes for CoreOS (ENT-3043)
+  - cf-agent: implement --show-evaluated-vars and
+    --show-evaluated-classes
+  - Support for custom ports and host names as policy hub (CFE-953)
+  - cf-promises: allows --show-vars and --show-classes to take an
+    optional filter
+  - Added a new tool: cf-net. cf-net is a CLI for the CFEngine
+    network protocol, useful for debugging, testing etc.
+    (CFE-2493)
+  - New policy variable: sys.cf_net contains path to cf-net binary
+  - Read /etc/os-release into sys.os_release (CFE-1881)
+- Full changelog at https://github.com/cfengine/core/blob/3.11.0/ChangeLog
+</comment>
+    <requestid>558813</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>7a8fd2c76f8395455398a13195de2633</srcmd5>
+    <version>3.11.0</version>
+    <time>1529501525</time>
+    <user>maxlin_factory</user>
+    <comment>- Use %license instead of %doc
+
+- fix path in unit files</comment>
+    <requestid>617710</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>d7349f5b496f7a61230632128fecdac3</srcmd5>
+    <version>3.12.0</version>
+    <time>1531947195</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621849</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>f380e5857fa2a0a8511e415414baf912</srcmd5>
+    <version>3.12.0</version>
+    <time>1532681855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625447</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>4ff45acaef93207af3cb18b285004371</srcmd5>
+    <version>3.12.1</version>
+    <time>1553611339</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.12.1 (LTS)
+  - Added a new binary: cf-check
+    + Corrupt local databases (LMDB) continues to be a problem.
+    cf-check will be used to diagnose and remediate problems
+    with corrupt databases. It is a standalone binary, which
+    doesn't evaluate policy or use the local databases, thus
+    it can be used in situations where the other binaries
+    like cf-agent would hang.
+    + cf-check replaces our lmdb database dumper, lmdump.
+    + `cf-check lmdump` or symlinking / renaming it to lmdump
+    will make cf-check have the exact same behavior as lmdump.
+    cf-check will include much more functionality in the future
+    and some of the code will be added to other binaries,
+    for example to do health checks of databases on startup.
+    Ticket: (ENT-4064)
+  - Class names set by module protocol are automatically canonified
+    (CFE-2877, CFE-2887)
+  - Correct log level for data_readstringarray* (CFE-2922)
+  - Eliminated error messages caused by attempting to kill expired processes
+    (CFE-2824)
+  - Fix cf-runalerts systemd unit conditions so the service will run
+    (ENT-3929)
+  - Fix the off-by-one error in cf-runagent background process spawning
+    (CFE-2873)
+  - Fixed a memory leak which occurred when reloading RSA keys from disk
+  - Fixed a memory leak which occurred while loading augments files
+    (CFE-2913)
+  - Fixed an issue while parsing ps output on AIX (ENT-4295)
+  - Fixed an issue with splay time in cf-execd (CFE-2931)
+  - Fixed error handling and memory leak in cf-key (CFE-2918)</comment>
+    <requestid>685337</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>398628269178b5822e1bab94973a797a</srcmd5>
+    <version>3.12.1</version>
+    <time>1563994221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718258</requestid>
+  </revision>
+</revisionlist>

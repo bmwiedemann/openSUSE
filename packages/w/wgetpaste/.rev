@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2769081fe7f673dbabb91e70b95f15c4</srcmd5>
+    <version>2.22</version>
+    <time>1375113075</time>
+    <user>coolo</user>
+    <comment>New package, alternative to susepaste but this command is more known in other distros.</comment>
+    <requestid>184476</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2769081fe7f673dbabb91e70b95f15c4</srcmd5>
+    <version>2.22</version>
+    <time>1379664957</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>2769081fe7f673dbabb91e70b95f15c4</srcmd5>
+    <version>2.22</version>
+    <time>1409303636</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a39441d55ec7c6499a6f0885f064f02c</srcmd5>
+    <version>2.25</version>
+    <time>1416994402</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 2.25
+  * Various fixes around bpaste service
+- Remove defaults as they are not needed now.
+- Apply pinnwand patches for bpaste:
+  * wgetpaste-2.25-pinwand.patch
+  * wgetpaste-2.25-pinwand-raw.patch</comment>
+    <requestid>262850</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d03b5ede4e90cee7463ab73e59a56981</srcmd5>
+    <version>2.26</version>
+    <time>1452263037</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.26:
+  * Various tweaks for the services to support more syntax/etc.
+- Remove no-longer needed patches:
+  * wgetpaste-2.25-pinwand.patch
+  * wgetpaste-2.25-pinwand-raw.patch</comment>
+    <requestid>352570</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f661644e7ccaef1d925796242b7886e8</srcmd5>
+    <version>2.27</version>
+    <time>1461855379</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>391395</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ca14e44c0fa81653383d01c7922c569a</srcmd5>
+    <version>2.28</version>
+    <time>1518950728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577607</requestid>
+  </revision>
+</revisionlist>

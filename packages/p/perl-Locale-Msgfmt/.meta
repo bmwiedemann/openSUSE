@@ -1,0 +1,9 @@
+<package name="perl-Locale-Msgfmt" project="openSUSE:Factory">
+  <title>Compile .po files to .mo files</title>
+  <description>This module does the same thing as msgfmt from GNU gettext-tools, except this
+is pure Perl.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Locale-Msgfmt"/>
+  <url>http://search.cpan.org/dist/Locale-Msgfmt</url>
+</package>

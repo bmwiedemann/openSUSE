@@ -1,0 +1,209 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cec14e14dc1e430653792ee315cd1bfe</srcmd5>
+    <version>1.0.0~rc10</version>
+    <time>1524576768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599876</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cec9aeb5e5f84a178d6f21adfcac30a3</srcmd5>
+    <version>1.0.0</version>
+    <time>1524742718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601000</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>dfa14321c9d8fa405e8872bcf0cd1e80</srcmd5>
+    <version>1.0.0</version>
+    <time>1528195987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614037</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6d40ab9dfa1f8634e244c7603502b2c2</srcmd5>
+    <version>1.2.0~rc1</version>
+    <time>1535122815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628056</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>21eb38df6a7c4a37225b5105fccc28e5</srcmd5>
+    <version>1.2.1</version>
+    <time>1536094685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633038</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bb873870a1e86262f1fdaf1d81317e62</srcmd5>
+    <version>1.4.0</version>
+    <time>1551024569</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>674486</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>dfe7550bf6bddeb661743a67a90cfddc</srcmd5>
+    <version>1.4.0</version>
+    <time>1551113941</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678871</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e48332c722f9933ec36310241e828c4f</srcmd5>
+    <version>1.4.0</version>
+    <time>1551386661</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679881</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>69d95bccc9430fb5f7ad4300605907a9</srcmd5>
+    <version>1.4.0</version>
+    <time>1551785042</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc as a runtime dependency. BPF programs need to have libgcc
+  and libgcc_s linked in.
+  https://github.com/cilium/cilium/issues/7273
+- Provide an explanation why glibc-devel-32bit is needed.
+- Ship cilium-cni and cilium-docker in separate packages.
+- Add missing runtime dependencies which are needed to execute
+  scripts shipped with Cilium and to compile BPF programs.
+</comment>
+    <requestid>681493</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>05096db2abbd4048180a593269d4c39f</srcmd5>
+    <version>1.4.0</version>
+    <time>1552380926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683920</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7d35fffec4ce2a203c9dcf1e5fa75945</srcmd5>
+    <version>1.4.2</version>
+    <time>1555588700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694802</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1c4376555cc6cf45959dd6a99cf8ddef</srcmd5>
+    <version>1.5.0</version>
+    <time>1557263925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701130</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7a1f651f0fc92b50cde4c529be85ed5e</srcmd5>
+    <version>1.5.0</version>
+    <time>1557751822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701969</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cb865c88cdbbf7cdf0f2d94120eb5687</srcmd5>
+    <version>1.5.1</version>
+    <time>1558783261</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.1:
+  * Important Bugfixes:
+    * Fix bug where Cilium would refuse to start if ipv6 netfilter
+      modules are unavailable.
+    * Warn when iptables modules are not available.
+    * Use all labels to restore endpoint identity to correctly
+      filter labels upon restart.
+    * Fix cases where multiple bindings are provided to CLI flags.
+  * New Functionality / Enhancements:
+    * Add node-init script to automatically restart pods managed by
+      kubenet on GKE
+    * Add functionality to enable or disable metrics for specific
+      subsystems
+    * bpf syscall metrics are disabled by default for performance
+    * Update node, node/status to allow for patch operations in
+      Cilium RBAC
+    * Patch, instead of update, node annotations for better
+      performance
+    * Annotate node status with NetworkUnavailable as false
+    * Performance increase by not allocating any memory when
+      iterating over BPF maps
+    * CLI now prints tunnel endpoint for RemoteEndpointInfo
+    * Try to register node forever in nodediscovery
+    * Remove unused buildqueue package
+  * Minor Bug Fixes:
+    * endpoint: do not serialize JSON for EventQueue field
+    * Avoid unlocked access of endpoint security identity when
+      calculating what rules select an endpoint
+    * Only dump bpf lb list if map exists
+    * Fix bug where endpoint state metrics get stuck with nonzero
+      endpoints in restoring state
+    * Do not init config when running with --cmdref parameter
+    * Improve separation between cilium-agent and cilium CLI
+    * Add cilium namespace to fqdn_gc_deletions_total metric
+    * Force preallocation for SNAT maps of LRU type
+    * Set BPF_F_NO_PREALLOC before comparing maps
+  * Operator:
+    * Improve cilium-operator bootstrap sequence (Start health API
+      earlier, add more logging to see where the operator blocks
+      on startup)
+    * Add ca-certificates to operator
+  * Documentation:
+    * Add upgrade guide from &gt;=1.4.0 to 1.5
+    * Mention enable-legacy-services flag in upgrade docs
+    * Add k8s 1.14 to supported versions for testing
+    * Improve configmap documentation
+    * Document how to get started with MicroK8s, and provide example
+      YAMLs
+    * Fix typo in encryption algorithm: GMC -&gt; GCM
+    * Fix up Ubuntu apt-get install command
+    * Minor fixes to AWS EKS and AWS Metadata filtering GSGs
+  * CI:
+    * Wait for endpoints to be ready after containers are created,
+      deleted
+    * Ensure that `go fmt` check always runs correctly in CI 
+    * Increase test suite timeouts to allow for cases where tests
+      take longer
+    * Do not set enable-legacy-services in v1.4 ConfigMap
+    * Update k8s testing versions to v1.11.10 and v1.12.8
+    * Make function provided to WithTimeout run asynchronously to
+      avoid test suites getting stuck
+- Add cilium-k8s-yaml package with Kubernetes yaml file to run
+  Cilium containers.
+</comment>
+    <requestid>705277</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>98562183b28895e98d9e11ae6be3b520</srcmd5>
+    <version>1.5.1</version>
+    <time>1559727521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707163</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fc50b30b6440aa7ff0180aef35678d30</srcmd5>
+    <version>1.5.3</version>
+    <time>1560457938</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch container image URI from devel:kubic:containers to
+  openSUSE:Containers:Tumbleweed.</comment>
+    <requestid>708377</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0a8df1bed0b5c4d3e90a8fc9ab277767</srcmd5>
+    <version>1.5.5</version>
+    <time>1565096890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719587</requestid>
+  </revision>
+</revisionlist>

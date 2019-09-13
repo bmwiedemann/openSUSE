@@ -1,0 +1,8 @@
+<package name="nss_ldap" project="openSUSE:Factory">
+  <title>NSS LDAP Module</title>
+  <description>Nss_ldap is a glibc NSS module that allows X.500 and LDAP directory
+servers to be used as a primary source of aliases, ethers, groups,
+hosts, networks, protocol, users, RPCs, services, and shadow passwords
+(instead of or in addition to using flat files or NIS).</description>
+  <devel project="network:ldap" package="nss_ldap"/>
+</package>

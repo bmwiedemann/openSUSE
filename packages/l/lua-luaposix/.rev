@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>debfa22599ae548e753c937ebabec013</srcmd5>
+    <version>33.2.1</version>
+    <time>1485250393</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission. Issues mentioned in SR#441263 fixed.</comment>
+    <requestid>450961</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f1741f320c59f4f527fab13df9e81f52</srcmd5>
+    <version>34.0</version>
+    <time>1503593426</time>
+    <user>dimstar_suse</user>
+    <comment>- Updating to version 3.4:
+  * Incompatible Changes  Incompatible Changes
+    posix.syslog constants LOG_AUTHPRIV, LOG_FTP and LOG_SYSLOG are no longer 
+    documented, and only defined when supported by the host C library. They are
+    not part of the POSIX API, and prevented compilation of luaposix on AIX and
+    Solaris.
+    getopt.getopt was a binding to the GNU getopt_long extension, which is not 
+    a POSIX API, and prevents luaposix from compiling on hosts that do not 
+    provide the extended API. Instead we now correctly bind POSIX getopt(3) in 
+    posix.unistd.
+  * New Features
+    Replaced all Autotools and supporting Slingshot code with new Lua- based 
+    build-aux/luke and lukefile describing how to compile and install 
+    everything. Building with LuaRocks now leverages this too.
+    New posix.sys.socket.getsockopt and posix.sys.socket.getpeername bindings.
+    New posix.sys.msg.msgctl binding, and posix.sys.msg.IPC_RMID, 
+    posix.sys.msg.IPC_SET and posix.sys.msg.IPC_STAT constants to use with it.
+    New posix.unistd.ftruncate and posix.unistd.truncate bindings.
+    posix.fcntl.fcntl now accepts undocumented posix.fcntl.O_TMPFILE value 
+    where supported by the host C library.
+  * Bugs Fixed
+    posix.unistd.ttyname now returns an error message in addition to nil when 
+    it fails.
+  * maint-sync-luke-with-upstream.patch:
+    Backported from upstream to make this build and install with the 'luke'
+    version included.
+
+- Fix provides/obsoletes for the old package name. (forwarded request 515964 from eeich)</comment>
+    <requestid>515966</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>eda6e23b5afeadb0b990f7b3e4430eac</srcmd5>
+    <version>34.0</version>
+    <time>1509461057</time>
+    <user>dimstar_suse</user>
+    <comment>drop lua5.2 from multibuild</comment>
+    <requestid>537629</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a07319d60618c6fbd44402ce5fa9c7c6</srcmd5>
+    <version>34.0</version>
+    <time>1524838167</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601663</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5adeaf9a5deb19f4751f02ee51273479</srcmd5>
+    <version>34.1.1</version>
+    <time>1567580568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727251</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="138">
+    <srcmd5>bd3c0eb26f9922620a9e7369891741ce</srcmd5>
+    <version>1.3</version>
+    <time>1226049824</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="140">
+    <srcmd5>fbe46dc3edffaedf37c09a058d906da4</srcmd5>
+    <version>1.3</version>
+    <time>1245336928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="142">
+    <srcmd5>fbe46dc3edffaedf37c09a058d906da4</srcmd5>
+    <version>1.3</version>
+    <time>1245336928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="143">
+    <srcmd5>936c701533dbe4ade7a6a09b005cb9c1</srcmd5>
+    <version>1.3</version>
+    <time>1263294211</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/atmel-firmware based on submit request 29307 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="144">
+    <srcmd5>726f7cc3cae18852af7f2f1ca59b1f40</srcmd5>
+    <version>1.3</version>
+    <time>1268922949</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="146">
+    <srcmd5>726f7cc3cae18852af7f2f1ca59b1f40</srcmd5>
+    <version>1.3</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="147">
+    <srcmd5>726f7cc3cae18852af7f2f1ca59b1f40</srcmd5>
+    <version>1.3</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="150">
+    <srcmd5>726f7cc3cae18852af7f2f1ca59b1f40</srcmd5>
+    <version>1.3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="151">
+    <srcmd5>68437a4a5d27e7b1f15e2be1251e50b5</srcmd5>
+    <version>1.3</version>
+    <time>1316439580</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82849 from jengelh)</comment>
+    <requestid>82862</requestid>
+  </revision>
+  <revision rev="10" vrev="153">
+    <srcmd5>68437a4a5d27e7b1f15e2be1251e50b5</srcmd5>
+    <version>1.3</version>
+    <time>1319181778</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="154">
+    <srcmd5>6ad10f99fa519aadc43e2e2abf028fce</srcmd5>
+    <version>1.3</version>
+    <time>1324415522</time>
+    <user>coolo</user>
+    <comment>- as spdx.org has no concept of firmware, we decided to mark it as
+  SUSE-Firmware (forwarded request 96648 from coolo)</comment>
+    <requestid>96655</requestid>
+  </revision>
+  <revision rev="12" vrev="156">
+    <srcmd5>6ad10f99fa519aadc43e2e2abf028fce</srcmd5>
+    <version>1.3</version>
+    <time>1340183185</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="158">
+    <srcmd5>6ad10f99fa519aadc43e2e2abf028fce</srcmd5>
+    <version>1.3</version>
+    <time>1359108674</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="159">
+    <srcmd5>3c9ab91e56daf96c2d0a57dfde72f306</srcmd5>
+    <version>1.3</version>
+    <time>1362730052</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 157046 from coolo)</comment>
+    <requestid>157077</requestid>
+  </revision>
+  <revision rev="15" vrev="161">
+    <srcmd5>3c9ab91e56daf96c2d0a57dfde72f306</srcmd5>
+    <version>1.3</version>
+    <time>1379662000</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="163">
+    <srcmd5>3c9ab91e56daf96c2d0a57dfde72f306</srcmd5>
+    <version>1.3</version>
+    <time>1409300525</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="164">
+    <srcmd5>0c64cec7e145b5b41b57af9e3f9e4b66</srcmd5>
+    <version>1.3</version>
+    <time>1428272748</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294303</requestid>
+  </revision>
+</revisionlist>

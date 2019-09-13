@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c8f08d49eb0d47d30165caa311c4bf1d</srcmd5>
+    <version>0.4.0</version>
+    <time>1555928788</time>
+    <user>maxlin_factory</user>
+    <comment>- Convert to single spec
+- Add %license
+- Update to v0.4.0
+  * Added Python 3 compatibility
+- Initial version for v0.3
+</comment>
+    <requestid>696467</requestid>
+  </revision>
+</revisionlist>

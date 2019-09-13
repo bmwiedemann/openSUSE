@@ -1,0 +1,472 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d1c577b26da05d6cbc075e9166f50873</srcmd5>
+    <version>1.18</version>
+    <time>1215225553</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>844e77fd9481b46e1128841c9d6cd3fe</srcmd5>
+    <version>1.18</version>
+    <time>1217627838</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b67165d76e3970e65687afea9cc246ed</srcmd5>
+    <version>1.22</version>
+    <time>1218754098</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>51f7da9f06eb817e13701606c51832cf</srcmd5>
+    <version>1.23</version>
+    <time>1220645073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>113aa00a731ac404e2276b86dccc21de</srcmd5>
+    <version>1.23</version>
+    <time>1222378481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>78bba607a87dcdbffa4b847ae602aca9</srcmd5>
+    <version>1.23</version>
+    <time>1224717255</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>a328e306fac3475f4781d458381bfa08</srcmd5>
+    <version>1.23</version>
+    <time>1233271200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cb01effc635de5736a4d9aee8aef34ab</srcmd5>
+    <version>2.5</version>
+    <time>1238615784</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ee6a2e765b79209562d9c0a9705a438c</srcmd5>
+    <version>2.7</version>
+    <time>1242428227</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>83afa2aa06ee3ea5f28792203e3bec02</srcmd5>
+    <version>2.9</version>
+    <time>1248728993</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>83afa2aa06ee3ea5f28792203e3bec02</srcmd5>
+    <version>2.9</version>
+    <time>1248728993</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>aa01e404a00205fe7ce7828db608ef42</srcmd5>
+    <version>3.2</version>
+    <time>1260966893</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libHX based on submit request 26596 from user mcalmer
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ee38e19558d05ca14f91c7b217871d27</srcmd5>
+    <version>3.3</version>
+    <time>1264433748</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libHX based on submit request 30390 from user mcalmer
+</comment>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>23930ed583f619bcf61ab2d8c92f9cc9</srcmd5>
+    <version>3.3</version>
+    <time>1268924485</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>320507340452127f9173b48c0e0e8f54</srcmd5>
+    <version>3.4</version>
+    <time>1271371317</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libHX based on submit request 37535 from user mcalmer
+</comment>
+    <requestid>37535</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>320507340452127f9173b48c0e0e8f54</srcmd5>
+    <version>3.4</version>
+    <time>1278667359</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>320507340452127f9173b48c0e0e8f54</srcmd5>
+    <version>3.4</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6fd854c49f9b71dfd8531c8a764cdee6</srcmd5>
+    <version>3.6</version>
+    <time>1283518535</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libHX based on submit request 46899 from user jengelh
+</comment>
+    <requestid>46899</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7a761afccebd6a2be24729bcb08a20f4</srcmd5>
+    <version>3.8</version>
+    <time>1291303400</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54289 from user jengelh
+</comment>
+    <requestid>54289</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6d5c107c0c093b3a06c51ae54ca89758</srcmd5>
+    <version>3.8</version>
+    <time>1291303413</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54289
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>da3cee1d026e6896a59337577c634067</srcmd5>
+    <version>3.9.1</version>
+    <time>1295287267</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58443 from user jengelh
+</comment>
+    <requestid>58443</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>c9f9ff5dcb9cc67152b388b7a633c0e7</srcmd5>
+    <version>3.9.1</version>
+    <time>1295287277</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58443
+</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>c9f9ff5dcb9cc67152b388b7a633c0e7</srcmd5>
+    <version>3.9.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>54b361f3abb57f38d1ab52c6dd1c6abd</srcmd5>
+    <version>3.10</version>
+    <time>1302076251</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66185 from user coolo
+</comment>
+    <requestid>66185</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f0af4be970131e2f946946122b01149c</srcmd5>
+    <version>3.10</version>
+    <time>1302076267</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66185
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>23d72123c729be8a480a24b9dc2ab123</srcmd5>
+    <version>3.10.1</version>
+    <time>1302164424</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66409 from user coolo
+</comment>
+    <requestid>66409</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>d0d45b8a00aafc65919dbc07cef24a0e</srcmd5>
+    <version>3.10.1</version>
+    <time>1302164432</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66409
+</comment>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>44a8cddb95e7c3c8c983ec87b2675f2a</srcmd5>
+    <version>3.10.1</version>
+    <time>1307430957</time>
+    <user>saschpe</user>
+    <comment>- Put the libHX directory into a versioned directory to detect
+  unwanted omission of libHX_CFLAGS in dependent projects</comment>
+    <requestid>72798</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>72c6851e9f90600de9f11480cbacb9fa</srcmd5>
+    <version>3.10.1</version>
+    <time>1307430967</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72798
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cf00996e00fb428707e5c040568c252d</srcmd5>
+    <version>3.11</version>
+    <time>1311607547</time>
+    <user>saschpe</user>
+    <comment>- Update to new upstream release 3.11
+* string: add a HXQUOTE_BASE64 to HX_strquote
+* debug: new LD_PRELOAD-able library that does additional checks
+  to the runtime
+- Provide libHX-devel-32bit</comment>
+    <requestid>76971</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>0b77d2acc9284d62ae2811eac894b62f</srcmd5>
+    <version>3.11</version>
+    <time>1311607557</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76971
+</comment>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>22afd8bd9d33d68dca07ff9c98286a70</srcmd5>
+    <version>3.11</version>
+    <time>1313050158</time>
+    <user>saschpe</user>
+    <comment>- Remove pkgincludedir.diff and instead just use --includedir
+  to %configure</comment>
+    <requestid>78441</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>59269f43663efb8b1e4046abbac7c084</srcmd5>
+    <version>3.11</version>
+    <time>1313050166</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78441
+</comment>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>59269f43663efb8b1e4046abbac7c084</srcmd5>
+    <version>3.11</version>
+    <time>1319182068</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>eeb87f3b5247d2d7af0861442e4a33bb</srcmd5>
+    <version>3.11</version>
+    <time>1322757481</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94662 from coolo)</comment>
+    <requestid>94667</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2da3b04d0f777717ea038c7def0659fc</srcmd5>
+    <version>3.12</version>
+    <time>1323265072</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.12
+* Clang support
+* Fixes to the option parser's passthrough mode,
+  which did not correctly copy arguments over
+* POSIXLY_CORRECT support for the option parser
+* Size reduction of data structures by eliminating
+  seldomly-used fields</comment>
+    <requestid>95439</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>db0f9d634001db2ee9026a659b588c7a</srcmd5>
+    <version>3.12</version>
+    <time>1323340163</time>
+    <user>coolo</user>
+    <comment>license update: LGPL-2.1 or LGPL-3.0
+libHX has a dual choice of LGPL-2.1 or LGPL-3.0. Use SPDX format (forwarded request 95730 from babelworx)</comment>
+    <requestid>95762</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>dce9e9bf2c7d04c42c940e3782249515</srcmd5>
+    <version>3.12.1</version>
+    <time>1324458043</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.12.1
+* string: make HX_strdup(NULL) valid again
+* build: fix build when -Wl,--no-undefined is used</comment>
+    <requestid>96784</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>89e782902a10ad5ea34432604296ff0e</srcmd5>
+    <version>3.12.1</version>
+    <time>1329221206</time>
+    <user>coolo</user>
+    <comment>- Update autotools BuildRequires (add libtool) for Factory/12.2,
+  remove unnecessary regeneration stage</comment>
+    <requestid>103770</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>89e782902a10ad5ea34432604296ff0e</srcmd5>
+    <version>3.12.1</version>
+    <time>1340183552</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bc19f550c1c5e7a8cd2ca74fa1866174</srcmd5>
+    <version>3.13</version>
+    <time>1344064859</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.13
+* io: remove HX_REALPATH_SYMLINK
+* option: new HXOPT_RQ_ORDER flag, allows unconditional POSIX-style
+  parsing (parsing terminates at first non-option encountered)
+* option: add HXTYPE_SIZE_T
+* time: add functions and macros for arithmetic and handling of
+  timespec with support for negative time values</comment>
+    <requestid>129442</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6d931d946c17e2a4681a1b849da8fc61</srcmd5>
+    <version>3.14</version>
+    <time>1352908052</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.14
+* rand: avoid division by zero when calling HX_irand with lo==hi</comment>
+    <requestid>141302</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>7cf280898c51b71c83b9aa717fbad87d</srcmd5>
+    <version>3.14</version>
+    <time>1355473860</time>
+    <user>coolo</user>
+    <comment>- Verify GPG signature</comment>
+    <requestid>144887</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e8e4be447e5d3f5e896ab634ae78619e</srcmd5>
+    <version>3.14.1</version>
+    <time>1357127909</time>
+    <user>namtrac</user>
+    <comment>- Update to new upstream release 3.14.1 (bugfix release)
+* restore forward ordering of ordered maps</comment>
+    <requestid>146739</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>e8e4be447e5d3f5e896ab634ae78619e</srcmd5>
+    <version>3.14.1</version>
+    <time>1359109227</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>7e579ab323434cac11e476d44f4b19fc</srcmd5>
+    <version>3.15</version>
+    <time>1363340398</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159490</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>7e579ab323434cac11e476d44f4b19fc</srcmd5>
+    <version>3.15</version>
+    <time>1379662872</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ef8cf84a9a1024c9ab455ae65685339c</srcmd5>
+    <version>3.16</version>
+    <time>1381131741</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202448</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5b56040794dc5d620b128a08eb146ede</srcmd5>
+    <version>3.17</version>
+    <time>1385291158</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208005</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>fd094b0c4ba0d8e868595463244048d0</srcmd5>
+    <version>3.18</version>
+    <time>1389099277</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.18</comment>
+    <requestid>212936</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>f4aaea540d29bfab283bb94ca503a89a</srcmd5>
+    <version>3.18</version>
+    <time>1392731093</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>222622</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>71cb8eaddca241affd0ada249a9faefe</srcmd5>
+    <version>3.19</version>
+    <time>1393309997</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.19</comment>
+    <requestid>223754</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>03960e8af88c432f9e5c6df97a1e675c</srcmd5>
+    <version>3.20</version>
+    <time>1398499543</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>231445</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>c7b2643a6310846db4ec11632e8c21b9</srcmd5>
+    <version>3.21</version>
+    <time>1404157370</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.21
+Try submission again, hoping that the service validator is updated on the server side</comment>
+    <requestid>238960</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>c7b2643a6310846db4ec11632e8c21b9</srcmd5>
+    <version>3.21</version>
+    <time>1409301476</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>44a3b08d933e8fa56a0f25015da26fc7</srcmd5>
+    <version>3.22</version>
+    <time>1409407426</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.22</comment>
+    <requestid>246395</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>439f0d350ccd1a657aa90310f29a9ee5</srcmd5>
+    <version>3.22</version>
+    <time>1419331819</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>266109</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>89b5917f5e0c4518bf5f0f054966451c</srcmd5>
+    <version>3.23</version>
+    <time>1535964266</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.23</comment>
+    <requestid>632001</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>9719d958e40299ec8c44773b18170c50</srcmd5>
+    <version>3.24</version>
+    <time>1540447743</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.24</comment>
+    <requestid>642710</requestid>
+  </revision>
+</revisionlist>

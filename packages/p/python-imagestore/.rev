@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>461533598defd1394669a29eaafa0b6f</srcmd5>
+    <version>2.7.3</version>
+    <time>1368696391</time>
+    <user>coolo</user>
+    <comment>New package see http://lists.opensuse.org/opensuse-factory/2013-05/msg00146.html</comment>
+    <requestid>175236</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>461533598defd1394669a29eaafa0b6f</srcmd5>
+    <version>2.7.3</version>
+    <time>1379664197</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>02e5ac494e7578a8d09258562ebc4b1f</srcmd5>
+    <version>2.7.3</version>
+    <time>1382692741</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204575</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>eb48c9b908952ca66c1561d24989816d</srcmd5>
+    <version>2.7.6</version>
+    <time>1386604640</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.7.6
+  + No changelog available
+- Add README and README.rst to package documentation
+- Remove LICENSE file as it's not included in package
+- Fix non-executable scripts rpmlint warnings
+- Use download Url as source (forwarded request 209886 from posophe)</comment>
+    <requestid>209887</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>eb48c9b908952ca66c1561d24989816d</srcmd5>
+    <version>2.7.6</version>
+    <time>1409302890</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8203cbabc7b97059dad75e8f4e07c995</srcmd5>
+    <version>2.9.1</version>
+    <time>1431247592</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305751</requestid>
+  </revision>
+</revisionlist>

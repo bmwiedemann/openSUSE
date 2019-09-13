@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>05aa86863fbbbf412471ecec22a037ac</srcmd5>
+    <version>1.92</version>
+    <time>1291137253</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53928 from user coolo
+</comment>
+    <requestid>53928</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e961910399544a7d39cec7ea427002c4</srcmd5>
+    <version>1.92</version>
+    <time>1291137258</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53928
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>17a3c70bf36829eb3922ae34ed17d459</srcmd5>
+    <version>1.92</version>
+    <time>1292003910</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55521 from user coolo
+</comment>
+    <requestid>55521</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d6739a49bbf5c2aec4c75420358d83c5</srcmd5>
+    <version>1.92</version>
+    <time>1292003916</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55521
+</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>d6739a49bbf5c2aec4c75420358d83c5</srcmd5>
+    <version>1.92</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>d6739a49bbf5c2aec4c75420358d83c5</srcmd5>
+    <version>1.92</version>
+    <time>1319182297</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>9e2638d23109c866e09e7fd321b00d73</srcmd5>
+    <version>1.92</version>
+    <time>1323193549</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>9e2638d23109c866e09e7fd321b00d73</srcmd5>
+    <version>1.92</version>
+    <time>1340183900</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>9e2638d23109c866e09e7fd321b00d73</srcmd5>
+    <version>1.92</version>
+    <time>1359109774</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5e84ffe9446feae04a2ab94eedcee41b</srcmd5>
+    <version>1.96</version>
+    <time>1371140363</time>
+    <user>coolo</user>
+    <comment>- Update to latest source, version 1.96
+  + Correct the version number in META.yml
+  + Make one of the tests a bit more flexible, to accommodate a subtle
+    change in behaviour caused by a recent change to perl
+  + Restore compatibility with Perl 5.8</comment>
+    <requestid>178069</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>5e84ffe9446feae04a2ab94eedcee41b</srcmd5>
+    <version>1.96</version>
+    <time>1379663807</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>88dff21abf675f035c8287951f931f70</srcmd5>
+    <version>1.98</version>
+    <time>1383035490</time>
+    <user>coolo</user>
+    <comment>- Update to latest version 1.98
+  + Improve peek_sub error handling
+	  Thanks to Zefram for the bug report.
+	  See https://rt.cpan.org/Ticket/Display.html?id=89679
+  + Make new test compatible with old versions of perl.</comment>
+    <requestid>205030</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>88dff21abf675f035c8287951f931f70</srcmd5>
+    <version>1.98</version>
+    <time>1409302444</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>13bdf1b51e67dbc3d10a8b8f6330f7de</srcmd5>
+    <version>2.0</version>
+    <time>1429186379</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296957</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2bc5bf6864655bcac8519707f824ad54</srcmd5>
+    <version>2.1</version>
+    <time>1429963761</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>303918</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0f755fd701448e56278ac7c7c98e808b</srcmd5>
+    <version>2.2</version>
+    <time>1445705786</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340755</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7f4f160a20962f9de8ea594bb62db0b2</srcmd5>
+    <version>2.3</version>
+    <time>1515505827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554826</requestid>
+  </revision>
+</revisionlist>

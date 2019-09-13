@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>804a8e1b4983d235724d6178c892c0ef</srcmd5>
+    <version>1.0.1</version>
+    <time>1533412355</time>
+    <user>dimstar_suse</user>
+    <comment>Add xmonad, xmobar, and their dependencies to Factory.</comment>
+    <requestid>627258</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f346bb816a666cfcb073f1b243a6ad87</srcmd5>
+    <version>1.0.1</version>
+    <time>1540448155</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642853</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bd13432437acc91537cac4b009a75750</srcmd5>
+    <version>1.1.1</version>
+    <time>1544095009</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>653441</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>57589723688920e4b7fc5d39fcfbec46</srcmd5>
+    <version>1.2.1</version>
+    <time>1545376867</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>658074</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5e8244f0c8d729f7a6731efd56b79919</srcmd5>
+    <version>1.2.3</version>
+    <time>1550402401</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>674297</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>80647b4f76a49dfc154b01bb5de33505</srcmd5>
+    <version>1.2.4</version>
+    <time>1551025116</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>678027</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>93ce2609f350c667d09a0d688e71738b</srcmd5>
+    <version>1.2.5</version>
+    <time>1556475151</time>
+    <user>maxlin_factory</user>
+    <comment>version update</comment>
+    <requestid>698548</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c29b761a1a39285cffb20ef8669499bb</srcmd5>
+    <version>1.2.6</version>
+    <time>1557389392</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>700197</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>daec23eee2216c13041843a6bdbe1e52</srcmd5>
+    <version>1.2.7</version>
+    <time>1558129365</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>703473</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,214 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>81ea1abda509dbda467e82123c9ef81f</srcmd5>
+    <version>r3852</version>
+    <time>1236267698</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>07521ec43b78390d4848074e4697165f</srcmd5>
+    <version>0.9.0</version>
+    <time>1251151176</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/coreboot-utils based on submit request 18553 from user hennevogel
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8ecae60ca90a4f33389cc6f476882ade</srcmd5>
+    <version>0.9.1</version>
+    <time>1252581327</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/coreboot-utils based on submit request 19968 from user vbotka
+</comment>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8ecae60ca90a4f33389cc6f476882ade</srcmd5>
+    <version>0.9.1</version>
+    <time>1252581327</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/coreboot-utils based on submit request 19968 from user vbotka
+</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>481c1beb84bb905e4f4c75cc365ec60a</srcmd5>
+    <version>0.9.1</version>
+    <time>1268923240</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>481c1beb84bb905e4f4c75cc365ec60a</srcmd5>
+    <version>0.9.1</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>481c1beb84bb905e4f4c75cc365ec60a</srcmd5>
+    <version>0.9.1</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>535a6c653bce048447659682fa436b83</srcmd5>
+    <version>r6158</version>
+    <time>1293577016</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56586 from user a_jaeger
+</comment>
+    <requestid>56586</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>10a97f96c018e68731ea711af7855da3</srcmd5>
+    <version>r6158</version>
+    <time>1293577023</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56586
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>10a97f96c018e68731ea711af7855da3</srcmd5>
+    <version>r6158</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>78c5bd21f0b99bee3f248f8ed016020c</srcmd5>
+    <version>r6158</version>
+    <time>1316459213</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 83129 from jengelh)</comment>
+    <requestid>83170</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>78c5bd21f0b99bee3f248f8ed016020c</srcmd5>
+    <version>r6158</version>
+    <time>1319181823</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>b4d8dfc25e9bb24a774421edb4e22c5a</srcmd5>
+    <version>r6158</version>
+    <time>1323191054</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>b4d8dfc25e9bb24a774421edb4e22c5a</srcmd5>
+    <version>r6158</version>
+    <time>1340183248</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>b4d8dfc25e9bb24a774421edb4e22c5a</srcmd5>
+    <version>r6158</version>
+    <time>1359108767</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>7129ac7e17c321197174396ca4039165</srcmd5>
+    <version>r6158</version>
+    <time>1363270763</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0
+No indication of aggregation (forwarded request 158839 from babelworx)</comment>
+    <requestid>158840</requestid>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>7129ac7e17c321197174396ca4039165</srcmd5>
+    <version>r6158</version>
+    <time>1379662146</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>7129ac7e17c321197174396ca4039165</srcmd5>
+    <version>r6158</version>
+    <time>1409300675</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c98008e355b176b0365da855688cea59</srcmd5>
+    <version>4.2</version>
+    <time>1452611561</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352726</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a260a36c1969898729f467fc631402ea</srcmd5>
+    <version>4.3</version>
+    <time>1454921301</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358158</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>45fd01f659794d6449a5d02b07472f97</srcmd5>
+    <version>4.5</version>
+    <time>1488932159</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477304</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>638b15354d3486c219dd3ff9d3e5121e</srcmd5>
+    <version>4.5</version>
+    <time>1494938288</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493051</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>26c4febdf12abb51354c06dcdd9a64b7</srcmd5>
+    <version>4.5</version>
+    <time>1498742473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506986</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9f853da19881d3f321dd2ca03ebb583d</srcmd5>
+    <version>4.7</version>
+    <time>1517516945</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.7
+  * Full changelog:
+    https://coreboot.org/releases/coreboot-4.7-relnotes.txt
+- Rebase patches:
+  * k8resdump.diff
+  * no-pie.patch
+  * do-explicit-fallthrough.patch
+- Adjust CFLAGS for util/ifdtool
+
+- verify source signature
+
+- Update to 4.6
+  * Full changelog:
+    https://www.coreboot.org/releases/coreboot-4.6-relnotes.txt
+- Fix URL
+- Build with intelmetool</comment>
+    <requestid>571468</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>dfe1b0b1ace60597cc16a5c156aa597c</srcmd5>
+    <version>4.8.1</version>
+    <time>1527582583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610098</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c5f61b2f13bcb8486fe0e0e194c1112b</srcmd5>
+    <version>4.9</version>
+    <time>1545866994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660936</requestid>
+  </revision>
+</revisionlist>

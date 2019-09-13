@@ -1,0 +1,7 @@
+<package name="perl-XML-RegExp" project="openSUSE:Factory">
+  <title>Regular Expressions for XML Tokens</title>
+  <description>This package contains regular expressions for the following XML tokens:
+BaseChar, Ideographic, Letter, Digit, Extender, CombiningChar,
+NameChar, EntityRef, CharRef, Reference, Name, NmToken, and AttValue.</description>
+  <devel project="devel:languages:perl" package="perl-XML-RegExp"/>
+</package>

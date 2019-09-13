@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>664ea730a31f49ccf42e59a616125bd5</srcmd5>
+    <version>1.2.2</version>
+    <time>1315410898</time>
+    <user>saschpe</user>
+    <comment>I want to add littlewizard (http://en.opensuse.org/Littlewizard) package into Factory. This package is going to be maintained in Education project</comment>
+    <requestid>81165</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e629e46d38fce8b79a17d38283d37968</srcmd5>
+    <version>1.2.2</version>
+    <time>1315410909</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81165
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5a2e2209ab4d537045cd982336df79f4</srcmd5>
+    <version>1.2.2</version>
+    <time>1316088037</time>
+    <user>saschpe</user>
+    <comment>add littlewizard-1.2.2-do-not-override-toolbar-style.patch to match openSUSE default gtk style</comment>
+    <requestid>82154</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>17fb75ddaa9ae05f78095f8707cefd30</srcmd5>
+    <version>1.2.2</version>
+    <time>1316088050</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82154
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>17fb75ddaa9ae05f78095f8707cefd30</srcmd5>
+    <version>1.2.2</version>
+    <time>1319182155</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>fb5a98cbd7fa503b97b9c9cd0da90b85</srcmd5>
+    <version>1.2.2</version>
+    <time>1323192407</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>fb5a98cbd7fa503b97b9c9cd0da90b85</srcmd5>
+    <version>1.2.2</version>
+    <time>1340183668</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>fb5a98cbd7fa503b97b9c9cd0da90b85</srcmd5>
+    <version>1.2.2</version>
+    <time>1359109402</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>fb5a98cbd7fa503b97b9c9cd0da90b85</srcmd5>
+    <version>1.2.2</version>
+    <time>1379663169</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>fb5a98cbd7fa503b97b9c9cd0da90b85</srcmd5>
+    <version>1.2.2</version>
+    <time>1409301805</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>945e8af12f5b5a4744bffeaa050296ac</srcmd5>
+    <version>1.2.2</version>
+    <time>1559375320</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705925</requestid>
+  </revision>
+</revisionlist>

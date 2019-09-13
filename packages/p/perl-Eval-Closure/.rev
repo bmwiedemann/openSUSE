@@ -1,0 +1,172 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>189aea4dcf4b1320a74dda73bcecf72f</srcmd5>
+    <version>0.03</version>
+    <time>1304348451</time>
+    <user>saschpe</user>
+    <comment>new dependencies of perl-Moose</comment>
+    <requestid>68128</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>17e336ef6727011a5a95f4d2659e20e5</srcmd5>
+    <version>0.03</version>
+    <time>1304348464</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68128
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>786648d7ab62ae8b6ea594846a3279fc</srcmd5>
+    <version>0.05</version>
+    <time>1306841886</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>72088</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1250527fb5de5876e49e3907842dad61</srcmd5>
+    <version>0.05</version>
+    <time>1306841898</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72088
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>451c5db05315eb116653c25dedcb5de0</srcmd5>
+    <version>0.05</version>
+    <time>1309861181</time>
+    <user>saschpe</user>
+    <comment>- fix build on distributions with old Test::More module
+  ( perl-Eval-Closure-old_Test-More.patch )</comment>
+    <requestid>75393</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>50e380380ddf1c1c5be56a3f8226ef90</srcmd5>
+    <version>0.05</version>
+    <time>1309861193</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75393
+</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>50e380380ddf1c1c5be56a3f8226ef90</srcmd5>
+    <version>0.05</version>
+    <time>1319182263</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>21776eb03de3971170344ebea7f7819f</srcmd5>
+    <version>0.06</version>
+    <time>1321875579</time>
+    <user>coolo</user>
+    <comment>- update to 0.06
+   - The dumped source from setting $ENV{EVAL_CLOSURE_PRINT_SOURCE} didn't
+     show the captured variable creation properly. (Dave Rolsky)</comment>
+    <requestid>92413</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>8d6a32c505200015e0070a6febcea563</srcmd5>
+    <version>0.06</version>
+    <time>1323193261</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>54325ec8cb1927b84c03f8c76302e34f</srcmd5>
+    <version>0.08</version>
+    <time>1338476896</time>
+    <user>coolo</user>
+    <comment>- updated to 0.08
+    - Remove a double layer of string eval that was introduced in 0.07 as an
+      intermediate step in figuring out the unique package thing - it's not
+      necessary with the final implementation, and just makes things slower
+      and hides errors.
+    - the given source is now evaled in a unique package for every
+      eval_closure call (it used to always be evaled in the Eval::Closure
+      package, which was especially buggy). this is to avoid issues where one
+      eval_closure modifies the global environment (by, say, importing a
+      function), which could mess up a later call. unfortunately, this means
+      that the memoization stuff no longer works, since it will result in
+      memoized results using the original package, which defeats the purpose.
+      i'm open to suggestions on how to safely reenable it though.
+    - clean up a few stray lexicals we were still closing over in the eval</comment>
+    <requestid>122779</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>54325ec8cb1927b84c03f8c76302e34f</srcmd5>
+    <version>0.08</version>
+    <time>1340183835</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>54325ec8cb1927b84c03f8c76302e34f</srcmd5>
+    <version>0.08</version>
+    <time>1359109657</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>dcbe1427059ee293fa672184d6c2744f</srcmd5>
+    <version>0.08</version>
+    <time>1363950357</time>
+    <user>coolo</user>
+    <comment>- remove perl-Eval-Closure-old_Test-More.patch - handle the problem 
+  with old distributions in %%prep now</comment>
+    <requestid>160450</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d21848fe30d3492ca409b1bd531787b1</srcmd5>
+    <version>0.11</version>
+    <time>1375728597</time>
+    <user>coolo</user>
+    <comment>- updated to 0.11
+     - add &quot;alias =&gt; 1&quot; option for making closure variables actually alias the
+       closed over variables (so the variable referenced in the environment
+       hashref will actually be updated by changes made in the closure). (Toby
+       Inkster, #3)
+
+- updated to 0.10
+      - fix pod links
+      - support lexical subs on 5.18+</comment>
+    <requestid>185412</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>d21848fe30d3492ca409b1bd531787b1</srcmd5>
+    <version>0.11</version>
+    <time>1379663661</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>d21848fe30d3492ca409b1bd531787b1</srcmd5>
+    <version>0.11</version>
+    <time>1409302272</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bb803d890b6bf5b403a0e8f693b2f543</srcmd5>
+    <version>0.12</version>
+    <time>1429186400</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296987</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9c92e18998183d1c089dee66c1aa4401</srcmd5>
+    <version>0.13</version>
+    <time>1431668651</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307010</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5556bc23ed0d1342b15e699a341a7e66</srcmd5>
+    <version>0.14</version>
+    <time>1465129256</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399319</requestid>
+  </revision>
+</revisionlist>

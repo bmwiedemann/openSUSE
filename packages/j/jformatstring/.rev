@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f4c3b9ee11737142bc7e964c663a81e</srcmd5>
+    <version>0</version>
+    <time>1290096500</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53180 from user coolo
+</comment>
+    <requestid>53180</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6f7c9823df7bfe0ee2051bde025228bf</srcmd5>
+    <version>0</version>
+    <time>1290096505</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53180
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>6f7c9823df7bfe0ee2051bde025228bf</srcmd5>
+    <version>0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>6f7c9823df7bfe0ee2051bde025228bf</srcmd5>
+    <version>0</version>
+    <time>1319182011</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>83f847b385e625f2594586c5b5826d5f</srcmd5>
+    <version>0</version>
+    <time>1329400639</time>
+    <user>coolo</user>
+    <comment>- patch license to follow spdx.org standard</comment>
+    <requestid>104920</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>83f847b385e625f2594586c5b5826d5f</srcmd5>
+    <version>0</version>
+    <time>1340183486</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>83f847b385e625f2594586c5b5826d5f</srcmd5>
+    <version>0</version>
+    <time>1359109124</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>dce59804e5087d2b8380fd273c777849</srcmd5>
+    <version>0</version>
+    <time>1378899515</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198291</requestid>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>dce59804e5087d2b8380fd273c777849</srcmd5>
+    <version>0</version>
+    <time>1379662716</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>6bcbacd8839cfb75f79e870294d2fb17</srcmd5>
+    <version>0</version>
+    <time>1404161395</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238896</requestid>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>3343e3031c380cf9f430268e73c140f7</srcmd5>
+    <version>0</version>
+    <time>1405101946</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240348</requestid>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>3343e3031c380cf9f430268e73c140f7</srcmd5>
+    <version>0</version>
+    <time>1409301282</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>f5f81e2c56bf994b65138d9197ca34e6</srcmd5>
+    <version>0</version>
+    <time>1506195293</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>528155</requestid>
+  </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>1f27f756891951b4359370c55d3a4b5f</srcmd5>
+    <version>0</version>
+    <time>1514028032</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk10</comment>
+    <requestid>559349</requestid>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>2b4a65f06581ab3fec9eadee66ad9e23</srcmd5>
+    <version>0</version>
+    <time>1515623835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563187</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a9e2c6a7827e377fccc651409ce73a7c</srcmd5>
+    <version>0.10~20131207</version>
+    <time>1546946734</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to a newer snapshot</comment>
+    <requestid>660084</requestid>
+  </revision>
+</revisionlist>

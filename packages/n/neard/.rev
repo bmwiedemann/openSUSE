@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1859203918727460eac134b9d3935397</srcmd5>
+    <version>0.13</version>
+    <time>1390429201</time>
+    <user>coolo</user>
+    <comment>Initial neard package - version 0.13.(bnc#837978)
+</comment>
+    <requestid>214652</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ca8adabd35981cf1e8b1630d72f6802b</srcmd5>
+    <version>0.13</version>
+    <time>1391540153</time>
+    <user>coolo</user>
+    <comment>- Use libnl3 instead of libnl1
+- Remove redundant %clean section, more robust make install call,
+  and a simplified file list (forwarded request 220660 from jengelh)</comment>
+    <requestid>220790</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f47799c2dbdc5902b824c40698364e39</srcmd5>
+    <version>0.13</version>
+    <time>1400822886</time>
+    <user>coolo</user>
+    <comment>- added necessary macros for systemd files (forwarded request 235021 from jsegitz)</comment>
+    <requestid>235060</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9324a17bebd54732fb3805bb937b20fd</srcmd5>
+    <version>0.13</version>
+    <time>1402946907</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236708</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>9324a17bebd54732fb3805bb937b20fd</srcmd5>
+    <version>0.13</version>
+    <time>1409301962</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>01323e7cad1a51714a085a88c1a9f648</srcmd5>
+    <version>0.15</version>
+    <time>1426064263</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289923</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>24c7c209de665bbb65e2748300f28af4</srcmd5>
+    <version>0.15</version>
+    <time>1508336183</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533163</requestid>
+  </revision>
+</revisionlist>

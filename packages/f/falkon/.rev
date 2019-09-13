@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5e02f0db510641ff6aacece92d61b37</srcmd5>
+    <version>3.0.0</version>
+    <time>1521579535</time>
+    <user>dimstar_suse</user>
+    <comment>- Minimum Qt version is 5.9 according to Falkon's CMakeLists.txt
+- Version 3.0.0
+    * released 27 February 2018
+    * first Falkon release
+    * added experimental support for Python extensions
+- Small typo fix (Kwallet -&gt; KWallet)
+- Initial packaging, copied from qupzilla package
+</comment>
+    <requestid>587699</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>713aef1bf96c5b8a34969fa4308bf8e1</srcmd5>
+    <version>3.0.0</version>
+    <time>1523448088</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595163</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d3470af8dda8de94151d03f5ed255f53</srcmd5>
+    <version>3.0.1</version>
+    <time>1526022917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605765</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>dc0596e162cb0c61841fad93302e967a</srcmd5>
+    <version>3.0.1</version>
+    <time>1552299334</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683257</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>34a77edf983572cbc4ea8a3c5d3045c3</srcmd5>
+    <version>3.1.0</version>
+    <time>1553635968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687995</requestid>
+  </revision>
+</revisionlist>

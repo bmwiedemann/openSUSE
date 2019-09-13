@@ -1,0 +1,11 @@
+<package name="nedit" project="openSUSE:Factory">
+  <title>A GUI text editor</title>
+  <description>NEdit is a GUI style plain text editor for workstations with the X Window System
+and Motif. NEdit provides all of the standard menu, dialog, editing,
+mouse support, macro extension language, syntax highlighting,
+and a lot other nice features (and extensions for programmers).
+
+</description>
+  <devel project="editors" package="nedit"/>
+  <url>http://sourceforge.net/projects/nedit/</url>
+</package>

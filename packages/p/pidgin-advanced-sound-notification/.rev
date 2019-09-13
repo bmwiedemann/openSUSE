@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e28d4c0c02a398e9d757a272f091e870</srcmd5>
+    <version>1.2.1</version>
+    <time>1326796499</time>
+    <user>coolo</user>
+    <comment>New package: libpurple/pidgin plugin, requested by community member</comment>
+    <requestid>100052</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ca101b4cdfa76564d5d66a3bb5377557</srcmd5>
+    <version>1.2.1</version>
+    <time>1326962634</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+
+SPDX (forwarded request 100088 from babelworx)</comment>
+    <requestid>100376</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ca101b4cdfa76564d5d66a3bb5377557</srcmd5>
+    <version>1.2.1</version>
+    <time>1340183999</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>ca101b4cdfa76564d5d66a3bb5377557</srcmd5>
+    <version>1.2.1</version>
+    <time>1359109923</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>ca101b4cdfa76564d5d66a3bb5377557</srcmd5>
+    <version>1.2.1</version>
+    <time>1379664026</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>ca101b4cdfa76564d5d66a3bb5377557</srcmd5>
+    <version>1.2.1</version>
+    <time>1409302697</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>91bb6fbeb96dba25b461922e3bb931c7</srcmd5>
+    <version>1.2.1</version>
+    <time>1485511437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>447727</requestid>
+  </revision>
+</revisionlist>

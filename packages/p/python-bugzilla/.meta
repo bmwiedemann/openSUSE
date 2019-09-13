@@ -1,0 +1,13 @@
+<package name="python-bugzilla" project="openSUSE:Factory">
+  <title>Python library for bugzilla</title>
+  <description>This is a python module that provides a nice, python-ish interface to Bugzilla
+over XMLRPC.
+
+It was originally written specifically for Red Hat's Bugzilla instance, but now
+supports the Web Services provided by upstream Bugzilla 3.0 and 3.2 also.
+
+It also includes a 'bugzilla' commandline client which can be used for quick,
+ad-hoc bugzilla jiggery-pokery. I guess you could use it in shell scripts too,
+but gosh - why not just write something in Python instead?</description>
+  <devel project="devel:languages:python" package="python-bugzilla"/>
+</package>

@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a86c37fba872662dbc77b60cff829346</srcmd5>
+    <version>0.4.0</version>
+    <time>1517424595</time>
+    <user>dimstar_suse</user>
+    <comment>graphical ui for yubikey manager</comment>
+    <requestid>570494</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>636f665f9b2f91dfa511e286a58c188a</srcmd5>
+    <version>0.4.0</version>
+    <time>1520588717</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>584256</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2b027f866d22fd51dec8ed57a4f5f6a8</srcmd5>
+    <version>0.4.0</version>
+    <time>1521052838</time>
+    <user>dimstar_suse</user>
+    <comment>- require the libqt5-qtquickcontrols for the QML Dialog and Controls.
+  (bsc#1085147)</comment>
+    <requestid>586750</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ee7c548d20c24a1fe388e114b9c3ff1a</srcmd5>
+    <version>0.4.0</version>
+    <time>1522832836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593199</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8578b8a5ece2dd97ff48783aa3b5cce</srcmd5>
+    <version>0.5.0</version>
+    <time>1524489958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597589</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d0518f50bccec2d0ac3d87564d1fd6e0</srcmd5>
+    <version>0.5.1</version>
+    <time>1525960259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605724</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>75144bfdb5ada58030b1fe4ea1ebab1a</srcmd5>
+    <version>0.5.2</version>
+    <time>1531470072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622164</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8efa719c5a7c50caa19dcbb3f04a5261</srcmd5>
+    <version>1.0.0</version>
+    <time>1538117648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638751</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d0dd2de1c79b27babb4d0cfd63dac923</srcmd5>
+    <version>1.0.0</version>
+    <time>1538374779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638989</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b0378904b7fe0b0a43505d9a95313b9b</srcmd5>
+    <version>1.0.1</version>
+    <time>1539251957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641096</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>42ea7b1f1d1ea9a3facbf11ae48f18f9</srcmd5>
+    <version>1.0.1</version>
+    <time>1542202988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648766</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4f4e7d455fea5a60a70ac488762c2861</srcmd5>
+    <version>1.1.0</version>
+    <time>1547130187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664046</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>728210351fa7d1116f01ae19f12d2db9</srcmd5>
+    <version>1.1.1</version>
+    <time>1552380942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684091</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9ca4f3bc21b95374c891e87d97569127</srcmd5>
+    <version>1.1.2</version>
+    <time>1561882932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712545</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>320d7c0c29727ccad1d4476805d5f26c</srcmd5>
+    <version>1.1.3</version>
+    <time>1566464300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725153</requestid>
+  </revision>
+</revisionlist>

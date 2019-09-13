@@ -1,0 +1,218 @@
+<revisionlist>
+  <revision rev="1" vrev="78">
+    <srcmd5>b3769a7920d36f10ba69ee19418b2617</srcmd5>
+    <version>18</version>
+    <time>1166483850</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="90">
+    <srcmd5>7fb1559d8b758f5251fcbbbf72e5d96d</srcmd5>
+    <version>18</version>
+    <time>1175185551</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="92">
+    <srcmd5>e4f91bf260556f4ca0b860c98eb24d05</srcmd5>
+    <version>18</version>
+    <time>1176849697</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="103">
+    <srcmd5>e36092af75e139b35985c698c9dd8671</srcmd5>
+    <version>18</version>
+    <time>1180998720</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="104">
+    <srcmd5>64c90f2ae2f2b10ee8d3fbbe16e6d55b</srcmd5>
+    <version>18</version>
+    <time>1181054303</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="116">
+    <srcmd5>e4bced09e21a732b9c1a62b8c238ed15</srcmd5>
+    <version>18</version>
+    <time>1185822014</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="118">
+    <srcmd5>bbd5e3af681b572a474f8ae12defc6c4</srcmd5>
+    <version>18</version>
+    <time>1186100399</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="131">
+    <srcmd5>08508554f780a00e9fe9b8394b677f4e</srcmd5>
+    <version>18</version>
+    <time>1193182983</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="161">
+    <srcmd5>62776b29dd450fea54a11b1efc23ec43</srcmd5>
+    <version>18</version>
+    <time>1209202711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="163">
+    <srcmd5>34590e257528f6a4330f25ba69aab9a0</srcmd5>
+    <version>18</version>
+    <time>1209392574</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="174">
+    <srcmd5>c11742f66ed699e3d658f187e9049f58</srcmd5>
+    <version>18</version>
+    <time>1215811528</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="188">
+    <srcmd5>5914ce8496876c57bf8b97bb279bdeea</srcmd5>
+    <version>18</version>
+    <time>1219449598</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="196">
+    <srcmd5>07475bd2c94b84d203af491804c91bed</srcmd5>
+    <version>18</version>
+    <time>1226415018</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="197">
+    <srcmd5>f779d501f7f7ee63cc1633f6b0af67d8</srcmd5>
+    <version>18</version>
+    <time>1231508171</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="198">
+    <srcmd5>088549bd75dd158133551c923da883e4</srcmd5>
+    <version>18</version>
+    <time>1231758983</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="199">
+    <srcmd5>6a7d3ce953e2d9650854e2a5450c9138</srcmd5>
+    <version>18</version>
+    <time>1232501901</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="202">
+    <srcmd5>367e442c9f646a6b5df7d5f4b4e3781d</srcmd5>
+    <version>18</version>
+    <time>1258382634</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procinfo based on submit request 24440 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="18" vrev="203">
+    <srcmd5>94356c19b90dc827127d5032c05336f7</srcmd5>
+    <version>18</version>
+    <time>1268925787</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="205">
+    <srcmd5>94356c19b90dc827127d5032c05336f7</srcmd5>
+    <version>18</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="206">
+    <srcmd5>94356c19b90dc827127d5032c05336f7</srcmd5>
+    <version>18</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="209">
+    <srcmd5>94356c19b90dc827127d5032c05336f7</srcmd5>
+    <version>18</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="210">
+    <srcmd5>8ee98fdfbc79f085249d4316768b7686</srcmd5>
+    <version>18</version>
+    <time>1317744869</time>
+    <user>oertel</user>
+    <comment>- cross-build fixes: use %__cc macro, move tests to %check section (forwarded request 86447 from uli_suse)</comment>
+    <requestid>86452</requestid>
+  </revision>
+  <revision rev="23" vrev="212">
+    <srcmd5>8ee98fdfbc79f085249d4316768b7686</srcmd5>
+    <version>18</version>
+    <time>1319182370</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="213">
+    <srcmd5>e8be06907f0fb6b414a3a7c07f0014a8</srcmd5>
+    <version>18</version>
+    <time>1323193992</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="215">
+    <srcmd5>e8be06907f0fb6b414a3a7c07f0014a8</srcmd5>
+    <version>18</version>
+    <time>1340184018</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="217">
+    <srcmd5>e8be06907f0fb6b414a3a7c07f0014a8</srcmd5>
+    <version>18</version>
+    <time>1359109955</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="219">
+    <srcmd5>e8be06907f0fb6b414a3a7c07f0014a8</srcmd5>
+    <version>18</version>
+    <time>1379664072</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="221">
+    <srcmd5>e8be06907f0fb6b414a3a7c07f0014a8</srcmd5>
+    <version>18</version>
+    <time>1409302751</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="222">
+    <srcmd5>8cb139309686ca2c91e19b859ac17729</srcmd5>
+    <version>18</version>
+    <time>1413048300</time>
+    <user>coolo</user>
+    <comment>- Add the patches
+  procinfo-man.dif to avoid bogus comments nroff code
+  procinfo-maxdev.dif to increase the numbers og devices a lot (bsc#900125)
+  procinfo-ranges.dif to check buffer boundaries
+  procinfo-sysconf.dif to get the number of CPU's which are online
+  procinfo-uptime.dif avoid variable overflow in case the system is idle
+- Modify the patches
+  procinfo-18.dif
+  procinfo-float.dif
+  procinfo-hz
+  procinfo-ia64.diff
+  procinfo-intr.dif
+  procinfo-lsdev.dif</comment>
+    <requestid>254844</requestid>
+  </revision>
+  <revision rev="30" vrev="223">
+    <srcmd5>1d6e3c40a3d44204d96c6a124a955fa0</srcmd5>
+    <version>18</version>
+    <time>1414776432</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257907</requestid>
+  </revision>
+  <revision rev="31" vrev="224">
+    <srcmd5>c9b051436680707c93c853de306afcfa</srcmd5>
+    <version>18</version>
+    <time>1557653513</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernize old variables. Drop author list from description. (forwarded request 701208 from jengelh)</comment>
+    <requestid>701273</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+<package name="python-kaa-base" project="openSUSE:Factory">
+  <title>The Kaa Media Repository Base Library</title>
+  <description>The Kaa Media Repository is a set of python modules related to media.
+    
+    This module contains some basic code needed in all kaa modules. This
+    is a requirement for all the other modules in the repository.
+  </description>
+  <devel project="devel:languages:python" package="python-kaa-base"/>
+</package>

@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>e9ad5ad73026e44610afef5ebba64da7</srcmd5>
+    <version>2.1.6</version>
+    <time>1308828260</time>
+    <user>saschpe</user>
+    <comment>add for factory</comment>
+    <requestid>74353</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>7d7f63dedcce9483b9667389bef08d58</srcmd5>
+    <version>2.1.6</version>
+    <time>1308828272</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74353
+</comment>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>7d7f63dedcce9483b9667389bef08d58</srcmd5>
+    <version>2.1.6</version>
+    <time>1319182357</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>beb1e052f90f893a0d003df5678ec9c0</srcmd5>
+    <version>2.1.6</version>
+    <time>1319207023</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>88925</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>7a1754d51a8a97d36dfa2c1677ffbb7f</srcmd5>
+    <version>2.1.6</version>
+    <time>1323193908</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>7a1754d51a8a97d36dfa2c1677ffbb7f</srcmd5>
+    <version>2.1.6</version>
+    <time>1340184001</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fc1c0ee2a1e5179ef8ea307f3fdd8086</srcmd5>
+    <version>2.2.5</version>
+    <time>1355477624</time>
+    <user>coolo</user>
+    <comment>complete changelog according to the comments of sr143012 (forwarded request 143851 from rudi_m)</comment>
+    <requestid>145073</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>fc1c0ee2a1e5179ef8ea307f3fdd8086</srcmd5>
+    <version>2.2.5</version>
+    <time>1359109926</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3637b140f864a18ec0c1c7e797ec2d09</srcmd5>
+    <version>2.3</version>
+    <time>1363340812</time>
+    <user>coolo</user>
+    <comment>update to 2.3 (forwarded request 159493 from etamPL)</comment>
+    <requestid>159508</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>3637b140f864a18ec0c1c7e797ec2d09</srcmd5>
+    <version>2.3</version>
+    <time>1379664030</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>3637b140f864a18ec0c1c7e797ec2d09</srcmd5>
+    <version>2.3</version>
+    <time>1409302702</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0eb460477f8e65afc77c873a7e177ea6</srcmd5>
+    <version>2.3.3</version>
+    <time>1426794841</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291203</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ee4c843f45e6c1718509064f8a375ba8</srcmd5>
+    <version>2.4</version>
+    <time>1531946151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4:
+  * Generate Zip64 format .zip files when the output is greater
+    than or equal to 4 GiB.
+  * Improved gzip options processing and return code compatibility
+  * Some bug fixes
+- Drop no longer needed patches:
+  * pigz-fix-missing-linker.patch
+  * pigz-fix-wrong-include.patch
+
+- Update to 2.3.4:
+  * no upstream changelog provided</comment>
+    <requestid>622248</requestid>
+  </revision>
+</revisionlist>

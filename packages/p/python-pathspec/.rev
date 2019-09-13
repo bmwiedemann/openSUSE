@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>177a2f1700adcace7fda5ce39f1f13e6</srcmd5>
+    <version>0.5.6</version>
+    <time>1526371955</time>
+    <user>dimstar_suse</user>
+    <comment>Utility library for gitignore style pattern matching of file paths</comment>
+    <requestid>605992</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0610f8ae8d9975e9d4ceb9503e515f2e</srcmd5>
+    <version>0.5.6</version>
+    <time>1545648056</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659542</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa0d295f4883cac2502667d1e5edd777</srcmd5>
+    <version>0.5.9</version>
+    <time>1551284887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674890</requestid>
+  </revision>
+</revisionlist>

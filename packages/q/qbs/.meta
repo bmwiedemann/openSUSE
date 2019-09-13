@@ -1,0 +1,6 @@
+<package name="qbs" project="openSUSE:Factory">
+  <title>qbs</title>
+  <description>Qbs is a tool that helps simplify the build process for developing projects across multiple platforms. Qbs can be used for any software project, regardless of programming language, toolkit, or libraries used.</description>
+  <devel project="KDE:Qt5" package="qbs"/>
+  <url>https://qbs.io</url>
+</package>

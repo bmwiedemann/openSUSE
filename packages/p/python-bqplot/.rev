@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a4569775d1e3660d91c9fe82103d26c3</srcmd5>
+    <version>0.11.5</version>
+    <time>1558516323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11.5
+  * silence brush events on selected_changed
+- Update to version 0.11.4
+  * Scatter label color now follow theme
+  * Fixup color axis domain
+  * Fixup election example notebook
+- Update to version 0.11.3
+  * Fixup interaction layer wrt typed fields
+  * Set # of axis ticks for DateScale by width
+  * fixed an issue where 'selected' wasn't getting updated on empty brush
+  * Revise outlier selection method
+  * Fix d3 selections
+  * not setting default labels in lieu of empty labels
+  * increased pie label font size to 12px
+  * Make fill_opcities work with fill=inside
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+- Fix dependencies</comment>
+    <requestid>702898</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c0cfb230a6468359fcb87d66372fe027</srcmd5>
+    <version>0.11.6</version>
+    <time>1564483113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719674</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,232 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ce28903db054b2199ea7cde329f01702</srcmd5>
+    <version>unknown</version>
+    <time>1331900786</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>106299</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dc43bb0315b1f918ef772d48bd3b24b1</srcmd5>
+    <version>unknown</version>
+    <time>1339076433</time>
+    <user>coolo</user>
+    <comment>fix bnc#751746 (forwarded request 123819 from MargueriteSu)</comment>
+    <requestid>123820</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>dc43bb0315b1f918ef772d48bd3b24b1</srcmd5>
+    <version>unknown</version>
+    <time>1340184244</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>70d665888db0a213676c86466074305b</srcmd5>
+    <version>unknown</version>
+    <time>1344079920</time>
+    <user>coolo</user>
+    <comment>version update (forwarded request 129495 from MargueriteSu)</comment>
+    <requestid>129496</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>ac7f464b0a8b7ea101d54ec7dd9d8838</srcmd5>
+    <version>unknown</version>
+    <time>1345973710</time>
+    <user>namtrac</user>
+    <comment>fix bnc#775418: SuiteSparse does not ship library which contains the symbol SuiteSparse_time. because we miss to package libsuitesparseconfig. and bnc#746867 cholmod from suitesparse should be GPL-2.0 and/or LGPL-2.0 licensed (forwarded request 131023 from MargueriteSu)</comment>
+    <requestid>131025</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>ef3c50ce69b1d184e36521fbe8b26f24</srcmd5>
+    <version>unknown</version>
+    <time>1346080381</time>
+    <user>coolo</user>
+    <comment>%build is expanded, also in comments, so the % needs to be escaped. This caused a failure on Fedora builds (forwarded request 131473 from MargueriteSu)</comment>
+    <requestid>131705</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>44ccb75d69c7d354320f27d4c9eed146</srcmd5>
+    <version>unknown</version>
+    <time>1351974696</time>
+    <user>coolo</user>
+    <comment>- shlib naming: libsuitesparseconfig-4_0_2, not -4.0.2 (forwarded request 140009 from jengelh)</comment>
+    <requestid>140032</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>44ccb75d69c7d354320f27d4c9eed146</srcmd5>
+    <version>unknown</version>
+    <time>1359110448</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>44ccb75d69c7d354320f27d4c9eed146</srcmd5>
+    <version>unknown</version>
+    <time>1379664742</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>9407f86725e74170adcd544044d0c2e3</srcmd5>
+    <version>unknown</version>
+    <time>1384252913</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.2.1
+  + no changelog available
+- Fix Groups to respect new standards (forwarded request 206446 from posophe)</comment>
+    <requestid>206459</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>e7930cb57662d8a8e13b54ad9f95726b</srcmd5>
+    <version>unknown</version>
+    <time>1403702644</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238385</requestid>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>e7930cb57662d8a8e13b54ad9f95726b</srcmd5>
+    <version>unknown</version>
+    <time>1409303425</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>fb4d536b04303494407537d1de69b4a7</srcmd5>
+    <version>unknown</version>
+    <time>1414613332</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258058</requestid>
+  </revision>
+  <revision rev="14" vrev="18">
+    <srcmd5>3f430f2d22957103d623d6c040124d85</srcmd5>
+    <version>unknown</version>
+    <time>1416048270</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260584</requestid>
+  </revision>
+  <revision rev="15" vrev="19">
+    <srcmd5>4a6434ce830d8f8a8d6bf01376ec1c3d</srcmd5>
+    <version>unknown</version>
+    <time>1421873665</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>282184</requestid>
+  </revision>
+  <revision rev="16" vrev="20">
+    <srcmd5>62466d6f7a272c9f0a85dd3a54021ad0</srcmd5>
+    <version>unknown</version>
+    <time>1422636377</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283371</requestid>
+  </revision>
+  <revision rev="17" vrev="21">
+    <srcmd5>5ad5245aa02d72ab929057dac719d27a</srcmd5>
+    <version>unknown</version>
+    <time>1428391701</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293984</requestid>
+  </revision>
+  <revision rev="18" vrev="22">
+    <srcmd5>d0a73c5bfa2835ccb40faccc2654198d</srcmd5>
+    <version>unknown</version>
+    <time>1443694912</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>333120</requestid>
+  </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>f15c7f56ced8bfffeb3336481841fcbd</srcmd5>
+    <version>unknown</version>
+    <time>1448400636</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345152</requestid>
+  </revision>
+  <revision rev="20" vrev="24">
+    <srcmd5>3e439a35217f121d1470eea225beb5d9</srcmd5>
+    <version>unknown</version>
+    <time>1449995796</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>347583</requestid>
+  </revision>
+  <revision rev="21" vrev="25">
+    <srcmd5>af502c5350e2e78da2af2250eee4a254</srcmd5>
+    <version>unknown</version>
+    <time>1498045774</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503224</requestid>
+  </revision>
+  <revision rev="22" vrev="26">
+    <srcmd5>2e8c5c19a48f656ace6287fe6df7c57a</srcmd5>
+    <version>unknown</version>
+    <time>1500669338</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509638</requestid>
+  </revision>
+  <revision rev="23" vrev="27">
+    <srcmd5>23df76e66a579fc60deae8208cd75cff</srcmd5>
+    <version>unknown</version>
+    <time>1508316260</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534250</requestid>
+  </revision>
+  <revision rev="24" vrev="28">
+    <srcmd5>7c17b38b1c4f397de1cd0aac6be03466</srcmd5>
+    <version>unknown</version>
+    <time>1519844444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580335</requestid>
+  </revision>
+  <revision rev="25" vrev="29">
+    <srcmd5>2921946efef4876fbbe4a3c2a9bc3c7d</srcmd5>
+    <version>unknown</version>
+    <time>1527933008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610773</requestid>
+  </revision>
+  <revision rev="26" vrev="30">
+    <srcmd5>edb45e1998f00c1fbf0f8a68ae447c47</srcmd5>
+    <version>unknown</version>
+    <time>1530741006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619222</requestid>
+  </revision>
+  <revision rev="27" vrev="31">
+    <srcmd5>d0795e1a870e5f20ba96f0bf8010bcfe</srcmd5>
+    <version>unknown</version>
+    <time>1553262689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687139</requestid>
+  </revision>
+  <revision rev="28" vrev="32">
+    <srcmd5>4756b0d9ee3d40d6386d9c7801e7eb50</srcmd5>
+    <version>unknown</version>
+    <time>1554749475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692034</requestid>
+  </revision>
+  <revision rev="29" vrev="33">
+    <srcmd5>5a346e3867387b2c84a33257d9f254a2</srcmd5>
+    <version>unknown</version>
+    <time>1567678038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720974</requestid>
+  </revision>
+</revisionlist>

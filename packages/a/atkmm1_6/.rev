@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>10e542ebd36bbfee2f3e5d5620e84ffb</srcmd5>
+    <version>2.24.2</version>
+    <time>1481105540</time>
+    <user>dimstar_suse</user>
+    <comment>Early submission for GNOME 3.24 - getting things lined up</comment>
+    <requestid>443902</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>71a7d8d20c9d568ef0d5caffbb4a5b9e</srcmd5>
+    <version>2.24.2</version>
+    <time>1520502646</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581431 from dimstar)</comment>
+    <requestid>582915</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>19c01525a4b69308be65b6cbc0e88758</srcmd5>
+    <version>2.28.0</version>
+    <time>1545223664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657858</requestid>
+  </revision>
+</revisionlist>

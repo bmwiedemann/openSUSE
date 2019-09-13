@@ -1,0 +1,5 @@
+<package name="screencast" project="openSUSE:Factory">
+  <title>Screencast</title>
+  <description>A simple screencast recorder</description>
+  <devel project="X11:Pantheon:Apps" package="screencast"/>
+</package>

@@ -1,0 +1,381 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a29efde5ad5accf8b50e3f413b9b3440</srcmd5>
+    <version>2.10</version>
+    <time>1406360513</time>
+    <user>coolo</user>
+    <comment>once again after a while. Hope this shortages are fixed now</comment>
+    <requestid>242220</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a29efde5ad5accf8b50e3f413b9b3440</srcmd5>
+    <version>2.10</version>
+    <time>1409300869</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b21df543959e84298c43cdf40a3b670d</srcmd5>
+    <version>2.12</version>
+    <time>1409998701</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247466</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b35b8f80d7cb7e6abb6abf67787314b1</srcmd5>
+    <version>2.12.1</version>
+    <time>1432072271</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>308030</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0407d5170c8e4e19d65a83d63256b63c</srcmd5>
+    <version>2.13.1</version>
+    <time>1436734403</time>
+    <user>coolo</user>
+    <comment>- update to 2.13.1
+ * Fix --scale-down breaking image centering in fullscreen mode
+- spec-cleaned</comment>
+    <requestid>315606</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1765e019d2071c7d43839fd5487ef5f3</srcmd5>
+    <version>2.14</version>
+    <time>1445779094</time>
+    <user>coolo</user>
+    <comment>- update to 2.14
+* Add --xinerama-index option for background setting
+* When removing the last image in slidsehow mode, stay on the last (previously 
+    second-to-last) image
+* Allow --sort and --randomize to override each other (most recently specified 
+    option wins) instead of always preferring --sort
+* Thumbnail mode: Mark image as processed when executing an action (--action) by 
+    clicking on an image
+* It is now possible to override feh's idea of the active xinerama screen using the 
+    --xinerama-index option
+* Remove (undocumented) feature allowing to override feh's idea of the active 
+    xinerama screen by setting the XINERAMA_SCREEN environment variable
+- remove obsolete gpg macro</comment>
+    <requestid>340758</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1353d36dec0c45b83826c10d1597f5e6</srcmd5>
+    <version>2.14</version>
+    <time>1449145869</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346761</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e5c7777aa3f2063522ccdfb0e948b765</srcmd5>
+    <version>2.14</version>
+    <time>1464594977</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398287</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe27127ecf7f2b3ed54fc7e02d0bd9d6</srcmd5>
+    <version>2.16.2</version>
+    <time>1470851770</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.16.2
+- refreshed patches:
+  feh-2.12-fix_sighandler.patch
+  feh-fix_pointer_arithmetics.patch
+  feh-makefile_optflags.patch
+- dropped patch: feh-no_date.patch
+* Also support in-place editing for images loaded via libcurl or
+    imagemagick. Results will not be written back to disk in this case.
+* Fix crash when trying to rotate a JPEG image without having
+    jpegtran / jpegexiforient installed
+* Handle failing fork() calls gracefully
+* Fix invalid key/button definitions mis-assigning keys/buttons to other
+    actions
+* Add sort mode --sort dirname to sort images by directory instead
+    of by name. For example, where a normal recursive run will show images in
+    the order foo/a.jpg -&amp;gt; foo/bar/baz.jpg -&amp;gt; foo/fnord.jpg, a dirname sort
+    will result in foo/a.jpg -&amp;gt; foo/fnord.jpg -&amp;gt; foo/bar/baz.jpg (Patch by
+    Sung Pae)
+* Add navigation keys next_dir (]) and prev_dir ([) to jump to the first
+    image of the nex/previous directory (Patch by Sung Pae)
+* Fix toggle_filenames key displaying wrong file numbers in multiwindow
+    mode
+* Rescale image when resizing a window and --scale-down or --geometry is
+    active. This largely fixes the --scale-down issues introduced in
+    2.15. However, note that --scale-down still introduces a fixed window
+    size which will not be updated when changing images (as was the case in
+    feh &amp;lt; 2.15). This may or may not be fixed in the future.
+* Fix --keep-zoom-vp not keeping the viewport x/y offsets (broken by 2.15)
+* Fix w (size_to_image) key not updating window size when --scale-down
+    or --geometry is active (forwarded request 418269 from mimi_vx)</comment>
+    <requestid>418270</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4e0fb9b9ab90c172ee1af0a31dbdeea4</srcmd5>
+    <version>2.17.1</version>
+    <time>1473241484</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.17.1
+- added feh-makefile_app.patch -- fix install location of icons
+- refreshed feh-makefile_optflags.patch
+* Install feh icon (both 48x48 and scalable SVG) to /usr/share/icons
+    when running &quot;make install app=1&quot;
+* Fix --sort not being respected after the first reload when used in
+    conjunction with --reload
+* All key actions can now also be bound to a button by specifying them
+    in .config/feh/buttons. However, note that button actions can not be
+    bound to keys.
+* Rename &quot;menu&quot; key action to &quot;toggle_menu&quot;, &quot;prev&quot; to &quot;prev_img&quot; and
+    &quot;next&quot; to &quot;next_img&quot;. The old names are still supported, but no longer
+    documented.
+* feh now also sets the X11 _NET_WM_PID and WM_CLIENT_MACHINE window
+    properties
+* Fix compilation on systems where HOST_NAME_MAX is not defined (forwarded request 424334 from mimi_vx)</comment>
+    <requestid>424335</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f49d7ee1a5d65047d29a24c5d5589fae</srcmd5>
+    <version>2.18.2</version>
+    <time>1488125355</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460198</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>363cd66b68f4042f06a4b4f867b42506</srcmd5>
+    <version>2.18.3</version>
+    <time>1492618283</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.18.3
+- fixes boo#1034567 - CVE-2017-7875
+ * Fix double-free/OOB-write in E17 IPC. This only affects the background
+    setting options and requires a malicious X11 app to run alongside feh
+    and pretend to be an E17 window manager.
+ * Fix image-specific format specifiers not being updated correctly in thumbnail
+    mode window titles
+ * Fix memory leak when closing images opened from thumbnail mode
+ * Fix a possible out of bounds read caused by an unterminated string when
+    using --output to save images in long paths
+ * Fix out of bounds read/write when handling empty or broken caption files.
+ * Fix memory leak when saving a filelist or image whose target filename
+    already exists. (forwarded request 489248 from mimi_vx)</comment>
+    <requestid>489249</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>05eb175a021bc5df3c143b7dd66123a3</srcmd5>
+    <version>2.19</version>
+    <time>1497871419</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.19
+ * Follow the freedesktop.org Thumbnail Managing Standard by saving thumbnails
+    in ${XDG_CACHE_HOME}/thumbnails (defaulting to ~/.cache/thumbnails)
+    instead of ~/.thumbnails
+ * Install app icons with the correct permissions of 644
+ * Documentation improvements (forwarded request 504473 from mimi_vx)</comment>
+    <requestid>504474</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c8cebd41283589983e03b16a557afbd7</srcmd5>
+    <version>2.21</version>
+    <time>1507571274</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532747</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>77dace1bcdc0ea3925f895751387f02e</srcmd5>
+    <version>2.22</version>
+    <time>1510045274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539236</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dc4d9d64c22b91c46449eed20f733251</srcmd5>
+    <version>2.22.2</version>
+    <time>1510150296</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.22.2
+ * Fix HTTPS certificate errors on some systems (broken in 2.22)
+- update to 2.22.1
+ * Allow ~/.fehbg to be sourced (instead of executed) from other
+   shell scripts again (broken in 2.22)
+</comment>
+    <requestid>539756</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>55f9780169dfcbab7b409d8f8e28171e</srcmd5>
+    <version>2.23</version>
+    <time>1514569951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560480</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ffa46628945ad50ff71bab8c777d0df0</srcmd5>
+    <version>2.23.1</version>
+    <time>1517517087</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.23.1
+  * The Makefile no longer honors CPPFLAGS and instead consistently
+    uses CFLAGS for user-provided include paths
+  * Fix %u format specifier in multiwindow and list modes
+  * Minor performance improvements
+  * Stability improvements when using --magick-timeout
+- switch to https version of website
+- rebase feh-makefile_optflags.patch
+</comment>
+    <requestid>571803</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>f56f923a02c7462c6a715c58ac23a4c1</srcmd5>
+    <version>2.23.1</version>
+    <time>1518601960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576410</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a85966fd14cd4c7be678c760f6f5c2f1</srcmd5>
+    <version>2.23.2</version>
+    <time>1518950757</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.23.2
+  * Fix support for nested quotes in .config/feh/themes
+- feh-makefile_app.patch
+  * use DESTDIR variable
+- spec file: simplify a bit
+</comment>
+    <requestid>577664</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b3882ccaa19355abbd5a3f86003b230f</srcmd5>
+    <version>2.24</version>
+    <time>1519747184</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.24
+  * Improve performance when using --{max,min}-dimension in
+    slideshow mode
+  * Fix crash when using %m format specifier in slideshow mode
+</comment>
+    <requestid>580354</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4b2a74de75cec5b4e34fe92821494920</srcmd5>
+    <version>2.25</version>
+    <time>1520503170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584030</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4bd2383412efc5986202c60e1d2e56fc</srcmd5>
+    <version>2.26</version>
+    <time>1526022937</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.26
+  * Save absolute file paths in ~/.fehbg, similar to behaviour prior
+    to 2.21
+  * Add %g (window dimensions) and %Z (precise zoom level) format
+    specifiers
+  * Improve -z/--randomize randomness</comment>
+    <requestid>605810</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d7022932bccbdf7d361f735dcbc7d950</srcmd5>
+    <version>2.26.1</version>
+    <time>1526372020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.26.1
+  * Restore pre-2.21 ~/.fehbg behaviour. This fixes nondeterministic
+    wallpaper setting when using --bg-* --randomize, issues when
+    specifying --theme both in ~/.fehbg and on the commandline, and
+    possibly other edge cases
+  * Fix /tmp being cluttered with temp ImageMagick files when using
+    --magick-timeout and a conversion takes longer than allowed
+</comment>
+    <requestid>606561</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6434058b69f1ad6b20eba1856a639dfa</srcmd5>
+    <version>2.26.3</version>
+    <time>1529402243</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.26.3:
+  * Properly escape --image-bg argument in ~/.fehbg (broken in
+    2.26.1).
+- Update to 2.26.2:
+  * Show correct filelist position in windows opened from thumbnail
+    mode.
+  * Note that navigation is still not supported in those windows.
+  * Improve support for key input from stdin.
+  * Do not push menus off the screen when hitting screen limits.
+</comment>
+    <requestid>616386</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>920fcd6245ba70e141762dedc65b065f</srcmd5>
+    <version>2.27.1</version>
+    <time>1532161534</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.27.1
+- fix boo#1101466  - specify PREFIX also for build
+  * Fix --keep-zoom-vp issues introduced in 2.27
+  * Fix feh occasionally becoming unresponsive when asked
+     to terminate via SIGINT/SIGQUIT/SIGTERM
+  * Fix size_to_image (&quot;w&quot;) command when both --scale-down and
+     --keep-zoom-vp are enabled
+  * Fix --auto-zoom not being triggered on window resize events
+     when --scale-down is enabled
+  * Fix --auto-zoom conflicting with manual zoom
+  * Prevent --zoom &amp;lt;percent&amp;gt; from blocking --scale-down in fullscreen
+     / fixed geometry mode
+  * Prevent --keep-zoom-vp from blocking the dynamic window resizing mechanism
+  - Prevent automatic recalculation of the zoom ratio when 
+    --keep_zoom_vp is enabled (forwarded request 624244 from mimi_vx)</comment>
+    <requestid>624245</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a3cda7bee8b0c9c247e8ee25414b8591</srcmd5>
+    <version>2.28</version>
+    <time>1540319849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643567</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3414bab5ce3eeb9d7deb7d8f9dda20f0</srcmd5>
+    <version>2.28.1</version>
+    <time>1541666925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646618</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>01470d45bb06ed6ec4b541aebfd28e76</srcmd5>
+    <version>3.0</version>
+    <time>1543224445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651067</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2d57f453006a6580819c59566924f7f9</srcmd5>
+    <version>3.1.1</version>
+    <time>1547130149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663765</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8301776c4df53678cf4c9e0217c41118</srcmd5>
+    <version>3.1.3</version>
+    <time>1550668442</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677523</requestid>
+  </revision>
+</revisionlist>

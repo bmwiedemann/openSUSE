@@ -1,0 +1,1094 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>c87a476d0c794f28220b5ac87781854d</srcmd5>
+    <version>3.2.7</version>
+    <time>1166483852</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="26">
+    <srcmd5>56bd85b00b9f82e78c97b56f70515579</srcmd5>
+    <version>3.2.7</version>
+    <time>1168626223</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="33">
+    <srcmd5>a62e7df476ff05c0df893618eaa7fe92</srcmd5>
+    <version>3.2.7</version>
+    <time>1175185558</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="46">
+    <srcmd5>7cfe5e214544c4b7e0ed30e1e1e21c5e</srcmd5>
+    <version>3.2.7</version>
+    <time>1181214936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="50">
+    <srcmd5>5c3800ef86bb51ad5ef5af4b274d2ef0</srcmd5>
+    <version>3.2.7</version>
+    <time>1181829996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="70">
+    <srcmd5>85209ddfad8bf548218cf2cecc8c0bff</srcmd5>
+    <version>3.2.7</version>
+    <time>1193396857</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="79">
+    <srcmd5>a0efce74a936dd5042b05cfe02e381d3</srcmd5>
+    <version>3.2.7</version>
+    <time>1197479924</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="84">
+    <srcmd5>49d90620d49d9a9ca358833c8613d886</srcmd5>
+    <version>3.2.7</version>
+    <time>1200612493</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="91">
+    <srcmd5>59796b4cda6df738405d600f3968aee3</srcmd5>
+    <version>3.2.7</version>
+    <time>1202499021</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="93">
+    <srcmd5>305265a93b85c32dbfc57eb1361e6b45</srcmd5>
+    <version>3.2.7</version>
+    <time>1203035946</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="102">
+    <srcmd5>79fd46e1558651a5f8585843140796c6</srcmd5>
+    <version>3.2.7</version>
+    <time>1206720534</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="117">
+    <srcmd5>a2aefcef1f3e51a9030e1e959bc49107</srcmd5>
+    <version>3.2.7</version>
+    <time>1215811591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="123">
+    <srcmd5>4b3a713558c2018bd47b95dd71a498d0</srcmd5>
+    <version>3.2.7</version>
+    <time>1217647773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="134">
+    <srcmd5>e2b493072426f377567fb57a700f5b37</srcmd5>
+    <version>3.2.7</version>
+    <time>1219710031</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="145">
+    <srcmd5>a395230daa29e410aa8abd31c132447b</srcmd5>
+    <version>3.2.7</version>
+    <time>1222269868</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="146">
+    <srcmd5>0a768aa40faf0e837393433c15c2dc00</srcmd5>
+    <version>3.2.7</version>
+    <time>1223764057</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="147">
+    <srcmd5>ccb21f05bb3db848774b76b56a27850a</srcmd5>
+    <version>3.2.7</version>
+    <time>1224693807</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="148">
+    <srcmd5>d7eb9a9245c818809884b6b0ee8e02c3</srcmd5>
+    <version>3.2.7</version>
+    <time>1229349841</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="149">
+    <srcmd5>40272f49d57ed77cedace9898aea2a85</srcmd5>
+    <version>3.2.7</version>
+    <time>1229439618</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="150">
+    <srcmd5>dc7130a81b743967e620d1a2062e3496</srcmd5>
+    <version>3.2.7</version>
+    <time>1234178717</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="152">
+    <srcmd5>22b3d964fb94097aab592eecb6925fd3</srcmd5>
+    <version>3.2.7</version>
+    <time>1236786149</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>babfcc6d539611907808de22e948fe8f</srcmd5>
+    <version>3.2.8</version>
+    <time>1242416751</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>dd193d0e8654f84ba7043399475b50ca</srcmd5>
+    <version>3.2.8</version>
+    <time>1245447326</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>c8a51b5c78a0242e2330089626fe162b</srcmd5>
+    <version>3.2.8</version>
+    <time>1250255233</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 17779 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>a8e0adc7f05989b958f2db0dc07e53a2</srcmd5>
+    <version>3.2.8</version>
+    <time>1251500965</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 19160 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>8e47343b1418d574e4db4b175749a60e</srcmd5>
+    <version>3.2.8</version>
+    <time>1252579214</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 20292 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>8e47343b1418d574e4db4b175749a60e</srcmd5>
+    <version>3.2.8</version>
+    <time>1252579214</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 20292 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>37490e5285bd8edd039eb2908fd06d17</srcmd5>
+    <version>3.2.8</version>
+    <time>1259322225</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 25046 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>3db13285903ad2795efb07e66f8a43a9</srcmd5>
+    <version>3.2.8</version>
+    <time>1263480105</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 29078 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>e581e08ee1e720b140586e145bf9e88c</srcmd5>
+    <version>3.2.8</version>
+    <time>1264787551</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 30830 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="31" vrev="11">
+    <srcmd5>6a022574bd6d92cc8962df48a670f4a7</srcmd5>
+    <version>3.2.8</version>
+    <time>1266509475</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 32863 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="32" vrev="12">
+    <srcmd5>262aae91ab186380255c855f02f9bad8</srcmd5>
+    <version>3.2.8</version>
+    <time>1266974712</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 33161 from user seife
+</comment>
+    <requestid>33161</requestid>
+  </revision>
+  <revision rev="33" vrev="13">
+    <srcmd5>99deb5ec156011d6f085f4d2760519f8</srcmd5>
+    <version>3.2.8</version>
+    <time>1267751141</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 33788 from user WernerFink
+</comment>
+    <requestid>33788</requestid>
+  </revision>
+  <revision rev="34" vrev="14">
+    <srcmd5>718ad4842044ed6bd63a4b675a5eb6af</srcmd5>
+    <version>3.2.8</version>
+    <time>1268925789</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="35" vrev="15">
+    <srcmd5>d67c7e0b6980c4130db451ff43bbe3d7</srcmd5>
+    <version>3.2.8</version>
+    <time>1277714160</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 42073 from user prusnak
+</comment>
+    <requestid>42073</requestid>
+  </revision>
+  <revision rev="36" vrev="17">
+    <srcmd5>d67c7e0b6980c4130db451ff43bbe3d7</srcmd5>
+    <version>3.2.8</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="37" vrev="18">
+    <srcmd5>d67c7e0b6980c4130db451ff43bbe3d7</srcmd5>
+    <version>3.2.8</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="38" vrev="19">
+    <srcmd5>9eb2be7d601364ae479d1281ac015b36</srcmd5>
+    <version>3.2.8</version>
+    <time>1279650750</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 43455 from user coolo
+</comment>
+    <requestid>43455</requestid>
+  </revision>
+  <revision rev="39" vrev="20">
+    <srcmd5>e3db17f9af4fa8839cd94f1f4b30d182</srcmd5>
+    <version>3.2.8</version>
+    <time>1285062914</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 48560 from user WernerFink
+</comment>
+    <requestid>48560</requestid>
+  </revision>
+  <revision rev="40" vrev="21">
+    <srcmd5>5e005b32ec0c2a689f75a69d233c6c6a</srcmd5>
+    <version>3.2.8</version>
+    <time>1286493991</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/procps based on submit request 49740 from user WernerFink
+</comment>
+    <requestid>49740</requestid>
+  </revision>
+  <revision rev="41" vrev="22">
+    <srcmd5>bc5300a57591fea74f3dbafccd4e4e5d</srcmd5>
+    <version>3.2.8</version>
+    <time>1288691945</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51638 from user WernerFink
+</comment>
+    <requestid>51638</requestid>
+  </revision>
+  <revision rev="42" vrev="23">
+    <srcmd5>cdc8fcca71f7ef89c88809910bf51ab3</srcmd5>
+    <version>3.2.8</version>
+    <time>1288691952</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51638
+</comment>
+  </revision>
+  <revision rev="43" vrev="24">
+    <srcmd5>70f064555dc4475b1eb9bb576f94f592</srcmd5>
+    <version>3.2.8</version>
+    <time>1291587693</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54451 from user WernerFink
+</comment>
+    <requestid>54451</requestid>
+  </revision>
+  <revision rev="44" vrev="25">
+    <srcmd5>027a3d3bbe22f602dffef756892d20e5</srcmd5>
+    <version>3.2.8</version>
+    <time>1291587701</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54451
+</comment>
+  </revision>
+  <revision rev="45" vrev="28">
+    <srcmd5>027a3d3bbe22f602dffef756892d20e5</srcmd5>
+    <version>3.2.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="46" vrev="29">
+    <srcmd5>41b41a16e509c8d41023e1ba6d867d57</srcmd5>
+    <version>3.2.8</version>
+    <time>1300868364</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64891 from user licensedigger
+</comment>
+    <requestid>64891</requestid>
+  </revision>
+  <revision rev="47" vrev="30">
+    <srcmd5>4eed1181616a36cbe6b881de597de00b</srcmd5>
+    <version>3.2.8</version>
+    <time>1300868374</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64891
+</comment>
+  </revision>
+  <revision rev="48" vrev="31">
+    <srcmd5>f140b8d93b4582792eb72fca48a25cd3</srcmd5>
+    <version>3.2.8</version>
+    <time>1304925233</time>
+    <user>saschpe</user>
+    <comment>- boot.sysctl: Add support for loading defaults from
+  /boot/sysctl.conf-$(uname -r) before loading /etc/sysctl.conf
+  to allow each kernel flavor to adjust defaults without
+  different kernel configuration options.
+
+The HEAD kernel has support for generating these files now. (forwarded request 69787 from jeff_mahoney)</comment>
+    <requestid>69788</requestid>
+  </revision>
+  <revision rev="49" vrev="32">
+    <srcmd5>580a218c87e879ba37291c477a1ac28f</srcmd5>
+    <version>3.2.8</version>
+    <time>1304925244</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69788
+</comment>
+  </revision>
+  <revision rev="50" vrev="33">
+    <srcmd5>65c801cfee31b5c401b3b0b9f0e6166b</srcmd5>
+    <version>3.2.8</version>
+    <time>1306740443</time>
+    <user>saschpe</user>
+    <comment>- load sysctls earlier (bnc#664550)
+- move distro defaults to /lib/sysctl.d to avoid .rpmnew files
+- enable IPv6 privacy by default (bnc#678066)
+
+I've sent the --system and --pattern path upstream but they weren't accepted
+yet. So this is tentative but we need the /lib/sysctl.d feature to be able to
+provide distro defaults in a sane way. (forwarded request 71353 from lnussel)</comment>
+    <requestid>71850</requestid>
+  </revision>
+  <revision rev="51" vrev="34">
+    <srcmd5>cd265e788481c552843f3b17402664a5</srcmd5>
+    <version>3.2.8</version>
+    <time>1306740454</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71850
+</comment>
+  </revision>
+  <revision rev="52" vrev="35">
+    <srcmd5>cf2a18e643dd95d42d6fa90fbf25e51f</srcmd5>
+    <version>3.2.8</version>
+    <time>1311413987</time>
+    <user>saschpe</user>
+    <comment>-  Ignore new smaps entries AnonHugePages and Locked (bnc#706942)</comment>
+    <requestid>76798</requestid>
+  </revision>
+  <revision rev="53" vrev="36">
+    <srcmd5>b439d719493b463f150d4ec09e79f984</srcmd5>
+    <version>3.2.8</version>
+    <time>1311413997</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76798
+</comment>
+  </revision>
+  <revision rev="54" vrev="37">
+    <srcmd5>a0f748edbc463b418f243560e3de9165</srcmd5>
+    <version>3.2.8</version>
+    <time>1314189432</time>
+    <user>saschpe</user>
+    <comment>- Add large (p)cpu patch from Tony Ernst (bnc#713482) 
+- Add petabytes patch from Tony Ernst (bnc#713482)</comment>
+    <requestid>79643</requestid>
+  </revision>
+  <revision rev="55" vrev="38">
+    <srcmd5>134b6f8e27f6f8689da521597bf151e2</srcmd5>
+    <version>3.2.8</version>
+    <time>1314189440</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79643
+</comment>
+  </revision>
+  <revision rev="56" vrev="39">
+    <srcmd5>09928343fe24f0a373f2ad633ae1e15f</srcmd5>
+    <version>3.2.8</version>
+    <time>1314602477</time>
+    <user>saschpe</user>
+    <comment>- add some docu to /etc/sysctl.conf (bnc#700174)
+
+- make --system switch compatible with udev/systemd scheme</comment>
+    <requestid>79879</requestid>
+  </revision>
+  <revision rev="57" vrev="40">
+    <srcmd5>5da2fb77eb4919c274bd7af336bcd58d</srcmd5>
+    <version>3.2.8</version>
+    <time>1314602485</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79879
+</comment>
+  </revision>
+  <revision rev="58" vrev="41">
+    <srcmd5>a4ab00b78b237f7391553117cece0fa4</srcmd5>
+    <version>3.2.8</version>
+    <time>1317744871</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86448 from uli_suse)</comment>
+    <requestid>86465</requestid>
+  </revision>
+  <revision rev="59" vrev="43">
+    <srcmd5>a4ab00b78b237f7391553117cece0fa4</srcmd5>
+    <version>3.2.8</version>
+    <time>1319182371</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="60" vrev="44">
+    <srcmd5>c249699c83f1f6b0227bda7416281721</srcmd5>
+    <version>3.2.8</version>
+    <time>1320488614</time>
+    <user>coolo</user>
+    <comment>- Disable auto-closing of cd tray bnc#659153 (forwarded request 89545 from namtrac)</comment>
+    <requestid>89958</requestid>
+  </revision>
+  <revision rev="61" vrev="45">
+    <srcmd5>5e46b1356dea97238c036794d2bc9c39</srcmd5>
+    <version>3.2.8</version>
+    <time>1322073459</time>
+    <user>coolo</user>
+    <comment>- Work around stupid build system
+
+- Add patch to use libtinfo if available</comment>
+    <requestid>93134</requestid>
+  </revision>
+  <revision rev="62" vrev="46">
+    <srcmd5>d1b950fc06fa3f85403d8ce03c12ec25</srcmd5>
+    <version>3.2.8</version>
+    <time>1323193995</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="63" vrev="47">
+    <srcmd5>336f6de217a43b0656e41b7f2c3fce6c</srcmd5>
+    <version>3.2.8</version>
+    <time>1324475897</time>
+    <user>coolo</user>
+    <comment>- Avoid segfault with top when /proc is not readable (bnc#733753)</comment>
+    <requestid>97185</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>b243afdaf785caa2a0b22a1deddfb918</srcmd5>
+    <version>3.3.3</version>
+    <time>1339076363</time>
+    <user>coolo</user>
+    <comment>- Avoid to be fooled by a former errno due not existing system
+  file as this might cause failing pwdx 
+
+- Avoid UNKNOWN version due git checkout, use tag version
+
+- Make our w-notruncate patch file lines dynamically that is use
+  the string and not the umtp field lengths
+
+- Make /bin -&gt; /usr/bin a %bcond 
+
+- Allow SUSE specific pmap to list results for more than one pid 
+
+- Make SUSE specific pmap smart, that is detect only new entries
+  in smaps if environment variable  MALLOC_CHECK_ is set, for
+  older kernels ignore entries which are not found.
+
+- For legacy readd SUSE specific pmap
+
+- Update to procps-ng-3.3.3
+  * watch -g command repeats until something changes
+  * Changed labels of kB etc to KiB Debian #662786
+  * top supports hotplugged memory and cpus Debian #351934, #459287
+  * top %cpu not distorted when switch to/from threads Debian #441166
+  * top can read old toprc configuration files Debian #651213, #651863
+  * top supports input paste once again Debian #663334
+  * top -p avoids SEGV when pid doesn't exist Debian 668335
+  * Various DejaGNU test cases fixed
+  * pgrep.1 graoff syntax fix Debian #665425
+  * sysctl avoid crash when -p file has unexpected input
+  * sysctl .conf off-by-one error Debian #669128</comment>
+    <requestid>123803</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>b243afdaf785caa2a0b22a1deddfb918</srcmd5>
+    <version>3.3.3</version>
+    <time>1340184018</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>ccacae4ca37229de54958834b0b7c610</srcmd5>
+    <version>3.3.3</version>
+    <time>1341833434</time>
+    <user>coolo</user>
+    <comment>- Allow numeric user ids in top even if it does not exist in passwd
+  as such an id may listed due an uid from an chroot environment</comment>
+    <requestid>127168</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>aa4ac6b23a90d22c29c4540c4a757df6</srcmd5>
+    <version>3.3.5</version>
+    <time>1351874448</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>139933</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>10ec2e47558af27e363a2a7c3bd0e6bf</srcmd5>
+    <version>3.3.5</version>
+    <time>1355914319</time>
+    <user>coolo</user>
+    <comment>- Add procps-v3.3.5-top-locale.patch (bnc#794678)</comment>
+    <requestid>145787</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>6b2e24093ceaf1f95832b0efbf495abd</srcmd5>
+    <version>3.3.5</version>
+    <time>1358413014</time>
+    <user>coolo</user>
+    <comment>- Make rpmlint happy 
+
+- Remove redundant tags/sections
+- Update homepage URLs</comment>
+    <requestid>148550</requestid>
+  </revision>
+  <revision rev="70" vrev="5">
+    <srcmd5>6b2e24093ceaf1f95832b0efbf495abd</srcmd5>
+    <version>3.3.5</version>
+    <time>1359109956</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="71" vrev="6">
+    <srcmd5>53e7a1a216c26db328ded585978d0ab1</srcmd5>
+    <version>3.3.5</version>
+    <time>1360704794</time>
+    <user>coolo</user>
+    <comment>- boot.sysctl is not suitable for distros with systemd, this
+  task is performed by systemd-sysctl(8) now.
+ - the &quot;ad-hoc&quot; test for pmap does not work in all systems, remove it. (forwarded request 155058 from elvigia)</comment>
+    <requestid>155229</requestid>
+  </revision>
+  <revision rev="72" vrev="7">
+    <srcmd5>900ef7fe1da688bbea8a210f45185020</srcmd5>
+    <version>3.3.5</version>
+    <time>1369641468</time>
+    <user>coolo</user>
+    <comment>- enable hard- and symlink protection (bnc#821585)</comment>
+    <requestid>176478</requestid>
+  </revision>
+  <revision rev="73" vrev="8">
+    <srcmd5>df6153329c4ad073715bee8b05ebc666</srcmd5>
+    <version>3.3.5</version>
+    <time>1369719690</time>
+    <user>coolo</user>
+    <comment>- move sysctl defaults to aaa_base (bnc#820443)</comment>
+    <requestid>176738</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>7dc55eb393b6da9340e3e1b158a01675</srcmd5>
+    <version>3.3.8</version>
+    <time>1370432099</time>
+    <user>coolo</user>
+    <comment>Update to procps-ng-3.3.8</comment>
+    <requestid>176965</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>19bdfbdca406cd6889ba092582d49eca</srcmd5>
+    <version>3.3.8</version>
+    <time>1372438542</time>
+    <user>coolo</user>
+    <comment>- Add tow upstream patches
+  0001-top-trade-two-groff_mdoc-macros-for-groff-equivalent.patch
+  0002-library-for-atexit-support-fix-fileutils-for-EPIPE.patch 
+
+- Add upstream patch to use pecific libnuma.so.1 shared libray for
+  top instead of the devel version libnuma.so</comment>
+    <requestid>181052</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>6fb663f7d5512bf52d969744244a9953</srcmd5>
+    <version>3.3.8</version>
+    <time>1374758121</time>
+    <user>coolo</user>
+    <comment>- Add three upstream patches
+  0001-top-enable-screen-contents-preservation-at-endofjob.patch
+  0001-top-refine-some-miscellaneous-signals-interrupt-stuf.patch
+  0002-top-cursor-repositioning-includes-line-oriented-inpu.patch</comment>
+    <requestid>184310</requestid>
+  </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>f95b825699c0b75f9850ffb28b5d1349</srcmd5>
+    <version>3.3.8</version>
+    <time>1375628867</time>
+    <user>coolo</user>
+    <comment>- Add patch procps-ng-3.3.8-vmstat-terabyte.dif to readd last
+  trifle rest of the old terabyte patch (is this really required?)</comment>
+    <requestid>185612</requestid>
+  </revision>
+  <revision rev="78" vrev="6">
+    <srcmd5>f95b825699c0b75f9850ffb28b5d1349</srcmd5>
+    <version>3.3.8</version>
+    <time>1379664074</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="79" vrev="7">
+    <srcmd5>ec7bef29859a467cb0720410144aa1b8</srcmd5>
+    <version>3.3.8</version>
+    <time>1380217370</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200720</requestid>
+  </revision>
+  <revision rev="80" vrev="8">
+    <srcmd5>8135183ddcc348473e5d5e7ff439fc16</srcmd5>
+    <version>3.3.8</version>
+    <time>1380608721</time>
+    <user>coolo</user>
+    <comment>- Enable legacy pmap
+- Fix crash of legacy pmap (bnc#842340)</comment>
+    <requestid>201481</requestid>
+  </revision>
+  <revision rev="81" vrev="9">
+    <srcmd5>563fd8cecd8c7482560cb90ca6eff71b</srcmd5>
+    <version>3.3.8</version>
+    <time>1381154281</time>
+    <user>scarabeus_factory</user>
+    <comment>Urgent fix to make pmap work agint with kernel 3.10</comment>
+    <requestid>202533</requestid>
+  </revision>
+  <revision rev="82" vrev="10">
+    <srcmd5>dcf94a4f69d7fac30d78bdfd6608e727</srcmd5>
+    <version>3.3.8</version>
+    <time>1387453866</time>
+    <user>coolo</user>
+    <comment>- Change patch procps-ng-3.3.8-accuracy.dif to really use finally
+  jiffies to calculate %CPU output (bnc#855861)</comment>
+    <requestid>211216</requestid>
+  </revision>
+  <revision rev="83" vrev="11">
+    <srcmd5>72a03f1ca7b9516805f1f6798c50f8d5</srcmd5>
+    <version>3.3.8</version>
+    <time>1395897323</time>
+    <user>coolo</user>
+    <comment>- Ignore scan_unevictable_pages sysctl entry (bnc#868888)
+  procps-ng-3.3.8-ignore-scan_unevictable_pages.patch (forwarded request 227459 from tiwai)</comment>
+    <requestid>227466</requestid>
+  </revision>
+  <revision rev="84" vrev="12">
+    <srcmd5>b7bb9355db92dad1ab5a522e07d57590</srcmd5>
+    <version>3.3.8</version>
+    <time>1400301786</time>
+    <user>coolo</user>
+    <comment>- Fix missing job in D states in idle mode of top, therefore
+  update to latest top of procps-ng git HEAD
+  * Rename the patches
+    0001-top-enable-screen-contents-preservation-at-endofjob.patch
+    0001-top-refine-some-miscellaneous-signals-interrupt-stuf.patch
+    0001-top-trade-two-groff_mdoc-macros-for-groff-equivalent.patch
+    0002-library-for-atexit-support-fix-fileutils-for-EPIPE.patch
+    0002-top-cursor-repositioning-includes-line-oriented-inpu.patch
+    to
+    0002-top-trade-two-groff_mdoc-macros-for-groff-equivalent.patch
+    0003-library-for-atexit-support-fix-fileutils-for-EPIPE.patch
+    0004-top-enable-screen-contents-preservation-at-end-of-jo.patch
+    0005-top-refine-some-miscellaneous-signals-interrupt-stuf.patch
+    0006-top-cursor-repositioning-includes-line-oriented-inpu.patch
+  * Add upstream patches
+    0002-top-trade-two-groff_mdoc-macros-for-groff-equivalent.patch
+    0003-library-for-atexit-support-fix-fileutils-for-EPIPE.patch
+    0004-top-enable-screen-contents-preservation-at-end-of-jo.patch
+    0005-top-refine-some-miscellaneous-signals-interrupt-stuf.patch
+    0006-top-cursor-repositioning-includes-line-oriented-inpu.patch
+    0007-top-correct-improve-or-otherwise-tweak-some-comments.patch
+    0008-top-tweak-cursor-state-code-to-swat-an-obscure-bugle.patch
+    0009-top-correct-cursor-positioning-for-all-Z-or-C-cases.patch
+    0010-ps-address-a-potential-newline-quirk-the-libselinux.patch
+    0012-top-hint-that-Summary-Area-cached-is-Mem-not-Swap.patch
+    0013-top-modest-efficiency-change-to-message-line-handlin.patch
+    0014-top-correct-improve-and-otherwise-tweak-configs_read.patch
+    0015-top-swat-bug-affecting-batch-mode-and-width-provisio.patch
+    0018-top-restore-the-lost-final-newline-when-in-Batch-mod.patch
+    0019-top-swat-bug-impacting-idle-mode-user-filtering.patch</comment>
+    <requestid>234177</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>51f8ec792f7ce5361976ce200fc594b2</srcmd5>
+    <version>3.3.9</version>
+    <time>1401167338</time>
+    <user>coolo</user>
+    <comment>- Require the systemd libraries for build to allow the move
+  of systemd.pc back to systemd
+
+- Update to procps-ng-3.3.9
+  * kernel namespaces support added to skill, pgrep, ps and top
+  * pidof was reimplemented from scratch (replacing sysvinit pidof)
+  * ps has configurable libselinux support (--enable-libselinux)
+  * ps provides for display of systemd slice unit (--with-systemd)
+  * free can once again report non-zero 'shared' memory
+  * sysctl provides '--system' to ignore missing /etc/sysctl.conf
+  * watch interval capacity was increased - debian #720445
+  * pwdx no longer fails in a nonexistent locale - debian #718766
+  * top clarified summary area Mem/Swap stats - debian #718670
+  * top batch mode -w (width) abend fixed - debian #721204
+  * top man page removed 'Bd/Ed' mdoc macros - debian #725713
+  * top no longer clears screen at exit - redhat #977561
+  * top adapted to potential libnuma stderr message - redhat #998678
+  * top added missing batch mode newline - redhat #1008674
+- Modify patches
+  procps-ng-3.3.8-watch.patch becomes procps-ng-3.3.9-watch.patch
+  procps-v3.3.4-w-notruncate.diff becomes procps-ng-3.3.9-w-notruncate.diff
+  procps-ng-3.3.8-top.1.diff
+  procps-ng-3.3.8-top.1.diff
+  procps-v3.3.4-large_pcpu.patch
+  procps-ng-3.3.8-bnc634071_procstat2.diff
+- Remove patches now upstream
+  procps-v3.3.4-stealtime.patch is upstream
+  procps-ng-3.3.8-libselinux.patch
+  procps-ng-3.3.8-shmem.patch
+  0001-top-add-the-major-version-to-dlopen-of-libnuma-sonam.patch</comment>
+    <requestid>235000</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>7c30809022a8e70d2635f68c34311576</srcmd5>
+    <version>3.3.9</version>
+    <time>1404157397</time>
+    <user>coolo</user>
+    <comment>- Remove patches
+  procps-v3.3.3-chroot.diff
+  procps-v3.3.5-top-locale.patch
+  as already included in upstream code (bnc#884502)</comment>
+    <requestid>238742</requestid>
+  </revision>
+  <revision rev="87" vrev="4">
+    <srcmd5>7c30809022a8e70d2635f68c34311576</srcmd5>
+    <version>3.3.9</version>
+    <time>1409302752</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="88" vrev="5">
+    <srcmd5>d743a2a35f390365d0101ccc400b21d3</srcmd5>
+    <version>3.3.9</version>
+    <time>1410534253</time>
+    <user>coolo</user>
+    <comment>- Correct package name in descriptions: procps, not props (forwarded request 248749 from jengelh)</comment>
+    <requestid>248969</requestid>
+  </revision>
+  <revision rev="89" vrev="6">
+    <srcmd5>75bbdace6531fd5ad38bf7e23daf2d0a</srcmd5>
+    <version>3.3.9</version>
+    <time>1417869937</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch procps-ng-3.3.9-errno.patch to avoid leftover errno
+  from setlocale() (bsc#908516)</comment>
+    <requestid>264116</requestid>
+  </revision>
+  <revision rev="90" vrev="7">
+    <srcmd5>1edf61d49089bb24d0e4a35acd43b9ff</srcmd5>
+    <version>3.3.9</version>
+    <time>1419809586</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>266252</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>424a34260ade1f22c42fbf8958b68a70</srcmd5>
+    <version>3.3.10</version>
+    <time>1423215875</time>
+    <user>dimstar_suse</user>
+    <comment>- Update tp procps-ng-3.3.10
+  * sysctl --system loads default config file - Debian #732920
+  * ps doesn't exit on SIGCONT
+  * top better accommodates discontinuous NUMA nodes
+  * ps cmdline trailing spaces suppressed under zsh, redhat #1057600
+  * kill restores the '-HUP -1' functionality
+  * vmstat -d / -p segfault eliminated when /sys is not mounted
+  * pgrep properly shows full command line when -au are combined
+  * vmstat supports timestamps with -t/--timestamp option
+  * top is now immune to distortions when system time is reset
+  * top standardized the &lt;Esc&gt; key support with prompted input
+  * top missing summary area info added to man document, ubuntu #574624
+  * top properly responds to the current locale LC_NUMERIC setting
+  * top provides alternate graph modes for cpu states and memory usage
+  * top offers new startup defaults, plus ./configure --disable-modern-top
+  * top exploits MemAvailable field and offers improved memory statistics
+  * ps new --quick-pid option, a more efficient alternative to --pid option
+  * usernames up to 32 characters now accommodated (up from 19), redhat #1112734
+  * free exploits MemAvailable field and offers improved memory statistics
+  * free considers slabs in displayed totals, debian #565518, ubuntu #126329
+  * watch supports new ANSI styles and background colors
+- Remove the patches now upstream
+  0023-top-do-not-forget-the-fscanf-s-terminating-null-byte.patch
+  0024-sysctl-system-loads-default-config-file.patch
+  0025-Split-help-lines-to-help-translators.patch
+  0026-library-fixing-uninitialized-variable-pos-in-whattim.patch
+  0027-pgrep-Fixing-memory-leak-in-do_regcomp.patch
+  0028-sysctl-Fixing-memory-leaks-in-PreloadSystem.patch
+  0029-ps-ignore-SIGCONT.patch
+  0031-vmstat-wide-output-still-not-wide-enough.patch</comment>
+    <requestid>283978</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>17d5d8a1989e07044af77fd617e199df</srcmd5>
+    <version>3.3.10</version>
+    <time>1427652890</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293077</requestid>
+  </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>1d35fc00432e6d3be50af2be8abb2dfa</srcmd5>
+    <version>3.3.10</version>
+    <time>1433312208</time>
+    <user>dimstar_suse</user>
+    <comment>- Reintroduce the corrected patch procps-ng-3.3.9-w-notruncate.diff
+  to have a working --no-truncat option back for `w' (boo#932950)</comment>
+    <requestid>309724</requestid>
+  </revision>
+  <revision rev="94" vrev="4">
+    <srcmd5>a0a33990f969b373b072e02f5817fb18</srcmd5>
+    <version>3.3.10</version>
+    <time>1437477869</time>
+    <user>coolo</user>
+    <comment>- Make it build with every ncurses library ABI
+
+- restore original top defaults. The new ones result in half of the display
+  occupied with cpu information and the other half with systemd children.</comment>
+    <requestid>315781</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>9f8b29436e4ae01eb252a212ad349848</srcmd5>
+    <version>3.3.11</version>
+    <time>1443071846</time>
+    <user>coolo</user>
+    <comment>- Update to procps-ng-3.3.11
+  * libprocps API 5:0:0
+  * pgrep: don't crash with -a -w flags. Merge 33, Debian #768190
+  * skill: command line with signal number interpreted correctly
+  * pmap: print process name even if smaps is unreadable Debian #775624
+  * ps: sort by etimes column, uses etime Debian #794619
+  * ps, top: Add support for LXC containers. Ubuntu #1174911
+  * w: work with smaller window sizes Debian #183394
+  * w: correctly find &quot;best&quot; proc with pid wrap
+  * library: use merged systemd library Debian #731256
+  * kill,skill,pkill: fix option parsing
+  * top once again will fully honor a saved rcfile,
+    without requiring --disable-modern-top. Debian #762928, #762947
+  * vmstat: Not crash if partition appears before disk Debian #736628
+  * free: -s without -c works Debian #733758
+- Remove the patch procps-v3.3.4-w-simply-work.diff as now upstream
+- Port our legacy pmap to new procps-ng-3.3.11
+
+- Update to procps-ng-3.3.10</comment>
+    <requestid>332001</requestid>
+  </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>364fc63d40c70704264f8818e8ca985c</srcmd5>
+    <version>3.3.11</version>
+    <time>1447766362</time>
+    <user>dimstar_suse</user>
+    <comment>- Pmap: support &quot;SwapPss&quot; which shows proportional swap share
+  of a process similar to the PSS (proportional set size)
+  of a process which is the count of pages it has in memory.</comment>
+    <requestid>344049</requestid>
+  </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>428fbe43f86c05186fd5ccda08b86f82</srcmd5>
+    <version>3.3.11</version>
+    <time>1453997881</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove SUSE version of pmap as this stumble over new entries
+  in processes smaps files (boo#962275)
+- Add patch procps-ng-3.3.11-pmap4suse.patch to let upstream pmap
+  behave similar to old suse pmap</comment>
+    <requestid>356243</requestid>
+  </revision>
+  <revision rev="98" vrev="4">
+    <srcmd5>927d779a19bee04c5405d81a297448b4</srcmd5>
+    <version>3.3.11</version>
+    <time>1464964542</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid line doubling of pmap output due new SwapPss entry (boo#982090)</comment>
+    <requestid>398935</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>84f2918b881ad519345aed883fbde506</srcmd5>
+    <version>3.3.12</version>
+    <time>1471504506</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid fillup and insserv on modern systems (bsc#992845) 
+
+- Use test suite but avoid the w command due dummy utmp 
+  * This requires dejagnu for the runtest command
+  * This requires screen to be able to provide a tty
+- Add patch procps-ng-3.3.12-strtod.patch to fix missed extern
+  declaration of strtod_nol_or_err()
+
+- Update to procps-ng-3.3.12
+  * libprocps API 6:0:0
+  * build: formerly optional --enable-oomem unconditional
+  * free: man document rewritten for shared                Debian #755233
+  * free: interpret intervals in non-locale way            Debian #692113
+  * kill: report error if cannot kill process              Debian #733172
+  * library: refine calculation of 'cached' memory
+  * library: find tty quicker                              Debian #770215
+  * library: eliminate threads display inconsistencies     Redhat #1284091
+  * pidof: check cmd if space found in argv0
+  * pmap: fixed detail parsing on long mapping lines
+  * pmap: fix occasional incorrect memory usage values     Redhat #1262864
+  * ps: sort by cgroup                                     Debian #692279
+  * ps: display control group name with -o cgname
+  * ps: fallback to attr/current for context               Debian #786956
+  * ps: enabled broken 'thcount' option                    Redhat #1174313
+  * tests: conditionally add prctl                         Debian #816237
+  * top: displays the 3 new linux-4.5 RES memory fields
+  * top: man page memory fields corrected + new narrative
+  * top: added display of CGNAME (control group name)
+  * top: is now more responsive to cpus brought online
+  * top: namespace cols use suppressible zero</comment>
+    <requestid>418010</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>d33ca602efbbe48cab99259fd22ff46e</srcmd5>
+    <version>3.3.12</version>
+    <time>1484474160</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>446822</requestid>
+  </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>817089adafa45f40be7763d6757c5ca8</srcmd5>
+    <version>3.3.12</version>
+    <time>1485862426</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452705</requestid>
+  </revision>
+  <revision rev="102" vrev="4">
+    <srcmd5>0967804c1dc1277903f8d721595a7a0c</srcmd5>
+    <version>3.3.12</version>
+    <time>1494345478</time>
+    <user>dimstar_suse</user>
+    <comment>- Explain option --no-truncate of command w</comment>
+    <requestid>491252</requestid>
+  </revision>
+  <revision rev="103" vrev="5">
+    <srcmd5>bc30cfab641cd69a4e884f725dae07f0</srcmd5>
+    <version>3.3.12</version>
+    <time>1496327318</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch procps-ng-3.3.12-sysctl-a.patch (bsc#1039941, had been
+  accepted upstream) that is allow content lines below /proc/sys
+  longer than 1024 characters</comment>
+    <requestid>497307</requestid>
+  </revision>
+  <revision rev="104" vrev="6">
+    <srcmd5>9c012137cf9adbd82b9fce2ab0b4aa3e</srcmd5>
+    <version>3.3.12</version>
+    <time>1499161980</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506965</requestid>
+  </revision>
+  <revision rev="105" vrev="7">
+    <srcmd5>1853b740d45fdb69090f620be9943b67</srcmd5>
+    <version>3.3.12</version>
+    <time>1499880611</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch procps-ng-3.3.12-sysctl-iobuf.patch to increase I/O
+  buffer for reading and writing values below /proc/sys (bsc#1039941)
+- Add patch procps-ng-3.3.12-stable_secret.patch to avoid messages
+  on unset /proc/sys/net/ipv6/conf/*/stable_secret due EIO</comment>
+    <requestid>508477</requestid>
+  </revision>
+  <revision rev="106" vrev="8">
+    <srcmd5>97a0ca20397f7ff9cffb0d0c520c231b</srcmd5>
+    <version>3.3.12</version>
+    <time>1502559617</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514794</requestid>
+  </revision>
+  <revision rev="107" vrev="9">
+    <srcmd5>ec80bd70cde199df5ec43e678165a103</srcmd5>
+    <version>3.3.12</version>
+    <time>1515342040</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>560027</requestid>
+  </revision>
+  <revision rev="108" vrev="10">
+    <srcmd5>17bfeaf1ac7589950a3236bdefc0a3a3</srcmd5>
+    <version>3.3.12</version>
+    <time>1517668550</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch procps-ng-3.3.12-sysctl-iobuf-write.patch (bsc#1077746)
+- Add patches
+   0001-Preload-sysctl-lines-even-if-longer-than-stdio-buffe.patch
+   0002-Add-flexible-buffered-I-O-based-on-fopencookie-3.patch
+   0003-Use-new-standard-I-O-for-reading-writing-sysctl-valu.patch
+  from my project https://gitlab.com/bitstreamout/procps/tree/procio 
+  which implements a flexible buffer for reading and writing values
+  below /proc/sys (bsc#1039941)</comment>
+    <requestid>570891</requestid>
+  </revision>
+  <revision rev="109" vrev="11">
+    <srcmd5>3e0db9479b0be661ffab3c8c41e656e4</srcmd5>
+    <version>3.3.12</version>
+    <time>1519902403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580529</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>d7c7bdfb574846e552099772fcf87301</srcmd5>
+    <version>3.3.13</version>
+    <time>1524237884</time>
+    <user>dimstar_suse</user>
+    <comment>- Update descriptions.
+
+- Remove sysvinit boot script (forwarded request 593854 from jengelh)</comment>
+    <requestid>593914</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>a06e9153efb295635fb8a42db6791c3c</srcmd5>
+    <version>3.3.14</version>
+    <time>1524741695</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to procps-ng-3.3.14
+  * update translations
+  * library: build on non-glibc systems
+  * free: fix scaling on 32-bit systems
+  * Revert &quot;Support running with child namespaces&quot;</comment>
+    <requestid>600279</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>a51b41241865bfde25ab579e06b77f83</srcmd5>
+    <version>3.3.15</version>
+    <time>1529665874</time>
+    <user>maxlin_factory</user>
+    <comment>- Reference patch procps-ng-3.3.15-typo.patch this patch add a
+  missed parenthesis for a nroff macro that is \*We become \*(We
+  in line 2186 of top/top.1
+
+- Update to procps-ng-3.3.15 (bsc#1092100)
+  * library: Increment to 8:0:1
+    No removals, no new functions
+    Changes: slab and pid structures
+  * library: Just check for SIGLOST and don't delete it    issue #93
+  * library: Fix integer overflow and LPE in file2strvec   CVE-2018-1124
+  * library: Use size_t for alloc functions                CVE-2018-1126
+  * library: Increase comm size to 64
+  * pgrep: Fix stack-based buffer overflow                 CVE-2018-1125
+  * pgrep: Remove &gt;15 warning as comm can be longer        issue #92
+  * ps: Fix buffer overflow in output buffer, causing DOS  CVE-2018-1123
+  * ps: Increase command name selection field to 64
+  * top: Don't use cwd for location of config              CVE-2018-1122
+- Increase so major number</comment>
+    <requestid>614832</requestid>
+  </revision>
+</revisionlist>

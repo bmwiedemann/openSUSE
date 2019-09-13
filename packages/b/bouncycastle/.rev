@@ -1,0 +1,203 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ffce97a76a6f2d5eb012f87ea67c331e</srcmd5>
+    <version>1.46</version>
+    <time>1330966746</time>
+    <user>coolo</user>
+    <comment>add bouncycastle to openSUSE Factory
+
+WARNING: it is a crypto api, but I have used source file from Fedora project
+removing some of patented algorithms, so it might be safe from legal point of
+view</comment>
+    <requestid>106764</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a7714e35d92dbc66d698709d0dd62a48</srcmd5>
+    <version>1.46</version>
+    <time>1339620412</time>
+    <user>coolo</user>
+    <comment>- bumb target to 1.6</comment>
+    <requestid>124673</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a7714e35d92dbc66d698709d0dd62a48</srcmd5>
+    <version>1.46</version>
+    <time>1340183212</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>a7714e35d92dbc66d698709d0dd62a48</srcmd5>
+    <version>1.46</version>
+    <time>1359108713</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>61604df5f4965958ea323b0c9216aaaa</srcmd5>
+    <version>1.46</version>
+    <time>1378998308</time>
+    <user>scarabeus_factory</user>
+    <comment>jpackage-utils collison fix</comment>
+    <requestid>198682</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>61604df5f4965958ea323b0c9216aaaa</srcmd5>
+    <version>1.46</version>
+    <time>1379662052</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>dddfe5d88f4b22eba9eab0cd05bb9747</srcmd5>
+    <version>1.46</version>
+    <time>1386326698</time>
+    <user>coolo</user>
+    <comment>- Don't own /etc/java/security to not clash with javapackages-tools
+- Don't mark random files as config</comment>
+    <requestid>206870</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>e9bb4be6f817444504f847495a08dc2b</srcmd5>
+    <version>1.46</version>
+    <time>1400301805</time>
+    <user>coolo</user>
+    <comment>disable bytecode check on sle_11 (forwarded request 234210 from deadpoint)</comment>
+    <requestid>234217</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>bb116109bef715a90d74f9e8dcacaeeb</srcmd5>
+    <version>1.46</version>
+    <time>1405522176</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240333</requestid>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>bb116109bef715a90d74f9e8dcacaeeb</srcmd5>
+    <version>1.46</version>
+    <time>1409300579</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9286a384c669317ce9ebe30519c0c93c</srcmd5>
+    <version>1.50</version>
+    <time>1423732868</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 1.50 to match Fedora
+- Cleanup with spec-cleaner</comment>
+    <requestid>285095</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>02a9cfdaab03b76b8574303fe933242f</srcmd5>
+    <version>1.50</version>
+    <time>1424694120</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests on obs as they hang</comment>
+    <requestid>286920</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>93677d93960875d78b2f1c3d1db95d52</srcmd5>
+    <version>1.50</version>
+    <time>1427982867</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292605</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e11d36a068b5bdc835f04d47711353dd</srcmd5>
+    <version>1.53</version>
+    <time>1446048957</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.53 (latest upstream)
+  * No obvious changelog
+  * Fixes bnc#951727 CVE-2015-7940</comment>
+    <requestid>340552</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9ce7a2a91ed48f42d305714acc3178fd</srcmd5>
+    <version>1.54</version>
+    <time>1456821298</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.54:
+  * No obvious changelog to be found
+  * Fixes bnc#967521 CVE-2015-7575</comment>
+    <requestid>360600</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>97a4851aba132de222a0e618e09be2d0</srcmd5>
+    <version>1.54</version>
+    <time>1496230159</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496615</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>76984992e9a541102067f65923672258</srcmd5>
+    <version>1.54</version>
+    <time>1505333960</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>522009</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4435935b89112c5f9a4aed95a362a4c6</srcmd5>
+    <version>1.58</version>
+    <time>1505757032</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.58</comment>
+    <requestid>526278</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1a51c1f8435433d527f94d5ace50f7fe</srcmd5>
+    <version>1.59</version>
+    <time>1529666013</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616108</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>eb992a027215b9c15f00ec33b09fb12d</srcmd5>
+    <version>1.60</version>
+    <time>1532774231</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.60 bsc#1100694:
+  * CVE-2018-1000613 Use of Externally-ControlledInput to Select Classes or Code
+  * Release notes:
+    http://www.bouncycastle.org/releasenotes.html
+
+- Version update to 1.59:
+  * CVE-2016-1000338: Fix DSA ASN.1 validation during encoding of
+    signature on verification (boo#1095722).
+  * CVE-2016-1000339: Fix AESEngine key information leak via lookup
+    table accesses (boo#1095853).
+  * CVE-2016-1000340: Fix carry propagation bugs in the
+    implementation of squaring for several raw math classes
+    (boo#1095854).
+  * CVE-2016-1000341: Fix DSA signature generation vulnerability to
+    timing attack (boo#1095852).
+  * CVE-2016-1000342: Fix ECDSA ASN.1 validation during encoding of
+    signature on verification (boo#1095850).
+  * CVE-2016-1000343: Fix week default settings for private DSA key
+    pair generation (boo#1095849).
+  * CVE-2016-1000344: Remove DHIES from the provider to disable the
+    unsafe usage of ECB mode (boo#1096026).
+  * CVE-2016-1000345: Fix DHIES/ECIES CBC mode padding oracle
+    attack (boo#1096025).
+  * CVE-2016-1000346: Fix other party DH public key validation
+    (boo#1096024).
+  * CVE-2016-1000352: Remove ECIES from the provider to disable the
+    unsafe usage of ECB mode (boo#1096022).
+- bumb target to 1.6</comment>
+    <requestid>624022</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>9d3768a24367376df63547b7f4879f09</srcmd5>
+    <version>1.60</version>
+    <time>1537187171</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635816</requestid>
+  </revision>
+</revisionlist>

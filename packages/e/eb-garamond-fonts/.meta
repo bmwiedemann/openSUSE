@@ -1,0 +1,5 @@
+<package name="eb-garamond-fonts" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="M17N:fonts" package="eb-garamond-fonts"/>
+</package>

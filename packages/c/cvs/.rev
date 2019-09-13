@@ -1,0 +1,254 @@
+<revisionlist>
+  <revision rev="1" vrev="24">
+    <srcmd5>7d10b494afa4dd76ea505b7f9e9b0fe6</srcmd5>
+    <version>1.12.12</version>
+    <time>1166483732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="46">
+    <srcmd5>1554949c48766669001e78f09a833b07</srcmd5>
+    <version>1.12.12</version>
+    <time>1173311415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="48">
+    <srcmd5>f951eff73ade418c05a62fad72db71ac</srcmd5>
+    <version>1.12.12</version>
+    <time>1174592657</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="56">
+    <srcmd5>4aa73db4f927361111a34bfd0cb617e6</srcmd5>
+    <version>1.12.12</version>
+    <time>1178232386</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="68">
+    <srcmd5>db3dcf080c66b013897f926d214ea75c</srcmd5>
+    <version>1.12.12</version>
+    <time>1182273817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="89">
+    <srcmd5>00db08363ee374d65936158fd5fa67bf</srcmd5>
+    <version>1.12.12</version>
+    <time>1194643082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="129">
+    <srcmd5>5649b58d63df1cdf1e70d7c5c0198d69</srcmd5>
+    <version>1.12.12</version>
+    <time>1215528064</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="144">
+    <srcmd5>b1fccd4bb13f7e5aefa616b14bbafadc</srcmd5>
+    <version>1.12.12</version>
+    <time>1219094479</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="154">
+    <srcmd5>21b4528b0c32535369b0a3f3adce76b1</srcmd5>
+    <version>1.12.12</version>
+    <time>1240962578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="156">
+    <srcmd5>21b4528b0c32535369b0a3f3adce76b1</srcmd5>
+    <version>1.12.12</version>
+    <time>1240962578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="157">
+    <srcmd5>ab3c3ea939c43d26992d497694ff2da6</srcmd5>
+    <version>1.12.12</version>
+    <time>1264785278</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/cvs based on submit request 30741 from user coolo
+</comment>
+  </revision>
+  <revision rev="12" vrev="158">
+    <srcmd5>832dadfd3763356307269313b87ce438</srcmd5>
+    <version>1.12.12</version>
+    <time>1268923279</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="159">
+    <srcmd5>b1ac6c907e018fca56749069b2226182</srcmd5>
+    <version>1.12.12</version>
+    <time>1275323036</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/cvs based on submit request 40909 from user psmt
+</comment>
+    <requestid>40909</requestid>
+  </revision>
+  <revision rev="14" vrev="161">
+    <srcmd5>b1ac6c907e018fca56749069b2226182</srcmd5>
+    <version>1.12.12</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="162">
+    <srcmd5>b1ac6c907e018fca56749069b2226182</srcmd5>
+    <version>1.12.12</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="163">
+    <srcmd5>4032d7cf5ed09b0f3f263917f7b80ad7</srcmd5>
+    <version>1.12.12</version>
+    <time>1280742550</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/cvs based on submit request 44178 from user coolo
+</comment>
+    <requestid>44178</requestid>
+  </revision>
+  <revision rev="17" vrev="164">
+    <srcmd5>34612f93095cdc74c702ae698565807b</srcmd5>
+    <version>1.12.12</version>
+    <time>1285086525</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/cvs based on submit request 48659 from user coolo
+</comment>
+    <requestid>48659</requestid>
+  </revision>
+  <revision rev="18" vrev="167">
+    <srcmd5>34612f93095cdc74c702ae698565807b</srcmd5>
+    <version>1.12.12</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="168">
+    <srcmd5>85a2e500c6cfea2062eac6b8f922e865</srcmd5>
+    <version>1.12.12</version>
+    <time>1316440715</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 83161 from jengelh)</comment>
+    <requestid>83324</requestid>
+  </revision>
+  <revision rev="20" vrev="170">
+    <srcmd5>85a2e500c6cfea2062eac6b8f922e865</srcmd5>
+    <version>1.12.12</version>
+    <time>1319181838</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="171">
+    <srcmd5>19fb57cb64754a3668d2d0f90a7ee1ff</srcmd5>
+    <version>1.12.12</version>
+    <time>1323340060</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94950 from coolo)</comment>
+    <requestid>94986</requestid>
+  </revision>
+  <revision rev="22" vrev="172">
+    <srcmd5>1b0652debcc372b0f84815a480f67425</srcmd5>
+    <version>1.12.12</version>
+    <time>1329221111</time>
+    <user>coolo</user>
+    <comment>Fix CVE-2012-0804</comment>
+    <requestid>103744</requestid>
+  </revision>
+  <revision rev="23" vrev="173">
+    <srcmd5>1ba5a67442eae18666e69cdc77bacfad</srcmd5>
+    <version>1.12.12</version>
+    <time>1330007547</time>
+    <user>coolo</user>
+    <comment>Fix handling of proxy responses (bnc#744059)</comment>
+    <requestid>106524</requestid>
+  </revision>
+  <revision rev="24" vrev="175">
+    <srcmd5>1ba5a67442eae18666e69cdc77bacfad</srcmd5>
+    <version>1.12.12</version>
+    <time>1340183266</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="177">
+    <srcmd5>1ba5a67442eae18666e69cdc77bacfad</srcmd5>
+    <version>1.12.12</version>
+    <time>1359108792</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="178">
+    <srcmd5>68ac399b863825d5dcb068d803280553</srcmd5>
+    <version>1.12.12</version>
+    <time>1360062668</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 151119 from coolo)</comment>
+    <requestid>151169</requestid>
+  </revision>
+  <revision rev="27" vrev="179">
+    <srcmd5>6b8103cee568975f448ea16723be21e0</srcmd5>
+    <version>1.12.12</version>
+    <time>1364239023</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160553 from m_meister)</comment>
+    <requestid>160926</requestid>
+  </revision>
+  <revision rev="28" vrev="181">
+    <srcmd5>6b8103cee568975f448ea16723be21e0</srcmd5>
+    <version>1.12.12</version>
+    <time>1379662195</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="183">
+    <srcmd5>6b8103cee568975f448ea16723be21e0</srcmd5>
+    <version>1.12.12</version>
+    <time>1409300728</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="184">
+    <srcmd5>cf26b7c29a0633f8f9db5bf246cf0e39</srcmd5>
+    <version>1.12.12</version>
+    <time>1497949141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies:
+  * enable kerberos
+  * explicitly require ssh
+
+- Update bit with spec-cleaner
+- Use proper url for docu and do not recompress:
+  * OpenSourceDevWithCVS_2E.tar.gz instead of bz2
+- Add systemd socket service to replace the xinetd service</comment>
+    <requestid>503933</requestid>
+  </revision>
+  <revision rev="31" vrev="185">
+    <srcmd5>db2c1b091bdc370575250b00984b40f2</srcmd5>
+    <version>1.12.12</version>
+    <time>1503591685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>516133</requestid>
+  </revision>
+  <revision rev="32" vrev="186">
+    <srcmd5>d6d3ab4463c9d1e54708b1b84f48855b</srcmd5>
+    <version>1.12.12</version>
+    <time>1504103001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>519464</requestid>
+  </revision>
+  <revision rev="33" vrev="187">
+    <srcmd5>a7b97933371649173ec69751d37fc11d</srcmd5>
+    <version>1.12.12</version>
+    <time>1518513901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574721</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>df693a0ee49a4f5874a1caa2e636ff73</srcmd5>
+    <version>1.12.13</version>
+    <time>1538377429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636903</requestid>
+  </revision>
+</revisionlist>

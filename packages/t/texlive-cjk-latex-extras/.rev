@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f4ef0cd5ba4094b4230690b9b6c38edd</srcmd5>
+    <version>20070515</version>
+    <time>1181616364</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="167">
+    <srcmd5>f4ef0cd5ba4094b4230690b9b6c38edd</srcmd5>
+    <version>20070515</version>
+    <time>1181616364</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="168">
+    <srcmd5>66fac63699b1b8701e4690bd391e8a49</srcmd5>
+    <version>20070515</version>
+    <time>1245277717</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="170">
+    <srcmd5>66fac63699b1b8701e4690bd391e8a49</srcmd5>
+    <version>20070515</version>
+    <time>1245277717</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="171">
+    <srcmd5>3c54a017abfcccb45aa4a542a3fe859c</srcmd5>
+    <version>20070515</version>
+    <time>1268926326</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="173">
+    <srcmd5>3c54a017abfcccb45aa4a542a3fe859c</srcmd5>
+    <version>20070515</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="174">
+    <srcmd5>3c54a017abfcccb45aa4a542a3fe859c</srcmd5>
+    <version>20070515</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="177">
+    <srcmd5>3c54a017abfcccb45aa4a542a3fe859c</srcmd5>
+    <version>20070515</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="179">
+    <srcmd5>3c54a017abfcccb45aa4a542a3fe859c</srcmd5>
+    <version>20070515</version>
+    <time>1319182515</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="180">
+    <srcmd5>62cfd6d38c29974dbe98d67631f3c923</srcmd5>
+    <version>20070515</version>
+    <time>1323194892</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="182">
+    <srcmd5>62cfd6d38c29974dbe98d67631f3c923</srcmd5>
+    <version>20070515</version>
+    <time>1340184269</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="183">
+    <srcmd5>c0d366a94e79163501d8cbc43db464b6</srcmd5>
+    <version>20070515</version>
+    <time>1340619093</time>
+    <user>coolo</user>
+    <comment>Remove SuSEconfig.cjk-latex. (forwarded request 125437 from a_jaeger)</comment>
+    <requestid>125440</requestid>
+  </revision>
+  <revision rev="13" vrev="185">
+    <srcmd5>c0d366a94e79163501d8cbc43db464b6</srcmd5>
+    <version>20070515</version>
+    <time>1359110476</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="186">
+    <srcmd5>ffa3cb7643fa6b9e9a9b22458471fa62</srcmd5>
+    <version>20070515</version>
+    <time>1375765997</time>
+    <user>coolo</user>
+    <comment>- BuildRequire texlive-bin only for &lt;= 12.3 (forwarded request 185969 from oertel)</comment>
+    <requestid>185978</requestid>
+  </revision>
+  <revision rev="15" vrev="188">
+    <srcmd5>ffa3cb7643fa6b9e9a9b22458471fa62</srcmd5>
+    <version>20070515</version>
+    <time>1379664793</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="190">
+    <srcmd5>ffa3cb7643fa6b9e9a9b22458471fa62</srcmd5>
+    <version>20070515</version>
+    <time>1409303475</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="191">
+    <srcmd5>b08f34c3bc26b2785d8c9affb7ecd37b</srcmd5>
+    <version>20070515</version>
+    <time>1510661119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541610</requestid>
+  </revision>
+  <revision rev="18" vrev="192">
+    <srcmd5>9e9b2b0de87fe5aa2021006ceb961627</srcmd5>
+    <version>20070515</version>
+    <time>1539593371</time>
+    <user>dimstar_suse</user>
+    <comment>- use `udpmap -sys` to fix %post scriptlet for Tumbleweed
+</comment>
+    <requestid>641767</requestid>
+  </revision>
+</revisionlist>

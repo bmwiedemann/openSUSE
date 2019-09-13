@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f98374eecefea3c285172e2f9bd14e9b</srcmd5>
+    <version>2.3.1</version>
+    <time>1524576731</time>
+    <user>dimstar_suse</user>
+    <comment>esptool 2.3.1, a tool for ESP8266/ESP32 microcontrollers (depends on flake8-import-order and flake8-future-import)</comment>
+    <requestid>596756</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2849a9795c55670796d8524ce8c21013</srcmd5>
+    <version>2.3.1</version>
+    <time>1544726631</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654038</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6d75543490cb38d802acc4873940ce79</srcmd5>
+    <version>2.6</version>
+    <time>1551784846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681232</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d3a7661f3118148b48bd98bcbc23a145</srcmd5>
+    <version>2.7</version>
+    <time>1568379788</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 2.7:
+  * New option write_flash --flash-size keep will keep whatever flash size is
+    set in the bootloader header
+  * write_flash no longer updates the flash header if the file being written
+    to the bootloader offset isn't a valid image file for the chip</comment>
+    <requestid>730626</requestid>
+  </revision>
+</revisionlist>

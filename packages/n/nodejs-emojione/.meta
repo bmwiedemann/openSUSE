@@ -1,0 +1,8 @@
+<package name="nodejs-emojione" project="openSUSE:Factory">
+  <title>EmojiOne is a complete set of emojis designed for the web</title>
+  <description>EmojiOne is a complete set of emojis designed for the web. It includes
+libraries to easily convert unicode characters to shortnames (:smile:)
+and shortnames to our custom emoji images. PNG and SVG formats provided
+for the emoji images.</description>
+  <devel project="devel:languages:nodejs" package="nodejs-emojione"/>
+</package>

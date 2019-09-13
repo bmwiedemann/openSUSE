@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f40a784db43256d5468a4dbcce9d6489</srcmd5>
+    <version>0.6+bzr48</version>
+    <time>1330364162</time>
+    <user>coolo</user>
+    <comment>needed for software center</comment>
+    <requestid>105393</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f40a784db43256d5468a4dbcce9d6489</srcmd5>
+    <version>0.6+bzr48</version>
+    <time>1340184076</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7c446c07c112fde389eafea06cd23e1</srcmd5>
+    <version>0.7.3</version>
+    <time>1358689389</time>
+    <user>coolo</user>
+    <comment>- Package LICENSE
+
+- Remove unneeded python3 patch for python2 package
+
+- Initial python3 support
+
+- Update to 0.7.3 version:
+  * Add support for latest pep8
+  * Add support for python3
+- Add  Fix-test-python3.3.diff : fix tests on raring, py3.3 randomizes 
+  dict order which breaks tests that depend on this, also pep8 changed 
+  internally so just use the commandline interface (#bln1083772)
+
+
+- Package LICENSE
+
+- Initial python3 support</comment>
+    <requestid>148960</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f7c446c07c112fde389eafea06cd23e1</srcmd5>
+    <version>0.7.3</version>
+    <time>1359110090</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9cc71e891be96020c4c09c63fddd2492</srcmd5>
+    <version>0.7.5</version>
+    <time>1366233433</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 171106 from posophe)</comment>
+    <requestid>171107</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c5b4df3565b5f74c02f2b1bf7024a177</srcmd5>
+    <version>0.7.5</version>
+    <time>1371652998</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179930</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>c5b4df3565b5f74c02f2b1bf7024a177</srcmd5>
+    <version>0.7.5</version>
+    <time>1379664243</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>2f4b863ea67495f2025c1965d869499c</srcmd5>
+    <version>0.7.5</version>
+    <time>1382693200</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204625</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>2f4b863ea67495f2025c1965d869499c</srcmd5>
+    <version>0.7.5</version>
+    <time>1409302944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>42018ee96a5da7f054d5818d3eaf719c</srcmd5>
+    <version>0.7.5</version>
+    <time>1504521164</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519904</requestid>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>b1f04e6d9c75a16759d75861749231af</srcmd5>
+    <version>0.7.5</version>
+    <time>1545648075</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659554</requestid>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>f1e72971115b272a677ff3f5fd2697fc</srcmd5>
+    <version>0.7.5</version>
+    <time>1551687758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680788</requestid>
+  </revision>
+</revisionlist>

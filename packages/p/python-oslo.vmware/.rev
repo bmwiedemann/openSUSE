@@ -1,0 +1,297 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>326e700bf38562a2b22f9b1ff82e90fc</srcmd5>
+    <version>0.3</version>
+    <time>1395897042</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>227550</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>326e700bf38562a2b22f9b1ff82e90fc</srcmd5>
+    <version>0.3</version>
+    <time>1409302938</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>848dc7e5cca4d29820175b18a666c64e</srcmd5>
+    <version>0.5.0</version>
+    <time>1411926857</time>
+    <user>coolo</user>
+    <comment>- update to 0.5.0:
+  * _trunc_id to check if the session_id is not None
+  * Enabled hacking check H305
+  * Imported Translations from Transifex
+  * Add constant for ESX datacenter path (HTTP access)
+  * Store PBM wsdl in the oslo.vmware git repository
+  * Bump hacking to version 0.9.2
+  * Add support for using extensions
+  * The 'result' variable in RetryDecorator may be undefined
+  * Imported Translations from Transifex
+  * Fix docstrings of constructors
+  * Do not log the full session ID
+  * Refactor the PBM support
+  * Fix wrong usage of assertRaises
+  * Translations: make use of _LE, _LI and _LW 
+
+- update to 0.4.0:
+  * Sync excutils from Oslo
+  * Updated from global requirements
+  * Use assertIsNone
+  * Bump hacking to 0.9.x series
+  * replace iterator.next() with next(iterator)
+  * remove definitions of Python Source Code Encoding
+  * Setup for translation
+  * Updated from global requirements
+  * cleaning up index.rst file
+  * Add networkFolder in the traversal spec
+  * Ensure port support does not break backward compatibility
+  * replace string format arguments with function parameters
+  * Support for IPv6 and Non-standard ports</comment>
+    <requestid>252600</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f82f0d406c2532ecd21482f38228f4b9</srcmd5>
+    <version>1.18.0</version>
+    <time>1440658493</time>
+    <user>coolo</user>
+    <comment>- Unify spec file #2
+- Remove conditionals for older SUSE versions
+
+- Unify spec file. Use fedora compatible files macros
+
+- update to 1.18.0:
+  * Make usage doc easier to understand for library consumers
+  * Imported Translations from Transifex
+  * Remove username from logs
+  * Updated from global requirements
+- update Requires according to requirements.txt
+
+- update to 1.17.0:
+  * Update log level of session related logs
+  * Fix mock calls
+  * Updated from global requirements
+  * Mask/truncate vCenter credentials in suds logs
+  * Imported Translations from Transifex
+  * Add tox target to find missing requirements
+  * Updated from global requirements  
+  * Fix exception to string in py34
+  * Updated from global requirements
+
+- update to 0.15.1:
+  * Add in support for ManagedObjectNotFound exception
+  * Deprecate unused exceptions
+  * Raise VimFaultException for unknown faults
+  * Exception hierarchy refactoring
+  * Update progress lease every 60 seconds
+  * Fix bandit tox environment to properly run</comment>
+    <requestid>320701</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>59f26f6fec7de12bd44eb8e33dba9ee3</srcmd5>
+    <version>1.21.0</version>
+    <time>1446208931</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.21.0:
+  * Updated from global requirements
+  * Use SSL thumbprints for NFC transfer
+  * Update bandit.yaml to the latest
+  * flake8 - remove unused rules
+  * Imported Translations from Transifex
+  * Allow http connection pool size to be configured
+- Adjust Requires according to requirements.txt</comment>
+    <requestid>337146</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5bb7852f47eb1c4603cbafc50685b1b5</srcmd5>
+    <version>1.22.0</version>
+    <time>1447146226</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.22:
+  * Updated from global requirements
+  * Fix coverage configuration and execution
+  * No need for Oslo Incubator Sync
+  * Add support for SSL thumbprint when using FileWriteHandle
+  * Define WithRetrieval context
+  * Imported Translations from Zanata
+  * Add shields.io version/downloads links/badges into README.rst
+  * docs - Set pbr 'warnerrors' option for doc build
+  * clean up auto-doc api build
+  * do not show the full release history in the main table of contents
+  * clean up readme and documentation titles
+  * Change ignore-errors to ignore_errors
+  * Updated from global requirements
+  * Add support for using HTTP POST in VmdkWriteHandle
+  * Add unit tests for FileHandle._create_connection
+  * Update the documentation</comment>
+    <requestid>343092</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8cd8634b973b0088f155c5b6f91a5d03</srcmd5>
+    <version>2.5.0</version>
+    <time>1462342766</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.0:
+  * Updated from global requirements
+  * Remove bandit.yaml in favor of defaults
+  * Update translation setup
+  * Imported Translations from Zanata
+  * Use oslo_utils reflection to get function name
+  * Python 3 deprecated the logger.warn method in favor of warning
+  * Put py34 first in the env order of tox
+  * assertIsNone(val) instead of assertEqual(None,val)
+  * isoformat instead of deprecated timeutils.strtime
+  * Overwrite VMwareDriverException message
+  * Clean requirements
+  * Trival: Remove 'MANIFEST.in'
+  * Remove python 2.6 classifier
+  * Remove python 2.6 and cleanup tox.ini</comment>
+    <requestid>384387</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1c5abe588809512cea3c53d7525e1bf9</srcmd5>
+    <version>2.14.0</version>
+    <time>1476350937</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.14.0
+  * Fix TypeError:six.StringIO(resp.content) must be str or None, not bytes.
+  * Updated from global requirements
+  * Method to download file to VMware server
+
+- update to 2.12.0:
+  * Updated from global requirements
+  * Add http_method to download_stream_optimized_data
+  * Refactor the image transfer
+  * Remove discover from test-requirements
+  * Add a py35 tox venv for upcoming py35 support
+  * Remove unnecessary properties from image-meta
+
+- update to 2.10.0:
+  * Updated from global requirements
+  * Imported Translations from Zanata
+  * Refactor VmdkWriteHandle and VmdkReadHandle
+  * Add reno for release notes management
+  * Support download of virtual disk in ova container
+  * Trivial: ignore openstack/common in flake8 exclude list
+  * Should not raise Exception before connection close
+  * Remove explicit use of asserts
+  * Move bandit into pep8
+- update _service and switch to upstream spec</comment>
+    <requestid>433100</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4aee12d13edc68a66fdd43f0ac580348</srcmd5>
+    <version>2.17.0</version>
+    <time>1487680959</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.17.0:
+  - Pass connection timeout so that invoke_api will not wait forever
+  - Update reno for stable/newton
+  - Remove mox3 in test-requirement.txt
+  - Add 'uncommitted' field to the 'Datastore' class
+  - Update home page link in cfg file
+  - Fix setting the SOAP headers for remote calls.
+  - Add Constraints support
+  - Remove some useless log messages
+  - Trivial fixes to the usage doc
+  - Show team and repo badges on README
+  - Imported Translations from Zanata
+  - Add operation ID for remote calls
+  - Remove references to Python 3.4
+  - Enable release notes translation
+  - Set pool size for HTTPS connections
+  - Fix image meta-data update for Glance v2
+  - Files with no code must be left completely empty
+  - Updated from global requirements
+  - Add SPBM WSDL for vSphere 6.5
+  - [TrivialFix] Replace 'assertTrue(a in b)' with 'assertIn(a, b)'
+- Add 0001-Make-the-mock-call-in-MemoryCacheTest-forward-compat.patch</comment>
+    <requestid>456696</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d5a5f2855916962db4c71980c3e5bbb8</srcmd5>
+    <version>2.23.0</version>
+    <time>1503927103</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.23.0
+  - Trivial: Remove testscenarios from test-requirements.txt
+  - rearrange existing documentation to fit the new standard layout
+  - Make the mock call in MemoryCacheTest forward-compatible
+  - Remove log translations
+  - Make sure host in maintenance mode excluded from image upload
+  - Add hacking rule to prevent log translations
+  - Wrong member variable name in class Datastore
+  - Improve unit test coverage
+  - Use https for references to openstack.org
+  - Use request_handler() for ExtensionManager APIs
+  - Update URLs in documents according to document migration
+  - [Fix gate]Update test requirement
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Update reno for stable/ocata
+  - Do not prune some special XML elements which are empty
+  - Improving cover testenv
+  - Improve logging for task updates
+  - Updated from global requirements
+  - Enable warning-is-error in doc build
+  - Switch from oslosphinx to openstackdocstheme
+  - Add in support for removeKey
+- drop 0001-Make-the-mock-call-in-MemoryCacheTest-forward-compat.patch
+  Applied upstream</comment>
+    <requestid>515009</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>96b97721bcdffa9255fe62f7b35ac4ae</srcmd5>
+    <version>2.26.0</version>
+    <time>1516804079</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.26.0
+  - Fix the repeating titles
+  - Remove -U from pip install
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - Imported Translations from Zanata
+  - Avoid tox_install.sh for constraints support
+  - Cleanup test-requirements
+  - Updated from global requirements</comment>
+    <requestid>567280</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>044a061ed3b03e9d2abdcc707d69d519</srcmd5>
+    <version>2.26.0</version>
+    <time>1521498999</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583352</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>486bdf337fe9722769361138b0e72abc</srcmd5>
+    <version>2.31.0</version>
+    <time>1536327557</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633112</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5ce27e33ad008fd55ff17f0c175b1768</srcmd5>
+    <version>2.32.2</version>
+    <time>1556916176</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.32.2
+  - Change openstack-dev to openstack-discuss
+  - add lib-forward-testing-python3 test job
+  - Add DVS utility methods
+  - import zuul job settings from project-config
+  - Imported Translations from Zanata
+  - Update reno for stable/rocky
+  - Clean up .gitignore references to personal tools
+  - Use template for lower-constraints
+  - add python 3.6 unit test job
+  - py37: deal with Exception repr changes
+  - Check if there is a context set before updating the store
+  - add python 3.7 unit test job
+  - Set request context when polling vCenter tasks
+  - delete useless indent</comment>
+    <requestid>692869</requestid>
+  </revision>
+</revisionlist>

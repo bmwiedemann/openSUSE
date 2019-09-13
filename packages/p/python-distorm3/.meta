@@ -1,0 +1,6 @@
+<package name="python-distorm3" project="openSUSE:Factory">
+  <title>Powerful Disassembler Library For x86/AMD64</title>
+  <description>No more parsing strings! - diStorm3 is really a decomposer, which means it takes an instruction and returns a binary structure which describes it rather than static text. 
+</description>
+  <devel project="devel:languages:python" package="python-distorm3"/>
+</package>

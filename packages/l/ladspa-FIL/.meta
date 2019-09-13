@@ -1,0 +1,6 @@
+<package name="ladspa-FIL" project="openSUSE:Factory">
+  <title>LADSPA FIL plugin</title>
+  <description></description>
+  <devel project="multimedia:libs" package="ladspa-FIL"/>
+  <url>http://users.skynet.be/solaris/linuxaudio/</url>
+</package>

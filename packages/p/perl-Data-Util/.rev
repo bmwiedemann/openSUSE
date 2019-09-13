@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>012303457c3c012a8deeebdc0fc8a5a0</srcmd5>
+    <version>0.58</version>
+    <time>1311680742</time>
+    <user>saschpe</user>
+    <comment>new dep of Any-Moose</comment>
+    <requestid>76228</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6dcc5065731e73b103ef870c1fef7a92</srcmd5>
+    <version>0.58</version>
+    <time>1311680776</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76228
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6dcc5065731e73b103ef870c1fef7a92</srcmd5>
+    <version>0.58</version>
+    <time>1319182257</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>100888e6b993c0510423e2450b9cedee</srcmd5>
+    <version>0.59</version>
+    <time>1321875479</time>
+    <user>coolo</user>
+    <comment>- update to 0.59
+  * Re-packaging with better dependencies and latest M::I</comment>
+    <requestid>92438</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>41309d47727429ec4c89e30bad0c97f5</srcmd5>
+    <version>0.59</version>
+    <time>1323193196</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>41309d47727429ec4c89e30bad0c97f5</srcmd5>
+    <version>0.59</version>
+    <time>1340183826</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>41309d47727429ec4c89e30bad0c97f5</srcmd5>
+    <version>0.59</version>
+    <time>1359109640</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>219d20adb36a3a736377e5df4e536891</srcmd5>
+    <version>0.62</version>
+    <time>1370447458</time>
+    <user>coolo</user>
+    <comment>- updated to 0.62
+   - Fix a crash on perl 5.17.x (tokuhirom)
+   - Fix usage of get_code_ref() in SYNOPSIS (thanks to @toku_bass)
+   - No feature changes. Just upgraded Module::Install. (forwarded request 177333 from coolo)</comment>
+    <requestid>177385</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>219d20adb36a3a736377e5df4e536891</srcmd5>
+    <version>0.62</version>
+    <time>1379663628</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>92e3ddc196f7f616f34899fbe16eadc3</srcmd5>
+    <version>0.63</version>
+    <time>1394386649</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>224981</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>92e3ddc196f7f616f34899fbe16eadc3</srcmd5>
+    <version>0.63</version>
+    <time>1409302244</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>1fb53229144de0ef33873523ce0a4e49</srcmd5>
+    <version>0.63</version>
+    <time>1440871487</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327575</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>253628656f3a456106797be0347f14f2</srcmd5>
+    <version>0.65</version>
+    <time>1478517728</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416909</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>964f3a95ed99a98258e8b0a0d971e49a</srcmd5>
+    <version>0.66</version>
+    <time>1491907417</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486130</requestid>
+  </revision>
+</revisionlist>

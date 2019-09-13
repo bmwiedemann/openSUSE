@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ceef9fc8b20dc9a87f86485f4e1580dd</srcmd5>
+    <version>2.2.0</version>
+    <time>1524144554</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to singlespec, fix non-SPDX license tag
+- Add rpmlintrc for (required) hidden file
+- Add README.md to docs and use %license macro
+- Update to 2.2.0
+  * Bugfixes:
+    - Switch to explicit Python version check
+    - Work around `pkg_resources` missing
+    - Always close sessions
+  * Features:
+    - Add `fqdn` and `ipv4` convenience properties
+    - Add `cache_fetch_timeout` kwarg
+      and `TLDEXTRACT_CACHE_TIMEOUT` env var
+  * Misc:
+    - Document public vs. private domains
+    - Document support for Python 3.6
+- Correct license in spec file (MIT -&gt; BSD) 
+- Fix homepage URL in specfile 
+- Initial creation of package, version 2.0.1
+
+Needed for python-dns-lexicon</comment>
+    <requestid>596760</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec457b63e0c0acd6c2328638a94073d3</srcmd5>
+    <version>2.2.0</version>
+    <time>1525779402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update summary.
+</comment>
+    <requestid>603098</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a0a52e9521115ce490e73734af8b27e0</srcmd5>
+    <version>2.2.0</version>
+    <time>1545648319</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659721</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7b0d151ac68a0b0d50ae6e16a66e210e</srcmd5>
+    <version>2.2.1</version>
+    <time>1552299375</time>
+    <user>dimstar_suse</user>
+    <comment>- Run test suite
+- Add tldextract-tests-offline.patch
+  No internet connection on OBS build hosts; skip suffix list
+  snapshot diff
+- Update to 2.2.1
+  * Bugfixes
+    - Ignore case on punycode prefix check
+    - Drop support for EOL Python 2.6
+    - Improve sundry doc and README bits
+</comment>
+    <requestid>683625</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="26">
+    <srcmd5>c51879e7ef574187fda4450cd865549b</srcmd5>
+    <version>0.9</version>
+    <time>1168903104</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="274">
+    <srcmd5>c51879e7ef574187fda4450cd865549b</srcmd5>
+    <version>0.9</version>
+    <time>1168903104</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b3b1e3b020d54b366effe91af6ccc8ac</srcmd5>
+    <version>1.1</version>
+    <time>1223739602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b3b1e3b020d54b366effe91af6ccc8ac</srcmd5>
+    <version>1.1</version>
+    <time>1223739602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>7d91067ecbbcf8dba7981f02a28eb9b2</srcmd5>
+    <version>1.1</version>
+    <time>1268924078</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>7d91067ecbbcf8dba7981f02a28eb9b2</srcmd5>
+    <version>1.1</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>7d91067ecbbcf8dba7981f02a28eb9b2</srcmd5>
+    <version>1.1</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>7d91067ecbbcf8dba7981f02a28eb9b2</srcmd5>
+    <version>1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>14bcf7aae741b6d63d7f62f15072c853</srcmd5>
+    <version>1.1</version>
+    <time>1315233157</time>
+    <user>lrupp</user>
+    <comment>Fixed typos in jakarta-commons-launcher.spec (forwarded request 79937 from aturrini)</comment>
+    <requestid>80956</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>85cd5b3c271473a31dbe34be7c42b7d4</srcmd5>
+    <version>1.1</version>
+    <time>1315233170</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80956
+</comment>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>85cd5b3c271473a31dbe34be7c42b7d4</srcmd5>
+    <version>1.1</version>
+    <time>1319182002</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>db1001704c5787b740d217762ba34925</srcmd5>
+    <version>1.1</version>
+    <time>1323192014</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>db1001704c5787b740d217762ba34925</srcmd5>
+    <version>1.1</version>
+    <time>1340183477</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>db1001704c5787b740d217762ba34925</srcmd5>
+    <version>1.1</version>
+    <time>1359109104</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>db1001704c5787b740d217762ba34925</srcmd5>
+    <version>1.1</version>
+    <time>1379662697</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>db1001704c5787b740d217762ba34925</srcmd5>
+    <version>1.1</version>
+    <time>1409301262</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>4f90df9fe8cc27c0c2f24df62358b15c</srcmd5>
+    <version>1.1</version>
+    <time>1505920139</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527004</requestid>
+  </revision>
+</revisionlist>

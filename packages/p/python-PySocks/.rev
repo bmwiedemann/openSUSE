@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2dd881e7e3ec4487920325c0681af7fc</srcmd5>
+    <version>1.5.6</version>
+    <time>1458228844</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-urllib3.</comment>
+    <requestid>370269</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>22bab7530fc488c93dbc5bf4217cf7d5</srcmd5>
+    <version>1.6.6</version>
+    <time>1492714138</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481795</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>546a65f099385d9946be6fa8f97b1f50</srcmd5>
+    <version>1.6.7</version>
+    <time>1510321272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539303</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f54de61f1ee1e8c969dd50f3c96af420</srcmd5>
+    <version>1.6.8</version>
+    <time>1514027516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559160</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>be3aa8255e4d48d927461352f277e640</srcmd5>
+    <version>1.6.8</version>
+    <time>1545376783</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659307</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d85c15eba48f5e645fc0002ff4134d23</srcmd5>
+    <version>1.7.0</version>
+    <time>1561195356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710312</requestid>
+  </revision>
+</revisionlist>

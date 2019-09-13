@@ -1,0 +1,324 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d8ee5744412ac86d2017332944866137</srcmd5>
+    <version>0.2</version>
+    <time>1222656611</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>75c32c451aa6cf66afda13109f878aba</srcmd5>
+    <version>0.2</version>
+    <time>1224694149</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b3c921a4591d161978e10a9bcb4e0af1</srcmd5>
+    <version>0.2</version>
+    <time>1227196312</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>249afb1104b4c5602ee2370f0d778f1d</srcmd5>
+    <version>0.2.kde4.1.96</version>
+    <time>1232626693</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ca55b52d1e021adccefc89e24eba0074</srcmd5>
+    <version>0.2.kde4.2.0</version>
+    <time>1233186966</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b300d88a653b2338f870b3f93d1c2a8c</srcmd5>
+    <version>0.3.kde4.2.2</version>
+    <time>1238694688</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ecf86a17a6bee5982fb6e79fa3b47d08</srcmd5>
+    <version>0.3.kde4.2.2</version>
+    <time>1240788580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a71bc222395552a7998bae3f1cc70d44</srcmd5>
+    <version>0.3.kde4.2.3</version>
+    <time>1241657543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a4ce06087a09cebd2783bc8baa3dfa5c</srcmd5>
+    <version>0.3.kde4.2.3</version>
+    <time>1241885564</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>105b239d244496c7f08792ebab0492d4</srcmd5>
+    <version>0.3.kde4.2.4</version>
+    <time>1244239407</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>78d8d2bfb1a0f4f88694726bd3065f52</srcmd5>
+    <version>0.3.kde4.3.0</version>
+    <time>1249068297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ba692be317aee2d7a8ba775aecd00d06</srcmd5>
+    <version>0.3.kde4.3.1</version>
+    <time>1251839445</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/skanlite based on submit request 19487 from user Beineri
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ba692be317aee2d7a8ba775aecd00d06</srcmd5>
+    <version>0.3.kde4.3.1</version>
+    <time>1251839445</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/skanlite based on submit request 19487 from user Beineri
+</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>a1a0f1f3ba113f9b39cc50f302dabaa2</srcmd5>
+    <version>0.3.kde4.3.1</version>
+    <time>1264784439</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/skanlite based on submit request 30818 from user llunak
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>cc1768ef22cbd2295c42d83013acb971</srcmd5>
+    <version>0.3.kde4.3.1</version>
+    <time>1265280997</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/skanlite based on submit request 30878 from user Beineri
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>61fbc505359de471fe43fee8869a2e92</srcmd5>
+    <version>0.4.kde4.4.0</version>
+    <time>1267061645</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/skanlite based on submit request 33388 from user llunak
+</comment>
+    <requestid>33388</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>9124990802a86870601991c45f82b7ed</srcmd5>
+    <version>0.4.kde4.4.0</version>
+    <time>1268069039</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/skanlite based on submit request 34305 from user coolo
+</comment>
+    <requestid>34305</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>dc4c29c00ad257b98ec814fb25ef3e12</srcmd5>
+    <version>0.4.kde4.4.0</version>
+    <time>1268926176</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>dc4c29c00ad257b98ec814fb25ef3e12</srcmd5>
+    <version>0.4.kde4.4.0</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>dc4c29c00ad257b98ec814fb25ef3e12</srcmd5>
+    <version>0.4.kde4.4.0</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>b05994f96ba4a381dce3f357ca354344</srcmd5>
+    <version>0.4.kde4.4.0</version>
+    <time>1284766458</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/skanlite based on submit request 48293 from user coolo
+</comment>
+    <requestid>48293</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>7051e204088f4b2cf97180696870a3ed</srcmd5>
+    <version>0.5.kde4.5.0</version>
+    <time>1290467495</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53716 from user coolo
+</comment>
+    <requestid>53716</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>6e8fc2e471338c69662b444326c6fda1</srcmd5>
+    <version>0.5.kde4.5.0</version>
+    <time>1290467502</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53716
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>99004c85e08555c14752f4724b3c0e21</srcmd5>
+    <version>0.7.kde4.5.0</version>
+    <time>1292321451</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55850 from user wstephenson
+</comment>
+    <requestid>55850</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>ca14c56229a8e33e9824a2294055693d</srcmd5>
+    <version>0.7.kde4.5.0</version>
+    <time>1292321508</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55850
+</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>ca14c56229a8e33e9824a2294055693d</srcmd5>
+    <version>0.7.kde4.5.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>468ddeeeec08511d0050082764b9121d</srcmd5>
+    <version>0.7.kde4.5.0</version>
+    <time>1316448256</time>
+    <user>lrupp</user>
+    <comment>- Split translations (fix for RPMLINT warning)
+- Split documentation (fix for RPMLINT warning)
+- Added Url tag (fix for RPMLINT warning)
+- Removed KDE SC 3 provides (fix for RPMLINT warning)
+- Cleaned up spec file formatting (forwarded request 82189 from TheBlackCat) (forwarded request 82190 from TheBlackCat)</comment>
+    <requestid>82265</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>c9cc03dcb8cd1aeb107c80f6073cf73b</srcmd5>
+    <version>0.7.kde4.5.0</version>
+    <time>1318762668</time>
+    <user>lrupp</user>
+    <comment>- Moved all documentation to the documentation package
+  (fix for RPMLINT warning)
+- Cleaned up spec file formatting (forwarded request 87980 from TheBlackCat)</comment>
+    <requestid>88025</requestid>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>c9cc03dcb8cd1aeb107c80f6073cf73b</srcmd5>
+    <version>0.7.kde4.5.0</version>
+    <time>1319182472</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>7b26c83f78c5d4f97316eeea93abd3cc</srcmd5>
+    <version>0.7.kde4.5.0</version>
+    <time>1323194665</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>829146f89166fdf232420a1b4c25cf08</srcmd5>
+    <version>0.8</version>
+    <time>1324831286</time>
+    <user>coolo</user>
+    <comment>Update to version 0.8, Spec file updates (forwarded request 97138 from adra)</comment>
+    <requestid>97164</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>829146f89166fdf232420a1b4c25cf08</srcmd5>
+    <version>0.8</version>
+    <time>1340184219</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>67118894f4de4754ec70836a23264afc</srcmd5>
+    <version>0.9</version>
+    <time>1349437691</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9:
+  * (Fix regression) Base suggested file name on previous name.
+  * Remove the save without asking and keep the ask for first, because you
+    probably want to see where the files go anyways the first time around.
+- Keep only the english documentation in the doc subpackage (move the other
+  languages to the lang subpackage).</comment>
+    <requestid>136865</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>67118894f4de4754ec70836a23264afc</srcmd5>
+    <version>0.9</version>
+    <time>1359110410</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b22f6201e6e1dc54be4ae7b34db04af9</srcmd5>
+    <version>1.0</version>
+    <time>1362341333</time>
+    <user>coolo</user>
+    <comment>Update to version 1.0 (forwarded request 157032 from adra)</comment>
+    <requestid>157034</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>b22f6201e6e1dc54be4ae7b34db04af9</srcmd5>
+    <version>1.0</version>
+    <time>1379664687</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d8458a060ed980d0406394226e72fa9e</srcmd5>
+    <version>1.1</version>
+    <time>1388757194</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 1.1</comment>
+    <requestid>212672</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>d8458a060ed980d0406394226e72fa9e</srcmd5>
+    <version>1.1</version>
+    <time>1409303372</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>b90f1b10d9058affb387761fbc7ca4b0</srcmd5>
+    <version>1.1git</version>
+    <time>1453507846</time>
+    <user>dimstar_suse</user>
+    <comment>Move to the KF5 based version of skanlite. This would resolve the issue that is caused with the move to KF5 of libksane with KDE Applications 15.12</comment>
+    <requestid>354519</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>25b2049cfaddc8255ecda1df527d1f8b</srcmd5>
+    <version>2.0</version>
+    <time>1471504609</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418018</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>5d0433525d60c868a56178da4336aff9</srcmd5>
+    <version>2.0.1</version>
+    <time>1478174106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.1:
+  * added appdata-xml
+  * updated documentation
+- Removed upstreamed patch fix_translations_install.patch
+</comment>
+    <requestid>438065</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>29b3386717e939991f902c1ec4fa3607</srcmd5>
+    <version>2.1.0.1</version>
+    <time>1523029308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593216</requestid>
+  </revision>
+</revisionlist>

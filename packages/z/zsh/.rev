@@ -1,0 +1,832 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>67b911ff090458a9686081fb6f248965</srcmd5>
+    <version>4.3.2</version>
+    <time>1168904766</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="42">
+    <srcmd5>01ba90b334e80918c9d7dc9647495d11</srcmd5>
+    <version>4.3.2</version>
+    <time>1175265368</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>010207cf36943791f78149dc4c4001e6</srcmd5>
+    <version>4.3.4</version>
+    <time>1183584101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="57">
+    <srcmd5>2e9af25c504d0cebf9dd990efea29a70</srcmd5>
+    <version>4.3.4</version>
+    <time>1196723014</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8231c715d598ad282680f3d9f6845acd</srcmd5>
+    <version>4.3.5</version>
+    <time>1206073029</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>9f117ce236894df3740a5680da95b129</srcmd5>
+    <version>4.3.5</version>
+    <time>1206677483</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4469e0b0ae1accfa29df8f2ac29e631b</srcmd5>
+    <version>4.3.6</version>
+    <time>1207266568</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="23">
+    <srcmd5>e9f54979d62ad4b270630491989d3e58</srcmd5>
+    <version>4.3.6</version>
+    <time>1214187232</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="65">
+    <srcmd5>15240d9f2bfbf12f225e724395d399c9</srcmd5>
+    <version>4.3.6</version>
+    <time>1222210592</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="66">
+    <srcmd5>e8840530bdfd9cc82be7200609a6fe81</srcmd5>
+    <version>4.3.6</version>
+    <time>1223304803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="68">
+    <srcmd5>49595d834a25c708402a4fdc2c5141c3</srcmd5>
+    <version>4.3.6</version>
+    <time>1243265339</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>84c5477e4491cfb21b86893c214fb621</srcmd5>
+    <version>4.3.10</version>
+    <time>1250633484</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/zsh based on submit request 18109 from user hennevogel
+</comment>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>31973639ea9530e63afe686a1f72061e</srcmd5>
+    <version>4.3.10</version>
+    <time>1250872890</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/zsh based on submit request 18351 from user hennevogel
+</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>dcfccc1762f4fcce3c3857a13c754e4b</srcmd5>
+    <version>4.3.10</version>
+    <time>1255447649</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/zsh based on submit request 22308 from user coolo
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>dcfccc1762f4fcce3c3857a13c754e4b</srcmd5>
+    <version>4.3.10</version>
+    <time>1255447649</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/zsh based on submit request 22308 from user coolo
+</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>3f6bf0912177c61b3e4ae57ccf303833</srcmd5>
+    <version>4.3.10</version>
+    <time>1260967109</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/zsh based on submit request 26620 from user coolo
+</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>c7e5c9793ea863b9c313c3d78b7356a8</srcmd5>
+    <version>4.3.10</version>
+    <time>1268411861</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/zsh based on submit request 34678 from user hennevogel
+</comment>
+    <requestid>34678</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>437074d6188a7dbfba05ada6bd049b0d</srcmd5>
+    <version>4.3.10</version>
+    <time>1268926826</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>437074d6188a7dbfba05ada6bd049b0d</srcmd5>
+    <version>4.3.10</version>
+    <time>1278667399</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>437074d6188a7dbfba05ada6bd049b0d</srcmd5>
+    <version>4.3.10</version>
+    <time>1278678634</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>437074d6188a7dbfba05ada6bd049b0d</srcmd5>
+    <version>4.3.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>2e2ba50c910ad535d6629324101aaffb</srcmd5>
+    <version>4.3.11</version>
+    <time>1299507238</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63473 from user coolo
+</comment>
+    <requestid>63473</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>a8a8bb74ba243141c98b07fed946a2fd</srcmd5>
+    <version>4.3.11</version>
+    <time>1299507249</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63473
+</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>a8f52d7cfa173e5fd951c77e5e31528e</srcmd5>
+    <version>4.3.11</version>
+    <time>1300270884</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64202 from user namtrac
+</comment>
+    <requestid>64202</requestid>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>0263399b08bb63c36702bd4edfacbad6</srcmd5>
+    <version>4.3.11</version>
+    <time>1300270898</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64202
+</comment>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>893846821ee39912dd58d590139b2e33</srcmd5>
+    <version>4.3.11_dev_2</version>
+    <time>1304061329</time>
+    <user>saschpe</user>
+    <comment>- Update to 4.3.11 dev 2 release
+- Enable and fix make check
+- Disable zsh debug
+</comment>
+    <requestid>68403</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>41efdc7ab019257a66f9d5b78433c3bd</srcmd5>
+    <version>4.3.11_dev_2</version>
+    <time>1304061342</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68403
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>38ab3c2de1cd10bb1ed584a63cbec9f4</srcmd5>
+    <version>4.3.12</version>
+    <time>1307358962</time>
+    <user>saschpe</user>
+    <comment>Update to final 4.3.12 release, all openSUSE specific completions are now upstream!</comment>
+    <requestid>72437</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>31c3e4ef2e0ccbd1997668322453efe7</srcmd5>
+    <version>4.3.12</version>
+    <time>1308560445</time>
+    <user>saschpe</user>
+    <comment>- Add zsh-kill-suspended-job.patch: fix killing suspended jobs
+- Add zsh-findproc.patch: fix findproc() to find stopped jobs</comment>
+    <requestid>74050</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>ee049a8385fcce3f70f1ed81d1d84e59</srcmd5>
+    <version>4.3.12</version>
+    <time>1308560457</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74050
+</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>229308494a99d4cb13762e081bb29288</srcmd5>
+    <version>4.3.12</version>
+    <time>1312361864</time>
+    <user>saschpe</user>
+    <comment>- Enable pcre module 
+- Build against ncurses6w instead of plain old ncurses5 (forwarded request 77731 from elvigia)</comment>
+    <requestid>77747</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>273ce0c34c4ebf88ca7d70328ed32583</srcmd5>
+    <version>4.3.12</version>
+    <time>1312361874</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77747
+</comment>
+  </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>273ce0c34c4ebf88ca7d70328ed32583</srcmd5>
+    <version>4.3.12</version>
+    <time>1319182648</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="34" vrev="8">
+    <srcmd5>143b2bdfad0b74102a9135bf5e41f1c5</srcmd5>
+    <version>4.3.12</version>
+    <time>1322216497</time>
+    <user>coolo</user>
+    <comment>- Add custom completion support via /etc/zsh_completion.d 
+- Fix build with new ncurses library</comment>
+    <requestid>93396</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>56d414f65d09919944c93940758b993f</srcmd5>
+    <version>4.3.13</version>
+    <time>1322757577</time>
+    <user>coolo</user>
+    <comment>I fixed the changelog to say 4._3_.13 not 4.2, sorry!
+
+- Update to zsh 4.3.13
+  * There are no significant feature changes to the shell itself, 
+    although many bug fixes and improvements to functions.
+  * See included ChangeLog for details
+- Drop zsh-4.3.12-ksh-emulation-syntax-checking.patch, 
+  fixed upstream
+
+- Cleanup spec file
+- Make /bin/zsh a symlink to /usr/bin/zsh
+
+- Update to 4.3.12-test3
+  * See included ChangeLog for details
+- Drop zsh-findproc.patch and zsh-kill-suspended-job.patch, fixed
+  upstream.</comment>
+    <requestid>94661</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>0e003b396799399336ab501d81f3f1fb</srcmd5>
+    <version>4.3.15</version>
+    <time>1325658792</time>
+    <user>coolo</user>
+    <comment>- Update to zsh 4.3.15
+  * Fix POSIX compatibility
+
+- Update to zsh 4.3.14
+  * Drop 74eed99c312de05e19b54ba6b5d37a0aeb4ba713.patch and
+    724fd07a67f135c74eba57e9f25fd342201ec722.patch, fixed upstream
+  * Fix for nanosecond timestamp support
+
+- Fix license to be MIT, zsh seems to be using the &quot;Modern&quot; variant
+  of the license text.
+- Import git commits 74eed99c312de05e19b54ba6b5d37a0aeb4ba713 and
+  724fd07a67f135c74eba57e9f25fd342201ec722
+  * metafy() added null termination even if buffer was not modifiable
+  * Fix uninitialised memory after lexer realloc</comment>
+    <requestid>97159</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>6975a1abdbf8ef2f2d9f6d317e484233</srcmd5>
+    <version>4.3.15</version>
+    <time>1328086882</time>
+    <user>coolo</user>
+    <comment>- Update _osc completion 
+
+- Instead of disabling c02cond manually, add upstream patch to
+  automatically disable it on noatime mounted systems.</comment>
+    <requestid>102187</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>faa27c04d4d7fce5bd987d8193b19657</srcmd5>
+    <version>4.3.15</version>
+    <time>1328712257</time>
+    <user>coolo</user>
+    <comment>Enable installation of openSUSE completion functions which are upstream (forwarded request 103060 from hmacht)</comment>
+    <requestid>103061</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>da7de9f7f438324b959e626abb52764a</srcmd5>
+    <version>4.3.17</version>
+    <time>1330364350</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.3.17
+  * Contains fixes for possible speed regression introduced 
+    in 4.3.15 (new option HASH_EXECUTABLES_ONLY)
+  * Improvements to (bash) completion and shell emulation mode 
+- Drop all the patches, all upstream</comment>
+    <requestid>107122</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>da7de9f7f438324b959e626abb52764a</srcmd5>
+    <version>4.3.17</version>
+    <time>1340184422</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>b84c0e53e8110d924040a7b8c84b431f</srcmd5>
+    <version>4.3.17</version>
+    <time>1342772760</time>
+    <user>coolo</user>
+    <comment>- buildrequire makeinfo to fix build (forwarded request 128306 from coolo)</comment>
+    <requestid>128439</requestid>
+  </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>694ea6fe3443d74f087976739689f870</srcmd5>
+    <version>4.3.17</version>
+    <time>1343033356</time>
+    <user>coolo</user>
+    <comment>- we need tex2html too, which is provided by texinfo (forwarded request 128654 from coolo)</comment>
+    <requestid>128701</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e772cdb34a36b02c9a132052c5f9b856</srcmd5>
+    <version>5.0.0</version>
+    <time>1344778203</time>
+    <user>namtrac</user>
+    <comment>- Version update to 5.0.0
+  * No real changes since 4.3.17</comment>
+    <requestid>130572</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>8bc5614105e55a60ea62e2d46eae4659</srcmd5>
+    <version>5.0.0</version>
+    <time>1351317493</time>
+    <user>coolo</user>
+    <comment>- buildrequire groff needed to build helpfiles (forwarded request 139458 from coolo)</comment>
+    <requestid>139476</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>590c03cab81b061cb15c43fb5f4f1d3d</srcmd5>
+    <version>5.0.0</version>
+    <time>1353074010</time>
+    <user>coolo</user>
+    <comment>- Test suite runs flaky in qemu-arm, disable it for now. (forwarded request 141528 from elvigia)</comment>
+    <requestid>141535</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3be6f553505c2671079ec7d0ed8d2324</srcmd5>
+    <version>5.0.2</version>
+    <time>1356731555</time>
+    <user>namtrac</user>
+    <comment>- Update to version 5.0.2
+  * Numeric constants in mathematical contexts can contain
+    underscores.
+  * functions -T turns on tracing for specific functions.
+- See the included NEWS file for other changes.</comment>
+    <requestid>146351</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>3be6f553505c2671079ec7d0ed8d2324</srcmd5>
+    <version>5.0.2</version>
+    <time>1359110787</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>38f80ccc1c3b02286389eb5d01babf69</srcmd5>
+    <version>5.0.2</version>
+    <time>1359438557</time>
+    <user>coolo</user>
+    <comment>- Fix zypper completion [bnc#752112]
+  * zsh-zypper-completion.patch
+- Fix osc completion
+  * zsh-osc-suseversion.patch (forwarded request 150103 from Dmitry_R)</comment>
+    <requestid>150181</requestid>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>04180169faf63064a20734cc5dbb861a</srcmd5>
+    <version>5.0.2</version>
+    <time>1363940537</time>
+    <user>coolo</user>
+    <comment>- Fix custom completion support via /etc/zsh_completion.d
+- Add trim-unneeded-completions.patch to remove unneeded completions
+  when building for openSUSE</comment>
+    <requestid>160415</requestid>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>74cb28a802517e1bad1c316055ac8f54</srcmd5>
+    <version>5.0.2</version>
+    <time>1364904144</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>162040</requestid>
+  </revision>
+  <revision rev="51" vrev="7">
+    <srcmd5>3e6b7d3422aa654974b14c1717fe45ec</srcmd5>
+    <version>5.0.2</version>
+    <time>1366633998</time>
+    <user>coolo</user>
+    <comment>- Don't set globdots it might lead to unexpected problems (bnc#815556)</comment>
+    <requestid>172801</requestid>
+  </revision>
+  <revision rev="52" vrev="9">
+    <srcmd5>3e6b7d3422aa654974b14c1717fe45ec</srcmd5>
+    <version>5.0.2</version>
+    <time>1379665196</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>1593e4d587cbc15f2ccffef809243d70</srcmd5>
+    <version>5.0.4</version>
+    <time>1388076163</time>
+    <user>coolo</user>
+    <comment>- Update to version 5.0.4
+  * Small bugfix release
+- Add zsh-pipefix.patch to import pipe fixes from zsh.git
+- Remove upstream patches
+  * zsh-osc-suseversion.patch
+  * zsh-zypper-completion.patch</comment>
+    <requestid>212246</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>15d875d25397b389ec36b8250c3014a3</srcmd5>
+    <version>5.0.5</version>
+    <time>1389099594</time>
+    <user>coolo</user>
+    <comment>- Update to version 5.0.5
+  * Fixes a couple of regression in 5.0.4
+- Remove zsh-pipefix.patch, merged upstream</comment>
+    <requestid>212971</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>836efa37e7d9eafe3416d841ae766810</srcmd5>
+    <version>5.0.5</version>
+    <time>1389883110</time>
+    <user>coolo</user>
+    <comment>- Add zsh-update-zypper-completion.patch to update zypper
+  completions, patch by Holger Macht and Thomas Mitterfellner.</comment>
+    <requestid>214085</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>491824607345a8ce61ea213ea2a668c5</srcmd5>
+    <version>5.0.5</version>
+    <time>1389961117</time>
+    <user>coolo</user>
+    <comment>- Update zsh-update-zypper-completion.patch to v0.3</comment>
+    <requestid>214151</requestid>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>3bbe746d24b0310191a563e58edad140</srcmd5>
+    <version>5.0.5</version>
+    <time>1407391653</time>
+    <user>coolo</user>
+    <comment>- Rename Completion/openSUSE/Command/_SuSEconfig to _SUSEconfig
+  (bnc#888989 fate#316521)</comment>
+    <requestid>243775</requestid>
+  </revision>
+  <revision rev="58" vrev="6">
+    <srcmd5>3bbe746d24b0310191a563e58edad140</srcmd5>
+    <version>5.0.5</version>
+    <time>1409303882</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>4da6ed237313605918f57b1e8f08f1c8</srcmd5>
+    <version>5.0.6</version>
+    <time>1409471922</time>
+    <user>coolo</user>
+    <comment>- Update to version 5.0.6
+  * See included ChangeLog
+- Remove zsh-update-zypper-completion.patch, fixed upstream</comment>
+    <requestid>246763</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>54157fdda195c7863e44b27e4e5130da</srcmd5>
+    <version>5.0.6</version>
+    <time>1410326856</time>
+    <user>coolo</user>
+    <comment>- Add zsh-fix-pcre-n.patch to fix pcre_match() -n option</comment>
+    <requestid>247923</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>86d3a790490434346e5d27462e3f4f38</srcmd5>
+    <version>5.0.7</version>
+    <time>1413048296</time>
+    <user>coolo</user>
+    <comment>- Update to version 5.0.7
+  * Small bugfixes
+  * Includes a security fix to disallow evaluation of the
+    initial values of integer variables imported from the environment
+- Remove zsh-fix-pcre-n.patch, fixed upstream</comment>
+    <requestid>254813</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>87a3f9fe487aa61b9a4dbd18ef2860e6</srcmd5>
+    <version>5.0.7</version>
+    <time>1421777511</time>
+    <user>dimstar_suse</user>
+    <comment>- Harden CFLAGS/LDFLAGS</comment>
+    <requestid>281259</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>ee0a7e034a7c10ada458ec6c4e304bf9</srcmd5>
+    <version>5.0.7</version>
+    <time>1422646257</time>
+    <user>dimstar_suse</user>
+    <comment>- Add back rpm completion file (bnc#900424)</comment>
+    <requestid>283223</requestid>
+  </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>841a989452fb68c2846b0ef0c9831480</srcmd5>
+    <version>5.0.7</version>
+    <time>1424095346</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>285134</requestid>
+  </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>a22d19dcf0b6ba9beeb3105b47214000</srcmd5>
+    <version>5.0.7</version>
+    <time>1429973170</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298564</requestid>
+  </revision>
+  <revision rev="66" vrev="6">
+    <srcmd5>04a1f0f9fdcc5be3e6f2b177aabe17fd</srcmd5>
+    <version>5.0.7</version>
+    <time>1431248031</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305205</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>cd4f502a63775f7828fbe633ec1129ab</srcmd5>
+    <version>5.0.8</version>
+    <time>1433312607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.8
+  * Global aliases can be created for syntactic tokens such as command
+    separators (&quot;;&quot;, &quot;&amp;&quot;, &quot;|&quot;, &quot;&amp;&amp;&quot;, &quot;||&quot;), redirection operators, etc.
+  * There have been various further improvements to builtin handling
+    with the POSIX_BUILTINS option (off by default) for compatibility with
+    the POSIX standard.
+  * 'whence -v' is now more informative, and 'whence -S' shows you
+    how a full chain of symbolic links resolves to a command.
+  * The 'p' parameter flag now allows an argument to be specified
+    as a reference to a variable, e.g. ${(ps.$sep.)foo} to split $foo
+    on a string given by $sep.
+  * The option FORCE_FLOAT now forces variables, not just constants,
+    to floating point in arithmetic expressions.
+  * The type of an assignment in arithmetic expressions, e.g. the
+    type seen by the variable res in $(( res = a = b )), is now
+    more logical and C-like.
+  * The default binding of 'u' in vi command mode has changed to undo
+    multiple changes when invoked repeatedly. '^R' is now bound to redo
+    changes. To revert to toggling of the last edit use:
+    bindkey -a u vi-undo-change
+  * Compatibility with Vim has been improved for vi editing mode. Most
+    notably, Vim style text objects are supported and the region can be
+    manipulated with vi commands in the same manner as Vim's visual mode.
+  * Elements of the watch variable may now be patterns.
+  * The logic for retrying history locking has been improved.
+- Remove gcc5-fix.patch, fixed upstream.</comment>
+    <requestid>309607</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>57bab987029be9c9b3a67ccda4234d17</srcmd5>
+    <version>5.0.8</version>
+    <time>1436111825</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312924</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>69e8a0a0b735985221308da290199b51</srcmd5>
+    <version>5.1</version>
+    <time>1441295987</time>
+    <user>dimstar_suse</user>
+    <comment>- Add read1char_signals.patch to fix workers/36373 
+
+- Update to version 5.1
+  * The print builtin has new options -x and -X to expand tabs.
+  * Several new command completions and numerous updates to others.
+  * Options to &quot;fc&quot; to segregate internal and shared history.
+  * All emulations including &quot;sh&quot; use multibyte by default; several
+    repairs to multibyte handling.
+  * ZLE supports &quot;bracketed paste&quot; mode to avoid interpreting pasted
+    newlines as accept-line.  Pastes can be highlighted for visibility
+    and to make it more obvious whether accept-line has occurred.
+  * Improved (though still not perfect) POSIX compatibility for getopts
+    builtin when POSIX_BUILTINS is set.
+  * New setopt APPEND_CREATE for POSIX-compatible NO_CLOBBER behavior.
+  * Completion of date values now displays in a calendar format when
+    the complist module is available.  Controllable by zstyle.
+  * New parameter UNDO_LIMIT_NO for more control over ZLE undo repeat.
+  * Several repairs/improvements to the contributed narrow-to-region
+    ZLE function.
+  * Many changes to child-process and signal handling to eliminate race
+    conditions and avoid deadlocks on descriptor and memory management.
+  * New builtin sysopen in zsh/system module for detailed control of
+    file descriptor modes. 
+- Remove printf-regress.patch, upstream.</comment>
+    <requestid>328399</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>8c0a1fe3db6d257e581b93dd09818b7b</srcmd5>
+    <version>5.1.1</version>
+    <time>1442474308</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.1
+  * Bug fixes for regressions in 5.1 release
+- Remove read1char_signals.patch, fixed upstream.</comment>
+    <requestid>330592</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>a30570e033ee5847880c61ff538315a4</srcmd5>
+    <version>5.1.1</version>
+    <time>1446989723</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove -Wl,-z,now it breaks module loading rh#1277996</comment>
+    <requestid>342578</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>778e06fe1df8d2e9beefe52ec2b7e5c9</srcmd5>
+    <version>5.2</version>
+    <time>1449685960</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2
+  * The new module zsh/param/private can be loaded to allow the shell
+    to define parameters that are private to a function scope (i.e. are
+    not propagated to nested functions called within this function).
+  * The GLOB_STAR_SHORT option allows the pattern **/* to be shortened to
+    just ** if no / follows. so **.c searches recursively for a file whose
+    name has the suffix &quot;.c&quot;.
+  * The effect of the WARN_CREATE_GLOBAL option has been significantly
+    extended, so expect it to cause additional warning messages about
+    parameters created globally within function scope.</comment>
+    <requestid>347277</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>244c8e81ab6074e2468284fa7424a768</srcmd5>
+    <version>5.2</version>
+    <time>1450364030</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348221</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>bc24cad5875c68f9d221c01b304b8ed5</srcmd5>
+    <version>5.2</version>
+    <time>1465129198</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>399482</requestid>
+  </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>c39ddbf837f3a3a1fdb8bfa9dce2f24b</srcmd5>
+    <version>5.2</version>
+    <time>1473102832</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423967</requestid>
+  </revision>
+  <revision rev="76" vrev="5">
+    <srcmd5>4f763cf22894367659b053a1b0733656</srcmd5>
+    <version>5.2</version>
+    <time>1473350751</time>
+    <user>dimstar_suse</user>
+    <comment>- Read /etc/profile as zsh again.</comment>
+    <requestid>425719</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>7afccf46ae6135fc959c3079d38d4544</srcmd5>
+    <version>5.3</version>
+    <time>1481885974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to zsh 5.3
+  * Unicode9 support, this needs support from your terminal to
+    work correctly.
+  * The new word modifier ':P' computes the physical path of the
+    argument.
+  * The output of &quot;typeset -p&quot; uses &quot;export&quot; commands or the &quot;-g&quot;
+    option for parameters that are not local to the current scope.
+  * vi-repeat-change can repeat user-defined widgets if the widget
+    calls zle -f vichange.
+  * The parameter $registers now makes the contents of vi register
+    buffers available to user-defined widgets.
+  * New vi-up-case and vi-down-case builtin widgets bound to gU/gu
+    (or U/u in visual mode) for doing case conversion.
+  * A new select-word-match function provides vim-style text objects
+    with configurable word boundaries using the existing
+    match-words-by-style mechanism.
+  * Support for the conditional expression [[ -v var ]] to test if a
+    variable is set for compatibility with other shells.
+  * The print and printf builtins have a new option -v to assign the
+    output to a variable.
+  * New x: syntax in completion match specifications make it possible
+    to disable match specifications hardcoded in completion functions.
+- Re-add custom zshrc and zshenv to unbreak compatibility with old
+  usage (boo#998858).
+- Add fix-printf.patch to fix a regression in printf.</comment>
+    <requestid>445732</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>bafa4532823bb7b22150bc212721e58a</srcmd5>
+    <version>5.3</version>
+    <time>1486773057</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455002</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>bd82cfb489adb0ac815367b6e7792f39</srcmd5>
+    <version>5.3.1</version>
+    <time>1489175069</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477054</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>028eb07119574a2828c5b38ef854c97c</srcmd5>
+    <version>5.4.2</version>
+    <time>1519902123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580596</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>e0bea4d270d352e09c22fc9d4cdc96ce</srcmd5>
+    <version>5.5</version>
+    <time>1524742352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595955</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>d1a2d12179de67fa707b2f7d22d41490</srcmd5>
+    <version>5.5.1</version>
+    <time>1526462642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606966</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>85d2d22a9a50606f78de2d9cc7e161b3</srcmd5>
+    <version>5.6</version>
+    <time>1536327317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.6
+  * Fixes CVE-2018-0502 (bsc#1107296) and
+    CVE-2018-13259 (bsc#1107294)
+  * Switch to -fstack-protector-strong
+  * See included NEWS file for complete changes.
+- No longer manually install help files, make install handles it.
+- Workaround a regression upstream with help file generation by
+  removing Doc/help.txt before build.
+
+  * fix for a configuration problem finding signal names from (some) recent</comment>
+    <requestid>633489</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>428ea691ccf0aa5031ba5b0d04b5bdf0</srcmd5>
+    <version>5.6.2</version>
+    <time>1537263591</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636300</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>6255916c9153892a7b24161a10925680</srcmd5>
+    <version>5.6.2</version>
+    <time>1538377443</time>
+    <user>dimstar_suse</user>
+    <comment>- Unbreak Leap 42.3 compilation 
+
+- Update to version 5.6.2</comment>
+    <requestid>637013</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>fde226c6d6db981f59796f6f30b1912c</srcmd5>
+    <version>5.7.1</version>
+    <time>1549311056</time>
+    <user>coolo</user>
+    <comment>- Update to version 5.7.1
+  * This release contains fixes for the two regressions reported
+    with VCS_Info and prompt colour sequences.
+
+- Update to version 5.7
+  * Support for 24-bit true color terminals has been added.
+    Hex triplets can be used when specifying colours for prompts
+    and line editor highlighting. On 88 and 256 colour terminals,
+    a new zsh/nearcolor module allows colours specified with hex
+    triplets to be matched against the nearest available colour.
+  * The zsh/datetime module's strftime builtin now accepts an
+    argument specifying the nanoseconds time component; both
+    arguments can be omitted to use the current time.</comment>
+    <requestid>671123</requestid>
+  </revision>
+</revisionlist>

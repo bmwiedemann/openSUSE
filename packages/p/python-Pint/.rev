@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7f502381fa334d4bef9d8f1ddba450c</srcmd5>
+    <version>0.6</version>
+    <time>1461855223</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>389379</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ab87a25a4ba9689f5fa5f3b88484294</srcmd5>
+    <version>0.7.2</version>
+    <time>1465336161</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400231</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bcc84bd3050cc6de90ca09eea70a67bd</srcmd5>
+    <version>0.8.1</version>
+    <time>1503999838</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518563</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f0a2979d5360189b316ea85132f95d3a</srcmd5>
+    <version>0.9</version>
+    <time>1554115156</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix funcsigs dependency
+- Remove unused devel package dep
+- Remove test bconds
+
+- Update to version 0.9:
+  - Add support for registering with matplotlib’s unit handling
+    (gh#hgrecco/pint#317, thanks dopplershift)
+  - Add converters for matplotlib’s unit support.
+    (gh#hgrecco/pint#317, thanks Ryan May)
+  - Fix unwanted side effects in auto dimensionality reduction.
+    (gh#hgrecco/pint#516, thanks Ben Loer)
+  - Allow dimensionality check for non Quantity arguments.
+  - Make Quantity and UnitContainer objects hashable.
+    (gh#hgrecco/pint#286, thanks Nevada Sanchez)
+  - Fix unit tests errors with numpy &gt;=1.13.
+    (gh#hgrecco/pint#577, thanks cpascual)
+  - Avoid error in in-place exponentiation with numpy &gt; 1.11.
+    (gh#hgrecco/pint#577, thanks cpascual)
+  - fix compatible units in context. (thanks enrico)
+  - Added warning for unsupported ufunc. (gh#hgrecco/pint#626,
+    thanks kanhua)
+  - Improve IPython pretty printers. (gh#hgrecco/pint#590, thanks
+    tecki)
+  - Drop Support for Python 2.6, 3.0, 3.1 and 3.2.
+    (gh#hgrecco/pint#567)
+  - Prepare for deprecation announced in Python 3.7
+    (gh#hgrecco/pint#747, thanks Simon Willison)
+  - Added several new units and Systems (gh#hgrecco/pint#749,
+    gh#hgrecco/pint#737)
+  - Started experimental pandas support (gh#hgrecco/pint#746 and</comment>
+    <requestid>690080</requestid>
+  </revision>
+</revisionlist>

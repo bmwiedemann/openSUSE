@@ -1,0 +1,12 @@
+<package name="perl-File-Path-Tiny" project="openSUSE:Factory">
+  <title>Recursive mkdir and rmdir</title>
+  <description>The goal here is simply to provide recursive versions of mkdir() and
+rmdir() with as little code and overhead as possible.
+This module is in no way meant to derogate File::Path and is in no way an
+endorsement to go out and replace all use of File::Path with
+File::Path::Tiny.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-File-Path-Tiny"/>
+  <url>http://search.cpan.org/dist/File-Path-Tiny</url>
+</package>

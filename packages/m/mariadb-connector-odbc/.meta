@@ -1,0 +1,8 @@
+<package name="mariadb-connector-odbc" project="openSUSE:Factory">
+  <title>MariaDB ODBC Connector</title>
+  <description>This package contains the MariaDB ODBC Connector to be used with unixODBC.
+
+</description>
+  <devel project="server:database" package="mariadb-connector-odbc"/>
+  <url>https://downloads.mariadb.org/connector-odbc/</url>
+</package>

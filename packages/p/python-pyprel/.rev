@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cca3ad36fe2ea9af8e4e9cfc638dcc1e</srcmd5>
+    <version>2018.9.14.1501</version>
+    <time>1542281946</time>
+    <user>dimstar_suse</user>
+    <comment>indirect dependency of python-tonescale.  python-tonescale requires python-propyte, and python-propyte requires this.</comment>
+    <requestid>646738</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d9939ad96a7fc8abadcec30135b6ec06</srcmd5>
+    <version>2018.9.14.1501</version>
+    <time>1560536664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707604</requestid>
+  </revision>
+</revisionlist>

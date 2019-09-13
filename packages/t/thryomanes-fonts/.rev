@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="169">
+    <srcmd5>eacbef375082fe4fdad8205a14e7d0bf</srcmd5>
+    <version>1.2</version>
+    <time>1336653278</time>
+    <user>coolo</user>
+    <comment>Moving M17N/fonts-thryomanes to M17N:fonts/thryomanes-fonts.</comment>
+    <requestid>117015</requestid>
+  </revision>
+  <revision rev="2" vrev="170">
+    <srcmd5>976dc424843503f940e8e0be5f74ac36</srcmd5>
+    <version>1.2</version>
+    <time>1338017390</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122192</requestid>
+  </revision>
+  <revision rev="3" vrev="172">
+    <srcmd5>976dc424843503f940e8e0be5f74ac36</srcmd5>
+    <version>1.2</version>
+    <time>1340184271</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="173">
+    <srcmd5>01fc6bdcd46140bd62ec2e53d46390bd</srcmd5>
+    <version>1.2</version>
+    <time>1347619235</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133992</requestid>
+  </revision>
+  <revision rev="5" vrev="175">
+    <srcmd5>01fc6bdcd46140bd62ec2e53d46390bd</srcmd5>
+    <version>1.2</version>
+    <time>1359110487</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="177">
+    <srcmd5>01fc6bdcd46140bd62ec2e53d46390bd</srcmd5>
+    <version>1.2</version>
+    <time>1379664815</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="179">
+    <srcmd5>01fc6bdcd46140bd62ec2e53d46390bd</srcmd5>
+    <version>1.2</version>
+    <time>1409303491</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

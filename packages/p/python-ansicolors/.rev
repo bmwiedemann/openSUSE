@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae0eed9c821b41f41b8b00658d3dba7c</srcmd5>
+    <version>1.1.8</version>
+    <time>1526371887</time>
+    <user>dimstar_suse</user>
+    <comment>A simple module to add ANSI colors and decorations to your settings</comment>
+    <requestid>605867</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>74c476e7132a9cc3e35904a14a992dd2</srcmd5>
+    <version>1.1.8</version>
+    <time>1544631894</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653912</requestid>
+  </revision>
+</revisionlist>

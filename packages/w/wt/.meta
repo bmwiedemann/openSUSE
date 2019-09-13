@@ -1,0 +1,11 @@
+<package name="wt" project="openSUSE:Factory">
+  <title>Web Toolkit</title>
+  <description>Wt is a C++ library and application server for developing and
+deploying web applications. The widget-centric API is inspired by
+existing C++ GUI APIs.	It offers complete abstraction of any
+web-specific implementation details.  Most importantly, the entire
+application is written in only one compiled language (C++), from which
+the library generates the necessary HTML, Javascript, CGI, and AJAX
+code.</description>
+  <devel project="devel:libraries:c_c++" package="wt"/>
+</package>

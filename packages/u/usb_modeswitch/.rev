@@ -1,0 +1,356 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>62e3103b9dc7f007026bc5901ae6b7b7</srcmd5>
+    <version>1.1.2</version>
+    <time>1274296500</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/usb_modeswitch based on submit request 40323 from user a_jaeger
+</comment>
+    <requestid>40323</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>62e3103b9dc7f007026bc5901ae6b7b7</srcmd5>
+    <version>1.1.2</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>62e3103b9dc7f007026bc5901ae6b7b7</srcmd5>
+    <version>1.1.2</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>59ef73f9adf5c68dd4a3802540216f53</srcmd5>
+    <version>1.1.3</version>
+    <time>1279567470</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/usb_modeswitch based on submit request 42847 from user anubisg1
+</comment>
+    <requestid>42847</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0479f3de84ad1a492fa85b2fac591e9f</srcmd5>
+    <version>1.1.4</version>
+    <time>1282573635</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/usb_modeswitch based on submit request 45989 from user anubisg1
+</comment>
+    <requestid>45989</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9213d4b6ed83b7888b6fa57e4708c17e</srcmd5>
+    <version>1.1.5</version>
+    <time>1293579919</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56038 from user anubisg1
+</comment>
+    <requestid>56038</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>200812f6ac9444d378ec6f7a8cc7e11d</srcmd5>
+    <version>1.1.5</version>
+    <time>1293579925</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56038
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9d2c126df94b0e11daf2426ce581af9d</srcmd5>
+    <version>1.1.6</version>
+    <time>1294402161</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57250 from user anubisg1
+</comment>
+    <requestid>57250</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>01640fb89adffb2ebe7ffb9dd2b2cf3b</srcmd5>
+    <version>1.1.6</version>
+    <time>1294402174</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57250
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a4ca51bb52d2f6a9a76bc82215aeaa0f</srcmd5>
+    <version>1.1.6</version>
+    <time>1294677757</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57709 from user prusnak
+</comment>
+    <requestid>57709</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>ad8ba0e7fdfe3790388a9d1147decf31</srcmd5>
+    <version>1.1.6</version>
+    <time>1294677765</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57709
+</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>ad8ba0e7fdfe3790388a9d1147decf31</srcmd5>
+    <version>1.1.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>62611706b21a98a7aaf42362b7b5f603</srcmd5>
+    <version>1.1.7</version>
+    <time>1305191677</time>
+    <user>azouhr</user>
+    <comment>New Upstream version</comment>
+    <requestid>69978</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>caeb70c4bb6e7db6af03644440746433</srcmd5>
+    <version>1.1.7</version>
+    <time>1305191687</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 69978
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>caeb70c4bb6e7db6af03644440746433</srcmd5>
+    <version>1.1.7</version>
+    <time>1319182543</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>d2da601361f5a40550be5984ba9dc102</srcmd5>
+    <version>1.1.7</version>
+    <time>1329400961</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104570 from coolo)</comment>
+    <requestid>105263</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>baf912d551f4a86f3baef6632ba29374</srcmd5>
+    <version>1.2.3</version>
+    <time>1333355520</time>
+    <user>coolo</user>
+    <comment>update to 1.2.3 (forwarded request 112093 from Gankov)</comment>
+    <requestid>112117</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>baf912d551f4a86f3baef6632ba29374</srcmd5>
+    <version>1.2.3</version>
+    <time>1340184301</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>69ae881f1ef509baef3d3e1d76a51589</srcmd5>
+    <version>1.2.3</version>
+    <time>1342963657</time>
+    <user>coolo</user>
+    <comment>Update data package to 20120531, add Alcatel OT-X220D support (forwarded request 128520 from javierllorente)</comment>
+    <requestid>128525</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>c802bc1382fbe6528e01559653013e27</srcmd5>
+    <version>1.2.3</version>
+    <time>1349251992</time>
+    <user>coolo</user>
+    <comment>- huawei-timing.patch:
+   *fixed timing issues with huawei devices (E173, ...)
+    bnc#740354 (forwarded request 136358 from gschlotter)</comment>
+    <requestid>136413</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>173be4ce21bd7f69386684e2e07699e4</srcmd5>
+    <version>1.2.3</version>
+    <time>1351159922</time>
+    <user>namtrac</user>
+    <comment> Fix build with new udev directory location (forwarded request 138922 from fcrozat)</comment>
+    <requestid>139185</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>38cfd3b947d3544488bb971b718439ce</srcmd5>
+    <version>1.2.5</version>
+    <time>1355480497</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>144994</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>38cfd3b947d3544488bb971b718439ce</srcmd5>
+    <version>1.2.5</version>
+    <time>1359110529</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>4c33c40031d9e42812fc822f011e806c</srcmd5>
+    <version>1.2.5</version>
+    <time>1368721022</time>
+    <user>coolo</user>
+    <comment>- drop /bin/eject from dependencies, it is no longer called
+- install device_reference.txt as %doc
+- use URL in all relevant Source tags
+- drop obsoleted sections from spec (forwarded request 175822 from mvyskocil)</comment>
+    <requestid>175859</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>4c33c40031d9e42812fc822f011e806c</srcmd5>
+    <version>1.2.5</version>
+    <time>1379664895</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>51e7d3a8aafb9040b13fc35e6d67309e</srcmd5>
+    <version>2.1.1</version>
+    <time>1401958191</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>236113</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>51e7d3a8aafb9040b13fc35e6d67309e</srcmd5>
+    <version>2.1.1</version>
+    <time>1409303582</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>d7a8fc4edacf89708d611bf3d0285854</srcmd5>
+    <version>2.1.1</version>
+    <time>1412533829</time>
+    <user>coolo</user>
+    <comment>updated data file</comment>
+    <requestid>253615</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>d5ab2a7eabc731daa678d65cca51eb21</srcmd5>
+    <version>2.1.1</version>
+    <time>1413285875</time>
+    <user>coolo</user>
+    <comment>fixed bnc #899013</comment>
+    <requestid>255051</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>26e468095a1faabe73c090d18c9750d2</srcmd5>
+    <version>2.2.0</version>
+    <time>1415199288</time>
+    <user>coolo</user>
+    <comment>removed patch obsolete huawei-timing.patch to fix boo#903753</comment>
+    <requestid>259702</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>c54c607b2ae09c1ec79c47c6019a56d4</srcmd5>
+    <version>2.2.0</version>
+    <time>1427736725</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293072</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6c5f5c21b0f11768b68e2d68af8d03ef</srcmd5>
+    <version>2.2.1</version>
+    <time>1429657864</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>296948</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>bb7e5798a00927f8173b9f7b2951e201</srcmd5>
+    <version>2.2.1</version>
+    <time>1430132371</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304036</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6d086ce3e5ba89aa1e00355b2a484599</srcmd5>
+    <version>2.2.5</version>
+    <time>1438750142</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>319819</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>12a60362327e1bb42777d797c029ffa1</srcmd5>
+    <version>2.2.6</version>
+    <time>1447882261</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344283</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>6b88b67bde90dbbeb153348a209c9f7f</srcmd5>
+    <version>2.3.0</version>
+    <time>1456924763</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>362372</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>25b9fc0efcd86269a897db1d756a2d0b</srcmd5>
+    <version>2.4.0</version>
+    <time>1470508676</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415894</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>419820628740a523d9d2ac871367a2d5</srcmd5>
+    <version>2.4.0</version>
+    <time>1472473699</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421464</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>a0c326d8c49865ccd089af06fc90d3d5</srcmd5>
+    <version>2.4.0</version>
+    <time>1474115884</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427728</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>34262659d6fb5a61b2a56464b567d95b</srcmd5>
+    <version>2.5.0</version>
+    <time>1487028951</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>455713</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>000d3b9bda7b0ff12cfcf3e86144921a</srcmd5>
+    <version>2.5.0</version>
+    <time>1488125072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460295</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>dc95101c58596ecc53dd59b089f202ce</srcmd5>
+    <version>2.5.1</version>
+    <time>1503591540</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518379</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>cefac08246e1b7ae22c867893e1774b5</srcmd5>
+    <version>2.5.2</version>
+    <time>1524400207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596721</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>7c243a7a226b4ba1008ecfa0d2d0453d</srcmd5>
+    <version>2.5.2</version>
+    <time>1560760343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709747</requestid>
+  </revision>
+</revisionlist>

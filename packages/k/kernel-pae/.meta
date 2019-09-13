@@ -1,0 +1,13 @@
+<package name="kernel-pae" project="openSUSE:Factory">
+  <title>Kernel with PAE Support</title>
+  <description>This kernel supports up to 64GB of main memory. It requires Physical
+Addressing Extensions (PAE), which were introduced with the Pentium Pro
+processor.
+
+PAE is not only more physical address space but also important for the
+&quot;no execute&quot; feature which disables execution of code that is marked as
+non-executable. Therefore, the PAE kernel should be used on any systems
+that support it, regardless of the amount of main memory.</description>
+  <devel project="openSUSE:Factory" package="kernel-source"/>
+  <bcntsynctag>kernel-source</bcntsynctag>
+</package>

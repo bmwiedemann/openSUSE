@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>061095355e9f28780133f0ebaed154bd</srcmd5>
+    <version>0.4.6</version>
+    <time>1517824272</time>
+    <user>dimstar_suse</user>
+    <comment>new package, dependency of internally used stuff in maintenance</comment>
+    <requestid>558831</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e39c5cca296fda4c15820af1c1791fb8</srcmd5>
+    <version>0.4.8</version>
+    <time>1531232166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.8
+  * No changelog provided by upstream</comment>
+    <requestid>621728</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e04ef852e88820bd3d0c5b12326d4e45</srcmd5>
+    <version>0.4.8</version>
+    <time>1544726715</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654072</requestid>
+  </revision>
+</revisionlist>

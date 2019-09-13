@@ -1,0 +1,296 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a32f0dfcd020f1ad7f329b52a4eb8706</srcmd5>
+    <version>2.3</version>
+    <time>1354109660</time>
+    <user>coolo</user>
+    <comment>Dependency of OpenStack Folsom</comment>
+    <requestid>143056</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2b7e0c80463824efc93c84f2fa065f3e</srcmd5>
+    <version>2.4.1</version>
+    <time>1355478234</time>
+    <user>coolo</user>
+    <comment>update to version 2.4.1 (forwarded request 145161 from mlin7442)</comment>
+    <requestid>145170</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2b7e0c80463824efc93c84f2fa065f3e</srcmd5>
+    <version>2.4.1</version>
+    <time>1359110099</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4147be57400108ebb5b43a499442e5eb</srcmd5>
+    <version>2.5</version>
+    <time>1364652034</time>
+    <user>coolo</user>
+    <comment>update to 2.5 (forwarded request 161305 from mlin7442)</comment>
+    <requestid>161458</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3bdece924320c48fbbf5d01c7028750d</srcmd5>
+    <version>2.5</version>
+    <time>1365232624</time>
+    <user>coolo</user>
+    <comment>- Set Exclusive arch for LittleEndian machines. mongodb is not 
+  BigEndian compatible. 
+
+- Set Exclusive arch for LittleEndian machines. mongodb is not
+  BigEndian compatible. (forwarded request 162546 from k0da)</comment>
+    <requestid>162594</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>653bf4060330d391eb0b33c21a969d42</srcmd5>
+    <version>2.5.2</version>
+    <time>1370453600</time>
+    <user>coolo</user>
+    <comment>update to version 2.5.2 (forwarded request 177317 from mlin7442)</comment>
+    <requestid>177707</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>cf228fe28f526ed45faaa27515acc4e7</srcmd5>
+    <version>2.5.2</version>
+    <time>1371653242</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179962</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0b5d143e3fb016c9b52566a73816f130</srcmd5>
+    <version>2.5.2</version>
+    <time>1376393007</time>
+    <user>scarabeus_factory</user>
+    <comment>- on bigendian platforms we don't build native exentions, so
+  package to python_sitelib instead of python_sitearch on those
+  platforms (forwarded request 186415 from k0da)</comment>
+    <requestid>186541</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>25c259b0a5ba568ff01e54e09082bcab</srcmd5>
+    <version>2.6</version>
+    <time>1378238641</time>
+    <user>coolo</user>
+    <comment>- update to 2.6:
+  - The ``max_pool_size`` option for :class:`~pymongo.mongo_client.MongoClient`
+    and :class:`~pymongo.mongo_replica_set_client.MongoReplicaSetClient` now
+    actually caps the number of sockets the pool will open concurrently.
+    Once the pool has reached :attr:`~pymongo.mongo_client.MongoClient.max_pool_size`
+    operations will block waiting for a socket to become available. If
+    ``waitQueueTimeoutMS`` is set, an operation that blocks waiting for a socket
+    will raise :exc:`~pymongo.errors.ConnectionFailure` after the timeout. By
+    default ``waitQueueTimeoutMS`` is not set.
+    See :ref:`connection-pooling` for more information.
+  - The :meth:`~pymongo.collection.Collection.insert` method automatically splits
+    large batches of documents into multiple insert messages based on
+    :attr:`~pymongo.mongo_client.MongoClient.max_message_size`
+  - Support for the exhaust cursor flag.
+    See :meth:`~pymongo.collection.Collection.find` for details and caveats.
+  - Support for the PLAIN and MONGODB-X509 authentication mechanisms.
+    See :doc:`the authentication docs &lt;/examples/authentication&gt;` for more
+    information.
+  - Support aggregation output as a :class:`~pymongo.cursor.Cursor`. See
+    :meth:`~pymongo.collection.Collection.aggregate` for details. (forwarded request 197134 from dirkmueller)</comment>
+    <requestid>197209</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dfa824fd3d3080c50c384c97739b337b</srcmd5>
+    <version>2.6.2</version>
+    <time>1379076379</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 2.6.2:
+  Version 2.6.2 fixes a :exc:`TypeError` problem when max_pool_size=None
+  is used in Python 3.
+  Version 2.6.1 fixes a reference leak in
+  the :meth:`~pymongo.collection.Collection.insert` method. (forwarded request 198595 from dirkmueller)</comment>
+    <requestid>198877</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>84eef9f7934e35190412b701b1559d25</srcmd5>
+    <version>2.6.2</version>
+    <time>1379342116</time>
+    <user>coolo</user>
+    <comment>- Fix file list for aarch64 (forwarded request 199087 from Andreas_Schwab)</comment>
+    <requestid>199188</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>84eef9f7934e35190412b701b1559d25</srcmd5>
+    <version>2.6.2</version>
+    <time>1379664256</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>17b188e5029c4ad485451cb028d8e2b3</srcmd5>
+    <version>2.6.3</version>
+    <time>1385653948</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.6.3
+  + fix : AttributeError raised when use_greenlets=True is specified
+    without gevent (https://jira.mongodb.org/browse/PYTHON-561)
+  + fix : Semaphore leak during connection failure. 
+    (https://jira.mongodb.org/browse/PYTHON-580)
+  + fix : MongoReplicaSetClient ignores waitQueueMultiple and 
+    waitQueueTimeoutMS 
+    (https://jira.mongodb.org/browse/PYTHON-579) (forwarded request 208699 from posophe)</comment>
+    <requestid>208700</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>acce302b8b42f56fb11be086b08161dc</srcmd5>
+    <version>2.6.3</version>
+    <time>1386604899</time>
+    <user>coolo</user>
+    <comment>Please forward to factory.
+- Fix filelist on ppc64le (forwarded request 209701 from matz2)</comment>
+    <requestid>209729</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>97fcb68b8a934f95650525412205f5de</srcmd5>
+    <version>2.7.1</version>
+    <time>1406360530</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242375</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2dcfeb98ab2d036ba9b4aa3da273302f</srcmd5>
+    <version>2.7.2</version>
+    <time>1409118404</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246469</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>2dcfeb98ab2d036ba9b4aa3da273302f</srcmd5>
+    <version>2.7.2</version>
+    <time>1409302959</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>73b033d5fa999a96034b55d04adb85bb</srcmd5>
+    <version>3.0</version>
+    <time>1428652484</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295154</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>eabd284ed98fdb696e0edf925deb082f</srcmd5>
+    <version>3.0.2</version>
+    <time>1435053583</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312976</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>2272c3810fb101ce8d9702090387d67a</srcmd5>
+    <version>3.0.2</version>
+    <time>1438750234</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>318842</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>82d9931c3d6ed6bfbe1dee0a61aaf474</srcmd5>
+    <version>3.0.3</version>
+    <time>1438794887</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320513</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>36e7f2b7722b81c893b93f625616320c</srcmd5>
+    <version>3.1.1</version>
+    <time>1456243051</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360791</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9ad572547c9ec71e8019094974342e90</srcmd5>
+    <version>3.4.0</version>
+    <time>1495034296</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492315</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a1a275b840a9db279e8c1dc6f6942dab</srcmd5>
+    <version>3.5.1</version>
+    <time>1513941484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548008</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8d793e31b73b1ae253fdf90f5498aa26</srcmd5>
+    <version>3.6.0</version>
+    <time>1519396292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579325</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>c3da25dde4814a2ce7614791b5fbbc5d</srcmd5>
+    <version>3.6.0</version>
+    <time>1519747162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580306</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>53167f63796ee64ad5d1368e89be321e</srcmd5>
+    <version>3.6.0</version>
+    <time>1520253451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580809</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>d48ca9dcb12ef3796cadcecd3dc3ef3b</srcmd5>
+    <version>3.6.0</version>
+    <time>1520503132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583910</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>77869a3848f445347dee74d4fafa5731</srcmd5>
+    <version>3.6.0</version>
+    <time>1521499073</time>
+    <user>dimstar_suse</user>
+    <comment>  all our platforms install this to sitearch (bsc#1085572)</comment>
+    <requestid>587884</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e9f01311834fd48a7aea3e42bbc8561a</srcmd5>
+    <version>3.7.0</version>
+    <time>1532445927</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>624853</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1f3d3f1ce89b39271813a9259dd70bde</srcmd5>
+    <version>3.7.1</version>
+    <time>1538672456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639604</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f72e386c41b25cb7397987724ac8fdb1</srcmd5>
+    <version>3.8.0</version>
+    <time>1560861789</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix test run on 32bit:
+  * mongodb-skip-test.patch
+
+- Update to 3.8.0:
+  * http://api.mongodb.com/python/3.8.0/changelog.html</comment>
+    <requestid>705616</requestid>
+  </revision>
+</revisionlist>

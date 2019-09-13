@@ -1,0 +1,14 @@
+<package name="libisoburn" project="openSUSE:Factory">
+  <title>Frontend for libburn and libisofs</title>
+  <description>
+Libisoburn is a frontend for libraries libburn and libisofs which enables
+creation and expansion of ISO-9660 filesystems on all CD/DVD/BD media supported
+by libburn. This includes media like DVD+RW, which do not support multi-session
+management on media level and even plain disk files or block devices.  Since it
+specializes on data files in ISO-9660 filesystem images it is not suitable for
+audio (CD-DA) or any other CD layout which does not entirely consist of
+ISO-9660 sessions.
+</description>
+  <devel project="multimedia:libs" package="libisoburn"/>
+  <url>http://libburnia-project.org/</url>
+</package>

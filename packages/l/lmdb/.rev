@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d4a1b379fd40ff17aa6a0844b6ebadc</srcmd5>
+    <version>0.9.11</version>
+    <time>1397626115</time>
+    <user>coolo</user>
+    <comment>dependency of cfengine</comment>
+    <requestid>229748</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>337d909d4c6023837d7f4ae609b266bf</srcmd5>
+    <version>0.9.11</version>
+    <time>1400681988</time>
+    <user>coolo</user>
+    <comment>- Replace verbose cmake script (remove CMakeLists.txt).
+- Instead, use a simpler automake patch (add automake.diff). (forwarded request 234826 from jengelh)</comment>
+    <requestid>234925</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1efbeb52987847e83c836914be3b75e1</srcmd5>
+    <version>0.9.11</version>
+    <time>1407265876</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>243623</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>1efbeb52987847e83c836914be3b75e1</srcmd5>
+    <version>0.9.11</version>
+    <time>1409301809</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>2ae75a54e6e3ab617dc88cc8e7f5ce85</srcmd5>
+    <version>0.9.11</version>
+    <time>1410509007</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248442</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>97bc1f69888ab91ce59760a1592d48d2</srcmd5>
+    <version>0.9.14</version>
+    <time>1427983420</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293839</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c0918dff1699057fde80346474a7b2f1</srcmd5>
+    <version>0.9.14</version>
+    <time>1443071824</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331874</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fcaf96c1ba27dfd208b6ee55b2b94325</srcmd5>
+    <version>0.9.16</version>
+    <time>1446208886</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341011</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8804c24e8bdbed4c0bcb6cb08862f78e</srcmd5>
+    <version>0.9.16</version>
+    <time>1449995933</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>347881</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1a887c00d78a0a8f38d6ec113d42eb58</srcmd5>
+    <version>0.9.17</version>
+    <time>1455789934</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>358374</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e4193d9db02eaa5a182f9070867ece25</srcmd5>
+    <version>0.9.17</version>
+    <time>1467205380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403644</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>fdc767b679c505fcd9a019b68e7ae151</srcmd5>
+    <version>0.9.17</version>
+    <time>1508316245</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534127</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>55ed390954c7c12d49039d2df4c47439</srcmd5>
+    <version>0.9.22</version>
+    <time>1528195876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613891</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7f3c9d1a86bcb32c1c31b83b2d39b0ec</srcmd5>
+    <version>0.9.22</version>
+    <time>1539342459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640739</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d8643288bdb3cc8764c2977de76f8a62</srcmd5>
+    <version>0.9.23</version>
+    <time>1554114752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688581</requestid>
+  </revision>
+</revisionlist>

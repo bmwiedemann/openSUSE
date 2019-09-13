@@ -1,0 +1,228 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>725edf55637757ee66d52bdcd74752f8</srcmd5>
+    <version>1.8.10</version>
+    <time>1510406459</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain urh in Factory</comment>
+    <requestid>540417</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1e1ad2ce2f7f4a7ae9e3bea65710d035</srcmd5>
+    <version>1.8.11</version>
+    <time>1510661182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541748</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>43ac6e7785561ce302b0461dcab12e52</srcmd5>
+    <version>1.8.13</version>
+    <time>1511517217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542898</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8f7f45ae94c3709ac0c2d47e2d914efa</srcmd5>
+    <version>1.8.14</version>
+    <time>1511817462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545702</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b70e215b0f4556ff17f11557157f674a</srcmd5>
+    <version>1.8.16</version>
+    <time>1512140057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546941</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8b335a1305a70539f492a06c42668973</srcmd5>
+    <version>1.8.17</version>
+    <time>1512547148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548222</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6a412f6c64e30477c72184b2964b0ff5</srcmd5>
+    <version>1.9.1</version>
+    <time>1516359010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558520</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d92e57f272786310e9253adb16a0e5ae</srcmd5>
+    <version>1.9.2</version>
+    <time>1516444105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567864</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b2ef265b53e4af38362050333a0e9022</srcmd5>
+    <version>2.0.0</version>
+    <time>1519902472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581022</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>232fc1ff85457c442f24289b146b3375</srcmd5>
+    <version>2.0.1</version>
+    <time>1522503425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592536</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5355e2c5f545e3b9210d511e2414a5e5</srcmd5>
+    <version>2.0.2</version>
+    <time>1524643322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600625</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bdbfd96b262b097a9a20f1d155474c1a</srcmd5>
+    <version>2.0.4</version>
+    <time>1525960193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605647</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a29061b03ebe93bd02f130776da62770</srcmd5>
+    <version>2.1.0</version>
+    <time>1528896919</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>613884</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6ee20ac135ebc39b4f9202de2a44de68</srcmd5>
+    <version>2.1.1</version>
+    <time>1530304114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617398</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7b96f3fedfe9ff2b690583a11e53fad2</srcmd5>
+    <version>2.2.0</version>
+    <time>1531947170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621669</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2a8454b9802284bc03816288a8db2646</srcmd5>
+    <version>2.2.3</version>
+    <time>1533214684</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python macros when building
+- Run spec-cleaner
+- Update to version 2.2.3
+  New features:
+  * allow save and load of binary protocols (.bin files)
+  * improve bootstrap of simulator messages
+      + auto assign destination when dropping messages to simulator
+      + show participant address in participant legend if present
+      + auto assign participant address when clicking analyze button in
+        analysis based on SRC address label
+  * consider API changes of SDRPlay 2.13
+  * also consider participant address (next to RSSI) when auto assigning
+    participants in analysis
+  * Clear button stays enabled during operation so e.g. recordings can be
+    cleared live
+  Bugfixes:
+  * antenna selection is not saved when reopening dialog #494
+  * hiding multiple rows at once in analysis not working properly #499
+</comment>
+    <requestid>626165</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2b6a6a96bcd8ed54ddbfd77ce9cf73dd</srcmd5>
+    <version>2.3.0</version>
+    <time>1539251363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639361</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c1b386454b56e537073c4bbc1f4c664d</srcmd5>
+    <version>2.4.1</version>
+    <time>1540451471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644170</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4a1a18081ee41c3b72d51d1c0c125b75</srcmd5>
+    <version>2.5.1</version>
+    <time>1543311768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651967</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ed9c71e63efa38d390d409b8edf44b98</srcmd5>
+    <version>2.5.2</version>
+    <time>1546695723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657789</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bccbe4fc2db12b95b6758949cb631ac2</srcmd5>
+    <version>2.5.6</version>
+    <time>1551386571</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678657</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d9cf4b94cf7a49f505e9f7f73b4a84b9</srcmd5>
+    <version>2.5.7</version>
+    <time>1554977814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692927</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c5d38bc12d04db64b759e7b9e63353df</srcmd5>
+    <version>2.6.0</version>
+    <time>1558532408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704665</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fa260e20727b63cc24f41a0dbeeee7dc</srcmd5>
+    <version>2.7.0</version>
+    <time>1559580829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707017</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f6bf761b527c3027a68a64a9608ee312</srcmd5>
+    <version>2.7.2</version>
+    <time>1561641980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712155</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>bbb7b66d8860fc8e0c02e4a8e2d825bc</srcmd5>
+    <version>2.7.5</version>
+    <time>1566894474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726277</requestid>
+  </revision>
+</revisionlist>

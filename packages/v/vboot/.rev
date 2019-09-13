@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f25f727653eec862b9b961f3afb0f687</srcmd5>
+    <version>64.10176</version>
+    <time>1516804108</time>
+    <user>dimstar_suse</user>
+    <comment>- 1st Factory release: R64-10176
+</comment>
+    <requestid>567686</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>53d5fa5b8f3f260dff2723c33972396b</srcmd5>
+    <version>66.10452</version>
+    <time>1521499110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588320</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4b1b970192d5aac302ec324cbfbe138d</srcmd5>
+    <version>67.10575</version>
+    <time>1525256401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602992</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cfc91e34150afb8d64da7e70c63e174c</srcmd5>
+    <version>68.10718</version>
+    <time>1529402157</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616239</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e0274b9aa2d4a78b12f36099d388b30</srcmd5>
+    <version>69.10895</version>
+    <time>1534543533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629718</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b1a5d64469fec67a9ca0b995301cc1af</srcmd5>
+    <version>70.11021</version>
+    <time>1536679271</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634954</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e459f95980c7608f206695eb64511457</srcmd5>
+    <version>72.11316</version>
+    <time>1546947021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663599</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9410c204ff3d8aadad39f116ad0d8421</srcmd5>
+    <version>72.11316</version>
+    <time>1560459796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709536</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d6ccb0573a800120ab480c895f2ee7a3</srcmd5>
+    <version>76.12239</version>
+    <time>1561642001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712231</requestid>
+  </revision>
+</revisionlist>

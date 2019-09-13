@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40aadc253118a8b1094131e994375919</srcmd5>
+    <version>1.4.0</version>
+    <time>1349372424</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>136104</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>40aadc253118a8b1094131e994375919</srcmd5>
+    <version>1.4.0</version>
+    <time>1359109062</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>40aadc253118a8b1094131e994375919</srcmd5>
+    <version>1.4.0</version>
+    <time>1379662638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>596a034bd450901d56cc43079c480af5</srcmd5>
+    <version>1.4.1</version>
+    <time>1386932271</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.1
+  * Added ibus-setup-input-pad.desktop
+  * Enabled GTK3 by default. (forwarded request 210511 from hillwood)</comment>
+    <requestid>210665</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>278814574c1bd4b7e5c21486315d813f</srcmd5>
+    <version>1.4.2</version>
+    <time>1395475655</time>
+    <user>coolo</user>
+    <comment>update version 1.4.2 (forwarded request 227094 from MargueriteSu)</comment>
+    <requestid>227095</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>278814574c1bd4b7e5c21486315d813f</srcmd5>
+    <version>1.4.2</version>
+    <time>1409301195</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fc3e9390bba8aa83a1e0d59062fffcdf</srcmd5>
+    <version>1.4.99.20140916</version>
+    <time>1413739677</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256625</requestid>
+  </revision>
+</revisionlist>

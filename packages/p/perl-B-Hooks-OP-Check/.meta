@@ -1,0 +1,9 @@
+<package name="perl-B-Hooks-OP-Check" project="openSUSE:Factory">
+  <title>Wrap OP check callbacks</title>
+  <description>This module provides a c api for XS modules to hook into the callbacks of
+&quot;PL_check&quot;.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-B-Hooks-OP-Check"/>
+  <url>http://search.cpan.org/dist/B-Hooks-OP-Check</url>
+</package>

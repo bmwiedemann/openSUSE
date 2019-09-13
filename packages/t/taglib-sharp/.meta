@@ -1,0 +1,8 @@
+<package name="taglib-sharp" project="openSUSE:Factory">
+  <title>Multimedia metadata reading/writing library for popular formats</title>
+  <description>TagLib# is a metadata or &quot;tag&quot; reader and writer library that supports
+the most common movie and music formats, abstracting away format
+specificity. TagLib# offers either a common API for all formats or
+access to specific APIs for a given format.</description>
+  <devel project="Mono:Factory" package="taglib-sharp"/>
+</package>

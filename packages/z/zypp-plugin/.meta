@@ -1,0 +1,5 @@
+<package name="zypp-plugin" project="openSUSE:Factory">
+  <title>Helper that makes writing ZYpp plugins easier</title>
+  <description>Empty main package. Helper for different languages reside in subpackages.</description>
+  <devel project="zypp:Head" package="zypp-plugin"/>
+</package>

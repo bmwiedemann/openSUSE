@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2e304ceb9fa8a415a17341c11be009a9</srcmd5>
+    <version>1.7.84</version>
+    <time>1425377742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>288522</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>719ab8a326fe61393a9b33a254f58856</srcmd5>
+    <version>1.7.85</version>
+    <time>1427445685</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.7.85
+  - Improved reporting of invalid chunk names. Does not try to put
+    non-printable characters in STDERR; displays hex numbers instead.
+  - Fixed include path for utime.h on MSVC (Louis McLaughlin).
+  - Eliminated &quot;FAR&quot; memory support (it was removed from libpng at version 1.6.0).
+  - Disabled the &quot;-already_crushed&quot; option which does not really work well.</comment>
+    <requestid>293228</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>68da4e8ed5cc8f17e636438d9bd4108b</srcmd5>
+    <version>1.7.92</version>
+    <time>1453998148</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354396</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>227eed31352b5264fcd57f036afd546b</srcmd5>
+    <version>1.7.92</version>
+    <time>1488479825</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 460619 from StefanBruens)</comment>
+    <requestid>460633</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0ba50f00bb50f83757d559a6c76bf936</srcmd5>
+    <version>1.8.13</version>
+    <time>1510045258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8.13:
+  * Made &quot;-reduce&quot; the default behavior.  Removed obsolete options
+    &quot;-plte_len&quot;, &quot;-cc&quot;, &quot;-nocc&quot;, &quot;-double_gamma&quot;, &quot;-already_crushed&quot;,
+    and &quot;-bit_depth&quot;.
+  * Added &quot;-speed&quot; option; it avoids using the AVG or PAETH filters
+    which are slower to decode.
+  * Made &quot;-force&quot; force output even when the IDAT is larger, and
+    added &quot;-noforce&quot; option; &quot;-noforce&quot; is now the default behavior.
+  * Added &quot;-warn&quot; option, to show only warnings.
+  * Changed default verbosity from 1 (normal) to 0 (quiet). Use &quot;-v&quot;
+    to get the previous default behavior and &quot;-v -v&quot; to get the
+    previous &quot;verbose&quot; behavior. The &quot;-s&quot; (silent) and &quot;-q&quot; (quiet)
+    options behave as before.
+- Remove pngcrush-systemlib.diff: not needed anymore.
+- Add package source verification. (forwarded request 539164 from vilene)</comment>
+    <requestid>539211</requestid>
+  </revision>
+</revisionlist>

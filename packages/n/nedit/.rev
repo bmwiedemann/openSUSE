@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>980eda31ce554f9a4d3ee73081b370e2</srcmd5>
+    <version>5.7</version>
+    <time>1497944324</time>
+    <user>dimstar_suse</user>
+    <comment>still popular package</comment>
+    <requestid>494631</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5342e6337285350cdb604ec9824cf8d9</srcmd5>
+    <version>5.7</version>
+    <time>1499415451</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>508464</requestid>
+  </revision>
+</revisionlist>

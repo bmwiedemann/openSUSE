@@ -1,0 +1,8 @@
+<package name="caribou" project="openSUSE:Factory">
+  <title>On-screen Keyboard for GNOME</title>
+  <description>Caribou is a text entry and UI navigation application being developed
+as an alternative to the Gnome On-screen Keyboard. The overarching goal
+for Caribou is to create a usable solution for people whose primary way
+of accessing a computer is a switch device.</description>
+  <devel project="GNOME:Factory" package="caribou"/>
+</package>

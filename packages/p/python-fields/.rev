@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07331f96683473e748a73db5a457d9ba</srcmd5>
+    <version>5.0.0</version>
+    <time>1550151197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674462</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>24f67d68e923a3367377389a3d343a3f</srcmd5>
+    <version>5.0.0</version>
+    <time>1553888341</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove pytest-benchmark dependency to avoid buildcycle</comment>
+    <requestid>689403</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>382a02b4099f9666c91903fdb57e20c5</srcmd5>
+    <version>5.0.0</version>
+    <time>1564484472</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with pytest4+</comment>
+    <requestid>716814</requestid>
+  </revision>
+</revisionlist>

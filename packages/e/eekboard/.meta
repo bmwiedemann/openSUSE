@@ -1,0 +1,6 @@
+<package name="eekboard" project="openSUSE:Factory">
+  <title>An easy to use virtual keyboard toolkit</title>
+  <description>eekboard is a virtual keyboard software package, including a set of
+tools to implement desktop virtual keyboards.</description>
+  <devel project="M17N" package="eekboard"/>
+</package>

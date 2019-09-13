@@ -1,0 +1,171 @@
+<revisionlist>
+  <revision rev="1" vrev="15">
+    <srcmd5>e5a2898eae90cf379e4d4316daf2ffd4</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1168904398</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="80">
+    <srcmd5>e26d713a48fa2e1b9305085145f54c86</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1200101869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="81">
+    <srcmd5>d0f2831ef2971f72f4d35e296f388c92</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1200219172</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="135">
+    <srcmd5>d0f2831ef2971f72f4d35e296f388c92</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1200219172</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="136">
+    <srcmd5>43c4329818bcfc56b3436bea24cf2ff8</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1245341486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="138">
+    <srcmd5>43c4329818bcfc56b3436bea24cf2ff8</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1245341486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="139">
+    <srcmd5>06894bc423ff1ec093d27c692c46c219</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1268926398</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="141">
+    <srcmd5>06894bc423ff1ec093d27c692c46c219</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1278667393</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="142">
+    <srcmd5>06894bc423ff1ec093d27c692c46c219</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="145">
+    <srcmd5>06894bc423ff1ec093d27c692c46c219</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="146">
+    <srcmd5>ee279f8eb5dfaa1c5f3a585679a4bb8b</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1317744942</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc, %configure macros (forwarded request 86485 from uli_suse)</comment>
+    <requestid>86493</requestid>
+  </revision>
+  <revision rev="12" vrev="148">
+    <srcmd5>ee279f8eb5dfaa1c5f3a585679a4bb8b</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1319182534</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="149">
+    <srcmd5>9a2b3c5b20bdf30698cd874657fec39b</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1324458247</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>96801</requestid>
+  </revision>
+  <revision rev="14" vrev="150">
+    <srcmd5>022cb85a0e8a0d14c78834e04e76b694</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1325231195</time>
+    <user>coolo</user>
+    <comment>- Fix wrong size parameter in memset call (forwarded request 98313 from namtrac)</comment>
+    <requestid>98318</requestid>
+  </revision>
+  <revision rev="15" vrev="152">
+    <srcmd5>022cb85a0e8a0d14c78834e04e76b694</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1340184292</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="154">
+    <srcmd5>022cb85a0e8a0d14c78834e04e76b694</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1359110517</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="156">
+    <srcmd5>022cb85a0e8a0d14c78834e04e76b694</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1379664873</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="158">
+    <srcmd5>022cb85a0e8a0d14c78834e04e76b694</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1409303560</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="159">
+    <srcmd5>5b7e6ef271ef2cb8eb76f29ebab4a7cb</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1415636917</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260284</requestid>
+  </revision>
+  <revision rev="20" vrev="160">
+    <srcmd5>00e97644f86b4233fdc2a67183d85595</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1435053407</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312505</requestid>
+  </revision>
+  <revision rev="21" vrev="161">
+    <srcmd5>d40103ab2c9a02eb442251c2cddba6a5</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1448400817</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345052</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>964739055077462f153fff680e425073</srcmd5>
+    <version>1.2</version>
+    <time>1483554934</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446828</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d0c7c2516cfe47af120671a0473b9fc0</srcmd5>
+    <version>1.3</version>
+    <time>1485863198</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453390</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0732bbb8e404f364c2b2fbfa660ed96c</srcmd5>
+    <version>2.1</version>
+    <time>1550049444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670504</requestid>
+  </revision>
+</revisionlist>

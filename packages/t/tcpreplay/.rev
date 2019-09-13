@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>80d445c52dff8e44db33544b9f114937</srcmd5>
+    <version>4.1.1</version>
+    <time>1455021132</time>
+    <user>dimstar_suse</user>
+    <comment>new package for Factory, see http://lists.opensuse.org/opensuse-factory/2016-01/msg00483.html (resubmitted)</comment>
+    <requestid>357599</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9cf59a00555d0f96819c2a49b13efedf</srcmd5>
+    <version>4.1.2</version>
+    <time>1479837554</time>
+    <user>dimstar_suse</user>
+    <comment>tcpreplay update to new point release, fixes CVE-2016-6160</comment>
+    <requestid>441314</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1e60b87229e199fe44b7d87d3635e6d1</srcmd5>
+    <version>4.1.2</version>
+    <time>1490026140</time>
+    <user>dimstar_suse</user>
+    <comment>- security fix for CVE-2017-6429 /  bsc#1028234</comment>
+    <requestid>479994</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fbc62ad6cc1c75d41dce513ab5970b87</srcmd5>
+    <version>4.2.6</version>
+    <time>1503593003</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>513645</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2b835036fc56262be27d892c0eb7cbe0</srcmd5>
+    <version>4.2.6</version>
+    <time>1505238989</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523521</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>afc820844a7f1fadeb3fdb73f84f1d69</srcmd5>
+    <version>4.3.1</version>
+    <time>1546946835</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to upstream version 4.3.1</comment>
+    <requestid>662367</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0d0cbfe1d919e1b77ffaabe63830fda0</srcmd5>
+    <version>4.3.2</version>
+    <time>1552599772</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.2 point release</comment>
+    <requestid>685024</requestid>
+  </revision>
+</revisionlist>

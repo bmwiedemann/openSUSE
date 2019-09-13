@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fdcde865449ee7083aa5b5dbf7372ef9</srcmd5>
+    <version>0.41.92</version>
+    <time>1219288470</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0aaff3313c184a3d9cfea120218f148d</srcmd5>
+    <version>0.41.93</version>
+    <time>1221281283</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d94ed9218cc2d2d6f06221ca843fe4f3</srcmd5>
+    <version>0.41.94</version>
+    <time>1225213903</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>76dbd8df1f1fd4a98a498fe012e1e583</srcmd5>
+    <version>0.41.94</version>
+    <time>1246629201</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>76dbd8df1f1fd4a98a498fe012e1e583</srcmd5>
+    <version>0.41.94</version>
+    <time>1246629201</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>565887913e6c12983e735122a4f37721</srcmd5>
+    <version>0.41.94</version>
+    <time>1265281180</time>
+    <user>autobuild</user>
+    <comment>Copy from network/pam_csync based on submit request 31430 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>376ad253e3665ec7c2ec686dbb80a4c3</srcmd5>
+    <version>0.41.94</version>
+    <time>1268925277</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ce91d1ce8c816c62389cd5a2ce2fc1e5</srcmd5>
+    <version>0.42.0</version>
+    <time>1270485964</time>
+    <user>autobuild</user>
+    <comment>Copy from network:synchronization:files/pam_csync based on submit request 36912 from user jmcdough
+</comment>
+    <requestid>36912</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ce91d1ce8c816c62389cd5a2ce2fc1e5</srcmd5>
+    <version>0.42.0</version>
+    <time>1278667375</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>ce91d1ce8c816c62389cd5a2ce2fc1e5</srcmd5>
+    <version>0.42.0</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>ce91d1ce8c816c62389cd5a2ce2fc1e5</srcmd5>
+    <version>0.42.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>ce91d1ce8c816c62389cd5a2ce2fc1e5</srcmd5>
+    <version>0.42.0</version>
+    <time>1319182225</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>366710fdd584b1e1fd1ccaee1da01fc7</srcmd5>
+    <version>0.42.0</version>
+    <time>1323192937</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>366710fdd584b1e1fd1ccaee1da01fc7</srcmd5>
+    <version>0.42.0</version>
+    <time>1340183773</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>366710fdd584b1e1fd1ccaee1da01fc7</srcmd5>
+    <version>0.42.0</version>
+    <time>1359109565</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="15">
+    <srcmd5>366710fdd584b1e1fd1ccaee1da01fc7</srcmd5>
+    <version>0.42.0</version>
+    <time>1379663482</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>308cfc6e66bc04e50188e5503f2338ee</srcmd5>
+    <version>0.42.0</version>
+    <time>1394647676</time>
+    <user>coolo</user>
+    <comment>Try to adhere to packaging guidelines despite factory team poitning to 
+the wrong document for their rejection reason.
+
+  + Added 0001-Remove-backward-compatibility-option-for-newer-cmake.patch
+  + Added 0002-Update-FSF-address.patch (forwarded request 225688 from jmcdough)</comment>
+    <requestid>225689</requestid>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>308cfc6e66bc04e50188e5503f2338ee</srcmd5>
+    <version>0.42.0</version>
+    <time>1409302098</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>e07b5d05fe5766b76cd09951a821665e</srcmd5>
+    <version>0.42.0</version>
+    <time>1427564335</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293434</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c63c9c76a9ceae9adc8391ea0354988</srcmd5>
+    <version>2.3.g244</version>
+    <time>1456924893</time>
+    <user>dimstar_suse</user>
+    <comment>dependency for Vulkan, the graphics API</comment>
+    <requestid>361352</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c40f8c7511ca39e3d9e0167dbd00fac3</srcmd5>
+    <version>2.3.g401</version>
+    <time>1463124220</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.g401</comment>
+    <requestid>394017</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>face59c1fff49261ec2fc1d8a8b88881</srcmd5>
+    <version>2.3.g537</version>
+    <time>1467205775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3g537</comment>
+    <requestid>401626</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b9a4be9b593ff46a3e186edb7b3d98e9</srcmd5>
+    <version>3.0.g900</version>
+    <time>1478871243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0g900</comment>
+    <requestid>438755</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>24c4e7eadfd81b39e9f6d2b64b072cd7</srcmd5>
+    <version>3.0.g1077</version>
+    <time>1487149557</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>456450</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>648adf55962d94d76dbf7108b874a8c6</srcmd5>
+    <version>3.0.g1115</version>
+    <time>1488479241</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.g1115
+- Drop gccwarn.diff (resolved upstream)</comment>
+    <requestid>459293</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>68e39b8e63902708d485628429a2c5d8</srcmd5>
+    <version>3.0.g1516</version>
+    <time>1502186385</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new snapshot 3.0.g1516</comment>
+    <requestid>515076</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>88df033a9f34440cb3c6db534c2e94e0</srcmd5>
+    <version>3.0.g1817</version>
+    <time>1518281702</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 3.0.g1817</comment>
+    <requestid>573924</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2dbfaed7b8b7786a663112292c0f877c</srcmd5>
+    <version>6.2.2604</version>
+    <time>1520852850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.2604</comment>
+    <requestid>584123</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4215762309e91ec640286241b6b384c0</srcmd5>
+    <version>7.8.2853.g9</version>
+    <time>1536678813</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream release 7.8.2853</comment>
+    <requestid>631836</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0b5badf5aa88a46e0d211225d9e5b85b</srcmd5>
+    <version>7.9.2933.g33</version>
+    <time>1544441131</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653677</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b53fd4150bdfee5c945ef122cffed695</srcmd5>
+    <version>7.11.3113</version>
+    <time>1551468562</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679486</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2d96f2aff864f8c15097636aee86c5d7</srcmd5>
+    <version>7.11.3113.git55</version>
+    <time>1553699455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream snapshot 7.11.3113.git55 (f925eefb)</comment>
+    <requestid>685794</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7c2693949f03634b9917c753334664d2</srcmd5>
+    <version>7.11.3214.git36</version>
+    <time>1560458110</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 7.11.3214.git16 (2f4a8dfd)</comment>
+    <requestid>707924</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e4a67245cc19ae3d7140c251257f7aa0</srcmd5>
+    <version>7.11.3276.git10</version>
+    <time>1561882811</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 7.11.3276.git10 (4162de4)</comment>
+    <requestid>712360</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>582a64c4927cae23e135a66c2523e042</srcmd5>
+    <version>7.12.3352</version>
+    <time>1567679491</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 7.12.3352</comment>
+    <requestid>724966</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>5e6f76fc28475df72d4b57a3202ea247</srcmd5>
+    <version>7.12.3352</version>
+    <time>1568190242</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump SOVER as needed. (missed during Aug 21 update)</comment>
+    <requestid>729104</requestid>
+  </revision>
+</revisionlist>

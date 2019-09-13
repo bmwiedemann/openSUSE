@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>37af74378cdeba08dac8800c2fb89eb6</srcmd5>
+    <version>1.0.1</version>
+    <time>1374247230</time>
+    <user>coolo</user>
+    <comment>moving back from NonFree to Factory</comment>
+    <requestid>183574</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f03c3b42396ad6d1f90b1eb29a67b465</srcmd5>
+    <version>1.0.1</version>
+    <time>1374400755</time>
+    <user>coolo</user>
+    <comment>- Add some BuildRequires</comment>
+    <requestid>183824</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f03c3b42396ad6d1f90b1eb29a67b465</srcmd5>
+    <version>1.0.1</version>
+    <time>1379663286</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>f03c3b42396ad6d1f90b1eb29a67b465</srcmd5>
+    <version>1.0.1</version>
+    <time>1409301892</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>5d97e5dfcf69fa37cd6ca4d74ab81d32</srcmd5>
+    <version>1.0.1</version>
+    <time>1413987808</time>
+    <user>coolo</user>
+    <comment>- Add sed paser for resulting Makefile to let it build with latest
+  glibc as _BSD_SOURCE and _SVID_SOURCE are deprecated with
+- Add patch mgdiff-1.0-getline.diff to avoid name space conflict
+  with getline(3) from stdio.h</comment>
+    <requestid>257735</requestid>
+  </revision>
+</revisionlist>

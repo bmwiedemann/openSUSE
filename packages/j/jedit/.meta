@@ -1,0 +1,33 @@
+<package name="jedit" project="openSUSE:Factory">
+  <title>Programmer's Text Editor Written in Java</title>
+  <description>jEdit is a cross-platform programmer's text editor written in Java.
+
+Some of jEdit's features include:
+
+* Built-in macro language (BeanShell)
+
+* Extensible plug-in architecture with more than 80 plug-ins
+   available
+
+* Plug-ins can be downloaded and installed from within jEdit using
+   the plug-in manager feature
+
+* Syntax highlighting for more than 80 languages
+
+* Supports a large number of character encodings including UTF8 and
+   Unicode
+
+* Autoindenting of source code
+
+* Folding (indent and marker based)
+
+* Word wrap
+
+* Unlimited undo and redo
+
+* Highly configurable and customizable
+
+* Every other feature, both basic and advanced, that you would expect
+to find in a text editor</description>
+  <devel project="Java:packages" package="jedit"/>
+</package>

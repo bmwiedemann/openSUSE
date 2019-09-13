@@ -1,0 +1,284 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>718a7aea84e9ebe474232c69a653588a</srcmd5>
+    <version>1.5.4</version>
+    <time>1539251549</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use double underscored macro
+- Put README.packaging into Source
+- Update 1.5.4:
+ * [1.5] Fix panic in readTombstoneV4.
+ * buildtsi: Do not escape measurement names.
+ * Fix the validation for multiple nested distinct calls.
+ * Return the correct auxiliary values for top/bottom.
+ * backport: check for failure case where backup dir has no manifest files.
+ * Fix regression to allow now() to be used as the group by offset again.
+ * 1.5: Revert &quot;Use MADV_WILLNEED when loading TSM files&quot;.
+ * Ignore index size in Engine.DiskSize().
+ * [1.5] Fix buildtsi partition key.
+ * Ensure that conditions are encoded correctly even if the AST is not properly formed.
+ * Allow time variable to be case insensitive again.
+ * Support setting the log level through the environment variable.
+ * Ensure correct number of tags parsed.
+ * Fix panic when checking fieldsets.
+ * Fix data race in WAL.
+ * Improve CLI connection warnings
+ * Backup utility prints a list of backup files.
+ * Backup/Restore can produce/consume data in the same format as the enterprise backup/restore tool.
+ * Restore runs in online mode, does not delete existing databases
+ * Export functionality using start/end to filter exported data by timestamp
+ * Handle high cardinality deletes in TSM engine
+ * Improve inmem index startup performance for high cardinality.
+ * Add further tsi support for streaming/copying shards.
+ * Schedule a full compaction after a successful import
+ * Add Prometheus /metrics endpoint.
+ * Add ability to generate shard digests.
+ * Allow setting the node id in the influx cli program.
+ * Add logging configuration to the main configuration file.
+ * Suppress the InfluxDB banner if the log output is not a TTY.
+ * Added option to write HTTP request logs to separate file.
+ * Update logging calls to take advantage of structured logging.
+ * Generate trace logs for a number of important InfluxDB operations.
+ * Improve startup time of inmem index.
+- Include LimitNOFILE=100000 in service file as influxdb suggests
+  and crashes with relatively small amounts of data without this.
+- Pass version to linker (fix boo#1079997)
+- inxludb 1.4 requires go 1.9
+- Require go in influxdb-devel package.
+- Fix build for openSUSE Leap 42.x
+- Version 1.3.8:
+  * Add 'influx_inspect inmem2tsi' command.
+  * Fix race condition in the merge iterator close method.
+  * Fix compaction aborting early and dropping remaining series
+- 1.4.0 - v1.4.2
+  Breaking changes (PLEASE READ!)
+  You can no longer specify a different ORDER BY clause in a subquery than the one in the top 
+  level query. This functionality never worked properly, but was not explicitly forbidden.
+  As part of the ongoing development of the tsi1 index, the implementation of a Bloom Filter, 
+  used to efficiently determine if series are not present in the index, was altered in #8857. 
+  While this significantly increases the performance of the index and reduces its memory 
+  consumption, the existing tsi1 indexes created while running previous versions of the database 
+  are not compatible with 1.4.0.
+  Users with databases using the tsi1 index must go through the following process to upgrade to 
+  1.4.0:
+  1 Stop influxd.
+  2 Remove all index directories on databases using the tsi1 index. 
+    With default configuration these can be found in 
+    /var/lib/influxdb/data/DB_NAME/RP_NAME/SHARD_ID/index or
+    ~/.influxdb/data/DB_NAME/RP_NAME/SHARD_ID/index.
+    It's worth noting at this point how many different shard_ids you visit.
+  3 Run the influx_inspect inmem2tsi tool using the shard's data and WAL
+    directories for -datadir and -waldir, respectively. Given the example
+    in step (2) that would be influx_inspect inmem2tsi -datadir
+    /var/lib/influxdb/data/DB_NAME/RP_NAME/SHARD_ID
+    -waldir /path/to/influxdb/wal/DB_NAME/RP_NAME/SHARD_ID.
+  4 Repeat step (3) for each shard that needs to be converted.
+    Start influxd.
+  Users with existing tsi1 shards, who attempt to start version 1.4.0 without following the 
+  above steps, will find the shards refuse to open, and will most likely see the following 
+  error message:
+     incompatible tsi1 index MANIFEST
+     Configuration Changes
+  [collectd] Section
+  parse-multivalue-plugin was added with a default of split. When set to split, multivalue 
+  plugin data (e.g. df free:5000,used:1000) will be split into separate measurements (e.g., 
+  (df_free, value=5000) (df_used, value=1000)). When set to join, multivalue plugin will be 
+  stored as a single multi-value measurement (e.g., (df, free=5000,used=1000)).
+  * Fix panic: runtime error: slice bounds out of range
+  * Fix descending cursors and range queries via IFQL RPC API.
+  * 'X-Influxdb-Build' to http response headers so users can identify if a response 
+    is from an OSS or Enterprise service.
+  * Add parse-multivalue-plugin to allow users to choose how multivalue plugins should 
+    be handled by the collectd service.
+  * Allow panic recovery to be disabled when investigating server issues.
+  * Support http pipelining for /query endpoint.
+  * Reduce allocations when reading data
+  * Mutex profiles are now available.
+  * TSI Index Migration Tool
+  * Support SHOW CARDINALITY queries.
+  * Batch up writes for monitor service
+  * All errors from queries or writes are available via X-InfluxDB-Error header, and 5xx 
+    error messages will be written to server logs.
+  * Improve test coverage across both indexes.
+  * Respect X-Request-Id/Request-Id headers.
+  * InfluxDB now uses MIT licensed version of BurntSushi/toml.
+  * Use system cursors for measurement, series, and tag key meta queries.
+  * Support Ctrl+C to cancel a running query in the Influx CLI. Thanks @emluque!
+  * Initial implementation of explain plan.
+  * Include the number of scanned cached values in the iterator cost.
+  * Add support for the Prometheus remote read and write APIs.
+  * Improve performance of Include and Exclude functions
+  * Report the task status for a query.
+  * Reduce allocations, improve readEntries performance by simplifying loop
+  * Separate importer log statements to stdout and stderr.
+  * Improve performance of Bloom Filter in TSI index.
+  * Add message pack format for query responses.
+  * Improved compaction scheduling
+  * Implicitly decide on a lower limit for fill queries when none is present.
+  * Add EXPLAIN ANALYZE command, which produces a detailed execution plan of a SELECT 
+    statement.- #8963: Streaming inmem2tsi conversion.
+  * Sort &amp; validate TSI key value insertion.
+  * Make client errors more helpful on downstream errs. Thanks @darkliquid!
+  * EXACT and estimated CARDINALITY queries.
+  * Handle nil MeasurementIterator.
+  * Add long-line support to client importer. Thanks @lets00!
+  * Update to go 1.9.2
+  * Allow human-readable byte sizes in config
+  * Improve SHOW TAG KEYS performance.
+  * Create a command to truncate shard groups
+  * Change the default stats interval to 1 second instead of 10 seconds.
+  * illumos build broken on syscall.Mmap
+  * Prevent privileges on non-existent databases from being set.
+  * influxd backup tool will now separate out its logging to stdout and stderr. Thanks 
+    @xginn8!
+  * Dropping measurement used several GB disk space
+  * Fix the cq start and end times to use unix timestamps.
+  * influx cli case sensitivity.
+  * Fixed time boundaries for continuous queries with time zones.
+  * Return query parsing errors in CSV formats.
+  * Fix time zone shifts when the shift happens on a time zone boundary.
+  * Parse time literals using the time zone in the select statement.
+  * Reduce CPU usage when checking series cardinality
+  * Fix backups when snapshot is empty.
+  * Cursor leak, resulting in an accumulation of .tsm.tmp files after compactions.
+  * Improve condition parsing.
+  * Ensure inputs are closed on error. Add runtime GC finalizer as additional guard to 
+    close iterators
+  * Fix merging bug on system iterators.
+  * Force subqueries to match the parent queries ordering.
+  * Fix race condition accessing seriesByID map.
+  * Fix deadlock when calling SeriesIDsAllOrByExpr
+  * Fix influx_inspect export so it skips missing files.
+  * Reduce how long it takes to walk the varrefs in an expression.
+  * panic: runtime error: invalid memory address or nil pointer dereference.
+  * Drop Series Cause Write Fail/Write Timeouts/High Memory Usage
+  * Fix increased memory usage in cache and wal readers
+  * An OSS read-only user should be able to list measurements on a database
+  * Ensure time and tag-based condition can be used with tsi1 index when deleting.
+  * Prevent deadlock when doing math on the result of a subquery.
+  * Fix a minor memory leak in batching points in tsdb.
+  * Don't assume which is present in package post-install script.
+  * Fix missing man pages in new packaging output
+  * Fix use of INFLUXD_OPTS in service file
+  * Fix WAL panic: runtime error: makeslice: cap out of range
+  * Copy returned bytes from TSI meta functions.
+  * Fix data deleted outside of time range
+  * Fix data dropped incorrectly during compaction
+  * Prevent deadlock during collectd, graphite, opentsdb, and udp shutdown.
+  * Remove the pidfile after the server has exited.
+  * Return query.ErrQueryInterrupted for successful read on InterruptCh.
+  * Fix race inside Measurement index.
+  * Ensure retention service always removes local shards.
+  * Handle utf16 files when reading the configuration file.
+  * Fix panic: runtime error: slice bounds out of range
+- Version 1.3.7
+  * Don't assume which is present in package post-install script.
+  * Fix use of INFLUXD_OPTS in service file
+  * Fix missing man pages in new packaging output
+  * Add RPM dependency on shadow-utils for useradd.
+  * Fix data deleted outside of time range
+  * Fix data dropped incorrectly during compaction
+  * Return query.ErrQueryInterrupted for a successful read on InterruptCh.
+  * Copy returned bytes from TSI meta functions.
+ 
+- Version 1.3.6:
+  * Reduce how long it takes to walk the varrefs in an expression.
+  * panic: runtime error: invalid memory address or nil pointer dereference.
+  * Fix increased memory usage in cache and wal readers
+  * Prevent deadlock when doing math on the result of a subquery.
+  * Fix several races in the shard and engine.
+  * Fix race on cache entry.
+- Version 1.3.5:
+  * Fix race condition accessing seriesByID map.
+  * Fix deadlock when calling SeriesIDsAllOrByExpr
+- Version 1.3.4:
+  * Fixed time boundaries for continuous queries with time zones.
+  * Fix time zone shifts when the shift happens on a time zone boundary.
+  * Parse time literals using the time zone in the select statement.
+  * Fix drop measurement not dropping all data
+  * Fix backups when snapshot is empty.
+  * Cursor leak, resulting in an accumulation of .tsm.tmp files after
+    compactions.
+  * Deadlock when dropping measurement and writing
+  * Ensure inputs are closed on error. Add runtime GC finalizer as additional
+    guard to close iterators
+  * Fix leaking tmp file when large compaction aborted
+  * Batch up writes for monitor service
+- Version 1.3.3:
+  * Resolves a memory leak when NewReaderIterator creates a nilFloatIterator,
+    the reader is not closed
+- Version 1.3.2:
+  * Interrupt in progress TSM compactions
+  * Prevent excessive memory usage when dropping series
+  * Significantly improve performance of SHOW TAG VALUES.
+- Version 1.3.1:
+  * Ensure temporary TSM files get cleaned up when compaction aborted.
+  * InfluxDB goes unresponsive
+  * Duplicate points generated via INSERT after DELETE
+  * Fix the cq start and end times to use unix timestamps.
+- Version 1.3.0:
+  * The admin UI is removed and unusable in this release. The [admin]
+    configuration section will be ignored.
+  * The top-level config bind-address now defaults to localhost:8088. The
+    previous default was just :8088, causing the backup and restore port to
+    be bound on all available interfaces (i.e. including interfaces on the
+    public internet).
+- Version 1.2.4:
+  * The stress tool influx_stress will be removed in a subsequent
+    release.
+  * Remove the override of GOMAXPROCS.
+  * Uncomment section headers from the default configuration file.
+  * Improve write performance significantly.
+  * Prune data in meta store for deleted shards.
+  * Update latest dependencies with Godeps.
+  * Introduce syntax for marking a partial response with chunking.
+  * Use X-Forwarded-For IP address in HTTP logger if present.
+  * Add support for secure transmission via collectd.
+  * Switch logging to use structured logging everywhere.
+  * [CLI feature request] USE retention policy for queries.
+  * Add clear command to cli.
+  * Adding ability to use parameters in queries in the v2 client
+    using the Parameters map in the Query struct.
+  * Allow add items to array config via ENV
+  * Support subquery execution in the query language.
+  * Verbose output for SSL connection errors.
+  * Cache snapshotting performance improvements
+- Partially revert previous change to fix build for Leap
+- Added version linker flag to make binaries aware of which
+  influxdb version they are.
+- Disabled phone home to usage.influxdata.com
+- Removed nonsensical EnvironmentFile+= line from service file
+- Added -devel subpackage.
+- Version 1.1.1:
+  * Fix incorrect tag value in error message.
+  * Quote the empty string as an ident.
+  * Fix string fields w/ trailing slashes
+- Initial version
+</comment>
+    <requestid>640281</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d5d89982a55708f46aaea8d793dcd4f9</srcmd5>
+    <version>1.5.4</version>
+    <time>1548452655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668278</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb19cd537977ef794bf2f39cdf16b551</srcmd5>
+    <version>1.5.5</version>
+    <time>1555237437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694012</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f20c0a7c9b4962e2dfbd289a92bc00b5</srcmd5>
+    <version>1.7.6</version>
+    <time>1562843292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711854</requestid>
+  </revision>
+</revisionlist>

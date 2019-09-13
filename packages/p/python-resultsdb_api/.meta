@@ -1,0 +1,12 @@
+<package name="python-resultsdb_api" project="openSUSE:Factory">
+  <title>Library for simplifying the communication with ResultsDB</title>
+  <description>The ResultsDB API module provides a Python API for using ResultsDB's
+JSON/REST interface in a more pythonic way. It has functions which match
+the JSON/REST methods, but allow the common goodies as named parameters,
+and parameters skipping.
+
+
+</description>
+  <devel project="devel:languages:python:avocado" package="python-resultsdb_api"/>
+  <url>https://fedorahosted.org/ResultsDB/</url>
+</package>

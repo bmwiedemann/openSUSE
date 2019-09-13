@@ -1,0 +1,564 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5ae26c323797cc9163549dedf557a34</srcmd5>
+    <version>4.7.17</version>
+    <time>1168904475</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f8a240b69fff68eb10a415993529c9f8</srcmd5>
+    <version>4.7.20</version>
+    <time>1170686501</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a2255f2eab64cd995391db9cb875c234</srcmd5>
+    <version>4.7.21</version>
+    <time>1186090837</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>78e626e3739c064a4d9bde0b254ac6f7</srcmd5>
+    <version>4.7.24</version>
+    <time>1204766785</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>877b0053ae37634b8f3506838de1ceea</srcmd5>
+    <version>4.7.24</version>
+    <time>1205693907</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eee79cdcc964c7cbffa43552eff69a9a</srcmd5>
+    <version>4.7.28</version>
+    <time>1221236229</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>657f76c6044341b0388aa4f6c0ffe80f</srcmd5>
+    <version>4.7.33</version>
+    <time>1241455052</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8f762e9a55c677c82d30a63921872379</srcmd5>
+    <version>4.7.33</version>
+    <time>1245363660</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fa72a643bb221287cb9ed18663d905fb</srcmd5>
+    <version>4.7.34</version>
+    <time>1246706649</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>00ae829241d2df8a14e7aad84111fe7e</srcmd5>
+    <version>4.7.36</version>
+    <time>1250181650</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/whois based on submit request 17676 from user puzel
+</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>00ae829241d2df8a14e7aad84111fe7e</srcmd5>
+    <version>4.7.36</version>
+    <time>1250181650</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/whois based on submit request 17676 from user puzel
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>62d73d370af0064619d893b516889ece</srcmd5>
+    <version>5.0.0</version>
+    <time>1262865888</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/whois based on submit request 28014 from user puzel
+</comment>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>54a63ba44cb59f1a2d20b04af79584a6</srcmd5>
+    <version>5.0.0</version>
+    <time>1268926492</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>54a63ba44cb59f1a2d20b04af79584a6</srcmd5>
+    <version>5.0.0</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>54a63ba44cb59f1a2d20b04af79584a6</srcmd5>
+    <version>5.0.0</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a2c1f69b32b94105d6fc89a0e8a63fdc</srcmd5>
+    <version>5.0.6</version>
+    <time>1279566536</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/whois based on submit request 43334 from user puzel
+</comment>
+    <requestid>43334</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eb4d5a4607319d40450aa97ade0d91e2</srcmd5>
+    <version>5.0.7</version>
+    <time>1281382967</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/whois based on submit request 44965 from user puzel
+</comment>
+    <requestid>44965</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>24a524c3848c94d29af71986a24ba907</srcmd5>
+    <version>5.0.7</version>
+    <time>1285976336</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/whois based on submit request 49617 from user puzel
+</comment>
+    <requestid>49617</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ee79aa71aac1be7735b3da23c8191bcd</srcmd5>
+    <version>5.0.10</version>
+    <time>1291222151</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54251 from user puzel
+</comment>
+    <requestid>54251</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>31914165039be28b73eed027e0b1452d</srcmd5>
+    <version>5.0.10</version>
+    <time>1291222162</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54251
+</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>31914165039be28b73eed027e0b1452d</srcmd5>
+    <version>5.0.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d14d0d142a448d19f95796a65bdb2ba3</srcmd5>
+    <version>5.0.11</version>
+    <time>1300878796</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64812 from user babelworx
+</comment>
+    <requestid>64812</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>dd2c5907aa8bfe4a5f426970ddb8b092</srcmd5>
+    <version>5.0.11</version>
+    <time>1300878805</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64812
+</comment>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>596ce00a8efed8a39175c42228a07905</srcmd5>
+    <version>5.0.11</version>
+    <time>1311761081</time>
+    <user>saschpe</user>
+    <comment>- enable use of crypt_gensalt to support all glibc supported
+  algorithms
+- allow 8bit passwords read from file
+- support new blowfish $2y algorithm
+
+I've sent the patches to Marco d'Itri &lt;md@linux.it&gt;, he said he will
+include them in the next whois release. (forwarded request 76616 from lnussel)</comment>
+    <requestid>77146</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>1a57b81cb3cdea116bcf151c95269ebf</srcmd5>
+    <version>5.0.11</version>
+    <time>1311761091</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77146
+</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>2b494710a00f36d2dc8ee1e831d038a8</srcmd5>
+    <version>5.0.11</version>
+    <time>1314606608</time>
+    <user>saschpe</user>
+    <comment>- fix build on older distros (forwarded request 79867 from lnussel)</comment>
+    <requestid>79869</requestid>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>d0997770add1a9fa7ad9f57246a4b22b</srcmd5>
+    <version>5.0.11</version>
+    <time>1314606616</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79869
+</comment>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>d0997770add1a9fa7ad9f57246a4b22b</srcmd5>
+    <version>5.0.11</version>
+    <time>1319182568</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>c5a15c0541ae1b332832e56ef0b8477b</srcmd5>
+    <version>5.0.11</version>
+    <time>1323195184</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="30" vrev="11">
+    <srcmd5>c5a15c0541ae1b332832e56ef0b8477b</srcmd5>
+    <version>5.0.11</version>
+    <time>1340184323</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="13">
+    <srcmd5>c5a15c0541ae1b332832e56ef0b8477b</srcmd5>
+    <version>5.0.11</version>
+    <time>1359110569</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>da16b506df5e77c170ff89676ad52a08</srcmd5>
+    <version>5.0.25</version>
+    <time>1373397401</time>
+    <user>coolo</user>
+    <comment>update to 5.0.25, fix build openSUSE 12.1 through factory (forwarded request 182578 from AndreasStieger)</comment>
+    <requestid>182579</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>d02c146d37c6219bb6dd15a2be401a43</srcmd5>
+    <version>5.0.25</version>
+    <time>1373655529</time>
+    <user>coolo</user>
+    <comment>- verify source signatures (forwarded request 182759 from AndreasStieger)</comment>
+    <requestid>182761</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3a9d7c88768b3b2d3efe98613c2b9951</srcmd5>
+    <version>5.0.26</version>
+    <time>1374387211</time>
+    <user>coolo</user>
+    <comment>5.0.26 (forwarded request 183816 from AndreasStieger)</comment>
+    <requestid>183817</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>3a9d7c88768b3b2d3efe98613c2b9951</srcmd5>
+    <version>5.0.26</version>
+    <time>1379664959</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c4cc3f32b657b252b4fab9e8d45c5565</srcmd5>
+    <version>5.1.0</version>
+    <time>1388396829</time>
+    <user>coolo</user>
+    <comment>update to 5.1.0 (forwarded request 212375 from AndreasStieger)</comment>
+    <requestid>212376</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0bfe2574119c3e6a4e9b7bc07dab5322</srcmd5>
+    <version>5.1.1</version>
+    <time>1389607000</time>
+    <user>coolo</user>
+    <comment>whois 5.1.1, adding servers for 29 &quot;new&quot; gTLDs. (forwarded request 213635 from AndreasStieger)</comment>
+    <requestid>213636</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2de6825e02015e63734de16de48f07e1</srcmd5>
+    <version>5.1.2</version>
+    <time>1399377832</time>
+    <user>coolo</user>
+    <comment>whois 5.1.2</comment>
+    <requestid>232521</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1bc3e063e7465e9305cd12eb3d195871</srcmd5>
+    <version>5.1.3</version>
+    <time>1401185046</time>
+    <user>coolo</user>
+    <comment>whois 5.1.3 (forwarded request 235467 from AndreasStieger)</comment>
+    <requestid>235468</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2a9e5a2d9aba736340176b333991efc9</srcmd5>
+    <version>5.1.4</version>
+    <time>1404679959</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239406</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>01144c0910bb0cbfcf7c0b2db870a39a</srcmd5>
+    <version>5.1.5</version>
+    <time>1407158078</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243498</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>01144c0910bb0cbfcf7c0b2db870a39a</srcmd5>
+    <version>5.1.5</version>
+    <time>1409303638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>36f8dd059945f46d7da19c661c5100f4</srcmd5>
+    <version>5.2.0</version>
+    <time>1410795671</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249061</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>515e9e00726230f9d8c18bcce113c451</srcmd5>
+    <version>5.2.1</version>
+    <time>1413616143</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257280</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d997d195893e6393cfeff2fa7f3ce78a</srcmd5>
+    <version>5.2.2</version>
+    <time>1415953172</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261510</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>0897b6c67d971bb863777911fd2cc0a3</srcmd5>
+    <version>5.2.2</version>
+    <time>1418112849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264367</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>6755e7a7dc493a4810b2496fd5e8e9cf</srcmd5>
+    <version>5.2.3</version>
+    <time>1421959786</time>
+    <user>dimstar_suse</user>
+    <comment>whois 5.2.3</comment>
+    <requestid>282448</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9e42ebb60ec13c45dccd5bbf9c727009</srcmd5>
+    <version>5.2.4</version>
+    <time>1422287229</time>
+    <user>dimstar_suse</user>
+    <comment>whois 5.2.4</comment>
+    <requestid>282765</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0bc4197970c9d8e8b5b03c4dc7b75bb5</srcmd5>
+    <version>5.2.5</version>
+    <time>1425566448</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288679</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>3c275e66cb6e9f87d68971b62e4b32b0</srcmd5>
+    <version>5.2.6</version>
+    <time>1427274049</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292460</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>daf0b25d76616a7f7b073a2ff8dacab9</srcmd5>
+    <version>5.2.7</version>
+    <time>1427445705</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293327</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>d10b3d37728fe50aaf2883badff3843c</srcmd5>
+    <version>5.2.8</version>
+    <time>1432072073</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307928</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>08141354daec3c06ae4d5630de9bfe65</srcmd5>
+    <version>5.2.9</version>
+    <time>1433832568</time>
+    <user>dimstar_suse</user>
+    <comment>whois 5.2.9</comment>
+    <requestid>311135</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>37f604e432696618139607541adefe66</srcmd5>
+    <version>5.2.10</version>
+    <time>1439385207</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321821</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e4f51ab2f38ae0900b94914217fc6048</srcmd5>
+    <version>5.2.11</version>
+    <time>1449687246</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347897</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>2aa6e80fb9bac2ef07d91cc76e0dfe78</srcmd5>
+    <version>5.2.12</version>
+    <time>1461855199</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>383928</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>9e7c9ff1dc23956a932c53d1d80d3e65</srcmd5>
+    <version>5.2.13</version>
+    <time>1479502936</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440731</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>1820195af3c93780f0d48d5617f1a39b</srcmd5>
+    <version>5.2.14</version>
+    <time>1485250596</time>
+    <user>dimstar_suse</user>
+    <comment>whois 5.2.14</comment>
+    <requestid>451486</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>c24a5fbfeee7de071b6d1c3f6f0e2c45</srcmd5>
+    <version>5.2.14</version>
+    <time>1486548271</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455180</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>27c7b96fc16cb23f32be2c2fd4ad0087</srcmd5>
+    <version>5.2.15</version>
+    <time>1488479832</time>
+    <user>dimstar_suse</user>
+    <comment>whois 5.2.15
+disable libidn2 bsc#1026831
+https://github.com/rfc1036/whois/issues/50</comment>
+    <requestid>460663</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>e2236ef17e8b88b474b9bf34879dd9a0</srcmd5>
+    <version>5.2.15</version>
+    <time>1495637476</time>
+    <user>dimstar_suse</user>
+    <comment>- build with libidn2 for IDNA 2008 support FATE#321897
+- fix CIDR notation and also convert using IDNA 2008 transitional
+  bsc#1026831, add whois-5.2.15-fix-CIDR-with-libidn2.patch (forwarded request 497855 from AndreasStieger)</comment>
+    <requestid>497856</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>61a9dd039fe488a362715212f3d80f2a</srcmd5>
+    <version>5.2.16</version>
+    <time>1497944392</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504392</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>f40f5334f74f8d499ce40201aab5348f</srcmd5>
+    <version>5.2.16</version>
+    <time>1503061610</time>
+    <user>dimstar_suse</user>
+    <comment>- drop whois-5.2.15-fix-CIDR-with-libidn2.patch, no longer required
+  with libidn2 &gt;= 2.0.3</comment>
+    <requestid>517527</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>933c5a6db10bb824fa5ac1ba7cebc61b</srcmd5>
+    <version>5.2.18</version>
+    <time>1505990124</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527608</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>881ad1fdec7d8ed8af7a91e72aad4e89</srcmd5>
+    <version>5.2.19</version>
+    <time>1513583910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557252</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>874ab5fcfb40ed03935654bbbd5fc63a</srcmd5>
+    <version>5.2.20</version>
+    <time>1515876416</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563392</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>44a4e24e12c776c01b48ca6beda84511</srcmd5>
+    <version>5.3.0</version>
+    <time>1517323427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570634</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>462fd76ff2d5aed877546ef9cca1dc5c</srcmd5>
+    <version>5.3.1</version>
+    <time>1527605478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612308</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>da1a4a7a7abf4661ee0627a1649141f1</srcmd5>
+    <version>5.3.2</version>
+    <time>1532527858</time>
+    <user>dimstar_suse</user>
+    <comment>whois 5.3.2 (forwarded request 625062 from AndreasStieger)</comment>
+    <requestid>625063</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>d02baf442872de3a7c4499188c9f5145</srcmd5>
+    <version>5.4.0</version>
+    <time>1541666975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646825</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>9391389bd53a608f9a8a99d26b96863a</srcmd5>
+    <version>5.4.1</version>
+    <time>1551025091</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677942</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>d62f386a1dbebe58f0daf122a84a8e9b</srcmd5>
+    <version>5.5.0</version>
+    <time>1565181242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721501</requestid>
+  </revision>
+</revisionlist>

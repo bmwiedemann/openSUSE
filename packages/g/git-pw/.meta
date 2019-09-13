@@ -1,0 +1,5 @@
+<package name="git-pw" project="openSUSE:Factory">
+  <title>A tool for integrating Git with Patchwork, the web-based patch tracking system </title>
+  <description>A tool for integrating Git with Patchwork, the web-based patch tracking system </description>
+  <devel project="devel:languages:python" package="git-pw"/>
+</package>

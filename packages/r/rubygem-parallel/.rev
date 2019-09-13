@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dbd471cdd760c3555dfbe6274556fbbf</srcmd5>
+    <version>1.12.1</version>
+    <time>1529401910</time>
+    <user>maxlin_factory</user>
+    <comment>New package for Factory, it's is transitively needed for the &quot;parallel_tests&quot; gem which we want to use in yast2-storage-ng.
+
+See related SR https://build.opensuse.org/request/show/615279</comment>
+    <requestid>615280</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>650146cb875f9ad7ba8e972a061f2505</srcmd5>
+    <version>1.16.2</version>
+    <time>1554276262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689701</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0238296f26c47e2a0652c80b7ac6c802</srcmd5>
+    <version>1.17.0</version>
+    <time>1560337234</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706013</requestid>
+  </revision>
+</revisionlist>

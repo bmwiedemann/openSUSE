@@ -1,0 +1,6 @@
+<package name="perl-Email-MIME-ContentType" project="openSUSE:Factory">
+  <title>Parse a MIME Content-Type Header</title>
+  <description>This routine parses email content type headers according to section 5.1 of RFC 2045. It returns a hash as above, with entries for the discrete type, the composite type, and a hash of attributes.
+  </description>
+  <devel project="devel:languages:perl" package="perl-Email-MIME-ContentType"/>
+</package>

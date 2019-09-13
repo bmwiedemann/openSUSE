@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49fe68165ad1132581df00b591fe5302</srcmd5>
+    <version>unknown</version>
+    <time>1284468896</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libtimidity based on submit request 47704 from user dimstar
+</comment>
+    <requestid>47704</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>49fe68165ad1132581df00b591fe5302</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>74ca5f8217d843203d9b0761c8a088bc</srcmd5>
+    <version>0.1.0</version>
+    <time>1304511879</time>
+    <user>saschpe</user>
+    <comment>Added 32bit compatibility libraries (forwarded request 69490 from TheBlackCat)</comment>
+    <requestid>69526</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>3de359ed07d79d96e8c18a6ba56b5559</srcmd5>
+    <version>0.1.0</version>
+    <time>1304511893</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69526
+</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>3de359ed07d79d96e8c18a6ba56b5559</srcmd5>
+    <version>0.1.0</version>
+    <time>1319182141</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>0d943daff977ef0dc91ee218f56f8b87</srcmd5>
+    <version>0.1.0</version>
+    <time>1323192356</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>0d943daff977ef0dc91ee218f56f8b87</srcmd5>
+    <version>0.1.0</version>
+    <time>1340183644</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>0d943daff977ef0dc91ee218f56f8b87</srcmd5>
+    <version>0.1.0</version>
+    <time>1359109363</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>0d943daff977ef0dc91ee218f56f8b87</srcmd5>
+    <version>0.1.0</version>
+    <time>1379663111</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>0d943daff977ef0dc91ee218f56f8b87</srcmd5>
+    <version>0.1.0</version>
+    <time>1409301735</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1e9a2d2b23ca95612471d9eef3e95297</srcmd5>
+    <version>0.2.2</version>
+    <time>1488125110</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460300</requestid>
+  </revision>
+</revisionlist>

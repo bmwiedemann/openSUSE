@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b60447f02c56648f9e0ec5a0073f480f</srcmd5>
+    <version>1.8</version>
+    <time>1498910743</time>
+    <user>dimstar_suse</user>
+    <comment>sync with SLES</comment>
+    <requestid>507241</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a374ef9f6abc8b8f15ab74150cf16646</srcmd5>
+    <version>1.8</version>
+    <time>1499754454</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509167</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>405a81b221d9b33d6b1f8554aad58cba</srcmd5>
+    <version>1.8</version>
+    <time>1511595734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544870</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>21858d4bd727ebadaa470506be046f69</srcmd5>
+    <version>1.8+git65.g303b08c</version>
+    <time>1518187865</time>
+    <user>dimstar_suse</user>
+    <comment>- change the versioning scheme, resulting in version
+  1.8+git65.g303b08c 
+
+- Update to version v1.8+git.20180101 (bsc#1050682):
+  * clock: Don't forward management requests to UDS port.
+  * Add an acknowledgment in the readme for Meinberg.
+  * phc2sys: update '-s' option
+  * sk: don't leak socket when reading of IB GUID fails.
+  * Add compile time sanity check for interface name lengths.
+  * phc_ctl: fix adj command to accept negative offset.
+  * port: return timestamping iface in port properties
+  * phc2sys: re-create clock clkid and servo when phc index changed
+  * phc2sys: split servo_add from function clock_add
+  * transport: pass struct interface to transport_open</comment>
+    <requestid>574231</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>887e21388703b90fa6dfd28711a7cb15</srcmd5>
+    <version>2.0</version>
+    <time>1548062679</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653724</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2835ae4e49a9709afbc9901da93f9b49</srcmd5>
+    <version>2.0</version>
+    <time>1563993447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718244</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="perl-Module-Metadata" project="openSUSE:Factory">
+  <title>Gather package and POD information from perl module files</title>
+  <description>This module provides a standard way to gather metadata about a .pm file without executing unsafe code.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Module-Metadata"/>
+  <url>http://search.cpan.org/dist/Module-Metadata/</url>
+</package>

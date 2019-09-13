@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95a27cae8f6bbe306229e12175f484f8</srcmd5>
+    <version>2.20</version>
+    <time>1364892209</time>
+    <user>coolo</user>
+    <comment>Split from util-linux. PLease add to same pattern as util-linux</comment>
+    <requestid>161213</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>95a27cae8f6bbe306229e12175f484f8</srcmd5>
+    <version>2.20</version>
+    <time>1379664958</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>95a27cae8f6bbe306229e12175f484f8</srcmd5>
+    <version>2.20</version>
+    <time>1409303637</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ff8a6387efb6f47f017fc9872b5e465e</srcmd5>
+    <version>2.21</version>
+    <time>1427313738</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292416</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>542ffc4bcb324bef071db395b1240895</srcmd5>
+    <version>2.21</version>
+    <time>1444833260</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>331796</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ab628580c203e9e0678ef785ca183b83</srcmd5>
+    <version>2.21</version>
+    <time>1467541031</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400672</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>bce59da6864b62236433f7442a82ceeb</srcmd5>
+    <version>2.21</version>
+    <time>1521903992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589229</requestid>
+  </revision>
+</revisionlist>

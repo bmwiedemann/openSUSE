@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>01a6c11d176c8f3a6de173cc3bae1765</srcmd5>
+    <version>0.1.3</version>
+    <time>1527674077</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-cmark-gfm to the latest version.</comment>
+    <requestid>607766</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>10d30f2f005e6cf06c7f14d3f0556120</srcmd5>
+    <version>0.1.4</version>
+    <time>1532445359</time>
+    <user>dimstar_suse</user>
+    <comment>- Update cmark-gfm to version 0.1.4.
+  cmark-gfm 0.1.4 (2 Jul 2018)
+    * Extensions work correctly on big-endian systems (Ilias Tsitsimpis).
+
+- Add cmark-gfm at version 0.1.3.</comment>
+    <requestid>623741</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>897b9a034541a502b2c9e9cc4bce8c05</srcmd5>
+    <version>0.1.5</version>
+    <time>1535367489</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>631364</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6576922689c86a0a06c3f457dfc4dce7</srcmd5>
+    <version>0.1.6</version>
+    <time>1540448147</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642851</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>80df2f0ca9c79197352ebf924a0da383</srcmd5>
+    <version>0.1.8</version>
+    <time>1552985972</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>686005</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d083184d065ae83534bd6b1a44a4edd5</srcmd5>
+    <version>0.2.0</version>
+    <time>1556475135</time>
+    <user>maxlin_factory</user>
+    <comment>version update</comment>
+    <requestid>698546</requestid>
+  </revision>
+</revisionlist>

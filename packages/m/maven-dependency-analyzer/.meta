@@ -1,0 +1,5 @@
+<package name="maven-dependency-analyzer" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="maven-dependency-analyzer"/>
+</package>

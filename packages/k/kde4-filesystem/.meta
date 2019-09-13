@@ -1,0 +1,5 @@
+<package name="kde4-filesystem" project="openSUSE:Factory">
+  <title>KDE4 Directory Layout</title>
+  <description>This package installs the KDE directory structure.</description>
+  <devel project="KDE:Distro:Factory" package="kde4-filesystem"/>
+</package>

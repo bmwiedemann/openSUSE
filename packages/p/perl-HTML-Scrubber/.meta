@@ -1,0 +1,10 @@
+<package name="perl-HTML-Scrubber" project="openSUSE:Factory">
+  <title>Perl extension for scrubbing/sanitizing html</title>
+  <description>If you wanna &quot;scrub&quot; or &quot;sanitize&quot; html input in a reliable and flexible
+fashion, then this module is for you.
+
+I wasn't satisfied with HTML::Sanitizer because it is based on
+HTML::TreeBuilder, so I thought I'd write something similar that works
+directly with HTML::Parser.</description>
+  <devel project="devel:languages:perl" package="perl-HTML-Scrubber"/>
+</package>

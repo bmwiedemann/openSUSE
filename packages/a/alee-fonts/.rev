@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>1d046418505b260e669ef7d8cee1f354</srcmd5>
+    <version>12</version>
+    <time>1332241841</time>
+    <user>coolo</user>
+    <comment>Moving M17N/ttf-alee to M17N:fonts/alee-fonts.</comment>
+    <requestid>109906</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>198ab97dee374c172842fb7d311bc563</srcmd5>
+    <version>12</version>
+    <time>1338016880</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122108</requestid>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>198ab97dee374c172842fb7d311bc563</srcmd5>
+    <version>12</version>
+    <time>1340183168</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>55f72da06ff1c195eeccbc3feadd12d3</srcmd5>
+    <version>12</version>
+    <time>1347617529</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133914</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>9a56e57fcbb7bf11d53321d77e22fbd6</srcmd5>
+    <version>12</version>
+    <time>1349783233</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137505</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>9a56e57fcbb7bf11d53321d77e22fbd6</srcmd5>
+    <version>12</version>
+    <time>1359108645</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>89dffa7b850542fd6e18727b96cfeaf3</srcmd5>
+    <version>12</version>
+    <time>1360002384</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 150927 from coolo)</comment>
+    <requestid>150929</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>71e52b5ca46c4e257af84fbcf583990a</srcmd5>
+    <version>13</version>
+    <time>1378748582</time>
+    <user>coolo</user>
+    <comment>- update to 13
+  * improved glyphs, new glyphs</comment>
+    <requestid>197997</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>71e52b5ca46c4e257af84fbcf583990a</srcmd5>
+    <version>13</version>
+    <time>1379661956</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>71e52b5ca46c4e257af84fbcf583990a</srcmd5>
+    <version>13</version>
+    <time>1409300478</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

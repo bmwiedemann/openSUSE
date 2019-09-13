@@ -1,0 +1,5 @@
+<package name="vifm-colors" project="openSUSE:Factory">
+  <title>color themes for vifm file manager</title>
+  <description></description>
+  <devel project="utilities" package="vifm-colors"/>
+</package>

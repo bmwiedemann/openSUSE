@@ -1,0 +1,5 @@
+<package name="dcraw" project="openSUSE:Factory">
+  <title>Raw Digital Photo Decoding</title>
+  <description>Command line tools for raw digital photo decoding and processing.</description>
+  <devel project="graphics" package="dcraw"/>
+</package>

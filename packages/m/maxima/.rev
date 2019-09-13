@@ -1,0 +1,316 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ab91ed8fdb1ad0a78e81a40d107cd9ee</srcmd5>
+    <version>5.27.0</version>
+    <time>1338286728</time>
+    <user>coolo</user>
+    <comment>New package: maxima - a symbolic computation programme</comment>
+    <requestid>121612</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b1f0fd64781a956997007b3ce4e863ca</srcmd5>
+    <version>5.27.0</version>
+    <time>1338569690</time>
+    <user>coolo</user>
+    <comment>Fix build failures when debuginfo flag is enabled for a repo; specifically this fixes build failures in openSUSE:Factory (forwarded request 123149 from lrupp)</comment>
+    <requestid>123170</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b1f0fd64781a956997007b3ce4e863ca</srcmd5>
+    <version>5.27.0</version>
+    <time>1340183693</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c7cfff0e7a63ff3cb94d9700fa672b92</srcmd5>
+    <version>5.28.0</version>
+    <time>1347487491</time>
+    <user>namtrac</user>
+    <comment> - Add explicit build dependency on makeinfo &amp; python
+
+- Update to version 5.28.0:
+  + Backward-incompatible changes:
+    - package stats: removed function simple_linear_regression
+      (superseded by linear_regression) 
+  + Core:
+    - new function generalized_lambert_w
+    - new functions zn_mult_table, zn_power_table
+    - new functions for Galois fields: gf_set, gf_char, gf_prim,
+      etc.
+  + Share:
+    - package descriptive: new function principal_components
+    - package descriptive: new histogram style 'density'
+    - package stats: new function linear_regression
+  + Other changes:
+    - revise system for building Maxima on MS Windows
+    - function gamma_incomplete: improve accuracy for complex
+      bigfloats
+    - function expintegral_e: improved calculation for large
+      imaginary part
+  + Several bugs fixed: see ChangeLog-5.28 file installed in
+    /usr/share/doc/packages/maxima/ for a full list.</comment>
+    <requestid>133608</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>37a39b1912ea307323ad3af47228957d</srcmd5>
+    <version>5.29.1</version>
+    <time>1357659606</time>
+    <user>coolo</user>
+    <comment>Update to version 5.29.1 (forwarded request 147466 from badshah400)</comment>
+    <requestid>147493</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>37a39b1912ea307323ad3af47228957d</srcmd5>
+    <version>5.29.1</version>
+    <time>1359109435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8505891f3e931e3524cb46edeef78b25</srcmd5>
+    <version>5.30.0</version>
+    <time>1365425644</time>
+    <user>coolo</user>
+    <comment>Update to version 5.30.0 (forwarded request 163051 from badshah400)</comment>
+    <requestid>163126</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>96a0c448c6159674dcc42ccfcddee1f1</srcmd5>
+    <version>5.31.0</version>
+    <time>1378894846</time>
+    <user>coolo</user>
+    <comment>Update to version 5.31.0 (forwarded request 198041 from badshah400)</comment>
+    <requestid>198235</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>96a0c448c6159674dcc42ccfcddee1f1</srcmd5>
+    <version>5.31.0</version>
+    <time>1379663271</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6b3cd969f499483eb2f8081ea68b861b</srcmd5>
+    <version>5.31.1</version>
+    <time>1380216998</time>
+    <user>coolo</user>
+    <comment>Update to 5.31.1 (forwarded request 200475 from badshah400)</comment>
+    <requestid>200675</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>025d1ef964e218235bf5a838f8bbd0b2</srcmd5>
+    <version>5.31.3</version>
+    <time>1384715992</time>
+    <user>coolo</user>
+    <comment>Update to 5.31.3 (forwarded request 207101 from badshah400)</comment>
+    <requestid>207102</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c33a2e0644f9b80c3bd94545ec2fdc45</srcmd5>
+    <version>5.32.0</version>
+    <time>1388774810</time>
+    <user>coolo</user>
+    <comment>Update to 5.32.0 (forwarded request 212383 from badshah400)</comment>
+    <requestid>212622</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b26581a299e32a88ef83451e0cb8dffc</srcmd5>
+    <version>5.32.1</version>
+    <time>1389277818</time>
+    <user>coolo</user>
+    <comment>Update to version 5.32.1 (forwarded request 212682 from badshah400)</comment>
+    <requestid>213263</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>358adf81a4efe61fa051724ce9136260</srcmd5>
+    <version>5.33.0</version>
+    <time>1397387735</time>
+    <user>coolo</user>
+    <comment>Update to 5.33.0 (forwarded request 228821 from badshah400)</comment>
+    <requestid>229841</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>358adf81a4efe61fa051724ce9136260</srcmd5>
+    <version>5.33.0</version>
+    <time>1409301877</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>64ff03f150ed7384241eaa8f98411821</srcmd5>
+    <version>5.34.0</version>
+    <time>1409998700</time>
+    <user>coolo</user>
+    <comment>Update to version 5.34.0</comment>
+    <requestid>247463</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5e4ffd2f63b24611b951b25d788676ef</srcmd5>
+    <version>5.34.1</version>
+    <time>1410509004</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248423</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>03004e04cffe57c427d533a77cd876f9</srcmd5>
+    <version>5.35.1</version>
+    <time>1419809432</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266545</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>22842288dcc2dd468f32909fe0774a82</srcmd5>
+    <version>5.35.1</version>
+    <time>1424622358</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286677</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5dc2b8cfb5594a79f41e129137ca7e72</srcmd5>
+    <version>5.36.0</version>
+    <time>1430132381</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>303664</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d6142d7b7618b44f8ad43d5a96930f47</srcmd5>
+    <version>5.36.1</version>
+    <time>1431980688</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>307575</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a420f47e04e806a4cfec2bd41b3b5a53</srcmd5>
+    <version>5.37.0</version>
+    <time>1440135696</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>324447</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>a0f3f7f67ef28c307130d5774adb12d2</srcmd5>
+    <version>5.37.0</version>
+    <time>1440337438</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324802</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ab8cb8e2ab2d1430ab2eec16881f937f</srcmd5>
+    <version>5.37.1</version>
+    <time>1441726770</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328847</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a684b97c755ebfdacd1d96353c737919</srcmd5>
+    <version>5.37.2</version>
+    <time>1443068114</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332506</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e02e858b9c86149ee8c70784fe30cd42</srcmd5>
+    <version>5.37.3</version>
+    <time>1447353669</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343786</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e4ed8466d20aeb1ade63b750f3659099</srcmd5>
+    <version>5.38.0</version>
+    <time>1460482335</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384168</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c6f365bad5f63e72ee1a979b2fcc201d</srcmd5>
+    <version>5.38.1</version>
+    <time>1463738176</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396827</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6c7e12773c2c20d0819d02789f47b6a4</srcmd5>
+    <version>5.39.0</version>
+    <time>1483048243</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447748</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>dcd9ed584cc5c5a58029785b4ff4c65c</srcmd5>
+    <version>5.40.0</version>
+    <time>1498046274</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505088</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>36e788b6d80d045bb72b7d890292b49b</srcmd5>
+    <version>5.40.0</version>
+    <time>1502366771</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515334</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a8df396810877b3b4a0d8868cad199cb</srcmd5>
+    <version>5.41.0</version>
+    <time>1507486534</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532538</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>4386569847bc8b5d6fe27b2973eaddd3</srcmd5>
+    <version>5.41.0</version>
+    <time>1518814011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577316</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>820ab205d95924cfbb235bf08e217794</srcmd5>
+    <version>5.42.0</version>
+    <time>1538672618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639992</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9495e4a35d74722414e594cf52962693</srcmd5>
+    <version>5.42.1</version>
+    <time>1540544999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644566</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d4d7db0947df0e7af1cb9d3dd5e1d240</srcmd5>
+    <version>5.42.2</version>
+    <time>1550220912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668708</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>25f4cc4fbcd4646bb712de1533c1c3d5</srcmd5>
+    <version>5.43.0</version>
+    <time>1567582457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728030</requestid>
+  </revision>
+</revisionlist>

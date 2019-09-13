@@ -1,0 +1,5 @@
+<package name="python-vim-vint" project="openSUSE:Factory">
+  <title></title>
+  <description>Lint tool for Vim script Language</description>
+  <devel project="devel:languages:python" package="python-vim-vint"/>
+</package>

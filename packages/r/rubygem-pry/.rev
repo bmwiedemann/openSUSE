@@ -1,0 +1,199 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>99bc7729d0fd91aabb711e87e03987a6</srcmd5>
+    <version>0.9.8.4</version>
+    <time>1341832628</time>
+    <user>coolo</user>
+    <comment>Interestingly we don't have it yet ;-)</comment>
+    <requestid>125068</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d09a15f5983226e1c507d68873a38d45</srcmd5>
+    <version>0.9.10</version>
+    <time>1343032755</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>128683</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c94bd57718cd96b7130219c2b113f637</srcmd5>
+    <version>0.9.10</version>
+    <time>1347722991</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134057</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c94bd57718cd96b7130219c2b113f637</srcmd5>
+    <version>0.9.10</version>
+    <time>1359110335</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3feecd4054726633d377144027a391b9</srcmd5>
+    <version>0.9.12</version>
+    <time>1363900517</time>
+    <user>coolo</user>
+    <comment>- buildrequire rdoc (see https://gist.github.com/saketoba/4662125)
+
+- updated to version 0.9.12
+ Bug fixes:
+ * Fix major bug where commands broke due to slop looking at ARGV
+        instead of command parameters (#828)
+ * Fix bug where pager broke in some situations (#845)
+ * Fix broken rendering of some docs (#795)
+ * silence warnings during failed tab-completion attempts
+ * fix broken prompt when prompt is colored (#822 / #823)
+ * added reload-method alias for reload-code (for backwards compat)
+ * Reopen Readline.output if it is not a tty (see 1538bc0990)
+ 
+ Features:
+ * added pry --gem (see 19bfc13aa)
+ * show-source now works on commands created with create_command
+ * add -m (method) -c (class) and -f (file) switches to 'whereami' command
+ * show-source now falls back to superclass if can't find class code
+        (displays warning)
+ * show-source/show-doc now indicate when -a option is available.
+
+- updated to version 0.9.11.4
+ * fixed pager bug (wouldn't render color codes in some circumstances)
+ * added Pry.last_internal_error, useful for devs debugging commands
+ 
+ * fix Pry.run_command
+ * improve `ls` output
+ * add :requires_gem =&gt; &quot;jist&quot; to 'gist' command (so deps can be installed
+        via install-command)
+ * improve help for 'edit' command</comment>
+    <requestid>160199</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e91ce2a2ffd239e0406de1139de8f592</srcmd5>
+    <version>0.9.12.1</version>
+    <time>1367488053</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174105</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c221e0d6dfc2f25939fda109ca0c56ed</srcmd5>
+    <version>0.9.12.2</version>
+    <time>1369641644</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176162</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c221e0d6dfc2f25939fda109ca0c56ed</srcmd5>
+    <version>0.9.12.2</version>
+    <time>1379664555</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aa53708d9c3ee6c63c9e8def56080dbb</srcmd5>
+    <version>0.9.12.3</version>
+    <time>1385313183</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208124</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>82c8559930a399f36b5cceb771a4c6d1</srcmd5>
+    <version>0.9.12.4</version>
+    <time>1385562786</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208626</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>25f8adba86b5d8bebaa345df0b8f5ae4</srcmd5>
+    <version>0.9.12.6</version>
+    <time>1393310398</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223648</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>25f8adba86b5d8bebaa345df0b8f5ae4</srcmd5>
+    <version>0.9.12.6</version>
+    <time>1409303265</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>de2e30e151b689c1346b47f309dd5318</srcmd5>
+    <version>0.10.1</version>
+    <time>1413263497</time>
+    <user>coolo</user>
+    <comment>- updated to version 0.10.1, see CHANGELOG.md
+
+- adapt to new rubygem packaging style</comment>
+    <requestid>255330</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1d055c4a50aec2c199b6370c686f1eb8</srcmd5>
+    <version>0.10.2</version>
+    <time>1443336015</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333545</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>221ec99d3fe8a1a343a78cecdb173fa1</srcmd5>
+    <version>0.10.3</version>
+    <time>1445287905</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339133</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>03ca31f6a90b9c9f86f7afe3cc8c9d01</srcmd5>
+    <version>0.10.4</version>
+    <time>1468360405</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407684</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1dc10cef1b9a04e310ee9f0bb0a0405c</srcmd5>
+    <version>0.11.0</version>
+    <time>1506108865</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 527693 from coolo)</comment>
+    <requestid>527705</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f4a24af39653012bef3fe631b929af5c</srcmd5>
+    <version>0.11.1</version>
+    <time>1506453400</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528821</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f8fd28d506c36a5f4e591b5f4b6c884d</srcmd5>
+    <version>0.11.2</version>
+    <time>1508770359</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 0.11.2
+ see installed CHANGELOG.md (forwarded request 535844 from mschnitzer)</comment>
+    <requestid>535845</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8b4b7061afa4f0e414b8bc62d7b33132</srcmd5>
+    <version>0.11.3</version>
+    <time>1510960896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542641</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fef3885aa27ea738db6d896944653de1</srcmd5>
+    <version>0.12.2</version>
+    <time>1543953419</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653705</requestid>
+  </revision>
+</revisionlist>

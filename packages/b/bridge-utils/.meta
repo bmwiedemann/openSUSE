@@ -1,0 +1,9 @@
+<package name="bridge-utils" project="openSUSE:Factory">
+  <title>Utilities for Configuring the Linux Ethernet Bridge</title>
+  <description>This package contains utilities for configuring the Linux ethernet
+bridge. The Linux ethernet bridge can be used for connecting multiple
+ethernet devices together. The connection is fully transparent: hosts
+connected to one ethernet device see hosts connected to the other
+ethernet devices directly.</description>
+  <devel project="network:utilities" package="bridge-utils"/>
+</package>

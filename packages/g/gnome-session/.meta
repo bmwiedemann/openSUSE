@@ -1,0 +1,6 @@
+<package name="gnome-session" project="openSUSE:Factory">
+  <title>Session Tools for the GNOME Desktop</title>
+  <description>This package provides the basic session tools, like session management
+functionality, for the GNOME Desktop.</description>
+  <devel project="GNOME:Factory" package="gnome-session"/>
+</package>

@@ -1,0 +1,203 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa4ef7bd90cead65f92b5d414cb5101c</srcmd5>
+    <version>1.0.0</version>
+    <time>1420754477</time>
+    <user>dimstar_suse</user>
+    <comment>New package, starting to become popular and thus good to have.</comment>
+    <requestid>266007</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f9b86428ca44e8209cebdb18143021cb</srcmd5>
+    <version>1.4.0</version>
+    <time>1423258706</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284545</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>839fa3d627126a5e0837434c7b655c43</srcmd5>
+    <version>1.4.2</version>
+    <time>1424256002</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286589</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>720033b9edbcaff90597bdd762ae13d9</srcmd5>
+    <version>1.4.4</version>
+    <time>1424827088</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287532</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aa5dff84ce49336e1e22fae6d28f8f8c</srcmd5>
+    <version>1.5.0</version>
+    <time>1425566529</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288764</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e5ff12a8a07095a01910ec75d55c534e</srcmd5>
+    <version>1.5.2</version>
+    <time>1425892196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>289722</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>499c583f753bd388dae4565293b7b264</srcmd5>
+    <version>1.6.0</version>
+    <time>1426680285</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>290891</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e3d41cbe982c148738b2cb7c70a6f664</srcmd5>
+    <version>1.6.1</version>
+    <time>1428192260</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294482</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f231c0860eb5d6f7177f498064817c91</srcmd5>
+    <version>1.6.2</version>
+    <time>1429606384</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298131</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e7c358563d78f1dbaba893c8bc679855</srcmd5>
+    <version>1.6.5</version>
+    <time>1438421840</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.5
+  * Other changes are just comments.</comment>
+    <requestid>319062</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cd7cfd16ea9b27216048439056cf3272</srcmd5>
+    <version>1.7.1</version>
+    <time>1459237853</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1</comment>
+    <requestid>379035</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>47497ad5cf5c5f91d7ee27928bc8acad</srcmd5>
+    <version>1.7.2</version>
+    <time>1460028931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.2
+  * Fix a clang warning</comment>
+    <requestid>383178</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>21116da926315a27ac7a4c06c018a9cc</srcmd5>
+    <version>1.7.3</version>
+    <time>1467896913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.3:
+  * Fix static initialization of null with Myers Singleton.
+  * Fix other minor compiler and installation problems and
+    warnings.
+  * Fix amalgamated header.
+- Drop -doc subpackage</comment>
+    <requestid>405606</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2c7b49db0578c0579c416d1300540685</srcmd5>
+    <version>1.7.4</version>
+    <time>1470217080</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.4:
+  * Fix pkg-config</comment>
+    <requestid>414566</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ee905996c94377fd97d12ce1101de128</srcmd5>
+    <version>1.7.7</version>
+    <time>1476409065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to vesrion 1.7.7:</comment>
+    <requestid>433734</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3f61da2f0eb7f30032d205040ba3adf0</srcmd5>
+    <version>1.7.7</version>
+    <time>1476778183</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435078</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cc747312c121e1d1724d8bce37379f7d</srcmd5>
+    <version>1.8.0</version>
+    <time>1483959063</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.0:
+  * Build related changes, minimal required cmake is 3.1
+- Execute tests in check section</comment>
+    <requestid>448601</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>afdabc2570b74fd2fac7978655eb9ea5</srcmd5>
+    <version>1.8.1</version>
+    <time>1500274906</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.1:
+  * meson.build
+  * Minor bug fixes and optimizations
+  * Improved docs</comment>
+    <requestid>509455</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>559ee18212434c73bd467a56b60bcbf5</srcmd5>
+    <version>1.8.2</version>
+    <time>1504520729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.2:
+  * Some C++ &quot;move&quot; operators.
+  * Fix uninitialized value detected by valgrind.
+  * Other minor improvements.
+  * Moved most READ docs to Wiki.</comment>
+    <requestid>519093</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8aac5b2e63baa6933976e0176fa9859d</srcmd5>
+    <version>1.8.3</version>
+    <time>1507391190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.3:
+  * Also, fix writeCommentBeforeValue() iter deref</comment>
+    <requestid>530394</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b7ccdef30727c6c0e8f40dec7676e1ad</srcmd5>
+    <version>1.8.4</version>
+    <time>1514677411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559568</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>06448394994d0981d89b29d6ab35ab3f</srcmd5>
+    <version>1.9.1</version>
+    <time>1565962133</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.1:
+  * This release contains some minor build fixes.
+- Changes for version 1.9.0:
+  * Build optimizations and updates. Now needs at least Meson
+    0.50.0, bot support for VS 2013 dropped in favor of VS 2017
+  * Lots of bug fixes
+  * Lots of enhancements
+  * Lots of cleanup</comment>
+    <requestid>723047</requestid>
+  </revision>
+</revisionlist>

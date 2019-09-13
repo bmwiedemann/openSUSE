@@ -1,0 +1,5 @@
+<package name="sndio" project="openSUSE:Factory">
+  <title></title>
+  <description>a small audio and MIDI framework</description>
+  <devel project="multimedia:libs" package="sndio"/>
+</package>

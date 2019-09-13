@@ -1,0 +1,9 @@
+<package name="rubygem-builder-3_0" project="openSUSE:Factory">
+  <title>Builders for MarkUp</title>
+  <description>Builder provides a number of builder objects that make creating structured data
+simple to do.  Currently the following builder objects are supported:
+
+* XML Markup
+* XML Events</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-builder-3_0"/>
+</package>

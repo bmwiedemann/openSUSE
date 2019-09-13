@@ -1,0 +1,224 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d0fc606c667c195266cdf92d0c722c5a</srcmd5>
+    <version>3.0.0</version>
+    <time>1282680120</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-rdflib based on submit request 45509 from user matejcik
+</comment>
+    <requestid>45509</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>d0fc606c667c195266cdf92d0c722c5a</srcmd5>
+    <version>3.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cb4035399e0a14587beb7ae44a7b8f29</srcmd5>
+    <version>3.1.0</version>
+    <time>1316618512</time>
+    <user>saschpe</user>
+    <comment>- Update to version 3.1.0:
+  * Literal.__str__ does not behave like unicode
+  * (RDFa Parser) Does not handle application/xhtml+xml
+  * RDFa TC #117: Fragment identifiers stripped from BASE
+  * Malformed literals produced when rdfa contains newlines
+  * Namespaces beginning with _ are invalid
+  * Turtle Files with a UTF-8 BOM fail to parse
+  * ClosedNamespace.__str__ returns URIRef not str
+  * IOMemory does not override open
+  * Timestamps with microseconds *and* &quot;Z&quot; timezone are not parsed
+  * DateTime literals with offsets fail to convert to Python
+  * Timestamps with timezone information are not parsed
+  * problem with unicode literals in rdflib.compare.graph_diff
+  * Sleepycat Store broken with create=False
+  * Would be useful if Graph.query could propagate kwargs to a
+    plugin processor
+  * Graph.connected exception when passed empty graph
+  * Not compatible with Python 2.4
+  * Support Python's set operations on Graph
+  * NT output encoding to utf-8 broken as it goes through
+    _xmlcharrefreplace
+  * Store SPARQL Support
+- Fix non-executable bits rpmlint issue</comment>
+    <requestid>83932</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ccbdfc367b2a6b36353febd5b25abb7f</srcmd5>
+    <version>3.1.0</version>
+    <time>1316766982</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>84413</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>ccbdfc367b2a6b36353febd5b25abb7f</srcmd5>
+    <version>3.1.0</version>
+    <time>1319182404</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>24340bbc87c0c70bcd03feb860514443</srcmd5>
+    <version>3.2.1</version>
+    <time>1338284674</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.2.1:
+  + New setuptools entry points for query processors and results
+  + Many bugfixes
+
+- license update: BSD-3-Clause
+  SPDX format
+
+- Update to version 3.2.0:
+  + rdflib now works under python3
+  + Unit tests were updated and cleaned up
+  + Updated documentations
+  + A new resource oriented API was added
+  + Many bugfixes.</comment>
+    <requestid>121928</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5e170c383000a466e76449899538a2f9</srcmd5>
+    <version>3.2.1</version>
+    <time>1339767599</time>
+    <user>coolo</user>
+    <comment>Add missing requires&quot;
+ (forwarded request 124412 from dimstar)</comment>
+    <requestid>124749</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>5e170c383000a466e76449899538a2f9</srcmd5>
+    <version>3.2.1</version>
+    <time>1340184088</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>83b79e01bf1d118017a9d0de0205dbe2</srcmd5>
+    <version>3.2.1</version>
+    <time>1343139052</time>
+    <user>coolo</user>
+    <comment>Add missing requirements, build docs, run tests (forwarded request 125047 from jimfunk)</comment>
+    <requestid>128761</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>808dabf2b2b7dff2ff27416b6d40f3b6</srcmd5>
+    <version>3.2.3</version>
+    <time>1351193190</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139114</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a8ee5b43e872e3ab47013d6c2b9df11b</srcmd5>
+    <version>3.2.3</version>
+    <time>1354712783</time>
+    <user>namtrac</user>
+    <comment>- Disable testsuite on SLE_11_SP2 to fix build</comment>
+    <requestid>143966</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>c7633bcd27270a1732302cb5635aa87c</srcmd5>
+    <version>3.2.3</version>
+    <time>1358666252</time>
+    <user>coolo</user>
+    <comment>Made required changes (forwarded request 148431 from posophe)</comment>
+    <requestid>148578</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>c7633bcd27270a1732302cb5635aa87c</srcmd5>
+    <version>3.2.3</version>
+    <time>1359110113</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>ff0e8988fdddb0141069728a712e1219</srcmd5>
+    <version>3.2.3</version>
+    <time>1362745753</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157734</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>a4d47b9b3033b3b5423630d5728bea46</srcmd5>
+    <version>3.2.3</version>
+    <time>1365928724</time>
+    <user>coolo</user>
+    <comment>- Disable building for python3 &lt;= 3.2, since it is not compatible with those versions (forwarded request 163854 from TheBlackCat)</comment>
+    <requestid>163855</requestid>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>f688eb2e72d3e6c98c5e0319bbba5ca3</srcmd5>
+    <version>3.2.3</version>
+    <time>1371649994</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179989</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>f688eb2e72d3e6c98c5e0319bbba5ca3</srcmd5>
+    <version>3.2.3</version>
+    <time>1379664273</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>f688eb2e72d3e6c98c5e0319bbba5ca3</srcmd5>
+    <version>3.2.3</version>
+    <time>1409302977</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9a3418822d69e45ae0ba65cb5ae5801b</srcmd5>
+    <version>4.1.2</version>
+    <time>1410513542</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248598</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>572b1e9b18291cbe128e8b5e7b7ea53b</srcmd5>
+    <version>4.1.2</version>
+    <time>1416048044</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260807</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a6ea0e4c69b84f1da1343286acc5bf59</srcmd5>
+    <version>4.2.0</version>
+    <time>1437299067</time>
+    <user>coolo</user>
+    <comment>- Split documentation into doc subpackage
+- update to version 4.2.0</comment>
+    <requestid>315778</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6612e44c47234e25792d9a6ab68ef718</srcmd5>
+    <version>4.2.1</version>
+    <time>1474115863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427608</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9025ceec57562afc0a569031e2a25a20</srcmd5>
+    <version>4.2.2</version>
+    <time>1494937784</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493455</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>53e59a8b687770bfa76ec1cd90405452</srcmd5>
+    <version>4.2.2</version>
+    <time>1545866899</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659635</requestid>
+  </revision>
+</revisionlist>

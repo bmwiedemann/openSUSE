@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f448a25cd9aa18fd553529f82d46e208</srcmd5>
+    <version>0.3.5</version>
+    <time>1566665411</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/opensuse-factory/2019-08/msg00191.html</comment>
+    <requestid>725811</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b19874435a5bac95ce662e78e0352c7c</srcmd5>
+    <version>0.3.7</version>
+    <time>1567581054</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>727605</requestid>
+  </revision>
+</revisionlist>

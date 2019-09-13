@@ -1,0 +1,5 @@
+<package name="perl-Devel-CheckCompiler" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Devel-CheckCompiler"/>
+</package>

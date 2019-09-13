@@ -1,0 +1,9 @@
+<package name="nginx" project="openSUSE:Factory">
+  <title>A HTTP server and IMAP/POP3 proxy server</title>
+  <description>nginx [engine x] is a HTTP server and IMAP/POP3 proxy server written by Igor Sysoev.
+It has been running on many heavily loaded Russian sites for more than two years.
+
+</description>
+  <devel project="server:http" package="nginx"/>
+  <url>http://nginx.net/</url>
+</package>

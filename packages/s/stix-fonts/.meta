@@ -1,0 +1,11 @@
+<package name="stix-fonts" project="openSUSE:Factory">
+  <title>STIX scientific and engineering fonts</title>
+  <description>The mission of the Scientific and Technical Information Exchange (STIX) font 
+creation project is the preparation of a comprehensive set of fonts that serve 
+the scientific and engineering community in the process from manuscript 
+creation through final publication, both in electronic and print formats.
+
+This package includes base Unicode fonts containing most glyphs for standard
+use.</description>
+  <devel project="M17N:fonts" package="stix-fonts"/>
+</package>

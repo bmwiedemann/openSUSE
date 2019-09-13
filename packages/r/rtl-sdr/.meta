@@ -1,0 +1,9 @@
+<package name="rtl-sdr" project="openSUSE:Factory">
+  <title>Support programs for RTL2832</title>
+  <description>Programs that controls Realtek RTL2832 based DVB dongle in raw mode, so
+it can be used as a SDR receiver.
+
+</description>
+  <devel project="hardware:sdr" package="rtl-sdr"/>
+  <url>http://sdr.osmocom.org/trac/wiki/rtl-sdr</url>
+</package>

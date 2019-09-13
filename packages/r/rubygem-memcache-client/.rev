@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c080c7a317c6f10ea8241420527332d</srcmd5>
+    <version>1.8.3</version>
+    <time>1341226247</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126863</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f9a72a0ed0ea6ff0dc9bce3dc1ac9bc0</srcmd5>
+    <version>1.8.5</version>
+    <time>1343032472</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>128678</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f9a72a0ed0ea6ff0dc9bce3dc1ac9bc0</srcmd5>
+    <version>1.8.5</version>
+    <time>1359110326</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f9a72a0ed0ea6ff0dc9bce3dc1ac9bc0</srcmd5>
+    <version>1.8.5</version>
+    <time>1379664540</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>f9a72a0ed0ea6ff0dc9bce3dc1ac9bc0</srcmd5>
+    <version>1.8.5</version>
+    <time>1409303248</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>bc755faecbeab8451272540c866c28c3</srcmd5>
+    <version>1.8.5</version>
+    <time>1413263474</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255304</requestid>
+  </revision>
+</revisionlist>

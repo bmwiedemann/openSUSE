@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>588df56a3e4bf0223ab15d19d0b71ba9</srcmd5>
+    <version>0.2.0+git20151006.6d78407</version>
+    <time>1449995962</time>
+    <user>coolo</user>
+    <comment>Initial package</comment>
+    <requestid>348160</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1a0400356c7fe827baf046f173205ec8</srcmd5>
+    <version>0.2.0+git20151006.6d78407</version>
+    <time>1451177849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349319</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>05a8f41ad88f1b5e3c5dad67f330b845</srcmd5>
+    <version>0.2.0+git.20160209</version>
+    <time>1468699907</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407344</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>94a6f2035c0c752aaabd731827ba31d6</srcmd5>
+    <version>0.2.0+git.20160921</version>
+    <time>1484132119</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449323</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e41057172facfa23fa3b628187d651ab</srcmd5>
+    <version>0.2.0+git.20170225</version>
+    <time>1492417229</time>
+    <user>maxlin_factory</user>
+    <comment>- Update rpmlintrc to include both lib dir .pc files.
+
+- Update to version 0.2.0+git.20170225:
+  * Fix build since llvm r286566 and require at least llvm 4.0
+  * Fix build since r286752.
+  * math: Add expm1 builtin function
+  * math: Add logb builtin
+  * math: Add native_rsqrt builtin function
+  * Add the correct prefixes to the cl_khr_fp64 pragma
+  * Move BufferPtr into the block where it it being used
+  * math: Add native_tan as wrapper to tan
+  * .gitignore: Ignore amdgcn-mesa object directory
+  * math: Implement sinh function</comment>
+    <requestid>487862</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dd7e467d61026211221ff3939d037f63</srcmd5>
+    <version>0.2.0+git.20170920</version>
+    <time>1506340450</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527634</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>689deab428a054e0eec46f52e7898227</srcmd5>
+    <version>0.2.0+git.20171102</version>
+    <time>1510664961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540046</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fdef38a344aa72df5473a509211fe718</srcmd5>
+    <version>0.2.0+git.20171127</version>
+    <time>1514840664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559673</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d054c44718307c9f16cc0bb346941b5e</srcmd5>
+    <version>0.2.0+git.20180915</version>
+    <time>1544816962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641351</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3404d309eb94d81112c8365f2685a7e6</srcmd5>
+    <version>0.2.0+git.20181127</version>
+    <time>1546946162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663099</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9d09f5180753cafa201b87d1275562ab</srcmd5>
+    <version>0.2.0+git.20190313</version>
+    <time>1553435801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686433</requestid>
+  </revision>
+</revisionlist>

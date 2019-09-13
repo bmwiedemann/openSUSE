@@ -1,0 +1,5 @@
+<package name="latex2rtf" project="openSUSE:Factory">
+  <title>latex2rtf</title>
+  <description>latex2rtf is a translator program to convert LaTeX formatted text files into “rich text format” (RTF) files. RTF is a published standard format by Microsoft. This standard can be ambiguous in places, but RTF is supported by many text editors. Specifically, it is supported by Microsoft Word. This means that the conversion of a LaTeX document to RTF allows anyone with a copy of Word to convert LaTeX files to Word .doc or .docx files.</description>
+  <devel project="Publishing" package="latex2rtf"/>
+</package>

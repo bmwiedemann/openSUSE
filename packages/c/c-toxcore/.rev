@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a1f0d03f71f7cc8ac2ff62a5e681eab</srcmd5>
+    <version>0.2.1</version>
+    <time>1522596475</time>
+    <user>dimstar_suse</user>
+    <comment>c-toxcore - Tox protocol implementation library
+
+I followed dimstar's feedback and addressed all the problems he
+mentioned (thanks for thourough review!)</comment>
+    <requestid>592844</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dc2d14b6774b2a7fcad18bef3253557b</srcmd5>
+    <version>0.2.1</version>
+    <time>1523447908</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594686</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>46dba96bd03f3b954d55ece609cba809</srcmd5>
+    <version>0.2.2</version>
+    <time>1524144724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597833</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>432c9797eb982e68b57d4fe1fd3834c2</srcmd5>
+    <version>0.2.2</version>
+    <time>1529501224</time>
+    <user>maxlin_factory</user>
+    <comment>- switch building from autotools to cmake, so uTox can build.
+  See https://github.com/uTox/uTox/issues/1205 
+</comment>
+    <requestid>617462</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5c60a6a5f109c8b21a2d14cfe4d98bcb</srcmd5>
+    <version>0.2.3</version>
+    <time>1530567097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619648</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2b1c41edff038b46a673b6feb65588c4</srcmd5>
+    <version>0.2.3</version>
+    <time>1531813291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622910</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2627a2dfaeddea1e9971414627508828</srcmd5>
+    <version>0.2.4</version>
+    <time>1532361750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624679</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>03555863716cef91dc705a8c8b20532b</srcmd5>
+    <version>0.2.5</version>
+    <time>1534099958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628558</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dfa019c323e5f377f48877cee5a81167</srcmd5>
+    <version>0.2.6</version>
+    <time>1534774759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630067</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>823f70c17c43ae259877b105540469cf</srcmd5>
+    <version>0.2.7</version>
+    <time>1535963764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632653</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c590b83a5223355bd45f29c47d3aa5e8</srcmd5>
+    <version>0.2.8</version>
+    <time>1539093248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640744</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>12ca0620c861633a367ee0aa6a3989ac</srcmd5>
+    <version>0.2.9</version>
+    <time>1548064262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665271</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>741e318f45fe1073392d2bee52becb2d</srcmd5>
+    <version>0.2.10</version>
+    <time>1561641974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712130</requestid>
+  </revision>
+</revisionlist>

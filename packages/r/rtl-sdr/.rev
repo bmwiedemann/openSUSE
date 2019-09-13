@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>335b13047836415c05b46b6899eb00d3</srcmd5>
+    <version>0.5.3+git.20161127</version>
+    <time>1489178774</time>
+    <user>dimstar_suse</user>
+    <comment>necessary library for usage of realtek based software defined radios</comment>
+    <requestid>477810</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d695237d6d7208de9ae3cfa4e9d0077a</srcmd5>
+    <version>0.5.3+git.20161127</version>
+    <time>1492011146</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482329</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9ed6337d0effcb54637cd4a4d19d5e38</srcmd5>
+    <version>0.5.3+git.20161127</version>
+    <time>1496225762</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490040</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1dbf6e06c96c78c759054b5e1501befd</srcmd5>
+    <version>0.5.3+git.20170612</version>
+    <time>1497786661</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504389</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4025b756a27559961af40852b3381405</srcmd5>
+    <version>0.5.3+git.20170919</version>
+    <time>1515876265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.3+git.20170919:
+  * fix for msvc14
+  * Add option '-T' for activating bias-T in rtl_(adsb|fm|power|tcp)
+  * rtl_tcp: add command for bias tee control
+  * lib: Use GPIO P0 to toggle an (optional) bias-t
+  * lib: fix direction bit in GPIO code</comment>
+    <requestid>557430</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f19e321f09cde09c3298e851c0d33b3a</srcmd5>
+    <version>0.5.4</version>
+    <time>1529402085</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615916</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f63fa4ad8ce6ab86f6a303ca141f851d</srcmd5>
+    <version>0.6.0</version>
+    <time>1535705082</time>
+    <user>dimstar_suse</user>
+    <comment>- Use more of cmake macros
+- Disable developer output from cmake
+
+- Update to version 0.6.0
+  * Fix inline functions to use 'static inline'
+  * tuner_r82xx: turn off loop-through, remove dead code
+  * rtl_adsb: fix hanging upon a signal in Fedora 27
+  * lib: use USB zero-copy transfers if possible</comment>
+    <requestid>631915</requestid>
+  </revision>
+</revisionlist>

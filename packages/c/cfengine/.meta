@@ -1,0 +1,8 @@
+<package name="cfengine" project="openSUSE:Factory">
+  <title>A Tool to Maintain Complicated Networks</title>
+  <description>GNU cfengine is an abstract programming language for system
+administrators of huge heterogeneous networks. With cfengine, system
+administrators have an easy and elegant way to maintain complicated
+networks.</description>
+  <devel project="systemsmanagement" package="cfengine"/>
+</package>

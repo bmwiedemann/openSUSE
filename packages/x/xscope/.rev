@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f535320e21ee6193da9d1834feac883c</srcmd5>
+    <version>1.3.1</version>
+    <time>1336471652</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115500</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f535320e21ee6193da9d1834feac883c</srcmd5>
+    <version>1.3.1</version>
+    <time>1340184384</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>502d35f28b860c95389d8fb1cdc5323a</srcmd5>
+    <version>1.4</version>
+    <time>1358874696</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 149181 from Zaitor)</comment>
+    <requestid>149354</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>502d35f28b860c95389d8fb1cdc5323a</srcmd5>
+    <version>1.4</version>
+    <time>1359110691</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>502d35f28b860c95389d8fb1cdc5323a</srcmd5>
+    <version>1.4</version>
+    <time>1379665116</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6f06def103b9368087fb7c90299560b8</srcmd5>
+    <version>1.4.1</version>
+    <time>1402947540</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.4.1
+  * This version corrects several bugs which caused xscope to incorrectly
+    decode some protocol replies or events, and fixes a build issue on Solaris.</comment>
+    <requestid>236779</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6f06def103b9368087fb7c90299560b8</srcmd5>
+    <version>1.4.1</version>
+    <time>1409303803</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

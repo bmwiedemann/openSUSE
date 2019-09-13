@@ -1,0 +1,5 @@
+<package name="megatools" project="openSUSE:Factory">
+  <title>megatools</title>
+  <description>Command line client for Mega.co.nz</description>
+  <devel project="network:utilities" package="megatools"/>
+</package>

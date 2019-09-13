@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>fe8a695fa1b9bc2a597fd03d560f2ac5</srcmd5>
+    <version>0.5.5</version>
+    <time>1219719361</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>b7c11dc4128f0888ccad657b845e662c</srcmd5>
+    <version>0.5.5</version>
+    <time>1224706829</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>b9feff084e208272e3cf64d1b166462a</srcmd5>
+    <version>0.5.5</version>
+    <time>1245277435</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>b9feff084e208272e3cf64d1b166462a</srcmd5>
+    <version>0.5.5</version>
+    <time>1245277435</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>dcdc5ec22bdd3312e35dc346ad6a728e</srcmd5>
+    <version>0.5.5</version>
+    <time>1268926085</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0401008b284c34d36521714146a4118c</srcmd5>
+    <version>1.0</version>
+    <time>1268988745</time>
+    <user>autobuild</user>
+    <comment>Copy from systemsmanagement:wbem/sblim-tools-libra based on submit request 35072 from user coolo
+</comment>
+    <requestid>35072</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0401008b284c34d36521714146a4118c</srcmd5>
+    <version>1.0</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0401008b284c34d36521714146a4118c</srcmd5>
+    <version>1.0</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>0401008b284c34d36521714146a4118c</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>0401008b284c34d36521714146a4118c</srcmd5>
+    <version>1.0</version>
+    <time>1319182450</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>33735e10d259e4cdb5f029ae80900503</srcmd5>
+    <version>1.0</version>
+    <time>1322481427</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93811 from coolo)</comment>
+    <requestid>93942</requestid>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>5c236a50bf50dd99f71e62cb045fe58b</srcmd5>
+    <version>1.0</version>
+    <time>1327404116</time>
+    <user>coolo</user>
+    <comment>patching license field to be in spdx.org format, for legal team to review before forward (forwarded request 100007 from babelworx)</comment>
+    <requestid>100815</requestid>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>5c236a50bf50dd99f71e62cb045fe58b</srcmd5>
+    <version>1.0</version>
+    <time>1340184196</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>5c236a50bf50dd99f71e62cb045fe58b</srcmd5>
+    <version>1.0</version>
+    <time>1359110379</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>546534267f1d3560823795ffd5f839db</srcmd5>
+    <version>1.0</version>
+    <time>1363776990</time>
+    <user>coolo</user>
+    <comment>license update: EPL-1.0
+No indication of IPL or CPL licenses in the package (forwarded request 159919 from babelworx)</comment>
+    <requestid>159951</requestid>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>546534267f1d3560823795ffd5f839db</srcmd5>
+    <version>1.0</version>
+    <time>1379664621</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="19">
+    <srcmd5>546534267f1d3560823795ffd5f839db</srcmd5>
+    <version>1.0</version>
+    <time>1409303323</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

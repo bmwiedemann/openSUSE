@@ -1,0 +1,5 @@
+<package name="golang-github-rogpeppe-godef" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:go" package="golang-github-rogpeppe-godef"/>
+</package>

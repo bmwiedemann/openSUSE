@@ -1,0 +1,8 @@
+<package name="wipe" project="openSUSE:Factory">
+  <title>Secure Erasure of Data</title>
+  <description>Wipe is a tool that attempts to effectively degauses the surface of
+a hard disk, making it virtually impossible to retrieve the data
+that was stored on it. This tool is designed to make sure secure
+data that is erased from a hard drive is unrecoverable.</description>
+  <devel project="Base:System" package="wipe"/>
+</package>

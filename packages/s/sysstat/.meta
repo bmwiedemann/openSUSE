@@ -1,0 +1,10 @@
+<package name="sysstat" project="openSUSE:Factory">
+  <title>Sar and Iostat Commands for Linux</title>
+  <description>Sar and Iostat commands for Linux. The sar command collects and reports
+system activity information. The iostat command reports CPU statistics
+and I/O statistics for TTY devices and disks.  The information
+collected by sar and iostat can be saved in a binary file for future
+inspection. Both commands now support SMP machines when displaying CPU
+utilization.</description>
+  <devel project="Base:System" package="sysstat"/>
+</package>

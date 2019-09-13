@@ -1,0 +1,8 @@
+<package name="python-sip" project="openSUSE:Factory">
+  <title>SIP tool to use python sip bindings</title>
+  <description>SIP is a tool that makes it very easy to create Python bindings for C
+and C++ libraries. It was originally developed to create PyQt, the
+Python bindings for the Qt toolkit, but can be used to create bindings
+for any C or C++ library.</description>
+  <devel project="KDE:Qt5" package="python-sip"/>
+</package>

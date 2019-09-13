@@ -1,0 +1,181 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f51e9961d23eb738e7d84a1cfd83571</srcmd5>
+    <version>2.05</version>
+    <time>1168904021</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a6e4f9f5c78a2b246c3895685684fcf7</srcmd5>
+    <version>2.06</version>
+    <time>1183623914</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="79">
+    <srcmd5>a6e4f9f5c78a2b246c3895685684fcf7</srcmd5>
+    <version>2.06</version>
+    <time>1183623914</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="80">
+    <srcmd5>0068f8ef1cf100ceb50d0b4ea5ac3c46</srcmd5>
+    <version>2.06</version>
+    <time>1245339312</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="82">
+    <srcmd5>0068f8ef1cf100ceb50d0b4ea5ac3c46</srcmd5>
+    <version>2.06</version>
+    <time>1245339312</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="83">
+    <srcmd5>0be32707ec7a7d2f6a2f628d5fee9041</srcmd5>
+    <version>2.06</version>
+    <time>1256036219</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pwgen based on submit request 22284 from user prusnak
+</comment>
+  </revision>
+  <revision rev="7" vrev="84">
+    <srcmd5>6e049af2c17b74d5470d3db908b3976d</srcmd5>
+    <version>2.06</version>
+    <time>1268925815</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="86">
+    <srcmd5>6e049af2c17b74d5470d3db908b3976d</srcmd5>
+    <version>2.06</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="87">
+    <srcmd5>6e049af2c17b74d5470d3db908b3976d</srcmd5>
+    <version>2.06</version>
+    <time>1278678613</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="88">
+    <srcmd5>ff3e6661646ad9dcad701591b0e12622</srcmd5>
+    <version>2.06</version>
+    <time>1285086290</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pwgen based on submit request 48691 from user lnussel
+</comment>
+    <requestid>48691</requestid>
+  </revision>
+  <revision rev="11" vrev="89">
+    <srcmd5>87be3e44f082de12a5fa41ee696530f3</srcmd5>
+    <version>2.06</version>
+    <time>1287010358</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pwgen based on submit request 50361 from user coolo
+</comment>
+    <requestid>50361</requestid>
+  </revision>
+  <revision rev="12" vrev="92">
+    <srcmd5>87be3e44f082de12a5fa41ee696530f3</srcmd5>
+    <version>2.06</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="94">
+    <srcmd5>87be3e44f082de12a5fa41ee696530f3</srcmd5>
+    <version>2.06</version>
+    <time>1319182375</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="95">
+    <srcmd5>515567c742e05de1d4df1c0309a1ccb2</srcmd5>
+    <version>2.06</version>
+    <time>1323194056</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="96">
+    <srcmd5>9c92ba915fa4f7149705377dd588cb47</srcmd5>
+    <version>2.06</version>
+    <time>1324831210</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97542 from coolo)</comment>
+    <requestid>97874</requestid>
+  </revision>
+  <revision rev="16" vrev="98">
+    <srcmd5>9c92ba915fa4f7149705377dd588cb47</srcmd5>
+    <version>2.06</version>
+    <time>1340184025</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="100">
+    <srcmd5>9c92ba915fa4f7149705377dd588cb47</srcmd5>
+    <version>2.06</version>
+    <time>1359109967</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="102">
+    <srcmd5>9c92ba915fa4f7149705377dd588cb47</srcmd5>
+    <version>2.06</version>
+    <time>1379664089</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="104">
+    <srcmd5>9c92ba915fa4f7149705377dd588cb47</srcmd5>
+    <version>2.06</version>
+    <time>1409302771</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>949eecd5d4ce9ec43efd5afc35c07b4c</srcmd5>
+    <version>2.07</version>
+    <time>1418251473</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 2.07 (bsc#908992):
+  * New upstream version
+  * Remove backwards compatibility for no-tty mode.  Addresses
+    CVE-2013-4440 (Closes: #725507) (bsc#846397)
+  * Fail hard if /dev/urandom and /dev/random are not available.
+    Addresses CVE-2013-4442 and Launchpad #1183213 (Closes: #767008)
+    (bsc#846397)
+  * Fix pwgen -B so that it doesn't accidentally generate passwords with
+    ambiguous characters after changing the case of some letters.
+    Addresses Launchpad Bugs #638418 and #1349863
+  * Fix potential portability bug on architectures where unsgined ints
+    are not 4 bytes long (forwarded request 264517 from msmeissn)</comment>
+    <requestid>264518</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>00ec862b9b76b56fb22820c8b81e3915</srcmd5>
+    <version>2.07</version>
+    <time>1438421680</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>317082</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>175e0bf7b323a2820681cec32845d344</srcmd5>
+    <version>2.08</version>
+    <time>1510150314</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 2.08
+  * Suppress trailing space after the last password
+  * Make pwgen -s more &quot;secure&quot; for 1 and 2 character passwords
+  * Fix option parsing of &quot;pwgen --no-capitalize --no-vowels&quot;
+  * Add new option --remove-chars which removes chars from the set of
+    characters used to generate passwords
+  * Add cross-compilation to debian/rules
+  * Update control and copyright files to point at pwgen at github for
+    the home directory and primary git repository
+- Drop 1 hunk that was fixed upsteam in pwgen-2.06-fdleaks.patch
+  * merged in df7d8419ee44088eeeb9df92074914a659e90b15
+- Cleanup spec file with spec-cleaner
+- Use macros more extensively in spec file (forwarded request 539759 from avindra)</comment>
+    <requestid>539827</requestid>
+  </revision>
+</revisionlist>

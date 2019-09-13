@@ -1,0 +1,12 @@
+<package name="lsvpd" project="openSUSE:Factory">
+  <title>VPD Hardware Inventory Utilities for Linux</title>
+  <description>The lsvpd package contains both the lsvpd, lscfg and lsmcode commands.
+These commands, along with a boot-time scanning script called
+update-device-tree, constitute a simple hardware inventory system. The
+lsvpd command provides Vital Product Data (VPD) about hardware
+components to higher-level serviceability tools. The lscfg command
+provides a more human-readable format of the VPD, as well as some
+system-specific information.  lsmcode lists microcode and firmware
+levels.</description>
+  <devel project="Base:System" package="lsvpd"/>
+</package>

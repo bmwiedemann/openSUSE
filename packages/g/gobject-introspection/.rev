@@ -1,0 +1,711 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>13c631569162b58d93cda2f9df7fc65f</srcmd5>
+    <version>0.6.2</version>
+    <time>1246695670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e2e84610ef327ce7c1d83eb80962adc4</srcmd5>
+    <version>0.6.3</version>
+    <time>1247787375</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d58a19e674f6378c17063052d4689b8c</srcmd5>
+    <version>0.6.4</version>
+    <time>1252105283</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gobject-introspection based on submit request 19742 from user vuntz
+</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8c28ad7645e8ae85a2bb65dda85aa568</srcmd5>
+    <version>0.6.5</version>
+    <time>1253653849</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gobject-introspection based on submit request 20770 from user dimstar
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8c28ad7645e8ae85a2bb65dda85aa568</srcmd5>
+    <version>0.6.5</version>
+    <time>1253653849</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gobject-introspection based on submit request 20770 from user dimstar
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d585115e2ebf9e439709f908dda3c421</srcmd5>
+    <version>0.6.7</version>
+    <time>1261136814</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gobject-introspection based on submit request 27001 from user vuntz
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ec0d9a73d9ed444867f8183f6e744dfc</srcmd5>
+    <version>0.6.7</version>
+    <time>1268923845</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c3e498b0ca6226ce77c87582459e0efb</srcmd5>
+    <version>0.6.8</version>
+    <time>1268949732</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gobject-introspection based on submit request 35224 from user MBoman
+</comment>
+    <requestid>35224</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0612304c41daa75dec2b3ab2ede0b82e</srcmd5>
+    <version>0.6.9</version>
+    <time>1270084027</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gobject-introspection based on submit request 36341 from user vuntz
+</comment>
+    <requestid>36341</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0612304c41daa75dec2b3ab2ede0b82e</srcmd5>
+    <version>0.6.9</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>0612304c41daa75dec2b3ab2ede0b82e</srcmd5>
+    <version>0.6.9</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4a3609d4dba32c852d0e3251c080db0c</srcmd5>
+    <version>0.9.3</version>
+    <time>1281364748</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gobject-introspection based on submit request 45088 from user vuntz
+</comment>
+    <requestid>45088</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>539e92f2828c2ffd933168ab4c526246</srcmd5>
+    <version>0.9.6</version>
+    <time>1285278852</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gobject-introspection based on submit request 48926 from user vuntz
+</comment>
+    <requestid>48926</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>52c5c904435befdc757bfcd75704e242</srcmd5>
+    <version>0.9.12</version>
+    <time>1287139181</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gobject-introspection based on submit request 50720 from user vuntz
+</comment>
+    <requestid>50720</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>13b0f29d2a3d5260c453c0cc90fd69bc</srcmd5>
+    <version>0.9.12</version>
+    <time>1288691332</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51913 from user vuntz
+</comment>
+    <requestid>51913</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>bf6706ec320a4cc95a50023947333302</srcmd5>
+    <version>0.9.12</version>
+    <time>1288691338</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51913
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ef96745cc2b47eba9273da5d9074ddd3</srcmd5>
+    <version>0.10.0</version>
+    <time>1295018033</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58225 from user vuntz
+</comment>
+    <requestid>58225</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>a8d6e78dcc87f897ef7b4428153bf6e3</srcmd5>
+    <version>0.10.0</version>
+    <time>1295018040</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58225
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ae4a4a9f00d6b42b726fc0b74ed6e57b</srcmd5>
+    <version>0.10.1</version>
+    <time>1295283025</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58436 from user dimstar
+</comment>
+    <requestid>58436</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>dede1c04fd05897e23fe152c5dcadcae</srcmd5>
+    <version>0.10.1</version>
+    <time>1295283032</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58436
+</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>dede1c04fd05897e23fe152c5dcadcae</srcmd5>
+    <version>0.10.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>10eb9e9379d38304670652919a281d00</srcmd5>
+    <version>0.10.8</version>
+    <time>1304331335</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69086</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>aab4dc64346a8ef7da4a790abc89d1a6</srcmd5>
+    <version>0.10.8</version>
+    <time>1307368707</time>
+    <user>saschpe</user>
+    <comment>Only provide the typelib() symbol... do not yet require any</comment>
+    <requestid>72629</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>a60adb2e6110a3e656d5b920405d363f</srcmd5>
+    <version>0.10.8</version>
+    <time>1307368716</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72629
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1de7c3f89016c270e7ca303456222ce3</srcmd5>
+    <version>1.29.0</version>
+    <time>1310121771</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F, including GNOME 3.1.3</comment>
+    <requestid>75755</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>ae4a5b9c3a4529b755e9b8caf3b8ad0a</srcmd5>
+    <version>1.29.0</version>
+    <time>1310454142</time>
+    <user>saschpe</user>
+    <comment>Fix type on dep parser... (hit by gnome-games for the moment)</comment>
+    <requestid>76065</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>5298344ee45bf48c81db0f820a932b26</srcmd5>
+    <version>1.29.0</version>
+    <time>1310454154</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76065
+</comment>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>c1b038cea4fde50d5b98780470b8ced9</srcmd5>
+    <version>1.29.0</version>
+    <time>1311231528</time>
+    <user>saschpe</user>
+    <comment>Fix gi-find-deps to deal with \r\n (forwarded request 76485 from vuntz)</comment>
+    <requestid>76517</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>0861105e1abbe74ad1ccd3db72c354cc</srcmd5>
+    <version>1.29.0</version>
+    <time>1311231544</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76517
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e998a73924bfd470014a7c0638d687c5</srcmd5>
+    <version>1.29.16</version>
+    <time>1312380090</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>77801</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>4aee10886ce38be23ed33aa22634d0c3</srcmd5>
+    <version>1.29.16</version>
+    <time>1313651707</time>
+    <user>saschpe</user>
+    <comment>Fix gi-find-deps.sh to address a special case in python-gobject: a ImportError text tries to explain how to convert the code</comment>
+    <requestid>79160</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>3250deba5a0c95e2450f634e80018eb9</srcmd5>
+    <version>1.29.16</version>
+    <time>1313651717</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79160
+</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>15927a538db22c58e06ae9cf8d33ae68</srcmd5>
+    <version>1.29.17</version>
+    <time>1315560130</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81500</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c88c9945ae61ec6f65c2fcecdca81342</srcmd5>
+    <version>1.30.0</version>
+    <time>1317542948</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85678</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>c88c9945ae61ec6f65c2fcecdca81342</srcmd5>
+    <version>1.30.0</version>
+    <time>1319181936</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8594c0149cdedd10352f7c18268e8cdb</srcmd5>
+    <version>1.31.6</version>
+    <time>1325846676</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99054</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>0bbe1aacb06b745f12b2afe5aed283ae</srcmd5>
+    <version>1.31.6</version>
+    <time>1327093621</time>
+    <user>coolo</user>
+    <comment>Pushing small bits of G:F</comment>
+    <requestid>100713</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f60a8247cf2e109f123237132e50dc08</srcmd5>
+    <version>1.31.10</version>
+    <time>1327589944</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>101607</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>3eefc40765ab7986c19dcb4518b9e1a6</srcmd5>
+    <version>1.31.10</version>
+    <time>1329405267</time>
+    <user>coolo</user>
+    <comment>Pushing most G:F bits</comment>
+    <requestid>105119</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c7299106b2e0319133270afbc0418ebe</srcmd5>
+    <version>1.31.20</version>
+    <time>1332147437</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>109428</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>23f5719f251d62666046771b209b0ce0</srcmd5>
+    <version>1.32.0</version>
+    <time>1333022258</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111742</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>9cd8d81eeac233a39219ea3e4da650ea</srcmd5>
+    <version>1.32.1</version>
+    <time>1334927804</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>114662</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>cc8f015cfba99fdfb625ebd5157a6be3</srcmd5>
+    <version>1.32.1</version>
+    <time>1339584163</time>
+    <user>coolo</user>
+    <comment>Fix license tags.. and typo (forwarded request 123871 from dimstar)</comment>
+    <requestid>123879</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>cc8f015cfba99fdfb625ebd5157a6be3</srcmd5>
+    <version>1.32.1</version>
+    <time>1340183401</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>badbcf5545295750e98afdf644fa52d8</srcmd5>
+    <version>1.34.0</version>
+    <time>1349241874</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136716</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c7b78a555cdb4d384ad6dd97d2620a97</srcmd5>
+    <version>1.34.1.1</version>
+    <time>1350629162</time>
+    <user>coolo</user>
+    <comment>update to 1.34.1.1 (forwarded request 138640 from Zaitor)</comment>
+    <requestid>138643</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>ede4e2b48c8b35010a7d1dbdd9b67824</srcmd5>
+    <version>1.34.2</version>
+    <time>1353597217</time>
+    <user>coolo</user>
+    <comment>Push from G:F - Accerciser will need a rebuild, and then it helps with the have choice for typelib(Wnck)</comment>
+    <requestid>142340</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>6bc931b6708c490a79c818c5e4b81abe</srcmd5>
+    <version>1.34.2</version>
+    <time>1355466920</time>
+    <user>coolo</user>
+    <comment>Add python-gobject dependency when we find gi.requires in a *.py file... (forwarded request 145116 from vuntz)</comment>
+    <requestid>145118</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>6bc931b6708c490a79c818c5e4b81abe</srcmd5>
+    <version>1.34.2</version>
+    <time>1359108984</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>f805cd752dad37575f81bd7419a2db9c</srcmd5>
+    <version>1.34.2</version>
+    <time>1359580894</time>
+    <user>coolo</user>
+    <comment>Minor bug fix... eliminates a few false positives (theoretical.. I'm not aware of having seen them in openSUSE yet)</comment>
+    <requestid>150450</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>38e01b3826f21b7fcdf656b8af7a40ec</srcmd5>
+    <version>1.36.0</version>
+    <time>1364472926</time>
+    <user>coolo</user>
+    <comment>Update to 1.36.0</comment>
+    <requestid>161329</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1106ce244346b529b62bb5df6f84feff</srcmd5>
+    <version>1.37.1</version>
+    <time>1372527710</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.3, as announced</comment>
+    <requestid>181290</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>8cc537b3e6e7395079239a3b8bba585c</srcmd5>
+    <version>1.37.4</version>
+    <time>1373981382</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.4 - hopefully in the for #oSC13</comment>
+    <requestid>183172</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>1775eb6de501aafe491bd50a82c2e421</srcmd5>
+    <version>1.37.4</version>
+    <time>1376648437</time>
+    <user>scarabeus_factory</user>
+    <comment>- Modify gi-find-deps.sh: the js package filter function seems to
+  have some issues in transfering variables (we might hit some
+  limits: the script works fine when directly invoked). Currently
+  we just specify the extracted list from gnome-weather as FILTER. (forwarded request 188165 from Zaitor)</comment>
+    <requestid>195374</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>68b6894b5368b2d26be088904a01ca96</srcmd5>
+    <version>1.37.4</version>
+    <time>1376911881</time>
+    <user>scarabeus_factory</user>
+    <comment>- Enhance gi-find-deps.sh: when scannig python file for
+  gi.require_version, make sure to ignore python comments (starting
+  with #). (forwarded request 195421 from Zaitor)</comment>
+    <requestid>195429</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>14bea72317bfaf03b04aa662e87a6be5</srcmd5>
+    <version>1.37.6</version>
+    <time>1377875778</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.90</comment>
+    <requestid>196255</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>14bea72317bfaf03b04aa662e87a6be5</srcmd5>
+    <version>1.37.6</version>
+    <time>1379662531</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>4c77191c25606eff0ac2f87d1e9ebe2d</srcmd5>
+    <version>1.38.0</version>
+    <time>1380295872</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200954</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>df3fa1fb02dc256c184200b270fdfbd3</srcmd5>
+    <version>1.38.0</version>
+    <time>1386569131</time>
+    <user>coolo</user>
+    <comment>for ppc64le</comment>
+    <requestid>209699</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f9d762d4c85995dd7c065dc0cf19b283</srcmd5>
+    <version>1.40.0</version>
+    <time>1399317363</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231749</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>f9d762d4c85995dd7c065dc0cf19b283</srcmd5>
+    <version>1.40.0</version>
+    <time>1409301072</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>580ec022f9d14d3c76dfde4d2d000604</srcmd5>
+    <version>1.42.0</version>
+    <time>1412098679</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251923 from Zaitor)</comment>
+    <requestid>252076</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>082b51c67710f5e5db11691874b198a2</srcmd5>
+    <version>1.44.0</version>
+    <time>1427736156</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292796 from dimstar)</comment>
+    <requestid>292987</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>b10542b7cc7dbd864f55c716e764b95a</srcmd5>
+    <version>1.46.0</version>
+    <time>1444142014</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0 (forwarded request 332944 from dimstar)</comment>
+    <requestid>332953</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>d22a5fe0f08d60d21b480325753da911</srcmd5>
+    <version>1.48.0</version>
+    <time>1459255535</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 378357 from dimstar)</comment>
+    <requestid>378627</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>cdfc59c5827194718cc5a67ecb28d5f8</srcmd5>
+    <version>1.48.0</version>
+    <time>1461854979</time>
+    <user>dimstar_suse</user>
+    <comment>- gi-find-deps.sh: scan GI overrides glue layers to add their
+  respective dependencies. (forwarded request 390569 from dimstar)</comment>
+    <requestid>390577</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>e113d6d752683793f6e98d0191e58c38</srcmd5>
+    <version>1.48.0</version>
+    <time>1472594637</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423536</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>bc33b08fc3c24021dbcf0e5bf457a058</srcmd5>
+    <version>1.50.0</version>
+    <time>1474476157</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.50.0 (forwarded request 428967 from dimstar)</comment>
+    <requestid>429153</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>2822ebaaf8491ce2282031f077471f40</srcmd5>
+    <version>1.50.0</version>
+    <time>1474723187</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 429341 from dimstar)</comment>
+    <requestid>429375</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>3d2e3a18cb5a982f658fb7676aabcb7a</srcmd5>
+    <version>1.50.0</version>
+    <time>1486968419</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456407</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>fbb580ee4c65c35fc97ea8549245fc28</srcmd5>
+    <version>1.52.0</version>
+    <time>1490220695</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.52.0 (forwarded request 481610 from dimstar)</comment>
+    <requestid>481624</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>0ca200c5ed8241b73eca26a5d65d96cd</srcmd5>
+    <version>1.52.1</version>
+    <time>1493455739</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 489123 from Zaitor)</comment>
+    <requestid>490201</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>f1acf7047b89fbe2b219d1f89aac7135</srcmd5>
+    <version>1.52.1</version>
+    <time>1497871391</time>
+    <user>dimstar_suse</user>
+    <comment>- gi-find-deps.sh: sort autogenerated Requires to make builds fully
+  reproducible.</comment>
+    <requestid>504340</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>0d6033113501a3bd6173c2ba60d0d46f</srcmd5>
+    <version>1.54.0</version>
+    <time>1505332112</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523131</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>c150b88caef2755df20982741a1cbf43</srcmd5>
+    <version>1.54.1</version>
+    <time>1507280484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.54.1:
+  + girnode.c: Use locale-independent functions to parse numbers
+    (bgo#788087).
+- Drop '%if 0%{suse_version} &amp;lt;= 1140' conditional: obsolete. (forwarded request 531560 from dimstar)</comment>
+    <requestid>531694</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>d70d7d48684a9c7c8aec825a40cc6609</srcmd5>
+    <version>1.54.1</version>
+    <time>1510505875</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to python3
+- Cleanup with spec-cleaner
+- Run tests during build</comment>
+    <requestid>540580</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>efeb31da8a7c40396117de082f8fc565</srcmd5>
+    <version>1.54.1</version>
+    <time>1519554855</time>
+    <user>dimstar_suse</user>
+    <comment>- go-find-deps.sh: add riscv64 to x64bitarch.</comment>
+    <requestid>579027</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>0f5b5a4af3fea9795c74044eaede0bea</srcmd5>
+    <version>1.56.0</version>
+    <time>1521052319</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0 (forwarded request 586288 from dimstar)</comment>
+    <requestid>586290</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>79a83aabb48c11b315ade10d335c6707</srcmd5>
+    <version>1.56.1</version>
+    <time>1524144133</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildable atm, as it's waiting for a stable glib2 release (forwarded request 594824 from iznogood)</comment>
+    <requestid>596125</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>7edb4405fac725680aae6cfc38c11e71</srcmd5>
+    <version>1.58.0</version>
+    <time>1539757156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639467</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>38e6b51973dd488afb126a62a17406ae</srcmd5>
+    <version>1.58.1</version>
+    <time>1542749419</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 649955 from iznogood)</comment>
+    <requestid>650158</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>54391fa95365f6271e59b1eaa431485b</srcmd5>
+    <version>1.58.2</version>
+    <time>1545223548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657452</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>499fc63ac0a677b401a1902e9b02973e</srcmd5>
+    <version>1.58.2</version>
+    <time>1546245564</time>
+    <user>dimstar_suse</user>
+    <comment>Add upstream bug fix patches (forwarded request 661679 from iznogood)</comment>
+    <requestid>661748</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>d4e38cc629530aef966add034db8d330</srcmd5>
+    <version>1.58.3</version>
+    <time>1546695555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662634</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>a22571dca80bf6e37c6280e91d2ead4f</srcmd5>
+    <version>1.60.0</version>
+    <time>1554276232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689504</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>ee7f155bf1397eed6e81cfa7b8732c43</srcmd5>
+    <version>1.60.1</version>
+    <time>1556914215</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695624 from dimstar)</comment>
+    <requestid>695683</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>0e7fd88987ad0cd1952550345954b986</srcmd5>
+    <version>1.60.2</version>
+    <time>1561195403</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 710133 from iznogood)</comment>
+    <requestid>710351</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>120fc30abcafc5d893cf0ff06f74105b</srcmd5>
+    <version>1.60.2</version>
+    <time>1566240545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723462</requestid>
+  </revision>
+</revisionlist>

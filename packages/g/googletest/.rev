@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>805c44c6bbde5277525f9e0fc9c8fd0c</srcmd5>
+    <version>1.6.0</version>
+    <time>1344861896</time>
+    <user>namtrac</user>
+    <comment>dependency of librime, thus ibus-rime and fcitx-rime. and Nelson Marques wants it in Factory for some use: http://lists.opensuse.org/opensuse-factory/2012-08/msg00267.html</comment>
+    <requestid>130682</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>805c44c6bbde5277525f9e0fc9c8fd0c</srcmd5>
+    <version>1.6.0</version>
+    <time>1359108992</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>805c44c6bbde5277525f9e0fc9c8fd0c</srcmd5>
+    <version>1.6.0</version>
+    <time>1379662542</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6cfb38fa379afa637c0f57ba192b4afa</srcmd5>
+    <version>1.7.0</version>
+    <time>1384265072</time>
+    <user>coolo</user>
+    <comment>update 1.7.0 (forwarded request 206580 from MargueriteSu)</comment>
+    <requestid>206581</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5c6a36c00e9cfa3025924d6ebf2d1fff</srcmd5>
+    <version>1.7.0</version>
+    <time>1405053948</time>
+    <user>coolo</user>
+    <comment>some fixes</comment>
+    <requestid>239723</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>5c6a36c00e9cfa3025924d6ebf2d1fff</srcmd5>
+    <version>1.7.0</version>
+    <time>1409301084</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>c264aa00c1938ce2630038c5f407f398</srcmd5>
+    <version>1.7.0</version>
+    <time>1425377671</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288229</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>ff31890ca5554202800840e5ff035603</srcmd5>
+    <version>1.7.0</version>
+    <time>1440337413</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324528</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>21ee32d03929f868a58fc86b0e97e0cd</srcmd5>
+    <version>1.8.0</version>
+    <time>1516359076</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560658</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>492717f4a219a6dd4028eafad81463e4</srcmd5>
+    <version>1.8.1</version>
+    <time>1542749252</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove errant backslahes from description.
+- Rewrite summaries without em dashes.
+- Update to version 1.8.1:
+  * add pkg-config files
+  * add --no_stacktrace_support for json-output-unittest
+  * allow macros inside of parametrized test names.
+  * support JSON output format in addition to XML
+  * add options to parallelize builds
+  * fix double free when building Gtest/GMock in shared libraries
+    and linking a test executable with both.
+  * 2.6.4 is the minimum CMake version
+- cleanup spec file
+- googletest-fix-cmake-libdir-install.patch: dropped, upstreamed
+</comment>
+    <requestid>649910</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4737f326522d689e273ebcf4618285ee</srcmd5>
+    <version>20061016</version>
+    <time>1168902984</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7285cf402e66d82dc74ad74e85f69d6b</srcmd5>
+    <version>20070124</version>
+    <time>1169681750</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>054d9300daeb2334087a729c9e659f95</srcmd5>
+    <version>20070205</version>
+    <time>1170704466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f028cfb7ebdda7c63a1441705ad0161e</srcmd5>
+    <version>20070515</version>
+    <time>1179393742</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>69e5c49c1404e96c5b70f41a5d7a4d16</srcmd5>
+    <version>20070618</version>
+    <time>1182180028</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1b2f90eb20d31ef99310ada2f2260857</srcmd5>
+    <version>20080423</version>
+    <time>1208994643</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="34">
+    <srcmd5>1b2f90eb20d31ef99310ada2f2260857</srcmd5>
+    <version>20080423</version>
+    <time>1208994643</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8edfa3a148ad8f95c64057cb4530d739</srcmd5>
+    <version>20090219</version>
+    <time>1235389924</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>8edfa3a148ad8f95c64057cb4530d739</srcmd5>
+    <version>20090219</version>
+    <time>1235389924</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>05fdab3e682f43ca8ae0416b85d4f900</srcmd5>
+    <version>20090318</version>
+    <time>1263306823</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/handedict based on submit request 29041 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>42fd45f65e9f4390fe775fd15fa41012</srcmd5>
+    <version>20090318</version>
+    <time>1268923931</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>d65f7fb67bd08e3d09ae4878b4c234cb</srcmd5>
+    <version>20090318</version>
+    <time>1272214379</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:lzwang:branches:SUSE:Factory:Head/handedict based on submit request 6048 from user lzwang
+</comment>
+    <requestid>6048</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>d65f7fb67bd08e3d09ae4878b4c234cb</srcmd5>
+    <version>20090318</version>
+    <time>1278667350</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>d65f7fb67bd08e3d09ae4878b4c234cb</srcmd5>
+    <version>20090318</version>
+    <time>1278678581</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>d65f7fb67bd08e3d09ae4878b4c234cb</srcmd5>
+    <version>20090318</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>d65f7fb67bd08e3d09ae4878b4c234cb</srcmd5>
+    <version>20090318</version>
+    <time>1319181963</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>5ebdbf6395110b25e8af6cf213988d54</srcmd5>
+    <version>20090318</version>
+    <time>1327087430</time>
+    <user>coolo</user>
+    <comment>license update: CC-BY-SA-3.0 and GPL-2.0+
+Contains GPL-2.0+ licensed cedict-format.pl (forwarded request 100683 from babelworx)</comment>
+    <requestid>100770</requestid>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>5ebdbf6395110b25e8af6cf213988d54</srcmd5>
+    <version>20090318</version>
+    <time>1340183432</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="16">
+    <srcmd5>5ebdbf6395110b25e8af6cf213988d54</srcmd5>
+    <version>20090318</version>
+    <time>1359109040</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="18">
+    <srcmd5>5ebdbf6395110b25e8af6cf213988d54</srcmd5>
+    <version>20090318</version>
+    <time>1379662603</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="20">
+    <srcmd5>5ebdbf6395110b25e8af6cf213988d54</srcmd5>
+    <version>20090318</version>
+    <time>1409301151</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

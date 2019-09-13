@@ -1,0 +1,9 @@
+<package name="ocaml-camlp5" project="openSUSE:Factory">
+  <title>Pre-Processor-Pretty-Printer for Objective Caml</title>
+  <description>Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and printing some result on standard output.
+It is compatible with OCaml versions from 1.07 to 4.02.2.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-camlp5"/>
+  <url>http://camlp5.gforge.inria.fr/</url>
+</package>

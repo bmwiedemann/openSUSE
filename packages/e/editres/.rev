@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fdf77b44734f13d2fb47d0eb84c9e596</srcmd5>
+    <version>1.0.5</version>
+    <time>1336470969</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115331</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fdf77b44734f13d2fb47d0eb84c9e596</srcmd5>
+    <version>1.0.5</version>
+    <time>1340183300</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d14e96de96a9e1e7efab4e4a2ac1754f</srcmd5>
+    <version>1.0.6</version>
+    <time>1358863962</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 149186 from Zaitor)</comment>
+    <requestid>149359</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d14e96de96a9e1e7efab4e4a2ac1754f</srcmd5>
+    <version>1.0.6</version>
+    <time>1359108840</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d14e96de96a9e1e7efab4e4a2ac1754f</srcmd5>
+    <version>1.0.6</version>
+    <time>1379662278</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>de74758d5618e83fe709a28e59d78a0d</srcmd5>
+    <version>1.0.6</version>
+    <time>1391765145</time>
+    <user>scarabeus_factory</user>
+    <comment>- fixed license to X11 in specfile</comment>
+    <requestid>221103</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>de74758d5618e83fe709a28e59d78a0d</srcmd5>
+    <version>1.0.6</version>
+    <time>1409300815</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>46360a911d537720fb38bb7794caea43</srcmd5>
+    <version>1.0.7</version>
+    <time>1520415322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7
+  * This version raises the minimum version of libXt required to build &amp; run
+    editres to libXt 1.0.99.1.</comment>
+    <requestid>583036</requestid>
+  </revision>
+</revisionlist>

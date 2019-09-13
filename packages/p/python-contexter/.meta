@@ -1,0 +1,5 @@
+<package name="python-contexter" project="openSUSE:Factory">
+  <title>python-contexter</title>
+  <description>Contexter is a replacement of the contextlib module</description>
+  <devel project="devel:languages:python" package="python-contexter"/>
+</package>

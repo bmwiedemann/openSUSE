@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6508f175235142807f3643fae61b328f</srcmd5>
+    <version>1.0.7</version>
+    <time>1336471214</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115395</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6508f175235142807f3643fae61b328f</srcmd5>
+    <version>1.0.7</version>
+    <time>1340184333</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>6508f175235142807f3643fae61b328f</srcmd5>
+    <version>1.0.7</version>
+    <time>1359110589</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>6508f175235142807f3643fae61b328f</srcmd5>
+    <version>1.0.7</version>
+    <time>1379664989</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4020bca6e054ad34170bcf2b098cd987</srcmd5>
+    <version>1.0.8</version>
+    <time>1383036034</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.8
+  * Fix a long standing problem that for ssh tunneled connections a
+    display variable of the form: localhost:&lt;N&gt;.&lt;M&gt; leads to correct
+    authorization when an X client is started but &quot;xauth list $DISPLAY&quot;
+    returns nothing.
+  * Fix for: If using GDM with XDMCP, then ssh is not able to start X11
+    clients on the remote side. You get a &quot;No xauth data; using fake
+    authentication data for X11 forwarding.&quot; from SSH.
+- obsoletes xauth-1.0.2.diff, 
+  u_xauth_Look-for-FamilyLocal-if-inet-or-inet6-addr.patch
+- adjusted xauth-tolerant-hostname-changes.diff
+- added new test_xauth tool to %files section</comment>
+    <requestid>204883</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c362de554e223ab6bd02a3902131a6ce</srcmd5>
+    <version>1.0.9</version>
+    <time>1399703514</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.9
+  * Add AC_USE_SYSTEM_EXTENSIONS to expose non-standard extensions
+  * Do not install test_xauth during &quot;make install&quot; as it is
+  * Fix warning about warn_unused_result triggered by WRITES.
+  * Fixed missing EXTRA_DIST in tests. Extended README for releasing.</comment>
+    <requestid>232916</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c362de554e223ab6bd02a3902131a6ce</srcmd5>
+    <version>1.0.9</version>
+    <time>1409303669</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>522c573c1e6de2d63b79d4970fb0dca2</srcmd5>
+    <version>1.0.10</version>
+    <time>1486464978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.10
+  * include POSIX-standard limits.h for PATH_MAX instead of sys/syslimits.h
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Clarified RELEASING in README
+  * Fix for xauth failing on ENOSPC (= disk full)
+  * autogen.sh: use quoted string variables
+  * Update DISPLAY parsing to work with new launchd paths in Yosemite
+  * Fix !HAVE_STRLCPY case
+  * Build xauth before running tests.
+  * autogen: add default patch prefix
+  * autogen.sh: stop using maintainer mode
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * usage(): Print summary for the -n option</comment>
+    <requestid>453882</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>535e851f2a20554606439a4fb77edb6c</srcmd5>
+    <version>1.1</version>
+    <time>1563259157</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1
+  * This release fixes a race condition where an existing
+    authority file would be unlinked (possibly causing other
+    clients to fail to connect), and fixes sorting and merging
+    of authority file entries.</comment>
+    <requestid>714833</requestid>
+  </revision>
+</revisionlist>

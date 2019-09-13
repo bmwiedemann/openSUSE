@@ -1,0 +1,361 @@
+<revisionlist>
+  <revision rev="1" vrev="24">
+    <srcmd5>51ed368ad253f9f878e067c72d49683c</srcmd5>
+    <version>3.1.5</version>
+    <time>1166483761</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5f78006b1ff632421e3fe8852331b684</srcmd5>
+    <version>3.1.5g</version>
+    <time>1180107665</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8dced502e77c118c3fef81d5bc5f3e68</srcmd5>
+    <version>3.1.5h</version>
+    <time>1192494304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d48974f1bff9666dfb3fe71b7d0b3051</srcmd5>
+    <version>3.1.6</version>
+    <time>1214420929</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="25">
+    <srcmd5>7eae6916b99ff85d7c1665f173ec1313</srcmd5>
+    <version>3.1.6</version>
+    <time>1234047476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="27">
+    <srcmd5>7eae6916b99ff85d7c1665f173ec1313</srcmd5>
+    <version>3.1.6</version>
+    <time>1234047476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="28">
+    <srcmd5>b2faec8c90779ebc7012c0c5021f1ea7</srcmd5>
+    <version>3.1.6</version>
+    <time>1258368286</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gawk based on submit request 24416 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="8" vrev="29">
+    <srcmd5>561e28038e5dad3b2f8a26ec1a33e4c0</srcmd5>
+    <version>3.1.6</version>
+    <time>1267092725</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gawk based on submit request 33371 from user msmeissn
+</comment>
+    <requestid>33371</requestid>
+  </revision>
+  <revision rev="9" vrev="30">
+    <srcmd5>9e053adbc5c0c63f1eb575e86fadc433</srcmd5>
+    <version>3.1.6</version>
+    <time>1268923618</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="32">
+    <srcmd5>9e053adbc5c0c63f1eb575e86fadc433</srcmd5>
+    <version>3.1.6</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="33">
+    <srcmd5>9e053adbc5c0c63f1eb575e86fadc433</srcmd5>
+    <version>3.1.6</version>
+    <time>1278678576</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="34">
+    <srcmd5>55be91e0a4f39b14a220a45a2bc7e199</srcmd5>
+    <version>3.1.6</version>
+    <time>1279650906</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gawk based on submit request 43448 from user coolo
+</comment>
+    <requestid>43448</requestid>
+  </revision>
+  <revision rev="13" vrev="37">
+    <srcmd5>55be91e0a4f39b14a220a45a2bc7e199</srcmd5>
+    <version>3.1.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ef542200ba3e190f707ebb9ed3c8bd1b</srcmd5>
+    <version>3.1.8</version>
+    <time>1305789349</time>
+    <user>saschpe</user>
+    <comment>- update to 3.1.8:
+  * The zero flag no longer applies to %c and %s; apparently the standards
+  changed at some point.
+  * Failure to open a socket is no longer a fatal error.
+  * dfa.h and dfa.c are now more-or-less in sync with GNU grep, for the first
+  time in many years.
+  * Gawk no longer includes its own copy of libsigsegv but it will use it if
+  installed on the build system. The --disable-libsigsegv configure option
+  is now gone.
+  * The ' flag (%'d) is now just ignored on systems that can't support it.
+  * Gawk now has support for z/OS (IBM S/390 architecture).
+  * Gawk now handles multibyte strings better in [s]printf with field
+   widths and such.
+  * A getline from a directory is no longer fatal; instead it returns -1.
+  * Per POSIX, special variable names (like FS) cannot be used as function
+   parameter names.
+  * The new -O / --optimize option enables simple constant folding on
+  the parse tree during parsing.  We hope that with time the number
+  of optimizations will increase.
+  * Lots of bug fixes, see the ChangeLog.</comment>
+    <requestid>70607</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a1e4b9126bbcdfc01607e6664eba8cd0</srcmd5>
+    <version>3.1.8</version>
+    <time>1305789357</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70607
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d7d4ffac9e40e3f8e9a97b00760b69a8</srcmd5>
+    <version>4.0.0</version>
+    <time>1316766914</time>
+    <user>saschpe</user>
+    <comment>Update to 4.0.0</comment>
+    <requestid>84555</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3ae029b99853e4cfb9be1a3ca1079872</srcmd5>
+    <version>4.0.0</version>
+    <time>1317211652</time>
+    <user>saschpe</user>
+    <comment>- Revert sub/gsub behavior to that of gawk 3.x. Upstream commit
+  16de770359370224129f23df745178efe518c02c  
+  
+  This fixes build of virtuoso in KDE:Distro:Factory and possibly many others.
+  Please forward to Factory. (forwarded request 85073 from namtrac)</comment>
+    <requestid>85083</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>3ae029b99853e4cfb9be1a3ca1079872</srcmd5>
+    <version>4.0.0</version>
+    <time>1319181893</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>3825536390bdc310c035a658ca57ec4d</srcmd5>
+    <version>4.0.0</version>
+    <time>1325846622</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>97488</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>6155da07853f7053d8f550f0aa37a294</srcmd5>
+    <version>4.0.0</version>
+    <time>1328001595</time>
+    <user>coolo</user>
+    <comment>Compress message catalog. Translate the one untranslated message</comment>
+    <requestid>102083</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>0307ca857d5488e2d702708e488d93d2</srcmd5>
+    <version>4.0.0</version>
+    <time>1329805849</time>
+    <user>coolo</user>
+    <comment>- keep binaries in /usr tree (UsrMerge project)</comment>
+    <requestid>105738</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bc2e55fddf5295326cb4cfa6bdf60206</srcmd5>
+    <version>4.0.1</version>
+    <time>1334215422</time>
+    <user>coolo</user>
+    <comment>update to version 4.0.1 (forwarded request 112418 from tabraham1)</comment>
+    <requestid>112725</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>bc2e55fddf5295326cb4cfa6bdf60206</srcmd5>
+    <version>4.0.1</version>
+    <time>1340183347</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>ee7aecd63b2d3b1908ac0e550caf43c1</srcmd5>
+    <version>4.0.1</version>
+    <time>1347512491</time>
+    <user>coolo</user>
+    <comment>- add explicit buildrequire makeinfo (forwarded request 133234 from coolo)</comment>
+    <requestid>133248</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>dd08e8238c35bb76e8de7400a92577c1</srcmd5>
+    <version>4.0.1</version>
+    <time>1355910931</time>
+    <user>coolo</user>
+    <comment>- Remove unneded %clean section (forwarded request 145410 from jengelh)</comment>
+    <requestid>145683</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>dd08e8238c35bb76e8de7400a92577c1</srcmd5>
+    <version>4.0.1</version>
+    <time>1359108902</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>3202a0ab905c954123df4f471526f600</srcmd5>
+    <version>4.0.1</version>
+    <time>1364472686</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161207 from m_meister)</comment>
+    <requestid>161236</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e28f53a497b62b65d503f9b40e1a012a</srcmd5>
+    <version>4.1.0</version>
+    <time>1368692857</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.1.0
+  * The three executables gawk, pgawk, and dgawk, have been merged into
+    one, named just gawk.
+  * The new -i option (from xgawk) is used for loading awk library files.
+  * The new -l option (from xgawk) is used for loading dynamic extensions.
+  * The dynamic extension interface has been completely redone.  There is
+    now a defined API for C extensions to use.  A C extension acts like
+    a function written in awk, except that it cannot do everything that awk
+    code can. However, this allows interfacing to any facility that is
+    available from C.
+  * The &quot;inplace&quot; extension, built using the new facility, can be used to
+    simulate the GNU &quot;sed -i&quot; feature.
+  * The and(), or() and xor() functions now take any number of arguments,
+    with a minimum of two.
+  * New arrays: SYMTAB, FUNCTAB, and PROCINFO[&quot;identifiers&quot;]. SYMTAB allows
+    indirect access to any defined variable or array; it is possible to
+    &quot;walk&quot; the symbol table, if that should be necessary.
+- Refreshed gawk-3.1.8.diff
+- Add older-automake.diff to support automake 1.12 (forwarded request 175250 from namtrac)</comment>
+    <requestid>175550</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>e28f53a497b62b65d503f9b40e1a012a</srcmd5>
+    <version>4.1.0</version>
+    <time>1379662383</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>e3a7c4b06abf9698e5a9cbedba3af5a9</srcmd5>
+    <version>4.1.0</version>
+    <time>1392815410</time>
+    <user>coolo</user>
+    <comment>- adjust update-alternative usage to packaging policy
+  (see http://lists.opensuse.org/opensuse-packaging/2014-02/msg00024.html) (forwarded request 221401 from gberh)</comment>
+    <requestid>221403</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ab194a7f2df137a5fbd711be81faf695</srcmd5>
+    <version>4.1.1</version>
+    <time>1399128696</time>
+    <user>coolo</user>
+    <comment>GNU awk 4.1.1, please review. I am dropping patches and fixes, some of which are are 10 years old. (forwarded request 232107 from AndreasStieger)</comment>
+    <requestid>232396</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>540816c99064d6cf488085c39cf1fb41</srcmd5>
+    <version>4.1.1</version>
+    <time>1399131924</time>
+    <user>coolo</user>
+    <comment>- remove optional libsigsegv dependency, as per discussion in SR#232107 (forwarded request 232534 from AndreasStieger)</comment>
+    <requestid>232535</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>540816c99064d6cf488085c39cf1fb41</srcmd5>
+    <version>4.1.1</version>
+    <time>1409300919</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>fe6648ab28386640f7577e57f26d2c76</srcmd5>
+    <version>4.1.2</version>
+    <time>1431247424</time>
+    <user>coolo</user>
+    <comment>GNU awk 4.1.2, some packaging tweaks</comment>
+    <requestid>305819</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>174b3d3b7d0aea5f9c75c6f50961dc54</srcmd5>
+    <version>4.1.3</version>
+    <time>1432636194</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308466</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>00351b41bf06bc7987418fba625a7349</srcmd5>
+    <version>4.1.3</version>
+    <time>1463221382</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393999</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>240c253017356ad5e706adb4e6feb934</srcmd5>
+    <version>4.1.4</version>
+    <time>1473547868</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424967</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>0c564ec98b8a1a8ede54eae3692e1756</srcmd5>
+    <version>4.1.4</version>
+    <time>1493103291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>487002</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ed616d85335c51cae921798852686f7c</srcmd5>
+    <version>4.2.0</version>
+    <time>1509036104</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536218</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>339489333b31c9c322c72bf6a77f124e</srcmd5>
+    <version>4.2.1</version>
+    <time>1519844144</time>
+    <user>dimstar_suse</user>
+    <comment>GNU awk 4.2.1
+- Use %license (boo#1082318)</comment>
+    <requestid>580174</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d74ac7c2b02c8304c74e4ae38f961b1d</srcmd5>
+    <version>5.0.1</version>
+    <time>1566899896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722984</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>1c5dd897c15c15627e73303deabea943</srcmd5>
+    <version>5.0.1</version>
+    <time>1568189837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726801</requestid>
+  </revision>
+</revisionlist>

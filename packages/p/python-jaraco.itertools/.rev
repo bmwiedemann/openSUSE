@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2675add877ca39bbcc341b3b0b7ea8c</srcmd5>
+    <version>2.0.1</version>
+    <time>1521193211</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-jaraco.itertools, required by python-wolframalpha</comment>
+    <requestid>583890</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>18443e946c0dc8ccd9eabd55427239ef</srcmd5>
+    <version>4.4.1</version>
+    <time>1551687687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>679744</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d80a3b74f41dabaab280435befd05819</srcmd5>
+    <version>4.4.2</version>
+    <time>1554749584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.2:
+  * Fixed RuntimeError in takewhile_peek on later Pythons where StopIteration is no longer allowed in a generator.</comment>
+    <requestid>691788</requestid>
+  </revision>
+</revisionlist>

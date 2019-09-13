@@ -1,0 +1,384 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>123a67f628a0ed08034344a62b44b5be</srcmd5>
+    <version>3.1.0</version>
+    <time>1168903264</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>c0e4bb7c23c99596eac23fcea7610a25</srcmd5>
+    <version>3.1.0</version>
+    <time>1169230945</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a300ff1bf33557d511c7882ea52c91bf</srcmd5>
+    <version>3.1.1</version>
+    <time>1177685313</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="64">
+    <srcmd5>0888f2d085d7b9cf52cad2d516d2580e</srcmd5>
+    <version>3.1.1</version>
+    <time>1210941112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="92">
+    <srcmd5>0888f2d085d7b9cf52cad2d516d2580e</srcmd5>
+    <version>3.1.1</version>
+    <time>1210941112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>66497d3e0da53e72f09d62a2fc69d9fb</srcmd5>
+    <version>3.2.0</version>
+    <time>1233183912</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>86e488dfccd2287928b3fe9e09ae5c3c</srcmd5>
+    <version>3.2.1</version>
+    <time>1243205414</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>86e488dfccd2287928b3fe9e09ae5c3c</srcmd5>
+    <version>3.2.1</version>
+    <time>1243205414</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>1a4de3ba8363bd2f484c0710fd64f033</srcmd5>
+    <version>3.2.1</version>
+    <time>1263488481</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/lapack based on submit request 29558 from user rguenther
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>abbe58cf01b9af8bfd1de427fe22ad97</srcmd5>
+    <version>3.2.1</version>
+    <time>1266502869</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/lapack based on submit request 32769 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>c9840c6b8bc32b4ae6ea15a188160c46</srcmd5>
+    <version>3.2.1</version>
+    <time>1268924460</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>c9840c6b8bc32b4ae6ea15a188160c46</srcmd5>
+    <version>3.2.1</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>c9840c6b8bc32b4ae6ea15a188160c46</srcmd5>
+    <version>3.2.1</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>be4fbb11e2ec2829333b87177333f7a7</srcmd5>
+    <version>3.2.2</version>
+    <time>1281736865</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/lapack based on submit request 45484 from user rguenther
+</comment>
+    <requestid>45484</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>be4fbb11e2ec2829333b87177333f7a7</srcmd5>
+    <version>3.2.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>07595a8834f95c149f711b78f0438b9f</srcmd5>
+    <version>3.3.1</version>
+    <time>1305530275</time>
+    <user>saschpe</user>
+    <comment>- Update to 3.3.1 [bnc#654560]
+  * New procedures to compute the complete CS decomposition of a
+    partitioned unitary matrix
+  * Level-3 BLAS symmetric indefinite solve (xSYTRS) and symmetric
+    indefinite inversion (xSYTRI)
+  * Bug fixes
+  * Changes see at http://www.netlib.org/lapack/lapack-3.3.1.html
+    and http://www.netlib.org/lapack/lapack-3.3.0.html</comment>
+    <requestid>70128</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>08e928ca9d6987383539bd3fc76442d0</srcmd5>
+    <version>3.3.1</version>
+    <time>1305530285</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70128
+</comment>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>de81b30273f72e418848c09c481d2742</srcmd5>
+    <version>3.3.1</version>
+    <time>1315761971</time>
+    <user>saschpe</user>
+    <comment>Run blas_testing and lapack_testing during build (and check the result). For i686, the tests need to be compiled with -ffloat-store. To build and run blas_testing takes about 30s, for lapack_testing one needs about 4.5min, depending on the hardware. (forwarded request 81708 from burnus)</comment>
+    <requestid>81734</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>96225abdc44b5898f168b439c5089a21</srcmd5>
+    <version>3.3.1</version>
+    <time>1315761976</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81734
+</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>96225abdc44b5898f168b439c5089a21</srcmd5>
+    <version>3.3.1</version>
+    <time>1319182063</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>851cde0281e4d503df3cd76f98b9d21d</srcmd5>
+    <version>3.4.0</version>
+    <time>1322073286</time>
+    <user>coolo</user>
+    <comment>This is a submit request, but also a RFC. This request is for an update
+to 3.4, which also supports building the manpages with doxygen. Before,
+the manpages were offered separately. This build works with doxygen 1.7
+(Factory, oS 12.1, oS 11.4) but seemingly (syntax errors, segfaults) not
+with 1.6 (11.3, SLE_11, SLE 10 server DB postgres).
+
+An alternative would be to use the older manpages or to pre-generate them.
+
+- Update to 3.4.0
+  * xGEQRT: QR factorization (improved interface)
+  * xGEQRT3: recursive QR factorization.
+  * xTPQRT: Communication-Avoiding QR sequential kernels.
+  * Bug fixes.
+  * Changes see http://www.netlib.org/lapack/lapack-3.4.0.html (forwarded request 92967 from burnus)</comment>
+    <requestid>93204</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>b37f0ea76f23c581a5e68bda0e969123</srcmd5>
+    <version>3.4.0</version>
+    <time>1329340899</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104371 from coolo)</comment>
+    <requestid>104669</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>0c2295833e070aba34677cb3a8bd522a</srcmd5>
+    <version>3.4.0</version>
+    <time>1332999839</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>111419</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>4ed9b89a0d6e22c10c7c3f8d2524cb7b</srcmd5>
+    <version>3.4.0</version>
+    <time>1334216199</time>
+    <user>coolo</user>
+    <comment>- Fixed building on openSUSE 11.4 by fixing defattr
+- Made the package groups consistent: Development/Libraries/Parallel
+- Cleaned up spec file formatting
+- Made all requires use the new package naming (forwarded request 112040 from TheBlackCat)</comment>
+    <requestid>112135</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2c98f8183fae475250f662c3aa3f16fe</srcmd5>
+    <version>3.4.1</version>
+    <time>1336472867</time>
+    <user>coolo</user>
+    <comment>Update to 3.4.1 (bugfix release) (forwarded request 116450 from burnus)</comment>
+    <requestid>116458</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>09236c39ce4abe57e5a764a7ba3a72a2</srcmd5>
+    <version>3.4.1</version>
+    <time>1336653156</time>
+    <user>coolo</user>
+    <comment>- fixing dependencies for devel-32bit (forwarded request 117052 from coolo)</comment>
+    <requestid>117140</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d518144183d2527b0bf3e9fe4673c885</srcmd5>
+    <version>3.4.1</version>
+    <time>1337675003</time>
+    <user>coolo</user>
+    <comment>- Change obsoletes '&lt;=' for lapack and blas back to '&lt;', there was a
+  version update in between
+- Remove psfig.tex (bnc#757332)</comment>
+    <requestid>121686</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>d518144183d2527b0bf3e9fe4673c885</srcmd5>
+    <version>3.4.1</version>
+    <time>1340183545</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>df06a04a87cb273f45bd629af90a8396</srcmd5>
+    <version>3.4.1</version>
+    <time>1343673213</time>
+    <user>coolo</user>
+    <comment>- Fix bnc#772628 
+
+- update baselibs.conf 
+
+- build the c interface lapacke
+
+- doxygen &gt;= 1.7 is required for building docu</comment>
+    <requestid>128925</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>84ece3f917e1d1f25783c558b173ed14</srcmd5>
+    <version>3.4.2</version>
+    <time>1352700222</time>
+    <user>coolo</user>
+    <comment> - Update to 3.4.2
+  * Bug fixes (forwarded request 140314 from burnus)</comment>
+    <requestid>140316</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>64ae70a54537c0393eaff5a912d81309</srcmd5>
+    <version>3.4.2</version>
+    <time>1358865859</time>
+    <user>coolo</user>
+    <comment>- add update-alternative support to allow user to easily switch between several blas and lapack libraries (forwarded request 149139 from scorot)</comment>
+    <requestid>149439</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>64ae70a54537c0393eaff5a912d81309</srcmd5>
+    <version>3.4.2</version>
+    <time>1359109217</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>5f3278bc30eef558c09f92f9feb2f4e8</srcmd5>
+    <version>3.4.2</version>
+    <time>1363947902</time>
+    <user>coolo</user>
+    <comment>Split devel packages into devel and devel-static (forwarded request 159622 from Dmitry_R)</comment>
+    <requestid>159640</requestid>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>5f3278bc30eef558c09f92f9feb2f4e8</srcmd5>
+    <version>3.4.2</version>
+    <time>1379662856</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>318d6af68c4a8624b1d87c8fbfd5094a</srcmd5>
+    <version>3.4.2</version>
+    <time>1383144248</time>
+    <user>scarabeus_factory</user>
+    <comment>- packaged symlinks created by update-alternative as %ghost files
+- removed quotes from update-alternative command to silence rpmlint warning</comment>
+    <requestid>205106</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>0168508675bf7c15fc6a84a58eb7e72c</srcmd5>
+    <version>3.5.0</version>
+    <time>1385386451</time>
+    <user>coolo</user>
+    <comment>- Update to 3.5.0
+  * Added Hermitian LDLT factorization routines with rook pivoting
+    algorithm
+  * 2-by-1 CSD to be used for tall and skinny matrix with orthonormal
+    columns
+  * New stopping criteria for balancing
+  * New complex division algorithm
+  * Various improvements
+- No longer removing files due to license reasons as one file is
+  no longer part of Lapack and the others have been replaced by
+  new ones under the normal LAPACK license (forwarded request 207897 from burnus)</comment>
+    <requestid>208198</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>f3723db8f7d063bf097e5ff6eaaac4aa</srcmd5>
+    <version>3.5.0</version>
+    <time>1403844791</time>
+    <user>coolo</user>
+    <comment>- Move blas and lapack libraries to subdirectories for fixing
+  update-alternatives [bnc#861081]
+- Add %posttrans scripts for fixing migration problems. (forwarded request 238081 from Dmitry_R)</comment>
+    <requestid>238325</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>9990b5fd543a2b9f0709947fd70c0ad1</srcmd5>
+    <version>3.5.0</version>
+    <time>1405760709</time>
+    <user>coolo</user>
+    <comment>- Add baselibs.conf to sources
+
+- Include update-alternatives dependency in subpackages that use it
+  to guarantee it will be available.</comment>
+    <requestid>241167</requestid>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>9990b5fd543a2b9f0709947fd70c0ad1</srcmd5>
+    <version>3.5.0</version>
+    <time>1409301458</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>74b868c0da36cd9b82d1b6220fb01b3b</srcmd5>
+    <version>3.5.0</version>
+    <time>1431799671</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>307405</requestid>
+  </revision>
+  <revision rev="41" vrev="7">
+    <srcmd5>5841e130331366a8108b7b50a69e54a3</srcmd5>
+    <version>3.5.0</version>
+    <time>1496533683</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500237</requestid>
+  </revision>
+  <revision rev="42" vrev="8">
+    <srcmd5>a7f5f04a3d7ebe36d022f003be86a62c</srcmd5>
+    <version>3.5.0</version>
+    <time>1497687609</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501797</requestid>
+  </revision>
+  <revision rev="43" vrev="9">
+    <srcmd5>dd908b179fb0b43e7a87158d3534ca6a</srcmd5>
+    <version>3.5.0</version>
+    <time>1516443881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564518</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>3d156db1d8503bb3da070304cb7ca8cc</srcmd5>
+    <version>3.8.0</version>
+    <time>1523029299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593215</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>9d339825ccd9a0e29d0df9972626a98a</srcmd5>
+    <version>3.8.0</version>
+    <time>1567678055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720975</requestid>
+  </revision>
+</revisionlist>

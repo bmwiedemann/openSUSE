@@ -1,0 +1,7 @@
+<package name="livestreamer" project="openSUSE:Factory">
+  <title>Program to pipe streams from services into a video player</title>
+  <description>Livestreamer is a command-line utility that pipes video streams from various services into a video player, such as mpv.
+The main purpose of Livestreamer is to allow the user to avoid buggy and CPU heavy flash plugins but still be able to enjoy various streamed content.
+There is also an API available for developers who want access to the video stream data.</description>
+  <devel project="multimedia:apps" package="livestreamer"/>
+</package>

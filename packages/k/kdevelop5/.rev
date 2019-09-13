@@ -1,0 +1,239 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a3d21a6bb8dd533216d6b2c0b1f3b23</srcmd5>
+    <version>5.0.0</version>
+    <time>1475242305</time>
+    <user>dimstar_suse</user>
+    <comment>KDevelop 5.0.0</comment>
+    <requestid>429468</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>55591cf05b3ba2b80ff68578d7f634ec</srcmd5>
+    <version>5.0.1</version>
+    <time>1475750732</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing find_lang macros for additional translations
+
+- Add KArchive to BuildRequires and bump Frameworks versions
+  (they were lower than in kdevplatform, and that did not make
+   any sense)
+
+- New upstream release 5.0.1
+  * Do not display the &quot;project is already open in a different
+    session&quot; dialog on starting up a session under some 
+    circumstances. 
+  * Mouseover highlight now uses the &quot;Search highlight&quot; color from
+    the configuration dialog, instead of a hard-coded bright 
+    yellow.
+  * Fix working directory of Custom Makefile plugin
+  * Fix a possible crash on triggering an assistant popup action
+  * Fix a freeze under some circumstances when the welcome page is
+    displayed.</comment>
+    <requestid>433230</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db77ca7430b678e8b3185f6d8c5d3778</srcmd5>
+    <version>5.0.2</version>
+    <time>1479383022</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440598</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4ca171f93376a77858e074495fac6833</srcmd5>
+    <version>5.0.3</version>
+    <time>1481390848</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443239</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>923811533cb37995b31477c3fc7e05df</srcmd5>
+    <version>5.0.4</version>
+    <time>1489345320</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477269</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>10a54de40a5f7bb07e04f7f9a6e70b2e</srcmd5>
+    <version>5.1.0</version>
+    <time>1490965693</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 5.1.0
+- Add okteta-devel BuildRequires to re-enable the okteta plugin (forwarded request 482311 from wolfi323)</comment>
+    <requestid>482359</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44e273b279d559e66a03b54b1805874c</srcmd5>
+    <version>5.1.1</version>
+    <time>1496392380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498701</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b018a032c9dc83ac6675b1559ea99a24</srcmd5>
+    <version>5.1.1</version>
+    <time>1497274402</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502514</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>794f4974c7a0c1fc6c81313aa56024d6</srcmd5>
+    <version>5.1.2</version>
+    <time>1505334536</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519557</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a22df490613b0de9d505a7cec3fa1cf4</srcmd5>
+    <version>5.2.3</version>
+    <time>1527934090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612536</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>321a5500a6d128979f72d84de30cb7a6</srcmd5>
+    <version>5.2.4</version>
+    <time>1534940462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630784</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a73eae8b54db5216c8e16ace7154fc52</srcmd5>
+    <version>5.2.4</version>
+    <time>1535963737</time>
+    <user>dimstar_suse</user>
+    <comment>- Add requirements for kdevplatform-devel which are not detected
+  automatically.
+- Add kdevplatform-reduce-dependencies.diff to prevent adding
+  unneeded requirements to the kdevplatform-devel package.
+- Run spec-cleaner
+</comment>
+    <requestid>632513</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>068041e41d2131b0c6d664fc628d1cbe</srcmd5>
+    <version>5.2.4</version>
+    <time>1540320066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643806</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>40253f60a8a47543d878ae474d67d65e</srcmd5>
+    <version>5.3.0</version>
+    <time>1543224215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649974</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>71655175a1a5748c0691d900274d695e</srcmd5>
+    <version>5.3.0</version>
+    <time>1543999585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>654345</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>435ef7b0fd3a4d2f53603e44fab058f8</srcmd5>
+    <version>5.3.0</version>
+    <time>1545223873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659267</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eaff4a549b01a469591cd13d54a5a4b1</srcmd5>
+    <version>5.3.1</version>
+    <time>1547540139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660853</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>12eaa46293e911fe5002e4413e2955c2</srcmd5>
+    <version>5.3.2</version>
+    <time>1552207169</time>
+    <user>coolo</user>
+    <comment>- New upstream release 5.3.2
+  * Don't call clear() on a shared pointer we don't own
+    (kde#403644)
+  * Workaround the bug found by ASan, which can be seen on FreeBSD
+    CI
+  * Kdev-clazy: use canonical paths
+  * Prevent the Extra Arguments ComboBox to Stretch Too Much
+  * CMake plugin: don't hardcode a default install prefix
+  * Appimage: skip unneeded cp of cmake, removed later again
+  * Clang plugin: Handle CUDA files better
+  * Clang: detect Clang builtin dirs at runtime on Unix
+  * Actually cleanup the duchain from the background thread
+    (kde#388743)
+  * Appimage: add okteta libs, as used by the debugger memory view
+  * Grepview: Fix potential crash in &quot;Find in Files&quot; (kde#402617)
+  * Add All Top-Level Targets to the Menu
+  * Show &quot;Move into Source&quot; action in code menu
+  * QuickOpen: Trim whitespace from input
+  * Update kdevelop app icon to latest breeze-icons version
+  * Appimage: have only kdevelop appdata in the appimage
+  * Fix first run of appimage creation: get install_colorschemes.py
+    via $SRC
+  * Fix crash in documentation view (kde#402026)
+  * CMake: skip server entries without empty build system
+    information
+  * 2 missing KTextEditorPluginIntegration::MainWindow slots
+  * Polish Purpose integration in the PatchReview plugin
+  * Hex editor plugin: prepare for incompatible API change of
+    libraries from upcoming Okteta 0.26.0
+- Require clangX instead of clang on Leap 15 and TW, the exact
+  version should not matter anymore
+</comment>
+    <requestid>682726</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>1230432bdb8d1cbe02c55797c2532ec6</srcmd5>
+    <version>5.3.2</version>
+    <time>1563456016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715694</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>17465a06be607125f0d294fb256266d1</srcmd5>
+    <version>5.3.3</version>
+    <time>1564155307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718896</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ebc3754ff9d31a7bd509e0a0ad65d56c</srcmd5>
+    <version>5.4.0</version>
+    <time>1565267029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721605</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>85bedb3935b6e510d89754e4aac319e5</srcmd5>
+    <version>5.4.1</version>
+    <time>1565695669</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.1</comment>
+    <requestid>723020</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>68dc3a8da06f4d8ae911a1056a4dd8e8</srcmd5>
+    <version>5.4.2</version>
+    <time>1567679697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728064</requestid>
+  </revision>
+</revisionlist>

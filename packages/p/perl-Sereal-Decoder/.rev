@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>276996154847770ea7c53411e45dec64</srcmd5>
+    <version>3.015</version>
+    <time>1537018490</time>
+    <user>maxlin_factory</user>
+    <comment>needed for perl-Sereal</comment>
+    <requestid>634230</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>50d9f3c313b4c93e9a0e62e9f195d35c</srcmd5>
+    <version>4.005</version>
+    <time>1539251575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640414</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>47047cdf60a34da24691154fe168cf79</srcmd5>
+    <version>4.005</version>
+    <time>1541746424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647013</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f8833d93e6eb45bde7b7ff69c4a2dfb7</srcmd5>
+    <version>4.007</version>
+    <time>1567679661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727220</requestid>
+  </revision>
+</revisionlist>

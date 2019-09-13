@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>77053cff2873ddcafae921d8dbafa8c0</srcmd5>
+    <version>0.7.0</version>
+    <time>1476350964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>433120</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b689bd4174c661251331e99320ae7228</srcmd5>
+    <version>0.8.0</version>
+    <time>1487768169</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.8.0:
+  - Add plug-in summary for osc doc
+  - Update reno for stable/newton
+  - Modified the help info.
+  - [doc] Note lack of constraints is a choice
+  - Bump hacking to 0.12
+  - Add missing pyparsing to requirements.txt
+  - Enable coverage report in console output
+  - Enable release notes translation
+  - Replaces uuid.uuid4 with uuidutils.generate_uuid()
+  - Clean imports in code
+  - Remove 'MANIFEST.in'
+  - Extras usage for test requirements + basic auth against Gnocch</comment>
+    <requestid>459471</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7e5675a96d192e2961fccfd6f5e19398</srcmd5>
+    <version>0.8.0</version>
+    <time>1502366540</time>
+    <user>maxlin_factory</user>
+    <comment>- fix requirements</comment>
+    <requestid>505922</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bbfae974dd9597cf5fc1f2cd386419c5</srcmd5>
+    <version>0.9.0</version>
+    <time>1505920390</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.0
+  - Remove unused test dependency
+  - Remove upper cap on pbr
+  - Clean deprecated &quot;query&quot; paremeter in alarm.list()
+  - Trivial-fix: make the capabilities help message more specific in OSC
+  - Correct the port number of gnocchi endpoint
+  - Trivial: remove support for py34
+  - Update reno for stable/ocata
+  - Remove the duplicated __version__ definition</comment>
+    <requestid>527386</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3e2e4c6e3ef475d3aa68c47157e4b663</srcmd5>
+    <version>0.9.0</version>
+    <time>1521498845</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583287</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7c90f13cb607c7a4f8bda261bae9f3d1</srcmd5>
+    <version>1.1.0</version>
+    <time>1536327408</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633058</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>314136e6272cd498d117dceccec11c38</srcmd5>
+    <version>1.2.0</version>
+    <time>1556915984</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.2.0
+  - fix tox python3 overrides
+  - switch documentation job to new PTI
+  - Add metavar for alarm_id in alarm-history show
+  - Add gating on py37
+  - Update reno for stable/rocky
+  - Consider interface and region options with OSC
+  - fix warnings in documentation build
+  - add python 3.6 unit test job
+  - import zuul job settings from project-config
+  - Add Python 3.6 classifier to setup.cfg</comment>
+    <requestid>692814</requestid>
+  </revision>
+</revisionlist>

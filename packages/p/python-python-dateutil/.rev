@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>04f4c809127f4c08aa3d90e625e0ba4a</srcmd5>
+    <version>2.4.2</version>
+    <time>1458121227</time>
+    <user>dimstar_suse</user>
+    <comment>Renamed python-dateutil to match python package naming policies.</comment>
+    <requestid>366048</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e9d391dfa2ad1efff4ca1bad676af6c4</srcmd5>
+    <version>2.6.0</version>
+    <time>1478780050</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439323</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0558c60f217cb0a6aa272a0b8c33cb14</srcmd5>
+    <version>2.6.0</version>
+    <time>1492617970</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>483978</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>afeece0e489228fed21aee04a95e3790</srcmd5>
+    <version>2.6.0</version>
+    <time>1494345534</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493133</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8f2ebe7e9d53a293fbcc286ccb4a8104</srcmd5>
+    <version>2.6.1</version>
+    <time>1500274845</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509321</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>86329c099ef0d37cf60c5b902eb89143</srcmd5>
+    <version>2.7.3</version>
+    <time>1535701669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631025</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f53fe190bef1c892b24c63dae824b0f2</srcmd5>
+    <version>2.7.3</version>
+    <time>1545866874</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659610</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>450ddb7ca9e999548e7f3b70f6cc27b6</srcmd5>
+    <version>2.8.0</version>
+    <time>1551215738</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to _multibuild to not create buildcycle
+
+- Update to 2.8.0 (2019-02-04)
+  + Data updates
+    * Updated tzdata version to to 2018i.
+  + Features
+    * Added support for EXDATE parameters when parsing rrule
+      strings. Reported by @mlorant (gh issue #410), fixed by
+      @nicoe (gh pr #859).
+    * Added support for sub-minute time zone offsets in Python
+      3.6+. Fixed by @cssherry (gh issue #582, pr #763)
+    * Switched the tzoffset, tzstr and gettz caches over to using
+      weak references, so that the cache expires when no other
+      references to the original tzinfo objects exist. This cache-
+      expiry behavior is not guaranteed in the public interface and
+      may change in the future. To improve performance in the case
+      where transient references to the same time zones are
+      repeatedly created but no strong reference is continuously
+      held, a smaller “strong value” cache was also added. Weak
+      value cache implemented by @cs-cordero (gh pr #672, #801),
+      strong cache added by Gökçen Nurlu (gh issue #691, gh pr
+      #761)
+  + Bugfixes
+    * Added time zone inference when initializing an rrule with a
+      specified UNTIL but without an explicitly specified DTSTART;
+      the time zone of the generated DTSTART will now be taken from
+      the UNTIL rule. Reported by @href (gh issue #652). Fixed by
+      @absreim (gh pr #693).
+    * Fixed an issue where parser.parse would raise Decimal-
+      specific errors instead of a standard ValueError if certain</comment>
+    <requestid>678904</requestid>
+  </revision>
+</revisionlist>

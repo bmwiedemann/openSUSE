@@ -1,0 +1,288 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9023c772e5ace7dc47ff0729aac28042</srcmd5>
+    <version>1.21</version>
+    <time>1168903900</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="35">
+    <srcmd5>0eb53d2c512149f78617dd26d5df0744</srcmd5>
+    <version>1.21</version>
+    <time>1180900792</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9ebb0c21e27050a18142ee9a7afbb416</srcmd5>
+    <version>1.22</version>
+    <time>1186685483</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>901f17f5840c455d63e54d6d2658f2cf</srcmd5>
+    <version>1.24</version>
+    <time>1207770635</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="16">
+    <srcmd5>6d39a6734658aa45db7224636f55db79</srcmd5>
+    <version>1.24</version>
+    <time>1227883699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="18">
+    <srcmd5>6d39a6734658aa45db7224636f55db79</srcmd5>
+    <version>1.24</version>
+    <time>1227883699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="19">
+    <srcmd5>19181529aad36f59579a392ed218e94c</srcmd5>
+    <version>1.24</version>
+    <time>1263298430</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Prima based on submit request 28974 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1fa8bc7be999736b340c1b97ca759ddf</srcmd5>
+    <version>1.28</version>
+    <time>1266508292</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Prima based on submit request 32694 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>675a9937d48b32ae2ebbc877b4289986</srcmd5>
+    <version>1.28</version>
+    <time>1268925589</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>675a9937d48b32ae2ebbc877b4289986</srcmd5>
+    <version>1.28</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>675a9937d48b32ae2ebbc877b4289986</srcmd5>
+    <version>1.28</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>16672ffae998e2a2914b03e69ca7fe57</srcmd5>
+    <version>1.28</version>
+    <time>1287486719</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51021 from user coolo
+</comment>
+    <requestid>51021</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>184410258d4d856a6991079921896604</srcmd5>
+    <version>1.28</version>
+    <time>1287486723</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51021
+</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>184410258d4d856a6991079921896604</srcmd5>
+    <version>1.28</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>652452f9758f8d6bd86bfd259d48334c</srcmd5>
+    <version>1.29</version>
+    <time>1301655422</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65740 from user coolo
+</comment>
+    <requestid>65740</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>7d73417693cb4bf0e32d7240d02fe556</srcmd5>
+    <version>1.29</version>
+    <time>1301655432</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65740
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cf85ab815a9a8204a367fabb88ab787d</srcmd5>
+    <version>1.30</version>
+    <time>1305728199</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>70555</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>cf85ab815a9a8204a367fabb88ab787d</srcmd5>
+    <version>1.30</version>
+    <time>1319182301</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>139c43ef4e1aaf710a0bb9444686e7ba</srcmd5>
+    <version>1.32</version>
+    <time>1323175986</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>94317</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>315401ed08bc9adeb737528fdf5c4065</srcmd5>
+    <version>1.32</version>
+    <time>1323193593</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e4b6867de963835d3a70d0365df66d39</srcmd5>
+    <version>1.34</version>
+    <time>1338971326</time>
+    <user>coolo</user>
+    <comment>Fix build failure in Factory (forwarded request 123314 from flichtenheld)</comment>
+    <requestid>123329</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>e4b6867de963835d3a70d0365df66d39</srcmd5>
+    <version>1.34</version>
+    <time>1340183907</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>de88587794abd72b343bdf3b3e71a41a</srcmd5>
+    <version>1.34</version>
+    <time>1342713540</time>
+    <user>coolo</user>
+    <comment>- the license is actually BSD-2-Clause, as confirmed by the author,
+  next version will have it fixed in the documentation (bnc#688800)
+  (https://github.com/dk/Prima/commit/43a3fb04d9915f7f3c3cd71feb5ff247eccd04df)</comment>
+    <requestid>128302</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>de88587794abd72b343bdf3b3e71a41a</srcmd5>
+    <version>1.34</version>
+    <time>1359109783</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>acff5dc0a0529fa2b3dca6ddab2d0d0c</srcmd5>
+    <version>1.36</version>
+    <time>1375783440</time>
+    <user>coolo</user>
+    <comment>- updated to 1.36
+   Remove OS/2 support. Add binary compatibility checks.
+   Fixes in unicode, files, documentation, installed POD paths.</comment>
+    <requestid>185938</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dcc1da4429803cf1b7dd1e48f3eb56ea</srcmd5>
+    <version>1.37</version>
+    <time>1379076274</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 1.37
+  Support libgif5. Podview fixes. (forwarded request 198623 from pgajdos)</comment>
+    <requestid>198779</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>dcc1da4429803cf1b7dd1e48f3eb56ea</srcmd5>
+    <version>1.37</version>
+    <time>1379663821</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>dcc1da4429803cf1b7dd1e48f3eb56ea</srcmd5>
+    <version>1.37</version>
+    <time>1409302458</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c5bad0f4ca2c6a794cccd66ee4e35a0d</srcmd5>
+    <version>1.41</version>
+    <time>1422974110</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283846</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5db8997445d4d294747cd1cdbf8dc8d6</srcmd5>
+    <version>1.43</version>
+    <time>1429346383</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297273</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a2c7e5d2584c99ddc3eb6a4e8c6149d7</srcmd5>
+    <version>1.44</version>
+    <time>1443585056</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332503</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>805388417896f660688fdadecf39b185</srcmd5>
+    <version>1.46</version>
+    <time>1461334994</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378498</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>314ef964c603bfcf8e6eaa26a0292b61</srcmd5>
+    <version>1.47</version>
+    <time>1466326094</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401466</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ddc22c93fb1213a5d2a59230f1461986</srcmd5>
+    <version>1.53</version>
+    <time>1541865691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647510</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b25c2e12d8c320b21148012668cf59ff</srcmd5>
+    <version>1.54</version>
+    <time>1552464848</time>
+    <user>dimstar_suse</user>
+    <comment>- the software is dual-licensed and includes:
+  The FreeBSD License and the GNU Affero General Public License
+  =&gt; adjust the License string in the package
+
+- updated to 1.54
+   see /usr/share/doc/packages/perl-Prima/Changes
+  1.54 2019-02-09
+   - Support screen grabbing on Mac and Gnome/Wayland</comment>
+    <requestid>684337</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>06f0fd1a708a6bd15fc18575c4ba192c</srcmd5>
+    <version>1.55</version>
+    <time>1554189849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690511</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6900c02faba3e96e99ec7a6a8cff19c3</srcmd5>
+    <version>1.56</version>
+    <time>1566464054</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725005</requestid>
+  </revision>
+</revisionlist>

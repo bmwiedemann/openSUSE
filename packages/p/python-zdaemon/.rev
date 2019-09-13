@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>782727e6ecd21fa47778981d984cd785</srcmd5>
+    <version>2.0.4</version>
+    <time>1277722516</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-zdaemon based on submit request 41912 from user hennevogel
+</comment>
+    <requestid>41912</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>782727e6ecd21fa47778981d984cd785</srcmd5>
+    <version>2.0.4</version>
+    <time>1278667400</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>782727e6ecd21fa47778981d984cd785</srcmd5>
+    <version>2.0.4</version>
+    <time>1278678635</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0d6bc306abc561b24c1802f159588aa0</srcmd5>
+    <version>2.0.4</version>
+    <time>1289842054</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52908 from user coolo
+</comment>
+    <requestid>52908</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>afcdfc275982ba94a67a928ee131637f</srcmd5>
+    <version>2.0.4</version>
+    <time>1289842064</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52908
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>afcdfc275982ba94a67a928ee131637f</srcmd5>
+    <version>2.0.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>afcdfc275982ba94a67a928ee131637f</srcmd5>
+    <version>2.0.4</version>
+    <time>1319182409</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>031ea246374c1b5a8977d7dfc6e47375</srcmd5>
+    <version>2.0.4</version>
+    <time>1323440725</time>
+    <user>coolo</user>
+    <comment>license update: ZPL-2.1
+Simplify to ZPL-2.1 (forwarded request 95928 from saschpe)</comment>
+    <requestid>95970</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>031ea246374c1b5a8977d7dfc6e47375</srcmd5>
+    <version>2.0.4</version>
+    <time>1340184102</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>662430dc5866048d1513fc2a8036f3fa</srcmd5>
+    <version>3.0.5</version>
+    <time>1358415310</time>
+    <user>coolo</user>
+    <comment>Update to 3.0.5 (forwarded request 148447 from posophe)</comment>
+    <requestid>148583</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>662430dc5866048d1513fc2a8036f3fa</srcmd5>
+    <version>3.0.5</version>
+    <time>1359110151</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2c443947456cc12cad9e045e54b6ec3a</srcmd5>
+    <version>4.0.0a1</version>
+    <time>1366233448</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 171119 from posophe)</comment>
+    <requestid>171120</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>2c443947456cc12cad9e045e54b6ec3a</srcmd5>
+    <version>4.0.0a1</version>
+    <time>1379664321</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>050a7aa3fefd9f9f3821cb521c18292c</srcmd5>
+    <version>4.0.0a1</version>
+    <time>1382693804</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204692</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>eeddfe35645dc638a83b73c5a2e0743d</srcmd5>
+    <version>4.0.0</version>
+    <time>1393394119</time>
+    <user>coolo</user>
+    <comment>Update to 4.0.0 and add requirement for ZConfig.  Update source URL (no .zip available for this version).
+
+Sorry I didn't realize it had a pending request until now. (forwarded request 222498 from poorboywilly)</comment>
+    <requestid>222543</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>eeddfe35645dc638a83b73c5a2e0743d</srcmd5>
+    <version>4.0.0</version>
+    <time>1409303029</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0dcb7ce6208c52f04d5a6617b693f3ae</srcmd5>
+    <version>4.1.0</version>
+    <time>1432545270</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308557</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>61d363b97d2e27a4b4fead474fef6264</srcmd5>
+    <version>4.2.0</version>
+    <time>1499754322</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508499</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>cc2e419043bb2b88788a20b24963acc4</srcmd5>
+    <version>4.2.0</version>
+    <time>1544726773</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654085</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ce5c5972db64f01964230ec32829d65f</srcmd5>
+    <version>4.3</version>
+    <time>1557833430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693221</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0ac75f92d16a208c3d32f7aa7d64239c</srcmd5>
+    <version>4.3</version>
+    <time>1568379800</time>
+    <user>lnussel_factory</user>
+    <comment>- Patch out flaky tests that seldomly fails in obs:
+  * obs-timeout.patch</comment>
+    <requestid>730634</requestid>
+  </revision>
+</revisionlist>

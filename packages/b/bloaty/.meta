@@ -1,0 +1,7 @@
+<package name="bloaty" project="openSUSE:Factory">
+  <title>Bloaty McBloatface: a size profiler for binaries</title>
+  <description>Ever wondered what's making your ELF or Mach-O binary big?
+Bloaty McBloatface will show you a size profile of the binary
+so you can understand what's taking up space inside.</description>
+  <devel project="devel:tools" package="bloaty"/>
+</package>

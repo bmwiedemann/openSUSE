@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ccc64351c8255445a405eaa4aa48303</srcmd5>
+    <version>20160605.10e2437</version>
+    <time>1468579674</time>
+    <user>dimstar_suse</user>
+    <comment>coccinelle
+ocaml 4.03 (fate#320836)</comment>
+    <requestid>404369</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e75b91c189cb6f2979dd852e7909f16f</srcmd5>
+    <version>20160605.10e2437</version>
+    <time>1497016605</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>501607</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f8349a35029ab55c5b3f43253f0c3e03</srcmd5>
+    <version>20170223.c9b0ee7</version>
+    <time>1503061407</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Update to version 20170223.c9b0ee7
+  Only wait for the children started by parmap
+  Prevent at_exit handlers registered in the parent from running in the child
+  handle EINTR errors in wait_for_pids
+  added get_ncores
+  Gc.compact needs to be called only inside of spawn_many
+  added get_rank so that worker processes can know at which rank they were forked out of the master process
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>517015</requestid>
+  </revision>
+</revisionlist>

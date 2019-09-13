@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5400013c84105a3b27d1a6298046f4c1</srcmd5>
+    <version>3.5.0</version>
+    <time>1551215916</time>
+    <user>dimstar_suse</user>
+    <comment>An analysis and visualization toolkit for volumetric data</comment>
+    <requestid>670450</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>55930b1f64a2422f41f3a117c3c2f3f7</srcmd5>
+    <version>3.5.1</version>
+    <time>1552491750</time>
+    <user>coolo</user>
+    <comment>- Update to 3.5.1:
+  * no upstream changelog</comment>
+    <requestid>684671</requestid>
+  </revision>
+</revisionlist>

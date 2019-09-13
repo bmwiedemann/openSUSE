@@ -1,0 +1,5 @@
+<package name="ghc-random" project="openSUSE:Factory">
+  <title>The random package</title>
+  <description>This package provides a random number library.</description>
+  <devel project="devel:languages:haskell" package="ghc-random"/>
+</package>

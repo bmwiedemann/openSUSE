@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>26b3dc3d30f9b6868170840a58470bf5</srcmd5>
+    <version>1.03</version>
+    <time>1236224301</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>1b7ca71fc6a8fae3f1dc8e44ab3d6c50</srcmd5>
+    <version>1.03</version>
+    <time>1241481765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="7">
+    <srcmd5>1b7ca71fc6a8fae3f1dc8e44ab3d6c50</srcmd5>
+    <version>1.03</version>
+    <time>1241481765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="8">
+    <srcmd5>6d52f9f36a4a516a73c4f38d7c6fa8d3</srcmd5>
+    <version>1.03</version>
+    <time>1268924118</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>6d52f9f36a4a516a73c4f38d7c6fa8d3</srcmd5>
+    <version>1.03</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>6d52f9f36a4a516a73c4f38d7c6fa8d3</srcmd5>
+    <version>1.03</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="14">
+    <srcmd5>6d52f9f36a4a516a73c4f38d7c6fa8d3</srcmd5>
+    <version>1.03</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="16">
+    <srcmd5>6d52f9f36a4a516a73c4f38d7c6fa8d3</srcmd5>
+    <version>1.03</version>
+    <time>1319182006</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="17">
+    <srcmd5>f565c9fe68f567ec71131fcb5615c57a</srcmd5>
+    <version>1.03</version>
+    <time>1323192027</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="19">
+    <srcmd5>f565c9fe68f567ec71131fcb5615c57a</srcmd5>
+    <version>1.03</version>
+    <time>1340183481</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="21">
+    <srcmd5>f565c9fe68f567ec71131fcb5615c57a</srcmd5>
+    <version>1.03</version>
+    <time>1359109111</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f1b277fefcd932d68c721c8023fa622e</srcmd5>
+    <version>1.4</version>
+    <time>1375124782</time>
+    <user>coolo</user>
+    <comment>- update to 1.4
+  * add systemd-style binfmt.d config files
+  * drop sysvinit script
+  * rename and update readme file</comment>
+    <requestid>184843</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f1b277fefcd932d68c721c8023fa622e</srcmd5>
+    <version>1.4</version>
+    <time>1379662703</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>f1b277fefcd932d68c721c8023fa622e</srcmd5>
+    <version>1.4</version>
+    <time>1409301270</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>334d5cdcf4e015e6184733966fd2cac0</srcmd5>
+    <version>1.4</version>
+    <time>1490318547</time>
+    <user>dimstar_suse</user>
+    <comment>- Move the wrappers to libexec wrt bsc#1029650 (see binfmt.d(5))
+- Format a bit with spec-cleaner</comment>
+    <requestid>481751</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>19e95b10fe13ea0e3c3760b4da5d4c8b</srcmd5>
+    <version>1.4</version>
+    <time>1491469274</time>
+    <user>maxlin_factory</user>
+    <comment>- Run desktop db scriptlet updates wrt bsc#1030903</comment>
+    <requestid>482748</requestid>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>b5e5b54965b3874088892b92ebde3928</srcmd5>
+    <version>1.4</version>
+    <time>1504981561</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521954</requestid>
+  </revision>
+</revisionlist>

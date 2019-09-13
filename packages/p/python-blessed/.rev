@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f47c26a412b6cb19a90798b3fe1bd10e</srcmd5>
+    <version>1.14.2</version>
+    <time>1526041693</time>
+    <user>dimstar_suse</user>
+    <comment>curses interface</comment>
+    <requestid>605524</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5eaca6b1a2db8b9de61fcc1d5b74f841</srcmd5>
+    <version>1.14.2</version>
+    <time>1532033721</time>
+    <user>dimstar_suse</user>
+    <comment>- Tox is not used when building so no need to depend on it</comment>
+    <requestid>623454</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>73d4392d06d5949941e5edb164c7c612</srcmd5>
+    <version>1.14.2</version>
+    <time>1544726390</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653948</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dad79e558e8c1bb121b2b5142c8d2cd8</srcmd5>
+    <version>1.15.0</version>
+    <time>1553263247</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.0:
+  * no upstream changelog
+- Make sure tests are run</comment>
+    <requestid>682178</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f4dae02890005d61313b7f77e8139150</srcmd5>
+    <version>1.15.0</version>
+    <time>1567849848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728515</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="SDL" project="openSUSE:Factory">
+  <title>Simple DirectMedia Layer Library</title>
+  <description>This is the &quot;Simple DirectMedia Layer&quot; library. It provides a generic
+API for access to audio, keyboard, mouse, and display framebuffer
+across multiple platforms.</description>
+  <devel project="games" package="SDL"/>
+</package>

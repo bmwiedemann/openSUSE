@@ -1,0 +1,8 @@
+<package name="cdio-utils" project="openSUSE:Factory">
+  <title>CD-ROM Access Library</title>
+  <description>This library encapsulates CD-ROM reading and control. Applications
+wanting to be oblivious to the OS and device-dependent properties of a
+CD-ROM can use this library.</description>
+  <devel project="openSUSE:Factory" package="libcdio"/>
+  <bcntsynctag>libcdio</bcntsynctag>
+</package>

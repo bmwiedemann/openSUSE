@@ -1,0 +1,190 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>567c1e4bf6027e145d175fef29f439f0</srcmd5>
+    <version>5.43.0</version>
+    <time>1166483752</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6b740cc725dcb38ccfe34ab9586e5b3f</srcmd5>
+    <version>5.44.1.5</version>
+    <time>1206059660</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>5527017a2e809acb102f2d4df4945b55</srcmd5>
+    <version>5.44.1.5</version>
+    <time>1207447073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="12">
+    <srcmd5>bcbad3f4d8701ed114e015ae271442ca</srcmd5>
+    <version>5.44.1.5</version>
+    <time>1210190008</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="46">
+    <srcmd5>bcbad3f4d8701ed114e015ae271442ca</srcmd5>
+    <version>5.44.1.5</version>
+    <time>1210190008</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="47">
+    <srcmd5>b033a19122d1cf340a8f3e85cda50598</srcmd5>
+    <version>5.44.1.5</version>
+    <time>1224690647</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>245bb5a49dbe7988e68305f051fa0b4a</srcmd5>
+    <version>5.44.1.11</version>
+    <time>1225710297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>96577786a98a72983bcaebd054a202d7</srcmd5>
+    <version>5.44.1.11</version>
+    <time>1249571485</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>96577786a98a72983bcaebd054a202d7</srcmd5>
+    <version>5.44.1.11</version>
+    <time>1249571485</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>a3a64f25c67875193bda644032a8d28a</srcmd5>
+    <version>5.44.1.11</version>
+    <time>1268923505</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>a3a64f25c67875193bda644032a8d28a</srcmd5>
+    <version>5.44.1.11</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>a3a64f25c67875193bda644032a8d28a</srcmd5>
+    <version>5.44.1.11</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>a3a64f25c67875193bda644032a8d28a</srcmd5>
+    <version>5.44.1.11</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ae6a782032e3b1b8b90c3d1428bcdcd7</srcmd5>
+    <version>5.45</version>
+    <time>1317997242</time>
+    <user>lrupp</user>
+    <comment>version 5.45</comment>
+    <requestid>87061</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>ae6a782032e3b1b8b90c3d1428bcdcd7</srcmd5>
+    <version>5.45</version>
+    <time>1319181872</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>650774ac459a57f0ce8b6c0a95f7666d</srcmd5>
+    <version>5.45</version>
+    <time>1323191336</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>e78cb608b83f61076171c92503562ac7</srcmd5>
+    <version>5.45</version>
+    <time>1325007306</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97331 from coolo)</comment>
+    <requestid>97571</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>ce03cc098b21a4b5eb38b797b70ae4f5</srcmd5>
+    <version>5.45</version>
+    <time>1334745243</time>
+    <user>coolo</user>
+    <comment>- Remove execute permission from logfiles (forwarded request 113576 from AndreasSchwab)</comment>
+    <requestid>114228</requestid>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>ce03cc098b21a4b5eb38b797b70ae4f5</srcmd5>
+    <version>5.45</version>
+    <time>1340183317</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>ce03cc098b21a4b5eb38b797b70ae4f5</srcmd5>
+    <version>5.45</version>
+    <time>1359108863</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="12">
+    <srcmd5>f2b45b5ecc5528c26079c3ef37d2abc8</srcmd5>
+    <version>5.45</version>
+    <time>1360228067</time>
+    <user>coolo</user>
+    <comment>- Update config.guess/sub for aarch64 (forwarded request 151451 from Andreas_Schwab)</comment>
+    <requestid>151455</requestid>
+  </revision>
+  <revision rev="22" vrev="13">
+    <srcmd5>c82339af92433afe204bfe31f20b39a3</srcmd5>
+    <version>5.45</version>
+    <time>1364472653</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161180 from m_meister)</comment>
+    <requestid>161244</requestid>
+  </revision>
+  <revision rev="23" vrev="15">
+    <srcmd5>c82339af92433afe204bfe31f20b39a3</srcmd5>
+    <version>5.45</version>
+    <time>1379662319</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="17">
+    <srcmd5>c82339af92433afe204bfe31f20b39a3</srcmd5>
+    <version>5.45</version>
+    <time>1409300851</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="18">
+    <srcmd5>78f4e0c51cc055d4aa6a41a7340d23b9</srcmd5>
+    <version>5.45</version>
+    <time>1440135259</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't ship the 'weather' example anymore (fate#318342).</comment>
+    <requestid>317238</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2943286931eebee5eef54df86fb204bd</srcmd5>
+    <version>5.45.3</version>
+    <time>1510664445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540243</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3370be5ff196e759284a9a4eb98edd59</srcmd5>
+    <version>5.45.4</version>
+    <time>1541454519</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 5.45.4:
+  * Fix two bugs in EOF handling.</comment>
+    <requestid>644610</requestid>
+  </revision>
+</revisionlist>

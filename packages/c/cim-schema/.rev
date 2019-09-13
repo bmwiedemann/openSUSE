@@ -1,0 +1,258 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae4e25b05defc8110a1dfae0188e05e3</srcmd5>
+    <version>2.14</version>
+    <time>1199849296</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>19e4c03fc9186cc4bbb07fcfc977d4ce</srcmd5>
+    <version>2.17</version>
+    <time>1199912055</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>49e287261e0f2509ff5020ed49d3df6f</srcmd5>
+    <version>2.18</version>
+    <time>1211053150</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>37dde50dd384b37c738e0b4d1c54fde2</srcmd5>
+    <version>2.19.0</version>
+    <time>1220563789</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d6a16c2ee62887b79461a53459fcdf40</srcmd5>
+    <version>2.19.1</version>
+    <time>1224924224</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>74e7a4edd078c1a11622d3fbdaa81edb</srcmd5>
+    <version>2.21.0</version>
+    <time>1243938946</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c8ba0ebcf1827ae12d80ae3b8705201b</srcmd5>
+    <version>2.21.0</version>
+    <time>1245259117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>c8ba0ebcf1827ae12d80ae3b8705201b</srcmd5>
+    <version>2.21.0</version>
+    <time>1245259117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>3884e29d2060a6396cdd424169a68846</srcmd5>
+    <version>2.21.0</version>
+    <time>1268923188</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>3884e29d2060a6396cdd424169a68846</srcmd5>
+    <version>2.21.0</version>
+    <time>1278667339</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>3884e29d2060a6396cdd424169a68846</srcmd5>
+    <version>2.21.0</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>3884e29d2060a6396cdd424169a68846</srcmd5>
+    <version>2.21.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>56c3ba05caefeca02bc9ae0366732513</srcmd5>
+    <version>2.27.0</version>
+    <time>1316080721</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>82089</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>a5d7e08d13aeb2f6c62e74048895b7e9</srcmd5>
+    <version>2.27.0</version>
+    <time>1316080727</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82089
+</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4dc33820b88fe4c989cabe8db54dbcf0</srcmd5>
+    <version>2.29.1</version>
+    <time>1316089225</time>
+    <user>saschpe</user>
+    <comment>- Upgraded to version 2.29.1
+  http://dmtf.org/sites/default/files/cim/cim_schema_v2291/releasenotes.html
+- Upgraded to version 2.28.0
+  http://dmtf.org/sites/default/files/cim/cim_schema_v2280/releasenotes.html</comment>
+    <requestid>82204</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>7354d3d6f4ed1a13e9634e256d173113</srcmd5>
+    <version>2.29.1</version>
+    <time>1316089237</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82204
+</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>7354d3d6f4ed1a13e9634e256d173113</srcmd5>
+    <version>2.29.1</version>
+    <time>1319181811</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c70db42a6ba21e2d4b0df6be24d145ac</srcmd5>
+    <version>2.30.0</version>
+    <time>1329750453</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>105938</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>c70db42a6ba21e2d4b0df6be24d145ac</srcmd5>
+    <version>2.30.0</version>
+    <time>1340183235</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>c70db42a6ba21e2d4b0df6be24d145ac</srcmd5>
+    <version>2.30.0</version>
+    <time>1359108746</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1bd9a4bc6af2a57f40b51db222c9121d</srcmd5>
+    <version>2.35.0</version>
+    <time>1361378397</time>
+    <user>coolo</user>
+    <comment>- Upgraded to version 2.35.0
+  http://dmtf.org/sites/default/files/cim/cim_schema_v2350/releasenotes.html</comment>
+    <requestid>155887</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5cec57e6c9b969d18f4e0355c4a53e42</srcmd5>
+    <version>2.36.0</version>
+    <time>1366378216</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>172420</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>02453a38d012af64a61de1572d8ee897</srcmd5>
+    <version>2.37.0</version>
+    <time>1372427910</time>
+    <user>coolo</user>
+    <comment>- Provide cim-schema-experimental explicitly
+
+- Upgrade to version 2.37.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2370/releasenotes.html
+
+- switch to Experimental schema (for openlmi)</comment>
+    <requestid>181223</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>02453a38d012af64a61de1572d8ee897</srcmd5>
+    <version>2.37.0</version>
+    <time>1379662110</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cd01708ac798bf854691f5219a26654f</srcmd5>
+    <version>2.38.0</version>
+    <time>1380807989</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202005</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>cd01708ac798bf854691f5219a26654f</srcmd5>
+    <version>2.38.0</version>
+    <time>1409300641</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6946e93de0392eb46416ba2c51430c54</srcmd5>
+    <version>2.42.0</version>
+    <time>1415347566</time>
+    <user>coolo</user>
+    <comment>- Upgrade to version 2.42.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2420/releasenotes.html
+- Upgrade to version 2.41.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2410/releasenotes.html
+
+- Upgrade to version 2.40.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2400/releasenotes.html
+
+- Upgrade to version 2.39.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2390/releasenotes.html</comment>
+    <requestid>260054</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a39243f83e9293bcfb7ee001b7dd492f</srcmd5>
+    <version>2.43.0</version>
+    <time>1425031206</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 2.43.0
+  http://dmtf.org/sites/default/files/cim/cim_schema_v2430/releasenotes.html</comment>
+    <requestid>287851</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c1b8e534774c404d23888c444a568623</srcmd5>
+    <version>2.44.0</version>
+    <time>1435053607</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313058</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>39d939ac81b5e6222cb3da563fc67ecb</srcmd5>
+    <version>2.45.0</version>
+    <time>1454352979</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>356751</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0c507f961491bf02895fd12e95dc0b5c</srcmd5>
+    <version>2.49.0</version>
+    <time>1512547196</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 2.49.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2490/releasenotes.html
+- Upgrade to version 2.48.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2480/releasenotes.html
+- Upgrade to version 2.47.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2470/releasenotes.html
+- Upgrade to version 2.46.0
+  http://www.dmtf.org/sites/default/files/cim/cim_schema_v2460/releasenotes.html
+</comment>
+    <requestid>548542</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>230f84a754d88b4024c857c53ce5fe88</srcmd5>
+    <version>2.50.0</version>
+    <time>1516222736</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>566617</requestid>
+  </revision>
+</revisionlist>

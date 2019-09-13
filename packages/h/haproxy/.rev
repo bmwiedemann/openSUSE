@@ -1,0 +1,723 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>82375e509c3402c2835ec2497a824937</srcmd5>
+    <version>1.4.24</version>
+    <time>1381826520</time>
+    <user>scarabeus_factory</user>
+    <comment>Resubmit of haproxy after applying license patch from legal.</comment>
+    <requestid>203204</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>21ef1182ba96bbf644dbc732b4a76044</srcmd5>
+    <version>1.4.24</version>
+    <time>1383035121</time>
+    <user>coolo</user>
+    <comment>Add systemd support (forwarded request 205020 from posophe)</comment>
+    <requestid>205022</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8610d8470d119de7ed6434ea243f757e</srcmd5>
+    <version>1.4.24</version>
+    <time>1387382019</time>
+    <user>coolo</user>
+    <comment>Backported the systemd-wrapper from upstream and patched it to work on openSUSE.</comment>
+    <requestid>207942</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b6553f8a4aa34329b9742797a3ff553c</srcmd5>
+    <version>1.4.25</version>
+    <time>1399390695</time>
+    <user>coolo</user>
+    <comment>Update to 1.4.25. Amended SR with missing patch information in .changes</comment>
+    <requestid>232846</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>89c4cb7d638748786d0fa1b84db51488</srcmd5>
+    <version>1.4.25</version>
+    <time>1400822871</time>
+    <user>coolo</user>
+    <comment>- added necessary macros for systemd files (forwarded request 234964 from jsegitz)</comment>
+    <requestid>235069</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d2ed6c33644a910356f4b2bba616fc50</srcmd5>
+    <version>1.5.1</version>
+    <time>1403702663</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238588</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1fd8cd9367c53ba8dc2215345bf4a3a5</srcmd5>
+    <version>1.5.1</version>
+    <time>1404306311</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239167</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>db7b25ce5c19bfd8e66b588e0613e595</srcmd5>
+    <version>1.5.2</version>
+    <time>1405971610</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241695</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e65b8ed09b5643a9d4e670834f9aac78</srcmd5>
+    <version>1.5.3</version>
+    <time>1407265878</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243677</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>844aa49ce6ddc598636a5e949e004cf7</srcmd5>
+    <version>1.5.3</version>
+    <time>1408957451</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245769</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>844aa49ce6ddc598636a5e949e004cf7</srcmd5>
+    <version>1.5.3</version>
+    <time>1409301152</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3095ada32f0782255aa3057d141a5087</srcmd5>
+    <version>1.5.4</version>
+    <time>1409998688</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247385</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>08d108725aa9b1ad235fbba32e8e0064</srcmd5>
+    <version>1.5.4</version>
+    <time>1411721550</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252328</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>40c94017f82c5e40ef434a58a4db1903</srcmd5>
+    <version>1.5.4</version>
+    <time>1412690429</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254377</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e886a30ada04280f00ccd14af5e1b30f</srcmd5>
+    <version>1.5.5</version>
+    <time>1412799254</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254723</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>cc8c2dcdc31cca0e9bfa0b0c9cbb791b</srcmd5>
+    <version>1.5.5</version>
+    <time>1413048381</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254868</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2a425864aedf697b84006fc6f3253601</srcmd5>
+    <version>1.5.6</version>
+    <time>1414219618</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258273</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b1e6476486226cb2b208f1a5518947fe</srcmd5>
+    <version>1.5.8</version>
+    <time>1415118530</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259237</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>26e6694a3ba25ed8e43899eb2a8d8c2d</srcmd5>
+    <version>1.5.8</version>
+    <time>1415696371</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260649</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>f2c092da97a2dd61549735dd3468fe1d</srcmd5>
+    <version>1.5.8</version>
+    <time>1416994404</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262856</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>280681859820b49b08d8982bffdae343</srcmd5>
+    <version>1.5.9</version>
+    <time>1417031740</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263108</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5f75d90c4882856cc14d5ad3ca5552bf</srcmd5>
+    <version>1.5.10</version>
+    <time>1420754552</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280162</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>804b074ffedab399e68bd0547c9b5732</srcmd5>
+    <version>1.5.11</version>
+    <time>1422974126</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283856</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>1845560d0f26ea7fbda80c688541a1d2</srcmd5>
+    <version>1.5.11</version>
+    <time>1424255974</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286482</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>8b287e5c74de6719172ba2e80c9a33e2</srcmd5>
+    <version>1.5.11</version>
+    <time>1426064295</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290035</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>db45460dff073e7499dde99d84675fdb</srcmd5>
+    <version>1.5.11</version>
+    <time>1428391754</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294149</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>242a0760b161a3aeb0b532345f6d9754</srcmd5>
+    <version>1.5.11</version>
+    <time>1429658368</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298279</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>541f80f7c423861fb8de8767084ed0b5</srcmd5>
+    <version>1.5.12</version>
+    <time>1430780148</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305164</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>4c15d160769a9597091c7c6236cceb3d</srcmd5>
+    <version>1.5.12</version>
+    <time>1433232496</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309522</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2255d22d983ee2bc302f2951dc4b9ac3</srcmd5>
+    <version>1.5.13</version>
+    <time>1435652358</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314323</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0d1b971be0829677653096f6506e21aa</srcmd5>
+    <version>1.5.14</version>
+    <time>1436112187</time>
+    <user>coolo</user>
+    <comment>- Update to 1.5.14 (CVE-2015-3281) (bsc#937042)
+  + BUILD/MINOR: tools: rename popcount to my_popcountl
+  + BUG/MAJOR: buffers: make the buffer_slow_realign() function respect output data (forwarded request 315015 from KGronlund)</comment>
+    <requestid>315017</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>30151d8c965f045b99e151a2b0781178</srcmd5>
+    <version>1.5.14</version>
+    <time>1441727155</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport patches from upstream:
+  - BUG/MINOR: http: remove stupid HTTP_METH_NONE entry
+  - BUG/MAJOR: http: don't call http_send_name_header() after an error
+- Add 0014-BUG-MINOR-http-remove-stupid-HTTP_METH_NONE-entry.patch
+- Add 0015-BUG-MAJOR-http-don-t-call-http_send_name_header-afte.patch
+
+- Backport patches from upstream:
+  - BUG/MINOR: log: missing some ARGC_* entries in fmt_directives()
+  - DOC: usesrc root privileges requirements
+  - BUILD: ssl: Allow building against libssl without SSLv3.
+  - DOC/MINOR: fix OpenBSD versions where haproxy works
+  - BUG/MINOR: http/sample: gmtime/localtime can fail
+  - DOC: typo in 'redirect', 302 code meaning
+  - DOC: mention that %ms is left-padded with zeroes.
+  - CLEANUP: .gitignore: ignore more test files
+  - CLEANUP: .gitignore: finally ignore everything but what is known.
+  - MEDIUM: config: emit a warning on a frontend without listener
+  - BUG/MEDIUM: counters: ensure that src_{inc,clr}_gpc0 creates a missing entry
+  - DOC: ssl: missing LF
+  - DOC: fix example of http-request using ssl_fc_session_id
+- Add 0001-BUG-MINOR-log-missing-some-ARGC_-entries-in-fmt_dire.patch
+- Add 0002-DOC-usesrc-root-privileges-requirements.patch
+- Add 0003-BUILD-ssl-Allow-building-against-libssl-without-SSLv.patch
+- Add 0004-DOC-MINOR-fix-OpenBSD-versions-where-haproxy-works.patch
+- Add 0005-BUG-MINOR-http-sample-gmtime-localtime-can-fail.patch
+- Add 0006-DOC-typo-in-redirect-302-code-meaning.patch
+- Add 0007-DOC-mention-that-ms-is-left-padded-with-zeroes.patch
+- Add 0008-CLEANUP-.gitignore-ignore-more-test-files.patch
+- Add 0009-CLEANUP-.gitignore-finally-ignore-everything-but-wha.patch
+- Add 0010-MEDIUM-config-emit-a-warning-on-a-frontend-without-l.patch (forwarded request 329653 from KGronlund)</comment>
+    <requestid>329654</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>77e12d104f0e9842f2142ba943369b57</srcmd5>
+    <version>1.5.14</version>
+    <time>1443336021</time>
+    <user>coolo</user>
+    <comment>fix haproxy status checks (bsc#947204)
+</comment>
+    <requestid>333662</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a4ff1d2c4b6deb2b2948756cdd721995</srcmd5>
+    <version>1.6.2</version>
+    <time>1447353665</time>
+    <user>dimstar_suse</user>
+    <comment>- fix link to tarball
+
+- update to 1.6.2
+  - BUILD: ssl: fix build error introduced in commit 7969a3 with
+    OpenSSL &lt; 1.0.0
+  - DOC: fix a typo for a &quot;deviceatlas&quot; keyword
+  - FIX: small typo in an example using the &quot;Referer&quot; header
+  - BUG/MEDIUM: config: count memory limits on 64 bits, not 32
+  - BUG/MAJOR: dns: first DNS response packet not matching queried
+    hostname may lead to a loop
+  - BUG/MINOR: dns: unable to parse CNAMEs response
+  - BUG/MINOR: examples/haproxy.init: missing brace in
+    quiet_check()
+  - DOC: deviceatlas: more example use cases.
+  - BUG/BUILD: replace haproxy-systemd-wrapper with $(EXTRA) in
+    install-bin.
+  - BUG/MAJOR: http: don't requeue an idle connection that is
+    already queued
+  - DOC: typo on capture.res.hdr and capture.req.hdr
+  - BUG/MINOR: dns: check for duplicate nameserver id in a
+    resolvers section was missing
+  - CLEANUP: use direction names in place of numeric values
+  - BUG/MEDIUM: lua: sample fetches based on response doesn't work
+- drop haproxy-1.6.0-ssl-098.patch: included upstream
+
+- update to 1.6.1
+  - DOC: specify that stats socket doc (section 9.2) is in
+    management
+  - BUILD: install only relevant and existing documentation
+  - CLEANUP: don't ignore debian/ directory if present</comment>
+    <requestid>343758</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>6336749dfd5f13669b830772bd076568</srcmd5>
+    <version>1.6.2</version>
+    <time>1448957922</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>346601</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e9fd8108ed52ba9ef33a9905e766a799</srcmd5>
+    <version>1.6.3</version>
+    <time>1452535940</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353093</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d6f7cf038f72e00a1a398333657e9e2d</srcmd5>
+    <version>1.6.4</version>
+    <time>1458560760</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>376242</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5e6a30fe06b2aeee911f4234edaabf95</srcmd5>
+    <version>1.6.5</version>
+    <time>1463652907</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>396400</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>7a17a400d87d98f3a98f25be221bb8b7</srcmd5>
+    <version>1.6.5</version>
+    <time>1465938427</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400814</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2fdd378af422e019f0ef1ffc1e772cdf</srcmd5>
+    <version>1.6.7</version>
+    <time>1470217391</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>415166</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1f52c18150e51301ca0a40ca2efd4222</srcmd5>
+    <version>1.6.9</version>
+    <time>1473409252</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>425729</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>75c345f08db9fbf305e78d82e0398506</srcmd5>
+    <version>1.6.9</version>
+    <time>1476109263</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug reference to changelog (bsc#1003264)</comment>
+    <requestid>433540</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>758ed530f0a366b2d9c0dedaf847910a</srcmd5>
+    <version>1.6.9</version>
+    <time>1476780081</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434680</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>38ff4b682126218df9f86f5297638c94</srcmd5>
+    <version>1.6.9</version>
+    <time>1478377565</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.9+git.1477940904.ab45181 (fate#321723)
+  * BUILD: poll: remove unused hap_fd_isset() which causes a warning with clang
+  * MINOR: cfgparse: few memory leaks fixes.
+  * MINOR: build: Allow linking to device-atlas library file
+  * DOC: Fix typo in description of `-st` parameter in man page
+  * BUG/MEDIUM: peers: on shutdown, wake up the appctx, not the stream
+  * BUG/MEDIUM: peers: fix use after free in peer_session_create()
+  * BUG/MEDIUM: systemd: let the wrapper know that haproxy has completed or failed
+  * MINOR: systemd: report it when execve() fails
+  * BUG/MINOR: systemd: check return value of calloc()
+  * BUG/MINOR: systemd: always restore signals before execve()
+  * BUG/MINOR: systemd: make the wrapper return a non-null status code on error
+  * BUG/MINOR: ssl: prevent multiple entries for the same certificate
+  * BUG/MINOR: ssl: Check malloc return code
+  * BUG/MINOR: vars: smp_fetch_var() doesn't depend on HTTP but on the session
+  * BUG/MINOR: vars: make smp_fetch_var() more robust against misuses
+  * BUG/MINOR: vars: use sess and not s-&gt;sess in action_store()
+  * MEDIUM: make SO_REUSEPORT configurable
+  * MINOR: Add fe_req_rate sample fetch
+  * MINOR: show Running on zlib version
+  * MINOR: show Built with PCRE version
+  * BUG/MINOR: displayed PCRE version is running release</comment>
+    <requestid>438388</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>53b705d1c7197a9749507ef1c4be1c84</srcmd5>
+    <version>1.7.0</version>
+    <time>1481153497</time>
+    <user>dimstar_suse</user>
+    <comment>Guess using _service and Source: URLs don't mix. (forwarded request 444127 from KGronlund)</comment>
+    <requestid>444130</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>695d1a8364d34cc3ef83508d22fea931</srcmd5>
+    <version>1.7.2</version>
+    <time>1486046805</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454066</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a99091a985bd831cff0ede870f9a15f1</srcmd5>
+    <version>1.7.3</version>
+    <time>1488479914</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460861</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f413b4fe57c7f05345f85e09ff25c59e</srcmd5>
+    <version>1.7.4</version>
+    <time>1491896735</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485839</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>cd96409958c51591ae03f3e6cd1d2d4e</srcmd5>
+    <version>1.7.5</version>
+    <time>1494345831</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493463</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4ea9cf52d39a31adc724254598794689</srcmd5>
+    <version>1.7.8</version>
+    <time>1502366588</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>510184</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>bcae9fb2c3bceced45824055c27e0c5f</srcmd5>
+    <version>1.7.9</version>
+    <time>1503593741</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518364</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>570a29a9cd4778701bc7e50be08605ce</srcmd5>
+    <version>1.8.0</version>
+    <time>1511949263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546232</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>3298410e80146c8812eb809de48e9aee</srcmd5>
+    <version>1.8.1</version>
+    <time>1512433830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548086</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>20f425b74a98137ccb663e079f9e393c</srcmd5>
+    <version>1.8.3</version>
+    <time>1516222629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>565889</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>af9236a3640ccf0eb9ca2d40916ec944</srcmd5>
+    <version>1.8.4</version>
+    <time>1518187878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574250</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>5b508e0b35464f8699a10be3ebb0b456</srcmd5>
+    <version>1.8.4</version>
+    <time>1520164368</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582332</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>adb72b0ef3b72c52f09dac7391e1ba62</srcmd5>
+    <version>1.8.4</version>
+    <time>1520415600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583731</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>fa4030101efd702d94c276249427a8f5</srcmd5>
+    <version>1.8.4</version>
+    <time>1520778302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584998</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>5975d91c0b21450b43baa021505e70c2</srcmd5>
+    <version>1.8.5</version>
+    <time>1522225794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590972</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>2eb5147ac35d1588bca97c338a2de2fe</srcmd5>
+    <version>1.8.8</version>
+    <time>1525779525</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605117</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>d2397251c9d68283da47000d20ad53ed</srcmd5>
+    <version>1.8.9~git9.6d82e611</version>
+    <time>1527605615</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.9~git9.6d82e611:
+  * BUG/MEDIUM: cache: don't cache when an Authorization header is present (VUL-1) (bsc#1094846)
+  * BUG/MEDIUM: dns: Delay the attempt to run a DNS resolution on check failure.
+  * BUG/MINOR: ssl/lua: prevent lua from affecting automatic maxconn computation
+  * BUG/MEDIUM: contrib/modsecurity: Use network order to encode/decode flags
+  * BUG/MEDIUM: contrib/mod_defender: Use network order to encode/decode flags
+  * BUG/MEDIUM: spoe: Flags are not encoded in network order
+  * BUG/MINOR: lua: Socket.send threw runtime error: 'close' needs 1 arguments.
+  * BUG/MINOR: spoe: Mistake in error message about SPOE configuration
+  * BUG/MEDIUM: ssl: properly protect SSL cert generation
+  * BUG/MEDIUM: pollers: Use a global list for fd shared between threads.
+  * BUG/MEDIUM: http: don't always abort transfers on CF_SHUTR
+  * BUG/MINOR: lua: ensure large proxy IDs can be represented
+  * BUG/MINOR: lua: schedule socket task upon lua connect()
+  * BUG/MEDIUM: task: Don't free a task that is about to be run.
+  * BUG/MINOR: map: correctly track reference to the last ref_elt being dumped
+  * DOC/MINOR: clean up LUA documentation re: servers &amp; array/table.
+  * BUG/MINOR: lua: Put tasks to sleep when waiting for data
+  * BUG/MEDIUM: threads: Fix the sync point for more than 32 threads
+  * BUG/MINOR: checks: Fix check-&gt;health computation for flapping servers
+  * BUG/MINOR: config: disable http-reuse on TCP proxies
+  * BUG/MINOR: lua/threads: Make lua's tasks sticky to the current thread
+  * BUG/MEDIUM: h2: implement missing support for chunked encoded uploads
+  * MINOR: h2: detect presence of CONNECT and/or content-length
+  * BUG/MEDIUM: lua: Fix segmentation fault if a Lua task exits
+  * BUG/MINOR: log: t_idle (%Ti) is not set for some requests
+  * BUG/MAJOR: channel: Fix crash when trying to read from a closed socket
+  * BUG/MINOR: pattern: Add a missing HA_SPIN_INIT() in pat_ref_newid()</comment>
+    <requestid>612871</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>715dfa32c12453cf0e414a0bf27056ed</srcmd5>
+    <version>1.8.10~git0.ec17d7a9</version>
+    <time>1530087690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618961</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>1fb4569faaa2bf33e1b64c31338134aa</srcmd5>
+    <version>1.8.12~git0.8a200c71</version>
+    <time>1530866868</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621110</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>c8a9fcfff073bb9ffcac33d65f59873a</srcmd5>
+    <version>1.8.13~git4.c1bfcd00</version>
+    <time>1534543577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629892</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>d6ed80b3a6c9cd42976cef691357b728</srcmd5>
+    <version>1.8.13~git4.c1bfcd00</version>
+    <time>1534940552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630825</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>b38448a034805f1a9ccb0e37eadfbc67</srcmd5>
+    <version>1.8.14~git0.52e4d43b</version>
+    <time>1538117594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638409</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>1c19d4fc790528f3fe837a8aee7cebe4</srcmd5>
+    <version>1.8.15~git0.6b6a350a</version>
+    <time>1545141537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658885</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>f8c446c6082406a0a26435771bd45fa4</srcmd5>
+    <version>1.8.17~git0.e89d25b2</version>
+    <time>1547211896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664293</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>11e71280f0e57a939685d449caaa5100</srcmd5>
+    <version>1.8.19~git0.ebf033b4</version>
+    <time>1550151145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674410</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>24770eea51bc1f7defe24f3f2913fbf0</srcmd5>
+    <version>1.8.20~git0.6fb9fadc</version>
+    <time>1557170238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701060</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>31d29758512a2e785ca44de10030cd10</srcmd5>
+    <version>2.0.1+git27.5db881ff</version>
+    <time>1562843837</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.1+git27.5db881ff:
+  * BUG/MINOR: ssl: revert empty handshake detection in OpenSSL &lt;= 1.0.2
+  * BUG/MEDIUM: servers: Don't forget to set srv_cs to NULL if we can't reuse it.
+  * BUG/MEDIUM: stream-int: Don't rely on CF_WRITE_PARTIAL to unblock opposite si
+  * MINOR: stream-int: Factorize processing done after sending data in si_cs_send()
+  * BUG/MINOR: mux-h1: Don't process input or ouput if an error occurred
+  * BUG/MEDIUM: mux-h1: Handle TUNNEL state when outgoing messages are formatted
+  * BUG/MEDIUM: lb_fas: Don't test the server's lb_tree from outside the lock
+  * BUG/MEDIUM: http/applet: Finish request processing when a service is registered
+  * MINOR: action: Add the return code ACT_RET_DONE for actions
+  * BUG/MINOR: contrib/prometheus-exporter: Don't try to add empty data blocks
+  * MINOR: server: Add &quot;no-tfo&quot; option.
+  * BUG/MEDIUM: sessions: Don't keep an extra idle connection in sessions.
+  * BUG/MEDIUM: servers: Authorize tfo in default-server.
+  * BUG/MEDIUM: connections: Make sure we're unsubscribe before upgrading the mux.
+  * BUG/MINOR: contrib/prometheus-exporter: Respect the reserve when data are sent
+  * BUG/MINOR: hlua/htx: Respect the reserve when HTX data are sent
+  * BUG/MEDIUM: channel/htx: Use the total HTX size in channel_htx_recv_limit()
+  * BUG/MINOR: hlua: Don't use channel_htx_recv_max()
+  * BUG/MINOR: contrib/prometheus-exporter: Don't use channel_htx_recv_max()
+  * BUG/MEDIUM: checks: Make sure the tasklet won't run if the connection is closed.
+  * BUG/MEDIUM: connections: Always call shutdown, with no linger.
+  * BUG/MINOR: mux-h1: Don't return the empty chunk on HEAD responses
+  * BUG/MINOR: mux-h1: Skip trailers for non-chunked outgoing messages
+  * BUG/MEDIUM: checks: unblock signals in external checks
+  * BUG/MEDIUM: mux-h1: Always release H1C if a shutdown for writes was reported
+  * BUG/MEDIUM: ssl: Don't attempt to set alpn if we're not using SSL.
+  * BUG/MINOR: mworker/cli: don't output a \n before the response
+  * BUG/MINOR: mux-h1: Make format errors during output formatting fatal
+  * BUG/MEDIUM: mux-h1: Use buf_room_for_htx_data() to detect too large messages</comment>
+    <requestid>714254</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>abd0dfd914e24ec27758aaf39272ab55</srcmd5>
+    <version>2.0.3+git14.0ff395c1</version>
+    <time>1564576210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719848</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>fcbd61755c75f31197712370ed8f0393</srcmd5>
+    <version>2.0.5+git0.d905f49a</version>
+    <time>1567848386</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>726527</requestid>
+  </revision>
+</revisionlist>

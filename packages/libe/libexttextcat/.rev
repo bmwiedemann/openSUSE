@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>466d02a7fa08e5ac081c3219f128a054</srcmd5>
+    <version>3.4.0</version>
+    <time>1357127882</time>
+    <user>namtrac</user>
+    <comment>Libexttextcat library used by libreoffice.</comment>
+    <requestid>146616</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>466d02a7fa08e5ac081c3219f128a054</srcmd5>
+    <version>3.4.0</version>
+    <time>1359109266</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>466d02a7fa08e5ac081c3219f128a054</srcmd5>
+    <version>3.4.0</version>
+    <time>1379662943</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8156519caa05748f4de53c2d9f3a03c7</srcmd5>
+    <version>3.4.3</version>
+    <time>1391077773</time>
+    <user>coolo</user>
+    <comment>- Version bump to 3.4.3:
+  * bump release
+    + overlapping memcpy
+    + allow old spelling of TEXTCAT_RESULT_UNKOWN.
+  * merge in Giulio's work and bump release
+    + Updated libexttextcat.vapi.
+    + Enable changing mindocsize at runtime.
+    + Fixed spelling of TEXTCAT_RESULT_UNKOWN.</comment>
+    <requestid>215155</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>46c4e2e52e947dd468af52ad614e4827</srcmd5>
+    <version>3.4.4</version>
+    <time>1406479608</time>
+    <user>coolo</user>
+    <comment>Lo 4.3.0.3 submission</comment>
+    <requestid>242301</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>46c4e2e52e947dd468af52ad614e4827</srcmd5>
+    <version>3.4.4</version>
+    <time>1409301553</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ace9f737e7f3fb408be442e0572ebea</srcmd5>
+    <version>3.4.5</version>
+    <time>1516971380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568823</requestid>
+  </revision>
+</revisionlist>

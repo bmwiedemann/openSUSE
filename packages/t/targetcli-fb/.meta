@@ -1,0 +1,7 @@
+<package name="targetcli-fb" project="openSUSE:Factory">
+  <title>A command shell for managing the Linux LIO kernel target</title>
+  <description>targetcli-fb is a command-line interface for configuring the LIO generic SCSI target, present in 3.x Linux kernel versions.
+
+targetcli-fb is a fork of the &quot;targetcli&quot; code written by RisingTide Systems. The &quot;-fb&quot; differentiates between the original and this version. Please ensure to use either all &quot;fb&quot; versions of the targetcli components -- targetcli, rtslib, and configshell, or stick with all non-fb versions, since they are no longer strictly compatible.</description>
+  <devel project="Base:System" package="targetcli-fb"/>
+</package>

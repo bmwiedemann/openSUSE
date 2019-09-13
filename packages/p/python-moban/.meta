@@ -1,0 +1,5 @@
+<package name="python-moban" project="openSUSE:Factory">
+  <title></title>
+  <description>moban brings the high performance template engine (JINJA2) for web into static text generation.</description>
+  <devel project="devel:languages:python" package="python-moban"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="ecryptfs-utils" project="openSUSE:Factory">
+  <title>Userspace Utilities for ecryptfs</title>
+  <description>A stacked cryptographic filesystem for Linux.</description>
+  <devel project="security" package="ecryptfs-utils"/>
+</package>

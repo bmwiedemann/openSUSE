@@ -1,0 +1,8 @@
+<package name="gammaray" project="openSUSE:Factory">
+  <title>Gamma Ray</title>
+  <description>
+Gamma Ray is a comprehensive collection of high level introspection and debugging utilities specifically tailored for the various frameworks in Qt.
+  </description>
+  <devel project="KDE:Extra" package="gammaray"/>
+  <url>http://www.kdab.com/gammaray</url>
+</package>

@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>406e961e392b6334bd142623a11c6bbf</srcmd5>
+    <version>1.4.1</version>
+    <time>1499291808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>497113</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a4e25f2110b4ed4719709b3e0bb36a81</srcmd5>
+    <version>1.4.1</version>
+    <time>1500275374</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>509955</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0ac8b946f5d4951b2ee662c567ebc921</srcmd5>
+    <version>1.4.3</version>
+    <time>1533887614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.3
+  * Fix accidental upload of the Windows version to PyPI. Hopefully fixes #42, #43.
+  * Fix #31: Don't use precompiled taglib.cpp on Windows</comment>
+    <requestid>628451</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>76b0686855dd24d82fa40f697fe498c8</srcmd5>
+    <version>1.4.5</version>
+    <time>1558037321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703203</requestid>
+  </revision>
+</revisionlist>

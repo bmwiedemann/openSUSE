@@ -1,0 +1,10 @@
+<package name="libgarcon" project="openSUSE:Factory">
+  <title>Library Implementing the freedesktop.org Desktop Menu Specification</title>
+  <description>Garcon is a library based on GLib and GIO which implements the freedesktop.org
+Desktop Menu Specification. It is the sucessor to libxfce4menu and covers
+almost every part of the menu specification except for legacy menus and a few
+XML attributes. It is capable of loading menus modified with menu editors such
+as Alacarte and also supports merging.</description>
+  <devel project="X11:xfce" package="libgarcon"/>
+  <url>PUT_UPSTREAM_URL_HERE</url>
+</package>

@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a6af0e2dc33e383ac27fd9bd1449f14</srcmd5>
+    <version>1</version>
+    <time>1486773779</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission of this package</comment>
+    <requestid>455059</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b46b3bec3f5c0f541f6705cce86fb7a6</srcmd5>
+    <version>1.0.2</version>
+    <time>1496534222</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>499689</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>81a2c73c027dc70e735768d215d8a6c5</srcmd5>
+    <version>1.0.2</version>
+    <time>1505503509</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524246</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f6e09fbb5270dc9171ec1f6665ad7eea</srcmd5>
+    <version>1.0.6</version>
+    <time>1527674606</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-cabal-doctest to the latest version.</comment>
+    <requestid>607761</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>dbd43b556a85c422e1d30ddb393df5ec</srcmd5>
+    <version>1.0.6</version>
+    <time>1532445327</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623736</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>bd2973f12eb90a7be3f0043cd8becaa1</srcmd5>
+    <version>1.0.6</version>
+    <time>1540448471</time>
+    <user>dimstar_suse</user>
+    <comment>trivial version update</comment>
+    <requestid>643197</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>940fc04d67ec85fa6fae59651dd0fc8d</srcmd5>
+    <version>1.0.7</version>
+    <time>1567092020</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>726807</requestid>
+  </revision>
+</revisionlist>

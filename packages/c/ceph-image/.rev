@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f765a14fd03eaa9f6a95232f8244053</srcmd5>
+    <version>1.0.0</version>
+    <time>1563914148</time>
+    <user>dimstar_suse</user>
+    <comment>- Add LICENSE file
+- base on pattern instead of independent packages 
+- adding xml template to generalize the kiwi creation for the different 
+  platrorms 
+- correct service to get full Ceph version for the unique tag
+- Initial version 
+</comment>
+    <requestid>717655</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a816c3c463f5c47db8b57a70cb02d40a</srcmd5>
+    <version>1.0.0</version>
+    <time>1563993414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718201</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e0804053fbd839e7025bf0e3e7865ba2</srcmd5>
+    <version>1.0.0</version>
+    <time>1566551305</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>725358</requestid>
+  </revision>
+</revisionlist>

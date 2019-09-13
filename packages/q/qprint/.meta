@@ -1,0 +1,8 @@
+<package name="qprint" project="openSUSE:Factory">
+  <title>qprint</title>
+  <description>QPRINT is a simple command-line filter which encodes and decodes
+files in Quoted-Printable encoding as defined in RFC 1521.  For
+details on operation of the program, please consult the manual
+page &quot;qprint.1&quot;.</description>
+  <devel project="devel:openSUSE:Factory" package="qprint"/>
+</package>

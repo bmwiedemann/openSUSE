@@ -1,0 +1,62 @@
+<package name="lilypond-doc" project="openSUSE:Factory">
+  <title>Music Typesetter</title>
+  <description>LilyPond supports many forms of music notation constructs, including
+chord names, drum notation, figured bass, grace notes, guitar tablature,
+modern notation (cluster notation and rhythmic grouping), tremolos,
+(nested) tuplets in arbitrary ratios, and more.
+
+LilyPond's text-based music input language support can integrate into
+LaTeX, HTML and Texinfo seamlessly, allowing single sheet music
+or musicological treatises to be written from a single source.  Form and
+content are separate, and with LilyPond's expert automated formatting,
+users don't need typographical expertise to produce good notation.
+
+LilyPond produces PDF, PostScript, SVG, or TeX printed output, as well
+as MIDI for listening pleasures.  LilyPond is exported from the
+RoseGarden and NoteEdit GUIs, and can import ABC, ETF and MIDI.
+
+LilyPond is part of the GNU Project.
+
+Authors:
+--------
+   Erlend Aasland &lt;erlenda@gmail.com&gt;
+   Pal Benko &lt;benkop@freestart.hu&gt;
+   Juliusz Chroboczek &lt;jch@pps.jussieu.fr&gt;
+   David Feuer &lt;david.feuer@gmail.com&gt;
+   Bernard Hurley &lt;bernard@fong-hurley.org.uk&gt;
+   Chris Jackson &lt;chris@fluffhouse.org.uk&gt;
+   Heikki Junes &lt;heikki.junes@hut.fi&gt;
+   Reinhold Kainhofer &lt;reinhold@kainhofer.com&gt;
+   Michael Krause &lt;m.krause@tu-harburg.de&gt;
+   Jean-Baptiste Lamy &lt;jiba@tuxfamily.org&gt;
+   Werner Lemberg &lt;wl@gnu.org&gt;
+   Joe Neeman &lt;joeneeman@gmail.com&gt;
+   Han-Wen Nienhuys &lt;hanwen@xs4all.nl&gt;
+   Jan Nieuwenhuizen &lt;janneke@gnu.org&gt;
+   Jürgen Reuter &lt;reuter_j@web.de&gt;
+   Nicolas Sceaux &lt;nicolas.sceaux@free.fr&gt;
+   Carl Sorensen &lt;c_sorensen@byu.edu&gt;
+   Rune Zedeler &lt;rune@zedeler.dk&gt;
+
+   FONT
+   Jürgen Reuter &lt;reuter_j@web.de&gt;
+   Werner Lemberg &lt;wl@gnu.org&gt;
+   Chris Jackson &lt;chris@fluffhouse.org.uk&gt;
+   Rune Zedeler &lt;rune@zedeler.dk&gt;
+   Han-Wen Nienhuys &lt;hanwen@xs4all.nl&gt;
+   Jan Nieuwenhuizen &lt;janneke@gnu.org&gt;
+   Tom Cato Amundsen &lt;tca@gnu.org&gt;
+   Arno Waschk &lt;arno@arnowaschk.de&gt;
+
+   SUPPORT (distributions, editor support, lilypond-book)
+   Anthony Fok &lt;foka@debian.org&gt;
+   Chris Jackson &lt;chris@fluffhouse.org.uk&gt;
+   Heikki Junes &lt;heikki.junes@hut.fi&gt;
+   David Svoboda &lt;svoboda@cmu.edu&gt;
+
+
+</description>
+  <devel project="openSUSE:Factory" package="lilypond"/>
+  <url>http://lilypond.org/source.html</url>
+  <bcntsynctag>lilypond</bcntsynctag>
+</package>

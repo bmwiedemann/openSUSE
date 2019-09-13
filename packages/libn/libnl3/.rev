@@ -1,0 +1,307 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>255f3e5b8fcb7444ee4c32cd329f409b</srcmd5>
+    <version>3.2</version>
+    <time>1316447318</time>
+    <user>lrupp</user>
+    <comment>Reject of SR#82088 seemed not right. Answers to reject reasons:
+
+1. license header is usually added when checkin is made to factory
+(autobuild script?)
+
+2. the spec is clean
+
+3. depending on -%release is prudent. the distro-level maintainer may
+decide to change something that makes %name-%version-1.1 incompatible
+with %name-%version-2.1.</comment>
+    <requestid>82200</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>31f1da036e1a0ceafc0ac1a989d8bf57</srcmd5>
+    <version>3.2</version>
+    <time>1316516310</time>
+    <user>saschpe</user>
+    <comment>Relax Requires in libnl3-devel: speilcke wants libnl3-devel: Requires:
+%lname=%version, though it conflicts with e.g. Fedora Packaging
+Guidelines which demands %version-%release (and since openSUSE
+Packaging Guidelines are copied from there, that may have relevance).
+Dunno.</comment>
+    <requestid>83779</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>73fe5fd98583af2528bd58e05048ed19</srcmd5>
+    <version>3.2.1</version>
+    <time>1316681253</time>
+    <user>saschpe</user>
+    <comment>- Update to new upstream release 3.2.1
+* new API to create/enslave/release bonding devices</comment>
+    <requestid>84300</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>73fe5fd98583af2528bd58e05048ed19</srcmd5>
+    <version>3.2.1</version>
+    <time>1319182115</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d108d51e0035541d3cc5413418dca31f</srcmd5>
+    <version>3.2.3</version>
+    <time>1321980479</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 92554 from coolo)</comment>
+    <requestid>92912</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ce2dce5e0b90a43c422907f5407eaed8</srcmd5>
+    <version>3.2.3</version>
+    <time>1325767712</time>
+    <user>coolo</user>
+    <comment>- add dangling-co_major_cache-reference fix required by ntrack</comment>
+    <requestid>98805</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>479a7f5120ac920f05bea593291c3c79</srcmd5>
+    <version>3.2.3</version>
+    <time>1328717926</time>
+    <user>coolo</user>
+    <comment>license update</comment>
+    <requestid>103260</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>84e3a0b949b50be041bde4bcce1a7add</srcmd5>
+    <version>3.2.7</version>
+    <time>1328890630</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.2.7
+* link: fix regression in link message parser
+* nl_addr_cmp: handle prefix length during address comparison
+* avoid dangling co_major_cache reference to NL_AUTO_PROVIDE caches
+* dsmark: Add missing declarations for
+  rtnl_class_dsmark_(get|set)_bitmask
+* rtnl_link_bond_add: allow to allocate bond name in case NULL
+  is given
+* link: allow to add/get linkinfo of unknown type</comment>
+    <requestid>103457</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d33e32716b2cd708a231cd75ecea1262</srcmd5>
+    <version>3.2.8</version>
+    <time>1336653185</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.2.8
+* Support plug qdisc - queue traffic until explicit release</comment>
+    <requestid>120547</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4521cd7679019460ed6d644e4985fb07</srcmd5>
+    <version>3.2.9</version>
+    <time>1336762047</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.2.9:
+* Fix return value of nl_recvmsgs()</comment>
+    <requestid>120695</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>4521cd7679019460ed6d644e4985fb07</srcmd5>
+    <version>3.2.9</version>
+    <time>1340183612</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fe3e549cb66aac892b1346779f5e9833</srcmd5>
+    <version>3.2.11</version>
+    <time>1340626124</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.2.11
+* add fwmark mask support
+* genl: add genlmsg_hdr(), genlmsg_user_hdr(), genlmsg_user_data(),
+  and genlmsg_user_datalen()
+* genl: Export genl_ops_resolve() and genl_mngt_resolve() in header
+* rtnl_link_(get|set)_weight is deprecated in libnl</comment>
+    <requestid>125441</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fef4e71b14e82f98c597ec2eafa65665</srcmd5>
+    <version>3.2.12</version>
+    <time>1346488304</time>
+    <user>namtrac</user>
+    <comment>- Update to new upstream release 3.2.12
+* Add new API to retrieve versioning information at runtime
+  suitable for python ctype.</comment>
+    <requestid>132119</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d257995a0eb96b27f88de7fb05c7c4cf</srcmd5>
+    <version>3.2.13</version>
+    <time>1350381535</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138256</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>95bdde7b949381adbd60920d15519eb8</srcmd5>
+    <version>3.2.14</version>
+    <time>1353513751</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>142230</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0be03b2133f135837bb762902c38e060</srcmd5>
+    <version>3.2.16</version>
+    <time>1354096803</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.2.16
+* Optional hashtable backend for caches
+* Improved netlink expectations support
+* Extended AF_BRIDGE support for link and neighbour caches
+* Better thread safety in module registration operations</comment>
+    <requestid>143026</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>0be03b2133f135837bb762902c38e060</srcmd5>
+    <version>3.2.16</version>
+    <time>1359109313</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>22d92750aea43da27c31e3ce15b8fd36</srcmd5>
+    <version>3.2.21</version>
+    <time>1362736230</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157817</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>9f41abe1a4be0aac4f536cd2dfaa9407</srcmd5>
+    <version>3.2.21</version>
+    <time>1363340467</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159492</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>71c06c8750c84c8042550ef03bc48d96</srcmd5>
+    <version>3.2.22</version>
+    <time>1370523623</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.2.22
+* ct: add ICMPv6 type,code and ID
+* attr: Provide nla_is_nested() function
+* bridge: Support the new bridging attributes
+* bridge: Provide rtnl_link_bridge_alloc()
+* vlan: Provide rtnl_link_vlan_alloc()
+* bond: Provide rtnl_link_bond_alloc()
+* attr: Add nla_nest_cancel() to remove partially added nested
+  attributes
+- Remove 0001-Add-symbol-version-maps-to-libnl.patch
+  (merged upstream)</comment>
+    <requestid>177768</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>71c06c8750c84c8042550ef03bc48d96</srcmd5>
+    <version>3.2.22</version>
+    <time>1379663022</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>25ae290d1f7e4fe5008bcb271bed4ec3</srcmd5>
+    <version>3.2.23</version>
+    <time>1385489921</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.2.23</comment>
+    <requestid>208530</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>13cdc0b452a3fd680c6414e05d951454</srcmd5>
+    <version>3.2.24</version>
+    <time>1395156081</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>226310</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>c889fcdae2b5822fad435de03a9a1ca4</srcmd5>
+    <version>3.2.24</version>
+    <time>1399017100</time>
+    <user>coolo</user>
+    <comment>- remove python-devel dependency (forwarded request 231432 from dirkmueller)</comment>
+    <requestid>231434</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cbac46096649490aae3e0eea06f3e7c6</srcmd5>
+    <version>3.2.25</version>
+    <time>1405658418</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.2.25</comment>
+    <requestid>241282</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>cbac46096649490aae3e0eea06f3e7c6</srcmd5>
+    <version>3.2.25</version>
+    <time>1409301641</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>6af8aec2413fb05c53d0e1a408fd46c7</srcmd5>
+    <version>3.2.25</version>
+    <time>1413048358</time>
+    <user>coolo</user>
+    <comment>- BuildRequire at least bison 2.4, version in SLE11 is too old (forwarded request 254731 from olh)</comment>
+    <requestid>254732</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>00568d194e582b5ddcdf4aa16eacea7d</srcmd5>
+    <version>3.2.27</version>
+    <time>1455789928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.2.27</comment>
+    <requestid>358337</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>970c0fec90d86164673061684f0c76e8</srcmd5>
+    <version>3.2.28</version>
+    <time>1476109117</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>432961</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1ec3034ac71ab47b43ee32d49dc382ff</srcmd5>
+    <version>3.2.29</version>
+    <time>1485250184</time>
+    <user>dimstar_suse</user>
+    <comment>- Add nla-reserve.diff [boo#1020123]
+- Update to new upstream release 3.2.29</comment>
+    <requestid>451318</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>74a5dc10c0dc3e83177bcf04081754b5</srcmd5>
+    <version>3.3.0~rc1</version>
+    <time>1490132727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.3.0~rc1</comment>
+    <requestid>480827</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a69c3387cc6d497a7c08f21f53d778b4</srcmd5>
+    <version>3.3.0</version>
+    <time>1497687619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to final release 3.3.0
+  * No changes</comment>
+    <requestid>501802</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fc9f186a1ff7aaafd1a8401afbb4a8a7</srcmd5>
+    <version>3.4</version>
+    <time>1519844502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.4.0 [boo#1082756]</comment>
+    <requestid>580261</requestid>
+  </revision>
+</revisionlist>

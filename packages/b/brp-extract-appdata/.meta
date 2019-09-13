@@ -1,0 +1,5 @@
+<package name="brp-extract-appdata" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:common:Factory" package="brp-extract-appdata"/>
+</package>

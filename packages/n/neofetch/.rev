@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b08183e66810e6d80b2f2f0d67c00e9c</srcmd5>
+    <version>5.0.0</version>
+    <time>1532774740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625844</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f44f0702247169a0ce009ce63ebbe7e9</srcmd5>
+    <version>6.0.0</version>
+    <time>1547130202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.0:
+  * Breaking change: Removed get_line_break() from config
+  * Added support for arbitrary shell commands for ASCII art
+  * Added plain text output for individual functions that can be
+    used in scripts
+  * Color Blocks now have padding built-in
+  * Public IP: Added configurable timeout to requests
+  * Fixed numerous &quot;Song&quot; issues
+  * Complete changelog can be found at https://github.com/dylanaraps/neofetch/releases/tag/6.0.0
+- Drop remove-non-linux.patch, maintenance cost is high and not
+  enough space is saved to justify it
+</comment>
+    <requestid>664085</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>61bf97114877942e9d5cde9228ba5747</srcmd5>
+    <version>6.1.0</version>
+    <time>1567581371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727996</requestid>
+  </revision>
+</revisionlist>

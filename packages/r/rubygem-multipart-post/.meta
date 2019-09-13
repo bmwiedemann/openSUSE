@@ -1,0 +1,8 @@
+<package name="rubygem-multipart-post" project="openSUSE:Factory">
+  <title>Creates a multipart form post accessory for Net::HTTP</title>
+  <description>Use with Net::HTTP to do multipart form posts.  IO values that have #content_type, #original_filename, and #local_path will be posted as a binary file.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-multipart-post"/>
+  <url>http://github.com/nicksieger/multipart-post</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-twython" project="openSUSE:Factory">
+  <title></title>
+  <description>Python wrapper for the Twitter API</description>
+  <devel project="devel:languages:python" package="python-twython"/>
+</package>

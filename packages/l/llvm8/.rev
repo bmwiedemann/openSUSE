@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ca32d2517bfc2a03334692c74665022</srcmd5>
+    <version>8.0.0</version>
+    <time>1560536516</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial version of llvm8.</comment>
+    <requestid>704317</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0f56496f646d85fc4d8ce162e4ead3a1</srcmd5>
+    <version>8.0.0</version>
+    <time>1561195318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710289</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>54147b964079d0cf1580bf36125b1a19</srcmd5>
+    <version>8.0.0</version>
+    <time>1561641801</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>711938</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6b3a5f3d9f84037eb912347b25e6da74</srcmd5>
+    <version>8.0.0</version>
+    <time>1561970607</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the documented LLVM_ENABLE_RTTI to enable RTTI instead of
+  LLVM_REQUIRES_RTTI, which &quot;is an internal flag that individual
+  targets can use to force RTTI&quot;. (boo#1139584)
+- Drop obsolete llvm-build-tests-with-rtti.patch.
+- Increase RAM for armv6/7 to avoid OOM and be scheduled on fast worker</comment>
+    <requestid>712392</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b20d1217a2162e61ea27907a107dd9b</srcmd5>
+    <version>8.0.1</version>
+    <time>1564301988</time>
+    <user>dimstar_suse</user>
+    <comment>new version</comment>
+    <requestid>718117</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1d7e15a241db291150782ed8456872a1</srcmd5>
+    <version>8.0.1</version>
+    <time>1566664989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725270</requestid>
+  </revision>
+</revisionlist>

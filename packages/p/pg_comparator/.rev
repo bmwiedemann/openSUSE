@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>152c5900732b06508ed253267292555d</srcmd5>
+    <version>1.8.1</version>
+    <time>1334216731</time>
+    <user>coolo</user>
+    <comment>I would like PG comparator (a db sync tool), to be added to oS:Factory</comment>
+    <requestid>113179</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>152c5900732b06508ed253267292555d</srcmd5>
+    <version>1.8.1</version>
+    <time>1340183964</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>de870f33adbf08863f3b8ab76293248e</srcmd5>
+    <version>2.0.1</version>
+    <time>1345118918</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>130720</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8f105205980e0391f4b25f02a991349f</srcmd5>
+    <version>2.1.1</version>
+    <time>1350450914</time>
+    <user>coolo</user>
+    <comment>I would like PG comparator (a db sync tool), to be added to oS:Factory</comment>
+    <requestid>138324</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8f105205980e0391f4b25f02a991349f</srcmd5>
+    <version>2.1.1</version>
+    <time>1359109869</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b52a2d92331459f8012061d8f803d899</srcmd5>
+    <version>2.1.2</version>
+    <time>1359581006</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>150405</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b6b78044c62cdee66d13660d4877281b</srcmd5>
+    <version>2.2.0</version>
+    <time>1364899104</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>162039</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e7677838cc076518585e97c209676135</srcmd5>
+    <version>2.2.1</version>
+    <time>1371217608</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>178882</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e7677838cc076518585e97c209676135</srcmd5>
+    <version>2.2.1</version>
+    <time>1379663944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>515856d3e9334f8302104350e9c2a1fc</srcmd5>
+    <version>2.2.2</version>
+    <time>1394103980</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>224621</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c96e52f9545c66f6edbfd6d4ce192a73</srcmd5>
+    <version>2.2.3</version>
+    <time>1398863413</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>231647</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>70ba58bdccd36d6973a02829807d579d</srcmd5>
+    <version>2.2.5</version>
+    <time>1408524676</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>245183</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>70ba58bdccd36d6973a02829807d579d</srcmd5>
+    <version>2.2.5</version>
+    <time>1409302600</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>27a7488c1f9d542b1e2af480c5a1b9d2</srcmd5>
+    <version>2.2.5</version>
+    <time>1554977819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692928</requestid>
+  </revision>
+</revisionlist>

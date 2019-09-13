@@ -1,0 +1,8 @@
+<package name="aer-inject" project="openSUSE:Factory">
+  <title>aer-inject allows to inject PCIE AER errors in a running kernel</title>
+  <description>aer-inject allows to inject PCIE AER errors on the software level into
+a running Linux kernel. This is intended for validation of the PCIE
+driver error recovery handler and PCIE AER core handler.
+</description>
+  <devel project="hardware" package="aer-inject"/>
+</package>

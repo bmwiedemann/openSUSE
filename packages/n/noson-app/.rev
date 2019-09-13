@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>89caf2b6488cd885647d53c6575a17c7</srcmd5>
+    <version>3.7.0</version>
+    <time>1535122862</time>
+    <user>dimstar_suse</user>
+    <comment>- Try improving description grammar.
+- Update to 3.7.0
+- Removed _service file and added source URL
+- Use cmake-directories to avoid static linking of libnoson
+- Updated to 3.6.4
+- Ran spec-cleaner
+- Updated to 3.6.3
+- Package now depend on libnoson1
+- Removed patch (fixed upstream)
+- Initial package
+</comment>
+    <requestid>628262</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3440300e718711ec74c38d67aec6d68f</srcmd5>
+    <version>3.9.7</version>
+    <time>1548452629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.7
+  * Port away from deprecated API
+  * Fix getting initial sound settings
+  * Minor UI fixes
+  * Show more in song info
+  * Using customized footer in dialogs
+  * Enable wheel mouse to slide volume, and make it smoothest
+  * Improve zone connection on topology changed
+  * Fix SNI issue with OpenSSL
+  * Add support for language Danish
+  * Fix origin for icon rotation
+  * Show overlay during update of share index
+  * Fix keyboard input methods for Android 7.0 (Nougat) and upper
+  * Disable keyboard input when search field is hidden
+</comment>
+    <requestid>667839</requestid>
+  </revision>
+</revisionlist>

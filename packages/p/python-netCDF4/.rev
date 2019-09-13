@@ -1,0 +1,269 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0cd7a81ee98750a2370ab378fc99da44</srcmd5>
+    <version>1.3.1</version>
+    <time>1522596361</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.3.1:
+ * add parallel IO capabilities.  netcdf-c and hdf5 must be compiled with MPI
+   support, and mpi4py must be installed. To open a file for parallel access,
+   use `parallel=True` in `Dataset.__init__` and optionally pass the mpi4py Comm instance
+   using the `comm` kwarg and the mpi4py Info instance using the `info` kwarg.
+   IO can be toggled between collective and independent using `Variable.set_collective`.
+   See `examples/mpi_example.py`. Issue #717, pull request #716.
+   Minimum cython dependency bumped from 0.19 to 0.21.
+ * Add optional `MFTime` calendar overload to use across all files, for example,
+   `'standard'` or `'gregorian'`. If `None` (the default), check that the calendar
+   attribute is present on each variable and values are unique across files raising
+   a `ValueError` otherwise.
+ * Allow _FillValue to be set for vlen string variables (issue #730).
+- update to version 1.3.0:
+ * always search for HDF5 headers when building, even when nc-config is used 
+   (since nc-config does not always include the path to the HDF5 headers).
+   Also use H5get_libversion to obtain HDF5 version info instead of
+   H5public.h. Fixes issue #677.
+ * encoding kwarg added to Dataset.__init__ and Dataset.filepath (default
+   is to use sys.getfilesystemencoding()) so that oddball
+   encodings (such as cp1252 on windows) can be handled in Dataset 
+   filepaths (issue #686).
+ * Calls to nc_get_vars are avoided, since nc_get_vars is very slow (issue
+   #680).  Strided slices are now converted to multiple calls to
+   nc_get_vara.  This speeds up strided slice reads by a factor of 10-100
+   (especially for NETCDF4/HDF5 files) in most cases. In some cases, strided reads
+   using nc_get_vars are faster (e.g. strided reads over many dimensions
+   such as var[:,::2,::2,::2])), so a variable method use_nc_get_vars was added. 
+   var.use_nc_get_vars(True) will tell the library to use nc_get_vars instead
+   of multiple calls to nc_get_vara, which was the default behaviour previous
+   to this change.
+ * fix utc offset time zone conversion in netcdftime - it was being done
+   exactly backwards (issue #685 - thanks to @pgamez and @mdecker).
+ * Fix error message for illegal ellipsis slicing, add test (issue #701).
+ * Improve timezone format parsing in netcdftime
+ * make sure numpy datatypes used to define CompoundTypes have
+   isalignedstruct flag set to True (issue #705), otherwise.
+   segfaults can occur. Fix required raising them minimum numpy requirement 
+   from 1.7.0 to 1.9.0.
+ * ignore missing_value, _FillValue, valid_range, valid_min and valid_max
+   when creating masked arrays if attribute cannot be safely
+   cast to variable data type (and issue a warning).  When setting
+   these attributes don't cast to variable dtype unless it can
+   be done safely and issue a warning. Issue #707.
+- update to version 1.2.9:
+ * Fix for auto scaling and masking when _Unsigned attribute set (create
+   view as unsigned type after scaling and masking). Issue #671.
+ * Always mask values outside valid_min, valid_max (not just when
+   missing_value attribue present).  Issue #672.
+- remove check boundary condition
+- Implement single-spec version
+- Fix source URL.
+- Update to version 1.2.8
+  * recognize _Unsigned attribute used by netcdf-java to designate unsigned
+    integer data stored with a signed integer type in netcdf-3 (issue #656).
+  * add Dataset init memory parameter to allow loading a file from memory
+    (pull request #652, issues #406 and #295).
+  * fix for negative times in num2date (issue #659).
+  * fix for failing tests in numpy 1.13 due to changes in numpy.ma (issue #662).
+  * Checking for _Encoding attribute for NC_STRING variables, otherwise use
+    'utf-8'. 'utf-8' is used everywhere else, 'default_encoding' global module
+    variable is no longer used.  getncattr method now takes optional kwarg
+    'encoding' (default 'utf-8') so encoding of attributes can be specified
+    if desired. If _Encoding is specified for an NC_CHAR ('S1') variable,
+    the chartostring utility function is used to convert the array of
+    characters to an array of strings with one less dimension (the last
+    dimension is interpreted as the length of each string) when reading the
+    data. When writing the data, stringtochar is used to convert a numpy 
+    array of fixed length strings to an array of characters with one more
+    dimension. chartostring and stringtochar now also have an 'encoding' kwarg.
+    Automatic conversion to/from character to string arrays can be turned off
+    via a new set_auto_chartostring Dataset and Variable method (default
+    is True). Addresses issue #654.
+  * Cython &gt;= 0.19 now required, _netCDF4.c and _netcdftime.c removed from
+    repository.
+- Update to version 1.2.7
+  * fix for issue #624 (error in conversion to masked array when variable slice
+    returns a scalar). This is a regression introduced in 1.2.5 associated
+    with support for vector missing_values. Test (tst_masked5.py) added for
+    vector missing_values.
+  * fix for python 3.6 compatibility (error retrieving character _FillValue attribute,
+    issue #626). Test with python 3.6 using travis CI.
+- Update to version 1.2.6
+  * fix some test failures on big endian PPC64 that were due to 
+    errors in byte-swapping logic. Also fixed bug in enum
+    code exposed on PPC64 (issue #608).
+  * remove support for python 2.6 (it probably still will work for a while
+    though).
+  * Sometimes checking that data being assigned to a variable has
+    an 'ndim' attribute is not sufficient, instead check to see that
+    the object supports the buffer interface (issue #613).
+  * make get_variables_by_attributes work in MFDataset (issue #610)
+    The hack is also applied for set_auto_maskandscale, set_auto_scale,
+    set_automask, so these don't have to be duplicated in MFDataset (pull
+    request #571).
+- Update to version 1.2.5
+  * Add MFDataset.set_auto_maskandscale (plus set_auto_scale, set_auto_mask).
+    Fixes issue #570.
+  * Use valid_min/valid_max/valid_range attributes when defining mask
+    (issue #576).  Values outside the valid range are considered to
+    be missing when defining the mask.
+  * Fix for issue #584 (add support for dates before -4712-1-1 in 360_day
+    and 365_day calendars to netcdftime.utime).
+  * Fix for issue #593: add support for datetime.timedelta operations
+    (adding and subtracting timedelta, subtracting two datetime
+    instances to compute time duration between them), implement
+    datetime.replace() and datetime.__str__(). datetime.__repr__()
+    includes the full state of an instance. Add datetime.calendar.
+    datetime comparison operators have full accuracy now.
+  * Fix for issue #585 by increasing the size of the buffer used to store the
+    filepath.
+  * Fix for issue #592: Add support for string array attributes. (When
+    reading, a vlen string array attribute is returned as a list of
+    strings. To write, use var.setncattr_string(&quot;name&quot;, [&quot;two&quot;, &quot;strings&quot;]).)
+  * Fix for issue #596 - julian day calculations wrong for negative years,
+    caused incorrect rountrip num2date(date2num(date)) roundtrip for dates with year
+    &lt; 0.
+  * Make sure negative years work in utime.num2date (issue #596).
+  * raise NotImplementedError when trying to pickle Dataset, Variable,
+    CompoundType, VLType, EnumType and MFDataset (issue #602).
+  * Fix for issue #527: initialize vldata[i].p in Variable._get(...).
+- Update to version 1.2.4
+  * Fix for issue #554.  It is now ensured that data is in native endian
+    byte order before passing to netcdf-c library.  Data read from variable
+    with non-native byte order is also byte-swapped, so that dtype remains
+    consistent with netcdf variable.  Behavior now consistent with h5py.
+  * raise warning for HDF5 1.10.x (issue #549), since backwards 
+    incompatible files may be created.
+  * raise AttributeError instead of RuntimeError when attribute operation
+    fails.  raise IOError instead of RuntimeError when nc_create or 
+    nc_open fails (issue #546).
+  * Use NamedTemporaryFile instead of deprecated mktemp in tests
+    (pull request #543). 
+  * add AppVeyor automated windows tests (pull request #540).
+- Update to version 1.2.3.1
+  * fix bug in setup.py (pull request #539, introduced in issue #518).
+- Update to version 1.2.3
+  * try to avoid writing NC_STRING attributes if possible, by
+    trying to convert unicode strings to ascii and write as NC_CHAR (issue
+    #529).  This preserves compatibility with clients (like Matlab) that
+    can't deal with NC_STRING attributes. A 'setncattr_string' method
+    was added for Dataset and Variable to that users can force attributes
+    to be written as NC_STRING if necessary.
+  * fix failing tests with numpy 1.11 (issues #521 and #522).
+  * fix indentation bug in nc4tonc3 utility (issue #519).
+  * add the capability in setup.py to use pkg-config instead of
+    nc-config (pull request #518).
+  * make sure slices which return scalar masked arrays
+    are consistent with numpy.ma (issue #515).
+  * add test/tst_cdf5.py and test/tst_filepath.py (to test new
+    NETCDF3_64BIT_DATA format and filepath Dataset method).
+  * expose netcdftime.__version__ (issue #504).
+  * fix potential memory leak in Dataset.filepath in attempt to fix
+    mysterious segfaults on CentOS6 (issue #506). Segfaults  
+    can apparently still occur on systems like CentOS6 with old versions of glibc.
+- Update to version 1.2.2
+  * fix failing tests on python 2.6 (issue #497). Change minimum required
+    python from 2.5 to 2.6.
+  * Potential memory leaks fixed by freeing string pointers internally allocated 
+    in netcdf-c using nc_free_string. Also use nc_free_vlens to free space allocated
+    for vlens inside netcdf-c (issue #495).
+  * invoke str on filename argument to Dataset constructor, so pathlib 
+    instances can be used (issue #489).
+  * don't use hardwired NC_MAX_DIMS or NC_MAX_VARS internally to allocate space
+    for dimension or variable ids.  Instead, find out the number of dims
+    and vars and use malloc.  NC_MAX_NAME is still used to allocate space
+    for attribute and variable names, since there is no obvious way to
+    determine the length of these names.
+  * if trying to write a unicode attribute, check to see if it exists
+    first and is NC_CHAR, and if so, delete it and recreate it.  Workaround for C
+    lib bug discovered in issue #485.
+  * support for NETCDF3_64BIT_DATA format supported in netcdf-c 4.4.0.
+    Similar to NETCDF3_64BIT (now NETCDF3_64BIT_OFFSET), but includes
+    64 bit dimensions and sizes, plus unsigned and 64 bit integer
+    data types.
+  * make sure chunksize does not exceed dimension size
+    (for non-unlimited dimensions) on variable creation (issue #480).
+  * add 'size' attribute to Dimension (same as len(d), where
+    d is a Dimension instance, issue #477).
+  * fix bug in nc3tonc4 with --unpackshort=1 (issue #474).
+  * dates do not have to be contiguous, i.e. can be before and after the 
+    missing dates in Gregorian calendar (pull request #476).
+- Update to version 1.2.1
+ * add the capability to slice variables with unsorted integer sequences,
+   or integer sequences with duplicates (issue #467). This was done
+   by converting boolean array slices to integer array slices internally,
+   instead of the other way around.
+ * raise TypeError if masked array assigned to a VLEN str variable slice
+   (issue #464).
+ * Ellipsis now can be used with scalar VLEN str variables (issue #458).
+   Slicing of scalar VLEN (non-str) variables now works.
+ * Allow non-positive reference years in non-real-world calendars
+   (issue #442).
+- Update to version 1.2.0
+ * Fixes to setup.py for building on windows (issue #460).
+ * warnings now issued if file being read contains unsupported
+   variables or data types (they were previously being silently
+   skipped).
+ * added 'get_variables_by_attributes' method (issue #454).
+ * check for 'units' attribute in date2index (issue #453).
+ * added support for enum types (issue #452).
+ * added 'isopen' Dataset method (issue #450).
+ * raise ValueError if year 0 or negative year used in time units string.
+   The year 0 does not exist in the Julian and Gregorian
+   calendars (issue #442).
+- Initial version
+</comment>
+    <requestid>581930</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e85dbfd5bd84a12d74fbbf32042e3f7b</srcmd5>
+    <version>1.4.0</version>
+    <time>1527582578</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch netcdf-disable-broken-test.patch
+  * This test got &quot;broken&quot; with the new netcdf that fixed another
+    problem https://github.com/Unidata/netcdf4-python/issues/752
+
+- Version update to 1.4.0:
+ * fixed bug in detection of CDF5 library support in setup.py (pull request
+   #736, issue #713).
+ * fixed reading of variables with zero-length dimensions in NETCDF3_CLASSIC
+   files (issue #743).
+ * allow integer-like objects in VLEN slices (not just python ints, issue
+   #526, pull request #757).
+ * treating _FillValue as a valid_min/valid_max was too surprising, despite
+   the fact the thet netcdf docs 'attribute best practices' suggests that
+   clients should to this.  Revert this change from issue #576 (issue #761).
+ * remove netcdftime, since it is now a separate package. date2num, num2date
+   and date2index still importable from netCDF4.
+ * fix 'Unreachable code' cython warning (issue #767).
+ * Change behavior of string attributes so that nc.stringatt = ['foo','bar']
+   produces an vlen string array attribute in NETCDF4, instead of concatenating
+   into a single string ('foobar').  In NETCDF3/NETCDF4_CLASSIC, an IOError
+   is now raised, instead of writing 'foobar'. Issue #770.
+ * fix loading of enum type names (issue #775).
+ * make sure missing_value applies only to scaled short integers if
+   auto-scaling is on (issue #777).
+ * automatically create views of compound types with character arrays as 
+   numpy strings (issue #773).  Can be disabled using
+   'set_auto_chartostring(False)'. Numpy structured
+   array dtypes with 'SN' string subtypes can now be used to
+   define netcdf compound types (they get converted to ('S1',N)
+   character array types automatically).</comment>
+    <requestid>610046</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>213496b67865d4056cc8aa637b77cb48</srcmd5>
+    <version>1.4.3.2</version>
+    <time>1553158401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686999</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>539de00c544ee91a5af57c0df97f4b4d</srcmd5>
+    <version>1.5.1.2</version>
+    <time>1560459673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707519</requestid>
+  </revision>
+</revisionlist>

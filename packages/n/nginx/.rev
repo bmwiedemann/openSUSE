@@ -1,0 +1,479 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd0c42c53afd7745cd841386f965cc2d</srcmd5>
+    <version>1.8.0</version>
+    <time>1435870046</time>
+    <user>dimstar_suse</user>
+    <comment>send nginx back since it has striped rubygem-passenger</comment>
+    <requestid>313586</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>869556bb490ef67b35c0870daf789126</srcmd5>
+    <version>1.8.1</version>
+    <time>1454491170</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356904</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ddc66779e89c3563f506ca0228dc33c2</srcmd5>
+    <version>1.10.0</version>
+    <time>1464075316</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>397292</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f431caea9261ce5589ac1b924d9ca5d2</srcmd5>
+    <version>1.10.1</version>
+    <time>1465336020</time>
+    <user>dimstar_suse</user>
+    <comment>- in the sysvinit script use the pid file in /var/run
+
+- update to 1.10.1 (bsc# 982505)
+  Security: a segmentation fault might occur in a worker process
+  while writing a specially crafted request body to a temporary
+  file (CVE-2016-4450); the bug had appeared in 1.3.9.
+
+- improve conditionals
+  - merge the 12.2 and 12.1 based conditionals into 1 as both of
+    them are out of support now.
+  - enable pcre JIT
+  - make use if libatomic_ops on Leap
+
+- enable dynamic modules for intree modules. The following modules
+  are built as loadable modules now:
+  ngx_http_geoip_module.so
+  ngx_http_image_filter_module.so
+  ngx_http_perl_module.so
+  ngx_http_xslt_filter_module.so
+  ngx_mail_module.so
+  ngx_stream_module.so
+  You will have to load those modules with load_module.
+  http://nginx.org/en/docs/ngx_core_module.html#load_module
+  The correct syntax for this package is:
+  # For 64bit machines:
+  load_module lib64/nginx/modules/ngx_http_geoip_module.so;
+  # For 32bit machines:
+  load_module lib/nginx/modules/ngx_http_geoip_module.so;
+  Examples for all the intree modules have been added to the
+  default nginx.conf</comment>
+    <requestid>399657</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a011c9266103cee52c8b0f3c20b548cb</srcmd5>
+    <version>1.11.2</version>
+    <time>1470773684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>417110</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>17381253c421791c083a8eb4e3d85677</srcmd5>
+    <version>1.11.4</version>
+    <time>1476428763</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433571</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a59efbc75de87cf94efdb32c9b498528</srcmd5>
+    <version>1.11.4</version>
+    <time>1477219930</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>436644</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e29b1470d7056fa7d02b59f6b0337cc5</srcmd5>
+    <version>1.11.8</version>
+    <time>1484041784</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449066</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ce39fe926a0f726f89e361426a73d3f4</srcmd5>
+    <version>1.11.9</version>
+    <time>1485863321</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.9
+  - Bugfix: nginx might hog CPU when using the stream module; the
+    bug had appeared in 1.11.5.
+  - Bugfix: EXTERNAL authentication mechanism in mail proxy was
+    accepted even if it was not enabled in the configuration.
+  - Bugfix: a segmentation fault might occur in a worker process if
+    the &quot;ssl_verify_client&quot; directive of the stream module was
+    used.
+  - Bugfix: the &quot;ssl_verify_client&quot; directive of the stream module
+    might not work.
+  - Bugfix: closing keepalive connections due to no free worker
+    connections might be too aggressive.  Thanks to Joel
+    Cunningham.
+  - Bugfix: an incorrect response might be returned when using the
+    &quot;sendfile&quot; directive on FreeBSD and macOS; the bug had appeared
+    in 1.7.8.
+  - Bugfix: a truncated response might be stored in cache when
+    using the &quot;aio_write&quot; directive.
+  - Bugfix: a socket leak might occur when using the &quot;aio_write&quot;
+    directive.</comment>
+    <requestid>453452</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3bbdaeeaed66ed05de4d50d6b5481b55</srcmd5>
+    <version>1.11.10</version>
+    <time>1488408231</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461286</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>82d75580527fb5cfcac6907a274c05a4</srcmd5>
+    <version>1.11.12</version>
+    <time>1490965819</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483807</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9d6d78330a56a08de20b5e72aff65f20</srcmd5>
+    <version>1.12.0</version>
+    <time>1492618276</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489116</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9cddfba50fa6c64efd49e1cbbe38a6d1</srcmd5>
+    <version>1.13.1</version>
+    <time>1496327704</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.1
+  - Feature: now a hostname can be used as the &quot;set_real_ip_from&quot;
+    directive parameter.
+  - Feature: vim syntax highlighting scripts improvements.
+  - Feature: the &quot;worker_cpu_affinity&quot; directive now works on
+    DragonFly BSD.  Thanks to Sepherosa Ziehau.
+  - Bugfix: SSL renegotiation on backend connections did not work
+    when using OpenSSL before 1.1.0.
+  - Workaround: nginx could not be built with Oracle Developer
+    Studio 12.5.
+  - Workaround: now cache manager ignores long locked cache entries
+    when cleaning cache based on the &quot;max_size&quot; parameter.
+  - Bugfix: client SSL connections were immediately closed if
+    deferred accept and the &quot;proxy_protocol&quot; parameter of the
+    &quot;listen&quot; directive were used.
+  - Bugfix: in the &quot;proxy_cache_background_update&quot; directive.
+  - Workaround: now the &quot;tcp_nodelay&quot; directive sets the
+    TCP_NODELAY option before an SSL handshake.
+- changes from 1.13.0
+  - Change: SSL renegotiation is now allowed on backend
+    connections.
+  - Feature: the &quot;rcvbuf&quot; and &quot;sndbuf&quot; parameters of the &quot;listen&quot;
+    directives of the mail proxy and stream modules.
+  - Feature: the &quot;return&quot; and &quot;error_page&quot; directives can now be
+    used to return 308 redirections.  Thanks to Simon Leblanc.
+  - Feature: the &quot;TLSv1.3&quot; parameter of the &quot;ssl_protocols&quot;
+    directive.
+  - Feature: when logging signals nginx now logs PID of the process
+    which sent the signal.
+  - Bugfix: in memory allocation error handling.
+  - Bugfix: if a server in the stream module listened on a wildcard
+    address, the source address of a response UDP datagram could
+    differ from the original datagram destination address.</comment>
+    <requestid>500354</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>baff6ddd4d38f89202b8506f1bacc32f</srcmd5>
+    <version>1.13.3</version>
+    <time>1500975634</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>512240</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4be73b92db9309887c835c41c82395a6</srcmd5>
+    <version>1.13.5</version>
+    <time>1507280658</time>
+    <user>dimstar_suse</user>
+    <comment>- Submit nginx to SLES to become a http server for RMT(Repository
+  mirroring tool) [fate#323994, bsc#1059685, boo#1057831] 
+
+- disable extra modules on sle
+
+- update to 1.13.5
+  - Feature: the $ssl_client_escaped_cert variable.
+  - Bugfix: the &quot;ssl_session_ticket_key&quot; directive and the
+    &quot;include&quot; parameter of the &quot;geo&quot; directive did not work on
+    Windows.
+  - Bugfix: incorrect response length was returned on 32-bit
+    platforms when requesting more than 4 gigabytes with multiple
+    ranges.
+  - Bugfix: the &quot;expires modified&quot; directive and processing of the
+    &quot;If-Range&quot; request header line did not use the response last
+    modification time if proxying without caching was used.
+- changes from 1.13.4
+  - Feature: the ngx_http_mirror_module.
+  - Bugfix: client connections might be dropped during
+    configuration testing when using the &quot;reuseport&quot; parameter of
+    the &quot;listen&quot; directive on Linux.
+  - Bugfix: request body might not be available in subrequests if
+    it was saved to a file and proxying was used.
+  - Bugfix: cleaning cache based on the &quot;max_size&quot; parameter did
+    not work on Windows.
+  - Bugfix: any shared memory allocation required 4096 bytes on
+    Windows.
+  - Bugfix: nginx worker might be terminated abnormally when using
+    the &quot;zone&quot; directive inside the &quot;upstream&quot; block on Windows.</comment>
+    <requestid>531723</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b8bbf06ad867e9659dbae5c5040fa564</srcmd5>
+    <version>1.13.5</version>
+    <time>1507391476</time>
+    <user>dimstar_suse</user>
+    <comment>- extra modules were enabled on sles due to a typo</comment>
+    <requestid>532215</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8132fae1b002d40b1063e834cb9b35df</srcmd5>
+    <version>1.13.6</version>
+    <time>1508503631</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535272</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1e1b327cee9233f69d63a3a31935154d</srcmd5>
+    <version>1.13.7</version>
+    <time>1513677530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558079</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>9a976cd001bdbb5fc9cf97056818969a</srcmd5>
+    <version>1.13.7</version>
+    <time>1518025385</time>
+    <user>dimstar_suse</user>
+    <comment>- Install /etc/nginx/conf.d directory for custom user configuration
+  files 
+
+- Install /etc/nginx/vhosts.d directory for default installation
+  to house custom virtual hosts configuration files</comment>
+    <requestid>573758</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>60fd49483e479db7a8d779ea78a7f877</srcmd5>
+    <version>1.13.9</version>
+    <time>1519308081</time>
+    <user>dimstar_suse</user>
+    <comment>- update rmtp module to 1.2.1
+  - just commenting all places where we fallthrough conditionals
+
+- update headers more to 0.33
+  - feature: add wildcard match support for
+    more_clear_input_headers.
+
+- update fancyindex module to 0.4.2
+  This release contains an important fix which can cause Nginx to
+  crash when a directory contains zero-sized (empty) files. This
+  bug has been present in all previous releases, and all users are
+  strongly encouraged to update to version 0.4.2.
+  https://github.com/aperezdc/ngx-fancyindex/releases/tag/v0.4.2
+
+- changes from 1.13.9
+  - Feature: HTTP/2 server push support; the &quot;http2_push&quot; and
+    &quot;http2_push_preload&quot; directives.
+  - Bugfix: &quot;header already sent&quot; alerts might appear in logs when
+    using cache; the bug had appeared in 1.9.13.
+  - Bugfix: a segmentation fault might occur in a worker process if
+    the &quot;ssl_verify_client&quot; directive was used and no SSL
+    certificate was specified in a virtual server.
+  - Bugfix: in the ngx_http_v2_module.
+  - Bugfix: in the ngx_http_dav_module.
+- updates from 1.13.8
+  - Feature: now nginx automatically preserves the CAP_NET_RAW
+    capability in worker processes when using the &quot;transparent&quot;
+    parameter of the &quot;proxy_bind&quot;, &quot;fastcgi_bind&quot;,
+    &quot;memcached_bind&quot;, &quot;scgi_bind&quot;, and &quot;uwsgi_bind&quot; directives.
+  - Feature: improved CPU cache line size detection. Thanks to
+    Debayan Ghosh.
+  - Feature: new directives in vim syntax highlighting scripts.
+    Thanks to Gena Makhomed.
+  - Bugfix: binary upgrade refused to work if nginx was re-parented
+    to a process with PID different from 1 after its parent process
+    has finished.
+  - Bugfix: the ngx_http_autoindex_module incorrectly handled
+    requests with bodies.
+  - Bugfix: in the &quot;proxy_limit_rate&quot; directive when used with the
+    &quot;keepalive&quot; directive.
+  - Bugfix: some parts of a response might be buffered when using
+    &quot;proxy_buffering off&quot; if the client connection used SSL.
+    Thanks to Patryk Lesiewicz.
+  - Bugfix: in the &quot;proxy_cache_background_update&quot; directive.
+  - Bugfix: it was not possible to start a parameter with a
+    variable in the &quot;${name}&quot; form with the name in curly brackets
+    without enclosing the parameter into single or double quotes.</comment>
+    <requestid>578706</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0cb09bed179ff6dcc05b6c69d7213da3</srcmd5>
+    <version>1.13.9</version>
+    <time>1522317448</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend to use TLSv1.2 by default (boo#1086855)</comment>
+    <requestid>592007</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f1a682c9689c8e2f287dd4685acf6499</srcmd5>
+    <version>1.13.11</version>
+    <time>1523448070</time>
+    <user>maxlin_factory</user>
+    <comment>Update nginx to 1.13.11</comment>
+    <requestid>595142</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fb6da2e9243f1f1984ac122e24d11b34</srcmd5>
+    <version>1.14.0</version>
+    <time>1525697645</time>
+    <user>dimstar_suse</user>
+    <comment>Update nginx to 1.14.0</comment>
+    <requestid>605071</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>cb5161d8235e226c61bfd30781698004</srcmd5>
+    <version>1.14.0</version>
+    <time>1527605540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612712</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>c319f11fdf38e529fea749bd04320c07</srcmd5>
+    <version>1.14.0</version>
+    <time>1528492566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614517</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0799432289629d49856c13251b5b06c6</srcmd5>
+    <version>1.15.1</version>
+    <time>1532527997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625118</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f0fa7366fb437cdb99fe92affde8a0a6</srcmd5>
+    <version>1.15.2</version>
+    <time>1533045790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626497</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>da80ec842561e4cacf9e2d8d62a1875d</srcmd5>
+    <version>1.15.3</version>
+    <time>1536876186</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>635544</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>db58ccc5a1d0096500a3fb6830540a72</srcmd5>
+    <version>1.15.3</version>
+    <time>1537018882</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635763</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c9aad4f60da10984e05a241fb361749f</srcmd5>
+    <version>1.15.5</version>
+    <time>1541746508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647290</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8909df76ab823aa8109c405101902533</srcmd5>
+    <version>1.15.6</version>
+    <time>1542012212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647696</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ddb926c39fc0373704620689e33a8983</srcmd5>
+    <version>1.15.7</version>
+    <time>1545223853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659039</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e4c95f68d89fd4505e4f0612053438b4</srcmd5>
+    <version>1.15.8</version>
+    <time>1546535222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662211</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>82867bc0b225dbf8d133b8c9967d855c</srcmd5>
+    <version>1.15.10</version>
+    <time>1554977905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693038</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>da256ac79730dda3aa155b43cf8f0879</srcmd5>
+    <version>1.16.0</version>
+    <time>1557263942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701160</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>6489f563976d479743b25bfa7e9a7017</srcmd5>
+    <version>1.17.0</version>
+    <time>1558690413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705181</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a659f13e912ae2ae9a9a286f4757dcb6</srcmd5>
+    <version>1.17.1</version>
+    <time>1563362446</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>715679</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a0a6eeb4ba8e1108a4f90675def48994</srcmd5>
+    <version>1.17.2</version>
+    <time>1563993301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718030</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>796f8e5f82c61cf5fbdde0164f88ecc2</srcmd5>
+    <version>1.17.3</version>
+    <time>1565864984</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.17.3
+  - Security: when using HTTP/2 a client might cause excessive
+    memory consumption and CPU usage (CVE-2019-9511, CVE-2019-9513,
+    CVE-2019-9516).
+  - Bugfix: &quot;zero size buf&quot; alerts might appear in logs when using
+    gzipping; the bug had appeared in 1.17.2.
+  - Bugfix: a segmentation fault might occur in a worker process if
+    the &quot;resolver&quot; directive was used in SMTP proxy. (forwarded request 723395 from darix)</comment>
+    <requestid>723397</requestid>
+  </revision>
+</revisionlist>

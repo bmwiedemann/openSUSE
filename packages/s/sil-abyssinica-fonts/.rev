@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="157">
+    <srcmd5>12f70c38fb91ab732cc751b65f7e4875</srcmd5>
+    <version>1.0</version>
+    <time>1337195409</time>
+    <user>coolo</user>
+    <comment>Moving M17N/sil-abyssinica to M17N:fonts/sil-abyssinica-fonts.</comment>
+    <requestid>121160</requestid>
+  </revision>
+  <revision rev="2" vrev="158">
+    <srcmd5>238876ce25720c5fd657db2960f46516</srcmd5>
+    <version>1.0</version>
+    <time>1338017324</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122181</requestid>
+  </revision>
+  <revision rev="3" vrev="160">
+    <srcmd5>238876ce25720c5fd657db2960f46516</srcmd5>
+    <version>1.0</version>
+    <time>1340184216</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="161">
+    <srcmd5>e0c29d34919e03487fe4348b929f2a9b</srcmd5>
+    <version>1.0</version>
+    <time>1347619080</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133981</requestid>
+  </revision>
+  <revision rev="5" vrev="163">
+    <srcmd5>e0c29d34919e03487fe4348b929f2a9b</srcmd5>
+    <version>1.0</version>
+    <time>1359110405</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="165">
+    <srcmd5>e0c29d34919e03487fe4348b929f2a9b</srcmd5>
+    <version>1.0</version>
+    <time>1379664678</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="167">
+    <srcmd5>e0c29d34919e03487fe4348b929f2a9b</srcmd5>
+    <version>1.0</version>
+    <time>1409303365</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

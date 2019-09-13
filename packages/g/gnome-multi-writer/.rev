@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ad51ed421e0f22e1b8e80439e4b1045</srcmd5>
+    <version>3.15.2</version>
+    <time>1422959943</time>
+    <user>dimstar_suse</user>
+    <comment>New package from the GNOME stack - first 3.16 submission</comment>
+    <requestid>280602</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ade5e1667a37fda829e9b45f1fe27c77</srcmd5>
+    <version>3.15.4</version>
+    <time>1423130488</time>
+    <user>dimstar_suse</user>
+    <comment>Update from the unstable branch, but this is a new package where the only the unstable branch is available</comment>
+    <requestid>284127</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5568a85b7ea6a1d36b1b8403089a20ea</srcmd5>
+    <version>3.15.92</version>
+    <time>1426680322</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290970</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5ece6c45b63d24b75da4be574134260c</srcmd5>
+    <version>3.16.0</version>
+    <time>1427735850</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292750 from dimstar)</comment>
+    <requestid>292942</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a94c9b564d775a2da8c48c1d607b5748</srcmd5>
+    <version>3.16.0</version>
+    <time>1439556394</time>
+    <user>dimstar_suse</user>
+    <comment>- Own %{_datadir}/appdata for openSUSE 42.</comment>
+    <requestid>322377</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9bb7d1c6e90b2de4c8551772b53dd642</srcmd5>
+    <version>3.18.0</version>
+    <time>1444142206</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 334973 from dimstar)</comment>
+    <requestid>335054</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>686d3b3610116e8f08f3c6f86844030a</srcmd5>
+    <version>3.20.0</version>
+    <time>1459254819</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 376518 from dimstar)</comment>
+    <requestid>376797</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bea8f24655940376ecc0a1957937e996</srcmd5>
+    <version>3.22.0</version>
+    <time>1474623336</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.22.0 (forwarded request 428740 from dimstar)</comment>
+    <requestid>429090</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ff80e4e53e839f5b4d6c24f90d637543</srcmd5>
+    <version>3.22.1</version>
+    <time>1476779546</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435404</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d7afdca200c3bc53f2863f7f4096922a</srcmd5>
+    <version>3.24.0</version>
+    <time>1490220578</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.0 (forwarded request 481575 from dimstar)</comment>
+    <requestid>481590</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>263e0ecd2d130361db68f02c3b6f74eb</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332156</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523141</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f3e1006b76cf1caaa1f49620493a1673</srcmd5>
+    <version>3.26.0</version>
+    <time>1517932130</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gmw-gschema-fix-gettext-domain.patch: gschema: Fix
+  gettext-domain.
+- Add gmw-norwegian-bokmaal-translation.patch: Add Norwegian Bokmål
+  translations.</comment>
+    <requestid>572986</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>35c8d6930c157db03022139fab095f99</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052760</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0 (forwarded request 586040 from dimstar)</comment>
+    <requestid>586218</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d9d3fd7a215bff013896695764f00df6</srcmd5>
+    <version>3.30.0</version>
+    <time>1537187298</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636056</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0e54bb9e2d36defe4eb66f44cc96e20f</srcmd5>
+    <version>3.30.0</version>
+    <time>1545996972</time>
+    <user>dimstar_suse</user>
+    <comment>Add upstream bug fix patches (forwarded request 661688 from iznogood)</comment>
+    <requestid>661754</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5b96100500e3d3ae4463a5dfb0079a5c</srcmd5>
+    <version>3.32.0</version>
+    <time>1556916359</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase in summary. (forwarded request 695788 from jengelh)</comment>
+    <requestid>695801</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a81542c2ab7d865427c0e2186692cb24</srcmd5>
+    <version>3.32.1</version>
+    <time>1558690228</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.32.1 (forwarded request 704747 from dimstar)</comment>
+    <requestid>704776</requestid>
+  </revision>
+</revisionlist>

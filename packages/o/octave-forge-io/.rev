@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>716d00888a8c3624106b39a0616707d6</srcmd5>
+    <version>2.2.7</version>
+    <time>1434460324</time>
+    <user>coolo</user>
+    <comment>Part of Octave-Forge project</comment>
+    <requestid>310973</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f5661ad7e2e5b604595e8b3aed50667d</srcmd5>
+    <version>2.2.8</version>
+    <time>1435053657</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313148</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>60d47f135fdf18cff62c4e0fdddcb081</srcmd5>
+    <version>2.2.9</version>
+    <time>1440337365</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.9
+  * Bug fixes</comment>
+    <requestid>316835</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac0aeec42488ee95004b5e66fb90fcc9</srcmd5>
+    <version>2.2.10</version>
+    <time>1443585194</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.10
+  * Support for Named Ranges
+  * Bug fixes</comment>
+    <requestid>334531</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f36f1bdcc1fcf37c848b49b686274ade</srcmd5>
+    <version>2.2.11</version>
+    <time>1445860134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.11
+  * Bug fixes</comment>
+    <requestid>340497</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d388b1964837170043854a7e3abd39f7</srcmd5>
+    <version>2.4.1</version>
+    <time>1465938455</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401264</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>da8fc642dc728882d948e09b67f4e75b</srcmd5>
+    <version>2.4.2</version>
+    <time>1468049110</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407250</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>76e1d93f7936cf02c37fa942648ed51d</srcmd5>
+    <version>2.4.3</version>
+    <time>1474476503</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428397</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6592917468454e144891966ed7925f39</srcmd5>
+    <version>2.4.5</version>
+    <time>1485682433</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442079</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>10e58770133599284f8d40b74fd87fd1</srcmd5>
+    <version>2.4.8</version>
+    <time>1510960833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541578</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aba73ce44cddf94624992abf61aaa8fc</srcmd5>
+    <version>2.4.11</version>
+    <time>1530303958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>616562</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8c9776478597442e236e6c536869580b</srcmd5>
+    <version>2.4.12</version>
+    <time>1543224540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651308</requestid>
+  </revision>
+</revisionlist>

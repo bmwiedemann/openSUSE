@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>546eb5cdb0d6c468d5442262f8235f66</srcmd5>
+    <version>71e6c71</version>
+    <time>1503592475</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain libcli in Factory</comment>
+    <requestid>508244</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f73d502dc23386adf6184af6a486175</srcmd5>
+    <version>1.9.7+git.20161026</version>
+    <time>1507897064</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533177</requestid>
+  </revision>
+</revisionlist>

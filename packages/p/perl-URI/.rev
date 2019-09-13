@@ -1,0 +1,302 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>47b33b94346011d50db74caf42ffcd44</srcmd5>
+    <version>1.35</version>
+    <time>1168903925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d1ebb9ac5676ffcdaad86dcbf9fe1534</srcmd5>
+    <version>1.36</version>
+    <time>1207820077</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d6583ad71e0757fa8d8bc7c721d40871</srcmd5>
+    <version>1.37</version>
+    <time>1214845533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="26">
+    <srcmd5>601e2e5a01da76a298e88590930bf4f2</srcmd5>
+    <version>1.37</version>
+    <time>1245338131</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2e929c1f6d9d5ea540ff407e1fac170d</srcmd5>
+    <version>1.38</version>
+    <time>1248879215</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ca2448548d5ed50b3e462a0a70439164</srcmd5>
+    <version>1.38</version>
+    <time>1252579978</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-URI based on submit request 20051 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>ca2448548d5ed50b3e462a0a70439164</srcmd5>
+    <version>1.38</version>
+    <time>1252579978</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-URI based on submit request 20051 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>446da595db602bb589d3df743138d3ea</srcmd5>
+    <version>1.38</version>
+    <time>1263483995</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-URI based on submit request 28938 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>92d62021de50e747a170e666d5e33308</srcmd5>
+    <version>1.52</version>
+    <time>1263819222</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-URI based on submit request 29674 from user anicka
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>874d4e25035c45c434d7ad414240f443</srcmd5>
+    <version>1.52</version>
+    <time>1268925648</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2a59a7920fa08cf77855ee4e29b56be1</srcmd5>
+    <version>1.53</version>
+    <time>1269616847</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-URI based on submit request 35799 from user coolo
+</comment>
+    <requestid>35799</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cc0ffaa65e3adf8f24b71a0bea79d383</srcmd5>
+    <version>1.54</version>
+    <time>1270246367</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-URI based on submit request 36770 from user anicka
+</comment>
+    <requestid>36770</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>cc0ffaa65e3adf8f24b71a0bea79d383</srcmd5>
+    <version>1.54</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>cc0ffaa65e3adf8f24b71a0bea79d383</srcmd5>
+    <version>1.54</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>c5fcacc7d9f64462cf9de1ca42f2a299</srcmd5>
+    <version>unknown</version>
+    <time>1283787615</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-URI based on submit request 47143 from user computersalat
+</comment>
+    <requestid>47143</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>8f0da13db026c772da2f394434311dcd</srcmd5>
+    <version>1.56</version>
+    <time>1290431297</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53654 from user anicka
+</comment>
+    <requestid>53654</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>4ac55c6dcf17debfd35f0345a0fa1f16</srcmd5>
+    <version>1.56</version>
+    <time>1290431307</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53654
+</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>2dbcb02923b47f91ac9dff0c5b000380</srcmd5>
+    <version>1.56</version>
+    <time>1291584380</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54688 from user coolo
+</comment>
+    <requestid>54688</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>0be0a701b87af803e1defb54eaa8becf</srcmd5>
+    <version>1.56</version>
+    <time>1291584387</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54688
+</comment>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>ab49e244f73f97e9511d9849fb83def4</srcmd5>
+    <version>1.58</version>
+    <time>1295881171</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59035 from user vitezslav_cizek
+</comment>
+    <requestid>59035</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>3fb19618b5f198345f78e714a61a80cb</srcmd5>
+    <version>1.58</version>
+    <time>1295881181</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59035
+</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>3fb19618b5f198345f78e714a61a80cb</srcmd5>
+    <version>1.58</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9ed7f55710556ce4b417d56ab79de1a8</srcmd5>
+    <version>1.59</version>
+    <time>1314621020</time>
+    <user>saschpe</user>
+    <comment>- update to 1.59
+  Make sure accessor methods don't return utf8::upgraded() bytes
+  for URLs initialized from Unicode strings.
+  Version number increments.
+  Documentation tweaks.</comment>
+    <requestid>80016</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>42f82d55ba4d4fd2da45120c924503b7</srcmd5>
+    <version>1.59</version>
+    <time>1316447926</time>
+    <user>lrupp</user>
+    <comment>- use original source URI</comment>
+    <requestid>82409</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>42f82d55ba4d4fd2da45120c924503b7</srcmd5>
+    <version>1.59</version>
+    <time>1319182319</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>625ea296cc578c5f2b447a63d70b17c9</srcmd5>
+    <version>1.59</version>
+    <time>1323193767</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e40c5ef07c3787802e14cf7d8936e4bc</srcmd5>
+    <version>1.60</version>
+    <time>1334692839</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113761</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>e40c5ef07c3787802e14cf7d8936e4bc</srcmd5>
+    <version>1.60</version>
+    <time>1340183947</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>e40c5ef07c3787802e14cf7d8936e4bc</srcmd5>
+    <version>1.60</version>
+    <time>1359109839</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>e40c5ef07c3787802e14cf7d8936e4bc</srcmd5>
+    <version>1.60</version>
+    <time>1379663908</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>e40c5ef07c3787802e14cf7d8936e4bc</srcmd5>
+    <version>1.60</version>
+    <time>1409302556</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6147aa3e98b67c7d7c7cb79bdac34a66</srcmd5>
+    <version>1.67</version>
+    <time>1429989304</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>296260</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>2c01f99e920a63a1abdd37fac7e84b1d</srcmd5>
+    <version>1.68</version>
+    <time>1436887235</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314105</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>723a032b7f3fa527dd3b3ffb978ee2a7</srcmd5>
+    <version>1.69</version>
+    <time>1438076546</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318723</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1ef0cd006be54dfa87181d09181d8efb</srcmd5>
+    <version>1.71</version>
+    <time>1453018976</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353511</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>26362c0fcc45f74388acbad1f53e34da</srcmd5>
+    <version>1.72</version>
+    <time>1502011816</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512884</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e74631cb5e8c178a3b92a46b1ed823a9</srcmd5>
+    <version>1.73</version>
+    <time>1515875661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563261</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>12427b32df804d5238bc0e48502ddbac</srcmd5>
+    <version>1.74</version>
+    <time>1524741749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600308</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1bdfe9b418f4f5cdbef4c8b0d133dd91</srcmd5>
+    <version>1.76</version>
+    <time>1548061599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664592</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+<package name="azure-cli-backup" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'backup' Command Module</title>
+  <description>Microsoft Azure CLI 'backup' Command Module
+
+This package is for the 'backup' module.
+i.e. 'az backup'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-backup"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

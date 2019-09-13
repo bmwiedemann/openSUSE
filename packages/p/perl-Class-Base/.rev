@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae31fda4920bb7b5a3d75d77ef655a44</srcmd5>
+    <version>0.03</version>
+    <time>1326378359</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>99734</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9c45a4d9e6ff76b6829f3437dfb2f581</srcmd5>
+    <version>0.04</version>
+    <time>1329242685</time>
+    <user>coolo</user>
+    <comment>- updated to 0.04
+ * Test script is using Test::More instead the home-made ok() and is().
+ * Recommend using Badger::Base instead.</comment>
+    <requestid>103814</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9c45a4d9e6ff76b6829f3437dfb2f581</srcmd5>
+    <version>0.04</version>
+    <time>1340183805</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>9c45a4d9e6ff76b6829f3437dfb2f581</srcmd5>
+    <version>0.04</version>
+    <time>1359109613</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a1448ccb496b07bb90980bb9eb4ba83c</srcmd5>
+    <version>0.05</version>
+    <time>1370447293</time>
+    <user>coolo</user>
+    <comment>- updated to 0.05
+ * Silencing a warning by chromatic RT 75286
+ * Linking to source repository (forwarded request 177278 from coolo)</comment>
+    <requestid>177360</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a1448ccb496b07bb90980bb9eb4ba83c</srcmd5>
+    <version>0.05</version>
+    <time>1379663578</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>a1448ccb496b07bb90980bb9eb4ba83c</srcmd5>
+    <version>0.05</version>
+    <time>1409302193</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ca62ab7b492c7ab03c3a5c4c35a9dd98</srcmd5>
+    <version>0.06</version>
+    <time>1429107786</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296042</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>862188f98764454d4e7452827e7bac11</srcmd5>
+    <version>0.08</version>
+    <time>1478517717</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416433</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dc4d7a06a80d44cc34b723689b165d91</srcmd5>
+    <version>0.09</version>
+    <time>1516804235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568417</requestid>
+  </revision>
+</revisionlist>

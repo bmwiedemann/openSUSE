@@ -1,0 +1,493 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ede2085fc9c7fb88dac245a72bc72fc4</srcmd5>
+    <version>2.2.3</version>
+    <time>1312447511</time>
+    <user>saschpe</user>
+    <comment>qpdf is a C++ library with a console program for PDF manipulation. It has a non-trivial test-suite and included in Debian.</comment>
+    <requestid>77853</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>077d5cd99f340b182022667aa47fb219</srcmd5>
+    <version>2.2.3</version>
+    <time>1312447522</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77853
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>177f17ccbed7b7176a24de39d33c33aa</srcmd5>
+    <version>2.2.4</version>
+    <time>1312462146</time>
+    <user>saschpe</user>
+    <comment>- Update to v.2.2.4
+  * Build system fixes
+- Drop qpdf-gcc46.patch and qpdf-nostrip.patch: applied upstream</comment>
+    <requestid>77997</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>edf751877c9c4a9aeda05bd3b2651e80</srcmd5>
+    <version>2.2.4</version>
+    <time>1312462156</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77997
+</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>edf751877c9c4a9aeda05bd3b2651e80</srcmd5>
+    <version>2.2.4</version>
+    <time>1319182416</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>ac00c6788ceeeb77ecff6caccf980947</srcmd5>
+    <version>2.2.4</version>
+    <time>1323194323</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f31798e854dc748ea83df3cafd58c91a</srcmd5>
+    <version>2.3.1</version>
+    <time>1325658646</time>
+    <user>coolo</user>
+    <comment>- Update to v2.3.1
+  * Fix threading problem with PCRE usage
+
+- Update to v2.2.4
+- Update to v2.3.3</comment>
+    <requestid>98601</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>39f1c0b57c054444cecaacc11d73fc3b</srcmd5>
+    <version>2.3.1</version>
+    <time>1327484453</time>
+    <user>coolo</user>
+    <comment>- Fix devel package requires
+- Build with -fvisibility-inlines-hidden, test suite
+  confirms it works and saves a few dozens of entries in the 
+  exported symbol table. (forwarded request 101208 from elvigia)</comment>
+    <requestid>101210</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5006da2c52eb2e22c473176be11849c7</srcmd5>
+    <version>2.3.1</version>
+    <time>1328712128</time>
+    <user>coolo</user>
+    <comment>Forward</comment>
+    <requestid>103129</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>943ec06d02b4db75fc01f784f3fe25f3</srcmd5>
+    <version>2.3.1</version>
+    <time>1330364179</time>
+    <user>coolo</user>
+    <comment>- fix build with pcre 8.30</comment>
+    <requestid>107116</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>3e5fd48ef382ca6c5291105d82864adf</srcmd5>
+    <version>2.3.1</version>
+    <time>1335190366</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 114934 from dimstar)</comment>
+    <requestid>114947</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>3e5fd48ef382ca6c5291105d82864adf</srcmd5>
+    <version>2.3.1</version>
+    <time>1340184127</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0a6b43ec4a779a9f9d33e54c40565eb1</srcmd5>
+    <version>3.0.0</version>
+    <time>1344065493</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.0.0
+  * Page-based splitting and merging
+  * Support for large files
+  * The ability to set the encryption parameters of one file by copying
+    them from another file. 
+  * Support for creating PDF files from scratch
+- Drop applied patches</comment>
+    <requestid>129653</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>60b5d02b213e8661256aad310405e965</srcmd5>
+    <version>3.0.1</version>
+    <time>1344778079</time>
+    <user>namtrac</user>
+    <comment>- Update to version 3.0.1
+  *  qpdf may falsely report premature EOF when reading files that 
+     have object streams that end with scalars not followed by 
+     whitespace.</comment>
+    <requestid>130658</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>54e9066929c97b654e52a5e50e16696f</srcmd5>
+    <version>3.0.2</version>
+    <time>1347347933</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.0.2
+  * Calling QPDFWriter::setOutputMemory would result in a
+  segmentation fault from write() if setStaticID() was not used.
+  * New method call QPDFWriter::setExtraHeaderText to add text
+  * Make it so that you can write the same QPDF object through two
+  different QPDFWriter objects that both have linearization enabled.</comment>
+    <requestid>133223</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d9e185d9d6c6f2037f0b8ff4359ce306</srcmd5>
+    <version>4.0.0</version>
+    <time>1357128069</time>
+    <user>namtrac</user>
+    <comment>- Update to version 4.0.0
+  * Support for Acrobat X &amp; XI encryption
+  * Support for extension levels in PDF version information.
+  * New methods for supporting read and write from/to arbitrary sources.
+  * Support for unencrypted files with encrypted attachments.
+  * Support for files with junk preceding the PDF header.</comment>
+    <requestid>146752</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e012dca4dd9fe0d6f4776de14182b6c8</srcmd5>
+    <version>4.0.0</version>
+    <time>1357295894</time>
+    <user>namtrac</user>
+    <comment>- Detect binary attachments better (qpdf-ppc64.patch)
+  This fix eliminates a false test failure on some platforms and makes
+  the binary test work properly whether characters with the high bit
+  set, when treated as integers, are negative or not.
+- pass --enable-show-failed-test-output to configure, to see 
+  detailed failure reason in build log. (forwarded request 146935 from k0da)</comment>
+    <requestid>146937</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>e012dca4dd9fe0d6f4776de14182b6c8</srcmd5>
+    <version>4.0.0</version>
+    <time>1359110261</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>96d0894b16910f4d2acda0d9402beeeb</srcmd5>
+    <version>4.1.0</version>
+    <time>1366017447</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.1.0
+  * New API calls for parsing PDF content streams
+  * qpdf --check now parses all pages' content streams in addition
+    to doing other checks.
+  * Overridden compressed objects are properly handled.
+- Drop qpdf-ppc64.patch: merged upstream</comment>
+    <requestid>164008</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6d757c76eabef8f5d601ee077e4cad09</srcmd5>
+    <version>4.2.0</version>
+    <time>1373312749</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.2.0
+  * Fixes bug that would result in the loss of compressible objects
+    whose generation numbers were greater than 0 when generating
+    object streams.
+  * Added better API calls for handling object ID and generation
+    together as a QPDFObjGen.
+  * Added --show-npages option to the qpdf command-line tool.
+  * Several small enhancements to make qpdf able to handle a wider
+    range of broken input files.</comment>
+    <requestid>182475</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5b115678311fce6332c301c9f21c0740</srcmd5>
+    <version>5.0.0</version>
+    <time>1373655428</time>
+    <user>coolo</user>
+    <comment>- Update to 5.0.0
+  * Same as 4.2.0 but shared lib version bumped due to ABI changes
+- Apply shared library packaging policy</comment>
+    <requestid>182762</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>5b115678311fce6332c301c9f21c0740</srcmd5>
+    <version>5.0.0</version>
+    <time>1379664413</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>564ec54e3651748eac6d6f792cdf5048</srcmd5>
+    <version>5.0.1</version>
+    <time>1382515869</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 5.0.1
+  * Some security fixes, courtesy of Redhat</comment>
+    <requestid>204265</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0f18b01fb0bbb5f9764e4e4d9f718c1f</srcmd5>
+    <version>5.1.0</version>
+    <time>1387452709</time>
+    <user>coolo</user>
+    <comment>- Update to version 5.1.0
+  * Add ability to provide your own source of random numbers
+    at runtime
+  * More handling of damaged PDF files</comment>
+    <requestid>211438</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3352c3d5f66fe7bc9ed4c8a5bfd46c81</srcmd5>
+    <version>5.1.1</version>
+    <time>1390247040</time>
+    <user>coolo</user>
+    <comment>- Update to version 5.1.1
+  * Fixes https://github.com/qpdf/qpdf/issues/28</comment>
+    <requestid>214178</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>ee6aa02d73f9214897c51bf33915f9cb</srcmd5>
+    <version>5.1.1</version>
+    <time>1391030540</time>
+    <user>coolo</user>
+    <comment>Provide the license source file Artistic-2.0 in the binary RPM (forwarded request 215486 from jsmeix)</comment>
+    <requestid>215559</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b8722bab72a524eeaf3cc2fe1107b74f</srcmd5>
+    <version>5.1.2</version>
+    <time>1402947784</time>
+    <user>coolo</user>
+    <comment>- Update to version 5.1.2
+  * Please see the included ChangeLog file</comment>
+    <requestid>236946</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>b8722bab72a524eeaf3cc2fe1107b74f</srcmd5>
+    <version>5.1.2</version>
+    <time>1409303139</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>df144200c6dfb08867ea15cabe2f1c16</srcmd5>
+    <version>5.1.3</version>
+    <time>1432723129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.3
+  * Handle object streams with more than 255 objects
+  * Security fixes courtesy of Google Security Team
+  * Properly handle pages that have no content
+  * Robustness fixes for invalid PDF files</comment>
+    <requestid>308619</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5139dd8e09e9399a27cdd4164e1b422a</srcmd5>
+    <version>6.0.0</version>
+    <time>1448186311</time>
+    <user>coolo</user>
+    <comment>- Update to version 6.0.0
+  * Bump shared library version since 5.2.0 broke ABI.
+
+- Update to version 5.2.0
+  * Support for deterministic /IDs for non-encrypted files. This is
+    off by default.
+  * Handle more invalid xref tables</comment>
+    <requestid>343515</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b091b8b0d2cc0033153c1d4d0e6a3a50</srcmd5>
+    <version>7.0.0</version>
+    <time>1506340391</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.0.0
+  * License is now Apache-2.0
+  * Add new libjpeg8-devel dependency
+  * Improve the error message that is issued when QPDFWriter
+	encounters a stream that can't be decoded. In particular, mention
+	that the stream will be copied without filtering to avoid data
+	loss.
+  * Add new methods to the C API to correspond to new additions to
+	QPDFWriter:
+	- qpdf_set_compress_streams
+	- qpdf_set_decode_level
+	- qpdf_set_preserve_unreferenced_objects
+	- qpdf_set_newline_before_endstream
+  * Add support for writing PCLm files
+  * QPDF now supports reading and writing streams encoded with
+    JPEG or RunLength encoding. Library API enhancements and
+    command-line options have been added to control this
+    behavior. See command-line options --compress-streams
+    and --decode-level and methods QPDFWriter::setCompressStreams
+    and QPDFWriter::setDecodeLevel.
+  * Page rotation is now supported and accessible from both the
+    library and the command line.
+  * Fixes CVE-2017-12595 bsc#1055960, CVE-2017-9208 bsc#1040311
+    CVE-2017-9209 bsc#1040312, CVE-2017-9210 bsc#1040313,
+    CVE-2017-11627 bsc#1050577, CVE-2017-11626 bsc#1050578,
+    CVE-2017-11625 bsc#1050579, CVE-2017-11624 bsc#1050581</comment>
+    <requestid>527520</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ab606246be12d9b767c1bfcd3edf9b34</srcmd5>
+    <version>7.1.0</version>
+    <time>1516971373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568821</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>461b120b10300d3f53398f01bad0abbc</srcmd5>
+    <version>7.1.1</version>
+    <time>1517931988</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.1.1
+  * Fix one linearization bug affecting files whose first /ID
+    component is not 16 bytes long
+  * Fix some build issues
+- Add signature and keyring</comment>
+    <requestid>572535</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7edf299f1058a557b025be07ed9b90e6</srcmd5>
+    <version>8.0.0</version>
+    <time>1519902396</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.0.0
+  * QPDFObjectHandle::getUTF8Val now properly treats non-Unicode
+    strings as encoded with PDF Doc Encoding.
+  * Add the option --coalesce-contents can be used to combine
+    content streams of a page whose contents are an array of
+    streams into a single stream.
+  * Add function qpdf_check_pdf to the C API. This function does
+    basic checking that is a subset of what qpdf --check performs.
+  * Major enhancements to the lexical layer of qpdf. For a complete
+    list of enhancements, please refer to the ChangeLog file.
+  * New API for working with PDF content streams at a lexical level.
+    The new class QPDFObjectHandle::TokenFilter allows the developer
+    to provide token handlers.</comment>
+    <requestid>580506</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5938cbffaf25c576c3a7b4c6c473d4ee</srcmd5>
+    <version>8.0.2</version>
+    <time>1520852649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.0.2
+  * Proper handling of pages with no content
+  * Better handling of files with loops following cross reference
+    tables
+
+- Update to version 8.0.1
+  * Handle zlib streams with data checksum errors
+  * In the command line tool, allow specification of page numbers
+    counting from the end in page ranges.</comment>
+    <requestid>583769</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2467884c675f40198068466c4aadfb4f</srcmd5>
+    <version>8.1.0</version>
+    <time>1530740966</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.1.0
+  Usability improvements:
+  * When splitting files, qpdf detects fonts and images that the
+    document metadata claims are referenced from a page but are
+    not actually referenced and omits them from the output file.
+  * When merging multiple PDF files, qpdf no longer leaves all
+    the files open.
+  * The --rotate option's syntax has been extended to make the
+    page range optional. If you specify --rotate=angle without
+    specifying a page range, the rotation will be applied to
+    all pages.
+  * When merging multiple files, the --verbose option now prints
+    information about each file as it operates on that file.
+  * When the --progress option is specified, qpdf will print a
+    running indicator of its best guess at how far through the
+    writing process it is. 
+  Bug fixes:
+  
+  * Properly decrypt files that use revision 3 of the standard
+    security handler but use 40 bit keys 
+    (even though revision 3 supports 128-bit keys).
+  * Limit depth of nested data structures to prevent crashes
+    from certain types of malformed (malicious) PDFs.
+  * In “newline before endstream” mode, insert the required
+    extra newline before the endstream at the end of object streams.
+  Please see included ChangeLog for complete changelog including
+  API changes.</comment>
+    <requestid>619138</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>070dbbad15a8823d6fa1481f8507f748</srcmd5>
+    <version>8.2.1</version>
+    <time>1535440839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.2.1
+  Command-line Enchancements
+  * Add --keep-files-open=[yn] to override default determination
+    of whether to keep files open when merging.
+- Update to version 8.2.0
+  Command-line Enhancements
+  * Add --no-warn option to suppress issuing warning messages.
+    If there are any conditions that would have caused warnings
+    to be issued, the exit status is still 3.
+  Bug fixesd and Optimizations
+  * Performance fix: optimize page merging operation to avoid
+    unnecessary open/close calls on files being merged. This
+    solves a dramatic slow-down that was observed when merging
+    certain types of files.
+  * Optimize how memory was used for the TIFF predictor,
+    drastically improving performance and memory usage for files
+    containing high-resolution images compressed with Flate
+    using the TIFF predictor.
+  * Bug fix: end of line characters were not properly handled
+    inside strings in some cases.
+  * Bug fix: using --progress on very small files could cause
+    an infinite loop.
+  API enhancements
+  * Add new class QPDFSystemError, derived from std::runtime_error,
+    which is now thrown by QUtil::throw_system_error. This enables
+    the triggering errno value to be retrieved.
+  * Add ClosedFileInputSource::stayOpen method, enabling a
+    ClosedFileInputSource to stay open during manually indicated
+    periods of high activity, thus reducing the overhead of
+    frequent open/close operations.</comment>
+    <requestid>630484</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>84b4b318e0d2392c1651b6c5d276bb4d</srcmd5>
+    <version>8.3.0</version>
+    <time>1548452512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667891</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>45d45aad6151b1090b54786e7159e029</srcmd5>
+    <version>8.4.0</version>
+    <time>1549629982</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671340</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>982cd8d4e1e2a850accb5696df43ea2f</srcmd5>
+    <version>8.4.1</version>
+    <time>1556817299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.4.1
+  * See included ChangeLog file for the complete changelog</comment>
+    <requestid>699431</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>60e56706cf39d35d664c46eb6d3003b1</srcmd5>
+    <version>9.0.0</version>
+    <time>1568189989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.0.0
+  * See included ChangeLog file for the complete changelog</comment>
+    <requestid>727558</requestid>
+  </revision>
+</revisionlist>

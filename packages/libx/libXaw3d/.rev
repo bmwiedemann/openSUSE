@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e55595bc2832b7756e2d486d9b3a3df</srcmd5>
+    <version>1.6.2</version>
+    <time>1385442742</time>
+    <user>coolo</user>
+    <comment>First accepted my own SR then resubmit to Factory</comment>
+    <requestid>205215</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>29ba6d5886c617c40c8d6c13e457838a</srcmd5>
+    <version>1.6.2</version>
+    <time>1385738642</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208516</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>29ba6d5886c617c40c8d6c13e457838a</srcmd5>
+    <version>1.6.2</version>
+    <time>1409301482</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5c02dfc45d5b1ea8269f455f80c016c0</srcmd5>
+    <version>1.6.2</version>
+    <time>1409761288</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247075</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>296cea08b88ec03d5bfc50d4145fc815</srcmd5>
+    <version>1.6.2</version>
+    <time>1412699024</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254143</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>463d688499c4e89414e0dd5fa9973491</srcmd5>
+    <version>1.6.3</version>
+    <time>1530740875</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.6.3
+  * Avoid using dead pointer in _XawTextSetSelection
+  * Fix copied from 2D libXaw commit 11c3a104141e1a4946ad949dfb5514df0b66a031
+  * autogen: add default patch prefix
+  * autogen.sh: use quoted string variables
+  * Place quotes around the $srcdir, $ORIGDIR and $0 variables to prevent
+    fall-outs, when they contain space.
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Syncs the invocation of configure with the one from the server.
+  * darwin: Remove incorrect export of vendorShellClassRec and vendorShellWidgetClass
+  * Get rid of some extraneous ; at the end of C source lines
+  * Use SEEK_* names instead of raw numbers for fseek whence argument
+  * Just use C89 size_t instead of rolling our own Size_t &amp; Off_t
+  * Fix abs() usage.
+  * For long arguments, use labs().
+  * autogen.sh: Honor NOCONFIGURE=1
+  * configure: Drop AM_MAINTAINER_MODE
+  * Remove support for pre-C89 headers (unifdef -UX_NOT_STDC_ENV)
+  * Replace TXT16 with XChar2b inline
+  * No longer need #define to substitute it now that we no longer set
+    it to a different type on CRAY systems.
+  * Remove CRAY/WORD64 support (unifdef -UCRAY -UWORD64)
+  * Fix --disable-feature options in configure
+  * Make --disable-feature options passed to configure not enable
+    the feature but keep it disabled instead.
+- Port our patches to new version</comment>
+    <requestid>617712</requestid>
+  </revision>
+</revisionlist>

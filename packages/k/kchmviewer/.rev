@@ -1,0 +1,252 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>05e9dc3463b1f0517660c3df55dc59a9</srcmd5>
+    <version>2.6</version>
+    <time>1168903171</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fadbe93ae67e64acadc7ac068bb81fd2</srcmd5>
+    <version>2.7</version>
+    <time>1170088502</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a6c590875432f944fd56b405b6a58618</srcmd5>
+    <version>3.0</version>
+    <time>1173919296</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="10">
+    <srcmd5>825ac741055368a311bd65261ce1e1a2</srcmd5>
+    <version>3.0</version>
+    <time>1177949594</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8de98245a84e165e8f66af280efd1289</srcmd5>
+    <version>3.1</version>
+    <time>1182074938</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="34">
+    <srcmd5>5962e34a616ed4ea9cd0ef422d3487db</srcmd5>
+    <version>3.1</version>
+    <time>1191854859</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="46">
+    <srcmd5>f52fbac6819096a62ec5e5a80b80df18</srcmd5>
+    <version>3.1</version>
+    <time>1193669567</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="160">
+    <srcmd5>f52fbac6819096a62ec5e5a80b80df18</srcmd5>
+    <version>3.1</version>
+    <time>1193669567</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>093bf12b3854b876b3aac59d8a1d1a3b</srcmd5>
+    <version>4.0</version>
+    <time>1237334060</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6b01922a8c8f44d0c24c1651135cf8f0</srcmd5>
+    <version>4.1</version>
+    <time>1248732215</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9e462d8ca8f32a5f1c1ebb45280203bd</srcmd5>
+    <version>4.1</version>
+    <time>1250903228</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kchmviewer based on submit request 18117 from user Beineri
+</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>9e462d8ca8f32a5f1c1ebb45280203bd</srcmd5>
+    <version>4.1</version>
+    <time>1250903228</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kchmviewer based on submit request 18117 from user Beineri
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2836f1ac840d77b97c6680eb922eac49</srcmd5>
+    <version>4.2</version>
+    <time>1256918254</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kchmviewer based on submit request 23361 from user Beineri
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>161a7e5c66a5ea7f7137c893344c4265</srcmd5>
+    <version>5.1</version>
+    <time>1261440451</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kchmviewer based on submit request 27305 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b9587a1fbb129452adb2af139a173cda</srcmd5>
+    <version>5.1</version>
+    <time>1268924168</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>b9587a1fbb129452adb2af139a173cda</srcmd5>
+    <version>5.1</version>
+    <time>1278667354</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>b9587a1fbb129452adb2af139a173cda</srcmd5>
+    <version>5.1</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8ebbce27a019bb08f8640c4f79a1810f</srcmd5>
+    <version>5.2</version>
+    <time>1279566323</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kchmviewer based on submit request 43155 from user Beineri
+</comment>
+    <requestid>43155</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c6f3f4db69e0188893f3b9eb2abc35c5</srcmd5>
+    <version>5.3</version>
+    <time>1295289649</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58415 from user tittiatcoke
+</comment>
+    <requestid>58415</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>03aa9896a9209eaadfc66356a519b1ba</srcmd5>
+    <version>5.3</version>
+    <time>1295289667</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58415
+</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>03aa9896a9209eaadfc66356a519b1ba</srcmd5>
+    <version>5.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>03aa9896a9209eaadfc66356a519b1ba</srcmd5>
+    <version>5.3</version>
+    <time>1319182024</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>c879062e98b6784d2d9093a0f8b77381</srcmd5>
+    <version>5.3</version>
+    <time>1323192067</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ed97a62e86ac9927bb2e4e2a47570dcb</srcmd5>
+    <version>6.0</version>
+    <time>1327673888</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>101720</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>ed97a62e86ac9927bb2e4e2a47570dcb</srcmd5>
+    <version>6.0</version>
+    <time>1340183500</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>5468336ca2d971e3b5e967ba2784e2b2</srcmd5>
+    <version>6.0</version>
+    <time>1354095356</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143290</requestid>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>5468336ca2d971e3b5e967ba2784e2b2</srcmd5>
+    <version>6.0</version>
+    <time>1359109141</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>5468336ca2d971e3b5e967ba2784e2b2</srcmd5>
+    <version>6.0</version>
+    <time>1379662743</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>5468336ca2d971e3b5e967ba2784e2b2</srcmd5>
+    <version>6.0</version>
+    <time>1409301314</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>35de7b82ee811ad759fca22678e2b284</srcmd5>
+    <version>6.1</version>
+    <time>1412533925</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253917</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0eb42f9b1ac5136958e7819584a96ca5</srcmd5>
+    <version>7.2.1</version>
+    <time>1421052610</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280808</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>468db29f34c1dc8e9e8c47923b59059f</srcmd5>
+    <version>7.2.1</version>
+    <time>1480584411</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442638</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>80d1f7b724dee9216936de975b98f506</srcmd5>
+    <version>7.2.1</version>
+    <time>1513583856</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with Qt5, Qt4's QtWebKit is about to be dropped (forwarded request 556914 from wolfi323)</comment>
+    <requestid>556918</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>5edde311b5a12b48eb41fad2bad9b0ff</srcmd5>
+    <version>7.5</version>
+    <time>1515876320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559487</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4dd64c089d726b37661f77b490ec850f</srcmd5>
+    <version>7.7</version>
+    <time>1527583647</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 7.7</comment>
+    <requestid>612407</requestid>
+  </revision>
+</revisionlist>

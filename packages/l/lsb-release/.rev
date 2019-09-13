@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a17bb77a2337602d9fa10e63633ef9b9</srcmd5>
+    <version>2.0</version>
+    <time>1248252478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a17bb77a2337602d9fa10e63633ef9b9</srcmd5>
+    <version>2.0</version>
+    <time>1248252478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>45f44dca1f5cb7769eae3262a7aa48a4</srcmd5>
+    <version>2.0</version>
+    <time>1268924854</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>45f44dca1f5cb7769eae3262a7aa48a4</srcmd5>
+    <version>2.0</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>45f44dca1f5cb7769eae3262a7aa48a4</srcmd5>
+    <version>2.0</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>44baa789d8c47ccf024b70777f07c6de</srcmd5>
+    <version>2.0</version>
+    <time>1285064099</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/lsb-release based on submit request 48567 from user kukuk
+</comment>
+    <requestid>48567</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>44baa789d8c47ccf024b70777f07c6de</srcmd5>
+    <version>2.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>44baa789d8c47ccf024b70777f07c6de</srcmd5>
+    <version>2.0</version>
+    <time>1319182159</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>2d9984e1965d941a18be62b2f4e74f71</srcmd5>
+    <version>2.0</version>
+    <time>1323192437</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>2d9984e1965d941a18be62b2f4e74f71</srcmd5>
+    <version>2.0</version>
+    <time>1340183675</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>152afba7eea867db42a303b8e5e31778</srcmd5>
+    <version>2.0</version>
+    <time>1347512579</time>
+    <user>coolo</user>
+    <comment>Make openSUSE project as distributor for openSUSE releases. (forwarded request 133614 from a_jaeger)</comment>
+    <requestid>133628</requestid>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>152afba7eea867db42a303b8e5e31778</srcmd5>
+    <version>2.0</version>
+    <time>1359109410</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="21">
+    <srcmd5>152afba7eea867db42a303b8e5e31778</srcmd5>
+    <version>2.0</version>
+    <time>1379663200</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="22">
+    <srcmd5>73e5516dc73c154aa3d589854aaf0ba4</srcmd5>
+    <version>2.0</version>
+    <time>1382013589</time>
+    <user>scarabeus_factory</user>
+    <comment>This is my suggestion how to solve bnc#845262 properly.
+Sourcing /etc/os-release instead of parsing /etc/SuSE-release and extracting the CODENAME from VERSION (forwarded request 203571 from Heinervdm)</comment>
+    <requestid>203606</requestid>
+  </revision>
+  <revision rev="15" vrev="24">
+    <srcmd5>73e5516dc73c154aa3d589854aaf0ba4</srcmd5>
+    <version>2.0</version>
+    <time>1409301822</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="25">
+    <srcmd5>a459dd0c74188d21f52e9774abde006c</srcmd5>
+    <version>2.0</version>
+    <time>1422658712</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283425</requestid>
+  </revision>
+  <revision rev="17" vrev="26">
+    <srcmd5>e535c1878a68b2bd5634ef0b540f847d</srcmd5>
+    <version>2.0</version>
+    <time>1464964579</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399015</requestid>
+  </revision>
+  <revision rev="18" vrev="27">
+    <srcmd5>f97d8f1724b9de4765e071b96d7236b2</srcmd5>
+    <version>2.0</version>
+    <time>1498120494</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504914</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d7428d59efe2ea0a36b3db64e60d19eb</srcmd5>
+    <version>3.0</version>
+    <time>1503591735</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517632</requestid>
+  </revision>
+</revisionlist>

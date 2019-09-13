@@ -1,0 +1,5 @@
+<package name="hanadb_exporter" project="openSUSE:Factory">
+  <title>SAP HANA database metrics exporter</title>
+  <description>SAP HANA database metrics exporter</description>
+  <devel project="network:ha-clustering:Factory" package="hanadb_exporter"/>
+</package>

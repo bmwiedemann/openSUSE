@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>658d0eafb4c6edbaa43210e32044220e</srcmd5>
+    <version>0.11.0</version>
+    <time>1475242146</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425259</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0811b3c0bc749139569b8a1d9c974081</srcmd5>
+    <version>0.12.0</version>
+    <time>1499754278</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.0:
+  * Add debug to tox enviroment
+  * Remove white space between print ()
+  * Fixes filtering applications by name with glare
+  * Remove the data assert to pass the gate
+  * Add package delete to openstack CLI
+  * Using sys.exit(main()) instead of main()
+  * Return error code when a error occurred during package-import
+  * Fix Murano client to use V3 and MultiDomain Authentication
+  * Use assertGreater() and assertLess()
+  * Support i18n for LOG.warning
+  * Show team and repo badges on README
+  * Support for environment list filtering by project id
+  * Delete python bytecode file
+  * Fix typos in cover.sh
+  * Fix removes date_time items from dictionaries
+  * Fix removes date_time items from dictionaries
+  * Updated from global requirements
+  * Add functional test for environment-model-show
+  * Fix OpenStack Licensing
+  * OSC plugin should be using region/interface
+  * Enable release notes translation
+  * Add support for environment edit API
+  * Fixing environment creation from template
+  * Unskip the test due to bugfix
+  * Skip some tests when using glare in a right way
+  * Mark .testr.conf as non-executable
+  * Make some OSC tests more clean
+  * Updated from global requirements
+  * TrivialFix: Fix typo in the bash shell file</comment>
+    <requestid>505944</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>36f2399932630cde96588fe2066abaf1</srcmd5>
+    <version>0.14.0</version>
+    <time>1503927067</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.14.0
+  - Make method import_versioned_module work
+  - Correct the unit test name
+  - Remove long-ago deprecated show_categories
+  - Imported Translations from Zanata
+  - Add package import to openstack CLI
+  - Update reno for stable/ocata
+  - import content from cli-reference in openstack-manuals
+  - Optimize the link address
+  - Update the documentation link for doc migration
+  - Replace six.iteritems() with .items()
+  - Using the latest openstackdocstheme settings
+  - move existing content into the new standard structure
+  - Modify Default Domain
+  - delete bash_completion in subcommand
+  - Remove log translations
+  - Update test requirement
+  - Turn on warning-is-error in sphinx build
+  - Remove support for py34
+  - switch to openstackdocstheme
+  - Replaces uuid.uuid4 with uuidutils.generate_uuid()
+  - Allows fetching of deployments from all environments.
+  - Updated from global requirements</comment>
+    <requestid>514953</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e09bfc4afe50ffb5474a647ec23dab22</srcmd5>
+    <version>1.0.1</version>
+    <time>1518601838</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.1
+  - update env template output
+  - Skip two test due to apps.openstack.org is retired
+  - Imported Translations from Zanata
+  - Update links in README
+  - Update reno for stable/pike
+  - Add bundle import to openstack CLI
+  - Remove setting of version/release from releasenotes
+  - Update the documentation link for doc migration
+  - Add package show to openstack CLI
+  - Add package update to openstack CLI
+  - Avoid tox_install.sh for constraints support
+  - Fix to use &quot;.&quot; to source script files
+  - Updated from global requirements
+  - Add package download to openstack CLI
+  - Use generic user for both zuul v2 and v3</comment>
+    <requestid>575940</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>976d7f62be6b7cdf6d298d433ae8d585</srcmd5>
+    <version>1.0.1</version>
+    <time>1521498897</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583321</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c967707fd6ab7b77d5d5eb6f863f94fa</srcmd5>
+    <version>1.1.1</version>
+    <time>1536327480</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633082</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1af99b6dd0ed6e36bd5ba4bab68501c0</srcmd5>
+    <version>1.2.0</version>
+    <time>1556916087</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.2.0
+  - Imported Translations from Zanata
+  - Use standard cover tox env
+  - switch documentation job to new PTI
+  - Update py27-ocata to py27-queens
+  - Change openstack-dev to openstack-discuss
+  - Move legacy-muranoclient-dsvm-functional-mysql-backend job to muranoclient
+  - Update reno for stable/rocky
+  - Update min tox version to 2.0
+  - Remove PyPI downloads
+  - Remove the export pre_test_hook from murano repo
+  - add python 3.6 unit test job
+  - add python 3.7 unit test job
+  - import zuul job settings from project-config
+  - Use templates for cover and lower-constraints
+  - Add Python 3.6 classifier to setup.cfg</comment>
+    <requestid>692840</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,530 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a194cfff202b48cf71dc5c6acf42b431</srcmd5>
+    <version>0.7.1</version>
+    <time>1311943541</time>
+    <user>saschpe</user>
+    <comment>initial submit for factory</comment>
+    <requestid>77288</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0d4bb4137a03b715eb501a358616f05c</srcmd5>
+    <version>0.7.1</version>
+    <time>1311943560</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77288
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a02006cd5bf87a6154255fcffb04a5de</srcmd5>
+    <version>0.7.3</version>
+    <time>1313674222</time>
+    <user>darix</user>
+    <comment>- Added BuildRequires:
+  * gstreamer-0_10-plugins-base-devel to fix build on openSUSE:12.1
+  * libcdio-devel to enable Audio CD support
+
+- Update to 0.7.3:
+  * Translation updates
+  * Drag'n'drop improvements
+  * Fixed Last.fm authentication
+  * Several fixed issues</comment>
+    <requestid>79146</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>db1062d646acaddb9c42fe36913bf198</srcmd5>
+    <version>0.7.3</version>
+    <time>1313674234</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 79146
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ee720f490e6d8416f8c130fa7075a63d</srcmd5>
+    <version>0.7.3</version>
+    <time>1315762818</time>
+    <user>saschpe</user>
+    <comment>- Merged KDE:Extra build with mmaps build and added libnotify and
+  libQtWebKit to the build for extra functionality.
+
+- Added post and postun to update desktop database
+
+- Removed gnutls from BuildRequires due to gloox license problems.
+  see bnc#695820
+
+- Added man page and BuildRequires: hicolor-icon-theme to own the
+  icon directories.</comment>
+    <requestid>81705</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>b55f9194be048389cc715157b3475fb7</srcmd5>
+    <version>0.7.3</version>
+    <time>1315762827</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81705
+</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>b55f9194be048389cc715157b3475fb7</srcmd5>
+    <version>0.7.3</version>
+    <time>1319181812</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>99a11b22809f434c4e76b1bd672f624f</srcmd5>
+    <version>0.7.3</version>
+    <time>1323190993</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3d702c457acfeb22e4975146c22f725f</srcmd5>
+    <version>1.0.0</version>
+    <time>1327582817</time>
+    <user>coolo</user>
+    <comment>- Use BuildRequires: libcdio-devel instead of pkgconfig() to avoid
+  &quot;Have choice...&quot;
+
+- Build with plasma search support, add -kde subpackage.
+
+- Use pkgconfig() instead -devel in BuildRequires.
+
+- Update to 1.0.0:
+  + Add audio CD support.
+  + Add Amazon as an alternate provider for album cover art.
+  + Add a global search feature.
+  + Add Spotify support.
+  + Add Grooveshark support.
+  + Add Digitally Imported (di.fm) and Sky.fm radio stations.
+  + Many other changes and a lot of bug fixes, details available
+    in Changelog file.</comment>
+    <requestid>101250</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f57163d4ccb3c83e54fa39452373e9e4</srcmd5>
+    <version>1.0.1</version>
+    <time>1328711660</time>
+    <user>coolo</user>
+    <comment>Update to version 1.0.1 and added fftw3 as an pkgconfig build requirement (needed to build v1.0.1) (forwarded request 102556 from seilerphilipp)</comment>
+    <requestid>102576</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e3f3af7112c08ba925e550f9c06d2840</srcmd5>
+    <version>1.0.1</version>
+    <time>1329215020</time>
+    <user>coolo</user>
+    <comment>- modified source patch to an dynamical download link
+- resubmitted package with gzip compressed sources instead of bzip2</comment>
+    <requestid>103513</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0602033b0f23278e0a04d67b3dc0f561</srcmd5>
+    <version>1.0.1</version>
+    <time>1334215246</time>
+    <user>coolo</user>
+    <comment>change build require to pkgconfig(libcdio) (forwarded request 112991 from plater)</comment>
+    <requestid>112992</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>58173039ea79e1ab4f7980cddb2e6e74</srcmd5>
+    <version>1.0.1.git</version>
+    <time>1336423467</time>
+    <user>coolo</user>
+    <comment>Update to latest git to fix factory build (forwarded request 115986 from plater)</comment>
+    <requestid>115987</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>da4d013048bc2f5b839c10932436967a</srcmd5>
+    <version>1.0.1.git</version>
+    <time>1337577835</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121286</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>da4d013048bc2f5b839c10932436967a</srcmd5>
+    <version>1.0.1.git</version>
+    <time>1340183238</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bd0e6d4ae38b7975d820d96436012114</srcmd5>
+    <version>1.0.1.git1</version>
+    <time>1348412647</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>134930</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>228e4b36478891658422e24384349082</srcmd5>
+    <version>1.0.1.git1</version>
+    <time>1349372082</time>
+    <user>coolo</user>
+    <comment>- Add build requirement on freeglut-devel (GL/glu.h include missing)</comment>
+    <requestid>136995</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>82dd7ed2b8d9651b3ba37f9b81456e41</srcmd5>
+    <version>1.1.0</version>
+    <time>1353133215</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.0:
+  + Podcast support with integration with gpodder.net.
+  + Add support for indexing and playing music from Google Drive.
+  + Add Soundcloud support.
+  + Add jazzradio.com support.
+  + Moodbar support.
+  + Many other changes and a lot of bug fixes, details available
+    in Changelog file.
+- Subpackage clementine-kde is obsolete: dropped plasma runner. (forwarded request 140615 from Fisiu)</comment>
+    <requestid>140641</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f9ea1aaf2613ab52eb95a266c0aeca42</srcmd5>
+    <version>1.1.1</version>
+    <time>1355143562</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.1:
+  + Bundle Taglib 1.8 on older distros to enable Google Drive support
+    in Clementine.
+- Properly provide/obsolete clementine-kde
+- Drop support for openSUSE-11.4
+- Use the same desktop file categories as Amarok</comment>
+    <requestid>144397</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>e0d4361b74062518f5796dd33ad051fc</srcmd5>
+    <version>1.1.1</version>
+    <time>1358411852</time>
+    <user>coolo</user>
+    <comment>Fix polish lyrics parser.</comment>
+    <requestid>148757</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>e0d4361b74062518f5796dd33ad051fc</srcmd5>
+    <version>1.1.1</version>
+    <time>1359108750</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>e2a8727a9b7a1819a150b8f2de5f3422</srcmd5>
+    <version>1.1.1</version>
+    <time>1360242939</time>
+    <user>coolo</user>
+    <comment>Make 12.1 build again (forwarded request 151465 from plater)</comment>
+    <requestid>151466</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>33ce0a19aa888f8b375e6401fe294803</srcmd5>
+    <version>1.1.1</version>
+    <time>1365270813</time>
+    <user>coolo</user>
+    <comment>Fix factory build (forwarded request 162970 from plater)</comment>
+    <requestid>162972</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>f8a0fd925bee9cca6265219a5a35b4e4</srcmd5>
+    <version>1.1.1</version>
+    <time>1367221957</time>
+    <user>coolo</user>
+    <comment>Fix factory build and bnc#815434 (forwarded request 173619 from plater)</comment>
+    <requestid>173620</requestid>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>bda229f51efaf5b927c717a212204de6</srcmd5>
+    <version>1.1.1</version>
+    <time>1367559150</time>
+    <user>coolo</user>
+    <comment>Add a setting for disabling moodbar generation. Fixes issue #3161 (bnc#818127) (forwarded request 174270 from jirislaby)</comment>
+    <requestid>174292</requestid>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>ebda641c648d5511ad57eefe5a82ab07</srcmd5>
+    <version>1.1.1</version>
+    <time>1374671076</time>
+    <user>coolo</user>
+    <comment>- port usage of libimobiledevice to new version (upstream killed
+  the feature in git though) (forwarded request 184163 from coolo)</comment>
+    <requestid>184164</requestid>
+  </revision>
+  <revision rev="27" vrev="11">
+    <srcmd5>ebda641c648d5511ad57eefe5a82ab07</srcmd5>
+    <version>1.1.1</version>
+    <time>1379662115</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="12">
+    <srcmd5>485fbd9e402378f67a21b9882720dcfa</srcmd5>
+    <version>1.1.1</version>
+    <time>1380864719</time>
+    <user>coolo</user>
+    <comment>- Only apply clementine-libimobiledevice-fix.patch on 13.1 or later
+  to fix build</comment>
+    <requestid>201840</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>796ec05cb69a83eed7c6ee22ca91252c</srcmd5>
+    <version>1.2.0</version>
+    <time>1382446229</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to 1.2.0:
+- Drop sites.js and ultimate_providers.xml: fixed upstream.
+- Drop clementine-nowerror.patch: fixes upstream.
+- Drop Add-a-setting-for-disabling-moodbar-generation.patch: fixed upstream.
+- Drop clementine-libimobiledevice-fix.patch: iDevice support dropped upstream (forwarded request 203986 from Fisiu)</comment>
+    <requestid>204120</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>88b920ee93f01a6acd60e186d8e91479</srcmd5>
+    <version>1.2.1</version>
+    <time>1389799465</time>
+    <user>coolo</user>
+    <comment>- Update to 1.2.1:
+  * Fix library download in the network remote.
+  * Fix removing songs from playlist in the network remote.
+  * Fix login failures with box.com.
+  * Fix a typo that would prevent the Spotify downloader button from
+    ever being shown. (forwarded request 213978 from Fisiu)</comment>
+    <requestid>213983</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>55c74d35f1419135dc12fd4b43df26c7</srcmd5>
+    <version>1.2.2</version>
+    <time>1396020050</time>
+    <user>coolo</user>
+    <comment>- Version bump to 1.2.2:
+  * upstream moved homepage
+  * android remote support
+  * Rename SkyDrive to OneDrive.
+  * Don't include the user's IP address in the log (from the network remote
+    settings dialog).
+  * (Debian) Fix a bug with HTTPS logins to all cloud storage providers.
+  * (Mac OS X) Fix a bug in the workaround for a weird font issue on 10.9.
+  * (Mac OS X) Fix rendering of source icons on retina displays.
+  * (Android Remote) Don't advertise songs that aren't available.
+  * (Android Remote) Fix playing songs with special characters in filenames.
+- Cleanup with spec-cleaner
+- Remove support for &lt; 12.3 codepaths
+- Remove unused patches:
+  * clementine-1.1.1-fixboostparseerror.patch
+  * clementine-desktop-fix.patch
+- Add patches for build from upstream:
+  * clementine-1.2.2-add-missing-header.patch
+  * clementine-1.2.2-add-missing-include.patch
+- Disable building with Werror, it is always bad idea to do so.
+- Add dependency over udisks as it is used by build
+- Use system projectM again as it seems to build fine.
+- Bug workaround: disable DBUS interface as it fails to build for
+  some non-aparent reason. (forwarded request 227751 from scarabeus_iv)</comment>
+    <requestid>227847</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>f2f3e8341b13dbf4c129fe567740d48b</srcmd5>
+    <version>1.2.2</version>
+    <time>1396163435</time>
+    <user>coolo</user>
+    <comment>- Added clementine-1.2.2-dont-use-hacks-but-proper-sintax-for-non-wrapping-in-namespace.patch, fixes build with newer/stricter CMake
+Avoiding namespaces for interfaces is nicely documented in CMake's FindQt4.cmake =)
+- As per patch, re-enable DBus
+- Drop udisks BuildRequires, not needed (forwarded request 228151 from sumski)</comment>
+    <requestid>228170</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>f2f3e8341b13dbf4c129fe567740d48b</srcmd5>
+    <version>1.2.2</version>
+    <time>1409300647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9860f69b3d3398212149e87b64044b1e</srcmd5>
+    <version>1.2.3</version>
+    <time>1413476084</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256789</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>fcf68e867560812fb9c449082af00420</srcmd5>
+    <version>1.2.3</version>
+    <time>1415289025</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259768</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>8989d9f745da87671272ac238ece6785</srcmd5>
+    <version>1.2.3</version>
+    <time>1457353698</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>366651</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>af712edf10664967d25e3908bad40184</srcmd5>
+    <version>1.3.1</version>
+    <time>1461855314</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390811</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>ccf7b12c4fdfe00f9696abf64b7b4f64</srcmd5>
+    <version>1.3.1</version>
+    <time>1467205823</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404535</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>d680679093e899d3b62e1f5984704d99</srcmd5>
+    <version>1.3.1</version>
+    <time>1468482556</time>
+    <user>dimstar_suse</user>
+    <comment>Fix factory build</comment>
+    <requestid>407799</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>e2f584390a427c79c5a652b14e0c4ed9</srcmd5>
+    <version>1.3.1</version>
+    <time>1486135711</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453824</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>b625e5b3907e964b426c682688f0307b</srcmd5>
+    <version>1.3.1</version>
+    <time>1491896450</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484883</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>7dd33d5e221b6a77293c64848fabfa79</srcmd5>
+    <version>1.3.1</version>
+    <time>1502366647</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512532</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>414d3a581dfad212df6f8d5e88734eee</srcmd5>
+    <version>1.3.1</version>
+    <time>1513941549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555524</requestid>
+  </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>fb853366a91a43903e6bd4234cc41336</srcmd5>
+    <version>1.3.1</version>
+    <time>1540988047</time>
+    <user>dimstar_suse</user>
+    <comment>Trim bias and openSUSE-irrelevant wording from description. added patch 6103.patch with fix track change hang
+</comment>
+    <requestid>645266</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>30046be8253975a8280a085d7b99d6e9</srcmd5>
+    <version>1.3.1+git20181203</version>
+    <time>1546695692</time>
+    <user>dimstar_suse</user>
+    <comment>Update to git qt5 snapshot version 1.3.1+git20181203, it fixes build with libcryptopp7.
+Need taglib in sr#655301 to build.</comment>
+    <requestid>655302</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>1861c3681d4a97bfe682251fa178624d</srcmd5>
+    <version>1.3.1+git20181203</version>
+    <time>1548064338</time>
+    <user>dimstar_suse</user>
+    <comment>Update summary and description
+Remove clementine-lastscope-size.patch, this bug is already fixed upstream by me, and this patch does not apply cleanly.
+Add clementine-gsd-dbus-shortcuts.patch to fix global shortcuts using Gnome (GSD) D-Bus backend
+Add needed alsa dependency
+Remove unneeded libechonest dependency
+Replace non-existent USE_BUILTIN_TAGLIB with USE_SYSTEM_TAGLIB
+Remove unneeded taglib and SPMediaKeyTap directory
+</comment>
+    <requestid>665660</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>7c5eb6dd63198f3ef3c7c0290aa6a2e5</srcmd5>
+    <version>1.3.1+git20190213</version>
+    <time>1553636023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688726</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>9819fad40073c1c9f5c5fdeeb7c4ef67</srcmd5>
+    <version>1.3.1+git20190213</version>
+    <time>1553809719</time>
+    <user>dimstar_suse</user>
+    <comment>Added use_system_qxtglobalshortcut.patch to improve kde integration.
+Added cherrypicked patches to bring qt5 branch to master's state.</comment>
+    <requestid>689094</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>c19ba2309df02f3a9bd5563275d43d5d</srcmd5>
+    <version>1.3.1+git20190423</version>
+    <time>1558690373</time>
+    <user>dimstar_suse</user>
+    <comment>Update to qt5 branch snapshot 1.3.1+git20190423.
+Added cherrypicked patches to bring qt5 branch to master's state:
+0001-Fix-gst_buffer_unref-assertion-in-chromaprinter.patch
+  0001-Add-error-handling-path-for-async-song-loading.patch
+  0001-Fixes-for-APE-filetype.patch
+  0001-Simplify-some-statements.patch and
+  0001-Set-non-zero-minimum-for-fade-times.patch.
+- Upstream changes:
+  *Revert &quot;Blacklist all NVidia drivers&quot;
+  *setFirstSectionMovable() in playlistview.cpp</comment>
+    <requestid>705015</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>09e91ba74652d2f00b78c9682c057e76</srcmd5>
+    <version>1.3.1+git20190423</version>
+    <time>1559837818</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patch from git 96a7e18a8d2be8d9f3223a6a6c81fbaac1179869 to
+  fix various Tag zero value issues:
+  0001-Fix-a-number-of-potential-zero-value-field-values.patch
+- Build with -fsanitize=address.
+</comment>
+    <requestid>707792</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>641bcecffe390f0a684c11fcc314408d</srcmd5>
+    <version>1.3.1+git20190713</version>
+    <time>1563790796</time>
+    <user>dimstar_suse</user>
+    <comment>Update to qt5 branch snapshot 1.3.1+git20190713.
+Add patch for memory leaks from Jiri Slaby via boo#114144 :  delete_the_allocated_memory_in_respective_destructors.patch</comment>
+    <requestid>715662</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>674b62169053c6e5745f11d752b6a0af</srcmd5>
+    <version>1.3.1+git20190713</version>
+    <time>1563914282</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated memory leak patch (boo#114144):  delete_the_allocated_memory_in_respective_destructors.patch
+Fixed boo#1137785 with upstream patch from git:
+  0001-Fix-crash-in-messagereply-6372.patch
+Added patch from git:
+  0001-Introduce-limit-for-number-of-tag-client-processes.patch</comment>
+    <requestid>717812</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d5518a35762fb4175a6fbce1badd1dde</srcmd5>
+    <version>1.3.1+git20190724</version>
+    <time>1564994504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720799</requestid>
+  </revision>
+</revisionlist>

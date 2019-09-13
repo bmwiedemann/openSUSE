@@ -1,0 +1,7 @@
+<package name="rpmlint-tests" project="openSUSE:Factory">
+  <title>Rpm correctness checker</title>
+  <description>Rpmlint is a tool to check common errors on rpm packages. Binary and
+source packages can be checked.</description>
+  <devel project="openSUSE:Factory" package="rpmlint"/>
+  <bcntsynctag>rpmlint</bcntsynctag>
+</package>

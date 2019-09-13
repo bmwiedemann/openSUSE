@@ -1,0 +1,9 @@
+<package name="python-iwlib" project="openSUSE:Factory">
+  <title>Python module to interface with iwlib</title>
+  <description>Python-iwlib is a package for interfacing with iwlib, providing an implementation to
+the wireless tools in Linux.
+
+It provides scanning, setting the ESSID of a device, and getting the current configuration
+back from a device.</description>
+  <devel project="devel:languages:python" package="python-iwlib"/>
+</package>

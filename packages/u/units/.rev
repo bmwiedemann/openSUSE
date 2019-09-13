@@ -1,0 +1,264 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>489b1aff837ff62a5280d81c22644b60</srcmd5>
+    <version>1.86</version>
+    <time>1168904410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="13">
+    <srcmd5>3031b9391bd3f4a263d0bb126f099aa2</srcmd5>
+    <version>1.86</version>
+    <time>1175162974</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e7f529759f45ba1625cabd75076cbed0</srcmd5>
+    <version>1.87</version>
+    <time>1203036183</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="49">
+    <srcmd5>e7f529759f45ba1625cabd75076cbed0</srcmd5>
+    <version>1.87</version>
+    <time>1203036183</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="50">
+    <srcmd5>439cc679fd2886b9c09c07b4c2f61521</srcmd5>
+    <version>1.87</version>
+    <time>1245363499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="52">
+    <srcmd5>439cc679fd2886b9c09c07b4c2f61521</srcmd5>
+    <version>1.87</version>
+    <time>1245363499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="53">
+    <srcmd5>6c8f84e408c3ba560959a30c32364748</srcmd5>
+    <version>1.87</version>
+    <time>1268926422</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="55">
+    <srcmd5>6c8f84e408c3ba560959a30c32364748</srcmd5>
+    <version>1.87</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="56">
+    <srcmd5>6c8f84e408c3ba560959a30c32364748</srcmd5>
+    <version>1.87</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f78b202828397c19ea01a11bb7791f7a</srcmd5>
+    <version>1.88</version>
+    <time>1282917990</time>
+    <user>autobuild</user>
+    <comment>Copy from Education/units based on submit request 46301 from user pgajdos
+</comment>
+    <requestid>46301</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>f78b202828397c19ea01a11bb7791f7a</srcmd5>
+    <version>1.88</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>f78b202828397c19ea01a11bb7791f7a</srcmd5>
+    <version>1.88</version>
+    <time>1319182539</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>f552d2070aba46ee4cbd2502ede9342b</srcmd5>
+    <version>1.88</version>
+    <time>1323195032</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>f552d2070aba46ee4cbd2502ede9342b</srcmd5>
+    <version>1.88</version>
+    <time>1340184297</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fbbfe62a8dea62a4af0840ec2c08125e</srcmd5>
+    <version>2.00</version>
+    <time>1344369119</time>
+    <user>namtrac</user>
+    <comment>- updated to version 2.00:
+    General changes:
+    * Unit lists provide conversion to sums of units (e.g. feet and inches).
+    * Added --round (-r) and --show-factor (-S) options for use with unit lists.
+    * Added unit lists aliases (e.g. time, usvol).
+    * A python script, units_cur, can update currency data.
+    * Units now flushes its output so you can talk to it with a pipe. 
+    * Units now works in UTF-8 if the system supports it.  
+    * Added --locale (-l) option to set the locale.
+    * English units such as the gallon are defined in all locales, with US
+      definitions by default except in the en_BG locale.  You can force
+      the desired definition (Great Britain or US) by setting the
+      environment variable UNITS_ENGLISH to GB or US.  
+    * Revised and extended the documentation, with more examples. 
+    * Added locale mapping to address Windows locale names. 
+    * Updated and revised units database, including UTF-8 definitions and
+      the 2010 CODATA. 
+    * Fixed parsing bug for &quot;1..2&quot; or &quot;1.2.3&quot;.  These now give an error. 
+    * Unit names can end with a number in the form of a subscript that
+      starts with a '_', as in 'X_3'.  
+    Changes for units definition files:
+    * Changed location and names of unit database, splitting off currency
+      Files are /usr/local/share/units/{definitions,currency}.units and
+      the personal units file is $HOME/.units instead of $HOME/units.dat.  
+    * Personal units filename can be changed with MYUNITSFILE environment variable.
+    * Prefixes can be defined in any order: it is no longer necessary to
+      define longer ones before shorter ones.  
+    * New definitions replace previous ones.  Personal units file is read
+      after the system file rather than before.  
+    * Changed syntax for function definitions.  Instead of [in-unit,out-unit]</comment>
+    <requestid>130316</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>40c0e62bcc76bd32ec989bd2ddea7e1f</srcmd5>
+    <version>2.01</version>
+    <time>1352408059</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140620</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>40c0e62bcc76bd32ec989bd2ddea7e1f</srcmd5>
+    <version>2.01</version>
+    <time>1359110524</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>55fae7a884b737c98aeb59e657e1de78</srcmd5>
+    <version>2.02</version>
+    <time>1378898600</time>
+    <user>coolo</user>
+    <comment>- updated to version 2.02:
+  * Added support for %a and %A output formats (hexadecimal floating point), and
+    eliminated the restriction on the number of displayed digits when specifying
+    an output format with the --output-format (-o) option.  Improved error
+    handling for formats specified with --output-format.
+  * Added --digits (-d) to specify the number of digits to display.  Giving
+    '--digits max' (-dmax) will use the full available precision.
+  * Added support for various Unicode minus sign symbols.  Units now treats the
+    figure dash (U+2012), the en dash (U+2013), and the minus (U+2212) as
+    identical to the ASCII hyphen/minus symbol (U+002D).
+  * The !message command in units data files has been fixed so it does not
+    produce output when the --quiet option is given.
+  * Improved error handling when unit names end with numbers without a '_'.
+  * Modified units_cur to work with XML format as the txt format disappeared.
+  * Corrected error in definition of the nat.
+  * Improved manual.
+- employ gpg-offline</comment>
+    <requestid>197993</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>55fae7a884b737c98aeb59e657e1de78</srcmd5>
+    <version>2.02</version>
+    <time>1379664885</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3381a798e7e5c3613e36e4c998e74618</srcmd5>
+    <version>2.10</version>
+    <time>1396291515</time>
+    <user>coolo</user>
+    <comment>- install documentation files, including COPYING (forwarded request 228166 from AndreasStieger)</comment>
+    <requestid>228167</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0531631b3cab01c8a4064d8967e5ab67</srcmd5>
+    <version>2.11</version>
+    <time>1397042255</time>
+    <user>coolo</user>
+    <comment>GNU Units 2.11 (forwarded request 229322 from AndreasStieger)</comment>
+    <requestid>229340</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>0531631b3cab01c8a4064d8967e5ab67</srcmd5>
+    <version>2.11</version>
+    <time>1409303573</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>dc0cf016646b10e69e2cd952c3bd2493</srcmd5>
+    <version>2.12</version>
+    <time>1447409922</time>
+    <user>lrupp</user>
+    <comment>- Update to 2.12
+- Cleanups spec file with spec-cleaner
+- Update usage of gpg signature
+- Move info scriplet to preun
+- Enable units_cur builiding by default (forwarded request 339130 from pluskalm)</comment>
+    <requestid>339131</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>46ad6c11ceabd4882faa737d1b5c8821</srcmd5>
+    <version>2.13</version>
+    <time>1467205807</time>
+    <user>dimstar_suse</user>
+    <comment>units 2.13 (forwarded request 404341 from AndreasStieger)</comment>
+    <requestid>404407</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>19f52b11a65784c3f33c20f412714be4</srcmd5>
+    <version>2.14</version>
+    <time>1491469361</time>
+    <user>maxlin_factory</user>
+    <comment>units 2.14
+  * Eliminated parser memory management limitation affecting long
+    input expressions (e.g. a sum of more than 100 units)
+  * Control characters are treated as white space rather than
+    producing an error about invalid UTF-8. (forwarded request 484864 from AndreasStieger)</comment>
+    <requestid>484867</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>523624743edbe23117a4cb513e4b5e0f</srcmd5>
+    <version>2.16</version>
+    <time>1509722730</time>
+    <user>dimstar_suse</user>
+    <comment>units 2.16 (forwarded request 538098 from AndreasStieger)</comment>
+    <requestid>538116</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a15f45e28d9e929a203c2ad04411fd2f</srcmd5>
+    <version>2.17</version>
+    <time>1530191628</time>
+    <user>dimstar_suse</user>
+    <comment>units 2.17 (forwarded request 619384 from AndreasStieger)</comment>
+    <requestid>619386</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3824532dd005c66c92645ceded657f4c</srcmd5>
+    <version>2.18</version>
+    <time>1541865394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644896</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>57172714f4af772b17ed7648afada47a</srcmd5>
+    <version>2.19</version>
+    <time>1564994236</time>
+    <user>dimstar_suse</user>
+    <comment>units 2.19 (forwarded request 720113 from AndreasStieger)</comment>
+    <requestid>720191</requestid>
+  </revision>
+</revisionlist>

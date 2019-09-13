@@ -1,0 +1,317 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48e54f63131d6c944556d06257efb4de</srcmd5>
+    <version>2.4.5</version>
+    <time>1344079538</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>129539</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a7e51a690c755ffe4fa5ecd8aa27302b</srcmd5>
+    <version>2.5.0</version>
+    <time>1346832069</time>
+    <user>coolo</user>
+    <comment>- updated to version 2.5.0
+  * Fixed Ruby 2.0 RegExp warning
+  * Provide stubbed implementation of context *_path helpers
+  * Add SassCompressor</comment>
+    <requestid>132571</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad8bcb340f6cf1441d347e4ef3b1248d</srcmd5>
+    <version>2.6.0</version>
+    <time>1349632881</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137369</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53c54bfe09b54ffd37a04cb24e02d6d0</srcmd5>
+    <version>2.7.0</version>
+    <time>1350680326</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138813</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>51b4bc485a484400a66a1270481de088</srcmd5>
+    <version>2.8.1</version>
+    <time>1352407995</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140630</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>94ea99cfb3940425333d0daa886f202c</srcmd5>
+    <version>2.8.2</version>
+    <time>1356731335</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146381</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>94ea99cfb3940425333d0daa886f202c</srcmd5>
+    <version>2.8.2</version>
+    <time>1359110348</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e9a19f3f00643188c847a30ddbc726dc</srcmd5>
+    <version>2.9.0</version>
+    <time>1362984268</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>158174</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bdc7abb7bff5534ee1532f3fd86a170f</srcmd5>
+    <version>2.9.2</version>
+    <time>1366473708</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>172468</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>172635c1ae03f3afaf70c93d81673554</srcmd5>
+    <version>2.9.3</version>
+    <time>1367488850</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174107</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a4c607a1fa112dbd6b73d0abb923feea</srcmd5>
+    <version>2.10.0</version>
+    <time>1370453656</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>177114</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>a4c607a1fa112dbd6b73d0abb923feea</srcmd5>
+    <version>2.10.0</version>
+    <time>1379664576</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3f163bde6db9ac68077cb581456b9441</srcmd5>
+    <version>2.10.1</version>
+    <time>1385817861</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208256</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0d4f65bede812edc0bbda9807be0e3a1</srcmd5>
+    <version>2.11.0</version>
+    <time>1393310520</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223650</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6e34543fd1d316379aa5efe165f58d59</srcmd5>
+    <version>2.12.0</version>
+    <time>1395475896</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226981</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a27279ef89ed694d6b4f25e03a744b1d</srcmd5>
+    <version>2.12.1</version>
+    <time>1400682625</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>231041</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>a27279ef89ed694d6b4f25e03a744b1d</srcmd5>
+    <version>2.12.1</version>
+    <time>1409303286</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3879a5884ddad1100fb1a53635c7bfb6</srcmd5>
+    <version>2.12.2</version>
+    <time>1416823968</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 2.12.2
+ * Ensure internal asset lookups calls are still restricted to load paths within
+   asset compiles. Though, you should not depend on internal asset resolves to be
+   completely restricted for security reasons. Assets themselves should be
+   considered full scripting environments with filesystem access.
+- adapt to new rubygem packaging</comment>
+    <requestid>255328</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6e28145a92ce2b5cda57c0162717ed75</srcmd5>
+    <version>2.12.3</version>
+    <time>1424117374</time>
+    <user>coolo</user>
+    <comment>- updated to version 2.12.3
+  * Security: Fix directory traversal bug in development mode server.</comment>
+    <requestid>285024</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>99182ce960b417f6d5c0ae41bbe41920</srcmd5>
+    <version>3.0.0</version>
+    <time>1428949875</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>295624</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6d728c441fb14671e8766bec504e674f</srcmd5>
+    <version>3.0.1</version>
+    <time>1429108052</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296715</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>02964ed03bfeb2e4d1fb8c377368ce40</srcmd5>
+    <version>3.0.2</version>
+    <time>1429948382</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298751</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d7f6cf6732cb9fbf495b324ebe117ba4</srcmd5>
+    <version>3.0.3</version>
+    <time>1430595260</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304316</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7b7391a5801f0f859790b473d231f867</srcmd5>
+    <version>3.1.0</version>
+    <time>1431365970</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306276</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>610db482c64c1a243c68645ddf3bca60</srcmd5>
+    <version>3.2.0</version>
+    <time>1434133849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311533</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>96c02777f531aa8b934015f42f235c76</srcmd5>
+    <version>3.3.3</version>
+    <time>1440658666</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>326612</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>20c702f62865853cb14a2d35e189f328</srcmd5>
+    <version>3.3.4</version>
+    <time>1441296286</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328694</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3a0d38355377a7ee681711e2e13c22f0</srcmd5>
+    <version>3.3.5</version>
+    <time>1443585143</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333982</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>56bc7ffdcf6b3a76662ef298172a415d</srcmd5>
+    <version>3.4.0</version>
+    <time>1444285498</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>336695</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ba90854afe163a9650338b77398a570c</srcmd5>
+    <version>3.4.1</version>
+    <time>1448957928</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346626</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>24051ec1cd813436c29f7914252cd7d0</srcmd5>
+    <version>3.6.0</version>
+    <time>1461855228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>389469</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>99d57aad26bdf5279adf24d8a25a0d49</srcmd5>
+    <version>3.6.1</version>
+    <time>1467359955</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405131</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0ab4097257be77c02df54b900be4141e</srcmd5>
+    <version>3.6.3</version>
+    <time>1469080645</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 3.6.3
+ see installed CHANGELOG.md
+  **3.6.3** (July 1, 2016)
+  
+  * Faster asset lookup in large directories #336
+  * Faster PathUtils.match_path_extname https://github.com/rails/sprockets/commit/697269cf81e5261fdd7072e32bd489403027fd7e
+  * Fixed uglifier comment stripping #326
+  * Error messages now show load path info #313
+
+- updated to version 3.6.2
+ see installed CHANGELOG.md
+  **3.6.2** (June 21, 2016)
+  
+  * More performance improvements.</comment>
+    <requestid>406334</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>09885e669f6e4dbbb9921dc0470eeeb2</srcmd5>
+    <version>3.7.0</version>
+    <time>1469831184</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>414833</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b14d1382bb52da3ae17f6358d4073c8b</srcmd5>
+    <version>3.7.1</version>
+    <time>1483048019</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447132</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8ac070835bfa2aaca206139825e0418f</srcmd5>
+    <version>3.7.2</version>
+    <time>1529501642</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617845</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>98c042b22b2f39f0051ea73c92cf17df</srcmd5>
+    <version>3.7.2</version>
+    <time>1529667340</time>
+    <user>maxlin_factory</user>
+    <comment>fix changelog</comment>
+    <requestid>618298</requestid>
+  </revision>
+</revisionlist>

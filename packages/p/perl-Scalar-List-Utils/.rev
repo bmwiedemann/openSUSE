@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bccc257793d05b3ed3933d6815890f19</srcmd5>
+    <version>1.32</version>
+    <time>1382361293</time>
+    <user>scarabeus_factory</user>
+    <comment>needed by other modules</comment>
+    <requestid>202358</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>270762d015fac2d53e324010107a60d5</srcmd5>
+    <version>1.35</version>
+    <time>1387174122</time>
+    <user>coolo</user>
+    <comment>- update to 1.35:
+   * Added List::Util::product()
+   * Ensure that List::Util::{any,all,none,notall} return PL_sv_{yes,no}
+   * Implement reduce() and first() even in the absence of MULTICALL
+   * Avoid C99/C++-style comments in XS code
+   * Fix dualvar tests for perl 5.6; fix skip() test counts in dualvar.t
+   * Neater documentation examples of other functions that can be built using
+     reduce
+   * Added any, all, none, notall list reduction functions
+     (inspired by List::MoreUtils)</comment>
+    <requestid>210787</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1db78506fd54dea1abc7ca4688d3e621</srcmd5>
+    <version>1.36</version>
+    <time>1390380266</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214451</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1db78506fd54dea1abc7ca4688d3e621</srcmd5>
+    <version>1.36</version>
+    <time>1409302472</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>72daaebb4c7c08a9da6ef4c78370ddfb</srcmd5>
+    <version>1.42</version>
+    <time>1430576195</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.42
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+  1.42 -- 2015/04/32 01:25:55
+  	[CHANGES]
+  	 * Added List::Util::unpairs() - the inverse of pairs()
+  	 * Documentation to pre-warn users about the possible behaviour in a
+  	   later version where the pair* higher-order functionals are no longer
+  	   transparent to $_
+  
+  	[BUGFIXES]
+  	 * Silence some warnings at test time
+  	 * Ensure that the List::Util we're loading the XS via is a sufficient
+  	   version when Scalar::Util or Sub::Util load it (RT100863)
+  
+  1.41 -- 2014/09/05 15:49:50
+  	[BUGFIXES]
+  	 * Avoid pre-C99 declaration after statements (RT98624)
+  	 * Fix use of GetMagic in List::Util::reduce (RT63211)
+  
+  1.40 -- 2014/08/30 11:36:36
+  	[CHANGES]
+  	 * Added entire new module, Sub::Util to contain functions related
+  	   to CODE refs
+  	 * Added subname inspired by Sub::Identify
+  	 * Added set_subname copied and renamed from Sub::Name
+  	 * Also moved set_prototype into Sub::Name, with back-compat wrapper
+  	   in Scalar::Util
+  	 * Added prototype wrapper of CODE::prototype, for completeness
+  	 * Nicer module documentation format, allows neater use of L&lt;/...&gt;</comment>
+    <requestid>305011</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1e719ffb9a179c555a9ffc21452dd45f</srcmd5>
+    <version>1.42</version>
+    <time>1440480200</time>
+    <user>coolo</user>
+    <comment>- recompile with perl 5.22</comment>
+    <requestid>315542</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>23079694804409398781db39c6a30e01</srcmd5>
+    <version>1.43</version>
+    <time>1455701125</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359222</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2c0905a2bb9d75e60fa6101af732ab5a</srcmd5>
+    <version>1.44</version>
+    <time>1459002454</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378588</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b84d2c21eb57ff80daeba6343c0fee35</srcmd5>
+    <version>1.45</version>
+    <time>1460482434</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385086</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>917d1be940ee6d7ad7712092f587dc04</srcmd5>
+    <version>1.46</version>
+    <time>1476429930</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433684</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>663aca376c3a4f846d34b39c751c9f06</srcmd5>
+    <version>1.47</version>
+    <time>1484475073</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448575</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>08d99b14fd68b7e636cd24242efbf8cb</srcmd5>
+    <version>1.48</version>
+    <time>1498551635</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506079</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>348b58985e7b5f6246a856ca2d9ae191</srcmd5>
+    <version>1.49</version>
+    <time>1505331304</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523581</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9dd3473e21a3ef1209912bfb1e32428a</srcmd5>
+    <version>1.50</version>
+    <time>1519683777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579752</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>199e478b5a5f3ffad3a1f0c6822446b2</srcmd5>
+    <version>1.51</version>
+    <time>1565876576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721982</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d352e96fe62e68d73fac8238252a7bad</srcmd5>
+    <version>1.52</version>
+    <time>1566664784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724782</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="sysfsutils" project="openSUSE:Factory">
+  <title>System Utilities Package / Libsysfs</title>
+  <description>This package's purpose is to provide a library for interfacing with the
+kernel's sys filesystem mounted at /sys. The library was an attempt to
+create a stable interface to sysfs, but it failed. It is still provided
+for the current users, but no new software should use this library.</description>
+  <devel project="Base:System" package="sysfsutils"/>
+</package>

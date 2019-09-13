@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8751390f0fe5b00aa8551e145992d934</srcmd5>
+    <version>0.01</version>
+    <time>1306310904</time>
+    <user>saschpe</user>
+    <comment>Dependency for perl-File-Find-Rule</comment>
+    <requestid>70012</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c6922d84dd83d93173ef718c468b7b58</srcmd5>
+    <version>0.01</version>
+    <time>1306310917</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70012
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>068905606020300eff366a8c7b87b35c</srcmd5>
+    <version>0.02</version>
+    <time>1315910285</time>
+    <user>saschpe</user>
+    <comment>- update to 0.02
+        - apply warning-related fix -
+          https://rt.cpan.org/Public/Bug/Display.html?id=58466</comment>
+    <requestid>81969</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>068905606020300eff366a8c7b87b35c</srcmd5>
+    <version>0.02</version>
+    <time>1319182294</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ad3e4b8d88ef03fc05ca47c6e00df629</srcmd5>
+    <version>0.03</version>
+    <time>1320232472</time>
+    <user>coolo</user>
+    <comment>- update to 0.03
+        Generate a new tarball on linux.  Doing the C&lt;make dist&gt; on OSX
+        generated a tarball that upset dumb tars
+        tar: Ignoring unknown extended header keyword `SCHILY.dev'
+        tar: Ignoring unknown extended header keyword `SCHILY.ino'
+        tar: Ignoring unknown extended header keyword `SCHILY.nlink'</comment>
+    <requestid>89914</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>78d6efe2b2dcbf0a81441f793f8ca41f</srcmd5>
+    <version>0.03</version>
+    <time>1323193533</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>78d6efe2b2dcbf0a81441f793f8ca41f</srcmd5>
+    <version>0.03</version>
+    <time>1340183895</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>78d6efe2b2dcbf0a81441f793f8ca41f</srcmd5>
+    <version>0.03</version>
+    <time>1359109768</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>78d6efe2b2dcbf0a81441f793f8ca41f</srcmd5>
+    <version>0.03</version>
+    <time>1379663799</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>78d6efe2b2dcbf0a81441f793f8ca41f</srcmd5>
+    <version>0.03</version>
+    <time>1409302435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

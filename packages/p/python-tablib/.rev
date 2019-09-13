@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af2df832bdc30de4ec865aa7c8a0c9e4</srcmd5>
+    <version>0.12.1</version>
+    <time>1552985891</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openpyxl-usage-fix.patch to workaround incompatibility with
+  current releases of openpyxl
+- Add HISTORY.rst to %doc
+- Add minimum versions of dependencies from upstream
+- Use %license
+- Update to v0.12.1
+  - Add Pandas DataFrame support
+- update to 0.11.5:
+  - Use ``yaml.safe_load`` for importing yaml.
+  - Use built-in `json` package if available
+  - Support Python 3.5+ in classifiers
+  - Fixed textual representation for Dataset with no headers
+  - Handle decimal types
+  - Release fix.
+  - Fix export only formats.
+  - Fix for xlsx output.
+  - Fixed packaging error on Python 3.
+  - Added LaTeX table export format (``Dataset.latex``).
+  - Support for dBase (DBF) files (``Dataset.dbf``).
+  - New import/export interface (``Dataset.export()``, ``Dataset.load()``).
+  - CSV custom delimiter support (``Dataset.export('csv', delimiter='$')``).
+  - Adding ability to remove duplicates to all rows in a dataset (``Dataset.remove_duplicates()``).
+  - Added a mechanism to avoid ``datetime.datetime`` issues when serializing data.
+  - New ``detect_format()`` function (mostly for internal use).
+  - Update the vendored unicodecsv to fix ``None`` handling.
+  - Only freeze the headers row, not the headers columns (xls).
+  - ``detect()`` function removed.
+  - Fix XLSX import.
+  - Bugfix for ``Dataset.transpose().transpose()``.
+- convert to singlespec
+- fix RHEL build by ignoring bytecompile-errors
+- update to version 0.10.0:
+  * Unicode Column Headers
+  * ALL the bugfixes!
+- add fdupes as BuildRequires and call it after install
+- remove shebang in every python files
+- remove useless CFLAGS declaration
+- run the tests during build with test_tablib.py
+- Require python-setuptools instead of distribute (upstreams merged)
+- Initial version
+</comment>
+    <requestid>682389</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>95a4a11c8185a507050c70de343cd05b</srcmd5>
+    <version>0.13.0</version>
+    <time>1553636067</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.13.0
+  * no upstream changelog (HISTORY.rst outdated), see git log
+- deleted patches
+  - openpyxl-usage-fix.patch (upstreamed)</comment>
+    <requestid>688774</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2066933ce7fea159341d2de3500ecac6</srcmd5>
+    <version>0.13.0</version>
+    <time>1557141671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692222</requestid>
+  </revision>
+</revisionlist>

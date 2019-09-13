@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3960e5bd31c454b9056f6fc2880d1da7</srcmd5>
+    <version>0.1.2</version>
+    <time>1511274806</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package
+</comment>
+    <requestid>543906</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>655b075826459edd4fb870c3b6d27450</srcmd5>
+    <version>0.1.2</version>
+    <time>1526372007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606542</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd53dc67064fa4b8462bba7576ff4844</srcmd5>
+    <version>0.2.0</version>
+    <time>1551785037</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.0
+ * Add crayons.enable()
+ * color funcs generated from __all__ var
+ * Disable colors on TERM=dumb</comment>
+    <requestid>681480</requestid>
+  </revision>
+</revisionlist>

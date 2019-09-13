@@ -1,0 +1,16 @@
+<package name="sane-backends" project="openSUSE:Factory">
+  <title>SANE (Scanner Access Now Easy) Scanner Drivers</title>
+  <description>The software consists of SANE scanner drivers, &quot;scanimage,&quot; and the
+&quot;saned&quot; daemon.
+
+A SANE scanner driver is used via a SANE front-end. This package
+contains the command line front-end &quot;scanimage&quot;. There are various
+graphical front-ends like &quot;xscanimage&quot; (package sane-frontends), XSane
+(package xsane), and the KDE front-end Kooka (package
+kdegraphics3-scan).
+
+The &quot;saned&quot; daemon provides the service &quot;sane-port&quot; to access scanners
+that are connected to a server via network from client hosts that run
+the &quot;net&quot; meta driver.</description>
+  <devel project="graphics" package="sane-backends"/>
+</package>

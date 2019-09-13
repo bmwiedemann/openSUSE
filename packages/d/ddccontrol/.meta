@@ -1,0 +1,5 @@
+<package name="ddccontrol" project="openSUSE:Factory">
+  <title></title>
+  <description>A tool to configure monitor settings via DDC/CI.</description>
+  <devel project="hardware" package="ddccontrol"/>
+</package>

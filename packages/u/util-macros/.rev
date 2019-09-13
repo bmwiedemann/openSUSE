@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>784131bbd780b75a759760bbd7eec70c</srcmd5>
+    <version>1.19.0</version>
+    <time>1399317041</time>
+    <user>coolo</user>
+    <comment>created package; added COPYING to %doc</comment>
+    <requestid>232036</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>784131bbd780b75a759760bbd7eec70c</srcmd5>
+    <version>1.19.0</version>
+    <time>1409303589</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6ba8377f28cd776ce5bf86db2ee1e857</srcmd5>
+    <version>1.19.1</version>
+    <time>1486464971</time>
+    <user>dimstar_suse</user>
+    <comment>- update to release 1.19.1
+  * XORG_MANPAGE_SECTIONS: limit SysV man page sections to Solaris 2.0-11
+  * Fix XORG_WITH_XMLTO to work with xmlto &gt;= 0.0.27
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>453881</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5962770ea4dc493f297a25da5ed8bd1f</srcmd5>
+    <version>1.19.2</version>
+    <time>1520502825</time>
+    <user>dimstar_suse</user>
+    <comment>- update to release 1.19.2
+  * Update check for manpage section numbers to not rely on Solaris version
+  * Rework CHANGELOG_CMD to touch/echo &gt;&amp;2 only as needed
+  * Rework INSTALL_CMD to touch/echo &gt;&amp;2 only as needed</comment>
+    <requestid>582994</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>70606fcf44f006828ea691a8701c27e9</srcmd5>
+    <version>1.19.2</version>
+    <time>1566912018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724419</requestid>
+  </revision>
+</revisionlist>

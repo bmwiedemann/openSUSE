@@ -1,0 +1,7 @@
+<package name="libqjack" project="openSUSE:Factory">
+  <title>Connect to the Jack Sound Server with Qt</title>
+  <description>QJack makes you connect with the Jack soundserver system with Qt4.
+
+</description>
+  <devel project="multimedia:libs" package="libqjack"/>
+</package>

@@ -1,0 +1,233 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7d59acfbecbf70a8e0aee8d75c6fae8c</srcmd5>
+    <version>0.7.4</version>
+    <time>1168902928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>45e999bad11f8531162bbb7f01aa1ca6</srcmd5>
+    <version>0.7.5</version>
+    <time>1173919087</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="16">
+    <srcmd5>f3fa141f28f097e9d5683a759d059e52</srcmd5>
+    <version>0.7.5</version>
+    <time>1179394708</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>194a2d4fdcbae24225b2a960878a0ca1</srcmd5>
+    <version>0.7.6</version>
+    <time>1180637615</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="87">
+    <srcmd5>09e9ea8c9e22b560bba49339f53000bc</srcmd5>
+    <version>0.7.6</version>
+    <time>1203639921</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b48e3e21b3dcef0d85369e8756447fbf</srcmd5>
+    <version>0.8.0</version>
+    <time>1221435155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c4a7b1b901f75da809b55fb872a38f2a</srcmd5>
+    <version>0.9.0</version>
+    <time>1249062569</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c4a7b1b901f75da809b55fb872a38f2a</srcmd5>
+    <version>0.9.0</version>
+    <time>1249062569</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>2746b47eddbf09b9a6d781d276d2ef9c</srcmd5>
+    <version>0.9.0</version>
+    <time>1268923854</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>11cb365959c808508a6d282258195435</srcmd5>
+    <version>0.9.0</version>
+    <time>1270732318</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gpa based on submit request 37348 from user vuntz
+</comment>
+    <requestid>37348</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>c401345a7942b23cea8cfa10b0a463dd</srcmd5>
+    <version>0.9.0</version>
+    <time>1273792116</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gpa based on submit request 40000 from user dimstar
+</comment>
+    <requestid>40000</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>c401345a7942b23cea8cfa10b0a463dd</srcmd5>
+    <version>0.9.0</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>c401345a7942b23cea8cfa10b0a463dd</srcmd5>
+    <version>0.9.0</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>709e2aebc7737f7667294e8275fcd9c9</srcmd5>
+    <version>0.9.0</version>
+    <time>1297644119</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60954 from user vuntz
+</comment>
+    <requestid>60954</requestid>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>50c69f9674db0ca4b175b107f9611f34</srcmd5>
+    <version>0.9.0</version>
+    <time>1297644126</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60954
+</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>50c69f9674db0ca4b175b107f9611f34</srcmd5>
+    <version>0.9.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>50c69f9674db0ca4b175b107f9611f34</srcmd5>
+    <version>0.9.0</version>
+    <time>1319181938</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>0b10a5bc06da7836e72de9abe60b0c55</srcmd5>
+    <version>0.9.0</version>
+    <time>1323191742</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="18">
+    <srcmd5>96d353640d8925963788ec6e35f16e72</srcmd5>
+    <version>0.9.0</version>
+    <time>1325787147</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98922</requestid>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>96d353640d8925963788ec6e35f16e72</srcmd5>
+    <version>0.9.0</version>
+    <time>1340183406</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>da6fd80539d301c2d7ebc548e4160f11</srcmd5>
+    <version>0.9.3</version>
+    <time>1353512794</time>
+    <user>coolo</user>
+    <comment>tweaks (forwarded request 142195 from dimstar)</comment>
+    <requestid>142196</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>da6fd80539d301c2d7ebc548e4160f11</srcmd5>
+    <version>0.9.3</version>
+    <time>1359108993</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6fb154dd6bdebaae912fc868c18901b8</srcmd5>
+    <version>0.9.4</version>
+    <time>1370425969</time>
+    <user>coolo</user>
+    <comment>- update to 0.9.4 (forwarded request 176276 from AndreasStieger)</comment>
+    <requestid>176526</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>6fb154dd6bdebaae912fc868c18901b8</srcmd5>
+    <version>0.9.4</version>
+    <time>1379662543</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>6fb154dd6bdebaae912fc868c18901b8</srcmd5>
+    <version>0.9.4</version>
+    <time>1409301085</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d43d5fb76ff7ef59ef05f7c39f4f6ec4</srcmd5>
+    <version>0.9.5</version>
+    <time>1411020054</time>
+    <user>coolo</user>
+    <comment>Update to 0.9.5</comment>
+    <requestid>250025</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f0d3de484c757ed76826af5858dd0207</srcmd5>
+    <version>0.9.6</version>
+    <time>1416994439</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262993</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3058d71fff665718148bfa04249dd17e</srcmd5>
+    <version>0.9.7</version>
+    <time>1419809427</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266507</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>949259f1ef78bd101c2fb456072d13b4</srcmd5>
+    <version>0.9.9</version>
+    <time>1441822883</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330035</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>518d14b376a2df96dd44ac2f0c95ce73</srcmd5>
+    <version>0.9.10</version>
+    <time>1480860515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.10:
+  + Addded basic support for TOFU information.
+  + Removed key-ID from some listings in favor of using the
+    fingerprint.
+  + Fixed deletion of X.509 keys.
+  + Allow for saving to an alternate file name if the file already
+    exists.
+  + Fixed several problems with key edit functions.
+  + Fixed drag-and-drop.</comment>
+    <requestid>443619</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7298aa55f69762ab5f6c295b75753c0b</srcmd5>
+    <version>0.10.0</version>
+    <time>1540320074</time>
+    <user>dimstar_suse</user>
+    <comment>gpa 0.10.0 (forwarded request 642953 from AndreasStieger)</comment>
+    <requestid>643841</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+<package name="killswitch-applet" project="openSUSE:Factory">
+  <title>Manage Killswitches</title>
+  <description>killswitch-applet is a small application sitting in the system tray
+providing the possibility to manage all the killswitches found in the
+system. In this context, &quot;managing&quot; means enabling or disabling certain
+killswitches. This is especially useful if you have multiple killswitches
+like bluetooth, WWAN or WLAN.</description>
+  <devel project="hardware" package="killswitch-applet"/>
+</package>

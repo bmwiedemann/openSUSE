@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ff8ff0407635d4b7fe7079390bcb4fd</srcmd5>
+    <version>2.4.4</version>
+    <time>1413616117</time>
+    <user>coolo</user>
+    <comment>add license file</comment>
+    <requestid>256704</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d0c75b9ceb83c4b5c668387b1dee933c</srcmd5>
+    <version>2.4.4</version>
+    <time>1413987778</time>
+    <user>coolo</user>
+    <comment>- Don't use unknown option -mno-popcnt (forwarded request 257843 from Andreas_Schwab)</comment>
+    <requestid>257845</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e21a6bd46b625a0f05c2a81afdaa3f68</srcmd5>
+    <version>2.4.4</version>
+    <time>1424430099</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0002-compile-fixes.diff to fend off improper usage of NTL headers.</comment>
+    <requestid>286758</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e5bad5061cce5bb5a800286e9d148f19</srcmd5>
+    <version>2.4.5</version>
+    <time>1436112181</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>314995</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4abd938a00329d625bd40a39d3e503a3</srcmd5>
+    <version>3.0~5831</version>
+    <time>1459002531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to git snapshot of 3.0.x branch</comment>
+    <requestid>379269</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>981a62995e7644f0594c4931218eec45</srcmd5>
+    <version>3.0~5831</version>
+    <time>1479150974</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust 0001-build-provide-autotools-files.patch for new
+  NTL-10.x header file names.</comment>
+    <requestid>440160</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b3ff9e6cee7d0b0ba15952220db37870</srcmd5>
+    <version>3.0~5831</version>
+    <time>1496089188</time>
+    <user>dimstar_suse</user>
+    <comment>Sort input files to make build reproducible (boo#1041090) (forwarded request 498729 from bmwiedemann)</comment>
+    <requestid>498731</requestid>
+  </revision>
+</revisionlist>

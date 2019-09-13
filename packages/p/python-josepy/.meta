@@ -1,0 +1,5 @@
+<package name="python-josepy" project="openSUSE:Factory">
+  <title></title>
+  <description>JOSE protocol implementation in Python</description>
+  <devel project="devel:languages:python" package="python-josepy"/>
+</package>

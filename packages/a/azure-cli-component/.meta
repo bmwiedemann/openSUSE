@@ -1,0 +1,11 @@
+<package name="azure-cli-component" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'component' Command Module</title>
+  <description>Microsoft Azure CLI 'component' Command Module
+
+This package is for the 'component' module.
+i.e. 'az component'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-component"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

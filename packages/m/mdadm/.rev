@@ -1,0 +1,1175 @@
+<revisionlist>
+  <revision rev="1" vrev="20">
+    <srcmd5>b73160038ee57451e2211ffbb4dd343b</srcmd5>
+    <version>2.5.3</version>
+    <time>1168447797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>23acf214aa957f69c5b4b392eaa2f3d3</srcmd5>
+    <version>2.6.1</version>
+    <time>1175812620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="16">
+    <srcmd5>125df49ffda8a0a19f18e617ff394635</srcmd5>
+    <version>2.6.1</version>
+    <time>1182458592</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>00d9390f1e6917b97822a02dd8fd1e6e</srcmd5>
+    <version>2.6.2</version>
+    <time>1184343221</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>b039e22bc53742c4d52ee5d528d79c35</srcmd5>
+    <version>2.6.2</version>
+    <time>1185541950</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a76e92d0245c69742fda9d291a2f72dc</srcmd5>
+    <version>2.6.4</version>
+    <time>1193272529</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="17">
+    <srcmd5>bcb155f658b9bd572bf93d55415f7d7c</srcmd5>
+    <version>2.6.4</version>
+    <time>1201195841</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="23">
+    <srcmd5>b56f2a4ea11aea6bc69869ae97e87e8e</srcmd5>
+    <version>2.6.4</version>
+    <time>1202158765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="37">
+    <srcmd5>289ccb3be40b31d3f7716e2b67f8d921</srcmd5>
+    <version>2.6.4</version>
+    <time>1209646046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>71e2bd785021c51b7a28b6b1f7f68b36</srcmd5>
+    <version>2.6.7</version>
+    <time>1214187099</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>22ae02e37581ca0e12ffc54fd1225820</srcmd5>
+    <version>2.6.7</version>
+    <time>1216945957</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>17bcec7a41e0ea9defb4f6f50e3caac8</srcmd5>
+    <version>2.6.7</version>
+    <time>1219011364</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="22">
+    <srcmd5>aebb69710ab2af09b647b3a46d638869</srcmd5>
+    <version>2.6.7</version>
+    <time>1220642110</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>33960400f87c5565abf4efaf1344b023</srcmd5>
+    <version>3.0</version>
+    <time>1222269127</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>2ec0cbf0a509b27f7bf3240d2314188b</srcmd5>
+    <version>3.0</version>
+    <time>1222297455</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>87b938c5f9a51ababf487f8602e4ed4e</srcmd5>
+    <version>3.0</version>
+    <time>1223307983</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>083e9da1f9e9e09386c51e3c3c76d479</srcmd5>
+    <version>3.0</version>
+    <time>1226006352</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>e46bb46078bad61a6e7df53a3ce57a7e</srcmd5>
+    <version>3.0</version>
+    <time>1226024081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>cfa8834169302aa19370ed5b5efda3e7</srcmd5>
+    <version>3.0</version>
+    <time>1226050868</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>d410948fff2e4a9c04c08adeca96027e</srcmd5>
+    <version>3.0</version>
+    <time>1226067842</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>dc88a1da63a5f7d90d2b2e85060b35c9</srcmd5>
+    <version>3.0</version>
+    <time>1226273420</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>f2768de2a0ad9cdb02f280ee3e7a6817</srcmd5>
+    <version>3.0</version>
+    <time>1226938974</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>ac3094b919f95418d9d7118a13d0de28</srcmd5>
+    <version>3.0</version>
+    <time>1227192801</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>1d64b807aee528fe139c4cd555aef6e7</srcmd5>
+    <version>3.0</version>
+    <time>1228488345</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>da68318d0c4dcadd2159295e6d80d561</srcmd5>
+    <version>3.0</version>
+    <time>1228489463</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="13">
+    <srcmd5>2242ae3befda18114ede3389ef3abe45</srcmd5>
+    <version>3.0</version>
+    <time>1233019191</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="14">
+    <srcmd5>632459ee8e16e856ca53e8b15b00974e</srcmd5>
+    <version>3.0</version>
+    <time>1234797328</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="17">
+    <srcmd5>4a590f1ec6f783f730fe205816dea9cb</srcmd5>
+    <version>3.0</version>
+    <time>1234908421</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="19">
+    <srcmd5>c7c977a654f5f51965a28d90a115ad59</srcmd5>
+    <version>3.0</version>
+    <time>1235390254</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="20">
+    <srcmd5>4c65e34431ade676a58b094819823c73</srcmd5>
+    <version>3.0</version>
+    <time>1237316936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="21">
+    <srcmd5>2ae6f48783cfcf74e3757154b970e367</srcmd5>
+    <version>3.0</version>
+    <time>1250003393</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mdadm based on submit request 17443 from user michal-m
+</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5d0ff752964454402fa8a886aace6fe6</srcmd5>
+    <version>3.0.2</version>
+    <time>1254523489</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mdadm based on submit request 21463 from user michal-m
+</comment>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>5d0ff752964454402fa8a886aace6fe6</srcmd5>
+    <version>3.0.2</version>
+    <time>1254523489</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mdadm based on submit request 21463 from user michal-m
+</comment>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>373d612a965a38fc7e406e00a7e26eff</srcmd5>
+    <version>3.0.2</version>
+    <time>1257181811</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mdadm based on submit request 23607 from user michal-m
+</comment>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>58e3f24c6ec6899b819496b1c6188a97</srcmd5>
+    <version>3.0.2</version>
+    <time>1260979172</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mdadm based on submit request 26748 from user michal-m
+</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>33cff95a98bc549420b061d6220d94cd</srcmd5>
+    <version>3.0.3</version>
+    <time>1263221457</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mdadm based on submit request 29138 from user michal-m
+</comment>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>7d7a2a67df582ba1e0df011a97745992</srcmd5>
+    <version>3.0.3</version>
+    <time>1263820138</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mdadm based on submit request 29764 from user michal-m
+</comment>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>f4a28ea2fccb14174892fab2eba68af5</srcmd5>
+    <version>3.0.3</version>
+    <time>1268924922</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>b1995385996cc812c65f08dfb2c2d3d1</srcmd5>
+    <version>3.0.3</version>
+    <time>1268955091</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mdadm based on submit request 35265 from user coolo
+</comment>
+    <requestid>35265</requestid>
+  </revision>
+  <revision rev="40" vrev="5">
+    <srcmd5>b77c43e3212596f6f91364b2c8535dd6</srcmd5>
+    <version>3.0.3</version>
+    <time>1269168689</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Factory/mdadm based on submit request 35415 from user coolo
+</comment>
+    <requestid>35415</requestid>
+  </revision>
+  <revision rev="41" vrev="6">
+    <srcmd5>b19cb54da83e1c416d67d8123c26cd12</srcmd5>
+    <version>3.0.3</version>
+    <time>1269563775</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mdadm based on submit request 35700 from user michal-m
+</comment>
+    <requestid>35700</requestid>
+  </revision>
+  <revision rev="42" vrev="7">
+    <srcmd5>4f84de3711b74b619944e4542d2bebb1</srcmd5>
+    <version>3.0.3</version>
+    <time>1275436841</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mdadm based on submit request 40963 from user prusnak
+</comment>
+    <requestid>40963</requestid>
+  </revision>
+  <revision rev="43" vrev="8">
+    <srcmd5>e07925f2b6a5a467e028db02540cbd0f</srcmd5>
+    <version>3.0.3</version>
+    <time>1277822582</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mdadm based on submit request 42186 from user michal-m
+</comment>
+    <requestid>42186</requestid>
+  </revision>
+  <revision rev="44" vrev="10">
+    <srcmd5>e07925f2b6a5a467e028db02540cbd0f</srcmd5>
+    <version>3.0.3</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="45" vrev="11">
+    <srcmd5>e07925f2b6a5a467e028db02540cbd0f</srcmd5>
+    <version>3.0.3</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="46" vrev="12">
+    <srcmd5>adcffd25f626599947303bbfd5d3b1ca</srcmd5>
+    <version>3.0.3</version>
+    <time>1279651761</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mdadm based on submit request 43454 from user coolo
+</comment>
+    <requestid>43454</requestid>
+  </revision>
+  <revision rev="47" vrev="8">
+    <srcmd5>dfa83b51fe54fc06e7d3717f75b3bb15</srcmd5>
+    <version>3.1.4</version>
+    <time>1287757908</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51253 from user elvigia
+</comment>
+    <requestid>51253</requestid>
+  </revision>
+  <revision rev="48" vrev="9">
+    <srcmd5>e4d58ae903e299941a1572fc81a8cc9e</srcmd5>
+    <version>3.1.4</version>
+    <time>1287757915</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51253
+</comment>
+  </revision>
+  <revision rev="49" vrev="10">
+    <srcmd5>c8a93455282f245fa5806f4b8079f49b</srcmd5>
+    <version>3.1.4</version>
+    <time>1290093418</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53224 from user neilbrown
+</comment>
+    <requestid>53224</requestid>
+  </revision>
+  <revision rev="50" vrev="11">
+    <srcmd5>61487c1063605e56523a71959d44b8e5</srcmd5>
+    <version>3.1.4</version>
+    <time>1290093427</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53224
+</comment>
+  </revision>
+  <revision rev="51" vrev="14">
+    <srcmd5>61487c1063605e56523a71959d44b8e5</srcmd5>
+    <version>3.1.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="52" vrev="15">
+    <srcmd5>c482e9e52ae4fe66c2a0d3bfbbdcb772</srcmd5>
+    <version>3.1.4</version>
+    <time>1298028341</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61540 from user neilbrown
+</comment>
+    <requestid>61540</requestid>
+  </revision>
+  <revision rev="53" vrev="16">
+    <srcmd5>e5cd92b732a7da0cb003c3718239c780</srcmd5>
+    <version>3.1.4</version>
+    <time>1298028357</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61540
+</comment>
+  </revision>
+  <revision rev="54" vrev="17">
+    <srcmd5>e2796fc6b32cb8ad052ce85e6ca52f0b</srcmd5>
+    <version>3.1.4</version>
+    <time>1299056379</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63188 from user neilbrown
+</comment>
+    <requestid>63188</requestid>
+  </revision>
+  <revision rev="55" vrev="18">
+    <srcmd5>602ba078a974d4674a655edd52861d3a</srcmd5>
+    <version>3.1.4</version>
+    <time>1299056390</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63188
+</comment>
+  </revision>
+  <revision rev="56" vrev="19">
+    <srcmd5>b7156ebeae35c757141078986abfdb37</srcmd5>
+    <version>3.1.4</version>
+    <time>1308045584</time>
+    <user>saschpe</user>
+    <comment>- 64-md-raid.rules - make clear distinction between
+  'disk' and 'partition' cases.  In particular it
+  is wrong and problematic to test for 'md/array_state'
+  for 'partition' devices as they cannot see 'md/*'
+  and cannot exist when it doesn't have a valid value
+  anyway. (bnc#684291)</comment>
+    <requestid>73485</requestid>
+  </revision>
+  <revision rev="57" vrev="20">
+    <srcmd5>ed53f02f4e2200efecdecda580bbcd17</srcmd5>
+    <version>3.1.4</version>
+    <time>1308045602</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73485
+</comment>
+  </revision>
+  <revision rev="58" vrev="21">
+    <srcmd5>93d3969d3aed3c2db3848f41f17062de</srcmd5>
+    <version>3.1.4</version>
+    <time>1313049940</time>
+    <user>saschpe</user>
+    <comment>- Do not use -fno-strict-aliasing when not needed (forwarded request 78412 from elvigia)</comment>
+    <requestid>78476</requestid>
+  </revision>
+  <revision rev="59" vrev="22">
+    <srcmd5>65d57ace58f78b7d2a722e6784ec9c50</srcmd5>
+    <version>3.1.4</version>
+    <time>1313049948</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78476
+</comment>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>2b327c98c627c6a823e9cf2b94df5063</srcmd5>
+    <version>3.2.2</version>
+    <time>1313655594</time>
+    <user>saschpe</user>
+    <comment>New upstream mdadm release, and assort minor tidy-ups.
+
+- boot.md: improve 'status' and add 'reload'
+  function.  Also change 'Raid' to 'RAID'
+  for consistency (bnc#709474)
+
+- Use udev rules file from upstream package, rather
+  have having a separate one.
+
+- Update to new upstream 3.2.2 plug git patches.
+  Also update FSF address in boot-md.</comment>
+    <requestid>79195</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>7303b766ac42e5ea5067929d29d96c90</srcmd5>
+    <version>3.2.2</version>
+    <time>1317744807</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86414 from uli_suse)</comment>
+    <requestid>86440</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>b7e09f0304f394af7ab23c0272146f2e</srcmd5>
+    <version>3.2.2</version>
+    <time>1317912226</time>
+    <user>oertel</user>
+    <comment>Fix for bnc#721905 - for Factory and 12.1
+
+- mkinitrd-setup.sh -- add &quot;AUTO -all&quot; to initrd mdadm.conf
+  so that only arrays needed for boot are auto-assembled.
+- auto-line.fix -- fix handling of &quot;AUTO&quot; line
+  in mdadm.conf so it actually works.
+  (bnc#721905)</comment>
+    <requestid>86854</requestid>
+  </revision>
+  <revision rev="63" vrev="5">
+    <srcmd5>b7e09f0304f394af7ab23c0272146f2e</srcmd5>
+    <version>3.2.2</version>
+    <time>1319182174</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="64" vrev="6">
+    <srcmd5>64fb47a51ccb492911374e2001f0fd3e</srcmd5>
+    <version>3.2.2</version>
+    <time>1323192523</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="65" vrev="7">
+    <srcmd5>52603dd7548e01e8a65308fa781db15d</srcmd5>
+    <version>3.2.2</version>
+    <time>1324830994</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97714 from coolo)</comment>
+    <requestid>97882</requestid>
+  </revision>
+  <revision rev="66" vrev="8">
+    <srcmd5>8465830f9de619bdf10fe65002c11327</srcmd5>
+    <version>3.2.2</version>
+    <time>1335165339</time>
+    <user>coolo</user>
+    <comment>- Run update of initrd at %post and %postun.
+  We need this to make sure initrd reflects the updates.</comment>
+    <requestid>114777</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>0e46b74f55a14f4ee88fd2aa9ad27140</srcmd5>
+    <version>3.2.4</version>
+    <time>1336580297</time>
+    <user>coolo</user>
+    <comment>New upstream mdadm for openSUSE 12.2
+
+- New upstream version: 3.2.4. /run/mdadm is not
+  used for runtime files, not /var/run or /dev/.mdadm.</comment>
+    <requestid>116799</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>27145364901736b9eb5562efd714dd97</srcmd5>
+    <version>3.2.5</version>
+    <time>1337580449</time>
+    <user>coolo</user>
+    <comment>- New upstream version: 3.2.5.  Serious regression
+  in 3.2.4 necessitated a new release.  Only significant
+  fix is that &quot;--add&quot; now works again.</comment>
+    <requestid>121367</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>87b48b173f0ac126da9ee52e1460134e</srcmd5>
+    <version>3.2.5</version>
+    <time>1338528085</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>123057</requestid>
+  </revision>
+  <revision rev="70" vrev="4">
+    <srcmd5>87b48b173f0ac126da9ee52e1460134e</srcmd5>
+    <version>3.2.5</version>
+    <time>1340183694</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="71" vrev="5">
+    <srcmd5>428dfd2d01aba399aa9213332864f9e0</srcmd5>
+    <version>3.2.5</version>
+    <time>1340723226</time>
+    <user>coolo</user>
+    <comment>- use recommends: smtp_daemon, similar to cronie example
+
+- add missing dependencies on cron and /usr/sbin/sendmail (bnc#767155)</comment>
+    <requestid>125982</requestid>
+  </revision>
+  <revision rev="72" vrev="6">
+    <srcmd5>bbfbac4e52e8bc9c983a031d02626105</srcmd5>
+    <version>3.2.5</version>
+    <time>1341820237</time>
+    <user>coolo</user>
+    <comment>mdadm bugfix for Factory
+
+- mdmon-arg.fix: fix arg parsing in mdmon so that
+  &quot;--all --takeover&quot; works. (bnc#767150)</comment>
+    <requestid>127149</requestid>
+  </revision>
+  <revision rev="73" vrev="7">
+    <srcmd5>1a67c1a7756d54ad06601a4d14a82da6</srcmd5>
+    <version>3.2.5</version>
+    <time>1343632960</time>
+    <user>coolo</user>
+    <comment>- Add blkid-builtin.patch: use blkid built-in from udev (less fork, useful for dracut, please fwd for 12.2) (forwarded request 129089 from fcrozat)</comment>
+    <requestid>129123</requestid>
+  </revision>
+  <revision rev="74" vrev="8">
+    <srcmd5>b438fee912535a37e7e2b3510d80dda9</srcmd5>
+    <version>3.2.5</version>
+    <time>1345639037</time>
+    <user>namtrac</user>
+    <comment>mdadm update to fix various install/boot issues with IMSM RAID.
+
+- mdmon-takeover.fix
+  find-free-devnum.fix
+  mapfile-rebuild.fix
+  udev-offroot
+   Fix various issues will installation on IMSM
+  RAID arrays, booting from those arrays, and
+  clean shutdown when such an array is used for '/'.
+  (bnc#752107 bnc#732294 bnc#770351)</comment>
+    <requestid>131201</requestid>
+  </revision>
+  <revision rev="75" vrev="9">
+    <srcmd5>d7edf69f7894cb0a2668e8b10b394fa6</srcmd5>
+    <version>3.2.5</version>
+    <time>1348562498</time>
+    <user>coolo</user>
+    <comment>- mdmon-takeover.fix
+  find-free-devnum.fix
+  mapfile-rebuild.fix
+  udev-offroot
+   Fix various issues will installation on IMSM
+  RAID arrays, booting from those arrays, and
+  clean shutdown when such an array is used for '/'.
+  (bnc#752107 bnc#732294 bnc#770351)
+- mkinitrd-setup.sh: allow use stable md device name
+  and allow it to have a ':' in it. (bnc#779087)
+- boot.md: make sure udev-trigger runs before
+  boot.md. (bnc#772286)</comment>
+    <requestid>135563</requestid>
+  </revision>
+  <revision rev="76" vrev="10">
+    <srcmd5>06538bb40680b54c4807176429e65b37</srcmd5>
+    <version>3.2.5</version>
+    <time>1349946161</time>
+    <user>coolo</user>
+    <comment>- remove /lib/udev/devices from specfile as it is
+  unused
+- mkinitrd-setup.sh: fixed recent breakage for IMSM
+  arrays (bnc#783444)</comment>
+    <requestid>137540</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>ff3ca20507247cb31a5360aaae0528a8</srcmd5>
+    <version>3.2.6</version>
+    <time>1351265155</time>
+    <user>coolo</user>
+    <comment>- new upstream release 3.2.6.  Subsumes all of our
+  patches and adds a lot of other bug fixes for
+  less common cases including for a couple that cause
+  mdadm to crash.</comment>
+    <requestid>139359</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>1c7d7ef9f9f33563db98ccbe8607c767</srcmd5>
+    <version>3.2.6</version>
+    <time>1352214772</time>
+    <user>coolo</user>
+    <comment>- Fix factory breakage on udev and systemd rules. (forwarded request 140064 from elvigia)</comment>
+    <requestid>140065</requestid>
+  </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>1c7d7ef9f9f33563db98ccbe8607c767</srcmd5>
+    <version>3.2.6</version>
+    <time>1359109437</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="80" vrev="5">
+    <srcmd5>ea7a7cc71458a1e3e1bdfa0e6566e964</srcmd5>
+    <version>3.2.6</version>
+    <time>1362119256</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0
+mdadm/Software-RAID.HOWTO.tar.bz2 (forwarded request 156539 from babelworx)</comment>
+    <requestid>156767</requestid>
+  </revision>
+  <revision rev="81" vrev="6">
+    <srcmd5>9b25e7245c147bd6c13b1aa9801867d3</srcmd5>
+    <version>3.2.6</version>
+    <time>1366232800</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 171084 from namtrac)</comment>
+    <requestid>171239</requestid>
+  </revision>
+  <revision rev="82" vrev="7">
+    <srcmd5>925f1eb72f7abc8954a29505f8eae5e3</srcmd5>
+    <version>3.2.6</version>
+    <time>1371544428</time>
+    <user>coolo</user>
+    <comment>- assemble-EXCL-race.fix: avoid some races during
+  array assembled- particularly at boot (bnc#793954)
+- boot.md: make sure systemd-udev-trigger runs before
+  boot.md to avoid races: bnc#793954
+- mdmon@.service - new file plus patches to allow
+  mdmon to be started by systemd, so it doesn't
+  kill it (bnc#321366)</comment>
+    <requestid>178832</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>2b789189ddbaec44cbffc399ae8312af</srcmd5>
+    <version>3.3</version>
+    <time>1378295866</time>
+    <user>coolo</user>
+    <comment>Complete with extra noise in changes file aas requested.
+
+- New upstream release - mdadm-3.3
+  Lot of improvements to --grow and DDF support.
+  Better interaction with systemd.
+  Hot-replace support and more.
+  Removes patches:
+    assemble-EXCL-race.fix
+    0001-Add-support-for-launching-mdmon-via-systemctl-instea.patch
+    0002-In-case-launching-mdmon-fails-print-an-error-message.patch
+    0003-mdmon-add-foreground-option.patch
+    0004-Suppress-error-messages-from-systemctl.patch
+  which were backports from upstream.</comment>
+    <requestid>197358</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>2314afa8544a2cf3f863b5fd2a758012</srcmd5>
+    <version>3.3</version>
+    <time>1378748725</time>
+    <user>coolo</user>
+    <comment>- mkinitrd-setup.sh: copy new udev rules files into
+  the initrd.
+  The &quot;mkinitrd&quot; package does this for the old name.
+  It is easier if this packages does it for the files
+  this package installs.
+  (bnc#838777)</comment>
+    <requestid>197947</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>b14ac08007b1de5877934bb2c6209faa</srcmd5>
+    <version>3.3</version>
+    <time>1379076321</time>
+    <user>scarabeus_factory</user>
+    <comment>mdadm update - with fixes mdadm.changes
+
+- boot.md - simplify boot.
+  As array assembly is done by udev, it shouldn't
+  be done by boot.md.  This will avoid some problems
+  with arrays getting started degraded.
+
+- Make-IRs-and-run-work-properly-for-containers.patch
+- mdmon-honour-offroot-again.patch
+- DDF-allow-for-possibility-that-there-is-no-secondary.patch
+  Upstream fixes
+
+- config-set-auto_seen-after-processing-the-auto-line.patch
+  Fix bug which causes &quot;AUTO -all&quot; in mdadm.conf
+  in initrd to be ignored, so array might be
+  auto-assembled too early.
+
+- mkinitrd-boot.sh: simplify boot sequence by relying
+  completely on udev running &quot;mdadm -I&quot;.  Thus
+  mkinitrd-boot.sh needs to do very little.
+  The devfunction script in the mkinitrd package has
+  been modified to start newly degraded array after
+  a suitable timeout.
+- mkinitrd-setup.sh:
+   - don't save md_devs as it isn't used any more
+   - allow md device names like &quot;/dev/md_foo&quot; which will
+     need to be supported in due course.
+
+- mkinitd-boot.sh: Clear {root,resume}_major variable
+  If multipath is in use, md is always on top of it. Therefore, the root
+  device is always an md device. (bnc#786526)</comment>
+    <requestid>198909</requestid>
+  </revision>
+  <revision rev="86" vrev="5">
+    <srcmd5>b14ac08007b1de5877934bb2c6209faa</srcmd5>
+    <version>3.3</version>
+    <time>1379663275</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="87" vrev="6">
+    <srcmd5>a3c25aa6843e02dcf72050b3fbebd059</srcmd5>
+    <version>3.3</version>
+    <time>1384246313</time>
+    <user>coolo</user>
+    <comment>Bug fixes for mdadm and a new minor feature for FATE#316007
+
+- DDF-handle-fake-RAIDs-with-changing-subarray-UUIDs.patch
+- DDF-compare_super_ddf-fix-sequence-number-check.patch
+- Monitor-don-t-set-arrays-dirty-after-transition-to-r.patch
+- DDF-add_to_super_ddf-be-careful-with-workspace_lba.patch
+- Monitor-write-meta-data-in-readonly-state-sometimes.patch
+- Assembe-fix-bug-in-force_array-it-wasn-t-forcing-pro.patch
+  Various bugfixes from upstream - several to improve
+  DDF support, one which fixes a nasty bug in &quot;--assemble --force&quot;.
+
+- DDF-brief_examine_subarrays_ddf-print-array-name.patch
+  DDF-factor-out-array-name-generation.patch
+  Include name in &quot;-Db&quot; output for DDF
+  FATE#316007</comment>
+    <requestid>206456</requestid>
+  </revision>
+  <revision rev="88" vrev="7">
+    <srcmd5>b6c527ae40a13df491eebbb94f102ff3</srcmd5>
+    <version>3.3</version>
+    <time>1386326765</time>
+    <user>coolo</user>
+    <comment>Assorted mdadm update to make it work better with systemd
+
+- Assemble-Incremental-don-t-hold-O_EXCL-on-mddev-afte.patch
+  Ensure fsck/mount don't find an md array to be BUSY
+  the moment it appears.
+- mkinitrd-setup.sh: Make the array device names in
+  /etc/mdadm.conf in the initrd match those in /etc/mdadm.conf
+  in the root filesystem.  (bnc#851993)
+
+- Restructure-assemble_container_content-and-improve-m.patch
+- Incremental-add-export-handling.patch
+- udev-rules.degraded
+- systemd-mdadm-last-resort@.service
+- systemd-mdadm-last-resort@.timer
+  Teach systemd to start degraded arrays after a timeout if
+  some missing devices never appear (bnc#832501)
+- Incremental-improve-support-for-DEVICE-based-restric.patch
+  Teach &quot;mdadm --incremental&quot; to handle &quot;DEVICE&quot; lists from
+  mdadm.conf properly (bnc@851993)</comment>
+    <requestid>209450</requestid>
+  </revision>
+  <revision rev="89" vrev="8">
+    <srcmd5>0273d72f534b8c688009d95347057b75</srcmd5>
+    <version>3.3</version>
+    <time>1391082726</time>
+    <user>coolo</user>
+    <comment>Main focus of this update is improving interaction with systemd.
+Other bugfixes from upstream added for good measure.
+
+This time with %fillup_only which was missing before.
+
+- remove boot.md.  It no longer does anything useful.
+
+- mdmonitor
+  run &quot;mdadm --monitor&quot; from systemd instead of init.d
+  sciprt (bnc#849523)
+- remove mdadmd due to above.
+- udev-rules-try-mdadm-I-on-change-events.patch
+  (bnc#851993)
+- policy-NULL-path-isn-t-really-acceptable-use-the-dev.patch
+- DDF-really-ignore-DDF-metadata-on-partitions.patch
+- Assemble-avoid-infinite-loop-when-auto-assembling-pa.patch
+- DDF-fix-detection-of-failed-devices-during-assembly.patch
+- Grow-fix-problems-with-prematurely-aborting-of-resha.patch
+- IMSM-don-t-crash-when-creating-an-array-with-missing.patch
+- mdmon-don-t-complain-about-notifying-parent-when-the.patch
+- systemd-mdmon-set-IMSM_NO_PLATFORM-1.patch
+- mdmon-.service-remove-over-ride-of-Standard-IO.patch
+  Various upstream bug fixes.</comment>
+    <requestid>214760</requestid>
+  </revision>
+  <revision rev="90" vrev="9">
+    <srcmd5>cea5e70e408dfe9f73058b601274744e</srcmd5>
+    <version>3.3</version>
+    <time>1398178792</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>230133</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>55f64f0383cfaedbd2f030b5bb9197de</srcmd5>
+    <version>3.3.1</version>
+    <time>1403070575</time>
+    <user>coolo</user>
+    <comment>- mdadm.spec: change calling of mkinitrd to use the
+  %regenerate_initrd_{post,posttrans} macros to optimise
+  initrd regeneration. (bnc#881780)
+
+- new upstream release 3.3.1, incorporates all current patches
+  and includes assorted other minor fixes.
+- 0001-Makefile-install-mdadm-grow-continue-.service.patch
+  make sure mdadm-grow-continue.service is installed properly.
+- remove mkinitrd files, we now use dracut
+- Delete  0001-Assemble-allow-load_devices-to-change-the-st-which-i.patch
+- Delete  0001-DDF-mark-missing-on-assembly-device-properly.patch
+- Delete  0001-mdmon-.service-Change-type-of-process-start-up-to-fo.patch
+- Delete  0001-systemd-various-fixes-for-boot-with-container-arrays.patch
+- Delete  0002-Assemble-re-arrange-freeing-of-tst-in-load_devices.patch
+- Delete  0002-DDF-guard-against-pdnum-being-negative.patch
+- Delete  0003-Assemble-change-load_devices-to-return-most_recent-s.patch
+- Delete  0003-DDF-fix-possible-mdmon-crash-when-updating-metadata.patch
+- Delete  0003-Work-around-architectures-having-statfs.f_type-defin.patch
+- Delete  0004-DDF-Don-t-fail-compare_super_ddf-due-to-re-configure.patch
+- Delete  0004-DDF-report-seq-counter-as-events.patch
+- Delete  0005-DDF-when-first-activating-an-array-record-any-missin.patch
+- Delete  Assembe-fix-bug-in-force_array-it-wasn-t-forcing-pro.patch
+- Delete  Assemble-Incremental-don-t-hold-O_EXCL-on-mddev-afte.patch
+- Delete  Assemble-avoid-infinite-loop-when-auto-assembling-pa.patch
+- Delete  DDF-add_to_super_ddf-be-careful-with-workspace_lba.patch
+- Delete  DDF-allow-for-possibility-that-there-is-no-secondary.patch
+- Delete  DDF-brief_examine_subarrays_ddf-print-array-name.patch
+- Delete  DDF-compare_super_ddf-fix-sequence-number-check.patch
+- Delete  DDF-factor-out-array-name-generation.patch
+- Delete  DDF-fix-detection-of-failed-devices-during-assembly.patch</comment>
+    <requestid>236929</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>a8d83a7472c8cdf835552ad1fb789c61</srcmd5>
+    <version>3.3.1</version>
+    <time>1405178060</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>239413</requestid>
+  </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>64a37be4f2b6d022865418777e5d1ad7</srcmd5>
+    <version>3.3.1</version>
+    <time>1405521381</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>240873</requestid>
+  </revision>
+  <revision rev="94" vrev="4">
+    <srcmd5>948c601f931209da263512d999416b75</srcmd5>
+    <version>3.3.1</version>
+    <time>1406521879</time>
+    <user>coolo</user>
+    <comment>- Remove insserv dependency; the package has been moved to systemd
+  init system
+- Remove redundant %clean section (forwarded request 242360 from posophe)</comment>
+    <requestid>242436</requestid>
+  </revision>
+  <revision rev="95" vrev="6">
+    <srcmd5>948c601f931209da263512d999416b75</srcmd5>
+    <version>3.3.1</version>
+    <time>1409301881</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="96" vrev="7">
+    <srcmd5>1d351ab14332c7d230360b51dae0ac14</srcmd5>
+    <version>3.3.1</version>
+    <time>1410981805</time>
+    <user>coolo</user>
+    <comment>- Add cron job to run 'mdcheck' regularly to
+  verify all md arrays. (bnc#869261)</comment>
+    <requestid>249485</requestid>
+  </revision>
+  <revision rev="97" vrev="8">
+    <srcmd5>c2e1b3efbd3fdef71ec1add2b05a2800</srcmd5>
+    <version>3.3.1</version>
+    <time>1413382763</time>
+    <user>coolo</user>
+    <comment>- cron.d.mdadm: add correct PATH setting
+  (bnc#898239)</comment>
+    <requestid>252726</requestid>
+  </revision>
+  <revision rev="98" vrev="9">
+    <srcmd5>c80462f1a2a9ae3e58d652fe605af033</srcmd5>
+    <version>3.3.1</version>
+    <time>1415696353</time>
+    <user>dimstar_suse</user>
+    <comment>- mdcheck-no-devices.fix
+  mdcheck mustn't report an error if not md devices
+  exist (bnc#903051)</comment>
+    <requestid>259406</requestid>
+  </revision>
+  <revision rev="99" vrev="10">
+    <srcmd5>00646f99417320f221cb34da0c6c3abe</srcmd5>
+    <version>3.3.1</version>
+    <time>1423214478</time>
+    <user>dimstar_suse</user>
+    <comment>- mdcheck-careful.patch
+  Be careful about reading all output of &quot;mdadm --detail --export&quot;
+  as shell commands - it isn't quoted.
+  (bnc#910500)</comment>
+    <requestid>283972</requestid>
+  </revision>
+  <revision rev="100" vrev="11">
+    <srcmd5>851709658f7dd5b52cd6772df9046dda</srcmd5>
+    <version>3.3.1</version>
+    <time>1426174703</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290257</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>2d0f4ca4a331c1339a62c78ea4389a5d</srcmd5>
+    <version>3.3.4</version>
+    <time>1440135404</time>
+    <user>dimstar_suse</user>
+    <comment>- new upstream version 3.3.4. Important bugfix
+  to honour IMSM ROM settings when RAID is disabled.
+  (bsc#939748 bsc#937363)
+
+- new upstream version 3.3.3.  Lots of bug fixes, particular
+  &quot;mdadm --assemble --force&quot; would often not do the right thing
+  for RAID5.
+-  0001-Grow-Do-not-try-to-restart-if-reshape-is-running.patch
+   0001-Grow-fix-removal-of-line-in-wrong-case.patch
+   0001-IMSM-Add-warning-message-when-assemble-spanned-conta.patch
+   0001-Makefile-install-mdadm-grow-continue-.service.patch
+   mdcheck-careful.patch
+   mdcheck-no-devices.fix
+   All removed as now included upstream.
+
+- Make it build, that is build-require pkgconfig of udev and the
+  package systemd as this one is the owner of the directory
+  /usr/lib/systemd/system-shutdown</comment>
+    <requestid>320089</requestid>
+  </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>360526b791ae0d030844cdc064298136</srcmd5>
+    <version>3.3.4</version>
+    <time>1442392582</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330316</requestid>
+  </revision>
+  <revision rev="103" vrev="3">
+    <srcmd5>929132164a68866979936a899dd7033c</srcmd5>
+    <version>3.3.4</version>
+    <time>1443357111</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>332070</requestid>
+  </revision>
+  <revision rev="104" vrev="4">
+    <srcmd5>8271ef500ed4fbc1707075f098fb3cfd</srcmd5>
+    <version>3.3.4</version>
+    <time>1450471808</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing pre-requres for initrd macros (boo#958562) (forwarded request 349012 from tiwai)</comment>
+    <requestid>349083</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>4f4978d6b393dccd89fdd7941beafb91</srcmd5>
+    <version>3.4</version>
+    <time>1462696741</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release mdadm-3.4
+  Adds support for clustered-raid1 and journalled raid5
+- 0001-super1-Clear-memory-allocated-for-superblock-bitmap-.patch
+  Important upstream bugfix relating to uninialised memory.</comment>
+    <requestid>393513</requestid>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>4e0cfca6362b525f4cd5de0777fd2d0a</srcmd5>
+    <version>3.4</version>
+    <time>1464204113</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397531</requestid>
+  </revision>
+  <revision rev="107" vrev="3">
+    <srcmd5>2e7dffe9eaf25d6b4c70e3ac2963e26f</srcmd5>
+    <version>3.4</version>
+    <time>1469382158</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408603</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>614dd779550ee18f60511f7d02870996</srcmd5>
+    <version>4.0</version>
+    <time>1491565921</time>
+    <user>maxlin_factory</user>
+    <comment>New upstream release including several patches from SLE12-SP2
+which haven't landed upstream yet
+
+- New upstream release 4.0
+  Multiple bugfixes and various enhancements
+  including IMSM support for bad blocks and 4K block devices.
+  (FATE#321941)
+- DELETE 0001-super1-Clear-memory-allocated-for-superblock-bitmap-.patch
+  this was included upstream
+- 0001-Generic-support-for-consistency-policy-and-PPL.patch
+- 0002-Detail-show-consistency-policy.patch
+- 0003-imsm-PPL-support.patch
+- 0004-super1-PPL-support.patch
+- 0005-Add-ppl-and-no-ppl-options-for-update.patch
+- 0006-Grow-support-consistency-policy-change.patch
+   Add support for Partial Parity Logs
+   (FATE#321941)
+- 0007-udev-md-raid-assembly.rules-Skip-non-ready-devices.patch
+   (bsc#956236)
+- 0008-Retry-HOT_REMOVE_DISK-a-few-times.patch
+   (bsc#808647)
+- 0009-Introduce-sys_hot_remove_disk.patch
+   (bsc#974154)
+- 0010-Add-force-flag-to-hot_remove_disk.patch
+   (bsc#808647)
+- 0011-Detail-handle-non-existent-arrays-better.patch
+   (bsc#966773)</comment>
+    <requestid>482785</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>ff0708bc6cc2a5d04c3c0fd16f9254b7</srcmd5>
+    <version>4.0</version>
+    <time>1503591463</time>
+    <user>dimstar_suse</user>
+    <comment>- SLE15 continues to use mdadm-4.0, synchronize mdadm package from
+  SLE12-SP3 to SLE15, re-order all patches.
+- Rename the following patches, they are deleted and re-add in next
+  part of patches
+    0001-Generic-support-for-consistency-policy-and-PPL.patch
+    0002-Detail-show-consistency-policy.patch
+    0002-The-mdcheck-script-now-adds-messages-to-the-system.patch
+    0003-imsm-PPL-support.patch
+    0004-super1-PPL-support.patch
+    0005-Add-ppl-and-no-ppl-options-for-update.patch
+    0006-Grow-support-consistency-policy-change.patch
+    0007-udev-md-raid-assembly.rules-Skip-non-ready-devices.patch
+    0008-Retry-HOT_REMOVE_DISK-a-few-times.patch
+    0009-Introduce-sys_hot_remove_disk.patch
+    0010-Add-force-flag-to-hot_remove_disk.patch
+    0011-Detail-handle-non-existent-arrays-better.patch
+- Synchronize patches from mdadm of SLE12-SP3, the above renamed
+  patches are re-add here,
+    0001-Makefile-Fix-date-to-be-output-in-ISO-format.patch
+    0002-imsm-fix-missing-error-message-during-migration.patch
+    0003-Fix-oddity-where-mdadm-did-not-recognise-a-relative-.patch
+    0004-mdadm-check-the-nodes-when-operate-clustered-array.patch
+    0005-examine-tidy-up-some-code.patch
+    0006-mdadm-add-man-page-for-symlinks.patch
+    0007-mdadm-add-checking-clustered-bitmap-in-assemble-mode.patch
+    0008-mdadm-Add-Wimplicit-fallthrough-0-in-Makefile.patch
+    0009-mdadm-Specify-enough-length-when-write-to-buffer.patch
+    0010-mdadm-it-doesn-t-make-sense-to-set-bitmap-twice.patch
+    0011-mdadm-Monitor-Fix-NULL-pointer-dereference-when-stat.patch
+    0012-Replace-snprintf-with-strncpy-at-some-places-to-avoi.patch (forwarded request 517978 from colyli)</comment>
+    <requestid>518296</requestid>
+  </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>d9d19e007ef6a47f2d8bd7e0d058053e</srcmd5>
+    <version>4.0</version>
+    <time>1511595635</time>
+    <user>dimstar_suse</user>
+    <comment>For fate#316335: Add udev rules for cluster-md to confirm device (forwarded request 545003 from gqjiang)</comment>
+    <requestid>545008</requestid>
+  </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>d51bad1ea2340f62214782baf29c3d81</srcmd5>
+    <version>4.0</version>
+    <time>1512734076</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548348</requestid>
+  </revision>
+  <revision rev="112" vrev="5">
+    <srcmd5>3bc1b1955e0f04bf5ddd7684b998a8ce</srcmd5>
+    <version>4.0</version>
+    <time>1515342073</time>
+    <user>dimstar_suse</user>
+    <comment>- 0207-managemon-Don-t-add-disk-to-the-array-after-it-has-s.patch
+  (bsc#1073862) (forwarded request 561438 from colyli)</comment>
+    <requestid>561488</requestid>
+  </revision>
+  <revision rev="113" vrev="6">
+    <srcmd5>2ff1dacf7db3f9ec79ba4fc439441afa</srcmd5>
+    <version>4.0</version>
+    <time>1516091490</time>
+    <user>dimstar_suse</user>
+    <comment>fix bug bsc#1074949 (forwarded request 562651 from zlliu)</comment>
+    <requestid>562652</requestid>
+  </revision>
+  <revision rev="114" vrev="7">
+    <srcmd5>68d9a033406e4bc9ab1b7c61d0f6c73a</srcmd5>
+    <version>4.0</version>
+    <time>1518427504</time>
+    <user>dimstar_suse</user>
+    <comment>- policy.c: Avoid to take spare without defined domain by imsm
+  (bsc#1076588)
+  0209-policy.c-Avoid-to-take-spare-without-defined-domain-.patch (forwarded request 575225 from colyli)</comment>
+    <requestid>575332</requestid>
+  </revision>
+  <revision rev="115" vrev="8">
+    <srcmd5>b34c9e8166a55e944bf600e8ec744712</srcmd5>
+    <version>4.0</version>
+    <time>1520415013</time>
+    <user>dimstar_suse</user>
+    <comment>mdadm: allow clustered raid10 to be created with default layout (forwarded request 582461 from gqjiang)</comment>
+    <requestid>582467</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>d30edb8afd761a8c41aebac0d726371c</srcmd5>
+    <version>4.1</version>
+    <time>1545222325</time>
+    <user>dimstar_suse</user>
+    <comment>- Update mdadm code base to mdadm-4.1
+  (FATE#325869, bsc#1111960)
+ - Assorted bug-fixes, minor improvements, and code cleanup
+ - Add PPL support (alternate change-journalling model) (forwarded request 658654 from colyli)</comment>
+    <requestid>658682</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>9c3a3d6eb87add7ad22640bbde4ee05d</srcmd5>
+    <version>4.1</version>
+    <time>1551024293</time>
+    <user>coolo</user>
+    <comment>- Detail.c: do not skip first character when calling xstrdup in
+  Detail() (bsc#1123814)
+  0009-Detail.c-do-not-skip-first-character-when-calling-xs.patch (forwarded request 673560 from colyli)</comment>
+    <requestid>674340</requestid>
+  </revision>
+  <revision rev="118" vrev="3">
+    <srcmd5>43d0518acaf502ac8ee24bceb620999d</srcmd5>
+    <version>4.1</version>
+    <time>1554276237</time>
+    <user>dimstar_suse</user>
+    <comment>- imsm: finish recovery when drive with rebuild fails (bsc#1126975)
+  0010-imsm-finish-recovery-when-drive-with-rebuild-fails.patch
+- mdmon: don't attempt to manage new arrays when terminating
+  (bsc#1127526)
+  0011-mdmon-don-t-attempt-to-manage-new-arrays-when-termin.patch (forwarded request 689520 from colyli)</comment>
+    <requestid>689523</requestid>
+  </revision>
+</revisionlist>

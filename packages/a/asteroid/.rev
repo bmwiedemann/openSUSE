@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>73c0583e789aa078d2dbe9aefa9201aa</srcmd5>
+    <version>1.2.1</version>
+    <time>1415118520</time>
+    <user>coolo</user>
+    <comment>-------------------------------------------------------------------
+Thu Oct 30 15:23:11 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation</comment>
+    <requestid>259035</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>71177547d09e53cbeb30f499b59aae25</srcmd5>
+    <version>1.2.1</version>
+    <time>1464595158</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398805</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>28830f5fdec789da0fa6bcd3bbdd1380</srcmd5>
+    <version>1.2.1</version>
+    <time>1465336010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>399564</requestid>
+  </revision>
+</revisionlist>

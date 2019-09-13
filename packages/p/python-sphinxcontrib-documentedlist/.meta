@@ -1,0 +1,15 @@
+<package name="python-sphinxcontrib-documentedlist" project="openSUSE:Factory">
+  <title>Sphinx DocumentedList extension</title>
+  <description>Sphinx extension to convert a Python list into a table in the generated
+documentation. The intended application of this extension is to document
+the items of essentially list-like objects of immutable data (possibly
+enums, though python 3.4 enums are not supported yet).
+
+In the source code, each list item, instead of being just its native
+data type, should be replaced by a tuple of two elements. In the
+simplest application, the second element of the tuple should be a string
+providing a description for the item.
+
+</description>
+  <devel project="devel:languages:python" package="python-sphinxcontrib-documentedlist"/>
+</package>

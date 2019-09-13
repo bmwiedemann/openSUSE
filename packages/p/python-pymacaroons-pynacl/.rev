@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7dfbefaa301d25e97d2023797f67fb54</srcmd5>
+    <version>0.9.3</version>
+    <time>1502562266</time>
+    <user>maxlin_factory</user>
+    <comment>Initial submission, dependency for matrix-synapse</comment>
+    <requestid>504778</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bc099f7ead2b1549bca0829200730f94</srcmd5>
+    <version>0.9.3</version>
+    <time>1546535161</time>
+    <user>dimstar_suse</user>
+    <comment>- Use correct fdupes call
+- Run tests</comment>
+    <requestid>656006</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2b0e4cc929ca032d4c5d380f88b3b9cc</srcmd5>
+    <version>0.9.3</version>
+    <time>1550668280</time>
+    <user>maxlin_factory</user>
+    <comment>- Conflict with pymacaroon</comment>
+    <requestid>677316</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-GooCalendar" project="openSUSE:Factory">
+  <title>A calendar widget for GTK using PyGoocanvas</title>
+  <description>A calendar widget for GTK using PyGoocanvas</description>
+  <devel project="devel:languages:python" package="python-GooCalendar"/>
+</package>

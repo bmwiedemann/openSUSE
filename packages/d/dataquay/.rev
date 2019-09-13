@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>587d17f14f221da8b3c601f6ef701608</srcmd5>
+    <version>0.9.1</version>
+    <time>1505334751</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix RPM groups. Ensure neutrality of descriptions.
+- Use upstream name for -devel subpackage.
+- Update to 0.9.1
+  * Update to support Qt5 and newer C++ compilers. Now requires
+    C++11 (though the library only makes minimal use of the
+    standard).
+ * Incorporate a number of build fixes
+- Switched to Qt5
+- Refreshed dataquay-redland.patch and dataquay-lib64.patch
+- Added dataquay-sharedlib.patch
+- Dropped dataquay-disable_tests.patch
+- Spec cleanup
+- Fix to build on x86 architecture
+- initial version (0.9)
+</comment>
+    <requestid>522717</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e2f87275fd8a4359e97ed720db0322d0</srcmd5>
+    <version>0.9.1</version>
+    <time>1531947376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623502</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="QCSXCAD" project="openSUSE:Factory">
+  <title></title>
+  <description>Qt-GUI for CSXCAD library</description>
+  <devel project="science" package="QCSXCAD"/>
+</package>

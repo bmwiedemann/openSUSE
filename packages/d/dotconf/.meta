@@ -1,0 +1,13 @@
+<package name="dotconf" project="openSUSE:Factory">
+  <title>Configuration file parser library</title>
+  <description>dotconf is a simple-to-use and powerful configuration-file parser
+library written in C. The configuration files created for dotconf look
+very similar to those used by the Apache Webserver. Even
+Container-Directives known from httpd.conf can easily be used in the
+exact same manner as for Apache-Modules. It supports various types of
+arguments, dynamically loadable modules that create their own
+configuration options on-the-fly, a here-documents feature to pass very
+long ARG_STR data to your app, and on-the-fly inclusion of additional
+config files.</description>
+  <devel project="devel:libraries:c_c++" package="dotconf"/>
+</package>

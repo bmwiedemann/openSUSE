@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d56808c9cb0a28b5b276cfe5bf92b2e9</srcmd5>
+    <version>1.5</version>
+    <time>1532774519</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain python-sge-pygame in Factory</comment>
+    <requestid>625025</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d8687732c6daf3e277053909da106917</srcmd5>
+    <version>1.5</version>
+    <time>1533292721</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>627115</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>35bbe13eaec63e772bb8dcbd186ca40e</srcmd5>
+    <version>1.5.1</version>
+    <time>1544189957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655969</requestid>
+  </revision>
+</revisionlist>

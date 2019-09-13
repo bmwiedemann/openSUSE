@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="307">
+    <srcmd5>f27fc136b393b8d07de70c1157faf894</srcmd5>
+    <version>0.3.3</version>
+    <time>1168903307</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="358">
+    <srcmd5>077910f0012c067b63112c85c77e0eed</srcmd5>
+    <version>0.3.3</version>
+    <time>1172777988</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="492">
+    <srcmd5>bb7b33a2b85620b5b0e27e527900560b</srcmd5>
+    <version>0.3.3</version>
+    <time>1215621831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="530">
+    <srcmd5>6c70d0937992d6f45df9c99f1fe567ec</srcmd5>
+    <version>0.3.3</version>
+    <time>1233018690</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="532">
+    <srcmd5>6c70d0937992d6f45df9c99f1fe567ec</srcmd5>
+    <version>0.3.3</version>
+    <time>1233018690</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="533">
+    <srcmd5>4604460c36b05a3167e97921edfcaf2b</srcmd5>
+    <version>0.3.3</version>
+    <time>1258383060</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libexif-gtk based on submit request 24392 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="7" vrev="534">
+    <srcmd5>78bd559f820bcd1a816b34f9a47f71b2</srcmd5>
+    <version>0.3.3</version>
+    <time>1268924559</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cc7c0eb4142edfb6f02ac323da1bf024</srcmd5>
+    <version>0.3.6cvs2</version>
+    <time>1271437208</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libexif-gtk based on submit request 38037 from user msmeissn
+</comment>
+    <requestid>38037</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>cc7c0eb4142edfb6f02ac323da1bf024</srcmd5>
+    <version>0.3.6cvs2</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>cc7c0eb4142edfb6f02ac323da1bf024</srcmd5>
+    <version>0.3.6cvs2</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>cc7c0eb4142edfb6f02ac323da1bf024</srcmd5>
+    <version>0.3.6cvs2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>cc7c0eb4142edfb6f02ac323da1bf024</srcmd5>
+    <version>0.3.6cvs2</version>
+    <time>1319182089</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>213decd92eb644c68fdfa495bfd995ac</srcmd5>
+    <version>0.3.6cvs2</version>
+    <time>1323192205</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>213decd92eb644c68fdfa495bfd995ac</srcmd5>
+    <version>0.3.6cvs2</version>
+    <time>1340183582</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>213decd92eb644c68fdfa495bfd995ac</srcmd5>
+    <version>0.3.6cvs2</version>
+    <time>1359109265</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6f74345b750a05685c72518ef5d98164</srcmd5>
+    <version>0.4.0</version>
+    <time>1362900357</time>
+    <user>coolo</user>
+    <comment>- updated to 0.4.0 final
+  * New translations: de, pl
+  * Updated translations: es, fr, ru
+  * Bug fixes: #1643242: added libexif-gtk-uninstalled.pc file
+  * Proper setting of gettext parameters
+  * libexif-gtk made compatible for both gtk2 (min version: 2.4) and gtk3
+  * added --with-gtk3 option in configure.ac (default is gtk2)
+  * encoding of source files set to utf-8
+  * encoding of ru translation file set to utf-8
+  * fixed internationalisation bugs in gtk-options.c &amp; configure.ac
+  * fixed bugs linked to gtk_notebook_remove_page action
+  * Bug fixes: #2014281: fix display of GPSLatitude and GPSLatitudeRef names
+  * fixed crash when viewing an enumerated tag with an unsupported value
+  * fixed problem with handling the Flash tag in big-endian images
+  * fixed thumbnail save function to actually save</comment>
+    <requestid>158114</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>6f74345b750a05685c72518ef5d98164</srcmd5>
+    <version>0.4.0</version>
+    <time>1379662943</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>178a69d5a0a70c42182131affc84457c</srcmd5>
+    <version>0.4.0</version>
+    <time>1401644483</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>235841</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>178a69d5a0a70c42182131affc84457c</srcmd5>
+    <version>0.4.0</version>
+    <time>1409301552</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

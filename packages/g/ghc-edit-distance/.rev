@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b05277abb30ab73063b7c845d88ab328</srcmd5>
+    <version>0.2.2.1</version>
+    <time>1448553737</time>
+    <user>dimstar_suse</user>
+    <comment>edit-distance: Levenshtein and restricted Damerau-Levenshtein edit distances</comment>
+    <requestid>345695</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bad9859696f41b66482afe6b77b4d825</srcmd5>
+    <version>0.2.2.1</version>
+    <time>1469081290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411515</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2096c339e8f57c463043b697e3a55c52</srcmd5>
+    <version>0.2.2.1</version>
+    <time>1477135319</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434621</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bb3e87d1fe34c21139e52d7a6f7abfc9</srcmd5>
+    <version>0.2.2.1</version>
+    <time>1505504229</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524452</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c6997b61e77344b9cf46e5721bd9d7b0</srcmd5>
+    <version>0.2.2.1</version>
+    <time>1527675526</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609783</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>0b5f3f2ddecd8c1c49c23a64ccb4cd0f</srcmd5>
+    <version>0.2.2.1</version>
+    <time>1532445501</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623765</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>a485438085c2d3a5bae90fa246f9328c</srcmd5>
+    <version>0.2.2.1</version>
+    <time>1540448709</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643389</requestid>
+  </revision>
+</revisionlist>

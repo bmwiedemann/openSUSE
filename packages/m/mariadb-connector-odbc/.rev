@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00595bcd2a99103406fb9aa7a083b8af</srcmd5>
+    <version>3.0.2</version>
+    <time>1512140006</time>
+    <user>dimstar_suse</user>
+    <comment>mariadb-connector-odbc replaces the old MyODBC-unixODBC</comment>
+    <requestid>544612</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2aa6597863849fe03551ee175c53d0e5</srcmd5>
+    <version>3.0.2</version>
+    <time>1513015071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555981</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4e34e8ceed12eec2430f7178e1482a56</srcmd5>
+    <version>3.0.2</version>
+    <time>1513110246</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable openssl support
+- Honor optflags when building
+
+- Remove 'Provides', it is not a drop in replacement
+  for MyODBC-unixODBC. Users will have to change .so file.
+  Obsoletes is enough.</comment>
+    <requestid>556527</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a7e809abb7395776c3ab25c15475b808</srcmd5>
+    <version>3.0.2</version>
+    <time>1516092186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564492</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5df2e3b082bbab3700a30615fb632f30</srcmd5>
+    <version>3.0.3</version>
+    <time>1519308228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578961</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4d428b9ba8367738ea21ffe45731eb7f</srcmd5>
+    <version>3.0.3</version>
+    <time>1534321994</time>
+    <user>dimstar_suse</user>
+    <comment>- Install license as %license instead of documentation
+
+- New upsream version 3.0.3 (bsc#1104480, fate#324398)</comment>
+    <requestid>628614</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>71ae1c0952829222e0379413b8bd02ca</srcmd5>
+    <version>3.1.1</version>
+    <time>1558532406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704663</requestid>
+  </revision>
+</revisionlist>

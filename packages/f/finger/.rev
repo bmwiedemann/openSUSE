@@ -1,0 +1,160 @@
+<revisionlist>
+  <revision rev="1" vrev="14">
+    <srcmd5>4500a02e0a363cd09967d5b59e945128</srcmd5>
+    <version>1.3</version>
+    <time>1168902747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="40">
+    <srcmd5>1fc3719d02735c26aad64eeb7085e18d</srcmd5>
+    <version>1.3</version>
+    <time>1172782945</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="41">
+    <srcmd5>42c3894b4349cd5719c13da22123ca9a</srcmd5>
+    <version>1.3</version>
+    <time>1172828554</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="50">
+    <srcmd5>45aa0f4a16d7832ea14d594d932e7a4a</srcmd5>
+    <version>1.3</version>
+    <time>1178230073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="90">
+    <srcmd5>13f78bbe6819e5c6e9177b1e671e4089</srcmd5>
+    <version>1.3</version>
+    <time>1199705071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="104">
+    <srcmd5>07f2ad73e45ad6a4b910f0d2b96481bd</srcmd5>
+    <version>1.3</version>
+    <time>1205693619</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="142">
+    <srcmd5>07f2ad73e45ad6a4b910f0d2b96481bd</srcmd5>
+    <version>1.3</version>
+    <time>1205693619</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="143">
+    <srcmd5>596a3cf2827e988f3c7d073570ec9e94</srcmd5>
+    <version>1.3</version>
+    <time>1245338620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="145">
+    <srcmd5>596a3cf2827e988f3c7d073570ec9e94</srcmd5>
+    <version>1.3</version>
+    <time>1245338620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="146">
+    <srcmd5>bb4804157d785be3f718828105f0e985</srcmd5>
+    <version>1.3</version>
+    <time>1268923535</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="148">
+    <srcmd5>bb4804157d785be3f718828105f0e985</srcmd5>
+    <version>1.3</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="149">
+    <srcmd5>bb4804157d785be3f718828105f0e985</srcmd5>
+    <version>1.3</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="150">
+    <srcmd5>51f11679470a3f5865812856ed0e9835</srcmd5>
+    <version>1.3</version>
+    <time>1280737229</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/finger based on submit request 44340 from user pgajdos
+</comment>
+    <requestid>44340</requestid>
+  </revision>
+  <revision rev="14" vrev="153">
+    <srcmd5>51f11679470a3f5865812856ed0e9835</srcmd5>
+    <version>1.3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="154">
+    <srcmd5>3e433a0ef54754311e3967c8ad8ca0d1</srcmd5>
+    <version>1.3</version>
+    <time>1316469281</time>
+    <user>lrupp</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83521 from jengelh)</comment>
+    <requestid>83672</requestid>
+  </revision>
+  <revision rev="16" vrev="156">
+    <srcmd5>3e433a0ef54754311e3967c8ad8ca0d1</srcmd5>
+    <version>1.3</version>
+    <time>1319181878</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="157">
+    <srcmd5>bba076b040cf004e1ffa1ea10e1da361</srcmd5>
+    <version>1.3</version>
+    <time>1323191368</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="159">
+    <srcmd5>bba076b040cf004e1ffa1ea10e1da361</srcmd5>
+    <version>1.3</version>
+    <time>1340183329</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="161">
+    <srcmd5>bba076b040cf004e1ffa1ea10e1da361</srcmd5>
+    <version>1.3</version>
+    <time>1359108879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="163">
+    <srcmd5>bba076b040cf004e1ffa1ea10e1da361</srcmd5>
+    <version>1.3</version>
+    <time>1379662342</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="165">
+    <srcmd5>bba076b040cf004e1ffa1ea10e1da361</srcmd5>
+    <version>1.3</version>
+    <time>1409300878</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="166">
+    <srcmd5>96f0d602ad08b8c5a7ffd97176898665</srcmd5>
+    <version>1.3</version>
+    <time>1498045875</time>
+    <user>dimstar_suse</user>
+    <comment>Anyone knows where the fuck is the upstream from, we use version 1.3 while everyone else has 0.17... (forwarded request 503959 from scarabeus_iv)</comment>
+    <requestid>504580</requestid>
+  </revision>
+  <revision rev="23" vrev="167">
+    <srcmd5>4003fde2fc2332c0d7ae12db67f9e454</srcmd5>
+    <version>1.3</version>
+    <time>1564302084</time>
+    <user>dimstar_suse</user>
+    <comment>- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html (forwarded request 718144 from mgerstner)</comment>
+    <requestid>718272</requestid>
+  </revision>
+</revisionlist>

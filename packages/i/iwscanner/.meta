@@ -1,0 +1,12 @@
+<package name="iwscanner" project="openSUSE:Factory">
+  <title>Wireless scanner for linux with an easy to use graphic interface</title>
+  <description>iwScanner is a python/glade wireless scanning utility.
+
+Features:
+- Information about detected wireless networks (AP, MAC, Channel, Encryption, etc)
+- Chart with signal strenght for every wireless network
+- iwScanner GUI is much like the well known application NetStumbler
+- Adjustable scanning speed
+- Can open and save netdetect (.ndd) and netstumbler (.ns1) file formats</description>
+  <devel project="network" package="iwscanner"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-nine" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-nine"/>
+</package>

@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="32">
+    <srcmd5>8198e4a412b3f12580a362e8e78c3226</srcmd5>
+    <version>0.1.1</version>
+    <time>1168904178</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="163">
+    <srcmd5>e191cfefb2749e25f903eb31c6f4146f</srcmd5>
+    <version>0.1.1</version>
+    <time>1199137151</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="272">
+    <srcmd5>e191cfefb2749e25f903eb31c6f4146f</srcmd5>
+    <version>0.1.1</version>
+    <time>1199137151</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="273">
+    <srcmd5>dc4bdacc871c849af287e208b28798ef</srcmd5>
+    <version>0.1.1</version>
+    <time>1245340223</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="275">
+    <srcmd5>dc4bdacc871c849af287e208b28798ef</srcmd5>
+    <version>0.1.1</version>
+    <time>1245340223</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="276">
+    <srcmd5>0042abe489415727a22a6089adb16fb7</srcmd5>
+    <version>0.1.1</version>
+    <time>1257852107</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/scim-input-pad based on submit request 23967 from user tiwai
+</comment>
+  </revision>
+  <revision rev="7" vrev="277">
+    <srcmd5>7e2c8500141936139ced5d0f12616a33</srcmd5>
+    <version>0.1.1</version>
+    <time>1266974835</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/scim-input-pad based on submit request 33085 from user coolo
+</comment>
+    <requestid>33085</requestid>
+  </revision>
+  <revision rev="8" vrev="278">
+    <srcmd5>2319e105a27e193797428ff69d41183e</srcmd5>
+    <version>0.1.1</version>
+    <time>1268926094</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="280">
+    <srcmd5>2319e105a27e193797428ff69d41183e</srcmd5>
+    <version>0.1.1</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="281">
+    <srcmd5>2319e105a27e193797428ff69d41183e</srcmd5>
+    <version>0.1.1</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="284">
+    <srcmd5>2319e105a27e193797428ff69d41183e</srcmd5>
+    <version>0.1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="286">
+    <srcmd5>2319e105a27e193797428ff69d41183e</srcmd5>
+    <version>0.1.1</version>
+    <time>1319182454</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="287">
+    <srcmd5>dbc74cee711ad6f486ad47f3cf960249</srcmd5>
+    <version>0.1.1</version>
+    <time>1323194541</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="288">
+    <srcmd5>fa52b6642af89e375b3eaad01f4afc1c</srcmd5>
+    <version>0.1.1</version>
+    <time>1339352383</time>
+    <user>coolo</user>
+    <comment>- Should we remove &quot;Provides: locale(scim:ja;ko)&quot; as well?
+- remove &quot;Provides: locale(scim:zh)&quot; from spec (forwarded request 124000 from swyear)</comment>
+    <requestid>124009</requestid>
+  </revision>
+  <revision rev="15" vrev="289">
+    <srcmd5>5ff61fe155b171d254a225b556086e1e</srcmd5>
+    <version>0.1.1</version>
+    <time>1339761947</time>
+    <user>coolo</user>
+    <comment>- remove locale provides for avoiding automatic installation</comment>
+    <requestid>124926</requestid>
+  </revision>
+  <revision rev="16" vrev="291">
+    <srcmd5>5ff61fe155b171d254a225b556086e1e</srcmd5>
+    <version>0.1.1</version>
+    <time>1340184199</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="293">
+    <srcmd5>5ff61fe155b171d254a225b556086e1e</srcmd5>
+    <version>0.1.1</version>
+    <time>1359110384</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>28e05bcdc2b636922e3f499f134dc7b0</srcmd5>
+    <version>0.1.3.20130804</version>
+    <time>1375782843</time>
+    <user>coolo</user>
+    <comment>update 0.1.3.20130804 (forwarded request 185997 from MargueriteSu)</comment>
+    <requestid>185998</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>28e05bcdc2b636922e3f499f134dc7b0</srcmd5>
+    <version>0.1.3.20130804</version>
+    <time>1379664628</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>28e05bcdc2b636922e3f499f134dc7b0</srcmd5>
+    <version>0.1.3.20130804</version>
+    <time>1409303332</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>7f774f85343a7e5e8708b3b52e3df99f</srcmd5>
+    <version>0.1.3.20130804</version>
+    <time>1443068037</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331783</requestid>
+  </revision>
+</revisionlist>

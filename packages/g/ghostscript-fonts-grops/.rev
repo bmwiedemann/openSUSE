@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3c5cba7de0b66614833b7559dfa8545</srcmd5>
+    <version>1.22.2</version>
+    <time>1389883053</time>
+    <user>coolo</user>
+    <comment>A new package for groff to show non-latin1 fonts properly (bnc#856842)</comment>
+    <requestid>213516</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9c2a17d256bb4c3bd734db681e0a1844</srcmd5>
+    <version>1.22.2</version>
+    <time>1393568437</time>
+    <user>coolo</user>
+    <comment>- add automatic installation for Polish locale (bnc#856842)</comment>
+    <requestid>224133</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9c2a17d256bb4c3bd734db681e0a1844</srcmd5>
+    <version>1.22.2</version>
+    <time>1409300981</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>1069a25df018bdcd92b3965568a94dfb</srcmd5>
+    <version>1.22.2</version>
+    <time>1446647571</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341478</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>36718613bbd24770444085cd8e8c255a</srcmd5>
+    <version>1.22.2</version>
+    <time>1455021095</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348340</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>c16a21345b65503e5c66dce4220db6e2</srcmd5>
+    <version>1.22.2</version>
+    <time>1525121640</time>
+    <user>dimstar_suse</user>
+    <comment>- expand groff_version macro
+- fix factory build
+</comment>
+    <requestid>601823</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>f83655be3fe4eb09135ef2232ed4bd1b</srcmd5>
+    <version>1.22.2</version>
+    <time>1545141558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658937</requestid>
+  </revision>
+</revisionlist>

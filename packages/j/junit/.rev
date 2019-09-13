@@ -1,0 +1,187 @@
+<revisionlist>
+  <revision rev="1" vrev="25">
+    <srcmd5>ae022ee1ea2b5bd36cb6f32e4eacc9d2</srcmd5>
+    <version>3.8.1</version>
+    <time>1168903156</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="58">
+    <srcmd5>6dde4f7d7dc294294142c73c56874c35</srcmd5>
+    <version>3.8.1</version>
+    <time>1175213142</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f82e859e6654a9a66266dc17f1cc3937</srcmd5>
+    <version>3.8.2</version>
+    <time>1221272543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f82e859e6654a9a66266dc17f1cc3937</srcmd5>
+    <version>3.8.2</version>
+    <time>1221272543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>6caba3e71167d8cc5b19ff9b5f7c6d52</srcmd5>
+    <version>3.8.2</version>
+    <time>1268924154</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>6caba3e71167d8cc5b19ff9b5f7c6d52</srcmd5>
+    <version>3.8.2</version>
+    <time>1278667354</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>6caba3e71167d8cc5b19ff9b5f7c6d52</srcmd5>
+    <version>3.8.2</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>6caba3e71167d8cc5b19ff9b5f7c6d52</srcmd5>
+    <version>3.8.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>6caba3e71167d8cc5b19ff9b5f7c6d52</srcmd5>
+    <version>3.8.2</version>
+    <time>1319182019</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>0bd335ce73f1214a1cf6e339dd21f56d</srcmd5>
+    <version>3.8.2</version>
+    <time>1323192055</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>0bd335ce73f1214a1cf6e339dd21f56d</srcmd5>
+    <version>3.8.2</version>
+    <time>1340183493</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>0bd335ce73f1214a1cf6e339dd21f56d</srcmd5>
+    <version>3.8.2</version>
+    <time>1359109132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>87ddaef5f8363b07d8cf830cb8e19aec</srcmd5>
+    <version>3.8.2</version>
+    <time>1377430330</time>
+    <user>scarabeus_factory</user>
+    <comment>- disable javadoc build</comment>
+    <requestid>196077</requestid>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>87ddaef5f8363b07d8cf830cb8e19aec</srcmd5>
+    <version>3.8.2</version>
+    <time>1379662727</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3f7afbed3bc64c076e76c9c404c0c22f</srcmd5>
+    <version>4.11</version>
+    <time>1383668085</time>
+    <user>coolo</user>
+    <comment>[NOT-FOR-OPENSUSE-13.1: this does replace junit4 package and drop old junit 3.x as it's deprecated upstream]
+- Update to 4.11
+  * Matchers: Upgrade to Hamcrest 1.3
+    no longer included junit jar
+  * Parameterized Tests
+  * Specify Test execution order
+  * New maven artifact 'junit:junit' w/o builtin hamcrest
+  * Number of improvements into Rules
+- Drop jdk7-testfailure.patch, fixed upstream
+- Add junit-no-hamcrest-src.patch, don't bundle hamcrest into junit.jar
+- Use SourceUrl for release tarball and pom
+- Don't inject OSGI manifest, it breaks junit.jar 
+- Provide/obsolete package junit4</comment>
+    <requestid>204780</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>3f7afbed3bc64c076e76c9c404c0c22f</srcmd5>
+    <version>4.11</version>
+    <time>1409301296</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>8543964086d5135e56f59297f1e557de</srcmd5>
+    <version>4.11</version>
+    <time>1427983069</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292632</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>5b6a931175c7d64142a61936ee238c49</srcmd5>
+    <version>4.11</version>
+    <time>1438794826</time>
+    <user>coolo</user>
+    <comment>- Add patch to build with jdk8:
+  * junit-jdk8.patch</comment>
+    <requestid>319063</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>305be95fb2d92b3af75b8a90eccf0131</srcmd5>
+    <version>4.11</version>
+    <time>1496230139</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496567</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>cd76f7abba6a11b441bd4024dbc390ef</srcmd5>
+    <version>4.11</version>
+    <time>1505334196</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>523033</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>59c3df73be948a191578f1bcb4c8068b</srcmd5>
+    <version>4.11</version>
+    <time>1513941421</time>
+    <user>dimstar_suse</user>
+    <comment>Misc fixes including jdk10 build</comment>
+    <requestid>558207</requestid>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>69e82c0ad2fdbdfba0b98e2a28951d41</srcmd5>
+    <version>4.11</version>
+    <time>1532446366</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk11</comment>
+    <requestid>622094</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>409f019dad8183ca5dff24e13a6b6eab</srcmd5>
+    <version>4.12</version>
+    <time>1549311796</time>
+    <user>coolo</user>
+    <comment>Upgrade to 4.12 + misc changes</comment>
+    <requestid>667693</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>c785d3f7c3baa05d39a93585b6981be1</srcmd5>
+    <version>4.12</version>
+    <time>1549464408</time>
+    <user>coolo</user>
+    <comment>Add OSGi manifest + package manual + correct license tag to correspond to reality</comment>
+    <requestid>671538</requestid>
+  </revision>
+</revisionlist>

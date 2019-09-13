@@ -1,0 +1,173 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e57c93cfccde43920940bc2331f67f6e</srcmd5>
+    <version>0.18</version>
+    <time>1168903896</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a736537ccab34e86f0f003625d5368d4</srcmd5>
+    <version>0.19</version>
+    <time>1195567161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="59">
+    <srcmd5>a736537ccab34e86f0f003625d5368d4</srcmd5>
+    <version>0.19</version>
+    <time>1195567161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="60">
+    <srcmd5>52d7b8bc53838e7470f73820beff078e</srcmd5>
+    <version>0.19</version>
+    <time>1245337864</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="62">
+    <srcmd5>52d7b8bc53838e7470f73820beff078e</srcmd5>
+    <version>0.19</version>
+    <time>1245337864</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ba1cecd3f25068a7be2bf838208ef745</srcmd5>
+    <version>0.20</version>
+    <time>1263221909</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Pod-Coverage based on submit request 28392 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9035df2e2d23c3a679939a4b6a246497</srcmd5>
+    <version>0.20</version>
+    <time>1268925583</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>35104b0bd2639c6271762c742bd8165e</srcmd5>
+    <version>0.20</version>
+    <time>1271978813</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Pod-Coverage based on submit request 38547 from user computersalat
+</comment>
+    <requestid>38547</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>35104b0bd2639c6271762c742bd8165e</srcmd5>
+    <version>0.20</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>35104b0bd2639c6271762c742bd8165e</srcmd5>
+    <version>0.20</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0a1e137aec12bdc212de2508aafeda18</srcmd5>
+    <version>0.21</version>
+    <time>1281384947</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Pod-Coverage based on submit request 45169 from user computersalat
+</comment>
+    <requestid>45169</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1aab10da72c81bd53c8ca2672c708c3a</srcmd5>
+    <version>0.21</version>
+    <time>1291583600</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54626 from user coolo
+</comment>
+    <requestid>54626</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>19bd7c82bc60b3d668f109bdc03ac6ec</srcmd5>
+    <version>0.21</version>
+    <time>1291583607</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54626
+</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>19bd7c82bc60b3d668f109bdc03ac6ec</srcmd5>
+    <version>0.21</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>19bd7c82bc60b3d668f109bdc03ac6ec</srcmd5>
+    <version>0.21</version>
+    <time>1319182300</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>149953706a2417271b994fef5bfda9d5</srcmd5>
+    <version>0.21</version>
+    <time>1321875881</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92236</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>7b50cd31808c32433d9797f267881332</srcmd5>
+    <version>0.21</version>
+    <time>1323193585</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>979bb59c7e243131218bfe5ad91f97dd</srcmd5>
+    <version>0.22</version>
+    <time>1329824340</time>
+    <user>coolo</user>
+    <comment>- recreate with cpanspec to fix build
+
+- Update to 0.22:
+  * POD spelling corrections. (rt #22113)
+  * Add &quot;unimport&quot; to the stoplist. (rt #33914)
+- Fix spec file as build now uses Makefile.PL.
+- remove created perllocal.pod.</comment>
+    <requestid>106272</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>979bb59c7e243131218bfe5ad91f97dd</srcmd5>
+    <version>0.22</version>
+    <time>1340183906</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>979bb59c7e243131218bfe5ad91f97dd</srcmd5>
+    <version>0.22</version>
+    <time>1359109780</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d1bcf8613fa5a5d5f8469082678b7e07</srcmd5>
+    <version>0.23</version>
+    <time>1368713728</time>
+    <user>coolo</user>
+    <comment>Update to 0.23</comment>
+    <requestid>175853</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>d1bcf8613fa5a5d5f8469082678b7e07</srcmd5>
+    <version>0.23</version>
+    <time>1379663818</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>d1bcf8613fa5a5d5f8469082678b7e07</srcmd5>
+    <version>0.23</version>
+    <time>1409302454</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

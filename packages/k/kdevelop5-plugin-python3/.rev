@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7ba0cef75638032e8a32ab2f32bf077</srcmd5>
+    <version>5.0.0</version>
+    <time>1475359648</time>
+    <user>dimstar_suse</user>
+    <comment>KDevelop 5.0.0 - Python 3 plugin</comment>
+    <requestid>429868</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d645ff54eb5f79c8a1d6d8ca289dbc6d</srcmd5>
+    <version>5.0.1</version>
+    <time>1475750765</time>
+    <user>dimstar_suse</user>
+    <comment>- Add QtConcurrent to BuildRequires
+
+- New upstream release 5.0.1
+  * Fix imports sometimes not being found in kdev-python without
+    pressing F5 by hand</comment>
+    <requestid>433263</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>df7fe9019c3358cfd4d5e60c2373305c</srcmd5>
+    <version>5.0.2</version>
+    <time>1479383027</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440599</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a33e4b578face71a2065cd4d05689f2b</srcmd5>
+    <version>5.0.3</version>
+    <time>1481390832</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443238</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>48703ee6cd138b5f7fc7e3ced1a71ba2</srcmd5>
+    <version>5.0.3</version>
+    <time>1487980406</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build-with-py36.diff: diff from upstream 50-python36 branch
+  to enable building with Python 3.6</comment>
+    <requestid>459722</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f45cde78c62b7e47ecc33e92e85f7dbf</srcmd5>
+    <version>5.0.4</version>
+    <time>1489345324</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477271</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b432967affb5c85d21b63bb727ca9cfe</srcmd5>
+    <version>5.1.0</version>
+    <time>1490965697</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 5.1.0
+- Drop build-with-py36.diff, included upstream
+- Adjust minimum python3 version, 3.4.3 and higher is supported now (forwarded request 482315 from wolfi323)</comment>
+    <requestid>482361</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c28328cad84940e3539f8522266480e7</srcmd5>
+    <version>5.1.1</version>
+    <time>1496392382</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498702</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a93290fdf447940bc725e93a1d5a21a9</srcmd5>
+    <version>5.1.2</version>
+    <time>1505334539</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519559</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6da1a87abbfc7975a35b590cd75b510c</srcmd5>
+    <version>5.2.3</version>
+    <time>1527934095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612537</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4e1012c3338a10af6d4f933b2df11fed</srcmd5>
+    <version>5.2.4</version>
+    <time>1534940466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630785</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>45649e2e713bfed29f4dd4492dd60ee5</srcmd5>
+    <version>5.3.0</version>
+    <time>1543224157</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 5.3.0
+  * Inject environment profile variables into debug process
+    environment (kde#322477)
+  * Improve support for 'with' statements (kde#399533, kde#399534)
+- Remove unnecessary build requirements
+</comment>
+    <requestid>649660</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a67905703ae0feaf1b9c4d004662121c</srcmd5>
+    <version>5.3.1</version>
+    <time>1547540143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660855</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4994ced923e805480c51063837cd4439</srcmd5>
+    <version>5.3.2</version>
+    <time>1552207162</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682723</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b533cbd94561665fa1ba0fc3acfeea19</srcmd5>
+    <version>5.3.3</version>
+    <time>1564155309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718897</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>985d59000a7b068f00c8016a685628f0</srcmd5>
+    <version>5.4.0</version>
+    <time>1565267034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721606</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>55ff1cc29bf0c65dd96472bba0a82f45</srcmd5>
+    <version>5.4.1</version>
+    <time>1565695674</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.1</comment>
+    <requestid>723021</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>33ab08b7a1df7bc2a12f78271b11ddd0</srcmd5>
+    <version>5.4.2</version>
+    <time>1567679707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728065</requestid>
+  </revision>
+</revisionlist>

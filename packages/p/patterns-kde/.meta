@@ -1,0 +1,9 @@
+<package name="patterns-kde" project="openSUSE:Factory">
+  <title> Patterns for Installation (KDE) </title>
+  <description>This is an internal package that is used to create the patterns as part
+of the installation source setup.  Installation of this package does
+not make sense. 
+
+This particular package contains the KDE Patterns.</description>
+  <devel project="KDE:Applications" package="patterns-kde"/>
+</package>

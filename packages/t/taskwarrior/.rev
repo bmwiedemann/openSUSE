@@ -1,0 +1,189 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a59b1d5363b92b0db4d804c0e6c4d7b1</srcmd5>
+    <version>1.9.99.beta4</version>
+    <time>1322580293</time>
+    <user>coolo</user>
+    <comment>please add taskwarrior to openSUSE Factory</comment>
+    <requestid>94229</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>936e1f500f609218a7cf4431c67ea303</srcmd5>
+    <version>1.9.99.beta4</version>
+    <time>1323194844</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2a3a785c2ec00eb58ef544d42747c4b4</srcmd5>
+    <version>1.9.99.beta4</version>
+    <time>1329400912</time>
+    <user>coolo</user>
+    <comment>- fix build with lua 5.2
+  * taskwarrior-lua52.patch</comment>
+    <requestid>105248</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b9cfaf892b6e0b0e36348e03db2f4e83</srcmd5>
+    <version>1.9.99.beta4</version>
+    <time>1332752902</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 110515 from dimstar)</comment>
+    <requestid>110930</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aaa16f4264063f7297ab4051f0309a9b</srcmd5>
+    <version>2.0.0</version>
+    <time>1333437630</time>
+    <user>coolo</user>
+    <comment>- update to taskwarrior 2.0.0
+- changes from beta4
+  * 'age' component for urgency
+  * improved text wrapping in utf-8
+  * 'diagnostics' commands checks duplicated UUIDs
+- remove external task-2.0.0.ref.pdf and install the one
+  bundled in source code
+- ignore already upstreamed taskwarrior-lua52.patch</comment>
+    <requestid>112173</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>aaa16f4264063f7297ab4051f0309a9b</srcmd5>
+    <version>2.0.0</version>
+    <time>1340184258</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>04a0665739986d2e115b38510f8c05f4</srcmd5>
+    <version>2.1.2</version>
+    <time>1349251889</time>
+    <user>coolo</user>
+    <comment>- update to taskwarrion 2.1.2
+  * User defined attributes
+  * new 'until' date, after which they're deleted
+  * allow duplication of completed tasks
+  * new 'udas' subcommand
+  * new 'indended' format for the 'project' attribute, defaults in 'projects'
+    and 'summary' reports
+  * several performance optimizations, and a lot of bugfixes
+    se ChangeLog for details</comment>
+    <requestid>136235</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>04a0665739986d2e115b38510f8c05f4</srcmd5>
+    <version>2.1.2</version>
+    <time>1359110464</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8740822f4444311d67186ebc3c8fbd88</srcmd5>
+    <version>2.2.0</version>
+    <time>1366233487</time>
+    <user>coolo</user>
+    <comment>- update to taskwarrior 2.2.0:
+  * 'blocking' report and new color rule
+  * 'statistics' shows total number of blocked/blocking tasks
+  * new date shortcuts 'socm', 'eocm' - start/end of current month
+  * 'collumns' command can use search strings from collumn name
+  * virtual tags (BLOCKED, UNBLOCKED, BLOCKING, DUE, DUETODAY, TODAY, OVERDUE,
+   ACTIVE, SCHEDULED, CHILD, UNTIL, WAITING and ANNOTATED).
+  * and many more, see Changelog
+- install documentation in proper SUSE place
+- remove executable bit from add-ons scripts to not require perl/python/ruby
+
+- install zsh completion scripts to the proper directory 
+
+- update to taskwarrior 2.1.2</comment>
+    <requestid>171137</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>8740822f4444311d67186ebc3c8fbd88</srcmd5>
+    <version>2.2.0</version>
+    <time>1379664769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>801216820a0f6d7c6fc7e2c8b2a22b16</srcmd5>
+    <version>2.3.0</version>
+    <time>1392114626</time>
+    <user>coolo</user>
+    <comment>- bump 2.3.0
+  - New Taskserver sync capabilities.
+  - New shell (tasksh) with Readline support replaces old 'task shell' command.
+  - The 'dateformat' settings now default to the ISO-8601 standard of 'Y-M-D'.
+  - Italian translation.
+  - French translation has begun.
+  - UDA fields now allow default values.
+  - Now requires libuuid.
+  - New virtual tags: WEEK, MONTH, YEAR, PARENT.
+  - New 'remaining' format for date columns.
+  - New '_get' DOM accessor helper command.
+  - New task-sync(5) man page. (forwarded request 221542 from sleep_walker)</comment>
+    <requestid>221736</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>fb75929668a85b999c994160cb725466</srcmd5>
+    <version>2.3.0</version>
+    <time>1394451868</time>
+    <user>coolo</user>
+    <comment> (forwarded request 224267 from Rominf)</comment>
+    <requestid>225365</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>fb75929668a85b999c994160cb725466</srcmd5>
+    <version>2.3.0</version>
+    <time>1409303452</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>8917ca6ca74308ffc4b8a4692ff5f23e</srcmd5>
+    <version>2.3.0</version>
+    <time>1410081009</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247821</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1a8dbee98b01bbb92657e2ddf25907b9</srcmd5>
+    <version>2.4.0</version>
+    <time>1421333925</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281092</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b36cda0d6b9774898cf56eedd3e49476</srcmd5>
+    <version>2.4.0</version>
+    <time>1424622402</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287042</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>20e47c55c65ce95a82d025083757caa3</srcmd5>
+    <version>2.4.4</version>
+    <time>1433145301</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309357</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b7af2a67894af1a780f74683471ecdb5</srcmd5>
+    <version>2.5.0</version>
+    <time>1450284175</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348792</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>002dafc25f2da76b5042d9c0940f64bf</srcmd5>
+    <version>2.5.1</version>
+    <time>1457353696</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>366645</requestid>
+  </revision>
+</revisionlist>

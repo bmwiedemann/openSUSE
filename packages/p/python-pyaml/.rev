@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c7893f1d6920a6f86414e7bf175c904</srcmd5>
+    <version>17.10.0</version>
+    <time>1515623393</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 17.10.0:
+  * README: add link to ruamel.yaml module as a parser counterpart
+- changes from version 17.8.0:
+  * Represent numpy arrays as lists, as per #24
+- changes from version 17.7.2:
+  * allow line width to be passed in throguh cli
+- Initial version
+</comment>
+    <requestid>540456</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>043aafb97880065d9f616814b9c24333</srcmd5>
+    <version>17.12.1</version>
+    <time>1535963671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632475</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ed313aaaf65a40f7530e40ec63de08f3</srcmd5>
+    <version>17.12.1</version>
+    <time>1537436499</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634884</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e080e63174a084868cdd8542a05c66a</srcmd5>
+    <version>19.4.1</version>
+    <time>1558037332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703228</requestid>
+  </revision>
+</revisionlist>

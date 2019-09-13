@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e9b9ca455b86f8710697d6d5ec1409f</srcmd5>
+    <version>1.5</version>
+    <time>1286487072</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/acpi based on submit request 49673 from user elvigia
+</comment>
+    <requestid>49673</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>7e9b9ca455b86f8710697d6d5ec1409f</srcmd5>
+    <version>1.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>333c7e26b29ca8924d1311b8df06f360</srcmd5>
+    <version>1.5</version>
+    <time>1302075237</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66138 from user coolo
+</comment>
+    <requestid>66138</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>e4c10d0fda009335c730a304fae8df37</srcmd5>
+    <version>1.5</version>
+    <time>1302075249</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66138
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>b15a354797945238d8e73e83c6acdc0d</srcmd5>
+    <version>1.5</version>
+    <time>1316503683</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82703 from jengelh)</comment>
+    <requestid>83654</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>b15a354797945238d8e73e83c6acdc0d</srcmd5>
+    <version>1.5</version>
+    <time>1319181765</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>2aef2e4226527aa1f210bc729796c434</srcmd5>
+    <version>1.5</version>
+    <time>1323190639</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>2aef2e4226527aa1f210bc729796c434</srcmd5>
+    <version>1.5</version>
+    <time>1340183165</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>2aef2e4226527aa1f210bc729796c434</srcmd5>
+    <version>1.5</version>
+    <time>1359108639</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>2aef2e4226527aa1f210bc729796c434</srcmd5>
+    <version>1.5</version>
+    <time>1379661948</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>1eb2ba806d49caf9189159ed48d3f704</srcmd5>
+    <version>1.5</version>
+    <time>1382201567</time>
+    <user>scarabeus_factory</user>
+    <comment>Improvements (forwarded request 203865 from posophe)</comment>
+    <requestid>203871</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>43f9f1288f1855a949427aa9ec48f6d0</srcmd5>
+    <version>1.7</version>
+    <time>1387349460</time>
+    <user>coolo</user>
+    <comment>update to version 1.7 (forwarded request 210684 from posophe)</comment>
+    <requestid>211166</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>43f9f1288f1855a949427aa9ec48f6d0</srcmd5>
+    <version>1.7</version>
+    <time>1409300468</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>9a1589cc36a32c3a5749c0743e2fa8b0</srcmd5>
+    <version>1.7</version>
+    <time>1426796380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291314</requestid>
+  </revision>
+</revisionlist>

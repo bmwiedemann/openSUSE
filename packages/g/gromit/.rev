@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27c104fad0129c0ecf9fdb0335702091</srcmd5>
+    <version>20041213</version>
+    <time>1334215511</time>
+    <user>coolo</user>
+    <comment>New package: moving package from Contrib to Factory</comment>
+    <requestid>112849</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>27c104fad0129c0ecf9fdb0335702091</srcmd5>
+    <version>20041213</version>
+    <time>1340183412</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>27c104fad0129c0ecf9fdb0335702091</srcmd5>
+    <version>20041213</version>
+    <time>1359109005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>27c104fad0129c0ecf9fdb0335702091</srcmd5>
+    <version>20041213</version>
+    <time>1379662557</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>27c104fad0129c0ecf9fdb0335702091</srcmd5>
+    <version>20041213</version>
+    <time>1409301103</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="calamares" project="openSUSE:Factory">
+  <title>Distribution-independent installer framework</title>
+  <description>Calamares is a distribution-independent installer framework, designed to install
+from a live CD/DVD/USB environment to a hard disk. It includes a graphical
+installation program based on Qt 5. Calamares can replace YaST2 Live Installer.</description>
+  <devel project="Education" package="calamares"/>
+</package>

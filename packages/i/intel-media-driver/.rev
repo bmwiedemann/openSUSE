@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b74da1a78b7062f5ea052fdb3851fa73</srcmd5>
+    <version>18.2.0</version>
+    <time>1532681734</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package: media-driver Q2'18 release
+
+replaces intel-vaapi-driver for newer Intel GPUs; compatible to current
+versions of libva(2)</comment>
+    <requestid>623651</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d3a437ab7d17d0ce7ff8d9bc0859c9cd</srcmd5>
+    <version>18.3.0</version>
+    <time>1543224004</time>
+    <user>dimstar_suse</user>
+    <comment>- added hardware supplements in order to install the package on
+  appropriate hardware (Broadwell, Skylake, Broxton/Apollo Lake, 
+  Kaby Lake, Coffee Lake, Cannonlake, Ice Lake at this time)
+- added script to generate the above information easily
+
+- Updated to version 18.3.0:
+  * Adding ICL support
+  * Adding dynamic loading support of Gmmlib
+  * Better support to ffmpeg and gstreamer:
+    + AVC low power encoding
+    + MPEG2 encoding
+    + VP8 decoding
+    + VC1 decoding
+    + JPEG encoding and decoding
+  * Adding Dockerfile and docker images
+- Use shared lib of gmmlib; added buildreq accordingly</comment>
+    <requestid>648777</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1d0706ee1a5d4a2c1972bdf98401b509</srcmd5>
+    <version>18.4.1</version>
+    <time>1554384154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690435</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0708688b9c65c13dd498445e37fcb757</srcmd5>
+    <version>19.2.0</version>
+    <time>1563808689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713734</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1a37bd20711e49718a5122bea2ec6731</srcmd5>
+    <version>19.2.1</version>
+    <time>1567581366</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.2.1
+  * Fixed known GPU hang issue when encoding 444 8/10bit in ICL
+    issue#677
+  * Fixed several compile warnings.
+- Werror-implicit-function-not-valid-for-C++.patch,
+  Werror-initialize-in-right-order.patch
+  * needed as buildfixes</comment>
+    <requestid>727994</requestid>
+  </revision>
+</revisionlist>

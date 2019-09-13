@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3b6372450e9eb1d09fe8e27117606fe</srcmd5>
+    <version>4.10.0</version>
+    <time>1558516398</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix some conflicts with old naming scheme.
+- Rename to to match python package naming guidelines.
+- Provide python-jupyter_ipykernel for backwards-compatibility.
+- Fix conflicts with old naming scheme</comment>
+    <requestid>703756</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4d2207f7e73c897c3ee38777988421b6</srcmd5>
+    <version>4.10.1</version>
+    <time>1567421068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726230</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="gnome-menus" project="openSUSE:Factory">
+  <title>The GNOME Desktop Menu</title>
+  <description>The package contains an implementation of the draft &quot;Desktop Menu
+Specification&quot; from freedesktop.org:
+
+http://www.freedesktop.org/Standards/menu-spec</description>
+  <devel project="GNOME:Factory" package="gnome-menus"/>
+</package>

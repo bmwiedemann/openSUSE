@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c39bac94afb4c79e2ef5ea3f558b8c88</srcmd5>
+    <version>1.7.2</version>
+    <time>1380217995</time>
+    <user>coolo</user>
+    <comment>needed by python-ZODB3, which replaced now-deleted python-zodb3</comment>
+    <requestid>200307</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c39bac94afb4c79e2ef5ea3f558b8c88</srcmd5>
+    <version>1.7.2</version>
+    <time>1409302914</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0f7e000acc89a2ece24191646fe2f134</srcmd5>
+    <version>1.8.0</version>
+    <time>1431247602</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305762</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f5ed12377b894f785bbcecd7c65085ad</srcmd5>
+    <version>1.8.0</version>
+    <time>1499510088</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>508462</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b878a6054400abdb78d0091ebed815bb</srcmd5>
+    <version>1.9.0</version>
+    <time>1523956705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597177</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ea9b8bc91ae1ed915bc84a005b2025c4</srcmd5>
+    <version>1.10.1</version>
+    <time>1546535316</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.1:
+  * Support for pypy3
+  * Support for python 3.7</comment>
+    <requestid>662438</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ad1a3f329a0615a1a2e9354c51dbd330</srcmd5>
+    <version>1.10.1</version>
+    <time>1547211879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664275</requestid>
+  </revision>
+</revisionlist>

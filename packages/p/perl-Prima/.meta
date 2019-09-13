@@ -1,0 +1,9 @@
+<package name="perl-Prima" project="openSUSE:Factory">
+  <title>A Perl toolkit for multi-platform GUI development</title>
+  <description>Prima is an extensible Perl toolkit for multi-platform GUI development.
+The toolkit contains a rich set of standard widgets and has emphasis on
+2D image processing tasks. A Perl program using PRIMA looks and behaves
+identically on X, Win32 and OS/2. The toolkit includes VB, a visual
+builder and a graphic POD viewer.</description>
+  <devel project="devel:languages:perl" package="perl-Prima"/>
+</package>

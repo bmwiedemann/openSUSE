@@ -1,0 +1,8 @@
+<package name="ocaml-calendar" project="openSUSE:Factory">
+  <title>Objective Caml library for managing dates and times</title>
+  <description>Objective Caml library for managing dates and times.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-calendar"/>
+  <url>http://calendar.forge.ocamlcore.org/</url>
+</package>

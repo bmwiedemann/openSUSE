@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f5d00d1bdea8db3ba814f5206c632f8</srcmd5>
+    <version>0.3.1</version>
+    <time>1551386587</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679234</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2aa1c36ffacea63b176e040bc67bfa03</srcmd5>
+    <version>0.4.0</version>
+    <time>1553263665</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Documentation updates
+  * Added new CLI command benji storage-stats to get storage usage information
+  * Fixed backup progress reporting on console
+  * Added fdatasync() calls to the file module to ensure backup integrity
+    in case of a system crash or a power failure (will impact performance when using the file I/O module)
+  * Speed up command line completion
+  * Added benji completion CLI command</comment>
+    <requestid>687136</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>656227baea305166ac3f42cb9def6de4</srcmd5>
+    <version>0.6.0</version>
+    <time>1558690292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * URL parsing of I/O resources is now conforming to standards.
+    Especially for the RBD I/O module the two slashes directly after
+    the colon are no longer valid and have to be removed
+    (rbd://pool/image -&gt; rbd:pool/image).
+  * Added I/O module for iSCSI. It is based on libiscsi and requires
+    no elevated permissions. Please see the documentation as Benji
+    requires a special version of the libiscsi Python bindings.
+    The module is single-threaded and synchronous, so performance
+    will be limited. Contributions are welcome!
+  * The algorithm used by benji enforce has seen an overhaul and
+    should be more comprehensible as the time categories are based
+    on natural time boundaries (start of the hour, day, week,
+    month, and year) now.
+  * Added a restore helper script (images/benji-k8s/scripts/benji-restore-pvc)
+    for Kubernetes. This script is intended to be run on a management
+    system with access to the Kubernetes cluster and can restore
+    a version into a new or an existing PVC/PV pair.
+  * The container images are now based on the Python 3.6 included in EPEL.
+    The RBD support has been updated to Ceph Nautilus. Nautilus also
+    added RADOS and RBD Python bindings for Python 3.6 which are now
+    used instead of building them themselves.
+- Add requires on python3-diskcache
+
+- Update to 0.5.0:
+  * Added fsfreeze support to the benji-k8s Docker image. Just add
+    the benji-backup.me/fsfreeze: yes annotation to the PVC.
+    Kubernetes hosts are accessed via pods which are deployed by
+    a DaemonSet, see the Helm chart for details.
+  * Use bulk inserts to speed up backups of images based on a</comment>
+    <requestid>704864</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5db1e47123ff2228a477d32d3a0825c5</srcmd5>
+    <version>0.7.0</version>
+    <time>1564414278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Added a new I/O module rbdaio which uses the asynchronous API of librbd.
+    Performance results in relation to rbd have been mixed but performance
+	should be at least 10-20% higher on restore. In one case performance has
+	been increased tenfold.
+  * Almost all Bash helper scripts have been rewritten in Python.
+    The new scripts are calling Benji via the command line just like before.
+	This is intentional to minimize the interdependence between Benji and these
+	helpers. The scripts are examples only and not part of the API.
+	There still is one example Bash script at scripts/ceph.sh to show how to
+	interact with Benji via Bash. The helpers have additional dependencies
+	which can be installed with pip install benji[helpers].
+  * The Prometheus metrics exported by benji-k8s have changed:
+  * Backup metrics now longer include the auxiliary_data label.
+  * Command metrics now longer include the arguments label. The arguments
+    have been folded into the command label.
+  * benji-k8s: The included scripts have been replaced by Python scripts and
+    are using the new helper modules. They should be calling compatible.
+  * benji-k8s: All calls to kubectl have been replaced with direct API requests.
+    The official Python client for Kubernetes is used. kubectl is still included
+	in the image.
+  * Helm chart: Volumes and volume mounts are now configurable via values.yaml.
+    This is mostly for getting the Ceph credentials into the container but could
+	also be used to mount file-based storage.
+  * Helm chart: The PostgreSQL chart dependency was updated from 2.7.6 to 4.2.2.
+    This is the last chart which uses PostgreSQL 10 and requires no upgrade of the
+	database data structures.
+  * benji-k8s and Helm chart: The image was simplified to only include the
+    Kubernetes specific scripts and kubectl. Instead of running backups or other
+	jobs via crond inside the container, the Helm chart now generates separate</comment>
+    <requestid>719473</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cb07e45a40dfc824ab02f8924f79ec4d</srcmd5>
+    <version>0.7.1</version>
+    <time>1567168959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  * This release pins two package dependencies to older versions
+    as newer releases of these dependencies broke Benji.
+  * Fixes #49.
+  * Fixes #51.</comment>
+    <requestid>727170</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fae70abb4e976d9b46acd07b86dbf281</srcmd5>
+    <version>0~20151130</version>
+    <time>1449687021</time>
+    <user>dimstar_suse</user>
+    <comment>A new dependency of python-plaso v1.4.0</comment>
+    <requestid>347245</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2e6e26d9cab6b495bbc2bdf181d2d37b</srcmd5>
+    <version>0~20151130</version>
+    <time>1453998206</time>
+    <user>dimstar_suse</user>
+    <comment>Fix typo in provides line</comment>
+    <requestid>355858</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cdb3cec3748ad604af548e1054384a8b</srcmd5>
+    <version>0~20151130</version>
+    <time>1455701069</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>358785</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c521b8f38fa63e274fd51a3565dbbf6e</srcmd5>
+    <version>0~20160418</version>
+    <time>1488479267</time>
+    <user>dimstar_suse</user>
+    <comment>2017 update; fix issues noted by Jan Engelhardt</comment>
+    <requestid>459352</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>254c8cf7d973003188edad218b4fe8f7</srcmd5>
+    <version>0~20160418</version>
+    <time>1509722595</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535310</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>793b5f6df876bad3abd58a3041281baf</srcmd5>
+    <version>0~20190104</version>
+    <time>1560337727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695363</requestid>
+  </revision>
+</revisionlist>

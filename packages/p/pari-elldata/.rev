@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ab64dec7e9dd1fb9aaa03b65b7512fdc</srcmd5>
+    <version>20121022</version>
+    <time>1355130668</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>144299</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ab64dec7e9dd1fb9aaa03b65b7512fdc</srcmd5>
+    <version>20121022</version>
+    <time>1359109574</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>ab64dec7e9dd1fb9aaa03b65b7512fdc</srcmd5>
+    <version>20121022</version>
+    <time>1379663505</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bce715b9c49e61210543be05d04bcab1</srcmd5>
+    <version>20140113</version>
+    <time>1391614007</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream version 20140113</comment>
+    <requestid>220915</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bd429d1f2c2ae45072987d1d13d82c38</srcmd5>
+    <version>20140330</version>
+    <time>1398435003</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 20140330</comment>
+    <requestid>230793</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fa0d70e426c18413a89d21a9d56f9084</srcmd5>
+    <version>20140512</version>
+    <time>1407744445</time>
+    <user>lnussel</user>
+    <comment>- Update to new upstream release 20140512</comment>
+    <requestid>244023</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>fa0d70e426c18413a89d21a9d56f9084</srcmd5>
+    <version>20140512</version>
+    <time>1409302114</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d38510a0b413c93b716c63e56945ae38</srcmd5>
+    <version>20140908</version>
+    <time>1413616163</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 20140908</comment>
+    <requestid>257341</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>95447726a9047d1f5ba2f119500b0a80</srcmd5>
+    <version>20150519</version>
+    <time>1434456333</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312172</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7cb2cae1191994d20bb43eacc43d43f8</srcmd5>
+    <version>20150519</version>
+    <time>1459002208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20160215</comment>
+    <requestid>370893</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>44987807441f6279988f2e4ed82a6b1c</srcmd5>
+    <version>20161017</version>
+    <time>1481153516</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>444148</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4e45a77aab23ddc5fd5230b688e9a491</srcmd5>
+    <version>20161017</version>
+    <time>1535705244</time>
+    <user>dimstar_suse</user>
+    <comment>- Strip /data/ subdirectory [boo#1106378]</comment>
+    <requestid>632203</requestid>
+  </revision>
+</revisionlist>

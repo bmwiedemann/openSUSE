@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5596947379c80bd7ec818f5352a79d8e</srcmd5>
+    <version>0.5.1.5</version>
+    <time>1396451924</time>
+    <user>coolo</user>
+    <comment>New package for pandoc.
+See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</comment>
+    <requestid>227578</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5596947379c80bd7ec818f5352a79d8e</srcmd5>
+    <version>0.5.1.5</version>
+    <time>1409300959</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f4fad09642f52178743b5068bb72e10a</srcmd5>
+    <version>0.6.1.1</version>
+    <time>1417031719</time>
+    <user>dimstar_suse</user>
+    <comment>update for Haskell Platform 2014.2.0.0 compatibilit</comment>
+    <requestid>260475</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c8f001f012f1a389956387a72c8d1fe0</srcmd5>
+    <version>0.7.0.2</version>
+    <time>1432188719</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306403</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d3fab65ce215b20840dbc790691754a4</srcmd5>
+    <version>0.7.0.3</version>
+    <time>1444285474</time>
+    <user>coolo</user>
+    <comment>- update to 0.7.0.3
+* Relax `HUnit` dependency to allow 1.3</comment>
+    <requestid>336338</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>556949be1b02ea6dc18c6d9219cf1402</srcmd5>
+    <version>0.7.0.3</version>
+    <time>1469081228</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411485</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>50c283a8a3b29dfc759305757556b3a6</srcmd5>
+    <version>0.7.1.0</version>
+    <time>1472111862</time>
+    <user>dimstar_suse</user>
+    <comment>version update (forwarded request 421599 from psimons)</comment>
+    <requestid>421710</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5df5f06433374cbd79bfe3276e24cbcc</srcmd5>
+    <version>0.7.1.1</version>
+    <time>1484232438</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447673</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cfd8b81028cea6c580ff516e66168810</srcmd5>
+    <version>0.8.0.0</version>
+    <time>1504205414</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513214</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a53277f24a879a1db96d9ea73908e393</srcmd5>
+    <version>0.8.0.0</version>
+    <time>1505503418</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524209</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>86f9be8fd09a53794b83e6642eb69f5b</srcmd5>
+    <version>0.8.2.1</version>
+    <time>1527674562</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-blaze-markup to the latest version.</comment>
+    <requestid>607758</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7259756ec0a5170f57c97acc787c593e</srcmd5>
+    <version>0.8.2.1</version>
+    <time>1532161192</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+* Add the operator (!?) for nicely setting conditional attributes
+- update to 0.5.1.5 from upstream (no changelog)
+* relax version dependencies</comment>
+    <requestid>623733</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>697e2e890a1de6073e880311049ac357</srcmd5>
+    <version>0.8.2.2</version>
+    <time>1540448088</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642849</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>94d3afdaed7f0daddfe1e66cfbf73198</srcmd5>
+    <version>0.8.2.2</version>
+    <time>1550402396</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>674296</requestid>
+  </revision>
+</revisionlist>

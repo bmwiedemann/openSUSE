@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>60a6c0aaa95835eb0e83da4e81809cc6</srcmd5>
+    <version>1.3.3</version>
+    <time>1210127436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e4406ec3742758dc6913d9a4fb9c2a16</srcmd5>
+    <version>1.3.4</version>
+    <time>1216936718</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="34">
+    <srcmd5>9daf6c14d9c44d1ca12f00e9d41d7ecd</srcmd5>
+    <version>1.3.4</version>
+    <time>1245337456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="35">
+    <srcmd5>96038bb974dd3534ed71cc5fbb79f315</srcmd5>
+    <version>1.3.4</version>
+    <time>1251499934</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/cellwriter based on submit request 19037 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="37">
+    <srcmd5>96038bb974dd3534ed71cc5fbb79f315</srcmd5>
+    <version>1.3.4</version>
+    <time>1251499934</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/cellwriter based on submit request 19037 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="38">
+    <srcmd5>8e74862a6c5953e941f6b287ebfc7ca7</srcmd5>
+    <version>1.3.4</version>
+    <time>1268923163</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="40">
+    <srcmd5>8e74862a6c5953e941f6b287ebfc7ca7</srcmd5>
+    <version>1.3.4</version>
+    <time>1278667339</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="41">
+    <srcmd5>8e74862a6c5953e941f6b287ebfc7ca7</srcmd5>
+    <version>1.3.4</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="44">
+    <srcmd5>8e74862a6c5953e941f6b287ebfc7ca7</srcmd5>
+    <version>1.3.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="45">
+    <srcmd5>54a8316b5cebfb4d8f59cc790c351093</srcmd5>
+    <version>1.3.4</version>
+    <time>1315562381</time>
+    <user>saschpe</user>
+    <comment>- build with --no-copy-dt-needed-entries
+  * no-copy-dt-needed-entries.patch</comment>
+    <requestid>81636</requestid>
+  </revision>
+  <revision rev="11" vrev="46">
+    <srcmd5>4cd0bf2656754bb4ba694b0d45cba66f</srcmd5>
+    <version>1.3.4</version>
+    <time>1315562388</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81636
+</comment>
+  </revision>
+  <revision rev="12" vrev="48">
+    <srcmd5>4cd0bf2656754bb4ba694b0d45cba66f</srcmd5>
+    <version>1.3.4</version>
+    <time>1319181806</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="49">
+    <srcmd5>e016e80c1f48532fc0306000a6ef9971</srcmd5>
+    <version>1.3.4</version>
+    <time>1322738621</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires</comment>
+    <requestid>94611</requestid>
+  </revision>
+  <revision rev="14" vrev="50">
+    <srcmd5>56fd0be279661c28454112070378e78d</srcmd5>
+    <version>1.3.4</version>
+    <time>1323190963</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="52">
+    <srcmd5>56fd0be279661c28454112070378e78d</srcmd5>
+    <version>1.3.4</version>
+    <time>1340183231</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="54">
+    <srcmd5>56fd0be279661c28454112070378e78d</srcmd5>
+    <version>1.3.4</version>
+    <time>1359108739</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="56">
+    <srcmd5>56fd0be279661c28454112070378e78d</srcmd5>
+    <version>1.3.4</version>
+    <time>1379662097</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="58">
+    <srcmd5>56fd0be279661c28454112070378e78d</srcmd5>
+    <version>1.3.4</version>
+    <time>1409300627</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4e5363112614181002c974187fd5c6ea</srcmd5>
+    <version>1.3.6</version>
+    <time>1510322179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539266</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>04935262bc6791eb220022330c215e52</srcmd5>
+    <version>1.3.6</version>
+    <time>1512547157</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548403</requestid>
+  </revision>
+</revisionlist>

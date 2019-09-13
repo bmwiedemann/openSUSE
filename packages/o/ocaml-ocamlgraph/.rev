@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f41c79e401dcb11988d9b1f02b5456ef</srcmd5>
+    <version>1.8.8</version>
+    <time>1524400787</time>
+    <user>dimstar_suse</user>
+    <comment>OCamlgraph is a graph library for OCaml.
+
+It is a dependency of opam.</comment>
+    <requestid>597606</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>51f5b011df0091a6dd9a616724923b43</srcmd5>
+    <version>1.8.8</version>
+    <time>1531470017</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620957</requestid>
+  </revision>
+</revisionlist>

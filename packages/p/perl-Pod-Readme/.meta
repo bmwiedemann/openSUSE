@@ -1,0 +1,27 @@
+<package name="perl-Pod-Readme" project="openSUSE:Factory">
+  <title>Convert POD to README file</title>
+  <description>This module is a subclass of L&lt;Pod::PlainText&gt; which provides additional
+POD markup for generating F&lt;README&gt; files.
+
+Why should one bother with this? One can simply use
+
+  pod2text Module.pm &gt; README
+
+A problem with doing that is that the default L&lt;pod2text&gt; converter will
+add text to links, so that &quot;LZ&lt;&gt;&lt;Module&gt;&quot; is translated to &quot;the Module
+manpage&quot;.
+
+Another problem is that the F&lt;README&gt; includes the entirety of the module
+documentation! Most people browsing the F&lt;README&gt; file do not need all of
+this information.
+
+Likewise, including installation and requirement information in the module
+documentation is not necessary either, since the module is already
+installed.
+
+This module allows authors to mark portions of the POD to be included only
+in, or to be excluded from the F&lt;README&gt; file. It also allows you to
+include portions of another file (such as a separate F&lt;ChangeLog&gt;).</description>
+  <devel project="devel:languages:perl" package="perl-Pod-Readme"/>
+  <url>http://search.cpan.org/dist/Pod-Readme/</url>
+</package>

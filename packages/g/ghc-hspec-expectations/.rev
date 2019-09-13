@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e11ce3bbca578279907631e8094ad0e</srcmd5>
+    <version>0.7.2</version>
+    <time>1477990525</time>
+    <user>dimstar_suse</user>
+    <comment>Submit of LTS Haskell as specifid in https://hackweek.suse.com/14/projects/1368</comment>
+    <requestid>413583</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>440720f2220b66f84ba442d1385cd818</srcmd5>
+    <version>0.8.2</version>
+    <time>1489482307</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461638</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5b5347888bf34b0ffdf2dd882830b0c5</srcmd5>
+    <version>0.8.2</version>
+    <time>1505504991</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524796</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c61de784a8555bcb1f11caf77e702e80</srcmd5>
+    <version>0.8.2</version>
+    <time>1527675543</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609787</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>508a0fa41de76b7380e32af60f61eedc</srcmd5>
+    <version>0.8.2</version>
+    <time>1532445591</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623790</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>0243546435a938805deaefa67142f559</srcmd5>
+    <version>0.8.2</version>
+    <time>1540448777</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643404</requestid>
+  </revision>
+</revisionlist>

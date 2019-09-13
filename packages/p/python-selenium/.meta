@@ -1,0 +1,11 @@
+<package name="python-selenium" project="openSUSE:Factory">
+  <title>A Python language binding for Selenium RC</title>
+  <description>Selenium Python Client Driver is a Python language binding for Selenium Remote Control.
+
+Author:
+--------
+    Maik Roeder &lt;roeder@berg.net&gt;
+</description>
+  <devel project="devel:languages:python" package="python-selenium"/>
+  <url>http://www.openqa.org</url>
+</package>

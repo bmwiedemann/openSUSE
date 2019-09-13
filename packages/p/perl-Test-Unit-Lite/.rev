@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e07a8fd0d8c7f0d3dafe76ea09b241d</srcmd5>
+    <version>0.12</version>
+    <time>1325658563</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>98171</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f60c5df3d65f5bcdb981f9bd82f4da89</srcmd5>
+    <version>0.1201</version>
+    <time>1338284551</time>
+    <user>coolo</user>
+    <comment>- updated to 0.1201
+* Repackaged with newer Module::Builder.</comment>
+    <requestid>122593</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f60c5df3d65f5bcdb981f9bd82f4da89</srcmd5>
+    <version>0.1201</version>
+    <time>1340183937</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f60c5df3d65f5bcdb981f9bd82f4da89</srcmd5>
+    <version>0.1201</version>
+    <time>1359109823</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2237c73ed9ba934691e244bd7f91e580</srcmd5>
+    <version>0.1202</version>
+    <time>1370519874</time>
+    <user>coolo</user>
+    <comment>- updated to 0.1202
+ * RT #81879: hash key randomization after 5.17.5 (forwarded request 177500 from coolo)</comment>
+    <requestid>177525</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2237c73ed9ba934691e244bd7f91e580</srcmd5>
+    <version>0.1202</version>
+    <time>1379663885</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>2237c73ed9ba934691e244bd7f91e580</srcmd5>
+    <version>0.1202</version>
+    <time>1409302529</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

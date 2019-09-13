@@ -1,0 +1,12 @@
+<package name="ucl" project="openSUSE:Factory">
+  <title>The UCL Compression Library</title>
+  <description>This package contains portable lossless data compression library
+written in ANSI C. UCL implements a number of compression algorithms
+that achieve an excellent compression ratio while allowing *very* fast
+decompression. Decompression requires no additional memory. UCL is
+OpenSource reimplementation of some NRV compression algorithms.
+
+</description>
+  <devel project="Archiving" package="ucl"/>
+  <url>http://www.oberhumer.com/opensource/ucl/</url>
+</package>

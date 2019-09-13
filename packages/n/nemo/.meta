@@ -1,0 +1,5 @@
+<package name="nemo" project="openSUSE:Factory">
+  <title>File browser for Cinnamon</title>
+  <description>Nemo is the file manager for the Cinnamon desktop environment.</description>
+  <devel project="X11:Cinnamon:Factory" package="nemo"/>
+</package>

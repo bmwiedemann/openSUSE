@@ -1,0 +1,6 @@
+<package name="python-iso8601" project="openSUSE:Factory">
+  <title>Simple module to parse ISO 8601 dates</title>
+  <description>This module parses the most common forms of ISO 8601 date strings (e.g. 2007-01-14T20:34:22+00:00) into datetime objects.</description>
+  <devel project="devel:languages:python" package="python-iso8601"/>
+  <url>http://pypi.python.org/pypi/iso8601</url>
+</package>

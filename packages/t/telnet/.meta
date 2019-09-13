@@ -1,0 +1,12 @@
+<package name="telnet" project="openSUSE:Factory">
+  <title>A client program for the telnet remote login protocol</title>
+  <description>Telnet is an old protocol for logging into remote systems.  It is
+rarely used, since the transfer is not encrypted (ssh is mostly used
+these days).  The telnet client is often used for debugging other
+network services. The command
+
+telnet localhost 25
+
+connects to the local smtp server, for example.</description>
+  <devel project="network:utilities" package="telnet"/>
+</package>

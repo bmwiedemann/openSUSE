@@ -1,0 +1,5 @@
+<package name="kirigami2" project="openSUSE:Factory">
+  <title>Kirigami 2</title>
+  <description>A QtQuick 2 based components set</description>
+  <devel project="KDE:Frameworks5" package="kirigami2"/>
+</package>

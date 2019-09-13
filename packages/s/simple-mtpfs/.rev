@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e9cee000c511e950df98b77ef30782ad</srcmd5>
+    <version>0.1</version>
+    <time>1373655484</time>
+    <user>coolo</user>
+    <comment>Nice handler to work with your mtp based devices (nexus 4, etc).
+
+The license is gpl2, the gpl3 in place was wrongly added, see the git.</comment>
+    <requestid>182713</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e9cee000c511e950df98b77ef30782ad</srcmd5>
+    <version>0.1</version>
+    <time>1379664682</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>e9cee000c511e950df98b77ef30782ad</srcmd5>
+    <version>0.1</version>
+    <time>1409303368</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7f6e48e0af88be1e322e27147d5db521</srcmd5>
+    <version>0.2</version>
+    <time>1426485644</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.2:
+  * Various fixes to work with newer phones
+- Remove useles CFLAGS declaration
+- Run over spec-cleaner</comment>
+    <requestid>290662</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e023e604db486dfc81bf02f86c805531</srcmd5>
+    <version>0.3.0</version>
+    <time>1565695411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * fix FreeBSD ports upgrade path
+  * mount by device file (eg. /dev/libmtp-*)
+  * various fixes, improvements and code cleanup</comment>
+    <requestid>722650</requestid>
+  </revision>
+</revisionlist>

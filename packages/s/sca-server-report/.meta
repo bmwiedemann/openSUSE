@@ -1,0 +1,5 @@
+<package name="sca-server-report" project="openSUSE:Factory">
+  <title>Supportconfig Analysis Server Report</title>
+  <description>A tool that primarily analyzes the local server, but can analyze other supportconfigs that have been copied to the server. It uses the Supportconfig Analysis patterns to perform the analysis.</description>
+  <devel project="Novell:NTS:Unstable" package="sca-server-report"/>
+</package>

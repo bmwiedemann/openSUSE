@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90144214329c0e0ac345c5b0c099a0c0</srcmd5>
+    <version>1.0.2</version>
+    <time>1545996862</time>
+    <user>dimstar_suse</user>
+    <comment>required by the latest version of python-spyder-kernels</comment>
+    <requestid>660675</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>78d38811605bf1bad4bdc087ab4cd0f2</srcmd5>
+    <version>1.0.3</version>
+    <time>1563808758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.3:
+  * no upstream changelog</comment>
+    <requestid>717551</requestid>
+  </revision>
+</revisionlist>

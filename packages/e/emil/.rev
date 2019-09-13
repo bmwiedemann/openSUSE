@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="813">
+    <srcmd5>5bf68cbdfe9e1e9c016ffeb99d33b84d</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1168902690</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="853">
+    <srcmd5>d356dca9f69d313e210607d776d5447b</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1175162123</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="946">
+    <srcmd5>d356dca9f69d313e210607d776d5447b</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1175162123</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="947">
+    <srcmd5>7ef98d08e61ee5ee3cd915046a9adfea</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1243954680</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="949">
+    <srcmd5>7ef98d08e61ee5ee3cd915046a9adfea</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1243954680</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="950">
+    <srcmd5>a0f7c8e3827456fe34ae5486a4fc7d6d</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1268923456</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="952">
+    <srcmd5>a0f7c8e3827456fe34ae5486a4fc7d6d</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="953">
+    <srcmd5>a0f7c8e3827456fe34ae5486a4fc7d6d</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="956">
+    <srcmd5>a0f7c8e3827456fe34ae5486a4fc7d6d</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="957">
+    <srcmd5>a0f9ea0c0cbcfa70f13b03f59dd65633</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1316681000</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83421 from jengelh)</comment>
+    <requestid>84285</requestid>
+  </revision>
+  <revision rev="11" vrev="959">
+    <srcmd5>a0f9ea0c0cbcfa70f13b03f59dd65633</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1319181864</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="960">
+    <srcmd5>d11d3e4656b0cc6b28d10e9a23dffed4</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1327403812</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100906</requestid>
+  </revision>
+  <revision rev="13" vrev="962">
+    <srcmd5>d11d3e4656b0cc6b28d10e9a23dffed4</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1340183304</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="964">
+    <srcmd5>d11d3e4656b0cc6b28d10e9a23dffed4</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1359108847</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="966">
+    <srcmd5>d11d3e4656b0cc6b28d10e9a23dffed4</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1379662290</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="968">
+    <srcmd5>d11d3e4656b0cc6b28d10e9a23dffed4</srcmd5>
+    <version>2.1.0beta9</version>
+    <time>1409300824</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

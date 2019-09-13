@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>333c7aea500aef00ab485ace47436a00</srcmd5>
+    <version>0.2.0</version>
+    <time>1388481010</time>
+    <user>coolo</user>
+    <comment>New package - build dependency of GNOME Stack 3.11</comment>
+    <requestid>211776</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>333c7aea500aef00ab485ace47436a00</srcmd5>
+    <version>0.2.0</version>
+    <time>1409303564</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5573ba3ec6b8f2a79f3005cb52d586d0</srcmd5>
+    <version>0.3.3</version>
+    <time>1420754664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.3:
+  + Fix comparison mode.
+- Changes from version 0.3.2:
+  + Fix some memory leaks.
+  + Rearchitect trace file parsing to correctly handle buffer
+    boundaries.
+- Changes from version 0.3.1:
+  + Add optional support for libsoup ≥ 2.47.3.
+- Changes from version 0.3.0:
+  + Major changes:
+    - Drop useless gthread dependency.
+    - Thread safety fixes.
+  + API changes:
+    - Add uhm_server_set_expected_domain_names().
+    - Add uhm_server_received_message_chunk_with_direction(),
+      uhm_server_received_message_chunk_from_soup().
+  + Bugs fixed:
+    - rh#1026764: Review Request: uhttpmock - HTTP web service
+      mocking library.
+    - bgo#731040: libgdata-0.14.3 tests fail.
+- Drop pkgconfig(gthread-2.0) BuildRequires following upstream.
+- Add ldconfig calls to libuhttpmock-0_0-0 post and postun.</comment>
+    <requestid>280043</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>530f5e1d4da90e5558dd2640d8751920</srcmd5>
+    <version>0.4.0</version>
+    <time>1431799648</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307369</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e7613e6b38470edf15839eb0549a875c</srcmd5>
+    <version>0.5.0</version>
+    <time>1437059818</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316508</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2ba6501886fb14ad9b935371ecf6e6a7</srcmd5>
+    <version>0.5.0</version>
+    <time>1520253147</time>
+    <user>dimstar_suse</user>
+    <comment>spdx3 (forwarded request 580210 from dimstar)</comment>
+    <requestid>581641</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aaa89207a582e9a1169073068fd99d93</srcmd5>
+    <version>0.5.1</version>
+    <time>1546245593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661775</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f4427958bb96a86e2eaa1df2e81eddf2</srcmd5>
+    <version>2.1.1+git20190225.46f2e0c</version>
+    <time>1553611132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681299</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5f62faeb41594c315e6cca0c4778f9b0</srcmd5>
+    <version>2.1.1+git20190322.4a2cfd9</version>
+    <time>1559837724</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705964</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9fa1fe621f205781575108517424a9e4</srcmd5>
+    <version>2.1.1+git20190605.781d938</version>
+    <time>1560338266</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.1+git20190605.781d938:
+  * Fix compiler warnings [-Wstringop-truncation]
+  * telem_record_gen.c: fix for compiler warning [-Wstringop-overflow=]
+  * check_probes.c: fix for compiler warning [-Wstringop-overflow=]
+
+- Update to version 2.1.1+git20190603.ad4dde2:
+  * journal.c: reduce severity of message when failing to opening old records
+  * Protect security checks from removal
+
+- Update to version 2.1.1+git20190502.d13073f:
+  * src: standardize log and debug messages
+  * log.h: fix telem_debug macro
+  * Minor houskeeping
+
+- Update to version 2.1.1+git20190422.2639e4d:
+  * daemons: name space separation
+  * telemetry.c: support variants in the system_name header
+  * telempostdaemon: fix retries loop
+  * configuration: rework to allow layered configuration
+  * telem_record_gen: various changes
+  * Improve support of non-default configuration files.</comment>
+    <requestid>709149</requestid>
+  </revision>
+</revisionlist>

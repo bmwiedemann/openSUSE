@@ -1,0 +1,7 @@
+<package name="perl-DateTime-Format-Mail" project="openSUSE:Factory">
+  <title>DateTime::Format::Mail - Convert between DateTime and RFC2822/822 formats</title>
+  <description>RFCs 2822 and 822 specify date formats to be used by email. This module parses and emits such dates.
+
+RFC2822 (April 2001) introduces a slightly different format of date than that used by RFC822 (August 1982). The main correction is that the preferred format is more limited, and thus easier to parse programmatically.</description>
+  <devel project="devel:languages:perl" package="perl-DateTime-Format-Mail"/>
+</package>

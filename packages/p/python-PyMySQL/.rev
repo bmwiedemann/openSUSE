@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>06a38093321f56c84f59ba7dfc1b2aed</srcmd5>
+    <version>0.5</version>
+    <time>1374497491</time>
+    <user>coolo</user>
+    <comment>possible dependency for openstack-nova</comment>
+    <requestid>183964</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>06a38093321f56c84f59ba7dfc1b2aed</srcmd5>
+    <version>0.5</version>
+    <time>1379664112</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db6a7b486eda8fe7799fc6846923b392</srcmd5>
+    <version>0.6</version>
+    <time>1381386431</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 0.6:
+  -Improved Py3k support
+  -Improved PyPy support
+  -Added IPv6 support
+  -Added Thing2Literal for Django/MySQLdb compatibility
+  -Removed errorhandler
+  -Fixed GC errors
+  -Improved test suite
+  -Many bug fixes
+  -Many performance improvements (forwarded request 202699 from dirkmueller)</comment>
+    <requestid>202707</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>db6a7b486eda8fe7799fc6846923b392</srcmd5>
+    <version>0.6</version>
+    <time>1409302799</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c400b199cca2afe1c433378f46d7beb1</srcmd5>
+    <version>0.6.6</version>
+    <time>1431668634</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306670</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b8a3e91cee2d89d1edd3f30089505cda</srcmd5>
+    <version>0.7.2</version>
+    <time>1459002540</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>379449</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2d45c303e8236fb901d615fdae406388</srcmd5>
+    <version>0.7.4</version>
+    <time>1465336166</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400235</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>be41995b2530a6e2526006d5267d646d</srcmd5>
+    <version>0.7.6</version>
+    <time>1481153355</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441342</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ef36a572ce1028dc170a7994dd65c03a</srcmd5>
+    <version>0.7.11</version>
+    <time>1503061460</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517107</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ff8161cba5e3ff9f6b0b736348c6ad24</srcmd5>
+    <version>0.8.1</version>
+    <time>1527583378</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop not really needed python-devel dependency
+
+- use %license instead of %doc [bsc#1082318]
+- update to latest version to solve MySQLdb interface problems with
+  salt-2018
+- update to 0.8.1
+* Reduce `cursor.callproc()` roundtrip time. (#636)
+* Fixed `cursor.query()` is hunged after multi statement failed. (#647)
+* WRONG_DB_NAME and WRONG_COLUMN_NAME is ProgrammingError for now. (#629)
+* Many test suite improvements, especially adding MySQL 8.0 and using Docker.
+* Droppped support for old Python and MySQL whih is not tested long time.
+- update to 0.8
+* **BACKWARD INCOMPATIBLE** ``binary_prefix`` option is added and off
+  by default because of compatibility with mysqlclient.
+  When you need PyMySQL 0.7 behavior, you have to pass ``binary_prefix=True``.
+  (#549)
+* **BACKWARD INCOMPATIBLE** ``MULTI_STATEMENTS`` client flag is no longer
+  set by default, while it was on PyMySQL 0.7.  You need to pass
+  ``client_flag=CLIENT.MULTI_STATEMENTS`` when you connect to explicitly
+  enable multi-statement mode. (#590)
+* Fixed AuthSwitch packet handling.
+* Raise OperationalError for MariaDB's constraint error. (#607)
+* executemany() accepts query without space between ``VALUES`` and ``(``.  (#597)
+* Support config file containing option without value. (#588)
+* Fixed Connection.ping() returned unintended value.</comment>
+    <requestid>611861</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>25ca469c448439d69220e88146e5f175</srcmd5>
+    <version>0.9.3</version>
+    <time>1552380793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.3:
+  * cryptography dependency is optional now.
+  * Fix old_password (used before MySQL 4.1) support.
+  * Deprecate old_password.
+  * Stop sending ``sys.argv[0]`` for connection attribute &quot;program_name&quot;.
+  * Close connection when unknown error is happened.
+  * Deprecate context manager API of Connection object.
+  * Disalbled unintentinally enabled debug log
+  * Removed unintentionally installed tests
+  * Fixed caching_sha2_password and sha256_password raise TypeError on PY2
+    (#700, #702)
+  * Change default charset from latin1 to utf8mb4.  (because MySQL 8 changed) (#692)
+  * Support sha256_password and caching_sha2_password auth method (#682)
+  * Add cryptography dependency, because it's needed for new auth methods.
+  * Remove deprecated `no_delay` option (#694)
+  * Support connection attributes (#679)
+  * Map LOCK_DEADLOCK to OperationalError (#693)</comment>
+    <requestid>682059</requestid>
+  </revision>
+</revisionlist>

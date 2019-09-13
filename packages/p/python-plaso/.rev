@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b8dc6920ea7dde0ad52f10bf1639703</srcmd5>
+    <version>1.0.2</version>
+    <time>1401899946</time>
+    <user>coolo</user>
+    <comment>A new package for factory.  Replaces log2timeline which was recently dropped.  All code is new, so legal should treat this as a new package, not an upgrade.</comment>
+    <requestid>235872</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6b8dc6920ea7dde0ad52f10bf1639703</srcmd5>
+    <version>1.0.2</version>
+    <time>1409302945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a165b22ee88758e2c58965a541159fba</srcmd5>
+    <version>1.1.0</version>
+    <time>1410081007</time>
+    <user>coolo</user>
+    <comment>Depends on other libyal SRs previously submitted.  266 internal self-tests pass.  2 failures determined to be faulty tests.</comment>
+    <requestid>247091</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b0a393f701999ce3acac65016bd9be29</srcmd5>
+    <version>1.2.0</version>
+    <time>1422626414</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280939</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>716f8fcc814ed2a0c824346496106402</srcmd5>
+    <version>1.3.0</version>
+    <time>1440153767</time>
+    <user>dimstar_suse</user>
+    <comment>Requires SR 324427 for python-dfVFS.  Also depends on python-pefile which was just accepted into factory.</comment>
+    <requestid>324431</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ee45b49b24912deecbb2011851181562</srcmd5>
+    <version>1.5.0</version>
+    <time>1478952023</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>432439</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>187d51a23e5750a7ff14ae8e7d323dcb</srcmd5>
+    <version>1.5.0</version>
+    <time>1487681220</time>
+    <user>dimstar_suse</user>
+    <comment>Fix a major usability bug.</comment>
+    <requestid>458531</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f5da306df3fd17291b0ac302dc7f70e8</srcmd5>
+    <version>1.5.1</version>
+    <time>1494088192</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492435</requestid>
+  </revision>
+</revisionlist>

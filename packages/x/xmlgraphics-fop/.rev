@@ -1,0 +1,349 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>60954fa9dfbdfa5dbe7d131a9332758e</srcmd5>
+    <version>1.0</version>
+    <time>1289863609</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52380 from user mvyskocil
+</comment>
+    <requestid>52380</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1c05033ac8876aa035279ab4991187ef</srcmd5>
+    <version>1.0</version>
+    <time>1289863614</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52380
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3d992a35e821ae227629911ed08d1dc6</srcmd5>
+    <version>1.0</version>
+    <time>1290094146</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53333 from user mvyskocil
+</comment>
+    <requestid>53333</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>10cc8b318647384c4eb81311d4a7ba1e</srcmd5>
+    <version>1.0</version>
+    <time>1290094151</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53333
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>10cc8b318647384c4eb81311d4a7ba1e</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>84844aa4eff2e29ab28e6c5914014397</srcmd5>
+    <version>1.0</version>
+    <time>1304334995</time>
+    <user>saschpe</user>
+    <comment>- Fixed xmlgraphic-fop script:
+  * Added excalibur/avalon-framework-impl in BASE_JAR variable to
+    avoid exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: 
+    org/apache/avalon/framework/configuration/DefaultConfigurationBuilder
+    Caused by: java.lang.ClassNotFoundException: 
+    org.apache.avalon.framework.configuration.DefaultConfigurationBuilder 
+  * Replaced xmlgraphics-batik/util in BASE_JAR variable to
+    avoid ClassNotFoundException: org.apache.batik.bridge.UserAgent (forwarded request 68986 from thomas-schraitle)</comment>
+    <requestid>68994</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>5c205acfbcb680bff68cbb1491ec1db7</srcmd5>
+    <version>1.0</version>
+    <time>1304335004</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68994
+</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>99932c9709fcb02035c8cd8f9a41bd8e</srcmd5>
+    <version>1.0</version>
+    <time>1317025393</time>
+    <user>saschpe</user>
+    <comment>add OFFO hyphenation pattterns, other minor fixes (forwarded request 83010 from yecril71pl)</comment>
+    <requestid>84394</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>99932c9709fcb02035c8cd8f9a41bd8e</srcmd5>
+    <version>1.0</version>
+    <time>1319182603</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>ad08f4fc452bc8b600551cad69032a4d</srcmd5>
+    <version>1.0</version>
+    <time>1323195395</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>ad08f4fc452bc8b600551cad69032a4d</srcmd5>
+    <version>1.0</version>
+    <time>1340184375</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9a44b63ba04079e77c0605ba31032788</srcmd5>
+    <version>1.1</version>
+    <time>1351893222</time>
+    <user>coolo</user>
+    <comment>update to 1.1, requested by documentation team</comment>
+    <requestid>139401</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b3c5675955b75a1faf5a7a9700bd9d37</srcmd5>
+    <version>1.1</version>
+    <time>1352909028</time>
+    <user>coolo</user>
+    <comment>fix class not found errors in fop scripts</comment>
+    <requestid>141291</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b907369b340599572113ac4ca906ac77</srcmd5>
+    <version>1.1</version>
+    <time>1353515054</time>
+    <user>coolo</user>
+    <comment>- add fo-formatter to provides upon a request of doc team</comment>
+    <requestid>142072</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>74f22bbf263aad6d7b087e9a902b2883</srcmd5>
+    <version>1.1</version>
+    <time>1355480804</time>
+    <user>coolo</user>
+    <comment>- patched fop.xconf
+  * added &lt;auto-detect/&gt; to pdf renderer section, so now possible to use system fonts like font-family=&quot;DejaVuSansMono&quot;
+- fix the spec file to install a (default) fop.xconf file in /etc
+- patched scripts to use /etc/fop.xconf (forwarded request 144816 from slavb18)</comment>
+    <requestid>144910</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>b310847945d1e8d6227828f55ea9bf33</srcmd5>
+    <version>1.1</version>
+    <time>1355922315</time>
+    <user>coolo</user>
+    <comment>- drop excalibur-avalon from dependencies, fop now uses avalon-framework</comment>
+    <requestid>145626</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>5d52e090007f434cde21e8f0f4d3d588</srcmd5>
+    <version>1.1</version>
+    <time>1357829942</time>
+    <user>coolo</user>
+    <comment>- drop excalibur usage from all classpaths, use avalon-framework instead</comment>
+    <requestid>147892</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>5d52e090007f434cde21e8f0f4d3d588</srcmd5>
+    <version>1.1</version>
+    <time>1359110663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>984e166c013637217f685b769b182667</srcmd5>
+    <version>1.1</version>
+    <time>1359535237</time>
+    <user>coolo</user>
+    <comment>- (build) require xml-commons-apis, the org.w3c.svg are used inside fop
+  part of a fix for bnc#800694
+@coolo: please copy to 12.3 as well</comment>
+    <requestid>150186</requestid>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>a9ab58ebe2f736dd7a48401bcef04d84</srcmd5>
+    <version>1.1</version>
+    <time>1366955269</time>
+    <user>coolo</user>
+    <comment>- fix a typo in a xmlgraphics-fop.script (bnc#817145)</comment>
+    <requestid>173377</requestid>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>30b06fcf2ea84347c92c20f721b397a5</srcmd5>
+    <version>1.1</version>
+    <time>1378912316</time>
+    <user>scarabeus_factory</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198320</requestid>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>59692b7d839d8ca372900cec7ff4da9a</srcmd5>
+    <version>1.1</version>
+    <time>1379076260</time>
+    <user>scarabeus_factory</user>
+    <comment>- Drop javadoc package so we build this package</comment>
+    <requestid>198775</requestid>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>59692b7d839d8ca372900cec7ff4da9a</srcmd5>
+    <version>1.1</version>
+    <time>1379665093</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>b6c429ac1e054fa154b712f66523b141</srcmd5>
+    <version>1.1</version>
+    <time>1405522152</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240367</requestid>
+  </revision>
+  <revision rev="25" vrev="17">
+    <srcmd5>b6c429ac1e054fa154b712f66523b141</srcmd5>
+    <version>1.1</version>
+    <time>1409303779</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="18">
+    <srcmd5>32c2f50a5e0d5859e7ca86f659efce35</srcmd5>
+    <version>1.1</version>
+    <time>1418112857</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec-cleanify
+- Do not ever run tests, we lack quite packages to do so anyway
+- Drop fop-1.1-src.tar.gz.asc xmlgraphics-fop.keyring as upstream
+  does not provide those anymore
+- Apply patch to build with new xmlgraphics-commons:
+  * fop-commons-2.0.patch</comment>
+    <requestid>264416</requestid>
+  </revision>
+  <revision rev="27" vrev="19">
+    <srcmd5>fcd38bf08523efbfb091d2a836046a02</srcmd5>
+    <version>1.1</version>
+    <time>1427983187</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292650</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ae059917351c25392f2835deb412f132</srcmd5>
+    <version>2.1</version>
+    <time>1459002150</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368334</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>2bc4fcfb48a52cbf1a5b14a5ceb9fbb1</srcmd5>
+    <version>2.1</version>
+    <time>1488560127</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461919</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>0b28d2b995e538d7063365edbcdb843f</srcmd5>
+    <version>2.1</version>
+    <time>1489345302</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477243</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>b6a73ccf929eb69b754575c418cd3641</srcmd5>
+    <version>2.1</version>
+    <time>1495442872</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires: javapackages-local (for maven conversions)</comment>
+    <requestid>496814</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>674c80c1f72b93f0ee38f54e1837422e</srcmd5>
+    <version>2.1</version>
+    <time>1505920218</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527226</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>dc9e544d0cdba8c7922814c036fe21dd</srcmd5>
+    <version>2.1</version>
+    <time>1508197885</time>
+    <user>dimstar_suse</user>
+    <comment>Condition correctly the maven defines</comment>
+    <requestid>533056</requestid>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>8e96d37799cf5896143b1c4b2a2a9494</srcmd5>
+    <version>2.1</version>
+    <time>1522935366</time>
+    <user>dimstar_suse</user>
+    <comment>Fix compatibility with java8 and lower</comment>
+    <requestid>593750</requestid>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>67d59be557655e147c9859c3a99a4d45</srcmd5>
+    <version>2.1</version>
+    <time>1535963604</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with ant &gt;= 1.9.12</comment>
+    <requestid>631993</requestid>
+  </revision>
+  <revision rev="36" vrev="9">
+    <srcmd5>8c217332014095c08dbdfaba6632695e</srcmd5>
+    <version>2.1</version>
+    <time>1541514247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645613</requestid>
+  </revision>
+  <revision rev="37" vrev="10">
+    <srcmd5>51956f1b05a551ec2d7f76a2098f82b8</srcmd5>
+    <version>2.1</version>
+    <time>1542749451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650174</requestid>
+  </revision>
+  <revision rev="38" vrev="11">
+    <srcmd5>67900b62934f67b0aecdb0338472f17b</srcmd5>
+    <version>2.1</version>
+    <time>1544189574</time>
+    <user>dimstar_suse</user>
+    <comment>Restore Java 8 compatibility</comment>
+    <requestid>655909</requestid>
+  </revision>
+  <revision rev="39" vrev="12">
+    <srcmd5>32414c4201ddc4fed4c1dc5d20e651e2</srcmd5>
+    <version>2.1</version>
+    <time>1547539819</time>
+    <user>dimstar_suse</user>
+    <comment>fix build against QDox 2.0</comment>
+    <requestid>662846</requestid>
+  </revision>
+  <revision rev="40" vrev="13">
+    <srcmd5>d1d1e9b9dbd52e221e2c057514dace2b</srcmd5>
+    <version>2.1</version>
+    <time>1548769193</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with newer avalon-framework and simplify batik classpath</comment>
+    <requestid>667652</requestid>
+  </revision>
+  <revision rev="41" vrev="14">
+    <srcmd5>aaedd988035b54376e5fada6833b1415</srcmd5>
+    <version>2.1</version>
+    <time>1555588474</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against upcoming geronimo-specs</comment>
+    <requestid>694542</requestid>
+  </revision>
+  <revision rev="42" vrev="15">
+    <srcmd5>e0c237af019c819a1398e5a7184bf102</srcmd5>
+    <version>2.1</version>
+    <time>1566550973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723907</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,706 @@
+<revisionlist>
+  <revision rev="1" vrev="7">
+    <srcmd5>2c0962c7a928f8b4b0e74bc35ae7ab1d</srcmd5>
+    <version>2.4.3</version>
+    <time>1166483826</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="33">
+    <srcmd5>df0d0669bc91bd36be06f261e6ba19c7</srcmd5>
+    <version>2.4.3</version>
+    <time>1170093623</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="35">
+    <srcmd5>76cab7a4668eafcccb2d6e1746b0a23a</srcmd5>
+    <version>2.4.3</version>
+    <time>1171036694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="39">
+    <srcmd5>6e627c3c94b075e2dcc205c69d7a1fa1</srcmd5>
+    <version>2.4.3</version>
+    <time>1171560311</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="43">
+    <srcmd5>3d1bf7d0136cd376f2962dc5aa3a6285</srcmd5>
+    <version>2.4.3</version>
+    <time>1174489576</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="46">
+    <srcmd5>45e5613f5109d9cea4ffbc4e84dd1ff0</srcmd5>
+    <version>2.4.3</version>
+    <time>1175122457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="48">
+    <srcmd5>d65deec521230ae802252a68477c91ea</srcmd5>
+    <version>2.4.3</version>
+    <time>1176807262</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="66">
+    <srcmd5>4dfe18aa878c18bcb93d451dfd34a269</srcmd5>
+    <version>2.4.3</version>
+    <time>1184788905</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="67">
+    <srcmd5>70f14fbca69eab10b894801d110cf394</srcmd5>
+    <version>2.4.3</version>
+    <time>1185033830</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="70">
+    <srcmd5>a8a5396c3e025d036f37de53dd7583eb</srcmd5>
+    <version>2.4.3</version>
+    <time>1185494335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="73">
+    <srcmd5>0e7b4a622ee8f9e5606c6bf5bfd1e2ba</srcmd5>
+    <version>2.4.3</version>
+    <time>1185699299</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="84">
+    <srcmd5>b8328cdfa23b92aa4d7c660ab5342c9e</srcmd5>
+    <version>2.4.3</version>
+    <time>1190290113</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1644f6d46a6fc61930f06b799e21a123</srcmd5>
+    <version>2.5.0</version>
+    <time>1197479814</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>f3bb12c599ab6bf2ce88c5245ca800f0</srcmd5>
+    <version>2.5.0</version>
+    <time>1197573365</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>d7b447c91910e851d12be7bc1addd020</srcmd5>
+    <version>2.5.0</version>
+    <time>1199927587</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>4bd55b75c85db12c20660b1708119791</srcmd5>
+    <version>2.5.0</version>
+    <time>1200873959</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>3eaf11bc6fa5ff9cf6c0744795209ff6</srcmd5>
+    <version>2.5.0</version>
+    <time>1201715236</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="22">
+    <srcmd5>844e833414780c4783a9b0b0a8a0c6f3</srcmd5>
+    <version>2.5.0</version>
+    <time>1204160501</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>29317da47a27f739777042af09a129de</srcmd5>
+    <version>2.5.1</version>
+    <time>1208907777</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>3ec3960dc37679f5d3eb7e4e5a95a245</srcmd5>
+    <version>2.5.1</version>
+    <time>1208994194</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>8a6da7e91941152273ec3ed9a08fc5b0</srcmd5>
+    <version>2.5.1</version>
+    <time>1210941815</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="14">
+    <srcmd5>e1f55a34ee9ef4399beb61b846aaf955</srcmd5>
+    <version>2.5.1</version>
+    <time>1214093536</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>47a22e3a4112c0828df7bddc6e4271fc</srcmd5>
+    <version>2.5.2</version>
+    <time>1218841391</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>268977f77b42ee1f1a9606f0493ead94</srcmd5>
+    <version>2.5.2</version>
+    <time>1223307958</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="16">
+    <srcmd5>5a8bc31a29e9fa87d99ede8a3a5ec7fe</srcmd5>
+    <version>2.5.2</version>
+    <time>1227278109</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="17">
+    <srcmd5>a65a35ebcbdaff6382989f65243e4272</srcmd5>
+    <version>2.5.2</version>
+    <time>1227882917</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="18">
+    <srcmd5>4a1154358d96f569e2c6a3f66d2fae9e</srcmd5>
+    <version>2.5.2</version>
+    <time>1232327530</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="19">
+    <srcmd5>a6a595f6a2ce30eff30a8fc0eb00c8f6</srcmd5>
+    <version>2.5.2</version>
+    <time>1249676548</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="20">
+    <srcmd5>7999f83d53ab53f78529726045bf1ce7</srcmd5>
+    <version>2.5.2</version>
+    <time>1251300063</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/man based on submit request 18885 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="30" vrev="21">
+    <srcmd5>2a11e7ea4b0fd58766a9eafe8e2376e3</srcmd5>
+    <version>2.5.2</version>
+    <time>1253654937</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/man based on submit request 20791 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="31" vrev="23">
+    <srcmd5>2a11e7ea4b0fd58766a9eafe8e2376e3</srcmd5>
+    <version>2.5.2</version>
+    <time>1253654937</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/man based on submit request 20791 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="32" vrev="24">
+    <srcmd5>42c59eae35f5d58acc7086ad1477df65</srcmd5>
+    <version>2.5.2</version>
+    <time>1258383002</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/man based on submit request 24423 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="33" vrev="25">
+    <srcmd5>6e59ba181194556a744d4d6051ca07d3</srcmd5>
+    <version>2.5.2</version>
+    <time>1263226065</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/man based on submit request 29008 from user coolo
+</comment>
+  </revision>
+  <revision rev="34" vrev="26">
+    <srcmd5>45bdc9da705cd1f6d12b9df91ea73604</srcmd5>
+    <version>2.5.2</version>
+    <time>1268924904</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="35" vrev="27">
+    <srcmd5>7192027d89dc02563422b32dbc5d55ca</srcmd5>
+    <version>2.5.2</version>
+    <time>1272920513</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/man based on submit request 39208 from user WernerFink
+</comment>
+    <requestid>39208</requestid>
+  </revision>
+  <revision rev="36" vrev="29">
+    <srcmd5>7192027d89dc02563422b32dbc5d55ca</srcmd5>
+    <version>2.5.2</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="37" vrev="30">
+    <srcmd5>7192027d89dc02563422b32dbc5d55ca</srcmd5>
+    <version>2.5.2</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="38" vrev="31">
+    <srcmd5>82e86551a7cc303df7af86f73bc642c1</srcmd5>
+    <version>2.5.2</version>
+    <time>1279651901</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/man based on submit request 43453 from user coolo
+</comment>
+    <requestid>43453</requestid>
+  </revision>
+  <revision rev="39" vrev="34">
+    <srcmd5>82e86551a7cc303df7af86f73bc642c1</srcmd5>
+    <version>2.5.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="40" vrev="35">
+    <srcmd5>a51c8709a89915b0e9791e0e6e5a99ba</srcmd5>
+    <version>2.5.2</version>
+    <time>1306486700</time>
+    <user>saschpe</user>
+    <comment>- man requires glibc-locale otherwise manconv does not work</comment>
+    <requestid>71360</requestid>
+  </revision>
+  <revision rev="41" vrev="36">
+    <srcmd5>9caaf2e654394dba9e02b22ab2c2b3a5</srcmd5>
+    <version>2.5.2</version>
+    <time>1306488641</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="42" vrev="38">
+    <srcmd5>9caaf2e654394dba9e02b22ab2c2b3a5</srcmd5>
+    <version>2.5.2</version>
+    <time>1319182170</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="43" vrev="39">
+    <srcmd5>0c70349ebc896e6aca31b574dfd8dc45</srcmd5>
+    <version>2.5.2</version>
+    <time>1323184996</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94684 from coolo)</comment>
+    <requestid>94744</requestid>
+  </revision>
+  <revision rev="44" vrev="40">
+    <srcmd5>acc12477f9cb7e879a4809747b24a3c7</srcmd5>
+    <version>2.5.2</version>
+    <time>1323192494</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="45" vrev="41">
+    <srcmd5>78ac0e6a7e03e516b2a5ba69cd915abb</srcmd5>
+    <version>2.5.2</version>
+    <time>1324913331</time>
+    <user>coolo</user>
+    <comment>- cleanup spec file</comment>
+    <requestid>98216</requestid>
+  </revision>
+  <revision rev="46" vrev="42">
+    <srcmd5>9282a014e83e1587be6a774ca926c902</srcmd5>
+    <version>2.5.2</version>
+    <time>1338476818</time>
+    <user>coolo</user>
+    <comment>- fix build with automake-1.12
+  - add: automake-1.12.patch (forwarded request 122740 from puzel)</comment>
+    <requestid>122763</requestid>
+  </revision>
+  <revision rev="47" vrev="44">
+    <srcmd5>9282a014e83e1587be6a774ca926c902</srcmd5>
+    <version>2.5.2</version>
+    <time>1340183689</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="48" vrev="45">
+    <srcmd5>d11e9868e225190040ddd016cb5fb0d5</srcmd5>
+    <version>2.5.2</version>
+    <time>1341219846</time>
+    <user>coolo</user>
+    <comment>- merge the automake 1.12 patches
+
+- fix build for openSUSE.
+  * AM_PROG_AR 
+- fix 12.2 builds
+  * replace depreciated am_prog_mkdir_p with ac_prog_mkdir_p.</comment>
+    <requestid>126845</requestid>
+  </revision>
+  <revision rev="49" vrev="46">
+    <srcmd5>2161dd622691c99260d17ab27fdc6cb1</srcmd5>
+    <version>2.5.2</version>
+    <time>1347618632</time>
+    <user>namtrac</user>
+    <comment>- move man page directories to filesystem</comment>
+    <requestid>133801</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>446aca9c780a2014729f5a9770c4e888</srcmd5>
+    <version>2.6.3</version>
+    <time>1349632339</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.6.3
+  * Build fixes for glibc 2.16 and Automake 1.12.
+  * apropos prints an error message and returns non-zero when it finds
+    no matches.  (Regression introduced in 2.5.1.)
+  * The presence of a 64-bit GDBM database on the manpath no longer
+    causes a 32-bit man process to exit with a fatal error.
+  * apropos is much faster when run with many arguments.
+  * whatis may be given the full path to an executable as an argument,
+    in which case it will look up the base name of that executable in
+    the appropriate parts of the manpath.
+  * Translated manual pages are no longer displayed starting with a
+    spurious blank line.
+  * Fix double-free in mandb when encountering a symlink outside the
+    manual hierarchy, thanks to Peter Schiffer.
+  * Running 'man -w' (with a new --path alias) without a name now
+    prints the manpath, for compatibility with other man
+    implementations.  The vim viewdoc plugin makes use of this.
+  * Fix a segfault when scanning links to empty pages.
+  * Once we've seen at least one record in a page's NAME section,
+    ignore any further records that don't include a whatis
+    description, as they tend to be noise.
+  * Ensure that the target of a symlink or .so chain is always recorded
+    as a real page.
+  * Read a user-specified configuration file even if HOME is unset.
+  * Fix failure to display manual pages in some encodings when
+    installed setuid.
+  * Wrap long table cells in man(1), fixing test failures with groff
+    1.21.
+  * If an explicit section is passed to man, then pages that match
+    that section exactly will be preferred over pages that only have</comment>
+    <requestid>137028</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>00c4302f155607d982d2a2eabaf5155a</srcmd5>
+    <version>2.6.3</version>
+    <time>1350022006</time>
+    <user>coolo</user>
+    <comment>- Avoid double free of pointer internal_locale due dup onto
+  pointer lang</comment>
+    <requestid>137627</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>5e0ed57500fbd671163e5d4fbc6c1a14</srcmd5>
+    <version>2.6.3</version>
+    <time>1351837856</time>
+    <user>coolo</user>
+    <comment>- Make shadowed manual pages accessible (bnc#786679)</comment>
+    <requestid>139660</requestid>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>5e0ed57500fbd671163e5d4fbc6c1a14</srcmd5>
+    <version>2.6.3</version>
+    <time>1359109429</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>a616fe4c6db3a04a465172767fd85f14</srcmd5>
+    <version>2.6.3</version>
+    <time>1366709607</time>
+    <user>coolo</user>
+    <comment>- remove japanese manpages
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls</comment>
+    <requestid>172856</requestid>
+  </revision>
+  <revision rev="55" vrev="7">
+    <srcmd5>25980ffc0c1a0a21967e508b3f248cc2</srcmd5>
+    <version>2.6.3</version>
+    <time>1371646030</time>
+    <user>coolo</user>
+    <comment>- Just be able to print manual pages, that is require groff-full 
+- Be second owner of /usr/share/groff/site-tmac</comment>
+    <requestid>179278</requestid>
+  </revision>
+  <revision rev="56" vrev="8">
+    <srcmd5>fbfaf84c27135fc9b5c7a84d1bcabe89</srcmd5>
+    <version>2.6.3</version>
+    <time>1379178535</time>
+    <user>scarabeus_factory</user>
+    <comment>- Recommends groff-full to reduce dependencies (bnc#839717) (forwarded request 198954 from mvyskocil)</comment>
+    <requestid>198961</requestid>
+  </revision>
+  <revision rev="57" vrev="10">
+    <srcmd5>fbfaf84c27135fc9b5c7a84d1bcabe89</srcmd5>
+    <version>2.6.3</version>
+    <time>1379663252</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>defe130efcf3ac0d10d80aa3a3bbdf8e</srcmd5>
+    <version>2.6.6</version>
+    <time>1403689634</time>
+    <user>coolo</user>
+    <comment>- Avoid messages on deleted cache directories bewlow /var/cache/man/
+  that is tag them as %ghost (bnc#882030)
+- The former submit had rebased the patches
+  man-db-2.6.3.dif
+  man-db-2.6.3-security4.dif
+  man-db-2.6.3-firefox.dif
+  man-db-2.6.3-zio.dif
+  which now had renamed to
+  man-db-2.6.5.dif
+  man-db-2.6.5-security4.dif
+  man-db-2.6.5-firefox.dif
+  man-db-2.6.5-zio.dif
+  accordingly
+------------------------------------------------------------------
+- Update to version 2.6.6
+- Fixes since 2.6.3:
+  * man(1) and catman(8) now document the default section list set at
+    configure time.
+  * Build fixes for Automake 1.13.
+  * man-db 2.6.0 arranged to search the full manpath when expanding
+    .so directives in manual pages (so that &quot;.so name.1&quot; works as well
+    as &quot;.so man1/name.1&quot;), but this incorrectly did not take effect
+    for manual pages that consist only of a .so directive.  This is
+    now fixed.
+- Improvements since 2.6.3:
+  * The MANLESS environment variable is now treated as if it were a
+    default value for the -r option to man: occurrences of the text
+    &quot;$MAN_PN&quot; are expanded, and explicitly using the -r option
+    overrides the default.
+  * The (unfortunately still hardcoded) maximum length for paths to</comment>
+    <requestid>236790</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>34027b6c6c46889b5e2fb0851ef5e952</srcmd5>
+    <version>2.6.6</version>
+    <time>1406836198</time>
+    <user>coolo</user>
+    <comment>- The former change had added the patch man-MAN_POSIXLY_CORRECT-man1.dif 
+
+- Added description of MAN_POSIXLY_CORRECT in man.man1,
+  patch man-MAN_POSIXLY_CORRECT-man1.dif (bnc#786679)</comment>
+    <requestid>243107</requestid>
+  </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>34027b6c6c46889b5e2fb0851ef5e952</srcmd5>
+    <version>2.6.6</version>
+    <time>1409301852</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>61c6ca61fd81fe0cdb56273a77158900</srcmd5>
+    <version>2.7.1</version>
+    <time>1433143510</time>
+    <user>dimstar_suse</user>
+    <comment>- Own /usr/lib/tmpfiles.d if not owned by package filesystem
+
+- Update to version 2.7.1
+  For the first time since version 2.4.0, the database format has
+  changed slightly, so you will need to run 'mandb --create' after
+  installing the new version to rebuild your databases from scratch.
+- Fixes
+  * Various portability fixes for Solaris, contributed by Peter Bray.
+  * man now runs correctly when its current working directory has been
+    deleted.  (As a result of this fix, man-db now requires
+    libpipeline &gt;= 1.4.0.)
+  * 'man -a' sends its prompts to /dev/tty rather than to stderr, and
+    likewise reads replies from /dev/tty rather than from stdin.
+  * Be more careful to avoid using or double-closing closed database
+    handles.  Fixes test suite failures on some systems.
+  * Patch the fdutimens function imported from Gnulib to work around a
+    libc bug in GNU/Hurd.
+  * Fix test suite in the case where the system supports
+    high-precision timestamps but the file system containing the build
+    directory does not.
+  * lexgrog now filters terminal escape sequences out of cat pages
+    before trying to parse them.
+  * Tools that consider the terminal line length now prioritise the
+    COLUMNS environment variable above the TIOCGWINSZ ioctl.
+  * Manpath elements are no longer canonicalised before being inserted
+    into the search path; this caused the use of incorrect catpaths in
+    some cases.  This was broken by the LANGUAGE-handling fixes in
+    2.5.4.
+  * Remove test suite dependency on realpath(1).
+  * Fix a test failure when configured with --enable-undoc.</comment>
+    <requestid>309152</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>14e9982eccb896f78ece2d92f023a2ff</srcmd5>
+    <version>2.7.1</version>
+    <time>1433832497</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow root to use man command within its home</comment>
+    <requestid>311116</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>48c6083a71aaee3a1a3de638e65d6477</srcmd5>
+    <version>2.7.1</version>
+    <time>1459237953</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>376731</requestid>
+  </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>8b836e2626c42990abc538158c29fae3</srcmd5>
+    <version>2.7.1</version>
+    <time>1468360153</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>405864</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e1e66c0a8512953e8671c4d1c510c9c3</srcmd5>
+    <version>2.7.6</version>
+    <time>1482420793</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to version 2.7.6
+  * Many bug fixes
+  * man understands the &lt;page&gt;.&lt;section&gt; form on its command line,
+    so for example 'man chmod.2' is now the same as 'man 2 chmod'
+    (Contributed by Mihail Konev)
+  * Document that 'man -K' searches page source, not rendered text
+- Rename patch man-db-2.7.1.dif which becomes man-db-2.7.6.dif
+- Port the patches
+   man-MAN_POSIXLY_CORRECT-man1.dif
+   man-db-2.6.3-chinese.dif
+   man-db-2.6.3-listall.dif
+   man-db-2.6.3-section.dif
+   man-db-2.7.1-firefox.dif
+   man-db-2.7.1-security4.dif
+   man-db-2.7.1-zio.dif
+- Add an rpmlintrc file man-rpmlintrc as we apply a patch
+  on generated manual pages
+- Do not wrap man anymore (boo#986211)</comment>
+    <requestid>446648</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>3c1c83caab040ef8cca88be46ffea843</srcmd5>
+    <version>2.7.6</version>
+    <time>1488124859</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>459993</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>b00906ba08fc55e810c4a68602a5aa5b</srcmd5>
+    <version>2.7.6</version>
+    <time>1490786421</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>478728</requestid>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>0b73adb11108cb38981db9754147c42b</srcmd5>
+    <version>2.7.6</version>
+    <time>1511595641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545114</requestid>
+  </revision>
+  <revision rev="69" vrev="5">
+    <srcmd5>4edcbfa836e3fd938535e97e5445d0a0</srcmd5>
+    <version>2.7.6</version>
+    <time>1512546454</time>
+    <user>dimstar_suse</user>
+    <comment>- Make /var/ache/man a real directory as in system-user-man the
+  directory is gone</comment>
+    <requestid>546425</requestid>
+  </revision>
+  <revision rev="70" vrev="6">
+    <srcmd5>0a758c20534f1490ddd1eef55676763c</srcmd5>
+    <version>2.7.6</version>
+    <time>1513245104</time>
+    <user>dimstar_suse</user>
+    <comment>- Add man-db-create.service to fill /var/cache/man at bootup
+  if the directory is empty (required by FHS and for transactional
+  updates).
+- Don't fill /var/cache/man if it does not exist yet (needed for
+  transactional updates).
+- We don't need to package /var/cache/man, systemd-tmpfiles is
+  creating it already for us.
+
+- Make /var/cache/man a real directory as in system-user-man the</comment>
+    <requestid>556007</requestid>
+  </revision>
+  <revision rev="71" vrev="7">
+    <srcmd5>c00db035e1eff11b1c072b4e0d12c39a</srcmd5>
+    <version>2.7.6</version>
+    <time>1524400295</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip cron job for cleaning /var/cache/man as there exists
+  /usr/lib/tmpfiles.d/man-db.conf</comment>
+    <requestid>597110</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>2211be36aa066650699f95a6ee2c7959</srcmd5>
+    <version>2.8.4</version>
+    <time>1543828133</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to man-db 2.8.4
+  * Major changes since man-db 2.8.3:
+   + Rely on decompressors reading from their standard input rather
+     than redundantly passing them the input file on their command
+     line.  This works better with downstream AppArmor confinement of
+     decompressors.
+   + Fix invalid syntax in tmpfiles.d/man-db.conf when configured with
+     --disable-cache-owner.
+   + Make seccomp sandbox allow sched_getaffinity, sometimes used by
+     xz.
+   + Check for mandb_nfmt and mandb_tfmt in the manual page hierarchy
+     as documented, not in the current directory.  This was broken by
+     the working-directory-handling changes in 2.8.3.  Note that this
+     change means that &quot;man -l&quot; will never use an external formatter
+     (which was never documented behaviour and was surely a bad idea).
+   + Make seccomp sandbox allow some shared memory operations across
+     the board rather than just when ESET File Security is in use; the
+     Astrill VPN seems to require something similar, and there are
+     doubtless other such preload hacks.
+   + Some versions of ESET File Security call msgget and msgsnd; if
+     this program is in use, then allow those.
+  * Major changes since man-db 2.8.2:
+   + Make seccomp sandbox allow madvise, since that's used by lbzip2.
+   + Make seccomp sandbox allow kill and tgkill outright, since groff
+     uses kill to pass on signals to its child processes.
+   + Make seccomp sandbox allow sibling architectures on
+     x86/x86_64/x32, since people sometimes mix and match architectures
+     there for performance reasons.
+   + Fix version check in locale macro loading to tolerate groff
+     release candidates.</comment>
+    <requestid>652353</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>ae25908099c2357f51c11c5b202a38c1</srcmd5>
+    <version>2.8.4</version>
+    <time>1552380499</time>
+    <user>dimstar_suse</user>
+    <comment>- Ah ... yes, manual pages are also provides by e.g. mandoc
+
+- Skip %verify(not link mtime) from symbolic links %_bindir even if
+  those should not hurt but avoid superfluous verify messages
+
+- Minor corrections on %ghost /var/cache/man and link to apropos 
+
+- Use update-alternatives to allow that man(1), apropos(1), whatis(1)
+  can be overwritten by an other package like mandoc
+- Reintroduce wrapper for man(1) but without mapping to user man to
+  be able to reset the PATH to the standard for any preprocessor</comment>
+    <requestid>682844</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>b0047c232eb87bf32655b1538de58ffb</srcmd5>
+    <version>2.8.4</version>
+    <time>1557141424</time>
+    <user>dimstar_suse</user>
+    <comment>- Make systemd timers and services optional but hold them enabled
+  as maybe in future all packages providing manual pages might use
+  a posttrans scriplet to trigger a refresh of the man db (boo#1133762).
+
+- remove %verify(not group) from /var/cache/man, the inconsistent
+  permissions are fixed in the permissions package (boo#1133678)</comment>
+    <requestid>699626</requestid>
+  </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>e26a19dc43c87a4667882ca5dec59b82</srcmd5>
+    <version>2.8.4</version>
+    <time>1561405737</time>
+    <user>dimstar_suse</user>
+    <comment>Allow OBS to pick better candidates to shorten rebuild queues (forwarded request 709169 from dimstar)</comment>
+    <requestid>709170</requestid>
+  </revision>
+</revisionlist>

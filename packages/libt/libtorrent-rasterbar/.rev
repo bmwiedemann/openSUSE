@@ -1,0 +1,587 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b376cea9870186ac95ec66089f53b049</srcmd5>
+    <version>0.15.6</version>
+    <time>1308732466</time>
+    <user>saschpe</user>
+    <comment>moved from Contrib, rpmlintrc was dropped, please accept</comment>
+    <requestid>74281</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>08b4f222299ee5da66edf9160e293ab9</srcmd5>
+    <version>0.15.6</version>
+    <time>1308732477</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74281
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e0fb88bd41a04e7fc4f9d9bdba2b7be2</srcmd5>
+    <version>0.15.6</version>
+    <time>1318795835</time>
+    <user>lrupp</user>
+    <comment>- fix build for factory (forwarded request 88063 from coolo)</comment>
+    <requestid>88080</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a3087b66f20899db1273875fa699630c</srcmd5>
+    <version>0.15.8</version>
+    <time>1319033333</time>
+    <user>coolo</user>
+    <comment>- Upstream update to 0.15.8, bugfix release.
+- Reworked missing-return patch. (forwarded request 88624 from Fisiu)</comment>
+    <requestid>88630</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>a3087b66f20899db1273875fa699630c</srcmd5>
+    <version>0.15.8</version>
+    <time>1319182141</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>dc07da1f4c4d5695b884f0b13041ccbb</srcmd5>
+    <version>0.15.8</version>
+    <time>1323869650</time>
+    <user>coolo</user>
+    <comment>fix license to be in spdx.org (forwarded request 96043 from coolo)</comment>
+    <requestid>96074</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>decb1219a0d1f2d79eadc2dd81e15068</srcmd5>
+    <version>0.15.9</version>
+    <time>1327486094</time>
+    <user>coolo</user>
+    <comment>- Upstream update to 0.15.9, bugfix release. (forwarded request 101381 from Fisiu)</comment>
+    <requestid>101403</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>affb97612519d94094f40aed2ab6598f</srcmd5>
+    <version>0.15.9</version>
+    <time>1327583173</time>
+    <user>coolo</user>
+    <comment>- Usage of symbols visibility is supported but needs either 
+ using cmake or passing the relevant CXXFLAGS. (forwarded request 101541 from elvigia)</comment>
+    <requestid>101542</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b501ff6fd3d7ffbd61cd396f39868a3f</srcmd5>
+    <version>0.15.10</version>
+    <time>1334216315</time>
+    <user>coolo</user>
+    <comment>- Upstream update to 0.15.10, bugfix release:
+  + fixed peer_tos (type of service) setting
+  + fix connection queue issue causing shutdown delays
+  + fix overflow bug in progress_ppm field
+  + don't filter local peers received from a non-local tracker
+  + fix python deadlock when using python extensions
+  + fixed small memory leak in DHT (forwarded request 112375 from Fisiu)</comment>
+    <requestid>112376</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>b501ff6fd3d7ffbd61cd396f39868a3f</srcmd5>
+    <version>0.15.10</version>
+    <time>1340183645</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>c0e64b7d55538d03254cb11df6c5556f</srcmd5>
+    <version>0.15.10</version>
+    <time>1346077403</time>
+    <user>coolo</user>
+    <comment>Fix build with updated boost (forwarded request 129777 from a_jaeger)</comment>
+    <requestid>129895</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>605f7417cd214ddfb7bc2de5f3d747d5</srcmd5>
+    <version>0.16.6</version>
+    <time>1358665461</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>149238</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>605f7417cd214ddfb7bc2de5f3d747d5</srcmd5>
+    <version>0.16.6</version>
+    <time>1359109365</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>c0e64b7d55538d03254cb11df6c5556f</srcmd5>
+    <version>0.15.10</version>
+    <time>1359438277</time>
+    <user>coolo</user>
+    <comment>Let's use 0.15.x for 12.3 to avoid problems with 0.16.x and our outdated boost.</comment>
+    <requestid>150226</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3f46eb93ce0df5516cb607205f402094</srcmd5>
+    <version>0.16.8</version>
+    <time>1361821022</time>
+    <user>coolo</user>
+    <comment>- update to 0.16.8:
+  + support torrents with more than 262000 pieces
+  + make tracker back-off configurable
+  + improve SSL torrent support by using SNI and a single SSL listen socket
+  + improved peer exchange performance by sharing incoming 
+    connections which advertize listen port
+  + add web seed support for torrents with pad files
+  + introduced a more scalable API for torrent status updates 
+  + updated the API to add_torrent_params turning all bools into 
+    flags of a flags field
+  + added async_add_torrent() function to significantly improve 
+    performance when adding many torrents
+  + deprecated compact storage allocation
+  + feature to encrypt peer connections with a secret AES-256 key 
+    stored in .torrent file
+  + added support for fadvise/F_RDADVISE for improved disk 
+    read performance 
+- removed libtorrent-rasterbar-boost-time_utc.patch
+- removed libtorrent-rasterbar-0.15.9-missing-return.patch
+- specfile cleanup: remove tags and allow to build on SLE-11-SP2 (forwarded request 155991 from lrupp)</comment>
+    <requestid>155997</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2e3d53fd9d6f871a5a2c4c59cda9e593</srcmd5>
+    <version>0.16.9</version>
+    <time>1369648316</time>
+    <user>coolo</user>
+    <comment>- update to 0.16.9:
+  * fix long filename truncation on windows
+  * distinguish file open mode when checking files and downloading/seeding with bittorrent.
+    updates storage interface
+  * improve file_storage::map_file when dealing with invalid input
+  * improve handling of invalid utf-8 sequences in strings in torrent files
+  * handle more cases of broken .torrent files
+  * fix bug filename collision resolver
+  * fix bug in filename utf-8 verification
+  * make need_save_resume() a bit more robust
+  * fixed sparse flag manipulation on windows
+  * fixed streaming piece picking issue
+- do not hide symbols (drop -fvisibility=hidden) to fix qbittorrent (forwarded request 173515 from -miska-)</comment>
+    <requestid>173516</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6c3e47a5f81dd808ad541859e0ae9951</srcmd5>
+    <version>0.16.10</version>
+    <time>1370925344</time>
+    <user>coolo</user>
+    <comment>- Update to 0.16.10:
+  * fix encryption level handle invalid values
+  * add a number of missing functions to the python binding
+  * fix typo in Jamfile for building shared libraries
+  * prevent tracker exchange for magnet links before metadata is
+    received
+  * fix crash in make_magnet_uri when generating links longer than
+    1024 characters
+  * fix hanging issue when closing files on windows (completing a
+    download)
+  * fix piece picking edge case that could cause torrents to get
+    stuck at hash failure
+  * try unencrypted connections first, and fall back to encryption
+    if it fails (performance improvement)
+  * add missing functions to python binding (flush_cache(),
+    remap_files() and orig_files())
+  * improve handling of filenames that are invalid on windows
+  * support 'implied_port' in DHT announce_peer
+  * don't use pool allocator for disk blocks (cache may now return
+    pages to the kernel) (forwarded request 178422 from Fisiu)</comment>
+    <requestid>178423</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b77bf75536e5435173313b837005533f</srcmd5>
+    <version>0.16.11</version>
+    <time>1379422965</time>
+    <user>coolo</user>
+    <comment>- Update to 0.16.11:
+  * fix web seed URL double escape issue
+  * fix string encoding issue in alert messages
+  * fix SSL authentication issue
+  * deprecate std::wstring overloads. long live utf-8
+  * improve time-critical pieces feature (streaming)
+  * introduce bandwidth exhaustion attack-mitigation in allowed-fast pieces
+  * python binding fix issue where torrent_info objects where
+    destructing when their torrents were deleted
+  * added missing field to scrape_failed_alert in python bindings
+  * GCC 4.8 fix
+  * fix proxy failure semantics with regards to anonymous mode
+  * fix round-robin seed-unchoke algorithm
+  * add bootstrap.sh to generage configure script and run configure
+  * fix bug in SOCK5 UDP support
+  * fix issue where torrents added by URL would not be started immediately (forwarded request 199319 from Fisiu)</comment>
+    <requestid>199323</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>b77bf75536e5435173313b837005533f</srcmd5>
+    <version>0.16.11</version>
+    <time>1379663114</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>36e4c3ade5b0827fd193ca63a86bf339</srcmd5>
+    <version>0.16.12</version>
+    <time>1387485525</time>
+    <user>coolo</user>
+    <comment>- Strip down content of -tools subpackage to the most useful tools. (forwarded request 210784 from Fisiu)</comment>
+    <requestid>210785</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>41ab31f66288d72052bcdf9976131db7</srcmd5>
+    <version>0.16.16</version>
+    <time>1396291402</time>
+    <user>coolo</user>
+    <comment>- Update to 0.16.16 (changes since 0.16.12):
+  * add missing add_files overload to the python bindings
+  * improve error handling in http gunzip
+  * fix debug logging for banning web seeds
+  * improve support for de-selected files in full allocation mode
+  * fix dht_bootstrap_alert being posted
+  * SetFileValidData fix on windows (prevents zero-fill)
+  * fix minor lock_files issue on unix
+  * fix mingw time_t 64 bit issue
+  * fix use of SetFileValidData on windows
+  * fix crash when using full allocation storage mode
+  * improve error_code and error_category support in python bindings
+  * fix python binding for external_ip_alert
+  * make lt_tex more robust against bugs and malicious behavior
+  * HTTP chunked encoding fix
+  * expose file_granularity flag to python bindings
+  * fix DHT memory error
+  * change semantics of storage allocation to allocate on first write rather
+    than on startup (behaves better with changing file priorities)
+  * fix resend logic in response to uTP SACK messages
+  * only act on uTP RST packets with correct ack_nr
+  * make uTP errors log in normal log mode (not require verbose)
+  * deduplicate web seed entries from torrent files
+  * improve error reporting from lazy_decode()
+  * fix auto-manage issue when pausing session
+  * fix bug in non-sparse mode on windows, causing incorrect file errors to
+    be generated
+  * fix set_name() on file_storage actually affecting save paths
+  * fix large file support issue on mingw
+  * add some error handling to set_piece_hashes()</comment>
+    <requestid>228232</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>76b26d56ece617acfb1a389391a1a044</srcmd5>
+    <version>0.16.17</version>
+    <time>1404306318</time>
+    <user>coolo</user>
+    <comment>- Update to 0.16.17:
+  * don't fall back on wildcard port in UPnP
+  * fix local service discovery for magnet links
+  * fix bitfield issue in file_storage
+  * added work-around for MingW issue in file I/O
+  * fixed sparse file detection on windows
+  * fixed bug in gunzip
+  * fix to use proxy settings when adding .torrent file from URL
+  * fix resume file issue related to daylight savings time on windows
+  * improve error checking in lazy_bdecode (forwarded request 239219 from Fisiu)</comment>
+    <requestid>239220</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>76b26d56ece617acfb1a389391a1a044</srcmd5>
+    <version>0.16.17</version>
+    <time>1409301738</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a3dfbd660d1638a3bb0d9772c6c56ba5</srcmd5>
+    <version>0.16.19</version>
+    <time>1424622378</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286935</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>283afb1657afd3c0aab4fe8cf90dec6b</srcmd5>
+    <version>1.0.4</version>
+    <time>1429346378</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297270</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>bad059fb7b920f2a10f661ad991fb750</srcmd5>
+    <version>1.0.5</version>
+    <time>1433832561</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311113</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>805e8f33f85d7705e9cbd96341f06e70</srcmd5>
+    <version>1.0.6</version>
+    <time>1438548392</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320010</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4545a20789522fd162944a79be9b8041</srcmd5>
+    <version>1.0.7</version>
+    <time>1448400831</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>345887</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f4d15b3a42fe63d1b54c8f0678374262</srcmd5>
+    <version>1.0.7</version>
+    <time>1452941832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>353774</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2ce5494a761a08c938dba54ff0cd74c1</srcmd5>
+    <version>1.0.8</version>
+    <time>1455701085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>358917</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0266feafaf996945ea15c0d9dfa3329c</srcmd5>
+    <version>1.0.9</version>
+    <time>1457116228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>365805</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>90746e9a562e639338d6e0de134c05d1</srcmd5>
+    <version>1.1.0</version>
+    <time>1461855364</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>391324</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>9af4ac39d2178273283445cddd02d4a9</srcmd5>
+    <version>1.1.0</version>
+    <time>1463498193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>396138</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>65c3a7b69ef4d0693facee2c1e77295e</srcmd5>
+    <version>1.1.0</version>
+    <time>1465336156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>400211</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>75c3e08a656adb8093916cc16a1b66d2</srcmd5>
+    <version>1.1.0</version>
+    <time>1466814133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>403932</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>bda799c06c0a4f7d1025e147ee2c2ac4</srcmd5>
+    <version>1.1.0</version>
+    <time>1467705131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>406184</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>e65a68e195aaf5ebdc1937ca7527445d</srcmd5>
+    <version>1.1.0</version>
+    <time>1468999171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>411587</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>c1ed16a41e667ddf63a992c8ed6c9c01</srcmd5>
+    <version>1.1.0</version>
+    <time>1469081980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>412384</requestid>
+  </revision>
+  <revision rev="39" vrev="8">
+    <srcmd5>4aa72339d8ba2bc2b2f300c625f07547</srcmd5>
+    <version>1.1.0</version>
+    <time>1469628740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>414621</requestid>
+  </revision>
+  <revision rev="40" vrev="9">
+    <srcmd5>53d457f003a68e2c7bb6a56a8173c012</srcmd5>
+    <version>1.1.0</version>
+    <time>1470217447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>415869</requestid>
+  </revision>
+  <revision rev="41" vrev="10">
+    <srcmd5>e6105f5508e03b9ac260315d064ce871</srcmd5>
+    <version>1.1.0</version>
+    <time>1471504684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>419730</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4098130953a40629b16eb311c67a91b2</srcmd5>
+    <version>1.1.1</version>
+    <time>1472595034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>423580</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>86b9cb04bfc576be15afb40105dad5d7</srcmd5>
+    <version>1.1.1</version>
+    <time>1476997755</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>435835</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>7a126cba68e4333088f50ef341b92bdc</srcmd5>
+    <version>1.1.1</version>
+    <time>1481030790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>443941</requestid>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>e6f97b627fb1ecaba794e68d63d56ddf</srcmd5>
+    <version>1.1.1</version>
+    <time>1486046679</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453933</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ce824ff4e3b46bff83d9b7caa0ec37ef</srcmd5>
+    <version>1.1.2</version>
+    <time>1489345399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>477724</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>6cbfab2ed5381629a3308ea7a9e6938a</srcmd5>
+    <version>1.1.2</version>
+    <time>1491896108</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>483413</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>dcdc8b67ca9de8fe5f40497fcc9dad65</srcmd5>
+    <version>1.1.3</version>
+    <time>1493819778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>489975</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>c8054525c5298bc439451498b6c80288</srcmd5>
+    <version>1.1.3</version>
+    <time>1495637438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>497769</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>741d26462b45564d6708af8ab20ce2ff</srcmd5>
+    <version>1.1.4</version>
+    <time>1507628594</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532912</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>93106c20c21c6a7b4b67041ac2b71bb6</srcmd5>
+    <version>1.1.5</version>
+    <time>1508770324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>535743</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>19a1e0bf082b31e1803331d133ffcf95</srcmd5>
+    <version>1.1.5</version>
+    <time>1514745146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560762</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>75b499dff1544c4fed1b04255ce3b7dc</srcmd5>
+    <version>1.1.6</version>
+    <time>1515260947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561732</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>de1185f7883a174b5fd6fa0872bb0e14</srcmd5>
+    <version>1.1.7</version>
+    <time>1524238128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597444</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>f2a0a096933603f886e470a03b0fcf3a</srcmd5>
+    <version>1.1.7</version>
+    <time>1530087661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618708</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>87ccf67498e8a1477e413d08f9d2e3ce</srcmd5>
+    <version>1.1.8</version>
+    <time>1530866485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620481</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>690dbbb8304772c83e0006daaaddcb5c</srcmd5>
+    <version>1.1.9</version>
+    <time>1537187179</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.1.9.</comment>
+    <requestid>635874</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>577c36f5268f7285896fb4ee185dc158</srcmd5>
+    <version>1.1.11</version>
+    <time>1543311805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.11.</comment>
+    <requestid>652004</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>89fbc59e49a94c2f2ec634463d17f751</srcmd5>
+    <version>1.1.11</version>
+    <time>1548704991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669066</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>07fad4aa3cd67495cf47dab1adce73fa</srcmd5>
+    <version>1.1.13</version>
+    <time>1557916495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.13.</comment>
+    <requestid>702973</requestid>
+  </revision>
+</revisionlist>

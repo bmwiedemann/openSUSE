@@ -1,0 +1,7 @@
+<package name="psqlODBC" project="openSUSE:Factory">
+  <title>ODBC Driver for PostgreSQL</title>
+  <description>This package contains the ODBC (Open DataBase Connectivity) driver and
+sample configuration files needed for applications to access a
+PostgreSQL database using ODBC.</description>
+  <devel project="server:database:postgresql" package="psqlODBC"/>
+</package>

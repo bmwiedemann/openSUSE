@@ -1,0 +1,758 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>020a59292336774b5c7c0d7ca64236b9</srcmd5>
+    <version>1.1.10</version>
+    <time>1336471267</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115408</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>17c7d6aa2589f736027b827287626bd1</srcmd5>
+    <version>1.1.10</version>
+    <time>1337164008</time>
+    <user>coolo</user>
+    <comment>- /etc/pam.d/xdm-np: add session require to pam_loginuid.so in
+  order to fix running commands via sudo (bnc #746704)</comment>
+    <requestid>120615</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>17c7d6aa2589f736027b827287626bd1</srcmd5>
+    <version>1.1.10</version>
+    <time>1340184341</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e1bd0674b7469b328ccc7f4339553a39</srcmd5>
+    <version>1.1.10</version>
+    <time>1341220842</time>
+    <user>coolo</user>
+    <comment>- avoid plymouth quit for kdm and gdm (bnc#762909) (forwarded request 126757 from tiwai)</comment>
+    <requestid>126766</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>7690ad925a25cd69a861e6b899e16bf8</srcmd5>
+    <version>1.1.10</version>
+    <time>1344419079</time>
+    <user>coolo</user>
+    <comment>- /etc/init.d/xdm: overwrite displaymanager's PIDFILE symlink if
+  neccessary (bnc#774555)</comment>
+    <requestid>130301</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>9da0b98a2d225ec464dfa5c32f48ea5f</srcmd5>
+    <version>1.1.10</version>
+    <time>1345728714</time>
+    <user>namtrac</user>
+    <comment>- separate *.fallback displaymanager files from xdm.tar.bz2 into
+  xdm-fallbacks.tar.bz2 and build only suse version &lt; 1210.
+  (bnc#714003)
+
+- /etc/init.d/xdm: add plymouth_quit function, use it in xdm
+  displaymanager file (bnc#775548)</comment>
+    <requestid>131206</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>6b1b9324e5e7e8f7aa78566749dbebc3</srcmd5>
+    <version>1.1.10</version>
+    <time>1347884230</time>
+    <user>coolo</user>
+    <comment>- add dependency on xtrans, otherwise TCP is not supported for
+  xdmcp (bnc#780122)</comment>
+    <requestid>134153</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>e9db78b1aef7ea23bf51db7cba617e77</srcmd5>
+    <version>1.1.10</version>
+    <time>1348669785</time>
+    <user>coolo</user>
+    <comment>- Make failsafe work after a failed exec bash builtin
+- Add dbus-launch and ck-launch-session to final session command
+  line for case of using xdm (forwarded request 135855 from WernerFink)</comment>
+    <requestid>135866</requestid>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>eb9aa2459532312fdbbae42b19b27384</srcmd5>
+    <version>1.1.10</version>
+    <time>1354275006</time>
+    <user>coolo</user>
+    <comment>Remove ConsoleKit patch+requires in order to be able to remove ConsoleKit from Factory.  (forwarded request 143527 from tittiatcoke)</comment>
+    <requestid>143529</requestid>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>2dc26f95a0829ef1b3ed360875eb1aa9</srcmd5>
+    <version>1.1.10</version>
+    <time>1354888352</time>
+    <user>namtrac</user>
+    <comment>- Add display-manager as provides to xdm initscript, to comply with
+  systemd defaults. (forwarded request 143562 from fcrozat)</comment>
+    <requestid>144527</requestid>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>7e92f4f91909c153f8a01356f6419ee3</srcmd5>
+    <version>1.1.10</version>
+    <time>1355480661</time>
+    <user>coolo</user>
+    <comment>- Be aware the mktemp(1) without XXXXXX will do exactly nothing,
+  therefore use mv(1) which uses rename(2) on the same file system
+  to use the files created by mktemp(1) to the log output file (forwarded request 144600 from WernerFink)</comment>
+    <requestid>144951</requestid>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>e5a2909635deb0a81f1afd5ed94dd389</srcmd5>
+    <version>1.1.10</version>
+    <time>1357654104</time>
+    <user>coolo</user>
+    <comment>- /etc/X11/xdm/Keyboard.map:
+  * added missing mac-dvorak entry (bnc#796170)</comment>
+    <requestid>147504</requestid>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>e5a2909635deb0a81f1afd5ed94dd389</srcmd5>
+    <version>1.1.10</version>
+    <time>1359110602</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>7881672e0e0d5170e869d87057bffc01</srcmd5>
+    <version>1.1.10</version>
+    <time>1362142950</time>
+    <user>coolo</user>
+    <comment>- /etc/X11/xdm/SuSEconfig.xdm: copied required function from old
+  /lib/YaST/SuSEconfig.functions, which no longer exists since
+  openSUSE 12.3 (bnc#806738)</comment>
+    <requestid>156970</requestid>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>43b1b4cae0a57dd29b6b42445073ecd0</srcmd5>
+    <version>1.1.10</version>
+    <time>1362167153</time>
+    <user>coolo</user>
+    <comment>(please forward to Factory AND 12.3)
+- Add systemd-user-sessions to xdm initscript X-Should-Start, to
+  ensure user login is available when xdm is started. (forwarded request 156985 from fcrozat)</comment>
+    <requestid>156987</requestid>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>7fcc827977cc8d5d7ee33f4cd105ac74</srcmd5>
+    <version>1.1.10</version>
+    <time>1365948752</time>
+    <user>coolo</user>
+    <comment>just added bnc reference as it was needed for maintenance request (forwarded request 163885 from wrosenauer)</comment>
+    <requestid>163905</requestid>
+  </revision>
+  <revision rev="17" vrev="19">
+    <srcmd5>0602b261525320c6ff4c48f8f962dffb</srcmd5>
+    <version>1.1.10</version>
+    <time>1369642268</time>
+    <user>coolo</user>
+    <comment>- Some shells do not know about HOSTNAME variable and print error
+  messages therefore export this variable 
+- Make check for dbus smart, that is check if threre is already
+  an active session and use this if possible
+- Be aware that one user may use several X sessions in parallel
+  on the same system as well as on several systems with HOME on
+  an NFS based share. That is do not override ~/.xsession-errors (forwarded request 176509 from WernerFink)</comment>
+    <requestid>176510</requestid>
+  </revision>
+  <revision rev="18" vrev="20">
+    <srcmd5>79a6d748b53ca3bc500a496c5e32d9b4</srcmd5>
+    <version>1.1.10</version>
+    <time>1370925615</time>
+    <user>coolo</user>
+    <comment>- Add some GNOME specifiv magics to Xsession to allow that ~/.i18n
+  is always sourced (bnc#567324) (forwarded request 177978 from WernerFink)</comment>
+    <requestid>177979</requestid>
+  </revision>
+  <revision rev="19" vrev="21">
+    <srcmd5>b97b09479632cb98590fdcbeb30b772c</srcmd5>
+    <version>1.1.10</version>
+    <time>1375125129</time>
+    <user>coolo</user>
+    <comment>- u_xdm-sig11-bug-598422.diff
+  * fix Sig11 in xdm when pressing Ctr-c (bnc#598422, bnc#831870)</comment>
+    <requestid>184588</requestid>
+  </revision>
+  <revision rev="20" vrev="22">
+    <srcmd5>2bcebab28cdcf8a756683bda259eaf64</srcmd5>
+    <version>1.1.10</version>
+    <time>1377248934</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195901</requestid>
+  </revision>
+  <revision rev="21" vrev="23">
+    <srcmd5>e6878e03385d44420abc305fd4b86c82</srcmd5>
+    <version>1.1.10</version>
+    <time>1379423088</time>
+    <user>coolo</user>
+    <comment>- fixed typo in /etc/X11/xdm/Xsetup 
+
+- fixed loading of .xkb files (bnc#840408)</comment>
+    <requestid>199306</requestid>
+  </revision>
+  <revision rev="22" vrev="25">
+    <srcmd5>e6878e03385d44420abc305fd4b86c82</srcmd5>
+    <version>1.1.10</version>
+    <time>1379665010</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="26">
+    <srcmd5>8fada39a29f7122a34adadce886ccc20</srcmd5>
+    <version>1.1.10</version>
+    <time>1382100668</time>
+    <user>scarabeus_factory</user>
+    <comment>Added support for qiv in /etc/X11/xdm/Xsetup (forwarded request 203696 from ferenc1gm)</comment>
+    <requestid>203735</requestid>
+  </revision>
+  <revision rev="24" vrev="27">
+    <srcmd5>550ffb22902b3521c5c6ae6de79f1d3d</srcmd5>
+    <version>1.1.10</version>
+    <time>1385994245</time>
+    <user>coolo</user>
+    <comment>- removed u_xdm-sig11-bug-598422.diff
+  * problem has been resolved differently</comment>
+    <requestid>209140</requestid>
+  </revision>
+  <revision rev="25" vrev="28">
+    <srcmd5>080c13cdd2acc739ee4fe37d40fc6005</srcmd5>
+    <version>1.1.10</version>
+    <time>1389208205</time>
+    <user>coolo</user>
+    <comment>- don't set twm as hardcoded default if DEFAULT_WM is empty, rely on
+  the detection in xinitrc.common instead (forwarded request 213187 from lnussel)</comment>
+    <requestid>213192</requestid>
+  </revision>
+  <revision rev="26" vrev="29">
+    <srcmd5>ddf2d22d305a58b7bb4e2329f489b659</srcmd5>
+    <version>1.1.10</version>
+    <time>1391674640</time>
+    <user>coolo</user>
+    <comment>- /etc/X11/xdm/RunChooser calls pidof, so require it (forwarded request 220902 from coolo)</comment>
+    <requestid>220909</requestid>
+  </revision>
+  <revision rev="27" vrev="30">
+    <srcmd5>745fc9506ea776ca32ee2877be50f0ab</srcmd5>
+    <version>1.1.10</version>
+    <time>1392481460</time>
+    <user>coolo</user>
+    <comment>fate#316129: do not save the standard output to xsession-errors, change the xdm.tar.bz2 (forwarded request 222114 from dliang)</comment>
+    <requestid>222123</requestid>
+  </revision>
+  <revision rev="28" vrev="31">
+    <srcmd5>b779e97a3c27755ad81c1e1b22cbac94</srcmd5>
+    <version>1.1.10</version>
+    <time>1394526235</time>
+    <user>coolo</user>
+    <comment>fix array iteration bug, see bnc#866874 (forwarded request 224695 from cxiong)</comment>
+    <requestid>224699</requestid>
+  </revision>
+  <revision rev="29" vrev="32">
+    <srcmd5>70f6b1b96f813733cdeeb83d689f2a97</srcmd5>
+    <version>1.1.10</version>
+    <time>1394901356</time>
+    <user>coolo</user>
+    <comment>- Add support for in-line environment variable settings
+  Handling case like:
+  Exec=env GNOME_SHELL_SESSION_MODE=classic gnome --session gnome-classic
+  
+  For now, this is only needed to fix session management issue as in bnc#863709. (forwarded request 225824 from cxiong)</comment>
+    <requestid>225841</requestid>
+  </revision>
+  <revision rev="30" vrev="33">
+    <srcmd5>d444297f4d5b67242e9051fd705e6ab1</srcmd5>
+    <version>1.1.10</version>
+    <time>1395513974</time>
+    <user>coolo</user>
+    <comment>- Move forward to systemd, that is use a real service unit file  (bnc#869260) (forwarded request 226983 from WernerFink)</comment>
+    <requestid>226984</requestid>
+  </revision>
+  <revision rev="31" vrev="34">
+    <srcmd5>7b2aa406492d35a0e159e942f57d7a8d</srcmd5>
+    <version>1.1.10</version>
+    <time>1395897422</time>
+    <user>coolo</user>
+    <comment>- DISPLAYMANAGER_STARTS_XSERVER needs to be set to &quot;no&quot; on s390x
+  and ppc64le (bnc#869267)</comment>
+    <requestid>227302</requestid>
+  </revision>
+  <revision rev="32" vrev="35">
+    <srcmd5>35f4d175c576b663b4063cc1b180660a</srcmd5>
+    <version>1.1.10</version>
+    <time>1400783893</time>
+    <user>coolo</user>
+    <comment>Add a changelog entry for my latest submit request (forwarded request 234155 from a_richardson)</comment>
+    <requestid>234168</requestid>
+  </revision>
+  <revision rev="33" vrev="36">
+    <srcmd5>04c1fa811650b35843a6c3a36c721e89</srcmd5>
+    <version>1.1.10</version>
+    <time>1401092885</time>
+    <user>coolo</user>
+    <comment>- added necessary macros for systemd files (forwarded request 235214 from jsegitz)</comment>
+    <requestid>235219</requestid>
+  </revision>
+  <revision rev="34" vrev="37">
+    <srcmd5>019f7ea3538472480dfee722709dfcd5</srcmd5>
+    <version>1.1.10</version>
+    <time>1401641693</time>
+    <user>coolo</user>
+    <comment>- Use KillMode=process for systemd service, this ensures Xorg won't
+  receive SIGKILL while switching to runlevel 3 [bnc#871808].
+- Add &quot;Also=xdm.service&quot; to display-manager.service to better
+  handle migration. (forwarded request 235714 from fcrozat)</comment>
+    <requestid>235717</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2c3c239a881c85a1325a4d199af4b79b</srcmd5>
+    <version>1.1.11</version>
+    <time>1405931732</time>
+    <user>coolo</user>
+    <comment>- udpate to release 1.1.11
+- refreshed xdm-tolerant-hostname-changes.diff, xdm-consolekit.diff
+- supersedes the following patches:
+  U_xdm_config-AC_LIBTOOL_DLOPEN-is-required-for-dynamic-lin.patch,
+  U_xdm_Fix-missing-linking-dependency-on-ldl.patch,
+  U_xdm_config-use-libtool-export-dynamic-option-for-reverse.patch</comment>
+    <requestid>241516</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>81fd3e8473758bf8e3420577e95e7c4e</srcmd5>
+    <version>1.1.11</version>
+    <time>1407318097</time>
+    <user>coolo</user>
+    <comment>- replaced 'Also=' by 'Alias=' in display-manager.service 
+  (bnc#890413)
+- make sure not to restart DM on package update; remove confusing
+  comment about no longer existing %%stop_on_removal,
+  %restart_on_update macros from specfile (bnc#886641)</comment>
+    <requestid>243691</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>81fd3e8473758bf8e3420577e95e7c4e</srcmd5>
+    <version>1.1.11</version>
+    <time>1409303692</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>df4512364a2e66c88ec03d6bef67a8e3</srcmd5>
+    <version>1.1.11</version>
+    <time>1412533826</time>
+    <user>coolo</user>
+    <comment>- sysconfig.displaymanager/DM list: added lightdm,sddm; removed
+  kdm3,kdm4 (bnc#898876)</comment>
+    <requestid>253610</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>02264886ddc2ed439fee3ca3bfb623e6</srcmd5>
+    <version>1.1.11</version>
+    <time>1413048351</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254705</requestid>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>514b6732f3ce4793c9255d4027679155</srcmd5>
+    <version>1.1.11</version>
+    <time>1418840127</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265446</requestid>
+  </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>0403219a111c30cf80242ee328937bb8</srcmd5>
+    <version>1.1.11</version>
+    <time>1419249246</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265708</requestid>
+  </revision>
+  <revision rev="42" vrev="9">
+    <srcmd5>23ba8e6dd83d2e38033bf09f8b5a1a20</srcmd5>
+    <version>1.1.11</version>
+    <time>1421959721</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282041</requestid>
+  </revision>
+  <revision rev="43" vrev="10">
+    <srcmd5>e36df7fe7ba194b27992d526d0c7e6c6</srcmd5>
+    <version>1.1.11</version>
+    <time>1422658672</time>
+    <user>dimstar_suse</user>
+    <comment>- /etc/X11/xdm/keytable&quot;
+  * improved warning message, when mapping for console keyboard
+    doesn't exist (bnc#914880)</comment>
+    <requestid>283350</requestid>
+  </revision>
+  <revision rev="44" vrev="11">
+    <srcmd5>f197b488a23f120c6608e2f7b6aa8b15</srcmd5>
+    <version>1.1.11</version>
+    <time>1426680481</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291194</requestid>
+  </revision>
+  <revision rev="45" vrev="12">
+    <srcmd5>ba15a5a4960f69379417c4d32d4d9de8</srcmd5>
+    <version>1.1.11</version>
+    <time>1439190858</time>
+    <user>dimstar_suse</user>
+    <comment>- display-manager: don't try to kill DM if it's no longer running
+  (bsc#939843)
+
+- Add some used programs to the requirement of xdm
+- Use xli aka xsetbg if xpmroot is not available (hint from
+  jemoreno@novell.com)</comment>
+    <requestid>319742</requestid>
+  </revision>
+  <revision rev="46" vrev="13">
+    <srcmd5>2bba0f8976e8986105abee61b6e00ee0</srcmd5>
+    <version>1.1.11</version>
+    <time>1439984491</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>323529</requestid>
+  </revision>
+  <revision rev="47" vrev="14">
+    <srcmd5>eae2b97def5949989fc63dbfad4f740c</srcmd5>
+    <version>1.1.11</version>
+    <time>1443896972</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333736</requestid>
+  </revision>
+  <revision rev="48" vrev="15">
+    <srcmd5>ce55e945697f9bd959f76932e9333991</srcmd5>
+    <version>1.1.11</version>
+    <time>1445511450</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337505</requestid>
+  </revision>
+  <revision rev="49" vrev="16">
+    <srcmd5>332cc582f2f625638a9b1a891e30ec73</srcmd5>
+    <version>1.1.11</version>
+    <time>1446978314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>342411</requestid>
+  </revision>
+  <revision rev="50" vrev="17">
+    <srcmd5>b412bf66e601768dc43623f936c18d6a</srcmd5>
+    <version>1.1.11</version>
+    <time>1456242758</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360008</requestid>
+  </revision>
+  <revision rev="51" vrev="18">
+    <srcmd5>209895129e826794080e506cbd83c91b</srcmd5>
+    <version>1.1.11</version>
+    <time>1457359349</time>
+    <user>dimstar_suse</user>
+    <comment>- After boo#968405 got fixed in /etc/rpm/macros.systemd, resurrect the old 
+  behavior of %postun (boo#968405).
+
+- xdm.tar.bz:
+  * /etc/X11/xdm/sys.xsession: 
+    fix regression from fix for boo#967002 (boo#968172).
+  * /etc/X11/xdm/Xsession:
+    + Add comments for documentation
+    + Fix semantics
+    + Don't use $HOME/.xinitrc as session script. Let sys.xession
+      handle this.
+    + Make argument parser more robust:
+      add parse error detection.
+  * Add an 'xsession' desktop file: this should offer a session 
+    where the $HOME/.xsession is used (boo#968631).
+  
+
+- Remove %service_del_postun display-manager.service
+  from %postun macro (boo#968405).</comment>
+    <requestid>365553</requestid>
+  </revision>
+  <revision rev="52" vrev="19">
+    <srcmd5>d5f1e6f9d1c3ae1d8fe14204629ce868</srcmd5>
+    <version>1.1.11</version>
+    <time>1459845693</time>
+    <user>dimstar_suse</user>
+    <comment>- xsession.desktop file:
+  * created xsession sub-package for this file.
+  * changed descriptive message to &quot;User/System Default&quot;
+  (boo#971852).
+
+- xdm.tar.bz:
+  Fixed Xsession script to cull the locale form the arguments before
+  passing them on (boo#973045).</comment>
+    <requestid>382452</requestid>
+  </revision>
+  <revision rev="53" vrev="20">
+    <srcmd5>bf795794af88379e061a737de081f077</srcmd5>
+    <version>1.1.11</version>
+    <time>1463124101</time>
+    <user>dimstar_suse</user>
+    <comment>- Make SUSEconfig handler for DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN
+  robust against changes to the default setting of -listen/-nolisten tcp
+  (boo#978262).
+
+- Prevent xdm.service from being built. We've got display-manager.service
+  instead (bsc#978458).</comment>
+    <requestid>394108</requestid>
+  </revision>
+  <revision rev="54" vrev="21">
+    <srcmd5>1c1c2a7888c9f84044a78778d2ee80b8</srcmd5>
+    <version>1.1.11</version>
+    <time>1465595936</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400372</requestid>
+  </revision>
+  <revision rev="55" vrev="22">
+    <srcmd5>855458764d5fa954b727e2dc7935f07f</srcmd5>
+    <version>1.1.11</version>
+    <time>1467205412</time>
+    <user>dimstar_suse</user>
+    <comment>- Change 'Supplements: xdm' to 'Enhances: xdm'
+  to accomodate the Gnome community (boo#981372).</comment>
+    <requestid>403735</requestid>
+  </revision>
+  <revision rev="56" vrev="23">
+    <srcmd5>027af08aa762c470566ded618e2b86b6</srcmd5>
+    <version>1.1.11</version>
+    <time>1472646475</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>423819</requestid>
+  </revision>
+  <revision rev="57" vrev="24">
+    <srcmd5>5dfee7db9295213b4bd32e9252df2439</srcmd5>
+    <version>1.1.11</version>
+    <time>1481458934</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443878</requestid>
+  </revision>
+  <revision rev="58" vrev="25">
+    <srcmd5>e8e099046af48f4eb05aa31195608d2c</srcmd5>
+    <version>1.1.11</version>
+    <time>1484131972</time>
+    <user>dimstar_suse</user>
+    <comment>- remove DISPLAYMANAGER_SHUTDOWN from sysconfig settings
+  (bnc#1018045)</comment>
+    <requestid>448702</requestid>
+  </revision>
+  <revision rev="59" vrev="26">
+    <srcmd5>ab992c87873e9fe9c2d875b609af8180</srcmd5>
+    <version>1.1.11</version>
+    <time>1486716444</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer try to configure Linux console and X11 keymaps 
+  according to setting in /etc/vconsole.conf; this needs to be done
+  via localectl by YaST itself now; /etc/X11/xdm/keytable removed 
+  and no longer invoked by /usr/lib/X11/display-manager (bnc#1023211)</comment>
+    <requestid>454992</requestid>
+  </revision>
+  <revision rev="60" vrev="27">
+    <srcmd5>ea17e5b45c1e236532bc88513dc79518</srcmd5>
+    <version>1.1.11</version>
+    <time>1501227617</time>
+    <user>dimstar_suse</user>
+    <comment>- fix usage of readlink in Xsession (boo#1050328)
+
+- %post
+  * make previous change in /etc/sysconfig/displaymanager instead
+    of /var/adm/fillup-templates/sysconfig.displaymanager
+
+- %post
+  * Do no try to start Xserver on platforms which may ship without
+    graphics card (bsc#1039497)</comment>
+    <requestid>512470</requestid>
+  </revision>
+  <revision rev="61" vrev="28">
+    <srcmd5>3741ce2b40a6dad6af2efe66806d8ebe</srcmd5>
+    <version>1.1.11</version>
+    <time>1508503297</time>
+    <user>dimstar_suse</user>
+    <comment>- reintroduced /etc/X11/xdm/keytable script and the hook-up in
+  /usr/lib/X11/display-manager to setup X11 keymaps, since YaST
+  is not able to use localectl already during installation due to
+  dbus and appropriate systemd services not running :-( 
+  (bsc#1046436)
+
+- Have update-alternatives handle Xinit's integration of the
+  displaymanager, replacing /etc/sysconfig/displaymanager.
+- Add a dummy entry for 'console' - which is special-cased in the
+  display-manager script to 'exit early'. In order for it to become
+  an option for update-alternatives, the target needs to exist.
+- Update /usr/lib/X11/display-manager to get the
+  default-displaymanager from the update-alternative setting
+  instead of reading it from /etc/sysconfig/displaymanager.
+- Remove DISPLAYMANAGER from displaymanager.sysconfig template.
+- Add xdm-with-update-alternative.patch so the needed changes can
+  be applied for suse_version &gt;= 1330 only, not breaking Leap 42.x.
+- All that together solves boo#1053863.</comment>
+    <requestid>534975</requestid>
+  </revision>
+  <revision rev="62" vrev="29">
+    <srcmd5>a391f4d94bfbe6ba341742b627415ffe</srcmd5>
+    <version>1.1.11</version>
+    <time>1509722495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537232</requestid>
+  </revision>
+  <revision rev="63" vrev="30">
+    <srcmd5>4789adb030478f660eea13f31c8eb547</srcmd5>
+    <version>1.1.11</version>
+    <time>1512041894</time>
+    <user>dimstar_suse</user>
+    <comment>- move /var/adm/fillup-templates/sysconfig.displaymanager
+  to %_fillupdir on TW and sle15/Leap 15
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+- xdm.tar.bz2: Fix Xstartup, that couldn't handle env DISPLAY=(null) 
+  (bsc#1068016, patch by xwang@suse.com)</comment>
+    <requestid>545302</requestid>
+  </revision>
+  <revision rev="64" vrev="31">
+    <srcmd5>0336671e89cea9c1f9684ee4980a3dbd</srcmd5>
+    <version>1.1.11</version>
+    <time>1512766035</time>
+    <user>dimstar_suse</user>
+    <comment>- xdm.tar.bz2/usr/lib/X11/display-manager
+  * Improve error message with &quot;x11failsafe: in kernel commandline, 
+    if xorg.conf.install doesn't exist (https://github.com/SUSE/kiwi/issues/554)</comment>
+    <requestid>548056</requestid>
+  </revision>
+  <revision rev="65" vrev="32">
+    <srcmd5>9f4f5269fffa7ab35f726e1b73570ffb</srcmd5>
+    <version>1.1.11</version>
+    <time>1518426600</time>
+    <user>dimstar_suse</user>
+    <comment>- xdm.tar.bz2/Xstartup
+  * reverted workaround for DISPLAY being set to 'null', since the
+    bug is supposed to be fixed properly in gdm now (bsc#1068016)</comment>
+    <requestid>574221</requestid>
+  </revision>
+  <revision rev="66" vrev="33">
+    <srcmd5>66e631021d3e0d1097b8de897542587e</srcmd5>
+    <version>1.1.11</version>
+    <time>1519307931</time>
+    <user>dimstar_suse</user>
+    <comment>- switch from SUSEfirewall2 to firewalld:
+  /etc/sysconfig/SuSEfirewall2.d/services/xdmcp --&gt;
+  /usr/lib/firewalld/services/x11.xml; only handle Xserver TCP/UDP
+  ports 6000-6063; XDMCP port 177 will be handled by firewalld
+  package itself and pushed upstream by firewalld maintainers
+  (boo#1082033)</comment>
+    <requestid>578726</requestid>
+  </revision>
+  <revision rev="67" vrev="34">
+    <srcmd5>7224cf8b33551131dfa39ad71fa84d9f</srcmd5>
+    <version>1.1.11</version>
+    <time>1519844439</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed syntax in /usr/lib/firewalld/services/x11.xml (boo#1082890)</comment>
+    <requestid>580332</requestid>
+  </revision>
+  <revision rev="68" vrev="35">
+    <srcmd5>b0f5748740544897db1c08f181eadc1a</srcmd5>
+    <version>1.1.11</version>
+    <time>1520932916</time>
+    <user>dimstar_suse</user>
+    <comment>- check for available graphics during runtime instead of %post,
+  since %post may already run during image building time in our
+  buildsystem (boo#1039497)</comment>
+    <requestid>585124</requestid>
+  </revision>
+  <revision rev="69" vrev="36">
+    <srcmd5>9b3b4bd8ef35ba13e40f0214127cb0b9</srcmd5>
+    <version>1.1.11</version>
+    <time>1521903946</time>
+    <user>dimstar_suse</user>
+    <comment>- require xinit, since /etc/X11/xdm/Xsession and /etc/X11/xdm/sys.xsession
+  are sourcing /etc/X11/xinit/xinitrc.common (boo#1084655)</comment>
+    <requestid>587947</requestid>
+  </revision>
+  <revision rev="70" vrev="37">
+    <srcmd5>fc02e7f9e983b90deb4834ba7e50fd24</srcmd5>
+    <version>1.1.11</version>
+    <time>1523127023</time>
+    <user>dimstar_suse</user>
+    <comment>- systemd-logind integration requires to use -keeptty with X server
+  to hold the controlling tty (and breaks startx!).[boo#1088365]
+- Do not generate an error on not existing shell functions *_vars
+  in /usr/lib/X11/display-manager</comment>
+    <requestid>593848</requestid>
+  </revision>
+  <revision rev="71" vrev="38">
+    <srcmd5>0df8886eba2f85168e74c9b32a6a8ee3</srcmd5>
+    <version>1.1.11</version>
+    <time>1531946195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623596</requestid>
+  </revision>
+  <revision rev="72" vrev="39">
+    <srcmd5>234a6cfa6e74cc5cefa1ae26e0240d35</srcmd5>
+    <version>1.1.11</version>
+    <time>1533214151</time>
+    <user>dimstar_suse</user>
+    <comment>- display-manager: also quit plymouth when display-manager is set
+  to console (boo#1102584)</comment>
+    <requestid>625428</requestid>
+  </revision>
+  <revision rev="73" vrev="40">
+    <srcmd5>3fa4e6f4b16aa97b615261a4a0992125</srcmd5>
+    <version>1.1.11</version>
+    <time>1545222429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657141</requestid>
+  </revision>
+  <revision rev="74" vrev="41">
+    <srcmd5>5dc623e83907a05080dfd51ee6b73e27</srcmd5>
+    <version>1.1.11</version>
+    <time>1551024400</time>
+    <user>coolo</user>
+    <comment>- %post: get rid of DISPLAYMANAGER in /etc/sysconfig/displaymanager
+  (boo#1125040)</comment>
+    <requestid>674644</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>1b2016618789d631e35c1415655aaba8</srcmd5>
+    <version>1.1.12</version>
+    <time>1552042711</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to release 1.1.12
+  * This release collects 7 years worth of bug fixes and code
+    cleanups, including the fix for CVE-2013-2179 that was
+    previously distributed as a patch against the prior release.</comment>
+    <requestid>681076</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>d193dd96e2a46bc964afd939b7bffc98</srcmd5>
+    <version>1.1.12</version>
+    <time>1554276187</time>
+    <user>dimstar_suse</user>
+    <comment>- n_Allow-the-greeter-to-set-the-input-fields-bg-color.patch
+  * reverse applied in order to fix greeter again; related to our
+    heavily adjusted xdm Xresources (boo#1130321)</comment>
+    <requestid>689377</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>cb3a92398f2837ddd200486247659542</srcmd5>
+    <version>1.1.12</version>
+    <time>1566912117</time>
+    <user>dimstar_suse</user>
+    <comment>- pam.d/xdm{,-np}: added pam_keyinit.so (boo#1144063)</comment>
+    <requestid>724603</requestid>
+  </revision>
+</revisionlist>

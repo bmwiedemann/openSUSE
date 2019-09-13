@@ -1,0 +1,15 @@
+<package name="gnome-colors-icon-theme" project="openSUSE:Factory">
+  <title>A complete, multi-colored suite of icons for Linux</title>
+  <description>The GNOME-Colors is a project that aims to make the GNOME desktop as
+elegant, consistent and colorful as possible.
+
+The current goal is to allow full color customization of themes, icons,
+GDM logins and splash screens. There are already five full
+color-schemes available; Brave (Blue), Human (Orange), Wine (Red),
+Noble (Purple) and Wise (Green).
+
+GNOME-Colors is mostly inspired/based on Tango, GNOME, Elementary,
+Tango-Generator and many other open-source projects.</description>
+  <devel project="GNOME:Apps" package="gnome-colors-icon-theme"/>
+  <url>http://code.google.com/p/gnome-colors/</url>
+</package>

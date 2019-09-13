@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1ac13a955aab94846ec9aa8b6ed9b34</srcmd5>
+    <version>0.4.1</version>
+    <time>1265384119</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/liblqr based on submit request 30821 from user llunak
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3a06b99f174166611f6037e4db5548b9</srcmd5>
+    <version>0.4.1</version>
+    <time>1268924622</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3a06b99f174166611f6037e4db5548b9</srcmd5>
+    <version>0.4.1</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>3a06b99f174166611f6037e4db5548b9</srcmd5>
+    <version>0.4.1</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>3a06b99f174166611f6037e4db5548b9</srcmd5>
+    <version>0.4.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>f373a5ce56a4d7cf1ae70104b70ce993</srcmd5>
+    <version>0.4.1</version>
+    <time>1312808893</time>
+    <user>saschpe</user>
+    <comment>- Fixed group (fix for RPMLINT warning)
+- Removed commented file (forwarded request 78218 from TheBlackCat)</comment>
+    <requestid>78233</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>aefe9f0859fc92f7e1599a448860c307</srcmd5>
+    <version>0.4.1</version>
+    <time>1312808902</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78233
+</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>aefe9f0859fc92f7e1599a448860c307</srcmd5>
+    <version>0.4.1</version>
+    <time>1319182108</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>4aa4387c39ac2bc7c0d7931b64dd0ba7</srcmd5>
+    <version>0.4.1</version>
+    <time>1323192267</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>4aa4387c39ac2bc7c0d7931b64dd0ba7</srcmd5>
+    <version>0.4.1</version>
+    <time>1340183602</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>4aa4387c39ac2bc7c0d7931b64dd0ba7</srcmd5>
+    <version>0.4.1</version>
+    <time>1359109300</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>43ceedf2260bfb589e35131cfb423166</srcmd5>
+    <version>0.4.2</version>
+    <time>1375193166</time>
+    <user>coolo</user>
+    <comment>Update to 0.4.2, Changed License, Build the development documentation (forwarded request 184451 from adra)</comment>
+    <requestid>184518</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>43ceedf2260bfb589e35131cfb423166</srcmd5>
+    <version>0.4.2</version>
+    <time>1379662998</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>43ceedf2260bfb589e35131cfb423166</srcmd5>
+    <version>0.4.2</version>
+    <time>1409301613</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>57427df6283a7038e208787553060d51</srcmd5>
+    <version>0.4.2</version>
+    <time>1409998730</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247713</requestid>
+  </revision>
+</revisionlist>

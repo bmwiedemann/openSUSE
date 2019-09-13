@@ -1,0 +1,5 @@
+<package name="ecj" project="openSUSE:Factory">
+  <title>Eclipse Compiler for Java</title>
+  <description>Eclipse Compiler for Java</description>
+  <devel project="Java:packages" package="ecj"/>
+</package>

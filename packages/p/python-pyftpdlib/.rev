@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ebb6cba0877c5a1430d7210992d513d8</srcmd5>
+    <version>1.5.1</version>
+    <time>1469081934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>412319</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a488eee3e2fcb29f0a8f08bee7f69bd7</srcmd5>
+    <version>1.5.2</version>
+    <time>1498638985</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.2
+  * disables old SSL methods
+  * fixed some hangs/crashes
+- fixes test failures in OBS
+- drop patches that are no longer needed:
+  * pyftpdlib-disable-error-0-ssl-unwrap.diff
+  * pyftpdlib-disable-incomplete-file-received.diff
+  * pyftpdlib-handle-missing-SSLv3.diff
+- convert to singlespec (forwarded request 505700 from matejcik)</comment>
+    <requestid>505701</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1ccd92f43625843c0b17c307deb5ffa8</srcmd5>
+    <version>1.5.2</version>
+    <time>1499754318</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508490</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fa7b63e7a9f464dd46f9a76247499627</srcmd5>
+    <version>1.5.3</version>
+    <time>1525779384</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.5.3:
+  * implemented SITE MFMT command which changes file modification time. (patch by Tahir Ijaz)
+  * add username and password command line options
+  * documentation moved to readthedocs: http://pyftpdlib.readthedocs.io
+  * fix duplicated output log. (path by PonyPC)
+  * Respond successfully to STOR only after closing file handle.</comment>
+    <requestid>603032</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b3b456f2127557b584fe0942d717f055</srcmd5>
+    <version>1.5.4</version>
+    <time>1525960180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605512</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>814f4d3284a6d63269e70bc856f9601a</srcmd5>
+    <version>1.5.4</version>
+    <time>1545648112</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659586</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bdf672a8874ce4be8157137e97acc224</srcmd5>
+    <version>1.5.5</version>
+    <time>1558939167</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.5:
+  * Various minor fixes and documentation updates</comment>
+    <requestid>705393</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e93123c16a38d394d6390c1fb7b72704</srcmd5>
+    <version>1.5.5</version>
+    <time>1559375268</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not remove tests, other packages import them</comment>
+    <requestid>705885</requestid>
+  </revision>
+</revisionlist>

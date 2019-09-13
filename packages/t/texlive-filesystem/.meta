@@ -1,0 +1,5 @@
+<package name="texlive-filesystem" project="openSUSE:Factory">
+  <title>Basic file system of TeX Live</title>
+  <description>The basic file system layout for TeX Live installation.</description>
+  <devel project="Publishing:TeXLive" package="texlive-filesystem"/>
+</package>

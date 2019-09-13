@@ -1,0 +1,5 @@
+<package name="scheme48" project="openSUSE:Factory">
+  <title>Scheme 48: an implementation of Scheme</title>
+  <description>Scheme 48 is an implementation of Scheme written by Richard Kelsey and Jonathan Rees. It is based on a byte-code interpreter and is designed to be used as a testbed for experiments in implementation techniques and as an expository tool.</description>
+  <devel project="devel:languages:misc" package="scheme48"/>
+</package>

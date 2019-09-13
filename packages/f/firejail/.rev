@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d841e4b8a29e6d2fd66dad05ee3183cd</srcmd5>
+    <version>0.9.54</version>
+    <time>1537263796</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634916</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>365e2f973f7fab9818e073004ee66ff4</srcmd5>
+    <version>0.9.56</version>
+    <time>1539251279</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>639122</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>402121410034e74000cfbc2ae6e1dd09</srcmd5>
+    <version>0.9.58</version>
+    <time>1549286703</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670891</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8edda81d3accf6b8c37c86c29fd91acd</srcmd5>
+    <version>0.9.60</version>
+    <time>1559643298</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.60:
+ * security bug reported by Austin Morton:
+   Seccomp filters are copied into /run/firejail/mnt, and are writable
+   within the jail. A malicious process can modify files from inside the
+   jail. Processes that are later joined to the jail will not have seccomp
+   filters applied.
+   CVE-2019-12589
+   boo#1137139
+ * memory-deny-write-execute now also blocks memfd_create
+ * add private-cwd option to control working directory within jail
+ * blocking system D-Bus socket with --nodbus
+ * bringing back Centos 6 support
+ * drop support for flatpak/snap packages
+ * new profiles: crow, nyx, mypaint, celluoid, nano, transgui, mpdris2
+ * new profiles: sysprof, simplescreenrecorder, geekbench, xfce4-mixer
+ * new profiles: pavucontrol, d-feet, seahorse, secret-tool, gnome-keyring
+ * new profiles: regextester, hardinfo, gnome-system-log, gnome-nettool
+ * new profiles: netactview, redshift, devhelp, assogiate, subdownloader
+ * new profiles: font-manager, exfalso, gconf-editor, dconf-editor
+ * new profiles: sysprof-cli, seahorse-tool, secret-tool, dconf, gsettings
+ * new profiles: code-oss, pragha, Maelstrom, ostrichriders, bzflag
+ * new profiles: freeciv, lincity-ng, megaglest, openttd, crawl, crawl-tiles
+ * new profiles: teeworlds, torcs, tremulous, warsow, lugaru, manaplus
+ * new profiles: pioneer, scorched3d, widelands, freemind, kid3, kid3-qt
+ * new profiles: kid3-cli, nomacs, freecol, opencity, openclonk, slashem
+ * new profiles: vultureseye, vulturesclaw, anki, cheese, utox, mp3splt
+ * new profiles: oggsplt, flacsplt, gramps, newsboat, freeoffice-planmaker
+ * new profiles: autokey-gtk, autokey-qt, autokey-run, autokey-shell
+ * new profiles: freeoffice-presentations, freeoffice-textmaker, mp3wrap
+ * new profiles: inkview, meteo-qt, mp3splt-gtk, ktouch, yelp, cantata
+</comment>
+    <requestid>707400</requestid>
+  </revision>
+</revisionlist>

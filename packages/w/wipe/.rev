@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="26">
+    <srcmd5>cbccf0be00b134267b8a3d27e015c0c1</srcmd5>
+    <version>2.2.0</version>
+    <time>1168904478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="158">
+    <srcmd5>cbccf0be00b134267b8a3d27e015c0c1</srcmd5>
+    <version>2.2.0</version>
+    <time>1168904478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="159">
+    <srcmd5>a473bbaa092b16b45c9045b89a924a71</srcmd5>
+    <version>2.2.0</version>
+    <time>1245277743</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="161">
+    <srcmd5>a473bbaa092b16b45c9045b89a924a71</srcmd5>
+    <version>2.2.0</version>
+    <time>1245277743</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="162">
+    <srcmd5>f51d0ca39c6ceb956a86dc736d93dba8</srcmd5>
+    <version>2.2.0</version>
+    <time>1268926494</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="164">
+    <srcmd5>f51d0ca39c6ceb956a86dc736d93dba8</srcmd5>
+    <version>2.2.0</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="165">
+    <srcmd5>f51d0ca39c6ceb956a86dc736d93dba8</srcmd5>
+    <version>2.2.0</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="168">
+    <srcmd5>f51d0ca39c6ceb956a86dc736d93dba8</srcmd5>
+    <version>2.2.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4b0d65cac26117f60fec38f4e78212d5</srcmd5>
+    <version>2.3.1</version>
+    <time>1298246223</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62159 from user coolo
+</comment>
+    <requestid>62159</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0f677ea1cc096800f05a1dc18c6b4d3c</srcmd5>
+    <version>2.3.1</version>
+    <time>1298246230</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62159
+</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>0f677ea1cc096800f05a1dc18c6b4d3c</srcmd5>
+    <version>2.3.1</version>
+    <time>1319182569</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>5eccc4b066b12015b94aa31f119ade2b</srcmd5>
+    <version>2.3.1</version>
+    <time>1323195189</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>676d9fafa0d8983a9efd810f6b5a62b1</srcmd5>
+    <version>2.3.1</version>
+    <time>1324458252</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config</comment>
+    <requestid>97125</requestid>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>26623c59aea4a734887e025abcb4c793</srcmd5>
+    <version>2.3.1</version>
+    <time>1324831355</time>
+    <user>coolo</user>
+    <comment>- add automake as buildrequire to avoid implicit dependency (forwarded request 97637 from coolo)</comment>
+    <requestid>97877</requestid>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>26623c59aea4a734887e025abcb4c793</srcmd5>
+    <version>2.3.1</version>
+    <time>1340184324</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>5dfcb5618246a9050af30a6189f215d7</srcmd5>
+    <version>2.3.1</version>
+    <time>1354713028</time>
+    <user>namtrac</user>
+    <comment>Verify GPG signature: Perform build-time offline GPG verification.
+Please verify that included keyring matches your needs.
+For manipulation with the offline keyring, please use gpg-offline tool from openSUSE:Factory, devel-tools-building or Base:System.
+See the man page and/or /usr/share/doc/packages/gpg-offline/PACKAGING.HOWTO.
+
+If you need to build your package for older products and don't want to mess spec file with ifs, please follow PACKAGING.HOWTO:
+you can link or aggregate gpg-offline from
+devel:tools:building or use following trick with &quot;osc meta prjconf&quot;:
+
+--- Cut here ----
+%if 0%{?suse_version} &lt;= 1220
+Substitute: gpg-offline
+%endif
+
+Macros:
+%gpg_verify(dnf) \
+%if 0%{?suse_version} &gt; 1220\
+echo &quot;WARNING: Using %%gpg_verify macro from prjconf, not from gpg-offline package.&quot;\
+gpg-offline --directory=&quot;%{-d:%{-d*}}%{!-d:%{_sourcedir}}&quot; --package=&quot;%{-n:%{-n*}}%{!-n:%{name}}&quot;&quot;%{-f: %{-f*}}&quot; --verify %{**}\
+%else\
+echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping %{**} GPG signature verification!&quot;\
+%endif\
+%nil
+-----------------
+ (forwarded request 143939 from sbrabec)</comment>
+    <requestid>143959</requestid>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>5dfcb5618246a9050af30a6189f215d7</srcmd5>
+    <version>2.3.1</version>
+    <time>1359110570</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>5dfcb5618246a9050af30a6189f215d7</srcmd5>
+    <version>2.3.1</version>
+    <time>1379664961</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="16">
+    <srcmd5>5dfcb5618246a9050af30a6189f215d7</srcmd5>
+    <version>2.3.1</version>
+    <time>1409303640</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>1d6d2285461dc6516c225ff874fc4c2f</srcmd5>
+    <version>2.3.1</version>
+    <time>1429769082</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298556</requestid>
+  </revision>
+</revisionlist>

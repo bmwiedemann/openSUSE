@@ -1,0 +1,16 @@
+<package name="perl-Scalar-List-Utils" project="openSUSE:Factory">
+  <title>A selection of general-utility list subroutines</title>
+  <description>List::Util contains a selection of subroutines that people have expressed would
+be nice to have in the perl core, but the usage would not really be high enough
+to warrant the use of a keyword, and the size so small such that being
+individual extensions would be wasteful.
+
+Author:
+-------
+    Graham Barr &lt;gbarr@pobox.com&gt; 
+
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Scalar-List-Utils"/>
+  <url>http://search.cpan.org/perldoc?List::Util</url>
+</package>

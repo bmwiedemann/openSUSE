@@ -1,0 +1,5 @@
+<package name="jvyamlb" project="openSUSE:Factory">
+  <title>YAML processor for JRuby</title>
+  <description>YAML processor extracted from JRuby.</description>
+  <devel project="Java:packages" package="jvyamlb"/>
+</package>

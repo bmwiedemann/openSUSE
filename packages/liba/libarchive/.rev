@@ -1,0 +1,302 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c35b27c62c72d0632d8cfb4cb426a9c3</srcmd5>
+    <version>2.8.5</version>
+    <time>1323255661</time>
+    <user>coolo</user>
+    <comment>rename of bsdtar - and version update</comment>
+    <requestid>95602</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b78966709cbd6f9bf668a4973a2f18ba</srcmd5>
+    <version>2.8.5</version>
+    <time>1328890584</time>
+    <user>coolo</user>
+    <comment>- Use %makeinstall to be SLES compatible 
+
+- For SLES11 work around missing rpm macro</comment>
+    <requestid>103257</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>db3edc085239941c666003363d677481</srcmd5>
+    <version>2.8.5</version>
+    <time>1329405433</time>
+    <user>coolo</user>
+    <comment>- fix failed tests on ppc (forwarded request 104794 from k0da)</comment>
+    <requestid>104956</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f0fd79ad04a839d315c1144f009bc9a9</srcmd5>
+    <version>2.8.5</version>
+    <time>1336423650</time>
+    <user>coolo</user>
+    <comment>- Enforce usage of reentrant versions of libc functions</comment>
+    <requestid>116625</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>f0fd79ad04a839d315c1144f009bc9a9</srcmd5>
+    <version>2.8.5</version>
+    <time>1340183563</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7d53c999423426d82e902fc5b4af6261</srcmd5>
+    <version>3.0.4</version>
+    <time>1344523826</time>
+    <user>coolo</user>
+    <comment>Update to 3.0.4... dependency for upcoming file-roller in Factory (forwarded request 130425 from dimstar)</comment>
+    <requestid>130436</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>20492d374d748ddf1887ba460dd65994</srcmd5>
+    <version>3.0.4</version>
+    <time>1344777971</time>
+    <user>namtrac</user>
+    <comment>license update: BSD-2-Clause
+The COPYING file shows that the package is predominantly BSD-2-Clause licensed (forwarded request 130461 from babelworx)</comment>
+    <requestid>130552</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0a79d01ee833f6354b74fd944497dd1f</srcmd5>
+    <version>3.0.4</version>
+    <time>1346076526</time>
+    <user>coolo</user>
+    <comment>- libarchive-ppc64.patch:
+  fix http://code.google.com/p/libarchive/issues/detail?id=277
+  test_option_b and test_option_nodump are failing on ppc64</comment>
+    <requestid>131727</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>0a79d01ee833f6354b74fd944497dd1f</srcmd5>
+    <version>3.0.4</version>
+    <time>1359109240</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8e858e56c4cbac4d39842e2c98b61ffe</srcmd5>
+    <version>3.1.1</version>
+    <time>1360762723</time>
+    <user>coolo</user>
+    <comment>- Use %libname macro to be consistent throughout the spec file
+
+- Update to version 3.1.1:
+  + Fix an issue with the soname versioning in builds of libarchive
+    using cmake
+- Removed patchs; fixed and merged on upstream release:
+  * libarchive-fix-checks.patch
+  * libarchive-ppc64.patch
+- The soname has changed and pass to 13.</comment>
+    <requestid>155302</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9100f215800f8db6cffe2d5d1a5aa9a2</srcmd5>
+    <version>3.1.1</version>
+    <time>1371561387</time>
+    <user>coolo</user>
+    <comment>- Explicitly list libattr-devel as BuildRequires (and sort those) (forwarded request 179222 from jengelh)</comment>
+    <requestid>179311</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5bd5b99e038431c4355f02da2d068e36</srcmd5>
+    <version>3.1.2</version>
+    <time>1376912111</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 3.1.2 (forwarded request 195470 from AndreasStieger)</comment>
+    <requestid>195487</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1d98671cc0df5c6eedaf03603ffef641</srcmd5>
+    <version>3.1.2</version>
+    <time>1377248728</time>
+    <user>scarabeus_factory</user>
+    <comment>- remove artificial dependencies on libacl-devel, libbz2-devel,
+  zlib-devel from libarchive-devel.
+
+- libarchive-openssl.patch: Call OPENSSL_config where needed, 
+  otherwise on systems configured to use openSSL engines such 
+  as via-padlock wont benefit from hardware acceleration. (forwarded request 195650 from elvigia)</comment>
+    <requestid>196015</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>1d98671cc0df5c6eedaf03603ffef641</srcmd5>
+    <version>3.1.2</version>
+    <time>1379662896</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>d2f7551760af48810ac84850e1081bbe</srcmd5>
+    <version>3.1.2</version>
+    <time>1386936396</time>
+    <user>coolo</user>
+    <comment>- add optional -static-devel library package, intended to publish pixz
+  for CentOS / RHEL, default off
+- skip some dependencies not required for pixz on CentOS / RHEL</comment>
+    <requestid>210580</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>4686f0cf0a7cb27c43846f695f3e447b</srcmd5>
+    <version>3.1.2</version>
+    <time>1401958175</time>
+    <user>coolo</user>
+    <comment>- libarchive-xattr.patch, fix subtle wrong library check 
+  that causes this package to depend on libattr when it should
+  be using glibc. (forwarded request 235707 from elvigia)</comment>
+    <requestid>235965</requestid>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>4686f0cf0a7cb27c43846f695f3e447b</srcmd5>
+    <version>3.1.2</version>
+    <time>1409301499</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>41e09f02552d61d343d5f004fafc94e7</srcmd5>
+    <version>3.1.2</version>
+    <time>1416824138</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261258</requestid>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>fc382ab6b69c7a227f71db98afe30cca</srcmd5>
+    <version>3.1.2</version>
+    <time>1425891886</time>
+    <user>dimstar_suse</user>
+    <comment>this stupid check should report both errors at the same point of time and it should not be needed to do this as a request reviewer, but could be done directly as source service IMHO</comment>
+    <requestid>289553</requestid>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>4fe3d274a157c759ff66b436bf7531c9</srcmd5>
+    <version>3.1.2</version>
+    <time>1426680290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290898</requestid>
+  </revision>
+  <revision rev="21" vrev="12">
+    <srcmd5>3d2c8dcdfff031a41db9e66f8db4fdb1</srcmd5>
+    <version>3.1.2</version>
+    <time>1427273733</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292355</requestid>
+  </revision>
+  <revision rev="22" vrev="13">
+    <srcmd5>f16008f83590f286f05ddbd837bf114a</srcmd5>
+    <version>3.1.2</version>
+    <time>1443684435</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>332201</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2807cc02d2773b0c395b48be1e0b6fb3</srcmd5>
+    <version>3.2.0</version>
+    <time>1465847312</time>
+    <user>dimstar_suse</user>
+    <comment>version update, including security fix, fix constraints</comment>
+    <requestid>394316</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>250b45d2f7c4e26902bc75a20ecbe6e4</srcmd5>
+    <version>3.2.1</version>
+    <time>1468048716</time>
+    <user>dimstar_suse</user>
+    <comment>I HATE TO FIGHT AGAINS AUTO REQUEST CHECKS WHICH COULD BE DONE BY LOCAL SOURCE CHECKSosc ci -m grrosc ci -m grr</comment>
+    <requestid>403845</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>2ac8822fbb438b7349cd2c6e50fcaa8b</srcmd5>
+    <version>3.2.1</version>
+    <time>1469742264</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>414780</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>759552f21f05332ab8418d966d9c858d</srcmd5>
+    <version>3.2.2</version>
+    <time>1478086101</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>437407</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>2ad9016b679b84df928f4ff22fbeedfe</srcmd5>
+    <version>3.2.2</version>
+    <time>1480860390</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443195</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>68542fefe3588d538dcbe7437cd68070</srcmd5>
+    <version>3.3.1</version>
+    <time>1493103475</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>489082</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1814c33d685d7ab9425e4adc8a48f867</srcmd5>
+    <version>3.3.2</version>
+    <time>1504981408</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>521894</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>939af03c17342657167c12eb655d0440</srcmd5>
+    <version>3.3.3</version>
+    <time>1537436242</time>
+    <user>maxlin_factory</user>
+    <comment>(the missing patch check should really become a source service
+ validation instead of a request review IMHO)
+
+- update to version 3.3.3
+  * Avoid super-linear slowdown on malformed mtree files
+  * Many fixes for building with Visual Studio
+  * NO_OVERWRITE doesn't change existing directory attributes
+  * New support for Zstandard read and write filters
+- fix-CVE-2017-14166.patch is obsolete</comment>
+    <requestid>635701</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>3c9d17e56eb027dfd58e7ef357c2eeb6</srcmd5>
+    <version>3.3.3</version>
+    <time>1538502225</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>637868</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>9738164653463ce03ea982d310517ae2</srcmd5>
+    <version>3.3.3</version>
+    <time>1547211592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662755</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>c2d38b9cae9350eb32049e011308e4ce</srcmd5>
+    <version>3.3.3</version>
+    <time>1549630040</time>
+    <user>coolo</user>
+    <comment>- Added patches:
+  * CVE-2019-1000019.patch Fixes 7zip crash (boo#1124341)
+  * CVE-2019-1000020.patch ISO9660 infinite loop fixed (boo#1124342)</comment>
+    <requestid>671920</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4a0a3b3c279693374f85597833c0c7d0</srcmd5>
+    <version>3.4.0</version>
+    <time>1560760321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709705</requestid>
+  </revision>
+</revisionlist>

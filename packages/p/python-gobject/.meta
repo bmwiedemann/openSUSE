@@ -1,0 +1,6 @@
+<package name="python-gobject" project="openSUSE:Factory">
+  <title>Python bindings for GObject</title>
+  <description>Pygobjects is an extension module for python that gives you access to
+GLib's GObjects.</description>
+  <devel project="GNOME:Factory" package="python-gobject"/>
+</package>

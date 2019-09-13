@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>36c5a189e66b8f49ea06bd4a6796902a</srcmd5>
+    <version>2.4.0</version>
+    <time>1434460310</time>
+    <user>coolo</user>
+    <comment>Part of Octave-Forge project</comment>
+    <requestid>310970</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3bfb31db215f9e5892f65806932cc6c4</srcmd5>
+    <version>2.4.0</version>
+    <time>1435053519</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312813</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d1adac49e07b3232850d671bba7090cb</srcmd5>
+    <version>2.4.1</version>
+    <time>1441054729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.1
+  * Bugfix release
+- Drop ovsolete workaround_gcc_65843.patch</comment>
+    <requestid>322352</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d8246e8d07249fb76a4124717043e9b3</srcmd5>
+    <version>2.6.1</version>
+    <time>1485682455</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442084</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f6d2ec555cc233191782ba81add721d0</srcmd5>
+    <version>2.8.0</version>
+    <time>1532774415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624035</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d68d7063382d8dec253cdcad09d442d9</srcmd5>
+    <version>2.8.1</version>
+    <time>1543224544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651313</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e84f4c40a728d903e731ccc175fbe57e</srcmd5>
+    <version>2.10.0</version>
+    <time>1551113303</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>666305</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-libusb1" project="openSUSE:Factory">
+  <title>LibUSB1</title>
+  <description>Pure-python wrapper for libusb-1.0.</description>
+  <devel project="devel:languages:python" package="python-libusb1"/>
+</package>

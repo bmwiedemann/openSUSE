@@ -1,0 +1,9 @@
+<package name="ads" project="openSUSE:Factory">
+  <title>Active Directory services tool for samba</title>
+  <description>For join, unjoin, provisioning, demotion, user/group and password administration,
+ldap attribute modification, posix enablement, kdc timesync, pam and nss configuration,
+daemon start/stop, cache flush, etc.
+The ads command attempts to maintain compatibility with the proprietary vastool command,
+while also adding additional features relevant to samba (such as kdc provisioning).</description>
+  <devel project="network:samba:STABLE" package="ads"/>
+</package>

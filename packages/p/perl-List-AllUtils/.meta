@@ -1,0 +1,11 @@
+<package name="perl-List-AllUtils" project="openSUSE:Factory">
+  <title>Combines List::Util and List::MoreUtils in one bite-sized package</title>
+  <description>Are you sick of trying to remember whether a particular helper is defined
+in &quot;List::Util&quot; or &quot;List::MoreUtils&quot;? I sure am. Now you don't have to
+remember. This module will export all of the functions that either of
+those two modules defines.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-List-AllUtils"/>
+  <url>http://search.cpan.org/dist/List-AllUtils</url>
+</package>

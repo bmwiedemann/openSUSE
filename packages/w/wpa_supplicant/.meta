@@ -1,0 +1,8 @@
+<package name="wpa_supplicant" project="openSUSE:Factory">
+  <title>WPA supplicant implementation</title>
+  <description>wpa_supplicant is an implementation of the WPA Supplicant component,
+i.e., the part that runs in the client stations. It implements key
+negotiation with a WPA Authenticator and it controls the roaming and
+IEEE 802.11 authentication/association of the wlan driver.</description>
+  <devel project="hardware" package="wpa_supplicant"/>
+</package>

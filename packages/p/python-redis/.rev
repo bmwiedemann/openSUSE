@@ -1,0 +1,221 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>788ac6747dc5adc1f56dd00fb989d72f</srcmd5>
+    <version>2.4.9</version>
+    <time>1322501233</time>
+    <user>coolo</user>
+    <comment>Dependency for OpenStack packages.</comment>
+    <requestid>93475</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c6723cc43729a034f6b422915db46acf</srcmd5>
+    <version>2.4.9</version>
+    <time>1323194262</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6383bccb28cfea79b141a177d1502bd0</srcmd5>
+    <version>2.4.11</version>
+    <time>1329215199</time>
+    <user>coolo</user>
+    <comment>Update to 2.4.11. (forwarded request 102956 from aledr)</comment>
+    <requestid>102985</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5c6340c0ef4725d4e347bea52f315e40</srcmd5>
+    <version>2.4.13</version>
+    <time>1338903295</time>
+    <user>coolo</user>
+    <comment>Updated to version 2.4.13 (forwarded request 123315 from poorboywilly)</comment>
+    <requestid>123374</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5c6340c0ef4725d4e347bea52f315e40</srcmd5>
+    <version>2.4.13</version>
+    <time>1340184088</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>691aadbf4def87caf9038b0e72dc232c</srcmd5>
+    <version>2.6.2</version>
+    <time>1346914923</time>
+    <user>coolo</user>
+    <comment>Update to 2.6.2.  Note: python3 now supported, should we do anything with that? (forwarded request 132435 from poorboywilly)</comment>
+    <requestid>132594</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>691aadbf4def87caf9038b0e72dc232c</srcmd5>
+    <version>2.6.2</version>
+    <time>1359110114</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>857eafec1101b83437583514378fe894</srcmd5>
+    <version>2.7.6</version>
+    <time>1375901591</time>
+    <user>coolo</user>
+    <comment>- Use upstream source URL
+
+- added requirement python-py
+- Update to 2.7.6:
+  * Added CONFIG RESETSTAT command. Thanks Yossi Gottlieb.
+  * Fixed a bug introduced in 2.7.3 that caused issues with script objects
+    and pipelines. Thanks Carpentier Pierre-Francois.
+  * Converted redis-py's test suite to use the awesome py.test library.
+  * Fixed a bug introduced in 2.7.5 that prevented a ConnectionError from
+    being raised when the Redis server is LOADING data.
+  * Added a BusyLoadingError exception that's raised when the Redis server
+    is starting up and not accepting commands yet. BusyLoadingError
+    subclasses ConnectionError, which this state previously returned.
+    Thanks Yossi Gottlieb.
+- Changes in 2.7.5:
+  * DEL, HDEL and ZREM commands now return the numbers of keys deleted
+    instead of just True/False.
+  * from_url now supports URIs with a port number. Thanks Aaron Westendorf.
+- Changes in 2.7.4:
+  * Added missing INCRBY method. Thanks Krzysztof Dorosz.
+  * SET now accepts the EX, PX, NX and XX options from Redis 2.6.12. These
+    options will generate errors if these options are used when connected
+    to a Redis server &lt; 2.6.12. Thanks George Yoshida.
+- Changes in 2.7.3:
+  * Fixed a bug with BRPOPLPUSH and lists with empty strings.
+  * All empty except: clauses have been replaced to only catch Exception
+    subclasses. This prevents a KeyboardInterrupt from triggering exception
+    handlers. Thanks Lucian Branescu Mihaila.
+  * All exceptions that are the result of redis server errors now share a
+    command Exception subclass, ServerError. Thanks Matt Robenolt.</comment>
+    <requestid>186099</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>857eafec1101b83437583514378fe894</srcmd5>
+    <version>2.7.6</version>
+    <time>1379664273</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9b3463e94b7b6936596b8c46b5941ee2</srcmd5>
+    <version>2.8.0</version>
+    <time>1385391811</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.8
+  + redis-py should play better with gevent when a gevent Timeout is raised.
+  + Added SENTINEL command
+  + Fixed a bug where pipelines could potentially correct a connection
+    if the MULTI command generated a ResponseError.
+  + Connections now call socket.shutdown() prior to socket.close() to
+    ensure communication ends immediately per the note at
+    http://docs.python.org/2/library/socket.html#socket.socket.close
+  + Lock checks are now based on floats rather than ints. (forwarded request 208185 from posophe)</comment>
+    <requestid>208186</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>9b3463e94b7b6936596b8c46b5941ee2</srcmd5>
+    <version>2.8.0</version>
+    <time>1409302978</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ced4a07280845cc4266f201e16ab39ab</srcmd5>
+    <version>2.10.3</version>
+    <time>1409725819</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247253</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f977403b148784d99e7ab8d8f852a14f</srcmd5>
+    <version>2.10.5</version>
+    <time>1481153419</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441394</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7e9cdc0cda0f5dd55458336af26c0ced</srcmd5>
+    <version>2.10.5</version>
+    <time>1499292086</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507111</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>eea8b679588f60f3f08f5d0f4281f47b</srcmd5>
+    <version>2.10.6</version>
+    <time>1507197493</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530853</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>27538f3f662eab5cc845617c8dc70728</srcmd5>
+    <version>2.10.6</version>
+    <time>1535538411</time>
+    <user>dimstar_suse</user>
+    <comment>- Run tests by launching redis server
+- Require redis on runtime</comment>
+    <requestid>631998</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>3bd117f02db35ff298b687e70c531100</srcmd5>
+    <version>2.10.6</version>
+    <time>1536876096</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch redis-skip-rounding.patch to fix rounding issues with
+  geolocation, it is not stable enought o produce pinpoint equal
+  results among 32bit platforms</comment>
+    <requestid>635475</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8d7274a9ab558f5ea9c5339d87d01100</srcmd5>
+    <version>3.0.1</version>
+    <time>1543224145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649608</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cb5363029e278d69e33c28cc2991e99d</srcmd5>
+    <version>3.2.0</version>
+    <time>1550574038</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>676986</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>25c1b1765d5e72b5dd189d0657c209df</srcmd5>
+    <version>3.2.1</version>
+    <time>1553809698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688630</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c908fd39aed69abf3777170f718d9ad3</srcmd5>
+    <version>3.2.1</version>
+    <time>1554372077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690298</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>a44356d45030575df78f188554a1dbe1</srcmd5>
+    <version>3.2.1</version>
+    <time>1555691832</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0 bsc#1131555:</comment>
+    <requestid>694225</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>76f4c107c405da07a4e8dd413dea8e71</srcmd5>
+    <version>3.3.6</version>
+    <time>1565775404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722638</requestid>
+  </revision>
+</revisionlist>

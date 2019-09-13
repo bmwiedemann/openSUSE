@@ -1,0 +1,6 @@
+<package name="libqt5-qtwayland" project="openSUSE:Factory">
+  <title>libqt5-qtwayland</title>
+  <description>Qtwayland is a lighthouse-derived rendering backend for the GUI part
+of Qt5. This package also contains a shared library to build Qt-based
+Wayland compositors.</description>
+</package>

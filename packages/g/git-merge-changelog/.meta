@@ -1,0 +1,24 @@
+<package name="git-merge-changelog" project="openSUSE:Factory">
+  <title>Git merge driver for ChangeLog files</title>
+  <description>
+Git merge driver for ChangeLog files.
+
+1. It produces no conflict when ChangeLog entries have been inserted
+   at the top both in the public and in the private modification. It
+   puts the privately added entries above the publicly added entries.
+
+2. It respects the structure of ChangeLog files: entries are not split
+   into lines but kept together.
+
+3. It also handles the case of small modifications of past ChangeLog
+   entries, or of removed ChangeLog entries: they are merged as one
+   would expect it.
+
+4. Conflicts are presented at the top of the file, rather than where
+   they occurred, so that the user will see them immediately. (Unlike
+   for source code written in some programming language, conflict markers
+   that are located several hundreds lines from the top will not cause
+   any syntax error and therefore would be likely to remain unnoticed.)
+</description>
+  <devel project="devel:tools" package="git-merge-changelog"/>
+</package>

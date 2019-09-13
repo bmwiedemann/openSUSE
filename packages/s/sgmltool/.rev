@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="926">
+    <srcmd5>740efc4360aabcba22804316fdf6458a</srcmd5>
+    <version>1.0.9</version>
+    <time>1166483870</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="956">
+    <srcmd5>803927651fcf9f7b311397b767d7ebeb</srcmd5>
+    <version>1.0.9</version>
+    <time>1175185703</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1018">
+    <srcmd5>110ab95807bbcaa60d22cc47552694a2</srcmd5>
+    <version>1.0.9</version>
+    <time>1209134711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1037">
+    <srcmd5>66ebc8bdb7c666ee6432843817d24123</srcmd5>
+    <version>1.0.9</version>
+    <time>1218103186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1039">
+    <srcmd5>66ebc8bdb7c666ee6432843817d24123</srcmd5>
+    <version>1.0.9</version>
+    <time>1218103186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1052">
+    <srcmd5>9fb72da423e44b158043542c57e1b9ed</srcmd5>
+    <version>1.0.9</version>
+    <time>1264068717</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/sgmltool based on submit request 29840 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="1053">
+    <srcmd5>3e448623d836626e583e60350c583908</srcmd5>
+    <version>1.0.9</version>
+    <time>1268926155</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="1055">
+    <srcmd5>3e448623d836626e583e60350c583908</srcmd5>
+    <version>1.0.9</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1056">
+    <srcmd5>3e448623d836626e583e60350c583908</srcmd5>
+    <version>1.0.9</version>
+    <time>1278678619</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1059">
+    <srcmd5>3e448623d836626e583e60350c583908</srcmd5>
+    <version>1.0.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1061">
+    <srcmd5>3e448623d836626e583e60350c583908</srcmd5>
+    <version>1.0.9</version>
+    <time>1319182465</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="1062">
+    <srcmd5>06be87facb395a40e0418d4a3de14a3d</srcmd5>
+    <version>1.0.9</version>
+    <time>1323194627</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="1064">
+    <srcmd5>06be87facb395a40e0418d4a3de14a3d</srcmd5>
+    <version>1.0.9</version>
+    <time>1340184212</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1065">
+    <srcmd5>2ba4b5b78048c527d2ed0f653f44c11c</srcmd5>
+    <version>1.0.9</version>
+    <time>1343673613</time>
+    <user>coolo</user>
+    <comment>- Move styles where they belong to 
+- Require packages for sgml2latex
+- Use texlive infrastructure
+
+- Quote brackets of the babel language mapping otherwise the
+  sgml2latex tool ignores it</comment>
+    <requestid>129332</requestid>
+  </revision>
+  <revision rev="15" vrev="1066">
+    <srcmd5>bf49bf1a4b80812ad58bd23bbca87d28</srcmd5>
+    <version>1.0.9</version>
+    <time>1350629569</time>
+    <user>coolo</user>
+    <comment>- Parallel build with %_smp_mflags
+- Remove redundant tags/sections from specfile,
+  use %configure (forwarded request 138500 from jengelh)</comment>
+    <requestid>138757</requestid>
+  </revision>
+  <revision rev="16" vrev="1067">
+    <srcmd5>7695804f2a4d61b724b023cd09c60737</srcmd5>
+    <version>1.0.9</version>
+    <time>1353404704</time>
+    <user>coolo</user>
+    <comment>- Add sgmltool-flex.patch: yyleng must be size_t with new flex</comment>
+    <requestid>141860</requestid>
+  </revision>
+  <revision rev="17" vrev="1068">
+    <srcmd5>5a171785dfe0e7c7438741d2f40ce31b</srcmd5>
+    <version>1.0.9</version>
+    <time>1355733526</time>
+    <user>coolo</user>
+    <comment>The lack of buildrequires of groff is  stopping mdadm from building.
+
+- Add buildrequires for groff so that sgml2txt
+  works, and rationalize setting of CFLAGS.
+  In particular having a &quot;\&quot; line continuation
+  before a %configure macro probably doesn't
+  behave as expected. (forwarded request 145151 from neilbrown)</comment>
+    <requestid>145528</requestid>
+  </revision>
+  <revision rev="18" vrev="1070">
+    <srcmd5>5a171785dfe0e7c7438741d2f40ce31b</srcmd5>
+    <version>1.0.9</version>
+    <time>1359110400</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1071">
+    <srcmd5>06b335f615bdd3e316e58b5699c8cfd4</srcmd5>
+    <version>1.0.9</version>
+    <time>1378749059</time>
+    <user>coolo</user>
+    <comment>- Use kpsepath to determine texmf main location</comment>
+    <requestid>198020</requestid>
+  </revision>
+  <revision rev="20" vrev="1073">
+    <srcmd5>06b335f615bdd3e316e58b5699c8cfd4</srcmd5>
+    <version>1.0.9</version>
+    <time>1379664659</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1075">
+    <srcmd5>06b335f615bdd3e316e58b5699c8cfd4</srcmd5>
+    <version>1.0.9</version>
+    <time>1409303357</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1076">
+    <srcmd5>5911b57bcaddb02eceaa624db71b5081</srcmd5>
+    <version>1.0.9</version>
+    <time>1424621988</time>
+    <user>dimstar_suse</user>
+    <comment>- sgmltool-flex.patch: removed, flex has been fixed (forwarded request 286673 from AndreasSchwab)</comment>
+    <requestid>286718</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,168 @@
+<revisionlist>
+  <revision rev="1" vrev="334">
+    <srcmd5>6bd777502308c5deba09ed76f565a66b</srcmd5>
+    <version>1.05</version>
+    <time>1168903893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="524">
+    <srcmd5>6bd777502308c5deba09ed76f565a66b</srcmd5>
+    <version>1.05</version>
+    <time>1168903893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="525">
+    <srcmd5>18dd92eb5d785b1db085e04b71e9401b</srcmd5>
+    <version>1.05</version>
+    <time>1245276934</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="527">
+    <srcmd5>18dd92eb5d785b1db085e04b71e9401b</srcmd5>
+    <version>1.05</version>
+    <time>1245276934</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="528">
+    <srcmd5>fcbffb36633cc5663d510a2f5af63039</srcmd5>
+    <version>1.05</version>
+    <time>1263488797</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Parse-Yapp based on submit request 29553 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="529">
+    <srcmd5>016bc112255f99db4619a8ff2a1966a7</srcmd5>
+    <version>1.05</version>
+    <time>1268925573</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="531">
+    <srcmd5>016bc112255f99db4619a8ff2a1966a7</srcmd5>
+    <version>1.05</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="532">
+    <srcmd5>016bc112255f99db4619a8ff2a1966a7</srcmd5>
+    <version>1.05</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="533">
+    <srcmd5>d9e50e4993a1cc86e42554789bd205b5</srcmd5>
+    <version>1.05</version>
+    <time>1287486666</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51015 from user coolo
+</comment>
+    <requestid>51015</requestid>
+  </revision>
+  <revision rev="10" vrev="534">
+    <srcmd5>a092f06287da7e349552ce821f466d03</srcmd5>
+    <version>1.05</version>
+    <time>1287486671</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51015
+</comment>
+  </revision>
+  <revision rev="11" vrev="535">
+    <srcmd5>f9bc22a8d65d09cd747c9d8071849f7e</srcmd5>
+    <version>1.05</version>
+    <time>1291583511</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54620 from user coolo
+</comment>
+    <requestid>54620</requestid>
+  </revision>
+  <revision rev="12" vrev="536">
+    <srcmd5>df4b8a9069aef3942c335444623b2047</srcmd5>
+    <version>1.05</version>
+    <time>1291583520</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54620
+</comment>
+  </revision>
+  <revision rev="13" vrev="539">
+    <srcmd5>df4b8a9069aef3942c335444623b2047</srcmd5>
+    <version>1.05</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="541">
+    <srcmd5>df4b8a9069aef3942c335444623b2047</srcmd5>
+    <version>1.05</version>
+    <time>1319182298</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="542">
+    <srcmd5>fc764102672f97fe3ce1ec85b8c320ae</srcmd5>
+    <version>1.05</version>
+    <time>1321875871</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92300</requestid>
+  </revision>
+  <revision rev="16" vrev="543">
+    <srcmd5>1e61d9414f2cfed8a22cd1721237d285</srcmd5>
+    <version>1.05</version>
+    <time>1323193563</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="545">
+    <srcmd5>1e61d9414f2cfed8a22cd1721237d285</srcmd5>
+    <version>1.05</version>
+    <time>1340183903</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="547">
+    <srcmd5>1e61d9414f2cfed8a22cd1721237d285</srcmd5>
+    <version>1.05</version>
+    <time>1359109777</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="548">
+    <srcmd5>c6e9a46a5c60a2b13f58a60cdbb18c39</srcmd5>
+    <version>1.05</version>
+    <time>1362120199</time>
+    <user>coolo</user>
+    <comment>ciaran wants it with 'or' now</comment>
+    <requestid>156752</requestid>
+  </revision>
+  <revision rev="20" vrev="550">
+    <srcmd5>c6e9a46a5c60a2b13f58a60cdbb18c39</srcmd5>
+    <version>1.05</version>
+    <time>1379663812</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="552">
+    <srcmd5>c6e9a46a5c60a2b13f58a60cdbb18c39</srcmd5>
+    <version>1.05</version>
+    <time>1409302448</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8f6783651a811e32c7c24588b59c31d8</srcmd5>
+    <version>1.2</version>
+    <time>1500669929</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506098</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>216c26ccbce255cfcc4cf82461966d61</srcmd5>
+    <version>1.21</version>
+    <time>1502186361</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514857</requestid>
+  </revision>
+</revisionlist>

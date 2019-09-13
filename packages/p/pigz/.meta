@@ -1,0 +1,6 @@
+<package name="pigz" project="openSUSE:Factory">
+  <title>Multi-core gzip version</title>
+  <description>A parallel implementation of gzip for modern multi-processor,
+multi-core machines</description>
+  <devel project="Archiving" package="pigz"/>
+</package>

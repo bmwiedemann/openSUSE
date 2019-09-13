@@ -1,0 +1,1779 @@
+<revisionlist>
+  <revision rev="1" vrev="42">
+    <srcmd5>caf085cdd844101d248a4d20931f2ae6</srcmd5>
+    <version>2.5.1</version>
+    <time>1295282585</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57745 from user jeff_mahoney
+</comment>
+    <requestid>57745</requestid>
+  </revision>
+  <revision rev="2" vrev="43">
+    <srcmd5>34d1fbbec045c38d1776cfbffc2e4f8c</srcmd5>
+    <version>2.5.1</version>
+    <time>1295282595</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57745
+</comment>
+  </revision>
+  <revision rev="3" vrev="44">
+    <srcmd5>ec6a60077110f6cc72174b76c7c4320a</srcmd5>
+    <version>2.5.1</version>
+    <time>1295355057</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58682 from user coolo
+</comment>
+    <requestid>58682</requestid>
+  </revision>
+  <revision rev="4" vrev="45">
+    <srcmd5>a6552f5c20c6134f65f392181b535c65</srcmd5>
+    <version>2.5.1</version>
+    <time>1295355076</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58682
+</comment>
+  </revision>
+  <revision rev="5" vrev="46">
+    <srcmd5>814a499733377d0476f2d312f6a9024e</srcmd5>
+    <version>2.5.1.r1445</version>
+    <time>1295957804</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59064 from user jeff_mahoney
+</comment>
+    <requestid>59064</requestid>
+  </revision>
+  <revision rev="6" vrev="47">
+    <srcmd5>ce3487025b31e333276bcd9fe648364b</srcmd5>
+    <version>2.5.1.r1445</version>
+    <time>1295957811</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59064
+</comment>
+  </revision>
+  <revision rev="7" vrev="49">
+    <srcmd5>e79aa03d0d7ca74547202b8644d902fa</srcmd5>
+    <version>2.5.1.r1445</version>
+    <time>1296768670</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59942 from user jeff_mahoney
+</comment>
+    <requestid>59942</requestid>
+  </revision>
+  <revision rev="8" vrev="50">
+    <srcmd5>3f05d8c962754b8752596841c0553b5c</srcmd5>
+    <version>2.5.1.r1445</version>
+    <time>1296768676</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59942
+</comment>
+  </revision>
+  <revision rev="9" vrev="53">
+    <srcmd5>3f05d8c962754b8752596841c0553b5c</srcmd5>
+    <version>2.5.1.r1445</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="54">
+    <srcmd5>37f1790cbd340fd70694bd9687770a2b</srcmd5>
+    <version>2.5.1.r1445</version>
+    <time>1298455450</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62599 from user coolo
+</comment>
+    <requestid>62599</requestid>
+  </revision>
+  <revision rev="11" vrev="55">
+    <srcmd5>5943ffd0bb1ae54dfbeead6a020ce4cb</srcmd5>
+    <version>2.5.1.r1445</version>
+    <time>1298455457</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62599
+</comment>
+  </revision>
+  <revision rev="12" vrev="56">
+    <srcmd5>ad337548643da55219908c43e133a6d9</srcmd5>
+    <version>2.5.1.r1445</version>
+    <time>1299757753</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63720 from user coolo
+</comment>
+    <requestid>63720</requestid>
+  </revision>
+  <revision rev="13" vrev="57">
+    <srcmd5>e89bfd972de8b4b899703387bdd12ce4</srcmd5>
+    <version>2.5.1.r1445</version>
+    <time>1299757760</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63720
+</comment>
+  </revision>
+  <revision rev="14" vrev="54">
+    <srcmd5>f5088d4c45dcead252f331c6a905b098</srcmd5>
+    <version>2.6.0</version>
+    <time>1301040291</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65172 from user licensedigger
+</comment>
+    <requestid>65172</requestid>
+  </revision>
+  <revision rev="15" vrev="55">
+    <srcmd5>bab14f98f503df00c3d565dd5c4bb706</srcmd5>
+    <version>2.6.0</version>
+    <time>1301040306</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65172
+</comment>
+  </revision>
+  <revision rev="16" vrev="56">
+    <srcmd5>d0292f438c8e8720e9651ad2f02a7529</srcmd5>
+    <version>2.6.0</version>
+    <time>1309866331</time>
+    <user>saschpe</user>
+    <comment>- Fixed building of pam_apparmor to properly link libpam (bnc#696553).
+- Fixed building of apache2-mod_apparmor to properly link (bnc#701821). (forwarded request 74458 from jeff_mahoney)</comment>
+    <requestid>75398</requestid>
+  </revision>
+  <revision rev="17" vrev="57">
+    <srcmd5>2a5f522d3234d23cdc796134dbcc7ea3</srcmd5>
+    <version>2.6.0</version>
+    <time>1309866342</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75398
+</comment>
+  </revision>
+  <revision rev="18" vrev="58">
+    <srcmd5>70051bfe77643707b167443294fd8e85</srcmd5>
+    <version>2.6.0</version>
+    <time>1312296113</time>
+    <user>saschpe</user>
+    <comment>- Add apparmor-securityfs-systemd.patch: do not mount securityfs
+  when running under systemd, just access the directory, systemd
+  will automount it (bnc#704460).</comment>
+    <requestid>77678</requestid>
+  </revision>
+  <revision rev="19" vrev="59">
+    <srcmd5>6eee7a720db693d144c0fed5cdaf8a1f</srcmd5>
+    <version>2.6.0</version>
+    <time>1312296126</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77678
+</comment>
+  </revision>
+  <revision rev="20" vrev="56">
+    <srcmd5>1a5cdddaa93976efbc894d41b9ef6d78</srcmd5>
+    <version>2.6.1</version>
+    <time>1315559174</time>
+    <user>saschpe</user>
+    <comment>- install SubDomain.pm compat module (bnc#713408)
+
+- Update to 2.6.1.
+  - One patch eliminated
+  - Lots of minor fixes
+  - Split out more common abstractions
+- Add check_for_apparmor() helper.
+
+- dhcpd: Fix apparmor profile (bnc#692428)
+
+ 
+- Fixed typos in descriptions and summaries of apparmor.spec
+ 
+
+- move the requires and prerequires to the right package</comment>
+    <requestid>81356</requestid>
+  </revision>
+  <revision rev="21" vrev="57">
+    <srcmd5>b809330acf11626469a9948bce9f6613</srcmd5>
+    <version>2.6.1</version>
+    <time>1315559193</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81356
+</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d8d38c48e898c3e9f0d2cd30b8d15d48</srcmd5>
+    <version>2.7.beta1</version>
+    <time>1316001406</time>
+    <user>saschpe</user>
+    <comment>- update to AppArmor 2.7.0 beta1, for details see 
+  http://wiki.apparmor.net/index.php/ReleaseNotes_2_7
+- removed lots of patches I pushed upstream
+- disabled apparmor-2.5.1-unified-build (patch to use automake,
+  does not apply to 2.7 and probably won't be accepted upstream)
+- disabled build of tomcat_apparmor (doesn't build, deprecated upstream)
+- run spec-cleaner
+- remove *.la files
+- move usr.sbin.nscd profile back to apparmor-profiles package
+
+- Update patch apparmor-profiles-usr.sbin.dnsmasq to include
+  /var/lib/libvirt/dnsmasq/*.leases (bnc#694197).</comment>
+    <requestid>82045</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f9e41f6e4d59bd91e8a1c94f5b5ce0a2</srcmd5>
+    <version>2.7.beta2</version>
+    <time>1316465313</time>
+    <user>lrupp</user>
+    <comment>- update to AppArmor 2.7.0 beta2
+  - includes fixes for bnc#717707, bnc#678749, bnc#685674, bnc#679182,
+    bnc#691072, bnc#705319, bnc#713728
+- add some missing perl module Requires to perl-apparmor</comment>
+    <requestid>82501</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>c1ca9dc69bf901b67e42609734566608</srcmd5>
+    <version>2.7.beta2</version>
+    <time>1318248608</time>
+    <user>oertel</user>
+    <comment>- add patch with upstream changes since 2.7.0 beta2 release
+  - add example parser.conf
+  - print warning if profile cache directory doesn't exist
+  - remove initscript for no longer existing aa-eventd (bnc#720617)
+  - set correct $HOME in aa-notify
+- enable caching of profiles (= massive speedup) (bnc#689458)
+- add comments for patches in .spec and comments in some patches
+- run spec-cleaner
+
+- add libtool as buildrequire to make the spec file more reliable</comment>
+    <requestid>87208</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c4849e39efda3c227be573fee396dc6e</srcmd5>
+    <version>2.7.rc1</version>
+    <time>1318578402</time>
+    <user>lrupp</user>
+    <comment>- update to AppArmor 2.7.0 rc1
+  - aa-notify: add --display option and warn if $DISPLAY is not set
+    (important for usage with sudo on openSUSE)
+  - fix syntax error on &quot;rcapparmor stop&quot;
+  - allow read access to /proc/*/mounts in the dovecot profile</comment>
+    <requestid>87773</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>49a879b1fac52272d61e2397ca84f937</srcmd5>
+    <version>2.7.rc1</version>
+    <time>1319025385</time>
+    <user>coolo</user>
+    <comment>- include autogenerated profile sniplet for samba shares (bnc#688040)
+- more helpful error message for &quot;aa-notify -p&quot; if the user is not in
+  the configured group</comment>
+    <requestid>88695</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>49a879b1fac52272d61e2397ca84f937</srcmd5>
+    <version>2.7.rc1</version>
+    <time>1319181772</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>7c73b3bff88a171d01c436a371863be6</srcmd5>
+    <version>2.7.rc1</version>
+    <time>1319706186</time>
+    <user>coolo</user>
+    <comment>- allow loading the libraries for samba &quot;vfs objects&quot; (bnc#725967)
+
+Please include this patch in 12.1</comment>
+    <requestid>89465</requestid>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>81077ef228d9772ff8c60588cdcdd9be</srcmd5>
+    <version>2.7.rc1</version>
+    <time>1320230640</time>
+    <user>coolo</user>
+    <comment>Two fixes for AppArmor profiles:
+- make abstractions/winbind working on 64bit systems
+- allow loading the libraries for samba &quot;vfs objects&quot; also on 32bit 
+  systems (bnc#725967)
+
+Please forward these profile fixes to openSUSE 12.1.</comment>
+    <requestid>89885</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1b95a1fafdcd44d1fe242b1c7b177842</srcmd5>
+    <version>2.7.rc2</version>
+    <time>1322481167</time>
+    <user>coolo</user>
+    <comment>- package subdomain.conf only in -parser, not in -utils package
+- package libapparmor.so and libimmunix.so only in libapparmor-devel,
+  not in libapparmor1
+- make Provides for perl-libapparmor versioned to avoid self-Obsoletes
+- move libapparmor.a and libimmunix.a from libapparmor1 to 
+  libapparmor-devel package
+
+- update to AppArmor 2.7.0 rc2
+  Most of the changes since rc1 were already included as patches.
+  Additional changes:
+  - fix logprof/genprof to recognize &quot;mknod&quot; in audit.log
+  - fix libapparmor python bindings to compile with python 3
+  - fix wrong status message in initscript if apparmor-utils are not installed
+  - parser/Makefile: fix some warnings, always respect CXX and LDFLAGS
+  - fix some warnings in utils/Makefile
+- remove 4 upstreamed patches
+- remove mkdir /etc/apparmor.d/disable - that's done by upstream Makefile now
+- update line numbers in 2 patches</comment>
+    <requestid>93892</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4ce94a0971d7c79b0651600040a5a4cb</srcmd5>
+    <version>2.7.0</version>
+    <time>1325767865</time>
+    <user>coolo</user>
+    <comment>- Update to AppArmor 2.7.0 (= r1858)
+  - make traceroute6 work (bnc#733312)
+  - allow access to pyconfig.h in abstractions/python (lp#840734)
+  - fix logprof/genprof for hex-encoded program filenames (= filenames
+    containing space etc.)
+- add apparmor-2.7-branch.diff with some upstreamed fixes:
+  - usr.sbin.smbd needs read access for /etc/netgroup (bnc#738041)
+  - create /etc/apparmor.d/tunables/multiarch.d as directory, not as file
+  - fix syntax error in abstractons/python
+
+- changed a $ -&gt; % (typo)</comment>
+    <requestid>98697</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d47229d9c6a1516ddf097c774ff00798</srcmd5>
+    <version>2.7.2</version>
+    <time>1328201780</time>
+    <user>coolo</user>
+    <comment>- Update to AppArmor 2.7.2 (= 2.7 branch / r1894)
+  - move various permissions from httpd2-prefork profile to
+    abstractions/apache2-common. Backward-incompatible change: *.htaccess
+    files are no longer allowed for ^HANDLING_UNTRUSTED_INPUT
+  - allow access for more /usr/lib*/samba/ files for smbd (bnc#725967#c5)
+  - allow various .conf files for dovecot (lp#458922)
+  - disallow wl for *.so in @{HOME}/.pki/nssdb/ in abstractions/private-files
+    and abstractions/private-files-strict (lp#911847)
+  - update abstractions/kde, private-files* and ubuntu-browsers.d/user-files
+    to use ~/.kde4, not only ~/.kde (bnc#741592)
+  - block write access to ~/.kde{,4}/env in abstractions/private-files
+    (lp#914190)
+  - allow write access for personal dictionary etc. in abstractions/aspell
+    (lp#917859)
+  - when using genprof for a script, include read access to the script itsself
+  - automatically include abstractions/python or abstractions/ruby for
+    python/ruby scripts
+  - add profile for smbldap-useradd and allow smbd to call it (bnc#738041)
+  - allow creation of the .config directory in abstractions/enchant (lp#914184)
+  - allow TFTP read-only access in dnsmasq profile (lp#905412)
+  - allow capability dac_read_search for syslog-ng (bnc#731876)
+  - add p11-kit abstraction and include it in abstractions/authentification
+    (lp#912754, lp#912752)
+  - add audacity to abstractions/ubuntu-media-players (lp#899963)
+  - allow software-center, fireclam plugin, [tT]unar, exo-open, kate and
+    /dev/nvidia* in abstractons/ubuntu-browsers.d/* (lp#662906, lp#562831,
+    lp#890894, lp#890894, lp#884748)
+  - fix typo for multiarch gconf-modules in abstractions/base (lp#904548)
+  - allow avahi to do dbus introspection (lp#769148)
+  - allow access to ~/.fonts.conf.d in abstractions/fonts (lp#870992)
+  - allow transmission in abstractions/ubuntu-bittorrent-clients (lp#852062)
+  - allow reading ~/.cups/client.conf and ~/.cups/lpoptions in
+    abstractions/cups-client (lp#887992)
+  - allow read access of /etc/python{2,3}.[0-7]*/sitecustomize.py in
+    abstractions/python (lp#860856)
+  - various updates to the sshd profile (lp#817956)
+  - (and some more changes I already included in the apparmor-2.7-branch.diff)</comment>
+    <requestid>102458</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>7da859d38e9e58757433f18fae88a5b5</srcmd5>
+    <version>2.7.2</version>
+    <time>1334641411</time>
+    <user>coolo</user>
+    <comment>- replace patch for dnsmasq profile with upstream patch (bnc#738905)
+
+- add apparmor-r2022-log-parser-network-bnc755923.patch - logprof didn't
+  create network rules because of changed log format (bnc#755923, lp#800826)
+- add profile for samba winbindd (bnc#748499)
+
+- fix dnsmasq profile (bnc#738905)
+
+- add 0001-fix-for-lp929531.patch to allow reading 
+  /sys/devices/system/cpu/online in abstractions/base (lp#929531)</comment>
+    <requestid>113963</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f9fa125d19cda7c62b4774cc14ceb0ee</srcmd5>
+    <version>2.7.103</version>
+    <time>1336541094</time>
+    <user>coolo</user>
+    <comment>Update AppArmor from 2.7.2 to 2.8 beta5
+
+Details:
+
+- add apparmor-techdoc.patch to remove traces of the build time in PDF files
+
+- update to AppArmor 2.8 beta5 (= 2.7.103 / r2031)
+  - new utility aa-exec to confine a program with the specified AppArmor profile
+  - add support for mount rules
+  - see http://wiki.apparmor.net/index.php/ReleaseNotes_2_8 for full upstream
+    changelog
+- removed upstreamed and backported patches
+- remove outdated autobuild and &quot;disable repo&quot; patches that were disabled since
+  the AppArmor 2.7 package
+- create the Immunix::SubDomain compat perl module only for openSUSE &lt;= 12.1
+  (bnc#720617 #c7)</comment>
+    <requestid>116788</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3deaf9da1a90c4322c0cad435a58e562</srcmd5>
+    <version>2.8.0</version>
+    <time>1338971623</time>
+    <user>coolo</user>
+    <comment>- update to AppArmor 2.8.0 (= r2047)
+  - new utility aa-easyprof - templated profile generation tool (the resulting
+    profile may be less strict than profiles generated with genprof/logprof)
+  - various small bugfixes
+- removed upstreamed patches</comment>
+    <requestid>123452</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>3deaf9da1a90c4322c0cad435a58e562</srcmd5>
+    <version>2.8.0</version>
+    <time>1340183177</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>d367a4d6986fffb9a815acc75654be56</srcmd5>
+    <version>2.8.0</version>
+    <time>1341813147</time>
+    <user>coolo</user>
+    <comment>- update /bin/ping profile to also match /usr/bin/ping (usrMove)
+
+Please forward this fix to 12.2 (without this patch, ping will run unprotected)</comment>
+    <requestid>127335</requestid>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>0132252721b6018d952a6ca5c7bdf72e</srcmd5>
+    <version>2.8.0</version>
+    <time>1343661120</time>
+    <user>namtrac</user>
+    <comment>- Add required fonts for new TeXLive 2012 (forwarded request 129259 from WernerFink)</comment>
+    <requestid>129276</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>34fdeb684a40a653171fbf8f1be74da4</srcmd5>
+    <version>2.8.0</version>
+    <time>1344320781</time>
+    <user>coolo</user>
+    <comment>- abstractions/bash: update /bin/ls to also match /usr/bin/ls (usrMove) (forwarded request 130008 from cboltz)</comment>
+    <requestid>130009</requestid>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>16f3bf9e942c5b83044876b9d93c53cb</srcmd5>
+    <version>2.8.0</version>
+    <time>1344618034</time>
+    <user>namtrac</user>
+    <comment>- clear and update inconsistent profile cache (bnc#774529)
+- fix wording in two older .changes entries (usrMove -&gt; usrMerge)</comment>
+    <requestid>130598</requestid>
+  </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>cd32efe40ddeccb4a473bde9126c8ba3</srcmd5>
+    <version>2.8.0</version>
+    <time>1348745772</time>
+    <user>coolo</user>
+    <comment>- fix directory flags for /etc/apparmor.d to be in sync between
+  -parser and -profiles subpackage
+
+- remove %stop_on_removal for no longer existing aaeventd (bnc#781564)
+- don't hide TeX output when building the parser and techdoc</comment>
+    <requestid>136134</requestid>
+  </revision>
+  <revision rev="42" vrev="9">
+    <srcmd5>47c30d2a19cba40e25d818cf9185d918</srcmd5>
+    <version>2.8.0</version>
+    <time>1355058529</time>
+    <user>namtrac</user>
+    <comment>- verify tarball with gpg-offline (forwarded request 144621 from cboltz)</comment>
+    <requestid>144622</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>156226b985f31fc8100c5fd8892a7f98</srcmd5>
+    <version>2.8.1</version>
+    <time>1357892631</time>
+    <user>coolo</user>
+    <comment>- update to AppArmor 2.8.1 (=2.8 branch r2069)
+  Bugfix release, http://wiki.apparmor.net/index.php/ReleaseNotes_2_8_1
+  Most important changes are:
+  - add various missing parts to profiles and abstractions
+  - fix a possible x conflict with hats or child profiles in 
+    apparmor_parser
+  - fix and speedup stdin handling in aa-decode
+  - various other bugfixes
+  - add pkgconfig support to libapparmor
+- remove upstream(ed) patches (forwarded request 147965 from cboltz)</comment>
+    <requestid>147966</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>ba526c4463a227ac4d6ce680b30f76dd</srcmd5>
+    <version>2.8.1</version>
+    <time>1358152525</time>
+    <user>coolo</user>
+    <comment>- update abstractions/mysql with correct paths and add MariaDB paths
+  (bnc#798183) (forwarded request 148267 from cboltz)</comment>
+    <requestid>148268</requestid>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>ba526c4463a227ac4d6ce680b30f76dd</srcmd5>
+    <version>2.8.1</version>
+    <time>1359108659</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="5">
+    <srcmd5>359129fbb6c73a6661d7e55e36189c5b</srcmd5>
+    <version>2.8.1</version>
+    <time>1361191523</time>
+    <user>coolo</user>
+    <comment>- Add missing files to SRPM (bnc#777471) (forwarded request 155632 from jengelh)</comment>
+    <requestid>155663</requestid>
+  </revision>
+  <revision rev="47" vrev="6">
+    <srcmd5>acd9d364ebbfc54e6e119842ec1742d7</srcmd5>
+    <version>2.8.1</version>
+    <time>1362730047</time>
+    <user>coolo</user>
+    <comment>This time with better paperwork ;-)
+
+- nscd profile: add missing permissions and deny capability block_suspend
+  (bnc#807104, apparmor-profiles-nscd.diff)
+
+Please also add this patch to openSUSE 12.3
+
+The patch only adds permissions, which means it can't break anything.
+Even &quot;deny capability block_suspend&quot; doesn't take away any permissions
+(everything that is not allowed is denied by default). The deny rule
+just disables the logging for capability block_suspend. (forwarded request 157429 from cboltz)</comment>
+    <requestid>157433</requestid>
+  </revision>
+  <revision rev="48" vrev="7">
+    <srcmd5>48d57d45f5305968e18cef85cfb72387</srcmd5>
+    <version>2.8.1</version>
+    <time>1368689676</time>
+    <user>coolo</user>
+    <comment>- do not package directories as %config - especially not as noreplace
+
+- add Requires: insserv to parser package (needed by initscript)</comment>
+    <requestid>175481</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>34708e7de5f746a25ea0b0cd5a254997</srcmd5>
+    <version>2.8.2</version>
+    <time>1377628358</time>
+    <user>coolo</user>
+    <comment>- add apparmor-no-perl-smartmatch-r2088.diff: ~~ was marked as experimental
+  in perl 5.18 again - use grep instead (upstream 2.8 branch r2088)
+- fix ruby requires (forwarded request 196152 from cboltz)</comment>
+    <requestid>196153</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>c7e7281328b4f4e6697591a69b6c3ade</srcmd5>
+    <version>2.8.2</version>
+    <time>1379076659</time>
+    <user>scarabeus_factory</user>
+    <comment>- add apparmor-abstractions-r2089-r2090.diff (from upstream 2.8 branch)
+  - p11-kit needs access to /usr/share/p11-kit/modules
+  - allow reading /etc/machine-id in the dbus-session abstraction
+- add apparmor-init.py-gsoc.diff - make apparmor/__init__.py ready for
+  the new tools developed in GSoC (forwarded request 198933 from cboltz)</comment>
+    <requestid>198936</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>abd0ae8c8e90c92d5836a74d3363495a</srcmd5>
+    <version>2.8.2</version>
+    <time>1379422893</time>
+    <user>coolo</user>
+    <comment>- fix ntp by allowing read access to openssl.cnf
+
+- add apparmor-utils-po-de-r2091.diff: fix some (mis)translations</comment>
+    <requestid>199336</requestid>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>abd0ae8c8e90c92d5836a74d3363495a</srcmd5>
+    <version>2.8.2</version>
+    <time>1379661978</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>c2bfb53c355e2ef25181ab6a6367dc71</srcmd5>
+    <version>2.8.2</version>
+    <time>1379929367</time>
+    <user>coolo</user>
+    <comment>- add apparmor-fix-url-in-manpages-r2093.diff: fix URL in manpages 
+- add apparmor-unconfined-lang-r2094.diff: fix aa-unconfined to work
+  in all languages
+
+Please also forward those fixes to 13.1 (forwarded request 199886 from cboltz)</comment>
+    <requestid>199887</requestid>
+  </revision>
+  <revision rev="54" vrev="7">
+    <srcmd5>10872d4c974bf901cb155a8180df459a</srcmd5>
+    <version>2.8.2</version>
+    <time>1380713216</time>
+    <user>coolo</user>
+    <comment>- update apparmor-init.py-gsoc.diff to the final GSoC apparmor/__init__.py
+
+Please also include this change in 13.1</comment>
+    <requestid>201623</requestid>
+  </revision>
+  <revision rev="55" vrev="8">
+    <srcmd5>28daa00a306df1a8f638ae5749371569</srcmd5>
+    <version>2.8.2</version>
+    <time>1382011099</time>
+    <user>scarabeus_factory</user>
+    <comment>- add apparmor-profiles-samba4.diff - various profile additions for 
+  samba 4.x (bnc#845867, bnc#846054)
+- update usr.sbin.winbindd for samba 4.x (bnc#845867, bnc#846054)
+
+Please also include this in 13.1 - without it, it's impossible to start samba.</comment>
+    <requestid>203528</requestid>
+  </revision>
+  <revision rev="56" vrev="9">
+    <srcmd5>56c40fb9fe02906502c6812e98f6f76a</srcmd5>
+    <version>2.8.2</version>
+    <time>1382351311</time>
+    <user>scarabeus_factory</user>
+    <comment>- apparmor-profiles-samba4.diff, usr.sbin.winbindd: some more profile
+  updates for samba 4.x (bnc#846054#c5)
+
+Please also include this change in 13.1</comment>
+    <requestid>204033</requestid>
+  </revision>
+  <revision rev="57" vrev="10">
+    <srcmd5>2eb6d8c733b88b0812df5609f531fea6</srcmd5>
+    <version>2.8.2</version>
+    <time>1383230292</time>
+    <user>coolo</user>
+    <comment>- add apparmor-profiles-dnsmasq.diff - add missing permissions for
+  libvirt-generated files to dnsmasq profile (bnc#848215)
+
+Please also forward this to 13.1</comment>
+    <requestid>205295</requestid>
+  </revision>
+  <revision rev="58" vrev="11">
+    <srcmd5>4eca3f3f95ca19e3991765c4dc8e8da8</srcmd5>
+    <version>2.8.2</version>
+    <time>1383545079</time>
+    <user>coolo</user>
+    <comment>- apparmor-profiles-samba4.diff, usr.sbin.winbindd: some more profile
+  updates for samba 4.x and kerberos (bnc#846586#c12 and #c15)
+
+Please include this change in 13.1.</comment>
+    <requestid>205616</requestid>
+  </revision>
+  <revision rev="59" vrev="12">
+    <srcmd5>444bb37e8b73cdb4d00dbacd1667f9bc</srcmd5>
+    <version>2.8.2</version>
+    <time>1384517537</time>
+    <user>coolo</user>
+    <comment>- add apparmor-profiles-ntpd-r2103.diff with updated driftfile
+  location for ntpd (bnc#850374) (forwarded request 206954 from cboltz)</comment>
+    <requestid>206956</requestid>
+  </revision>
+  <revision rev="60" vrev="13">
+    <srcmd5>754126c077fa1815ba5d39b3ee7b5b75</srcmd5>
+    <version>2.8.2</version>
+    <time>1385473215</time>
+    <user>coolo</user>
+    <comment>- add apparmor-abstractions-ssl_certs.diff to allow access to 
+  certificates in /var/lib/ca-certificates/ (bnc#852018) (forwarded request 208366 from cboltz)</comment>
+    <requestid>208367</requestid>
+  </revision>
+  <revision rev="61" vrev="14">
+    <srcmd5>16fc71734992bcf94c56b2ecba6c556c</srcmd5>
+    <version>2.8.2</version>
+    <time>1388917864</time>
+    <user>coolo</user>
+    <comment>- add apparmor-profiles-samba-create-dirs.diff to allow samba to
+  mkdir /var/run/samba and /var/cache/samba (bnc#856651)
+- add abstractions/samba to usr.sbin.winbindd profile
+- add capabilities ipc_lock and setuid to usr.sbin.winbindd profile (bnc#851131)
+
+- update dovecot profiles to support dovecot 2.x, and add profiles for
+  the parts of dovecot that were not covered yet (bnc#851984)
+  NOTE: Please adjust /etc/apparmor.d/tunables/dovecot to your needs.
+  (apparmor-profiles-dovecot-bnc851984.diff, usr.lib.dovecot.*)
+
+- %restart_on_update (in parser %postun) is &quot;translated&quot; to stop/start by
+  the systemd wrapper, which removes AppArmor protection from running
+  processes. Fixed by using a custom script instead (bnc#853019)
+  NOTE: The %postun from the previously installed apparmor-parser package
+  will remove AppArmor protection from running processes a last time. 
+  Run aa-status to get a list of processes you need to restart, or reboot 
+  your computer.
+- reload profiles in %post of the apparmor-profiles package</comment>
+    <requestid>212803</requestid>
+  </revision>
+  <revision rev="62" vrev="15">
+    <srcmd5>d31966126bcb7f5a233597df08d2db14</srcmd5>
+    <version>2.8.2</version>
+    <time>1390231433</time>
+    <user>coolo</user>
+    <comment>- add Recommends: net-tools to apparmor-utils (needed by aa-unconfined)
+- update usr.lib.dovecot.lmtp (add /proc/*/mounts, /tmp/dovecot.lmtp.*, 
+  /{var/,}run/dovecot/mounts, deny capability block_suspend)
+
+- add apparmor-2.8.2-nm-dnsmasq-config.patch - allow dnsmasq read config 
+  created by recent NetworkManager (see 
+  http://cgit.freedesktop.org/NetworkManager/NetworkManager/commit/?id=d82669d3fdaa7ec70ef1b64941c101ac810c394b 
+  for update details)</comment>
+    <requestid>214399</requestid>
+  </revision>
+  <revision rev="63" vrev="16">
+    <srcmd5>94c1b3b5e95ce37684e4872ba36a9a77</srcmd5>
+    <version>2.8.2</version>
+    <time>1391077394</time>
+    <user>coolo</user>
+    <comment>- update apparmor-2.8.2-nm-dnsmasq-config.patch - allow access to pid file
+  and supplemental config directory (by develop7)
+
+- update apparmor-profiles-dovecot-bnc851984.diff:
+  - do not add access to @{DOVECOT_MAILSTORE} - not required by the main binary
+  - add abstractions/mysql 
+  - allow execution of some more /usr/lib/dovecot/* binaries
+  - better restrict access to /var/spool/postfix/private/
+- update usr.lib.dovecot.auth to allow to read mysql config files
+- update usr.lib.dovecot.dict and usr.lib.dovecot.lmtp:
+  add abstractions/nameservice instead of allowing more and more files</comment>
+    <requestid>215196</requestid>
+  </revision>
+  <revision rev="64" vrev="17">
+    <srcmd5>9ef12fb8ebaebc832be5a8e3792d598f</srcmd5>
+    <version>2.8.2</version>
+    <time>1391322542</time>
+    <user>coolo</user>
+    <comment>- use current ruby macros, the rb_sitearch is obsolete since at least
+  12.1 (forwarded request 220542 from coolo)</comment>
+    <requestid>220552</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>225a8d226a2cf9bceb599b9001d56d78</srcmd5>
+    <version>2.8.3</version>
+    <time>1392832494</time>
+    <user>coolo</user>
+    <comment>- update to AppArmor 2.8.3 (r2122) bugfix release
+  - fix some cache clearing bugs in apparmor_parser
+  - various fixes in mod_apparmor
+  - several profile updates, most of them were already included as patches
+    (except abstractions/winbind (bnc#863226), abstractions/fonts and 
+    abstractions/p11-kit)
+  - see http://wiki.apparmor.net/index.php/ReleaseNotes_2_8_3 for all details
+- update partially upstreamed apparmor-2.8.2-nm-dnsmasq-config.patch
+- remove upstream(ed) patches
+  - apparmor-2.8.2-fix-ntpd-profile.diff
+  - apparmor-abstractions-r2089-r2090.diff
+  - apparmor-abstractions-ssl_certs.diff
+  - apparmor-fix-url-in-manpages-r2093.diff
+  - apparmor-no-perl-smartmatch-r2088.diff
+  - apparmor-profiles-dnsmasq.diff
+  - apparmor-profiles-ntpd-r2103.diff
+  - apparmor-profiles-samba-create-dirs.diff
+  - apparmor-profiles-samba4.diff
+  - apparmor-unconfined-lang-r2094.diff
+  - apparmor-utils-po-de-r2091.diff</comment>
+    <requestid>222647</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>a46a4a6cef4893352bb0822baabc1d58</srcmd5>
+    <version>2.8.3</version>
+    <time>1395610171</time>
+    <user>scarabeus_factory</user>
+    <comment>- add Recommends: libnotify-tools to apparmor-utils (aa-notify -p
+  needs notify-send) (forwarded request 226903 from cboltz)</comment>
+    <requestid>226904</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>72441b69b612d8c18c55d456bebab839</srcmd5>
+    <version>2.8.3</version>
+    <time>1397829157</time>
+    <user>scarabeus_factory</user>
+    <comment>- update usr.sbin.winbindd profile (bnc#870607)
+  - restrict rw access to /var/cache/krb5rcache/ instead /var/tmp/
+
+- update usr.sbin.winbindd profile (bnc#870607)
+  - treat passdb.tdb.tmp as passdb.tdb
+  - allow rw access to /var/tmp/ (forwarded request 228512 from lmuelle)</comment>
+    <requestid>230739</requestid>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>2cf48b0b8b003d42499e47b1f4ffbd73</srcmd5>
+    <version>2.8.3</version>
+    <time>1405521444</time>
+    <user>coolo</user>
+    <comment>- add apparmor-profiles-clustered-samba.diff to permit clustered Samba
+  access to CTDB socket and databases (bnc#885317)
+
+- fix problems with dovecot and managesieve
+  * usr.lib.dovecot.managesieve-login: network inet6 stream
+  * usr.lib.dovecot.managesieve:
+    +#include &lt;tunables/dovecot&gt;
+      /usr/lib/dovecot/managesieve {
+       #include &lt;abstractions/base&gt;
+    +  capability setgid,
+    +  capability setuid,
+    +  network inet stream,
+    +  network inet6 stream,
+    +  @{DOVECOT_MAILSTORE}/ rw,
+    +  @{DOVECOT_MAILSTORE}/** rwkl,
+
+- add #include &lt;abstractions/wutmp&gt; to usr.lib.dovecot.auth</comment>
+    <requestid>241137</requestid>
+  </revision>
+  <revision rev="69" vrev="5">
+    <srcmd5>13493d709a8a06a80621ac66ad323fb1</srcmd5>
+    <version>2.8.3</version>
+    <time>1407236399</time>
+    <user>coolo</user>
+    <comment>- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+- add perl-apparmor-fix-bare-network-keyword-handling.diff:
+  perl-apparmor: Fix handling of network (or network all) (bnc#889650)
+- add perl-apparmor-handle-bare-capability-keyword.diff:
+  perl-apparmor: Fix handling of capability keyword (bnc#889651)
+- add perl-apparmor-properly-handle-bare-file-keyword.diff:
+  perl-apparmor: Properly handle bare file keyword (bnc#889652)</comment>
+    <requestid>243445</requestid>
+  </revision>
+  <revision rev="70" vrev="6">
+    <srcmd5>e814b51727d655fd97e406c85a7248f1</srcmd5>
+    <version>2.8.3</version>
+    <time>1407942476</time>
+    <user>lnussel</user>
+    <comment>- usr.lib.dovecot.auth: add '/etc/dovecot/* r' to allow reading
+  plaintext password files (bnc#874094)</comment>
+    <requestid>244266</requestid>
+  </revision>
+  <revision rev="71" vrev="8">
+    <srcmd5>e814b51727d655fd97e406c85a7248f1</srcmd5>
+    <version>2.8.3</version>
+    <time>1409300503</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>4c53176f85a354fac8f45b4789dd094f</srcmd5>
+    <version>2.8.96</version>
+    <time>1410326854</time>
+    <user>coolo</user>
+    <comment>- update to AppArmor 2.8.96 (aka 2.9 beta2 aka r2652)
+  - add unix abstract sockets, ptrace, and signal policy generation
+  - several bugfixes in the python tools and elsewhere
+  - move program-chunks/postfix-common to abstractions/
+  - drop upstreamed patches:
+    - apparmor-profiles-clustered-samba.diff
+    - perl-apparmor-fix-bare-network-keyword-handling.diff
+    - perl-apparmor-handle-bare-capability-keyword.diff
+    - perl-apparmor-properly-handle-bare-file-keyword.diff
+- re-enable installation of perl modules
+- move python modules to python3-apparmor package
+- create symlinks without aa- prefix only for tools existing in 2.8.x,
+  but not for new tools added in 2.9
+- make utils filelist explicit to ensure we have the right set of files
+  without aa- prefix in sbindir
+- switch easyprof python module location to python3
+- drop unused defines APPARMOR_DOC_DIR and JNI_SO
+- refresh patches:
+  - apparmor-utils-string-split (file moved)
+  - apparmor-profiles-dnsmasq-iface-mtu.patch
+  - apparmor-2.5.1-edirectory-profile
+
+(prepared Thu Mar 20 23:35:03 UTC 2014 in home project)
+- update to AppArmor 2.8.95 (aka 2.9 beta1)
+  - complete rewrite of the aa-* tools in python
+  - new tools: aa-cleanprof, aa-mergeprof
+  - extra profiles moved to /usr/share/apparmor/extra-profiles/ (bnc#713647)
+  - and much more, but there's no upstream changelog yet
+- drop upstreamed patches and files:
+  - usr.sbin.winbindd
+  - usr.lib.dovecot.*, tunables-dovecot, apparmor-profiles-dovecot-bnc851984.diff
+  - apparmor-init.py-gsoc.diff
+  - apparmor-2.8.2-nm-dnsmasq-config.patch
+- add %bcond_with perl and disable the perl subpackage temporarily (the perl
+  modules will be back in beta2)
+- drop the apparmorapplet-gnome, apparmor-dbus and profile-editor subpackages 
+  (they were disabled since a long time, and upstream no longer ships their code)
+  and the apparmor-profile-editor.desktop and apparmor-profile-editor.png files
+- drop apparmor-utils-subdomain-compat patch (was only included for &amp;lt;= 12.1)
+- remove libimmunix Provides/Obsoletes (libimmunix was a compat wrapper
+  and got finally dropped)
+- refresh apparmor-samba-include-permissions-for-shares.diff and
+  apparmor-2.5.1-edirectory-profile (forwarded request 247917 from cboltz)</comment>
+    <requestid>247918</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>9dea6a888a97440c415a3a56a59daec3</srcmd5>
+    <version>2.8.97</version>
+    <time>1412589976</time>
+    <user>coolo</user>
+    <comment>- update to AppArmor 2.8.97 (aka 2.9 beta3 aka r2721)
+  - several bugfixes in python and C tools
+  - rename &quot;__unused&quot; to &quot;unused&quot; in apparmor_parser to fix compilation
+    on openSUSE &lt;= 13.1 x86_64 (bnc#895495) 
+  - usr.lib.dovecot.auth profile: allow access to auth-token-secret.dat
+  - various small profile improvements
+  - update and add several testcases
+- drop upstreamed patch apparmor-profiles-dnsmasq-iface-mtu.patch
+- re-number remaining patches
+
+- split apparmor-profiles package into -profiles and -abstractions
+
+
+Please also forward this SR to 13.2</comment>
+    <requestid>254060</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>cfd69cbaff984b5b45e3ddfbd64650d8</srcmd5>
+    <version>2.8.97</version>
+    <time>1412851925</time>
+    <user>coolo</user>
+    <comment>- add apparmor-profiles-ntpd-pid-location.diff to cover new ntpd pid
+  location (bnc#899746) (forwarded request 254373 from cboltz)</comment>
+    <requestid>254375</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>60570ca04df322fa45b2bd7d945fd746</srcmd5>
+    <version>2.9.0</version>
+    <time>1414066785</time>
+    <user>coolo</user>
+    <comment>- update to AppArmor 2.9.0 (r2759)
+  - change aa-mergeprof to the final commandline syntax
+  - lots of bugfixes in the aa-* tools (bnc#900163, lp#1328707 and several
+    bugs without a formal bugreport)
+  - small additions to gnome, freedesktop.org, ubuntu-browsers.d/java 
+    and user-mail abstractions
+  - fix mod_apparmor to not break basic auth
+  - update perl modules to support signal, unix and ptrace rules (bnc#900013)
+  - don't warn about rules not supported by the kernel
+  - fix logging of &quot;audit capability&quot; (lp#1378091)
+  - add support for the &quot;hat&quot; keyword in apparmor.vim
+  - build html version of apparmor.vim manpage again (lp#1366572)
+  - see also http://wiki.apparmor.net/index.php/ReleaseNotes_2_9_0
+- update apparmor-abstractions-no-multiline.diff
+- remove upstreamed apparmor-profiles-ntpd-pid-location.diff
+
+- add apparmor-abstractions-no-multiline.diff: change all multiline
+  rules into one line. Needed for yast2-apparmor (bnc#900013) (forwarded request 257520 from cboltz)</comment>
+    <requestid>257521</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>bf541804847950f1b35910a1cd3d0f98</srcmd5>
+    <version>2.9.0</version>
+    <time>1416048265</time>
+    <user>dimstar_suse</user>
+    <comment>fix bashism in post script (forwarded request 260415 from Ledest)</comment>
+    <requestid>260448</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>6b75292e0317bf62c9c96dc926b18216</srcmd5>
+    <version>2.9.0</version>
+    <time>1416823874</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>262771</requestid>
+  </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>c660a8123c54e423e9dc75a9e3507624</srcmd5>
+    <version>2.9.0</version>
+    <time>1419331825</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dnsmasq profile to allow executing bash to run the --dhcp-script
+  argument. Also fixed /usr/lib -&amp;gt; /usr/{lib,lib64} to get libvirt
+  leasehealper script to run even on x86_64.
+  dnsmasq-profile-fixes.patch. boo#911001 (forwarded request 266140 from cbosdonnat)</comment>
+    <requestid>266151</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>a8d89d0cf23182b96ab901a46ccc42ba</srcmd5>
+    <version>2.9.1</version>
+    <time>1420429459</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 2.9.1 (2.9 branch r2831)
+  - fix log parsing for 3.16 kernels and syslog-style logs (boo#905368)
+  - several fixes and performance improvements in the aa-* utils
+  - profile updates for dnsmasq (boo#907870), nscd (boo#904620#c14),
+	useradd, sendmail, man and passwd
+  - see http://wiki.apparmor.net/index.php/ReleaseNotes_2_9_1
+    for full release notes
+- refresh dnsmasq-profile-fixes.patch (forwarded request 266969 from cboltz)</comment>
+    <requestid>266970</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>208ce3a7d4ba2001afdc1047953911ee</srcmd5>
+    <version>2.9.1</version>
+    <time>1421873661</time>
+    <user>coolo</user>
+    <comment>- add apparmor-changes-since-2.9.1.diff with upstream fixes since the
+  2.9.1 release
+  - update logparser.py to support changed syslog format (lp#1399027)
+  - update usr.sbin.dovecot and usr.lib.dovecot.imap{, -login} profiles
+    (lp#1296667)
+  - update the mysqld profile
+  - fix network rule description in apparmor.d(5) manpage
+- drop upstreamed dnsmasq-profile-fixes.patch
+- update expired GPG key
+
+
+Also add a missing bnc number in the Jan 1 2015 changelog entry.</comment>
+    <requestid>282163</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>29ed3b58a10fe791a6a3c91340dfbb8a</srcmd5>
+    <version>2.9.1</version>
+    <time>1424068580</time>
+    <user>coolo</user>
+    <comment>- add Requires: python3 to python3-apparmor package - readline isn't
+  part of python3-base (boo#917577) (forwarded request 285866 from cboltz)</comment>
+    <requestid>285867</requestid>
+  </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>4120eb2ba3d265f7dceb65bbd5923d76</srcmd5>
+    <version>2.9.1</version>
+    <time>1424826950</time>
+    <user>dimstar_suse</user>
+    <comment>- allow lessopen.sh to run /usr/bin/unzip-plain (boo#906858) (forwarded request 287051 from cboltz)</comment>
+    <requestid>287054</requestid>
+  </revision>
+  <revision rev="83" vrev="5">
+    <srcmd5>c9a27b4e68d6737e941c16ffefb8f5b6</srcmd5>
+    <version>2.9.1</version>
+    <time>1425377470</time>
+    <user>dimstar_suse</user>
+    <comment>- add apparmor-fix-stl-ostream.diff which fixes odd uses of
+  std::ostream which are not valid.  Fixes build with GCC 5 (forwarded request 287520 from rguenther)</comment>
+    <requestid>287995</requestid>
+  </revision>
+  <revision rev="84" vrev="6">
+    <srcmd5>ef3e97aa3385ad12b3c3761aa14d0a9d</srcmd5>
+    <version>2.9.1</version>
+    <time>1429658032</time>
+    <user>dimstar_suse</user>
+    <comment>- make sure %service_del_postun doesn't call systemctl try-restart
+  (boo#853019, bare systemd edition)
+- add samba-4.2-profiles.diff: update samba (winbindd and nmb)
+  profiles for samba 4.2 (boo#921098, boo#923201)
+
+- only install apparmor.service for openSUSE &gt; 13.2
+
+- Add a native systemd unit which *at the moment* only
+  wraps/masks the early boot script.</comment>
+    <requestid>297856</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>fa789611d9fa83a15aa4ca7fa4939a85</srcmd5>
+    <version>2.9.2</version>
+    <time>1430113571</time>
+    <user>coolo</user>
+    <comment>- update to AppArmor 2.9.2 (2.9 branch r2911)
+  - lots of bugfixes in the parser and the aa-* tools (including
+    boo#918787)
+  - update dovecot and dnsmasq profiles and several abstractions
+    (including boo#911001)
+  - see http://wiki.apparmor.net/index.php/ReleaseNotes_2_9_2 for the
+    full changelog
+- remove upstream(ed) patches apparmor-changes-since-2.9.1.diff and
+  apparmor-fix-stl-ostream.diff
+- replace GPG key with new AppArmor GPG signing key, see
+  https://launchpad.net/apparmor/+announcement/13404 (forwarded request 303871 from cboltz)</comment>
+    <requestid>303872</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>05141458468ebedb61c7ae73b41e8ac9</srcmd5>
+    <version>2.9.2</version>
+    <time>1435170190</time>
+    <user>dimstar_suse</user>
+    <comment>- systemd-rpm-macros and %systemd_requires were at the wrong place,
+  move them to the parser package (boo#931792) (forwarded request 312166 from cboltz)</comment>
+    <requestid>312168</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>a0e3f6584222e62655fc97061ec6385a</srcmd5>
+    <version>2.10</version>
+    <time>1437724666</time>
+    <user>coolo</user>
+    <comment>- update to AppArmor 2.10 (trunk r3205)
+  - profile names can now contain variables
+  - improved profile compile time in apparmor_parser
+  - lots of improvements, refactoring and bugfixes in the aa-* tools
+  - new apis for managing and loading profile caches into the kernel in
+    libapparmor
+  - lots of profile updates
+  - see http://wiki.apparmor.net/index.php/ReleaseNotes_2_10 for the
+    complete changelog with more details
+- add new apparmor_private.h and the aa_query_label(2), aa_features(3),
+  aa_kernel_interface(3), aa_policy_cache(3), aa_splitcon(3) manpages
+  to libapparmor-devel
+- drop apparmor-2.5.1-edirectory-profile patch - it's most probably
+  no longer needed (see boo#621394 for details)
+- drop upstreamed samba-4.2-profiles.diff
+- refresh apparmor-samba-include-permissions-for-shares.diff (forwarded request 317971 from cboltz)</comment>
+    <requestid>317972</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>2ed9049927a027e9729181cac1caeb58</srcmd5>
+    <version>2.10</version>
+    <time>1438548248</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-initscript-aa_log_end_msg.diff - fixes ugly initscript
+  output (boo#862170) (forwarded request 318424 from cboltz)</comment>
+    <requestid>318425</requestid>
+  </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>f6da1635d8e1d50a9bbc4ee327856be9</srcmd5>
+    <version>2.10</version>
+    <time>1438899412</time>
+    <user>dimstar_suse</user>
+    <comment>- add apparmor-winbindd-r3213.diff - add missing k permissions for
+  /etc/samba/smbd.tmp/msg/* in winbindd profile (boo#921098 #c15..19)</comment>
+    <requestid>320064</requestid>
+  </revision>
+  <revision rev="90" vrev="4">
+    <srcmd5>5afd7c3307666eea33a1a8c92aa03583</srcmd5>
+    <version>2.10</version>
+    <time>1443068010</time>
+    <user>coolo</user>
+    <comment>- netstat moved to net-tools-deprecated in Tumbleweed (boo#944904)</comment>
+    <requestid>331543</requestid>
+  </revision>
+  <revision rev="91" vrev="5">
+    <srcmd5>9cbf5d35c4b814db5d2c33d8ca184cd0</srcmd5>
+    <version>2.10</version>
+    <time>1445092682</time>
+    <user>coolo</user>
+    <comment>- add syslog-ng-profile-boo948584.diff - add several permissions needed
+  by latest syslog-ng (boo#948584, boo#948753)
+- add upstream-profile-updates-r3205-3241.diff with several profile updates:
+  - add /usr/share/locale-bundle/** to abstractions/base
+  - allow dnsmask to use /bin/sh (boo#940749) and /bin/dash
+  - allow dovecot imap to read /run/dovecot/mounts
+  - allow avahi-daemon to write to /run/systemd/notify
+  - allow ntpd to read $PATH directory listings (boo#945592, boo#948752)
+  - update dhclient profile
+  - allow skype to read @{PROC}/@{pid}/net/dev (boo#939568)
+  - and some other small updates
+- drop upstreamed apparmor-winbindd-r3213.diff (included in the
+  upstream-profile-updates patch) (forwarded request 337046 from cboltz)</comment>
+    <requestid>337047</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>4863a35a18753d568bd3258653010a24</srcmd5>
+    <version>2.10.1</version>
+    <time>1461855116</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 2.10.1 (2.10 branch r3326):
+  - fix incorrect output of child profile names (apparmor_parser -N) which
+    caused 'rcapparmor reload' to remove child profiles and hats (lp#1551950)
+  - fix a crash in aa-logprof / logparser.py for change_hat log events
+    (lp#1523297) and log events that look like file events, but aren't
+    (lp#1540562, lp#1525119, lp#1466812)
+  - write unix rules when saving a profile (lp#1522938, boo#954104#c3)
+  - several fixes for variable handling in aa-logprof
+  - map c (create) log events to w instead of a
+  - add python to the &quot;no Px rule&quot; list in logprof.conf
+  - let aa-logprof check for duplicate profiles
+  - let aa-status work without the apparmor.fail python module (boo#971917,
+    lp#1480492)
+  - add permissions in several profiles (including boo#948584, boo#948753,
+    boo#954959, boo#954958, boo#971790, boo#964971, boo#921098, boo#923201 and
+    boo#921098#c15).
+  - and many more fixes, see the full changelog at
+    http://wiki.apparmor.net/index.php/ReleaseNotes_2_10_1
+- drop upstream(ed) patches:
+  - fix-initscript-aa_log_end_msg.diff
+  - syslog-ng-profile-boo948584.diff
+  - upstream-profile-updates-r3205-3241.diff
+- refresh patches:
+  - apparmor-abstractions-no-multiline.diff
+  - apparmor-samba-include-permissions-for-shares.diff
+- drop libapparmor autogen.sh call (broke the build) and remove libtool BR</comment>
+    <requestid>391406</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>7fd4247870671c57bdba0cf662e1632a</srcmd5>
+    <version>2.10.1</version>
+    <time>1464204136</time>
+    <user>dimstar_suse</user>
+    <comment>- add profiles-ping-inet6-r3449.diff - latest ping also does IPv6 (boo#980596)
+
+
+Please accept this SR before accepting SR 397541 (iputils).</comment>
+    <requestid>397705</requestid>
+  </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>f1948781a251f9ebadb9dad48e069f7f</srcmd5>
+    <version>2.10.1</version>
+    <time>1472594482</time>
+    <user>dimstar_suse</user>
+    <comment>really delete profiles-ping-inet6-r3449.diff (forwarded request 423553 from cboltz)</comment>
+    <requestid>423554</requestid>
+  </revision>
+  <revision rev="95" vrev="4">
+    <srcmd5>e88175e63b8a747477385f0a2a783937</srcmd5>
+    <version>2.10.1</version>
+    <time>1476778142</time>
+    <user>dimstar_suse</user>
+    <comment>- add changes-since-2.10.1--r3347..3353.diff with upstream changes and
+  fixes in the 2.10 branch, including
+  - allow writing *.qf files (for disk-based buffering) in syslog-ng profile
+  - add several permissions to the dovecot profiles (deb#835826)
+  - add a missing path in the traceroute profile (forwarded request 435008 from cboltz)</comment>
+    <requestid>435009</requestid>
+  </revision>
+  <revision rev="96" vrev="5">
+    <srcmd5>e9f909241798e6e1a01841aaefea56e8</srcmd5>
+    <version>2.10.1</version>
+    <time>1477903954</time>
+    <user>dimstar_suse</user>
+    <comment>- add nscd-var-lib.diff to allow /var/lib/nscd/ in the nscd profile and
+  abstractions/nameservice (path changed in latest nscd in Tumbleweed)
+
+
+Note: The glibc/nscd package that needs this change was already released
+with the 20161020 snapshot, so it would be a good idea to get the
+AppArmor profile updates released quickly ;-) (forwarded request 436984 from cboltz)</comment>
+    <requestid>436985</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>2e5116eea2adb29291aba48c47e58ba0</srcmd5>
+    <version>2.10.2</version>
+    <time>1485509995</time>
+    <user>dimstar_suse</user>
+    <comment>[New attemp with /var/lib/apparmor/cache as cache location, as discussed
+with DimStar on IRC. No other differences compared to SR 449669.]
+
+- change /etc/apparmor.d/cache symlink to /var/lib/apparmor/cache/.
+  This is part of the root partition (at least with default partitioning)
+  and should be available earlier than /var/cache/apparmor/
+  (boo#1015249, boo#980081, bsc#1016259)
+- add dependency on var-lib.mount to apparmor.service as safety net
+
+- update to AppArmor 2.10.2 maintenance release
+  - lots of bugfixes and profile updates (including boo#1000201,
+    boo#1009964, boo#1014463)
+  - see http://wiki.apparmor.net/index.php/ReleaseNotes_2_10_2 for details
+- add aa-unconfined-fix-netstat-call-2.10r3380.diff to fix a regression
+  in aa-unconfined
+- drop upstream(ed) patches:
+  - changes-since-2.10.1--r3326..3346.diff
+  - changes-since-2.10.1--r3347..3353.diff
+  - libapparmor-fix-import-path.diff (upstream fix is slightly different)
+  - nscd-var-lib.diff
+- refresh apparmor-abstractions-no-multiline.diff</comment>
+    <requestid>452189</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>17da2c44c48b4cb1bf7263e74345815d</srcmd5>
+    <version>2.11.0</version>
+    <time>1486773225</time>
+    <user>dimstar_suse</user>
+    <comment>TL;DR: update AppArmor to 2.11, split off libapparmor package/spec, move libapparmor to /usr
+
+
+Details:
+
+- add upstream-changes-r3616..3628.diff:
+  - update abstractions/base, abstractions/apache2-common and dovecot profiles
+  - merge ask_the_questions() of aa-logprof and aa-mergeprof
+  - pass LDFLAGS when building parser, libapparmor perl bindings and pam_apparmor
+- adjust deleting the cache in profiles %post to the new cache location
+- silence errors when deleting the cache (boo#976914)
+
+- split libapparmor into separate spec to get rid of build loop
+  involving mariadb, systemd, apparmor, libapr and mariadb again
+  (see the discussion in SR 448871 for details)
+- libapparmor.spec is based on the AppArmor 2.11 apparmor.spec, but
+  with minimum BuildRequires
+
+- update to AppArmor 2.11.0
+  - apparmor_parser now supports parallel compiles and loads
+  - add full support for dbus, ptrace and signal rules and events to the
+    utils
+  - full rewrite of the file rule handling in the utils
+  - lots of improvements and fixes
+  - see http://wiki.apparmor.net/index.php/ReleaseNotes_2_11 for the
+    detailed changelog
+- patches:
+  - add sshd-profile-drop-local-include-r3615.diff to fix 'make check'
+  - drop aa-unconfined-fix-netstat-call-2.10r3380.diff, no longer needed
+  - refresh apparmor-abstractions-no-multiline.diff
+  - refresh apparmor-samba-include-permissions-for-shares.diff
+- spec changes:
+  - aa-unconfined switched to using ss (from iproute2), adjust Recommends:
+  - move libapparmor to /usr/lib*/
+  - drop %if %suse_version checks for 12.x
+  - change several Obsoletes from %version to &lt; 2.9. Those package names
+    weren't used since years, and 2.9 is still a careful choice
+  - include apparmor.service independent of %suse_version
+  - techdoc.pdf is now shipped in upstream tarball to reduce BuildRequires
+    - drop latex2html, texlive-* and w3m BuildRequires
+    - techdoc.txt and techdoc.html not included, drop them from the package
+  - run most of utils/ make check (some tests expect /etc/apparmor.d/ and
+    /sbin/apparmor_parser to exist, skip them)
+  - BuildRequires python3-pyflakes (utils tests) and dejagnu (libapparmor tests)
+  - drop sed'ing python3 into aa-* shebang (upstreamed)
+  - build binutils
+    - aa-exec is now written in C and lives in /usr/bin/, move it to the
+      apparmor_parser package and create a compability symlink in /usr/sbin/
+    - aa-exec manpage moved to section 1
+    - aa-enabled is a small new tool to find out if AppArmor is enabled
+  - package new aa_stack_profile(2) manpage</comment>
+    <requestid>453537</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>c427539065b78a7f1d79e12517c61242</srcmd5>
+    <version>2.11.0</version>
+    <time>1487461548</time>
+    <user>dimstar_suse</user>
+    <comment>- add python3-drop-re-locale.patch: remove deprecated re.LOCALE
+  flag in Python UI as it was dropped from Python 3.6 (lp#1661766)
+
+- Fix RPM groups</comment>
+    <requestid>458843</requestid>
+  </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>1098065e5306d331c3ddb403c74e04be</srcmd5>
+    <version>2.11.0</version>
+    <time>1490221049</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file:
+  - don't use insserv if we afterwards call systemd, this can
+    have bad side effects
+  - remove dead code
+  - remove now obsolete 'distro' checks
+- Replace init.d script with new wrapper working with systemd (forwarded request 480782 from kukuk)</comment>
+    <requestid>481186</requestid>
+  </revision>
+  <revision rev="101" vrev="4">
+    <srcmd5>6c0bc7aa478ab409cfeecd08fad1588b</srcmd5>
+    <version>2.11.0</version>
+    <time>1491907146</time>
+    <user>maxlin_factory</user>
+    <comment>- add upstream-changes-r3629..3648.diff:
+  - preserve unknown profiles when reloading apparmor.service
+    (CVE-2017-6507, lp#1668892, boo#1029696)
+  - add aa-remove-unknown utility to unload unknown profiles (lp#1668892)
+  - update nvidia abstraction for newer nvidia drivers
+  - don't enforce ordering of dbus rule attributes in utils (lp#1628286)
+  - add --parser, --base and --Include option to aa-easyprof to allow
+    non-standard paths (useful for tests) (lp#1521031)
+  - move initialization code in apparmor.aa to init_aa(). This allows to
+    run all utils tests even if /etc/apparmor.d/ or /sbin/apparmor_parser
+    don't exist.
+  - several improvements in the utils tests
+- drop upstreamed python3-drop-re-locale.patch
+- no longer delete/skip some of the utils tests (to allow this, add
+  parser-tests-dbus-duplicated-conditionals.diff)
+- add var.mount dependeny to apparmor.service (boo#1016259#c34)</comment>
+    <requestid>482776</requestid>
+  </revision>
+  <revision rev="102" vrev="5">
+    <srcmd5>5f419fe878a5144ea946b9eeefd602a6</srcmd5>
+    <version>2.11.0</version>
+    <time>1500804804</time>
+    <user>dimstar_suse</user>
+    <comment>- don't rely on implementation details for reload in %post
+
+- add JSON support. Required for FATE#323380.
+  (apparmor-yast-cleanup.patch, apparmor-json-support.patch)</comment>
+    <requestid>511329</requestid>
+  </revision>
+  <revision rev="103" vrev="6">
+    <srcmd5>d285bf0b69f046762dc1b5ece667d9cc</srcmd5>
+    <version>2.11.0</version>
+    <time>1503592000</time>
+    <user>dimstar_suse</user>
+    <comment>- do not require exact X.Y version of &quot;python3&quot;
+- require also matching python(abi) which is arguably more important (forwarded request 517036 from matejcik)</comment>
+    <requestid>517044</requestid>
+  </revision>
+  <revision rev="104" vrev="7">
+    <srcmd5>6c7a49c07c6214cced50ab2e8a703e72</srcmd5>
+    <version>2.11.0</version>
+    <time>1506340646</time>
+    <user>dimstar_suse</user>
+    <comment>- add apparmor-fix-podsyntax.patch from mailing list to fix
+  compilation with perl 5.26 (forwarded request 528495 from coolo)</comment>
+    <requestid>528520</requestid>
+  </revision>
+  <revision rev="105" vrev="8">
+    <srcmd5>2c97a52038edbca419100e1cedbe9056</srcmd5>
+    <version>2.11.0</version>
+    <time>1507628036</time>
+    <user>dimstar_suse</user>
+    <comment>- profiles-sockets-temporary-fix.patch to cater to nameservices with the
+  new sockets mediation, until unix rules are upstreamed (boo#1061195)</comment>
+    <requestid>531184</requestid>
+  </revision>
+  <revision rev="106" vrev="9">
+    <srcmd5>0b9855ed8fb5dc3e5533809690f3821e</srcmd5>
+    <version>2.11.0</version>
+    <time>1508769636</time>
+    <user>dimstar_suse</user>
+    <comment>- add nameservice-libtirpc.diff to fix NIS/YP logins (forwarded request 534596 from cboltz)</comment>
+    <requestid>534597</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>4d39bff16770c07f3e0b9337ed62e8b1</srcmd5>
+    <version>2.11.1</version>
+    <time>1509104872</time>
+    <user>dimstar_suse</user>
+    <comment>apparmor:
+- update to AppArmor 2.11.1
+  - add permissions to several profiles and abstractions (including
+    lp#1650827 and boo#1057900)
+  - several fixes in the aa-* tools (including lp#1689667, lp#1628286,
+    lp#1661766 and boo#1062667)
+  - fix downgrading/converting of 'unix' rules (will be supported in
+    kernel 4.15) to 'network unix' rules in apparmor_parser (boo#1061195)
+  - see http://wiki.apparmor.net/index.php/ReleaseNotes_2_11_1 for
+    upstream changelog
+- remove upstream(ed) patches
+  - upstream-changes-r3616..3628.diff
+  - upstream-changes-r3629..3648.diff
+  - parser-tests-dbus-duplicated-conditionals.diff
+  - apparmor-fix-podsyntax.patch
+  - sshd-profile-drop-local-include-r3615.diff
+- refresh apparmor-yast-cleanup.patch
+- add utils-fix-sorted-save_profiles-regression.diff to fix a regression
+  in displaying the &quot;changed profiles&quot; list in aa-logprof
+
+Also add bugzilla reference to the previous change:
+- add nameservice-libtirpc.diff to fix NIS/YP logins (boo#1062244)
+
+
+libapparmor:
+- update to AppArmor 2.11.1
+  - mostly test-related changes in libapparmor
+  - see http://wiki.apparmor.net/index.php/ReleaseNotes_2_11_1 for
+    upstream changelog (forwarded request 536620 from cboltz)</comment>
+    <requestid>536621</requestid>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>d5c0d81d84ff95162e76e09cb02b22a2</srcmd5>
+    <version>2.11.1</version>
+    <time>1512546777</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1069346 (forwarded request 546471 from goldwynr)</comment>
+    <requestid>547738</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>cc4e54a0349ed9cf7c3c8da8346724fb</srcmd5>
+    <version>2.12</version>
+    <time>1514840736</time>
+    <user>dimstar_suse</user>
+    <comment>- add 32-bit-no-uid.diff to fix handling of log events without ouid on
+  32 bit systems (forwarded request 560030 from cboltz)</comment>
+    <requestid>560031</requestid>
+  </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>ef4f5b0e8023fc47607e9cb2c29fa37a</srcmd5>
+    <version>2.12</version>
+    <time>1515342105</time>
+    <user>dimstar_suse</user>
+    <comment>- add parser-write-cache-warn-only.diff to make cache write failures a
+  warning instead of an error (boo#1069906, boo#1074429)
+- reduce dependeny on libnotify-tools (used by aa-notify -p) to &quot;Suggests&quot;
+  to avoid pulling in several Gnome packages on servers (boo#1067477) (forwarded request 561674 from cboltz)</comment>
+    <requestid>561675</requestid>
+  </revision>
+  <revision rev="111" vrev="3">
+    <srcmd5>9b2f6c6b6291f60da026a785a3576781</srcmd5>
+    <version>2.12</version>
+    <time>1516358795</time>
+    <user>dimstar_suse</user>
+    <comment>- add disable-cache-on-ro-fs.diff - disable write cache if filesystem is
+  read-only and don't bail out (bsc#1069906, bsc#1074429)</comment>
+    <requestid>566495</requestid>
+  </revision>
+  <revision rev="112" vrev="4">
+    <srcmd5>8081a173fc01c0f1a38c8203327fdb0c</srcmd5>
+    <version>2.12</version>
+    <time>1520253379</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1082956 (forwarded request 581986 from goldwynr)</comment>
+    <requestid>582183</requestid>
+  </revision>
+  <revision rev="113" vrev="5">
+    <srcmd5>6f422a5ad353d9b2f6b4f8c0e14e6e96</srcmd5>
+    <version>2.12</version>
+    <time>1523956120</time>
+    <user>dimstar_suse</user>
+    <comment>- add dovecot-stats.diff:
+  - add dovecot/stats profile and allow dovecot to run it (boo#1088161)
+  - allow dovecot/auth to write /run/dovecot/old-stats-user (part of boo#1087753)
+- update 32-bit-no-uid.diff with upstream fix (forwarded request 595789 from cboltz)</comment>
+    <requestid>595790</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>e68418933661d385b609f957f1b5a105</srcmd5>
+    <version>2.13</version>
+    <time>1524400738</time>
+    <user>dimstar_suse</user>
+    <comment>- create and package precompiled cache (/usr/share/apparmor/cache,
+  read-only) (boo#1069906, boo#1074429)
+- change (writeable) cache directory to /var/cache/apparmor/ - with the
+  new btrfs layout, the only reason for using /var/lib/apparmor/cache/
+  (which was &quot;it's part of the / subvolume&quot;) is gone, and /var/cache
+  makes more sense for the cache
+- adjust parser.conf (via apparmor-enable-profile-cache.diff) to use both
+  cache locations
+- clear cache also in %post of abstractions package
+--------------------------------------------------------------------
+- update to AppArmor 2.13
+  - add support for multiple cache directories and cache overlays
+    (boo#1069906, boo#1074429)
+  - add support for conditional includes in policy
+  - remove group restrictions from aa-notify (boo#1058787)
+  - aa-complain etc.: set flags for profiles represented by a glob
+  - aa-status: split profile from exec name
+  - several profile and abstraction updates
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13
+    for the detailed upstream changelog
+- drop upstreamed patches and files:
+  - aa-teardown
+  - apparmor.service
+  - apparmor.systemd
+  - 32-bit-no-uid.diff
+  - disable-cache-on-ro-fs.diff
+  - dovecot-stats.diff
+  - parser-write-cache-warn-only.diff
+  - set-flags-for-profiles-represented-by-glob.patch
+  - fix-regression-in-set-flags.patch
+- drop spec code that handled installing aa-teardown, apparmor.service
+  and apparmor.systemd (now part of upstream Makefile)
+- simplify &quot;make -C profiles parser-check&quot; call (upstream Makefile bug
+  that required to call &quot;cd&quot; was fixed)
+- add aa-teardown-path.diff - install aa-teardown in /usr/sbin/
+- move 'exec' symlink to parser package (belongs to aa-exec)
+--------------------------------------------------------------------
+- Set flags for profiles represented by glob (bsc#1086154)
+   set-flags-for-profiles-represented-by-glob.patch
+   fix-regression-in-set-flags.patch
+
+
+libapparmor
+- update to AppArmor 2.13
+  - add support for multiple cache directories and cache overlays
+    (boo#1069906, boo#1074429)
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13
+    for the detailed upstream changelog</comment>
+    <requestid>598829</requestid>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>cea807fd4b7d92b97b419cb8b95475f9</srcmd5>
+    <version>2.13</version>
+    <time>1524505873</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-apparmor-systemd-perms.diff:
+  fix permissions of /lib/apparmor/apparmor.systemd (boo#1090545) (forwarded request 600114 from cboltz)</comment>
+    <requestid>600115</requestid>
+  </revision>
+  <revision rev="116" vrev="3">
+    <srcmd5>860e48c555e2df5e77adc4c2de5623cd</srcmd5>
+    <version>2.13</version>
+    <time>1525071000</time>
+    <user>dimstar_suse</user>
+    <comment>- exclude the /etc/apparmor.d/cache.d/ directory from aa-logprof parsing
+  (logprof-skip-cache-d.diff) (forwarded request 602407 from cboltz)</comment>
+    <requestid>602408</requestid>
+  </revision>
+  <revision rev="117" vrev="4">
+    <srcmd5>4424f10c81b3adad9dcd818a525d1f4f</srcmd5>
+    <version>2.13</version>
+    <time>1526219636</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-samba-profiles.patch - smbd loads new shared libraries.
+  Allow winbindd to access new kerberos credential cache location
+  (boo#1092099) (forwarded request 605463 from scabrero)</comment>
+    <requestid>605723</requestid>
+  </revision>
+  <revision rev="118" vrev="5">
+    <srcmd5>03668f9761be1aae3bec233992a0ca62</srcmd5>
+    <version>2.13</version>
+    <time>1535367311</time>
+    <user>dimstar_suse</user>
+    <comment>- add make-pyflakes-happy.diff to fix an unused variable (SR 629206)</comment>
+    <requestid>630976</requestid>
+  </revision>
+  <revision rev="119" vrev="6">
+    <srcmd5>87c5b663026364f4989be8a7c5cd7a33</srcmd5>
+    <version>2.13</version>
+    <time>1540198973</time>
+    <user>dimstar_suse</user>
+    <comment>- update rpmlintrc:
+  - whitelist .features file which is part of the pre-compiled cache
+  - comment out filters for the disabled tomcat_apparmor subpackage
+
+- Backport dnsmasq fix:
+  025c7dc6 - dnsmasq-Add-permission-to-open-log-files.patch
+  (boo#1111342)</comment>
+    <requestid>641133</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>e348e75c434169777c7d7e3c2f65b9ef</srcmd5>
+    <version>2.13.2</version>
+    <time>1545996680</time>
+    <user>dimstar_suse</user>
+    <comment>Note: please accept before SR 660554 - or put this SR into Staging:F and accept them together.
+
+
+- netconfig: write resolv.conf to /run with link to /etc (fate#325872,
+  boo#1097370) [patch apparmor-nameservice-resolv-conf-link.patch]
+
+- update to AppArmor 2.13.2
+  - add profile names to most profiles
+  - update dnsmasq profile (pid file and logfile path) (boo#1111342)
+  - add vulkan abstraction
+  - add letsencrypt certificate path to abstractions/ssl_*
+  - ignore *.orig and *.rej files when loading profiles
+  - fix aa-complain etc. to handle named profiles
+  - several bugfixes and small profile improvements
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13.2
+    for the detailed upstream changelog
+- remove upstreamed fix-syntax-error-in-rc.apparmor.functions.patch
+
+- update to 2.13.1
+  - add qt5 and qt5-compose-cache-write abstractions
+  - add @{uid} and @{uids} kernel var placeholders
+  - several profile and abstraction updates
+  - ignore &quot;abi&quot; rules in parser and tools (instead of erroring out)
+  - utils: fix overwriting of child profile flags if they differ from
+    the main profile
+  - several bugfixes (including boo#1100779)
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13.1
+    for the detailed upstream changelog
+- remove upstream(ed) patches:
+  - aa-teardown-path.diff
+  - fix-apparmor-systemd-perms.diff
+  - logprof-skip-cache-d.diff
+  - fix-samba-profiles.patch
+  - make-pyflakes-happy.diff
+  - dnsmasq-Add-permission-to-open-log-files.patch
+- refresh apparmor-samba-include-permissions-for-shares.diff
+- add fix-syntax-error-in-rc.apparmor.functions.patch
+
+- update to AppArmor 2.13.2
+  - no changes in libapparmor
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13.2
+    for the detailed upstream changelog
+
+- update to AppArmor 2.13.1
+  - several bug fixes
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13.1
+    for the detailed upstream changelog</comment>
+    <requestid>660711</requestid>
+  </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>7676a9f56c95ea0f15caa6abfb8713af</srcmd5>
+    <version>2.13.2</version>
+    <time>1546946323</time>
+    <user>dimstar_suse</user>
+    <comment>- add profile_filename_cornercase.diff: drop check that lets aa-logprof
+  error out in a corner-case (log event for a non-existing profile while
+  a profile file with the default filename for that non-existing profile
+  exists) (boo#1120472) (forwarded request 662541 from cboltz)</comment>
+    <requestid>662542</requestid>
+  </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>ee05b478c2319be14863e6e824361112</srcmd5>
+    <version>2.13.2</version>
+    <time>1547554506</time>
+    <user>dimstar_suse</user>
+    <comment>- add apparmor-lessopen-nfs-workaround.diff: allow network access in
+  lessopen.sh for reading files on NFS (workaround for boo#1119937 /
+  lp#1784499) (forwarded request 663645 from cboltz)</comment>
+    <requestid>663646</requestid>
+  </revision>
+  <revision rev="123" vrev="4">
+    <srcmd5>c3ef85934a46058fa643708a31d8a765</srcmd5>
+    <version>2.13.2</version>
+    <time>1549311848</time>
+    <user>coolo</user>
+    <comment>IMPORTANT: the dnsmasq profile update is needed by the updated libvirtd profile in SR 668191, so please include this SR in Staging:H.
+
+
+
+- add dnsmasq-libvirtd.diff: allow peer=libvirtd in the dnsmasq profile
+  to match the newly added libvirtd profile name (boo#1118952#c3)
+
+- Use %license instead of %doc [bsc#1082318]</comment>
+    <requestid>668473</requestid>
+  </revision>
+  <revision rev="124" vrev="5">
+    <srcmd5>7f33b303b5605e23bd762b90aa8d1a55</srcmd5>
+    <version>2.13.2</version>
+    <time>1551468594</time>
+    <user>coolo</user>
+    <comment>- add dnsmasq-revert-alternation.diff: revert path alternation in
+  dnsmasq profile and re-add peer=/usr/sbin/libvirtd rules to avoid
+  breaking libvirtd (boo#1127073)</comment>
+    <requestid>679945</requestid>
+  </revision>
+  <revision rev="125" vrev="6">
+    <srcmd5>e6d0dd582581a7a44347f1f20de53a9c</srcmd5>
+    <version>2.13.2</version>
+    <time>1552464275</time>
+    <user>dimstar_suse</user>
+    <comment>- add usrmerge-fixes.diff: fix test failures when /bin/sh is handled by
+  update-alternatives (boo#1127877) (forwarded request 682453 from cboltz)</comment>
+    <requestid>682454</requestid>
+  </revision>
+  <revision rev="126" vrev="7">
+    <srcmd5>d9e716d9c1ed867778242e3c5cd9b2c4</srcmd5>
+    <version>2.13.2</version>
+    <time>1555321862</time>
+    <user>dimstar_suse</user>
+    <comment>- update lessopen.sh profile for usrMerge (bash and tar) (boo#1132350) (forwarded request 694059 from cboltz)</comment>
+    <requestid>694060</requestid>
+  </revision>
+  <revision rev="127" vrev="8">
+    <srcmd5>02ed1261f786e373179f0c8245982ceb</srcmd5>
+    <version>2.13.2</version>
+    <time>1556621720</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO (boo#1133091). (forwarded request 697748 from marxin)</comment>
+    <requestid>697782</requestid>
+  </revision>
+  <revision rev="128" vrev="9">
+    <srcmd5>3566c655916c37f3ffd66fd564930f20</srcmd5>
+    <version>2.13.2</version>
+    <time>1559902637</time>
+    <user>dimstar_suse</user>
+    <comment>- add upstream libapparmor-swig-4.diff: fix libapparmor tests with swig
+  4.0 (boo#1135751) (forwarded request 707832 from cboltz)</comment>
+    <requestid>707833</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>8aa2995be0312bd9e8518293958a6042</srcmd5>
+    <version>2.13.3</version>
+    <time>1561194286</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.13.3
+  - profile updates for dnsmasq, dovecot, identd, syslog-ng
+  - new &quot;lsb_release&quot; profile (only used when using &quot;Px -&gt; lsb_release&quot;)
+  - fix buggy syntax in tunables/share
+  - several abstraction updates
+  - parser: fix &quot;Px -&gt; foo-bar&quot; (the &quot;-&quot; was rejected before)
+  - several bugfixes in aa-genprof and aa-logprof
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13.3
+    for the detailed upstream changelog
+- drop upstream(ed) patches:
+  - apparmor-nameservice-resolv-conf-link.patch
+  - profile_filename_cornercase.diff
+  - dnsmasq-libvirtd.diff
+  - dnsmasq-revert-alternation.diff
+  - usrmerge-fixes.diff
+  - libapparmor-swig-4.diff
+- re-number remaining patches
+
+libapparmor:
+- update to AppArmor 2.13.1
+  - some fixes in cache handling
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13.3
+    for the detailed upstream changelog</comment>
+    <requestid>710683</requestid>
+  </revision>
+</revisionlist>

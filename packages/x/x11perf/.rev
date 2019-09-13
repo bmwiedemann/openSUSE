@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>edfee6bdc3064640feeb10d9a6e0f92a</srcmd5>
+    <version>1.5.4</version>
+    <time>1336471209</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115394</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>edfee6bdc3064640feeb10d9a6e0f92a</srcmd5>
+    <version>1.5.4</version>
+    <time>1340184331</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>edfee6bdc3064640feeb10d9a6e0f92a</srcmd5>
+    <version>1.5.4</version>
+    <time>1359110586</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>edfee6bdc3064640feeb10d9a6e0f92a</srcmd5>
+    <version>1.5.4</version>
+    <time>1379664984</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>22b743b22bbadc358e05c56fd280848c</srcmd5>
+    <version>1.5.4</version>
+    <time>1391770649</time>
+    <user>scarabeus_factory</user>
+    <comment>- fixed license to HPND in specfile</comment>
+    <requestid>221114</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>22b743b22bbadc358e05c56fd280848c</srcmd5>
+    <version>1.5.4</version>
+    <time>1409303662</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>051fc568c086e4061bd2569a35eb5a7a</srcmd5>
+    <version>1.6.0</version>
+    <time>1429948433</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.6.0:
+  * This release adds one new general option:
+    -pause &lt;s&gt;                pause for &lt;s&gt; seconds between each run
+    and several new test options:
+    -crgb10text                Char in 80-char rgb core line (Charter 10)
+    -crgb24text                Char in 30-char rgb core line (Charter 24)
+    -crgbftext                 Char in 80-char rgb core line (Courier 12)
+    -magpixwin10               Scale 5x5 from pixmap to 10x10 window
+    -magpixwin100              Scale 50x50 from pixmap to 100x100 window
+    -magpixwin500              Scale 250x250 from pixmap to 500x500 window
+    -minpixwin10               Scale 10x10 from pixmap to 5x5 window
+    -minpixwin100              Scale 100x100 from pixmap to 5x5 window
+    -minpixwin500              Scale 500x500 from pixmap to 250x250 window</comment>
+    <requestid>303655</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>da5d8c4da050f9c7a10a605f44ab4f56</srcmd5>
+    <version>1.6.1</version>
+    <time>1553635937</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.1
+  * This is a minor maintainance and bug fix release.</comment>
+    <requestid>687613</requestid>
+  </revision>
+</revisionlist>

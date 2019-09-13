@@ -1,0 +1,9 @@
+<package name="rubygem-ed25519" project="openSUSE:Factory">
+  <title>An efficient digital signature library providing the Ed25519</title>
+  <description>A Ruby binding to the Ed25519 elliptic curve public-key signature system
+described in RFC 8032.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-ed25519"/>
+  <url>https://github.com/crypto-rb/ed25519</url>
+</package>

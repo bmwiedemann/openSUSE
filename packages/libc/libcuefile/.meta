@@ -1,0 +1,9 @@
+<package name="libcuefile" project="openSUSE:Factory">
+  <title>Library for Working With Cue Sheet (cue) and Table Of Contents (toc) Files</title>
+  <description>
+libcuefile is a library for working with Cue Sheet (cue) and Table of Contents
+(toc) files.
+</description>
+  <devel project="multimedia:libs" package="libcuefile"/>
+  <url>http://www.musepack.net/</url>
+</package>

@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>d4a7e5d0f663fde79f870ff2e393d9ba</srcmd5>
+    <version>4.1.2</version>
+    <time>1224124676</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>d4a7e5d0f663fde79f870ff2e393d9ba</srcmd5>
+    <version>4.1.2</version>
+    <time>1224124676</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>fa973f2ea8d83f98cf09d7d3b956abc0</srcmd5>
+    <version>4.1.2</version>
+    <time>1265919144</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libbeecrypt6 based on submit request 32136 from user prusnak
+</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>e7610dbf0cdc58f04f6a5f181dcbe3c1</srcmd5>
+    <version>4.1.2</version>
+    <time>1266055730</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libbeecrypt6 based on submit request 32460 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>0548618d7bc72ce67b263ac0f404c57e</srcmd5>
+    <version>4.1.2</version>
+    <time>1268924506</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>0548618d7bc72ce67b263ac0f404c57e</srcmd5>
+    <version>4.1.2</version>
+    <time>1278667357</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>0548618d7bc72ce67b263ac0f404c57e</srcmd5>
+    <version>4.1.2</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>0548618d7bc72ce67b263ac0f404c57e</srcmd5>
+    <version>4.1.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>0548618d7bc72ce67b263ac0f404c57e</srcmd5>
+    <version>4.1.2</version>
+    <time>1319182073</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>5d365ff3ccbee1e8c69dac41471286e1</srcmd5>
+    <version>4.1.2</version>
+    <time>1321268332</time>
+    <user>coolo</user>
+    <comment>add buildrequire libtool (forwarded request 91133 from coolo)</comment>
+    <requestid>91169</requestid>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>c190fa5547ebfa0e8d7aa63652ce3a70</srcmd5>
+    <version>4.1.2</version>
+    <time>1321886743</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>92851</requestid>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>2d3f4e7dfa84a52e552fb362e0270aaa</srcmd5>
+    <version>4.1.2</version>
+    <time>1323192159</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>2d3f4e7dfa84a52e552fb362e0270aaa</srcmd5>
+    <version>4.1.2</version>
+    <time>1340183565</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>c9668741ffdc350a4fc202afd72c57e1</srcmd5>
+    <version>4.1.2</version>
+    <time>1358083711</time>
+    <user>coolo</user>
+    <comment>- remove suse_update_config (forwarded request 148211 from coolo)</comment>
+    <requestid>148238</requestid>
+  </revision>
+  <revision rev="15" vrev="23">
+    <srcmd5>c9668741ffdc350a4fc202afd72c57e1</srcmd5>
+    <version>4.1.2</version>
+    <time>1359109242</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="25">
+    <srcmd5>c9668741ffdc350a4fc202afd72c57e1</srcmd5>
+    <version>4.1.2</version>
+    <time>1379662901</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="27">
+    <srcmd5>c9668741ffdc350a4fc202afd72c57e1</srcmd5>
+    <version>4.1.2</version>
+    <time>1409301505</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

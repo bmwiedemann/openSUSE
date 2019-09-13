@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8707eef3e3f8ea870c70fa1fb0173cba</srcmd5>
+    <version>42.1</version>
+    <time>1459001293</time>
+    <user>dimstar_suse</user>
+    <comment>Introduction of a new package, configuring NM for openSUSE defaults (currently only adds connection checker config)</comment>
+    <requestid>374226</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9e1fb6d7cf3431fd837b98d8aa2170e5</srcmd5>
+    <version>42.1</version>
+    <time>1505331763</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521743</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7ac19f673c221784c2a707f573638a28</srcmd5>
+    <version>42.1</version>
+    <time>1505416854</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply %{branding_name} also to summary and description. (forwarded request 526079 from zhangxiaofei)</comment>
+    <requestid>526148</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>53e6a8eddbfd1f1f534bad3989c1700b</srcmd5>
+    <version>42.1</version>
+    <time>1520588468</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581397 from dimstar)</comment>
+    <requestid>582887</requestid>
+  </revision>
+</revisionlist>

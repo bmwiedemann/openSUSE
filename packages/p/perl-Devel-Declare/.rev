@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b4ea51ebb7fa4cd2450fedcd68288755</srcmd5>
+    <version>0.006008</version>
+    <time>1325006039</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>98011</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b4ea51ebb7fa4cd2450fedcd68288755</srcmd5>
+    <version>0.006008</version>
+    <time>1340183830</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>b4ea51ebb7fa4cd2450fedcd68288755</srcmd5>
+    <version>0.006008</version>
+    <time>1359109646</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53a954f090326fc814e31db89bad9240</srcmd5>
+    <version>0.006011</version>
+    <time>1370789688</time>
+    <user>coolo</user>
+    <comment>- updated to 0.006011
+  - In XS, use PERL_NO_GET_CONTEXT for efficiency.
+  - Avoid using Test::Warn, which has previously been a troublesome
+    dependency.
+  - Fix workaround for unexported core symbols to avoid breaking
+    compilation on non-threading builds of Perl 5.8.
+  - Set permissions on .perldb file created during test, to avoid
+    &quot;insecure rcfile&quot; warning.
+  - Be adaptive about whether to delete the line reallocation filter,
+    so as to play as nicely as possible with other kinds of source filter.
+  - Document that injecting newlines doesn't work.
+  - Fix a C declaration after statement, which broke compatibility with
+    older compilers (Jan Dubois).
+  - Partially work around unexported core symbols affecting Perl 5.8 on
+    Windows (David Bouyssie).
+  - Jump through some hoops to avoid compiler warnings. (forwarded request 177344 from coolo)</comment>
+    <requestid>177407</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>57ca2763f9e16f2bb1cd67c34f1f0999</srcmd5>
+    <version>0.006014</version>
+    <time>1375195231</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184824</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>57ca2763f9e16f2bb1cd67c34f1f0999</srcmd5>
+    <version>0.006014</version>
+    <time>1379663641</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>17fe7e38229d66fd3b1c3f66a5204e86</srcmd5>
+    <version>0.006015</version>
+    <time>1394386665</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>224985</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3af22213550126c718cf327e853a0c25</srcmd5>
+    <version>0.006016</version>
+    <time>1398267157</time>
+    <user>coolo</user>
+    <comment>updated to 0.006016 (forwarded request 231076 from mnhauke)</comment>
+    <requestid>231103</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>3af22213550126c718cf327e853a0c25</srcmd5>
+    <version>0.006016</version>
+    <time>1409302256</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4fedabd5c1f4bd8c9eb91aedee57f5de</srcmd5>
+    <version>0.006017</version>
+    <time>1416823763</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.006017
+  - fix for changes in 5.21.4 (Avoid creating GVs when subs are declared),
+    RT#99102, Father Chrysostomos</comment>
+    <requestid>262748</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>31a6521530928b5c6c1bcf406408012a</srcmd5>
+    <version>0.006018</version>
+    <time>1429107855</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296084</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>63ae07a1dfd000934e69e22586ef7d31</srcmd5>
+    <version>0.006019</version>
+    <time>1491567661</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483267</requestid>
+  </revision>
+</revisionlist>

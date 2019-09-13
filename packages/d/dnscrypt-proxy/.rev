@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7fbe0f72850d947d0e4a5335e0ef8612</srcmd5>
+    <version>1.9.5</version>
+    <time>1505139459</time>
+    <user>dimstar_suse</user>
+    <comment>- use packaged dnscrypt-resolvers.csv
+- fix systemd macros
+- upgrade to 1.9.5, shortened upstream changelog:
+ * Cache plugin: fix the way items are moved from recent to frequent lists
+ * In addition to making the cache work as expected, this prevents
+  `CacheEntry` items from becoming orphans.
+ * Cache plugin: fix the way items are moved from recent to frequent lists
+ * In addition to making the cache work as expected, this prevents
+   `CacheEntry` items from becoming orphans.
+ * Adding Babylon Network resolvers (#647)
+ * Update resolvers list
+ * Reset the reachability of nameservers if all are unreachable (#609)
+ * If all nameservers have been marked unreachable, they will not be queried
+ * again until dnscrypt-proxy is restarted. This fix allows for queries to be
+ * retried without restarting dnscrypt-proxy.
+ * Doc error: client-pk is the client' public key. Spotted by @willnix Fixes #603
+ * Whitelist some TLDs typically used on local networks
+ * Normalize the dnscrypt-resolvers.csv format
+ * ldns-blocking: fix another corner case with suffix matching
+       
+       Ruleset:
+       ```
+       *.example.com
+       ru.example.com
+       ```
+       
+       A query for `xru.example.com` would find `ru.example.com` as the longest
+       suffix. The expression didn't match since this is neither an exact match
+       nor a match that stops at a label.
+       
+       However, this was ignoring the fact that there a different, shorter rule
+       could match.
+       
+       This is pretty annoying, as keeping our promise to log the longest match
+       means that we need at least yet another lookup in that specific case.
+       Alternatively, the fpst lookup function could be specialized to stop at
+       labels, but that would defeat the point of this example plugin. So,
+       perform an extra lookup after striping the first (last, once the name is
+       reversed) label.
+  * Added pidfile
+- specfile fixes, cleanup
+- update version 1.9.4
+  * The resolver name can be set to 'random' in order to pick a
+    random resolver.
+  * changelog for older releases see github/jedisct1/dnscrypt-proxy 
+- use upstream configuration instead
+- drop /etc/sysconfig/dnscrypt-proxy, it can'be used in instantiated
+  services, now instantiated services should be started with
+  &quot;sudo systemctl start dnscrypt-proxy@config.service&quot;, the switch
+  from IP:Port to Config is because we need not only the IP:Port
+  customizable, but also the DNSCRYPT_RESOLVER_NAME, to start multi-
+  instances. (boo#977946)
+- add /etc/dnscrypt-proxy.conf.d directory for configurations.
+- switched to systemd template service. in the future, users
+  should use 'sudo systemctl start dnscrypt-proxy@127.0.0.1:53.service'
+  to start the service. any local address can be used.
+- dropped dnscrypt-proxy.socket again. the listen address in the
+  socket can't be substituted at runtime that makes it impossible
+  to use multiple instances. and it doesn't work together with
+  the forking method in our systemd service.
+- move pidfile and logfile into their own directories. in previous
+  submit, we finnaly used the user 'dnscrypt' to start the job, but
+  that user doesn't have write permission for /var/run and /var/log.
+- dropped the /usr/sbin/dnscrypt wrapper that broke the systemd
+  service from forking. we used EnvironmentFile in systemd service
+  to load the user-customizable variables.
+- changed /etc/sysconfig/dnscrypt to /etc/sysconfig/dnscrypt-proxy.
+  deleted those plugin items that can't be loaded by systemd. users
+  can use DNSCRYPT_OPTIONS to configure the plugins anyway, no need
+  to keep those placeholders.
+- update version 1.7.0
+  * Plugins are now enabled by default.
+  * New command-line option: `--ignore-timestamps` to ignore timestamps
+    when performing certificate validation.
+  * New command-line option: `--syslog-prefix` to add a prefix to log
+    messages.
+  * Certificates can now be retrieved using TCP.
+  * Libevent was updated to version 2.0.23.
+  * Certificates serial numbers are printed as a string if possible.
+  * The list of known public resolvers was updated.
+- add upstream's systemd socket, fix boo#977946 again
+- fix boo#977946 &amp; boo#957003
+  * use %fillup_only macro right. can't skip &quot;-n&quot;, or it'll use
+    package name while sysconfig.dnscrypt-proxy doesn't exist.
+- use %fillup_prereq macro
+- move libraries out from -devel subpackage, it's just not right.
+- don't link dnscrypt-proxy.8.gz to dnscrypt.8.gz
+- don't link /sbin/service to /sbin/rcdnscrypt.
+  * that method is used for backward compability w/ SysVInit service
+    while /sbin/dnscrypt is a wrapper to the actual command, and
+    dnscrypt is not a valid service name but dnscrypt-proxy.
+* version 1.6.1:
+ - Security: malformed packets could cause the OpenDNS deviceid,
+   OpenDNS set-client-ip, blocking and AAAA blocking plugins to use
+   uninitialized pointers, leading to a denial of service or possibly
+   code execution. The vulnerable code is present since dnscrypt-proxy
+   1.1.0. OpenDNS users and people using dnscrypt-proxy in order to block
+   domain names and IP addresses should upgrade as soon as possible.
+- add dnscrypt-resolvers.csv from git (41c6d8bb1f49a0216357)
+- add dnscrypt-resolvers.csv from git (e6b4e93d07bdce39d4656c5a6)
+- change default resolver to cisco (bnc#957003)
+* version 1.6.0:
+ - New feature: public-key based client authentication (-K), for private and
+   commercial DNS services to securely authenticate the sender of a query no
+   matter what the source IP address is, without altering the DNS query.
+* version 1.5.0:
+ - New option: -E, to use an ephemeral key pair for each query.
+ - Logging to files is supported on Windows.
+ - TCP FASTOPEN is now enabled on Linux.
+* version 1.4.4
+  - edns used by default
+  - server list updated
+  - various build fixes
+- spec file cleanup
+- update to 1.4.3
+  - libevent update, including a fix for CVE-2014-6272
+  - Two new public dnscrypt resolvers were added: opennic-us-wa-ns1 and
+    dnscrypt.org-fr
+  - d0wn servers in France IP have changed.
+  - Compilation fixes.
+- version 1.4.2
+  - New compilation switch: --with-systemd, to enable socket activation support
+    when using systemd
+  - The list of public DNSCrypt-enabled resolvers was updated
+  - Libevent2 updates
+- add sysconfig file for more flexible configuration
+- build -devel package and enable plugins
+- create user dnscrypt:dnscrypt during installation
+- update to 1.4.1
+- update version 1.4.0
+  * see https://github.com/jedisct1/dnscrypt-proxy/commits/master
+- fix a hang bug in dnscrypt.service
+- upstream clarify license, it's BSD.
+- add systemd service.
+- Version 1.2.0:
+  * A pre-filter can now totally bypass the resolver and directly send a
+   reply to the client.
+  * A new example plugin has been shipped: ldns-aaaa-blocking. It
+   directly sends an empty response to AAAA queries in order to
+   significantly speed up lookups on hosts without IPv6 connectivity
+   (but with clients still asking for AAAA records anyway).
+  * Example plugins requiring ldns can be compiled on Windows.
+  * Paths with a drive name are now recognized as absolute paths on
+   Windows.
+</comment>
+    <requestid>520650</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9f7a06bf6510087300d2421b1632ed43</srcmd5>
+    <version>1.9.5</version>
+    <time>1507755802</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533185</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dbc78c34a8d364acf00b5b291322a2d8</srcmd5>
+    <version>1.9.5</version>
+    <time>1511595824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545130</requestid>
+  </revision>
+</revisionlist>

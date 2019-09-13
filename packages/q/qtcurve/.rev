@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1764a94f4d90f4e90811f1b65b8f420d</srcmd5>
+    <version>1.9.0</version>
+    <time>1504521038</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename source package to qtcurve
+- Also add qtcurve-qt5 to baselibs.conf to provide
+  qtcurve-qt5-32bit
+
+This shall replace qtcurve-kde4 in Factory.</comment>
+    <requestid>519699</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c444f09dea3edd4e180f361f8b49bebf</srcmd5>
+    <version>1.9.0</version>
+    <time>1559837860</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-utils-gtkprops-Remove-unnecessary-constexpr-this-is-.patch
+  to fix the build with GCC9.</comment>
+    <requestid>707850</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f2e06b4217e056ecc4393d3453e5e168</srcmd5>
+    <version>1.9.0</version>
+    <time>1567680381</time>
+    <user>dimstar_suse</user>
+    <comment>Stop building the Qt4/KDE4 package on leap &gt;= 15.2 and factory
+</comment>
+    <requestid>728286</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,196 @@
+<revisionlist>
+  <revision rev="1" vrev="306">
+    <srcmd5>56ee0092de4a76b1d2c68fc41a07e047</srcmd5>
+    <version>1.20</version>
+    <time>1168903922</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="438">
+    <srcmd5>56ee0092de4a76b1d2c68fc41a07e047</srcmd5>
+    <version>1.20</version>
+    <time>1168903922</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="439">
+    <srcmd5>72a2bc063f17afc81809c3be4e725ef3</srcmd5>
+    <version>1.20</version>
+    <time>1245338084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="441">
+    <srcmd5>72a2bc063f17afc81809c3be4e725ef3</srcmd5>
+    <version>1.20</version>
+    <time>1245338084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="442">
+    <srcmd5>dfc3bc606fdda611db72cd23a9f967c8</srcmd5>
+    <version>1.20</version>
+    <time>1263297651</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Time-Period based on submit request 29257 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="443">
+    <srcmd5>1dd392ebc1661c1dbe087b4cfcfa8645</srcmd5>
+    <version>1.20</version>
+    <time>1268925643</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="445">
+    <srcmd5>1dd392ebc1661c1dbe087b4cfcfa8645</srcmd5>
+    <version>1.20</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="446">
+    <srcmd5>1dd392ebc1661c1dbe087b4cfcfa8645</srcmd5>
+    <version>1.20</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="447">
+    <srcmd5>88323ca0f1663c57774b8e7df849cb49</srcmd5>
+    <version>1.20</version>
+    <time>1287580883</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51076 from user coolo
+</comment>
+    <requestid>51076</requestid>
+  </revision>
+  <revision rev="10" vrev="448">
+    <srcmd5>1497527ee6ed65e780f8e6d2b62ea468</srcmd5>
+    <version>1.20</version>
+    <time>1287580889</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51076
+</comment>
+  </revision>
+  <revision rev="11" vrev="449">
+    <srcmd5>41e215aead93e40eba0456ce7aaf2eb9</srcmd5>
+    <version>1.20</version>
+    <time>1291584319</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54682 from user coolo
+</comment>
+    <requestid>54682</requestid>
+  </revision>
+  <revision rev="12" vrev="450">
+    <srcmd5>aeb89835fd894dde0d22eabfee5666b6</srcmd5>
+    <version>1.20</version>
+    <time>1291584324</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54682
+</comment>
+  </revision>
+  <revision rev="13" vrev="453">
+    <srcmd5>aeb89835fd894dde0d22eabfee5666b6</srcmd5>
+    <version>1.20</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="448">
+    <srcmd5>c4c9203fd15945bb0f1d50ac63e444de</srcmd5>
+    <version>1.22</version>
+    <time>1298032050</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61422 from user vitezslav_cizek
+</comment>
+    <requestid>61422</requestid>
+  </revision>
+  <revision rev="15" vrev="449">
+    <srcmd5>c308919b569c90cf05b5e5098c123f95</srcmd5>
+    <version>1.22</version>
+    <time>1298032058</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61422
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e87099d16af6210359c720e3e095d16f</srcmd5>
+    <version>1.23</version>
+    <time>1298891476</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62993 from user vitezslav_cizek
+</comment>
+    <requestid>62993</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>deaf8dee5156fdae0bc405d5a3c3a8f3</srcmd5>
+    <version>1.23</version>
+    <time>1316447908</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>82399</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>deaf8dee5156fdae0bc405d5a3c3a8f3</srcmd5>
+    <version>1.23</version>
+    <time>1319182318</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>78cb5d4d240535f6467b51b531ac714e</srcmd5>
+    <version>1.23</version>
+    <time>1321876176</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92325</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>ac26fe88007811bd1da88b9a610f99b3</srcmd5>
+    <version>1.23</version>
+    <time>1323193754</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>ac26fe88007811bd1da88b9a610f99b3</srcmd5>
+    <version>1.23</version>
+    <time>1340183944</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>ac26fe88007811bd1da88b9a610f99b3</srcmd5>
+    <version>1.23</version>
+    <time>1359109834</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bcac6b2950b1befbf0091d440a876332</srcmd5>
+    <version>1.24</version>
+    <time>1375284284</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184808</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>bcac6b2950b1befbf0091d440a876332</srcmd5>
+    <version>1.24</version>
+    <time>1379663903</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>bcac6b2950b1befbf0091d440a876332</srcmd5>
+    <version>1.24</version>
+    <time>1409302549</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>170a9921c19e3f782e3a1cfb2bfbb90a</srcmd5>
+    <version>1.25</version>
+    <time>1423392177</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.25
+     - Fixed a bug with matching week on Sundays
+       (https://rt.cpan.org/Public/Bug/Display.html?id=100850)</comment>
+    <requestid>284705</requestid>
+  </revision>
+</revisionlist>

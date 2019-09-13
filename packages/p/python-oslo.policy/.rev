@@ -1,0 +1,220 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2436d5605deead4aee6bac9922f3d993</srcmd5>
+    <version>0.11.0</version>
+    <time>1446209000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>341261</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3399c0ccc51f863ab1023752d0684b58</srcmd5>
+    <version>1.5.0</version>
+    <time>1463652881</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * Updated from global requirements
+  * Update translation setup
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Revert &quot;Pass environment variables of proxy to tox&quot;
+  * Run docs testenv by default with tox
+  * Add oslopolicy-checker command-line tool
+  * Updated from global requirements
+  * Don't crash on RoleCheck when roles not present
+  * assertIsNone(val) instead of assertEqual(None,val)
+  * Updated from global requirements
+  * Add string format rendering to RoleCheck.__call__()
+  * Pass environment variables of proxy to tox
+  * Fixes combined &quot;and&quot; and &quot;or&quot; rule handling
+  * Make sure item of policy_dirs is directory
+  * Updated from global requirements
+  * Use dict comprehension
+  * Don't generate doc from test
+  * Trival: Remove 'MANIFEST.in'
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Use requests-mock instead of httpretty in tests
+  * Clarify usage docs
+  * Correct invalid doc references
+  * Updated from global requirements
+  * Remove Python 2.6 classifier</comment>
+    <requestid>393981</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ab66431df146918476e38df7e33ccd2f</srcmd5>
+    <version>1.14.0</version>
+    <time>1475242166</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425272</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e6c47c2674aee0fb6d9e175ebcd6aa2c</srcmd5>
+    <version>1.18.0</version>
+    <time>1487680809</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.18.0:
+  - Add missing parameter description in module _cache_handler
+  - Imported Translations from Zanata
+  - Enable release notes translation
+  - Remove dead code and use default value of argparse.
+  - Remove oslo.utils from requirements
+  - Update reno for stable/newton
+  - Remove references to Python 3.4
+  - Change assertTrue(isinstance()) by optimal assert
+  - Add stevedore to requirements
+  - Show team and repo badges on README
+  - Improved performance of parse_file_contents() method
+  - Doc: declare YAML/JSON support
+  - Remove wrong parameter type for class NotCheck from docstring
+  - Add sphinx extension to build sample policy
+  - Perform basic checks on policy definitions
+  - Update docs on policy sample generator
+  - Fix a code logic while doing cyclical reference check to the policy
+  - doc: Add introduction to index page
+  - Add Constraints support
+  - Changed the home-page link
+  - Fix typo in oslo.policy
+  - Make exception PolicyNotAuthorized more readable
+  - Updated from global requirements
+
+- switch to stable/newton tarball in _service</comment>
+    <requestid>456063</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7dd922e41aff28b453644bc3807f96c3</srcmd5>
+    <version>1.25.1</version>
+    <time>1503927014</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.25.1
+  - Fix parsing bug when config file is empty.
+  - Modify tests in test_generator
+  - fix formatting for empty defaults
+  - Simplify message of exception PolicyNotAuthorized
+  - [Fix gate]Update test requirement
+  - Add additional param to policy.RuleDefault
+  - Update reno for stable/ocata
+  - Check reStructuredText documents for common style issues.
+  - switch from oslosphinx to openstackdocstheme
+  - Add release note for DocumentedRuleDefault
+  - Optimize the link address
+  - Update UPPER_CONSTRAINTS_FILE for stable/pike
+  - Update usage documentation
+  - move existing documentation into new standard layout
+  - Add optional exception for check_rules
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Update URLs in documents according to document migration
+  - import configuration guide content from openstack-manuals repo
+  - throw an exception when sphinxext cannot find the config file
+  - oslopolicy-sample-generator description support
+  - sphinxext: Format definition lists correctly
+  - Comment out the rule from generated sample-policy file
+  - Allow multiline descriptions for RuleDefaults
+  - Update .gitreview for stable/pike
+  - Remove log translations
+  - Delete the unnecessary word in policy.py
+  - Add Sphinx extension to pretty-print modules
+  - Remove support for py34
+  - sphinxext: Use field lists in output</comment>
+    <requestid>514874</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>faa8fd2235ebc06d4395c9b86ccc0117</srcmd5>
+    <version>1.33.1</version>
+    <time>1516222754</time>
+    <user>dimstar_suse</user>
+    <comment>- convert to singlespec
+
+- update to version 1.33.1
+  - Fix string injection for InvalidScope
+  - Imported Translations from Zanata
+  - Avoid tox_install.sh for constraints support
+  - add bandit to pep8 job
+  - Add JSON output option to sample generator
+  - External Policy hook should support SSL
+  - rewrite HttpCheckFixture to not mock out entire HttpCheck class
+  - http/https check rules as stevedore extensions
+  - Add functionality to deprecate policies
+  - Handle deprecation of inspect.getargspec
+  - Documentation and release notes for plugins
+  - Remove -U from pip install
+  - Modification to add additional information in the HTTPCheck request.
+  - fix formatting for empty defaults
+  - Add scope_types to RuleDefault objects
+  - Pass creds as a dict in tests
+  - Only log deprecation warnings when they are overridden
+  - throw an exception when sphinxext cannot find the config file
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - expand type documentation for Enforcer arguments
+  - Add configuration option for enforcing scope
+  - Updated from global requirements
+  - Add a release note for enforce_scope</comment>
+    <requestid>566876</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bb8a8c3d1dc0eb93a0f6d730a092ba05</srcmd5>
+    <version>1.33.1</version>
+    <time>1521498967</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583344</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2f270ff05c8232e913e2241b84630aea</srcmd5>
+    <version>1.37.0</version>
+    <time>1536327540</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633104</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aea09ea5fde9b55e86929093cf57b351</srcmd5>
+    <version>1.38.1</version>
+    <time>1538374697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638871</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>394c02db4f13d9b84b2f222f804b124e</srcmd5>
+    <version>2.1.1</version>
+    <time>1556916151</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.1.1
+  - Use template for lower-constraints
+  - Fix sample config value when set_defaults is used
+  - Imported Translations from Zanata
+  - sphinxext: Start parsing 'DocumentedRuleDefault.description' as rST
+  - Remove PyPI downloads
+  - Fully log RBAC enforcement data
+  - Add ability to pass in target data for the oslopolicy-checker
+  - Add guidelines for naming policies
+  - Prevent sensitive target data from being logged
+  - generator: Reimplement wrapping of 'description'
+  - Change openstack-dev to openstack-discuss
+  - import zuul job settings from project-config
+  - oslopolicy-checker: iterate through rules in sorted order
+  - Update reno for stable/rocky
+  - add python 3.6 unit test job
+  - Add domain scope support for scope types
+  - Correct typo in docs
+  - Unit test for CLI
+  - Add docs for developers testing APIs
+  - add lib-forward-testing-python3 test job
+  - Move _capture_stdout to a common place
+  - Use oslo.config instead of argparse.
+  - Pass in policy name as part of the oslopolicy-check check call
+  - Add minor nits in testing documentation
+  - Docs: Remove references to JSON format
+  - Add ability for policy-checker to read configuration
+  - Add policy-upgrade tool
+  - Fix usage of token fixture in shell tests
+  - Fixes is_admin type from StrOpt to BoolOpt.</comment>
+    <requestid>692861</requestid>
+  </revision>
+</revisionlist>

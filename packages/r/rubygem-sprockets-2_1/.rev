@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c674186f09aa5d5cd63a35bdf993c66</srcmd5>
+    <version>2.1.2</version>
+    <time>1332885715</time>
+    <user>coolo</user>
+    <comment>Rails-3.2 requirement</comment>
+    <requestid>110750</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fdde232e3625a5adbdcb702a71fa09ba</srcmd5>
+    <version>2.1.2</version>
+    <time>1336423893</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>115034</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>fdde232e3625a5adbdcb702a71fa09ba</srcmd5>
+    <version>2.1.2</version>
+    <time>1340184176</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fcebe313c0e9f86a3a336c848749ea5b</srcmd5>
+    <version>2.1.3</version>
+    <time>1342426289</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>127942</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a8436e271e63f92f5df169fe224b4e1c</srcmd5>
+    <version>2.1.3</version>
+    <time>1343032840</time>
+    <user>coolo</user>
+    <comment>- fix tilt requires</comment>
+    <requestid>128674</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8d0779d81fb2f25b73cea660a9139413</srcmd5>
+    <version>2.1.3</version>
+    <time>1344111196</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>129942</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>8d0779d81fb2f25b73cea660a9139413</srcmd5>
+    <version>2.1.3</version>
+    <time>1359110349</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>8d0779d81fb2f25b73cea660a9139413</srcmd5>
+    <version>2.1.3</version>
+    <time>1379664576</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>8d0779d81fb2f25b73cea660a9139413</srcmd5>
+    <version>2.1.3</version>
+    <time>1409303287</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4e9f5ac4c81ed76265a4319414ce21e1</srcmd5>
+    <version>2.1.4</version>
+    <time>1423669544</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285525</requestid>
+  </revision>
+</revisionlist>

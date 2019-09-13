@@ -1,0 +1,20 @@
+<package name="pam_pkcs11" project="openSUSE:Factory">
+  <title>PKCS #11 PAM Module</title>
+  <description>This Linux PAM module allows X.509 a certificate-based user
+authentication. The certificate and its dedicated private key are
+thereby accessed by means of an appropriate PKCS #11 module. For the
+verification of the users' certificates, locally stored CA certificates
+as well as online or locally accessible CRLs are used.
+
+Additionally, the package includes pam_pkcs11-related tools: *
+   pkcs11_eventmgr: Generates actions on card insert, removal, or
+   time-out events
+
+* pklogin_finder: Gets the login name that maps to a certificate
+
+* pkcs11_inspect: Inspects the contents of a certificate
+
+* make_hash_links: Creates hash link directories for storing CAs and
+CRLs</description>
+  <devel project="security:chipcard" package="pam_pkcs11"/>
+</package>

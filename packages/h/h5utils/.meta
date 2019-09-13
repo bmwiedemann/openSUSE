@@ -1,0 +1,8 @@
+<package name="h5utils" project="openSUSE:Factory">
+  <title>utilities for data conversions from hdf5</title>
+  <description>
+h5utils is a set of utilities for visualization and conversion of scientific data in the free, portable HDF5 format (http://hdf.ncsa.uiuc.edu/HDF5/).
+Besides providing a simple tool for batch visualization as PNG images, h5utils also includes programs to convert HDF5 datasets into the formats required by other free visualization software (e.g. plain text, Vis5d (http://www.ssec.wisc.edu/~billh/vis5d.html), and VTK (http://public.kitware.com/VTK/))
+  </description>
+  <devel project="science" package="h5utils"/>
+</package>

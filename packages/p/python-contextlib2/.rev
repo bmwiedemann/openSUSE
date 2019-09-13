@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>47212a88d3131c26ff617a356dd60c77</srcmd5>
+    <version>0.4.0</version>
+    <time>1440658522</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>323176</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>db4483f60281b6e9a9b07b4b0326cb52</srcmd5>
+    <version>0.5.5</version>
+    <time>1495883933</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498285</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0071c2cb33539b224de4b48b44e7cf52</srcmd5>
+    <version>0.5.5</version>
+    <time>1527084548</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not run the tests twice for no reason
+
+- Clean the SPEC, enable tests
+
+- singlespec auto-conversion</comment>
+    <requestid>611220</requestid>
+  </revision>
+</revisionlist>

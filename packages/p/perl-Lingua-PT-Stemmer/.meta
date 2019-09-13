@@ -1,0 +1,20 @@
+<package name="perl-Lingua-PT-Stemmer" project="openSUSE:Factory">
+  <title>Portuguese language stemming</title>
+  <description>
+This module implements a Portuguese stemming algorithm proposed in the paper A
+Stemming Algorithm for the Portuguese Language by Moreira, V. and Huyck, C.
+
+The eight steps of stemming algorithm are listed as follows:
+
+    * Plural Reduction
+    * Feminine Reduction
+    * Adverb Reduction
+    * Augmentative/Diminutive Reduction
+    * Noun Suffix Reduction
+    * Verb Suffix Reduction
+    * Vowel Reduction
+    * Accents Removal
+  </description>
+  <devel project="devel:languages:perl" package="perl-Lingua-PT-Stemmer"/>
+  <url>http://search.cpan.org/perldoc?Lingua::PT::Stemmer</url>
+</package>

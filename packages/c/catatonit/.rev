@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>effa5d06addce021274f6f904b2ab7eb</srcmd5>
+    <version>0.1.2</version>
+    <time>1522596444</time>
+    <user>dimstar_suse</user>
+    <comment>Import of catatonit v0.1.2. This is required for Docker so that 'docker run
+--init' works correctly (note we don't use the upstream docker-init).</comment>
+    <requestid>592758</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7e79c8940ab8fc19ae0b19af6efb477c</srcmd5>
+    <version>0.1.2</version>
+    <time>1522934952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593349</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c26804ea59b819043e661a24ab4472eb</srcmd5>
+    <version>0.1.2</version>
+    <time>1523346770</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix build to correctly build a static binary (which will allow it to work in
+  all containers). This was caused by forgetting to include
+  'glibc-devel-static'. I've added a check to ensure it doesn't happen by
+  accident again.
+- Add catatonit-rpmlintrc to include filters for &quot;static binary&quot; warnings,
+  since this is intentional.</comment>
+    <requestid>594081</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c193d8f0ae23f8233f88f79d9a006819</srcmd5>
+    <version>0.1.3</version>
+    <time>1524400414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597941</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>58e7794db2b5315d839e421c236018c5</srcmd5>
+    <version>0.1.4</version>
+    <time>1549623963</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670014</requestid>
+  </revision>
+</revisionlist>

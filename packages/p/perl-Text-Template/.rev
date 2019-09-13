@@ -1,0 +1,190 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0eb4f6879f7c6dda2ed847c628025aa1</srcmd5>
+    <version>1.45</version>
+    <time>1271934006</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Text-Template based on submit request 38459 from user computersalat
+</comment>
+    <requestid>38459</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0eb4f6879f7c6dda2ed847c628025aa1</srcmd5>
+    <version>1.45</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0eb4f6879f7c6dda2ed847c628025aa1</srcmd5>
+    <version>1.45</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4ca4edef7a7567ad5216769497d14add</srcmd5>
+    <version>1.45</version>
+    <time>1291584269</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54676 from user coolo
+</comment>
+    <requestid>54676</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>4ffe6632a7eec4c1f609f5819d3edc53</srcmd5>
+    <version>1.45</version>
+    <time>1291584275</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54676
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>4ffe6632a7eec4c1f609f5819d3edc53</srcmd5>
+    <version>1.45</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>4ffe6632a7eec4c1f609f5819d3edc53</srcmd5>
+    <version>1.45</version>
+    <time>1319182316</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>2086560d19410e2c34a81ffa109939c7</srcmd5>
+    <version>1.45</version>
+    <time>1321876145</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92344</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>bdd1c7206101c6bdf3a5bd4d096cf865</srcmd5>
+    <version>1.45</version>
+    <time>1324374909</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 96583 from coolo)</comment>
+    <requestid>96611</requestid>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>bdd1c7206101c6bdf3a5bd4d096cf865</srcmd5>
+    <version>1.45</version>
+    <time>1340183942</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>bdd1c7206101c6bdf3a5bd4d096cf865</srcmd5>
+    <version>1.45</version>
+    <time>1359109830</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0ac56a1afa34da7e8282e6d59b0a8eec</srcmd5>
+    <version>1.46</version>
+    <time>1370581630</time>
+    <user>coolo</user>
+    <comment>- license update: GPL-2.0+ or ClArtistic
+  The license choice is for GPL-2.0+ or the Clarified Artistic License
+  (ClArtistic on spdx.org/licenses/ClArtistic)
+
+- updated to 1.46
+        Thanks to Rik Signes, there is a new
+        Text::Template-&gt;append_text_to_output method, which
+        Text::Template always uses whenever it wants to emit output.
+        You can subclass this to get control over the output, for
+        example for postprocessing.
+        A spurious warning is no longer emitted when the TYPE
+        parameter to -&gt;new is omitted.</comment>
+    <requestid>177798</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>0ac56a1afa34da7e8282e6d59b0a8eec</srcmd5>
+    <version>1.46</version>
+    <time>1379663897</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>0ac56a1afa34da7e8282e6d59b0a8eec</srcmd5>
+    <version>1.46</version>
+    <time>1409302542</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>679dc3212b0f2f380b062f14e6d0483b</srcmd5>
+    <version>1.47</version>
+    <time>1490707255</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>460887</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6fb8dd8622438bfd9993f2a347c8293c</srcmd5>
+    <version>1.50</version>
+    <time>1518813944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577188</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9c0f418ab369fa2a09f071f000a08a9b</srcmd5>
+    <version>1.51</version>
+    <time>1521904432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583237</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3b694eb65f345bb0bf11cf434717625e</srcmd5>
+    <version>1.52</version>
+    <time>1524144454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593453</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9224340748ac8abea215270892d36303</srcmd5>
+    <version>1.53</version>
+    <time>1535701972</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610496</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>94519e9a4fee9e6c63b27bf27179ccda</srcmd5>
+    <version>1.54</version>
+    <time>1548064472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666106</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>31a29bdba4ac722961703114005302d2</srcmd5>
+    <version>1.55</version>
+    <time>1551468742</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>680367</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d61d42a21b23b5cdc4970b9382e4598e</srcmd5>
+    <version>1.56</version>
+    <time>1564414293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719523</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c512827069584666ed180705a657bd7c</srcmd5>
+    <version>1.57</version>
+    <time>1568379523</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>730132</requestid>
+  </revision>
+</revisionlist>

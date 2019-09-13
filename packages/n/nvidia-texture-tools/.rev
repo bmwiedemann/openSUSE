@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>ad4ca7da01936aa1bb2318becccdc18f</srcmd5>
+    <version>2.0.6</version>
+    <time>1248172277</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>ad4ca7da01936aa1bb2318becccdc18f</srcmd5>
+    <version>2.0.6</version>
+    <time>1248172277</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>48b42204061189f7576ad753ffb2fa5c</srcmd5>
+    <version>2.0.6</version>
+    <time>1267801432</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/nvidia-texture-tools based on submit request 34120 from user coolo
+</comment>
+    <requestid>34120</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>30eb4141da4f7ed9e7c168ebdafad71b</srcmd5>
+    <version>2.0.6</version>
+    <time>1268925124</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>30eb4141da4f7ed9e7c168ebdafad71b</srcmd5>
+    <version>2.0.6</version>
+    <time>1278667371</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>30eb4141da4f7ed9e7c168ebdafad71b</srcmd5>
+    <version>2.0.6</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>30eb4141da4f7ed9e7c168ebdafad71b</srcmd5>
+    <version>2.0.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>30eb4141da4f7ed9e7c168ebdafad71b</srcmd5>
+    <version>2.0.6</version>
+    <time>1319182206</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>2a8937e39985957afffa319c2ca4f0f0</srcmd5>
+    <version>2.0.6</version>
+    <time>1323192775</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>4a1e6ff708961a31863d2be27e83a9f4</srcmd5>
+    <version>2.0.6</version>
+    <time>1332416193</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 110519 from dimstar)</comment>
+    <requestid>110529</requestid>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>ffbcda8b9a930056e59e54a9140e8e8e</srcmd5>
+    <version>2.0.6</version>
+    <time>1340023903</time>
+    <user>coolo</user>
+    <comment>- use standard linux types instead of relying on own copies (forwarded request 125275 from coolo)</comment>
+    <requestid>125278</requestid>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>ffbcda8b9a930056e59e54a9140e8e8e</srcmd5>
+    <version>2.0.6</version>
+    <time>1340183740</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>4cd6c585ba713fe9deda90eaac0d67cc</srcmd5>
+    <version>2.0.6</version>
+    <time>1346914752</time>
+    <user>coolo</user>
+    <comment>- package builds also with libpng15</comment>
+    <requestid>132056</requestid>
+  </revision>
+  <revision rev="14" vrev="22">
+    <srcmd5>4cd6c585ba713fe9deda90eaac0d67cc</srcmd5>
+    <version>2.0.6</version>
+    <time>1359109521</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="24">
+    <srcmd5>4cd6c585ba713fe9deda90eaac0d67cc</srcmd5>
+    <version>2.0.6</version>
+    <time>1379663392</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>4cd6c585ba713fe9deda90eaac0d67cc</srcmd5>
+    <version>2.0.6</version>
+    <time>1409302005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ebde9bc88f97f4156836e086277ba3e5</srcmd5>
+    <version>2.0.8</version>
+    <time>1426064230</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289781</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>6145798ea7cbcd90381dbf69043634c7</srcmd5>
+    <version>2.0.8</version>
+    <time>1467705120</time>
+    <user>dimstar_suse</user>
+    <comment>- nvidia-texture-tools-gcc6.patch: replace some &quot;return false;&quot; by
+  &quot;return NULL;&quot; to have a pointer return. (forwarded request 406107 from msmeissn)</comment>
+    <requestid>406108</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>1e1a149b1c5ca6f43c3f566aef836317</srcmd5>
+    <version>2.0.8</version>
+    <time>1468482657</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408381</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9bf5ceb364ddc492605af0265a29f826</srcmd5>
+    <version>0.5.4</version>
+    <time>1518597945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575577</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3d6b16a634c9f9a2a0f58969fed48960</srcmd5>
+    <version>0.5.4</version>
+    <time>1519684030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580264</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d9fc7dcb6264c5ece43825ae29b4416f</srcmd5>
+    <version>0.5.6</version>
+    <time>1520021556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581923</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5f5a6c747cc95a4f4717b45009a47efd</srcmd5>
+    <version>0.5.6</version>
+    <time>1549140338</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>669953</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>64b2dfd5b2dafd4d93561f609d296607</srcmd5>
+    <version>0.6.1</version>
+    <time>1552380325</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.1
+ * unpackb(data) configures max_*_len options from len(data), instead
+    of static default sizes.
+ * Unpacker(max_buffer_len=N) configures max_*_len options from N, instead
+    of static default sizes.
+ * max_bin_len, max_str_len, and max_ext_len are deprecated.
+ * unpacker: Default value of input limits are smaller than before to 
+    avoid DoS attack
+ * Unpacker doesn't wrap underlaying ValueError (including UnicodeError)
+    into UnpackValueError. If you want to catch all exception during unpack, 
+    you need to use try ... except Exception with minimum try code block.
+ * PackValueError and PackOverflowError are also removed. You need to catch
+    normal ValueError and OverflowError.
+ * Unpacker has strict_map_key option now. When it is true, only bytes
+    and str (unicode in Python 2) are allowed for map keys.
+ * Extension modules are merged. There is msgpack._cmsgpack instead
+    of msgpack._packer and msgpack._unpacker.
+ * Add Unpacker.getbuffer() method.
+ * unpacker: msgpack.StackError is raised when input data contains too nested data
+ * unpacker: msgpack.FormatError is raised when input data is not valid msgpack format.</comment>
+    <requestid>682645</requestid>
+  </revision>
+</revisionlist>

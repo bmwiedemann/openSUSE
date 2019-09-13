@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b91d0b91dbb1e11ffd117162fe309e6</srcmd5>
+    <version>2019.1</version>
+    <time>1548064267</time>
+    <user>dimstar_suse</user>
+    <comment>- inital submission of version imb 4.1 - FATE#324155</comment>
+    <requestid>665279</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5cabfe283f6b5d99ecc71ce57e0895df</srcmd5>
+    <version>2019.1</version>
+    <time>1550221321</time>
+    <user>dimstar_suse</user>
+    <comment>- Properly create and tear down default version links when the
+  HPC master packages are installed/uninstalled.
+- Cosmetic changes to module file. (forwarded request 674842 from eeich)</comment>
+    <requestid>674856</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>08373aef4a691ffc33c4fa6a3bf26216</srcmd5>
+    <version>2019.1</version>
+    <time>1550668303</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677359</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6cd97e6c36b9814df1557e9f7fe8af49</srcmd5>
+    <version>2019.1</version>
+    <time>1554384173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691465</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b41c5d38a4c8bb771a0a2d7175eb491a</srcmd5>
+    <version>2019.3</version>
+    <time>1567010287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726715</requestid>
+  </revision>
+</revisionlist>

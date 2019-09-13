@@ -1,0 +1,5 @@
+<package name="ocaml-menhir" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ocaml" package="ocaml-menhir"/>
+</package>

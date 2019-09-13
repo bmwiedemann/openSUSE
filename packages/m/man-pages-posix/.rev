@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>c975b700bc1355636e4f5b5d59b4b4d2</srcmd5>
+    <version>2003a</version>
+    <time>1220841865</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="9">
+    <srcmd5>92e6043042e81c78c84ec23be6e8ef6d</srcmd5>
+    <version>2003a</version>
+    <time>1245365369</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="11">
+    <srcmd5>92e6043042e81c78c84ec23be6e8ef6d</srcmd5>
+    <version>2003a</version>
+    <time>1245365369</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="12">
+    <srcmd5>778a267e72c2da9334eb505cc832e96f</srcmd5>
+    <version>2003a</version>
+    <time>1268924910</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="14">
+    <srcmd5>778a267e72c2da9334eb505cc832e96f</srcmd5>
+    <version>2003a</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="15">
+    <srcmd5>778a267e72c2da9334eb505cc832e96f</srcmd5>
+    <version>2003a</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="18">
+    <srcmd5>778a267e72c2da9334eb505cc832e96f</srcmd5>
+    <version>2003a</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="19">
+    <srcmd5>36a85869690dccae002e7249b347ea8e</srcmd5>
+    <version>2003a</version>
+    <time>1316684660</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>84379</requestid>
+  </revision>
+  <revision rev="9" vrev="21">
+    <srcmd5>36a85869690dccae002e7249b347ea8e</srcmd5>
+    <version>2003a</version>
+    <time>1319182171</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="23">
+    <srcmd5>36a85869690dccae002e7249b347ea8e</srcmd5>
+    <version>2003a</version>
+    <time>1340183690</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="24">
+    <srcmd5>13915cbe6a8058bdc7e7ac962938f42c</srcmd5>
+    <version>2003a</version>
+    <time>1345809132</time>
+    <user>namtrac</user>
+    <comment>license update: SUSE-IEEE
+A new license string was added to the spreadsheet linked from license.opensuse.org. It corresponds to the Fedora entry. The proprietary SUSE- prefix is included until the license is accepted upstream at spdx.org/licenses (forwarded request 131413 from babelworx)</comment>
+    <requestid>131414</requestid>
+  </revision>
+  <revision rev="12" vrev="26">
+    <srcmd5>13915cbe6a8058bdc7e7ac962938f42c</srcmd5>
+    <version>2003a</version>
+    <time>1359109431</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="27">
+    <srcmd5>6db0f55acef8ab5dd49311ade2dcac99</srcmd5>
+    <version>2003a</version>
+    <time>1364928116</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>162224</requestid>
+  </revision>
+  <revision rev="14" vrev="28">
+    <srcmd5>a910f3299fb33d27721b569406a4c334</srcmd5>
+    <version>2003a</version>
+    <time>1366722654</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 171116 from m_meister)</comment>
+    <requestid>173006</requestid>
+  </revision>
+  <revision rev="15" vrev="30">
+    <srcmd5>a910f3299fb33d27721b569406a4c334</srcmd5>
+    <version>2003a</version>
+    <time>1379663264</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1a346c3b69952098310fa6b73c2026f7</srcmd5>
+    <version>2013a</version>
+    <time>1391077946</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2013a
+* Update to the latest revision of the POSIX standard
+- Feed specfile through formatter; kill redundant %clean section;
+  %fdupes ought not to be called across directories that potentially
+  live across standard partitions (forwarded request 215131 from jengelh)</comment>
+    <requestid>215208</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>1a346c3b69952098310fa6b73c2026f7</srcmd5>
+    <version>2013a</version>
+    <time>1409301855</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>266ae98cf628fe4bd973901f828501b1</srcmd5>
+    <version>2013a</version>
+    <time>1549311434</time>
+    <user>coolo</user>
+    <comment>Change the precondition:
+Suggest the standardese only when the system shows tendencies of
+being a development machine:
+- Supplement man-pages, not man.
+- Fix bashisms in scripts (forwarded request 665261 from jengelh)</comment>
+    <requestid>665667</requestid>
+  </revision>
+</revisionlist>

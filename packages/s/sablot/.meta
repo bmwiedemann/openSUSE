@@ -1,0 +1,6 @@
+<package name="sablot" project="openSUSE:Factory">
+  <title>XSL Processor</title>
+  <description>Sablotron is an XSL processor fully implemented in C++. The excellent
+Expat parser is used as the associated XML parser.</description>
+  <devel project="Publishing" package="sablot"/>
+</package>

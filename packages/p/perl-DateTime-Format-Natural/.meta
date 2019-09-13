@@ -1,0 +1,9 @@
+<package name="perl-DateTime-Format-Natural" project="openSUSE:Factory">
+  <title>Create machine readable date/time with natural parsing logic</title>
+  <description>DateTime::Format::Natural takes a string with a human readable date/time and
+creates a machine readable one by applying natural parsing logic.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-DateTime-Format-Natural"/>
+  <url>http://search.cpan.org/dist/DateTime-Format-Natural/</url>
+</package>

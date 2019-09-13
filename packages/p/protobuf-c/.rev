@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ceee17634afabd408beeed9ee83655ad</srcmd5>
+    <version>0.15</version>
+    <time>1316088514</time>
+    <user>saschpe</user>
+    <comment>one more try</comment>
+    <requestid>81763</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>df3422acee423ebb42d4ff3d98a553ab</srcmd5>
+    <version>0.15</version>
+    <time>1316088523</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81763
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>df3422acee423ebb42d4ff3d98a553ab</srcmd5>
+    <version>0.15</version>
+    <time>1319182371</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>fb5d59982c7794a9981b105c956f0a7b</srcmd5>
+    <version>0.15</version>
+    <time>1323193996</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>fb5d59982c7794a9981b105c956f0a7b</srcmd5>
+    <version>0.15</version>
+    <time>1340184019</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>fb5d59982c7794a9981b105c956f0a7b</srcmd5>
+    <version>0.15</version>
+    <time>1359109958</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>fb5d59982c7794a9981b105c956f0a7b</srcmd5>
+    <version>0.15</version>
+    <time>1379664076</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>fb5d59982c7794a9981b105c956f0a7b</srcmd5>
+    <version>0.15</version>
+    <time>1409302754</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6ce0d4a4baeb796268c2b4f7496636cc</srcmd5>
+    <version>1.1.0</version>
+    <time>1427736717</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293069</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e1922bbbb846e0ea5d6f1bb39fc13f57</srcmd5>
+    <version>1.1.1</version>
+    <time>1433920376</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311290</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b6d9fa44f0b4da420a6a4259e59ef4b6</srcmd5>
+    <version>1.3.0</version>
+    <time>1514569648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558935</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>15934fdf6eef86320d91d90217469819</srcmd5>
+    <version>1.3.0</version>
+    <time>1518187514</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop %__-type macro indirections. (forwarded request 559386 from jengelh)</comment>
+    <requestid>573409</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7e016d02bd3c5fa4e84750dc111ec644</srcmd5>
+    <version>1.3.1</version>
+    <time>1539251179</time>
+    <user>dimstar_suse</user>
+    <comment>work it up with 635281</comment>
+    <requestid>640054</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ac6891d3cea2aa0e853153db1dc5400f</srcmd5>
+    <version>1.3.1</version>
+    <time>1558129085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702841</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>33a25653cb24b85017a50ddd23500cbd</srcmd5>
+    <version>1.3.1</version>
+    <time>1560458293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708408</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ec47364f72df6caec509469031a5eb30</srcmd5>
+    <version>1.3.2</version>
+    <time>1566912354</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>725957</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-linecache2" project="openSUSE:Factory">
+  <title></title>
+  <description>Backports of the linecache module</description>
+  <devel project="devel:languages:python" package="python-linecache2"/>
+</package>

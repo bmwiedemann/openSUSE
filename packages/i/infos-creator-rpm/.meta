@@ -1,0 +1,5 @@
+<package name="infos-creator-rpm" project="openSUSE:Factory">
+  <title></title>
+  <description>kiwi hook creating the virt-builder infos</description>
+  <devel project="Virtualization" package="infos-creator-rpm"/>
+</package>

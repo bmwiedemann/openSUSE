@@ -1,0 +1,8 @@
+<package name="curl" project="openSUSE:Factory">
+  <title>A Tool for Transferring Data from URLs</title>
+  <description>Curl is a client to get documents and files from or send documents to a
+server using any of the supported protocols (HTTP, HTTPS, FTP, FTPS,
+TFTP, DICT, TELNET, LDAP, or FILE). The command is designed to work
+without user interaction or any kind of interactivity.</description>
+  <devel project="devel:libraries:c_c++" package="curl"/>
+</package>

@@ -1,0 +1,232 @@
+<revisionlist>
+  <revision rev="1" vrev="26">
+    <srcmd5>010ad802149927dc28a858b0ba71241e</srcmd5>
+    <version>1.94</version>
+    <time>1168903746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="43">
+    <srcmd5>46b2792114ccbd734d7514010e05d923</srcmd5>
+    <version>1.94</version>
+    <time>1173297137</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ead63584f9e8f19584a5c04e46d6f6de</srcmd5>
+    <version>1.96</version>
+    <time>1200383602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="26">
+    <srcmd5>7912694831371631015d81437ae495ad</srcmd5>
+    <version>1.96</version>
+    <time>1207833725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="95">
+    <srcmd5>7912694831371631015d81437ae495ad</srcmd5>
+    <version>1.96</version>
+    <time>1207833725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ad138dfe25216b3f08045cda071f385</srcmd5>
+    <version>1.97</version>
+    <time>1239747244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3e4cf583295861f3e2f8fe5d5d4c57d6</srcmd5>
+    <version>1.97</version>
+    <time>1246630195</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>3e4cf583295861f3e2f8fe5d5d4c57d6</srcmd5>
+    <version>1.97</version>
+    <time>1246630195</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>4a70393ffc908be25540ed46fd2be13e</srcmd5>
+    <version>1.97</version>
+    <time>1266508148</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam_ssh based on submit request 32749 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>194ba6742f4c736cf80909d065029402</srcmd5>
+    <version>1.97</version>
+    <time>1268925288</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>194ba6742f4c736cf80909d065029402</srcmd5>
+    <version>1.97</version>
+    <time>1278667375</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>194ba6742f4c736cf80909d065029402</srcmd5>
+    <version>1.97</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>194ba6742f4c736cf80909d065029402</srcmd5>
+    <version>1.97</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>395923650c788c87a52d3713aef99459</srcmd5>
+    <version>1.97</version>
+    <time>1309247585</time>
+    <user>saschpe</user>
+    <comment>- set gid/groups before executing ssh-agent (bnc#665061) (forwarded request 73504 from vitezslav_cizek)</comment>
+    <requestid>74662</requestid>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>35d423e6b52b94e24733b854564ac7aa</srcmd5>
+    <version>1.97</version>
+    <time>1309247598</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74662
+</comment>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>35d423e6b52b94e24733b854564ac7aa</srcmd5>
+    <version>1.97</version>
+    <time>1319182227</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>58ec61d5f70515e5589102f4c38c39bd</srcmd5>
+    <version>1.97</version>
+    <time>1320232288</time>
+    <user>coolo</user>
+    <comment>- pam_ssh-1.97-sigmask.patch:
+  Clear signal mask before executing ssh-agent as pam_ssh code can
+  be called from kdm with blocked TERM signal which would be
+  inherited by ssh-agent (bnc#727246).</comment>
+    <requestid>89812</requestid>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>c032e6cae4c7044d995b93d6e4b25756</srcmd5>
+    <version>1.97</version>
+    <time>1322481332</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93817 from coolo)</comment>
+    <requestid>93958</requestid>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>5e0f2a23e854e0b77f8f43c3c208794f</srcmd5>
+    <version>1.97</version>
+    <time>1326962626</time>
+    <user>coolo</user>
+    <comment>- added patch that prevents segfault when empty passphrase is
+  supplied (bnc#741541)
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building</comment>
+    <requestid>100425</requestid>
+  </revision>
+  <revision rev="20" vrev="21">
+    <srcmd5>5e0f2a23e854e0b77f8f43c3c208794f</srcmd5>
+    <version>1.97</version>
+    <time>1340183775</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="22">
+    <srcmd5>4c60e187b1b366ab9f9f336fda415a81</srcmd5>
+    <version>1.97</version>
+    <time>1358158480</time>
+    <user>coolo</user>
+    <comment>- remove suse_update_config (forwarded request 148214 from coolo)</comment>
+    <requestid>148374</requestid>
+  </revision>
+  <revision rev="22" vrev="24">
+    <srcmd5>4c60e187b1b366ab9f9f336fda415a81</srcmd5>
+    <version>1.97</version>
+    <time>1359109569</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ceb0340fdb295210a8322268d1098f12</srcmd5>
+    <version>1.98</version>
+    <time>1368450657</time>
+    <user>coolo</user>
+    <comment> (forwarded request 173714 from wrosenauer)</comment>
+    <requestid>175188</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>f0d88d5bc068af78af06c32c84ad6878</srcmd5>
+    <version>1.98</version>
+    <time>1371646549</time>
+    <user>coolo</user>
+    <comment>- restore credentials before exitting from pam_sm_open_session
+  * fixes bnc#823484
+  * added James Carter's pam_ssh-1.97-no_tty_stay_as_user.patch (forwarded request 178459 from vitezslav_cizek)</comment>
+    <requestid>179391</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>f0d88d5bc068af78af06c32c84ad6878</srcmd5>
+    <version>1.98</version>
+    <time>1379663488</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>df7444d1ddbbcc5192e6bcfe026bc700</srcmd5>
+    <version>2.0</version>
+    <time>1385101502</time>
+    <user>coolo</user>
+    <comment>new major upstream version; unfortunately not backwards compatible configuration (forwarded request 207453 from wrosenauer)</comment>
+    <requestid>207856</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>df7444d1ddbbcc5192e6bcfe026bc700</srcmd5>
+    <version>2.0</version>
+    <time>1409302104</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a17c0c49db417daf0b3649dea1d3b7b3</srcmd5>
+    <version>2.01</version>
+    <time>1429606310</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297886</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6c8f4f682784ff21ed756d146755130c</srcmd5>
+    <version>2.1</version>
+    <time>1434006637</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311506</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>a9d80fc67907891653d5c123599632f6</srcmd5>
+    <version>2.1</version>
+    <time>1512140064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547009</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>595e24079ad20823ce773215793bb80b</srcmd5>
+    <version>2.3</version>
+    <time>1548064595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666321</requestid>
+  </revision>
+</revisionlist>

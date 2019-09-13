@@ -1,0 +1,5 @@
+<package name="texinfo4" project="openSUSE:Factory">
+  <title>texinfo 4.x for lilypond doc build</title>
+  <description>This package is only for lilypond and not for human consumption. Do not use.</description>
+  <devel project="multimedia:apps" package="texinfo4"/>
+</package>

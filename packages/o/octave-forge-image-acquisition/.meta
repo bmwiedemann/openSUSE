@@ -1,0 +1,6 @@
+<package name="octave-forge-image-acquisition" project="openSUSE:Factory">
+  <title></title>
+  <description>The Octave-forge Image Aquisition package provides functions to capture images from connected devices. Currently only v4l2 is supported.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-image-acquisition"/>
+</package>

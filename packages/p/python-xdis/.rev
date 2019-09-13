@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c077cc7f6427a81c888f2c9021534ca</srcmd5>
+    <version>4.0.2</version>
+    <time>1562159691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713049</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cd6ce4ca8ca8d4558b5ea08be6767a6a</srcmd5>
+    <version>4.0.3</version>
+    <time>1567679649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.3:
+  * Support 3.8.0beta2; Code38 type with posonlyargcount field
+  * Add Python versions 3.4.10, 3.7.4 and 3.6.9
+  * script no longer works to install pydisasm; entry_points still works
+  * Add pypy 3.6 opcode formatting for MAKE_FUNCTION and EXTENDED_ARG
+  * Add format_CALL_function and use it or pypy36
+  * Start using &quot;blacken&quot; to reformat Python files</comment>
+    <requestid>724511</requestid>
+  </revision>
+</revisionlist>

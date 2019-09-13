@@ -1,0 +1,5 @@
+<package name="openblas" project="openSUSE:Factory">
+  <title>An optimized BLAS library based on GotoBLAS2</title>
+  <description>OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version. The project is supported by the Lab of Parallel Software and Computational Science, ISCAS. http://www.rdcps.ac.cn</description>
+  <devel project="science" package="openblas"/>
+</package>

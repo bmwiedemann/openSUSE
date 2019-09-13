@@ -1,0 +1,239 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eb3ea710d07df1631bd7647c918f2cfc</srcmd5>
+    <version>2006.12.26</version>
+    <time>1167347200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f79afbd163c49dc349620bb626dbb95c</srcmd5>
+    <version>2006.12.30</version>
+    <time>1167580368</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>165efdc60986950b2932dd37916fa31d</srcmd5>
+    <version>2007.1.9</version>
+    <time>1168361000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>374e3bc1a09c099bcf8d73fa6ee296ae</srcmd5>
+    <version>2007.2.6</version>
+    <time>1170805304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec7e8375349deebfa6df08e3a1ec156c</srcmd5>
+    <version>2007.11.12</version>
+    <time>1194914418</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a392f7c5a7eea9c5482f722e9ebd83b3</srcmd5>
+    <version>2007.11.13</version>
+    <time>1194986824</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6fe208f89fdc4df8fcde393439125373</srcmd5>
+    <version>2008.1.9</version>
+    <time>1199912326</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b31dd11394b5bcbb875c9debef0a1eb5</srcmd5>
+    <version>2008.9.5</version>
+    <time>1220646096</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>11b8ca02525564aca0cbec7b0385210d</srcmd5>
+    <version>2009.8.26</version>
+    <time>1251409121</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/ctags based on submit request 18762 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>11b8ca02525564aca0cbec7b0385210d</srcmd5>
+    <version>2009.8.26</version>
+    <time>1251409121</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/ctags based on submit request 18762 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d58a42dd8c7bcf03f4f0ff69cb9e12ea</srcmd5>
+    <version>2009.12.21</version>
+    <time>1261435233</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/ctags based on submit request 27349 from user puzel
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ef33a73df5adf2289c3f97cc65b3374d</srcmd5>
+    <version>2009.12.21</version>
+    <time>1268923267</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>ef33a73df5adf2289c3f97cc65b3374d</srcmd5>
+    <version>2009.12.21</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>ef33a73df5adf2289c3f97cc65b3374d</srcmd5>
+    <version>2009.12.21</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>ef33a73df5adf2289c3f97cc65b3374d</srcmd5>
+    <version>2009.12.21</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f3d9e7f65344749452ad42b4e7ae6349</srcmd5>
+    <version>2011.07.29</version>
+    <time>1312184350</time>
+    <user>saschpe</user>
+    <comment>update to ctags-5.8</comment>
+    <requestid>77456</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c5125973d2da68de8137b92db71dd60f</srcmd5>
+    <version>2011.7.29</version>
+    <time>1312184361</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77456
+</comment>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>7983ce4c44339cb072d077f22abfdd30</srcmd5>
+    <version>2011.7.29</version>
+    <time>1312356034</time>
+    <user>saschpe</user>
+    <comment>bnc#705308</comment>
+    <requestid>77700</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>767573df9f5efe7fd2799170e1f1c272</srcmd5>
+    <version>2011.8.2</version>
+    <time>1312356044</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77700
+</comment>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>de79a975de8e01794f957bf0b583231f</srcmd5>
+    <version>2011.8.2</version>
+    <time>1316617160</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 83151 from jengelh)</comment>
+    <requestid>83800</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>de79a975de8e01794f957bf0b583231f</srcmd5>
+    <version>2011.8.2</version>
+    <time>1319181837</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>06cd59ef1b780b901614660b90a50960</srcmd5>
+    <version>2011.8.2</version>
+    <time>1323191097</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>06cd59ef1b780b901614660b90a50960</srcmd5>
+    <version>2011.8.2</version>
+    <time>1340183264</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>83b190a08eefc249e89e362d4dbd716d</srcmd5>
+    <version>2011.8.2</version>
+    <time>1345809267</time>
+    <user>namtrac</user>
+    <comment>- go-tags.patch: Add patch supporting Go language</comment>
+    <requestid>131399</requestid>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>83b190a08eefc249e89e362d4dbd716d</srcmd5>
+    <version>2011.8.2</version>
+    <time>1359108788</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>90e9e0074944dde40b9f14ebf6772fe3</srcmd5>
+    <version>2011.8.2</version>
+    <time>1363954381</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160548 from m_meister)</comment>
+    <requestid>160562</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>70ce924963b907970df7172597ebe37c</srcmd5>
+    <version>5.8</version>
+    <time>1367827987</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174484</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>70ce924963b907970df7172597ebe37c</srcmd5>
+    <version>5.8</version>
+    <time>1379662187</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>70ce924963b907970df7172597ebe37c</srcmd5>
+    <version>5.8</version>
+    <time>1409300722</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>5a06a0b1e164e96b580ebda268c0840c</srcmd5>
+    <version>5.8</version>
+    <time>1432636632</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308712</requestid>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>aa0ea7a6437ed531e37436e9bcfe5a97</srcmd5>
+    <version>5.8</version>
+    <time>1464484324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>397776</requestid>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>69b7b0d2cf554890604197d131aba2c4</srcmd5>
+    <version>5.8</version>
+    <time>1473408786</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>420140</requestid>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>97bea655cc069580ec38edc88bef65ed</srcmd5>
+    <version>5.8</version>
+    <time>1489345445</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477790</requestid>
+  </revision>
+</revisionlist>

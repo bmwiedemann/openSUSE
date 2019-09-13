@@ -1,0 +1,7 @@
+<package name="unicode-emoji" project="openSUSE:Factory">
+  <title>Unicode Emoji Data Files</title>
+  <description>Unicode Emoji Data Files are the machine-readable
+emoji data files associated with
+http://www.unicode.org/reports/tr51/index.html</description>
+  <devel project="M17N" package="unicode-emoji"/>
+</package>

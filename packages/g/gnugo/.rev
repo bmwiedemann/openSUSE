@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4225f08c97f9cb5a06916903d46c0567</srcmd5>
+    <version>3.7.10</version>
+    <time>1168902908</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="23">
+    <srcmd5>5fcc8fff53f8063663e1326a5678abe7</srcmd5>
+    <version>3.7.10</version>
+    <time>1175628378</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="109">
+    <srcmd5>117f2b50c36f72c5f2249913a767ca15</srcmd5>
+    <version>3.7.10</version>
+    <time>1196896666</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="223">
+    <srcmd5>117f2b50c36f72c5f2249913a767ca15</srcmd5>
+    <version>3.7.10</version>
+    <time>1196896666</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="224">
+    <srcmd5>574c5e68994c5bbe1213f04aef686b4b</srcmd5>
+    <version>3.7.10</version>
+    <time>1245363748</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="226">
+    <srcmd5>574c5e68994c5bbe1213f04aef686b4b</srcmd5>
+    <version>3.7.10</version>
+    <time>1245363748</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9c4ef9814826675f71147b08a5db6ad0</srcmd5>
+    <version>3.8</version>
+    <time>1263503436</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/gnugo based on submit request 29536 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f678dcf16de04356d81b96513e81379f</srcmd5>
+    <version>3.8</version>
+    <time>1268923836</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>f678dcf16de04356d81b96513e81379f</srcmd5>
+    <version>3.8</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>f678dcf16de04356d81b96513e81379f</srcmd5>
+    <version>3.8</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>f678dcf16de04356d81b96513e81379f</srcmd5>
+    <version>3.8</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>f678dcf16de04356d81b96513e81379f</srcmd5>
+    <version>3.8</version>
+    <time>1319181932</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>b35b4e704a54b7558fba0078e0fdbb0a</srcmd5>
+    <version>3.8</version>
+    <time>1323191712</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>b35b4e704a54b7558fba0078e0fdbb0a</srcmd5>
+    <version>3.8</version>
+    <time>1340183396</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>b35b4e704a54b7558fba0078e0fdbb0a</srcmd5>
+    <version>3.8</version>
+    <time>1359108976</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d5dbb7239710b9369fa17bb1e42fa452</srcmd5>
+    <version>3.9.1</version>
+    <time>1361548330</time>
+    <user>coolo</user>
+    <comment>update to 3.9.1 (forwarded request 155944 from MargueriteSu)</comment>
+    <requestid>155976</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d5dbb7239710b9369fa17bb1e42fa452</srcmd5>
+    <version>3.9.1</version>
+    <time>1379662519</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>d5dbb7239710b9369fa17bb1e42fa452</srcmd5>
+    <version>3.9.1</version>
+    <time>1409301057</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>15c976fec64fde3495b30390c956309d</srcmd5>
+    <version>3.9.1+git20130613.84a32e9</version>
+    <time>1440658553</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325450</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5971f8737cb312331a1cf4c0871172d</srcmd5>
+    <version>0.8.4</version>
+    <time>1530087653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.4:
+  * Migration to GitLab.com.
+  * Fixed issues: 98.
+- Rename to meteo
+- Switch to gitlab
+- Spec file cleanup
+- Use noun phrasing.
+- Update to 0.8.3:
+  * Delete built-in API key which is blocked by OWM.
+  * Fixed issues: 92, 96, 97.
+- Update to 0.8.1:
+  * Simplify gettext strings.
+  * Add new update interval.
+  * Add more information to indicator.
+  * Add new translations.
+  * Show location on indicator menu.
+  * Add run on startup option.
+  * Change wind speed units.
+  * Fixed issues: 72, 74, 80, 81, 82, 83, 84, 85, 86, 87, 88.
+- Update to 0.7.0:
+  * Update de.po
+  * Update screenshot and spanish po
+  * Update lt.po
+  * Update en.po
+  * Several fixes to fr.po
+  * Adding info to indicator. Fix issue #57
+  * Fix issue #35 and #50
+  * Add de.po
+  * Add German
+  * Remove granite
+  * Update current cache file
+  * Fix issue #58
+  * Remove snap to separate repo
+  * Snap without glib
+- Update to 0.6.1:
+  * New snapcraft file and update readme.md
+  * Update support for appimage and snapcraft
+  * Update readme and add appimage creator
+  * Update README.md
+  * Update appdata
+- Update to 0.6.0:
+  * Fix issue #52
+- Add pkgconfig(granite)
+- Update to 0.5.4:
+  * Merge pull request #45 from welaq/patch-2
+  * Update lt.po
+  * Update flatpak manifiest.
+  * Start minimized. Optional
+  * Start minimized. Fix some issues with gresouce.
+  * Merge pull request #41 from bil-elmoussaoui/gresource
+  * load css from gresource, improve the constants file
+  * Merge pull request #40 from bil-elmoussaoui/i18n
+  * Update appdata and new screenshots.
+  * Add files via upload
+  * Delete screenshot_4.png
+  * Updated appdata and screenshots
+  * Avoid appstream validation
+  * Improve appdata.xml
+  * Change to validate Appstream
+  * Merge pull request #37 from bil-elmoussaoui/patch-1
+  * fix the indententation
+- Update to 0.5.2:
+  * Fix gnome issue
+  * Update readme to v0.5
+  * Release v0.5
+  * Update Maps Layers and conectors
+  * Change remove by destroy on update
+  * Some minor fixes and maps views
+  * Delete cmake support
+  * Update to meson build
+- Build with meson
+- Add pkgconfig({webkit2gtk-4.0,appindicator3-0.1})
+- Add  HiDPI icons
+-----------------------------------------------------------------
+- Initial package  
+</comment>
+    <requestid>618706</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f14a48648b9157852dc8c97d4110d5b</srcmd5>
+    <version>0.8.5</version>
+    <time>1535123509</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631167</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3092720ac923bf51339d6d044ae323e6</srcmd5>
+    <version>0.9.6</version>
+    <time>1551276410</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679476</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>24163da3536d89d74455da3ab6697d4f</srcmd5>
+    <version>0.9.7</version>
+    <time>1560337911</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705941</requestid>
+  </revision>
+</revisionlist>

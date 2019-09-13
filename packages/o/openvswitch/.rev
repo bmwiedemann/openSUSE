@@ -1,0 +1,573 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6243ff43f12eca74e530496b069dda82</srcmd5>
+    <version>2.1.3</version>
+    <time>1414776448</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>257855</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7cfc89d3407d2b0f602024b941cf31af</srcmd5>
+    <version>2.3.1</version>
+    <time>1420531619</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>267254</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d823b70924fea9d1cb261377c64eedfc</srcmd5>
+    <version>2.3.1</version>
+    <time>1452850904</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353464</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ab96bed49ab30718c237939f49f258f7</srcmd5>
+    <version>2.4.0</version>
+    <time>1457353607</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>364973</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec631310d25a6cc5e54ada4d5cef7b95</srcmd5>
+    <version>2.5.0</version>
+    <time>1460632076</time>
+    <user>dimstar_suse</user>
+    <comment>- address dimstars concerns
+
+- Prevent systemd from autogenerating a service file for
+  openvswitch-switch which conflicts with the opevswitch
+  one. (bsc#966762)
+
+- Add missing %defattr to ovn files section.
+
+- Add additional install requirements for python-openvswitch-test
+  package.
+
+- Add support for building both 2.4.0 and 2.5.0 from the same spec
+  file. Needed to fix SLE11 builds as OVS-2.5.0 no longer supports
+  python &lt; 2.7. SLE11 SP3 and SP4 use python 2.6.
+- Added: openvswitch-2.4.0.tar.gz
+
+- New upstream version 2.5.0 (LTS)
+  - Dropped support for Python older than version 2.7.  As a consequence,
+    using Open vSwitch 2.5 or later on XenServer 6.5 or earlier (which
+    have Python 2.4) requires first installing Python 2.7.
+  - OpenFlow:
+    * Group chaining (where one OpenFlow group triggers another) is
+      now supported.
+    * OpenFlow 1.4+ &quot;importance&quot; is now considered for flow eviction.
+    * OpenFlow 1.4+ OFPTC_EVICTION is now implemented.
+    * OpenFlow 1.4+ OFPTC_VACANCY_EVENTS is now implemented.
+    * OpenFlow 1.4+ OFPMP_TABLE_DESC is now implemented.
+    * Allow modifying the ICMPv4/ICMPv6 type and code fields.
+    * OpenFlow 1.4+ OFPT_SET_ASYNC_CONFIG and OFPT_GET_ASYNC_CONFIG are
+      now implemented.</comment>
+    <requestid>389094</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>66fa4fb2bd90df6983fab896ff227e38</srcmd5>
+    <version>2.5.0</version>
+    <time>1464204500</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397606</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>72b653eb6f7e753a760f548322844908</srcmd5>
+    <version>2.5.0</version>
+    <time>1468360283</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow the OvS daemon to run as non-root (bsc#987545)
+- Add missing 'Conflicts' statements to all the subpackages as
+  required by the Factory review tools.
+
+- Remove the ?_with_dpdk macro usage since this is not being set
+  without explicitly passing --with/--without during an OBS build.
+  This reverts back to using the %{with dpdk} style which is set
+  automatically based on %bcond_with* macros.
+
+- Fix subpackage dependencies to not require the non-existent python
+  DPDK subpackages (bsc#986835). We do not provide DPDK versions of
+  the python bindings so nothing should depend on these subpackages.
+
+- Update rpm groups, acronym forms.
+
+- Multiple fixes for the openvswitch-dpdk package (bsc#985878)
+  * Rename main package name to openvswitch-dpdk
+  * Do not build the python and kmp packages since they do not
+    depend on the DPDK capabilities
+  * Remove the open_virtual_switch capability. The
+    openvswitch-common will be used by reverse dependencies to
+    require either of the OvS packages.
+  * Provide virtual capabilities for all DPDK subpackages.
+  * Fix the dependencies in the python package to require either
+    of the OvS packages.
+  * Suggest the kmp package only if it's actually provided.
+  * Small cleanups.</comment>
+    <requestid>406694</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>5cc6889ad3e94e7552a2e0248dbbe3b9</srcmd5>
+    <version>2.5.0</version>
+    <time>1473548016</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing licenses (bsc#988513)
+- Misc spec file cleanups highlighted by the spec-cleaner tool.
+- Allow aarch64 builds for openvswitch-dpdk
+- Add old bug references to the changelog.</comment>
+    <requestid>411742</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>64e93a775f2e3ae39478c492f6002264</srcmd5>
+    <version>2.5.0</version>
+    <time>1474016462</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427339</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>44e29c0768ed5c3b5b6678ba7559f223</srcmd5>
+    <version>2.6.0</version>
+    <time>1476351012</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433753</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f1123e289ccda6ce8b61223ae3865d4d</srcmd5>
+    <version>2.6.1</version>
+    <time>1478377674</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438685</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9447fced55342ef63c0bcbfb345259a5</srcmd5>
+    <version>2.6.1</version>
+    <time>1480420150</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442358</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e90125b1b03f9993bfe5c4cfe2be99b2</srcmd5>
+    <version>2.7.0</version>
+    <time>1489759593</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 2.7.0 (fate#321541). Some of the changes are:
+  * Utilities and daemons that support SSL now allow protocols and
+    ciphers to be configured with --ssl-protocols and --ssl-ciphers.
+  * OVN:
+    - QoS is now implemented via egress shaping rather than ingress policing.
+    - DSCP marking is now supported, via the new northbound QoS table.
+    - IPAM now supports fixed MAC addresses.
+    - Support for source IP address based routing.
+    - ovn-trace:
+      * New --ovs option to also print OpenFlow flows.
+      * put_dhcp_opts and put_dhcp_optsv6 actions may now be traced.
+    - Support for managing SSL and remote connection configuration in
+      northbound and southbound databases.
+  * Fixed regression in table stats maintenance introduced in OVS
+    2.3.0, wherein the number of OpenFlow table hits and misses was
+    not accurate.
+  * OpenFlow:
+    - OFPT_PACKET_OUT messages are now supported in bundles.
+    - A new &quot;selection_method=dp_hash&quot; type for OpenFlow select group
+      bucket selection that uses the datapath computed 5-tuple hash
+      without making datapath flows match the 5-tuple fields, which
+      is useful for more efficient load balancing, for example.  This
+      uses the Netronome extension to OpenFlow 1.5+ that allows
+      control over the OpenFlow select groups selection method.  See
+      &quot;selection_method&quot; and related options in ovs-ofctl(8) for
+      details.
+    - The &quot;sample&quot; action now supports &quot;ingress&quot; and &quot;egress&quot; options.
+    - The &quot;ct&quot; action now supports the TFTP ALG where support is available.
+    - New actions &quot;clone&quot; and &quot;ct_clear&quot;.
+  * ovs-ofctl:</comment>
+    <requestid>479156</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b30c425c33d414abefc4dd1640c3531e</srcmd5>
+    <version>2.7.0</version>
+    <time>1496681460</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501158</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8705b41ed7b8a68b972b529cb9791e31</srcmd5>
+    <version>2.7.2</version>
+    <time>1503592956</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512973</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>586e92edde938496ddb466e98efde7fc</srcmd5>
+    <version>2.8.0</version>
+    <time>1505334593</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522131</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6be3be5d9057c6451f831da0d6860d21</srcmd5>
+    <version>2.8.1</version>
+    <time>1507065487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530557</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>df369d5bd011aefd5bc6e47fdc4be0c4</srcmd5>
+    <version>2.8.1</version>
+    <time>1511595815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545123</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>224b77408ad4af8d6e2bf2d959539e99</srcmd5>
+    <version>2.8.1</version>
+    <time>1513245281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554834</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>f81a242b92e276e0b63fac94205f5c18</srcmd5>
+    <version>2.8.1</version>
+    <time>1515876402</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patches to support DPDK 17.11 (fate#322609)
+  * 0001-netdev-dpdk-replace-uint8_t-with-dpdk_port_t.patch
+  * 0002-netdev-dpdk-DPDK-v17.11-upgrade.patch
+  * 0003-netdev-dpdk-vHost-IOMMU-support.patch
+- Python fixes and improvements
+  * Build Python3 subpackages for Open vSwitch python bindings
+  * Switch build architecture to 'noarch' for python bindings.
+  * Fix license for python subpackages
+  * Build and ship python bytecode files.
+- Do not mark files in /usr/share/* as configuration files
+- Replace version macro with actual version number of Obsoletes tags.
+  The DPDK packages have been merged with the regular OvS ones in the
+  2.7.0 release so make it more explicit which ones we are obsoleting.
+- spec-cleaner fixes
+</comment>
+    <requestid>563300</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>d666fc8cbec670f245a8736173d74dc8</srcmd5>
+    <version>2.8.1</version>
+    <time>1519684015</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>580249</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c87d20232afef69c7c9ddabc1b6b5fe1</srcmd5>
+    <version>2.9.0</version>
+    <time>1520415450</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 2.9.0. Some of the changes are:
+  * NSH implementation now conforms to latest draft (draft-ietf-sfc-nsh-28).
+  * OVSDB:
+    - ovsdb-client: New &quot;get-schema-cksum&quot; and &quot;query&quot; commands.
+    - ovsdb-client: New &quot;backup&quot; and &quot;restore&quot; commands.
+    - ovsdb-client: New --timeout option.
+    - ovsdb-tool: New &quot;db-name&quot; and &quot;schema-name&quot; commands.
+  * ovs-vsctl and other commands that display data in tables now support a
+     --max-column-width option to limit column width.
+  * No longer slow-path traffic that sends to a controller.  Applications,
+    such as OVN ACL logging, want to send a copy of a packet to a
+    controller while leaving the actual packet forwarding in the datapath.
+  * OVN:
+    - The &quot;requested-chassis&quot; option for a logical switch port now accepts a
+      chassis &quot;hostname&quot; in addition to a chassis &quot;name&quot;.
+    - IPv6
+      * Added support to send IPv6 Router Advertisement packets in response to
+        the IPv6 Router Solicitation packets from  the VIF ports.
+      * Added support to generate Neighbor Solicitation packets using the OVN
+        action 'nd_ns' to resolve unknown next hop MAC addresses for the
+        IPv6 packets.
+    - ovn-ctl: New commands run_nb_ovsdb and run_sb_ovsdb.
+  * OpenFlow:
+    - ct_clear action is now backed by kernel datapath. Support is probed for
+      when OVS starts.
+   - ovs-dpctl and related ovs-appctl commands:
+     * &quot;flush-conntrack&quot; now accept a 5-tuple to delete a specific
+       connection tracking entry.
+     * New &quot;ct-set-maxconns&quot;, &quot;ct-get-maxconns&quot;, and &quot;ct-get-nconns&quot; commands
+       for userspace datapath.
+   - No longer send packets to the Linux TAP device if it's DOWN unless it is
+     in another networking namespace.
+  * DPDK:
+    - Add support for DPDK v17.11
+    - Add support for vHost IOMMU
+    - New debug appctl command 'netdev-dpdk/get-mempool-info'.
+      * Custom statistics:
+        - DPDK physical ports now return custom set of &quot;dropped&quot;, &quot;error&quot; and
+          &quot;management&quot; statistics.
+        - ovs-ofctl dump-ports command now prints new of set custom statistics
+          if available (for OpenFlow 1.4+).
+    - New appctl command 'dpif-netdev/pmd-rxq-rebalance' to rebalance rxq to
+      pmd assignments.
+    - Add rxq utilization of pmd to appctl 'dpif-netdev/pmd-rxq-show'.
+    - Add support for vHost dequeue zero copy (experimental)
+  * Userspace datapath:
+    - Output packet batching support.
+  * vswitchd:
+    - Datapath IDs may now be specified as 0x1 (etc.) instead of 16 digits.
+    - Configuring a controller, or unconfiguring all controllers, now deletes
+      all groups and meters (as well as all flows).
+   - New --enable-sparse configure option enables &quot;sparse&quot; checking by default.
+   - Added additional information to vhost-user status.
+- For the complete list of changes, please refer to
+  http://openvswitch.org/releases/NEWS-2.9.0
+- Fix incorrect python3 dependencies for python2 subpackages
+- Drop upstream patches for DPDK 17.11 support. They have been merged upstream
+  * 0001-netdev-dpdk-replace-uint8_t-with-dpdk_port_t.patch
+  * 0002-netdev-dpdk-DPDK-v17.11-upgrade.patch
+  * 0003-netdev-dpdk-vHost-IOMMU-support.patch
+- Get rid of the old openvswitch DPDK migration steps everybody should have
+  migrated from &lt;2.6 to latest releases by now.
+  * 0001-utilities-Add-script-to-support-DPDK-option-migratio.patch 
+</comment>
+    <requestid>583259</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>4f4b30dcabeb6db4a034181a05447793</srcmd5>
+    <version>2.9.0</version>
+    <time>1521904590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590601</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>58618a562b69aeeca1cb0ee7db6d193e</srcmd5>
+    <version>2.9.0</version>
+    <time>1524576871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600167</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>425679e54d2c7ff0d224eb15c462c3ed</srcmd5>
+    <version>2.9.0</version>
+    <time>1525611721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604029</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ffb30bbeae6256d567027171f9679563</srcmd5>
+    <version>2.9.2</version>
+    <time>1527934247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613094</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>4c3085c5ed8eaa8e44aba3a67aa0ba84</srcmd5>
+    <version>2.9.2</version>
+    <time>1528897020</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615104</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>000a1bbdf2db1cc81ed3bae6f52edcac</srcmd5>
+    <version>2.9.2</version>
+    <time>1535367482</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631184</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b1e92336ddcb40d03762efa46089349d</srcmd5>
+    <version>2.10.0</version>
+    <time>1536094541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632456</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>601115bb5e5cac05e8d542122448bfba</srcmd5>
+    <version>2.10.0</version>
+    <time>1537964585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637897</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>bd60faa29b4c1118a7f7d313f9f4a728</srcmd5>
+    <version>2.10.0</version>
+    <time>1538374703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638873</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c350464290da25104f78c3fcdc5070d4</srcmd5>
+    <version>2.10.1</version>
+    <time>1540451484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644195</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>47a1b7b3da2cf6d7c409364909b60fe4</srcmd5>
+    <version>2.10.1</version>
+    <time>1542124845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648463</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>d3edbf98d9cedb1cd1f5f023ad76c1fd</srcmd5>
+    <version>2.10.1</version>
+    <time>1543311857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652024</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>ecb0a05b649575e9efe837058c5f2cd2</srcmd5>
+    <version>2.10.1</version>
+    <time>1548064888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667291</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b7be6747cd70f565418a15bd55cc4726</srcmd5>
+    <version>2.11.0+git20190123.ad83fc9ab</version>
+    <time>1549286651</time>
+    <user>coolo</user>
+    <comment>- Version bump to 2.11.0+git20190123.ad83fc9ab. Some of the changes are:
+   * Linux datapath:
+     - Support for the kernel versions 4.16.x and 4.17.x.
+   * OpenFlow:
+     - OFPMP_TABLE_FEATURES_REQUEST can now modify table features.
+   * ovs-ofctl:
+     - &quot;mod-table&quot; command can now change OpenFlow table names.
+   * The environment variable OVS_SYSLOG_METHOD, if set, is now used
+     as the default syslog method.
+   * The environment variable OVS_CTL_TIMEOUT, if set, is now used
+     as the default timeout for control utilities.
+   * ovn:
+     - OVN-SB schema changed: duplicated IP with same Encapsulation type
+       is not allowed any more.  Please refer to
+       Documentation/intro/install/ovn-upgrades.rst for the instructions
+       in case there are problems encountered when upgrading from an earlier
+       version.
+     - New support for IPSEC encrypted tunnels between hypervisors.
+     - ovn-ctl: allow passing user:group ids to the OVN daemons.
+     - IPAM/MACAM:
+       * add the capability to dynamically assign just L2 addresses
+       * add the capability to specify a static ip address and get the L2 one
+         allocated dynamically using the following syntax:
+           ovn-nbctl lsp-set-addresses &lt;port&gt; &quot;dynamic &lt;IP&gt;&quot;
+   * DPDK:
+     - Add support for DPDK 18.11
+     - Add support for port representors.
+   * Userspace datapath:
+     - Add option for simple round-robin based Rxq to PMD assignment.
+       It can be set with pmd-rxq-assign.
+     - Add support for Auto load balancing of PMDs (experimental)
+     - Added new per-port configurable option to manage EMC:
+       'other_config:emc-enable'.
+   * Add 'symmetric_l3' hash function.
+   * OVS now honors 'updelay' and 'downdelay' for bonds with LACP configured.
+   * ovs-vswitchd:
+     - New configuration option &quot;offload-rebalance&quot;, that enables dynamic
+       rebalancing of offloaded flows.
+   * The environment variable OVS_RESOLV_CONF, if set, is now used
+     as the DNS server configuration file.
+   * RHEL packaging:
+     - OVN packages are split from OVS packages. A new spec
+       file - ovn-fedora.spec.in is added to generate OVN packages.
+- Remove upstreamed patch:
+  * 0001-python-c-ext-Fix-memory-leak-in-Parser_finish.patch
+- Remove DISABLE_RESTART_ON_UPDATE and DISABLE_STOP_ON_REMOVAL options (bsc#1117483).
+ 
+</comment>
+    <requestid>668409</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c0d5932a75ce0787096731ef8e05aea6</srcmd5>
+    <version>2.11.0</version>
+    <time>1551784816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681219</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>96139b70b6d4dd3f98d1fa308971af68</srcmd5>
+    <version>2.11.0</version>
+    <time>1553436107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687928</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>159b7577b1edb4803feb331758160961</srcmd5>
+    <version>2.11.0</version>
+    <time>1553611535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688598</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a17707eb600d5ba6fb59809c20212eae</srcmd5>
+    <version>2.11.1</version>
+    <time>1557142091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700964</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>3eb37e675e2b109e0953d4ad19393fc8</srcmd5>
+    <version>2.11.1</version>
+    <time>1557916532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703094</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>66be20aaf02efb270358782e4a1960f5</srcmd5>
+    <version>2.11.1</version>
+    <time>1560338358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709321</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>53d90ced875844b5a095440c257af735</srcmd5>
+    <version>2.11.1</version>
+    <time>1561405975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711567</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>34109d45ada3ca3a2f7fa8c0ba7089b5</srcmd5>
+    <version>2.11.1</version>
+    <time>1563456009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715649</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>dbe3a48c661c099f74672a9233ff2c72</srcmd5>
+    <version>2.11.1</version>
+    <time>1565362421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721761</requestid>
+  </revision>
+</revisionlist>

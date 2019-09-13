@@ -1,0 +1,11 @@
+<package name="traceroute" project="openSUSE:Factory">
+  <title>A new modern implementation of traceroute(8) utility for Linux systems.</title>
+  <description>Traceroute tracks the route packets taken from an IP network on their way to a given host. It utilizes the IP protocol's time to live (TTL) field and attempts to elicit an ICMP TIME_EXCEEDED response from each gateway along the path to the host. See traceroute(8) in the manual of your system for more info.
+
+It is well-known application, appeared long time ago. Since 2000, its initial implementation is not developed, and does not follow the modern network needs. There was already some attempts to continue or re-write it, or to create similar application with additional features, but mostly such works either provides things partially or have considerably different interface.
+
+This code was written from the scratch, using some ideas of Olaf Kirch's traceroute, the original implementation of Van Jacobson and some current BSD's ones. It is fully compatible with the original traceroute from Van Jacobson, wide used before for years.
+
+Note, that this implementation is intended for Linux only. It utilizes some currently Linux-specific features (including MSG_ERRQUEUE for recvmsg(2)), which allow such things like the use by unprivileged users (without setuid bit) for some type of tracerouting. The Linux kernel 2.6 or higher required.</description>
+  <devel project="network:utilities" package="traceroute"/>
+</package>

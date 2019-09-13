@@ -1,0 +1,9 @@
+<package name="barcode" project="openSUSE:Factory">
+  <title>Text-Mode Barcode Creation Utility</title>
+  <description>GNU Barcode is meant to meet most barcode creation needs with a
+conventional printer. It can create printouts for the conventional
+product tagging standards: UPC-A, UPC-E, EAN-13, EAN-8, ISBN, as well
+as a few other formats. Output is generated in either PostScript or
+Encapsulated PostScript format.</description>
+  <devel project="graphics" package="barcode"/>
+</package>

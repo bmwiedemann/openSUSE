@@ -1,0 +1,6 @@
+<package name="python-backports.unittest_mock" project="openSUSE:Factory">
+  <title>Backports of unittest_mock</title>
+  <description>Provides a function &quot;install()&quot; which makes the &quot;mock&quot; module available as &quot;unittest.mock&quot; on Python 3.2 and earlier.
+Also advertises a pytest plugin which configures unittest.mock automatically.</description>
+  <devel project="devel:languages:python" package="python-backports.unittest_mock"/>
+</package>

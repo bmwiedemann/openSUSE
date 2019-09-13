@@ -1,0 +1,10 @@
+<package name="lsof" project="openSUSE:Factory">
+  <title>A Program That Lists Information about Files Opened by Processes</title>
+  <description>Lsof lists information about files opened by processes. An open file
+may be a regular file, a directory, a block special file, a character
+special file, an executing text reference, a library, a stream, or a
+network file (Internet socket, NFS file, or UNIX domain socket.)  A
+specific  file or all the files in a file system may be selected by
+path.</description>
+  <devel project="utilities" package="lsof"/>
+</package>

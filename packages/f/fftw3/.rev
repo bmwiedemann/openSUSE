@@ -1,0 +1,378 @@
+<revisionlist>
+  <revision rev="1" vrev="10">
+    <srcmd5>309eab5086f69b4d8c010b2474cd8557</srcmd5>
+    <version>3.1.2</version>
+    <time>1168902737</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="31">
+    <srcmd5>8c1ca02665a9dd384aefef1a23ae4ec1</srcmd5>
+    <version>3.1.2</version>
+    <time>1176762675</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="109">
+    <srcmd5>01a8451b72422bc7737662d67ee03302</srcmd5>
+    <version>3.1.2</version>
+    <time>1217802745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32e66f713c476ac4a75151bda29ab0dc</srcmd5>
+    <version>3.2.1</version>
+    <time>1234789573</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f89e7f53054ce06c0355a18431b8ead5</srcmd5>
+    <version>3.2.1</version>
+    <time>1240525580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>62fe226d742135daafc1984d17cd4e6b</srcmd5>
+    <version>3.2.2</version>
+    <time>1248446365</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>62fe226d742135daafc1984d17cd4e6b</srcmd5>
+    <version>3.2.2</version>
+    <time>1248446365</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>1145c861dbc6cf7a7d09150052dd727d</srcmd5>
+    <version>3.2.2</version>
+    <time>1268923521</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>bc30fc7559bc52c93fe969c8a6a86963</srcmd5>
+    <version>3.2.2</version>
+    <time>1271978835</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/fftw3 based on submit request 38545 from user plater
+</comment>
+    <requestid>38545</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>bc30fc7559bc52c93fe969c8a6a86963</srcmd5>
+    <version>3.2.2</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>bc30fc7559bc52c93fe969c8a6a86963</srcmd5>
+    <version>3.2.2</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>bc30fc7559bc52c93fe969c8a6a86963</srcmd5>
+    <version>3.2.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>de078e2e743010630ae9f95419d3e6a8</srcmd5>
+    <version>3.2.2</version>
+    <time>1305641384</time>
+    <user>saschpe</user>
+    <comment>Add 32bit compatibility libraries. Changed -devel package groups to Development/Libraries/C and C++ (fix for RPMLINT warning) (forwarded request 68275 from TheBlackCat)</comment>
+    <requestid>68558</requestid>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>2e37642fb6daab85f7277cdf0880e3f5</srcmd5>
+    <version>3.2.2</version>
+    <time>1305641398</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68558
+</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>fb44f7e35b34885e74ba14842094fc49</srcmd5>
+    <version>3.3</version>
+    <time>1312650992</time>
+    <user>saschpe</user>
+    <comment>Move to fftw 3.3 (forwarded request 77905 from cowsandmilk)</comment>
+    <requestid>77946</requestid>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>36f89aa3da72e2cfe931752956217413</srcmd5>
+    <version>3.3</version>
+    <time>1312651001</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77946
+</comment>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>0bf62b7810d58f36f745e0aa8c784bb1</srcmd5>
+    <version>3.3</version>
+    <time>1312808314</time>
+    <user>saschpe</user>
+    <comment>Correct devel and mpi-devel header files (forwarded request 78168 from cowsandmilk)</comment>
+    <requestid>78248</requestid>
+  </revision>
+  <revision rev="18" vrev="15">
+    <srcmd5>d42f13a2e673a81dc6eac01ab6c61c2b</srcmd5>
+    <version>3.3</version>
+    <time>1312808322</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78248
+</comment>
+  </revision>
+  <revision rev="19" vrev="16">
+    <srcmd5>34072036ee59de5612fb9971dd071f7d</srcmd5>
+    <version>3.3</version>
+    <time>1317211635</time>
+    <user>saschpe</user>
+    <comment>enable simd code generation (forwarded request 85231 from cowsandmilk)</comment>
+    <requestid>85258</requestid>
+  </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>0a326f8794ccda3f66ce2fae5d660af0</srcmd5>
+    <version>3.3</version>
+    <time>1318344769</time>
+    <user>lrupp</user>
+    <comment>unbreak non-intel build again (forwarded request 87191 from adrianSuSE)</comment>
+    <requestid>87276</requestid>
+  </revision>
+  <revision rev="21" vrev="19">
+    <srcmd5>0a326f8794ccda3f66ce2fae5d660af0</srcmd5>
+    <version>3.3</version>
+    <time>1319181876</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="20">
+    <srcmd5>c4dca3015789b8989dea47ad0824b341</srcmd5>
+    <version>3.3</version>
+    <time>1322814404</time>
+    <user>coolo</user>
+    <comment>- Ignore rpmlint fixed dependency errors
+
+- fix build on s390/s390x without openmpi 
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Employ shlib naming (fftw3 -&gt; libfftw3)</comment>
+    <requestid>94083</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>65e638ea6bcca0fc7b5c57c2b6c02b90</srcmd5>
+    <version>3.3.1</version>
+    <time>1331324542</time>
+    <user>coolo</user>
+    <comment>update to fftw 3.3.1 (forwarded request 108376 from cowsandmilk)</comment>
+    <requestid>108377</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>91aa9ee0bf6f173f7c6ceba85d85f0cc</srcmd5>
+    <version>3.3.1</version>
+    <time>1332419798</time>
+    <user>coolo</user>
+    <comment>- source the mpi environment (forwarded request 109612 from ealin) (forwarded request 109624 from a_jaeger)</comment>
+    <requestid>109637</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>61936114232e917e75c51da88c4463bf</srcmd5>
+    <version>3.3.1</version>
+    <time>1336423527</time>
+    <user>coolo</user>
+    <comment>fix arm build (forwarded request 115693 from adrianSuSE)</comment>
+    <requestid>115706</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>3cf9b194361e9582c64e33d780c08620</srcmd5>
+    <version>3.3.1</version>
+    <time>1338476654</time>
+    <user>coolo</user>
+    <comment>- Enable AVX support (bnc#763657) (forwarded request 122746 from tiwai)</comment>
+    <requestid>122747</requestid>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>3cf9b194361e9582c64e33d780c08620</srcmd5>
+    <version>3.3.1</version>
+    <time>1340183326</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c100b1c0ffaf026b2b8f93f820e51c1a</srcmd5>
+    <version>3.3.2</version>
+    <time>1341377918</time>
+    <user>coolo</user>
+    <comment>fix the build of postfish (forwarded request 127028 from coolo)</comment>
+    <requestid>127029</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>af1278c0ab9ca0f6269d0bdddd3bd20b</srcmd5>
+    <version>3.3.3</version>
+    <time>1355910836</time>
+    <user>coolo</user>
+    <comment>update to fftw 3.3.3 (forwarded request 145585 from cowsandmilk)</comment>
+    <requestid>145640</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>af1278c0ab9ca0f6269d0bdddd3bd20b</srcmd5>
+    <version>3.3.3</version>
+    <time>1359108875</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>af1278c0ab9ca0f6269d0bdddd3bd20b</srcmd5>
+    <version>3.3.3</version>
+    <time>1379662336</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c83f82faaeb483f09a31fafc63936fff</srcmd5>
+    <version>3.3.4</version>
+    <time>1399703497</time>
+    <user>coolo</user>
+    <comment>Mention a dropped patch in changelog
+- Drop obsoleted 1_man_macro.patch (forwarded request 232656 from tiwai)</comment>
+    <requestid>232657</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>c83f82faaeb483f09a31fafc63936fff</srcmd5>
+    <version>3.3.4</version>
+    <time>1409300873</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>75419eedaeb15baf7ca008836cd2c7d6</srcmd5>
+    <version>3.3.5</version>
+    <time>1470413636</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.3.5
+  * New SIMD support:
+    - Power8 VSX instructions in single and double precision.
+      To use, add --enable-vsx to configure.
+    - Support for AVX2 (256-bit FMA instructions).
+      To use, add --enable-avx2 to configure.
+    - Experimental support for AVX512 and KCVI. (--enable-avx512, --enable-kcvi)
+      This code is expected to work but the FFTW maintainers do not have
+      hardware to test it.
+    - Support for AVX128/FMA (for some AMD machines) (--enable-avx128-fma)
+    - Double precision Neon SIMD for aarch64.
+      This code is expected to work but the FFTW maintainers do not have
+      hardware to test it.
+    - generic SIMD support using gcc vector intrinsics
+  * Add fftw_make_planner_thread_safe() API    
+  * fix #18 (disable float128 for CUDACC)
+  * fix #19: missing Fortran interface for fftwq_alloc_real
+  * fix #21 (don't use float128 on Portland compilers, which pretend to be gcc)
+  * fix: Avoid segfaults due to double free in MPI transpose</comment>
+    <requestid>416523</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>efcf616336c93a4e722a6bb4712b8b88</srcmd5>
+    <version>3.3.5</version>
+    <time>1508336106</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534532</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>4ece826342c32c2e2bcf3970b6a21dd0</srcmd5>
+    <version>3.3.5</version>
+    <time>1509193120</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536052</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c4e60167fe5fa9a71eafa4d55deacadc</srcmd5>
+    <version>3.3.6</version>
+    <time>1510321332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539510</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>2db6be452f7da35c58e7a374eab12fd4</srcmd5>
+    <version>3.3.6</version>
+    <time>1510837173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541880</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>31954ffc942cbe516b18e29fc181212d</srcmd5>
+    <version>3.3.6</version>
+    <time>1516091223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>565470</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>dcf1d2d9b7067fa80d4dfe1a8709c9ef</srcmd5>
+    <version>3.3.6</version>
+    <time>1516546038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567633</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>1125abfbff029aaa79d3f8fb22921bd2</srcmd5>
+    <version>3.3.6</version>
+    <time>1516970095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568304</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>ef5c92d57e3b62a66c9473739eb9dfb2</srcmd5>
+    <version>3.3.6</version>
+    <time>1519554861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579042</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>5321320cface2958de5bf8be78034db5</srcmd5>
+    <version>3.3.6</version>
+    <time>1519844513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580288</requestid>
+  </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>59600637f29343f2025497906e2f4333</srcmd5>
+    <version>3.3.6</version>
+    <time>1528195849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613768</requestid>
+  </revision>
+  <revision rev="45" vrev="9">
+    <srcmd5>78ac0c53397ccfa18e8372b79ab10846</srcmd5>
+    <version>3.3.6</version>
+    <time>1537970464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636361</requestid>
+  </revision>
+  <revision rev="46" vrev="10">
+    <srcmd5>4849b7cd4d86e87beaadb08ebd6174a5</srcmd5>
+    <version>3.3.6</version>
+    <time>1551027769</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677194</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>fe55bc14c9fcab589efbdfb9d19640ef</srcmd5>
+    <version>3.3.8</version>
+    <time>1553435769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686405</requestid>
+  </revision>
+</revisionlist>

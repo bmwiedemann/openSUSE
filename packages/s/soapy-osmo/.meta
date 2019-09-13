@@ -1,0 +1,9 @@
+<package name="soapy-osmo" project="openSUSE:Factory">
+  <title>Soapy SDR plugins for Osmo supported SDR devices</title>
+  <description>Soapy Osmo - Osmo SDR module
+Soapy SDR plugins for OsmoSDR devices
+
+</description>
+  <devel project="hardware:sdr" package="soapy-osmo"/>
+  <url>https://github.com/pothosware/SoapyOsmo/wiki</url>
+</package>

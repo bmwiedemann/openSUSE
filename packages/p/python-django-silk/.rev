@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b94bd58888f5cd8f44241d02e0b2668f</srcmd5>
+    <version>3.0.1</version>
+    <time>1551455197</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v3.0.1
+- Use upstream pr_333.patch to fix incompatible version of gprof2dot
+- Fix tests on Django 2.1 with test-urls-auth-login-view.patch
+</comment>
+    <requestid>678213</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>346b2242f0a8068b394cb19cb00591a8</srcmd5>
+    <version>3.0.1</version>
+    <time>1553611572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688703</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1bf65abb3a85fc323cb6e6219bf91187</srcmd5>
+    <version>3.0.2</version>
+    <time>1556622353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.2:
+  * Add testing support for django 2.2 #340 (mbeacom)
+  * SILKY_MIDDLEWARE_CLASS option #334 (vartagg)
+  * Many bugfixes
+- Remove merged patches:
+  * pr_333.patch
+  * test-urls-auth-login-view.patch</comment>
+    <requestid>699368</requestid>
+  </revision>
+</revisionlist>

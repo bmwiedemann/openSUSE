@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4bc4aff48a3381fa2cb280db12b4d9c2</srcmd5>
+    <version>0.6.1</version>
+    <time>1396451950</time>
+    <user>coolo</user>
+    <comment>New packages for pandoc. See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00341.html</comment>
+    <requestid>227660</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4bc4aff48a3381fa2cb280db12b4d9c2</srcmd5>
+    <version>0.6.1</version>
+    <time>1409300977</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ee131f4e991d476c36e89f8c04b3dd3c</srcmd5>
+    <version>0.7</version>
+    <time>1432188808</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306434</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0c6149acc214eeec7122de0e734fd426</srcmd5>
+    <version>0.7.1</version>
+    <time>1443068110</time>
+    <user>coolo</user>
+    <comment>- update to 0.7.1
+* Support semigroups 0.17 on older GHCs
+* Backported NFData's semigroup instance to older GHCs.</comment>
+    <requestid>332342</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f9eb220920f5ab69758e2efd1c1e9692</srcmd5>
+    <version>0.7.1</version>
+    <time>1469628694</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412016</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8af816112bc480b56ebe6da78ddb8079</srcmd5>
+    <version>0.7.2</version>
+    <time>1492169952</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485174</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>58e425de8822b5582c0183a42cd04a31</srcmd5>
+    <version>0.7.2</version>
+    <time>1505507015</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525649</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>ff6b278853ae63f62eefe5d770e9c3fb</srcmd5>
+    <version>0.7.2</version>
+    <time>1527675695</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609831</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>78c066f9eb476dcd23f8188fb3c93ed0</srcmd5>
+    <version>0.7.2</version>
+    <time>1532445854</time>
+    <user>dimstar_suse</user>
+    <comment>Please update this package in adi:14.</comment>
+    <requestid>624318</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>540cc3df08262976eb8b66f7ad882b35</srcmd5>
+    <version>0.7.2</version>
+    <time>1540451229</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643491</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4c62bd7284b7425514750b7d5b3c7761</srcmd5>
+    <version>0.7.3</version>
+    <time>1558129401</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>703481</requestid>
+  </revision>
+</revisionlist>

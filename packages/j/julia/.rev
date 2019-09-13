@@ -1,0 +1,338 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ced345c8a17e30791f49a1141e4b2feb</srcmd5>
+    <version>0.3.0</version>
+    <time>1411127759</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>246369</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fa2036233868e9aeb4ce8c19f3e1488f</srcmd5>
+    <version>0.3.1</version>
+    <time>1413616189</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257422</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7e6e06b0d52a1c6ec17c7239a54044d0</srcmd5>
+    <version>0.3.2</version>
+    <time>1414613410</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.2
+  * Bugfix release, no changelog available</comment>
+    <requestid>258561</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e1a21395f98f75e27295af5e990f8831</srcmd5>
+    <version>0.3.3</version>
+    <time>1417031746</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.3
+  * Bugfix release, no changelog available</comment>
+    <requestid>263134</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>36a142365a4face38a2e3b8796541185</srcmd5>
+    <version>0.3.3</version>
+    <time>1419331842</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>266137</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d6c9b81b30d5851f9bed521bb42acd72</srcmd5>
+    <version>0.3.4</version>
+    <time>1420318853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>266923</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1605c2ba006ff86c4be70a1b2878074c</srcmd5>
+    <version>0.3.5</version>
+    <time>1421052592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280741</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>345281280aa9fc42d7d2d9013200ac28</srcmd5>
+    <version>0.3.6</version>
+    <time>1424622393</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286995</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>598c7e2953e417819109d392acb7d22e</srcmd5>
+    <version>0.3.7</version>
+    <time>1427445698</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293305</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c32b2f6c0fb40419d818970bafd95168</srcmd5>
+    <version>0.3.11</version>
+    <time>1440337423</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324695</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c7d207fa57c3f25ba4d88260d155d1b1</srcmd5>
+    <version>0.4.0</version>
+    <time>1445092735</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>338321</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5bbd085136b2c194d98e2876fe404bcc</srcmd5>
+    <version>0.4.1</version>
+    <time>1447766594</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344783</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>216af6fe85239c98d6d80250da2fddcd</srcmd5>
+    <version>0.4.2</version>
+    <time>1449995985</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.4.2.
+    * Bugfix release, no changelog available.
+- libuv updated to commit 9ab431a88fe255dd21e19a11f7fa2dd95774abf4.
+- Run spec-cleaner.</comment>
+    <requestid>347990</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>33acd641466d7b6a8e5db84ebeff266d</srcmd5>
+    <version>0.4.3</version>
+    <time>1453508207</time>
+    <user>dimstar_suse</user>
+    <comment>- Add in _constraints the information to build julia package in a
+  machine that supports the following extensions: mmx, sse, sse2,
+  sse3, and ssse3. This is necessary because the main package is
+  built for core2 architecture to improve the performance. The
+  package julia-compat, on the other hand, is built for x86_64 and
+  can be used if the user does not support core2 extensions.
+
+- Version bump to 0.4.3.
+    * Bugfix release, no changelog available.
+- libuv updated to commit efb40768b7c7bd9f173a7868f74b92b1c5a61a0e
+- Run spec-cleaner.</comment>
+    <requestid>355280</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>8d012784afd3ce50fa8f78549eb07d42</srcmd5>
+    <version>0.4.3</version>
+    <time>1454353000</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356865</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2d23d4da5ca1f7fee8e1c342d1e41561</srcmd5>
+    <version>0.4.5</version>
+    <time>1459002426</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.4.5.
+    * Bugfix release, no changelog available.
+    * Note: Version 0.4.4 has a known bug with Pkg.publish
+      (gh#JuliaLang/julia#15381). Thus, it was skipped.</comment>
+    <requestid>378297</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>fed2292cca332072505dc071d32f1c12</srcmd5>
+    <version>0.4.5</version>
+    <time>1462178687</time>
+    <user>dimstar_suse</user>
+    <comment>- Due to a bug, it is not possible now to build julia against i586
+  with glibc 2.23. The root of the problem has not been determined
+  yet. Two bugs were filled in upstream:
+    _ https://github.com/JuliaLang/julia/issues/16087
+    _ https://llvm.org/bugs/show_bug.cgi?id=27548
+  Thus, the support for julia in i586 architectures is being
+  dropped until this bug is fixed.</comment>
+    <requestid>392957</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b9d528cf863680e62773b655ca3e761e</srcmd5>
+    <version>0.4.6</version>
+    <time>1466814155</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.4.6.
+    * Bugfix release, no changelog available.
+- Re-enable i586 architecture.
+    * After the full rebuild caused by gcc6, julia started to
+      correctly build against i586 again. The root cause of the
+      problem was not identified yet.</comment>
+    <requestid>404078</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>bdee4bc9bd8774d32f460b3b604722dd</srcmd5>
+    <version>0.4.6</version>
+    <time>1470413883</time>
+    <user>dimstar_suse</user>
+    <comment>Fix _constraints file.</comment>
+    <requestid>417004</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>448cb9872d2602664faab999436cd634</srcmd5>
+    <version>0.5.0~rc3</version>
+    <time>1472731376</time>
+    <user>dimstar_suse</user>
+    <comment>Version bump to 0.5.0~rc3.</comment>
+    <requestid>423850</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6ace930f7e272e8e2b906e96a4cbd957</srcmd5>
+    <version>0.5.0~rc4</version>
+    <time>1474016468</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to v0.5.0~rc4.
+- Use `libopenblas_openmp0` as the default blas and lapack libraries.</comment>
+    <requestid>427373</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fb3e6ef1454eac853dedeeffb0852747</srcmd5>
+    <version>0.5.0</version>
+    <time>1474476613</time>
+    <user>dimstar_suse</user>
+    <comment>Version bump to 0.5.0.</comment>
+    <requestid>429116</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>ec9acff6fd2b06db5c14036c52acd304</srcmd5>
+    <version>0.5.0</version>
+    <time>1478871284</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>439224</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>33d71c6bb1ca8b481f4846fae1a51d2a</srcmd5>
+    <version>0.5.1</version>
+    <time>1489345447</time>
+    <user>dimstar_suse</user>
+    <comment>Version bump to 0.5.1.</comment>
+    <requestid>477808</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>dcc5e242da1f22cb57fb0f22893761c9</srcmd5>
+    <version>0.5.1</version>
+    <time>1490965739</time>
+    <user>maxlin_factory</user>
+    <comment>- Update runtime dependency: `libgit2-24` -&gt; `libgit2-25`.
+    * Fixes boo#1030824.</comment>
+    <requestid>482546</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>987ee32cf02e85e50719f24fde8667cf</srcmd5>
+    <version>0.6.0</version>
+    <time>1503925884</time>
+    <user>dimstar_suse</user>
+    <comment>- Add script to get the right libgit2 version. Hence, it will not
+  be necessary anymore to update the .spec every time libgit2 is
+  updated.
+- Update runtime dependency: `libgit2-25` -&gt; `libgit2-26`.
+- Version bump to 0.6.0, see NEWS.md for details.
+</comment>
+    <requestid>517706</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4cb72893555a2903f3a4468f100ac4c0</srcmd5>
+    <version>0.6.1</version>
+    <time>1510232654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538549</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0f454a702f426ca7e2c996124a3ed5a3</srcmd5>
+    <version>0.6.2</version>
+    <time>1513941671</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch `julia-0.6.1-dont-rebuild-docs-on-install.patch`,
+  since the issue was already fixed by upstream.
+- Version bump to 0.6.2.
+    * Bugfix release, no changelog available.
+- Update license information according to file `LICENSE.md`.</comment>
+    <requestid>559191</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>d62714dcd169585fdfb6b4620b657ecf</srcmd5>
+    <version>0.6.2</version>
+    <time>1522404554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592451</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>13a34bbc7f934336349a8721a60232e8</srcmd5>
+    <version>0.6.2</version>
+    <time>1524576861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600152</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>ab0e78396b1cfcea610f53ba2b4d6708</srcmd5>
+    <version>0.6.2</version>
+    <time>1528492426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613781</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6530e0523997fde6bae2a5fd113c84cc</srcmd5>
+    <version>0.6.4</version>
+    <time>1532361691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624592</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>25644da0da5dee7d10337dc8ac5323b8</srcmd5>
+    <version>0.7.0</version>
+    <time>1535122996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628660</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>91b2edbbe316a83a2aa370c54e9d5322</srcmd5>
+    <version>1.0.0</version>
+    <time>1538117560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638261</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b4e1577580d88da92fdaa53a664f9644</srcmd5>
+    <version>1.0.1</version>
+    <time>1541666941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646658</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>364d50cfb728eed826894bf33e892852</srcmd5>
+    <version>1.0.3</version>
+    <time>1545141548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658911</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2ebf2ccbc2b92b3299a035e93bb5a906</srcmd5>
+    <version>1.1.0</version>
+    <time>1560338017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708406</requestid>
+  </revision>
+</revisionlist>

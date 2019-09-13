@@ -1,0 +1,5 @@
+<package name="variety" project="openSUSE:Factory">
+  <title>variety</title>
+  <description>Variety changes the wallpaper on a regular interval using user-specified or automatically downloaded images.</description>
+  <devel project="X11:Utilities" package="variety"/>
+</package>

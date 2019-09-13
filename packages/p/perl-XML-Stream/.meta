@@ -1,0 +1,9 @@
+<package name="perl-XML-Stream" project="openSUSE:Factory">
+  <title>Creates an XML Stream connection and parses return data</title>
+  <description>This module provides the user with methods to connect to a remote  server,
+send a stream of XML to the server, and receive/parse an XML  stream from
+the server.  It is primarily based work for the Etherx XML  router
+developed by the Jabber Development Team.  For more information  about this
+project visit http://xmpp.org/protocols/streams/.</description>
+  <devel project="devel:languages:perl" package="perl-XML-Stream"/>
+</package>

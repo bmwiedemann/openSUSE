@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1503f812cec701c4ec8dd4c19c677e9c</srcmd5>
+    <version>1.0</version>
+    <time>1519308108</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec cleanup
+- package for the first time
+</comment>
+    <requestid>578728</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f026be3f5141ba6d0be2f7c81fe4333c</srcmd5>
+    <version>1.0</version>
+    <time>1520329633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582575</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aaa4d521dd4329144b6e7dca9caff0ca</srcmd5>
+    <version>1.1</version>
+    <time>1556023288</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696772</requestid>
+  </revision>
+</revisionlist>

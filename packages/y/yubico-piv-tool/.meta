@@ -1,0 +1,7 @@
+<package name="yubico-piv-tool" project="openSUSE:Factory">
+  <title>Yubico PIV Tool</title>
+  <description>This is a command line tool to interact with the PIV applet on a YubiKey NEO. Among other functions it supports, generating keys on device, importing keys and certificates and creating certificate requests.
+
+The YubiKey NEO supports the Privilege and Identification Card (PIV) interface specified in NIST SP 800-73 document &quot;Cryptographic Algorithms and Key Sizes for PIV&quot;. This enables you to perform RSA or ECC sign/decrypt operations using a private key stored on the smartcard, through common interfaces like PKCS#11.</description>
+  <devel project="security" package="yubico-piv-tool"/>
+</package>

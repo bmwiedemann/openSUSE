@@ -1,0 +1,8 @@
+<package name="phodav" project="openSUSE:Factory">
+  <title>A WebDAV server using libsoup</title>
+  <description>phodav is a WebDav server implementation using libsoup (RFC 4918).
+
+</description>
+  <devel project="GNOME:Factory" package="phodav"/>
+  <url>https://wiki.gnome.org/phodav</url>
+</package>

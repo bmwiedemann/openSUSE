@@ -1,0 +1,402 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>ff695594c4c169f8620984a2bf37bf84</srcmd5>
+    <version>4.3.4</version>
+    <time>1207363470</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="61">
+    <srcmd5>ff695594c4c169f8620984a2bf37bf84</srcmd5>
+    <version>4.3.4</version>
+    <time>1207363470</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9de312b2c9bcb8eb944e870317375c18</srcmd5>
+    <version>4.4.2</version>
+    <time>1233019166</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0547d80c3701148fee9e1575248fe932</srcmd5>
+    <version>4.5.5</version>
+    <time>1243205747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f80c68fa854135978a78efffe2c3df06</srcmd5>
+    <version>4.5.6</version>
+    <time>1243478205</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7c4b71b085721ec51fdc0d21a8886232</srcmd5>
+    <version>4.5.7</version>
+    <time>1244828651</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>64795553bc3770e9c5b49b9621161aef</srcmd5>
+    <version>4.5.8</version>
+    <time>1249064693</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7a623ebff0a784a0e1ee39f15fa70ee0</srcmd5>
+    <version>4.6.1</version>
+    <time>1251996884</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/link-grammar based on submit request 19765 from user vuntz
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7a623ebff0a784a0e1ee39f15fa70ee0</srcmd5>
+    <version>4.6.1</version>
+    <time>1251996884</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/link-grammar based on submit request 19765 from user vuntz
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bc0c5009aac7962b2b2c1d95b4fc2fcd</srcmd5>
+    <version>4.6.5</version>
+    <time>1260269912</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/link-grammar based on submit request 25882 from user vuntz
+</comment>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>287a9bc2fc3052d324029d609e240369</srcmd5>
+    <version>4.6.5</version>
+    <time>1268924823</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f55a96cdf3fce35bb6e7f4b39c595106</srcmd5>
+    <version>4.6.6</version>
+    <time>1270131335</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/link-grammar based on submit request 36382 from user vuntz
+</comment>
+    <requestid>36382</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f55a96cdf3fce35bb6e7f4b39c595106</srcmd5>
+    <version>4.6.6</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>f55a96cdf3fce35bb6e7f4b39c595106</srcmd5>
+    <version>4.6.6</version>
+    <time>1278678594</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0c0515b77df420185d13d07ade6a666b</srcmd5>
+    <version>4.6.7</version>
+    <time>1281393335</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/link-grammar based on submit request 45121 from user vuntz
+</comment>
+    <requestid>45121</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a0bba5dc551a26b7f0b4fcf3d7c8df63</srcmd5>
+    <version>4.7.0</version>
+    <time>1285281635</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/link-grammar based on submit request 48947 from user vuntz
+</comment>
+    <requestid>48947</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eb401f709f4b2adf667265831900efc4</srcmd5>
+    <version>4.7.1</version>
+    <time>1292848084</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56122 from user vuntz
+</comment>
+    <requestid>56122</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2f8099688d4679f8eadb2f87a727cab5</srcmd5>
+    <version>4.7.2</version>
+    <time>1294656193</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57542 from user vuntz
+</comment>
+    <requestid>57542</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e90830a7b8131bc3fb4def3b6bed6163</srcmd5>
+    <version>4.7.2</version>
+    <time>1294656203</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57542
+</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>e90830a7b8131bc3fb4def3b6bed6163</srcmd5>
+    <version>4.7.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1e73f60491a4011c1ed6ec17fd914a7e</srcmd5>
+    <version>4.7.4</version>
+    <time>1304407694</time>
+    <user>saschpe</user>
+    <comment>Update to 4.7.4 (forwarded request 68848 from dimstar)</comment>
+    <requestid>69277</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>8f6bb876ee286557e349a48d479cc0e5</srcmd5>
+    <version>4.7.4</version>
+    <time>1304407712</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69277
+</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>3ced978b730fc5144396ce94bdef30cd</srcmd5>
+    <version>4.7.4</version>
+    <time>1310368763</time>
+    <user>saschpe</user>
+    <comment>Stop using _service</comment>
+    <requestid>75890</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>b847226f73b3199b03aed6dcb1407a3b</srcmd5>
+    <version>4.7.4</version>
+    <time>1310368773</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75890
+</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>b847226f73b3199b03aed6dcb1407a3b</srcmd5>
+    <version>4.7.4</version>
+    <time>1319182153</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>e315cd5dfa1a244f3cf39cab551b8edb</srcmd5>
+    <version>4.7.4</version>
+    <time>1323192402</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2dffae4576e6f0b50a65c4223be11f9e</srcmd5>
+    <version>4.7.5</version>
+    <time>1334927904</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>114674</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>9e7a434028211851025752f2e970d229</srcmd5>
+    <version>4.7.5</version>
+    <time>1336423671</time>
+    <user>coolo</user>
+    <comment>Install .h to fix abiword build failure (forwarded request 115592 from dimstar)</comment>
+    <requestid>115874</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f583cbf2d926368d4acf315188490d34</srcmd5>
+    <version>4.7.6</version>
+    <time>1337667392</time>
+    <user>coolo</user>
+    <comment>push G:F</comment>
+    <requestid>121454</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>f583cbf2d926368d4acf315188490d34</srcmd5>
+    <version>4.7.6</version>
+    <time>1340183665</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>67f61716c7d5a7ab69128eaff4425d3d</srcmd5>
+    <version>4.7.8</version>
+    <time>1350936414</time>
+    <user>coolo</user>
+    <comment>Update to 4.7.8</comment>
+    <requestid>138880</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>41e5d89b1e818e7337f6d5a11e927a35</srcmd5>
+    <version>4.7.9</version>
+    <time>1352720357</time>
+    <user>coolo</user>
+    <comment>update to 4.7.9 (forwarded request 140335 from dimstar)</comment>
+    <requestid>140881</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>41e5d89b1e818e7337f6d5a11e927a35</srcmd5>
+    <version>4.7.9</version>
+    <time>1359109397</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>15d437c89d1e36cf76177257ca9979c6</srcmd5>
+    <version>4.7.10</version>
+    <time>1363340497</time>
+    <user>coolo</user>
+    <comment>Update to 4.7.10 (forwarded request 158646 from Zaitor)</comment>
+    <requestid>159250</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0efb4405e5e4a6ed0076cc056a44275f</srcmd5>
+    <version>4.7.11</version>
+    <time>1364240287</time>
+    <user>coolo</user>
+    <comment>Update to 4.7.11 (forwarded request 160760 from Zaitor)</comment>
+    <requestid>160833</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>649d7fd13f2ade3b9dfe046e5988e4c1</srcmd5>
+    <version>4.7.14</version>
+    <time>1372145320</time>
+    <user>coolo</user>
+    <comment>Update to 4.7.14 (forwarded request 180564 from Zaitor)</comment>
+    <requestid>180660</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>649d7fd13f2ade3b9dfe046e5988e4c1</srcmd5>
+    <version>4.7.14</version>
+    <time>1379663163</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c07871d8b3225f2dc2ea3559c573cc1a</srcmd5>
+    <version>4.8.2</version>
+    <time>1387208113</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.8.2:
+  + More windows UTF-8/multi-byte fixes (for Russian).
+  + Add missing JSONUtils file.
+- Changes from version 4.8.1:
+  + Ongoing work on viterbi.
+  + Updated MSVC9 project files.
+  + Fix important bug in Java services: return top parses, not
+    random ones.
+  + Java: for the link-diagram string, do not limit to 80 char term
+    width.
+  + Windows: UTF-8 fixes so that Russian works in most windows
+    locales.
+
+- Update to version 4.8.0:
+  + Support bulleted, numbered lists.
+  + New link types from Lian Ruiting, for identifying the
+    head-verb.
+  + C API: remove some deprecated functions.
+  + Java:
+    - Fix bug when totalling WordNet word-sense score.
+    - Add info to README about using the JSON parse server.
+    - Remove many deprecated functions.
+    - Fix silent failure when library is not found.
+    - Add support for fetching the ASCII-art diagram string.
+    - Fix insane language selection initialization.
+  + Fixed:
+    - &quot;The pig runs SLOWER than the cat.&quot;
+    - Conjoined superlatives: &quot;... the longest and the farthest.&quot;
+    - &quot;inside&quot; can be used with conjunction: &quot;near or inside...&quot;
+    - Conjoined question modifiers: &quot;exactly when and precisely (forwarded request 210896 from Zaitor)</comment>
+    <requestid>210935</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7389c36cf3bfc93d35a0776a1e11e11e</srcmd5>
+    <version>4.8.5</version>
+    <time>1390907002</time>
+    <user>coolo</user>
+    <comment>Update to ver 4.8.5 (forwarded request 215055 from Zaitor)</comment>
+    <requestid>215106</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d6727908e29915e1da081d50c4b464a2</srcmd5>
+    <version>4.8.6</version>
+    <time>1391665808</time>
+    <user>coolo</user>
+    <comment>Update to ver 4.8.6 (forwarded request 220755 from Zaitor)</comment>
+    <requestid>220873</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>90bcbb669cc6bbf47bbded1240641a5e</srcmd5>
+    <version>5.0.8</version>
+    <time>1405971571</time>
+    <user>coolo</user>
+    <comment>Push from G:F</comment>
+    <requestid>240204</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>90bcbb669cc6bbf47bbded1240641a5e</srcmd5>
+    <version>5.0.8</version>
+    <time>1409301797</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>6dc79255f8ddf8342a18b344f1e04f26</srcmd5>
+    <version>5.0.8</version>
+    <time>1503061151</time>
+    <user>dimstar_suse</user>
+    <comment>- link against hunspell instead of aspell [bsc#1052958] (forwarded request 515490 from pgajdos)</comment>
+    <requestid>516869</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e33e0193f88ef9fd77cb949bc64b64b5</srcmd5>
+    <version>5.4.3</version>
+    <time>1519041650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576848</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>100536458ab9d17ad6bf97a3906fc815</srcmd5>
+    <version>5.4.3</version>
+    <time>1521052545</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581279 from dimstar)</comment>
+    <requestid>582846</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2db997be87e224f77782d4c9018464fd</srcmd5>
+    <version>5.4.4</version>
+    <time>1522062296</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 588478 from dimstar)</comment>
+    <requestid>590341</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>5bf97aaee0e05dcb16d933aff7fe797b</srcmd5>
+    <version>5.5.0</version>
+    <time>1529402089</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 5.5.0:
+  + Additions:
+    - An extended version API and use it in &quot;link-parser
+      --version&quot;.
+    - A per-command help in link-parser.
+    - A command line completion in link-parser.
+    - Idiom lookup in link-parser's dict lookup command.
+  + Fixes:
+    - Memory leak when parsing with null links.
+    - Spurious errors if the last dict line is a comment.
+    - Garbage report if EOF is encountered in a quoted dict word.
+    - Garbage report if a whitespace is encountered in a quoted
+      dict word.
+    - random selection of linkages so that it's actually random.
+  + Improve handling of quoted words (e.g. single words in &quot;scare
+    quotes&quot;).
+</comment>
+    <requestid>615930</requestid>
+  </revision>
+</revisionlist>

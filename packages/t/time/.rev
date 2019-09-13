@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d33b4d99c5e59f4f2ecfe2593dee329a</srcmd5>
+    <version>1.7</version>
+    <time>1364917459</time>
+    <user>coolo</user>
+    <comment>Split from util-linux. PLease add to same pattern as util-linux</comment>
+    <requestid>161211</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d6b4cad13125d519dc8f97e0ff8617ca</srcmd5>
+    <version>1.7</version>
+    <time>1379076243</time>
+    <user>scarabeus_factory</user>
+    <comment>- Sync patches with Debian and Fedora:
+  * Add man page (time.1).
+  * Less nonverbose output (time-fedora-verbose.patch).
+  * Fix maximal RSS report
+    (time-fedora-ru_maxrss-is-in-kilobytes-on-Linux.patch,
+    bnc#836049, Redhat#702826).
+  * Switch to microsecond accuracy if miliseconds arithmetic rounds
+    to zero
+    (time-fedora-Recompute-CPU-usage-at-microsecond-level.patch,
+    Redhat#527276).
+  * When time exits in a non-normal way, return 128 plus the number
+    of the signal which caused time to stop or abort
+    (time-debian-non-normal-exit.patch).
+  * struct rusage and sys/resource.h portability fix
+    (time-debian-rusage-portability.patch, Debian#144819).
+  * Add -q,--quiet functionality
+    (time-debian-quiet.patch, Debian#56853).
+  * Update bug reporting address
+    (time-debian-bug-address.patch, Debian#542469).
+  * Modernize the configure.in file to current autoconf style
+    (time-debian-configure.patch).
+  * Add a directory entry to the info page
+    (time-debian-info-direntry.patch).
+- Fix FSF address (time-fsf-address.patch).
+- Update Summary.
+- Rename time-1.7.diff to time-alpha.patch.
+
+... And cherry pick changelog entries relevant to time. (forwarded request 198137 from sbrabec)</comment>
+    <requestid>198737</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d6b4cad13125d519dc8f97e0ff8617ca</srcmd5>
+    <version>1.7</version>
+    <time>1379664822</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>3c09c559e57344c92d0ec888707a33c8</srcmd5>
+    <version>1.7</version>
+    <time>1400850035</time>
+    <user>coolo</user>
+    <comment>- remove time.1 [bnc#878057] (forwarded request 234801 from pgajdos)</comment>
+    <requestid>235111</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>e244deb061e4dd4de9607c8e9d2f1660</srcmd5>
+    <version>1.7</version>
+    <time>1402947798</time>
+    <user>coolo</user>
+    <comment>- Add time.rpmlint suppressing the missing time man page warning. (forwarded request 235596 from sbrabec)</comment>
+    <requestid>235884</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>e244deb061e4dd4de9607c8e9d2f1660</srcmd5>
+    <version>1.7</version>
+    <time>1409303500</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>41569025cc8e2f40e0fdea22cb11e607</srcmd5>
+    <version>1.8</version>
+    <time>1511426229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>543004</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>55cbfc8009f4d8799fb746c868d35cf3</srcmd5>
+    <version>1.9</version>
+    <time>1521498628</time>
+    <user>dimstar_suse</user>
+    <comment>- time 1.9:
+  * reports percent CPU usage for programs lasting less then 1s
+  * &quot;time -p&quot; no longers adds the &quot;Command exited with non-zero
+    status&quot; message (POSIX compliance)
+- Use %license (boo#1082318)</comment>
+    <requestid>586373</requestid>
+  </revision>
+</revisionlist>

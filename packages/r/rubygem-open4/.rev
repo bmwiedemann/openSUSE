@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f965d7963d6bc56e16b00422983a60bc</srcmd5>
+    <version>1.3.0</version>
+    <time>1354712840</time>
+    <user>namtrac</user>
+    <comment>http://lists.opensuse.org/opensuse-factory/2012-12/msg00020.html</comment>
+    <requestid>143812</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f965d7963d6bc56e16b00422983a60bc</srcmd5>
+    <version>1.3.0</version>
+    <time>1359110332</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f965d7963d6bc56e16b00422983a60bc</srcmd5>
+    <version>1.3.0</version>
+    <time>1379664552</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6110e7747475ff6e5a2bcd11a7734158</srcmd5>
+    <version>1.3.1</version>
+    <time>1393310283</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223646</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fa792ecb620f82967dea69d18292471b</srcmd5>
+    <version>1.3.3</version>
+    <time>1395475882</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226978</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3283877c7a7400041944a8808215ad0d</srcmd5>
+    <version>1.3.4</version>
+    <time>1400682591</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234922</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>3283877c7a7400041944a8808215ad0d</srcmd5>
+    <version>1.3.4</version>
+    <time>1409303262</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>b14e734a18172a44e90a131a28797adb</srcmd5>
+    <version>1.3.4</version>
+    <time>1413263551</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255844</requestid>
+  </revision>
+</revisionlist>

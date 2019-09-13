@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93d668ef6b841819d1c5148e1fc4ad48</srcmd5>
+    <version>MACRO</version>
+    <time>1477904053</time>
+    <user>dimstar_suse</user>
+    <comment>Initial package submission to Factory. Announced on opensuse-factory ml on 10/4/16 and received no comments or objections. Needed for next qemu package check-in. Also includes Conflicts fix which caused previous SR to fail, and softens runtime Requires: kernel... to Recommends: kernel... as suggested by Jan E.</comment>
+    <requestid>435819</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d6c1c1f15bc205d1122952e67d747edf</srcmd5>
+    <version>MACRO</version>
+    <time>1478871258</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>439075</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d600d9528c92ea29fb40c442a4d888e7</srcmd5>
+    <version>MACRO</version>
+    <time>1512734455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555014</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ecd34433c09d6f6de1cb3463122edffb</srcmd5>
+    <version>MACRO</version>
+    <time>1532774713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625781</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>29d7e1bc60a54362eb0b16679ede506c</srcmd5>
+    <version>MACRO</version>
+    <time>1542012184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647688</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b00254e64993c01def56c49a8570a302</srcmd5>
+    <version>MACRO</version>
+    <time>1543828198</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653117</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>b2a24ed01c7f4c5cfc0df2b43cb66813</srcmd5>
+    <version>MACRO</version>
+    <time>1552599788</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python3 tweak to be compatible with v5.0 kernel source
+  (bsc#1116822)
+  + 0050-tools-kvm_stat-switch-python-reference-again.patch
+</comment>
+    <requestid>685114</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>fdf839a27d55e1fe60e71043ca9060f3</srcmd5>
+    <version>MACRO</version>
+    <time>1565179227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721317</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>1ab276193376a190e95e920baf94e2fd</srcmd5>
+    <version>MACRO</version>
+    <time>1568379748</time>
+    <user>lnussel_factory</user>
+    <comment>- Detect SLE15-SP2 / Leap 15.2 and patch accordingly
+</comment>
+    <requestid>730468</requestid>
+  </revision>
+</revisionlist>

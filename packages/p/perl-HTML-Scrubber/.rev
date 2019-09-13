@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51e409039e68b3c14eeabb22d54609ca</srcmd5>
+    <version>0.08</version>
+    <time>1292246059</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55591 from user computersalat
+</comment>
+    <requestid>55591</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e31e5b89f7267144d45373fde511808</srcmd5>
+    <version>0.08</version>
+    <time>1292246065</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55591
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dde79c5adcf2cdf0365221a0824bb444</srcmd5>
+    <version>0.08</version>
+    <time>1297077959</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60119 from user computersalat
+</comment>
+    <requestid>60119</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e33adbdfa5f6be5b03c418af69d6d064</srcmd5>
+    <version>0.08</version>
+    <time>1297077964</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60119
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>e33adbdfa5f6be5b03c418af69d6d064</srcmd5>
+    <version>0.08</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7b7065cae1842bf99f69e182e18917a2</srcmd5>
+    <version>0.09</version>
+    <time>1301914823</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65871 from user coolo
+</comment>
+    <requestid>65871</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>da58b2a2e100bb82d0d32869509cd7df</srcmd5>
+    <version>0.09</version>
+    <time>1316437722</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>82383</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>da58b2a2e100bb82d0d32869509cd7df</srcmd5>
+    <version>0.09</version>
+    <time>1319182274</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>9c79abab6c0f018aa74f36d2f55a0c8b</srcmd5>
+    <version>0.09</version>
+    <time>1323193353</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>9c79abab6c0f018aa74f36d2f55a0c8b</srcmd5>
+    <version>0.09</version>
+    <time>1340183852</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>9c79abab6c0f018aa74f36d2f55a0c8b</srcmd5>
+    <version>0.09</version>
+    <time>1359109689</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>9c79abab6c0f018aa74f36d2f55a0c8b</srcmd5>
+    <version>0.09</version>
+    <time>1379663698</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c0175f82ec2d67458ee6e7e9069fd4eb</srcmd5>
+    <version>0.11</version>
+    <time>1386063093</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208458</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>c0175f82ec2d67458ee6e7e9069fd4eb</srcmd5>
+    <version>0.11</version>
+    <time>1409302320</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ea8cc78308186a67e87a178746d13464</srcmd5>
+    <version>0.14</version>
+    <time>1429346390</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.14
+   see /usr/share/doc/packages/perl-HTML-Scrubber/Changes
+  0.14      2015-04-02 17:20:41+01:00 Europe/London
+      - Travis integration  (thanks to mrcaron)
+      - Fix some packaging/dist-zilla issues (thanks to mrcaron)
+      - check for definedness before calling -&gt;parse (github #3 leejo)
+      - Removed the link to HTML::Sanitizer  (github #4 avereha)
+      - Removed circular reference (github #5 avereha)
+      - Fixed up dependancies from dzil bundles
+      - Enforced minimum perl version of 5.8
+- remove unmaintained perl-HTML-Scrubber-test_more-version.patch</comment>
+    <requestid>297279</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>80a6392a16bf2b85e9c9a6f0b4194cc9</srcmd5>
+    <version>0.15</version>
+    <time>1445287788</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337917</requestid>
+  </revision>
+</revisionlist>

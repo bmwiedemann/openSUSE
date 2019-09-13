@@ -1,0 +1,6 @@
+<package name="jakarta-slide-webdavclient" project="openSUSE:Factory">
+  <title>Slide WebDAV client</title>
+  <description>Slide includes a fully featured WebDAV client library and command line
+client.</description>
+  <devel project="Java:packages" package="jakarta-slide-webdavclient"/>
+</package>

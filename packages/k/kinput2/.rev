@@ -1,0 +1,180 @@
+<revisionlist>
+  <revision rev="1" vrev="342">
+    <srcmd5>b68e41f51d813ca429d8be7b86f21c8d</srcmd5>
+    <version>v3.1</version>
+    <time>1168903213</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="376">
+    <srcmd5>e6f8f9e8b63d421ec85c075365eca19b</srcmd5>
+    <version>v3.1</version>
+    <time>1173168499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="466">
+    <srcmd5>cdf4299804ae074924818137b6adde6e</srcmd5>
+    <version>v3.1</version>
+    <time>1205256674</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="467">
+    <srcmd5>3b1fd5c2d95d0399fb009f1dff71de3c</srcmd5>
+    <version>v3.1</version>
+    <time>1205256827</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="520">
+    <srcmd5>3b1fd5c2d95d0399fb009f1dff71de3c</srcmd5>
+    <version>v3.1</version>
+    <time>1205256827</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="521">
+    <srcmd5>dbb0d17e1c0963c31553eb9dc33127d9</srcmd5>
+    <version>v3.1</version>
+    <time>1226938261</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="523">
+    <srcmd5>dbb0d17e1c0963c31553eb9dc33127d9</srcmd5>
+    <version>v3.1</version>
+    <time>1226938261</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="524">
+    <srcmd5>036ff3d6da8c4e4a99ce06e5ee8168d5</srcmd5>
+    <version>v3.1</version>
+    <time>1260272520</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/kinput2 based on submit request 25990 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="525">
+    <srcmd5>5f24ad03f7e3bb3b79f8b69f44a1a302</srcmd5>
+    <version>v3.1</version>
+    <time>1268924286</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="527">
+    <srcmd5>5f24ad03f7e3bb3b79f8b69f44a1a302</srcmd5>
+    <version>v3.1</version>
+    <time>1278667355</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="528">
+    <srcmd5>5f24ad03f7e3bb3b79f8b69f44a1a302</srcmd5>
+    <version>v3.1</version>
+    <time>1278678586</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="529">
+    <srcmd5>70ad3eee194619d66ff3d68a984397fc</srcmd5>
+    <version>v3.1</version>
+    <time>1289418679</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52530 from user coolo
+</comment>
+    <requestid>52530</requestid>
+  </revision>
+  <revision rev="13" vrev="530">
+    <srcmd5>3c4f218677a5976630c017ecc0aef3d8</srcmd5>
+    <version>v3.1</version>
+    <time>1289418685</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52530
+</comment>
+  </revision>
+  <revision rev="14" vrev="533">
+    <srcmd5>3c4f218677a5976630c017ecc0aef3d8</srcmd5>
+    <version>v3.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="535">
+    <srcmd5>3c4f218677a5976630c017ecc0aef3d8</srcmd5>
+    <version>v3.1</version>
+    <time>1319182048</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="536">
+    <srcmd5>35969f134c58104ab67b55cbf655ad8f</srcmd5>
+    <version>v3.1</version>
+    <time>1324830929</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97702 from coolo)</comment>
+    <requestid>97931</requestid>
+  </revision>
+  <revision rev="17" vrev="537">
+    <srcmd5>067724184eae29761542cb3f8e118a42</srcmd5>
+    <version>v3.1</version>
+    <time>1331579709</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108313</requestid>
+  </revision>
+  <revision rev="18" vrev="538">
+    <srcmd5>18b7bae1e6dc36fad181e1426a182414</srcmd5>
+    <version>v3.1</version>
+    <time>1332999828</time>
+    <user>coolo</user>
+    <comment>license update: HPND
+ (forwarded request 111516 from babelworx)</comment>
+    <requestid>111548</requestid>
+  </revision>
+  <revision rev="19" vrev="540">
+    <srcmd5>18b7bae1e6dc36fad181e1426a182414</srcmd5>
+    <version>v3.1</version>
+    <time>1340183529</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="542">
+    <srcmd5>18b7bae1e6dc36fad181e1426a182414</srcmd5>
+    <version>v3.1</version>
+    <time>1359109189</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="543">
+    <srcmd5>7996ccd4e4822b7ef99e67ddbcf71d04</srcmd5>
+    <version>v3.1</version>
+    <time>1374400334</time>
+    <user>coolo</user>
+    <comment>- on Factory, &quot;%doc -P client/REDAME&quot; in kinput2.spec is made to stop
+  build .  Then fixed . (forwarded request 183866 from Mitsutoshi)</comment>
+    <requestid>183867</requestid>
+  </revision>
+  <revision rev="22" vrev="545">
+    <srcmd5>7996ccd4e4822b7ef99e67ddbcf71d04</srcmd5>
+    <version>v3.1</version>
+    <time>1379662808</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="547">
+    <srcmd5>7996ccd4e4822b7ef99e67ddbcf71d04</srcmd5>
+    <version>v3.1</version>
+    <time>1409301388</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="548">
+    <srcmd5>9eb9dfea4b44ed08fe74f65b72998f19</srcmd5>
+    <version>v3.1</version>
+    <time>1414613406</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258527</requestid>
+  </revision>
+  <revision rev="25" vrev="549">
+    <srcmd5>deabf0edfcbe3c13e32cff029e624e70</srcmd5>
+    <version>v3.1</version>
+    <time>1520164295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582075</requestid>
+  </revision>
+</revisionlist>

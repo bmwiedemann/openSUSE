@@ -1,0 +1,6 @@
+<package name="libprotobuf-mutator" project="openSUSE:Factory">
+  <title>libprotobuf-mutator</title>
+  <description>A library to randomly mutate protobuffers</description>
+  <devel project="devel:libraries:c_c++" package="libprotobuf-mutator"/>
+  <url>https://github.com/google/libprotobuf-mutator</url>
+</package>

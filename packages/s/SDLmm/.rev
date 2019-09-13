@@ -1,0 +1,190 @@
+<revisionlist>
+  <revision rev="1" vrev="924">
+    <srcmd5>5b6d47b45a617387d9e571fd7fa20c1f</srcmd5>
+    <version>0.1.8</version>
+    <time>1168901428</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="955">
+    <srcmd5>4843c824d579d2e8c8a8d2f84edb784f</srcmd5>
+    <version>0.1.8</version>
+    <time>1172928999</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="990">
+    <srcmd5>a1a55ff7ad6146f621736d32b122030e</srcmd5>
+    <version>0.1.8</version>
+    <time>1185149978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1094">
+    <srcmd5>f805325dc2d8c36c3849fef53c7b05da</srcmd5>
+    <version>0.1.8</version>
+    <time>1215559523</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1139">
+    <srcmd5>2af62aa297eec5e855707fa2e761840c</srcmd5>
+    <version>0.1.8</version>
+    <time>1243553030</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1140">
+    <srcmd5>27320f7c34530f284f257c02daf2d914</srcmd5>
+    <version>0.1.8</version>
+    <time>1251294674</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDLmm based on submit request 18744 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="1141">
+    <srcmd5>d921c06811609c861d3b32ca1fc5bcef</srcmd5>
+    <version>0.1.8</version>
+    <time>1254965465</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDLmm based on submit request 22006 from user prusnak
+</comment>
+  </revision>
+  <revision rev="8" vrev="1143">
+    <srcmd5>d921c06811609c861d3b32ca1fc5bcef</srcmd5>
+    <version>0.1.8</version>
+    <time>1254965465</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDLmm based on submit request 22006 from user prusnak
+</comment>
+  </revision>
+  <revision rev="9" vrev="1144">
+    <srcmd5>14d09d26aa9eb59384229e40634a9922</srcmd5>
+    <version>0.1.8</version>
+    <time>1264784470</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDLmm based on submit request 30809 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="1145">
+    <srcmd5>c4b492e8766552a189fc903a792c369e</srcmd5>
+    <version>0.1.8</version>
+    <time>1268922828</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="1147">
+    <srcmd5>c4b492e8766552a189fc903a792c369e</srcmd5>
+    <version>0.1.8</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1148">
+    <srcmd5>c4b492e8766552a189fc903a792c369e</srcmd5>
+    <version>0.1.8</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="1151">
+    <srcmd5>c4b492e8766552a189fc903a792c369e</srcmd5>
+    <version>0.1.8</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1152">
+    <srcmd5>e167c2d91c7043fad75292036721c947</srcmd5>
+    <version>0.1.8</version>
+    <time>1315238974</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>80924</requestid>
+  </revision>
+  <revision rev="15" vrev="1153">
+    <srcmd5>4889f58cffe3bf74d1588fdef83ecf34</srcmd5>
+    <version>0.1.8</version>
+    <time>1315238985</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80924
+</comment>
+  </revision>
+  <revision rev="16" vrev="1154">
+    <srcmd5>52d774f028655f30e610a2c60e0a6a2e</srcmd5>
+    <version>0.1.8</version>
+    <time>1316439025</time>
+    <user>lrupp</user>
+    <comment>- Add libSDLmm-devel to baselibs
+- Remove redundant tags</comment>
+    <requestid>83189</requestid>
+  </revision>
+  <revision rev="17" vrev="1155">
+    <srcmd5>eb0a25cae8535bb758b90799cb14f4f9</srcmd5>
+    <version>0.1.8</version>
+    <time>1317744371</time>
+    <user>oertel</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 86035 from jengelh)</comment>
+    <requestid>86238</requestid>
+  </revision>
+  <revision rev="18" vrev="1157">
+    <srcmd5>eb0a25cae8535bb758b90799cb14f4f9</srcmd5>
+    <version>0.1.8</version>
+    <time>1319181758</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="1158">
+    <srcmd5>aa406286c400ee41133270db07a52970</srcmd5>
+    <version>0.1.8</version>
+    <time>1321460490</time>
+    <user>coolo</user>
+    <comment>add libtool as buildrequire to avoid implicit dependency (forwarded request 91523 from coolo)</comment>
+    <requestid>91591</requestid>
+  </revision>
+  <revision rev="20" vrev="1159">
+    <srcmd5>64aaf9ff66ddf67086b9be3a714ce699</srcmd5>
+    <version>0.1.8</version>
+    <time>1323194578</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="1161">
+    <srcmd5>64aaf9ff66ddf67086b9be3a714ce699</srcmd5>
+    <version>0.1.8</version>
+    <time>1340183157</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1163">
+    <srcmd5>64aaf9ff66ddf67086b9be3a714ce699</srcmd5>
+    <version>0.1.8</version>
+    <time>1359108628</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1165">
+    <srcmd5>64aaf9ff66ddf67086b9be3a714ce699</srcmd5>
+    <version>0.1.8</version>
+    <time>1379661929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1166">
+    <srcmd5>df57772537b7b2a330780dcf8b74d012</srcmd5>
+    <version>0.1.8</version>
+    <time>1384266176</time>
+    <user>coolo</user>
+    <comment>- Set RPM groups to the same values as on the main SDL packages</comment>
+    <requestid>206548</requestid>
+  </revision>
+  <revision rev="25" vrev="1168">
+    <srcmd5>df57772537b7b2a330780dcf8b74d012</srcmd5>
+    <version>0.1.8</version>
+    <time>1409300449</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1169">
+    <srcmd5>9601c2f2ec693905b90bc9225043d27a</srcmd5>
+    <version>0.1.8</version>
+    <time>1420833044</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve package summary and description. Drop --with-pic which
+  is enabled implicitly anyway.</comment>
+    <requestid>280527</requestid>
+  </revision>
+</revisionlist>

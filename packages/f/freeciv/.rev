@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40a2d97bf4d6a422994ff3de6731fa51</srcmd5>
+    <version>2.5.5</version>
+    <time>1473409239</time>
+    <user>dimstar_suse</user>
+    <comment>a old/new game for the distribution</comment>
+    <requestid>416724</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>92b16416087657505e0fec759e88e55e</srcmd5>
+    <version>2.5.6</version>
+    <time>1481969952</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445588</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5cf2765557fbcc48a6db8dbdf26fab04</srcmd5>
+    <version>2.5.8</version>
+    <time>1502707246</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516631</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b6cdf6ee9fc58ee48f28ab458485130d</srcmd5>
+    <version>2.5.9</version>
+    <time>1505835321</time>
+    <user>dimstar_suse</user>
+    <comment>Freeciv 2.5.9</comment>
+    <requestid>527027</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4ccd2fac84a10ddfde7463aeedf298e7</srcmd5>
+    <version>2.5.10</version>
+    <time>1517606513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571833</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>46a261fd2126895f72792e17c1d54906</srcmd5>
+    <version>2.5.11</version>
+    <time>1529402598</time>
+    <user>maxlin_factory</user>
+    <comment>freeciv 2.5.11</comment>
+    <requestid>617142</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9795d0fa2c5fc8439543c06ce8a80998</srcmd5>
+    <version>2.6.0</version>
+    <time>1563223432</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0, lots of changes
+  See https://freeciv.fandom.com/wiki/NEWS-2.6.0
+  Rebase freeciv-appdata-desktop-references.patch
+  Cleanup build
+  Introduce separate freeciv-lang package
+</comment>
+    <requestid>714482</requestid>
+  </revision>
+</revisionlist>

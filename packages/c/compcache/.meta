@@ -1,0 +1,10 @@
+<package name="compcache" project="openSUSE:Factory">
+  <title>Compressed RAM based swap device</title>
+  <description>The compcache is a RAM-based block device acting as a swap disk. This
+can effectively increase the available memory on your machine by
+virtually swapping pages into the compressed memory.
+
+This package contains the boot script for loading/unloading the
+modules. The modules are contained in compcache-kmp packages.</description>
+  <devel project="filesystems" package="compcache"/>
+</package>

@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a288cb37dd115a412afa6fd8077d35b</srcmd5>
+    <version>1.0.9</version>
+    <time>1405573078</time>
+    <user>coolo</user>
+    <comment>added the missing &quot;2&quot; found by coolo in https://build.opensuse.org/request/show/240210</comment>
+    <requestid>241228</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6a288cb37dd115a412afa6fd8077d35b</srcmd5>
+    <version>1.0.9</version>
+    <time>1409301747</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9552d1bc347b7cb05c68a10885ea7574</srcmd5>
+    <version>1.0.10</version>
+    <time>1414218783</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>258192</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ceca6dd1f1add00dbb677a04b95957d6</srcmd5>
+    <version>1.0.10</version>
+    <time>1456433030</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361025</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>823f9d7aad23589df670839838fde3d6</srcmd5>
+    <version>1.0.10</version>
+    <time>1464863863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398369</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>c517bf77ecb7be9f2c7ab703bbd7de5c</srcmd5>
+    <version>1.0.10</version>
+    <time>1506594794</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528706</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>903d7355e5c787c17c4f472237fb1852</srcmd5>
+    <version>1.0.10</version>
+    <time>1507628064</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531257</requestid>
+  </revision>
+</revisionlist>

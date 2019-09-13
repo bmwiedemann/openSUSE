@@ -1,0 +1,6 @@
+<package name="octave-forge-bim" project="openSUSE:Factory">
+  <title></title>
+  <description>Package for solving Diffusion Advection Reaction (DAR) Partial Differential Equations.
+This is part of the Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-bim"/>
+</package>

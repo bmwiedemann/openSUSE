@@ -1,0 +1,365 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8cb0c1e5a639f2b9459f7f644b6a394f</srcmd5>
+    <version>0.8.0</version>
+    <time>1428064473</time>
+    <user>dimstar_suse</user>
+    <comment>initial submit</comment>
+    <requestid>292267</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>22964a6ff3b9baa83f07b98de8696f3c</srcmd5>
+    <version>0.8.0</version>
+    <time>1429107877</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296160</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fc50c27d683379ed9ca350e8b91a54d3</srcmd5>
+    <version>0.8.0</version>
+    <time>1429769118</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer install driver package by default, i.e. commented out
+  &quot;Supplements: xorg-x11-server&quot; in specfile
+- 90-libinput.conf: enable tapping on touchpads by default
+  (http://lists.opensuse.org/opensuse-factory/2015-04/msg00233.html)</comment>
+    <requestid>298645</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3fdcb8af45c9ce545a38a1c046f6f667</srcmd5>
+    <version>0.9.0</version>
+    <time>1429948453</time>
+    <user>coolo</user>
+    <comment>- xf86-input-libinput 0.9.0
+  * A couple of cosmetic changes but one addition of a new set of
+    properties: properties named &quot;libinput something Default&quot; show
+    the libinput default for a device. For example:
+        libinput Click Methods Available (284): 1, 1
+        libinput Click Method Enabled (285):    0, 1
+        libinput Click Method Enabled Default (286):    1, 0
+    This device has software buttons and clickfingers available,
+    clickfingers is currently enabled, software buttons is the
+    default for this device.</comment>
+    <requestid>303797</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>61d6a6aab4b0a9c6ad5890a50fa4df9c</srcmd5>
+    <version>0.10.0</version>
+    <time>1432488745</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308440</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>803060e217b714f5e2212c76c4f4c5db</srcmd5>
+    <version>0.11.0</version>
+    <time>1433832551</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311084</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>48231a268a73d71ecd2b62482d4d5098</srcmd5>
+    <version>0.12.0</version>
+    <time>1438421832</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318962</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>98adeabb1c863cad9aec5c036d55d951</srcmd5>
+    <version>0.13.0</version>
+    <time>1439190951</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320825</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>212bae96c4dc5431f677852dd43bd2da</srcmd5>
+    <version>0.14.0</version>
+    <time>1441146996</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328252</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2e0bf40adb5a3159691a7e5ebbd1886f</srcmd5>
+    <version>0.14.0</version>
+    <time>1443585156</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>334128</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>38ab5e2117bc2f96645a9de5e3b32335</srcmd5>
+    <version>0.15.0</version>
+    <time>1450284212</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349170</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3bbb8fc09c8b854cf29ff76e19fe88b3</srcmd5>
+    <version>0.16.0</version>
+    <time>1451390411</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351124</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0015e0e2f2ec402a6c275e0778b953cb</srcmd5>
+    <version>0.17.0</version>
+    <time>1456924737</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362873</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>261ffa460995083b803737f4885f3149</srcmd5>
+    <version>0.18.0</version>
+    <time>1460358807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18.0:
+This release adds support for tablet tool devices. Now, this support should
+be taken with a grain of salt, it works differently to the xf86-input-wacom
+driver and thus some capability differences can be observed:
+First, pad support is still missing, i.e. you cannot use the buttons on the
+tablet bit itself.
+There are no specific configuration options just yet, and the way we are
+aiming for libinput support, many of the options you are used to may not
+exist ever.
+The most important part: tool support is handled dynamically. As a tool is
+first brought into proximity, a new X device is created for that tool only
+(no multiplexing of tools through the same X device). Clients may expect a
+static list of tools, so for those you will need to bring the tool into
+proximity before starting the client.
+In short, do not use this driver for tablets on production workstations yet.</comment>
+    <requestid>385917</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c6a0e9cd44ce200c6871f871111026bc</srcmd5>
+    <version>0.19.0</version>
+    <time>1462342666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.19.0
+  One significant change that affects packagers: the config snippet has been
+  renamed from 90-libinput.conf to 60-libinput.conf.
+  This should not show any immediate effects on most user's machines but there
+  is a slight potential of user configurations to change if their custom
+  snippets now sort after libinput instead of before.
+  This change is part of the two-step solution to fix the handling of wacom
+  tablets when the libinput driver is present. Previously, the libinput driver
+  would overwrite any driver assigned to any supported devices. While it does
+  not yet bind to tablet devices by default, some tablets also look like
+  a keyboard, causing those devices to stop working. For those devices, the
+  wacom driver is the better option.
+  Since the X server is lacking an option to conditionally bind InputClass
+  snippets based on current values (git master has a NoMatch* option), the
+  safe alternative is to bump the libinput priority down and, at the same
+  time, bump the wacom driver's priority up.
+  For the cases where the wacom driver should not handle any device, simply
+  uninstalling it is sufficient.
+- refreshed n_enable-tapping.patch</comment>
+    <requestid>391957</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7fa38222a5ddcaf501369ef1f546f4be</srcmd5>
+    <version>0.19.1</version>
+    <time>1474622663</time>
+    <user>dimstar_suse</user>
+    <comment>- install the driver by default; added &quot;Supplements: xorg-x11-server&quot;
+  for this (bnc#999098)
+
+- Update to version 0.19.1:
+  + One of the property names had a clear typo in it, &quot;Horizonal&quot;
+    instead of &quot;Horizontal&quot;. This update corrects this property
+    name.
+  + A second patch was snuck in to avoid bug messages when
+    submitting button numbers beyond what we can handle in the
+    protocol.</comment>
+    <requestid>428954</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3e16f4a044d99ee9ad34e38a635b93a9</srcmd5>
+    <version>0.20.0</version>
+    <time>1476113720</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434092</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>25151acd30deeb73e434d28cfc8dd0a1</srcmd5>
+    <version>0.20.0</version>
+    <time>1477134108</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435707</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>09b0a25c440e5e74646839f191a904e5</srcmd5>
+    <version>0.22.0</version>
+    <time>1477644125</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437056</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b162c28ea1526e675c4fcaf62ec545d9</srcmd5>
+    <version>0.23.0</version>
+    <time>1481708918</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445454</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a3d6f6c02996f584bcb14ad17ba08100</srcmd5>
+    <version>0.24.0</version>
+    <time>1488124874</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459996</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e8a08c3916641517530799fa41c4d5c7</srcmd5>
+    <version>0.25.0</version>
+    <time>1489175413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.25.0 
+  * fixing two bugs with tablet pad modes on kernel 4.9 and later. 
+    First, we never successfully opened the sysfs files representing
+    the LEDs, so they didn't update as the kernel would change them.
+    Second, had we opened them correctly we would've likely crashed
+    as the property update would have been sent from within the
+    input thread.  Both issues are fixed now, together with a fix
+    for a test case failure for ppc64/aarch64.</comment>
+    <requestid>477940</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>89931f82601204e9c59a15e064bbcadb</srcmd5>
+    <version>0.25.1</version>
+    <time>1494441296</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.25.1
+  * Just one patch that's been sitting on master for a while now - 
+    after a proximity event we immediately post a motion event. 
+    This avoids the lines between the last known point before
+    proximity out and the new point.</comment>
+    <requestid>492992</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>de1b0ca28f8d1e77bbbd85443b7a8efd</srcmd5>
+    <version>0.25.1</version>
+    <time>1495637408</time>
+    <user>dimstar_suse</user>
+    <comment>- Leap 42.3 merge
+  * boo#1039812</comment>
+    <requestid>496484</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>4e84defbafdac8a53868084c7d866935</srcmd5>
+    <version>0.25.1</version>
+    <time>1504815031</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520551</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>08ec9bd97f2a214b90ac446ca30d647a</srcmd5>
+    <version>0.26.0</version>
+    <time>1505989624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.26
+  * A few patches that have been sitting on master for a while, of 
+    which two are documentation patches. The most interesting patch
+    is for tablets: previously we didn't send a separate motion
+    event before the button event which caused some clients to
+    trigger the button event on the previous stylus position.
+- obsoletes U_Only-initialize-properties.patch</comment>
+    <requestid>527248</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7e86186ac88ef5e305269ae13e457c1a</srcmd5>
+    <version>0.27.0</version>
+    <time>1523127030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593850</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c013eb16f1c4777abea06b3baccc6662</srcmd5>
+    <version>0.27.1</version>
+    <time>1523956143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.27.1
+  * Just one bugfix, a regression introduced by the new property
+    handling in 0.27.0 caused the property to toggle left-handed
+    to not be initialized on all devices that required it.
+- supersedes U_Fix-left-handed-property.patch</comment>
+    <requestid>595940</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3adab1ac653d36eb5e2eb6407d77a25a</srcmd5>
+    <version>0.28.0</version>
+    <time>1531946086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.28.0
+  * This version adds a feature to expose the touch count for touch
+    devices through the X device. It makes it possible for clients
+    to adjust their UI based on the number of supported touches by
+    this device.
+  * Also, the draglock code had a bug and would call memset with
+    an invalid size, causing memory corruption. You're advised to
+    update, especially if you expect someone to use the draglock
+    options.</comment>
+    <requestid>622064</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>09b26494ace058ae8b68fd6181a197c8</srcmd5>
+    <version>0.28.1</version>
+    <time>1540447890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.28.1
+  * Only two commits, only one that really matters: previously the
+    driver used the per-device slot number to fetch the tracking IDs
+    from a driver-internal array. Because devices re-use slots, this
+    could cause a tracking ID mismatch when two touchscreens had the
+    finger down at the same time. This is now fixed by switching to
+    libinput's seat-wide slot number instead.</comment>
+    <requestid>642107</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bb9d207d93edc5570fb55798f1b892f7</srcmd5>
+    <version>0.28.2</version>
+    <time>1549629987</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.28.2
+  * This release contains a bugfix that will likely trigger in future releases
+    of libinput. The driver assumed wrongly that any wheel event has a nonzero
+    discrete event and used the discrete as a divisor. Which is obviously a bad
+    idea, mathematically speaking, because you never know what the future will
+    bring. Hint: it will bring wheel events with a discrete of zero.</comment>
+    <requestid>671818</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>bd495ec1cdc4ef14c3ba3e2c4290794a</srcmd5>
+    <version>0.28.2</version>
+    <time>1564993778</time>
+    <user>dimstar_suse</user>
+    <comment>- move xorg.conf.d snippet from /etc/X11/xorg.conf.d to
+  /usr/share/X11/xorg.conf.d (boo#1139692)</comment>
+    <requestid>719821</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d2ada2b4de7f5ba9432a32bf1615cd7e</srcmd5>
+    <version>0.29.0</version>
+    <time>1566664833</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.29.0
+  * Only one real fix: we now check for the tool type as well as
+    the serial when we create subdevices for tablet tools.
+    Previously there were some cases where the eraser device
+    wasn't created correctly.</comment>
+    <requestid>724822</requestid>
+  </revision>
+</revisionlist>

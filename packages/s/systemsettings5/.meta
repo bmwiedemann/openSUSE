@@ -1,0 +1,5 @@
+<package name="systemsettings5" project="openSUSE:Factory">
+  <title>systemsettings5</title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="systemsettings5"/>
+</package>

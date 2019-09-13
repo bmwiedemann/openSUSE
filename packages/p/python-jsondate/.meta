@@ -1,0 +1,12 @@
+<package name="python-jsondate" project="openSUSE:Factory">
+  <title>JSON with datetime support</title>
+  <description>jsondate is a drop-in replacement for Python's standard json library that
+adds sensible handling of datetime and date objects.
+
+jsondate uses ISO8601 for encoding datetime objects and the
+date-specific part of ISO6801 for encoding date objects.
+
+</description>
+  <devel project="devel:languages:python" package="python-jsondate"/>
+  <url>https://github.com/rconradharris/jsondate</url>
+</package>

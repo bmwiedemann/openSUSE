@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f60f8931066a82e14517021092e2cf98</srcmd5>
+    <version>1.5</version>
+    <time>1551386370</time>
+    <user>coolo</user>
+    <comment>- New package to make it easier to mount EFS file systems in AWS</comment>
+    <requestid>676163</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4705bc25e3a89e371c820642b9a1e0ad</srcmd5>
+    <version>1.5</version>
+    <time>1554372479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691287</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2931636c703879f4b9fc850c8f982171</srcmd5>
+    <version>1.7</version>
+    <time>1554965278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7
+  + subprocess usage: explicitly pass `close_fds = True`
+  + state_file_dir: choose safe default mode, make mode configurable
+  + choose_tls_port(): reuse socket and explicitly close it in all cases
+  + watchdog: be robust against unrelated localhost based nfs mounts
+- Drop hardening patches merged upstream
+  + 0001-subprocess-usage-explicitly-pass-close_fds-True.patch
+  + 0002-state_file_dir-choose-safe-default-mode-make-mode-co.patch
+  + 0003-pytest-adjust-tests-to-new-state_file_dir_mode-confi.patch
+  + 0004-choose_tls_port-reuse-socket-and-explicitly-close-it.patch
+  + 0005-watchdog-be-robust-against-unrelated-localhost-based.patch
+- from version 1.6
+  + fix for additional unexpected arguments
+  + add test for additional unexpected arguments</comment>
+    <requestid>692718</requestid>
+  </revision>
+</revisionlist>

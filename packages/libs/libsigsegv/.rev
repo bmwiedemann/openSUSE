@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d919570bff16e1d1b13e8487ea342968</srcmd5>
+    <version>2.10</version>
+    <time>1368454824</time>
+    <user>coolo</user>
+    <comment>Required in Factory due split from clisp see SR#172680</comment>
+    <requestid>174824</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8f05d9f1cd01a297307484ca347fd585</srcmd5>
+    <version>2.10</version>
+    <time>1372862277</time>
+    <user>coolo</user>
+    <comment>- fix-build-in-qemu.patch: Remove, set XFAIL_TESTS instead
+- Reenable testsuite on armv7 (forwarded request 181857 from Andreas_Schwab)</comment>
+    <requestid>181858</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>8f05d9f1cd01a297307484ca347fd585</srcmd5>
+    <version>2.10</version>
+    <time>1379663091</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>8f05d9f1cd01a297307484ca347fd585</srcmd5>
+    <version>2.10</version>
+    <time>1409301717</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>70c1c29239b33370ffff25df993b7212</srcmd5>
+    <version>2.11</version>
+    <time>1487979963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.11
+  * Added support for catching stack overflow on Linux/SPARC.
+  * Provide a correct value for SIGSTKSZ on 64-bit AIX and on HP-UX. The one
+    defined by these systems is too small.
+  * Updated build infrastructure.
+  * Compilation now requires the &lt;stdint.h&gt; include file. Platforms which
+  don't have this include file (such as IRIX) are no longer supported.
+  * NOTE: Support for Cygwin and native Windows is currently not up-to-date.
+- Update URL that is use https://www.gnu.org/software/libsigsegv/
+
+- Update to version 2.10</comment>
+    <requestid>459621</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>339de27e6cfcd01406976421035e608e</srcmd5>
+    <version>2.11</version>
+    <time>1496327328</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497324</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7f5c4e16074d688d9704f818ef82ba62</srcmd5>
+    <version>2.12</version>
+    <time>1518187385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572935</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>cf7a7dadf8e0b233efbde900b03dec49</srcmd5>
+    <version>2.12</version>
+    <time>1556474348</time>
+    <user>maxlin_factory</user>
+    <comment>- Allow LTO but only FAT LTO OBJECTS (boo#1133245)
+
+- Add patch libsigsegv-2.12-lto.dif
+  * Avoid redefinition of structures of &lt;bits/sigcontext.h&gt; by
+    &lt;asm/sigcontext.h&gt;
+  * Avoid moved logic in resulting assembler code for LTO objects
+    in signal handler for segmentation faults
+
+- Avoid none debugging libsigsegv, that is add -fno-lto (boo#1133245)
+- Use %license if known
+
+- Disable LTO (boo#1133245).</comment>
+    <requestid>698204</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b7c8e9a1e1e7c6b5ef3282f16446d0f</srcmd5>
+    <version>2.003001</version>
+    <time>1485042587</time>
+    <user>dimstar_suse</user>
+    <comment>split out of perl-Moo
+
+needs to go into openSUSE:Factory:Staging:adi:131</comment>
+    <requestid>449845</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3df2e01b6fb2ab5541292d5b18ee7305</srcmd5>
+    <version>2.004000</version>
+    <time>1497016687</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502480</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>61e1c6f54555a3d192e386fe3b8038d3</srcmd5>
+    <version>2.005000</version>
+    <time>1518426484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573951</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eeed2f68df25a5ef1106874032e50a8c</srcmd5>
+    <version>2.005001</version>
+    <time>1524643110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599899</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2c0460f5ced0075704eda987e24b5c5a</srcmd5>
+    <version>2.006003</version>
+    <time>1552990019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684906</requestid>
+  </revision>
+</revisionlist>

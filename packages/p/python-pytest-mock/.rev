@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c0dd78e48db93a5790a46aac360f1be</srcmd5>
+    <version>1.6.0</version>
+    <time>1494937726</time>
+    <user>dimstar_suse</user>
+    <comment>needed for new python-requests</comment>
+    <requestid>492870</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2d62a0d6ddcbe61bdff455da2c1a8dfd</srcmd5>
+    <version>1.6.0</version>
+    <time>1502707127</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516165</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7f989a2b626aa5ec4dd634726ddf11a7</srcmd5>
+    <version>1.6.3</version>
+    <time>1508610013</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533466</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>be0309fa9b9cded947474beb30e963d6</srcmd5>
+    <version>1.6.3</version>
+    <time>1516091859</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with python3 only available
+- Install properly license file/etc</comment>
+    <requestid>563590</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>28cb91110c695c8c9d3b727cca80b2d7</srcmd5>
+    <version>1.7.1</version>
+    <time>1520253363</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1
+  * fix reading README.rst in setup.py
+
+- fix deps for setuptools
+
+- update to 1.7.0
+  * Drop support for python-2.6 and python-3.3</comment>
+    <requestid>582182</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08270e5137aa6afa40061fb35ae628e8</srcmd5>
+    <version>1.9.0</version>
+    <time>1524742476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599637</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dfa1e551f65a2b4c260c19f7522617f6</srcmd5>
+    <version>1.10.0</version>
+    <time>1526030798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605130</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a4cb5e89e62bb2df123a0b9ea281ce78</srcmd5>
+    <version>1.10.1</version>
+    <time>1551024320</time>
+    <user>coolo</user>
+    <comment>- Update to 1.10.1:
+  * Fix broken links and update README. Also the code is now formatted using black.</comment>
+    <requestid>674447</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a7d196d8582a7e6fb29bb7ac6e9958f4</srcmd5>
+    <version>1.10.2</version>
+    <time>1553888261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688629</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>81251b528386072016ed5f1333557cb2</srcmd5>
+    <version>1.10.3</version>
+    <time>1554372026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.3:
+  * Fix test suite in Python 3.8. Thanks @hroncok for the report and @blueyed for the PR (#140).</comment>
+    <requestid>690275</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fe6be2cdf4995c73890094b02767dffe</srcmd5>
+    <version>1.10.4</version>
+    <time>1556817227</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.4:
+  * Fix plugin when 'terminal' plugin is disabled</comment>
+    <requestid>699374</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>cc354589ab252f28deba4dd796fc2cd5</srcmd5>
+    <version>1.10.4</version>
+    <time>1564484783</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove mock30.patch for now as we are not able to upgrade
+  to mock3 yet
+
+- add upstream patch to test with pytest5 - fix_tests.patch 
+
+- Add patch from upstream to build with new mock:
+  * mock30.patch</comment>
+    <requestid>718868</requestid>
+  </revision>
+</revisionlist>

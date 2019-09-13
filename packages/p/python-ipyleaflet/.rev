@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2189c2dcbce1482a8b44a0bd6ac8f1c5</srcmd5>
+    <version>0.10.2</version>
+    <time>1558516317</time>
+    <user>dimstar_suse</user>
+    <comment>A Jupyter widget for dynamic Leaflet maps
+
+- Update to 0.10.2
+- Fix dependencies
+</comment>
+    <requestid>702896</requestid>
+  </revision>
+</revisionlist>

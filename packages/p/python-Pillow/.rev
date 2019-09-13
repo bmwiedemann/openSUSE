@@ -1,0 +1,323 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8b5169642163176ee7ba906090649904</srcmd5>
+    <version>2.2.1</version>
+    <time>1386159170</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>207424</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3f8f352964d360afec1ba930604414c3</srcmd5>
+    <version>2.2.1</version>
+    <time>1386843851</time>
+    <user>coolo</user>
+    <comment>Added use-recommended-freetype-include.patch -- needed for freetype2 2.5.1 (forwarded request 210605 from sumski)</comment>
+    <requestid>210606</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>63d0278d5009a426cbb348c4908a9a3b</srcmd5>
+    <version>2.3.0</version>
+    <time>1390976210</time>
+    <user>coolo</user>
+    <comment>Revised update to 2.3.0. (forwarded request 215203 from kohtala)</comment>
+    <requestid>215352</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ea12e0d43abf6b901cf77c4f358b3ed4</srcmd5>
+    <version>2.3.0</version>
+    <time>1392448007</time>
+    <user>coolo</user>
+    <comment>- Fix build for older distributions which do not include lcms2 (forwarded request 222275 from Nijel)</comment>
+    <requestid>222278</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f6a43a0e7a01def092a559ec81653bf4</srcmd5>
+    <version>2.4.0</version>
+    <time>1403642751</time>
+    <user>coolo</user>
+    <comment>Fixing conflicting provides/conflicts that prevent installation of the tk subpackage.
+
+This should fix the problems reported with the previous openSUSE:Factory submission. (forwarded request 235635 from TheBlackCat)</comment>
+    <requestid>235636</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c36820a932e212c9f770f0aee1329648</srcmd5>
+    <version>2.4.0</version>
+    <time>1407236409</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243447</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a349787345a5684d274cf7b498c4d883</srcmd5>
+    <version>2.5.1</version>
+    <time>1407942498</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244340</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bc677289287922aeeedabccfb535fdc1</srcmd5>
+    <version>2.5.1</version>
+    <time>1408524672</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>245153</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>bc677289287922aeeedabccfb535fdc1</srcmd5>
+    <version>2.5.1</version>
+    <time>1409302798</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>16088861e22e247687c92d064b6ec15c</srcmd5>
+    <version>2.6.1</version>
+    <time>1416505393</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262197</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7cfd3f9ed76d3c9b7a8067bdd4617dd2</srcmd5>
+    <version>2.7.0</version>
+    <time>1420754589</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280293</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8fe3235e62a74f37da3680031f50cd10</srcmd5>
+    <version>2.7.0</version>
+    <time>1423596197</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>284878</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>a96069480421245a780989528eb02b0d</srcmd5>
+    <version>2.7.0</version>
+    <time>1429658391</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298326</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5dd40f8cef495fc48416c3cd8152f362</srcmd5>
+    <version>2.8.1</version>
+    <time>1429769067</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298513</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6fc722b7aaed4672c2398c7c5ba0c2ca</srcmd5>
+    <version>2.8.1</version>
+    <time>1435053572</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312960</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0164f0a8e7f3d2803964aa5ccd31ffba</srcmd5>
+    <version>2.9.0</version>
+    <time>1439818497</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319248</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e55df1582bd71ffad636edfaab9b96c1</srcmd5>
+    <version>3.0.0</version>
+    <time>1445287742</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336676</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>cb9781b955a18df000ab72e93e401181</srcmd5>
+    <version>3.0.0</version>
+    <time>1447766618</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344875</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>94baa1f567097cd75fe35b78a6ac4434</srcmd5>
+    <version>3.1.0</version>
+    <time>1455611224</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357112</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>78dffd8a496225c8c4c7e116749ad617</srcmd5>
+    <version>3.1.1</version>
+    <time>1457546488</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>364964</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>2ba26fd6eda0a283783d17c343a1bc2e</srcmd5>
+    <version>3.1.1</version>
+    <time>1458333340</time>
+    <user>dimstar_suse</user>
+    <comment>- add LICENSE</comment>
+    <requestid>371235</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>8a91c1ffadb8a92f94b0e9c57eeb1805</srcmd5>
+    <version>3.1.1</version>
+    <time>1464204102</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397405</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>3ccac87726a84c243a2287f482d4f9fa</srcmd5>
+    <version>3.1.1</version>
+    <time>1476109124</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433093</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6929f829b8800e2584dd2acd0139691b</srcmd5>
+    <version>4.1.0</version>
+    <time>1493368645</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487696</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>cca66b1eaaf074e25df3b1877ad9ecd5</srcmd5>
+    <version>4.1.0</version>
+    <time>1502963007</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve TK handling.
+- Fix self-obsoletes</comment>
+    <requestid>516638</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>92c112db8843962955cf4cf5ed79e21e</srcmd5>
+    <version>4.2.1</version>
+    <time>1503999436</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518130</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>569be45194183766e7316b019af73ec7</srcmd5>
+    <version>5.0.0</version>
+    <time>1515875735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563835</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>3b45238ed1bab3341136dea93853a3f8</srcmd5>
+    <version>5.0.0</version>
+    <time>1516443875</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build fails on i586 and ppc and others:
+  * pillow-non-iterable.patch</comment>
+    <requestid>564507</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>124c2be05bde3566250caf32f4f36bc7</srcmd5>
+    <version>5.1.0</version>
+    <time>1523875483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>594619</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a672fef36f8275c78335c70c53a5c13a</srcmd5>
+    <version>5.2.0</version>
+    <time>1530993384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620187</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6ec02d445ac2cbbf1b651ed605bf0492</srcmd5>
+    <version>5.3.0</version>
+    <time>1539342560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640655</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>35eeca6a3e335d7c19cf12b9225902f5</srcmd5>
+    <version>5.3.0</version>
+    <time>1544816767</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call
+- Fix some version conditionals</comment>
+    <requestid>655609</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>aa8c14285d73923911caaf196055bff0</srcmd5>
+    <version>5.4.1</version>
+    <time>1546946240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663293</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>81d825b3ef1cd18b196030ed66c187d2</srcmd5>
+    <version>6.0.0</version>
+    <time>1554833854</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.0:
+  * Python 2.7 support will be removed in Pillow 7.0.0 #3682 [hugovk]
+  * Add EXIF class #3625 [radarhere]
+  * Add ImageOps exif_transpose method #3687 [radarhere]
+  * Added warnings to deprecated CMSProfile attributes #3615 [hugovk]
+  * Documented reading TIFF multiframe images #3720 [akuchling]
+  * Improved speed of opening an MPO file #3658 [Glandos]
+  * Update palette in quantize #3721 [radarhere]
+  * Improvements to TIFF is_animated and n_frames #3714 [radarhere]
+  * Fixed incompatible pointer type warnings #3754 [radarhere]
+  * Improvements to PA and LA conversion and palette operations #3728 [radarhere]
+  * Consistent DPI rounding #3709 [radarhere]
+  * Change size of MPO image to match frame #3588 [radarhere]
+  * Read Photoshop resolution data #3701 [radarhere]
+  * Ensure image is mutable before saving #3724 [radarhere]
+  * Correct remap_palette documentation #3740 [radarhere]
+  * Promote P images to PA in putalpha #3726 [radarhere]
+  * Allow RGB and RGBA values for new P images #3719 [radarhere]
+  * Fixed TIFF bug when seeking backwards and then forwards #3713 [radarhere]
+  * Cache EXIF information #3498 [Glandos]
+  * Added transparency for all PNG greyscale modes #3744 [radarhere]
+  * Fix deprecation warnings in Python 3.8 #3749 [radarhere]
+  * Fixed GIF bug when rewinding to a non-zero frame #3716 [radarhere]
+  * Only close original fp in __del__ and __exit__ if original fp is exclusive #3683 [radarhere]
+  * Fix BytesWarning in Tests/test_numpy.py #3725 [jdufresne]
+  * Add missing MIME types and extensions #3520 [pirate486743186]
+  * Add I;16 PNG save #3566 [radarhere]
+  * Add support for BMP RGBA bitfield compression #3705 [radarhere]
+  * Added ability to set language for text rendering #3693 [iwsfutcmd]
+  * Only close exclusive fp on Image __exit__ #3698 [radarhere]</comment>
+    <requestid>691779</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>26290c6400d3c181f7f98fbe4842e2c7</srcmd5>
+    <version>6.0.0</version>
+    <time>1560862091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708871</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>824842c61994c114aa47daf8a2e69ba9</srcmd5>
+    <version>6.1.0</version>
+    <time>1562591053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713832</requestid>
+  </revision>
+</revisionlist>

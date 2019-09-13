@@ -1,0 +1,237 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7c41fc64e6801d7f021542f3df7e5bec</srcmd5>
+    <version>2.30.0</version>
+    <time>1282579636</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-icon-theme-symbolic based on submit request 45402 from user vuntz
+</comment>
+    <requestid>45402</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8e12fe0ab03fe92080c9c3d601425049</srcmd5>
+    <version>2.31.0</version>
+    <time>1282945993</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-icon-theme-symbolic based on submit request 46460 from user vuntz
+</comment>
+    <requestid>46460</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f0a35ce7af20bc5356fb44e6736c7512</srcmd5>
+    <version>2.31.0</version>
+    <time>1292859713</time>
+    <user>darix</user>
+    <comment>Accepted submit request 56095 from user vuntz
+</comment>
+    <requestid>56095</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>54222af027bf6a7d27ac40ddbbf91b7a</srcmd5>
+    <version>2.31.0</version>
+    <time>1292859720</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 56095
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>54222af027bf6a7d27ac40ddbbf91b7a</srcmd5>
+    <version>2.31.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6f2ae83901197661269df46b0bdfa300</srcmd5>
+    <version>3.0.0</version>
+    <time>1304675724</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69064</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>883246f995e30835b610cc36bc64fb20</srcmd5>
+    <version>3.0.0</version>
+    <time>1304675745</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69064
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a0b714212ea99238dccf08bda2ae42c6</srcmd5>
+    <version>3.1.4</version>
+    <time>1311583587</time>
+    <user>saschpe</user>
+    <comment>Update to 3.1.4 (forwarded request 76762 from vuntz)</comment>
+    <requestid>76779</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bd206f6d645918e508fe714c9810f3ff</srcmd5>
+    <version>3.1.90</version>
+    <time>1315559946</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81485</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c6950c651e7e11625f726ae27990e7f5</srcmd5>
+    <version>3.2.0</version>
+    <time>1317542749</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85661</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>c6950c651e7e11625f726ae27990e7f5</srcmd5>
+    <version>3.2.0</version>
+    <time>1319181919</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dc916bb799b755b1f191e7c49afcd044</srcmd5>
+    <version>3.2.1</version>
+    <time>1319550900</time>
+    <user>coolo</user>
+    <comment>Update to 3.2.1 -- only icons, no big risk</comment>
+    <requestid>89030</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ef608f65b8556b1b1f2c75c085cb21fd</srcmd5>
+    <version>3.2.1</version>
+    <time>1323191644</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0e2e82e09716d3f124dbfa702b9d0ba6</srcmd5>
+    <version>3.2.2</version>
+    <time>1326378355</time>
+    <user>coolo</user>
+    <comment>Update to 3.2.2 (forwarded request 99704 from vuntz)</comment>
+    <requestid>99717</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>635596ebcc3bc1833e938792bb61d2d5</srcmd5>
+    <version>3.3.91</version>
+    <time>1331900071</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>109421</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9fc4f2876d06a67bf321d4f3c0cf55e3</srcmd5>
+    <version>3.4.0</version>
+    <time>1333022044</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111722</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>9fc4f2876d06a67bf321d4f3c0cf55e3</srcmd5>
+    <version>3.4.0</version>
+    <time>1340183380</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>18a766298f64674d53d20b3662ea89c8</srcmd5>
+    <version>3.6.0</version>
+    <time>1349368773</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136695</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>72350374264c4d0e3e75297a7186c285</srcmd5>
+    <version>3.6.2</version>
+    <time>1353511895</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>142099</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>72350374264c4d0e3e75297a7186c285</srcmd5>
+    <version>3.6.2</version>
+    <time>1359108958</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0b4ce339a528f322076adc82ba9a7b85</srcmd5>
+    <version>3.8.0.1</version>
+    <time>1364408636</time>
+    <user>coolo</user>
+    <comment>Update to 3.8.0.1 (forwarded request 161320 from Zaitor)</comment>
+    <requestid>161356</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5a7f053b550095055465ec950bd55d12</srcmd5>
+    <version>3.8.2.2</version>
+    <time>1368694094</time>
+    <user>coolo</user>
+    <comment>Update to 3.8.2.2 (forwarded request 175644 from Zaitor)</comment>
+    <requestid>175647</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8265297ecef712cc73017f9f1d096e65</srcmd5>
+    <version>3.8.3</version>
+    <time>1372145130</time>
+    <user>coolo</user>
+    <comment>Update to 3.8.3 (forwarded request 180482 from Zaitor)</comment>
+    <requestid>180648</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>01c601334239d0159261d2c2cdf6203c</srcmd5>
+    <version>3.9.5</version>
+    <time>1376648661</time>
+    <user>scarabeus_factory</user>
+    <comment>push GNOME:Factory</comment>
+    <requestid>186875</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>08ae0d00d4607a26692d666d173150d6</srcmd5>
+    <version>3.9.91</version>
+    <time>1378892405</time>
+    <user>coolo</user>
+    <comment>Update to 3.9.91</comment>
+    <requestid>198115</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>08ae0d00d4607a26692d666d173150d6</srcmd5>
+    <version>3.9.91</version>
+    <time>1379662490</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>106258f5eb4c91901ba638e2fe97438d</srcmd5>
+    <version>3.10.0</version>
+    <time>1380295259</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200926</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>669a6623ed402aa448b9d78a5fa895e0</srcmd5>
+    <version>3.10.1</version>
+    <time>1381826448</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.10.1 - GNOME 3.10.1 update - stable branch (forwarded request 203245 from Zaitor)</comment>
+    <requestid>203255</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0ce9661b0a14c52ac16a734c3194db2b</srcmd5>
+    <version>3.12.0</version>
+    <time>1399317314</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231719</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>0ce9661b0a14c52ac16a734c3194db2b</srcmd5>
+    <version>3.12.0</version>
+    <time>1409301025</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

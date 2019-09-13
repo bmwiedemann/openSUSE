@@ -1,0 +1,211 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2fa2390ae16fb9ed748be86a69e40ed</srcmd5>
+    <version>0.0.2</version>
+    <time>1332831492</time>
+    <user>coolo</user>
+    <comment>Dependency for python-ldap</comment>
+    <requestid>111124</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e86c2204660172f6e728d36d96fab16a</srcmd5>
+    <version>0.0.3</version>
+    <time>1336452479</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116228</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e86c2204660172f6e728d36d96fab16a</srcmd5>
+    <version>0.0.3</version>
+    <time>1340184080</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>edb77749fcfa443d12f9d5b2eae9543c</srcmd5>
+    <version>0.0.4</version>
+    <time>1343634011</time>
+    <user>coolo</user>
+    <comment>Update to upstrean release 0.0.4 (forwarded request 129126 from stroeder)</comment>
+    <requestid>129127</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>edb77749fcfa443d12f9d5b2eae9543c</srcmd5>
+    <version>0.0.4</version>
+    <time>1359110095</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>ea5274a946552da0669cd8c5dbc0fd28</srcmd5>
+    <version>0.0.4</version>
+    <time>1362745731</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157733</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e2bca1c645112c49fe125cec7bc50284</srcmd5>
+    <version>0.0.5</version>
+    <time>1367933173</time>
+    <user>coolo</user>
+    <comment>Update to new upstream release. (forwarded request 174686 from stroeder)</comment>
+    <requestid>174689</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e2bca1c645112c49fe125cec7bc50284</srcmd5>
+    <version>0.0.5</version>
+    <time>1379664249</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>02b128307a00ec107f04a7d099df9b06</srcmd5>
+    <version>0.0.5</version>
+    <time>1382693232</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204631</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>02b128307a00ec107f04a7d099df9b06</srcmd5>
+    <version>0.0.5</version>
+    <time>1409302951</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0bdeadc7f3c4fb1194effc7e2fadc0cc</srcmd5>
+    <version>0.0.6</version>
+    <time>1436331561</time>
+    <user>coolo</user>
+    <comment>update to new upstream release 0.0.6</comment>
+    <requestid>315089</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>eb14f1eca97c63803ec370930ed225db</srcmd5>
+    <version>0.0.7</version>
+    <time>1439556406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>322435</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>76b1dd5469ee57be7a9705ba1e099bf0</srcmd5>
+    <version>0.0.8</version>
+    <time>1451674024</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351213</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7699d2d091f4f16e3d16839dd310d4c0</srcmd5>
+    <version>0.0.8</version>
+    <time>1492617409</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480630</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>264f3640a61c9ea29384d88967a76719</srcmd5>
+    <version>0.0.9</version>
+    <time>1497949096</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503689</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5b07df4a4748f19a4645206803159839</srcmd5>
+    <version>0.0.10</version>
+    <time>1501572277</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>513049</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>65bdcd8c2a39fd5c63dc62bcf330acf5</srcmd5>
+    <version>0.0.11</version>
+    <time>1503392665</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517061</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4b75cf2391e8aa494d3099b25f78e54a</srcmd5>
+    <version>0.1.4</version>
+    <time>1504981465</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522188</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b97268df43d702d97ff1bd3a097174e9</srcmd5>
+    <version>0.1.5</version>
+    <time>1508323836</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533653</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>322694c7401239b259e996a4d2e19ac5</srcmd5>
+    <version>0.2.1</version>
+    <time>1512216629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545780</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e2543caae14b98af2b7027f93b0c5e2b</srcmd5>
+    <version>0.2.2</version>
+    <time>1530741254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620428</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5d4086f19f5b0994c72938505d841de0</srcmd5>
+    <version>0.2.4</version>
+    <time>1549140325</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>669379</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>157110e8e3a0056287a9724b0b6a5aac</srcmd5>
+    <version>0.2.5</version>
+    <time>1558939053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.5:
+  - Added RFC3560 providing RSAES-OAEP Key Transport Algorithm
+    in CMS
+  - Added RFC6019 providing BinaryTime - an alternate format
+    for representing Date and Time
+  - RFC3565 superseded by RFC5649
+  - Added RFC5480 providng Elliptic Curve Cryptography Subject
+    Public Key Information
+  - Added RFC8520 providing X.509 Extensions for MUD URL and
+    MUD Signer
+  - Added RFC3161 providing Time-Stamp Protocol support
+  - Added RFC3709 providing Logotypes in X.509 Certificates
+  - Added RFC3274 providing CMS Compressed Data Content Type
+  - Added RFC4073 providing Multiple Contents protection
+    with CMS
+- Execute testsuite</comment>
+    <requestid>705395</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>157110e8e3a0056287a9724b0b6a5aac</srcmd5>
+    <version>0.2.5</version>
+    <time>1558939055</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>157110e8e3a0056287a9724b0b6a5aac</srcmd5>
+    <version>0.2.5</version>
+    <time>1558953393</time>
+    <user>dimstar_suse</user>
+    <comment>No idea why staging accept deleted this</comment>
+  </revision>
+</revisionlist>

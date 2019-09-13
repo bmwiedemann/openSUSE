@@ -1,0 +1,217 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>61bf255edb80960348c0c228b7612223</srcmd5>
+    <version>1.42build35</version>
+    <time>1168901500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="59">
+    <srcmd5>a38b060b1eb7c46096f1aaae604dde44</srcmd5>
+    <version>1.42build35</version>
+    <time>1177077291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="242">
+    <srcmd5>a38b060b1eb7c46096f1aaae604dde44</srcmd5>
+    <version>1.42build35</version>
+    <time>1177077291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="243">
+    <srcmd5>7889a01ff46a9ed0674b5ac3c0c6429a</srcmd5>
+    <version>1.42build35</version>
+    <time>1245258862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="245">
+    <srcmd5>7889a01ff46a9ed0674b5ac3c0c6429a</srcmd5>
+    <version>1.42build35</version>
+    <time>1245258862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="246">
+    <srcmd5>1805d90164a0c8d3766ed43244cb29f9</srcmd5>
+    <version>1.42build35</version>
+    <time>1268922934</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="247">
+    <srcmd5>d9376fc40e2ec9adc5d4b14ab2ed1441</srcmd5>
+    <version>1.42build35</version>
+    <time>1277141756</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:compiler/asl based on submit request 41735 from user coolo
+</comment>
+    <requestid>41735</requestid>
+  </revision>
+  <revision rev="8" vrev="249">
+    <srcmd5>d9376fc40e2ec9adc5d4b14ab2ed1441</srcmd5>
+    <version>1.42build35</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="250">
+    <srcmd5>d9376fc40e2ec9adc5d4b14ab2ed1441</srcmd5>
+    <version>1.42build35</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="253">
+    <srcmd5>d9376fc40e2ec9adc5d4b14ab2ed1441</srcmd5>
+    <version>1.42build35</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6042eb097eb68def1b81448750829b7a</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1303385004</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 66943 from user namtrac
+</comment>
+    <requestid>66943</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>49bbb9deedea43dc65207419a3f71c74</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1303385012</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 66943
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>4b9a303ca70c00f55e4c0b50aed28014</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1317905913</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86686 from uli_suse)</comment>
+    <requestid>86847</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>4b9a303ca70c00f55e4c0b50aed28014</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1319181776</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>1d0f2527e0e2cb15dc59a06f38a76cf8</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1323190753</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>28738e4f3e12672cacc360a04a3c46e5</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1332768962</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>111088</requestid>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>28738e4f3e12672cacc360a04a3c46e5</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1340183182</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>4b284bf66cc8cc2425f10778cba59661</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1343138826</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>128852</requestid>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>4b284bf66cc8cc2425f10778cba59661</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1359108669</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>116a62562bb1b839995ff780251074a2</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1371132750</time>
+    <user>coolo</user>
+    <comment>- asl-aarch64.patch: Add sysdefs bits for aarch64 (forwarded request 178634 from Andreas_Schwab)</comment>
+    <requestid>178635</requestid>
+  </revision>
+  <revision rev="21" vrev="15">
+    <srcmd5>116a62562bb1b839995ff780251074a2</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1379661992</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="17">
+    <srcmd5>116a62562bb1b839995ff780251074a2</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1409300517</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="18">
+    <srcmd5>58d78359f3446326f669cabfbbd1f6f4</srcmd5>
+    <version>1.42_1.22</version>
+    <time>1431980671</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307541</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1a58fa8215aae444ab97b898713f996d</srcmd5>
+    <version>1.42_bld115</version>
+    <time>1497274086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>494287</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c263bf9f5c905c34b8956118a8e090da</srcmd5>
+    <version>1.42_bld115</version>
+    <time>1507755706</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532955</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>d96038e2e8f79218e1dcf3acbcb351a3</srcmd5>
+    <version>1.42_bld115</version>
+    <time>1520588671</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file with spec-cleaner
+
+- remove unused buildrequires on xorg-x11-* and libpng</comment>
+    <requestid>584207</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>61bbb467f0aace1e8dd1042f0e820049</srcmd5>
+    <version>1.42_bld115</version>
+    <time>1527583359</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop doc subpackage - building fails on current Factory</comment>
+    <requestid>611831</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>854b9e9e42c9657d03d8a6d43aed6d57</srcmd5>
+    <version>1.42_bld144</version>
+    <time>1551883883</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 142-bld115
+  * No changelog available</comment>
+    <requestid>682058</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>5cf938af37e665350b732fb8a77029c2</srcmd5>
+    <version>1.42_bld144</version>
+    <time>1552986084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686122</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4da3ce8d6648c9618bd45fe2dabc9127</srcmd5>
+    <version>0.9.3</version>
+    <time>1448553765</time>
+    <user>dimstar_suse</user>
+    <comment>mono-traversable: Type classes for mapping, folding, and traversing monomorphic containers</comment>
+    <requestid>345709</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8da521767d1344714c4d6dd739dbbfae</srcmd5>
+    <version>0.10.0.1</version>
+    <time>1452122704</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0.1
+* Remove Functor instance for MinLen
+* Instance for Data.Sequence.Seq is incorrect. (forwarded request 352144 from mimi_vx)</comment>
+    <requestid>352184</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d69f6536efafc9addcce06a206965a36</srcmd5>
+    <version>0.10.1</version>
+    <time>1453998241</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.1
+* Allow comonad-5 (forwarded request 355978 from mimi_vx)</comment>
+    <requestid>355979</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6e4f71db9fcfac008d9f780f70629bdf</srcmd5>
+    <version>0.10.1.1</version>
+    <time>1456243062</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.1.1
+* Remove unneeded INLINEs
+
+- initial commit (forwarded request 360805 from mimi_vx)</comment>
+    <requestid>360806</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>306d37c13762de006b096e2ef70a866c</srcmd5>
+    <version>0.10.2</version>
+    <time>1461335107</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.2
+* Add delete and deleteBy methods to EqSequence (forwarded request 390432 from mimi_vx)</comment>
+    <requestid>390433</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4a4ed81b08abfb5bade88269ff977f72</srcmd5>
+    <version>0.10.2</version>
+    <time>1468999745</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411946</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6c9a2d4b45b65599c63119b111425435</srcmd5>
+    <version>1.0.1</version>
+    <time>1477135229</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433402</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e34ab03a727848595f2d85cb8fcf8db3</srcmd5>
+    <version>1.0.1</version>
+    <time>1485863081</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453304</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d3204fca99774b03466906ad5660e0d1</srcmd5>
+    <version>1.0.1.1</version>
+    <time>1486552024</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>455249</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4288fcfb84bbac319ed3c272e54016b8</srcmd5>
+    <version>1.0.1.3</version>
+    <time>1490026055</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477459</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>39a2b6e5e225b11a7af3b2fa457fc25d</srcmd5>
+    <version>1.0.2</version>
+    <time>1492169915</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485147</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7fff49938d98462d623a6836f9739a32</srcmd5>
+    <version>1.0.8.1</version>
+    <time>1527675058</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-mono-traversable to the latest version.</comment>
+    <requestid>607841</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>38ee22d30c43cb0ddd51fd0915131c3c</srcmd5>
+    <version>1.0.8.1</version>
+    <time>1532161286</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623813</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ef9760959eed7b1ae521bb431bb4e89c</srcmd5>
+    <version>1.0.9.0</version>
+    <time>1533412445</time>
+    <user>dimstar_suse</user>
+    <comment>Add xmonad, xmobar, and their dependencies to Factory.</comment>
+    <requestid>627278</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>124bdc32db54015e905978368a0b6a1b</srcmd5>
+    <version>1.0.9.0</version>
+    <time>1540448847</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643424</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f9149ee26214fea4aadd8d0e1865ddc5</srcmd5>
+    <version>1.0.10.0</version>
+    <time>1545996912</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>661497</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f1e24315d421503243324c21f60bed6e</srcmd5>
+    <version>1.0.11.0</version>
+    <time>1550402413</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>674301</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>57f1046b4c9fc80ae05b5ee3302367d7</srcmd5>
+    <version>1.0.12.0</version>
+    <time>1566665061</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>725521</requestid>
+  </revision>
+</revisionlist>

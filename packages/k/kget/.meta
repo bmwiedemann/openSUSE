@@ -1,0 +1,5 @@
+<package name="kget" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="kget"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="system-tuning-common-SUSE" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Base:System" package="system-tuning-common-SUSE"/>
+</package>

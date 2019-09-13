@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="29">
+    <srcmd5>9d1bf20834ae382b43e1c58bb86d5874</srcmd5>
+    <version>0.6.8</version>
+    <time>1168871686</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="180">
+    <srcmd5>9d1bf20834ae382b43e1c58bb86d5874</srcmd5>
+    <version>0.6.8</version>
+    <time>1168871686</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="181">
+    <srcmd5>082fc2d1670f032e62a2ba3e8e65e244</srcmd5>
+    <version>0.6.8</version>
+    <time>1245277211</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="183">
+    <srcmd5>082fc2d1670f032e62a2ba3e8e65e244</srcmd5>
+    <version>0.6.8</version>
+    <time>1245277211</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="184">
+    <srcmd5>5c98cbbb1988140cc7a06901a9481d89</srcmd5>
+    <version>0.6.8</version>
+    <time>1268925898</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="186">
+    <srcmd5>5c98cbbb1988140cc7a06901a9481d89</srcmd5>
+    <version>0.6.8</version>
+    <time>1278667386</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="187">
+    <srcmd5>5c98cbbb1988140cc7a06901a9481d89</srcmd5>
+    <version>0.6.8</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="190">
+    <srcmd5>5c98cbbb1988140cc7a06901a9481d89</srcmd5>
+    <version>0.6.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2153387deed78b4accb7a0bc77db239e</srcmd5>
+    <version>0.6.10</version>
+    <time>1315235293</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>80625</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a0d5603cbfb5c474d088794f757994a5</srcmd5>
+    <version>0.6.10</version>
+    <time>1315235309</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80625
+</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>a0d5603cbfb5c474d088794f757994a5</srcmd5>
+    <version>0.6.10</version>
+    <time>1319182409</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>81e165c58bf088b6a6f140969fab3b33</srcmd5>
+    <version>0.6.10</version>
+    <time>1323194300</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>81e165c58bf088b6a6f140969fab3b33</srcmd5>
+    <version>0.6.10</version>
+    <time>1340184101</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>81e165c58bf088b6a6f140969fab3b33</srcmd5>
+    <version>0.6.10</version>
+    <time>1359110150</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>81e165c58bf088b6a6f140969fab3b33</srcmd5>
+    <version>0.6.10</version>
+    <time>1379664320</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>81e165c58bf088b6a6f140969fab3b33</srcmd5>
+    <version>0.6.10</version>
+    <time>1409303028</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6e63342f2d686f2c3a7ddff0d6dbab5b</srcmd5>
+    <version>2.3</version>
+    <time>1557170222</time>
+    <user>dimstar_suse</user>
+    <comment>- Conflict python-xmldiff (unversioned)
+
+- Restore more useful description from before 2.3
+
+- package reworked from scratch
+- version update to 2.3
+  - A complete, bottom-up, pure-python rewrit
+  - A new default output format with new actions
+  - A format intended to be parseable by anyone parsing the old format.
+  - XML with changes marked though tags and attributes
+  - Added options for faster node comparisons. The &quot;middle&quot; option is now
+    default, it had very few changes in matches, but is much faster.
+  - Implemented a Fast Match algorithm for even faster diffing.
+  - Speed improvements through caching
+  - Fixed a bug where MoveNode actions sometimes was in the wrong order
+  - Added an InsertComment action, as comments require different handling,
+    so it's easier to deal with them this way. You can still use DeleteNode and
+    UpdateTextIn for them with no special handling.
+  - When renaming tags the XMLFormatter will mark them with &quot;diff:rename&quot;
+    instead of making a new tag and deleting the old.
+  - Tags will now be moved first, and updated and renamed later, as the new
+    tag name or attributes might not be valid in the old location.
+  - Changed the substitution unicode character area to use the Private Use Area
+    in BMP(0), to support narrow Python builds
+  - Added --unique-attributes argument.
+  - A workaround for dealing with top level comments and the xml formatter
+  - Added a simple ``xmlpatch`` command and API.
+  - Multiple updates to documentation and code style
+- deleted patches
+  - xmldiff-0.6.7-clean-tmp.patch (not needed)</comment>
+    <requestid>697133</requestid>
+  </revision>
+</revisionlist>

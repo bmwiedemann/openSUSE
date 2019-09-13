@@ -1,0 +1,226 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db114ef1168c654521e3906d42e98ec7</srcmd5>
+    <version>3.3.0</version>
+    <time>1534322231</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.0:
+  * Version 3.3.0
+  * Fix GhPages: show .screenshot on the site
+  * Add screenshot
+  * Rename desktop file and icons to reverse DNS style
+  * Update README.md
+  * RPM packages for openSUSE in science repo now
+  * Initial implementation for DoubleOpenGL30Plan
+  * Initial implementation for FloatOpenGL30Plan
+  * Add initial implementation for Int32OpenGL30Plan
+  * Initial implementation for Int16OpenGL30Plan
+  * Add initial implementation for Uint8OpenGL30Plan
+  * Introduce AbstractOpenGLPlanTexture template class
+  * Rename *OpenGL33Plan: *-opengl3 to *-opengl3.3
+  * Add const qualifier to AbstractOpenGLPlane::*ShaderSourceCode()
+  * Drop QObject from AbstractOpenGLPlan
+  * Add support of BITPIX=-64
+  * BITPIX=-32 for OpenGL 3.3
+  * BITPIX=64 for OpenGL 3.3
+  * BITPIX=32 for OpenGL 3.3
+  * BITPIX=16 support for OpenGL 3.3
+  * BITPIX=8 for openGL &gt;= 3.3
+  * Use HTML &amp;copy; instead of unicode symbol
+  * Make home page URL clickable
+  * Add using OpenGLPlan name to the About dialog
+  * Add Qt version to the About dialog
+  * Add fips version to the About dialog
+  * Reimplement AbstractOpenGLPlan::draw() both for VAO supported and unsupported cases
+  * Add initial implementation for AbstractOpenGLPlan::draw()
+  * Drop unused signals from OpenGLPlane
+  * Do not set OpenGL 3.0 and OpenGL 2.1 flags for OpenGL 3.3
+  * Set XDG_PREFIX according to CMAKE_INSTALL_PREFIX
+  * Drop XDG_DATA_DIRS from find_path XDG_PREFIX
+  * Return number of opened files from openFile()
+  * Add Qt version status message for CMakeLists.txt
+  * Update .travis.yml
+  * Drop unused #include &lt;QDebug&gt;
+  * Fix uninitialized variable in OpenGLFeatures
+  * Use OpenGLPlanFactory in OpenGLWidget
+  * Add initial implementation for OpenGLPlanFactory
+  * Add initial implementation for resolveOpenGLPlan
+  * Add initial implementation for *OpenGLPlan::satisfied()
+  * Add initial implementation for OpenGLFeatures and OpenGLRequiredFeatures
+  * Reword OpenGL context version requirement
+  * Move hduMinMax() and insturmentalMinMax() from OpenGLTexture to OpenGLPlan
+  * Add initial implementation AbstractOpenGLPlan::initialize()
+  * Add initial implementation for OpenGLWidget::PlanInitializationError
+  * Move OpenGLPlane to AbstractOpenGLPlan
+  * Move OpenGLTexture to AbstractOpenGLPlan
+  * Add initial implementation for AbstractOpenGLPlan::vertexShaderSourceCode()
+  * Add initial implementation for AbstractOpenGLPlan::fragmentShaderSourceCode()
+  * Add initial implementation for OpenGLWidget::PlanCreationError
+  * Add implementation for AbstractOpenGLPlan::name()
+  * Add initial implementation for AbstractOpenGLPlan
+  * Add GitHub PR template
+  * Drop redundant texture unbinding
+  * Add setMVPUniform(), setCUniform(), setZUniform() helpers for OpenGLShaderProgram
+  * Drop redundant texture binding from initializeGLObjects()
+  * Refactor OpenGLTexture
+  * Add implementation for FITSToInstrumental() and InstrumentalToFITS()
+  * Add implementation for AbstractHeaderDataUnit::apply()
+  * Refactor FITS::HeaderDataUnit
+  * Refactor FITS::AbstractDataUnit hierarchy
+  * Refactor FITS::HeaderUnit
+  * Simplify DataUnitCreateHelper
+  * Allow returning data from FITS::AbstractDataUnit::bitpixToType()
+  * Drop extra setAttributeArray from paintGL()
+  * Move uv_data to OpenGLPlane
+  * Add initial implementation for OpenGLShaderProgram
+  * Reimplement OpenGLWidget::initializeGLObjects::ShaderLoader to return shader string directly
+  * Add support for returning data from AbstractDataUnit::apply() function
+  * Add initial implementation for Utils::Result&lt;&gt;
+- Update to version 3.2.3:
+  * Version 3.2.3
+  * Fix ScientificSpinBox text edition
+  * Wrap in initializeGLObjects in setHDU by {make,done}Current()
+  * Fix issue with level spin boxes for small absolute values
+  * Fix MacOS build
+- Update to version 3.2.2:
+  * Fix WidgetToFitsOpenGLTransform in vertical direction
+  * Verson 3.2.2
+- Update to version 3.2.1:
+  * Remove dock widget shortcuts
+  * Redo TestOpenGLPlane
+  * Version 3.2.1
+- Update to version 3.2.0:
+  * Editorial changes in README.md
+  * Initial implementation of scientific spin boxes
+  * Update README.md
+  * Use locale settings for spin box text
+  * Override &quot;step by&quot; logic for scientific spin box
+  * Set linear step for ScientificSpinBox
+  * Changes for @matwey's review
+  * Use raw pointers for spinbox_ and slider_
+  * Use raw pointers for min_level_ and max_level_
+  * Use raw pointers for button_group_
+  * Do deploy not only from master
+  * Add clang 4 to .travis.yml
+  * Put Utils::row_align into separate module
+  * Reimplement Utils::row_align in a platform-independ way
+  * Put byte swapping routines to separate module
+  * Fix MS Visual Studio build
+  * Drop cmake target INSTALL from .appveyor.yml
+  * Add document icon and include it into macOS bundle
+  * Set binary git attribute for icon files
+  * Use mouse wheel for zoom in and zoom out
+  * Prototypes of refresh and open in window actions
+  * Use right macOS bundle location
+  * Refactor OpenGLWidget
+  * Reimplement FITS replacement via texture reloading
+  * Use Release build type for Linux in .travis.yml
+  * Use -Wall in .travis.yml
+  * Fix -Wsign-compare in src/colormapwidget.cpp
+  * Let compilers be extra verbose and pedantic
+  * Fix extra ';'
+  * Fix unused parameter 'pos' in src/levelswidget.cpp
+  * Move Exception to Utils::Exception
+  * Implement Utils::Optional&lt;T&gt;
+  * Initial implementation of status bar
+  * Align text in status bar
+  * Add autorefresh
+  * Return missed window title
+  * Do not use VBO for vertex and UV data
+  * Move spinbox classes to separate files
+  * Add rotation dock widget
+  * Add initial implementation for AbstractOpenGLTransform
+  * Add initial implementation for OpenGLTransform and WidgetToFitsOpenGLTransform
+  * Use OpenGLTransform in OpenGLWidget
+  * Add initial implementation for OpenGLPlane
+  * Update to MacOS 10.11
+  * Use OpenGLPlane instead of VertexCoordinates
+  * Drop class OpenGLWidget::VertexCoordinates
+  * Fix OpenGLPlane::planeRect()
+  * Fix Fit to Window for rotated image
+  * Initial implementation of level buttons
+  * Replace strange button with cool check box
+  * Add unit test for OpenGLPlane
+  * Add unit test for WidgetToFitsOpenGLTransform
+  * Use QTEST_GUILESS_MAIN instead of QTEST_MAIN
+  * Drop unused #include &lt;QDebug&gt;
+  * Fix const type qualifier on return type has no effect
+  * Fix initialization order warning in rotationwidget
+  * Fix unused parameter 'pos' warning
+  * Fix unused parameter 'max' warning
+  * Fix signed/unsigned comparison mismatch warning
+  * Hold viewrect center during rotation
+  * Initial implementation for FlipWidget
+  * Initial implementation of flipping
+  * Hold viewrect center while flipping
+  * Bump CMakeLists.txt version to 3.2.0
+- Update to version 3.1.1:
+  + Fix issue with row alignment
+  + Version 3.1.1
+- Version 3.1.0
+- Update to version 3.1.0:
+  * Deploy .dmg to GitHub Releases
+  * Use correct directive WORKING_DIRECTORY instead of WORKING_DIR
+  * Add Copyrigth info in appropriate places
+  * Windows: prepare installers using NSIS
+  * Add artifact deployment for appveyor
+- Update to version 3.0.0+git20170818.4c649ce:
+  * Show file selection dialog when opened without arguments
+  * Add initial .appveyor.yml
+  * Add Appveyor badge to README.md
+  * Allow building fips for all platforms
+  * Use MSVS specific byte-swapping routines
+  * Define vbo_data[] as const GLfloat
+  * Add Debug and Release build targets to .appveyor.yml
+  * Emit pixelViewrectChanged (e.g. update bars) before redraw image
+  * Add initial implementation for Application
+  * Move startup logic to Application
+  * Initial implementation for Instance
+  * Create DMG via CPack
+  * Add supported file types to Info.plist
+  * Remove GLSL version specifier
+  * Add file-&gt;open action
+  * Fix QT URL in README.md
+  * Check required Qt5 version in CMakeLists.txt
+  * Use tabs instead of spaces in CMakeLists.txt
+  * Allow multiple positional arguments in command line
+  * Fix fit to window (again)
+  * Adapt GLSL code to OpenGL ES
+  * Drop setRenderableType(QSurfaceFormat::OpenGLES)
+  * Add License to DMG
+  * Add support of MacOS native file open event
+  * Show file dialog on Mac on startup only if there are no files to look at
+  * Add new menu bar actions
+  * Add icon fot unpacked DMG
+  * Use default package name
+  * Implement color maps via 1D textures
+  * Add gradient.fits test file
+  * Move color value adjustment from shaders to OpenGLShaderUniforms
+- Update to version 3.0.0+git20170811.1d6ec33:
+  * Return minimum and maximum values on big endian platform
+  * Use correct initialization order in Visitor
+- Update to version 3.0.0+git20170811.6bfa07d:
+  * Create LICENSE
+  * Add level sliders (#14)
+  * Do not swap bytes on big-endian systems
+  * Add Palette Switcher (#15)
+  * Add README.md
+  * Set theme jekyll-theme-cayman
+  * Create CNAME
+  * Merge branch 'zoom' into master
+  * Support of MacOS .app and .dmg building
+  * Add version into Info.plist
+  * Overwrite existing .dmg
+- Initial version
+</comment>
+    <requestid>629022</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ed0932e0507db1ada3a89f2c22963cf3</srcmd5>
+    <version>3.3.1</version>
+    <time>1552299325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683052</requestid>
+  </revision>
+</revisionlist>

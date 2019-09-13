@@ -1,0 +1,12 @@
+<package name="openslp" project="openSUSE:Factory">
+  <title>An OpenSLP Implementation of Service Location Protocol V2</title>
+  <description>Service Location Protocol is an IETF standards track protocol that
+provides a framework that allows networking applications to discover
+the existence, location, and configuration of networked services in
+enterprise networks.
+
+OpenSLP is an open source implementation of the SLPv2 protocol as
+defined by RFC 2608 and RFC 2614.  This package includes the slptool
+and runtime libraries.</description>
+  <devel project="network:utilities" package="openslp"/>
+</package>

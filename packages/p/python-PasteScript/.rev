@@ -1,0 +1,128 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a921395da2215bb6331ca5aaaad0c4ff</srcmd5>
+    <version>1.7.4.2</version>
+    <time>1323176007</time>
+    <user>coolo</user>
+    <comment>Dependency for OpenStack packages.</comment>
+    <requestid>93444</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fe6a908eabe46810325ca99a6b5edccc</srcmd5>
+    <version>1.7.4.2</version>
+    <time>1323194219</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>582bc6eda68614e3a2343111b714c0be</srcmd5>
+    <version>1.7.5</version>
+    <time>1328202000</time>
+    <user>coolo</user>
+    <comment>- Remove wrongly installed tests
+- Update to version 1.7.5:
+  * Import CherryPy directly instead of including its server inline
+    in the paste.script package. You must install CherryPy before
+    using egg:PasteScript#cherrypy</comment>
+    <requestid>102355</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c38081a7547e597ef61148d71cf6f5b5</srcmd5>
+    <version>1.7.5</version>
+    <time>1331124295</time>
+    <user>coolo</user>
+    <comment>did only build it, not test it. (forwarded request 108155 from bmwiedemann)</comment>
+    <requestid>108157</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>c38081a7547e597ef61148d71cf6f5b5</srcmd5>
+    <version>1.7.5</version>
+    <time>1340184031</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>97cfdfa6b6d863e2ca398181980ecc81</srcmd5>
+    <version>1.7.5</version>
+    <time>1340726235</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126123</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>97cfdfa6b6d863e2ca398181980ecc81</srcmd5>
+    <version>1.7.5</version>
+    <time>1359109982</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>97cfdfa6b6d863e2ca398181980ecc81</srcmd5>
+    <version>1.7.5</version>
+    <time>1379664110</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>2cf53e9e2fef860c87049c4307337b97</srcmd5>
+    <version>1.7.5</version>
+    <time>1382693148</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204613</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>2cf53e9e2fef860c87049c4307337b97</srcmd5>
+    <version>1.7.5</version>
+    <time>1409302798</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e04634ecaf0e7742792a009c465bb9e5</srcmd5>
+    <version>2.0.2</version>
+    <time>1495011055</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493093</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>25650c0e7c36fe002205d16d44dd8d78</srcmd5>
+    <version>2.0.2</version>
+    <time>1535123055</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency on unittest2
+    Add remove_unittest2.patch to facilitate that</comment>
+    <requestid>629057</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8d4919f5c02a18565d7d50eb17538511</srcmd5>
+    <version>3.0.0</version>
+    <time>1551883787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * Moved to `GitHub &lt;https://github.com/cdent/pastescript&gt;`_.
+  * Put into maintenance mode, meaning: critical bugs will be fixed,
+    and support for new versions of Python will be handled, but new
+    features are not being considered.
+- Make sure we execute tests</comment>
+    <requestid>681897</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ea66f49771a680f66631fe44c83b5cab</srcmd5>
+    <version>3.0.0</version>
+    <time>1552039358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682350</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f82938325508633d83ba6d7c1fbb5251</srcmd5>
+    <version>3.1.0</version>
+    <time>1552380803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * merge patch remove_unittest2.patch</comment>
+    <requestid>682770</requestid>
+  </revision>
+</revisionlist>

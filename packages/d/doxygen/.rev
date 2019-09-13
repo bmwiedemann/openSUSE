@@ -1,0 +1,843 @@
+<revisionlist>
+  <revision rev="1" vrev="10">
+    <srcmd5>b7ef225488d7411209a6e91b6ff81779</srcmd5>
+    <version>1.5.0</version>
+    <time>1168902637</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8dbe006b0ce31cf5ad102232255db263</srcmd5>
+    <version>1.5.1</version>
+    <time>1170804443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="8">
+    <srcmd5>c1c561d480a613beb14f5bbe37d1f345</srcmd5>
+    <version>1.5.1</version>
+    <time>1175169513</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cf9d6e49eae90e60e9bb9688a5bfc68a</srcmd5>
+    <version>1.5.2</version>
+    <time>1175812577</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2ad331bbeac5787d2d1d881be0637610</srcmd5>
+    <version>1.5.2</version>
+    <time>1176390844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>252a520492d8e479891601b00dcc32d2</srcmd5>
+    <version>1.5.3</version>
+    <time>1185534228</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e6b94128cda823a6694d02036e361682</srcmd5>
+    <version>1.5.4</version>
+    <time>1193845930</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1341360c4e8830e176aa653ef234d67b</srcmd5>
+    <version>1.5.5</version>
+    <time>1204160054</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>91729bc08ec5ed4483c1332d98ef038e</srcmd5>
+    <version>1.5.6</version>
+    <time>1216412673</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>feee25de7cfc422eeabd4e3f339f2154</srcmd5>
+    <version>1.5.8</version>
+    <time>1231868536</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6d2ec745636593914b10ac6816379195</srcmd5>
+    <version>1.5.8</version>
+    <time>1234178956</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>aa66b9875867f89a37399160a1b6ab4d</srcmd5>
+    <version>1.5.9</version>
+    <time>1241627864</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>51587c677100d1488deaf7ad4834cd63</srcmd5>
+    <version>1.5.9</version>
+    <time>1246633085</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>51587c677100d1488deaf7ad4834cd63</srcmd5>
+    <version>1.5.9</version>
+    <time>1246633085</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e5de738d3f33635a79e5ed199565803a</srcmd5>
+    <version>1.6.2</version>
+    <time>1262968201</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/doxygen based on submit request 28036 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3962880700c6dffa1ed413ad022ba441</srcmd5>
+    <version>1.6.3</version>
+    <time>1266973228</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/doxygen based on submit request 33026 from user mseben
+</comment>
+    <requestid>33026</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>432c8574fc7f0699be77b09a5cd893a8</srcmd5>
+    <version>1.6.3</version>
+    <time>1268923396</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>432c8574fc7f0699be77b09a5cd893a8</srcmd5>
+    <version>1.6.3</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>432c8574fc7f0699be77b09a5cd893a8</srcmd5>
+    <version>1.6.3</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>99167d22b0dd460d48982b1ef83f986b</srcmd5>
+    <version>1.7.1</version>
+    <time>1280486503</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/doxygen based on submit request 44230 from user coolo
+</comment>
+    <requestid>44230</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>a4dad573439e0823867ed05ff9964759</srcmd5>
+    <version>1.7.1</version>
+    <time>1280841424</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/doxygen based on submit request 44356 from user coolo
+</comment>
+    <requestid>44356</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>274a76ea742cf1323564741ae35a8aba</srcmd5>
+    <version>1.7.1</version>
+    <time>1285278790</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/doxygen based on submit request 48976 from user coolo
+</comment>
+    <requestid>48976</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>69aff1a37966a404b6dcdf00181a524b</srcmd5>
+    <version>1.7.2</version>
+    <time>1286808431</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/doxygen based on submit request 50219 from user pgajdos
+</comment>
+    <requestid>50219</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>af3f8defd75963c98909152b453fb0e4</srcmd5>
+    <version>1.7.2</version>
+    <time>1289838496</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53053 from user pgajdos
+</comment>
+    <requestid>53053</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>30a8ddd053d5f59266fbaace828c6dd2</srcmd5>
+    <version>1.7.2</version>
+    <time>1289838507</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53053
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d78375d59d3e6d42064c57c6dd567930</srcmd5>
+    <version>1.7.3</version>
+    <time>1294652255</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57580 from user msmeissn
+</comment>
+    <requestid>57580</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>63ed72dcb6728ac395af590451f0ba6b</srcmd5>
+    <version>1.7.3</version>
+    <time>1294652265</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57580
+</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>63ed72dcb6728ac395af590451f0ba6b</srcmd5>
+    <version>1.7.3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9a4cb5b6ad7a0270f6aa32f8e9e0a061</srcmd5>
+    <version>1.7.4</version>
+    <time>1301469520</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65378 from user coolo
+</comment>
+    <requestid>65378</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>1130cff954dbd3afc411f0a760f9a315</srcmd5>
+    <version>1.7.4</version>
+    <time>1301469527</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65378
+</comment>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>1eceffb48ce15c57babf2d844730d651</srcmd5>
+    <version>1.7.4</version>
+    <time>1311775368</time>
+    <user>saschpe</user>
+    <comment>- remove explicit dependency on libdrm-devel (forwarded request 77184 from dirkmueller)</comment>
+    <requestid>77207</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>c416d7ff48877e3a97f638f893867033</srcmd5>
+    <version>1.7.4</version>
+    <time>1311775384</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77207
+</comment>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>4325d6a84b95ca679a9827601369e49c</srcmd5>
+    <version>1.7.5</version>
+    <time>1313410356</time>
+    <user>saschpe</user>
+    <comment>- update to 1.7.5:
+  * id 641904: Function in the call graphs are now shown based on first 
+    appearance rather then alphabetical order.                      
+  * id 616213: When customizing the HTML header $title now only generates 
+    the title excluding the project name (which can still be      
+    added using $projectname)                                                                                                           
+  * Improved the look of the class index: all items now have equal spacing.
+  * New option INTERACTIVE_SVG which when set to YES in combination with 
+    DOT_IMAGE_FORMAT=svg will make doxygen generate interactive SVG 
+    diagrams that support zooming and panning via the mouse (only for 
+    large graphs).                                                
+  * Added support for the Tcl programming language (thanks to Rene Zaumseil
+    and Samuel Bentley for the patch).                          
+  * Added @copyright command.                                                                                                           
+  * added option MATHJAX_EXTENSIONS to provide additional extensions for 
+    MathJax (thanks to David Munger for the patch).                
+  * added option INLINE_SIMPLE_STRUCTS which when enabled shows the fields 
+    of simple classes and structs (with only public data fields) as a table 
+    and inline in context (file/group/namespace/class) 
+    provided this context is documented.                          
+  * When using the server based search engine (SEARCHENGINE=YES and 
+    SERVER_BASED_SEARCH=YES) doxygen now advertises a opensearch provider 
+    for your project, that allows integrating the search directly in the 
+    search field of the browser (thanks to Phil Lello for the patch). 
+  * id 503239: Added new option CITE_BIB_FILES and LATEX_BIB_STYLE and a new 
+    command \cite, allowing you to make references to literature (as defined 
+    in one or more .bib files). This also works for output formats other 
+    than LaTeX. The tool bibtex is required for this to work though. Thanks 
+    to David Munger for the initial patch upon which this feature is based.                    
+  * PHP namespaces are now shown as A\B in the output.</comment>
+    <requestid>78862</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>3d5ffc305c5366a7b305bc5dba42df25</srcmd5>
+    <version>1.7.5</version>
+    <time>1313410365</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78862
+</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>adabdd370f9f760d501ce03f1e670eb9</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1314018996</time>
+    <user>saschpe</user>
+    <comment>- update to 1.7.5.1:
+  * A bug that could cause doxygen to crash on large projects was 
+    fixed.</comment>
+    <requestid>79478</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>4e86c9dc0b9a892aee4cab0ed89c49b1</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1317542253</time>
+    <user>lrupp</user>
+    <comment>- remove arm specific patch that broke building on arm
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build</comment>
+    <requestid>85814</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>4e86c9dc0b9a892aee4cab0ed89c49b1</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1319181855</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>90abc1f2c1c15ba72ee790d873bcf652</srcmd5>
+    <version>1.7.6.1</version>
+    <time>1323869593</time>
+    <user>coolo</user>
+    <comment>- updated to 1.7.6.1:
+   * Doxygen now reports its cache usage (for the symbol and the 
+     lookup cache) at the end of a run (if QUIET=NO), and 
+     recommends settings for SYMBOL_CACHE_SIZE and 
+     LOOKUP_CACHE_SIZE for your project if either cache is too 
+     small. 
+   * Added new option LOOKUP_CACHE_SIZE to control the internal 
+     cache doxygen uses to find symbols given their name and 
+     a context. 
+   * Python: added support for @staticmethod.
+   * Python: scopes are now shown with . instead of :: 
+   * id 665313: Space before @if was not preserved, causing 
+     problems with inline @if .. @endif constructs.
+   * id 665583: Fixed XHTML validity problem when using mscgen 
+     graphs. 
+   * id 665641: Fixed XHTML validity problem when 
+     GENERATE_TREEVIEW was disabled. 
+   * id 665720: Included patch to fix hang issue when non-empty 
+     INCLUDE_PATH was used.
+   * id 665778: Fixed parse issue when a comma appeared as part 
+     of an enum's value. 
+
+- updated to 1.7.6:
+   * To improve the performance of loading the navigation tree, 
+     the data is now split into multiple javascript files which 
+     are loaded dynamically.
+   * The selected member is now briefly highlighted in the HTML 
+     output (when GENERATE_TREEVIEW is enabled).
+   * The navigation tree (GENERATE_TREEVIEW) now shows the same 
+     information as the index.</comment>
+    <requestid>96323</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9fad2072730df86abd1c00e43f212ef3</srcmd5>
+    <version>1.8.0</version>
+    <time>1330434748</time>
+    <user>coolo</user>
+    <comment>- updated to 1.8.0:
+  * Auto list items can now consist of multiple paragraphs.
+  * When UML_LOOK is enabled, relations shown on the edge of a 
+    graph are not shown as attributes.
+  * Updated the manual and improved the look.
+  * Latex: made the margins of latex page layout smaller using the 
+    geometry package.
+  * etc., see http://www.stack.nl/~dimitri/doxygen/changelog.html
+
+- updated to 1.8.0:
+  * Auto list items can now consist of multiple paragraphs.
+  * When UML_LOOK is enabled, relations shown on the edge of a 
+    graph are not shown as attributes.
+  * Updated the manual and improved the look.
+  * Latex: made the margins of latex page layout smaller using the 
+    geometry package.
+  * etc., see http://www.stack.nl/~dimitri/doxygen/changelog.html</comment>
+    <requestid>107137</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>bf3aa4a5ce366cf9e0bcb572b22d6c0f</srcmd5>
+    <version>1.8.0svn20120416</version>
+    <time>1334692669</time>
+    <user>coolo</user>
+    <comment>- updated to 1.8.0svn20120416:
+  * fixed crash [bnc#755402]
+
+- updated to 1.8.0svn20120416:
+  * fixed crash [bnc#755402]
+
+- removing unneeded warnings.patch</comment>
+    <requestid>113917</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>88ec168619ba2b5e8c4d06724cce49b2</srcmd5>
+    <version>1.8.1</version>
+    <time>1338476593</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122679</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>0b7dbdc4f025f1b90e4fe86fdbc84c0a</srcmd5>
+    <version>1.8.1</version>
+    <time>1338991586</time>
+    <user>coolo</user>
+    <comment>- 1.8.1 generates man page names uncondidionally lowercase which
+  causes problem for lapack build for example; reverting one hunk 
+  of fix for
+  https://bugzilla.gnome.org/show_bug.cgi?id=674563
+  as workaround
+  * no-lowercase-man-names.patch</comment>
+    <requestid>123485</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>0b7dbdc4f025f1b90e4fe86fdbc84c0a</srcmd5>
+    <version>1.8.1</version>
+    <time>1340183290</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>50bbb8416c5ca7786966ff0372ddb96e</srcmd5>
+    <version>1.8.1.2</version>
+    <time>1342171856</time>
+    <user>namtrac</user>
+    <comment>- updated to 1.8.1.2:
+  changes
+  * doxygen now strips the leading indentation shared by the lines 
+    in a @code..@endcode block. 
+  * id 678218: Changed title of the SVG graphs from 'G' to the root 
+    node of the graph. 
+  * Integrated the root navigation tree in navtree.js for faster 
+    loading
+  * When the navigation tree is enabled, clicking jump to a line 
+    in the source code view will now highlight the line. 
+  features
+  * Added button in the navigation tree to allow enabling/disabling 
+    syncing the navigation tree with the content.
+  * Extended the number of HTML entities with Greek letters and 
+    other symbols (thanks to Charles Karney for the patch).
+  * id 663645: Added support for C++11 strongly typed enums (enum 
+    class E { ... }). 
+  * VHDL code now has a new Design Overview page (thanks for 
+    Martin Kreis for the patch). Requires HAVE_DOT=YES, and 
+    DOT_IMAGE_FORMAT=svg.
+  * id 677678: Added support for strong and weak attributes in 
+    Objective-C properties. 
+  * bugfixes
+- for details see http://www.stack.nl/~dimitri/doxygen/changelog.html
+
+- updated to 1.8.1.2:
+  changes
+  * doxygen now strips the leading indentation shared by the lines
+    in a @code..@endcode block.
+  * id 678218: Changed title of the SVG graphs from 'G' to the root</comment>
+    <requestid>127814</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>dd6e8e3755de56dc82b4a5315b3f81c3</srcmd5>
+    <version>1.8.2</version>
+    <time>1347882834</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134069</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>dd6e8e3755de56dc82b4a5315b3f81c3</srcmd5>
+    <version>1.8.2</version>
+    <time>1359108825</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c8b2ede5db1daa090b1669e3b16106be</srcmd5>
+    <version>1.8.3.1</version>
+    <time>1362736154</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157772</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>888e0b586389b8bc5a761fce46b54cbe</srcmd5>
+    <version>1.8.3.1</version>
+    <time>1364308215</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161103 from m_meister)</comment>
+    <requestid>161105</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0b90f4f26808834d22c588998ae9bb88</srcmd5>
+    <version>1.8.4</version>
+    <time>1372428162</time>
+    <user>coolo</user>
+    <comment>- updated to 1.8.4:
+  * id 686384: When INLINE_SIMPLE_STRUCTS is enabled, also structs
+    with simple typedefs will be inlined.
+  * Doxywizard: scrolling with mouse wheel no longer affects the
+    values in the expert view.
+  * id 681733: More consistent warnings and errors.
+  * Added support for &quot;clang assisted parsing&quot;, which allows the
+    code to also be parsed via libclang (C/C++ frontend of LLVM)
+    and can improve the quality of the syntax highting,
+    cross-references, and call graphs, especially for template
+    heavy C++ code. To enable this feature you have to configure
+    doxygen with the --with-libclang option. Then you get two new
+    configuration options: CLANG_ASSISTED_PARSING to enable or
+    disable parsing via clang and CLANG_OPTIONS to pass additional
+    compiler options needed to compile the files. Note that
+    enabling this feature has a significant performance penality.
+  * Included patch donated by Intel which adds Docbook support.
+    This can be enabled via GENERATE_DOCBOOK and the output
+    location can be controlled using DOCBOOK_OUTPUT. Docbook
+    specific sections can be added using
+    \docbookonly ... \enddocbookonly
+  * Added support for UNO IDL (interace language used in
+    Open/Libre Office), thanks to Michael Stahl for the patch.
+  * Included patch by Adrian Negreanu which stores data gathered
+    by doxygen in a sqlite3 database. Currently still work in
+    progress and can only be enabled using --with-sqlite3 during
+    ./configure.
+  * For interactive SVG graphs, edges are now highlighted when
+    hovered by the mouse.
+  * Include patch by Adrian Negreanu to show duration statistics</comment>
+    <requestid>180989</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>5c4358e3ed0d67822a7ba4aacd32a1f5</srcmd5>
+    <version>1.8.4</version>
+    <time>1372925293</time>
+    <user>coolo</user>
+    <comment>- upstream patch to fix endless loop
+  doxygen-1.4.8-endless-loop.patch (forwarded request 181899 from k0da)</comment>
+    <requestid>181905</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>ec9f6884a9ca085a4c4676e9dd0767b8</srcmd5>
+    <version>1.8.5</version>
+    <time>1377855379</time>
+    <user>coolo</user>
+    <comment>- updated to 1.8.5:
+  * Added SOURCE_TOOLTIPS option for advanced tooltip support while 
+    source browsing. 
+  * bugfixes
+- removed upstreamed endless-loop.patch
+
+- updated to 1.8.5:
+  * Added SOURCE_TOOLTIPS option for advanced tooltip support while
+    source browsing.
+  * bugfixes</comment>
+    <requestid>196359</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>ec9f6884a9ca085a4c4676e9dd0767b8</srcmd5>
+    <version>1.8.5</version>
+    <time>1379662251</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>cd0f013f3679f174e464a4e329220205</srcmd5>
+    <version>1.8.6</version>
+    <time>1388757431</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 1.8.6:
+  * many bugfixes and features, see
+    http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+    for details
+
+- updated to 1.8.6:
+  * many bugfixes and features, see
+    http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+    for details</comment>
+    <requestid>212710</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>095687f44d38d2eb8bcfffdbf2980020</srcmd5>
+    <version>1.8.7</version>
+    <time>1400742269</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234799</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>1bd8e160039d8b2c4b229bec83213471</srcmd5>
+    <version>1.8.7</version>
+    <time>1400850031</time>
+    <user>coolo</user>
+    <comment>- Don't disable optimisation (forwarded request 235075 from Andreas_Schwab)</comment>
+    <requestid>235107</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>1bd8e160039d8b2c4b229bec83213471</srcmd5>
+    <version>1.8.7</version>
+    <time>1409300786</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>912dff26ef607dc05587756ee002387f</srcmd5>
+    <version>1.8.8</version>
+    <time>1409761281</time>
+    <user>coolo</user>
+    <comment>Doxygen 1.8.8 (forwarded request 246757 from AndreasStieger)</comment>
+    <requestid>246780</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>4a68a1d12f572604bbd932210e08c9de</srcmd5>
+    <version>1.8.9.1</version>
+    <time>1423595755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.9.1:
+  * bugfix releas, see
+    http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+    for details
+
+- Update to 1.8.9.1:
+  * bugfix releas, see
+    http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+    for details (forwarded request 284270 from pluskalm)</comment>
+    <requestid>284273</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>bbac85efd358a75de225af308ae1b86b</srcmd5>
+    <version>1.8.9.1</version>
+    <time>1425565976</time>
+    <user>dimstar_suse</user>
+    <comment>- remove doxygen-html.sh
+
+- Cleanup spec file with spec-cleaner
+- Split documentation to separate package
+- Do not bundle pdf documentation
+- Generate html documentation
+
+- Cleanup spec file with spec-cleaner
+- Enable tests</comment>
+    <requestid>288503</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>6756484fe1fabccb336a2e20a0d53673</srcmd5>
+    <version>1.8.10</version>
+    <time>1441822803</time>
+    <user>dimstar_suse</user>
+    <comment>- Move checks to doxywizard package to avoid build cycle
+
+- Set proper minimal cmake version required
+- Use system stack for cmake params and obey cflags
+- Add patch to build required static libs:
+  * doxygen-no-shared-libs.patch
+- Refresh patch:
+  * doxygen-no-lowercase-man-names.patch
+- Add patch to avoid no-return-in-nonvoid function error:
+  * vhdlparser-no-return.patch
+
+- updated to 1.8.10
+  * Change the build system to use cmake.
+  * Add support for basic XML syntax highlighting
+  * Added documentation for ``` style fenced code block and more 
+    robust parsing
+  * Added function arguments to the LaTeX toc
+  * Added support for language codes
+  * etc. see http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+- removed unneded patches:
+  - doxygen-1.5.9-64archs.patch
+  - doxygen-1.5.9-man.patch
+  - doxygen-1.7.0-modify_footer.patch renamed to doxygen-modify_footer.patch
+
+- Move checks to doxywizard package to avoid build cycle
+
+- Set proper minimal cmake version required
+- Use system stack for cmake params and obey cflags
+- Add patch to build required static libs:
+  * doxygen-no-shared-libs.patch</comment>
+    <requestid>329166</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>958d2baab4c07a5804aa7712ea5336a9</srcmd5>
+    <version>1.8.10</version>
+    <time>1444833292</time>
+    <user>dimstar_suse</user>
+    <comment>- work around Power8 double free or corruption [bnc#921577]
+  + doxygen-dot-one-thread.patch</comment>
+    <requestid>337359</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e13a50ee20df919e3ca6073fbb523a0b</srcmd5>
+    <version>1.8.11</version>
+    <time>1452262927</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build after update
+
+- Update to 1.8.11
+  See changelog at http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+- Update patch vhdlparser-no-return.patch
+- Remove patch doxygen-no-shared-libs.patch which is included
+  in upstream
+
+- Update to 1.8.11
+  See changelog at http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+- Update patch vhdlparser-no-return.patch
+- Remove patch doxygen-no-shared-libs.patch which is included
+  in upstream
+
+- fix build after update
+
+- Update to 1.8.11
+  See changelog at http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+- Update patch vhdlparser-no-return.patch
+- Remove patch doxygen-no-shared-libs.patch which is included
+  in upstream</comment>
+    <requestid>352005</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>4f2e7194ebbb9f807a870fd70c9de659</srcmd5>
+    <version>1.8.11</version>
+    <time>1456821360</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360675</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>4c91c47d146fd2c871d8bc7439912dbe</srcmd5>
+    <version>1.8.11</version>
+    <time>1461855122</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build: added texlive-wasy2-ps to buildrequires
+
+- same work around ppc64 as already done for ppc64le [boo#921577]</comment>
+    <requestid>391653</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>7956650addd28461f140122edb912af8</srcmd5>
+    <version>1.8.12</version>
+    <time>1473409215</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425168</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>bfa4d785c770d8283dac02a7da822b57</srcmd5>
+    <version>1.8.12</version>
+    <time>1480785923</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix: Add missing jquery.js, dynsections.js &amp; optional
+ svgpan.js to QCH file [bsc#1011331]
+ + doxygen-fix-QCH-files.patch</comment>
+    <requestid>442823</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>32bc1c77fe2ec47a7ad8780577b7a73c</srcmd5>
+    <version>1.8.12</version>
+    <time>1485597784</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 452170 from StefanBruens)</comment>
+    <requestid>452172</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>45eb50984e2c846adaf85e8d2fb2db58</srcmd5>
+    <version>1.8.13</version>
+    <time>1487680629</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459321</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>c5b59b829b7a442a6773de13b2d67521</srcmd5>
+    <version>1.8.13</version>
+    <time>1487979982</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459628</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>a788f3cabf13a0d0475e85441b3b6682</srcmd5>
+    <version>1.8.13</version>
+    <time>1498201985</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500696</requestid>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>7872b8d349b7cb51b96d36d0f5a58407</srcmd5>
+    <version>1.8.13</version>
+    <time>1510665517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update licensing information
+
+- Explicitly require python2 for building
+- Use more cmake macros
+- Run spec-cleaner
+
+- Update licensing information
+
+- Explicitly require python2 for building
+- Use more cmake macros
+- Run spec-cleaner
+
+- Update licensing information
+
+- Explicitly require python2 for building
+- Use more cmake macros
+- Run spec-cleaner</comment>
+    <requestid>540494</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>c0ac3219d6839203a484080f6f077917</srcmd5>
+    <version>1.8.14</version>
+    <time>1515505031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561876</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>8ed49c95f9d1345f5948ec37d3af0248</srcmd5>
+    <version>1.8.14</version>
+    <time>1530740881</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with qt 5.11
+  + doxywizard-qt-5.11.patch</comment>
+    <requestid>617747</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>f3020736970692d9852c9829cac092bd</srcmd5>
+    <version>1.8.15</version>
+    <time>1547554583</time>
+    <user>dimstar_suse</user>
+    <comment>- add doxygen-latex-makeindex.patch to fix build of libssh and
+  cmocka [https://github.com/doxygen/doxygen/issues/6725]
+- add doxygen-empty-strings-segfault.patch to fix build of ldb
+  [https://github.com/doxygen/doxygen/pull/6751]
+
+- fix url and source url
+
+- Update to 1.8.15:
+  * Another year, another lengthy set of fixes
+    http://www.doxygen.nl/manual/changelog.html#log_1_8_15
+- Removed res2cc_sort_resources.diff (issue fixed upstream)
+
+- remove upstreamed doxywizard-qt-5.11.patch
+
+- fix url and source url
+
+- Update to 1.8.15:
+  * Another year, another lengthy set of development changes:
+    http://www.doxygen.nl/manual/changelog.html#log_1_8_15</comment>
+    <requestid>664565</requestid>
+  </revision>
+</revisionlist>

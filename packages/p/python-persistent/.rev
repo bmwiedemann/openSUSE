@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1988ea37d4a51f9d2520a4d2afe113c</srcmd5>
+    <version>4.0.6</version>
+    <time>1380112678</time>
+    <user>coolo</user>
+    <comment>This is needed by python-ZODB3, which replaces python-zodb3, as well as other zope-related packages.</comment>
+    <requestid>199915</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>97ba64ffeabdfd167a8da4586900ca83</srcmd5>
+    <version>4.0.6</version>
+    <time>1395750427</time>
+    <user>coolo</user>
+    <comment>- type-mismatch.patch: Use Py_ssize_t rather than PY_LONG_LONG for sizes (forwarded request 227350 from AndreasSchwab)</comment>
+    <requestid>227384</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>97ba64ffeabdfd167a8da4586900ca83</srcmd5>
+    <version>4.0.6</version>
+    <time>1409302942</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52d1543e47440a737037e1b469a64876</srcmd5>
+    <version>4.0.9</version>
+    <time>1431365971</time>
+    <user>coolo</user>
+    <comment>- update to version 4.0.9
+- update project URL
+- point the source URL to pypi
+- drop type-mismatch.patch: fixed upstream
+- add fix_32-bit_timestamp_hashcode.patch: fix timestamp hash computation on 32 bit platform
+- pass -q to test to avoid spamming the build log
+- rename CHANGES.txt and README.txt to CHANGES.rst and README.rst: changed upstream (forwarded request 306255 from benoit_monin)</comment>
+    <requestid>306278</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5a03a0bd01e1417a9c35772f4dc9fdc3</srcmd5>
+    <version>4.2.4.2</version>
+    <time>1500669972</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 506524 from alois)</comment>
+    <requestid>506973</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d842fd5527b27620cdcb47c91f1663c9</srcmd5>
+    <version>4.2.4.2</version>
+    <time>1533045464</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not restrict python version makes stuff very unresolvable
+
+- Clean up SPEC
+- Fix tests (persistent-4.2.4.2-switch-off-tests.patch removes failing
+  test)</comment>
+    <requestid>625379</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>501b5f8c8ed6b6271fdff077b39c1e4e</srcmd5>
+    <version>4.3.0</version>
+    <time>1534322317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.0:
+    * Fix the possibility of a rare crash in the C extension when
+      deallocating items. See
+      https://github.com/zopefoundation/persistent/issues/66
+    * Change cPickleCache's comparison of object sizes to determine
+      whether an object can go in the cache to use PyObject_TypeCheck().
+      This matches what the pure Python implementation does and is
+      a stronger test that the object really is compatible with the
+      cache. Previously, an object could potentially include
+      cPersistent_HEAD and not set tp_base to cPersistenceCAPI-&gt;pertype
+      and still be eligible for the pickle cache; that is no longer the
+      case. See https://github.com/zopefoundation/persistent/issues/69
+</comment>
+    <requestid>629251</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e45f95ae3508fd799eebcd5621a613cb</srcmd5>
+    <version>4.4.3</version>
+    <time>1551785034</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.3:
+  * Too many changes around see CHANGES.rst
+- Do not bother with documentation generating
+- Add more dependencies</comment>
+    <requestid>681469</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>57a05054007da87971ab83f68fd7aa90</srcmd5>
+    <version>4.4.3</version>
+    <time>1553263190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681733</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2fa073b76c8cc3dfe24eda52f3c59cb8</srcmd5>
+    <version>4.5.0</version>
+    <time>1558428082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704297</requestid>
+  </revision>
+</revisionlist>

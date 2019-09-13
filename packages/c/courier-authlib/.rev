@@ -1,0 +1,316 @@
+<revisionlist>
+  <revision rev="1" vrev="18">
+    <srcmd5>3e71aa4c51bf600837d92952823b3146</srcmd5>
+    <version>0.58</version>
+    <time>1168902476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3a876a763946cd80db7ef75db814ea86</srcmd5>
+    <version>0.59.1</version>
+    <time>1172401850</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>006cb2d7c6a2f190857809d10ed19156</srcmd5>
+    <version>0.59.1</version>
+    <time>1174951598</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="8">
+    <srcmd5>e1bdea1219f02074b9e13ba263953079</srcmd5>
+    <version>0.59.1</version>
+    <time>1175161892</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fcdcc840d67ab8f9fff26c3d1c030c4a</srcmd5>
+    <version>0.59.3</version>
+    <time>1177542050</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="16">
+    <srcmd5>9123d62496d59db2b94f031696047754</srcmd5>
+    <version>0.59.3</version>
+    <time>1181260260</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5f9556e9940bac95836d0052ba2a64e2</srcmd5>
+    <version>0.60.2</version>
+    <time>1200604829</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="26">
+    <srcmd5>18264b095b99c120aefefd8700dda136</srcmd5>
+    <version>0.60.2</version>
+    <time>1208188508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="75">
+    <srcmd5>18264b095b99c120aefefd8700dda136</srcmd5>
+    <version>0.60.2</version>
+    <time>1208188508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>456bf95970ec28e59a7076a341369354</srcmd5>
+    <version>0.61.0</version>
+    <time>1223907446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>655e6efa6b8d49f4d4929b47992c1285</srcmd5>
+    <version>0.62.2</version>
+    <time>1251148412</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-authlib based on submit request 18554 from user hennevogel
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>bdcbe6a28adf752c25b77f92349124d6</srcmd5>
+    <version>0.62.2</version>
+    <time>1251910290</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-authlib based on submit request 19534 from user computersalat
+</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>bdcbe6a28adf752c25b77f92349124d6</srcmd5>
+    <version>0.62.2</version>
+    <time>1251910290</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-authlib based on submit request 19534 from user computersalat
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7992c02f069cdd758b983e029a2155f0</srcmd5>
+    <version>0.62.4</version>
+    <time>1263295985</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-authlib based on submit request 29311 from user coolo
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>77a4ac4e01e5b07b544d8ae09d6c1732</srcmd5>
+    <version>0.63.0</version>
+    <time>1267955684</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-authlib based on submit request 34213 from user coolo
+</comment>
+    <requestid>34213</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f1141e22e065d020961480e6870970a8</srcmd5>
+    <version>0.63.0</version>
+    <time>1268923243</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>f1141e22e065d020961480e6870970a8</srcmd5>
+    <version>0.63.0</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>f1141e22e065d020961480e6870970a8</srcmd5>
+    <version>0.63.0</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>9fbefb3807ac7a9a01a907cc844038d5</srcmd5>
+    <version>0.63.0</version>
+    <time>1280180312</time>
+    <user>darix</user>
+    <comment>Copy from server:mail/courier-authlib via accept of submit request 44021 revision 28.
+Request was accepted with message:
+reviewed ok
+</comment>
+    <requestid>44021</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>f1141e22e065d020961480e6870970a8</srcmd5>
+    <version>0.63.0</version>
+    <time>1280197872</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>f1141e22e065d020961480e6870970a8</srcmd5>
+    <version>0.63.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>98cb407116f0c59182a7ec31c47755c4</srcmd5>
+    <version>0.63.0</version>
+    <time>1318501081</time>
+    <user>lrupp</user>
+    <comment>rework init script (create PID DIR)</comment>
+    <requestid>87392</requestid>
+  </revision>
+  <revision rev="23" vrev="13">
+    <srcmd5>98cb407116f0c59182a7ec31c47755c4</srcmd5>
+    <version>0.63.0</version>
+    <time>1319181823</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="14">
+    <srcmd5>750be12c1873ae0091abb3984c583dbf</srcmd5>
+    <version>0.63.0</version>
+    <time>1319706215</time>
+    <user>coolo</user>
+    <comment>fix init script</comment>
+    <requestid>89451</requestid>
+  </revision>
+  <revision rev="25" vrev="15">
+    <srcmd5>3ca83e7be173909f2adea996e84dda88</srcmd5>
+    <version>0.63.0</version>
+    <time>1323191056</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="17">
+    <srcmd5>3ca83e7be173909f2adea996e84dda88</srcmd5>
+    <version>0.63.0</version>
+    <time>1340183249</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>aa73b2de1040300f9d41664c28785057</srcmd5>
+    <version>0.64.0</version>
+    <time>1350935121</time>
+    <user>coolo</user>
+    <comment>fix license (forwarded request 138866 from computersalat)</comment>
+    <requestid>138867</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b6aa03ba78fd761bde92414677d10e45</srcmd5>
+    <version>0.65.0</version>
+    <time>1358664391</time>
+    <user>coolo</user>
+    <comment>update to 0.65.0 (forwarded request 148640 from computersalat)</comment>
+    <requestid>148777</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>b6aa03ba78fd761bde92414677d10e45</srcmd5>
+    <version>0.65.0</version>
+    <time>1359108769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>b6aa03ba78fd761bde92414677d10e45</srcmd5>
+    <version>0.65.0</version>
+    <time>1379662148</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c3ed77bc29f3dac73ad535346fd090ad</srcmd5>
+    <version>0.66.0</version>
+    <time>1384422003</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 0.66.0 (forwarded request 206676 from computersalat)</comment>
+    <requestid>206710</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b49383d282c0122c93419a50f5331101</srcmd5>
+    <version>0.66.1</version>
+    <time>1395610429</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 0.66.1 (forwarded request 227156 from computersalat)</comment>
+    <requestid>227157</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>e443fbdd970c5390aabb6a5d6b2c71fb</srcmd5>
+    <version>0.66.1</version>
+    <time>1406869671</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243228</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>e443fbdd970c5390aabb6a5d6b2c71fb</srcmd5>
+    <version>0.66.1</version>
+    <time>1409300677</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>349f325c0b08a9a51a6db72f15e6d443</srcmd5>
+    <version>0.66.1</version>
+    <time>1416994427</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262940</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>58d0e4847a9057b4733abdce52891ec9</srcmd5>
+    <version>0.66.3</version>
+    <time>1438794868</time>
+    <user>coolo</user>
+    <comment>update to 0.66.3 (forwarded request 320483 from computersalat)</comment>
+    <requestid>320485</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9f8cb6df95d5acb0fec7a1d8a568d417</srcmd5>
+    <version>0.66.4</version>
+    <time>1463498182</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.66.4 (forwarded request 395994 from computersalat)</comment>
+    <requestid>395995</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>c3efcec4a36b1749a4e372a390a80509</srcmd5>
+    <version>0.66.4</version>
+    <time>1487768062</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459063</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>a187633080d035bb9a26340f0c7fdf9f</srcmd5>
+    <version>0.66.4</version>
+    <time>1491566148</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485056</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>34453c5e3a2344a1e83b43beaf0c78bb</srcmd5>
+    <version>0.66.4</version>
+    <time>1492714535</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487945</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>881d26da6d68f165e82b57731af664a4</srcmd5>
+    <version>0.68.0</version>
+    <time>1512651200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548100</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>8e32526a270207d5af5ed6705e25393c</srcmd5>
+    <version>0.68.0</version>
+    <time>1554833964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692590</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>fbdf3f7c627a7d4c06fc03aa38f0250d</srcmd5>
+    <version>0.68.0</version>
+    <time>1562056677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710236</requestid>
+  </revision>
+</revisionlist>

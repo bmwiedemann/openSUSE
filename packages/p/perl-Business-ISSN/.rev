@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f399f135d44030bbfd24aa807ff8bbce</srcmd5>
+    <version>0.91</version>
+    <time>1372925601</time>
+    <user>coolo</user>
+    <comment>needed for texlive 2013</comment>
+    <requestid>181839</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f399f135d44030bbfd24aa807ff8bbce</srcmd5>
+    <version>0.91</version>
+    <time>1379663563</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f399f135d44030bbfd24aa807ff8bbce</srcmd5>
+    <version>0.91</version>
+    <time>1409302174</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9390d2b46e9a916be020abf21aa5a659</srcmd5>
+    <version>1.003</version>
+    <time>1527932947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607435</requestid>
+  </revision>
+</revisionlist>

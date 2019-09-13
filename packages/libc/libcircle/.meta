@@ -1,0 +1,5 @@
+<package name="libcircle" project="openSUSE:Factory">
+  <title>libcircle</title>
+  <description>A library used to distribute workloads</description>
+  <devel project="science:HPC" package="libcircle"/>
+</package>

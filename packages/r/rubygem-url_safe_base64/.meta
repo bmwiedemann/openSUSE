@@ -1,0 +1,5 @@
+<package name="rubygem-url_safe_base64" project="openSUSE:Factory">
+  <title>url_safe_base64</title>
+  <description>Converts strings to/from a slightly modified base64 that contains only url-safe characters</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-url_safe_base64"/>
+</package>

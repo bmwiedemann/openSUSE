@@ -1,0 +1,6 @@
+<package name="perl-Test-Pod" project="openSUSE:Factory">
+  <title>check for POD errors in files</title>
+  <description>Check POD files for errors or warnings in a test file, using 'Pod::Simple'
+to do the heavy lifting.</description>
+  <devel project="devel:languages:perl" package="perl-Test-Pod"/>
+</package>

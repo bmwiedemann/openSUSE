@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>30c4d4c83a92cc435c05cb21b14c5da8</srcmd5>
+    <version>20180116</version>
+    <time>1516634401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20180116
+  * License changed from LGPL-3.0 to GPL-3.0
+  * Added new icons
+  * Updated a few icons
+  * Added missing folder-torrent symlink
+  * Fixed icon names for kdeconnect-indicator
+  * Changed the white color to more lighter
+- Update copyright year to 2018 of spec
+- Remove duplicate LICENSE files in package
+- Trim redundant filler words and notes for other operating systems.
+- Update to 20171223
+  * Added several icons for Deepin DE
+  * Rename icons for apps by @artemanufrij (gh#PapirusDevelopmentTeam/papirus-icon-theme#925,#931)
+  * Removed help-about icon from apps (gh#PapirusDevelopmentTeam/papirus-icon-theme#926)
+- Initial commit 
+</comment>
+    <requestid>567988</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a6e87cbb6f63375a6365abcb4ece80fc</srcmd5>
+    <version>20180201</version>
+    <time>1517606503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571815</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>47d69c9f4306e6a989e1894c5be53f5f</srcmd5>
+    <version>20180214</version>
+    <time>1519041772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577878</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3f50b66928192f2973e64bb042edb92c</srcmd5>
+    <version>20180311</version>
+    <time>1521193383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587094</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>09bb27cf7616cbc248624c98ea4ffd76</srcmd5>
+    <version>20180401</version>
+    <time>1522832930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593326</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>17b31194f1c4e263bc828723dfa910a5</srcmd5>
+    <version>20180501</version>
+    <time>1525256358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602848</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>301aa98f389926d884dffca3e662c37f</srcmd5>
+    <version>20180601</version>
+    <time>1528897115</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615318</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d607843f79c125380a1efa7257fc74d7</srcmd5>
+    <version>20180720</version>
+    <time>1532361649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624470</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d5eda9b95afb9ca1916a6e0483d44734</srcmd5>
+    <version>20180816</version>
+    <time>1534774883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630428</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9e867fd75724833b707e7565651793a4</srcmd5>
+    <version>20181007</version>
+    <time>1539251757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640891</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5bb0375d3462293efe40befc4854f5a8</srcmd5>
+    <version>20181120</version>
+    <time>1543224895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651883</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0ef5b21eb65f4dc31d3656dd06b5d06f</srcmd5>
+    <version>20190106</version>
+    <time>1546946917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663157</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1ac9db1edabe16e35ba7da20c47c0f6a</srcmd5>
+    <version>20190203</version>
+    <time>1549286696</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670878</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bea92732fecf9fb81b8e50e1bd13efed</srcmd5>
+    <version>20190302</version>
+    <time>1551687794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680979</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>febdb0ae971cbc7b5347236955cb8c17</srcmd5>
+    <version>20190331</version>
+    <time>1554281482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690781</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7ca56af3b4276b356df49489b6d94aff</srcmd5>
+    <version>20190501</version>
+    <time>1556817594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699885</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0fc735a475d5d248ec500e9a4487aa46</srcmd5>
+    <version>20190615</version>
+    <time>1560862734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710426</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7a7c450587b61745035b2384b77fb2ab</srcmd5>
+    <version>20190708</version>
+    <time>1563456051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715830</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1dece50f457f444933bf8b100043548f</srcmd5>
+    <version>20190802</version>
+    <time>1565864954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723318</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e8d7b757f92c5000bb442b52f7bccbb3</srcmd5>
+    <version>20190817</version>
+    <time>1566243567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724260</requestid>
+  </revision>
+</revisionlist>

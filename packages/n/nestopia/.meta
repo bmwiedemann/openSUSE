@@ -1,0 +1,9 @@
+<package name="nestopia" project="openSUSE:Factory">
+  <title>Nintendo Entertainment System/Famicom emulator</title>
+  <description>Nestopia is a cycle-accurate NES/Famicom emulator. It has a high compatibility
+rate and support for many peripherals and input devices.
+
+</description>
+  <devel project="Emulators" package="nestopia"/>
+  <url>https://github.com/0ldsk00l/nestopia</url>
+</package>

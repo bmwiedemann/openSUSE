@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>decc4663d8c24f72170aa7cbd43b3868</srcmd5>
+    <version>0.1</version>
+    <time>1542123273</time>
+    <user>dimstar_suse</user>
+    <comment>- initial release version 0.1 (fate#325478)
+   * split off SUSE specific configuration from systemd package 
+   * add 60-io-scheduler.rules
+   * add 42-usb-hid-pm.rules (fate#325566) 
+   * add 80-hotplug-cpu-mem.rules
+   * add 99-wakeup-from-idle.rules
+   * add /usr/lib/modules-load.d/sg.conf
+</comment>
+    <requestid>646446</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5d271b4fa8c599bc519399703bbee1b6</srcmd5>
+    <version>0.1</version>
+    <time>1544189752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655689</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>71c329d55e44a923303fc18b36701f60</srcmd5>
+    <version>0.1</version>
+    <time>1552299346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683527</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a64956c59f17686b03bcb1487dd8c866</srcmd5>
+    <version>0.1</version>
+    <time>1563175530</time>
+    <user>dimstar_suse</user>
+    <comment>Drop sg.conf, which is shipped by suse-module-tools</comment>
+  </revision>
+</revisionlist>

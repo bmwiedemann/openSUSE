@@ -1,0 +1,5 @@
+<package name="pmdk-convert" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware:nvdimm" package="pmdk-convert"/>
+</package>

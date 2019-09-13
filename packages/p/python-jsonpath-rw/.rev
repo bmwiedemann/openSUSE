@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>71b4798538ba5ca126f669b3348f93d8</srcmd5>
+    <version>1.2.3</version>
+    <time>1389277921</time>
+    <user>coolo</user>
+    <comment>new openstack dep</comment>
+    <requestid>213048</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>71b4798538ba5ca126f669b3348f93d8</srcmd5>
+    <version>1.2.3</version>
+    <time>1409302898</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5bc2d559e3632f2a7f4e730a585f40f0</srcmd5>
+    <version>1.4.0</version>
+    <time>1431247598</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305756</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6771b7c07ce4d3c67400a9c907a1ea6c</srcmd5>
+    <version>1.4.0</version>
+    <time>1480342244</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442199</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ba5234151933d0bd40260cd80f69b6de</srcmd5>
+    <version>1.4.0</version>
+    <time>1501840689</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>508331</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d42ce5d72736fafb130f995c71b535c9</srcmd5>
+    <version>1.4.0</version>
+    <time>1545647926</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659456</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>ceb3b0ae8a3a91233c88387631c89593</srcmd5>
+    <version>1.4.0</version>
+    <time>1548704905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668805</requestid>
+  </revision>
+</revisionlist>

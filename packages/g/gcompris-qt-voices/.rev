@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63b5e429911667c7f51e4a43c573351c</srcmd5>
+    <version>0~20160703</version>
+    <time>1477644282</time>
+    <user>dimstar_suse</user>
+    <comment>Additionnal offline voices for gcompris-qt</comment>
+    <requestid>418068</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ee1f87147039a5c1d2df0e5308ec7276</srcmd5>
+    <version>0~20160703</version>
+    <time>1480341922</time>
+    <user>dimstar_suse</user>
+    <comment>Put voices in the real needed gcompris-qt path
+Last piece to fix boo#1011125</comment>
+    <requestid>441705</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bc1c960f39200962df66a0ff776112dd</srcmd5>
+    <version>0~20161224</version>
+    <time>1483048226</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447646</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>95beeb8c052ac3d6db74907e6b0ad0ed</srcmd5>
+    <version>0~20170826</version>
+    <time>1505335078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to its real state 20170826
+- Fix provide version to be equal to main package
+- Refrech content for gcompris-qt release 0.80
+  * Updated LICENSE file with the upstream changes.
+    Renamed, deleted, added files.
+- Packaging : change requires to gcomprit-qt
+</comment>
+    <requestid>525835</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>22118e07b6f54b02ba55197cea2ceb9e</srcmd5>
+    <version>0~20170930</version>
+    <time>1507570877</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530472</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>93830043fad0170745b8b72cfb6c63e0</srcmd5>
+    <version>0~20180314</version>
+    <time>1521579548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587896</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>41738803e14b52a2687c6f3eceb6f1a6</srcmd5>
+    <version>0~20180517</version>
+    <time>1527582847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610729</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>39d7ea211aabf91298cbc9c8dcb5b3ef</srcmd5>
+    <version>0~20180517</version>
+    <time>1548335019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662858</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5c2f119717193e8c5c8eacaa054433c6</srcmd5>
+    <version>0~20190304</version>
+    <time>1551785143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681545</requestid>
+  </revision>
+</revisionlist>

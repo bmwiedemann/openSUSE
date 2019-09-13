@@ -1,0 +1,6 @@
+<package name="libmrss" project="openSUSE:Factory">
+  <title>Libmrss</title>
+  <description></description>
+  <devel project="devel:libraries:c_c++" package="libmrss"/>
+  <url>http://github.com/chergert/rss-glib</url>
+</package>

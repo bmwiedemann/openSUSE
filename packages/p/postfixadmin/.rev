@@ -1,0 +1,375 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f463b4a42395bcca62c2e3579ea68da8</srcmd5>
+    <version>2.3.3</version>
+    <time>1314613184</time>
+    <user>saschpe</user>
+    <comment>Please add PostfixAdmin to Factory.
+
+Formal introduction mail follows in opensuse-factory in a minute.</comment>
+    <requestid>79976</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0d61d153b7ff97d6b4ae42a15e2421a5</srcmd5>
+    <version>2.3.3</version>
+    <time>1314613196</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79976
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a6e4853febff7315644b96462dc62807</srcmd5>
+    <version>2.3.4</version>
+    <time>1316504083</time>
+    <user>lrupp</user>
+    <comment>- 2.3.4 release (bugfix release, see CHANGELOG.TXT for details)</comment>
+    <requestid>82553</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>38847cf94538a5914b6091ce2e7b5a5c</srcmd5>
+    <version>2.3.4</version>
+    <time>1318797577</time>
+    <user>lrupp</user>
+    <comment>- include a patch with fixes since the 2.3.4 release (see 
+  CHANGELOG.TXT for details)
+- Add PreReq: pwdutils
+
+from CHANGELOG.TXT:
+
+SVN changes since 2.3.4 release (postfixadmin-2.3 branch)
+----------------------------------------------------------------
+
+  - create-domain: fix SQL injection (only exploitable by superadmins)
+  - add missing $LANG['pAdminDelete_admin_error']
+  - don't mark mailbox targets with recipient delimiter as &quot;forward only&quot;</comment>
+    <requestid>88078</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>38847cf94538a5914b6091ce2e7b5a5c</srcmd5>
+    <version>2.3.4</version>
+    <time>1319182366</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>1a65624b23b09ab4f70311f9443f05ad</srcmd5>
+    <version>2.3.4</version>
+    <time>1323193960</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>22ae2cfc5a7475d748aee3e0c3d9c61e</srcmd5>
+    <version>2.3.5</version>
+    <time>1327674224</time>
+    <user>coolo</user>
+    <comment>- update to PostfixAdmin 2.3.5 (security release)
+  - fixes some SQL injections (CVE-2012-0811)
+  - fixes some XSS vulnerabilities (CVE-2012-0812)
+  - see CHANGELOG.TXT or bnc#741455 for details</comment>
+    <requestid>101797</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>18e5a1d48a37f947e0a6b8a4ad54c84d</srcmd5>
+    <version>2.3.5</version>
+    <time>1328261139</time>
+    <user>coolo</user>
+    <comment>- add patch to display domain and mailbox description with correct 
+  encoding (upstream r1342)
+- (+ some spec changes by source service)</comment>
+    <requestid>102543</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>fa20ba46fd589b1fa738961a644cc411</srcmd5>
+    <version>2.3.5</version>
+    <time>1329751028</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>105937</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>fa20ba46fd589b1fa738961a644cc411</srcmd5>
+    <version>2.3.5</version>
+    <time>1340184013</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>e95a9e2df3d6dee0f5972e1df8ce60b1</srcmd5>
+    <version>2.3.5</version>
+    <time>1341148518</time>
+    <user>coolo</user>
+    <comment>- fix footer link (upstream r1402)
+- focus username field in login form (upstream r1404)
+- change existing vacation user (&lt; 2012-02-13) to group vacation
+
+- add some %if for cross-distribution handling
+
+- add vacation user to the vacation group (instead of the default &quot;users&quot;)</comment>
+    <requestid>126584</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>4a749b8be07089525f6e7909e8c974ce</srcmd5>
+    <version>2.3.5</version>
+    <time>1354529927</time>
+    <user>coolo</user>
+    <comment>- more cross-distributin %if: pwdutils, php_any_db (forwarded request 143736 from cboltz)</comment>
+    <requestid>143737</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2a6cd15e1cd2baae676fe8a78fa03ce0</srcmd5>
+    <version>2.3.6</version>
+    <time>1357217216</time>
+    <user>namtrac</user>
+    <comment>- update to PostfixAdmin 2.3.6 (bugfix release)
+  changes that were not included in the package yet:
+  - fix double inclusion of config.inc.php in setup.php
+  - fix bool and date handling in fetchmail
+- remove upstreamed patches (forwarded request 146868 from cboltz)</comment>
+    <requestid>146870</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>2a6cd15e1cd2baae676fe8a78fa03ce0</srcmd5>
+    <version>2.3.6</version>
+    <time>1359109944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>589616b63803b2a8aa1cafa56af35386</srcmd5>
+    <version>2.3.6</version>
+    <time>1379076258</time>
+    <user>scarabeus_factory</user>
+    <comment>- add postfixadmin-2.3-branch.diff with all changes between 2.3.6 release 
+  and SVN r1521:
+  - lt.lang, da.lang translation update
+  - when enabling/disabling a mailbox, also update the corresponding alias
+  - fix creating superadmin in setup.php with MariaDB (more strict SQL)
+  - trim() localpart in create-mailbox to avoid mailbox names with leading space
+  - mark vacation_notification.notified field as latin1 to avoid overlong index (forwarded request 198770 from cboltz)</comment>
+    <requestid>198771</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>589616b63803b2a8aa1cafa56af35386</srcmd5>
+    <version>2.3.6</version>
+    <time>1379664054</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>672d3c99933196e6807f34a2867bfd4c</srcmd5>
+    <version>2.3.6</version>
+    <time>1380469901</time>
+    <user>coolo</user>
+    <comment>- rework pre section
+  * if useradd -r then groupadd -r, too</comment>
+    <requestid>201354</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2bbde4ed37b9c9231db2f43d006faab9</srcmd5>
+    <version>2.3.7</version>
+    <time>1393089264</time>
+    <user>coolo</user>
+    <comment>- update to PostfixAdmin 2.3.7 (bugfix release)
+  changes that were not included in the package yet:
+  - SECURITY: fix SQL injection in show_gen_status()
+  - don't trim() mail address to avoid that aliases starting with a space are
+    allowed. This fixes http://sourceforge.net/p/postfixadmin/bugs/210/ and
+    https://sourceforge.net/p/postfixadmin/feature-requests/113/
+  - update regex in check_domain() to support new, longer TLDs like .international
+  - vacation.pl: encode subject
+  - vacation.pl: disable use of TLS by default due to a bug in Mail::Sender 0.8.22
+    (you can re-enable it with $smtp_tls_allowed)
+- remove postfixadmin-2.3-branch.diff (forwarded request 223317 from cboltz)</comment>
+    <requestid>223318</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>2bbde4ed37b9c9231db2f43d006faab9</srcmd5>
+    <version>2.3.7</version>
+    <time>1409302733</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>75470bf53b182a68b550171c4dad7456</srcmd5>
+    <version>2.91</version>
+    <time>1410528325</time>
+    <user>coolo</user>
+    <comment>- add postfixadmin-svn.diff with changes from upstream SVN (r1689):
+  - AliasHandler: don't clean goto field when making alias inactive (bug#316)
+  - list-virtual: display quota even if $CONF[used_quotas] == NO (bug#307)
+  - vacation.pl: fix postgresql queries in vacation.pl (bug#315)
+  - fix query in AliasHandler getList which caused an empty list on some 
+    systems (bug#313)
+  - fetchmail.pl: fix ssl extra options (cert check, cert path, fingerprint)
+  - fix logging (run setup.php to fix old log entries) (bug#317)
+  - fetchmail.php: change error_reporting() to exclude E_NOTICE (bug#322)
+  - fr.lang translation update (patch#123)
+- make postfixadmin-cli executable
+
+- update to PostfixAdmin 2.91 aka 3.0 beta1
+  - new commandline client postfixadmin-cli
+  - vacation start and end date
+  - (nearly) complete rewrite to *Handler classes
+  - smarty templates
+  - and much more, see upstream CHANGELOG.TXT (forwarded request 248954 from cboltz)</comment>
+    <requestid>248956</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>05b627547945190e000445a96c91cbc8</srcmd5>
+    <version>2.91</version>
+    <time>1414613398</time>
+    <user>coolo</user>
+    <comment>- add postfixadmin-svn2.diff with changes from upstream SVN (r1705):
+  - add workaround for MariaDB to fix deleting aliases (bug#325)
+  - $CONF[default_aliases] can now use the new domain as alias target (patch#124)
+  - check that vacation start/end date are not in the past (patch#122) 
+  - update vacation INSTALL.TXT with more secure locations
+  - update Smarty to 3.1.21
+- make dependency on Zend Framework versioned - PostfixAdmin needs 1.x
+  (2.x is totally different and incompatible) (forwarded request 258505 from cboltz)</comment>
+    <requestid>258506</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>994584f0c60b581cf41151c26bad3e9e</srcmd5>
+    <version>2.92</version>
+    <time>1426485625</time>
+    <user>dimstar_suse</user>
+    <comment>- update to PostfixAdmin 2.92 aka 3.0 beta2
+  - remove upstream postfixadmin-svn.diff and postfixadmin-svn2.diff
+  - additional changes over the two patches: the version number ;-) (forwarded request 290494 from cboltz)</comment>
+    <requestid>290495</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5783b26f466b088b3e988d5b2cc42b83</srcmd5>
+    <version>2.93</version>
+    <time>1443336032</time>
+    <user>coolo</user>
+    <comment>- update to PostfixAdmin 2.93 aka 3.0 beta3
+  - add list.php for list view (replaces list-*.php and fixes some
+    bugs they included)
+  - add FetchmailHandler (replaces fetchmail.php)
+  - several bugfixes and small improvements
+  - see CHANGELOG.TXT for all details (forwarded request 333931 from cboltz)</comment>
+    <requestid>333932</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>ed7d9bd6aeafe82dd89b22226bdc79d4</srcmd5>
+    <version>2.93</version>
+    <time>1444636917</time>
+    <user>coolo</user>
+    <comment>- add postfixadmin-upstream-fixes-r1802-1817.diff:
+  fix escaping in gen_show_status() and double escaping in list.php
+  (http://sourceforge.net/p/postfixadmin/bugs/356/)
+
+- several fixes for the Fedora and CentOS build:
+  - don't scan scripts in the ADDITIONS directory to avoid adding excessive
+    dependencies
+  - use centos_ver instead of centos_version (which isn't available in CentOS 7)
+  - change docroot to /var/www/html
+  - change apache group to &quot;apache&quot;</comment>
+    <requestid>337058</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>636f8421859b9fc67e20b31f56b13281</srcmd5>
+    <version>3.0</version>
+    <time>1473679686</time>
+    <user>dimstar_suse</user>
+    <comment>- update to PostfixAdmin 3.0:
+  - add sqlite backend option
+  - add configurable smtp helo (CONF[&quot;smtp_client&quot;])
+  - new translation: ro (Romanian)
+  - language update: tw, cs, de
+  - fix escaping in gen_show_status() (could be used to DOS list-virtual by
+    creating a mail address with special chars)
+  - add CSRF protection for POST requests
+  - list.tpl: base edit/editactive/delete links in list.tpl on $RAW_item to
+    avoid double escaping, and fix some corner cases
+  - fix db_quota_text() for postgresql (concat() vs. ||)
+  - change default date for 'created' and 'updated' columns from 0000-00-00
+    (which causes problems with MySQL strict mode) to 2000-01-01
+  - allow punicode even in TLDs
+  - update Smarty to 3.1.29
+  - add checks to login.php and cli to ensure database layout is up to date
+  - whitelist '-1' as valid value for postfixadmin-cli
+  - don't stripslashes() the password in pacrypt
+  - various small bugfixes
+- drop patch postfixadmin-upstream-fixes-r1802-1817.diff (upstream)
+- add Requires: perl(Encode), needed by vacation.pl (forwarded request 426860 from cboltz)</comment>
+    <requestid>426861</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>34d1b65c2bd154d663616a725bc46fee</srcmd5>
+    <version>3.0.2</version>
+    <time>1486856995</time>
+    <user>dimstar_suse</user>
+    <comment>- update to PostfixAdmin 3.0.2:
+  - SECURITY: don't allow to delete protected aliases (CVE-2017-5930, boo#1024211)
+  - fix VacationHandler for PostgreSQL
+  - AliasHandler: restrict mailbox subquery to allowed and specified domains
+    to improve performance on setups with lots of mailboxes
+  - allow switching between dovecot:* password schemes while still accepting
+    passwords hashed using the previous dovecot:* scheme
+  - FetchmailHandler: use a valid date as default for 'date'
+  - fix date formatting in non-english languages when using PostgreSQL
+  - various small fixes (forwarded request 455599 from cboltz)</comment>
+    <requestid>455600</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2b088c4859b1c4c6efb6c65f51124a6d</srcmd5>
+    <version>3.1</version>
+    <time>1498551686</time>
+    <user>dimstar_suse</user>
+    <comment>- update to PostfixAdmin 3.1:
+  - several broadcast improvements
+  - better static DB connection cache to avoid hundreds of mysqli
+    connections when doing lots of escape_string() calls
+  - add favicon to fix session handling in chrome (#44)
+  - various small fixes and improvements, see CHANGELOG.TXT (forwarded request 506134 from cboltz)</comment>
+    <requestid>506135</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>83f0680926a69450e282affd941afa07</srcmd5>
+    <version>3.2</version>
+    <time>1525343670</time>
+    <user>dimstar_suse</user>
+    <comment>- update to PostfixAdmin 3.2:
+  - new directory layout (see below)
+  - enable users to reset their passwords by mail or SMS
+    ($CONF['forgotten_user_password_reset'],
+    $CONF['forgotten_admin_password_reset'], $CONF['sms_send_function'])
+  - allow local alias targets (without @domain)
+  - add $CONF['edit_alias'] to disable &quot;edit alias&quot; function for users
+  - add php_crypt $CONF[&quot;encrypt&quot;] option
+  - add support for MySQL connections over SSL
+  - and more - see CHANGELOG.TXT for the full list
+- move out of /srv/www/htdocs/postfixadmin - PHP code moved to
+  /usr/share/postfixadmin/, smarty cache to /var/cache/postfixadmin/ and
+  the config files to /etc/postfixadmin/ (no automated migration!)
+- add apache config file to glue everything together. Note that the
+  /postfixadmin alias is *not* enabled by default to avoid that it is
+  active on all vhosts. Run &quot;a2enflag POSTFIXADMIN&quot; if you want that.
+- adjust perl requirements for latest vacation.pl
+- drop apache2-devel / httpd-devel BuildRequires - no longer needed with
+  the new directory layout
+- package /usr/bin/postfixadmin-cli symlink
+</comment>
+    <requestid>603334</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>93463b5084dc143bfc55050e56b35e74</srcmd5>
+    <version>3.2</version>
+    <time>1556312139</time>
+    <user>maxlin_factory</user>
+    <comment>- &quot;downgrade&quot; php-imap to Recommends because latest PHP packages no longer
+  include it. (Without php-imap auto-creating folders when creating a mailbox
+  won't work.)
+
+- bsc#1130588: Require shadow instead of old pwdutils
+
+- fix deps
+  * add missing php-imap (setup is checking for it)
+  * add missing php-phar
+    ERROR: manifest length read was &quot;41556&quot; should be &quot;655360&quot;</comment>
+    <requestid>698182</requestid>
+  </revision>
+</revisionlist>

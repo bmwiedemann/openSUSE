@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4b65762ae31fa72ab2ac06734d0a940d</srcmd5>
+    <version>0+git86</version>
+    <time>1288973983</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51715 from user jengelh
+</comment>
+    <requestid>51715</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d20453e29596cb5401792be06fc16e0e</srcmd5>
+    <version>0+git86</version>
+    <time>1288973989</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51715
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7cce30ac8a4007ec6350aaa7aac1a957</srcmd5>
+    <version>1.0.0</version>
+    <time>1292859624</time>
+    <user>darix</user>
+    <comment>Accepted submit request 56287 from user jengelh
+</comment>
+    <requestid>56287</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>bf27285dfe4c6c40d21126158e6cdbb9</srcmd5>
+    <version>1.0.0</version>
+    <time>1292859640</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 56287
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c80ee53298463396e340bf1f988f4311</srcmd5>
+    <version>1.0.1</version>
+    <time>1293578128</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56742 from user jengelh
+</comment>
+    <requestid>56742</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7e4688dbbc25771508a4224d150baef8</srcmd5>
+    <version>1.0.1</version>
+    <time>1293578147</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56742
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>7e4688dbbc25771508a4224d150baef8</srcmd5>
+    <version>1.0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>7e4688dbbc25771508a4224d150baef8</srcmd5>
+    <version>1.0.1</version>
+    <time>1319182111</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>534177d3242e7aa938f21dd18a244e79</srcmd5>
+    <version>1.0.2</version>
+    <time>1325658278</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.0.2
+* build and compile updates
+* header: fix invalid use of type void * in arithmetic of
+  mnl_for_each_nest(...)
+* doc: fix wrong comment describing mnl_nlmsg_batch_stop
+
+- SPDX format for License: tag
+- Use separate include dir to detect compile errors</comment>
+    <requestid>98564</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>653bea6335178ea5ac97963a56797758</srcmd5>
+    <version>1.0.3</version>
+    <time>1338280423</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.0.3
+* Added the &quot;mnl_attr_for_each_payload&quot; function, which allows to
+  iterate over attributes for a given payload pointer.</comment>
+    <requestid>122502</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>653bea6335178ea5ac97963a56797758</srcmd5>
+    <version>1.0.3</version>
+    <time>1340183605</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>273108dcb8faeecc34998e8fc0dc46ee</srcmd5>
+    <version>1.0.3</version>
+    <time>1355474022</time>
+    <user>coolo</user>
+    <comment>- Verify GPG signature</comment>
+    <requestid>144888</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>273108dcb8faeecc34998e8fc0dc46ee</srcmd5>
+    <version>1.0.3</version>
+    <time>1359109305</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>273108dcb8faeecc34998e8fc0dc46ee</srcmd5>
+    <version>1.0.3</version>
+    <time>1379663008</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>2f47dce8489ba94c01e3ca885a67bdb9</srcmd5>
+    <version>1.0.3</version>
+    <time>1398533708</time>
+    <user>coolo</user>
+    <comment>forward from : remove dependency on gpg-offline</comment>
+    <requestid>231435</requestid>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>2f47dce8489ba94c01e3ca885a67bdb9</srcmd5>
+    <version>1.0.3</version>
+    <time>1409301623</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>f2da2a58f359596bac9724d538875543</srcmd5>
+    <version>1.0.3</version>
+    <time>1413048348</time>
+    <user>coolo</user>
+    <comment>- Move include files to /usr/include/pkg</comment>
+    <requestid>251760</requestid>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>1b698ddb992bfaa2e55ec5a02b7619d4</srcmd5>
+    <version>1.0.3</version>
+    <time>1418840213</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>265401</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d3b7d72c793e8df1af8e240ac83c1bc3</srcmd5>
+    <version>1.0.4</version>
+    <time>1468869545</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>407734</requestid>
+  </revision>
+</revisionlist>

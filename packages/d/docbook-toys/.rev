@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="266">
+    <srcmd5>4dc1ad56992eb73bf342c4910378fb00</srcmd5>
+    <version>1.51.0</version>
+    <time>1168902624</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="322">
+    <srcmd5>fc5628bb62b2c11a7ed5d9d318f3b114</srcmd5>
+    <version>1.51.0</version>
+    <time>1180997013</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="372">
+    <srcmd5>866596820af960d2779fddfa46ec772e</srcmd5>
+    <version>1.51.0</version>
+    <time>1205924524</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="414">
+    <srcmd5>866596820af960d2779fddfa46ec772e</srcmd5>
+    <version>1.51.0</version>
+    <time>1205924524</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="415">
+    <srcmd5>db8909b5e4ef9c5fc0417fabc05b6f42</srcmd5>
+    <version>1.51.0</version>
+    <time>1245338165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="416">
+    <srcmd5>ef3facb7151f6162377a2e15c57ecc9a</srcmd5>
+    <version>1.51.0</version>
+    <time>1251745884</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/docbook-toys based on submit request 19263 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="418">
+    <srcmd5>ef3facb7151f6162377a2e15c57ecc9a</srcmd5>
+    <version>1.51.0</version>
+    <time>1251745884</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/docbook-toys based on submit request 19263 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="419">
+    <srcmd5>3699c6bb5cbc5a145f1bf4b475e98feb</srcmd5>
+    <version>1.51.0</version>
+    <time>1268923372</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="421">
+    <srcmd5>3699c6bb5cbc5a145f1bf4b475e98feb</srcmd5>
+    <version>1.51.0</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="422">
+    <srcmd5>3699c6bb5cbc5a145f1bf4b475e98feb</srcmd5>
+    <version>1.51.0</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="425">
+    <srcmd5>3699c6bb5cbc5a145f1bf4b475e98feb</srcmd5>
+    <version>1.51.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="426">
+    <srcmd5>202738437113470605055abb13265c5f</srcmd5>
+    <version>1.51.0</version>
+    <time>1316443448</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83275 from jengelh)</comment>
+    <requestid>83338</requestid>
+  </revision>
+  <revision rev="13" vrev="428">
+    <srcmd5>202738437113470605055abb13265c5f</srcmd5>
+    <version>1.51.0</version>
+    <time>1319181852</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="429">
+    <srcmd5>e4c734f3e43031b841d4e2298bb53728</srcmd5>
+    <version>1.51.0</version>
+    <time>1324387799</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94781 from coolo)</comment>
+    <requestid>95446</requestid>
+  </revision>
+  <revision rev="15" vrev="431">
+    <srcmd5>e4c734f3e43031b841d4e2298bb53728</srcmd5>
+    <version>1.51.0</version>
+    <time>1340183286</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="433">
+    <srcmd5>e4c734f3e43031b841d4e2298bb53728</srcmd5>
+    <version>1.51.0</version>
+    <time>1359108820</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="435">
+    <srcmd5>e4c734f3e43031b841d4e2298bb53728</srcmd5>
+    <version>1.51.0</version>
+    <time>1379662242</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="437">
+    <srcmd5>e4c734f3e43031b841d4e2298bb53728</srcmd5>
+    <version>1.51.0</version>
+    <time>1409300776</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="438">
+    <srcmd5>2373c4dabb004d1b4862053359377f9c</srcmd5>
+    <version>1.51.0</version>
+    <time>1510665452</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540412</requestid>
+  </revision>
+</revisionlist>

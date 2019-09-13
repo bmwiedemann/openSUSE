@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>748abf90b2d8ea00c3b6ef58322bcac8</srcmd5>
+    <version>0.12.3</version>
+    <time>1496822096</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by kimchi virtualization web management tool</comment>
+    <requestid>495396</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c5ae4f04c3bcc91278707af7e216a558</srcmd5>
+    <version>0.12.3</version>
+    <time>1531813277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622847</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a282e535925d52a210ab8e84e4f3f966</srcmd5>
+    <version>0.18.0</version>
+    <time>1554749587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.0:
+  * Add support for previous import path to importer callbacks [#287 #291 by Frankie Dintino]
+  * Add several new cli options [#279 #268 by Frankie Dintino]
+  * Fix compilation on macos mojave [#276 #277 by @asottile]
+  * Use -lc++ link flag when compiling with clang [#270 by Christian Thieme #271 by Anthony Sottile]
+  * Honor strip_extension in SassMiddleware [#274 by Anthony Sottile]
+  * Fix invalid escape sequences [#249 by Anthony Sottile]
+  * Add code of conduct [#251 by Nick Schonning]
+  * Add support for python3.7 and remove testing for python3.4 [#254 by Anthony Sottile]
+  * Add strip_extension option for wsgi / distutils builder [#55 #258 by Anthony Sottile #260 by Morten Brekkevold]
+  * Deprecate sassc (replaced by pysassc). [#262 by Anthony Sottile]
+  * Import abc classes from collections.abc to remove DeprecationWarning [#264 by Gary van der Merwe #265 by Anthony Sottile]
+  * Add ability to specify imports for custom extensions
+  * SassList type gained an additional option bracketed=False to match the upstream changes to the sass_list type. [#184 by Anthony Sottile]
+  * libsass-python has moved to the sass organization!
+  * Sort input files for determinism [#212 by Bernhard M. Wiedemann]
+  * Include LICENSE file in distributions [#216 by Dougal J. Sutherland]
+  * Add a pysassc entry to replace sassc [#218 by Anthony Sottile]
+  * Enable building with dynamic linking [#219 by Marcel Plch]
+  * Always add cwd to import paths [#208 by Anthony Sottile]
+  * Use getfullargspec when available in python 3. [#188 by Thom Wiggers]
+  * Use sass_copy_c_string instead of strdup for portability [#196 by Anthony Sottile]
+  * Use -std=gnu++0x to fix installation under cygwin [#195 #197 by Anthony Sottile]
+  * Correct source map url [#201 #202 by Anthony Sottile]
+  * Remove --watch [#203 by Anthony Sottile]
+- Remove merged patch reproducible.patch
+- Do not use bundled libsass</comment>
+    <requestid>691790</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac7410f556435e9d29af7fde98dc0302</srcmd5>
+    <version>0.19.2</version>
+    <time>1563993346</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.2:
+  * Follow up the libsass upstream: 3.6.1</comment>
+    <requestid>718112</requestid>
+  </revision>
+</revisionlist>

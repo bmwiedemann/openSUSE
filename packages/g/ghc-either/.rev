@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a1b9a196b00ae752664fbee039eca3ad</srcmd5>
+    <version>4.3.4</version>
+    <time>1432190075</time>
+    <user>coolo</user>
+    <comment>either: An either monad transformer</comment>
+    <requestid>307608</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>02897a5e7bfbad75d280e4657a1c53d0</srcmd5>
+    <version>4.3.4.1</version>
+    <time>1433232394</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.4.1
+* Support `MonadRandom` 0.4</comment>
+    <requestid>309498</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b2ee469415cdaede6e071bdff3b4dc33</srcmd5>
+    <version>4.4.1</version>
+    <time>1440658527</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324470</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>617d72b0e37ef7bc704b6a8df98e3a9b</srcmd5>
+    <version>4.4.1.1</version>
+    <time>1463498075</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.1.1
+* Fixed building on newer GHCs. (type synonyms require explicit foralls for unused
+    variables these days) (forwarded request 394880 from mimi_vx)</comment>
+    <requestid>394882</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>59de90ef8c31081598312aa1e15a4aca</srcmd5>
+    <version>4.4.1.1</version>
+    <time>1469081269</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411509</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b9b53b4ed2f4fbed82958cd792911716</srcmd5>
+    <version>4.4.1.1</version>
+    <time>1484772245</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>450599</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>4cb980eb3a85e2b3f033b385bf9c271e</srcmd5>
+    <version>4.4.1.1</version>
+    <time>1496534230</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>499693</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>0746a1262e1732ce4948bf9a87888e30</srcmd5>
+    <version>4.4.1.1</version>
+    <time>1505504241</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524455</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5b3610acb7e0a9e4d1be71dba09c7a42</srcmd5>
+    <version>5</version>
+    <time>1527674827</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-either to the latest version.</comment>
+    <requestid>607792</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4d228cf4dcca9b31e85ffe1ff9d71b6e</srcmd5>
+    <version>5.0.1</version>
+    <time>1532445503</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update either to version 5.0.1.
+  5.0.1 [2018.07.03]
+  ------------------
+  * Make the `Semigroup`, `Apply`, and `Applicative` instances for `Validation`
+    lazier.
+  * Make `vap` lazier in its second argument.
+  * Introduce `vapm`, an even lazier version of `vap` which requires a
+    `Monoid` constraint. Also add `apm`, a counterpart for `Validation`.
+  * Use `test-framework` and `QuickCheck` in the test suite.</comment>
+    <requestid>623766</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e4873a078b84364abe268c72f5a13cf7</srcmd5>
+    <version>5.0.1</version>
+    <time>1540448503</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>643330</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a17648419c26d433e34217f6e272290b</srcmd5>
+    <version>5.0.1.1</version>
+    <time>1557653700</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>701763</requestid>
+  </revision>
+</revisionlist>

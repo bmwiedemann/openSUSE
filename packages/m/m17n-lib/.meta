@@ -1,0 +1,6 @@
+<package name="m17n-lib" project="openSUSE:Factory">
+  <title>Multilingual Text Processing Library for the C Language</title>
+  <description>A multilingual text processing library for the C language.
+This package contains m17n-* programs.</description>
+  <devel project="M17N" package="m17n-lib"/>
+</package>

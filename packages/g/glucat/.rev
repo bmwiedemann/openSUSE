@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>574bf7530281b1c8324492119486666d</srcmd5>
+    <version>0.6.0</version>
+    <time>1337195235</time>
+    <user>coolo</user>
+    <comment>New package: glucat - Library of C++ templates implementing universal Clifford algebras</comment>
+    <requestid>120918</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>574bf7530281b1c8324492119486666d</srcmd5>
+    <version>0.6.0</version>
+    <time>1340183372</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>707653a1d290e04583b2656f76c97310</srcmd5>
+    <version>0.7.0</version>
+    <time>1351263886</time>
+    <user>coolo</user>
+    <comment>Update to version 0.7.0 (forwarded request 139353 from badshah400)</comment>
+    <requestid>139354</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>be0676192445ce6622599f29a1608d1d</srcmd5>
+    <version>0.7.1</version>
+    <time>1357813081</time>
+    <user>coolo</user>
+    <comment>Update to version 0.7.1 (forwarded request 147616 from badshah400)</comment>
+    <requestid>147620</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>be0676192445ce6622599f29a1608d1d</srcmd5>
+    <version>0.7.1</version>
+    <time>1359108945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>537dd04157cab7fffaad0adbae03ca69</srcmd5>
+    <version>0.7.1</version>
+    <time>1370925189</time>
+    <user>coolo</user>
+    <comment>Add patch to build fix for Factory (forwarded request 178192 from badshah400)</comment>
+    <requestid>178250</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>e51680e1252a030700410225e3d72262</srcmd5>
+    <version>0.7.1</version>
+    <time>1375364117</time>
+    <user>coolo</user>
+    <comment>- rename glucat-fix-i586-build.patch to glucat-fix-32bit-build.patch 
+- apply it for ppc 32Bit (forwarded request 185429 from k0da)</comment>
+    <requestid>185430</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>e51680e1252a030700410225e3d72262</srcmd5>
+    <version>0.7.1</version>
+    <time>1379662466</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c185a4a2f28707b04e3507f0a58500af</srcmd5>
+    <version>0.7.2</version>
+    <time>1396452015</time>
+    <user>coolo</user>
+    <comment>Update to 0.7.2 (forwarded request 228289 from badshah400)</comment>
+    <requestid>228341</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2e04ed166641d637202b2e17b7498a53</srcmd5>
+    <version>0.7.3</version>
+    <time>1396761352</time>
+    <user>coolo</user>
+    <comment>Version 0.7.3 (forwarded request 228818 from badshah400)</comment>
+    <requestid>228843</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>2e04ed166641d637202b2e17b7498a53</srcmd5>
+    <version>0.7.3</version>
+    <time>1409301004</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3c0f19fbd31b3461d98805d6aa3e02cb</srcmd5>
+    <version>0.7.4</version>
+    <time>1419809431</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266534</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>12297d049c3ff0f31e5b99d192a3da65</srcmd5>
+    <version>0.7.5</version>
+    <time>1441727028</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329345</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e2c73cd5880bc9c0969fa0502c9e8288</srcmd5>
+    <version>0.8.0</version>
+    <time>1442130303</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330453</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>ca22ca1d29c3e41159a10da6b78e4183</srcmd5>
+    <version>0.8.0</version>
+    <time>1445288027</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339772</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>84b63f65ba7c5fc516d3013e51e12f8f</srcmd5>
+    <version>0.8.1</version>
+    <time>1462865246</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394110</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>604562ffa21bb2157f636d71cbeaf9d1</srcmd5>
+    <version>0.8.2</version>
+    <time>1468482566</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407850</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4255d6678031a89382cc562899245de0</srcmd5>
+    <version>0.8.2</version>
+    <time>1486465531</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454776</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>cf540e3458093f751df3ce81e2495cd0</srcmd5>
+    <version>0.8.2</version>
+    <time>1531470074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622198</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>2ffd8441dc1a19450b4ecc4bec44a0fa</srcmd5>
+    <version>0.8.2</version>
+    <time>1553158411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687073</requestid>
+  </revision>
+</revisionlist>

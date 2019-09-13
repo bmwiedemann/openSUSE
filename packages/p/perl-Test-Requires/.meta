@@ -1,0 +1,6 @@
+<package name="perl-Test-Requires" project="openSUSE:Factory">
+  <title>Checks to see if the module can be loaded</title>
+  <description>Test::Requires checks to see if the module can be loaded.</description>
+  <devel project="devel:languages:perl" package="perl-Test-Requires"/>
+  <url>http://search.cpan.org/dist/Test-Requires</url>
+</package>

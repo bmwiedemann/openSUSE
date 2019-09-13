@@ -1,0 +1,5 @@
+<package name="python-ruamel.yaml.convert" project="openSUSE:Factory">
+  <title>python-ruamel.yaml.convert</title>
+  <description>Data format conversion routines to and from YAML</description>
+  <devel project="devel:languages:python" package="python-ruamel.yaml.convert"/>
+</package>

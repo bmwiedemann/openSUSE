@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bbd55b445823b19e198e057ae7640656</srcmd5>
+    <version>18.6.0</version>
+    <time>1541865301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643644</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f075798bafa57091c1c362b97f94cf61</srcmd5>
+    <version>18.6.0</version>
+    <time>1552206868</time>
+    <user>coolo</user>
+    <comment>- Add patch to fix testrun on python3.7:
+  * python37.patch
+- Fix macro expansion to run the tests under python3</comment>
+    <requestid>682433</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f220c675205d86c32b774a83a3c83a1a</srcmd5>
+    <version>18.6.0</version>
+    <time>1568379722</time>
+    <user>lnussel_factory</user>
+    <comment>- Add patch to fix build with new Twisted releases:
+  * urlparsing.patch</comment>
+    <requestid>730449</requestid>
+  </revision>
+</revisionlist>

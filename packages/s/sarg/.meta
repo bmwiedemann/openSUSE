@@ -1,0 +1,8 @@
+<package name="sarg" project="openSUSE:Factory">
+  <title>Squid Analysis Report Generator</title>
+  <description>Sarg -- Squid Analysis Report Generator is a tool that allows you to
+view &quot;where&quot; your users are going to on the Internet. Sarg generate
+reports in html, with fields such as: users, IP Addresses, bytes,
+sites, and times.</description>
+  <devel project="server:proxy" package="sarg"/>
+</package>

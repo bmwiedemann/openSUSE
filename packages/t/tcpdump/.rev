@@ -1,0 +1,329 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3342d9bff2cb45d05cbd793108df745a</srcmd5>
+    <version>3.9.5</version>
+    <time>1167928116</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>b813b6733efddf25a2b968721c088f07</srcmd5>
+    <version>3.9.5</version>
+    <time>1172929027</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4510e69bec11e8c599101efe0b4592bf</srcmd5>
+    <version>3.9.6</version>
+    <time>1184427102</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>af85cb49aafd0a3b1867b84454c9ce46</srcmd5>
+    <version>3.9.7</version>
+    <time>1185495124</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b0b8c42e9043897628ac71619ab95465</srcmd5>
+    <version>3.9.8</version>
+    <time>1199931466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="59">
+    <srcmd5>b0b8c42e9043897628ac71619ab95465</srcmd5>
+    <version>3.9.8</version>
+    <time>1199931466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>edc142bb536d1a269deab3c5ab1be8c1</srcmd5>
+    <version>4.0.0</version>
+    <time>1232328011</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>edc142bb536d1a269deab3c5ab1be8c1</srcmd5>
+    <version>4.0.0</version>
+    <time>1232328011</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>56cf2d941aff82b9536feb2785069244</srcmd5>
+    <version>4.0.0</version>
+    <time>1268926302</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c3611afb999b19d61cb129a6be13451c</srcmd5>
+    <version>4.1.1</version>
+    <time>1270586937</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/tcpdump based on submit request 37043 from user puzel
+</comment>
+    <requestid>37043</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c3611afb999b19d61cb129a6be13451c</srcmd5>
+    <version>4.1.1</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>c3611afb999b19d61cb129a6be13451c</srcmd5>
+    <version>4.1.1</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>c3611afb999b19d61cb129a6be13451c</srcmd5>
+    <version>4.1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>c3611afb999b19d61cb129a6be13451c</srcmd5>
+    <version>4.1.1</version>
+    <time>1319182509</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>39ff0b8b9fbad6ef82c1f0e9d15532e6</srcmd5>
+    <version>4.2.0</version>
+    <time>1322567556</time>
+    <user>coolo</user>
+    <comment>- update to 4.2.0
+  * patch that adds missing ppi.h
+  * Summary for 4.2.0
+    - merged 802.15.4 decoder from Dmitry Eremin-Solenikov &lt;dbaryshkov
+      at gmail dot com&gt;
+    - updates to forces for new port numbers
+    - Use &quot;-H&quot;, not &quot;-h&quot;, for the 802.11s option. (-h always help)
+    - Better ICMPv6 checksum handling.
+    - add support for the RPKI/Router Protocol, per -ietf-sidr-rpki-rtr-12
+    - get rid of uuencoded pcap test files, git can do binary.
+    - sFlow changes for 64-bit counters.
+    - fixes for PPI packet header handling and printing.
+    - Add DCB Exchange protocol (DCBX) version 1.01.
+    - Babel dissector, from Juliusz Chroboczek and GrÃ©goire Henry.
+    - improvements to radiotap for rate values &gt; 127.
+    - Many improvements to ForCES decode, including fix SCTP TML port
+    - updated RPL type code to RPL-17 draft
+    - Improve printout of DHCPv6 options.
+    - added support and test case for QinQ (802.1q VLAN) packets
+    - Handle DLT_IEEE802_15_4_NOFCS like DLT_IEEE802_15_4.
+    - Build fixes for Sparc and other machines with alignment restrictions.
+    - Merged changes from Debian package.
+    - PGM: Add ACK decoding and add PGMCC DATA and FEEDBACK options.
+    - Build fixes for OSX (Snow Leopard and others)
+    - Add support for IEEE 802.15.4 packets
+  * Summary for 4.1.2 tcpdump release
+    - If -U is specified, flush the file after creating it, so it's
+      not zero-length
+    - Fix TCP flags output description, and some typoes, in the man
+      page (forwarded request 94001 from vitezslav_cizek)</comment>
+    <requestid>94135</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>9a48055b62205f64cfdd633ddf24e1e8</srcmd5>
+    <version>4.2.0</version>
+    <time>1323194863</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fd79ce18d8153d29a3de869dd0c399b5</srcmd5>
+    <version>4.2.1</version>
+    <time>1325658738</time>
+    <user>coolo</user>
+    <comment>- update to 4.2.1
+  - Only build the Babel printer if IPv6 is enabled.
+  - Support Babel on port 6696 as well as 6697.
+  - Include ppi.h in release tarball.
+  - Include all the test files in the release tarball, and don't
+    &quot;include&quot; test files that no longer exist.
+  - Don't assume we have &lt;rpc/rpc.h&gt; - check for it.
+  - Support &quot;-T carp&quot; as a way of dissecting IP protocol 112 as CARP
+    rather than VRRP.
+  - Support Hilscher NetAnalyzer link-layer header format.
+  - Constify some pointers and fix compiler warnings.
+  - Get rid of never-true test.
+  - Fix an unintended fall-through in a case statement in the ARP
+    printer.
+  - Fix several cases where sizeof(sizeof(XXX)) was used when just
+    sizeof(XXX) was intended.
+  - Make stricter sanity checks in the ES-IS printer.
+  - Get rid of some GCCisms that caused builds to fail with compilers
+    that don't support them.
+  - Fix typo in man page.
+  - Added length checks to Babel printer.
+- drop tcpdump-4.2.0-ppi.patch (upstream)</comment>
+    <requestid>98634</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8b71205b42a78def0fd2fad3f2d28abc</srcmd5>
+    <version>4.3.0</version>
+    <time>1339761983</time>
+    <user>coolo</user>
+    <comment>update to 4.3.0 (forwarded request 125062 from jirislaby)</comment>
+    <requestid>125067</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>8b71205b42a78def0fd2fad3f2d28abc</srcmd5>
+    <version>4.3.0</version>
+    <time>1340184261</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>11ebcb87cd0aa26e02b99cf93a5f06f7</srcmd5>
+    <version>4.3.0</version>
+    <time>1347619180</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134102</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>11ebcb87cd0aa26e02b99cf93a5f06f7</srcmd5>
+    <version>4.3.0</version>
+    <time>1359110467</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>79f1861dfc0166bc383df24e57bc15d8</srcmd5>
+    <version>4.4.0</version>
+    <time>1379319358</time>
+    <user>coolo</user>
+    <comment>- verify source signature (forwarded request 199023 from AndreasStieger)</comment>
+    <requestid>199024</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>79f1861dfc0166bc383df24e57bc15d8</srcmd5>
+    <version>4.4.0</version>
+    <time>1379664777</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ab4b8f65c73d72ad197c8640a74345f5</srcmd5>
+    <version>4.5.1</version>
+    <time>1387174493</time>
+    <user>coolo</user>
+    <comment>update to 4.5.1 (forwarded request 210857 from AndreasStieger)</comment>
+    <requestid>210858</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ed45193be137cce3cb72202e5781e5ac</srcmd5>
+    <version>4.6.1</version>
+    <time>1408549971</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244896</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>ed45193be137cce3cb72202e5781e5ac</srcmd5>
+    <version>4.6.1</version>
+    <time>1409303457</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>874d2d092c8a10b3128d575eb0b18898</srcmd5>
+    <version>4.6.2</version>
+    <time>1410281978</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247450</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>d32c5ac444e09460f090e012a722d3fa</srcmd5>
+    <version>4.6.2</version>
+    <time>1423732837</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285056</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6d96a0e1357fd68552192afc2c90b1ef</srcmd5>
+    <version>4.7.3</version>
+    <time>1426485281</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290680</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>a92b83db706f1449855bb8fcd3991011</srcmd5>
+    <version>4.7.3</version>
+    <time>1429658043</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297858</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7432ac1070f15199123ce3185498fa1f</srcmd5>
+    <version>4.7.4</version>
+    <time>1430387368</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304255</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>b1809f5768e0615726d0eeff18d31921</srcmd5>
+    <version>4.7.4</version>
+    <time>1459717473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>381498</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>c3aad0217a1cb4c41bc8a59e72f76dd5</srcmd5>
+    <version>4.7.4</version>
+    <time>1462051532</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390174</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>71217fe28c8e1034e7a806a1b5ab0582</srcmd5>
+    <version>4.9.0</version>
+    <time>1488732812</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454247</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a0e72716ba109d460e3188b801ca6b44</srcmd5>
+    <version>4.9.1</version>
+    <time>1501227885</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512663</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>6051b0cf3bd5be54dcdff927706470ff</srcmd5>
+    <version>4.9.2</version>
+    <time>1505757245</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>525837</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>c32890a64f313e0044d2644b0b7ce6cd</srcmd5>
+    <version>4.9.2</version>
+    <time>1544539542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655857</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>9d2ef624ead2ce2090c1066e6e6b9eff</srcmd5>
+    <version>4.9.2</version>
+    <time>1564301888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717922</requestid>
+  </revision>
+</revisionlist>

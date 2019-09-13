@@ -1,0 +1,7 @@
+<package name="libgpg-error" project="openSUSE:Factory">
+  <title>Library That Defines Common Error Values for All GnuPG Components</title>
+  <description>This is a library that defines common error values for all GnuPG
+components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
+pinentry, SmartCard Daemon, and possibly more in the future.</description>
+  <devel project="Base:System" package="libgpg-error"/>
+</package>

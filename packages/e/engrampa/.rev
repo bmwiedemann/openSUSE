@@ -1,0 +1,153 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24c860e3bf1d67cba4fc3bff119a3536</srcmd5>
+    <version>1.8.0</version>
+    <time>1395495914</time>
+    <user>coolo</user>
+    <comment>Fix conflicts with mate-file-archiver</comment>
+    <requestid>225728</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>24c860e3bf1d67cba4fc3bff119a3536</srcmd5>
+    <version>1.8.0</version>
+    <time>1409300829</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e1edca2fc437af8c63214e575e2d8fbf</srcmd5>
+    <version>1.8.1</version>
+    <time>1412533891</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253737</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8ad3df47cada14b2879d7add0ec11e3b</srcmd5>
+    <version>1.10.0</version>
+    <time>1435870104</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314197</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cce53821c262ea1e3131784cc8a19767</srcmd5>
+    <version>1.10.1</version>
+    <time>1438421695</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>317690</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>72b68d661e7a25f84a4482f7c30eadf1</srcmd5>
+    <version>1.10.2</version>
+    <time>1443770636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>335638</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3a2da8c70a6183c7a1221bb39fe02011</srcmd5>
+    <version>1.12.0</version>
+    <time>1447234215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>342760</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>51874e9dc5baa0a127f41480dbb11f5c</srcmd5>
+    <version>1.14.0</version>
+    <time>1460740154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>386754</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c135280a31282c8604bcf0a7387099fe</srcmd5>
+    <version>1.14.1</version>
+    <time>1464014404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>397327</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d767ef2f96bd0e13851272c129ff2683</srcmd5>
+    <version>1.16.0</version>
+    <time>1474807338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>429527</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f7e9888039b3c318386d29507c0b1d11</srcmd5>
+    <version>1.18.0</version>
+    <time>1490026264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481115</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3dc921c9ac45ee81e031158eb72a72d6</srcmd5>
+    <version>1.18.1</version>
+    <time>1491566165</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>485908</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>472f5fb31018a3648575e3b602c07b59</srcmd5>
+    <version>1.18.3</version>
+    <time>1510660173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539514</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>12d364070f8161aff73398bcd048017f</srcmd5>
+    <version>1.20.0</version>
+    <time>1521579509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587089</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d3d04f945c1c04a4f97a638a25f9ac86</srcmd5>
+    <version>1.20.1</version>
+    <time>1530304086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617227</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fcbb966f2758fcb625d2d8b9f7fd49a9</srcmd5>
+    <version>1.20.2</version>
+    <time>1545141456</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.2.</comment>
+    <requestid>658206</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1737fe262322d45cbb456c8f1e6f9c1f</srcmd5>
+    <version>1.22.0</version>
+    <time>1558036993</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0.</comment>
+    <requestid>682549</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>797181b85100a7d4750cfe66d358b3dd</srcmd5>
+    <version>1.22.1</version>
+    <time>1558516517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.1.</comment>
+    <requestid>704371</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f4378a69bea542d4d5df05a614ab5978</srcmd5>
+    <version>1.23.0</version>
+    <time>1564576473</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>719947</requestid>
+  </revision>
+</revisionlist>

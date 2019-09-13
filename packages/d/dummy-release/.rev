@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b23d87bfe2742d73acc3c2d5661e2af8</srcmd5>
+    <version>11</version>
+    <time>1222092938</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>60064f684f973b0d132e8a144307e869</srcmd5>
+    <version>11</version>
+    <time>1223304433</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>276904f6e606d951225355d6e59cfb8a</srcmd5>
+    <version>11</version>
+    <time>1225670365</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>276904f6e606d951225355d6e59cfb8a</srcmd5>
+    <version>11</version>
+    <time>1225670365</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>725e9c452beeb9db08151f386ee56590</srcmd5>
+    <version>11</version>
+    <time>1268923405</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>725e9c452beeb9db08151f386ee56590</srcmd5>
+    <version>11</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>725e9c452beeb9db08151f386ee56590</srcmd5>
+    <version>11</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>725e9c452beeb9db08151f386ee56590</srcmd5>
+    <version>11</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>205a8155752f4c7ea39a8263b9cd25f7</srcmd5>
+    <version>11</version>
+    <time>1316515956</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines) (forwarded request 83302 from jengelh)</comment>
+    <requestid>83740</requestid>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>205a8155752f4c7ea39a8263b9cd25f7</srcmd5>
+    <version>11</version>
+    <time>1319181857</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>04428bd8f2c375d56debe3107ac202cd</srcmd5>
+    <version>11</version>
+    <time>1323191234</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>04428bd8f2c375d56debe3107ac202cd</srcmd5>
+    <version>11</version>
+    <time>1340183293</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>04428bd8f2c375d56debe3107ac202cd</srcmd5>
+    <version>11</version>
+    <time>1359108829</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="22">
+    <srcmd5>04428bd8f2c375d56debe3107ac202cd</srcmd5>
+    <version>11</version>
+    <time>1379662258</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>efd898be2d14ea774d475614d9795d04</srcmd5>
+    <version>12</version>
+    <time>1397450605</time>
+    <user>coolo</user>
+    <comment>- also add an os-release</comment>
+    <requestid>229732</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>efd898be2d14ea774d475614d9795d04</srcmd5>
+    <version>12</version>
+    <time>1409300796</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>4b9685d9d1e744d9b79e4418ae29f385</srcmd5>
+    <version>12</version>
+    <time>1500892195</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511402</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6b38646a9d948add8f22a7dc6d02a219</srcmd5>
+    <version>15</version>
+    <time>1503999332</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517821</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5bcc7a57612c8e983239470fd1e09cf8</srcmd5>
+    <version>15</version>
+    <time>1553435786</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686417</requestid>
+  </revision>
+</revisionlist>

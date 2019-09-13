@@ -1,0 +1,5 @@
+<package name="rubygem-json-jwt" project="openSUSE:Factory">
+  <title>json-jwt</title>
+  <description>JSON Web Token and its family (JSON Web Signature, JSON Web Encryption and JSON Web Key) in Ruby</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-json-jwt"/>
+</package>

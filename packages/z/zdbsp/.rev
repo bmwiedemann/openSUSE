@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe8963d325b7171bc384c921170b8a4b</srcmd5>
+    <version>1.18.1</version>
+    <time>1365140616</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>161679</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fe8963d325b7171bc384c921170b8a4b</srcmd5>
+    <version>1.18.1</version>
+    <time>1379665189</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>fe8963d325b7171bc384c921170b8a4b</srcmd5>
+    <version>1.18.1</version>
+    <time>1409303873</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>5e4e1a8b96304634f143ab40318a4217</srcmd5>
+    <version>1.18.1</version>
+    <time>1425892180</time>
+    <user>dimstar_suse</user>
+    <comment>- Preemptively disable PIE, since there is assembler included</comment>
+    <requestid>289682</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>6d3c01994e6230c32a86ebd20fdc5553</srcmd5>
+    <version>1.18.1</version>
+    <time>1491896446</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484873</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>10fab5a4aacc4d2c291066537f81a0f6</srcmd5>
+    <version>1.19</version>
+    <time>1492417588</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487466</requestid>
+  </revision>
+</revisionlist>

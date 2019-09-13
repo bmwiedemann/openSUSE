@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a965aa92f4baafa47e9cb2211ca0960f</srcmd5>
+    <version>2.2.1</version>
+    <time>1434460407</time>
+    <user>coolo</user>
+    <comment>Part of Octave-Forge project</comment>
+    <requestid>310990</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>461eacfc752d97b59b3cfe321166a9cf</srcmd5>
+    <version>3.0.2</version>
+    <time>1441054732</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.2
+  * Bugfix release
+
+- Update to version 3.0.0
+  * 'parcellfun' and 'pararrayfun' accept an option &quot;CumFunc&quot; for
+    cumulative results.
+  * Fix handling of option &quot;UniformOutput&quot; with option &quot;Vectorized&quot; in
+    'pararrayfun'.
+  * Function 'connect()' has been renamed to 'pconnect()' since the
+    previous name is used by the control package.
+  * New functions 'netcellfun' and 'netarrayfun' for remote parallel
+    execution.
+  * New convenience function 'rfeval' for single remote function
+    execution.
+  * New function 'install_vars' to distribute named variables over the
+    parallel cluster.
+  * The value returned by pconnect and the variable 'sockets' held by
+    pserver, holding the network connections, are now opaque. Indexing
+    the connections in this value should work as with the matrix used
+    before.
+  * Connections can be based on TLS-SRP, which is now the default. New
+    function parallel_generate_srp_data generates authorization data.
+  * Parallel cluster commands hanging in system calls (e.g. trying to
+    read data that was not sent) can be interrupted with Ctrl-C
+    (invalidating the network connections in most cases, so that
+    information within server memory will be lost).
+  * New functions 'network_get_info' and 'network_set'.
+  * Within a particular parallel network, servers are supposed to be
+    unique now. But a server can be a part of several parallel
+    networks, and successful connection attempts of such overlapping</comment>
+    <requestid>322354</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>83f96a7dce810aad0831c9b60decb61d</srcmd5>
+    <version>3.0.3</version>
+    <time>1446465306</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341742</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea9ca3b7c933bce11e041419e4ea1e77</srcmd5>
+    <version>3.1.0</version>
+    <time>1465938470</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401280</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c53c2b5accf7a7f3e9a1ff06bf82141b</srcmd5>
+    <version>3.1.1</version>
+    <time>1480341928</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441715</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6952ab5121b530dfbd8caa92583a51a4</srcmd5>
+    <version>3.1.2</version>
+    <time>1530303941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>616556</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a197af0139a0c8aee0e6aa3bd1877cb0</srcmd5>
+    <version>3.1.3</version>
+    <time>1534774767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630303</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>88f884de57eae0ece1a1a74ac9b69fd2</srcmd5>
+    <version>3.1.3</version>
+    <time>1552207252</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>683025</requestid>
+  </revision>
+</revisionlist>

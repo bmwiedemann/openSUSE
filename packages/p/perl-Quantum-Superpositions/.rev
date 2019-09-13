@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="71">
+    <srcmd5>ac832ea30b0e1973b86b7bac0438c7ae</srcmd5>
+    <version>2.02</version>
+    <time>1168903902</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="257">
+    <srcmd5>ac832ea30b0e1973b86b7bac0438c7ae</srcmd5>
+    <version>2.02</version>
+    <time>1168903902</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="258">
+    <srcmd5>818c96dc788257c3a0424b292980702f</srcmd5>
+    <version>2.02</version>
+    <time>1245337893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="260">
+    <srcmd5>818c96dc788257c3a0424b292980702f</srcmd5>
+    <version>2.02</version>
+    <time>1245337893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="261">
+    <srcmd5>435a01d4ef12c788fff50bc8d4ff3601</srcmd5>
+    <version>2.02</version>
+    <time>1263298313</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Quantum-Superpositions based on submit request 28965 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="262">
+    <srcmd5>e69557d2145ebb67fd3c9d4129ab7825</srcmd5>
+    <version>2.02</version>
+    <time>1268925592</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="264">
+    <srcmd5>e69557d2145ebb67fd3c9d4129ab7825</srcmd5>
+    <version>2.02</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="265">
+    <srcmd5>e69557d2145ebb67fd3c9d4129ab7825</srcmd5>
+    <version>2.02</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="266">
+    <srcmd5>18615f79bbb5c5f50f3794423a62dcd9</srcmd5>
+    <version>2.02</version>
+    <time>1291583677</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54734 from user coolo
+</comment>
+    <requestid>54734</requestid>
+  </revision>
+  <revision rev="10" vrev="267">
+    <srcmd5>373e6e1369dce5c851c0f179e70fd158</srcmd5>
+    <version>2.02</version>
+    <time>1291583681</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54734
+</comment>
+  </revision>
+  <revision rev="11" vrev="270">
+    <srcmd5>373e6e1369dce5c851c0f179e70fd158</srcmd5>
+    <version>2.02</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="272">
+    <srcmd5>373e6e1369dce5c851c0f179e70fd158</srcmd5>
+    <version>2.02</version>
+    <time>1319182301</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="273">
+    <srcmd5>8041a967f6dfc6599efc38d8dfa8290f</srcmd5>
+    <version>2.02</version>
+    <time>1321875891</time>
+    <user>coolo</user>
+    <comment>- use original tar.gz</comment>
+    <requestid>92044</requestid>
+  </revision>
+  <revision rev="14" vrev="274">
+    <srcmd5>74b0aeee1bb690019a28478a7f4b4be4</srcmd5>
+    <version>2.02</version>
+    <time>1323193598</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="276">
+    <srcmd5>74b0aeee1bb690019a28478a7f4b4be4</srcmd5>
+    <version>2.02</version>
+    <time>1340183909</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="278">
+    <srcmd5>74b0aeee1bb690019a28478a7f4b4be4</srcmd5>
+    <version>2.02</version>
+    <time>1359109784</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="280">
+    <srcmd5>74b0aeee1bb690019a28478a7f4b4be4</srcmd5>
+    <version>2.02</version>
+    <time>1379663823</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="282">
+    <srcmd5>74b0aeee1bb690019a28478a7f4b4be4</srcmd5>
+    <version>2.02</version>
+    <time>1409302460</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cb365357d3f2ee62fd1ea7f48c108e78</srcmd5>
+    <version>2.03</version>
+    <time>1535367626</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.03
+   see /usr/share/doc/packages/perl-Quantum-Superpositions/Changes
+  
+  2.0.2   
+  
+  - POD, thanks for Florian Schlichting
+</comment>
+    <requestid>631709</requestid>
+  </revision>
+</revisionlist>

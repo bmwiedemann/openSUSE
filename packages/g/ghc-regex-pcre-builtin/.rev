@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a41d7f9caf2815ba9cf8a567c932e62</srcmd5>
+    <version>0.94.4.8.8.35</version>
+    <time>1432723531</time>
+    <user>dimstar_suse</user>
+    <comment>The PCRE backend to accompany regex-base, with bundled code from www.pcre.org.</comment>
+    <requestid>307968</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>68ab759aeaf959f4e2314ac0dbf7b445</srcmd5>
+    <version>0.94.4.8.8.35</version>
+    <time>1468999600</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411871</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fd120d8db7001e562f78247b441ff501</srcmd5>
+    <version>0.94.4.8.8.35</version>
+    <time>1505506156</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525290</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fcf3a1edc140a31bb219b0d3543c9bc3</srcmd5>
+    <version>0.94.4.8.8.35</version>
+    <time>1527675627</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609815</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c486dbebaee330f4e2299f647ede0555</srcmd5>
+    <version>0.94.4.8.8.35</version>
+    <time>1532445687</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- initial commit</comment>
+    <requestid>623841</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>d8501f83603418bb7d406bb746474acf</srcmd5>
+    <version>0.94.4.8.8.35</version>
+    <time>1540450993</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643447</requestid>
+  </revision>
+</revisionlist>

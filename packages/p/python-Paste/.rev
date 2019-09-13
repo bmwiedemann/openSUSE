@@ -1,0 +1,238 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c94cbbc5eb454542854271911e95d8de</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1312462764</time>
+    <user>darix</user>
+    <comment>Please add</comment>
+    <requestid>77041</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a03af45ea4fe3bd552a3daa8a2ab1517</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1312462776</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 77041
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a03af45ea4fe3bd552a3daa8a2ab1517</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1319182380</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d6905e9cdfb53f2d71bcebddb303f500</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1323194216</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>d6905e9cdfb53f2d71bcebddb303f500</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1340184031</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>204978ebd2b6b05faaa844712376a265</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1353847896</time>
+    <user>coolo</user>
+    <comment>- Require python-python-openid instead of non-existing python-openid
+- Build HTML documentation</comment>
+    <requestid>142495</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>204978ebd2b6b05faaa844712376a265</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1359109981</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>204978ebd2b6b05faaa844712376a265</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1379664110</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>531fcfbf356df00412ff2435e466a46c</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1382693114</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204611</requestid>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>531fcfbf356df00412ff2435e466a46c</srcmd5>
+    <version>1.7.5.1</version>
+    <time>1409302797</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2abdc3a4939398de5dc21da051c5db82</srcmd5>
+    <version>2.0.1</version>
+    <time>1431668633</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306669</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>cc87fd966fd6d8a6e1eb5ccbb5db1ec0</srcmd5>
+    <version>2.0.1</version>
+    <time>1458228867</time>
+    <user>dimstar_suse</user>
+    <comment>- add license.txt</comment>
+    <requestid>371247</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1cbb5fd0c365459f4f27f76c5151ec3b</srcmd5>
+    <version>2.0.3</version>
+    <time>1465336176</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.3:
+  * prepare release 2.0.1
+  * Added tag 2.0.1 for changeset a0ef0e57e057
+  * set version to 2.0.2
+  * Add tests/test_httpserver.py
+  * Fix improper commas in request headers in wsgi_environ
+  * tests/test_httpserver.py: Use `email` module instead of `mimetools`
+  * tests/test_httpserver.py: Add test_environ_with_multiple_values
+  * Make get all values of a header work on both Python 2 and 3
+  * Make get_headers default to Python 3; fallback to Python 2
+  * Make utility function private: _get_headers
+  * Fix Python 3 issue in paste/fixture.py
+  * test_wsgirequest_charset: Use UTF-8 instead of iso-8859-1
+  * Replace cgi.parse_qsl w/ six.moves.urllib.parse.parse_sql
+  * replace ``has_key`` method to ``in`` operator #9
+  * Don't display invalid error message when socket in use
+  * Update docs/news.txt for 2.0.2
+  * Added tag 2.0.2 for changeset 53f5c2cd7f50
+  * Python 3: App must always return binary type.
+  * Python 3: Always encode params if passed as text types
+  * Python 3: Don't mangle strangely encoded input
+  * Python 3: Use the same python interpreter for CGI scripts.
+  * Python 3: add workarounds for cgi.FieldStorage
+  * Python 3: avoid spurious warnings
+  * Python 3: dict.items() doesn't return a list anymore
+  * Python 3: ignore exception details in doctests
+  * Python 3: let html_quote() and url() always return the same type
+  * Python 3: use compatible print syntax in example text
+  * Change six requirement to &gt;=1.4.0
+  * tox.ini: Add py35 to envlist</comment>
+    <requestid>400245</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>33357c89e35b68daf54942d9978c581e</srcmd5>
+    <version>2.0.3</version>
+    <time>1495011059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493094</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>1fdd282ef062effe395debafb1a2df6e</srcmd5>
+    <version>2.0.3</version>
+    <time>1502629059</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515841</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>58643455642ca1d921c7e56ebb5518f6</srcmd5>
+    <version>2.0.3</version>
+    <time>1521716691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589231</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>69a95b8ba94fe1d249d6e28c3d245d92</srcmd5>
+    <version>2.0.3</version>
+    <time>1540448019</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on python 3.7:
+  * python37.patch</comment>
+    <requestid>642830</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1eb8b19e5c292f3d588d070c3bd58cfa</srcmd5>
+    <version>3.0.5</version>
+    <time>1545223849</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.5:
+  * make tests pass after 2031
+  * Use correct variable when building message for exception
+  * Remove use of OpenSSL.tsafe, which links to OpenSSL.SSL anyways. (#16)
+  * Fix error on httpserver shutdown
+  * Add support for limited testing with travis-ci
+  * Merged in hroncok/paste/py37 (pull request #41)
+  * Don't raise StopIteration from generator, return instead
+  * Fix up testing after switch to pytest
+  * Make iterators Python3-compatible
+  * Remove use of future
+  * Don't raise StopIteration inside a generator
+  * add link to read the docs to README
+  * Release 3.0.2
+  * Release 3.0.5
+  * Prepare docs for publishing to RTFD
+  * Run tox with Python 3.6 and 3.7
+  * Prepare a 3.0.0 release
+  * release 3.0.1
+  * py3 fixes for form handling in paste.fixture (#8)
+  * release 3.0.3
+  * Special case py37
+  * release 3.0.4
+  * Switch from nose to pytest
+  * Pytest fixes (#9)
+  * paste.fixture: fix form offset handling (#12)
+  * Add a simple .gitignore
+  * Don't delete dict item while iterating over same dict (#14)
+  * Depend on pytest instead of nose (#13)
+  * Fix proxy test</comment>
+    <requestid>658977</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>20d140ece83da9337e81949ae5086c37</srcmd5>
+    <version>3.0.5</version>
+    <time>1546535370</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable test_modified as it fails on non 64b arches due to
+  slightly different reported string
+- Drop nose dep, not needed
+- Fix URL to point to current homepage</comment>
+    <requestid>662605</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9ea83cd998051c33a09c8f66e32eb9c4</srcmd5>
+    <version>3.0.7</version>
+    <time>1552039251</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not bother with sphinx docu, it is online anyway
+
+- Update to 3.0.7:
+  * Write bytestrings when calling wsgi_write_chunk
+  * Revert &quot;Remove use of OpenSSL.tsafe, which links to OpenSSL.SSL</comment>
+    <requestid>681893</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>76e82defe098c298648e9819c3e1502a</srcmd5>
+    <version>3.0.8</version>
+    <time>1552380338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682768</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8137ac62f7dd055da51c16f7ee1eb857</srcmd5>
+    <version>3.1.0</version>
+    <time>1565096871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719517</requestid>
+  </revision>
+</revisionlist>

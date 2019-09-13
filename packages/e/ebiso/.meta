@@ -1,0 +1,13 @@
+<package name="ebiso" project="openSUSE:Factory">
+  <title>UEFI bootable ISO image creator for Relax-and-Recover</title>
+  <description>ebiso is needed by Relax-and-Recover (abbreviated rear)
+to create bootable ISO images with enabled UEFI boot
+on 64-bit x86_64 architecture.
+
+ebiso only works for systems with UEFI boot.
+ebiso cannot create legacy bootable ISOs.
+
+See project pages at https://github.com/gozora/ebiso
+</description>
+  <devel project="Archiving" package="ebiso"/>
+</package>

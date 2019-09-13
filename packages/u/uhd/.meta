@@ -1,0 +1,5 @@
+<package name="uhd" project="openSUSE:Factory">
+  <title>UHD is the &quot;Universal Software Radio Peripheral&quot; Hardware Driver</title>
+  <description>The goal of the UHD is to provide a host driver and API for current and future Ettus Research products. Users will be able to use the UHD driver standalone or with 3rd party applications.</description>
+  <devel project="hardware:sdr" package="uhd"/>
+</package>

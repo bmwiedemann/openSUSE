@@ -1,0 +1,9 @@
+<package name="smp_utils" project="openSUSE:Factory">
+  <title>Utilities for the SAS Management Protocol (SMP)</title>
+  <description>The smp_utils package contains utilities for the Serial Attached SCSI
+(SAS) Management Protocol (SMP).  Most utilities correspond to a single
+SMP function, sending out a request, checking for errors and if all is
+well processing the response. The response is either decoded, printed
+out in ASCII hexadecimal or sent as binary to stdout.</description>
+  <devel project="Base:System" package="smp_utils"/>
+</package>

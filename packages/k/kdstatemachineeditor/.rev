@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e66695ed3ada0978db690652ec35e1d</srcmd5>
+    <version>1.2.0</version>
+    <time>1488479174</time>
+    <user>dimstar_suse</user>
+    <comment>New libraries required for gammaray.</comment>
+    <requestid>459036</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>15d6ed2f0d57e69e2f33e6bdb30d6383</srcmd5>
+    <version>1.2.1</version>
+    <time>1503392936</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.2.1</comment>
+    <requestid>517763</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c95c9100726bf47c25b3217ed034c6d8</srcmd5>
+    <version>1.2.3</version>
+    <time>1527084574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.3.</comment>
+    <requestid>611425</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>13086c8a3b6761ddc06fb1bc8b01bd0a</srcmd5>
+    <version>1.2.4</version>
+    <time>1550402456</time>
+    <user>coolo</user>
+    <comment>- Update to 1.2.4
+  * Fix a build issue
+- Drop fix-build.patch. Fixed upstream
+</comment>
+    <requestid>676346</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>85621c3397e8ed2b836222d28852746c</srcmd5>
+    <version>1.2.5</version>
+    <time>1551687819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681069</requestid>
+  </revision>
+</revisionlist>

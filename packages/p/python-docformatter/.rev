@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>914d5a45847716802c3a8d8f3c24e872</srcmd5>
+    <version>1.0</version>
+    <time>1527933875</time>
+    <user>dimstar_suse</user>
+    <comment>Formats docstrings to follow PEP 257</comment>
+    <requestid>612072</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2426e9d0257949d82025ed551425721b</srcmd5>
+    <version>1.0</version>
+    <time>1533045710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626409</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>03778de9d1e1289783b7150838081c04</srcmd5>
+    <version>1.0</version>
+    <time>1544726594</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654019</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1cb4922520b119892d797c4c7e34662f</srcmd5>
+    <version>1.1</version>
+    <time>1552207220</time>
+    <user>coolo</user>
+    <comment>- Update to 1.1:
+  * fixes for python 3.7
+  * varioius cleanups</comment>
+    <requestid>682864</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7def5d2f7f50b0b15f0b1f260e6120ac</srcmd5>
+    <version>1.3</version>
+    <time>1564155245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718797</requestid>
+  </revision>
+</revisionlist>

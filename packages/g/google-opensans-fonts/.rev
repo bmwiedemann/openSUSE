@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bdcefa2090e3595520c3f8ac1f1274a9</srcmd5>
+    <version>1.0</version>
+    <time>1335165275</time>
+    <user>coolo</user>
+    <comment>new font</comment>
+    <requestid>114719</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>087ae49ebee7220f76231ca6bf21581c</srcmd5>
+    <version>1.0</version>
+    <time>1338017140</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122154</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>087ae49ebee7220f76231ca6bf21581c</srcmd5>
+    <version>1.0</version>
+    <time>1340183406</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>a0370e13a06b64179b8048a6aa93ed93</srcmd5>
+    <version>1.0</version>
+    <time>1347618320</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133957</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>a0370e13a06b64179b8048a6aa93ed93</srcmd5>
+    <version>1.0</version>
+    <time>1359108992</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>a0370e13a06b64179b8048a6aa93ed93</srcmd5>
+    <version>1.0</version>
+    <time>1379662541</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>a0370e13a06b64179b8048a6aa93ed93</srcmd5>
+    <version>1.0</version>
+    <time>1409301083</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a4f424c8f9f900cef2f6e0ac1c800867</srcmd5>
+    <version>20180610</version>
+    <time>1537970386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636092</requestid>
+  </revision>
+</revisionlist>

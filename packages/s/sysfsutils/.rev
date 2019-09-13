@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>82128e4b03ec4d1db226647f960b25ee</srcmd5>
+    <version>2.1.0</version>
+    <time>1168904311</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="23">
+    <srcmd5>afe05b60f187bd4255d465baee758475</srcmd5>
+    <version>2.1.0</version>
+    <time>1168965291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="90">
+    <srcmd5>79c6314ca08f472060459dac8723fe54</srcmd5>
+    <version>2.1.0</version>
+    <time>1207834421</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="101">
+    <srcmd5>5dd04f034f1739dff979cef02d059c7a</srcmd5>
+    <version>2.1.0</version>
+    <time>1214430857</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="127">
+    <srcmd5>7fc6e9cec3312f79e41a02d3a0ac36ab</srcmd5>
+    <version>2.1.0</version>
+    <time>1231463037</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="129">
+    <srcmd5>b5efec11a88e33802d916025b703b240</srcmd5>
+    <version>2.1.0</version>
+    <time>1237916434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="131">
+    <srcmd5>b5efec11a88e33802d916025b703b240</srcmd5>
+    <version>2.1.0</version>
+    <time>1237916434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="132">
+    <srcmd5>bbdc4e286782b5e4b3a91c7c41dcad0c</srcmd5>
+    <version>2.1.0</version>
+    <time>1263483483</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysfsutils based on submit request 29079 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="9" vrev="133">
+    <srcmd5>105b60a75717668ad7595b669eefbbba</srcmd5>
+    <version>2.1.0</version>
+    <time>1268926266</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="135">
+    <srcmd5>105b60a75717668ad7595b669eefbbba</srcmd5>
+    <version>2.1.0</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="136">
+    <srcmd5>105b60a75717668ad7595b669eefbbba</srcmd5>
+    <version>2.1.0</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="137">
+    <srcmd5>a16db66a69f80ab4f9b1b95df9b1d39f</srcmd5>
+    <version>2.1.0</version>
+    <time>1280494579</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysfsutils based on submit request 44240 from user coolo
+</comment>
+    <requestid>44240</requestid>
+  </revision>
+  <revision rev="13" vrev="138">
+    <srcmd5>2399d0f469ec58cc81f72ba418a336f8</srcmd5>
+    <version>unknown</version>
+    <time>1284123684</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysfsutils based on submit request 47572 from user kay_sievers
+</comment>
+    <requestid>47572</requestid>
+  </revision>
+  <revision rev="14" vrev="141">
+    <srcmd5>2399d0f469ec58cc81f72ba418a336f8</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="143">
+    <srcmd5>2399d0f469ec58cc81f72ba418a336f8</srcmd5>
+    <version>unknown</version>
+    <time>1319182500</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="144">
+    <srcmd5>5b5c329ef32263792118043b7473732f</srcmd5>
+    <version>2.1.0</version>
+    <time>1323194811</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="145">
+    <srcmd5>d6ea2f844bef3819846a88dff6d40419</srcmd5>
+    <version>2.1.0</version>
+    <time>1329805964</time>
+    <user>coolo</user>
+    <comment>- Libraries are back to %{_libdir}, /usr merge project (forwarded request 105579 from elvigia)</comment>
+    <requestid>105731</requestid>
+  </revision>
+  <revision rev="18" vrev="147">
+    <srcmd5>d6ea2f844bef3819846a88dff6d40419</srcmd5>
+    <version>2.1.0</version>
+    <time>1340184251</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="149">
+    <srcmd5>d6ea2f844bef3819846a88dff6d40419</srcmd5>
+    <version>2.1.0</version>
+    <time>1359110455</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="151">
+    <srcmd5>d6ea2f844bef3819846a88dff6d40419</srcmd5>
+    <version>2.1.0</version>
+    <time>1379664754</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="153">
+    <srcmd5>d6ea2f844bef3819846a88dff6d40419</srcmd5>
+    <version>2.1.0</version>
+    <time>1409303439</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

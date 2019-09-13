@@ -1,0 +1,7 @@
+<package name="cvs2svn" project="openSUSE:Factory">
+  <title>Converts CVS repositories to Subversion repositories</title>
+  <description>Converts CVS repositories to Subversion repositories.
+
+See /usr/share/doc/packages/cvs2svn directory for more information.</description>
+  <devel project="devel:tools:scm:svn" package="cvs2svn"/>
+</package>

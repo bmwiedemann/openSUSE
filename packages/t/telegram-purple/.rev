@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61d0758e08fa37dbda13cf87a1a86aaa</srcmd5>
+    <version>1.2.5</version>
+    <time>1463498059</time>
+    <user>dimstar_suse</user>
+    <comment>Pidgin plugin for a popular Russian IM service.</comment>
+    <requestid>393997</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fc28dd7c4f7f28d74a0efdadfeacd9f8</srcmd5>
+    <version>1.2.6</version>
+    <time>1469081851</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412205</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce7fde843d0de89ec338894240e1eb04</srcmd5>
+    <version>1.3.0</version>
+    <time>1485511331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>446950</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e319970e57ebb71f804872a7e1f8fdb2</srcmd5>
+    <version>1.3.1</version>
+    <time>1494442393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>493929</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>11e160e4f1c0f58c771f9f0aec10e614</srcmd5>
+    <version>1.3.1</version>
+    <time>1497274556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>503015</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8f5d881314367fd57ec8bafe9d1e4612</srcmd5>
+    <version>1.3.1</version>
+    <time>1535123017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628847</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>54c47ca31fc220d34a190c95a3047100</srcmd5>
+    <version>1.4.1</version>
+    <time>1554384129</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.4.1:</comment>
+    <requestid>688938</requestid>
+  </revision>
+</revisionlist>

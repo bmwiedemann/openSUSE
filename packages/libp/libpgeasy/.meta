@@ -1,0 +1,6 @@
+<package name="libpgeasy" project="openSUSE:Factory">
+  <title>Simplified C Client Interface for PostgreSQL</title>
+  <description>LIBPGEASY is a simplified C interface that hides some of the complexity
+of LIBPQ.</description>
+  <devel project="server:database:postgresql" package="libpgeasy"/>
+</package>

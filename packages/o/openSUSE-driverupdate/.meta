@@ -1,0 +1,5 @@
+<package name="openSUSE-driverupdate" project="openSUSE:Factory">
+  <title>Driverupdate for openSUSE releases</title>
+  <description>Driverupdate for openSUSE - only available online</description>
+  <devel project="Base:System" package="openSUSE-driverupdate"/>
+</package>

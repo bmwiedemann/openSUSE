@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e19c4d696b188373b7ee18924fb1fdf</srcmd5>
+    <version>1.4.4</version>
+    <time>1507571197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>532600</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>985e58fc19823c07901c5b0cab8767d9</srcmd5>
+    <version>1.5.1</version>
+    <time>1514907305</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1
+  * it was always logging messages to stderr (even when -d was
+    not specified), which end up in ~/.xsession-errors and consume
+    a lot of disk very quickly.
+  * Introduces two &quot;special&quot; log file names, stdout and stderr.
+- includes 1.5.0 (Theme support extension release)
+  * Add support for pywal in themes: Add a &quot;colors&quot; instruction
+    and then simply use names for your pywal colors (see the
+    wal-powerline.json themes for examples)
+  * Themes can now be stored outside the repository structure
+    (i.e. in ~/.config/bumblebee-status/themes/). Themes will be
+    merged, so it is also possible to partially overwrite theme
+    instructions by placing partial JSON files in this directory,
+    with the same name as the main theme (for example, anything
+    you write into ~/.config/bumblebee-status/themes/powerline.json
+    will overwrite the default powerline theme settings).
+  * 4 new modules
+    - rotation: Cycle through display orientations
+    - hipchat: Show number of unread hipchat messages
+    - uptime: Show current uptime
+    - zpool: Show zpool (ZFS) information
+  * new theme: &quot;sac_red&quot;
+- remove remove-invalid-shebang.patch
+  * merged in 9c52624ecb12adf6b3bcc3021feb7a0747ea179e
+</comment>
+    <requestid>561055</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2067fbab5e799ce786635947df28e96b</srcmd5>
+    <version>1.5.1</version>
+    <time>1516092173</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>564434</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dcf7d796a16e1787491994c56489ec14</srcmd5>
+    <version>1.6.0</version>
+    <time>1516970426</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0
+  * redshift module now updates in the background and no longer
+    blocks the bar
+  * Awesome fonts in the theme can now be referenced by name
+    (using ${})
+  * Add generic mechanism for slow updates, and apply it to
+    various modules
+  * Update stock widget only every hour
+</comment>
+    <requestid>569758</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2448a365d0b8e73f5563d10eaa793d7b</srcmd5>
+    <version>1.6.1</version>
+    <time>1524144679</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure summaries are noun phrases
+- Update to 1.6.1
+  * traffic: Hide down interfaces
+  * nic: Add output format parameter
+  * new theme &quot;greyish-powerline&quot;
+  * new module &quot;taskwarrior&quot;
+  * fix: brightness: Return format fix
+  * fix: theme engine: Remove unneeded YAML dependency
+  * fix: general: Removed typos
+  * fix: battery: Better error handling
+  * fix: getcrypto: Handle downtime of crypto service
+  * fix: datetime: Fallback to en_US formatting
+  * fix: memory: Fixes to percentage calculation
+- package some modules separately (more can be done, this is a
+  start)
+- cleanup with spec-cleaner
+</comment>
+    <requestid>597602</requestid>
+  </revision>
+</revisionlist>

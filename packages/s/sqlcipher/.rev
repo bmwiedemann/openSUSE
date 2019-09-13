@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5ed921527425f89fa972baaad3e2c10c</srcmd5>
+    <version>3.3.1</version>
+    <time>1455701062</time>
+    <user>dimstar_suse</user>
+    <comment>Usefull tool/package, used among others by skrooge</comment>
+    <requestid>357739</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f1d50b3e02ac004f8f08ba5d535f9373</srcmd5>
+    <version>3.4.0</version>
+    <time>1461855287</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pretty name for tarball
+
+- update to 3.4.0
+  - Added `PRAGMA cipher_provider_version`
+  - Merged upstream SQLite 3.11.0
+  - Deprecated `PRAGMA cipher` command</comment>
+    <requestid>390586</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ae5447b9fa0cd52db6409f133cf82f7f</srcmd5>
+    <version>3.4.1</version>
+    <time>1491896021</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 3.4.1
+  * Added support for OpenSSL 1.1.0
+  * Merged upstream SQLite 3.15.2</comment>
+    <requestid>482739</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2384c3075c8876e38769eae17c8e837b</srcmd5>
+    <version>3.4.2</version>
+    <time>1524144753</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup with spec-cleaner
+- Rename tcl binding package
+- Adjust dependencies of tcl bindings
+
+- update to 3.4.2
+  - Merge upstream SQLite 3.20.1
+  - Text strings for SQLITE_ERROR and SQLITE_NOTADB changed to 
+    match upstream SQLite
+  - Remove static modifier for codec password functions
+  - Page alignment for mlock
+  - Fix segfault in sqlcipher_cipher_ctx_cmp during rekey operation
+  - Fix sqlcipher_export and cipher_migrate when tracing API in use
+  - Validate codec page size when setting
+  - Guard OpenSSL initialization and cleanup routines
+  - Allow additional linker options to be passed via command line 
+    for Windows platforms</comment>
+    <requestid>598025</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8441c8536ceb88e04fcdde7493c28d5</srcmd5>
+    <version>4.1.0</version>
+    <time>1558341016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704060</requestid>
+  </revision>
+</revisionlist>

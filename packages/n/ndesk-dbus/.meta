@@ -1,0 +1,10 @@
+<package name="ndesk-dbus" project="openSUSE:Factory">
+  <title>Managed C# implementation of D-Bus</title>
+  <description>This is a C# implementation of D-Bus. It's often referred to as
+&quot;managed D-Bus&quot; to avoid confusion with existing bindings (which wrap
+libdbus).
+
+It is a clean-room implementation based on the D-Bus Specification
+Version 0.11 and study of the wire protocol of existing tools.</description>
+  <devel project="Mono:Factory" package="ndesk-dbus"/>
+</package>

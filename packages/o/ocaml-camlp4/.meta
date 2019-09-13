@@ -1,0 +1,5 @@
+<package name="ocaml-camlp4" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ocaml" package="ocaml-camlp4"/>
+</package>

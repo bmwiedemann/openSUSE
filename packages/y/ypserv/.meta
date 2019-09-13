@@ -1,0 +1,5 @@
+<package name="ypserv" project="openSUSE:Factory">
+  <title>YP - (NIS)-Server</title>
+  <description>Configure your Linux PC as a YP server (NIS) using this package.</description>
+  <devel project="network:NIS" package="ypserv"/>
+</package>

@@ -1,0 +1,11 @@
+<package name="ucommon" project="openSUSE:Factory">
+  <title>Runtime library for portable C++ threading and sockets</title>
+  <description>GNU uCommon C++ is a lightweight library to facilitate using C++ design
+patterns even for very deeply embedded applications, such as for systems using
+uClibc along with POSIX threading support. For this reason, uCommon disables
+language features that consume memory or introduce runtime overhead. uCommon
+introduces some design patterns from Objective-C, such as reference counted
+objects, memory pools, and smart pointers.  uCommon introduces some new
+concepts for handling of thread locking and synchronization.</description>
+  <devel project="network:telephony" package="ucommon"/>
+</package>

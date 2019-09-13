@@ -1,0 +1,13 @@
+<package name="texinfo" project="openSUSE:Factory">
+  <title>Tools Needed to Create Documentation from Texinfo Sources</title>
+  <description>Texinfo is a documentation system that uses a single source file to
+produce both online information and printed output.  Using Texinfo, you
+can create a printed document with the normal features of a book,
+including chapters, sections, cross-references, and indices.  From the
+same Texinfo source file, you can create a menu-driven, online info
+file with nodes, menus, cross-references, and indices using the included
+makeinfo tool.
+
+Aggregated with texinfo in this package is texi2html and texi2roff.</description>
+  <devel project="Publishing" package="texinfo"/>
+</package>

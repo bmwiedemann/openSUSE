@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="117">
+    <srcmd5>f32cf6fda33e2667b2e5d3ea37b9c704</srcmd5>
+    <version>0.3.6</version>
+    <time>1168903733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="190">
+    <srcmd5>d3c610910dcf8a3fe479c47b184eac4d</srcmd5>
+    <version>0.3.6</version>
+    <time>1193272705</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="251">
+    <srcmd5>d3c610910dcf8a3fe479c47b184eac4d</srcmd5>
+    <version>0.3.6</version>
+    <time>1193272705</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="252">
+    <srcmd5>e6359116caed25fe10336aab1d5df546</srcmd5>
+    <version>0.3.6</version>
+    <time>1244829117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="254">
+    <srcmd5>e6359116caed25fe10336aab1d5df546</srcmd5>
+    <version>0.3.6</version>
+    <time>1244829117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="255">
+    <srcmd5>30c0bd6089469f06a9d6ecdfcfaadea8</srcmd5>
+    <version>0.3.6</version>
+    <time>1268925271</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="257">
+    <srcmd5>30c0bd6089469f06a9d6ecdfcfaadea8</srcmd5>
+    <version>0.3.6</version>
+    <time>1278667375</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="258">
+    <srcmd5>30c0bd6089469f06a9d6ecdfcfaadea8</srcmd5>
+    <version>0.3.6</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="261">
+    <srcmd5>30c0bd6089469f06a9d6ecdfcfaadea8</srcmd5>
+    <version>0.3.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="262">
+    <srcmd5>99564bb2728b60bdfca448bb18d287b4</srcmd5>
+    <version>0.3.6</version>
+    <time>1305628670</time>
+    <user>saschpe</user>
+    <comment>Add gcc46_build_fix.patch. Fixes: https://build.opensuse.org/package/show?package=palm-db-tools&amp;project=openSUSE:Factory:Staging:Gcc46 (forwarded request 69995 from cgiboudeaux)</comment>
+    <requestid>70302</requestid>
+  </revision>
+  <revision rev="11" vrev="263">
+    <srcmd5>91b56baf9584c81f35bbbae613cf20e8</srcmd5>
+    <version>0.3.6</version>
+    <time>1305628679</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70302
+</comment>
+  </revision>
+  <revision rev="12" vrev="265">
+    <srcmd5>91b56baf9584c81f35bbbae613cf20e8</srcmd5>
+    <version>0.3.6</version>
+    <time>1319182224</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="266">
+    <srcmd5>d9b5791d0927aea8f2aab466d606e56f</srcmd5>
+    <version>0.3.6</version>
+    <time>1322481327</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93816 from coolo)</comment>
+    <requestid>93940</requestid>
+  </revision>
+  <revision rev="14" vrev="267">
+    <srcmd5>677ea6bf47bd3120e485c6c5b516f782</srcmd5>
+    <version>0.3.6</version>
+    <time>1323192928</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="269">
+    <srcmd5>677ea6bf47bd3120e485c6c5b516f782</srcmd5>
+    <version>0.3.6</version>
+    <time>1340183771</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="270">
+    <srcmd5>ad8ee4a60c49acb21baa469e88fa3b92</srcmd5>
+    <version>0.3.6</version>
+    <time>1359103037</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>149781</requestid>
+  </revision>
+  <revision rev="17" vrev="272">
+    <srcmd5>ad8ee4a60c49acb21baa469e88fa3b92</srcmd5>
+    <version>0.3.6</version>
+    <time>1359109564</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="274">
+    <srcmd5>ad8ee4a60c49acb21baa469e88fa3b92</srcmd5>
+    <version>0.3.6</version>
+    <time>1379663474</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="276">
+    <srcmd5>ad8ee4a60c49acb21baa469e88fa3b92</srcmd5>
+    <version>0.3.6</version>
+    <time>1409302095</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

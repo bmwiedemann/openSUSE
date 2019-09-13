@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>13c6cfb21f5e7f40bfbf33a7a2d33bf0</srcmd5>
+    <version>1.3.1</version>
+    <time>1465336050</time>
+    <user>dimstar_suse</user>
+    <comment>new popular package for editing markup</comment>
+    <requestid>399971</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a6af7219d40441c171539d6a8c615d57</srcmd5>
+    <version>1.4.0</version>
+    <time>1469742458</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0:</comment>
+    <requestid>415444</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>651e98848ea9820ef899bcbea2fc522e</srcmd5>
+    <version>1.4.1</version>
+    <time>1471345421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>419417</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9eb3c7af886f1a2dce2628ff8df40775</srcmd5>
+    <version>1.4.2</version>
+    <time>1473349172</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2:
+  * Issue #113: Full screen clock now displays time based on
+    locale.
+  * Issue #119: Null characters, which had been breaking the HTML
+    preview, are no longer inserted when typing over selecting text.
+  * Issue #121: Code fences are now correctly highlighted when they
+    contain blank lines.
+  * Issue #123: Statistics HUDs now have proper padding when
+    alternating row colors is enabled.
+  * Issue #125: The translations folder has been moved up one
+    folder for the portable distribution of ghostwriter.
+  * Sundry minor fixes have been added.</comment>
+    <requestid>425384</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1b5f5262639b43b4b697ccd67281fb06</srcmd5>
+    <version>1.4.2</version>
+    <time>1487592932</time>
+    <user>dimstar_suse</user>
+    <comment>- Split lang subpackage and generate/install translations
+- Suggest MultiMarkdown-5 as well</comment>
+    <requestid>459066</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b7a53f9df1be5b2838310529ee504592</srcmd5>
+    <version>1.5.0</version>
+    <time>1496089195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0</comment>
+    <requestid>498830</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e044666f2533feb36ee8b71f14bf84ef</srcmd5>
+    <version>1.5.0</version>
+    <time>1510045065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update suggested packages and recommend virtual package markdown</comment>
+    <requestid>538622</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8afecf127b01a255e3c27b62d0572b31</srcmd5>
+    <version>1.6.1</version>
+    <time>1523448053</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595108</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>902e7f0ad61e44885c298cb49c428c36</srcmd5>
+    <version>1.6.2</version>
+    <time>1524238117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.2
+  * Issue #315: Worked around slow load of QPrinter constructor in
+    Fedora 27 by lazy loading the printer settings only when needed
+    for printing or print preview rather than during application
+    startup.
+  * Fixed line break tokenizing to not include paragraph breaks.</comment>
+    <requestid>597351</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7f6994a06672a691a32f935c8222ebc2</srcmd5>
+    <version>1.7.0</version>
+    <time>1532033807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623994</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0d4f20eff8b0763211fd4ef951b28cfb</srcmd5>
+    <version>1.7.2</version>
+    <time>1533292527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.2:
+  * Fixed issue where the --quiet option was mistakenly used with older Pandoc versions that did not support its use.
+  * Worked around Qt 5.11 qinstall bug where running qmake and make would fail when installing the translation files
+
+- Update to version 1.7.1
+  * Fixed regression in full screen mode where menu bar was not showing on mouse-over.
+  * Fixed regression where wrong theme was shown as selected on opening the Theme Selection dialog.
+  * Fixed issue #366 where warnings from Pandoc that were resulting in error dialogs on successful export.
+  * Fixed issue #292 where saving a document under Windows resulted in end-of-line characters being written as \n instead of \r\n.
+  * Fixed issue #360 where a graphical glitch under MacOS disabled the Theme Selection dialog's remove theme button.</comment>
+    <requestid>626739</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c4375fee3407b29dd6c0ff4b2a504a49</srcmd5>
+    <version>1.7.3</version>
+    <time>1535367615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631696</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7686e85b1db141331877603a7cf729f8</srcmd5>
+    <version>1.7.4</version>
+    <time>1546946390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658194</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>293d354b85b9bd437348824feae7260b</srcmd5>
+    <version>1.8.0</version>
+    <time>1556817581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699871</requestid>
+  </revision>
+</revisionlist>

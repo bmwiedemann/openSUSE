@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af8d81f3216daf1ec23aa00436d9ef7b</srcmd5>
+    <version>0.3.8</version>
+    <time>1332769088</time>
+    <user>coolo</user>
+    <comment>- Initial package (required by Qt5)</comment>
+    <requestid>110568</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>255ac6be94d01d6ddbeb6a05899f619a</srcmd5>
+    <version>0.3.9</version>
+    <time>1338569601</time>
+    <user>coolo</user>
+    <comment>- update to version 0.3.9 
+  * Replacing c++ class keyword in interface header.
+  * Fix incomplete implementation of _NET_SUPPORTING_WM_CHECK.</comment>
+    <requestid>123091</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c922def866d926a9bef9cb8d0e487c72</srcmd5>
+    <version>0.3.9</version>
+    <time>1340138581</time>
+    <user>coolo</user>
+    <comment>Fix baselibs.conf (forwarded request 125286 from vuntz)</comment>
+    <requestid>125338</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c922def866d926a9bef9cb8d0e487c72</srcmd5>
+    <version>0.3.9</version>
+    <time>1340184336</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>c922def866d926a9bef9cb8d0e487c72</srcmd5>
+    <version>0.3.9</version>
+    <time>1359110594</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>d0ec1ea53817876940f28a779b5e4c09</srcmd5>
+    <version>0.3.9</version>
+    <time>1363900559</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160124</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>d0ec1ea53817876940f28a779b5e4c09</srcmd5>
+    <version>0.3.9</version>
+    <time>1379664997</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>78da682f3ef0d0e56c2aecf177eec1dd</srcmd5>
+    <version>0.4.0</version>
+    <time>1391182945</time>
+    <user>coolo</user>
+    <comment>- update to version 0.4.0; changes since 0.3.9:
+  + Even though EWMH spec does not mandate window to be set, some
+    WM expect it to be set.
+  + Check submodules before running autoconf.</comment>
+    <requestid>215612</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d43fce304ef6c5ac1367ef2edf08f813</srcmd5>
+    <version>0.4.1</version>
+    <time>1393098260</time>
+    <user>coolo</user>
+    <comment>Sorry!
+I forgot to drop the no longer needed BR
+ref .changes
+
+- Update to version 0.4.1:
+  + Xcb-proto should have never been required as xcb provides the
+    Atoms.
+ (forwarded request 223347 from Zaitor)</comment>
+    <requestid>223349</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d43fce304ef6c5ac1367ef2edf08f813</srcmd5>
+    <version>0.4.1</version>
+    <time>1409303679</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>8d2f16ad6faeecc4b77e60a8d090a64f</srcmd5>
+    <version>0.4.1</version>
+    <time>1488559159</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459534</requestid>
+  </revision>
+</revisionlist>

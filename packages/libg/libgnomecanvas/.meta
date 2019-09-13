@@ -1,0 +1,6 @@
+<package name="libgnomecanvas" project="openSUSE:Factory">
+  <title>An Add-On for the GNOME User Interface Libraries</title>
+  <description>Libgnomecanvas is a graphical add-on for the GNOME User Interface
+libraries.</description>
+  <devel project="GNOME:Factory" package="libgnomecanvas"/>
+</package>

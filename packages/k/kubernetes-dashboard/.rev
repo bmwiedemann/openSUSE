@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>493b03dbfa8bce73495e490b05d2eddd</srcmd5>
+    <version>27408f19</version>
+    <time>1524238186</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove deprecated macros
+- Remove comment. Add LICENSE to postinstall 
+- Add enclosing js() to Provides: directives
+- Updating node modules
+- Listing bundle node modules in spec file 
+Initial commit. 
+</comment>
+    <requestid>597892</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7d73c8dd9b68034bb327e1ab40f0e497</srcmd5>
+    <version>27408f19</version>
+    <time>1531813397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623169</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>adedc5db359bb307c5c7da62f018e9d3</srcmd5>
+    <version>27408f19</version>
+    <time>1550048706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673585</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9a0217eea6db8ff8fd97a94c69cb8000</srcmd5>
+    <version>27408f19</version>
+    <time>1562843782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714050</requestid>
+  </revision>
+</revisionlist>

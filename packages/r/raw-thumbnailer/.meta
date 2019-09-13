@@ -1,0 +1,5 @@
+<package name="raw-thumbnailer" project="openSUSE:Factory">
+  <title>Thumbnailer for digital camera RAW</title>
+  <description>A thumbnailer used by Nautilus for digital camera RAW files.</description>
+  <devel project="GNOME:Apps" package="raw-thumbnailer"/>
+</package>

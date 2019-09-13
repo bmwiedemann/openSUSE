@@ -1,0 +1,7 @@
+<package name="sblim-tools-libra" project="openSUSE:Factory">
+  <title>SBLIM Common Resource Access Library for WBEM-SMT tasks</title>
+  <description>The tools-libra package provides common functionality required by 
+the task-specific resource access layers of wbem-smt tasks such as 
+cmpi-dns and cmpi-samba.</description>
+  <devel project="systemsmanagement:wbem" package="sblim-tools-libra"/>
+</package>

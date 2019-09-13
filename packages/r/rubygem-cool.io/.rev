@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e34f2d55ff1c53e5d38160da7e2c47a</srcmd5>
+    <version>1.4.5</version>
+    <time>1485382857</time>
+    <user>dimstar_suse</user>
+    <comment>Please add this package to Factory since it is dependency for fluentd which will follow later.</comment>
+    <requestid>441973</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6081aeae472fe48248b35fcc95000078</srcmd5>
+    <version>1.4.6</version>
+    <time>1485682807</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452947</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f2924d05c6bd582949a76cc21f75be06</srcmd5>
+    <version>1.5.0</version>
+    <time>1492714757</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489508</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>722c2f4b78c30dc09b1068db89a35da5</srcmd5>
+    <version>1.5.1</version>
+    <time>1504521420</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520444</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a3578a66aaab8854353ace750d9f0741</srcmd5>
+    <version>1.5.3</version>
+    <time>1513941507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554637</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b32d73ae80ca6e8d2adce8741003af85</srcmd5>
+    <version>1.5.4</version>
+    <time>1560970773</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705983</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81104aa584d13121bb65fbb3a614ee89</srcmd5>
+    <version>0.7.0.1</version>
+    <time>1448553796</time>
+    <user>dimstar_suse</user>
+    <comment>vector-algorithms: Efficient algorithms for vector arrays</comment>
+    <requestid>345724</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>59a8a115446ab1e5d5b0c0d8dff7a161</srcmd5>
+    <version>0.7.0.1</version>
+    <time>1469081607</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411613</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>374e0e49067069c2aad96983a32e7e15</srcmd5>
+    <version>0.7.0.1</version>
+    <time>1490025980</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>450626</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e16a76703134f802af3d4af08244f30f</srcmd5>
+    <version>0.7.0.1</version>
+    <time>1505506985</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525637</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>83cdbea73c55c6a2d6d935bf45bc12c3</srcmd5>
+    <version>0.7.0.1</version>
+    <time>1527675692</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609830</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1c835453744d40b97dc2b35b6ca84740</srcmd5>
+    <version>0.7.0.1</version>
+    <time>1532445806</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623893</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>7210f578816aad1cc8d39de6f55c9bbf</srcmd5>
+    <version>0.7.0.1</version>
+    <time>1534774860</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Cabal build information to prevent build attempts with
+  GHC 8.6.x.</comment>
+    <requestid>630375</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>53b1898f2295fe60eab68443d64eec15</srcmd5>
+    <version>0.7.0.4</version>
+    <time>1535963709</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>632493</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d4128fa5f49b2ebfabf73af49e668552</srcmd5>
+    <version>0.8.0.1</version>
+    <time>1540448356</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642903</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>731536b550520ebd5b9f868bf3673277</srcmd5>
+    <version>0.8.0.1</version>
+    <time>1560971556</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710651</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="yast2-hardware-detection" project="openSUSE:Factory">
+  <title>YaST2 - Hardware Detection Interface</title>
+  <description>This package contains the hardware detection library for YaST2.</description>
+  <devel project="YaST:Head" package="yast2-hardware-detection"/>
+</package>

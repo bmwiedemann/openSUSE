@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>914e29d01c271acbcaebf1387c4fce06</srcmd5>
+    <version>1.0.3hg.135</version>
+    <time>1480073300</time>
+    <user>dimstar_suse</user>
+    <comment>Usefull with borgbackup (which was also submitted to Factory)</comment>
+    <requestid>437994</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3ea70d12af51abf32beeab3f1bd4467e</srcmd5>
+    <version>1.0.3hg.135</version>
+    <time>1489345459</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477887</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7a3886bdfda3e61684bc5195628bfa48</srcmd5>
+    <version>1.1.9+git20171028.6e9e7c4</version>
+    <time>1513245237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540148</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>41cd2b21c4b9385a8039a67785e7a159</srcmd5>
+    <version>1.1.14</version>
+    <time>1517516956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571505</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8570718216fffc99738e896b7d3657fa</srcmd5>
+    <version>1.1.15</version>
+    <time>1522702172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592971</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb2030d4884c55123e9629a03d314cf2</srcmd5>
+    <version>1.2.0</version>
+    <time>1531135765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621437</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a1b4fb96942ff143e36589c770572ace</srcmd5>
+    <version>1.2.2</version>
+    <time>1537263945</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636165</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>95ea97757ca320903a1d5dd089203b59</srcmd5>
+    <version>1.2.14</version>
+    <time>1548335716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668108</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4d182c5553b43f05993d582ca2b689dc</srcmd5>
+    <version>1.3.1</version>
+    <time>1557263981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701241</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3305710ede3f5bbbf7e0ba70bfea2ab2</srcmd5>
+    <version>1.3.14</version>
+    <time>1566551235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725309</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>86c10eabe7fada64733da35191731b26</srcmd5>
+    <version>1.3.14</version>
+    <time>1567581299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727952</requestid>
+  </revision>
+</revisionlist>

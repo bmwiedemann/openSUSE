@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a33ae744043fed7c84379d2a3e963b7</srcmd5>
+    <version>23.i3.8</version>
+    <time>1332416523</time>
+    <user>coolo</user>
+    <comment>TI OMAP3 DSP algorithms.</comment>
+    <requestid>109714</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4a33ae744043fed7c84379d2a3e963b7</srcmd5>
+    <version>23.i3.8</version>
+    <time>1340184273</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>4a33ae744043fed7c84379d2a3e963b7</srcmd5>
+    <version>23.i3.8</version>
+    <time>1359110489</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>4a33ae744043fed7c84379d2a3e963b7</srcmd5>
+    <version>23.i3.8</version>
+    <time>1379664819</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>4a33ae744043fed7c84379d2a3e963b7</srcmd5>
+    <version>23.i3.8</version>
+    <time>1409303496</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

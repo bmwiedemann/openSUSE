@@ -1,0 +1,339 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3bf41a69c1c1ec250f3cedb8faa8180c</srcmd5>
+    <version>1.1.1</version>
+    <time>1323176016</time>
+    <user>coolo</user>
+    <comment>openstack dependency</comment>
+    <requestid>94117</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>83eae857a1fda501f557277caa0f770d</srcmd5>
+    <version>1.1.1</version>
+    <time>1323194288</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ebbf442033603b7ee02a77a1118a737</srcmd5>
+    <version>1.2b2</version>
+    <time>1328086805</time>
+    <user>coolo</user>
+    <comment>- Spec cleanup:
+  * Simplified macro usage
+  * Remove unneeded runtime requirement on python-nose
+  * Run testsuite
+- Update to version 1.2b2:
+  * Fix request.cookies.get('name', 'default'). Previously default was ignored.
+- Changes from version 1.2b1:
+  * Mutating the request.cookies property now reflects the mutations into the HTTP_COOKIES environ header.
+  * Response.etag = (tag, False) sets weak etag.
+  * Range only parses single range now.
+  * Range.satisfiable(..) is gone.
+  * Accept.best_matches() is gone; use list(request.accept) or request.accept.best_match(..) instead (applies to all Accept-* headers) or similar with request.accept_language.
+  * Response.request and Response.environ attrs are undeprecated and no longer raise exceptions when used. These can also be passed to the Response constructor. This is to support codebases that pass them to the constructor or assign them to a response instance. However, some behavior differences from 1.1 exist. In particular, synchronization is no longer done between environ and request attribute properties of Response; you may pass either to the constructor (or both) or assign one or the other or both, but they wont be managed specially and will remain the same over the lifetime of the response just as you passed them. Default values for both request and environ on any given response are None now.
+  * Undeprecated uscript_name and upath_info.
+  * For backwards compatibility purposes, switch req.script_name and path_info back again to contain “raw” undecoded native strings rather than text. Use uscript_name and upath_info to get the text version of SCRIPT_NAME and PATH_INFO.
+  * Don’t raise an exception if unicode_errors or decode_param_names is passed to the Request constructor. Instead, emit a warning. For benefit of Pylons 1.X, which passes both.
+  * Don’t raise an exception if HTTPException.exception is used; instead emit a warning. For benefit of Pylons 1.X, which uses it.</comment>
+    <requestid>102223</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3ebbf442033603b7ee02a77a1118a737</srcmd5>
+    <version>1.2b2</version>
+    <time>1340184034</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3bf41a69c1c1ec250f3cedb8faa8180c</srcmd5>
+    <version>1.1.1</version>
+    <time>1340724380</time>
+    <user>coolo</user>
+    <comment>This is an intended downgrade, 1.2b2 has some issues and no other package should require it.</comment>
+    <requestid>125112</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>55890bf78db25531b5c606ad2a28c6f4</srcmd5>
+    <version>1.2.2</version>
+    <time>1348427419</time>
+    <user>coolo</user>
+    <comment>Update to 1.2.2 and remove unneeded dependencies. (forwarded request 135387 from poorboywilly)</comment>
+    <requestid>135430</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f05ef7c20d911802b3f1982c232e8041</srcmd5>
+    <version>1.2.3</version>
+    <time>1354109730</time>
+    <user>coolo</user>
+    <comment>- Add dependency on python-M2Crypto, otherwise you won't get HTTPS
+
+- Update to version 1.2.3:
+  + Fix parsing of form submissions where fields have transfer-content-encoding headers.
+- Build HTML documentation
+- Run testsuite
+- Split of doc package</comment>
+    <requestid>142550</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f05ef7c20d911802b3f1982c232e8041</srcmd5>
+    <version>1.2.3</version>
+    <time>1359109990</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>449f087527e11a79538b96d3e832b4de</srcmd5>
+    <version>1.2.3</version>
+    <time>1362732514</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157712</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>5002629727c6d64af67ff0e18a710de9</srcmd5>
+    <version>1.2.3</version>
+    <time>1365140680</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>162464</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>9130edf62b4be38a7b650e9b9746326e</srcmd5>
+    <version>1.2.3</version>
+    <time>1365484170</time>
+    <user>coolo</user>
+    <comment>removed Provides and Osbolete for new python3 spec file (forwarded request 162237 from apersaud)</comment>
+    <requestid>162693</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>3cbf46beaf38a991817b4981ea22e3c1</srcmd5>
+    <version>1.2.3</version>
+    <time>1365929010</time>
+    <user>coolo</user>
+    <comment>Don't build for python &gt; 3.2 since it is not supported yet (forwarded request 163848 from TheBlackCat)</comment>
+    <requestid>163849</requestid>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>5002629727c6d64af67ff0e18a710de9</srcmd5>
+    <version>1.2.3</version>
+    <time>1371651853</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179721</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>5002629727c6d64af67ff0e18a710de9</srcmd5>
+    <version>1.2.3</version>
+    <time>1379664122</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>c9d0f1c4e301700063c20f90c98e2675</srcmd5>
+    <version>1.2.3</version>
+    <time>1382693765</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204684</requestid>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>e2b990b68aacc66967cd99b3a7e2c8b6</srcmd5>
+    <version>1.2.3</version>
+    <time>1392962247</time>
+    <user>coolo</user>
+    <comment>- added license.txt as doc file (forwarded request 222721 from oertel)</comment>
+    <requestid>223268</requestid>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>e2b990b68aacc66967cd99b3a7e2c8b6</srcmd5>
+    <version>1.2.3</version>
+    <time>1409302810</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8ce8e90263571a30805f4738bd1c6435</srcmd5>
+    <version>1.4</version>
+    <time>1410795688</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249199</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>467ac3679a74316cce46b36890793ce1</srcmd5>
+    <version>1.5.1</version>
+    <time>1450284194</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348905</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>65d55f9dffbfa7460df2d91d4812519c</srcmd5>
+    <version>1.6.1</version>
+    <time>1465336194</time>
+    <user>dimstar_suse</user>
+    <comment>- fix download url
+
+- update to 1.6.1:
+  - Response.from_file now parses the status line correctly when the status line
+    contains an HTTP with version, as well as a status text that contains
+    multiple white spaces (e.g 404 Not Found). See
+    https://github.com/Pylons/webob/issues/250
+  - Python 3.2 is no longer supported by WebOb
+  - Request.decode attempted to read from the an already consumed stream, it has
+    now been redirected to another stream to read from. See
+    https://github.com/Pylons/webob/pull/183
+  - The application/json media type does not allow for a charset as discovery of
+    the encoding is done at the JSON layer. Upon initialization of a Response
+    WebOb will no longer add a charset if the content-type is set to JSON. See
+    https://github.com/Pylons/webob/pull/197 and
+    https://github.com/Pylons/pyramid/issues/1611
+  - Lazily HTML escapes environment keys in HTTP Exceptions so that those keys in
+    the environ that are not used in the output of the page don't raise an
+    exception due to inability to be properly escaped. See
+    https://github.com/Pylons/webob/pull/139
+  - MIMEAccept now accepts comparisons against wildcards, this allows one to
+    match on just the media type or sub-type, without having to explicitly match
+    on both the media type and sub-type at the same time. See
+    https://github.com/Pylons/webob/pull/185
+  - Add the ability to return a JSON body from an exception. Using the Accept
+    information in the request, the exceptions will now automatically return a
+    JSON version of the exception instead of just HTML or text. See
+    https://github.com/Pylons/webob/pull/230 and
+    https://github.com/Pylons/webob/issues/209
+  - exc._HTTPMove and any subclasses will now raise a ValueError if the location</comment>
+    <requestid>400278</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1ccce8e21b4e405095f14238d7a49112</srcmd5>
+    <version>1.6.2</version>
+    <time>1476780209</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.2:
+ * WebOb's exceptions will lazily read underlying variables when inserted into
+   templates to avoid expensive computations/crashes when inserting into the
+   template. This had a bad performance regression on Py27 because of the way
+   the lazified class was created and returned. See
+   https://github.com/Pylons/webob/pull/284</comment>
+    <requestid>435473</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d00326c9d156ca5deaa29ff450cfbf4c</srcmd5>
+    <version>1.7.1</version>
+    <time>1491896487</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485029</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c39c810464ff483b586a6ff295d11a7d</srcmd5>
+    <version>1.7.2</version>
+    <time>1495034308</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493096</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>11ae0317b67c26b9f3ffef7e43b00555</srcmd5>
+    <version>1.7.3</version>
+    <time>1501840734</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>508803</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>82144eb4eb47934b82d90ad5dbe63c6d</srcmd5>
+    <version>1.7.4</version>
+    <time>1519683893</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop not needed python-pytest-cov BuildRequires
+
+- update to 1.7.4:
+- Add support for `wsgi.input_terminated` in the wsgi environ to allow for
+  Chunked Encoding to be used with WebOb</comment>
+    <requestid>579633</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>518c988ca771d2805312f09fd25c1fff</srcmd5>
+    <version>1.8.2</version>
+    <time>1534543277</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop devel dependency
+- Use %license macro
+- Use proper upstream tarball
+- Really execute tests
+
+- Update to 1.8.2:
+  - SameSite may now be passed as str or bytes to `Response.set_cookie` and
+    `cookies.make_cookie`. This was an oversight as all other arguments would be
+    correctly coerced before being serialized. See
+    https://github.com/Pylons/webob/issues/361 and
+    https://github.com/Pylons/webob/pull/362
+  - acceptparse.MIMEAccept which is deprecated in WebOb 1.8.0 made a backwards
+    incompatible change that led to it raising on an invalid Accept header. This
+    behaviour has now been reversed, as well as some other fixes to allow
+    MIMEAccept to behave more like the old version. See
+    https://github.com/Pylons/webob/pull/356
+  - ``request.POST`` now supports any requests with the appropriate
+    Content-Type. Allowing any HTTP method to access form encoded content,
+    including DELETE, PUT, and others. See
+    https://github.com/Pylons/webob/pull/352
+  - WebOb is no longer officially supported on Python 3.3 which was EOL'ed on
+    2017-09-29.
+  - Many changes have been made to the way WebOb does Accept handling, not just
+    for the Accept header itself, but also for Accept-Charset, Accept-Encoding
+    and Accept-Language. This was a `Google Summer of Code
+    &lt;https://developers.google.com/open-source/gsoc/&gt;`_ project completed by
+    Whiteroses (https://github.com/whiteroses). Many thanks to Google for running
+    GSoC, the Python Software Foundation for organising and a huge thanks to Ira
+    for completing the work. See https://github.com/Pylons/webob/pull/338 and
+    https://github.com/Pylons/webob/pull/335. Documentation is available at</comment>
+    <requestid>628339</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>8db8954379a77f32a39ffe45a716808a</srcmd5>
+    <version>1.8.2</version>
+    <time>1534940364</time>
+    <user>dimstar_suse</user>
+    <comment>- add explicit requires on python to have SSL module available
+  for passing the tests</comment>
+    <requestid>630543</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f2a7a38e61ad03fb1ac2da20d4f67548</srcmd5>
+    <version>1.8.5</version>
+    <time>1548064025</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.8.5:
+  - Fixed one last remaining invalid escape sequence in a docstring.
+  - Response.content_type now accepts unicode strings on Python 2 and encodes
+    them to latin-1. See https://github.com/Pylons/webob/pull/389 and
+    https://github.com/Pylons/webob/issues/388
+  - Accept header classes now support a .copy() function that may be used to
+    create a copy. This allows ``create_accept_header`` and other like functions
+    to accept an pre-existing Accept header. See
+    https://github.com/Pylons/webob/pull/386 and
+    https://github.com/Pylons/webob/issues/385
+  - Some backslashes introduced with the new accept handling code were causing
+    DeprecationWarnings upon compiling the source to pyc files, all of the
+    backslashes have been reigned in as appropriate, and users should no longer
+    see DeprecationWarnings for invalid escape sequence. See
+    https://github.com/Pylons/webob/issues/384
+  - ``acceptparse.AcceptValidHeader``, ``acceptparse.AcceptInvalidHeader``, and
+    ``acceptparse.AcceptNoHeader`` will now always ignore offers that do not
+    match the required media type grammar when calling ``.acceptable_offers()``.
+    Previous versions raised a ``ValueError`` for invalid offers in
+    ``AcceptValidHeader`` and returned them as acceptable in the others.
+    See https://github.com/Pylons/webob/pull/372
+  - Add Request.remote_host, exposing REMOTE_HOST environment variable.
+  - Added ``acceptparse.Accept.parse_offer`` to codify what types of offers
+    are compatible with ``acceptparse.AcceptValidHeader.acceptable_offers``,
+    ``acceptparse.AcceptMissingHeader.acceptable_offers``, and
+    ``acceptparse.AcceptInvalidHeader.acceptable_offers``. This API also
+    normalizes the offer with lowercased type/subtype and parameter names.
+    See https://github.com/Pylons/webob/pull/376 and
+    https://github.com/Pylons/webob/pull/379</comment>
+    <requestid>663312</requestid>
+  </revision>
+</revisionlist>

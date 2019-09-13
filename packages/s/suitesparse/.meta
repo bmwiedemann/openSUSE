@@ -1,0 +1,8 @@
+<package name="suitesparse" project="openSUSE:Factory">
+  <title>A collective libraries for Sparse Linear Systems by Tim Davis</title>
+  <description>
+	  SuitesSparse is a single standard c library archive that contains all packages Professor Tim Davis has authored or co-authored aiming at Sparse Linear Systems. it includes: AMD, BTF, CAMD, CCOLAMD, COLAMD, CHOLMOD, CXSparse, KLU, LDL, UMFPACK, RBio, UFconfig, SPQR.
+	  On Linux, we use it on Gegl and Science Applications.
+  </description>
+  <devel project="science" package="suitesparse"/>
+</package>

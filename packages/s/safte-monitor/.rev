@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="252">
+    <srcmd5>cc147a588ac7a4c3387336b559491437</srcmd5>
+    <version>0.0.5</version>
+    <time>1168904160</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="293">
+    <srcmd5>be73df898a13cad3439e83daf718e6a9</srcmd5>
+    <version>0.0.5</version>
+    <time>1182179895</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="302">
+    <srcmd5>8a29bff794efcb2a351ba16631654f7a</srcmd5>
+    <version>0.0.5</version>
+    <time>1186697335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="363">
+    <srcmd5>b231506213054a16c79e75045bc8796d</srcmd5>
+    <version>0.0.5</version>
+    <time>1220052954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="369">
+    <srcmd5>e4fa3750c81bf0dd495ddd41d3f8c44b</srcmd5>
+    <version>0.0.5</version>
+    <time>1245169412</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="370">
+    <srcmd5>2f983d84e7f921258d016c0955e23e3b</srcmd5>
+    <version>0.0.5</version>
+    <time>1251294695</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/safte-monitor based on submit request 18821 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="372">
+    <srcmd5>2f983d84e7f921258d016c0955e23e3b</srcmd5>
+    <version>0.0.5</version>
+    <time>1251294695</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/safte-monitor based on submit request 18821 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="8" vrev="373">
+    <srcmd5>76e48ccde806a299df183ef26ef4340e</srcmd5>
+    <version>0.0.5</version>
+    <time>1268926045</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="375">
+    <srcmd5>76e48ccde806a299df183ef26ef4340e</srcmd5>
+    <version>0.0.5</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="376">
+    <srcmd5>76e48ccde806a299df183ef26ef4340e</srcmd5>
+    <version>0.0.5</version>
+    <time>1278678617</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="379">
+    <srcmd5>76e48ccde806a299df183ef26ef4340e</srcmd5>
+    <version>0.0.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="381">
+    <srcmd5>76e48ccde806a299df183ef26ef4340e</srcmd5>
+    <version>0.0.5</version>
+    <time>1319182443</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="382">
+    <srcmd5>04c83cfe038be84062717b07f5fa381a</srcmd5>
+    <version>0.0.5</version>
+    <time>1323194505</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="384">
+    <srcmd5>04c83cfe038be84062717b07f5fa381a</srcmd5>
+    <version>0.0.5</version>
+    <time>1340184185</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="385">
+    <srcmd5>dd23b42ed7c41da346d23d790c17c709</srcmd5>
+    <version>0.0.5</version>
+    <time>1350629559</time>
+    <user>coolo</user>
+    <comment>- Add safte-monitor-create-state-run-dir-on-init.patch and update spec
+  file to create /var/run/safte-monitor at service start time instead
+  of install time. (bnc#710293) (forwarded request 138655 from lee_duncan)</comment>
+    <requestid>138678</requestid>
+  </revision>
+  <revision rev="16" vrev="387">
+    <srcmd5>dd23b42ed7c41da346d23d790c17c709</srcmd5>
+    <version>0.0.5</version>
+    <time>1359110363</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="389">
+    <srcmd5>dd23b42ed7c41da346d23d790c17c709</srcmd5>
+    <version>0.0.5</version>
+    <time>1379664603</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="390">
+    <srcmd5>14568a15caa388aeb41030d6c7a6c030</srcmd5>
+    <version>0.0.5</version>
+    <time>1406914037</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243382</requestid>
+  </revision>
+  <revision rev="19" vrev="392">
+    <srcmd5>14568a15caa388aeb41030d6c7a6c030</srcmd5>
+    <version>0.0.5</version>
+    <time>1409303308</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="393">
+    <srcmd5>26cc96cf154a709a9ca089ee183af809</srcmd5>
+    <version>0.0.5</version>
+    <time>1490965688</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482325</requestid>
+  </revision>
+  <revision rev="21" vrev="394">
+    <srcmd5>e3a1b31aae6e09bbccd1473ca9f0eb8c</srcmd5>
+    <version>0.0.5</version>
+    <time>1511595799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545111</requestid>
+  </revision>
+</revisionlist>

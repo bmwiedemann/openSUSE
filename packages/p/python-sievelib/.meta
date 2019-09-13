@@ -1,0 +1,9 @@
+<package name="python-sievelib" project="openSUSE:Factory">
+  <title>Client-side SIEVE library written in Python</title>
+  <description>Client-side Sieve and Managesieve library written in Python.
+
+    Sieve : An Email Filtering Language (RFC 5228)
+    ManageSieve : A Protocol for Remotely Managing Sieve Scripts (RFC 5804)
+</description>
+  <devel project="devel:languages:python" package="python-sievelib"/>
+</package>

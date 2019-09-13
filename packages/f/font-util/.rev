@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e503a593793773d15f3c24f30820731</srcmd5>
+    <version>1.3.0</version>
+    <time>1337273431</time>
+    <user>coolo</user>
+    <comment>- updated CP932.TXT to make buildservice happy 
+
+- Rename source and binary package from xorg-x11-fonts-devel to
+  font-utils.
+- Add Provides/Obsoletes for xorg-x11-fonts-devel to smooth
+  upgrades.</comment>
+    <requestid>121182</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9e503a593793773d15f3c24f30820731</srcmd5>
+    <version>1.3.0</version>
+    <time>1340183334</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>9e503a593793773d15f3c24f30820731</srcmd5>
+    <version>1.3.0</version>
+    <time>1359108885</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>8a9eae2d6af261d48723b416a4f28f8c</srcmd5>
+    <version>1.3.0</version>
+    <time>1364472665</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161193 from m_meister)</comment>
+    <requestid>161221</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>8a9eae2d6af261d48723b416a4f28f8c</srcmd5>
+    <version>1.3.0</version>
+    <time>1379662354</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>c2dd192ba1ec28241a1ef131402b03fd</srcmd5>
+    <version>1.3.0</version>
+    <time>1398533653</time>
+    <user>coolo</user>
+    <comment>- Remove superfluous BuildRequire, Require (forwarded request 231329 from tobijk)</comment>
+    <requestid>231358</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>c2dd192ba1ec28241a1ef131402b03fd</srcmd5>
+    <version>1.3.0</version>
+    <time>1409300890</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>57ac61c6139579533bd74b0be121dc36</srcmd5>
+    <version>1.3.1</version>
+    <time>1426793802</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to font-util 1.3.1:
+  * This release fixes the autoconf macros installed for use
+    generating the other Xorg font packages to respect the
+    $PKG_CONFIG variable that some build systems, especially
+    cross-compilers, require; and updates the license notice
+    in map-JISX0201.1976-0 to the current version from Unicode
+    Consortium.</comment>
+    <requestid>291003</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3201b286278d744a0456ad798f1f066c</srcmd5>
+    <version>1.3.1</version>
+    <time>1441954939</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329382</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>81ea62d3df5fbc73bd3de3e98c41ca12</srcmd5>
+    <version>1.3.1</version>
+    <time>1486773535</time>
+    <user>dimstar_suse</user>
+    <comment>- Set fontrootdir in configure options
+  Fixes (boo#1024391).</comment>
+    <requestid>455593</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2035111c6477b6109e06575adef21668</srcmd5>
+    <version>1.3.2</version>
+    <time>1566912256</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to font-util 1.3.2
+  * This minor bugfix release fixes crashes of the ucs2any utility
+    when faced with a poorly-formed bdf font file.
+
+- Own %{_datadir}/aclocal: when we might switch to pkgconf instead
+  of pkg-config, nothing in the build root is 'accidentally' owning
+  this directory for us.</comment>
+    <requestid>726129</requestid>
+  </revision>
+</revisionlist>

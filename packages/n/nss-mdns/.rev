@@ -1,0 +1,190 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a312dae505bb2de0ae699393b8504f9</srcmd5>
+    <version>0.9</version>
+    <time>1173872045</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="8">
+    <srcmd5>b629d0a7fe7c01a73381135b35aa7b68</srcmd5>
+    <version>0.9</version>
+    <time>1177196450</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="37">
+    <srcmd5>8cea398f12cdb78c6efc346855a8e056</srcmd5>
+    <version>0.9</version>
+    <time>1189421219</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="38">
+    <srcmd5>f48a58d3e63f3c4dff943f5219063783</srcmd5>
+    <version>0.9</version>
+    <time>1189464004</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>014ed1a3a26392fd591e0cbd2ff41101</srcmd5>
+    <version>0.10</version>
+    <time>1207458602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f6635a900688e544b273b1f99af63567</srcmd5>
+    <version>0.10</version>
+    <time>1207833393</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>94b9fb59ec701fb70b470b91e81e5646</srcmd5>
+    <version>0.10</version>
+    <time>1208907962</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>9eb45ba1a5cb11ebc662eba1af959d84</srcmd5>
+    <version>0.10</version>
+    <time>1212228733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="39">
+    <srcmd5>9eb45ba1a5cb11ebc662eba1af959d84</srcmd5>
+    <version>0.10</version>
+    <time>1212228733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="40">
+    <srcmd5>7a82469fd3ff329d4c34a8ddcccfba25</srcmd5>
+    <version>0.10</version>
+    <time>1223908982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="41">
+    <srcmd5>0ec0dfad378d7f2884f40c7c96428d26</srcmd5>
+    <version>0.10</version>
+    <time>1243463906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="43">
+    <srcmd5>0ec0dfad378d7f2884f40c7c96428d26</srcmd5>
+    <version>0.10</version>
+    <time>1243463906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="44">
+    <srcmd5>ce84c4817f02eed4eaccbaf7073a7aea</srcmd5>
+    <version>0.10</version>
+    <time>1261136287</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/nss-mdns based on submit request 27012 from user vuntz
+</comment>
+  </revision>
+  <revision rev="14" vrev="45">
+    <srcmd5>2aaf130ea7d1109ed00ba3f5af8be3cc</srcmd5>
+    <version>0.10</version>
+    <time>1268925112</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="47">
+    <srcmd5>2aaf130ea7d1109ed00ba3f5af8be3cc</srcmd5>
+    <version>0.10</version>
+    <time>1278667371</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="48">
+    <srcmd5>2aaf130ea7d1109ed00ba3f5af8be3cc</srcmd5>
+    <version>0.10</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="51">
+    <srcmd5>2aaf130ea7d1109ed00ba3f5af8be3cc</srcmd5>
+    <version>0.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="53">
+    <srcmd5>2aaf130ea7d1109ed00ba3f5af8be3cc</srcmd5>
+    <version>0.10</version>
+    <time>1319182204</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="54">
+    <srcmd5>dddef4ba74fbf980623a6bfa6e098d7e</srcmd5>
+    <version>0.10</version>
+    <time>1323192752</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="56">
+    <srcmd5>dddef4ba74fbf980623a6bfa6e098d7e</srcmd5>
+    <version>0.10</version>
+    <time>1340183737</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="57">
+    <srcmd5>8847fc4edac5f97904ca56914333fb18</srcmd5>
+    <version>0.10</version>
+    <time>1342625779</time>
+    <user>coolo</user>
+    <comment>bnc#710231 &amp; bnc#729796; would like to get this in 12.2 (forwarded request 127639 from Zaitor)</comment>
+    <requestid>128059</requestid>
+  </revision>
+  <revision rev="22" vrev="59">
+    <srcmd5>8847fc4edac5f97904ca56914333fb18</srcmd5>
+    <version>0.10</version>
+    <time>1359109515</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="60">
+    <srcmd5>60841eec5f091b32e5bbe8a3b4399d3c</srcmd5>
+    <version>0.10</version>
+    <time>1366290021</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 170846 from dimstar)</comment>
+    <requestid>171369</requestid>
+  </revision>
+  <revision rev="24" vrev="62">
+    <srcmd5>60841eec5f091b32e5bbe8a3b4399d3c</srcmd5>
+    <version>0.10</version>
+    <time>1379663384</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="64">
+    <srcmd5>60841eec5f091b32e5bbe8a3b4399d3c</srcmd5>
+    <version>0.10</version>
+    <time>1409301998</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="65">
+    <srcmd5>d26be825865b556c696ee631b5e4b9a8</srcmd5>
+    <version>0.10</version>
+    <time>1414218763</time>
+    <user>coolo</user>
+    <comment>- Fix bashisms in nss-mdns-config.</comment>
+    <requestid>257808</requestid>
+  </revision>
+  <revision rev="27" vrev="66">
+    <srcmd5>356cbf9a4e9dc4ddea73bbc0146468ef</srcmd5>
+    <version>0.10</version>
+    <time>1520502543</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581287 from dimstar)</comment>
+    <requestid>582854</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>696f9fa24e20a9478b73bc2b167a9dc3</srcmd5>
+    <version>0.14.1</version>
+    <time>1556914710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696530</requestid>
+  </revision>
+</revisionlist>

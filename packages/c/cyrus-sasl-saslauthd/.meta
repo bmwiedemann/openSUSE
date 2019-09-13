@@ -1,0 +1,6 @@
+<package name="cyrus-sasl-saslauthd" project="openSUSE:Factory">
+  <title>The SASL Authentication Server</title>
+  <description>This daemon is required when using cyrus-sasl in server software that
+should authenticate with PAM, for example.</description>
+  <devel project="openSUSE:Factory" package="cyrus-sasl"/>
+</package>

@@ -1,0 +1,10 @@
+<package name="icu4j" project="openSUSE:Factory">
+  <title>International Components for Unicode for Java</title>
+  <description>
+The International Components for Unicode (ICU) library provides robust and
+full-featured Unicode services on a wide variety of platforms. ICU supports
+the most current version of the Unicode standard, and provides support for
+supplementary characters (needed for GB 18030 repertoire support).
+  </description>
+  <devel project="Java:packages" package="icu4j"/>
+</package>

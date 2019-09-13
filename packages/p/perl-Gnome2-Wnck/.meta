@@ -1,0 +1,12 @@
+<package name="perl-Gnome2-Wnck" project="openSUSE:Factory">
+  <title>Perl interface to the Window Navigator Construction Kit</title>
+  <description>This module allows you to use the Window Navigator Construction Kit library
+(libwnck for short) from Perl.
+
+The index of the automatically generated API documentation can be accessed
+with:
+
+  perldoc Gnome2::Wnck::index</description>
+  <devel project="devel:languages:perl" package="perl-Gnome2-Wnck"/>
+  <url> http://search.cpan.org/dist/Gnome2-Wnck/</url>
+</package>

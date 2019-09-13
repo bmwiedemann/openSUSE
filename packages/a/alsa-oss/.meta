@@ -1,0 +1,6 @@
+<package name="alsa-oss" project="openSUSE:Factory">
+  <title>ALSA-OSS Wrapper</title>
+  <description>This package contains the wrapper library and script to run OSS
+applications using ALSA API.</description>
+  <devel project="multimedia:libs" package="alsa-oss"/>
+</package>

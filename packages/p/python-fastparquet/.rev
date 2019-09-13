@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>443e1a3ba2d6d6e52e93bc7f736cd3c1</srcmd5>
+    <version>0.0.6</version>
+    <time>1526371680</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-datashader</comment>
+    <requestid>603775</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a1b6ef6657a6a496a3f0c83f6118284b</srcmd5>
+    <version>0.0.6</version>
+    <time>1528897039</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615166</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2eb9d6d69c905bc9d300bf9a6a1139ee</srcmd5>
+    <version>0.1.6</version>
+    <time>1538502444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639321</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>63ea5bb7456cfaa253b7be98dfc689cf</srcmd5>
+    <version>0.2.0</version>
+    <time>1543224567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651329</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9bac78a8606fadf3ccfde05c94ae4fa3</srcmd5>
+    <version>0.2.1</version>
+    <time>1548704915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668842</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc28f3a73b0e885f0e40748abe7029d1</srcmd5>
+    <version>0.3.1</version>
+    <time>1557404891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699763</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4892a735b299a39560d4ee22351e19a7</srcmd5>
+    <version>0.3.1</version>
+    <time>1558428017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704258</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7ad9c1d451bfa519a73274065128f60b</srcmd5>
+    <version>0.3.2</version>
+    <time>1564994534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720881</requestid>
+  </revision>
+</revisionlist>

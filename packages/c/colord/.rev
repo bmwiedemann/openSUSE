@@ -1,0 +1,640 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>25b4ce3aca993a829630ce2b9c949786</srcmd5>
+    <version>0.1.9</version>
+    <time>1309860557</time>
+    <user>saschpe</user>
+    <comment>New package: color management daemon; new dependency in GNOME 3.2</comment>
+    <requestid>75327</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8347cb24955811a458bdd5d9787f112c</srcmd5>
+    <version>0.1.9</version>
+    <time>1309860577</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75327
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b64a0085c52beabb58d4ac4cb9aeab69</srcmd5>
+    <version>0.1.10</version>
+    <time>1310116728</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F, including GNOME 3.1.3</comment>
+    <requestid>75706</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>72de811b7731fbf2d6c9b343bb4512cf</srcmd5>
+    <version>0.1.10</version>
+    <time>1310116737</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75706
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3b3b69c42fde3f5a35e2776e4921c755</srcmd5>
+    <version>0.1.10</version>
+    <time>1310464373</time>
+    <user>saschpe</user>
+    <comment>reduce amount of build deps to reduce the cycle</comment>
+    <requestid>76064</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>99f0bb4d738d0e4998c1fd6d50c9cdde</srcmd5>
+    <version>0.1.10</version>
+    <time>1310464382</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76064
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d9a459b5ff23d9cb553251984b4d9e8</srcmd5>
+    <version>0.1.12</version>
+    <time>1315559491</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81452</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0c45a4ab58e712d28f4802a7966a3710</srcmd5>
+    <version>0.1.12</version>
+    <time>1315559500</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81452
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e5d24acdad13ac2e6730d4ce34339a65</srcmd5>
+    <version>0.1.12</version>
+    <time>1315760779</time>
+    <user>saschpe</user>
+    <comment>Add baselibs.conf</comment>
+    <requestid>81750</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>dc0adf6da17f2ce879b53b789ba48dcd</srcmd5>
+    <version>0.1.12</version>
+    <time>1315760785</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81750
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>dfe7206169162a4f7418b764448c6aef</srcmd5>
+    <version>0.1.12</version>
+    <time>1317541977</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85614</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0c64c535ec42bce78ec713a589584569</srcmd5>
+    <version>0.1.13</version>
+    <time>1317744501</time>
+    <user>oertel</user>
+    <comment>I probably ran spec-cleaner here (forwarded request 86350 from dimstar)</comment>
+    <requestid>86351</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>0c64c535ec42bce78ec713a589584569</srcmd5>
+    <version>0.1.13</version>
+    <time>1319181818</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>bb959b797e90d71e2854d2358f1790dd</srcmd5>
+    <version>0.1.13</version>
+    <time>1320235890</time>
+    <user>coolo</user>
+    <comment>- don't recommend colord from libcolord1 to prevent automatic
+  installation (bnc#698250) (forwarded request 89695 from lnussel)</comment>
+    <requestid>89921</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aa2050fc7e4eaaaf5fa1db539f17997c</srcmd5>
+    <version>0.1.15</version>
+    <time>1326106986</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>98989</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>405b2972f26a819d55c92e7216be4b91</srcmd5>
+    <version>0.1.16</version>
+    <time>1327486052</time>
+    <user>coolo</user>
+    <comment>Pushing small bits of G:F</comment>
+    <requestid>100714</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>86ec5cf139598882f3cc06ebd04d702d</srcmd5>
+    <version>0.1.17</version>
+    <time>1330583096</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>107308</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>303ad33db102a8d5ab7a48526c0d9050</srcmd5>
+    <version>0.1.18</version>
+    <time>1333013758</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111678</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>00f4111bb7083bd635e90c8381e3eb93</srcmd5>
+    <version>0.1.19</version>
+    <time>1334927509</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>114626</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8f575a0f36e1f0366f56f1ede4577640</srcmd5>
+    <version>0.1.20</version>
+    <time>1337674124</time>
+    <user>coolo</user>
+    <comment>push G:F</comment>
+    <requestid>121413</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d3479647f102e56c72d80638112365e2</srcmd5>
+    <version>0.1.21</version>
+    <time>1339076259</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>123633</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>d3479647f102e56c72d80638112365e2</srcmd5>
+    <version>0.1.21</version>
+    <time>1340183244</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>095d99a3ce1fc4665098331836481c4c</srcmd5>
+    <version>0.1.21</version>
+    <time>1342624358</time>
+    <user>coolo</user>
+    <comment>Add apparmor profile - safe for 12.2 (forwarded request 128051 from dimstar)</comment>
+    <requestid>128052</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d3b6f27e508f57f1607a65215d925dc1</srcmd5>
+    <version>0.1.23</version>
+    <time>1349368680</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136645</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>e3df9072337035f7630f08bf03b15ca6</srcmd5>
+    <version>0.1.23</version>
+    <time>1350641099</time>
+    <user>coolo</user>
+    <comment>- Fix build with new udev rules directory location. (forwarded request 138487 from fcrozat)</comment>
+    <requestid>138563</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>850a537c5a1612cfd16390750f9946a8</srcmd5>
+    <version>0.1.24</version>
+    <time>1352215973</time>
+    <user>coolo</user>
+    <comment>Update to 0.1.24 (forwarded request 139898 from Zaitor)</comment>
+    <requestid>140237</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>617a6d4d1590a151bd05136e2062bef2</srcmd5>
+    <version>0.1.25</version>
+    <time>1355463399</time>
+    <user>coolo</user>
+    <comment>Update to 0.1.25 (forwarded request 143543 from vuntz)</comment>
+    <requestid>145174</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>30f75f64149051e39421abf45b4420aa</srcmd5>
+    <version>0.1.26</version>
+    <time>1356642587</time>
+    <user>namtrac</user>
+    <comment>Update to 0.1.26 (forwarded request 145961 from dimstar)</comment>
+    <requestid>146277</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>007da1b3effaa76398c6a0fd65d3ea2a</srcmd5>
+    <version>0.1.26</version>
+    <time>1357973057</time>
+    <user>coolo</user>
+    <comment>- allow /usr/share/mime/** readable in AA profile (bnc#797907) (forwarded request 148021 from dimstar)</comment>
+    <requestid>148028</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>007da1b3effaa76398c6a0fd65d3ea2a</srcmd5>
+    <version>0.1.26</version>
+    <time>1359108760</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>0b458c63079d65b82be92dd1d85730fe</srcmd5>
+    <version>0.1.26</version>
+    <time>1361277033</time>
+    <user>coolo</user>
+    <comment>More AA fixes</comment>
+    <requestid>155769</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>303e6e022d438d44c416a3b763c69da0</srcmd5>
+    <version>0.1.32</version>
+    <time>1364986066</time>
+    <user>coolo</user>
+    <comment>Update to 0.1.32 (forwarded request 161704 from Zaitor)</comment>
+    <requestid>161783</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3c3525b2bb62ff58a65bb2e5217244b5</srcmd5>
+    <version>0.1.33</version>
+    <time>1366983561</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.8.1 to Factory - mostly small bug fixes over the existing 3.8.0 we have</comment>
+    <requestid>173213</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b2104cd9b9123620a4a4bf672ba42df2</srcmd5>
+    <version>1.0.0</version>
+    <time>1368690491</time>
+    <user>coolo</user>
+    <comment>Update to 1.0.0 (forwarded request 175322 from Zaitor)</comment>
+    <requestid>175628</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>42f589c5fefe4c881e612ed610c4e05c</srcmd5>
+    <version>1.0.0</version>
+    <time>1369734242</time>
+    <user>coolo</user>
+    <comment>- Move %glib2_gsettings_schema_post from %pre to %post: if we
+  execute this prior to installation, the schema will not be
+  registered, as the files are not yet in place.
+
+Either copy to G:S:3.8 in this form (1.0.0 is stable release of 0.x series) or at least backport the fix. (forwarded request 176343 from Zaitor)</comment>
+    <requestid>176467</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a59c078572436382373c97020f1bb775</srcmd5>
+    <version>1.0.1</version>
+    <time>1372144992</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.0.1, consider for GS:3.8 (forwarded request 179146 from dimstar)</comment>
+    <requestid>180642</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>07c4229c9283b2469631a4d8c2b804a8</srcmd5>
+    <version>1.0.2</version>
+    <time>1373542054</time>
+    <user>coolo</user>
+    <comment>Update to 1.0.2 (forwarded request 182545 from Zaitor)</comment>
+    <requestid>182560</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>21d8dc3f9f18b257a43f6a580f89eea8</srcmd5>
+    <version>1.1.1</version>
+    <time>1376648841</time>
+    <user>scarabeus_factory</user>
+    <comment>push GNOME:Factory</comment>
+    <requestid>186851</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>23014c26ecc95fdda31e9d825e4cf67f</srcmd5>
+    <version>1.1.1</version>
+    <time>1378891655</time>
+    <user>coolo</user>
+    <comment>Update to 3.9.91</comment>
+    <requestid>198101</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>23014c26ecc95fdda31e9d825e4cf67f</srcmd5>
+    <version>1.1.1</version>
+    <time>1379662132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>42fdc9df814aef342088c386c111078f</srcmd5>
+    <version>1.1.2</version>
+    <time>1379938802</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.92</comment>
+    <requestid>199963</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>3cccd5b0daa47f4f4c232a5b0dcdd2d9</srcmd5>
+    <version>1.1.2</version>
+    <time>1382034921</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update apparmor profile (bnc#846301).</comment>
+    <requestid>203617</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>1500f04fecfc593f444df1f74cee7322</srcmd5>
+    <version>1.1.2</version>
+    <time>1383230329</time>
+    <user>coolo</user>
+    <comment>- Another update for the apparmor profile (bnc#846301#c9).
+
+Please forward to 13.1 and Factory. (forwarded request 205221 from cboltz)</comment>
+    <requestid>205288</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a9561d9e77b408bfd4b9ab57468a12b3</srcmd5>
+    <version>1.1.4</version>
+    <time>1385386355</time>
+    <user>coolo</user>
+    <comment>Update to 1.1.4 (forwarded request 207789 from Zaitor)</comment>
+    <requestid>208136</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5b2061f36473add757c92cd680a0a88d</srcmd5>
+    <version>1.1.5</version>
+    <time>1387205253</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.1.5. Note that I see that fedora has dropped  shared-color-profiles http://pkgs.fedoraproject.org/cgit/shared-color-profiles.git/commit/?id=383a0197b39ea848a6c2e6999b1f8f088a5acf9f, stating that those profiles now are built in this package. What more, the package has not built since dmuller checked in a version update (never forwarded to factory at least...). I won't pretend I understand this package at all, so I leave it up to those that have more insight (forwarded request 210924 from dimstar)</comment>
+    <requestid>210946</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a465b8e851ca518cf64c432761f757b6</srcmd5>
+    <version>1.1.6</version>
+    <time>1390919874</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.1.6,
+
+Note this warning (not new), should we care?
+
+[   94s] colord.x86_64: W: non-conffile-in-etc /etc/dbus-1/system.d/org.freedesktop.ColorManager.conf
+[   94s] A non-executable file in your package is being installed in /etc, but is not a
+[   94s] configuration file. All non-executable files in /etc should be configuration
+[   94s] files. Mark the file as %config in the spec file.
+ (forwarded request 215053 from Zaitor)</comment>
+    <requestid>215105</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9f53ac4fc8a84767d355953dc486bca2</srcmd5>
+    <version>1.1.7</version>
+    <time>1395043965</time>
+    <user>coolo</user>
+    <comment>Update to 1.1.7 (forwarded request 225152 from Zaitor)</comment>
+    <requestid>225314</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>82aee696dfdf25a81b0877f848e9f38d</srcmd5>
+    <version>1.2.0</version>
+    <time>1399317256</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231673</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>5ac1dab30847faa564af3b33d177692f</srcmd5>
+    <version>1.2.0</version>
+    <time>1402947799</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>235901</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9985194c968dcd6bbf1131113d353b24</srcmd5>
+    <version>1.2.1</version>
+    <time>1404487114</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239335</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>9985194c968dcd6bbf1131113d353b24</srcmd5>
+    <version>1.2.1</version>
+    <time>1409300662</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1184757d2b269736dfbcc442d1c693a9</srcmd5>
+    <version>1.2.3</version>
+    <time>1412098617</time>
+    <user>coolo</user>
+    <comment>Update to 1.2.3 - no need for Staging:E</comment>
+    <requestid>249923</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>68cdb8ffe1041c6c857a73e65d6f4f28</srcmd5>
+    <version>1.2.3</version>
+    <time>1413384076</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256334</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e3fbc518ad7ac9949fe68e12f7575e00</srcmd5>
+    <version>1.2.4</version>
+    <time>1416347160</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.14.2</comment>
+    <requestid>261767</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>0bc5da5fdd8d3b4d84fd868e2ea1c315</srcmd5>
+    <version>1.2.6</version>
+    <time>1417246774</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>263264</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>4e958180da2a86783800313b49334bb2</srcmd5>
+    <version>1.2.7</version>
+    <time>1418840387</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265391</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>a0eab431d53c6bb9e4fa8b1bfa02b9b1</srcmd5>
+    <version>1.2.7</version>
+    <time>1419809589</time>
+    <user>dimstar_suse</user>
+    <comment>Update apparmor profile for USB profiling (boo#901148).</comment>
+    <requestid>266274</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>1f019c15ea9ffd5762941024319687cc</srcmd5>
+    <version>1.2.8</version>
+    <time>1422594273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283074</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>7b93e0b947996a0e722731dccdc74436</srcmd5>
+    <version>1.2.9</version>
+    <time>1425377425</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288065</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>ef0d7e22c52d26a261ec6d011791b631</srcmd5>
+    <version>1.2.10</version>
+    <time>1428652181</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295140</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>50f274b9d77d7b26d4495e538f1b9ecb</srcmd5>
+    <version>1.2.10</version>
+    <time>1432378660</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308382</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>4596fc2cb8b87f7552483d82854f5fa2</srcmd5>
+    <version>1.2.11</version>
+    <time>1436112079</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>313237</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>81c48a751b72c4ee48cfa59549adb65e</srcmd5>
+    <version>1.2.12</version>
+    <time>1444140547</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329625</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>27f0a647b70c5ac474b9d0c6d16bbe95</srcmd5>
+    <version>1.2.12</version>
+    <time>1444833823</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337052</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>351bc7aeea5971dbdd82bc2b00b6af95</srcmd5>
+    <version>1.3.2</version>
+    <time>1459255075</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.3.1 (forwarded request 376788 from dimstar)</comment>
+    <requestid>376893</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>7aced3363f15a70214df515b1e2fcd32</srcmd5>
+    <version>1.3.3</version>
+    <time>1471504626</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419521</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>3c49862ff4f7fe945b8bb914c01533b5</srcmd5>
+    <version>1.3.3</version>
+    <time>1474475249</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>426704</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>36750f3171f2a11f1203640acf1b515c</srcmd5>
+    <version>1.3.4</version>
+    <time>1481272346</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444120</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>21996009ae0057c7a13e5a66da0b2c7a</srcmd5>
+    <version>1.3.5</version>
+    <time>1490220135</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478773</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>b7e234c415206a0357fecc13145759ac</srcmd5>
+    <version>1.4.1</version>
+    <time>1506678645</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528878</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>c6dd7fd93392d39776194c121ce01f43</srcmd5>
+    <version>1.4.1</version>
+    <time>1507280162</time>
+    <user>dimstar_suse</user>
+    <comment>- Update package summaries. Replace old RPM shell variables. (forwarded request 530588 from jengelh)</comment>
+    <requestid>530825</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>762b07f7fb95c4ee955f0e3a9593b550</srcmd5>
+    <version>1.4.1</version>
+    <time>1507391317</time>
+    <user>dimstar_suse</user>
+    <comment>seems with new docbook-stylesheet, the .devhelp2 disappears; it's not important enough to spend hour debugging it imho (forwarded request 532175 from dimstar)</comment>
+    <requestid>532194</requestid>
+  </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>0b31e352fe6692ceb0da5f6c864b65d4</srcmd5>
+    <version>1.4.1</version>
+    <time>1521051829</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583556 from dimstar)</comment>
+    <requestid>584716</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>cdc58425088cd2cf5491470fc1807c4d</srcmd5>
+    <version>1.4.2</version>
+    <time>1521498709</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2:
+  + New Features:
+    - Add cd_icc_set_created.
+    - Add --enable-timestamps option for CREATED header.
+  + Bugfixes:
+    - Avoid buffer overflow when reading profile_id.
+    - Fix the detection of duplicate EDIDs.
+    - Make udev hwdb optional by using pnp.ids as fallback.
+    - Raise _XOPEN_SOURCE to 700 to enable C99 on FreeBSD.
+    - Refactor build directory selection.
+    - Set cd-create-profile date to SOURCE_DATE_EPOCH.
+- Pass new option enable-udev-rules=true to meson. (forwarded request 586553 from iznogood)</comment>
+    <requestid>587038</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>f12611c84b35d78869553eacf1c5d600</srcmd5>
+    <version>1.4.3</version>
+    <time>1524642292</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 599783 from iznogood)</comment>
+    <requestid>599943</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>7555392ab63d2ced295e83b35628bba5</srcmd5>
+    <version>1.4.3</version>
+    <time>1551023923</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673344</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>00ab5053c20269fdee4c5827b5d1d41f</srcmd5>
+    <version>1.4.3</version>
+    <time>1561882803</time>
+    <user>dimstar_suse</user>
+    <comment>- Change BuildRequires to docbook-utils-minimal, otherwise the build
+  pulls in half of texlive and all its dependencies. Only man pages
+  and HTML API docs are generated, no need for PS/PDF generation. (forwarded request 712117 from StefanBruens)</comment>
+    <requestid>712351</requestid>
+  </revision>
+</revisionlist>

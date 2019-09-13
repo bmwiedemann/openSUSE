@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="22">
+    <srcmd5>bdc35caccfaa7e6213508cf5bbc7f73e</srcmd5>
+    <version>0.4.0</version>
+    <time>1168903408</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="62">
+    <srcmd5>cd98af5a234732a9e9bf1e33300efe7f</srcmd5>
+    <version>0.4.0</version>
+    <time>1181860006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="128">
+    <srcmd5>0d0c8922b07adcef9670f7475cec7065</srcmd5>
+    <version>0.4.0</version>
+    <time>1207831127</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="174">
+    <srcmd5>0d0c8922b07adcef9670f7475cec7065</srcmd5>
+    <version>0.4.0</version>
+    <time>1207831127</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="175">
+    <srcmd5>89d9b6d7705fea2e09d7f539d4673f9e</srcmd5>
+    <version>0.4.0</version>
+    <time>1226938797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="176">
+    <srcmd5>893a83edc683e5cfe276126554268c69</srcmd5>
+    <version>0.4.0</version>
+    <time>1231436737</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="178">
+    <srcmd5>893a83edc683e5cfe276126554268c69</srcmd5>
+    <version>0.4.0</version>
+    <time>1231436737</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="179">
+    <srcmd5>cc976d50c29fac978d103d93c903e5b3</srcmd5>
+    <version>0.4.0</version>
+    <time>1266507142</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/libvisual based on submit request 32738 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="180">
+    <srcmd5>86fd1ca774ae7fb7f93762fe60bebac8</srcmd5>
+    <version>0.4.0</version>
+    <time>1268924757</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="182">
+    <srcmd5>86fd1ca774ae7fb7f93762fe60bebac8</srcmd5>
+    <version>0.4.0</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="183">
+    <srcmd5>86fd1ca774ae7fb7f93762fe60bebac8</srcmd5>
+    <version>0.4.0</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="186">
+    <srcmd5>86fd1ca774ae7fb7f93762fe60bebac8</srcmd5>
+    <version>0.4.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="187">
+    <srcmd5>863dfcd1c7b9f0896178382acb367286</srcmd5>
+    <version>0.4.0</version>
+    <time>1308899496</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>74428</requestid>
+  </revision>
+  <revision rev="14" vrev="188">
+    <srcmd5>6177c0fea6da71897bfa14ea87907965</srcmd5>
+    <version>0.4.0</version>
+    <time>1308899504</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74428
+</comment>
+  </revision>
+  <revision rev="15" vrev="190">
+    <srcmd5>6177c0fea6da71897bfa14ea87907965</srcmd5>
+    <version>0.4.0</version>
+    <time>1319182144</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="191">
+    <srcmd5>07baf8bcd83ffff135bd2655aa1d4692</srcmd5>
+    <version>0.4.0</version>
+    <time>1319551764</time>
+    <user>coolo</user>
+    <comment>-&gt; (forwarded request 88990 from mlschroe)</comment>
+    <requestid>88999</requestid>
+  </revision>
+  <revision rev="17" vrev="192">
+    <srcmd5>1c279651c9ebc2b4e6a6c797411451be</srcmd5>
+    <version>0.4.0</version>
+    <time>1327486098</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100916</requestid>
+  </revision>
+  <revision rev="18" vrev="193">
+    <srcmd5>263a3cdf9f97c7b77e1fa093dd1ee633</srcmd5>
+    <version>0.4.0</version>
+    <time>1329824329</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106225</requestid>
+  </revision>
+  <revision rev="19" vrev="195">
+    <srcmd5>263a3cdf9f97c7b77e1fa093dd1ee633</srcmd5>
+    <version>0.4.0</version>
+    <time>1340183650</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="196">
+    <srcmd5>215674e059c79ae81100586022d3cc0b</srcmd5>
+    <version>0.4.0</version>
+    <time>1343673276</time>
+    <user>coolo</user>
+    <comment>- defining inline causes problems trying to build against 
+  libvisual headers (forwarded request 128986 from k0da)</comment>
+    <requestid>128997</requestid>
+  </revision>
+  <revision rev="21" vrev="198">
+    <srcmd5>215674e059c79ae81100586022d3cc0b</srcmd5>
+    <version>0.4.0</version>
+    <time>1359109371</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="199">
+    <srcmd5>94a3df824dde43835c6607065ebdcedd</srcmd5>
+    <version>0.4.0</version>
+    <time>1360008778</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 150825 from coolo)</comment>
+    <requestid>150835</requestid>
+  </revision>
+  <revision rev="23" vrev="201">
+    <srcmd5>94a3df824dde43835c6607065ebdcedd</srcmd5>
+    <version>0.4.0</version>
+    <time>1379663125</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="203">
+    <srcmd5>94a3df824dde43835c6607065ebdcedd</srcmd5>
+    <version>0.4.0</version>
+    <time>1409301754</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>80963bbc4b9da7a0ecbf8f83c80bdcc8</srcmd5>
+    <version>1.16.0.1</version>
+    <time>1432636299</time>
+    <user>dimstar_suse</user>
+    <comment>Manipulating Haskell source: abstract syntax, lexer, parser, and pretty-printer</comment>
+    <requestid>307873</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>38273ae636d74c5803619e253c2bce9e</srcmd5>
+    <version>1.17.1</version>
+    <time>1452262984</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.17.1
+* Fix bug in parsing view patterns (#284)
+* Replaced VarA with AppA in Asst (#168).
+* Promoted list/tuple members changed from Promoted to Type (#162).
+* Update PatBind, Match, and Alt from containing Binds to Maybe Binds to
+  distinguish between empty where clauses and where clauses with no
+  binds (#244).
+* Add RoleAnnotDecl and Role to support Role annotations (#215).
+* Move NameSpace field from EVar/IVar to EAbs/IAbs.
+* Add standalone parsers for ImportDecl.
+* Fix pretty-printer bugs for HaRP (#160).
+* Insert parentheses when pretty-printing non-atomic bang types (#169).
+* Un-reverse confusion of left and right arrow (#175).
+* Prettyprint option pragmas like 1.15 (#172).
+* Conditionally insert lines when pretty-printing declarations (#171).
+* Distinguish deriving (Show) from deriving Show (#189).
+* Allow parsing of unicode subscript and superscript functions (#173).
+* Pretty print unboxed tuples with spaces (#193).
+* Improve performance when parsing long extension lists (#200).
+* Properly pretty print constructor and class operators (#204).
+* Read Haskell source files as UTF-8 (#223).
+* Fix ExplicitNamespaces parsing (#216).
+* PolyKinds implies KindSignatures (#220).
+* Preserve location information for infix binds (#205).
+* Preserve positional information in checkPattern (#231).
+* Maintain correct line numbers when parsing multiline GHC_OPTIONS (#218).
+* Correctly parse &quot;*&quot; with TypeOperators (#81).
+* Export the &quot;pretty&quot; method (#222).
+* Add javascript calling convention for foreign imports (#236).
+* Add non-greedy parsers for module heads (#191). (forwarded request 352134 from mimi_vx)</comment>
+    <requestid>352194</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3e199798c50c59291fd3a3f557bf662f</srcmd5>
+    <version>1.17.1</version>
+    <time>1469081062</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411371</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ff87c3919e4be5e87d7060c6cfeb2b46</srcmd5>
+    <version>1.18.2</version>
+    <time>1489482291</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461633</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>59882eb5598b6d54dd240bf1d9cf21f5</srcmd5>
+    <version>1.18.2</version>
+    <time>1505504843</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524727</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1e8d77a7c3734b3c2842527ba8aeb16</srcmd5>
+    <version>1.20.2</version>
+    <time>1527675706</time>
+    <user>dimstar_suse</user>
+    <comment>Update haskell-src-exts to version 1.20.2.</comment>
+    <requestid>609840</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bb408b716fb4ecfb9692e219476afab0</srcmd5>
+    <version>1.20.2</version>
+    <time>1532445557</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- add _constraints file for ppc64le
+- add group to devel section
+- initial commit</comment>
+    <requestid>623782</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>af1aef978a734e14257e56b37bb2a0ff</srcmd5>
+    <version>1.20.2</version>
+    <time>1534774823</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Cabal build information to support GHC 8.6.x.</comment>
+    <requestid>630367</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3b128dbdeccbc31010de816764ae1da2</srcmd5>
+    <version>1.20.3</version>
+    <time>1540448186</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642861</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c920c1713031876fdf835026ac661790</srcmd5>
+    <version>1.21.0</version>
+    <time>1544441384</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>656587</requestid>
+  </revision>
+</revisionlist>

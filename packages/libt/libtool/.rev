@@ -1,0 +1,457 @@
+<revisionlist>
+  <revision rev="1" vrev="19">
+    <srcmd5>a56726a37db10eb6ce386786223f44df</srcmd5>
+    <version>1.5.22</version>
+    <time>1166483817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="58">
+    <srcmd5>ff67a19eff9d49dc9beb0670b238bf84</srcmd5>
+    <version>1.5.22</version>
+    <time>1181838844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8de746384191e21e2a3705380f3a8b9f</srcmd5>
+    <version>1.5.24</version>
+    <time>1184071115</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="23">
+    <srcmd5>5b4ee8ea3df64246fefe4962ed9ade14</srcmd5>
+    <version>1.5.24</version>
+    <time>1195778257</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>97ecf280f64b5f69b724e51a05a242df</srcmd5>
+    <version>1.5.26</version>
+    <time>1201902761</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="13">
+    <srcmd5>adb995c79532cec7a41cbf6c5484fc0f</srcmd5>
+    <version>1.5.26</version>
+    <time>1207826271</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="21">
+    <srcmd5>496bd445256d914ed855deefe36f7a74</srcmd5>
+    <version>1.5.26</version>
+    <time>1211414682</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4b21fd7a040a4096c02c22a8120465d2</srcmd5>
+    <version>2.2.6</version>
+    <time>1222207394</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="43">
+    <srcmd5>4b21fd7a040a4096c02c22a8120465d2</srcmd5>
+    <version>2.2.6</version>
+    <time>1222207394</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="44">
+    <srcmd5>453ef00fe2f03567844e49b8f1242fdd</srcmd5>
+    <version>2.2.6</version>
+    <time>1231436732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="45">
+    <srcmd5>46eff9f18430a70667ea62ee6b66281a</srcmd5>
+    <version>2.2.6</version>
+    <time>1231508546</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="46">
+    <srcmd5>afbf3f38bf63b1130779a3ae63d84e71</srcmd5>
+    <version>2.2.6</version>
+    <time>1234022075</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="48">
+    <srcmd5>afbf3f38bf63b1130779a3ae63d84e71</srcmd5>
+    <version>2.2.6</version>
+    <time>1234022075</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1305ebbd3b7f0ba57143d9266bd145c5</srcmd5>
+    <version>2.2.6b</version>
+    <time>1259916823</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libtool based on submit request 25303 from user psmt
+</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>06c8338207588ccb78776cbde7b8d49a</srcmd5>
+    <version>2.2.6b</version>
+    <time>1262968271</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libtool based on submit request 28046 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>62d93f5f7b324cd1bf4d0a8d9622defe</srcmd5>
+    <version>2.2.6b</version>
+    <time>1268924747</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>1789bb32d515af56bfac090ccfa49a3b</srcmd5>
+    <version>2.2.6b</version>
+    <time>1274775934</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libtool based on submit request 39659 from user psmt
+</comment>
+    <requestid>39659</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>db1584b2e4800576a7127c2a57367eca</srcmd5>
+    <version>2.2.6b</version>
+    <time>1275059531</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libtool based on submit request 40788 from user psmt
+</comment>
+    <requestid>40788</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>53e5b324f45fbcb48add7ec5c9032628</srcmd5>
+    <version>2.2.6b</version>
+    <time>1275494810</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libtool based on submit request 40973 from user coolo
+</comment>
+    <requestid>40973</requestid>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>53e5b324f45fbcb48add7ec5c9032628</srcmd5>
+    <version>2.2.6b</version>
+    <time>1278667363</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>53e5b324f45fbcb48add7ec5c9032628</srcmd5>
+    <version>2.2.6b</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>23796a5efb6bf8cae9d8c279b1351de9</srcmd5>
+    <version>2.2.6b</version>
+    <time>1288689256</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51853 from user coolo
+</comment>
+    <requestid>51853</requestid>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>0aac73f8964fd3cb61c8b48368001f28</srcmd5>
+    <version>2.2.6b</version>
+    <time>1288689264</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51853
+</comment>
+  </revision>
+  <revision rev="24" vrev="14">
+    <srcmd5>0aac73f8964fd3cb61c8b48368001f28</srcmd5>
+    <version>2.2.6b</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="25" vrev="15">
+    <srcmd5>bd9cee41ed6907cd930726b9a97e611e</srcmd5>
+    <version>2.2.6b</version>
+    <time>1298968183</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63059 from user jirislaby
+</comment>
+    <requestid>63059</requestid>
+  </revision>
+  <revision rev="26" vrev="16">
+    <srcmd5>927652e13f5be452ce39c808ab85009d</srcmd5>
+    <version>2.2.6b</version>
+    <time>1298968189</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63059
+</comment>
+  </revision>
+  <revision rev="27" vrev="10">
+    <srcmd5>edd2e15baa83b81fcd2cc6db5d1c73ef</srcmd5>
+    <version>2.4</version>
+    <time>1300091880</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63920 from user coolo
+</comment>
+    <requestid>63920</requestid>
+  </revision>
+  <revision rev="28" vrev="11">
+    <srcmd5>a64a8f06879df4ff98cf4baf8fc26dff</srcmd5>
+    <version>2.4</version>
+    <time>1300091888</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63920
+</comment>
+  </revision>
+  <revision rev="29" vrev="12">
+    <srcmd5>a2dea785569c25c7edc71df945fb3bad</srcmd5>
+    <version>2.4</version>
+    <time>1300093358</time>
+    <user>_service</user>
+    <comment>generated via source service</comment>
+  </revision>
+  <revision rev="30" vrev="13">
+    <srcmd5>ed0d6c620f17b13ecc9100d8ddd3f98a</srcmd5>
+    <version>2.4</version>
+    <time>1301300113</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65269 from user licensedigger
+</comment>
+    <requestid>65269</requestid>
+  </revision>
+  <revision rev="31" vrev="14">
+    <srcmd5>aa2fd37e5bcf95dad978bbaefb67a4f5</srcmd5>
+    <version>2.4</version>
+    <time>1301300121</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65269
+</comment>
+  </revision>
+  <revision rev="32" vrev="15">
+    <srcmd5>a4ce834009337563fe81d923a3ff7870</srcmd5>
+    <version>2.4</version>
+    <time>1314198731</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>79564</requestid>
+  </revision>
+  <revision rev="33" vrev="16">
+    <srcmd5>9e78631519df77eebcee480dcfc05fd0</srcmd5>
+    <version>2.4</version>
+    <time>1314198740</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79564
+</comment>
+  </revision>
+  <revision rev="34" vrev="17">
+    <srcmd5>554ef402e1ab4b9e20094f8ef7e6a6b2</srcmd5>
+    <version>2.4</version>
+    <time>1316459594</time>
+    <user>lrupp</user>
+    <comment>- don't use _service
+
+- Add a rpmlintrc to shut up rpmlint on most warnings.
+
+- require automake and provide symbolic names for libltdl
+- don't use _service</comment>
+    <requestid>82466</requestid>
+  </revision>
+  <revision rev="35" vrev="19">
+    <srcmd5>554ef402e1ab4b9e20094f8ef7e6a6b2</srcmd5>
+    <version>2.4</version>
+    <time>1319182141</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8477bba5efd9e48132513f8edc5090c7</srcmd5>
+    <version>2.4.2</version>
+    <time>1321271614</time>
+    <user>coolo</user>
+    <comment>- update to 2.4.2:
+  - The generic approximation of the command line length limit (when getconf is
+    not available) works again.  Regression introduced in v2.2.6-39-g9c3d4d8.
+  - The bug that leaked developer tool paths into the release tarballs
+    from ./bootstrap is fixed.
+  - Improved support for the Cuda Compiler Driver (nvcc) on Darwin.
+  - For GCC LTO support, the -fuse-linker-plugin switch is now also removed
+    when computing compiler postdeps.
+  - The undocumented hardcode_libdir_flag_spec_ld tag variable has been
+    removed in favor of using hardcode_libdir_flag_spec with $wl set to empty.
+
+- update to 2.4.2:
+  - The generic approximation of the command line length limit (when getconf is
+    not available) works again.  Regression introduced in v2.2.6-39-g9c3d4d8.
+  - The bug that leaked developer tool paths into the release tarballs
+    from ./bootstrap is fixed.
+  - Improved support for the Cuda Compiler Driver (nvcc) on Darwin.
+  - For GCC LTO support, the -fuse-linker-plugin switch is now also removed
+    when computing compiler postdeps.
+  - The undocumented hardcode_libdir_flag_spec_ld tag variable has been
+    removed in favor of using hardcode_libdir_flag_spec with $wl set to empty.</comment>
+    <requestid>90949</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>fcd6ec5f5d47b6f8b73aab7c5774f5cb</srcmd5>
+    <version>2.4.2</version>
+    <time>1322814445</time>
+    <user>coolo</user>
+    <comment>- buildrequire automake for file list check</comment>
+    <requestid>94283</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>de4986826cfe7dfc0df8420537ea512f</srcmd5>
+    <version>2.4.2</version>
+    <time>1323192357</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>928701f80573d3d23ac59bd0837d84e8</srcmd5>
+    <version>2.4.2</version>
+    <time>1323192357</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>928701f80573d3d23ac59bd0837d84e8</srcmd5>
+    <version>2.4.2</version>
+    <time>1340183644</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="41" vrev="7">
+    <srcmd5>7254682d623cf21b2d5b1052df94ffd7</srcmd5>
+    <version>2.4.2</version>
+    <time>1342866616</time>
+    <user>namtrac</user>
+    <comment>Buildrequire makeinfo</comment>
+    <requestid>128357</requestid>
+  </revision>
+  <revision rev="42" vrev="9">
+    <srcmd5>7254682d623cf21b2d5b1052df94ffd7</srcmd5>
+    <version>2.4.2</version>
+    <time>1359109364</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="10">
+    <srcmd5>f51ee39c88e0e32718c9912484cba272</srcmd5>
+    <version>2.4.2</version>
+    <time>1359997162</time>
+    <user>coolo</user>
+    <comment>- Add config-guess-sub-update.patch:
+  Update config.guess/sub for aarch64
+
+- Add config-guess-sub-update.patch:
+  Update config.guess/sub for aarch64</comment>
+    <requestid>150877</requestid>
+  </revision>
+  <revision rev="44" vrev="12">
+    <srcmd5>f51ee39c88e0e32718c9912484cba272</srcmd5>
+    <version>2.4.2</version>
+    <time>1379663112</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="13">
+    <srcmd5>563acc9a54653b8db123edde21d3e482</srcmd5>
+    <version>2.4.2</version>
+    <time>1393938150</time>
+    <user>coolo</user>
+    <comment>- Change License as described in bnc#818958.
+
+- Change License as described in bnc#818958.</comment>
+    <requestid>224461</requestid>
+  </revision>
+  <revision rev="46" vrev="14">
+    <srcmd5>2e419f28ec9d8cececf8ae0a733301b4</srcmd5>
+    <version>2.4.2</version>
+    <time>1405760659</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241117</requestid>
+  </revision>
+  <revision rev="47" vrev="16">
+    <srcmd5>2e419f28ec9d8cececf8ae0a733301b4</srcmd5>
+    <version>2.4.2</version>
+    <time>1409301736</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="17">
+    <srcmd5>27b54601bfb8d34d2d318279551e99b3</srcmd5>
+    <version>2.4.2</version>
+    <time>1410282008</time>
+    <user>coolo</user>
+    <comment>- install COPYING as %doc
+
+- install COPYING as %doc</comment>
+    <requestid>248108</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>514515d9de6cb31a78b87bae0c0f10c7</srcmd5>
+    <version>2.4.6</version>
+    <time>1430246504</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>303922</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>9cf6195741c39d2e14821f9fb88aa24b</srcmd5>
+    <version>2.4.6</version>
+    <time>1430904095</time>
+    <user>dimstar_suse</user>
+    <comment>Fix call of install_info</comment>
+    <requestid>305263</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>4481b13156773706a2f5cdaa83b57dbf</srcmd5>
+    <version>2.4.6</version>
+    <time>1442638308</time>
+    <user>coolo</user>
+    <comment>Fix uninstallation</comment>
+    <requestid>320844</requestid>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>5265ec6cf5a793e51e0557dd378d4b8c</srcmd5>
+    <version>2.4.6</version>
+    <time>1459001251</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>374979</requestid>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>c6f646f90a6e063391bad474889d7cb9</srcmd5>
+    <version>2.4.6</version>
+    <time>1525611247</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop libtool-no_host_name.patch for now: since we are upgrading
+  to automake 1.16, we can't have any patch that would require us
+  to bootstrap libtool, as this is not exactly trivial.
+- Remove the line containing 'uname -m' from the libtool.m4 package
+  after installation: this has the same effect as the patch above
+  had. (forwarded request 603708 from dimstar)</comment>
+    <requestid>604031</requestid>
+  </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>f43b06473582867cdbe173ba3335d345</srcmd5>
+    <version>2.4.6</version>
+    <time>1526219605</time>
+    <user>dimstar_suse</user>
+    <comment>Add libtool-reproducible-hostname.patch to make package build reproducible (boo#1084909)
+
+insprired by a patch in https://bugs.debian.org/819767 (forwarded request 605522 from bmwiedemann)</comment>
+    <requestid>605641</requestid>
+  </revision>
+  <revision rev="55" vrev="7">
+    <srcmd5>213f33c1591c574e9b2d1ffaebb6b136</srcmd5>
+    <version>2.4.6</version>
+    <time>1545222221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656757</requestid>
+  </revision>
+  <revision rev="56" vrev="8">
+    <srcmd5>4c241deb8ad78f96412c8442afcc2211</srcmd5>
+    <version>2.4.6</version>
+    <time>1567679371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723032</requestid>
+  </revision>
+</revisionlist>

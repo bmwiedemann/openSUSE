@@ -1,0 +1,7 @@
+<package name="libart_lgpl" project="openSUSE:Factory">
+  <title>Libart Components Licensed under the LGPL</title>
+  <description>Libart is a library for high-performance 2D graphics. It is currently
+being used as the antialiased rendering engine for GNOME Canvas. It is
+also the rendering engine for Gill, the GNOME Illustration application.</description>
+  <devel project="GNOME:Factory" package="libart_lgpl"/>
+</package>

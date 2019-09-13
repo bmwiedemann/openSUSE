@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d06d7778bf7b22954f75f4aa22e28e41</srcmd5>
+    <version>1.25</version>
+    <time>1458228795</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>364136</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1fb4f343a519462010a6f5f0f20913bf</srcmd5>
+    <version>1.25</version>
+    <time>1506955496</time>
+    <user>dimstar_suse</user>
+    <comment>for staging:C
+
+- add perl526.patch to work with perl 5.26</comment>
+    <requestid>528720</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>19066b3ffa1d417e69871e27d6d97cdc</srcmd5>
+    <version>1.26</version>
+    <time>1566894352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726183</requestid>
+  </revision>
+</revisionlist>

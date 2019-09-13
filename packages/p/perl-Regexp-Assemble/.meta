@@ -1,0 +1,29 @@
+<package name="perl-Regexp-Assemble" project="openSUSE:Factory">
+  <title>Assemble multiple Regular Expressions into a single RE</title>
+  <description>Regexp::Assemble takes an arbitrary number of regular expressions and
+assembles them into a single regular expression (or RE) that matches all
+that the individual REs match.
+
+As a result, instead of having a large list of expressions to loop over, a
+target string only needs to be tested against one expression. This is
+interesting when you have several thousand patterns to deal with. Serious
+effort is made to produce the smallest pattern possible.
+
+It is also possible to track the original patterns, so that you can
+determine which, among the source patterns that form the assembled pattern,
+was the one that caused the match to occur.
+
+You should realise that large numbers of alternations are processed in
+perl's regular expression engine in O(n) time, not O(1). If you are still
+having performance problems, you should look at using a trie. Note that
+Perl's own regular expression engine will implement trie optimisations in
+perl 5.10 (they are already available in perl 5.9.3 if you want to try them
+out). 'Regexp::Assemble' will do the right thing when it knows it's running
+on a a trie'd perl. (At least in some version after this one).
+
+Some more examples of usage appear in the accompanying README. If that file
+isn't easy to access locally, you can find it on a web repository such as
+the http://search.cpan.org/dist/Regexp-Assemble/README manpage or the
+http://cpan.uwinnipeg.ca/htdocs/Regexp-Assemble/README.html manpage.</description>
+  <devel project="devel:languages:perl" package="perl-Regexp-Assemble"/>
+</package>

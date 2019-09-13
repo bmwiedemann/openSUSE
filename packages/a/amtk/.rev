@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7efb9cdcf9687a9af6b4cc522f457dcd</srcmd5>
+    <version>4.99.1</version>
+    <time>1524838137</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>601607</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>244a740a4e56ae3186ef9091c8b88700</srcmd5>
+    <version>5.0.0</version>
+    <time>1533045310</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 624882 from iznogood)</comment>
+    <requestid>624993</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>53f4ee25accae8e6179b5c12253f8ce8</srcmd5>
+    <version>5.0.1</version>
+    <time>1568189907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729409</requestid>
+  </revision>
+</revisionlist>

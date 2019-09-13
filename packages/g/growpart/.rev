@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e5d76930b7bc2c06fe664de07bdfd7dc</srcmd5>
+    <version>0.27</version>
+    <time>1396950291</time>
+    <user>coolo</user>
+    <comment>- grow root partition, dependency for cloud-init</comment>
+    <requestid>229027</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e5d76930b7bc2c06fe664de07bdfd7dc</srcmd5>
+    <version>0.27</version>
+    <time>1409301103</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>51273c00c12c8b9bad7050a0dcd39b60</srcmd5>
+    <version>0.29</version>
+    <time>1474476617</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>429190</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6ddb1cabe8bf472996813f5902a6ab9e</srcmd5>
+    <version>unknown</version>
+    <time>1516880461</time>
+    <user>dimstar_suse</user>
+    <comment>- Split rootgrow and script and service into subpackage to retain
+  dependency chain for growpart
+
+- Update to version 0.30 (bsc#1064755)
+  + improved error messages on failure.
+  + ignore sfdisk failure in 2.28.1 when due to reread failing
+   (LP: #1619285)
+  + Add service file to start growpart via systemd
+  + Add rootgrow script to wrap growpart</comment>
+    <requestid>569385</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6cc8d0856865547e81cf64b507d71a22</srcmd5>
+    <version>unknown</version>
+    <time>1522935223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593531</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>f5cae74b9ada0b27f7793b820f82f14f</srcmd5>
+    <version>unknown</version>
+    <time>1530087620</time>
+    <user>dimstar_suse</user>
+    <comment>- Support btrfs resize, handle ro setup in rootgrow (bsc#1097455, bsc#1098681)</comment>
+    <requestid>618484</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>e6a5390ebddc8ab83a8cb711e8f9f776</srcmd5>
+    <version>unknown</version>
+    <time>1561557654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709508</requestid>
+  </revision>
+</revisionlist>

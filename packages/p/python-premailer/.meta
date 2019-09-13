@@ -1,0 +1,8 @@
+<package name="python-premailer" project="openSUSE:Factory">
+  <title>Turns CSS blocks into style attributes</title>
+  <description>Premailer is a Python library based on libxml which can analyze a HTML document and extract its CSS style sheets and then for all CSS seletors defined, it finds the DOM nodes and puts style attributes in instead. 
+
+</description>
+  <devel project="devel:languages:python" package="python-premailer"/>
+  <url>https://premailer.io</url>
+</package>

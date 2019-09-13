@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>647f4900ff71226b5b15ad780ffadcc0</srcmd5>
+    <version>3.0.4</version>
+    <time>1533292631</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by weblate</comment>
+    <requestid>626927</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f1105214b2dc8a834b2f45e2231c4ec</srcmd5>
+    <version>3.0.10</version>
+    <time>1553888045</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.10:
+  * No upstream changelog</comment>
+    <requestid>684351</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>280854f004241543b5e52990c345c76e</srcmd5>
+    <version>3.0.12</version>
+    <time>1560457921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708375</requestid>
+  </revision>
+</revisionlist>

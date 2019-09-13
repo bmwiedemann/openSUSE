@@ -1,0 +1,8 @@
+<package name="libcaca" project="openSUSE:Factory">
+  <title>Library for Colour ASCII Art, text mode graphics</title>
+  <description>libcaca is the Colour AsCii Art library. It provides high level
+functions for colour text drawing, simple primitives for line, polygon
+and ellipse drawing, as well as powerful image to text conversion
+routines.</description>
+  <devel project="multimedia:libs" package="libcaca"/>
+</package>

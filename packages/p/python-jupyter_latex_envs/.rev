@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4835609f3a54f53a229d3cb57262fd73</srcmd5>
+    <version>1.4.4</version>
+    <time>1528022160</time>
+    <user>dimstar_suse</user>
+    <comment>Enhanced latex support for jupyter notebooks</comment>
+    <requestid>611011</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4a45883f68261e91554c3942480beded</srcmd5>
+    <version>1.4.4</version>
+    <time>1529066785</time>
+    <user>maxlin_factory</user>
+    <comment>- Avoid bashism in scriptlet.
+- Use || true syntax instead of exit 0
+</comment>
+    <requestid>616083</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>745a5d5b6ba0a6ef345c569b3f46675b</srcmd5>
+    <version>1.4.6</version>
+    <time>1545648487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660767</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b02b7d4d59c81c751077af3ecfc002eb</srcmd5>
+    <version>1.4.6</version>
+    <time>1558516179</time>
+    <user>dimstar_suse</user>
+    <comment>- Split jupyter components into own package.
+</comment>
+    <requestid>699927</requestid>
+  </revision>
+</revisionlist>

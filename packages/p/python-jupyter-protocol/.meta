@@ -1,0 +1,5 @@
+<package name="python-jupyter-protocol" project="openSUSE:Factory">
+  <title>python-jupyter-protocol</title>
+  <description>Jupyter protocol implementation</description>
+  <devel project="devel:languages:python:jupyter" package="python-jupyter-protocol"/>
+</package>

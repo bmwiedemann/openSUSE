@@ -1,0 +1,9 @@
+<package name="delta" project="openSUSE:Factory">
+  <title>Minimize files to interesting parts</title>
+  <description>Delta assists you in minimizing &quot;interesting&quot; files subject to a test
+of their interestingness. A common such situation is when attempting to
+isolate a small failure-inducing substring of a large input that causes
+your program to exhibit a bug. Please see
+/usr/share/doc/packages/delta/www/using_delta.html for documentation.</description>
+  <devel project="Base:System" package="delta"/>
+</package>

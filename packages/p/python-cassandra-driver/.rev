@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3818f3d46fd85ba0aa03ba0cabda6aa</srcmd5>
+    <version>3.14.0</version>
+    <time>1527605338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611084</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>648d005e475a4a67c39e8806dc0d531a</srcmd5>
+    <version>3.14.0</version>
+    <time>1529402302</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616482</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>96510e076fcf542818f109e585837c89</srcmd5>
+    <version>3.15.0</version>
+    <time>1535963770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632662</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>70bf78eb5c3efdf92b304f7e3d9e6e6d</srcmd5>
+    <version>3.15.0</version>
+    <time>1537787587</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gevent to test dependencies
+- Add scales to dependencies
+- Add twisted to dependencies
+- Enable tests
+</comment>
+    <requestid>637039</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>872a2934e1cc3e46f4bc94de429f7efd</srcmd5>
+    <version>3.15.1</version>
+    <time>1541079965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.15.1:
+  * No updatream changelog
+- Switch to github tarball as the pypi one lacks tests now</comment>
+    <requestid>645880</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c6bac258175322fe508ab1b9c1abc89f</srcmd5>
+    <version>3.16.0</version>
+    <time>1543828350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653425</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fc57a6a7531397d474fee0c30d647097</srcmd5>
+    <version>3.17.0</version>
+    <time>1551687762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680790</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3ecd68c4823be7e96066a5daa2a54d7b</srcmd5>
+    <version>3.17.1</version>
+    <time>1557142101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700973</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5ff89473cd06941d9a8c6592fb747a62</srcmd5>
+    <version>3.18.0</version>
+    <time>1560862612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708936</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1761bf5f0b41f863d090f44f1d62a5b0</srcmd5>
+    <version>3.19.0</version>
+    <time>1567423558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727459</requestid>
+  </revision>
+</revisionlist>

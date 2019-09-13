@@ -1,0 +1,5 @@
+<package name="kubernetes-dns" project="openSUSE:Factory">
+  <title>Kubernetes DNS</title>
+  <description>Kubernetes DNS service</description>
+  <devel project="devel:CaaSP:Head:ControllerNode" package="kubernetes-dns"/>
+</package>

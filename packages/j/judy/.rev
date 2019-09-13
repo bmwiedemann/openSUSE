@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cfb3bd1d5664c359ab9425b76177064e</srcmd5>
+    <version>1.0.5</version>
+    <time>1349243416</time>
+    <user>coolo</user>
+    <comment>required by gtkwave sr#136472</comment>
+    <requestid>136549</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>cfb3bd1d5664c359ab9425b76177064e</srcmd5>
+    <version>1.0.5</version>
+    <time>1359109131</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>cfb3bd1d5664c359ab9425b76177064e</srcmd5>
+    <version>1.0.5</version>
+    <time>1379662726</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>cfb3bd1d5664c359ab9425b76177064e</srcmd5>
+    <version>1.0.5</version>
+    <time>1409301295</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>959d3b051f1ac995d1653d27ee38c074</srcmd5>
+    <version>1.0.5</version>
+    <time>1429769088</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298576</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>71732c666d7541177dabcb2faa711f11</srcmd5>
+    <version>1.0.5</version>
+    <time>1459002421</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>377508</requestid>
+  </revision>
+</revisionlist>

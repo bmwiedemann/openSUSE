@@ -1,0 +1,420 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3724ae9b8214a6a0f37ddaf16dfd35b5</srcmd5>
+    <version>0.2.42</version>
+    <time>1489653380</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by yast2-registration.</comment>
+    <requestid>477701</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eb6331ca3b2b2c2e0c339ea11d577ed5</srcmd5>
+    <version>0.3.0</version>
+    <time>1495011254</time>
+    <user>dimstar_suse</user>
+    <comment>Returned Providing old rubygem-suse-connect setup back</comment>
+    <requestid>494946</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9b47cc3b4b3297754e00d44b0c9fa718</srcmd5>
+    <version>0.3.1</version>
+    <time>1497949265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.1:
+  - Fix license auto-agree issue (bsc#1037783)</comment>
+    <requestid>503362</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>10d3717f230b7e01d2da16b879974b84</srcmd5>
+    <version>0.3.2</version>
+    <time>1499167942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.2:
+  - Fix --namespace parameter persistence (bsc#1044493)</comment>
+    <requestid>506225</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e49edf51efeb2e58a631017961aea69c</srcmd5>
+    <version>0.3.2</version>
+    <time>1508946332</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>536390</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>507e6d606f73653830d405fd1012630e</srcmd5>
+    <version>0.3.3</version>
+    <time>1512926093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.3: 
+  - Fix SLE15 build 
+- Properly refresh zypper services when deactivating a product on SMT (bsc#1047153)
+- Update to 0.3.2:
+  - Fix --namespace parameter persistence (bsc#1044493)
+- Update to 0.3.1:
+  - Fix license auto-agree issue (bsc#1037783)
+  - Add missing archs to SLE 12 SP3 build target
+- Update to 0.3.0:
+  - Single product deactivation feature (fate#320572)
+- Update to 0.2.43:
+  - RPM spec fix for openSUSE:Factory rpmlint compliance (bsc#1028660)
+- Update to 0.2.42:
+  - Better error message for network request failure (bsc#982630)
+  - Fix error message for --product with malformed identifier (bsc#1018190)
+  - Fix some errors and formatting in manpages and help output
+- Update to 0.2.41:
+  - Better error message for --list-extensions on unregistered systems
+- Update to 0.2.40:
+  - Update man page to include the --list-extensions option (bsc#998583)
+- Update to 0.2.39:
+  - Fix for bnc#990475: support for aarch64 hardware info
+- Update to 0.2.38:
+  - Fix for bnc#975484: better error message if SMT is too old
+- Update to 0.2.37:
+  - Add method to YaST class to get Installer-Updates repositories (fate#319716).
+- Update to 0.2.36:
+  - Fix for bnc#973851: More flexible exit codes handling in internal zypper calls
+- Update to 0.2.35:
+  - Fix for bnc#973315: Direct update from &lt;=0.2.27 does not remove /usr/bin symlink
+- Update to 0.2.34:
+  - Fix for bnc#963996: Do not crash on --list-extensions when connected to SMT
+  - Fix for bnc#968245: Do not let zypper attempt to read products from remote locations
+- Update to 0.2.33:
+  - Re-add SUSEConnect binary to /usr/sbin (bnc#963080)
+  - Use `--match-exact` when searching for a product (bnc#952804)
+  - Fix fonts on xterm (bnc#957354)
+- Update to version 0.2.32: Remove unneeded link in %post which caused a warning (bnc#946183)
+- Update to version 0.2.31 (bnc#946183)
+  - Drop url-implies-writeconfig.diff; it is included in upstream since commit 2ef5aa
+  - Correct RPM group
+  - Include SCCcredentials file as a ghost entry
+  - Further packaging improvements
+- Update to version 0.2.30
+  - New packaging spec. One `SUSEConnect` package to rule them all (bnc#951671)
+  - Update manpages to match the latest CLI options
+- Update to version 0.2.29
+  - bnc#954266 Silently ignore malformed lscpu lines instead of failing
+- Update to version 0.2.28
+  - Properly handle empty repository lists from zypper (bnc#951566)
+- Update to version 0.2.27
+  - Do not install recommended dependencies when installing the product release package (bnc#945462)
+  - Addd --rollback option (fate#319114)
+- Update to version 0.2.26
+  - zypper migration extremly slow with lot of modules and extensions registered (bnc#945462)
+- Update to version 0.2.25
+  - Solves Allow registration without system uid (dmidecode fails on qemu system) (bnc#934582)
+- bnc#949424 ensure version of SUSEConnect is bumped in order to be
+  able to distinct requests from affected YaST version in SCC API
+- Update to version 0.2.24
+  - Bug 943451 - [Migration] failure when &quot;zypper search&quot; returns empty list
+  - Bug 946488 - Synchronization API call returns &quot;no implicit conversion of Symbol into Integer&quot; error
+  - Bug 941565 - zypper migration not using --releasever
+  - Bug 945462 - zypper migration extremly slow with lot of modules and extensions registered
+- Update to version 0.2.23
+  - Improve hwinfo detection on physical s390 systems
+  - Bug 939293 - [S390] Error: Registration failed. Undefined method 'strip' for nil:NilClass (bnc#939293)
+- Update to version 0.2.22
+  - Migration rollback (fate#319114)
+  - [Migration rollback] zypper migrate: baseproduct mismatch (bnc#941303)
+- Update to version 0.2.21
+  - Escape parameters of remove and add_repository methods
+- Update to version 0.2.20
+  - Add find_products method to migration abstraction layer fate#319140
+  - Fix add_service method which also creates the credentials files
+- Update to version 0.2.19
+  - Introduction of migration abstraction layer for migration script
+  - Clean up and re-factoring of yast abstraction layer
+- Update to version 0.2.18
+  - Improve SUSEConnect error messages
+  - New --cleanup option (remove old system credentials and all zypper services installed by SUSEConnect)
+  - New --namespace option (forward SMT staging environment to proxy registration server)
+- Update to version 0.2.17
+  - Added migrations endpoint support for Yast
+  - Use C locale for all the syscalls (solves output parsing issues in some locales)
+  - Stripping UUID from SCC API calls if it is not settable
+  - Moved examples from gist to project
+- Update to version 0.2.16
+  - In case of wrong regcode provide meaningful message back to
+    the user (Wrong regcode in that case).
+- Update to version 0.2.15
+  - Always write config file when --url parameter used (bnc#900689)
+- Update to version 0.2.14
+  - fix SUSEConnect parameter usage from config file (bnc#899166)
+  - use API version v4
+- Update to version 0.2.13
+  - Fix help message (bnc#897528)
+  - Don't get stuck when zypper goes into interactive mode, fail instead.
+    (bnc#897054, bnc#897056)
+- Update to version 0.2.12
+  - Output useful error message if the system was manually deleted
+    on the registration server, leaving stale credentials.
+- Update to version 0.2.11
+  - Use v3 of the SCC api; adds product_type to product listing
+  - Add --write-config option to persist settings with
+  - Include distro_garget and instance_data in system update
+    (bnc#889778)
+  - Package build fixes
+- Update to version 0.2.10
+  - Better handing of zypper errors on the command line
+  - Better error message if --instance-data file not found
+  - Error out if invalid command line options given
+- Update to version 0.2.9
+  - Fix for bnc #890881 On paravirtual Xen guests there is no dmi information,
+    thus dmidecode fails. Instead a UUID is generated by the hypervisor and made available
+    in /sys/hypervisor/uuid use this value for registration.
+- Update to version 0.2.8
+   - S390 support
+   - fix for bnc#889869 SCC registration during installation failed by reason
+     that the IP address can not be handled by Yast for submitting to server
+- Update to version 0.2.7
+    - Respect LANG environment variable for error messages only
+    - drop --language command line option
+- Update integration tests
+- Update to version 0.2.6
+  - close bnc#885957 (use proxy credentials from .curlrc file)
+- Add machine readable output (json format) to status call
+- added gem2rpm.yml and regenerated the spec file with it
+- Update to version 0.2.4
+ - change the way we collect arch info. Former way `lscpu`, now
+   `uname -i`
+- Update to version 0.2.3
+ - Collect UUID on x86 platforms and send it to registration server
+   as a part of hwinfo hash
+- Update to version 0.2.2
+ - Set timeout of http interaction to 60 seconds
+- Added message on successful registration
+- moved packaging path from bin to sbin
+- added root check[security]
+- Updated to version 0.2.0 which from now on by minor version will
+  represent api version which package implemented
+ - added status call allowing to get registration status from the
+   system
+- Update to version 0.1.2
+ - Fixed certificate import issue bnc#883006
+ - Abstract certificate interaction into YaST module layer
+- Update to version 0.1.1
+ - Zypper now is Module (ex-class) holding the same functionality
+ - Autorefresh and Enabled flags are respected by libzypp from now
+   on, therefore we don't need them. Removed from activate/upgrade
+   calls
+ - activate/upgrade call does not contain subscription status
+   anymore
+ - activate/upgrade call does not contain per service credentials
+ - activate/upgrade call is now object, not array
+ - extensions call replaced with product show
+ - YaST module adapted to recent underlying changes in connect
+ - Connect::Client has list_products method renamed to show_product
+ - SUSE::Connect::Remote::Product SUSE::Connect::Zypper::Product
+   classes introduced to hold specific to origin logic
+ - Zypper commands now using Open3 to properly operate on system
+   commands
+ - YaST module now requires Remote::Product object with
+   identifier, version, arch for most operations
+- Update to version 0.0.20
+  - Allow gem to write persistent settings to config file
+- Update to version 0.0.19
+  - Include nested extensions in products() return
+- Update to version 0.0.18
+  - Rename --verbose CLI option to --debug
+  - Standardise and document error codes
+  - SUSEConnect(5) config file man page
+  - Move main manpage to section 8
+  - Add method to gem for product upgrades
+  - Defer call to zypper during initialization for YaST
+  - Add unit tests to disclose accidental calls to zypper
+- Update to version 0.0.17
+  - Introduce API versioning header for forward compatibility
+  - Improve man page
+- Update to version 0.0.16
+  - Include EULA URL in products (API)
+  - Improve --help output
+- Add support for SHA256 SSL fingerprints
+- Update to version 0.0.15
+  - Made Client a useful entry point for YaST to use gem
+  - Made use of zypper optional for YaST
+  - added customizable verify_callback for HTTP connection
+    (by default logs SSL errors)
+  - send email when activating product
+- Client will accept given login received from API
+- Do not require regcode. API server will throw appropriate error
+  if that is required in particular case
+- Send product release_type and distro_target from activate and
+  announce calls respectively
+- Added products call allowing to get all publicly available
+  products
+- Announce call now sending hostname alongside with main payload
+- add ca-certificates as a required package
+- token parameter replaced by regcode parameter
+- Conforming with new zypper products output structure for SLE12
+- Add license file
+- Initial version
+  SUSE Connect is a utility to register a system with the SUSE Customer Center.
+  This package provides a command line tool and rubygem library for connecting a client system
+  to the SUSE Customer Center. It will connect the system to your product subscriptions and enable
+  the product repositories/services locally.
+</comment>
+    <requestid>555105</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>67b396603ec380e5003c89fda83ce10c</srcmd5>
+    <version>0.3.7</version>
+    <time>1516803894</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary .gz files 
+
+- Update to 0.3.7
+  - virt-create-rootfs connects to SMT server without breaking (bsc#914297)
+
+- Update to 0.3.6
+  - Make target_base_product parameter mandatory.
+
+- Update to 0.3.5
+  - Add YaST.system_offline_migrations 
+
+- Update to version 0.3.4: 
+  - Packaging improvements (bsc#964013)</comment>
+    <requestid>568578</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>38afb2c4a33a9fb8e70cb04658825626</srcmd5>
+    <version>0.3.7</version>
+    <time>1517668584</time>
+    <user>dimstar_suse</user>
+    <comment>- Repackage gem</comment>
+    <requestid>571116</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8b892506eb684bc6fc950e8332ab6dad</srcmd5>
+    <version>0.3.8</version>
+    <time>1521192897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.8
+  - Fix list-extensions to show the full SLE 15 tree (bsc#1064264)
+  - Enable automatic activation of recommended extensions/modules
+  - Automatically deregister all installed extensions/modules when
+    deregistering a system</comment>
+    <requestid>587487</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9156ba4c6e285539e97b8af15808abf6</srcmd5>
+    <version>0.3.10</version>
+    <time>1524742278</time>
+    <user>dimstar_suse</user>
+    <comment>Thu Apr  19 14:30:00 UTC 2018 - fschnizlein@suse.com
+- Update to 0.3.10
+  - Fix rollback mechanism on SLE15 systems (bsc#1089320)
+
+- Update to 0.3.9
+  - Enable access to package search via gem
+  - Don't try to delete directory of nonexistent service files
+    (bsc#1086420)</comment>
+    <requestid>600683</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>028989f0f6fe9217b87826fda9cff528</srcmd5>
+    <version>0.3.11</version>
+    <time>1527084313</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.11
+- Add dependencies needed by the rmt-client-setup script.
+
+- Prevent the automatic registration of recommended products that
+  are not mirrored by the registration proxy.</comment>
+    <requestid>609136</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>091e09699eaf633302780e72d8810849</srcmd5>
+    <version>0.3.11</version>
+    <time>1528492249</time>
+    <user>dimstar_suse</user>
+    <comment>- Weaken dependencies of rmt-client-setup script to Recommends:
+  (bsc#1094348)
+
+- Add dependencies needed by the rmt-client-setup script. bsc#1093658</comment>
+    <requestid>614239</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>55dbd2ecf6b7cb0211bf30eb01dca555</srcmd5>
+    <version>0.3.11</version>
+    <time>1529666068</time>
+    <user>maxlin_factory</user>
+    <comment>- Enhance error message generation
+- Add not supported operation exception to PackageSearch API</comment>
+    <requestid>616295</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fdfc9d0bd08b6f8becd9141ab01d5886</srcmd5>
+    <version>0.3.12</version>
+    <time>1537970364</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.12
+  - Detect if system is in cloud provider (AWS/Google/Azure)
+    (fate#320935)
+  - Don't fail when trying to parse an empty body. Fixes bsc#1098220
+  - Don't install release packages if they are already present
+
+- Fix .spec file for running SUSEConnect on Fedora28</comment>
+    <requestid>635718</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ade66b91cdd612d3d12da5191b8951a6</srcmd5>
+    <version>0.3.14</version>
+    <time>1542011800</time>
+    <user>dimstar_suse</user>
+    <comment>- Output proper message when SUSEConnect is called without parameters (bsc#959561)
+- Default to https URI when no protocol prefix is provided for --url
+- Support transactional-update systems (fate#326482)
+
+- Changed &quot;openssl&quot; recommendation to &quot;openssl(cli)&quot;
+  on SLE 12 SP3+ and SLE 15+ (bsc#1101470).
+
+- Update to 0.3.14
+  - Fix s390 activation fails due to unavailable 'dmidecode' bsc#1112702
+
+- Update to 0.3.13
+  - Fix migration targets sorting (bsc#1104183)</comment>
+    <requestid>647590</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a779ffdc3782051e2538dabcdbeb7df3</srcmd5>
+    <version>0.3.16</version>
+    <time>1544440998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.16
+  - Show non-enabled extensions with a remark about availability
+
+- Update to 0.3.15
+  - Output information about registration and de-registration progress</comment>
+    <requestid>656015</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b74da5b703588a5478041024db8cddea</srcmd5>
+    <version>0.3.16</version>
+    <time>1549623740</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671895</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a3360f030b432920db1c567519b5fa0d</srcmd5>
+    <version>0.3.17</version>
+    <time>1555830066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.17
+  - Don't try to remove a service during migration if a zypper service
+    plugin already exists (bsc#1128969)</comment>
+    <requestid>695188</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>37c653d05672f036b93f473125be4a23</srcmd5>
+    <version>0.3.19</version>
+    <time>1565694674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.19
+  - Fix failing on registered system without arguments (bsc#1144020)
+
+- Update to 0.3.18
+- Fix base product service removal during de-registration in public clouds (bsc#1136752)</comment>
+    <requestid>722017</requestid>
+  </revision>
+</revisionlist>

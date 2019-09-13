@@ -1,0 +1,5 @@
+<package name="python-pytest-verbose-parametrize" project="openSUSE:Factory">
+  <title></title>
+  <description>More descriptive output for parametrized pytest tests</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-verbose-parametrize"/>
+</package>

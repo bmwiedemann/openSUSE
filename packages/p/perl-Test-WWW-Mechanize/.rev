@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>207dc31b3b55ba29e6cd98a043e0ce72</srcmd5>
+    <version>1.38</version>
+    <time>1329400824</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>103726</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>207dc31b3b55ba29e6cd98a043e0ce72</srcmd5>
+    <version>1.38</version>
+    <time>1340183937</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>207dc31b3b55ba29e6cd98a043e0ce72</srcmd5>
+    <version>1.38</version>
+    <time>1359109823</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3ee5a0ff2ca986ed1a2a3059db8b49c9</srcmd5>
+    <version>1.44</version>
+    <time>1370519984</time>
+    <user>coolo</user>
+    <comment>- updated to 1.44
+  If you want to use the autolint functionality, you'll have to have
+  HTML::Lint 2.20.
+  
+  [FIXES]
+  Custom lint objects don't get reset before they get used, making
+  autolint with a custom lint object practically useless.
+  https://github.com/petdance/test-www-mechanize/issues/25
+  
+  [ENHANCEMENTS]
+  Added a $mech-&gt;autolint() method so you can turn autolinting on and off
+  in mid-program.  Thanks, Mike O'Regan.
+  
+  New functions $mech-&gt;scrape_text_by_id() and $mech-&gt;scrape_text_by_attr()
+  let you extract text from your pages.  Convenience function
+  $mech-&gt;scraped_id_is() makes it easy to scrape and compare in one
+  function.
+  
+      &lt;h1 id=&quot;pagetitle&quot;&gt;My Awesome Page!&lt;/h1&gt;
+  
+      # Verify that HTML is there with:
+      $mech-&gt;scraped_id_is( 'pagetitle', 'My Awesome Page!' );
+  
+  [FIXES]
+  $mech-&gt;has_tag() now handles nested tags more sensibly.  This fixes
+  Google Code ticket #1.
+  
+  
+  [INTERNALS]
+  Explicitly requires Test::Simple 0.94 or higher. (forwarded request 177540 from coolo)</comment>
+    <requestid>177554</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3ee5a0ff2ca986ed1a2a3059db8b49c9</srcmd5>
+    <version>1.44</version>
+    <time>1379663885</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>3ee5a0ff2ca986ed1a2a3059db8b49c9</srcmd5>
+    <version>1.44</version>
+    <time>1409302530</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>52387e9bf35d67199f325cfe350373db</srcmd5>
+    <version>1.46</version>
+    <time>1478517696</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416416</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>20ee4ec98afe275ad4a491e93407eed2</srcmd5>
+    <version>1.48</version>
+    <time>1484041600</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448585</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>132822a2378a34464eea2d4eb593dd9c</srcmd5>
+    <version>1.50</version>
+    <time>1524643267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599329</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>af50ef90767b2461ac3d474749d6658f</srcmd5>
+    <version>1.52</version>
+    <time>1544632066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655833</requestid>
+  </revision>
+</revisionlist>

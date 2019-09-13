@@ -1,0 +1,6 @@
+<package name="nodejs10" project="openSUSE:Factory">
+  <title>Nodejs 10.x</title>
+  <description>The Node.js 10.x release branch is scheduled to become the next actively maintained Long Term Support (LTS) release line in October, 2018 under the LTS codename 'Dubnium'. Note that the LTS lifespan for 10.x will end in April, 2021.
+</description>
+  <devel project="devel:languages:nodejs" package="nodejs10"/>
+</package>

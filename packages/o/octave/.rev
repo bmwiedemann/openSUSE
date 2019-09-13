@@ -1,0 +1,522 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b884e0d551fbc0b74a1fb8beff62c83</srcmd5>
+    <version>3.6.1</version>
+    <time>1337005055</time>
+    <user>coolo</user>
+    <comment>GNU Octave is a high-level language, primarily intended for numerical computations</comment>
+    <requestid>116295</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0057faa33722c1eb49390b3a54f74bda</srcmd5>
+    <version>3.6.1</version>
+    <time>1337667425</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121600</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b7b9202e049caf851d40c1ddeeaac9ec</srcmd5>
+    <version>3.6.2</version>
+    <time>1338903209</time>
+    <user>coolo</user>
+    <comment>Update to 3.6.2</comment>
+    <requestid>123251</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b7b9202e049caf851d40c1ddeeaac9ec</srcmd5>
+    <version>3.6.2</version>
+    <time>1340183746</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>979b7fd43826b66bae50064cbeedc2cc</srcmd5>
+    <version>3.6.2</version>
+    <time>1343734637</time>
+    <user>coolo</user>
+    <comment>Fix build with missing gets declaration (glibc 2.16) (forwarded request 129228 from a_jaeger)</comment>
+    <requestid>129278</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>6ce33a862048d5ac7639af05d70800a8</srcmd5>
+    <version>3.6.2</version>
+    <time>1345639058</time>
+    <user>namtrac</user>
+    <comment>- fix umfpack and cholmod linking according to recent suitesparse update
+- enable arpack support (forwarded request 131176 from scorot)</comment>
+    <requestid>131179</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>a669afbce418b49f8e6c28c9f383dc31</srcmd5>
+    <version>3.6.2</version>
+    <time>1347347631</time>
+    <user>coolo</user>
+    <comment>- Add explicit build dependency on makeinfo 
+
+- Change packages directories owner</comment>
+    <requestid>133355</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>e192e8d3ccc4425334643d6dc0f8e15c</srcmd5>
+    <version>3.6.2</version>
+    <time>1348414292</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>135034</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2c9b71b4f3cf1009932d99e7554cb0e1</srcmd5>
+    <version>3.6.3</version>
+    <time>1351537620</time>
+    <user>coolo</user>
+    <comment>Update to version 3.6.3 (forwarded request 139522 from badshah400)</comment>
+    <requestid>139542</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2e21f2ac7feda689a2ed7912ce831073</srcmd5>
+    <version>3.6.3</version>
+    <time>1355476416</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145062</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>a253110a62e04640c86b6c6ee565b41f</srcmd5>
+    <version>3.6.3</version>
+    <time>1355997793</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145873</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>a253110a62e04640c86b6c6ee565b41f</srcmd5>
+    <version>3.6.3</version>
+    <time>1359109527</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5a7a5d629fb8bddba460c3e405540602</srcmd5>
+    <version>3.6.4</version>
+    <time>1362131570</time>
+    <user>coolo</user>
+    <comment> (forwarded request 156883 from Dmitry_R)</comment>
+    <requestid>156886</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>477148dfda0a07c3281ad03c57e821e5</srcmd5>
+    <version>3.6.4</version>
+    <time>1363124282</time>
+    <user>coolo</user>
+    <comment>- Fix native graphics support for openSUSE 12.3 [bnc#808530]</comment>
+    <requestid>158755</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>14479b87a4ef762c3f1039742cfc9a29</srcmd5>
+    <version>3.6.4</version>
+    <time>1363957396</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160432</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>485a71bcef6be8d625d79a843c4bc087</srcmd5>
+    <version>3.6.4</version>
+    <time>1367486899</time>
+    <user>coolo</user>
+    <comment>- Cleanup recommended packages
+- Move documentation to octave-doc package</comment>
+    <requestid>174136</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>dc5f546197e4ab74df41e49e143de2b5</srcmd5>
+    <version>3.6.4</version>
+    <time>1375194993</time>
+    <user>coolo</user>
+    <comment>This backports a commit from upstream that fixes an issue that happens when building packages that include mex.h under GCC 4.8.
+
+See:
+
+http://hg.savannah.gnu.org/hgweb/octave/rev/122d3f62e179 (forwarded request 184554 from klaussfreire)</comment>
+    <requestid>184555</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>dc5f546197e4ab74df41e49e143de2b5</srcmd5>
+    <version>3.6.4</version>
+    <time>1379663404</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>170dcbddba59f71dbfa83747705bb522</srcmd5>
+    <version>3.8.0</version>
+    <time>1388480743</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.8.0
+  * See included NEWS and ChangeLog files for details
+- Removed obsolete octave-gcc48-mex_remove_externc.patch (forwarded request 212431 from Dmitry_R)</comment>
+    <requestid>212433</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>16d359d2c2762b0f48d4b102204219e6</srcmd5>
+    <version>3.8.0</version>
+    <time>1388774844</time>
+    <user>coolo</user>
+    <comment>- Fix loading gzip-compressed info files [bnc#857130]
+  * octave-3.8.0-gzip-compressed-info.patch
+
+- Add octave-gui as recommended dependence
+- Build with jit support</comment>
+    <requestid>212607</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>3ddacb57a5a2baaaa502011c695c90ee</srcmd5>
+    <version>3.8.0</version>
+    <time>1391361002</time>
+    <user>coolo</user>
+    <comment>- Fix build with LLVM-3.4
+  * octave-3.8.0-llvm-3.4.patch (forwarded request 220548 from Dmitry_R)</comment>
+    <requestid>220549</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b909a1344679d705379f9b4616c8f1c8</srcmd5>
+    <version>3.8.1</version>
+    <time>1394386064</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.8.1
+  * Bugfix release, see included ChangeLog file for details
+  * removed obsolete octave-3.8.0-gzip-compressed-info.patch
+- Disable JIT support for non-x86 architectures (forwarded request 225162 from Dmitry_R)</comment>
+    <requestid>225163</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>19d9373cad1cd3494f1a4d09d006cc4f</srcmd5>
+    <version>3.8.1</version>
+    <time>1398499769</time>
+    <user>coolo</user>
+    <comment> (forwarded request 231190 from Dmitry_R)</comment>
+    <requestid>231219</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>c728d11107a8c7596117a07a878f6d84</srcmd5>
+    <version>3.8.1</version>
+    <time>1403615760</time>
+    <user>coolo</user>
+    <comment>- Build with FFTW3 multi-threading support</comment>
+    <requestid>238249</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b539d5fc5ccb216901fc010aa8d3b676</srcmd5>
+    <version>3.8.2</version>
+    <time>1408021109</time>
+    <user>lnussel</user>
+    <comment>- Update to version 3.8.2
+  * Bugfix release, see included ChangeLog file for details
+- Drop suitesparse linking hack [bnc#883683]</comment>
+    <requestid>244671</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>d9eb3638404fa04524027b5826318c2d</srcmd5>
+    <version>3.8.2</version>
+    <time>1408196280</time>
+    <user>lnussel</user>
+    <comment>- Fix runtime dependencies: makeinfo instead of texinfo [bnc#892123]</comment>
+    <requestid>244858</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>0fe2ce1e46823a4959bf697734a18bf5</srcmd5>
+    <version>3.8.2</version>
+    <time>1408957458</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245823</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>0fe2ce1e46823a4959bf697734a18bf5</srcmd5>
+    <version>3.8.2</version>
+    <time>1409302018</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>5a896ca7f30eb53396c08391c1d88169</srcmd5>
+    <version>3.8.2</version>
+    <time>1413739680</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257506</requestid>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>245df18e4ced16ad7c9950ea94b2f617</srcmd5>
+    <version>3.8.2</version>
+    <time>1415016719</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259214</requestid>
+  </revision>
+  <revision rev="31" vrev="8">
+    <srcmd5>9cd1a24aee056616aef6672df1a7622d</srcmd5>
+    <version>3.8.2</version>
+    <time>1415866688</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261278</requestid>
+  </revision>
+  <revision rev="32" vrev="9">
+    <srcmd5>93ac22e77ed21012eed22b64e019023a</srcmd5>
+    <version>3.8.2</version>
+    <time>1424779376</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287422</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ff9f4db5add30dd045c413677dd27633</srcmd5>
+    <version>4.0.0</version>
+    <time>1433145200</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309305</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>637223dae11a0ef746daada794dd52ad</srcmd5>
+    <version>4.0.0</version>
+    <time>1437724741</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>318207</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>10146cf240cf7794744b45a198f17439</srcmd5>
+    <version>4.0.0</version>
+    <time>1444130708</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335021</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>6b35ef61551899abc7173101f4444ab9</srcmd5>
+    <version>4.0.0</version>
+    <time>1445860136</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340624</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>36f4606ddb361639fa05c089603e0dfe</srcmd5>
+    <version>4.0.1</version>
+    <time>1459002406</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>377172</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>1156db2cbf8a115f042c9e53340e99e7</srcmd5>
+    <version>4.0.2</version>
+    <time>1465938440</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400969</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>6516b9462218e760767ffda4c1ce415f</srcmd5>
+    <version>4.0.2</version>
+    <time>1466501441</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403457</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ee7ea258a3a88a097e3bda913c38231f</srcmd5>
+    <version>4.0.3</version>
+    <time>1470217424</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415797</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>ab4cda2e1b96021a161d09efe63cd7af</srcmd5>
+    <version>4.0.3</version>
+    <time>1472595031</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423577</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b95062fda2138a4333eb0144ec9e4a03</srcmd5>
+    <version>4.2.0~rc2</version>
+    <time>1475359761</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>432111</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>e47c5e9a76a34405cdb1360185d926e7</srcmd5>
+    <version>4.2.0~rc2</version>
+    <time>1476997768</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436009</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>aff453d94915570b1725b7cac67d0394</srcmd5>
+    <version>4.2.0~rc2</version>
+    <time>1477219949</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436701</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>2b7e40e7b9885406dc0f704ef8183a7f</srcmd5>
+    <version>4.2.0~rc3</version>
+    <time>1478289649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>438277</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>69c3c01e1f60ed3442954f1003fb6d51</srcmd5>
+    <version>4.2.0~rc4</version>
+    <time>1478780926</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439470</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>218616df6c1bb67b6c29e10a5ccf95b1</srcmd5>
+    <version>4.2.0</version>
+    <time>1479299598</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440448</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>e5afbf581e5791783e43bd919146ecce</srcmd5>
+    <version>4.2.1</version>
+    <time>1488322296</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460989</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>3a8c3b09a1ac4824832f71a41f4eafe7</srcmd5>
+    <version>4.2.1</version>
+    <time>1500670197</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511535</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>7e77a992511f167dc155a6c4489aa9bf</srcmd5>
+    <version>4.2.1</version>
+    <time>1502629120</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515930</requestid>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>6ad935bfcf0d2db8e1194b53404d4cd0</srcmd5>
+    <version>4.2.1</version>
+    <time>1503392990</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517917</requestid>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>56a59ba6250f68d1f419135d93141d19</srcmd5>
+    <version>4.2.1</version>
+    <time>1503593790</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518452</requestid>
+  </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>f5609ad690de092348cf59c4bae788a8</srcmd5>
+    <version>4.2.1</version>
+    <time>1507197597</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531047</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>8b07d475d418b2b5bb0877b138418898</srcmd5>
+    <version>4.2.2</version>
+    <time>1521499211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588690</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>84dda99cacd30653358786651a26c0e4</srcmd5>
+    <version>4.4.0</version>
+    <time>1527582767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610623</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>832862a911b8852cb74c9f8074050ce5</srcmd5>
+    <version>4.4.0</version>
+    <time>1528378156</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with Qt 5.11 (forwarded request 613982 from cgiboudeaux)</comment>
+    <requestid>614262</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>8c0068c72db9e8958edad4376ae9262c</srcmd5>
+    <version>4.4.0</version>
+    <time>1529919684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618567</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>92a23b257ce1e2d579f4648bccdd5633</srcmd5>
+    <version>4.4.1</version>
+    <time>1547130222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664167</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>ff65769f61041699ef887fa0d449fa08</srcmd5>
+    <version>4.4.1</version>
+    <time>1547540213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664887</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>c0b8144a1292178c22b6dfb34483f573</srcmd5>
+    <version>4.4.1</version>
+    <time>1550574160</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677180</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9be9250b78d0d87b073283ee4e4e7149</srcmd5>
+    <version>5.1.0</version>
+    <time>1553611147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681704</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>59e5edeb9f7746f3f283852ec8e991a8</srcmd5>
+    <version>5.1.0</version>
+    <time>1559837735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706384</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>61845ca706d0c366ab4c8c784c6d01dd</srcmd5>
+    <version>5.1.0</version>
+    <time>1562591456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713696</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="srecord" project="openSUSE:Factory">
+  <title>Hex/bin format conversion package</title>
+  <description>The srecord package is a collection of powerful tools for manipulating EPROM load files. It reads and writes numerous EPROM file formats, and can perform many different manipulations.</description>
+  <devel project="electronics" package="srecord"/>
+</package>

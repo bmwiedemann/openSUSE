@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>66beda4f5c1454eb4d36f8b69d0e09bf</srcmd5>
+    <version>1.0.7</version>
+    <time>1336471178</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115387</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>66beda4f5c1454eb4d36f8b69d0e09bf</srcmd5>
+    <version>1.0.7</version>
+    <time>1340184210</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>66beda4f5c1454eb4d36f8b69d0e09bf</srcmd5>
+    <version>1.0.7</version>
+    <time>1359110397</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c1b642ba5d7633c9cc3a88cfeadde677</srcmd5>
+    <version>1.0.8</version>
+    <time>1362124861</time>
+    <user>coolo</user>
+    <comment>Update to version 1.0.8 (forwarded request 156467 from Zaitor)</comment>
+    <requestid>156536</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c1b642ba5d7633c9cc3a88cfeadde677</srcmd5>
+    <version>1.0.8</version>
+    <time>1379664652</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>c1b642ba5d7633c9cc3a88cfeadde677</srcmd5>
+    <version>1.0.8</version>
+    <time>1409303353</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1c74407af10270ab01aab6f081d71103</srcmd5>
+    <version>1.1.0</version>
+    <time>1422790103</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283481</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9fd2794a953917da6f0b54a8220a3cd0</srcmd5>
+    <version>1.1.0</version>
+    <time>1425031570</time>
+    <user>dimstar_suse</user>
+    <comment>- u_Pass-P-to-the-preprocessor-when-generating-filenames.patch
+  * Pass -P to the preprocessor when generating filenames for the
+    manpage.  Fixes build with GCC 5. Patch by Richard Biener
+    &lt;rguenther@suse.com&gt;</comment>
+    <requestid>287308</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d638575dd80d08b3fa21333e4fdc9e58</srcmd5>
+    <version>1.1.0</version>
+    <time>1461855046</time>
+    <user>dimstar_suse</user>
+    <comment>- replaced formerly to be upstreamed patch
+  u_Pass-P-to-the-preprocessor-when-generating-filenames.patch
+  by upstream patch
+  U_Pass-P-to-the-preprocessor-when-generating-filenames.patch</comment>
+    <requestid>391173</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>6fb0d17be21938d09c985aaf61803a41</srcmd5>
+    <version>1.1.0</version>
+    <time>1465480519</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>400142</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>872e06b43c05268f27098a9eaad92f75</srcmd5>
+    <version>1.1.1</version>
+    <time>1488732991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1:
+  + Use off_t instead of long to make largefile support work
+  + autogen.sh: use quoted string variables
+  + autogen: add default patch prefix
+  + autogen.sh: use exec instead of waiting for configure to finish
+  + Pass -P to the preprocessor when generating filenames for the manpage.
+- supersedes patches:
+  + U_Pass-P-to-the-preprocessor-when-generating-filenames.patch
+  + u_use-off_t-instead-of-long-to-make-largefile-support-work.patch</comment>
+    <requestid>461352</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2f3a16002cb81c6d6e42004bdfca385e</srcmd5>
+    <version>1.1.2</version>
+    <time>1561405799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Add comment about why safe_strncpy isn't replaced with strlcpy
+  * Fix missing defines _PATH_WTMPX/_PATH_UTMPX in musl
+  * Replace strncpy calls with a sane version that always terminates</comment>
+    <requestid>710098</requestid>
+  </revision>
+</revisionlist>

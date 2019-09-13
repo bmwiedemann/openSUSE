@@ -1,0 +1,233 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf4dff7b6bbae7316552ed54bce444c5</srcmd5>
+    <version>2.0</version>
+    <time>1367238681</time>
+    <user>coolo</user>
+    <comment>OpenStack dependency</comment>
+    <requestid>173361</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fd629713e8dde412cff15f78914f0ffd</srcmd5>
+    <version>2.0</version>
+    <time>1371652644</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179825</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>fd629713e8dde412cff15f78914f0ffd</srcmd5>
+    <version>2.0</version>
+    <time>1379664179</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f63d3c7b588ecdd8b34f8c2d47f47eba</srcmd5>
+    <version>2.0</version>
+    <time>1382692552</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204560</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f0356473ecdf1baa4f1fd2bcb19292f1</srcmd5>
+    <version>2.1.0</version>
+    <time>1389725610</time>
+    <user>coolo</user>
+    <comment>- update to 2.1.0:
+  - Add FLAKE8_LAZY and FLAKE8_IGNORE environment variable support to git and
+    mercurial hooks
+  - Force git and mercurial hooks to repsect configuration in setup.cfg
+  - Only check staged files if that is specified
+  - Fix hook file permissions
+  - Fix the git hook on python 3
+  - Ignore non-python files when running the git hook
+  - Ignore .tox directories by default
+  - Flake8 now reports the column number for PyFlakes messages (forwarded request 213717 from dirkmueller)</comment>
+    <requestid>213731</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bedf21031b0e239c44387fc82c67b0d0</srcmd5>
+    <version>2.2.0</version>
+    <time>1404306301</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239099</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9eddbb4dc5652b99e4a3515f93cf262f</srcmd5>
+    <version>2.2.2</version>
+    <time>1405053966</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240189</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9eddbb4dc5652b99e4a3515f93cf262f</srcmd5>
+    <version>2.2.2</version>
+    <time>1409302871</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f9b6800e145784d2ab7264f14872bb54</srcmd5>
+    <version>2.2.3</version>
+    <time>1421333889</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280586</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3000dca8a8d531c7d775ee74a4f6f864</srcmd5>
+    <version>2.3.0</version>
+    <time>1425566130</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288069</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>71184d3c97de22d83169d00d0df9199b</srcmd5>
+    <version>2.3.0</version>
+    <time>1440135506</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322369</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f7940bef523afd3d879c3366d0851fe4</srcmd5>
+    <version>2.5.1</version>
+    <time>1453280004</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353348</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>573a1ce2600a81eaf7c077036f6e0337</srcmd5>
+    <version>2.5.1</version>
+    <time>1471867150</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419447</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>947764b4c052449983308e9bd60e186e</srcmd5>
+    <version>3.3.0</version>
+    <time>1492617871</time>
+    <user>dimstar_suse</user>
+    <comment>- update for singlespec
+- update to 3.3.0</comment>
+    <requestid>483178</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>22adfbc59484faf10cb7a667992bebfd</srcmd5>
+    <version>3.5.0</version>
+    <time>1509193129</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.0:
+  - Start using new PyCodestyle checks for bare excepts and ambiguous identifier
+  drop 0001-Update-pyflakes-range-and-include-doc-links.patch: upstream
+
+- update to 3.4.1
+- Add 0001-Update-pyflakes-range-and-include-doc-links.patch from upstream
+  in order to allow using pyflakes &gt;= 1.6.0
+
+  * Bug Fix exceptions when output on stdout is truncated before
+  * Bug Do not verify dependencies of extensions loaded via
+  * Bug Files excluded in a config file were not being excluded
+  - Re-enable multiprocessing by default while fixing the issue
+  - Turn off multiple jobs by default. To enable automatic use
+- Initial package (2.0)</comment>
+    <requestid>536264</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d3be2ce941ae44282d9036223bee7366</srcmd5>
+    <version>3.5.0</version>
+    <time>1516091848</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with python3 only, add condition for the py2 only deps (forwarded request 563586 from scarabeus_iv)</comment>
+    <requestid>563588</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>383364d60345486797e0e9b4f8b99e5f</srcmd5>
+    <version>3.5.0</version>
+    <time>1524400212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596728</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>d80c3f1a0138377bd216900f5eaf4d65</srcmd5>
+    <version>3.5.0</version>
+    <time>1535367227</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with pyflakes-2.0.x:
+  * python-flake8-3.5.0-pyflakes-2.0.0.patch</comment>
+    <requestid>628277</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>13f15a6cac4b54a01f003d5741d60038</srcmd5>
+    <version>3.5.0</version>
+    <time>1536575472</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>633525</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d6e83511dbb538a2cc22a45eee1b21ed</srcmd5>
+    <version>3.6.0</version>
+    <time>1541746228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646015</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>7a409828f2f045b491e6ac1288aa403d</srcmd5>
+    <version>3.6.0</version>
+    <time>1549140329</time>
+    <user>coolo</user>
+    <comment>- Add patch to build with pyflakes-2.1.0:
+  * pyflakes21.patch</comment>
+    <requestid>669479</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f6e436e29d831421f2e3872aeff791b2</srcmd5>
+    <version>3.7.5</version>
+    <time>1550149934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>672301</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>80987898b68527bc44adf92f5f8d69ec</srcmd5>
+    <version>3.7.6</version>
+    <time>1551215726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678215</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>125818fe34ac93d845a7ff5bf70f700a</srcmd5>
+    <version>3.7.7</version>
+    <time>1551687142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681065</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e8d8f01a004388fc8d0844a806edeff2</srcmd5>
+    <version>3.7.8</version>
+    <time>1564484584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.8:
+  * Fix handling of Application.parse_preliminary_options_and_args when
+    argv is an empty list (See also GitLab!310, GitLab#518)
+  * Fix crash when a file parses but fails to tokenize (See also GitLab!314,
+    GitLab#532)
+  * Log the full traceback on plugin exceptions (See also GitLab!317)
+  * Fix # noqa: ... comments with multi-letter codes (See also GitLab!326,
+    GitLab#549)
+- Rebase remove_mock_dependency.patch</comment>
+    <requestid>717079</requestid>
+  </revision>
+</revisionlist>

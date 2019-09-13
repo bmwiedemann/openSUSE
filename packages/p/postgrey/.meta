@@ -1,0 +1,16 @@
+<package name="postgrey" project="openSUSE:Factory">
+  <title>Postfix greylisting policy server</title>
+  <description>Postgrey is a Postfix policy server implementing greylisting. When a
+request for delivery of a mail is received by Postfix via SMTP, the
+triplet CLIENT_IP / SENDER / RECIPIENT is built. If it is the first
+time that this triplet is seen, or if the triplet was first seen less
+than 5 minutes, then the mail gets rejected with a temporary error.
+Hopefully spammers or viruses will not try again later, as it is
+however required per RFC.
+
+The following features compared with greylist.pl from Postfix 2.1.1 are
+new: Safe database, automatic maintenance, whitelists, lookup by
+subnet, auto-whitelisting of clients, only Berkeley DB and no large
+mysql nor postgresql DB needed.</description>
+  <devel project="server:mail" package="postgrey"/>
+</package>

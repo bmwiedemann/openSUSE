@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e506aa80d35d0bbc7e4f30cdcdf2499</srcmd5>
+    <version>0.4</version>
+    <time>1286808101</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:openSUSE:Factory/clamz based on submit request 50129 from user a_jaeger
+</comment>
+    <requestid>50129</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>adf6872839c47d24b22b8d929b6c92f4</srcmd5>
+    <version>0.4</version>
+    <time>1287010487</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:openSUSE:Factory/clamz based on submit request 50386 from user lnussel
+</comment>
+    <requestid>50386</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>eaef6e728a895038a6e1d4db4a70ab76</srcmd5>
+    <version>0.4</version>
+    <time>1294049179</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56953 from user lnussel
+</comment>
+    <requestid>56953</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>70c525f622f8a3bd783137003c643d33</srcmd5>
+    <version>0.4</version>
+    <time>1294049196</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56953
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>70c525f622f8a3bd783137003c643d33</srcmd5>
+    <version>0.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>2a0a07dbfd871cbe89d7611153949f0e</srcmd5>
+    <version>0.4</version>
+    <time>1316515816</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 83095 from jengelh)</comment>
+    <requestid>83745</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>2a0a07dbfd871cbe89d7611153949f0e</srcmd5>
+    <version>0.4</version>
+    <time>1319181811</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bd41a60071233d47dd7dd37a4eaba2a6</srcmd5>
+    <version>0.5</version>
+    <time>1319710306</time>
+    <user>coolo</user>
+    <comment>- Update to 0.5 (bnc#726528):
+  * Support unencrypted AMZ files, which Amazon has recently started
+    using for the Amazon Cloud Player.  (If you choose not to use the
+    Cloud Player, the old MP3 store interface is still using encrypted
+    AMZ files, at least for now.)  Thanks to John Southworth for
+    identifying the problem and providing a patch.
+
+- fix build on older distros</comment>
+    <requestid>89423</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c6915d77ba7964a093c288593733aede</srcmd5>
+    <version>0.5</version>
+    <time>1320230919</time>
+    <user>coolo</user>
+    <comment>license update: GPL-3.0+
+no instances of GPL-3.0 (i.e. only) code in the package (forwarded request 89488 from babelworx)</comment>
+    <requestid>89831</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a84e4bddb792772f089ca79eb31bc953</srcmd5>
+    <version>0.5</version>
+    <time>1323190988</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>a84e4bddb792772f089ca79eb31bc953</srcmd5>
+    <version>0.5</version>
+    <time>1340183236</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>a84e4bddb792772f089ca79eb31bc953</srcmd5>
+    <version>0.5</version>
+    <time>1359108748</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>a84e4bddb792772f089ca79eb31bc953</srcmd5>
+    <version>0.5</version>
+    <time>1379662113</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>a84e4bddb792772f089ca79eb31bc953</srcmd5>
+    <version>0.5</version>
+    <time>1409300644</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

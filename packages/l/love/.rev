@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1518cb4358487ff246feda5cd3cefd77</srcmd5>
+    <version>0.10.1</version>
+    <time>1479150686</time>
+    <user>dimstar_suse</user>
+    <comment>devel project was removed</comment>
+    <requestid>415732</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6ed6c07fbd2ffc237c4929100549ddf3</srcmd5>
+    <version>0.10.2</version>
+    <time>1485769775</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453161</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>654f9fd0d283d4f00897380e48aa14c1</srcmd5>
+    <version>0.10.2</version>
+    <time>1493363584</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490811</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b8e3582bffa67c257da716a34e169bda</srcmd5>
+    <version>0.10.2</version>
+    <time>1498485298</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506052</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6cbb9709142c5e9d9cf47f1c8d2001ea</srcmd5>
+    <version>11.2</version>
+    <time>1543953259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652569</requestid>
+  </revision>
+</revisionlist>

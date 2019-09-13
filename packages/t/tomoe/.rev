@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cbeb9134560e56a725643968ed694f1a</srcmd5>
+    <version>0.4.0</version>
+    <time>1166205071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="14">
+    <srcmd5>c9c33e7ada72d135bfbbc9bc1478554f</srcmd5>
+    <version>0.4.0</version>
+    <time>1173304273</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9706b2ae6cf7dc7e3d957687c986755a</srcmd5>
+    <version>0.5.1</version>
+    <time>1186433540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="34">
+    <srcmd5>ebb98491ee9f1ef5dd6b26fbf478ff3f</srcmd5>
+    <version>0.5.1</version>
+    <time>1194387954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f0a1324cd1cf0b0bf34db011d1fc1a3</srcmd5>
+    <version>0.6.0</version>
+    <time>1217803977</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>65b5b4a1364c001e96d4f15767c70e1d</srcmd5>
+    <version>0.6.0</version>
+    <time>1231722989</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="30">
+    <srcmd5>0abbd374f19844ad1168775b5de4dc7a</srcmd5>
+    <version>0.6.0</version>
+    <time>1268926360</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="31">
+    <srcmd5>0abbd374f19844ad1168775b5de4dc7a</srcmd5>
+    <version>0.6.0</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="32">
+    <srcmd5>0abbd374f19844ad1168775b5de4dc7a</srcmd5>
+    <version>0.6.0</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="35">
+    <srcmd5>0abbd374f19844ad1168775b5de4dc7a</srcmd5>
+    <version>0.6.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="37">
+    <srcmd5>0abbd374f19844ad1168775b5de4dc7a</srcmd5>
+    <version>0.6.0</version>
+    <time>1319182526</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="38">
+    <srcmd5>6e22508261a6b99f90de3c2dc400a5a0</srcmd5>
+    <version>0.6.0</version>
+    <time>1322481493</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93807 from coolo)</comment>
+    <requestid>93838</requestid>
+  </revision>
+  <revision rev="13" vrev="39">
+    <srcmd5>fedcc52e6691bb0d7e2ccd957b3be630</srcmd5>
+    <version>0.6.0</version>
+    <time>1323194945</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="40">
+    <srcmd5>92a4a1941e7e8ac15567d6fdbdf49fe1</srcmd5>
+    <version>0.6.0</version>
+    <time>1329400939</time>
+    <user>coolo</user>
+    <comment>- replace invalid glib/*.h inclusion to fix the build on FACTORY (forwarded request 105258 from tiwai)</comment>
+    <requestid>105278</requestid>
+  </revision>
+  <revision rev="15" vrev="42">
+    <srcmd5>92a4a1941e7e8ac15567d6fdbdf49fe1</srcmd5>
+    <version>0.6.0</version>
+    <time>1340184281</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="44">
+    <srcmd5>92a4a1941e7e8ac15567d6fdbdf49fe1</srcmd5>
+    <version>0.6.0</version>
+    <time>1359110499</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="46">
+    <srcmd5>92a4a1941e7e8ac15567d6fdbdf49fe1</srcmd5>
+    <version>0.6.0</version>
+    <time>1379664834</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="48">
+    <srcmd5>92a4a1941e7e8ac15567d6fdbdf49fe1</srcmd5>
+    <version>0.6.0</version>
+    <time>1409303515</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

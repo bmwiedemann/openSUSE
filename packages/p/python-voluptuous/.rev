@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>41dfc29c2cef7a7e952dc4069a5a87b5</srcmd5>
+    <version>0.8.7</version>
+    <time>1449687228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>347801</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>722304c745aaee16b970269194eebfde</srcmd5>
+    <version>0.9.3</version>
+    <time>1471009426</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418738</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2bc16baeaad5ec099ca1dbb050ceb42a</srcmd5>
+    <version>0.10.5</version>
+    <time>1501840731</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>508802</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7cad8b111fb4ac556158558331bb4763</srcmd5>
+    <version>0.11.1</version>
+    <time>1522225745</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.1:
+  - Support Python 3.6.
+  - Drop support for Python 2.6, 3.1 and 3.2.
+  - Allow to use nested schema and allow any validator to be compiled.
+  - Default values MUST now pass validation just as any regular value.
+    This is a backward incompatible change if a schema uses default values
+    that don't pass validation against the specified schema.
+  - Modify `__lt__` in Marker class to allow comparison with non Marker
+    objects, such as str and int.
+  - Add description field to `Marker` instances.
+  - Add `Schema.infer` method for basic schema inference.
+  - Add `SomeOf` validator.
+  - Treat Python 2 old-style classes like types when validating.
+  - Make `IsDir()`, `IsFile()` and `PathExists()` consistent between
+    different Python versions.
+  - Use absolute imports to avoid import conflicts.
+  - Fix `Coerce` validator to catch `decimal.InvalidOperation`.
+  - Make `Schema([])` usage consistent with `Schema({})`.
+  - Allow partial validation when using validate decorator.
+  - Make `Schema.__eq__` deterministic.
+  - Replace implementation of `Maybe(s)` with `Any(None, s)` to allow
+    it to be compiled.</comment>
+    <requestid>590718</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7c68e3d942586d0ed2b0f6abcb025fd4</srcmd5>
+    <version>0.11.5</version>
+    <time>1533887333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628087</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>97ee61e886ad815fe24e62628ee88560</srcmd5>
+    <version>0.11.7</version>
+    <time>1567421090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726268</requestid>
+  </revision>
+</revisionlist>

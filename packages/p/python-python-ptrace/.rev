@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8fc1ae486449998046f7231d8dcfcb1b</srcmd5>
+    <version>0.9.2</version>
+    <time>1498639034</time>
+    <user>dimstar_suse</user>
+    <comment>python-ptrace as singlespec</comment>
+    <requestid>506502</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>89fd91fbadfacd6673f57823839c0db2</srcmd5>
+    <version>0.9.2</version>
+    <time>1499292095</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507143</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>04155371442eb1804d2aaa43123352be</srcmd5>
+    <version>0.9.3</version>
+    <time>1506108826</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.3
+  * Fix test_strace.py: tolerate the openat() syscall (forwarded request 527285 from mimi_vx)</comment>
+    <requestid>527286</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>18c1d745b56bebdade5859fc602e09a5</srcmd5>
+    <version>0.9.4</version>
+    <time>1568190963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.4:
+  * Issue #36: Fix detaching from process object created without is_attached=True
+  * The project now requires the six module.</comment>
+    <requestid>729809</requestid>
+  </revision>
+</revisionlist>

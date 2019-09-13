@@ -1,0 +1,9 @@
+<package name="myspell-german-old" project="openSUSE:Factory">
+  <title>Old German Dictionary for MySpell</title>
+  <description>The old German dictionary for MySpell. It provides spell checking
+according to the old German spelling rules.
+
+The MySpell spell checker is used by the OpenOffice.org office suite,
+the Mozilla Composer, and the Mozilla Mail message composition window.</description>
+  <devel project="LibreOffice:Factory" package="myspell-german-old"/>
+</package>

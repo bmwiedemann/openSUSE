@@ -1,0 +1,16 @@
+<package name="monitoring-plugins-mysql_health" project="openSUSE:Factory">
+  <title>Check various parameters of a MySQL database</title>
+  <description>When using a database that are business critical it can be a good idea to
+monitor the internals.
+
+This Nagios plugin allows you to monitor the internal details of your 
+MySQL database. 
+
+Author:
+-------
+    Gerhard Laußer
+
+</description>
+  <devel project="server:monitoring" package="monitoring-plugins-mysql_health"/>
+  <url>http://labs.consol.de/lang/en/nagios/check_mysql_health/</url>
+</package>

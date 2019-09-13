@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d86b4e25a3620d476847b13aa59f69c</srcmd5>
+    <version>0.14.2</version>
+    <time>1328086769</time>
+    <user>coolo</user>
+    <comment>Python is awesome</comment>
+    <requestid>102200</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d3026741e44a87de74b5fc4aa7f42916</srcmd5>
+    <version>0.15.1</version>
+    <time>1339352336</time>
+    <user>coolo</user>
+    <comment>Update to 0.15.1 (forwarded request 123995 from poorboywilly)</comment>
+    <requestid>124086</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d3026741e44a87de74b5fc4aa7f42916</srcmd5>
+    <version>0.15.1</version>
+    <time>1340184035</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac25265f57f1d5514e63f79ad2ed2cc0</srcmd5>
+    <version>0.17.2</version>
+    <time>1353846148</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.17.2:
+  + Upstream provides no changelog
+
+- Update to version 0.15.1:
+  + Upstream provides no changelog</comment>
+    <requestid>142563</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ac25265f57f1d5514e63f79ad2ed2cc0</srcmd5>
+    <version>0.17.2</version>
+    <time>1359109994</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7c6753b274db93d8dcb04fba9c5dbd0b</srcmd5>
+    <version>0.23.0</version>
+    <time>1362745557</time>
+    <user>coolo</user>
+    <comment>update to version 0.23.0 (forwarded request 157948 from deadpoint)</comment>
+    <requestid>157973</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7c6753b274db93d8dcb04fba9c5dbd0b</srcmd5>
+    <version>0.23.0</version>
+    <time>1379664127</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>01a58f74e55f2fae7f23e6bbff8aee3b</srcmd5>
+    <version>0.23.3</version>
+    <time>1380217551</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 200614 from posophe)</comment>
+    <requestid>200667</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>95ff7e33f45375a417c7a8214439dfe0</srcmd5>
+    <version>0.23.3</version>
+    <time>1382692274</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204521</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>95ff7e33f45375a417c7a8214439dfe0</srcmd5>
+    <version>0.23.3</version>
+    <time>1409302816</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>101896b3de47aba9862c222dd0742518</srcmd5>
+    <version>0.26.1</version>
+    <time>1429606435</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298190</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>57883a29400927435041f3d4a2cbee6c</srcmd5>
+    <version>0.26.1</version>
+    <time>1493369576</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490830</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>dd262a6866fa71bfaaff35e08cbd158e</srcmd5>
+    <version>0.26.1</version>
+    <time>1544631979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655400</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>741495b6fb555352fe4b86f3cb57979a</srcmd5>
+    <version>0.26.2</version>
+    <time>1551785111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.26.2:
+  * no changelog available
+- Drop no longer needed python-argh-0.26.1-fix-testsuite.patch</comment>
+    <requestid>681523</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>3e0a70f5b228d4fa40ca097002ad21f1</srcmd5>
+    <version>0.26.2</version>
+    <time>1557263961</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use symlinks on fdupes</comment>
+    <requestid>701214</requestid>
+  </revision>
+</revisionlist>

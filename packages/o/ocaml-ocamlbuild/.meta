@@ -1,0 +1,13 @@
+<package name="ocaml-ocamlbuild" project="openSUSE:Factory">
+  <title>Generic build tool for building OCaml library and programs</title>
+  <description>OCamlbuild is a generic build tool, that has built-in rules for
+building OCaml library and programs.
+
+OCamlbuild was distributed as part of the OCaml distribution for
+OCaml versions between 3.10.0 and 4.02.3. Starting from OCaml
+4.03, it is now released separately.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ocamlbuild"/>
+  <url>https://github.com/ocaml/ocamlbuild</url>
+</package>

@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4431adcf33184b1c574501fa8809e079</srcmd5>
+    <version>2.0.0</version>
+    <time>1378907240</time>
+    <user>coolo</user>
+    <comment>The rest of SDL2</comment>
+    <requestid>196686</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4431adcf33184b1c574501fa8809e079</srcmd5>
+    <version>2.0.0</version>
+    <time>1379661925</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>5ca55103440f138545bea1368202849c</srcmd5>
+    <version>2.0.0</version>
+    <time>1380122414</time>
+    <user>coolo</user>
+    <comment>Copy to 13.1 too, if possible</comment>
+    <requestid>200215</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>5ca55103440f138545bea1368202849c</srcmd5>
+    <version>2.0.0</version>
+    <time>1409300445</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>126d4580fa38f05d6f76b39ce08b882c</srcmd5>
+    <version>2.0.0</version>
+    <time>1420754606</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve package summary and description. Drop --with-pic which
+  is enabled implicitly anyway, remove redundant Requires.</comment>
+    <requestid>280340</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>15415131b54a5c4e6c83edcc8c6f8cf9</srcmd5>
+    <version>2.0.1</version>
+    <time>1453416168</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>354422</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>88bca50e16457bd67486b8d8bdec58fb</srcmd5>
+    <version>2.0.2</version>
+    <time>1518514132</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.0.2</comment>
+    <requestid>574777</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e3dccf7049374309c1345c434ab4cc6b</srcmd5>
+    <version>2.0.2</version>
+    <time>1518601958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update BuildRequires</comment>
+    <requestid>576409</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>22d9d8a83248a2f718c3148bc91d6a0a</srcmd5>
+    <version>2.0.3</version>
+    <time>1520933010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.0.3</comment>
+    <requestid>584127</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b0e5c875d9d06d754ba62a8a3f951e18</srcmd5>
+    <version>2.0.4</version>
+    <time>1541746467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.0.4</comment>
+    <requestid>647108</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>367cbeb17ec3d3e508990385b14d6037</srcmd5>
+    <version>2.0.5</version>
+    <time>1567000939</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2019-13616.patch: fix heap buffer overflow when reading
+  a crafted bmp file (boo#1141844 CVE-2019-13616).
+
+- Update to new upstream release 2.0.5
+  * Fixed TALOS-2019-0820 CVE-2019-5051
+  * Fixed TALOS-2019-0821 CVE-2019-5052
+  * Fixed TALOS-2019-0841 CVE-2019-5057 boo#1143763
+  * Fixed TALOS-2019-0842 CVE-2019-5058 boo#1143764
+  * Fixed TALOS-2019-0843 CVE-2019-5059 boo#1143766
+  * Fixed TALOS-2019-0844 CVE-2019-5060 boo#1143768
+- Not mentioned by upstream, but issues seemingly further fixed:
+  * Fixed CVE-2019-12218 boo#1135789
+  * Fixed CVE-2019-12217 boo#1135787
+  * Fixed CVE-2019-12220 boo#1135806
+  * Fixed CVE-2019-12221 boo#1135796
+  * Fixed CVE-2019-12222 boo#1136101</comment>
+    <requestid>725636</requestid>
+  </revision>
+</revisionlist>

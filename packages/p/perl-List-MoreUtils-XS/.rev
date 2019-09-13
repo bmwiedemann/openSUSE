@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7022a39b49433635c4d969c97b6a76ed</srcmd5>
+    <version>0.418</version>
+    <time>1492009916</time>
+    <user>maxlin_factory</user>
+    <comment>split off List::MoreUtils</comment>
+    <requestid>486686</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cbe61be76b2f85e877e8db08a61bf655</srcmd5>
+    <version>0.421</version>
+    <time>1504617209</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520430</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f8dafbad0c6683925cb95f0d21ac492c</srcmd5>
+    <version>0.423</version>
+    <time>1505331367</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523621</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f43489e7a8fa45637fec75abc5e4a65e</srcmd5>
+    <version>0.426</version>
+    <time>1507755316</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.426
+   see /usr/share/doc/packages/perl-List-MoreUtils-XS/Changes
+  0.426	2017-10-02
+      - release 0.425_001 as 0.426
+  
+  0.425_001	2017-09-27
+      - Fix broken format in part (fixes issues/4, thanks Andreas Schwab
+        for reporting and testing the fix)
+      - Fix gcc 4.7 sequence point warning (fixes issues/5, thanks Andreas
+        Schwab for reporting and testing the fix)
+      - Fix incorrect padname resolving for perl &gt; 5.21.6 (Fixes RT#122883,
+        thanks Alexander Bluhm &lt;alexander.bluhm@gmx.net&gt; for reporting).
+      - Fix compiling issue on CentOS 4 &amp; CentOS 5 (thanks Alex Karelas
+        &lt;alex.karelas@gmail.com&gt; for reporting and testing the fix)
+- obsolete format.patch and undefined.patch</comment>
+    <requestid>532525</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>607be7ff1cf9c98893511e53e32f6edf</srcmd5>
+    <version>0.426</version>
+    <time>1510231295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538370</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3bdefe324e3794483afcd89b94dcc4a9</srcmd5>
+    <version>0.428</version>
+    <time>1516880142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568411</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af85b20cc274426919d5b3b118f52237</srcmd5>
+    <version>20170319</version>
+    <time>1494087708</time>
+    <user>dimstar_suse</user>
+    <comment>New package, per request from Simon.</comment>
+    <requestid>487287</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4d828dce40db00733ffbc9e14e87626b</srcmd5>
+    <version>20170319</version>
+    <time>1495267571</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493986</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7b08affb77d6093df235d7120a2164ed</srcmd5>
+    <version>20170319</version>
+    <time>1518187422</time>
+    <user>dimstar_suse</user>
+    <comment>forward 568906 by pgajdos</comment>
+    <requestid>573231</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a8fd2f7f41d283d56f0ce7f3d9466cee</srcmd5>
+    <version>20170319</version>
+    <time>1520415029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582526</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f8aa20bfe2010482cd87c52f9bcef313</srcmd5>
+    <version>20170319</version>
+    <time>1544441024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656176</requestid>
+  </revision>
+</revisionlist>

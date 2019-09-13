@@ -1,0 +1,220 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>f971273aeaf4e39df93aad5982201d8f</srcmd5>
+    <version>0.9.16</version>
+    <time>1176517674</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d79126a15202bd0a2e3686f58c3d8469</srcmd5>
+    <version>0.9.20</version>
+    <time>1191941389</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="31">
+    <srcmd5>17acbfc075aa0ce76af37a5d22b09ac6</srcmd5>
+    <version>0.9.20</version>
+    <time>1207825837</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>166fc417abc340f9c3fc522bb1f7d531</srcmd5>
+    <version>0.9.21</version>
+    <time>1222261713</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="64">
+    <srcmd5>166fc417abc340f9c3fc522bb1f7d531</srcmd5>
+    <version>0.9.21</version>
+    <time>1222261713</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="65">
+    <srcmd5>ed6737247468e269c095f96fc8b4f6a5</srcmd5>
+    <version>0.9.21</version>
+    <time>1233270483</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="66">
+    <srcmd5>50277f343247be6a318b5ce7bf5025ca</srcmd5>
+    <version>0.9.21</version>
+    <time>1242687081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="68">
+    <srcmd5>50277f343247be6a318b5ce7bf5025ca</srcmd5>
+    <version>0.9.21</version>
+    <time>1242687081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="69">
+    <srcmd5>39661c6df09ede61b69662eb215b4e0f</srcmd5>
+    <version>0.9.21</version>
+    <time>1261433953</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/clucene-core based on submit request 27304 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="10" vrev="70">
+    <srcmd5>0f5485f169a424eb63e6fd2f45341641</srcmd5>
+    <version>0.9.21</version>
+    <time>1268923199</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="72">
+    <srcmd5>0f5485f169a424eb63e6fd2f45341641</srcmd5>
+    <version>0.9.21</version>
+    <time>1278667339</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="73">
+    <srcmd5>0f5485f169a424eb63e6fd2f45341641</srcmd5>
+    <version>0.9.21</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="76">
+    <srcmd5>0f5485f169a424eb63e6fd2f45341641</srcmd5>
+    <version>0.9.21</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="77">
+    <srcmd5>ad126a122944ae7e941c8ee9217ee23e</srcmd5>
+    <version>0.9.21</version>
+    <time>1316081069</time>
+    <user>saschpe</user>
+    <comment>- Fix license string to be LGPL-2.1 or Apache-2.0 , bnc#717711 
+
+- Fix license string
+- Use the correct tarball URL</comment>
+    <requestid>82137</requestid>
+  </revision>
+  <revision rev="15" vrev="78">
+    <srcmd5>e4f481bdce44ac83fce043c0c84b99c5</srcmd5>
+    <version>0.9.21</version>
+    <time>1316081074</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82137
+</comment>
+  </revision>
+  <revision rev="16" vrev="79">
+    <srcmd5>a2bc27a1b6452799843afb49c28fe45d</srcmd5>
+    <version>0.9.21</version>
+    <time>1317626080</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85968 from coolo)</comment>
+    <requestid>86138</requestid>
+  </revision>
+  <revision rev="17" vrev="81">
+    <srcmd5>a2bc27a1b6452799843afb49c28fe45d</srcmd5>
+    <version>0.9.21</version>
+    <time>1319181814</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9b9fd2c9965eedc408f1a5a6912b657f</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1322814352</time>
+    <user>coolo</user>
+    <comment>- Avoid line continuation in last cmake parameter (forwarded request 93587 from saschpe)</comment>
+    <requestid>93588</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ac2aa9c8c1e09ed040178969d58bc190</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1323190997</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>b568c3d37d49100862ce93cb025aa69f</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1332262059</time>
+    <user>coolo</user>
+    <comment>- fix ppc64 build (forwarded request 109543 from k0da)</comment>
+    <requestid>109704</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>83791ceef532142083444c30e079382b</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1332511885</time>
+    <user>coolo</user>
+    <comment>Add the contrib libraries required for libreoffice-3.6 and make this build on sle11 (forwarded request 110368 from scarabeus_iv)</comment>
+    <requestid>110371</requestid>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>83791ceef532142083444c30e079382b</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1340183239</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>0382234cb5af8022b846176007894f5a</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1355910575</time>
+    <user>coolo</user>
+    <comment>- fix build on s390x which also uses lib64 (forwarded request 145617 from oertel)</comment>
+    <requestid>145619</requestid>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>0382234cb5af8022b846176007894f5a</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1359108752</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>516f40b480c3aa76ccb26c1416cf1da3</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1359457470</time>
+    <user>coolo</user>
+    <comment>- Replace wrong shlib package name &quot;libclucene2&quot; (the SONAME is
+  libclucene*.so.1, not .2) by libclucene-{core,shared}1
+- Use more robust make install command
+- Add patch clucene-kill-ext-includes.diff (forwarded request 149934 from jengelh)</comment>
+    <requestid>149959</requestid>
+  </revision>
+  <revision rev="26" vrev="12">
+    <srcmd5>516f40b480c3aa76ccb26c1416cf1da3</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1379662119</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="14">
+    <srcmd5>516f40b480c3aa76ccb26c1416cf1da3</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1409300650</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="15">
+    <srcmd5>b79e584a65d5f75ac4b3d4164bfe8500</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1429973135</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298487</requestid>
+  </revision>
+  <revision rev="29" vrev="16">
+    <srcmd5>6d7ef423ed37d336ac45d9f88bb68bfc</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1486387969</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453771</requestid>
+  </revision>
+  <revision rev="30" vrev="17">
+    <srcmd5>83c742329c88585dae2680d977c9f19f</srcmd5>
+    <version>2.3.3.4</version>
+    <time>1518697140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575579</requestid>
+  </revision>
+</revisionlist>

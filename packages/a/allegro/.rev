@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e99b4a8efbac68a17853216755bde2f2</srcmd5>
+    <version>4.4.2</version>
+    <time>1421232277</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept this new RPM.</comment>
+    <requestid>266213</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6c0dcaa822cd5c9ffbfe79e533f12a95</srcmd5>
+    <version>4.4.2</version>
+    <time>1432071518</time>
+    <user>dimstar_suse</user>
+    <comment>updated baselibs.conf</comment>
+    <requestid>307598</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e27fbeb02bf966d0a8cd3cf5eecdac89</srcmd5>
+    <version>5.2.4.0</version>
+    <time>1549017894</time>
+    <user>dimstar_suse</user>
+    <comment>Update, changes from  668137: Removed baselib.conf to fix installation issue</comment>
+    <requestid>669400</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4748b4cd915f10199667c49692680db7</srcmd5>
+    <version>5.2.4.0</version>
+    <time>1549361937</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671246</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4ded3ce0607325f8a341df7253c40d69</srcmd5>
+    <version>5.2.4.0</version>
+    <time>1552985918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685470</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>751c283deda1df218cb88ae2f536c31b</srcmd5>
+    <version>5.2.5.0</version>
+    <time>1560970750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.5:
+  Core:
+  *  Try to identify bitmap format for unknown extensions.
+  * Add some missing OpenGL 4.3 functions.
+  * Add ‘al_create_thread_with_stacksize’ to create threads with a
+    custom stack size.  (Aldrik Ramaekers)
+  * Add ‘al_get_system_id’ function, letting you disambiguate platforms
+    at runtime.
+  Graphics:
+  * Add ‘al_get_monitor_dpi’ to query the DPI of a monitor.
+  * Add new API for making blender a bitmap-local state (like
+    transformations), which can simplify some code.  See
+    ‘al_set_bitmap_blender’ and the related APIs.  Also see the
+    ‘ex_blend_target’ example.
+  * Added ‘al_transpose_transform’.  This is useful for rotation
+    transformations.
+  * Rework internal GLES support for better portability.
+  * Don’t force POT bitmaps on GLES.
+  * Fix repeated bitmap locking on OpenGL.
+  Linux:
+  * Improve linux joystick detections.
+  * Fix a number of memory leaks/crashes in the audio addon when using
+    pulseaudio/alsa.  (Julian Smythe)
+  * Fix compilation with Mesa 18.2.5 and later.
+  * Fix OpenGL version reporting after display creation (Edgar
+    Reynaldo).
+  * Fix requesting specific OpenGL versions via display options (Edgar
+    Reynaldo).
+  SDL:
+  * Sebastian Krzyszkowiak has spent a lot of effort to making the SDL</comment>
+    <requestid>705875</requestid>
+  </revision>
+</revisionlist>

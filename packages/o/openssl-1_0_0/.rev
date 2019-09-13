@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93025406c3af9e283d9918b4ec4d4d69</srcmd5>
+    <version>1.0.2k</version>
+    <time>1495133211</time>
+    <user>dimstar_suse</user>
+    <comment>Up</comment>
+    <requestid>494107</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f767c08f1846ec1844a55b987ec3edf9</srcmd5>
+    <version>1.0.2k</version>
+    <time>1495883548</time>
+    <user>dimstar_suse</user>
+    <comment>- filter out provides of the steam-32bit package by adding
+  &quot;autoreqprov off&quot; to baselibs.conf (bsc#1039880)</comment>
+    <requestid>496755</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>825d11ab1012735f9f1b7d42ded95524</srcmd5>
+    <version>1.0.2l</version>
+    <time>1498551584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update engines location for the engines to match up 1.1 to ease
+  later on migration bsc#1045803
+  * openssl-engines-path.patch
+
+- update to 1.0.2l
+  * bugfix release only
+  * fixes problem with a lower-than-before version number (bsc#1040863)
+- drop openssl-print_notice-NULL_crash.patch (upstream)
+- refresh patches openssl-fipslocking.patch and
+  0001-Axe-builtin-printf-implementation-use-glibc-instead.patch</comment>
+    <requestid>506116</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>646597cfc32eb46e104409294628e9f0</srcmd5>
+    <version>1.0.2l</version>
+    <time>1499415317</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508256</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6c2bb8fb5104f900d65aaf2e68ba3fa5</srcmd5>
+    <version>1.0.2l</version>
+    <time>1499880893</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509587</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>c80a5bef4e2efaea159f681331d51561</srcmd5>
+    <version>1.0.2l</version>
+    <time>1500669738</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511087</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>70e6bdd68889654c8e135c2bd535168d</srcmd5>
+    <version>1.0.2l</version>
+    <time>1502561289</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515200</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>9fbf1345f43957424a640a4613bdb62b</srcmd5>
+    <version>1.0.2l</version>
+    <time>1503392647</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516985</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>17a54d7750282fa5658fdee7dbc0ccb1</srcmd5>
+    <version>1.0.2l</version>
+    <time>1504814954</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520124</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ec5dc1411071acb4fe0f119eab41f649</srcmd5>
+    <version>1.0.2m</version>
+    <time>1510321022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538749</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>206637317d5ca837b37b1d58b2f5467e</srcmd5>
+    <version>1.0.2m</version>
+    <time>1512292083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546203</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f52e925b8cfc2cfa1d1c7f64c8abaeb7</srcmd5>
+    <version>1.0.2n</version>
+    <time>1512847608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555246</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c6a086f00ce83e8adddb0e5fb7c91609</srcmd5>
+    <version>1.0.2n</version>
+    <time>1519902267</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove bit obsolete syntax
+- Use %license macro</comment>
+    <requestid>577051</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bd6e836d35c93ed19abfe8221af0d029</srcmd5>
+    <version>1.0.2o</version>
+    <time>1533627659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627062</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>198a83cfffdf2d5bccadf89e4887eb9b</srcmd5>
+    <version>1.0.2q</version>
+    <time>1547540108</time>
+    <user>dimstar_suse</user>
+    <comment>- Start versioning the exported symbols:
+  At least one steam game (Company of Heroes 2) needs this symbol versioned
+  properly
+- modify openssl-1.0.0-version.patch
+
+- Update to 1.0.2q
+  * Microarchitecture timing vulnerability in ECC scalar multiplication
+     (CVE-2018-5407, bsc#1113534, &quot;PortSmash&quot;)
+  * Timing vulnerability in DSA signature generation
+     (CVE-2018-0734, bsc#1113652)
+  * Use a secure getenv wrapper inside libcrypto
+- refreshed patches:
+  * openssl-fipslocking.patch
+  * openssl-1.0.2i-fips.patch
+
+- correct the error detection in openssl-CVE-2018-0737-fips.patch
+  (bsc#1106197)
+
+- Fix One&amp;Done side-channel attack on RSA (bsc#1104789)
+  * add openssl-One_and_Done.patch
+
+- Update to 1.0.2p
+  OpenSSL Security Advisory [12 June 2018]
+  * Reject excessively large primes in DH key generation
+    (bsc#1097158, CVE-2018-0732)
+  OpenSSL Security Advisory [16 Apr 2018]
+  * Cache timing vulnerability in RSA Key Generation
+    (CVE-2018-0737, bsc#1089039)
+  * Make EVP_PKEY_asn1_new() a bit stricter about its input
+  * Revert blinding in ECDSA sign and instead make problematic addition</comment>
+    <requestid>662509</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>557c9d9d867360c444f0cef3fcbb5f72</srcmd5>
+    <version>1.0.2r</version>
+    <time>1551687249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680167</requestid>
+  </revision>
+</revisionlist>

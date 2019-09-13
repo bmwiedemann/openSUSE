@@ -1,0 +1,6 @@
+<package name="lxde-common" project="openSUSE:Factory">
+  <title>This package provides a set of default configurations for LXDE</title>
+  <description>Lxde-common package provides a set of default configurations for LXDE.
+It's an LXDE core package, since without it LXDE cannot run.</description>
+  <devel project="X11:lxde" package="lxde-common"/>
+</package>

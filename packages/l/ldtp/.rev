@@ -1,0 +1,282 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf122129c44ccd680ed6a9c1ed5fb960</srcmd5>
+    <version>0.6.0</version>
+    <time>1168903274</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1775633f163b76e400d25bf4ed70b6e9</srcmd5>
+    <version>0.8.0</version>
+    <time>1174610768</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c3b15edb176a48a40651c00e6d1acb41</srcmd5>
+    <version>1.0.0</version>
+    <time>1207176152</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>036e257465c1efafd405efa034c93057</srcmd5>
+    <version>1.3.0</version>
+    <time>1221275223</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a62dea8e3814a7b7e76d63073ca068e9</srcmd5>
+    <version>1.3.0</version>
+    <time>1225711227</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79d889140d44ffea6312a9e1f1329ac1</srcmd5>
+    <version>1.5.0</version>
+    <time>1234459521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e74a953940757036a6594f3aa565bd96</srcmd5>
+    <version>1.5.1</version>
+    <time>1238026504</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e296055cb8be257412e5a11358e0c7e3</srcmd5>
+    <version>1.6.0</version>
+    <time>1242856594</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d2430fd70cafd5e99f1565b996580141</srcmd5>
+    <version>1.7.0</version>
+    <time>1250515935</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/ldtp based on submit request 17969 from user vuntz
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bed0969782001a18bdb76614134e1967</srcmd5>
+    <version>1.7.1</version>
+    <time>1252017719</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/ldtp based on submit request 19752 from user vuntz
+</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>bed0969782001a18bdb76614134e1967</srcmd5>
+    <version>1.7.1</version>
+    <time>1252017719</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/ldtp based on submit request 19752 from user vuntz
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2925e0df0d1fc96b8081879d1cacdf4b</srcmd5>
+    <version>2.0.1</version>
+    <time>1264434926</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/ldtp based on submit request 30201 from user vuntz
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>886959cec358db41f268a412b100968b</srcmd5>
+    <version>2.0.2</version>
+    <time>1265919064</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/ldtp based on submit request 32211 from user vuntz
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>90edd02bfb27d3e86dff223bc2601fe7</srcmd5>
+    <version>2.0.3</version>
+    <time>1266055716</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/ldtp based on submit request 32349 from user vuntz
+</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>05e7201fd7673ac395b5749228509b07</srcmd5>
+    <version>2.0.3</version>
+    <time>1268924476</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>71ef7aa2e2c5e0d18b459c6febb53532</srcmd5>
+    <version>2.0.5</version>
+    <time>1270138277</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/ldtp based on submit request 36266 from user vuntz
+</comment>
+    <requestid>36266</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c4098f2c13d20119b713f24e6e77b2ff</srcmd5>
+    <version>2.0.5</version>
+    <time>1274654614</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/ldtp based on submit request 40524 from user vuntz
+</comment>
+    <requestid>40524</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>c4098f2c13d20119b713f24e6e77b2ff</srcmd5>
+    <version>2.0.5</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>c4098f2c13d20119b713f24e6e77b2ff</srcmd5>
+    <version>2.0.5</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ca2866651940881d419b55e9265b183f</srcmd5>
+    <version>2.0.6</version>
+    <time>1281400416</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/ldtp based on submit request 45009 from user vuntz
+</comment>
+    <requestid>45009</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c74c812d6b16596f6f2bcc35328c4dde</srcmd5>
+    <version>2.1.0</version>
+    <time>1294663866</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57518 from user vuntz
+</comment>
+    <requestid>57518</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>0e1a772d096222a79778a5dbe0e2f5b9</srcmd5>
+    <version>2.1.0</version>
+    <time>1294663873</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57518
+</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>0e1a772d096222a79778a5dbe0e2f5b9</srcmd5>
+    <version>2.1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>35630eb3c440f3559e0e13dfaedf5ad1</srcmd5>
+    <version>2.1.1</version>
+    <time>1304348404</time>
+    <user>saschpe</user>
+    <comment>Pushing G:A</comment>
+    <requestid>69175</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>b30d1c75c528b282a29376be6f21ac9b</srcmd5>
+    <version>2.1.1</version>
+    <time>1309855596</time>
+    <user>saschpe</user>
+    <comment>Pushing G:A</comment>
+    <requestid>75314</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>f1ab8131ab78012e629fbe2b3b49fc3c</srcmd5>
+    <version>2.1.1</version>
+    <time>1309855610</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75314
+</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2cb37358daed39c9dec9a5d8ed99e901</srcmd5>
+    <version>2.2.0</version>
+    <time>1317543233</time>
+    <user>lrupp</user>
+    <comment>Pushing G:A</comment>
+    <requestid>85565</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>2cb37358daed39c9dec9a5d8ed99e901</srcmd5>
+    <version>2.2.0</version>
+    <time>1319182066</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>aed021b70ccebcd0ce2ad8561b430c4e</srcmd5>
+    <version>2.2.0</version>
+    <time>1323192144</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0ccb752c36ef7897e6826d847d96cedd</srcmd5>
+    <version>2.3.0</version>
+    <time>1329750839</time>
+    <user>coolo</user>
+    <comment>Update to 2.3.0 (forwarded request 105791 from dimstar)</comment>
+    <requestid>105922</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d5085f79c66cbcff8a32c74a75558331</srcmd5>
+    <version>2.3.1</version>
+    <time>1330364067</time>
+    <user>coolo</user>
+    <comment>Update to 2.3.1 (forwarded request 107039 from vuntz)</comment>
+    <requestid>107045</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>d5085f79c66cbcff8a32c74a75558331</srcmd5>
+    <version>2.3.1</version>
+    <time>1340183549</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>f3b78918b97ad170b84f614e4c112622</srcmd5>
+    <version>3.0.0</version>
+    <time>1345730667</time>
+    <user>namtrac</user>
+    <comment>Update to 3.0.0 (forwarded request 130920 from darix)</comment>
+    <requestid>130963</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>f3b78918b97ad170b84f614e4c112622</srcmd5>
+    <version>3.0.0</version>
+    <time>1359109222</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>d0aa377dcc433c977279b10a0a5186ed</srcmd5>
+    <version>3.0.0</version>
+    <time>1362994362</time>
+    <user>coolo</user>
+    <comment>Resubmit ciaran's sr#157374 (forwarded request 158022 from dimstar)</comment>
+    <requestid>158163</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>864b9af1ec5869e0e3199eb45ded7b53</srcmd5>
+    <version>3.5.0</version>
+    <time>1368695232</time>
+    <user>coolo</user>
+    <comment>Update to 3.5.0</comment>
+    <requestid>175703</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>864b9af1ec5869e0e3199eb45ded7b53</srcmd5>
+    <version>3.5.0</version>
+    <time>1379662865</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>864b9af1ec5869e0e3199eb45ded7b53</srcmd5>
+    <version>3.5.0</version>
+    <time>1409301467</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,234 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1fa291a934bd4f086fba161575378b2a</srcmd5>
+    <version>0.12</version>
+    <time>1289865988</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52294 from user coolo
+</comment>
+    <requestid>52294</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7efae2f698842b57327d344f80aae683</srcmd5>
+    <version>0.12</version>
+    <time>1289865993</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52294
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0a0cab56c3f1665f250ff867bb43113c</srcmd5>
+    <version>0.12</version>
+    <time>1291581270</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54462 from user coolo
+</comment>
+    <requestid>54462</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a5659591070ba74132960753f5a4e89d</srcmd5>
+    <version>0.12</version>
+    <time>1291581279</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54462
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4214c72f5d1b697c8c2fa4ed02e8295e</srcmd5>
+    <version>0.13</version>
+    <time>1295880879</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 58995 from user coolo
+</comment>
+    <requestid>58995</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b33ad8865a93ae42d319622d074d0248</srcmd5>
+    <version>0.13</version>
+    <time>1295880888</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 58995
+</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>38fe11b2d4966df7d739daac8e895131</srcmd5>
+    <version>0.13</version>
+    <time>1297077791</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60161 from user coolo
+</comment>
+    <requestid>60161</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>0718aa70ce97b2baf11d79980856d5f6</srcmd5>
+    <version>0.13</version>
+    <time>1297077799</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60161
+</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>0718aa70ce97b2baf11d79980856d5f6</srcmd5>
+    <version>0.13</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5006524c96593b849bdc916590e39dc0</srcmd5>
+    <version>0.15</version>
+    <time>1311769587</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>76168</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>51bfa276cbcc9246b245e565381e759d</srcmd5>
+    <version>0.15</version>
+    <time>1311769602</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76168
+</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>ea43fdbafdd394872dd5c1436fb49c2e</srcmd5>
+    <version>0.15</version>
+    <time>1311771963</time>
+    <user>saschpe</user>
+    <comment>resubmit without this strange service file</comment>
+    <requestid>77201</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>39e923d148a6c3317aa1b364edcb9174</srcmd5>
+    <version>0.15</version>
+    <time>1311771977</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77201
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>100074e60e6fbfe6d7801dc5752646ab</srcmd5>
+    <version>0.17</version>
+    <time>1316459729</time>
+    <user>lrupp</user>
+    <comment>- updated to 0.17
+  * Better indicate that this module is dynamically configured.
+    - fixes [rt.cpan.org #70996]
+  * If you have Moose installed you no longer get the Mouse dependency (rjbs, reported by andk)
+     Any::Moose has long had both runtime and test support for Moose
+     without Mouse, but the toolchain has not, until recently, been
+     good enough to handle alternatives. This change is designed
+     to affect very few people.
+    - fixes [rt.cpan.org #70597]</comment>
+    <requestid>83368</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>100074e60e6fbfe6d7801dc5752646ab</srcmd5>
+    <version>0.17</version>
+    <time>1319182238</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>aec95c5316a3a82960fe07b372834a78</srcmd5>
+    <version>0.18</version>
+    <time>1321875294</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92296</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ff3710c808dada3ec5b091504d0ae5e4</srcmd5>
+    <version>0.18</version>
+    <time>1323265096</time>
+    <user>coolo</user>
+    <comment>- let it require Mouse, even though it's not technically correct</comment>
+    <requestid>94830</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d95df926038409785b7fcaebfa59bff8</srcmd5>
+    <version>0.18</version>
+    <time>1333355425</time>
+    <user>coolo</user>
+    <comment>Solved bnc#752049
+Added missing Requires:       perl(Moose) (forwarded request 111625 from worldcitizen)</comment>
+    <requestid>112062</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>d95df926038409785b7fcaebfa59bff8</srcmd5>
+    <version>0.18</version>
+    <time>1340183789</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>d95df926038409785b7fcaebfa59bff8</srcmd5>
+    <version>0.18</version>
+    <time>1359109593</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ba2b4d3fe0e4363334f9f02c83863869</srcmd5>
+    <version>0.21</version>
+    <time>1370447244</time>
+    <user>coolo</user>
+    <comment>- updated to 0.21
+ * Add tokuhirom's translation of the deprecation notice
+ * Documentation fixes
+ * Deprecated in favor of Moo. Good night, sweet prince. (forwarded request 177232 from coolo)</comment>
+    <requestid>177323</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>ba2b4d3fe0e4363334f9f02c83863869</srcmd5>
+    <version>0.21</version>
+    <time>1379663544</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>ba2b4d3fe0e4363334f9f02c83863869</srcmd5>
+    <version>0.21</version>
+    <time>1409302152</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2dbdae9287a6a914317c957333024e8a</srcmd5>
+    <version>0.24</version>
+    <time>1416823754</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>262610</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2dbdae9287a6a914317c957333024e8a</srcmd5>
+    <version>0.24</version>
+    <time>1428951410</time>
+    <user>coolo</user>
+    <comment>(DEPRECATED) use Moo instead!</comment>
+    <requestid>295747</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2dbdae9287a6a914317c957333024e8a</srcmd5>
+    <version>0.24</version>
+    <time>1428951798</time>
+    <user>coolo</user>
+    <comment>undelete</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>dc2df3e623d15487a13e028652ab15cd</srcmd5>
+    <version>0.26</version>
+    <time>1429107722</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295788</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>210bd5efdd6e7427f3e31a2429c99187</srcmd5>
+    <version>0.27</version>
+    <time>1479662391</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440993</requestid>
+  </revision>
+</revisionlist>

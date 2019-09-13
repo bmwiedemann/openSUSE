@@ -1,0 +1,5 @@
+<package name="ceph-iscsi" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems:ceph" package="ceph-iscsi"/>
+</package>

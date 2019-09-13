@@ -1,0 +1,5 @@
+<package name="wordcut" project="openSUSE:Factory">
+  <title>Thai word segmentation utility.</title>
+  <description>Thai word segmentation utility.</description>
+  <devel project="M17N" package="wordcut"/>
+</package>

@@ -1,0 +1,9 @@
+<package name="erlang" project="openSUSE:Factory">
+  <title>General-purpose programming language and runtime environment</title>
+  <description>Erlang is a general-purpose programming language and runtime environment. Erlang has built-in support for concurrency, distribution and fault tolerance. Erlang is used in several large telecommunication systems from Ericsson.
+
+
+</description>
+  <devel project="devel:languages:erlang:Factory" package="erlang"/>
+  <url>http://www.erlang.org</url>
+</package>

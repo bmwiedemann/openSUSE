@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b7181d7e2ce8f0410dbef93ec3b0cd5</srcmd5>
+    <version>1.2.0</version>
+    <time>1436734394</time>
+    <user>coolo</user>
+    <comment>Dependency of python-Sphinx, which is already in openSUSE:Factory</comment>
+    <requestid>315583</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b7d8f0569d21e5cd14b8c85d17c59a86</srcmd5>
+    <version>1.2.0</version>
+    <time>1492618059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>485740</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95dc819ec0ebce3b4d988a3eca85858f</srcmd5>
+    <version>1.2.1</version>
+    <time>1496533796</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * fix syntax error</comment>
+    <requestid>500494</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5ddc8b73dc23b3ca05b5a8f14a714e74</srcmd5>
+    <version>1.2.1</version>
+    <time>1544816826</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655911</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1fd19eaa3a3ab9b8d813f6e09832e9cb</srcmd5>
+    <version>1.9.0</version>
+    <time>1565179149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720578</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>75bad51307f9f0d8f08f7b3297065a38</srcmd5>
+    <version>1.9.0</version>
+    <time>1567420881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726876</requestid>
+  </revision>
+</revisionlist>

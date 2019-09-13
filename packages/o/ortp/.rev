@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6c7bbd3e9b644576693a58efa1d961f4</srcmd5>
+    <version>0.22.0</version>
+    <time>1372760800</time>
+    <user>coolo</user>
+    <comment>ortp-devel  obsoletes libortp-devel now. External programs which are built against libortp use pkgconfig(ortp) so I think there is no need to add Provide: libortp-devel.</comment>
+    <requestid>180974</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6c7bbd3e9b644576693a58efa1d961f4</srcmd5>
+    <version>0.22.0</version>
+    <time>1379663456</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>90ccb5ac3fa36f9a7b3be4af85d6cd2d</srcmd5>
+    <version>0.23.0</version>
+    <time>1408549979</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244947</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>90ccb5ac3fa36f9a7b3be4af85d6cd2d</srcmd5>
+    <version>0.23.0</version>
+    <time>1409302082</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>be77a128d756912a69a22ac9f4835e51</srcmd5>
+    <version>0.24.0</version>
+    <time>1426680109</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290900</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4f9534922b44d37872e338f0b77c9dc6</srcmd5>
+    <version>0.24.0</version>
+    <time>1439190729</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319441</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d994dcb47749f67c649c648f75e54f83</srcmd5>
+    <version>0.24.2</version>
+    <time>1440479918</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325311</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c000ef56878fb51765c98019483a2ac3</srcmd5>
+    <version>0.25.0</version>
+    <time>1447882320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>344432</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8d96beb11f6d44d1cfa06d79c0ef4b56</srcmd5>
+    <version>0.25.0</version>
+    <time>1454017796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>355585</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>53e4c4a5d283a07f946fa77b17919aaa</srcmd5>
+    <version>0.27.0</version>
+    <time>1475241760</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>421406</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8dec01d59b569d872a8757090f12605c</srcmd5>
+    <version>1.0.1</version>
+    <time>1498638890</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501065</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>6692dd0ad2434ec7cd67e6fa01b07f12</srcmd5>
+    <version>1.0.1</version>
+    <time>1500274930</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509858</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0001a43db64abc30440d767faa71048f</srcmd5>
+    <version>1.0.2</version>
+    <time>1503999514</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511962</requestid>
+  </revision>
+</revisionlist>

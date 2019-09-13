@@ -1,0 +1,324 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ce891a4cc8385b5f41760fd6801c2560</srcmd5>
+    <version>254</version>
+    <time>1168871333</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1d9fa381023b321a8e44684ce0a88779</srcmd5>
+    <version>254</version>
+    <time>1170167684</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>7e2df0a05f3bec115f767283f2a8fc19</srcmd5>
+    <version>254</version>
+    <time>1172783313</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2c06e40f718cf3fdd900ac7a318a9dfc</srcmd5>
+    <version>255</version>
+    <time>1173104845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>88dec679268a40bce78cb0c7635a1b7b</srcmd5>
+    <version>256</version>
+    <time>1183927682</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>dc8cd077b5189a61fa0ea1fdcc89a237</srcmd5>
+    <version>256</version>
+    <time>1185792844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>96affc45f8fd0049f1796fea8905429b</srcmd5>
+    <version>257</version>
+    <time>1186169239</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>52e6f13ca83a80034cdecf63f68bc9de</srcmd5>
+    <version>258</version>
+    <time>1192761556</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6bf79f5b1ed2404052f79b69bbea9449</srcmd5>
+    <version>259</version>
+    <time>1193677182</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>9506adb61778f9f1c04d3f49f57d7513</srcmd5>
+    <version>259</version>
+    <time>1194566018</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>21c4bdf96618e29b99749b7a36881420</srcmd5>
+    <version>260</version>
+    <time>1204764277</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>39e7aa56f33c6dcce1b946bc81ee69d5</srcmd5>
+    <version>260</version>
+    <time>1207832664</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8d5b20d108af704d3316fff5d5bf2d51</srcmd5>
+    <version>262</version>
+    <time>1219920938</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>3f98ffcb192f684f1c08017663174e88</srcmd5>
+    <version>262</version>
+    <time>1225213727</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>7f49a4db9f0af26a5241274bc7887eda</srcmd5>
+    <version>262</version>
+    <time>1231461509</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ccc50eac8cb81a051d5137138f956102</srcmd5>
+    <version>264</version>
+    <time>1242779747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c295a7ce3505b6e95211874c507f4357</srcmd5>
+    <version>264</version>
+    <time>1255353065</time>
+    <user>autobuild</user>
+    <comment>Copy from network:ldap/nss_ldap based on submit request 22062 from user rhafer
+</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>c295a7ce3505b6e95211874c507f4357</srcmd5>
+    <version>264</version>
+    <time>1255353065</time>
+    <user>autobuild</user>
+    <comment>Copy from network:ldap/nss_ldap based on submit request 22062 from user rhafer
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>50d9ea561dd22072912600a1a61b5ca1</srcmd5>
+    <version>265</version>
+    <time>1260973919</time>
+    <user>autobuild</user>
+    <comment>Copy from network:ldap/nss_ldap based on submit request 26626 from user rhafer
+</comment>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>8724abba7bba8b2693a8220d14147ecf</srcmd5>
+    <version>265</version>
+    <time>1265379212</time>
+    <user>autobuild</user>
+    <comment>Copy from network:ldap/nss_ldap based on submit request 31626 from user rhafer
+</comment>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>4b70af6c90672a530450b9f8f24aec18</srcmd5>
+    <version>265</version>
+    <time>1268925114</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>4b70af6c90672a530450b9f8f24aec18</srcmd5>
+    <version>265</version>
+    <time>1278667371</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>4b70af6c90672a530450b9f8f24aec18</srcmd5>
+    <version>265</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>3124748438d273aab5ceb6e4ddbbf594</srcmd5>
+    <version>265</version>
+    <time>1295349039</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58660 from user rhafer
+</comment>
+    <requestid>58660</requestid>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>433e6d52f3bba0ab69e0ba11c17db8c2</srcmd5>
+    <version>265</version>
+    <time>1295349060</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58660
+</comment>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>433e6d52f3bba0ab69e0ba11c17db8c2</srcmd5>
+    <version>265</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="27" vrev="13">
+    <srcmd5>433e6d52f3bba0ab69e0ba11c17db8c2</srcmd5>
+    <version>265</version>
+    <time>1319182205</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="14">
+    <srcmd5>882a1e0e39ffcd7cc0f22ab97a68f6b8</srcmd5>
+    <version>265</version>
+    <time>1319823520</time>
+    <user>coolo</user>
+    <comment>bnc#726393 (forwarded request 89662 from rhafer)</comment>
+    <requestid>89663</requestid>
+  </revision>
+  <revision rev="29" vrev="15">
+    <srcmd5>4d1ad1afb76ff6a92c8c959bdb47f4e2</srcmd5>
+    <version>265</version>
+    <time>1326104166</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97720 from coolo)</comment>
+    <requestid>99188</requestid>
+  </revision>
+  <revision rev="30" vrev="17">
+    <srcmd5>4d1ad1afb76ff6a92c8c959bdb47f4e2</srcmd5>
+    <version>265</version>
+    <time>1340183738</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="18">
+    <srcmd5>cfab21579dc9ff6022be3d265861a862</srcmd5>
+    <version>265</version>
+    <time>1352124010</time>
+    <user>coolo</user>
+    <comment>fix build with possix correctly set (forwarded request 140172 from rhafer)</comment>
+    <requestid>140175</requestid>
+  </revision>
+  <revision rev="32" vrev="20">
+    <srcmd5>cfab21579dc9ff6022be3d265861a862</srcmd5>
+    <version>265</version>
+    <time>1359109516</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="21">
+    <srcmd5>6205ef0758f6826758f6f5042a0f5ed5</srcmd5>
+    <version>265</version>
+    <time>1359465970</time>
+    <user>coolo</user>
+    <comment>- Fix segfault when using with glibc-2.16 and linking with pthread.
+  * adds patches:
+    nss_ldap-265-glibc-2.16.patch (PADL-Bug#445)
+    nss_ldap-265-pthread.patch (PADL-Bug#446) (forwarded request 150154 from scarabeus_iv)</comment>
+    <requestid>150156</requestid>
+  </revision>
+  <revision rev="34" vrev="22">
+    <srcmd5>9cd6f6f822f135578b35331815b5e647</srcmd5>
+    <version>265</version>
+    <time>1363586963</time>
+    <user>coolo</user>
+    <comment>bnc#809245 (forwarded request 159529 from rhafer)</comment>
+    <requestid>159530</requestid>
+  </revision>
+  <revision rev="35" vrev="24">
+    <srcmd5>9cd6f6f822f135578b35331815b5e647</srcmd5>
+    <version>265</version>
+    <time>1379663386</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="25">
+    <srcmd5>016ff0437154a599b3a9277974366d88</srcmd5>
+    <version>265</version>
+    <time>1407265879</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243681</requestid>
+  </revision>
+  <revision rev="37" vrev="27">
+    <srcmd5>016ff0437154a599b3a9277974366d88</srcmd5>
+    <version>265</version>
+    <time>1409301999</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="28">
+    <srcmd5>702644e5f6b49dcb0429df204da186fc</srcmd5>
+    <version>265</version>
+    <time>1409998718</time>
+    <user>coolo</user>
+    <comment>- Save old ldap.conf from pwdutils to not lose ldap configuration
+  [bnc#891585]
+
+- added bnc#842120.dif  bnc#866763.dif
+- bnc#879368 - Bug in ldap_nss prevents Nomachine NX server to start 
+- bnc#866763 - reverse ipv6 host lookups fail when ldap is used
+  * bnc#866763.dif
+- bnc#842120 - nss_ldap crashes when running atfork() hooks
+  * bnc#842120.dif</comment>
+    <requestid>247637</requestid>
+  </revision>
+  <revision rev="39" vrev="29">
+    <srcmd5>406d3307e538f09120ed3321f6bb3f6d</srcmd5>
+    <version>265</version>
+    <time>1415636929</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260618</requestid>
+  </revision>
+  <revision rev="40" vrev="30">
+    <srcmd5>6cfdb2d0bc8821e57373de00a98715c1</srcmd5>
+    <version>265</version>
+    <time>1441726772</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328880</requestid>
+  </revision>
+  <revision rev="41" vrev="31">
+    <srcmd5>ec5b7ba53df357b61243d264fa8ffb14</srcmd5>
+    <version>265</version>
+    <time>1472478009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>423040</requestid>
+  </revision>
+  <revision rev="42" vrev="32">
+    <srcmd5>8a53249a13db686482f0e29a14aeb706</srcmd5>
+    <version>265</version>
+    <time>1485383592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452109</requestid>
+  </revision>
+  <revision rev="43" vrev="33">
+    <srcmd5>a5cd652e9faaff61747be18c008c7a16</srcmd5>
+    <version>265</version>
+    <time>1507571285</time>
+    <user>dimstar_suse</user>
+    <comment>- Add nss_ldap-perl-5.26.patch: Fix build with perl 5.26. $cwd is
+  no longer part of @INC. (forwarded request 532821 from dimstar)</comment>
+    <requestid>532829</requestid>
+  </revision>
+  <revision rev="44" vrev="34">
+    <srcmd5>9a727c5e945c5c347f2b3b9261cd0592</srcmd5>
+    <version>265</version>
+    <time>1521904544</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1081768 missing nss_ldap and pam_ldap packages (plus dependencies)</comment>
+    <requestid>590345</requestid>
+  </revision>
+</revisionlist>

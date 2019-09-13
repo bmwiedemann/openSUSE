@@ -1,0 +1,10 @@
+<package name="perl-XML-SemanticDiff" project="openSUSE:Factory">
+  <title>Perl extension for comparing XML documents</title>
+  <description>XML::SematicDiff provides a way to compare the contents and structure of two
+XML documents. By default, it returns a list of hashrefs where each hashref
+describes a single difference between the two docs.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-XML-SemanticDiff"/>
+  <url>http://search.cpan.org/dist/XML-SemanticDiff/</url>
+</package>

@@ -1,0 +1,14 @@
+<package name="syslog-ng" project="openSUSE:Factory">
+  <title>The new-generation syslog-daemon</title>
+  <description>syslog-ng is a &quot;new-generation&quot; syslogd (replacement) for Unix and
+Unix-like systems. It tries to fill the gaps in the original syslogd:
+
+* powerful configurability
+* filtering based on message content
+* portability
+* better network forwarding
+
+The official home page of syslog-ng is:
+http://www.balabit.com/network-security/syslog-ng/</description>
+  <devel project="Base:System" package="syslog-ng"/>
+</package>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bcf64c35e6c47aa4d931eb5f71909357</srcmd5>
+    <version>0.242</version>
+    <time>1520415299</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-duckduckgo2, required by mycroft-core</comment>
+    <requestid>582968</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5505c38fb4d1937a0cf6208ece64d23c</srcmd5>
+    <version>0.242</version>
+    <time>1544726601</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654024</requestid>
+  </revision>
+</revisionlist>

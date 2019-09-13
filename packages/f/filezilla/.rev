@@ -1,0 +1,782 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>081496a4a60e3f143a1e74c61023ec3b</srcmd5>
+    <version>3.0.3</version>
+    <time>1196047824</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="121">
+    <srcmd5>081496a4a60e3f143a1e74c61023ec3b</srcmd5>
+    <version>3.0.3</version>
+    <time>1196047824</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="122">
+    <srcmd5>fceec12b78c07c732eebca810bbb495c</srcmd5>
+    <version>3.0.3</version>
+    <time>1245338609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="124">
+    <srcmd5>fceec12b78c07c732eebca810bbb495c</srcmd5>
+    <version>3.0.3</version>
+    <time>1245338609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>54c3188527e70544a8b6a12bc8db0bc3</srcmd5>
+    <version>3.3.1</version>
+    <time>1266500628</time>
+    <user>autobuild</user>
+    <comment>Copy from network/filezilla based on submit request 32755 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>326d229e1ef2cca0e0db504e1c2b7bba</srcmd5>
+    <version>3.3.1</version>
+    <time>1268923529</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2dbd0d26edbf5690735de95022ee284d</srcmd5>
+    <version>3.3.2.1</version>
+    <time>1269379097</time>
+    <user>autobuild</user>
+    <comment>Copy from network/filezilla based on submit request 35546 from user prusnak
+</comment>
+    <requestid>35546</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>58f119f5b5689cfee110bd2337835134</srcmd5>
+    <version>3.3.2.1</version>
+    <time>1270117708</time>
+    <user>autobuild</user>
+    <comment>Copy from network/filezilla based on submit request 36236 from user psmt
+</comment>
+    <requestid>36236</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>58f119f5b5689cfee110bd2337835134</srcmd5>
+    <version>3.3.2.1</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>58f119f5b5689cfee110bd2337835134</srcmd5>
+    <version>3.3.2.1</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6ea5cf5766eb1a385eb801cefb4cb6d1</srcmd5>
+    <version>3.3.4.1</version>
+    <time>1290097185</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52261 from user psmt
+</comment>
+    <requestid>52261</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>1861fa78b2d1c0e56d02c7530a67d4df</srcmd5>
+    <version>3.3.4.1</version>
+    <time>1290097194</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52261
+</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>582e4c21a0f35f06564d50915ce96a67</srcmd5>
+    <version>3.3.4.1</version>
+    <time>1297152040</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 60270 from user coolo
+</comment>
+    <requestid>60270</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>d4b1d94f89c4c2416aaa5b36595af696</srcmd5>
+    <version>3.3.4.1</version>
+    <time>1297152051</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 60270
+</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>d4b1d94f89c4c2416aaa5b36595af696</srcmd5>
+    <version>3.3.4.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>8283bef068d49b956ebc17252c41220f</srcmd5>
+    <version>3.3.4.1</version>
+    <time>1302075595</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66085 from user coolo
+</comment>
+    <requestid>66085</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>6ee5f906b3faa8c728bea9da4f528e9b</srcmd5>
+    <version>3.3.4.1</version>
+    <time>1302075606</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66085
+</comment>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>6ee5f906b3faa8c728bea9da4f528e9b</srcmd5>
+    <version>3.3.4.1</version>
+    <time>1319181877</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>af87591faae6f84ff9795b80da4645e6</srcmd5>
+    <version>3.5.1</version>
+    <time>1319718056</time>
+    <user>coolo</user>
+    <comment>- Update to 3.5.1. Changes since 3.4.0:
+    3.5.1 (2011-08-28)
+    - Add support for another rate variant of MVS style directory listings
+    3.5.1-rc1 (2011-08-21)
+    + Add menu item to hide toolbar
+    - Don't save server list in kiosk mode 2
+    - Fix for predefined sites not appearing in all circumstances
+    - Fix typo in build script in detection of SQLite3
+    - Fix character set conversion in desktop notification code
+    - Merged upstream PuTTY changes for compatibility with PuTTY 0.61
+    - Updated built-in TinyXML
+    3.5.0 (2011-05-22)
+    - Don't create queue.xml anymore if it does not exist
+    - Several fixes to build system and environment
+    3.5.0-rc2 (2011-05-15)
+    + Added experimental setting to strip file revision upon download from VMS servers. Set &quot;Strip VMS revisions&quot; to 1 in FileZilla.xml to enable
+    - The string coalescer benchmark debug option no longer crashes if benchmarking an empty string coalescer
+    3.5.0-rc1 (2011-05-08)
+    + The transfer queue is now stored in an SQLite database.
+    - Fixed crash during shutdown of FileZilla
+    - Clearing the queue when it was not yet fully populated no longer causes a crash
+    - If using ask login type for a site and no username is given, the initial focus is now on the user box in the login dialog
+
+  * Set a minimum size for column widths in directory lists and
+    behind (forwarded request 89460 from Fisiu)</comment>
+    <requestid>89508</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>2469bba37901082f0300c967cce3be80</srcmd5>
+    <version>3.5.1</version>
+    <time>1323191364</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>237ba3f1aac4b2712efd5e4c579b0644</srcmd5>
+    <version>3.5.3</version>
+    <time>1327087403</time>
+    <user>coolo</user>
+    <comment>updated to version 3.5.3 --&gt; WARNING: requires wxWidgets &gt;= 2.8.12 which is only available on openSUSE &gt;= 12.1 (forwarded request 100035 from cstender)</comment>
+    <requestid>100726</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>3239ecc65dd726e93abd264c6bce4378</srcmd5>
+    <version>3.5.3</version>
+    <time>1334215393</time>
+    <user>coolo</user>
+    <comment>- add filezilla-3.5.3-buildinfo-no-date.patch
+  fixing W: file-contains-date-and-time (forwarded request 112738 from AndreasStieger)</comment>
+    <requestid>112933</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>3239ecc65dd726e93abd264c6bce4378</srcmd5>
+    <version>3.5.3</version>
+    <time>1340183327</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>3239ecc65dd726e93abd264c6bce4378</srcmd5>
+    <version>3.5.3</version>
+    <time>1359108877</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0970e79ced8024caa9898ea214a69972</srcmd5>
+    <version>3.6.0.2</version>
+    <time>1362730163</time>
+    <user>coolo</user>
+    <comment>update to 3.6.0.2 (forwarded request 157338 from NicoK)</comment>
+    <requestid>157588</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>91652f8f7f6ad908285528d4b8290877</srcmd5>
+    <version>3.7.0</version>
+    <time>1368449509</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.7.0. Changes since 3.6.0.2:
+  - Show total transfer speed as tooltip over the transfer indicators
+  - List supported protocols in tooltip of host field in quickconnect bar
+  - Use TLS instead of the deprecated term SSL
+  - Reworded text when saving of passwords is disabled, do not refer to kiosk mode
+  - Improved usability of Update page in settings dialog
+  - Improve SFTP performance
+  - When navigating to the parent directory, highlight the former child
+  - When editing files, use high priority for the transfers
+  - Add label to size conditions in filter conditions dialog indicating that the unit is bytes
+  - Ignore drag&amp;drop operations where source and target are identical and clarify the wording in some drop error cases
+  - Trim whitespace from the entered port numbers
+  - Slightly darker color of inactive tabs
+  - Ignore .. item in the file list context menus if multiple items are selected
+  - Display TLS version and key exchange algorithm in certificate and encryption details dialog for FTP over TLS connections.
+  - Fix handling of remote paths containing double-quotes
+  - Fix crash when opening local directories in Explorer if the name contained characters not representable in the locale's narrow-width character set.
+  - Fix a memory leak in the host key verification dialog for SFTP
+  - Fix drag-scrolling in file lists with very low height
+  - Don't attempt writing XML files upon loading them
+  - Improve handling of legacy DDE file associations
+  - Fix handling of HTTPS in the auto updater in case a mirror redirects to HTTPS (forwarded request 174994 from scarabeus_iv)</comment>
+    <requestid>175010</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a50196f6c539dda58e43538d486167d9</srcmd5>
+    <version>3.7.0.1</version>
+    <time>1368692374</time>
+    <user>coolo</user>
+    <comment>- Version bump to 3.7.0.1
+  - Fix issues with bundled gnutls
+  - Update translations (forwarded request 175256 from scarabeus_iv)</comment>
+    <requestid>175549</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>86b5fa70e0c7a079c7656ee10aa13f61</srcmd5>
+    <version>3.7.3</version>
+    <time>1376124361</time>
+    <user>scarabeus_factory</user>
+    <comment>- Version bump to 3.7.3
+  - Full changelog: https://filezilla-project.org/changelog.php
+  - Noteworthy changes:
+    * Apply a fix for a security vulnerability in PuTTY as used in FileZilla to handle SFTP. See CVE-2013-4852 for reference.
+    * Merge further fixes from PuTTY to address CVE-2013-4206, CVE-2013-4207, CVE-2013-4208 (forwarded request 186554 from scarabeus_iv)</comment>
+    <requestid>186593</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>86b5fa70e0c7a079c7656ee10aa13f61</srcmd5>
+    <version>3.7.3</version>
+    <time>1379662340</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>0d96675dd87fe3a1b461c855b82076b3</srcmd5>
+    <version>3.7.3</version>
+    <time>1389732358</time>
+    <user>coolo</user>
+    <comment>- Fix dependencies for the Factory build again and remove few
+  useless lines.</comment>
+    <requestid>213756</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>633ab9fdbee3431aa3f6c3417ed25c34</srcmd5>
+    <version>3.8.1</version>
+    <time>1408196270</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244782</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>633ab9fdbee3431aa3f6c3417ed25c34</srcmd5>
+    <version>3.8.1</version>
+    <time>1409300875</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>394e9f1b449af00cd41505435225c717</srcmd5>
+    <version>3.9.0.5</version>
+    <time>1412533892</time>
+    <user>coolo</user>
+    <comment>- Version bump to 3.9.0.5:
+  * use wxwidgets-3.0
+  * various layout fixes
+  * assertion fixes
+  * new additional iconset
+- Accidentaly fix bnc#898879 by updating</comment>
+    <requestid>253738</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>324f0a9a24ceab7e28420bd04cbd830a</srcmd5>
+    <version>3.10.2</version>
+    <time>1426485607</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with our wxwidgets wxstring-conversions-fix.patch
+
+- Add patch fix-missing-include-fz-bug-10280.patch to fix build
+
+- Version bump to 3.10.2:
+  * In the XML files, passwords are now base64 encoded
+  * The subject area in the certificate verification can now be scrolled if the
+    certificate contains many alternative names
+  * Many performance improvements
+  * Various bugfixes</comment>
+    <requestid>290439</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>127087776732d738b331dc31988efb3c</srcmd5>
+    <version>3.10.2</version>
+    <time>1427109563</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292322</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>90097d24edd0035959c21fb14344ec06</srcmd5>
+    <version>3.10.3</version>
+    <time>1427983402</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 3.10.3:
+  * Various small fixes
+  * Merged suse patches
+- Removed patches:
+  * wxstring-conversions-fix.patch
+  * fix-missing-include-fz-bug-10280.patch</comment>
+    <requestid>293774</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4f83f028e6a2fb6062821637812eb0c6</srcmd5>
+    <version>3.11.0.2</version>
+    <time>1433745077</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 3.11.0.2:
+  * Fix crasher during some server-client scenarios
+  * Work with non-epoch time received from server
+- Added patch:
+  * filezilla-string-conversion.patch
+
+- Version bump to 3.11.0.1:
+  * Quite few small fixes around</comment>
+    <requestid>311004</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>92347d2e7b864269083c40e4b46c1e52</srcmd5>
+    <version>3.12.0.2</version>
+    <time>1438421689</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>317503</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>b0c3d453c129178179277c3e87b063fc</srcmd5>
+    <version>3.14.1</version>
+    <time>1446465294</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>341558</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>ce84fb7d56a1d60c028cc7291b38c2f1</srcmd5>
+    <version>3.14.1</version>
+    <time>1446978405</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342642</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>8fbf193e06ff0001efc27c1d4fd72255</srcmd5>
+    <version>3.14.1</version>
+    <time>1449687109</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347601</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>2a8881e9e53e166fc5c3b3e9a1a71dbd</srcmd5>
+    <version>3.14.1</version>
+    <time>1453508196</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355205</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3af9920b73a48beb1436e699ea795555</srcmd5>
+    <version>3.17.0</version>
+    <time>1462051875</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391827</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a12c9c73512faf24696e1084fc4c03f9</srcmd5>
+    <version>3.17.0.1</version>
+    <time>1463221411</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394809</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>48bad3dd4f628808646b2991ce2ea072</srcmd5>
+    <version>3.18.0</version>
+    <time>1464690283</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398481</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>768cafc9f097e8ab02bfdb0d696ac399</srcmd5>
+    <version>3.19.0</version>
+    <time>1468360258</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405405</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2c9bc5329045b92ace22d9daed851155</srcmd5>
+    <version>3.20.1</version>
+    <time>1470508695</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416954</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ed256fb8f9bf95150b0bbf24a2c09c10</srcmd5>
+    <version>3.21.0</version>
+    <time>1472246265</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>422068</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>566dd7cb789a266c1ab0ad8f1e459c63</srcmd5>
+    <version>3.22.1</version>
+    <time>1476780168</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435095</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>362280d53b9cf74a3e80b200b50ddd97</srcmd5>
+    <version>3.22.2.2</version>
+    <time>1480018955</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441163</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>2361c9f9c57e3501f6521ffad7c27464</srcmd5>
+    <version>3.23.0.2</version>
+    <time>1481272723</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444363</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>666412c283b058e5cf1cbb31929712e3</srcmd5>
+    <version>3.24.0</version>
+    <time>1485250373</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450425</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ab8a1b55f0f91a8156c731a76698217e</srcmd5>
+    <version>3.24.1</version>
+    <time>1487980455</time>
+    <user>dimstar_suse</user>
+    <comment>add missing entry in changes</comment>
+    <requestid>459983</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>335e96fd8d4c61f3b84fd285a542b034</srcmd5>
+    <version>3.25.0</version>
+    <time>1489653772</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479443</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>d271552aef23c1414d4eae58adc6b0a7</srcmd5>
+    <version>3.25.2</version>
+    <time>1493819880</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492449</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>170eac3c3f1a0c252cbabfea1db3b644</srcmd5>
+    <version>3.26.2</version>
+    <time>1499598258</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508938</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>56dc34cdaac802f2df7cd9e94bedc762</srcmd5>
+    <version>3.27.1</version>
+    <time>1503925908</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.27.1
+  * Fixed vulnerabilities:
+    - Change client identification string if connecting with SFTP 
+      due to OpenSSH disregarding the supported ciphers announced 
+      by the client, resulting in less secure algorithms being 
+      chosen by OpenSSH.
+  * Bugfixes and minor changes:
+    - MSW: Improve handling of NTFS reparse points
+    - MSW: If running the installer with /S, previous versions 
+      where not uninstalled prior to the new version being 
+      installed
+    - MSW: The installer can be run with /quiet for a semi-silent 
+      installation
+    - OS X, *nix: Potential fix for a rare crash if changing local
+      directories while the local directory list is being updated 
+      and vice versa.
+- remove patch putty-no_DATE_and_TIME_.patch because it is now in 
+  upstream
+- add COPYING file to %doc
+- update to 3.27.0.1
+  * Bugfixes and minor changes:
+    - MSW: Add misssing file to .zip binary package
+    - MSW: Fix toolchain issues breaking the shell extension
+- update to 3.27.0
+  * Bugfixes and minor changes:
+    - SFTP components have been updated and are now based on 
+      PuTTY 0.70
+- update to 3.27.0-rc1
+  * New features:
+    - Support for the Storj decentralized cloud storage provider
+  * Bugfixes and minor changes:
+    - MSW: Fix display of file type of directories if the directory 
+      name contains a dot
+    - Fix assertion if entering an invalid protocol prefix into the 
+      host field on the quickconnect bar or in the site manager
+    - Improve error message if TLS certificate verification fails
+      due to a missing stapled OCSP resonse
+    - Building and running FileZilla now depends on 
+      libfilezilla &gt;= 0.10.0 (https://lib.filezilla-project.org/)
+</comment>
+    <requestid>517777</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>01a625ab04ee8441138cca3a363b7777</srcmd5>
+    <version>3.28.0</version>
+    <time>1507065470</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530430</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>f0fe6fb43b730a3d6eb896ecdbed3248</srcmd5>
+    <version>3.29.0</version>
+    <time>1510506641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541060</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>e5971bda01faa32797e4bc4b2f28d53a</srcmd5>
+    <version>3.30.0</version>
+    <time>1516970367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569499</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>93236f3df8b49405d36215ff8d0b5560</srcmd5>
+    <version>3.31.0</version>
+    <time>1519486788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579772</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>9099419a6738d82e8da5b6c88c2e685d</srcmd5>
+    <version>3.31.0</version>
+    <time>1520329677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update require libfilezilla to 0.12.1 as described in configure
+</comment>
+    <requestid>583077</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>9e009dc5c08f85d568488826558e7374</srcmd5>
+    <version>3.32.0</version>
+    <time>1524489954</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.32.0
+  * New features:
+    - Further SFTP performance improvements
+- update to 3.32.0-rc1
+  * New features:
+    - The Site Manager no longer shows controls not applicable to 
+      the selected protocol
+    - Dynamically disable menu items if the used protocal does not 
+      support the corresponding functionality
+    - Speed up listing large directories over SFTP
+  * Bugfixes and minor changes:
+    - Fix state of case sensitivity checkbox in the filter edit 
+      dialog if no filter has been selected
+</comment>
+    <requestid>597247</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>b031877199a77c860432f01f47d89856</srcmd5>
+    <version>3.33.0</version>
+    <time>1526022854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605314</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>1e3b90369b25d8123481af4e75c0f6d3</srcmd5>
+    <version>3.34.0</version>
+    <time>1529501665</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617869</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>9272172a486c8489c9a24026ba825c0d</srcmd5>
+    <version>3.35.2</version>
+    <time>1533627824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627723</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>e51c748eec6accb236fc13b8b039659a</srcmd5>
+    <version>3.36.0</version>
+    <time>1535538426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632076</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>2bcd4b698e421e857753f0e19fb1fff4</srcmd5>
+    <version>3.37.4</version>
+    <time>1539589638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641967</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>68259815eb2f70c48c5dbf32f063a3cb</srcmd5>
+    <version>3.38.0</version>
+    <time>1540819348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645009</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>4198c809641592e3ccf50da9f9207335</srcmd5>
+    <version>3.38.1</version>
+    <time>1541511243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646181</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>1f5164a8979acbdbac4f9e04edb0c4d4</srcmd5>
+    <version>3.39.0</version>
+    <time>1543828269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653213</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>d3e5f6bad79f8f517ecf7a1bada09c2c</srcmd5>
+    <version>3.40.0</version>
+    <time>1549361911</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670987</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>3693af835dc5cae3a7d881ce59b7292d</srcmd5>
+    <version>3.41.1</version>
+    <time>1552207141</time>
+    <user>coolo</user>
+    <comment>- Update to 3.41.1
+  * Bugfixes and minor changes:
+    - Fix a regression introduced in 3.41.1 with slow FTP servers 
+      needlessly waiting for a bidirectional shutdown of the data 
+      connection during downloads
+- Update to 3.41.0
+  * Bugfixes and minor changes:
+    - MSW: Fix an issue with failing uploads due to the operating 
+      system not gracefully closing TCP connections contrary to the
+      documented behavior
+    - MSW: Fix compilation flags for wxWidgets to no longer include
+      useless XP compatibility
+- Update to 3.41.0-rc1
+  * Bugfixes and minor changes:
+    - Fixed crash if adding a bookmark with the current connection 
+      not yet having a Site Manager entry
+    - Fixed a rare crash if closing FileZilla while a recursive 
+      chmod operation is still in progress
+    - Fixed a rare crash if starting directory comparison on an 
+      empty directory without logical parent
+    - Fixed a rare crash on changing the file list sort order when
+      the focused item index has previously become invalid
+    - Restrict the maximum length of regular expressions in filter 
+      conditions due to bugs in some implementations of the 
+      C++ Standard Library causing crashes
+    - OS X: Fixed crash if the path of a file dropped on FileZilla 
+      cannot be obtained
+    - Fixed order in which directories helper tools and data files 
+      are searched for
+    - Fixed a rare crash if closing tab during an ongoing recursive 
+      directory deletion
+</comment>
+    <requestid>682716</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>b44765af79d41689c51f225fd94a47c3</srcmd5>
+    <version>3.41.2</version>
+    <time>1552986216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686305</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>ceaabe6fdb7f4ede784929bdd68cd147</srcmd5>
+    <version>3.41.2</version>
+    <time>1556817552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699751</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>b18d0ed1d368cf322aec2c031dbf8e2d</srcmd5>
+    <version>3.42.1</version>
+    <time>1557834066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702006</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>074567d51120b07bb4ecb173723d7043</srcmd5>
+    <version>3.42.1</version>
+    <time>1558427853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704139</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>5d321aa13becdf63af4be51fdb1b12b1</srcmd5>
+    <version>3.43.0</version>
+    <time>1562159688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712521</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>0e897847d9966c906e2ff66583e6797e</srcmd5>
+    <version>3.44.2</version>
+    <time>1566894061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725935</requestid>
+  </revision>
+</revisionlist>

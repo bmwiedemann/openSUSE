@@ -1,0 +1,381 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a86e2885741b06ae09d0301d70e3d05</srcmd5>
+    <version>5.1.1</version>
+    <time>1383553480</time>
+    <user>coolo</user>
+    <comment>Initialize python-qt5 package</comment>
+    <requestid>204221</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d3da115f1e25d27abe29e90143cc1dad</srcmd5>
+    <version>5.1.1</version>
+    <time>1387453872</time>
+    <user>coolo</user>
+    <comment>Move away from pkgconfig(...) BuildRequires and just use libqt5-$upstreammodulename-(devel|private-headers-devel)
+
+
+
+No hurry to checkin ;-) but it is needed for QtLocation</comment>
+    <requestid>211356</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2afbe49db45186fa9160b06585730c28</srcmd5>
+    <version>5.2</version>
+    <time>1389708555</time>
+    <user>coolo</user>
+    <comment>update to 5.2</comment>
+    <requestid>213548</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>dc78512a7840ebc69acdb700277072f2</srcmd5>
+    <version>5.2</version>
+    <time>1392111908</time>
+    <user>coolo</user>
+    <comment>Added fix_qreal_check.diff, fixes build on arm</comment>
+    <requestid>221487</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>40068589b6ef95885131d116fa9cf5d1</srcmd5>
+    <version>5.2.1</version>
+    <time>1395475826</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.1/fixes build</comment>
+    <requestid>227086</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>528e10784bf3ad2f0231f0f4535c7237</srcmd5>
+    <version>5.2.1</version>
+    <time>1400355869</time>
+    <user>coolo</user>
+    <comment>Added qglobal.patch, to resolve build failure with Qt 5.3 API</comment>
+    <requestid>234360</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8b4bec5cbd43aa7aef4fb809d8ae2186</srcmd5>
+    <version>5.3.1</version>
+    <time>1404996961</time>
+    <user>coolo</user>
+    <comment>-------------------------------------------------------------------
+Sun Jul  6 00:59:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1
+  * minor bug-fix release
+
+-------------------------------------------------------------------
+Wed Jun 25 01:29:45 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Drop link-python.diff, it's unused
+
+-------------------------------------------------------------------
+Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3
+  * By default a Python slot is only invoked if the underlying C++
+    instance still exists.
+  * Added the no_receiver_check argument to connect().
+  * Added support for Qt v5.3.0.
+  * Added the QtQuickWidgets module.
+  * Added the QtWebSockets module.
+  * Added the --target_py_version, --sysroot and --no-tools option
+    to configure.py.
+  * Cross-compilation (specifically to iOS and Android) is now supported
+- Drop qglobal.patch, included in this release
+- Added libqt5-qtwebsockets-devel BuildRequires
+- Bump required python(3)-sip-devel version to 4.16</comment>
+    <requestid>240113</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8b4bec5cbd43aa7aef4fb809d8ae2186</srcmd5>
+    <version>5.3.1</version>
+    <time>1409302976</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>ff68817c240134e441ef3e8debd137c4</srcmd5>
+    <version>5.3.1</version>
+    <time>1410361345</time>
+    <user>coolo</user>
+    <comment>Added add_dep.patch: make the buildsystem know that QtPrintSUpport module is needed for QtWebkitWidgets one, previously the build only succeeded due to QTBUG-39249</comment>
+    <requestid>248267</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7a321b604846907e8f3bad4f79c441dd</srcmd5>
+    <version>5.4</version>
+    <time>1420429386</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4, needs python-sip &gt;= 4.16.4 (sr#266885)</comment>
+    <requestid>267072</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b759ec898c490152d5890fefcead1328</srcmd5>
+    <version>5.4</version>
+    <time>1423130410</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable QtWebEngineWidgets and QtWebChannel integration
+- Update build-compare.diff
+- Drop fdupes usage due to unpredictable symlinking
+- Add rpmlintrc due to duplicates waste warnings: we rather have
+  a few bytes more than to republish same binaries due to fdupes</comment>
+    <requestid>283957</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>507cdb45e4e7a47db1a78b24cd52526c</srcmd5>
+    <version>5.5</version>
+    <time>1444130810</time>
+    <user>dimstar_suse</user>
+    <comment>Update to a proper Qt5 version</comment>
+    <requestid>336291</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>867e7666244426fdc4db4e5bed7df85d</srcmd5>
+    <version>5.5.1</version>
+    <time>1446465337</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341935</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6367ec17fb57b30593999b1cb9dc63c4</srcmd5>
+    <version>5.5.1</version>
+    <time>1454353048</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire libqt5-qtconnectivity-devel to gain support for
+  QtBluetooth (bnc#964256)</comment>
+    <requestid>357062</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>a0a4ddc09cf0499abd3e8b6753763b32</srcmd5>
+    <version>5.5.1</version>
+    <time>1457533042</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't buildrequire libqt5-qtwebengine-devel for POWER and s390x
+
+- Don't buildrequire libqt5-qtwebengine-devel for POWER and s390x (forwarded request 367677 from k0da)</comment>
+    <requestid>367680</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>98dd071ef8bec39353d675fcf7bc1e10</srcmd5>
+    <version>5.5.1</version>
+    <time>1465336079</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unused libqt5-qtquick1-devel (Build)Requires
+
+- Drop unused libqt5-qtquick1-devel (Build)Requires</comment>
+    <requestid>400074</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>28366ad048e369d5dc08dcd800facf3b</srcmd5>
+    <version>5.7</version>
+    <time>1479229368</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove Source URL, the validator doesn't work too well with
+  SourceForge
+
+- add patch to disable qml_debug: disable_qml_debug.diff.
+  Without this, the message &quot;QML debugging is enabled. Only use
+  this in a safe environment.&quot;  appears on PyQt5 apps startup,
+  and allows qmljsdebugger to  connect via network.
+
+- make utils dependent on exact version
+
+- Update to 5.7
+  * Added support for Qt v5.7.0.
+  * Removed patch pyqt5-fix-dbus-config.diff as applyed upstream</comment>
+    <requestid>440372</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c408ce4da4ac29c9ae579e8e019f6a6d</srcmd5>
+    <version>5.7.1</version>
+    <time>1484914026</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449173</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a060c514f6c2ade105c876d3afea3289</srcmd5>
+    <version>5.8</version>
+    <time>1492617941</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>483475</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0a18a12959326367bae9dda72d092fd9</srcmd5>
+    <version>5.8.2</version>
+    <time>1493369199</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489972</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b9204da4a17cac8c1a0db43d49b1b72a</srcmd5>
+    <version>5.8.2</version>
+    <time>1496327059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498717</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>cd8f5a3f72b9b6626b0e4fc6767ef16e</srcmd5>
+    <version>5.8.2</version>
+    <time>1497362754</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500900</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>20b90eaa7cef1da80b891e0f07ec0b5f</srcmd5>
+    <version>5.9</version>
+    <time>1504896220</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520454</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>120a334e5b80256c34be61c49c04d8d6</srcmd5>
+    <version>5.9</version>
+    <time>1509305033</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>537304</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6066f38052ee5e3416faa7e69db3deb7</srcmd5>
+    <version>5.10</version>
+    <time>1517323277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570829</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ea09eb08e2c1a4cf76f1119cb957454f</srcmd5>
+    <version>5.10.1</version>
+    <time>1524489906</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove source URL to workaround SourceForge's unreliability
+
+- Update to version v5.10.1
+  * Added support for Qt v5.10.1.
+  * Added the missing qmlClearTypeRegistrations() to the QtQml module.
+  * Added the --disabled-feature option to configure.py.
+
+- Fix singlespec macro usage.  BuildRequires are shared between</comment>
+    <requestid>597557</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e5d530da017ab65f927d31fa2dff646a</srcmd5>
+    <version>5.10.1</version>
+    <time>1525208278</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to support Qt 5.9.4, 5.9.5 and Qt 5.11.0:
+  * update-timeline.patch
+- Refresh patch to work with -p1:
+  * disable-rpaths.diff</comment>
+    <requestid>601834</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>1a8297a80f98948e722b40a78ee7aae5</srcmd5>
+    <version>5.10.1</version>
+    <time>1525611601</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to remove use of internal Qt function:
+  * remove-qtest-waitforevents.patch</comment>
+    <requestid>603567</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>e1bd2bcbae455099df758b065762dbba</srcmd5>
+    <version>5.10.1</version>
+    <time>1526645880</time>
+    <user>dimstar_suse</user>
+    <comment>- fix URL
+- fix crash in Qt Quick when used with Cura (from upstream)
+  (regression in 5.10.1, qt_quick_crash_fix.patch) (forwarded request 607517 from favogt)</comment>
+    <requestid>607518</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>ae3778e461a321662a659933cf1839d9</srcmd5>
+    <version>5.10.1</version>
+    <time>1533887042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628021</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2ad73c8b85f29ddf5ceb66cf567c38e3</srcmd5>
+    <version>5.11.3</version>
+    <time>1541508708</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.11.3</comment>
+    <requestid>643649</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>b067c9b5affcaf2199ea358a526a4624</srcmd5>
+    <version>5.11.3</version>
+    <time>1541865283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647406</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>7c8fc20e04d197a751e3fbf697b41748</srcmd5>
+    <version>5.11.3</version>
+    <time>1543223773</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build Qt5NetworkAuth support in SLE, which doesn't have the
+  libqt5-qtnetworkauth package (forwarded request 648997 from alarrosa)</comment>
+    <requestid>648999</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1521b5a3102f07418f127c7c22e39044</srcmd5>
+    <version>5.12</version>
+    <time>1550150542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674161</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>943a0c1dbad7d72ede3f1da8784a22f3</srcmd5>
+    <version>5.12.1</version>
+    <time>1555928664</time>
+    <user>maxlin_factory</user>
+    <comment>- Trim name repetition from summary.
+</comment>
+    <requestid>696160</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5bb563272ad1eb2eab422f838ff981b3</srcmd5>
+    <version>5.12.2</version>
+    <time>1560337625</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.12.2
+  * Fixed QIcon(QIconEngine) to reflect that the engine is explicitly
+  shared between every copy of the icon.
+  * Eliminated a warning message from QObject::connect()
+  * Increased the number of QQuickItem types that can be registered
+    from 30 to 60.
+  * Fixed the QPolygon ctors
+  * Fixed pyuic's handling of 'sizePolicy' properties.
+  * Fixed pylupdate to handle empty strings at the end of a line so
+    that the line number remains correct.
+</comment>
+    <requestid>707698</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>e476c0271a5ab6e9fe17436fbb1b9f0c</srcmd5>
+    <version>5.12.2</version>
+    <time>1560862437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709942</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fd6c17567664897041bafc066b011971</srcmd5>
+    <version>5.13.0</version>
+    <time>1563259174</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.13.0</comment>
+    <requestid>714846</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c927c3827a7d3cee78ed4fc379915f0</srcmd5>
+    <version>1.0</version>
+    <time>1519396147</time>
+    <user>dimstar_suse</user>
+    <comment>Introduce to TW</comment>
+    <requestid>579106</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9539e0f4698c43be5085ba8d35f8fa03</srcmd5>
+    <version>1.0</version>
+    <time>1555574227</time>
+    <user>dimstar_suse</user>
+    <comment>- Only build the -Qt4 variant up to suse_version 1500. (forwarded request 695152 from dimstar)</comment>
+    <requestid>695288</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c5c39e044c1fcaa9c9c439362fa7c198</srcmd5>
+    <version>1.1.0</version>
+    <time>1565009446</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 720598 from dimstar)</comment>
+    <requestid>720989</requestid>
+  </revision>
+</revisionlist>

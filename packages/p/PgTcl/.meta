@@ -1,0 +1,6 @@
+<package name="PgTcl" project="openSUSE:Factory">
+  <title>Tcl Client Library for PostgreSQL</title>
+  <description>This package contains the libpgtcl client library as a loadable Tcl
+package. It is needed to access PostgreSQL databases from Tcl scripts.</description>
+  <devel project="server:database:postgresql" package="PgTcl"/>
+</package>

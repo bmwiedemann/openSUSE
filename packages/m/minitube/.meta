@@ -1,0 +1,10 @@
+<package name="minitube" project="openSUSE:Factory">
+  <title>A native YouTube client.</title>
+  <description>Minitube is a native YouTube client. With it you can watch YouTube videos in a new way: you type a keyword, Minitube gives you an endless video stream. Minitube does not require the Flash Player.
+
+Minitube is not about cloning the original Youtube web interface, it strives to create a new TV-like experience.
+
+</description>
+  <devel project="multimedia:apps" package="minitube"/>
+  <url>http://flavio.tordini.org/minitube</url>
+</package>

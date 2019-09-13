@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a14f3ef261a35bc5a1b8e3ef68e1e8a</srcmd5>
+    <version>1.4</version>
+    <time>1438615299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>319784</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3512b96671314e2b911bc8bde756a9a6</srcmd5>
+    <version>1.5</version>
+    <time>1445287914</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339250</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b9a6c21394698daeea381caaef717057</srcmd5>
+    <version>2.4</version>
+    <time>1509036226</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534997</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>39a093c7c12eaca0e71b008888953792</srcmd5>
+    <version>2.4</version>
+    <time>1545648390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659836</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>09c434bd7c222a14b8b64ceda731feef</srcmd5>
+    <version>2.4</version>
+    <time>1554458225</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>687610</requestid>
+  </revision>
+</revisionlist>

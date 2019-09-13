@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ba264dcdbf89cb7c7df352d5e5ca77b6</srcmd5>
+    <version>3.25.91</version>
+    <time>1504102919</time>
+    <user>dimstar_suse</user>
+    <comment>New package for the GNOME stack</comment>
+    <requestid>519156</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>816cb529b945970a6c3a97fc34bcf6cd</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332393</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 523458 from Zaitor)</comment>
+    <requestid>523539</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>712048f02cdc99591459bfb68062d67b</srcmd5>
+    <version>3.26.1</version>
+    <time>1507280567</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.26.1 (forwarded request 531732 from dimstar)</comment>
+    <requestid>531801</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e44bd439fcb32b00c14142727d4fc540</srcmd5>
+    <version>3.26.2</version>
+    <time>1516880286</time>
+    <user>dimstar_suse</user>
+    <comment>From upstream: It's recommended that all distributions update to this release.
+
+- Update to version 3.26.2:
+  + Progress menu button will now avoid spinning in some
+    conditions.
+  + Leak fixed in DzlTree text rendering.
+  + Shortcut mneumonics are now properly activated.
+  + Fixes to avoid various deprecated API.
+  + A number of leaks detected by ASAN were fixed.
+  + The directory reaper handles various mtime comparisons more
+    correctly now.
+  + Some G-I annotations were improved.
+  + DzlMenuMerger is more flexible with input.
+  + Some performance improvements when dealing with CSS and other
+    resources paths. (forwarded request 567821 from iznogood)</comment>
+    <requestid>568067</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>302e9cb7f6ba1eb5d521260e543365f7</srcmd5>
+    <version>3.26.3</version>
+    <time>1517668766</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 571973 from iznogood)</comment>
+    <requestid>572090</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f6d551ed2623a96813c592f8407d048b</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052393</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 586717 from dimstar)</comment>
+    <requestid>586731</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5f23a14d5af605b8c8f3424df2e5ed18</srcmd5>
+    <version>3.28.1</version>
+    <time>1524144288</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.28.1. (forwarded request 595656 from luc14n0)</comment>
+    <requestid>596162</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>816d7a4e4776f9716d62beeaf1a8cda1</srcmd5>
+    <version>3.28.2</version>
+    <time>1527933311</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 611922 from iznogood)</comment>
+    <requestid>612860</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2e8e02e84f7fcaa92cfbbdc5240236bb</srcmd5>
+    <version>3.28.3</version>
+    <time>1529666916</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617888</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8f03403e5a928c6cb2bf727a67e379e5</srcmd5>
+    <version>3.28.5</version>
+    <time>1533214252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625915</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0f8c50fb18700999f5e162a192a2e0a8</srcmd5>
+    <version>3.30.1</version>
+    <time>1539756917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638508</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>90cecba3c57e84edc9dacb35d376121c</srcmd5>
+    <version>3.30.2</version>
+    <time>1541666798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.30.2:
+  + Fix build dependency to properly check for gtk+ &amp;gt;= 3.24.
+  + App-window now uses GtkEventControllerMotion to provide
+    improved tracking of the app window fullscreen toolbar.
+  + Shortcut placement was tweaked in menu popover.
+  + Fixes for shift+tab and ctrl+shift+d keyboard shortcuts.
+  + Various build fixes for -Bsymbolic and assertions. (forwarded request 646112 from iznogood)</comment>
+    <requestid>647064</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cd2e6406b783feece39df9af7d18b0ba</srcmd5>
+    <version>3.32.0</version>
+    <time>1554114631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689299</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1672b9c07958c0e23cff8e8e2044fea2</srcmd5>
+    <version>3.32.1</version>
+    <time>1555488380</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 693157 from iznogood)</comment>
+    <requestid>693294</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fbc6afacd1f32824b0694b514e897e34</srcmd5>
+    <version>3.32.2</version>
+    <time>1557472654</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 701319 from iznogood)</comment>
+    <requestid>701615</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ce19b727cae7ec43f32cb9cc33def70a</srcmd5>
+    <version>3.32.3</version>
+    <time>1564575203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718466</requestid>
+  </revision>
+</revisionlist>

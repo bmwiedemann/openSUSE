@@ -1,0 +1,480 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2e076aa57ce009673921b7a8fa3a2121</srcmd5>
+    <version>3.28</version>
+    <time>1462697111</time>
+    <user>dimstar_suse</user>
+    <comment>New package, please see https://lists.opensuse.org/opensuse-factory/2016-03/msg00145.html</comment>
+    <requestid>377031</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2bd3fea32b500534b56fe5d26f98e27f</srcmd5>
+    <version>3.29</version>
+    <time>1464595016</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.29:
+  * Add Ansible Yaml definition (thanks to Raphael Droz)
+  * Add Chapel definition (thanks to Lydia Duncan)
+  * Fix gcc 6 warnings about deprecated auto_ptr usage
+  * GUI: fix style file output if &quot;write to source directory&quot;
+    option is checked (thanks to Jim Pattee)
+- Remove highlight-3.25-use_optflags.patch
+- Add highlight-3.29-use_optflags.patch (rebased)</comment>
+    <requestid>398400</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>746b706f14bc505eb8cf0249fd35f85f</srcmd5>
+    <version>3.30</version>
+    <time>1468482654</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>408353</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f01743267be86c82d1e0d0354e48003a</srcmd5>
+    <version>3.31</version>
+    <time>1470217505</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.31:
+  * Revise documentation
+  * GUI: fix minor layout issues
+- Change arguments order for suse_update_desktop_file: GenericName
+  was not set.</comment>
+    <requestid>416383</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2d5a8102e938be07c5888f7bf62301f7</srcmd5>
+    <version>3.31</version>
+    <time>1472026102</time>
+    <user>dimstar_suse</user>
+    <comment>- Build highlight-gui with Qt5 instead of Qt4.
+- Add signature verification:
+  * Add highlight.keyring (highlight's main developer Andre Simon
+    public key)
+  * Add highlight-3.31.tar.bz2.asc
+- Update highlight-3.31.tar.bz2:
+  * Updated by upstream
+  * Windows line endings has been replaced by UNIX ones
+  * A useless file has been removed
+- Update highlight-3.30-use_optflags.patch:
+  * Switch to UNIX line endings</comment>
+    <requestid>420006</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ebf2f6c1c0f82865e0f887d62f890aa</srcmd5>
+    <version>3.32</version>
+    <time>1475480157</time>
+    <user>dimstar_suse</user>
+    <comment>- Patch to actually fix doc directory for GUI package:
+  * Change default value of DOC_DIR to %{_docdir}/%{name} in
+    highlight.pro as custom values are not correctly taken into
+    account.
+  * Rename highlight-2.10-makefile_suse.patch into
+    highlight-3.32-fix-doc-dir.patch.
+
+- Update to 3.32:
+  * Add support for true color escape codes (--out-format
+    truecolor)
+  * Fix xterm256 output for paging with less
+  * Fix operator regex in rnc.lang, crk.lang and yaml.lang
+  * Add Pony and Whiley definitions
+  * Update Ceylon, Julia and TypeScript definitions
+  * Add Go, AutoHotKey, TypeScript and R to the foldable list in
+    the outhtml_codefold.lua plug-in
+  * Remove plugins/bash_ref_linuxmanpages_com.lua
+  * GUI: fix README, ChangeLog and License file paths on Linux</comment>
+    <requestid>430533</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d56606009e47b8533b262e9afbaebe23</srcmd5>
+    <version>3.33</version>
+    <time>1478625943</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.33:
+  * Fix highlighting of nested section delimiters
+  * Fix PHP definition
+  * Fix font family declaration in SVG
+  * Fix user defined encoding in ODT
+  * Fix unnecessary output of style file with --inline-css
+  * Add vimscript language definition
+  * Add Coffeescript language definition
+  * Add PureBasic definition and theme
+  * Add JSX language definition
+  * Add PO translation definition
+  * Add plug-in outhtml_add_figure.lua
+  * Update js definition
+  * Update Artistic Style lib
+  * Improve various color themes and syntax definitions</comment>
+    <requestid>438900</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a1bb47397189911988bad9ff638b85aa</srcmd5>
+    <version>3.34</version>
+    <time>1486546851</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453812</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>977dc9f254f9c6f28440636cdacb3fa4</srcmd5>
+    <version>3.36</version>
+    <time>1493020010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.36:
+  * Fix code folding plugin to support more Ruby conditional
+    modifiers
+  * Fix Perl quoted string highlighting
+  * Add new GeneratorOverride syntax definition parameter
+  * Add Filenames parameter in filetypes.conf to assign input
+    filenames to syntax types
+  * Add FASM definition and edit-fasm theme
+  * Add outhtml_ie7_webctrl plug-in
+  * GUI: File extensions can be configured for multiple languages,
+    triggers syntax selection prompt
+  * GUI: Added Italian translation
+- Changes from version 3.35:
+  * Fix code folding plugin to support Ruby conditional modifiers
+  * Fix JSON definition
+  * Fix output of unknown syntax warning with applied force switch
+  * Add state trace parameter to Decorate plug-in function 
+  * Add GDScript definition and edit-godot theme
+  * Update SWIG code samples
+  * Update Artistic Style lib
+  * Revise docs
+  * CLI: Fix creation of hidden files if output filename is
+    prepended by its input path
+  * CLI: added switch --stdout
+- Drop highlight-3.34-use-default-compiler.patch (fixed upstream).</comment>
+    <requestid>488007</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>dde17b12887e40d26d349e9a1dbb073d</srcmd5>
+    <version>3.36</version>
+    <time>1496225483</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>498870</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>01b059ddeae4181aaf02d67d1d826c26</srcmd5>
+    <version>3.37</version>
+    <time>1496533706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.37:
+  * Fix Perl string highlighting issue
+  * Fix highlighting if a line continues after the nested code
+    delimiter
+  * Update astyle code to release 3.0
+  * Add examples/pandoc
+  * Add syntax mapping for markdown
+  * Add syntax mapping for clj
+  * Improve Java definition
+  * Add theme to JSON converter in examples/json
+  * CLI: Add support for environment variable HIGHLIGHT_OPTIONS</comment>
+    <requestid>500278</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>66d7945bbc374434f2395962144a919b</srcmd5>
+    <version>3.38</version>
+    <time>1498202104</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.38:
+  * Fix Bash variable highlighting issue
+  * Update astyle code to release 3.0.1
+  * Add bash_ref_man7_org.lua plugin
+- Improve spec file:
+  * Create separate gui-lang subpackage for gui translations
+  * Use find_lang macro
+  * Add desktop database update calls in pre and post</comment>
+    <requestid>505584</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1e93b1db1152bcd5b3c05a2d95aa64cc</srcmd5>
+    <version>3.39</version>
+    <time>1501227910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.39:
+  * Add syntax for Docker and Elixir.
+  * Improve HTML, Julia, Kotlin and Smalltalk syntax definitions.
+  * GUI: Add &quot;Paste, Convert and Copy&quot; button.
+
+- Fix rpmlint warnings:
+  * Convert some files to Unix end-of-line format using dos2unix.
+  * Shorten subpackage summaries.
+  * Add conditional in order not to call desktop_database_post(un)
+    macros on Tumbleweed, as it's now handled by RPM filetriggers.
+- Move Qt build dependency to gui subpackage.</comment>
+    <requestid>512709</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9206734fecff68ee1eaf8edfe4601cac</srcmd5>
+    <version>3.40</version>
+    <time>1510665677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.40:
+  * Fix Ruby string parsing.
+  * Fix segfault on sparc64.
+  * Fix PureBasic definition.
+  * Add CMake definition.
+  * Add email definition.
+  * Link scm suffix to lisp definition.
+- Remove _service file (not used after all).
+</comment>
+    <requestid>540691</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b769c49f0eaf751e271bbe21ecdc6582</srcmd5>
+    <version>3.41</version>
+    <time>1512546695</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.41:
+  * Rename examples directory to extras.
+  * Line anchors (-a) are attached as id attribute to the first
+    span or li tag in HTML output.
+  * Rename ID prefix in outhtml_codefold plug-in to be compatible
+    with -a IDs.
+  * Add fstab.lang and add anacrontab in filetypes.conf.
+  * Remove references to OutputType::HTML32.
+  * Add extras/css-themes and extras/langDefs-resources.
+  * CLI: Remove deprecated indicator of --data-dir option.
+  * CLI: Add --no-version-info option.
+  * GUI: Fix initial theme selection.
+  * GUI: Add &quot;Omit version info comment&quot; option.
+  * GUI: Add &quot;Copy with MIME type&quot; option for HTML output.
+- Rebase patch about documentation directory:
+  * Remove highlight-3.32-fix-doc-dir.patch.
+  * Add highlight-3.41-fix-doc-dir.patch.</comment>
+    <requestid>546531</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3fea74eff4f309fac2bbd68008fe36c5</srcmd5>
+    <version>3.42</version>
+    <time>1516971368</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.42:
+  * Fix HL_OUTPUT in Lua state for HL_FORMAT_XHTML and
+    HL_FORMAT_TRUECOLOR values.
+  * Fix lib-shared make target.
+  * Update astyle code to release 3.1.0 beta.
+  * Add Polygen and EBNF2 syntax definitions.
+  * Add pywal terminal colouring template in extras/pywal.
+  * Add reformatting style ratliff (replaces banner).
+  * Add extras/langDefs-resources/cleanslate.lang.
+  * Improve Perl6 compatibility.
+  * Improve PHP string interpolation.
+  * Improve Haskell definition.
+  * CLI: Add --canvas option to define background color padding in
+    ANSI output.
+  * GUI: Add French translation.
+  * GUI: Add Scripts tab.
+  * GUI: Minor bugfixes.
+- Rebase optflags patch on 3.42:
+  * Remove highlight-3.34-use_optflags.patch.
+  * Add highlight-3.42-use_optflags.patch.</comment>
+    <requestid>568816</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>05d1f53ed084a7415c44f05d519b0563</srcmd5>
+    <version>3.43</version>
+    <time>1525256233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.43:
+  * Updated astyle code to release 3.1 (Rev. 655).
+  * Added webkit reformatting style.
+  * Improved several language definitions.
+  * Fixed Matlab string recognition (#61).
+  * Fixed Autohotkey escape sequence recognition.
+  * Added excel.lang (#60).
+  * Improved Qt pro file (#59).
+  * CLI: Added --reformat-option (#62).
+  * CLI: Added --line-range (#64).
+  * GUI: Added Bulgarian translation.
+- Rebase docdir patch on 3.43:
+  * Remove highlight-3.41-fix-doc-dir.patch.
+  * Add highlight-3.43-fix-doc-dir.patch.
+</comment>
+    <requestid>602828</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b9bc0b3ac7bcd0251a239a74780eec93</srcmd5>
+    <version>3.44</version>
+    <time>1532361525</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.44:
+  * Fixed gcc 8 compilation warnings.
+  * Fixed Ruby string interpolation (gh#andre-simon/higlight#70).
+  * Added support for ALAN IF.
+  * Added 107 Base16 themes.
+  * Updated Rust and Java reserved words lists.
+  * Revised documentation.
+  * Moved extras/css-themes into extras/themes-resources.
+  * Added extras/themes-resources/base16.
+  * GUI: added Base16 theme selection checkbox.
+  * CLI: added --base16 option to enable the new themes.
+  * CLI: accept - as argument to read from stdin
+    (gh#andre-simon/highlight#73).
+- Make the build of gui subpackage conditional (built by default).
+- Clean spec file with spec-cleaner.
+</comment>
+    <requestid>624522</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a9f1a1664be74e41b12c6d341a20113a</srcmd5>
+    <version>3.47</version>
+    <time>1539590796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.47:
+  * Fixed xterm256 and truecolor whitespace output #2
+    (gl#saalen/highlight#90).
+  * Fixed LaTeX, TeX, SVG and ODT whitespace output (regression of
+    3.45).
+  * Added darkplus theme.
+  * Converted ChangeLog to AsciiDoc.
+  * Allowed state test indicators to match both whitespace (ws) and
+    the enclosing state (others).
+  * CLI: Default output changed to xterm256 or truecolor if run in
+    a terminal with color support and only a single file is
+    outputted.
+  * GUI: Added checkbox in the clipboard tab to output selected
+    lines only.
+
+- Update to version 3.46:
+  * Fixed xterm256 and truecolor whitespace output
+    (gl#saalen/highlight#90).
+  * Converted manuals to AsciiDoc.
+
+- Update to version 3.45:
+  * Added DocumentHeader and DocumentFooter plug-in hooks.
+  * Added RemoveKeyword Lua function for syntax definitions.
+  * Added syntax test indicators (see README_TESTCASES).
+  * Added support for ISO and R10 variants of Modula2.
+  * Fixed R identifiers.
+  * Fixed ALAN IF identifiers.
+  * Fixed issue with Bash string interpolation.
+  * Fixed some bugs found by coverity tool
+    (gl#saalen/highlight#82).</comment>
+    <requestid>641905</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>addcfd7cb458f43dfa0519ffa707898f</srcmd5>
+    <version>3.48</version>
+    <time>1545866682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.48:
+  * Fixed --list-scripts abortion with Fedora default compilation
+    options (gl#saalen/highlight#84).
+  * Fixed a problem with syntax test indicators reporting wrong
+    states after comments.
+  * Improved Verilog syntax.
+  * Improved quoted string highlighting for Perl and Ruby.
+  * Detection of pkg-config's Lua version in src/makefile.
+</comment>
+    <requestid>658089</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1ffc1639e9559b6bc4c980ff4ab9b985</srcmd5>
+    <version>3.49</version>
+    <time>1549916158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.49:
+  * Fixed more problems with syntax test indicators reporting wrong
+    states (gl#saalen/highlight#102).
+  * Added support for Meson, Solidity, TOML and Terraform.
+  * Improved Perl and Yaml highlighting.
+  * Added Categories field to all config files.
+  * CLI: added category info in --list-scripts output.
+  * CLI: added --list-cat option (gl#saalen/highlight/99).
+  * CLI: added optional topic parameter to --help.
+  * GUI: added theme category selection.
+  * GUI: display categories of selected syntax or theme.</comment>
+    <requestid>672689</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>684d36f865d3168f477e4af2f128d6dd</srcmd5>
+    <version>3.50</version>
+    <time>1554189425</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.50:
+  * Added lineno, column parameters to OnStateChange hook.
+  * Added support for Crystal.
+  * Added support for Slim.
+  * Fixed several typos in documentaion and manpages.
+  * CLI: Added `--syntax-by-name` option.
+  * CLI: Removed deprecated `--list-langs` and`--list-themes`
+    options.
+  * GUI: Added terminal sequence output options
+    (gl#saalen/highlight#110).</comment>
+    <requestid>690033</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8c7ef34804eb729feff545a1f8826671</srcmd5>
+    <version>3.51</version>
+    <time>1558427732</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.51:
+  * SVG output: Added `white-space: pre` in styles.
+  * HTML output: Replaced &amp;apos; by &amp;#39; (deb#927410).
+  * HTML output: Fixed index file format (missing close tags).
+  * CLI: Moved syntax recognition functions to DataDir class.
+  * CLI: Added regular expressions and default false values to
+    --verbose output.
+  * CLI: Fixed `--list-cat` without `--list-scripts`
+    (gl#saalen/highlight#107).
+  * CLI: Added optional argument to `--base16`
+    (gl#saalen/highlight#113).
+  * CLI: Added default base16 themes (gl#saalen/highlight#113).
+  * CLI: Added `--isolate` option (gl#saalen/highlight#118).</comment>
+    <requestid>704318</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1596f37f1dcd45e57fe8d3f24654cdff</srcmd5>
+    <version>3.52</version>
+    <time>1560337341</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.52:
+  * Added negation `~` to test state indicators
+    (gl#saalen/highlight#122).
+  * Added support for Hugo.
+  * Added 5 duotone themes.
+  * CLI: fixed segfault with `--force` (gl#saalen/highlight#125).
+  * GUI: limited font selection to monospace fonts
+    (gl#saalen/highlight#124).
+- Rebase optflags patch:
+  * Remove highlight-3.42-use_optflags.patch.
+  * Add highlight-3.52-use_optflags.patch.
+- Remove obsolete conditionals.</comment>
+    <requestid>706187</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>b989996fea7bef6a3d73ab3dcbdfec7d</srcmd5>
+    <version>3.52</version>
+    <time>1564996671</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build instability (boo#1142155).</comment>
+    <requestid>717136</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d09340b37b914e7883e10161f4c57fb0</srcmd5>
+    <version>3.53</version>
+    <time>1565362279</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.53:
+  * Fixed out-of-range exception with repeated AddKeyword calls.
+  * Added KeywordFormatHints, Priority and Constraints elements to
+    syntax definitions.
+  * Added Lua function AddPersistentState
+    (gl#saalen/highlight#112).
+  * Renamed md.lang to markdown.lang.
+  * Added Fish syntax definition.
+  * Makefile: added _FILE_OFFSET_BITS=64 flag.
+  * CLI: added optional fallback syntax to --force
+    (gl#saalen/highlight#126).
+  * CLI: added option --max-size (gl#saalen/highlight#127).
+  * GUI: added multibyte path trace window.
+  * GUI: fixed superfluous creation of the same stylesheet file.
+- Rebase optflags patch:
+  * Remove highlight-3.52-use_optflags.patch.
+  * Add highlight-3.53-use_optflags.patch.</comment>
+    <requestid>721510</requestid>
+  </revision>
+</revisionlist>

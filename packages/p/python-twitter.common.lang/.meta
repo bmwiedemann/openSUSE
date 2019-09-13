@@ -1,0 +1,6 @@
+<package name="python-twitter.common.lang" project="openSUSE:Factory">
+  <title>python-twitter.common.lang</title>
+  <description>Python language and compatibility facilities</description>
+  <devel project="devel:languages:python" package="python-twitter.common.lang"/>
+  <url>https://github.com/twitter/commons</url>
+</package>

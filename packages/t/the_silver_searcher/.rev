@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>115db48a2023adbe15eefbcb1789f2bf</srcmd5>
+    <version>0.18</version>
+    <time>1391376249</time>
+    <user>coolo</user>
+    <comment>new package (the_silver_searcher), providing a &quot;git grep&quot; like experience to
+any directory.</comment>
+    <requestid>213214</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00eac2e383430a9629f3109a4e7b8c9c</srcmd5>
+    <version>0.19.2</version>
+    <time>1392113019</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221544</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>00eac2e383430a9629f3109a4e7b8c9c</srcmd5>
+    <version>0.19.2</version>
+    <time>1409303489</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>af2a11187c6554f54d2dc46221d3681d</srcmd5>
+    <version>0.28.0</version>
+    <time>1421753757</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281937</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bb7d5002dc70ee5c7d3df49f8a694c86</srcmd5>
+    <version>0.30.0</version>
+    <time>1431980498</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307489</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>412984d9124646366540efd930e7c412</srcmd5>
+    <version>0.31.0</version>
+    <time>1443068078</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332239</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dd9fea54528528dd1414e72058a6899d</srcmd5>
+    <version>0.32.0</version>
+    <time>1463652931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0
+  * Add support for Fish, Chapel, Factor, Kotlin, Julia, TypeScript,
+    RDoc, Velocity, RestructuredText, TOML, BitBake, Bro file types.
+  * Various bugfixes.</comment>
+    <requestid>396598</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3515f25588a492e8c633c32d60439cb3</srcmd5>
+    <version>0.33.0</version>
+    <time>1475242517</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431324</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7c28c34db1e84a15df6e5e30bc4424cf</srcmd5>
+    <version>1.0.2</version>
+    <time>1485040916</time>
+    <user>dimstar_suse</user>
+    <comment>the_silver_searcher (a.k.a. &quot;ag&quot;) 1.0.2</comment>
+    <requestid>443768</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>46e84dc7b7387bb853a8cd193b5e4c1e</srcmd5>
+    <version>1.0.3</version>
+    <time>1495883868</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498006</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>320f514e2fe0c0dcc857baff65a1b182</srcmd5>
+    <version>2.0.0</version>
+    <time>1500892399</time>
+    <user>dimstar_suse</user>
+    <comment>the_silver_searcher 2.0.0 bsc#1050057</comment>
+    <requestid>512185</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0fa2de804ca14de9f9d08fb630ff982b</srcmd5>
+    <version>2.1.0</version>
+    <time>1506594914</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528988</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>108b67117326234839712625faa59fff</srcmd5>
+    <version>2.2.0</version>
+    <time>1534322102</time>
+    <user>dimstar_suse</user>
+    <comment>the_silver_searcher 2.2.0</comment>
+    <requestid>628891</requestid>
+  </revision>
+</revisionlist>

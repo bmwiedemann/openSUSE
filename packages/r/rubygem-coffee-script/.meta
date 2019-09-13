@@ -1,0 +1,8 @@
+<package name="rubygem-coffee-script" project="openSUSE:Factory">
+  <title>rubygem-coffee-script</title>
+  <description>
+    Ruby CoffeeScript is a bridge to the JS CoffeeScript compiler.
+  </description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-coffee-script"/>
+  <url>https://github.com/josh/ruby-coffee-script</url>
+</package>

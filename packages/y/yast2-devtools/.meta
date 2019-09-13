@@ -1,0 +1,7 @@
+<package name="yast2-devtools" project="openSUSE:Factory">
+  <title>YaST2 - Development Tools</title>
+  <description>Scripts and templates for developing YaST2 modules and components.
+Required for rebuilding the existing YaST2 modules and components (both
+YCP and C++).</description>
+  <devel project="YaST:Head" package="yast2-devtools"/>
+</package>

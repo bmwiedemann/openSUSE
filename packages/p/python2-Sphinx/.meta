@@ -1,0 +1,5 @@
+<package name="python2-Sphinx" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python2-Sphinx"/>
+</package>

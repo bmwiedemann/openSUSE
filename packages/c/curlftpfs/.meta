@@ -1,0 +1,12 @@
+<package name="curlftpfs" project="openSUSE:Factory">
+  <title>Filesystem for mounting FTP hosts using FUSE and libcurl</title>
+  <description>CurlFtpFS is a filesystem for mount yast2-ftp-server (FTP hosts) based
+on fuse (FUSE) and libcurl. Important features are:
+
+- openssl (SSL support),
+
+- connecting through squid (tunneling HTTP proxies)
+
+- automatic reconnect on server timeout.</description>
+  <devel project="filesystems" package="curlftpfs"/>
+</package>

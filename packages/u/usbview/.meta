@@ -1,0 +1,8 @@
+<package name="usbview" project="openSUSE:Factory">
+  <title>USB Topology and Device Viewer</title>
+  <description>USBView is a GTK program that displays the topography of the devices
+that are plugged into the USB on a Linux machine. It also displays
+information on each of the devices. This can be useful to determine if
+a device is working properly.</description>
+  <devel project="Base:System" package="usbview"/>
+</package>

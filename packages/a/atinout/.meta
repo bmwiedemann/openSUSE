@@ -1,0 +1,17 @@
+<package name="atinout" project="openSUSE:Factory">
+  <title>AT commands as input are sent to modem and responses given as output</title>
+  <description>This program will read a file (or stdin) containing a list of AT
+commands. Each command will be send to the modem, and all the response
+for the command will be output to file (or stdout).
+
+Example, to hang up an ongoing call:
+
+$ echo ATH | atinout - /dev/ttyACM0 -
+ATH
+OK
+$
+
+</description>
+  <devel project="hardware" package="atinout"/>
+  <url>http://atinout.sourceforge.net</url>
+</package>

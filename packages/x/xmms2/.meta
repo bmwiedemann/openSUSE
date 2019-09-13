@@ -1,0 +1,13 @@
+<package name="xmms2" project="openSUSE:Factory">
+  <title>A modular audio framework and plugin architecture</title>
+  <description>XMMS2 is an audio framework, but it is not a general multimedia player - it 
+will not play videos. It has a modular framework and plugin architecture for 
+audio processing, visualisation and output, but this framework has not been 
+designed to support video. Also the client-server design of XMMS2 (and the 
+daemon being independent of any graphics output) practically prevents direct 
+video output being implemented. It has support for a wide range of audio 
+formats, which is expandable via plugins. It includes a basic CLI interface 
+to the XMMS2 framework, but most users will want to install a graphical XMMS2 
+client (such as gxmms2 or esperanza).</description>
+  <devel project="X11:lxde" package="xmms2"/>
+</package>

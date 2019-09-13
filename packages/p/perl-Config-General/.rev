@@ -1,0 +1,305 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c140304bd5df5751900dff2dd1e0e82</srcmd5>
+    <version>2.31</version>
+    <time>1168903806</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e86899da481f63ee4cc6418cda014d90</srcmd5>
+    <version>2.33</version>
+    <time>1186328189</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="73">
+    <srcmd5>e86899da481f63ee4cc6418cda014d90</srcmd5>
+    <version>2.33</version>
+    <time>1186328189</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="74">
+    <srcmd5>e4e51bc3da44739fd79f7f388a208e55</srcmd5>
+    <version>2.33</version>
+    <time>1245276856</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>70b89ce748e64ea9e4f99a6061d203cf</srcmd5>
+    <version>2.42</version>
+    <time>1248447970</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>70b89ce748e64ea9e4f99a6061d203cf</srcmd5>
+    <version>2.42</version>
+    <time>1248447970</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44b676d062572eaff0a42a90c83502d1</srcmd5>
+    <version>2.44</version>
+    <time>1263229724</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Config-General based on submit request 28383 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>dfe14a5cc3d5fdc7b13516c998b9cc89</srcmd5>
+    <version>2.44</version>
+    <time>1268925393</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5b7fa13f54af449814c77330a61f9dab</srcmd5>
+    <version>2.45</version>
+    <time>1270486055</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Config-General based on submit request 36926 from user computersalat
+</comment>
+    <requestid>36926</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>862220612f76e4ae6498a7cfd2cdeb30</srcmd5>
+    <version>2.48</version>
+    <time>1271435828</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Config-General based on submit request 38041 from user computersalat
+</comment>
+    <requestid>38041</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>862220612f76e4ae6498a7cfd2cdeb30</srcmd5>
+    <version>2.48</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>862220612f76e4ae6498a7cfd2cdeb30</srcmd5>
+    <version>2.48</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f7b7398b28ef8f6ecf03aa338d188006</srcmd5>
+    <version>2.49</version>
+    <time>1279564684</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Config-General based on submit request 43304 from user computersalat
+</comment>
+    <requestid>43304</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ce3257c6b8972400ab91bdf02fe6923d</srcmd5>
+    <version>2.49</version>
+    <time>1291581716</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54492 from user coolo
+</comment>
+    <requestid>54492</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>5920e3c08f33c67a161cfb650ee5715f</srcmd5>
+    <version>2.49</version>
+    <time>1291581721</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54492
+</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>5920e3c08f33c67a161cfb650ee5715f</srcmd5>
+    <version>2.49</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>04aa30a82db4aa7483adac5f123b2ca2</srcmd5>
+    <version>2.50</version>
+    <time>1301574259</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65638 from user coolo
+</comment>
+    <requestid>65638</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>82cddea98a77eb5b5792d274b7afdb25</srcmd5>
+    <version>2.50</version>
+    <time>1301574272</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65638
+</comment>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>1c4bc6c5e2bb94e23dfa42c3706d4c96</srcmd5>
+    <version>2.50</version>
+    <time>1302164671</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66238 from user coolo
+</comment>
+    <requestid>66238</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>25834e5142dca83c5db8c60f755c1bd0</srcmd5>
+    <version>2.50</version>
+    <time>1302164685</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66238
+</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>25834e5142dca83c5db8c60f755c1bd0</srcmd5>
+    <version>2.50</version>
+    <time>1319182250</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>0184e2b61f5788e2056607bb66757a69</srcmd5>
+    <version>2.50</version>
+    <time>1323193145</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>0184e2b61f5788e2056607bb66757a69</srcmd5>
+    <version>2.50</version>
+    <time>1340183813</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>0184e2b61f5788e2056607bb66757a69</srcmd5>
+    <version>2.50</version>
+    <time>1359109624</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e65f6cf1377d1e5ec7737653d705441c</srcmd5>
+    <version>2.51</version>
+    <time>1370447385</time>
+    <user>coolo</user>
+    <comment>- updated to 2.51
+      - fixed rt.cpan.org#77667 which resulted in invalid configs
+        written to file when using save_file() and a named block,
+        whose 2nd part starts with a /.
+      - fixed rt.cpan.org#64169 by applying patch by Dulaunoy Fabrice.
+        adds -NoEscape switch which turns off escaping of anything.
+      - implemented suggestion of rt.cpan.org#67564 by adding 3 new
+        parameters: -NormalizeOption, -NormalizeBlock and -NormalizeValue,
+        which take a subroutine reference and change the block,
+        option or value accordingly.
+      
+      - fixed rt.cpan.org#65860+76953 undefined value error. (forwarded request 177288 from coolo)</comment>
+    <requestid>177366</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>aed27ca7d22059f4c8fcd1d91dafb323</srcmd5>
+    <version>2.51</version>
+    <time>1372136362</time>
+    <user>coolo</user>
+    <comment>- add 0001-Fix-deprecation-warning-in-5.18-about-splitting-in-r.patch
+  to fix build with perl 5.18</comment>
+    <requestid>180398</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2465c00f35c4892facf99b0dce2f9f1c</srcmd5>
+    <version>2.52</version>
+    <time>1375112749</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184507</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>2465c00f35c4892facf99b0dce2f9f1c</srcmd5>
+    <version>2.52</version>
+    <time>1379663594</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>8219f7ce3fb1c411a7b1a6ddb814a8b5</srcmd5>
+    <version>2.52</version>
+    <time>1404157504</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238749</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>8219f7ce3fb1c411a7b1a6ddb814a8b5</srcmd5>
+    <version>2.52</version>
+    <time>1409302213</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ab6ea297bce946d78f31e661ca90d1c0</srcmd5>
+    <version>2.56</version>
+    <time>1410967576</time>
+    <user>coolo</user>
+    <comment>- updated to 2.56
+ 2.54   - fixed rt.cpan.org#39814. changed the order of pre-processing
+          in _read(): 1) remove comments, 2) check for continuation,
+          3) remove empty lines.
+ 
+ 2.53    - applied patch rt.cpan.org#68153, which adds a find() method to
+          Config::General::Extended.
+ 
+        - fixed rt.cpan.org#79869 (in fact it has been fixed in 2.52
+          but I forgot to mention it here).
+ 
+        - applied spelling fixes rt.cpan.org 87072+87080.
+ 
+        - fixed rt.cpan.org#89379</comment>
+    <requestid>249514</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e813d8df63927f435ce190e75c1bab7a</srcmd5>
+    <version>2.57</version>
+    <time>1432723701</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308247</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>36e5ee2ab067dc5a0a9e0c97f6cea4b9</srcmd5>
+    <version>2.58</version>
+    <time>1434383301</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311538</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f77471c288f7c4cfd0cfb83761c1d7b5</srcmd5>
+    <version>2.60</version>
+    <time>1445683381</time>
+    <user>coolo</user>
+    <comment>typo in last submit fixed.</comment>
+    <requestid>340655</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ed4731b1ad800586dcd297f129f46455</srcmd5>
+    <version>2.61</version>
+    <time>1464204441</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396914</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>eb7f908c73beca02cebca1c445863c0f</srcmd5>
+    <version>2.62</version>
+    <time>1468360347</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407385</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9afdc46941b8329ee074c940abfa480d</srcmd5>
+    <version>2.63</version>
+    <time>1478517703</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416418</requestid>
+  </revision>
+</revisionlist>

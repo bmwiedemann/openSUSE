@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>46aebf77049c0a3ffb9df3cbd55cf0a0</srcmd5>
+    <version>0.99.0</version>
+    <time>1452535899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>351856</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>04b5e2b1f2bd4ab01959482687011993</srcmd5>
+    <version>0.99.2</version>
+    <time>1458120956</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>370830</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2e6d56f18b95eb3a4a0c31404a3cb2d0</srcmd5>
+    <version>0.99.4</version>
+    <time>1470413860</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416899</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9f8aa83a0b20a1c37622832c44517f5d</srcmd5>
+    <version>0.99.4</version>
+    <time>1486217749</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453440</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8f4f1f3066b3154bcbe26426fbd68ca8</srcmd5>
+    <version>0.99.5</version>
+    <time>1495132925</time>
+    <user>dimstar_suse</user>
+    <comment>libfastjson 0.99.5 (forwarded request 493414 from AndreasStieger)</comment>
+    <requestid>493415</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b995db0aede7d91f1b94ea3654788e58</srcmd5>
+    <version>0.99.6</version>
+    <time>1502559204</time>
+    <user>maxlin_factory</user>
+    <comment>update to 0.99.6 (forwarded request 514233 from AndreasStieger)</comment>
+    <requestid>514234</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ce55a733951dd110c908b6602a7183c</srcmd5>
+    <version>0.99.7</version>
+    <time>1510837133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541839</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bc352146d03a7bf8e19d8e948a9fe544</srcmd5>
+    <version>0.99.8</version>
+    <time>1516091869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563851</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e1470f2b11532e05f9c4796b58b591c2</srcmd5>
+    <version>0.99.8</version>
+    <time>1527673241</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license instead of %doc [bsc#1082318] (forwarded request 611889 from kukuk)</comment>
+    <requestid>612609</requestid>
+  </revision>
+</revisionlist>

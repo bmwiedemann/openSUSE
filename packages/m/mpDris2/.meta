@@ -1,0 +1,9 @@
+<package name="mpDris2" project="openSUSE:Factory">
+  <title>MPRIS V2.1 support for mpd</title>
+  <description>mpDris2 provide MPRIS 2 support to mpd (Music Player Daemon). mpDris2 is
+run in the user session and monitors a local or distant mpd server.
+
+</description>
+  <devel project="multimedia:apps" package="mpDris2"/>
+  <url>https://github.com/eonpatapon/mpDris2</url>
+</package>

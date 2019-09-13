@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>225a3b7ba403b6c391cc1b96ee15ffef</srcmd5>
+    <version>1.0</version>
+    <time>1304682623</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66775</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>49526da5d7208e87381319e8abef0b45</srcmd5>
+    <version>1.0</version>
+    <time>1304682634</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66775
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e503fbdafdd6000fef34730df7380262</srcmd5>
+    <version>1.1</version>
+    <time>1306221868</time>
+    <user>saschpe</user>
+    <comment>- updated to 1.1
+    - Fix test fails if cwd or perl has a space in its path RT#67376</comment>
+    <requestid>71008</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c4f7bbfcaee608572cfb197d9296a5d2</srcmd5>
+    <version>1.1</version>
+    <time>1306221878</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71008
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4085b818a8fd3041e5cab4e015018c60</srcmd5>
+    <version>1.1</version>
+    <time>1316437908</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>82397</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>4085b818a8fd3041e5cab4e015018c60</srcmd5>
+    <version>1.1</version>
+    <time>1319182312</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>d4875bb8add779fb749187550d64a021</srcmd5>
+    <version>1.1</version>
+    <time>1323193702</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>d4875bb8add779fb749187550d64a021</srcmd5>
+    <version>1.1</version>
+    <time>1340183932</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>d4875bb8add779fb749187550d64a021</srcmd5>
+    <version>1.1</version>
+    <time>1359109818</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>be3a218d0b6aa6bd1387bccd41dad21d</srcmd5>
+    <version>1.3</version>
+    <time>1370516251</time>
+    <user>coolo</user>
+    <comment>- updated to 1.3
+     - Fix to ignore inc/ for Module::Install
+     - Fix regex to ignore '.svn', but not 'Xsvn' - unescaped . (forwarded request 177493 from coolo)</comment>
+    <requestid>177519</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>be3a218d0b6aa6bd1387bccd41dad21d</srcmd5>
+    <version>1.3</version>
+    <time>1379663876</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>be3a218d0b6aa6bd1387bccd41dad21d</srcmd5>
+    <version>1.3</version>
+    <time>1409302519</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fe0f47fcf8db84a535b2edad342f3b22</srcmd5>
+    <version>1.4</version>
+    <time>1429108031</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296697</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>63efc102f86e2c515dfa84af2fcc191e</srcmd5>
+    <version>2.00</version>
+    <time>1492714323</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487650</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8f3a9868b9dfae11071a4ef0dabdb57e</srcmd5>
+    <version>2.02</version>
+    <time>1524742675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599889</requestid>
+  </revision>
+</revisionlist>

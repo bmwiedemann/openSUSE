@@ -1,0 +1,12 @@
+<package name="samplicator" project="openSUSE:Factory">
+  <title>Send copies of (UDP) datagrams to multiple receivers</title>
+  <description>This small program receives UDP datagrams on a given port, and resends
+those datagrams to a specified set of receivers.
+In addition, a sampling divisor N may be specified individually for each
+receiver, which will then only receive one in N of the received packets.
+Optional spoofing is also supported.
+
+</description>
+  <devel project="network" package="samplicator"/>
+  <url>https://github.com/sleinen/samplicator</url>
+</package>

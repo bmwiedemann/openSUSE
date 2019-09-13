@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f50a8808455ce1d53cb878d737ca8bf</srcmd5>
+    <version>20141017</version>
+    <time>1415016710</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>259147</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f5e1362e393dc79911c389ce5ab33018</srcmd5>
+    <version>20141017</version>
+    <time>1415199300</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259659</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8c251aad11a099ee598c1c502639c7e3</srcmd5>
+    <version>20141111</version>
+    <time>1415866648</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260913</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d417da9fbed8b6513bde7d6c87ee410f</srcmd5>
+    <version>20141111</version>
+    <time>1437059830</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316595</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ab44ff25df9f231282ffe45bdcea605</srcmd5>
+    <version>20150717</version>
+    <time>1438899495</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320253</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d0d9f7101a023fa65522d283b98d1793</srcmd5>
+    <version>20150918</version>
+    <time>1442638472</time>
+    <user>coolo</user>
+    <comment>- version 20150918
+- -m is no longer required (see apache2-mod_apreq2 for usecase) (forwarded request 331898 from pgajdos)</comment>
+    <requestid>331901</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>09c63cdfd85610fb63790027db3262b7</srcmd5>
+    <version>20150930</version>
+    <time>1444833716</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>337522</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>91263dac1ee137007d8c100dcbc348be</srcmd5>
+    <version>20150930</version>
+    <time>1448400594</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>345069</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1c67a8dc05f7bdd85bf8a844cb9061a8</srcmd5>
+    <version>20151211</version>
+    <time>1450605065</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>349505</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b2fdeda719043567d72a2f8698e5ef53</srcmd5>
+    <version>20160111</version>
+    <time>1453507399</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>354625</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0f30d9566ac8a81dc17b813bd57c7191</srcmd5>
+    <version>20160120</version>
+    <time>1455611247</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>357215</requestid>
+  </revision>
+</revisionlist>

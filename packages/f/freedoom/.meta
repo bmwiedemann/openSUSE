@@ -1,0 +1,9 @@
+<package name="freedoom" project="openSUSE:Factory">
+  <title>Replacement game files for Doom game engines</title>
+  <description>A set of game resources for the DOOM game engine.  While the Doom source code
+is Free, you currently still need one of the proprietary IWAD files from id in
+order to play Doom. Freedoom aims to create a Free alternative. Combined with
+the GPL-licensed Doom source code this will result in a completely Free
+Doom-based game.</description>
+  <devel project="games" package="freedoom"/>
+</package>
